@@ -15,6 +15,7 @@ right_drivetemps=Drev temperaturer
 right_driveerr=$1 fejl!
 right_drivefailed=SMART-kontrol mislykkedes!
 right_cputype=$5, $8 kerner
+right_cputype1=$5, $8 kerne
 right_load=$1 (1 min) $2 (5 minutter) $3 (15 minutter)
 right_cpuuse=CPU brug
 right_cpustats=$1% bruger, $2% kerne, $4% IO, $3% inaktiv

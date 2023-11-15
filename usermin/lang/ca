@@ -484,7 +484,6 @@ descs_title=Títols dels Mòduls
 descs_info=Aquesta pàgina permet especificar títols alternatius per als mòduls d'Usermin, obviant les seves descripcions estàndard.
 
 advanced_title=Opcions Avançades
-advanced_pass=Posa la contrasenya a disposició dels programes d'Usermin<br><font size=-1>(No funciona quan l'autenticació de sessió està activada)</font>
 
 blocked_title=Hosts i Usuaris Bloquejats
 blocked_none=Actualment, no hi ha cap host ni usuari bloquejat per Usermin.

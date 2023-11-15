@@ -1,6 +1,7 @@
 index_title=جدار حماية لينكس IPTables
 index_title_v=جدار حماية IPv4
 index_title_v6=جدار الحماية IPv6
+index_position=إظهار القواعد من $1 إلى $2 من $3
 index_editing=ملف القواعد$1
 index_ecommand=لم يتم العثور على الأمر$1 على نظامك. يحتاج Webmin إلى هذا الأمر لتكوين IPtables.
 index_ekernel=حدث خطأ عند التحقق من تكوين IPtables الحالي:$1 قد يشير هذا إلى أن kernel الخاص بك لا يدعم IPtables.

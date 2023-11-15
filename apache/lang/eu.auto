@@ -501,6 +501,7 @@ core_actmod=Modulu aktiboak
 core_option=aukera
 core_setdir=Direktorioa ezarri
 core_merge=Gurasoekin elkartu
+core_eoptionsboth=Direktorio-aukerak : Aukera aktiboak guztiak direktoriorako ezarrita edo gurasoekin bateratuta egon behar dira, baina ez biak
 core_users=Erabiltzaile horiek bakarrik
 core_groups=Talde horiek bakarrik
 core_allusers=Erabiltzaile baliozko guztiak

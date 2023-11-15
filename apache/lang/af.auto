@@ -501,6 +501,7 @@ core_actmod=Aktiewe modules
 core_option=Opsie
 core_setdir=Stel vir gids in
 core_merge=Smelt met ouer
+core_eoptionsboth=Gidsopsies : Aktiewe opsies moet almal óf gestel vir gids óf saamgevoeg met ouer wees, maar nie albei nie
 core_users=Slegs hierdie gebruikers
 core_groups=Slegs hierdie groepe
 core_allusers=Alle geldige gebruikers

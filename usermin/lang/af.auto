@@ -486,7 +486,8 @@ descs_title=Module-titels
 descs_info=Op hierdie bladsy kan u alternatiewe titels vir Usermin-modules spesifiseer om hul standaardbeskrywings te ignoreer.
 
 advanced_title=Gevorderde opsies
-advanced_pass=Maak wagwoord beskikbaar vir Usermin-programme? <br><font size=-1> (Werk nie wanneer sessieverifikasie aangeskakel is nie) </font>
+advanced_pass_desc=Stel wagwoord beskikbaar vir Usermin-programme?
+advanced_pass_help=Werk nie wanneer sessie-verifikasie geaktiveer is nie
 
 blocked_title=Geblokkeerde gashere en gebruikers
 blocked_none=Geen gashere of gebruikers word tans deur Usermin geblokkeer nie.

@@ -1,0 +1,4 @@
+index_serviceonboot=Ja, en begin bij het opstarten
+index_tabsync2=Voer de systeemservice <tt>$1</tt> uit voor synchronisatie
+
+error_serviceunknown=Onbekende dienst : $1

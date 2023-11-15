@@ -1,6 +1,7 @@
 index_title=Linux IPTables Firewall
 index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
+index_position=Se afișează regulile $1 până la $2 din $3
 index_editing=Fișier reguli $1 
 index_ecommand=Comanda $1 nu a fost găsită în sistemul dvs. Webmin are nevoie de această comandă pentru a configura tabele IP.
 index_ekernel=A apărut o eroare la verificarea configurației dvs. IPtables curente: $1 Acest lucru poate indica faptul că kernel-ul dvs. nu acceptă tabele IP.

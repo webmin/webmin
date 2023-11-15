@@ -486,7 +486,8 @@ descs_title=כותרות מודול
 descs_info=דף זה מאפשר לך לציין כותרות חלופיות עבור מודולי Usermin, כדי לעקוף את התיאורים הסטנדרטיים שלהם.
 
 advanced_title=אפשרויות מתקדמות
-advanced_pass=האם סיסמא תהיה זמינה לתוכניות Usermin? <br><font size=-1> (לא עובד כאשר אימות הפעלה מופעל) </font>
+advanced_pass_desc=להפוך את הסיסמה לזמינה לתוכניות Usermin?
+advanced_pass_help=לא עובד כאשר אימות הפעלה מופעל
 
 blocked_title=מארחים ומשתמשים חסומים
 blocked_none=כרגע אין מארחים או משתמשים חסומים על ידי Usermin.

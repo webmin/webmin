@@ -54,6 +54,7 @@ core_ecandoc=You are not allowed to use the document root '$1'
 core_minor=فقط نسخه جزئی
 core_uid=شناسه کاربری
 core_euid='$1' is not a valid group ID
+core_eoptionsboth=گزینه های دایرکتوری: گزینه های فعال باید همه یا Set For Directory یا Merged with Parent باشند، اما نه هر دو
 core_fileowner=مالک پرونده مطابقت دارد
 core_filegroup=مالک گروه مطابقت دارد
 

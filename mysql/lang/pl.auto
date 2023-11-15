@@ -203,6 +203,7 @@ view_cascaded=Podstawowe poglądy
 procs_kill=Zabij wybrane połączenia
 
 root_epass2=Hasła nie pasują do siebie
+root_socket=Użytkownik MySQL <tt>$1</tt> korzysta z uwierzytelniania gniazda Unix, więc hasło nie jest potrzebne i nie można go zmienić.
 
 mysqlpass_err=Tryb bezpieczny MySQL
 mysqlpass_esafecmd=Nie znaleziono polecenia $1 potrzebnego do uruchomienia MySQL z wyłączonym uwierzytelnianiem

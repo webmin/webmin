@@ -1,5 +1,6 @@
 index_title_v=IPv4 Firewall
 index_title_v6=IPv6 Firewall
+index_position=Показаны правила от $1 до $2 из $3
 index_evalid=ПРЕДУПРЕЖДЕНИЕ! Ваша текущая конфигурация IPtables недопустима : $1 
 index_no_comment=
 index_unapply2=Сохранить конфигурацию

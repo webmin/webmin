@@ -50,6 +50,7 @@ core_protocols_h2c=HTTP/2 sin cifrar
 core_eprotcols=¡No se seleccionaron protocolos!
 core_ecandoc=No tiene permiso para usar la raíz del documento '$1'
 core_minor=Solo versión menor
+core_eoptionsboth=Opciones de directorio: las opciones activas deben estar todas configuradas para directorio o fusionadas con padre, pero no ambas
 core_fileowner=Propietario de archivo coincide
 core_filegroup=Partidos del propietario del grupo
 

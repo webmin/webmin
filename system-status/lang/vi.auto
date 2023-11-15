@@ -15,6 +15,7 @@ right_drivetemps=Nhiệt độ ổ đĩa
 right_driveerr=$1 lỗi!
 right_drivefailed=Kiểm tra thông minh thất bại!
 right_cputype=$5, $8 lõi
+right_cputype1=lõi $5, $8
 right_load=$1 (1 phút) $2 (5 phút) $3 (15 phút)
 right_cpuuse=Sử dụng CPU
 right_cpustats=$1% người dùng, $2% kernel, $4% IO, $3% không hoạt động

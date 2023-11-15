@@ -486,7 +486,8 @@ descs_title=Naslovi modula
 descs_info=Ova vam stranica omogućuje da odredite alternativne naslove za Usermin module kako biste nadjačali njihove standardne opise.
 
 advanced_title=Napredne opcije
-advanced_pass=Omogućiti lozinku korisničkim programima? <br><font size=-1> (Ne radi ako je omogućena provjera autentičnosti sesije) </font>
+advanced_pass_desc=Učiniti lozinku dostupnom programima Usermin?
+advanced_pass_help=Ne radi kada je autentifikacija sesije omogućena
 
 blocked_title=Blokirani domaćini i korisnici
 blocked_none=Trenutno nije blokiran korisnik niti korisnik.

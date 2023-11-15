@@ -52,6 +52,35 @@ if ($in{'action'} eq $text{'action_sync'}) {
 } elsif ($in{'action'} eq $text{'index_sync'} || $in{'mode'} eq 'ntp') {
   # Sync with a time server
   $access{'ntp'} || &error($text{'acl_nontp'});
+  # Save service status
+  if (defined($in{'sync_service_name'}) &&
+      defined($in{'sync_service_status'})) {
+        my $service_name = $in{'sync_service_name'};
+        if ($service_name !~ /^(chronyd|systemd-timesyncd)$/) {
+                &error(&text('error_serviceunknown', &html_escape($service_name)));
+          }
+        my $service_status = int($in{'sync_service_status'});
+        &foreign_require('init');
+        if ($service_status == 2) {
+            # Enable service on boot
+            &init::enable_at_boot($service_name);
+            # Start service
+            &init::restart_action($service_name);
+          }
+        if ($service_status == 1) {
+            # Disable service on boot
+            &init::disable_at_boot($service_name);
+            # Start service
+            &init::restart_action($service_name);
+          }
+        if ($service_status == 0) {
+            # Disable service on boot
+            &init::disable_at_boot($service_name);
+            # Stop service
+            &init::stop_action($service_name);
+          }
+    }
+  # Run sync
   $in{'timeserver'} =~ /\S/ || &error($text{'error_etimeserver'});
   $err = &sync_time($in{'timeserver'}, $in{'hardware'});
   &error("<pre>".&html_escape($err)."</pre>") if ($err);

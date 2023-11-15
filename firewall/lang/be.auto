@@ -1,6 +1,7 @@
 index_title=Брандмаўэр IPTables Linux
 index_title_v=IPv4 брандмаўэр
 index_title_v6=IPv6 брандмаўэр
+index_position=Паказваюцца правілы ад $1 да $2 з $3
 index_editing=Файл правілаў $1 
 index_ecommand=Каманда $1 не знойдзена ў вашай сістэме. Для налады IPtable трэба Webmin для гэтай каманды.
 index_ekernel=Памылка адбылася пры праверцы вашай бягучай канфігурацыі IPtables: $1 Гэта можа азначаць, што ваша ядро не падтрымлівае IPtables.

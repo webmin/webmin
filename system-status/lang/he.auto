@@ -15,6 +15,7 @@ right_drivetemps=טמפרטורות כונן
 right_driveerr=שגיאות $1 !
 right_drivefailed=הסימון החכם נכשל!
 right_cputype=$5, $8 ליבות
+right_cputype1=$5, $8 ליבה
 right_load=$1 (1 דקה) $2 (5 דקות) $3 (15 דקות)
 right_cpuuse=שימוש במעבד
 right_cpustats=משתמש $1%, גרעין $2%, $4% IO, $3% סרק

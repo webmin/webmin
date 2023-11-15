@@ -501,6 +501,7 @@ core_actmod=Moduli attivi
 core_option=Għażla
 core_setdir=Issettjat għad-direttorju
 core_merge=Tingħaqad mal-ġenitur
+core_eoptionsboth=Għażliet tad-Direttorju : L-għażliet attivi jridu jkunu kollha jew Issettjati Għal Direttorju jew Magħquda Mal-Ġenitur, iżda mhux it-tnejn
 core_users=Dawn l-utenti biss
 core_groups=Dawn il-gruppi biss
 core_allusers=L-utenti validi kollha

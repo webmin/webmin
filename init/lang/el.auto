@@ -162,6 +162,7 @@ edit_hostconfig_title=Επεξεργασία του Hostconfig
 
 mass_enone=Δεν έχουν επιλεγεί ενέργειες
 mass_enone2=Δεν έχουν επιλεγεί υπηρεσίες
+mass_enoallow=δεν μπορεί να σταματήσει το <tt>$1</tt>
 mass_start=Ξεκινώντας Ενέργειες
 mass_restart=Επανεκκίνηση ενεργειών
 mass_stop=Διακοπή ενεργειών
@@ -171,6 +172,7 @@ mass_disable=Απενεργοποίηση ενέργειας $1 κατά την 
 mass_starting=Εκκίνηση ενέργειας $1 ..
 mass_stopping=Διακοπή ενέργειας $1 ..
 mass_failed=.. απέτυχε
+mass_skipped=.. παρακάμπτεται
 mass_ok=.. Ολοκληρώθηκε
 mass_ustart=Υπηρεσίες εκκίνησης
 mass_urestart=Επανεκκίνηση Υπηρεσιών

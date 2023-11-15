@@ -333,7 +333,6 @@ dav_eusers=ユーザが入力されていません
 descs_title=モジュール表題
 
 advanced_title=先進的なオプション
-advanced_pass=Usermin プログラムにパスワードを有効にしますか？<br><font size=-1>(セッション認証が有効でないと機能しません)</font>
 
 blocked_title=ブロックされたホストとユーザ
 blocked_user=Usermin ユーザ

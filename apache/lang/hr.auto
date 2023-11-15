@@ -25,6 +25,7 @@ core_protocols_h2=HTTP/2 šifrirano
 core_protocols_h2c=HTTP/2 nešifriran
 core_eprotcols=Nema odabranih protokola!
 core_minor=Samo manja verzija
+core_eoptionsboth=Opcije direktorija : sve aktivne opcije moraju biti postavljene za imenik ili spojene s nadređenim, ali ne oboje
 
 mod_proxy_seconds=sekundi
 

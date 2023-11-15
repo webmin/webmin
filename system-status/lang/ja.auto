@@ -15,6 +15,7 @@ right_drivetemps=ドライブ温度
 right_driveerr=$1エラー！
 right_drivefailed=SMARTチェックに失敗しました！
 right_cputype=$5、 $8コア
+right_cputype1=$5、$8コア
 right_load=$1（1分） $2（5分） $3（15分）
 right_cpuuse=CPU使用率
 right_cpustats=$1％ユーザー、 $2％カーネル、 $4％IO、 $3％アイドル

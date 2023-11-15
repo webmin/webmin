@@ -2,7 +2,9 @@ index_sboot5=Nein (maskiert)
 index_sboot6=Ja immer)
 index_ucstatus=Service Status
 
+mass_enoallow=<tt>$1</tt> kann nicht gestoppt werden
 mass_failed=.. gescheitert
+mass_skipped=.. übersprungen
 mass_ok=.. erledigt
 
 systemd_file=Konfigurationsdatei

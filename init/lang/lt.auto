@@ -162,6 +162,7 @@ edit_hostconfig_title=Redaguoti „Hostconfig“
 
 mass_enone=Nepasirinktas nė vienas veiksmas
 mass_enone2=Nepasirinkta jokių paslaugų
+mass_enoallow=negali sustabdyti <tt>$1</tt>
 mass_start=Pradėti veiksmai
 mass_restart=Veiksmų paleidimas iš naujo
 mass_stop=Veiksmų sustabdymas
@@ -171,6 +172,7 @@ mass_disable=Išjungus veiksmą $1 įkrovos metu.
 mass_starting=Pradedamas veiksmas $1 ..
 mass_stopping=Sustabdyti veiksmą $1 ..
 mass_failed=.. nepavyko
+mass_skipped=.. praleistas
 mass_ok=.. padaryta
 mass_ustart=Paslaugų pradžia
 mass_urestart=Paslaugų paleidimas iš naujo

@@ -865,6 +865,7 @@ root_epass1=Nije unesena nova lozinka
 root_epass2=Lozinke se ne podudaraju
 root_none=Nema lozinke!
 root_auto=Automatski (obično <tt>root</tt>)
+root_socket=Korisnik MySQL <tt>$1</tt> koristi autentifikaciju Unix utičnice, tako da lozinka nije potrebna i lozinka se ne može promijeniti.
 
 mysqlpass_err=MySQL siguran način
 mysqlpass_esafecmd=Naredba $1 potrebna za pokretanje MySQL-a s onemogućenom provjerom autentičnosti nije pronađena

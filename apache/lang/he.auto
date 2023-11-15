@@ -501,6 +501,7 @@ core_actmod=מודולים פעילים
 core_option=אפשרות
 core_setdir=הגדר לספרייה
 core_merge=התמזגו עם ההורה
+core_eoptionsboth=אפשרויות ספרייה : האפשרויות הפעילות חייבות להיות כולן מוגדרות למדריך או התמזגו עם אב, אך לא שתיהן
 core_users=רק משתמשים אלה
 core_groups=רק הקבוצות האלה
 core_allusers=כל המשתמשים התקפים

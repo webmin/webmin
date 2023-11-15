@@ -7,7 +7,9 @@ index_ucstatus=Status usługi
 
 log_condrestart=Warunkowo wznowione działanie $1 
 
+mass_enoallow=nie można zatrzymać <tt>$1</tt>
 mass_failed=.. przegrany
+mass_skipped=.. pominięte
 mass_ok=.. Gotowe
 
 upstart_fork=Serwer rozwidla się w tle?

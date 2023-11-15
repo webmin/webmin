@@ -56,6 +56,7 @@ core_protocols_h2c=HTTP/2 未加密
 core_eprotcols=未選擇任何協議！
 core_ecandoc=不允許使用文檔根目錄'$1'
 core_minor=僅次要版本
+core_eoptionsboth=目錄選項：活動選項必須全部為“設定目錄”或“與父級合併”，但不能同時為兩者
 core_fileowner=文件所有者匹配
 core_filegroup=群組擁有者比賽
 

@@ -573,10 +573,10 @@ mod_proxy_netbit=网络/位
 mod_proxy_maxfw=请求链中最大的代理数
 mod_proxy_emaxfs=请求链中最大的代理数必须是整数
 mod_proxy_preserve=保持原来的主机：文件头
-
 mod_proxy_timeout=代理请求超时秒数
 mod_proxy_etimeout=代理请求超时必须是一个有效的秒数
 mod_proxy_via=设置通过：头
+
 mod_log_agent_default=默认
 mod_log_agent_file=文件…
 mod_log_agent_program=程序…

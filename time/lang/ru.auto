@@ -1,1 +1,5 @@
+index_serviceonboot=Да, и начать при загрузке
 index_boot=Синхронизировать при запуске Webmin?
+index_tabsync2=Запустите системную службу <tt>$1</tt> для синхронизации
+
+error_serviceunknown=Неизвестная служба : $1

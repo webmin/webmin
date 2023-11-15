@@ -7,7 +7,9 @@ index_lname=Ügynök neve
 
 edit_reloadnow2=Olvassa újra a konfigurációs fájlt
 
+mass_enoallow=a <tt>$1</tt> nem állítható le
 mass_failed=.. nem sikerült
+mass_skipped=.. átugrott
 mass_ok=.. Kész
 
 mode_systemd=systemd

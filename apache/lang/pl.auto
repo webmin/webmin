@@ -9,3 +9,4 @@ core_protocols_http/2=HTTP/2
 core_protocols_h2=Szyfrowany HTTP/2
 core_protocols_h2c=HTTP/2 nieszyfrowany
 core_eprotcols=Nie wybrano protokołów!
+core_eoptionsboth=Opcje katalogu: wszystkie aktywne opcje muszą być ustawione na katalog lub scalone z nadrzędnym, ale nie na jedno i drugie

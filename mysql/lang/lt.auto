@@ -865,6 +865,7 @@ root_epass1=Neįvestas naujas slaptažodis
 root_epass2=Slaptažodžiai nesutampa
 root_none=Nėra slaptažodžio!
 root_auto=Automatinis (paprastai <tt>šaknis</tt>)
+root_socket=MySQL <tt>$1</tt> vartotojas naudoja Unix lizdo autentifikavimą, todėl slaptažodžio nereikia ir slaptažodžio pakeisti negalima.
 
 mysqlpass_err=„MySQL“ saugus režimas
 mysqlpass_esafecmd=Komanda $1, reikalinga MySQL paleisti išjungus autentifikavimą, nerasta

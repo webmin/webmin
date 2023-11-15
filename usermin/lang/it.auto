@@ -16,6 +16,9 @@ ui_hnm3=Altro nome ..
 
 log_copycert=Impostazioni SSL copiate da Webmin
 
+advanced_pass_desc=Rendere la password disponibile ai programmi Usermin?
+advanced_pass_help=Non funziona quando è abilitata l'autenticazione della sessione
+
 copycert_err=Impossibile copiare le impostazioni SSL da Webmin
 copycert_essl=SSL non è abilitato
 copycert_ekeyfile=Nessun file di chiave privata è impostato in Webmin

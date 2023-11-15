@@ -1,6 +1,7 @@
 index_title=Linux IPTables防火牆
 index_title_v=IPv4防火牆
 index_title_v6=IPv6防火牆
+index_position=顯示規則 $1 到 $2（共 $3）
 index_editing=規則文件 $1
 index_ecommand=在系統上找不到命令 $1。 Webmin需要此命令來配置IPtables。
 index_ekernel=檢查您當前的IPtables配置時發生錯誤： $1這可能表明您的內核不支持IPtables。

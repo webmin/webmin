@@ -184,6 +184,7 @@ root_epass1=Nebylo zadáno žádné nové heslo
 root_epass2=Hesla se neshodují
 root_none=Žádné heslo!
 root_auto=Automaticky (obvykle <tt>root</tt>)
+root_socket=Uživatel MySQL <tt>$1</tt> používá autentizaci soketu Unix, takže není potřeba žádné heslo a heslo nelze změnit.
 
 mysqlpass_err=Bezpečný režim MySQL
 mysqlpass_esafecmd=Příkaz $1 potřebný ke spuštění MySQL s deaktivovaným ověřováním nebyl nalezen

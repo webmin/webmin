@@ -1,0 +1,4 @@
+index_serviceonboot=Sí, i comença des de l'arrencada
+index_tabsync2=Executeu el servei <tt>$1</tt> del sistema per a la sincronització
+
+error_serviceunknown=Servei desconegut : $1

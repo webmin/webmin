@@ -1,0 +1,4 @@
+index_serviceonboot=Ja, og start ved oppstart
+index_tabsync2=Kjør systemtjenesten <tt>$1</tt> for synkronisering
+
+error_serviceunknown=Ukjent tjeneste : $1

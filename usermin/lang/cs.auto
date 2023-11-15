@@ -16,6 +16,9 @@ ui_hnm3=Jiné jméno ..
 
 log_copycert=Zkopírováno nastavení SSL z Webmin
 
+advanced_pass_desc=Zpřístupnit heslo pro programy Usermin?
+advanced_pass_help=Nefunguje, když je povoleno ověřování relace
+
 copycert_err=Nastavení protokolu SSL z Webmin se nezdařilo
 copycert_essl=SSL není povoleno
 copycert_ekeyfile=Ve Webminu není nastaven žádný soubor soukromého klíče

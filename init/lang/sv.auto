@@ -85,6 +85,7 @@ edit_hostconfig_title=Redigera Hostconfig
 
 mass_enone=Inga åtgärder har valts
 mass_enone2=Inga tjänster har valts
+mass_enoallow=kan inte stoppa <tt>$1</tt>
 mass_start=Starta åtgärder
 mass_restart=Starta om åtgärder
 mass_stop=Stoppa åtgärder
@@ -94,6 +95,7 @@ mass_disable=Inaktiverar åtgärd $1 vid starttid.
 mass_starting=Starta åtgärd $1 ..
 mass_stopping=Stoppar åtgärd $1 ..
 mass_failed=.. misslyckades
+mass_skipped=.. hoppat över
 mass_ok=.. Gjort
 mass_ustart=Starta tjänster
 mass_urestart=Starta om tjänster

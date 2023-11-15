@@ -5,3 +5,4 @@ core_protocols_http/2=HTTP/2
 core_protocols_h2=HTTP/2 crypté
 core_protocols_h2c=HTTP/2 non crypté
 core_eprotcols=Aucun protocole sélectionné !
+core_eoptionsboth=Options du répertoire : les options actives doivent toutes être définies pour le répertoire ou fusionnées avec le parent, mais pas les deux

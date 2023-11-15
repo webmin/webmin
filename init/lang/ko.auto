@@ -18,7 +18,9 @@ log_condrestart=조건부로 재시작 된 작업 $1
 log_reload=재로드 된 작업 $1 
 log_status=작업 $1 의 페치 상태
 
+mass_enoallow=<tt>$1</tt>을(를) 중지할 수 없습니다
 mass_failed=.. 실패
+mass_skipped=.. 건너뛰었습니다
 mass_ok=.. 완료
 mass_ustart=서비스 시작
 mass_urestart=서비스 재시작

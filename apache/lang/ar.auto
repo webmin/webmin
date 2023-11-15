@@ -500,6 +500,7 @@ core_actmod=وحدات نشطة
 core_option=اختيار
 core_setdir=تعيين للدليل
 core_merge=دمج مع الوالد
+core_eoptionsboth=خيارات الدليل: يجب أن تكون جميع الخيارات النشطة إما Set For Directory أو Merged With Parent، ولكن ليس كليهما
 core_users=فقط هؤلاء المستخدمين
 core_groups=فقط هذه المجموعات
 core_allusers=جميع المستخدمين صالحة

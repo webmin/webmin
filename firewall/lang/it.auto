@@ -1,5 +1,6 @@
 index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
+index_position=Visualizzazione delle regole da $1 a $2 di $3
 index_editing=File delle regole $1 
 index_evalid=AVVERTIMENTO! La configurazione corrente di IPtables non è valida : $1 
 index_comm=Commento

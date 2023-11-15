@@ -178,6 +178,7 @@ core_exml=Geçersiz XML isteği gövde boyutu
 core_sroot=Sunucu kökü
 core_eerrordir=Hata günlüğü dosyası dizini mevcut değil
 core_merge=Üst öğe ile birleştir
+core_eoptionsboth=Dizin seçenekleri : Etkin seçeneklerin tümü Dizin İçin Ayarla veya Üst Öğeyle Birleştirilmiş olmalıdır, ancak her ikisi birden olmamalıdır
 core_fileowner=Dosya sahibi eşleşmeleri
 core_filegroup=Grup sahibi eşleşmeleri
 core_product=Sadece ürün

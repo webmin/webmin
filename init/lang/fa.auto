@@ -50,10 +50,12 @@ log_massrestart=اقدامات $1 دوباره شروع شد
 log_telinit=به$1 runlevel تغییر یافت
 
 mass_enone2=هیچ خدمتی انتخاب نشده است
+mass_enoallow=نمی توان <tt>$1</tt> را متوقف کرد
 mass_restart=شروع مجدد اقدامات
 mass_starting=شروع کار$1 ..
 mass_stopping=متوقف کردن عمل$1 ..
 mass_failed=.. ناموفق
+mass_skipped=.. رد شد
 mass_ok=.. انجام شده
 mass_ustart=خدمات شروع
 mass_urestart=شروع مجدد خدمات

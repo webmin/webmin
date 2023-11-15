@@ -1,6 +1,7 @@
 index_title=Požarni zid IPTables Linux
 index_title_v=IPv4 požarni zid
 index_title_v6=IPv6 požarni zid
+index_position=Prikaz pravil od $1 do $2 od $3
 index_editing=Datoteka s pravili $1 
 index_ecommand=Ukaza $1 v vašem sistemu ni bilo mogoče najti. Webmin potrebuje ta ukaz za konfiguriranje IPtables.
 index_ekernel=Pri preverjanju trenutne konfiguracije IPtables se je pojavila napaka: $1 To lahko pomeni, da vaše jedro ne podpira IPtables.

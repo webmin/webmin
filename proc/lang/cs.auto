@@ -1,5 +1,8 @@
-index_mem3=<b>Skutečná paměť:</b> $1 celkem / $2 zdarma / $3 v mezipaměti
-index_burst=<b>Burstable memory: celkem</b> $1 
+index_memreal=Skutečná paměť:
+index_memswap=Výměnný prostor:
+index_memburst=Výbušná paměť:
+index_memtf=$1 celkem / $2 zdarma
+index_memtfc=Celkem $1 / $2 zdarma / $3 uloženo v mezipaměti
 
 sclass=Třída plánování IO
 sprio=IO priorita

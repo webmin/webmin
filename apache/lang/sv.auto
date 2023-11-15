@@ -23,6 +23,7 @@ core_protocols_h2=HTTP/2 krypterad
 core_protocols_h2c=HTTP/2 okrypterad
 core_eprotcols=Inga protokoll har valts!
 core_minor=Endast mindre version
+core_eoptionsboth=Katalogalternativ : Alla aktiva alternativ måste antingen vara inställda för katalog eller sammanfogade med överordnade, men inte båda
 
 mod_proxy_seconds=sekunder
 

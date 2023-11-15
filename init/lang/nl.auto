@@ -6,7 +6,9 @@ index_lname=Naam agent
 
 edit_reloadnow2=Lees het configuratiebestand opnieuw
 
+mass_enoallow=kan <tt>$1</tt> niet stoppen
 mass_failed=.. mislukt
+mass_skipped=.. overgeslagen
 mass_ok=.. gedaan
 
 mode_launchd=LaunchD

@@ -62,6 +62,7 @@ log_massdisable=禁用的动作 $1
 log_telinit=切换到运行级别 $1
 
 mass_enone2=未选择服务
+mass_enoallow=无法停止<tt>$1</tt>
 mass_restart=重新启动动作
 mass_ebroken=引导时无法启用或禁用损坏的操作 $1
 mass_enable=在启动时启用操作 $1。
@@ -69,6 +70,7 @@ mass_disable=在引导时禁用操作 $1。
 mass_starting=开始动作 $1 ..
 mass_stopping=停止动作 $1 ..
 mass_failed=.. 失败的
+mass_skipped=..跳过
 mass_ok=.. 完毕
 mass_ustart=启动服务
 mass_urestart=重新启动服务

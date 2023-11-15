@@ -486,7 +486,8 @@ descs_title=Moduulinimikkeet
 descs_info=Tällä sivulla voit määrittää vaihtoehtoiset otsikot Usermin-moduuleille ohittaa niiden vakiokuvaukset.
 
 advanced_title=Edistyneet asetukset
-advanced_pass=Asetetaanko salasana Usermin-ohjelmien käyttöön? <br><font size=-1> (Ei toimi, kun istunnon todennus on käytössä) </font>
+advanced_pass_desc=Asetetaanko salasana Usermin-ohjelmien käyttöön?
+advanced_pass_help=Ei toimi, kun istunnon todennus on käytössä
 
 blocked_title=Estetyt isännät ja käyttäjät
 blocked_none=Usermin ei tällä hetkellä estä ketään isäntiä tai käyttäjiä.

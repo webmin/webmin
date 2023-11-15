@@ -1,8 +1,9 @@
 index_zone=Zone
-index_mem2=<b>Mémoire réelle:</b> $1 total / $2 gratuit
-index_mem3=<b>Mémoire réelle:</b> $1 total / $2 gratuit / $3 mis en cache
-index_swap2=<b>Échange d'espace:</b> $1 total / $2 gratuit
-index_burst=<b>Mémoire éclatée:</b> $1 au total
+index_memreal=Mémoire réelle :
+index_memswap=Espace d'échange :
+index_memburst=Mémoire extensible :
+index_memtf=$1 total / $2 gratuits
+index_memtfc=$1 total / $2 libres / $3 mis en cache
 index_loadname=Moyennes de charge du processeur:
 index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
 index_cpuname=Type de CPU:

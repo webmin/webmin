@@ -49,6 +49,7 @@ core_protocols_http/2=HTTP/2
 core_protocols_h2=HTTP/2 disulitkan
 core_protocols_h2c=HTTP/2 tidak disulitkan
 core_eprotcols=Tiada protokol dipilih!
+core_eoptionsboth=Pilihan direktori : Pilihan aktif mestilah semua sama ada Tetapkan Untuk Direktori atau Digabungkan Dengan Induk, tetapi bukan kedua-duanya
 
 mod_negotiation_cache=Dokumen-dokumen yang dirundingkan kandungan cache?
 mod_negotiation_pri=Keutamaan bahasa untuk pelbagai tontonan

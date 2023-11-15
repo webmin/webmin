@@ -162,6 +162,7 @@ edit_hostconfig_title=Rediģēt Hostconfig
 
 mass_enone=Nav atlasīta neviena darbība
 mass_enone2=Nav izvēlēts neviens pakalpojums
+mass_enoallow=nevar apturēt <tt>$1</tt>
 mass_start=Darbības sākšana
 mass_restart=Darbību atsākšana
 mass_stop=Darbību apturēšana
@@ -171,6 +172,7 @@ mass_disable=Darbības $1 atspējošana sāknēšanas laikā.
 mass_starting=Sākot darbību $1 ..
 mass_stopping=Darbības apturēšana $1 ..
 mass_failed=.. neizdevās
+mass_skipped=.. izlaists
 mass_ok=.. darīts
 mass_ustart=Pakalpojumu sākšana
 mass_urestart=Pakalpojumu restartēšana

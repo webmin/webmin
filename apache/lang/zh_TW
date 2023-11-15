@@ -583,10 +583,10 @@ mod_proxy_netbit=網路/位元
 mod_proxy_maxfw=請求鏈中最大的代理數
 mod_proxy_emaxfs=請求鏈中最大的代理數必須是整數
 mod_proxy_preserve=保留原始主機: 檔頭
-
 mod_proxy_timeout=Proxy回應逾時秒數
 mod_proxy_etimeout=Proxy回應逾時秒數必須是個秒數數字
 mod_proxy_via=設定經由: 檔頭
+
 mod_log_agent_default=預設
 mod_log_agent_file=檔案..
 mod_log_agent_program=程式..

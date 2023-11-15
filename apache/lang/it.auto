@@ -63,6 +63,7 @@ core_eprotcols=Nessun protocollo selezionato!
 core_ecandoc=Non puoi utilizzare la radice del documento '$1'
 core_minor=Solo versione secondaria
 core_eerrordir=La directory per il file di registro degli errori non esiste
+core_eoptionsboth=Opzioni directory: le opzioni attive devono essere tutte impostate per directory o unite con padre, ma non entrambe
 core_fileowner=Corrispondenze del proprietario del file
 core_filegroup=Partite del proprietario del gruppo
 

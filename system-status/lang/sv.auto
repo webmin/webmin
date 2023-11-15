@@ -15,6 +15,7 @@ right_drivetemps=Kör temperaturer
 right_driveerr=$1 -fel!
 right_drivefailed=SMART-kontroll misslyckades!
 right_cputype=$5, $8 kärnor
+right_cputype1=$5, $8 kärna
 right_load=$1 (1 min) $2 (5 min) $3 (15 min)
 right_cpuuse=CPU-användning
 right_cpustats=$1% användare, $2% kärna, $4% IO, $3% tomgång

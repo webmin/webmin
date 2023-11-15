@@ -25,6 +25,7 @@ core_protocols_h2=HTTP/2暗号化
 core_protocols_h2c=HTTP/2暗号化されていない
 core_eprotcols=プロトコルが選択されていません！
 core_minor=マイナーバージョンのみ
+core_eoptionsboth=ディレクトリ オプション: アクティブなオプションはすべて、「ディレクトリに設定」または「親とマージ」のいずれかである必要がありますが、両方にすることはできません。
 
 mod_proxy_seconds=秒
 

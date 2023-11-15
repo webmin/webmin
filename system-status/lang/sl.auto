@@ -15,6 +15,7 @@ right_drivetemps=Temperature pogona
 right_driveerr=$1 napake!
 right_drivefailed=SMART preverjanje ni uspelo!
 right_cputype=$5, $8 jeder
+right_cputype1=$5, $8 jedro
 right_load=$1 (1 min) $2 (5 min) $3 (15 min)
 right_cpuuse=Uporaba CPU-ja
 right_cpustats=$1% uporabnika, $2% jedra, $4% IO, $3% v prostem teku

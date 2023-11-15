@@ -1,6 +1,7 @@
 index_title=Linux IPTables ugunsmūris
 index_title_v=IPv4 ugunsmūris
 index_title_v6=IPv6 ugunsmūris
+index_position=Rāda kārtulas no $1 līdz $2 no $3
 index_editing=Kārtulu fails $1 
 index_ecommand=Komanda $1 jūsu sistēmā netika atrasta. Webmin nepieciešama šī komanda, lai konfigurētu IPtable.
 index_ekernel=Pārbaudot pašreizējo IPtable konfigurāciju, radās kļūda: $1 Tas var norādīt, ka jūsu kodols neatbalsta IPtable.

@@ -485,7 +485,8 @@ descs_title=Modul címei
 descs_info=Ezen az oldalon megadhatja a Usermin modulok alternatív címeit, hogy felülbírálhassa a szabványos leírásokat.
 
 advanced_title=Haladó beállítások
-advanced_pass=A jelszót elérhetővé teszi a Usermin programok számára? <br><font size=-1> (Nem működik, ha a munkamenet hitelesítés engedélyezve van.) </font>
+advanced_pass_desc=Elérhetővé teszi a jelszót a Usermin programok számára?
+advanced_pass_help=Nem működik, ha a munkamenet-hitelesítés engedélyezve van
 
 blocked_title=Blokkolt gépek és felhasználók
 blocked_none=A Usermin jelenleg nem blokkolja a gazdagépeket és a felhasználókat.

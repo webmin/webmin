@@ -162,6 +162,7 @@ edit_hostconfig_title=Upraviť Hostconfig
 
 mass_enone=Nie sú vybrané žiadne akcie
 mass_enone2=Nie sú vybrané žiadne služby
+mass_enoallow=nemôže zastaviť <tt>$1</tt>
 mass_start=Začatie činnosti
 mass_restart=Opätovné spustenie akcií
 mass_stop=Zastavenie akcií
@@ -171,6 +172,7 @@ mass_disable=Zakazuje sa akcia $1 pri spustení systému.
 mass_starting=Začína sa akcia $1 ..
 mass_stopping=Zastavenie akcie $1 ..
 mass_failed=.. nepodarilo sa
+mass_skipped=.. preskočilo
 mass_ok=.. hotový
 mass_ustart=Spúšťanie služieb
 mass_urestart=Reštartovacie služby

@@ -1,3 +1,4 @@
 right_cpufans=Ventiladores de CPU
 right_cpufans_fan=Enfriador
 right_cpufans_rpm=RPM
+right_cputype1=$5, $8 núcleo

@@ -1,0 +1,5 @@
+index_memreal=Echte Erinnerung:
+index_memswap=Swap-Platz:
+index_memburst=Burst-Speicher:
+index_memtf=$1 insgesamt / $2 frei
+index_memtfc=$1 insgesamt / $2 frei / $3 im Cache

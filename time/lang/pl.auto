@@ -1,0 +1,4 @@
+index_serviceonboot=Tak i zacznij od rozruchu
+index_tabsync2=Uruchom usługę systemową <tt>$1</tt> w celu synchronizacji
+
+error_serviceunknown=Nieznana usługa : $1

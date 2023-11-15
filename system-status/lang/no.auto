@@ -1,3 +1,4 @@
 right_cpufans=CPU-vifter
 right_cpufans_fan=Kjølere
 right_cpufans_rpm=RPM
+right_cputype1=$5, $8 kjerne

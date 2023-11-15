@@ -836,6 +836,7 @@ root_epass1=Uutta salasanaa ei ole annettu
 root_epass2=Salasanat eivät täsmää
 root_none=Ei salasanaa!
 root_auto=Automaattinen (yleensä <tt>juuri</tt>)
+root_socket=MySQL-käyttäjä <tt>$1</tt> käyttää Unix-socket-todennusta, joten salasanaa ei tarvita eikä salasanaa voi muuttaa.
 
 mysqlpass_err=MySQL-vikasietotila
 mysqlpass_esafecmd=Komentoa $1, jota tarvitaan MySQL: n käynnistämiseen, kun todennus on poistettu käytöstä, ei löydy

@@ -48,10 +48,22 @@ if (&has_command("ntpdate")) {
 elsif (&has_command("sntp")) {
 	$out = &backquote_logged("sntp -s $servs 2>&1");
 	}
-elsif (&has_command("chronyc")) {
+elsif (&foreign_require('init') && &init::action_status('chronyd') > 0 && &has_command("chronyc")) {
+	my $chronyd_running = &init::status_action('chronyd');
 	$out = &backquote_logged("systemctl restart chronyd 2>&1");
 	$out .= &backquote_logged("chronyc makestep 2>&1");
-	sleep 5;
+	sleep ($chronyd_running ? 5 : 15);
+	if (!$chronyd_running) {
+		&backquote_logged("systemctl stop chronyd 2>&1");
+		}
+	}
+elsif (&foreign_require('init') && &init::action_status('systemd-timesyncd') > 0) {
+	my $systemd_timesyncd_running = &init::status_action('systemd-timesyncd');
+	$out = &backquote_logged("systemctl restart systemd-timesyncd 2>&1");
+	sleep ($systemd_timesyncd_running ? 5 : 15);
+	if (!$systemd_timesyncd_running) {
+		&backquote_logged("systemctl stop systemd-timesyncd 2>&1");
+		}
 	}
 else {
 	$out = "Missing ntpdate and sntp commands";
@@ -209,22 +221,30 @@ $hour = &zeropad($hour, 2);
 $date = &zeropad($date, 2);
 $month = &zeropad($month+1, 2);
 $year = &zeropad($year+1900, 4);
-my $format;
-if ($config{'seconds'} == 2) {
-	$format = $year.$month.$date.$hour.$minute.".".$second;
-	}
-elsif ($config{'seconds'} == 1) {
-	$format = $month.$date.$hour.$minute.$year.".".$second;
-	}
-else {
-	$format = $month.$date.$hour.$minute.substr($year, -2);
-	}
-my $out = &backquote_logged("echo yes | date ".quotemeta($format)." 2>&1");
-if ($gconfig{'os_type'} eq 'freebsd' || $gconfig{'os_type'} eq 'netbsd') {
-	return int($?/256) == 1 ? $out : undef;
+if (&has_command('timedatectl')) {
+	my ($out, $err);
+	 &execute_command("timedatectl set-time ".
+		quotemeta("$year-$month-$date $hour:$minute:$second"), undef, \$out, \$err);
+	return $out || $err ? ($out || $err) : undef;
 	}
 else {
-	return $? ? $out : undef;
+	my $format;
+	if ($config{'seconds'} == 2) {
+		$format = $year.$month.$date.$hour.$minute.".".$second;
+		}
+	elsif ($config{'seconds'} == 1) {
+		$format = $month.$date.$hour.$minute.$year.".".$second;
+		}
+	else {
+		$format = $month.$date.$hour.$minute.substr($year, -2);
+		}
+	my $out = &backquote_logged("echo yes | date ".quotemeta($format)." 2>&1");
+	if ($gconfig{'os_type'} eq 'freebsd' || $gconfig{'os_type'} eq 'netbsd') {
+		return int($?/256) == 1 ? $out : undef;
+		}
+	else {
+		return $? ? $out : undef;
+		}
 	}
 }
 

@@ -162,6 +162,7 @@ edit_hostconfig_title=Edit Hostconfig
 
 mass_enone=L-ebda azzjoni magħżula
 mass_enone2=L-ebda servizzi magħżula
+mass_enoallow=ma jistax iwaqqaf <tt>$1</tt>
 mass_start=Azzjonijiet Bidu
 mass_restart=Bidu mill-ġdid ta 'Azzjonijiet
 mass_stop=Azzjonijiet għall-Waqfien
@@ -171,6 +172,7 @@ mass_disable=Iddiżattiva l-azzjoni $1 fil-mument tal-bidu.
 mass_starting=Azzjoni li tibda $1 ..
 mass_stopping=Azzjoni ta ’waqfien $1 ..
 mass_failed=.. fallew
+mass_skipped=.. maqbuża
 mass_ok=.. magħmul
 mass_ustart=Servizzi tal-Bidu
 mass_urestart=Irristartja Servizzi

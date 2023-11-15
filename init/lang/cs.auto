@@ -13,7 +13,9 @@ index_lname=Jméno agenta
 
 edit_reloadnow2=Znovu načtěte konfigurační soubor
 
+mass_enoallow=nelze zastavit <tt>$1</tt>
 mass_failed=.. selhal
+mass_skipped=.. přeskočeno
 mass_ok=.. Hotovo
 mass_ustart=Spouštění služeb
 mass_urestart=Restartování služeb

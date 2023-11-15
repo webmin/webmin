@@ -162,6 +162,7 @@ edit_hostconfig_title=Uredite Hostconfig
 
 mass_enone=Nije odabrana nijedna radnja
 mass_enone2=Nije odabrana nijedna usluga
+mass_enoallow=ne može zaustaviti <tt>$1</tt>
 mass_start=Pokretanje akcija
 mass_restart=Ponovno pokretanje radnji
 mass_stop=Zaustavljanje akcija
@@ -171,6 +172,7 @@ mass_disable=Onemogućavanje radnje $1 u vrijeme pokretanja.
 mass_starting=Početna akcija $1.
 mass_stopping=Zaustavljanje akcije $1 ..
 mass_failed=.. neuspjeh
+mass_skipped=.. preskočeno
 mass_ok=.. gotovo
 mass_ustart=Pokretanje usluga
 mass_urestart=Usluge ponovnog pokretanja

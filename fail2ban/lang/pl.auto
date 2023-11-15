@@ -1,5 +1,8 @@
 index_ver=Wersja 1
 
+jail_systemd=systemowy
+jail_pyinotify=pyinotify
+
 status_title=Status i działania w więzieniach
 status_title3=Bloki więzienne
 status_return=stan więzień

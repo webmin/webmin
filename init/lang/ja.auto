@@ -14,7 +14,9 @@ log_condrestart=条件付きで再開されたアクション $1
 log_reload=アクション $1をリロードしました
 log_status=アクション $1のステータスを取得しました
 
+mass_enoallow=<tt>$1</tt> を停止できません
 mass_failed=.. 失敗した
+mass_skipped=..スキップしました
 mass_ok=.. 終わり
 mass_ustart=サービスを開始する
 mass_urestart=サービスの再起動

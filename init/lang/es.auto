@@ -49,10 +49,12 @@ log_status=Estado recuperado de la acción $1
 log_massrestart=Acciones reiniciadas $1 
 
 mass_enone2=No hay servicios seleccionados
+mass_enoallow=no puedo detener <tt>$1</tt>
 mass_restart=Reiniciar acciones
 mass_starting=Iniciando acción $1 ..
 mass_stopping=Deteniendo la acción $1 ..
 mass_failed=.. ha fallado
+mass_skipped=.. saltado
 mass_ok=.. hecho
 mass_ustart=Servicios de inicio
 mass_urestart=Reiniciar servicios

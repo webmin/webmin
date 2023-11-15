@@ -162,6 +162,7 @@ edit_hostconfig_title=Edit Hostconfig
 
 mass_enone=Tiada tindakan yang dipilih
 mass_enone2=Tiada perkhidmatan dipilih
+mass_enoallow=tidak boleh berhenti <tt>$1</tt>
 mass_start=Memulakan Tindakan
 mass_restart=Mulakan semula Tindakan
 mass_stop=Menghentikan Tindakan
@@ -171,6 +172,7 @@ mass_disable=Melumpuhkan tindakan $1 pada masa boot.
 mass_starting=Bermula tindakan $1 ..
 mass_stopping=Menghentikan tindakan $1 ..
 mass_failed=.. gagal
+mass_skipped=.. ponteng
 mass_ok=.. selesai
 mass_ustart=Memulakan Perkhidmatan
 mass_urestart=Mulakan semula Perkhidmatan

@@ -17,6 +17,8 @@ cnf_table_open_cache=Tabellen zum Zwischenspeichern
 
 syslog_desc2=MySQL-Fehlermeldung
 
+root_socket=Der MySQL-Benutzer <tt>$1</tt> verwendet die Unix-Socket-Authentifizierung, sodass kein Kennwort erforderlich ist und das Kennwort nicht geändert werden kann.
+
 mysqlpass_err=MySQL-abgesicherter Modus
 mysqlpass_esafecmd=Der Befehl $1, der zum Starten von MySQL mit deaktivierter Authentifizierung erforderlich ist, wurde nicht gefunden
 mysqlpass_eshutdown=Herunterfahren fehlgeschlagen : $1 

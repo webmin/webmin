@@ -15,6 +15,7 @@ right_drivetemps=Piedziņas temperatūra
 right_driveerr=$1 kļūdas!
 right_drivefailed=SMART pārbaude neizdevās!
 right_cputype=$5, $8 serdeņi
+right_cputype1=$5, $8 kodols
 right_load=$1 (1 min) $2 (5 min) $3 (15 min)
 right_cpuuse=CPU izmantošana
 right_cpustats=$1% lietotājs, $2% kodola, $4% IO, $3% dīkstāvē

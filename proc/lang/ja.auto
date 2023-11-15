@@ -1,5 +1,8 @@
-index_mem3=<b>実メモリー：</b>合計 $1 /空き $2 /キャッシュ $3
-index_burst=<b>バースタブルメモリ：</b>合計 $1
+index_memreal=実メモリ:
+index_memswap=スワップスペース:
+index_memburst=バースト可能なメモリ:
+index_memtf=合計 $1 / $2 空き
+index_memtfc=合計 $1 / $2 空き / $3 キャッシュ
 
 sclass=IOスケジューリングクラス
 sprio=IO優先度

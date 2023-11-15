@@ -160,6 +160,7 @@ edit_hostconfig_title=تحرير Hostconfig
 
 mass_enone=لم يتم تحديد أي إجراءات
 mass_enone2=لم يتم تحديد خدمات
+mass_enoallow=لا يمكن إيقاف <tt>$1</tt>
 mass_start=بدء الإجراءات
 mass_restart=إعادة تشغيل الإجراءات
 mass_stop=إجراءات التوقف
@@ -169,6 +170,7 @@ mass_disable=تعطيل الإجراء$1 في وقت التمهيد.
 mass_starting=جاري بدء الإجراء$1 ..
 mass_stopping=جاري إيقاف الإجراء$1 ..
 mass_failed=.. باءت بالفشل
+mass_skipped=.. تخطي
 mass_ok=.. فعله
 mass_ustart=بدء الخدمات
 mass_urestart=إعادة تشغيل الخدمات

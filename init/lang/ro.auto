@@ -162,6 +162,7 @@ edit_hostconfig_title=Editați Hostconfig
 
 mass_enone=Nu au fost selectate acțiuni
 mass_enone2=Nu au fost selectate servicii
+mass_enoallow=nu poate opri <tt>$1</tt>
 mass_start=Acțiuni de pornire
 mass_restart=Repornește acțiunile
 mass_stop=Oprirea acțiunilor
@@ -171,6 +172,7 @@ mass_disable=Dezactivarea acțiunii $1 la momentul de pornire.
 mass_starting=Acțiunea de pornire $1 ..
 mass_stopping=Acțiunea de oprire $1 ..
 mass_failed=.. a eșuat
+mass_skipped=.. sarit
 mass_ok=.. Terminat
 mass_ustart=Servicii de pornire
 mass_urestart=Repornirea serviciilor

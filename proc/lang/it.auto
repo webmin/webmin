@@ -1,2 +1,5 @@
-index_mem3=<b>Memoria reale:</b> $1 totale / $2 libero / $3 memorizzato nella cache
-index_burst=<b>Memoria esplosiva:</b> $1 totale
+index_memreal=Memoria reale:
+index_memswap=Spazio di scambio:
+index_memburst=Memoria espandibile:
+index_memtf=$1 totale / $2 gratis
+index_memtfc=$1 totale / $2 libero / $3 memorizzato nella cache

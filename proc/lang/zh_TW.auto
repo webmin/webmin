@@ -1,8 +1,9 @@
 index_zone=區
-index_mem2=<b>實際內存：</b>總計 $1 /空閒 $2
-index_mem3=<b>實際內存：</b>總計 $1 /空閒 $2 /已緩存 $3
-index_swap2=<b>交換空間：</b>總計 $1 /空閒 $2
-index_burst=<b>可突發內存：</b>總計 $1
+index_memreal=真實記憶：
+index_memswap=交換空間：
+index_memburst=突發記憶體：
+index_memtf=共 $1 / $2 免費
+index_memtfc=$1 總計 / $2 可用 / $3 已緩存
 index_loadname=平均CPU負載：
 index_loadnums=$1（1分鐘）， $2（5分鐘）， $3（15分鐘）
 index_cpuname=CPU類型：

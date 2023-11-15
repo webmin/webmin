@@ -1,5 +1,6 @@
 index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
+index_position=A mostrar as regras $1 a $2 de $3 
 index_evalid=ATENÇÃO! Sua configuração atual de tabelas de IP é inválida : $1 
 index_no_comment=
 index_crename=Renomear cadeia

@@ -1,4 +1,8 @@
+index_serviceonboot=Ano a začněte při startu
 index_boot=Synchronizovat při spuštění Webmin?
+index_tabsync2=Spusťte systémovou službu <tt>$1</tt> pro synchronizaci
 
 minute=Minuta
 second=Druhý
+
+error_serviceunknown=Neznámá služba : $1

@@ -278,7 +278,8 @@ descs_title=模塊標題
 descs_info=該頁面允許您為Usermin模塊指定備用標題，以覆蓋其標准說明。
 
 advanced_title=高級選項
-advanced_pass=使密碼可用於Usermin程序嗎？<br><font size=-1>（啟用會話身份驗證後不起作用）</font>
+advanced_pass_desc=使密碼可供 Usermin 程式使用嗎？
+advanced_pass_help=啟用會話身份驗證時不起作用
 
 blocked_title=被阻止的主機和用戶
 blocked_none=當前沒有主機或用戶被Usermin阻止。

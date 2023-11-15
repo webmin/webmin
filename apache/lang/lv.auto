@@ -501,6 +501,7 @@ core_actmod=Aktīvie moduļi
 core_option=Iespēja
 core_setdir=Iestatīts direktorijam
 core_merge=Apvienot ar vecāku
+core_eoptionsboth=Direktorija opcijas : visām aktīvajām opcijām ir jābūt iestatītām direktorijam vai sapludinātām ar vecāku, bet ne abām
 core_users=Tikai šie lietotāji
 core_groups=Tikai šīs grupas
 core_allusers=Visi derīgi lietotāji

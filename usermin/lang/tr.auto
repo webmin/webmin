@@ -486,7 +486,8 @@ descs_title=Modül Başlıkları
 descs_info=Bu sayfa, standart açıklamalarını geçersiz kılmak için Usermin modülleri için alternatif başlıklar belirtmenize olanak tanır.
 
 advanced_title=Gelişmiş seçenekler
-advanced_pass=Usermin programları için şifre kullanılabilir hale getirilsin mi? <br><font size=-1> (Oturum kimlik doğrulaması etkinleştirildiğinde çalışmaz) </font>
+advanced_pass_desc=Şifre Usermin programlarının kullanımına sunulsun mu?
+advanced_pass_help=Oturum kimlik doğrulaması etkinleştirildiğinde çalışmaz
 
 blocked_title=Engellenen Ana Bilgisayarlar ve Kullanıcılar
 blocked_none=Şu anda Usermin tarafından hiçbir ana bilgisayar veya kullanıcı engellenmemiştir.

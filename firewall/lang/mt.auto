@@ -1,6 +1,7 @@
 index_title=Firewall Linux IPTables
 index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
+index_position=Juri r-regoli $1 sa $2 minn $3 
 index_editing=Fajl tar-regoli $1 
 index_ecommand=Il-kmand $1 ma nstabx fis-sistema tiegħek. Webmin għandu bżonn dan il-kmand biex jiġu kkonfigurati IPtables.
 index_ekernel=Żball li ġara meta tiċċekkja l-konfigurazzjoni IPtables attwali tiegħek: $1 Dan jista 'jindika li l-għadma tiegħek ma tappoġġjax l-IPtables.

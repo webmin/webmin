@@ -96,6 +96,7 @@ edit_hostconfig_title=Hostconfig'i Düzenle
 
 mass_enone=Hiçbir eylem seçilmedi
 mass_enone2=Hiçbir hizmet seçilmedi
+mass_enoallow=<tt>$1</tt> durdurulamıyor
 mass_start=İşlemleri Başlatma
 mass_restart=Eylemleri Yeniden Başlatma
 mass_stop=Eylemleri Durdurma
@@ -105,6 +106,7 @@ mass_disable=$1 eylemini önyükleme zamanında devre dışı bırakma.
 mass_starting=İşlem başlatılıyor $1 ..
 mass_stopping=İşlem durduruluyor $1 ..
 mass_failed=.. arızalı
+mass_skipped=.. atlandı
 mass_ok=.. tamamlamak
 mass_ustart=Başlangıç Hizmetleri
 mass_urestart=Hizmetleri Yeniden Başlatma

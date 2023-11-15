@@ -1,6 +1,7 @@
 index_title=Linux IPTables vatrozid
 index_title_v=IPv4 vatrozid
 index_title_v6=IPv6 vatrozid
+index_position=Prikaz pravila $1 do $2 od $3
 index_editing=Datoteka s pravilima $1 
 index_ecommand=Naredba $1 nije pronađena u vašem sustavu. Webmin treba ovu naredbu za konfiguriranje IPtablesa.
 index_ekernel=Došlo je do pogreške prilikom provjere vaše trenutne konfiguracije IPtable-a: $1 To može značiti da vaše kernel ne podržava IPtables.

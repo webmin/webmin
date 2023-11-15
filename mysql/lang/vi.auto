@@ -865,6 +865,7 @@ root_epass1=Không nhập mật khẩu mới
 root_epass2=Mật khẩu không phù hợp
 root_none=Không mật khẩu!
 root_auto=Tự động (thường là <tt>root</tt>)
+root_socket=Người dùng MySQL <tt>$1</tt> đang sử dụng xác thực Unix socket nên không cần mật khẩu và không thể thay đổi mật khẩu.
 
 mysqlpass_err=Chế độ an toàn MySQL
 mysqlpass_esafecmd=Không tìm thấy lệnh $1 cần thiết để khởi động MySQL với xác thực bị tắt

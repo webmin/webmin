@@ -15,6 +15,7 @@ right_drivetemps=Vozne temperature
 right_driveerr=$1 pogreške!
 right_drivefailed=SMART provjera nije uspjela!
 right_cputype=$5, $8 jezgara
+right_cputype1=$5, $8 jezgra
 right_load=$1 (1 min) $2 (5 min) $3 (15 min)
 right_cpuuse=korištenje CPU-a
 right_cpustats=$1% korisnik, $2% kernel, $4% IO, $3% u praznom hodu

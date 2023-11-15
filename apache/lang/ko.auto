@@ -101,6 +101,7 @@ core_minor=부 버전 만
 core_maxxml=최대 XML 요청 본문 크기
 core_exml=잘못된 XML 요청 본문 크기
 core_eerrordir=오류 로그 파일의 디렉토리가 존재하지 않습니다
+core_eoptionsboth=디렉터리 옵션: 활성 옵션은 모두 디렉터리에 대해 설정 또는 상위 항목과 병합이어야 하지만 둘 다일 수는 없습니다
 core_fileowner=파일 소유자 일치
 core_filegroup=그룹 소유자 일치
 core_major=메이저 버전 만

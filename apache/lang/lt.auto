@@ -501,6 +501,7 @@ core_actmod=Aktyvūs moduliai
 core_option=Pasirinkimas
 core_setdir=Nustatykite katalogą
 core_merge=Sujungti su tėvu
+core_eoptionsboth=Katalogo parinktys : visos aktyvios parinktys turi būti nustatytos kaip katalogas arba sujungtos su pirminiu, bet ne abi
 core_users=Tik šie vartotojai
 core_groups=Tik šios grupės
 core_allusers=Visi tinkami vartotojai

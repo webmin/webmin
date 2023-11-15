@@ -501,6 +501,7 @@ core_actmod=Các mô-đun hoạt động
 core_option=Lựa chọn
 core_setdir=Đặt cho thư mục
 core_merge=Hợp nhất với cha mẹ
+core_eoptionsboth=Tùy chọn thư mục : Tất cả các tùy chọn hoạt động phải là Set For Directory hoặc Merged With Parent, nhưng không được cả hai
 core_users=Chỉ những người dùng này
 core_groups=Chỉ những nhóm này
 core_allusers=Tất cả người dùng hợp lệ
