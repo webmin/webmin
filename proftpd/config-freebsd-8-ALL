@@ -7,3 +7,4 @@ test_always=0
 test_manual=0
 start_cmd=/usr/local/etc/rc.d/proftpd forcestart
 stop_cmd=/usr/local/etc/rc.d/proftpd forcestop
+show_list=0

@@ -5,3 +5,4 @@ proftpd_path=/usr/local/sbin/proftpd
 test_config=1
 test_manual=0
 proftpd_conf=/usr/local/etc/proftpd.conf
+show_list=0

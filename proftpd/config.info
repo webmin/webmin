@@ -1,4 +1,5 @@
 line1=Configurable options,11
+show_list=Display virtual servers as,1,0-Icons,1-List
 test_config=Test config file before applying changes?,1,1-Yes,0-No
 test_manual=Test config file after manual changes?,1,1-Yes,0-No
 test_always=Test config file after other change?,1,1-Yes,0-No

@@ -9,3 +9,4 @@ start_cmd=systemctl start proftpd
 defines_file=/etc/sysconfig/proftpd
 defines_name=PROFTPD_OPTIONS
 pid_file=/run/proftpd/proftpd.pid
+show_list=0

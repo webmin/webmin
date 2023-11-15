@@ -170,19 +170,17 @@ print &ui_subheading($text{'index_virts'});
 
 if ($config{'show_list'} && scalar(@vname)) {
 	# as list for people with lots of servers
-	print "<table width=100% border=1>\n";
-	print "<tr $tb> <td><b>$text{'index_type'}</b></td> ",
-	      "<td><b>$text{'index_addr'}</b></td> ",
-	      "<td><b>$text{'index_name'}</b></td> </tr>\n";
+	print &ui_columns_start([ $text{'index_type'},
+				  $text{'index_addr'},
+				  $text{'index_name'} ], 100, 0);
 	for($i=0; $i<@vname; $i++) {
-		print "<tr $cb>\n";
-		print "<td><a href=\"$vlink[$i]\">",
-		      &html_escape($vname[$i]),"</a></td>\n";
-		print "<td>",&html_escape($vaddr[$i]),"</td>\n";
-		print "<td>",&html_escape($vserv[$i]),"</td>\n";
-		print "</tr>\n";
+		print &ui_columns_row([
+			&ui_link($vlink[$i], &html_escape($vname[$i])),
+			&html_escape($vaddr[$i]),
+			&html_escape($vserv[$i]),
+			]);
 		}
-	print "</table>\n";
+	print &ui_columns_end();
 	}
 else {
 	# as icons for niceness
@@ -204,21 +202,23 @@ else {
 		}
 	print "</table>\n";
 	}
+print "<p>\n";
 
-print "<form action=create_virt.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'index_create'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
-print "<tr> <td><b>$text{'index_addr'}</b></td>\n";
-print "<td><input name=addr size=25></td> </tr>\n";
-print "<tr> <td><b>$text{'index_port'}</b></td>\n";
-print "<td>",&opt_input(undef, "Port", $text{'default'}, 6),"</td> </tr>\n";
-print "<tr> <td><b>$text{'index_name'}</b></td>\n";
-print "<td>",&opt_input(undef, "ServerName", $text{'default'}, 25);
-print "&nbsp;&nbsp;\n";
-print "<input type=submit value=\"$text{'create'}\"></td> </tr>\n";
-print "</table></td></tr></table>\n";
-print "</form>\n";
+# Form to create a virtual FTP server
+print &ui_form_start("create_virt.cgi", "post");
+print &ui_table_start($text{'index_create'}, undef, 2);
+
+print &ui_table_row($text{'index_addr'},
+	&ui_textbox("addr", undef, 25));
+
+print &ui_table_row($text{'index_port'},
+	&opt_input(undef, "Port", $text{'default'}, 6));
+
+print &ui_table_row($text{'index_name'},
+	&opt_input(undef, "ServerName", $text{'default'}, 25));
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 # Find out how ProFTPd is running
 ($inet, $inet_mod) = &running_under_inetd();

@@ -7,3 +7,4 @@ test_always=0
 test_manual=0
 defines_file=/etc/sysconfig/proftpd
 defines_name=PROFTPD_OPTIONS
+show_list=0
