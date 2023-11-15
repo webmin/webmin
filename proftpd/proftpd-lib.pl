@@ -372,12 +372,7 @@ for($i=0; $i<@chname; $i++) {
 # opt_input(value, name, default, size, [units])
 sub opt_input
 {
-return sprintf "<input type=radio name=$_[1]_def value=1 %s> $_[2]\n".
-	       "<input type=radio name=$_[1]_def value=0 %s>\n".
-	       "<input name=$_[1] size=$_[3] value='%s'> %s\n",
-	defined($_[0]) ? "" : "checked",
-	defined($_[0]) ? "checked" : "",
-	$_[0], $_[4];
+return &ui_opt_textbox($_[1], $_[0], $_[3], $_[2]).($_[4] ? " ".$_[4] : "");
 }
 
 # parse_opt(name, regexp, error)
@@ -399,11 +394,8 @@ sub choice_input
 local($i, $rv);
 for($i=3; $i<@_; $i++) {
 	$_[$i] =~ /^([^,]*),(.*)$/;
-	$rv .= sprintf "<input type=radio name=$_[1] value=\"$2\" %s> $1\n",
-		lc($2) eq lc($_[0]) ||
-		lc($2) eq 'on' && lc($_[0]) eq 'yes' ||
-		lc($2) eq 'off' && lc($_[0]) eq 'no' ||
-		!defined($_[0]) && lc($2) eq lc($_[2]) ? "checked" : "";
+	$rv .= &ui_oneradio($_[1], $2, $1, lc($2) eq lc($_[0]) ||
+				!defined($_[0]) && lc($2) eq lc($_[2]))."\n";
 	}
 return $rv;
 }
@@ -415,9 +407,8 @@ sub choice_input_vert
 local($i, $rv);
 for($i=3; $i<@_; $i++) {
 	$_[$i] =~ /^([^,]*),(.*)$/;
-	$rv .= sprintf "<input type=radio name=$_[1] value=\"$2\" %s> $1<br>\n",
-		lc($2) eq lc($_[0]) || !defined($_[0]) &&
-				       lc($2) eq lc($_[2]) ? "checked" : "";
+	$rv .= &ui_oneradio($_[1], $2, $1, lc($2) eq lc($_[0]) ||
+			    !defined($_[0]) && lc($2) eq lc($_[2]))."<br>\n";
 	}
 return $rv;
 }
@@ -432,15 +423,16 @@ else { return ( [ $in{$_[0]} ] ); }
 # select_input(value, name, default, [choice]+)
 sub select_input
 {
-local($i, $rv);
-$rv = "<select name=\"$_[1]\">\n";
+my($i, @sel);
+my $selv;
 for($i=3; $i<@_; $i++) {
 	$_[$i] =~ /^([^,]*),(.*)$/;
-	$rv .= sprintf "<option value=\"$2\" %s>$1</option>\n",
-		lc($2) eq lc($_[0]) || !defined($_[0]) && lc($2) eq lc($_[2]) ? "selected" : "";
+	if (lc($2) eq lc($_[0]) || !defined($_[0]) && lc($2) eq lc($_[2])) {
+		$selv = $2;
+		}
+	push(@sel, [ $2, $1 || "&nbsp;" ]);
 	}
-$rv .= "</select>\n";
-return $rv;
+return &ui_select($_[1], $selv, \@sel, 1);
 }
 
 # parse_choice(name, default)
