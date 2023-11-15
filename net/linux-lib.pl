@@ -364,7 +364,7 @@ else {
 	&error("Both the ifconfig and ip commands are missing");
 	}
 my $out = &backquote_logged("cd / ; $cmd 2>&1");
-if ($?) { &error($out); }
+if ($?) { &error("$cmd failed : $out"); }
 
 # Apply ethernet address
 if ($a->{'ether'} && !&use_ifup_command($a) && &has_command("ifconfig")) {
@@ -405,7 +405,7 @@ if ($a->{'virtual'} eq '' && &has_command("ifconfig")) {
 			  quotemeta($a->{'address6'}->[$i])."/".
 			  quotemeta($a->{'netmask6'}->[$i])." 2>&1";
 		$out = &backquote_logged($cmd);
-		&error("Failed to add IPv6 address : $out") if ($?);
+		&error("Failed to add IPv6 address with $cmd : $out") if ($?);
 		}
 	}
 elsif ($a->{'virtual'} eq '' && &has_command("ip")) {
@@ -428,7 +428,7 @@ elsif ($a->{'virtual'} eq '' && &has_command("ip")) {
 			  quotemeta($a->{'netmask6'}->[$i])." dev ".
 			  quotemeta($a->{'name'});
 		$out = &backquote_logged("$cmd 2>&1");
-		&error("Failed to add IPv6 address : $out") if ($?);
+		&error("Failed to add IPv6 address with $cmd : $out") if ($?);
 		}
 	}
 
