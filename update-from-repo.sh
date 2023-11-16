@@ -3,7 +3,7 @@
 # Update webmin/usermin to the latest develop version  from GitHub repo
 # inspired by authentic-theme/theme-update.sh script, thanks @iliajie
 #
-VERS="1.6.9, 2020-06-18"
+VERS="1.6.10, 2023-11-16"
 #
 COPY=" Kay Marquardt <kay@rrr.de>         https://github.com/gnadelwartz"
 #############################################################################
@@ -285,7 +285,7 @@ fi
         if [[ "$1" == *":"* ]] && [[ "$1" != *"latest"* ]]; then
           RRELEASE=${1##*:}
         elif [[ "${CURL}" != "" ]] ; then
-          RRELEASE=`${CURL} -s -L https://github.com/${REPO}/blob/master/version  | sed -n '/id="LC1"/s/.*">\([^<]*\).*/\1/p'`
+          RRELEASE="$(${CURL} -s -L https://raw.githubusercontent.com/${REPO}/master/version)"
         else
           echo -e "${RED}Error: Command \`curl\` is not installed or not in the \`PATH\`.${NC} try with -release:1.881"
           exit 3
