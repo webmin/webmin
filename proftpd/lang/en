@@ -27,6 +27,8 @@ index_global=Global Configuration
 index_create=Create virtual server
 index_version=ProFTPd version $1
 index_proftpd=ProFTPd
+index_dlheader=Add Options
+index_dlmode=Add options for
 
 efailed=Failed to save $1
 
