@@ -287,7 +287,7 @@ if (&has_command("ip")) {
 		}
 
 	# Build ip command to add the new IP
-	if ($readd) {
+	if ($readd && $a->{'address'}) {
 		$cmd .= "ip addr add ".quotemeta($a->{'address'});
 		if ($a->{'netmask'}) {
 			$cmd .= "/".&mask_to_prefix($a->{'netmask'});
