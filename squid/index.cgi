@@ -45,10 +45,10 @@ if ($ver =~ /version\s+(\S+)/i) {
 	$ver = $1;
 	}
 my $squid_version;
-if ($ver =~ /Version\s+([2-5]\.[0-9]+)/ ||
+if ($ver =~ /Version\s+([2-6]\.[0-9]+)/ ||
     $ver =~ /^(1\.1)\.\d+/ ||
     $ver =~ /^(1)\.NOVM/ ||
-    $ver =~ /^([2-5]\.[0-9]+)/) {
+    $ver =~ /^([2-6]\.[0-9]+)/) {
 	# Save version number
 	open(VERSION, ">$module_config_directory/version");
 	print VERSION $1,"\n";
@@ -57,7 +57,7 @@ if ($ver =~ /Version\s+([2-5]\.[0-9]+)/ ||
 	}
 else {
 	&ui_print_header(undef, $text{'index_header'}, "", undef, 1, 1);
-	print &text('index_msgnosupported2', "<tt>1.1</tt>", "<tt>3.4</tt>"),
+	print &text('index_msgnosupported2', "<tt>1</tt>", "<tt>6</tt>"),
 	      "<p>\n";
 	print &text('index_squidver', "$config{'squid_path'} -v"),"\n";
 	print "<pre>$fullver</pre>\n";
