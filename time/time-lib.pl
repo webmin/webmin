@@ -205,7 +205,7 @@ my ($second, $minute, $hour, $date, $month, $year) = @_;
 $month++;
 $year += 1900;
 my $format = "--set --date=".
-		quotemeta("$month/$date/$year $hour:$minute:$second");
+		quotemeta("$year-$month-$date $hour:$minute:$second");
 my $flags = &get_hwclock_flags();
 my $out = &backquote_logged("hwclock $flags $format 2>&1");
 return $? ? $out : undef;
