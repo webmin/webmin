@@ -63,7 +63,7 @@ if ($r) {
 # Create the needed DNS record
 $r = { 'name' => "_acme-challenge.".$dname.".",
        'type' => 'TXT',
-       'ttl' => 5,
+       'ttl' => 30,
        'values' => [ $val ] };
 if ($wapi) {
 	&virtual_server::create_dns_record($recs, $file, $r);
