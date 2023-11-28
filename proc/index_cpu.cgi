@@ -19,7 +19,8 @@ if (defined(&get_cpu_info)) {
 				$cpu .= "($c[3] MHz)\n";
 				}
 			if ($c[7]) {
-				$cpu .= ", $c[7] cores\n";
+				$cpu .= ", ".&text($c[7] > 1 ? 'index_cores' :
+							'index_core', $c[7]);
 				}
 			print &ui_table_row($text{'index_cpuname'}, $cpu);
 			}

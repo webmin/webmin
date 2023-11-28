@@ -17,6 +17,8 @@ index_loadname=CPU load averages:
 index_loadnums=$1 (1 mins) , $2 (5 mins) , $3 (15 mins)
 index_cpuname=CPU type:
 index_inzone=In zone $1
+index_core=$1 core
+index_cores=$1 cores
 
 pid=ID
 owner=Owner
