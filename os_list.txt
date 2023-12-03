@@ -132,6 +132,9 @@ Devuan Linux			$1	debian-linux	8.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_ve
 Devuan Linux			$1	debian-linux	9.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(ascii)/i
 Devuan Linux			$1	debian-linux	10.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(beowulf)/i
 Devuan Linux			$1	debian-linux	10.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(ceres)/i
+Devuan Linux			$1	debian-linux	11.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(chimaera)/i
+Devuan Linux			$1	debian-linux	12.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(daedalus)/i
+Devuan Linux			$1	debian-linux	13.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(excalibur)/i
 Raspbian Linux			$1	debian-linux	$1	`cat /etc/os-release 2>/dev/null` =~ /Raspbian\s+GNU\/Linux\s+(\S+)/
 Kali GNU/Linux Rolling	$1	debian-linux	$1+5.0	$etc_issue =~ /Kali/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION=\"([0-9\.]+)\"/
 Parrot OS				$1	debian-linux	$1+5.0	$etc_issue =~ /Parrot/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION=\"([0-9\.]+).*\"/
