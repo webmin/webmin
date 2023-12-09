@@ -1848,10 +1848,6 @@ sub create_slave_zone
 {
 my $parent = &get_config_parent();
 my $conf = $parent->{'members'};
-my $opts = &find("options", $conf);
-if (!$opts) {
-	return 1;
-	}
 
 # Check if exists in the view
 my @zones;
@@ -1945,9 +1941,6 @@ my ($name, $slaves, $viewname, $file, $records) = @_;
 my $parent = &get_config_parent();
 my $conf = $parent->{'members'};
 my $opts = &find("options", $conf);
-if (!$opts) {
-	return 1;
-	}
 
 # Check if exists in the view
 my @zones;
@@ -1989,7 +1982,7 @@ foreach my $s (@$slaves) {
 	push(@transfer, { 'name' => $s });
 	}
 if (@transfer) {
-	my $gat = &find("allow-transfer", $opts->{'members'});
+	my $gat = $opts ? &find("allow-transfer", $opts->{'members'}) : undef;
 	if ($gat) {
 		push(@transfer, @{$gat->{'members'}});
 		}
