@@ -299,20 +299,23 @@ else {
 		@snames = grep { !$done{$_->[0]}++ } @snames;
 		if (@snames) {
 			@snames = sort { $a->[0] cmp $b->[0] } @snames;
-			push(@opts, [ 0, $text{'ssl_webroot0'} ]);
-			push(@opts, [ 1, $text{'ssl_webroot1'},
+			push(@opts, [ 0, $text{'ssl_letsmode0'} ]);
+			push(@opts, [ 1, $text{'ssl_letsmode1'},
 				      &ui_select("vhost", undef, \@snames) ]);
 			}
 		else {
 			$webroot ||= &apache::find_directive("DocumentRoot", $conf);
 			}
 		}
-	push(@opts, [ 2, $text{'ssl_webroot2'},
+	push(@opts, [ 2, $text{'ssl_letsmode2'},
 		      &ui_textbox("webroot", $webroot, 40) ]);
-	if ($letsencrypt_cmd) {
-		push(@opts, [ 3, $text{'ssl_webroot3'} ]);
+	if ($letsencrypt_cmd && &foreign_installed("bind8")) {
+		push(@opts, [ 3, $text{'ssl_letsmode3'} ]);
 		}
-	print &ui_table_row($text{'ssl_webroot'},
+	if ($letsencrypt_cmd) {
+		push(@opts, [ 4, $text{'ssl_letsmode4'} ]);
+		}
+	print &ui_table_row($text{'ssl_letsmode'},
 		&ui_radio_table("webroot_mode", $mode, \@opts));
 
 	# Install in Webmin now?

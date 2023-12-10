@@ -139,6 +139,9 @@ elsif ($mode eq "dns") {
 				       "sub-domains exist on this system");
 		}
 	}
+elsif ($mode eq "certbot") {
+	# XXX what to cehck?
+	}
 else {
 	return (0, "Unknown mode $mode");
 	}
@@ -203,6 +206,14 @@ if ($letsencrypt_cmd) {
 	$dir =~ s/\/[^\/]+$//;
 	$size ||= 2048;
 	my $out;
+	my $common_flags = " --duplicate".
+			   " --force-renewal".
+			   " --non-interactive".
+			   " --agree-tos".
+			   " --config ".quotemeta($temp)."".
+			   " --rsa-key-size ".quotemeta($size).
+			   " --cert-name ".quotemeta($doms[0]).
+			   ($staging ? " --test-cert" : "");
 	if ($mode eq "web") {
 		# Webserver based validation
 		&clean_environment();
@@ -211,18 +222,11 @@ if ($letsencrypt_cmd) {
 			" -a webroot ".
 			join("", map { " -d ".quotemeta($_) } @doms).
 			" --webroot-path ".quotemeta($webroot).
-			" --duplicate".
-			" --force-renewal".
+			$common_flags.
 			$reuse_flags.
 			$old_flags.
 			$server_flags.
-			" --non-interactive".
-			" --agree-tos".
-			" --config ".quotemeta($temp)."".
 			$new_flags.
-			" --rsa-key-size ".quotemeta($size).
-			" --cert-name ".quotemeta($doms[0]).
-			($staging ? " --test-cert" : "").
 			" 2>&1)");
 		&reset_environment();
 		}
@@ -236,18 +240,26 @@ if ($letsencrypt_cmd) {
 			" --preferred-challenges=dns".
 			" --manual-auth-hook $dns_hook".
 			" --manual-cleanup-hook $cleanup_hook".
-			" --duplicate".
-			" --force-renewal".
+			$common_flags.
 			$reuse_flags.
 			$old_flags.
 			$server_flags.
-			" --non-interactive".
-			" --agree-tos".
-			" --config ".quotemeta($temp)."".
 			$new_flags.
-			" --rsa-key-size $size".
-			" --cert-name ".quotemeta($doms[0]).
-			($staging ? " --test-cert" : "").
+			" 2>&1)");
+		&reset_environment();
+		}
+	elsif ($mode eq "certbot") {
+		# Use certbot's own webserver
+		&clean_environment();
+		$out = &backquote_logged(
+			"cd $dir && (echo A | $letsencrypt_cmd certonly".
+			" --standalone".
+			join("", map { " -d ".quotemeta($_) } @doms).
+			$common_flags.
+			$reuse_flags.
+			$old_flags.
+			$server_flags.
+			$new_flags.
 			" 2>&1)");
 		&reset_environment();
 		}
@@ -311,9 +323,9 @@ if ($letsencrypt_cmd) {
 
 	@rv = (1, $cert, $key, $chain);
 	}
-elsif ($mode eq "dns") {
-	# Python client doesn't support DNS
-	@rv = (0, $text{'letsencrypt_eacmedns'});
+elsif ($mode eq "dns" || $mode eq "certbot") {
+	# Python client doesn't support DNS or Certbot
+	@rv = (0, $text{'letsencrypt_eacme'.$mode});
 	}
 else {
 	# Fall back to local Python client

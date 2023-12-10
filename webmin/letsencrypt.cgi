@@ -36,6 +36,10 @@ if ($in{'webroot_mode'} == 3) {
 	# Validation via DNS
 	$mode = "dns";
 	}
+elsif ($in{'webroot_mode'} == 4) {
+	# Validation via Certbot webserver
+	$mode = "certbot";
+	}
 elsif ($in{'webroot_mode'} == 2) {
 	# Some directory
 	$in{'webroot'} =~ /^\/\S+/ && -d $in{'webroot'} ||
@@ -79,8 +83,9 @@ else {
 	# Request the cert
 	&ui_print_unbuffered_header(undef, $text{'letsencrypt_title'}, "");
 
-	print &text($mode eq 'dns' ? 'letsencrypt_doingdns'
-				   : 'letsencrypt_doing',
+	print &text($mode eq 'dns' ? 'letsencrypt_doingdns' :
+		    $mode eq 'certbot' ? 'letsencrypt_doingcertbot' :
+					 'letsencrypt_doing',
 		    "<tt>".&html_escape(join(", ", @doms))."</tt>",
 		    "<tt>".&html_escape($webroot)."</tt>"),"<p>\n";
 	my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(\@doms, $webroot, undef, $size, $mode, $in{'staging'});
