@@ -431,10 +431,6 @@ OpenDarwin			6.6.1	macos		6.0
 OpenDarwin			6.6.2	macos		6.0
 OpenDarwin			7.2.1	macos		7.0
 
-# Webmin running under Windows
-Cygwin				1.1	cygwin		1.1
-Cygwin				1.3	cygwin		1.3
-
 # Sun's desktop Linux and Solaris systems
 Sun Java Desktop System		1.0 (Linux)	suse-linux	9.1	`cat /etc/SuSE-release 2>/dev/null` =~ /Java Desktop System.*\nVERSION = 1\.0/i
 Sun Java Desktop System		2.0 (Linux)	suse-linux	9.2	`cat /etc/SuSE-release 2>/dev/null` =~ /Java Desktop System.*\nVERSION = 2\.0/i
@@ -447,13 +443,6 @@ Synology DSM		$1	syno-linux	$1	`cat /etc.defaults/VERSION 2>/dev/null` =~ /produ
 # All other Linux variants, identified by kernel version
 Generic Linux			$1	generic-linux	$1	`uname -r` =~ /^([0-9]+\.[0-9+])\./
 
-# Windows
-Windows				XP	windows		xp	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /XP/
-Windows				2000	windows		2000	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /2000/
-Windows				2003	windows		2003	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /2003|\s5\.2/
-Windows				Vista	windows		Vista	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s6\.0\.6001/
-Windows				2008	windows		2008	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s6\.0\.6002/
-Windows				7	windows		7	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s6\.0\.76[0-9][0-9]/
-Windows				8	windows		8	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s6\.2\.92[0-9][0-9]/
-Windows				8.1	windows		8.1	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s6\.3\.9[0-9]00/
-Windows				10	windows		10	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /\s10\.0\.[0-9][0-9][0-9][0-9]/
+# Webmin running under Windows using compatibility layer
+Cygwin				1.1	cygwin		1.1
+Cygwin				1.3	cygwin		1.3
