@@ -313,7 +313,7 @@ local $ssh = &has_command("ssh");
 local $r = $ssh && $rsh eq $ssh ? 1 :
 	   $rsh eq $ftp_cmd ? 3 :
 	   $rsh ? 2 : 0;
-local @opts = ( [ 0, $text{'dump_rsh0'} ],
+local @opts = ( $r == 0 ? ( [ 0, $text{'dump_rsh0'} ] ) : ( ),
 		[ 1, $text{'dump_rsh1'} ],
 		[ 3, $text{'dump_rsh3'} ] );
 if ($r == 2) {

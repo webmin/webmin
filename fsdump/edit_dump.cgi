@@ -51,6 +51,7 @@ else {
 		}
 	else {
 		&ui_print_header(undef, $text{'edit_title2'}, "", "create");
+		$dump->{'rsh'} = &has_command("ssh") if (!$dump->{'host'});
 		}
 	}
 
