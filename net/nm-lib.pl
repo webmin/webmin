@@ -232,7 +232,7 @@ my @ns = $iface->{'nameserver'} ? @{$iface->{'nameserver'}} : ();
 		@ns ? join(" ", @ns) : undef);
 my @sr = $iface->{'search'} ? @{$iface->{'search'}} : ();
 &save_nm_config($cfg, "ipv4", "dns-search",
-		@sr ? join(";", @sr) : undef);
+		@sr ? join(" ", @sr) : undef);
 
 # Update MAC address
 &save_nm_config($cfg, "ethernet", "cloned-mac-address",
