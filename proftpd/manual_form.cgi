@@ -107,25 +107,28 @@ else {
 	undef, undef, undef, undef, &restart_button());
 
 print &text('manual_header', "<tt>$file</tt>"),"<p>\n";
-print "<form action=manual_save.cgi method=post enctype=multipart/form-data>\n";
+print &ui_form_start("manual_save.cgi", "form-data");
 foreach $h ('virt', 'idx', 'file', 'limit', 'anon', 'global') {
 	if (defined($in{$h})) {
-		print "<input type=hidden name=$h value='$in{$h}'>\n";
+		print &ui_hidden($h, $in{$h});
 		push(@args, "$h=$in{$h}");
 		}
 	}
 $args = join('&', @args);
 
-print "<textarea rows=15 cols=80 name=directives>\n";
 $lref = &read_file_lines($file);
 if (!defined($start)) {
 	$start = 0;
 	$end = @$lref - 1;
 	}
 for($i=$start; $i<=$end; $i++) {
-	print &html_escape($lref->[$i]),"\n";
+	$data .= $lref->[$i]."\n";
 	}
-print "</textarea><br><input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_table_start(undef, undef, 2);
+print &ui_table_row(undef,
+	&ui_textarea("directives", $data, 20, 80), 2);
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("$return?$args", $rmsg);
 
