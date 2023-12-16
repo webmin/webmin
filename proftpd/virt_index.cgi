@@ -46,32 +46,21 @@ if (@dir) {
 		}
 	&icons_table(\@links, \@titles, \@icons, 3);
 	}
+print "<p>\n";
 
-print "<table width=100%><tr><td>\n";
+print &ui_form_start("create_dirlimit.cgi", "post");
+print &ui_hidden("virt", $in{'virt'});
+print &ui_table_start($text{'index_dlheader'}, undef, 2);
 
-print "<form action=create_dir.cgi>\n";
-print "<input type=hidden name=virt value='$in{'virt'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'virt_adddir'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
-print "<tr> <td><b>$text{'virt_path'}</b></td>\n";
-print "<td><input name=dir size=30>\n";
-print "<input type=submit value=\"$text{'create'}\"></td> </tr>\n";
-print "</table></td></tr></table></form>\n";
+print &ui_table_row($text{'index_dlmode'},
+	&ui_radio_table("mode", 0,
+		[ [ 0, $text{'virt_path'},
+		    &ui_textbox("dir", undef, 50) ],
+		  [ 1, $text{'virt_cmds'},
+		    &ui_textbox("cmd", undef, 30) ] ]));
 
-print "</td><td>\n";
-
-print "<form action=create_limit.cgi>\n";
-print "<input type=hidden name=virt value='$in{'virt'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'virt_addlimit'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
-print "<tr> <td><b>$text{'virt_cmds'}</b></td>\n";
-print "<td><input name=cmd size=20>\n";
-print "<input type=submit value=\"$text{'create'}\"></td> </tr>\n";
-print "</table></td></tr></table></form>\n";
-
-print "</td></tr></table>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

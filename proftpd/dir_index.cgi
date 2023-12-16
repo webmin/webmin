@@ -48,18 +48,16 @@ if (@lim) {
 	&icons_table(\@links, \@titles, \@icons, 3);
 	}
 
-print "<form action=create_limit.cgi>\n";
-print "<input type=hidden name=virt value='$in{'virt'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=anon value='$in{'anon'}'>\n";
-print "<input type=hidden name=global value='$in{'global'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'virt_addlimit'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
-print "<tr> <td><b>$text{'virt_cmds'}</b></td>\n";
-print "<td><input name=cmd size=20>\n";
-print "<input type=submit value=\"$text{'create'}\"></td> </tr>\n";
-print "</table></td></tr></table></form>\n";
+print &ui_form_start("create_limit.cgi");
+print &ui_hidden("virt", $in{'virt'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("anon", $in{'anon'});
+print &ui_hidden("global", $in{'global'});
+print &ui_table_start($text{'virt_addlimit'}, undef, 2);
+print &ui_table_row($text{'virt_cmds'},
+	&ui_textbox("cmd", undef, 30));
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 if ($in{'global'}) {
 	&ui_print_footer("", $text{'index_return'});
