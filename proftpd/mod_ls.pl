@@ -17,25 +17,16 @@ sub edit_DirFakeGroup
 {
 local $rv;
 local $w = $_[0]->{'words'}->[0];
-$rv .= sprintf "<input type=radio name=DirFakeGroup value=off %s> %s\n",
-	lc($w) eq 'off' ? "checked" : "", $text{'no'};
-$rv .= sprintf "<input type=radio name=DirFakeGroup value='' %s> %s\n",
-	lc($w) ? "" : "checked", $text{'default'};
-$rv .= sprintf "<input type=radio name=DirFakeGroup value=on %s> %s\n",
-	lc($w) eq 'on' ? "checked" : "", $text{'mod_ls_fakeasgroup'};
-
-$rv .= "<table border cellpadding=0 cellspacing=0><tr><td>";
-local $a = $_[0]->{'words'}->[1];
-$rv .= sprintf "<input type=radio name=DirFakeGroup_m value=0 %s> %s\n",
-	$a ? "" : "checked", "<tt>ftp</tt>";
-$rv .= sprintf "<input type=radio name=DirFakeGroup_m value=1 %s> %s\n",
-	$a eq "~" ? "checked" : "", $text{'mod_ls_fakesamegroup'};
-$rv .= sprintf "<input type=radio name=DirFakeGroup_m value=2 %s>\n",
-	$a eq "~" || !$a ? "" : "checked";
-$rv .= sprintf "<input name=DirFakeGroup_a size=12 value='%s'>\n",
-	$a eq "~" ? "" : $a;
-$rv .= "</td></tr></table>\n";
-
+$rv .= &ui_radio("DirFakeGroup", lc($w),
+		 [ [ 'off', $text{'no'} ],
+		   [ '', $text{'default'} ],
+		   [ 'on', $text{'mod_ls_fakeasgroup'} ] ]);
+my $a = $_[0]->{'words'}->[1];
+$rv .= &ui_radio("DirFakeGroup_m",
+		 $a eq "~" ? 1 : $a eq "" ? 0 : 2,
+		 [ [ 0, "<tt>ftp</tt>" ],
+		   [ 1, $text{'mod_ls_fakesamegroup'} ],
+		   [ 2, &ui_textbox("DirFakeGroup_a", $a eq "~" ? "" : $a, 12) ] ]);
 return (2, $text{'mod_ls_fakegroup'}, $rv);
 }
 sub save_DirFakeGroup
@@ -59,27 +50,18 @@ else {
 
 sub edit_DirFakeUser
 {
-local $rv;
-local $w = $_[0]->{'words'}->[0];
-$rv .= sprintf "<input type=radio name=DirFakeUser value=off %s> %s\n",
-	lc($w) eq 'off' ? "checked" : "", $text{'no'};
-$rv .= sprintf "<input type=radio name=DirFakeUser value='' %s> %s\n",
-	lc($w) ? "" : "checked", $text{'default'};
-$rv .= sprintf "<input type=radio name=DirFakeUser value=on %s> %s\n",
-	lc($w) eq 'on' ? "checked" : "", $text{'mod_ls_fakeasuser'};
-
-$rv .= "<table border cellpadding=0 cellspacing=0><tr><td>";
-local $a = $_[0]->{'words'}->[1];
-$rv .= sprintf "<input type=radio name=DirFakeUser_m value=0 %s> %s\n",
-	$a ? "" : "checked", "<tt>ftp</tt>";
-$rv .= sprintf "<input type=radio name=DirFakeUser_m value=1 %s> %s\n",
-	$a eq "~" ? "checked" : "", $text{'mod_ls_fakesameuser'};
-$rv .= sprintf "<input type=radio name=DirFakeUser_m value=2 %s>\n",
-	$a eq "~" || !$a ? "" : "checked";
-$rv .= sprintf "<input name=DirFakeUser_a size=12 value='%s'>\n",
-	$a eq "~" ? "" : $a;
-$rv .= "</td></tr></table>\n";
-
+my $rv;
+my $w = $_[0]->{'words'}->[0];
+$rv .= &ui_radio("DirFakeUser", lc($w),
+		 [ [ 'off', $text{'no'} ],
+		   [ '', $text{'default'} ],
+		   [ 'on', $text{'mod_ls_fakeasuser'} ] ]);
+my $a = $_[0]->{'words'}->[1];
+$rv .= &ui_radio("DirFakeUser_m",
+		 $a eq "~" ? 1 : $a eq "" ? 0 : 2,
+		 [ [ 0, "<tt>ftp</tt>" ],
+		   [ 1, $text{'mod_ls_fakesameuser'} ],
+		   [ 2, &ui_textbox("DirFakeUser_a", $a eq "~" ? "" : $a, 12) ] ]);
 return (2, $text{'mod_ls_fakeuser'}, $rv);
 }
 sub save_DirFakeUser
