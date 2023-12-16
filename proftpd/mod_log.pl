@@ -23,25 +23,25 @@ return &parse_opt("SystemLog", '^\/\S+$', $text{'mod_log_esyslog'});
 
 sub edit_ExtendedLog
 {
-local $rv = "<table border>\n".
-	    "<tr $tb> <td><b>$text{'mod_log_file'}</b></td> ".
-	    "<td><b>$text{'mod_log_cmd'}</b></td> ".
-	    "<td><b>$text{'mod_log_nick'}</b></td> </tr>\n";
-local $i = 0;
-foreach $l (@{$_[0]}, { }) {
-	local @w = @{$l->{'words'}};
-	$rv .= "<tr $cb>\n";
-	$rv .= "<td><input name=ExtendedLog_t_$i size=20 value='$w[0]'></td>\n";
-	$rv .= sprintf "<td><input name=ExtendedLog_cd_$i type=radio value=1 %s> %s\n", $w[1] && $w[2] ? "" : "checked", $text{'mod_log_all'};
-	$rv .= sprintf "<input name=ExtendedLog_cd_$i type=radio value=0 %s>\n", $w[1] && $w[2] ? "checked" : "";
-	$rv .= sprintf "<input name=ExtendedLog_c_$i size=15 value='%s'></td>\n", $w[1] && $w[2] ? join(" ", split(/,/, $w[1])) : "";
-	$rv .= sprintf "<td><input name=ExtendedLog_fd_$i type=radio value=1 %s> %s\n", $w[2] || $w[1] ? "" : "checked", $text{'default'};
-	$rv .= sprintf "<input name=ExtendedLog_fd_$i type=radio value=0 %s>\n", $w[2] || $w[1] ? "checked" : "";
-	$rv .= sprintf "<input name=ExtendedLog_f_$i size=15 value='%s'></td>\n", $w[2] ? $w[2] : $w[1];
-	$rv .= "</tr>\n";
+my $rv = &ui_columns_start([ $text{'mod_log_file'},
+			     $text{'mod_log_cmd'},
+			     $text{'mod_log_nick'} ]);
+my $i = 0;
+foreach my $l (@{$_[0]}, { }) {
+	my @w = @{$l->{'words'}};
+	my $elc = $w[1] && $w[2] ? join(" ", split(/,/, $w[1])) : "";
+	$rv .= &ui_columns_row([
+		&ui_textbox("ExtendedLog_t_$i", $w[0], 20),
+		&ui_radio("ExtendedLog_cd_$i", $elc ? 0 : 1,
+			  [ [ 1, $text{'mod_log_all'} ],
+			    [ 0, &ui_textbox("ExtendedLog_c_$i", $elc, 15) ] ]),
+		&ui_radio("ExtendedLog_fd_$i", $w[2] || $w[1] ? 0 : 1,
+			  [ [ 1, $text{'default'} ],
+			    [ 0, &ui_textbox("ExtendedLog_f_$i", $w[2] || $w[1], 15) ] ]),
+		]);
 	$i++;
 	}
-$rv .= "</table>\n";
+$rv .= &ui_columns_end();
 return (2, $text{'mod_log_extended'}, $rv);
 }
 sub save_ExtendedLog
