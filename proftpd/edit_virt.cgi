@@ -11,16 +11,14 @@ $desc = $in{'virt'} eq '' ? $text{'virt_header2'} :
 &ui_print_header($desc, $text{"type_$in{'type'}"}, "",
 	undef, undef, undef, undef, &restart_button());
 
-print "<form action=save_virt.cgi method=post>\n";
-print "<input type=hidden name=type value=$in{'type'}>\n";
-print "<input type=hidden name=virt value=$in{'virt'}>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>",&text('virt_header3', $text{"type_$in{'type'}"}),
-      "</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_virt.cgi", "post");
+print &ui_hidden("type", $in{'type'});
+print &ui_hidden("virt", $in{'virt'});
+print &ui_table_start(&text('virt_header3', $text{"type_$in{'type'}"}),
+		      "width=100%", 4);
 &generate_inputs(\@dirs, $conf);
-print "</table></td> </tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("virt_index.cgi?virt=$in{'virt'}", $text{'virt_return'},
 	"", $text{'index_return'});

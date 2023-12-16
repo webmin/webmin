@@ -13,16 +13,14 @@ $desc = $in{'virt'} eq '' ? $text{'anon_header4'} :
 &ui_print_header($desc, $text{"type_$in{'type'}"}, "",
 	undef, undef, undef, undef, &restart_button());
 
-print "<form action=save_anon.cgi method=post>\n";
-print "<input type=hidden name=type value=$in{'type'}>\n";
-print "<input type=hidden name=virt value=$in{'virt'}>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>",&text('virt_header3', $text{"type_$in{'type'}"}),
-      "</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_anon.cgi", "post");
+print &ui_hidden("type", $in{'type'});
+print &ui_hidden("virt", $in{'virt'});
+print &ui_table_start(&text('virt_header3', $text{"type_$in{'type'}"}),
+		      "width=100%", 4);
 &generate_inputs(\@dirs, $conf);
-print "</table></td> </tr></table><br>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("anon_index.cgi?virt=$in{'virt'}", $text{'anon_return'},
 	"virt_index.cgi?virt=$in{'virt'}", $text{'virt_return'},

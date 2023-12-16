@@ -26,19 +26,17 @@ $desc = $in{'global'} ? &text('dir_header5', $dn) :
 &ui_print_header($desc, $text{"type_$in{'type'}"}, "",
 	undef, undef, undef, undef, &restart_button());
 
-print "<form method=post action=save_dir.cgi method=post>\n";
-print "<input type=hidden name=type value=$in{'type'}>\n";
-print "<input type=hidden name=idx value=$in{'idx'}>\n";
-print "<input type=hidden name=virt value=$in{'virt'}>\n";
-print "<input type=hidden name=anon value=$in{'anon'}>\n";
-print "<input type=hidden name=global value=$in{'global'}>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>",&text('dir_header3', $text{"type_$in{'type'}"},
-			       $d->{'words'}->[0]),"</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_dir.cgi", "post");
+print &ui_hidden("type", $in{'type'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("virt", $in{'virt'});
+print &ui_hidden("anon", $in{'anon'});
+print &ui_hidden("global", $in{'global'});
+print &ui_table_start(&text('dir_header3', $text{"type_$in{'type'}"},
+			    $d->{'words'}->[0]), "width=100%", 4);
 &generate_inputs(\@dirs, $conf);
-print "</table></td> </tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 if ($in{'global'}) {
 	&ui_print_footer("dir_index.cgi?idx=$in{'idx'}&global=$in{'global'}",

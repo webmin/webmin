@@ -10,16 +10,15 @@ $desc = &text('ftpindex_header', "<tt>".&html_escape($in{'file'})."</tt>");
 &ui_print_header($desc, $text{"type_$in{'type'}"}, "",
 	undef, undef, undef, undef, &restart_button());
 
-print "<form method=post action=save_ftpaccess.cgi>\n";
-print "<input type=hidden name=type value=$in{'type'}>\n";
-print "<input type=hidden name=file value=$in{'file'}>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>",&text('ftpindex_header2', $text{"type_$in{'type'}"},
-			       "<tt>$in{'file'}</tt>"),"</td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_ftpaccess.cgi", "post");
+print &ui_hidden("type", $in{'type'});
+print &ui_hidden("file", $in{'file'});
+print &ui_table_start(&text('ftpindex_header2', $text{"type_$in{'type'}"},
+                            "<tt>".&html_escape($in{'file'})."</tt>"),
+		      "width=100%", 4);
 &generate_inputs(\@dirs, $conf);
-print "</table></td> </tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("ftpaccess_index.cgi?file=$in{'file'}", $text{'ftpindex_return'},
 	"ftpaccess.cgi", $text{'ftpaccess_return'},

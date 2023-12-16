@@ -25,26 +25,19 @@ $desc = $in{'global'} ? &text('dir_header5', $dn) :
 &ui_print_header($desc, $text{'dserv_title'}, "",
 	undef, undef, undef, undef, &restart_button());
 
-print "<form action=save_dserv.cgi>\n";
-print "<input type=hidden name=virt value='$in{'virt'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=anon value='$in{'anon'}'>\n";
-print "<input type=hidden name=global value='$in{'global'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'dserv_title'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_dserv.cgi", "post");
+print &ui_hidden("virt", $in{'virt'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("anon", $in{'anon'});
+print &ui_hidden("global", $in{'global'});
+print &ui_table_start($text{'dserv_title'}, undef, 2);
 
-print "<tr> <td><b>$text{'dserv_dir'}</b></td>\n";
-printf "<td><input name=dir size=40 value='%s'> %s</td> </tr>\n",
-	$d->{'value'}, &file_chooser_button("dir", 1);
+print &ui_table_row($text{'dserv_dir'},
+	&ui_filebox("dir", $d->{'value'}, 60, 0, undef, undef, 1));
 
-print "<tr> <td colspan=2>\n";
-print "<input type=submit value=\"$text{'save'}\">\n";
-print "<input type=submit name=delete value=\"$text{'dserv_delete'}\">\n";
-print "</td> </tr>\n";
-
-print "</table> </td></tr></table><p>\n";
-print "</form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ],
+		     [ 'delete', $text{'dserv_delete'} ] ]);
 
 if ($in{'global'}) {
 	&ui_print_footer("dir_index.cgi?global=$in{'global'}&idx=$in{'idx'}",

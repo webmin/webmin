@@ -38,21 +38,19 @@ $desc = $in{'file'} ? &text('limit_header6', $ln, &html_escape($in{'file'})) :
 &ui_print_header($desc, $text{"type_$in{'type'}"}, "",
 	undef, undef, undef, undef, &restart_button());
 
-print "<form method=post action=save_limit.cgi method=post>\n";
-print "<input type=hidden name=type value='$in{'type'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=limit value='$in{'limit'}'>\n";
-print "<input type=hidden name=virt value='$in{'virt'}'>\n";
-print "<input type=hidden name=anon value='$in{'anon'}'>\n";
-print "<input type=hidden name=global value='$in{'global'}'>\n";
-print "<input type=hidden name=file value='$in{'file'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>",&text('limit_header3', $text{"type_$in{'type'}"},
-			       $l->{'value'}),"</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_limit.cgi", "post");
+print &ui_hidden("type", $in{'type'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("limit", $in{'limit'});
+print &ui_hidden("virt", $in{'virt'});
+print &ui_hidden("anon", $in{'anon'});
+print &ui_hidden("global", $in{'global'});
+print &ui_hidden("file", $in{'file'});
+print &ui_table_start(&text('limit_header3', $text{"type_$in{'type'}"},
+                            $l->{'value'}), "width=100%", 4);
 &generate_inputs(\@dirs, $conf);
-print "</table></td> </tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 if ($in{'file'}) {
 	&ui_print_footer("limit_index.cgi?file=$in{'file'}&limit=$in{'limit'}",

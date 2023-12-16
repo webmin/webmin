@@ -302,18 +302,15 @@ return @rv;
 # Displays a 2-column list of options, for use inside a table
 sub generate_inputs
 {
-local($e, $sw, @args, @rv, $func);
-foreach $e (@{$_[0]}) {
-	if (!$sw) { print "<tr>\n"; }
-
+my ($edits, $dirs) = @_;
+foreach my $e (@$edits) {
 	# Build arg list for the editing function. Each arg can be a single
 	# directive struct, or a reference to an array of structures.
-	$func = "edit";
-	undef(@args);
-	foreach $ed (split(/\s+/, $e->{'name'})) {
-		local(@vals);
+	my $func = "edit";
+	my @args;
+	foreach my $ed (split(/\s+/, $e->{'name'})) {
 		$func .= "_$ed";
-		@vals = &find_directive_struct($ed, $_[1]);
+		my @vals = &find_directive_struct($ed, $_[1]);
 		if ($e->{'multiple'}) { push(@args, \@vals); }
 		elsif (!@vals) { push(@args, undef); }
 		else { push(@args, $vals[$#vals]); }
@@ -321,25 +318,15 @@ foreach $e (@{$_[0]}) {
 	push(@args, $e);
 
 	# call the function
-	@rv = &$func(@args);
+	my @rv = &$func(@args);
 	if ($rv[0] == 2) {
 		# spans 2 columns..
-		if ($sw) {
-			# need to end this row
-			print "<td colspan=2></td> </tr><tr>\n";
-			}
-		else { $sw = !$sw; }
-		print "<td valign=top width=25%><b>$rv[1]</b></td>\n";
-		print "<td nowrap valign=top colspan=3 width=75%>$rv[2]</td>\n";
+		print &ui_table_row($rv[1], $rv[2], 3);
 		}
 	else {
 		# only spans one column
-		print "<td valign=top width=25%><b>$rv[1]</b></td>\n";
-		print "<td nowrap valign=top width=25%>$rv[2]</td>\n";
+		print &ui_table_row($rv[1], $rv[2], 1);
 		}
-
-	if ($sw) { print "</tr>\n"; }
-	$sw = !$sw;
 	}
 }
 

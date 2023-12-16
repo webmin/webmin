@@ -12,11 +12,10 @@ if ($global) {
 &ui_print_header(undef, $text{"type_$in{'type'}"}, "",
 	undef, undef, undef, undef, &restart_button());
 
-print "<form method=post action=save_global.cgi>\n";
-print "<input type=hidden name=type value=$in{'type'}>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>",$text{"type_$in{'type'}"},"</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_global.cgi", "post");
+print &ui_hidden("type", $in{'type'});
+print &ui_table_start($text{"type_$in{'type'}"}, "width=100%", 4);
+
 @dirs = &editable_directives($in{'type'}, 'root');
 &generate_inputs(\@dirs, $conf);
 @gdirs = &editable_directives($in{'type'}, 'global');
@@ -24,8 +23,9 @@ if (@dirs && @gdirs) {
 	print "<tr> <td colspan=4><hr></td> </tr>\n";
 	}
 &generate_inputs(\@gdirs, $gconf);
-print "</table></td> </tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

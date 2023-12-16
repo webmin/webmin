@@ -24,43 +24,31 @@ $user ||= "ftp" if ($in{'init'});
 $group = &find_directive("Group", $anon->{'members'});
 $group ||= "ftp" if ($in{'init'});
 
-print "<form action=save_aserv.cgi>\n";
-print "<input type=hidden name=virt value='$in{'virt'}'>\n";
-print "<input type=hidden name=init value='$in{'init'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'aserv_title'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_aserv.cgi", "post");
+print &ui_hidden("virt", $in{'virt'});
+print &ui_hidden("init", $in{'init'});
+print &ui_table_start($text{'aserv_title'}, undef, 2);
 
-print "<tr> <td><b>$text{'aserv_root'}</b></td>\n";
-printf "<td><input name=root size=40 value='%s'> %s</td> </tr>\n",
-	$anon->{'value'}, &file_chooser_button("root", 1);
+print &ui_table_row($text{'aserv_root'},
+	&ui_filebox("root", $anon->{'value'}, 60, 0, undef, undef, 1));
 
-print "<tr> <td><b>$text{'aserv_user'}</b></td>\n";
-print "<td>",&opt_input($user, "User", $text{'default'}, 13),
-      "</td> </tr>\n";
+print &ui_table_row($text{'aserv_user'},
+	&opt_input($user, "User", $text{'default'}, 13));
 
-print "<tr> <td><b>$text{'aserv_group'}</b></td>\n";
-print "<td>",&opt_input($group, "Group", $text{'default'}, 13),
-      "</td> </tr>\n";
+print &ui_table_row($text{'aserv_group'},
+	&opt_input($group, "Group", $text{'default'}, 13));
 
-print "<tr> <td colspan=2>\n";
-if ($in{'init'}) {
-	print "<input type=submit value=\"$text{'create'}\">\n";
-	}
-else {
-	print "<input type=submit value=\"$text{'save'}\">\n";
-	}
-print "</td> </tr>\n";
-
-print "</table> </td></tr></table><p>\n";
-print "</form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $in{'init'} ? $text{'create'} : $text{'save'} ]]);
 
 if ($in{'init'}) {
-	&ui_print_footer("virt_index.cgi?virt=$in{'virt'}", $text{'virt_return'},
+	&ui_print_footer(
+		"virt_index.cgi?virt=$in{'virt'}", $text{'virt_return'},
 		"", $text{'index_return'});
 	}
 else {
-	&ui_print_footer("anon_index.cgi?virt=$in{'virt'}", $text{'anon_return'},
+	&ui_print_footer(
+		"anon_index.cgi?virt=$in{'virt'}", $text{'anon_return'},
 		"virt_index.cgi?virt=$in{'virt'}", $text{'virt_return'},
 		"", $text{'index_return'});
 	}

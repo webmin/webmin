@@ -35,38 +35,26 @@ $desc = $in{'file'} ? &text('limit_header6', $ln, &html_escape($in{'file'})) :
 &ui_print_header($desc, $text{'lserv_title'}, "",
 	undef, undef, undef, undef, &restart_button());
 
-print "<form action=save_lserv.cgi>\n";
-print "<input type=hidden name=virt value='$in{'virt'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=limit value='$in{'limit'}'>\n";
-print "<input type=hidden name=anon value='$in{'anon'}'>\n";
-print "<input type=hidden name=global value='$in{'global'}'>\n";
-print "<input type=hidden name=file value='$in{'file'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'lserv_title'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_lserv.cgi", "post");
+print &ui_hidden("virt", $in{'virt'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("limit", $in{'limit'});
+print &ui_hidden("anon", $in{'anon'});
+print &ui_hidden("global", $in{'global'});
+print &ui_hidden("file", $in{'file'});
+print &ui_table_start($text{'lserv_title'}, undef, 2);
 
-map { $cmd{lc($_)}++ } @{$l->{'words'}};
-print "<tr> <td valign=top><b>$text{'lserv_cmd'}</b></td>\n";
-print "<td><select name=cmd multiple size=7 width=120>\n";
-foreach $c ('cwd', 'mkd', 'rnfr', 'dele', 'rmd', 'retr', 'stor') {
-	printf "<option value=%s %s>%s</option>\n",
-		uc($c), $cmd{$c} ? "selected" : "", uc($c);
-	}
-print "</select><select name=cmd multiple size=7 width=120>\n";
-foreach $c ('site_chmod', 'read', 'write', 'dirs', 'login', 'all') {
-	printf "<option value=%s %s>%s</option>\n",
-		uc($c), $cmd{$c} ? "selected" : "", uc($c);
-	}
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'lserv_cmd'},
+	&ui_select("cmd", [ map { lc($_) } @{$l->{'words'}} ],
+		   [ 'cwd', 'mkd', 'rnfr', 'dele', 'rmd', 'retr', 'stor' ],
+		   7, 1)."\n".
+	&ui_select("cmd", [ map { lc($_) } @{$l->{'words'}} ],
+		   [ 'site_chmod', 'read', 'write', 'dirs', 'login', 'all' ],
+		   7, 1));
 
-print "<tr> <td colspan=2>\n";
-print "<input type=submit value=\"$text{'save'}\">\n";
-print "<input type=submit name=delete value=\"$text{'lserv_delete'}\">\n";
-print "</td> </tr>\n";
-
-print "</table> </td></tr></table><p>\n";
-print "</form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ],
+		     [ 'delete', $text{'lserv_delete'} ] ]);
 
 if ($in{'file'}) {
 	&ui_print_footer("limit_index.cgi?file=$in{'file'}&limit=$in{'limit'}",

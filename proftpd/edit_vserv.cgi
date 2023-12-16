@@ -12,31 +12,22 @@ $desc = &text('virt_header1', $vconf->{'value'});
 $name = &find_directive("ServerName", $vconf->{'members'});
 $port = &find_directive("Port", $vconf->{'members'});
 
-print "<form action=save_vserv.cgi>\n";
-print "<input type=hidden name=virt value=$in{'virt'}>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'vserv_title'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_vserv.cgi", "post");
+print &ui_hidden("virt", $in{'virt'});
+print &ui_table_start($text{'vserv_title'}, undef, 2);
 
-print "<tr> <td><b>$text{'vserv_addr'}</b></td>\n";
-printf "<td><input name=addr size=30 value='%s'></td> </tr>\n",
-	$vconf->{'value'};
+print &ui_table_row($text{'vserv_addr'},
+	&ui_textbox("addr", $vconf->{'value'}, 30));
 
-print "<tr> <td><b>$text{'vserv_name'}</b></td>\n";
-print "<td>",&opt_input($name, "ServerName", $text{'default'}, 30),
-      "</td> </tr>\n";
+print &ui_table_row($text{'vserv_name'},
+	&opt_input($name, "ServerName", $text{'default'}, 30));
 
-print "<tr> <td><b>$text{'vserv_port'}</b></td>\n";
-print "<td>",&opt_input($port, "Port", $text{'default'}, 6),
-      "</td> </tr>\n";
+print &ui_table_row($text{'vserv_port'},
+	&opt_input($port, "Port", $text{'default'}, 6));
 
-print "<tr> <td colspan=2>\n";
-print "<input type=submit value=\"$text{'save'}\">\n";
-print "<input type=submit value=\"$text{'vserv_delete'}\" name=delete>\n";
-print "</td> </tr>\n";
-
-print "</table> </td></tr></table><p>\n";
-print "</form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ],
+		     [ 'delete', $text{'vserv_delete'} ] ]);
 
 &ui_print_footer("virt_index.cgi?virt=$in{'virt'}", $text{'virt_return'},
 	"", $text{'index_return'});
