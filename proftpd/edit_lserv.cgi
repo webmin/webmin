@@ -45,11 +45,13 @@ print &ui_hidden("file", $in{'file'});
 print &ui_table_start($text{'lserv_title'}, undef, 2);
 
 print &ui_table_row($text{'lserv_cmd'},
-	&ui_select("cmd", [ map { lc($_) } @{$l->{'words'}} ],
-		   [ 'cwd', 'mkd', 'rnfr', 'dele', 'rmd', 'retr', 'stor' ],
+	&ui_select("cmd",
+		   [ map { uc($_) } @{$l->{'words'}} ],
+		   [ map { uc($_) } ('cwd', 'mkd', 'rnfr', 'dele', 'rmd', 'retr', 'stor') ],
 		   7, 1)."\n".
-	&ui_select("cmd", [ map { lc($_) } @{$l->{'words'}} ],
-		   [ 'site_chmod', 'read', 'write', 'dirs', 'login', 'all' ],
+	&ui_select("cmd",
+		   [ map { uc($_) } @{$l->{'words'}} ],
+		   [ map { uc($_) } ('site_chmod', 'read', 'write', 'dirs', 'login', 'all') ],
 		   7, 1));
 
 print &ui_table_end();
