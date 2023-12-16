@@ -69,19 +69,16 @@ return ( \@rv );
 
 sub edit_LogFormat
 {
-local $rv = "<table border>\n".
-	    "<tr $tb> <td><b>$text{'mod_log_nickname'}</b></td> ".
-	    "<td><b>$text{'mod_log_fmt'}</b></td> </tr>\n";
-local $i = 0;
-foreach $f (@{$_[0]}, { }) {
-	local @w = @{$f->{'words'}};
-	$rv .= "<tr $cb>\n";
-	$rv .= "<td><input name=LogFormat_n_$i size=15 value='$w[0]'></td>\n";
-	$rv .= "<td><input name=LogFormat_f_$i size=35 value='$w[1]'></td>\n";
-	$rv .= "</tr>\n";
+my $rv = &ui_columns_start([ $text{'mod_log_nickname'},
+			     $text{'mod_log_fmt'} ]);
+my $i = 0;
+foreach my $f (@{$_[0]}, { }) {
+	my @w = @{$f->{'words'}};
+	$rv .= &ui_columns_row([ &ui_textbox("LogFormat_n_$i", $w[0], 15),
+				 &ui_textbox("LogFormat_f_$i", $w[1], 35) ]);
 	$i++;
 	}
-$rv .= "</table>\n";
+$rv .= &ui_columns_end();
 return (2, $text{'mod_log_format'}, $rv);
 }
 sub save_LogFormat
