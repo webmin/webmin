@@ -412,6 +412,7 @@ ftpindex_addlimit=Add per-command options for ..
 ftpindex_header2=$1 in $2
 ftpindex_return=per-directory options file
 ftpindex_header=For $1
+ftpindex_cmds=FTP commands
 
 find_err=Failed to find options files
 find_eanon=Anonymous FTP is not setup in any virtual server

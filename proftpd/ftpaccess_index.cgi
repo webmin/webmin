@@ -36,15 +36,14 @@ if (@limit) {
 	&icons_table(\@links, \@titles, \@icons, 3);
 	}
 
-print "<form action=create_limit.cgi>\n";
-print "<input type=hidden name=file value='$in{'file'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'ftpindex_addlimit'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
-print "<tr> <td><b>$text{'ftpindex_cmds'}</b></td>\n";
-print "<td><input name=cmd size=20>\n";
-print "<input type=submit value=\"$text{'create'}\"></td> </tr>\n";
-print "</table></td></tr></table></form>\n";
+print &ui_form_start("create_limit.cgi");
+print &ui_table_start($text{'ftpindex_addlimit'}, undef, 2);
+
+print &ui_table_row($text{'ftpindex_cmds'},
+	&ui_textbox("cmd", undef, 40));
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 &ui_print_footer("ftpaccess.cgi", $text{'ftpaccess_return'},
 	"", $text{'index_return'});
