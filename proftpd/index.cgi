@@ -172,6 +172,7 @@ if ($config{'show_list'} && scalar(@vname)) {
 	}
 else {
 	# as icons for niceness
+	# XXX fix this
 	print "<table width=100% cellpadding=5>\n";
 	for($i=0; $i<@vname; $i++) {
 		print "<tr> <td valign=top align=center nowrap>";

@@ -23,34 +23,34 @@ return &parse_opt("DefaultChdir", '^\S+$', $text{'mod_auth_echdir'});
 
 sub edit_DefaultRoot
 {
-local $rv = "<table border>\n".
-	    "<tr $tb> <td><b>$text{'mod_auth_dir'}</b></td> ".
-	    "<td><b>$text{'mod_auth_groups'}</b></td> </tr>\n";
-local $i = 0;
-foreach $r (@{$_[0]}, { }) {
-	local @w = @{$r->{'words'}};
-	$rv .= "<tr $cb>\n";
+my $rv = &ui_columns_start([ $text{'mod_auth_dir'},
+			     $text{'mod_auth_groups'} ]);
+my $i = 0;
+foreach my $r (@{$_[0]}, { }) {
+	my @w = @{$r->{'words'}};
 
-	local $dd = $w[0] eq "~" ? 2 : $w[0] ? 0 : 1;
-	$rv .= sprintf "<td nowrap><input name=DefaultRoot_dd_$i type=radio value=1 %s> %s\n", $dd == 1 ? "checked" : "", $text{'mod_auth_none'};
-	$rv .= sprintf "<input name=DefaultRoot_dd_$i type=radio value=2 %s> %s\n", $dd == 2 ? "checked" : "", $text{'mod_auth_home'};
-	$rv .= sprintf "<input name=DefaultRoot_dd_$i type=radio value=0 %s>\n", $dd == 0 ? "checked" : "";
-	$rv .= sprintf "<input name=DefaultRoot_d_$i size=20 value='%s'></td>\n", $dd ? "" : $w[0];
-
-	$rv .= sprintf "<td nowrap><input name=DefaultRoot_gd_$i type=radio value=1 %s> %s\n", $w[1] ? "" : "checked", $text{'mod_auth_all'};
-	$rv .= sprintf "<input name=DefaultRoot_gd_$i type=radio value=0 %s>\n", $w[1] ? "checked" : "";
-	$rv .= sprintf "<input name=DefaultRoot_g_$i size=12 value='%s'></td>\n", join(" ", split(/,/, $w[1]));
-	$rv .= "</tr>\n";
+	my $dd = $w[0] eq "~" ? 2 : $w[0] ? 0 : 1;
+	$rv .= &ui_columns_row([
+		&ui_radio("DefaultRoot_dd_$i", $dd,
+			  [ [ 1, $text{'mod_auth_none'} ],
+			    [ 2, $text{'mod_auth_home'} ],
+			    [ 0, &ui_textbox("DefaultRoot_d_$i", $dd ? "" : $w[0], 20) ] ]),
+		&ui_radio("DefaultRoot_gd_$i", $w[1] ? 0 : 1,
+			  [ [ 1, $text{'mod_auth_all'} ],
+			    [ 0, &ui_textbox("DefaultRoot_g_$i",
+					     join(" ", split(/,/, $w[1])), 12) ] ]),
+		]);
 	$i++;
 	}
-$rv .= "</table>\n";
+$rv .= &ui_columns_end();
 return (2, $text{'mod_auth_chroot'}, $rv);
 }
 sub save_DefaultRoot
 {
-for($i=0; defined($in{"DefaultRoot_d_$i"}); $i++) {
+my @rv;
+for(my $i=0; defined($in{"DefaultRoot_d_$i"}); $i++) {
 	next if ($in{"DefaultRoot_dd_$i"} == 1);
-	local $v = $in{"DefaultRoot_dd_$i"} == 2 ? "~" :$in{"DefaultRoot_d_$i"};
+	my $v = $in{"DefaultRoot_dd_$i"} == 2 ? "~" :$in{"DefaultRoot_d_$i"};
 	$v =~ /^\S+$/ || &error($text{'mod_auth_edir'});
 	if (!$in{"DefaultRoot_gd_$i"}) {
 		local @g = split(/\s+/, $in{"DefaultRoot_g_$i"});

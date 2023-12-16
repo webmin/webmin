@@ -20,7 +20,7 @@ print &ui_table_start($text{"type_$in{'type'}"}, "width=100%", 4);
 &generate_inputs(\@dirs, $conf);
 @gdirs = &editable_directives($in{'type'}, 'global');
 if (@dirs && @gdirs) {
-	print "<tr> <td colspan=4><hr></td> </tr>\n";
+	print &ui_table_hr();
 	}
 &generate_inputs(\@gdirs, $gconf);
 
