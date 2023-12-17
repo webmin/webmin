@@ -382,6 +382,8 @@ mod_readme_display=Notify user of readme files matching
 mod_readme_none=None
 mod_readme_edisplay=Missing readme files pattern
 
+mod_tls_engine=Enable SSL encryption?
+
 start_err=Failed to start FTP server
 start_einetd=You cannot start the server daemon when in inetd mode.
 
