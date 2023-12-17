@@ -117,11 +117,10 @@ return &parse_choice("ShowDotFiles", "");
 
 sub edit_ListOptions
 {
-local $rv = &opt_input($_[0]->{'words'}->[0], "ListOptions",
+my $rv = &opt_input($_[0]->{'words'}->[0], "ListOptions",
 		       $text{'default'}, 20);
-$rv .= sprintf "<input type=checkbox name=ListOptions_strict value=1 %s> %s\n",
-		lc($_[0]->{'words'}->[1]) eq 'strict' ? "checked" : "",
-		$text{'mod_ls_strict'};
+$rv .= &ui_checkbox("ListOptions_strict", 1, $text{'mod_ls_strict'},
+		    lc($_[0]->{'words'}->[1]) eq 'strict');
 return (2, $text{'mod_ls_options'}, $rv);
 }
 sub save_ListOptions
