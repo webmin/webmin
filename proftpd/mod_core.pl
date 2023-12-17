@@ -194,14 +194,11 @@ return ( \@allow, \@deny, &parse_choice("order", ""));
 
 sub edit_AllowAll_DenyAll
 {
-#local $a = @{$_[0]}, $d = @{$_[1]};
-local $a = $_[0], $d = $_[1];
-local $rv = sprintf "<input type=radio name=AllowAll value=0 %s> %s\n",
-	$a || $d ? "" : "checked", $text{'mod_core_addefault'};
-$rv .= sprintf "<input type=radio name=AllowAll value=1 %s> %s\n",
-	$a ? "checked" : "", $text{'mod_core_allowall'};
-$rv .= sprintf "<input type=radio name=AllowAll value=2 %s> %s\n",
-	$d ? "checked" : "", $text{'mod_core_denyall'};
+my ($a, $d) = @_;
+my $rv = &ui_radio("AllowAll", $a ? 1 : $d ? 2 : 0,
+		   [ [ 0, $text{'mod_core_addefault'} ],
+		     [ 1, $text{'mod_core_allowall'} ],
+		     [ 2, $text{'mod_core_denyall'} ] ]);
 return (1, $text{'mod_core_adall'}, $rv);
 }
 sub save_AllowAll_DenyAll
@@ -586,20 +583,15 @@ return &parse_opt("DisplayQuit", '\S', $text{'mod_core_equit'});
 
 sub edit_Group
 {
-local($rv, @ginfo);
-$rv = sprintf "<input type=radio name=Group value=0 %s> $text{'default'}\n",
-       $_[0] ? "" : "checked";
-$rv .= sprintf "<input type=radio name=Group value=1 %s> %s\n",
-        $_[0] && $_[0]->{'value'} !~ /^#/ ? "checked" : "",
-	$text{'mod_core_gname'};
-$rv .= sprintf "<input name=Group_name size=8 value=\"%s\"> %s\n",
-	$_[0]->{'value'} !~ /^#/ ? $_[0]->{'value'} : "",
-	&group_chooser_button("Group_name", 0);
-$rv .= sprintf "<input type=radio name=Group value=2 %s> %s\n",
-        $_[0]->{'value'} =~ /^#/ ? "checked" : "",
-	$text{'mod_core_gid'};
-$rv .= sprintf "<input name=Group_id size=6 value=\"%s\">\n",
-	 $_[0]->{'value'} =~ /^#(.*)$/ ? $1 : "";
+my @ginfo;
+my $rv = &ui_radio_table("Group",
+	   !$_[0] ? 0 :
+	   $_[0]->{'value'} =~ /^#/ ? 2 : 1,
+	   [ [ 0, $text{'default'} ],
+	     [ 1, $text{'mod_core_gname'},
+	       &ui_textbox("Group_name", $_[0]->{'value'} !~ /^#/ ? $_[0]->{'value'} : "", 13) ],
+	     [ 2, $text{'mod_core_gid'},
+	       &ui_textbox("Group_name", $_[0]->{'value'} =~ /^#(.*)$/ ? $1 : "", 13) ] ]);
 return (2, $text{'mod_core_group'}, $rv);
 }
 sub save_Group
@@ -696,8 +688,7 @@ return &parse_choice("HiddenStores", "");
 sub edit_HideGroup
 {
 return (2, $text{'mod_core_hgroup'},
-	sprintf "<input name=HideGroup size=50 value='%s'>",
-	 join(" ", map { $_->{'value'} } @{$_[0]}));
+    &ui_textbox("HideGroup", join(" ", map { $_->{'value'} } @{$_[0]}), 50));
 }
 sub save_HideGroup
 {
@@ -723,8 +714,7 @@ return &parse_choice("HideNoAccess", "");
 sub edit_HideUser
 {
 return (2, $text{'mod_core_huser'},
-	sprintf "<input name=HideUser size=50 value='%s'>",
-	 join(" ", map { $_->{'value'} } @{$_[0]}));
+    &ui_textbox("HideUser", join(" ", map { $_->{'value'} } @{$_[0]}), 50));
 }
 sub save_HideUser
 {
@@ -800,18 +790,14 @@ return &save_max("MaxClientsPerUser");
 
 sub edit_max
 {
-local $m = !$_[0] ? 0 :
+my $m = !$_[0] ? 0 :
 	   $_[0]->{'words'}->[0] eq 'none' ? 1 : 2;
-local $rv = sprintf "<input type=radio name=$_[1]_m value=0 %s> %s\n",
-		$m == 0 ? "checked" : "", $text{'default'};
-$rv .= sprintf "<input type=radio name=$_[1]_m value=1 %s> %s\n",
-		$m == 1 ? "checked" : "", $text{'mod_core_maxc1'};
-$rv .= sprintf "<input type=radio name=$_[1]_m value=2 %s>\n",
-		$m == 2 ? "checked" : "";
-$rv .= sprintf "<input name=$_[1] size=6 value='%s'><br>\n",
-		$m == 2 ? $_[0]->{'words'}->[0] : "";
-$rv .= sprintf "%s <input name=$_[1]_t size=40 value='%s'>\n",
-	$text{'mod_core_maxcmsg'}, $_[0]->{'words'}->[1];
+my $rv = &ui_radio("$_[1]_m", $m,
+		   [ [ 0, $text{'default'} ],
+		     [ 1, $text{'mod_core_maxc1'} ],
+		     [ 2, &ui_textbox($_[1], $m == 2 ? $_[0]->{'words'}->[0] : "", 6) ] ]);
+$rv .= "<br>$text{'mod_core_maxcmsg'}\n";
+$rv .= &ui_textbox("$_[1]_t", $m > 0 ? $_[0]->{'words'}->[1] : "", 40);
 return $rv;
 }
 sub save_max
