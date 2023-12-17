@@ -1030,18 +1030,15 @@ return &parse_opt("ServerAdmin", '^\S+\@\S+$', $text{'mod_core_eadmin'});
 
 sub edit_ServerIdent
 {
-local @w = @{$_[0]->{'words'}};
-local $rv = sprintf "<input type=radio name=ServerIdent_m value=0 %s> %s\n",
-	$_[0] ? "" : "checked", $text{'default'};
-$rv .= sprintf "<input type=radio name=ServerIdent_m value=1 %s> %s\n",
-	lc($w[0]) eq 'off' ? "checked" : "", $text{'mod_core_none'};
-$rv .= sprintf "<input type=radio name=ServerIdent_m value=2 %s> %s\n",
-	lc($w[0]) eq 'on' && !$w[1] ? "checked" : "",
-	$text{'mod_core_identmsg_def'};
-$rv .= sprintf "<input type=radio name=ServerIdent_m value=3 %s>\n",
-	lc($w[0]) eq 'on' && $w[1] ? "checked" : "";
-$rv .= sprintf "<input name=ServerIdent size=30 value='%s'>\n",
-	lc($w[0]) eq 'on' ? $w[1] : "";
+my @w = @{$_[0]->{'words'}};
+my $rv = &ui_radio("ServerIdent_m",
+		   !@w ? 0 :
+		   lc($w[0]) eq 'off' ? 1 :
+		   lc($w[0]) eq 'on' && !$w[1] ? 2 : 3,
+		   [ [ 0, $text{'default'} ],
+		     [ 1, $text{'mod_core_none'} ],
+		     [ 2, $text{'mod_core_identmsg_def'} ],
+		     [ 3, &ui_textbox("ServerIdent", lc($w[0]) eq 'on' ? $w[1] : "", 30) ] ]);
 return (2, $text{'mod_core_identmsg'}, $rv);
 }
 sub save_ServerIdent
@@ -1133,18 +1130,12 @@ return &parse_select("SyslogLevel", "");
 
 sub edit_TransferLog
 {
-local $mode = $_[0]->{'value'} eq 'NONE' ? 2 :
-	      $_[0]->{'value'} ? 0 : 1;
-local $rv = sprintf "<input type=radio name=TransferLog_def value=1 %s> %s\n",
-		$mode == 1 ? "checked" : "", $text{'default'};
-if ($_[1]->{'version'} >= 1.17) {
-	$rv .= sprintf"<input type=radio name=TransferLog_def value=2 %s> %s\n",
-		$mode == 2 ? "checked" : "", $text{'mod_core_nowhere'};
-	}
-$rv .= sprintf "<input type=radio name=TransferLog_def value=0 %s>\n",
-		$mode == 0 ? "checked" : "";
-$rv .= sprintf "<input name=TransferLog size=50 value='%s'>\n",
-		$mode == 0 ? $_[0]->{'value'} : "";
+my $mode = $_[0]->{'value'} eq 'NONE' ? 2 :
+	   $_[0]->{'value'} ? 0 : 1;
+my $rv = &ui_radio("TransferLog_def", $mode,
+		   [ [ 1, $text{'default'} ],
+		     [ 2, $text{'mod_core_nowhere'} ],
+		     [ 0, &ui_textbox("TransferLog", $mode == 0 ? $_[0]->{'value'} : "", 50) ] ]);
 return (2, $text{'mod_core_tlog'}, $rv);
 }
 sub save_TransferLog
