@@ -797,8 +797,20 @@ my ($file, $done) = @_;
 $file ||= $network_interfaces_config;
 $done ||= { };
 return ( ) if ($done->{$file}++);
-my $fh;
 my @ret;
+if (-d $file) {
+	# Somehow /etc/network/interfaces is a directory! Process all the
+	# files inside it
+	opendir(SRCDIR, $file);
+	my @srcs = grep { /^[a-zA-Z0-9_-]+$/ } readdir(SRCDIR);
+	closedir(SRCDIR);
+	foreach $src (@srcs) {
+		my @inc = &get_interface_defs($file."/".$src, $done);
+		push(@ret, @inc);
+		}
+	return @ret;
+	}
+my $fh;
 open($fh, $file) || return ();
 # read the file line by line
 my $line = <$fh>;
