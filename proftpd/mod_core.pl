@@ -857,14 +857,13 @@ return &parse_choice("MultilineRFC2228", "");
 
 sub edit_PassivePorts
 {
-local $rv = sprintf "<input type=radio name=PassivePorts_def value=1 %s> %s\n",
-		$_[0] ? "" : "checked", $text{'default'};
-$rv .= sprintf "<input type=radio name=PassivePorts_def value=0 %s> %s\n",
-		$_[0] ? "checked" : "", $text{'mod_core_pasvr'};
-$rv .= sprintf "<input name=PassivePorts_f size=5 value='%s'> -\n",
-		$_[0]->{'words'}->[0];
-$rv .= sprintf "<input name=PassivePorts_t size=5 value='%s'>\n",
-		$_[0]->{'words'}->[1];
+my $rv = &ui_radio("PassivePorts_def", $_[0] ? 0 : 1,
+   [ [ 1, $text{'default'} ],
+     [ 0, $text{'mod_core_pasvr'}." ".
+	  &ui_textbox("PassivePorts_f", $_[0] ? $_[0]->{'words'}->[0] : "", 5).
+	  " - ".
+	  &ui_textbox("PassivePorts_t", $_[0] ? $_[0]->{'words'}->[1] : "", 5) ]
+   ]);
 return (1, $text{'mod_core_pasv'}, $rv);
 }
 sub save_PassivePorts
@@ -964,28 +963,21 @@ return &parse_rlimit("RLimitOpenFiles", $text{'mod_core_efilelimit'});
 # rlimit_input(name, desc, value)
 sub rlimit_input
 {
-local @w = @{$_[2]->{'words'}};
-local $rv;
-$rv .= sprintf "<b>%s</b> <input type=radio name=%s_smax value=2 %s> %s\n",
-		$text{'mod_core_soft'}, $_[0], $w[0] ? "" : "checked",
-		$text{'default'};
-$rv .= sprintf "<input type=radio name=%s_smax value=1 %s> %s\n",
-		$_[0], $w[0] eq 'max' ? "checked" : "", $text{'mod_core_max'};
-$rv .= sprintf "<input type=radio name=%s_smax value=0 %s>\n",
-		$_[0], !$w[0] || $w[0] eq 'max' ? "" : "checked";
-$rv .= sprintf "<input name=%s_soft size=6 value='%s'>\n",
-		$_[0], $w[0] eq 'max' ? '' : $w[0];
-$rv .= "&nbsp;&nbsp;&nbsp;";
-
-$rv .= sprintf "<b>%s</b> <input type=radio name=%s_hmax value=2 %s> %s\n",
-		$text{'mod_core_hard'}, $_[0], $w[1] ? "" : "checked",
-		$text{'default'};
-$rv .= sprintf "<input type=radio name=%s_hmax value=1 %s> %s\n",
-		$_[0], $w[1] eq 'max' ? "checked" : "", $text{'mod_core_max'};
-$rv .= sprintf "<input type=radio name=%s_hmax value=0 %s>\n",
-		$_[0], !$w[1] || $w[1] eq 'max' ? "" : "checked";
-$rv .= sprintf "<input name=%s_hard size=6 value='%s'>\n",
-		$_[0], $w[1] eq 'max' ? '' : $w[1];
+my @w = @{$_[2]->{'words'}};
+my $rv = "<b>$text{'mod_core_soft'}</b> ".
+	 &ui_radio("$_[0]_smax",
+		   $w[0] eq 'max' ? 1 : $w[0] ? 2 : 0,
+		   [ [ 2, $text{'default'} ],
+		     [ 1, $text{'mod_core_max'} ],
+		     [ 0, &ui_textbox("$_[0]_soft",
+				$w[0] eq 'max' ? '' : $w[0], 6) ] ]);
+$rv .= "<b>$text{'mod_core_hard'}</b> ".
+       &ui_radio("$_[0]_hmax",
+		   $w[1] eq 'max' ? 1 : $w[1] ? 2 : 0,
+		   [ [ 2, $text{'default'} ],
+		     [ 1, $text{'mod_core_max'} ],
+		     [ 0, &ui_textbox("$_[0]_hard",
+				$w[1] eq 'max' ? '' : $w[1], 6) ] ]);
 return (2, $_[1], $rv);
 }
 
@@ -1269,22 +1261,11 @@ return &parse_opt("TimeoutStalled", '^\d+$', $text{'mod_core_etstalled'});
 
 sub edit_Umask
 {
-local $rv;
-$rv .= sprintf "<input type=radio name=Umask_def value=1 %s> %s\n",
-	$_[0]->{'words'}->[0] ? "" : "checked", $text{'default'};
-$rv .= sprintf "<input type=radio name=Umask_def value=0 %s> %s\n",
-	$_[0]->{'words'}->[0] ? "checked" : "", $text{'mod_core_octal'};
-$rv .= sprintf "<input name=Umask size=5 value='%s'>\n",
-	$_[0]->{'words'}->[0];
-
-$rv .= "&nbsp;&nbsp;&nbsp;<b>$text{'mod_core_umask_d'}</b>\n";
-$rv .= sprintf "<input type=radio name=Umask_d_def value=1 %s> %s\n",
-	$_[0]->{'words'}->[1] ? "" : "checked", $text{'default'};
-$rv .= sprintf "<input type=radio name=Umask_d_def value=0 %s> %s\n",
-	$_[0]->{'words'}->[1] ? "checked" : "", $text{'mod_core_octal'};
-$rv .= sprintf "<input name=Umask_d size=5 value='%s'>\n",
-	$_[0]->{'words'}->[1];
-
+my $rv = &ui_opt_textbox("Umask", $_[0]->{'words'}->[0], 5,
+			 $text{'default'}, $text{'mod_core_octal'});
+$rv .= " <b>$text{'mod_core_umask_d'}</b>\n";
+$rv .= &ui_opt_textbox("Umask_d", $_[0]->{'words'}->[1], 5,
+		       $text{'default'}, $text{'mod_core_octal'});
 return (2, $text{'mod_core_umask'}, $rv);
 }
 sub save_Umask
@@ -1368,20 +1349,15 @@ return &parse_choice("UserDirRoot", "");
 
 sub edit_User
 {
-local($rv, @uinfo);
-$rv = sprintf "<input type=radio name=User value=0 %s> $text{'default'}\n",
-       $_[0] ? "" : "checked";
-$rv .= sprintf "<input type=radio name=User value=1 %s> %s\n",
-        $_[0] && $_[0]->{'value'} !~ /^#/ ? "checked" : "",
-	$text{'mod_core_uname'};
-$rv .= sprintf "<input name=User_name size=8 value=\"%s\"> %s&nbsp;\n",
-	$_[0]->{'value'} !~ /^#/ ? $_[0]->{'value'} : "",
-	&user_chooser_button("User_name", 0);
-$rv .= sprintf "<input type=radio name=User value=2 %s> %s\n",
-        $_[0]->{'value'} =~ /^#/ ? "checked" : "",
-	$text{'mod_core_uid'};
-$rv .= sprintf "<input name=User_id size=6 value=\"%s\">\n",
-	 $_[0]->{'value'} =~ /^#(.*)$/ ? $1 : "";
+my @ginfo;
+my $rv = &ui_radio_table("User",
+	   !$_[0] ? 0 :
+	   $_[0]->{'value'} =~ /^#/ ? 2 : 1,
+	   [ [ 0, $text{'default'} ],
+	     [ 1, $text{'mod_core_uname'},
+	       &ui_textbox("User_name", $_[0]->{'value'} !~ /^#/ ? $_[0]->{'value'} : "", 13) ],
+	     [ 2, $text{'mod_core_uid'},
+	       &ui_textbox("User_name", $_[0]->{'value'} =~ /^#(.*)$/ ? $1 : "", 13) ] ]);
 return (2, $text{'mod_core_user'}, $rv);
 }
 sub save_User
