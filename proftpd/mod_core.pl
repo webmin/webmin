@@ -128,9 +128,9 @@ return &parse_opt("AccessGrantMsg");
 
 sub edit_Allow_Deny_Order
 {
-local (@type, @what, @mode, $i);
-foreach $d (@{$_[0]}, @{$_[1]}) {
-	local @w = @{$d->{'words'}};
+my (@type, @what, @mode);
+foreach my $d (@{$_[0]}, @{$_[1]}) {
+	my @w = @{$d->{'words'}};
 	shift(@w) if (lc($w[0]) eq 'from');
 	for($i=0; $i<@w; $i++) {
 		push(@type, lc($d->{'name'}) eq "allow" ? 1 : 2);
@@ -144,25 +144,24 @@ foreach $d (@{$_[0]}, @{$_[1]}) {
 		}
 	}
 push(@type, ""); push(@what, ""); push(@mode, 0);
-$rv = "<i>$text{'mod_core_order'}</i>\n".
+my $rv = "<i>$text{'mod_core_order'}</i>\n".
       &choice_input($_[2]->[0]->{'value'}, "order", "",
       		    "$text{'mod_core_denyallow'},deny,allow", 
       		    "$text{'mod_core_allowdeny'},allow,deny", 
       		    "$text{'default'},")."<br>\n";
-$rv .= "<table border>\n".
-       "<tr $tb> <td><b>$text{'mod_core_action'}</b></td> ".
-       "<td><b>$text{'mod_core_cond'}</b></td> </tr>\n";
-@sels = map { $text{"mod_core_mode_$_"}.','.$_ } (0 .. 4);
-for($i=0; $i<@type; $i++) {
-	$rv .= "<tr $cb> <td>".&select_input($type[$i], "allow_type_$i", "0",
-		"&nbsp;,0", "$text{'mod_core_allow'},1",
-		"$text{'mod_core_deny'},2")."</td>\n";
-	$rv .= "<td>".&select_input($mode[$i], "allow_mode_$i", "0", @sels);
-	$rv .= sprintf "<input name=allow_what_$i size=20 value=\"%s\"></td>\n",
-		 $mode[$i] ? $what[$i] : "";
-	$rv .= "</tr>\n";
+$rv .= &ui_columns_start([ $text{'mod_core_action'},
+			   $text{'mod_core_cond'} ]);
+my @sels = map { $text{"mod_core_mode_$_"}.','.$_ } (0 .. 4);
+for(my $i=0; $i<@type; $i++) {
+	$rv .= &ui_columns_row([
+		&select_input($type[$i], "allow_type_$i", "0",
+			      "&nbsp;,0", "$text{'mod_core_allow'},1",
+			      "$text{'mod_core_deny'},2"),
+		&select_input($mode[$i], "allow_mode_$i", "0", @sels).
+		  &ui_textbox("allow_what_$i", $mode[$i] ? $what[$i] : "", 20),
+		]);
 	}
-$rv .= "</table>\n";
+$rv .= &ui_columns_end();
 return (2, $text{'mod_core_allow_deny'}, $rv);
 }
 sub save_Allow_Deny_Order
@@ -380,31 +379,25 @@ return ( [ split(/\s+/, $in{'CDPath'}) ] );
 
 sub edit_Class_Classes
 {
-local $rv = $text{'mod_core_classes'}.
+my $rv = $text{'mod_core_classes'}.
 	    &choice_input($_[1]->[0]->{'value'}, "Classes", "",
 		          "$text{'yes'},on", "$text{'no'},off",
 		      	  "$text{'default'},")."<br>\n";
-$rv .= "<table border>\n".
-       "<tr $tb> <td><b>$text{'mod_core_cname'}</b></td> ".
-       "<td><b>$text{'mod_core_ctype'}</b></td> </tr>\n";
-local $i = 0;
-foreach $c (@{$_[0]}, { }) {
-	local @w = @{$c->{'words'}};
-	$rv .= "<tr $cb>\n";
-	$rv .= "<td><input name=Class_n_$i size=10 value='$w[0]'></td>\n";
-	$rv .= "<td><select name=Class_t_$i>\n";
-	$rv .= sprintf "<option value=limit %s>%s</option>\n",
-		$w[1] eq 'limit' ? 'selected' : '', $text{'mod_core_climit'};
-	$rv .= sprintf "<option value=regex %s>%s</option>\n",
-		$w[1] eq 'regex' ? 'selected' : '', $text{'mod_core_cregex'};
-	$rv .= sprintf "<option value=ip %s>%s</option>\n",
-		$w[1] eq 'ip' ? 'selected' : '', $text{'mod_core_cip'};
-	$rv .= "</select>\n";
-	$rv .= "<input name=Class_v_$i size=20 value='$w[2]'></td>\n";
-	$rv .= "</tr>\n";
+$rv .= &ui_columns_start([ $text{'mod_core_cname'}, $text{'mod_core_ctype'}, ]);
+my $i = 0;
+foreach my $c (@{$_[0]}, { }) {
+	my @w = @{$c->{'words'}};
+	$rv .= &ui_columns_row([
+		&ui_textbox("Class_n_$i", $w[0], 8),
+		&ui_select("Class_t_$i", $w[1],
+			   [ [ 'limit', $text{'mod_core_climit'} ],
+			     [ 'regex', $text{'mod_core_cregex'} ],
+			     [ 'ip', $text{'mod_core_cip'} ] ])." ".
+		  &ui_textbox("Class_v_$i", $w[2], 20)
+		]);
 	$i++;
 	}
-$rv .= "</table>\n";
+$rv .= &ui_columns_end();
 return (2, $text{'mod_core_cls'}, $rv);
 }
 sub save_Class_Classes
@@ -636,23 +629,24 @@ else {
 
 sub edit_GroupPassword
 {
-local $rv = "<table border>\n";
-$rv .= "<tr $tb> <td><b>$text{'mod_core_gpname'}</b></td> ".
-       "<td><b>$text{'mod_core_gppass'}</b></td> </tr>\n";
-local $i = 0;
-foreach $g (@{$_[0]}) {
-	local @v = @{$g->{'words'}};
-	$rv .= "<tr $cb>\n";
-	$rv .= "<td><input name=GroupPassword_n_$i size=13 value='$v[0]'></td>\n";
-	$rv .= "<td><input type=radio name=GroupPassword_d_$i value='$v[1]' checked> $text{'mod_core_gpdef'}\n";
-	$rv .= "<input type=radio name=GroupPassword_d_$i value=0>\n";
-	$rv .= "<input name=GroupPassword_p_$i size=25></td> </tr>\n";
+my $rv = &ui_columns_start([ $text{'mod_core_gpname'},
+			     $text{'mod_core_gppass'} ]);
+my $i = 0;
+foreach my $g (@{$_[0]}) {
+	my @v = @{$g->{'words'}};
+	$rv .= &ui_columns_row([
+		&ui_textbox("GroupPassword_n_$i", $v[0], 13),
+		&ui_radio("GroupPassword_d_$i", $v[1],
+			  [ [ $v[1], $text{'mod_core_gpdef'} ],
+			    [ 0, &ui_textbox("GroupPassword_p_$i", undef, 25) ] ]),
+		]);
 	$i++;
 	}
-$rv .= "<tr $cb>\n".
-       "<td><input name=GroupPassword_n_$i size=13></td>\n".
-       "<td><input name=GroupPassword_p_$i size=35></td>\n".
-       "</tr> </table>\n";
+$rv .= &ui_columns_row([
+	&ui_textbox("GroupPassword_n_$i", undef, 13),
+	&ui_textbox("GroupPassword_d_$i", undef, 25),
+	]);
+$rv .= &ui_columns_end();
 return (2, $text{'mod_core_grouppassword'}, $rv);
 }
 sub save_GroupPassword
