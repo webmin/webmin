@@ -843,6 +843,8 @@ while (defined $line) {
 			opendir(SRCDIR, $src);
 			@srcs = grep { /^[a-zA-Z0-9_-]+$/ } readdir(SRCDIR);
 			closedir(SRCDIR);
+			@srcs = map { "$src/$_" } @srcs
+				if (@srcs);
 			}
 		else {
 			@srcs = glob($src);
