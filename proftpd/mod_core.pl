@@ -1410,19 +1410,18 @@ else { return ( [ "#$in{'User_id'}" ] ); }
 
 sub edit_UserAlias
 {
-local $rv = "<table border>\n".
-	    "<tr $tb> <td><b>$text{'mod_core_afrom'}</b></td> ".
-	    "<td><b>$text{'mod_core_ato'}</b></td> </tr>\n";
-local $i = 0;
-foreach $u (@{$_[0]}, { }) {
-	local @w = @{$u->{'words'}};
-	$rv .= "<tr $cb>\n";
-	$rv .= "<td><input name=UserAlias_f_$i size=15 value='$w[0]'></td>\n";
-	$rv .= "<td><input name=UserAlias_t_$i size=15 value='$w[1]'></td>\n";
-	$rv .= "</tr>\n";
+my $rv = &ui_columns_start([ $text{'mod_core_afrom'},
+			     $text{'mod_core_ato'} ]);
+my $i = 0;
+foreach my $u (@{$_[0]}, { }) {
+	my @w = @{$u->{'words'}};
+	$rv .= &ui_columns_row([
+		&ui_textbox("UserAlias_f_$i", $w[0], 15),
+		&ui_textbox("UserAlias_t_$i", $w[1], 15),
+		]);
 	$i++;
 	}
-$rv .= "</table>\n";
+$rv .= &ui_columns_end();
 return (2, $text{'mod_core_ualias'}, $rv);
 }
 sub save_UserAlias
@@ -1454,23 +1453,24 @@ else {
 
 sub edit_UserPassword
 {
-local $rv = "<table border>\n";
-$rv .= "<tr $tb> <td><b>$text{'mod_core_upname'}</b></td> ".
-       "<td><b>$text{'mod_core_uppass'}</b></td> </tr>\n";
-local $i = 0;
-foreach $u (@{$_[0]}) {
-	local @v = @{$u->{'words'}};
-	$rv .= "<tr $cb>\n";
-	$rv .= "<td><input name=UserPassword_n_$i size=13 value='$v[0]'></td>\n";
-	$rv .= "<td><input type=radio name=UserPassword_d_$i value='$v[1]' checked> $text{'mod_core_updef'}\n";
-	$rv .= "<input type=radio name=UserPassword_d_$i value=0>\n";
-	$rv .= "<input name=UserPassword_p_$i size=25></td> </tr>\n";
+my $rv = &ui_columns_start([ $text{'mod_core_upname'},
+			     $text{'mod_core_uppass'} ]);
+my $i = 0;
+foreach my $u (@{$_[0]}) {
+	my @v = @{$u->{'words'}};
+	$rv .= &ui_columns_row([
+		&ui_textbox("UserPassword_n_$i", $v[0], 13),
+		&ui_radio("UserPassword_d_$i", $v[1],
+			  [ [ $v[1], $text{'mod_core_updef'} ],
+			    [ 0, &ui_textbox("UserPassword_p_$i", "", 25) ] ])
+		]);
 	$i++;
 	}
-$rv .= "<tr $cb>\n".
-       "<td><input name=UserPassword_n_$i size=13></td>\n".
-       "<td><input name=UserPassword_p_$i size=35></td>\n".
-       "</tr> </table>\n";
+$rv .= &ui_columns_row([
+	&ui_textbox("UserPassword_n_$i", undef, 13),
+	&ui_textbox("UserPassword_p_$i", undef, 35),
+	]);
+$rv .= &ui_columns_end();
 return (2, $text{'mod_core_userpassword'}, $rv);
 }
 sub save_UserPassword
