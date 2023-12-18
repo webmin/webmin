@@ -39,6 +39,7 @@ type_3=Access Control
 type_4=Miscellaneous
 type_5=User and Group
 type_6=Authentication
+type_7=SSL Options
 
 virt_title=Virtual Server Options
 virt_header1=For $1
@@ -383,6 +384,17 @@ mod_readme_none=None
 mod_readme_edisplay=Missing readme files pattern
 
 mod_tls_engine=Enable SSL encryption?
+mod_tls_required=SSL required?
+mod_tls_ctrl=For control channel
+mod_tls_auth=For authentication
+mod_tls_authdata=For authentication and data
+mod_tls_file=SSL certificate file
+mod_tls_efile=SSL certificate file does not exist!
+mod_tls_key=SSL key file
+mod_tls_ekey=SSL key file does not exist!
+mod_tls_ca=SSL CA certificate file
+mod_tls_eca=SSL CA certificate file does not exist!
+mod_tls_none=None set
 
 start_err=Failed to start FTP server
 start_einetd=You cannot start the server daemon when in inetd mode.
