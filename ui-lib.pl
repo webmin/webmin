@@ -859,15 +859,31 @@ sub ui_bytesbox
 {
 my ($name, $bytes, $size, $dis, $tags, $defaultunits) = @_;
 my $units = 1;
+my $unit = 1024;
+
 if ($bytes eq '' && $defaultunits) {
 	$units = $defaultunits;
 	}
 else {
+	my @units_solid;
 	for(my $i=1; $i<=4; $i++) {
-		my $u = 1024**$i;
-		if ($bytes % $u == 0) {
+		my $u = $unit**$i;
+		if ($bytes >= $u) {
 			$units = $u;
+			if ($bytes % $u == 0 && $bytes/$u <= $u) {
+				push(@units_solid,
+					{ units => $units,
+					  size => $bytes/$u });
+				}
 			}
+		}
+	if (@units_solid) {
+		@units_solid = sort { $a->{'size'} <=> $b->{'size'} } @units_solid;
+		my $fsz = $bytes/$units;
+		my $fraction = $fsz - int($fsz);
+		my $decimal_nice = 
+			$fraction == 0 || $fraction == 0.25 || $fraction == 0.5 || $fraction == 0.75;
+		$units = $units_solid[0]->{'units'} if (!($fsz =~ /\./ && $decimal_nice));
 		}
 	}
 if ($bytes ne "") {
