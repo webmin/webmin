@@ -366,31 +366,15 @@ Returns an input for selecting a quota. Mainly for internal use.
 =cut
 sub quota_inputbox
 {
-if ($_[2]) {
+my ($name, $value, $bs) = @_;
+if ($bs) {
 	# We know the real size, so can offer units
-	local $sz = $_[1]*$_[2];
-	local $units = 1;
-	if ($sz >= 10*1024*1024*1024) {
-		$units = 1024*1024*1024;
-		}
-	elsif ($sz >= 10*1024*1024) {
-		$units = 1024*1024;
-		}
-	elsif ($sz >= 10*1024) {
-		$units = 1024;
-		}
-	else {
-		$units = 1;
-		}
-	$sz = $sz == 0 ? "" : sprintf("%.2f", ($sz*1.0)/$units);
-	return &ui_textbox($_[0], $sz, 8).
-	       &ui_select($_[0]."_units", $units,
-			 [ [ 1, "bytes" ], [ 1024, "kB" ], [ 1024*1024, "MB" ],
-			   [ 1024*1024*1024, "GB" ] ]);
+	local $sz = $value*$bs;
+	return &ui_bytesbox($name, $sz, 8);
 	}
 else {
 	# Just show blocks
-	return &ui_textbox($_[0], $_[1] == 0 ? "" : $_[1], 8);
+	return &ui_textbox($name, $value == 0 ? "" : $value, 8);
 	}
 }
 
