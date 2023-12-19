@@ -889,6 +889,8 @@ else {
 if ($bytes ne "") {
 	$bytes = sprintf("%.2f", ($bytes*1.0)/$units);
 	$bytes =~ s/\.00$//;
+	# Remove trailing zeros in decimal part
+	$bytes =~ s/(\.\d*?[1-9])0+$/$1/;
 	}
 $size = &ui_max_text_width($size || 8);
 return &ui_textbox($name, $bytes, $size, $dis, undef, $tags)." ".
