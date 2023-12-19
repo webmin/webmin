@@ -895,11 +895,12 @@ if ($bytes ne "") {
 $size = &ui_max_text_width($size || 8);
 return &ui_textbox($name, $bytes, $size, $dis, undef, $tags)." ".
        &ui_select($name."_units", $units,
-		 [ [ 1, "bytes" ],
-		   [ 1024, "kB" ],
-		   [ 1024*1024, "MB" ],
-		   [ 1024*1024*1024, "GB" ],
-		   [ 1024*1024*1024*1024, "TB" ] ], undef, undef, undef, $dis);
+		 [ [ 1, $text{"nice_size_b"} ],
+		   [ 1024, $text{"nice_size_kiB"} ],
+		   [ 1024*1024, $text{"nice_size_MiB"} ],
+		   [ 1024*1024*1024, $text{"nice_size_GiB"} ],
+		   [ 1024*1024*1024*1024, $text{"nice_size_TiB"} ],
+		   [ 1024*1024*1024*1024*1024, $text{"nice_size_PiB"} ] ], undef, undef, undef, $dis);
 }
 
 =head2 ui_upload(name, size, [disabled?], [tags])
