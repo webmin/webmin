@@ -862,20 +862,13 @@ my $units = 1;
 if ($bytes eq '' && $defaultunits) {
 	$units = $defaultunits;
 	}
-elsif ($bytes >= 10*1024*1024*1024*1024) {
-	$units = 1024*1024*1024*1024;
-	}
-elsif ($bytes >= 10*1024*1024*1024) {
-	$units = 1024*1024*1024;
-	}
-elsif ($bytes >= 10*1024*1024) {
-	$units = 1024*1024;
-	}
-elsif ($bytes >= 10*1024) {
-	$units = 1024;
-	}
 else {
-	$units = 1;
+	for(my $i=1; $i<=4; $i++) {
+		my $u = 1024**$i;
+		if ($bytes % $u == 0) {
+			$units = $u;
+			}
+		}
 	}
 if ($bytes ne "") {
 	$bytes = sprintf("%.2f", ($bytes*1.0)/$units);
