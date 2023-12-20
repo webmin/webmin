@@ -859,7 +859,7 @@ sub ui_bytesbox
 {
 my ($name, $bytes, $size, $dis, $tags, $defaultunits) = @_;
 my $units = 1;
-my $unit = 1024;
+my @units;
 
 if ($bytes eq '' && $defaultunits) {
 	$units = $defaultunits;
@@ -867,10 +867,15 @@ if ($bytes eq '' && $defaultunits) {
 else {
 	for(my $i=1; $i<=4; $i++) {
 		my $u = 1024**$i;
-		if ($bytes*4 % $u == 0) {
+		if ($bytes >= $u) {
 			$units = $u;
+			unshift(@units, { units => $units, size => $bytes/$u })
+				if ($bytes % $u == 0 && $bytes/$u <= $u);
 			}
 		}
+	$units = $units[0]->{'units'}
+		if (@units && !(($bytes/$units) =~ /\./ &&
+			($bytes/$units - int($bytes/$units)) =~ /^(0|0\.25|0\.5|0\.75)$/));
 	}
 if ($bytes ne "") {
 	$bytes = sprintf("%.2f", ($bytes*1.0)/$units);
