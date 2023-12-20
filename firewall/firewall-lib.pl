@@ -394,8 +394,8 @@ return undef;
 
 sub iptables_restore_command
 {
-return &has_command("ip${ipvx}tables-legacy-restore") ||
-       &has_command("ip${ipvx}tables-restore");
+return &has_command("ip${ipvx}tables-restore") ||
+       &has_command("ip${ipvx}tables-legacy-restore");
 }
 
 # iptables_restore()
@@ -409,8 +409,8 @@ return $? ? "<pre>$out</pre>" : undef;
 
 sub iptables_save_command
 {
-return &has_command("ip${ipvx}tables-legacy-save") ||
-       &has_command("ip${ipvx}tables-save");
+return &has_command("ip${ipvx}tables-save") ||
+       &has_command("ip${ipvx}tables-legacy-save");
 }
 
 # iptables_save()
