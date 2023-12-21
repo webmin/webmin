@@ -25,6 +25,15 @@ else {
 	print &ui_hidden("oldhost", $u->[0]);
 	print &ui_hidden("olddb", $u->[1]);
 	print &ui_hidden("olduser", $u->[2]);
+	if (&foreign_check("virtual-server")) {
+		&foreign_require("virtual-server");
+		my $d = &virtual_server::get_domain_by("mysql_user", $u->[2], "parent", "");
+		$d ||= &virtual_server::get_domain_by("user", $u->[2], "parent", "");
+		if ($d) {
+			print &ui_alert_box(&text('user_vwarning', "<tt>" .
+				&virtual_server::show_domain_name($d) . "</tt>"), "warn");
+			}
+		}
 	}
 print &ui_table_start($text{'db_header'}, undef, 2);
 %fieldmap = map { $_->{'field'}, $_->{'index'} }
