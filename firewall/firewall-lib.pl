@@ -394,8 +394,8 @@ return undef;
 
 sub iptables_restore_command
 {
-return &has_command("ip${ipvx}tables-legacy-restore") ||
-       &has_command("ip${ipvx}tables-restore");
+return &has_command("ip${ipvx}tables-restore") ||
+       &has_command("ip${ipvx}tables-legacy-restore");
 }
 
 # iptables_restore()
@@ -407,13 +407,18 @@ local $out = &backquote_logged("cd / && $rcmd <$ipvx_save 2>&1");
 return $? ? "<pre>$out</pre>" : undef;
 }
 
+sub iptables_save_command
+{
+return &has_command("ip${ipvx}tables-save") ||
+       &has_command("ip${ipvx}tables-legacy-save");
+}
+
 # iptables_save()
 # Saves the active firewall rules, and returns any error
 sub iptables_save
 {
-local $scmd = &has_command("ip${ipvx}tables-legacy-save") ||
-	      "ip${ipvx}tables-save";
-local $out = &backquote_logged("$scmd >$ipvx_save 2>&1");
+local $scmd = &iptables_save_command();
+local $out = &backquote_logged("cd / && $scmd >$ipvx_save 2>&1");
 return $? ? "<pre>$out</pre>" : undef;
 }
 
