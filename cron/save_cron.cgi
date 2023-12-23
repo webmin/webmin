@@ -22,12 +22,12 @@ else {
 # Check if this user is allowed to execute cron jobs
 if (&supports_users()) {
 	&can_use_cron($in{'user'}) ||
-		&error(&text('save_eallow', $in{'user'}));
+		&error(&text('save_eallow', &html_escape($in{'user'})));
 	}
 
 # Check module access control
 &can_edit_user(\%access, $in{'user'}) ||
-	&error(&text('save_ecannot', $in{'user'}));
+	&error(&text('save_ecannot', &html_escape($in{'user'})));
 
 @files = &unique((map { $_->{'file'} } @jobs),
 	         "$config{'cron_dir'}/$in{'user'}");
@@ -42,7 +42,7 @@ if (&supports_users()) {
 		&error($text{'save_euser'});
 		}
 	if (!defined(getpwnam($in{'user'}))) {
-		&error(&text('save_euser2', $in{'user'}));
+		&error(&text('save_euser2', &html_escape($in{'user'})));
 		}
 	}
 &parse_times_input($job, \%in);
