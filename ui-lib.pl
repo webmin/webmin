@@ -859,7 +859,7 @@ sub ui_bytesbox
 {
 my ($name, $bytes, $size, $dis, $tags, $defaultunits) = @_;
 my $units = 1;
-my @units;
+my $omorfi_unit;
 
 if ($bytes eq '' && $defaultunits) {
 	$units = $defaultunits;
@@ -869,12 +869,12 @@ else {
 		my $u = 1024**$i;
 		if ($bytes >= $u) {
 			$units = $u;
-			unshift(@units, { units => $units, size => $bytes/$u })
+			$omorfi_unit = $units
 				if ($bytes % $u == 0 && $bytes/$u <= $u);
 			}
 		}
-	$units = $units[0]->{'units'}
-		if (@units && !(($bytes/$units) =~ /\./ &&
+	$units = $omorfi_unit
+		if ($omorfi_unit && !(($bytes/$units) =~ /\./ &&
 			($bytes/$units - int($bytes/$units)) =~ /^(0|0\.25|0\.5|0\.75)$/));
 	}
 if ($bytes ne "") {
