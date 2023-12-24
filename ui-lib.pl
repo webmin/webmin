@@ -2539,7 +2539,7 @@ if ($type eq "success") { $color = "#3c763d"; }
 elsif ($type eq "info") { $color = "#31708f"; }
 elsif ($type eq "warn") { $color = "#8a6d3b"; }
 elsif ($type eq "danger") { $color = "#a94442"; }
-return "<span class=\"ui_text_color text_type_$type\" style=\"color: $color\">$text</span>\n";
+return "<span class=\"ui_text_color text_type_$type\" style=\"color: $color\">$text</span>";
 }
 
 =head2 ui_alert_box(msg, type)
