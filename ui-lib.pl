@@ -874,8 +874,7 @@ else {
 			}
 		}
 	$units = $omorfi_unit
-		if ($omorfi_unit && !(($bytes/$units) =~ /\./ &&
-			($bytes/$units - int($bytes/$units)) =~ /^(0|0\.25|0\.5|0\.75)$/));
+		if ($omorfi_unit && $bytes*4 % $units != 0);
 	}
 if ($bytes ne "") {
 	$bytes = sprintf("%.2f", ($bytes*1.0)/$units);
