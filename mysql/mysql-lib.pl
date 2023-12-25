@@ -617,29 +617,32 @@ print "</tr></table>\n";
 }
 
 # select_db(db)
+# Returns HTML for selecting a database
 sub select_db
 {
-local $rv;
-local @dbs = &list_databases();
+my ($db) = @_;
+my $rv;
+my @dbs = &list_databases();
+my @opts = map { [ &quote_mysql_database($_), $_ ] } @dbs;
 local $d;
 if ($access{'perms'} == 2 && $access{'dbs'} ne '*') {
 	# Can only select his own databases
-	$rv = &ui_select("dbs", $_[0],
-			 [ grep { &can_edit_db($_) } @dbs ], 1, 0, $_[0] ? 1 : 0);
+	@opts = grep { &can_edit_db($_->[1]) } @opts;
+	$rv = &ui_select("dbs", $db, \@opts, 1, 0, $_[0] ? 1 : 0);
 	}
 else {
 	# Can select any databases
-	local $ind = &indexof($_[0],@dbs) >= 0;
+	local $ind = &indexof($db, (map { $_->[0] } @opts)) >= 0;
 	local $js1 = "onChange='form.db_def[1].checked = true'";
 	local $js2 = "onClick='form.db_def[2].checked = true'";
-	$rv = &ui_radio("db_def", $_[0] eq '%' || $_[0] eq '' ? 1 :
+	$rv = &ui_radio("db_def", $db eq '%' || $db eq '' ? 1 :
 				  $ind ? 2 : 0,
 			[ [ 1, $text{'host_any'} ],
 			  [ 2, $text{'host_sel'}."&nbsp;".
-			    &ui_select("dbs", $_[0], \@dbs, 1, 0, 0, 0, $js1) ],
+			    &ui_select("dbs", $_[0], \@opts, 1, 0, 0, 0,$js1) ],
 			  [ 0, $text{'host_otherdb'}."&nbsp;".
-			       &ui_textbox("db", $_[0] eq '%' || $_[0] eq '' ||
-						 $ind ? '' : $_[0], 30, 0,
+			       &ui_textbox("db", $db eq '%' || $db eq '' ||
+						 $ind ? '' : $db, 30, 0,
 					   undef, $js2) ] ]);
 	}
 return $rv;
@@ -660,6 +663,16 @@ if (&supports_quoting()) {
 else {
 	return $rv;
 	}
+}
+
+# quote_mysql_database(name)
+# Returns a MySQL database name with % and _ characters escaped
+sub quote_mysql_database
+{
+local ($db) = @_;
+$db =~ s/_/\\_/g;
+$db =~ s/%/\\%/g;
+return $db;
 }
 
 # escapestr(string)
