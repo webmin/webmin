@@ -216,16 +216,14 @@ local ($name) = @_;
 local $maria = $gconfig{'real_os_type'} =~ /CentOS|Redhat|Scientific/ &&
 	       $gconfig{'real_os_version'} >= 7;
 return $name eq "apache" ? "httpd mod_.*" :
-       $name eq "dhcpd" && $gconfig{'os_type'} >= 16 ? "dhcp-server" :
-       $name eq "dhcpd" ? "dhcp" :
+       $name eq "dhcpd" ? "dhcp dhcp-server --skip-broken" :
        $name eq "mysql" && $maria ? "mariadb mariadb-server mariadb-devel" :
        $name eq "mysql" && !$maria ? "mysql mysql-server mysql-devel" :
        $name eq "openssh" ? "openssh openssh-server" :
        $name eq "postgresql" ? "postgresql postgresql-libs postgresql-server" :
        $name eq "openldap" ? "openldap-servers openldap-clients" :
        $name eq "ldap" ? "nss-pam-ldapd pam_ldap nss_ldap" :
-       $name eq "virtualmin-modules" ? "wbm-.*" :
-       			  $name;
+       $name eq "virtualmin-modules" ? "wbm-.*" : $name;
 }
 
 # update_system_repo(package)
