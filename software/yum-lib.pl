@@ -213,12 +213,9 @@ return undef;
 sub update_system_resolve
 {
 local ($name) = @_;
-local $maria = $gconfig{'real_os_type'} =~ /CentOS|Redhat|Scientific/ &&
-	       $gconfig{'real_os_version'} >= 7;
 return $name eq "apache" ? "httpd mod_.*" :
        $name eq "dhcpd" ? "dhcp dhcp-server --skip-broken" :
-       $name eq "mysql" && $maria ? "mariadb mariadb-server mariadb-devel" :
-       $name eq "mysql" && !$maria ? "mysql mysql-server mysql-devel" :
+       $name eq "mysql" ? "perl-DBD-MySQL mariadb mariadb-server mysql mysql-server --skip-broken" :
        $name eq "openssh" ? "openssh openssh-server" :
        $name eq "postgresql" ? "postgresql postgresql-libs postgresql-server" :
        $name eq "openldap" ? "openldap-servers openldap-clients" :
