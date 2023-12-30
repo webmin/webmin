@@ -19,6 +19,7 @@ if ($in{'source'} == 3 && &foreign_installed("package-updates")) {
 	  "/package-updates/update.cgi?".
 	  "redir=".&urlize($in{'return'} || "/$module_name/").
 	  "&redirdesc=".&urlize($in{'returndesc'} || $module_info{'desc'}).
+	  "&flags=".&urlize($in{'flags'}).
 	  "&mode=new".
 	  "&".join("&", map { "u=".&urlize($_) }
 			    split(/\s+/, $in{'update'})));

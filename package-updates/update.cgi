@@ -112,8 +112,7 @@ else {
 
 		# Do it
 		$msg = $in{'mode'} eq 'new' ? 'update_pkg2' : 'update_pkg';
-		$flags = join(" ", map { /^--/ ? $_ : () } @pkgs);
-		@pkgs = grep { !/^--/ } @pkgs;
+		$flags = $in{'flags'};
 		&start_update_progress([ map { (split(/\//, $_))[0] } @pkgs ]);
 		if ($config{'update_multiple'} && @pkgs > 1) {
 			# Update all packages at once

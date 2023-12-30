@@ -212,15 +212,18 @@ return undef;
 # the name used by YUM.
 sub update_system_resolve
 {
-local ($name) = @_;
-return $name eq "apache" ? "httpd mod_.*" :
-       $name eq "dhcpd" ? "dhcp dhcp-server --skip-broken" :
-       $name eq "mysql" ? "perl-DBD-MySQL mariadb mariadb-server mysql mysql-server --skip-broken" :
-       $name eq "openssh" ? "openssh openssh-server" :
-       $name eq "postgresql" ? "postgresql postgresql-libs postgresql-server" :
-       $name eq "openldap" ? "openldap-servers openldap-clients" :
-       $name eq "ldap" ? "nss-pam-ldapd pam_ldap nss_ldap" :
-       $name eq "virtualmin-modules" ? "wbm-.*" : $name;
+my ($name) = @_;
+$name = $name eq "apache" ? "httpd mod_.*" :
+        $name eq "dhcpd" ? "dhcp dhcp-server" :
+        $name eq "mysql" ? "perl-DBD-MySQL mariadb mariadb-server mysql mysql-server" :
+        $name eq "openssh" ? "openssh openssh-server" :
+        $name eq "postgresql" ? "postgresql postgresql-libs postgresql-server" :
+        $name eq "openldap" ? "openldap-servers openldap-clients" :
+        $name eq "ldap" ? "nss-pam-ldapd pam_ldap nss_ldap" :
+        $name eq "virtualmin-modules" ? "wbm-.*" : $name;
+my $flags;
+$flags = '--skip-broken' if ($_[0] =~ /^dhcpd|mysql$/);
+return wantarray ? ($name, $flags) : $name;
 }
 
 # update_system_repo(package)
