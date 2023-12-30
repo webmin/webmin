@@ -112,7 +112,6 @@ else {
 
 		# Do it
 		$msg = $in{'mode'} eq 'new' ? 'update_pkg2' : 'update_pkg';
-		$flags = $in{'flags'};
 		&start_update_progress([ map { (split(/\//, $_))[0] } @pkgs ]);
 		if ($config{'update_multiple'} && @pkgs > 1) {
 			# Update all packages at once
@@ -125,9 +124,8 @@ else {
 			print &text($msg, "<tt>".&html_escape(join(" ", @pkgnames))."</tt>"),
 			      "<br>\n";
 			print "<ul data-package-updates='1'>\n";
-			push(@pkgnames, $flags) if ($flags);
 			@got = &package_install_multiple(
-				\@pkgnames, $pkgsystem, $in{'mode'} eq 'new');
+				\@pkgnames, $pkgsystem, $in{'mode'} eq 'new', $in{'flags'});
 			print "</ul><br>\n";
 			}
 		else {
@@ -137,9 +135,8 @@ else {
 				next if ($donedep{$p});
 				print &text($msg, "<tt>@{[&html_escape($p)]}</tt>"),"<br>\n";
 				print "<ul data-package-updates='2'>\n";
-				$p = "$p $flags" if ($flags);
 				@pgot = &package_install(
-					$p, $s, $in{'mode'} eq 'new');
+					$p, $s, $in{'mode'} eq 'new', $in{'flags'});
 				foreach $g (@pgot) {
 					$donedep{$g}++;
 					}

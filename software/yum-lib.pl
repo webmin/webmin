@@ -19,12 +19,17 @@ sub list_update_system_commands
 return ($yum_command);
 }
 
-# update_system_install([packages], [&in])
+# update_system_install([packages], [&in], [no-force], [flags])
 # Install some package with yum
 sub update_system_install
 {
 local $update = $_[0] || $in{'update'};
 local $in = $_[1];
+local $force = !$_[2];
+local $flags = $_[3];
+local $qflags;
+$qflags = &trim(join(" ", map { quotemeta($_) } split(/ /, $flags)))
+	if ($flags);
 $update =~ s/\.\*/\*/g;
 local $enable;
 if ($in->{'enablerepo'}) {
@@ -57,7 +62,9 @@ else {
 
 # Work out the command to run, which may enable some repos
 my $uicmd = "$yum_command $enable -y $cmd ".join(" ", @names);
+$uicmd .= " $flags" if ($flags);
 my $fullcmd = "$yum_command $enable -y $cmd $update";
+$fullcmd .= " $qflags" if ($flags);
 foreach my $u (@updates) {
 	my $repo = &update_system_repo($u);
 	if ($repo) {
