@@ -779,17 +779,21 @@ else {
 }
 
 # get_proftpd_version([&output])
+# Returns the proftpd version as a decimal, like 1.36
 sub get_proftpd_version
 {
-local $out = &backquote_command("$config{'proftpd_path'} -v 2>&1");
-${$_[0]} = $out if ($_[0]);
+my ($rv) = @_;
+my $out = &backquote_command("$config{'proftpd_path'} -v 2>&1");
+my @rv;
+$$rv = $out if ($rv);
 if ($out =~ /ProFTPD\s+Version\s+(\d+)\.([0-9\.]+)/i ||
     $out =~ /ProFTPD\s+(\d+)\.([0-9\.]+)/i) {
-	local ($v1, $v2) = ($1, $2);
+	my $fullver = $1.".".$2;
+	my ($v1, $v2) = ($1, $2);
 	$v2 =~ s/\.//g;
-	return "$v1.$v2";
+	@rv = ("$v1.$v2", $fullver);
 	}
-return undef;
+return wantarray ? @rv : $rv[0];
 }
 
 # apply_configuration()
@@ -803,7 +807,8 @@ local $st = &find_directive("ServerType", $conf);
 if ($st eq 'inetd') {
 	return $text{'stop_einetd'};
 	}
-if (&get_proftpd_version() > 1.22) {
+my $ver = $site{'version'} || &get_proftpd_version();
+if ($ver > 1.22) {
 	# Stop and re-start
 	local $err = &stop_proftpd();
 	return $err if ($err);

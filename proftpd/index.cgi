@@ -33,10 +33,10 @@ if (!@$conf) {
 	}
 
 # Check if the executable has changed ..
-if ($site{'size'} != $st[7]) {
+if ($site{'size'} != $st[7] || !$site{'version'} || !$site{'fullversion'}) {
 	# Check if it really is proftpd and the right version
 	$site{'size'} = $st[7];
-	$ver = &get_proftpd_version(\$out);
+	($ver, $fullver) = &get_proftpd_version(\$out);
 	if (!$ver) {
 		&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 			&help_search_link("proftpd", "man", "doc", "google"));
@@ -49,6 +49,7 @@ if ($site{'size'} != $st[7]) {
 		exit;
 		}
 	$site{'version'} = $ver;
+	$site{'fullversion'} = $fullver;
 	if ($site{'version'} < 0.99) {
 		&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 			&help_search_link("proftpd", "man", "doc", "google"));
@@ -75,7 +76,7 @@ if ($site{'size'} != $st[7]) {
 
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	&help_search_link("proftpd", "man", "doc", "google"),
-	undef, undef, &text('index_version', $site{'version'}));
+	undef, undef, &text('index_version', $site{'fullversion'}));
 $conf = &get_config();
 
 # Display global category icons
@@ -220,7 +221,7 @@ if (!$inet) {
 if (!$inet && $pid) {
 	print &ui_buttons_row("apply.cgi",
 			      $text{'index_apply'},
-			      &get_proftpd_version() > 1.22 ? 
+			      $site{'version'} > 1.22 ? 
 				$text{'index_applymsg2'} :
 				$text{'index_applymsg'});
 	print &ui_buttons_row("stop.cgi",
