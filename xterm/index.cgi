@@ -206,7 +206,27 @@ if ($http_host_conf) {
 			}
 		$http_host_conf =~ s/[\/]+$//g;
 		}
-my $http_host = $http_host_conf || "$ws_proto://$ENV{'HTTP_HOST'}";
+
+# Get the hostname from the HTTP_REFERER
+my $referer_host;
+if ($ENV{'HTTP_REFERER'} =~ m|^https?://([^:/]+)(?::\d+)?/|i) {
+    $referer_host = $1;
+}
+
+# Check if the referer hostname is equal to ENV(HTTP_HOST)
+if ($referer_host && $referer_host eq $ENV{'HTTP_HOST'}) {
+    $http_real_host = "$ws_proto://$ENV{'HTTP_HOST'}";
+} elsif ($referer_host && $referer_host =~ m|^(.*):10000$|) {
+    $http_real_host = "$ws_proto://$ENV{'HTTP_HOST'}";
+} elsif ($referer_host) {
+    $http_real_host = "$ws_proto://$referer_host:10000";
+}
+
+# Define http_host variable
+my $http_host = $http_host_conf || $http_real_host;
+
+#my $http_host = $http_host_conf || "$ws_proto://$ENV{'HTTP_HOST'}";
+
 my $url = "$http_host/$module_name/ws-$port";
 my $canvasAddon = $termlinks->{'js'}[3];
 my $webGLAddon = $termlinks->{'js'}[4];
