@@ -1203,7 +1203,7 @@ return &ui_radio($name, $value, [ [ $yes, $text{'yes'} ],
 				  [ $no, $text{'no'} ] ], $dis);
 }
 
-=head2 ui_radio_row(name, value, &arrref)
+=head2 ui_radio_row(name, value, &arrref, [new-line])
 
 Radio buttons, with a HTML elements places after each one, and
 dependent HTML elements disabled if the radio button is not selected.
@@ -1221,11 +1221,14 @@ Array reference of elements, each containing:
     2.1. A label for the radio button
     2.2. A list (array) of HTML elements to be displayed after the radio button
 
+=item newline - Set to 1 to start a new line after each radio button.
+
 =cut
 sub ui_radio_row
 {
-my ($name, $value, $arrref) = @_;
 return &theme_ui_radio_row(@_) if (defined(&theme_ui_radio_row));
+my ($name, $value, $arrref, $newline) = @_;
+$newline = "<br>" if ($newline == 1);
 my $id = &substitute_pattern('[a-f0-9]{20}');
 my $rv = "<span class='ui_radio_row_wrap ui_radio_row_wrap_${id}'>";
 for (my $i = 0; $i < @$arrref; $i++) {
@@ -1236,6 +1239,7 @@ for (my $i = 0; $i < @$arrref; $i++) {
 	$rv .= "<span class='ui_radio_row ui_radio_row_$arrref->[$i]->[0]'>".
 	 		$arrref_html.
 	 	"</span>" if ($arrref->[$i]->[1]->[0]);
+	$rv .= $newline;
 	}
 $rv .= "</span>";
 my $js = <<EOF;
