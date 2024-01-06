@@ -74,12 +74,12 @@ if ($DEF) {
 	my $dbpurge_def = $time_in_seconds == 86400 ? 1 : $dbpurgestd ? 0 : 2;
 	my $depurgeagelabeled = $dbpurge_def == 2 ? &seconds_to_time($dbpurgeage) : undef;
 	print &ui_table_row($text{'config_dbpurgeage'},
-		&ui_radio('dbpurgeage', $dbpurge_def,
-		[ [ 1, $text{'config_dbpurgeagedef'}."&nbsp;" ],
-		  [ 0, $text{'config_dbpurgeagesel'}."&nbsp;".
-		  	&ui_select("dbpurgeagesel", $time_in_seconds, \@dbpurgeages) ],
-		  [ 2, $text{'config_dbpurgeagecus'}."&nbsp;".
-		  	&ui_textbox("dbpurgeagecus", $depurgeagelabeled, 15) ]
+		&ui_radio_row('dbpurgeage', $dbpurge_def,
+		[ [ 1, [ $text{'config_dbpurgeagedef'} ] ],
+		  [ 0, [ $text{'config_dbpurgeagesel'},
+		  	 &ui_select("dbpurgeagesel", $time_in_seconds, \@dbpurgeages) ] ],
+		  [ 2, [ $text{'config_dbpurgeagecus'},
+		  	&ui_textbox("dbpurgeagecus", $depurgeagelabeled, 15) ] ]
 		]));
 	}
 
