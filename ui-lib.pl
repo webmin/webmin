@@ -1203,6 +1203,49 @@ return &ui_radio($name, $value, [ [ $yes, $text{'yes'} ],
 				  [ $no, $text{'no'} ] ], $dis);
 }
 
+=head2 ui_radio_row(name, value, &arrref)
+
+Radio buttons, with a HTML elements places after each one, and
+dependent HTML elements disabled if the radio button is not selected.
+
+=item name - HTML name of the inputs.
+
+=item value - Option selected by default, typically 1 or 0.
+
+=item array reference of elements, each containing a submited value and displayed HTML.
+
+Array reference of elements, each containing:
+
+  1. The value for the radio button
+  2. An array reference of HTML elements to be displayed after the radio button
+    2.1. A label for the radio button
+    2.2. A list (array) of HTML elements to be displayed after the radio button
+
+=cut
+sub ui_radio_row
+{
+my ($name, $value, $arrref) = @_;
+return &theme_ui_radio_row(@_) if (defined(&theme_ui_radio_row));
+my $id = &substitute_pattern('[a-f0-9]{20}');
+my $rv = "<span class='ui_radio_row_wrap ui_radio_row_wrap_${id}'>";
+for (my $i = 0; $i < @$arrref; $i++) {
+	$rv .= &ui_radio($name, $value, [ [ $arrref->[$i]->[0], $arrref->[$i]->[1]->[0] ] ], $dis);
+	shift @{$arrref->[$i]->[1]};
+	my $arrref_html = join('', map { "<span class='ui_radio_row_inner_${i}'>$_</span>" }
+		@{$arrref->[$i]->[1]});
+	$rv .= "<span class='ui_radio_row ui_radio_row_$arrref->[$i]->[0]'>".
+	 		$arrref_html.
+	 	"</span>" if ($arrref->[$i]->[1]->[0]);
+	}
+$rv .= "</span>";
+my $js = <<EOF;
+<script type='text/javascript'>
+!function(){const e="ui_radio_row",t='[type="radio"]',n=document.querySelector("."+e+"_wrap_$id"),c=n.querySelectorAll("input"+t),o=n.querySelector("input"+t+":checked"),i=new Event("input");c.forEach((function(c){c.addEventListener("input",(function(){n.querySelectorAll("select, input:not("+t+")").forEach((function(e){e.disabled=!1})),c.checked&&n.querySelectorAll("."+e+":not(."+e+"_"+this.value+") select, ."+e+":not(."+e+"_"+this.value+") input:not("+t+")").forEach((function(e){e.disabled=!0}))}))})),o.dispatchEvent(i)}();
+</script>
+EOF
+return $rv.$js;
+}
+
 =head2 ui_checkbox(name, value, label, selected?, [tags], [disabled?])
 
 Returns HTML for a single checkbox. Parameters are :
