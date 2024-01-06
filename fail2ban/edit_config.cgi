@@ -37,15 +37,15 @@ my $logtarget = &find_value("logtarget", $def);
 my $mode = $logtarget eq "" ? "" :
 	   $logtarget =~ /^STDOUT|STDERR|SYSLOG$/ ? $logtarget : "file";
 print &ui_table_row($text{'config_logtarget'},
-	&ui_radio("logtarget_def", $mode,
-		  [ [ "", $text{'config_default'}."<br>" ],
-		    [ "STDOUT", "STDOUT<br>" ],
-		    [ "STDERR", "STDERR<br>" ],
-		    [ "SYSLOG", $text{'config_syslog'}."<br>" ],
-		    [ "file", $text{'config_file'}." ".
+		&ui_radio_row('logtarget_def', $mode,
+		[ [ "", [ $text{'config_default'} ] ],
+		  [ "STDOUT", [ "STDOUT" ] ],
+		  [ "STDERR", [ "STDERR" ] ],
+		  [ "SYSLOG", [ $text{'config_syslog'} ] ],
+		  [ "file", [ $text{'config_file'},
 		      &ui_textbox("logtarget",
-				  $mode eq "file" ? $logtarget : "", 50) ]
-		  ]));
+				  $mode eq "file" ? $logtarget : "", 50) ] ]
+		  ], 1));
 
 # Socket file
 my $socket = &find_value("socket", $def);
