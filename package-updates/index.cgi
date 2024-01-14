@@ -217,7 +217,8 @@ print &ui_table_row($text{'index_email'},
 # Install or just notify?
 print &ui_table_row($text{'index_action'},
 		    &ui_radio("action", int($config{'sched_action'}),
-			       [ [ 0, $text{'index_action0'} ],
+			       [ [ -1, $text{'index_action-1'} ],
+			         [ 0, $text{'index_action0'} ],
 			         [ 1, $text{'index_action1'} ],
 			         [ 2, $text{'index_action2'} ] ]));
 

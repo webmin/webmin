@@ -12,9 +12,6 @@ if ($ARGV[0] eq "--debug" || $ARGV[0] eq "-debug") {
 &flush_package_caches();
 &clear_repository_cache();
 @todo = &list_possible_updates();
-foreach $a (@todo) {
-	$a->{'level'} = $a->{'security'} ? 1 : 2;
-	}
 
 # Install packages that are needed
 $tellcount = 0;
@@ -22,7 +19,8 @@ $tellcount = 0;
 &start_update_progress([ map { $_->{'name'} } @todo ]);
 foreach $t (@todo) {
 	next if ($already{$t->{'update'}});
-	if ($t->{'level'} <= $config{'sched_action'}) {
+	if ($config{'sched_action'} == 2 ||
+	    $config{'sched_action'} == 1 && $t->{'security'}) {
 		# Can install
 		$body .= "An update to $t->{'name'} from $t->{'oldversion'} to $t->{'version'} is needed.\n";
 		($out, $done) = &capture_function_output(
@@ -37,7 +35,9 @@ foreach $t (@todo) {
 			$already{$p}++;
 			}
 		}
-	else {
+	elsif ($config{'sched_action'} == 1 ||
+	       $config{'sched_action'} == 0 ||
+	       $config{'sched_action'} == -1 && $t->{'security'}) {
 		# Just tell the user about it
 		$body .= "An update to $t->{'name'} from $t->{'oldversion'} to $t->{'version'} is available.\n\n";
 		$tellcount++;
