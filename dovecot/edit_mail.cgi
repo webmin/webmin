@@ -10,11 +10,11 @@ print &ui_table_start($text{'mail_header'}, "width=100%", 4);
 
 # Mail file location. Old versions used default_mail_env, new uses mail_location
 $envmode = 4;
-if (&find("mail_location", $conf, 2)) {
-	$env = &find_value("mail_location", $conf);
+if (&find("default_mail_env", $conf, 2)) {
+	$env = &find_value("default_mail_env", $conf);
 	}
 else {
-	$env = &find_value("default_mail_env", $conf);
+	$env = &find_value("mail_location", $conf);
 	}
 if ($env =~ s/:INDEX=([^:]+)//) {
 	$index = $1;

@@ -577,4 +577,83 @@ if ($?) {
 	}
 }
 
+# Convert human readable time to seconds
+sub time_to_seconds
+{
+my ($time) = @_;
+my $seconds;
+my ($number, $unit) = $time =~ /^(\d+)\s*(year|years|month|months|week|weeks|day|days|hour|hours|min|minute|minutes|sec|second|seconds|y|mo|w|d|h|m|s)$/;
+if ($number && $unit) {
+	$seconds = $number if ($unit =~ /^s/);
+	$seconds = $number * 60 if ($unit =~ /^m$|^min/);
+	$seconds = $number * 3600 if ($unit =~ /^h/);
+	$seconds = $number * 86400 if ($unit =~ /^d/);
+	$seconds = $number * 604800 if ($unit =~ /^w/);
+	$seconds = $number * 2629800 if ($unit =~ /^mo/);
+	$seconds = $number * 31557600 if ($unit =~ /^y/);
+	}
+else {
+	$seconds = int($time);
+	}
+return $seconds;
+}
+
+# Convert seconds to human readable time
+sub seconds_to_time {
+    my ($seconds) = @_;
+    my ($number, $unit) = $seconds =~ /^(\d+)\s*(year|years|month|months|week|weeks|day|days|hour|hours|min|minute|minutes|sec|second|seconds|y|mo|w|d|h|m|s)$/;
+    return $seconds if ($unit);
+    my $time;
+    if ($seconds >= 31557600) {
+	my $years = int($seconds / 31557600);
+        $time = $years . " " .
+		($years > 1 ? $text{'config_dbpurgeagecusyrs'} :
+			$text{'config_dbpurgeagecusyr'});
+    } elsif ($seconds >= 2629800) {
+	my $months = int($seconds / 2629800);
+        $time = $months . " " .
+		($months > 1 ? $text{'config_dbpurgeagecusmos'} :
+			$text{'config_dbpurgeagecusmo'});
+    } elsif ($seconds >= 604800) {
+	my $weeks = int($seconds / 604800);
+        $time = $weeks . " " .
+		($weeks > 1 ? $text{'config_dbpurgeagecuswks'} :
+			$text{'config_dbpurgeagecuswk'});
+    } elsif ($seconds >= 86400) {
+	my $days = int($seconds / 86400);
+        $time = $days . " " .
+		($days > 1 ? $text{'config_dbpurgeagecusdays'} :
+			$text{'config_dbpurgeagecusday'});
+    } elsif ($seconds >= 3600) {
+	my $hours = int($seconds / 3600);
+        $time = $hours . " " .
+		($hours > 1 ? $text{'config_dbpurgeagecushrs'} :
+			$text{'config_dbpurgeagecushr'});
+    } elsif ($seconds >= 60) {
+	my $minutes = int($seconds / 60);
+        $time = $minutes . " " .
+		($minutes > 1 ? $text{'config_dbpurgeagecusmins'} :
+			$text{'config_dbpurgeagecusmin'});
+    } else {
+        $time = $seconds . " " .
+		(int($seconds / 60) > 1 ? $text{'config_dbpurgeagecussecs'} :
+			$text{'config_dbpurgeagecussec'});
+    }
+    return $time;
+}
+
+# Test if given format is correct
+sub time_to_seconds_error
+{
+my ($time) = @_;
+my ($seconds) = $time =~ /^(\d+)$/;
+return 0 if ($seconds);
+my ($number, $unit) = $time =~ /^(\d+)\s*(year|years|month|months|week|weeks|day|days|hour|hours|min|minute|minutes|sec|second|seconds|y|mo|w|d|h|m|s)$/;
+return 0 if ($number && $unit);
+my ($ewrongunit) = $time =~ /^\d+\s*(\S+)\s*$/;
+return &text('config_ewrongunit', $ewrongunit) if ($ewrongunit);
+return $text{'config_ewrongtime'} if ($time !~ /^(\d+)$/ || $time == 0);
+return 0;
+}
+
 1;

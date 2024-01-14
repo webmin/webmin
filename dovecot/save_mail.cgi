@@ -31,11 +31,11 @@ if ($in{'controlmode'}) {
 	$env .= ":CONTROL=".$in{'control'};
 	}
 
-if (&find("mail_location", $conf, 2)) {
-	&save_directive($conf, "mail_location", $env eq "" ? undef : $env);
+if (&find("default_mail_env", $conf, 2)) {
+	&save_directive($conf, "default_mail_env", $env eq "" ? undef : $env);
 	}
 else {
-	&save_directive($conf, "default_mail_env", $env eq "" ? undef : $env);
+	&save_directive($conf, "mail_location", $env eq "" ? undef : $env);
 	}
 
 # Idle intervals
