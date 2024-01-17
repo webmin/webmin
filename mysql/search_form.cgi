@@ -27,7 +27,7 @@ for($i=0; $i<10; $i++) {
 		[ [ "", "&nbsp;" ],
 		  map { [ $_->{'field'}, $_->{'field'} ] } @str ]),"</td>\n";
 	print "<td>",&ui_select("match_$i", 0,
-		[ map { [ $_, $text{'view_match'.$_} ] } (0.. 3) ]),"</td>\n";
+		[ map { [ $_, $text{'view_match'.$_} ] } (0.. 5) ]),"</td>\n";
 	print "<td>",&ui_textbox("for_$i", undef, 30),"</td>\n";
 	print "</tr>\n";
 	}
