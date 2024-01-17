@@ -9,7 +9,8 @@ $init_script = "$init::config{'init_dir'}/ip${ipvx}tables";
 sub check_iptables
 {
 &foreign_require("init");
-&init::action_status("ip${ipvx}tables") > 0 || return $text{'redhat_einstalled'};
+&init::action_status("ip${ipvx}tables") > 0 ||
+	return &text('redhat_einstalled2', "ip${ipvx}tables");
 return undef if ($gconfig{'os_type'} eq 'trustix-linux');
 return undef if ($gconfig{'os_type'} eq 'redhat-linux' &&
 		 $gconfig{'os_version'} > 10);
