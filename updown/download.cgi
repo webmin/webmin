@@ -22,7 +22,7 @@ foreach $u (@urls) {
 		$host = $1; $page = $3;
 		}
 	else {
-		&error(&text('download_eurl', $u));
+		&error(&text('download_eurl', &html_escape($u)));
 		}
 	if ($host =~ /^([^:\@]+):([^:\@]+)\@(\S+)/) {
 		$user = $1;
@@ -41,13 +41,14 @@ foreach $u (@urls) {
 	}
 $in{'dir'} || &error($text{'upload_edir'});
 &can_write_file($in{'dir'}) ||
-	&error(&text('download_eaccess', "<tt>$in{'dir'}</tt>", $!));
+	&error(&text('download_eaccess',
+		"<tt>".&html_escape($in{'dir'})."</tt> : " . $!));
 $download{'dir'} = $in{'dir'};
 if ($can_mode != 3) {
 	# User can be entered
 	scalar(@uinfo = getpwnam($in{'user'})) || &error($text{'upload_euser'});
 	&can_as_user($in{'user'}) ||
-		&error(&text('download_eucannot', $in{'user'}));
+		&error(&text('download_eucannot', &html_escape($in{'user'})));
 	$download{'uid'} = $uinfo[2];
 	$in{'group_def'} || scalar(@ginfo = getgrnam($in{'group'})) ||
 		&error($text{'upload_egroup'});
@@ -149,7 +150,7 @@ else {
 			}
 		}
 	if ($error) {
-		print "<p><b>",&text('download_failed', $error),"</b><p>\n";
+		print "<p><b>",&text('download_failed', &html_escape($error)),"</b><p>\n";
 		}
 
 	&ui_print_footer("index.cgi?mode=download", $text{'index_return'});
