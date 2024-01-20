@@ -458,11 +458,21 @@ return &check_ipaddress($_[0]);
 # get_hostname()
 sub get_hostname
 {
+# First try /etc/hostname
+my $hn = &read_file_contents("/etc/hostname");
+$hn =~ s/\r|\n//g;
+if ($hn) {
+	return $hn;
+	}
+
+# Fall back to /etc/sysconfig/network
 my %conf;
 &read_env_file($network_config, \%conf);
 if ($conf{'HOSTNAME'}) {
 	return $conf{'HOSTNAME'};
 	}
+
+# Finally fall back to live hostname
 return &get_system_hostname();
 }
 
