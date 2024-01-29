@@ -276,7 +276,7 @@ foreach $iface (@ifaces) {
 			if ($o->[0] eq 'gateway' ||
 			    $o->[0] eq 'pre-up' && $o->[1] =~ /brctl/ ||
 			    $o->[0] =~ /^(pre-)?up$/ && $o->[1] =~ /ip\s+route/ ||
-			    $o->[0] eq 'post-up' && $o->[1] =~ /iptables-restore/) {
+			    $o->[0] eq 'post-up') {
 				push(@options, $o);
 				}
 			}
@@ -986,7 +986,7 @@ while (defined ($line=<OLDCFGFILE>)) {
 		}
 	# inside modify region or not ?
 	elsif ($inside_modify_region == 0) {
-               &print_tempfile(NEWCFGFILE, $line);
+		&print_tempfile(NEWCFGFILE, $line);
 		}
 	else {
 		# should the iface line be changed or the options ?
@@ -999,8 +999,8 @@ while (defined ($line=<OLDCFGFILE>)) {
                if ($mode == 0 && $new_options_wrote == 0) {
                        $new_options_wrote = 1;
                        foreach $option (@$options) {
-                               my ($param, $value) = @$option;
-                               &print_tempfile(NEWCFGFILE, "\t$param $value\n");
+				my ($param, $value) = @$option;
+				&print_tempfile(NEWCFGFILE,"\t$param $value\n");
 				}
 			}
 		}
