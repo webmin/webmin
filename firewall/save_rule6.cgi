@@ -149,11 +149,11 @@ else {
 		}
 	if (&parse_mode("source", $rule, "s")) {
 		&check_ipmask($in{'source'}) || &error($text{'save_esource'});
-		$rule->{'s'}->[1] = $in{'source'};
+		$rule->{'s'}->[1] = join(",", split(/[ \t\r\n,]+/, $in{'source'}));
 		}
 	if (&parse_mode("dest", $rule, "d")) {
 		&check_ipmask($in{'dest'}) || &error($text{'save_edest'});
-		$rule->{'d'}->[1] = $in{'dest'};
+		$rule->{'d'}->[1] = join(",", split(/[ \t\r\n,]+/, $in{'dest'}));
 		}
 	if (&parse_mode("in", $rule, "i")) {
 		$in{'in'} ne '' || $in{'in_other'} =~ /^\S+$/ ||
