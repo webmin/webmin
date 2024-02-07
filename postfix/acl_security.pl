@@ -11,7 +11,7 @@ sub acl_security_form
 {
 local $o;
 foreach $o (@acl_pages) {
-	print &ui_table_row($text{'acl_'.$o},
+	print &ui_table_row($text{'acl_'.$o} || $o,
 			    &ui_yesno_radio($o, $_[0]->{$o} ? 1 : 0));
 	}
 print &ui_table_row($text{'acl_dir'},

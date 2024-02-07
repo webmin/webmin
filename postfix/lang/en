@@ -463,6 +463,8 @@ acl_postfinger=Can check postfix configuration?
 acl_manual=Can edit config file?
 acl_dir=Allowed directory for map files
 acl_bcc=Can edit BCC mapping?
+acl_body=Can edit body checks?
+acl_dependent=Can edit sender dependent transport maps?
 
 boxes_title=User Mailboxes
 boxes_user=User
