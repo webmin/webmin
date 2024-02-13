@@ -15,7 +15,7 @@ index_identok=Search For:
 index_all=All Packages
 index_return=module index
 index_treturn=package tree
-index_tree=Package Tree
+index_tree2=Browse Package Tree
 index_epackagecmd=The $1 package system requires the $2 command
 index_eupdatecmd=The $1 update system requires the $2 command
 index_epackagecheck=The selected package management system is not valid : $1.<br>You may need to select a different system on the <a href='$2'>module configuration</a> page.

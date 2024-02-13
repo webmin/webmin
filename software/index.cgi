@@ -23,16 +23,14 @@ if ($err) {
 
 # Show package search and list forms
 print &ui_subheading($text{'index_installed'});
-print "<table width=100%><tr>\n";
 print &ui_form_start("search.cgi");
-print "<td>",&ui_submit($text{'index_search'}),"\n";
-print &ui_textbox("search", undef, 40),"</td>\n";
-print &ui_hidden("goto", 1),&ui_form_end();
+print &ui_submit($text{'index_search'}),"\n";
+print &ui_textbox("search", undef, 40),"\n";
+print &ui_hidden("goto", 1),&ui_form_end(),"<br>\n";
 
 print &ui_form_start("tree.cgi");
-print "<td align=right>",&ui_submit($text{'index_tree'}),"</td>\n";
+print &ui_submit($text{'index_tree2'}),"\n";
 print &ui_form_end();
-print "</tr></table>\n";
 
 # Show form to install a new package
 print &ui_hr();
