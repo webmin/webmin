@@ -3,7 +3,7 @@
 # Display the package tree
 
 require './software-lib.pl';
-&ui_print_header(undef, $text{'index_tree'}, "");
+&ui_print_header(undef, $text{'index_tree2'}, "");
 &ReadParse();
 $n = &list_packages();
 
