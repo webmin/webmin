@@ -1205,6 +1205,7 @@ if (@_ > 1) {
 						}
 					}
 				$params .= "&_cscript=".&urlize($scriptname);
+				$params .= $_[3] eq '1' ? "" : $_[3];
 				}
 			print "<a href=\"@{[&get_webprefix()]}/$cprog?",
 			      "module=".&get_module_name().$params."\">",
