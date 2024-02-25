@@ -269,8 +269,7 @@ if ($has_repos) {
 	print &ui_tabs_end_tab("tab", "repos");
 	}
 
-print &ui_tabs_end();
-
+print &ui_tabs_end(1);
 
 &ui_print_footer("/", $text{'index'});
 
