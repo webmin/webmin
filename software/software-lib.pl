@@ -151,6 +151,8 @@ if ($pinfo[6]) {
 	print &ui_table_row($text{'edit_inst'}, $pinfo[6]);
 	}
 
+print &ui_table_end();
+
 # Dependencies, if we can get them
 my @deps = defined(&package_dependencies) ?
 		&package_dependencies($name, $ver) : ( );
@@ -188,10 +190,11 @@ if (@deps) {
 		$dtable .= &ui_columns_row(\@row);
 		}
 	$dtable .= &ui_columns_end();
-	print &ui_table_row($text{'edit_deps'}, $dtable, 3);
+	print &ui_hidden_table_start($text{'edit_deps'}, "width=100%", 2,
+				     "deps", 0);
+	print &ui_table_row(undef, $dtable, 2);
+	print &ui_hidden_table_end();
 	}
-
-print &ui_table_end();
 
 return @pinfo;
 }
