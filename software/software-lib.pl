@@ -151,6 +151,46 @@ if ($pinfo[6]) {
 	print &ui_table_row($text{'edit_inst'}, $pinfo[6]);
 	}
 
+# Dependencies, if we can get them
+my @deps = defined(&package_dependencies) ?
+		&package_dependencies($name, $ver) : ( );
+if (@deps) {
+	my $dtable = &ui_columns_start([ $text{'edit_dname'},
+					 $text{'edit_dtype'},
+					 $text{'edit_dvers'} ]);
+	foreach my $d (@deps) {
+		my @row;
+		if ($d->{'package'}) {
+			push(@row, &ui_link("edit_pack.cgi?package=".
+				&urlize($d->{'package'}), $d->{'package'}));
+			push(@row, $text{'edit_dpackage'});
+			}
+		elsif ($d->{'file'}) {
+			push(@row, &ui_link("file_info.cgi?file=".
+				&urlize($d->{'file'}), $d->{'file'}));
+			push(@row, $text{'edit_dfile'});
+			}
+		elsif ($d->{'library'}) {
+			push(@row, $d->{'library'});
+			push(@row, $text{'edit_dlibrary'});
+			}
+		else {
+			push(@row, $d->{'other'});
+			push(@row, $text{'edit_dother'});
+			}
+		if ($d->{'version'}) {
+			push(@row, (!$d->{'compare'} || $d->{'compare'} eq '=' ?
+				    '' : $d->{'compare'}.' ').$d->{'version'});
+			}
+		else {
+			push(@row, "");
+			}
+		$dtable .= &ui_columns_row(\@row);
+		}
+	$dtable .= &ui_columns_end();
+	print &ui_table_row($text{'edit_deps'}, $dtable, 3);
+	}
+
 print &ui_table_end();
 
 return @pinfo;

@@ -395,6 +395,51 @@ if ($? || $out =~ /error:/) { return "<pre>$out</pre>"; }
 return undef;
 }
 
+# package_dependencies(name, [version])
+# Returns a list of packages that this one depends on, as hash refs
+sub package_dependencies
+{
+my ($pkg, $ver) = @_;
+my $out = &backquote_command(
+	"rpm -qR ".quotemeta($pkg.($ver ? "-$ver" : ""))." 2>/dev/null");
+my @rv;
+my %done;
+foreach my $l (split(/\r?\n/, $out)) {
+	next if ($done{$l}++);
+	if ($l =~ /^(\/.*)$/) {
+		# Depends on a file
+		push(@rv, { 'file' => $1 });
+		}
+	elsif ($l =~ /^([^\(\)= ]+)$/) {
+		# A bare package name
+		push(@rv, { 'package' => $1 });
+		}
+	elsif ($l =~ /^([^\(\)= ]+)\s+([=<>]+)\s+(\S+)$/) {
+		# A package name and matching version
+		push(@rv, { 'package' => $1,
+			    'compare' => $2,
+			    'version' => $3 });
+		}
+	elsif ($l =~ /^(\S+)\s+([=<>]+)\s+(\S+)$/) {
+		# Some other capability and matching version
+		push(@rv, { 'other' => $1,
+			    'compare' => $2,
+			    'version' => $3 });
+		}
+	elsif ($l =~ /^(\S+)\((\S*)\)\((\S*)\)$/) {
+		# Library with a tag and architecture
+		push(@rv, { 'library' => $1,
+			    'version' => $2,
+			    'arch' => $3 });
+		}
+	elsif ($l =~ /^(\S+)$/) {
+		# Some other capability
+		push(@rv, { 'other' => $1 });
+		}
+	}
+return @rv;
+}
+
 sub package_system
 {
 return "RPM";
