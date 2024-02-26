@@ -3,6 +3,7 @@
 # Lists all installed packages
 
 require './software-lib.pl';
+&ReadParse();
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 	&help_search_link(defined(&package_help) ? ( &package_help() ) : ( ),
 			  "man", "doc"));
@@ -21,20 +22,40 @@ if ($err) {
 				"../config.cgi?$module_name"));
 	}
 
+my $hasup = $has_update_system && defined(&update_system_form);
+print &ui_tabs_start([ [ 'pkgs', $text{'index_tabpkgs'} ],
+		       [ 'install', $text{'index_tabinstall'} ],
+		       $hasup ? ( [ 'update', $text{'index_tabupdate'} ] )
+			      : ( ) ],
+		     'tab', $in{'tab'} || 'pkgs', 1);
+
 # Show package search and list forms
-print &ui_subheading($text{'index_installed'});
+print &ui_tabs_start_tab("tab", "pkgs");
+print &text('index_searchdesc', &package_system()),"<p>\n";
+
+# Search for a package
 print &ui_form_start("search.cgi");
 print &ui_submit($text{'index_search'}),"\n";
 print &ui_textbox("search", undef, 40),"\n";
 print &ui_hidden("goto", 1),&ui_form_end(),"<br>\n";
 
+# Show search form by file, if supported by package system
+if (!$no_package_filesearch) {
+	print &ui_form_start("file_info.cgi");
+	print &ui_submit($text{'index_identok2'}),"\n";
+	print &ui_textbox("file", undef, 50),"\n",
+	      &file_chooser_button("file", 0, 3);
+	print &ui_form_end(),"<br>\n";
+	}
+
 print &ui_form_start("tree.cgi");
 print &ui_submit($text{'index_tree2'}),"\n";
-print &ui_form_end();
+print &ui_form_end(),"<br>\n";
+
+print &ui_tabs_end_tab("tab", "pkgs");
 
 # Show form to install a new package
-print &ui_hr();
-print &ui_subheading($text{'index_install'});
+print &ui_tabs_start_tab("tab", "install");
 print &text('index_installmsg', &package_system()),"<p>\n";
 
 @opts = ( );
@@ -70,23 +91,15 @@ if (@opts) {
 	print &ui_submit($text{'index_installok'}),"\n";
 	print &ui_form_end();
 	}
+print &ui_tabs_end_tab("tab", "install");
 
-# Show search form by file, if supported by package system
-if (!$no_package_filesearch) {
-	print &ui_hr();
-	print &ui_subheading($text{'index_ident'});
-	print &text('index_identmsg', &package_system()),"<p>\n";
-	print &ui_form_start("file_info.cgi");
-	print &ui_submit($text{'index_identok'}),"\n";
-	print &ui_textbox("file", undef, 50),"\n",
-	      &file_chooser_button("file", 0, 3);
-	print &ui_form_end();
-	}
-
-if ($has_update_system && defined(&update_system_form)) {
-	print &ui_hr();
+if ($hasup) {
+	print &ui_tabs_start_tab("tab", "update");
 	&update_system_form();
+	print &ui_tabs_end_tab("tab", "update");
 	}
+
+print &ui_tabs_end(1);
 
 &ui_print_footer("/", $text{'index'});
 
