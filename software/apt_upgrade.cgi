@@ -22,7 +22,7 @@ if ($in{'update'}) {
 	print "</pre>\n";
 	if ($?) {
 		print "<b>$text{'apt_updatefailed'}</b><p>\n";
-		&ui_print_footer("", $text{'index_return'});
+		&ui_print_footer("?tab=update", $text{'index_return'});
 		exit;
 		}
 	else { print "<b>$text{'apt_updateok'}</b><p>\n"; }
@@ -67,5 +67,5 @@ if ($in{'mode'}) {
 		if (@packs);
 	}
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("?tab=update", $text{'index_return'});
 

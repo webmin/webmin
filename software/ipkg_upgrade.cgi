@@ -38,5 +38,5 @@ else {
 	&webmin_log("IPKG", $mode)
 	}
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("?tab=update", $text{'index_return'});
 
