@@ -50,7 +50,7 @@ if (!$no_package_filesearch) {
 
 print &ui_form_start("tree.cgi");
 print &ui_submit($text{'index_tree2'}),"\n";
-print &ui_form_end(),"<br>\n";
+print &ui_form_end(),"\n";
 
 print &ui_tabs_end_tab("tab", "pkgs");
 
