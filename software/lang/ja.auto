@@ -1,5 +1,13 @@
+index_tabpkgs=インストールされたパッケージ
+index_tabinstall=新しいパッケージをインストールする
+index_tabupdate=パッケージを更新する
+index_finddesc=パッケージ名またはパッケージの内容で $1 データベースを検索するか、パッケージ ツリー全体を参照します。
+index_findtext=パッケージの検索:
+index_installmsg=新しい $1 パッケージをインストールする場所を選択してください。
+index_ftp=URLから
+index_identok2=ファイルのパッケージを検索:
 index_treturn=パッケージツリー
-index_tree=パッケージツリー
+index_tree2=パッケージツリーを参照
 index_epackagecmd=$1パッケージシステムには $2コマンドが必要です
 index_eupdatecmd=$1更新システムには $2コマンドが必要です
 index_epackagecheck=選択したパッケージ管理システムは無効です： $1。<br><a href='$2'>モジュール構成</a>ページで別のシステムを選択する必要がある場合があります。
@@ -15,6 +23,14 @@ search_delete=選択したパッケージをアンインストールします
 search_selall=すべて選択
 search_invert=選択を反転
 
+edit_deps=依存関係
+edit_dname=に応じて
+edit_dtype=依存関係の種類
+edit_dvers=バージョン
+edit_dpackage=パッケージ
+edit_dfile=ファイル
+edit_dother=能力
+edit_dlibrary=図書館
 edit_listdesc=このパッケージ内のすべてのファイルと、現在の検証状態を表示します。
 edit_uninstdesc=このパッケージをシステムから削除します。
 edit_egone=パッケージはインストールされなくなりました
@@ -41,6 +57,8 @@ rpm_finddistro=分布
 rpm_finddesc=説明
 
 slack_edir=Slackwareパッケージディレクトリが見つかりません $1
+
+debian_manager=デビアン
 
 log_install_yum_l=YUMからインストールされたパッケージ $1
 log_install_yum=YUMから $2パッケージをインストールしました

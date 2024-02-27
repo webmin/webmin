@@ -2,16 +2,11 @@ index_title=Yazılım Paketleri
 index_installed=Kurulu Paketler
 index_close=Hepsini Kapa
 index_open=Hepsini Aç
-index_search=Paketleri Ara:
 index_install=Yeni bir paket kur
-index_installmsg=Yeni bir $1 paketi kurmak için bir yer seçiniz..
 index_local=Yerel dosyadan
 index_uploaded=Yüklenen dosyadan
-index_ftp=Ftp ya da http adresinden..
 index_installok=Kur
 index_ident=Bir dosyayı tanımla
-index_identmsg=$1 veritabanı arama için bir dosya ya da komut yolu giriniz..
-index_identok=Ara:
 index_return=paket listesi
 
 search_title=Paket Ara

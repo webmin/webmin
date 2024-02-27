@@ -1,3 +1,12 @@
+index_tabpkgs=설치된 패키지
+index_tabinstall=새 패키지 설치
+index_tabupdate=패키지 업데이트
+index_finddesc=패키지 이름이나 패키지 내용으로 $1 데이터베이스를 검색하거나 전체 패키지 트리를 찾아보세요.
+index_findtext=패키지 검색:
+index_installmsg=새 $1 패키지를 설치할 위치를 선택하세요.
+index_ftp=URL에서
+index_identok2=파일에 대한 패키지 검색:
+index_tree2=패키지 트리 찾아보기
 index_epackagecmd=$1 패키지 시스템에는 $2 명령이 필요합니다
 index_eupdatecmd=$1 업데이트 시스템에는 $2 명령이 필요합니다
 index_epackagecheck=선택한 패키지 관리 시스템이 유효하지 않습니다 : $1. <br><a href='$2'> 모듈 구성 </a> 페이지에서 다른 시스템을 선택해야 할 수도 있습니다.
@@ -8,6 +17,14 @@ index_filter=필터 패키지
 index_filterclear=필터 지우기
 index_filtered=<tt>$2</tt> 중 <tt>$1</tt> 패키지 표시
 
+edit_deps=종속성
+edit_dname=에 따라 다름
+edit_dtype=종속성 유형
+edit_dvers=버전
+edit_dpackage=패키지
+edit_dfile=파일
+edit_dother=능력
+edit_dlibrary=도서관
 edit_listdesc=이 패키지의 모든 파일과 현재 확인 상태를 표시하십시오.
 edit_uninstdesc=시스템에서이 패키지를 제거하십시오.
 
@@ -18,6 +35,8 @@ delete_depstoo=사용하지 않는 종속성도 제거 했습니까?
 install_eupdate=설치할 패키지가 없습니다
 
 slack_edir=슬랙웨어 패키지 디렉토리 $1 이 (가) 없습니다.
+
+debian_manager=데비안
 
 log_install_yum_l=YUM에서 설치된 패키지 $1 
 log_install_yum=YUM에서 $2 패키지 설치

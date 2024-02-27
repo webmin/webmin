@@ -1,3 +1,12 @@
+index_tabpkgs=Nainstalované balíčky
+index_tabinstall=Nainstalujte nový balíček
+index_tabupdate=Aktualizovat balíčky
+index_finddesc=Prohledejte databázi $1 podle názvu balíku nebo obsahu balíku nebo procházejte celý strom balíků.
+index_findtext=Vyhledat balíček:
+index_installmsg=Vyberte umístění pro instalaci nového balíčku $1.
+index_ftp=Z adresy URL
+index_identok2=Hledat balíčky pro soubor:
+index_tree2=Procházet strom balíčků
 index_epackagecmd=Balíčkový systém $1 vyžaduje příkaz $2 
 index_eupdatecmd=Aktualizační systém $1 vyžaduje příkaz $2 
 index_epackagecheck=Vybraný systém správy balíků není platný: $1. <br>Možná budete muset vybrat jiný systém na stránce<a href='$2'> konfigurace modulu </a>.
@@ -8,6 +17,14 @@ index_filter=Filtrovat balíčky
 index_filterclear=Vymazat filtr
 index_filtered=Zobrazují se <tt>$1</tt> balíčky z <tt>$2</tt>
 
+edit_deps=Závislosti
+edit_dname=Záleží na
+edit_dtype=Typ závislosti
+edit_dvers=Verze
+edit_dpackage=Balík
+edit_dfile=Soubor
+edit_dother=Schopnost
+edit_dlibrary=Knihovna
 edit_listdesc=Zobrazit všechny soubory v tomto balíčku a jejich aktuální stav ověření.
 edit_uninstdesc=Odeberte tento balíček ze systému.
 
@@ -17,6 +34,8 @@ delete_depstoo=Také jste odstranili nepoužívané závislosti?
 install_eupdate=Nebyl zadán žádný balíček k instalaci
 
 slack_edir=Chybí adresář balíčků Slackware $1 
+
+debian_manager=Debian
 
 log_install_yum_l=Nainstalované balíčky $1 od YUM
 log_install_yum=Nainstalovali se balíčky ($2) z YUM

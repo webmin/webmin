@@ -1,3 +1,12 @@
+index_tabpkgs=Pakej yang dipasang
+index_tabinstall=Pasang pakej baharu
+index_tabupdate=Kemas kini pakej
+index_finddesc=Cari pangkalan data $1 mengikut nama pakej atau kandungan pakej, atau semak imbas keseluruhan pepohon pakej.
+index_findtext=Cari Pakej:
+index_installmsg=Pilih lokasi untuk memasang pakej $1 baharu.
+index_ftp=Daripada URL
+index_identok2=Cari Pakej Untuk Fail:
+index_tree2=Semak imbas Pokok Pakej
 index_epackagecmd=Sistem pakej $1 memerlukan perintah $2 
 index_eupdatecmd=Sistem kemas kini $1 memerlukan perintah $2 
 index_epackagecheck=Sistem pengurusan pakej yang dipilih tidak sah: $1. <br>Anda mungkin perlu memilih sistem lain pada halaman<a href='$2'> konfigurasi modul </a>.
@@ -8,6 +17,14 @@ index_filter=Pake Penapis
 index_filterclear=Kosongkan Penapis
 index_filtered=Memaparkan pakej <tt>$1</tt> daripada <tt>$2</tt>
 
+edit_deps=Kebergantungan
+edit_dname=Bergantung kepada
+edit_dtype=Jenis pergantungan
+edit_dvers=Versi
+edit_dpackage=Pakej
+edit_dfile=Fail
+edit_dother=Keupayaan
+edit_dlibrary=Perpustakaan
 edit_listdesc=Tunjukkan semua fail dalam pakej ini, dan status pengesahan semasa mereka.
 edit_uninstdesc=Keluarkan pakej ini dari sistem anda.
 
@@ -22,6 +39,8 @@ rpm_finddistro=Pengedaran
 rpm_finddesc=Penerangan
 
 slack_edir=Direktori pakej Slackware yang tiada $1 
+
+debian_manager=Debian
 
 log_install_yum_l=Pakej terpasang $1 dari YUM
 log_install_yum=Pakej $2 dipasang dari YUM

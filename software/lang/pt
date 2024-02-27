@@ -2,16 +2,11 @@ index_title=Pacotes de Software
 index_installed=Pacotes Instalados
 index_close=Fechar Todos
 index_open=Abrir Todos
-index_search=Procurar Pacote:
 index_install=Instalar Novo Pacote
-index_installmsg=Seleccione a localização de onde quer instalar o novo pacote $1 ..
 index_local=De ficheiro local
 index_uploaded=De um ficheiro carregado
-index_ftp=De um URL ftp ou http
 index_installok=Instalar
 index_ident=Identificar um Ficheiro
-index_identmsg=Introduza um comando ou um caminho do ficheiro para procurar na base de dados $1.
-index_identok=Procurar Por:
 index_return=lista de pacotes
 
 search_title=Procura de Pacotes

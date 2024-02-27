@@ -1,6 +1,14 @@
+index_tabpkgs=已安裝的軟體包
+index_tabinstall=安裝新包
+index_tabupdate=更新套件
+index_finddesc=按包名稱或包內容搜尋 $1 資料庫，或瀏覽整個包樹。
+index_findtext=搜尋套餐：
+index_installmsg=選擇安裝新 $1 軟體套件的位置。
+index_ftp=來自網址
+index_identok2=搜尋包中的文件：
 index_all=所有套餐
 index_treturn=包樹
-index_tree=包樹
+index_tree2=瀏覽包樹
 index_epackagecmd=$1軟件包系統需要 $2命令
 index_eupdatecmd=$1更新系統需要 $2命令
 index_epackagecheck=所選的軟件包管理系統無效： $1。<br>您可能需要在<a href='$2'>模塊配置</a>頁面上選擇其他系統。
@@ -17,6 +25,14 @@ search_delete=卸載選定的軟件包
 search_selall=全選
 search_invert=反轉選擇
 
+edit_deps=依賴關係
+edit_dname=依賴取決於
+edit_dtype=依賴類型
+edit_dvers=版本
+edit_dpackage=包裹
+edit_dfile=文件
+edit_dother=能力
+edit_dlibrary=圖書館
 edit_listdesc=顯示此包中的所有文件及其當前驗證狀態。
 edit_uninstdesc=從系統中刪除此軟件包。
 edit_egone=軟件包不再安裝
@@ -50,7 +66,7 @@ bsd_manager=$1包管理器
 slack_manager=Slackware軟件包管理器
 slack_edir=缺少Slackware軟件包目錄 $1
 
-debian_manager=Debian DPKG
+debian_manager=德班
 
 log_install_package=已安裝的軟件包 $1
 log_install_apt_l=已從APT安裝的軟件包 $1

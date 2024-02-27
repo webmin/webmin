@@ -1,6 +1,14 @@
+index_tabpkgs=Pacotes instalados
+index_tabinstall=Instale um novo pacote
+index_tabupdate=Atualizar pacotes
+index_finddesc=Pesquise o banco de dados $1 pelo nome do pacote ou pelo conteúdo de um pacote, ou navegue por toda a árvore de pacotes.
+index_findtext=Pesquisar pacote:
+index_installmsg=Selecione o local para instalar um novo pacote $1.
+index_ftp=Do URL
+index_identok2=Pesquisar pacotes por arquivo:
 index_all=Todos os Pacotes
 index_treturn=árvore de pacotes
-index_tree=Árvore do pacote
+index_tree2=Navegar na árvore de pacotes
 index_epackagecmd=O sistema de pacotes $1 requer o comando $2 
 index_eupdatecmd=O sistema de atualização $1 requer o comando $2 
 index_epackagecheck=O sistema de gerenciamento de pacotes selecionado não é válido: $1. <br>Pode ser necessário selecionar um sistema diferente na página<a href='$2'> configuração do módulo </a>.
@@ -17,6 +25,14 @@ search_delete=Desinstalar pacotes selecionados
 search_selall=Selecionar tudo
 search_invert=Seleção invertida
 
+edit_deps=Dependências
+edit_dname=Depende de
+edit_dtype=Tipo de dependência
+edit_dvers=Versão
+edit_dpackage=Pacote
+edit_dfile=Arquivo
+edit_dother=Capacidade
+edit_dlibrary=Biblioteca
 edit_listdesc=Mostre todos os arquivos neste pacote e seu estado de verificação atual.
 edit_uninstdesc=Remova este pacote do seu sistema.
 edit_egone=O pacote não está mais instalado
@@ -50,7 +66,7 @@ bsd_manager=$1 Gerenciador de Pacotes
 slack_manager=Gerenciador de Pacotes Slackware
 slack_edir=Diretório de pacotes do Slackware ausente $1 
 
-debian_manager=Debian DPKG
+debian_manager=Debian
 
 log_install_package=Pacote instalado $1 
 log_install_apt_l=Pacote (s) instalado (s) $1 do APT

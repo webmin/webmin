@@ -1,6 +1,14 @@
+index_tabpkgs=Installerade paket
+index_tabinstall=Installera ett nytt paket
+index_tabupdate=Uppdatera paket
+index_finddesc=Sök i databasen $1 efter paketnamn eller innehållet i ett paket, eller bläddra i hela paketträdet.
+index_findtext=Sök efter paket:
+index_installmsg=Välj platsen för att installera ett nytt $1-paket.
+index_ftp=Från URL
+index_identok2=Sök paket efter fil:
 index_all=Alla paket
 index_treturn=paketträd
-index_tree=Paketträd
+index_tree2=Bläddra i paketträdet
 index_epackagecmd=Paketsystemet $1 kräver kommandot $2 
 index_eupdatecmd=Uppdateringssystemet $1 kräver kommandot $2 
 index_epackagecheck=Det valda pakethanteringssystemet är inte giltigt: $1. <br>Du kan behöva välja ett annat system på<a href='$2'> modulkonfiguration </a>.
@@ -16,6 +24,14 @@ search_delete=Avinstallera valda paket
 search_selall=Välj alla
 search_invert=Invertera valet
 
+edit_deps=Beroenden
+edit_dname=Beror på
+edit_dtype=Typ av beroende
+edit_dvers=Version
+edit_dpackage=Paket
+edit_dfile=Fil
+edit_dother=Förmåga
+edit_dlibrary=Bibliotek
 edit_listdesc=Visa alla filerna i detta paket och deras aktuella verifieringstillstånd.
 edit_uninstdesc=Ta bort detta paket från ditt system.
 edit_egone=Paketet är inte längre installerat
@@ -49,7 +65,7 @@ bsd_manager=$1 paketansvarig
 slack_manager=Slackware Package Manager
 slack_edir=Saknade Slackware-paketkatalog $1 
 
-debian_manager=Debian DPKG
+debian_manager=Debian
 
 log_install_yum_l=Installerat paket (er) $1 från YUM
 log_install_yum=Installerat $2 -paket (er) från YUM
