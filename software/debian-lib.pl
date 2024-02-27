@@ -255,10 +255,10 @@ my ($pkg, $ver) = @_;
 my $out = &backquote_command(
 	"apt-cache show ".quotemeta($pkg)." 2>/dev/null");
 return () if ($?);
-$out =~ /^Depends:\s+(.*)/ || return ();
+$out =~ /\nDepends:\s+(.*)/ || return ();
 my @rv;
 foreach my $w (split(/,\s+/, $1)) {
-	if ($w =~ /^(\S+)\s+\([<>=]+\s+(\S+)\)/) {
+	if ($w =~ /^(\S+)\s+\(([<>=]+)\s+(\S+)\)/) {
 		# Depends on a specific version
 		push(@rv, { 'package' => $1,
 			    'compare' => $2,
