@@ -1,5 +1,8 @@
 ## Changelog
 
+#### 2.106 (February 26, 2024)
+* Development and testing build
+
 #### 2.105 (November 09, 2023)
 * Fix param to read only headers [sourceforge.net/usermin-bugs#501](https://sourceforge.net/p/webadmin/usermin-bugs/501/)
 * Fix not to set `reuse` flag on initial Let's Encrypt request
