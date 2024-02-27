@@ -247,6 +247,35 @@ if ($? || $out =~ /which isn.t installed/i) {
 return undef;
 }
 
+# package_dependencies(name, [version])
+# Returns a list of packages that this one depends on, as hash refs
+sub package_dependencies
+{
+my ($pkg, $ver) = @_;
+my $out = &backquote_command(
+	"apt-cache show ".quotemeta($pkg)." 2>/dev/null");
+return () if ($?);
+$out =~ /^Depends:\s+(.*)/ || return ();
+my @rv;
+foreach my $w (split(/,\s+/, $1)) {
+	if ($w =~ /^(\S+)\s+\([<>=]+\s+(\S+)\)/) {
+		# Depends on a specific version
+		push(@rv, { 'package' => $1,
+			    'compare' => $2,
+			    'version' => $3 });
+		}
+	elsif ($w =~ /^(\S+)$/) {
+		# Depends on some package
+		push(@rv, { 'package' => $1 });
+		}
+	elsif ($w =~ /^(\S+)\s+\|/) {
+		# Depends on one of several packages, but just show the first
+		push(@rv, { 'package' => $1 });
+		}
+	}
+return @rv;
+}
+
 sub package_system
 {
 return $text{'debian_manager'};
