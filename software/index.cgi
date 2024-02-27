@@ -31,11 +31,11 @@ print &ui_tabs_start([ [ 'pkgs', $text{'index_tabpkgs'} ],
 
 # Show package search and list forms
 print &ui_tabs_start_tab("tab", "pkgs");
-print &text('index_searchdesc', &package_system()),"<p>\n";
+print &text('index_finddesc', &package_system()),"<p>\n";
 
 # Search for a package
 print &ui_form_start("search.cgi");
-print &ui_submit($text{'index_search'}),"\n";
+print &ui_submit($text{'index_findtext'}),"\n";
 print &ui_textbox("search", undef, 40),"\n";
 print &ui_hidden("goto", 1),&ui_form_end(),"<br>\n";
 
