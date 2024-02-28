@@ -2,16 +2,11 @@ index_title=軟體套件
 index_installed=已經安裝的套件
 index_close=關閉全部
 index_open=開啟全部
-index_search=搜尋套件:
 index_install=安裝一個新套件
-index_installmsg=選擇安裝新的 $1 套件的原始位置...
 index_local=從本地端檔案
 index_uploaded=從上傳的檔案
-index_ftp=從 FTP 或 HTTP URL
 index_installok=安裝
 index_ident=指認檔案
-index_identmsg=輸入一個命令或檔案的路徑以搜尋 $1 資料庫.
-index_identok=找尋目標:
 index_return=套件列表
 
 search_title=套件搜尋

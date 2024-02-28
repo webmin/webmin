@@ -2,16 +2,11 @@ index_title=软件包
 index_installed=安装的软件包
 index_close=全部关闭
 index_open=全部打开
-index_search=搜索软件包：
 index_install=安装新软件包
-index_installmsg=选择安装新软件包 $1 的位置..
 index_local=从本地文件
 index_uploaded=从上载的文件
-index_ftp=从ftp 或 http 的 URL
 index_installok=安装
 index_ident=标识一个文件
-index_identmsg=输入命令或文件的路径以为其搜索 $1 数据库。
-index_identok=搜索：
 index_return=软件包列表
 
 search_title=软件包搜索

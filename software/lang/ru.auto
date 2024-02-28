@@ -1,3 +1,12 @@
+index_tabpkgs=Установленные пакеты
+index_tabinstall=Установить новый пакет
+index_tabupdate=Обновление пакетов
+index_finddesc=Выполните поиск в базе данных $1 по имени пакета или содержимому пакета или просмотрите все дерево пакетов.
+index_findtext=Поиск пакета:
+index_installmsg=Выберите место для установки нового пакета $1.
+index_ftp=С URL-адреса
+index_identok2=Поиск пакетов для файла:
+index_tree2=Просмотр дерева пакетов
 index_epackagecmd=Для системы пакетов $1 требуется команда $2 
 index_eupdatecmd=Для системы обновления $1 требуется команда $2 
 index_epackagecheck=Недопустимая выбранная система управления пакетами: $1. <br>Возможно, вам потребуется выбрать другую систему на странице<a href='$2'> конфигурации модуля </a>.
@@ -12,6 +21,14 @@ search_delete=Удалить выбранные пакеты
 search_selall=Выбрать все
 search_invert=Наоборот
 
+edit_deps=Зависимости
+edit_dname=Зависит от
+edit_dtype=Тип зависимости
+edit_dvers=Версия
+edit_dpackage=Упаковка
+edit_dfile=Файл
+edit_dother=Возможность
+edit_dlibrary=Библиотека
 edit_listdesc=Показать все файлы в этом пакете и их текущее состояние проверки.
 edit_uninstdesc=Удалите этот пакет из вашей системы.
 
@@ -27,6 +44,8 @@ rpm_finddistro=распределение
 rpm_finddesc=Описание
 
 slack_edir=Каталог отсутствующих пакетов Slackware $1 
+
+debian_manager=Дебиан
 
 log_install_yum_l=Установленные пакеты: $1 от YUM
 log_install_yum=Установлено $2 пакетов из YUM

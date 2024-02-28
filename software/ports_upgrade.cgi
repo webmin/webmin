@@ -19,5 +19,5 @@ foreach my $cmd ("portsnap fetch",
 	last if ($?);
 	}
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("?tab=update", $text{'index_return'});
 

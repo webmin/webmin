@@ -1,5 +1,13 @@
+index_tabpkgs=Paquets installés
+index_tabinstall=Installer un nouveau package
+index_tabupdate=Paquets de mise à jour
+index_finddesc=Recherchez dans la base de données $1 par nom de package ou par le contenu d'un package, ou parcourez l'arborescence complète du package.
+index_findtext=Rechercher un forfait :
+index_installmsg=Sélectionnez l'emplacement pour installer un nouveau package $1.
+index_ftp=À partir de l'URL
+index_identok2=Rechercher des packages pour un fichier :
 index_treturn=arbre de package
-index_tree=Arbre de package
+index_tree2=Parcourir l’arborescence des packages
 index_epackagecmd=Le système de package $1 nécessite la commande $2 
 index_eupdatecmd=Le système de mise à jour $1 nécessite la commande $2 
 index_epackagecheck=Le système de gestion des packages sélectionné n'est pas valide: $1. <br>Vous devrez peut-être sélectionner un autre système sur la page<a href='$2'> configuration du module </a>.
@@ -15,6 +23,14 @@ search_delete=Désinstaller les packages sélectionnés
 search_selall=Tout sélectionner
 search_invert=Inverser la sélection
 
+edit_deps=Dépendances
+edit_dname=Dépend de
+edit_dtype=Type de dépendance
+edit_dvers=Version
+edit_dpackage=Emballer
+edit_dfile=Déposer
+edit_dother=Aptitude
+edit_dlibrary=Bibliothèque
 edit_listdesc=Afficher tous les fichiers de ce package et leur état de vérification actuel.
 edit_uninstdesc=Supprimez ce package de votre système.
 edit_egone=Le package n'est plus installé
@@ -37,6 +53,8 @@ rpm_finddistro=Distribution
 rpm_finddesc=La description
 
 slack_edir=Répertoire des packages Slackware manquant $1 
+
+debian_manager=Debian
 
 log_install_yum_l=Package (s) installé (s) $1 à partir de YUM
 log_install_yum=$2 package (s) installé (s) depuis YUM

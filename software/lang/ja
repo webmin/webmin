@@ -2,16 +2,11 @@ index_title=ソフトウェア パッケージ
 index_installed=インストール済みのパッケージ
 index_close=すべて閉じる
 index_open=すべて開く
-index_search=パッケージの検索:
 index_install=新規のパッケージをインストール
-index_installmsg=新規 $1 パッケージをインストールする場所を選択..
 index_local=ローカル ファイルから
 index_uploaded=アップロードしたファイルから
-index_ftp=FTP またはhttp URL から
 index_installok=インストール
 index_ident=ファイルの識別
-index_identmsg=$1 データベースを検索するためのコマンドまたはファイルのパス名を入力してください。
-index_identok=検索対象:
 index_all=すべてのパッケージ
 index_return=パッケージ リスト
 
@@ -130,7 +125,6 @@ debian_depends=依存性の問題を無視しますか？
 debian_conflicts=パッケージの競合を無視しますか？
 debian_overwrite=他のパッケージからファイルを上書きしますか？
 debian_downgrade=古いパッケージを新しいパッケージで置き換えますか？
-debian_manager=Debian DPKG
 
 log_install_package=パッケージ $1 をインストールしました
 log_install_apt_l=パッケージ $1 を APT からインストールしました

@@ -1,6 +1,14 @@
+index_tabpkgs=Kurulu paketler
+index_tabinstall=Yeni bir paket yükleyin
+index_tabupdate=Paketleri güncelle
+index_finddesc=$1 veritabanını paket adına veya paketin içeriğine göre arayın veya paket ağacının tamamına göz atın.
+index_findtext=Paket Ara:
+index_installmsg=Yeni $1 paketinin kurulacağı konumu seçin.
+index_ftp=URL'den
+index_identok2=Dosya İçin Paketleri Ara:
 index_all=Tüm Paketler
 index_treturn=paket ağaç
-index_tree=Paket Ağacı
+index_tree2=Paket Ağacına Göz Atın
 index_epackagecmd=$1 paket sistemi $2 komutunu gerektirir
 index_eupdatecmd=$1 güncelleme sistemi $2 komutunu gerektirir
 index_epackagecheck=Seçilen paket yönetim sistemi geçerli değil: $1. <br><a href='$2'> modül yapılandırması </a> sayfasında farklı bir sistem seçmeniz gerekebilir.
@@ -16,6 +24,14 @@ search_delete=Seçilen paketleri kaldır
 search_selall=Hepsini seç
 search_invert=Zıt seçim
 
+edit_deps=Bağımlılıklar
+edit_dname=bağlıdır
+edit_dtype=Bağımlılık türü
+edit_dvers=Sürüm
+edit_dpackage=Paket
+edit_dfile=Dosya
+edit_dother=Kabiliyet
+edit_dlibrary=Kütüphane
 edit_listdesc=Bu paketteki tüm dosyaları ve geçerli doğrulama durumlarını göster.
 edit_uninstdesc=Bu paketi sisteminizden kaldırın.
 edit_egone=Paket artık yüklü değil
@@ -49,7 +65,7 @@ bsd_manager=$1 Paket Yöneticisi
 slack_manager=Slackware Paket Yöneticisi
 slack_edir=Eksik Slackware paketleri dizini $1 
 
-debian_manager=Debian DPKG
+debian_manager=Debian
 
 log_install_apt_l=APT'den $1 yüklenmiş paketler
 log_install_apt=APT'den $2 paket yüklendi

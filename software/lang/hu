@@ -2,16 +2,11 @@ index_title=Szoftver csomagok
 index_installed=Telepített csomagok
 index_close=Összes bezárása
 index_open=Összes megnyitása
-index_search=Csomag keresése:
 index_install=Új csomag telepítése
-index_installmsg=Válassza ki a helyet, ahonnan az új $1 csomagot telepíti...
 index_local=Helyi fájlból
 index_uploaded=Feltöltött fájlból
-index_ftp=Ftp vagy http URL-ről
 index_installok=Telepít
 index_ident=Fájl azonosítása
-index_identmsg=Adja meg a parancs nevét vagy a fájl elérési útvonalát a(z) $1 adatbázisban való kereséshez.
-index_identok=Keresés:
 index_return=a csomagok listájához
 
 search_title=Csomag keresése

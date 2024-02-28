@@ -1,0 +1,20 @@
+index_tabpkgs=Installerte pakker
+index_tabinstall=Installer en ny pakke
+index_tabupdate=Oppdater pakker
+index_finddesc=Søk i $1-databasen etter pakkenavn eller innholdet i en pakke, eller bla gjennom hele pakketreet.
+index_findtext=Søk etter pakke:
+index_installmsg=Velg plasseringen for å installere en ny $1-pakke.
+index_ftp=Fra URL
+index_identok2=Søk i pakker etter fil:
+index_tree2=Bla gjennom pakketreet
+
+edit_deps=Avhengigheter
+edit_dname=Kommer an på
+edit_dtype=Avhengighetstype
+edit_dvers=Versjon
+edit_dpackage=Pakke
+edit_dfile=Fil
+edit_dother=Evne
+edit_dlibrary=Bibliotek
+
+debian_manager=Debian

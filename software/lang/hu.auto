@@ -1,6 +1,14 @@
+index_tabpkgs=Telepített csomagok
+index_tabinstall=Telepítsen egy új csomagot
+index_tabupdate=Frissítse a csomagokat
+index_finddesc=Keressen a $1 adatbázisban a csomag neve vagy a csomag tartalma alapján, vagy böngésszen a teljes csomagfában.
+index_findtext=Csomag keresése:
+index_installmsg=Válassza ki az új $1 csomag telepítésének helyét.
+index_ftp=Az URL-ből
+index_identok2=Csomagok keresése a fájlhoz:
 index_all=Minden csomag
 index_treturn=csomag fa
-index_tree=Csomag fa
+index_tree2=Böngésszen a csomagfán
 index_epackagecmd=A $1 csomagrendszerhez a $2 parancsra van szükség
 index_eupdatecmd=A $1 frissítőrendszerhez a $2 parancsra van szükség
 index_epackagecheck=A kiválasztott csomagkezelő rendszer nem érvényes: $1. <br>Lehet, hogy másik rendszert kell választania a<a href='$2'> modulkonfiguráció </a> oldalon.
@@ -17,6 +25,14 @@ search_delete=Távolítsa el a kiválasztott csomagokat
 search_selall=Mindet kiválaszt
 search_invert=Fordított kijelölés
 
+edit_deps=Függőségek
+edit_dname=Attól függ
+edit_dtype=Függőség típusa
+edit_dvers=Változat
+edit_dpackage=Csomag
+edit_dfile=Fájl
+edit_dother=Képesség
+edit_dlibrary=Könyvtár
 edit_listdesc=Mutassa meg a csomagban található összes fájlt és azok aktuális ellenőrzési állapotát.
 edit_uninstdesc=Távolítsa el ezt a csomagot a rendszeréből.
 edit_egone=A csomag már nincs telepítve
@@ -50,7 +66,7 @@ bsd_manager=$1 Csomagkezelő
 slack_manager=Slackware csomagkezelő
 slack_edir=Hiányzó Slackware csomagok könyvtár $1 
 
-debian_manager=Debian DPKG
+debian_manager=Debian
 
 log_install_package=Telepített $1 csomag
 log_install_apt_l=Telepített csomag (ok) $1 az APT-től

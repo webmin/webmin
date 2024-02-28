@@ -2,16 +2,11 @@ index_title=Programpaket
 index_installed=Installerade paket
 index_close=Stäng allt
 index_open=Öppna allt
-index_search=Sök efter paket:
 index_install=Installera ett nytt paket
-index_installmsg=Välj varifrån du vill installera det nya paketet <tt>$1</tt>:
 index_local=Från lokal fil
 index_uploaded=Från nedladdad fil
-index_ftp=Från ftp eller http, URL
 index_installok=Installera
 index_ident=Identifiera en fil
-index_identmsg=Ange kommando eller sökvägen till en fil som systemet ska söka efter i databasen <tt>$1</tt>.
-index_identok=Sök efter:
 index_return=paketlista
 
 search_title=Paketsökning

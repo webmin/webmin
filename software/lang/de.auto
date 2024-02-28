@@ -1,0 +1,20 @@
+index_tabpkgs=Installierte Pakete
+index_tabinstall=Installieren Sie ein neues Paket
+index_tabupdate=Pakete aktualisieren
+index_finddesc=Durchsuchen Sie die $1-Datenbank nach Paketnamen oder dem Inhalt eines Pakets oder durchsuchen Sie den gesamten Paketbaum.
+index_findtext=Nach Paket suchen:
+index_installmsg=Wählen Sie den Speicherort aus, an dem ein neues $1-Paket installiert werden soll.
+index_ftp=Von URL
+index_identok2=Pakete nach Datei durchsuchen:
+index_tree2=Durchsuchen Sie den Paketbaum
+
+edit_deps=Abhängigkeiten
+edit_dname=Kommt drauf an
+edit_dtype=Abhängigkeitstyp
+edit_dvers=Ausführung
+edit_dpackage=Paket
+edit_dfile=Datei
+edit_dother=Fähigkeit
+edit_dlibrary=Bibliothek
+
+debian_manager=Debian

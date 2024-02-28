@@ -1,9 +1,28 @@
+index_tabpkgs=Zainstalowane pakiety
+index_tabinstall=Zainstaluj nowy pakiet
+index_tabupdate=Zaktualizuj pakiety
+index_finddesc=Przeszukaj bazę danych $1 według nazwy pakietu lub zawartości pakietu albo przejrzyj całe drzewo pakietów.
+index_findtext=Wyszukaj pakiet:
+index_installmsg=Wybierz lokalizację, w której chcesz zainstalować nowy pakiet $1.
+index_ftp=Z adresu URL
+index_identok2=Wyszukaj pakiety dla pliku:
+index_tree2=Przeglądaj drzewo pakietów
 index_filter=Filtruj pakiety
 index_filterclear=Czysty filtr
 index_filtered=Wyświetlanie <tt>$1</tt> pakietów z <tt>$2</tt>
 
+edit_deps=Zależności
+edit_dname=Zależy od
+edit_dtype=Typ zależności
+edit_dvers=Wersja
+edit_dpackage=Pakiet
+edit_dfile=Plik
+edit_dother=Zdolność
+edit_dlibrary=Biblioteka
 edit_listdesc=Pokaż wszystkie pliki w tym pakiecie i ich bieżący stan weryfikacji.
 edit_uninstdesc=Usuń ten pakiet z systemu.
+
+debian_manager=Debiana
 
 apt_repo_url=Podstawowy adres URL repozytorium
 apt_repo_path=Komponenty ścieżki dystrybucji
