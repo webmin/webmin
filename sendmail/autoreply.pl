@@ -235,6 +235,12 @@ if (@must_regexp) {
 		}
 	}
 
+# Check if we have a From address
+if (!$rheader{'From'}) {
+	print STDERR "Could not work out From address\n";
+	exit 0;
+	}
+
 # if spamassassin is installed, feed the email to it
 $spam = &has_command("spamassassin");
 if ($spam) {
