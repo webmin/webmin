@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Alert and emergency messages
 
 view_title=View Logfile
 view_header=Last $1 lines of $2
-view_header2=Last $1 lines of $2 file
+view_header2=Last $1 lines
 view_empty=Log file is empty
 view_refresh=Refresh
 view_filter=Filter lines with text $1
