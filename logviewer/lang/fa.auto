@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=پیام های هشدار و اضطراری
 
 view_title=مشاهده Logfile
 view_header=آخرین $1 خط $2 
-view_header2=آخرین $1 خط فایل $2 
+view_header2=آخرین $1 خط
 view_empty=فایل گزارش خالی است
 view_refresh=تازه کردن
 view_filter=خطوط با متن $1 را فیلتر کنید

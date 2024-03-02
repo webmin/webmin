@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Mesaje de alertă și de urgență
 
 view_title=Vizualizați fișierul jurnal
 view_header=Ultimele $1 rânduri din $2
-view_header2=Ultimele $1 rânduri din fișierul $2
+view_header2=Ultimele $1 linii
 view_empty=Fișierul jurnal este gol
 view_refresh=Reîmprospăta
 view_filter=Filtrați liniile cu textul $1

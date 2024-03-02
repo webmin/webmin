@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Poruke za upozorenja i hitne slučajeve
 
 view_title=Pogledaj datoteku dnevnika
 view_header=Zadnjih $1 redaka $2
-view_header2=Zadnjih $1 redaka datoteke $2
+view_header2=Zadnjih $1 redaka
 view_empty=Dnevnik je prazan
 view_refresh=Osvježiti
 view_filter=Filtrirajte retke s tekstom $1

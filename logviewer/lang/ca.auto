@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Missatges d'alerta i emergència
 
 view_title=Veure fitxer de registre
 view_header=Les darreres $1 línies de $2
-view_header2=Les últimes $1 línies del fitxer $2
+view_header2=Últimes $1 línies
 view_empty=El fitxer de registre està buit
 view_refresh=Actualització
 view_filter=Filtra les línies amb el text $1 

@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Výstražné a nouzové zprávy
 
 view_title=Zobrazit soubor protokolu
 view_header=Poslední řádky $1 z $2
-view_header2=Posledních $1 řádků souboru $2
+view_header2=Posledních $1 řádků
 view_empty=Soubor protokolu je prázdný
 view_refresh=Obnovit
 view_filter=Filtrovat řádky s textem $1

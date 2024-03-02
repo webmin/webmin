@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Messages d'alerte et d'urgence
 
 view_title=Afficher le fichier journal
 view_header=Dernières $1 lignes de $2
-view_header2=Dernières $1 lignes du fichier $2
+view_header2=Dernières $1 lignes
 view_empty=Le fichier journal est vide
 view_refresh=Rafraîchir
 view_filter=Filtrer les lignes avec le texte $1

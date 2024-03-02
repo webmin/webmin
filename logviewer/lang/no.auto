@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Alarm- og nødmeldinger
 
 view_title=Vis loggfil
 view_header=Siste $1 linjer av $2
-view_header2=Siste $1 linjer av $2 fil
+view_header2=Siste $1 linjer
 view_empty=Loggfilen er tom
 view_refresh=Forfriske
 view_filter=Filtrer linjer med tekst $1

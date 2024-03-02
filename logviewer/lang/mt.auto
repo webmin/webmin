@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Messaġġi ta' twissija u ta' emerġenza
 
 view_title=Ara Logfile
 view_header=L-aħħar $1 linji ta’ $2
-view_header2=L-aħħar $1 linji tal-fajl $2
+view_header2=L-aħħar $1 linji
 view_empty=Log file huwa vojt
 view_refresh=Aġġorna
 view_filter=Iffiltra linji bit-test $1

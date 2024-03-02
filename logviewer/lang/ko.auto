@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=경고 및 비상 메시지
 
 view_title=로그 파일 보기
 view_header=$2의 마지막 $1줄
-view_header2=$2 파일의 마지막 $1줄
+view_header2=마지막 $1줄
 view_empty=로그 파일이 비어 있습니다
 view_refresh=새로 고치다
 view_filter=텍스트 $1 이있는줄필터링

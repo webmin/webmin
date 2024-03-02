@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Thông báo và tin nhắn khẩn cấp
 
 view_title=Xem tệp nhật ký
 view_header=$1 dòng cuối cùng của $2 
-view_header2=$1 dòng cuối cùng của tệp $2 
+view_header2=$1 dòng cuối cùng
 view_empty=Tệp nhật ký trống
 view_refresh=Làm mới
 view_filter=Lọc các dòng có văn bản $1 

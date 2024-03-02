@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Figyelmeztető és vészhelyzeti üzenetek
 
 view_title=Naplófájl megtekintése
 view_header=$2 utolsó $1 sora
-view_header2=$2 fájl utolsó $1 sora
+view_header2=Utolsó $1 sor
 view_empty=A naplófájl üres
 view_refresh=Frissítés
 view_filter=Szűrő sorok szöveggel $1

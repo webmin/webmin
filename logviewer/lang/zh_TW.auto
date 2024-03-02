@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=警報和緊急消息
 
 view_title=查看日誌文件
 view_header=$2 的最後 $1 行
-view_header2=$2 文件的最後 $1 行
+view_header2=最後 $1 行
 view_empty=日誌文件為空
 view_refresh=刷新
 view_filter=過濾帶有文本 $1 的行

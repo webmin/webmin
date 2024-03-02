@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Messaggi di allerta e di emergenza
 
 view_title=Visualizza file di registro
 view_header=Ultime $1 righe di $2
-view_header2=Ultime $1 righe del file $2
+view_header2=Ultime $1 righe
 view_empty=Il file di registro è vuoto
 view_refresh=ricaricare
 view_filter=Filtra le righe con testo $1

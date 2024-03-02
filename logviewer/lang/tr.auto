@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Uyarı ve acil durum mesajları
 
 view_title=Günlük Dosyasını Görüntüle
 view_header=$2'nin son $1 satırı
-view_header2=$2 dosyasının son $1 satırı
+view_header2=Son $1 satır
 view_empty=Günlük dosyası boş
 view_refresh=Yenile
 view_filter=$1 metinli satırları filtrele

@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=الرٹ اور ہنگامی پیغامات
 
 view_title=لاگ فائل دیکھیں
 view_header=$2 کی آخری $1 لائنیں۔
-view_header2=$2 فائل کی آخری $1 لائنیں۔
+view_header2=آخری $1 لائنیں۔
 view_empty=لاگ فائل خالی ہے۔
 view_refresh=ریفریش کریں۔
 view_filter=متن $1 کے ساتھ لائنوں کو فلٹر کریں۔

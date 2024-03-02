@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Varnings- och nödmeddelanden
 
 view_title=Visa loggfil
 view_header=Sista $1 raderna av $2
-view_header2=Sista $1 raderna i filen $2
+view_header2=Sista $1 raderna
 view_empty=Loggfilen är tom
 view_refresh=Uppdatera
 view_filter=Filtrera rader med texten $1

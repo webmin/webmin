@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Alarm- und Notfallmeldungen
 
 view_title=Protokolldatei anzeigen
 view_header=Letzte $1 Zeilen von $2
-view_header2=Letzte $1 Zeilen von $2 Datei
+view_header2=Letzte $1 Zeilen
 view_empty=Protokolldatei ist leer
 view_refresh=Aktualisierung
 view_filter=Zeilen mit Text $1 filtern

@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Hälytys- ja hätäviestit
 
 view_title=Näytä lokitiedosto
 view_header=Viimeiset $1 riviä $2:sta
-view_header2=Viimeiset $1 riviä tiedostosta $2
+view_header2=Viimeiset $1 riviä
 view_empty=Lokitiedosto on tyhjä
 view_refresh=virkistää
 view_filter=Suodata rivit tekstillä $1
