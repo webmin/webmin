@@ -22,7 +22,7 @@ if ($access{'syslog'}) {
 		local @cols;
 		push(@cols, &text('index_cmd', "<tt>".$o->{'cmd'}."</tt>"));
 		push(@cols, $o->{'desc'});
-		push(@cols, &ui_link("view_log.cgi?idx=$o->{'id'}", $text{'index_view'}) );
+		push(@cols, &ui_link("view_log.cgi?idx=$o->{'id'}&view=1", $text{'index_view'}) );
 		push(@col1, \@cols);
 		}
 
@@ -46,7 +46,7 @@ if ($access{'syslog'}) {
 				push(@cols, join("&nbsp;;&nbsp;",
 					   map { &html_escape($_) } @{$c->{'sel'}}));
 				push(@cols, &ui_link("view_log.cgi?idx=syslog-".
-					$c->{'index'}, $text{'index_view'}) );
+					$c->{'index'}."&"."view=1", $text{'index_view'}) );
 				push(@col1, \@cols);
 				push(@foreign_syslogs, $c->{'file'});
 				}
@@ -71,7 +71,7 @@ if ($access{'syslog'}) {
 					push(@cols, "&nbsp;;&nbsp;$dest->{'value'}");
 					push(@cols, &ui_link(
 						"view_log.cgi?idx=syslog-ng-".
-						$dest->{'index'},
+						$dest->{'index'}."&"."view=1",
 						$text{'index_view'}) );
 					push(@col1, \@cols);
 					}
@@ -97,7 +97,7 @@ if ($config{'others'} && $access{'others'}) {
 				}
 			push(@cols, &html_escape($o->{'desc'}));
 			push(@cols, &ui_link("view_log.cgi?oidx=$o->{'mindex'}".
-				"&omod=$o->{'mod'}", $text{'index_view'}) );
+				"&omod=$o->{'mod'}&view=1", $text{'index_view'}) );
 			push(@col2, \@cols);
 			}
 		}
@@ -115,7 +115,7 @@ foreach $e (&extra_log_files()) {
 			"<tt>".&html_escape($e->{'cmd'})."</tt>"));
 		}
 	push(@cols, &html_escape($e->{'desc'}));
-	push(@cols, &ui_link("view_log.cgi?extra=".&urlize($e->{'file'} || $e->{'cmd'}), $text{'index_view'}) );
+	push(@cols, &ui_link("view_log.cgi?extra=".&urlize($e->{'file'} || $e->{'cmd'})."&view=1", $text{'index_view'}) );
 	push(@col3, \@cols);
 	}
 
