@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Opozorila in sporočila v sili
 
 view_title=Oglejte si dnevniško datoteko
 view_header=Zadnja $1 vrstica $2
-view_header2=Zadnjih $1 vrstic datoteke $2
+view_header2=Zadnjih $1 vrstic
 view_empty=Dnevniška datoteka je prazna
 view_refresh=Osveži
 view_filter=Filtriraj vrstice z besedilom $1

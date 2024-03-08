@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Įspėjamieji ir avariniai pranešimai
 
 view_title=Peržiūrėti žurnalo failą
 view_header=Paskutinės $1 eilutės iš $2
-view_header2=Paskutinės $2 failo $1 eilutės
+view_header2=Paskutinės $1 eilutės
 view_empty=Žurnalo failas tuščias
 view_refresh=Atnaujinti
 view_filter=Filtruoti eilutes su tekstu $1

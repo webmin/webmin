@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Brīdinājuma un avārijas ziņojumi
 
 view_title=Skatīt žurnālfailu
 view_header=Pēdējās $1 rindiņas no $2
-view_header2=$2 faila pēdējās $1 rindas
+view_header2=Pēdējās $1 rindiņas
 view_empty=Žurnāla fails ir tukšs
 view_refresh=atjaunot
 view_filter=Filtrēt rindas ar tekstu $1

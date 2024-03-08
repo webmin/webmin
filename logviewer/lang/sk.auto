@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Výstražné a núdzové správy
 
 view_title=Zobraziť Logfile
 view_header=Posledných $1 riadkov z $2
-view_header2=Posledných $1 riadkov zo súboru $2
+view_header2=Posledných $1 riadkov
 view_empty=Súbor denníka je prázdny
 view_refresh=Obnoviť
 view_filter=Filtrujte riadky s textom $1

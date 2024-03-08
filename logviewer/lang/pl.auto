@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Komunikaty alarmowe i alarmowe
 
 view_title=Wyświetl plik dziennika
 view_header=Ostatnie $1 wierszy $2 
-view_header2=Ostatnie $1 wierszy pliku $2 
+view_header2=Ostatnie $1 linii
 view_empty=Plik dziennika jest pusty
 view_refresh=Odświeżać
 view_filter=Filtruj linie z tekstem $1 

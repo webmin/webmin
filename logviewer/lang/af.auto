@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Waarskuwing en noodboodskappe
 
 view_title=Bekyk loglêer
 view_header=Laaste $1 reëls van $2
-view_header2=Laaste $1 reëls van $2 lêer
+view_header2=Laaste $1 reëls
 view_empty=Loglêer is leeg
 view_refresh=Verfris
 view_filter=Filter lyne met teks $1

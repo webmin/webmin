@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Μηνύματα ειδοποίησης και έ
 
 view_title=Προβολή αρχείου καταγραφής
 view_header=Τελευταίες $1 γραμμές του $2
-view_header2=Τελευταίες $1 γραμμές του αρχείου $2
+view_header2=Τελευταίες $1 γραμμές
 view_empty=Το αρχείο καταγραφής είναι κενό
 view_refresh=Φρεσκάρω
 view_filter=Φιλτράρισμα γραμμών με κείμενο $1

@@ -498,7 +498,9 @@ sub get_current_cpu_data
 {
 my @cpu;
 my @fans;
-my @cputhermisters;
+my @fans_all;
+my @cpu_thermisters;
+my $cpu_broadcoms;
 if (&has_command("sensors")) {
     my ($cpu, $cpu_aux, $cpu_unnamed, $cpu_package, $cpu_broadcom, $cpu_amd);
     my $fh = "SENSORS";
@@ -511,7 +513,7 @@ if (&has_command("sensors")) {
 
         # CPU full output must have either voltage or fan data
         my ($cpu_volt) = $_ =~ /(?|in[\d+]\s*:\s+([\+\-0-9\.]+)\s+V|cpu\s+core\s+voltage\s*:\s+([0-9\.]+)\s+V)/i;
-        my ($cpu_fan_num, $cpu_fan_rpm) = $_ =~ /(?|fan([\d+])\s*:\s+([0-9]+)\s+rpm|cpu(\s)fan\s*:\s+([0-9]+)\s+rpm|cpu\s+fan\s*:\s+([0-9]+)\s+rpm)/i;
+        my ($cpu_fan_num, $cpu_fan_rpm) = $_ =~ /(?|fan([\d+])\s*:\s*([0-9]+)\s*rpm|cpu(\s)fan\s*:\s*([0-9]+)\s*rpm|cpu\s+fan\s*:\s*([0-9]+)\s*rpm)/i;
         $cpu++ if ($cpu_volt || $cpu_fan_num);
 
         # First just store fan data for any device if any
@@ -519,13 +521,18 @@ if (&has_command("sensors")) {
                 {  'fan' => &trim($cpu_fan_num),
                    'rpm' => $cpu_fan_rpm
                 }
-        ) if ($cpu_fan_num);
+        ),
+	push(@fans_all, 
+		{
+		   $cpu_fan_num => @fans
+		}
+	) if ($cpu_fan_num);
 
         # AMD CPU Thermisters #1714
         if ($cpu && /thermistor\s+[\d]+:\s+[+-]([\d]+)/i) {
             my $temp = int($1);
-            push(@cputhermisters,
-                 {  'core' => scalar(@cputhermisters) + 1,
+            push(@cpu_thermisters,
+                 {  'core' => scalar(@cpu_thermisters) + 1,
                     'temp' => $temp
                  }) if ($temp);
             }
@@ -597,6 +604,7 @@ if (&has_command("sensors")) {
                          {  'core' => $1,
                             'temp' => int($2)
                          });
+                    $cpu_broadcoms++;
                     }
                 elsif (/cpu\s+temp(.*?):\s+([\+\-][0-9\.]+)/i) {
                     $cpu_unnamed++;
@@ -604,6 +612,7 @@ if (&has_command("sensors")) {
                          {  'core' => $cpu_unnamed,
                             'temp' => int($2)
                          });
+                    $cpu_broadcoms++;
                     }
                 }
 
@@ -648,13 +657,25 @@ if (&has_command("sensors")) {
         }
     close($fh);
     }
-@cpu = @cputhermisters
-    if (!@cpu && @cputhermisters);
+@cpu = @cpu_thermisters
+    if (!@cpu && @cpu_thermisters);
 
 # Fix to remove cannot detect 
 # package temperatures (178)
 if (@cpu) {
 	@cpu = grep {$_->{'temp'} != 178} @cpu;
+	}
+
+# Fix output when FAN data
+# precedes CPU data (/t/125292)
+if (!@fans && @cpu && @fans_all &&
+    $cpu_broadcoms && @cpu == @fans_all) {
+	foreach my $fan (@fans_all) {
+		foreach my $cpu (@cpu) {
+			push(@fans, $fan->{$cpu->{'core'}})
+				if ($fan->{$cpu->{'core'}});
+			}
+		}
 	}
 return (\@cpu, \@fans);
 }

@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Alerta eta larrialdi mezuak
 
 view_title=Ikusi erregistro-fitxategia
 view_header=$2ren azken $1 lerroak
-view_header2=$2 fitxategiaren azken $1 lerroak
+view_header2=Azken $1 lerroak
 view_empty=Erregistro fitxategia hutsik dago
 view_refresh=Freskatu
 view_filter=Iragazi lerroak $1 testuarekin

@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Абвесткі і экстраныя павед
 
 view_title=Прагляд файла часопіса
 view_header=Апошні $1 радок $2
-view_header2=Апошнія $1 радкоў файла $2
+view_header2=Апошні $1 радок
 view_empty=Файл журнала пусты
 view_refresh=Абнавіць
 view_filter=Фільтраваць радкі з тэкстам $1

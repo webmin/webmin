@@ -271,7 +271,6 @@ if (@logfiles && $found) {
 	}
 else {
 	$text_view_header = 'view_header2';
-	$sel = "<tt>".&html_escape($in{'file'})."</tt>";
 	print &ui_hidden("idx", $in{'idx'}),"\n";
 	}
 

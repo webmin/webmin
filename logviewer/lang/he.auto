@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=הודעות התראה וחרום
 
 view_title=הצג קובץ יומן
 view_header=$1 שורות אחרונות של $2
-view_header2=$1 שורות אחרונות של קובץ $2
+view_header2=$1 שורות אחרונות
 view_empty=קובץ היומן ריק
 view_refresh=לְרַעֲנֵן
 view_filter=סנן שורות עם הטקסט $1 

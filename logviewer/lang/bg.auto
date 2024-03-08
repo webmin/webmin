@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Предупредителни и спешни с
 
 view_title=Преглед на регистрационния файл
 view_header=Последни $1 редове от $2
-view_header2=Последни $1 редове от $2 файл
+view_header2=Последни $1 реда
 view_empty=Лог файлът е празен
 view_refresh=Опресняване
 view_filter=Филтриране на редове с текст $1

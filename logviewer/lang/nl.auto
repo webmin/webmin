@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Waarschuwings- en noodberichten
 
 view_title=Logbestand bekijken
 view_header=Laatste $1 regels van $2
-view_header2=Laatste $1 regels van $2 bestand
+view_header2=Laatste $1 regels
 view_empty=Logbestand is leeg
 view_refresh=Vernieuwen
 view_filter=Filterregels met tekst $1

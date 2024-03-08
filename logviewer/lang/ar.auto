@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=رسائل التنبيه والطوارئ
 
 view_title=مشاهدة ملف السجل
 view_header=آخر$1 سطر من$2
-view_header2=آخر$1 سطر من ملف$2
+view_header2=آخر $1 سطر
 view_empty=ملف السجل فارغ
 view_refresh=ينعش
 view_filter=تصفية الأسطر بالنص$1

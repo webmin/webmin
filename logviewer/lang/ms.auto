@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Makluman dan mesej kecemasan
 
 view_title=Lihat Fail Log
 view_header=$1 baris terakhir $2 
-view_header2=$1 baris terakhir $2 fail
+view_header2=$1 baris terakhir
 view_empty=Fail log kosong
 view_refresh=Segarkan semula
 view_filter=Tapis baris dengan teks $1 

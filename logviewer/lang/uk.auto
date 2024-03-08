@@ -19,7 +19,7 @@ journal_journalctl_alert_emerg=Оповіщення та екстрені пов
 
 view_title=Переглянути файл журналу
 view_header=Останні $1 рядки $2
-view_header2=Останні $1 рядки файлу $2
+view_header2=Останні $1 рядків
 view_empty=Файл журналу порожній
 view_refresh=Оновити
 view_filter=Фільтрувати рядки з текстом $1
