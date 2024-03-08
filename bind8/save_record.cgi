@@ -666,8 +666,8 @@ else {
 	    &expandall_ip6($ofwdrec->{'values'}->[0]) &&
 	    $fulloldvalue0 eq $ofwdrec->{'name'}) {
 		# Updating the forward record
-		&before_editing($ofwdfile);
-		&before_editing($fwdfile);
+		&before_editing($ofwdconf);
+		&before_editing($fwdconf);
 		&lock_file(&make_chroot($ofwdfile));
 		&lock_file(&make_chroot($fwdfile));
 		my @ofrecs = &read_zone_file($ofwdfile, $ofwdconf->{'name'});
@@ -702,8 +702,8 @@ else {
 			&bump_soa_record($ofwdfile, \@ofrecs);
 			&sign_dnssec_zone_if_key($ofwdconf, \@ofrecs);
 			}
-		&after_editing($fwdfile);
-		&after_editing($ofwdfile);
+		&after_editing($fwdconf);
+		&after_editing($ofwdconf);
 		}
 	}
 &bump_soa_record($in{'file'}, \@recs);
