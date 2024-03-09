@@ -685,8 +685,18 @@ sub check_reboot_required
 my ($no_collect) = @_;
 return 0 if ($no_collect);
 if ($gconfig{'os_type'} eq 'debian-linux') {
-        return -e "/var/run/reboot-required" ? 1 : 0;
-        }
+	if (-e "/var/run/reboot-required") {
+		return 1;
+		}
+	if (&has_command("needrestart")) {
+		my $out = &backquote_command("needrestart -b -k -n 2>&1 </dev/null");
+		if ($out =~ /NEEDRESTART-KSTA:\s*(?<status>\d)/m) {
+			if ($+{status} == 3) {
+				return 1;
+				}
+			}
+		}
+	}
 elsif ($gconfig{'os_type'} eq 'redhat-linux') {
 	my $needs_restarting_cmd = "needs-restarting";
 	my $needs_restarting = has_command($needs_restarting_cmd);
