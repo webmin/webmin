@@ -97,6 +97,26 @@ if (!$in{'type'}) {
 			    undef, \@tds);
 	}
 
+# Display inputs for this monitor type
+if ($type =~ /^(\S+)::(\S+)$/) {
+	# From another module
+	($mod, $mtype) = ($1, $2);
+	&foreign_require($mod, "status_monitor.pl");
+	&foreign_call($mod, "load_theme_library");
+	if (&foreign_defined($mod, "status_monitor_dialog")) {
+		print &foreign_call($mod, "status_monitor_dialog",
+				    $mtype, $serv);
+		}
+	}
+else {
+	# From this module
+	do "./${type}-monitor.pl";
+	$func = "show_${type}_dialog";
+	if (defined(&$func)) {
+		&$func($serv);
+		}
+	}
+
 # Show servers to run on
 @servs = grep { $_->{'user'} } &servers::list_servers_sorted();
 @servs = sort { $a->{'host'} cmp $b->{'host'} } @servs;
@@ -119,6 +139,10 @@ else {
 	# Only local is available
 	print &ui_hidden("remotes", "*"),"\n";
 	}
+
+print &ui_table_end();
+print "<p>\n";
+print &ui_table_start($text{'mon_header5'}, "width=100%", 2, \@tds);
 
 # Show emailing schedule
 print &ui_table_row($text{'mon_nosched'},
@@ -225,31 +249,7 @@ print &ui_table_row($text{'mon_runon'},
 		    undef, \@tds);
 
 print &ui_table_end();
-
-# Display inputs for this monitor type
-if ($type =~ /^(\S+)::(\S+)$/) {
-	# From another module
-	($mod, $mtype) = ($1, $2);
-	&foreign_require($mod, "status_monitor.pl");
-	&foreign_call($mod, "load_theme_library");
-	if (&foreign_defined($mod, "status_monitor_dialog")) {
-		print &ui_table_start($text{'mon_header3'}, "width=100%", 4,
-				      \@tds);
-		print &foreign_call($mod, "status_monitor_dialog", $mtype, $serv);
-		print &ui_table_end();
-		}
-	}
-else {
-	# From this module
-	do "./${type}-monitor.pl";
-	$func = "show_${type}_dialog";
-	if (defined(&$func)) {
-		print &ui_table_start($text{'mon_header3'}, "width=100%", 4,
-				      \@tds);
-		&$func($serv);
-		print &ui_table_end();
-		}
-	}
+print "<p>\n";
 
 # Show history, in a hidden section
 if (!$in{'type'}) {
