@@ -41,8 +41,8 @@ if ($serv->{'virtualmin'} && &foreign_check("virtual-server")) {
 	&foreign_require("virtual-server");
 	$d = &virtual_server::get_domain($serv->{'virtualmin'});
 	if ($d) {
-		print "<b>",&text('mon_virtualmin',
-			&virtual_server::show_domain_name($d)),"</b> <p>\n";
+		print &ui_alert_box(&text('mon_virtualmin',
+			&virtual_server::show_domain_name($d)), 'warn');
 		}
 	}
 
@@ -141,7 +141,7 @@ else {
 	}
 
 print &ui_table_end();
-print "<p>\n";
+
 print &ui_table_start($text{'mon_header5'}, "width=100%", 2, \@tds);
 
 # Show emailing schedule
@@ -222,7 +222,7 @@ if (@servs) {
 	}
 
 print &ui_table_end();
-print "<p>\n";
+
 print &ui_table_start($text{'mon_header2'}, "width=100%", 2, \@tds);
 
 # Show commands to run on up/down
@@ -249,7 +249,6 @@ print &ui_table_row($text{'mon_runon'},
 		    undef, \@tds);
 
 print &ui_table_end();
-print "<p>\n";
 
 # Show history, in a hidden section
 if (!$in{'type'}) {
