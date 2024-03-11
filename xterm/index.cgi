@@ -169,7 +169,7 @@ print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\"></div>\n";
 my $port = &allocate_miniserv_websocket();
 
 # Check permissions for user to run as
-my $user = $access{'user'};
+my $user = $access{'user'} || $config{'user'};
 if ($user eq "*") {
 	$user = $remote_user;
 	}
