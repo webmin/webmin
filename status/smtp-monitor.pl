@@ -30,6 +30,63 @@ eval {
                 }
 	$desc = $text{'smtp_ok1'};
 
+	if ($serv->{'user'}) {
+		# Login to SMTP server
+		eval "use Authen::SASL";
+		my $auth = "Plain";
+		if ($@) {
+			die "Perl module <tt>Authen::SASL</tt> is needed for SMTP authentication";
+			}
+		my $sasl = Authen::SASL->new('mechanism' => uc($auth),
+					     'callback' => {
+						'auth' => $serv->{'user'},
+						'user' => $serv->{'user'},
+						'pass' => $serv->{'pass'} } );
+		die "Failed to create Authen::SASL object" if (!$sasl);
+		my $conn = $sasl->client_new("smtp", &get_system_hostname());
+		my $arv = &mailboxes::smtp_command($h, "auth $auth\r\n", 1);
+		if ($arv =~ /^(334)(\-\S+)?\s+(.*)/) {
+			# Server says to go ahead
+			$extra = $3;
+			my $initial = $conn->client_start();
+			my $auth_ok;
+			if ($initial) {
+				my $enc = &encode_base64($initial);
+				$enc =~ s/\r|\n//g;
+				$arv = &mailboxes::smtp_command($h, "$enc\r\n", 1);
+				if ($arv =~ /^(\d+)(\-\S+)?\s+(.*)/) {
+					if ($1 == 235) {
+						$auth_ok = 1;
+						}
+					else {
+						die("Unknown SMTP authentication response : $arv");
+						}
+					}
+				$extra = $3;
+				}
+			while(!$auth_ok) {
+				my $message = &decode_base64($extra);
+				my $return = $conn->client_step($message);
+				my $enc = &encode_base64($return);
+				$enc =~ s/\r|\n//g;
+				$arv = &mailboxes::smtp_command($h, "$enc\r\n", 1);
+				if ($arv =~ /^(\d+)(\-\S+)?\s+(.*)/) {
+					if ($1 == 235) {
+						$auth_ok = 1;
+						}
+					elsif ($1 == 535) {
+						die("SMTP authentication failed : $arv");
+						}
+					$extra = $3;
+					}
+				else {
+					die("Unknown SMTP authentication response : $arv");
+					}
+				}
+			}
+		$desc = $text{'smtp_ok4'};
+		}
+
 	# Open an SMTP transaction
 	if ($serv->{'from'}) {
 		&mailboxes::smtp_command($h, "mail from: <$serv->{'from'}>\r\n");
@@ -90,6 +147,14 @@ print &ui_table_row($text{'smtp_from'},
 print &ui_table_row($text{'smtp_to'},
 	&ui_opt_textbox("to", $serv->{'to'}, 25,
 			$text{'smtp_none'}, $text{'smtp_addr'}));
+
+print &ui_table_row($text{'smtp_user'},
+	&ui_radio("user_def", $serv->{'user'} ? 0 : 1,
+		  [ [ 1, $text{'smtp_user1'} ],
+		    [ 0, $text{'smtp_user0'}." ".
+			 &ui_textbox("user", $serv->{'user'}, 20)." ".
+			 $text{'smtp_pass'}." ".
+			 &ui_textbox("pass", $serv->{'pass'}, 20) ] ]));
 }
 
 sub parse_smtp_dialog
@@ -119,6 +184,16 @@ if ($in{'to_def'}) {
 else {
 	$in{'to'} =~ /^\S+\@\S+$/ || &error($text{'smtp_eto'});
 	$serv->{'to'} = $in{'to'};
+	}
+
+if ($in{'user_def'}) {
+	delete($serv->{'user'});
+	delete($serv->{'pass'});
+	}
+else {
+	$in{'user'} =~ /\S/ ||  &error($text{'smtp_euser'});
+	$serv->{'user'} = $in{'user'};
+	$serv->{'pass'} = $in{'pass'};
 	}
 }
 

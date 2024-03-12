@@ -601,5 +601,11 @@ smtp_eto=Recipient address must be like user@domain.com
 smtp_ok1=HELO command accepted
 smtp_ok2=Sender address accepted
 smtp_ok3=Recipient address accepted
+smtp_ok4=SMTP login accepted
+smtp_user=SMTP authentication
+smtp_user1=Don't login
+smtp_user0=Login as user
+smtp_pass=with password
+smtp_euser=Missing SMTP login
 
 __norefs=1
