@@ -74,6 +74,8 @@ type_alive=Alive System
 type_rssh=SSH Connection
 type_slapd=LDAP Server
 type_ldap=LDAP Connection
+type_smtp=SMTP Connection
+type_imap=IMAP Connection
 
 mon_create=Create Monitor
 mon_edit=Edit Monitor
@@ -581,5 +583,23 @@ ldap_pass=LDAP server password
 info_desc=System monitor
 info_last=Current status
 info_title=System and Server Status
+
+smtp_host=SMTP server host
+smtp_port=SMTP server port
+smtp_ssl=Use SSL?
+smtp_ssl0=Plaintext only
+smtp_ssl1=Always SSL
+smtp_ssl2=Switch to SSL with STARTTLS
+smtp_from=Test SMTP sender
+smtp_none=None
+smtp_addr=Use address
+smtp_to=Test SMTP recipient
+smtp_ehost=Missing or unresolvable SMTP server host
+smtp_eport=Missing or non-numeric SMTP server port
+smtp_efrom=Sender address must be like user@domain.com
+smtp_eto=Recipient address must be like user@domain.com
+smtp_ok1=HELO command accepted
+smtp_ok2=Sender address accepted
+smtp_ok3=Recipient address accepted
 
 __norefs=1
