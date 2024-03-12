@@ -586,7 +586,7 @@ info_title=System and Server Status
 
 smtp_host=SMTP server host
 smtp_port=SMTP server port
-smtp_ssl=Use SSL?
+smtp_ssl=Use SSL connection?
 smtp_ssl0=Plaintext only
 smtp_ssl1=Always SSL
 smtp_ssl2=Switch to SSL with STARTTLS
@@ -607,5 +607,14 @@ smtp_user1=Don't login
 smtp_user0=Login as user
 smtp_pass=with password
 smtp_euser=Missing SMTP login
+
+imap_host=IMAP server host
+imap_port=IMAP server port
+imap_ssl=Use SSL connection?
+imap_user=IMAP login
+imap_pass=IMAP password
+imap_ehost=Missing or unresolvable IMAP server host
+imap_eport=Missing or non-numeric IMAP server port
+imap_euser=Missing IMAP login
 
 __norefs=1
