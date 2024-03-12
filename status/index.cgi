@@ -177,14 +177,14 @@ print &ui_columns_end();
 sub show_button
 {
 if ($access{'edit'}) {
-	print "<form action=edit_mon.cgi>\n";
-	print "<input type=submit value='$text{'index_add'}'> ",
-	      "<select name=type>\n";
+	print &ui_form_start("edit_mon.cgi");
+	print &ui_submit($text{'index_add'});
+	my @opts;
 	foreach $h (sort { $a->[1] cmp $b->[1] } &list_handlers()) {
-		printf "<option value=%s>%s</option>\n",
-			$h->[0], $h->[1] || $h->[0];
+		push(@opts, [ $h->[0], $h->[1] ]);
 		}
-	print "</select></form>\n";
+	print &ui_select("type", undef, \@opts);
+	print &ui_form_end();
 	}
 }
 
