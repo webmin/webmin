@@ -266,42 +266,62 @@ return $out =~ /fetchmail\s+release\s+(\S+)/ ? $1 : undef;
 # show_polls(&polls, file, user)
 sub show_polls
 {
-if (@{$_[0]}) {
-	print &ui_columns_start([ $text{'index_poll'},
-				  $text{'index_active'},
-				  $text{'index_proto'},
-				  $text{'index_users'} ], 100);
-	foreach $p (@{$_[0]}) {
-		local @cols;
-		push(@cols, "<a href='edit_poll.cgi?file=$_[1]&".
-		      	    "idx=$p->{'index'}&user=$_[2]'>".
-			    &html_escape($p->{'poll'})."</a>");
+my ($polls, $file, $user) = @_;
+my $params = "file=".&urlize($file)."&user=".&urlize($user);
+my $rv = "";
+if (@$polls) {
+	$rv .= &ui_columns_start([ $text{'index_poll'},
+				   $text{'index_active'},
+				   $text{'index_proto'},
+				   $text{'index_users'} ], 100);
+	foreach my $p (@$polls) {
+		my @cols;
+		push(@cols, &ui_link("edit_poll.cgi?".$params.
+				     "&idx=$p->{'index'}",
+				     &html_escape($p->{'poll'})));
 		push(@cols, $p->{'skip'} ?
 		    "<font color=#ff0000>$text{'no'}</font>" : $text{'yes'});
 		push(@cols, $p->{'proto'} ? &html_escape(uc($p->{'proto'}))
 					  : $text{'default'});
-		local $ulist;
-		foreach $u (@{$p->{'users'}}) {
+		my $ulist = "";
+		foreach my $u (@{$p->{'users'}}) {
 			$ulist .= sprintf "%s -> %s<br>\n",
 				&html_escape($u->{'user'}),
 				&html_escape(@{$u->{'is'}} ?
 				   join(" ", @{$u->{'is'}}) : $_[2]);
 			}
 		push(@cols, $ulist);
-		print &ui_columns_row(\@cols);
+		$rv .= &ui_columns_row(\@cols);
 		}
-	print &ui_columns_end();
+	$rv .= &ui_columns_end();
 	}
-local @links = (
-  &ui_link("edit_poll.cgi?new=1&file=$_[1]&user=$_[2]",$text{'index_add'}),
-  &ui_link("edit_global.cgi?file=$_[1]&user=$_[2]",$text{'index_global'})
+my @links = (
+	&ui_link("edit_poll.cgi?new=1&".$params, $text{'index_add'}),
+	&ui_link("edit_global.cgi?".$params, $text{'index_global'})
 	);
-if (@{$_[0]}) {
-	push(@links, &ui_link("check.cgi?file=$_[1]&user=$_[2]",$text{'index_run'}));
+if (@$polls) {
+	push(@links, &ui_link("check.cgi?".$params, $text{'index_run'}));
 	}
-print &ui_links_row(\@links);
+$rv .= &ui_links_row(\@links);
+return $rv;
 }
 
+# is_fetchmail_running()
+# Returns the PID if fetchmail is running
+sub is_fetchmail_running
+{
+my @uinfo = getpwnam($config{'daemon_user'});
+foreach my $pf ($config{'pid_file'},
+	        "$uinfo[7]/.fetchmail.pid",
+		"$uinfo[7]/.fetchmail") {
+	if (open(PID, "<$pf") && ($line=<PID>) &&
+	    (($pid,$interval) = split(/\s+/, $line)) && $pid &&
+	    kill(0, $pid)) {
+		return $pid;
+		}
+	}
+return undef;
+}
 
 1;
 

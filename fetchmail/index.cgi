@@ -27,48 +27,33 @@ if ($config{'config_file'}) {
 	@conf = grep { $_->{'poll'} } @conf;
 	print "<b>",&text('index_file',
 			  "<tt>$config{'config_file'}</tt>"),"</b><p>\n";
-	&show_polls(\@conf, $config{'config_file'}, $config{'daemon_user'});
+	print &show_polls(\@conf, $config{'config_file'}, $config{'daemon_user'});
 
-	local @uinfo = getpwnam($config{'daemon_user'});
 	print &ui_hr();
-	print "<table width=100%>\n";
+	print &ui_buttons_start();
 
 	if (&foreign_installed("cron") && $access{'cron'}) {
 		# Show button to manage cron job
-		print "<form action=edit_cron.cgi>\n";
-		print "<tr> <td><input type=submit ",
-		      "value='$text{'index_cron'}'></td>\n";
-		print "<td>$text{'index_crondesc'}</td> </tr></form>\n";
+		print &ui_buttons_row("edit_cron.cgi", $text{'index_cron'},
+				      $text{'index_crondesc'});
 		}
 
 	# Show the fetchmail daemon form
-	foreach $pf ($config{'pid_file'},
-		     "$uinfo[7]/.fetchmail.pid", "$uinfo[7]/.fetchmail") {
-		if (open(PID, "<$pf") && ($line=<PID>) &&
-		    (($pid,$interval) = split(/\s+/, $line)) && $pid &&
-		    kill(0, $pid)) {
-			$running++;
-			last;
-			}
-		}
 	print "<tr><td>\n";
-	if ($running) {
+	if (&is_fetchmail_running()) {
 		# daemon is running - offer to stop it
-		print "<form action=stop.cgi>\n";
-		print "<input type=submit value='$text{'index_stop'}'></td>\n";
-		print "<td>",&text('index_stopmsg',
-				   "<tt>$config{'daemon_user'}</tt>",
-				   $interval),"</td>\n";
+		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
+			&text('index_stopmsg',
+			      "<tt>$config{'daemon_user'}</tt>",
+			      $interval));
 		}
 	else {
 		# daemon isn't running - offer to start it
-		print "<form action=start.cgi>\n";
-		print "<input type=submit value='$text{'index_start'}'></td>\n";
-		print "<td>",&text('index_startmsg',
-				   "<input name=interval size=5 value='60'>",
-				   "<tt>$config{'daemon_user'}</tt>"),"</td>\n";
+		print &ui_buttons_row("start.cgi", $text{'index_start'},
+			&text('index_startmsg', &ui_textbox("interval", 60, 5),
+			      "<tt>$config{'daemon_user'}</tt>"));
 		}
-	print "</td></tr></table></form>\n";
+	print &ui_buttons_end();
 	}
 else {
 	# Build a list of users with fetchmail configurations
@@ -105,28 +90,23 @@ else {
 	elsif (!$config{'view_mode'}) {
 		# Full details
 		&show_button();
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>$text{'index_user'}</b></td> <td><b>$text{'index_conf'}</b></td> </tr>\n";
+		print &ui_columns_start([ $text{'index_user'}, $text{'index_conf'} ], 100);
 		foreach $u (@users) {
-			print "<tr $cb>\n";
-			print "<td valign=top><b>",&html_escape($u->[1]->[0]),
-			      "</b></td> <td>\n";
-			&show_polls($u->[0], "$u->[1]->[7]/.fetchmailrc",
-				    $u->[1]->[0]);
-			print "</td> </tr>\n";
+			print &ui_columns_row([
+				&html_escape($u->[1]->[0]),
+				&show_polls($u->[0], "$u->[1]->[7]/.fetchmailrc",
+					    $u->[1]->[0]) ]);
 			}
-		print "</table>\n";
+		print &ui_columns_end();
 		}
 	else {
 		# Just show usernames
-		print &ui_table_start($text{'index_header'}, "width=100%", 1);
-		$i = 0;
+		my @grid;
 		foreach $u (@users) {
-			print "<tr>\n" if ($i%4 == 0);
-			print &ui_link("edit_user.cgi?user=$u->[1]->[0]","$u->[1]->[0]")."</td>\n";
-			print "</tr>\n" if ($i%4 == 3);
-			$i++;
+			push(@grid, &ui_link("edit_user.cgi?user=$u->[1]->[0]","$u->[1]->[0]"));
 			}
+		print &ui_table_start($text{'index_header'}, "width=100%", 1);
+		print &ui_table_row(undef, &ui_grid_table(\@grid, 4));
 		print &ui_table_end();
 		}
 	&show_button() if (!$toomany);
@@ -146,11 +126,11 @@ else {
 sub show_button
 {
 if ($access{'mode'} != 3 || !$doneheader) {
-	print "<form action=edit_poll.cgi>\n";
-	print "<input type=hidden name=new value=1>\n";
-	print "<input type=submit value='$text{'index_ok'}'>\n";
+	print &ui_form_start("edit_poll.cgi");
+	print &ui_hidden("view", 1);
+	print &ui_submit($text{'index_ok'});
 	print &unix_user_input("user");
-	print "</form>\n";
+	print &ui_form_end();
 	}
 }
 
