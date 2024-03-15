@@ -39,7 +39,6 @@ if ($config{'config_file'}) {
 		}
 
 	# Show the fetchmail daemon form
-	print "<tr><td>\n";
 	if (&is_fetchmail_running()) {
 		# daemon is running - offer to stop it
 		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
