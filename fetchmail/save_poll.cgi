@@ -77,6 +77,14 @@ else {
 		$user->{'pass'} = $in{"pass_$i"};
 		local @is = split(/\s+/, $in{"is_$i"});
 		$user->{'is'} = \@is;
+		if ($in{"folder_${i}_def"}) {
+			delete($user->{'folder'});
+			}
+		else {
+			$in{"folder_$i"} =~ /\S/ ||
+				&error($text{'poll_efolder'});
+			$user->{'folder'} = $in{"folder_$i"};
+			}
 		$user->{'keep'} = $in{"keep_$i"};
 		$user->{'fetchall'} = $in{"fetchall_$i"};
 		if ($in{"keep_$i"} == 1 && $in{"fetchall_$i"} == 1) {

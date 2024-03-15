@@ -96,6 +96,11 @@ foreach $u (@users) {
 		&ui_textbox("is_$i", join(" ", @{$u->{'is'}}) ||
 				     $remote_user, 60));
 
+	# Folder to check
+	print &ui_table_row($text{'poll_folder'},
+		&ui_opt_textbox("folder_$i", $u->{'folder'}, 15,
+				$text{'poll_inbox'}));
+
 	# Leave messages on server?
 	my @kopts = ( [ 1, $text{'yes'} ], [ 0, $text{'no'} ],
 		      [ '', $text{'default'}." (".$text{'poll_usually'}.")" ] );
