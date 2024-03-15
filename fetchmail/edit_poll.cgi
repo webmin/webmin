@@ -23,161 +23,117 @@ else {
 	$poll = $conf[$in{'idx'}];
 	}
 
-print "<form action=save_poll.cgi method=post>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=file value='$file'>\n";
-print "<input type=hidden name=user value='$in{'user'}'>\n";
-
 # Show server options
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'poll_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_poll.cgi", "post");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("file", $file);
+print &ui_hidden("user", $in{'user'});
+print &ui_table_start($text{'poll_header'}, "width=100%", 2);
 
-print "<tr> <td><b>$text{'poll_poll'}</b></td>\n";
-printf "<td><input name=poll size=30 value='%s'></td>\n",
-	$poll->{'poll'};
+# Server to poll
+print &ui_table_row($text{'poll_poll'},
+	&ui_textbox("poll", $poll->{'poll'}, 30));
 
-print "<td><b>$text{'poll_skip'}</b></td>\n";
-printf "<td><input type=radio name=skip value=0 %s> %s\n",
-	$poll->{'skip'} ? '' : 'checked', $text{'yes'};
-printf "<input type=radio name=skip value=1 %s> %s</td> </tr>\n",
-	$poll->{'skip'} ? 'checked' : '', $text{'no'};
+# Polling enabled?
+print &ui_table_row($text{'poll_skip'},
+	&ui_yesno_radio("skip", $poll->{'skip'} ? 1 : 0,
+			[ [ 0, $text{'yes'} ],
+			  [ 1, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'poll_via'}</b></td>\n";
-printf "<td colspan=3><input type=radio name=via_def value=1 %s> %s\n",
-	$poll->{'via'} ? '' : 'checked', $text{'poll_via_def'};
-printf "<input type=radio name=via_def value=0 %s>\n",
-	$poll->{'via'} ? 'checked' : '';
-printf "<input name=via size=30 value='%s'></td> </tr>\n",
-	$poll->{'via'};
+# Server to connect via
+print &ui_table_row($text{'poll_via'},
+	&ui_opt_textbox("via", $poll->{'via'}, 30, $text{'poll_via_def'}), 3);
 
-print "<tr> <td><b>$text{'poll_proto'}</b></td>\n";
-print "<td><select name=proto>\n";
-printf "<option value='' %s>%s</option>\n",
-	$poll->{'proto'} ? '' : 'selected', $text{'default'};
-foreach $p ('pop3', 'pop2', 'imap', 'imap-k4', 'imap-gss', 'apop', 'kpop') {
-	printf "<option value=%s %s>%s</option>\n",
-		$p, lc($poll->{'proto'}) eq $p ? 'selected' : '', uc($p);
-	$found++ if (lc($poll->{'proto'}) eq $p);
-	}
-printf "<option value=%s selected>%s</option>\n", $poll->{'proto'}, uc($poll->{'proto'})
-	if (!$found && $poll->{'proto'});
-print "</select></td>\n";
+# Protocol
+print &ui_table_row($text{'poll_proto'},
+	&ui_select("proto", lc($poll->{'proto'}),
+		   [ [ '', $text{'default'} ],
+		     map { [ $_, uc($_) ] } ('pop3', 'pop2', 'imap', 'imap-k4', 'imap-gss', 'apop', 'kpop'),
+		   ], 1, 0, 1));
 
-							
-print "<td><b>$text{'poll_port'}</b></td>\n";
-printf "<td><input type=radio name=port_def value=1 %s> %s\n",
-	$poll->{'port'} ? '' : 'checked', $text{'default'};
-printf "<input type=radio name=port_def value=0 %s> %s\n",
-	$poll->{'port'} ? 'checked' : '';
-printf "<input name=port size=8 value='%s'></td> </tr>\n",
-	$poll->{'port'};
+# Port number
+print &ui_table_row($text{'poll_port'},
+	&ui_opt_textbox("port", $poll->{'port'}, 8, $text{'default'}));
 
-print "<tr> <td><b>$text{'poll_auth'}</b></td>\n";
-print "<td><select name=auth>\n";
-printf "<option value='' %s>%s</option>\n",
-	$poll->{'auth'} ? '' : 'selected', $text{'default'};
-foreach $p ('password', 'kerberos_v5', 'kerberos_v4', 'gssapi', 'cram-md5', 'otp', 'ntlm', 'ssh') {
-        printf "<option value=%s %s>%s</option>\n",
-                $p, lc($poll->{'auth'}) eq $p ? 'selected' : '', uc($p);
-        $found++ if (lc($poll->{'auth'}) eq $p);
-        }
-printf "<option value=%s selected>%s</option>\n", $poll->{'auth'}, uc($poll->{'auth'})
-        if (!$found && $poll->{'auth'});
-print "</select></td> </tr>\n";
+# Authentication method
+print &ui_table_row($text{'poll_auth'},
+	&ui_select("auth", lc($poll->{'auth'}),
+		   [ [ '', $text{'default'} ],
+		     map { [ $_, uc($_) ] } ('password', 'kerberos_v5', 'kerberos_v4', 'gssapi', 'cram-md5', 'otp', 'ntlm', 'ssh') ],
+		   1, 0, 1));
 
+# Interface to depend on
 @interface = split(/\//, $poll->{'interface'});
-print "<tr> <td valign=top><b>$text{'poll_interface'}</b></td><td colspan=3>\n";
-printf "<input type=radio name=interface_def value=1 %s> %s<br>\n",
-	@interface ? '' : 'checked', $text{'poll_interface_def'};
-printf "<input type=radio name=interface_def value=0 %s> %s\n",
-	@interface ? 'checked' : '', $text{'poll_interface_ifc'};
-print "<input name=interface size=8 value='$interface[0]'> ",
-      "$text{'poll_interface_ip'}\n";
-print "<input name=interface_net size=15 value='$interface[1]'> /\n";
-print "<input name=interface_mask size=15 value='$interface[2]'></td> </tr>\n";
+print &ui_table_row($text{'poll_interface'},
+	&ui_radio("interface_def", @interface ? 0 : 1,
+		  [ [ 1, $text{'poll_interface_def'} ],
+		    [ 0, $text{'poll_interface_ifc'} ] ])."\n".
+	&ui_textbox("interface", $interface[0], 8)." ".
+	$text{'poll_interface_ip'}." ".
+	&ui_textbox("interface_net", $interface[1], 15)." / ".
+	&ui_textbox("interface_mask", $interface[2], 15));
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
 
 # Show user options
 @users = @{$poll->{'users'}};
 push(@users, undef) if ($in{'new'} || $in{'adduser'});
 $i = 0;
 foreach $u (@users) {
-	print "<br><table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'poll_uheader'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	print &ui_table_start($text{'poll_uheader'}, "width=100%", 2);
 
-	print "<tr> <td><b>$text{'poll_user'}</b></td>\n";
-	printf "<td><input name=user_$i size=15 value='%s'></td>\n",
-		$u->{'user'};
+	# IMAP username
+	print &ui_table_row($text{'poll_user'},
+		&ui_textbox("user_$i", $u->{'user'}, 25));
 
-	print "<td><b>$text{'poll_pass'}</b></td>\n";
-	print "<td>",&ui_password("pass_$i", $u->{'pass'}, 15),"</td> </tr>\n";
+	# IMAP password
+	print &ui_table_row($text{'poll_pass'},
+		&ui_password("pass_$i", $u->{'pass'}, 25));
 
-	print "<tr> <td><b>$text{'poll_is'}</b></td> <td colspan=3>\n";
-	printf "<input name=is_$i size=60 value='%s'></td> </tr>\n",
-		join(" ", @{$u->{'is'}}) || $remote_user;
+	# Deliver to local users
+	print &ui_table_row($text{'poll_is'},
+		&ui_textbox("is_$i", join(" ", @{$u->{'is'}}) ||
+				     $remote_user, 60));
 
-	print "<tr> <td><b>$text{'poll_keep'}</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=keep_$i value=1 %s> %s\n",
-		$u->{'keep'} eq '1' ? 'checked' : '', $text{'yes'};
-	printf "<input type=radio name=keep_$i value=0 %s> %s\n",
-		$u->{'keep'} eq '0' ? 'checked' : '', $text{'no'};
-	printf "<input type=radio name=keep_$i value='' %s> %s (%s)\n",
-		$u->{'keep'} eq '' ? 'checked' : '', $text{'default'},
-		$text{'poll_usually'};
-	print "</td> </tr>\n";
+	# Leave messages on server?
+	my @kopts = ( [ 1, $text{'yes'} ], [ 0, $text{'no'} ],
+		      [ '', $text{'default'}." (".$text{'poll_usually'}.")" ] );
+	print &ui_table_row($text{'poll_keep'},
+		&ui_radio("keep_$i", $u->{'keep'}, \@kopts));
 
-	print "<td><b>$text{'poll_fetchall'}</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=fetchall_$i value=1 %s> %s\n",
-		$u->{'fetchall'} eq '1' ? 'checked' : '', $text{'yes'};
-	printf "<input type=radio name=fetchall_$i value=0 %s> %s\n",
-		$u->{'fetchall'} eq '0' ? 'checked' : '', $text{'no'};
-	printf "<input type=radio name=fetchall_$i value='' %s> %s (%s)\n",
-		$u->{'fetchall'} eq '' ? 'checked' : '', $text{'default'},
-		$text{'poll_usually'};
-	print "</td> </tr>\n";
+	# Always fetch all?
+	print &ui_table_row($text{'poll_fetchall'},
+		&ui_radio("fetchall_$i", $u->{'fetchall'}, \@kopts));
 
-	print "<td><b>$text{'poll_ssl'}</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=ssl_$i value=1 %s> %s\n",
-		$u->{'ssl'} eq '1' ? 'checked' : '', $text{'yes'};
-	printf "<input type=radio name=ssl_$i value=0 %s> %s\n",
-		$u->{'ssl'} eq '0' ? 'checked' : '', $text{'no'};
-	printf "<input type=radio name=ssl_$i value='' %s> %s (%s)\n",
-		$u->{'ssl'} eq '' ? 'checked' : '', $text{'default'},
-		$text{'poll_usually'};
-	print "</td> </tr>\n";
+	# Connect in SSL mode?
+	print &ui_table_row($text{'poll_ssl'},
+		&ui_radio("ssl_$i", $u->{'ssl'}, \@kopts));
 
-	print "<tr> <td><b>$text{'poll_preconnect'}</b></td>\n";
-	$u->{'preconnect'} =~ s/'/&#39;/g;
-	printf "<td colspan=3><input name=preconnect_$i size=50 value='%s'></td> </tr>\n", $u->{'preconnect'};
+	# Command to run before and after connecting
+	print &ui_table_row($text{'poll_preconnect'},
+		&ui_textbox("preconnect_$i", $u->{'preconnect'}, 60));
+	print &ui_table_row($text{'poll_postconnect'},
+		&ui_textbox("postconnect_$i", $u->{'postconnect'}, 60));
 
-	print "<tr> <td><b>$text{'poll_postconnect'}</b></td>\n";
-	$u->{'postconnect'} =~ s/'/&#39;/g;
-	printf "<td colspan=3><input name=postconnect_$i size=50 value='%s'></td></tr>\n", $u->{'postconnect'};
-
-	print "</table></td></tr></table>\n";
+	print &ui_table_end();
 	$i++;
 	}
 
-print "<table width=100%><tr>\n";
+print &ui_table_end();
+
 if ($in{'new'}) {
-	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	push(@buts, [ undef, $text{'create'} ]);
 	}
 else {
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
+	push(@buts, [ undef, $text{'save'} ]);
 	if (!$in{'adduser'}) {
-		print "<td align=middle><input type=submit name=adduser ",
-		      "value='$text{'poll_adduser'}'></td>\n";
+		push(@buts, [ 'adduser', $text{'poll_adduser'} ]);
 		}
-	print "<td align=middle><input type=submit name=check ",
-	      "value='$text{'poll_check'}'></td>\n";
-	print "<td align=right><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td>\n";
+	push(@buts, [ 'check', $text{'poll_check'} ]);
+	push(@buts, [ 'delete', $text{'delete'} ]);
 	}
-print "</tr></table>\n";
+print &ui_form_end(\@buts);
 
 if (!$fetchmail_config && $config{'view_mode'}) {
 	&ui_print_footer("edit_user.cgi?user=$in{'user'}", $text{'user_return'},
