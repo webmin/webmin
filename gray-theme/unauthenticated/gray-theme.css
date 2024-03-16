@@ -715,36 +715,41 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
   filter: grayscale(1) contrast(0.1);
   opacity: 1;
 }
-.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair > .ui_form_label:not([data-pro-disabled="cell"]) > b > label > a,
-.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_heads b,
+
+.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_label:not([data-pro-disabled="cell"]) > b > label > a,
+.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_heads b,
 [data-pro-disabled="cell"],
+[data-pro-disabled="cell"] + .ui_form_value textarea,
 [data-pro-disabled$="-elem"] {
   filter:grayscale(1);
   opacity: .73;
 }
-.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair > .ui_form_value:not([data-pro-disabled="cell"]) > .ui_multi_select .ui_multi_select_heads b {
+.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value:not([data-pro-disabled="cell"]) > .ui_multi_select .ui_multi_select_heads b {
   opacity: .61;
 }
-.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row input[type="button"],
-.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row select {
+[data-pro-disabled="cell"] + .ui_form_value textarea,
+.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row input[type="button"],
+.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row select {
   color: rgba(118, 118, 118, 0.4);
   pointer-events: none;
   opacity: 0.8;
 }
-.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row input[type="button"] {
+[data-pro-disabled="cell"] + .ui_form_value textarea,
+.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row input[type="button"] {
   opacity: 0.3;
 }
-.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair > .ui_form_value:only-child {
+.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value:only-child {
   color: rgba(18, 18, 18, 0.7);
   filter: grayscale(1) contrast(0.9);
   pointer-events: none;
 }
-.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row select {
+.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row select {
   background-color: rgba(239, 239, 239, 0.3);
   border-color: rgba(118, 118, 118, 0.3);
   box-shadow: none;
 }
-.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row > td,
+[data-pro-disabled="cell"] + .ui_form_value,
+.ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row > td,
 .shrinkwrapper:has([data-pro-disabled="cell"]) ~ .ui_form_end_buttons {
   cursor: not-allowed;
 }
