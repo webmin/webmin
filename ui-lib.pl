@@ -1053,6 +1053,7 @@ if ($missing) {
 if (!defined($width)) {
 	$width = "200";
 	}
+$width .= "px" if ($width =~ /^\d+$/);
 my $wstyle = $width ? "style='width:$width'" : "";
 
 if (!$main::ui_multi_select_donejs++) {
