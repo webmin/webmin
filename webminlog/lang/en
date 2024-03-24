@@ -45,8 +45,7 @@ index_searchdesc=This form can be used to search for Webmin actions by user, mod
 index_notifydesc=Use this form to configure email notifications when Webmin actions are peformed by selected users or in chosen modules.
 
 search_title=Search Results
-search_date=Date
-search_time=Time
+search_datetime=Date and time
 search_user=User
 search_host=Client Address
 search_webmin=Webmin Server

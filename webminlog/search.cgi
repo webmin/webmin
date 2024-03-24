@@ -197,8 +197,7 @@ elsif (@match) {
 		  $text{'search_user'},
 		  $text{'search_host'},
 		  $config{'host_search'} ? ( $text{'search_webmin'} ) : ( ),
-		  $text{'search_date'},
-		  $text{'search_time'} ], "100");
+		  $text{'search_datetime'} ], "100");
 	foreach my $act (sort { $b->{'time'} <=> $a->{'time'} } @match) {
 		my @tm = localtime($act->{'time'});
 		my $m = $act->{'module'};
@@ -232,7 +231,7 @@ elsif (@match) {
 		if ($config{'host_search'}) {
 			push(@cols, $act->{'webmin'});
 			}
-		push(@cols, split(/\s+/, &make_date($act->{'time'}, 0, "yyyy/mm/dd")));
+		push(@cols, &make_date($act->{'time'}));
 		print &ui_columns_row(\@cols);
 		}
 	print &ui_columns_end();
