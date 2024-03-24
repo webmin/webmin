@@ -99,9 +99,7 @@ print &ui_table_row($text{'index_time'},
 	&ui_textbox("hour", undef, 2).":".&ui_textbox("min", "00", 2));
 
 # Current date and time
-my ($date, $time) = split(/\s+/, &make_date(time()));
-print &ui_table_row($text{'index_cdate'}, $date);
-print &ui_table_row($text{'index_ctime'}, $time);
+print &ui_table_row($text{'index_cdatetime'}, &make_date(time()));
 
 # Run in directory
 print &ui_table_row($text{'index_dir'},
