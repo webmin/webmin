@@ -73,10 +73,10 @@ log_email_remote=고객 주소 : $1
 
 nice_size_PB=PB
 nice_size_PiB=PiB
-nice_size_TB=결핵
+nice_size_TB=TB
 nice_size_TiB=TiB
 nice_size_GB=GB
-nice_size_GiB=수코양이
+nice_size_GiB=GiB
 nice_size_MB=MB
 nice_size_MiB=MiB
 nice_size_kB=kB
