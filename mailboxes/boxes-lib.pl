@@ -923,24 +923,24 @@ elsif ($sm) {
 	# Connect to SMTP server
 	&open_socket($sm, $port, $h->{'fh'});
 
-	&smtp_command($h, undef, 0);
-	my $helo = $config{'helo_name'} || &get_system_hostname();
-	if ($esmtp) {
-		&smtp_command($h, "ehlo $helo\r\n", 0);
-		}
-	else {
-		&smtp_command($h, "helo $helo\r\n", 0);
-		}
-
 	if ($ssl == 1) {
 		# Start using SSL mode right away
 		&switch_smtp_to_ssl($h);
 		}
-	elsif ($ssl == 2) {
+
+	&smtp_command($h, undef, 0);
+
+	# Send SMTP HELO
+	my $helo = $config{'helo_name'} || &get_system_hostname();
+	my $helocmd = $esmtp ? "ehlo $helo\r\n" : "helo $helo\r\n";
+	&smtp_command($h, $helocmd, 0);
+
+	if ($ssl == 2) {
 		# Switch to SSL with STARTTLS, if possible
                 my $rv = &smtp_command($h, "starttls\r\n", 1);
                 if ($rv =~ /^2\d+/) {
                         &switch_smtp_to_ssl($h);
+			&smtp_command($h, $helocmd, 0);
                         }
                 else {
                         $ssl = 0;
