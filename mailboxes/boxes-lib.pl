@@ -922,10 +922,6 @@ if ($file) {
 elsif ($sm) {
 	# Connect to SMTP server
 	&open_socket($sm, $port, $h->{'fh'});
-	if ($ssl == 1) {
-		# Start using SSL mode right away
-		&switch_smtp_to_ssl($h);
-		}
 
 	&smtp_command($h, undef, 0);
 	my $helo = $config{'helo_name'} || &get_system_hostname();
@@ -936,7 +932,11 @@ elsif ($sm) {
 		&smtp_command($h, "helo $helo\r\n", 0);
 		}
 
-	if ($ssl == 2) {
+	if ($ssl == 1) {
+		# Start using SSL mode right away
+		&switch_smtp_to_ssl($h);
+		}
+	elsif ($ssl == 2) {
 		# Switch to SSL with STARTTLS, if possible
                 my $rv = &smtp_command($h, "starttls\r\n", 1);
                 if ($rv =~ /^2\d+/) {
