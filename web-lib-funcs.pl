@@ -2259,9 +2259,6 @@ if (!$@ && $] > 5.011) {
 		my $date_format_time = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_time);
 		$date_format_time = $date_format_time;
 		$date_format_time =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
-		if ($main::webmin_script_type eq 'web') {
-			$date_format_time =~ s/\s/&nbsp;/g;
-			}
 		return "$date_format_short $date_format_time";
 		}
 	}
