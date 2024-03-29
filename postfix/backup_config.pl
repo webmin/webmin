@@ -34,8 +34,7 @@ return undef;
 sub post_restore
 {
 if (&is_postfix_running()) {
-	local $out = `$config{'postfix_control_command'} -c $config_dir reload 2>&1`;
-	return "<tt>$out</tt>" if ($?);
+	return &reload_postfix();
 	}
 return undef;
 }
