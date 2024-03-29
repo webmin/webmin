@@ -2423,6 +2423,12 @@ foreach $f (readdir(DIR)) {
 	}
 closedir(DIR);
 
+# Add TLS files
+foreach my $o ("smtpd_tls_cert_file", "smtpd_tls_key_file","smtpd_tls_CAfile") {
+	my $v = &get_current_value($o);
+	push(@rv, $v) if ($v);
+	}
+
 return &unique(@rv);
 }
 
