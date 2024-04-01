@@ -965,7 +965,7 @@ elsif ($sm) {
 						'pass' => $pass } );
 		&error("Failed to create Authen::SASL object") if (!$sasl);
 		local $conn = $sasl->client_new("smtp", &get_system_hostname());
-		local $arv = &smtp_command($h, "auth $auth\r\n", 1);
+		local $arv = &smtp_command($h, "AUTH ".uc($auth)."\r\n", 1);
 		if ($arv =~ /^(334)(\-\S+)?\s+(.*)/) {
 			# Server says to go ahead
 			$extra = $3;
