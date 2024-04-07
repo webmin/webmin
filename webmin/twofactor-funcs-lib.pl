@@ -231,7 +231,7 @@ sub message_twofactor_totp
 my ($user) = @_;
 my $name = &urlize(&get_display_hostname() . " (" . $user->{'name'} . ")");
 my $url = "https://chart.googleapis.com/chart".
-	  "?chs=200x200&chld=M|0&cht=qr&chl=otpauth://totp/".
+	  "?chs=200x200&cht=qr&chl=otpauth://totp/".
 	  $name."%3Fsecret%3D".$user->{'twofactor_id'};
 my $rv;
 $rv .= &text('twofactor_qrcode', "<tt>$user->{'twofactor_id'}</tt>")."<p>\n";
