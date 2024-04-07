@@ -251,7 +251,6 @@ sub check_postfix
 }
 
 # reload_postfix()
-#
 sub reload_postfix
 {
     if (is_postfix_running())
