@@ -229,10 +229,17 @@ return undef;
 sub message_twofactor_totp
 {
 my ($user) = @_;
-my $name = &urlize(&get_display_hostname() . " (" . $user->{'name'} . ")");
-my $url = "https://chart.googleapis.com/chart".
-	  "?chs=200x200&cht=qr&chl=otpauth://totp/".
-	  $name."%3Fsecret%3D".$user->{'twofactor_id'};
+my $name = &get_display_hostname()." (".$user->{'name'}.")";
+my $str = "otpauth://totp/".$name."?secret=".$user->{'twofactor_id'};
+my $url;
+if (&can_generate_qr()) {
+	$url = "$gconfig{'webprefix'}/webmin/qr.cgi?".
+	       "size=4&str=".&urlize($str);
+	}
+else {
+	$url = "https://chart.googleapis.com/chart".
+	       "?chs=200x200&cht=qr&chl=".&urlize($str);
+	}
 my $rv;
 $rv .= &text('twofactor_qrcode', "<tt>$user->{'twofactor_id'}</tt>")."<p>\n";
 $rv .= "<img src='$url' border=0><p>\n";
