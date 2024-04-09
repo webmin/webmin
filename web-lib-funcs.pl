@@ -12685,7 +12685,7 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 return 0;
 }
 
-=head2 convert_to_json(data, [utf8], [pretty])
+=head2 convert_to_json(data, [pretty])
 
 Converts the given Perl data structure to encoded binary string
 
