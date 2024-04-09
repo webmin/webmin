@@ -45,6 +45,12 @@ os_version=17.1
 real_os_type=AlmaLinux
 real_os_version=9.1
 
+root@centos-stream9-pro:~# cat /etc/webmin/config | grep os
+os_type=redhat-linux
+os_version=17
+real_os_type=CentOS Stream Linux
+real_os_version=9
+
 #
 # Returned EOL data for all supported OSes
 #
