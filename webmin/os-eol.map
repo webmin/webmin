@@ -1,0 +1,1804 @@
+=pod
+
+=head1 NAME
+
+# Example of data structure for OS EOL data
+
+=head1 DESCRIPTION
+
+#
+# Webmin configs for OS type and version
+#
+root@debian12-pro:~# cat /etc/webmin/config | grep os
+os_type=debian-linux
+os_version=12
+real_os_type=Debian Linux
+real_os_version=12
+
+root@ubuntu22-pro:~# cat /etc/webmin/config | grep os
+os_type=debian-linux
+os_version=13.0
+real_os_type=Ubuntu Linux
+real_os_version=22.04.2
+
+root@fedora39-pro:~# cat /etc/webmin/config | grep os
+os_type=redhat-linux
+os_version=47.0
+real_os_type=Fedora Linux
+real_os_version=38
+
+root@debug-freebsd12:~ # cat /etc/webmin/config |grep os
+os_type=freebsd
+os_version=12.2
+real_os_type=FreeBSD
+real_os_version=12.2
+
+root@rocky8-gpl:~# cat /etc/webmin/config | grep os
+os_type=redhat-linux
+os_version=16.9
+real_os_type=Rocky Linux
+real_os_version=8.9
+
+root@alma9-pro:~# cat /etc/webmin/config | grep os
+os_type=redhat-linux
+os_version=17.1
+real_os_type=AlmaLinux
+real_os_version=9.1
+
+#
+# Returned EOL data for all supported OSes
+#
+URL: endoflife.date/api/almalinux.json
+URL: endoflife.date/api/amazon-linux.json
+URL: endoflife.date/api/centos-stream.json
+URL: endoflife.date/api/centos.json
+URL: endoflife.date/api/debian.json
+URL: endoflife.date/api/fedora.json
+URL: endoflife.date/api/freebsd.json
+URL: endoflife.date/api/openbsd.json
+URL: endoflife.date/api/opensuse.json
+URL: endoflife.date/api/oracle-linux.json
+URL: endoflife.date/api/rhel.json
+URL: endoflife.date/api/rocky-linux.json
+URL: endoflife.date/api/ubuntu.json
+[
+  {
+    'almalinux' => [
+      {
+        'cycle' => '9',
+        'eol' => '2032-05-31',
+        'latest' => '9.3',
+        'latestReleaseDate' => '2023-11-13',
+        'link' => 'https://almalinux.org/blog/2023-11-13-announcing-93-stable/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2022-05-26',
+        'support' => '2027-05-31'
+      },
+      {
+        'cycle' => '8',
+        'eol' => '2029-03-01',
+        'latest' => '8.9',
+        'latestReleaseDate' => '2023-11-21',
+        'link' => 'https://almalinux.org/blog/2023-11-21-announcing-89-stable/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-03-30',
+        'support' => '2024-05-01'
+      }
+    ]
+  },
+  {
+    'amazon-linux' => [
+      {
+        'cycle' => '2023',
+        'eol' => '2028-03-15',
+        'latest' => '2023.4.20240401.1',
+        'latestReleaseDate' => '2024-04-05',
+        'link' => 'https://aws.amazon.com/about-aws/whats-new/2023/03/amazon-linux-2023/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2023-03-01',
+        'support' => '2025-03-15'
+      },
+      {
+        'cycle' => '2',
+        'eol' => '2025-06-30',
+        'latest' => '2.0.20240329.0',
+        'latestReleaseDate' => '2024-04-05',
+        'link' => 'https://aws.amazon.com/about-aws/whats-new/2018/06/announcing-amazon-linux-2-with-long-term-support/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2018-06-26',
+        'support' => '2025-06-30'
+      },
+      {
+        'cycle' => '2018.03',
+        'eol' => '2023-12-31',
+        'latest' => '2018.03.0.20231218.0',
+        'latestReleaseDate' => '2024-03-16',
+        'link' => 'https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2018-04-25',
+        'releaseLabel' => 'AMI 2018.03',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2017.09',
+        'eol' => '2023-12-31',
+        'latest' => '2017.09.1.20180409',
+        'latestReleaseDate' => '2018-04-10',
+        'link' => 'https://aws.amazon.com/blogs/aws/now-available-amazon-linux-ami-2017-09/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2017-11-03',
+        'releaseLabel' => 'AMI 2017.09',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2017.03',
+        'eol' => '2023-12-31',
+        'latest' => '2017.03.1.20170812',
+        'latestReleaseDate' => '2017-11-03',
+        'link' => 'https://aws.amazon.com/blogs/aws/amazon-inspector-update-assessment-reporting-proxy-support-and-more/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2017-04-07',
+        'releaseLabel' => 'AMI 2017.03',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2016.09',
+        'eol' => '2023-12-31',
+        'latest' => '2016.09.1.20161221',
+        'latestReleaseDate' => '2017-11-03',
+        'link' => 'https://aws.amazon.com/blogs/aws/now-available-amazon-linux-ami-2016-09/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2016-11-16',
+        'releaseLabel' => 'AMI 2016.09',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2016.03',
+        'eol' => '2023-12-31',
+        'latest' => '2016.03',
+        'link' => 'https://aws.amazon.com/amazon-linux-ami/2016.03-release-notes/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2016-03-22',
+        'releaseLabel' => 'AMI 2016.03',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2015.09',
+        'eol' => '2023-12-31',
+        'latest' => '2015.09',
+        'link' => 'https://aws.amazon.com/blogs/aws/now-available-amazon-linux-ami-2015-09/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2015-09-22',
+        'releaseLabel' => 'AMI 2015.09',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2015.03',
+        'eol' => '2023-12-31',
+        'latest' => '2015.03',
+        'link' => 'https://aws.amazon.com/blogs/aws/now-available-amazon-linux-ami-2015-03/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2015-03-24',
+        'releaseLabel' => 'AMI 2015.03',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2014.09',
+        'eol' => '2023-12-31',
+        'latest' => '2014.09',
+        'link' => 'https://aws.amazon.com/blogs/aws/amazon-linux-ami-2014-09/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-09-23',
+        'releaseLabel' => 'AMI 2014.09',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2014.03',
+        'eol' => '2023-12-31',
+        'latest' => '2014.03',
+        'link' => 'https://aws.amazon.com/blogs/aws/amazon-linux-ami-201403-is-now-available/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-03-27',
+        'releaseLabel' => 'AMI 2014.03',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2013.09',
+        'eol' => '2023-12-31',
+        'latest' => '2013.09',
+        'link' => 'https://aws.amazon.com/blogs/aws/amazon-linux-ami-201309-now-available/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2013-09-30',
+        'releaseLabel' => 'AMI 2013.09',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2013.03',
+        'eol' => '2023-12-31',
+        'latest' => '2013.03',
+        'link' => 'https://aws.amazon.com/blogs/aws/amazon-linux-ami-201303-now-available/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2013-03-27',
+        'releaseLabel' => 'AMI 2013.03',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2012.09',
+        'eol' => '2023-12-31',
+        'latest' => '2012.09',
+        'link' => 'https://aws.amazon.com/blogs/aws/amazon-linux-ami-201209-now-available/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2012-10-11',
+        'releaseLabel' => 'AMI 2012.09',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2012.03',
+        'eol' => '2023-12-31',
+        'latest' => '2012.03',
+        'link' => 'https://aws.amazon.com/blogs/aws/updated-amazon-linux-ami-201203-now-available/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2012-03-28',
+        'releaseLabel' => 'AMI 2012.03',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2011.09',
+        'eol' => '2023-12-31',
+        'latest' => '2011.09',
+        'link' => 'https://aws.amazon.com/blogs/aws/amazon-linux-ami-production-status-new-features/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2011-09-26',
+        'releaseLabel' => 'AMI 2011.09',
+        'support' => '2020-12-31'
+      },
+      {
+        'cycle' => '2010.11',
+        'eol' => '2023-12-31',
+        'latest' => '2010.11',
+        'link' => 'https://aws.amazon.com/blogs/aws/amazon-linux-ami-2010111-released/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2010-12-01',
+        'releaseLabel' => 'AMI 2010.11',
+        'support' => '2020-12-31'
+      }
+    ]
+  },
+  {
+    'centos-stream' => [
+      {
+        'cycle' => '9',
+        'eol' => '2027-05-31',
+        'latest' => '9',
+        'link' => 'https://blog.centos.org/2021/12/introducing-centos-stream-9/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-09-15',
+        'support' => '2027-05-31'
+      },
+      {
+        'cycle' => '8',
+        'eol' => '2024-05-31',
+        'latest' => '8',
+        'link' => 'http://web.archive.org/web/20230417021744/https://wiki.centos.org/Manuals/ReleaseNotes/CentOSStream',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2019-09-24',
+        'support' => '2024-05-31'
+      }
+    ]
+  },
+  {
+    'centos' => [
+      {
+        'cycle' => '8',
+        'eol' => '2021-12-31',
+        'latest' => '8 (2111)',
+        'link' => 'https://web.archive.org/web/20230711113909/https://wiki.centos.org/Manuals/ReleaseNotes/CentOS8.2111',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2019-09-24',
+        'support' => '2021-12-31'
+      },
+      {
+        'cycle' => '7',
+        'eol' => '2024-06-30',
+        'latest' => '7 (2009)',
+        'link' => 'https://web.archive.org/web/20230711113909/https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7.2009',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-07-07',
+        'support' => '2020-08-06'
+      },
+      {
+        'cycle' => '6',
+        'eol' => '2020-11-30',
+        'latest' => '6.10',
+        'link' => 'https://web.archive.org/web/20230711113909/https://wiki.centos.org/Manuals/ReleaseNotes/CentOS6.10',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2011-07-10',
+        'support' => '2017-05-10'
+      },
+      {
+        'cycle' => '5',
+        'eol' => '2017-03-31',
+        'latest' => '5.11',
+        'link' => 'https://web.archive.org/web/20230711113909/https://wiki.centos.org/Manuals/ReleaseNotes/CentOS5.11',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2007-04-12',
+        'support' => '2014-01-31'
+      }
+    ]
+  },
+  {
+    'debian' => [
+      {
+        'codename' => 'Bookworm',
+        'cycle' => '12',
+        'eol' => '2026-06-10',
+        'extendedSupport' => '2028-06-10',
+        'latest' => '12.5',
+        'latestReleaseDate' => '2024-02-10',
+        'link' => 'https://www.debian.org/News/2023/20230610',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2023-06-10'
+      },
+      {
+        'codename' => 'Bullseye',
+        'cycle' => '11',
+        'eol' => '2024-07-31',
+        'extendedSupport' => '2026-06-30',
+        'latest' => '11.9',
+        'latestReleaseDate' => '2024-02-10',
+        'link' => 'https://www.debian.org/News/2023/20230429',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-08-14'
+      },
+      {
+        'codename' => 'Buster',
+        'cycle' => '10',
+        'eol' => '2022-09-10',
+        'extendedSupport' => '2024-06-30',
+        'latest' => '10.13',
+        'latestReleaseDate' => '2022-09-10',
+        'link' => 'https://www.debian.org/News/2022/20220910',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2019-07-06'
+      },
+      {
+        'codename' => 'Stretch',
+        'cycle' => '9',
+        'eol' => '2020-07-18',
+        'extendedSupport' => '2022-07-01',
+        'latest' => '9.13',
+        'latestReleaseDate' => '2020-07-18',
+        'link' => 'https://www.debian.org/News/2020/20200718',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2017-06-17'
+      },
+      {
+        'codename' => 'Jessie',
+        'cycle' => '8',
+        'eol' => '2018-06-17',
+        'extendedSupport' => '2020-06-30',
+        'latest' => '8.11',
+        'latestReleaseDate' => '2018-06-23',
+        'link' => 'https://www.debian.org/News/2018/20180623',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2015-04-25'
+      },
+      {
+        'codename' => 'Wheezy',
+        'cycle' => '7',
+        'eol' => '2016-04-25',
+        'extendedSupport' => '2018-05-31',
+        'latest' => '7.11',
+        'latestReleaseDate' => '2016-06-04',
+        'link' => 'https://www.debian.org/News/2016/2016060402',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2013-05-04'
+      },
+      {
+        'codename' => 'Squeeze',
+        'cycle' => '6',
+        'eol' => '2014-05-31',
+        'extendedSupport' => '2016-02-29',
+        'latest' => '6.0.10',
+        'latestReleaseDate' => '2014-07-19',
+        'link' => 'https://www.debian.org/News/2014/20140719',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2011-02-06'
+      }
+    ]
+  },
+  {
+    'fedora' => [
+      {
+        'cycle' => '39',
+        'eol' => '2024-12-07',
+        'latest' => '39',
+        'latestReleaseDate' => '2023-11-07',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2023-11-07'
+      },
+      {
+        'cycle' => '38',
+        'eol' => '2024-05-18',
+        'latest' => '38',
+        'latestReleaseDate' => '2023-04-18',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2023-04-18'
+      },
+      {
+        'cycle' => '37',
+        'eol' => '2023-12-05',
+        'latest' => '37',
+        'latestReleaseDate' => '2022-11-15',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2022-11-15'
+      },
+      {
+        'cycle' => '36',
+        'eol' => '2023-05-16',
+        'latest' => '36',
+        'latestReleaseDate' => '2022-05-10',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2022-05-10'
+      },
+      {
+        'cycle' => '35',
+        'eol' => '2022-12-13',
+        'latest' => '35',
+        'latestReleaseDate' => '2021-11-02',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-11-02'
+      },
+      {
+        'cycle' => '34',
+        'eol' => '2022-06-07',
+        'latest' => '34',
+        'latestReleaseDate' => '2021-04-27',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-04-27'
+      },
+      {
+        'cycle' => '33',
+        'eol' => '2021-11-30',
+        'latest' => '33',
+        'latestReleaseDate' => '2020-10-27',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2020-10-27'
+      },
+      {
+        'cycle' => '32',
+        'eol' => '2021-05-25',
+        'latest' => '32',
+        'latestReleaseDate' => '2020-04-28',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2020-04-28'
+      },
+      {
+        'cycle' => '31',
+        'eol' => '2020-11-30',
+        'latest' => '31',
+        'latestReleaseDate' => '2019-10-29',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2019-10-29'
+      },
+      {
+        'cycle' => '30',
+        'eol' => '2020-05-26',
+        'latest' => '30',
+        'latestReleaseDate' => '2019-04-30',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2019-04-30'
+      },
+      {
+        'cycle' => '29',
+        'eol' => '2019-11-26',
+        'latest' => '29',
+        'latestReleaseDate' => '2018-10-30',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2018-10-30'
+      },
+      {
+        'cycle' => '28',
+        'eol' => '2019-05-28',
+        'latest' => '28',
+        'latestReleaseDate' => '2018-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2018-05-01'
+      }
+    ]
+  },
+  {
+    'freebsd' => [
+      {
+        'cycle' => 'releng/14.0',
+        'eol' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2023-11-21'
+      },
+      {
+        'cycle' => 'stable/14',
+        'eol' => '2028-11-30',
+        'link' => undef,
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2023-11-21'
+      },
+      {
+        'cycle' => 'releng/13.3',
+        'eol' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2024-03-05'
+      },
+      {
+        'cycle' => 'releng/13.2',
+        'eol' => '2024-06-30',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2023-04-11'
+      },
+      {
+        'cycle' => 'releng/13.1',
+        'eol' => '2023-07-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2022-05-16'
+      },
+      {
+        'cycle' => 'releng/13.0',
+        'eol' => '2022-08-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-04-13'
+      },
+      {
+        'cycle' => 'stable/13',
+        'eol' => '2026-01-31',
+        'link' => undef,
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-04-13'
+      },
+      {
+        'cycle' => 'releng/12.4',
+        'eol' => '2023-12-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2022-12-05'
+      },
+      {
+        'cycle' => 'releng/12.3',
+        'eol' => '2023-03-05',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-12-07'
+      },
+      {
+        'cycle' => 'releng/12.2',
+        'eol' => '2022-03-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2020-10-27'
+      },
+      {
+        'cycle' => 'releng/12.1',
+        'eol' => '2021-01-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2019-11-04'
+      },
+      {
+        'cycle' => 'releng/12.0',
+        'eol' => '2020-02-04',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2018-12-11'
+      },
+      {
+        'cycle' => 'stable/12',
+        'eol' => '2023-12-31',
+        'link' => undef,
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2018-12-11'
+      },
+      {
+        'cycle' => 'releng/11.4',
+        'eol' => '2021-09-30',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2020-06-16'
+      },
+      {
+        'cycle' => 'stable/11',
+        'eol' => '2021-09-30',
+        'link' => undef,
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2016-10-10'
+      },
+      {
+        'cycle' => 'releng/10.4',
+        'eol' => '2018-10-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2017-10-03'
+      },
+      {
+        'cycle' => 'releng/10.3',
+        'eol' => '2018-04-30',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2016-04-04'
+      },
+      {
+        'cycle' => 'releng/10.2',
+        'eol' => '2016-12-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2015-08-13'
+      },
+      {
+        'cycle' => 'releng/10.1',
+        'eol' => '2016-12-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-11-14'
+      },
+      {
+        'cycle' => 'releng/10.0',
+        'eol' => '2015-02-28',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-01-20'
+      },
+      {
+        'cycle' => 'stable/10',
+        'eol' => '2018-10-31',
+        'link' => undef,
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-01-20'
+      },
+      {
+        'cycle' => 'releng/9.3',
+        'eol' => '2016-12-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-07-16'
+      },
+      {
+        'cycle' => 'releng/9.2',
+        'eol' => '2014-12-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2013-09-30'
+      },
+      {
+        'cycle' => 'releng/9.1',
+        'eol' => '2014-12-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2012-12-30'
+      },
+      {
+        'cycle' => 'releng/9.0',
+        'eol' => '2013-03-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2012-01-10'
+      },
+      {
+        'cycle' => 'stable/9',
+        'eol' => '2016-12-31',
+        'link' => undef,
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2012-01-10'
+      },
+      {
+        'cycle' => 'releng/8.4',
+        'eol' => '2015-08-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2013-06-09'
+      },
+      {
+        'cycle' => 'releng/8.3',
+        'eol' => '2014-04-30',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2012-04-18'
+      },
+      {
+        'cycle' => 'releng/8.2',
+        'eol' => '2012-07-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2011-02-24'
+      },
+      {
+        'cycle' => 'releng/8.1',
+        'eol' => '2012-07-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2010-07-23'
+      },
+      {
+        'cycle' => 'releng/8.0',
+        'eol' => '2010-11-30',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2009-11-25'
+      },
+      {
+        'cycle' => 'stable/8',
+        'eol' => '2015-08-01',
+        'link' => undef,
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2009-11-25'
+      },
+      {
+        'cycle' => 'releng/7.4',
+        'eol' => '2013-02-28',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2011-02-24'
+      },
+      {
+        'cycle' => 'releng/7.3',
+        'eol' => '2012-03-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2010-03-23'
+      },
+      {
+        'cycle' => 'releng/7.2',
+        'eol' => '2010-06-30',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2009-03-04'
+      },
+      {
+        'cycle' => 'releng/7.1',
+        'eol' => '2011-02-28',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2009-01-04'
+      },
+      {
+        'cycle' => 'releng/7.0',
+        'eol' => '2009-04-30',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2008-02-27'
+      },
+      {
+        'cycle' => 'stable/7',
+        'eol' => '2013-02-28',
+        'link' => undef,
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2008-02-27'
+      },
+      {
+        'cycle' => 'releng/6.4',
+        'eol' => '2010-11-30',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2008-11-28'
+      },
+      {
+        'cycle' => 'releng/6.3',
+        'eol' => '2010-01-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2008-01-18'
+      },
+      {
+        'cycle' => 'releng/6.2',
+        'eol' => '2008-05-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2007-01-15'
+      },
+      {
+        'cycle' => 'releng/6.1',
+        'eol' => '2008-05-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2006-05-09'
+      },
+      {
+        'cycle' => 'releng/6.0',
+        'eol' => '2007-01-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2005-11-04'
+      },
+      {
+        'cycle' => 'stable/6',
+        'eol' => '2010-11-30',
+        'link' => undef,
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2005-11-04'
+      },
+      {
+        'cycle' => 'releng/5.5',
+        'eol' => '2008-05-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2006-05-25'
+      },
+      {
+        'cycle' => 'releng/5.4',
+        'eol' => '2006-10-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2005-05-09'
+      },
+      {
+        'cycle' => 'releng/5.3',
+        'eol' => '2006-10-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2004-11-06'
+      },
+      {
+        'cycle' => 'stable/5',
+        'eol' => '2008-05-31',
+        'link' => undef,
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2004-11-06'
+      },
+      {
+        'cycle' => 'releng/4.11',
+        'eol' => '2007-01-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2005-01-25'
+      },
+      {
+        'cycle' => 'stable/4',
+        'eol' => '2007-01-31',
+        'link' => undef,
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2000-03-14'
+      }
+    ]
+  },
+  {
+    'openbsd' => [
+      {
+        'cycle' => '7.5',
+        'eol' => '2025-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2024-04-05'
+      },
+      {
+        'cycle' => '7.4',
+        'eol' => '2024-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2023-10-16'
+      },
+      {
+        'cycle' => '7.3',
+        'eol' => '2024-04-05',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2023-04-10'
+      },
+      {
+        'cycle' => '7.2',
+        'eol' => '2023-10-16',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2022-10-20'
+      },
+      {
+        'cycle' => '7.1',
+        'eol' => '2023-04-10',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2022-04-21'
+      },
+      {
+        'cycle' => '7.0',
+        'eol' => '2022-10-20',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-10-14'
+      },
+      {
+        'cycle' => '6.9',
+        'eol' => '2022-04-21',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-05-01'
+      },
+      {
+        'cycle' => '6.8',
+        'eol' => '2021-10-14',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2020-10-18'
+      },
+      {
+        'cycle' => '6.7',
+        'eol' => '2021-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2020-05-19'
+      },
+      {
+        'cycle' => '6.6',
+        'eol' => '2020-10-18',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2019-10-17'
+      },
+      {
+        'cycle' => '6.5',
+        'eol' => '2020-05-19',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2019-04-24'
+      },
+      {
+        'cycle' => '6.4',
+        'eol' => '2019-10-17',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2018-10-18'
+      },
+      {
+        'cycle' => '6.3',
+        'eol' => '2019-05-03',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2018-04-02'
+      },
+      {
+        'cycle' => '6.2',
+        'eol' => '2018-10-18',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2017-10-09'
+      },
+      {
+        'cycle' => '6.1',
+        'eol' => '2018-04-15',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2017-04-11'
+      },
+      {
+        'cycle' => '6.0',
+        'eol' => '2017-10-09',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2016-09-01'
+      },
+      {
+        'cycle' => '5.9',
+        'eol' => '2017-04-11',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2016-03-29'
+      },
+      {
+        'cycle' => '5.8',
+        'eol' => '2016-09-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2015-10-18'
+      },
+      {
+        'cycle' => '5.7',
+        'eol' => '2016-03-29',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2015-05-01'
+      },
+      {
+        'cycle' => '5.6',
+        'eol' => '2015-10-18',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-11-01'
+      },
+      {
+        'cycle' => '5.5',
+        'eol' => '2015-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-05-01'
+      },
+      {
+        'cycle' => '5.4',
+        'eol' => '2014-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2013-11-01'
+      },
+      {
+        'cycle' => '5.3',
+        'eol' => '2014-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2013-05-01'
+      },
+      {
+        'cycle' => '5.2',
+        'eol' => '2013-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2012-11-01'
+      },
+      {
+        'cycle' => '5.1',
+        'eol' => '2013-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2012-05-01'
+      },
+      {
+        'cycle' => '5.0',
+        'eol' => '2012-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2011-11-01'
+      },
+      {
+        'cycle' => '4.9',
+        'eol' => '2012-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2011-05-01'
+      },
+      {
+        'cycle' => '4.8',
+        'eol' => '2011-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2010-11-01'
+      },
+      {
+        'cycle' => '4.7',
+        'eol' => '2011-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2010-05-19'
+      },
+      {
+        'cycle' => '4.6',
+        'eol' => '2010-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2009-10-18'
+      },
+      {
+        'cycle' => '4.5',
+        'eol' => '2010-05-19',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2009-05-01'
+      },
+      {
+        'cycle' => '4.4',
+        'eol' => '2009-10-18',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2008-11-01'
+      },
+      {
+        'cycle' => '4.3',
+        'eol' => '2009-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2008-05-01'
+      },
+      {
+        'cycle' => '4.2',
+        'eol' => '2008-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2007-11-01'
+      },
+      {
+        'cycle' => '4.1',
+        'eol' => '2008-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2007-05-01'
+      },
+      {
+        'cycle' => '4.0',
+        'eol' => '2007-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2006-11-01'
+      },
+      {
+        'cycle' => '3.9',
+        'eol' => '2007-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2006-05-01'
+      },
+      {
+        'cycle' => '3.8',
+        'eol' => '2006-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2005-11-01'
+      },
+      {
+        'cycle' => '3.7',
+        'eol' => '2006-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2005-05-19'
+      },
+      {
+        'cycle' => '3.6',
+        'eol' => '2005-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2004-11-01'
+      },
+      {
+        'cycle' => '3.5',
+        'eol' => '2005-05-19',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2004-05-01'
+      },
+      {
+        'cycle' => '3.4',
+        'eol' => '2004-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2003-11-01'
+      },
+      {
+        'cycle' => '3.3',
+        'eol' => '2004-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2003-05-01'
+      },
+      {
+        'cycle' => '3.2',
+        'eol' => '2003-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2002-11-01'
+      },
+      {
+        'cycle' => '3.1',
+        'eol' => '2003-05-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2002-05-19'
+      },
+      {
+        'cycle' => '3.0',
+        'eol' => '2002-11-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2001-12-01'
+      },
+      {
+        'cycle' => '2.9',
+        'eol' => '2002-05-19',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2001-06-01'
+      },
+      {
+        'cycle' => '2.8',
+        'eol' => '2001-12-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2000-12-01'
+      },
+      {
+        'cycle' => '2.7',
+        'eol' => '2001-06-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2000-06-15'
+      },
+      {
+        'cycle' => '2.6',
+        'eol' => '2000-12-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '1999-12-01'
+      },
+      {
+        'cycle' => '2.5',
+        'eol' => '2000-06-15',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '1999-05-19'
+      },
+      {
+        'cycle' => '2.4',
+        'eol' => '1999-12-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '1998-12-01'
+      },
+      {
+        'cycle' => '2.3',
+        'eol' => '1999-05-19',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '1998-05-19'
+      },
+      {
+        'cycle' => '2.2',
+        'eol' => '1998-12-01',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '1997-12-01'
+      },
+      {
+        'cycle' => '2.1',
+        'eol' => '1998-05-19',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '1997-06-01'
+      }
+    ]
+  },
+  {
+    'opensuse' => [
+      {
+        'cycle' => '15.5',
+        'eol' => '2024-12-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2023-06-07'
+      },
+      {
+        'cycle' => '15.4',
+        'eol' => '2023-12-07',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2022-06-09'
+      },
+      {
+        'cycle' => '15.3',
+        'eol' => '2022-12-31',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-06-02'
+      },
+      {
+        'cycle' => '15.2',
+        'eol' => '2022-01-04',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2020-07-02'
+      },
+      {
+        'cycle' => '15.1',
+        'eol' => '2021-02-02',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2019-05-22'
+      },
+      {
+        'cycle' => '15.0',
+        'eol' => '2019-12-03',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2018-05-25'
+      },
+      {
+        'cycle' => '42.3',
+        'eol' => '2019-07-01',
+        'link' => 'https://web.archive.org/web/20210415073632/https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/42.3/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2017-07-26'
+      },
+      {
+        'cycle' => '42.2',
+        'eol' => '2018-01-26',
+        'link' => 'https://web.archive.org/web/20211005130439/https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/42.2/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2016-11-16'
+      },
+      {
+        'cycle' => '42.1',
+        'eol' => '2017-05-17',
+        'link' => 'https://web.archive.org/web/20211005130439/https://doc.opensuse.org/release-notes/x86_64/openSUSE/Leap/42.1/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2015-11-04'
+      },
+      {
+        'cycle' => '13.2',
+        'eol' => '2017-01-17',
+        'link' => 'https://doc.opensuse.org/release-notes/x86_64/openSUSE/13.2/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-11-04',
+        'releaseLabel' => '__RELEASE_CYCLE__'
+      },
+      {
+        'cycle' => '13.1',
+        'eol' => '2016-02-03',
+        'link' => 'https://doc.opensuse.org/release-notes/x86_64/openSUSE/13.1/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-01-08',
+        'releaseLabel' => '__RELEASE_CYCLE__'
+      },
+      {
+        'cycle' => '12.3',
+        'eol' => '2015-01-29',
+        'link' => 'https://doc.opensuse.org/release-notes/x86_64/openSUSE/12.3/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2013-03-13',
+        'releaseLabel' => '__RELEASE_CYCLE__'
+      },
+      {
+        'cycle' => '12.2',
+        'eol' => '2014-01-15',
+        'link' => 'https://doc.opensuse.org/release-notes/x86_64/openSUSE/12.2/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2012-09-05',
+        'releaseLabel' => '__RELEASE_CYCLE__'
+      },
+      {
+        'cycle' => '12.1',
+        'eol' => '2013-05-15',
+        'link' => 'https://doc.opensuse.org/release-notes/x86_64/openSUSE/12.1/',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2011-11-16',
+        'releaseLabel' => '__RELEASE_CYCLE__'
+      },
+      {
+        'cycle' => '11.4',
+        'eol' => '2012-11-05',
+        'link' => 'https://en.opensuse.org/Archive:Product_highlights_11.4',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2011-03-10',
+        'releaseLabel' => '__RELEASE_CYCLE__'
+      },
+      {
+        'cycle' => '11.3',
+        'eol' => '2012-01-20',
+        'link' => 'https://en.opensuse.org/Archive:Product_highlights_11.3',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2010-07-15',
+        'releaseLabel' => '__RELEASE_CYCLE__'
+      },
+      {
+        'cycle' => '11.2',
+        'eol' => '2011-05-12',
+        'link' => 'https://en.opensuse.org/Archive:Product_highlights_11.2',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2009-11-12',
+        'releaseLabel' => '__RELEASE_CYCLE__'
+      },
+      {
+        'cycle' => '11.1',
+        'eol' => '2011-01-14',
+        'link' => 'https://www.suse.com/releasenotes/x86_64/openSUSE/11.1/index.html',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2008-12-18',
+        'releaseLabel' => '__RELEASE_CYCLE__'
+      },
+      {
+        'cycle' => '11.0',
+        'eol' => '2010-07-26',
+        'link' => 'https://www.suse.com/releasenotes/x86_64/openSUSE/11.0/index.html',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2008-06-19',
+        'releaseLabel' => '__RELEASE_CYCLE__'
+      }
+    ]
+  },
+  {
+    'oracle-linux' => [
+      {
+        'cycle' => '9',
+        'eol' => '2032-06-30',
+        'extendedSupport' => '2034-06-30',
+        'latest' => '9.3',
+        'latestReleaseDate' => '2023-11-17',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2022-07-06'
+      },
+      {
+        'cycle' => '8',
+        'eol' => '2029-07-01',
+        'extendedSupport' => '2031-07-01',
+        'latest' => '8.9',
+        'latestReleaseDate' => '2023-11-21',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2019-07-19'
+      },
+      {
+        'cycle' => '7',
+        'eol' => '2024-12-01',
+        'extendedSupport' => '2026-06-01',
+        'latest' => '7.9',
+        'latestReleaseDate' => '2020-10-08',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-07-23'
+      },
+      {
+        'cycle' => '6',
+        'eol' => '2021-03-01',
+        'extendedSupport' => '2024-12-01',
+        'latest' => '6.10',
+        'latestReleaseDate' => '2018-07-02',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2011-02-12'
+      }
+    ]
+  },
+  {
+    'rhel' => [
+      {
+        'cycle' => '9',
+        'eol' => '2032-05-31',
+        'extendedSupport' => '2035-05-31',
+        'latest' => '9.3',
+        'latestReleaseDate' => '2023-11-07',
+        'lts' => '2032-05-31',
+        'releaseDate' => '2022-05-17',
+        'support' => '2027-05-31'
+      },
+      {
+        'cycle' => '8',
+        'eol' => '2029-05-31',
+        'extendedSupport' => '2032-05-31',
+        'latest' => '8.9',
+        'latestReleaseDate' => '2023-11-14',
+        'lts' => '2029-05-31',
+        'releaseDate' => '2019-05-07',
+        'support' => '2024-05-31'
+      },
+      {
+        'cycle' => '7',
+        'eol' => '2024-06-30',
+        'extendedSupport' => '2028-06-30',
+        'latest' => '7.9',
+        'latestReleaseDate' => '2020-09-29',
+        'lts' => '2024-06-30',
+        'releaseDate' => '2013-12-11',
+        'support' => '2019-08-06'
+      },
+      {
+        'cycle' => '6',
+        'eol' => '2020-11-30',
+        'extendedSupport' => '2024-06-30',
+        'latest' => '6.10',
+        'latestReleaseDate' => '2018-06-19',
+        'lts' => '2020-11-30',
+        'releaseDate' => '2010-11-09',
+        'support' => '2016-05-10'
+      },
+      {
+        'cycle' => '5',
+        'eol' => '2017-03-31',
+        'extendedSupport' => '2020-11-30',
+        'latest' => '5.11',
+        'latestReleaseDate' => '2014-09-16',
+        'lts' => '2017-03-31',
+        'releaseDate' => '2007-03-15',
+        'support' => '2013-01-08'
+      },
+      {
+        'cycle' => '4',
+        'eol' => '2012-02-29',
+        'extendedSupport' => '2017-03-31',
+        'latest' => '4.9',
+        'latestReleaseDate' => '2011-02-16',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2005-02-15',
+        'support' => '2009-03-31'
+      }
+    ]
+  },
+  {
+    'rocky-linux' => [
+      {
+        'cycle' => '9',
+        'eol' => '2032-05-31',
+        'latest' => '9.3',
+        'latestReleaseDate' => '2023-11-20',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2022-07-14',
+        'support' => '2027-05-31'
+      },
+      {
+        'cycle' => '8',
+        'eol' => '2029-05-31',
+        'latest' => '8.9',
+        'latestReleaseDate' => '2023-11-22',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-05-01',
+        'support' => '2024-05-31'
+      }
+    ]
+  },
+  {
+    'ubuntu' => [
+      {
+        'codename' => 'Mantic Minotaur',
+        'cycle' => '23.10',
+        'eol' => '2024-07-01',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '23.10',
+        'latestReleaseDate' => '2023-10-12',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2023-10-12',
+        'support' => '2024-07-01'
+      },
+      {
+        'codename' => 'Lunar Lobster',
+        'cycle' => '23.04',
+        'eol' => '2024-01-20',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '23.04',
+        'latestReleaseDate' => '2023-04-20',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2023-04-20',
+        'support' => '2024-01-20'
+      },
+      {
+        'codename' => 'Kinetic Kudu',
+        'cycle' => '22.10',
+        'eol' => '2023-07-20',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '22.10',
+        'latestReleaseDate' => '2022-10-20',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2022-10-20',
+        'support' => '2023-07-20'
+      },
+      {
+        'codename' => 'Jammy Jellyfish',
+        'cycle' => '22.04',
+        'eol' => '2027-04-01',
+        'extendedSupport' => '2032-04-09',
+        'latest' => '22.04.4',
+        'latestReleaseDate' => '2024-02-22',
+        'lts' => bless( do{\(my $o = 1)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2022-04-21',
+        'support' => '2024-09-30'
+      },
+      {
+        'codename' => 'Impish Indri',
+        'cycle' => '21.10',
+        'eol' => '2022-07-14',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '21.10',
+        'latestReleaseDate' => '2021-10-14',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-10-14',
+        'support' => '2022-07-14'
+      },
+      {
+        'codename' => 'Hirsute Hippo',
+        'cycle' => '21.04',
+        'eol' => '2022-01-20',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '21.04',
+        'latestReleaseDate' => '2021-04-22',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2021-04-22',
+        'support' => '2022-01-20'
+      },
+      {
+        'codename' => 'Groovy Gorilla',
+        'cycle' => '20.10',
+        'eol' => '2021-07-22',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '20.10',
+        'latestReleaseDate' => '2020-10-22',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2020-10-22',
+        'support' => '2021-07-22'
+      },
+      {
+        'codename' => 'Focal Fossa',
+        'cycle' => '20.04',
+        'eol' => '2025-04-02',
+        'extendedSupport' => '2030-04-02',
+        'latest' => '20.04.6',
+        'latestReleaseDate' => '2023-03-23',
+        'lts' => bless( do{\(my $o = 1)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2020-04-23',
+        'support' => '2022-10-01'
+      },
+      {
+        'codename' => 'Eoan Ermine',
+        'cycle' => '19.10',
+        'eol' => '2020-07-06',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '19.10',
+        'latestReleaseDate' => '2019-10-17',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2019-10-17',
+        'support' => '2020-07-06'
+      },
+      {
+        'codename' => 'Disco Dingo',
+        'cycle' => '19.04',
+        'eol' => '2020-01-23',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '19.04',
+        'latestReleaseDate' => '2019-04-18',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2019-04-18',
+        'support' => '2020-01-23'
+      },
+      {
+        'codename' => 'Cosmic Cuttlefish',
+        'cycle' => '18.10',
+        'eol' => '2019-07-18',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '18.10',
+        'latestReleaseDate' => '2018-10-18',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2018-10-18',
+        'support' => '2019-07-18'
+      },
+      {
+        'codename' => 'Bionic Beaver',
+        'cycle' => '18.04',
+        'eol' => '2023-05-31',
+        'extendedSupport' => '2028-04-01',
+        'latest' => '18.04.6',
+        'latestReleaseDate' => '2021-09-17',
+        'lts' => bless( do{\(my $o = 1)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2018-04-26',
+        'support' => '2023-05-31'
+      },
+      {
+        'codename' => 'Artful Aardvark',
+        'cycle' => '17.10',
+        'eol' => '2018-07-19',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '17.10',
+        'latestReleaseDate' => '2017-10-19',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2017-10-19',
+        'support' => '2018-07-19'
+      },
+      {
+        'codename' => 'Zesty Zapus',
+        'cycle' => '17.04',
+        'eol' => '2018-01-13',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '17.04',
+        'latestReleaseDate' => '2017-04-13',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2017-04-13',
+        'support' => '2018-01-13'
+      },
+      {
+        'codename' => 'Xenial Xerus',
+        'cycle' => '16.04',
+        'eol' => '2021-04-02',
+        'extendedSupport' => '2026-04-02',
+        'latest' => '16.04.7',
+        'latestReleaseDate' => '2020-08-13',
+        'lts' => bless( do{\(my $o = 1)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2016-04-21',
+        'support' => '2021-04-02'
+      },
+      {
+        'codename' => 'Wily Werewolf',
+        'cycle' => '15.10',
+        'eol' => '2016-07-28',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '15.10',
+        'latestReleaseDate' => '2015-10-22',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2015-10-22',
+        'support' => '2016-07-28'
+      },
+      {
+        'codename' => 'Vivid Vervet',
+        'cycle' => '15.04',
+        'eol' => '2016-02-04',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '15.04',
+        'latestReleaseDate' => '2015-04-23',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2015-04-23',
+        'support' => '2016-02-04'
+      },
+      {
+        'codename' => 'Utopic Unicorn',
+        'cycle' => '14.10',
+        'eol' => '2015-07-23',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '14.10',
+        'latestReleaseDate' => '2014-10-23',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-10-23',
+        'support' => '2015-07-23'
+      },
+      {
+        'codename' => 'Trusty Tahr',
+        'cycle' => '14.04',
+        'eol' => '2019-04-02',
+        'extendedSupport' => '2024-04-02',
+        'latest' => '14.04.6',
+        'latestReleaseDate' => '2019-03-07',
+        'lts' => bless( do{\(my $o = 1)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2014-04-17',
+        'support' => '2019-04-02'
+      },
+      {
+        'codename' => 'Precise Pangolin',
+        'cycle' => '12.04',
+        'eol' => '2017-04-28',
+        'extendedSupport' => '2019-04-26',
+        'latest' => '12.04.5',
+        'latestReleaseDate' => '2014-08-08',
+        'lts' => bless( do{\(my $o = 1)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2012-04-26',
+        'support' => '2017-04-28'
+      },
+      {
+        'codename' => 'Oneiric Ocelot',
+        'cycle' => '11.10',
+        'eol' => '2013-05-09',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '11.10',
+        'latestReleaseDate' => '2011-10-13',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2011-10-13',
+        'support' => '2013-05-09'
+      },
+      {
+        'codename' => 'Natty Narwhal',
+        'cycle' => '11.04',
+        'eol' => '2012-10-28',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '11.04',
+        'latestReleaseDate' => '2011-04-28',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2011-04-28',
+        'support' => '2012-10-28'
+      },
+      {
+        'codename' => 'Maverick Meerkat',
+        'cycle' => '10.10',
+        'eol' => '2012-04-10',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '10.10',
+        'latestReleaseDate' => '2010-10-10',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2010-10-10',
+        'support' => '2012-04-10'
+      },
+      {
+        'codename' => 'Lucid Lynx',
+        'cycle' => '10.04',
+        'eol' => '2013-05-09',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '10.04.4',
+        'latestReleaseDate' => '2012-02-16',
+        'lts' => bless( do{\(my $o = 1)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2010-04-29',
+        'support' => '2013-05-09'
+      },
+      {
+        'codename' => 'Karmic Koala',
+        'cycle' => '9.10',
+        'eol' => '2011-04-30',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '9.10',
+        'latestReleaseDate' => '2009-10-29',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2009-10-29',
+        'support' => '2011-04-30'
+      },
+      {
+        'codename' => 'Jaunty Jackalope',
+        'cycle' => '9.04',
+        'eol' => '2010-10-23',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '9.04',
+        'latestReleaseDate' => '2009-04-23',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2009-04-23',
+        'support' => '2010-10-23'
+      },
+      {
+        'codename' => 'Hardy Heron',
+        'cycle' => '8.04',
+        'eol' => '2013-05-09',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '8.04.4',
+        'latestReleaseDate' => '2010-01-29',
+        'lts' => bless( do{\(my $o = 1)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2008-04-24',
+        'support' => '2013-05-09'
+      },
+      {
+        'codename' => 'Gutsy Gibbon',
+        'cycle' => '7.10',
+        'eol' => '2009-04-18',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '7.10',
+        'latestReleaseDate' => '2007-10-18',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2007-10-18',
+        'support' => '2009-04-18'
+      },
+      {
+        'codename' => 'Feisty Fawn',
+        'cycle' => '7.04',
+        'eol' => '2008-10-19',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '7.04',
+        'latestReleaseDate' => '2007-04-19',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2007-04-19',
+        'support' => '2008-10-19'
+      },
+      {
+        'codename' => 'Edgy Eft',
+        'cycle' => '6.10',
+        'eol' => '2008-04-26',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '6.10',
+        'latestReleaseDate' => '2006-10-26',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2006-10-26',
+        'support' => '2006-10-26'
+      },
+      {
+        'codename' => 'Dapper Drake',
+        'cycle' => '6.06',
+        'eol' => '2011-06-01',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '6.06.2',
+        'latestReleaseDate' => '2008-01-22',
+        'lts' => bless( do{\(my $o = 1)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2006-08-10',
+        'support' => '2011-06-01'
+      },
+      {
+        'codename' => 'Breezy Badger',
+        'cycle' => '5.10',
+        'eol' => '2007-04-13',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '5.10',
+        'latestReleaseDate' => '2005-10-13',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2005-10-13',
+        'support' => '2007-04-13'
+      },
+      {
+        'codename' => 'Hoary Hedgehog',
+        'cycle' => '5.04',
+        'eol' => '2006-10-31',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '5.04',
+        'latestReleaseDate' => '2005-04-08',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2005-04-08',
+        'support' => '2006-10-31'
+      },
+      {
+        'codename' => 'Warty Warthog',
+        'cycle' => '4.10',
+        'eol' => '2006-04-30',
+        'extendedSupport' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'latest' => '4.10',
+        'latestReleaseDate' => '2004-10-20',
+        'lts' => bless( do{\(my $o = 0)}, 'JSON::PP::Boolean' ),
+        'releaseDate' => '2004-10-20',
+        'support' => '2004-10-26'
+      }
+    ]
+  }
+]
