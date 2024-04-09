@@ -1,6 +1,8 @@
 # os-eol-lib.pl
 # Functions for managing OS end-of-life data
 
+use Time::Local;
+
 # eol_oses_list()
 # Returns a list of OSes for which EOL data is available
 sub eol_oses_list
@@ -77,6 +79,98 @@ if ($eol_cache) {
 # No cache found, fetch the data
 my $eol_fetched = &eol_fetch_os_data();
 return $eol_fetched;
+}
+
+# eol_get_os_eol_data()
+# Returns the EOL hash for the current OS or undef if the OS is not supported
+sub eol_get_os_eol_data
+{
+my $os_version = lc($gconfig{'real_os_version'});
+my $os_type = $gconfig{'real_os_type'};
+my $os_version_formatter = sub {
+        my $v = shift;
+        # Extract the major and minor versions
+        $v =~ m/^(?:stable\/)?(?<major>\d+)(?:\.(?<minor>\d+))?/;
+        $v = $+{minor} ? "$+{major}.$+{minor}" : $+{major};
+        return undef if (!$+{major});
+        # Minor versions in cycle are allowed only for Ubuntu
+        return $+{major} if (lc($os_type) !~ /ubuntu/);
+        return $v;
+};
+$os_version = $os_version_formatter->($os_version);
+# Get the EOL data for the current OS
+my $eol_data = &eol_get_os_data();
+return undef if (!$eol_data);
+# Find the EOL data for the current OS version
+($eol_data) = grep { $_->{'cycle'} eq $os_version } @$eol_data;
+return undef if (!$eol_data);
+
+# Add OS real name
+$eol_data->{'_os'} = $os_type;
+
+# Convert EOL date to a timestamp and a human-readable date based on locale
+my ($year, $month, $day) = split('-', $eol_data->{'eol'});
+$month -= 1;
+my $eol_timestamp = timelocal(0, 0, 0, $day, $month, $year);
+my $eol_date = &make_date($eol_timestamp, { '_' => 1 });
+$eol_data->{'_eol'} =
+        { daymonth => $eol_date->{'complete_short'},
+          month => $eol_date->{'monthfull'},
+          year => $eol_date->{'year'},
+          short => $eol_date->{'short'},
+          timestamp => $eol_timestamp };
+$eol_data->{'_eol_in'} =
+        { years => abs($eol_date->{'ago'}->{'years'}),
+          months => abs($eol_date->{'ago'}->{'months'}),
+          weeks => abs($eol_date->{'ago'}->{'weeks'}),
+          days => abs($eol_date->{'ago'}->{'days'}) };
+
+# Convert EOL extendend date to a timestamp and a human-readable date based on locale
+if ($eol_data->{'extendedSupport'}) {
+        my ($year, $month, $day) = split('-', $eol_data->{'extendedSupport'});
+        $month -= 1;
+        my $eol_extendedSupport_timestamp = timelocal(0, 0, 0, $day, $month, $year);
+        my $eol_extendedSupport_date = &make_date($eol_extendedSupport_timestamp, { '_' => 1 });
+        $eol_data->{'_eol_sec'} =
+                { daymonth => $eol_extendedSupport_date->{'complete_short'},
+                  month => $eol_extendedSupport_date->{'monthfull'},
+                  year => $eol_extendedSupport_date->{'year'},
+                  short => $eol_extendedSupport_date->{'short'},
+                  timestamp => $eol_extendedSupport_timestamp };
+        $eol_data->{'_eol_sec_in'} =
+                { years => abs($eol_extendedSupport_date->{'ago'}->{'years'}),
+                  months => abs($eol_extendedSupport_date->{'ago'}->{'months'}),
+                  weeks => abs($eol_extendedSupport_date->{'ago'}->{'weeks'}),
+                  days => abs($eol_extendedSupport_date->{'ago'}->{'days'}) };
+        }
+
+# Is expired?
+my $expired = $eol_data->{'_eol'}->{'timestamp'} < time();
+$eol_data->{'_expired'} = $expired ? 1 : 0 if ($expired);
+
+# Is expiring in (3 months by default)
+my $os_eol_warn = $gconfig{'os_eol_warn'} || 3;
+my $expiring = $eol_data->{'_eol'}->{'timestamp'} < time() + 60*60*24*30*$os_eol_warn ? 1 : 0;
+if (!$expired && $expiring) {
+        $eol_data->{'_expiring'} = $expiring;
+        }
+
+# Return the final EOL data object
+return $eol_data;
+}
+
+# eol_get_os_eol_alert_message()
+# Returns the EOL alert message to be shown on the dashboard
+sub eol_get_os_eol_alert_message
+{
+# XXX to-do
+}
+
+# eol_get_os_eol_table_message()
+# Returns the EOL data to be shown in the table row
+sub eol_get_os_eol_table_message
+{
+# XXX to-do
 }
 
 1;
