@@ -2224,7 +2224,9 @@ if (!$@ && $] > 5.011) {
 				$data->{'complete'} .= "$_ "
 				}
 			};
+		$data->{'year'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%Y");
 		$data->{'complete'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
+		($data->{'complete_short'} = $data->{'complete'}) =~ s/(.*?)([\s\,]*\Q$data->{'year'}\E.*)/$1/;
 
 		if ($opts->{'get'}) {
 			return $data->{$opts->{'get'}};
