@@ -1,7 +1,11 @@
 # os-eol-lib.pl
 # Functions for managing OS end-of-life data
 
+use strict;
+use warnings;
 use Time::Local;
+
+our (%gconfig, $root_directory);
 
 # eol_oses_list()
 # Returns a list of OSes for which EOL data is available
@@ -17,7 +21,7 @@ return ('almalinux', 'amazon-linux', 'centos-stream', 'centos',
 sub eol_get_os
 {
 my $os_type = lc($gconfig{'real_os_type'});
-@eol_oses_list = &eol_oses_list();
+my @eol_oses_list = &eol_oses_list();
 my ($os_found) = grep {
         my $__ = $_;
         $__ =~ s/-?linux//;
@@ -27,150 +31,162 @@ return $os_found if ($os_found);
 return undef;
 }
 
-# eol_fetch_os_data()
-# Fetches the latest EOL data for the current OS and caches it.
-# Returns undef if OS is not supported.
-sub eol_fetch_os_data
+# eol_build_all_os_data()
+# Fetches the latest EOL data for all supported
+# OSes and writes it to given file.
+sub eol_build_all_os_data
 {
-my $os = &eol_get_os();
-return undef if (!$os);
-my ($fetch, $error);
-my $eol_cache_file = "$module_var_directory/eolcache";
-my $eol_write_cache = sub {
-        my $data = shift;
-        &write_file_contents($eol_cache_file, $data);
-};
-&http_download('endoflife.date', 443, "/api/$os.json", \$fetch, \$error, undef, 1,
-                undef, undef, 5);
-if ($error) {
-        &error_stderr("Could not fetch current OS EOL data: " . $error);
-        $eol_write_cache->('[]') if (!-r $eol_cache_file);
-        return undef;
+my $eol_cache_file = shift;
+$eol_cache_file ||= "$root_directory/os_eol.json";
+my @eol_oses = &eol_oses_list();
+my @eol_oses_data;
+foreach my $os (@eol_oses) {
+        my ($fdata, $ferror);
+        &http_download('endoflife.date', 443, "/api/$os.json", \$fdata, \$ferror, undef, 1,
+                        undef, undef, 5);
+        if ($ferror) {
+                &error_stderr("Could not fetch OS EOL data: " . $ferror);
+                next;
+                }
+        my $fdata_json;
+        eval { $fdata_json = &convert_from_json($fdata); };
+        if ($@) {
+                &error_stderr("Could not parse fetched OS EOL data: $@");
+                next;
+                }
+        # Add OS
+        $fdata_json = [ map { $_->{'_os'} = $os; $_ } @$fdata_json ];
+        # Fix (blessed) LTS key
+        $fdata_json = [ map { $_->{'lts'} = $_->{'lts'} ? 1 : 0; $_ } @$fdata_json ];
+        push(@eol_oses_data, @$fdata_json);
         }
-my $fetch_json;
-eval { $fetch_json = &convert_from_json($fetch); };
-if ($@) {
-        &error_stderr("Could not parse fetched OS EOL data: $@");
-        $eol_write_cache->('[]') if (!-r $eol_cache_file);
-        return undef;
-        }
-$eol_write_cache->($fetch);
-return $fetch_json;
+&write_file_contents($eol_cache_file, &convert_to_json(\@eol_oses_data));
 }
 
 # eol_get_os_data()
-# Returns the current OS EOL data from the cache or fetches it
-# if it is not available
+# Returns EOL data for the current OS.
+# Returns undef if OS is not supported.
 sub eol_get_os_data
 {
-my $eol_cache_file = "$module_var_directory/eolcache";
-my $eol_cache = &read_file_contents($eol_cache_file);
-if ($eol_cache) {
-        # Check if the cache is still valid (1 month)
-        if (time() - (stat($eol_cache_file))[9] < 60*60*24*30) {
-                eval { $eol_cache = &convert_from_json($eol_cache); };
-                if ($@) {
-                        unlink($eol_cache_file);
-                        &error_stderr("Could not parse current OS EOL data: $@");
-                        return undef;
-                        }
-                return (ref($eol_cache) eq 'ARRAY' && @$eol_cache) ?
-                        $eol_cache : undef;
-                }
+my $os = &eol_get_os();
+return undef if (!$os);
+my $eol_file = shift;
+$eol_file ||= "$root_directory/os_eol.json";
+if (!-r $eol_file) {
+        &error_stderr("Could not read OS EOL data file: $eol_file");
+        return undef;
         }
-# No cache found, fetch the data
-my $eol_fetched = &eol_fetch_os_data();
-return $eol_fetched;
-}
-
-# eol_get_os_eol_data()
-# Returns the EOL hash for the current OS or undef if the OS is not supported
-sub eol_get_os_eol_data
-{
-my $os_version = lc($gconfig{'real_os_version'});
-my $os_type = $gconfig{'real_os_type'};
-my $os_version_formatter = sub {
-        my $v = shift;
+my $eol_data = &read_file_contents($eol_file);
+my $eol_json;
+eval { $eol_json = &convert_from_json($eol_data); };
+if ($@) {
+        &error_stderr("Could not parse OS EOL data: $@");
+        return undef;
+        }
+if (ref($eol_json) eq 'ARRAY' && @$eol_json) {
+        my $os_version = $gconfig{'real_os_version'};
         # Extract the major and minor versions
-        $v =~ m/^(?:stable\/)?(?<major>\d+)(?:\.(?<minor>\d+))?/;
-        $v = $+{minor} ? "$+{major}.$+{minor}" : $+{major};
+        $os_version =~ m/^(?:stable\/)?(?<major>\d+)(?:\.(?<minor>\d+))?/;
+        $os_version = $+{minor} ? "$+{major}.$+{minor}" : $+{major};
         return undef if (!$+{major});
         # Minor versions in cycle are allowed only for Ubuntu
-        return $+{major} if (lc($os_type) !~ /ubuntu/);
-        return $v;
-};
-$os_version = $os_version_formatter->($os_version);
-# Get the EOL data for the current OS
-my $eol_data = &eol_get_os_data();
-return undef if (!$eol_data);
-# Find the EOL data for the current OS version
-($eol_data) = grep { $_->{'cycle'} eq $os_version } @$eol_data;
-return undef if (!$eol_data);
+        $os_version = $+{major} if ($os !~ /ubuntu/);
+        my ($eol_json_this_os) =
+                grep { $_->{'_os'} eq $os &&
+                       $_->{'cycle'} eq $os_version } @$eol_json;
+        $eol_json_this_os->{'_os_name'} = $gconfig{'real_os_type'};
+        $eol_json_this_os->{'_os_version'} = $os_version;
+        # Convert EOL date to a timestamp
+        my ($year, $month, $day) = split('-', $eol_json_this_os->{'eol'});
+        $eol_json_this_os->{'_eol_timestamp'} = timelocal(0, 0, 0, $day, $month - 1, $year);
+        # Convert EOL extendend date to a timestamp
+        if ($eol_json_this_os->{'extendedSupport'}) {
+                my ($year, $month, $day) = split('-', $eol_json_this_os->{'extendedSupport'});
+                $eol_json_this_os->{'_ext_eol_timestamp'} =
+                        timelocal(0, 0, 0, $day, $month - 1, $year);
+                }
+        return $eol_json_this_os if ($eol_json_this_os);
+        }
+return undef;
+}
 
-# Add OS real name
-$eol_data->{'_os'} = $os_type;
-
-# Convert EOL date to a timestamp and a human-readable date based on locale
-my ($year, $month, $day) = split('-', $eol_data->{'eol'});
-$month -= 1;
-my $eol_timestamp = timelocal(0, 0, 0, $day, $month, $year);
-my $eol_date = &make_date($eol_timestamp, { '_' => 1 });
-$eol_data->{'_eol'} =
-        { daymonth => $eol_date->{'complete_short'},
-          month => $eol_date->{'monthfull'},
-          year => $eol_date->{'year'},
-          short => $eol_date->{'short'},
-          timestamp => $eol_timestamp };
-$eol_data->{'_eol_in'} =
-        { years => abs($eol_date->{'ago'}->{'years'}),
-          months => abs($eol_date->{'ago'}->{'months'}),
-          weeks => abs($eol_date->{'ago'}->{'weeks'}),
-          days => abs($eol_date->{'ago'}->{'days'}) };
-
-# Convert EOL extendend date to a timestamp and a human-readable date based on locale
-if ($eol_data->{'extendedSupport'}) {
-        my ($year, $month, $day) = split('-', $eol_data->{'extendedSupport'});
-        $month -= 1;
-        my $eol_extendedSupport_timestamp = timelocal(0, 0, 0, $day, $month, $year);
-        my $eol_extendedSupport_date = &make_date($eol_extendedSupport_timestamp, { '_' => 1 });
-        $eol_data->{'_eol_sec'} =
-                { daymonth => $eol_extendedSupport_date->{'complete_short'},
-                  month => $eol_extendedSupport_date->{'monthfull'},
-                  year => $eol_extendedSupport_date->{'year'},
-                  short => $eol_extendedSupport_date->{'short'},
-                  timestamp => $eol_extendedSupport_timestamp };
-        $eol_data->{'_eol_sec_in'} =
-                { years => abs($eol_extendedSupport_date->{'ago'}->{'years'}),
-                  months => abs($eol_extendedSupport_date->{'ago'}->{'months'}),
-                  weeks => abs($eol_extendedSupport_date->{'ago'}->{'weeks'}),
-                  days => abs($eol_extendedSupport_date->{'ago'}->{'days'}) };
+# eol_populate_dates(&eol_data)
+# Updates given EOL hash reference with
+# human readable date and the time ago
+sub eol_populate_dates
+{
+my ($eol_data) = @_;
+if (!$eol_data->{'_eol_timestamp'}) {
+        &error_stderr("The provided data is not a valid EOL data hash reference");
+        return undef;
+        }
+my $eol_date = &make_date($eol_data->{'_eol_timestamp'}, { '_' => 1 });
+if (ref($eol_date)) {
+        $eol_data->{'_eol'} =
+                { daymonth => $eol_date->{'complete_short'},
+                  month => $eol_date->{'monthfull'},
+                  year => $eol_date->{'year'},
+                  short => $eol_date->{'short'} };
+        $eol_data->{'_eol_in'} =
+                { years => abs($eol_date->{'ago'}->{'years'}),
+                  months => abs($eol_date->{'ago'}->{'months'}),
+                  weeks => abs($eol_date->{'ago'}->{'weeks'}),
+                  days => abs($eol_date->{'ago'}->{'days'}) };
+        if ($eol_data->{'extendedSupport'}) {
+                my $eol_date = &make_date(
+                        $eol_data->{'_ext_eol_timestamp'}, { '_' => 1 });
+                $eol_data->{'_ext_eol'} =
+                        { daymonth => $eol_date->{'complete_short'},
+                          month => $eol_date->{'monthfull'},
+                          year => $eol_date->{'year'},
+                          short => $eol_date->{'short'} };
+                $eol_data->{'_ext_eol_in'} =
+                        { years => abs($eol_date->{'ago'}->{'years'}),
+                          months => abs($eol_date->{'ago'}->{'months'}),
+                          weeks => abs($eol_date->{'ago'}->{'weeks'}),
+                          days => abs($eol_date->{'ago'}->{'days'}) };
+                }
+        }
+else {
+        my $eol_date = &make_date($eol_data->{'_eol_timestamp'}, 1);
+        $eol_data->{'_eol'} = $eol_date;
+        if ($eol_data->{'extendedSupport'}) {
+                my $eol_date = &make_date(
+                        $eol_data->{'_ext_eol_timestamp'}, { '_' => 1 });
+                $eol_data->{'_ext_eol'} = $eol_date;
+                }
         }
 
 # Is expired?
-my $expired = $eol_data->{'_eol'}->{'timestamp'} < time();
+my $expired = $eol_data->{'_eol_timestamp'} < time();
 $eol_data->{'_expired'} = $expired ? 1 : 0 if ($expired);
 
-# Is expiring in (3 months by default)
-my $os_eol_warn = $gconfig{'os_eol_warn'} || 3;
-my $expiring = $eol_data->{'_eol'}->{'timestamp'} < time() + 60*60*24*30*$os_eol_warn ? 1 : 0;
-if (!$expired && $expiring) {
-        $eol_data->{'_expiring'} = $expiring;
+# Is expiring (in 3 months by default, unless configured otherwise)
+my $os_eol_warn = $gconfig{'os_eol_warn'} // 3;
+if (!$expired && $os_eol_warn) {
+        my $expiring = $eol_data->{'_eol_timestamp'} < time() +
+                                60*60*24*30*$os_eol_warn ? 1 : 0;
+        if ($expiring) {
+                $eol_data->{'_expiring'} = $expiring;
+                }
+        if ($eol_data->{'extendedSupport'}) {
+                my $expiring = $eol_data->{'_ext_eol_timestamp'} < time() +
+                                60*60*24*30*$os_eol_warn ? 1 : 0;
+                }
         }
-
-# Return the final EOL data object
 return $eol_data;
 }
 
-# eol_get_os_eol_alert_message()
+# eol_get_os_alert_message()
 # Returns the EOL alert message to be shown on the dashboard
-sub eol_get_os_eol_alert_message
+sub eol_get_os_alert_message
 {
 # XXX to-do
 }
 
-# eol_get_os_eol_table_message()
+# eol_get_os_message()
 # Returns the EOL data to be shown in the table row
-sub eol_get_os_eol_table_message
+sub eol_get_os_message
 {
 # XXX to-do
 }
