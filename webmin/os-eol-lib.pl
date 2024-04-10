@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Time::Local;
 
-our (%gconfig, $root_directory);
+our (%gconfig, %text, $root_directory);
 
 # eol_oses_list()
 # Returns a list of OSes for which EOL data is available
@@ -122,16 +122,24 @@ if (!$eol_data->{'_eol_timestamp'}) {
         }
 my $eol_date = &make_date($eol_data->{'_eol_timestamp'}, { '_' => 1 });
 if (ref($eol_date)) {
+        my $eol_in = sub {
+                my $eol_date = shift;
+                my $ago = $eol_date->{'ago'};
+                my @ago_units = qw(year month week day hour minute second);
+                foreach my $unit (@ago_units) {
+                        if ($ago->{"${unit}s"}) {
+                                my $value = abs($ago->{"${unit}s"});
+                                return $value == 1 ? "1 " . $text{"eol_${unit}"} :
+                                        "$value " . $text{"eol_${unit}s"};
+                                }
+                        }
+                };
         $eol_data->{'_eol'} =
                 { daymonth => $eol_date->{'complete_short'},
                   month => $eol_date->{'monthfull'},
                   year => $eol_date->{'year'},
                   short => $eol_date->{'short'} };
-        $eol_data->{'_eol_in'} =
-                { years => abs($eol_date->{'ago'}->{'years'}),
-                  months => abs($eol_date->{'ago'}->{'months'}),
-                  weeks => abs($eol_date->{'ago'}->{'weeks'}),
-                  days => abs($eol_date->{'ago'}->{'days'}) };
+        $eol_data->{'_eol_in'} = $eol_in->($eol_date);
         if ($eol_data->{'extendedSupport'}) {
                 my $eol_date = &make_date(
                         $eol_data->{'_ext_eol_timestamp'}, { '_' => 1 });
@@ -140,38 +148,44 @@ if (ref($eol_date)) {
                           month => $eol_date->{'monthfull'},
                           year => $eol_date->{'year'},
                           short => $eol_date->{'short'} };
-                $eol_data->{'_ext_eol_in'} =
-                        { years => abs($eol_date->{'ago'}->{'years'}),
-                          months => abs($eol_date->{'ago'}->{'months'}),
-                          weeks => abs($eol_date->{'ago'}->{'weeks'}),
-                          days => abs($eol_date->{'ago'}->{'days'}) };
+                $eol_data->{'_ext_eol_in'} = $eol_in->($eol_date);
                 }
         }
 else {
-        my $eol_date = &make_date($eol_data->{'_eol_timestamp'}, 1);
-        $eol_data->{'_eol'} = $eol_date;
+        $eol_data->{'_eol'} =
+                &make_date($eol_data->{'_eol_timestamp'}, 1);
         if ($eol_data->{'extendedSupport'}) {
-                my $eol_date = &make_date(
-                        $eol_data->{'_ext_eol_timestamp'}, { '_' => 1 });
-                $eol_data->{'_ext_eol'} = $eol_date;
+                $eol_data->{'_ext_eol'} =
+                        &make_date($eol_data->{'_ext_eol_timestamp'}, 1);
                 }
         }
 
 # Is expired?
 my $expired = $eol_data->{'_eol_timestamp'} < time();
-$eol_data->{'_expired'} = $expired ? 1 : 0 if ($expired);
+$eol_data->{'_expired'} = $text{'eol_reached'} if ($expired);
 
-# Is expiring (in 3 months by default, unless configured otherwise)
-my $os_eol_warn = $gconfig{'os_eol_warn'} // 3;
+# Is expiring (in 6 months by default, unless configured otherwise)
+my $os_eol_warn = $gconfig{'os_eol_warn'} // 6;
 if (!$expired && $os_eol_warn) {
         my $expiring = $eol_data->{'_eol_timestamp'} < time() +
                                 60*60*24*30*$os_eol_warn ? 1 : 0;
         if ($expiring) {
-                $eol_data->{'_expiring'} = $expiring;
+                $eol_data->{'_expiring'} =
+                        $eol_data->{'_eol_in'} ?
+                                $text{'eol_reaching'} . " " .
+                                        $eol_data->{'_eol_in'} :
+                                $text{'eol_reaching2'};
                 }
         if ($eol_data->{'extendedSupport'}) {
                 my $expiring = $eol_data->{'_ext_eol_timestamp'} < time() +
                                 60*60*24*30*$os_eol_warn ? 1 : 0;
+                if ($expiring) {
+                        $eol_data->{'_ext_expiring'} =
+                                $eol_data->{'_ext_eol_in'} ?
+                                        $text{'eol_reaching'} . " " .
+                                                $eol_data->{'_ext_eol_in'} :
+                                        $text{'eol_reaching2'};
+                        }
                 }
         }
 return $eol_data;
