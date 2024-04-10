@@ -66,8 +66,8 @@ sub eol_get_os_data
 my $eol_cache_file = "$module_var_directory/eolcache";
 my $eol_cache = &read_file_contents($eol_cache_file);
 if ($eol_cache) {
-        # Check if the cache is still valid (5 days)
-        if (time() - (stat($eol_cache_file))[9] < 60*60*24*5) {
+        # Check if the cache is still valid (1 month)
+        if (time() - (stat($eol_cache_file))[9] < 60*60*24*30) {
                 eval { $eol_cache = &convert_from_json($eol_cache); };
                 if ($@) {
                         unlink($eol_cache_file);
