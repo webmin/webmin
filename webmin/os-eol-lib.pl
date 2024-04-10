@@ -35,22 +35,23 @@ sub eol_fetch_os_data
 my $os = &eol_get_os();
 return undef if (!$os);
 my ($fetch, $error);
+my $eol_cache_file = "$module_var_directory/eolcache";
 my $eol_write_cache = sub {
         my $data = shift;
-        &write_file_contents("$module_var_directory/eolcache", $data);
+        &write_file_contents($eol_cache_file, $data);
 };
 &http_download('endoflife.date', 443, "/api/$os.json", \$fetch, \$error, undef, 1,
                 undef, undef, 5);
 if ($error) {
         &error_stderr("Could not fetch current OS EOL data: " . $error);
-        $eol_write_cache->('[]');
+        $eol_write_cache->('[]') if (!-r $eol_cache_file);
         return undef;
         }
 my $fetch_json;
 eval { $fetch_json = &convert_from_json($fetch); };
 if ($@) {
         &error_stderr("Could not parse fetched OS EOL data: $@");
-        $eol_write_cache->('[]');
+        $eol_write_cache->('[]') if (!-r $eol_cache_file);
         return undef;
         }
 $eol_write_cache->($fetch);
