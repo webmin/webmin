@@ -45,14 +45,12 @@ foreach my $os (@eol_oses) {
         &http_download('endoflife.date', 443, "/api/$os.json", \$fdata, \$ferror, undef, 1,
                         undef, undef, 5);
         if ($ferror) {
-                &error_stderr("Could not fetch OS EOL data: " . $ferror);
-                next;
+                die("Could not fetch OS EOL data: " . $ferror);
                 }
         my $fdata_json;
         eval { $fdata_json = &convert_from_json($fdata); };
         if ($@) {
-                &error_stderr("Could not parse fetched OS EOL data: $@");
-                next;
+                die("Could not parse fetched OS EOL data: $@");
                 }
         # Add OS
         $fdata_json = [ map { $_->{'_os'} = $os; $_ } @$fdata_json ];
