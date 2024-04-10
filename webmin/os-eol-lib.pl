@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Time::Local;
 
-our (%gconfig, %text, $root_directory);
+our (%gconfig, %text, $root_directory, $config_directory);
 
 # eol_oses_list()
 # Returns a list of OSes for which EOL data is available
@@ -134,20 +134,12 @@ if (ref($eol_date)) {
                                 }
                         }
                 };
-        $eol_data->{'_eol'} =
-                { daymonth => $eol_date->{'complete_short'},
-                  month => $eol_date->{'monthfull'},
-                  year => $eol_date->{'year'},
-                  short => $eol_date->{'short'} };
+        $eol_data->{'_eol'} = $eol_date->{'short'};
         $eol_data->{'_eol_in'} = $eol_in->($eol_date);
         if ($eol_data->{'extendedSupport'}) {
                 my $eol_date = &make_date(
                         $eol_data->{'_ext_eol_timestamp'}, { '_' => 1 });
-                $eol_data->{'_ext_eol'} =
-                        { daymonth => $eol_date->{'complete_short'},
-                          month => $eol_date->{'monthfull'},
-                          year => $eol_date->{'year'},
-                          short => $eol_date->{'short'} };
+                $eol_data->{'_ext_eol'} = $eol_date->{'short'};
                 $eol_data->{'_ext_eol_in'} = $eol_in->($eol_date);
                 }
         }
@@ -165,10 +157,11 @@ my $expired = $eol_data->{'_eol_timestamp'} < time();
 $eol_data->{'_expired'} = $text{'eol_reached'} if ($expired);
 
 # Is expiring (in 6 months by default, unless configured otherwise)
-my $os_eol_warn = $gconfig{'os_eol_warn'} // 6;
-if (!$expired && $os_eol_warn) {
+my $os_eol_before = $gconfig{'os_eol_before'} // 6;
+if (!$expired && $os_eol_before) {
         my $expiring = $eol_data->{'_eol_timestamp'} < time() +
-                                60*60*24*30*$os_eol_warn ? 1 : 0;
+                                60*60*24*30*$os_eol_before ? 1 : 0;
+        # Set the expiring message
         if ($expiring) {
                 $eol_data->{'_expiring'} =
                         $eol_data->{'_eol_in'} ?
@@ -176,9 +169,10 @@ if (!$expired && $os_eol_warn) {
                                         $eol_data->{'_eol_in'} :
                                 $text{'eol_reaching2'};
                 }
+        # Set extended support expiring message (if available)
         if ($eol_data->{'extendedSupport'}) {
                 my $expiring = $eol_data->{'_ext_eol_timestamp'} < time() +
-                                60*60*24*30*$os_eol_warn ? 1 : 0;
+                                60*60*24*30*$os_eol_before ? 1 : 0;
                 if ($expiring) {
                         $eol_data->{'_ext_expiring'} =
                                 $eol_data->{'_ext_eol_in'} ?
@@ -191,18 +185,72 @@ if (!$expired && $os_eol_warn) {
 return $eol_data;
 }
 
-# eol_get_os_alert_message()
-# Returns the EOL alert message to be shown on the dashboard
-sub eol_get_os_alert_message
+# eol_update_cache()
+# Caches the use of EOL data for next 30 days
+# or until the next Webmin update
+sub eol_update_cache
 {
-# XXX to-do
-}
-
-# eol_get_os_message()
-# Returns the EOL data to be shown in the table row
-sub eol_get_os_message
-{
-# XXX to-do
+my (%miniserv, $updated);
+# Is there valid cached data (chached for 30 days by default)
+my $os_eol_cache = $gconfig{'os_eol_cache'} // 30;
+if ($gconfig{'os_eol_expired'} || $gconfig{'os_eol_expiring'}) {
+        if ($gconfig{'os_eol_last'} &&
+            $gconfig{'os_eol_last'} < time() - 60*60*24*$os_eol_cache) {
+                # Invalidate the cache
+                foreach my $key
+                        ('os_eol_none', 'os_eol_expired',
+                         'os_eol_expiring', 'os_eol_last',
+                         'os_eol_about', 'os_eol', 'os_eol_in',
+                         'os_ext_eol', 'os_ext_eol_in') {
+                        delete($gconfig{$key});
+                        }
+                $updated++;
+                }
+        else {
+                # Nothing to update, Webmin config has it all
+                return;
+                }
+        }
+&get_miniserv_config(\%miniserv);
+if (!$gconfig{'os_eol_none'} ||
+    ($miniserv{'server'} && $gconfig{'os_eol_none'} ne $miniserv{'server'})) {
+        # This is the first time we check
+        # EOL data or after Webmin update\
+        my $eol_data = &eol_get_os_data();
+        &eol_populate_dates($eol_data);
+        if (ref($eol_data)) {
+                $gconfig{'os_eol_about'} = 0;
+                if ($eol_data->{'_expired'}) {
+                        $gconfig{'os_eol_expired'} = $eol_data->{'_expired'};
+                        $gconfig{'os_eol_about'} = 2;
+                        }
+                elsif ($eol_data->{'_expiring'}) {
+                        $gconfig{'os_eol_expiring'} = $eol_data->{'_expiring'};
+                        $gconfig{'os_eol_about'} = 1;
+                        }
+                $gconfig{'os_eol'} = $eol_data->{'_eol'};
+                $gconfig{'os_eol_in'} = $eol_data->{'_eol_in'};
+                $gconfig{'os_ext_eol'} = $eol_data->{'_ext_eol'}
+                        if ($eol_data->{'_ext_eol'});
+                $gconfig{'os_ext_eol_in'} = $eol_data->{'_ext_eol_in'}
+                        if ($eol_data->{'_ext_eol_in'});
+                $gconfig{'os_eol_last'} = time();
+                delete($gconfig{'os_eol_none'});
+                $updated++;
+                }
+        else {
+                # No EOL data available, don't check
+                # again until next Webmin update
+                $gconfig{'os_eol_none'} = $miniserv{'server'};
+                $updated++;
+                }
+        }
+if ($updated) {
+        # Store the updated data
+        &lock_file("$config_directory/config");
+        &write_file("$config_directory/config", \%gconfig);
+        &unlock_file("$config_directory/config");
+        }
 }
 
 1;
