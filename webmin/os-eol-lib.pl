@@ -156,8 +156,8 @@ else {
 my $expired = $eol_data->{'_eol_timestamp'} < time();
 $eol_data->{'_expired'} = $text{'eol_reached'} if ($expired);
 
-# Is expiring (in 6 months by default, unless configured otherwise)
-my $os_eol_before = $gconfig{'os_eol_before'} // 6;
+# Is expiring (in 3 months by default, unless configured otherwise)
+my $os_eol_before = $gconfig{'os_eol_before'} // 3;
 if (!$expired && $os_eol_before) {
         my $expiring = $eol_data->{'_eol_timestamp'} < time() +
                                 60*60*24*30*$os_eol_before ? 1 : 0;
