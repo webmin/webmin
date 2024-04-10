@@ -16,6 +16,12 @@ lang_dateformat_mm/dd/yyyy=mm/dd/yyyy (つまり、2001 年 9 月 16 日)
 lang_dateformat_yyyy/mm/dd=yyyy/mm/dd (例: 2001/09/16)
 
 ssl_hsts=HSTS ヘッダーで SSL を強制する
+ssl_letsmode=Let's Encryptの検証方法
+ssl_letsmode0=ホスト名に一致する Apache 仮想ホスト
+ssl_letsmode1=選択された Apache 仮想ホスト
+ssl_letsmode2=その他のウェブサーバードキュメントディレクトリ
+ssl_letsmode3=BINDを使用したDNS検証
+ssl_letsmode4=Certbot 組み込みウェブサーバー
 
 upgrade_repo=$1 リポジトリからの最新バージョン
 upgrade_setup=<tt>setup.sh</tt>スクリプトを実行して Webmin をアップグレードしています ..
@@ -82,3 +88,30 @@ web_redirpref=プレフィックスをリダイレクトする
 web_eredirpref=プレフィックスはスラッシュで始まる必要があります
 web_eredirpref2=プレフィックスにスペースを含めることはできません
 web_redirssl=SSLをリダイレクトする
+
+letsencrypt_doingcertbot=Certbot Web サーバーを使用して、$1 の新しい証明書を要求しています。
+letsencrypt_eacmecertbot=公式のLet's EncryptクライアントのみがCertbot検証をサポートしています
+
+os_eol=OS EOL カウントダウン通知
+os_eol_countdown=数か月前
+os_eol_ecountdown=カウントダウン前の月は整数でなければなりません
+os_eol_until=それまで
+os_eol_type1=OSメンテナンスとセキュリティサポート
+os_eol_type2=OS拡張セキュリティメンテナンス
+os_eol_years=年
+os_eol_year=年
+os_eol_months=ヶ月
+os_eol_month=月
+os_eol_weeks=週間
+os_eol_week=週
+os_eol_days=日々
+os_eol_day=日
+os_eol_hours=時間
+os_eol_hour=時間
+os_eol_minutes=分
+os_eol_minute=分
+os_eol_seconds=秒
+os_eol_second=2番
+os_eol_reached=EOLに到達
+os_eol_reaching=EOLの
+os_eol_reaching2=EOLが迫っている

@@ -23,6 +23,12 @@ lang_dateformat_mm/dd/yyyy=MM/TT/JJJJ (d. h. 16.09.2001)
 lang_dateformat_yyyy/mm/dd=jjjj/mm/tt (d. h. 16.09.2001)
 
 ssl_hsts=Erzwinge SSL mit HSTS-Header
+ssl_letsmode=Let’s Encrypt Validierungsmethode
+ssl_letsmode0=Virtueller Apache-Host mit übereinstimmendem Hostnamen
+ssl_letsmode1=Ausgewählter virtueller Apache-Host
+ssl_letsmode2=Anderes Webserver-Dokumentenverzeichnis
+ssl_letsmode3=DNS-Validierung mit BIND
+ssl_letsmode4=Integrierter Certbot-Webserver
 
 upgrade_repo=Neueste Version aus dem $1-Repository
 upgrade_setup=Ausführen des Skripts <tt>setup.sh</tt> zum Aktualisieren von Webmin ..
@@ -108,6 +114,32 @@ web_eredirpref=Präfix muss mit Schrägstrich beginnen
 web_eredirpref2=Präfix darf keine Leerzeichen enthalten
 web_redirssl=SSL umleiten
 
+letsencrypt_doingcertbot=Anfordern eines neuen Zertifikats für $1 mithilfe des Certbot-Webservers ..
 letsencrypt_eacmedns=Nur der offizielle Let's Encrypt-Client unterstützt die DNS-basierte Validierung
+letsencrypt_eacmecertbot=Nur der offizielle Let's Encrypt-Client unterstützt die Certbot-Validierung
 
 alert_hide=Warnung ausblenden
+
+os_eol=Benachrichtigung zum Countdown zum Betriebssystem-EOL
+os_eol_countdown=Monate vor
+os_eol_ecountdown=Der Monat vor dem Countdown muss eine Ganzzahl sein
+os_eol_until=Bis
+os_eol_type1=Betriebssystemwartung und Sicherheitssupport
+os_eol_type2=Erweiterte Sicherheitswartung für das Betriebssystem
+os_eol_years=Jahre
+os_eol_year=Jahr
+os_eol_months=Monate
+os_eol_month=Monat
+os_eol_weeks=Wochen
+os_eol_week=Woche
+os_eol_days=Tage
+os_eol_day=Tag
+os_eol_hours=Std
+os_eol_hour=Stunde
+os_eol_minutes=Protokoll
+os_eol_minute=Minute
+os_eol_seconds=Sekunden
+os_eol_second=zweite
+os_eol_reached=EOL erreicht
+os_eol_reaching=EOL in
+os_eol_reaching2=Ende der Betriebsdauer steht unmittelbar bevor

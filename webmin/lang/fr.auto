@@ -23,6 +23,12 @@ lang_dateformat_mm/dd/yyyy=jj/mm/aaaa (c'est-à-dire 16/09/2001)
 lang_dateformat_yyyy/mm/dd=aaaa/mm/jj (c.-à-d. 2001/09/16)
 
 ssl_hsts=Appliquer SSL avec l'en-tête HSTS
+ssl_letsmode=Méthode de validation Let's Encrypt
+ssl_letsmode0=Hôte virtuel Apache correspondant au nom d'hôte
+ssl_letsmode1=Hôte virtuel Apache sélectionné
+ssl_letsmode2=Autre répertoire de documents du serveur Web
+ssl_letsmode3=Validation DNS à l'aide de BIND
+ssl_letsmode4=Serveur Web intégré Certbot
 
 upgrade_repo=Dernière version du référentiel $1
 upgrade_setup=Exécution du script <tt>setup.sh</tt> pour mettre à niveau Webmin ..
@@ -103,3 +109,30 @@ web_redirpref=Préfixe de redirection
 web_eredirpref=Le préfixe doit commencer par une barre oblique
 web_eredirpref2=Le préfixe ne doit pas contenir d'espaces
 web_redirssl=Rediriger SSL
+
+letsencrypt_doingcertbot=Demande d'un nouveau certificat pour $1, à l'aide du serveur Web Certbot ..
+letsencrypt_eacmecertbot=Seul le client officiel Let's Encrypt prend en charge la validation Certbot
+
+os_eol=Notification du compte à rebours du système d'exploitation EOL
+os_eol_countdown=des mois avant
+os_eol_ecountdown=Le mois avant le compte à rebours doit être un nombre entier
+os_eol_until=Jusqu'à
+os_eol_type1=Maintenance du système d'exploitation et assistance en matière de sécurité
+os_eol_type2=Maintenance de sécurité étendue du système d'exploitation
+os_eol_years=années
+os_eol_year=année
+os_eol_months=mois
+os_eol_month=mois
+os_eol_weeks=semaines
+os_eol_week=semaine
+os_eol_days=jours
+os_eol_day=jour
+os_eol_hours=heures
+os_eol_hour=heure
+os_eol_minutes=minutes
+os_eol_minute=minute
+os_eol_seconds=secondes
+os_eol_second=deuxième
+os_eol_reached=EOL atteint
+os_eol_reaching=EOL dans
+os_eol_reaching2=Fin de vie imminente

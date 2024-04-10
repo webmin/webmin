@@ -23,6 +23,12 @@ lang_dateformat_mm/dd/yyyy=mm/dd/åååå (dvs. 16.09.2001)
 lang_dateformat_yyyy/mm/dd=åååå/mm/dd (dvs. 2001/09/16)
 
 ssl_hsts=Håndhev SSL med HSTS-header
+ssl_letsmode=La oss kryptere valideringsmetoden
+ssl_letsmode0=Apache virtuell vert som samsvarer med vertsnavn
+ssl_letsmode1=Valgt virtuell Apache-vert
+ssl_letsmode2=Annen webserver dokumentkatalog
+ssl_letsmode3=DNS-validering med BIND
+ssl_letsmode4=Certbot innebygd webserver
 
 upgrade_repo=Siste versjon fra $1-depotet
 upgrade_setup=Kjører <tt>setup.sh</tt> skript for å oppgradere Webmin ..
@@ -103,3 +109,30 @@ web_redirpref=Omdirigeringsprefiks
 web_eredirpref=Prefikset må starte med skråstrek
 web_eredirpref2=Prefiks må ikke inneholde mellomrom
 web_redirssl=Omdiriger SSL
+
+letsencrypt_doingcertbot=Ber om et nytt sertifikat for $1 ved å bruke Certbot-nettserveren ..
+letsencrypt_eacmecertbot=Bare den offisielle Let's Encrypt-klienten støtter Certbot-validering
+
+os_eol=OS EOL nedtellingsvarsling
+os_eol_countdown=måneder før
+os_eol_ecountdown=Måned før nedtelling må være et heltall
+os_eol_until=Før
+os_eol_type1=OS vedlikehold og sikkerhetsstøtte
+os_eol_type2=OS utvidet sikkerhetsvedlikehold
+os_eol_years=år
+os_eol_year=år
+os_eol_months=måneder
+os_eol_month=måned
+os_eol_weeks=uker
+os_eol_week=uke
+os_eol_days=dager
+os_eol_day=dag
+os_eol_hours=timer
+os_eol_hour=time
+os_eol_minutes=minutter
+os_eol_minute=minutt
+os_eol_seconds=sekunder
+os_eol_second=sekund
+os_eol_reached=EOL nådd
+os_eol_reaching=EOL inn
+os_eol_reaching2=EOL nært forestående

@@ -405,11 +405,6 @@ ssl_letserr2=<a href='$1'>モジュールの設定</a>を開き、<tt>letsencryp
 ssl_letsdesc2=新しい証明書を要求できますが、取得した証明書を使って、現在 Webmin で設定されている他の証明書を上書きします。また、Let's Encrypt が証明書を発行する際は、ドメインの所有権を検証する作業として、対象のWebサイトをホストしていることを確認します。これは、確認用のディレクトリと小さな一時ファイルを配置してWebサイトから閲覧できることで検証されます。
 ssl_letsheader=Let's Encrypt の設定
 ssl_letsdoms=証明書に記載するホスト名
-ssl_webroot=検証用ファイルを設置する Web サイトのルートディレクトリ
-ssl_webroot0=ホスト名に一致する Apache バーチャルホスト
-ssl_webroot1=別の Apache バーチャルホスト
-ssl_webroot2=その他のディレクトリ
-ssl_webroot3=DNS ドメイン検証を使用
 ssl_letsok=証明書を要求
 ssl_letsonly=今すぐ更新
 ssl_usewebmin=新しい鍵と証明書を Webmin にコピーする

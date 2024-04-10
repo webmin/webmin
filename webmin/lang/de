@@ -398,11 +398,6 @@ ssl_letserr2=Prüfe die <a href='$1'>Modulkonfiguration</a> Seite, um sicherzust
 ssl_letsdesc2=Diese Seite kann verwendet werden, um ein neues Zertifikat zu beantragen, welches andere in Webmin konfiguriere überschreiben wird. Der Let's Encrypt Dienst benötigt, dass im Besitz der Zertifikats-Domäne sind, welches überprüft indem über Webseite dieses Hosts-Systems. Dies geschieht, indem eine kleine temporäre Datei auf der Website des Dokumentenverzeichnisses platziert wird.
 ssl_letsheader=Optionen für neues SSL-Zertifikat
 ssl_letsdoms=Hostnamen für Zertifikate
-ssl_webroot=Webseiten root Verzeichnis für Validierungsdatei
-ssl_webroot0=Apache virtual host matching hostname
-ssl_webroot1=Ein anderer Apache virtueller Host
-ssl_webroot2=Anderes Verzeichnis
-ssl_webroot3=Verwendet DNS-Domains für die Validierung
 ssl_letsok=Zertifikat anfragen
 ssl_letsonly=Nur Update-Erneuerung
 ssl_usewebmin=Kopiere neuen Schlüssel und Zertifikat nach Webmin?
