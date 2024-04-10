@@ -191,11 +191,10 @@ return $eol_data;
 sub eol_update_cache
 {
 my (%miniserv, $updated);
-# Is there valid cached data (chached for 30 days by default)
-my $os_eol_cache = $gconfig{'os_eol_cache'} // 30;
+# Is there valid cached data (cached for 30 days)
 if ($gconfig{'os_eol_expired'} || $gconfig{'os_eol_expiring'}) {
         if ($gconfig{'os_eol_last'} &&
-            $gconfig{'os_eol_last'} < time() - 60*60*24*$os_eol_cache) {
+            $gconfig{'os_eol_last'} < time() - 60*60*24*30) {
                 # Invalidate the cache
                 foreach my $key
                         ('os_eol_none', 'os_eol_expired',
