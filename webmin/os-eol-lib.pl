@@ -39,7 +39,8 @@ my $eol_write_cache = sub {
         my $data = shift;
         &write_file_contents("$module_var_directory/eolcache", $data);
 };
-&http_download('endoflife.date', 443, "/api/$os.json", \$fetch, \$error, undef, 1);
+&http_download('endoflife.date', 443, "/api/$os.json", \$fetch, \$error, undef, 1,
+                undef, undef, 5);
 if ($error) {
         &error_stderr("Could not fetch current OS EOL data: " . $error);
         $eol_write_cache->('[]');
