@@ -129,8 +129,8 @@ if (ref($eol_date)) {
                 foreach my $unit (@ago_units) {
                         if ($ago->{"${unit}s"}) {
                                 my $value = abs($ago->{"${unit}s"});
-                                return $value == 1 ? "1 " . $text{"eol_${unit}"} :
-                                        "$value " . $text{"eol_${unit}s"};
+                                return $value == 1 ? "1 " . $text{"os_eol_${unit}"} :
+                                        "$value " . $text{"os_eol_${unit}s"};
                                 }
                         }
                 };
@@ -154,7 +154,7 @@ else {
 
 # Is expired?
 my $expired = $eol_data->{'_eol_timestamp'} < time();
-$eol_data->{'_expired'} = $text{'eol_reached'} if ($expired);
+$eol_data->{'_expired'} = $text{'os_eol_reached'} if ($expired);
 
 # Is expiring (in 3 months by default, unless configured otherwise)
 my $os_eol_before = $gconfig{'os_eol_before'} // 3;
@@ -165,9 +165,9 @@ if (!$expired && $os_eol_before) {
         if ($expiring) {
                 $eol_data->{'_expiring'} =
                         $eol_data->{'_eol_in'} ?
-                                $text{'eol_reaching'} . " " .
+                                $text{'os_eol_reaching'} . " " .
                                         $eol_data->{'_eol_in'} :
-                                $text{'eol_reaching2'};
+                                $text{'os_eol_reaching2'};
                 }
         # Set extended support expiring message (if available)
         if ($eol_data->{'extendedSupport'}) {
@@ -176,9 +176,9 @@ if (!$expired && $os_eol_before) {
                 if ($expiring) {
                         $eol_data->{'_ext_expiring'} =
                                 $eol_data->{'_ext_eol_in'} ?
-                                        $text{'eol_reaching'} . " " .
+                                        $text{'os_eol_reaching'} . " " .
                                                 $eol_data->{'_ext_eol_in'} :
-                                        $text{'eol_reaching2'};
+                                        $text{'os_eol_reaching2'};
                         }
                 }
         }
