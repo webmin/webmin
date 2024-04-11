@@ -44,7 +44,9 @@ if ($osinfo{'real_os_type'}) {
 			"$text{'os_eol_until'} $gconfig{'os_ext_eol'}");
 			}
 		print &ui_table_row($text{'os_eol'},
-			&ui_textbox("os_eol_before", $gconfig{'os_eol_before'} // 3, 10)."&nbsp;$text{'os_eol_countdown'}");
+			&ui_textbox("os_eol_before",
+				$gconfig{'os_eol_before'} // 3, 2).
+					"&nbsp;$text{'os_eol_countdown'}");
 		}
 	}
 else {
