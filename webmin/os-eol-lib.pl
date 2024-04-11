@@ -188,31 +188,11 @@ return $eol_data;
 # or until the next Webmin update
 sub eol_update_cache
 {
-my (%miniserv, $updated);
-# Is there valid cached data (cached for 30 days)
-if ($gconfig{'os_eol_expired'} || $gconfig{'os_eol_expiring'}) {
-        if ($gconfig{'os_eol_last'} &&
-            $gconfig{'os_eol_last'} < time() - 60*60*24*30) {
-                # Invalidate the cache
-                foreach my $key
-                        ('os_eol_none', 'os_eol_expired',
-                         'os_eol_expiring', 'os_eol_last',
-                         'os_eol_about', 'os_eol', 'os_eol_in',
-                         'os_ext_eol', 'os_ext_eol_in') {
-                        delete($gconfig{$key});
-                        }
-                $updated++;
-                }
-        else {
-                # Nothing to update, Webmin config has it all
-                return;
-                }
-        }
+my %miniserv;
 &get_miniserv_config(\%miniserv);
-if (!$gconfig{'os_eol_none'} ||
-    ($miniserv{'server'} && $gconfig{'os_eol_none'} ne $miniserv{'server'})) {
+if ($gconfig{'os_eol_db'} ne $miniserv{'server'}) {
         # This is the first time we check
-        # EOL data or after Webmin update\
+        # EOL data or after Webmin update
         my $eol_data = &eol_get_os_data();
         &eol_populate_dates($eol_data);
         if (ref($eol_data)) {
@@ -231,18 +211,10 @@ if (!$gconfig{'os_eol_none'} ||
                         if ($eol_data->{'_ext_eol'});
                 $gconfig{'os_ext_eol_in'} = $eol_data->{'_ext_eol_in'}
                         if ($eol_data->{'_ext_eol_in'});
-                $gconfig{'os_eol_last'} = time();
-                delete($gconfig{'os_eol_none'});
-                $updated++;
                 }
-        else {
-                # No EOL data available, don't check
-                # again until next Webmin update
-                $gconfig{'os_eol_none'} = $miniserv{'server'};
-                $updated++;
-                }
-        }
-if ($updated) {
+        # Store EOL db version and don't check it until next Webmin upgrade
+        $gconfig{'os_eol_db'} = $miniserv{'server'};
+        
         # Store the updated data
         &lock_file("$config_directory/config");
         &write_file("$config_directory/config", \%gconfig);

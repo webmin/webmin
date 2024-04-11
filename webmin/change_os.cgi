@@ -34,8 +34,8 @@ if (defined($in{'os_eol_before'}) &&
 	$in{'os_eol_before'} =~ /^\d+$/ || &error($text{'os_eol_ecountdown'});
 	$gconfig{'os_eol_before'} = $in{'os_eol_before'};
 	# Invalidate EOL cache
-	foreach my $key ('os_eol_none', 'os_eol_expired',
-			 'os_eol_expiring', 'os_eol_last') {
+	foreach my $key ('os_eol_db', 'os_eol_expired',
+			 'os_eol_expiring') {
 		delete($gconfig{$key});
 		}
 	}
