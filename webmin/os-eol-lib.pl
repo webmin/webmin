@@ -191,9 +191,8 @@ return $eol_data;
 # or until the next Webmin update
 sub eol_update_cache
 {
-my %miniserv;
-&get_miniserv_config(\%miniserv);
-if ($gconfig{'os_eol_db'} ne $miniserv{'server'}) {
+my $webmin_version = &get_webmin_version();
+if ($gconfig{'os_eol_db'} ne $webmin_version) {
         # This is the first time we check
         # EOL data or after Webmin update
         my $eol_data = &eol_get_os_data();
@@ -218,7 +217,7 @@ if ($gconfig{'os_eol_db'} ne $miniserv{'server'}) {
                         if ($eol_data->{'_ext_eol_in'});
                 }
         # Store EOL db version and don't check it until next Webmin upgrade
-        $gconfig{'os_eol_db'} = $miniserv{'server'};
+        $gconfig{'os_eol_db'} = $webmin_version;
         
         # Store the updated data
         &lock_file("$config_directory/config");
