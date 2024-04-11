@@ -151,13 +151,15 @@ else {
         }
 
 # Is expired?
-my $expired = $eol_data->{'_eol_timestamp'} < time();
+my $expired = ($eol_data->{'_ext_eol_timestamp'} || 
+               $eol_data->{'_eol_timestamp'}) < time();
 $eol_data->{'_expired'} = $text{'os_eol_reached'} if ($expired);
 
 # Is expiring (in 3 months by default, unless configured otherwise)
 my $os_eol_before = $gconfig{'os_eol_before'} // 3;
 if (!$expired && $os_eol_before) {
-        my $expiring = $eol_data->{'_eol_timestamp'} < time() +
+        my $expiring = ($eol_data->{'_ext_eol_timestamp'} ||
+                        $eol_data->{'_eol_timestamp'}) < time() +
                                 60*60*24*30*$os_eol_before ? 1 : 0;
         # Set the expiring message
         if ($expiring) {
@@ -202,7 +204,9 @@ if ($gconfig{'os_eol_db'} ne $miniserv{'server'}) {
                         $gconfig{'os_eol_about'} = 2;
                         }
                 elsif ($eol_data->{'_expiring'}) {
-                        $gconfig{'os_eol_expiring'} = $eol_data->{'_expiring'};
+                        $gconfig{'os_eol_expiring'} =
+                                $eol_data->{'_ext_expiring'} ||
+                                $eol_data->{'_expiring'};
                         $gconfig{'os_eol_about'} = 1;
                         }
                 $gconfig{'os_eol'} = $eol_data->{'_eol'};
