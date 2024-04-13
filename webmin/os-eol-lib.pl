@@ -4,6 +4,7 @@
 use strict;
 use warnings;
 no warnings 'redefine';
+no warnings 'uninitialized';
 use Time::Local;
 
 our (%gconfig, %text, $root_directory, $config_directory);
