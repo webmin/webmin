@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl
 # Builds a tar.gz package of a specified Webmin version
-
+use Cwd 'abs_path', 'getcwd';
 if ($0 =~ /^(.*)\//) {
 	chdir($1);
 	}
@@ -88,9 +88,13 @@ else {
 # Build EOL data
 if (-r "./webmin/os-eol-lib.pl") {
 	print "Building OS EOL data\n";
+	print "Before do: ", getcwd(), "\n";
 	do "./web-lib-funcs.pl";
+	print "After do 1: ", getcwd(), "\n";
 	do "./webmin/os-eol-lib.pl";
+	print "After do 2: ", getcwd(), "\n";
 	&eol_build_all_os_data("./os_eol.json");
+	print "After run 1: ", getcwd(), "\n";
 	print &backquote_command("cat ./os_eol.json");
 	}
 

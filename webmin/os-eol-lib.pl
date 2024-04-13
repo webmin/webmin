@@ -42,20 +42,14 @@ $eol_cache_file ||= "$root_directory/os_eol.json";
 my @eol_oses = &eol_oses_list();
 my @eol_oses_data;
 foreach my $os (@eol_oses) {
-        my ($fdata, $ferror);
-        &http_download('endoflife.date', 443, "/api/$os.json", \$fdata,
-                        \$ferror, undef, 1, undef, undef, 5);
-        if ($ferror) {
-                $fdata =
-                        &backquote_command(
-                                "curl -sS --request GET " .
-                                "--url https://endoflife.date/api/$os.json ".
-                                "--header 'Accept: application/json' ".
-                                "2>&1 </dev/null");
-                if ($?) {
-                        die("Could not fetch OS EOL data: http_download :
-                                $ferror; curl : $?");
-                        }
+        my $fdata =
+                &backquote_command(
+                        "curl -sS --request GET " .
+                        "--url https://endoflife.date/api/$os.json ".
+                        "--header 'Accept: application/json' ".
+                        "2>&1 </dev/null");
+        if ($?) {
+                die("Could not fetch OS EOL data : $?");
                 }
         my $fdata_json;
         eval { $fdata_json = &convert_from_json($fdata); };
