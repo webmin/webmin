@@ -68,7 +68,11 @@ foreach my $os (@eol_oses) {
         $fdata_json = [ map { $_->{'lts'} = $_->{'lts'} ? 1 : 0; $_ } @$fdata_json ];
         push(@eol_oses_data, @$fdata_json);
         }
-&write_file_contents($eol_cache_file, &convert_to_json(\@eol_oses_data));
+my $eol_oses_data = &convert_to_json(\@eol_oses_data);
+&backquote_command("echo -n '$eol_oses_data' > $eol_cache_file 2>&1 </dev/null");
+if ($?) {
+        die("Could not write OS EOL data file : $?");
+        }
 }
 
 # eol_get_os_data()
