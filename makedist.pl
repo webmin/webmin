@@ -1,10 +1,6 @@
 #!/usr/local/bin/perl
 # Builds a tar.gz package of a specified Webmin version
 
-use Cwd 'abs_path', 'getcwd';
-use File::Basename;
-$root_directory = dirname(abs_path($0));
-
 if ($0 =~ /^(.*)\//) {
 	chdir($1);
 	}
@@ -90,13 +86,12 @@ else {
 	}
 
 # Build EOL data
-if (-r "$root_directory/webmin/os-eol-lib.pl") {
-	print "CWD : " . getcwd();
+if (-r "./webmin/os-eol-lib.pl") {
 	print "Building OS EOL data\n";
-	do "$root_directory/web-lib-funcs.pl";
-	print "CWD AFTER : " . getcwd();
-	# do "$root_directory/webmin/os-eol-lib.pl";
-	# &eol_build_all_os_data("$root_directory/os_eol.json");
+	do "./web-lib-funcs.pl";
+	do "./webmin/os-eol-lib.pl";
+	&eol_build_all_os_data("./os_eol.json");
+	print &backquote_command("cat ./os_eol.json");
 	}
 
 # Prepare dist files
