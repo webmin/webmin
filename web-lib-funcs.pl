@@ -1721,14 +1721,17 @@ if ($err_caller) {
 	my $err_caller_msg_esc  =
         &quote_escape(($err_last_eval ? "$err_last_eval : $err_caller" : $err_caller), '"');
 	my $err_caller_msg;
-	if ($err_last_eval) {
+	if ($err_last_eval && defined(&ui_details)) {
 		$err_caller_msg = &ui_details({
 			'title' => $text{'main_error_details'},
 			'content' => $err_caller_msg_esc,
 			'class' =>'error'}, 1);
 		}
-	else {
+	elsif (defined(&ui_help)) {
 		$err_caller_msg = &ui_help($err_caller_msg_esc);
+		}
+	else {
+		$err_caller_msg = $err_caller_msg_esc;
 		}
 	my $err_caller_ =
 		$main::webmin_script_type =~ /^(cmd|cron)$/ ?
