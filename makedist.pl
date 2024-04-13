@@ -91,8 +91,9 @@ else {
 
 # Build EOL data
 if (-r "$root_directory/webmin/os-eol-lib.pl") {
+	print "CWD : " . getcwd();
 	print "Building OS EOL data\n";
-	do "$root_directory/web-lib-funcs.pl";
+	# do "$root_directory/web-lib-funcs.pl";
 	# do "$root_directory/webmin/os-eol-lib.pl";
 	# &eol_build_all_os_data("$root_directory/os_eol.json");
 	}
