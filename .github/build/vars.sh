@@ -23,5 +23,5 @@ verbosity_level=' >/dev/null 2>&1 </dev/null'
 verbosity_level_to_file='2> /dev/null'
 verbosity_level_with_input=' >/dev/null 2>&1'
 if [[ "'$*'" == *"--debug"* ]]; then
-    unset verbosity_level verbosity_level_to_file verbosity_level_with_input
 fi
+unset verbosity_level verbosity_level_to_file verbosity_level_with_input
