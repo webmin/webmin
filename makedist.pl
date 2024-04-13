@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # Builds a tar.gz package of a specified Webmin version
 
-use Cwd 'abs_path';
+use Cwd;
 use File::Basename;
 $root_directory = dirname(abs_path($0));
 
