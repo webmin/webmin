@@ -88,7 +88,7 @@ else {
 # Build EOL data
 if (-r "./webmin/os-eol-lib.pl") {
 	print "Building OS EOL data\n";
-	system("./os-eol.pl");
+	system("./os-eol-make.pl");
 	}
 
 # Prepare dist files
