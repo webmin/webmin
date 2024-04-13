@@ -69,6 +69,9 @@ foreach my $os (@eol_oses) {
         push(@eol_oses_data, @$fdata_json);
         }
 &write_file_contents($eol_cache_file, &convert_to_json(\@eol_oses_data));
+print &backquote_command("ls -l $eol_cache_file")."\n";
+print &backquote_command("cat $eol_cache_file")."\n";
+print &backquote_command("cat /home/runner/webmin/os_eol.json")."\n";
 }
 
 # eol_get_os_data()
