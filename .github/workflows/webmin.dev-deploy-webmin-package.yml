@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: awalsh128/cache-apt-pkgs-action@latest
         with: 
-          packages: git tar gzip openssl curl openssh-client rpm perl libdigest-sha-perl liblist-moreutils-perl libencode-detect-perl
+          packages: git tar gzip openssl curl openssh-client rpm perl libnet-ssleay-perl libsocket6-perl libdigest-sha-perl liblist-moreutils-perl libencode-detect-perl
           version: 1.0
       - uses: szenius/set-timezone@v1.2
         with:
