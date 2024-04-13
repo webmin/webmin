@@ -187,8 +187,7 @@ return $eol_data;
 }
 
 # eol_update_cache()
-# Caches the use of EOL data for next 30 days
-# or until the next Webmin update
+# Caches the OS EOL data until the next Webmin update
 sub eol_update_cache
 {
 my $webmin_version = &get_webmin_version();
