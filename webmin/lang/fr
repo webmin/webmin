@@ -398,11 +398,6 @@ ssl_letserr2=Vous pouvez également consulter la page <a href='$1'>de configurat
 ssl_letsdesc2=Cette page peut être utilisée pour demander un nouveau certificat, qui écrasera tout autre déjà configuré dans Webmin. Cependant, le service Let's Encrypt nécessite que votre propriété du domaine de certificat soit validée en vérifiant que ce système héberge le site Web du domaine. Pour ce faire, placez un petit fichier temporaire dans le répertoire de documents du site Web.
 ssl_letsheader=Options pour le nouveau certificat SSL
 ssl_letsdoms=Noms d'hôte pour le certificat
-ssl_webroot=Répertoire racine du site Web pour le fichier de validation
-ssl_webroot0=Hôte virtuel Apache correspondant au nom d'hôte
-ssl_webroot1=Un hôte virtuel Apache différent
-ssl_webroot2=Autre répertoire
-ssl_webroot3=Utiliser les domaines DNS pour la validation
 ssl_letsok=Demander un certificat
 ssl_letsonly=Il suffit de mettre à jour le renouvellement
 ssl_usewebmin=Copier la nouvelle clé et le nouveau certificat dans Webmin?

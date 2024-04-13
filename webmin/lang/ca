@@ -395,11 +395,6 @@ ssl_letserr=Desgraciadament, no es pot utilitzar Let's Encrypt al teu sistema: $
 ssl_letserr2=Comprova la pàgina de <a href='$1'>configuració del mòdul</a> per assegurar que estàs utilitzant el camí correcte de l'ordre <tt>letsencrypt</tt> o <tt>letsencrypt-auto</tt>.
 ssl_letsdesc2=Aquesta pàgina es pot utilitzar per a demanar un nou certificat, que sobreescriurà qualsevol altre que estigui actualment configurat a Webmin. No obstant, el servei Let's Encrypt demana que la propietat del domini certificat sigui validada comprovant que aquests sistema allotja el lloc web del domini. Això es fa posant un petit fitxer temporal al directori de documents del lloc web.
 ssl_letsheader=Opcions del nou certificat SSL
-ssl_webroot=Directori arrel del lloc web per al fitxer de validació
-ssl_webroot0=Host virtual Apache que coincideix amb el nom de host
-ssl_webroot1=Un host virtual Apache diferent
-ssl_webroot2=Un altre directori
-ssl_webroot3=Utilitza dominis DNS per a la validació
 ssl_letsok=Demana el Certifica
 ssl_letsonly=Només Actualitza la Renovació
 ssl_usewebmin=Copia la nova clau i el nou certificat a Webmin

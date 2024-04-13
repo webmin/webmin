@@ -35,6 +35,19 @@ if ($osinfo{'real_os_type'}) {
 		 $osinfo{'os_version'} ne $gconfig{'os_version'} ?
 			"<br>".&ui_checkbox("update", 1, $text{'os_update'}) :
 			""), undef, [ "valign=middle","valign=middle" ]);
+	# Before EOL message is shown (months)
+	if ($gconfig{'os_eol'}) {
+		print &ui_table_row($text{'os_eol_type1'},
+			"$text{'os_eol_until'} $gconfig{'os_eol'}");
+		if ($gconfig{'os_ext_eol'}) {
+			print &ui_table_row($text{'os_eol_type2'},
+			"$text{'os_eol_until'} $gconfig{'os_ext_eol'}");
+			}
+		print &ui_table_row($text{'os_eol'},
+			&ui_textbox("os_eol_before",
+				$gconfig{'os_eol_before'} // 3, 2).
+					"&nbsp;$text{'os_eol_countdown'}");
+		}
 	}
 else {
 	print &ui_table_row($text{'os_detect'},

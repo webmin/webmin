@@ -28,6 +28,18 @@ elsif ($in{'type'} ne $gconfig{'real_os_type'} ||
 	$in{'iversion'} || &error($text{'os_eiversion'});
 	$gconfig{'os_version'} = $in{'iversion'};
 	}
+# EOL data
+if (defined($in{'os_eol_before'}) &&
+    $in{'os_eol_before'} ne $gconfig{'os_eol_before'}) {
+	$in{'os_eol_before'} =~ /^\d+$/ || &error($text{'os_eol_ecountdown'});
+	$gconfig{'os_eol_before'} = $in{'os_eol_before'};
+	# Invalidate EOL cache
+	foreach my $key ('os_eol_db', 'os_eol_expired',
+			 'os_eol_expiring') {
+		delete($gconfig{$key});
+		}
+	}
+# Path
 $gconfig{'path'} = join($path_separator, split(/[\r\n]+/, $in{'path'}));
 $gconfig{'syspath'} = !$in{'syspath'};
 if ($gconfig{'ld_env'}) {

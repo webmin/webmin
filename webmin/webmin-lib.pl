@@ -18,6 +18,7 @@ our ($module_root_directory, %text, %gconfig, $root_directory, %config,
 do "$module_root_directory/gnupg-lib.pl";
 do "$module_root_directory/letsencrypt-lib.pl";
 do "$module_root_directory/twofactor-funcs-lib.pl";
+do "$module_root_directory/os-eol-lib.pl";
 use Socket;
 
 our @cs_codes = ( 'cs_page', 'cs_text', 'cs_table', 'cs_header', 'cs_link' );

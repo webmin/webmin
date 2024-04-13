@@ -398,11 +398,6 @@ ssl_letserr2=Sjekk <a href='$1'>modulkonfigurasjonen</a> for å være sikker på
 ssl_letsdesc2=Denne siden kan brukes til å be om et nytt sertifikat, som vil overskrive andre sertifikater som er konfiguert i Webmin. Vær imidlertid oppmerksom på at Let's Encrypt tjenesten kreves at ditt eierskap til domenet valideres ved å sjekke at dette systemet inneholder nettstedet for domenet. Dette gjøres ved å plassere en liten midlertidig fil i nettstedets dokument-katalog.
 ssl_letsheader=Innstillinger for nytt SSL sertifikat
 ssl_letsdoms=Vertsnavn for sertifikat
-ssl_webroot=Nettstedets rot-katalog for valideringsfile
-ssl_webroot0=Apache virtuell vert som matcher vertsnavn
-ssl_webroot1=En annen Apache virtuell vert
-ssl_webroot2=Annen katalog
-ssl_webroot3=Bruk DNS-domener for validering
 ssl_letsok=Be om sertifikat
 ssl_letsonly=Bare oppdater fornyelse
 ssl_usewebmin=Kopier ny nøkkel og sertifikat til Webmin?

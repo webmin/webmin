@@ -49,13 +49,16 @@ if (&show_section('host')) {
 	push(@table, { 'desc' => $text{'right_host'},
 		       'value' => &get_system_hostname().$ip });
 
-	# Operating system
+	# Operating system and EOL
+	&foreign_require("webmin");
+	&webmin::eol_update_cache();
+	my $eol = $gconfig{'os_eol_expired'} || $gconfig{'os_eol_expiring'};
 	my $os = &html_escape($gconfig{'os_version'} eq '*' ?
 				$gconfig{'real_os_type'} :
 				$gconfig{'real_os_type'}.' '.
 				  $gconfig{'real_os_version'});
 	push(@table, { 'desc' => $text{'right_os'},
-		       'value' => $os
+		       'value' => $os . ($eol ? " ($eol)" : "")
 		     });
 
 	# Webmin version

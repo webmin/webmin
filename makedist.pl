@@ -1,6 +1,10 @@
 #!/usr/local/bin/perl
 # Builds a tar.gz package of a specified Webmin version
 
+use Cwd 'abs_path';
+use File::Basename;
+$root_directory = dirname(abs_path($0));
+
 if ($0 =~ /^(.*)\//) {
 	chdir($1);
 	}
@@ -60,7 +64,7 @@ $vers || usage();
 	  "webmin-search-lib.pl", "WebminCore.pm",
 	  "record-login.pl", "record-logout.pl", "record-failed.pl",
 	  "robots.txt", "unauthenticated", "bin", "html-editor-lib.pl",
-	  "switch_theme.cgi",
+	  "switch_theme.cgi", "os_eol.json",
 	 );
 if ($min) {
 	# Only those required by others
@@ -84,8 +88,17 @@ else {
 		@mlist = @mlist_excluded;
 		}
 	}
-@dirlist = ( "vendor_perl" );
 
+# Build EOL data
+if (-r "$root_directory/webmin/os-eol-lib.pl") {
+	print "Building OS EOL data\n";
+	do "$root_directory/web-lib-funcs.pl";
+	do "$root_directory/webmin/os-eol-lib.pl";
+	&eol_build_all_os_data("$root_directory/os_eol.json");
+	}
+
+# Prepare dist files
+@dirlist = ( "vendor_perl" );
 $dir = "webmin$product_suff-$vers";
 if (!$release || !-d "$tardir/$dir") {
 	# Copy files into the directory for tarring up, unless this is a minor
