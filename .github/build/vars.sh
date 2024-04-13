@@ -19,9 +19,3 @@ cloud_upload_ssh_dir="${ENV_BUILD__CLOUD_UPLOAD_SSH_DIR:-~/domains/builds.webmin
 cloud_upload_gpg_passphrase="${WEBMIN_DEV__GPG_PH}"
 
 # Define verbosity level
-verbosity_level=' >/dev/null 2>&1 </dev/null'
-verbosity_level_to_file='2> /dev/null'
-verbosity_level_with_input=' >/dev/null 2>&1'
-if [[ "'$*'" == *"--debug"* ]]; then
-fi
-unset verbosity_level verbosity_level_to_file verbosity_level_with_input
