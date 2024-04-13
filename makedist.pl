@@ -88,7 +88,8 @@ else {
 # Build EOL data
 if (-r "./webmin/os-eol-lib.pl") {
 	print "Building OS EOL data\n";
-	system("./os-eol-make.pl");
+	my $err = system("./os-eol-make.pl");
+	exit(1) if ($err);
 	}
 
 # Prepare dist files
