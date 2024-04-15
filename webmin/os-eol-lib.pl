@@ -101,6 +101,7 @@ if (ref($eol_json) eq 'ARRAY' && @$eol_json) {
         my ($eol_json_this_os) =
                 grep { $_->{'_os'} eq $os &&
                        $_->{'cycle'} eq $os_version } @$eol_json;
+        return undef if (!$eol_json_this_os);
         $eol_json_this_os->{'_os_name'} = $gconfig{'real_os_type'};
         $eol_json_this_os->{'_os_version'} = $os_version;
         # Convert EOL date to a timestamp
