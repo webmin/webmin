@@ -1054,7 +1054,7 @@ if (!defined($width)) {
 	$width = "200";
 	}
 $width .= "px" if ($width =~ /^\d+$/);
-my $wstyle = $width ? "style='width:$width'" : "";
+my $wstyle = $width ? "style='min-width:$width'" : "";
 
 if (!$main::ui_multi_select_donejs++) {
 	$rv .= &ui_multi_select_javascript();
