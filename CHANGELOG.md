@@ -1,7 +1,17 @@
 ## Changelog
 
-#### 2.106 (February 26, 2024)
-* Development and testing build
+#### 2.110 (April 16, 2024)
+* Add an API to check if the system is running or approaching its end of life (EOL)
+* Add support for `systemd-timesyncd` and `chronyd` to the System Time module
+* Add Ubuntu 24.04 support
+* Add Squid 6 support
+* Add latest Devuan Linux support
+* Add an option to request Let's Encrypt certificates using `certbot` in standalone mode [forum.virtualmin.com/t/123696](http://forum.virtualmin.com/t/webmin-ssl-certificate-with-lets-encrypt-directly-obtain-certificate-without-requiring-apache-or-nginx/123696/)
+* Add IMAP and SMTP monitors in the System and Server Status module
+* Fix TLS connection to SMTP servers not working in some cases
+* Fix ProFTPd module to use actual UI library
+* Fix to using the `qrencode` command to generate QR codes locally instead of the remote Google Chart API
+* Fix a number of various other issues
 
 #### 2.105 (November 09, 2023)
 * Fix param to read only headers [sourceforge.net/usermin-bugs#501](https://sourceforge.net/p/webadmin/usermin-bugs/501/)
