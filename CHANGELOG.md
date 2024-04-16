@@ -1,6 +1,9 @@
 ## Changelog
 
-#### 2.110 (April 16, 2024)
+#### 2.111 (April 16, 2024)
+* Fix EOL detection for unreleased Linux distributions
+
+#### 2.110 (April 15, 2024)
 * Add an API to check if the system is running or approaching its end of life (EOL)
 * Add support for `systemd-timesyncd` and `chronyd` to the System Time module
 * Add Ubuntu 24.04 support
