@@ -13,7 +13,7 @@ if (!-r "$config{'usermin_dir'}/miniserv.conf") {
 		if (&foreign_check("software")) {
 			local %sconfig = &foreign_config("software");
 			$mode = $sconfig{'package_system'} eq 'rpm' ? 'rpm' :
-				$sconfig{'package_system'} eq 'dpkg' ? 'deb' :
+				$sconfig{'package_system'} =~ /^(dpkg|debian)$/ ? 'deb' :
 								       undef;
 			}
 		print &ui_confirmation_form(
