@@ -128,9 +128,9 @@ sub list_mounted
 {
 # get the list of mounted filesystems
 local(@rv, $_);
-local $cmd = $uname_release =~ /^[3456789]\.[0-9]/ ? "netbsd-mounts-3" :
+local $cmd = $uname_release =~ /^1\.[0-9]/ ? "netbsd-mounts" :
 	     $uname_release =~ /^2\.[0-9]/ ? "netbsd-mounts-2" :
-					     "netbsd-mounts";
+					     "netbsd-mounts-3";
 &compile_program($cmd);
 open(CMD, "$module_config_directory/$cmd |");
 while(<CMD>) {
