@@ -1,0 +1,3 @@
+max=Maximum size for uploaded files,3,Unlimited
+config_portable_module_filemanager_editor_detect_encoding=Fix to prevent encoding detection if forbidden,1,true-Yes,false-No
+config_portable_module_filemanager_show_dot_files=Show hidden files,1,true-Yes,false-No
