@@ -423,21 +423,26 @@ foreach my $k (keys %$in) {
 return $rv;
 }
 
-# link_config_cparams(module, &in)
+# link_config_cparams(module, &in, [add-cparam])
 # Returns a URL to link to after the config is saved
 sub link_config_cparams
 {
-my ($m, $in) = @_;
+my ($m, $in, $keep) = @_;
 my $url = "/$m";
-if ($in->{'_cscript'}) {
-	$url .= "/".$in->{'_cscript'};
-	}
 my @w;
+if ($in->{'_cscript'}) {
+	if ($keep) {
+		$url .= "/".$in->{'_cscript'};
+		}
+	else {
+		push(@w, "_cscript=".&urlize($in->{'_cscript'}));
+		}
+	}
 foreach my $k (keys %$in) {
 	if ($k =~ /^_cparam_(.*)$/) {
 		$n = $1;
 		foreach my $v (split(/\0/, $in{$k})) {
-			push(@w, &urlize($n)."=".&urlize($v));
+			push(@w, &urlize($keep ? $k : $n)."=".&urlize($v));
 			}
 		}
 	}
