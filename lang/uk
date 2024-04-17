@@ -5,29 +5,34 @@ main_logout=Вийти
 main_version=Версія $1 на $2 ($3)
 main_title=Webmin $1 на $2 ($3)
 main_title2=Webmin
-main_none=У вас немає прав доступу до жодного з модулів Webmin.
+main_title3=Webmin $1 ($2)
+main_none=У вас немає доступу до жодного з модулів Webmin.
 main_skill=Досвід
-main_readonly=(Права лише на читання)
+main_readonly=(Режим лише для читання)
 main_return=Повернутись до $1
+main_unused=Не використовувані модулі
+main_refreshmods=Оновити модулі
 
-link_essl=Для створення HTTPS з'єднання потрібен модуль Perl Net::SSLeay Perl, що не встановлений на вашій системі
+link_essl=Модуль Perl Net::SSLeay, необхыдний для створення HTTPS з'єднання, не встановлений на вашій системі
 
-category_servers=Сервери
-category_hardware=Пристрої
+category_servers=Служби
+category_hardware=Обладнання
 category_system=Система
 category_webmin=Webmin
 category_net=Мережа
 category_syslet=Сислети
 category_cluster=Кластер
 category_info=Інформація
+category_=Інструменти
 
 longcategory_servers=Модулі для налаштування web, email, FTP та інших серверів
-longcategory_hardware=Модулі для принетрів, жорстких дисків та налаштувань інших пристроїв
+longcategory_hardware=Модулі для принетрів, жорстких дисків та інших пристроїв
 longcategory_system=Модулі для користувачів, файлових систем, планувань(Cron jobs) та інших системних налаштувань
 longcategory_webmin=Модулі для налаштування самого Webmin
 longcategory_net=Модулі для налаштування мережі й мережевих сервісів
 longcategory_cluster=Модулі для адміністрування кількох серверів через одну оболонку
 longcategory_info=Модулі для відображення інформації про систему
+longcategory_=Модулі, що виконують інші різні завдання
 
 header_webmin=Головне меню Webmin
 header_module=Меню модуля
@@ -49,29 +54,35 @@ error_file=Файл
 error_line=Рядок
 error_sub=Функція
 error_stackline=У файлі $1 в рядку $2 при виконанні $3
-efilewrite=Не можу записать в $1 : $2
+efilewrite=Не вдалося записати в $1 : $2
 efileclose=Помилка запису $1 при закритті : $2
 efileopen=Помилка при відкритті $1 для запису : $2
 default=За замовчуванням
 modify=Змінити
 reset=Скинути
-ok=OK
+ok=ОК
 cancel=Скасувати
-helpsearch=Знайти документацію..
+fail=Не вдалося
+helpsearch=Знайти в довідці..
 switch_remote_euser=Користувача UNIX $1 не існує.
 programname=Webmin
+euserdbacl=Не вдалося отримати користувача ACL : $1
+euserdbacl2=Помилка оновлення користувача ACL : $1
+egroupdbacl=Не вдалося отримати групу ACL : $1
+egroupdbacl2=Не вдалося оновити групу ACL : $1
 
 chooser_title1=Вибір файла..
 chooser_title2=Вибір теки..
 chooser_dir=Тека $1
-chooser_ok=Ok
+chooser_ok=ОК
 chooser_date=Вибрати дату
+chooser_eopen=Помилка лістингу : $1
 
 users_title1=Вибір користувачів..
 users_title2=Вибір користувача..
 users_sel=Обрані користувачі
 users_all=Всі користувачі
-users_ok=Ok
+users_ok=ОК
 users_cancel=Скасувати
 users_clear=Почистити
 
@@ -79,7 +90,7 @@ groups_title1=Вибір груп..
 groups_title2=Вибір групи..
 groups_all=Всі групи
 groups_sel=Обрані групи
-groups_ok=Ok
+groups_ok=ОК
 groups_cancel=Скасувати
 groups_clear=Почистити
 
@@ -87,7 +98,7 @@ modules_title1=Обрати модулі..
 modules_title2=Обрати модуль..
 modules_sel=Обрані модулі
 modules_all=Всі модулі
-modules_ok=Ok
+modules_ok=ОК
 modules_cancel=Скасувати
 modules_clear=Почистити
 
@@ -97,41 +108,51 @@ config_dir=модуля $1
 config_header=Налаштування модуля $1
 config_none=Жодного
 config_eaccess=Вам бракує прав для доступу до цього модуля
-config_err=Не можу зберегти налаштування
+config_emodule=Модуль не існує
+config_err=Не вдалося зберегти налаштування
 config_nochange=Не змінювати
 config_setto=Встановити
 config_ewebmin=У Webmin працюють лише параметри типу 14
 
 help_err=Не можу вивести довідку
 help_epath=Шлях до довідки відсутній або невірний
+help_efile3=Не вдалося прочитати сторінку довідки $1 із модуля $2
 help_eheader=Відсутній &lt;заголовок&gt; розділу
+help_einclude3=Не вдалося включити сторінку довідки $1
 help_eif=Помилка $1 : $2
 help_eexec=Помилка $1 : $2
 
 referer_title=Попередження про небезпеку
 referer_warn=<b>Увага!</b> Посилання на програму $2 знаходиться поза сервером Webmin(URL = $1). Можливо це спроба обманути вас і запустити небезпечну команду.
 referer_warn_unknown=<b>Увага!</b> Посилання на програму $1 знаходиться за невідомою адресою поза сервером Webmin. Можливо це спроба обманути вас і запустити небезпечну команду.<b>Внимание!</b>
+referer_fix1=Якщо це - легітимне посилання, ви можете дозволити посилання з цього URL таким чином:<ul><li>Увійдіть у Webmin.<li>Перейдіть до модуля <b>Настройка Webmin</b>.<li>Натисніть на іконку "Перевірка посилань".<li>Введіть ім'я хоста $1 у поле <b>Список довірених сайтів</b>, і натисніть <b>Зберегти.</b></ul>
+referer_fix2=Або ж, ви можете налаштувати Webmin для дозволу цього посилання через командний рядок:<ul><li>Увійдіть як <tt>root</tt>, і відредагуйте файл <tt>/etc/webmin/config</tt>.<li>Додайте рядок <tt>referers=$1</tt> в кінець файлу, або якщо рядок <tt>referers</tt> вже існує, додайте <tt>$1</tt> до нього.<li>Збережіть файл.</ul>
+referer_fix3u=Переконайтеся, що ваш веб-переглядач налаштований для надсилання інформації про референс, щоб його можна було перевірити Webmin.
+referer_fix2u=Або ви можете налаштувати Webmin для дозволу посилань з невідомих referers, виконавши наступне:<ul><li>Увійдіть як <tt>root</tt> та відредагуйте файл <tt>/etc/webmin/config</tt>.</li><li>Знайдіть рядок <tt>referers_none=1</tt> та змініть його на <tt>referers_none=0</tt>.</li><li>Збережіть файл.</li></ul><p></p>УВАГА - це має побічний ефект відкриття вашої системи для атак типу відображення XSS і тому не рекомендується!
 
 session_header=Вхід у Webmin
 session_mesg=Для входу на сервер Webmin на $1 необхідно вказати ім'я користувача і пароль.
 session_mesg2=Для входу необхідно вказати ім'я користувача й пароль.
 session_user=Ім'я користувача
 session_pass=Пароль
+session_twofactor=Двофакторна автентифікація
 session_login=Вхід
 session_clear=Почистити
 session_failed=Вхід не вдався. Спопробуйте ще.
+session_twofailed=Двофакторна автентифікація не вдалася : $1
 session_logout=Вихід успішний. Заходьте ще.
 session_timed_out=Сесію автоматично завершено після $1 хвилин простою.
-session_save=Зберегти ім'я користувачі й пароль?
+session_save=Зберегти ім'я користувача й пароль?
 
-pam_header=Увійти до Webmin
-pam_mesg=Ви повинні відповісти на питання (нижче) для входу до Webmin на $1.
-pam_mesg2=Ви повинні відповісти на питання (нижче) для входу.
+pam_header=Вхід до Webmin
+pam_mesg=Ви повинні відповісти на питання нижче для входу до Webmin на $1.
+pam_mesg2=Ви повинні відповісти на питання нижче для входу.
 pam_login=Продовжити
 pam_restart=Перезапустити
 
 acl_root=Коренева тека
-acl_nodot=Сховати файли, що почитнаються з крапки (dot files) у виборі файлів?
+acl_otherdirs=Інші видимі каталоги у вікні вибору файлів
+acl_nodot=Сховати приховані файли (файли що почитнаються з крапки) у виборі файлів?
 acl_home=Домашня тека користувача
 acl_uedit=Видимі користувачі
 acl_uedit_all=Всі користувачі
@@ -144,7 +165,7 @@ acl_gedit=Видимі групи
 acl_gedit_all=Всі групи
 acl_gedit_none=Жодної групи
 acl_gedit_only=Лише вказані групи
-acl_gedit_except=Всі групи без вказаних
+acl_gedit_except=Всі групи окрім вказаних
 acl_gedit_gid=Групи з GID у діапазоні
 acl_feedback=Відправляти листи з відгуками?
 acl_feedback2=Так
@@ -155,6 +176,12 @@ acl_rpc=Приймати RPC запити?
 acl_rpc2=Лише для <tt>root</tt> або <tt>admin</tt>
 acl_rpc1=Так
 acl_rpc0=Ні
+acl_readonly2=Користувач перебуває в демо-режимі?
+acl_readonlyyes=Так (деякі модулі можуть бути недоступними)
+acl_negative=Надати права доступу на новий модуль користувачу?
+acl_fileunix=Переглядайте файли як користувач Unix
+acl_sameunix=Такий же як логін Webmin
+acl_webminsearch=Показати поле пошуку Webmin?
 
 month_1=Січень
 month_2=Лютий
@@ -198,29 +225,31 @@ sday_4=Чт
 sday_5=Пт
 sday_6=Сб
 
-emodule=У доступі відмовлено : Користувачу $1 бракує прав на використання модуля $2
+emodule=У доступі відмовлено : Користувач $1 не має прав на використання модуля $2
+emodulecheck=Модуль $1 недоступний у вашій системі
+elock_tries2=Не вдалося заблокувати файл $1 після $2 хв. Остання помилка була : $3
 
-skill_high=Профі
+skill_high=Експерт
 skill_medium=Досвідчений
 skill_low=Початківець
 
-feedback_title=Відгук про Webmin
-feedback_desc=Ця форма дозволяє звітувати про недоліки й подавати ідеї розробникам Webmin. Ми будемо вдячні за слушні зауваження та корисні поради. Натиснувши кнопку Надіслати (Send), ви відправите введені дані на електронну пошту $1.
-feedback_desc2=Відгук буде надіслано розробникам Usermin, НЕ вашому адміністраторуr, ISP- чи Хостинг-компанії. Будь ласка пишіть відгук англійською навіть якщо зараз використовуєте перекладений Webmin.
+feedback_title=Зворотній зв'язок Webmin
+feedback_desc=Ця форма дозволяє звітувати про виявлені помилки, недоліки та подавати ідеї розробникам Webmin. Ми будемо вдячні за слушні зауваження та корисні поради. Натиснувши кнопку Надіслати, інформацію буде надіслано на $1.
+feedback_desc2=Відгук буде надіслано розробникам Usermin, НЕ вашому адміністраторуr, ISP чи Хостинг-компанії. Будь ласка пишіть відгук англійською навіть якщо зараз використовуєте перекладений Webmin.
 feedback_header=Дедалі відгуку
 feedback_name=Ваше ім'я
 feedback_email=Ваша електронна адреса
-feedback_module=Regarding module
+feedback_module=Стосовно модуля
 feedback_all=Всі модулі
 feedback_text=Опис проблеми чи ваші пропозиції
 feedback_os=Долучити до листа інформацію про операційну систему?
 feedback_osdesc=Надавати у відгуку інформацію про вашу операційну систему.
 feedback_config=Вкласти налаштування модуля в лист?
-feedback_configdesc=Надсилати у відгуку інформацію про налаштування відповідного модуля і вміст усіх файлів, котрі він використовує. Для прикладу якщо відгук стосується модуля <i>Користувачі й Групи (Users and Groups)</i>, буде відіслано файли з <tt>/etc/passwd</tt> і <tt>/etc/shadow</tt>.
-feedback_attach=Додати файли
+feedback_configdesc=Надсилати у відгуку інформацію про налаштування відповідного модуля і вміст усіх файлів, котрі він використовує. Для прикладу якщо відгук стосується модуля <i>Користувачі й Групи</i>, буде відіслано файли з <tt>/etc/passwd</tt> і <tt>/etc/shadow</tt>.
+feedback_attach=Долучити додаткові файли
 feedback_send=Надіслати відгук
 feedback_mailserver=Надіслати через SMTP-сервер
-feedback_mailserver_def=Локальна sendmail програма
+feedback_mailserver_def=Локальна програма sendmail
 feedback_err=Не можу надіслати відгук
 feedback_emodule=Ви долучили налаштування модуля до відгуку, але не вказали самого модуля.
 feedback_emodule2=Обраного модуля не існує
@@ -233,20 +262,24 @@ feedback_enoto=Не введено адрес для надсилання від
 feedback_ecannot=Вам не дозволено надсилати відгуки
 feedback_ecannot2=Вам не дозволено надсилати відгуки із вкладеними файлами налаштувань
 
+progress_size2=Завантаження $1 ($2) ..
 progress_nosize=Завантажено $1 ..
+progress_datan=Отримано $1 ($2 %)
+progress_data2n=Отримано $1
 progress_done=.. завантаження завершено.
 progress_incache=Знайдено $1 в кеші ..
 
 readparse_cdheader=Відсутня інформація про розташування вмісту (Content-Disposition)
 readparse_enc=Очікувалось кодування як для даних з форми, але отримано звичайне
-readparse_max=Дані перевищели максимальний розмір ($1 bytes)
+readparse_max=Дані перевищели максимальний розмір ($1 байт)
 
 password_expired=Термін дії вашого паролю закінчився, ви повинні вказати новий.
-password_header=Вибір нового паролю
+password_temp=Для заміни тимчасового входу потрібно вибрати новий пароль.
+password_header=Оберіть новий пароль
 password_user=Ім'я користувача
 password_old=Поточний пароль
 password_new1=Новий пароль
-password_new2=Ще раз
+password_new2=Новий пароль ще раз
 password_ok=Змінити
 password_clear=Почистити
 password_done=Ваш пароль успішно змінено. Тепер <a href='$1'>увійдіть</a> з новим паролем.
@@ -254,13 +287,14 @@ password_err=Не можу змінити пароль
 password_euser=Ваше ім'я користувача не знайдено в файлі паролів!
 password_eold=Поточний пароль невірний
 password_enew1=Ви не ввели нового паролю
-password_enew2=Новий пароль і його повтор не співпадають
+password_enew2=Нові паролі не співпадають
 password_epam=Помилка PAM : $1
 password_emodpam=Для зміни паролю потрібен модуль Perl Authen::PAM, який не встановлено!
+password_enewpass=Новий пароль не дозволено : $1
 
 ui_mandatory=Це поле обов'язкове
 ui_checkmandatory=Ви нічого не обрали!
-ui_errors=Знайдено помилки :
+ui_errors=Виявлено кілька помилок:
 ui_nothing=Ви нічого не ввели!
 ui_searchcol=Знайти рядки, в яких
 ui_searchfor=Містить текст
@@ -271,6 +305,8 @@ ui_edate=Невірна дата
 ui_etime=Невірний час
 ui_paging=Показано рядки від $1 до $2 з $3
 ui_rowlabel=$2 в рядку $1 :
+ui_filterbox=Введіть для фільтра ..
+ui_of=з
 
 header_statusmsg=$1 увійшов в $2 $3 на $4 ($5)
 
@@ -281,3 +317,79 @@ uptracker_pc=Виконано
 uptracker_eid=Не визначено ID завантаження
 uptracker_eid2=ID завантаження невірне!
 uptracker_of=$1 з $2
+
+wsearch_title=Пошук $1
+wsearch_modt=Модуль
+wsearch_mtitle=Ім'я модуля
+wsearch_what=Відповідність сторінці
+wsearch_type=Відповідність типу
+wsearch_mod=$1 модуль
+wsearch_config_webmin=Webmin налаштування
+wsearch_config_usermin=Usermin налаштування
+wsearch_help=Сторінка довідки
+wsearch_inmod=У $1
+wsearch_text=Текст користувацького інтерфейсу
+wsearch_esearch=Нічого не було введено для пошуку.
+wsearch_enone=Жодні модулі або сторінки Webmin, що містять $1 не знайдено.
+wsearch_on=(У $1)
+wsearch_helpfor=Довідка для <i>$1</i>
+wsearch_htext=Відповідність тексту
+wsearch_htype=Джерело
+wsearch_hcgis=Список літератури
+wsearch_type_mod=Ім'я модуля
+wsearch_type_config=Конфігурація
+wsearch_type_help=Сторінка довідки
+wsearch_type_text=Користувацький інтерфейс
+wsearch_type_dir=URL-адреса модуля
+wsearch_hmod=Модуль
+wsearch_moddir=URL-шлях /$1/
+wsearch_searching=Пошук $1 ..
+wsearch_found=знайдено відповідностей $1 :
+
+sql_emysqldriver=Не вдалося завантажити драйвер MySQL DBI
+sql_emysqlconnect=Не вдалося підключитися до бази даних MySQL : $1
+sql_epostgresqldriver=Не вдалося завантажити драйвер PostgreSQL DBI
+sql_epostgresqlconnect=Не вдалося підключитися до бази даних PostgreSQL : $1
+sql_eldapdriver=Не вдалося завантажити модуль perl LDAP
+sql_eldapconnect=Не вдалося підключитися до сервера LDAP $1
+sql_eldaptls=Не вдалося запустити шифрування TLS для LDAP : $1
+sql_eldaplogin=Не вдалося увійти на сервер LDAP як $1 : $2
+
+log_email_subject=Дія Webmin в $1
+log_email_global=Глобальна дія Webmin
+log_email_by=$1 на $2
+log_email_desc=Цей електронний лист надіслано Webmin у відповідь на дії користувача.
+log_email_mod=Модуль Webmin: $1
+log_email_moddesc=Ім'я модуля: $1
+log_email_time=Дія, яка виконується за адресою: $1
+log_email_system=Виконується в системі: $1
+log_email_user=Виконує користувач: $1
+log_email_script=Сценарій Webmin: $1
+log_email_session=Ідентифікатор сесії: $1
+log_email_remote=Адреса клієнта: $1
+
+nice_size_PB=PB
+nice_size_PiB=PiB
+nice_size_TB=TB
+nice_size_TiB=TiB
+nice_size_GB=GB
+nice_size_GiB=GiB
+nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=KiB
+nice_size_b=bytes
+
+paginator_showing_start=Показано від $1 до $2 з $3 елементів на сторінці
+paginator_showing_end=$1 сторінок
+paginator_nosearchrs=Немає результатів, що відповідають запиту <tt>$1</tt>
+
+langauto_include=Включно з машинним перекладом
+
+file_truncated_message=отримано $1 даних, усічено $2 з $3
+file_truncated_message_head=отримано початок $1 даних, усічений $2 з $3
+file_truncated_message_tail=отримано закінчення $1 даних, усічено $2 з $3
+
+defcert_error=Використовується $1 стандартний SSL сертифікат. Настійно рекомендується оновити стандартний сертифікат <tt>$2</tt> перед тим, як продовжити вхід.
+
+main_error_details=Деталі помилки
