@@ -1264,14 +1264,11 @@ if (&foreign_check("acl")) {
 	}
 
 # New Webmin version is available, but only once per day
-my %raccess = &get_module_acl('root');
-my %rdisallow = map { $_, 1 } split(/\s+/, $raccess{'disallow'} || "");
 my %access = &get_module_acl();
 my %disallow = map { $_, 1 } split(/\s+/, $access{'disallow'} || "");
 my %allow = map { $_, 1 } split(/\s+/, $access{'allow'} || "");
 if (&foreign_available($module_name) && !$gconfig{'nowebminup'} &&
-    !$noupdates && ($allow{'upgrade'} ||
-		    (!$disallow{'upgrade'} && !$rdisallow{'upgrade'}))) {
+    !$noupdates && ($allow{'upgrade'} || !$disallow{'upgrade'})) {
 	if (!$config{'last_version_check'} ||
 	    $now - $config{'last_version_check'} > 24*60*60) {
 		# Cached last version has expired .. re-fetch

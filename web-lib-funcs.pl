@@ -4520,8 +4520,9 @@ $m ||= "";
 my $mdir = &module_root_directory($m);
 my %rv;
 if (!$nodef) {
-	# Read default ACL first, to be overridden by per-user settings
+	# Read default ACLs first, to be overridden by per-user settings
 	&read_file_cached("$mdir/defaultacl", \%rv);
+	&read_file_cached("$config_directory/$m/defaultacl", \%rv);
 
 	# If this isn't a master admin user, apply the negative permissions
 	# so that he doesn't un-expectedly gain access to new features

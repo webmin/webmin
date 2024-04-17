@@ -13,7 +13,9 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 %access = &get_module_acl();
-$access{'upgrade'} = 0 if (&is_readonly_mode());	# too hard to fake
+$access{'upgrade'} = 0
+	if (&is_readonly_mode() ||
+	    $access{'disallow'} =~ /upgrade/);	# too hard to fake
 &foreign_require("webmin");
 &foreign_require("acl");
 %text = ( %webmin::text, %text );
