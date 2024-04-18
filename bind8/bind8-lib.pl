@@ -64,12 +64,12 @@ our $dnssec_dlv_zone = "dlv.isc.org.";
 our @dnssec_dlv_key = ( 257, 3, 5, '"BEAAAAPHMu/5onzrEE7z1egmhg/WPO0+juoZrW3euWEn4MxDCE1+lLy2brhQv5rN32RKtMzX6Mj70jdzeND4XknW58dnJNPCxn8+jAGl2FZLK8t+1uq4W+nnA3qO2+DL+k6BD4mewMLbIYFwe0PG73Te9fZ2kJb56dhgMde5ymX4BI/oQ+cAK50/xvJv00Frf8kw6ucMTwFlgPe+jnGxPPEmHAte/URkY62ZfkLoBAADLHQ9IrS2tryAe7mbBZVcOwIeU/Rw/mRx/vwwMCTgNboMQKtUdvNXDrYJDSHZws3xiRXF1Rf+al9UmZfSav/4NWLKjHzpT59k/VStTDN0YUuWrBNh"' );
 
 my $rand_flag;
-if ($gconfig{'os_type'} =~ /-linux$/ && 
+if ($gconfig{'os_type'} =~ /-linux$/ &&
     $config{'force_random'} eq '0' &&
     -r "/dev/urandom" &&
     $bind_version =~ /^9\./ &&
     &compare_version_numbers($bind_version, '<', '9.14.2')) {
-	# Version: 9.14.2 deprecated the use of -r option 
+	# Version: 9.14.2 deprecated the use of -r option
 	# in favor of using /dev/random [bugs:#5370]
 	$rand_flag = "-r /dev/urandom";
 	}
@@ -1006,7 +1006,7 @@ else {
 	}
 
 if ($access{'dironly'}) {
-	# Check directory access control 
+	# Check directory access control
 	return 1 if (!$file);
 	$file = &absolute_path($file);
 	return 0 if (!&allowed_zone_file(\%access, $file));
@@ -1336,9 +1336,9 @@ elsif ($type eq "DMARC") {
 	print &ui_table_row($text{'value_dmarcfo'},
 		&ui_select("dmarcfo", $dmarc->{'fo'},
 			   [ [ undef, $text{'default'} ],
-			     [ 0, $text{'value_dmarcfo0'} ], 
-			     [ 1, $text{'value_dmarcfo1'} ], 
-			     [ 'd', $text{'value_dmarcfod'} ], 
+			     [ 0, $text{'value_dmarcfo0'} ],
+			     [ 1, $text{'value_dmarcfo1'} ],
+			     [ 'd', $text{'value_dmarcfod'} ],
 			     [ 's', $text{'value_dmarcfos'} ] ]));
 	}
 elsif ($type eq "NSEC3PARAM") {
@@ -1492,7 +1492,7 @@ return 1;
 
 # expand_ip6(ip)
 # Transform compact (with ::) IPv6 address to the unique expanded form
-# (without :: and leading zeroes in all parts) 
+# (without :: and leading zeroes in all parts)
 sub expand_ip6
 {
 my ($ip) = @_;
@@ -1508,7 +1508,7 @@ return $ip;
 }
 
 # expandall_ip6(ip)
-# Transform IPv6 address to the expanded form containing all internal 0's 
+# Transform IPv6 address to the expanded form containing all internal 0's
 sub expandall_ip6
 {
 my ($ip) = @_;
@@ -1519,7 +1519,7 @@ $ip =~ s/(:|^)(\w)(?=:|$)/:000$2/g;
 return $ip;
 }
 
-sub time_unit_choice 
+sub time_unit_choice
 {
 my ($name, $value) = @_;
 return &ui_select($name, $value =~ /^(S?)$/i ? "" :
@@ -2636,7 +2636,7 @@ my $parent = &get_config_parent();
 my $bconf = &get_config();
 my $conf = $bconf;
 if ($zone->{'viewindex'} ne '') {
-        my $view = $conf->[$zone->{'viewindex'}]; 
+        my $view = $conf->[$zone->{'viewindex'}];
         $conf = $view->{'members'};
 	$parent = $view;
         }
@@ -2905,7 +2905,7 @@ foreach my $slave (@slaves) {
 		}
 	if ($config{'extra_slaves'}) {
 		push(@otherslaves,
-		     grep { $_ ne '' } 
+		     grep { $_ ne '' }
                           map { &to_ipaddress($_) || &to_ip6address($_) }
 			      split(/\s+/, $config{'extra_slaves'}));
 		}
@@ -3323,7 +3323,7 @@ return &has_command($config{'signzone'}) &&
 }
 
 # supports_dnssec_client()
-# Returns 2 if this BIND can send and verify DNSSEC requests, 1 if the 
+# Returns 2 if this BIND can send and verify DNSSEC requests, 1 if the
 # dnssec-validation directive is not supported, 0 otherwise
 sub supports_dnssec_client
 {
@@ -3348,13 +3348,15 @@ return $alg eq 'RSASHA256' ? ( 2048, 4096 ) :
        $alg eq 'NSEC3DSA' ? ( 512, 1024, 64 ) :
        $alg eq 'ECDSAP256SHA256' ? ( 128, 512 ) :
        $alg eq 'ECDSAP384SHA384' ? ( 128, 512 ) :
+       $alg eq 'ED25519' ? ( 1, 512 ) :
+       $alg eq 'ED448' ? ( 1, 512 ) :
        ( );
 }
 
 sub list_dnssec_algorithms
 {
 return ("RSASHA1", "RSASHA256", "RSAMD5", "DSA", "DH", "HMAC-MD5",
-	"NSEC3RSASHA1", "NSEC3DSA", "ECDSAP256SHA256", "ECDSAP384SHA384");
+	"NSEC3RSASHA1", "NSEC3DSA", "ECDSAP256SHA256", "ECDSAP384SHA384", "ED25519", "ED448");
 }
 
 # get_keys_dir(&zone|&zone-name)
@@ -3641,7 +3643,7 @@ while($tries++ < 10) {
 	$out = &backquote_logged(
 		"cd ".quotemeta($dir)." && ".
 		"$config{'signzone'} -o ".quotemeta($dom).
-		($alg =~ /^(NSEC3|RSASHA256|RSASHA512|ECCGOST|ECDSAP256SHA256|ECDSAP384SHA384)/ ? " -3 - -u" : "").
+		($alg =~ /^(NSEC3|RSASHA256|RSASHA512|ECCGOST|ECDSAP256SHA256|ECDSAP384SHA384|ED25519|ED448)/ ? " -3 - -u" : "").
 		" -f ".quotemeta($signed)." ".
 		quotemeta($chrootfn)." 2>&1");
 	last if (!$?);
@@ -3713,11 +3715,11 @@ my ($z, $recs, $bump) = @_;
 
 # Check if zones are managed by dnssec-tools
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
- 
-# If zone is managed through dnssec-tools use zonesigner for resigning the zone 
+
+# If zone is managed through dnssec-tools use zonesigner for resigning the zone
 if (&check_if_dnssec_tools_managed($dom)) {
 	# Do the signing
-	my $zonefile = &get_zone_file($z); 
+	my $zonefile = &get_zone_file($z);
 	my $krfile = "$zonefile".".krf";
 
 	&lock_file(&make_chroot($zonefile));
@@ -3899,21 +3901,21 @@ return \%rv;
 }
 
 sub get_dnssectools_config
-{ 
+{
 	&lock_file($config{'dnssectools_conf'});
-	my $lref = &read_file_lines($config{'dnssectools_conf'}); 
-	my @rv; 
-	my $lnum = 0; 
+	my $lref = &read_file_lines($config{'dnssectools_conf'});
+	my @rv;
+	my $lnum = 0;
 	foreach my $line (@$lref) {
-		my ($n, $v) = split(/\s+/, $line, 2); 
+		my ($n, $v) = split(/\s+/, $line, 2);
 		# Do basic sanity checking
 		$v =~ /(\S+)/;
 		$v = $1;
 		if ($n) {
 			push(@rv, { 'name' => $n, 'value' => $v, 'line' => $lnum });
-		} 
+		}
 		$lnum++;
-	} 
+	}
 	&flush_file_lines();
 	&unlock_file($config{'dnssectools_conf'});
 	return \@rv;
@@ -3928,7 +3930,7 @@ sub save_dnssectools_directive
 
 	&lock_file($config{'dnssectools_conf'});
 	my $lref = &read_file_lines($config{'dnssectools_conf'});
-	
+
 	foreach my $n (keys %$nv) {
 		my $old = &find($n, $conf);
 		if ($old) {
@@ -3952,14 +3954,14 @@ sub list_dnssec_dne
 }
 
 # list_dnssec_dshash()
-# return a list containing the different DS record hash types 
+# return a list containing the different DS record hash types
 sub list_dnssec_dshash
 {
-	return ("SHA1", "SHA256"); 
+	return ("SHA1", "SHA256");
 }
 
 # schedule_dnssec_cronjob()
-# schedule a cron job to handle periodic resign operations 
+# schedule a cron job to handle periodic resign operations
 sub schedule_dnssec_cronjob
 {
 	my $job;
@@ -3992,7 +3994,7 @@ sub schedule_dnssec_cronjob
 	&unlock_file($module_config_file);
 }
 
-# dt_sign_zone(zone, nsec3) 
+# dt_sign_zone(zone, nsec3)
 # Replaces a zone's file with one containing signed records.
 sub dt_sign_zone
 {
@@ -4031,9 +4033,9 @@ sub dt_sign_zone
 			$recs[$i]->{'type'} eq 'RRSIG' ||
 			$recs[$i]->{'type'} eq 'DNSKEY') {
 				&delete_record($z, $recs[$i]);
-		}   
+		}
 	}
-	&copy_source_dest($z_chroot, $usz); 
+	&copy_source_dest($z_chroot, $usz);
 
 	$cmd = "$zonesigner $nsec3param".
 				" -genkeys ".
@@ -4075,13 +4077,13 @@ sub dt_sign_zone
 
 	rollrec_unlock();
 	&unlock_file($z_chroot);
-	
+
 	&dt_rollerd_restart();
 	&restart_bind();
 	return undef;
 }
 
-# dt_resign_zone(zone-name, zonefile, krfile, threshold) 
+# dt_resign_zone(zone-name, zonefile, krfile, threshold)
 # Replaces a zone's file with one containing signed records.
 sub dt_resign_zone
 {
@@ -4102,7 +4104,7 @@ sub dt_resign_zone
 	rollrec_lock();
 
 	# Remove DNSSEC records and save the unsigned zone file
-	@recs = &read_zone_file($z, $d); 
+	@recs = &read_zone_file($z, $d);
 	my $tools = &have_dnssec_tools_support();
 	for(my $i=$#recs; $i>=0; $i--) {
 		if ($recs[$i]->{'type'} eq 'NSEC' ||
@@ -4111,12 +4113,12 @@ sub dt_resign_zone
 			$recs[$i]->{'type'} eq 'RRSIG' ||
 			$recs[$i]->{'type'} eq 'DNSKEY') {
 				&delete_record($z, $recs[$i]);
-		}   
+		}
 	}
-	&copy_source_dest($z_chroot, $usz); 
+	&copy_source_dest($z_chroot, $usz);
 
 	if ($t > 0) {
-		$threshold = "-threshold ".quotemeta("-$t"."d"." "); 
+		$threshold = "-threshold ".quotemeta("-$t"."d"." ");
 	}
 
 	$cmd = "$zonesigner -verbose -verbose".
@@ -4139,7 +4141,7 @@ sub dt_resign_zone
 }
 
 # dt_zskroll_zone(zone-name)
-# Initiates a zsk rollover operation for the zone 
+# Initiates a zsk rollover operation for the zone
 sub dt_zskroll_zone
 {
 	my ($d) = @_;
@@ -4152,7 +4154,7 @@ sub dt_zskroll_zone
 }
 
 # dt_kskroll_zone(zone-name)
-# Initiates a ksk rollover operation for the zone 
+# Initiates a ksk rollover operation for the zone
 sub dt_kskroll_zone
 {
 	my ($d) = @_;
@@ -4165,7 +4167,7 @@ sub dt_kskroll_zone
 }
 
 # dt_notify_parentzone(zone-name)
-# Notifies rollerd that the new DS record has been published in the parent zone 
+# Notifies rollerd that the new DS record has been published in the parent zone
 sub dt_notify_parentzone
 {
 	my ($d) = @_;
@@ -4178,7 +4180,7 @@ sub dt_notify_parentzone
 }
 
 # dt_rollerd_restart()
-# Restart the rollerd daemon 
+# Restart the rollerd daemon
 sub dt_rollerd_restart
 {
 	my $rollerd;
@@ -4190,7 +4192,7 @@ sub dt_rollerd_restart
 		return $text{'dt_zone_enocmd'};
 	}
 	rollmgr_halt();
-	$r = $config{"dnssectools_rollrec"};   
+	$r = $config{"dnssectools_rollrec"};
 	$cmd = "$rollerd -rrfile ".quotemeta($r);
 	&execute_command($cmd);
 	return undef;
@@ -4218,9 +4220,9 @@ sub dt_genkrf
 			# Identify if this is a zsk or a ksk
 			$key->{$f} =~ /(K\Q$dom\E\.\+\d+\+\d+)/;
 			if ($key->{'ksk'}) {
-				$kskcur = $1; 
+				$kskcur = $1;
 			} else {
-				$zskcur = $1; 
+				$zskcur = $1;
 			}
 			&copy_source_dest($key->{$f}, $keydir);
 			&unlink_file($key->{$f});
@@ -4231,7 +4233,7 @@ sub dt_genkrf
 		return &text('dt_zone_enokey', $dom);
 	}
 
-	# Remove the older dsset file 
+	# Remove the older dsset file
 	if ($oldkeydir) {
 		&unlink_file($oldkeydir."/"."dsset-".$dom.".");
 	}
@@ -4257,7 +4259,7 @@ sub dt_genkrf
 
 
 # dt_delete_dnssec_state(&zone)
-# Delete all DNSSEC-Tools meta-data for a given zone 
+# Delete all DNSSEC-Tools meta-data for a given zone
 sub dt_delete_dnssec_state
 {
 	my ($zone) = @_;
@@ -4307,14 +4309,14 @@ sub dt_delete_dnssec_state
 				$recs[$i]->{'type'} eq 'RRSIG' ||
 				$recs[$i]->{'type'} eq 'DNSKEY') {
 			   	    &delete_record($z, $recs[$i]);
-			}   
+			}
 		}
 		&bump_soa_record($z, \@recs);
-	
+
 		&unlock_file($z_chroot);
 		rollrec_unlock();
 
-		&dt_rollerd_restart(); 
+		&dt_rollerd_restart();
 		&restart_bind();
 	} else {
 		# Just delete the dsset- file
@@ -4481,4 +4483,3 @@ return $r;
 }
 
 1;
-
