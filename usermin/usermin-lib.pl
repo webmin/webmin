@@ -13,12 +13,18 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 %access = &get_module_acl();
-$access{'upgrade'} = 0
-	if (&is_readonly_mode() ||
-	    $access{'disallow'} =~ /upgrade/);	# too hard to fake
+$access{'upgrade'} = 0 if (&is_readonly_mode());	# too hard to fake
 &foreign_require("webmin");
 &foreign_require("acl");
 %text = ( %webmin::text, %text );
+
+if (!defined($gconfig{'noselfwebminup'})) {
+	$access{'upgrade'} = 0
+		if (&webmin::has_repos());
+	}
+else {
+	$access{'upgrade'} = !$gconfig{'noselfwebminup'};
+	}
 
 $usermin_miniserv_config = "$config{'usermin_dir'}/miniserv.conf";
 $usermin_config = "$config{'usermin_dir'}/config";

@@ -61,6 +61,13 @@ push(@wlinks, "edit_ssl.cgi", "edit_ca.cgi");
 push(@wtitles, $text{'ssl_title'}, $text{'ca_title'});
 push(@wicons, "images/ssl.gif", "images/ca.gif");
 
+# Enfoce to disable Webmin updates
+if ($gconfig{'noselfwebminup'}) {
+	$access{'disallow'} ||= '';
+	$access{'disallow'} = join(' ',
+		split(/\s+/, $access{'disallow'}), 'upgrade');
+	}
+
 # Hide dis-allowed pages
 my %allow = map { $_, 1 } split(/\s+/, $access{'allow'});
 my %disallow = map { $_, 1 } split(/\s+/, $access{'disallow'});

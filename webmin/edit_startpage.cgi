@@ -38,12 +38,6 @@ print &ui_table_row($text{'startpage_gotomodule'},
 		      sort { $a->{'desc'} cmp $b->{'desc'} } 
 		        grep { !$_->{'hidden'} && !$_->{'webmin_hidden'} } @modules ]));
 
-print &ui_table_row($text{'startpage_webminup'},
-	&ui_yesno_radio("webminup", !$gconfig{'nowebminup'}));
-
-print &ui_table_row($text{'startpage_moduleup'},
-	&ui_yesno_radio("moduleup", !$gconfig{'nomoduleup'}));
-
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);
 

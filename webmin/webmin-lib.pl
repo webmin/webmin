@@ -108,6 +108,39 @@ our $realos_cache_file = "$module_var_directory/realos-cache";
 our $password_change_mod = "passwd";
 our $password_change_path = "/".$password_change_mod."/change_passwd.cgi";
 
+if (!defined($gconfig{'noselfwebminup'})) {
+	&has_repos();
+	}
+
+=head2 has_repos
+
+Checks if package manager repositories are
+available for Webmin and Usermin updates.
+
+=cut
+sub has_repos
+{
+my ($force) = @_;
+my $has_repos = 0;
+if (-d '/etc/apt' || -d '/etc/yum.repos.d') {
+	my $out = &backquote_command(
+		"grep -irE 'webmin\.com|webmin\.dev|virtualmin\.com|virtualmin\.dev' ".
+		"/etc/apt/sources.list /etc/apt/sources.list.d/ ".
+		"/etc/yum.repos.d/ 2>/dev/null");
+	if ($out) {
+		$has_repos = 1;
+		}
+	}
+if ($force || !defined($gconfig{'noselfwebminup'}) ||
+    $gconfig{'noselfwebminup'} ne $has_repos) {
+	$gconfig{'noselfwebminup'} = $has_repos;
+	&lock_file("$config_directory/config");
+	&write_file("$config_directory/config", \%gconfig);
+	&unlock_file("$config_directory/config");
+	}
+return $has_repos;
+}
+
 =head2 setup_ca
 
 Internal function to create all the configuration files needed for the Webmin
@@ -1267,8 +1300,9 @@ if (&foreign_check("acl")) {
 my %access = &get_module_acl();
 my %disallow = map { $_, 1 } split(/\s+/, $access{'disallow'} || "");
 my %allow = map { $_, 1 } split(/\s+/, $access{'allow'} || "");
-if (&foreign_available($module_name) && !$gconfig{'nowebminup'} &&
-    !$noupdates && ($allow{'upgrade'} || !$disallow{'upgrade'})) {
+if (&foreign_available($module_name) && !$gconfig{'nowebminup'} && 
+    !$gconfig{'noselfwebminup'} && !$noupdates &&
+    ($allow{'upgrade'} || !$disallow{'upgrade'})) {
 	if (!$config{'last_version_check'} ||
 	    $now - $config{'last_version_check'} > 24*60*60) {
 		# Cached last version has expired .. re-fetch
