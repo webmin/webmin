@@ -230,11 +230,6 @@ export config_dir var_dir perl autoos port login crypt host ssl nochown autothir
 ./setup.sh >\$tempdir/webmin-setup.out 2>&1
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
-if [ -d /etc/webmin/webmin ]; then
-	if [ ! -f /etc/webmin/webmin/defaultacl ]; then
-		echo 'disallow=upgrade' > /etc/webmin/webmin/defaultacl 2>/dev/null
-	fi
-fi
 cd /usr/libexec/webmin
 if [ "\$inetd" != "1" ]; then
 	if [ "\$1" == 1 ]; then

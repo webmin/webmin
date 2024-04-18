@@ -334,11 +334,7 @@ if [ "$product" = "webmin" ]; then
 	fi
 fi
 rm -f /var/lock/subsys/$baseproduct
-if [ -d /etc/webmin/$product ]; then
-	if [ ! -f /etc/webmin/$product/defaultacl ]; then
-		echo 'disallow=upgrade' > /etc/webmin/$product/defaultacl 2>/dev/null
-	fi
-fi
+
 if [ "\$inetd" != "1" ]; then
 	productucf=Webmin
 	if [ "$product" = "usermin" ]; then
