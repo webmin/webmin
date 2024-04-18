@@ -432,7 +432,7 @@ my $url = "/$m/";
 my @w;
 if ($in->{'_cscript'}) {
 	if ($keep) {
-		push(@w, "_cscript=".&urlize(&un_urlize($in->{'_cscript'})));
+		push(@w, "_cscript=".&urlize($in->{'_cscript'}));
 		}
 	else {
 		$url .= $in->{'_cscript'};
@@ -442,8 +442,7 @@ foreach my $k (keys %$in) {
 	if ($k =~ /^_cparam_(.*)$/) {
 		$n = $1;
 		foreach my $v (split(/\0/, $in{$k})) {
-			push(@w, &urlize($keep ? &un_urlize($k) :
-				&un_urlize($n))."=".&urlize(&un_urlize($v)));
+			push(@w, &urlize($keep ? $k : $n)."=".&urlize($v));
 			}
 		}
 	}
