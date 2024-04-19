@@ -122,15 +122,44 @@ sub has_repos
 {
 my ($force) = @_;
 my $has_repos = 0;
-if (-d '/etc/apt' || -d '/etc/yum.repos.d') {
-	my $out = &backquote_command(
-		"grep -irE 'webmin\.com|webmin\.dev|virtualmin\.com|virtualmin\.dev' ".
-		"/etc/apt/sources.list /etc/apt/sources.list.d/ ".
-		"/etc/yum.repos.d/ 2>/dev/null");
-	if ($out) {
-		$has_repos = 1;
+my @paths = (
+    '/etc/apt/sources.list',
+    '/etc/apt/sources.list.d',
+    '/etc/yum.repos.d'
+);
+my $pattern =
+	qr/webmin\.com|webmin\.dev|virtualmin\.com|virtualmin\.dev/i;
+my $process_file = sub {
+	my $file = shift;
+	return unless -f $file;
+	return unless $file =~ /\.list$|\.repo$/i;
+	open(my $fh, '<', $file) || return;
+	while (my $line = <$fh>) {
+		if ($line =~ /$pattern/) {
+			$has_repos = 1;
+			last;
+			}
+		}
+	close $fh;
+};
+# Check given repos paths
+foreach my $path (@paths) {
+	if (-d $path) {
+		# It's a directory, open and read each file
+		opendir(my $dh, $path) || next;
+		my @files = readdir($dh);
+		closedir($dh);
+		foreach my $file (@files) {
+			next if $file eq '.' or $file eq '..';
+			$process_file->("$path/$file");
+			}
+		}
+	elsif (-f $path) {
+		# It's a file
+		$process_file->($path);
 		}
 	}
+# Store the result in the config
 if ($force || !defined($gconfig{'noselfwebminup'}) ||
     $gconfig{'noselfwebminup'} ne $has_repos) {
 	$gconfig{'noselfwebminup'} = $has_repos;
