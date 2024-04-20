@@ -18,6 +18,14 @@ $access{'upgrade'} = 0 if (&is_readonly_mode());	# too hard to fake
 &foreign_require("acl");
 %text = ( %webmin::text, %text );
 
+if (!defined($gconfig{'noselfwebminup'})) {
+	$access{'upgrade'} = 0
+		if (&webmin::has_repos());
+	}
+else {
+	$access{'upgrade'} = !$gconfig{'noselfwebminup'};
+	}
+
 $usermin_miniserv_config = "$config{'usermin_dir'}/miniserv.conf";
 $usermin_config = "$config{'usermin_dir'}/config";
 

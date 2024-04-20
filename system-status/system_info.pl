@@ -328,6 +328,9 @@ if ($info->{'poss'} && &show_section('poss')) {
 	push(@table, { 'desc' => $text{'right_updates'},
 		       'value' => $msg,
 		       'wide' => 1 });
+	# Check for repos
+	&foreign_require("webmin");
+	&webmin::has_repos(1);
 	}
 
 return @rv;
