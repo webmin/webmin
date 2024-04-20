@@ -162,8 +162,8 @@ foreach my $path (@paths) {
 # Store the result in the config
 if ($force || !defined($gconfig{'noselfwebminup'}) ||
     $gconfig{'noselfwebminup'} ne $has_repos) {
-	$gconfig{'noselfwebminup'} = $has_repos;
 	&lock_file("$config_directory/config");
+	$gconfig{'noselfwebminup'} = $has_repos;
 	&write_file("$config_directory/config", \%gconfig);
 	&unlock_file("$config_directory/config");
 	}
