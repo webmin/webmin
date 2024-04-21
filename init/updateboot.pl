@@ -29,8 +29,26 @@ if ($product) {
 			$l =~ s/(WEBMIN_[A-Z]+)/$ENV{$1}/g;
 			}
 		&flush_file_lines($temp);
+
+		my $status = &backquote_logged("systemctl is-enabled ".
+			quotemeta($product).".service 2>&1");
+		$status = &trim($status);
+
 		copy_source_dest($temp, "$systemd_root/$product.service");
 		system("systemctl daemon-reload >/dev/null 2>&1");
+
+		if ($status eq "disabled") {
+			system("systemctl disable ".
+				quotemeta($product).".service >/dev/null 2>&1");
+			}
+		elsif ($status eq "masked") {
+			system("systemctl mask ".
+				quotemeta($product).".service >/dev/null 2>&1");
+			}
+		else {
+			system("systemctl enable ".
+				quotemeta($product).".service >/dev/null 2>&1");
+			}
 		}
 	elsif (-d "/etc/init.d") {
 		copy_source_dest("$root_directory/webmin-init", "/etc/init.d/$product");
