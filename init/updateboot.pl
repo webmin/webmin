@@ -13,8 +13,9 @@ if ($product) {
 	if ($init_mode eq "systemd") {
 		# Save status of service
 		my $status = &backquote_logged("systemctl is-enabled ".
-			quotemeta($product).".service 2>&1");
+			quotemeta($product)." 2>&1");
 		$status = &trim($status) if ($status);
+		print "Current Status is $status\n";
 		# Delete all possible service files
 		my $systemd_root = &get_systemd_root();
 		foreach my $p (
@@ -40,15 +41,21 @@ if ($product) {
 
 		if ($status eq "disabled") {
 			system("systemctl disable ".
-				quotemeta($product).".service >/dev/null 2>&1");
+				quotemeta($product)." >/dev/null 2>&1");
+			print "Disabled $product\n";
+			print "Disabled run ". "systemctl disable ". quotemeta($product)." >/dev/null 2>&1";
 			}
 		elsif ($status eq "masked") {
 			system("systemctl mask ".
-				quotemeta($product).".service >/dev/null 2>&1");
+				quotemeta($product)." >/dev/null 2>&1");
+			print "Masked $product\n";
+			print "Masked run ". "systemctl mask ". quotemeta($product)." >/dev/null 2>&1";
 			}
 		else {
 			system("systemctl enable ".
-				quotemeta($product).".service >/dev/null 2>&1");
+				quotemeta($product)." >/dev/null 2>&1");
+			print "Enabled $product\n";
+			print "Enabled run ". "systemctl enable ". quotemeta($product)." >/dev/null 2>&1";
 			}
 		}
 	elsif (-d "/etc/init.d") {
