@@ -16,6 +16,9 @@ if ($product) {
 			quotemeta($product)." 2>&1");
 		$status = &trim($status) if ($status);
 		print "Current Status is $status\n";
+		my $status2 = &backquote_logged("systemctl is-enabled ".
+			quotemeta($product).".xxxx 2>&1");
+		print "Current Status2 is $status2\n";
 		# Delete all possible service files
 		my $systemd_root = &get_systemd_root();
 		foreach my $p (
@@ -36,26 +39,27 @@ if ($product) {
 		&flush_file_lines($temp);
 
 		copy_source_dest($temp, "$systemd_root/$product.service");
-		system("systemctl daemon-reload >/dev/null 2>&1");
+		system("systemctl daemon-reload");
+		print "pre-test ....\n";
+		system("systemctl daemon-reloads");
+		print "pre-sleep ....\n";
 		sleep(3); # Wait for systemd to update configuration
+		print "psot-sleep ....\n";
 
 		if ($status eq "disabled") {
-			system("systemctl disable ".
-				quotemeta($product)." >/dev/null 2>&1");
+			system("systemctl disable ".quotemeta($product));
 			print "Disabled $product\n";
-			print "Disabled run ". "systemctl disable ". quotemeta($product)." >/dev/null 2>&1";
+			print "Disabled run ". "systemctl disable ". quotemeta($product);
 			}
 		elsif ($status eq "masked") {
-			system("systemctl mask ".
-				quotemeta($product)." >/dev/null 2>&1");
+			system("systemctl mask ".quotemeta($product));
 			print "Masked $product\n";
-			print "Masked run ". "systemctl mask ". quotemeta($product)." >/dev/null 2>&1";
+			print "Masked run ". "systemctl mask ". quotemeta($product);
 			}
 		else {
-			system("systemctl enable ".
-				quotemeta($product)." >/dev/null 2>&1");
+			system("systemctl enable ".quotemeta($product));
 			print "Enabled $product\n";
-			print "Enabled run ". "systemctl enable ". quotemeta($product)." >/dev/null 2>&1";
+			print "Enabled run ". "systemctl enable ". quotemeta($product);
 			}
 		}
 	elsif (-d "/etc/init.d") {
