@@ -11,6 +11,10 @@ $< == 0 || die "updateboot.pl must be run as root";
 # Update boot script
 if ($product) {
 	if ($init_mode eq "systemd") {
+		# Save status of service
+		my $status = &backquote_logged("systemctl is-enabled ".
+			quotemeta($product).".service 2>&1");
+		$status = &trim($status) if ($status);
 		# Delete all possible service files
 		my $systemd_root = &get_systemd_root();
 		foreach my $p (
@@ -29,10 +33,6 @@ if ($product) {
 			$l =~ s/(WEBMIN_[A-Z]+)/$ENV{$1}/g;
 			}
 		&flush_file_lines($temp);
-
-		my $status = &backquote_logged("systemctl is-enabled ".
-			quotemeta($product).".service 2>&1");
-		$status = &trim($status);
 
 		copy_source_dest($temp, "$systemd_root/$product.service");
 		system("systemctl daemon-reload >/dev/null 2>&1");
