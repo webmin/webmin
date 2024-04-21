@@ -29,6 +29,7 @@ if ($product) {
 			unlink("$p/$product");
 			}
 		$reload_daemon->();
+
 		my $temp = &transname();
 		my $killcmd = &has_command('kill');
 		$ENV{'WEBMIN_KILLCMD'} = $killcmd;
