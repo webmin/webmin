@@ -36,6 +36,7 @@ if ($product) {
 
 		copy_source_dest($temp, "$systemd_root/$product.service");
 		system("systemctl daemon-reload >/dev/null 2>&1");
+		sleep(3); # Wait for systemd to update configuration
 
 		if ($status eq "disabled") {
 			system("systemctl disable ".
