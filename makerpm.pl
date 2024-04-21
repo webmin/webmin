@@ -242,13 +242,13 @@ if [ "\$inetd" != "1" ]; then
 			/etc/webmin/.post-install >/dev/null 2>&1 </dev/null
 		else
 			/etc/webmin/.reload-init >/dev/null 2>&1 </dev/null
+			if [ "\$?" != "0" ]; then
+				echo "warning: Webmin server cannot be restarted. It is advised to restart it manually by\n         running \\"/etc/webmin/restart-by-force-kill\\" when upgrade process is finished"
+			fi
 			if [ -f /etc/webmin/.reload-init-systemd ]; then
 				/etc/webmin/.reload-init-systemd >/dev/null 2>&1 </dev/null
 				rm -f /etc/webmin/.reload-init-systemd
 			fi
-		fi
-		if [ "\$?" != "0" ]; then
-			echo "warning: Webmin server cannot be restarted. It is advised to restart it manually by\n         running \\"/etc/webmin/restart-by-force-kill\\" when upgrade process is finished"
 		fi
 	fi
 fi
