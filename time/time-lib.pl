@@ -13,6 +13,7 @@ our ($timezones_file, $currentzone_link, $currentzone_file, $timezones_dir,
      $sysclock_file);
 our ($get_hardware_time_error);
 our $cron_cmd = "$module_config_directory/sync.pl";
+our $rawtime;
 if ($config{'zone_style'}) {
 	do "$config{'zone_style'}-lib.pl";
 	}
@@ -76,7 +77,6 @@ if ($? && $config{'ntp_only'}) {
 elsif ($?) {
 	# error using ntp. use timeservice
 	my ($err, $serv);
-	my $rawtime;
 	foreach $serv (@servs) {
 		$err = undef;
 		my $fh = "SOCK";
