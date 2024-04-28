@@ -359,10 +359,10 @@ if [ "\$inetd" != "1" ]; then
 		else
 			if [ "\$productrunning" = "1" ]; then
 				/etc/$baseproduct/restart >/dev/null 2>&1 </dev/null
+				if [ "\$?" != "0" ]; then
+					echo "W: \${productucf} server cannot be restarted. It is advised to restart it manually by\n   running \\"/etc/$baseproduct/restart-by-force-kill\\" command when upgrade process is finished"
+				fi
 			fi
-		fi
-		if [ "\$?" != "0" ]; then
-			echo "W: \${productucf} server cannot be restarted. It is advised to restart it manually by\n   running \\"/etc/$baseproduct/restart-by-force-kill\\" command when upgrade process is finished"
 		fi
 	fi
 fi

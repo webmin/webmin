@@ -64,6 +64,13 @@ push(@wicons, "images/ssl.gif", "images/ca.gif");
 # Hide dis-allowed pages
 my %allow = map { $_, 1 } split(/\s+/, $access{'allow'});
 my %disallow = map { $_, 1 } split(/\s+/, $access{'disallow'});
+
+# Enfoce to disable Webmin self-upgrades
+# if repos are enabled
+if ($gconfig{'noselfwebminup'}) {
+	$disallow{'upgrade'} = 1;
+	}
+
 for(my $i=0; $i<@wlinks; $i++) {
 	$wlinks[$i] =~ /edit_(\S+)\.cgi/;
 	if (%allow && !$allow{$1} ||

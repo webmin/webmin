@@ -122,24 +122,7 @@ elsif ($init_mode eq "win32") {
 	}
 elsif ($init_mode eq "systemd") {
 	# Create systemd
-	&enable_at_boot(
-	     $product,
-	     "$ucproduct server daemon",
-	     "$root_directory/miniserv.pl $config_directory/miniserv.conf",
-	     "$kill \$MAINPID",
-	     undef,
-	       { 'pidfile' => "$var_directory/miniserv.pid",
-	         'opts'    => {
-	         'env'            => '"PERLLIB=' . $root_directory . '"',
-	         'stop'           => "$kill \$MAINPID",
-	         'reload'         => "$kill -HUP \$MAINPID",
-	         'type'           => 'forking',
-	         'restart'        => 'always',
-	         'restartsec'     => '2s',
-	         'timeout'        => '15s',
-	         'timeoutstopsec' => '300s',
-	       }},
-	     );
+	# See updateboot.pl
 	}
 elsif ($init_mode eq "rc" || $init_mode eq "upstart") {
 	# Create RC or upstart script

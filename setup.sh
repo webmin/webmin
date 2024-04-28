@@ -791,9 +791,6 @@ if [ -x "$systemctlcmd" ]; then
 	chmod 755 $config_dir/stop $config_dir/start $config_dir/restart $config_dir/restart-by-force-kill $config_dir/reload $config_dir/.pre-install $config_dir/.post-install
 fi
 
-# Fix existing systemd webmin.service file to update start and stop commands
-(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "$bootscript")
-
 if [ "$upgrading" = 1 -a "$inetd" != "1" -a "$nostop" = "" ]; then
 	# Stop old version, with updated stop script
 	$config_dir/.pre-install >/dev/null 2>&1
@@ -898,12 +895,16 @@ if [ "$?" != "0" ]; then
 	echo product=webmin >> $config_dir/config
 fi
 
+# Add boot script if needed
 if [ "$makeboot" = "1" ]; then
 	echo "Configuring Webmin to start at boot time .."
 	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/atboot.pl" $bootscript)
 	echo ".. done"
 	echo ""
 fi
+
+# Update boot script if needed
+(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/updateboot.pl" "$bootscript")
 
 # If password delays are not specifically disabled, enable them
 grep passdelay= $config_dir/miniserv.conf >/dev/null

@@ -765,15 +765,6 @@ else {
 		chmod(0755, "$config_directory/reload");
 		chmod(0755, "$config_directory/.pre-install");
 		chmod(0755, "$config_directory/.post-install");
-
-		# Fix existing systemd webmin.service file to update start and stop commands
-		chdir("$wadir/init");
-		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." $bootscript");
-		}
-	else {
-		# Try to install init script to init.d
-		chdir("$wadir/init");
-		system("$perl ".&quote_path("$wadir/init/updateboot.pl")." $bootscript");
 		}
 }
 print ".. done\n";
@@ -837,6 +828,7 @@ if ($theme && -d "$wadir/$theme") {
 # Set the product field in the global config
 $gconfig{'product'} ||= "webmin";
 
+# Add boot script if needed
 if ($makeboot) {
 	print "Configuring Webmin to start at boot time ..\n";
 	chdir("$wadir/init");
@@ -845,6 +837,9 @@ if ($makeboot) {
 	print "\n";
 	}
 
+# Update boot script if needed
+chdir("$wadir/init");
+system("$perl ".&quote_path("$wadir/init/updateboot.pl")." $bootscript");
 
 # If password delays are not specifically disabled, enable them
 if (!defined($miniserv{'passdelay'}) && $os_type ne 'windows') {

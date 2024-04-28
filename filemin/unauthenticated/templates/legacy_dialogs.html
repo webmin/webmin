@@ -173,7 +173,7 @@
   <form name="chmod" id="chmodForm">
       <div class="form-group">
           <label for="t_total">$text{'permissions'}:&nbsp; </label><br>
-          <input id="perms" type="text" name="t_total" value="0644" size="4" onKeyUp="octalchange()" class="form-group-item">
+          <input id="perms" type="text" oninput="if(this.value.length>4)this.value=this.value.slice(0,4)" name="t_total" value="0644" size="4" onKeyUp="octalchange()" class="form-group-item">
           <input type="text" name="sym_total" value="" size="12" readonly="true" class="form-group-item">
       </div>
       <table class="table">
