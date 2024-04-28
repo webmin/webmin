@@ -12375,6 +12375,7 @@ a function return to a given module call
 sub list_combined_webmin_menu
 {
 my ($data, $in, $mod) = @_;
+my @rv;
 foreach my $m (&get_available_module_infos()) {
 	my $dir = &module_root_directory($m->{'dir'});
 	my $mfile = "$dir/webmin_menu.pl";
