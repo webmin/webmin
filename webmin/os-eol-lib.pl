@@ -201,6 +201,11 @@ sub eol_update_cache
 {
 my $webmin_version = &get_webmin_version();
 if ($gconfig{'os_eol_db'} ne $webmin_version) {
+        # Invalidate EOL cache
+	foreach my $key ('os_eol_about', 'os_eol_expired',
+			 'os_eol_expiring') {
+		delete($gconfig{$key});
+		}
         # This is the first time we check
         # EOL data or after Webmin update
         my $eol_data = &eol_get_os_data();
