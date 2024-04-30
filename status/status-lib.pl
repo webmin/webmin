@@ -57,7 +57,7 @@ if (!-d $services_dir) {
 	# setup initial services
 	mkdir($module_config_directory, 0700);
 	mkdir($services_dir, 0700);
-	system("cp services/* $services_dir");
+	system("cp $module_root_directory/services/* $services_dir");
 	}
 map { $mod{$_}++ } &list_modules();
 opendir(DIR, $services_dir);
@@ -65,6 +65,14 @@ while($f = readdir(DIR)) {
 	next if ($f !~ /^(.*)\.serv$/);
 	my $serv = &get_service($1);
 	next if (!$serv || !$serv->{'type'} || !$serv->{'id'});
+	if ($serv->{'default'} && $serv->{'id'} eq 'mysql' &&
+	    &foreign_check("mysql")) {
+		# Fix MySQL / MariaDB
+		&foreign_require("mysql");
+		if ($mysql::mysql_version =~ /mariadb/i) {
+			$serv->{'desc'} =~ s/MySQL/MariaDB/g;
+			}
+		}
 	if ($serv->{'depends'}) {
 		my $d;
 		map { $d++ if (!$mod{$_}) } split(/\s+/, $serv->{'depends'});

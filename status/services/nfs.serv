@@ -2,3 +2,4 @@ id=nfs
 type=nfs
 desc=NFS Server
 depends=proc
+default=1
