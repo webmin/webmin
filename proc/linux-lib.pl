@@ -634,6 +634,14 @@ if (&has_command("sensors")) {
                             'temp' => int($2),
                          });
                     }
+		
+		# Like in #2140
+                elsif (/Tctl:\s*([\+\-][0-9\.]+)/) {
+                    push(@cpu,
+                         {  'core' => 0,
+                            'temp' => int($1),
+                         });
+                    }
                 }
 
             # New line represents another device
