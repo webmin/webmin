@@ -45,6 +45,17 @@ $templates_dir = "$module_config_directory/templates";
 
 @monitor_statuses = ( 'up', 'down', 'un', 'webmin', 'timed', 'isdown' );
 
+$mysql_variant = "mysql";
+if (&foreign_check("mysql")) {
+	# Fix MySQL / MariaDB
+	&foreign_require("mysql");
+	if ($mysql::mysql_version =~ /mariadb/i) {
+		$mysql_variant = "mariadb";
+		}
+	}
+if ($mysql_variant eq "mariadb") {
+	$text{'type_mysql'} =~ s/MySQL/MariaDB/g;
+	}
 
 # list_services()
 # Returns a list of all services this module knows how to get status on.
@@ -66,12 +77,8 @@ while($f = readdir(DIR)) {
 	my $serv = &get_service($1);
 	next if (!$serv || !$serv->{'type'} || !$serv->{'id'});
 	if ($serv->{'default'} && $serv->{'id'} eq 'mysql' &&
-	    &foreign_check("mysql")) {
-		# Fix MySQL / MariaDB
-		&foreign_require("mysql");
-		if ($mysql::mysql_version =~ /mariadb/i) {
-			$serv->{'desc'} =~ s/MySQL/MariaDB/g;
-			}
+	    $mysql_variant eq "mariadb") {
+		$serv->{'desc'} =~ s/MySQL/MariaDB/g;
 		}
 	if ($serv->{'depends'}) {
 		my $d;
