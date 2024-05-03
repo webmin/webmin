@@ -316,7 +316,6 @@ session_desc1=當啟用密碼逾時保護時，使您的 Webmin 伺服器免於�
 session_header=認證和 session選項
 session_pdisable=停用密碼逾時
 session_penable=啟用密碼逾時
-session_blockhost=禁止登入失敗次數超過 $1 次的主機在 $2 秒內再次登入。
 session_disable=停用 session 認證
 session_enable=啟用 session 認證
 session_localoff=每次均需要輸入帳號和密碼

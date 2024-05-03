@@ -173,6 +173,7 @@ ca_alt=Ďalšie domény
 
 session_ptimeout=Časový limit hesla
 session_pblock=Zlyhanie prihlásenia
+session_blockhost=Blokovať adresy IP klientov s viac ako $1 neúspešných prihlásení na $2 sekúnd.
 session_blockuser=Blokujte používateľov s viac ako $1 neúspešnými prihláseniami počas $2 sekúnd.
 session_syslog3=Zlyhania protokolov do systému <tt>syslog</tt>?
 session_stype=Autentický typ

@@ -348,7 +348,6 @@ session_desc1=Aktif hale getirildiğinde, Webmin, aynı kullanıcı ile yapılan
 session_header=Onaylama ve oturum seçenekleri
 session_pdisable=Şifre gecikme süreleri kapalı
 session_penable=Şifre gecikme süreleri aktif
-session_blockhost=$2 saniyede $1'den çok başarısız girişten sonra makinenin girişini engelle.
 session_disable=Oturum onaylamasını kapat
 session_enable=Oturum onaylamasını aç
 session_localoff=Her zaman kullanıcı adı ve parola istensin

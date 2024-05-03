@@ -419,7 +419,6 @@ session_header=验证和会话选项
 session_pdisable=关闭口令超时功能
 session_penable=启动口令超时功能
 session_pblock=阻止登录失败
-session_blockhost=阻止 $2 秒内登录失败超过 $1 次的主机。
 session_blockuser=登录失败 $1 次以上的用户会被阻止登录，持续 $2 秒。
 session_syslog3=将失败记录到 <tt>syslog</tt>？
 session_disable=禁用会话验证

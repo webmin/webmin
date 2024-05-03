@@ -134,6 +134,7 @@ ca_alt=Další domény
 
 session_ptimeout=Vypršení časového limitu hesla
 session_pblock=Selhalo přihlašovací bloky
+session_blockhost=Blokovat adresy IP klientů s více než $1 neúspěšných přihlášení na $2 sekund.
 session_syslog3=Selhání protokolu do <tt>syslog</tt>?
 session_stype=Typ ověření
 session_sopts=Možnosti ověřování

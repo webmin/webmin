@@ -134,6 +134,7 @@ ca_alt=Domini aggiuntivi
 
 session_ptimeout=Timeout password
 session_pblock=Blocchi di accesso non riusciti
+session_blockhost=Blocca gli IP client con più di $1 accessi non riusciti per $2 secondi.
 session_syslog3=Registra errori su <tt>syslog</tt>?
 session_stype=Tipo di autenticazione
 session_sopts=Opzioni di autenticazione

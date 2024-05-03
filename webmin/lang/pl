@@ -543,7 +543,6 @@ session_ptimeout=Przekroczony czas (timeout) hasła
 session_pdisable=Nie ograniczać czasu na wprowadzenie hasła
 session_penable=Ograniczyć czas na wprowadzenie hasła
 session_pblock=Zablokowane nieprawidłowe logowania
-session_blockhost=Blokować dostęp z hostów, z których wystąpiło więcej niż $1 nieudanych logowań na $2 sekund.
 session_blockuser=Blokuj przez $2 sekund użytkowników, którzy mają więcej niż $1 nieudanych prób logowania.
 session_syslog3=Rejestrować błędy w  <tt>syslog</tt>?
 session_stype=Typ uwierzytelniania

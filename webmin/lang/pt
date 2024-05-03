@@ -356,7 +356,6 @@ session_desc1=Quando activa, o tempo de expiração da password protege o seu se
 session_header=Opções de autenticação e sessão
 session_pdisable=Desactivar tempo de expiração da password
 session_penable=Activar tempo de expiração da password
-session_blockhost=Bloquear hosts com mais de $1 login's falhados durante $2 segundos.
 session_disable=Desactivar a autenticação por sessão
 session_enable=Activar a autenticação por sessão
 session_localoff=Pedir sempre o username e a password

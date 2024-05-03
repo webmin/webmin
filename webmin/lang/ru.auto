@@ -135,6 +135,7 @@ ca_issuer_email=Адрес электронной почты эмитента
 
 session_ptimeout=Тайм-ауты пароля
 session_pblock=Неудачные блоки входа
+session_blockhost=Заблокируйте IP-адреса клиентов с более чем $1 неудачными входами в систему на $2 секунды.
 session_syslog3=Записывать ошибки в <tt>syslog</tt>?
 session_stype=Тип аутентификации
 session_sopts=Варианты аутентификации

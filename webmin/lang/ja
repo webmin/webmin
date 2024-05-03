@@ -579,7 +579,6 @@ session_ptimeout=パスワードタイムアウト
 session_pdisable=無効
 session_penable=有効
 session_pblock=ログインのブロック
-session_blockhost=$2 秒の間で $1 回以上ログインに失敗した ホスト をブロック
 session_blockuser=$2 秒の間で $1 回以上ログインに失敗した ユーザ をブロック
 session_syslog3=<tt>syslog</tt> にエラーを記録する
 session_stype=認証方式

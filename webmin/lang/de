@@ -572,7 +572,6 @@ session_ptimeout=Passwort-Timeouts
 session_pdisable=Passwort-Timeouts deaktivieren
 session_penable=Passwort-Timeouts aktivieren
 session_pblock=Fehlerhafte Logins blockieren
-session_blockhost=Hosts mit $1 fehlgeschlagenen Logins für $2 Sekunden blockieren.
 session_blockuser=Blockiere Benutzer mit mehr als $1 fehlgeschlagene Logins für $2 Sekunden.
 session_syslog3=Logge Fehler nach <tt>syslog</tt>?
 session_stype=Authentifizierungstyp

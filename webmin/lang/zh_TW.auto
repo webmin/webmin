@@ -304,6 +304,7 @@ ca_notafter=有效期至
 
 session_ptimeout=密碼超時
 session_pblock=登錄塊失敗
+session_blockhost=阻止登入失敗次數超過 $1 次的客戶端 IP，持續 $2 秒。
 session_blockuser=阻止用戶$1以上的用戶登錄失敗$2秒。
 session_syslog3=將故障記錄到<tt>syslog</tt>？
 session_stype=認證方式

@@ -202,6 +202,7 @@ ca_type=证书类别
 ca_notafter=有效期至
 
 session_ptimeout=密码超时
+session_blockhost=阻止登录失败次数超过 $1 的客户端 IP，持续 $2 秒。
 session_stype=认证方式
 session_sopts=验证选项
 session_local=本地认证

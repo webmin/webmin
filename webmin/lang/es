@@ -390,7 +390,6 @@ session_desc1=Cuando está activada, el tiempo máximo de clave de acceso proteg
 session_header=Opciones de Autenticación y sesión
 session_pdisable=Desactivar tiempos máximos de clave de acceso
 session_penable=Activar tiempo máximo de clave de acceso
-session_blockhost=Bloquear máquinas con más de $1 logins fallidos durante $2 segundos.
 session_disable=Desactivar autenticación de sesión
 session_enable=Activar autenticación de sesión
 session_localoff=Siempre requerir nombre de usuario y clave de acceso

@@ -572,7 +572,6 @@ session_ptimeout=Passord tidsavbrudd
 session_pdisable=Slå av passord "timeouts"
 session_penable=Slå på passord "timeouts"
 session_pblock=Feilede innloggings-blokker
-session_blockhost=Blokér verter med flere en $1 feil loggin forsøk med $2 sekunder.
 session_blockuser=Blokker brukere med mer enn $1 feilede innlogginger i $2 sekunder.
 session_syslog3=Loggfør feil til <tt>syslog</tt>?
 session_stype=Autentiserings-type

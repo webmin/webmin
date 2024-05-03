@@ -43,6 +43,7 @@ upgrade_setuppackage=S'està executant <tt>pkgadd</tt> per actualitzar Webmin ..
 
 update_webmin=Actualització de www.webmin.com
 
+session_blockhost=Bloqueja les IP del client amb més de $1 inicis de sessió fallits durant $2 segons.
 session_utmp=Enregistrar els inicis de sessió i tancaments de sessió a <tt>utmp</tt>?
 session_pmodedesc3=Política de caducitat de contrasenya
 session_md5off=Determinar automàticament

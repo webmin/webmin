@@ -36,6 +36,7 @@ upgrade_setuprpm=<tt>RPM</tt> ausführen, um Webmin zu aktualisieren ..
 upgrade_setupdeb=<tt>DPKG</tt> ausführen, um Webmin zu aktualisieren ..
 upgrade_setuppackage=<tt>pkgadd</tt> ausführen, um Webmin zu aktualisieren ..
 
+session_blockhost=Blockieren Sie Client-IPs mit mehr als $1 fehlgeschlagenen Anmeldungen für $2 Sekunden.
 session_utmp=Anmeldungen und Abmeldungen in <tt>utmp</tt> aufzeichnen?
 session_md5off=Automatisch ermitteln
 session_md5on=Verwenden Sie das Hash-Format <tt>MD5</tt>

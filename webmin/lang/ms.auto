@@ -77,6 +77,7 @@ ca_alt=Domain tambahan
 
 session_ptimeout=Masa tunggu kata laluan
 session_pblock=Blok masuk gagal
+session_blockhost=Sekat IP pelanggan dengan lebih daripada $1 gagal log masuk selama $2 saat.
 session_syslog3=Kegagalan log ke <tt>syslog</tt>?
 session_stype=Jenis pengesahan
 session_sopts=Pilihan pengesahan

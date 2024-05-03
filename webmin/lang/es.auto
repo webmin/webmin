@@ -229,6 +229,7 @@ ca_notafter=Válido hasta
 
 session_ptimeout=Tiempo de espera de contraseña
 session_pblock=Bloques de inicio de sesión fallidos
+session_blockhost=Bloquear IP de clientes con más de $1 inicios de sesión fallidos durante $2 segundos.
 session_blockuser=Bloquee a los usuarios con más de $1 inicios de sesión fallidos durante $2 segundos.
 session_syslog3=¿Registro de fallas en <tt>syslog</tt>?
 session_stype=Tipo de autenticación
