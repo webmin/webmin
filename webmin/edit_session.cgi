@@ -14,7 +14,7 @@ print ui_form_start("change_session.cgi", "post");
 print ui_table_start($text{'session_header'}, undef, 2);
 
 # Bad password delay
-print &ui_table_row($text{'session_ptimeout'},
+print &ui_table_row(&hlink($text{'session_ptimeout'}, 'ptimeout'),
 	&ui_radio("passdelay", $miniserv{'passdelay'} ? 1 : 0,
 		  [ [ 0, $text{'session_pdisable'}."<br>\n" ],
 		    [ 1, $text{'session_penable'} ] ]));
