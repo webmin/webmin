@@ -30,14 +30,14 @@ print &ui_hidden("new", $in{'new'});
 print &ui_hidden("old", $in{'name'});
 print &ui_table_start($text{'jail_header'}, undef, 2);
 
-# Jail name
-print &ui_table_row($text{'jail_name'},
-	&ui_textbox("name", $jail->{'name'}, 30));
-
 # Enabled or disabled?
 my $enabled = &find_value("enabled", $jail);
 print &ui_table_row($text{'jail_enabled'},
 	&ui_yesno_radio("enabled", $enabled =~ /true|yes|1/i));
+
+# Jail name
+print &ui_table_row($text{'jail_name'},
+	&ui_textbox("name", $jail->{'name'}, 30));
 
 # Filter to match
 my @filters = &list_filters();
