@@ -30,14 +30,14 @@ print &ui_hidden("new", $in{'new'});
 print &ui_hidden("old", $in{'name'});
 print &ui_table_start($text{'jail_header'}, undef, 2);
 
-# Jail name
-print &ui_table_row($text{'jail_name'},
-	&ui_textbox("name", $jail->{'name'}, 30));
-
 # Enabled or disabled?
 my $enabled = &find_value("enabled", $jail);
 print &ui_table_row($text{'jail_enabled'},
 	&ui_yesno_radio("enabled", $enabled =~ /true|yes|1/i));
+
+# Jail name
+print &ui_table_row($text{'jail_name'},
+	&ui_textbox("name", $jail->{'name'}, 30));
 
 # Filter to match
 my @filters = &list_filters();
@@ -48,6 +48,22 @@ print &ui_table_row($text{'jail_filter'},
 		   [ [ undef, "&lt;$text{'default'}&gt;" ],
 		     map { &filename_to_name($_->[0]->{'file'}) } @filters ],
 		   1, 0, $filter ? 1 : 0));
+
+# Backend
+my $backend = &find_value("backend", $jail);
+print &ui_table_row($text{'jail_backend'},
+	&ui_select("backend", $backend || "",
+		[ [ "", "" ],
+		  [ "auto", $text{'jail_auto'} ],
+		  [ "systemd", $text{'jail_systemd'} ],
+		  [ "polling", $text{'jail_polling'} ],
+		  [ "gamin", $text{'jail_gamin'} ],
+		  [ "pyinotify", $text{'jail_pyinotify'} ] ]));
+
+# Ports to monitor
+my $port = &find_value("port", $jail);
+print &ui_table_row($text{'jail_ports'},
+	&ui_textbox("port", $port, 35));
 
 # Actions to run
 my $actionlist = &find("action", $jail);
