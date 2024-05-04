@@ -44,6 +44,9 @@ else {
 		$clash && &error($text{'jail_eclash'});
 		}
 
+	# Validate backend
+	!$in{'backend'} || $in{'backend'} =~ /^(auto|systemd|polling|gamin|pyinotify)$/ ||
+		&error($text{'jail_ebackend'});
 	# Parse and validate actions
 	my @actions;
 	for(my $i=0; defined($in{"action_$i"}); $i++) {
@@ -116,6 +119,7 @@ else {
 	# Save directives within the section
 	&save_directive("enabled", $in{'enabled'} ? 'true' : 'false', $jail);
 	&save_directive("filter", $in{'filter'} || undef, $jail);
+	&save_directive("backend", $in{'backend'} || undef, $jail);
 	&save_directive("action", @actions ? join("\n", @actions)
 					   : undef, $jail);
 	&save_directive("logpath", join("\n", @logpaths), $jail);

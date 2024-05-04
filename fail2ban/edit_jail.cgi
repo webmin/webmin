@@ -49,6 +49,18 @@ print &ui_table_row($text{'jail_filter'},
 		     map { &filename_to_name($_->[0]->{'file'}) } @filters ],
 		   1, 0, $filter ? 1 : 0));
 
+# Backend
+my $backend = &find_value("backend", $jail);
+print &ui_table_row($text{'jail_backend'},
+	&ui_select("backend", $backend || "",
+		[ [ "", "" ],
+		  [ "auto", $text{'jail_auto'} ],
+		  [ "systemd", $text{'jail_systemd'} ],
+		  [ "polling", $text{'jail_polling'} ],
+		  [ "gamin", $text{'jail_gamin'} ],
+		  [ "pyinotify", $text{'jail_pyinotify'} ] ]));
+
+# Ports to monitor
 # Actions to run
 my $actionlist = &find("action", $jail);
 my @actions = &list_actions();
