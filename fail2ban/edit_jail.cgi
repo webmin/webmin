@@ -61,6 +61,10 @@ print &ui_table_row($text{'jail_backend'},
 		  [ "pyinotify", $text{'jail_pyinotify'} ] ]));
 
 # Ports to monitor
+my $port = &find_value("port", $jail);
+print &ui_table_row($text{'jail_ports'},
+	&ui_textbox("port", $port, 35));
+
 # Actions to run
 my $actionlist = &find("action", $jail);
 my @actions = &list_actions();
