@@ -263,6 +263,7 @@ ca_notafter=Válido até
 
 session_ptimeout=Tempo limite da senha
 session_pblock=Blocos de login com falha
+session_blockhost=Bloqueie IPs de clientes com mais de $1 logins com falha por $2 segundos.
 session_blockuser=Bloqueie usuários com mais de $1 logins com falha por $2 segundos.
 session_syslog3=Falhas de log no <tt>syslog</tt>?
 session_stype=Tipo de Autenticação

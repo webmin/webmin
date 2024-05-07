@@ -568,7 +568,6 @@ session_ptimeout=Temps límit de contrasenyes
 session_pdisable=Desactiva el temps límit de contrasenya
 session_penable=Activa el temps límit de contrasenya
 session_pblock=Bloqueigs d'entrades fallides
-session_blockhost=Bloqueja els hosts amb més de $1 intents fallits de connexió durant $2 segons.
 session_blockuser=Bloqueja els usuaris amb més de $1 entrades fallides al llarg de $2 segons.
 session_syslog3=Registra les entrades fallides a <tt>syslog</tt>
 session_stype=Tipus d'autenticació

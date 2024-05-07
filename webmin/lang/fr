@@ -572,7 +572,6 @@ session_ptimeout=Délai d'expiration du mot de passe
 session_pdisable=Désactiver les délais d'expiration des mots de passe
 session_penable=Activer les délais d'expiration des mots de passe
 session_pblock=Échec des blocages de connexion
-session_blockhost=Bloquer les hôtes avec plus de $1 échoués de connexion pendant $2 secondes.
 session_blockuser=Bloquer les utilisateurs ayant échoué de connexion de plus de $1 pendant $2 secondes.
 session_syslog3=Journaliser les échecs dans <tt>syslog</tt>?
 session_stype=Type d'identification

@@ -1,0 +1,16 @@
+<header>SASL security options &quot;.&quot;</header>
+
+<center><tt>smtp_sasl_security_options</tt></center>
+<hr>
+
+This parameter specifies the security options that the Postfix SMTP client uses
+for SASL authentication when connecting to a remote SMTP server. <p>
+The list is a comma-separated parameter of one or more of the following items:
+
+<ul>
+<li><tt>noplaintext</tt>: disallow methods that use plaintext passwords</li>
+<li><tt>noactive</tt>: disallow methods subject to active (non-dictionary) attack</li>
+<li><tt>nodictionary</tt>: disallow methods subject to passive (dictionary) attack</li>
+<li><tt>noanonymous</tt>: disallow methods that allow anonymous authentication</li>
+<li><tt>mutual_auth</tt>: only allow methods that provide mutual authentication (not available with SASL version 1)</li>
+</ul>

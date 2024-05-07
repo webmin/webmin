@@ -250,6 +250,7 @@ ca_notafter=اعتبار دارد تا
 
 session_ptimeout=زمانهای گذرواژه
 session_pblock=بلوک های ورود به سیستم انجام نشد
+session_blockhost=IPهای مشتری با بیش از $1 ورود ناموفق به مدت $2 ثانیه مسدود شود.
 session_blockuser=Block users with more than $1 failed logins for $2 seconds.
 session_syslog3=Log failures to <tt>syslog</tt>?
 session_stype=نوع احراز هویت

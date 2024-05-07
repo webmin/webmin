@@ -169,6 +169,9 @@ sub print_interface {
     local $upid = time().$$;
     $bookmarks = get_bookmarks();
     @allowed_for_edit = split(/\s+/, $access{'allowed_for_edit'});
+    # Some experimental MIME types are now recognized
+    push(@allowed_for_edit, map { (my $__ = $_) =~ s/-x-/-/;
+        $__ ne $_ ? $__ : () } @allowed_for_edit);
     %allowed_for_edit = map { $_ => 1} @allowed_for_edit;
     my %tinfo = &get_theme_info($current_theme);
 

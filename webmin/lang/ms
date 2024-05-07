@@ -538,7 +538,6 @@ session_desc1=Apabila diaktifkan, masa tamat kata laluan melindungi pelayan Webm
 session_header=Log masuk ke Webmin
 session_pdisable=Nyah-aktifkan tempoh masa kata laluan
 session_penable=Aktifkan tempoh masa kata laluan
-session_blockhost=Sekat hos yang log masuk gagal lebih dari $1 kali dalam tempoh $2 saat.
 session_blockuser=Sekat pengguna yang log masuk gagal lebih dari $1 kali dalam tempoh $2 saat.
 session_disable=Nyah-aktifkan pengesahan sesi
 session_enable=Aktifkan pengesahan sesi

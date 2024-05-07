@@ -495,7 +495,6 @@ session_desc1=Quando habilitado, tempo-limite de senhas irão proteger seu servi
 session_header=Opções de autenticação e sessão
 session_pdisable=Desabilitar tempo-limite de senhas
 session_penable=Habilitar tempo-limite de senhas
-session_blockhost=Bloquear hosts com mais de $1 login(s) falhado(s) por $2 segundos.
 session_blockuser=Bloquear usuários com mais que $1 logins com falha para $2 segundos.
 session_disable=Desabilitar autenticação de sessão
 session_enable=Habilitar autenticação de sessão

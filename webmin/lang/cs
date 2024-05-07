@@ -484,7 +484,6 @@ session_desc1=Pokud je funkční, časová prodleva u hesla zabezpečí váš We
 session_header=Nastavení autentikace a relací
 session_pdisable=Vyplnout časovou prodlevu u hesla
 session_penable=Zapnout časovou prodlevu u hesla
-session_blockhost=Zablokovat hosty s více než $1 chybnými pokusy o přihlášení za $2 vteřin.
 session_blockuser=Blokovat uživatele, kteří se pokusili $1 krát špatně přihlásit během $2 vteřin.
 session_disable=Vypnout autentifikaci relací
 session_enable=Zapnout autentifikaci relací

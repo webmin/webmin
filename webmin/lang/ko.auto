@@ -134,6 +134,7 @@ ca_alt=추가 도메인
 
 session_ptimeout=비밀번호 시간 초과
 session_pblock=실패한 로그인 차단
+session_blockhost=$2초 동안 로그인이 $1회 이상 실패한 클라이언트 IP를 차단합니다.
 session_syslog3=<tt>syslog</tt>에 로그 실패?
 session_stype=인증 유형
 session_sopts=인증 옵션

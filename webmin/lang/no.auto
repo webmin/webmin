@@ -36,6 +36,7 @@ upgrade_setuprpm=Kjører <tt>RPM</tt> for å oppgradere Webmin ..
 upgrade_setupdeb=Kjører <tt>DPKG</tt> for å oppgradere Webmin ..
 upgrade_setuppackage=Kjører <tt>pkgadd</tt> for å oppgradere Webmin ..
 
+session_blockhost=Blokker klient-IP-er med mer enn $1 mislykkede pålogginger i $2 sekunder.
 session_utmp=Registrere pålogginger og utlogginger i <tt>utmp</tt>?
 session_md5off=Bestem automatisk
 session_md5on=Bruk <tt>MD5</tt> hashing-format

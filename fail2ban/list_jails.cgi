@@ -37,8 +37,7 @@ foreach my $j (@jails) {
 	print &ui_checked_columns_row([
 		&ui_link("edit_jail.cgi?name=".&urlize($j->{'name'}),
 			 $j->{'name'}),
-		$enabled =~ /true|yes|1/i ? $text{'yes'} :
-			"<font color=red>$text{'no'}</font>",
+		$enabled =~ /true|yes|1/i ? $text{'yes'} : $text{'no'},
 		&html_escape($filter),
 		$action,
 		], \@tds, "d", $j->{'name'});

@@ -29,6 +29,7 @@ upgrade_setuprpm=<tt>RPM</tt> を実行して Webmin をアップグレードし
 upgrade_setupdeb=<tt>DPKG</tt> を実行して Webmin をアップグレードしています ..
 upgrade_setuppackage=<tt>pkgadd</tt> を実行して Webmin をアップグレードしています ..
 
+session_blockhost=$1 回以上のログイン失敗があるクライアント IP を $2 秒間ブロックします。
 session_utmp=ログインとログアウトを<tt>utmp</tt>に記録しますか？
 session_md5off=自動判定
 session_md5on=<tt>MD5</tt> ハッシュ形式を使用

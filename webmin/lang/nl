@@ -527,7 +527,6 @@ session_desc1=Indien ingeschakeld, beschermen wachtwoord time-outs uw Webmin ser
 session_header=Authenticatie en sessie opties
 session_pdisable=Schakel wachtwoord time-outs uit
 session_penable=Schakel wachtwoord time-outs in
-session_blockhost=Blokkeer hosts met meer dan $1 mislukte logins voor $2 seconden.
 session_blockuser=Blokkeer gebruikers met meer dan $1 mislukte logins voor $2 seconden.
 session_disable=Schakel sessie authenticatie uit
 session_enable=Schakel sessie authenticatie in

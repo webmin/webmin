@@ -432,6 +432,7 @@ ca_notafter=Giltig till
 
 session_ptimeout=Lösenord timeouts
 session_pblock=Misslyckade inloggningsblock
+session_blockhost=Blockera klient-IP:er med mer än $1 misslyckade inloggningar i $2 sekunder.
 session_blockuser=Blockera användare med mer än $1 misslyckade inloggningar under $2 sekunder.
 session_syslog3=Logga in fel till <tt>syslog</tt>?
 session_stype=Autentiseringstyp

@@ -484,7 +484,6 @@ session_desc1=Quando è abilitato il timeout della password protegge il tuo serv
 session_header=Opzioni di sessione e di autenticazione
 session_pdisable=Disattiva i timeout per le password
 session_penable=Attiva i timeout per le password
-session_blockhost=Blocca gli host con più di $1 login non riusciti in $2 secondi.
 session_blockuser=Blocca gli utenti con più di $1 login non riusciti in $2 secondi.
 session_disable=Disattiva l'autenticazione di sessione
 session_enable=Abilita autenticazione della sessione

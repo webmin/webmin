@@ -72,6 +72,7 @@ upgrade_setuppackage=Uruchamianie <tt>pkgadd</tt> w celu aktualizacji Webmina ..
 
 ca_alt=Dodatkowe domeny
 
+session_blockhost=Blokuj adresy IP klientów z więcej niż $1 nieudanymi logowaniami przez $2 sekundy.
 session_utmp=Zapisywać loginy i wylogowania w <tt>utmp</tt>?
 session_md5off=Określ automatycznie
 session_md5on=Użyj formatu mieszającego <tt>MD5</tt>

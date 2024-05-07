@@ -89,6 +89,7 @@ ca_alt=Aanvullende domeinen
 
 session_ptimeout=Time-outs voor wachtwoorden
 session_pblock=Mislukte inlogblokken
+session_blockhost=Blokkeer client-IP's met meer dan $1 mislukte aanmeldingen gedurende $2 seconden.
 session_syslog3=Logboekfouten in <tt>syslog</tt>?
 session_stype=Verificatietype
 session_sopts=Verificatie opties

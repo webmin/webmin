@@ -272,6 +272,7 @@ ca_notafter=Tarihine kadar geçerlidir
 
 session_ptimeout=Şifre zaman aşımları
 session_pblock=Giriş blokları başarısız oldu
+session_blockhost=$2 saniye boyunca $1'den fazla başarısız oturum açma işlemi olan istemci IP'lerini engelleyin.
 session_blockuser=$2 saniye boyunca $1 oturum açma başarısız olan kullanıcıları engelleyin.
 session_syslog3=Günlük hataları <tt>syslog</tt>?
 session_stype=Kimlik Doğrulama Türü

@@ -186,7 +186,6 @@ session_desc1=När detta är aktiverat kommer Webmin-servern att skyddas av tids
 session_header=Autentiserings- och sessionsinställningar
 session_pdisable=Slå av tidsgränser för lösenord
 session_penable=Slå på tidsgränser för lösenord
-session_blockhost=Spärra datorer med fler än $1 misslyckade inloggningsförsök i $2 sekunder.
 session_disable=Deaktivera sessionsautentiseringen
 session_enable=Aktivera sessionsautentiseringen
 session_localoff=Kräv alltid användarnamn och lösenord

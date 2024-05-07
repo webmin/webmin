@@ -446,7 +446,6 @@ session_desc1=Ak je táto možnosť povolená, po každom zlom prihlásení sa z
 session_header=Nastavenie overovania spojenia
 session_pdisable=Zakázať starnutie hesiel
 session_penable=Povoliť starnutie hesiel
-session_blockhost=Ignorovať počítače s viac ako $1 zlyhaní príhlásenia na dobu $2 sekúnd.
 session_disable=Zrušiť session autentifikáciu
 session_enable=Povoliť session autentifikáciu
 session_localoff=Vždy vyžaduj užívateľské meno a heslo

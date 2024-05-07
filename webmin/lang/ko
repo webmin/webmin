@@ -484,7 +484,6 @@ session_desc1=인증 기능을 설정한 경우에는 패스워드 시간 초과
 session_header=인증 및 세션 옵션
 session_pdisable=패스워드 시간 초과 기능 해제
 session_penable=패스워드 시간 초과 기능 설정
-session_blockhost=$1회 이상 로그인에 실패한 호스트를 $2초 동안 차단
 session_blockuser=$2초 동안 로그인 시도가 $1보다 많을 경우 사용자를 블럭 합니다.
 session_disable=세션 인증 기능 해제
 session_enable=세션 인증 기능 설정
