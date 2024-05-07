@@ -2327,8 +2327,9 @@ return ( "permit_mynetworks",
 		"reject_unknown_reverse_client_hostname",
 	 "permit_sasl_authenticated",
 	 "reject_unauth_destination",
-	 "check_relay_domains",
-	 "permit_mx_backup" );
+	 &compare_version_numbers($postfix_version, 3.9) < 0 ?
+		("check_relay_domains", "permit_mx_backup") : ( ),
+       );
 }
 
 # list_client_restrictions()
