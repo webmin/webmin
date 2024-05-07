@@ -49,7 +49,6 @@ if (&compare_version_numbers($postfix_version, 2) <= 0) {
 &option_freefield("smtp_data_done_timeout", 15);
 &option_freefield("smtp_quit_timeout", 15);
 
-&option_yesno("smtp_use_tls");
 &option_freefield("smtp_sasl_security_options", 60);
 
 # TLS enforcement options
