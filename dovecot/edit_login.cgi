@@ -29,9 +29,9 @@ else {
 					  "auth", "default"));
 	}
 print &ui_table_row($text{'login_mechs'},
-		    &ui_select("mechs", \@mechs,
-			[ map { [ $_, $text{'login_'.$_} ] } @supported_auths ],
-			4, 1, 1));
+    &ui_select("mechs", \@mechs,
+	[ map { [ $_, $text{'login_'.$_} || uc($_) ] } @supported_auths ],
+	4, 1, 1));
 
 print &ui_table_hr();
 
