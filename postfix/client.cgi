@@ -54,10 +54,8 @@ foreach $r (&list_multi_client_restrictions()) {
 
 # Show text field for the rest
 @rest = grep { !$done{$_} } @opts;
-if (@rest) {
-	push(@grid, &ui_checkbox("other", 1, $text{'client_other'}, 1),
-		    &ui_textbox("other_list", join(" ", @rest), 40));
-	}
+push(@grid, &ui_checkbox("other", @rest ? 1 : 0, $text{'client_other'}, 1),
+	    &ui_textbox("other_list", join(" ", @rest), 40));
 
 # Show field
 print &ui_table_row($text{'client_restrict'},
