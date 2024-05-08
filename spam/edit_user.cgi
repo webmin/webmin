@@ -15,10 +15,11 @@ print "$text{'user_desc'}<p>\n";
 # Do DNS lookups?
 $dns = lc(&find_value("dns_available", $conf));
 $dns = "test" if (!$dns && $config{'defaults'});
+$defdns = &version_atleast("3.4") ? $text{'yes'} : $text{'user_dnstest'};
 @dnsopts = ( [ 1, $text{'yes'} ],
 	     [ 0, $text{'no'} ],
 	     !$config{'defaults'} ? ( [ -1, $text{'default'}.
-				       " (".$text{'user_dnstest'}.")" ] ) : ( ),
+				       " (".$defdns.")" ] ) : ( ),
 	     [ 2, $text{'user_dnslist'} ] );
 print &ui_table_row($text{'user_dns'},
 	&ui_radio("dns", $dns eq 'yes' ? 1 :
