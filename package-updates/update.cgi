@@ -17,7 +17,7 @@ else {
 	$redirdesc = $text{'index_return'};
 	}
 
-$redir = ($redir =~ /\?/) ? "$redir&tab=install" : "$redir?tab=install";
+$redir = ($redir =~ /\?/) ? "$redir&tab=pkgs" : "$redir?tab=pkgs";
 
 if ($in{'refresh'} || $in{'refresh_top'}) {
 	&ui_print_unbuffered_header(undef, $text{'refresh_title'}, "");
