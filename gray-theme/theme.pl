@@ -949,11 +949,28 @@ for(var i=0; i<tabnames.length; i++) {
 		       '<img src=$imgdir/lc2.gif alt=""></td>'+
 		       '<td class=\\'tabSelected\\' nowrap>'+
 		       '&nbsp;<b>'+title+'</b>&nbsp;</td>'+
-	               '<td valign=top class=\\'tabSelected\\'>'+
+		       '<td valign=top class=\\'tabSelected\\'>'+
 		       '<img src=$imgdir/rc2.gif alt=""></td>'+
 		       '</tr></table>';
     divobj.className = 'opener_shown';
+    try {
+	var nestedForm = divobj.querySelector("form[data-form-nested]");
+	if (nestedForm) {
+		var nestedFormId = nestedForm.getAttribute("data-form-nested"),
+		formSubmitters = document
+			.querySelectorAll(
+				"[data-submit-nested='" + nestedFormId + "']");
+		if (formSubmitters) {
+			formSubmitters.forEach(function(submitter) {
+				submitter.setAttribute(
+					"form", nestedForm.getAttribute('id'));
+			});
+		}
+	}
+    } catch(e) {
+	console.warn('Cannot set the related submitter ID of the nested form : ' + e);
     }
+  }
   else {
     // Non-selected tab
     tabobj.innerHTML = '<table cellpadding=0 cellspacing=0><tr>'+
