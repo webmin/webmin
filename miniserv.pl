@@ -963,7 +963,19 @@ while(1) {
 		local $fromip = inet_ntoa((unpack_sockaddr_in($from))[1]);
 		local $toip = inet_ntoa((unpack_sockaddr_in(
 					 getsockname(LISTEN)))[1]);
-		if ((!@deny || !&ip_match($fromip, $toip, @deny)) &&
+
+		# Check for any rate limits
+		my $ratelimit = 0;
+		if ($last_udp{$fromip} &&
+		    time() - $last_udp{$fromip} < $config{'listen_delay'}) {
+			$ratelimit = 1;
+			}
+		else {
+			$last_udp{$fromip} = time();
+			}
+
+		if (!$ratelimit &&
+		    (!@deny || !&ip_match($fromip, $toip, @deny)) &&
 		    (!@allow || &ip_match($fromip, $toip, @allow))) {
 			local $listenhost = &get_socket_name(LISTEN, 0);
 			send(LISTEN, "$listenhost:$config{'port'}:".
@@ -4878,6 +4890,7 @@ my %vital = ("port", 80,
 	  "maxconns", 50,
 	  "maxconns_per_ip", 25,
 	  "maxconns_per_net", 35,
+	  "listen_delay", 5,
 	  "pam", "webmin",
 	  "sidname", "sid",
 	  "unauth", "^/unauthenticated/ ^/robots.txt\$ ^[A-Za-z0-9\\-/_]+\\.jar\$ ^[A-Za-z0-9\\-/_]+\\.class\$ ^[A-Za-z0-9\\-/_]+\\.gif\$ ^[A-Za-z0-9\\-/_]+\\.png\$ ^[A-Za-z0-9\\-/_]+\\.conf\$ ^[A-Za-z0-9\\-/_]+\\.ico\$ ^/robots.txt\$",
