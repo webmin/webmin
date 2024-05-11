@@ -607,7 +607,7 @@ sub version_atleast
 if (!$version_cache) {
 	$version_cache = &get_spamassassin_version();
 	}
-return $version_cache >= $_[0];
+return &compare_version_numbers($version_cache, '>=', $_[0]);
 }
 
 # spam_file_folder()
