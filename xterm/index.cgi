@@ -3,6 +3,8 @@
 require './xterm-lib.pl';
 &ReadParse();
 
+$ENV{'HTTP_WEBMIN_PATH'} && &error($text{'index_eproxy'});
+
 # Check for needed modules
 my @modnames = ("Digest::SHA", "Digest::MD5", "IO::Pty",
                 "IO::Select", "Time::HiRes",

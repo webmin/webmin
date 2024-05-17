@@ -5,6 +5,7 @@ index_suse=The Perl package <tt>perl-IO-Tty</tt> is missing, and should be manua
 index_euser=Error : User $1 cannot run the shell as it does not exist!
 index_connecting=Connecting ..
 index_missing=The Perl module <tt>$1</tt> is missing. You need to contact your administrator to resolve this issue.
+index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Run shell as Unix user
 acl_sameuser=Same as Webmin login
