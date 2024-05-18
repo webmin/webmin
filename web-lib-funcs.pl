@@ -7465,7 +7465,7 @@ while(1) {
 	my $got = read(OUT, $line, 1);
 	last if (!$got);
 	$out .= $line;
-	$linecount++;
+	$linecount += scalar(() = $out =~ /\n/g);
 	if ($_[3] && $linecount >= $_[3]) {
 		# Got enough lines
 		last;
