@@ -175,10 +175,10 @@ elsif (!$config{'no_pam'}) {
 	}
 if ($config{'pam_only'} && !$use_pam) {
 	foreach $msg (@startup_msg) {
-		print STDERR $msg,"\n";
+		&log_error($msg);
 		}
-	print STDERR "PAM use is mandatory, but could not be enabled!\n";
-	print STDERR "no_pam and pam_only both are set!\n" if ($config{no_pam});
+	&log_error("PAM use is mandatory, but could not be enabled!");
+	&log_error("no_pam and pam_only both are set!") if ($config{no_pam});
 	exit(1);
 	}
 elsif ($pam_msg && !$use_pam) {
@@ -263,13 +263,13 @@ if ($@) {
 if (!-r $config{'keyfile'}) {
 	# Key file doesn't exist!
 	if ($config{'keyfile'}) {
-		print STDERR "SSL key file $config{'keyfile'} does not exist\n";
+		&log_error("SSL key file $config{'keyfile'} does not exist");
 		}
 	$use_ssl = 0;
 	}
 elsif ($config{'certfile'} && !-r $config{'certfile'}) {
 	# Cert file doesn't exist!
-	print STDERR "SSL cert file $config{'certfile'} does not exist\n";
+	&log_error("SSL cert file $config{'certfile'} does not exist");
 	$use_ssl = 0;
 	}
 if ($use_ssl) {
@@ -359,7 +359,7 @@ foreach $pl (split(/\s+/, $config{'preload'})) {
 	$pkg =~ s/[^A-Za-z0-9]/_/g;
 	eval "package $pkg; do '$config{'root'}/$lib'";
 	if ($@) {
-		print STDERR "Failed to pre-load $lib in $pkg : $@\n";
+		&log_error("Failed to pre-load $lib in $pkg : $@");
 		}
 	}
 foreach $pl (split(/\s+/, $config{'premodules'})) {
@@ -372,13 +372,13 @@ foreach $pl (split(/\s+/, $config{'premodules'})) {
 	push(@INC, "$config{'root'}/$dir");
 	eval "package $mod; use $mod ()";
 	if ($@) {
-		print STDERR "Failed to pre-load $mod : $@\n";
+		&log_error("Failed to pre-load $mod : $@");
 		}
 	}
 foreach $mod (split(/\s+/, $config{'preuse'})) {
 	eval "use $mod;";
 	if ($@) {
-		print STDERR "Failed to pre-load $mod : $@\n";
+		&log_error("Failed to pre-load $mod : $@");
 		}
 	}
 
@@ -527,25 +527,25 @@ for($i=0; $i<@sockets; $i++) {
 		}
 	}
 foreach $se (@sockerrs) {
-	print STDERR $se,"\n";
+	&log_error($se);
 	}
 
 # If all binds failed, try binding to any address
 if (!@socketfhs && !$tried_inaddr_any) {
-	print STDERR "Falling back to listening on any address\n";
+	&log_error("Falling back to listening on any address");
 	$fh = "MAIN";
 	socket($fh, PF_INET(), SOCK_STREAM, $proto) ||
 		die "Failed to open socket : $!";
 	setsockopt($fh, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
 	if (!bind($fh, pack_sockaddr_in($sockets[0]->[1], INADDR_ANY))) {
-		print STDERR "Failed to bind to port $sockets[0]->[1] : $!\n";
+		&log_error("Failed to bind to port $sockets[0]->[1] : $!");
 		exit(1);
 		}
 	listen($fh, &get_somaxconn());
 	push(@socketfhs, $fh);
 	}
 elsif (!@socketfhs && $tried_inaddr_any) {
-	print STDERR "Could not listen on any ports";
+	&log_error("Could not listen on any ports");
 	exit(1);
 	}
 
@@ -696,7 +696,7 @@ while(1) {
 			if ($childstarts{$c} &&
 			    $age > $config{'maxlifetime'}) {
 				kill(9, $c);
-				print STDERR "Killing long-running process $c after $age sconds\n";
+				&log_error("Killing long-running process $c after $age sconds");
 				delete($childstarts{$c});
 				}
 			}
@@ -824,7 +824,7 @@ while(1) {
 			$ipconns = $ipconnmap{$peera};
 			if ($config{'maxconns_per_ip'} >= 0 &&
 			    @$ipconns > $config{'maxconns_per_ip'}) {
-				print STDERR "Too many connections (",scalar(@$ipconns),") from IP $peera\n";
+				&log_error("Too many connections (",scalar(@$ipconns),") from IP $peera");
 				close(SOCK);
 				next;
 				}
@@ -835,7 +835,7 @@ while(1) {
 			$netconns = $netconnmap{$peernet};
 			if ($config{'maxconns_per_net'} >= 0 &&
 			    @$netconns > $config{'maxconns_per_net'}) {
-				print STDERR "Too many connections (",scalar(@$netconns),") from network $peernet\n";
+				&log_error("Too many connections (",scalar(@$netconns),") from network $peernet");
 				close(SOCK);
 				next;
 				}
@@ -887,8 +887,8 @@ while(1) {
 			# Work out the hostname for this web server
 			$host = &get_socket_name(SOCK, $ipv6fhs{$s});
 			if (!$host) {
-				print STDERR
-				    "Failed to get local socket name : $!\n";
+				&log_error(
+				    "Failed to get local socket name : $!");
 				close(SOCK);
 				next;
 				}
@@ -1253,7 +1253,7 @@ while(1) {
 			elsif ($inline =~ /\S/) {
 				# Unknown line from pipe?
 				print DEBUG "main: Unknown line from pipe $inline\n";
-				print STDERR "Unknown line from pipe $inline\n";
+				&log_error("Unknown line from pipe $inline");
 				}
 			else {
 				# close pipe
@@ -1974,9 +1974,9 @@ if ($config{'session'} && !$validated) {
 				}
 			elsif ($1 == 3) {
 				# Session is OK, but from the wrong IP
-				print STDERR "Session $session_id was ",
+				&log_error("Session $session_id was ",
 				  "used from $acptip instead of ",
-				  "original IP $2\n";
+				  "original IP $2");
 				}
 			else {
 				# Invalid session ID .. don't set
@@ -1990,8 +1990,8 @@ if ($config{'session'} && !$validated) {
 		$baseauthuser = $can[3] || $authuser;
 		my $auser = &get_user_details($baseauthuser, $authuser);
 		if (!$auser) {
-			print STDERR "Session $session_id is for user ",
-				     "$authuser who does not exist\n";
+			&log_error("Session $session_id is for user ",
+				     "$authuser who does not exist");
 			$validated = 0;
 			$already_authuser = $authuser = undef;
 			}
@@ -3274,9 +3274,9 @@ else {
 		}
 	if ($@) {
 		# Somehow a string come through that contains invalid chars
-		print STDERR $@,"\n";
+		&log_error($@);
 		for(my $i=0; my @stack = caller($i); $i++) {
-			print STDERR join(" ", @stack),"\n";
+			&log_error(join(" ", @stack));
 			}
 		}
 	}
@@ -3741,7 +3741,7 @@ if ($use_pam) {
 				$rcode = 2;
 				}
 			else {
-				print STDERR "Unknown pam_acct_mgmt return value : $acct_ret\n";
+				&log_error("Unknown pam_acct_mgmt return value : $acct_ret");
 				$rcode = 0;
 				}
 			}
@@ -4636,23 +4636,23 @@ local $ssl_ctx;
 eval { $ssl_ctx = Net::SSLeay::new_x_ctx() };
 $ssl_ctx ||= Net::SSLeay::CTX_new();
 if (!$ssl_ctx) {
-	print STDERR "Failed to create SSL context : $!\n";
+	&log_error("Failed to create SSL context : $!");
 	return undef;
 	}
 my @extracas = $extracas && $extracas ne "none" ? split(/\s+/, $extracas) : ();
 
 # Validate cert files
 if (!-r $keyfile) {
-	print STDERR "SSL key file $keyfile does not exist\n";
+	&log_error("SSL key file $keyfile does not exist");
 	return undef;
 	}
 if ($certfile && !-r $certfile) {
-	print STDERR "SSL cert file $certfile does not exist\n";
+	&log_error("SSL cert file $certfile does not exist");
 	return undef;
 	}
 foreach my $p (@extracas) {
 	if (!-r $p) {
-		print STDERR "SSL CA file $p does not exist\n";
+		&log_error("SSL CA file $p does not exist");
 		return undef;
 		}
 	}
@@ -4671,7 +4671,7 @@ if (-r $config{'dhparams_file'}) {
 		};
 	}
 if ($@) {
-	print STDERR "Failed to load $config{'dhparams_file'} : $@\n";
+	&log_error("Failed to load $config{'dhparams_file'} : $@");
 	}
 
 if ($client_certs) {
@@ -4692,12 +4692,12 @@ foreach my $p (@extracas) {
 
 if (!Net::SSLeay::CTX_use_PrivateKey_file($ssl_ctx, $keyfile,
 					  &Net::SSLeay::FILETYPE_PEM)) {
-	print STDERR "Failed to open SSL key $keyfile\n";
+	&log_error("Failed to open SSL key $keyfile");
 	return undef;
 	}
 if (!Net::SSLeay::CTX_use_certificate_file($ssl_ctx, $certfile || $keyfile,
 					   &Net::SSLeay::FILETYPE_PEM)) {
-	print STDERR "Failed to open SSL cert ".($certfile || $keyfile)."\n";
+	&log_error("Failed to open SSL cert ".($certfile || $keyfile));
 	return undef;
 	}
 
@@ -4745,7 +4745,7 @@ sub ssl_connection_for_ip
 local ($sock, $ipv6) = @_;
 local $sn = getsockname($sock);
 if (!$sn) {
-	print STDERR "Failed to get address for socket $sock\n";
+	&log_error("Failed to get address for socket $sock");
 	return undef;
 	}
 local (undef, $myip, undef) = &get_address_ip($sn, $ipv6);
@@ -4756,8 +4756,8 @@ if ($config{'ssl_cipher_list'}) {
 	eval "Net::SSLeay::set_cipher_list(
 			\$ssl_con, \$config{'ssl_cipher_list'})";
 	if ($@) {
-		print STDERR "SSL cipher $config{'ssl_cipher_list'} failed : ",
-			     "$@\n";
+		&log_error("SSL cipher $config{'ssl_cipher_list'} failed : ",
+			     $@);
 		}
 	}
 
@@ -5012,7 +5012,7 @@ if ($config{'twofactorfile'}) {
 if ($config{'userdb'}) {
 	my $dbh = &connect_userdb($config{'userdb'});
 	if (!ref($dbh)) {
-		print STDERR "Failed to open users database : $dbh\n"
+		&log_error("Failed to open users database : $dbh");
 		}
 	else {
 		&disconnect_userdb($config{'userdb'}, $dbh);
@@ -5056,7 +5056,7 @@ if ($config{'userdb'}) {
 	my %attrs;
 	if (!ref($dbh)) {
 		print DEBUG "get_user_details: Failed : $dbh\n";
-		print STDERR "Failed to connect to user database : $dbh\n";
+		&log_error("Failed to connect to user database : $dbh");
 		}
 	elsif ($proto eq "mysql" || $proto eq "postgresql") {
 		# Fetch user ID and password with SQL
@@ -5064,8 +5064,8 @@ if ($config{'userdb'}) {
 		my $cmd = $dbh->prepare(
 			"select id,pass from webmin_user where name = ?");
 		if (!$cmd || !$cmd->execute($username)) {
-			print STDERR "Failed to lookup user : ",
-				     $dbh->errstr,"\n";
+			&log_error("Failed to lookup user : ",
+				     $dbh->errstr);
 			return undef;
 			}
 		my ($id, $pass) = $cmd->fetchrow();
@@ -5083,8 +5083,8 @@ if ($config{'userdb'}) {
 		my $cmd = $dbh->prepare(
 			"select attr,value from webmin_user_attr where id = ?");
 		if (!$cmd || !$cmd->execute($id)) {
-			print STDERR "Failed to lookup user attrs : ",
-				     $dbh->errstr,"\n";
+			&log_error("Failed to lookup user attrs : ",
+				     $dbh->errstr);
 			return undef;
 			}
 		$user = { 'name' => $username,
@@ -5105,8 +5105,8 @@ if ($config{'userdb'}) {
                                   $args->{'userclass'}.'))',
 			scope => 'sub');
 		if (!$rv || $rv->code) {
-			print STDERR "Failed to lookup user : ",
-				     ($rv ? $rv->error : "Unknown error"),"\n";
+			&log_error("Failed to lookup user : ",
+				     ($rv ? $rv->error : "Unknown error"));
 			return undef;
 			}
 		my ($u) = $rv->all_entries();
@@ -5645,10 +5645,10 @@ if ($path ne "/") {
 my $request = HTTP::Request->new($method, $request_uri, $ho,
 				 $posted_data);
 if ($config{'dav_debug'}) {
-	print STDERR "DAV request :\n";
-	print STDERR "---------------------------------------------\n";
-	print STDERR $request->as_string();
-	print STDERR "---------------------------------------------\n";
+	&log_error("DAV request :");
+	&log_error("---------------------------------------------");
+	&log_error($request->as_string());
+	&log_error("---------------------------------------------");
 	}
 my $response = $webdav->run($request);
 
@@ -5669,17 +5669,16 @@ local $rv = &write_keep_alive(0);
 &write_data($content);
 
 if ($config{'dav_debug'}) {
-	print STDERR "DAV reply :\n";
-	print STDERR "---------------------------------------------\n";
-	print STDERR "HTTP/1.1 ",$response->code()," ",$response->message(),"\r\n";
+	&log_error("DAV reply :");
+	&log_error("---------------------------------------------");
+	&log_error("HTTP/1.1 ",$response->code()," ",$response->message());
 	foreach my $h ($response->header_field_names) {
 		next if (lc($h) eq "connection" || lc($h) eq "content-length");
-		print STDERR "$h: ",$response->header($h),"\r\n";
+		&log_error("$h: ",$response->header($h));
 		}
-	print STDERR "Content-length: ",length($content),"\r\n";
-	print STDERR "\r\n";
-	print STDERR $content;
-	print STDERR "---------------------------------------------\n";
+	&log_error("Content-length: ",length($content));
+	&log_error($content);
+	&log_error("---------------------------------------------");
 	}
 
 # Log it
@@ -5974,12 +5973,12 @@ if ($PASSINw) {
 local $ptyfh = new IO::Pty;
 print DEBUG "check_sudo_permissions: ptyfh=$ptyfh\n";
 if (!$ptyfh) {
-	print STDERR "Failed to create new PTY with IO::Pty\n";
+	&log_error("Failed to create new PTY with IO::Pty");
 	return 0;
 	}
 local @uinfo = getpwnam($user);
 if (!@uinfo) {
-	print STDERR "Unix user $user does not exist for sudo\n";
+	&log_error("Unix user $user does not exist for sudo");
 	return 0;
 	}
 
@@ -5994,7 +5993,7 @@ print DEBUG "check_sudo_permissions: about to fork..\n";
 local $pid = fork();
 print DEBUG "check_sudo_permissions: fork=$pid pid=$$\n";
 if ($pid < 0) {
-	print STDERR "fork for sudo failed : $!\n";
+	&log_error("fork for sudo failed : $!");
 	return 0;
 	}
 if (!$pid) {
@@ -6198,8 +6197,8 @@ if ($config{'userdb'}) {
 		if (!$cmd || !$cmd->execute("!".$uinfo->{'pass'},
 					    $uinfo->{'id'})) {
 			# Update failed
-			print STDERR "Failed to lock password : ",
-				     $dbh->errstr,"\n";
+			&log_error("Failed to lock password : ",
+				     $dbh->errstr);
 			return -1;
 			}
 		$cmd->finish() if ($cmd);
@@ -6209,8 +6208,8 @@ if ($config{'userdb'}) {
 		my $rv = $dbh->modify($uinfo->{'id'},
 		      replace => { 'webminPass' => '!'.$uinfo->{'pass'} });
 		if (!$rv || $rv->code) {
-			print STDERR "Failed to lock password : ",
-				     ($rv ? $rv->error : "Unknown error"),"\n";
+			&log_error("Failed to lock password : ",
+				     ($rv ? $rv->error : "Unknown error"));
 			return -1;
 			}
 		}
@@ -6477,13 +6476,13 @@ foreach my $f (readdir(CRONS)) {
 		my $broken = 0;
 		foreach my $n ('module', 'func') {
 			if (!$cron{$n}) {
-				print STDERR "Cron $1 missing $n\n";
+				&log_error("Cron $1 missing $n");
 				$broken = 1;
 				}
 			}
 		if (!$cron{'interval'} && $cron{'mins'} eq '' &&
 		    $cron{'special'} eq '' && !$cron{'boot'}) {
-			print STDERR "Cron $1 missing any time spec\n";
+			&log_error("Cron $1 missing any time spec");
 			$broken = 1;
 			}
 		if ($cron{'special'} eq 'hourly') {
@@ -6528,7 +6527,7 @@ foreach my $f (readdir(CRONS)) {
 			$cron{'weekdays'} = '*';
 			}
 		elsif ($cron{'special'}) {
-			print STDERR "Cron $1 invalid special time $cron{'special'}\n";
+			&log_error("Cron $1 invalid special time $cron{'special'}");
 			$broken = 1;
 			}
 		if ($cron{'special'}) {
@@ -6773,7 +6772,7 @@ if (!$pid) {
 		die \$@ if (\$@);
 		";
 	if ($@) {
-		print STDERR "Perl failure : $@\n";
+		&log_error("Perl failure : $@");
 		}
 	exit(0);
 	}
