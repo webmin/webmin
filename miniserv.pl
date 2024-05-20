@@ -696,7 +696,7 @@ while(1) {
 			if ($childstarts{$c} &&
 			    $age > $config{'maxlifetime'}) {
 				kill(9, $c);
-				&log_error("Killing long-running process $c after $age sconds");
+				&log_error("Killing long-running process $c after $age seconds");
 				delete($childstarts{$c});
 				}
 			}
