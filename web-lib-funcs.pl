@@ -1712,7 +1712,7 @@ for(my $i=0; my @stack_ = caller($i); $i++) {
 	push(@stack, \@stack_);
 	}
 my $err_caller;
-my $err_last_eval  = $main::error_last_eval;
+my $err_last_eval = $gconfig{'error_stack'} ? $main::error_last_eval : "";
 $err_last_eval =~ s/\n$// if ($err_last_eval);
 $err_caller = "$stack[0]->[1] (line $stack[0]->[2])"
 	if ($stack[0]->[1] && $stack[0]->[2]);
