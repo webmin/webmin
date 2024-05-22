@@ -23,7 +23,7 @@ print &ui_table_start($text{'sasl_title'}, "width=100%", 2);
 %opts = map { $_, 1 }
 	    split(/[\s,]+/, &get_current_value("smtpd_sasl_security_options"));
 @cbs = ( );
-foreach $o ("noanonymous", "noplaintext") {
+foreach $o ("noanonymous", "noplaintext", "noactive", "nodictionary", "forward_secrecy") {
 	push(@cbs, &ui_checkbox("sasl_opts", $o, $text{'sasl_'.$o}, $opts{$o}));
 	}
 print &ui_table_row($text{'sasl_opts'}, join("<br>\n", @cbs), 3);
