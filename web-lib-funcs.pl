@@ -11980,6 +11980,24 @@ else {
 return 1;
 }
 
+=head2 clear_http_cache(url)
+
+If a URL is in the cache, remove it
+
+=cut
+sub clear_http_cache
+{
+my $cfile = $url;
+$cfile =~ s/\//_/g;
+return 0 if (!$cfile);
+$cfile = "$main::http_cache_directory/$cfile";
+if (-r $cfile) {
+	&unlink_file($cfile);
+	return 1;
+	}
+return 0;
+}
+
 =head2 check_in_http_cache(url)
 
 If some URL is in the cache and valid, return the filename for it. Mainly
