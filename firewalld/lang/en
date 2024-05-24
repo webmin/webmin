@@ -35,6 +35,7 @@ index_ifaces_sel=Selected interfaces:
 index_ifaces_apply=Apply
 ifaces_err=Failed to apply interfaces
 index_blockip_go=Block IP/CIDR
+index_blockip_placeholder=$1 or $2
 index_blockip_permanent=Permanent block
 block_err=Failed to block IP
 block_eip=Invalid IP address or CIDR range
