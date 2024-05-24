@@ -504,4 +504,21 @@ my $conf_dir = $config{'config_dir'} || '/etc/firewalld';
 return (glob("$conf_dir/*.xml"), glob("$conf_dir/*/*.xml"));
 }
 
+# block_ip(ip, zone, [permanent])
+# Block given IP address temporarily or permanently
+sub block_ip
+{
+my ($ip, $zone, $permanent) = @_;
+my $type = $permanent ? ' --permanent' : "";
+my $family = $ip =~ /:/ ? 'ipv6' : 'ipv4';
+my $handle_action = $config{'packet_handling'} eq '1' ? 'reject' : 'drop';
+my $out = &backquote_logged(
+	"$config{'firewall_cmd'}$type --zone=".quotemeta($zone).
+		 " --add-rich-rule=\"rule family=$family source address=".
+		 	quotemeta($ip)." $handle_action\" 2>&1");
+my $rs = $? ? $out : undef;
+&apply_firewalld() if ($permanent);
+return $rs;
+}
+
 1;
