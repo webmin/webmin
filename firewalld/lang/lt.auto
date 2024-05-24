@@ -35,6 +35,7 @@ index_ifaces_sel=Pasirinktos sąsajos:
 index_ifaces_apply=Taikyti
 ifaces_err=Nepavyko pritaikyti sąsajų
 index_blockip_go=Blokuoti IP/CIDR
+index_blockip_placeholder=$1 arba $2
 index_blockip_permanent=Nuolatinis blokas
 block_err=Nepavyko užblokuoti IP
 block_eip=Netinkamas IP adresas arba CIDR diapazonas

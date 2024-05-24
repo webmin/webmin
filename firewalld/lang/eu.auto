@@ -35,6 +35,7 @@ index_ifaces_sel=Hautatutako interfazeak:
 index_ifaces_apply=Aplikatu
 ifaces_err=Ezin izan dira aplikatu interfazeak
 index_blockip_go=Blokeatu IP/CIDR
+index_blockip_placeholder=$1 edo $2
 index_blockip_permanent=Bloke iraunkorra
 block_err=Ezin izan da IP blokeatu
 block_eip=IP helbidea edo CIDR barruti baliogabea

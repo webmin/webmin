@@ -35,6 +35,7 @@ index_ifaces_sel=อินเทอร์เฟซที่เลือก:
 index_ifaces_apply=นำมาใช้
 ifaces_err=ล้มเหลวในการใช้อินเทอร์เฟซ
 index_blockip_go=บล็อก IP/CIDR
+index_blockip_placeholder=$1 หรือ $2
 index_blockip_permanent=บล็อกถาวร
 block_err=ไม่สามารถบล็อก IP
 block_eip=ที่อยู่ IP หรือช่วง CIDR ไม่ถูกต้อง

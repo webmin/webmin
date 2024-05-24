@@ -35,6 +35,7 @@ index_ifaces_sel=Antara muka yang dipilih:
 index_ifaces_apply=Mohon
 ifaces_err=Gagal menggunakan antara muka
 index_blockip_go=Sekat IP/CIDR
+index_blockip_placeholder=$1 atau $2 
 index_blockip_permanent=Blok kekal
 block_err=Gagal menyekat IP
 block_eip=Alamat IP atau julat CIDR tidak sah

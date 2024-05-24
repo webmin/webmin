@@ -35,6 +35,7 @@ index_ifaces_sel=Izbrani vmesniki:
 index_ifaces_apply=Prijavite se
 ifaces_err=Vmesnikov ni bilo mogoče uporabiti
 index_blockip_go=Blokiraj IP/CIDR
+index_blockip_placeholder=$1 ali $2
 index_blockip_permanent=Trajni blok
 block_err=IP-ja ni bilo mogoče blokirati
 block_eip=Neveljaven naslov IP ali obseg CIDR

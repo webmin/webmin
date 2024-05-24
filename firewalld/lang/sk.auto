@@ -35,6 +35,7 @@ index_ifaces_sel=Vybrané rozhrania:
 index_ifaces_apply=Použiť
 ifaces_err=Nepodarilo sa použiť rozhrania
 index_blockip_go=Blokovať IP/CIDR
+index_blockip_placeholder=$1 alebo $2
 index_blockip_permanent=Trvalý blok
 block_err=Nepodarilo sa zablokovať IP
 block_eip=Neplatná adresa IP alebo rozsah CIDR

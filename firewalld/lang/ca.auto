@@ -5,6 +5,7 @@ index_ifaces_sel=Interfícies seleccionades:
 index_ifaces_apply=Aplicar
 ifaces_err=No s'han pogut aplicar les interfícies
 index_blockip_go=Bloqueja IP/CIDR
+index_blockip_placeholder=$1 o $2
 index_blockip_permanent=Bloc permanent
 block_err=No s'ha pogut bloquejar la IP
 block_eip=L'adreça IP o l'interval CIDR no són vàlids

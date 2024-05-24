@@ -35,6 +35,7 @@ index_ifaces_sel=Các giao diện đã chọn:
 index_ifaces_apply=Nộp đơn
 ifaces_err=Không thể áp dụng giao diện
 index_blockip_go=Chặn IP/CIDR
+index_blockip_placeholder=$1 hoặc 2
 index_blockip_permanent=khối vĩnh viễn
 block_err=Không chặn được IP
 block_eip=Địa chỉ IP hoặc phạm vi CIDR không hợp lệ

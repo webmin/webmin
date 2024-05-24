@@ -5,6 +5,7 @@ index_ifaces_sel=Ausgewählte Schnittstellen:
 index_ifaces_apply=Anwenden
 ifaces_err=Schnittstellen konnten nicht angewendet werden
 index_blockip_go=IP/CIDR blockieren
+index_blockip_placeholder=$1 oder 2
 index_blockip_permanent=Dauerhafte Sperre
 block_err=IP konnte nicht blockiert werden
 block_eip=Ungültige IP-Adresse oder ungültiger CIDR-Bereich

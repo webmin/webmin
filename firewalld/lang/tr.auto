@@ -35,6 +35,7 @@ index_ifaces_sel=Seçilen arayüzler:
 index_ifaces_apply=Uygulamak
 ifaces_err=Arayüzler uygulanamadı
 index_blockip_go=IP/CIDR'yi engelle
+index_blockip_placeholder=$1 yada 2
 index_blockip_permanent=Kalıcı blok
 block_err=IP engellenemedi
 block_eip=Geçersiz IP adresi veya CIDR aralığı

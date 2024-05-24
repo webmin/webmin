@@ -35,6 +35,7 @@ index_ifaces_sel=Geselekteerde koppelvlakke:
 index_ifaces_apply=Doen aansoek
 ifaces_err=Kon nie koppelvlakke toepas nie
 index_blockip_go=Blokkeer IP/CIDR
+index_blockip_placeholder=$1 of $2
 index_blockip_permanent=Permanente blok
 block_err=Kon nie IP blokkeer nie
 block_eip=Ongeldige IP-adres of CIDR-reeks

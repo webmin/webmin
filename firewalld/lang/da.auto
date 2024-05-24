@@ -35,6 +35,7 @@ index_ifaces_sel=Udvalgte grænseflader:
 index_ifaces_apply=ansøge
 ifaces_err=Kunne ikke anvende grænseflader
 index_blockip_go=Bloker IP/CIDR
+index_blockip_placeholder=$1 eller $2
 index_blockip_permanent=Permanent blokering
 block_err=Kunne ikke blokere IP
 block_eip=Ugyldig IP-adresse eller CIDR-interval

@@ -35,6 +35,7 @@ index_ifaces_sel=Atlasītās saskarnes:
 index_ifaces_apply=Pieteikties
 ifaces_err=Neizdevās lietot saskarnes
 index_blockip_go=Bloķēt IP/CIDR
+index_blockip_placeholder=$1 vai $2
 index_blockip_permanent=Pastāvīgs bloks
 block_err=Neizdevās bloķēt IP
 block_eip=Nederīga IP adrese vai CIDR diapazons

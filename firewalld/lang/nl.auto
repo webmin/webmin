@@ -35,6 +35,7 @@ index_ifaces_sel=Geselecteerde interfaces:
 index_ifaces_apply=Toepassen
 ifaces_err=Kan interfaces niet toepassen
 index_blockip_go=Blokkeer IP/CIDR
+index_blockip_placeholder=$1 of 2
 index_blockip_permanent=Permanente blokkering
 block_err=Kan IP niet blokkeren
 block_eip=Ongeldig IP-adres of CIDR-bereik

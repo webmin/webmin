@@ -35,6 +35,7 @@ index_ifaces_sel=選択したインターフェース：
 index_ifaces_apply=申し込み
 ifaces_err=インターフェースの適用に失敗しました
 index_blockip_go=IP/CIDR をブロック
+index_blockip_placeholder=$1 または $2
 index_blockip_permanent=永久ブロック
 block_err=IPをブロックできませんでした
 block_eip=無効な IP アドレスまたは CIDR 範囲

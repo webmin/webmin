@@ -35,6 +35,7 @@ index_ifaces_sel=选择的接口：
 index_ifaces_apply=申请
 ifaces_err=应用接口失败
 index_blockip_go=阻止 IP/CIDR
+index_blockip_placeholder=$1 或 $2
 index_blockip_permanent=永久封锁
 block_err=封禁 IP 失败
 block_eip=IP 地址或 CIDR 范围无效

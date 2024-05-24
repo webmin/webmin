@@ -35,6 +35,7 @@ index_ifaces_sel=Выбранные интерфейсы:
 index_ifaces_apply=Применять
 ifaces_err=Не удалось применить интерфейсы
 index_blockip_go=Блокировать IP/CIDR
+index_blockip_placeholder=$1 или $2
 index_blockip_permanent=Постоянный блок
 block_err=Не удалось заблокировать IP
 block_eip=Неверный IP-адрес или диапазон CIDR

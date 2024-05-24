@@ -35,6 +35,7 @@ index_ifaces_sel=Επιλεγμένες διεπαφές:
 index_ifaces_apply=Ισχύουν
 ifaces_err=Αποτυχία εφαρμογής διεπαφών
 index_blockip_go=Αποκλεισμός IP/CIDR
+index_blockip_placeholder=$1 ή $2 
 index_blockip_permanent=Μόνιμο μπλοκ
 block_err=Αποτυχία αποκλεισμού IP
 block_eip=Μη έγκυρη διεύθυνση IP ή εύρος CIDR

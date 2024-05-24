@@ -35,6 +35,7 @@ index_ifaces_sel=Valda gränssnitt:
 index_ifaces_apply=Tillämpa
 ifaces_err=Det gick inte att tillämpa gränssnitt
 index_blockip_go=Blockera IP/CIDR
+index_blockip_placeholder=$1 eller $2
 index_blockip_permanent=Permanent block
 block_err=Det gick inte att blockera IP
 block_eip=Ogiltig IP-adress eller CIDR-intervall

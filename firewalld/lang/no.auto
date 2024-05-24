@@ -5,6 +5,7 @@ index_ifaces_sel=Valgte grensesnitt:
 index_ifaces_apply=Søke om
 ifaces_err=Kunne ikke bruke grensesnitt
 index_blockip_go=Blokker IP/CIDR
+index_blockip_placeholder=$1 eller $2
 index_blockip_permanent=Permanent blokk
 block_err=Kunne ikke blokkere IP
 block_eip=Ugyldig IP-adresse eller CIDR-område

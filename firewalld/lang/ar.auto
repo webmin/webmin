@@ -35,6 +35,7 @@ index_ifaces_sel=واجهات مختارة:
 index_ifaces_apply=يتقدم
 ifaces_err=فشل في تطبيق الواجهات
 index_blockip_go=حظر IP/CIDR
+index_blockip_placeholder=٪1 او 2
 index_blockip_permanent=كتلة دائمة
 block_err=فشل في حظر IP
 block_eip=عنوان IP أو نطاق CIDR غير صالح
