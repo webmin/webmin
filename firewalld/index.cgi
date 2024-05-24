@@ -151,10 +151,11 @@ if ($ok) {
 	# Block given IP
 	print "<br>".&ui_form_start("block_ip.cgi");
 	print &ui_hidden("zone", $zone->{'name'});
-	print $text{'index_blockip'}. "&nbsp;&nbsp;",
-	      &ui_textbox("ip", undef, 20),
-	      &ui_submit($text{'index_blockip_go'}, "block")."&nbsp;".
-	      	&ui_checkbox("permanent", 1, $text{'index_blockip_permanent'}, 1);
+	print &ui_submit($text{'index_blockip_go'}, "block"),
+	      &ui_textbox("ip", undef, 21, undef, undef,
+	      	"placeholder='1.2.3.4 $text{'or'} 2001:db8::1/64'")."&nbsp;".
+	      		&ui_checkbox("permanent", 1,
+				$text{'index_blockip_permanent'}, 1);
 	print &ui_form_end();
 	print &ui_hr();
 	
