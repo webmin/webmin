@@ -16,6 +16,7 @@ longcategory_cluster=Moduliai, galintys valdyti kelis serverius iš vienos sąsa
 longcategory_info=Moduliai, rodantys informaciją apie jūsų sistemą
 longcategory_=Moduliai, atliekantys kitas įvairias užduotis
 
+or=arba
 error_previous=Ankstesnis puslapis
 error_stack=Skambinkite „Stack Trace“
 error_file=Byla
@@ -201,3 +202,5 @@ file_truncated_message_head=atnešė $1 duomenų pradžią, sutrumpino $2 iš $3
 file_truncated_message_tail=parsivežta duomenų pabaigos pabaiga $1, sutrumpinta $2 iš $3 
 
 defcert_error=Naudojamas numatytasis $1 susietas SSL sertifikatas. Labai patartina atnaujinti numatytąjį <tt>$2</tt> sertifikatą prieš prisijungiant.
+
+main_error_details=Klaidos detalės

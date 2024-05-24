@@ -2,6 +2,7 @@ category_=Alat
 
 longcategory_=Modul yang menjalankan tugas lain-lain
 
+or=atau
 fail=Gagal
 
 config_emodule=Modul tidak wujud
@@ -49,3 +50,5 @@ file_truncated_message_head=mengambil $1 data, dipotong $2 daripada $3
 file_truncated_message_tail=mengambil akhir $1 data, terpotong $2 daripada $3 
 
 defcert_error=Lalai $1 sijil SSL yang digabungkan sedang digunakan. Adalah sangat dinasihatkan untuk mengemas kini sijil lalai <tt>$2</tt> sebelum meneruskan dengan log masuk.
+
+main_error_details=Butiran ralat

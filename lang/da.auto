@@ -2,6 +2,7 @@ category_=Værktøjer
 
 longcategory_=Moduler, der udfører andre diverse opgaver
 
+or=eller
 config_emodule=Modulet findes ikke
 
 help_efile3=Kunne ikke læse hjælpesiden $1 fra modulet $2
@@ -34,3 +35,5 @@ file_truncated_message_head=hentet start $1 af data, afkortet $2 ud af $3
 file_truncated_message_tail=hentet slutning $1 af data, afkortet $2 ud af $3 
 
 defcert_error=Standard $1 bundtet SSL-certifikat bruges. Det anbefales stærkt at opdatere standard <tt>$2</tt> certifikat, før du fortsætter med login.
+
+main_error_details=Fejldetaljer

@@ -7,6 +7,7 @@ category_=工具類
 
 longcategory_=執行其他雜項任務的模塊
 
+or=或者
 error_previous=上一頁
 error_stack=調用堆棧跟踪
 error_file=文件
@@ -192,3 +193,5 @@ file_truncated_message_head=已提取數據的開頭 $1，在 $3中被截斷了 
 file_truncated_message_tail=已提取數據的結尾 $1，在 $3中被截斷了 $2
 
 defcert_error=正在使用默認的 $1 捆綁 SSL 證書。強烈建議在繼續登錄之前更新默認的 <tt>$2</tt> 證書。
+
+main_error_details=錯誤詳情

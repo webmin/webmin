@@ -43,6 +43,7 @@ header_servers=Webmin serveri
 index=indekss
 yes=Jā
 no=Nē
+or=vai
 save=Saglabāt
 create=Izveidot
 delete=Dzēst
@@ -391,3 +392,5 @@ file_truncated_message_head=ienesa datu sākumu $1, saīsināja $2 no $3
 file_truncated_message_tail=ienesa datu beigas $1, saīsināja $2 no $3 
 
 defcert_error=Tiek izmantots noklusējuma $1 komplektētais SSL sertifikāts. Pirms pieteikšanās ir ļoti ieteicams atjaunināt noklusējuma <tt>$2</tt> sertifikātu.
+
+main_error_details=Kļūdas informācija

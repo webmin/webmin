@@ -2,6 +2,7 @@ category_=ツール
 
 longcategory_=その他のその他のタスクを実行するモジュール
 
+or=または
 help_efile3=モジュール $2 からヘルプ ページ $1 を読み取ることができませんでした
 help_einclude3=ヘルプ ページ $1 を含めることができませんでした
 
@@ -18,3 +19,5 @@ file_truncated_message_head=データの最初の $1をフェッチし、 $3か�
 file_truncated_message_tail=データの終了 $1をフェッチし、 $3から $2を切り捨てました
 
 defcert_error=デフォルトの $1 バンドル SSL 証明書が使用されています。ログインを続行する前に、デフォルトの <tt>$2</tt> 証明書を更新することを強くお勧めします。
+
+main_error_details=エラーの詳細

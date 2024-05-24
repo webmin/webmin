@@ -2,6 +2,7 @@ category_=Herramientas
 
 longcategory_=Módulos que realizan otras tareas diversas
 
+or=o
 help_efile3=Error al leer la página de ayuda $1 del módulo $2
 help_einclude3=Error al incluir la página de ayuda $1
 
@@ -22,3 +23,5 @@ file_truncated_message_head=obtenido $1 de inicio de datos, $2 truncado de $3
 file_truncated_message_tail=obtenido el final $1 de los datos, truncado $2 de $3 
 
 defcert_error=Se está utilizando el certificado SSL agrupado predeterminado $1. Se recomienda encarecidamente actualizar el certificado <tt>$2</tt> predeterminado antes de continuar con el inicio de sesión.
+
+main_error_details=Error de detalles

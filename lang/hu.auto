@@ -2,6 +2,7 @@ category_=Eszközök
 
 longcategory_=Egyéb különféle feladatokat ellátó modulok
 
+or=vagy
 error_stack=Hívja a Stack Trace-t
 error_line=Vonal
 error_stackline=A $1 fájlban a $2 sorban hívja a $3
@@ -140,3 +141,5 @@ file_truncated_message_head=lekérte az adatok $1 elejét, a (z) $2 csonkolta a 
 file_truncated_message_tail=lekérte az adatok $1 végét, a (z) $2 csonkolta a (z) $3 -ból
 
 defcert_error=Az alapértelmezett $1 SSL-tanúsítvány használatban van. Javasoljuk, hogy frissítse az alapértelmezett <tt>$2</tt> tanúsítványt, mielőtt folytatná a bejelentkezést.
+
+main_error_details=Hiba részletei

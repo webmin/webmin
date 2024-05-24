@@ -6,6 +6,7 @@ category_=Instrumente
 
 longcategory_=Module care efectuează alte sarcini diverse
 
+or=sau
 fail=A eșuat
 euserdbacl=Nu a reușit să preia ACL-ul utilizatorului : $1
 euserdbacl2=Actualizarea ACL a utilizatorului nu a reușit : $1
@@ -129,3 +130,5 @@ file_truncated_message_head=preluat începutul $1 din date, trunchiat $2 din $3
 file_truncated_message_tail=a fost preluat sfârșitul $1 din date, trunchiat $2 din $3 
 
 defcert_error=Este utilizat certificatul SSL implicit $1. Este foarte recomandat să actualizați certificatul implicit <tt>$2</tt> înainte de a continua cu autentificare.
+
+main_error_details=Detalii despre eroare

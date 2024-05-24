@@ -43,6 +43,7 @@ header_servers=Máy chủ webmin
 index=mục lục
 yes=Đúng
 no=Không
+or=hoặc
 save=Tiết kiệm
 create=Tạo nên
 delete=Xóa bỏ
@@ -391,3 +392,5 @@ file_truncated_message_head=đã tìm nạp bắt đầu $1 dữ liệu, bị c�
 file_truncated_message_tail=đã tìm nạp kết thúc $1 của dữ liệu, bị cắt bớt $2 / $3 
 
 defcert_error=Chứng chỉ SSL đi kèm $1 mặc định đang được sử dụng. Bạn nên cập nhật chứng chỉ <tt>$2</tt> mặc định trước khi tiếp tục đăng nhập.
+
+main_error_details=Chi tiết lỗi

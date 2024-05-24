@@ -22,6 +22,7 @@ longcategory_cluster=מודולים שיכולים לנהל מספר שרתים 
 longcategory_info=מודולים המציגים מידע על המערכת שלך
 longcategory_=מודולים המבצעים משימות שונות אחרות
 
+or=אוֹ
 error_previous=עמוד קודם
 error_stack=התקשר לעקוב אחר סטאק
 error_file=קובץ
@@ -301,3 +302,5 @@ file_truncated_message_head=הביא $1 מתחיל הנתונים, קטוע $2 �
 file_truncated_message_tail=הושג סיום $1 מהנתונים, קטוע $2 מתוך $3 
 
 defcert_error=ברירת המחדל של $1 אישור SSL ארוז בשימוש. מומלץ מאוד לעדכן את אישור ברירת המחדל <tt>$2</tt> לפני שתמשיך בכניסה.
+
+main_error_details=פרטי שגיאה

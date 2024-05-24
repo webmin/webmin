@@ -7,6 +7,7 @@ category_=Náradie
 
 longcategory_=Moduly, ktoré vykonávajú ďalšie rôzne úlohy
 
+or=alebo
 error_previous=predchádzajúca strana
 error_stack=Zavolajte do sledovania zásobníka
 error_file=súbor
@@ -170,3 +171,5 @@ file_truncated_message_head=načítaný začiatok $1 dát, skrátený $2 z $3
 file_truncated_message_tail=načítaný koniec $1 dát, skrátený $2 z $3 
 
 defcert_error=Používa sa predvolený $1 pribalený certifikát SSL. Dôrazne sa odporúča aktualizovať predvolený certifikát <tt>$2</tt> pred pokračovaním v prihlásení.
+
+main_error_details=Detaily chyby
