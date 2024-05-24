@@ -2,6 +2,7 @@ category_=Ferramentas
 
 longcategory_=Módulos que realizam outras tarefas diversas
 
+or=ou
 fail=Falhou
 euserdbacl=Falha ao buscar a ACL do usuário : $1
 euserdbacl2=Falha ao atualizar a ACL do usuário : $1
@@ -68,3 +69,5 @@ file_truncated_message_head=buscado começando $1 de dados, truncado $2 de $3
 file_truncated_message_tail=obtido até o final de $1 de dados, truncado $2 de $3 
 
 defcert_error=O certificado SSL agrupado $1 padrão está sendo usado. É altamente recomendável atualizar o certificado <tt>$2</tt> padrão antes de prosseguir com o login.
+
+main_error_details=Detalhes do erro

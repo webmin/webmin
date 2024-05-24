@@ -4,8 +4,7 @@ index_ifaces_def=Totes les interfícies
 index_ifaces_sel=Interfícies seleccionades:
 index_ifaces_apply=Aplicar
 ifaces_err=No s'han pogut aplicar les interfícies
-index_blockip=Bloqueja IP
-index_blockip_go=Bloc
+index_blockip_go=Bloqueja IP/CIDR
 index_blockip_permanent=Bloc permanent
 block_err=No s'ha pogut bloquejar la IP
 block_eip=L'adreça IP o l'interval CIDR no són vàlids
@@ -38,5 +37,5 @@ list_rules_rule=Regla
 list_rules_plus_more=+ $1 més
 log_save_rules=Regles $1 suprimides
 
-log_ip_block=IP bloquejada temporalment $1
-log_ip_permblock=IP bloquejada permanentment $1
+log_ip_block=IP/CIDR bloquejat temporalment $1
+log_ip_permblock=IP/CIDR bloquejat permanentment $1

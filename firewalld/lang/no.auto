@@ -4,8 +4,7 @@ index_ifaces_def=Alle grensesnitt
 index_ifaces_sel=Valgte grensesnitt:
 index_ifaces_apply=Søke om
 ifaces_err=Kunne ikke bruke grensesnitt
-index_blockip=Blokker IP
-index_blockip_go=Blokkere
+index_blockip_go=Blokker IP/CIDR
 index_blockip_permanent=Permanent blokk
 block_err=Kunne ikke blokkere IP
 block_eip=Ugyldig IP-adresse eller CIDR-område
@@ -38,5 +37,5 @@ list_rules_rule=Regel
 list_rules_plus_more=+ $1 til
 log_save_rules=Slettet $1 regler
 
-log_ip_block=Midlertidig blokkert IP $1
-log_ip_permblock=Permanent blokkert IP $1
+log_ip_block=Midlertidig blokkert IP/CIDR $1
+log_ip_permblock=Permanent blokkert IP/CIDR $1

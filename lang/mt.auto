@@ -43,6 +43,7 @@ header_servers=Servers tal-Webmin
 index=indiċi
 yes=Iva
 no=Le
+or=jew
 save=Issejvja
 create=Oħloq
 delete=Ħassar
@@ -391,3 +392,5 @@ file_truncated_message_head=ġab il-bidu ta ' $1 ta' dejta, maqtugħ $2 minn $3
 file_truncated_message_tail=ġab it-tmiem $1 ta 'dejta, maqtugħ $2 minn $3 
 
 defcert_error=Qed jintuża ċertifikat SSL magħqud ta' default $1. Huwa rakkomandat ħafna li taġġorna ċ-ċertifikat default <tt>$2</tt> qabel ma tipproċedi bil-login.
+
+main_error_details=Dettalji tal-iżball

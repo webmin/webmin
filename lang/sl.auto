@@ -43,6 +43,7 @@ header_servers=Webmin strežniki
 index=kazalo
 yes=Da
 no=Ne
+or=oz
 save=Shrani
 create=Ustvari
 delete=Izbriši
@@ -391,3 +392,5 @@ file_truncated_message_head=pridobljen začetek $1 podatkov, okrnjen $2 od $3
 file_truncated_message_tail=prenesen konec $1 podatkov, okrnjen $2 od $3 
 
 defcert_error=Uporablja se privzeto potrdilo SSL v paketu $1. Zelo priporočljivo je, da posodobite privzeto potrdilo <tt>$2</tt>, preden nadaljujete s prijavo.
+
+main_error_details=Podrobnosti o napaki

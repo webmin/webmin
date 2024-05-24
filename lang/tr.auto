@@ -21,6 +21,7 @@ longcategory_cluster=Tek bir arabirimden birden çok sunucuyu yönetebilen modü
 longcategory_info=Sisteminiz hakkında bilgi görüntüleyen modüller
 longcategory_=Diğer çeşitli görevleri yerine getiren modüller
 
+or=veya
 error_previous=önceki sayfa
 error_stack=Çağrı Yığını İzi
 error_file=Dosya
@@ -281,3 +282,5 @@ file_truncated_message_head=$1 veri başlangıcından getirildi, $3 / $3 kesildi
 file_truncated_message_tail=Son $1 veri getirildi, $3 / $3 kesildi
 
 defcert_error=Varsayılan $1 paket SSL sertifikası kullanılıyor. Oturum açmaya devam etmeden önce varsayılan <tt>$2</tt> sertifikasını güncellemeniz önemle tavsiye edilir.
+
+main_error_details=Hata detayları

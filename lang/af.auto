@@ -16,6 +16,7 @@ longcategory_cluster=Modules wat verskeie bedieners vanaf 'n enkele koppelvlak k
 longcategory_info=Modules wat inligting oor u stelsel vertoon
 longcategory_=Modules wat ander diverse take verrig
 
+or=of
 error_previous=vorige bladsy
 error_stack=Bel stapelspoor
 error_file=lêer
@@ -203,3 +204,5 @@ file_truncated_message_head=begin $1 van die data, afgekap $2 uit $3
 file_truncated_message_tail=beëindig $1 van die data, afgekap $2 uit $3 
 
 defcert_error=Verstek $1 gebundelde SSL-sertifikaat word gebruik. Dit word sterk aangeraai om verstek <tt>$2</tt>-sertifikaat op te dateer voordat u met aanmelding voortgaan.
+
+main_error_details=Foutbesonderhede

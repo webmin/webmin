@@ -5,6 +5,7 @@ category_=Tresnak
 
 longcategory_=Askotariko zereginak betetzen dituzten moduluak
 
+or=edo
 fail=Huts
 euserdbacl=Huts egin du ACL erabiltzailea eskuratzean : $1
 euserdbacl2=Huts egin du ACL erabiltzailea eguneratzean : $1
@@ -93,3 +94,5 @@ file_truncated_message_head=$1 hasierako datuak eskuratu ditu, $2 moztu dira $3 
 file_truncated_message_tail=datuen $1 amaiera lortu da, $2 moztu da $3 tik
 
 defcert_error=$1 SSL ziurtagiri lehenetsia erabiltzen ari da. Oso gomendagarria da <tt>$2</tt> ziurtagiri lehenetsia eguneratzea saioa hasi aurretik.
+
+main_error_details=Errorearen xehetasunak

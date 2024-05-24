@@ -2,6 +2,7 @@ category_=Przybory
 
 longcategory_=Moduły, które wykonują inne różnorodne zadania
 
+or=Lub
 fail=Nie powiodło się
 
 config_emodule=Moduł nie istnieje
@@ -47,3 +48,5 @@ file_truncated_message_head=pobrano początek $1 danych, obcięto $2 z $3
 file_truncated_message_tail=pobrane zakończenie $1 danych, obcięte $2 z $3 
 
 defcert_error=Używany jest domyślny dołączony certyfikat SSL $1. Zdecydowanie zaleca się aktualizację domyślnego certyfikatu <tt>$2</tt> przed przystąpieniem do logowania.
+
+main_error_details=Szczegóły błędu
