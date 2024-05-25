@@ -58,15 +58,19 @@ else {
 	else {
 		# Work out if SpamAssassin is enabled in procmail
 		if ($warn_procmail && &foreign_check("procmail")) {
-			&foreign_require("procmail", "procmail-lib.pl");
+			&foreign_require("procmail");
 			$spam_enabled = 0;	# Found call to spamassassin
 			$delivery_enabled = 0;	# Found X-Spam: header rule
 			@pmrcs = &get_procmailrc();
 			foreach $pmrc (@pmrcs) {
-				local @recipes =
+				my @recipes =
 					&procmail::parse_procmail_file($pmrc);
-				local $isglobal = $pmrc eq
-					          $config{'global_procmailrc'};
+				my $isglobal = $pmrc eq
+					        $config{'global_procmailrc'} ||
+					       $pmrc eq
+						$config{'procmailrc'} ||
+					       $pmrc eq
+						$procmail::procmailrc;
 				if (&find_spam_recipe(\@recipes)) {
 					$spam_enabled ||= 1;
 					}
