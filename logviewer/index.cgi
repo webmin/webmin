@@ -13,6 +13,7 @@ if (!&has_command('journalctl')) {
 	}
 
 # Display syslog rules
+my @col0;
 my @col1;
 my @col2;
 my @col3;
@@ -20,10 +21,12 @@ if ($access{'syslog'}) {
 	my @systemctl_cmds = &get_systemctl_cmds();
 	foreach $o (@systemctl_cmds) {
 		local @cols;
-		push(@cols, &text('index_cmd', "<tt>".$o->{'cmd'}."</tt>"));
-		push(@cols, $o->{'desc'});
-		push(@cols, &ui_link("view_log.cgi?idx=$o->{'id'}&view=1", $text{'index_view'}) );
-		push(@col1, \@cols);
+		push(@cols, &text('index_cmd', "<tt>".
+			&cleanup_destination($o->{'cmd'})."</tt>"));
+		push(@cols, &cleanup_description($o->{'desc'}));
+		push(@cols, &ui_link("view_log.cgi?idx=$o->{'id'}&view=1",
+			$text{'index_view'}) );
+		push(@col0, \@cols);
 		}
 
 	# System logs from other modules
@@ -73,6 +76,7 @@ if ($access{'syslog'}) {
 						"view_log.cgi?idx=syslog-ng-".
 						$dest->{'index'}."&"."view=1",
 						$text{'index_view'}) );
+					@cols = sort { $a->[2] cmp $b->[2] } @cols;
 					push(@col1, \@cols);
 					}
 				}
@@ -95,9 +99,10 @@ if ($config{'others'} && $access{'others'}) {
 				push(@cols, &text('index_cmd',
 				    "<tt>".&html_escape($o->{'cmd'})."</tt>"));
 				}
-			push(@cols, &html_escape($o->{'desc'}));
+			push(@cols, $o->{'desc'} ? "&#x21FF;&nbsp; ".&html_escape($o->{'desc'}) : "");
 			push(@cols, &ui_link("view_log.cgi?oidx=$o->{'mindex'}".
 				"&omod=$o->{'mod'}&view=1", $text{'index_view'}) );
+			@cols = sort { $a->[2] cmp $b->[2] } @cols;
 			push(@col2, \@cols);
 			}
 		}
@@ -114,18 +119,18 @@ foreach $e (&extra_log_files()) {
 		push(@cols, &text('index_cmd',
 			"<tt>".&html_escape($e->{'cmd'})."</tt>"));
 		}
-	push(@cols, &html_escape($e->{'desc'}));
+	push(@cols, $e->{'desc'} ? "&#x21DD;&nbsp; ".&html_escape($e->{'desc'}) : "");
 	push(@cols, &ui_link("view_log.cgi?extra=".&urlize($e->{'file'} || $e->{'cmd'})."&view=1", $text{'index_view'}) );
+	@cols = sort { $a->[2] cmp $b->[2] } @cols;
 	push(@col3, \@cols);
 	}
 
 # Print sorted table with logs files and commands
-my @acols = (@col1, @col2, @col3);
+my @acols = (@col0, @col1, @col2, @col3);
 print &ui_columns_start( @acols ? [
 	$text{'index_to'},
 	$text{'index_rule'}, "" ] : [ ], 100);
 if (@acols) {
-	@acols = sort { $a->[2] cmp $b->[2] } @acols;
 	foreach my $col (@acols) {
 		print &ui_columns_row($col);
 		}

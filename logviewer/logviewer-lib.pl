@@ -32,28 +32,123 @@ return 0;
 sub get_systemctl_cmds
 {
 my $lines = $config{'lines'} || 1000;
-return !&has_command('journalctl') ? () : (
-	{ 'cmd' => "journalctl --lines $lines -p alert..emerg",
-	  'desc' => $text{'journal_journalctl_alert_emerg'},
-	  'id' => "journal-1", },
-	{ 'cmd' => "journalctl --lines $lines -p err..crit",
-	  'desc' => $text{'journal_journalctl_err_crit'},
-	  'id' => "journal-2", },
-	{ 'cmd' => "journalctl --lines $lines -p notice..warning",
-	  'desc' => $text{'journal_journalctl_notice_warning'},
-	  'id' => "journal-3", },
-	{ 'cmd' => "journalctl --lines $lines -p debug..info",
-	  'desc' => $text{'journal_journalctl_debug_info'},
-	  'id' => "journal-4", },
-	{ 'cmd' => "journalctl --lines $lines -k ",
-	  'desc' => $text{'journal_journalctl_dmesg'},
-	  'id' => "journal-5", },
-	{ 'cmd' => "journalctl --lines $lines -x ",
-	  'desc' => $text{'journal_expla_journalctl'},
-	  'id' => "journal-6", }, 
+my $journalctl_cmd = &has_command('journalctl');
+return () if (!$journalctl_cmd);
+my @rs = (
 	{ 'cmd' => "journalctl --lines $lines",
 	  'desc' => $text{'journal_journalctl'},
+	  'id' => "journal-1", },
+	{ 'cmd' => "journalctl --lines $lines -x ",
+	  'desc' => $text{'journal_expla_journalctl'},
+	  'id' => "journal-2", },
+	{ 'cmd' => "journalctl --lines $lines -p alert..emerg",
+	  'desc' => $text{'journal_journalctl_alert_emerg'},
+	  'id' => "journal-3", },
+	{ 'cmd' => "journalctl --lines $lines -p err..crit",
+	  'desc' => $text{'journal_journalctl_err_crit'},
+	  'id' => "journal-4", },
+	{ 'cmd' => "journalctl --lines $lines -p notice..warning",
+	  'desc' => $text{'journal_journalctl_notice_warning'},
+	  'id' => "journal-5", },
+	{ 'cmd' => "journalctl --lines $lines -p debug..info",
+	  'desc' => $text{'journal_journalctl_debug_info'},
+	  'id' => "journal-6", },
+	{ 'cmd' => "journalctl --lines $lines -k ",
+	  'desc' => $text{'journal_journalctl_dmesg'},
 	  'id' => "journal-7", } );
+return @rs if (!$config{'extras_units'});
+# Add more units from config if exists on the system
+my (%ucache, %uread);
+my $units_cache = "$module_config_directory/units.cache";
+&read_file($units_cache, \%ucache);
+if (!%ucache) {
+	my $out = &backquote_command(
+			"systemctl list-units --full --all ".
+			"-t service --no-legend");
+	foreach my $line (split(/\r?\n/, $out)) {
+		$line =~ s/^[^a-z0-9\-\_\.]+//i;
+		my ($unit, $desc) = (split(/\s+/, $line, 5))[0, 4];
+		$uread{$unit} = $desc;
+		}
+	}
+# Add extra units
+foreach my $unit (split(/\t+/, $config{'extras_units'})) {
+	my %units = %uread ? %uread : %ucache;
+	my ($eunit) = grep { $_ eq $unit } keys %units;
+	next if (!$eunit && $unit !~ /\*/);
+	# Units by wildcard
+	if ($unit =~ /\*/) {
+		my $unit_re = $unit;
+		$unit_re =~ s/\*/.*/g;
+		foreach my $u (keys %units) {
+			if ($u =~ /^$unit_re$/) {
+				push(@rs, { 'cmd' => "journalctl --lines ".
+						"$lines -u $u",
+					    'desc' => "&#x25E6;&nbsp; ".
+						&fix_clashing_description(
+							$units{$u}, $u),
+					    'id' => "journal-$u", });
+				$ucache{$u} = $units{$u};
+				}
+			}
+		next;
+		}
+	# Unit by name
+	my $desc = $units{$eunit} || $unit;
+	$desc =~ s/\.$//;
+	push(@rs, { 'cmd' => "journalctl --lines $lines -u $unit",
+		    'desc' => "&#x25E6;&nbsp; ".
+		    	&fix_clashing_description($desc),
+		    'id' => "journal-$unit", });
+	$ucache{$eunit} = $desc;
+	}
+# Save cache
+if (%uread) {
+	&lock_file($units_cache);
+	&write_file($units_cache, \%ucache);
+	&unlock_file($units_cache);
+	}
+return @rs;
+}
+
+# clear_systemctl_cache()
+# Clear the cache of systemctl units
+sub clear_systemctl_cache
+{
+unlink("$module_config_directory/units.cache");
+}
+
+# cleanup_destination(cmd)
+# Returns a destination of some command cleaned up for display
+sub cleanup_destination
+{
+my $cmd = shift;
+$cmd =~ s/--lines\s+\d+\s*//;
+$cmd =~ s/\.service$//;
+return $cmd;
+}
+
+# cleanup_description(desc)
+# Returns a description cleaned up for display
+sub cleanup_description
+{
+my $desc = shift;
+$desc =~ s/\s+\(Virtualmin\)//;
+return $desc;
+}
+
+# fix_clashing_description(description, service)
+# Returns known clashing descriptions fixed
+sub fix_clashing_description
+{
+my ($desc, $serv) = @_;
+# EL systems name for PHP FastCGI Process Manager is repeated
+if ($serv =~ /php(\d+)-php-fpm/) {
+	my $php_version = $1;
+	$php_version = join(".", split(//, $php_version));
+	$desc =~ s/PHP/PHP $php_version/;
+	}
+return $desc;
 }
 
 # all_log_files(file)
@@ -136,6 +231,13 @@ foreach my $f (@rv) {
 		}
 	}
 return @rv;
+}
+
+# config_post_save
+# Called after the module's configuration has been saved
+sub config_post_save
+{
+&clear_systemctl_cache();
 }
 
 1;
