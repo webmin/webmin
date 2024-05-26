@@ -92,38 +92,6 @@ else {
 		{ 'cmd' => "journalctl -n $lines -u",
 		  'desc' => $text{'journal_journalctl_unit'},
 		  'id' => "journal-u" });
-	# Add extra units
-	foreach my $unit (split(/\t+/, $config{'extras_units'})) {
-		my %units = %uread ? %uread : %ucache;
-		my ($eunit) = grep { $_ eq $unit } keys %units;
-		next if (!$eunit && $unit !~ /\*/);
-		# Units by wildcard
-		if ($unit =~ /\*/) {
-			my $unit_re = $unit;
-			$unit_re =~ s/\*/.*/g;
-			foreach my $u (sort keys %units) {
-				if ($u =~ /^$unit_re$/) {
-					push(@rs,
-						{ 'cmd' => "journalctl -n ".
-							"$lines -u $u",
-						'desc' =>
-						&fix_clashing_description(
-							$units{$u}, $u),
-						'id' => "journal-a-$u", });
-					$ucache{$u} = $units{$u};
-					}
-				}
-			next;
-			}
-		# Unit by name
-		my $desc = $units{$eunit} || $unit;
-		$desc =~ s/\.$//;
-		push(@rs, { 'cmd' => "journalctl -n $lines -u $unit",
-			'desc' =>
-				&fix_clashing_description($desc),
-			'id' => "journal-a-$unit", });
-		$ucache{$eunit} = $desc;
-		}
 	}
 
 # Save cache
