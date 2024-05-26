@@ -6,6 +6,7 @@ category_=Outils
 
 longcategory_=Modules qui effectuent d'autres tâches diverses
 
+or=ou
 error_stack=Trace de pile d'appel
 error_file=Fichier
 error_line=Ligne
@@ -125,3 +126,5 @@ file_truncated_message_head=récupéré au début $1 des données, tronqué $2 s
 file_truncated_message_tail=récupéré se terminant $1 des données, tronqué $2 sur $3 
 
 defcert_error=Le certificat SSL groupé $1 par défaut est utilisé. Il est fortement conseillé de mettre à jour le certificat <tt>$2</tt> par défaut avant de procéder à la connexion.
+
+main_error_details=Détails de l'erreur

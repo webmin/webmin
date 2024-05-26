@@ -1,3 +1,4 @@
 firewall_cmd=firewall-cmd
 init_name=firewalld
 config_dir=/etc/firewalld
+packet_handling=drop

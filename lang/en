@@ -43,6 +43,7 @@ header_servers=Webmin Servers
 index=index
 yes=Yes
 no=No
+or=or
 save=Save
 create=Create
 delete=Delete

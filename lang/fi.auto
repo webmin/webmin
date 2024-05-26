@@ -6,6 +6,7 @@ category_=Työkalut
 
 longcategory_=Moduulit, jotka suorittavat muita sekalaisia tehtäviä
 
+or=tai
 fail=epäonnistui
 euserdbacl=Käyttäjän ACL: n nouto epäonnistui : $1
 euserdbacl2=Käyttäjän ACL: n päivitys epäonnistui : $1
@@ -115,3 +116,5 @@ file_truncated_message_head=noutaa tiedon alun $1, katkaisi $2 / $3
 file_truncated_message_tail=haettu loppu $1 datasta, katkaistu $2 / $3 
 
 defcert_error=Oletusarvoinen $1 niputettu SSL-varmenne on käytössä. On erittäin suositeltavaa päivittää oletussertifikaatti <tt>$2</tt> ennen kuin jatkat kirjautumista.
+
+main_error_details=Virheen tiedot

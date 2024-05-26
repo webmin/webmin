@@ -2,6 +2,7 @@ category_=Werkzeuge
 
 longcategory_=Module, die andere verschiedene Aufgaben ausführen
 
+or=oder
 help_efile3=Hilfeseite $1 aus Modul $2 konnte nicht gelesen werden
 help_einclude3=Die Hilfeseite $1 konnte nicht eingebunden werden
 
@@ -20,3 +21,5 @@ file_truncated_message_head=Anfang $1 der Daten abgerufen, $2 von $3 abgeschnitt
 file_truncated_message_tail=Abgerufenes Ende $1 der Daten, abgeschnittenes $2 von $3 
 
 defcert_error=Das standardmäßige gebündelte SSL-Zertifikat $1 wird verwendet. Es wird dringend empfohlen, das Standardzertifikat <tt>$2</tt> zu aktualisieren, bevor Sie mit der Anmeldung fortfahren.
+
+main_error_details=Fehlerdetails

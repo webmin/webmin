@@ -43,6 +43,7 @@ header_servers=Webmin poslužitelji
 index=indeks
 yes=Da
 no=Ne
+or=ili
 save=Uštedjeti
 create=Stvoriti
 delete=Izbrisati
@@ -391,3 +392,5 @@ file_truncated_message_head=dohvaćen početak $1 podataka, skraćen $2 od $3
 file_truncated_message_tail=dohvaćen završetak $1 podataka, skraćen $2 od $3 
 
 defcert_error=Koristi se zadani $1 SSL certifikat u paketu. Preporučljivo je ažurirati zadani <tt>$2</tt> certifikat prije nego što nastavite s prijavom.
+
+main_error_details=Detalji o grešci

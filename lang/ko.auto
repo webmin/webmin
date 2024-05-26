@@ -4,6 +4,7 @@ category_=도구
 
 longcategory_=기타 기타 작업을 수행하는 모듈
 
+or=또는
 fail=실패한
 euserdbacl=사용자 ACL을 가져 오지 못했습니다  : $1
 euserdbacl2=사용자 ACL을 업데이트하지 못했습니다  : $1
@@ -94,3 +95,5 @@ file_truncated_message_head=데이터의 시작 $1 을 (를) 가져 왔고 $3 �
 file_truncated_message_tail=데이터의 끝 $1 을 (를) 가져 왔습니다. $3 에서 $2 을 (를) 자릅니다
 
 defcert_error=기본 $1 번들 SSL 인증서를 사용 중입니다. 로그인을 진행하기 전에 기본 <tt>$2</tt> 인증서를 업데이트하는 것이 좋습니다.
+
+main_error_details=오류 정보

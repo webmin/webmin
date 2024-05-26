@@ -24,6 +24,10 @@ elsif ($type eq "zone") {
 	return &text("log_${action}_${type}",
 		     "<tt>".&html_escape($object)."</tt>");
 	}
+elsif ($type eq "block" || $type eq "permblock") {
+	return &text("log_${action}_${type}",
+		     "<tt>".&html_escape($object)."</tt>");
+	}
 else {
 	return $text{"log_${action}"};
 	}

@@ -2,6 +2,7 @@ category_=Gereedschap
 
 longcategory_=Modules die andere diverse taken uitvoeren
 
+or=of
 fail=mislukt
 
 config_emodule=Module bestaat niet
@@ -53,3 +54,5 @@ file_truncated_message_head=heeft het begin van $1 van de gegevens opgehaald, $2
 file_truncated_message_tail=beëindigde $1 van de gegevens opgehaald, $2 van $3 afgekapt
 
 defcert_error=Standaard $1 gebundeld SSL-certificaat wordt gebruikt. Het wordt ten zeerste aanbevolen om het standaard <tt>$2</tt>-certificaat bij te werken voordat u doorgaat met inloggen.
+
+main_error_details=Fout details

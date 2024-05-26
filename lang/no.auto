@@ -1,3 +1,4 @@
+or=eller
 help_efile3=Kunne ikke lese hjelpesiden $1 fra modulen $2
 help_einclude3=Kunne ikke inkludere hjelpeside $1
 
@@ -14,3 +15,5 @@ file_truncated_message_head=hentet begynnelsen $1 av dataene, avkortet $2 av $3
 file_truncated_message_tail=hentet slutt $1 av data, avkortet $2 av $3 
 
 defcert_error=Standard $1 buntet SSL-sertifikat brukes. Det anbefales sterkt å oppdatere standard <tt>$2</tt>-sertifikat før du fortsetter med pålogging.
+
+main_error_details=Feilmeldingsdetaljer

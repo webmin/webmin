@@ -43,6 +43,7 @@ header_servers=ویبمین سرورز
 index=انڈیکس
 yes=جی ہاں
 no=نہیں
+or=یا
 save=محفوظ کریں
 create=بنانا
 delete=حذف کریں
@@ -391,3 +392,5 @@ file_truncated_message_head=ڈیٹا کا آغاز$1 کیا گیا ،$3 میں �
 file_truncated_message_tail=ڈیٹا کا$1 ختم ہونے والا نتیجہ ،$3 میں سے$2 کو چھوٹا
 
 defcert_error=Default $1 bundled SSL certificate is being used. It is highly advised to update default <tt>$2</tt> certificate before proceeding with login.
+
+main_error_details=خرابی کی تفصیلات

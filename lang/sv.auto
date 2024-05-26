@@ -22,6 +22,7 @@ longcategory_cluster=Moduler som kan hantera flera servrar från ett enda gräns
 longcategory_info=Moduler som visar information om ditt system
 longcategory_=Moduler som utför andra diverse uppgifter
 
+or=eller
 error_previous=föregående sida
 error_stack=Ring Stack Trace
 error_file=Fil
@@ -285,3 +286,5 @@ file_truncated_message_head=hämtade början $1 av data, trunkerade $2 av $3
 file_truncated_message_tail=hämtade slut $1 av data, trunkerat $2 av $3 
 
 defcert_error=Standard-$1 buntade SSL-certifikat används. Det rekommenderas starkt att uppdatera standardcertifikatet <tt>$2</tt> innan du fortsätter med inloggningen.
+
+main_error_details=Detaljer om felet
