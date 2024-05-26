@@ -1,3 +1,4 @@
-lines=100
-others=1
+lines=1000
+others=0
 reverse=1
+log_any=0

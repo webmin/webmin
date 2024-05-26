@@ -16,6 +16,15 @@ journal_journalctl_debug_info=Debug and info messages
 journal_journalctl_notice_warning=Notice and warning messages
 journal_journalctl_err_crit=Error and critical messages
 journal_journalctl_alert_emerg=Alert and emergency messages
+journal_journalctl_unit=Messages for specific unit
+journal_since0=Current boot
+journal_since1=7 days ago
+journal_since2=24 hours ago
+journal_since3=8 hours ago
+journal_since4=1 hour ago
+journal_since5=30 minutes ago
+journal_since6=10 minutes ago
+journal_since7=2 minute ago
 
 view_title=View Logfile
 view_header=Last $1 lines of $2

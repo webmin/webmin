@@ -23,7 +23,8 @@ if ($access{'syslog'}) {
 		local @cols;
 		push(@cols, &text('index_cmd', "<tt>".
 			&cleanup_destination($o->{'cmd'})."</tt>"));
-		push(@cols, &cleanup_description($o->{'desc'}));
+		my $icon = $o->{'id'} =~ /journal-(a|x)/ ? "&#x25E6;&nbsp; " : "";
+		push(@cols, $icon.&cleanup_description($o->{'desc'}));
 		push(@cols, &ui_link("view_log.cgi?idx=$o->{'id'}&view=1",
 			$text{'index_view'}) );
 		push(@col0, \@cols);
@@ -99,7 +100,7 @@ if ($config{'others'} && $access{'others'}) {
 				push(@cols, &text('index_cmd',
 				    "<tt>".&html_escape($o->{'cmd'})."</tt>"));
 				}
-			push(@cols, $o->{'desc'} ? "&#x21FF;&nbsp; ".&html_escape($o->{'desc'}) : "");
+			push(@cols, $o->{'desc'} ? &html_escape($o->{'desc'}) : "");
 			push(@cols, &ui_link("view_log.cgi?oidx=$o->{'mindex'}".
 				"&omod=$o->{'mod'}&view=1", $text{'index_view'}) );
 			@cols = sort { $a->[2] cmp $b->[2] } @cols;
@@ -119,7 +120,7 @@ foreach $e (&extra_log_files()) {
 		push(@cols, &text('index_cmd',
 			"<tt>".&html_escape($e->{'cmd'})."</tt>"));
 		}
-	push(@cols, $e->{'desc'} ? "&#x21DD;&nbsp; ".&html_escape($e->{'desc'}) : "");
+	push(@cols, $e->{'desc'} ? &html_escape($e->{'desc'}) : "");
 	push(@cols, &ui_link("view_log.cgi?extra=".&urlize($e->{'file'} || $e->{'cmd'})."&view=1", $text{'index_view'}) );
 	@cols = sort { $a->[2] cmp $b->[2] } @cols;
 	push(@col3, \@cols);
@@ -141,7 +142,7 @@ else {
 print &ui_columns_end();
 print "<p>\n";
 
-if ($access{'any'}) {
+if ($access{'any'} && $config{'log_any'} == 1) {
 	# Can view any log (under allowed dirs)
 	print &ui_form_start("view_log.cgi");
 	print &ui_hidden("view", 1),"\n";

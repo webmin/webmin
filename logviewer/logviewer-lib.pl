@@ -27,81 +27,105 @@ foreach $f (@files) {
 return 0;
 }
 
-# 
-# Returns standard 
+# get_systemctl_cmds([force-select])
+# Returns logs for journalctl
 sub get_systemctl_cmds
 {
+my $fselect = shift;
 my $lines = $config{'lines'} || 1000;
 my $journalctl_cmd = &has_command('journalctl');
 return () if (!$journalctl_cmd);
 my @rs = (
-	{ 'cmd' => "journalctl --lines $lines",
+	{ 'cmd' => "journalctl -n $lines",
 	  'desc' => $text{'journal_journalctl'},
 	  'id' => "journal-1", },
-	{ 'cmd' => "journalctl --lines $lines -x ",
+	{ 'cmd' => "journalctl -n $lines -x ",
 	  'desc' => $text{'journal_expla_journalctl'},
 	  'id' => "journal-2", },
-	{ 'cmd' => "journalctl --lines $lines -p alert..emerg",
+	{ 'cmd' => "journalctl -n $lines -p alert..emerg",
 	  'desc' => $text{'journal_journalctl_alert_emerg'},
 	  'id' => "journal-3", },
-	{ 'cmd' => "journalctl --lines $lines -p err..crit",
+	{ 'cmd' => "journalctl -n $lines -p err..crit",
 	  'desc' => $text{'journal_journalctl_err_crit'},
 	  'id' => "journal-4", },
-	{ 'cmd' => "journalctl --lines $lines -p notice..warning",
+	{ 'cmd' => "journalctl -n $lines -p notice..warning",
 	  'desc' => $text{'journal_journalctl_notice_warning'},
 	  'id' => "journal-5", },
-	{ 'cmd' => "journalctl --lines $lines -p debug..info",
+	{ 'cmd' => "journalctl -n $lines -p debug..info",
 	  'desc' => $text{'journal_journalctl_debug_info'},
 	  'id' => "journal-6", },
-	{ 'cmd' => "journalctl --lines $lines -k ",
+	{ 'cmd' => "journalctl -n $lines -k ",
 	  'desc' => $text{'journal_journalctl_dmesg'},
 	  'id' => "journal-7", } );
-return @rs if (!$config{'extras_units'});
+
 # Add more units from config if exists on the system
 my (%ucache, %uread);
 my $units_cache = "$module_config_directory/units.cache";
 &read_file($units_cache, \%ucache);
 if (!%ucache) {
-	my $out = &backquote_command(
-			"systemctl list-units --full --all ".
-			"-t service --no-legend");
+	my $out = &backquote_command("systemctl list-units --all --no-legend ".
+			"--no-pager");
 	foreach my $line (split(/\r?\n/, $out)) {
 		$line =~ s/^[^a-z0-9\-\_\.]+//i;
 		my ($unit, $desc) = (split(/\s+/, $line, 5))[0, 4];
 		$uread{$unit} = $desc;
 		}
 	}
-# Add extra units
-foreach my $unit (split(/\t+/, $config{'extras_units'})) {
+# All units
+%ucache = %uread if (%uread);
+# If forced to select, return full list
+if ($fselect) {
 	my %units = %uread ? %uread : %ucache;
-	my ($eunit) = grep { $_ eq $unit } keys %units;
-	next if (!$eunit && $unit !~ /\*/);
-	# Units by wildcard
-	if ($unit =~ /\*/) {
-		my $unit_re = $unit;
-		$unit_re =~ s/\*/.*/g;
-		foreach my $u (keys %units) {
-			if ($u =~ /^$unit_re$/) {
-				push(@rs, { 'cmd' => "journalctl --lines ".
-						"$lines -u $u",
-					    'desc' => "&#x25E6;&nbsp; ".
+	foreach my $u (sort keys %units) {
+		my $uname = $u;
+		$uname =~ s/\\x([0-9A-Fa-f]{2})/pack('H2', $1)/eg;
+		push(@rs, { 'cmd' => "journalctl -n ".
+				"$lines -u $u",
+				'desc' => $uname,
+				'id' => "journal-a-$u", });
+		}
+	}
+# Otherwise, return only the pointer
+# element for the index page
+else {
+	push(@rs, 
+		{ 'cmd' => "journalctl -n $lines -u",
+		  'desc' => $text{'journal_journalctl_unit'},
+		  'id' => "journal-u" });
+	# Add extra units
+	foreach my $unit (split(/\t+/, $config{'extras_units'})) {
+		my %units = %uread ? %uread : %ucache;
+		my ($eunit) = grep { $_ eq $unit } keys %units;
+		next if (!$eunit && $unit !~ /\*/);
+		# Units by wildcard
+		if ($unit =~ /\*/) {
+			my $unit_re = $unit;
+			$unit_re =~ s/\*/.*/g;
+			foreach my $u (sort keys %units) {
+				if ($u =~ /^$unit_re$/) {
+					push(@rs,
+						{ 'cmd' => "journalctl -n ".
+							"$lines -u $u",
+						'desc' =>
 						&fix_clashing_description(
 							$units{$u}, $u),
-					    'id' => "journal-$u", });
-				$ucache{$u} = $units{$u};
+						'id' => "journal-a-$u", });
+					$ucache{$u} = $units{$u};
+					}
 				}
+			next;
 			}
-		next;
+		# Unit by name
+		my $desc = $units{$eunit} || $unit;
+		$desc =~ s/\.$//;
+		push(@rs, { 'cmd' => "journalctl -n $lines -u $unit",
+			'desc' =>
+				&fix_clashing_description($desc),
+			'id' => "journal-a-$unit", });
+		$ucache{$eunit} = $desc;
 		}
-	# Unit by name
-	my $desc = $units{$eunit} || $unit;
-	$desc =~ s/\.$//;
-	push(@rs, { 'cmd' => "journalctl --lines $lines -u $unit",
-		    'desc' => "&#x25E6;&nbsp; ".
-		    	&fix_clashing_description($desc),
-		    'id' => "journal-$unit", });
-	$ucache{$eunit} = $desc;
 	}
+
 # Save cache
 if (%uread) {
 	&lock_file($units_cache);
@@ -123,7 +147,7 @@ unlink("$module_config_directory/units.cache");
 sub cleanup_destination
 {
 my $cmd = shift;
-$cmd =~ s/--lines\s+\d+\s*//;
+$cmd =~ s/-n\s+\d+\s*//;
 $cmd =~ s/\.service$//;
 return $cmd;
 }
