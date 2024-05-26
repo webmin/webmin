@@ -503,6 +503,7 @@ my $i = 0;
 foreach my $b (@ifaces) {
 	next if (!$b->{'routes'});
 	foreach my $v (@{$b->{'routes'}->{'value'}}) {
+		next if ($v->{'to'} eq 'default');
 		my ($net, $mask) = split(/\//, $v->{'to'});
 		$mask = &prefix_to_mask($mask);
 		$rtable .= &ui_columns_row([
@@ -560,6 +561,10 @@ $sysctl{'net.ipv4.ip_forward'} = $in{'forward'};
 my @boot =  &boot_interfaces();
 foreach my $b (grep { $_->{'virtual'} eq '' } @boot) {
 	my @r;
+	if ($b->{'routes'}) {
+		@r = grep { $_->{'to'} eq 'default' }
+			  @{$b->{'routes'}->{'value'}};
+		}
 	for(my $i=0; defined($in{"dev_$i"}); $i++) {
 		if ($in{"dev_$i"} eq $b->{'fullname'}) {
 			&check_ipaddress($in{"net_$i"}) ||
@@ -605,6 +610,13 @@ foreach my $iface (&boot_interfaces()) {
 	if ($iface->{'gateway'}) {
 		return ( $iface->{'gateway'}, $iface->{'fullname'} );
 		}
+	if ($iface->{'routes'}) {
+		foreach my $v (@{$iface->{'routes'}->{'value'}}) {
+			if ($v->{'to'} eq 'default') {
+				return ( $v->{'via'}, $iface->{'fullname'} );
+				}
+			}
+		}
 	}
 return ( );
 }
@@ -616,14 +628,48 @@ sub set_default_gateway
 {
 my ($gw, $dev) = @_;
 foreach my $iface (&boot_interfaces()) {
-	if ($iface->{'fullname'} eq $dev && $iface->{'gateway'} ne $gw) {
-		# Need to add to this interface
-		$iface->{'gateway'} = $gw;
-		&save_interface($iface);
+	# What is this interface's current default and how is it set?
+	my $oldgw = $iface->{'gateway'};
+	my $oldr;
+	if (!$oldgw && $iface->{'routes'}) {
+		foreach my $v (@{$iface->{'routes'}->{'value'}}) {
+                        if ($v->{'to'} eq 'default') {
+				$oldgw = $v->{'via'};
+				$oldr = $v;
+				}
+			}
 		}
-	elsif ($iface->{'fullname'} ne $dev && $iface->{'gateway'}) {
-		# Need to remove from this interface
-		delete($iface->{'gateway'});
+
+	if ($iface->{'fullname'} eq $dev && $oldgw && $oldgw ne $gw) {
+		# Already set, but we're changing it using the same method
+		if ($oldr) {
+			$oldr->{'via'} = $gw;
+			}
+		else {
+			$iface->{'gateway'} = $gw;
+			}
+		$save = 1;
+		}
+	elsif ($iface->{'fullname'} eq $dev && !$oldgw) {
+		# Not set but we need to add it, using a static route
+		$iface->{'routes'} ||= { 'name' => 'routes',
+					 'value' => [] };
+		push(@{$iface->{'routes'}->{'value'}}, { 'to' => 'default',
+						         'via' => $gw });
+		$save = 1;
+		}
+	elsif ($iface->{'fullname'} ne $dev && $oldgw) {
+		# Need to remove from however it is set
+		if ($oldr) {
+			$iface->{'routes'}->{'value'} = [ grep { $_ ne $oldr } @{$iface->{'routes'}->{'value'}} ];
+			}
+		else {
+			delete($iface->{'gateway'});
+			}
+		$save = 1;
+		}
+
+	if ($save) {
 		&save_interface($iface);
 		}
 	}
@@ -694,7 +740,7 @@ foreach my $origl (@$lref) {
 	if ($l =~ /^(\s*)(\S+):\s*(.*)/) {
 		# Name and possibly value
 		my $i = length($1);
-		if ($i > $lastdir->{'indent'} + 2 &&
+		if ($i >= $lastdir->{'indent'} + 2 &&
 		    ref($lastdir->{'value'}) eq 'ARRAY' &&
 		    @{$lastdir->{'value'}} &&
 		    ref($lastdir->{'value'}->[0]) eq 'HASH') {
