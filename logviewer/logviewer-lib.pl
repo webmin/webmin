@@ -32,7 +32,7 @@ return 0;
 sub get_systemctl_cmds
 {
 my $fselect = shift;
-my $lines = $config{'lines'} || 1000;
+my $lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'}) || 1000;
 my $journalctl_cmd = &has_command('journalctl');
 return () if (!$journalctl_cmd);
 my @rs = (
