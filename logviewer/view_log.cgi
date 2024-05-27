@@ -116,6 +116,8 @@ print "Refresh: $config{'refresh'}\r\n"
 	if ($config{'refresh'});
 my $cmd_unpacked = $cmd;
 $cmd_unpacked =~ s/\\x([0-9A-Fa-f]{2})/pack('H2', $1)/eg;
+my $view_title = $in{'idx'} =~ /^journal/ ?
+	$text{'view_titlejournal'} : $text{'view_title'};
 &ui_print_header("<tt>".&html_escape($file || $cmd_unpacked)."</tt>",
 		 $in{'linktitle'} || $text{'view_title'}, "", undef, undef, $in{'nonavlinks'});
 

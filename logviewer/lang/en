@@ -27,6 +27,7 @@ journal_since6=10 minutes ago
 journal_since7=2 minute ago
 
 view_title=View Logfile
+view_titlejournal=View Journal
 view_header=Last $1 lines of $2
 view_header2=Last $1 lines
 view_empty=Log file is empty
