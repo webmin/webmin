@@ -26,7 +26,10 @@ if (!-r $config{'syslog_conf'}) {
 	my $index_econf2;
 	if (&has_command('systemctl')) {
 		if (&foreign_available('logviewer')) {
-			$index_econf2 = &text('index_econf2', "System Logs Viewer", "@{[&get_webprefix()]}/logviewer") . "<p><br>";
+			my %logviewer_text = &load_language('logviewer');
+			$index_econf2 = &text('index_econf2',
+				$logviewer_text{'index_title'},
+				"@{[&get_webprefix()]}/logviewer") . "<p><br>";
 			}
 		}
 	# Not installed (maybe using syslog-ng)

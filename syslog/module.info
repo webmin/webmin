@@ -1,7 +1,7 @@
 name=Syslog
 category=system
 os_support=solaris *-linux freebsd openbsd macos hpux irix unixware aix netbsd openserver
-desc=System Logs
+desc=System Logs RS
 depends=proc
 longdesc=Configure the syslog server on your system and view its log files.
 readonly=1

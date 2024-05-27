@@ -1,4 +1,4 @@
-index_title=System Logs
+index_title=System Logs RS
 index_m4msg=Your system log configuration file $1 appears to contain <tt>m4</tt> directives. Before it can be edited, Webmin needs to pass the file through <tt>m4</tt> to safely remove these directives.
 index_m4=Remove m4 directives from config file
 index_econf=The syslog configuration file $1 was not found on your system. Maybe syslog is not installed, or a newer version like syslog-ng is in use, or the <a href='$2'>module configuration</a> is incorrect.
@@ -16,7 +16,7 @@ index_cmd=Output from $1
 index_all=All users
 index_users=Users $1
 index_add=Add a new system log.
-index_return=system logs
+index_return=module index
 index_restart=Apply Changes
 index_restartmsg=Click this button to make the current configuration active by killing the running <tt>syslog</tt> process and restarting it.
 index_start=Start Syslog Server

@@ -1,10 +1,10 @@
-index_title=System Logs Viewer
+index_title=System Logs
 index_elogs=No logs were found to display
 index_to=Log destination
 index_rule=Messages selected
 index_file=File $1
 index_cmd=Output from $1
-index_return=system logs viewer
+index_return=system logs
 index_view=View..
 index_viewfile=View log file:
 index_viewok=View
