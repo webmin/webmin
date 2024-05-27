@@ -31,7 +31,7 @@ if ($in{'idx'} ne '') {
 	if ($in{'idx'} =~ /^journal-/) {
 		my @systemctl_cmds = &get_systemctl_cmds(1);
 		my ($log);
-		if ($in{idx} eq 'journal-u') {
+		if ($in{'idx'} eq 'journal-u') {
 			($log) = grep { $_->{'cmd'} =~ /-u\s+\w+/ } @systemctl_cmds;
 			$in{'idx'} = $log->{'id'};
 			}
