@@ -6,37 +6,37 @@ require './logviewer-lib.pl';
 &ReadParse();
 &foreign_require("proc", "proc-lib.pl");
 
+# Send headers
+print "Content-Type: text/plain\n\n";
+
 # System log to follow
 my @systemctl_cmds = &get_systemctl_cmds(1);
 my ($log) = grep { $_->{'id'} eq $in{'idx'} } @systemctl_cmds;
-my $cmd = $log->{'cmd'};
-
-# Disable output buffering
-print "Content-Type: text/plain\n\n";
-$| = 1;
-
-# Access check
-if (!$cmd || $cmd !~ /^journalctl/ ||
-    !(&can_edit_log($log) && $access{'syslog'})) {
+if (!&can_edit_log($log) ||
+    !$log->{'cmd'} ||
+    $log->{'cmd'} !~ /^journalctl/) {
     print $text{'save_ecannot3'};
     exit;
     }
 
+# Disable output buffering
+$| = 1;
+
 # No lines for real time logs
-$cmd =~ s/\s+\-n\s+\d+//;
+$log->{'cmd'} =~ s/\s+\-n\s+\d+//;
 
 # Show real time logs
-$cmd .= " -f";
+$log->{'cmd'} .= " -f";
 
 # Add filter to the command if present
 my $filter = $in{'filter'} ? quotemeta($in{'filter'}) : "";
 if ($filter) {
-    $cmd .= " -g $filter";
+    $log->{'cmd'} .= " -g $filter";
     }
 
 # Open a pipe to the journalctl command
-my $pid = open(my $fh, '-|', "$cmd") ||
-    print &text('save_ecannot4', $cmd).": $!";
+my $pid = open(my $fh, '-|', $log->{'cmd'}) ||
+    print &text('save_ecannot4', $log->{'cmd'}).": $!";
 
 # Read and output the log
 while (my $line = <$fh>) {
