@@ -295,7 +295,8 @@ foreach $e (&extra_log_files()) {
 	}
 if (@logfiles && $found) {
 	$sel = &ui_select("idx", $in{'idx'} eq '' ? $file : $in{'idx'},
-			  [ @logfiles ], undef, undef, undef, undef, "onChange='form.submit()'");
+			  [ @logfiles ], undef, undef, undef, undef,
+			  	"onChange='form.submit()' style='max-width: 240px'");
 	if ($in{'idx'} =~ /^journal-/) {
 		my $selots;
 		for (my $i = 0; $i < @journal_since; $i++) {
