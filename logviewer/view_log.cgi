@@ -115,11 +115,19 @@ else {
 print "Refresh: $config{'refresh'}\r\n"
 	if ($config{'refresh'});
 my $cmd_unpacked = $cmd;
+my $no_navlinks = $in{'nonavlinks'} == 1 ? 1 : undef;
+my $skip_index = $config{'skip_index'} == 1 ? 1 : undef;
+my $help_link = (!$no_navlinks && $skip_index) ?
+	&help_search_link("systemd-journal journalctl", "man", "doc") : undef;
+my $no_links = $no_navlinks || $skip_index;
 $cmd_unpacked =~ s/\\x([0-9A-Fa-f]{2})/pack('H2', $1)/eg;
 my $view_title = $in{'idx'} =~ /^journal/ ?
 	$text{'view_titlejournal'} : $text{'view_title'};
 &ui_print_header("<tt>".&html_escape($file || $cmd_unpacked)."</tt>",
-		 $in{'linktitle'} || $text{'view_title'}, "", undef, undef, $in{'nonavlinks'});
+		 $in{'linktitle'} || $view_title, "", undef,
+		 	!$no_navlinks && $skip_index,
+			($no_navlinks || $skip_index) ? 1 : undef,
+			0, $help_link);
 
 $lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'});
 $filter = $in{'filter'} ? quotemeta($in{'filter'}) : "";
@@ -215,7 +223,7 @@ print "<i>$text{'view_empty'}</i>\n"
 	if (!$got || $safe_proc_out =~ /-- No entries --/m);
 print "</pre>\n";
 &filter_form();
-if ($in{'nonavlinks'}) {
+if ($no_links) {
 	&ui_print_footer();
 	}
 else {
@@ -225,7 +233,7 @@ else {
 sub filter_form
 {
 print &ui_form_start("view_log.cgi");
-print &ui_hidden("nonavlinks", $in{'nonavlinks'} ? 1 : 0),"\n";
+print &ui_hidden("nonavlinks", ($no_links) ? 1 : 0),"\n";
 print &ui_hidden("linktitle", $in{'linktitle'}),"\n";
 print &ui_hidden("oidx", $in{'oidx'}),"\n";
 print &ui_hidden("omod", $in{'omod'}),"\n";
