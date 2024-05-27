@@ -4,14 +4,6 @@
 
 require './logviewer-lib.pl';
 
-&ui_print_header($text{'index_subtitle'}, $text{'index_title'}, "", undef, 1, 1, 0,
-	&help_search_link("systemd-journal journalctl", "man", "doc"));
-
-if (!&has_command('journalctl')) {
-	# Not installed
-	&ui_print_endpage(&text('index_econf', "<tt>$config{'syslog_conf'}</tt>", "../config.cgi?$module_name"));
-	}
-
 # Display syslog rules
 my @col0;
 my @col1;
@@ -128,16 +120,38 @@ foreach $e (&extra_log_files()) {
 
 # Print sorted table with logs files and commands
 my @acols = (@col0, @col1, @col2, @col3);
+
+my $print_header = sub {
+	# Print the header
+	&ui_print_header($text{'index_subtitle'}, $text{'index_title'}, "", undef, 1, 1, 0,
+	&help_search_link("systemd-journal journalctl", "man", "doc"));
+	};
+
+# If no logs are available just show the message
+if (!@acols) {
+	$print_header->();
+	&ui_print_endpage($text{'index_elogs'});
+	}
+
+# If we jump directly to logs just redirect
+if ($config{'skip_index'} == 1) {
+	my $link;
+	$link = $acols[0]->[2];
+	$link =~ s/.*?href\s*=\s*(["']?)(?<link>[^"'\s>]+).*\1?/$+{link}/g;
+	if ($link) {
+		&redirect($link);
+		exit;
+		}
+	}
+
+# Print the header
+$print_header->();
+
 print &ui_columns_start( @acols ? [
 	$text{'index_to'},
 	$text{'index_rule'}, "" ] : [ ], 100);
-if (@acols) {
-	foreach my $col (@acols) {
-		print &ui_columns_row($col);
-		}
-	}
-else {
-	print &ui_columns_row([$text{'index_elogs'}], [" colspan='3' style='text-align: center'"], 3);
+foreach my $col (@acols) {
+	print &ui_columns_row($col);
 	}
 print &ui_columns_end();
 print "<p>\n";

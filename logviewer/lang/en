@@ -1,7 +1,7 @@
 index_title=System Logs
-index_elogs=No logs were found to display
-index_to=Log destination
-index_rule=Messages selected
+index_elogs=The <tt>journalctl</tt> command is not available on your system, and other logs are configured not to be displayed in the module configuration.
+index_to=Log
+index_rule=Description
 index_file=File $1
 index_cmd=Output from $1
 index_return=system logs
