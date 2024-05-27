@@ -114,12 +114,12 @@ else {
 	}
 print "Refresh: $config{'refresh'}\r\n"
 	if ($config{'refresh'});
-my $cmd_unpacked = $cmd;
 my $no_navlinks = $in{'nonavlinks'} == 1 ? 1 : undef;
 my $skip_index = $config{'skip_index'} == 1 ? 1 : undef;
 my $help_link = (!$no_navlinks && $skip_index) ?
 	&help_search_link("systemd-journal journalctl", "man", "doc") : undef;
 my $no_links = $no_navlinks || $skip_index;
+my $cmd_unpacked = $cmd;
 $cmd_unpacked =~ s/\\x([0-9A-Fa-f]{2})/pack('H2', $1)/eg;
 my $view_title = $in{'idx'} =~ /^journal/ ?
 	$text{'view_titlejournal'} : $text{'view_title'};
@@ -233,7 +233,9 @@ else {
 sub filter_form
 {
 print &ui_form_start("view_log.cgi");
-print &ui_hidden("nonavlinks", ($no_links) ? 1 : 0),"\n";
+if ($no_navlinks) {
+	print &ui_hidden("nonavlinks", $no_navlinks),"\n";
+	}
 print &ui_hidden("linktitle", $in{'linktitle'}),"\n";
 print &ui_hidden("oidx", $in{'oidx'}),"\n";
 print &ui_hidden("omod", $in{'omod'}),"\n";
