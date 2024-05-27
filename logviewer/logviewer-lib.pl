@@ -27,6 +27,21 @@ foreach $f (@files) {
 return 0;
 }
 
+# get_journal_since
+# Returns a list of journalctl commands to get logs since various times,
+# which should correspond with language strings journal_since0,
+# journal_since1, journal_since2, etc.
+sub get_journal_since
+{
+return
+	("", "-f",
+	 "-b", "-S '7 days ago'", 
+	 "-S '24 hours ago'", "-S '8 hours ago'",
+	 "-S '1 hour ago'", "-S '30 minutes ago'",
+	 "-S '10 minutes ago'", "-S '3 minutes ago'",
+	 "-S '1 minute ago'");
+}
+
 # get_systemctl_cmds([force-select])
 # Returns logs for journalctl
 sub get_systemctl_cmds
