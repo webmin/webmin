@@ -238,6 +238,8 @@ if (!$follow) {
 else {
 	print "<pre id='logdata' data-reversed='$reverse'>";
 	print "</pre>\n";
+	my %tinfo = &get_theme_info($current_theme);
+	my $spa_theme = $tinfo{'spa'} ? 1 : 0;
 	print <<EOF;
 	<script>
 	// Abort previous log viewer progress fetch
@@ -276,9 +278,13 @@ else {
 			logviewer_progress_abort.abort();
 			fn_logviewer_progress_abort = null;
 			}
-		window.onbeforeunload = () => {
-			fn_logviewer_progress_abort();
-			};
+		if ($spa_theme !== 1) {
+			window.onbeforeunload = function() {
+				if (typeof fn_logviewer_progress_abort === 'function') {
+					fn_logviewer_progress_abort();
+					}
+				};
+			}
 		processText().catch((error) => {
 			if (typeof logviewer_progress_ended === 'function') {
 				logviewer_progress_ended(error);
