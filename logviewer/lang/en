@@ -37,9 +37,8 @@ view_header=Last $1 lines of $2
 view_header2=Last $1 lines
 view_header3=Lines of $1
 view_empty=Log file is empty
-view_refresh=Refresh
 view_filter=Filter lines with text $1
-view_filter2=Filter
+view_filter_btn=Filter
 
 save_efile='$1' is not a valid filename : $2
 save_ecannot2=You are not allowed to view this log

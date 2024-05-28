@@ -387,7 +387,7 @@ print "&nbsp;&nbsp;&nbsp;&nbsp;\n";
 print &text('view_filter', "&nbsp;" . &ui_textbox("filter", $in{'filter'}, 12)),"\n";
 
 print "&nbsp;&nbsp;\n";
-print &ui_submit($follow ? $text{'view_filter2'} : $text{'view_refresh'});
+print &ui_submit($text{'view_filter_btn'});
 print &ui_form_end(),"<br>\n";
 }
 
