@@ -240,10 +240,16 @@ else {
 	print "</pre>\n";
 	print <<EOF;
 	<script>
+	// Abort previous log viewer progress fetch
+	if (typeof fn_logviewer_progress_abort === 'function') {
+		fn_logviewer_progress_abort();
+	}
 	// Update log viewer with new data from the server
 	(async function () {
+		const logviewer_progress_abort = new AbortController();
 		const logDataElement = document.getElementById("logdata"),
-			response = await fetch("view_log_progress.cgi?idx=$in{'idx'}&filter=$jfilter"),
+			response = await fetch("view_log_progress.cgi?idx=$in{'idx'}&filter=$jfilter",
+					       { signal: logviewer_progress_abort.signal }),
 			reader = response.body.getReader(),
 			decoder = new TextDecoder("utf-8"),
 			processText = async function () {
@@ -266,10 +272,19 @@ else {
 					({ done, value } = await reader.read());
 					}
 				};
+		fn_logviewer_progress_abort = function () {
+			logviewer_progress_abort.abort();
+			fn_logviewer_progress_abort = null;
+			}
+		window.onbeforeunload = () => {
+			fn_logviewer_progress_abort();
+			};
 		processText().catch((error) => {
-			console.error("Failed to fetch log progress:", error);
-		});
-	})();
+			if (typeof logviewer_progress_ended === 'function') {
+				logviewer_progress_ended(error);
+				}
+			});
+		})();
 	</script>
 EOF
 	}
