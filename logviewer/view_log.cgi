@@ -232,13 +232,14 @@ if (!$follow) {
 			$got = undef;
 			}
 		}
-	print "<i>$text{'view_empty'}</i>\n"
+	print "<i data-empty>$text{'view_empty'}</i>\n"
 		if (!$got || $safe_proc_out =~ /-- No entries --/m);
 	print "</pre>\n";
 	}
 # Progressive output
 else {
 	print "<pre id='logdata' data-reversed='$reverse'>";
+	print "<i data-loading>$text{'view_loading'}</i>\n";
 	print "</pre>\n";
 	my %tinfo = &get_theme_info($current_theme);
 	my $spa_theme = $tinfo{'spa'} ? 1 : 0;
@@ -261,6 +262,13 @@ else {
 				while (!done) {
 					const chunk = decoder.decode(value, { stream: true }).trim(),
 					      dataReversed = logDataElement.getAttribute("data-reversed");
+					if (!processText.started) {
+						processText.started = true;
+						const loadingElement = logDataElement.querySelector("i[data-loading]");
+						if (loadingElement) {
+							loadingElement.remove();
+							}
+						}
 					let lines = chunk.split("\\n");
 					if (dataReversed === "1") {
 						lines = lines.reverse();
