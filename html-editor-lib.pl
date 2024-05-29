@@ -245,6 +245,11 @@ $navigation_type ||= 'reload';
 my $html_editor_init_script =
 <<EOF;
 <script type="text/javascript">
+  function fn_${module_name}_quote_mail_iframe_loaded() {
+    const editor = fn_${module_name}_html_editor_init.editor;
+    editor.root.innerHTML = "\\n" + editor.root.innerHTML;
+    fn_${module_name}_quote_mail_iframe_loaded = null;
+  }
   function fn_${module_name}_html_editor_init() {
     const targ = document.querySelector('[$target_attr$target_type"$target_name"]'),
       qs = Quill.import('attributors/style/size'),
@@ -276,6 +281,8 @@ my $html_editor_init_script =
         bounds: '.ql-compose-container',
         theme: 'snow'
     });
+
+    fn_${module_name}_html_editor_init.editor = editor;
 
     // Google Mail like key bind for creating numbered list (Ctrl+Shift+7)
     editor.keyboard.addBinding({

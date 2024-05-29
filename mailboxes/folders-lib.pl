@@ -3091,6 +3091,9 @@ my $iframe_body = <<EOF;
 </style>
 <script>
 	function quote_mail_iframe_onload(iframe) {
+		if (typeof fn_${module_name}_quote_mail_iframe_loaded === 'function') {
+		    fn_${module_name}_quote_mail_iframe_loaded(iframe);
+		}
 		if (typeof theme_quote_mail_iframe_onload === 'function') {
 		    theme_quote_mail_iframe_onload(iframe);
 		      return;
