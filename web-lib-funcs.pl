@@ -5819,17 +5819,23 @@ else {
 =head2 text(message, [substitute]+)
 
 Returns a translated message from %text, but with $1, $2, etc.. replaced with
-the substitute parameters. This makes it easy to use strings with placeholders
-that get replaced with programmatically generated text. For example :
+the substitute parameters. If called without parameters, returns a hash of
+values and keys which were already replaced.
+This makes it easy to use strings with placeholders that get replaced with
+programmatically generated text.
 
- print &text('index_hello', $remote_user),"<p>\n";
+For example:
+ print &text('index_hello', $remote_user),"\n";
 
 =cut
 sub text
 {
+state %text_replaced;
+return %text_replaced if (!defined($_[0]));
 my $t = &get_module_variable('%text', 1);
 my $rv = exists($t->{$_[0]}) ? $t->{$_[0]} : $text{$_[0]};
 $rv =~ s/\$(\d+)/$1 < @_ ? $_[$1] : '$'.$1/ge;
+$text_replaced{$rv} = $_[0] if ($rv);
 return $rv;
 }
 
