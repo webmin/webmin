@@ -3392,6 +3392,7 @@ sub term_handler
 kill('TERM', @childpids) if (@childpids);
 kill('KILL', $logclearer) if ($logclearer);
 kill('KILL', $extauth) if ($extauth);
+unlink($config{'pidfile'});
 exit(1);
 }
 
