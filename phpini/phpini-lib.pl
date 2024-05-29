@@ -162,6 +162,10 @@ for(my $i=0; $i<@old || $i<@values; $i++) {
 		else {
 			# Just add at the end
 			$lastfile = @$conf ? $conf->[0]->{'file'} : undef;
+			if (!$lastfile) {
+				my @allfiles = keys %get_config_cache;
+				$lastfile = $allfiles[0] if (@allfiles == 1);
+				}
 			$lastfile || &error("Don't know which file to add to");
 			$lref = &read_file_lines_as_user($lastfile);
 			$lastline = scalar(@$lref);
