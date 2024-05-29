@@ -268,8 +268,8 @@ else {
 					else {
 						logDataElement.textContent += lines.join("\\n") + "\\n";
 						}
-					if (typeof logviewer_progress_update === 'function') {
-						logviewer_progress_update(chunk, dataReversed);
+					if (typeof fn_logviewer_progress_update === 'function') {
+						fn_logviewer_progress_update(chunk, dataReversed);
 						}
 					({ done, value } = await reader.read());
 					}
@@ -289,8 +289,8 @@ else {
 				};
 			}
 		processText().catch((error) => {
-			if (typeof logviewer_progress_ended === 'function') {
-				logviewer_progress_ended(error);
+			if (typeof fn_logviewer_progress_ended === 'function') {
+				fn_logviewer_progress_ended(error);
 				}
 			});
 		})();
