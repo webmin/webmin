@@ -145,7 +145,7 @@ if (!$follow) {
 	print "<pre>";
 	local $tailcmd = $config{'tail_cmd'} || "tail -n LINES";
 	$tailcmd =~ s/LINES/$lines/g;
-	my $safe_proc_out;
+	my ($safe_proc_out, $safe_proc_out_got);
 	if ($filter ne "") {
 		# Are we supposed to filter anything? Then use grep.
 		local @cats;
@@ -179,11 +179,14 @@ if (!$follow) {
 				$fcmd = "$cat | grep -i -a $eflag $dashflag $filter ".
 					"| $tailcmd";
 				}
-			$got = &proc::safe_process_exec($fcmd,
-				0, 0, STDOUT, undef, 1, 0, undef, 1);
+			open(my $output_fh, '>', \$safe_proc_out);
+			$safe_proc_out_got = &proc::safe_process_exec(
+				$fcmd, 0, 0, $output_fh, undef, 1, 0, undef, 1);
+			close($output_fh);
+			print $safe_proc_out if ($safe_proc_out !~ /-- No entries --/m);
 			}
 		else {
-			$got = undef;
+			$safe_proc_out_got = undef;
 			}
 	} else {
 		# Not filtering .. so cat the most recent non-empty file
@@ -223,17 +226,17 @@ if (!$follow) {
 			}
 		if ($fullcmd) {
 			open(my $output_fh, '>', \$safe_proc_out);
-			$got = &proc::safe_process_exec(
+			$safe_proc_out_got = &proc::safe_process_exec(
 				$fullcmd, 0, 0, $output_fh, undef, 1, 0, undef, 1);
 			close($output_fh);
 			print $safe_proc_out if ($safe_proc_out !~ /-- No entries --/m);
 			}
 		else {
-			$got = undef;
+			$safe_proc_out_got = undef;
 			}
 		}
 	print "<i data-empty>$text{'view_empty'}</i>\n"
-		if (!$got || $safe_proc_out =~ /-- No entries --/m);
+		if (!$safe_proc_out_got || $safe_proc_out =~ /-- No entries --/m);
 	print "</pre>\n";
 	}
 # Progressive output
