@@ -21,7 +21,7 @@ if ($in{'idx'} =~ /^\//) {
 	delete($in{'idx'});
 	delete($in{'oidx'});
 	}
-my @journal_since = &get_journal_since();
+my $journal_since = &get_journal_since();
 if ($in{'idx'} ne '') {
 	# From systemctl commands
 	if ($in{'idx'} =~ /^journal-/) {
@@ -41,7 +41,9 @@ if ($in{'idx'} ne '') {
 			$log->{'cmd'} .= " -r";
 			}
 		# If since is set and allowed, add it to the command
-		if ($in{'since'} && grep { $_ eq $in{'since'} } @journal_since) {
+		if ($in{'since'} &&
+		    grep { $_ eq $in{'since'} }
+		    	map { keys %$_ } @$journal_since) {
 			$log->{'cmd'} .= " $in{'since'}";
 			}
 		&can_edit_log($log) && $access{'syslog'} ||
@@ -385,16 +387,15 @@ if (@logfiles && $found) {
 			  [ @logfiles ], undef, undef, undef, undef,
 			  	"onChange='form.submit()' style='max-width: 240px'");
 	if ($in{'idx'} =~ /^journal-/) {
-		my $selots;
-		for (my $i = 0; $i < @journal_since; $i++) {
-			push(@$selots, [ $journal_since[$i],
-					 $text{'journal_since'.$i} ]);
-			}
 		my $since_label = $follow ? $text{'journal_sincefollow'} :
 					    $text{'journal_since'};
 		$sel .= "$since_label&nbsp; " .
-			&ui_select("since", $in{'since'}, $selots, undef,
-			    undef, undef, undef, "onChange='form.submit()'");
+			&ui_select("since", $in{'since'},
+				[ map { my ($key) = keys %$_;
+					[ $key, $_->{$key} ] }
+						@$journal_since ],
+			    undef, undef, undef, undef,
+			    	"onChange='form.submit()'");
 		}
 	}
 else {

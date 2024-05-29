@@ -28,18 +28,22 @@ return 0;
 }
 
 # get_journal_since
-# Returns a list of journalctl commands to get logs since various times,
-# which should correspond with language strings journal_since0,
-# journal_since1, journal_since2, etc.
+# Returns a list of journalctl since commands
 sub get_journal_since
 {
-return
-	("", "-f",
-	 "-b", "-S '7 days ago'", 
-	 "-S '24 hours ago'", "-S '8 hours ago'",
-	 "-S '1 hour ago'", "-S '30 minutes ago'",
-	 "-S '10 minutes ago'", "-S '3 minutes ago'",
-	 "-S '1 minute ago'");
+return [
+        { "" => $text{'journal_since0'} },
+        { "-f" => $text{'journal_since1'} },
+        { "-b" => $text{'journal_since2'} },
+        { "-S '7 days ago'" => $text{'journal_since3'} },
+        { "-S '24 hours ago'" => $text{'journal_since4'} },
+        { "-S '8 hours ago'" => $text{'journal_since5'} },
+        { "-S '1 hour ago'" => $text{'journal_since6'} },
+        { "-S '30 minutes ago'" => $text{'journal_since7'} },
+        { "-S '10 minutes ago'" => $text{'journal_since8'} },
+        { "-S '3 minutes ago'" => $text{'journal_since9'} },
+        { "-S '1 minute ago'" => $text{'journal_since10'} },
+    ];
 }
 
 # get_systemctl_cmds([force-select])
