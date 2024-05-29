@@ -274,6 +274,9 @@ else {
 					({ done, value } = await reader.read());
 					}
 				};
+		if (typeof fn_logviewer_progress_status === 'function') {
+			fn_logviewer_progress_status(response);
+			}
 		fn_logviewer_progress_abort = function () {
 			logviewer_progress_abort.abort();
 			fn_logviewer_progress_abort = null;
