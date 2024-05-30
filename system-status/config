@@ -1,2 +1,2 @@
-collect_interval=5
+collect_interval=none
 collect_pkgs=1
