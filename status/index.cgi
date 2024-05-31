@@ -160,9 +160,10 @@ foreach $s (@_) {
 			$h = $remotes[$i];
 			$h = $text{'index_local'} if ($h eq '*');
 			push(@icons, "<img src=".&get_status_icon($up).
-				     " title='".&html_escape($h)."'>");
+				     " title='".&html_escape($h)."'".
+				     " style='padding: 0.25em 0'>");
 			}
-		push(@cols, join("", @icons));
+		push(@cols, join("<br>", @icons));
 		}
 	if ($access{'edit'}) {
 		print &ui_checked_columns_row(\@cols, \@tds, "d", $s->{'id'});
