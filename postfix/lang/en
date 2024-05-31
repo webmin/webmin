@@ -249,7 +249,6 @@ opts_mydomain_default=Default (provided by system)
 opts_myhostname=Internet hostname of this mail system
 opts_myhostname_default=Default (provided by system)
 opts_mynetworks=Local networks
-opts_mynetworks_default=Default (all attached networks)
 opts_mynetworks_style=Automatic local networks
 opts_mynetworks_subnet=Same IP subnet
 opts_mynetworks_class=Same network class
