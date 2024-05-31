@@ -10,6 +10,7 @@ use WebminCore;
 
 $webmin_crons_directory = "$module_config_directory/crons";
 @special_modes = ( 'hourly', 'daily', 'weekly', 'monthly', 'yearly' );
+$save_webmin_cron_count = 0;
 
 =head2 list_webmin_crons
 
@@ -76,7 +77,7 @@ if (!-d $webmin_crons_directory) {
 	&make_dir($webmin_crons_directory, 0700);
 	}
 if (!$cron->{'id'}) {
-	$cron->{'id'} = time().$$;
+	$cron->{'id'} = time().'_'.$$.'_'.($save_webmin_cron_count++);
 	}
 my $file = "$webmin_crons_directory/$cron->{'id'}.cron";
 my %wcron = %$cron;
