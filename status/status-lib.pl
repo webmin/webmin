@@ -386,19 +386,17 @@ else {
 	}
 }
 
-# nice_remotes(&monitor, [max])
+# nice_remotes(&monitor)
 sub nice_remotes
 {
-my ($s, $max) = @_;
-$max ||= 3;
+my ($s) = @_;
 my @remotes = map { $_ eq "*" ? $text{'index_local'}
 			         : &html_escape($_) }
 		     split(/\s+/, $s->{'remote'});
 foreach my $g (split(/\s+/, $s->{'groups'})) {
 	push(@remotes, &text('index_group', $g));
 	}
-return @remotes > $max ? join(", ", @remotes[0..$max]).", ..."
-		       : join(", ", @remotes);
+return join("<br>", @remotes);
 }
 
 sub group_desc

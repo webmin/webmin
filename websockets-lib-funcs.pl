@@ -24,7 +24,8 @@ while(1) {
         }
     $port++;
     }
-my $wspath = "/$module_name/ws-".$port;
+my $module_theme_name = $module_name || $current_theme;
+my $wspath = "/$module_theme_name/ws-".$port;
 my $now = time();
 $miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user time=$now";
 &put_miniserv_config(\%miniserv);
@@ -43,7 +44,8 @@ my %miniserv;
 if ($port) {
     &lock_file(&get_miniserv_config_file());
     &get_miniserv_config(\%miniserv);
-    my $wspath = "/$module_name/ws-".$port;
+    my $module_theme_name = $module_name || $current_theme;
+    my $wspath = "/$module_theme_name/ws-".$port;
     if ($miniserv{'websockets_'.$wspath}) {
         delete($miniserv{'websockets_'.$wspath});
         &put_miniserv_config(\%miniserv);
@@ -65,8 +67,9 @@ my %miniserv;
 &get_miniserv_config(\%miniserv);
 my $now = time();
 my @clean;
+my $module_theme_name = $module_name || $current_theme;
 foreach my $k (keys %miniserv) {
-    $k =~ /^websockets_\/$module_name\/ws-(\d+)$/ || next;
+    $k =~ /^websockets_\/$module_theme_name\/ws-(\d+)$/ || next;
     my $port = $1;
     next if (&indexof($port, @$skip) >= 0);
     my $when = 0;
