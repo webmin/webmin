@@ -87,7 +87,7 @@ if (!$pid) {
 	die "Failed to run shell with $shcmd\n";
 	}
 else {
-	&error_stderr("Running shell $shcmd with pid $pid");
+	&error_stderr("Running shell $shcmd for user $user with pid $pid");
 	}
 
 # Detach from controlling terminal
