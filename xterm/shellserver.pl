@@ -87,7 +87,7 @@ if (!$pid) {
 	die "Failed to run shell with $shcmd\n";
 	}
 else {
-	print STDERR "Running shell $shcmd with pid $pid\n";
+	&error_stderr("Running shell $shcmd for user $user with pid $pid");
 	}
 
 # Detach from controlling terminal
@@ -103,15 +103,15 @@ $SIG{'ALRM'} = sub {
 	die "timeout waiting for connection";
 	};
 alarm(60);
-print STDERR "listening on port $port\n";
+&error_stderr("Listening on port $port");
 my ($wsconn, $shellbuf);
 Net::WebSocket::Server->new(
 	listen     => $port,
 	on_connect => sub {
 		my ($serv, $conn) = @_;
-		print STDERR "got websockets connection\n";
+		&error_stderr("WebSocket connection established");
 		if ($wsconn) {
-			print STDERR "Unexpected second connection to the same port\n";
+			&error_stderr("Unexpected second connection to the same port");
 			$conn->disconnect();
 			return;
 			}
@@ -126,7 +126,7 @@ Net::WebSocket::Server->new(
 				$key   =~ s/\s//g;
 				$dsess =~ s/\s//g;
 				if (!$key || !$dsess || $key ne $dsess) {
-					print STDERR "Key $key does not match session ID $dsess\n";
+					&error_stderr("Key $key does not match session ID $dsess");
 					$conn->disconnect();
 					}
 				},
@@ -140,7 +140,7 @@ Net::WebSocket::Server->new(
 				# Check for resize escape sequence explicitly
 				if ($msg =~ /^\\033\[8;\((\d+)\);\((\d+)\)t$/) {
 					my ($rows, $cols) = ($1, $2);
-					print STDERR "got resize to $rows $cols\n";
+					&error_stderr("Got resize to $rows $cols");
 					eval {
 						$shellfh->set_winsize($rows, $cols);
 						};
@@ -153,13 +153,13 @@ Net::WebSocket::Server->new(
 					return;
 					}
 				if (!syswrite($shellfh, $msg, length($msg))) {
-					print STDERR "write to shell failed : $!\n";
+					&error_stderr("Write to shell failed : $!");
 					&remove_miniserv_websocket($port);
 					exit(1);
 					}
 				},
 			disconnect => sub {
-				print STDERR "websocket connection closed\n";
+				&error_stderr("WebSocket connection closed");
 				&remove_miniserv_websocket($port);
 				kill('KILL', $pid) if ($pid);
 				exit(0);
@@ -172,7 +172,7 @@ Net::WebSocket::Server->new(
 			my $buf;
 			my $ok = sysread($shellfh, $buf, 1024);
 			if ($ok <= 0) {
-				print STDERR "end of output from shell\n";
+				&error_stderr("End of output from shell");
 				&remove_miniserv_websocket($port);
 				exit(0);
 				}
@@ -185,6 +185,6 @@ Net::WebSocket::Server->new(
 		},
 	],
 )->start;
-print STDERR "exited websockets server\n";
+&error_stderr("Exited WebSocket server");
 &remove_miniserv_websocket($port);
 &cleanup_miniserv_websockets([$port]);
