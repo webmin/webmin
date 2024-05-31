@@ -179,7 +179,7 @@ sub show_button
 {
 if ($access{'edit'}) {
 	print &ui_form_start("edit_mon.cgi");
-	print &ui_submit($text{'index_add'});
+	print &ui_submit($text{'index_madd'});
 	my @opts;
 	foreach $h (sort { $a->[1] cmp $b->[1] } &list_handlers()) {
 		push(@opts, [ $h->[0], $h->[1] ]);
