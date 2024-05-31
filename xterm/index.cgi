@@ -194,11 +194,10 @@ my $shellserver_cmd = "$module_config_directory/shellserver.pl";
 if (!-r $shellserver_cmd) {
 	&create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
 	}
-my $tmpdir = &tempname_dir();
 $ENV{'SESSION_ID'} = $main::session_id;
 &system_logged($shellserver_cmd." ".quotemeta($port)." ".quotemeta($user).
 	       ($dir ? " ".quotemeta($dir) : "").
-	       " >$tmpdir/ws-$port.out 2>&1 </dev/null");
+	       " >$module_var_directory/websocket-connection-$port.out 2>&1 </dev/null");
 
 # Open the terminal
 my $ws_proto = lc($ENV{'HTTPS'}) eq 'on' ? 'wss' : 'ws';
