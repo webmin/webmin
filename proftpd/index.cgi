@@ -62,11 +62,11 @@ if ($site{'size'} != $st[7] || !$site{'version'} || !$site{'fullversion'}) {
 
 	# Get the list of modules
 	local @mods;
-	open(MODS, "$config{'proftpd_path'} -l |");
+	open(MODS, "$config{'proftpd_path'} -vv |");
 	while(<MODS>) {
 		s/\r|\n//g;
-		if (/^\s*(\S+)\.c$/) {
-			push(@mods, $1);
+		if (/^\s*(?<mod_built_in>\S+)\.c$|\s*(?<mod_loaded>mod_[a-zA-Z0-9_]+)\//) {
+			push(@mods, $+{mod_loaded} || $+{mod_built_in});
 			}
 		}
 	close(MODS);
