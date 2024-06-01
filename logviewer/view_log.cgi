@@ -7,7 +7,7 @@ require './logviewer-lib.pl';
 &foreign_require("proc", "proc-lib.pl");
 
 # Viewing a log file
-@extras = &extra_log_files();
+my @extras = &extra_log_files();
 if ($in{'idx'} =~ /^\//) {
 	# The drop-down selector on this page has chosen a file
 	if (&indexof($in{'idx'}, (map { $_->{'file'} } @extras)) >= 0) {
@@ -21,11 +21,31 @@ if ($in{'idx'} =~ /^\//) {
 	delete($in{'idx'});
 	delete($in{'oidx'});
 	}
+my $journal_since = &get_journal_since();
 if ($in{'idx'} ne '') {
 	# From systemctl commands
 	if ($in{'idx'} =~ /^journal-/) {
-		my @systemctl_cmds = &get_systemctl_cmds();
-		my ($log) = grep { $_->{'id'} eq $in{'idx'} } @systemctl_cmds;
+		my @systemctl_cmds = &get_systemctl_cmds(1);
+		my ($log);
+		if ($in{'idx'} eq 'journal-u') {
+			($log) = grep { $_->{'cmd'} =~ /-u\s+\w+/ }
+					@systemctl_cmds;
+			$in{'idx'} = $log->{'id'};
+			}
+		else {
+			($log) = grep { $_->{'id'} eq $in{'idx'} }
+					@systemctl_cmds;
+			}
+		# If reverse is set, add it to the command
+		if ($reverse) {
+			$log->{'cmd'} .= " -r";
+			}
+		# If since is set and allowed, add it to the command
+		if ($in{'since'} &&
+		    grep { $_ eq $in{'since'} }
+		    	map { keys %$_ } @$journal_since) {
+			$log->{'cmd'} .= " $in{'since'}";
+			}
 		&can_edit_log($log) && $access{'syslog'} ||
 			&error($text{'save_ecannot2'});
 		$cmd = $log->{'cmd'};
@@ -94,99 +114,204 @@ else {
 	}
 print "Refresh: $config{'refresh'}\r\n"
 	if ($config{'refresh'});
-&ui_print_header("<tt>".&html_escape($file || $cmd)."</tt>",
-		 $in{'linktitle'} || $text{'view_title'}, "", undef, undef, $in{'nonavlinks'});
-
-$lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'});
-$filter = $in{'filter'} ? quotemeta($in{'filter'}) : "";
+my $lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'});
+my $jfilter = $in{'filter'} ? $in{'filter'} : "";
+my $filter = $jfilter ? quotemeta($jfilter) : "";
+my $reverse = $config{'reverse'} ? 1 : 0;
+my $follow = $in{'since'} eq '-f' ? 1 : 0;
+my $no_navlinks = $in{'nonavlinks'} == 1 ? 1 : undef;
+my $skip_index = $config{'skip_index'} == 1 ? 1 : undef;
+my $help_link = (!$no_navlinks && $skip_index) ?
+	&help_search_link("systemd-journal journalctl", "man", "doc") : undef;
+my $no_links = $no_navlinks || $skip_index;
+my $cmd_unpacked = $cmd;
+$cmd_unpacked =~ s/\\x([0-9A-Fa-f]{2})/pack('H2', $1)/eg;
+$cmd_unpacked =~ s/\s+\-r// if ($follow);
+$cmd_unpacked =~ s/\s+\-n\s+\d+// if ($follow);
+$cmd_unpacked .= " -g \"@{[&html_escape($jfilter)]}\"" if ($filter);
+my $view_title = $in{'idx'} =~ /^journal/ ?
+	$text{'view_titlejournal'} : $text{'view_title'};
+&ui_print_header("<tt>".&html_escape($file || $cmd_unpacked)."</tt>",
+		 $in{'linktitle'} || $view_title, "", undef,
+		 	!$no_navlinks && $skip_index,
+			($no_navlinks || $skip_index) ? 1 : undef,
+			0, $help_link);
 
 &filter_form();
 
-$| = 1;
-print "<pre>";
-local $tailcmd = $config{'tail_cmd'} || "tail -n LINES";
-$tailcmd =~ s/LINES/$lines/g;
-if ($filter ne "") {
-	# Are we supposed to filter anything? Then use grep.
-	local @cats;
-	if ($cmd) {
-		# Getting output from a command
-		push(@cats, $cmd);
-		}
-	elsif ($config{'compressed'}) {
-		# All compressed versions
-		foreach $l (&all_log_files($file)) {
-			$c = &catter_command($l);
-			push(@cats, $c) if ($c);
-			}
-		}
-	else {
-		# Just the one log
-		@cats = ( "cat ".quotemeta($file) );
-		}
-	$cat = "(".join(" ; ", @cats).")";
-	if ($config{'reverse'}) {
-		$tailcmd .= " | tac";
-		}
-	$eflag = $gconfig{'os_type'} =~ /-linux/ ? "-E" : "";
-	$dashflag = $gconfig{'os_type'} =~ /-linux/ ? "--" : "";
-	if (@cats) {
-		$got = &proc::safe_process_exec(
-			"$cat | grep -i -a $eflag $dashflag $filter ".
-			"| $tailcmd",
-			0, 0, STDOUT, undef, 1, 0, undef, 1);
-		}
-	else {
-		$got = undef;
-		}
-} else {
-	# Not filtering .. so cat the most recent non-empty file
-	if ($cmd) {
-		# Getting output from a command
-		$fullcmd = $cmd." | ".$tailcmd;
-		}
-	elsif ($config{'compressed'}) {
-		# Cat all compressed files
+# Standard output
+if (!$follow) {
+	$| = 1;
+	print "<pre>";
+	local $tailcmd = $config{'tail_cmd'} || "tail -n LINES";
+	$tailcmd =~ s/LINES/$lines/g;
+	my ($safe_proc_out, $safe_proc_out_got);
+	if ($filter ne "") {
+		# Are we supposed to filter anything? Then use grep.
 		local @cats;
-		$total = 0;
-		foreach $l (reverse(&all_log_files($file))) {
-			next if (!-s $l);
-			$c = &catter_command($l);
-			if ($c) {
-				$len = int(&backquote_command(
-						"$c | wc -l"));
-				$total += $len;
-				push(@cats, $c);
-				last if ($total > $in{'lines'});
+		if ($cmd) {
+			# Getting output from a command
+			push(@cats, $cmd);
+			}
+		elsif ($config{'compressed'}) {
+			# All compressed versions
+			foreach $l (&all_log_files($file)) {
+				$c = &catter_command($l);
+				push(@cats, $c) if ($c);
 				}
 			}
+		else {
+			# Just the one log
+			@cats = ( "cat ".quotemeta($file) );
+			}
+		$cat = "(".join(" ; ", @cats).")";
+		if ($reverse) {
+			$tailcmd .= " | tac" if ($cmd !~ /journalctl/);
+			}
+		$eflag = $gconfig{'os_type'} =~ /-linux/ ? "-E" : "";
+		$dashflag = $gconfig{'os_type'} =~ /-linux/ ? "--" : "";
 		if (@cats) {
-			$cat = "(".join(" ; ", reverse(@cats)).")";
-			$fullcmd = $cat." | ".$tailcmd;
+			my $fcmd;
+			if ($cmd =~ /journalctl/) {
+				$fcmd = "$cmd -g $filter";
+				}
+			else {
+				$fcmd = "$cat | grep -i -a $eflag $dashflag $filter ".
+					"| $tailcmd";
+				}
+			open(my $output_fh, '>', \$safe_proc_out);
+			$safe_proc_out_got = &proc::safe_process_exec(
+				$fcmd, 0, 0, $output_fh, undef, 1, 0, undef, 1);
+			close($output_fh);
+			print $safe_proc_out if ($safe_proc_out !~ /-- No entries --/m);
 			}
 		else {
-			$fullcmd = undef;
+			$safe_proc_out_got = undef;
+			}
+	} else {
+		# Not filtering .. so cat the most recent non-empty file
+		if ($cmd) {
+			# Getting output from a command
+			$fullcmd = $cmd.($cmd =~ /journalctl/ ? "" : (" | ".$tailcmd));
+			}
+		elsif ($config{'compressed'}) {
+			# Cat all compressed files
+			local @cats;
+			$total = 0;
+			foreach $l (reverse(&all_log_files($file))) {
+				next if (!-s $l);
+				$c = &catter_command($l);
+				if ($c) {
+					$len = int(&backquote_command(
+							"$c | wc -l"));
+					$total += $len;
+					push(@cats, $c);
+					last if ($total > $in{'lines'});
+					}
+				}
+			if (@cats) {
+				$cat = "(".join(" ; ", reverse(@cats)).")";
+				$fullcmd = $cat." | ".$tailcmd;
+				}
+			else {
+				$fullcmd = undef;
+				}
+			}
+		else {
+			# Just run tail on the file
+			$fullcmd = $tailcmd." ".quotemeta($file);
+			}
+		if ($reverse && $fullcmd) {
+			$fullcmd .= " | tac" if ($fullcmd !~ /journalctl/);
+			}
+		if ($fullcmd) {
+			open(my $output_fh, '>', \$safe_proc_out);
+			$safe_proc_out_got = &proc::safe_process_exec(
+				$fullcmd, 0, 0, $output_fh, undef, 1, 0, undef, 1);
+			close($output_fh);
+			print $safe_proc_out if ($safe_proc_out !~ /-- No entries --/m);
+			}
+		else {
+			$safe_proc_out_got = undef;
 			}
 		}
-	else {
-		# Just run tail on the file
-		$fullcmd = $tailcmd." ".quotemeta($file);
-		}
-	if ($config{'reverse'} && $fullcmd) {
-		$fullcmd .= " | tac";
-		}
-	if ($fullcmd) {
-		$got = &proc::safe_process_exec(
-			$fullcmd, 0, 0, STDOUT, undef, 1, 0, undef, 1);
-		}
-	else {
-		$got = undef;
-		}
+	print "<i data-empty>$text{'view_empty'}</i>\n"
+		if (!$safe_proc_out_got || $safe_proc_out =~ /-- No entries --/m);
+	print "</pre>\n";
 	}
-print "<i>$text{'view_empty'}</i>\n" if (!$got);
-print "</pre>\n";
+# Progressive output
+else {
+	print "<pre id='logdata' data-reversed='$reverse'>";
+	print "<i data-loading>$text{'view_loading'}</i>\n";
+	print "</pre>\n";
+	my %tinfo = &get_theme_info($current_theme);
+	my $spa_theme = $tinfo{'spa'} ? 1 : 0;
+	print <<EOF;
+	<script>
+	// Abort previous log viewer progress fetch
+	if (typeof fn_logviewer_progress_abort === 'function') {
+		fn_logviewer_progress_abort();
+	}
+	// Update log viewer with new data from the server
+	(async function () {
+		const logviewer_progress_abort = new AbortController();
+		const logDataElement = document.getElementById("logdata"),
+			response = await fetch("view_log_progress.cgi?idx=$in{'idx'}&filter=$jfilter",
+					       { signal: logviewer_progress_abort.signal }),
+			reader = response.body.getReader(),
+			decoder = new TextDecoder("utf-8"),
+			processText = async function () {
+				let { done, value } = await reader.read();
+				while (!done) {
+					const chunk = decoder.decode(value, { stream: true }).trim(),
+					      dataReversed = logDataElement.getAttribute("data-reversed");
+					if (!processText.started) {
+						processText.started = true;
+						const loadingElement = logDataElement.querySelector("i[data-loading]");
+						if (loadingElement) {
+							loadingElement.remove();
+							}
+						}
+					let lines = chunk.split("\\n");
+					if (dataReversed === "1") {
+						lines = lines.reverse();
+						logDataElement.textContent =
+							lines.join("\\n") + "\\n" + logDataElement.textContent;
+						}
+					else {
+						logDataElement.textContent += lines.join("\\n") + "\\n";
+						}
+					if (typeof fn_logviewer_progress_update === 'function') {
+						fn_logviewer_progress_update(chunk, dataReversed);
+						}
+					({ done, value } = await reader.read());
+					}
+				};
+		if (typeof fn_logviewer_progress_status === 'function') {
+			fn_logviewer_progress_status(response);
+			}
+		fn_logviewer_progress_abort = function () {
+			logviewer_progress_abort.abort();
+			fn_logviewer_progress_abort = null;
+			}
+		if ($spa_theme !== 1) {
+			window.onbeforeunload = function() {
+				if (typeof fn_logviewer_progress_abort === 'function') {
+					fn_logviewer_progress_abort();
+					}
+				};
+			}
+		processText().catch((error) => {
+			if (typeof fn_logviewer_progress_ended === 'function') {
+				fn_logviewer_progress_ended(error);
+				}
+			});
+		})();
+	</script>
+EOF
+	}
 &filter_form();
-if ($in{'nonavlinks'}) {
+if ($no_links) {
 	&ui_print_footer();
 	}
 else {
@@ -196,7 +321,9 @@ else {
 sub filter_form
 {
 print &ui_form_start("view_log.cgi");
-print &ui_hidden("nonavlinks", $in{'nonavlinks'} ? 1 : 0),"\n";
+if ($no_navlinks) {
+	print &ui_hidden("nonavlinks", $no_navlinks),"\n";
+	}
 print &ui_hidden("linktitle", $in{'linktitle'}),"\n";
 print &ui_hidden("oidx", $in{'oidx'}),"\n";
 print &ui_hidden("omod", $in{'omod'}),"\n";
@@ -210,10 +337,11 @@ my $found = 0;
 my $text_view_header = 'view_header';
 if ($access{'syslog'}) {
 	# Logs from syslog
-	my @systemctl_cmds = &get_systemctl_cmds();
+	my @systemctl_cmds = &get_systemctl_cmds(1);
 	foreach $c (@systemctl_cmds) {
 		next if (!&can_edit_log($c));
-		push(@logfiles, [ $c->{'id'}, "$c->{'desc'}" ]);
+		my $icon = $c->{'id'} =~ /journal-(a|x)/ ? "&#x25E6;&nbsp; " : "";
+		push(@logfiles, [ $c->{'id'}, $icon.$c->{'desc'} ]);
 		$found++ if ($c->{'id'} eq $in{'idx'});
 		}
 
@@ -267,18 +395,35 @@ foreach $e (&extra_log_files()) {
 	}
 if (@logfiles && $found) {
 	$sel = &ui_select("idx", $in{'idx'} eq '' ? $file : $in{'idx'},
-			  [ @logfiles ], undef, undef, undef, undef, "onChange='form.submit()'");
+			  [ @logfiles ], undef, undef, undef, undef,
+			  	"onChange='form.submit()' style='max-width: 240px'");
+	if ($in{'idx'} =~ /^journal-/) {
+		my $since_label = $follow ? $text{'journal_sincefollow'} :
+					    $text{'journal_since'};
+		$sel .= "$since_label&nbsp; " .
+			&ui_select("since", $in{'since'},
+				[ map { my ($key) = keys %$_;
+					[ $key, $_->{$key} ] }
+						@$journal_since ],
+			    undef, undef, undef, undef,
+			    	"onChange='form.submit()'");
+		}
 	}
 else {
 	$text_view_header = 'view_header2';
 	print &ui_hidden("idx", $in{'idx'}),"\n";
 	}
-
-print &text($text_view_header, "&nbsp;" . &ui_textbox("lines", $lines, 3), "&nbsp;$sel"),"\n";
+if ($follow) {
+	print &text('view_header3', "&nbsp;$sel"),"\n";
+	}
+else {
+	print &text($text_view_header, "&nbsp;" . &ui_textbox("lines", $lines, 3), "&nbsp;$sel"),"\n";
+	}
 print "&nbsp;&nbsp;&nbsp;&nbsp;\n";
-print &text('view_filter', "&nbsp;" . &ui_textbox("filter", $in{'filter'}, 25)),"\n";
+print &text('view_filter', "&nbsp;" . &ui_textbox("filter", $in{'filter'}, 12)),"\n";
+
 print "&nbsp;&nbsp;\n";
-print &ui_submit($text{'view_refresh'});
+print &ui_submit($text{'view_filter_btn'});
 print &ui_form_end(),"<br>\n";
 }
 
