@@ -78,7 +78,7 @@ if (!-d $webmin_crons_directory) {
 	&make_dir($webmin_crons_directory, 0700);
 	}
 if (!$cron->{'id'}) {
-	$cron->{'id'} = time().'_'.$$.'_'.($cnt++);
+	$cron->{'id'} = time().$$.($cnt++);
 	}
 my $file = "$webmin_crons_directory/$cron->{'id'}.cron";
 my %wcron = %$cron;
