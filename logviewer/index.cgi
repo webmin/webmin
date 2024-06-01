@@ -9,6 +9,7 @@ my @col0;
 my @col1;
 my @col2;
 my @col3;
+my @lnks;
 if ($access{'syslog'}) {
 	my @systemctl_cmds = &get_systemctl_cmds();
 	foreach $o (@systemctl_cmds) {
@@ -19,6 +20,7 @@ if ($access{'syslog'}) {
 		push(@cols, $icon.&cleanup_description($o->{'desc'}));
 		push(@cols, &ui_link("view_log.cgi?idx=$o->{'id'}&view=1",
 			$text{'index_view'}) );
+		push(@lnks, "view_log.cgi?idx=$o->{'id'}&view=1");
 		push(@col0, \@cols);
 		}
 
@@ -43,6 +45,8 @@ if ($access{'syslog'}) {
 					   map { &html_escape($_) } @{$c->{'sel'}}));
 				push(@cols, &ui_link("view_log.cgi?idx=syslog-".
 					$c->{'index'}."&"."view=1", $text{'index_view'}) );
+				push(@lnks, "view_log.cgi?idx=syslog-".
+					$c->{'index'}."&"."view=1");
 				push(@col1, \@cols);
 				push(@foreign_syslogs, $c->{'file'});
 				}
@@ -69,6 +73,8 @@ if ($access{'syslog'}) {
 						"view_log.cgi?idx=syslog-ng-".
 						$dest->{'index'}."&"."view=1",
 						$text{'index_view'}) );
+					push(@lnks, "view_log.cgi?idx=syslog-ng-".
+						$dest->{'index'}."&"."view=1");
 					@cols = sort { $a->[2] cmp $b->[2] } @cols;
 					push(@col1, \@cols);
 					}
@@ -95,6 +101,8 @@ if ($config{'others'} && $access{'others'}) {
 			push(@cols, $o->{'desc'} ? &html_escape($o->{'desc'}) : "");
 			push(@cols, &ui_link("view_log.cgi?oidx=$o->{'mindex'}".
 				"&omod=$o->{'mod'}&view=1", $text{'index_view'}) );
+			push(@lnks, "view_log.cgi?oidx=$o->{'mindex'}".
+				"&omod=$o->{'mod'}&view=1");
 			@cols = sort { $a->[2] cmp $b->[2] } @cols;
 			push(@col2, \@cols);
 			}
@@ -114,6 +122,7 @@ foreach $e (&extra_log_files()) {
 		}
 	push(@cols, $e->{'desc'} ? &html_escape($e->{'desc'}) : "");
 	push(@cols, &ui_link("view_log.cgi?extra=".&urlize($e->{'file'} || $e->{'cmd'})."&view=1", $text{'index_view'}) );
+	push(@lnks, "view_log.cgi?extra=".&urlize($e->{'file'} || $e->{'cmd'})."&view=1");
 	@cols = sort { $a->[2] cmp $b->[2] } @cols;
 	push(@col3, \@cols);
 	}
@@ -135,11 +144,8 @@ if (!@acols) {
 
 # If we jump directly to logs just redirect
 if ($config{'skip_index'} == 1) {
-	my $link;
-	$link = $acols[0]->[2];
-	$link =~ s/.*?href\s*=\s*(["']?)(?<link>[^"'\s>]+).*\1?/$+{link}/g;
-	if ($link) {
-		&redirect($link);
+	if ($lnks[0]) {
+		&redirect($lnks[0]);
 		exit;
 		}
 	}
