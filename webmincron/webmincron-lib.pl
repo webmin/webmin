@@ -6,11 +6,11 @@ Functions for creating and listing Webmin scheduled functions.
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
+use feature 'state';
 &init_config();
 
 $webmin_crons_directory = "$module_config_directory/crons";
 @special_modes = ( 'hourly', 'daily', 'weekly', 'monthly', 'yearly' );
-$save_webmin_cron_count = 0;
 
 =head2 list_webmin_crons
 
@@ -73,11 +73,12 @@ Create or update a webmin cron function. Also locks the file being written to.
 sub save_webmin_cron
 {
 my ($cron) = @_;
+state $cnt = 0;
 if (!-d $webmin_crons_directory) {
 	&make_dir($webmin_crons_directory, 0700);
 	}
 if (!$cron->{'id'}) {
-	$cron->{'id'} = time().'_'.$$.'_'.($save_webmin_cron_count++);
+	$cron->{'id'} = time().'_'.$$.'_'.($cnt++);
 	}
 my $file = "$webmin_crons_directory/$cron->{'id'}.cron";
 my %wcron = %$cron;
