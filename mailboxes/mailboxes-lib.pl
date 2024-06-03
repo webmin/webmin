@@ -1290,10 +1290,10 @@ return $rv;
 # Parses an iCalendar file and returns a list of events
 sub parse_calendar_file
 {
+my ($calendar_file) = @_;
 my (@events, %event);
 eval "use DateTime; use DateTime::TimeZone;";
 return \@events if ($@);
-my ($calendar_file) = @_;
 my $adjust_time_with_timezone = sub {
 	my ($time, $tzid) = @_;
 	my $dt = DateTime->new(
