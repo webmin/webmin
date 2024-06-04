@@ -8,5 +8,5 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 package system_status;
 require './system-status-lib.pl';
-&scheduled_collect_system_info();
 
+&scheduled_collect_system_info();
