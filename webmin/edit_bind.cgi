@@ -44,6 +44,22 @@ if (&foreign_check("firewall")) {
 	}
 print &ui_table_row($text{'bind_sockets'}, $stable);
 
+# WebSocket based port
+print &ui_table_row($text{'bind_websocport'},
+    &ui_radio("websocket_base_port_def",
+    	$miniserv{"websocket_base_port"} ? 0 : 1,
+	[ [ 1, $text{'bind_websocport_none'} ],
+	  [ 0, &ui_textbox("websocket_base_port",
+	  	$miniserv{"websocket_base_port"}, 6) ] ]));
+
+# Hostname for WebSocket connections
+print &ui_table_row($text{'bind_websoc_host'},
+    &ui_radio("websocket_host_def",
+    	$miniserv{"websocket_host"} ? 0 : 1,
+	[ [ 1, $text{'bind_websoc_host_auto'} ],
+	  [ 0, &ui_textbox("websocket_host",
+	  	$miniserv{"websocket_host"}, 25) ] ]));
+
 # IPv6 enabled?
 print &ui_table_row($text{'bind_ipv6'},
 	&ui_yesno_radio("ipv6", $miniserv{'ipv6'}));
