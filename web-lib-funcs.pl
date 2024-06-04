@@ -13539,7 +13539,7 @@ foreach my $k (keys %miniserv) {
     }
 
 # Pick a port and configure Webmin to proxy it
-my $port = $config{'base_port'} || 555;
+my $port = $miniserv{'websocket_base_port'} || 555;
 while(1) {
     if (!$inuse{$port}) {
         &open_socket("127.0.0.1", $port, my $fh, \$err);

@@ -64,6 +64,18 @@ else {
 	$miniserv{'bind'} = $first->[0];
 	}
 $miniserv{'sockets'} = join(" ", map { "$_->[0]:$_->[1]" } @sockets);
+if ($in{'websocket_base_port_def'}) {
+	delete($miniserv{'websocket_base_port'});
+	}
+else {
+	$miniserv{'websocket_base_port'} = $in{'websocket_base_port'};
+	}
+if ($in{'websocket_host_def'}) {
+	delete($miniserv{'websocket_host'});
+	}
+else {
+	$miniserv{'websocket_host'} = $in{'websocket_host'};
+	}
 $miniserv{'ipv6'} = $in{'ipv6'};
 if ($in{'listen_def'}) {
 	delete($miniserv{'listen'});

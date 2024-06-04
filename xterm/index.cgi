@@ -201,7 +201,9 @@ $ENV{'SESSION_ID'} = $main::session_id;
 
 # Open the terminal
 my $ws_proto = lc($ENV{'HTTPS'}) eq 'on' ? 'wss' : 'ws';
-my $http_host_conf = &trim($config{'host'});
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $http_host_conf = &trim($miniserv{'websocket_host'} || $config{'host'});
 if ($http_host_conf) {
 		if ($http_host_conf !~ /^wss?:\/\//) {
 			$http_host_conf = "$ws_proto://$http_host_conf";
