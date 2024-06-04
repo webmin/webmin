@@ -1605,9 +1605,8 @@ foreach my $f (readdir(DIR)) {
 closedir(DIR);
 
 # Cleanup old websockets
-if (&foreign_check("xterm")) {
-	&foreign_require("xterm");
-	&xterm::cleanup_miniserv_websockets();
+foreach (&get_miniserv_websockets_modules) {
+	&cleanup_miniserv_websockets(undef, $_);
 	}
 }
 
