@@ -13558,6 +13558,25 @@ $miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$rem
 return $port;
 }
 
+# get_miniserv_websocket_url(port, [host])
+# Returns the URL for a websocket
+sub get_miniserv_websocket_url
+{
+my ($port, $host) = @_;
+my $ws_proto = lc($ENV{'HTTPS'}) eq 'on' ? 'wss' : 'ws';
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $http_host_conf = &trim($miniserv{'websocket_host'} || $host);
+if ($http_host_conf) {
+	if ($http_host_conf !~ /^wss?:\/\//) {
+		$http_host_conf = "$ws_proto://$http_host_conf";
+		}
+	$http_host_conf =~ s/[\/]+$//g;
+	}
+my $http_host = $http_host_conf || "$ws_proto://$ENV{'HTTP_HOST'}";
+return "$http_host/$module_name/ws-$port";
+}
+
 # remove_miniserv_websocket(port)
 # Remove old websocket
 # from miniserv.conf
