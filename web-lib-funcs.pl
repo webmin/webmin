@@ -13649,8 +13649,8 @@ if (@clean) {
 sub get_miniserv_websockets_modules
 {
 my @rv;
-foreach (&get_all_module_infos(), &list_themes()) {
-	push(@rv, $_->{'dir'}) if ($_->{'websockets'});
+foreach my $i (&get_all_module_infos(), &list_themes()) {
+	push(@rv, $i->{'dir'}) if ($i->{'websockets'});
 	}
 return @rv;
 }
