@@ -89,6 +89,16 @@ foreach $s (@sub) {
 @attach = grep { $_ ne $body && $_ ne $dstatus } @attach;
 @attach = grep { !$_->{'attach'} } @attach;
 
+# Calendar attachments
+my @calendars;
+eval {
+foreach my $i (grep { $_->{'data'} }
+	       grep { $_->{'type'} =~ /^text\/calendar/ } @attach) {
+	my $calendars = &parse_calendar_file($i->{'data'});
+	push(@calendars, @{$calendars});
+	}};
+	
+# Mail buttons
 if ($config{'top_buttons'} == 2 && &editable_mail($mail)) {
 	&show_mail_buttons(1, scalar(@sub));
 	print "<p class='mail_buttons_divide'></p>\n";
