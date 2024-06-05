@@ -1286,14 +1286,32 @@ if (!glob("\Q$rv\E.*")) {
 return $rv;
 }
 
-# parse_calendar_file(calendar-file)
+# parse_calendar_file(calendar-file|lines)
 # Parses an iCalendar file and returns a list of events
 sub parse_calendar_file
 {
 my ($calendar_file) = @_;
-my (@events, %event);
+my (@events, %event, $line);
 eval "use DateTime; use DateTime::TimeZone;";
 return \@events if ($@);
+# Timezone map
+my %timezone_map = (
+    'Eastern Standard Time'            => 'EST',
+    'Central Standard Time'            => 'CST',
+    'Mountain Standard Time'           => 'MST',
+    'Pacific Standard Time'            => 'PST',
+    'Alaskan Standard Time'            => 'AKST',
+    'Hawaiian Standard Time'           => 'HST',
+    'Atlantic Standard Time'           => 'AST',
+    'Newfoundland Standard Time'       => 'NST',
+    'Greenwich Mean Time'              => 'GMT',
+    'British Summer Time'              => 'BST',
+    'Central European Time'            => 'CET',
+    'Eastern European Time'            => 'EET',
+    'Australian Eastern Standard Time' => 'AEST',
+    'Australian Central Standard Time' => 'ACST',
+);
+# Make a date from a special timestamp
 my $adjust_time_with_timezone = sub {
 	my ($time, $tzid) = @_;
 	my $dt = DateTime->new(
@@ -1310,55 +1328,80 @@ my $adjust_time_with_timezone = sub {
 		timestamp => $local_dt->epoch
 	};
 };
-my $ics_file_lines = &read_file_lines($calendar_file, 1);
-foreach (@$ics_file_lines) {
-	if (/^BEGIN:VEVENT/) {
-		# Start a new event
+# Lines processor
+my $process_line = sub  {
+	my ($line) = @_;
+	# Start a new event
+	if ($line =~ /^BEGIN:VEVENT/) {
 		%event = ();
 		}
-	elsif (/^END:VEVENT/) {
-		# Convert times using the timezone
-		if ($event{'dtstart'} && $event{'tzid'}) {
-			my $adjusted_start = $adjust_time_with_timezone->($event{'dtstart'}, $event{'tzid'});
-			$event{'dtstart_local_timestamp'} = $adjusted_start->{'timestamp'};
-			$event{'dtstart_local_date'} = &make_date($event{'dtstart_local_timestamp'});
-			}
-		if ($event{'dtend'} && $event{'tzid'}) {
-			my $adjusted_end = $adjust_time_with_timezone->($event{'dtend'}, $event{'tzid'});
-			$event{'dtend_local_timestamp'} = $adjusted_end->{'timestamp'};
-			$event{'dtend_local_date'} = &make_date($event{'dtend_local_timestamp'});
+	# Convert times using the timezone
+	elsif ($line =~ /^END:VEVENT/) {
+		if ($event{'tzid'}) {
+			$event{'tzid'} = $timezone_map{$event{'tzid'}} || $event{'tzid'};
+			if ($event{'dtstart'}) {
+				my $adjusted_start = $adjust_time_with_timezone->($event{'dtstart'}, $event{'tzid'});
+				$event{'dtstart_local_timestamp'} = $adjusted_start->{'timestamp'};
+				$event{'dtstart_local_date'} = &make_date($event{'dtstart_local_timestamp'});
+				}
+			if ($event{'dtend'}) {
+				my $adjusted_end = $adjust_time_with_timezone->($event{'dtend'}, $event{'tzid'});
+				$event{'dtend_local_timestamp'} = $adjusted_end->{'timestamp'};
+				$event{'dtend_local_date'} = &make_date($event{'dtend_local_timestamp'});
+				}
 			}
 		# Local timezone
-		$event{'tzid_local'} = DateTime::TimeZone->new(name => 'local')->name;
+		$event{'tzid_local'} = DateTime::TimeZone->new(name => 'local')->name();
 		# Add the event to the list
 		push(@events, { %event });
 		}
 	# Parse fields
-	elsif (/^SUMMARY:(.*)$/) {
+	elsif ($line =~ /^SUMMARY:(.*)$/) {
 		$event{'summary'} = $1;
 		}
-	elsif (/^DTSTART;TZID=(.*?):(.*)$/) {
+	elsif ($line =~ /^DTSTART;TZID=(.*?):(.*)$/) {
 		$event{'tzid'} = $1;
 		$event{'dtstart'} = $2;
 		}
-	elsif (/^DTEND;TZID=(.*?):(.*)$/) {
+	elsif ($line =~ /^DTEND;TZID=(.*?):(.*)$/) {
 		$event{'tzid'} = $1;
 		$event{'dtend'} = $2;
 		}
-	elsif (/^DESCRIPTION:(.*)$/) {
+	elsif ($line =~ /^DESCRIPTION:(.*)$/) {
 		$event{'description'} = $1;
 		}
-	elsif (/^LOCATION:(.*)$/) {
+	elsif ($line =~ /^LOCATION:(.*)$/) {
 		$event{'location'} = $1;
 		}
-	elsif (/^ATTENDEE.*:(.*)$/) {
-		push @{$event{'attendees'}}, $1;
+	elsif ($line =~ /^ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN=(.*?):mailto:(.*)$/ ||
+	       $line =~ /^ATTENDEE;.*CN=(.*?);.*mailto:(.*)$/) {
+		push @{$event{'attendees'}}, { 'name' => $1, 'email' => $2 };
 		}
-	elsif (/^ORGANIZER;CN=(.*?):mailto:(.*)$/) {
+	elsif ($line =~ /^ORGANIZER;CN=(.*?):mailto:(.*)$/) {
 		$event{'organizer_name'} = $1;
 		$event{'organizer_email'} = $2;
 		}
+};
+# Read the ICS file lines or just use the lines
+my $ics_file_lines =
+	-r $calendar_file ?
+		&read_file_lines($calendar_file, 1) :
+		[ split(/\r?\n/, $calendar_file) ];
+# Process each line of the ICS file
+foreach my $ics_file_line (@$ics_file_lines) {
+	# Check if the line is a continuation of the previous line
+	if ($ics_file_line =~ /^[ \t](.*)$/) {
+		$line .= $1; # Concatenate with the previous line
+		}
+	else {
+		# Process the previous line
+		$process_line->($line) if ($line);
+		$line = $ics_file_line; # Start a new line
+		}
 	}
+# Process the last line
+$process_line->($line) if ($line);
+# Return the list of events
 return \@events;
 }
 
