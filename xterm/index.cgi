@@ -198,7 +198,7 @@ $ENV{'SESSION_ID'} = $main::session_id;
 &system_logged($shellserver_cmd." ".quotemeta($port)." ".quotemeta($user).
 	       ($dir ? " ".quotemeta($dir) : "").
 	       " >$module_var_directory/websocket-connection-$port.out 2>&1 </dev/null");
-var_dump(\%ENV, 'env');
+
 # Open the terminal
 my $url = &get_miniserv_websocket_url($port, $config{'host'}, $module_name);
 my $canvasAddon = $termlinks->{'js'}[3];
