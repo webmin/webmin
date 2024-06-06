@@ -14,7 +14,7 @@ my @uinfo = getpwnam($user);
 my ($uid, $gid);
 if ($user ne "root" && !$<) {
 	if (!@uinfo) {
-		&remove_miniserv_websocket($port);
+		&remove_miniserv_websocket($port, $module_name);
 		die "User $user does not exist!";
 		}
 	$uid = $uinfo[2];
@@ -83,7 +83,7 @@ my ($shellfh, $pid) = &proc::pty_process_exec($shellexec, $uid, $gid, $shelllogi
 &reset_environment();
 my $shcmd = "'$shellexec".($shelllogin ? " $shelllogin" : "")."'";
 if (!$pid) {
-	&remove_miniserv_websocket($port);
+	&remove_miniserv_websocket($port, $module_name);
 	die "Failed to run shell with $shcmd\n";
 	}
 else {
@@ -99,7 +99,7 @@ close(STDIN);
 
 # Clean up when socket is terminated
 $SIG{'ALRM'} = sub {
-	&remove_miniserv_websocket($port);
+	&remove_miniserv_websocket($port, $module_name);
 	die "timeout waiting for connection";
 	};
 alarm(60);
@@ -154,13 +154,13 @@ Net::WebSocket::Server->new(
 					}
 				if (!syswrite($shellfh, $msg, length($msg))) {
 					&error_stderr("Write to shell failed : $!");
-					&remove_miniserv_websocket($port);
+					&remove_miniserv_websocket($port, $module_name);
 					exit(1);
 					}
 				},
 			disconnect => sub {
 				&error_stderr("WebSocket connection closed");
-				&remove_miniserv_websocket($port);
+				&remove_miniserv_websocket($port, $module_name);
 				kill('KILL', $pid) if ($pid);
 				exit(0);
 				}
@@ -173,7 +173,7 @@ Net::WebSocket::Server->new(
 			my $ok = sysread($shellfh, $buf, 1024);
 			if ($ok <= 0) {
 				&error_stderr("End of output from shell");
-				&remove_miniserv_websocket($port);
+				&remove_miniserv_websocket($port, $module_name);
 				exit(0);
 				}
 			if ($wsconn) {
@@ -186,5 +186,5 @@ Net::WebSocket::Server->new(
 	],
 )->start;
 &error_stderr("Exited WebSocket server");
-&remove_miniserv_websocket($port);
-&cleanup_miniserv_websockets([$port]);
+&remove_miniserv_websocket($port, $module_name);
+&cleanup_miniserv_websockets([$port], $module_name);

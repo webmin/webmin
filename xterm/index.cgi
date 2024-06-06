@@ -168,7 +168,7 @@ EOF
 print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\"></div>\n";
 
 # Get a free port that can be used for the socket
-my $port = &allocate_miniserv_websocket();
+my $port = &allocate_miniserv_websocket($module_name);
 
 # Check permissions for user to run as
 my $user = $access{'user'};
@@ -198,9 +198,9 @@ $ENV{'SESSION_ID'} = $main::session_id;
 &system_logged($shellserver_cmd." ".quotemeta($port)." ".quotemeta($user).
 	       ($dir ? " ".quotemeta($dir) : "").
 	       " >$module_var_directory/websocket-connection-$port.out 2>&1 </dev/null");
-
+var_dump(\%ENV, 'env');
 # Open the terminal
-my $url = &get_miniserv_websocket_url($port, $config{'host'});
+my $url = &get_miniserv_websocket_url($port, $config{'host'}, $module_name);
 my $canvasAddon = $termlinks->{'js'}[3];
 my $webGLAddon = $termlinks->{'js'}[4];
 my $term_script = <<EOF;
