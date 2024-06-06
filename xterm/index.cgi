@@ -200,16 +200,7 @@ $ENV{'SESSION_ID'} = $main::session_id;
 	       " >$module_var_directory/websocket-connection-$port.out 2>&1 </dev/null");
 
 # Open the terminal
-my $ws_proto = lc($ENV{'HTTPS'}) eq 'on' ? 'wss' : 'ws';
-my $http_host_conf = &trim($config{'host'});
-if ($http_host_conf) {
-		if ($http_host_conf !~ /^wss?:\/\//) {
-			$http_host_conf = "$ws_proto://$http_host_conf";
-			}
-		$http_host_conf =~ s/[\/]+$//g;
-		}
-my $http_host = $http_host_conf || "$ws_proto://$ENV{'HTTP_HOST'}";
-my $url = "$http_host/$module_name/ws-$port";
+my $url = &get_miniserv_websocket_url($port, $config{'host'});
 my $canvasAddon = $termlinks->{'js'}[3];
 my $webGLAddon = $termlinks->{'js'}[4];
 my $term_script = <<EOF;

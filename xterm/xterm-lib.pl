@@ -4,7 +4,6 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 our %access = &get_module_acl();
-do "$root_directory/websockets-lib-funcs.pl";
 
 # config_pre_load(mod-info-ref, [mod-order-ref])
 # Check if some config options are conditional,

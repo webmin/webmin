@@ -13522,6 +13522,139 @@ my $dir = $var_directory."/locks/".$$;
 return $dir;
 }
 
+# allocate_miniserv_websocket([module])
+# Allocate a new websocket and
+# stores it miniserv.conf file
+sub allocate_miniserv_websocket
+{
+my ($module) = @_;
+$module ||= $module_name;
+# Find ports already in use
+&lock_file(&get_miniserv_config_file());
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my %inuse;
+foreach my $k (keys %miniserv) {
+    if ($k =~ /^websockets_/ && $miniserv{$k} =~ /port=(\d+)/) {
+        $inuse{$1} = 1;
+        }
+    }
+
+# Pick a port and configure Webmin to proxy it
+my $port = $miniserv{'websocket_base_port'} || 555;
+while(1) {
+    if (!$inuse{$port}) {
+        &open_socket("127.0.0.1", $port, my $fh, \$err);
+        last if ($err);
+        close($fh);
+        }
+    $port++;
+    }
+my $wspath = "/$module/ws-".$port;
+my $now = time();
+$miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user time=$now";
+&put_miniserv_config(\%miniserv);
+&unlock_file(&get_miniserv_config_file());
+&reload_miniserv();
+return $port;
+}
+
+# get_miniserv_websocket_url(port, [host], [module])
+# Returns the URL for a websocket
+sub get_miniserv_websocket_url
+{
+my ($port, $host, $module) = @_;
+$module ||= $module_name;
+my $ws_proto = lc($ENV{'HTTPS'}) eq 'on' ? 'wss' : 'ws';
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $http_host_conf = &trim($miniserv{'websocket_host'} || $host);
+if ($http_host_conf) {
+	if ($http_host_conf !~ /^wss?:\/\//) {
+		$http_host_conf = "$ws_proto://$http_host_conf";
+		}
+	$http_host_conf =~ s/[\/]+$//g;
+	}
+my $http_host = $http_host_conf || "$ws_proto://$ENV{'HTTP_HOST'}";
+return "$http_host/$module/ws-$port";
+}
+
+# remove_miniserv_websocket(port, [module])
+# Remove old websocket from miniserv.conf
+sub remove_miniserv_websocket
+{
+my ($port, $module) = @_;
+$module ||= $module_name;
+my %miniserv;
+if ($port) {
+    &lock_file(&get_miniserv_config_file());
+    &get_miniserv_config(\%miniserv);
+    my $wspath = "/$module/ws-".$port;
+    if ($miniserv{'websockets_'.$wspath}) {
+        delete($miniserv{'websockets_'.$wspath});
+        &put_miniserv_config(\%miniserv);
+        &reload_miniserv();
+        }
+    &unlock_file(&get_miniserv_config_file());
+    }
+}
+
+# cleanup_miniserv_websockets([&skip-ports], [module])
+# Called by scheduled status collection to remove any
+# websockets in miniserv.conf that are no longer used
+sub cleanup_miniserv_websockets
+{
+my ($skip, $module) = @_;
+$skip ||= [ ];
+$module ||= $module_name;
+&lock_file(&get_miniserv_config_file());
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+my $now = time();
+my @clean;
+foreach my $k (keys %miniserv) {
+    $k =~ /^websockets_\/$module\/ws-(\d+)$/ || next;
+    my $port = $1;
+    next if (&indexof($port, @$skip) >= 0);
+    my $when = 0;
+    if ($miniserv{$k} =~ /time=(\d+)/) {
+        $when = $1;
+        }
+    if ($now - $when > 60) {
+        # Has been open for a while, check if the port is still in use?
+        my $err;
+        &open_socket("127.0.0.1", $port, my $fh, \$err);
+        if ($err) {
+            # Closed now, can clean up
+            push(@clean, $k);
+            }
+        else {
+            # Still active
+            close($fh);
+            }
+        }
+    }
+if (@clean) {
+    foreach my $k (@clean) {
+        delete($miniserv{$k});
+        }
+    &put_miniserv_config(\%miniserv);
+    &reload_miniserv();
+    }
+&unlock_file(&get_miniserv_config_file());
+}
+
+# get_miniserv_websockets_modules()
+# Returns a list of modules and themes that use websockets
+sub get_miniserv_websockets_modules
+{
+my @rv;
+foreach my $i (&get_all_module_infos(), &list_themes()) {
+	push(@rv, $i->{'dir'}) if ($i->{'websockets'});
+	}
+return @rv;
+}
+
 $done_web_lib_funcs = 1;
 
 1;
