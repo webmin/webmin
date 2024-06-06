@@ -40,6 +40,7 @@ if (@keyrecs) {
 		my $kt = $key->{'ksk'} ? 'ksk' : 'zone';
 		my ($keyrec) = grep { $_->{'values'}->[0] ==
 				 ($key->{'ksk'} ? 257 : 256) } @keyrecs;
+		next if (!$keyrec);
 		my $keyline = format_dnssec_public_key(
                        join(" ", $keyrec->{'name'}, $keyrec->{'class'},
                                  $keyrec->{'type'}, @{$keyrec->{'values'}}));
