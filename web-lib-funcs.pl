@@ -13569,11 +13569,21 @@ my $ws_proto = lc($ENV{'HTTPS'}) eq 'on' ? 'wss' : 'ws';
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 my $http_host_conf = &trim($miniserv{'websocket_host'} || $host);
+# Pass as defined
 if ($http_host_conf) {
 	if ($http_host_conf !~ /^wss?:\/\//) {
 		$http_host_conf = "$ws_proto://$http_host_conf";
 		}
 	$http_host_conf =~ s/[\/]+$//g;
+	}
+# Try to rely on the proxy
+if (!defined($http_host_conf)) {
+	my $forwarded_host = $ENV{'HTTP_X_FORWARDED_HOST'};
+	if ($forwarded_host) {
+		$http_host_conf = "$ws_proto://$forwarded_host".
+			&get_webprefix();
+		$http_host_conf =~ s/\/$//;
+		}
 	}
 my $http_host = $http_host_conf || "$ws_proto://$ENV{'HTTP_HOST'}";
 return "$http_host/$module/ws-$port";
