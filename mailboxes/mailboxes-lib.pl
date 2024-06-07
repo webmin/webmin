@@ -1356,7 +1356,7 @@ my $process_line = sub  {
 		push(@events, { %event });
 		}
 	# Parse fields
-	elsif ($line =~ /^SUMMARY:(.*)$/) {
+	elsif ($line =~ /^SUMMARY.*?:(.*)$/) {
 		$event{'summary'} = $1;
 		}
 	elsif ($line =~ /^DTSTART;TZID=(.*?):(.*)$/) {
