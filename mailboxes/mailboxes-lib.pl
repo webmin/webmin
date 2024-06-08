@@ -1343,7 +1343,7 @@ my $process_line = sub  {
 	elsif ($line =~ /^END:VEVENT/) {
 		# Local timezone
 		$event{'tzid_local'} = DateTime::TimeZone->new(name => 'local')->name();
-		$event{'tzid'} = '+0000' if (!$event{'tzid'});
+		$event{'tzid'} = 'UTC', $event{'tzid_missing'} = 1 if (!$event{'tzid'});
 		# Adjust times with timezone
 		my ($adjusted_start, $adjusted_end);
 		$event{'tzid'} = $timezone_map{$event{'tzid'}} || $event{'tzid'};
@@ -1419,27 +1419,29 @@ my $process_line = sub  {
 				$event{'_obj_dtend_time'} =
 					make_date($event{'dtend_timestamp'}, { tz => $event{'tzid'} });
 			# Build original when
-			$event{'dtwhen'} =
-				# Start original
-				$dtstart_obj->{'week'}. ' '. $dtstart_obj->{'month'}. ' '.
-				$dtstart_obj->{'day'}. ', '. $dtstart_obj->{'year'}. ' '.
-				$dtstart_obj->{'timeshort'}. ' – ';
-				# End original
-				if ($dtstart_obj->{'year'} eq $dtend_obj->{'year'} &&
-					$dtstart_obj->{'month'} eq $dtend_obj->{'month'} &&
-					$dtstart_obj->{'day'} eq $dtend_obj->{'day'}) {
-					$event{'dtwhen'} .= $dtend_obj->{'timeshort'};
-					}
-				else {
-					$event{'dtwhen'} .=
-						$dtend_obj->{'week'}. ' '. $dtend_obj->{'month'}. ' '.
-						$dtend_obj->{'day'}. ', '. $dtend_obj->{'year'}. ' '.
-						$dtend_obj->{'timeshort'};
-					}
-				# Timezone original
-				if ($dtstart_obj->{'tz'}) {
-					$event{'dtwhen'} .= " ($dtstart_obj->{'tz'})";
-					}
+			if (!$event{'tzid_missing'}) {
+				$event{'dtwhen'} =
+					# Start original
+					$dtstart_obj->{'week'}. ' '. $dtstart_obj->{'month'}. ' '.
+					$dtstart_obj->{'day'}. ', '. $dtstart_obj->{'year'}. ' '.
+					$dtstart_obj->{'timeshort'}. ' – ';
+					# End original
+					if ($dtstart_obj->{'year'} eq $dtend_obj->{'year'} &&
+						$dtstart_obj->{'month'} eq $dtend_obj->{'month'} &&
+						$dtstart_obj->{'day'} eq $dtend_obj->{'day'}) {
+						$event{'dtwhen'} .= $dtend_obj->{'timeshort'};
+						}
+					else {
+						$event{'dtwhen'} .=
+							$dtend_obj->{'week'}. ' '. $dtend_obj->{'month'}. ' '.
+							$dtend_obj->{'day'}. ', '. $dtend_obj->{'year'}. ' '.
+							$dtend_obj->{'timeshort'};
+						}
+					# Timezone original
+					if ($dtstart_obj->{'tz'}) {
+						$event{'dtwhen'} .= " ($dtstart_obj->{'tz'})";
+						}
+				}
 			}
 		# Add the event to the list
 		push(@events, { %event });
