@@ -2228,6 +2228,10 @@ if (!$@ && $] > 5.011) {
 				}
 			};
 		$data->{'year'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%Y");
+		$data->{'day'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%d");
+		$data->{'week'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%a");
+		$data->{'weekfull'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%A");
+		$data->{'month'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%b");
 		$data->{'complete'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
 		($data->{'complete_short'} = $data->{'complete'}) =~ s/(.*?)([\s\,]*\Q$data->{'year'}\E.*)/$1/;
 
