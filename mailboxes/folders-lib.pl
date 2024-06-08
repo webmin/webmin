@@ -2957,6 +2957,7 @@ my $iframe_body = <<EOF;
 				          iframe_height_bound : iframe_scroll_height;
 				iframeobj.style.height = Math.ceil(iframe_height) + "px";
 			  };
+		mail_iframe_onload.resize = iframe_resize;
 		iframe_spinner && iframe_spinner.remove();
 		iframe.classList.add("loaded");
 		setTimeout(iframe_resize);
