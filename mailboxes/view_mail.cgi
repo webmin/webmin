@@ -282,7 +282,7 @@ STYLE
         </tr>
       </table>
       <details class="calendar-details">
-        <summary></summary>
+        <summary data-resize="iframe"></summary>
         <table>
           <tr>
             <td class="detail">
