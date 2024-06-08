@@ -1458,7 +1458,7 @@ my $process_line = sub  {
 	elsif ($line =~ /^DESCRIPTION:(.*)$/) {
 		$event{'description'} = $1;
 		}
-	elsif ($line =~ /^LOCATION:(.*)$/) {
+	elsif ($line =~ /^LOCATION.*:(.*)$/) {
 		$event{'location'} = $1;
 		}
 	elsif ($line =~ /^ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN=(.*?):mailto:(.*)$/ ||
