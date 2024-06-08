@@ -157,12 +157,19 @@ if (@calendars) {
 <style>
 .calendar-table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
     border: 1px solid #99999933;
+    margin-bottom: 9px;
+  }
+  .calendar-table-inner {
+    table-layout: fixed;
+    border-collapse: collapse;
   }
   .calendar-table td {
     padding: 5px;
     vertical-align: top;
+    overflow-wrap: anywhere;
   }
   .calendar-table .calendar-cell {
     background-color: #99999916;
@@ -206,7 +213,7 @@ if (@calendars) {
     opacity: 0.66;
     white-space: nowrap;
   }
-  .calendar-details .detail + .attendees p:first-child {
+  .calendar-details .detail + .desc p:first-child {
     margin-top: 0;
   }
   details.calendar-details {
@@ -256,7 +263,7 @@ STYLE
       </div>
     </td>
     <td class="calendar-details">
-      <table>
+      <table class="calendar-table-inner">
         <tr>
           <td class="title" colspan="2">
             <strong>$title</strong>
@@ -283,7 +290,7 @@ STYLE
       </table>
       <details class="calendar-details">
         <summary data-resize="iframe"></summary>
-        <table>
+        <table class="calendar-table-inner">
           <tr>
             <td class="detail">
               <strong>$text{'view_ical_orginizertime'}</strong>
@@ -306,7 +313,7 @@ STYLE
             <td class="detail">
               <strong>$text{'view_ical_attendees'}</strong>
             </td>
-            <td class="attendees">@{[join('', map {
+            <td class="desc">@{[join('', map {
                 "<p>$_->{'name'}<br>$_->{'email'}</p>"
                 } @attendees)]}</td>
           </tr>
@@ -314,7 +321,7 @@ STYLE
             <td class="detail">
               <strong>$text{'view_ical_desc'}</strong>
             </td>
-            <td class="attendees">@{[join('<br>',
+            <td class="desc">@{[join('<br>',
                 @{$calendar->{'description'}})]}</td>
           </tr>
         </table>
