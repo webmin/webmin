@@ -1463,11 +1463,15 @@ my $process_line = sub  {
 		$event{'dtend'} = $2;
 		}
 	elsif ($line =~ /^DESCRIPTION:(.*)$/) {
-		unshift(@{$event{'description'}}, $1);
+		my $description = $1;
+		$description =~ s/\\n/<br>/g;
+		$description =~ s/\\//g;
+		unshift(@{$event{'description'}}, $description);
 		}
 	elsif ($line =~ /^DESCRIPTION;LANGUAGE=([a-z]{2}-[A-Z]{2}):(.*)$/) {
 		my $description = $2;
 		$description =~ s/\\n/<br>/g;
+		$description =~ s/\\//g;
 		unshift(@{$event{'description'}}, $description);
 		}
 	elsif ($line =~ /^LOCATION.*?:(.*)$/) {
