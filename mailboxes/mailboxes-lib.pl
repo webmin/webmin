@@ -1336,32 +1336,33 @@ my $process_line = sub  {
 	# Start a new event
 	if ($line =~ /^BEGIN:VEVENT/) {
 		%event = ();
+		$event{'description'} = [ ];
+		$event{'attendees'} = [ ];
 		}
 	# Convert times using the timezone
 	elsif ($line =~ /^END:VEVENT/) {
 		# Local timezone
 		$event{'tzid_local'} = DateTime::TimeZone->new(name => 'local')->name();
+		$event{'tzid'} = '+0000' if (!$event{'tzid'});
 		# Adjust times with timezone
-		if ($event{'tzid'}) {
-			my ($adjusted_start, $adjusted_end);
-			$event{'tzid'} = $timezone_map{$event{'tzid'}} || $event{'tzid'};
-			# Add single start/end time
-			if ($event{'dtstart'}) {
-				$adjusted_start = $adjust_time_with_timezone->($event{'dtstart'}, $event{'tzid'});
-				$event{'dtstart_timestamp'} = $adjusted_start->{'timestamp'};
-				my $dtstart_date = &make_date($event{'dtstart_timestamp'}, { tz => $event{'tzid'} });
-				$event{'dtstart_date'} = "$dtstart_date->{'short'} $dtstart_date->{'timeshort'}"; 
-				$event{'dtstart_local_timestamp'} = $adjusted_start->{'timestamp_local'};
-				$event{'dtstart_local_date'} = &make_date($event{'dtstart_local_timestamp'});
-				}
-			if ($event{'dtend'}) {
-				$adjusted_end = $adjust_time_with_timezone->($event{'dtend'}, $event{'tzid'});
-				$event{'dtend_timestamp'} = $adjusted_end->{'timestamp'};
-				my $dtend_date = &make_date($event{'dtend_timestamp'}, { tz => $event{'tzid'} });
-				$event{'dtend_date'} = "$dtend_date->{'short'} $dtend_date->{'timeshort'}";
-				$event{'dtend_local_timestamp'} = $adjusted_end->{'timestamp_local'};
-				$event{'dtend_local_date'} = &make_date($event{'dtend_local_timestamp'});
-				}
+		my ($adjusted_start, $adjusted_end);
+		$event{'tzid'} = $timezone_map{$event{'tzid'}} || $event{'tzid'};
+		# Add single start/end time
+		if ($event{'dtstart'}) {
+			$adjusted_start = $adjust_time_with_timezone->($event{'dtstart'}, $event{'tzid'});
+			$event{'dtstart_timestamp'} = $adjusted_start->{'timestamp'};
+			my $dtstart_date = &make_date($event{'dtstart_timestamp'}, { tz => $event{'tzid'} });
+			$event{'dtstart_date'} = "$dtstart_date->{'short'} $dtstart_date->{'timeshort'}"; 
+			$event{'dtstart_local_timestamp'} = $adjusted_start->{'timestamp_local'};
+			$event{'dtstart_local_date'} = &make_date($event{'dtstart_local_timestamp'});
+			}
+		if ($event{'dtend'}) {
+			$adjusted_end = $adjust_time_with_timezone->($event{'dtend'}, $event{'tzid'});
+			$event{'dtend_timestamp'} = $adjusted_end->{'timestamp'};
+			my $dtend_date = &make_date($event{'dtend_timestamp'}, { tz => $event{'tzid'} });
+			$event{'dtend_date'} = "$dtend_date->{'short'} $dtend_date->{'timeshort'}";
+			$event{'dtend_local_timestamp'} = $adjusted_end->{'timestamp_local'};
+			$event{'dtend_local_date'} = &make_date($event{'dtend_local_timestamp'});
 			}
 		if ($event{'dtstart'} && $event{'dtend'}) {
 			# Try to add local 'when (period)'
@@ -1447,25 +1448,37 @@ my $process_line = sub  {
 	elsif ($line =~ /^SUMMARY.*?:(.*)$/) {
 		$event{'summary'} = $1;
 		}
+	elsif ($line =~ /^DTSTART:(.*)$/) {
+		$event{'dtstart'} = $1;
+		}
 	elsif ($line =~ /^DTSTART;TZID=(.*?):(.*)$/) {
 		$event{'tzid'} = $1;
 		$event{'dtstart'} = $2;
+		}
+	elsif ($line =~ /^DTEND:(.*)$/) {
+		$event{'dtend'} = $1;
 		}
 	elsif ($line =~ /^DTEND;TZID=(.*?):(.*)$/) {
 		$event{'tzid'} = $1;
 		$event{'dtend'} = $2;
 		}
 	elsif ($line =~ /^DESCRIPTION:(.*)$/) {
-		$event{'description'} = $1;
+		unshift(@{$event{'description'}}, $1);
 		}
-	elsif ($line =~ /^LOCATION.*:(.*)$/) {
+	elsif ($line =~ /^DESCRIPTION;LANGUAGE=([a-z]{2}-[A-Z]{2}):(.*)$/) {
+		my $description = $2;
+		$description =~ s/\\n/<br>/g;
+		unshift(@{$event{'description'}}, $description);
+		}
+	elsif ($line =~ /^LOCATION.*?:(.*)$/) {
 		$event{'location'} = $1;
 		}
 	elsif ($line =~ /^ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN=(.*?):mailto:(.*)$/ ||
-	       $line =~ /^ATTENDEE;.*CN=(.*?);.*mailto:(.*)$/) {
-		push @{$event{'attendees'}}, { 'name' => $1, 'email' => $2 };
+	       $line =~ /^ATTENDEE;.*CN=(.*?);.*mailto:(.*)$/ ||
+	       $line =~ /^ATTENDEE:mailto:(.*)$/) {
+		push(@{$event{'attendees'}}, { 'name' => $1, 'email' => $2 });
 		}
-	elsif ($line =~ /^ORGANIZER;CN=(.*?):mailto:(.*)$/) {
+	elsif ($line =~ /^ORGANIZER;CN=(.*?):(?:mailto:)?(.*)$/) {
 		$event{'organizer_name'} = $1;
 		$event{'organizer_email'} = $2;
 		}
