@@ -2979,6 +2979,13 @@ my $iframe_body = <<EOF;
 				  } catch (e) {}
 				})();
 			});
+			const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+			iframeDoc.addEventListener('click', function(event) {
+				if (event.target.tagName.toLowerCase() === 'summary' &&
+				    event.target.dataset.resize === 'iframe') {
+					setTimeout(iframe_resize);
+				}
+			});
 		}, 99);
 	}
 </script>
