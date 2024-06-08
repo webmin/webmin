@@ -148,11 +148,209 @@ else {
 print &ui_table_end();
 
 # Show body attachment, with properly linked URLs
-@bodyright = ( );
+my $bodycontents;
+my @bodyright = ( );
+my $calendars = { };
+if (@calendars) {
+	# CSS for HTML version
+	$calendars->{'html'} .= <<STYLE;
+<style>
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #99999933;
+  }
+  .calendar-table td {
+    padding: 5px;
+    vertical-align: top;
+  }
+  .calendar-table .calendar-cell {
+    background-color: #99999916;
+    text-align: center;
+    vertical-align: top;
+    padding: 2px;
+    padding-top: 24px;
+    width: 100px;
+    font-weight: bold;
+  }
+  .calendar-month {
+    font-size: 21px;
+    color: #1d72ff;
+    text-align: center;
+    padding: 2px 8px;
+  }
+  .calendar-day {
+    font-size: 24px;
+    text-align: center;
+    padding: 4px 8px;
+  }
+  .calendar-week {
+    font-size: 16px;
+    border-top: 1px dotted #999999aa;
+    padding: 6px;
+    display: inline-block;
+  }
+  .calendar-details h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+  .calendar-details p {
+    margin: 4px 0;
+  }
+  .calendar-details .title {
+    font-size: 20px;
+  }
+  .calendar-details .detail strong {
+    opacity: 0.66;
+    white-space: nowrap;
+  }
+  .calendar-details .detail + .attendees p:first-child {
+    margin-top: 0;
+  }
+  details.calendar-details {
+    font-size: 90%;
+    display: inline-block;
+    margin-left: 9px;
+  }
+  details.calendar-details summary {
+    cursor: help;
+  }
+  details.calendar-details tr:has(>.detail+td:empty),
+  .calendar-details tr:has(>.detail+td:empty) {
+    display: none;
+  }
+</style>
+STYLE
+	foreach my $calendar (@calendars) {
+		my $title = $calendar->{'summary'} || $calendar->{'description'};
+		my $orginizer = $calendar->{'organizer_name'};
+		my @attendees;
+		foreach my $a (@{$calendar->{'attendees'}}) {
+			push(@attendees, { name => $a->{'name'},
+					   email => $a->{'email'} });
+			}
+		my $who = join(", ", map { $_->{'name'} } @attendees);
+		if ($who && $orginizer) {
+			$who .= ", ${orginizer}*";
+			}
+		elsif ($orginizer) {
+			$who = "${orginizer}*";
+			}
+		# HTML version
+		$calendars->{'html'} .= <<HTML;
+<table class="calendar-table">
+  <tr>
+    <td class="calendar-cell">
+      <div class="calendar-block">
+        <div class="calendar-month">
+          $calendar->{'_obj_dtstart_local_time'}->{'month'}
+        </div>
+        <div class="calendar-day">
+          $calendar->{'_obj_dtstart_local_time'}->{'day'}
+        </div>
+        <div class="calendar-week">
+          $calendar->{'_obj_dtstart_local_time'}->{'week'}
+        </div>
+      </div>
+    </td>
+    <td class="calendar-details">
+      <table>
+        <tr>
+          <td class="title" colspan="2">
+            <strong>$title</strong>
+          </td>
+        </tr>
+        <tr>
+          <td class="detail">
+            <strong>$text{'view_ical_when'}</strong>
+          </td>
+          <td>$calendar->{'dtwhen_local'}</td>
+        </tr>
+        <tr>
+          <td class="detail">
+            <strong>$text{'view_ical_where'}</strong>
+          </td>
+          <td>$calendar->{'location'}</td>
+        </tr>
+        <tr>
+          <td class="detail">
+            <strong>$text{'view_ical_who'}</strong>
+          </td>
+          <td>$who</td>
+        </tr>
+      </table>
+      <details class="calendar-details">
+        <summary></summary>
+        <table>
+          <tr>
+            <td class="detail">
+              <strong>$text{'view_ical_orginizertime'}</strong>
+            </td>
+            <td>$calendar->{'dtwhen'}</td>
+          </tr>
+          <tr>
+            <td class="detail">
+              <strong>$text{'view_ical_orginizername'}</strong>
+            </td>
+            <td>$calendar->{'organizer_name'}</td>
+          </tr>
+          <tr>
+            <td class="detail">
+              <strong>$text{'view_ical_orginizeremail'}</strong>
+            </td>
+            <td>$calendar->{'organizer_email'}</td>
+          </tr>
+          <tr>
+            <td class="detail">
+              <strong>$text{'view_ical_attendees'}</strong>
+            </td>
+            <td class="attendees">@{[join('', map {
+                "<p>$_->{'name'}<br>$_->{'email'}</p>"
+                } @attendees)]}</td>
+          </tr>
+          <tr>
+            <td class="detail">
+              <strong>$text{'view_ical_desc'}</strong>
+            </td>
+            <td class="attendees">@{[join('<br>',
+                @{$calendar->{'description'}})]}</td>
+          </tr>
+        </table>
+      </details>
+    </td>
+  </tr>
+</table>
+HTML
+		# Text version
+		my %textical = (
+			'view_ical' => $title,
+			'view_ical_when' => $calendar->{'dtwhen_local'},
+			'view_ical_where' => $calendar->{'location'},
+			'view_ical_who' => $who
+			);
+		my $max_label_length = 0;
+		foreach my $key (sort keys %textical) {
+			my $label_length = length($text{$key});
+			if ($label_length > $max_label_length) {
+				$max_label_length = $label_length;
+				}
+			}
+		$calendars->{'text'} = "=" x 79 . "\n";
+		foreach my $key (sort keys %textical) {
+			my $label = $text{$key};
+			my $value = $textical{$key};
+			my $spaces .= " " x ($max_label_length - length($label));
+			$calendars->{'text'} .= "$label$spaces : $value\n";
+			}
+		$calendars->{'text'} .= "=" x 79 . "\n";
+		}
+	}
 if ($body && $body->{'data'} =~ /\S/) {
 	if ($body eq $textbody) {
 		# Show plain text
 		$bodycontents = "<pre>";
+		$bodycontents .= $calendars->{'text'}
+			if ($calendars->{'text'});
 		foreach $l (&wrap_lines(&eucconv($body->{'data'}),
 					$config{'wrap_width'})) {
 			$bodycontents .= &link_urls_and_escape($l,
@@ -166,7 +364,9 @@ if ($body && $body->{'data'} =~ /\S/) {
 		}
 	elsif ($body eq $htmlbody) {
 		# Attempt to show HTML
-		$bodycontents = $body->{'data'};
+		$bodycontents = $calendars->{'html'}
+			if ($calendars->{'html'});
+		$bodycontents .= $body->{'data'};
 		my @imageurls;
 		my $image_mode = int(defined($in{'images'}) ? $in{'images'} : $config{'view_images'});
 		$bodycontents = &disable_html_images($bodycontents, $image_mode, \@imageurls);
