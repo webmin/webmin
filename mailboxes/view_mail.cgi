@@ -170,7 +170,9 @@ if (@calendars) {
     vertical-align: top;
     padding: 2px;
     padding-top: 24px;
+    padding-bottom: 24px;
     width: 100px;
+    min-width: 100px;
     font-weight: bold;
   }
   .calendar-month {
