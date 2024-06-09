@@ -29,9 +29,6 @@ table.ui_table thead td {
 table.sortable tbody td {
   padding: 2px;
 }
-table.ui_table td * {
-  line-height:1.5em;
-}
 table.ui_table td textarea {line-height:normal; font-family:monospace;}
 table.ui_table td div.barchart * {
   margin: 0;
@@ -55,9 +52,16 @@ div.ui_form_end_buttons {
   padding: 6px 3px;
 }
 .ui_form_end_buttons input {
-  padding: 2px;
+  padding: 1px;
 }
-table.ui_grid_table td { padding: 2px 4px; }
+.ui_form_value td > b > input+label+tt,
+.ui_form_value td > b > input+label {
+  font-weight: normal !important;
+}
+table.ui_grid_table td {
+  padding: 2px 4px;
+}
+select,
 input {
   padding: 1px;
 }
