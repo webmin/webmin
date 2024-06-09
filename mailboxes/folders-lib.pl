@@ -2947,7 +2947,8 @@ my $iframe_body = <<EOF;
 		    theme_mail_iframe_onload(iframe);
 		      return;
 		}
-		const iframe_spinner = document.querySelector('#mail-iframe-spinner'),
+		const iframeDoc = iframe.contentDocument || iframe.contentWindow.document,
+			  iframe_spinner = document.querySelector('#mail-iframe-spinner'),
 			  iframe_resize = function() {
 				const iframeobj = document.querySelector('#mail-iframe'),
 				      iframe_height_bound = iframeobj.contentWindow.document.body.getBoundingClientRect().bottom,
@@ -2955,8 +2956,11 @@ my $iframe_body = <<EOF;
 				      iframe_height =
 				        iframe_height_bound > iframe_scroll_height ?
 				          iframe_height_bound : iframe_scroll_height;
-				iframeobj.style.height = Math.ceil(iframe_height) + "px";
+				iframeobj.style.height = Math.ceil(iframe_height + 2) + "px";
 			  };
+		iframeDoc.body.style.removeProperty('width');
+		iframeDoc.body.style.margin = '8px';
+		iframeDoc.body.style.padding = '0';
 		iframe_spinner && iframe_spinner.remove();
 		iframe.classList.add("loaded");
 		setTimeout(iframe_resize);
@@ -2979,14 +2983,16 @@ my $iframe_body = <<EOF;
 				  } catch (e) {}
 				})();
 			});
-			const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-			iframeDoc.addEventListener('click', function(event) {
-				if (event.target.tagName.toLowerCase() === 'summary' &&
-				    event.target.dataset.resize === 'iframe') {
-					setTimeout(iframe_resize);
-				}
-			});
 		}, 99);
+		iframeDoc.addEventListener('click', function(event) {
+			if (event.target.tagName.toLowerCase() === 'summary' &&
+			    event.target.dataset.resize === 'iframe') {
+				setTimeout(iframe_resize);
+			}
+		});
+		iframe.contentWindow.addEventListener('resize', function() {
+			setTimeout(iframe_resize);
+		});
 	}
 </script>
 <iframe
