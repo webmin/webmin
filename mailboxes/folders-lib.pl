@@ -2959,7 +2959,7 @@ my $iframe_body = <<EOF;
 				iframeobj.style.height = Math.ceil(iframe_height + 2) + "px";
 			  };
 		iframeDoc.body.style.removeProperty('width');
-		iframeDoc.body.style.margin = '8px';
+		iframeDoc.body.style.margin = '4px';
 		iframeDoc.body.style.padding = '0';
 		iframe_spinner && iframe_spinner.remove();
 		iframe.classList.add("loaded");
