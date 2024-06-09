@@ -160,7 +160,7 @@ if (@calendars) {
     table-layout: fixed;
     border-collapse: collapse;
     border: 1px solid #99999933;
-    margin-bottom: 9px;
+    margin-bottom: 4px;
   }
   .calendar-table-inner {
     table-layout: fixed;
