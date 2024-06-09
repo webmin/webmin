@@ -4240,4 +4240,548 @@ foreach my $h (@{$mail->{'headers'}}) {
 return $rv;
 }
 
+# parse_calendar_file(calendar-file|lines)
+# Parses an iCalendar file and returns a list of events
+sub parse_calendar_file
+{
+my ($calendar_file) = @_;
+my (@events, %event, $line);
+eval "use DateTime; use DateTime::TimeZone;";
+return \@events if ($@);
+# Timezone map
+my %timezone_map = (
+    'Afghanistan Time'                  => 'AFT',
+    'Alaskan Daylight Time'             => 'AKDT',
+    'Alaskan Standard Time'             => 'AKST',
+    'Anadyr Time'                       => 'ANAT',
+    'Arabian Standard Time'             => 'AST',
+    'Argentina Time'                    => 'ART',
+    'Atlantic Daylight Time'            => 'ADT',
+    'Atlantic Standard Time'            => 'AST',
+    'Australian Central Daylight Time'  => 'ACDT',
+    'Australian Central Standard Time'  => 'ACST',
+    'Australian Eastern Daylight Time'  => 'AEDT',
+    'Australian Eastern Standard Time'  => 'AEST',
+    'Bangladesh Standard Time'          => 'BST',
+    'Brasília Time'                     => 'BRT',
+    'British Summer Time'               => 'BST',
+    'Central Africa Time'               => 'CAT',
+    'Central Asia Time'                 => 'ALMT',
+    'Central Daylight Time'             => 'CDT',
+    'Central Daylight Time (US)'        => 'CDT',
+    'Central European Summer Time'      => 'CEST',
+    'Central European Time'             => 'CET',
+    'Central Indonesia Time'            => 'WITA',
+    'Central Standard Time (Australia)' => 'CST',
+    'Central Standard Time (US)'        => 'CST',
+    'Central Standard Time'             => 'CST',
+    'Chamorro Daylight Time'            => 'CHDT',
+    'Chamorro Standard Time'            => 'CHST',
+    'China Standard Time'               => 'CST',
+    'Coordinated Universal Time'        => 'UTC',
+    'East Africa Time'                  => 'EAT',
+    'Eastern Africa Time'               => 'EAT',
+    'Eastern Daylight Time'             => 'EDT',
+    'Eastern Daylight Time (US)'        => 'EDT',
+    'Eastern European Summer Time'      => 'EEST',
+    'Eastern European Time'             => 'EET',
+    'Eastern Indonesia Time'            => 'WIT',
+    'Eastern Standard Time (Australia)' => 'EST',
+    'Eastern Standard Time (US)'        => 'EST',
+    'Eastern Standard Time'             => 'EST',
+    'Fiji Time'                         => 'FJT',
+    'Greenwich Mean Time'               => 'GMT',
+    'Hawaii-Aleutian Daylight Time'     => 'HADT',
+    'Hawaii-Aleutian Standard Time'     => 'HAST',
+    'Hawaiian Standard Time'            => 'HST',
+    'Hong Kong Time'                    => 'HKT',
+    'Indian Standard Time'              => 'IST',
+    'Iran Standard Time'                => 'IRST',
+    'Irish Standard Time'               => 'IST',
+    'Israel Standard Time'              => 'IST',
+    'Japan Standard Time'               => 'JST',
+    'Korea Standard Time'               => 'KST',
+    'Magadan Time'                      => 'MAGT',
+    'Malaysia Time'                     => 'MYT',
+    'Moscow Standard Time'              => 'MSK',
+    'Mountain Daylight Time'            => 'MDT',
+    'Mountain Standard Time'            => 'MST',
+    'Myanmar Standard Time'             => 'MMT',
+    'Nepal Time'                        => 'NPT',
+    'New Caledonia Time'                => 'NCT',
+    'New Zealand Daylight Time'         => 'NZDT',
+    'New Zealand Standard Time'         => 'NZST',
+    'Newfoundland Daylight Time'        => 'NDT',
+    'Newfoundland Standard Time'        => 'NST',
+    'Pacific Daylight Time'             => 'PDT',
+    'Pacific Standard Time'             => 'PST',
+    'Pakistan Standard Time'            => 'PKT',
+    'Philippine Time'                   => 'PHT',
+    'Sakhalin Time'                     => 'SAKT',
+    'Samoa Standard Time'               => 'SST',
+    'Singapore Standard Time'           => 'SGT',
+    'South Africa Standard Time'        => 'SAST',
+    'Tahiti Time'                       => 'TAHT',
+    'Venezuelan Standard Time'          => 'VET',
+    'West Africa Time'                  => 'WAT',
+    'Western European Summer Time'      => 'WEST',
+    'Western European Time'             => 'WET',
+    'Western Indonesia Time'            => 'WIB',
+    'Western Standard Time (Australia)' => 'WST',
+);
+# Make a date from a special timestamp
+my $adjust_time_with_timezone = sub {
+	my ($time, $tzid) = @_;
+	my $dt = DateTime->new(
+		year      => substr($time, 0, 4),
+		month     => substr($time, 4, 2),
+		day       => substr($time, 6, 2),
+		hour      => substr($time, 9, 2),
+		minute    => substr($time, 11, 2),
+		second    => substr($time, 13, 2),
+		time_zone => $tzid);
+	my $local_dt = $dt->clone->set_time_zone('local');
+	return {
+		formatted => $dt->strftime("%Y-%m-%d %H:%M:%S"),
+		timestamp => $dt->epoch,
+		formatted_local => $local_dt->strftime('%Y-%m-%d %H:%M:%S'),
+		timestamp_local => $local_dt->epoch,
+	};
+};
+# Lines processor
+my $process_line = sub
+{
+my ($line) = @_;
+# Start a new event
+if ($line =~ /^BEGIN:VEVENT/) {
+	%event = ();
+	$event{'description'} = [ ];
+	$event{'attendees'} = [ ];
+	}
+# Convert times using the timezone
+elsif ($line =~ /^END:VEVENT/) {
+	# Local timezone
+	$event{'tzid_local'} = DateTime::TimeZone->new(name => 'local')->name();
+	$event{'tzid'} = 'UTC', $event{'tzid_missing'} = 1 if (!$event{'tzid'});
+	# Adjust times with timezone
+	my ($adjusted_start, $adjusted_end);
+	$event{'tzid'} = $timezone_map{$event{'tzid'}} || $event{'tzid'};
+	# Add single start/end time
+	if ($event{'dtstart'}) {
+		$adjusted_start =
+			$adjust_time_with_timezone->($event{'dtstart'},
+						     $event{'tzid'});
+		$event{'dtstart_timestamp'} = $adjusted_start->{'timestamp'};
+		my $dtstart_date =
+			&make_date($event{'dtstart_timestamp'},
+				   { tz => $event{'tzid'} });
+		$event{'dtstart_date'} =
+			"$dtstart_date->{'short'} $dtstart_date->{'timeshort'}"; 
+		$event{'dtstart_local_timestamp'} =
+			$adjusted_start->{'timestamp_local'};
+		$event{'dtstart_local_date'} =
+			&make_date($event{'dtstart_local_timestamp'});
+		}
+	if ($event{'dtend'}) {
+		$adjusted_end =
+		  $adjust_time_with_timezone->($event{'dtend'}, $event{'tzid'});
+		$event{'dtend_timestamp'} = $adjusted_end->{'timestamp'};
+		my $dtend_date = &make_date($event{'dtend_timestamp'},
+					    { tz => $event{'tzid'} });
+		$event{'dtend_date'} =
+			"$dtend_date->{'short'} $dtend_date->{'timeshort'}";
+		$event{'dtend_local_timestamp'} =
+			$adjusted_end->{'timestamp_local'};
+		$event{'dtend_local_date'} =
+			&make_date($event{'dtend_local_timestamp'});
+		}
+	if ($event{'dtstart'} && $event{'dtend'}) {
+		# Try to add local 'when (period)'
+		my $dtstart_local_obj =
+			$event{'_obj_dtstart_local_time'} =
+			make_date($event{'dtstart_local_timestamp'}, { _ });
+		my $dtend_local_obj =
+			$event{'_obj_dtend_local_time'} =
+			make_date($event{'dtend_local_timestamp'}, { _ });
+		# Build when local, e.g.:
+		# Tue Jun 04, 2024 04:30 PM – 05:15
+		# PM (Asia/Nicosia +0300)
+		# or
+		# Tue Jun 04, 2024 04:30 PM – Wed Jun 05, 2024 01:15
+		# AM (Asia/Nicosia +0300)
+		$event{'dtwhen_local'} =
+			# Start local
+			$dtstart_local_obj->{'week'}.' '.
+			$dtstart_local_obj->{'month'}.' '.
+			$dtstart_local_obj->{'day'}.', '.
+			$dtstart_local_obj->{'year'}.' '.
+			$dtstart_local_obj->{'timeshort'}.' – ';
+			# End local
+			if ($dtstart_local_obj->{'year'} eq
+				$dtend_local_obj->{'year'} &&
+				$dtstart_local_obj->{'month'} eq
+				$dtend_local_obj->{'month'} &&
+				$dtstart_local_obj->{'day'} eq
+				$dtend_local_obj->{'day'}) {
+				$event{'dtwhen_local'} .=
+					$dtend_local_obj->{'timeshort'};
+				}
+			else {
+				$event{'dtwhen_local'} .=
+					$dtend_local_obj->{'week'}.' '.
+					$dtend_local_obj->{'month'}.' '.
+					$dtend_local_obj->{'day'}.', '.
+					$dtend_local_obj->{'year'}.' '.
+					$dtend_local_obj->{'timeshort'};
+				}
+			# Timezone local
+			if ($event{'tzid_local'} ||
+				$dtstart_local_obj->{'tz'}) {
+				if ($event{'tzid_local'} &&
+					$dtstart_local_obj->{'tz'}) {
+					if ($event{'tzid_local'} eq
+						$dtstart_local_obj->{'tz'}) {
+						$event{'dtwhen_local'} .=
+							" ($event{'tzid_local'})";
+						}
+					else {
+						$event{'dtwhen_local'} .=
+							" ($event{'tzid_local'} ".
+							"$dtstart_local_obj->{'tz'})";
+						}
+					}
+				elsif ($event{'tzid_local'}) {
+					$event{'dtwhen_local'} .=
+						" ($event{'tzid_local'})";
+					}
+				else {
+					$event{'dtwhen_local'} .=
+						" ($dtstart_local_obj->{'tz'})";
+					}
+				}
+		# Try to add original 'when (period)'
+		my $dtstart_obj =
+			$event{'_obj_dtstart_time'} =
+				make_date($event{'dtstart_timestamp'},
+					  { tz => $event{'tzid'} });
+		my $dtend_obj =
+			$event{'_obj_dtend_time'} =
+				make_date($event{'dtend_timestamp'},
+					  { tz => $event{'tzid'} });
+		# Build original when
+		if (!$event{'tzid_missing'}) {
+			$event{'dtwhen'} =
+				# Start original
+				$dtstart_obj->{'week'}.' '.
+				$dtstart_obj->{'month'}.' '.
+				$dtstart_obj->{'day'}.', '.
+				$dtstart_obj->{'year'}.' '.
+				$dtstart_obj->{'timeshort'}.' – ';
+				# End original
+				if ($dtstart_obj->{'year'} eq
+					$dtend_obj->{'year'} &&
+				    $dtstart_obj->{'month'} eq
+					$dtend_obj->{'month'} &&
+				    $dtstart_obj->{'day'} eq
+					$dtend_obj->{'day'}) {
+					$event{'dtwhen'} .=
+						$dtend_obj->{'timeshort'};
+					}
+				else {
+					$event{'dtwhen'} .=
+						$dtend_obj->{'week'}.' '.
+						$dtend_obj->{'month'}.' '.
+						$dtend_obj->{'day'}.', '.
+						$dtend_obj->{'year'}.' '.
+						$dtend_obj->{'timeshort'};
+					}
+				# Timezone original
+				if ($dtstart_obj->{'tz'}) {
+					$event{'dtwhen'} .=
+						" ($dtstart_obj->{'tz'})";
+					}
+			}
+		}
+	# Add the event to the list
+	push(@events, { %event });
+	}
+# Parse fields
+elsif ($line =~ /^SUMMARY.*?:(.*)$/) {
+	$event{'summary'} = $1;
+	}
+elsif ($line =~ /^DTSTART:(.*)$/) {
+	$event{'dtstart'} = $1;
+	}
+elsif ($line =~ /^DTSTART;TZID=(.*?):(.*)$/) {
+	$event{'tzid'} = $1;
+	$event{'dtstart'} = $2;
+	}
+elsif ($line =~ /^DTEND:(.*)$/) {
+	$event{'dtend'} = $1;
+	}
+elsif ($line =~ /^DTEND;TZID=(.*?):(.*)$/) {
+	$event{'tzid'} = $1;
+	$event{'dtend'} = $2;
+	}
+elsif ($line =~ /^DESCRIPTION:(.*)$/) {
+	my $description = $1;
+	$description =~ s/\\n/<br>/g;
+	$description =~ s/\\//g;
+	unshift(@{$event{'description'}}, $description);
+	}
+elsif ($line =~ /^DESCRIPTION;LANGUAGE=([a-z]{2}-[A-Z]{2}):(.*)$/) {
+	my $description = $2;
+	$description =~ s/\\n/<br>/g;
+	$description =~ s/\\//g;
+	unshift(@{$event{'description'}}, $description);
+	}
+elsif ($line =~ /^LOCATION.*?:(.*)$/) {
+	$event{'location'} = $1;
+	}
+elsif ($line =~ /^ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN=(.*?):mailto:(.*)$/ ||
+	$line =~ /^ATTENDEE;.*CN=(.*?);.*mailto:(.*)$/ ||
+	$line =~ /^ATTENDEE:mailto:(.*)$/) {
+	push(@{$event{'attendees'}}, { 'name' => $1, 'email' => $2 });
+	}
+elsif ($line =~ /^ORGANIZER;CN=(.*?):(?:mailto:)?(.*)$/) {
+	$event{'organizer_name'} = $1;
+	$event{'organizer_email'} = $2;
+	}
+};
+# Read the ICS file lines or just use the lines
+my $ics_file_lines =
+	-r $calendar_file ?
+		&read_file_lines($calendar_file, 1) :
+		[ split(/\r?\n/, $calendar_file) ];
+# Process each line of the ICS file
+foreach my $ics_file_line (@$ics_file_lines) {
+	# Check if the line is a continuation of the previous line
+	if ($ics_file_line =~ /^[ \t](.*)$/) {
+		$line .= $1; # Concatenate with the previous line
+		}
+	else {
+		# Process the previous line
+		$process_line->($line) if ($line);
+		$line = $ics_file_line; # Start a new line
+		}
+	}
+# Process the last line
+$process_line->($line) if ($line);
+# Return the list of events
+return \@events;
+}
+
+# get_calendar_data(&calendars)
+# Returns HTML for all parsed calendars
+sub get_calendar_data
+{
+my ($calendars) = @_;
+my @calendars = @{$calendars};
+$calendars = { };
+if (@calendars) {
+	# CSS for HTML version
+	$calendars->{'html'} .= <<STYLE;
+<style>
+.calendar-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 1px solid #99999933;
+    margin-bottom: 4px;
+  }
+  .calendar-table-inner {
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+  .calendar-table td {
+    padding: 5px;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+  .calendar-table .calendar-cell {
+    background-color: #99999916;
+    text-align: center;
+    vertical-align: top;
+    padding: 2px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    width: 100px;
+    min-width: 100px;
+    font-weight: bold;
+  }
+  .calendar-month {
+    font-size: 21px;
+    color: #1d72ff;
+    text-align: center;
+    padding: 2px 8px;
+  }
+  .calendar-day {
+    font-size: 24px;
+    text-align: center;
+    padding: 4px 8px;
+  }
+  .calendar-week {
+    font-size: 16px;
+    border-top: 1px dotted #999999aa;
+    padding: 6px;
+    display: inline-block;
+  }
+  .calendar-details h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+  .calendar-details p {
+    margin: 4px 0;
+  }
+  .calendar-details .title {
+    font-size: 20px;
+  }
+  .calendar-details .detail strong {
+    opacity: 0.66;
+    white-space: nowrap;
+  }
+  .calendar-details .detail + .desc p:first-child {
+    margin-top: 0;
+  }
+  details.calendar-details {
+    font-size: 90%;
+    display: inline-block;
+    margin-left: 9px;
+  }
+  details.calendar-details summary {
+    cursor: help;
+  }
+  details.calendar-details tr:has(>.detail+td:empty),
+  .calendar-details tr:has(>.detail+td:empty) {
+    display: none;
+  }
+</style>
+STYLE
+	foreach my $calendar (@calendars) {
+		my $title = $calendar->{'summary'} || $calendar->{'description'};
+		my $orginizer = $calendar->{'organizer_name'};
+		my @attendees;
+		foreach my $a (@{$calendar->{'attendees'}}) {
+			push(@attendees, { name => $a->{'name'},
+					   email => $a->{'email'} });
+			}
+		my $who = join(", ", map { $_->{'name'} } @attendees);
+		if ($who && $orginizer) {
+			$who .= ", ${orginizer}*";
+			}
+		elsif ($orginizer) {
+			$who = "${orginizer}*";
+			}
+		# HTML version
+		$calendars->{'html'} .= <<HTML;
+<table class="calendar-table">
+  <tr>
+    <td class="calendar-cell">
+      <div class="calendar-block">
+        <div class="calendar-month">
+          $calendar->{'_obj_dtstart_local_time'}->{'month'}
+        </div>
+        <div class="calendar-day">
+          $calendar->{'_obj_dtstart_local_time'}->{'day'}
+        </div>
+        <div class="calendar-week">
+          $calendar->{'_obj_dtstart_local_time'}->{'week'}
+        </div>
+      </div>
+    </td>
+    <td class="calendar-details">
+      <table class="calendar-table-inner">
+        <tr>
+          <td class="title" colspan="2">
+            <strong>$title</strong>
+          </td>
+        </tr>
+        <tr>
+          <td class="detail">
+            <strong>$text{'view_ical_when'}</strong>
+          </td>
+          <td>$calendar->{'dtwhen_local'}</td>
+        </tr>
+        <tr>
+          <td class="detail">
+            <strong>$text{'view_ical_where'}</strong>
+          </td>
+          <td>$calendar->{'location'}</td>
+        </tr>
+        <tr>
+          <td class="detail">
+            <strong>$text{'view_ical_who'}</strong>
+          </td>
+          <td>$who</td>
+        </tr>
+      </table>
+      <details class="calendar-details">
+        <summary data-resize="iframe"></summary>
+        <table class="calendar-table-inner">
+          <tr>
+            <td class="detail">
+              <strong>$text{'view_ical_orginizertime'}</strong>
+            </td>
+            <td>$calendar->{'dtwhen'}</td>
+          </tr>
+          <tr>
+            <td class="detail">
+              <strong>$text{'view_ical_orginizername'}</strong>
+            </td>
+            <td>$calendar->{'organizer_name'}</td>
+          </tr>
+          <tr>
+            <td class="detail">
+              <strong>$text{'view_ical_orginizeremail'}</strong>
+            </td>
+            <td>$calendar->{'organizer_email'}</td>
+          </tr>
+          <tr>
+            <td class="detail">
+              <strong>$text{'view_ical_attendees'}</strong>
+            </td>
+            <td class="desc">@{[join('', map {
+                "<p>$_->{'name'}<br>$_->{'email'}</p>"
+                } @attendees)]}</td>
+          </tr>
+          <tr>
+            <td class="detail">
+              <strong>$text{'view_ical_desc'}</strong>
+            </td>
+            <td class="desc">@{[join('<br>',
+                @{$calendar->{'description'}})]}</td>
+          </tr>
+        </table>
+      </details>
+    </td>
+  </tr>
+</table>
+HTML
+		# Text version
+		my %textical = (
+			'view_ical' => $title,
+			'view_ical_when' => $calendar->{'dtwhen_local'},
+			'view_ical_where' => $calendar->{'location'},
+			'view_ical_who' => $who
+			);
+		my $max_label_length = 0;
+		foreach my $key (sort keys %textical) {
+			my $label_length = length($text{$key});
+			if ($label_length > $max_label_length) {
+				$max_label_length = $label_length;
+				}
+			}
+		$calendars->{'text'} = "=" x 79 . "\n";
+		foreach my $key (sort keys %textical) {
+			my $label = $text{$key};
+			my $value = $textical{$key};
+			my $spaces .= " " x ($max_label_length - length($label));
+			$calendars->{'text'} .= "$label$spaces : $value\n";
+			}
+		$calendars->{'text'} .= "=" x 79 . "\n";
+		}
+	}
+return $calendars;
+}
+
 1;
