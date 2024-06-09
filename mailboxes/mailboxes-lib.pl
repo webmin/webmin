@@ -1343,10 +1343,8 @@ if ($line =~ /^BEGIN:VEVENT/) {
 # Convert times using the timezone
 elsif ($line =~ /^END:VEVENT/) {
 	# Local timezone
-	$event{'tzid_local'} =
-		DateTime::TimeZone->new(name => 'local')->name();
-	$event{'tzid'} = 'UTC', $event{'tzid_missing'} = 1
-		if (!$event{'tzid'});
+	$event{'tzid_local'} = DateTime::TimeZone->new(name => 'local')->name();
+	$event{'tzid'} = 'UTC', $event{'tzid_missing'} = 1 if (!$event{'tzid'});
 	# Adjust times with timezone
 	my ($adjusted_start, $adjusted_end);
 	$event{'tzid'} = $timezone_map{$event{'tzid'}} || $event{'tzid'};
@@ -1354,14 +1352,13 @@ elsif ($line =~ /^END:VEVENT/) {
 	if ($event{'dtstart'}) {
 		$adjusted_start =
 			$adjust_time_with_timezone->($event{'dtstart'},
-							$event{'tzid'});
+						     $event{'tzid'});
 		$event{'dtstart_timestamp'} = $adjusted_start->{'timestamp'};
 		my $dtstart_date =
 			&make_date($event{'dtstart_timestamp'},
-				{ tz => $event{'tzid'} });
+				   { tz => $event{'tzid'} });
 		$event{'dtstart_date'} =
-			"$dtstart_date->{'short'} ".
-				"$dtstart_date->{'timeshort'}"; 
+			"$dtstart_date->{'short'} $dtstart_date->{'timeshort'}"; 
 		$event{'dtstart_local_timestamp'} =
 			$adjusted_start->{'timestamp_local'};
 		$event{'dtstart_local_date'} =
@@ -1369,14 +1366,12 @@ elsif ($line =~ /^END:VEVENT/) {
 		}
 	if ($event{'dtend'}) {
 		$adjusted_end =
-			$adjust_time_with_timezone->($event{'dtend'},
-							$event{'tzid'});
+		  $adjust_time_with_timezone->($event{'dtend'}, $event{'tzid'});
 		$event{'dtend_timestamp'} = $adjusted_end->{'timestamp'};
 		my $dtend_date = &make_date($event{'dtend_timestamp'},
-			{ tz => $event{'tzid'} });
+					    { tz => $event{'tzid'} });
 		$event{'dtend_date'} =
-			"$dtend_date->{'short'} ".
-				"$dtend_date->{'timeshort'}";
+			"$dtend_date->{'short'} $dtend_date->{'timeshort'}";
 		$event{'dtend_local_timestamp'} =
 			$adjusted_end->{'timestamp_local'};
 		$event{'dtend_local_date'} =
@@ -1386,12 +1381,10 @@ elsif ($line =~ /^END:VEVENT/) {
 		# Try to add local 'when (period)'
 		my $dtstart_local_obj =
 			$event{'_obj_dtstart_local_time'} =
-			make_date($event{'dtstart_local_timestamp'},
-				{ _ });
+			make_date($event{'dtstart_local_timestamp'}, { _ });
 		my $dtend_local_obj =
 			$event{'_obj_dtend_local_time'} =
-			make_date($event{'dtend_local_timestamp'},
-				{ _ });
+			make_date($event{'dtend_local_timestamp'}, { _ });
 		# Build when local, e.g.:
 		# Tue Jun 04, 2024 04:30 PM – 05:15
 		# PM (Asia/Nicosia +0300)
@@ -1452,11 +1445,11 @@ elsif ($line =~ /^END:VEVENT/) {
 		my $dtstart_obj =
 			$event{'_obj_dtstart_time'} =
 				make_date($event{'dtstart_timestamp'},
-					{ tz => $event{'tzid'} });
+					  { tz => $event{'tzid'} });
 		my $dtend_obj =
 			$event{'_obj_dtend_time'} =
 				make_date($event{'dtend_timestamp'},
-				{ tz => $event{'tzid'} });
+					  { tz => $event{'tzid'} });
 		# Build original when
 		if (!$event{'tzid_missing'}) {
 			$event{'dtwhen'} =
@@ -1469,10 +1462,10 @@ elsif ($line =~ /^END:VEVENT/) {
 				# End original
 				if ($dtstart_obj->{'year'} eq
 					$dtend_obj->{'year'} &&
-					$dtstart_obj->{'month'} eq
-						$dtend_obj->{'month'} &&
-					$dtstart_obj->{'day'} eq
-						$dtend_obj->{'day'}) {
+				    $dtstart_obj->{'month'} eq
+					$dtend_obj->{'month'} &&
+				    $dtstart_obj->{'day'} eq
+					$dtend_obj->{'day'}) {
 					$event{'dtwhen'} .=
 						$dtend_obj->{'timeshort'};
 					}
