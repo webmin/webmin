@@ -2956,7 +2956,7 @@ my $iframe_body = <<EOF;
 				      iframe_height =
 				        iframe_height_bound > iframe_scroll_height ?
 				          iframe_height_bound : iframe_scroll_height;
-				iframeobj.style.height = Math.ceil(iframe_height + 2) + "px";
+				iframeobj.style.height = Math.ceil(iframe_height - 1) + "px";
 			  };
 		iframeDoc.body.style.removeProperty('width');
 		iframeDoc.body.style.margin = '4px';
