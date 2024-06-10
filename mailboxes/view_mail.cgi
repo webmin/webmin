@@ -89,6 +89,16 @@ foreach $s (@sub) {
 @attach = grep { $_ ne $body && $_ ne $dstatus } @attach;
 @attach = grep { !$_->{'attach'} } @attach;
 
+# Calendar attachments
+my @calendars;
+eval {
+foreach my $i (grep { $_->{'data'} }
+	       grep { $_->{'type'} =~ /^text\/calendar/ } @attach) {
+	my $calendars = &parse_calendar_file($i->{'data'});
+	push(@calendars, @{$calendars});
+	}};
+	
+# Mail buttons
 if ($config{'top_buttons'} == 2 && &editable_mail($mail)) {
 	&show_mail_buttons(1, scalar(@sub));
 	print "<p class='mail_buttons_divide'></p>\n";
@@ -138,11 +148,15 @@ else {
 print &ui_table_end();
 
 # Show body attachment, with properly linked URLs
-@bodyright = ( );
+my $bodycontents;
+my @bodyright = ( );
+my $calendars = &get_calendar_data(\@calendars);
 if ($body && $body->{'data'} =~ /\S/) {
 	if ($body eq $textbody) {
 		# Show plain text
 		$bodycontents = "<pre>";
+		$bodycontents .= $calendars->{'text'}
+			if ($calendars->{'text'});
 		foreach $l (&wrap_lines(&eucconv($body->{'data'}),
 					$config{'wrap_width'})) {
 			$bodycontents .= &link_urls_and_escape($l,
@@ -156,7 +170,9 @@ if ($body && $body->{'data'} =~ /\S/) {
 		}
 	elsif ($body eq $htmlbody) {
 		# Attempt to show HTML
-		$bodycontents = $body->{'data'};
+		$bodycontents = $calendars->{'html'}
+			if ($calendars->{'html'});
+		$bodycontents .= $body->{'data'};
 		my @imageurls;
 		my $image_mode = int(defined($in{'images'}) ? $in{'images'} : $config{'view_images'});
 		$bodycontents = &disable_html_images($bodycontents, $image_mode, \@imageurls);
