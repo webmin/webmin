@@ -4592,6 +4592,12 @@ my ($calendars) = @_;
 my @calendars = @{$calendars};
 $calendars = { };
 if (@calendars) {
+	# Fonts for our HTML
+	$calendars->{'html'} .= &theme_fonts()
+		if (defined(&theme_fonts));
+	my $theme_css_inline;
+	$theme_css_inline = &theme_css_inline('calendar')
+		if (defined(&theme_css_inline));
 	# CSS for HTML version
 	$calendars->{'html'} .= <<STYLE;
 <style>
@@ -4601,6 +4607,7 @@ if (@calendars) {
     border-collapse: collapse;
     border: 1px solid #99999933;
     margin-bottom: 4px;
+    font-family: 'RobotoLocal',arial,helvetica,clean,sans-serif !important;
   }
   .calendar-table-inner {
     table-layout: fixed;
@@ -4650,7 +4657,7 @@ if (@calendars) {
     font-size: 16px;
   }
   .calendar-details .detail strong {
-    opacity: 0.66;
+    opacity: 0.83;
     white-space: nowrap;
   }
   .calendar-details .detail + .desc p:first-child {
@@ -4674,6 +4681,7 @@ if (@calendars) {
   .calendar-details tr:has(>.detail+td:empty) {
     display: none;
   }
+  $theme_css_inline
 </style>
 STYLE
 	foreach my $calendar (@calendars) {
