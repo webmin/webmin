@@ -4623,31 +4623,31 @@ if (@calendars) {
     font-weight: bold;
   }
   .calendar-month {
-    font-size: 21px;
+    font-size: 19px;
     color: #1d72ff;
     text-align: center;
     padding: 2px 8px;
   }
   .calendar-day {
-    font-size: 24px;
+    font-size: 19px;
     text-align: center;
     padding: 4px 8px;
   }
   .calendar-week {
-    font-size: 16px;
+    font-size: 13px;
     border-top: 1px dotted #999999aa;
     padding: 6px;
     display: inline-block;
   }
   .calendar-details h2 {
     margin: 0;
-    font-size: 18px;
+    font-size: 15px;
   }
   .calendar-details p {
     margin: 4px 0;
   }
   .calendar-details .title {
-    font-size: 20px;
+    font-size: 16px;
   }
   .calendar-details .detail strong {
     opacity: 0.66;
@@ -4657,9 +4657,15 @@ if (@calendars) {
     margin-top: 0;
   }
   details.calendar-details {
-    font-size: 90%;
+    font-size: 87%;
     display: inline-block;
     margin-left: 9px;
+  }
+  .calendar-details > .calendar-table-inner .detail:has(strong),
+  .calendar-details > .calendar-table-inner .detail strong,
+  .calendar-details > .calendar-table-inner .detail + td {
+    font-size: 13px;
+    line-height: 1.2;
   }
   details.calendar-details summary {
     cursor: help;
