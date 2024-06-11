@@ -178,7 +178,7 @@ if ($user eq "*") {
 elsif ($user eq "root" && $remote_user ne $user && !$in{'user'}) {
 	# If possible, start with a sudo-capable user
 	my @uinfo = getpwnam($remote_user);
-	if (defined($uinfo[0]) && $uinfo[7]) {
+	if (@uinfo && $uinfo[7]) {
 		$user = $remote_user;
 		}
 	}
