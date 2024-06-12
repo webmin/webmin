@@ -1988,6 +1988,8 @@ if (@transfer) {
 		}
 	}
 if (@notify) {
+	my %done;
+	@notify = grep { !$done{$_->{'name'}}++ } @notify;
 	my $also = { 'name' => 'also-notify',
 		     'type' => 1,
 		     'members' => \@notify};
@@ -1996,6 +1998,8 @@ if (@notify) {
 				     'values' => [ 'yes' ] });
 	}
 if (@transfer) {
+	my %done;
+	@transfer = grep { !$done{$_->{'name'}}++ } @transfer;
 	my $allow = { 'name' => 'allow-transfer',
 		      'type' => 1,
 		      'members' => \@transfer };
