@@ -175,6 +175,13 @@ my $user = $access{'user'};
 if ($user eq "*") {
 	$user = $remote_user;
 	}
+elsif ($user eq "root" && $remote_user ne $user && !$in{'user'}) {
+	# If possible, start with a sudo-capable user
+	my @uinfo = getpwnam($remote_user);
+	if (@uinfo && $uinfo[7]) {
+		$user = $remote_user;
+		}
+	}
 $user = $config{'user'} if ($user eq 'root' && $config{'user'});
 
 # Switch to given user
