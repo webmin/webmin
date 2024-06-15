@@ -2371,6 +2371,8 @@ if (ref($opts)) {
 	&print_tempfile(CFILE, "ExecReload=$kill -HUP \$MAINPID\n") if ($opts->{'reload'} eq '0');
 	&print_tempfile(CFILE, "ExecStop=$opts->{'stop'}\n") if ($opts->{'stop'});
 	&print_tempfile(CFILE, "ExecReload=$opts->{'reload'}\n") if ($opts->{'reload'});
+	&print_tempfile(CFILE, "ExecStartPre=$opts->{'startpre'}\n") if ($opts->{'startpre'});
+	&print_tempfile(CFILE, "ExecStartPost=$opts->{'startpost'}\n") if ($opts->{'startpost'});
 	&print_tempfile(CFILE, "Type=$opts->{'type'}\n") if ($opts->{'type'});
 	&print_tempfile(CFILE, "Environment=\"$opts->{'env'}\"\n") if ($opts->{'env'});
 	&print_tempfile(CFILE, "User=$opts->{'user'}\n") if ($opts->{'user'});
@@ -2381,8 +2383,8 @@ if (ref($opts)) {
 	&print_tempfile(CFILE, "RestartSec=$opts->{'restartsec'}\n") if ($opts->{'restartsec'});
 	&print_tempfile(CFILE, "TimeoutSec=$opts->{'timeout'}\n") if ($opts->{'timeout'});
 	&print_tempfile(CFILE, "TimeoutStopSec=$opts->{'timeoutstopsec'}\n") if ($opts->{'timeoutstopsec'});
-	&print_tempfile(CFILE, "StandardOutput=file:$opts->{'logstd'}\n") if ($opts->{'logstd'});
-	&print_tempfile(CFILE, "StandardError=file:$opts->{'logerr'}\n") if ($opts->{'logerr'});
+	&print_tempfile(CFILE, "StandardOutput=".($opts->{'logstd'} =~ /^\// ? 'file:' : '')."$opts->{'logstd'}\n") if ($opts->{'logstd'});
+	&print_tempfile(CFILE, "StandardError=".($opts->{'logerr'} =~ /^\// ? 'file:' : '')."$opts->{'logerr'}\n") if ($opts->{'logerr'});
 	}
 
 &print_tempfile(CFILE, "\n");
