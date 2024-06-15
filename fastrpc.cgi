@@ -350,7 +350,7 @@ if ($fh6) {
 while(1) {
 	$$port++;
 	if ($$port < 0 || $$port > 65535) {
-		return "Failed to allocate a free port number: $port";
+		return "Failed to allocate a free port number: $$port";
 		}
 	$pack = pack_sockaddr_in($$port, INADDR_ANY);
 	next if (!bind($fh, $pack));
