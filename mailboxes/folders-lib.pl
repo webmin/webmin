@@ -4412,10 +4412,10 @@ elsif ($line =~ /^END:VEVENT/) {
 		# Try to add local 'when (period)'
 		my $dtstart_local_obj =
 			$event{'_obj_dtstart_local_time'} =
-			make_date($event{'dtstart_local_timestamp'}, { _ });
+			make_date($event{'dtstart_local_timestamp'}, { });
 		my $dtend_local_obj =
 			$event{'_obj_dtend_local_time'} =
-			make_date($event{'dtend_local_timestamp'}, { _ });
+			make_date($event{'dtend_local_timestamp'}, { });
 		# Build when local, e.g.:
 		# Tue Jun 04, 2024 04:30 PM – 05:15
 		# PM (Asia/Nicosia +0300)

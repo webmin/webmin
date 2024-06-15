@@ -128,7 +128,7 @@ if (!$eol_data->{'_eol_timestamp'}) {
         &error_stderr("The provided data is not a valid EOL data hash reference");
         return undef;
         }
-my $eol_date = &make_date($eol_data->{'_eol_timestamp'}, { '_' => 1 });
+my $eol_date = &make_date($eol_data->{'_eol_timestamp'}, { });
 if (ref($eol_date)) {
         my $eol_in = sub {
                 my $eol_date = shift;

@@ -2176,7 +2176,7 @@ if (!$@ && $] > 5.011) {
 		}
 
 	# Return fully detailed object
-	if (%{$opts}) {
+	if (ref($only)) {
 		# Can we get ago time
 		my $ago;
 		my $ago_secs = time() - $secs;
