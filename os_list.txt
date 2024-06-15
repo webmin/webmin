@@ -330,7 +330,7 @@ Corvus Latinux			8.0	redhat-linux	7.1	`cat /etc/latinux-release 2>/dev/null` =~ 
 Immunix Linux			$1	redhat-linux	$1	$etc_issue =~ /Immunix.*\s([0-9\.]+)/i || `cat /etc/immunix-release 2>/dev/null` =~ /([0-9\.]+)/
 
 # All versions of Gentoo (which don't appear to have version numbers)
-Gentoo Linux			Any version	gentoo-linux	*	-d "/usr/portage"
+Gentoo Linux			Any version	gentoo-linux	*	-d "/usr/portage" || `cat /etc/os-release 2>/dev/null` =~ /gentoo/
 
 # Secure Linux (now called Trustix?)
 Secure Linux			1.0	redhat-linux	7.2	`cat /etc/securelinux-release 2>/dev/null` =~ /SecureLinux.*1\.0/i
