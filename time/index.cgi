@@ -5,7 +5,8 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 require './time-lib.pl';
-our (%in, %text, %config, %access, $base_remote_user, $get_hardware_time_error);
+our (%in, %text, %config, %access, $base_remote_user,
+     $get_hardware_time_error, $cronyd_name);
 
 my ($rawdate, $rawhwdate, %system_date, $rawtime, %hw_date, $txt);
 $txt = "";
@@ -174,13 +175,14 @@ if ( ( !$access{ 'sysdate' } && &has_command( "date" ) || !$access{ 'hwdate' } &
 					$config{'timeserver_hardware'}));
 			}
 		}
-	if (&foreign_require('init') && &init::action_status('chronyd') > 0 && &has_command("chronyc")) {
-		my $chronyd_running = &init::status_action('chronyd');
-		my $chronyd_run_atboot = &init::action_status('chronyd');
-		my $ui_hiddens = &ui_hidden("sync_service_name", "chronyd");
+	if (&foreign_require('init') &&
+	    &init::action_status($cronyd_name) > 0 && &has_command("chronyc")) {
+		my $chronyd_running = &init::status_action($cronyd_name);
+		my $chronyd_run_atboot = &init::action_status($cronyd_name);
+		my $ui_hiddens = &ui_hidden("sync_service_name", $cronyd_name);
 		$ui_hiddens .= &ui_hidden("timeserver", $config{'timeserver'})
 			if (!$ntp_support);
-		print &ui_table_row(&text('index_tabsync2', 'chronyd'),
+		print &ui_table_row(&text('index_tabsync2', $cronyd_name),
 			$ui_hiddens.
 			&ui_radio("sync_service_status",
 			(($chronyd_run_atboot == 2 && $chronyd_running) ? 2 :

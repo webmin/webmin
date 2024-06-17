@@ -56,7 +56,7 @@ if ($in{'action'} eq $text{'action_sync'}) {
   if (defined($in{'sync_service_name'}) &&
       defined($in{'sync_service_status'})) {
         my $service_name = $in{'sync_service_name'};
-        if ($service_name !~ /^(chronyd|systemd-timesyncd)$/) {
+        if ($service_name !~ /^(chronyd|chrony|systemd-timesyncd)$/) {
                 &error(&text('error_serviceunknown', &html_escape($service_name)));
           }
         my $service_status = int($in{'sync_service_status'});
