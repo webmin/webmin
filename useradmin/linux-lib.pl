@@ -22,7 +22,7 @@ sub open_last_command
 {
 local ($fh, $user) = @_;
 local $quser = quotemeta($user);
-open($fh, "(last -F $quser || last $quser) |");
+open($fh, "(last -F -w $quser || last -w $quser) |");
 }
 
 # read_last_line(handle)
