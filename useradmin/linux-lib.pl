@@ -39,12 +39,15 @@ while(1) {
 		# jcameron  pts/0  fudu Thu Feb 22 09:47 - 10:15
 		return ($1, $2, $3, $4, $5 eq "down" ? "Shutdown" : $5, $6);
 		}
-	elsif ($line =~ /^(\S+)\s+(\S+)\s+(\S+)?\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+\s+\d+)\s+\-\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+\s+\d+)\s+\((\d+:\d+)\)/) {
+	elsif ($line =~ /^(\S+)\s+(\S+)\s+(\S+)?\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+\s+\d+)\s+\-\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+\s+\d+)\s+\((.*?\d+:\d+)\)/) {
 		# jcameron  pts/0  fudu Thu Feb 22 09:47 - 10:15
+		# jcameron  pts/0  fudu Sun Feb  4 02:26:28 2024 - Wed Feb  7 18:25:09 2024 (3+15:58)
 		return ($1, $2, $3, $4, $5 eq "down" ? "Shutdown" : $5, $6);
 		}
-	elsif ($line =~ /^(\S+)\s+(\S+)\s+(\S+)?\s+(\S+\s+\S+\s+\d+\s+\d+:\d+)\s+still/) {
-		# root  pts/0  fudu  Fri Feb 23 18:46  still logged in   
+	elsif ($line =~ /^(\S+)\s+(\S+)\s+(\S+)?\s+(\S+\s+\S+\s+\d+\s+\d+:\d+)\s+still/ ||
+	       $line =~ /^(\S+)\s+(\S+)\s+(\S+)?\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+\s+\d+)\s+still/) {
+		# root  pts/0  fudu  Fri Feb 23 18:46  still logged in
+		# root  pts/0  fudu  Tue Jun 18 23:10:30 2024  still logged in
 		return ($1, $2, $3, $4);
 		}
 	}
