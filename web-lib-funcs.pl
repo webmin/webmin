@@ -2098,10 +2098,10 @@ formatted like dd/mmm/yyyy hh:mm:ss. Parameters are :
 
 =item seconds - Unix time is seconds to convert.
 
-=item date-only-or-opts - If set to 1, exclude the time from the returned string.
+=item date-only-or-opts - If set to 1 exclude the time from the returned string.
 
-In case this param is a hash reference use it for options in a new DateTime::Locale
-code or preserve the original, old logic
+In case this param is a hash reference use it for options in a new
+DateTime::Locale code or preserve the original, old logic
 
 =item fmt - Optional, one of dd/mon/yyyy, dd/mm/yyyy, mm/dd/yyyy or yyyy/mm/dd
 
@@ -2116,27 +2116,31 @@ if (!$@ && $] > 5.011) {
 	my $opts = ref($only) ? $only : {};
 	my $locale_default = &get_default_system_locale();
 	my $locale_auto = &parse_accepted_language();
-	my $locale_name = $opts->{'locale'} || $gconfig{'locale_'.$base_remote_user} ||
+	my $locale_name = $opts->{'locale'} ||
+	   $gconfig{'locale_'.$base_remote_user} ||
 	   $gconfig{'locale_'.$remote_user} || $locale_auto ||
 	   $gconfig{'locale'} || &get_default_system_locale();
 	my $tz = $opts->{'tz'};
 	if (!$tz) {
 		eval {
-			$tz =
-			  DateTime::TimeZone->new(name => strftime("%z", localtime()))->name(); # +0200
+			$tz = DateTime::TimeZone->new(
+			  name => strftime("%z", localtime()))->name(); # +0200
 			};
 		if ($@) {
 			eval {
-				$tz = DateTime::TimeZone->new(name => 'local')->name();  # Asia/Nicosia
+				$tz = DateTime::TimeZone->new(
+				  name => 'local')->name();  # Asia/Nicosia
 				};
 			if ($@) {
-				$tz = DateTime::TimeZone->new(name => 'UTC')->name();    # UTC
+				$tz = DateTime::TimeZone->new(
+				  name => 'UTC')->name();    # UTC
 				}
 			}
 		}
 	# Pre-process time locale
 	my $locale_military_status = sub {
-		return ($locale_military_name && $locale_military_name =~ /[a-z]/i) ? 2 :
+		return ($locale_military_name &&
+			$locale_military_name =~ /[a-z]/i) ? 2 :
 		       ($locale_military_name == 1) ? 1 : 0;
 		};
 	# Allow locales with military time (in 24h format)
@@ -2152,15 +2156,18 @@ if (!$@ && $] > 5.011) {
 	my $locale = DateTime::Locale->load($locale_name_loaded);
 	# Create a new locale out of base locale
 	if (&$locale_military_status() == 1) {
-		my %locale_data                       = $locale->locale_data;
-		$locale_data{'code'}                  = $locale_name_initial;
+		my %locale_data = $locale->locale_data;
+		$locale_data{'code'} = $locale_name_initial;
+
 		# Force 24h time
-		$locale_data{'glibc_date_1_format'}   = '%a %b %e %H:%M:%S %Z %Y';
+		$locale_data{'glibc_date_1_format'} = '%a %b %e %H:%M:%S %Z %Y';
 		$locale_data{'glibc_datetime_format'} = '%a %d %b %Y %T %Z';
-		$locale_data{'glibc_time_format'}     = '%T';
+		$locale_data{'glibc_time_format'} = '%T';
 		DateTime::Locale->register_from_data(%locale_data);
+
 		# Load newly cloned locale in 24h time format
-		$locale_military_name = $locale_name_loaded = $locale_name_initial;
+		$locale_military_name = $locale_name_loaded =
+			$locale_name_initial;
 		$locale = DateTime::Locale->load($locale_name_loaded);
 		}
 	my $locale_format_full_tz = $locale->glibc_date_1_format;    # Sat 20 Nov 2286 17:46:39 UTC
@@ -2194,18 +2201,31 @@ if (!$@ && $] > 5.011) {
 				"pretty" => $ago_obj->pretty
 			};
 		}
-		# my $xxxx = $locale->full_date_format;
 		my $data = {
 			# Wed Feb 8 05:09:39 PM UTC 2023
-			'full-tz-utc' => DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs)->strftime($locale_format_full_tz),
+			'full-tz-utc' => DateTime->from_epoch(
+			    locale => $locale_name_loaded,
+			    epoch => $secs)->strftime($locale_format_full_tz),
 			# Wed Feb 8 07:10:01 PM EET 2023 
-			'full-tz' => DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_full_tz),
+			'full-tz' => DateTime->from_epoch(
+			    locale => $locale_name_loaded,
+			    epoch => $secs,
+			    time_zone => $tz)->strftime($locale_format_full_tz),
 			# Wed 08 Feb 2023 07:11:26 PM EET
-			'full' => DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_full),
+			'full' => DateTime->from_epoch(
+			    locale => $locale_name_loaded,
+			    epoch => $secs,
+			    time_zone => $tz)->strftime($locale_format_full),
 			# 02/08/2023
-			'short' => DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_short),
+			'short' => DateTime->from_epoch(
+			    locale => $locale_name_loaded,
+			    epoch => $secs,
+			    time_zone => $tz)->strftime($locale_format_short),
 			# 07:12:07 PM
-			'time' => DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_time),
+			'time' => DateTime->from_epoch(
+			    locale => $locale_name_loaded,
+			    epoch => $secs,
+			    time_zone => $tz)->strftime($locale_format_time),
 			'ago' => $ago,
 			'tz' => $tz,
 			'delimiter' => $locale_format_delimiter,
@@ -2216,10 +2236,16 @@ if (!$@ && $] > 5.011) {
 		$data->{'timeshort'} = $data->{'time'};
 		$data->{'timeshort'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
 
-		# %c alternative with full week and month and no seconds in time (complete)
-		# Wednesday, February 8, 2023, 8:18 PM or 星期三, 2023年2月8日 20:18 or miércoles, 8 febrero 2023, 20:28
-		$data->{'monthfull'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%B");
-		foreach (split(/\s+/, DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%A, %c"))) {
+		# %c alternative with full week and month and no seconds
+		# in time (complete)
+		# Wednesday, February 8, 2023, 8:18 PM or 星期三,
+		# 2023年2月8日 20:18 or miércoles, 8 febrero 2023, 20:28
+		$data->{'monthfull'} = DateTime->from_epoch(
+			locale => $locale_name_loaded, epoch => $secs,
+			time_zone => $tz)->strftime("%B");
+		foreach (split(/\s+/, DateTime->from_epoch(
+				locale => $locale_name_loaded, epoch => $secs,
+				time_zone => $tz)->strftime("%A, %c"))) {
 			if ($data->{'monthfull'} =~ /^$_/) {
 				$data->{'complete'} .= "$data->{'monthfull'} "
 				}
@@ -2227,13 +2253,24 @@ if (!$@ && $] > 5.011) {
 				$data->{'complete'} .= "$_ "
 				}
 			};
-		$data->{'year'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%Y");
-		$data->{'day'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%d");
-		$data->{'week'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%a");
-		$data->{'weekfull'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%A");
-		$data->{'month'} = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime("%b");
+		$data->{'year'} = DateTime->from_epoch(
+			locale => $locale_name_loaded, epoch => $secs,
+			time_zone => $tz)->strftime("%Y");
+		$data->{'day'} = DateTime->from_epoch(
+			locale => $locale_name_loaded, epoch => $secs,
+			time_zone => $tz)->strftime("%d");
+		$data->{'week'} = DateTime->from_epoch(
+			locale => $locale_name_loaded, epoch => $secs,
+			time_zone => $tz)->strftime("%a");
+		$data->{'weekfull'} = DateTime->from_epoch(
+			locale => $locale_name_loaded, epoch => $secs,
+			time_zone => $tz)->strftime("%A");
+		$data->{'month'} = DateTime->from_epoch(
+			locale => $locale_name_loaded, epoch => $secs,
+			time_zone => $tz)->strftime("%b");
 		$data->{'complete'} =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
-		($data->{'complete_short'} = $data->{'complete'}) =~ s/(.*?)([\s\,]*\Q$data->{'year'}\E.*)/$1/;
+		($data->{'complete_short'} = $data->{'complete'}) =~
+			s/(.*?)([\s\,]*\Q$data->{'year'}\E.*)/$1/;
 
 		if ($opts->{'get'}) {
 			return $data->{$opts->{'get'}};
