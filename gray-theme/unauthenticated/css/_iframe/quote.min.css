@@ -1,7 +1,1 @@
-body blockquote:not([style*="border-left"]) {
-    border-left: 1px solid #ccc;
-    margin-left: 6px;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 12px;
-}
+body blockquote:not([style*="border-left"]){border-left:1px solid #ccc;margin-left:6px;margin-top:0;margin-bottom:0;padding-left:12px;}pre{white-space:break-spaces;margin:0}
