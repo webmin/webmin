@@ -76,7 +76,7 @@ else {
 
 if ($in{'save'}) {
 	# Just update renewal
-	&save_renewal_only(\@doms, $webroot, $mode);
+	&save_renewal_only(\@doms, $webroot, $mode, $size, $in{'subset'});
 	&redirect("edit_ssl.cgi");
 	}
 else {
@@ -88,7 +88,9 @@ else {
 					 'letsencrypt_doing',
 		    "<tt>".&html_escape(join(", ", @doms))."</tt>",
 		    "<tt>".&html_escape($webroot)."</tt>"),"<p>\n";
-	my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(\@doms, $webroot, undef, $size, $mode, $in{'staging'});
+	my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(
+		\@doms, $webroot, undef, $size, $mode, $in{'staging'},
+		undef, 0, undef, undef, undef, $in{'subset'});
 	if (!$ok) {
 		print &text('letsencrypt_failed', $cert),"<p>\n";
 		}
@@ -148,15 +150,16 @@ else {
 	&ui_print_footer("", $text{'index_return'});
 	}
 
-# save_renewal_only(&doms, webroot, mode)
+# save_renewal_only(&doms, webroot, mode, size, subset-mode)
 # Save for future renewals
 sub save_renewal_only
 {
-my ($doms, $webroot, $mode) = @_;
+my ($doms, $webroot, $mode, $size, $subset) = @_;
 $config{'letsencrypt_doms'} = join(" ", @$doms);
 $config{'letsencrypt_webroot'} = $webroot;
 $config{'letsencrypt_mode'} = $mode;
 $config{'letsencrypt_size'} = $size;
+$config{'letsencrypt_subset'} = $subset;
 &save_module_config();
 if (&foreign_check("webmincron")) {
 	my $job = &find_letsencrypt_cron_job();

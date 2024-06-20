@@ -277,7 +277,9 @@ else {
 	my @doms = $config{'letsencrypt_doms'} ?
 			split(/\s+/, $config{'letsencrypt_doms'}) : ( $host );
 	print &ui_table_row($text{'ssl_letsdoms'},
-		&ui_textarea("dom", join("\n", @doms), 5, 40));
+		&ui_textarea("dom", join("\n", @doms), 5, 40)."<br>\n".
+		&ui_checkbox("subset", 1, $text{'ssl_subset'},
+			     $config{'letsencrypt_subset'}));
 
 	# Apache vhost or other path
 	my @opts;

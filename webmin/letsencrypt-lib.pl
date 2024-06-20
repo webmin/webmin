@@ -58,14 +58,15 @@ return &software::missing_install_link(
 
 # request_letsencrypt_cert(domain|&domains, webroot, [email], [keysize],
 # 			   [request-mode], [use-staging], [account-email],
-# 			   [reuse-key], [server-url, server-key, server-hmac])
+# 			   [reuse-key], [server-url, server-key, server-hmac],
+# 			   [allow-subset])
 # Attempt to request a cert using a generated key with the Let's Encrypt client
 # command, and write it to the given path. Returns a status flag, and either
 # an error message or the paths to cert, key and chain files.
 sub request_letsencrypt_cert
 {
 my ($dom, $webroot, $email, $size, $mode, $staging, $account_email,
-    $key_type, $reuse_key, $server, $server_key, $server_hmac) = @_;
+    $key_type, $reuse_key, $server, $server_key, $server_hmac, $subset) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
 $email ||= "root\@$doms[0]";
 $mode ||= "web";
@@ -179,6 +180,7 @@ if ($letsencrypt_cmd) {
 	my $new_flags = "";
 	my $reuse_flags = "";
 	my $server_flags = "";
+	my $subset_flags = "";
 	$key_type ||= $config{'letsencrypt_algo'} || 'rsa';
 	if (&compare_version_numbers($cmd_ver, 1.11) < 0) {
 		$old_flags = " --manual-public-ip-logging-ok";
@@ -191,6 +193,9 @@ if ($letsencrypt_cmd) {
 		}
 	else {
 		$reuse_flags = " --no-reuse-key";
+		}
+	if ($subset) {
+		$subset_flags = " --allow-subset-of-names";
 		}
 	$reuse_flags = "" if ($reuse_key && $reuse_key == -1);
 	if ($server) {
@@ -227,6 +232,7 @@ if ($letsencrypt_cmd) {
 			$old_flags.
 			$server_flags.
 			$new_flags.
+			$subset_flags.
 			" 2>&1)");
 		&reset_environment();
 		}
@@ -245,6 +251,7 @@ if ($letsencrypt_cmd) {
 			$old_flags.
 			$server_flags.
 			$new_flags.
+			$subset_flags.
 			" 2>&1)");
 		&reset_environment();
 		}
@@ -260,6 +267,7 @@ if ($letsencrypt_cmd) {
 			$old_flags.
 			$server_flags.
 			$new_flags.
+			$subset_flags.
 			" 2>&1)");
 		&reset_environment();
 		}

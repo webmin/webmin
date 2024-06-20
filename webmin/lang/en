@@ -424,6 +424,7 @@ ssl_letserr2=Alternately, check the <a href='$1'>module configuration</a> page t
 ssl_letsdesc2=This page can be used to request a new certificate, which will overwrite any other currently have configured in Webmin. However, the Let's Encrypt service requires that your ownership of the certificate domain be validated by checking that this system hosts the website for the domain. This is done by placing a small temporary file in the website's document directory.
 ssl_letsheader=Options for new SSL certificate
 ssl_letsdoms=Hostnames for certificate
+ssl_subset=Skip unverifiable hostnames?
 ssl_letsmode=Let's Encrypt validation method
 ssl_letsmode0=Apache virtual host matching hostname
 ssl_letsmode1=Selected Apache virtual host
