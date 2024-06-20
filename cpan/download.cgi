@@ -21,7 +21,7 @@ if ($in{'source'} == 0) {
 	if (!$in{'local'})
 		{ &install_error($text{'download_elocal'}); }
 	if (!-r $in{'local'})
-		{ &install_error(&text('download_elocal2', $in{'local'})); }
+		{ &install_error(&text('download_elocal2', &html_escape($in{'local'}))); }
 	$source = $in{'local'};
 	@pfile = ( $in{'local'} );
 	$need_unlink = 0;
@@ -91,8 +91,9 @@ elsif ($in{'source'} == 3) {
 		$i = 0;
 		@fallback = ( );
 		foreach $yum (@cpanyum) {
-			print &text('download_yum', "<tt>$cpan[$i]</tt>",
-				    "<tt>$yum->{'package'}</tt>"),"<br>\n";
+			print &text('download_yum',
+				"<tt>".&html_escape($cpan[$i])."</tt>",
+				"<tt>".&html_escape($yum->{'package'})."</tt>"),"<br>\n";
 			print "<ul>\n";
 			@got = &software::update_system_install(
 				$yum->{'package'});
@@ -154,7 +155,8 @@ elsif ($in{'source'} == 3) {
 
 	# Fail if any modules are missing from CPAN
 	for($i=0; $i<@cpan; $i++) {
-		push(@missing, "<tt>$cpan[$i]</tt>") if (!$source[$i]);
+		push(@missing, "<tt>".&html_escape($cpan[$i])."</tt>")
+			if (!$source[$i]);
 		}
 
 	if ($in{'missingok'}) {
@@ -167,11 +169,12 @@ elsif ($in{'source'} == 3) {
 				}
 			}
 		@cpan || &install_error(&text('download_ecpan',
-					      join(" ", @missing)));
+				      &html_escape(join(" ", @missing))));
 		}
 	elsif (@missing) {
 		# Fail due to missing modules
-		&install_error(&text('download_ecpan', join(" ", @missing)));
+		&install_error(&text('download_ecpan',
+			&html_escape(join(" ", @missing))));
 		}
 	$source = join("<br>", @source);
 
@@ -192,14 +195,16 @@ elsif ($in{'source'} == 3) {
 			&ftp_download($host, $file, $pfile, \$error,
 				      \&progress_callback);
 			}
-		else { &install_error(&text('download_eurl', $m)); }
+		else {
+			&install_error(&text('download_eurl',&html_escape($m)));
+			}
 		&install_error($error) if ($error);
 		push(@pfile, $pfile);
 		}
 	$need_unlink = 1;
 	}
 else {
-	&error("Unknown source mode $in{'source'}");
+	&error("Unknown source mode ".&html_escape($in{'source'}));
 	}
 
 # Check if the file looks like a perl module
@@ -287,7 +292,7 @@ foreach $d (@dirs) {
 	close(MAKEFILE);
 	push(@allreqs, @prereqs);
 	}
-system("rm -rf $mtemp");
+&unlink_file($mtemp);
 
 # Work out which pre-requesites are missing
 @allreqs = &unique(@allreqs);
