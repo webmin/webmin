@@ -332,6 +332,7 @@ folder_inbox=Inbox
 folder_sent=Sent
 folder_drafts=Drafts
 folder_trash=Trash
+folder_spam=Spam
 
 detach_err=Failed to detach file
 detach_edir=No file or directory to save to entered
