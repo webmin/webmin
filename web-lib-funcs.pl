@@ -5540,6 +5540,7 @@ my $unsafe_index = $unsafe_index_cgi ||
 		   &get_module_variable('$unsafe_index_cgi');
 my $trustvar = $trust_unknown_referers ||
 	       &get_module_variable('$trust_unknown_referers');
+my $unsafeparams = $ENV{'REQUEST_URI'} =~ /xhr/i;
 my $trust = 0;
 if (!$0) {
 	# Script name not known
@@ -5555,7 +5556,7 @@ elsif ($ENV{'DISABLE_REFERERS_CHECK'}) {
 	}
 elsif (($ENV{'SCRIPT_NAME'} =~ /^\/(index.cgi)?$/ ||
 	$ENV{'SCRIPT_NAME'} =~ /^\/([a-z0-9\_\-]+)\/(index.cgi)?$/i) &&
-       !$unsafe_index) {
+       !$unsafe_index && !$unsafeparams) {
 	# Script is a module's index.cgi, which is normally safe
 	$trust = 1;
 	}
