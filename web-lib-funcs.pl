@@ -8010,6 +8010,100 @@ return ref($s) && $s->{'host'} && $s->{'port'} ?
        ref($s) ? "" : "$s.$$";
 }
 
+=head2 verify_session_id(session-id, [sessiondb], [miniserv])
+
+Returns the username (or an array with user, last login, and IP address) for the
+given session (or session hash) ID, or undefined if session ID is invalid.
+
+Args:
+
+    $sid: The session ID to verify
+
+    $sessiondb: A reference to the session database hash (optional)
+
+    $miniserv: A reference to the miniserv configuration hash (optional)
+
+Returns:
+
+    In list context: A list containing the user, last activity time, and IP
+	address associated with the session ID.
+
+    In scalar context: The user associated with the session ID.
+
+    If the session ID is not found, returns an empty list in list context
+	or undef in scalar context.
+
+Usage:
+
+    Retrieve the username associated with the session ID or undef if
+    session is invalid.
+    
+        my $user = verify_session_id($main::session_id);
+        Example of return:
+          root
+  
+    Retrieve array containing the user, last login, and IP address
+    for given session hash ID or undef if session is invalid.
+  
+        my (@user) = verify_session_id('BSRxr6wpF25lqeRinQ/sv0');
+        Example of return:
+          [
+            'root',
+            '1719401071',
+            '10.211.55.2'
+          ]
+
+    Retrieve the username associated with the session ID, using given
+    session DB or undef if session is invalid.
+
+        my %sessiondb;
+        dbmopen(%sessiondb, "$var_directory/sessiondb", 0400);
+        my $user = verify_session_id($main::session_id, \%sessiondb);
+        dbmclose(%sessiondb);
+        Example of return:
+          someuser1
+
+=cut
+sub verify_session_id
+{
+my ($sid, $sessiondb, $miniserv) = @_;
+my $hashsessionidfunc = \&miniserv::hash_session_id;
+my %miniserv;
+if ($miniserv) {
+	# Use provided miniserv configuration
+	%miniserv = %{$miniserv};
+	}
+else {
+	# Load miniserv configuration if not provided
+	&get_miniserv_config(\%miniserv);
+	}
+my %sessiondb_;
+if ($sessiondb) {
+	# Use provided session database
+	%sessiondb_ = %{$sessiondb};
+	}
+elsif (&foreign_available('acl')) {
+	# Use session database using ACL module API
+	&foreign_require("acl");
+	&acl::open_session_db(\%miniserv);
+	$hashsessionidfunc = \&acl::hash_session_id;
+	%sessiondb_ = %acl::sessiondb;
+	}
+else {
+	return wantarray ? ( ) : undef;
+	}
+# Verify given session (hash) ID against the session database
+foreach my $k (grep { $sessiondb_{$_} } keys %sessiondb_) {
+	if ($k eq $sid ||
+	    (defined($hashsessionidfunc) && $k eq $hashsessionidfunc->($sid))) {
+		my ($user, $last, $ip) = split(/\s+/, $sessiondb_{$k});
+		return wantarray ? ($user, $last, $ip) : $user;
+		}
+	}
+# Return an empty list or undef if session ID is not found
+return wantarray ? ( ) : undef;
+}
+
 =head2 remote_foreign_require(server, module, file)
 
 Connects to rpc.cgi on a remote webmin server and have it open a session
