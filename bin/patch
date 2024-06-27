@@ -92,6 +92,7 @@ if ($output !~ /applied patch.*?cleanly/i) {
 	}
 print "Patch applied successfully to:\n";
 print "  $1\n" while $output =~ /^Applied patch\s+(\S+)/mg;
+system('/etc/webmin/restart');
 
 =pod
 
