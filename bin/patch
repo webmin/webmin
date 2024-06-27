@@ -106,7 +106,7 @@ Apply a patch to Webmin core or its modules from GitHub or a local file.
 
 =head1 SYNOPSIS
 
-patch module-name patch-url/file
+webmin patch module-name patch-url/file
 
 =head1 OPTIONS
 
