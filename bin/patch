@@ -1,0 +1,142 @@
+#!/usr/bin/env perl
+# patch - Apply a patch to Webmin core or its modules from GitHub or a local file
+
+use strict;
+use warnings;
+
+use 5.010;
+
+use Getopt::Long qw(:config permute pass_through);
+use Pod::Usage;
+use Term::ANSIColor qw(:constants);
+use File::Basename;
+use Cwd qw(cwd);
+
+my %opt;
+GetOptions('help|h' => \$opt{'help'});
+pod2usage(0) if ($opt{'help'});
+
+# Get Webmin path
+my $path = cwd;
+my $lib = "web-lib-funcs.pl";
+if (!-r "$path/$lib") {
+	$path = dirname(dirname($0));
+	if (!-r "$path/$lib") {
+		$path = $path = Cwd::realpath('..');
+		}
+}
+
+# Get module and patch
+my $module = $ARGV[2];
+my $patch = $ARGV[3];
+
+# Params check
+if (!$module || !$patch) {
+    pod2usage(0);
+    exit 1;
+}
+
+# Special modules handling
+if ($module =~ /^virtualmin-(gpl|pro)$/) {
+	if ($module =~ /^virtualmin-pro/) {
+		$module = 'virtual-server/pro';
+		}
+	else {
+		$module = 'virtual-server';
+		}
+	}
+if (!-d "$path/$module") {
+    print RED, "Module $module doesn't exist\n", RESET;
+    exit 1;
+}
+
+# Patch check
+if ($patch !~ /^https?:\/\//) {
+	if (!-r $patch) {
+		print RED, "Patch file $patch doesn't exist\n", RESET;
+		exit 1;
+    		}
+	}
+elsif ($patch =~ /^https?:\/\/(github|gitlab)\.com/ &&
+       $patch !~ /\.patch$/ && $patch !~ /\.diff$/) {
+	$patch .= '.patch';
+	}
+
+# Check if curl is installed
+if (!`which curl`) {
+	print RED, "curl is not installed\n", RESET;
+	exit 1;
+	}
+
+# Check if git is installed
+if (!`which git`) {
+	print RED, "git is not installed\n", RESET;
+	exit 1;
+	}
+
+# Download command or cat patch file
+my $cmd;
+if ($patch =~ /^https?:\/\//) {
+	$cmd = "curl -s $patch";
+	}
+else {
+	$cmd = "cat $patch";
+	}
+
+# Apply patch using Git
+chdir "$path/$module";
+my $output = `$cmd 2>&1 | git apply --reject --verbose --whitespace=fix 2>&1`;
+if ($output !~ /applied patch.*?cleanly/i) {
+	print YELLOW, "Patch failed: $output\n", RESET;
+	exit 1;
+	}
+print "Patch applied successfully to:\n";
+print "  $1\n" while $output =~ /^Applied patch\s+(\S+)/mg;
+
+=pod
+
+=head1 NAME
+
+patch
+
+=head1 DESCRIPTION
+
+Apply a patch to Webmin core or its modules from GitHub or a local file.
+
+=head1 SYNOPSIS
+
+patch module-name patch-url/file
+
+=head1 OPTIONS
+
+=over
+
+=item --help, -h
+
+Give this help list.
+
+Examples of usage:
+
+  Apply a patch to the Package Updates module from GitHub using the commit ID.
+		
+    - webmin patch package-updates https://github.com/webmin/webmin/commit/fbee8
+	
+  Apply a patch to Webmin root files (e.g., `web-lib-funcs.pl`) from 
+  GitHub using the commit ID.
+  
+    - webmin patch . https://github.com/webmin/webmin/commit/e6a2bb15b0.patch
+
+  Apply a patch to Virtualmin GPL module from GitHub using commit ID.
+  
+    - webmin patch virtualmin-gpl \
+        https://github.com/virtualmin/virtualmin-gpl/commit/f4433153dbbb017932b9
+  
+  Apply a patch to Virtualmin Pro module from local file.
+  
+    - webmin patch virtualmin-pro /root/virtualmin-pro/patches/patch-1.patch
+
+=back
+
+=head1 LICENSE AND COPYRIGHT
+
+ Copyright 2024 Ilia Ross <ilia@virtualmin.com>
