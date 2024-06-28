@@ -24,46 +24,6 @@ if (&supports_dnssec_client() == 2) {
 	&save_choice("dnssec-validation", $options, 1);
 	}
 
-# Save DLV zones
-if (defined($in{'dlv_auto'})) {
-	my @dlvs = ( );
-	if ($in{'dlv_auto'} == 1) {
-		# Automatic mode
-		push(@dlvs, { 'name' => 'dnssec-lookaside',
-			      'values' => [ 'auto' ] });
-		}
-	elsif ($in{'dlv_auto'} == 0) {
-		# Listed zones
-		my $dlv;
-		for(my $i=0; defined($in{"anchor_$i"}); $i++) {
-			if (!$in{"anchor_${i}_def"}) {
-				$in{"anchor_$i"} =~ /^[a-z0-9\.\-\_]+$/ ||
-					&error(&text('trusted_eanchor', $i+1));
-				$in{"anchor_$i"} .= "."
-					if ($in{"anchor_$i"} !~ /\.$/);
-				if ($in{"dlv_${i}_def"}) {
-					$dlv = ".";
-					}
-				else {
-					$in{"dlv_$i"} =~ /^[a-z0-9\.\-\_]+$/ ||
-					   &error(&text('trusted_edlv', $i+1));
-					$dlv = $in{"dlv_$i"};
-					$dlv .= "." if ($dlv !~ /\.$/);
-					}
-				push(@dlvs, { 'name' => 'dnssec-lookaside',
-					      'values' => [
-							$dlv, "trust-anchor",
-							$in{"anchor_$i"} ] });
-				}
-			}
-		}
-	elsif ($in{'dlv_auto'} == 2) {
-		# None
-		@dlvs = ( );
-		}
-	&save_directive($options, "dnssec-lookaside", \@dlvs, 1);
-	}
-
 # Save trusted keys
 if (defined($in{'zone_0'})) {
 	my @keys = ( );

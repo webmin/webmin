@@ -17,7 +17,6 @@ $access{'defaults'} || &error($text{'trusted_ecannot'});
 my $conf = &get_config();
 my $options = &find("options", $conf);
 my $mems = $options->{'members'};
-my @dlv = &find("dnssec-lookaside", $mems);
 my $tkeys = &find("trusted-keys", $conf);
 $tkeys ||= { 'members' => [ ] };
 
@@ -36,33 +35,6 @@ if (&supports_dnssec_client() == 2) {
 			    $text{'trusted_auto'}, 'auto',
 			    $text{'yes'}, 'yes', $text{'no'}, 'no',
 			    $text{'default'}, undef);
-	}
-
-# Trusted DLVs (obsolete)
-if (@dlv) {
-	my @dtable = ( );
-	my $i = 0;
-	foreach my $d (@dlv, { 'values' => [ '.' ] }) {
-		my $dlv = $d->{'values'}->[0];
-		$dlv = "" if ($dlv eq ".");
-		push(@dtable, [
-			&ui_opt_textbox("anchor_$i", $d->{'values'}->[2],
-					30, $text{'trusted_none'}),
-			&ui_opt_textbox("dlv_$i", $dlv, 20,
-					$text{'trusted_root'}) ]);
-		$i++;
-		}
-	print &ui_table_row($text{'trusted_dlvs'},
-		&ui_radio("dlv_auto",
-		  @dlv == 0 ? 2 :
-		  @dlv == 1 && $dlv[0]->{'values'}->[0] eq 'auto' ? 1 : 0,
-		  [ [ 1, $text{'trusted_dlvs1'} ],
-		    [ 2, $text{'trusted_dlvs2'} ],
-		    [ 0, $text{'trusted_dlvs0'} ] ])."<br>\n".
-		&ui_columns_table([ $text{'trusted_anchor'},
-				    $text{'trusted_dlv'} ],
-				  undef,
-				  \@dtable), 3);
 	}
 
 # Trusted keys
