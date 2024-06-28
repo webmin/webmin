@@ -26,27 +26,24 @@ if (!-r "$path/$lib") {
 		}
 }
 
-# Get module and patch
-my $module = $ARGV[2];
-my $patch = $ARGV[3];
+# Check if curl is installed
+if (!`which curl`) {
+	print RED, "curl is not installed\n", RESET;
+	exit 1;
+	}
+
+# Check if git is installed
+if (!`which git`) {
+	print RED, "git is not installed\n", RESET;
+	exit 1;
+	}
+
+# Get patch URL or file
+my $patch = $ARGV[2];
 
 # Params check
-if (!$module || !$patch) {
+if (!$patch) {
     pod2usage(0);
-    exit 1;
-}
-
-# Special modules handling
-if ($module =~ /^virtualmin-(gpl|pro)$/) {
-	if ($module =~ /^virtualmin-pro/) {
-		$module = 'virtual-server/pro';
-		}
-	else {
-		$module = 'virtual-server';
-		}
-	}
-if (!-d "$path/$module") {
-    print RED, "Module $module doesn't exist\n", RESET;
     exit 1;
 }
 
@@ -62,29 +59,35 @@ elsif ($patch =~ /^https?:\/\/(github|gitlab)\.com/ &&
 	$patch .= '.patch';
 	}
 
-# Check if curl is installed
-if (!`which curl`) {
-	print RED, "curl is not installed\n", RESET;
-	exit 1;
+# Parse module name from URL
+my $module = "";
+if ($patch =~ m{https://(github|gitlab)\.com/[^/]+/([^/]+)/commit/[^/]+}) {
+	$module = $2;
+	$module = "" if ($2 eq 'webmin');
+	# Special handling for some modules
+	$module = $module =~ /^virtualmin-pro$/ ?
+		'virtual-server/pro' :
+			'virtual-server'
+				if $module =~ /^virtualmin-(gpl|pro)$/;
 	}
 
-# Check if git is installed
-if (!`which git`) {
-	print RED, "git is not installed\n", RESET;
-	exit 1;
-	}
+# Check if module exists
+if (!-d "$path/$module") {
+    print RED, "Module $module doesn't exist\n", RESET;
+    exit 1;
+}
 
 # Download command or cat patch file
 my $cmd;
 if ($patch =~ /^https?:\/\//) {
 	$cmd = "curl -s $patch";
+	chdir "$path/$module";
 	}
 else {
 	$cmd = "cat $patch";
 	}
 
 # Apply patch using Git
-chdir "$path/$module";
 my $output = `$cmd 2>&1 | git apply --reject --verbose --whitespace=fix 2>&1`;
 if ($output !~ /applied patch.*?cleanly/i) {
 	print YELLOW, "Patch failed: $output\n", RESET;
@@ -106,7 +109,7 @@ Apply a patch to Webmin core or its modules from GitHub or a local file.
 
 =head1 SYNOPSIS
 
-webmin patch module-name patch-url/file
+webmin patch patch-url/file
 
 =head1 OPTIONS
 
@@ -118,23 +121,16 @@ Give this help list.
 
 Examples of usage:
 
-  Apply a patch to the Package Updates module from GitHub using the commit ID.
-		
-    - webmin patch package-updates https://github.com/webmin/webmin/commit/fbee8
-	
-  Apply a patch to Webmin root files (e.g., `web-lib-funcs.pl`) from 
-  GitHub using the commit ID.
-  
-    - webmin patch . https://github.com/webmin/webmin/commit/e6a2bb15b0.patch
+  Apply a patch from a URL.
 
-  Apply a patch to Virtualmin GPL module from GitHub using commit ID.
+    - webmin patch https://github.com/webmin/webmin/commit/e6a2bb15b0.patch
+
+    - webmin patch https://github.com/virtualmin/virtualmin-gpl/commit/f4433153d
   
-    - webmin patch virtualmin-gpl \
-        https://github.com/virtualmin/virtualmin-gpl/commit/f4433153dbbb017932b9
+  Apply a patch from local file.
   
-  Apply a patch to Virtualmin Pro module from local file.
-  
-    - webmin patch virtualmin-pro /root/virtualmin-pro/patches/patch-1.patch
+    - cd /usr/libexec/webmin/virtual-server/pro &&
+      webmin patch /root/virtualmin-pro/patches/patch-1.patch
 
 =back
 
