@@ -30,7 +30,8 @@ if (!-r "$path/$lib") {
 	}
 
 # Init core
-$ENV{'WEBMIN_CONFIG'} = $opt{'config'} || "/etc/webmin";
+my $config_dir = $opt{'config'} || '/etc/webmin';
+$ENV{'WEBMIN_CONFIG'} = $config_dir;
 push(@INC, $path);
 eval 'use WebminCore';
 init_config();
@@ -104,7 +105,7 @@ if ($output !~ /applied patch.*?cleanly/i) {
 	}
 print "Patch applied successfully to:\n";
 print "  $1\n" while $output =~ /^Applied patch\s+(\S+)/mg;
-system('/etc/webmin/restart');
+system("$config_dir/restart");
 
 =pod
 
