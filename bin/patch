@@ -13,7 +13,10 @@ use File::Basename;
 use Cwd qw(cwd);
 
 my %opt;
-GetOptions('help|h' => \$opt{'help'});
+GetOptions(
+	'help|h' => \$opt{'help'},
+	'config|c=s' => \$opt{'config'},
+	);
 pod2usage(0) if ($opt{'help'});
 
 # Get Webmin path
@@ -24,35 +27,41 @@ if (!-r "$path/$lib") {
 	if (!-r "$path/$lib") {
 		$path = $path = Cwd::realpath('..');
 		}
-}
+	}
+
+# Init core
+$ENV{'WEBMIN_CONFIG'} = $opt{'config'} || "/etc/webmin";
+push(@INC, $path);
+eval 'use WebminCore';
+init_config();
 
 # Check if curl is installed
-if (!`which curl`) {
+if (!has_command('curl')) {
 	print RED, "curl is not installed\n", RESET;
 	exit 1;
 	}
 
 # Check if git is installed
-if (!`which git`) {
+if (!has_command('git')) {
 	print RED, "git is not installed\n", RESET;
 	exit 1;
 	}
 
 # Get patch URL or file
-my $patch = $ARGV[2];
+my $patch = $ARGV[0];
 
 # Params check
 if (!$patch) {
-    pod2usage(0);
-    exit 1;
-}
+	pod2usage(0);
+	exit 1;
+	}
 
 # Patch check
 if ($patch !~ /^https?:\/\//) {
 	if (!-r $patch) {
 		print RED, "Patch file $patch doesn't exist\n", RESET;
 		exit 1;
-    		}
+		}
 	}
 elsif ($patch =~ /^https?:\/\/(github|gitlab)\.com/ &&
        $patch !~ /\.patch$/ && $patch !~ /\.diff$/) {
@@ -118,6 +127,11 @@ webmin patch patch-url/file
 =item --help, -h
 
 Give this help list.
+
+=item --config, -c
+
+Specify the full path to the Webmin configuration directory. Defaults to
+C</etc/webmin>
 
 Examples of usage:
 
