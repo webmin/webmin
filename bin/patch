@@ -8,7 +8,6 @@ use 5.010;
 
 use Getopt::Long qw(:config permute pass_through);
 use Pod::Usage;
-use Term::ANSIColor qw(:constants);
 use File::Basename;
 use Cwd qw(cwd);
 
@@ -38,13 +37,13 @@ init_config();
 
 # Check if curl is installed
 if (!has_command('curl')) {
-	print RED, "curl is not installed\n", RESET;
+	print "curl is not installed\n";
 	exit 1;
 	}
 
 # Check if git is installed
 if (!has_command('git')) {
-	print RED, "git is not installed\n", RESET;
+	print "git is not installed\n";
 	exit 1;
 	}
 
@@ -60,7 +59,7 @@ if (!$patch) {
 # Patch check
 if ($patch !~ /^https?:\/\//) {
 	if (!-r $patch) {
-		print RED, "Patch file $patch doesn't exist\n", RESET;
+		print "Patch file $patch doesn't exist\n";
 		exit 1;
 		}
 	}
@@ -83,7 +82,7 @@ if ($patch =~ m{https://(github|gitlab)\.com/[^/]+/([^/]+)/commit/[^/]+}) {
 
 # Check if module exists
 if (!-d "$path/$module") {
-    print RED, "Module $module doesn't exist\n", RESET;
+    print "Module $module doesn't exist\n";
     exit 1;
 }
 
@@ -100,7 +99,7 @@ else {
 # Apply patch using Git
 my $output = `$cmd 2>&1 | git apply --reject --verbose --whitespace=fix 2>&1`;
 if ($output !~ /applied patch.*?cleanly/i) {
-	print YELLOW, "Patch failed: $output\n", RESET;
+	print "Patch failed: $output\n";
 	exit 1;
 	}
 print "Patch applied successfully to:\n";
