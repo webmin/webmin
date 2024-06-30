@@ -1061,6 +1061,7 @@ status_interval0=Every
 status_mins=minutes
 status_pkgs=Collect available package updates?
 status_temp=Collect drive temperatures?
+status_temp2=Collect CPU temperatures and fans speed?
 status_units=Units for temperatures
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit

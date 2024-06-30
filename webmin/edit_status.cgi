@@ -19,6 +19,10 @@ print &ui_table_row($text{'status_interval'},
 print &ui_table_row($text{'status_pkgs'},
 	&ui_yesno_radio("pkgs", $system_status::config{'collect_pkgs'}));
 
+# Collect CPU temerature?
+print &ui_table_row($text{'status_temp2'},
+	&ui_yesno_radio("temp2", !$system_status::config{'collect_notemp2'}));
+
 # Collect drive temps?
 print &ui_table_row($text{'status_temp'},
 	&ui_yesno_radio("temp", !$system_status::config{'collect_notemp'}));
