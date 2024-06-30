@@ -391,6 +391,17 @@ foreach my $m (@{$section->{'members'}}) {
 	}
 }
 
+# delete_section(&conf, &section)
+# Remove a section and all it's members from the config file
+sub delete_section
+{
+my ($conf, $section) = @_;
+my $lref = &read_file_lines($section->{'file'});
+my $len = $section->{'eline'} - $section->{'line'} + 1;
+splice(@$lref, $section->{'line'}, $len);
+&renumber($conf, $section->{'line'}, $section->{'file'}, -$len);
+}
+
 # renumber(&conf, line, file, offset)
 sub renumber
 {
