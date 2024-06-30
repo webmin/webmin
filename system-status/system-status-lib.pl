@@ -74,7 +74,7 @@ if (&foreign_installed("package-updates") && $config{'collect_pkgs'}) {
 	}
 
 # CPU and drive temps
-if (!$config{'collect_notemp'} && defined(&proc::get_current_cpu_data)) {
+if (!$config{'collect_notemp2'} && defined(&proc::get_current_cpu_data)) {
 	my ($cpu, $fans) = &proc::get_current_cpu_data();
 	$info->{'cputemps'} = $cpu if (ref($cpu) && @{$cpu} >= 1);
 	$info->{'cpufans'} = $fans if (ref($fans) && @{$fans} >= 1);

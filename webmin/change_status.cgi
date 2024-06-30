@@ -18,6 +18,7 @@ else {
 
 # Save collection options
 $system_status::config{'collect_pkgs'} = $in{'pkgs'};
+$system_status::config{'collect_notemp2'} = !$in{'temp2'};
 $system_status::config{'collect_notemp'} = !$in{'temp'};
 $system_status::config{'collect_units'} = $in{'units'};
 
