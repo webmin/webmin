@@ -68,8 +68,10 @@ our $webmin_yum_repo_mirrorlist = $webmin_yum_repo_url."/mirrorlist";
 our $webmin_yum_repo_key = "/etc/pki/rpm-gpg/RPM-GPG-KEY-webmin-developers";
 
 our $webmin_apt_repo_file = "/etc/apt/sources.list.d/webmin.list";
-our $webmin_apt_repo_url = "https://download.webmin.com/download/newkey/repository";
+our $webmin_apt_repo_url = "https://download.webmin.com/download/repo";
 our $webmin_apt_repo_key = "/usr/share/keyrings/debian-webmin-developers.gpg";
+$webmin_apt_repo_key = "/usr/share/keyrings/ubuntu-webmin-developers.gpg"
+	if ($gconfig{'real_os_type'} =~ /ubuntu/i);
 our $global_apt_repo_file = "/etc/apt/sources.list";
 
 # Obsolete, but still defined so it can be deleted
@@ -1401,9 +1403,8 @@ foreach my $repo ($webmin_apt_repo_file, $global_apt_repo_file) {
 	next if (!-r $repo);
 	my $lref = &read_file_lines($repo, 1);
 	foreach my $l (@$lref) {
-		if ($l =~ /^\s*deb\s+.*?((http|https):\/\/download.webmin.com\/download\/repository)\s+sarge\s+contrib/) {
-			$repoerr = &text('notify_aptrepo',
-					 $webmin_apt_repo_url);
+		if ($l =~ /^\s*deb\s+.*?((http|https):\/\/download.webmin.com\/download\/(repository|newkey\/repository))\s+(sarge|stable)\s+contrib/) {
+			$repoerr = &text('notify_aptrepo_newkey', $webmin_apt_repo_url);
 			last;
 			}
 		}
