@@ -512,6 +512,7 @@ mail_forward=Forward
 mail_rfc=From line
 mail_move=Move to:
 mail_eexists=Message no longer exists!
+mail_qfile=Mail queue file
 
 view_title=Read Email
 view_desc=Message $1 in $2

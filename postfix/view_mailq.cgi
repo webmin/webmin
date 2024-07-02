@@ -51,8 +51,10 @@ if ($in{'headers'}) {
 		}
 	foreach $h (@{$mail->{'headers'}}) {
 		print &ui_table_row($h->[0],
-			&html_escape(&decode_mimewords($h->[1])));
+			&html_escape(&decode_mimewords($h->[1])), 1, [ "nowrap" ]);
 		}
+	print &ui_table_row($text{'mail_qfile'},
+		"<tt>".&html_escape($mail->{'file'})."</tt>");
 	}
 else {
 	# Just show the most useful headers

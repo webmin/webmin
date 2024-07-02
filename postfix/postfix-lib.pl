@@ -1504,6 +1504,7 @@ $mail->{'headers'} = \@headers;
 foreach $h (@headers) {
 	$mail->{'header'}->{lc($h->[0])} = $h->[1];
 	}
+$mail->{'file'} = $file;
 return $mail;
 }
 
