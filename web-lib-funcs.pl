@@ -10681,9 +10681,8 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 	my $file_acls;
 	if ($getfacl && $setfacl) {
 		# Set original ACLs
-		$file_acls = &transname();
-		system("$getfacl --absolute-names ".
-			quotemeta($_[0]).">$file_acls");
+		my $qaclfile = quotemeta($_[0]);
+		$file_acls = `$getfacl --absolute-names $qaclfile`;
 		}
 	# Get status info for a file
 	my @st = stat($_[0]);
@@ -10709,7 +10708,9 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 		}
 	if ($file_acls) {
 		# Set original ACLs
-		system("$setfacl --restore=$file_acls");
+		open(my $pipe, '|-', "$setfacl --restore=-");
+		print($pipe $file_acls);
+		close($pipe);
 		}
 	&reset_file_attributes($_[0], \@old_attributes);
 	delete($main::open_tempfiles{$_[0]});
