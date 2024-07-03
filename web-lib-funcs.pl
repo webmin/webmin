@@ -10682,7 +10682,8 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 	if ($getfacl && $setfacl) {
 		# Set original ACLs
 		my $qaclfile = quotemeta($_[0]);
-		$file_acls = `$getfacl --absolute-names $qaclfile`;
+		$file_acls = &backquote_command(
+			"$getfacl --absolute-names $qaclfile 2>/dev/null");
 		}
 	# Get status info for a file
 	my @st = stat($_[0]);
