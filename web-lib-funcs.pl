@@ -10676,6 +10676,16 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 	# Closing a file
 	my $noerror = $main::open_tempfiles_noerror{$_[0]};
 	&webmin_debug_log("CLOSE", $_[0]) if ($gconfig{'debug_what_write'});
+	my $getfacl = &has_command("getfacl");
+	my $setfacl = &has_command("setfacl");
+	my $file_acls;
+	if ($getfacl && $setfacl) {
+		# Set original ACLs
+		my $qaclfile = quotemeta($_[0]);
+		$file_acls = &backquote_command(
+			"$getfacl --absolute-names $qaclfile 2>/dev/null");
+		}
+	# Get status info for a file
 	my @st = stat($_[0]);
 	if (&is_selinux_enabled() && &has_command("chcon")) {
 		# Set original security context
@@ -10696,6 +10706,12 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 		# Set original permissions and ownership
 		chmod($st[2], $_[0]);
 		chown($st[4], $st[5], $_[0]);
+		}
+	if ($file_acls) {
+		# Set original ACLs
+		open(my $pipe, '|-', "$setfacl --restore=-");
+		print($pipe $file_acls);
+		close($pipe);
 		}
 	&reset_file_attributes($_[0], \@old_attributes);
 	delete($main::open_tempfiles{$_[0]});
