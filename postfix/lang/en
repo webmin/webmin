@@ -513,6 +513,14 @@ mail_rfc=From line
 mail_move=Move to:
 mail_eexists=Message no longer exists!
 mail_qfile=Mail queue file
+mail_qlast=Last retried at
+mail_qdir=Mail queue status
+mail_qdir_active=Active
+mail_qdir_incoming=Incoming
+mail_qdir_deferred=Deferred
+mail_qdir_corrupt=Corrupt
+mail_qdir_hold=On hold
+mail_qdir_maildrop=Mail drop
 
 view_title=Read Email
 view_desc=Message $1 in $2

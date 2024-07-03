@@ -53,8 +53,10 @@ if ($in{'headers'}) {
 		print &ui_table_row($h->[0],
 			&html_escape(&decode_mimewords($h->[1])), 1, [ "nowrap" ]);
 		}
-	print &ui_table_row($text{'mail_qfile'},
-		"<tt>".&html_escape($mail->{'file'})."</tt>");
+	if ($mail->{'file'}) {
+		print &ui_table_row($text{'mail_qfile'},
+			"<tt>".&html_escape($mail->{'file'})."</tt>");
+		}
 	}
 else {
 	# Just show the most useful headers
@@ -69,6 +71,15 @@ else {
 		&html_escape($mail->{'header'}->{'date'}));
 	print &ui_table_row($text{'mail_subject'},
 		&html_escape($mail->{'header'}->{'subject'}));
+	}
+if ($mail->{'last_retry'}) {
+	print &ui_table_row($text{'mail_qlast'},
+		&make_date($mail->{'last_retry'}));
+	}
+if ($mail->{'mailq_dir'}) {
+	print &ui_table_row($text{'mail_qdir'},
+		$text{'mail_qdir_'.$mail->{'mailq_dir'}} ||
+		$mail->{'mailq_dir'});
 	}
 print &ui_table_end();
 

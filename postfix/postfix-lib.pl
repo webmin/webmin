@@ -1505,6 +1505,11 @@ foreach $h (@headers) {
 	$mail->{'header'}->{lc($h->[0])} = $h->[1];
 	}
 $mail->{'file'} = $file;
+my @st = stat($file);
+$mail->{'last_retry'} = $st[9];
+if ($file =~ /^\Q$config{'mailq_dir'}\E\/([^\/]+)\//) {
+	$mail->{'mailq_dir'} = $1;
+	}
 return $mail;
 }
 
