@@ -2638,6 +2638,10 @@ $gconfig{'real_os_type'} = $osinfo{'real_os_type'};
 $gconfig{'real_os_version'} = $osinfo{'real_os_version'};
 $gconfig{'os_type'} = $osinfo{'os_type'};
 $gconfig{'os_version'} = $osinfo{'os_version'};
+foreach my $key ('os_eol_db', 'os_eol_expired',
+		 'os_eol_expiring') {
+	delete($gconfig{$key});
+	}
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");
 
