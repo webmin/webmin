@@ -1449,6 +1449,15 @@ foreach my $l (split(/\r?\n/, $out)) {
 				$q->{'time'} = $t;
 				}
 			}
+		foreach my $dir (&list_mailq_directories()) {
+			my $f = substr($q->{'id'}, 0, 1);
+			my $path = "$config{'mailq_dir'}/$dir/$f/$q->{'id'}";
+			if (-r $path) {
+				$q->{'dir'} = $dir;
+				$q->{'file'} = $file;
+				last;
+				}
+			}
 		push(@qfiles, $q);
 		}
 	elsif ($l =~ /\((.*)\)/ && @qfiles) {
@@ -1461,18 +1470,18 @@ foreach my $l (split(/\r?\n/, $out)) {
 return @qfiles;
 }
 
+sub list_mailq_directories
+{
+return ("active", "incoming", "deferred", "corrupt", "hold", "maildrop");
+}
+
 # parse_queue_file(id)
 # Parses a postfix mail queue file into a standard mail structure
 sub parse_queue_file
 {
-local @qfiles = ( &recurse_files("$config{'mailq_dir'}/active"),
-		  &recurse_files("$config{'mailq_dir'}/incoming"),
-		  &recurse_files("$config{'mailq_dir'}/deferred"),
-		  &recurse_files("$config{'mailq_dir'}/corrupt"),
-		  &recurse_files("$config{'mailq_dir'}/hold"),
-		  &recurse_files("$config{'mailq_dir'}/maildrop"),
-		);
-local $f = $_[0];
+local ($f) = @_;
+local @qfiles = map { &recurse_files("$config{'mailq_dir'}/$_") }
+		    &list_mailq_directories();
 local ($file) = grep { $_ =~ /\/$f$/ } @qfiles;
 return undef if (!$file);
 local $mode = 0;
@@ -1508,7 +1517,7 @@ $mail->{'file'} = $file;
 my @st = stat($file);
 $mail->{'last_retry'} = $st[9];
 if ($file =~ /^\Q$config{'mailq_dir'}\E\/([^\/]+)\//) {
-	$mail->{'mailq_dir'} = $1;
+	$mail->{'dir'} = $1;
 	}
 return $mail;
 }
@@ -1862,11 +1871,12 @@ foreach my $q (@$qfiles) {
 		      'value' => $q->{'id'} });
 	push(@cols, &ui_link("view_mailq.cgi?id=$q->{'id'}",$q->{'id'}));
 	local $size = &nice_size($q->{'size'});
-	push(@cols, "<font size=1>$q->{'date'}</font>");
-	push(@cols, "<font size=1>".&html_escape($q->{'from'})."</font>");
-	push(@cols, "<font size=1>".&html_escape($q->{'to'})."</font>");
-	push(@cols, "<font size=1>$size</font>");
-	push(@cols, "<font size=1>".&html_escape($q->{'status'})."</font>");
+	push(@cols, $q->{'date'});
+	push(@cols, &html_escape($q->{'from'}));
+	push(@cols, &html_escape($q->{'to'}));
+	push(@cols, $size);
+	push(@cols, $text{'mailq_'.$q->{'dir'}} || $q->{'dir'});
+	push(@cols, &html_escape($q->{'status'}));
 	push(@table, \@cols);
 	}
 
@@ -1883,7 +1893,8 @@ print &ui_form_columns_table("delete_queues.cgi",
 	undef,
 	undef,
 	[ "", $text{'mailq_id'}, $text{'mailq_date'}, $text{'mailq_from'},
-          $text{'mailq_to'}, $text{'mailq_size'}, $text{'mailq_status'} ],
+          $text{'mailq_to'}, $text{'mailq_size'}, $text{'mailq_dir'},
+	  $text{'mailq_status'} ],
 	100,
 	\@table);
 }

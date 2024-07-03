@@ -631,6 +631,7 @@ mailq_active=Active
 mailq_deferred=Deferred
 mailq_hold=Hold Selected
 mailq_unhold=Un-Hold Selected
+mailq_dir=Queue state
 
 flushq_title=Flush Queue
 flushq_desc=Forcing the attempted delivery of mail with the command $1 ..

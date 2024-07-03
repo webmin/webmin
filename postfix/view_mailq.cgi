@@ -76,10 +76,9 @@ if ($mail->{'last_retry'}) {
 	print &ui_table_row($text{'mail_qlast'},
 		&make_date($mail->{'last_retry'}));
 	}
-if ($mail->{'mailq_dir'}) {
+if ($mail->{'dir'}) {
 	print &ui_table_row($text{'mail_qdir'},
-		$text{'mail_qdir_'.$mail->{'mailq_dir'}} ||
-		$mail->{'mailq_dir'});
+		$text{'mailq_'.$mail->{'dir'}} || $mail->{'dir'});
 	}
 print &ui_table_end();
 
