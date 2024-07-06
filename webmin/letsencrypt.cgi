@@ -54,8 +54,11 @@ else {
 				"VirtualHost", $conf)) {
 		my $sn = &apache::find_directive(
 			"ServerName", $virt->{'members'});
+		my @sa = &apache::find_directive(
+			"ServerAlias", $virt->{'members'});
 		my $match = 0;
-		if ($in{'webroot_mode'} == 0 && $sn eq $doms[0]) {
+		if ($in{'webroot_mode'} == 0 &&
+		    &indexof($doms[0], $sn, @sa) >= 0) {
 			# Based on domain name
 			$match = 1;
 			}
@@ -63,7 +66,16 @@ else {
 			# Specifically selected domain
 			$match = 1;
 			}
-		if ($match) {
+		my @ports;
+		foreach my $w (@{$virt->{'words'}}) {
+			if ($w =~ /:(\d+)$/) {
+				push(@ports, $1);
+				}
+			else {
+				push(@ports, 80);
+				}
+			}
+		if ($match && &indexof(80, @ports) >= 0) {
 			# Get document root
 			$webroot = &apache::find_directive(
 				"DocumentRoot", $virt->{'members'}, 1);
@@ -90,7 +102,7 @@ else {
 		    "<tt>".&html_escape($webroot)."</tt>"),"<p>\n";
 	my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(
 		\@doms, $webroot, undef, $size, $mode, $in{'staging'},
-		undef, 0, undef, undef, undef, $in{'subset'});
+		undef, undef, 0, undef, undef, undef, $in{'subset'});
 	if (!$ok) {
 		print &text('letsencrypt_failed', $cert),"<p>\n";
 		}
