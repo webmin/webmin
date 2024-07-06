@@ -141,7 +141,8 @@ else {
 			&put_miniserv_config(\%miniserv);
 			&unlock_file($ENV{'MINISERV_CONFIG'});
 
-			&save_renewal_only(\@doms, $webroot, $mode);
+			&save_renewal_only(\@doms, $webroot, $mode,
+					   $size, $in{'subset'});
 
 			&webmin_log("letsencrypt");
 			&restart_miniserv(1);
