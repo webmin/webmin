@@ -102,7 +102,7 @@ else {
 		    "<tt>".&html_escape($webroot)."</tt>"),"<p>\n";
 	my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(
 		\@doms, $webroot, undef, $size, $mode, $in{'staging'},
-		undef, undef, 0, undef, undef, undef, $in{'subset'});
+		undef, undef, undef, undef, undef, undef, $in{'subset'});
 	if (!$ok) {
 		print &text('letsencrypt_failed', $cert),"<p>\n";
 		}
