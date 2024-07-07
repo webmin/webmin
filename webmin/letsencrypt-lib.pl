@@ -58,7 +58,8 @@ return &software::missing_install_link(
 
 # request_letsencrypt_cert(domain|&domains, webroot, [email], [keysize],
 # 			   [request-mode], [use-staging], [account-email],
-# 			   [reuse-key], [server-url, server-key, server-hmac],
+# 			   [key-type], [reuse-key],
+# 			   [server-url, server-key, server-hmac],
 # 			   [allow-subset])
 # Attempt to request a cert using a generated key with the Let's Encrypt client
 # command, and write it to the given path. Returns a status flag, and either
