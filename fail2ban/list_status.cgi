@@ -55,7 +55,7 @@ if (@jails) {
 				$col =~ s/\s/_/g;
 				if ($col !~ /journal_matches/ &&
 				    $col !~ /file_list/) {
-					push(@head, "<div $tdc>".$text{"status_head_$col"}."</div>");
+					push(@head, "<span $tdc>".$text{"status_head_$col"}."</span>");
 					if ($col =~ /banned_ip_list/) {
 						$jips = $val;
 						my @ips = split(/\s+/, $val);
