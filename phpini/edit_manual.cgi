@@ -16,5 +16,11 @@ print &ui_hidden("oneini", $in{'oneini'}),"\n";
 print &ui_textarea("data", &read_file_contents_as_user($in{'file'}), 20, 80);
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
-&ui_print_footer("", $text{'index_return'});
+if ($in{'oneini'}) {
+        &ui_print_footer("list_ini.cgi?file=".&urlize($in{'file'}),
+                         $text{'list_return'});
+        }
+else {
+        &ui_print_footer("", $text{'index_return'});
+        }
 
