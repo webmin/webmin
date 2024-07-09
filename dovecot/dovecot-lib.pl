@@ -95,7 +95,7 @@ foreach (@lines) {
 			}
 		}
 	elsif (/^(\s*)(#?)([a-z0-9\_]+)\s+=\s*(.*)/) {
-		# A directive inside a section
+		# A directive which may or may not be inside a section
 		local $dir = { 'name' => $3,
 			       'value' => $4,
 			       'enabled' => !$2,
