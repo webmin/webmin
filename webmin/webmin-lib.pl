@@ -2873,7 +2873,7 @@ if (!$@) {
 	my $out;
 	Image::PNG::QRCode::qrpng(
 		text => $str,
-		scale => $size || 3,
+		scale => $size || 6,
 		out => \$out,
 		);
 	return ($out, "image/png");
