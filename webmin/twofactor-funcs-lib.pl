@@ -234,7 +234,7 @@ my $str = "otpauth://totp/".$name."?secret=".$user->{'twofactor_id'};
 my $url;
 if (&can_generate_qr()) {
 	$url = "$gconfig{'webprefix'}/webmin/qr.cgi?".
-	       "size=4&str=".&urlize($str);
+	       "size=6&str=".&urlize($str);
 	}
 else {
 	$url = "https://chart.googleapis.com/chart".
