@@ -19,17 +19,18 @@ $tellcount = 0;
 &start_update_progress([ map { $_->{'name'} } @todo ]);
 foreach $t (@todo) {
 	next if ($already{$t->{'update'}});
+	my $umsg = $t->{'security'} ? "security update" : "update";
 	if ($config{'sched_action'} == 2 ||
 	    $config{'sched_action'} == 1 && $t->{'security'}) {
 		# Can install
-		$body .= "An update to $t->{'name'} from $t->{'oldversion'} to $t->{'version'} is needed.\n";
+		$body .= "An $umsg to $t->{'name'} from $t->{'oldversion'} to $t->{'version'} is needed.\n";
 		($out, $done) = &capture_function_output(
 				  \&package_install, $t->{'update'});
 		if (@$done) {
-			$body .= "This update has been successfully installed.\n\n";
+			$body .= "This $umsg has been successfully installed.\n\n";
 			}
 		else {
-			$body .= "However, this update could not be installed! Try the update manually\nusing the Package Updates module.\n\n";
+			$body .= "However, this $usmg could not be installed! Try the update manually\nusing the Package Updates module.\n\n";
 			}
 		foreach $p (@$done) {
 			$already{$p}++;
@@ -39,7 +40,7 @@ foreach $t (@todo) {
 	       $config{'sched_action'} == 0 ||
 	       $config{'sched_action'} == -1 && $t->{'security'}) {
 		# Just tell the user about it
-		$body .= "An update to $t->{'name'} from $t->{'oldversion'} to $t->{'version'} is available.\n\n";
+		$body .= "An $umsg to $t->{'name'} from $t->{'oldversion'} to $t->{'version'} is available.\n\n";
 		$tellcount++;
 		}
 	}
