@@ -17,6 +17,7 @@ if ($ARGV[0] eq "--debug" || $ARGV[0] eq "-debug") {
 $tellcount = 0;
 %already = ( );
 &start_update_progress([ map { $_->{'name'} } @todo ]);
+$icount = 0;
 foreach $t (@todo) {
 	next if ($already{$t->{'update'}});
 	my $umsg = $t->{'security'} ? "security update" : "update";
@@ -24,6 +25,7 @@ foreach $t (@todo) {
 	    $config{'sched_action'} == 1 && $t->{'security'}) {
 		# Can install
 		$body .= "An $umsg to $t->{'name'} from $t->{'oldversion'} to $t->{'version'} is needed.\n";
+		$icount++;
 		($out, $done) = &capture_function_output(
 				  \&package_install, $t->{'update'});
 		if (@$done) {
@@ -70,3 +72,7 @@ if ($config{'sched_email'} && $body) {
 		}
 	}
 
+# Log the update, if anything was installed
+if ($icount) {
+	&webmin_log("sched", "packages", $icount);
+	}

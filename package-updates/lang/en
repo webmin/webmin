@@ -103,6 +103,7 @@ sched_yes=Scheduled checking for updates is now active.
 sched_no=Scheduled checking for updates has been disabled.
 
 log_update=Installed $1 updated packages
+log_sched=Background installed $1 updated packages
 log_sched=Enabled scheduled updates
 log_unsched=Disabled scheduled updates
 log_refresh=Refreshed available packages
