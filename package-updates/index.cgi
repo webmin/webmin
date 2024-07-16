@@ -20,12 +20,10 @@ print &ui_tabs_start([ [ 'pkgs', $text{'index_tabpkgs'} ],
 # See if any security updates exist
 $in{'mode'} ||= 'updates';
 @avail = &list_for_mode($in{'mode'}, 0);
-($sec) = grep { $_->{'security'} } @avail;
 
 # Show mode selector (all, updates only, updates and new)
 @grid = ( );
-foreach $m ('current', 'updates', 'new',
-	    $sec || $in{'mode'} eq 'security' ? ( 'security' ) : ( )) {
+foreach $m ('current', 'updates', 'security', 'new') {
 	$mmsg = $text{'index_mode_'.$m};
 	if ($in{'mode'} eq $m) {
 		push(@mlinks, "<b>$mmsg</b>");
