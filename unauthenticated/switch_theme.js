@@ -11,12 +11,14 @@
             }, 1000);
         }
         if (firstCombinationPressed && event.shiftKey &&
-            (event.keyCode === 65 || event.keyCode === 71 || event.keyCode === 76)) {
+            (event.keyCode === 65 ||
+             event.keyCode === 70 || event.keyCode === 71 ||
+             event.keyCode === 76)) {
             const theme =
                 // Shift + A : Authentic theme
                 event.keyCode === 65 ? 1 :
                 // Shift + G : Gray theme
-                event.keyCode === 71 ? 2 :
+                (event.keyCode === 70 || event.keyCode === 71) ? 2 :
                 // Shift + L : Legacy theme.
                 event.keyCode === 76 ? 3 : null;
             firstCombinationPressed = false;
