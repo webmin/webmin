@@ -6,7 +6,6 @@ lease_tz=Zobrazit dobu pronájmu v,1,0-GMT,1-Lokálním čase
 show_ip=Zobrazit IP adresy pro hosty?,1,1-ano,0-ne
 show_mac=Zobrazit MAC adresy hostů?,1,1-Ano,0-Ne
 group_name=Zobrazení jmen skupin jako,1,1-<tt>doménová jména</tt>,0-Jména nebo počtu členů,2-Popisu
-desc_name=Ukázat popisy objektů místo jejich názvů?,1,1-Ano,0-Ne
 display_max=Počet maximálně zobrazených podsítí a hostů,3,Bezomezení
 line2=Konfigurace systému,11
 dhcpd_conf=Konfigurační soubor DHCP serveru,0

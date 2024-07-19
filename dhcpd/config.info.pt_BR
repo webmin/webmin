@@ -6,7 +6,6 @@ lease_tz=Display leases times in,1,0-GMT,1-Local time
 show_ip=Mostrar endereço IP para computadores?,1,1-Sim,0-Não
 show_mac=Mostrar endereço MAC para computadores?,1,1-Sim,0-Não
 group_name=Mostrar nomes de grupo como,1,1-<tt>nome de&#45;domínio</tt>,0-Nome ou membro
-desc_name=Mostrar descrição de objetos ao invés de nomes?,1,1-Sim,0-Não
 display_max=Número máximo de subredes e computadores a serem
 add_file=Acrescentar novas subredes&#44; hosts e grupos para arquivo,3,Arquivo principal de configuração
 line2=Configuração do sistema,11

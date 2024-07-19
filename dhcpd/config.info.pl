@@ -7,7 +7,6 @@ lease_refresh=Sekund pomiędzy odświeżaniem listy dzierżawy,3,Nigdy
 show_ip=Wyświetlać adres IP hostów?,1,1-Tak,0-Nie
 show_mac=Wyświetlać adres MAC hostów?,1,1-Tak,0-Nie
 group_name=Wyświetl nazwy grupy jako,1,1-<tt>domain&#45;name</tt>,0-Ilość lub nazwa użytkowników,2-Opis
-desc_name=Wyświetlać inne opisy obiektów zamiast nazw,1,1-Tak,0-Nie
 display_max=Maksymalna liczba wyświetlanych podsieci i hostów,3,Nieograniczona
 add_file=Dodaj nowe podsieci&#44; hosty i grupy do pliku,3,Główny plik konfiguracyjny
 line2=Opcje systemowe,11

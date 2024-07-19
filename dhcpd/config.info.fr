@@ -6,7 +6,6 @@ lease_tz=Afficher les temps de bail en,1,0-GMT,1-Temps local
 show_ip=Montrer les adresses IP des postes ?,1,1-Oui,0-Non
 show_mac=Montrer les adresses MAC des postes ?,1,1-Oui,0-Non
 group_name=Montrer les noms de groupe comme,1,1-Nom de domaine,0-Nom ou numero de membre
-desc_name=Montrer les descriptions au lieu des noms ?,1,1-Oui,0-Non
 display_max=Nombre maximum de sous-reseaux et de postes a afficher,3,Illimite
 line2=Configuration du systeme,11
 dhcpd_conf=Fichier de configuration du serveur DHCP,0

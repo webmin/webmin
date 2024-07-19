@@ -211,14 +211,18 @@ foreach $u (@subn) {
 		push(@sicons, $i = "images/shared.gif");
 		push(@checkboxids, $u->{'index'});
 		}
-	if ($config{'desc_name'} && $u->{'comment'}) {
-		push(@utitles, $t = &html_escape($u->{'comment'}));
+	if ($config{'desc_name'} == 0) {
+		$t = $u->{'values'}->[0];
+		}
+	elsif ($config{'desc_name'} == 1) {
+		$t = $u->{'comment'} || $u->{'values'}->[0];
 		}
 	else {
-		push(@utitles, $t = &html_escape($u->{'values'}->[0]));
+		$t = $u->{'values'}->[0].($u->{'comment'} ? " ($u->{'comment'})" : "");
 		}
+	push(@utitles, &html_escape($t));
 	push(@uslinks, $l);	# so that ordering is preserved
-	push(@ustitles, $t);
+	push(@ustitles, &html_escape($t));
 	push(@usicons, $i);
 	}
 @checkboxes = map { &ui_checkbox("d", $_) } @checkboxids;
@@ -336,12 +340,16 @@ foreach $h (@host) {
 			(defined($subnet{$h}) ? "&uidx=$subnet{$h}" : "").
 			(defined($shared{$h}) ? "&sidx=$shared{$h}" : "") :
 			undef);
-		if ($config{'desc_name'} && $h->{'comment'}) {
-			push(@htitles, &html_escape($h->{'comment'}));
+		if ($config{'desc_name'} == 0) {
+			$t = $h->{'values'}->[0];
+			}
+		elsif ($config{'desc_name'} == 1) {
+			$t = $h->{'comment'} || $h->{'values'}->[0];
 			}
 		else {
-			push(@htitles, &html_escape($h->{'values'}->[0]));
+			$t = $h->{'values'}->[0].($h->{'comment'} ? " ($h->{'comment'})" : "");
 			}
+		push(@htitles, &html_escape($t));
 		if ($config{'show_ip'}) {
 			$fv = &fixedaddr($h);
 			$htitles[$#htitles] .= "<br>".$fv if ($fv);
