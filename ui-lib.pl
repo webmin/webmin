@@ -2349,7 +2349,6 @@ Hotkeys are:
 sub ui_switch_theme_javascript
 {
 return &theme_ui_switch_theme_javascript(@_) if (defined(&theme_ui_switch_theme_javascript));
-return "" if (!$gconfig{'debug_enabled'} && !$gconfig{'debug_theme_switcher'});
 my $switch_script = "<script>const __webmin_webprefix__ = '@{[&get_webprefix()]}';</script>\n";
 my $webmin_version = &get_webmin_version();
 $webmin_version =~ s/\.//g;
