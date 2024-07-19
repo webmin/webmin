@@ -17,9 +17,9 @@
             const theme =
                 // Shift + A : Authentic theme
                 event.keyCode === 65 ? 1 :
-                // Shift + G : Gray theme
+                // Shift + F / Shift + G : Framed theme / Gray theme
                 (event.keyCode === 70 || event.keyCode === 71) ? 2 :
-                // Shift + L : Legacy theme.
+                // Shift + L : Legacy theme
                 event.keyCode === 76 ? 3 : null;
             firstCombinationPressed = false;
             try {
