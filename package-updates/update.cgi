@@ -15,10 +15,9 @@ else {
 	$redir = "index.cgi?mode=".&urlize($in{'mode'}).
 		 "&search=".&urlize($in{'search'});
 	$redirdesc = $text{'index_return'};
+	$redir = $redir =~ /tab=/ ? $redir :
+		$redir =~ /\?/ ? "$redir&tab=pkgs" : "$redir?tab=pkgs";
 	}
-
-$redir = $redir =~ /tab=/ ? $redir :
-	 $redir =~ /\?/ ? "$redir&tab=pkgs" : "$redir?tab=pkgs";
 
 if ($in{'refresh'} || $in{'refresh_top'}) {
 	&ui_print_unbuffered_header(undef, $text{'refresh_title'}, "");
