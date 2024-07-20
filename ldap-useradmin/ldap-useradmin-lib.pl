@@ -230,31 +230,32 @@ return @list_users_cache;
 # it to the LDAP database
 sub create_user
 {
-local $ldap = &ldap_connect();
-local $base = &get_user_base();
-$_[0]->{'dn'} = "uid=$_[0]->{'user'},$base";
-local @classes = ( &def_user_obj_class(), "shadowAccount",
+my ($user) = @_;
+my $ldap = &ldap_connect();
+my $base = &get_user_base();
+$user->{'dn'} = "uid=$user->{'user'},$base";
+my @classes = ( &def_user_obj_class(), "shadowAccount",
 		   split(/\s+/, $config{'other_class'}),
-		   @{$_[0]->{'ldap_class'}} );
-local $schema = $ldap->schema();
+		   @{$user->{'ldap_class'}} );
+my $schema = $ldap->schema();
 if ($schema->objectclass("person") && $config{'person'}) {
 	push(@classes, "person");
 	}
 @classes = &uniquelc(@classes);
 @classes = grep { /\S/ } @classes;	# Remove empty
-local @attrs = &user_to_dn($_[0]);
-push(@attrs, &split_props($config{'props'}, $_[0]));
-push(@attrs, @{$_[0]->{'ldap_attrs'}});
+my @attrs = &user_to_dn($user);
+push(@attrs, &split_props($config{'props'}, $user));
+push(@attrs, @{$user->{'ldap_attrs'}});
 push(@attrs, "objectClass" => \@classes);
 if (&indexoflc("person", @classes) >= 0 && !&in_props(\@attrs, "sn")) {
 	# Person needs 'sn'
 	push(@attrs, "sn", &in_props(\@attrs, "cn"));
 	}
-local $rv = $ldap->add($_[0]->{'dn'}, attr => \@attrs);
+my $rv = $ldap->add($user->{'dn'}, attr => \@attrs);
 if ($rv->code) {
 	&error(&text('usave_eadd', $rv->error));
 	}
-push(@list_users_cache, $_[0]) if (scalar(@list_users_cache));
+push(@list_users_cache, $user) if (scalar(@list_users_cache));
 $ldap->unbind();
 &useradmin::refresh_nscd() if (!$batch_mode);
 }
@@ -264,8 +265,9 @@ $ldap->unbind();
 # it from the LDAP database
 sub delete_user
 {
-local $ldap = &ldap_connect();
-local $rv = $ldap->delete($_[0]->{'dn'});
+my ($user) = @_;
+my $ldap = &ldap_connect();
+my $rv = $ldap->delete($user->{'dn'});
 if ($rv->code) {
 	my $err = $rv->error;
 	if ($err !~ /No such object/i) {
@@ -273,7 +275,7 @@ if ($rv->code) {
 		}
 	}
 $ldap->unbind();
-@list_users_cache = grep { $_ ne $_[0] } @list_users_cache
+@list_users_cache = grep { $_ ne $user } @list_users_cache
         if (scalar(@list_users_cache));
 &useradmin::refresh_nscd() if (!$batch_mode);
 }
@@ -281,52 +283,53 @@ $ldap->unbind();
 # modify_user(&olduser, &newuser)
 sub modify_user
 {
-local $ldap = &ldap_connect();
-local $base = &get_user_base();
-local @attrs = &user_to_dn($_[1]);
-push(@attrs, &split_props($config{'mod_props'}, $_[1]));
-push(@attrs, @{$_[1]->{'ldap_attrs'}});
-if ($_[1]->{'ldap_class'} &&
-    (!ref($_[1]->{'ldap_class'}) || @{$_[1]->{'ldap_class'}})) {
-	push(@attrs, "objectClass" => $_[1]->{'ldap_class'});
+my ($olduser, $user) = @_;
+my $ldap = &ldap_connect();
+my $base = &get_user_base();
+my @attrs = &user_to_dn($user);
+push(@attrs, &split_props($config{'mod_props'}, $user));
+push(@attrs, @{$user->{'ldap_attrs'}});
+if ($user->{'ldap_class'} &&
+    (!ref($user->{'ldap_class'}) || @{$user->{'ldap_class'}})) {
+	push(@attrs, "objectClass" => $user->{'ldap_class'});
 	}
-if (&indexoflc("person", @{$_[1]->{'ldap_class'}}) >= 0 &&
+if (&indexoflc("person", @{$user->{'ldap_class'}}) >= 0 &&
     !&in_props(\@attrs, "sn")) {
 	# Person needs 'sn'
 	push(@attrs, "sn", &in_props(\@attrs, "cn"));
 	}
-local %replace;
+my %replace;
 for(my $i=0; $i<@attrs; $i+=2) {
 	$replace{$attrs[$i]} ||= [ ];
-	local $v = $attrs[$i+1];
+	my $v = $attrs[$i+1];
 	push(@{$replace{$attrs[$i]}}, ref($v) ? @$v : $v);
 	}
-if ($_[0]->{'pass'} eq $_[1]->{'pass'}) {
+if ($olduser->{'pass'} eq $user->{'pass'}) {
 	# Don't change password attribute if not change
 	delete($replace{'userPassword'});
 	}
 # Do rename to new DN first
-if ($_[0]->{'user'} ne $_[1]->{'user'}) {
-	local $newdn = $_[0]->{'dn'};
-	if ($newdn !~ s/^uid=$_[0]->{'user'},/uid=$_[1]->{'user'},/) {
-		$newdn = "uid=$_[1]->{'user'},$base";
+if ($olduser->{'user'} ne $user->{'user'}) {
+	my $newdn = $olduser->{'dn'};
+	if ($newdn !~ s/^uid=$olduser->{'user'},/uid=$user->{'user'},/) {
+		$newdn = "uid=$user->{'user'},$base";
 		}
-	if (!&same_dn($newdn, $_[0]->{'dn'})) {
-		$rv = $ldap->moddn($_[0]->{'dn'},
-				   newrdn => "uid=$_[1]->{'user'}");
+	if (!&same_dn($newdn, $olduser->{'dn'})) {
+		$rv = $ldap->moddn($olduser->{'dn'},
+				   newrdn => "uid=$user->{'user'}");
 		if ($rv->code) {
 			&error(&text('usave_emoddn', $rv->error));
 			}
-		$_[1]->{'dn'} = $newdn;
+		$user->{'dn'} = $newdn;
 		}
 	}
-local $rv = $ldap->modify($_[1]->{'dn'}, replace => \%replace);
+my $rv = $ldap->modify($user->{'dn'}, replace => \%replace);
 if ($rv->code) {
 	&error(&text('usave_emod', $rv->error));
 	}
-if ($_[0] ne $_[1] && &indexof($_[0], @list_users_cache) != -1) {
+if ($olduser ne $user && &indexof($olduser, @list_users_cache) != -1) {
 	# Update old object in cache
-	%{$_[0]} = %{$_[1]};
+	%{$olduser} = %{$user};
 	}
 $ldap->unbind();
 &useradmin::refresh_nscd() if (!$batch_mode);
