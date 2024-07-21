@@ -434,37 +434,38 @@ $ldap->unbind();
 # in the same format uses by the useradmin module
 sub dn_to_hash
 {
-if ($_[0]->get_value("uid")) {
-	local %user = ( 'dn' => $_[0]->dn(),
-			'user' => $_[0]->get_value("uid"),
-			'uid' => $_[0]->get_value("uidNumber"),
-			'gid' => $_[0]->get_value("gidNumber"),
-			'real' => $_[0]->get_value("cn"),
-			'home' => $_[0]->get_value("homeDirectory"),
-			'shell' => $_[0]->get_value("loginShell"),
-			'pass' => $_[0]->get_value("userPassword"),
-			'change' => $_[0]->get_value("shadowLastChange") || "",
-			'expire' => $_[0]->get_value("shadowExpire") || "",
-			'min' => $_[0]->get_value("shadowMin") || "",
-			'max' => $_[0]->get_value("shadowMax") || "",
-			'warn' => $_[0]->get_value("shadowWarning") || "",
-			'inactive' => $_[0]->get_value("shadowInactive") || "",
-		      );
+my ($obj) = @_;
+if ($obj->get_value("uid")) {
+	my %user = ( 'dn' => $obj->dn(),
+		     'user' => $obj->get_value("uid"),
+		     'uid' => $obj->get_value("uidNumber"),
+		     'gid' => $obj->get_value("gidNumber"),
+		     'real' => $obj->get_value("cn"),
+		     'home' => $obj->get_value("homeDirectory"),
+		     'shell' => $obj->get_value("loginShell"),
+		     'pass' => $obj->get_value("userPassword"),
+		     'change' => $obj->get_value("shadowLastChange") || "",
+		     'expire' => $obj->get_value("shadowExpire") || "",
+		     'min' => $obj->get_value("shadowMin") || "",
+		     'max' => $obj->get_value("shadowMax") || "",
+		     'warn' => $obj->get_value("shadowWarning") || "",
+		     'inactive' => $obj->get_value("shadowInactive") || "",
+		   );
 	$user{'pass'} =~ s/^(\!?)\{[a-z0-9]+\}/$1/i;
-	$user{'all_ldap_attrs'} = { map { lc($_), scalar($_[0]->get_value($_)) }
-					$_[0]->attributes() };
-	$user{'ldap_class'} = [ $_[0]->get_value('objectClass') ];
+	$user{'all_ldap_attrs'} = { map { lc($_), scalar($obj->get_value($_)) }
+					$obj->attributes() };
+	$user{'ldap_class'} = [ $obj->get_value('objectClass') ];
 	return %user;
 	}
 else {
-	local @members = $_[0]->get_value('memberUid');
-	local %group = ( 'dn' => $_[0]->dn(),
-			 'group' => $_[0]->get_value("cn"),
-			 'gid' => $_[0]->get_value("gidNumber"),
-			 'pass' => $_[0]->get_value("userPassword") || "",
-			 'members' => join(",", @members) || "",
-			 'desc' => $_[0]->get_value("description"),
-			);
+	my @members = $obj->get_value('memberUid');
+	my %group = ( 'dn' => $obj->dn(),
+		      'group' => $obj->get_value("cn"),
+		      'gid' => $obj->get_value("gidNumber"),
+		      'pass' => $obj->get_value("userPassword") || "",
+		      'members' => join(",", @members) || "",
+		      'desc' => $obj->get_value("description"),
+		    );
 	return %group;
 	}
 }
@@ -473,37 +474,38 @@ else {
 # Given a useradmin-style user hash, returns a list of properties
 sub user_to_dn
 {
-local $pfx = $_[0]->{'pass'} =~ /^\{[a-z0-9]+\}/i ? undef :
-	     $_[0]->{'pass'} =~ /^\$1\$/ ? "{md5}" :
-	     $_[0]->{'pass'} =~ /^[a-zA-Z0-9\.\/]{13}$/ ? "{crypt}" :
-	     $config{'md5'} == 1 || $config{'md5'} == 3 ? "{md5}" :
-	     $config{'md5'} == 4 ? "{ssha}" : 
-	     $config{'md5'} == 0 ? "{crypt}" : "";
-local $pass = $_[0]->{'pass'};
-local $disabled;
+my ($user) = @_;
+my $pfx = $user->{'pass'} =~ /^\{[a-z0-9]+\}/i ? undef :
+	  $user->{'pass'} =~ /^\$1\$/ ? "{md5}" :
+	  $user->{'pass'} =~ /^[a-zA-Z0-9\.\/]{13}$/ ? "{crypt}" :
+	  $config{'md5'} == 1 || $config{'md5'} == 3 ? "{md5}" :
+	  $config{'md5'} == 4 ? "{ssha}" : 
+	  $config{'md5'} == 0 ? "{crypt}" : "";
+my $pass = $user->{'pass'};
+my $disabled;
 if ($pass =~ s/^\!//) {
 	$disabled = "!";
 	}
-$cn = $_[0]->{'real'} eq '' ? $_[0]->{'user'} : $_[0]->{'real'};
+my $cn = $user->{'real'} eq '' ? $user->{'user'} : $user->{'real'};
 return ( "cn" => $cn,
-	 "uid" => $_[0]->{'user'},
-	 "uidNumber" => $_[0]->{'uid'},
-	 "loginShell" => $_[0]->{'shell'},
-	 "homeDirectory" => $_[0]->{'home'},
-	 "gidNumber" => $_[0]->{'gid'},
+	 "uid" => $user->{'user'},
+	 "uidNumber" => $user->{'uid'},
+	 "loginShell" => $user->{'shell'},
+	 "homeDirectory" => $user->{'home'},
+	 "gidNumber" => $user->{'gid'},
 	 "userPassword" => $disabled.$pfx.$pass,
-	 $_[0]->{'change'} eq '' ? ( ) :
-		( "shadowLastChange" => $_[0]->{'change'} ),
-	 $_[0]->{'expire'} eq '' ? ( ) :
-		( "shadowExpire" => $_[0]->{'expire'} ),
-	 $_[0]->{'min'} eq '' ? ( ) :
-		( "shadowMin" => $_[0]->{'min'} ),
-	 $_[0]->{'max'} eq '' ? ( ) :
-		( "shadowMax" => $_[0]->{'max'} ),
-	 $_[0]->{'warn'} eq '' ? ( ) :
-		( "shadowWarning" => $_[0]->{'warn'} ),
-	 $_[0]->{'inactive'} eq '' ? ( ) :
-		( "shadowInactive" => $_[0]->{'inactive'} )
+	 $user->{'change'} eq '' ? ( ) :
+		( "shadowLastChange" => $user->{'change'} ),
+	 $user->{'expire'} eq '' ? ( ) :
+		( "shadowExpire" => $user->{'expire'} ),
+	 $user->{'min'} eq '' ? ( ) :
+		( "shadowMin" => $user->{'min'} ),
+	 $user->{'max'} eq '' ? ( ) :
+		( "shadowMax" => $user->{'max'} ),
+	 $user->{'warn'} eq '' ? ( ) :
+		( "shadowWarning" => $user->{'warn'} ),
+	 $user->{'inactive'} eq '' ? ( ) :
+		( "shadowInactive" => $user->{'inactive'} )
 	);
 }
 
