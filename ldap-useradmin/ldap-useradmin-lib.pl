@@ -517,14 +517,17 @@ return ( "cn" => $cn,
 	);
 }
 
+# group_to_dn(&group)
+# Given a useradmin-style group hash, returns a list of properties
 sub group_to_dn
 {
-local @members = split(/,/, $_[0]->{'members'});
-return ( "cn" => $_[0]->{'group'},
-	 "gidNumber" => $_[0]->{'gid'},
-	 "userPassword" => $_[0]->{'pass'},
+my ($group) = @_;
+my @members = split(/,/, $group->{'members'});
+return ( "cn" => $group->{'group'},
+	 "gidNumber" => $group->{'gid'},
+	 "userPassword" => $group->{'pass'},
 	 @members ? ( "memberUid" => \@members ) : ( ),
-	 defined($_[0]->{'desc'}) ? ( "description" => $_[0]->{'desc'} ) : ( ),
+	 defined($group->{'desc'}) ? ( "description" => $group->{'desc'} ) : ( ),
        );
 }
 
