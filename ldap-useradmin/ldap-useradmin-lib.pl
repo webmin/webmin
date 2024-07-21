@@ -451,6 +451,10 @@ if ($obj->get_value("uid")) {
 		     'warn' => $obj->get_value("shadowWarning") || "",
 		     'inactive' => $obj->get_value("shadowInactive") || "",
 		   );
+	if ($config{'given'}) {
+		$user{'firstname'} = $obj->get_value("givenName");
+		$user{'surname'} = $obj->get_value("sn");
+		}
 	$user{'pass'} =~ s/^(\!?)\{[a-z0-9]+\}/$1/i;
 	$user{'all_ldap_attrs'} = { map { lc($_), scalar($obj->get_value($_)) }
 					$obj->attributes() };
@@ -505,7 +509,11 @@ return ( "cn" => $cn,
 	 $user->{'warn'} eq '' ? ( ) :
 		( "shadowWarning" => $user->{'warn'} ),
 	 $user->{'inactive'} eq '' ? ( ) :
-		( "shadowInactive" => $user->{'inactive'} )
+		( "shadowInactive" => $user->{'inactive'} ),
+	 $user->{'firstname'} eq '' ? ( ) :
+		( "givenName" => $user->{'firstname'} ),
+	 $user->{'surname'} eq '' ? ( ) :
+		( "sn" => $user->{'surname'} ),
 	);
 }
 
