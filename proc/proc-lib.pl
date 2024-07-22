@@ -156,14 +156,14 @@ else {
 		close(OUTr); close(INw);
 
 		if ($_[1]) {
+			local @u = getpwuid($_[1]);
 			if (defined($_[2])) {
 				# switch to given UID and GID
 				&switch_to_unix_user(
-					[ undef, undef, $_[1], $_[2] ]);
+					[ $u[0], undef, $_[1], $_[2] ]);
 				}
 			else {
 				# switch to UID and all GIDs
-				local @u = getpwuid($_[1]);
 				&switch_to_unix_user(\@u);
 				}
 			}
@@ -346,8 +346,9 @@ else {
 		close(STDIN); close(STDOUT); close(STDERR);
 		untie(*STDIN); untie(*STDOUT); untie(*STDERR);
 		#setpgrp(0, $$);
-		if ($_[1]) {
-			&switch_to_unix_user([ undef, undef, $_[1], $_[2] ]);
+		if ($uid) {
+			my $username = getpwuid($uid);
+			&switch_to_unix_user([ $username, undef, $uid, $gid ]);
 			}
 
 		open(STDIN, "<$tty");
