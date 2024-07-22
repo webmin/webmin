@@ -286,8 +286,9 @@ if (!$@) {
 
 		close(STDIN); close(STDOUT); close(STDERR);
 		untie(*STDIN); untie(*STDOUT); untie(*STDERR);
-		if ($_[1]) {
-			&switch_to_unix_user([ undef, undef, $_[1], $_[2] ]);
+		if ($uid) {
+			my $username = getpwuid($uid);
+			&switch_to_unix_user([ $username, undef, $uid, $gid ]);
 			}
 
 		close($ptyfh);		# Used by other side only
