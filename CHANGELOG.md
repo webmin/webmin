@@ -1,5 +1,8 @@
 ## Changelog
 
+#### 2.201 (July 22, 2024)
+* Fix issue by using the correct JSON dependency for collecting stats [#2222](https://github.com/webmin/webmin/issues/2222)
+
 #### 2.200 (July 21, 2024)
 * Add support for blocking a given IP temporarily or permanently in the FirewallD module
 * Add support for parsing iCalendar event files in the Mailbox module
