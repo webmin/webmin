@@ -37,14 +37,16 @@ init_config();
 
 # Check if curl is installed
 if (!has_command('curl')) {
-	print "curl is not installed\n";
+	print "\"curl\" command is not installed\n";
 	exit 1;
 	}
 
 # Check if git is installed
-if (!has_command('git')) {
-	print "git is not installed\n";
-	exit 1;
+if (!has_command('patch')) {
+	if (!has_command('git')) {
+		print "Neither \"patch\" nor \"git\" commands are installed\n";
+		exit 1;
+		}
 	}
 
 # Get patch URL or file
@@ -96,14 +98,23 @@ else {
 	$cmd = "cat @{[quotemeta($patch)]}";
 	}
 
-# Apply patch using Git
-my $output = `$cmd 2>&1 | git apply --reject --verbose --whitespace=fix 2>&1`;
-if ($output !~ /applied patch.*?cleanly/i) {
-	print "Patch failed: $output\n";
-	exit 1;
-	}
+# Apply patch using Patch or Git command
+my $output;
+if (has_command('patch')) {
+	$output = `$cmd 2>&1 | patch -p1 --verbose 2>&1`;
+	if ($output !~ /succeeded/i) {
+		print "Patch failed: $output\n";
+		exit 1;
+		}
+} else {
+	$output = `$cmd 2>&1 | git apply --reject --verbose --whitespace=fix 2>&1`;
+	if ($output !~ /applied patch.*?cleanly/i) {
+		print "Patch failed: $output\n";
+		exit 1;
+		}
+}
 print "Patch applied successfully to:\n";
-print "  $1\n" while $output =~ /^Applied patch\s+(\S+)/mg;
+print "  $1\n" while $output =~ /^(?|Applied patch\s+(\S+)|patching file\s+(\S+))/mg;
 system("$config_dir/restart");
 
 =pod
