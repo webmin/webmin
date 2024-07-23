@@ -143,11 +143,9 @@ if (!@acols) {
 	}
 
 # If we jump directly to logs just redirect
-if ($config{'skip_index'} == 1) {
-	if ($lnks[0]) {
-		&redirect($lnks[0]);
-		exit;
-		}
+if ($config{'skip_index'} == 1 && $lnks[0]) {
+	&redirect($lnks[0]);
+	return;
 	}
 
 # Print the header
