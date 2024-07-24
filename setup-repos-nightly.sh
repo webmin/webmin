@@ -5,7 +5,7 @@
 
 webmin_host="download.webmin.com"
 webmin_download="https://$webmin_host"
-webmin_download_nightly="https://builds.webmin.dev"
+webmin_download_nightly="https://download.webmin.dev"
 webmin_key="developers-key.asc"
 webmin_key_download="$webmin_download/$webmin_key"
 webmin_key_suffix="webmin-developers"
