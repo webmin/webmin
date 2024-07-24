@@ -68,7 +68,7 @@ my $chroot = &get_chroot() || "";
 	&restart_links().'<br>'.
 	&help_search_link("bind", "doc", "google"), undef, undef,
 	&text($chroot eq "/" || !$chroot ? 'index_version' : 'index_chroot',
-	      $bind_version, "<tt>$chroot</tt>"));
+	      &get_bind_version(), "<tt>$chroot</tt>"));
 
 # If the named.conf file does not exist, offer to create it
 if ($need_create) {
