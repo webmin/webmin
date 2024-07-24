@@ -14,6 +14,7 @@ index_memb=$1 members
 index_hst=Hosts and Host Groups
 index_nohst=No hosts or groups have been defined.
 index_hostgroup=Host/Group
+index_comment=Description
 index_parent=Parent
 index_hardware=Hardware Address
 index_group=Group:

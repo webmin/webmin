@@ -597,7 +597,13 @@ sub host_table
 {
 local ($i, $h, $parent);
 local @tds = ( "width=5" );
-print &ui_columns_start([ "", $text{'index_hostgroup'},
+my $hascmt;
+for ($i = $_[1]; $i < $_[2]; $i++) {
+	$hascmt++ if ($_[4]->[$i] =~ /\(.*\)/);
+	}
+print &ui_columns_start([ "",
+			  $text{'index_hostgroup'},
+			  $hascmt ? ( $text{'index_comment'} ) : ( ),
 			  $text{'index_parent'}, $text{'index_hardware'},
 			  $text{'index_nameip'} ], 100, 0, \@tds);
 for ($i = $_[1]; $i < $_[2]; $i++) {
@@ -613,6 +619,10 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 		$firstcol .= $text{'index_group'}." ";
 		$sp = "\&nbsp;\&nbsp;";
 		}
+	my $cmt;
+	if ($_[4]->[$i] =~ s/\s+\((.*)\)//) {
+		$cmt = $1;
+		}
 	if ($_[3]->[$i]) {
 		$firstcol .= &ui_link($_[3]->[$i], $_[4]->[$i]);
 		}
@@ -620,6 +630,7 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 		$firstcol .= $_[4]->[$i];
 		}
 	push(@cols, $firstcol);
+	push(@cols, $cmt) if ($hascmt);
 
 	if ($par{$h}->{'name'} eq "group") {		
 	    $par_type = $text{'index_togroup'};
@@ -648,7 +659,14 @@ sub net_table
 {
 local ($i, $n);
 local @tds = ( "width=5" );
-print &ui_columns_start([ "", $text{'index_net'}, $text{'index_netmask'},
+my $hascmt;
+for ($i = $_[1]; $i < $_[2]; $i++) {
+	$hascmt++ if ($_[4]->[$i] =~ /\(.*\)/);
+	}
+print &ui_columns_start([ "",
+			  $text{'index_net'},
+			  $hascmt ? ( $text{'index_comment'} ) : ( ),
+			  $text{'index_netmask'},
 			  $text{'index_desc'}, $text{'index_parent'} ], 100,
 			0, \@tds);
 for ($i = $_[1]; $i < $_[2]; $i++) {
@@ -661,6 +679,10 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 	else {
 		$sp = "\&nbsp;\&nbsp;";
 		}
+	my $cmt;
+	if ($_[4]->[$i] =~ s/\s+\((.*)\)//) {
+		$cmt = $1;
+		}
 	if ($_[3]->[$i]) {
 		$first .= &ui_link($_[3]->[$i],$_[4]->[$i]);
 		}
@@ -668,6 +690,7 @@ for ($i = $_[1]; $i < $_[2]; $i++) {
 		$first .= $_[4]->[$i];
 		}
 	push(@cols, $first);
+	push(@cols, $cmt) if ($hascmt);
 	push(@cols, $_[3]->[$i] ? &netmask($n) : "");
 	push(@cols, $n->{'comment'});
 	push(@cols, $par{$n} ? 
