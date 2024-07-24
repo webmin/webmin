@@ -1,7 +1,8 @@
 ## Changelog
 
-#### 2.201 (July 22, 2024)
-* Fix issue by using the correct JSON dependency for collecting stats [#2222](https://github.com/webmin/webmin/issues/2222)
+#### 2.201 (July 24, 2024)
+* Fix real-time monitoring not updating graphs in the Dashboard [#2222](https://github.com/webmin/webmin/issues/2222)
+* Fix Terminal module to work correctly with _sudo_-capable users [#2223](https://github.com/webmin/webmin/issues/2223)
 
 #### 2.200 (July 21, 2024)
 * Add support for blocking a given IP temporarily or permanently in the FirewallD module
@@ -15,7 +16,6 @@
 * Add improved support for displaying last logins in the Users and Groups module
 * Fix to prevent duplicate `also-notify` and `allow-transfer` IPs in the BIND DNS module
 * Fix issues with Terminal module to correct text display problems in editor mode
-* Fix to allow disabling the newly introduced enforcement of _sudo_-capable logins in the Terminal module
 * Fix to store Terminal module logs in the `/var/webmin` directory
 * Fix to display the Spam folder nicely in the Mailbox module
 * Fix how modules are loaded in ProFTPd module
@@ -25,6 +25,7 @@
 * Fix to change default monitor name based on database used MariaDB vs MySQL [#2139](https://github.com/virtualmin/virtualmin-gpl/issues/798)
 * Fix to disable manual upgrades for systems installed from the repository
 * Fix to preserve Webmin service state during package upgrades [#2133](https://github.com/webmin/webmin/issues/2133)
+* Change to enforce _sudo_-capable logins as themselves in the Terminal module [docs/modules/terminal](https://webmin.com/docs/modules/terminal/#about)
 * Rename "System Logs" module to "System Logs RS" and "System Logs Viewer" to "System Logs" for clarity
 
 #### 2.111 (April 16, 2024)
