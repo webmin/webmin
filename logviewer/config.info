@@ -1,5 +1,6 @@
 skip_index=Redirect to first log file?,1,1-Yes,0-No
 lines=Default number of lines to display,0,6
+compressed=Include compressed logs in searches?,1,1-Yes,0-No
 refresh=Seconds between log view refreshes,3,Never
 others=Show logs from other modules,1,1-Yes,0-No
 extras=Extra log files to show,9,50,4,\t
