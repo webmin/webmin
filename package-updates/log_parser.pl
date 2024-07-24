@@ -18,8 +18,8 @@ elsif ($type eq 'repo') {
 elsif ($action eq 'update') {
 	return &text('log_update', $object);
 	}
-elsif ($action eq 'sched') {
-	return &text('log_sched', $object);
+elsif ($action eq 'schedup') {
+	return &text('log_schedup', $object);
 	}
 elsif ($action eq 'sched') {
 	return $text{$object ? 'log_sched' : 'log_unsched'};

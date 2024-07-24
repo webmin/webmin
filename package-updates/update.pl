@@ -74,5 +74,5 @@ if ($config{'sched_email'} && $body) {
 
 # Log the update, if anything was installed
 if ($icount) {
-	&webmin_log("sched", "packages", $icount);
+	&webmin_log("schedup", "packages", $icount);
 	}
