@@ -251,5 +251,29 @@ sub config_post_save
 &clear_systemctl_cache();
 }
 
+# catter_command(file)
+# Given a file that may be compressed, returns the command to output it in
+# plain text, or undef if impossible
+sub catter_command
+{
+local ($l) = @_;
+local $q = quotemeta($l);
+if ($l =~ /\.gz$/i) {
+	return &has_command("gunzip") ? "gunzip -c $q" : undef;
+	}
+elsif ($l =~ /\.Z$/i) {
+	return &has_command("uncompress") ? "uncompress -c $q" : undef;
+	}
+elsif ($l =~ /\.bz2$/i) {
+	return &has_command("bunzip2") ? "bunzip2 -c $q" : undef;
+	}
+elsif ($l =~ /\.xz$/i) {
+	return &has_command("xz") ? "xz -d -c $q" : undef;
+	}
+else {
+	return "cat $q";
+	}
+}
+
 1;
 
