@@ -13718,6 +13718,7 @@ my ($port, $host, $module) = @_;
 $module ||= $module_name;
 my $ws_proto = lc($ENV{'HTTPS'}) eq 'on' ? 'wss' : 'ws';
 my %miniserv;
+my $webprefix = &get_webprefix();
 &get_miniserv_config(\%miniserv);
 my $http_host_conf = &trim($miniserv{'websocket_host'} || $host);
 # Pass as defined
@@ -13731,12 +13732,12 @@ if ($http_host_conf) {
 if (!defined($http_host_conf)) {
 	my $forwarded_host = $ENV{'HTTP_X_FORWARDED_HOST'};
 	if ($forwarded_host) {
-		$http_host_conf = "$ws_proto://$forwarded_host".
-			&get_webprefix();
-		$http_host_conf =~ s/\/$//;
+		$http_host_conf = "$ws_proto://$forwarded_host";
+		$http_host_conf =~ s/[\/]+$//g;
 		}
 	}
 my $http_host = $http_host_conf || "$ws_proto://$ENV{'HTTP_HOST'}";
+$http_host .= $webprefix if ($webprefix);
 return "$http_host/$module/ws-$port";
 }
 
