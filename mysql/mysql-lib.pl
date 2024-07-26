@@ -1309,7 +1309,7 @@ return &ui_textbox($name, $value, 8)."\n".
 sub get_table_index_stats
 {
 my ($db) = @_;
-my $table_list = join(", ", map { "'$_'" } &list_tables($db));
+my @tables = &list_tables($db);
 my $sql_query = "
     SELECT 
         TABLE_SCHEMA,
@@ -1329,9 +1329,11 @@ my $sql_query = "
     FROM 
         INFORMATION_SCHEMA.STATISTICS
     WHERE 
-        TABLE_SCHEMA = '$db' AND TABLE_NAME IN ($table_list);
+        TABLE_SCHEMA = ?
+	AND
+	TABLE_NAME IN (" . join(", ", ("?") x @tables) . ")
 ";
-my $rs = &execute_sql_safe($db, $sql_query);
+my $rs = &execute_sql_safe($db, $sql_query, $db, @tables);
 return $rs;
 }
 
