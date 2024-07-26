@@ -1304,6 +1304,37 @@ return &ui_textbox($name, $value, 8)."\n".
 		    [ "M", "MB" ], [ "G", "GB" ] ]);
 }
 
+# get_table_index_stats(db)
+# Retrieves index stats for all tables in the given database
+sub get_table_index_stats
+{
+my ($db) = @_;
+my $table_list = join(", ", map { "'$_'" } &list_tables($db));
+my $sql_query = "
+    SELECT 
+        TABLE_SCHEMA,
+        TABLE_NAME,
+        INDEX_NAME,
+        NON_UNIQUE,
+        SEQ_IN_INDEX,
+        COLUMN_NAME,
+        COLLATION,
+        CARDINALITY,
+        SUB_PART,
+        PACKED,
+        NULLABLE,
+        INDEX_TYPE,
+        COMMENT,
+        INDEX_COMMENT
+    FROM 
+        INFORMATION_SCHEMA.STATISTICS
+    WHERE 
+        TABLE_SCHEMA = '$db' AND TABLE_NAME IN ($table_list);
+";
+my $rs = &execute_sql_safe($db, $sql_query);
+return $rs;
+}
+
 # list_indexes(db)
 # Returns the names of all indexes in some database
 sub list_indexes
@@ -1342,6 +1373,33 @@ foreach my $table (&list_tables($db)) {
 		if ($r->[$tp{'key_name'}] eq $index) {
 			# Found some info
 			$info->{'table'} = $r->[$tp{'table'}];
+			$info->{'name'} = $index;
+			$info->{'type'} = lc($r->[$tp{'index_type'}]) ||
+					  lc($r->[$tp{'comment'}]);
+			push(@{$info->{'cols'}}, $r->[$tp{'column_name'}]);
+			}
+		}
+	}
+return $info;
+}
+
+# parse_index_structure(&db_stats, db, indexname)
+# Returns information on an index based on the database stats hash
+sub parse_index_structure
+{
+my ($db_stats, $db, $index) = @_;
+my ($r, $info);
+foreach my $table (&list_tables($db)) {
+	my $s = { %$db_stats };
+	$s->{'data'} = [grep { $_->[1] eq $table } @{$s->{'data'}}];
+	my (%tp, $i);
+	for($i=0; $i<@{$s->{'titles'}}; $i++) {
+		$tp{lc($s->{'titles'}->[$i])} = $i;
+		}
+	foreach $r (@{$s->{'data'}}) {
+		if ($r->[$tp{'index_name'}] eq $index) {
+			# Found some info
+			$info->{'table'} = $r->[$tp{'table_name'}];
 			$info->{'name'} = $index;
 			$info->{'type'} = lc($r->[$tp{'index_type'}]) ||
 					  lc($r->[$tp{'comment'}]);
