@@ -43,6 +43,8 @@ $templates_dir = "$module_config_directory/templates";
 %monitor_os_support = ( 'traffic' => { 'os_support' => '*-linux freebsd' },
 		      );
 
+%monitor_deprecated = ( 'dnsadmin' => 1 );
+
 @monitor_statuses = ( 'up', 'down', 'un', 'webmin', 'timed', 'isdown' );
 
 $mysql_variant = "mysql";
@@ -230,7 +232,8 @@ return map { $_->{'dir'} } grep { &check_os_support($_) }
 
 # list_handlers()
 # Returns a list of the module's monitor type handlers, and those
-# defined in other modules.
+# defined in other modules. Each is a array ref with ID, description
+# and deprecated fields.
 sub list_handlers
 {
 my ($f, @rv);
@@ -240,7 +243,8 @@ while($f = readdir(DIR)) {
 		my $m = $1;
 		my $oss = $monitor_os_support{$m};
 		next if ($oss && !&check_os_support($oss));
-		push(@rv, [ $m, $text{"type_$m"} ]);
+		my $dep = $monitor_deprecated{$m} ? 1 : 0;
+		push(@rv, [ $m, $text{"type_$m"}, $dep ]);
 		}
 	}
 closedir(DIR);
@@ -252,7 +256,7 @@ foreach my $m (&get_all_module_infos()) {
 	    &check_os_support($m)) {
 		&foreign_require($m->{'dir'}, "status_monitor.pl");
 		my @mms = &foreign_call($m->{'dir'}, "status_monitor_list");
-		push(@rv, map { [ $m->{'dir'}."::".$_->[0], $_->[1] ] } @mms);
+		push(@rv, map { [ $m->{'dir'}."::".$_->[0], $_->[1], $_->[2] ] } @mms);
 		}
 	}
 return @rv;
