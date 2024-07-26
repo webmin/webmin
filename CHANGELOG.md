@@ -1,5 +1,8 @@
 ## Changelog
 
+#### 2.202 (Upcoming)
+* Fix to set the WebSocket URL webprefix correctly
+
 #### 2.201 (July 24, 2024)
 * Fix real-time monitoring not updating graphs in the Dashboard [#2222](https://github.com/webmin/webmin/issues/2222)
 * Fix Terminal module to work correctly with _sudo_-capable users [#2223](https://github.com/webmin/webmin/issues/2223)
