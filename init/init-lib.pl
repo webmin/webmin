@@ -2212,6 +2212,7 @@ if ($ecount && keys(%info) < 2) {
 
 # Extract info we want
 my @rv;
+my %done;
 foreach my $name (keys %info) {
 	my $root = &get_systemd_root($name);
 	my $i = $info{$name};
@@ -2233,6 +2234,7 @@ foreach my $name (keys %info) {
 		    'pid' => $i->{'ExecMainPID'},
 		    'file' => $i->{'FragmentPath'} || $root."/".$name,
 		  });
+	$done{$name}++;
 	}
 
 # Also add legacy init scripts
@@ -2240,6 +2242,7 @@ if (!$noinit) {
 	my @rls = &get_inittab_runlevel();
 	foreach my $a (&list_actions()) {
 		$a =~ s/\s+\d+$//;
+		next if ($done{$a} || $done{$a.".service"});
 		my $f = &action_filename($a);
 		my $s = { 'name' => $a,
 			  'legacy' => 1 };
