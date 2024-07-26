@@ -117,9 +117,11 @@ elsif (@titles || @indexes) {
 			local @str = &table_structure($in{'db'}, $t);
 			push(@fields, scalar(@str));
 			}
+		my $table_index_stats = &get_table_index_stats($in{'db'});
 		foreach $t (@indexes) {
 			push(@types, $text{'dbase_typeindex'});
-			$str = &index_structure($in{'db'}, $t);
+			$str = &parse_index_structure($table_index_stats,
+						      $in{'db'}, $t);
 			push(@rows, "<i>$text{'dbase_index'}</i>");
 			push(@fields, scalar(@{$str->{'cols'}}));
 			}
