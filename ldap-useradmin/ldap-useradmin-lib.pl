@@ -255,6 +255,9 @@ my $schema = $ldap->schema();
 if ($schema->objectclass("person") && $config{'person'}) {
 	push(@classes, "person");
 	}
+if ($config{'given'}) {
+	push(@classes, $config{'given_class'});
+	}
 @classes = &uniquelc(@classes);
 @classes = grep { /\S/ } @classes;	# Remove empty
 my @attrs = &user_to_dn($user);
