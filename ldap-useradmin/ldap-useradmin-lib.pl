@@ -92,8 +92,15 @@ else { &error($ldap); }
 sub get_user_base
 {
 local $conf = &ldap_client::get_config();
+local $passwd_base;
+foreach my $b (&ldap_client::find_value("base", $conf)) {
+	if ($b =~ /^passwd\s+(\S+)/) {
+		$passwd_base = $1;
+		}
+	}
 local $base = $config{'user_base'} ||
 	      &ldap_client::find_svalue("nss_base_passwd", $conf) ||
+	      $passwd_base ||
 	      &ldap_client::find_svalue("base", $conf);
 $base =~ s/\?.*$//;
 return $base;
@@ -103,8 +110,15 @@ return $base;
 sub get_group_base
 {
 local $conf = &ldap_client::get_config();
+local $group_base;
+foreach my $b (&ldap_client::find_value("base", $conf)) {
+	if ($b =~ /^group\s+(\S+)/) {
+		$group_base = $1;
+		}
+	}
 local $base = $config{'group_base'} ||
 	      &ldap_client::find_svalue("nss_base_group", $conf) ||
+	      $group_base ||
 	      &ldap_client::find_svalue("base", $conf);
 $base =~ s/\?.*$//;
 return $base;
