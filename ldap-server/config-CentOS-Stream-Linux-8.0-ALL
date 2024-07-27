@@ -6,6 +6,6 @@ browse_max=100
 start_cmd=systemctl start slapd
 stop_cmd=systemctl stop slapd
 apply_cmd=systemctl restart slapd
-init_name=ldap
+init_name=slapd
 data_dir=/var/lib/ldap
 attr_count=6
