@@ -214,6 +214,7 @@ apply_ecannot=You are not allowed to apply the configuration
 stop_err=Failed to stop LDAP server
 stop_ecmd=$1 failed : $2
 stop_egone=No longer running!
+stop_egone2=Running but PID is unknown!
 stop_ekill=Kill process failed : $1
 stop_ecannot=You are not allowed to stop the LDAP server
 

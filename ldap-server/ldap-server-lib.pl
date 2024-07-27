@@ -526,6 +526,7 @@ if ($config{'stop_cmd'}) {
 else {
 	local $pid = &is_ldap_server_running();
 	$pid || return $text{'stop_egone'};
+	$pid > 1 || return $text{'stop_egone2'};
 	return kill('TERM', $pid) ? undef : &text('stop_ekill', $!);
 	}
 }
@@ -564,6 +565,9 @@ else {
 # Returns the process ID of the running LDAP server, or undef
 sub is_ldap_server_running
 {
+&foreign_require("init");
+my $iname = $config{'init_name'} || $module_name;
+return 1 if (&init::status_action($iname) == 1);
 local $pidfile = &get_ldap_server_pidfile();
 if ($pidfile) {
 	return &check_pid_file($pidfile);
