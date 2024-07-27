@@ -8,8 +8,9 @@ do 'ldap-useradmin-lib.pl';
 # For mode 0, returns 1 if installed, 0 if not
 sub is_installed
 {
-if ($config{'auth_ldap'}) {
-	return 0 if (!-r $config{'auth_ldap'});
+my $cfile = &ldap_client::get_ldap_config_file();
+if ($cfile) {
+	return 0 if (!-r $cfile);
 	}
 else {
 	if ($_[0]) {

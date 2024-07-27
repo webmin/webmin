@@ -1,5 +1,4 @@
 samba_class=sambaAccount
-auth_ldap=/etc/pam_ldap/auth_ldap.conf
 ldap_tls=0
 imap_login=cyrus
 imap_class=SuSEeMailObject
