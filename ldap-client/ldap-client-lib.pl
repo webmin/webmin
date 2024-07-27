@@ -235,6 +235,7 @@ if ($ldap_hosts) {
 		      &find_svalue("port", $conf) ||
 		      ($use_ssl == 1 ? 636 : 389);
 	foreach my $h (@hosts) {
+		local $SIG{'PIPE'} = 'ignore';
 		eval {
 			$ldap = Net::LDAP->new($h, port => $port,
 				scheme => $use_ssl == 1 ? 'ldaps' : 'ldap',
@@ -267,10 +268,18 @@ elsif ($uri) {
 			elsif (!$port && $proto eq "ldaps") {
 				$port = 636;
 				}
-			$ldap = Net::LDAP->new($host, port => $port,
-				       scheme => $proto,
-				       inet6 => &should_use_inet6($host));
-			if (!$ldap) {
+			local $SIG{'PIPE'} = 'ignore';
+			eval {
+				$ldap = Net::LDAP->new($host, port => $port,
+					       scheme => $proto,
+					       inet6 => &should_use_inet6($host));
+				};
+			if ($@) {
+				$err = &text('ldap_econn2',
+					     "<tt>$host</tt>", "<tt>$port</tt>",
+					     &html_escape($@));
+				}
+			elsif (!$ldap) {
 				$err = &text('ldap_econn',
 					     "<tt>$host</tt>","<tt>$port</tt>");
 				}
