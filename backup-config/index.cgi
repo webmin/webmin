@@ -60,8 +60,10 @@ print &ui_tabs_end_tab();
 
 # Show immediate form
 print &ui_tabs_start_tab("tab", "backup");
-my $filename = 'webmin-backup-config-';
-$filename .= &get_system_hostname();
+my $filename = 'webmin-backup-config-on-';
+my $hostname = &get_system_hostname();
+$hostname =~ s/\./-/g;
+$filename .= $hostname;
 $filename .= "-".strftime("%Y-%m-%d-%H-%M", localtime);
 print &ui_form_start("backup.cgi/$filename.tgz", "post");
 print &ui_table_start($text{'index_header'}, undef, 2);
