@@ -3,6 +3,7 @@
 
 use strict;
 use warnings;
+use POSIX qw(strftime);
 no warnings 'redefine';
 no warnings 'uninitialized';
 require './backup-config-lib.pl';
@@ -59,7 +60,10 @@ print &ui_tabs_end_tab();
 
 # Show immediate form
 print &ui_tabs_start_tab("tab", "backup");
-print &ui_form_start("backup.cgi/backup.tgz", "post");
+my $filename = 'webmin-backup-config-';
+$filename .= &get_system_hostname();
+$filename .= "-".strftime("%Y-%m-%d-%H-%M", localtime);
+print &ui_form_start("backup.cgi/$filename.tgz", "post");
 print &ui_table_start($text{'index_header'}, undef, 2);
 
 my @dmods = split(/\s+/, $config{'mods'} || "");
