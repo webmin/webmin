@@ -1690,7 +1690,7 @@ if (!$tconfig{'nohr'} && !$tconfig{'nobottomhr'}) {
 return $rv;
 }
 
-=head2 ui_print_header(subtext, image, [help], [config], [nomodule], [nowebmin], [rightside], [head-stuff], [body-stuff], [below])
+=head2 ui_print_header(subtext, title, image, [help], [config], [nomodule], [nowebmin], [rightside], [head-stuff], [body-stuff], [below])
 
 Print HTML for a header with the post-header line. The args are the same
 as those passed to header(), defined in web-lib-funcs.pl, with the addition
