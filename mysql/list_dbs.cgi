@@ -27,8 +27,9 @@ if (@{$d->{'data'}}) {
 		next if ($access{'perms'} == 2 && !&can_edit_db($u->[1]));
 		local @cols;
 		push(@cols, "<a href='edit_db.cgi?idx=$i'>".
-			($u->[1] eq '%' || $u->[1] eq '' ? $text{'dbs_any'}
-					: &html_escape($u->[1]))."</a>");
+			($u->[1] eq '%' || $u->[1] eq '' ? $text{'dbs_any'} :
+				&html_escape(&unquote_mysql_database(
+						$u->[1])))."</a>");
 		push(@cols, $u->[2] eq '' ? $text{'dbs_anon'}
 					    : &html_escape($u->[2]));
 		push(@cols, $u->[0] eq '%' ? $text{'dbs_any'} :
