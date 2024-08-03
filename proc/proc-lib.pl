@@ -710,5 +710,29 @@ else {
 	}
 }
 
+# count_processes()
+sub count_processes
+{
+my $process_count = 0;
+if ($^O eq 'MSWin32') {
+	open(my $ps, '-|', 'tasklist /FO CSV') || return -1;
+	while (my $line = <$ps>) {
+		next if $. == 1;  # Skip the header line
+		$process_count++;
+		}
+	close($ps);
+	return $process_count;
+	}
+else {
+	open(my $ps, '-|', 'ps -e') || return -1;
+	while (<$ps>) {
+		$process_count++;
+		}
+	close($ps);
+	# Skip the header line
+	return $process_count - 1;
+	}
+}
+
 1;
 
