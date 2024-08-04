@@ -7,13 +7,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     if: contains(github.event.head_commit.message, '[build]')
     steps:
       - uses: actions/checkout@v3
       - uses: awalsh128/cache-apt-pkgs-action@latest
         with: 
-          packages: git tar gzip openssl curl openssh-client rpm perl libjson-pp-perl libdigest-sha-perl liblist-moreutils-perl libencode-detect-perl
+          packages: git tar gzip openssl curl openssh-client rpm perl libjson-pp-perl libdigest-sha-perl liblist-moreutils-perl libencode-detect-perl zstd
           version: 1.0
       - uses: szenius/set-timezone@v1.2
         with:
