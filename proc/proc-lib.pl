@@ -714,7 +714,7 @@ else {
 sub count_processes
 {
 my $process_count = 0;
-if ($^O eq 'MSWin32') {
+if ($gconfig{'os_type'} eq 'windows') {
 	open(my $ps, '-|', 'tasklist /FO CSV') || return -1;
 	while (my $line = <$ps>) {
 		next if $. == 1;  # Skip the header line
