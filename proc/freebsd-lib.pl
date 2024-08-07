@@ -173,7 +173,20 @@ return ( ) if ($?);
 my @lines = split(/\r?\n/, $out);
 my @w = split(/\s+/, $lines[$#lines]);
 shift(@w) if ($w[0] eq '');
-return ( $w[-3], $w[-2], $w[-1], 0, 0, undef, undef );
+my ($bi, $bo) = (0, 0);
+my $out2 = &backquote_command("iostat -Ix -d -t da 0.25 2 2>/dev/null");
+if (!$?) {
+	foreach my $l (split(/\r?\n/, $out2)) {
+		# Getting the 4th and 5th columns of the last line for direct access device
+		# device           r/i         w/i         kr/i         kw/i qlen   tsvc_t/i      sb/i  
+		# ada0          3457.0    134574.0      61068.0    8443152.0    0       36.3      19.2
+		if ($l =~ /^.*?da\d+\s+\S+\s+\S+\s+(\S+)\s+(\S+)\s+\d/) {
+			$bi = int($1) * 4; # kr/i per period, i.e. 0.25 seconds
+			$bo = int($2) * 4; # kw/i per period, i.e. 0.25 seconds
+			}
+		}
+	}
+return ( $w[-3], $w[-2], $w[-1], 0, 0, $bi, $bo );
 }
 
 1;
