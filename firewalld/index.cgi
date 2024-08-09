@@ -173,7 +173,10 @@ if ($ok) {
 	print &ui_buttons_row("stop.cgi", $text{'index_stop'},
 			      $text{'index_stopdesc'},
 			      [ [ "zone", $zone->{'name'} ] ]);
-}
+	}
+else {
+	print &ui_alert_box($text{'index_downrules'}, 'warn');
+	}
 
 # Show Start and disable/enabled at boot button
 if (!$ok) {
