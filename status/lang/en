@@ -76,6 +76,7 @@ type_slapd=LDAP Server
 type_ldap=LDAP Connection
 type_smtp=SMTP Connection
 type_imap=IMAP Connection
+type_firewalld=FirewallD Server
 
 mon_create=Create Monitor
 mon_edit=Edit Monitor
