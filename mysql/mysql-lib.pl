@@ -675,6 +675,15 @@ $db =~ s/%/\\%/g;
 return $db;
 }
 
+# unquote_mysql_database(name)
+# Returns a MySQL database name with \% and \_ characters unescaped
+sub unquote_mysql_database {
+    my ($db) = @_;
+    $db =~ s/\\%/%/g;
+    $db =~ s/\\_/_/g;
+    return $db;
+}
+
 # escapestr(string)
 # Returns a string with quotes escaped, for use in SQL
 sub escapestr
