@@ -1,7 +1,6 @@
 ## Changelog
 
 #### 2.202 (August 12, 2024)
-* Add LDAP related fixes and improvements
 * Add support for importing schemas to the LDAP Server module
 * Fix to automatically set the WebSocket URL webprefix correctly
 * Fix to name downloaded backup file nicely in Backup Configuration Files module [#2239](https://github.com/webmin/webmin/issues/2239)
