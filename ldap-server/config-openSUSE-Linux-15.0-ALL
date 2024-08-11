@@ -8,3 +8,4 @@ stop_cmd=systemctl stop ldap
 apply_cmd=systemctl restart ldap
 init_name=ldap
 attr_count=6
+ldapadd=ldapadd

@@ -7,6 +7,7 @@ ssl=Use encryption with LDAP server?,1,-Detect automatically,1-Yes,2-Yes TLS,0-N
 
 line4=LDAP server options,11
 slapd=Full path to OpenLDAP server program,8
+ldapadd=Full path to <tt>ldapadd</tt> command,8
 config_file=OpenLDAP server configuration file or directory,8
 schema_dir=OpenLDAP schema directory,7
 ldap_user=User OpenLDAP server runs as,5

@@ -7,3 +7,4 @@ attr_count=6
 start_cmd=/usr/local/etc/rc.d/slapd start
 stop_cmd=/usr/local/etc/rc.d/slapd stop
 apply_cmd=/usr/local/etc/rc.d/slapd restart
+ldapadd=ldapadd

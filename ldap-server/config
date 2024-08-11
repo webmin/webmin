@@ -4,3 +4,4 @@ slapd=slapd
 ldap_user=ldap
 browse_max=100
 attr_count=6
+ldapadd=ldapadd

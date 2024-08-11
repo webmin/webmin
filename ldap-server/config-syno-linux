@@ -8,3 +8,4 @@ config_file=/etc/ldap/slapd.conf
 stop_cmd=/etc/init.d/ldap stop
 attr_count=6
 browse_max=100
+ldapadd=ldapadd

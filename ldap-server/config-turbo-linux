@@ -8,3 +8,4 @@ stop_cmd=/etc/rc./init.d/ldap stop
 apply_cmd=/etc/rc./init.d/ldap restart
 init_name=ldap
 attr_count=6
+ldapadd=ldapadd

@@ -6,3 +6,4 @@ browse_max=100
 data_dir=/var/lib/openladp-data
 
 attr_count=6
+ldapadd=ldapadd

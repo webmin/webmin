@@ -89,6 +89,7 @@ schema_move=Move
 schema_act=Actions..
 schema_view=View
 schema_edit=Edit
+schema_import=Import
 schema_edir=File is not in the schema directory!
 schema_etitle=Edit Schema File
 schema_eheader=Schema file contents
@@ -328,5 +329,14 @@ eacl_ewho=Missing or invalid-looking DN in row $1
 eacl_eaccess=Missing or invalid access level in row $1
 eacl_order=Rule order
 eacl_noorder=None set
+
+import_err=Failed to import schema
+import_eldapadd=Could not find the $1 command
+import_euser=Could not work out LDAP server login
+import_eldif=LDIF file $1 does not exist
+import_title=Import Schema
+import_doing=Importing LDIF schema file $1 ..
+import_failed=.. import failed!
+import_ok=.. import completed successfully
 
 __norefs=1
