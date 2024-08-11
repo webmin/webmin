@@ -84,6 +84,7 @@ schema_title=Manage Schema
 schema_file=Name
 schema_desc=Description
 schema_pagedesc=The LDAP schema determines which object classes and attributes can be stored in your LDAP database. This page allows you to select which schema types are supported by your server - but be careful de-selecting any entries that are used by existing objects.
+schema_pagedesc2=The LDAP schema determines which object classes and attributes can be stored in your LDAP database. Schemas files must be imported before their types can be used to create objects.
 schema_err=Failed to save schema
 schema_move=Move
 schema_act=Actions..

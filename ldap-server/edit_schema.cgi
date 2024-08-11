@@ -18,7 +18,12 @@ if (&get_config_type() == 1) {
 	}
 
 # Show a table of all known schema files, with checkboxes
-print $text{'schema_pagedesc'},"<p>\n";
+if (&get_config_type() == 1) {
+	print $text{'schema_pagedesc'},"<p>\n";
+	}
+else {
+	print $text{'schema_pagedesc2'},"<p>\n";
+	}
 @tds = ( $editable ? ( "width=5" ) : ( ),
 	 "width=20%", "width=65%", "width=10%", "width=5% nowrap" );
 print &ui_form_start("save_schema.cgi", "post");
