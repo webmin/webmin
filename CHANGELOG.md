@@ -7,6 +7,7 @@
 * Fix to optimize getting table index stats for large tables in MySQL/MariaDB module [pull#2234](https://github.com/webmin/webmin/pull/2234)
 * Fix duplication of _systemd_ actions and init scripts [#2227](https://github.com/webmin/webmin/issues/2227)
 * Fix BIND service name for Debian 12 and Ubuntu 24.04
+* Added support for importing schemaas to the LDAP Server module
 
 #### 2.201 (July 24, 2024)
 * Fix real-time monitoring not updating graphs in the Dashboard [#2222](https://github.com/webmin/webmin/issues/2222)
