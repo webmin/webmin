@@ -6,11 +6,10 @@ require './ldap-server-lib.pl';
 $access{'slapd'} || &error($text{'slapd_ecannot'});
 &ui_print_header(undef, $text{'slapd_title'}, "", "slapd");
 $conf = &get_ldif_config();
-@tds = ( "width=30%" );
 
 print &ui_form_start("save_ldif.cgi", "post");
 print &ui_hidden_table_start($text{'slapd_header'}, "width=100%", 2,
-			     "basic", 1,\@tds);
+			     "basic", 1);
 
 # Top-level DN
 $defdb = &get_default_db();
@@ -74,7 +73,7 @@ print &ui_hidden_table_end("basic");
 
 # SSL section
 print &ui_hidden_table_start($text{'slapd_header2'}, "width=100%", 2,
-			     "ssl", 0, \@tds);
+			     "ssl", 0);
 
 # Protocols to serve
 if (&can_get_ldap_protocols()) {
