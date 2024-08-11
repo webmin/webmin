@@ -43,13 +43,14 @@ $cmd = $config{'ldapadd'}.
 
 &ui_print_unbuffered_header(undef, $text{'import_title'}, "");
 
-print &text('import_doing', "<tt>".&html_escape($ldiffile)."</tt>"),"<br>\n";
+print &text('import_doing', "<tt>".&html_escape($ldiffile)."</tt>"),"<p>\n";
 print "<pre>\n";
-&open_execute_command(CMD, $cmd, 1);
+&open_execute_command(CMD, $cmd, 2);
 while(<CMD>) {
 	print &html_escape($_);
 	}
 close(CMD);
+print "</pre>\n";
 if ($?) {
 	print $text{'import_failed'},"<p>\n";
 	}
