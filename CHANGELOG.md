@@ -2,6 +2,7 @@
 
 #### 2.202 (August 12, 2024)
 * Add support for importing schemas to the LDAP Server module
+* Add support for displaying disk and network I/Os in FreeBSD on the dashboard
 * Fix to automatically set the WebSocket URL webprefix correctly
 * Fix to name downloaded backup file nicely in Backup Configuration Files module [#2239](https://github.com/webmin/webmin/issues/2239)
 * Fix to optimize getting table index stats for large tables in MySQL/MariaDB module [pull#2234](https://github.com/webmin/webmin/pull/2234)
