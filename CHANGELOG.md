@@ -1,13 +1,14 @@
 ## Changelog
 
-#### 2.202 (July 31, 2024)
+#### 2.202 (August 12, 2024)
 * Add LDAP related fixes and improvements
+* Add support for importing schemas to the LDAP Server module
 * Fix to automatically set the WebSocket URL webprefix correctly
 * Fix to name downloaded backup file nicely in Backup Configuration Files module [#2239](https://github.com/webmin/webmin/issues/2239)
 * Fix to optimize getting table index stats for large tables in MySQL/MariaDB module [pull#2234](https://github.com/webmin/webmin/pull/2234)
 * Fix duplication of _systemd_ actions and init scripts [#2227](https://github.com/webmin/webmin/issues/2227)
 * Fix BIND service name for Debian 12 and Ubuntu 24.04
-* Added support for importing schemaas to the LDAP Server module
+* Update the Authentic theme to the latest version with various fixes and improvements
 
 #### 2.201 (July 24, 2024)
 * Fix real-time monitoring not updating graphs in the Dashboard [#2222](https://github.com/webmin/webmin/issues/2222)
