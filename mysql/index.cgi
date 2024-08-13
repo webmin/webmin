@@ -1,5 +1,4 @@
 #!/usr/local/bin/perl
-# index.cgi
 # Display all existing databases
 
 require './mysql-lib.pl';
