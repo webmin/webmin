@@ -2153,7 +2153,7 @@ my $simplify_privs = sub {
 		if ($priv =~ /^(select|insert|update|delete) table data$/) {
 			push(@{$groups{'table_data'}}, $1);
 			}
-		elsif ($priv =~ /^(create|drop|alter|create temp|lock) tables?$/) {
+		elsif ($priv =~ /^(create|drop|alter|create temp|create temporary|lock) tables$/) {
 			push(@{$groups{'tables'}}, $1);
 			}
 		elsif ($priv =~ /^(create|show) view$/) {
@@ -2169,42 +2169,26 @@ my $simplify_privs = sub {
 			push(@others, $priv);
 			}
 		}
-	# Build simplified string
+	# Simplify groups
 	my @simplified = ();
-	# Handle 'table data'
-	if (@{$groups{'table_data'}}) {
-		my $table_data_str = join(', ', @{$groups{'table_data'}});
-		$table_data_str =~ s/(.*),/$1 $text{'dbs_except_and'}/
-			if (@{$groups{'table_data'}} > 1);
-		push(@simplified, "$table_data_str table data");
-		}
-	# Handle 'tables'
-	if (@{$groups{'tables'}}) {
-		my $tables_str = join(', ', @{$groups{'tables'}});
-		$tables_str =~ s/(.*),/$1 $text{'dbs_except_and'}/
-			if (@{$groups{'tables'}} > 1);
-		$tables_str .= ' tables';
-		$tables_str =~ s/create temp tables/create temporary tables/;
-		push(@simplified, $tables_str);
-		}
-	# Handle 'view'
-	if (@{$groups{'view'}}) {
-		my $view_str = join(" $text{'dbs_except_and'} ",
-			@{$groups{'view'}});
-		push(@simplified, "$view_str view");
-		}
-	# Handle 'routine'
-	if (@{$groups{'routine'}}) {
-		my $routine_str = join(" $text{'dbs_except_and'} ",
-			@{$groups{'routine'}});
-		push(@simplified, "$routine_str routine");
-		}
-	# Handle 'replication'
-	if (@{$groups{'replication'}}) {
-		my $replication_str = join(" $text{'dbs_except_and'} ",
-			@{$groups{'replication'}});
-		push(@simplified, "$replication_str replication");
-		}
+	# Helper function to format group
+	my $format_group = sub {
+		my ($group, $suffix) = @_;
+		my $str = join(', ', @$group);
+		$str =~ s/(.*),/$1 $text{'dbs_except_and'}/ if (@$group > 1);
+		return $str . ($suffix ? " $suffix" : '');
+		};
+	# Handle each group
+	push(@simplified, $format_group->($groups{'table_data'}, 'table data'))
+		if (@{$groups{'table_data'}});
+	push(@simplified, $format_group->($groups{'tables'}, 'tables'))
+		if (@{$groups{'tables'}});
+	push(@simplified, $format_group->($groups{'view'}, 'view'))
+		if (@{$groups{'view'}});
+	push(@simplified, $format_group->($groups{'routine'}, 'routine'))
+		if (@{$groups{'routine'}});
+	push(@simplified, $format_group->($groups{'replication'}, 'replication'))	
+		if (@{$groups{'replication'}});
 	# Add other privileges
 	push(@simplified, @others);
 	return join('; ', @simplified);
