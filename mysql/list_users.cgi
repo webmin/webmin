@@ -36,7 +36,8 @@ foreach $u (@{$d->{'data'}}) {
 		}
 	my @priv;
 	my ($allprivs, $noprivs) = (1, 1);
-	foreach my $f (&priv_fields('user')) {
+	my @priv_fields = &priv_fields('user');
+	foreach my $f (@priv_fields) {
 		if ($u->[$fieldmap{$f->[0]}] eq 'Y') {
 			push(@priv, $f->[1]);
 			$noprivs = 0;
@@ -46,7 +47,8 @@ foreach $u (@{$d->{'data'}}) {
 			}
 		}
 	push(@cols, $allprivs ? $text{'users_all'} :
-		    $noprivs ? $text{'users_none'} : join("&nbsp;| ", @priv));
+		    $noprivs ? $text{'users_none'} :
+		    	&format_privs(\@priv, \@priv_fields));
 	print &ui_checked_columns_row(\@cols, \@tds, "d", $u->[0]." ".$u->[1]);
 	$i++;
 	}
