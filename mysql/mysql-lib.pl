@@ -2146,23 +2146,27 @@ my $simplify_privs = sub {
 		'tables' => [],
 		'view' => [],
 		'routine' => [],
+		'replication' => [],
 	);
 	my @others = ();
 	foreach my $priv (@privs) {
 		if ($priv =~ /^(select|insert|update|delete) table data$/) {
-			push @{$groups{'table_data'}}, $1;
+			push(@{$groups{'table_data'}}, $1);
 			}
 		elsif ($priv =~ /^(create|drop|alter|create temp|lock) tables?$/) {
-			push @{$groups{'tables'}}, $1;
+			push(@{$groups{'tables'}}, $1);
 			}
 		elsif ($priv =~ /^(create|show) view$/) {
-			push @{$groups{'view'}}, $1;
+			push(@{$groups{'view'}}, $1);
 			}
 		elsif ($priv =~ /^(create|alter) routine$/) {
-			push @{$groups{'routine'}}, $1;
+			push(@{$groups{'routine'}}, $1);
+			}
+		elsif ($priv =~ /^(slave|client) replication$/) {
+			push(@{$groups{'replication'}}, $1);
 			}
 		else {
-			push @others, $priv;
+			push(@others, $priv);
 			}
 		}
 	# Build simplified string
@@ -2194,6 +2198,12 @@ my $simplify_privs = sub {
 		my $routine_str = join(" $text{'dbs_except_and'} ",
 			@{$groups{'routine'}});
 		push(@simplified, "$routine_str routine");
+		}
+	# Handle 'replication'
+	if (@{$groups{'replication'}}) {
+		my $replication_str = join(" $text{'dbs_except_and'} ",
+			@{$groups{'replication'}});
+		push(@simplified, "$replication_str replication");
 		}
 	# Add other privileges
 	push(@simplified, @others);
