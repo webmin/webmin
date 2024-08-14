@@ -2127,5 +2127,85 @@ return 'password' if ($@);	# Old version without plugins
 return $rv->{'data'}->[0]->[0] =~ /unix_socket/i ? 'socket' : 'password';
 }
 
+# format_privs(&privs, &privs_fields)
+# Returns best formatted string for a set of privileges
+sub format_privs
+{
+my ($privs, $privs_fields) = @_;
+my @privs_all = map { lc($_->[1]) } @{$privs_fields};
+my @privs_cur = map { lc($_) } @{$privs};
+my $simplify_privs = sub {
+	my @privs = @_;
+	my %groups = (
+		'table_data' => [],
+		'tables' => [],
+		'view' => [],
+		'routine' => [],
+		'replication' => [],
+	);
+	my @others = ();
+	foreach my $priv (@privs) {
+		if ($priv =~ /^(select|insert|update|delete) table data$/) {
+			push(@{$groups{'table_data'}}, $1);
+			}
+		elsif ($priv =~ /^(create|drop|alter|create temp|create temporary|lock) tables$/) {
+			push(@{$groups{'tables'}}, $1);
+			}
+		elsif ($priv =~ /^(create|show) view$/) {
+			push(@{$groups{'view'}}, $1);
+			}
+		elsif ($priv =~ /^(create|alter) routine$/) {
+			push(@{$groups{'routine'}}, $1);
+			}
+		elsif ($priv =~ /^(slave|client) replication$/) {
+			push(@{$groups{'replication'}}, $1);
+			}
+		else {
+			push(@others, $priv);
+			}
+		}
+	# Simplify groups
+	my @simplified = ();
+	# Helper function to format group
+	my $format_group = sub {
+		my ($group, $suffix) = @_;
+		my $str = join(', ', @$group);
+		$str =~ s/(.*),/$1 $text{'dbs_except_and'}/ if (@$group > 1);
+		return $str . ($suffix ? " $suffix" : '');
+		};
+	# Handle each group
+	push(@simplified, $format_group->($groups{'table_data'}, 'table data'))
+		if (@{$groups{'table_data'}});
+	push(@simplified, $format_group->($groups{'tables'}, 'tables'))
+		if (@{$groups{'tables'}});
+	push(@simplified, $format_group->($groups{'view'}, 'view'))
+		if (@{$groups{'view'}});
+	push(@simplified, $format_group->($groups{'routine'}, 'routine'))
+		if (@{$groups{'routine'}});
+	push(@simplified, $format_group->($groups{'replication'}, 'replication'))	
+		if (@{$groups{'replication'}});
+	# Add other privileges
+	push(@simplified, @others);
+	return join('; ', @simplified);
+	};
+
+if (@privs_cur >= int(0.7 * @privs_all)) {
+	my %missing = map { $_ => 1 } @privs_all;
+	delete(@missing{@privs_cur});
+	my @missing_privs = keys %missing;
+	my $missing_formatted = $simplify_privs->(@missing_privs);
+	if (@missing_privs > 1) {
+		$privs_formatted = "$text{'dbs_except'} ($missing_formatted)";
+		}
+	else {
+		$privs_formatted = "$text{'dbs_except'} $missing_formatted";
+		}
+	}
+else {
+	$privs_formatted = $simplify_privs->(@privs_cur);
+	}
+return ucfirst($privs_formatted);
+}
+
 1;
 
