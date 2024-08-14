@@ -39,7 +39,7 @@ if (!$in{'pam'} && !$wuser) {
 if ($wuser) {
 	# Update Webmin user's password
 	$ok = &acl::validate_password($in{'old'}, $wuser->{'pass'});
-	$ok || &pass_error($text{'password_eold'});
+	$ok || &pass_error($text{'password_euserpass'});
 	$perr = &acl::check_password_restrictions($in{'user'}, $in{'new1'});
 	$perr && &pass_error(&text('password_enewpass', $perr));
 	$wuser->{'pass'} = &acl::encrypt_password($in{'new1'});
@@ -117,7 +117,7 @@ elsif ($in{'pam'}) {
 	$pamh = new Authen::PAM($service, $in{'user'}, \&pam_check_func);
 	$rv = $pamh->pam_authenticate();
 	$rv == PAM_SUCCESS() ||
-		&pass_error($text{'password_eold'});
+		&pass_error($text{'password_euserpass'});
 	$pamh = undef;
 
 	# Change the password with PAM, in a sub-process. This is needed because
@@ -159,12 +159,12 @@ else {
 			last;
 			}
 		}
-	defined($idx) || &pass_error($text{'password_euser'});
+	defined($idx) || &pass_error($text{'password_euserpass'});
 
 	# Validate old password
 	&unix_crypt($in{'old'}, $line[$miniserv{'passwd_pindex'}]) eq
 		$line[$miniserv{'passwd_pindex'}] ||
-			&pass_error($text{'password_eold'});
+			&pass_error($text{'password_euserpass'});
 
 	# Make sure new password meets restrictions
 	if (&foreign_check("changepass")) {

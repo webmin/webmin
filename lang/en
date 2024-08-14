@@ -287,6 +287,7 @@ password_done=Your password has been successfully changed. You may now <a href='
 password_err=Failed to change password
 password_euser=Your login name was not found in the password file!
 password_eold=The current password is incorrect
+password_euserpass=Invalid username or password
 password_enew1=No new password was entered
 password_enew2=Your new passwords do not match
 password_epam=PAM error : $1
