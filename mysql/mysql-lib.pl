@@ -1711,7 +1711,8 @@ return &unique(map { $_->{'file'} } @$conf);
 sub get_change_pass_sql
 {
 my ($unescaped_plainpass, $user, $host) = @_;
-my $plugin = &get_mysql_plugin(1);
+my $plugin = &get_mysql_plugin();
+$plugin = $plugin ? "with '$plugin'" : "";
 my $escaped_pass = &escapestr($unescaped_plainpass);
 my $sql;
 my ($ver, $variant) = &get_remote_mysql_variant();
@@ -1728,23 +1729,17 @@ else {
 return $sql;
 }
 
-# get_mysql_plugin(query_ready)
+# get_mysql_plugin()
 # Returns the name of the default plugin used by MySQL/MariaDB
 sub get_mysql_plugin
 {
-my ($query) = @_;
 if ($config{'auth_plugin'}) {
-	return " with $config{'auth_plugin'}";
+	return $config{'auth_plugin'};
 	}
-else {
-	my @plugin = &execute_sql($master_db, 
-	    "show variables LIKE '%default_authentication_plugin%'");
-	my $plugin = $plugin[0]->{'data'}->[0]->[1];
-	if ($plugin && $query) {
-		$plugin = " with $plugin ";
-		}
-	return $plugin;
-	}
+my $rv = &execute_sql($master_db, 
+    "show variables LIKE '%default_authentication_plugin%'");
+return undef if (!ref($rv) || !@{$rv->{'data'}});
+return $rv->{'data'}->[0]->[1];
 }
 
 # perms_column_to_privilege_map(col)
@@ -1874,7 +1869,7 @@ my $other_field_names = $sc->{'other_field_names'};
 my $other_field_values = $sc->{'other_field_values'};
 
 my ($ver, $variant) = &get_remote_mysql_variant();
-my $plugin = &get_mysql_plugin(1);
+my $plugin = $sc->{'plugin'} || &get_mysql_plugin();
 
 if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
 	my $sql = "create user '$user'\@'$host' identified $plugin by ".
@@ -1919,7 +1914,7 @@ sub change_user_password
 my ($plainpass, $user, $host) = @_;
 
 my ($ver, $variant) = &get_remote_mysql_variant();
-my $plugin = &get_mysql_plugin(1);
+my $plugin = &get_mysql_plugin();
 my $lock_supported = $variant eq "mysql" && &compare_version_numbers($ver, "8.0.19");
 my $mysql_mariadb_with_auth_string = 
 	$variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0 ||
