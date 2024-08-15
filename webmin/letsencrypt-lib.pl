@@ -198,7 +198,10 @@ if ($letsencrypt_cmd) {
 	if ($subset) {
 		$subset_flags = " --allow-subset-of-names";
 		}
-	$reuse_flags = "" if ($reuse_key && $reuse_key == -1);
+	if (($reuse_key && $reuse_key == -1) ||
+	    &compare_version_numbers($cmd_ver, '<', '1.13.0')) {
+		$reuse_flags = ""
+		}
 	if ($server) {
 		$server_flags = " --server ".quotemeta($server);
 		if ($server_key) {
