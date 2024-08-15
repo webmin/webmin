@@ -1712,7 +1712,7 @@ sub get_change_pass_sql
 {
 my ($unescaped_plainpass, $user, $host) = @_;
 my $plugin = &get_mysql_plugin();
-$plugin = $plugin ? "with '$plugin'" : "";
+$plugin = $plugin ? "with $plugin" : "";
 my $escaped_pass = &escapestr($unescaped_plainpass);
 my $sql;
 my ($ver, $variant) = &get_remote_mysql_variant();
@@ -1870,6 +1870,7 @@ my $other_field_values = $sc->{'other_field_values'};
 
 my ($ver, $variant) = &get_remote_mysql_variant();
 my $plugin = $sc->{'plugin'} || &get_mysql_plugin();
+$plugin = $plugin ? "with $plugin" : "";
 
 if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
 	my $sql = "create user '$user'\@'$host' identified $plugin by ".
@@ -1915,6 +1916,7 @@ my ($plainpass, $user, $host) = @_;
 
 my ($ver, $variant) = &get_remote_mysql_variant();
 my $plugin = &get_mysql_plugin();
+$plugin = $plugin ? "with $plugin" : "";
 my $lock_supported = $variant eq "mysql" && &compare_version_numbers($ver, "8.0.19");
 my $mysql_mariadb_with_auth_string = 
 	$variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0 ||
