@@ -64,7 +64,7 @@ my $plugin = $fieldmap{'plugin'};
 my $unixsocket = $plugin && $u->[$plugin] eq 'unix_socket';
 my $nopass = (($epassfield1 && !$u->[$epassfield1]) &&
 		       ($epassfield2 && !$u->[$epassfield2]));
-my $lock_supported = $u->[$fieldmap{'account_locked'}] eq 'Y' || $u->[$fieldmap{'account_locked'}] eq 'N';
+my $lock_supported = defined($u->[$fieldmap{'account_locked'}]);
 $lock_supported = 0 if ($master_login);
 my $locked = $u->[$fieldmap{'account_locked'}] eq 'Y';
 print &ui_table_row($text{'user_pass'},
