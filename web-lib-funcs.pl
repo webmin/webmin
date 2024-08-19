@@ -805,65 +805,46 @@ while(1) {
 	# Read data
 	my $data = "";
 	my $dfile;
+	my $fh;
 	if ($tmp && $file) {
 		# Save directly to disk
 		my $uppath = "$tmp/$file";
-		open(my $fh, ">", $uppath) || next;
+		open($fh, ">", $uppath) || next;
 		# Return file name, no data
 		$dfile = $file;
-		# Read data and write to file
-		while(1) {
-			$line = <STDIN>;
-			$got += length($line);
-			$count_lines++;
-			if ($count_lines == $max_lines) {
-				&$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file,
-					@$cbargs) if ($cbfunc);
-				$count_lines = 0;
-				}
-			if ($max && $got > $max) {
-				#print STDERR "over limit of $max\n";
-				#&error($err);
-				}
-			if (!$line) {
-				# Unexpected EOF?
-				&$cbfunc(-1, $ENV{'CONTENT_LENGTH'}, $file,
-					@$cbargs) if ($cbfunc);
-				close($fh);
-				return;
-				}
-			if (index($line, $boundary) != -1) { last; }
-			print $fh $line;  # Write directly to file
+		}
+	while (1) {
+		$line = <STDIN>;
+		$got += length($line);
+		$count_lines++;
+		if ($count_lines == $max_lines) {
+			&$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs) if ($cbfunc);
+			$count_lines = 0;
 			}
-		# Ensure that the last two characters, which are extra newlines,
-		# are removed, otherwise the file will be corrupted.
+		if ($max && $got > $max) {
+			#print STDERR "over limit of $max\n";
+			#&error($err);
+			}
+		if (!$line) {
+			# Unexpected EOF?
+			&$cbfunc(-1, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs) if ($cbfunc);
+			close($fh) if ($fh);
+			return;
+			}
+		if (index($line, $boundary) != -1) { last; }
+		if ($fh) {
+			print($fh $line);  # Write directly to file
+			}
+		else {
+			$data .= $line; # Store in memory
+			}
+		}
+	if ($fh) {
 		seek($fh, -2, 2);
 		truncate($fh, tell($fh));
 		close($fh);
 		}
 	else {
-		while(1) {
-			$line = <STDIN>;
-			$got += length($line);
-			$count_lines++;
-			if ($count_lines == $max_lines) {
-				&$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file,
-					@$cbargs) if ($cbfunc);
-				$count_lines = 0;
-				}
-			if ($max && $got > $max) {
-				#print STDERR "over limit of $max\n";
-				#&error($err);
-				}
-			if (!$line) {
-				# Unexpected EOF?
-				&$cbfunc(-1, $ENV{'CONTENT_LENGTH'}, $file,
-					@$cbargs) if ($cbfunc);
-				return;
-				}
-			if (index($line, $boundary) != -1) { last; }
-			$data .= $line;
-			}
 		chop($data); chop($data);
 		}
 	if ($arrays == 1) {
