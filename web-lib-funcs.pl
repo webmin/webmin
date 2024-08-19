@@ -818,7 +818,8 @@ while(1) {
 		$got += length($line);
 		$count_lines++;
 		if ($count_lines == $max_lines) {
-			&$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs) if ($cbfunc);
+			&$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs)
+				if ($cbfunc);
 			$count_lines = 0;
 			}
 		if ($max && $got > $max) {
@@ -827,7 +828,8 @@ while(1) {
 			}
 		if (!$line) {
 			# Unexpected EOF?
-			&$cbfunc(-1, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs) if ($cbfunc);
+			&$cbfunc(-1, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs)
+				if ($cbfunc);
 			close($fh) if ($fh);
 			return;
 			}
