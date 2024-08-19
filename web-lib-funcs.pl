@@ -702,7 +702,7 @@ while(read($in, $buf, $bs) > 0) {
 return 1;
 }
 
-=head2 ReadParseMime([maximum], [&cbfunc, &cbargs], [array-mode])
+=head2 ReadParseMime([maximum], [&cbfunc, &cbargs], [array-mode], [&direct-write])
 
 Read data submitted via a POST request using the multipart/form-data coding,
 and store it in the global %in hash. The optional parameters are :
@@ -715,10 +715,12 @@ and store it in the global %in hash. The optional parameters are :
 
 =item array-mode - If set to 1, values in %in are arrays. If set to 0, multiple values are joined with \0. If set to 2, only the first value is used.
 
+=item direct-write - If allowed write file directly to disk temp given directory
+
 =cut
 sub ReadParseMime
 {
-my ($max, $cbfunc, $cbargs, $arrays) = @_;
+my ($max, $cbfunc, $cbargs, $arrays, $tmp) = @_;
 my ($boundary, $line, $name, $got, $file, $count_lines, $max_lines);
 my $err = &text('readparse_max', $max);
 $ENV{'CONTENT_TYPE'} =~ /boundary=(.*)$/ || &error($text{'readparse_enc'});
@@ -802,39 +804,78 @@ while(1) {
 
 	# Read data
 	my $data = "";
-	while(1) {
-		$line = <STDIN>;
-		$got += length($line);
-		$count_lines++;
-		if ($count_lines == $max_lines) {
-			&$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs)
-				if ($cbfunc);
-			$count_lines = 0;
+	my $dfile;
+	if ($tmp && $file) {
+		# Save directly to disk
+		my $uppath = "$tmp/$file";
+		open(my $fh, ">", $uppath) || next;
+		# Return file name, no data
+		$dfile = $file;
+		# Read data and write to file
+		while(1) {
+			$line = <STDIN>;
+			$got += length($line);
+			$count_lines++;
+			if ($count_lines == $max_lines) {
+				&$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file,
+					@$cbargs) if ($cbfunc);
+				$count_lines = 0;
+				}
+			if ($max && $got > $max) {
+				#print STDERR "over limit of $max\n";
+				#&error($err);
+				}
+			if (!$line) {
+				# Unexpected EOF?
+				&$cbfunc(-1, $ENV{'CONTENT_LENGTH'}, $file,
+					@$cbargs) if ($cbfunc);
+				close($fh);
+				return;
+				}
+			if (index($line, $boundary) != -1) { last; }
+			print $fh $line;  # Write directly to file
 			}
-		if ($max && $got > $max) {
-			#print STDERR "over limit of $max\n";
-			#&error($err);
-			}
-		if (!$line) {
-			# Unexpected EOF?
-			&$cbfunc(-1, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs)
-				if ($cbfunc);
-			return;
-			}
-		if (index($line, $boundary) != -1) { last; }
-		$data .= $line;
+		# Ensure that the last two characters, which are extra newlines,
+		# are removed, otherwise the file will be corrupted.
+		seek($fh, -2, 2);
+		truncate($fh, tell($fh));
+		close($fh);
 		}
-	chop($data); chop($data);
+	else {
+		while(1) {
+			$line = <STDIN>;
+			$got += length($line);
+			$count_lines++;
+			if ($count_lines == $max_lines) {
+				&$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file,
+					@$cbargs) if ($cbfunc);
+				$count_lines = 0;
+				}
+			if ($max && $got > $max) {
+				#print STDERR "over limit of $max\n";
+				#&error($err);
+				}
+			if (!$line) {
+				# Unexpected EOF?
+				&$cbfunc(-1, $ENV{'CONTENT_LENGTH'}, $file,
+					@$cbargs) if ($cbfunc);
+				return;
+				}
+			if (index($line, $boundary) != -1) { last; }
+			$data .= $line;
+			}
+		chop($data); chop($data);
+		}
 	if ($arrays == 1) {
 		$in{$name} ||= [];
-		push(@{$in{$name}}, $data);
+		push(@{$in{$name}}, $dfile || $data);
 		}
 	elsif ($arrays == 2) {
-		$in{$name} ||= $data;
+		$in{$name} ||= ($dfile || $data);
 		}
 	else {
 		$in{$name} .= "\0" if (defined($in{$name}));
-		$in{$name} .= $data;
+		$in{$name} .= ($dfile || $data);
 		}
 	if (index($line,"$boundary--") != -1) { last; }
 	}
