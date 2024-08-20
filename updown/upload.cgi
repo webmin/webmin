@@ -6,7 +6,10 @@ require './updown-lib.pl';
 &error_setup($text{'upload_err'});
 &ReadParse(\%getin, "GET");
 $upid = $getin{'id'};
-&ReadParseMime($upload_max, \&read_parse_mime_callback, [ $upid ], 1);
+$direct_upload = $getin{'direct'};
+my $tmp;
+$tmp = $config{'tmp_upload_dir'} || &tempname_dir() if ($direct_upload);
+&ReadParseMime($upload_max, \&read_parse_mime_callback, [ $upid ], 1, $tmp);
 foreach my $k (keys %in) {
         $in{$k} = $in{$k}->[0] if ($k !~ /^upload\d+/);
         }
@@ -56,15 +59,17 @@ if (!-d $in{'dir'} && $in{'mkdir'}) {
 
 &ui_print_header(undef, $text{'upload_title'}, "");
 
-# Save the actual files, showing progress
+# Move or save the actual files, showing progress
 $msg = undef;
 for($i=0; defined($in{"upload$i"}); $i++) {
 	for(my $j=0; $j<@{$in{"upload$i"}}; $j++) {
 		$d = $in{"upload${i}"}->[$j];
 		$f = $in{"upload${i}_filename"}->[$j];
 		next if (!$f);
+		my $mpath;
 		if (-d $in{'dir'}) {
 			$f =~ /([^\\\/]+)$/;
+			$mpath = "$tmp/$1" if ($tmp);
 			$path = "$in{'dir'}/$1";
 			}
 		else {
@@ -72,12 +77,31 @@ for($i=0; defined($in{"upload$i"}); $i++) {
 			}
 		print &text('upload_saving',
 			    "<tt>".&html_escape($path)."</tt>"),"<br>\n";
-		if (!&open_tempfile(FILE, ">$path", 1)) {
-			&error(&text('upload_eopen', "<tt>$path</tt>", $!));
+		# Move file we already have it in disk
+		if ($mpath) {
+			if (-w $in{'dir'}) {
+				&switch_uid_back();
+				if (!rename($mpath, $path)) {
+					&error(&text('upload_emove',
+						"<tt>$mpath</tt>",
+						"<tt>$path</tt>", $!));
+					}
+				chown($uinfo[2], scalar(@ginfo) ?
+						$ginfo[2] : $uinfo[3], $path);
+				&switch_uid_to($uinfo[2], scalar(@ginfo) ?
+					$ginfo[2] : $uinfo[3]);
+
+				}
 			}
-		&print_tempfile(FILE, $d);
-		&close_tempfile(FILE);
-		push(@uploads, $path);
+		else {
+			if (!&open_tempfile(FILE, ">$path", 1)) {
+				&error(&text('upload_eopen', "<tt>$path</tt>",
+					$!));
+				}
+			&print_tempfile(FILE, $d);
+			&close_tempfile(FILE);
+			push(@uploads, $path);
+			}
 		@st = stat($path);
 		print &text('upload_saved', &nice_size($st[7])),"<p>\n";
 

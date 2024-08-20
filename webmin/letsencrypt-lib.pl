@@ -183,10 +183,10 @@ if ($letsencrypt_cmd) {
 	my $server_flags = "";
 	my $subset_flags = "";
 	$key_type ||= $config{'letsencrypt_algo'} || 'rsa';
-	if (&compare_version_numbers($cmd_ver, 1.11) < 0) {
+	if (&compare_version_numbers($cmd_ver, '<', 1.11)) {
 		$old_flags = " --manual-public-ip-logging-ok";
 		}
-	if (&compare_version_numbers($cmd_ver, 2.0) >= 0) {
+	if (&compare_version_numbers($cmd_ver, '>=', 2.0)) {
 		$new_flags = " --key-type ".quotemeta($key_type);
 		}
 	if ($reuse_key) {
@@ -198,7 +198,10 @@ if ($letsencrypt_cmd) {
 	if ($subset) {
 		$subset_flags = " --allow-subset-of-names";
 		}
-	$reuse_flags = "" if ($reuse_key && $reuse_key == -1);
+	if (($reuse_key && $reuse_key == -1) ||
+	    &compare_version_numbers($cmd_ver, '<', '1.13.0')) {
+		$reuse_flags = ""
+		}
 	if ($server) {
 		$server_flags = " --server ".quotemeta($server);
 		if ($server_key) {

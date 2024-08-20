@@ -7,13 +7,13 @@ main_title=Webmin $1 auf $2 ($3)
 main_title2=Webmin
 main_title3=Webmin $1 ($2)
 main_none=Sie haben für keine Webmin-Module Zugriffsrechte.
-main_skill=Fähigkeitsniveau
-main_readonly=(Nur-lesen Modus)
+main_skill=Kompetenz
+main_readonly=(Nur-Lesen-Modus)
 main_return=Zurück zu $1
-main_unused=Nicht benutzte Module
-main_refreshmods=Aktualisiere Module
+main_unused=Unbenutzte Module
+main_refreshmods=Module aktualisieren
 
-link_essl=Das Perl-Modul Net::SSLeay, welches für HTTPS-Verbindungen benötigt wird, ist auf Ihrem System nicht installiert.
+link_essl=Das Perl-Modul Net::SSLeay, welches für HTTPS-Verbindungen benötigt wird, ist auf diesem System nicht installiert.
 
 category_servers=Server
 category_hardware=Hardware
@@ -23,31 +23,34 @@ category_net=Netzwerk
 category_syslet=Syslets
 category_cluster=Cluster
 category_info=Information
+category_=Werkzeuge
 
-longcategory_servers=Module für Web-, E-Mail-, FTP- und andere Server
+longcategory_servers=Module für Web-, E-Mail-, FTP- und andere Server-Konfigurationen
 longcategory_hardware=Module für Drucker-, Festplatten- und andere Hardware-Konfigurationen
 longcategory_system=Module für Benutzer, Dateisysteme, Cron-Aufträge und andere Systemeinstellungen
-longcategory_webmin=Module, um Webmin selbst zu konfigurieren.
-longcategory_net=Module, die Netzwerk und Netzwerk-Dienste konfigurieren
-longcategory_cluster=Module, die verschiedene Server von einem Interface aus steuern
-longcategory_info=Module, die Informationen über Ihr System darstellen
+longcategory_webmin=Module, um Webmin zu konfigurieren
+longcategory_net=Module, die das Netzwerk und Netzwerk-Dienste konfigurieren
+longcategory_cluster=Module, die mehrere Server von einem einzigen Interface steuern
+longcategory_info=Module, die System-Informationen darstellen
+longcategory_=Module, die unterschiedliche Aufgaben ausführen
 
 header_webmin=Webmin-Index
-header_module=Modulindex
+header_module=Modul-Index
 header_help=Hilfe..
-header_config=Modulkonfiguration
+header_config=Modul-Lonfiguration
 header_servers=Webmin-Server
 
 index=Startseite
 yes=Ja
 no=Nein
+or=oder
 save=Speichern
 create=Erstellen
 delete=Löschen
 find=Finden
 error=Fehler
 error_previous=Vorherige Seite
-error_stack=Call Stack Trace
+error_stack=Stapelverfolgung aufrufen
 error_file=Datei
 error_line=Zeile
 error_sub=Funktion
@@ -57,27 +60,27 @@ efileclose=Fehler beim Schreiben zu $1 beim Schließen : $2
 efileopen=Fehler beim Öffnen von $1 zum Schreiben : $2
 default=Standard
 modify=Anpassen
-reset=Reset
+reset=Zurücksetzen
 ok=OK
-cancel=Abbruch
-fail=Problem
-helpsearch=Suche in der Hilfe..
-switch_remote_euser=Der Unixbenutzer $1 existiert nicht.
+cancel=Abbrechen
+fail=Fehlgeschlagen
+helpsearch=Hilfe durchsuchen..
+switch_remote_euser=Der Unix-Benutzer $1 existiert nicht.
 programname=Webmin
-euserdbacl=Konnte ACL Benutzer nicht laden : $1
-euserdbacl2=Konnte ACL Benutzer nicht aktualisieren : $1
-egroupdbacl=Konnte ACL Gruppe nicht laden : $1
-egroupdbacl2=Konnte ACL Gruppe nicht aktualisieren : $1
+euserdbacl=Konnte ACL-Benutzer nicht laden: $1
+euserdbacl2=Konnte ACL-Benutzer nicht aktualisieren: $1
+egroupdbacl=Konnte ACL-Gruppe nicht laden: $1
+egroupdbacl2=Konnte ACL-Gruppe nicht aktualisieren: $1
 
-chooser_title1=Wähle Datei..
-chooser_title2=Wähle Verzeichnis..
+chooser_title1=Datei auswählen..
+chooser_title2=Verzeichnis auswählen..
 chooser_dir=Verzeichnis von $1
 chooser_ok=OK
 chooser_date=Datum wählen
-chooser_eopen=Auflistung fehlgeschlagen : $1
+chooser_eopen=Auflistung fehlgeschlagen: $1
 
-users_title1=Wähle Benutzer..
-users_title2=Wähle Benutzer..
+users_title1=Benutzer auswählen..
+users_title2=Benutzer auswählen..
 users_sel=Gewählte Benutzer
 users_all=Alle Benutzer
 users_ok=OK
@@ -92,20 +95,20 @@ groups_ok=OK
 groups_cancel=Abbrechen
 groups_clear=Löschen
 
-modules_title1=Module auswählen ..
-modules_title2=Modul auswählen ..
+modules_title1=Module auswählen..
+modules_title2=Modul auswählen..
 modules_sel=Ausgewählte Module
 modules_all=Alle Module
 modules_ok=OK
 modules_cancel=Abbrechen
 modules_clear=Löschen
 
-config_ecannot=Sie haben nicht die Berechtigung die Konfiguration dieses Moduls zu ändern
+config_ecannot=Sie sind nicht berechtigt dieses Modul zu konfigurieren
 config_title=Konfiguration
 config_dir=Für Modul $1
 config_header=Konfigurierbare Einstellungen für $1
 config_none=Keine
-config_eaccess=Sie haben keine Berechtigung auf dieses Modul zuzugreifen
+config_eaccess=Sie sind nicht berechtigt dieses Modul zu konfigurieren
 config_emodule=Modul existiert nicht
 config_err=Speichern der Konfiguration gescheitert
 config_nochange=Nicht ändern
@@ -113,12 +116,14 @@ config_setto=Einstellen auf
 config_ewebmin=Parametertyp 14 funktioniert nur in Webmin
 
 help_err=Fehler beim Anzeigen der Hilfe
-help_epath=Fehlender Hilfe-Pfad
-help_eheader=Fehlender &lt;header&gt; Teil
-help_eif=$1 schlug fehl : $2
-help_eexec=$1 schlug fehl : $2
+help_epath=Fehlender oder ungültiger Hilfe-Pfad
+help_efile3=Hilfeseite $1 aus dem Modul $2 konnte nicht gelesen werden
+help_eheader=Fehlende &lt;header&gt;-Sektion
+help_einclude3=Die Hilfeseite $1 konnte nicht eingebunden werden
+help_eif=$1 schlug fehl: $2
+help_eexec=$1 schlug fehl: $2
 
-referer_title=Sicherheits-Warnung
+referer_title=Sicherheitswarnung
 referer_warn=<b>Warnung!</b> Webmin hat entdeckt, dass auf das Programm $2 von der URL $1 verwiesen wurde, welche scheinbar außerhalb des Webmin-Servers liegt. Dies kann ein Versuch sein, ihren Server auszutricksen, um ein gefährliches Kommando auszuführen oder einzuschleusen.
 referer_warn_unknown=<b>Warnung!</b> Webmin hat entdeckt, dass das Programm $1 mit einer unbekannten URL verknüpft wurde, welche außerhalb des Webmin-Servers zu liegen scheint. Dies kann ein Versuch sein, ihren Server auszutricksen, um ein gefährliches Kommando auszuführen oder einzuschleusen.
 referer_fix1=Wenn dies ein legitimer Link ist, können Sie Links von dieser URL wie befolgt erlauben :<ul><li>Normale einloggen in Webmin.<li> Gehen Sie zu dem <b>Webmin Konfigurations</b>-Modul.<li>Klicken Sie auf das Trusted Verweise Symbol.<li> Geben Sie den Hostnamen $1 in das <b>Trusted Webseiten</b>-Feld ein, und klicken Sie auf <b>Speichern</b>.</ul>
@@ -200,30 +205,30 @@ day_4=Donnerstag
 day_5=Freitag
 day_6=Samstag
 
-smonth_1=Jan.
-smonth_2=Feb.
-smonth_3=Mrz.
-smonth_4=Apr.
+smonth_1=Jan
+smonth_2=Feb
+smonth_3=Mrz
+smonth_4=Apr
 smonth_5=Mai
-smonth_6=Jun.
-smonth_7=Jul.
-smonth_8=Aug.
-smonth_9=Sep.
-smonth_10=Okt.
-smonth_11=Nov.
-smonth_12=Dez.
+smonth_6=Jun
+smonth_7=Jul
+smonth_8=Aug
+smonth_9=Sep
+smonth_10=Okt
+smonth_11=Nov
+smonth_12=Dez
 
-sday_0=So.
-sday_1=Mo.
-sday_2=Di.
-sday_3=Mi.
-sday_4=Do.
-sday_5=Fr.
-sday_6=Sa.
+sday_0=SO
+sday_1=MO
+sday_2=DI
+sday_3=MI
+sday_4=DO
+sday_5=FR
+sday_6=SA
 
 emodule=Zugriff verweigert: Benutzer $1 ist nicht berechtigt, das $2 Modul zu benutzen
 emodulecheck=Das $1 Modul ist auf Ihrem System nicht verfügbar
-elock_tries2=Konnte die Datei $1 nach $2 Minuten nicht sperren. Letzter Fehler war : $3
+elock_tries2=Konnte die Datei $1 nach $2 Minuten nicht sperren. Letzter Fehler war: $3
 
 skill_high=Experte
 skill_medium=Fortgeschritten
@@ -258,12 +263,12 @@ feedback_enoto=Keine Adressen zum Senden der Rückmeldung eingegeben
 feedback_ecannot=Sie sind nicht berechtigt eine Rückmeldung zu senden.
 feedback_ecannot2=Sie sind nicht berechtigt eine Rückmeldung mit enthaltenen Konfigurationsdateien zu senden.
 
-progress_size2=Herunterladen $1 ($2) ..
-progress_nosize=Lade $1 herunter ..
+progress_size2=Herunterladen $1 ($2)..
+progress_nosize=Lade $1 herunter..
 progress_datan=Erhalten $1 ($2 %)
 progress_data2n=Erhalten $1
 progress_done=.. Herunterladen komplett.
-progress_incache=$1 gefunden in Cache ..
+progress_incache=$1 gefunden in Cache..
 
 readparse_cdheader=Fehlender Content-Disposition Header
 readparse_enc=Form-Data-Encoding erwartet, jedoch normales Encoding erhalten
@@ -302,6 +307,7 @@ ui_etime=Ungültige Zeit
 ui_paging=Anzeige der Reihen $1 bis $2 von $3
 ui_rowlabel=$2 in Reihe $1 :
 ui_filterbox=Filter eingeben..
+ui_of=von
 
 header_statusmsg=$1 eingeloggt in $2 $3 auf $4 ($5)
 
@@ -352,6 +358,7 @@ sql_eldaplogin=Fehler beim Login auf dem LDAP-Server als $1 : $2
 
 log_email_subject=Webmin Aktion in $1
 log_email_global=Webmin globale Aktion
+log_email_by=$1 von $2
 log_email_desc=Diese E-Mail wurde von Webmin verschickt als Antwort einer Benutzeraktion.
 log_email_mod=Webmin Modul: $1
 log_email_moddesc=Webmin Titel: $1
@@ -373,3 +380,17 @@ nice_size_MiB=MiB
 nice_size_kB=kB
 nice_size_kiB=KiB
 nice_size_b=Bytes
+
+paginator_showing_start=Es werden $1 bis $2 von $3 Elementen auf der Seite angezeigt
+paginator_showing_end=von $1 Seiten
+paginator_nosearchrs=Es gibt keine Ergebnisse, die mit der <tt>$1</tt>-Abfrage übereinstimmen
+
+langauto_include=Fügen Sie maschinelle Übersetzungen hinzu
+
+file_truncated_message=$1 der Daten abgerufen, $2 von $3 abgeschnitten
+file_truncated_message_head=Anfang $1 der Daten abgerufen, $2 von $3 abgeschnitten
+file_truncated_message_tail=Abgerufenes Ende $1 der Daten, abgeschnittenes $2 von $3
+
+defcert_error=Das standardmäßig gebündelte SSL-Zertifikat $1 wird verwendet. Es wird dringend empfohlen, das Standardzertifikat <tt>$2</tt> zu aktualisieren, bevor mit der Anmeldung fortgefahren wird.
+
+main_error_details=Fehler-Details

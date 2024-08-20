@@ -166,7 +166,8 @@ if ($can_upload) {
 	print &ui_tabs_start_tab("mode", "upload");
 	print $text{'index_descupload'},"<p>\n";
 	local $upid = time().$$;
-	print &ui_form_start("upload.cgi?id=$upid", "form-data", undef,
+	print &ui_form_start("upload.cgi?id=$upid&direct=1",
+			     "form-data", undef,
 			     &read_parse_mime_javascript($upid,
 			       [ "upload0", "upload1", "upload2", "upload3" ]));
 	print &ui_table_start($text{'index_header2'}, "width=100%", 2);
@@ -183,7 +184,11 @@ if ($can_upload) {
 	print &ui_table_row($text{'index_dir'},
 		&ui_textbox("dir", $upload_dir, 50)." ".
 		&file_chooser_button("dir", 1, $form)." &nbsp;&nbsp;".
-		&ui_checkbox("mkdir", 1, $text{'index_mkdir'}, 0));
+		&ui_checkbox("mkdir", 1, $text{'index_mkdir'}, 0)." &nbsp;".
+		&ui_checkbox("direct", 1, $text{'upload_direct'}, 1,
+			"onchange=\"this.form.action=this.form.action.".
+			"replace(/direct=([^&]*)/, 'direct=' + ".
+			"(this.checked ? 1 : 0))\""));
 
 	if ($can_mode != 3) {
 		# Allow selection of user to save as
