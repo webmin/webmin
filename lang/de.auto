@@ -1,7 +1,5 @@
 category_=Werkzeuge
 
-longcategory_=Module, die andere verschiedene Aufgaben ausführen
-
 or=oder
 help_efile3=Hilfeseite $1 aus Modul $2 konnte nicht gelesen werden
 help_einclude3=Die Hilfeseite $1 konnte nicht eingebunden werden
