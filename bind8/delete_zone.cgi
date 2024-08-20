@@ -26,6 +26,7 @@ my $rev = ($zconf->{'value'} =~ /in-addr\.arpa/i ||
 	$zconf->{'value'} =~ /\.$ipv6revzone/i);
 my $type = &find("type", $zconf->{'members'})->{'value'};
 $type = 'master' if ($type eq 'primary');
+$type = 'slave' if ($type eq 'secondary');
 if (!$in{'confirm'} && $config{'confirm_zone'}) {
 	# Ask the user if he is sure ..
 	&ui_print_header(undef, $text{'delete_title'}, "",

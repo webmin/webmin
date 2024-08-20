@@ -23,6 +23,7 @@ my $typedesc = $text{"recs_$in{'type'}"} || $in{'type'};
 # Show form for adding a record
 my $type = $zone->{'type'};
 $type = 'master' if ($type eq 'primary');
+$type = 'slave' if ($type eq 'secondary');
 my $file = $zone->{'file'};
 my $form = 0;
 my $shown_create_form;

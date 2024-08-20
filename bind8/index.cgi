@@ -188,6 +188,7 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 		next if (!$t);
 		$t = "delegation" if ($t eq "delegation-only");
 		$t = "master" if ($t eq "primary");
+		$t = "slave" if ($t eq "secondary");
 		my $zn = $v eq "." ? "<i>$text{'index_root'}</i>"
 				      : &ip6int_to_net(&arpa_to_ip($v));
 		if ($z->{'view'}) {
@@ -353,6 +354,7 @@ elsif (@zones) {
 			my $t = $z->{'type'};
 			$t = "delegation" if ($t eq "delegation-only");
 			$t = "master" if ($t eq "primary");
+			$t = "slave" if ($t eq "secondary");
 			my $zn = $v eq "." ? "<i>$text{'index_root'}</i>"
 					      : &ip6int_to_net(&arpa_to_ip($v));
 			push(@zlinks, "edit_$t.cgi?zone=$z->{'name'}".
