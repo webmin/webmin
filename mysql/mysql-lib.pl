@@ -1908,14 +1908,14 @@ else {
 	}
 }
 
-# change_user_password(plainpass, user, host)
+# change_user_password(plainpass, user, host, plugin)
 # Change user password
 sub change_user_password
 {
-my ($plainpass, $user, $host) = @_;
+my ($plainpass, $user, $host, $plugin) = @_;
 
 my ($ver, $variant) = &get_remote_mysql_variant();
-my $plugin = &get_mysql_plugin();
+$plugin ||= &get_mysql_plugin();
 $plugin = $plugin ? "with $plugin" : "";
 my $lock_supported = $variant eq "mysql" && &compare_version_numbers($ver, "8.0.19");
 my $mysql_mariadb_with_auth_string = 
@@ -2127,6 +2127,18 @@ eval {
 	};
 return 'password' if ($@);	# Old version without plugins
 return $rv->{'data'}->[0]->[0] =~ /unix_socket/i ? 'socket' : 'password';
+}
+
+# list_authentication_plugins()
+# Returns a list of supported authentication plugins for setting passwords
+sub list_authentication_plugins
+{
+my ($ver, $variant) = &get_remote_mysql_variant();
+if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0 ||
+    $variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0) {
+	return ('mysql_native_password', 'caching_sha2_password', 'unix_socket');
+	}
+return ();
 }
 
 # format_privs(&privs, &privs_fields)

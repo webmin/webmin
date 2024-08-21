@@ -48,6 +48,7 @@ else {
 			'host', $host,
 			'perms', \%perms,
 			'pfields', \@pfields,
+			'plugin', $in{'plugin'},
 			'ssl_field_names', \@ssl_field_names,
 			'ssl_field_values', \@ssl_field_values,
 			'other_field_names', \@other_field_names,
@@ -73,12 +74,14 @@ else {
 		# Update user password, if requested
 		if ($in{'mysqlpass_mode'} == 4) {
 			# Never used for admin accounts
-			&change_user_password(undef, $olduser, $oldhost);
+			&change_user_password(undef, $olduser, $oldhost,
+					      $in{'plugin'});
 			}
 		elsif ($in{'mysqlpass_mode'} != 1) {
 			($in{'mysqlpass_mode'} eq '0' && !$in{'mysqlpass'}) && &error($text{'root_epass1'});
 			my $pass = $in{'mysqlpass'} || '';
-			&change_user_password($pass, $olduser, $oldhost);
+			&change_user_password($pass, $olduser, $oldhost,
+					      $in{'plugin'});
 			}
 
 		&update_privileges({

@@ -78,6 +78,15 @@ print &ui_table_row($text{'user_pass'},
 		    [ 0, $text{'user_set'} ] ])." ".
 	&ui_password("mysqlpass", undef, 20));
 
+# Plugin for setting password
+my @plugins = &list_authentication_plugins();
+if (@plugins) {
+	print &ui_table_row($text{'user_plugin'},
+		&ui_select("plugin", $plugin && $u->[$plugin], 
+			   [ [ '', $text{'default'} ],
+			     @plugins ]));
+	}
+
 # Allowed host / network
 print &ui_table_row($text{'user_host'},
 	&ui_opt_textbox("host", $u->[0] eq '%' ? '' : $u->[0], 40,
