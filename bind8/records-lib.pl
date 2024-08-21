@@ -510,6 +510,7 @@ foreach my $r (@$recs) {
 			   "\t\t\t$v->[4]\n\t\t\t$v->[5]\n\t\t\t$v->[6] )";
 		&modify_record($r->{'file'}, $r, $r->{'realname'}, $r->{'ttl'},
 				$r->{'class'}, $r->{'type'}, $vals);
+		$v->[2] = $serial;
 		}
 	}
 }
