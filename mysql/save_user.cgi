@@ -40,8 +40,8 @@ else {
 	my ($ver, $variant) = &get_remote_mysql_variant();
 	my $plugin = &get_mysql_plugin(1);
 
-	# Create a new user
 	if ($in{'new'}) {
+		# Create a new user
 		&create_user({
 			'user', $olduser,
 			'pass', $in{'mysqlpass'},
@@ -54,9 +54,7 @@ else {
 			'other_field_values', \@other_field_values,
 			});
 		}
-	# Update an existing user
 	else {
-
 		# Rename user and/or host, if requested
 		my $changing_user = ($user ne $olduser);
 		my $changing_host = ($host ne $oldhost);
