@@ -1025,8 +1025,8 @@ while(1) {
 					}
 				else {
 					# Login failed..
-					$hostfail{$2}++ if(!$nolog);
-					$userfail{$1}++ if(!$nolog);
+					$hostfail{$2}++ if (!$nolog);
+					$userfail{$1}++ if (!$nolog && $1 ne "-");
 					$blocked = 0;
 
 					# Add the host to the block list,
@@ -1046,7 +1046,8 @@ while(1) {
 
 					# Add the user to the user block list,
 					# if configured
- 					if ($config{'blockuser_failures'} &&
+ 					if ($1 ne "-" &&
+					    $config{'blockuser_failures'} &&
 					    $userfail{$1} >=
 					      $config{'blockuser_failures'}) {
 						push(@denyusers, $1);
@@ -1060,7 +1061,8 @@ while(1) {
 						}
 
 					# Lock out the user's password, if enabled
-					if ($config{'blocklock'} &&
+					if ($1 ne "-" &&
+					    $config{'blocklock'} &&
 					    $userfail{$1} >=
 					      $config{'blockuser_failures'}) {
 						my $lk = &lock_user_password($1);
@@ -1941,6 +1943,15 @@ if ($config{'session'} && !$deny_authentication &&
 	# Just let this slide ..
 	$validated = 1;
 	$miniserv_internal = 3;
+
+	# check with main process for delay
+	if ($config{'passdelay'}) {
+		print DEBUG "handle_request: requesting delay acptip=$acptip\n";
+		print $PASSINw "delay - $acptip 0\n";
+		<$PASSOUTr> =~ /(\d+) (\d+)/;
+		sleep($1);
+		print DEBUG "handle_request: delay=$1 blocked=$2\n";
+		}
 	}
 
 # Check for an existing session
