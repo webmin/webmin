@@ -605,7 +605,7 @@ if ($config{'webmin_from'} =~ /\@/) {
 	return $config{'webmin_from'};
 	}
 elsif (!$config{'webmin_from'}) {
-	return "webmin\@$host";
+	return "webmin-noreply\@$host";
 	}
 else {
 	return "$config{'webmin_from'}\@$host";

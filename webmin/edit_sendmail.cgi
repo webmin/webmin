@@ -61,7 +61,7 @@ print &ui_table_row($text{'sendmail_auth'},
 
 # From address
 $from = $mconfig{'webmin_from'};
-$fromdef = "webmin\@".&mailboxes::get_from_domain();
+$fromdef = "webmin-noreply\@".&mailboxes::get_from_domain();
 print &ui_table_row($text{'sendmail_from'},
 	&ui_opt_textbox("from", $from, 40,
 			&text('sendmail_fromdef', $fromdef)."<br>",

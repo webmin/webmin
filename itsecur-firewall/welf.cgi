@@ -103,7 +103,7 @@ elsif ($mode == 3) {
 	$host = &get_system_hostname();
 	$body = "Firewall logs in WELF format from $host are attached to this email.\n";
 	local $mail = { 'headers' =>
-			[ [ 'From', $config{'from'} || "webmin\@$host" ],
+			[ [ 'From', $config{'from'} || "webmin-noreply\@$host" ],
 			  [ 'To', $dest[0] ],
 			  [ 'Subject', "Firewall logs" ] ],
 			'attach' =>
