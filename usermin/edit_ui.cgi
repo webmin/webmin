@@ -71,6 +71,15 @@ print &ui_table_row($text{'ui_tabs'},
 	&ui_radio("notabs", $uconfig{'notabs'} ? 1 : 0,
 	  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
+my @ui_show = split(/\s+/, $uconfig{'ui_show'} // 'host os ver tver time');
+print &ui_table_row($text{'ui_show'},
+                &ui_select("ui_show", \@ui_show,
+                        [ ['host', $text{'ui_show_host'} ],
+                          ['os', $text{'ui_show_os'} ],
+                          ['ver', $text{'ui_show_ver'} ],
+                          ['tver', $text{'ui_show_tver'} ],
+                          ['time', $text{'ui_show_time'} ] ], 5, 1));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

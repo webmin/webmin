@@ -974,7 +974,7 @@ elsif ($mode == 3) {
 	$host = &get_system_hostname();
 	$body = "The backup of the firewall configuration on $host is attached to this email.\n";
 	local $mail = { 'headers' =>
-			[ [ 'From', $config{'from'} || "webmin\@$host" ],
+			[ [ 'From', $config{'from'} || "webmin-noreply\@$host" ],
 			  [ 'To', $dest[0] ],
 			  [ 'Subject', "Firewall backup" ] ],
 			'attach' =>

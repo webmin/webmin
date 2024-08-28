@@ -15,7 +15,7 @@ foreach $s (@servers) {
 	if (!$up{$s} && $oldstatus{$s->{'id'}}) {
 		# Just went down .. send email
 		local $mail =
-			{ 'headers' => [ [ 'From', 'webmin@'.&get_system_hostname() ],
+			{ 'headers' => [ [ 'From', 'webmin-noreply@'.&get_system_hostname() ],
 				       [ 'To', $config{'email'} ],
 				       [ 'Subject', "System $s->{'host'} is down" ],
 					     ],

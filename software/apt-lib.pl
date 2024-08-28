@@ -458,7 +458,7 @@ foreach my $f ($sources_list_file, glob("$sources_list_dir/*")) {
 	my $lref = &read_file_lines($f, 1);
 	my $lnum = 0;
 	foreach my $l (@$lref) {
-		if ($l =~ /^(#*)\s*deb\s+((http|https)\S+)\s+(\S.*)/) {
+		if ($l =~ /^(#*)\s*deb.*?((http|https)\S+)\s+(\S.*)/) {
 			my $repo = { 'file' => $f,
 				     'line' => $lnum,
 				     'words' => \@w,

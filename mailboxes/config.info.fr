@@ -48,7 +48,7 @@ spam_report=Signaler le spam en utilisant,1,sa_learn-sa&#45;learn --spam,spamass
 
 line3.5=À partir des options d'adresse,11
 from_addr=De: adresse à utiliser lors de l'envoi manuel d'un e-mail,3,À partir du nom d'utilisateur de la boîte aux lettres
-webmin_from=De: adresse à utiliser lorsque Webmin envoie un e-mail,3,Défaut (webmin@<i>yourhost</i>)
+webmin_from=De: adresse à utiliser lorsque Webmin envoie un e-mail,3,Défaut (webmin-noreply@<i>yourhost</i>)
 from_virtualmin=Obtenir de: adresse de Virtualmin?,1,1-Oui,0-Non
 from_dom=Domaine à utiliser dans De: adresse,3,Nom d'hôte du système
 no_orig_ip=Inclure l'adresse IP du navigateur dans l'en-tête X-Originating-IP?,1,0-Oui,1-Non
