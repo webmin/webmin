@@ -49,12 +49,13 @@ return lc($_[0]) =~ /^[a-e]/ ? "A-E" :
        lc($_[0]) =~ /^[u-z]/ ? "U-Z" : "Other";
 }
 
-# package_info(package)
+# package_info(package, [version])
 # Returns an array of package information in the order
 #  name, class, description, arch, version, vendor, installtime
 sub package_info
 {
-local $qm = quotemeta($_[0]);
+local ($pkg, $ver) = @_;
+local $qm = quotemeta($pkg);
 
 # First check if it is really installed, and not just known to the package
 # system in some way
@@ -67,6 +68,7 @@ if ($lines[$#lines] !~ /^.[ih]/) {
 # Get full status
 local $out;
 if (&has_command("apt-cache")) {
+	$qm .= ":".quotemeta($ver) if ($ver);
 	$out = &backquote_command("apt-cache show $qm 2>&1", 1);
 	$out =~ s/[\0-\177]*\r?\n\r?\n(Package:)/\\1/;	# remove available ver
 	}
