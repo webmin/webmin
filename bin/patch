@@ -72,7 +72,24 @@ elsif ($patch =~ /^https?:\/\/(github|gitlab)\.com/ &&
 
 # Parse module name from URL
 my $module = "";
-if ($patch =~ m{https://(github|gitlab)\.com/[^/]+/([^/]+)/commit/[^/]+}) {
+if ($patch =~ m{
+    (?|
+        # GitHub/GitLab commit URL
+        https://(?:github|gitlab)\.com/([^/]+)/([^/]+)/commit/([^/]+)
+        |
+        # GitHub pull request commit URL
+        https://github\.com/([^/]+)/([^/]+)/pull/\d+/commits/([^/]+)
+        |
+        # GitLab merge request URL with commit ID
+        https://gitlab\.com/([^/]+)/([^/]+)/-/merge_requests/\d+/diffs\?commit_id=([^&]+)
+        |
+        # GitHub raw URL
+        https://raw\.githubusercontent\.com/([^/]+)/([^/]+)/([^/]+)/(.+)
+        |
+        # GitLab raw URL
+        https://gitlab\.com/([^/]+)/([^/]+)/-/raw/([^/]+)/(.+)
+    )
+}x) {
 	$module = $2;
 	$module = "" if ($2 eq 'webmin');
 	# Special handling for some modules
@@ -84,37 +101,91 @@ if ($patch =~ m{https://(github|gitlab)\.com/[^/]+/([^/]+)/commit/[^/]+}) {
 
 # Check if module exists
 if (!-d "$path/$module") {
-    print "Module $module doesn't exist\n";
+    print "Module '$module' doesn't exist\n";
     exit 1;
 }
 
-# Download command or cat patch file
+# Prepare patch command
 my $cmd;
-if ($patch =~ /^https?:\/\//) {
-	$cmd = "curl -s @{[quotemeta($patch)]}";
+my $direct;
+my $filename;
+my $dir;
+my $output;
+
+# If raw URL given, try to download and just replace the whole file
+if ($patch =~ m{^https?://raw\.githubusercontent\.com/} ||
+    $patch =~ m{^https?://gitlab\.com/.*?/-/raw/}) {
+	if ($patch =~ m{
+		.*?               # Non-greedy match of everything up to the branch name
+		(?:master|main)/  # Branches name
+		(.*/)?            # Capture all directories after the branch (group 1)
+		([^/]+)$          # Filename (group 2)
+	}x)
+	{
+		$direct = 1;
+		$dir = $1 // "";
+		$filename = $2;
+		}
+	else {
+		print "Patch failed: Can't parse file name from URL\n";
+		exit 1;
+		}
+	my $cd = "$path/$module/$dir";
+	$cd =~ s|/+|/|g;
+	chdir "$cd";
+	$cmd = "curl -w \"%{http_code}\\n\" -s -o $filename @{[quotemeta($patch)]}";
+	}
+# Download command
+elsif ($patch =~ /^https?:\/\//) {
+	$cmd = "curl -L -s @{[quotemeta($patch)]}";
 	chdir "$path/$module";
 	}
+# Local file
 else {
 	$cmd = "cat @{[quotemeta($patch)]}";
 	}
 
-# Apply patch using Patch or Git command
-my $output;
-if (has_command('patch')) {
+# Download file directly
+if ($direct) {
+	$output = `$cmd 2>&1`;
+	if ($output != 200) {
+        	print "Patch failed: Cannot download '$filename'. HTTP status code: $output\n";
+		exit 1;
+    		}
+	}
+# Apply patch using patch command
+elsif (has_command('patch')) {
 	$output = `$cmd 2>&1 | patch -p1 --verbose 2>&1`;
 	if ($output !~ /succeeded/i) {
 		print "Patch failed: $output\n";
 		exit 1;
 		}
-} else {
+	}
+# Apply patch using git command
+else {
 	$output = `$cmd 2>&1 | git apply --reject --verbose --whitespace=fix 2>&1`;
 	if ($output !~ /applied patch.*?cleanly/i) {
 		print "Patch failed: $output\n";
 		exit 1;
 		}
 }
-print "Patch applied successfully to:\n";
-print "  $1\n" while $output =~ /^(?|Applied patch\s+(\S+)|patching file\s+(\S+))/mg;
+
+# Print results
+if ($direct) {
+	print "File replaced successfully:\n";
+	if ($dir) {
+		$dir = $dir ? "/$dir" : "";
+		$dir =~ s|^/||;
+		}
+	print "  $dir$filename\n";
+	system("sed -i '1s|^#!/usr/local/bin/perl|#!/usr/bin/perl|' \"$filename\"");
+	}
+else {
+	print "Patch applied successfully to:\n";
+	print "  $1\n" while $output =~ /^(?|Applied patch\s+(\S+)|patching file\s+(\S+))/mg;
+}
+
+# Restart Webmin
 system("$config_dir/restart");
 
 =pod
@@ -125,7 +196,8 @@ patch
 
 =head1 DESCRIPTION
 
-Apply a patch to Webmin core or its modules from GitHub or a local file.
+Apply a patch to Webmin core or its modules from GitHub/GitLab, a local
+file, or by downloading and replacing the entire file from a raw URL.
 
 =head1 SYNOPSIS
 
