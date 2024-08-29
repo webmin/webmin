@@ -465,7 +465,9 @@ foreach my $f ($sources_list_file, glob("$sources_list_dir/*")) {
 				     'url' => $2,
 				     'enabled' => !$1 };
 			my @w = split(/\s+/, $4);
-			$repo->{'name'} = join("/", @w);
+			my $type = 
+				($l =~ /^(#*)\s*(deb-src)/) ? " ($2)" : "";
+			$repo->{'name'} = join("/", @w).$type;
 			$repo->{'id'} = $repo->{'url'}.$repo->{'name'};
 			push(@rv, $repo);
 			}
