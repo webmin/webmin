@@ -42,6 +42,15 @@ sub get_selinux_command {
 sub get_paths {
     %access = &get_module_acl();
 
+    # Get path from URL params
+    if ($in{'path'} =~ /^%2F/) {
+        $path = un_urlize($in{'path'}, 1) || '';
+    } else {
+        $path = $in{'path'} || '';
+    }
+    $quote_escaped_path = quote_escape($path);
+    $urlized_path = urlize($path);
+
     # Switch to the correct user
     if (&get_product_name() eq 'usermin') {
         # In Usermin, the module only ever runs as the connected user
@@ -51,6 +60,23 @@ sub get_paths {
     elsif ($access{'work_as_root'}) {
         # Root user, so no switching
         @remote_user_info = getpwnam('root');
+	@WebminCore::remote_user_info = @remote_user_info;
+    }
+    elsif ($access{'work_as_dir'}) {
+	# User is based on the directory
+	my $switchto;
+	foreach my $du (split(/\s+/, $access{'work_as_dir'})) {
+		my ($user, $dir) = split(/:/, $du, 2);
+		if (&is_under_directory($dir, $path)) {
+			$switchto = $user;
+			last;
+		}
+	}
+	$switchto ||= $access{'work_as_user'};
+        @remote_user_info = getpwnam($switchto);
+        @remote_user_info ||
+            &error("Unix user $switchto does not exist!");
+        &switch_to_unix_user(\@remote_user_info);
 	@WebminCore::remote_user_info = @remote_user_info;
     }
     elsif ($access{'work_as_user'}) {
@@ -93,13 +119,6 @@ sub get_paths {
         }
     }
     @allowed_paths = map { &simplify_path($_) } &unique(@allowed_paths);
-    if ($in{'path'} =~ /^%2F/) {
-        $path = un_urlize($in{'path'}, 1) || '';
-    } else {
-        $path = $in{'path'} || '';
-    }
-    $quote_escaped_path = quote_escape($path);
-    $urlized_path = urlize($path);
     
     # Work out max upload size
     if (&get_product_name() eq 'usermin') {
