@@ -19,6 +19,7 @@ index_schedd=日
 index_schedw=週間
 index_email=更新レポートをメールで送信
 index_action=更新が必要なときのアクション
+index_action-1=セキュリティアップデートを通知するだけ
 index_action0=通知するだけ
 index_action1=セキュリティ更新プログラムをインストールする
 index_action2=更新プログラムをインストールする
@@ -102,6 +103,7 @@ sched_yes=更新のスケジュールされたチェックがアクティブに�
 sched_no=更新のスケジュールチェックは無効になっています。
 
 log_update=インストールされた $1更新パッケージ
+log_schedup=バックグラウンドで $1 個の更新されたパッケージがインストールされました
 log_sched=スケジュールされた更新を有効にしました
 log_unsched=スケジュールされた更新を無効にしました
 log_refresh=更新された利用可能なパッケージ

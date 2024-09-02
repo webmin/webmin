@@ -19,6 +19,7 @@ index_schedd=dieną
 index_schedw=savaitė
 index_email=Siųsti atnaujinimo ataskaitą el. Paštu
 index_action=Veiksmas, kai reikia atnaujinti
+index_action-1=Tiesiog praneškite apie saugos naujinimus
 index_action0=Tiesiog praneškite
 index_action1=Įdiekite saugos naujinimus
 index_action2=Įdiekite naujinimus
@@ -102,6 +103,7 @@ sched_yes=Suplanuotas atnaujinimų tikrinimas dabar aktyvus.
 sched_no=Suplanuotas atnaujinimų tikrinimas buvo išjungtas.
 
 log_update=Įdiegti $1 atnaujinti paketai
+log_schedup=Fone įdiegtas $1 atnaujintas paketas
 log_sched=Įgalinti suplanuoti atnaujinimai
 log_unsched=Išjungti suplanuoti atnaujinimai
 log_refresh=Atnaujintos turimos pakuotės

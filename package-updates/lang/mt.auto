@@ -19,6 +19,7 @@ index_schedd=jum
 index_schedw=ġimgħa
 index_email=Rapport dwar l-aġġornamenti bl-email
 index_action=Azzjoni meta jkun hemm bżonn aġġornament
+index_action-1=Avża biss għal aġġornamenti tas-sigurtà
 index_action0=Sempliċiment avża
 index_action1=Installa aġġornamenti tas-sigurtà
 index_action2=Installa kwalunkwe aġġornament
@@ -102,6 +103,7 @@ sched_yes=L-iċċekkjar skedat għall-aġġornamenti issa huwa attiv.
 sched_no=L-iċċekkjar skedat għall-aġġornamenti ġie diżattivat.
 
 log_update=Ġew installati pakketti aġġornati $1 
+log_schedup=Sfond installat $1 pakketti aġġornati
 log_sched=Attiva l-aġġornamenti skedati
 log_unsched=Aġġornamenti skedati b'diżabilità
 log_refresh=Pakketti disponibbli aġġornati

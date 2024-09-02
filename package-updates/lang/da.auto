@@ -19,6 +19,7 @@ index_schedd=dag
 index_schedw=uge
 index_email=Rapport om e-mail-opdateringer til
 index_action=Handling, når opdatering er nødvendig
+index_action-1=Bare giv besked for sikkerhedsopdateringer
 index_action0=Bare underret
 index_action1=Installer sikkerhedsopdateringer
 index_action2=Installer eventuelle opdateringer
@@ -102,6 +103,7 @@ sched_yes=Planlagt kontrol for opdateringer er nu aktiv.
 sched_no=Planlagt kontrol for opdateringer er deaktiveret.
 
 log_update=Installerede $1 opdaterede pakker
+log_schedup=Baggrunden installeret $1 opdaterede pakker
 log_sched=Aktiverede planlagte opdateringer
 log_unsched=Deaktiverede planlagte opdateringer
 log_refresh=Opdaterede tilgængelige pakker

@@ -19,6 +19,7 @@ index_schedd=päivä
 index_schedw=viikko
 index_email=Lähetä päivitysraportti sähköpostitse
 index_action=Toimi, kun päivitys tarvitaan
+index_action-1=Ilmoita vain tietoturvapäivityksistä
 index_action0=Vain ilmoita
 index_action1=Asenna tietoturvapäivitykset
 index_action2=Asenna kaikki päivitykset
@@ -102,6 +103,7 @@ sched_yes=Aikataulutettu päivitysten tarkistus on nyt aktiivinen.
 sched_no=Aikataulutettu päivitysten tarkistus on poistettu käytöstä.
 
 log_update=Asennetut $1 päivitetyt paketit
+log_schedup=Taustalla asennettu $1 päivitettyä pakettia
 log_sched=Ajoitetut päivitykset käytössä
 log_unsched=Ajoitetut päivitykset poistettu käytöstä
 log_refresh=Päivitetty saatavilla olevat paketit

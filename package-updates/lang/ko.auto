@@ -19,6 +19,7 @@ index_schedd=일
 index_schedw=주
 index_email=이메일 업데이트 보고서
 index_action=업데이트가 필요한 경우의 조치
+index_action-1=보안 업데이트에 대해 알려주세요
 index_action0=그냥 알려
 index_action1=보안 업데이트 설치
 index_action2=모든 업데이트 설치
@@ -102,6 +103,7 @@ sched_yes=업데이트 예약 확인이 활성화되었습니다.
 sched_no=업데이트 예약 확인이 비활성화되었습니다.
 
 log_update=$1 업데이트 패키지 설치
+log_schedup=백그라운드 설치됨 $1 업데이트된 패키지
 log_sched=예약 업데이트 활성화
 log_unsched=비활성화 된 예약 업데이트
 log_refresh=새로 고침 가능한 패키지
