@@ -19,6 +19,7 @@ index_schedd=dan
 index_schedw=tjedan
 index_email=Izvješće o ažuriranjima e-poštom na
 index_action=Postupak kada je potrebno ažuriranje
+index_action-1=Samo obavijestite za sigurnosna ažuriranja
 index_action0=Samo obavijestite
 index_action1=Instalirajte sigurnosna ažuriranja
 index_action2=Instalirajte sva ažuriranja
@@ -102,6 +103,7 @@ sched_yes=Planirana provjera ažuriranja sada je aktivna.
 sched_no=Planirano provjeravanje ažuriranja onemogućeno je.
 
 log_update=Instalirani $1 ažurirani paketi
+log_schedup=U pozadini su instalirani $1 ažurirani paketi
 log_sched=Omogućena zakazana ažuriranja
 log_unsched=Onemogućena su zakazana ažuriranja
 log_refresh=Osvježeni dostupni paketi

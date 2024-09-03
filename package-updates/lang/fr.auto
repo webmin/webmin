@@ -1,3 +1,4 @@
+index_action-1=Informez-moi simplement des mises à jour de sécurité
 index_none_security=Aucun package disponible pour les mises à jour de sécurité n'a été trouvé.
 index_manynew=Il existe $1 packages disponibles pour l'installation. Utilisez le champ de recherche pour trouver ceux que vous souhaitez installer.
 index_tabpkgs=Mises à jour du package
@@ -16,6 +17,7 @@ index_repoheader=Nouvelles options de référentiel de packages
 update_title2=Installer des packages
 update_enone=Aucun forfait sélectionné
 
+log_schedup=$1 paquets mis à jour installés en arrière-plan
 log_enable_repos=Référentiels de packages $1 activés
 log_disable_repos=Référentiels de packages $1 désactivés
 log_delete_repos=Référentiels de packages $1 supprimés

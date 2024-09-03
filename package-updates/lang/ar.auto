@@ -1,3 +1,4 @@
+index_action-1=فقط قم بإخطارنا بتحديثات الأمان
 index_none_security=لم يتم العثور على حزم متوفرة لتحديثات الأمان.
 index_tabpkgs=تحديثات الحزمة
 index_tabscheds=ترقيات مجدولة
@@ -15,6 +16,7 @@ index_repoheader=خيارات مستودع الحزمة الجديدة
 update_title2=تثبيت الحزم
 update_enone=لم يتم تحديد حزم
 
+log_schedup=تم تثبيت $1 حزمة محدثة في الخلفية
 log_enable_repos=تم تمكين مستودعات حزمة$1
 log_disable_repos=تم تعطيل مستودعات حزمة$1
 log_delete_repos=تم حذف مستودعات حزمة$1

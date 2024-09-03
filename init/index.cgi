@@ -227,8 +227,8 @@ elsif ($init_mode eq "win32" && $access{'bootup'}) {
 	foreach $svc (&list_win32_services()) {
 		print &ui_columns_row([
 			&ui_checkbox("d", $svc->{'name'}, undef),
-			$svc->{'name'},
-			$svc->{'desc'},
+			&html_escape($svc->{'name'}),
+			&html_escape($svc->{'desc'}),
 			$text{'index_sboot'.$svc->{'boot'}} ||
 			  $svc->{'boot_desc'},
 			$text{'index_sstate'.$svc->{'state'}} ||
@@ -262,8 +262,9 @@ elsif ($init_mode eq "rc" && $access{'bootup'}) {
 	foreach $rc (&list_rc_scripts()) {
 		print &ui_columns_row([
 			&ui_checkbox("d", $rc->{'name'}, undef),
-			&ui_link("edit_rc.cgi?name=".&urlize($rc->{'name'}), $rc->{'name'}),
-			$rc->{'desc'},
+			&ui_link("edit_rc.cgi?name=".&urlize($rc->{'name'}),
+				 &html_escape($rc->{'name'})),
+			&html_escape($rc->{'desc'}),
 			$rc->{'enabled'} == 1 ? &ui_text_color("$text{'yes'}", 'success') :
 			$rc->{'enabled'} == 2 ? "<i>$text{'index_unknown'}</i>":
 				&ui_text_color("$text{'no'}", 'warn'),
@@ -301,8 +302,8 @@ elsif ($init_mode eq "upstart" && $access{'bootup'}) {
 			}
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef, 0),
-            &ui_link($l, $u->{'name'}),
-			$u->{'desc'},
+			&ui_link($l, &html_escape($u->{'name'})),
+			&html_escape($u->{'desc'}),
 			$u->{'boot'} eq 'start' ? &ui_text_color("$text{'yes'}", 'success') :
 			  $u->{'boot'} eq 'stop' ?
 			  &ui_text_color("$text{'no'}", 'warn') :
@@ -349,8 +350,9 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef),
 			$u->{'boot'} == -1 ?
-			    &html_escape($u->{'name'}) : &ui_link($l, $u->{'name'}),
-			$u->{'desc'},
+			    &html_escape($u->{'name'}) :
+			    &ui_link($l, &html_escape($u->{'name'})),
+			&html_escape($u->{'desc'}),
 			$u->{'fullstatus'} || "<i>$text{'index_unknown'}</i>",
 			$u->{'boot'} == 1 ?
 			    &ui_text_color("$text{'yes'}", 'success') :

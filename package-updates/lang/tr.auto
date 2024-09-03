@@ -19,6 +19,7 @@ index_schedd=gün
 index_schedw=hafta
 index_email=E-posta güncellemeleri raporunu
 index_action=Güncelleme gerektiğinde yapılacaklar
+index_action-1=Sadece güvenlik güncellemeleri için bildirimde bulunun
 index_action0=Sadece bildir
 index_action1=Güvenlik güncellemelerini yükleyin
 index_action2=Tüm güncellemeleri yükle
@@ -102,6 +103,7 @@ sched_yes=Güncellemelerin zamanlanmış kontrolü artık aktif.
 sched_no=Güncellemelerin zamanlanmış denetimi devre dışı bırakıldı.
 
 log_update=$1 güncellenmiş paket yüklendi
+log_schedup=Arkaplanda $1 güncellenmiş paket kuruldu
 log_sched=Etkinleştirilmiş zamanlanmış güncellemeler
 log_unsched=Devre dışı zamanlanmış güncellemeler
 log_refresh=Yenilenmiş kullanılabilir paketler

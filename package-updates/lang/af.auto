@@ -19,6 +19,7 @@ index_schedd=dag
 index_schedw=week
 index_email=E-posopdateringsverslag aan
 index_action=Aksie wanneer opdatering nodig is
+index_action-1=Stel net in kennis vir sekuriteitsopdaterings
 index_action0=Stel net in kennis
 index_action1=Installeer sekuriteitsopdaterings
 index_action2=Installeer enige opdaterings
@@ -102,6 +103,7 @@ sched_yes=Geplande kontrole vir opdaterings is nou aktief.
 sched_no=Geplande kontrole vir opdaterings is gedeaktiveer.
 
 log_update=$1 opgedateerde pakkette geïnstalleer
+log_schedup=Agtergrond geïnstalleer $1 opgedateerde pakkette
 log_sched=Geskeduleerde opdaterings geaktiveer
 log_unsched=Geskeduleerde opdaterings is uitgeskakel
 log_refresh=Verfris beskikbare pakkette

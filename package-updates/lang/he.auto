@@ -19,6 +19,7 @@ index_schedd=יום
 index_schedw=שבוע
 index_email=דווח על עדכוני דוא"ל ל
 index_action=פעולה בעת הצורך בעדכון
+index_action-1=פשוט הודע לקבלת עדכוני אבטחה
 index_action0=פשוט תודיעו
 index_action1=התקן עדכוני אבטחה
 index_action2=התקן עדכונים
@@ -102,6 +103,7 @@ sched_yes=בדיקה מתוזמנת אחר עדכונים פעילה כעת.
 sched_no=הבדיקה המתוזמנת אחר עדכונים הושבתה.
 
 log_update=התקנת חבילות מעודכנות של $1 
+log_schedup=רקע מותקן $1 חבילות מעודכנות
 log_sched=אפשר עדכונים מתוזמנים
 log_unsched=עדכונים מתוזמנים מושבתים
 log_refresh=חבילות זמינות רעננות

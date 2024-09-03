@@ -32,8 +32,9 @@ print &ui_columns_start([ $text{'index_name'}, $text{'index_desc'} ], 100);
 foreach $p (@_) {
 	local $t = $text{'desc_'.$p->{'name'}};
 	print &ui_columns_row([
-		&ui_link("edit_pam.cgi?idx=".$p->{'index'}, &html_escape($p->{'name'}) ),
-		$p->{'desc'} || $t
+		&ui_link("edit_pam.cgi?idx=".$p->{'index'},
+			 &html_escape($p->{'name'}) ),
+		&html_escape($p->{'desc'} || $t),
 		]);
 	}
 print &ui_columns_end();

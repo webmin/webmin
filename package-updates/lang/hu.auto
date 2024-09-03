@@ -1,3 +1,4 @@
+index_action-1=Csak értesítsen a biztonsági frissítésekről
 index_none_security=Nem találhatók elérhető csomagok a biztonsági frissítésekhez.
 index_manynew=$1 csomag érhető el a telepítéshez. A keresőmező segítségével keresse meg azokat, amelyeket telepíteni szeretne.
 index_tabpkgs=Csomagfrissítések
@@ -18,6 +19,7 @@ update_enone=Nincs kiválasztva csomag
 update_rebootdesc=Az egyik telepített csomag újraindítást igényel a teljes telepítéshez.
 update_reboot=Indítsa újra most
 
+log_schedup=A háttérben telepített $1 frissített csomag
 log_enable_repos=Engedélyezve a $1 csomag tárolói
 log_disable_repos=Letiltva a (z) $1 csomag tárolói
 log_delete_repos=Törölték a (z) $1 csomag adattárakat

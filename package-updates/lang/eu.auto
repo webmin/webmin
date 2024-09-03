@@ -19,6 +19,7 @@ index_schedd=egun
 index_schedw=aste
 index_email=Eguneratze elektronikoen berri emateko
 index_action=Eguneratu behar denean eguneratzea
+index_action-1=Besterik gabe, jakinarazi segurtasun-eguneratzeetarako
 index_action0=Jakinarazi besterik ez dago
 index_action1=Instalatu segurtasun eguneratzeak
 index_action2=Instalatu eguneratzeak
@@ -102,6 +103,7 @@ sched_yes=Eguneratzeak planifikatuta egotea aktibo dago.
 sched_no=Eguneratzeak kontrolatzeko programazioa desgaituta dago.
 
 log_update=$1 pakete eguneratuak instalatu dira
+log_schedup=Atzeko planoan instalatutako $1 pakete eguneratuak
 log_sched=Programatutako eguneratzeak gaitu dira
 log_unsched=Programatutako eguneratzeak desgaituta daude
 log_refresh=Eskuragarri dauden paketeak eguneratu

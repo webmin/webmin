@@ -19,6 +19,7 @@ index_schedd=deň
 index_schedw=týždeň
 index_email=Správa o aktualizáciách e-mailom na adresu
 index_action=Akcia je potrebná, ak je potrebná aktualizácia
+index_action-1=Stačí upozorniť na aktualizácie zabezpečenia
 index_action0=Stačí upozorniť
 index_action1=Nainštalujte aktualizácie zabezpečenia
 index_action2=Nainštalujte všetky aktualizácie
@@ -102,6 +103,7 @@ sched_yes=Plánovaná kontrola aktualizácií je teraz aktívna.
 sched_no=Plánovaná kontrola aktualizácií bola zakázaná.
 
 log_update=Nainštalované $1 aktualizované balíčky
+log_schedup=Na pozadí nainštalovaných $1 aktualizovaných balíkov
 log_sched=Povolené naplánované aktualizácie
 log_unsched=Zakázané naplánované aktualizácie
 log_refresh=Obnovené dostupné balíčky

@@ -19,6 +19,7 @@ index_schedd=ngày
 index_schedw=tuần
 index_email=Email cập nhật báo cáo tới
 index_action=Hành động khi cần cập nhật
+index_action-1=Chỉ cần thông báo để cập nhật bảo mật
 index_action0=Chỉ cần thông báo
 index_action1=Cài đặt cập nhật bảo mật
 index_action2=Cài đặt bất kỳ bản cập nhật
@@ -102,6 +103,7 @@ sched_yes=Kiểm tra theo lịch trình để cập nhật hiện đang hoạt �
 sched_no=Kiểm tra theo lịch trình để cập nhật đã bị vô hiệu hóa.
 
 log_update=Đã cài đặt $1 gói cập nhật
+log_schedup=Cài đặt nền $1 gói đã cập nhật
 log_sched=Đã bật cập nhật theo lịch trình
 log_unsched=Vô hiệu hóa cập nhật theo lịch trình
 log_refresh=Làm mới các gói có sẵn

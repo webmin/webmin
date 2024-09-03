@@ -19,6 +19,7 @@ index_schedd=dan
 index_schedw=teden
 index_email=Poročilo o posodobitvah po e-pošti
 index_action=Ukrepati, ko je potrebna posodobitev
+index_action-1=Samo obvesti za varnostne posodobitve
 index_action0=Samo obvestite
 index_action1=Namestite varnostne posodobitve
 index_action2=Namestite kakršne koli posodobitve
@@ -102,6 +103,7 @@ sched_yes=Planirano preverjanje posodobitev je zdaj aktivno.
 sched_no=Planirano preverjanje posodobitev je onemogočeno.
 
 log_update=Nameščeni $1 posodobljeni paketi
+log_schedup=V ozadju nameščen $1 posodobljen paket
 log_sched=Omogočene načrtovane posodobitve
 log_unsched=Onemogočene načrtovane posodobitve
 log_refresh=Osveženi razpoložljivi paketi

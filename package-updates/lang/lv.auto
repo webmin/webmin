@@ -19,6 +19,7 @@ index_schedd=dienā
 index_schedw=nedēļā
 index_email=E-pasta atjauninājumu ziņojums adresātam
 index_action=Darbība, kad nepieciešams atjauninājums
+index_action-1=Vienkārši paziņojiet par drošības atjauninājumiem
 index_action0=Vienkārši paziņo
 index_action1=Instalējiet drošības atjauninājumus
 index_action2=Instalējiet visus atjauninājumus
@@ -102,6 +103,7 @@ sched_yes=Plānotā atjauninājumu pārbaude tagad ir aktīva.
 sched_no=Plānotā atjauninājumu pārbaude ir atspējota.
 
 log_update=Instalētas $1 atjauninātas paketes
+log_schedup=Fonā instalētas $1 atjauninātās pakotnes
 log_sched=Iespējot plānotos atjauninājumus
 log_unsched=Atspējot plānotos atjauninājumus
 log_refresh=Atsvaidzināti pieejamie iepakojumi
