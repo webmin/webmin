@@ -14,6 +14,8 @@ index_esetup=在您的系统上不存在 Redhat ADSL 配置文件 $1，不过，
 index_setup=设定配置文件
 index_cancel=取消连接
 index_canceldesc=ADSL客户端目前正在尝试连接，按此按钮可以使用 $1 命令来取消。
+index_cdemand=按需取消
+index_cdemanddesc=ADSL客户端当前正在等待按需连接请求。单击此按钮停止连接请求 $1.
 
 index_header=ADSL客户端配置选项
 index_desc=下面的设定是用于在您系统上启动所有新的ADSL连接，如果您更改这里，连接必须先断开，然后再重新连接，修改内容才会生效。
@@ -32,7 +34,7 @@ index_bytes=字节
 index_fw=连接时起用防火墙
 index_fw_none=无
 index_fw_standalone=用于单一主机
-index_fw_masquerade=用于NAT gateway
+index_fw_masquerade=用于NAT 网关
 index_connect=尝试连接时间
 index_forever=永久连接
 
@@ -62,3 +64,5 @@ log_start=启动ADSL
 log_bootup=开机时自动启动ADSL
 log_bootdown=关闭开机时自动启动ADSL
 log_setup=设置为默认配置
+
+__norefs=1
