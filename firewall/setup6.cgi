@@ -78,6 +78,8 @@ if ($in{'auto'}) {
 			     'rules' => [ ],
 			     'defaults' => { } };
 		$table->{'defaults'}->{'INPUT'} = 'DROP';
+		my $sd = &supports_conntrack() ? "ctstate" : "state";
+		my $sm = $sd eq "state" ? "state" : "conntrack";
 		push(@{$table->{'rules'}},
 		     { 'chain' => 'INPUT',
 		       'i' => [ "!", $iface ],
@@ -90,13 +92,13 @@ if ($in{'auto'}) {
 		       'j' => [ "", 'ACCEPT' ],
 		       'cmt' => 'Accept traffic with the ACK flag set' },
 		     { 'chain' => 'INPUT',
-		       'm' => [ [ "", "state" ] ],
-		       'state' => [ "", "ESTABLISHED" ],
+		       'm' => [ [ "", $sm ] ],
+		       $sd => [ "", "ESTABLISHED" ],
 		       'j' => [ "", 'ACCEPT' ],
 		       'cmt' => 'Allow incoming data that is part of a connection we established' },
 		     { 'chain' => 'INPUT',
-		       'm' => [ [ "", "state" ] ],
-		       'state' => [ "", "RELATED" ],
+		       'm' => [ [ "", $sm ] ],
+		       $sd => [ "", "RELATED" ],
 		       'j' => [ "", 'ACCEPT' ],
 		       'cmt' => 'Allow data that is related to existing connections' },
 		     { 'chain' => 'INPUT',
