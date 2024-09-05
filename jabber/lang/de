@@ -2,7 +2,7 @@ index_title=Jabber-Instant-Messaging-Server
 index_econfig=Die Jabber-Konfigurationsdatei $1 existiert nicht. Entweder Jabber ist nicht installiert, oder die <a href='$2'>Modulkonfiguration</a> ist fehlerhaft.
 index_edir=Das Jabber-Basisverzeichnis $1 existiert nicht. Entweder Jabber ist nicht installiert, oder die <a href='$2'>Modulkonfiguration</a> ist fehlerhaft.
 index_emodules=Die Perl-Module $1 und $2, welche von Webmin für den Umgang mit der Jabber-XML-Konfiguration erforderlich sind, sind nicht installiert. <a href='$3'>Hier klicken</a>, um sie direkt von CPAN zu installieren.
-index_emodule=Das Perl-Modul $1, welche von Webmin für den Umgang mit der Jabber-XML-Konfiguration erforderlich ist, ist nicht installiert. <a href='$2'>Hier klicken</a> um es direkt von CPAN zu installieren.
+index_emodule=Das Perl-Modul $1, welches von Webmin für den Umgang mit der Jabber-XML-Konfiguration erforderlich ist, ist nicht installiert. <a href='$2'>Hier klicken</a> um es direkt von CPAN zu installieren.
 index_expat=Bitte vergewissern, dass die Expat-C-Bibliothek und Header installiert sind, bevor die Perl-Module installiert werden. Die Installation wird scheitern, sofern diese nicht verfügbar gemacht wurden.
 index_eparse=Die $1 Perl-Modul konnte die Jabber-Konfigurationsdatei nicht analysieren: $2
 index_ejabberd=Das Jabber-Server-Programm $1 wurde nicht auf diesem System gefunden. Entweder Jabber ist nicht installiert, oder die <a href='$2'>Modulkonfiguration</a> ist fehlerhaft.
