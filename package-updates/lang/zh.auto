@@ -19,6 +19,7 @@ index_schedd=天
 index_schedw=周
 index_email=电子邮件更新报告至
 index_action=需要更新时采取的措施
+index_action-1=仅通知安全更新
 index_action0=只是通知
 index_action1=安装安全更新
 index_action2=安装所有更新
@@ -102,6 +103,7 @@ sched_yes=计划检查更新现在处于活动状态。
 sched_no=预定的更新检查已被禁用。
 
 log_update=已安装 $1个更新程序包
+log_schedup=后台安装了 $1 个更新包
 log_sched=启用的预定更新
 log_unsched=禁用的计划更新
 log_refresh=刷新可用包

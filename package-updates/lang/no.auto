@@ -1,1 +1,4 @@
+index_action-1=Bare gi beskjed om sikkerhetsoppdateringer
 index_none_security=Ingen tilgjengelige pakker for sikkerhetsoppdateringer ble funnet.
+
+log_schedup=Bakgrunn installert $1 oppdaterte pakker

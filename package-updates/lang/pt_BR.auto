@@ -19,6 +19,7 @@ index_schedd=dia
 index_schedw=semana
 index_email=Relatório de atualizações por e-mail para
 index_action=Ação quando a atualização é necessária
+index_action-1=Apenas notifique para atualizações de segurança
 index_action0=Apenas notifique
 index_action1=Instalar atualizações de segurança
 index_action2=Instale todas as atualizações
@@ -102,6 +103,7 @@ sched_yes=A verificação agendada de atualizações agora está ativa.
 sched_no=A verificação agendada de atualizações foi desativada.
 
 log_update=$1 pacotes atualizados instalados
+log_schedup=Em segundo plano, $1 pacotes atualizados foram instalados
 log_sched=Atualizações agendadas ativadas
 log_unsched=Atualizações agendadas desativadas
 log_refresh=Pacotes disponíveis atualizados

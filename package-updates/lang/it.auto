@@ -1,1 +1,4 @@
+index_action-1=Basta avvisare per gli aggiornamenti di sicurezza
 index_none_security=Non è stato trovato alcun pacchetto disponibile per gli aggiornamenti di sicurezza.
+
+log_schedup=In background sono stati installati $1 pacchetti aggiornati

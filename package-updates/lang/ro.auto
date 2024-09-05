@@ -19,6 +19,7 @@ index_schedd=zi
 index_schedw=săptămână
 index_email=Actualizări prin e-mail raportează către
 index_action=Acțiune atunci când este nevoie de actualizare
+index_action-1=Doar notificați pentru actualizări de securitate
 index_action0=Doar anunță
 index_action1=Instalați actualizări de securitate
 index_action2=Instalați orice actualizări
@@ -102,6 +103,7 @@ sched_yes=Verificarea programată a actualizărilor este acum activă.
 sched_no=Verificarea programată a actualizărilor a fost dezactivată.
 
 log_update=Pachetele actualizate $1 au fost instalate
+log_schedup=$1 pachete actualizate instalate în fundal
 log_sched=Activarea actualizărilor programate
 log_unsched=Dezactivarea actualizărilor programate
 log_refresh=Pachetele disponibile actualizate

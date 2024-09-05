@@ -19,6 +19,7 @@ index_schedd=hari
 index_schedw=minggu
 index_email=Laporan kemas kini e-mel kepada
 index_action=Tindakan apabila kemas kini diperlukan
+index_action-1=Hanya maklumkan untuk kemas kini keselamatan
 index_action0=Katakan saja
 index_action1=Pasang kemas kini keselamatan
 index_action2=Pasang sebarang kemaskini
@@ -102,6 +103,7 @@ sched_yes=Pemeriksaan yang dijadualkan untuk kemas kini kini aktif.
 sched_no=Pemeriksaan yang dijadualkan untuk kemas kini telah dilumpuhkan.
 
 log_update=Dipasang $1 pakej yang dikemas kini
+log_schedup=Latar belakang dipasang $1 pakej dikemas kini
 log_sched=Kemas kini dijadualkan yang diaktifkan
 log_unsched=Pembaharuan berjadual yang cacat
 log_refresh=Pakej sedia ada yang disegarkan

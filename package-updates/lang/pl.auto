@@ -1,3 +1,4 @@
+index_action-1=Po prostu powiadom o aktualizacjach zabezpieczeń
 index_none_security=Nie znaleziono dostępnych pakietów aktualizacji zabezpieczeń.
 index_manynew=Dostępnych jest $1 pakietów do instalacji. Użyj pola wyszukiwania, aby znaleźć te, które chcesz zainstalować.
 index_tabpkgs=Aktualizacje pakietów
@@ -16,6 +17,7 @@ index_repoheader=Nowe opcje repozytorium pakietów
 update_title2=Zainstaluj pakiety
 update_enone=Nie wybrano żadnych pakietów
 
+log_schedup=Zainstalowano w tle $1 zaktualizowanych pakietów
 log_enable_repos=Włączono repozytoria pakietów $1 
 log_disable_repos=Wyłączono repozytoria pakietów $1 
 log_delete_repos=Usunięte repozytoria pakietów $1 
