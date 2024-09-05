@@ -1,0 +1,6 @@
+index_title=文字登入
+index_epython=Ajaxterm 需要运行 Python ，但在系统上找不到 $1 命令.
+index_estart=$1 秒后Ajaxterm没有开始在端口 $2 上接受连接.
+index_popup=在新窗口打开 ..
+index_credits=使用了Antony Lesuisse的 <a href='$1' target=_new>Ajaxterm</a> 代码.
+__norefs=1
