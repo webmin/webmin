@@ -451,7 +451,7 @@ else {
 		$in{'value2'} =~ /^\d+$/ ||
 			&error($text{'edit_ensec3value2'});
 		$in{'value3'} =~ /^[a-zA-Z0-9\+\/]+$/ ||
-			&error($text{'edit_ensec3value2'});
+			&error($text{'edit_ensec3value3'});
 		$vals = join(" ", "(", $in{'value0'}, $in{'value1'},
                                        $in{'value2'},
 				       $in{'value3'}, ")");
