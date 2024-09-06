@@ -1,6 +1,0 @@
-index_show1=Alle Dateisysteme anzeigen
-index_show0=Nicht bearbeitbare Dateisysteme ausblenden
-index_addtype=vom Typ
-
-linux_nofail=Boot fortsetzen, auch wenn die Bereitstellung fehlschlägt?
-linux_noserverino=Inode-Nummern auf Client-Seite generieren?

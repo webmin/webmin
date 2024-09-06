@@ -1,4 +1,5 @@
 index_mail=Pošalji e-poštu po završetku?
+index_cdatetime=Trenutačni datum i vrijeme
 index_noat=Naredba $1 nije pronađena u vašem sustavu - možda nije instalirana ili nije dostupna za vaš operativni sustav.
 index_nostyle=Webmin ne zna upravljati naredbama rasporeda na ovom operativnom sustavu.
 index_stop=Zaustavite poslužitelj zakazanih naredbi

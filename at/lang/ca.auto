@@ -1,3 +1,4 @@
+index_cdatetime=Data i hora actuals
 index_nostyle=Webmin no sap com gestionar ordres de programació d’aquest sistema operatiu.
 index_stop=Atura el servidor d'ordres programats
 index_stopdesc=Apagueu el procés del servidor de fons <tt>atd</tt> que executa ordres programades. Això evitarà que les ordres s'executin a les hores especificades.

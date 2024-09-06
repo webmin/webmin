@@ -1,4 +1,5 @@
 index_mail=完成時發送電子郵件嗎？
+index_cdatetime=目前日期和時間
 index_allow=允許預定的命令用戶
 index_amode=用戶允許
 index_amode0=所有Unix用戶

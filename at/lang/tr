@@ -9,8 +9,6 @@ index_exec=Çalıştırılma tarihi
 index_created=Oluşturulma tarihi
 index_dir=Çalıştırılacağı dizin
 index_return=komut listesi
-index_cdate=Şimdiki tarih
-index_ctime=Şimdiki saat
 
 edit_title=Zamanlandırılmış Komut
 edit_cmd=Çalıştırılacak tam betik
