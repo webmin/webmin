@@ -1134,3 +1134,14 @@ mods_available=Verfügbar für Installationen
 mods_ecannot=Sie dürfen die Apachemodule nicht konfigurieren
 mods_save=Aktiviere ausgewählte Module
 mods_desc=Auf dieser Seite können Sie auswählen, welche Apachemodule aktiviert werden. Klicken Sie dazu einfach auf die Checkbox neben dem Namen. Seien Sie jedoch vorsichtig, denn spezifische dazugehörige Direktiven werden hierdurch nicht mehr erkannt.
+
+virt_eprotocol=Sie müssen mindestens eine verwendbare SSL/TLS-Protokollversion auswählen
+
+core_protocols=Zu verwendende HTTP-Protokolle
+core_protocols_sel=Ausgewählte Protokolle:
+core_protocols_http/1.1=HTTP/1.1
+core_protocols_http/2=HTTP/2
+core_protocols_h2=Verschlüsseltes HTTP/2
+core_protocols_h2c=Unverschlüsseltes HTTP/2
+core_eprotcols=Keine Protokolle ausgewählt!
+core_eoptionsboth=Verzeichnisoptionen: Alle aktiven Optionen müssen entweder „Für Verzeichnis festlegen“ oder „Mit übergeordnetem Verzeichnis zusammengeführt“ sein, jedoch nicht beides
