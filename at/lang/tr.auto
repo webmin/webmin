@@ -1,4 +1,5 @@
 index_mail=Tamamlandığında e-posta gönderilsin mi?
+index_cdatetime=Güncel tarih ve saat
 index_allow=İzin verilen zamanlanmış komut kullanıcıları
 index_amode=İzin verilecek kullanıcılar
 index_amode0=Tüm Unix kullanıcıları

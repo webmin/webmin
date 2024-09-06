@@ -1,3 +1,4 @@
+index_cdatetime=Date et heure actuelles
 index_noat=La commande $1 est introuvable sur votre système - elle n'est peut-être pas installée ou n'est pas disponible pour votre système d'exploitation.
 index_nostyle=Webmin ne sait pas comment gérer les commandes de planification sur ce système d'exploitation.
 index_stop=Arrêter le serveur de commandes programmées

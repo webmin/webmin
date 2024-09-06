@@ -1,13 +1,17 @@
 main_homepage=首页
 main_feedback=反馈..
-main_switch=更改用户..
+main_switch=切换账户..
 main_logout=退出
 main_version=构建于 $2 ($3), 版本 $1 
 main_title=Webmin $1 在 $2 ($3)
 main_title2=Webmin
+main_title3=Webmin $1 ($2)
 main_none=你无权使用此 Webmin 模块.
 main_skill=熟练度
+main_readonly=(只读模式)
 main_return=返回到 $1
+main_unused=未使用的模块
+main_refreshmods=刷榜模块
 
 link_essl=网络::SSLeay Perl 模块需要使用的 HTTPS 没有安装.
 
@@ -19,6 +23,7 @@ category_net=网络
 category_syslet=Syslets
 category_cluster=群集
 category_info=信息
+category_=工具
 
 longcategory_servers=此模块可配置 web, email, FTP 等服务器
 longcategory_hardware=此模块可以配置 打印机, 磁盘 等硬件的设置
@@ -27,22 +32,28 @@ longcategory_webmin=此模块可以配置 Webmin 自身
 longcategory_net=此模块可以配置 网络和网络服务
 longcategory_cluster=此模块可以 在一个界面中管理多个服务器
 longcategory_info=此模块可以 显示关于你的系统的信息
+longcategory_=执行其他杂项任务的模块
 
-header_webmin=Webmin 索引
-header_module=Module 索引
+header_webmin=Webmin 首页
+header_module=模块首页
 header_help=帮助..
 header_config=模块配置
 header_servers=Webmin 服务器
 
-index=索引
+index=首页
 yes=是
 no=否
+or=或
 save=保存
 create=新建
 delete=删除
 find=查找
 error=错误
+error_previous=上一页
+error_stack=调用堆栈跟踪
+error_file=文件
 error_line=行
+error_sub=功能
 error_stackline=在文件 $1 中第 $2 行调用 $3
 efilewrite=写失败 $1 : $2
 efileclose=关闭时无法写入 $1 : $2
@@ -56,11 +67,17 @@ fail=失败
 helpsearch=搜索文档..
 switch_remote_euser=Unix 用户 $1 不存在.
 programname=Webmin
+euserdbacl=无法获取用户ACL : $1
+euserdbacl2=无法更新用户ACL : $1
+egroupdbacl=无法获取群组ACL : $1
+egroupdbacl2=无法更新群组ACL : $1
 
 chooser_title1=选择文件..
 chooser_title2=选择目录..
 chooser_dir=$1 的目录
 chooser_ok=OK
+chooser_date=选择日期
+chooser_eopen=罗列失败 : $1
 
 users_title1=选择多个用户..
 users_title2=选择用户..
@@ -78,7 +95,12 @@ groups_ok=确定
 groups_cancel=取消
 groups_clear=清除
 
+modules_title1=选择模块..
+modules_title2=选择模块..
+modules_sel=选择模块
+modules_all=全部模块
 modules_ok=确定
+modules_cancel=取消
 modules_clear=清除
 
 config_ecannot=你没有权限配置这个模块
@@ -87,6 +109,7 @@ config_dir=为模块 $1
 config_header=$1的可配置的选项
 config_none=无
 config_eaccess=你没有权限访问这个模块
+config_emodule=模块不存在
 config_err=保存设置失败
 config_nochange=不能修改
 config_setto=设置为
@@ -94,16 +117,21 @@ config_ewebmin=参数类型 14 为仅仅工作在 Webmin
 
 help_err=显示帮助失败
 help_epath=缺少或无效的帮助路径
+help_efile3=无法从模块 $2 读取帮助页 $1
 help_eheader=缺少 &lt;header&gt; 章节
+help_einclude3=未能包含帮助页面 $1
 help_eif=$1 失败 : $2
 help_eexec=$1 失败 : $2
 
 referer_title=安全警告
 referer_warn=<b>警告!</b> Webmin 发现来自链接 $1 的程序 $2 , 这个程序看起来是 Webmin 服务器之外的程序. 这可能导致欺骗你的服务器执行一个危险的命令.
 referer_warn_unknown=<b>警告!</b> 发现来自未知链接的程序 $1, 这个程序看起来是 Webmin 服务器之外的程序. 这可能导致欺骗你的服务器执行一个危险的命令.
+referer_fix1=如果这是一个合法的链接，您可以允许来自此URL的链接，如下所示 :<ul><li>正常登录 Webmin.</li><li>跳转 <b>Webmin 配置</b> 模块.</li><li>点击可信推荐人图标.</li><li>在字段中输入主机名 $1 <b>受信任的网站</b> , 后单击 <b>保存.</b></li></ul>
+referer_fix2=或者，您可以通过以下方式从命令行配置 Webmin t以允许此链接 :<ul><li>登陆为 <tt>root</tt>身份, 并编辑 <tt>/etc/webmin/config</tt> 文件.</li><li>在文件末尾添加一行 <tt>referers=$1</tt> 值, 亦或 <tt>referers</tt> 已经存在 <tt>$1</tt> 文件里头.</li><li>那么保存文件.</li></ul>
 referer_fix3u=确保将浏览器配置为发送 Referer 信息，以便 Webmin 可以对其进行验证。
+referer_fix2u=或者，您可以通过以下方式配置 Webmin 以允许来自未知引用者的链接 :<ul><li>登陆为 <tt>root</tt>身份, 编辑 <tt>/etc/webmin/config</tt> 文件.</li><li>找到 <tt>referers_none=1</tt> 并修改 <tt>referers_none=0</tt>.</li><li>那么保存文件.</li></ul><p></p>警告 - 这样做将使您的系统暴露在反向 XSS 攻击之中我们不建议您这么干!
 
-session_header=登陆到 Webmin
+session_header=登入 Webmin
 session_mesg=你必需输入一个用户名和密码才能登陆到 $1 的 Webmin 服务器.
 session_mesg2=为了登陆，你必需输入一个用户名和密码.
 session_user=用户名
@@ -114,13 +142,18 @@ session_clear=清除
 session_failed=登陆失败，请重试
 session_twofailed=双因素身份验证失败：$1
 session_logout=退出成功. 使用下面的表单可以再次登陆
-session_timed_out=Session 超时, 超过 $1 分钟没有活动.
+session_timed_out=会话超时, 超过 $1 分钟没有活动.
 session_save=下次不输入登陆信息, 直接登陆?
 
 pam_login=登录
+pam_mesg=您必须回答以下问题才能使用 $1 登录Webmin服务器。
+pam_mesg2=您必须回答以下问题才能登录。
+pam_login=继续
 pam_restart=重试
 
 acl_root=根目录 文件选择器
+acl_otherdirs=文件选择器中的其他可见目录
+acl_nodot=是否需要在文件选择器中隐藏一部分文件？
 acl_home=用户根目录
 acl_uedit=在用户选择器中可见的
 acl_uedit_all=所有用户
@@ -144,6 +177,9 @@ acl_rpc=可以接受 RPC 调用?
 acl_rpc2=仅允许 <tt>root</tt> 或 <tt>admin</tt>
 acl_rpc1=是
 acl_rpc0=否
+acl_readonly2=是否想用演示模式呢?
+acl_readonlyyes=是 (某些模块可能不可用)
+acl_negative=是否向用户授予新模块权限？
 acl_fileunix=以 Unix 用户浏览文件
 acl_sameunix=与 Webmin 登录相同
 acl_webminsearch=显示 Webmin 搜索字段？
@@ -191,10 +227,12 @@ sday_5=五
 sday_6=六
 
 emodule=访问被拒绝 : 用户 $1 没有权限使用 $2 这个模块
+emodulecheck=您的系统上没有 $1 模块
+elock_tries2=在 $2 分钟后锁定文件 $1 失败. 最后一个错误是 : $3
 
-skill_high=专家
-skill_medium=中级
-skill_low=新手
+skill_high=专家模式
+skill_medium=中级模式
+skill_low=新手模式
 
 feedback_title=Webmin 反馈
 feedback_desc=这个表单允许你发送错误报告或者你的建议给 Webmin 的开发者, 任何问题或者缺少功能你都可以发送将这些信息发送给我们. 当点击了发送按钮后, 你输入在表单中的所有内容都将发送到 $1.
@@ -225,8 +263,12 @@ feedback_enoto=没有输入 发送反馈到 的地址
 feedback_ecannot=你没有权限发送反馈内容
 feedback_ecannot2=你没有权限发送设置文件
 
+progress_size2=正在下载 $1 ($2) ..
 progress_nosize=正在下载 $1 ..
+progress_datan=接收 $1 ($2 %)
+progress_data2n=接收 $1
 progress_done=.. 下载完成.
+progress_incache=在缓存中找到 $1 ..
 
 readparse_cdheader=缺少 Content-Disposition header
 readparse_enc=得到普通编码，没有获得 form-data 编码
@@ -245,43 +287,113 @@ password_done=你的密码已经成功修改, 你现在可以使用新密码 <a 
 password_err=修改密码失败
 password_euser=在密码文件中, 没有你输入的这个用户名!
 password_eold=当前密码不正确
+password_euserpass=用户名或密码有误
 password_enew1=没有输入新密码
 password_enew2=两次输入的新密码不相同
+password_epam=PAM 错误 : $1
+password_emodpam=未安装进行密码更改所需的 Authen::PAM perl模块!
+password_enewpass=新密码不允许 : $1
 
+ui_mandatory=该字段是必填
+ui_checkmandatory=未选择任何内容
+ui_errors=发现多个错误 :
+ui_nothing=未输入任何内容
 ui_searchcol=搜索行
+ui_searchfor=包含文本
+ui_searchok=搜索
+ui_selall=全选.
+ui_selinv=反选.
+ui_edate=无效日期
+ui_etime=无效时间
+ui_paging=显示第 $3 行中的第 $1 至 $2
+ui_rowlabel=$1 行中的 $2 :
+ui_filterbox=输入要筛选的内容..
+ui_of=of
+
+header_statusmsg=$1 登录到 $2 $3 到 $4 ($5)
 
 uptracker_title=上传文件
+uptracker_file=文件名
 uptracker_size=大小
+uptracker_pc=处理
 uptracker_eid=未指定上传 ID
 uptracker_eid2=上传 ID 无效！
+uptracker_of=$1 of $2
 
 wsearch_title=搜索 $1
 wsearch_modt=模块
-wsearch_type=类型
+wsearch_mtitle=模块名称
+wsearch_what=匹配页面
+wsearch_type=匹配类型
+wsearch_mod=$1 模块
 wsearch_config_webmin=Webmin 模块配置
 wsearch_config_usermin=Usermin 首选项
+wsearch_help=帮助页面
+wsearch_inmod=在 $1
+wsearch_text=用户界面文本
+wsearch_esearch=没有输入任何要搜索的内容。
 wsearch_enone=找不到与 $1 匹配的 Webmin 模块或页面。
+wsearch_on=(在 $1 上)
+wsearch_helpfor=帮助 <i>$1</i>
+wsearch_htext=匹配文本
+wsearch_htype=源
 wsearch_hcgis=参考文档
+wsearch_type_mod=模块名称
 wsearch_type_config=配置
+wsearch_type_help=帮助页面
+wsearch_type_text=用户界面
 wsearch_type_dir=模块地址
 wsearch_hmod=模块
+wsearch_moddir=URL 路径 /$1/
 wsearch_searching=搜索$1。
 wsearch_found=找到 $1 个结果：
 
+sql_emysqldriver=未能加载MySQL DBI驱动程序
+sql_emysqlconnect=法连接到MySQL数据库 : $1
+sql_epostgresqldriver=未能加载PostgreSQL DBI驱动程序
+sql_epostgresqlconnect=无法连接到PostgreSQL数据库 : $1
+sql_eldapdriver=加载LDAP perl模块失败
+sql_eldapconnect=无法连接到LDAP服务器 $1
+sql_eldaptls=无法为LDAP启动TLS加密 : $1
 sql_eldaplogin=无法以 $1 登录到 LDAP 服务器：$2
 
 log_email_subject=$1 主机上的 Webmin 系统
 log_email_global=Webmin 全局邮箱
+log_email_by=$1 by $2
 log_email_desc=此电子邮件是 Webmin 响应用户操作发送的。
 log_email_mod=Webmin 模块：$1
+log_email_moddesc=模块标题: $1
+log_email_time=在以下时间执行的操作: $1
+log_email_system=在系统上执行: $1
+log_email_user=由用户执行: $1
 log_email_script=Webmin 脚本：$1
 log_email_session=会话 ID：$1
+log_email_remote=客户端地址: $1
 
+nice_size_PB=PB
+nice_size_PiB=PiB
 nice_size_TB=TB
 nice_size_TiB=TiB
 nice_size_GB=GB
 nice_size_GiB=GiB
 nice_size_MB=MB
+nice_size_MiB=MiB
+nice_size_kB=kB
+nice_size_kiB=KiB
 nice_size_b=B
 
+paginator_showing_start=显示 $1 到 $2 共 $3 页
+paginator_showing_end=共 $1 页
+paginator_nosearchrs=找不到与 <tt>$1</tt> 查询匹配的结果
+
+langauto_include=包括机器翻译
+
 file_truncated_message=提取了 $1 的数据，从 $3 中截断了 $2
+file_truncated_message_head=开始获取 $1 数据, 从 $3 中获取 $2
+file_truncated_message_tail=结束获取 $1 数据, 截止 $3 中的 $2
+
+defcert_error=正在使用默认的 $1 捆绑SSL证书。强烈建议在继续登录之前更新默认的 <tt>$2</tt> 证书。
+
+main_error_details=错误详细信息
+
+__norefs=1

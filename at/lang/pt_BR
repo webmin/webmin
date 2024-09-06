@@ -9,8 +9,6 @@ index_exec=Executar a
 index_created=Criado em
 index_dir=Executar no diretório
 index_return=lista de comandos
-index_cdate=Data atual
-index_ctime=Hora atual
 
 edit_title=Comandos Agendados
 edit_cmd=Script completo a executar

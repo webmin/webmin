@@ -53,7 +53,7 @@ acl_all=All users
 acl_this=Current Webmin user
 acl_only=Only users
 acl_except=All except users
-acl_allow=Can edit allowed At users?
+acl_allow=Can edit allowed <tt>at</tt> users?
 acl_stop=Can stop and start <tt>atd</tt>?
 
 run_title=Running Command
