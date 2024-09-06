@@ -1,3 +1,4 @@
+index_cdatetime=Data e ora correnti
 index_nostyle=Webmin non sa come gestire i comandi di pianificazione su questo sistema operativo.
 index_stop=Arresta il server dei comandi pianificati
 index_stopdesc=Arresta il processo del server in background <tt>atd</tt> che esegue i comandi pianificati. Ciò impedirà l'esecuzione dei comandi agli orari specificati.

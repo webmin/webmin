@@ -1,3 +1,4 @@
+index_cdatetime=Aktuelles Datum und Uhrzeit
 index_nostyle=Webmin weiß nicht, wie Zeitplanbefehle auf diesem Betriebssystem verwaltet werden.
 index_stop=Stoppen Sie den Server für geplante Befehle
 index_stopdesc=Fahren Sie den Hintergrundserverprozess <tt>atd</tt> herunter, der geplante Befehle ausführt. Dadurch wird verhindert, dass Befehle zu den angegebenen Zeiten ausgeführt werden.

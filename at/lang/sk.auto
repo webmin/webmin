@@ -1,4 +1,5 @@
 index_mail=Poslať e-mail po dokončení?
+index_cdatetime=Aktuálny dátum a čas
 index_delete=Zrušiť vybrané príkazy
 index_noat=Príkaz $1 nebol vo vašom systéme nájdený - možno nie je nainštalovaný alebo nie je k dispozícii pre váš operačný systém.
 index_nostyle=Webmin nevie, ako spravovať príkazy plánovania v tomto operačnom systéme.

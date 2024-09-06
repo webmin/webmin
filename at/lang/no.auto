@@ -1,3 +1,5 @@
+index_cdatetime=Gjeldende dato og klokkeslett
+
 acl_stop=Kan stoppe og starte <tt>atd</tt>?
 
 stop_ecannot=Du har ikke lov til å stoppe serveren

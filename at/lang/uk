@@ -9,8 +9,6 @@ index_exec=Час початку виконання
 index_created=Час створення завдання
 index_dir=Каталог виконання
 index_return=списку команд
-index_cdate=Поточна дата
-index_ctime=Поточне час
 
 edit_title=Призначене завдання
 edit_cmd=Повний сценарій виконання
