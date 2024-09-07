@@ -19,7 +19,7 @@ match_user=1
 kill_subs=0
 show_comment=0
 hourly_only=0
-max_jobs=100
+max_jobs=400
 vixie_cron=0
 
 show_next=0
