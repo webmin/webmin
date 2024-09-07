@@ -496,6 +496,7 @@ value_NSEC3PARAM1=Hash algorithm
 value_NSEC3PARAM2=NSEC3 flags
 value_NSEC3PARAM3=Number of hash iterations
 value_NSEC3PARAM4=Salt string
+value_NSEC3PARAM4_none=None
 value_delegated=Delegated zone
 value_notdelegated=Other zone
 value_other=Values (one per line)
