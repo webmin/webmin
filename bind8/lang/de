@@ -1,5 +1,5 @@
-index_title=BIND-DNS-Server
-index_enamed=Der BIND-DNS-Server $1 konnte auf Ihrem System nicht gefunden werden. Vielleicht ist er nicht installiert, oder Ihre <a href='$2'>BIND-Modulkonfiguration</a> ist nicht korrekt.
+index_title=BIND DNS-Server
+index_enamed=Der BIND DNS-Server $1 konnte auf Ihrem System nicht gefunden werden. Vielleicht ist er nicht installiert, oder Ihre <a href='$2'>BIND-Modulkonfiguration</a> ist nicht korrekt.
 index_eempty=Die primäre Konfigurationsdatei für BIND $1 existiert nicht oder ist nicht gültig. Erstellen?
 index_local=Nameserver nur für interne Nicht-Internet-Nutzung einrichten
 index_download=Als Internet-Nameserver einrichten und Root-Server-Informationen herunterladen
@@ -1030,7 +1030,7 @@ add_msg=Füge $1 hinzu ..
 add_gmsg=Füge Server in Gruppe $1 hinzu ..
 add_err=Fehler beim Hinzufügen des Servers
 add_gerr=Fehler beim Hinzufügen der Gruppe
-add_echeck=Server $1 verfügt nicht über das BIND-DNS-Server-Modul.
+add_echeck=Server $1 verfügt nicht über das BIND DNS-Server-Modul.
 add_emissing=Server $1 ist nicht korrekt für BIND eingerichtet.
 add_eversion=Server $1 verwendet nicht Webmin Version $2 oder höher.
 add_eversion2=Server $1 verwendet nicht Webmin Version $2 oder höher, was erforderlich ist, um Zonen zu mehr als einer Ansicht hinzuzufügen
@@ -1110,7 +1110,7 @@ manual_file=Konfigurationsdatei bearbeiten:
 manual_edata=Keine Eingaben gemacht!
 manual_err=Fehler beim Speichern der Konfigurationsdatei
 
-syslog_desc=Nachrichten des BIND-DNS-Servers
+syslog_desc=Nachrichten des BIND DNS-Servers
 
 umass_err=Fehler beim Aktualisieren der Zonen
 umass_enone=Keine ausgewählt
