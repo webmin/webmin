@@ -251,6 +251,10 @@ for(my $i=0; $i<@_; $i++) {
 					$v = $text{'value_caa_'.$v} || $v;
 					}
 				}
+			elsif ($in{'type'} eq "NSEC3PARAM" && $j == 3) {
+				$v = $text{'value_NSEC3PARAM4_none'}
+					if ($v eq "-");
+				}
 			}
 		if (length($v) > 80) {
 			$v = substr($v, 0, 80)." ...";
