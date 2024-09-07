@@ -1,6 +1,0 @@
-sshkey=Öffentlicher SSH-Schlüssel
-
-usave_eltgt=Der Benutzername darf &lt; nicht enthalten. oder &gt; Figuren
-usave_ehomeslash=Home-Verzeichnis $1 darf nicht mit / enden
-usave_edigestmod=Ihr System hat $4 Passwörter aktiviert, aber das Perl- <tt>$3</tt> -Modul ist nicht installiert. Um die Verwendung normaler verschlüsselter Passwörter zu erzwingen, passen Sie Ihre <a href='$1'>Modulkonfiguration</a> an oder lassen Sie Webmin versuchen, das <tt>$3</tt> -Modul für Sie <a href='$2'>herunterzuladen und zu installieren</a>.
-usave_edigestcrypt=Ihr System hat $4 Passwörter aktiviert, aber die Funktion <tt>crypt</tt> unterstützt dieses Format nicht. Um die Verwendung normal verschlüsselter Passwörter zu erzwingen, passen Sie Ihre <a href='$1'>Modulkonfiguration</a> an.
