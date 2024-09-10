@@ -459,7 +459,7 @@ newcsr_title=生成 CSR
 newcsr_ok=成功生成以下 SSL 证书请求：
 newcsr_ok2=此 CSR 必须发送给签名机构，签名机构将返回签名证书。可以使用<b>上传证书</b>标签使用上方的密钥进行安装。
 
-startpage_title=索引页选项
+startpage_title主页选项
 startpage_intro2=此页面可以控制 Webmin 主菜单的外观。某些选项仅在使用默认主题时才有效。
 startpage_tabs=模块分类吗？
 startpage_nocol=列数
@@ -676,7 +676,7 @@ session_passurl=启用后，用户密码可以通过POST请求更改为 $1
 assignment_title=重新分配模块
 assignment_header=模块类别的重新分配
 assignment_ok=变更类别
-assignment_desc=在此表上，您可以配置在 Webmin 索引页上显示每一模块的类别
+assignment_desc=在此表上，您可以配置在 Webmin 主页上显示每一模块的类别
 
 categories_title=编辑类别
 categories_header=类别 ID 和描述
@@ -704,7 +704,7 @@ log_delete=删除了模块 $1
 log_os=改变了操作系统
 log_fixrepo=修复 Webmin 存储库
 log_lang=改变了全局语言
-log_startpage=改变了索引页选项
+log_startpage=变更主页选项
 log_upgrade=已将 Webmin 升级到版本 $1
 log_session=改变了验证选项
 log_twofactor=变更双因素身份验证选项
@@ -772,8 +772,8 @@ themes_egzip=文件已压缩(gzipped)，但在您的系统中未能找到命令 
 themes_egzip2=无法解压(gunzip)文件：$1 
 themes_erpm=不是 Webmin 主题 RPM 
 themes_eirpm=无法 RPM 安装：$1
-themes_ok=成功变更主题 .. 重新定向至 Webmin 索引页面。
-themes_ok2=主题覆盖成功更改..重定向到 Webmin 索引页面。
+themes_ok=成功变更主题 .. 重新定向至 Webmin 主页面。
+themes_ok2=主题覆盖成功更改..重定向到 Webmin 主页面。
 themes_delete=在此表上，您可以删除已安装到您的系统中，但没有使用的主题之一。
 themes_delok=要删除的主题：
 themes_return=主题列表
@@ -1239,7 +1239,7 @@ announce_hide=隐藏此告示
 alert_hide=隐藏警告
 
 os_eol=OS EOL 倒计时通知
-os_eol_countdown=几个月前
+os_eol_countdown=个月前
 os_eol_ecountdown=倒计时前一个月必须是整数
 os_eol_until=直到
 os_eol_type1=操作系统维护和安全支持
