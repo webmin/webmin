@@ -82,5 +82,3 @@ start_err=启动服务器失败
 stop_ecannot=不允许停止服务器
 start_ecannot=不允许启动服务器
 bootup_ecannot=不允许在开机时自动启动服务器
-
-__norefs=1

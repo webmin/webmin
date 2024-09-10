@@ -9,8 +9,6 @@ index_exec=執行時間
 index_created=建立時間
 index_dir=在哪目錄執行
 index_return=指令清單
-index_cdate=今天日期
-index_ctime=目前時間
 
 edit_title=指令排程
 edit_cmd=執行腳本已經滿了

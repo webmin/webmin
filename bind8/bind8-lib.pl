@@ -1357,7 +1357,8 @@ elsif ($type eq "NSEC3PARAM") {
 		&ui_textbox("value2", $v[2], 4));
 
 	print &ui_table_row($text{'value_NSEC3PARAM4'},
-		&ui_textbox("value3", $v[3], 20));
+		&ui_opt_textbox("value3", $v[3] eq "-" ? "" : $v[3], 20,
+				$text{'value_NSEC3PARAM4_none'}));
 
 	}
 elsif ($type eq "CAA") {

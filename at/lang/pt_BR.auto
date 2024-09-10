@@ -1,4 +1,5 @@
 index_mail=Enviar email após a conclusão?
+index_cdatetime=Data e hora atuais
 index_allow=Usuários de comando agendado permitidos
 index_amode=Usuários para permitir
 index_amode0=Todos os usuários do Unix

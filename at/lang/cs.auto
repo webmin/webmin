@@ -1,4 +1,5 @@
 index_mail=Odeslat e-mail po dokončení?
+index_cdatetime=Aktuální datum a čas
 index_noat=Příkaz $1 nebyl ve vašem systému nalezen - možná není nainstalován nebo není pro váš operační systém k dispozici.
 index_nostyle=Webmin neví, jak spravovat příkazy plánu v tomto operačním systému.
 index_stop=Zastavit server naplánovaných příkazů

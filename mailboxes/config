@@ -1,5 +1,5 @@
 max_records=200
-show_size=1
+show_size=0
 show_size_below=0
 mail_system=3
 auto=1

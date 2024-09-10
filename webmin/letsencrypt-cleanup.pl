@@ -26,17 +26,17 @@ my $wapi;
 if ($zone) {
 	# Use BIND module API calls
 	$zone->{'file'} || die "Zone $dname does not have a records file";
-	&lock_file(&bind8::make_chroot(&bind8::absolute_path($zone->{'file'})));
+	$file = &bind8::absolute_path($zone->{'file'});
+	&lock_file(&bind8::make_chroot($file));
 	&bind8::before_editing($zone);
-	$recs = [ &bind8::read_zone_file($zone->{'file'}, $zname) ];
-	$file = $zone->{'file'};
+	$recs = [ &bind8::read_zone_file($file, $zname) ];
 	$wapi = 0;
 	}
 elsif ($d) {
 	# Use Virtualmin API calls
-	&virtual_server::obtain_lock_dns($d);
 	&virtual_server::pre_records_change($d);
 	($recs, $file) = &virtual_server::get_domain_dns_records_and_file($d);
+	&lock_file(&bind8::make_chroot($file));
 	$wapi = 1;
 	}
 else {
@@ -60,14 +60,13 @@ if (!$wapi) {
 	&bind8::sign_dnssec_zone_if_key($zone, $recs);
 	&bind8::bump_soa_record($file, $recs);
 	&bind8::after_editing($zone);
-	&unlock_file(&bind8::make_chroot(&bind8::absolute_path($file)));
 	&bind8::restart_zone($zone->{'name'}, $zone->{'view'});
 	}
 else {
 	# Apply using Virtualmin API
 	&virtual_server::post_records_change($d, $recs, $file);
-	&virtual_server::release_lock_dns($d);
 	&virtual_server::reload_bind_records($d);
 	}
+&unlock_file(&bind8::make_chroot($file));
 
 &webmin_log("letsencryptcleanup", undef, $dname);

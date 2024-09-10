@@ -1,3 +1,4 @@
+index_cdatetime=Aktualna data i godzina
 index_nostyle=Webmin nie wie, jak zarządzać poleceniami harmonogramu w tym systemie operacyjnym.
 index_stop=Zatrzymaj serwer zaplanowanych poleceń
 index_stopdesc=Zamknij proces serwera w tle <tt>atd</tt>, który wykonuje zaplanowane polecenia. Zapobiegnie to wykonywaniu poleceń w określonym czasie.

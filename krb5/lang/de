@@ -1,9 +1,9 @@
 index_title=Kerberos5-Konfiguration
-index_econf=Die Kerberos5-Konfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. Entweder ist es nicht installiert oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
+index_econf=Die Kerberos5-Konfigurationsdatei $1 wurde auf diesem System nicht gefunden. Entweder ist es nicht installiert oder die <a href='$2'>Modulkonfiguration</a> ist fehlerhaft.
 
 logging=Logdateien
-default_log=Standard Logdatei
-kdc_log=KDC Logdatei
+default_log=Standard-Logdatei
+kdc_log=KDC-Logdatei
 admin_log=Admin-Server-Logdatei
 
 libdefaults=Standard-Konfiguration
@@ -12,6 +12,6 @@ default_realm=Realm
 domain=Domain-Name
 default_kdc=KDC
 default_admin=Admin-Server
-default_domain=Standard Domain-Name
+default_domain=Standard-Domain-Name
 
 save=Konfiguration aktualisieren

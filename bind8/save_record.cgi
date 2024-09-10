@@ -450,11 +450,11 @@ else {
 		# Save DNSSEC parameters
 		$in{'value2'} =~ /^\d+$/ ||
 			&error($text{'edit_ensec3value2'});
-		$in{'value3'} =~ /^[a-zA-Z0-9\+\/]+$/ ||
-			&error($text{'edit_ensec3value2'});
+		$in{'value3_def'} || $in{'value3'} =~ /^[a-zA-Z0-9\+\/]+$/ ||
+			&error($text{'edit_ensec3value3'});
 		$vals = join(" ", "(", $in{'value0'}, $in{'value1'},
-                                       $in{'value2'},
-				       $in{'value3'}, ")");
+			     $in{'value2'},
+			     ($in{'value3_def'} ? '-' : $in{'value3'}), ")");
 		}
 	elsif ($in{'type'} eq 'CAA') {
 		$in{'value2'} =~ /^\S+$/ ||
