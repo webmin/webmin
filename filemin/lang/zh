@@ -173,6 +173,7 @@ acls_action=行动
 acls_manual=手动参数
 acls_error=在您的系统上找不到 <tt>setfacl</tt> 命令
 file_detect_encoding=自动检测文件编码
+file_showhiddenfiles=显示隐藏文件
 index_return=文件清单
 upload_dirs=目录上传
 extract_uploaded=提取压缩
