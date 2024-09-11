@@ -1,0 +1,23 @@
+index_elink=尚未设置tunnel隧道的URL。
+index_url=输入 URL网址并打开:
+index_open=打开
+
+link_eurl=无效 tunnel URL地址 : $1
+link_elogin=以$2登陆 $1 失败.
+link_eautologin=$1的登录名或密码无效. <a href='$2'>单击此处</a> 登陆.
+link_enouser=登陆$1, 需要用户名和密码，但尚未配置。
+link_ebadurl=不允许您访问URL $1
+link_mconfig=使用 <a href='$1'>模块配置</a> 页面更改登录名。
+
+login_title=登陆网站
+login_desc=您必须提供用户名和密码才能登录到 $1.
+login_header=网站认证
+login_user=用户名
+login_pass=密码
+login_login=登陆
+login_clear=清除
+
+seturl_err=URL网址打开失败
+seturl_eurl=输入的URL网址无效
+
+__norefs=1
