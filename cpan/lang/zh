@@ -93,7 +93,7 @@ cpan_search=寻找名为..的模块
 cpan_match=与模组$1 .. 匹配
 cpan_none=未找到匹配的模组。
 
-edit_title=模块细节
+edit_title=模块详情
 edit_header=模块信息
 edit_mod=模块名称
 edit_desc=描述
@@ -102,7 +102,7 @@ edit_subs=子模块
 edit_header2=模块文档
 edit_file=模块文件
 edit_none=不可用
-edit_return=模块细节
+edit_return=模块详情
 edit_uninstall=卸载模块和子模块
 edit_upgrade=从 CPAN 升级模块
 edit_method=安装来源
