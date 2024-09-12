@@ -5,6 +5,40 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 
+# Check if a list of supported modules needs to be built. This is done
+# if the ProFTPd binary changes, when Webmin is upgraded
+my @st = stat($config{'proftpd_path'});
+my %oldsite;
+&read_file("$module_config_directory/site", \%site);
+if ($oldsite{'size'} != $st[7] ||
+    !$oldsite{'version'} ||
+    !$oldsite{'fullversion'} ||
+    $oldsite{'webmin'} != &get_webmin_version()) {
+	# Check if it really is proftpd and the right version
+	my ($ver, $fullver) = &get_proftpd_version(\$out);
+	if ($ver) {
+		# Store the detected versions
+		my %site;
+		$site{'size'} = $st[7];
+		$site{'version'} = $ver;
+		$site{'fullversion'} = $fullver;
+		$site{'webmin'} = &get_webmin_version();
+
+		# Get the list of modules
+		my @mods;
+		open(MODS, "$config{'proftpd_path'} -vv |");
+		while(<MODS>) {
+			s/\r|\n//g;
+			if (/^\s*(?<mod_built_in>\S+)\.c$|\s*(?<mod_loaded>mod_[a-zA-Z0-9_]+)\//) {
+				push(@mods, $+{mod_loaded} || $+{mod_built_in});
+				}
+			}
+		close(MODS);
+		$site{'modules'} = join(" ", @mods);
+		&write_file("$module_config_directory/site", \%site);
+		}
+	}
+
 # Load the site-specific information on the server executable
 &read_file("$module_config_directory/site", \%site);
 @ftpaccess_files = split(/\s+/, $site{'ftpaccess'});
