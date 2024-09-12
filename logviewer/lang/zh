@@ -1,0 +1,59 @@
+index_title=系统日志
+index_elogs=命令 <tt>journalctl</tt> 在您的系统上不可用，并且其他日志被配置为不在模块配置中显示。
+index_to=日志
+index_rule=描述
+index_file=文件 $1
+index_cmd=从 $1 输出
+index_return=系统日志
+index_view=查看..
+index_viewfile=查看日志文件:
+index_viewok=查看
+
+journal_journalctl=全部信息
+journal_expla_journalctl=全部详细信息
+journal_journalctl_dmesg=Kernel 内核信息
+journal_journalctl_debug_info=调试详细信息
+journal_journalctl_notice_warning=通知和警告消息
+journal_journalctl_alert_emerg=警报和紧急消息
+journal_journalctl_unit=特定单元的消息
+journal_since0=最新可用
+journal_since1=实时追踪
+journal_since2=当前启动信息
+journal_since3=7 天前
+journal_since4=24 小时前
+journal_since5=8 小时前
+journal_since6=1 小时前
+journal_since7=30 分钟前
+journal_since8=10 分钟前
+journal_since9=3 分钟前
+journal_since10=1 分钟前
+journal_sincefollow=在
+journal_since=之前
+
+view_title=查看日志文件
+view_titlejournal=查看日志
+view_header=最新 $1 共 $2
+view_header2=最新 $1 行
+view_header3=每 $1 行
+view_empty=空空如也
+view_loading=正在监视日志文件。。还没有新的消息。
+view_filter=筛选文本为 $1 行
+view_filter_btn=筛选
+
+save_efile='$1' 不是有效的文件名 : $2
+save_ecannot2=不允许查看此日志
+save_ecannot3=错误：不允许查看此日志
+save_ecannot4=错误：无法打开 '$1'
+save_ecannot6=不允许查看任意日志
+save_ecannot7=不允许查看此额外日志
+save_emissing=M缺少要查看的日志文件
+
+acl_any=可以将任何文件作为日志查看吗？
+acl_logs=可以查看和配置日志文件
+acl_all=全部日志
+acl_sel=仅列出文件和列出目录下的文件 ..
+acl_extra=此用户的额外日志文件
+acl_syslog=可以从syslog查看日志吗？
+acl_others=可以查看其他模块的日志吗？
+
+__norefs=1

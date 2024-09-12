@@ -1,16 +1,18 @@
-index_title=Befehls-Shell
-index_ok=Führe Befehl aus:
-index_history=Befehlshistorie
-index_clear=Lösche Verlauf
-index_clearcmds=Lösche Befehle
-index_desc=Geben Sie einen 'Unix-shell'-Befehl zur Ausführung in das untenstehende Textfeld ein. Der <tt>cd</tt>-Befehl kann benutzt werden, um das Verzeichnis für nachfolgende Befehle zu ändern.
-index_pok=Führe vorherigen Befehl aus
-index_edit=Editiere bisherige
-index_trunced=Gesamter Output von $2 wurde bei $1 abgeschnitten.
-index_timedout=Befehl wurde nach der Ausführung für $1 Sekunden beendet.
+index_title=Kommandozeile
+index_ok=Befehl ausführen:
+index_history=Befehlsverlauf
+index_clear=Verlauf löschen
+index_clearcmds=Befehle löschen
+index_desc=Geben Sie einen Shell-Befehl in das Textfeld unten ein, um ihn auszuführen. Der <tt>cd</tt>-Befehl kann verwendet werden, um das Verzeichnis für nachfolgende Befehle zu ändern.
+index_pok=Vorherigen Befehl ausführen
+index_edit=Vorherigen bearbeiten
+index_trunced=Die gesamte Ausgabe von $2 wurde bei $1 abgeschnitten.
+index_timedout=Befehl wurde nach $1 Sekunden beendet.
 
-acl_user=Führe Befehl aus als Benutzer
+acl_user=Befehle als Benutzer ausführen
 acl_user_def=Aktueller Webmin-Benutzer
+acl_shellenv=Umgebung des ausgewählten Benutzers verwenden?
+acl_chroot=In Verzeichnis chrooten
 
-log_run=Ausgeführter Befehl $1
-log_clear=Gelöschter Befehls-Verlauf
+log_run=Befehl $1 ausgeführt
+log_clear=Verlauf gelöscht
