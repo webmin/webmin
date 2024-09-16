@@ -5,8 +5,8 @@
 # containing an ID, name and URL for more info
 sub list_twofactor_providers
 {
-return ( [ 'totp', 'Google Authenticator',
-	   'http://en.wikipedia.org/wiki/Google_Authenticator' ],
+return ( [ 'totp', 'TOTP',
+	   'https://en.wikipedia.org/wiki/Time-based_one-time_password' ],
 	 [ 'authy', 'Authy',
 	   'http://www.authy.com/' ] );
 }
@@ -247,7 +247,7 @@ return $rv;
 }
 
 # validate_twofactor_totp(id, token, apikey)
-# Checks the validity of some token with google authenticator
+# Checks the validity of some token with TOPT
 sub validate_twofactor_totp
 {
 my ($id, $token, $apikey) = @_;
