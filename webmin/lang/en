@@ -84,6 +84,7 @@ log_status=Logging active?
 log_disable=Disable logging
 log_enable=Enable logging
 log_resolv=Log resolved hostnames?
+log_trust=Log client IP address when behind proxy?
 log_clf=Use combined log format (including referrer and user agent)?
 log_clear2=Periodically clear log files?
 log_period=Yes, every $1 hours
