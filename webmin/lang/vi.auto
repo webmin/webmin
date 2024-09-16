@@ -46,6 +46,10 @@ bind_sport0=Giống như đầu tiên
 bind_sport1=Cổng cụ thể ..
 bind_listen=Nghe các chương trình phát sóng trên cổng UDP
 bind_none=Đừng nghe
+bind_websocport=Số cổng cơ sở cho kết nối WebSockets
+bind_websocport_none=Mặc định (555)
+bind_websoc_host=Tên máy chủ cho kết nối WebSocket
+bind_websoc_host_auto=Tự động
 bind_hostname=Tên máy chủ web
 bind_auto=Làm việc từ trình duyệt
 bind_err=Không thể thay đổi địa chỉ
@@ -80,6 +84,7 @@ log_status=Đăng nhập hoạt động?
 log_disable=Vô hiệu hóa đăng nhập
 log_enable=Cho phép đăng nhập
 log_resolv=Đăng nhập tên máy chủ giải quyết?
+log_trust=Ghi lại địa chỉ IP của máy khách khi sử dụng proxy?
 log_clf=Sử dụng định dạng nhật ký kết hợp (bao gồm cả người giới thiệu và tác nhân người dùng)?
 log_clear2=Định kỳ xóa tệp nhật ký?
 log_period=Có, mỗi $1 giờ
@@ -420,6 +425,7 @@ ssl_letserr2=Cách khác, hãy kiểm tra trang <a href='$1'>cấu hình mô-đu
 ssl_letsdesc2=Trang này có thể được sử dụng để yêu cầu chứng chỉ mới, sẽ ghi đè lên bất kỳ trang nào khác hiện đang được cấu hình trong Webmin. Tuy nhiên, dịch vụ Let Encrypt yêu cầu quyền sở hữu của bạn đối với miền chứng chỉ phải được xác thực bằng cách kiểm tra xem hệ thống này có lưu trữ trang web cho miền đó không. Điều này được thực hiện bằng cách đặt một tệp tạm thời nhỏ trong thư mục tài liệu của trang web.
 ssl_letsheader=Tùy chọn cho chứng chỉ SSL mới
 ssl_letsdoms=Tên máy chủ cho chứng chỉ
+ssl_subset=Bỏ qua tên máy chủ không thể xác minh?
 ssl_letsmode=Phương thức xác thực Let's Encrypt
 ssl_letsmode0=Tên máy chủ phù hợp với máy chủ ảo Apache
 ssl_letsmode1=Máy chủ ảo Apache đã chọn
@@ -1056,6 +1062,7 @@ status_interval0=Mỗi
 status_mins=phút
 status_pkgs=Thu thập các bản cập nhật gói có sẵn?
 status_temp=Thu thập nhiệt độ ổ đĩa?
+status_temp2=Thu thập nhiệt độ CPU và tốc độ quạt?
 status_units=Đơn vị cho nhiệt độ
 status_celsius=Độ
 status_fahrenheit=độ F
@@ -1182,9 +1189,9 @@ twofactor_eauthyotp=Mã thông báo tự động không hợp lệ
 twofactor_enrolllink=Bây giờ bạn có thể đăng ký xác thực hai yếu tố trong mô-đun <a href='$1'>Người dùng Webmin</a>.
 twofactor_url=Để tìm hiểu thêm về $1, hãy xem trang web của nó tại <a href='$2' target=etric>$2</a>.
 twofactor_etotpmodule=Mô-đun Perl <tt>$1</tt> cần thiết cho xác thực hai yếu tố không được cài đặt. Sử dụng trang <a href='$2'>Mô-đun Perl</a> trong Webmin để cài đặt nó.
-twofactor_qrcode=Nhập mã bí mật $1 trong ứng dụng Google Authenticator hoặc quét mã QR bên dưới.
+twofactor_qrcode=Nhập mã bí mật $1 vào ứng dụng TOTP hoặc quét mã QR bên dưới.
 twofactor_etotpid=Bí mật được mã hóa TOTP base32 không hợp lệ
-twofactor_etotptoken=Mã thông báo Google Authenticator phải là một số
+twofactor_etotptoken=Mã thông báo TOTP phải là một số
 twofactor_etotpmodule2=Thiếu mô-đun Perl $1
 twofactor_etotpmatch=Mã OTP không chính xác
 twofactor_secret=Khóa bí mật cá nhân

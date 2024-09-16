@@ -1188,9 +1188,7 @@ twofactor_eauthyotp=Authy-Token ist ungültig
 twofactor_enrolllink=Sie können sich jetzt für die Zwei-Faktor-Authentifizierung im <a href='$1'>Webmin-Benutzer</a>-Modul anmelden.
 twofactor_url=Um mehr über $1 zu erfahren, besuchen Sie die Website unter <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Das Perl-Modul <tt>$1</tt>, das für die Zwei-Faktor-Authentifizierung benötigt wird, ist nicht installiert. Verwenden Sie die <a href='$2'>Perl-Module</a>-Seite in Webmin, um es zu installieren.
-twofactor_qrcode=Geben Sie den geheimen Code $1 in die Google Authenticator-App ein oder scannen Sie den QR-Code unten.
 twofactor_etotpid=Ungültiges TOTP Base32-codiertes Geheimnis
-twofactor_etotptoken=Google Authenticator-Token muss eine Zahl sein
 twofactor_etotpmodule2=Fehlendes Perl-Modul $1
 twofactor_etotpmatch=Falscher OTP-Code
 twofactor_secret=Persönlicher geheimer Schlüssel

@@ -1082,9 +1082,7 @@ twofactor_eauthyotp=Authy token er ugyldig
 twofactor_enrolllink=Du kan nå ta i bruk to-faktor autentisering i modulen <a href='$1'>Webmin Brukere</a>.
 twofactor_url=For å lære mer om $1 sjekk denne nettsted på <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Perl-modulen <tt>$1</tt>, som er påkrevd for to-faktor autentisering, er ikke installert. Bruk modulen <a href='$2'>Perl moduler</a> i Webmin for å installere den.
-twofactor_qrcode=Angi hemmelig kode $1 i Google Authenticator app, eller scan QR koden nedenfor.
 twofactor_etotpid=Ugyldig TOTP base32-kodet hemmelighet
-twofactor_etotptoken=Google Authenticator token må være et tall
 twofactor_etotpmodule2=Mangler Perl modulen $1
 twofactor_etotpmatch=Ugyldig kode for engangspassord
 twofactor_secret=Personlig hemmelig nøkkel

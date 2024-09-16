@@ -10,6 +10,10 @@ access_ecidr8=O tamanho da rede IPv6 '$1' deve ser divisível por 8
 access_trust=Confia no endereço IP remoto fornecido pelos proxies?
 
 bind_firewall=Abrir novas portas no firewall?
+bind_websocport=Número da porta base para conexões WebSockets
+bind_websocport_none=Padrão (555)
+bind_websoc_host=Nome do host para conexões WebSocket
+bind_websoc_host_auto=Automático
 bind_resolv_myname=Resolução reversa do endereço IP conectado?
 bind_ipv6=Aceitar conexões IPv6?
 bind_eipv6=O IPv6 não pode ser ativado a menos que o módulo Perl $1 esteja instalado
@@ -28,6 +32,7 @@ bind_maxlifetime_secs=segundos
 bind_emaxlifetime=A vida útil máxima do processo deve ser um número maior que 60 segundos
 
 log_status=Log ativo?
+log_trust=Registrar endereço IP do cliente quando estiver atrás de um proxy?
 log_clear2=Limpar periodicamente os arquivos de log?
 log_period=Sim, a cada $1 horas
 log_forusers=Usuários para registrar ações Webmin para
@@ -196,6 +201,7 @@ ssl_letserr2=Como alternativa, verifique a página de configuração do módulo 
 ssl_letsdesc2=Esta página pode ser usada para solicitar um novo certificado, que substituirá qualquer outro atualmente configurado no Webmin. No entanto, o serviço Let's Encrypt exige que sua propriedade do domínio de certificado seja validada, verificando se este sistema hospeda o site do domínio. Isso é feito colocando um pequeno arquivo temporário no diretório de documentos do site.
 ssl_letsheader=Opções para novo certificado SSL
 ssl_letsdoms=Nomes de host para certificado
+ssl_subset=Ignorar nomes de host não verificáveis?
 ssl_letsmode=Vamos criptografar o método de validação
 ssl_letsmode0=Host virtual Apache correspondente ao nome do host
 ssl_letsmode1=Host virtual Apache selecionado
@@ -566,6 +572,7 @@ status_interval0=Cada
 status_mins=minutos
 status_pkgs=Coletar atualizações de pacotes disponíveis?
 status_temp=Coletar temperaturas da unidade?
+status_temp2=Coletar temperaturas da CPU e velocidade dos ventiladores?
 status_units=Unidades para temperaturas
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
@@ -692,9 +699,9 @@ twofactor_eauthyotp=O token automático é inválido
 twofactor_enrolllink=Agora você pode se inscrever para autenticação de dois fatores no módulo <a href='$1'>Usuários Webmin</a>.
 twofactor_url=Para saber mais sobre $1, consulte o site em <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=O módulo Perl <tt>$1</tt> necessário para autenticação de dois fatores não está instalado. Use a página <a href='$2'>Perl Modules</a> no Webmin para instalá-lo.
-twofactor_qrcode=Digite o código secreto $1 no aplicativo Google Authenticator ou digitalize o código QR abaixo.
+twofactor_qrcode=Digite o código secreto $1 no aplicativo TOTP ou escaneie o código QR abaixo.
 twofactor_etotpid=Segredo codificado em base32 TOTP inválido
-twofactor_etotptoken=O token do Google Authenticator deve ser um número
+twofactor_etotptoken=O token TOTP deve ser um número
 twofactor_etotpmodule2=Módulo Perl ausente $1
 twofactor_etotpmatch=Código OTP incorreto
 twofactor_secret=Chave secreta pessoal

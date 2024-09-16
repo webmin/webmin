@@ -10,6 +10,10 @@ access_ecidr8=IPv6 network size '$1' must be divisible by 8
 access_trust=به آدرس IP راه دور که توسط پروکسی ها ارائه شده اعتماد کنید؟
 
 bind_firewall=پورت های جدید را در فایروال باز کنید؟
+bind_websocport=شماره پورت پایه برای اتصالات WebSockets
+bind_websocport_none=پیش فرض (555)
+bind_websoc_host=نام میزبان برای اتصالات WebSocket
+bind_websoc_host_auto=خودکار
 bind_resolv_myname=آدرس IP متصل را برعکس کنید؟
 bind_ipv6=اتصالات IPv6 را قبول دارید؟
 bind_eipv6=IPv6 cannot be enabled unless the $1 Perl module is installed
@@ -28,6 +32,7 @@ bind_maxlifetime_secs=ثانیه
 bind_emaxlifetime=حداکثر طول عمر فرآیند باید عددی بیشتر از 60 ثانیه باشد
 
 log_status=ورود به سیستم فعال است؟
+log_trust=هنگام پشت پراکسی، آدرس IP مشتری را وارد کنید؟
 log_clear2=به طور دوره ای پرونده های سیاه را پاک کنید؟
 log_period=Yes, every $1 hours
 log_forusers=کاربران برای ورود به سیستم اقدامات وبمین برای
@@ -186,6 +191,7 @@ ssl_letserr2=Alternately, check the <a href='$1'>module configuration</a> page t
 ssl_letsdesc2=از این صفحه می توان برای درخواست گواهی جدید استفاده کرد ، که سایر موارد دیگری را که در حال حاضر در Webmin پیکربندی شده اند بازنویسی می کند. با این حال ، سرویس Let Encrypt نیاز دارد با بررسی اینکه این سیستم میزبان وب سایت دامنه است ، مالکیت شما در حوزه گواهی را تأیید کنید. این کار با قرار دادن یک پرونده موقت کوچک در فهرست اسناد وب سایت انجام می شود.
 ssl_letsheader=گزینه هایی برای گواهی SSL جدید
 ssl_letsdoms=نام میزبان برای گواهی
+ssl_subset=Ø§Ø² ÙØ§Ù‌ÙØ§Û ÙÛØ²Ø¨Ø§Ù ØºÛØ±ÙØ§Ø¨Ù ØªØ£ÛÛØ¯ Ø±Ø¯ Ø´ÙÛØ¯Ø
 ssl_letsmode=بیایید روش اعتبار سنجی را رمزگذاری کنیم
 ssl_letsmode0=میزبان مجازی آپاچی مطابق با نام میزبان
 ssl_letsmode1=میزبان مجازی آپاچی انتخاب شده است
@@ -547,6 +553,7 @@ status_interval0=همه
 status_mins=دقایق
 status_pkgs=به روزرسانی های موجود در بسته را جمع کنید؟
 status_temp=دمای درایو را جمع کنید؟
+status_temp2=دمای CPU و سرعت فن ها را جمع آوری کنید؟
 status_units=واحد دما
 status_celsius=سلسیوس
 status_fahrenheit=فارنهایت
@@ -673,9 +680,9 @@ twofactor_eauthyotp=نشانه معتبر نامعتبر است
 twofactor_enrolllink=You can now enroll for two-factor authentication in the <a href='$1'>Webmin Users</a> module.
 twofactor_url=To learn more about $1, see it's website at <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=The Perl module <tt>$1</tt> needed for two-factor authentication is not installed. Use the <a href='$2'>Perl Modules</a> page in Webmin to install it.
-twofactor_qrcode=Enter the secret code $1 in the Google Authenticator app, or scan the QR code below.
+twofactor_qrcode=کد مخفی $1 را در برنامه TOTP وارد کنید، یا کد QR زیر را اسکن کنید.
 twofactor_etotpid=راز رمزگذاری نشده TOTP base32 نامعتبر است
-twofactor_etotptoken=نشانه تأیید اعتبار Google باید یک عدد باشد
+twofactor_etotptoken=توکن TOTP باید یک عدد باشد
 twofactor_etotpmodule2=Missing Perl module $1
 twofactor_etotpmatch=کد OTP نادرست است
 twofactor_secret=کلید مخفی شخصی

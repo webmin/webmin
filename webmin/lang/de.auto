@@ -1,0 +1,4 @@
+log_trust=Client-IP-Adresse protokollieren, wenn man sich hinter einem Proxy befindet?
+
+twofactor_qrcode=Geben Sie den Geheimcode $1 in die TOTP-App ein oder scannen Sie den QR-Code unten.
+twofactor_etotptoken=Das TOTP-Token muss eine Zahl sein

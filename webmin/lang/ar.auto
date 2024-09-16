@@ -1,3 +1,7 @@
+bind_websocport=رقم المنفذ الأساسي لاتصالات WebSockets
+bind_websocport_none=افتراضي (555)
+bind_websoc_host=اسم المضيف لاتصالات WebSocket
+bind_websoc_host_auto=اوتوماتيكي
 bind_maxconns=الحد الأقصى لإجمالي الاتصالات المتزامنة
 bind_maxconns_per_ip=الحد الأقصى من الاتصالات المتزامنة لكل IP
 bind_maxconns_per_net=الحد الأقصى من الاتصالات المتزامنة لكل شبكة
@@ -9,6 +13,7 @@ bind_maxlifetime_def=غير محدود
 bind_maxlifetime_secs=ثواني
 bind_emaxlifetime=يجب أن يكون الحد الأقصى لعمر العملية رقمًا أكبر من 60 ثانية
 
+log_trust=تسجيل عنوان IP للعميل عند وجوده خلف الوكيل؟
 log_sched=تسجيل وظائف المقرر؟
 
 proxy_title=خوادم بروكسي وتنزيلات
@@ -327,6 +332,7 @@ ssl_letserr2=Alternately, check the <a href='$1'>module configuration</a> page t
 ssl_letsdesc2=يمكن استخدام هذه الصفحة لطلب شهادة جديدة ، والتي ستقوم بالكتابة فوق أي أخرى تم تكوينها حاليًا في Webmin. ومع ذلك ، تتطلب خدمة Let's Encrypt التحقق من ملكيتك لمجال الشهادة بالتحقق من أن هذا النظام يستضيف موقع الويب الخاص بالنطاق. يتم ذلك عن طريق وضع ملف مؤقت صغير في دليل مستندات موقع الويب.
 ssl_letsheader=خيارات لشهادة SSL جديدة
 ssl_letsdoms=أسماء المضيفين للشهادة
+ssl_subset=هل تريد تخطي أسماء المضيفين غير القابلة للتحقق؟
 ssl_letsmode=دعونا تشفير طريقة التحقق من الصحة
 ssl_letsmode0=مضيف Apache الظاهري يطابق اسم المضيف
 ssl_letsmode1=تم تحديد مضيف افتراضي Apache
@@ -937,6 +943,7 @@ status_interval0=كل
 status_mins=الدقائق
 status_pkgs=اجمع تحديثات الحزمة المتاحة؟
 status_temp=جمع درجات الحرارة بالسيارة؟
+status_temp2=جمع درجات حرارة وحدة المعالجة المركزية وسرعة المراوح؟
 status_units=وحدات لدرجات الحرارة
 status_celsius=درجة مئوية
 status_fahrenheit=فهرنهايت
@@ -1063,9 +1070,9 @@ twofactor_eauthyotp=رمز Authy غير صالح
 twofactor_enrolllink=You can now enroll for two-factor authentication in the <a href='$1'>Webmin Users</a> module.
 twofactor_url=To learn more about $1, see it's website at <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=The Perl module <tt>$1</tt> needed for two-factor authentication is not installed. Use the <a href='$2'>Perl Modules</a> page in Webmin to install it.
-twofactor_qrcode=Enter the secret code $1 in the Google Authenticator app, or scan the QR code below.
+twofactor_qrcode=أدخل الرمز السري $1 في تطبيق TOTP، أو قم بمسح رمز الاستجابة السريعة QR أدناه.
 twofactor_etotpid=سر TOP32 ترميز base32 غير صالح
-twofactor_etotptoken=يجب أن يكون رمز مصادقة Google رقمًا
+twofactor_etotptoken=يجب أن يكون رمز TOTP رقمًا
 twofactor_etotpmodule2=Missing Perl module $1
 twofactor_etotpmatch=رمز OTP غير صحيح
 twofactor_secret=المفتاح السري الشخصي

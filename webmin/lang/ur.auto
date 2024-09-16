@@ -46,6 +46,10 @@ bind_sport0=پہلے کی طرح
 bind_sport1=مخصوص بندرگاہ ..
 bind_listen=یو ڈی پی پورٹ پر نشریات سنیں
 bind_none=سنو نہیں
+bind_websocport=WebSockets کنکشن کے لیے بیس پورٹ نمبر
+bind_websocport_none=پہلے سے طے شدہ (555)
+bind_websoc_host=WebSocket کنکشنز کے لیے میزبان نام
+bind_websoc_host_auto=خودکار
 bind_hostname=ویب سرور میزبان نام
 bind_auto=براؤزر سے کام کریں
 bind_err=پتہ تبدیل کرنے میں ناکام
@@ -80,6 +84,7 @@ log_status=لاگنگ فعال ہے؟
 log_disable=لاگنگ کو غیر فعال کریں
 log_enable=لاگنگ کو فعال کریں
 log_resolv=حل شدہ ہوسٹ نامز لاگ ان کریں؟
+log_trust=پراکسی کے پیچھے رہتے ہوئے کلائنٹ کا IP ایڈریس لاگ کریں؟
 log_clf=مشترکہ لاگ فارمیٹ (بشمول حوالہ دہندہ اور صارف ایجنٹ) استعمال کریں؟
 log_clear2=وقتا فوقتا لاگ فائلوں کو صاف کرنا؟
 log_period=Yes, every $1 hours
@@ -420,6 +425,7 @@ ssl_letserr2=Alternately, check the <a href='$1'>module configuration</a> page t
 ssl_letsdesc2=اس صفحے کو ایک نئے سرٹیفکیٹ کی درخواست کرنے کے لئے استعمال کیا جاسکتا ہے ، جو فی الحال ویبمین میں تشکیل شدہ کسی بھی دوسرے کو ادلھ دے گا۔ تاہم ، چلو انکرپٹ سروس کا تقاضا ہے کہ سرٹیفکیٹ ڈومین کی آپ کی ملکیت کو یہ جانچ کر کے توثیق کیا جائے کہ یہ نظام اس ڈومین کے لئے ویب سائٹ کی میزبانی کرتا ہے۔ یہ ویب سائٹ کی دستاویز ڈائرکٹری میں ایک چھوٹی سی عارضی فائل رکھ کر کیا جاتا ہے۔
 ssl_letsheader=نئے SSL سرٹیفکیٹ کے لئے اختیارات
 ssl_letsdoms=سرٹیفکیٹ کے لئے میزبان نام
+ssl_subset=غیر تصدیق شدہ میزبان ناموں کو چھوڑیں؟
 ssl_letsmode=آئیے انکرپٹ توثیق کا طریقہ بنائیں
 ssl_letsmode0=اپاچی ورچوئل میزبان میزبان نام سے مماثل ہے۔
 ssl_letsmode1=اپاچی ورچوئل ہوسٹ کو منتخب کیا۔
@@ -1056,6 +1062,7 @@ status_interval0=ہر کوئی
 status_mins=منٹ
 status_pkgs=دستیاب پیکیج کی تازہ کارییں جمع کریں؟
 status_temp=ڈرائیو کا درجہ حرارت جمع کریں؟
+status_temp2=CPU درجہ حرارت اور پنکھے کی رفتار جمع کریں؟
 status_units=درجہ حرارت کے لئے اکائیوں
 status_celsius=سیلسیس
 status_fahrenheit=فارن ہائیٹ
@@ -1182,9 +1189,9 @@ twofactor_eauthyotp=اتھارٹی ٹوکن غلط ہے
 twofactor_enrolllink=You can now enroll for two-factor authentication in the <a href='$1'>Webmin Users</a> module.
 twofactor_url=To learn more about $1, see it's website at <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=The Perl module <tt>$1</tt> needed for two-factor authentication is not installed. Use the <a href='$2'>Perl Modules</a> page in Webmin to install it.
-twofactor_qrcode=Enter the secret code $1 in the Google Authenticator app, or scan the QR code below.
+twofactor_qrcode=TOTP ایپ میں خفیہ کوڈ $1 درج کریں، یا نیچے QR کوڈ اسکین کریں۔
 twofactor_etotpid=غلط TOTP بیس 32 انکوڈ والا راز
-twofactor_etotptoken=گوگل مستند ٹوکن ایک نمبر ہونا ضروری ہے
+twofactor_etotptoken=TOTP ٹوکن ایک نمبر ہونا چاہیے۔
 twofactor_etotpmodule2=Missing Perl module $1
 twofactor_etotpmatch=غلط او ٹی پی کوڈ
 twofactor_secret=ذاتی خفیہ کلید

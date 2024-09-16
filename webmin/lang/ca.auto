@@ -1,3 +1,7 @@
+bind_websocport=Número de port base per a connexions WebSockets
+bind_websocport_none=Per defecte (555)
+bind_websoc_host=Nom d'amfitrió per a connexions WebSocket
+bind_websoc_host_auto=Automàtic
 bind_maxconns=Connexions simultànies totals màximes
 bind_maxconns_per_ip=Connexions simultànies màximes per IP
 bind_maxconns_per_net=Connexions simultànies màximes per xarxa
@@ -8,6 +12,8 @@ bind_maxlifetime=Vida màxima del procés de Webmin
 bind_maxlifetime_def=Il·limitat
 bind_maxlifetime_secs=segons
 bind_emaxlifetime=La vida útil màxima del procés ha de ser un nombre superior a 60 segons
+
+log_trust=Registra l'adreça IP del client quan estàs darrere del proxy?
 
 ui_nice_size_type=Utilitzeu unitats de mesura binàries (KiB, MiB, GiB en lloc de KB, MB, GB)
 
@@ -28,6 +34,7 @@ lang_dateformat_yyyy/mm/dd=aaaa/mm/dd (és a dir, 16/09/2001)
 
 ssl_hsts=Apliqueu SSL amb la capçalera HSTS
 ssl_letsdoms=Noms d'amfitrió del certificat
+ssl_subset=Voleu saltar noms d'amfitrió no verificables?
 ssl_letsmode=Anem a xifrar el mètode de validació
 ssl_letsmode0=L'amfitrió virtual d'Apache coincideix amb el nom d'amfitrió
 ssl_letsmode1=Amfitrió virtual Apache seleccionat
@@ -103,6 +110,7 @@ notify_yumrepo=El vostre sistema utilitza l'antic dipòsit Webmin YUM. Feu clic 
 notify_aptrepo=El vostre sistema utilitza l'antic dipòsit Webmin APT. Feu clic al botó següent per canviar a l'URL del repositori <tt>stable</tt> <tt>$1</tt> per utilitzar la nostra darrera clau de signatura i garantir l'accés a les versions actualitzades de Webmin.
 notif_fixreponow=Actualitza el repositori Webmin
 
+status_temp2=Recull les temperatures de la CPU i la velocitat dels ventiladors?
 status_err=No s'ha pogut desar la col·lecció d'estat de fons
 status_einterval=L'interval de col·lecció ha de ser un nombre enter
 
@@ -125,6 +133,9 @@ web_redirpref=Prefix de redirecció
 web_eredirpref=El prefix ha de començar amb una barra inclinada
 web_eredirpref2=El prefix no ha de contenir espais
 web_redirssl=Redirigeix SSL
+
+twofactor_qrcode=Introduïu el codi secret $1 a l'aplicació TOTP o escanegeu el codi QR a continuació.
+twofactor_etotptoken=El testimoni TOTP ha de ser un número
 
 letsencrypt_certbot=Certbot
 letsencrypt_doingcertbot=Sol·licitant un certificat nou per a $1, utilitzant el servidor web Certbot ..
