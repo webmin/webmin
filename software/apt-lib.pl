@@ -468,7 +468,6 @@ foreach my $f ($sources_list_file, glob("$sources_list_dir/*")) {
 					  {
 					    'cannot' => 1,
 					    'file' => $f,
-					    # 'line' => $lnum,
 					    'url' => $repo{'url'},
 					    'enabled' => !$repo{'disabled'},
 					    'words' => [$comp, $suite],
