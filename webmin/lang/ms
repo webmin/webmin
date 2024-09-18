@@ -1016,9 +1016,7 @@ twofactor_eauthyotp=Token Authy tidak sah
 twofactor_enrolllink=Anda kini boleh mendaftar untuk pengesahan dua-faktor dalam modul <a href='$1'>Pengguna Webmin</a>.
 twofactor_url=Untuk mengetahui lebih lanjut tentang $1, sila ke laman web <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Modul Perl <tt>$1</tt> diperlukan untuk pengesahan dua-faktor, tidak dipasang. Gunakan <a href='$2'>Modul Perl</a> dalam halaman Webmin untuk memasangnya.
-twofactor_qrcode=Masukkan kod rahsia $1 pada aplikasi Pengesah Google, atau imbas kod QR di bawah.
 twofactor_etotpid=TOTP base32-encoded rahsia tidak sah
-twofactor_etotptoken=Token Pengesah Google mestilah nombor
 twofactor_etotpmodule2=Modul Perl $1 hilang
 twofactor_etotpmatch=Kod OTP tidak betul
 twofactor_secret=Kunci rahsia persendirian

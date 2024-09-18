@@ -321,7 +321,6 @@ lang_intro=您可在该页中选择 Webmin 显示标题、提示和消息所使�
 lang_ok=变更语言
 lang_accept=使用浏览器指定的语言？
 lang_charset=HTML 页面的字符集
-lang_echarset=未设定字符或无效的字符集
 lang_charover=强制角色集
 lang_err=保存语言失败
 lang_echarset=少或看起来无效的字符集
@@ -459,7 +458,6 @@ newcsr_title=生成 CSR
 newcsr_ok=成功生成以下 SSL 证书请求：
 newcsr_ok2=此 CSR 必须发送给签名机构，签名机构将返回签名证书。可以使用<b>上传证书</b>标签使用上方的密钥进行安装。
 
-startpage_title主页选项
 startpage_intro2=此页面可以控制 Webmin 主菜单的外观。某些选项仅在使用默认主题时才有效。
 startpage_tabs=模块分类吗？
 startpage_nocol=列数
@@ -1188,9 +1186,7 @@ twofactor_eauthyotp=Authy 令牌无效
 twofactor_enrolllink=现在，您可以在 <a href='$1'>Webmin 用户</a> 模块中注册双因素身份验证。
 twofactor_url=要了解有关 $1 的更多信息，请参见其网站，网址为 <a href='$2' target=_blank>$2</a>。
 twofactor_etotpmodule=未安装双因素身份验证所需的 Perl 模块 <tt>$1</tt>。使用 Webmin 中的 <a href='$2'>Perl 模块</a> 页面进行安装。
-twofactor_qrcode=在 Google Authenticator 应用程序中输入密码 $1，或扫描下面的二维码。
 twofactor_etotpid=无效的 TOPT base32 编码令牌
-twofactor_etotptoken=Google Authenticator 令牌必须是数字
 twofactor_etotpmodule2=未设定 Perl 模块 $1
 twofactor_etotpmatch=错误的 OTP 码
 twofactor_secret=个人密钥
@@ -1261,5 +1257,3 @@ os_eol_second=秒
 os_eol_reached=EOL 达到
 os_eol_reaching=EOL 在
 os_eol_reaching2=EOL 即将到来
-
-__norefs=1

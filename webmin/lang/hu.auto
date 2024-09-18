@@ -29,6 +29,10 @@ bind_sport0=Ugyanaz, mint az első
 bind_sport1=Sajátos kikötő ..
 bind_listen=Figyelje az adásokat az UDP porton
 bind_none=Ne figyelj
+bind_websocport=A WebSockets kapcsolatok alap portszáma
+bind_websocport_none=Alapértelmezett (555)
+bind_websoc_host=Hostnév a WebSocket kapcsolatokhoz
+bind_websoc_host_auto=Automatikus
 bind_hostname=Webkiszolgáló gazdagépneve
 bind_auto=Dolgozzon ki a böngészőből
 bind_enone=A megadott IP címek és portok nem hallgathatók meg
@@ -56,6 +60,7 @@ bind_emaxlifetime=A folyamat maximális élettartamának 60 másodpercnél nagyo
 
 log_desc2=Ha a naplózás engedélyezve van, a Webmin a $1 fájlba részletesebb felhasználói tevékenységi naplót is ír. Ez a napló megnézhető és elemezhető a Webmin Műveletek Napló moduljával, hogy pontosan megnézze, hogy az egyes Webmin felhasználók mit csináltak.
 log_status=A naplózás aktív?
+log_trust=Proxy mögött naplózza a kliens IP-címét?
 log_clf=Használ kombinált naplóformátumot (ideértve az hivatkozót és a felhasználói ügynököt)?
 log_clear2=Rendszeresen törli a naplófájlokat?
 log_period=Igen, minden $1 óra
@@ -331,6 +336,7 @@ ssl_letserr2=Alternatív megoldásként ellenőrizze a <a href='$1'>modulkonfigu
 ssl_letsdesc2=Ez az oldal felhasználható új tanúsítvány igénylésére, amely felülírja a Webminben jelenleg konfigurált összes többi felhasználót. A Let's Encrypt szolgáltatás azonban megköveteli, hogy a tanúsítási tartomány tulajdonjogát ellenőrizze annak ellenőrzésével, hogy ez a rendszer üzemelteti-e a domain webhelyét. Ez úgy történik, hogy egy kis ideiglenes fájlt helyez a weboldal dokumentumkönyvtárába.
 ssl_letsheader=Új SSL tanúsítvány lehetőségei
 ssl_letsdoms=A tanúsítvány gazdanevei
+ssl_subset=Kihagyja az ellenőrizhetetlen gazdagépneveket?
 ssl_letsmode=Titkosítsuk az érvényesítési módszert
 ssl_letsmode0=Apache virtuális gazdagép megfelel a gazdagépnévnek
 ssl_letsmode1=Kiválasztott Apache virtuális gazdagép
@@ -962,6 +968,7 @@ status_interval0=Minden
 status_mins=percek
 status_pkgs=Összegyűjti az elérhető csomagfrissítéseket?
 status_temp=Összegyűjti a hajtási hőmérsékleteket?
+status_temp2=Összegyűjti a CPU hőmérsékletét és a ventilátorok sebességét?
 status_units=Hőmérsékleti egységek
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
@@ -1088,9 +1095,9 @@ twofactor_eauthyotp=Az authy token érvénytelen
 twofactor_enrolllink=Most regisztrálhat kétfaktoros hitelesítésre a <a href='$1'>Webmin felhasználók</a> modulban.
 twofactor_url=Ha többet szeretne megtudni a $1 -ról, tekintse meg webhelyét a <a href='$2' target=_blank>$2</a> webhelyen.
 twofactor_etotpmodule=A két tényezőhitelesítéshez szükséges <tt>$1</tt> Perl modul nincs telepítve. A Webmin <a href='$2'>Perl-modulok</a> oldalával telepítse.
-twofactor_qrcode=Írja be a $1 titkos kódot a Google Authenticator alkalmazásba, vagy szkennelje be az alábbi QR-kódot.
+twofactor_qrcode=Írja be a titkos kódot $1 a TOTP alkalmazásban, vagy olvassa be az alábbi QR-kódot.
 twofactor_etotpid=Érvénytelen TOTP base32-kódolású titok
-twofactor_etotptoken=A Google Authenticator tokennek számnak kell lennie
+twofactor_etotptoken=A TOTP tokennek számnak kell lennie
 twofactor_etotpmodule2=Hiányzó Perl modul $1
 twofactor_etotpmatch=Helytelen OTP kód
 twofactor_secret=Személyes titkos kulcs

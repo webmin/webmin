@@ -46,6 +46,10 @@ bind_sport0=Sama kuin ensimmäinen
 bind_sport1=Erityinen satama ..
 bind_listen=Kuuntele lähetyksiä UDP-portista
 bind_none=Älä kuuntele
+bind_websocport=WebSockets-yhteyksien perusporttinumero
+bind_websocport_none=Oletus (555)
+bind_websoc_host=WebSocket-yhteyksien isäntänimi
+bind_websoc_host_auto=Automaattinen
 bind_hostname=Web-palvelimen isäntänimi
 bind_auto=Harjoittele selaimella
 bind_err=Osoitteen vaihtaminen epäonnistui
@@ -80,6 +84,7 @@ log_status=Sisäänkirjautuminen aktiivinen?
 log_disable=Poista kirjaaminen käytöstä
 log_enable=Ota kirjaaminen käyttöön
 log_resolv=Lokitko ratkaisut isäntänimet?
+log_trust=Kirjaa asiakkaan IP-osoite välityspalvelimen takana?
 log_clf=Käytätkö yhdistettyä lokimuotoa (mukaan lukien viittaus ja käyttäjäagentti)?
 log_clear2=Tyhjennäkö lokitiedostot säännöllisesti?
 log_period=Kyllä, jokainen $1 tunti
@@ -420,6 +425,7 @@ ssl_letserr2=Tarkista vaihtoehtoisesti <a href='$1'>moduulin kokoonpano</a> -siv
 ssl_letsdesc2=Tätä sivua voidaan käyttää uuden varmenteen pyytämiseen, joka korvaa kaikki muut, jotka Webminissä on tällä hetkellä määritetty. Let's Encrypt -palvelu edellyttää kuitenkin, että omistajasi varmennealueelle vahvistetaan tarkistamalla, että tämä järjestelmä isännöi verkkotunnuksen verkkosivustoa. Tämä tehdään sijoittamalla pieni väliaikainen tiedosto verkkosivuston asiakirjahakemistoon.
 ssl_letsheader=Uuden SSL-varmenteen vaihtoehdot
 ssl_letsdoms=Varmenteen isäntänimet
+ssl_subset=Ohitetaanko varmentamattomat isäntänimet?
 ssl_letsmode=Salataan vahvistusmenetelmä
 ssl_letsmode0=Apache-virtuaaliisäntä, joka vastaa isäntänimeä
 ssl_letsmode1=Valittu Apache-virtuaaliisäntä
@@ -1056,6 +1062,7 @@ status_interval0=Joka
 status_mins=pöytäkirja
 status_pkgs=Kerää saatavilla olevat pakettipäivitykset?
 status_temp=Kerää käyttölämpötilat?
+status_temp2=Kerää prosessorin lämpötiloja ja tuulettimien nopeutta?
 status_units=Lämpötilayksiköt
 status_celsius=celsius
 status_fahrenheit=Fahrenheit
@@ -1182,9 +1189,9 @@ twofactor_eauthyotp=Authy-tunnus on virheellinen
 twofactor_enrolllink=Voit nyt ilmoittautua kaksifaktoriseen todennukseen <a href='$1'>Webmin Users</a> -moduulissa.
 twofactor_url=Lisätietoja $1 on verkkosivustolla osoitteessa <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Kaksitekijäiseen todennukseen tarvittavaa Perl-moduulia <tt>$1</tt> ei ole asennettu. Asenna se Webminin <a href='$2'>Perl-moduulit</a> -sivulla.
-twofactor_qrcode=Kirjoita salainen koodi $1 Google Authenticator -sovellukseen tai skannaa alla oleva QR-koodi.
+twofactor_qrcode=Kirjoita salainen koodi $1 TOTP-sovellukseen tai skannaa alla oleva QR-koodi.
 twofactor_etotpid=Virheellinen TOTP base32-koodattu salaisuus
-twofactor_etotptoken=Google Authenticator -tunnuksen on oltava numero
+twofactor_etotptoken=TOTP-tunnuksen on oltava numero
 twofactor_etotpmodule2=Puuttuu Perl-moduuli $1
 twofactor_etotpmatch=Väärä OTP-koodi
 twofactor_secret=Henkilökohtainen salainen avain

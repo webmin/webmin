@@ -1,0 +1,8 @@
+log_trust=在代理之后记录客户端 IP 地址吗？
+
+lang_chardef=由语言决定
+
+startpage_title=索引页选项
+
+twofactor_qrcode=在 TOTP 应用程序中输入密码 $1，或者扫描下面的二维码。
+twofactor_etotptoken=TOTP 令牌必须是数字

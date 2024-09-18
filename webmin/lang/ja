@@ -1101,9 +1101,7 @@ twofactor_eauthyotp=認証トークンが有効ではありません
 twofactor_enrolllink=<a href='$1'>Webmin ユーザ モジュール</a> で 2 ファクタ認証の登録できるようになりました。
 twofactor_url=$1 の詳細については、Webサイト <a href='$2' rel="noopener noreferrer" target="_blank">$2</a> をご覧ください。
 twofactor_etotpmodule=2 ファクタ認証に必要なPerlモジュール <tt>$1</tt> がインストールされていません。Webmin の <a href='$2'>Perl モジュール を使用してインストール</a>できます。
-twofactor_qrcode=Google 認証システム アプリでシークレットコード $1 を入力するか、QR コードをスキャンします。
 twofactor_etotpid=無効な TOTP base32 エンコード シークレット
-twofactor_etotptoken=Google 認証システム のトークンは半角の数字を入力します
 twofactor_etotpmodule2=Perl モジュール $1 が見つかりませんでした
 twofactor_etotpmatch=OTP コードが正しくありません
 twofactor_secret=個人秘密鍵

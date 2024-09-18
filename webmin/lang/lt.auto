@@ -46,6 +46,10 @@ bind_sport0=Tas pats, kaip ir pirmasis
 bind_sport1=Konkretus uostas ..
 bind_listen=Klausykite transliacijų per UDP prievadą
 bind_none=Neklausyk
+bind_websocport=Bazinis prievado numeris „WebSockets“ ryšiams
+bind_websocport_none=Numatytasis (555)
+bind_websoc_host=Prieglobos serverio pavadinimas, skirtas „WebSocket“ ryšiams
+bind_websoc_host_auto=Automatinis
 bind_hostname=Žiniatinklio serverio pagrindinio kompiuterio vardas
 bind_auto=Treniruokis iš naršyklės
 bind_err=Nepavyko pakeisti adreso
@@ -80,6 +84,7 @@ log_status=Registracija aktyvi?
 log_disable=Išjungti registravimą
 log_enable=Įgalinti registravimą
 log_resolv=Prisijunkite išspręstus pagrindinius vardus?
+log_trust=Užregistruoti kliento IP adresą, kai yra už tarpinio serverio?
 log_clf=Naudoti kombinuotą žurnalo formatą (įskaitant persiuntimo ir vartotojo agentą)?
 log_clear2=Periodiškai išvalyti žurnalo failus?
 log_period=Taip, kiekviena $1 valanda
@@ -420,6 +425,7 @@ ssl_letserr2=Arba patikrinkite puslapį <a href='$1'>modulio konfigūracija</a>,
 ssl_letsdesc2=Šis puslapis gali būti naudojamas norint paprašyti naujo sertifikato, kuris pakeis bet kurį kitą šiuo metu sukonfigūruotą „Webmin“. Tačiau norint užšifruoti paslaugą reikia patvirtinti jūsų nuosavybės teises į sertifikato domeną, patikrinant, ar ši sistema priglobia domeno svetainę. Tai atliekama įdedant nedidelį laikiną failą į svetainės dokumentų katalogą.
 ssl_letsheader=Naujo SSL sertifikato parinktys
 ssl_letsdoms=Sertifikato pagrindiniai vardai
+ssl_subset=Praleisti nepatvirtintus prieglobos pavadinimus?
 ssl_letsmode=Užšifruokime patvirtinimo metodą
 ssl_letsmode0=„Apache“ virtualioji priegloba atitinka pagrindinio kompiuterio pavadinimą
 ssl_letsmode1=Pasirinktas „Apache“ virtualusis kompiuteris
@@ -1056,6 +1062,7 @@ status_interval0=Kiekvienas
 status_mins=minučių
 status_pkgs=Surinkti galimus paketo naujinius?
 status_temp=Surinkite važiavimo temperatūrą?
+status_temp2=Surinkite procesoriaus temperatūrą ir ventiliatorių greitį?
 status_units=Temperatūros vienetai
 status_celsius=Celsijaus
 status_fahrenheit=Farenheitas
@@ -1182,9 +1189,9 @@ twofactor_eauthyotp=„Authy“ prieigos raktas netinkamas
 twofactor_enrolllink=Dabar galite užsiregistruoti dviejų veiksnių autentifikavimui modulyje <a href='$1'>„Webmin“ vartotojai</a>.
 twofactor_url=Norėdami sužinoti daugiau apie $1, apsilankykite jos svetainėje adresu <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=„Perl“ modulis <tt>$1</tt>, reikalingas dviejų faktorių autentifikavimui, neįdiegtas. Norėdami ją įdiegti, naudokite „Webmin“ puslapį <a href='$2'>„Perl“ moduliai</a>.
-twofactor_qrcode=Įveskite slaptą kodą $1 „Google Authenticator“ programoje arba nuskaitykite toliau esantį QR kodą.
+twofactor_qrcode=Įveskite slaptą kodą $1 TOTP programoje arba nuskaitykite toliau esantį QR kodą.
 twofactor_etotpid=Netinkama „TOTP base32“ užkoduota paslaptis
-twofactor_etotptoken=„Google Authenticator“ prieigos raktas turi būti numeris
+twofactor_etotptoken=TOTP prieigos raktas turi būti skaičius
 twofactor_etotpmodule2=Trūksta „Perl“ modulio $1
 twofactor_etotpmatch=Neteisingas OTP kodas
 twofactor_secret=Asmeninis slaptas raktas

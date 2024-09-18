@@ -1,3 +1,7 @@
+bind_websocport=Basisportnummer for WebSockets-tilkoblinger
+bind_websocport_none=Standard (555)
+bind_websoc_host=Vertsnavn for WebSocket-tilkoblinger
+bind_websoc_host_auto=Automatisk
 bind_maxconns=Maksimalt antall samtidige tilkoblinger
 bind_maxconns_per_ip=Maksimum samtidige tilkoblinger per IP
 bind_maxconns_per_net=Maksimum samtidige tilkoblinger per nettverk
@@ -8,6 +12,8 @@ bind_maxlifetime=Maksimal levetid for Webmin-prosessen
 bind_maxlifetime_def=Ubegrenset
 bind_maxlifetime_secs=sekunder
 bind_emaxlifetime=Maksimal prosesslevetid må være et tall større enn 60 sekunder
+
+log_trust=Logge klientens IP-adresse når du er bak proxy?
 
 os_incorrect=Operativsystemet $1 er oppgradert til versjon $2
 os_release_notes=Utgivelsesnotater
@@ -23,6 +29,7 @@ lang_dateformat_mm/dd/yyyy=mm/dd/åååå (dvs. 16.09.2001)
 lang_dateformat_yyyy/mm/dd=åååå/mm/dd (dvs. 2001/09/16)
 
 ssl_hsts=Håndhev SSL med HSTS-header
+ssl_subset=Vil du hoppe over vertsnavn som ikke kan bekreftes?
 ssl_letsmode=La oss kryptere valideringsmetoden
 ssl_letsmode0=Apache virtuell vert som samsvarer med vertsnavn
 ssl_letsmode1=Valgt virtuell Apache-vert
@@ -92,6 +99,7 @@ notify_yumrepo=Systemet ditt bruker det gamle Webmin YUM-depotet. Klikk på knap
 notify_aptrepo=Systemet ditt bruker det gamle Webmin APT-lageret. Klikk på knappen nedenfor for å bytte til den nye <tt>stable</tt> depot-URLen <tt>$1</tt> for å bruke vår siste signeringsnøkkel og sikre tilgang til oppdaterte Webmin-versjoner.
 notif_fixreponow=Oppdater Webmin Repository
 
+status_temp2=Samle CPU-temperaturer og viftehastighet?
 status_err=Kunne ikke lagre samling av bakgrunnsstatus
 status_einterval=Samlingsintervallet må være et helt tall
 
@@ -110,6 +118,9 @@ web_redirpref=Omdirigeringsprefiks
 web_eredirpref=Prefikset må starte med skråstrek
 web_eredirpref2=Prefiks må ikke inneholde mellomrom
 web_redirssl=Omdiriger SSL
+
+twofactor_qrcode=Skriv inn den hemmelige koden $1 i TOTP-appen, eller skann QR-koden nedenfor.
+twofactor_etotptoken=TOTP-token må være et tall
 
 letsencrypt_doingcertbot=Ber om et nytt sertifikat for $1 ved å bruke Certbot-nettserveren ..
 letsencrypt_eacmecertbot=Bare den offisielle Let's Encrypt-klienten støtter Certbot-validering

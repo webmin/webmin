@@ -46,6 +46,10 @@ bind_sport0=Dieselfde as eerste
 bind_sport1=Spesifieke hawe ..
 bind_listen=Luister na uitsendings op die UDP-poort
 bind_none=Moenie luister nie
+bind_websocport=Basispoortnommer vir WebSockets-verbindings
+bind_websocport_none=Verstek (555)
+bind_websoc_host=Gasheernaam vir WebSocket-verbindings
+bind_websoc_host_auto=Outomatiese
 bind_hostname=Webbediener gasheernaam
 bind_auto=Werk uit die blaaier
 bind_err=Kon nie adres verander nie
@@ -80,6 +84,7 @@ log_status=Teken aktief aan?
 log_disable=Deaktiveer aanmelding
 log_enable=Aktiveer aanmelding
 log_resolv=Teken opgeloste gasheername aan?
+log_trust=Meld die kliënt se IP-adres aan wanneer jy agter instaanbediener is?
 log_clf=Gebruik u gekombineerde log-formaat (insluitend verwyser en gebruikersagent)?
 log_clear2=Maak logboeklêers periodiek skoon?
 log_period=Ja, elke $1 uur
@@ -420,6 +425,7 @@ ssl_letserr2=Kyk alternatiewelik na die <a href='$1'>module-opstelling</a> om se
 ssl_letsdesc2=Hierdie bladsy kan gebruik word om 'n nuwe sertifikaat aan te vra, wat die ander wat tans in Webmin opgestel is, sal oorskryf. Die Let’s Encrypt-diens vereis egter dat u eienaarskap van die sertifikaatdomein gevalideer word deur seker te maak dat hierdie stelsel die webwerf vir die domein huisves. Dit word gedoen deur 'n klein tydelike lêer in die dokumentgids van die webwerf te plaas.
 ssl_letsheader=Opsies vir 'n nuwe SSL-sertifikaat
 ssl_letsdoms=Gasheername vir sertifikaat
+ssl_subset=Slaan onverifieerbare gasheername oor?
 ssl_letsmode=Kom ons enkripteer valideringsmetode
 ssl_letsmode0=Apache virtuele gasheer wat ooreenstem met gasheernaam
 ssl_letsmode1=Geselekteerde Apache virtuele gasheer
@@ -1056,6 +1062,7 @@ status_interval0=elke
 status_mins=minute
 status_pkgs=Versamel beskikbare pakketopdaterings?
 status_temp=Versamel dryftemperature?
+status_temp2=Versamel SVE-temperature en waaiersspoed?
 status_units=Eenhede vir temperature
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
@@ -1182,9 +1189,9 @@ twofactor_eauthyotp=Die outentieke token is ongeldig
 twofactor_enrolllink=U kan nou inskryf vir tweefaktor-verifikasie in die <a href='$1'>Webmin-gebruikers</a>.
 twofactor_url=Vir meer inligting oor $1, besoek die webwerf by <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Die Perl-module <tt>$1</tt> wat nodig is vir tweefaktor-verifikasie, is nie geïnstalleer nie. Gebruik die <a href='$2'>Perl Modules</a> -bladsy in Webmin om dit te installeer.
-twofactor_qrcode=Voer die geheime kode $1 in die Google Authenticator-app in, of skandeer die QR-kode hieronder.
+twofactor_qrcode=Voer die geheime kode $1 in die TOTP-toepassing in, of skandeer die QR-kode hieronder.
 twofactor_etotpid=Ongeldige TOTP-basis32-geënkodeerde geheim
-twofactor_etotptoken=Google Authenticator-token moet 'n nommer wees
+twofactor_etotptoken=TOTP-token moet 'n nommer wees
 twofactor_etotpmodule2=Perl-module ontbreek $1
 twofactor_etotpmatch=Verkeerde OTP-kode
 twofactor_secret=Persoonlike geheime sleutel

@@ -46,6 +46,10 @@ bind_sport0=La fel ca prima
 bind_sport1=Port specific ..
 bind_listen=Ascultați difuzările pe portul UDP
 bind_none=Nu asculta
+bind_websocport=Numărul portului de bază pentru conexiunile WebSockets
+bind_websocport_none=Implicit (555)
+bind_websoc_host=Nume de gazdă pentru conexiunile WebSocket
+bind_websoc_host_auto=Automat
 bind_hostname=Nume gazdă server web
 bind_auto=Rezolvați-vă din browser
 bind_err=Nu a reușit să schimbe adresa
@@ -80,6 +84,7 @@ log_status=Înregistrare activă?
 log_disable=Dezactivați înregistrarea
 log_enable=Activați logarea
 log_resolv=Logare nume de gazdă rezolvate?
+log_trust=Înregistrați adresa IP a clientului când este în spatele proxy-ului?
 log_clf=Folosiți un format de jurnal combinat (inclusiv referrer și agent de utilizator)?
 log_clear2=Ștergeți periodic fișierele de jurnal?
 log_period=Da, la fiecare $1 ore
@@ -420,6 +425,7 @@ ssl_letserr2=În mod alternativ, verificați pagina <a href='$1'>de configurare 
 ssl_letsdesc2=Această pagină poate fi utilizată pentru a solicita un nou certificat, care va suprascrie orice alt configurat în prezent în Webmin. Cu toate acestea, serviciul Let Encrypt necesită validarea dreptului de proprietate asupra domeniului certificat prin verificarea dacă acest sistem găzduiește site-ul web pentru domeniu. Acest lucru se realizează prin plasarea unui mic fișier temporar în directorul documentelor site-ului.
 ssl_letsheader=Opțiuni pentru noul certificat SSL
 ssl_letsdoms=Nume de gazdă pentru certificat
+ssl_subset=Omiteți numele de gazdă neverificabile?
 ssl_letsmode=Să criptăm metoda de validare
 ssl_letsmode0=Gazda virtuală Apache care se potrivește cu numele de gazdă
 ssl_letsmode1=Gazdă virtuală Apache selectată
@@ -1056,6 +1062,7 @@ status_interval0=Fiecare
 status_mins=minute
 status_pkgs=Colectați actualizările de pachete disponibile?
 status_temp=Adunați temperaturile de acționare?
+status_temp2=Colectați temperaturile CPU și viteza ventilatoarelor?
 status_units=Unități pentru temperaturi
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
@@ -1182,9 +1189,9 @@ twofactor_eauthyotp=Token-ul Authy nu este valid
 twofactor_enrolllink=Acum vă puteți înscrie pentru autentificarea cu doi factori în modulul <a href='$1'>Utilizatori Webmin</a>
 twofactor_url=Pentru a afla mai multe despre $1, consultați site-ul web la <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Modulul Perl <tt>$1</tt> necesar pentru autentificarea cu doi factori nu este instalat. Utilizați pagina <a href='$2'>Perl Modules</a> din Webmin pentru a o instala.
-twofactor_qrcode=Introduceți codul secret $1 în aplicația Google Authenticator sau scanați codul QR de mai jos.
+twofactor_qrcode=Introdu codul secret $1 în aplicația TOTP sau scanează codul QR de mai jos.
 twofactor_etotpid=Secret incodat TOP32 bazat pe cod32
-twofactor_etotptoken=Jetonul Google Authenticator trebuie să fie un număr
+twofactor_etotptoken=Indicatorul TOTP trebuie să fie un număr
 twofactor_etotpmodule2=Modulul Perl lipsește $1
 twofactor_etotpmatch=Cod OTP incorect
 twofactor_secret=Cheia secretă personală

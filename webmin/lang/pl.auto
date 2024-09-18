@@ -1,5 +1,9 @@
 access_ecidr8=Rozmiar sieci IPv6 „$1” musi być podzielny przez 8
 
+bind_websocport=Numer portu bazowego dla połączeń WebSockets
+bind_websocport_none=Domyślne (555)
+bind_websoc_host=Nazwa hosta dla połączeń WebSocket
+bind_websoc_host_auto=Automatyczny
 bind_maxconns=Maksymalna łączna liczba jednoczesnych połączeń
 bind_maxconns_per_ip=Maksymalna liczba jednoczesnych połączeń na adres IP
 bind_maxconns_per_net=Maksymalna liczba jednoczesnych połączeń na sieć
@@ -11,6 +15,7 @@ bind_maxlifetime_def=Nieograniczony
 bind_maxlifetime_secs=sekundy
 bind_emaxlifetime=Maksymalny czas życia procesu musi być liczbą większą niż 60 sekund
 
+log_trust=Rejestrować adres IP klienta, gdy jest za serwerem proxy?
 log_global=&lt;Działania globalne&gt;
 log_sched=Zalogować zaplanowane funkcje?
 log_email=Wyślij zarejestrowane działania pocztą e-mail na adres
@@ -47,6 +52,7 @@ ssl_letserr2=Alternatywnie sprawdź stronę <a href='$1'>konfiguracji modułu</a
 ssl_letsdesc2=Na tej stronie można zażądać nowego certyfikatu, który zastąpi inne skonfigurowane obecnie w Webmin. Jednak usługa Let's Encrypt wymaga potwierdzenia własności domeny certyfikatu przez sprawdzenie, czy ten system obsługuje witrynę internetową dla domeny. Odbywa się to poprzez umieszczenie małego pliku tymczasowego w katalogu dokumentów witryny.
 ssl_letsheader=Opcje nowego certyfikatu SSL
 ssl_letsdoms=Nazwy hostów dla certyfikatu
+ssl_subset=Pominąć niemożliwe do zweryfikowania nazwy hostów?
 ssl_letsmode=Metoda sprawdzania poprawności Let's Encrypt
 ssl_letsmode0=Host wirtualny Apache pasujący do nazwy hosta
 ssl_letsmode1=Wybrany wirtualny host Apache
@@ -138,6 +144,7 @@ notify_yumrepo=Twój system używa starego repozytorium Webmin YUM. Kliknij poni
 notify_aptrepo=Twój system używa starego repozytorium Webmin APT. Kliknij poniższy przycisk, aby przełączyć się na nowy <tt>stable</tt> adres URL repozytorium <tt>$1</tt>, aby użyć naszego najnowszego klucza podpisu i zapewnić dostęp do zaktualizowanych wersji Webmina.
 notif_fixreponow=Zaktualizuj repozytorium Webmina
 
+status_temp2=Zbieraj dane dotyczące temperatury procesora i prędkości wentylatorów?
 status_err=Nie udało się zapisać kolekcji stanu w tle
 status_einterval=Interwał zbierania musi być liczbą całkowitą
 
@@ -162,6 +169,8 @@ web_eredirpref2=Prefiks nie może zawierać spacji
 web_redirssl=Przekieruj SSL
 
 twofactor_eusers=Nie można wyłączyć uwierzytelniania dwuskładnikowego, ponieważ obecnie zarejestrowani są następujący użytkownicy : $1
+twofactor_qrcode=Wprowadź tajny kod $1 w aplikacji TOTP lub zeskanuj poniższy kod QR.
+twofactor_etotptoken=Token TOTP musi być liczbą
 
 letsencrypt_title=Zaszyfrujmy żądanie certyfikatu
 letsencrypt_err=Nie można poprosić o certyfikat

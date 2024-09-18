@@ -46,6 +46,10 @@ bind_sport0=אותו דבר כמו הראשון
 bind_sport1=נמל ספציפי ..
 bind_listen=האזן לשידורים בנמל UDP
 bind_none=אל תקשיב
+bind_websocport=מספר יציאת בסיס עבור חיבורי WebSockets
+bind_websocport_none=ברירת מחדל (555)
+bind_websoc_host=שם מארח עבור חיבורי WebSocket
+bind_websoc_host_auto=אוֹטוֹמָטִי
 bind_hostname=שם מארח של שרת אינטרנט
 bind_auto=התאמנו מהדפדפן
 bind_err=שינוי הכתובת נכשל
@@ -80,6 +84,7 @@ log_status=רישום כניסה פעיל?
 log_disable=השבת רישום
 log_enable=אפשר רישום
 log_resolv=יומן שמות מארחים שנפתרו?
+log_trust=לרשום את כתובת ה-IP של הלקוח כשמאחורי פרוקסי?
 log_clf=האם להשתמש בפורמט יומן משולב (כולל מפנה וסוכן משתמש)?
 log_clear2=מחק קבצי יומן מעת לעת?
 log_period=Yes, every $1 hours
@@ -420,6 +425,7 @@ ssl_letserr2=Alternately, check the <a href='$1'>module configuration</a> page t
 ssl_letsdesc2=ניתן להשתמש בדף זה לבקשת אישור חדש, אשר יחליף את כל האחרים שהוגדרו כעת ב- Webmin. עם זאת, שירות Let's Encrypt דורש כי תוקף בעלותך על תחום האישור על ידי בדיקה שמערכת זו מארחת את האתר עבור הדומיין. זה נעשה על ידי הצבת קובץ זמני קטן בספריית המסמכים של האתר.
 ssl_letsheader=אפשרויות לתעודת SSL חדשה
 ssl_letsdoms=שמות מארחים לתעודה
+ssl_subset=לדלג על שמות מארחים בלתי ניתנים לאימות?
 ssl_letsmode=בואו להצפין את שיטת האימות
 ssl_letsmode0=מארח וירטואלי של Apache תואם שם מארח
 ssl_letsmode1=מארח וירטואלי של Apache נבחר
@@ -1056,6 +1062,7 @@ status_interval0=כל
 status_mins=דקות
 status_pkgs=לאסוף עדכוני חבילה זמינים?
 status_temp=לאסוף טמפרטורות נסיעה?
+status_temp2=לאסוף טמפרטורות מעבד ומהירות מאווררים?
 status_units=יחידות לטמפרטורות
 status_celsius=צלזיוס
 status_fahrenheit=פרנהייט
@@ -1182,9 +1189,9 @@ twofactor_eauthyotp=אסימון האימות אינו חוקי
 twofactor_enrolllink=You can now enroll for two-factor authentication in the <a href='$1'>Webmin Users</a> module.
 twofactor_url=To learn more about $1, see it's website at <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=The Perl module <tt>$1</tt> needed for two-factor authentication is not installed. Use the <a href='$2'>Perl Modules</a> page in Webmin to install it.
-twofactor_qrcode=Enter the secret code $1 in the Google Authenticator app, or scan the QR code below.
+twofactor_qrcode=הזן את הקוד הסודי $1 באפליקציית TOTP, או סרוק את קוד ה-QR למטה.
 twofactor_etotpid=סוד לא מקובל של TOTP בסיס32
-twofactor_etotptoken=אסימון המאמת של Google חייב להיות מספר
+twofactor_etotptoken=אסימון TOTP חייב להיות מספר
 twofactor_etotpmodule2=Missing Perl module $1
 twofactor_etotpmatch=קוד OTP שגוי
 twofactor_secret=מפתח סודי אישי

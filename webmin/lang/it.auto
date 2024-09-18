@@ -8,6 +8,10 @@ access_ecidr8=La dimensione della rete IPv6 '$1' deve essere divisibile per 8
 access_trust=Ti fidi dell'indirizzo IP remoto fornito dai proxy?
 
 bind_firewall=Aprire nuove porte sul firewall?
+bind_websocport=Numero di porta di base per le connessioni WebSocket
+bind_websocport_none=Predefinito (555)
+bind_websoc_host=Nome host per le connessioni WebSocket
+bind_websoc_host_auto=Automatico
 bind_ipv6=Accettare connessioni IPv6?
 bind_eipv6=IPv6 non può essere abilitato a meno che non sia installato il modulo $1 Perl
 bind_redirecting=Reindirizzamento al nuovo URL ..
@@ -24,6 +28,7 @@ bind_maxlifetime_def=Illimitato
 bind_maxlifetime_secs=secondi
 bind_emaxlifetime=La durata massima del processo deve essere un numero maggiore di 60 secondi
 
+log_trust=Registrare l'indirizzo IP del client quando si è dietro un proxy?
 log_global=&lt;Azioni globali&gt;
 log_sched=Registra le funzioni pianificate?
 log_login=Includere accessi e disconnessioni Webmin nel registro delle azioni?
@@ -87,6 +92,7 @@ ssl_letserr2=In alternativa, controlla la pagina <a href='$1'>configurazione del
 ssl_letsdesc2=Questa pagina può essere utilizzata per richiedere un nuovo certificato, che sovrascriverà qualsiasi altro attualmente configurato in Webmin. Tuttavia, il servizio Let's Encrypt richiede che la proprietà del dominio del certificato sia convalidata controllando che questo sistema ospita il sito Web per il dominio. Questo viene fatto inserendo un piccolo file temporaneo nella directory dei documenti del sito Web.
 ssl_letsheader=Opzioni per il nuovo certificato SSL
 ssl_letsdoms=Nomi host per certificato
+ssl_subset=Vuoi ignorare i nomi host non verificabili?
 ssl_letsmode=Crittifichiamo il metodo di convalida
 ssl_letsmode0=Host virtuale Apache corrispondente al nome host
 ssl_letsmode1=Host virtuale Apache selezionato
@@ -324,6 +330,7 @@ status_interval0=Ogni
 status_mins=minuti
 status_pkgs=Raccogliere gli aggiornamenti dei pacchetti disponibili?
 status_temp=Raccogliere le temperature dell'unità?
+status_temp2=Raccogliere le temperature della CPU e la velocità delle ventole?
 status_units=Unità per le temperature
 status_celsius=Centigrado
 status_fahrenheit=Fahrenheit
@@ -450,9 +457,9 @@ twofactor_eauthyotp=Il token authy non è valido
 twofactor_enrolllink=Ora puoi registrarti per l'autenticazione a due fattori nel modulo <a href='$1'>Utenti Webmin</a>.
 twofactor_url=Per ulteriori informazioni su $1, consulta il sito Web <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Il modulo Perl <tt>$1</tt> necessario per l'autenticazione a due fattori non è installato. Utilizzare la pagina <a href='$2'>moduli Perl</a> in Webmin per installarlo.
-twofactor_qrcode=Inserisci il codice segreto $1 nell'app Google Authenticator o scansiona il codice QR di seguito.
+twofactor_qrcode=Inserisci il codice segreto $1 nell'app TOTP oppure scansiona il codice QR qui sotto.
 twofactor_etotpid=Segreto codificato TOTP base32 non valido
-twofactor_etotptoken=Il token di Google Authenticator deve essere un numero
+twofactor_etotptoken=Il token TOTP deve essere un numero
 twofactor_etotpmodule2=Modulo Perl mancante $1
 twofactor_etotpmatch=Codice OTP errato
 twofactor_secret=Chiave segreta personale
