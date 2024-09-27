@@ -81,10 +81,12 @@ log_check_rhn_l=Uppgraderade paket (er) $1 från Redhat Network
 log_check_rhn=Uppgraderat $2 -paket (er) från Redhat Network
 
 rhn_find=Sök RHN ..
+rhn_ok=.. installationen är klar
 rhn_header=Alternativ för uppgradering av paket
 rhn_nonefound=Inga paket tillgängliga för uppdatering.
 rhn_name=Redhat Network
 
+apt_ok=.. installationen klar
 apt_header=APT-paketets uppgraderingsalternativ
 apt_mode=Uppgraderingsläge
 apt_mode2=Distributionsuppgradering (<tt>upgrade-dist</tt>)
@@ -101,7 +103,7 @@ apt_repo_epath=Saknad distributionsväg
 
 yum_input=Paket från YUM
 yum_install=Installera paket (er) med kommando $1 ..
-yum_ok=.. installera komplett.
+yum_ok=.. installationen är klar
 yum_failed=.. installation misslyckades!
 yum_find=Bläddra i YUM ..
 yum_package=Paket
@@ -142,7 +144,7 @@ urpmi_updatedesc=Kör kommando $1 ..
 uprmi_upgradefailed=.. misslyckades!
 urpmi_upgradeok=.. komplett.
 urpmi_install=Installera paket (er) med kommando $1 ..
-urpmi_ok=.. installera komplett.
+urpmi_ok=.. installationen klar
 urpmi_failed=.. installation misslyckades!
 
 rpm_missing=Saknas
@@ -191,7 +193,7 @@ emerge_input=Från Portage-förvaret
 emerge_find=Sök ..
 emerge_install=Installera paket med kommando $1 ..
 emerge_failed=.. installation misslyckades!
-emerge_ok=.. installera komplett.
+emerge_ok=.. installationen är klar
 emerge_search=Sök efter paket:
 emerge_pack=Paket
 emerge_class=Klass
@@ -226,7 +228,7 @@ deletes_ok=Ta bort dem alla
 
 csw_input=Paket från CSW
 csw_install=Installera paket (er) med kommando $1 ..
-csw_ok=.. installera komplett.
+csw_ok=.. installationen är klar
 csw_failed=.. installation misslyckades!
 csw_already=.. redan installerad.
 csw_retry=.. försöker igen med nya beroenden.
@@ -310,7 +312,7 @@ IPKG_updatedesc=Kör kommando $1 ..
 IPKG_upgradefailed=.. misslyckades!
 IPKG_upgradeok=.. komplett.
 IPKG_install=Installera paket (er) med kommando $1 ..
-IPKG_ok=.. installera komplett.
+IPKG_ok=.. installationen är klar
 IPKG_failed=.. installation misslyckades!
 IPKG_index_tree=Hantera IPKG-paket
 IPKG_install_package=Installera

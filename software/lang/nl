@@ -170,7 +170,6 @@ log_check_rhn=Geupgrade $2 pakket(ten) van het Redhat Netwerk
 rhn_input=Pakket van het Redhat Netwerk
 rhn_find=Zoek RHN ..
 rhn_install=Installeer pakket(ten) met de opdracht $1 ..
-rhn_ok=.. installatie compleet
 rhn_failed=.. installatie mislukt!
 rhn_title=Selecteer RHN pakket
 rhn_pack=Pakket
@@ -197,7 +196,6 @@ rhn_name=Redhat Netwerk
 
 apt_input=Pakketten van APT
 apt_install=Installeer pakket (ten) met de opdracht $1 ..
-apt_ok=.. installatie compleet.
 apt_failed=.. installatie mislukte!
 apt_form=Alle Pakketten Upgraden
 apt_header=APT pakketten upgrade opties
@@ -223,7 +221,6 @@ apt_name=APT
 
 yum_input=Pakket van YUM
 yum_install=Installeer pakket(ten) met  de opdracht $1 ..
-yum_ok=.. installatie compleet.
 yum_failed=.. installatie mislukte!
 yum_find=Doorzoek YUM ..
 yum_package=Pakket
@@ -253,7 +250,6 @@ urpmi_updatedesc=Uitvoeren van opdracht $1 ..
 uprmi_upgradefailed=.. mislukt!
 urpmi_upgradeok=.. compleet.
 urpmi_install=Installeer pakket(ten) met de opdracht $1 ..
-urpmi_ok=.. installatie compleet
 urpmi_failed=.. installatie mislukt
 
 rpm_missing=Ontbrekend
@@ -302,7 +298,6 @@ emerge_input=Vanaf de pakketbeheer repository
 emerge_find=Zoek ..
 emerge_install=Installeer het pakket met de opdracht $1 ..
 emerge_failed=.. installatie mislukt
-emerge_ok=.. installatie compleet
 emerge_search=Zoek naar pakket:
 emerge_pack=Pakket
 emerge_class=Klasse
@@ -337,7 +332,6 @@ deletes_ok=Alles verwijderen
 
 csw_input=Pakketten van CSW
 csw_install=Installeer pakketten met de opdracht $1 ..
-csw_ok=.. installatie compleet.
 csw_failed=.. installatie mislukt!
 csw_already=.. is al geinstalleerd
 csw_retry=.. probeer opnieuw met de nieuwe afhankelijkheden

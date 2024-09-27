@@ -47,14 +47,17 @@ log_install_yum=$2 paquete (s) instalado desde YUM
 log_install_rhn_l=Paquete (s) instalado (s) $1 de Redhat Network
 log_install_rhn=Se instalaron $2 paquete (s) de Redhat Network
 
+rhn_ok=..instalación completa
 rhn_header=Opciones de actualización automática de paquetes
 
+apt_ok=..instalación completa
 apt_header=Opciones de actualización del paquete APT
 apt_repo_url=URL base del repositorio
 apt_repo_path=Componentes de ruta de distribución
 apt_repo_eurl=URL base faltante o de aspecto no válido
 apt_repo_epath=Falta la ruta de distribución
 
+yum_ok=..instalación completa
 yum_repo_id=ID del repositorio
 yum_repo_name=Descripción del repositorio
 yum_repo_url=URL base del paquete
@@ -67,8 +70,13 @@ yum_repo_eurl=URL del repositorio faltante o no válida
 yum_repo_egpg=Falta el archivo de certificado GPG o no existe
 yum_repo_efile=¡El archivo del repositorio ya existe!
 
+urpmi_ok=..instalación completa
+
+emerge_ok=..instalación completa
+
 cygwin_edb=Falta la base de datos de paquetes de Cygwin $1 
 
+csw_ok=..instalación completa
 csw_already=.. ya instalado.
 csw_retry=.. intentando de nuevo con nuevas dependencias.
 csw_form=Paquetes de actualización
@@ -139,7 +147,7 @@ IPKG_updatedesc=Ejecutando el comando $1 ..
 IPKG_upgradefailed=.. ¡ha fallado!
 IPKG_upgradeok=.. completo.
 IPKG_install=Instalación de paquete (s) con el comando $1 ..
-IPKG_ok=.. instalación completa.
+IPKG_ok=..instalación completa
 IPKG_failed=.. ¡instalación fallida!
 IPKG_index_tree=Administrar paquetes IPKG
 IPKG_install_package=Instalar en pc

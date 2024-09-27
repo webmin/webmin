@@ -160,7 +160,6 @@ log_check_rhn=$2 paquete(s) fueron aumentados de versión desde la Red Redhat
 rhn_input=Paquetes desde Red de Redhat
 rhn_find=Buscar RHN...
 rhn_install=Instalando paquete(s) mediante comando $1...
-rhn_ok=... instalación completa.
 rhn_failed=... ¡instalación falló!
 rhn_title=Selecciona paquete RHN
 rhn_pack=Paquete
@@ -186,7 +185,6 @@ rhn_name=Red Redhat
 
 apt_input=Paquete desde APT
 apt_install=Instalando paquete(s) mediante comando $1...
-apt_ok=... instalación completa.
 apt_failed=... ¡instalación falló!
 apt_form=Subir Versión a Todos los Paquetes
 apt_update=Resincronizar lista de paquetes (<tt>actualizar</tt>)
@@ -211,7 +209,6 @@ apt_name=APT
 
 yum_input=Paquete desde YUM
 yum_install=Instalando paquete(s) con el comando $1 ..
-yum_ok=.. instalación completa.
 yum_failed=.. ¡falló la instalación!
 yum_find=Navegar YUM ..
 yum_package=Paquete
@@ -241,7 +238,6 @@ urpmi_updatedesc=Ejecutando comando $1 ..
 uprmi_upgradefailed=.. ¡Falló!
 urpmi_upgradeok=.. completo.
 urpmi_install=Instalando paquete(s) con el comando $1 ..
-urpmi_ok=.. instalación completa.
 urpmi_failed=.. ¡falló instalación!
 
 rpm_missing=Falta
@@ -290,7 +286,6 @@ emerge_input=Desde repositorio de transporte
 emerge_find=Buscar...
 emerge_install=Instalando paquete mediante comando $1...
 emerge_failed=... ¡falló la instalación!
-emerge_ok=... instalación completa.
 emerge_search=Buscar paquete:
 emerge_pack=Paquete
 emerge_class=Clase
@@ -324,7 +319,6 @@ deletes_ok=Borrarlos todos
 
 csw_input=Paquete de CSW
 csw_install=Instalando paquete(s) con el comando $1 ..
-csw_ok=.. instalación completa
 csw_failed=.. ¡fallo en instalación!
 csw_find=Navegar CSW ..
 csw_package=Paquete

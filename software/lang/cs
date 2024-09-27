@@ -164,7 +164,6 @@ log_check_rhn=Upgradováno $2 balíčků z Redhat Network
 rhn_input=Balíček ze sítě Redhat
 rhn_find=Hledat RHN ..
 rhn_install=Instalace balíček(ků) pomocí příkazu $1 ..
-rhn_ok=.. instalace proběhla úspěšně.
 rhn_failed=.. instalace nebyla úspěšná!
 rhn_title=Vybrat RHN balíček
 rhn_pack=Balíček
@@ -191,7 +190,6 @@ rhn_name=Redhat Network
 
 apt_input=Balíček z APT
 apt_install=Instalace balíček(ků) pomocí příkazu $1 ..
-apt_ok=.. instalace proběhla úspěšně.
 apt_failed=.. nstalace nebyla úspěšná!
 apt_form=Aktualizace všech balíčků
 apt_header=Volby pro APT ugrade balíčků
@@ -217,7 +215,6 @@ apt_name=APT
 
 yum_input=Balíček z YUM
 yum_install=Probíhá instalace balíčku(ů) pomocí příkazu $1 ..
-yum_ok=.. instalace je kompletní.
 yum_failed=.. chybná instalace!
 yum_find=Prozkoumat YUM ..
 yum_package=Balíček
@@ -247,7 +244,6 @@ urpmi_updatedesc=Běží příkaz $1 ..
 uprmi_upgradefailed=.. chyba!
 urpmi_upgradeok=.. je kompletní.
 urpmi_install=Probíhá instalace balíčku(ů) pomocí příkazu $1 ..
-urpmi_ok=.. instalace je kompletní.
 urpmi_failed=.. chybná instalace!
 
 rpm_missing=Chybějící
@@ -296,7 +292,6 @@ emerge_input=Od Portage repositáře
 emerge_find=Hledat ..
 emerge_install=Instalace balíčku za pomoci příkazu $1 ..
 emerge_failed=.. instalace nebyla úspěšná!
-emerge_ok=.. instalace proběhla úspěšně.
 emerge_search=Hledat balčíek:
 emerge_pack=Balíček
 emerge_class=Třída
@@ -330,7 +325,6 @@ deletes_ok=Smazat je všechny
 
 csw_input=Balíček z CSW
 csw_install=Instaluje se balíček(ky) pomocí příkazu $1 ..
-csw_ok=.. instalace je kompletní.
 csw_failed=.. chyba v instalaci.
 csw_already=.. je již nainstalován.
 csw_retry=.. pokouší se znovu pomocí nových závislostí.

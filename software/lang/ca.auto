@@ -19,5 +19,19 @@ edit_dlibrary=Biblioteca
 
 debian_manager=Debian
 
+rhn_ok=.. instal·lació completa
+
+apt_ok=.. instal·lació completa
+
+yum_ok=.. instal·lació completa
+
+urpmi_ok=.. instal·lació completa
+
+emerge_ok=.. instal·lació completa
+
+csw_ok=.. instal·lació completa
+
 missing_msg=El paquet $1 pot ser instal·lat automàticament per Webmin mitjançant $2.
 missing_now=Instal · lar ara
+
+IPKG_ok=.. instal·lació completa
