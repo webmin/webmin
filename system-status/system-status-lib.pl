@@ -66,11 +66,13 @@ if (&foreign_check("mount")) {
 # Available package updates
 if (&foreign_installed("package-updates") && $config{'collect_pkgs'}) {
 	&foreign_require("package-updates");
-	my $poss_collect_blocked = (&indexof('package-updates', @{$modskip}) > -1);
+	my $poss_collect_blocked = &indexof('package-updates', @$modskip) >= 0;
 	my $poss_current = !$poss_collect_blocked ? 2 : undef;
-	my @poss = &package_updates::list_possible_updates(undef, $poss_collect_blocked);
+	my @poss = &package_updates::list_possible_updates(
+			undef, $poss_collect_blocked);
 	$info->{'poss'} = \@poss;
-	$info->{'reboot'} = &package_updates::check_reboot_required($poss_collect_blocked);
+	$info->{'reboot'} = $poss_collect_blocked ? 0 :
+				&package_updates::check_reboot_required();
 	}
 
 # CPU and drive temps
