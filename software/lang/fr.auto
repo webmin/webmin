@@ -70,10 +70,12 @@ log_check_rhn_l=Package (s) mis à niveau $1 à partir du réseau Redhat
 log_check_rhn=Package (s) $2 mis à niveau depuis Redhat Network
 
 rhn_find=Rechercher RHN ..
+rhn_ok=.. installation terminée
 rhn_header=Options de mise à niveau automatique des packages
 rhn_nonefound=Aucun package disponible pour la mise à jour.
 rhn_name=Réseau Redhat
 
+apt_ok=.. installation terminée
 apt_header=Options de mise à niveau du package APT
 apt_repo_url=URL de base du référentiel
 apt_repo_path=Composants du chemin de distribution
@@ -82,7 +84,7 @@ apt_repo_epath=Chemin de distribution manquant
 
 yum_input=Forfait de YUM
 yum_install=Installation du ou des packages avec la commande $1 ..
-yum_ok=.. installation terminée.
+yum_ok=.. installation terminée
 yum_failed=.. l'installation a échoué!
 yum_find=Parcourir YUM ..
 yum_package=Paquet
@@ -122,7 +124,7 @@ urpmi_updatedesc=Exécution de la commande $1 ..
 uprmi_upgradefailed=.. échoué!
 urpmi_upgradeok=.. Achevée.
 urpmi_install=Installation du ou des packages avec la commande $1 ..
-urpmi_ok=.. installation terminée.
+urpmi_ok=.. installation terminée
 urpmi_failed=.. l'installation a échoué!
 
 aix_unknown=Inconnue
@@ -147,7 +149,7 @@ emerge_input=Depuis le référentiel Portage
 emerge_find=Chercher ..
 emerge_install=Installation du package avec la commande $1 ..
 emerge_failed=.. l'installation a échoué!
-emerge_ok=.. installation terminée.
+emerge_ok=.. installation terminée
 emerge_search=Rechercher un package:
 emerge_pack=Paquet
 emerge_class=Classe
@@ -178,7 +180,7 @@ deletes_ok=Supprimez-les tous
 
 csw_input=Package de CSW
 csw_install=Installation du ou des packages avec la commande $1 ..
-csw_ok=.. installation terminée.
+csw_ok=.. installation terminée
 csw_failed=.. l'installation a échoué!
 csw_retry=.. réessayer avec de nouvelles dépendances.
 csw_find=Parcourir CSW ..
@@ -257,7 +259,7 @@ IPKG_updatedesc=Exécution de la commande $1 ..
 IPKG_upgradefailed=.. échoué!
 IPKG_upgradeok=.. Achevée.
 IPKG_install=Installation du ou des packages avec la commande $1 ..
-IPKG_ok=.. installation terminée.
+IPKG_ok=.. installation terminée
 IPKG_failed=.. l'installation a échoué!
 IPKG_index_tree=Gérer les packages IPKG
 IPKG_install_package=Installer

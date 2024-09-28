@@ -163,7 +163,6 @@ log_check_rhn=레드햇 네트워크에서 $2 패키지를 업그레이트 했�
 rhn_input=Redhat 네트워크의 패키지
 rhn_find=RHN 검색 ..
 rhn_install=$1 명령을 사용하여 패키지 설치 중..
-rhn_ok=.. 설치가 완료되었습니다.
 rhn_failed=.. 설치하지 못했습니다!
 rhn_title=RHN 패키지 선택
 rhn_pack=패키지
@@ -190,7 +189,6 @@ rhn_name=레드햇 네트워크
 
 apt_input=APT의 패키지
 apt_install=$1 명령을 사용하여 패키지 설치 중..
-apt_ok=.. 설치가 완료되었습니다.
 apt_failed=.. 설치하지 못했습니다!
 apt_form=모든 패키지 업그레이드
 apt_header=APT 패키지 업그레이드 옵션
@@ -216,7 +214,6 @@ apt_name=APT
 
 yum_input=YUM 패키지
 yum_install=$1 명령으로 패키지 설치
-yum_ok=.. 설치 완료
 yum_failed=.. 설치 실패!
 yum_package=패키지
 yum_version=버전
@@ -243,7 +240,6 @@ urpmi_updatedesc=$1 명령 실행 ..
 uprmi_upgradefailed=.. 실패!
 urpmi_upgradeok=.. 완료
 urpmi_install=$1 명령으로  패키지 설치
-urpmi_ok=.. 설치 완료
 urpmi_failed=.. 설치 실패!
 
 rpm_missing=없음
@@ -282,7 +278,6 @@ emerge_input=Portage 저장소
 emerge_find=검색 ..
 emerge_install=$1 명령으로 패키지 설치 ..
 emerge_failed=.. 설치 실패!
-emerge_ok=.. 설치 완료
 emerge_search=패키지 검색:
 emerge_pack=패키지
 emerge_version=버전
@@ -313,7 +308,6 @@ deletes_ok=모두 제거
 
 csw_input=CSW 패키지
 csw_install=$1 명령으로 패키지 설치 ..
-csw_ok=.. 설치 완료
 csw_failed=.. 설치 실패!
 csw_already=.. 이미 설치되어 있습니다.
 csw_retry=.. 의존성 패키지 설치 후 재 시도 하십시오.

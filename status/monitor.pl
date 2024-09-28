@@ -450,8 +450,10 @@ foreach my $k (keys %$serv) {
 	}
 my ($host, $port, $page, $ssl) = &parse_http_url($config{'sched_webhook'});
 my $params = join("&", map { $_."=".&urlize($params{$_}) } keys %params);
-$page .= ($page =~ /\?/ ? "?" : "&");
-$page .= $params;
+if ($params) {
+	$page .= ($page !~ /\?/ ? "?" : "&");
+	$page .= $params;
+	}
 my ($out, $err);
 &http_download($host, $port, $page, \$out, \$err, undef, $ssl, undef, undef,
 	       5, 0, 1);

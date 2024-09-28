@@ -138,7 +138,6 @@ log_delete=Composant $1 désinstallé
 
 rhn_input=Composant de Redhat Network
 rhn_install=Installation le(s) composant(s) avec la commande $1 ...
-rhn_ok=... installation effectuée.
 rhn_failed=... installation échouée !
 rhn_title=Selectionner le composant RHN
 rhn_pack=Composant
@@ -162,7 +161,6 @@ rhn_skip=Sauter les composants qui correspondent
 
 apt_input=Composant d'APT
 apt_install=Installation le(s) composant(s) avec la commande $1 ...
-apt_ok=... installation effectuée.
 apt_failed=... installation échouée
 apt_form=Mettre à jour tous les composants
 apt_update=Resynchroniser la liste des composants (<tt>update</tt>)

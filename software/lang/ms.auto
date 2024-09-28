@@ -53,9 +53,11 @@ log_upgrade_yum=Pakej $2 ditingkatkan daripada YUM
 log_check_rhn_l=Pakej ditingkatkan $1 dari Redhat Network
 log_check_rhn=Peningkatan $2 pakej dari Redhat Network
 
+rhn_ok=.. pemasangan selesai
 rhn_header=Pilihan naik taraf pakej automatik
 rhn_name=Rangkaian Redhat
 
+apt_ok=.. pemasangan selesai
 apt_mode2=Peningkatan edaran (<tt>upgrade-dist</tt>)
 apt_title=Cari APT
 apt_name=APT
@@ -64,6 +66,7 @@ apt_repo_path=Komponen laluan pengedaran
 apt_repo_eurl=URL asas yang hilang atau tidak sah
 apt_repo_epath=Jalan pengedaran yang tiada
 
+yum_ok=.. pemasangan selesai
 yum_title=Semak imbas YUM
 yum_name=YUM
 yum_enable=Dayakan repositori:
@@ -92,9 +95,10 @@ urpmi_updatedesc=Arahan berjalan $1 ..
 uprmi_upgradefailed=.. gagal!
 urpmi_upgradeok=.. lengkap.
 urpmi_install=Memasang pakej dengan arahan $1 ..
-urpmi_ok=.. pasang lengkap.
+urpmi_ok=.. pemasangan selesai
 urpmi_failed=.. memasang gagal!
 
+emerge_ok=.. pemasangan selesai
 emerge_title=Cari Portage
 emerge_name=Portage
 
@@ -103,7 +107,7 @@ cygwin_edb=Pangkalan data bungkusan Cygwin yang tiada $1
 
 csw_input=Pakej dari CSW
 csw_install=Memasang pakej dengan arahan $1 ..
-csw_ok=.. pasang lengkap.
+csw_ok=.. pemasangan selesai
 csw_failed=.. memasang gagal!
 csw_already=.. sudah dipasang.
 csw_retry=.. cuba lagi dengan ketergantungan baru.
@@ -187,7 +191,7 @@ IPKG_updatedesc=Arahan berjalan $1 ..
 IPKG_upgradefailed=.. gagal!
 IPKG_upgradeok=.. lengkap.
 IPKG_install=Memasang pakej dengan arahan $1 ..
-IPKG_ok=.. pasang lengkap.
+IPKG_ok=.. pemasangan selesai
 IPKG_failed=.. memasang gagal!
 IPKG_index_tree=Urus Pakej IPKG
 IPKG_install_package=Pasang

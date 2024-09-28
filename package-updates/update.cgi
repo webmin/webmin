@@ -155,6 +155,7 @@ else {
 		&end_update_progress(\@pkgs);
 
 		# Refresh collected package info
+		print $text{'refresh_available'},"<br>\n";
 		if (&foreign_check("system-status")) {
 			&foreign_require("system-status");
 			&system_status::refresh_possible_packages(\@got);
@@ -165,7 +166,7 @@ else {
 			&foreign_require("virtual-server");
 			&virtual_server::refresh_possible_packages(\@got);
 			}
-
+		print $text{'refresh_done'},"<p>\n";
 		# Check if a reboot is required now
 		if (!$reboot_before && &check_reboot_required() &&
 		    &foreign_check("init")) {

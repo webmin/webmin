@@ -24,11 +24,15 @@ edit_uninstdesc=Usuń ten pakiet z systemu.
 
 debian_manager=Debiana
 
+rhn_ok=.. instalacja ukończona
+
+apt_ok=.. instalacja ukończona
 apt_repo_url=Podstawowy adres URL repozytorium
 apt_repo_path=Komponenty ścieżki dystrybucji
 apt_repo_eurl=Brakujący lub nieprawidłowo wyglądający podstawowy adres URL
 apt_repo_epath=Brak ścieżki dystrybucji
 
+yum_ok=.. instalacja ukończona
 yum_repo_id=ID repozytorium
 yum_repo_name=Opis repozytorium
 yum_repo_url=Podstawowy adres URL pakietu
@@ -40,6 +44,12 @@ yum_repo_ename=Brak nazwy repozytorium
 yum_repo_eurl=Brakujący lub nieprawidłowy adres URL repozytorium
 yum_repo_egpg=Brak pliku certyfikatu GPG lub nie istnieje
 yum_repo_efile=Plik repozytorium już istnieje!
+
+urpmi_ok=.. instalacja ukończona
+
+emerge_ok=.. instalacja ukończona
+
+csw_ok=.. instalacja ukończona
 
 missing_msg=Pakiet $1 może zostać automatycznie zainstalowany przez Webmina za pomocą $2.
 missing_now=Zainstaluj teraz
@@ -59,7 +69,7 @@ IPKG_updatedesc=Uruchamianie polecenia $1 ..
 IPKG_upgradefailed=.. nie powiodło się!
 IPKG_upgradeok=.. ukończone.
 IPKG_install=Instalowanie pakietów za pomocą polecenia $1 ..
-IPKG_ok=.. instalacja zakończona.
+IPKG_ok=.. instalacja ukończona
 IPKG_failed=.. instalacja nie powiodła się!
 IPKG_index_tree=Zarządzaj pakietami IPKG
 IPKG_install_package=zainstalować

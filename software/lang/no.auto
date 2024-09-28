@@ -18,3 +18,17 @@ edit_dother=Evne
 edit_dlibrary=Bibliotek
 
 debian_manager=Debian
+
+rhn_ok=.. installeringen er fullført
+
+apt_ok=.. installeringen er fullført
+
+yum_ok=.. installeringen er fullført
+
+urpmi_ok=.. installeringen er fullført
+
+emerge_ok=.. installeringen er fullført
+
+csw_ok=.. installeringen er fullført
+
+IPKG_ok=.. installeringen er fullført
