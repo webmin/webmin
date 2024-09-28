@@ -12,10 +12,9 @@ $d || &error($text{'disk_egone'});
 @parts = @{$d->{'parts'}};
 &ui_print_header($d->{'desc'}, $text{'disk_title'}, "", undef,
 		 @disks == 1 ? 1 : 0, @disks == 1 ? 1 : 0);
-$caneditpart =
-		$d->{'table'} ne 'gpt' || 
-			($d->{'table'} eq 'gpt' &&
-				&has_command('parted') && $config{'mode'} ne 'fdisk');
+$caneditpart = $d->{'table'} ne 'gpt' || 
+	       ($d->{'table'} eq 'gpt' &&
+		&has_command('parted') && $config{'mode'} ne 'fdisk');
 
 # Work out links to add partitions
 foreach $p (@parts) {
