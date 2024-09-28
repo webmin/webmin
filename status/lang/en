@@ -77,6 +77,7 @@ type_ldap=LDAP Connection
 type_smtp=SMTP Connection
 type_imap=IMAP Connection
 type_firewalld=FirewallD Server
+type_reboot=Reboot Required
 
 mon_create=Create Monitor
 mon_edit=Edit Monitor
@@ -617,5 +618,7 @@ imap_pass=IMAP password
 imap_ehost=Missing or unresolvable IMAP server host
 imap_eport=Missing or non-numeric IMAP server port
 imap_euser=Missing IMAP login
+
+reboot_pkgs=Package updates require a reboot
 
 __norefs=1
