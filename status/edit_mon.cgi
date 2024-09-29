@@ -53,16 +53,10 @@ print &ui_hidden("id", $in{'id'}),"\n";
 print &ui_table_start($text{'mon_header'}, "width=100%", 2, \@tds);
 
 # Check for clone modules of the monitor type
-if (-d "../$type") {
-	local @st = stat("../$type");
-	opendir(DIR, "..");
-	foreach $m (readdir(DIR)) {
-		local @lst = stat("../$m");
-		if (-l "../$m" && $st[1] == $lst[1]) {
-			# found a clone
-			push(@clones, $m);
-			}
-		}
+@minfos = &get_all_module_infos();
+($minfo) = grep { $_->{'dir'} eq $type } @minfos;
+if ($minfo) {
+	@clones = grep { $_->{'cloneof'} eq $minfo->{'dir'} } @minfos;
 	}
 
 # Show input for description
@@ -200,12 +194,10 @@ if (@tmpls) {
 
 # Which clone module to use
 if (@clones) {
-	local %minfo = &get_module_info($type);
 	print &ui_table_row($text{'mon_clone'},
 		   &ui_select("clone", $serv->{'clone'},
-			      [ [ "", $minfo{'desc'} ],
-				map { local %cminfo = &get_module_info($_);
-				      [ $_, $cminfo{'desc'} ] } @clones ]),
+		      [ [ "", $minfo->{'desc'} ],
+			map { [ $_->{'dir'}, $_->{'desc'} ] } @clones ]),
 		   undef, \@tds);
 	}
 
