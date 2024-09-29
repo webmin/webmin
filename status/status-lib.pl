@@ -188,6 +188,7 @@ foreach $r (&expand_remotes($serv)) {
 		elsif ($t =~ /^(\S+)::(\S+)$/) {
 			# Call to another module
 			my ($mod, $mtype) = ($1, $2);
+			$mod = $serv->{'clone'} if ($serv->{'clone'});
 			&foreign_require($mod, "status_monitor.pl");
 			$rv = &foreign_call($mod, "status_monitor_status",
 					    $mtype, $serv, $fromcgi);

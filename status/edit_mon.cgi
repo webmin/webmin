@@ -53,8 +53,9 @@ print &ui_hidden("id", $in{'id'}),"\n";
 print &ui_table_start($text{'mon_header'}, "width=100%", 2, \@tds);
 
 # Check for clone modules of the monitor type
+($mod = $type) =~ s/::.*$//;
 @minfos = &get_all_module_infos();
-($minfo) = grep { $_->{'dir'} eq $type } @minfos;
+($minfo) = grep { $_->{'dir'} eq $mod } @minfos;
 if ($minfo) {
 	@clones = grep { $_->{'cloneof'} eq $minfo->{'dir'} } @minfos;
 	}
