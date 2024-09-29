@@ -249,11 +249,10 @@ while($f = readdir(DIR)) {
 	}
 closedir(DIR);
 foreach my $m (&get_all_module_infos()) {
-	my $mdir = defined(&module_root_directory) ?
-		&module_root_directory($m->{'dir'}) :
-		"$root_directory/$m->{'dir'}";
+	my $mdir = &module_root_directory($m->{'dir'});
 	if (-r "$mdir/status_monitor.pl" &&
-	    &check_os_support($m)) {
+	    &check_os_support($m) &&
+	    !$m->{'cloneof'}) {
 		&foreign_require($m->{'dir'}, "status_monitor.pl");
 		my @mms = &foreign_call($m->{'dir'}, "status_monitor_list");
 		push(@rv, map { [ $m->{'dir'}."::".$_->[0], $_->[1], $_->[2] ] } @mms);
