@@ -21,10 +21,11 @@ $icount = 0;
 foreach $t (@todo) {
 	next if ($already{$t->{'update'}});
 	my $umsg = $t->{'security'} ? "security update" : "update";
+	my $upfx = $t->{'security'} ? "A" : "An";
 	if ($config{'sched_action'} == 2 ||
 	    $config{'sched_action'} == 1 && $t->{'security'}) {
 		# Can install
-		$body .= "An $umsg to $t->{'name'} from $t->{'oldversion'} to $t->{'version'} is needed.\n";
+		$body .= "$upfx $umsg to $t->{'name'} from $t->{'oldversion'} to $t->{'version'} is needed.\n";
 		$icount++;
 		($out, $done) = &capture_function_output(
 				  \&package_install, $t->{'update'});
@@ -42,7 +43,7 @@ foreach $t (@todo) {
 	       $config{'sched_action'} == 0 ||
 	       $config{'sched_action'} == -1 && $t->{'security'}) {
 		# Just tell the user about it
-		$body .= "An $umsg to $t->{'name'} from $t->{'oldversion'} to $t->{'version'} is available.\n\n";
+		$body .= "$upfx $umsg to $t->{'name'} from $t->{'oldversion'} to $t->{'version'} is available.\n\n";
 		$tellcount++;
 		}
 	}
