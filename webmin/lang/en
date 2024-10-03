@@ -84,6 +84,7 @@ log_status=Logging active?
 log_disable=Disable logging
 log_enable=Enable logging
 log_resolv=Log resolved hostnames?
+log_trust=Log client IP address when behind proxy?
 log_clf=Use combined log format (including referrer and user agent)?
 log_clear2=Periodically clear log files?
 log_period=Yes, every $1 hours
@@ -1188,9 +1189,9 @@ twofactor_eauthyotp=Authy token is invalid
 twofactor_enrolllink=You can now enroll for two-factor authentication in the <a href='$1'>Webmin Users</a> module.
 twofactor_url=To learn more about $1, see its website at <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=The Perl module <tt>$1</tt> needed for two-factor authentication is not installed. Use the <a href='$2'>Perl Modules</a> page in Webmin to install it.
-twofactor_qrcode=Enter the secret code $1 in the Google Authenticator app, or scan the QR code below.
+twofactor_qrcode=Enter the secret code $1 in the TOTP app, or scan the QR code below.
 twofactor_etotpid=Invalid TOTP base32-encoded secret
-twofactor_etotptoken=Google Authenticator token must be a number
+twofactor_etotptoken=TOTP token must be a number
 twofactor_etotpmodule2=Missing Perl module $1
 twofactor_etotpmatch=Incorrect OTP code
 twofactor_secret=Personal secret key

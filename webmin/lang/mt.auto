@@ -46,6 +46,10 @@ bind_sport0=L-istess bħall-ewwel
 bind_sport1=Port speċifiku ..
 bind_listen=Isma 'xandiriet fuq port UDP
 bind_none=Tismax
+bind_websocport=Numru tal-port bażi għall-konnessjonijiet WebSockets
+bind_websocport_none=Default (555)
+bind_websoc_host=Hostname għall-konnessjonijiet WebSocket
+bind_websoc_host_auto=Awtomatiku
 bind_hostname=Isem tas-server web
 bind_auto=Taħdem mill-browser
 bind_err=Naqset milli tbiddel l-indirizz
@@ -80,6 +84,7 @@ log_status=Qtugħ attiv?
 log_disable=Itfi l-qtugħ
 log_enable=Jippermettu l-qtugħ
 log_resolv=Idħol l-hostnames solvuti?
+log_trust=Log indirizz IP tal-klijent meta wara proxy?
 log_clf=Uża format tal-ġurnal kombinat (inklużi referrer u aġent tal-utent)?
 log_clear2=Perjodikament ċar il-fajls tal-ġurnal?
 log_period=Iva, kull $1 siegħa
@@ -420,6 +425,7 @@ ssl_letserr2=Alternattivament, iċċekkja l-paġna <a href='$1'>konfigurazzjoni 
 ssl_letsdesc2=Din il-paġna tista 'tintuża biex titlob ċertifikat ġdid, li jissostitwixxi kwalunkwe kwalunkwe oħra kkonfigurat bħalissa fil-Webmin. Madankollu, is-servizz Ejja Encrypt jirrikjedi li s-sjieda tiegħek tad-dominju taċ-ċertifikat tkun ivvalidata billi tivverifika li din is-sistema tospita l-websajt għad-dominju. Dan isir billi jitqiegħed fajl temporanju żgħir fid-direttorju tad-dokumenti tal-websajt.
 ssl_letsheader=Għażliet għal ċertifikat SSL ġdid
 ssl_letsdoms=Nomi tal-host għal ċertifikat
+ssl_subset=Taqbeż l-ismijiet tal-hosts mhux verifikabbli?
 ssl_letsmode=Ejja Encrypt metodu ta 'validazzjoni
 ssl_letsmode0=Host virtwali Apache li jaqbel mal-isem tal-host
 ssl_letsmode1=Host virtwali Apache magħżul
@@ -1056,6 +1062,7 @@ status_interval0=Kull
 status_mins=minuti
 status_pkgs=Iġbor aġġornamenti tal-pakkett disponibbli?
 status_temp=Iġbor it-temperaturi tas-sewqan?
+status_temp2=Iġbor it-temperaturi tas-CPU u l-veloċità tal-fannijiet?
 status_units=Unitajiet għat-temperaturi
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
@@ -1182,9 +1189,9 @@ twofactor_eauthyotp=It-token mhux awtorizzat huwa invalidu
 twofactor_enrolllink=Issa tista 'tirreġistra għal awtentikazzjoni b'żewġ fatturi fil-modulu <a href='$1'>Utenti Webmin</a>.
 twofactor_url=Biex titgħallem aktar dwar $1, ara l-websajt tagħha fuq <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Il-modulu Perl <tt>$1</tt> meħtieġ għall-awtentikazzjoni b'żewġ fatturi mhuwiex installat. Uża l-paġna <a href='$2'>Moduli Perl</a> fil-Webmin biex tinstallaha.
-twofactor_qrcode=Daħħal il-kodiċi sigriet $1 fl-app Google Authenticator, jew skennja l-kodiċi QR hawn taħt.
+twofactor_qrcode=Daħħal il-kodiċi sigriet $1 fl-app TOTP, jew skennja l-kodiċi QR hawn taħt.
 twofactor_etotpid=Sigriet TOTP mhux validu tal-bażi32-ikkodifikat
-twofactor_etotptoken=It-token tal-Google Authenticator għandu jkun numru
+twofactor_etotptoken=It-token TOTP irid ikun numru
 twofactor_etotpmodule2=Modulu Perl Nieqes $1
 twofactor_etotpmatch=Kodiċi OTP mhux korrett
 twofactor_secret=Ċavetta sigrieta personali

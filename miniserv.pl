@@ -1499,7 +1499,8 @@ if ($config{'trust_real_ip'}) {
 		}
 	$loghost = $acpthost;
 	}
-else {
+elsif ($config{'logtrust'}) {
+	# If a client IP address was provided, such as via a proxy, log it
 	$loghost = $headerhost || $loghost;
 	}
 

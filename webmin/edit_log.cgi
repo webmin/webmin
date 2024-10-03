@@ -23,6 +23,10 @@ print &ui_table_row($text{'log_status'},
 print &ui_table_row($text{'log_resolv'},
 	&ui_yesno_radio("loghost", int($miniserv{'loghost'})));
 
+# Log IP provided by proxy?
+print &ui_table_row($text{'log_trust'},
+	&ui_yesno_radio("logtrust", int($miniserv{'logtrust'})));
+
 # Use common log format
 print &ui_table_row($text{'log_clf'},
 	&ui_yesno_radio("logclf", int($miniserv{'logclf'})));

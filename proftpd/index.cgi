@@ -5,8 +5,7 @@
 require './proftpd-lib.pl';
 
 # Check if proftpd is installed
-@st = stat($config{'proftpd_path'});
-if (!@st) {
+if (&has_command($config{'proftpd_path'})) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("proftpd", "man", "doc", "google"));
 	print &text('index_eproftpd', "<tt>$config{'proftpd_path'}</tt>",
@@ -18,7 +17,20 @@ if (!@st) {
 	print $lnk,"<p>\n" if ($lnk);
 
 	&ui_print_footer("/", $text{'index'});
-	exit;
+	return;
+	}
+
+# Check that the command is actually proftpd
+if (!$site{'version'}) {
+	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
+		&help_search_link("proftpd", "man", "doc", "google"));
+	print &text('index_eproftpd2',
+		  "<tt>$config{'proftpd_path'}</tt>",
+		  "@{[&get_webprefix()]}/config.cgi?$module_name",
+		  "<tt>$config{'proftpd_path'} -v</tt>",
+		  "<pre>$out</pre>"),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	return;
 	}
 
 # Check if the config file exists
@@ -29,49 +41,7 @@ if (!@$conf) {
 	print &text('index_econf', "<tt>$config{'proftpd_conf'}</tt>",
 		  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
-	exit;
-	}
-
-# Check if the executable has changed ..
-if ($site{'size'} != $st[7] || !$site{'version'} || !$site{'fullversion'}) {
-	# Check if it really is proftpd and the right version
-	$site{'size'} = $st[7];
-	($ver, $fullver) = &get_proftpd_version(\$out);
-	if (!$ver) {
-		&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
-			&help_search_link("proftpd", "man", "doc", "google"));
-		print &text('index_eproftpd2',
-			  "<tt>$config{'proftpd_path'}</tt>",
-			  "@{[&get_webprefix()]}/config.cgi?$module_name",
-			  "<tt>$config{'proftpd_path'} -v</tt>",
-			  "<pre>$out</pre>"),"<p>\n";
-		&ui_print_footer("/", $text{'index'});
-		exit;
-		}
-	$site{'version'} = $ver;
-	$site{'fullversion'} = $fullver;
-	if ($site{'version'} < 0.99) {
-		&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
-			&help_search_link("proftpd", "man", "doc", "google"));
-		print &text('index_eversion',
-			  "<tt>$config{'proftpd_path'}</tt>",
-			  "@{[&get_webprefix()]}/config.cgi?$module_name"),"<p>\n";
-		&ui_print_footer("/", $text{'index'});
-		exit;
-		}
-
-	# Get the list of modules
-	local @mods;
-	open(MODS, "$config{'proftpd_path'} -vv |");
-	while(<MODS>) {
-		s/\r|\n//g;
-		if (/^\s*(?<mod_built_in>\S+)\.c$|\s*(?<mod_loaded>mod_[a-zA-Z0-9_]+)\//) {
-			push(@mods, $+{mod_loaded} || $+{mod_built_in});
-			}
-		}
-	close(MODS);
-	$site{'modules'} = join(" ", @mods);
-	&write_file("$module_config_directory/site", \%site);
+	return;
 	}
 
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,

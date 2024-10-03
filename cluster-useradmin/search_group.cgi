@@ -30,26 +30,27 @@ if (@match == 1) {
 else {
 	&ui_print_header(undef, $text{'search_title'}, "");
 	if (@match == 0) {
-		print "<p><b>$text{'search_gnotfound'}</b>. <p>\n";
+		print "<p><b>$text{'search_gnotfound'}</b><p>\n";
 		}
 	else {
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>$text{'gedit_group'}</b></td>\n";
-		print "<td><b>$text{'gedit_gid'}</b></td>\n";
-		print "<td><b>$text{'gedit_members'}</b></td>\n";
-		print "<td><b>$text{'search_hosts'}</b></td> </tr>\n";
+		print &ui_columns_start([ $text{'gedit_group'},
+					  $text{'gedit_gid'},
+					  $text{'gedit_members'},
+					  $text{'search_hosts'} ], 100);
 		foreach $m (@match) {
 			local $members = join(" ", split(/,/, $m->{'members'}));
-			print "<tr $cb>\n";
-			print "<td><a href=\"edit_group.cgi?group=$m->{'group'}\">$m->{'group'}</a></td>\n";
-			print "<td>$m->{'gid'}</td>\n";
-			print "<td>$members&nbsp;</td>\n";
 			@h = @{$hosts{$m->{'group'}}};
 			@h = @h[0 .. 10], ".." if (@h > 10);
-			print "<td>",join(", ", @h),"</td>\n";
-			print "</tr>\n";
+			print &ui_columns_row([
+				&ui_link("edit_group.cgi?group=".
+					 &urlize($m->{'group'}),
+					 &html_escape($m->{'group'})),
+				$m->{'gid'},
+				&html_escape($members),
+				join(", ", @h),
+				]);
 			}
-		print "</table><p>\n";
+		print &ui_columns_end();
 		}
 	&ui_print_footer("", $text{'index_return'});
 	}

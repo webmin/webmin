@@ -26,6 +26,10 @@ bind_sport0=Samma som först
 bind_sport1=Speciell hamn ..
 bind_listen=Lyssna på sändningar på UDP-porten
 bind_none=Lyssna inte
+bind_websocport=Basportnummer för WebSockets-anslutningar
+bind_websocport_none=Standard (555)
+bind_websoc_host=Värdnamn för WebSocket-anslutningar
+bind_websoc_host_auto=Automatisk
 bind_hostname=Webbservers värdnamn
 bind_auto=Träna från webbläsaren
 bind_enone=Inga IP-adresser och portar att lyssna på angivna
@@ -52,6 +56,7 @@ bind_maxlifetime_secs=sekunder
 bind_emaxlifetime=Maximal processlivslängd måste vara ett antal större än 60 sekunder
 
 log_status=Loggar aktivt?
+log_trust=Logga klientens IP-adress bakom proxy?
 log_clf=Använd kombinerat loggformat (inklusive referent och användaragent)?
 log_clear2=Tydliga loggfiler?
 log_period=Ja, varje $1 timmar
@@ -303,6 +308,7 @@ ssl_letserr2=Alternativt kan du kontrollera sidan <a href='$1'>modulkonfiguratio
 ssl_letsdesc2=Denna sida kan användas för att begära ett nytt certifikat, som kommer att skriva över alla andra som för närvarande har konfigurerats i Webmin. Let's Encrypt-tjänsten kräver dock att ditt ägande av certifikatdomänen valideras genom att kontrollera att det här systemet är värd för webbplatsen för domänen. Detta görs genom att placera en liten tillfällig fil i webbplatsens dokumentkatalog.
 ssl_letsheader=Alternativ för nytt SSL-certifikat
 ssl_letsdoms=Värdnamn för certifikat
+ssl_subset=Vill du hoppa över ej verifierbara värdnamn?
 ssl_letsmode=Låt oss kryptera valideringsmetod
 ssl_letsmode0=Apache virtuell värd som matchar värdnamn
 ssl_letsmode1=Vald virtuell Apache-värd
@@ -797,6 +803,7 @@ status_interval0=Varje
 status_mins=minuter
 status_pkgs=Samla tillgängliga paketuppdateringar?
 status_temp=Samla körtemperaturer?
+status_temp2=Samla CPU-temperaturer och fläkthastigheter?
 status_units=Enheter för temperaturer
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
@@ -923,9 +930,9 @@ twofactor_eauthyotp=Autentisk token är ogiltig
 twofactor_enrolllink=Du kan nu registrera dig för tvåfaktorautentisering i <a href='$1'>Webmin-användare</a> -modulen.
 twofactor_url=Om du vill veta mer om $1, se webbplatsen på <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Perl-modulen <tt>$1</tt> som behövs för tvåfaktorautentisering är inte installerad. Använd sidan <a href='$2'>Perl Modules</a> i Webmin för att installera den.
-twofactor_qrcode=Ange den hemliga koden $1 i appen Google Authenticator, eller skanna QR-koden nedan.
+twofactor_qrcode=Ange den hemliga koden $1 i TOTP-appen eller skanna QR-koden nedan.
 twofactor_etotpid=Ogiltig TOTP-bas32-kodad hemlighet
-twofactor_etotptoken=Google Authenticator-token måste vara ett nummer
+twofactor_etotptoken=TOTP-token måste vara ett nummer
 twofactor_etotpmodule2=Perl-modul saknas $1
 twofactor_etotpmatch=Felaktig OTP-kod
 twofactor_secret=Personlig hemlig nyckel

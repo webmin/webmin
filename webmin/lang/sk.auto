@@ -8,6 +8,10 @@ access_ecidr8=Veľkosť siete IPv6 „$1“ musí byť deliteľná 8
 access_trust=Dôverujete vzdialenej IP adrese poskytovanej servermi proxy?
 
 bind_firewall=Otvoriť nové porty na bráne firewall?
+bind_websocport=Číslo základného portu pre pripojenia WebSockets
+bind_websocport_none=Predvolené (555)
+bind_websoc_host=Názov hostiteľa pre pripojenia WebSocket
+bind_websoc_host_auto=Automaticky
 bind_resolv_myname=Pripojenú IP adresu reverzného rozlíšenia?
 bind_ipv6=Prijímate pripojenia IPv6?
 bind_eipv6=IPv6 nie je možné povoliť, pokiaľ nie je nainštalovaný modul $1 Perl
@@ -25,6 +29,7 @@ bind_maxlifetime_def=Neobmedzene
 bind_maxlifetime_secs=sekúnd
 bind_emaxlifetime=Maximálna životnosť procesu musí byť číslo väčšie ako 60 sekúnd
 
+log_trust=Zaznamenať IP adresu klienta, keď je za serverom proxy?
 log_global=&lt;Globálne akcie&gt;
 log_sched=Zaznamenávať naplánované funkcie?
 log_syslog=Tiež sa prihlási webmin akcie do syslogu?
@@ -122,6 +127,7 @@ ssl_letserr2=Prípadne si pozrite stránku <a href='$1'>Konfigurácia modulu</a>
 ssl_letsdesc2=Táto stránka sa dá použiť na vyžiadanie nového certifikátu, ktorý prepíše všetky ostatné, ktoré sú momentálne nakonfigurované v aplikácii Webmin. Služba Let's Encrypt však vyžaduje, aby bolo vaše vlastníctvo domény certifikátov overené kontrolou, či tento systém je hostiteľom webovej stránky pre túto doménu. To sa dosiahne umiestnením malého dočasného súboru do adresára dokumentov webovej stránky.
 ssl_letsheader=Možnosti pre nový certifikát SSL
 ssl_letsdoms=Názvy hostiteľov pre certifikát
+ssl_subset=Preskočiť neoveriteľné názvy hostiteľov?
 ssl_letsmode=Overovacia metóda Let's Encrypt
 ssl_letsmode0=Virtuálny hostiteľ Apache zodpovedá názvu hostiteľa
 ssl_letsmode1=Vybraný virtuálny hostiteľ Apache
@@ -399,6 +405,7 @@ status_interval0=každý
 status_mins=minúty
 status_pkgs=Zhromažďovať dostupné aktualizácie balíkov?
 status_temp=Zhromažďovať jazdné teploty?
+status_temp2=Zbierať teploty procesora a rýchlosť ventilátorov?
 status_units=Jednotky pre teploty
 status_celsius=Celzia
 status_fahrenheit=Fahrenheita
@@ -525,9 +532,9 @@ twofactor_eauthyotp=Autentický token je neplatný
 twofactor_enrolllink=Teraz sa môžete zaregistrovať na dvojfaktorové overenie v module <a href='$1'>Webmin Users</a>.
 twofactor_url=Ak sa chcete dozvedieť viac o $1, navštívte webovú stránku na adrese <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Modul Perl <tt>$1</tt> potrebný na dvojfaktorové overenie nie je nainštalovaný. Na inštaláciu použite <a href='$2'>Perl moduly</a> vo Webmin.
-twofactor_qrcode=Do aplikácie Google Authenticator zadajte tajný kód $1 alebo naskenujte nižšie uvedený QR kód.
+twofactor_qrcode=Zadajte tajný kód $1 v aplikácii TOTP alebo naskenujte QR kód nižšie.
 twofactor_etotpid=Neplatné tajomstvo kódované TOTP bázou32
-twofactor_etotptoken=Token aplikácie Google Authenticator musí byť číslo
+twofactor_etotptoken=Token TOTP musí byť číslo
 twofactor_etotpmodule2=Chýba modul Perl $1
 twofactor_etotpmatch=Nesprávny kód OTP
 twofactor_secret=Osobný tajný kľúč

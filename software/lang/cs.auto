@@ -42,11 +42,15 @@ log_install_yum=Nainstalovali se balíčky ($2) z YUM
 log_install_rhn_l=Nainstalované balíčky $1 od Redhat Network
 log_install_rhn=Nainstalované balíčky ($2) od Redhat Network
 
+rhn_ok=.. instalace dokončena
+
+apt_ok=.. instalace dokončena
 apt_repo_url=Základní URL úložiště
 apt_repo_path=Složky distribuční cesty
 apt_repo_eurl=Chybějící nebo neplatně vypadající základní adresa URL
 apt_repo_epath=Chybějící distribuční cesta
 
+yum_ok=... instalace dokončena
 yum_repo_id=ID úložiště
 yum_repo_name=Popis úložiště
 yum_repo_url=Základní adresa URL balíčku
@@ -59,7 +63,13 @@ yum_repo_eurl=Chybějící nebo neplatná adresa URL úložiště
 yum_repo_egpg=Soubor certifikátu GPG chybí nebo neexistuje
 yum_repo_efile=Soubor úložiště již existuje!
 
+urpmi_ok=... instalace dokončena
+
+emerge_ok=.. instalace dokončena
+
 cygwin_edb=Chybí databáze balíčků Cygwin $1 
+
+csw_ok=.. instalace dokončena
 
 missing_msg=Balíček $1 může automaticky nainstalovat Webmin pomocí $2.
 missing_now=Nainstalovat nyní
@@ -102,7 +112,7 @@ IPKG_updatedesc=Spouštím příkaz $1 ..
 IPKG_upgradefailed=.. selhalo!
 IPKG_upgradeok=.. kompletní.
 IPKG_install=Instalace balíčků s příkazem $1 ..
-IPKG_ok=.. instalace dokončena.
+IPKG_ok=.. instalace dokončena
 IPKG_failed=.. instalace se nezdařila!
 IPKG_index_tree=Správa balíčků IPKG
 IPKG_install_package=Nainstalujte

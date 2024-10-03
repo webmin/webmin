@@ -34,11 +34,15 @@ log_install_yum=$2 pakket (ten) van YUM geïnstalleerd
 log_install_rhn_l=Geïnstalleerde pakket (ten) $1 van Redhat Network
 log_install_rhn=$2 pakket (ten) van Redhat Network geïnstalleerd
 
+rhn_ok=..installatie compleet
+
+apt_ok=..installatie compleet
 apt_repo_url=Repository base URL
 apt_repo_path=Onderdelen van distributiepaden
 apt_repo_eurl=Ontbrekende of ongeldig ogende basis-URL
 apt_repo_epath=Ontbrekend distributiepad
 
+yum_ok=..installatie compleet
 yum_repo_id=Repository-ID
 yum_repo_name=Repositorybeschrijving
 yum_repo_url=Pakket basis-URL
@@ -50,6 +54,12 @@ yum_repo_ename=Naam ontbrekende opslagplaats
 yum_repo_eurl=Ontbrekende of ongeldige repository-URL
 yum_repo_egpg=GPG cert-bestand ontbreekt of bestaat niet
 yum_repo_efile=Repository-bestand bestaat al!
+
+urpmi_ok=..installatie compleet
+
+emerge_ok=..installatie compleet
+
+csw_ok=..installatie compleet
 
 missing_msg=Het $1 -pakket kan automatisch worden geïnstalleerd door Webmin met behulp van $2.
 missing_now=Installeer nu
@@ -92,7 +102,7 @@ IPKG_updatedesc=Opdracht $1 wordt uitgevoerd ..
 IPKG_upgradefailed=.. is mislukt!
 IPKG_upgradeok=.. compleet.
 IPKG_install=Pakket (ten) installeren met opdracht $1 ..
-IPKG_ok=.. installatie voltooid.
+IPKG_ok=..installatie compleet
 IPKG_failed=.. installatie mislukt!
 IPKG_index_tree=Beheer IPKG-pakketten
 IPKG_install_package=Installeren

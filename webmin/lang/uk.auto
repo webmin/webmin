@@ -27,6 +27,10 @@ bind_sport0=Те саме, що і перше
 bind_sport1=Конкретний порт ..
 bind_listen=Слухайте трансляції на порту UDP
 bind_none=Не слухайте
+bind_websocport=Базовий номер порту для підключень WebSockets
+bind_websocport_none=Типовий (555)
+bind_websoc_host=Ім’я хосту для з’єднань WebSocket
+bind_websoc_host_auto=Автоматичний
 bind_hostname=Ім'я хоста веб-сервера
 bind_auto=Робота з браузера
 bind_enone=Введені IP-адреси та порти, які можна слухати
@@ -53,6 +57,7 @@ bind_maxlifetime_secs=секунд
 bind_emaxlifetime=Максимальний час життя процесу має бути більше 60 секунд
 
 log_status=Журнал активний?
+log_trust=Реєстрація IP-адреси клієнта за проксі?
 log_clf=Використовувати комбінований формат журналу (включаючи референт та користувальницький агент)?
 log_clear2=Періодично очищати файли журналів?
 log_period=Так, кожні $1 годин
@@ -260,6 +265,7 @@ ssl_letserr2=Крім того, перевірте сторінку конфіг
 ssl_letsdesc2=Ця сторінка може використовуватися для запиту нового сертифіката, який замінить будь-який інший на даний момент налаштований у Webmin. Однак сервіс Let Encrypt вимагає підтвердити ваше право власності на домен сертифікатів, перевіривши, чи ця система розміщує веб-сайт для домену. Це робиться, помістивши невеликий тимчасовий файл у каталог документів веб-сайту.
 ssl_letsheader=Параметри нового сертифіката SSL
 ssl_letsdoms=Імена хостів для сертифіката
+ssl_subset=Пропустити неперевірені імена хостів?
 ssl_letsmode=Метод перевірки Let's Encrypt
 ssl_letsmode0=Віртуальний хост Apache, що відповідає імені хосту
 ssl_letsmode1=Вибраний віртуальний хост Apache
@@ -668,6 +674,7 @@ status_interval0=Кожен
 status_mins=хвилин
 status_pkgs=Збирати доступні оновлення пакета?
 status_temp=Збирати температури приводу?
+status_temp2=Збирати дані про температуру процесора та швидкість вентиляторів?
 status_units=Агрегати для температури
 status_celsius=Цельсія
 status_fahrenheit=Фаренгейт
@@ -794,9 +801,9 @@ twofactor_eauthyotp=Маркер Authy недійсний
 twofactor_enrolllink=Тепер ви можете записатись на двофакторну автентифікацію в модулі <a href='$1'>Користувачі Webmin</a>.
 twofactor_url=Щоб дізнатися більше про $1, перегляньте веб-сайт за адресою <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Модуль Perl <tt>$1</tt>, необхідний для двофакторної аутентифікації, не встановлений. Використовуйте сторінку <a href='$2'>Perl Modules</a> у Webmin, щоб встановити її.
-twofactor_qrcode=Введіть секретний код $1 у додатку Google Authenticator або скануйте QR-код нижче.
+twofactor_qrcode=Введіть секретний код $1 у програмі TOTP або відскануйте QR-код нижче.
 twofactor_etotpid=Недійсний секрет, закодований базовою версією TOTP
-twofactor_etotptoken=Маркер Google Authenticator повинен бути числом
+twofactor_etotptoken=Маркер TOTP має бути числом
 twofactor_etotpmodule2=Відсутній модуль Perl $1
 twofactor_etotpmatch=Неправильний код OTP
 twofactor_secret=Особистий секретний ключ

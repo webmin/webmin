@@ -60,9 +60,11 @@ log_upgrade_yum=Модернизированные пакеты $2 от YUM
 log_check_rhn_l=Обновленные пакеты $1 от Redhat Network
 log_check_rhn=Обновленные пакеты $2 из Redhat Network
 
+rhn_ok=.. установка завершена
 rhn_header=Параметры автоматического обновления пакета
 rhn_name=Redhat Network
 
+apt_ok=.. установка завершена
 apt_header=Варианты обновления пакета APT
 apt_mode=Режим обновления
 apt_mode2=Обновление распространения (<tt>upgrade-dist</tt>)
@@ -77,7 +79,7 @@ apt_repo_epath=Отсутствует путь распространения
 
 yum_input=Пакет от YUM
 yum_install=Установка пакетов с помощью команды $1 ..
-yum_ok=.. установка завершена.
+yum_ok=.. установка завершена
 yum_failed=.. установка не удалась!
 yum_find=Просмотр YUM ..
 yum_package=пакет
@@ -118,9 +120,10 @@ urpmi_updatedesc=Выполнение команды $1 ..
 uprmi_upgradefailed=.. не удалось!
 urpmi_upgradeok=.. завершено
 urpmi_install=Установка пакетов с помощью команды $1 ..
-urpmi_ok=.. установка завершена.
+urpmi_ok=.. установка завершена
 urpmi_failed=.. установка не удалась!
 
+emerge_ok=.. установка завершена
 emerge_title=Поиск Portage
 emerge_name=волок
 
@@ -147,7 +150,7 @@ deletes_ok=Удалить их все
 
 csw_input=Пакет от CSW
 csw_install=Установка пакетов с помощью команды $1 ..
-csw_ok=.. установка завершена.
+csw_ok=.. установка завершена
 csw_failed=.. установка не удалась!
 csw_already=.. уже установлено.
 csw_retry=.. пытаясь снова с новыми зависимостями.
@@ -231,7 +234,7 @@ IPKG_updatedesc=Выполнение команды $1 ..
 IPKG_upgradefailed=.. не удалось!
 IPKG_upgradeok=.. завершено
 IPKG_install=Установка пакетов с помощью команды $1 ..
-IPKG_ok=.. установка завершена.
+IPKG_ok=.. установка завершена
 IPKG_failed=.. установка не удалась!
 IPKG_index_tree=Управление пакетами IPKG
 IPKG_install_package=устанавливать

@@ -135,7 +135,6 @@ log_delete=パッケージ $1 をアンインストールしました
 
 rhn_input=Redhat Network からのパッケージ
 rhn_install=パッケージをコマンド $1 でインストール中..
-rhn_ok=.. インストールを完了しました。
 rhn_failed=.. インストールに失敗しました。
 rhn_title=RHN パッケージの選択
 rhn_pack=パッケージ
@@ -159,7 +158,6 @@ rhn_skip=一致したパッケージをスキップ
 
 apt_input=APT からのパッケージ
 apt_install=パッケージをコマンド $1 でインストール中..
-apt_ok=.. インストールを完了しました。
 apt_failed=.. インストールに失敗しました。
 apt_form=すべてのパッケージをアップグレード
 apt_update=パッケージ リストの再同期 (<tt>update</tt>)

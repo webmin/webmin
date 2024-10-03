@@ -12,10 +12,9 @@ $d || &error($text{'disk_egone'});
 @parts = @{$d->{'parts'}};
 &ui_print_header($d->{'desc'}, $text{'disk_title'}, "", undef,
 		 @disks == 1 ? 1 : 0, @disks == 1 ? 1 : 0);
-$caneditpart =
-		$d->{'table'} ne 'gpt' || 
-			($d->{'table'} eq 'gpt' &&
-				&has_command('parted') && $config{'mode'} ne 'fdisk');
+$caneditpart = $d->{'table'} ne 'gpt' || 
+	       ($d->{'table'} eq 'gpt' &&
+		&has_command('parted') && $config{'mode'} ne 'fdisk');
 
 # Work out links to add partitions
 foreach $p (@parts) {
@@ -34,16 +33,19 @@ foreach $p (@parts) {
 	}
 if ($caneditpart) {
 	if ($regular < 4 || $disk->{'table'} ne 'msdos') {
-		push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=1\">".
-			       $text{'index_addpri'}."</a>");
+		push(@edlinks,
+			&ui_link("edit_part.cgi?disk=$d->{'index'}&new=1",
+				 $text{'index_addpri'}));
 		}
 	if ($extended) {
-		push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=2\">".
-			       $text{'index_addlog'}."</a>");
+		push(@edlinks,
+			&ui_link("edit_part.cgi?disk=$d->{'index'}&new=2",
+			         $text{'index_addlog'}));
 		}
 	elsif ($regular < 4 && &supports_extended()) {
-		push(@edlinks, "<a href=\"edit_part.cgi?disk=$d->{'index'}&new=3\">".
-				$text{'index_addext'}."</a>");
+		push(@edlinks,
+			&ui_link("edit_part.cgi?disk=$d->{'index'}&new=3",
+				 $text{'index_addext'}));
 		}
 	}
 else {
@@ -132,26 +134,28 @@ else {
 print &ui_links_row(\@edlinks);
 
 # Buttons for IDE params and SMART
-my $ui_buttons_content;
+my $ui_buttons_content = "";
 if (&supports_hdparm($d)) {
-	$ui_buttons_content = &ui_buttons_row("edit_hdparm.cgi", $text{'index_hdparm'},
-			      $text{'index_hdparmdesc'},
-			      &ui_hidden("disk", $d->{'index'}));
+	$ui_buttons_content .=
+	    &ui_buttons_row("edit_hdparm.cgi", $text{'index_hdparm'},
+			    $text{'index_hdparmdesc'},
+			    &ui_hidden("disk", $d->{'index'}));
 	}
 if (&supports_smart($d)) {
-	$ui_buttons_content = &ui_buttons_row("../smart-status/index.cgi", $text{'index_smart'},
-			      $text{'index_smartdesc'},
-			      &ui_hidden("drive", $d->{'device'}));
+	$ui_buttons_content .=
+	    &ui_buttons_row("../smart-status/index.cgi", $text{'index_smart'},
+			    $text{'index_smartdesc'},
+			    &ui_hidden("drive", $d->{'device'}));
 	}
 if (&supports_relabel($d)) {
 	if ($d->{'table'} eq 'unknown') {
-		$ui_buttons_content = &ui_buttons_row(
+		$ui_buttons_content .= &ui_buttons_row(
 			"edit_relabel.cgi", $text{'index_relabel2'},
 			$text{'index_relabeldesc2'},
 			&ui_hidden("device", $d->{'device'}));
 		}
 	else {
-		$ui_buttons_content = &ui_buttons_row(
+		$ui_buttons_content .= &ui_buttons_row(
 			"edit_relabel.cgi", $text{'index_relabel'},
 			$text{'index_relabeldesc'},
 			&ui_hidden("device", $d->{'device'}));
@@ -162,7 +166,7 @@ if ($ui_buttons_content) {
 	print &ui_buttons_start();
 	print $ui_buttons_content;
 	print &ui_buttons_end();
-}
+	}
 
 &ui_print_footer("", $text{'index_return'});
 

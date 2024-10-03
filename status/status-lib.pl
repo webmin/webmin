@@ -153,9 +153,10 @@ return &unique(@remote);
 # an array content, the status of all hosts for this monitor are returned.
 sub service_status
 {
-my $t = $_[0]->{'type'};
+my ($serv, $fromcgi) = @_;
+my $t = $serv->{'type'};
 my @rv;
-foreach $r (&expand_remotes($_[0])) {
+foreach $r (&expand_remotes($serv)) {
 	my $rv;
 	local $main::error_must_die = 1;
 	eval {
@@ -173,11 +174,11 @@ foreach $r (&expand_remotes($_[0])) {
 					 'desc' => "$text{'mon_webmin'} : $remote_error_msg" };
 				}
 			else {
-				my %s = %{$_[0]};
+				my %s = %{$serv};
 				$s{'remote'} = '*';
 				$s{'groups'} = undef;
 				($rv) = &remote_foreign_call($r, 'status',
-					    'service_status', \%s, $_[1]);
+					    'service_status', \%s, $fromcgi);
 				if ($remote_error_msg) {
 					$rv = { 'up' => $webmindown, 'desc' =>
 					    "$text{'mon_webmin'} : $remote_error_msg" };
@@ -187,17 +188,18 @@ foreach $r (&expand_remotes($_[0])) {
 		elsif ($t =~ /^(\S+)::(\S+)$/) {
 			# Call to another module
 			my ($mod, $mtype) = ($1, $2);
+			$mod = $serv->{'clone'} if ($serv->{'clone'});
 			&foreign_require($mod, "status_monitor.pl");
 			$rv = &foreign_call($mod, "status_monitor_status",
-					    $mtype, $_[0], $_[1]);
+					    $mtype, $serv, $fromcgi);
 			}
 		else {
 			# Just include and use the local monitor library
 			do "${t}-monitor.pl" if (!$done_monitor{$t}++);
 			my $func = "get_${t}_status";
-			$rv = &$func($_[0],
-				     $_[0]->{'clone'} ? $_[0]->{'clone'} : $t,
-				     $_[1]);
+			$rv = &$func($serv,
+				     $serv->{'clone'} ? $serv->{'clone'} : $t,
+				     $fromcgi);
 			}
 		alarm(0);
 		};
@@ -249,11 +251,10 @@ while($f = readdir(DIR)) {
 	}
 closedir(DIR);
 foreach my $m (&get_all_module_infos()) {
-	my $mdir = defined(&module_root_directory) ?
-		&module_root_directory($m->{'dir'}) :
-		"$root_directory/$m->{'dir'}";
+	my $mdir = &module_root_directory($m->{'dir'});
 	if (-r "$mdir/status_monitor.pl" &&
-	    &check_os_support($m)) {
+	    &check_os_support($m) &&
+	    !$m->{'cloneof'}) {
 		&foreign_require($m->{'dir'}, "status_monitor.pl");
 		my @mms = &foreign_call($m->{'dir'}, "status_monitor_list");
 		push(@rv, map { [ $m->{'dir'}."::".$_->[0], $_->[1], $_->[2] ] } @mms);
@@ -265,24 +266,25 @@ return @rv;
 # depends_check(&service, [module]+)
 sub depends_check
 {
-return if ($_[0]->{'id'});	# only check for new services
-if ($_[0]->{'remote'}) {
+my ($serv, @mods) = @_;
+return if ($serv->{'id'});	# only check for new services
+if ($serv->{'remote'}) {
 	# Check on the remote server
-	foreach my $m (@_[1..$#_]) {
-		&remote_foreign_check($_[0]->{'remote'}, $m, 1) ||
+	foreach my $m (@mods) {
+		&remote_foreign_check($serv->{'remote'}, $m, 1) ||
 			&error(&text('depends_remote', "<tt>$m</tt>",
-				     "<tt>$_[0]->{'remote'}</tt>"));
+				     "<tt>$serv->{'remote'}</tt>"));
 		}
 	}
 else {
 	# Check on this server
-	foreach my $m (@_[1..$#_]) {
+	foreach my $m (@mods) {
 		my %minfo = &get_module_info($m);
 		%minfo || &error(&text('depends_mod', "<tt>$m</tt>"));
 		&check_os_support(\%minfo, undef, undef, 1) ||
 			&error(&text('depends_os', "<tt>$minfo{'desc'}</tt>"));
 		}
-	$_[0]->{'depends'} = join(" ", @_[1..$#_]);
+	$_[0]->{'depends'} = join(" ", @mods);
 	}
 }
 

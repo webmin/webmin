@@ -178,7 +178,6 @@ log_check_rhn=Zaktualizowano $2 pakiet(y) z Redhat Network
 rhn_input=Pakiet z Sieci Redhat (RHN)
 rhn_find=Szukaj RHN ..
 rhn_install=Instalacja pakietu(-ów) za pomocą polecenia $1 ..
-rhn_ok=.. zakończona.
 rhn_failed=.. instalacja się nie powiodła!
 rhn_title=Wybierz pakiet RHN
 rhn_pack=Pakiet
@@ -205,7 +204,6 @@ rhn_name=Sieć Redhat
 
 apt_input=Pakiet z APT
 apt_install=Instalacja pakietu(-ów) za pomocą polecania $1 ..
-apt_ok=.. zakończona.
 apt_failed=.. instalacja się nie powiodła!
 apt_form=Aktualizuj wszystkie pakiety
 apt_header=Opcje aktualizacji pakietów APT
@@ -231,7 +229,6 @@ apt_name=APT
 
 yum_input=Pakiet z YUM
 yum_install=Instalacja pakietów poleceniem $1 ..
-yum_ok=.. instalacja zakończona.
 yum_failed=.. instalacja nie powiodła się!
 yum_find=Przeglądaj YUM ..
 yum_package=Pakiet
@@ -261,7 +258,6 @@ urpmi_updatedesc=Uruchomienie polecenia $1 ..
 uprmi_upgradefailed=.. błąd!
 urpmi_upgradeok=.. gotowe.
 urpmi_install=Instalacja pakietów poleceniem $1 ..
-urpmi_ok=.. instalacja zakończona.
 urpmi_failed=.. instalacja nie powiodła się!
 
 rpm_missing=Brak
@@ -310,7 +306,6 @@ emerge_input=Z repozytorium Portage
 emerge_find=Szukanie ..
 emerge_install=Instalacja pakietów poleceniem $1 ..
 emerge_failed=.. instalacja nie powiodła się!
-emerge_ok=.. instalacja zakończona.
 emerge_search=Szukaj pakietu:
 emerge_pack=Pakiet
 emerge_class=Klasa
@@ -345,7 +340,6 @@ deletes_ok=Usuń wszystko
 
 csw_input=Pakiet z CSW
 csw_install=Instalacja pakietów poleceniem $1 ..
-csw_ok=.. instalacja zakończona.
 csw_failed=.. instalacja nie powiodła się!
 csw_already=.. już zainstalowane.
 csw_retry=.. ponowna próba z nowymi zależnościami

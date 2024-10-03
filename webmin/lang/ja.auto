@@ -1,7 +1,13 @@
+bind_websocport=WebSocket 接続の基本ポート番号
+bind_websocport_none=デフォルト (555)
+bind_websoc_host=WebSocket接続のホスト名
+bind_websoc_host_auto=自動
 bind_maxlifetime=Webminプロセスの最大存続期間
 bind_maxlifetime_def=無制限
 bind_maxlifetime_secs=秒
 bind_emaxlifetime=最大プロセス寿命は60秒を超える数値である必要があります
+
+log_trust=プロキシの背後にあるときにクライアントの IP アドレスをログに記録しますか?
 
 os_release_notes=リリースノート
 
@@ -16,6 +22,7 @@ lang_dateformat_mm/dd/yyyy=mm/dd/yyyy (つまり、2001 年 9 月 16 日)
 lang_dateformat_yyyy/mm/dd=yyyy/mm/dd (例: 2001/09/16)
 
 ssl_hsts=HSTS ヘッダーで SSL を強制する
+ssl_subset=検証できないホスト名をスキップしますか?
 ssl_letsmode=Let's Encryptの検証方法
 ssl_letsmode0=ホスト名に一致する Apache 仮想ホスト
 ssl_letsmode1=選択された Apache 仮想ホスト
@@ -79,6 +86,8 @@ notify_yumrepo=お使いのシステムは古い Webmin YUM リポジトリを�
 notify_aptrepo=お使いのシステムは古い Webmin APT リポジトリを使用しています。最新の署名キーを使用し、更新された Webmin バージョンに確実にアクセスできるように、下のボタンをクリックして新しい<tt>stable</tt>リポジトリ URL <tt>$1</tt>に切り替えます。
 notif_fixreponow=Webmin リポジトリを更新する
 
+status_temp2=CPU 温度とファン速度を収集しますか?
+
 web_rediruurl=ログイン後の切り替えリダイレクトURL
 web_redirdesc=内部リダイレクトURLのオーバーライド
 web_eredirurl=「$1」にはスペースが含まれており、有効なURLではありません
@@ -89,6 +98,9 @@ web_redirpref=プレフィックスをリダイレクトする
 web_eredirpref=プレフィックスはスラッシュで始まる必要があります
 web_eredirpref2=プレフィックスにスペースを含めることはできません
 web_redirssl=SSLをリダイレクトする
+
+twofactor_qrcode=TOTP アプリに秘密コード $1 を入力するか、下の QR コードをスキャンしてください。
+twofactor_etotptoken=TOTPトークンは数字でなければなりません
 
 letsencrypt_doingcertbot=Certbot Web サーバーを使用して、$1 の新しい証明書を要求しています。
 letsencrypt_eacmecertbot=公式のLet's EncryptクライアントのみがCertbot検証をサポートしています

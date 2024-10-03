@@ -43,11 +43,15 @@ log_install_yum=YUM에서 $2 패키지 설치
 log_install_rhn_l=Redhat Network에서 설치된 패키지 $1 
 log_install_rhn=Redhat Network에서 $2 패키지 설치
 
+rhn_ok=.. 설치 완료
+
+apt_ok=.. 설치 완료
 apt_repo_url=리포지토리 기본 URL
 apt_repo_path=분배 경로 구성 요소
 apt_repo_eurl=기본 URL이 없거나 잘못되었습니다
 apt_repo_epath=분배 경로 누락
 
+yum_ok=.. 설치 완료
 yum_find=YUM 찾아보기
 yum_title=YUM 찾아보기
 yum_repo_id=리포지토리 ID
@@ -63,6 +67,7 @@ yum_repo_egpg=GPG 인증서 파일이 없거나 존재하지 않습니다
 yum_repo_efile=리포지토리 파일이 이미 존재합니다!
 
 urpmi_find=URPMI 찾아보기
+urpmi_ok=.. 설치 완료
 
 aix_unknown=알 수 없는
 aix_device=소프트웨어의 입력 장치 / 디렉토리
@@ -75,12 +80,14 @@ aix_include=해당 언어 파일 세트를 포함 하시겠습니까?
 aix_detail=자세한 출력?
 aix_process=여러 볼륨을 처리 하시겠습니까?
 
+emerge_ok=.. 설치 완료
 emerge_class=수업
 emerge_noreplace=기존 패키지를 교체 하시겠습니까?
 
 cygwin_lmissing=링크 포인트가없는 파일
 cygwin_edb=Cygwin 패키지 데이터베이스 $1 이 (가) 없습니다.
 
+csw_ok=.. 설치 완료
 csw_find=CSW 찾아보기
 csw_title=CSW 찾아보기
 
@@ -139,7 +146,7 @@ IPKG_updatedesc=$1 명령을 실행 중입니다.
 IPKG_upgradefailed=.. 실패했습니다!
 IPKG_upgradeok=.. 완료
 IPKG_install=$1 명령으로 패키지 설치
-IPKG_ok=.. 설치가 완료되었습니다.
+IPKG_ok=.. 설치 완료
 IPKG_failed=.. 설치 실패!
 IPKG_index_tree=IPKG 패키지 관리
 IPKG_install_package=설치

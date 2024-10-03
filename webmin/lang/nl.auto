@@ -2,6 +2,10 @@ access_ecidr6='$1' is geen geldige IPv6-netwerkgrootte
 access_ecidr8=IPv6-netwerkgrootte '$1' moet deelbaar zijn door 8
 access_trust=Vertrouwen op afstand IP-adres verstrekt door proxy's?
 
+bind_websocport=Basispoortnummer voor WebSockets-verbindingen
+bind_websocport_none=Standaard (555)
+bind_websoc_host=Hostnaam voor WebSocket-verbindingen
+bind_websoc_host_auto=Automatisch
 bind_elsof=Nieuwe poort $1 wordt al door een ander proces gebruikt
 bind_eonsystem=Het IP-adres $1 is niet actief op dit systeem en kan dus niet worden gebruikt
 bind_maxconns=Maximaal totaal aantal gelijktijdige verbindingen
@@ -15,6 +19,7 @@ bind_maxlifetime_def=Onbeperkt
 bind_maxlifetime_secs=seconden
 bind_emaxlifetime=Maximale proceslevensduur moet groter zijn dan 60 seconden
 
+log_trust=IP-adres van client loggen wanneer deze zich achter een proxy bevindt?
 log_global=&lt;Wereldwijde acties&gt;
 log_sched=Geplande functies loggen?
 log_email=Stuur geregistreerde acties via e-mail naar
@@ -56,6 +61,7 @@ ssl_letserr2=U kunt ook de pagina <a href='$1'>moduleconfiguratie</a> controlere
 ssl_letsdesc2=Deze pagina kan worden gebruikt om een nieuw certificaat aan te vragen, dat een ander certificaat overschrijft dat momenteel in Webmin is geconfigureerd. De Let's Encrypt-service vereist echter dat uw eigendom van het certificaatdomein wordt gevalideerd door te controleren of dit systeem de website voor het domein host. Dit doet u door een klein tijdelijk bestand in de documentenmap van de website te plaatsen.
 ssl_letsheader=Opties voor nieuw SSL-certificaat
 ssl_letsdoms=Hostnamen voor certificaat
+ssl_subset=Niet-verifieerbare hostnamen overslaan?
 ssl_letsmode=Laten we de validatiemethode coderen
 ssl_letsmode0=Apache virtuele host die overeenkomt met de hostnaam
 ssl_letsmode1=Geselecteerde virtuele Apache-host
@@ -179,6 +185,7 @@ notify_yumrepo=Uw systeem gebruikt de oude Webmin YUM-repository. Klik op de ond
 notify_aptrepo=Uw systeem gebruikt de oude Webmin APT-repository. Klik op de onderstaande knop om over te schakelen naar de nieuwe <tt>stable</tt> repository-URL <tt>$1</tt> om onze nieuwste ondertekeningssleutel te gebruiken en toegang tot bijgewerkte Webmin-versies te garanderen.
 notif_fixreponow=Webmin-opslagplaats bijwerken
 
+status_temp2=CPU-temperaturen en ventilatorsnelheden verzamelen?
 status_units=Eenheden voor temperaturen
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
@@ -273,9 +280,9 @@ twofactor_eauthyotp=Authy-token is ongeldig
 twofactor_enrolllink=U kunt zich nu aanmelden voor tweefactorauthenticatie in de module <a href='$1'>Webmin-gebruikers</a>.
 twofactor_url=Ga voor meer informatie over $1 naar de website op <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=De Perl-module <tt>$1</tt> die nodig is voor tweefactorauthenticatie is niet geïnstalleerd. Gebruik de pagina <a href='$2'>Perl-modules</a> in Webmin om deze te installeren.
-twofactor_qrcode=Voer de geheime code $1 in de Google Authenticator-app in of scan de QR-code hieronder.
+twofactor_qrcode=Voer de geheime code $1 in de TOTP-app in of scan de onderstaande QR-code.
 twofactor_etotpid=Ongeldig TOTP base32-gecodeerd geheim
-twofactor_etotptoken=Google Authenticator-token moet een nummer zijn
+twofactor_etotptoken=TOTP-token moet een nummer zijn
 twofactor_etotpmodule2=Ontbrekende Perl-module $1
 twofactor_etotpmatch=Onjuiste OTP-code
 twofactor_secret=Persoonlijke geheime sleutel

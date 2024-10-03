@@ -46,6 +46,10 @@ bind_sport0=Tas pats, kas pirmais
 bind_sport1=Konkrēta osta ..
 bind_listen=Klausieties raidījumus UDP portā
 bind_none=Neklausieties
+bind_websocport=Pamata porta numurs WebSockets savienojumiem
+bind_websocport_none=Noklusējums (555)
+bind_websoc_host=WebSocket savienojumu resursdatora nosaukums
+bind_websoc_host_auto=Automātiski
 bind_hostname=Web servera resursdators
 bind_auto=Izstrādājiet no pārlūka
 bind_err=Neizdevās mainīt adresi
@@ -80,6 +84,7 @@ log_status=Mežizstrāde aktīva?
 log_disable=Atspējot reģistrēšanu
 log_enable=Iespējot reģistrēšanu
 log_resolv=Vai reģistrēt atrisinātos saimniekdatorus?
+log_trust=Reģistrējieties klienta IP adresi, ja esat aiz starpniekservera?
 log_clf=Vai izmantot kombinēto žurnāla formātu (ieskaitot atsauces un lietotāja aģentu)?
 log_clear2=Periodiski notīrīt žurnālfailus?
 log_period=Jā, ik pēc $1 stundām
@@ -420,6 +425,7 @@ ssl_letserr2=Pārmaiņus pārbaudiet lapu <a href='$1'>moduļa konfigurācija</a
 ssl_letsdesc2=Šo lapu var izmantot, lai pieprasītu jaunu sertifikātu, kas pārrakstīs jebkuru citu, kas pašlaik ir konfigurēts Webmin. Tomēr šifrēšanas pakalpojums pieprasa, lai jūsu īpašumtiesības uz sertifikāta domēnu tiktu apstiprinātas, pārbaudot, vai šī sistēma mitina domēna vietni. Tas tiek darīts, ievietojot nelielu pagaidu failu vietnes dokumentu direktorijā.
 ssl_letsheader=Jaunā SSL sertifikāta iespējas
 ssl_letsdoms=Sertifikāta resursdatori
+ssl_subset=Vai izlaist nepārbaudāmos saimniekdatora nosaukumus?
 ssl_letsmode=Šifrēsim validācijas metodi
 ssl_letsmode0=Apache virtuālā resursdatora nosaukums atbilst resursdatora nosaukumam
 ssl_letsmode1=Atlasīts Apache virtuālais saimniekdators
@@ -1056,6 +1062,7 @@ status_interval0=Katrs
 status_mins=minūtes
 status_pkgs=Apkopot pieejamos pakešu atjauninājumus?
 status_temp=Savāc piedziņas temperatūru?
+status_temp2=Apkopot CPU temperatūru un ventilatora ātrumu?
 status_units=Temperatūras vienības
 status_celsius=Pēc Celsija
 status_fahrenheit=Farenheits
@@ -1182,9 +1189,9 @@ twofactor_eauthyotp=Authy marķieris nav derīgs
 twofactor_enrolllink=Tagad jūs varat reģistrēties divu faktoru autentifikācijai modulī <a href='$1'>Webmin lietotāji</a>.
 twofactor_url=Lai uzzinātu vairāk par $1, skatiet tās vietni vietnē <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Perl modulis <tt>$1</tt>, kas nepieciešams divu faktoru autentifikācijai, nav instalēts. Lai to instalētu, izmantojiet Webmin lapu <a href='$2'>Perl Modules</a>.
-twofactor_qrcode=Google autentifikatora lietotnē ievadiet slepeno kodu $1 vai skenējiet zemāk redzamo QR kodu.
+twofactor_qrcode=Ievadiet slepeno kodu $1 TOTP lietotnē vai skenējiet tālāk redzamo QR kodu.
 twofactor_etotpid=Nederīgs TOTP base32 kodēts noslēpums
-twofactor_etotptoken=Google autentifikatora marķierim jābūt skaitlim
+twofactor_etotptoken=TOTP pilnvarai ir jābūt skaitlim
 twofactor_etotpmodule2=Trūkst Perla moduļa $1
 twofactor_etotpmatch=Nepareizs OTP kods
 twofactor_secret=Personīgā slepenā atslēga

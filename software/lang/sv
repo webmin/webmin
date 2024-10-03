@@ -130,7 +130,6 @@ log_delete=Avinstallerade paket $1
 
 rhn_input=Paket från Redhat Network
 rhn_install=Installerar paket med kommando $1 ...
-rhn_ok=... installationen klar.
 rhn_failed=... installationen misslyckades!
 rhn_title=Ange RHN-paket
 rhn_pack=Paket
@@ -154,7 +153,6 @@ rhn_skip=Hoppa över paket som matchar
 
 apt_input=Paket från Debian APT
 apt_install=Installerar paket med kommandot $1 ...
-apt_ok=... installationen klar.
 apt_failed=... installationen misslyckades!
 apt_form=Uppgradera alla paket
 apt_update=Synkronisera paketlistan (<tt>update</tt>)

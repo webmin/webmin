@@ -814,6 +814,7 @@ sub get_maps
 		    &open_readfile(MAPS, $maps_file);
 		    my $i = 0;
 		    my $cmt;
+		    my $lastmap;
 		    while (<MAPS>)
 		    {
 			s/\r|\n//g;	# remove newlines
@@ -821,8 +822,8 @@ sub get_maps
 			    # A comment line
 			    $cmt = &is_table_comment($_);
 			    }
-			elsif (/^\s*(\/[^\/]*\/[a-z]*)\s+(.*)/ ||
-			       /^\s*([^\s]+)\s+(.*)/) {
+			elsif (/^(\/[^\/]*\/[a-z]*)\s+(.*)/ ||
+			       /^([^\s]+)\s+(.*)/) {
 			    # An actual map
 			    $number++;
 			    my %map;
@@ -837,6 +838,12 @@ sub get_maps
 			    $map{'cmt'} = $cmt;
 			    push(@{$maps_cache{$_[0]}}, \%map);
 			    $cmt = undef;
+			    $lastmap = \%map;
+			    }
+			elsif (/^\s+(\S.*$)/ && $lastmap) {
+			    # Continuation line
+			    $lastmap->{'value'} .= " ".$1;
+			    $lastmap->{'eline'} = $i;
 			    }
 			else {
 			    $cmt = undef;

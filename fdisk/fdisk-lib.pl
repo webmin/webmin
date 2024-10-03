@@ -324,7 +324,7 @@ while(<FDISK>) {
 			# KVM virtual disk
 			$disk->{'desc'} = &text('select_device',
 						'VirtIO', uc($1));
-			$disk->{'type'} = 'ide';
+			$disk->{'type'} = 'virtio';
 			}
 		elsif ($disk->{'device'} =~ /\/(scsi\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/disc)/) {
 			# New complete SCSI disk specification
@@ -1764,7 +1764,8 @@ return $disk->{'table'} eq 'gpt';
 sub supports_hdparm
 {
 local ($d) = @_;
-return $d->{'type'} eq 'ide' || $d->{'type'} eq 'scsi' && $d->{'model'} =~ /ATA/;
+return $d->{'type'} eq 'ide' ||
+       $d->{'type'} eq 'scsi' && $d->{'model'} =~ /ATA/;
 }
 
 # supports_relabel(&disk)

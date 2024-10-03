@@ -46,6 +46,10 @@ bind_sport0=Lehen bezala
 bind_sport1=Berariazko portua
 bind_listen=Entzun UDP portuko emisioak
 bind_none=Ez entzun
+bind_websocport=WebSockets konexioetarako oinarrizko ataka-zenbakia
+bind_websocport_none=Lehenetsia (555)
+bind_websoc_host=WebSocket konexioetarako ostalari-izena
+bind_websoc_host_auto=Automatikoa
 bind_hostname=Web zerbitzariaren ostalariaren izena
 bind_auto=Arakatu arakatzailetik
 bind_err=Ezin izan da helbidea aldatu
@@ -80,6 +84,7 @@ log_status=Logistika aktiboa al da?
 log_disable=Desgaitu erregistroa
 log_enable=Gaitu erregistroa
 log_resolv=Log ebatzi ostalari izenak?
+log_trust=Proxy atzean dagoenean erregistratu bezeroaren IP helbidea?
 log_clf=Erabili erregistro formatu konbinatua (erreferentea eta erabiltzaile eragilea barne)?
 log_clear2=Aldian-aldian log fitxategiak garbitu?
 log_period=Bai, $1 ordu bakoitzean
@@ -420,6 +425,7 @@ ssl_letserr2=Bestela, egiaztatu <a href='$1'>moduluaren konfigurazioa</a> orria 
 ssl_letsdesc2=Orrialde hau Ziurtagiri berri bat eskatzeko erabil daiteke. Webmin konfiguratuta dagoen beste edozein gainidatziko du. Hala ere, Letrak enkriptatu zerbitzuak eskatzen du ziurtagiriaren domeinuaren titulartasuna balioztatzea sistema honek domeinuaren webgunea ostatatzen duela egiaztatuz. Hori egiten da aldi baterako fitxategi txiki bat webgunearen dokumentuen direktorioan jarriz.
 ssl_letsheader=SSL ziurtagiri berrirako aukerak
 ssl_letsdoms=Ziurtagiriaren ostalariaren izenak
+ssl_subset=Egiaztaezinak ostalari-izenak saltatu nahi dituzu?
 ssl_letsmode=Enkriptatu dezagun baliozkotze metodoa
 ssl_letsmode0=Apache ostalari birtuala bat datorren ostalari-izena
 ssl_letsmode1=Aukeratutako Apache ostalari birtuala
@@ -1056,6 +1062,7 @@ status_interval0=bakoitzak
 status_mins=minutu
 status_pkgs=Bildu pakete eguneratzeak eskuragarri?
 status_temp=Bildu diskoko tenperaturak?
+status_temp2=PUZaren tenperatura eta zaleen abiadura bildu?
 status_units=Tenperaturak egiteko unitateak
 status_celsius=Celsius
 status_fahrenheit=Fahrenheit
@@ -1182,9 +1189,9 @@ twofactor_eauthyotp=Authen token baliogabea da
 twofactor_enrolllink=Bi faktoreren autentikazioan izena eman dezakezu <a href='$1'>Webmin Users</a> moduluan.
 twofactor_url=$1 buruz gehiago jakiteko, ikusi <a href='$2' target=_blank>$2</a> webgunean.
 twofactor_etotpmodule=Ez da instalatu bi faktoreen autentikaziorako behar den <tt>$1</tt>. Erabili <a href='$2'>Perl moduluak</a> orria Webmin-en instalatzeko.
-twofactor_qrcode=Sartu $1 kode sekretua Google Authenticator aplikazioan edo eskaneatu beheko QR kodea.
+twofactor_qrcode=Sartu $1 kode sekretua TOTP aplikazioan edo eskaneatu beheko QR kodea.
 twofactor_etotpid=TOTP base32 kodetutako sekretu baliogabea
-twofactor_etotptoken=Google Authenticator token zenbakia izan behar da
+twofactor_etotptoken=TOTP tokenak zenbaki bat izan behar du
 twofactor_etotpmodule2=Perl modulua falta da $1
 twofactor_etotpmatch=OTP kode okerra
 twofactor_secret=Sekretu pertsonaleko giltza

@@ -1,0 +1,15 @@
+rhn_ok=.. Installation abgeschlossen
+
+apt_ok=.. Installation abgeschlossen
+
+yum_ok=.. Installation abgeschlossen
+
+uprmi_upgradefailed=.. fehlgeschlagen!
+urpmi_ok=.. Installation abgeschlossen
+
+emerge_ok=.. Installation abgeschlossen
+
+csw_ok=.. Installation abgeschlossen
+
+IPKG_ok=.. Installation abgeschlossen
+IPKG-edit_title=IPKG-Paket verwalten

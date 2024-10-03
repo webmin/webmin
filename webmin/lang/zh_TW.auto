@@ -15,6 +15,10 @@ bind_desc2=此表單可用於更改Webmin偵聽的端口號，或僅在系統上
 bind_firewall=在防火牆上打開新端口？
 bind_sip=綁定到IP地址
 bind_listen=監聽UDP端口上的廣播
+bind_websocport=WebSocket 連線的基本連接埠號
+bind_websocport_none=預設 (555)
+bind_websoc_host=WebSocket 連線的主機名
+bind_websoc_host_auto=自動的
 bind_enone=沒有輸入要監聽的IP地址和端口
 bind_eip2=“$1”不是要綁定的有效IP地址
 bind_erestart=使用新的地址和端口設置啟動Webmin時發生錯誤：$1
@@ -36,6 +40,7 @@ bind_maxlifetime_secs=秒
 bind_emaxlifetime=最大進程生命週期必須是大於 60 秒的數字
 
 log_status=正在記錄活動？
+log_trust=在代理後面時記錄客戶端 IP 位址嗎？
 log_clear2=定期清除日誌文件？
 log_period=是的，每$1小時
 log_forusers=用戶登錄Webmin操作
@@ -223,6 +228,7 @@ ssl_letserr2=或者，檢查<a href='$1'>模塊配置</a>頁面，以確保使�
 ssl_letsdesc2=此頁面可用於請求新證書，該證書將覆蓋Webmin中當前配置的任何其他證書。但是，“加密”服務要求通過檢查此系統是否託管該域的網站來驗證您對證書域的所有權。這是通過在網站的文檔目錄中放置一個小的臨時文件來完成的。
 ssl_letsheader=新SSL證書的選項
 ssl_letsdoms=證書的主機名
+ssl_subset=跳過無法驗證的主機名稱？
 ssl_letsmode=讓我們加密驗證方法
 ssl_letsmode0=Apache 虛擬主機比對主機名
 ssl_letsmode1=選定的 Apache 虛擬主機
@@ -611,6 +617,7 @@ status_interval0=每一個
 status_mins=分鐘
 status_pkgs=收集可用的軟件包更新？
 status_temp=收集驅動器溫度？
+status_temp2=收集CPU溫度和風扇速度？
 status_units=溫度單位
 status_celsius=攝氏溫度
 status_fahrenheit=華氏溫度
@@ -737,9 +744,9 @@ twofactor_eauthyotp=驗證令牌無效
 twofactor_enrolllink=現在，您可以在<a href='$1'>Webmin用戶</a>模塊中註冊兩因素身份驗證。
 twofactor_url=要了解有關$1的更多信息，請參見其網站，網址為<a href='$2' target=_blank>$2</a>。
 twofactor_etotpmodule=未安裝兩因素身份驗證所需的Perl模塊<tt>$1</tt>。使用Webmin中的<a href='$2'>Perl模塊</a>頁進行安裝。
-twofactor_qrcode=在Google Authenticator應用程序中輸入密碼$1，或掃描下面的QR碼。
+twofactor_qrcode=在 TOTP 應用程式中輸入密碼 $1，或掃描下面的二維碼。
 twofactor_etotpid=無效的TOTP base32編碼的機密
-twofactor_etotptoken=Google Authenticator令牌必須是數字
+twofactor_etotptoken=TOTP 令牌必須是數字
 twofactor_etotpmodule2=缺少Perl模塊$1
 twofactor_etotpmatch=錯誤的OTP碼
 twofactor_secret=個人密鑰

@@ -8,6 +8,10 @@ access_ecidr8=IPv6 네트워크 크기 '$1'은 (는) 8로 나눌 수 있어야�
 access_trust=프록시가 제공하는 원격 IP 주소를 신뢰합니까?
 
 bind_firewall=방화벽에서 새 포트를여시겠습니까?
+bind_websocport=WebSockets 연결을 위한 기본 포트 번호
+bind_websocport_none=기본값(555)
+bind_websoc_host=WebSocket 연결을 위한 호스트 이름
+bind_websoc_host_auto=오토매틱
 bind_ipv6=IPv6 연결을 수락 하시겠습니까?
 bind_eipv6=$1 Perl 모듈이 설치되어 있지 않으면 IPv6을 사용할 수 없습니다
 bind_redirecting=새 URL로 리디렉션
@@ -24,6 +28,7 @@ bind_maxlifetime_def=제한 없는
 bind_maxlifetime_secs=초
 bind_emaxlifetime=최대 프로세스 수명은 60초보다 큰 숫자여야 합니다
 
+log_trust=프록시 뒤에 있을 때 클라이언트 IP 주소를 기록할까요?
 log_global=&lt;글로벌 액션&gt;
 log_sched=예약 된 기능을 기록 하시겠습니까?
 log_login=작업 로그에 Webmin 로그인 및 로그 아웃을 포함 하시겠습니까?
@@ -87,6 +92,7 @@ ssl_letserr2=또는 <a href='$1'>모듈 구성</a> 페이지에서 <tt>letsencry
 ssl_letsdesc2=이 페이지는 새 인증서를 요청하는 데 사용될 수 있으며 현재 Webmin에 구성된 다른 인증서를 덮어 씁니다. 그러나 Let 's Encrypt 서비스에서는이 시스템이 도메인의 웹 사이트를 호스트하는지 확인하여 인증서 도메인의 소유권을 확인해야합니다. 웹 사이트의 문서 디렉토리에 작은 임시 파일을 배치하면됩니다.
 ssl_letsheader=새 SSL 인증서 옵션
 ssl_letsdoms=인증서의 호스트 이름
+ssl_subset=검증할 수 없는 호스트 이름을 건너뛰시겠습니까?
 ssl_letsmode=Let's Encrypt 검증 방법
 ssl_letsmode0=호스트 이름과 일치하는 Apache 가상 호스트
 ssl_letsmode1=선택된 Apache 가상 호스트
@@ -317,6 +323,7 @@ status_interval0=마다
 status_mins=의사록
 status_pkgs=사용 가능한 패키지 업데이트를 수집 하시겠습니까?
 status_temp=드라이브 온도를 수집 하시겠습니까?
+status_temp2=CPU 온도와 팬 속도를 수집하시겠습니까?
 status_units=온도 단위
 status_celsius=섭씨
 status_fahrenheit=화씨
@@ -443,9 +450,9 @@ twofactor_eauthyotp=Authy 토큰이 유효하지 않습니다
 twofactor_enrolllink=<a href='$1'>Webmin Users</a> 모듈에서 2 단계 인증에 등록 할 수 있습니다.
 twofactor_url=$1에 대한 자세한 내용은 웹 사이트 <a href='$2' target=_blank>$2</a>를 참조하십시오.
 twofactor_etotpmodule=이중 인증에 필요한 Perl 모듈 <tt>$1</tt>이 설치되지 않았습니다. Webmin의 <a href='$2'>Perl Modules</a> 페이지를 사용하여 설치하십시오.
-twofactor_qrcode=Google OTP 앱에 비밀 코드 $1를 입력하거나 아래 QR 코드를 스캔하십시오.
+twofactor_qrcode=TOTP 앱에 비밀 코드 $1을 입력하거나, 아래의 QR 코드를 스캔하세요.
 twofactor_etotpid=잘못된 TOTP base32로 인코딩 된 비밀
-twofactor_etotptoken=Google OTP 토큰은 숫자 여야합니다
+twofactor_etotptoken=TOTP 토큰은 숫자여야 합니다
 twofactor_etotpmodule2=누락 된 Perl 모듈 $1
 twofactor_etotpmatch=잘못된 OTP 코드
 twofactor_secret=개인 비밀 키

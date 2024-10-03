@@ -46,6 +46,10 @@ bind_sport0=Enako kot prvo
 bind_sport1=Specifična vrata ..
 bind_listen=Poslušajte oddaje na portalu UDP
 bind_none=Ne poslušaj
+bind_websocport=Osnovna številka vrat za povezave WebSockets
+bind_websocport_none=Privzeto (555)
+bind_websoc_host=Ime gostitelja za povezave WebSocket
+bind_websoc_host_auto=Samodejno
 bind_hostname=Ime gostitelja spletnega strežnika
 bind_auto=Vadite iz brskalnika
 bind_err=Naslova ni bilo mogoče spremeniti
@@ -80,6 +84,7 @@ log_status=Prijava je aktivna?
 log_disable=Onemogoči beleženje
 log_enable=Omogoči beleženje
 log_resolv=Ali se prijavite z imeni gostiteljev?
+log_trust=Prijavite IP naslov odjemalca, ko ste za posrednikom?
 log_clf=Ali uporabljate kombinirano obliko zapisa dnevnika (vključno s napotiteljem in uporabniškim agentom)?
 log_clear2=Občasno očistite datoteke dnevnika?
 log_period=Da, vsaka $1 ure
@@ -420,6 +425,7 @@ ssl_letserr2=Lahko pa preverite tudi konfiguracijo strani <a href='$1'>modula</a
 ssl_letsdesc2=To stran lahko uporabite za pridobitev novega potrdila, ki bo prebrisal vse druge trenutno konfigurirane v Webminu. Vendar storitev Let's Encrypt zahteva, da se vaše lastništvo nad domeno potrdila potrdi tako, da preverite, ali ta sistem gosti spletno mesto za domeno. To naredimo tako, da v imenik dokumentov spletnega mesta postavimo majhno začasno datoteko.
 ssl_letsheader=Možnosti za novo SSL potrdilo
 ssl_letsdoms=Imena gostiteljev za potrdilo
+ssl_subset=Želite preskočiti nepreverljiva imena gostiteljev?
 ssl_letsmode=Metoda preverjanja Let's Encrypt
 ssl_letsmode0=Virtualni gostitelj Apache, ki se ujema z imenom gostitelja
 ssl_letsmode1=Izbrani virtualni gostitelj Apache
@@ -1056,6 +1062,7 @@ status_interval0=Vsak
 status_mins=minut
 status_pkgs=Zbirate razpoložljive posodobitve paketov?
 status_temp=Zbirate pogonske temperature?
+status_temp2=Zbirati temperature procesorja in hitrost ventilatorjev?
 status_units=Enote za temperature
 status_celsius=Celzija
 status_fahrenheit=Fahrenheit
@@ -1182,9 +1189,9 @@ twofactor_eauthyotp=Avtentični žeton ni veljaven
 twofactor_enrolllink=Zdaj se lahko v modulu <a href='$1'>Webmin Users</a> vpišete za preverjanje pristnosti z dvema faktorjema.
 twofactor_url=Če želite izvedeti več o $1, glejte spletno mesto na <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Modul Perl <tt>$1</tt>, potreben za preverjanje pristnosti z dvema faktorjema, ni nameščen. Za namestitev uporabite stran <a href='$2'>moduli Perl</a> v Webminu.
-twofactor_qrcode=Vnesite skrivno kodo $1 v aplikacijo Google Authenticator ali skenirajte QR kodo spodaj.
+twofactor_qrcode=V aplikacijo TOTP vnesite skrivno kodo $1 ali skenirajte spodnjo kodo QR.
 twofactor_etotpid=Neveljavna skrivnost, ki je kodirana z oznako TOTP
-twofactor_etotptoken=Žeton Google Authenticator mora biti številka
+twofactor_etotptoken=Žeton TOTP mora biti številka
 twofactor_etotpmodule2=Manjka modul Perl $1
 twofactor_etotpmatch=Napačna koda OTP
 twofactor_secret=Osebni tajni ključ

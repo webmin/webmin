@@ -11,6 +11,7 @@ require './webmin-lib.pl';
 my ($miniserv_log, $in_log) = ($miniserv{'log'}, $in{'log'});
 $miniserv{'log'} = $in{'log'};
 $miniserv{'loghost'} = $in{'loghost'};
+$miniserv{'logtrust'} = $in{'logtrust'};
 $miniserv{'logclf'} = $in{'logclf'};
 $miniserv{'logclear'} = $in{'logclear'};
 !$in{'logclear'} || $in{'logtime'} =~ /^[1-9][0-9]*$/ ||
