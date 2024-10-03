@@ -1,37 +1,37 @@
-index_title=Cluster-Cron-Aufträge
-index_add=Erzeuge neuen Cluster-Cron-Auftrag.
-index_none=Bisher wurden keine Cluster-Cron-Aufträge definiert.
-index_servers=Führe auf Server aus
-index_return=Liste der Cluster-Cron-Aufträge
+index_title=Cluster-Cron-Jobs
+index_add=Erstelle einen neuen Cluster-Cron-Job.
+index_none=Es wurden keine Cluster-Cron-Jobs definiert.
+index_servers=Auf Servern ausführen
+index_return=Liste der Cluster-Cron-Jobs
 index_more=$1 mehr ..
-index_run=Laufe jetzt ...
+index_run=Jetzt&nbsp;ausführen..
 index_actions=Aktionen
 
-edit_title=Bearbeite Cluster-Cron-Auftrag
-create_title=Erzeuge einen Cluster-Cron-Auftrag
-edit_servers=Auf Server ausführen
+edit_title=Cluster-Cron-Job bearbeiten
+create_title=Cluster-Cron-Job erstellen
+edit_servers=Auf Servern ausführen
 edit_group=Mitglieder von $1
-edit_this=diesem Server
+edit_this=dieser Server
 edit_all=&lt;Alle Hosts&gt;
 edit_emissing=Cron-Job existiert nicht mehr!
 
-save_err=Konnte Cluster-Cron-Auftrag nicht speichern
+save_err=Fehler beim Speichern des Cluster-Cron-Jobs
 
-exec_title=Starte Cluster-Cron-Auftrag
-exec_cmd=Starte $1 auf den ausgewählten Servern ..
-exec_failed=Konnte nicht starten auf  $1 : $2
-exec_success=Auswurf von $1 ..
-exec_nohosts=Es wurde kein Server ausgewählt oder die ausgewählte Gruppe beinhaltet keine brauchbaren Hosts.
+exec_title=Cluster-Cron-Job ausführen
+exec_cmd=$1 auf den ausgewählten Servern ausführen ..
+exec_failed=Fehler bei der Ausführung auf $1 : $2
+exec_success=Ausgabe von $1 ..
+exec_nohosts=Keine Hosts ausgewählt oder ausgewählte Gruppen enthalten keine nutzbaren Hosts.
 
-log_run=$1 ist auf $2 Servern ausgeführt
+log_run=$1 auf $2 Servern ausgeführt
 log_run_l=$1 auf $2 ausgeführt
-log_create=Cluster-Cron-Auftrag für $1 erzeugt
-log_create_l=Cluster-Cron-Auftrag $2 für $1 erzeugt
-log_modify=Cluster-Cron-Auftrag für $1 bearbeitet
-log_modify_l=Cluster-Cron-Auftrag $2 für $1 bearbeitet
-log_delete=Cluster-Cron-Auftrag für $1 gelöscht
-log_delete_l=Cluster-Cron-Auftrag $2 für $1 gelöscht
-log_deletes=$1 Cluster-Cron-Aufträge gelöscht
+log_create=Cluster-Cron-Job für $1 erstellt
+log_create_l=Cluster-Cron-Job $2 für $1 erstellt
+log_modify=Cluster-Cron-Job für $1 bearbeitet
+log_modify_l=Cluster-Cron-Job $2 für $1 bearbeitet
+log_delete=Cluster-Cron-Job für $1 gelöscht
+log_delete_l=Cluster-Cron-Job $2 für $1 gelöscht
+log_deletes=$1 Cluster-Cron-Jobs gelöscht
 
-delete_err=Fehlgeschlagen Cluster-Cron-Aufträge zu löschen
+delete_err=Fehler beim Löschen der Cluster-Cron-Jobs
 delete_enone=Keine ausgewählt

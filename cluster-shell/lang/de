@@ -1,22 +1,22 @@
-index_title=Cluster Shell-Kommandos
-index_cmd=Auszuführendes Kommando
+index_title=Cluster-Shell-Befehle
+index_cmd=Auszuführender Befehl
 index_old=oder
-index_server=Auf Server ausführen
-index_run=Führe Kommando jetzt aus
+index_server=Auf Servern ausführen
+index_run=Befehl jetzt ausführen
 index_return=Modulindex
-index_this=diesem Server
+index_this=dieser Server
 index_all=&lt;Alle Hosts&gt;
-index_group=Mitglied von $1
-index_clear=Lösche Verlauf
-index_edit=Editiere Vorheriges
+index_group=Mitglieder von $1
+index_clear=Verlauf löschen
+index_edit=Vorherige bearbeiten
 
-run_title=Kommando ausführen
-run_err=Konnte Kommando nicht ausführen
-run_ecmd=Kein Kommando eingegeben
-run_failed=Konnte Kommando nicht ausführen auf $1 : $2
-run_success=Output von $1 ..
-run_enone=Es wurden keine Server ausgewählt
+run_title=Befehl ausführen
+run_err=Fehler beim Ausführen des Befehls
+run_ecmd=Kein Befehl eingegeben
+run_failed=Fehler bei der Ausführung auf $1 : $2
+run_success=Ausgabe von $1 ..
+run_enone=Keine Server zum Ausführen ausgewählt
 
-log_clear=Lösche Kommandohistorie
+log_clear=Befehlsverlauf gelöscht
 log_run=$1 auf $2 Servern ausgeführt
 log_run_l=$1 auf $2 ausgeführt
