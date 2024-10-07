@@ -1,5 +1,5 @@
-index_title=Text Login
-index_epython=Ajaxterm benötigt Python zum Ausführen, aber der $1 Befehl wurde nicht auf diesem System gefunden.
-index_estart=Ajaxterm akzeptiert keine Verbindungen auf Port $2 nach $1 Sekunden.
-index_popup=Öffnet in einem separaten Fenster ..
+index_title=Text-Anmeldung
+index_epython=Ajaxterm erfordert Python zur Ausführung, aber der Befehl $1 wurde auf Ihrem System nicht gefunden.
+index_estart=Ajaxterm hat nach $1 Sekunden keine Verbindungen auf Port $2 akzeptiert.
+index_popup=In separatem Fenster öffnen ..
 index_credits=Verwendet Code von <a href='$1' target=_new>Ajaxterm</a> von Antony Lesuisse.

@@ -1,4 +1,3 @@
-
 log_servers=Changed other DNS servers
 log_logging=Changed logging and errors
 log_acls=Changed access control lists

@@ -1,18 +1,21 @@
-index_domain=Webseite Domain
-index_directory=Bediene Seiten aus dem Verzeichnis
-index_none=Keine Webseiten wurden bisher erstellt.
-index_add=Füge eine neue Webseite hinzu.
-index_return=Webseiten Liste
-edit_title=Editiere Webseite
-create_title=Erstelle Webseite
-edit_header=Foobar Webserver Webseite Details
-edit_domain=Webseite Domain Name
-edit_directory=Verzeichnis enthält Webseiteninhalt
-save_err=Fehlgeschlagen Webseite zu speichern
-save_edomain=Fehlender oder ungültiger Domain Name
-save_edirectory=Verzeichnis muss ein absoluter Pfad sein
+index_domain=Website-Domain
+index_directory=Seiten aus Verzeichnis bereitstellen
+index_none=Es wurden noch keine Websites erstellt.
+index_add=Neue Website hinzufügen.
+index_return=Website-Liste
+
+edit_title=Website bearbeiten
+create_title=Website erstellen
+edit_header=Details der Foobar-Webserver-Website
+edit_domain=Domainname der Website
+edit_directory=Verzeichnis, das die Website-Inhalte enthält
+
+save_err=Fehler beim Speichern der Website
+save_edomain=Fehlender oder ungültiger Domainname
+save_edirectory=Das Verzeichnis muss ein absoluter Pfad sein
 save_edirectory2=Verzeichnis existiert nicht
-save_egone=Webseite existiert nicht länger
-log_create=Webseite $1 erstellt
-log_modify=Webseite $1 modifiziert
-log_delete=Webseite $1 gelöscht
+save_egone=Website existiert nicht mehr
+
+log_create=Website $1 erstellt
+log_modify=Website $1 geändert
+log_delete=Website $1 gelöscht
