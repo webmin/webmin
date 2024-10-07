@@ -12,9 +12,9 @@ edit_special1=Einfacher Zeitplan ..
 edit_special0=Zeiten und Daten unten ausgewählt ..
 edit_special_hourly=Stündlich
 edit_special_daily=Täglich (um Mitternacht)
-edit_special_weekly=Wöchentlich (Sonntags)
+edit_special_weekly=Wöchentlich (am Sonntag)
 edit_special_monthly=Monatlich (am 1.)
 edit_special_yearly=Jährlich (am 1. Januar)
 
-log_success=<tt>$2</tt> wurde erfolgreich in <tt>$1</tt> ausgeführt
-log_failure=<tt>$2</tt> in <tt>$1</tt> konnte nicht ausgeführt werden : $3
+log_success=Erfolgreich ausgeführt <tt>$2</tt> in <tt>$1</tt>
+log_failure=Fehlgeschlagen bei der Ausführung von <tt>$2</tt> in <tt>$1</tt> : $3

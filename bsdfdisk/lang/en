@@ -169,3 +169,5 @@ log_delete_part=Deleted partition $1
 log_modify_part=Modified partition $1
 log_newfs_part=Created filesystem on partition $1
 log_fsck_part=Checked filesystem on partition $1
+
+__norefs=1
