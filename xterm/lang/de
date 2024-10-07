@@ -1,0 +1,12 @@
+index_title=Terminal
+index_cpan=Das Perl-Modul <tt>$1</tt> fehlt, kann jedoch über das <a href='$2'>Webmin-Perl-Module-Modul automatisch installiert</a> werden.
+index_epel=Es wird empfohlen, zuerst das <a href='$1' target='_blank'>EPEL</a>-Repository zu aktivieren.
+index_suse=Das Perl-Paket <tt>perl-IO-Tty</tt> fehlt und sollte zuerst manuell aus dem <a href='$2' target='_blank'>devel:languages:perl</a>-Repository installiert werden.
+index_euser=Fehler: Benutzer $1 kann die Shell nicht ausführen, da er nicht existiert!
+index_connecting=Verbindung wird hergestellt ..
+index_missing=Das Perl-Modul <tt>$1</tt> fehlt. Sie müssen Ihren Administrator kontaktieren, um dieses Problem zu lösen.
+index_eproxy=Das Terminal-Modul kann nicht verwendet werden, wenn auf Webmin über einen anderen Webmin-Server zugegriffen wird.
+
+acl_user=Shell als Unix-Benutzer ausführen
+acl_sameuser=Gleich wie Webmin-Anmeldung
+acl_sudoenforce<S> Sudo-Only-Berechtigungen durchsetzen

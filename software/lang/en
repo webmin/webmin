@@ -162,7 +162,7 @@ rpm_finddesc=Description
 bsd_unknown=Unknown
 bsd_scripts=Execute pre and post install scripts?
 bsd_force=Force install if missing prerequisites?
-bsd_manager=$1 Package Manager  
+bsd_manager=$1 Package Manager
 
 slack_unclass=Other
 slack_unknown=Unknown
@@ -452,8 +452,6 @@ pkgsrc_ok=.. install complete
 pkgsrc_find=Search pkgng
 pkgsrc_input=Package from pkgsrc
 
-__norefs=1
-
 log_IPKG_update=Updated IPKG database
 log_IPKG_upgrade=Upgraded installed IPKG packages
 
@@ -478,3 +476,5 @@ IPKG_noupgrade=Nothing to upgrade
 IPKG-edit_title=Manage IPKG Package
 IPKG_update_avail=Update availible:
 IPKG_not_installed=Package is not installed
+
+__norefs=1

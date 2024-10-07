@@ -10,3 +10,5 @@ index_eproxy=The Terminal module cannot be used when accessing Webmin via anothe
 acl_user=Run shell as Unix user
 acl_sameuser=Same as Webmin login
 acl_sudoenforce=Enforce <em>sudo</em>-only privileges
+
+__norefs=1
