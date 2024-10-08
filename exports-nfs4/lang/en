@@ -100,3 +100,5 @@ hostsec_up=Up
 hostsec_down=Down
 hostsec_supported=Supported
 hostsec_enabled=Enabled
+
+__norefs=1

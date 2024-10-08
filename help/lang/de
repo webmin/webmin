@@ -1,18 +1,19 @@
 index_title=Webmin-Hilfe
-index_terms=Suche Hilfe zu
-index_mods=Modulen, in denen gesucht werden soll
+index_terms=Hilfe durchsuchen nach
+index_mods=Zu durchsuchende Module
 index_all=Alle
 index_sel=Ausgewählte Module ..
 index_search=Suche
-index_header=Globale Suche in Webmin-Hilfe
+index_header=Globale Webmin-Hilfe-Suche
 index_return=Suchformular
+
 search_err=Suche fehlgeschlagen
-search_eterms=Es fehlt ein Suchterm
-search_emods=Es wurden keine Module gewählt
+search_eterms=Fehlende Suchbegriffe
+search_emods=Keine Module ausgewählt
 search_title=Suchergebnisse
 search_einclude=Fehler beim Einbinden von $1
-search_none=Es konnten keine passenden Hilfedateien gefunden werden
+search_none=Keine Hilfedateien entsprechen Ihrer Suche
 search_mod=Modul
 search_page=Hilfeseite
-search_line=Übereinstimmung mit
-search_results=Webmin-Hilfeseiten übereinstimmend mit $1
+search_line=Übereinstimmung in
+search_results=Webmin-Hilfeseiten, die mit $1 übereinstimmen

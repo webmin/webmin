@@ -1,34 +1,37 @@
-index_title=Cluster herunterfahren
+index_title=Cluster-Abschaltung
 index_host=Hostname
 index_desc=Beschreibung
 index_os=Betriebssystem
-index_up=Lebt?
+index_up=Online?
 index_shut=Server herunterfahren
 index_reboot=Server neu starten
-index_none=Keine Server sind in dem <a href='$1'>Webmin-Server</a>-Modul definiert.
-index_return=Modulindex
-index_header=Automatische System Prüdung
-index_sched=Aktiviere automatische System Prüfung?
-index_email=Sende E-Mail bei Systemfehler an
-index_smtp=Sende via SMTP Server
+index_none=Es wurden keine Server im <a href='$1'>Webmin-Serverindex</a>-Modul definiert.
+index_return=Modul-Index
+index_header=Automatischer Systemcheck
+index_sched=Automatischen Systemcheck aktivieren?
+index_email=E-Mail bei Systemfehlern senden an
+index_smtp=Über SMTP-Server senden
 index_this=Dieser Server
-index_nu=Nicht Benutzer gesetzt
-index_nl=Login fehlgeschlagen
+index_nu=Kein Benutzer gesetzt
+index_nl=Anmeldung fehlgeschlagen
+
 shut_title=Server herunterfahren
 shut_rusure=Sind Sie sicher, dass Sie die $1 ausgewählten Server sofort herunterfahren möchten?
-shut_ok=Ja, mache es
-shut_doing=Fahre herunter $1 ..
+shut_ok=Ja, durchführen
+shut_doing=Fahre $1 herunter ..
 shut_failed=.. fehlgeschlagen! $1
-shut_done=.. fertig.
-shut_sel=Die ausgewählte Server sind :
-shut_ecannot=Sie sind nicht berechtigt Server herunterzufahren
-reboot_title=Server neustarten
-reboot_rusure=Sind Sie sicher, dass Sie sofort die $1 ausgewählten Server booten möchten?
-reboot_doing=Neu starten $1 ..
-reboot_ecannot=Sie sind nicht berechtigt Server neu zu starten
-sched_err=Setup der automatischen Server Überprüfung fehlgeschlagen
+shut_done=.. erledigt.
+shut_sel=Die ausgewählten Server sind:
+shut_ecannot=Sie sind nicht berechtigt, Server herunterzufahren
+
+reboot_title=Server neu starten
+reboot_rusure=Sind Sie sicher, dass Sie die $1 ausgewählten Server sofort neu starten möchten?
+reboot_doing=Starte $1 neu ..
+reboot_ecannot=Sie sind nicht berechtigt, Server neu zu starten
+
+sched_err=Fehler beim Einrichten der automatischen Serverüberprüfung
 sched_eemail=Fehlende E-Mail-Adresse
-sched_esmtp=Fehlender oder ungültiger SMTP Server
-sched_title=Automatische Server Prüfung
-sched_enabled=Automatische Prüfung aller Server aller fünf Minuten ist nun aktiviert.
-sched_disabled=Automatische Prüfung aller Server sind jetzt deaktiviert.
+sched_esmtp=Fehlender oder ungültiger SMTP-Server
+sched_title=Automatische Serverüberprüfung
+sched_enabled=Automatische Überprüfung aller Server alle fünf Minuten ist jetzt aktiviert.
+sched_disabled=Automatische Überprüfung aller Server ist jetzt deaktiviert.

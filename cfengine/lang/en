@@ -401,3 +401,4 @@ cluster_failed=Failed to run CFengine on $1 : $2
 
 this_server=this server
 
+__norefs=1
