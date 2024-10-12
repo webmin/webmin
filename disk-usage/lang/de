@@ -1,19 +1,21 @@
-index_none=Es ist noch kein Festplattenverbrauch analysiert. Erstellen Sie entweder eine geplante Analyse oder drücken Sie auf den Button unten.
-index_sched=Erstelle geplante Analyse
-index_scheddesc=Klicken auf diese Schaltfläche, um die automatische, zeitgesteuerte Sammlung von Festplatten Nutzungsdaten für den konfigurierten Verzeichnissen einzustellen.
-index_run=Analysiere jetzt
-index_rundesc=Klicke hier, um die konfigurierten Verzeichnissen sofort zu scannen, um ihre Festplattennutzung zu berechnen.
+index_none=Es wurden noch keine Daten zur Festplattennutzung gesammelt. Richten Sie entweder eine geplante Datensammlung ein oder verwenden Sie die Schaltfläche unten, um die Daten jetzt zu sammeln.
+index_sched=Geplante Sammlung einrichten
+index_scheddesc=Klicken Sie auf diese Schaltfläche, um die automatische geplante Sammlung der Festplattennutzungsdaten für die konfigurierten Verzeichnisse einzurichten.
+index_run=Nutzung jetzt sammeln
+index_rundesc=Klicken Sie hier, um die konfigurierten Verzeichnisse sofort zu scannen und deren Festplattennutzung zu berechnen.
 index_for=Für Verzeichnis $1
 index_fors=Für Verzeichnisse $1
-index_return=Nutzungsbau
+index_return=Nutzungsbaum
 index_dir=Verzeichnis
 index_total=Gesamt
 index_files=Dateien
-run_title=Analysiere Festplattenplatz
-run_doing=Analysiere jetzt Festplattenplatz ...
-run_done=... Fertig!
-sched_title=Geplante Analyse
-sched_header=Optionen
-sched_enabled=Geplante Analyse aktiviert?
-sched_at=Ja, zu den unten gewählten Einstellungen.
-sched_err=Fehlgeschlagen zeitgesteuerte Sammlung zu speichern
+
+run_title=Nutzung sammeln
+run_doing=Festplattennutzung wird jetzt gesammelt ..
+run_done=.. erledigt.
+
+sched_title=Geplante Sammlung
+sched_header=Optionen für die geplante Sammlung der Festplattennutzung
+sched_enabled=Geplante Sammlung aktiviert?
+sched_at=Ja, zu den unten ausgewählten Zeiten ..
+sched_err=Fehler beim Speichern der geplanten Sammlung

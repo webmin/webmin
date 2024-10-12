@@ -181,3 +181,5 @@ log_delete_initiators=Deleted allowed client address $1
 log_modify_initiators=Modified allowed client address $1
 log_move_initiators=Moved allowed client address $1
 log_multidelete_initiators=Deleted $1 allowed client addresses
+
+__norefs=1

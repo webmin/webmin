@@ -1,4 +1,4 @@
 index_title=FlashTerm
-index_esocket=Socket fehlgeschlagen : $1
-index_eport=Port $1 ist bereits in Benutzung, vielleicht von einem anderen Flash-Policy-Server
-index_etelnet=Auf diesem System läuft kein Telnet-Server auf Port $1.
+index_esocket=Socket-Fehler: $1
+index_eport=Port $1 wird bereits verwendet, möglicherweise von einem anderen Flash-Policy-Server.
+index_etelnet=Dieses System betreibt keinen Telnet-Server auf Port $1.

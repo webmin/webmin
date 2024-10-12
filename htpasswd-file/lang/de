@@ -1,54 +1,54 @@
-index_title=Verwalte HTPasswd Datei
-index_econfig=Dieses Modul kann nicht verwendet werden, bis eine Passwort-Datei auf der <a href='$1'>Modulkonfiguration</a>-Seite eingestellt wurde.
-index_emd5=Dieses Modul wurde <a href='$1'>konfiguriert</a>, um MD5-Verschlüsselung für Passwörter zu verwenden, aber die $2 Perl-Modul ist nicht installiert. <a href='$3'>Klicken Sie hier</a>, um das $2-Modul heruntergeladen und zu installieren.
-index_header=Passwort Datei Benutzer
-index_none=Keine Benutzer existieren in der konfigurieren Passwort-Datei.
-index_add=Füge einen neuen Benutzer zur Passwort-Datei hinzu.
-index_file=Benutzer in Passwortdatei $1
-index_sync=Unix Benutzer Synchronisation
+index_title=HTPasswd-Datei verwalten
+index_econfig=Dieses Modul kann erst verwendet werden, nachdem eine Passwortdatei auf der <a href='$1'>Modulkonfigurations</a>-Seite festgelegt wurde.
+index_emd5=Dieses Modul wurde <a href='$1'>konfiguriert</a>, MD5-Verschlüsselung für Passwörter zu verwenden, aber das Perl-Modul $2 ist nicht installiert. <a href='$3'>Klicken Sie hier</a>, um das Modul $2 herunterzuladen und zu installieren.
+index_header=Benutzer der Passwortdatei
+index_none=Es existieren keine Benutzer in der konfigurierten Passwortdatei.
+index_add=Einen neuen Benutzer zur Passwortdatei hinzufügen.
+index_file=Benutzer in der Passwortdatei $1
+index_sync=Unix-Benutzer-Synchronisierung
 index_return=Benutzerliste
-index_eversion=Dieses Modul wurde <a href='$1' konfiguriert</a>, um MD5-Verschlüsselung für Passwörter zu verwenden, aber die Version des Benutzer- und Gruppen-Moduls auf Ihrem System nutzt nicht die benötigte MD5-Funktionen. Upgrade auf Version 1.114 oder höher.
-index_synccreate=Füge einen Benutzer hinzu, wenn der entsprechende Unix-Benutzer erstellt worde?
-index_syncmodify=Umbenennen oder Ändern des Passworts eines Benutzers, wenn der entsprechende Unix-Benutzer geändert wurde?
-index_syncdelete=Lösche einen Benutzer, wenn der entsprechende Unix-Benutzer gelöscht wird?
+index_eversion=Dieses Modul wurde <a href='$1'>konfiguriert</a>, MD5-Verschlüsselung für Passwörter zu verwenden, aber die auf Ihrem System installierte Version des Benutzer- und Gruppenmoduls enthält nicht die erforderlichen MD5-Funktionen. Aktualisieren Sie auf Version 1.114 oder höher.
+index_synccreate=Benutzer hinzufügen, wenn ein Unix-Benutzer erstellt wird?
+index_syncmodify=Benutzer umbenennen oder Passwort ändern, wenn der entsprechende Unix-Benutzer geändert wird?
+index_syncdelete=Benutzer löschen, wenn der entsprechende Unix-Benutzer gelöscht wird?
 index_ssave=Speichern und Anwenden
 
-edit_title1=Erstelle Benutzer
-edit_title2=Editiere Benutzer
-edit_header=Passwortdatei Benutzer Details
+edit_title1=Benutzer erstellen
+edit_title2=Benutzer bearbeiten
+edit_header=Details des Benutzers in der Passwortdatei
 edit_user=Benutzername
 edit_enabled=Aktiviert?
 edit_pass=Passwort
 edit_pass1=Unverändert lassen
-edit_pass0=Gesetzt auf
-edit_passfrom=Ändere von
+edit_pass0=Festlegen auf
+edit_passfrom=Ändern von
 edit_passto=auf neues Passwort
-edit_single=Benutzer zum Ändern
-edit_return=Passwort ändern von
+edit_single=Zu ändernder Benutzer
+edit_return=Passwort-Änderungsformular
 
-save_err=Fehlgeschlagen Benutzer zu speichern
+save_err=Fehler beim Speichern des Benutzers
 save_euser1=Fehlender Benutzername
-save_euser2=Benutzername darf nicht : Zeichen enthalten
-save_epass=Passwort darf nicht : Zeichen enthalten
-save_eclash=Ein Benutzer mit dem selben Namen existiert bereits
+save_euser2=Benutzername darf das Zeichen : nicht enthalten
+save_epass=Passwort darf das Zeichen : nicht enthalten
+save_eclash=Ein Benutzer mit demselben Namen existiert bereits
 save_eoldpass=Altes Passwort ist nicht korrekt
-save_ecreate=Es ist Ihnen nicht erlaubt Benutzer zu erstellen
-save_edelete=Es ist Ihnen nicht erlaubt Benutzer zu löschen
+save_ecreate=Sie dürfen keine Benutzer erstellen
+save_edelete=Sie dürfen keine Benutzer löschen
 save_euser=Benutzer existiert nicht
 save_title=Benutzer gespeichert
 save_done=Der Benutzer $1 wurde aktualisiert.
 
-acl_repeat=Muss altes Passwort beim Ändern eingeben?
-acl_create=Kann neue Benutzer erstellen?
-acl_rename=Kann Benutzer umbenennen?
-acl_delete=Kann Benutzer löschen?
-acl_sync=Kann Synchronisation konfigurieren?
-acl_enable=Kann Benutzer aktivieren und deaktvieren?
-acl_single=Überspringe Benutzerliste und gehen direkt ?
+acl_repeat=Muss das alte Passwort bei einer Änderung eingegeben werden?
+acl_create=Darf neue Benutzer erstellen?
+acl_rename=Darf Benutzer umbenennen?
+acl_delete=Darf Benutzer löschen?
+acl_sync=Darf die Synchronisierung konfigurieren?
+acl_enable=Darf Benutzer aktivieren und deaktivieren?
+acl_single=Benutzerliste überspringen und direkt zum Passwortänderungsformular gehen?
 
-sync_ecannot=Es ist Ihnen nicht erlaubt Synchronisation zu konfigurieren
+sync_ecannot=Sie dürfen die Synchronisierung nicht konfigurieren
 
-log_sync=Geänderte Synchronisationsoptionen
+log_sync=Synchronisierungsoptionen geändert
 log_create=Benutzer $1 erstellt
 log_delete=Benutzer $1 gelöscht
-log_modify=Benutzer $1 modifiziert
+log_modify=Benutzer $1 geändert

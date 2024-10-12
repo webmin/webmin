@@ -119,7 +119,6 @@ pkg_inherit=Inherit packages from global zone
 pkg_inherit_yes=Yes (sparse root zone)
 pkg_inherit_no=No (whole root zone)
 
-
 fs_title1=Create Filesystem
 fs_title2=Edit Filesystem
 fs_header=Additional filesystem details

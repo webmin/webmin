@@ -59,3 +59,5 @@ acl_load=CPU load and processes
 acl_mem=Free memory and swap
 acl_disk=Free disk space
 acl_poss=Package updates
+
+__norefs=1

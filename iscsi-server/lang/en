@@ -188,3 +188,5 @@ log_create_user=Created iSCSI user $1
 log_modify_user=Updated iSCSI user $1
 log_delete_user=Deleted iSCSI user $1
 log_delete_users=Deleted $1 iSCSI users
+
+__norefs=1

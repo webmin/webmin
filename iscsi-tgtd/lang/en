@@ -103,3 +103,4 @@ manual_err=Failed to save configuration file
 manual_edata=No contents entered!
 manual_efile=Invalid configuration file!
 
+__norefs=1

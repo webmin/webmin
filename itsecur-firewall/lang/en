@@ -131,7 +131,7 @@ group_neg=Negate
 group_err2=Failed to delete group
 group_einuse=This group is in use by a rule
 group_in_use_nat=This group is in use by a nat rule
-group_in_use_group=This group is in use by the group 
+group_in_use_group=This group is in use by the group
 group_eself=A group cannot contain itself as a member
 group_resolv=Resolve hostnames to IP addresses
 group_eneg=Negation cannot be used with the network range $1
@@ -160,8 +160,6 @@ nat_int=Internal IP address
 nat_virt=External interface
 nat_eext=The external name/group has more then 1 IP in row $1
 nat_eint=The internal name/group has more then 1 IP in row $1
-
-
 
 logs_title=View Live Firewall Log
 logs_viewing=Viewing the firewall log file $1 ..
@@ -488,3 +486,4 @@ monitor_type=Simple Firewall Rule
 monitor_rule=Fail when rule is hit
 monitor_num=Rule $1 ($2 -> $3)
 
+__norefs=1

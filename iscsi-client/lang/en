@@ -126,7 +126,7 @@ add_title=Add iSCSI Connection
 add_err=Failed to add iSCSI connection
 add_ehost=Missing or un-resolvable hostname
 add_eport=Missing or non-numeric port
-add_etargets=No iSCSI targets could be retrieved from $1 : $2 
+add_etargets=No iSCSI targets could be retrieved from $1 : $2
 add_etargets2=No iSCSI targets were found on $1
 add_target=Connect to target
 add_alltargets=All targets
@@ -186,3 +186,5 @@ log_delboot=Disabled iSCSI client at boot time
 log_add_iface=Added interface $1
 log_delete_iface=Removed interface $1
 log_delete_ifaces=Removed $1 interfaces
+
+__norefs=1
