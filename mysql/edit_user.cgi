@@ -63,6 +63,7 @@ my $plugin = $fieldmap{'plugin'};
 my $unixsocket = $plugin && $u->[$plugin] eq 'unix_socket';
 my $nopass = ((!defined($epassfield1) || !$u->[$epassfield1]) &&
 	      (!defined($epassfield2) || !$u->[$epassfield2]));
+my $hashpass = $u->[$epassfield1] || $u->[$epassfield2];
 my $lock_supported = exists($fieldmap{'account_locked'}) && 
 		     defined($u->[$fieldmap{'account_locked'}]);
 my $locked = $u->[$fieldmap{'account_locked'}] eq 'Y';
@@ -75,6 +76,12 @@ print &ui_table_row($text{'user_pass'},
 		  	($in{'new'} || !$lock_supported) ? ( ) : ( [ 4, $text{'user_locked'} ] ),
 		    [ 0, $text{'user_set'} ] ])." ".
 	&ui_password("mysqlpass", undef, 20));
+
+# Current hashed password
+if (!$in{'new'} && $hashpass) {
+	print &ui_table_row($text{'user_hashpass'},
+		"<tt>".&html_escape($hashpass)."</tt>");
+	}
 
 # Plugin for setting password
 my @plugins = &list_authentication_plugins();
