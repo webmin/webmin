@@ -10,7 +10,7 @@ $conf = &get_config($in{'file'});
 
 print &ui_form_start("save_disable.cgi", "post");
 print &ui_hidden("file", $in{'file'}),"\n";
-print &ui_table_start($text{'disable_header'}, "width=100%", 4);
+print &ui_table_start($text{'disable_header'}, "width=100%", 2);
 
 # Disabled functions
 @disfunc = split(/\s*,\s*/, &find_value("disable_functions", $conf));
@@ -24,12 +24,12 @@ foreach my $f (@kfuncs) {
 @leftover = grep { &indexof($_, @kfuncs) < 0 } @disfunc;
 $dtable .= &ui_checkbox("disable_leftover", 1, $text{'disable_leftover'},
 			@leftover ? 1 : 0)."\n".
-	   &ui_textbox("leftover", join(",", @leftover), 50);
+	   &ui_textbox("leftover", join(",", @leftover), 60);
 print &ui_table_row($text{'disable_funcs'}, $dtable);
 
 # Disabled classes
 print &ui_table_row($text{'disable_classes'},
-    &ui_textbox("disable_classes",  &find_value("disable_classes", $conf), 60);
+    &ui_textbox("disable_classes",  &find_value("disable_classes", $conf), 60));
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
