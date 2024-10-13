@@ -11,7 +11,7 @@ $conf = &get_config($in{'file'});
 
 # Save disabled functions
 @disfunc = split(/\0/, $in{'disable_functions'});
-push(@disfunc, split(/\s+/, $in{'leftover'})) if ($in{'disable_leftover'});
+push(@disfunc, split(/[ \t,]+/, $in{'leftover'})) if ($in{'disable_leftover'});
 &save_directive($conf, "disable_functions",
 		@disfunc ? join(",", @disfunc) : undef);
 

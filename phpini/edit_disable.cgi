@@ -24,7 +24,7 @@ foreach my $f (@kfuncs) {
 @leftover = grep { &indexof($_, @kfuncs) < 0 } @disfunc;
 $dtable .= &ui_checkbox("disable_leftover", 1, $text{'disable_leftover'},
 			@leftover ? 1 : 0)."\n".
-	   &ui_textbox("leftover", join(" ", @leftover), 50);
+	   &ui_textbox("leftover", join(",", @leftover), 50);
 print &ui_table_row($text{'disable_funcs'}, $dtable);
 
 # Disabled classes
