@@ -16,7 +16,7 @@ if (@files == 1 && !$access{'anyfile'} && $access{'noconfig'}) {
 		 $text{'list_title'}, "", undef, 0, $onefile);
 
 @pages = ( "vars", "dirs", "db", "session", "limits",
-	   "errors", "misc" );
+	   "errors", "disable", "misc" );
 push(@pages, 'manual') if ($access{'manual'} ne '0');
 @links = map { "edit_${_}.cgi?file=".&urlize($in{'file'})."&oneini=1" } @pages;
 @titles = map { $text{$_."_title"} } @pages;

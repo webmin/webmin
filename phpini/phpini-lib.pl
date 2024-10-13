@@ -625,5 +625,10 @@ my $link = "https://www.php.net/$opt_name";
 return "@{[&ui_text_wrap($text)]}".&ui_link($link, &ui_help($php_opt_default), 'ui_link_help', 'target="_blank"');
 }
 
+sub list_known_disable_functions
+{
+return ( "exec", "passthru", "shell_exec", "system", "proc_open", "popen", "curl_exec", "curl_multi_exec", "parse_ini_file", "show_source", "mail" );
+}
+
 1;
 
