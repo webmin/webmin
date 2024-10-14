@@ -56,12 +56,13 @@ if ($tellcount) {
 	}
 
 # Email the admin
-if ($config{'sched_email'} && $body) {
+$emailto = $config{'sched_email'} || $gconfig{'webmin_email_to'};
+if ($emailto && $body) {
 	&foreign_require("mailboxes", "mailboxes-lib.pl");
 	my $from = &mailboxes::get_from_address();
 	my $mail = { 'headers' =>
 			[ [ 'From', $from ],
-			  [ 'To', $config{'sched_email'} ],
+			  [ 'To', $emailto ],
 			  [ 'Subject', "Package updates on ".
 				       &get_system_hostname() ] ],
 			'attach' =>
