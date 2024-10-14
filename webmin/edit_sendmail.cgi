@@ -14,7 +14,7 @@ print &ui_table_start($text{'sendmail_header'}, undef, 2);
 # Mail server type
 $ms = $mconfig{'mail_system'};
 print &ui_table_row($text{'sendmail_system'},
-	$mailboxes::text{'index_system'.$ms}, undef, [ "valign=middle","valign=middle" ]);
+	$mailboxes::text{'index_system'.$ms});
 
 # SMTP server
 $smtp = $mconfig{'send_mode'};
@@ -56,8 +56,7 @@ $auth = $mconfig{'smtp_auth'};
 print &ui_table_row($text{'sendmail_auth'},
 	&ui_select("auth", $auth,
 		   [ [ undef, $text{'sendmail_authdef'} ],
-		     "Cram-MD5", "Digest-MD5", "Plain", "Login" ]),
-	undef, [ "valign=middle","valign=middle" ]);
+		     "Cram-MD5", "Digest-MD5", "Plain", "Login" ]));
 
 # From address
 $from = $mconfig{'webmin_from'};
@@ -91,10 +90,10 @@ print &ui_form_start("test_sendmail.cgi", "post");
 print &ui_table_start($text{'sendmail_header2'}, undef, 2);
 
 print &ui_table_row($text{'sendmail_to'},
-		    &ui_textbox("to", undef, 40), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_textbox("to", undef, 40));
 
 print &ui_table_row($text{'sendmail_subject'},
-		    &ui_textbox("subject", "Test email from Webmin", 40), undef, [ "valign=middle","valign=middle" ]);
+		    &ui_textbox("subject", "Test email from Webmin", 40));
 
 $msg = "This is a test message from Webmin, sent with the settings :\n".
        "\n".
