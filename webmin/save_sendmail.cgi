@@ -70,7 +70,7 @@ if ($in{'to_def'}) {
 	}
 else {
 	$in{'to'} =~ /^\S+$/ || &error($text{'sendmail_etoaddr'});
-	$mconfig{'webmin_to'} = $in{'to'};
+	$gconfig{'webmin_email_to'} = $in{'to'};
 	}
 
 # Save URL for use in email
