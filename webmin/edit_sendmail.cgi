@@ -67,6 +67,11 @@ print &ui_table_row($text{'sendmail_from'},
 			&text('sendmail_fromdef', $fromdef)."<br>",
 			$text{'sendmail_fromaddr'}));
 
+# Default to address for notifications
+$to = $mconfig{'webmin_to'};
+print &ui_table_row($text{'sendmail_toaddr'},
+	&ui_opt_textbox("to", $to, 40, $text{'sendmail_to_def'}));
+
 # URL for use in emails
 $url = $gconfig{'webmin_email_url'};
 $defurl = &get_webmin_email_url(undef, undef, 1);
