@@ -151,6 +151,7 @@ sched_title=Scheduled Monitoring
 sched_header=Scheduled background monitoring options
 sched_mode=Scheduled checking enabled?
 sched_email=Email status report to
+sched_email_def=System default ($1)
 sched_pager=Page status report to number
 sched_none=Don't send email
 sched_pnone=Don't send pages

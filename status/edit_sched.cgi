@@ -51,9 +51,12 @@ print &ui_table_row($text{'sched_warn'},
 		    [ 2, $text{'sched_warn2'} ] ]), 3);
 
 # Send email to
+$defmsg = $gconfig{'webmin_email_to'} ?
+	&text('sched_email_def', "<tt>$gconfig{'webmin_email_to'}</tt>") :
+	$text{'sched_none'};
 print &ui_table_row($text{'sched_email'},
 	&ui_opt_textbox("email", $config{'sched_email'}, 30,
-			$text{'sched_none'}, $text{'sched_email'}), 3);
+			$defmsg, $text{'sched_email'}), 3);
 
 # From: address
 print &ui_table_row($text{'sched_from'},
