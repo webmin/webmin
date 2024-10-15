@@ -13,6 +13,7 @@ my $backup;
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'edit_title1'}, "");
 	$backup = { 'emode' => 0,
+		    'email' => $gconfig{'webmin_email_to'},
 		    'sched' => 1,
 		    'mins' => 0,
 		    'hours' => 0,

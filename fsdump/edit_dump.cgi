@@ -32,6 +32,7 @@ if (!$in{'id'}) {
 	$dump = { 'dir' => $in{'dir'},
 		  'fs' => $fs,
 		  'rsh' => &has_command("ssh"),
+		  'email' => $gconfig{'webmin_email_to'},
 		   $config{'simple_sched'} ?
 			( 'special' => 'daily' ) :
 			( 'mins' => '0',
