@@ -7254,8 +7254,10 @@ foreach my $k (keys %{$params_hash}) {
 # Construct description if one is needed
 my $lm = $m || "global";
 my $lu = $base_remote_user || $remote_user;
+my $logemailto = $gconfig{'logemail'} eq "*" ? $gconfig{'webmin_email_to'}
+					     : $gconfig{'logemail'};
 my $logemail =
-       $gconfig{'logemail'} &&
+       $logemailto &&
        (!$gconfig{'logmodulesemail'} ||
     &indexof($lm, split(/\s+/, $gconfig{'logmodulesemail'})) >= 0) &&
        (!$gconfig{'logusersemail'} ||
@@ -7320,7 +7322,7 @@ if ($logemail) {
         }
     &mailboxes::send_text_mail(
         &mailboxes::get_from_address(),
-        $gconfig{'logemail'},
+        $logemailto,
         undef,
         $subj,
         $body);

@@ -13,7 +13,7 @@ $access{'notify'} || &error($text{'notify_ecannot'});
 
 if ($in{'notify'}) {
 	$in{'email'} =~ /\S/ || &error($text{'notify_eemail'});
-	$gconfig{'logemail'} = $in{'email'};
+	$gconfig{'logemail'} = $in{'email_def'} ? "*" : $in{'email'};
 	}
 else {
 	delete($gconfig{'logemail'});

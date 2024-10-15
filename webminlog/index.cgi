@@ -133,8 +133,18 @@ if ($access{'notify'}) {
 		&ui_yesno_radio("notify", $gconfig{'logemail'} ? 1 : 0));
 
 	# Send notification to
-	print &ui_table_row($text{'index_notify_email'},
-		&ui_textbox("email", $gconfig{'logemail'}, 60));
+	$email = $gconfig{'logemail'};
+	if ($gconfig{'webmin_email_to'}) {
+		print &ui_table_row($text{'index_notify_email'},
+			&ui_opt_textbox(
+				"email", $email eq "*" ? "" : $email, 60,
+				$text{'index_notify_email_def'}.
+				" <tt>$gconfig{'webmin_email_to'}</tt>"));
+		}
+	else {
+		print &ui_table_row($text{'index_notify_email'},
+			&ui_textbox("email", $email, 60));
+		}
 
 	# Message subject options
 	print &ui_table_row($text{'index_notify_usub'},
