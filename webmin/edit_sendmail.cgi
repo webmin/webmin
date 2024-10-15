@@ -90,7 +90,7 @@ print &ui_form_start("test_sendmail.cgi", "post");
 print &ui_table_start($text{'sendmail_header2'}, undef, 2);
 
 print &ui_table_row($text{'sendmail_to'},
-		    &ui_textbox("to", undef, 40));
+		    &ui_textbox("to", $to, 40));
 
 print &ui_table_row($text{'sendmail_subject'},
 		    &ui_textbox("subject", "Test email from Webmin", 40));
