@@ -135,6 +135,7 @@ if ($access{'notify'}) {
 	# Send notification to
 	$email = $gconfig{'logemail'};
 	if ($gconfig{'webmin_email_to'}) {
+		$email ||= "*";
 		print &ui_table_row($text{'index_notify_email'},
 			&ui_opt_textbox(
 				"email", $email eq "*" ? "" : $email, 60,
