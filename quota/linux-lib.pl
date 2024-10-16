@@ -411,7 +411,7 @@ sub user_filesystems
 my ($user) = @_;
 my $n = 0;
 if (&has_command("xfs_quota")) {
-	$n = &parse_xfs_quota_output("xfs_quota -xc 'quota -b -i -u $user'");
+	$n = &parse_xfs_quota_output("xfs_quota -xc 'quota -b -i -u \'$user\''");
 	}
 return &parse_quota_output($config{'user_quota_command'}." ".
 			   quotemeta($user), $n);
@@ -429,7 +429,7 @@ sub group_filesystems
 my ($group) = @_;
 my $n = 0;
 if (&has_command("xfs_quota")) {
-	$n = &parse_xfs_quota_output("xfs_quota -xc 'quota -b -i -g $group'");
+	$n = &parse_xfs_quota_output("xfs_quota -xc 'quota -b -i -g \'$group\''");
 	}
 return &parse_quota_output($config{'group_quota_command'}." ".
 			   quotemeta($group), $n);
@@ -1010,7 +1010,9 @@ Set XFS quotas for some user and FS
 sub set_user_quota
 {
 my ($user, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
-my $out = &backquote_logged("xfs_quota -x -c 'limit -u bsoft=${sblocks}k bhard=${hblocks}k isoft=$sfiles ihard=$hfiles $user' $fs 2>&1");
+my $out = &backquote_logged("xfs_quota -x -c 'limit -u bsoft=${sblocks}k ".
+			    "bhard=${hblocks}k isoft=$sfiles ihard=$hfiles ".
+			    "\'$user\'' $fs 2>&1");
 &error($out) if ($?);
 }
 
@@ -1027,7 +1029,9 @@ Set XFS quotas for some group and FS
 sub set_group_quota
 {
 my ($group, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
-my $out = &backquote_logged("xfs_quota -x -c 'limit -g bsoft=${sblocks}k bhard=${hblocks}k isoft=$sfiles ihard=$hfiles $group' $fs 2>&1");
+my $out = &backquote_logged("xfs_quota -x -c 'limit -g bsoft=${sblocks}k ".
+			    "bhard=${hblocks}k isoft=$sfiles ihard=$hfiles ".
+			    "\'$group\'' $fs 2>&1");
 &error($out) if ($?);
 }
 
