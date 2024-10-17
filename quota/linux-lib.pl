@@ -1015,7 +1015,8 @@ my ($user, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
 my $out = &backquote_logged(
 	"xfs_quota -x -c ".
 	quotemeta("limit -u bsoft=${sblocks}k bhard=${hblocks}k ".
-		  "isoft=$sfiles ihard=$hfiles $user $fs")." 2>&1");
+		  "isoft=$sfiles ihard=$hfiles $user")." ".
+	quotemeta($fs)." 2>&1");
 &error($out) if ($?);
 }
 
@@ -1035,7 +1036,8 @@ my ($group, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
 my $out = &backquote_logged(
 	"xfs_quota -x -c ".
 	quotemeta("limit -g bsoft=${sblocks}k bhard=${hblocks}k ".
-		  "isoft=$sfiles ihard=$hfiles $group $fs")." 2>&1");
+		  "isoft=$sfiles ihard=$hfiles $group")." ".
+	quotemeta($fs)." 2>&1");
 &error($out) if ($?);
 }
 
