@@ -9,22 +9,44 @@ delete($ENV{'SERVER_ROOT'});
 delete($ENV{'LANG'});
 require './status-lib.pl';
 
+# Parse command-line args
+while(@ARGV) {
+	my $a = shift(@ARGV);
+	if ($a eq "--force") {
+		$force = 1;
+		}
+	elsif ($a eq "--debug") {
+		$debug = 1;
+		}
+	elsif ($a !~ /^-/) {
+		push(@only, $a);
+		}
+	else {
+		die "usage: $0 [--force] [--debug] [monitor]*";
+		}
+	}
+if ($debug) {
+	open(DEBUG, ">&STDOUT");
+	}
+else {
+	open(DEBUG, ">/dev/null");
+	}
+
 # Check if the monitor should be run now
 @tm = localtime(time());
-if ($ARGV[0] ne "--force") {
+if ($force) {
+	$by = "web";
+	}
+else {
 	@hours = split(/\s+/, $config{'sched_hours'});
 	!@hours || &indexof($tm[2], @hours) >= 0 || exit;
 	@days = split(/\s+/, $config{'sched_days'});
 	!@days || &indexof($tm[6], @days) >= 0 || exit;
 	$by = "cron";
 	}
-else {
-	shift(@ARGV);
-	$by = "web";
-	}
 
 # Check for list of monitors to limit refresh to
-%onlycheck = map { $_, 1 } @ARGV;
+%onlycheck = map { $_, 1 } @only;
 
 # Open status and number of fails files
 &lock_file($oldstatus_file);
@@ -48,21 +70,26 @@ $now = &make_date($nowunix);
 $thishost = &get_system_hostname();
 $ecount = 0;
 foreach $serv (@services) {
+	print DEBUG "$serv->{'id'}:\n";
 	if ($serv->{'nosched'} == 1) {
 		# Scheduled checking totally disabled
+		print DEBUG "  Scheduled checking disabled\n";
 		delete($oldstatus{$serv->{'id'}});
 		next;
 		}
 	@remotes = &expand_remotes($serv);
+	print DEBUG "  Remote servers ",join(" ", @remotes),"\n";
 
 	# Check if we depend on something that is down
 	if ($serv->{'depend'} && defined($oldstatus{$serv->{'depend'}})) {
+		print DEBUG "  Depends on $serv->{'depend'}\n";
 		$depend = &get_service($serv->{'depend'});
 		$depstats = &expand_oldstatus($oldstatus{$serv->{'depend'}},
 					      $depend);
 		@depremotes = split(/\s+/, $depend->{'remote'});
 		if ($depstats->{$depremotes[0]} != 1) {
 			# It is .. mark all as failed dependencies
+			print DEBUG "  Dependency has failed\n";
 			$oldstatus{$serv->{'id'}} = 
 				join(" ", map { "$_=-4" } @remotes);
 			next;
@@ -101,13 +128,21 @@ foreach $serv (@services) {
 		# Work out the hostname
 		local $host = $r eq "*" ? $thishost : $r;
 		$o = $oldstats->{$r};
+		print DEBUG "  Checking on server $host\n";
 
 		# Get the up/down status
 		local ($stat) = grep { $_->{'remote'} eq $r } @stats;
 		if (!$stat) {
-			print STDERR "Failed to find status for $r!\n";
+			print DEBUG "  Failed to find status for $r!\n";
 			next;
 			}
+		print DEBUG "  Status $stat->{'up'}\n";
+		print DEBUG "  Failure count $serv->{'fails'}\n"
+			if ($serv->{'fails'});
+		print DEBUG "  Description $stat->{'desc'}\n"
+			if ($stat->{'desc'});
+		print DEBUG "  Value $stat->{'value'}\n"
+			if (defined($stat->{'value'}));
 
 		# If the number of fails before warning is > 1, then the status
 		# may still be considered OK even if it is down right now
@@ -212,35 +247,52 @@ foreach $serv (@services) {
 		if ($serv->{'email'} && $thisemail) {
 			# If this service has an extra email address specified,
 			# send to it
-			&send_status_email($thisemail,
+			print DEBUG "  Sending email to $serv->{'email'}\n";
+			my $err = &send_status_email($thisemail,
 			  $config{'subject_mode'} ? $subj : &text('monitor_sub', $subj),
 			  $serv->{'email'});
+			print DEBUG $err ? "  Email failed : $err\n"
+					 : "  Done\n";
 			}
 
 		$email .= $thisemail;
 		if ($config{'sched_single'} && $email) {
 			# Force the sending of one email and page per report
-			&send_status_email(
+			print DEBUG "  Sending email to ",
+				($config{'sched_email'} ||
+				 $gconfig{'webmin_email_to'}),"\n";
+			my $err = &send_status_email(
 				$email,
 				$config{'subject_mode'} ? $subj :
 				  &text('monitor_sub', $subj),
 				$config{'sched_email'} ||
 				  $gconfig{'webmin_email_to'});
+			print DEBUG $err ? "  Email failed : $err\n"
+					 : "  Done\n";
 			undef($email);
 			if ($pager_msg) {
-				&send_status_pager($pager_msg);
+				print DEBUG "  Sending page\n";
+				my $err = &send_status_pager($pager_msg);
 				undef($pager_msg);
+				print DEBUG $err ? "  Page failed : $err\n"
+						 : "  Done\n";
 				}
 			if ($sms_msg) {
-				&send_status_sms($sms_msg);
+				print DEBUG "  Sending SMS\n";
+				my $err = &send_status_sms($sms_msg);
 				undef($sms_msg);
+				print DEBUG $err ? "  SMS failed : $err\n"
+						 : "  Done\n";
 				}
 			}
 
 		# If any SNMP messages are defined, send them
 		if (@snmp_msg) {
-			&send_status_trap(@snmp_msg);
+			print DEBUG "  Sending SNMP trap\n";
+			my $err = &send_status_trap(@snmp_msg);
 			undef(@snmp_msg);
+			print DEBUG $err ? "  Trap failed : $err\n"
+					 : "  Done\n";
 			}
 		}
 
@@ -277,35 +329,48 @@ foreach $serv (@services) {
 
 # Send the email and page with all messages, if necessary
 if ($ecount && !$config{'sched_single'}) {
-	&send_status_email(
+	print DEBUG "Sending email to ",
+		($config{'sched_email'} || $gconfig{'webmin_email_to'}),"\n";
+	my $err = &send_status_email(
 		$email,
 		$config{'subject_mode'} ? $text{'monitor_sub2'} :
 		$ecount == 1 ? &text('monitor_sub', $subj) :
 			       &text('monitor_sub3', $ecount),
 		$config{'sched_email'} || $gconfig{'webmin_email_to'});
+	print DEBUG $err ? "Email failed : $err\n" : "Done\n";
 	}
 if ($pager_msg && !$config{'sched_single'}) {
-	&send_status_pager($pager_msg);
+	print DEBUG "Sending page\n";
+	my $err = &send_status_pager($pager_msg);
+	print DEBUG $err ? "Page failed : $err\n" : "Done\n";
 	}
 if ($sms_msg && !$config{'sched_single'}) {
-	&send_status_sms($sms_msg);
+	print DEBUG "Sending SMS\n";
+	my $err = &send_status_sms($sms_msg);
+	print DEBUG $err ? "SMS failed : $err\n" : "Done\n";
 	}
 foreach $w (@webhooks) {
-	&send_status_webhook(@$w);
+	print DEBUG "Calling webhook for $w->[0]->{'id'} on $w->[3]\n";
+	$err = &send_status_webhook(@$w);
+	print DEBUG $err ? "Webhook failed : $err\n" : "Done\n";
 	}
 
 # send_status_email(text, subject, email-to)
 sub send_status_email
 {
 local ($text, $subject, $to) = @_;
-return if (!$to);
+return undef if (!$to);
 &foreign_require("mailboxes", "mailboxes-lib.pl");
 
 # Construct and send the email (using correct encoding for body)
 local $from = $config{'sched_from'} ? $config{'sched_from'}
 				    : &mailboxes::get_from_address();
-&mailboxes::send_text_mail($from, $to, undef, $subject, $text,
-			   $config{'sched_smtp'});
+eval {
+	local $main::error_must_die = 1;
+	&mailboxes::send_text_mail($from, $to, undef, $subject, $text,
+				   $config{'sched_smtp'});
+	};
+return $@;
 }
 
 # send_status_pager(text)
@@ -315,37 +380,43 @@ sub send_status_pager
 local ($text) = @_;
 return if (!$config{'sched_pager'});
 return if (!$config{'pager_cmd'});
-system("$config{'pager_cmd'} ".quotemeta($config{'sched_pager'})." ".
-       quotemeta($text)." >/dev/null 2>&1 </dev/null");
+my $out = &backquote_command(
+	"$config{'pager_cmd'} ".quotemeta($config{'sched_pager'})." ".
+	quotemeta($text)." 2>&1 </dev/null");
+return $? ? $out : undef;
 }
 
 # send_status_sms(text)
 sub send_status_sms
 {
 local ($text) = @_;
-return if (!$text || !$config{'sched_carrier'} || !$config{'sched_sms'});
+return undef if (!$text || !$config{'sched_carrier'} || !$config{'sched_sms'});
 &foreign_require("mailboxes", "mailboxes-lib.pl");
 
 local $from = $config{'sched_from'} ? $config{'sched_from'}
 				    : &mailboxes::get_from_address();
 local ($carrier) = grep { $_->{'id'} eq $config{'sched_carrier'} }
 			&list_sms_carriers();
-return if (!$carrier);
+return undef if (!$carrier);
 local $email = $config{'sched_sms'}."\@".$carrier->{'domain'};
 local $subject = $config{'sched_subject'};
 if ($subject eq "*") {
 	$subject = $text;
 	$text = undef;
 	}
-&mailboxes::send_text_mail($from, $email, undef, $subject, $text,
-			   $config{'sched_smtp'});
+eval {
+	local $main::error_must_die = 1;
+	&mailboxes::send_text_mail($from, $email, undef, $subject, $text,
+				   $config{'sched_smtp'});
+	};
+return $@;
 }
 
 # send_status_trap(msg, ...)
 # Send an SNMP trap for some message, if configured
 sub send_status_trap
 {
-return if (!$config{'snmp_server'});
+return undef if (!$config{'snmp_server'});
 
 # Connect to SNMP server
 eval "use Net::SNMP qw(OCTET_STRING)";
@@ -358,8 +429,7 @@ if (!$@) {
 		"-community" => $config{'snmp_community'},
 		);
 	if ($error) {
-		print STDERR "SNMP connect failed : $error\n";
-		return;
+		return "SNMP connect failed : $error";
 		}
 
 	# Build OIDs list
@@ -383,9 +453,9 @@ if (!$@) {
 			"-varbindlist" => \@oids);
 		}
 	if (!$rv) {
-		print STDERR "trap failed! : ",$session->error(),"\n";
+		return "trap failed! : ",$session->error();
 		}
-	return;
+	return undef;
 	}
 eval "use SNMP_Session";
 if (!$@) {
@@ -397,8 +467,7 @@ if (!$@) {
 			SNMPv2c_Session->open($config{'snmp_server'},
 					   $config{'snmp_community'}, 162);
 	if (!$session) {
-		print STDERR "SNMP connect to $config{'snmp_server'} failed\n";
-		return;
+		return "SNMP connect to $config{'snmp_server'} failed";
 		}
 
 	local $rv;
@@ -426,12 +495,12 @@ if (!$@) {
 		$rv = $session->v2_trap_request_send(\@oids, 0);
 		}
 	if (!$rv) {
-		print STDERR "trap failed!\n";
+		return "trap failed!";
 		}
 	
-	return;
+	return undef;
 	}
-print STDERR "No SNMP perl module found\n";
+return "No SNMP perl module found";
 }
 
 # send_status_webhook(&monitor, &status, what, host)
@@ -454,6 +523,7 @@ foreach my $k (keys %$serv) {
 	}
 my ($host, $port, $page, $ssl) = &parse_http_url($config{'sched_webhook'});
 my $params = join("&", map { $_."=".&urlize($params{$_}) } keys %params);
+print DEBUG "Calling webhook URL $config{'sched_webhook'} $params\n";
 if ($params) {
 	$page .= ($page !~ /\?/ ? "?" : "&");
 	$page .= $params;
