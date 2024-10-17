@@ -1034,7 +1034,7 @@ sub set_group_quota
 my ($group, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
 my $out = &backquote_logged(
 	"xfs_quota -x -c ".
-	quotemeta("limit -g bsoft=${sblocks}k bhard=${hblocks}k "
+	quotemeta("limit -g bsoft=${sblocks}k bhard=${hblocks}k ".
 		  "isoft=$sfiles ihard=$hfiles $group $fs")." 2>&1");
 &error($out) if ($?);
 }
