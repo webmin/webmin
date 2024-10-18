@@ -6846,7 +6846,7 @@ while(1) {
 		if ($lockdir) {
 			my $locklink = $lockdir."/".time()."-".int($main::locked_file_count++);
 			symlink($lockfile, $locklink);
-			push(@main::temporary_files, $lockdir);
+			push(@main::temporary_files, $locklink);
 			}
 	
 		last;
