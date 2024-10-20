@@ -194,7 +194,6 @@ usave_efromroot=ホームディレクトリを/から移動することはでき
 usave_etoroot=ホームディレクトリを/に移動することはできません
 
 logins_title=ログインの記録
-logins_head=$1のログイン記録
 logins_from=ログイン元
 logins_tty=TTY
 logins_in=ログイン日時

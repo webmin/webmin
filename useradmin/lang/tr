@@ -192,7 +192,6 @@ usave_efromroot=/'den ev dizininizi taşıyamazsınız
 usave_etoroot=/'e ev dizininizi taşıyamazsınız
 
 logins_title=Kayıtlı Girişler
-logins_head=$1 girişleri kaydedildi
 logins_from=Giriş Yeri
 logins_tty=TTY
 logins_in=Giriş

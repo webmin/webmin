@@ -89,6 +89,9 @@ gsave_eallgid=所有允许的GID已分配
 gsave_eothers=该组已成功保存，但在另一个模块中发生错误：$1
 gsave_egidused2=GID已被使用
 
+logins_head=用户 $1 的所有登录记录
+logins_head_limit=用户 $1 的最后 $2 次登录记录
+
 udel_enum=无效的用户号码
 udel_eroot=不允许删除系统用户（UID小于或等于10的用户）。
 udel_ugroupother=在其他模块中删除此用户的组。

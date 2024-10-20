@@ -189,7 +189,6 @@ usave_efromroot=No puede mover el directorio inicial desde /
 usave_etoroot=No puede mover el directorio inicial a /
 
 logins_title=Registro de Logins
-logins_head=Registro de Logins de $1
 logins_from=Login Desde
 logins_tty=TTY
 logins_in=Login a las

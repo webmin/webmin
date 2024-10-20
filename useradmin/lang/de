@@ -9,7 +9,6 @@ index_pft5=SCO /etc/passwd & /etc/shadow
 index_pft6=MacOS NetINFO
 index_pft7=MacOS DSCL
 index_toomany=Es gibt zu viele Benutzer in Ihrem System, um sie auf einer Seite anzuzeigen.
-index_findFinde Benutzer, deren
 index_userreal=Benutzername oder echter Name
 index_usheader=Benutzersuche
 index_gsheader=Gruppensuche
@@ -233,7 +232,6 @@ usave_efromroot=Sie können das Home-Verzeichnis nicht von / verschieben
 usave_etoroot=Sie können das Home-Verzeichnis nicht nach / verschieben
 
 logins_title=Aufgezeichnete Anmeldungen
-logins_head=Aufgezeichnete Anmeldungen für $1
 logins_from=Login von
 logins_tty=TTY
 logins_in=Login um

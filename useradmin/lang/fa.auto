@@ -54,6 +54,9 @@ gedit_clone=گروه کلون
 
 gsave_egidused2=GID در حال استفاده است
 
+logins_head=همه ورودهای ثبت شده برای کاربر $1 
+logins_head_limit=آخرین $2 ورودهای ثبت شده برای کاربر $1 
+
 udel_ugroupother=حذف این گروه کاربر در ماژول های دیگر ..
 
 acl_uedit_gid=کاربران دارای GID در محدوده

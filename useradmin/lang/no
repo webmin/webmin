@@ -228,7 +228,6 @@ usave_efromroot=DU kan ikke flytte hjemmekatalogen fra /
 usave_etoroot=Du kan ikke flytte hjemmekatalogen til /
 
 logins_title=Loggførte innlogginger
-logins_head=Loggførte innlogginger for $1
 logins_from=Innlogging fra
 logins_tty=TTY
 logins_in=Logget inn

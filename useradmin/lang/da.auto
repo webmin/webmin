@@ -47,6 +47,9 @@ gedit_clone=Clone Group
 
 gsave_egidused2=GID er allerede i brug
 
+logins_head=Alle registrerede logins for bruger $1
+logins_head_limit=De sidste $2 registrerede logins for brugeren $1
+
 udel_ugroupother=Sletning af denne brugers gruppe i andre moduler ..
 
 log_gbatch=Udført gruppe batch-fil $1

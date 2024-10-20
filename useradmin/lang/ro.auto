@@ -233,7 +233,8 @@ usave_efromroot=Nu puteți muta directorul de acasă din /
 usave_etoroot=Nu puteți muta directorul de acasă în /
 
 logins_title=Logare înregistrate
-logins_head=Logare înregistrate pentru $1
+logins_head=Toate conexiunile înregistrate pentru utilizatorul $1
+logins_head_limit=Ultimele $2 autentificări înregistrate pentru utilizatorul $1
 logins_from=Autentificare de la
 logins_tty=TTY
 logins_in=Autentificare la

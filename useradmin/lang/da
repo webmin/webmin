@@ -189,7 +189,6 @@ usave_efromroot=Du kan ikke flytte hjemmemappen fra /
 usave_etoroot=Du kan ikke flytte hjemmemappen til /
 
 logins_title=Registrerede log ind
-logins_head=Registrede log ind tir $1
 logins_from=Log ind fra
 logins_tty=TTY
 logins_in=Log ind

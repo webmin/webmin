@@ -233,7 +233,8 @@ usave_efromroot=Ezin duzu etxearen direktoriora /
 usave_etoroot=Ezin duzu etxeko direktoriora /
 
 logins_title=Grabatutako saioak
-logins_head=$1 -ren erregistratutako saioak
+logins_head=$1 erabiltzailearentzat erregistratutako saio-hasiera guztiak
+logins_head_limit=$1 erabiltzailearentzat erregistratutako azken $2 saioak
 logins_from=Saioa hasi
 logins_tty=TTY
 logins_in=Hasi saioa At

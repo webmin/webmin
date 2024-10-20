@@ -232,7 +232,8 @@ usave_efromroot=لا يمكنك نقل الدليل الرئيسي من /
 usave_etoroot=لا يمكنك نقل الدليل الرئيسي إلى /
 
 logins_title=تسجيلات تسجيل الدخول
-logins_head=Recorded logins for $1
+logins_head=جميع عمليات تسجيل الدخول المسجلة للمستخدم $1
+logins_head_limit=آخر $2 تسجيلات دخول مسجلة للمستخدم $1
 logins_from=تسجيل الدخول من
 logins_tty=TTY
 logins_in=تسجيل الدخول في

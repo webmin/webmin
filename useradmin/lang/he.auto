@@ -233,7 +233,8 @@ usave_efromroot=אינך יכול להעביר את ספריית הבית מ- /
 usave_etoroot=אינך יכול להעביר את ספריית הבית ל /
 
 logins_title=כניסות מוקלטות
-logins_head=Recorded logins for $1
+logins_head=כל ההתחברות המוקלטות עבור המשתמש $1
+logins_head_limit=התחברות $2 האחרונות שתועדו עבור המשתמש $1
 logins_from=כניסה מ-
 logins_tty=TTY
 logins_in=כניסה בשעה

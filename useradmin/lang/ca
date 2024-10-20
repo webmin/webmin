@@ -228,7 +228,6 @@ usave_efromroot=No pots desplaçar el directori arrel de /
 usave_etoroot=No pots desplaçar el directori arrel a /
 
 logins_title=Connexions Registrades
-logins_head=Connexions registrades de $1
 logins_from=Connectat des de
 logins_tty=TTY
 logins_in=Connexió

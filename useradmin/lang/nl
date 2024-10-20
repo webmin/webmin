@@ -216,7 +216,6 @@ usave_efromroot=U kunt de home directory niet verplaatsen van /
 usave_etoroot=U kunt de home directory niet verplaatsen naar /
 
 logins_title=Opgenomen Logins
-logins_head=Opgenomen logins voor $1
 logins_from=Ingelogd Van
 logins_tty=TTY
 logins_in=Login Op

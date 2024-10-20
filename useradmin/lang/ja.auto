@@ -41,6 +41,9 @@ gedit_pri=プライマリグループメンバー
 gedit_prinone=このグループをプライマリとして持っているユーザーはいません
 gedit_clone=クローングループ
 
+logins_head=ユーザー $1 のすべての記録されたログイン
+logins_head_limit=ユーザー $1 の最後の $2 回のログインが記録されました
+
 udel_ugroupother=他のモジュールでこのユーザーのグループを削除します ..
 
 log_gbatch=実行されたグループバッチファイル$1

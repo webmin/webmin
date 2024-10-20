@@ -133,7 +133,6 @@ usave_efromroot=루트(/)에서 홈 디렉토리를 이동할 수 없습니다
 usave_etoroot=루트(/)로 홈 디렉토리를 이동할 수 없습니다
 
 logins_title=기록된 로그인
-logins_head=$1의 기록된 로그인
 logins_from=로그인 시작 위치
 logins_tty=TTY
 logins_in=로그인 위치

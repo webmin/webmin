@@ -212,7 +212,6 @@ usave_efromroot=Você não pode mudar o diretório inicial de /
 usave_etoroot=Você não pode mudar o diretório inicial para /
 
 logins_title=Logins Registrados
-logins_head=Logins registrados de $1
 logins_from=Login De
 logins_tty=TTY
 logins_in=Login Em

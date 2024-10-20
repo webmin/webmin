@@ -47,6 +47,9 @@ gedit_clone=Grupo clon
 
 gsave_egidused2=GID ya está en uso
 
+logins_head=Todos los inicios de sesión registrados para el usuario $1
+logins_head_limit=Los últimos $2 inicios de sesión registrados para el usuario $1
+
 udel_ugroupother=Eliminar el grupo de este usuario en otros módulos.
 
 acl_uedit_gid=Usuarios con GID en rango

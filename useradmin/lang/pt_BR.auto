@@ -23,6 +23,9 @@ gedit_desc=Descrição
 gedit_egone=O grupo selecionado não existe mais!
 gedit_clone=Grupo Clone
 
+logins_head=Todos os logins registrados para o usuário $1
+logins_head_limit=Os últimos $2 logins registrados para o usuário $1
+
 udel_ugroupother=Excluindo o grupo deste usuário em outros módulos.
 
 log_delete_users=Usuários $1 excluídos

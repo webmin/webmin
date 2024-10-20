@@ -194,7 +194,6 @@ usave_efromroot=Nemůžete přesunout domovský adresář z /
 usave_etoroot=Nemůžete přesunout domovský adresář do /
 
 logins_title=Zaznamenaná přihlášení
-logins_head=Přihlášení zaznamenané od $1
 logins_from=Přihlášení od
 logins_tty=TTY
 logins_in=Prihlášení na

@@ -148,7 +148,6 @@ usave_efromroot=您无权从 / 移动用户主目录
 usave_etoroot=您无权把用户主目录移动到 /
 
 logins_title=已经记录的登录
-logins_head=$1 的已经记录的登录
 logins_from=登录自
 logins_tty=TTY
 logins_in=登录在

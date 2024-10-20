@@ -44,6 +44,9 @@ gedit_clone=Groupe de clones
 
 gsave_egidused2=GID est déjà utilisé
 
+logins_head=Toutes les connexions enregistrées pour l'utilisateur $1
+logins_head_limit=Les $2 dernières connexions enregistrées pour l'utilisateur $1
+
 udel_ugroupother=Suppression du groupe de cet utilisateur dans d'autres modules.
 
 log_gbatch=Fichier de commandes de groupe exécuté $1
