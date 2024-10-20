@@ -6847,6 +6847,7 @@ while(1) {
 			my $locklink = $lockdir."/".time()."-".int($main::locked_file_count++);
 			symlink($lockfile, $locklink);
 			push(@main::temporary_files, $locklink);
+			$main::locked_file_link{$lockfile} = $locklink;
 			}
 	
 		last;
@@ -6883,6 +6884,10 @@ my $realfile = &translate_filename($file);
 return if (!$file || !defined($main::locked_file_list{$realfile}));
 unlink("$realfile.lock") if (&can_lock_file($realfile));
 delete($main::locked_file_list{$realfile});
+if ($main::locked_file_link{$realfile}) {
+	unlink($main::locked_file_link{$realfile});
+	delete($main::locked_file_link{$realfile});
+	}
 if (exists($main::locked_file_data{$realfile})) {
 	# Diff the new file with the old
 	stat($realfile);
