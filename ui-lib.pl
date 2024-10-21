@@ -1438,11 +1438,14 @@ a field with radio buttons next to it. The parameters are :
 
 =item tags - Additional HTML attributes for the text box
 
+=item type - HTML input type, which defaults to "text"
+
 =cut
 sub ui_opt_textbox
 {
 return &theme_ui_opt_textbox(@_) if (defined(&theme_ui_opt_textbox));
-my ($name, $value, $size, $opt1, $opt2, $dis, $extra, $max, $tags) = @_;
+my ($name, $value, $size, $opt1, $opt2, $dis, $extra, $max, $tags, $type) = @_;
+$type ||= "text";
 my $dis1 = &js_disable_inputs([ $name, @$extra ], [ ]);
 my $dis2 = &js_disable_inputs([ ], [ $name, @$extra ]);
 my $rv;
@@ -1450,7 +1453,7 @@ $size = &ui_max_text_width($size);
 $rv .= &ui_radio($name."_def", $value eq '' ? 1 : 0,
 		 [ [ 1, $opt1, "onClick='$dis1'" ],
 		   [ 0, $opt2 || " ", "onClick='$dis2'" ] ], $dis)."\n";
-$rv .= "<input class='ui_opt_textbox' type='text' ".
+$rv .= "<input class='ui_opt_textbox' type='$type' ".
        "name=\"".&quote_escape($name)."\" ".
        "id=\"".&quote_escape($name)."\" ".
        "size=$size value=\"".&quote_escape($value)."\"".
