@@ -776,7 +776,7 @@ return &base_directory()."/".$path;
 # If some text looks like an SPF TXT record, return a parsed hash ref
 sub parse_spf
 {
-my $txt = join(" ", @_);
+my $txt = join("", @_);
 if ($txt =~ /^v=spf1/) {
 	my @w = split(/\s+/, $txt);
 	my $spf = { };
