@@ -18,3 +18,6 @@ usave_edigestcrypt=Uw systeem heeft $4 wachtwoorden ingeschakeld, maar de functi
 usave_epasswd_cmd=Wachtwoordvalidatieopdracht mislukt
 
 gedit_clone=Clone Group
+
+logins_head=Alle geregistreerde logins voor gebruiker $1
+logins_head_limit=De laatste $2 geregistreerde logins voor gebruiker $1

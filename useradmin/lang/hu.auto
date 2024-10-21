@@ -231,7 +231,8 @@ usave_efromroot=A home könyvtárat nem lehet áthelyezni a /
 usave_etoroot=A home könyvtárat nem helyezheti át a /
 
 logins_title=Rögzített bejelentkezések
-logins_head=A $1 regisztrált bejelentkezései
+logins_head=$1 felhasználó összes rögzített bejelentkezése
+logins_head_limit=A(z) $1 felhasználó legutóbbi $2 rögzített bejelentkezése
 logins_from=Bejelentkezés
 logins_tty=TTY
 logins_in=Bejelentkezés itt:

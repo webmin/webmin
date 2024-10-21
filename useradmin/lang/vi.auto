@@ -233,7 +233,8 @@ usave_efromroot=Bạn không thể di chuyển thư mục nhà từ /
 usave_etoroot=Bạn không thể di chuyển thư mục nhà đến /
 
 logins_title=Đăng nhập
-logins_head=Thông tin đăng nhập được ghi lại cho $1
+logins_head=Tất cả các lần đăng nhập được ghi lại cho người dùng $1
+logins_head_limit=$2 lần đăng nhập cuối cùng được ghi lại cho người dùng $1
 logins_from=Đăng nhập từ
 logins_tty=TTY
 logins_in=Đăng nhập tại

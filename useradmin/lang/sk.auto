@@ -233,7 +233,8 @@ usave_efromroot=Domovský adresár nemôžete presunúť z /
 usave_etoroot=Domovský adresár nemôžete presunúť do /
 
 logins_title=Zaznamenané prihlásenie
-logins_head=Zaznamenané prihlásenie pre $1
+logins_head=Všetky zaznamenané prihlásenia pre používateľa $1
+logins_head_limit=Posledné $2 zaznamenali prihlásenia pre používateľa $1
 logins_from=Prihlásiť sa od
 logins_tty=TTY
 logins_in=Prihlásiť sa na

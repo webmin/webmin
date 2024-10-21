@@ -233,7 +233,8 @@ usave_efromroot=Namų katalogo negalima perkelti iš /
 usave_etoroot=Negalite perkelti pagrindinio katalogo į /
 
 logins_title=Įrašyti prisijungimai
-logins_head=Įrašyti $1 prisijungimai
+logins_head=Visi įrašyti vartotojo $1 prisijungimai
+logins_head_limit=Paskutiniai $2 įrašyti vartotojo $1 prisijungimai
 logins_from=Prisijungimas nuo
 logins_tty=TTY
 logins_in=Prisijungimas

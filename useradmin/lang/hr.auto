@@ -233,7 +233,8 @@ usave_efromroot=Ne možete premjestiti kućni imenik iz /
 usave_etoroot=Ne možete premjestiti kućni imenik u /
 
 logins_title=Zabilježene prijave
-logins_head=Zabilježene prijave za $1
+logins_head=Sve zabilježene prijave za korisnika $1
+logins_head_limit=Zadnje $2 zabilježene prijave za korisnika $1
 logins_from=Prijava s
 logins_tty=TTY
 logins_in=Prijava na

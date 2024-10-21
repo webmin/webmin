@@ -192,7 +192,6 @@ usave_efromroot=Vous ne pouvez pas déplacer le répertoire personnel à partir 
 usave_etoroot=Vous ne pouvez pas changer le répertoire personnel en /
 
 logins_title=Connexions enregistrées
-logins_head=Connexions enregistrées pour $1
 logins_from=Connexion à partir de
 logins_tty=TTY
 logins_in=Connecté le

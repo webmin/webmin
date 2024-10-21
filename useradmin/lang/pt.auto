@@ -123,6 +123,8 @@ gsave_egidused2=O GID já está em uso
 usave_efromroot=Você não pode mover o diretório inicial de /
 usave_etoroot=Você não pode mover o diretório inicial para /
 
+logins_head=Todos os logins registrados para o usuário $1
+logins_head_limit=Os últimos $2 logins registrados para o usuário $1
 logins_elist=Você não tem permissão para listar logins
 logins_elistu=Você não tem permissão para listar logins para '$1'
 logins_local=Local

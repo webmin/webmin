@@ -17,12 +17,13 @@ sub groupfiles_type
 return &password_file($config{'gshadow_file'}) ? 2 : 0;
 }
 
-# open_last_command(handle, user)
+# open_last_command(handle, user, [max])
 sub open_last_command
 {
-local ($fh, $user) = @_;
-local $quser = quotemeta($user);
-open($fh, "(last -F -w $quser || last -w $quser) |");
+my ($fh, $user, $max) = @_;
+my $quser = quotemeta($user);
+$max = " -n $max" if ($max);
+open($fh, "(last -F -w$max $quser || last -w$max $quser) |");
 }
 
 # read_last_line(handle)

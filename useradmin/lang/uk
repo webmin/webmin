@@ -159,7 +159,6 @@ usave_efromroot=Не можна перемістити домашній ката
 usave_etoroot=Не можна перемістити домашній каталог у /
 
 logins_title=Останні заходи в систему
-logins_head=Останні заходи в систему $1
 logins_from=Вхід з
 logins_tty=TTY (термінал)
 logins_in=Час входу

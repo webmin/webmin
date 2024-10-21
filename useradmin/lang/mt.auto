@@ -233,7 +233,8 @@ usave_efromroot=Ma tistax tiċċaqlaq id-direttorju tad-dar minn /
 usave_etoroot=Ma tistax tiċċaqlaq id-direttorju tad-dar lejn /
 
 logins_title=Logins Rreġistrati
-logins_head=Logins irrekordjati għal $1
+logins_head=Il-logins kollha rreġistrati għall-utent $1 
+logins_head_limit=L-aħħar $2 logins irreġistrati għall-utent $1
 logins_from=Idħol Minn
 logins_tty=TTY
 logins_in=Idħol fi

@@ -104,6 +104,9 @@ gsave_eallgid=허용 된 모든 GID가 할당되었습니다
 gsave_eothers=그룹이 성공적으로 저장되었지만 다른 모듈에서 오류가 발생했습니다  : $1
 gsave_egidused2=GID는 이미 사용 중입니다
 
+logins_head=사용자 $1에 대한 모든 기록된 로그인
+logins_head_limit=사용자 $1에 대한 마지막 $2개의 로그인이 기록되었습니다
+
 udel_enum=잘못된 사용자 번호
 udel_eroot=시스템 사용자 (UID가 10 이하인 사용자)는 삭제할 수 없습니다.
 udel_ugroupother=다른 모듈에서이 사용자 그룹 삭제 ..

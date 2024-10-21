@@ -132,7 +132,6 @@ usave_efromroot=Du får inte flytta hemkatalogen från /
 usave_etoroot=Du får inte flytta hemkatalogen till /
 
 logins_title=Registrerade inloggningar
-logins_head=Registrerade inloggningar för $1
 logins_from=Inloggning från
 logins_tty=TTY
 logins_in=Loggade in

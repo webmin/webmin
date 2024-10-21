@@ -114,7 +114,6 @@ usave_ehigid=O GID tem de ser menor ou igual a $1
 usave_egidused=O grupo $1 já está a usar o GID $2
 
 logins_title=Logins Gravados
-logins_head=Logins gravados de $1
 logins_from=Login De
 logins_tty=TTY
 logins_in=Login Em

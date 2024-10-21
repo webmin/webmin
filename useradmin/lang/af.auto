@@ -233,7 +233,8 @@ usave_efromroot=U kan nie die tuisgids skuif vanaf /
 usave_etoroot=U kan nie die tuisgids na /
 
 logins_title=Opgeneemde aanmeldings
-logins_head=Aangemelde aanmeldings vir $1
+logins_head=Alle aangetekende aanmeldings vir gebruiker $1
+logins_head_limit=Die laaste $2 aangetekende aanmeldings vir gebruiker $1
 logins_from=Teken in vanaf
 logins_tty=TTY
 logins_in=Teken in by

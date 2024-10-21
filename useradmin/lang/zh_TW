@@ -153,7 +153,6 @@ usave_efromroot=您不能從 / 搬移這個家目錄
 usave_etoroot=您不能將家目錄般移到 /
 
 logins_title=登入紀錄
-logins_head=$1 的登入紀錄
 logins_from=登入來源
 logins_tty=終端機
 logins_in=登入於

@@ -41,6 +41,9 @@ gedit_pri=Členové primární skupiny
 gedit_prinone=Žádní uživatelé nemají tuto skupinu jako svou primární
 gedit_clone=Skupina klonování
 
+logins_head=Všechna zaznamenaná přihlášení pro uživatele $1
+logins_head_limit=Poslední $2 zaznamenala přihlášení pro uživatele $1
+
 udel_ugroupother=Mazání této skupiny uživatelů v jiných modulech ..
 
 log_gbatch=Spuštěn dávkový soubor skupiny $1

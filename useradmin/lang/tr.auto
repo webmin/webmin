@@ -44,6 +44,9 @@ gedit_clone=Klon Grubu
 
 gsave_egidused2=GID zaten kullanılıyor
 
+logins_head=$1 kullanıcısı için kaydedilen tüm oturum açmalar
+logins_head_limit=Son $2 kullanıcı $1 için kaydedilen oturum açmalar
+
 udel_ugroupother=Bu kullanıcının grubunu diğer modüllerde silme ..
 
 log_gbatch=Yürütülen grup toplu iş dosyası $1

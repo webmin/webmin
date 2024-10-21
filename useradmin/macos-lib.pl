@@ -54,11 +54,12 @@ else {
 	}
 }
 
-# open_last_command(handle, user)
+# open_last_command(handle, user, [max])
 sub open_last_command
 {
-local ($fh, $user) = @_;
-open($fh, "last $user |");
+my ($fh, $user, $max) = @_;
+$max = " -n $max" if ($max);
+open($fh, "last$max $user |");
 }
 
 # read_last_line(handle)

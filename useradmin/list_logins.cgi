@@ -42,7 +42,17 @@ foreach $l (&list_last_logins($u, $config{'last_count'})) {
 
 # Show the table
 if ($u) {
-	print &ui_subheading(&text('logins_head', &html_escape($u)));
+	my $last_login_max = $config{'last_count'};
+	# Sanity check
+	if (defined($last_login_max) && $last_login_max <= 0) {
+		undef($last_login_max);
+		}
+	my $last_login_label =
+		$last_login_max ? 'logins_head_limit' : 'logins_head'; 
+	print &ui_subheading(
+		&text($last_login_label,
+		      &html_escape($u),
+		      &html_escape($last_login_max)));
 	}
 print &ui_columns_table(
 	[ $u ? ( ) : ( $text{'user'} ), $text{'logins_from'},

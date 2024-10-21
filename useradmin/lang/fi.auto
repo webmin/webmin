@@ -233,7 +233,8 @@ usave_efromroot=Et voi siirtää kotihakemistoa /
 usave_etoroot=Et voi siirtää kotihakemistoa /
 
 logins_title=Tallennetut kirjautumiset
-logins_head=Tallennetut tunnukset $1
+logins_head=Kaikki käyttäjän $1 tallennetut kirjautumiset
+logins_head_limit=Viimeiset $2 kirjautumista käyttäjälle $1
 logins_from=Kirjaudu sisään
 logins_tty=TTY
 logins_in=Kirjaudu sisään

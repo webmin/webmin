@@ -233,7 +233,8 @@ usave_efromroot=Mājas direktoriju nevar pārvietot no /
 usave_etoroot=Mājas direktoriju nevar pārvietot uz /
 
 logins_title=Reģistrētie pieteikšanās
-logins_head=Reģistrēti pieteikumi $1
+logins_head=Visas lietotāja $1 reģistrētās pieteikšanās
+logins_head_limit=Pēdējās $2 reģistrētās pieteikšanās lietotājam $1
 logins_from=Pieteikšanās no plkst
 logins_tty=TTY
 logins_in=Pieteikšanās plkst

@@ -105,6 +105,9 @@ gsave_eallgid=Alla tillåtna GID har tilldelats
 gsave_eothers=Gruppen sparades framgångsrikt, men ett fel inträffade i en annan modul : $1
 gsave_egidused2=GID används redan
 
+logins_head=Alla registrerade inloggningar för användare $1
+logins_head_limit=De senaste $2 registrerade inloggningarna för användaren $1
+
 udel_enum=Ogiltigt användarnummer
 udel_eroot=Du får inte ta bort systemanvändare (de med en UID som är mindre än eller lika med 10).
 udel_ugroupother=Ta bort den här användargruppen i andra moduler ..

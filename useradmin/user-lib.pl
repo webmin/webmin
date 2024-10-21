@@ -2552,11 +2552,13 @@ Returns a list of array references, each containing the details of a login.
 =cut
 sub list_last_logins
 {
-local @rv;
-&open_last_command(LAST, $_[0]);
+my ($user, $max) = @_;
+my @rv;
+undef($max) if (defined($max) && $max <= 0); # sanity check
+&open_last_command(LAST, $user, $max);
 while(@last = &read_last_line(LAST)) {
 	push(@rv, [ @last ]);
-	if ($_[1] && scalar(@rv) >= $_[1]) {
+	if ($max && scalar(@rv) >= $max) {
 		last;	# reached max
 		}
 	}

@@ -233,7 +233,8 @@ usave_efromroot=Anda tidak boleh memindahkan direktori rumah dari /
 usave_etoroot=Anda tidak boleh memindahkan direktori rumah ke /
 
 logins_title=Log masuk yang dirakam
-logins_head=Log masuk yang telah dirakam untuk $1
+logins_head=Semua log masuk yang direkodkan untuk pengguna $1 
+logins_head_limit=$2 log masuk terakhir yang direkodkan untuk pengguna $1 
 logins_from=Masuk Dari
 logins_tty=TTY
 logins_in=Masuk Di

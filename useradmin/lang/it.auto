@@ -233,7 +233,8 @@ usave_efromroot=Non è possibile spostare la directory principale da /
 usave_etoroot=Non è possibile spostare la directory principale in /
 
 logins_title=Login registrati
-logins_head=Login registrati per $1
+logins_head=Tutti gli accessi registrati per l'utente $1
+logins_head_limit=Gli ultimi $2 accessi registrati per l'utente $1
 logins_from=Accedi da
 logins_tty=TTY
 logins_in=Accedi a
