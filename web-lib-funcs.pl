@@ -10900,6 +10900,8 @@ $main::end_exit_status ||= $?;
 if ($$ == $main::initial_process_id) {
 	# Exiting from initial process ... cleanup all transient files
 	&cleanup_tempnames();
+	my $lockdir = &get_lock_links_dir();
+	rmdir($lockdir) if ($lockdir);
 
 	if ($gconfig{'debug_what_start'} && $main::debug_log_start_time) {
 		# Log the completion of this script to the debug log
