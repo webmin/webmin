@@ -1,4 +1,4 @@
-last_count=10000
+last_count=1000
 files_remove=default
 post_command=
 shadow_file=/etc/shadow
