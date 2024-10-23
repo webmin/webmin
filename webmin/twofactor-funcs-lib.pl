@@ -5,7 +5,7 @@
 # containing an ID, name and URL for more info
 sub list_twofactor_providers
 {
-return ( [ 'totp', 'TOTP',
+return ( [ 'totp', $text{'twofactor_totp'},
 	   'https://en.wikipedia.org/wiki/Time-based_one-time_password' ],
 	 [ 'authy', 'Authy',
 	   'http://www.authy.com/' ] );
