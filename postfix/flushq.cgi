@@ -11,6 +11,7 @@ print "<pre>";
 &foreign_require("proc", "proc-lib.pl");
 &foreign_call("proc", "safe_process_exec_logged", $cmd, 0, 0, STDOUT, undef, 1);
 print "</pre>\n";
+print $text{'flushq_desc2'},"<p>\n";
 &webmin_log("flushq");
 
 &ui_print_footer("mailq.cgi", $text{'mailq_return'});

@@ -619,7 +619,7 @@ mailq_ecannot=You are not allowed to view the mail queue
 mailq_egone=The message is no longer in the queue
 mailq_status=Status
 mailq_flush=Flush Mail Queue
-mailq_flushdesc=Click this button to force the immediate delivery of all messages in the queue, and display the results.
+mailq_flushdesc=Click this button to force the immediate delivery of all messages in the queue in the background.
 mailq_refresh=Refresh Mail Queue
 mailq_refreshdesc=Reload this page to show the current state of the mail queue.
 mailq_deleteall=Clear Mail Queue
@@ -635,6 +635,7 @@ mailq_dir=Queue state
 
 flushq_title=Flush Queue
 flushq_desc=Forcing the attempted delivery of mail with the command $1 ..
+flushq_desc2=.. check the mail log for results
 
 qview_title=Queued Message
 qview_desc=From file $1
