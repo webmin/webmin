@@ -1170,6 +1170,7 @@ twofactor_title=Two-Factor Authentication
 twofactor_header=Two-factor authentication options
 twofactor_provider=Authentication provider
 twofactor_none=None
+twofactor_totp=TOTP Authenticator
 twofactor_apikey=Authy API key
 twofactor_test=Use provider's test mode?
 twofactor_desc=Two-factor authentication allows Webmin users to enable use of an additional authentication device when logging in, such as a one-time passcode generator. Users must individually enroll with the selected authentication provider after it is enabled on this page.

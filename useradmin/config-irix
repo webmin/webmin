@@ -1,3 +1,4 @@
+last_count=1000
 files_remove=default
 post_command=
 shadow_file=/etc/shadow
@@ -17,7 +18,6 @@ display_mode=1
 display_max=400
 skip_md5=0
 base_uid=1000
-last_count=
 passwd_stars=0
 lock_string=*
 from_files=0
