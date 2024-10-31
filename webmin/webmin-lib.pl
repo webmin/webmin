@@ -2838,49 +2838,4 @@ closedir(DIR);
 return @rv;
 }
 
-# can_generate_qr()
-# Returns 1 if QR codes can be generated on this system
-sub can_generate_qr
-{
-if (&has_command("qrencode")) {
-	return 1;
-	}
-eval "use Image::PNG::QRCode";
-if (!$@) {
-	return 1;
-	}
-return 0;
-}
-
-# generate_qr_code(string, [block-size])
-# Turn a string into a QR code image, and returns the data and MIME type
-sub generate_qr_code
-{
-my ($str, $size) = @_;
-if (&has_command("qrencode")) {
-	# Use the qrencode shell command
-	my $cmd = "qrencode -o - -t PNG ".quotemeta($str);
-	$cmd .= " -s ".quotemeta($size) if ($size);
-	my ($out, $err);
-	my $ex = &execute_command($cmd, undef, \$out, \$err);
-	if ($ex) {
-		return (undef, $err);
-		}
-	return ($out, "image/png");
-	}
-eval "use Image::PNG::QRCode";
-if (!$@) {
-	# Use a Perl module
-	my $out;
-	Image::PNG::QRCode::qrpng(
-		text => $str,
-		scale => $size || 6,
-		out => \$out,
-		);
-	return ($out, "image/png");
-	}
-return (undef, "QR code generation requires either the qrencode command or ".
-	       "Image::PNG::QRCode Perl module");
-}
-
 1;
