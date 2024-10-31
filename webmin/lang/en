@@ -1267,4 +1267,7 @@ os_eol_reached=EOL reached
 os_eol_reaching=EOL in
 os_eol_reaching2=EOL imminent
 
+qr_err=Failed to generate QR code
+qr_estr=Missing QR code string!
+
 __norefs=1

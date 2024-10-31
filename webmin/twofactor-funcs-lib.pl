@@ -233,8 +233,13 @@ my $name = &get_display_hostname()." (".$user->{'name'}.")";
 my $str = "otpauth://totp/".$name."?secret=".$user->{'twofactor_id'};
 my $url;
 if (&can_generate_qr()) {
-	$url = "$gconfig{'webprefix'}/webmin/qr.cgi?".
-	       "size=6&str=".&urlize($str);
+	if (&get_product_name() eq 'usermin') {
+		$url = "qr.cgi?size=6&str=".&urlize($str);
+		}
+	else {
+		$url = "$gconfig{'webprefix'}/webmin/qr.cgi?".
+		       "size=6&str=".&urlize($str);
+		}
 	}
 else {
 	$url = "https://chart.googleapis.com/chart".
