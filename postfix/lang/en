@@ -323,6 +323,9 @@ opts_smtp_tls_security_level=SMTP TLS client security level
 opts_inet_protocols=Internet protocols to enable
 opts_inet_protocols_def=All available
 opts_inet_protocols_sel=Selected
+opts_smtp_address_preference=Preferred SMTP client protocol
+opts_smtp_address_preference_any=Either
+opts_smtp_balance_inet_protocols=Validate SMTP client protocols
 
 rate_title=Delivery rates
 rate_ecannot=You are not allowed to edit the delivery rates options

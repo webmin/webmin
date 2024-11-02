@@ -84,6 +84,22 @@ print &ui_table_row($text{'opts_inet_protocols'},
 	      &ui_checkbox('inet_protocols', 'ipv6', 'IPv6', $inet{'ipv6'}) ] ]
 	));
 
+# SMTP client protocol preference
+if (&compare_version_numbers($postfix_version, 2.8) >= 0) {
+	$pref = &get_current_value("smtp_address_preference");
+	print &ui_table_row($text{'opts_smtp_address_preference'},
+		&ui_select("smtp_address_preference_def", $pref,
+		   [ [ "", $text{'default'} ],
+		     [ "any", $text{'opts_smtp_address_preference_any'} ],
+		     [ "ipv4", "IPv4" ],
+		     [ "ipv6", "IPv6" ] ]));
+	}
+
+# Balance SMTP client protocols
+if (&compare_version_numbers($postfix_version, 3.3) >= 0) {
+	&option_yesno("smtp_balance_inet_protocols");
+	}
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
