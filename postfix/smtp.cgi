@@ -71,6 +71,19 @@ else {
 	&option_yesno("smtp_enforce_tls");
 	}
 
+# Inet protocols
+%inet = map { $_, 1 } split(/\s*,\s*/, &get_current_value("inet_protocols"));
+print &ui_table_row($text{'opts_inet_protocols'},
+	&ui_radio("inet_protocols_def",
+	  %inet ? '__USE_FREE_FIELD__'
+		: '__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__',
+	  [ [ '__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__',
+		$text{'opts_inet_protocols_def'}."<br>" ],
+	    [ '__USE_FREE_FIELD__', $text{'opts_inet_protocols_sel'}." ".
+	      &ui_checkbox('inet_protocols', 'ipv4', 'IPv4', $inet{'ipv4'})." ".
+	      &ui_checkbox('inet_protocols', 'ipv6', 'IPv6', $inet{'ipv6'}) ] ]
+	));
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
