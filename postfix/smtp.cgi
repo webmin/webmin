@@ -80,6 +80,7 @@ print &ui_table_row($text{'opts_inet_protocols'},
 	  [ [ '__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__',
 		$text{'opts_inet_protocols_def'}."<br>" ],
 	    [ '__USE_FREE_FIELD__', $text{'opts_inet_protocols_sel'}." ".
+	      &ui_checkbox('inet_protocols', 'all', 'All', $inet{'all'})." ".
 	      &ui_checkbox('inet_protocols', 'ipv4', 'IPv4', $inet{'ipv4'})." ".
 	      &ui_checkbox('inet_protocols', 'ipv6', 'IPv6', $inet{'ipv6'}) ] ]
 	));
