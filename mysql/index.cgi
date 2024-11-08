@@ -300,6 +300,9 @@ else {
 
 	# Show stop button
 	if ($access{'stop'} && &is_mysql_local()) {
+		print &ui_buttons_row("restart.cgi", $text{'index_restart'},
+				      $text{'index_restartmsg'});
+
 		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
 				      $text{'index_stopmsg'});
 		}

@@ -14,6 +14,9 @@ if ($action eq 'stop') {
 elsif ($action eq 'start') {
 	return $text{'log_start'};
 	}
+elsif ($action eq 'restart') {
+	return $text{'log_restart'};
+	}
 elsif ($action eq 'cnf') {
 	return $text{'log_cnf'};
 	}
