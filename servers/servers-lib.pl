@@ -215,8 +215,6 @@ which is a hash ref with the keys :
 sub list_all_groups
 {
 my (@rv, %gmap, $s, $f, $gn);
-
-# Add webmin servers groups
 foreach $s (grep { $_->{'group'} } ($_[0] ? @{$_[0]} : &list_servers())) {
 	foreach $gn (split(/\t+/, $s->{'group'})) {
 		my $grp = $gmap{$gn};
@@ -227,53 +225,6 @@ foreach $s (grep { $_->{'group'} } ($_[0] ? @{$_[0]} : &list_servers())) {
 		push(@{$grp->{'members'}}, $s->{'host'});
 		}
 	}
-
-# Add MSC cluster groups
-if ($config{'groups_dir'} && opendir(DIR, $config{'groups_dir'})) {
-	foreach $f (readdir(DIR)) {
-		next if ($f eq '.' || $f eq '..');
-		my $grp = $gmap{$f};
-		if (!$grp) {
-			$gmap{$f} = $grp = { 'name' => $f, 'type' => 1 };
-			push(@rv, $grp);
-			}
-		open(GROUP, "<$config{'groups_dir'}/$f");
-		while(<GROUP>) {
-			s/\r|\n//g;
-			s/#.*$//;
-			if (/(\S*)\[(\d)-(\d+)\](\S*)/) {
-				# Expands to multiple hosts
-				push(@{$grp->{'members'}},
-				     map { $1.$_.$4 } ($2 .. $3));
-				}
-			elsif (/(\S+)/) {
-				push(@{$grp->{'members'}}, $1);
-				}
-			}
-		close(GROUP);
-		}
-	closedir(DIR);
-	}
-
-# Fix up MSC groups that include other groups
-while(1) {
-	my ($grp, $any);
-	foreach $grp (@rv) {
-		my @mems;
-		foreach my $m (@{$grp->{'members'}}) {
-			if ($m =~ /^:(.*)$/) {
-				push(@mems, @{$gmap{$1}->{'members'}});
-				$any++;
-				}
-			else {
-				push(@mems, $m);
-				}
-			}
-		$grp->{'members'} = \@mems;
-		}
-	last if (!$any);
-	}
-
 return @rv;
 }
 

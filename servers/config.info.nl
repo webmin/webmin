@@ -12,4 +12,3 @@ auto_type=Standaard systeem type,14,show_deftype
 skipips=IP of hostnamen van systemen om niet te detecteren,9,50,5,\t
 skipifaces=Netwerk interfaces om niet te detecteren,0
 line2=Systeem configuratie,11
-groups_dir=MSC cluster groepen directory,0
