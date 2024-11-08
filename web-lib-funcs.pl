@@ -9107,13 +9107,15 @@ if ($ssl) {
 	if ($certreqs && $certreqs->{'capath'}) {
 		# Require that remote cert be signed by a valid CA
 		$main::last_set_verify_err = undef;
-		if (-d $certreqs->{'capath'}) {
-			Net::SSLeay::CTX_load_verify_locations(
-				$rv->{'ssl_ctx'}, "", $certreqs->{'capath'});
-			}
-		else {
-			Net::SSLeay::CTX_load_verify_locations(
-				$rv->{'ssl_ctx'}, $certreqs->{'capath'}, "");
+		foreach my $capath (split(/\s+/, $certreqs->{'capath'})) {
+			if (-d $capath) {
+				Net::SSLeay::CTX_load_verify_locations(
+					$rv->{'ssl_ctx'}, "", $capath);
+				}
+			else {
+				Net::SSLeay::CTX_load_verify_locations(
+					$rv->{'ssl_ctx'}, $capath, "");
+				}
 			}
 		Net::SSLeay::CTX_set_verify(
 			$rv->{'ssl_ctx'}, &Net::SSLeay::VERIFY_PEER,
