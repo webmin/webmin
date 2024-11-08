@@ -7,4 +7,4 @@ deflink=0
 deffast=2
 show_ip=0
 max_servers=100
-capath=/usr/share/ca-certificates
+capath=/usr/share/ca-certificates	/etc/ssl/certs
