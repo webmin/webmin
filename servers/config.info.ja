@@ -12,5 +12,4 @@ auto_type=デフォルトの OS 指定,14,show_deftype
 skipips=検索から除外する IP アドレス、ホスト名,9,50,5,\t
 skipifaces=検索から除外するネットワークインターフェース,0
 max_servers=検索結果の上限,0
-line2=システム設定,11
 capath=リモート SSL 証明書のファイルまたはディレクトリ,0

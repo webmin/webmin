@@ -12,5 +12,4 @@ auto_type=Default system type,14,show_deftype
 skipips=IPs or hostnames of systems to not detect,9,50,5,\t
 skipifaces=Network interfaces to not detect,0
 max_servers=Show search form if number of servers exceeds,0
-line2=System configuration,11
 capath=Files and directories for remote SSL CA certificates,9,50,5,\t

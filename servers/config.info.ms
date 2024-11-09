@@ -11,4 +11,3 @@ deffast=Mod lalai RPC,1,1-Pantas,2-Automatik,0-Perlahan
 auto_type=Jenis sistem lalai,14,show_deftype
 skipips=IP atau nama hos sistem tidak dapat dikesan,9,50,5,\t
 skipifaces=Antara muka rangkaian tidak dapat dikesan,0
-line2=Konfigurasi sistem,11

@@ -68,6 +68,14 @@ else {
 			[ $in{'ilt'} ]);
 	}
 
+if ($in{'sqlm_def'}) {
+	&save_directive($conf, $mysqld, "sql_mode", [ ]);
+	}
+else {
+	$in{'sqlm'} =~ /^\S+$/ || &error($text{'cnf_esqlm'});
+	&save_directive($conf, $mysqld, "sql_mode", [ $in{'sqlm'} ]);
+	}
+
 &save_directive($conf, $mysqld, "big-tables",
 		$in{'big-tables'} ? [ "" ] : [ ]);
 

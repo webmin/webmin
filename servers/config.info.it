@@ -11,4 +11,3 @@ deffast=Modalità RPC predefinita,1,1-Veloce,2-Automatica,0-Lenta
 auto_type=Tipo di sistema predefinito,14,show_deftype
 skipips=Indirizzi IP o nomi host del sistema da non individuare,9,50,5,\t
 skipifaces=Interfacce di rete da non individuare,0
-line2=Configurazione di sistema,11

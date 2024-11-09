@@ -58,6 +58,10 @@ $ilt = &find_value("innodb_lock_wait_timeout", $mems);
 print &ui_table_row($text{'cnf_ilt'},
 		    &ui_opt_textbox("ilt", $ilt, 10, $text{'default'}));
 
+$sql_mode = &find_value("sql_mode", $mems);
+print &ui_table_row($text{'cnf_sqlm'},
+	&ui_opt_textbox("sqlm", $sql_mode, 60, $text{'default'}), 3);
+
 # Show set variables
 print &ui_table_hr();
 

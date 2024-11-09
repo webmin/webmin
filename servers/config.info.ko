@@ -11,4 +11,3 @@ deffast=기본 RPC 모드,1,1-Fast,2-자동,3-Slow
 auto_type=기본 시스템 형식,14,show_deftype
 skipips=탐지하지 않을 시스템의 IP 또는 호스트이름,9,50,5,\t
 skipifaces=감지하지 않을 네트워크 인터페이스,0
-line2=시스템 설정,11

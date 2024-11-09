@@ -11,4 +11,3 @@ deffast=Standard RPC modus,1,1-Hurtig,2-Automatisk,0-Langsom
 auto_type=Standard systemtype,14,show_deftype
 skipips=IPer eller vertsnavn på system som ikke skal oppdages,9,50,5,\t
 skipifaces=Nettverksgrensesnitt som ikke skal oppdages,0
-line2=System konfigurasjon,11

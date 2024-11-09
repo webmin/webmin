@@ -762,6 +762,8 @@ cnf_restart=Save and Restart MySQL
 cnf_fpt=Separate file for each InnoDB table?
 cnf_ilt=InnoDB lock timeout (in seconds)
 cnf_eilt=InnoDB lock timeout must be an integer
+cnf_sqlm=SQL mode options
+cnf_esqlm=SQL mode options must be a comma-separate list of flags
 
 manual_title=Edit Config Files
 manual_file=Edit config file:
