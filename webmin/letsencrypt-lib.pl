@@ -222,6 +222,7 @@ if ($letsencrypt_cmd) {
 			   " --config ".quotemeta($temp)."".
 			   " --rsa-key-size ".quotemeta($size).
 			   " --cert-name ".quotemeta($doms[0]).
+			   " --no-autorenew".
 			   ($staging ? " --test-cert" : "");
 	if ($mode eq "web") {
 		# Webserver based validation
