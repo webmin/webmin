@@ -84,18 +84,21 @@ else {
 
 if (($missingrule || !$sysconf) && $access{'setup'}) {
 	# Something is missing .. offer to set up
-	print "$text{'index_setupdesc'}\n";
 	if ($missingrule && !$sysconf) {
-		print $text{'index_missing3'};
+		print &ui_alert_box($text{'index_missing3'}, 'success',
+			undef, undef, '');
 		}
 	elsif ($missingrule) {
-		print $text{'index_missing2'};
+		print &ui_alert_box($text{'index_missing2'}, 'success',
+			undef, undef, '');
 		}
 	elsif (!$sysconf) {
-		print $text{'index_missing1'};
+		print &ui_alert_box($text{'index_missing1'}, 'success',
+			undef, undef, '');
 		}
+	print &ui_alert_box($text{'index_setupdesc'}, 'info', undef, undef, '');
+	print &ui_alert_box($text{'index_setupdesc2'}, 'warn');
 	print "<p>\n";
-	print "$text{'index_setupdesc2'}<p>\n";
 	if ($iptableserr) {
 		print $iptableserr,"<p>\n";
 		}
