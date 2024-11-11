@@ -207,5 +207,12 @@ if (!$?) {
 return ($user_time, $system_time, $idle_time, 0, 0);
 }
 
+# has_network_stats()
+# Returns 1 if network I/O stats are available
+sub has_network_stats
+{
+return &has_command("netstat") ? 1 : 0;
+}
+
 1;
 
