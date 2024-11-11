@@ -188,5 +188,24 @@ if ($out =~ /:\s*(\d+)/) {
 return @rv;
 }
 
+# get_cpu_io_usage()
+# Returns a list containing CPU user, system, and idle time
+sub get_cpu_io_usage
+{
+my ($user_time, $system_time, $idle_time);
+my $out = &backquote_command("iostat -K 1 2 2>/dev/null");
+if (!$?) {
+	my @lines = split(/\r?\n/, $out);
+	my @last_line = split(/\s+/, $lines[$#lines]);
+	shift(@last_line) if ($last_line[0] eq '');
+	if (@last_line >= 6) {
+		$user_time = $last_line[3];    # us
+		$system_time = $last_line[4];  # sy
+		$idle_time = $last_line[5];    # id
+		}
+	}
+return ($user_time, $system_time, $idle_time, 0, 0);
+}
+
 1;
 

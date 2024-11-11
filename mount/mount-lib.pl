@@ -322,6 +322,7 @@ foreach my $m (@mounted) {
 	    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" || $m->[2] eq "f2fs" ||
 	    $m->[2] eq "zfs" || $m->[2] eq "simfs" || $m->[2] eq "vzfs" ||
 	    $m->[2] eq "xfs" || $m->[2] eq "jfs" || $m->[2] eq "btrfs" ||
+	    $m->[2] eq "apfs" ||
 	    $m->[1] =~ /^\/dev\// ||
 	    &indexof($m->[1], @$always) >= 0) {
 		my $zp;
@@ -356,6 +357,10 @@ foreach my $m (@mounted) {
 			}
 		if ($m->[1] =~ /^\/dev\/sr/) {
 			# Skip CDs
+			next;
+			}
+		# apfs count only physical devices not containers shares
+		if ($m->[2] eq "apfs" && $m->[3] =~ /nobrowse/) {
 			next;
 			}
 		# Get the size - for ZFS mounts, this comes from the underlying
