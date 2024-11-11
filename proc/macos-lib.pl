@@ -163,9 +163,16 @@ if ($out =~ /:\s*(\S.*)/) {
 		}
 	}
 
-$out = &backquote_command("sysctl -a machdep.cpu.vendor");
-if ($out =~ /:\s*(\S.*)/) {
-	$rv[5] = $1;
+$out = &backquote_command("sysctl -n machdep.cpu.brand_string");
+if (!$?) {
+	chomp($out);
+	$rv[5] = $out;
+	}
+else {
+	$out = &backquote_command("sysctl -a machdep.cpu.vendor");
+	if ($out =~ /:\s*(\S.*)/) {
+		$rv[5] = $1;
+		}
 	}
 
 $out = &backquote_command("sysctl -a machdep.cpu.cache.size");
