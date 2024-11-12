@@ -194,6 +194,7 @@ sub get_cpu_io_usage
 {
 my ($user_time, $system_time, $idle_time);
 my $out = &backquote_command("iostat -K 1 2 2>/dev/null");
+# Get CPU usage
 if (!$?) {
 	my @lines = split(/\r?\n/, $out);
 	my @last_line = split(/\s+/, $lines[$#lines]);
@@ -204,7 +205,36 @@ if (!$?) {
 		$idle_time = $last_line[5];    # id
 		}
 	}
-return ($user_time, $system_time, $idle_time, 0, 0);
+# Get disk I/O
+my ($bi, $bo) = (0, 0);
+my $io_out = &backquote_command("fs_usage -w -f diskio -t 1 2>&1");
+if (!$?) {
+	my ($read_bytes, $write_bytes) = (0, 0);
+	foreach my $line (split(/\n/, $io_out)) {
+		# For writes: B=0x100000 means 1MB (1048576 bytes)
+		if ($line =~ /(?:WrData|WrMeta).*?B=0x([0-9a-f]+)/) {
+			my $bytes = hex($1);
+			$write_bytes += $bytes;
+			}
+		# For reads
+		elsif ($line =~ /(?:RdData|RdMeta).*?B=0x([0-9a-f]+)/) {
+			my $bytes = hex($1);
+			$read_bytes += $bytes;
+			}
+		}
+
+	# Convert to KB/s
+	$bi = int($read_bytes / 1024);
+	$bo = int($write_bytes / 1024);
+	}
+return ($user_time, $system_time, $idle_time, 0, 0, $bi, $bo);
+}
+
+# has_disk_stats()
+# Returns 1 if disk I/O stats are available
+sub has_disk_stats
+{
+return &has_command("fs_usage") ? 1 : 0;
 }
 
 # has_network_stats()
