@@ -189,7 +189,8 @@ return @rv;
 }
 
 # get_cpu_io_usage()
-# Returns a list containing CPU user, system, and idle time
+# Returns a list containing CPU user, system, and idle time, and disk read and
+# write KB/s
 sub get_cpu_io_usage
 {
 my ($user_time, $system_time, $idle_time);
