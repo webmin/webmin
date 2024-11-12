@@ -175,7 +175,7 @@ else {
 		}
 	}
 
-$out = &backquote_command("sysctl -a machdep.cpu.cache.size");
+$out = &backquote_command("sysctl hw.l1dcachesize");
 if ($out =~ /:\s*(\d+)/) {
 	$rv[6] = $1 * 1024;
 	}
