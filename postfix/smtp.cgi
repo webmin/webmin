@@ -73,17 +73,17 @@ else {
 
 # Inet protocols
 %inet = map { $_, 1 } split(/\s*,\s*/, &get_current_value("inet_protocols"));
+$inet = !%inet ? "" :
+	$inet{'all'} ? "all" :
+	$inet{'ipv4'} ? "ipv4" :
+	$inet{'ipv6'} ? "ipv6" : join(" ", keys %inet);
+@opts = ( [ "", $text{'default'} ],
+	  [ "all", $text{'opts_inet_protocols_all'} ],
+	  [ "ipv4", "IPv4" ],
+	  [ "ipv6", "IPv6" ] );
+push(@opts, $inet) if (&indexof($inet, map { $_->[0] } @opts) < 0);
 print &ui_table_row($text{'opts_inet_protocols'},
-	&ui_radio("inet_protocols_def",
-	  %inet ? '__USE_FREE_FIELD__'
-		: '__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__',
-	  [ [ '__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__',
-		$text{'opts_inet_protocols_def'}."<br>" ],
-	    [ '__USE_FREE_FIELD__', $text{'opts_inet_protocols_sel'}." ".
-	      &ui_checkbox('inet_protocols', 'all', 'All', $inet{'all'})." ".
-	      &ui_checkbox('inet_protocols', 'ipv4', 'IPv4', $inet{'ipv4'})." ".
-	      &ui_checkbox('inet_protocols', 'ipv6', 'IPv6', $inet{'ipv6'}) ] ]
-	));
+	&ui_radio("inet_protocols", $inet, \@opts));
 
 # SMTP client protocol preference
 if (&compare_version_numbers($postfix_version, 2.8) >= 0) {

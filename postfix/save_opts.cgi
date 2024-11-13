@@ -12,14 +12,14 @@ require './postfix-lib.pl';
 
 $access{'general'} || &error($text{'opts_ecannot'});
 
-#      &ui_print_header(undef, $text{'opts_title'}, "");
-
-
 &error_setup($text{'opts_err'});
 
 if (defined($in{"debug_peer_level_def"})) {
 	$in{"debug_peer_level_def"} =~ /^[1-9]\d*$/ ||
 		&error($text{'opts_edebug'});
+	}
+if (defined($in{"inet_protocols"})) {
+	&set_current_value("inet_protocols", $in{"inet_protocols"} || undef);
 	}
 
 &lock_postfix_files();
