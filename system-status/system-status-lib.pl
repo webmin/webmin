@@ -56,7 +56,7 @@ if (&foreign_check("proc")) {
 	}
 
 # Disk space on local filesystems
-if (&foreign_check("mount")) {
+if (&foreign_check("mount", 1)) {
 	&foreign_require("mount");
 	($info->{'disk_total'}, $info->{'disk_free'},
 	 $info->{'disk_fs'}, $info->{'disk_used'}) =

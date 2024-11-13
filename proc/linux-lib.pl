@@ -716,5 +716,19 @@ if (&has_command("vmstat")) {
     return undef;
 }
 
+# has_disk_stats()
+# Returns 1 if disk I/O stats are available
+sub has_disk_stats
+{
+return 1;
+}
+
+# has_network_stats()
+# Returns 1 if network I/O stats are available
+sub has_network_stats
+{
+return 1;
+}
+
 1;
 

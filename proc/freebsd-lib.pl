@@ -189,5 +189,19 @@ if (!$?) {
 return ( $w[-3], $w[-2], $w[-1], 0, 0, $bi, $bo );
 }
 
+# has_disk_stats()
+# Returns 1 if disk I/O stats are available
+sub has_disk_stats
+{
+return &has_command("iostat") ? 1 : 0;
+}
+
+# has_network_stats()
+# Returns 1 if network I/O stats are available
+sub has_network_stats
+{
+return &has_command("netstat") ? 1 : 0;
+}
+
 1;
 

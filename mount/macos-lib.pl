@@ -2,6 +2,8 @@
 # Mount table functions for OSX
 # Only options for currently mounted filesystems are supported at the moment.
 
+use POSIX;
+
 # list_mounted()
 # Return a list of all the currently mounted filesystems and swap files.
 # The list is in the form:
@@ -16,7 +18,38 @@ sub list_mounted
 local(@rv, $_);
 local $arch = &backquote_command("uname -m");
 local $cmd;
-if ($arch =~ /power/) {
+if ($arch =~ /arm64/) {
+	my $expand_flags = sub {
+		my ($flags_str) = @_;
+		my @flags;
+		push(@flags, "ro")       if ($flags_str =~ /\bread-only\b/);
+		push(@flags, "noexec")   if ($flags_str =~ /\bnoexec\b/);
+		push(@flags, "nosuid")   if ($flags_str =~ /\bnosuid\b/);
+		push(@flags, "nodev")    if ($flags_str =~ /\bnodev\b/);
+		push(@flags, "sync")     if ($flags_str =~ /\bsynchronous\b/);
+		push(@flags, "async")    if ($flags_str =~ /\basynchronous\b/);
+		push(@flags, "quota")    if ($flags_str =~ /\bquota\b/);
+		push(@flags, "union")    if ($flags_str =~ /\bunion\b/);
+		return @flags ? join(",", @flags) : "-";
+		};
+	open(CMD, "mount |") || return @rv;
+	while (<CMD>) {
+		chomp;
+		# Parse the mount line output
+		if ($_ =~ /^(.+?) on (.+?) \((.+?)\)$/) {
+			my ($device, $mount_point, $type_and_flags) =
+				($1, $2, $3);
+			my ($fstype, $flags_str) =
+				split(/, /, $type_and_flags, 2);
+			my $flags = $expand_flags->($flags_str);
+			push(@rv, [$mount_point, $device, $fstype,
+				   "$flags, $flags_str"]);
+			}
+		}
+	close(CMD);
+	return @rv;
+	}
+elsif ($arch =~ /power/) {
 	$cmd = "macos-mounts";
 	&compile_program($cmd, '.*power.*');
 	}

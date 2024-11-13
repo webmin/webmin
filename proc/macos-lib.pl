@@ -163,12 +163,19 @@ if ($out =~ /:\s*(\S.*)/) {
 		}
 	}
 
-$out = &backquote_command("sysctl -a machdep.cpu.vendor");
-if ($out =~ /:\s*(\S.*)/) {
-	$rv[5] = $1;
+$out = &backquote_command("sysctl -n machdep.cpu.brand_string");
+if (!$?) {
+	chomp($out);
+	$rv[5] = $out;
+	}
+else {
+	$out = &backquote_command("sysctl -a machdep.cpu.vendor");
+	if ($out =~ /:\s*(\S.*)/) {
+		$rv[5] = $1;
+		}
 	}
 
-$out = &backquote_command("sysctl -a machdep.cpu.cache.size");
+$out = &backquote_command("sysctl hw.l1dcachesize");
 if ($out =~ /:\s*(\d+)/) {
 	$rv[6] = $1 * 1024;
 	}
@@ -179,6 +186,63 @@ if ($out =~ /:\s*(\d+)/) {
 	}
 
 return @rv;
+}
+
+# get_cpu_io_usage()
+# Returns a list containing CPU user, system, and idle time, and disk read and
+# write KB/s
+sub get_cpu_io_usage
+{
+my ($user_time, $system_time, $idle_time);
+my $out = &backquote_command("iostat -K 1 2 2>/dev/null");
+# Get CPU usage
+if (!$?) {
+	my @lines = split(/\r?\n/, $out);
+	my @last_line = split(/\s+/, $lines[$#lines]);
+	shift(@last_line) if ($last_line[0] eq '');
+	if (@last_line >= 6) {
+		$user_time = $last_line[3];    # us
+		$system_time = $last_line[4];  # sy
+		$idle_time = $last_line[5];    # id
+		}
+	}
+# Get disk I/O
+my ($bi, $bo) = (0, 0);
+my $io_out = &backquote_command("fs_usage -w -f diskio -t 1 2>&1");
+if (!$?) {
+	my ($read_bytes, $write_bytes) = (0, 0);
+	foreach my $line (split(/\n/, $io_out)) {
+		# For writes: B=0x100000 means 1MB (1048576 bytes)
+		if ($line =~ /(?:WrData|WrMeta).*?B=0x([0-9a-f]+)/) {
+			my $bytes = hex($1);
+			$write_bytes += $bytes;
+			}
+		# For reads
+		elsif ($line =~ /(?:RdData|RdMeta).*?B=0x([0-9a-f]+)/) {
+			my $bytes = hex($1);
+			$read_bytes += $bytes;
+			}
+		}
+
+	# Convert to KB/s
+	$bi = int($read_bytes / 1024);
+	$bo = int($write_bytes / 1024);
+	}
+return ($user_time, $system_time, $idle_time, 0, 0, $bi, $bo);
+}
+
+# has_disk_stats()
+# Returns 1 if disk I/O stats are available
+sub has_disk_stats
+{
+return &has_command("fs_usage") ? 1 : 0;
+}
+
+# has_network_stats()
+# Returns 1 if network I/O stats are available
+sub has_network_stats
+{
+return &has_command("netstat") ? 1 : 0;
 }
 
 1;

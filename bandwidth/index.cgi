@@ -84,23 +84,26 @@ else {
 
 if (($missingrule || !$sysconf) && $access{'setup'}) {
 	# Something is missing .. offer to set up
-	print "$text{'index_setupdesc'}\n";
 	if ($missingrule && !$sysconf) {
-		print $text{'index_missing3'};
+		print &ui_alert_box($text{'index_missing3'}, 'success',
+			undef, undef, '');
 		}
 	elsif ($missingrule) {
-		print $text{'index_missing2'};
+		print &ui_alert_box($text{'index_missing2'}, 'success',
+			undef, undef, '');
 		}
 	elsif (!$sysconf) {
-		print $text{'index_missing1'};
+		print &ui_alert_box($text{'index_missing1'}, 'success',
+			undef, undef, '');
 		}
+	print &ui_alert_box($text{'index_setupdesc'}, 'info', undef, undef, '');
+	print &ui_alert_box($text{'index_setupdesc2'}, 'warn');
 	print "<p>\n";
-	print "$text{'index_setupdesc2'}<p>\n";
 	if ($iptableserr) {
 		print $iptableserr,"<p>\n";
 		}
 	print &ui_form_start("setup.cgi");
-	print "<b>$text{'index_iface'}</b>\n";
+	print "$text{'index_iface'}\n";
 	foreach $i (&net::active_interfaces(), &net::boot_interfaces()) {
 		push(@ifaces, $i->{'fullname'}) if ($i->{'virtual'} eq '' &&
 						    $i->{'fullname'});
@@ -165,222 +168,242 @@ if (@hours) {
 
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'index_search'} ] ]);
+
+	# Find and show any results
+	if ($in{'by'}) {
+		print "<p>\n";
+		# Work out the time range, if any
+		&error_setup($text{'index_err'});
+		$fhour = &parse_hour("from");
+		$thour = &parse_hour("to");
+
+		# First find traffic that matches the 'for' part
+		if ($in{'for'} eq 'host') {
+			if ($in{'what'} =~ /^(\d+)\.(\d+)\.(\d+)\.0$/) {
+				%forhost = map { ("$1.$2.$3.$_", 1) } (0 .. 255);
+				}
+			else {
+				$forhost = &to_ipaddress($in{'what'});
+				$forhost || &error($text{'index_ehost'});
+				$forhost{$forhost}++;
+				}
+			}
+		elsif ($in{'for'} eq 'proto') {
+			$forproto = uc($in{'what'});
+			$forproto || &error($text{'index_eproto'});
+			}
+		elsif ($in{'for'} eq 'iport' || $in{'for'} eq 'oport') {
+			if ($in{'what'} =~ /^\d+$/) {
+				$forportmin = $forportmax = $in{'what'};
+				}
+			elsif ($in{'what'} =~ /^(\d+)\-(\d+)$/) {
+				$forportmin = $1;
+				$forportmax = $2;
+				}
+			else {
+				$forportmin = getservbyname($in{'what'}, 'tcp');
+				$forportmin ||= getservbyname($in{'what'}, 'udp');
+				$forportmin || &error($text{'index_eport'});
+				$forportmax = $forportmin;
+				}
+			}
+		foreach $h (@hours) {
+			next if ($fhour && $h < $fhour);
+			next if ($thour && $h > $thour);
+			$hour = &get_hour($h);
+
+			# Work out start time for this day
+			@tm = localtime($h*60*60);
+			$thisday = timelocal(0, 0, 0, $tm[3], $tm[4], $tm[5])/(60*60);
+
+			# Scan all traffic for the hour
+			foreach $k (keys %$hour) {
+				# Skip this count if not relevant
+				($host, $proto, $iport, $oport) = split(/_/, $k);
+				next if (!$proto);
+				next if (%forhost && !$forhost{$host});
+				next if ($forproto && $proto ne $forproto);
+				next if ($in{'for'} eq 'iport' &&
+					($iport < $forportmin ||
+					 $iport >$forportmax));
+				next if ($in{'for'} eq 'oport' &&
+					($oport < $forportmin ||
+					 $oport >$forportmax));
+
+				# Skip this count if classifying by port and there
+				# isn't one
+				next if ($in{'by'} eq 'iport' && !$iport ||
+					$in{'by'} eq 'oport' && !$oport ||
+					$in{'by'} eq 'port' && !$iport && !$oport);
+
+				# Work out a nice service name
+				local ($nsname, $nsoname, $nsiname);
+				local $relport;
+				if ($in{'by'} eq 'iport') {
+					$nsname = $nsiname =
+					    getservbyport($iport, lc($proto));
+					}
+				elsif ($in{'by'} eq 'oport') {
+					$nsname = $nsoname =
+					    getservbyport($oport, lc($proto));
+					}
+				elsif ($in{'by'} eq 'port') {
+					$nsoname = getservbyport($oport,
+						lc($proto));
+					$nsiname = getservbyport($iport,
+						lc($proto));
+					$nsname = $nsoname || $nsiname;
+					}
+
+				# Resolv the hostname
+				local $resolved;
+				if ($in{'resolv'} && $in{'by'} eq 'host') {
+					$resolved = &to_hostname($host);
+					}
+
+				# Skip traffic to high ports, if requested
+				next if ($in{'low'} && $in{'by'} eq 'iport' &&
+					$iport >= 1024 && !$nsname);
+				next if ($in{'low'} && $in{'by'} eq 'oport' &&
+					$oport >= 1024 && !$nsname);
+
+				# Update the relevant category
+				($in, $out) = split(/ /, $hour->{$k});
+				if ($in{'by'} eq 'hour') {
+					$count{$h} += $in+$out;
+					$icount{$h} += $in;
+					$ocount{$h} += $out;
+					}
+				elsif ($in{'by'} eq 'day') {
+					$count{$thisday} += $in+$out;
+					$icount{$thisday} += $in;
+					$ocount{$thisday} += $out;
+					}
+				elsif ($in{'by'} eq 'host') {
+					$count{$resolved || $host} += $in+$out;
+					$icount{$resolved || $host} += $in;
+					$ocount{$resolved || $host} += $out;
+					}
+				elsif ($in{'by'} eq 'proto') {
+					$count{$proto} += $in+$out;
+					$icount{$proto} += $in;
+					$ocount{$proto} += $out;
+					}
+				elsif ($in{'by'} eq 'iport') {
+					$count{$nsname || "$proto $iport"} +=
+						$in+$out;
+					$icount{$nsname || "$proto $iport"} +=
+						$in;
+					$ocount{$nsname || "$proto $iport"} +=
+						$out;
+					}
+				elsif ($in{'by'} eq 'oport') {
+					$count{$nsname || "$proto $oport"} +=
+						$in+$out;
+					$icount{$nsname || "$proto $oport"} +=
+						$in;
+					$ocount{$nsname || "$proto $oport"} +=
+						$out;
+					}
+				elsif ($in{'by'} eq 'port') {
+					if (!$in{'low'} || $oport < 1024 || 
+					    $nsoname) {
+						$count{$nsoname ||
+							"$proto $oport"} += $in;
+						$icount{$nsoname ||
+							"$proto $oport"} += $in;
+						}
+					if (!$in{'low'} || $iport < 1024 ||
+					    $nsiname) {
+						$count{$nsiname ||
+							"$proto $iport"} += $out;
+						$ocount{$nsiname ||
+							"$proto $iport"} += $out;
+						}
+					}
+				}
+			}
+
+		# Find max and size
+		$max = 0;
+		foreach $k (keys %count) {
+			if ($count{$k} > $max) {
+				$max = $count{$k};
+				}
+			}
+		$width = 500;
+
+		# Fill in missing hours or days
+		if ($in{'by'} eq 'hour' || $in{'by'} eq 'day') {
+			@order = sort { $b <=> $a } keys %count;
+			$inc = $in{'by'} eq 'hour' ? 1 : 24;
+			$plus = $in{'by'} eq 'hour' ? 0 : 1;
+			for($i=$order[0]; $i>=$order[$#order]; $i-=$inc) {
+				$count{$i} = 0 if (!$count{$i} &&
+						!$count{$i+$plus} && !$count{$i-$plus});
+				}
+			}
+
+		# Show graph
+		if ($in{'by'} eq 'hour' || $in{'by'} eq 'day') {
+			@order = sort { $b <=> $a } keys %count;
+			}
+		else {
+			@order = sort { $count{$b} <=> $count{$a} } keys %count;
+			}
+		if ($in{'by'} ne 'hour' && $in{'by'} ne 'day') {
+			@order = grep { $count{$_} } @order;
+			}
+		if (@order) {
+			print &ui_columns_start([ $text{'index_h'.$in{'by'}},
+						$text{'index_usage'},
+						$text{'index_in'},
+						$text{'index_out'},
+						$text{'index_total'} ], 100, 0);
+			$itotal = $ototal = $total = 0;
+			foreach $k (@order) {
+				my @cols;
+				if ($in{'by'} eq 'hour') {
+					push(@cols, &make_date($k*60*60));
+					}
+				elsif ($in{'by'} eq 'day') {
+					$date = &make_date_day($k*60*60);
+					push(@cols, $date);
+					}
+				else {
+					push(@cols, $k);
+					}
+				my $bar = sprintf
+					"<img src=images/blue.gif width=%d height=10>",
+					$max ? int($width * $icount{$k}/$max)+1 : 1;
+				$bar .= sprintf
+					"<img src=images/red.gif width=%d height=10>",
+					$max ? int($width * $ocount{$k}/$max)+1 : 1;
+				push(@cols, $bar);
+				push(@cols, &nice_size($icount{$k}),
+					&nice_size($ocount{$k}),
+					&nice_size($count{$k}));
+				$total += $count{$k};
+				$itotal += $icount{$k};
+				$ototal += $ocount{$k};
+				print "</tr>\n";
+				print &ui_columns_row(\@cols);
+				}
+			print &ui_columns_row([ undef, undef,
+						&nice_size($itotal),
+						&nice_size($ototal),
+						&nice_size($total) ]);
+			print &ui_columns_end();
+			}
+		else {
+			print "<b>$text{'index_nomatch'}</b><p>\n";
+			}
+		}
 	}
 elsif (!$missingrule && $sysconf) {
 	print "<b>$text{'index_none'}</b><p>\n";
 	}
 
-# Find and show any results
-if ($in{'by'}) {
-	# Work out the time range, if any
-	&error_setup($text{'index_err'});
-	$fhour = &parse_hour("from");
-	$thour = &parse_hour("to");
-
-	# First find traffic that matches the 'for' part
-	if ($in{'for'} eq 'host') {
-		if ($in{'what'} =~ /^(\d+)\.(\d+)\.(\d+)\.0$/) {
-			%forhost = map { ("$1.$2.$3.$_", 1) } (0 .. 255);
-			}
-		else {
-			$forhost = &to_ipaddress($in{'what'});
-			$forhost || &error($text{'index_ehost'});
-			$forhost{$forhost}++;
-			}
-		}
-	elsif ($in{'for'} eq 'proto') {
-		$forproto = uc($in{'what'});
-		$forproto || &error($text{'index_eproto'});
-		}
-	elsif ($in{'for'} eq 'iport' || $in{'for'} eq 'oport') {
-		if ($in{'what'} =~ /^\d+$/) {
-			$forportmin = $forportmax = $in{'what'};
-			}
-		elsif ($in{'what'} =~ /^(\d+)\-(\d+)$/) {
-			$forportmin = $1;
-			$forportmax = $2;
-			}
-		else {
-			$forportmin = getservbyname($in{'what'}, 'tcp');
-			$forportmin ||= getservbyname($in{'what'}, 'udp');
-			$forportmin || &error($text{'index_eport'});
-			$forportmax = $forportmin;
-			}
-		}
-	foreach $h (@hours) {
-		next if ($fhour && $h < $fhour);
-		next if ($thour && $h > $thour);
-		$hour = &get_hour($h);
-
-		# Work out start time for this day
-		@tm = localtime($h*60*60);
-		$thisday = timelocal(0, 0, 0, $tm[3], $tm[4], $tm[5])/(60*60);
-
-		# Scan all traffic for the hour
-		foreach $k (keys %$hour) {
-			# Skip this count if not relevant
-			($host, $proto, $iport, $oport) = split(/_/, $k);
-			next if (!$proto);
-			next if (%forhost && !$forhost{$host});
-			next if ($forproto && $proto ne $forproto);
-			next if ($in{'for'} eq 'iport' &&
-			         ($iport < $forportmin || $iport >$forportmax));
-			next if ($in{'for'} eq 'oport' &&
-			         ($oport < $forportmin || $oport >$forportmax));
-
-			# Skip this count if classifying by port and there
-			# isn't one
-			next if ($in{'by'} eq 'iport' && !$iport ||
-				 $in{'by'} eq 'oport' && !$oport ||
-				 $in{'by'} eq 'port' && !$iport && !$oport);
-
-			# Work out a nice service name
-			local ($nsname, $nsoname, $nsiname);
-			local $relport;
-			if ($in{'by'} eq 'iport') {
-				$nsname = $nsiname = getservbyport($iport, lc($proto));
-				}
-			elsif ($in{'by'} eq 'oport') {
-				$nsname = $nsoname = getservbyport($oport, lc($proto));
-				}
-			elsif ($in{'by'} eq 'port') {
-				$nsoname = getservbyport($oport, lc($proto));
-				$nsiname = getservbyport($iport, lc($proto));
-				$nsname = $nsoname || $nsiname;
-				}
-
-			# Resolv the hostname
-			local $resolved;
-			if ($in{'resolv'} && $in{'by'} eq 'host') {
-				$resolved = &to_hostname($host);
-				}
-
-			# Skip traffic to high ports, if requested
-			next if ($in{'low'} && $in{'by'} eq 'iport' &&
-				 $iport >= 1024 && !$nsname);
-			next if ($in{'low'} && $in{'by'} eq 'oport' &&
-				 $oport >= 1024 && !$nsname);
-
-			# Update the relevant category
-			($in, $out) = split(/ /, $hour->{$k});
-			if ($in{'by'} eq 'hour') {
-				$count{$h} += $in+$out;
-				$icount{$h} += $in;
-				$ocount{$h} += $out;
-				}
-			elsif ($in{'by'} eq 'day') {
-				$count{$thisday} += $in+$out;
-				$icount{$thisday} += $in;
-				$ocount{$thisday} += $out;
-				}
-			elsif ($in{'by'} eq 'host') {
-				$count{$resolved || $host} += $in+$out;
-				$icount{$resolved || $host} += $in;
-				$ocount{$resolved || $host} += $out;
-				}
-			elsif ($in{'by'} eq 'proto') {
-				$count{$proto} += $in+$out;
-				$icount{$proto} += $in;
-				$ocount{$proto} += $out;
-				}
-			elsif ($in{'by'} eq 'iport') {
-				$count{$nsname || "$proto $iport"} += $in+$out;
-				$icount{$nsname || "$proto $iport"} += $in;
-				$ocount{$nsname || "$proto $iport"} += $out;
-				}
-			elsif ($in{'by'} eq 'oport') {
-				$count{$nsname || "$proto $oport"} += $in+$out;
-				$icount{$nsname || "$proto $oport"} += $in;
-				$ocount{$nsname || "$proto $oport"} += $out;
-				}
-			elsif ($in{'by'} eq 'port') {
-				if (!$in{'low'} || $oport < 1024 || $nsoname) {
-					$count{$nsoname || "$proto $oport"} += $in;
-					$icount{$nsoname || "$proto $oport"} += $in;
-					}
-				if (!$in{'low'} || $iport < 1024 || $nsiname) {
-					$count{$nsiname || "$proto $iport"} += $out;
-					$ocount{$nsiname || "$proto $iport"} += $out;
-					}
-				}
-			}
-		}
-
-	# Find max and size
-	$max = 0;
-	foreach $k (keys %count) {
-		if ($count{$k} > $max) {
-			$max = $count{$k};
-			}
-		}
-	$width = 500;
-
-	# Fill in missing hours or days
-	if ($in{'by'} eq 'hour' || $in{'by'} eq 'day') {
-		@order = sort { $b <=> $a } keys %count;
-		$inc = $in{'by'} eq 'hour' ? 1 : 24;
-		$plus = $in{'by'} eq 'hour' ? 0 : 1;
-		for($i=$order[0]; $i>=$order[$#order]; $i-=$inc) {
-			$count{$i} = 0 if (!$count{$i} &&
-					   !$count{$i+$plus} && !$count{$i-$plus});
-			}
-		}
-
-	# Show graph
-	if ($in{'by'} eq 'hour' || $in{'by'} eq 'day') {
-		@order = sort { $b <=> $a } keys %count;
-		}
-	else {
-		@order = sort { $count{$b} <=> $count{$a} } keys %count;
-		}
-	if ($in{'by'} ne 'hour' && $in{'by'} ne 'day') {
-		@order = grep { $count{$_} } @order;
-		}
-	if (@order) {
-		print &ui_columns_start([ $text{'index_h'.$in{'by'}},
-					  $text{'index_usage'},
-					  $text{'index_in'},
-					  $text{'index_out'},
-					  $text{'index_total'} ], 100, 0);
-		$itotal = $ototal = $total = 0;
-		foreach $k (@order) {
-			my @cols;
-			if ($in{'by'} eq 'hour') {
-				push(@cols, &make_date($k*60*60));
-				}
-			elsif ($in{'by'} eq 'day') {
-				$date = &make_date_day($k*60*60);
-				push(@cols, $date);
-				}
-			else {
-				push(@cols, $k);
-				}
-			my $bar = sprintf
-				"<img src=images/red.gif width=%d height=10>",
-				$max ? int($width * $icount{$k}/$max)+1 : 1;
-			$bar .= sprintf
-				"<img src=images/blue.gif width=%d height=10>",
-				$max ? int($width * $ocount{$k}/$max)+1 : 1;
-			push(@cols, $bar);
-			push(@cols, &nice_size($icount{$k}),
-				    &nice_size($ocount{$k}),
-				    &nice_size($count{$k}));
-			$total += $count{$k};
-			$itotal += $icount{$k};
-			$ototal += $ocount{$k};
-			print "</tr>\n";
-			print &ui_columns_row(\@cols);
-			}
-		print &ui_columns_row([ undef, undef,
-					&nice_size($itotal),
-					&nice_size($ototal),
-					&nice_size($total) ]);
-		print &ui_columns_end();
-		}
-	else {
-		print "<b>$text{'index_nomatch'}</b><p>\n";
-		}
-}
 
 if (!$missingrule && $sysconf) {
 	print &ui_hr();
