@@ -169,7 +169,6 @@ opts_masquerade_exceptions=Masquerading exceptions
 opts_resolve_dequoted_address=Prevent use of @ in mailbox names?
 index_return=Postfix configuration
 
-
 opts_alias_maps=Alias databases used by the local delivery agent
 opts_alias_database=Alias databases built by &quot;newaliases&quot; command
 aliases_warning=Warning: <ul><li>when the first field is not empty, the default Postfix aliases-generation command is used to build up the corresponding databases ; <li>else the Sendmail compatibility command &quot;newaliases&quot; is used, this will use the second field's databases.</ul>
@@ -179,7 +178,6 @@ aliases_value=Alias to...
 
 new_alias=Create a new alias
 new_aliasmsg=Click this button to create a new alias
-
 
 local_delivery_ecannot=You are not allowed to edit local delivery options
 local_delivery_title=Local Delivery
@@ -207,7 +205,6 @@ opts_local_destination_recipient_limit_default=Default
 opts_prepend_delivered_header=Prepend a <tt>Delivered-To:</tt> when...
 opts_prepend_delivered_header_default=Default
 
-
 resource_title=General Resource Control
 resource_ecannot=You are not allowed to edit resource control parameters
 opts_bounce_size_limit=Max size of bounced message
@@ -227,7 +224,6 @@ opts_qmgr_message_recipient_limit=Max number of in-memory recipients
 opts_queue_minfree=Min free space in the queue file system
 opts_stale_lock_time=Max time after which stale lock is released
 opts_transport_retry_time=Time in seconds between attempts to contact a broken MDT
-
 
 opts_always_bcc=Address that receives bcc of each message
 opts_always_bcc_none=None
@@ -304,7 +300,7 @@ smtp_title=SMTP Client Options
 smtp_ecannot=You are not allowed to edit the SMTP client options
 opts_best_mx_transport=Action when listed as best MX host
 opts_best_mx_transport_default=Default (bounce message)
-opts_fallback_relay=Hosts/domains to hand off mail to on invalid destination 
+opts_fallback_relay=Hosts/domains to hand off mail to on invalid destination
 opts_ignore_mx_lookup_error=Ignore MX lookup error
 opts_smtp_skip_4xx_greeting=Skip 4xx greeting
 opts_smtp_skip_quit_response=Skip wait for the QUIT command
@@ -336,7 +332,6 @@ opts_maximal_queue_lifetime=Max time (days) in queue before message is undeliver
 opts_minimal_backoff_time=Min time (secs) between attempts to deliver a deferred message
 opts_queue_run_delay=Time (secs) between scanning the deferred queue
 opts_defer_transports=Transports that should not be delivered
-
 
 debug_title=Debugging features
 debug_ecannot=You are not allowed to edit the debugging features
