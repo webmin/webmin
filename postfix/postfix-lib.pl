@@ -224,11 +224,10 @@ sub set_current_value
     }
     else
     {
-        local ($out, $ex);
-	$ex = &execute_command(
+	my $out = &backquote_logged(
 		"$config{'postfix_config_command'} -c $config_dir ".
-		"-e $_[0]=".quotemeta($value), undef, \$out, \$out);
-	$ex && &error(&text('query_set_efailed', $_[0], $_[1], $out).
+		"-e $_[0]=".quotemeta($value)." 2>&1");
+	$? && &error(&text('query_set_efailed', $_[0], $_[1], $out).
 		      "<br> $config{'postfix_config_command'} -c $config_dir ".
 		     "-e $_[0]=\"$value\" 2>&1");
         &unflush_file_lines($config{'postfix_config_file'}); # Invalidate cache
