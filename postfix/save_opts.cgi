@@ -19,7 +19,7 @@ if (defined($in{"debug_peer_level_def"})) {
 		&error($text{'opts_edebug'});
 	}
 if (defined($in{"inet_protocols"})) {
-	&set_current_value("inet_protocols", $in{"inet_protocols"} || undef);
+	&set_current_value("inet_protocols", $in{"inet_protocols"} || "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__", 1);
 	}
 
 &lock_postfix_files();
