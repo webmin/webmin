@@ -165,12 +165,10 @@ cert_o=组织
 cert_sp=省市
 cert_c=国家代码
 cert_key=密码长度
-cert_ekey=您的浏览器没有提交新的 SSL 密码──可能它不支持 SSL 客户验证。
 cert_done=您的 $1 证书已成功生成。
 cert_pickup=<a href='$1'>单击此处获取您的证书并将其安装在浏览器中</a>
 cert_install=将证书安装到浏览器中
 cert_ekey=您的浏览器未提交新的SSL密钥，可能它不支持SSL客户端证书。
-
 cert_eca=设置验证失败 : $1
 cert_already=警告 - 您正在使用验证 $1。
 cert_etempdir=证书文件无效
@@ -225,7 +223,6 @@ acl_times=可以更改允许的登录时间吗？
 acl_pass=可以更改密码限制吗？
 acl_sql=可以配置用户和组数据库吗？
 
-
 log_modify=修改 Webmin 用户 $1
 log_rename=更改 Webmin 用户名 $1 为 $2
 log_create=创建 Webmin 用户 $1
@@ -266,7 +263,6 @@ gdelete_esub=无法删除具有子组的群组
 gdelete_title=删除工作组
 gdelete_desc=您确定想要删除工作组 $1 和它的用户 $2 吗？
 gdelete_ok=删除工作组
-
 
 gsave_err=无法保存工作组
 gsave_ename=不存在的或无效的工作组名称
@@ -510,5 +506,3 @@ twofactor_failed=.. 注册失败 : $1
 twofactor_done=.. 完成. 您与此提供商的ID为 <tt>$1</tt>.
 twofactor_setup=此系统上尚未启用双因素身份验证，但可以使用 <a href='$1'>Webmin 配置</a> 模块启用.
 twofactor_ebutton=未单击按钮!
-
-__norefs=1

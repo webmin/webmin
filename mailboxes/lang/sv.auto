@@ -118,7 +118,17 @@ view_return=original e-post
 view_sub=Bifogad e-post
 view_sub2=Bifogat e-postmeddelande från $1
 view_egone=Det här meddelandet finns inte längre
+view_efolder=Den här mappen finns inte!
 view_eugone=Den här användaren finns inte
+view_ical=Händelse
+view_ical_when=När
+view_ical_where=Där
+view_ical_who=WHO
+view_ical_orginizertime=Arrangörstid
+view_ical_orginizername=Arrangörens namn
+view_ical_orginizeremail=Arrangörens e-post
+view_ical_attendees=Deltagarinformation
+view_ical_desc=Händelsebeskrivning
 
 view_gnupg=GnuPG-signaturverifiering
 view_gnupg_0=Signatur av $1 är giltig.
@@ -263,6 +273,7 @@ folder_inbox=Inkorg
 folder_sent=Skickat
 folder_drafts=utkast
 folder_trash=Skräp
+folder_spam=Spam
 
 detach_err=Det gick inte att ta bort filen
 detach_edir=Ingen fil eller katalog att spara till inmatad

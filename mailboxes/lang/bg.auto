@@ -153,7 +153,17 @@ view_return=оригинален имейл
 view_sub=Прикачен имейл
 view_sub2=Прикачен имейл от $1
 view_egone=Това съобщение вече не съществува
+view_efolder=Тази папка не съществува!
 view_eugone=Този потребител не съществува
+view_ical=Събитие
+view_ical_when=Кога
+view_ical_where=Къде
+view_ical_who=СЗО
+view_ical_orginizertime=Време на организатора
+view_ical_orginizername=Име на организатора
+view_ical_orginizeremail=Имейл на организатора
+view_ical_attendees=Подробности за присъстващите
+view_ical_desc=Описание на събитието
 
 view_gnupg=Проверка на подписа на GnuPG
 view_gnupg_0=Подписът с $1 е валиден.
@@ -323,6 +333,7 @@ folder_inbox=Входящи
 folder_sent=Изпратено
 folder_drafts=дама
 folder_trash=боклук
+folder_spam=Спам
 
 detach_err=Файлът не можа да се отдели
 detach_edir=Няма файл или директория, които да запишете във въведеното

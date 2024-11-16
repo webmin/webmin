@@ -173,6 +173,7 @@ acls_action=Действие
 acls_manual=Ръчни параметри
 acls_error=Командата <tt>setfacl</tt> не е намерена във вашата система
 file_detect_encoding=Автоматично откриване на кодиране на файлове
+file_showhiddenfiles=Показване на скритите файлове
 index_return=списък с файлове
 upload_dirs=Качване на директория
 extract_uploaded=Екстракт компресиран

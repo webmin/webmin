@@ -152,6 +152,9 @@ sendmail_port=Port SMTP
 sendmail_ssl0=Nigdy nie szyfruj
 sendmail_ssl1=Zawsze używaj TLS
 sendmail_ssl2=Przełącz za pomocą STARTTLS
+sendmail_toaddr=Domyślny adres docelowy powiadomień
+sendmail_to_def=Nie ustawiono
+sendmail_etoaddr=Brakujący lub nieprawidłowo sformatowany adres docelowy
 sendmail_url=Adres URL Webmin do użytku w wiadomościach e-mail
 sendmail_url_def=Domyślnie ($1)
 sendmail_url_custom=Niestandardowy adres URL
@@ -168,6 +171,7 @@ web_eredirpref=Prefiks musi zaczynać się od ukośnika
 web_eredirpref2=Prefiks nie może zawierać spacji
 web_redirssl=Przekieruj SSL
 
+twofactor_totp=Uwierzytelniacz TOTP
 twofactor_eusers=Nie można wyłączyć uwierzytelniania dwuskładnikowego, ponieważ obecnie zarejestrowani są następujący użytkownicy : $1
 twofactor_qrcode=Wprowadź tajny kod $1 w aplikacji TOTP lub zeskanuj poniższy kod QR.
 twofactor_etotptoken=Token TOTP musi być liczbą
@@ -234,3 +238,6 @@ os_eol_second=drugi
 os_eol_reached=Osiągnięto EOL
 os_eol_reaching=EOL w
 os_eol_reaching2=EOL wkrótce
+
+qr_err=Nie udało się wygenerować kodu QR
+qr_estr=Brakuje ciągu kodu QR!

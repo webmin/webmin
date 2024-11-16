@@ -17,6 +17,16 @@ mail_specialsync=특별 동기화
 view_nobody=이 메시지에는 본문 내용이 없습니다.
 view_aactions=행위
 view_sub2=$1에서 첨부 한 이메일
+view_efolder=이 폴더는 존재하지 않습니다!
+view_ical=이벤트
+view_ical_when=언제
+view_ical_where=어디
+view_ical_who=WHO
+view_ical_orginizertime=주최자 시간
+view_ical_orginizername=주최자 이름
+view_ical_orginizeremail=주최자 이메일
+view_ical_attendees=참석자 세부 정보
+view_ical_desc=이벤트 설명
 
 view_whitemove=발신자와받은 편지함 허용
 view_hammove=햄 및받은 편지함보고
@@ -41,6 +51,7 @@ search_msg6=$2 필드에서 $1에 대한 검색 결과
 search_attach=첨부 파일이 있어야합니까?
 
 folder_sent=전송된
+folder_spam=스팸
 
 sform_andmode=기준 모드
 

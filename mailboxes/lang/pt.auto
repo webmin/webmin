@@ -134,7 +134,17 @@ view_return=email original
 view_sub=E-mail anexo
 view_sub2=E-mail anexado de $1
 view_egone=Esta mensagem não existe mais
+view_efolder=Esta pasta não existe!
 view_eugone=Esse usuário não existe
+view_ical=Evento
+view_ical_when=Quando
+view_ical_where=Onde
+view_ical_who=Quem
+view_ical_orginizertime=Tempo do organizador
+view_ical_orginizername=Nome do organizador
+view_ical_orginizeremail=E-mail do organizador
+view_ical_attendees=Detalhes dos participantes
+view_ical_desc=Descrição do evento
 
 view_gnupg=Verificação de assinatura do GnuPG
 view_gnupg_0=A assinatura por $1 é válida.
@@ -290,6 +300,7 @@ folder_inbox=Caixa de entrada
 folder_sent=Enviado
 folder_drafts=Rascunhos
 folder_trash=Lixo
+folder_spam=Spam
 
 detach_err=Falha ao desanexar arquivo
 detach_edir=Nenhum arquivo ou diretório para salvar na entrada

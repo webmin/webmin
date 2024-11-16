@@ -1,6 +1,18 @@
 index_return=llista d'usuaris
 
+view_efolder=Aquesta carpeta no existeix!
+view_ical=Esdeveniment
+view_ical_when=Quan
+view_ical_where=On
+view_ical_who=OMS
+view_ical_orginizertime=Temps de l'organitzador
+view_ical_orginizername=Nom de l'organitzador
+view_ical_orginizeremail=Correu electrònic de l'organitzador
+view_ical_attendees=Detalls dels assistents
+view_ical_desc=Descripció de l'esdeveniment
+
 folder_sent=Enviat
+folder_spam=Correu brossa
 
 editor_heading=Encapçalament
 editor_paragraph=Paràgraf

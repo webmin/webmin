@@ -16,16 +16,35 @@ journal_journalctl_debug_info=اشکال زدایی و پیام های اطلا�
 journal_journalctl_notice_warning=پیام های اخطار و اخطار
 journal_journalctl_err_crit=خطا و پیام های مهم
 journal_journalctl_alert_emerg=پیام های هشدار و اضطراری
+journal_journalctl_unit=پیام برای واحد خاص
+journal_since0=آخرین موجود
+journal_since1=در زمان واقعی دنبال کنید
+journal_since2=بوت فعلی
+journal_since3=7 روز پیش
+journal_since4=24 ساعت پیش
+journal_since5=8 ساعت پیش
+journal_since6=1 ساعت پیش
+journal_since7=30 دقیقه پیش
+journal_since8=10 دقیقه پیش
+journal_since9=3 دقیقه پیش
+journal_since10=1 دقیقه پیش
+journal_sincefollow=در
+journal_since=از آنجایی که
 
 view_title=مشاهده Logfile
+view_titlejournal=مشاهده مجله
 view_header=آخرین $1 خط $2 
 view_header2=آخرین $1 خط
+view_header3=خطوط $1 
 view_empty=فایل گزارش خالی است
-view_refresh=تازه کردن
+view_loading=فایل گزارش در حال مشاهده است.. هنوز خط جدیدی وجود ندارد.
 view_filter=خطوط با متن $1 را فیلتر کنید
+view_filter_btn=فیلتر کنید
 
 save_efile='$1' یک نام فایل معتبر نیست : $2
 save_ecannot2=شما اجازه دیدن این گزارش را ندارید
+save_ecannot3=خطا: شما اجازه دیدن این گزارش را ندارید
+save_ecannot4=خطا: "$1" باز نشد
 save_ecannot6=شما اجازه دیدن گزارش های دلخواه را ندارید
 save_ecannot7=شما مجاز به مشاهده این گزارش اضافی نیستید
 save_emissing=فایل گزارش برای مشاهده وجود ندارد

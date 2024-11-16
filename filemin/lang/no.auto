@@ -14,6 +14,7 @@ acls_action=Handling
 acls_manual=Manuelle parametere
 acls_error=<tt>setfacl</tt>-kommandoen finnes ikke på systemet ditt
 file_detect_encoding=Registrer filkoding automatisk
+file_showhiddenfiles=Vis skjulte filer
 index_return=filoppføring
 upload_dirs=Katalogopplasting
 extract_uploaded=Ekstrakt komprimert

@@ -173,6 +173,7 @@ acls_action=Akcija
 acls_manual=Ročni parametri
 acls_error=Ukaz <tt>setfacl</tt> ni najden v vašem sistemu
 file_detect_encoding=Samodejno zaznaj kodiranje datotek
+file_showhiddenfiles=Prikaži skrite datoteke
 index_return=seznam datotek
 upload_dirs=Nalaganje imenika
 extract_uploaded=Ekstrakt stisnjen

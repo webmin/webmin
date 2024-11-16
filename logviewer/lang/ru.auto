@@ -1,1 +1,23 @@
+journal_journalctl_unit=Сообщения для конкретного подразделения
+journal_since0=Последние доступные
+journal_since1=Следите в реальном времени
+journal_since2=Текущая загрузка
+journal_since3=7 дней назад
+journal_since4=24 часа назад
+journal_since5=8 часов назад
+journal_since6=1 час назад
+journal_since7=30 минут назад
+journal_since8=10 минут назад
+journal_since9=3 минуты назад
+journal_since10=1 минуту назад
+journal_sincefollow=в
+journal_since=с
+
+view_titlejournal=Просмотреть журнал
 view_header2=Последние $1 строк
+view_header3=Строки $1
+view_loading=Файл журнала просматривается. Новых строк пока нет.
+view_filter_btn=Фильтр
+
+save_ecannot3=Ошибка: Вам не разрешено просматривать этот журнал
+save_ecannot4=Ошибка: Не удалось открыть «$1»

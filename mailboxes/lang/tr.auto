@@ -21,6 +21,16 @@ view_markas0=Okunmamış
 view_markas1=Okuma
 view_markas2=Özel
 view_sub2=$1 'den ekli e-posta
+view_efolder=Bu klasör mevcut değil!
+view_ical=Etkinlik
+view_ical_when=Ne zaman
+view_ical_where=Nerede
+view_ical_who=DSÖ
+view_ical_orginizertime=Organizatör zamanı
+view_ical_orginizername=Organizatör adı
+view_ical_orginizeremail=Organizatör e-postası
+view_ical_attendees=Katılımcı detayları
+view_ical_desc=Etkinlik açıklaması
 
 view_dheader=Eki sunucuya ayır
 view_whitemove=Gönderene ve Gelen Kutusuna İzin Ver
@@ -53,6 +63,7 @@ search_msg6=$2 alanında $1 için arama sonuçları
 search_attach=Ekleri olmalı mı?
 
 folder_sent=Gönderilmiş
+folder_spam=İstenmeyen e-posta
 
 sform_header=Gelişmiş e-posta arama seçenekleri
 sform_andmode=Ölçüt modu

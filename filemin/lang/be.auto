@@ -173,6 +173,7 @@ acls_action=Дзеянне
 acls_manual=Ручныя параметры
 acls_error=Каманда <tt>setfacl</tt> не знойдзена ў вашай сістэме
 file_detect_encoding=Аўтаматычнае вызначэнне кадавання файлаў
+file_showhiddenfiles=Паказаць схаваныя файлы
 index_return=спіс файлаў
 upload_dirs=Загрузка каталога
 extract_uploaded=Экстракт сціснуты

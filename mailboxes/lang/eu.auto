@@ -153,7 +153,17 @@ view_return=jatorrizko posta elektronikoa
 view_sub=Erantsitako posta elektronikoa
 view_sub2=$1 -ko erantsitako mezu elektronikoa
 view_egone=Mezu hau ez dago jada
+view_efolder=Karpeta hau ez da existitzen!
 view_eugone=Erabiltzaile hau ez da existitzen
+view_ical=Gertaera
+view_ical_when=Noiz
+view_ical_where=Non
+view_ical_who=MOE
+view_ical_orginizertime=Antolatzailearen denbora
+view_ical_orginizername=Antolatzailearen izena
+view_ical_orginizeremail=Antolatzailearen posta elektronikoa
+view_ical_attendees=Bertaratutakoen xehetasunak
+view_ical_desc=Gertaeraren deskribapena
 
 view_gnupg=GnuPG sinadura egiaztatzea
 view_gnupg_0=$1-k sinadura baliozkoa da.
@@ -323,6 +333,7 @@ folder_inbox=Sarrerako ontzia
 folder_sent=Bidali
 folder_drafts=Turkiarrak
 folder_trash=Trash
+folder_spam=Spama
 
 detach_err=Ezin izan da fitxategia desblokeatu
 detach_edir=Ez da sartu edo gordetzeko fitxategirik edo direktoriorik

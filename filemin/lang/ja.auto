@@ -173,6 +173,7 @@ acls_action=アクション
 acls_manual=手動パラメータ
 acls_error=<tt>setfacl</tt> コマンドがシステムに見つかりません
 file_detect_encoding=ファイルエンコーディングを自動的に検出
+file_showhiddenfiles=隠しファイルを表示する
 index_return=ファイルリスト
 upload_dirs=ディレクトリのアップロード
 extract_uploaded=圧縮された抽出

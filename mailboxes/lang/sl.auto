@@ -153,7 +153,17 @@ view_return=izvirno e-poštno sporočilo
 view_sub=Priložena e-pošta
 view_sub2=Priložena e-pošta od $1
 view_egone=To sporočilo ne obstaja več
+view_efolder=Ta mapa ne obstaja!
 view_eugone=Ta uporabnik ne obstaja
+view_ical=Dogodek
+view_ical_when=kdaj
+view_ical_where=kje
+view_ical_who=WHO
+view_ical_orginizertime=Čas organizatorja
+view_ical_orginizername=Ime organizatorja
+view_ical_orginizeremail=E-pošta organizatorja
+view_ical_attendees=Podrobnosti o udeležencih
+view_ical_desc=Opis dogodka
 
 view_gnupg=Preverjanje podpisa GnuPG
 view_gnupg_0=Podpis s strani $1 je veljaven.
@@ -323,6 +333,7 @@ folder_inbox=Prejeto
 folder_sent=Poslano
 folder_drafts=Osnutki
 folder_trash=Smeti
+folder_spam=Neželena pošta
 
 detach_err=Datoteke ni bilo mogoče odstraniti
 detach_edir=Nobene datoteke ali imenika, ki bi ga shranili

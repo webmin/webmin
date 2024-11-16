@@ -153,7 +153,17 @@ view_return=อีเมลเดิม
 view_sub=อีเมลที่แนบมา
 view_sub2=อีเมลที่แนบมาจาก $1
 view_egone=ข้อความนี้ไม่มีอยู่อีกต่อไป
+view_efolder=โฟลเดอร์นี้ไม่มีอยู่!
 view_eugone=ไม่มีผู้ใช้รายนี้
+view_ical=เหตุการณ์
+view_ical_when=เมื่อไร
+view_ical_where=ที่ไหน
+view_ical_who=WHO
+view_ical_orginizertime=เวลาจัดงาน
+view_ical_orginizername=ชื่อผู้จัดงาน
+view_ical_orginizeremail=อีเมล์ของผู้จัดงาน
+view_ical_attendees=รายละเอียดผู้เข้าร่วม
+view_ical_desc=คำอธิบายกิจกรรม
 
 view_gnupg=การตรวจสอบลายเซ็น GnuPG
 view_gnupg_0=ลายเซ็นโดย $1 ถูกต้อง
@@ -323,6 +333,7 @@ folder_inbox=กล่องขาเข้า
 folder_sent=ส่งแล้ว
 folder_drafts=ร่าง
 folder_trash=ขยะ
+folder_spam=สแปม
 
 detach_err=ไม่สามารถแยกไฟล์ได้
 detach_edir=ไม่มีไฟล์หรือไดเรกทอรีที่จะบันทึกลงใน

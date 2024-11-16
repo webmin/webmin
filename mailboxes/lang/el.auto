@@ -27,6 +27,16 @@ view_markas0=Αδιάβαστος
 view_markas1=Ανάγνωση
 view_markas2=Ειδικός
 view_sub2=Επισυναπτόμενο μήνυμα ηλεκτρονικού ταχυδρομείου από $1
+view_efolder=Αυτός ο φάκελος δεν υπάρχει!
+view_ical=Συμβάν
+view_ical_when=Οταν
+view_ical_where=Οπου
+view_ical_who=ΠΟΥ
+view_ical_orginizertime=Ώρα διοργανωτή
+view_ical_orginizername=Όνομα διοργανωτή
+view_ical_orginizeremail=Διοργανωτής email
+view_ical_attendees=Στοιχεία παρευρισκομένων
+view_ical_desc=Περιγραφή εκδήλωσης
 
 view_dheader=Αποσυνδέστε το συνημμένο στο διακομιστή
 view_whitemove=Να επιτρέπεται ο αποστολέας και τα εισερχόμενα
@@ -61,6 +71,7 @@ search_msg6=Αποτελέσματα αναζήτησης για $1 στο πε�
 search_attach=Πρέπει να έχετε συνημμένα;
 
 folder_sent=Απεσταλμένα
+folder_spam=Ανεπιθύμητη αλληλογραφία
 
 sform_header=Προηγμένες επιλογές αναζήτησης ηλεκτρονικού ταχυδρομείου
 sform_andmode=Λειτουργία κριτηρίων

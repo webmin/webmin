@@ -2,9 +2,21 @@ index_return=gebruikers lijst
 
 mail_specialsync=Synchronisatie speciaal
 
+view_efolder=Deze map bestaat niet!
+view_ical=Evenement
+view_ical_when=Wanneer
+view_ical_where=Waar
+view_ical_who=WHO
+view_ical_orginizertime=Organisator tijd
+view_ical_orginizername=Naam van de organisator
+view_ical_orginizeremail=E-mailadres van de organisator
+view_ical_attendees=Gegevens van de deelnemers
+view_ical_desc=Beschrijving van het evenement
+
 search_msg6=Zoekresultaten voor $1 in het veld $2
 
 folder_sent=Verstuurd
+folder_spam=Spam
 
 left_mail=Mail
 left_search=Zoeken:

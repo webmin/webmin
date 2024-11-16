@@ -153,7 +153,17 @@ view_return=originalus el
 view_sub=Pridedamas el. Paštas
 view_sub2=Pridėtas el. Laiškas iš $1
 view_egone=Ši žinutė nebeegzistuoja
+view_efolder=Šis aplankas neegzistuoja!
 view_eugone=Šio vartotojo nėra
+view_ical=Renginys
+view_ical_when=Kada
+view_ical_where=Kur
+view_ical_who=PSO
+view_ical_orginizertime=Organizatoriaus laikas
+view_ical_orginizername=Organizatoriaus pavadinimas
+view_ical_orginizeremail=Organizatoriaus el
+view_ical_attendees=Dalyvių informacija
+view_ical_desc=Renginio aprašymas
 
 view_gnupg=„GnuPG“ parašo tikrinimas
 view_gnupg_0=Galioja $1 parašas.
@@ -323,6 +333,7 @@ folder_inbox=Pašto dėžutę
 folder_sent=Išsiųsta
 folder_drafts=Juodraščiai
 folder_trash=Šiukšlių dėžė
+folder_spam=Šlamštas
 
 detach_err=Nepavyko atskirti failo
 detach_edir=Nėra failo ar katalogo, kurį būtų galima išsaugoti įvestame

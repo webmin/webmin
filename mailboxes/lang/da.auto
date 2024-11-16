@@ -153,7 +153,17 @@ view_return=original e-mail
 view_sub=Vedhæftet e-mail
 view_sub2=Vedhæftet e-mail fra $1
 view_egone=Denne meddelelse findes ikke længere
+view_efolder=Denne mappe findes ikke!
 view_eugone=Denne bruger findes ikke
+view_ical=Tilfælde
+view_ical_when=Når
+view_ical_where=Hvor
+view_ical_who=WHO
+view_ical_orginizertime=Arrangør tid
+view_ical_orginizername=Arrangørens navn
+view_ical_orginizeremail=Arrangør e-mail
+view_ical_attendees=Deltagerdetaljer
+view_ical_desc=Begivenhedsbeskrivelse
 
 view_gnupg=GnuPG-signaturverifikation
 view_gnupg_0=Underskrift af $1 er gyldig.
@@ -323,6 +333,7 @@ folder_inbox=Indbakke
 folder_sent=Sendt
 folder_drafts=Kladder
 folder_trash=Affald
+folder_spam=Spam
 
 detach_err=Kunne ikke fjerne filen
 detach_edir=Ingen fil eller bibliotek, der skal gemmes i den indtastede

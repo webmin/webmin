@@ -173,6 +173,7 @@ acls_action=การกระทำ
 acls_manual=พารามิเตอร์ด้วยตนเอง
 acls_error=ไม่พบคำสั่ง <tt>setfacl</tt> ในระบบของคุณ
 file_detect_encoding=ตรวจจับการเข้ารหัสไฟล์โดยอัตโนมัติ
+file_showhiddenfiles=แสดงไฟล์ที่ซ่อนอยู่
 index_return=รายชื่อไฟล์
 upload_dirs=อัพโหลดไดเร็กทอรี
 extract_uploaded=สารสกัดที่บีบอัด

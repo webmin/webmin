@@ -173,6 +173,7 @@ acls_action=Veiksmas
 acls_manual=Rankiniai parametrai
 acls_error=Jūsų sistemoje nerasta komanda <tt>setfacl</tt>
 file_detect_encoding=Automatiškai aptikti failų kodavimą
+file_showhiddenfiles=Rodyti paslėptus failus
 index_return=failų sąrašas
 upload_dirs=Katalogo įkėlimas
 extract_uploaded=Ištrauka suspausta

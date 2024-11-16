@@ -413,8 +413,8 @@ log_delete_l=Gelöscht $2 Mount $1 auf $3
 log_swap=Swap-Datei erstellt $1
 
 unmount_err=Fehler beim Unmounten von $1
-mount_err=Fehler beim Mounten von $1
 
+mount_err=Fehler beim Mounten von $1
 irix_nhost=NFS-Hostname
 irix_ndir=NFS-Verzeichnis
 irix_part=Lokale Partition

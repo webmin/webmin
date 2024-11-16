@@ -153,7 +153,17 @@ view_return=e-mail original
 view_sub=E-mail atașat
 view_sub2=E-mail atașat de la $1
 view_egone=Acest mesaj nu mai există
+view_efolder=Acest folder nu există!
 view_eugone=Acest utilizator nu exista
+view_ical=Eveniment
+view_ical_when=Când
+view_ical_where=Unde
+view_ical_who=OMS
+view_ical_orginizertime=Timpul organizatorului
+view_ical_orginizername=Numele organizatorului
+view_ical_orginizeremail=E-mailul organizatorului
+view_ical_attendees=Detalii despre participanți
+view_ical_desc=Descrierea evenimentului
 
 view_gnupg=Verificarea semnăturii GnuPG
 view_gnupg_0=Semnarea cu $1 este valabilă.
@@ -323,6 +333,7 @@ folder_inbox=Inbox
 folder_sent=Trimis
 folder_drafts=Schițe
 folder_trash=Gunoi
+folder_spam=Spam
 
 detach_err=Nu a reușit să detașeze fișierul
 detach_edir=Niciun fișier sau director de salvat pentru a fi introdus

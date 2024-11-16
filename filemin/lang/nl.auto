@@ -173,6 +173,7 @@ acls_action=Actie
 acls_manual=Handmatige parameters
 acls_error=De opdracht <tt>setfacl</tt> is niet gevonden op uw systeem
 file_detect_encoding=Automatisch bestandscodering detecteren
+file_showhiddenfiles=Verborgen bestanden weergeven
 index_return=bestandslijst
 upload_dirs=Directory uploaden
 extract_uploaded=Gecomprimeerd uitpakken

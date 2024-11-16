@@ -97,7 +97,17 @@ view_markas1=读
 view_markas2=特别
 view_sub2=来自$1的电子邮件附件
 view_egone=该消息不再存在
+view_efolder=该文件夹不存在！
 view_eugone=该用户不存在
+view_ical=事件
+view_ical_when=什么时候
+view_ical_where=在哪里
+view_ical_who=WHO
+view_ical_orginizertime=主办时间
+view_ical_orginizername=主办方名称
+view_ical_orginizeremail=组织者电子邮件
+view_ical_attendees=参会者详情
+view_ical_desc=事件描述
 
 view_gnupg=GnuPG签名验证
 view_gnupg_0=$1签名有效。
@@ -237,6 +247,7 @@ folder_inbox=收件箱
 folder_sent=发送
 folder_drafts=草稿
 folder_trash=垃圾
+folder_spam=垃圾邮件
 
 detach_err=无法分离文件
 detach_edir=没有要保存到输入的文件或目录

@@ -153,7 +153,17 @@ view_return=email gốc
 view_sub=Email đính kèm
 view_sub2=Email đính kèm từ $1
 view_egone=Tin nhắn này không còn tồn tại
+view_efolder=Thư mục này không tồn tại!
 view_eugone=Người dùng này không tòn tại
+view_ical=Sự kiện
+view_ical_when=Khi
+view_ical_where=Ở đâu
+view_ical_who=Ai
+view_ical_orginizertime=Thời gian tổ chức
+view_ical_orginizername=Tên người tổ chức
+view_ical_orginizeremail=Email của người tổ chức
+view_ical_attendees=Chi tiết người tham dự
+view_ical_desc=Mô tả sự kiện
 
 view_gnupg=Xác minh chữ ký GnuPG
 view_gnupg_0=Chữ ký của $1 là hợp lệ.
@@ -323,6 +333,7 @@ folder_inbox=Hộp thư đến
 folder_sent=Đã gửi
 folder_drafts=Dự thảo
 folder_trash=Rác
+folder_spam=Thư rác
 
 detach_err=Không thể tách tệp
 detach_edir=Không có tập tin hoặc thư mục để lưu để nhập

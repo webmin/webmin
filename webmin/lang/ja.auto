@@ -88,6 +88,10 @@ notif_fixreponow=Webmin リポジトリを更新する
 
 status_temp2=CPU 温度とファン速度を収集しますか?
 
+sendmail_toaddr=通知のデフォルトの宛先アドレス
+sendmail_to_def=設定なし
+sendmail_etoaddr=宛先アドレスが欠落しているか、形式が正しくありません
+
 web_rediruurl=ログイン後の切り替えリダイレクトURL
 web_redirdesc=内部リダイレクトURLのオーバーライド
 web_eredirurl=「$1」にはスペースが含まれており、有効なURLではありません
@@ -99,6 +103,7 @@ web_eredirpref=プレフィックスはスラッシュで始まる必要があ�
 web_eredirpref2=プレフィックスにスペースを含めることはできません
 web_redirssl=SSLをリダイレクトする
 
+twofactor_totp=TOTP 認証システム
 twofactor_qrcode=TOTP アプリに秘密コード $1 を入力するか、下の QR コードをスキャンしてください。
 twofactor_etotptoken=TOTPトークンは数字でなければなりません
 
@@ -128,3 +133,6 @@ os_eol_second=2番
 os_eol_reached=EOLに到達
 os_eol_reaching=EOLの
 os_eol_reaching2=EOLが迫っている
+
+qr_err=QRコードの生成に失敗しました
+qr_estr=QR コード文字列がありません。

@@ -153,7 +153,17 @@ view_return=Email oriġinali
 view_sub=Mehmuż Email
 view_sub2=Mehmuż email minn $1
 view_egone=Dan il-messaġġ m'għadux jeżisti
+view_efolder=Dan il-folder ma jeżistix!
 view_eugone=Dan l-utent ma jeżistix
+view_ical=Avveniment
+view_ical_when=Meta
+view_ical_where=Fejn
+view_ical_who=Min
+view_ical_orginizertime=Ħin organizzatur
+view_ical_orginizername=Isem l-organizzatur
+view_ical_orginizeremail=Email tal-organizzatur
+view_ical_attendees=Dettalji ta' dawk li attendew
+view_ical_desc=Deskrizzjoni tal-avveniment
 
 view_gnupg=Verifika tal-firma GnuPG
 view_gnupg_0=Firma minn $1 hija valida.
@@ -323,6 +333,7 @@ folder_inbox=Inbox
 folder_sent=Mibgħuta
 folder_drafts=Abbozzi
 folder_trash=Trash
+folder_spam=Spam
 
 detach_err=Ma rnexxiex tinqata 'l-fajl
 detach_edir=L-ebda fajl jew direttorju li jsalva biex jiddaħħal

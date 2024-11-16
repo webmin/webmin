@@ -153,7 +153,17 @@ view_return=oorspronklike e-pos
 view_sub=Aangehegde e-posadres
 view_sub2=Aangehegde e-posadres van $1
 view_egone=Hierdie boodskap bestaan nie meer nie
+view_efolder=Hierdie vouer bestaan nie!
 view_eugone=Hierdie gebruiker bestaan nie
+view_ical=Gebeurtenis
+view_ical_when=Wanneer
+view_ical_where=Waar
+view_ical_who=WHO
+view_ical_orginizertime=Organiseerder tyd
+view_ical_orginizername=Naam van die organiseerder
+view_ical_orginizeremail=Organiseerder e-pos
+view_ical_attendees=Deelnemers besonderhede
+view_ical_desc=Gebeurtenis beskrywing
 
 view_gnupg=GnuPG-handtekeningverifikasie
 view_gnupg_0=Handtekening deur $1 is geldig.
@@ -323,6 +333,7 @@ folder_inbox=posbus
 folder_sent=Gestuur
 folder_drafts=Drafts
 folder_trash=asblik
+folder_spam=Strooipos
 
 detach_err=Kon nie lêer verwyder nie
 detach_edir=Geen lêer of gids om in te voer nie

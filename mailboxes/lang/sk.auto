@@ -153,7 +153,17 @@ view_return=pôvodný e-mail
 view_sub=Priložený e-mail
 view_sub2=Priložený e-mail od $1
 view_egone=Táto správa už neexistuje
+view_efolder=Tento priečinok neexistuje!
 view_eugone=Tento používateľ neexistuje
+view_ical=Udalosť
+view_ical_when=Kedy
+view_ical_where=Kde
+view_ical_who=SZO
+view_ical_orginizertime=Čas organizátora
+view_ical_orginizername=Meno organizátora
+view_ical_orginizeremail=E-mail organizátora
+view_ical_attendees=Podrobnosti o účastníkoch
+view_ical_desc=Popis udalosti
 
 view_gnupg=Overenie podpisu GnuPG
 view_gnupg_0=Podpis $1 je platný.
@@ -323,6 +333,7 @@ folder_inbox=Doručená pošta
 folder_sent=Odoslané
 folder_drafts=dáma
 folder_trash=Smeti
+folder_spam=Spam
 
 detach_err=Súbor sa nepodarilo odpojiť
 detach_edir=Do súboru nebol vložený žiadny súbor alebo adresár

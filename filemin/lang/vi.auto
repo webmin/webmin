@@ -173,6 +173,7 @@ acls_action=Hoạt động
 acls_manual=Thông số thủ công
 acls_error=Không tìm thấy lệnh <tt>setfacl</tt> trên hệ thống của bạn
 file_detect_encoding=Tự động phát hiện mã hóa tệp
+file_showhiddenfiles=Hiển thị các tập tin ẩn
 index_return=danh sách hồ sơ
 upload_dirs=Tải lên thư mục
 extract_uploaded=Giải nén nén
