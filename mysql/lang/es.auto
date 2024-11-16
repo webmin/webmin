@@ -1,3 +1,5 @@
+index_restart=Reiniciar el servidor MySQL
+index_restartmsg=Haga clic en este botón para reiniciar el servidor de base de datos MySQL en su sistema. Se desconectarán todos los clientes y se volverán a cargar los archivos de configuración.
 index_eshow=El programa de estado MySQL $1 no se encontró en su sistema. Tal vez MySQL no está instalado, o su <a href='$2'>configuración del módulo</a> es incorrecta.
 index_estart=El script de inicio de MySQL $1 no se encontró en su sistema. Tal vez MySQL no está instalado, o su <a href='$2'>configuración del módulo</a> es incorrecta.
 index_indexes=Índices
@@ -98,6 +100,8 @@ users_dok=Eliminar usuarios
 
 user_vwarning=ADVERTENCIA: Este usuario de MySQL es el inicio de sesión de administración para el dominio Virtualmin $1. Cambiar cualquier configuración aquí puede causar errores en Virtualmin.
 user_locked=Bloqueado
+user_plugin=Tipo de autenticación
+user_hashpass=Contraseña actual en formato hash
 user_priv_select=Seleccionar datos de la tabla
 user_priv_insert=Insertar datos de la tabla
 user_priv_update=Actualizar datos de la tabla
@@ -145,6 +149,8 @@ user_emax_connections=Las conexiones máximas por hora deben ser un número
 user_emax_updates=Las actualizaciones máximas por hora deben ser un número
 user_emax_questions=Las consultas máximas por hora deben ser un número
 
+dbs_except=Todos, excepto
+dbs_except_and=y
 dbs_derr=Error al eliminar los permisos de la base de datos
 dbs_enone=No hay bases de datos seleccionadas
 dbs_dtitle=Eliminar permisos de la base de datos
@@ -204,6 +210,7 @@ acl_indexes=¿Puede ver y administrar índices?
 acl_views=¿Puede ver y administrar vistas?
 acl_files=¿Se puede ejecutar SQL desde archivos locales?
 
+log_restart=Se reinició el servidor MySQL
 log_cnf=Se modificó la configuración del servidor MySQL
 log_ssl=Certificado SSL modificado
 log_genssl=Certificado SSL generado
@@ -351,6 +358,8 @@ cnf_restart=Guardar y reiniciar MySQL
 cnf_fpt=¿Archivo separado para cada tabla InnoDB?
 cnf_ilt=Tiempo de espera de bloqueo InnoDB (en segundos)
 cnf_eilt=El tiempo de espera de bloqueo de InnoDB debe ser un número entero
+cnf_sqlm=Opciones del modo SQL
+cnf_esqlm=Las opciones del modo SQL deben ser una lista de indicadores separados por comas
 
 manual_title=Editar archivos de configuración
 manual_file=Editar archivo de configuración:

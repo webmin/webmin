@@ -1,3 +1,5 @@
+index_restart=MySQL-server opnieuw opstarten
+index_restartmsg=Klik op deze knop om de MySQL-databaseserver op uw systeem opnieuw te starten. Alle clients worden losgekoppeld en alle configuratiebestanden worden opnieuw geladen.
 index_eshow=Het MySQL-statusprogramma $1 is niet gevonden op uw systeem. Misschien is MySQL niet geïnstalleerd of is uw <a href='$2'>moduleconfiguratie</a> onjuist.
 index_estart=Het MySQL-opstartscript $1 is niet gevonden op uw systeem. Misschien is MySQL niet geïnstalleerd of is uw <a href='$2'>moduleconfiguratie</a> onjuist.
 index_indexes=Indexen
@@ -22,6 +24,8 @@ view_go=Gaan
 
 user_vwarning=WAARSCHUWING: Deze MySQL-gebruiker is de beheerdersaanmelding voor Virtualmin-domein $1. Het wijzigen van instellingen hier kan fouten in Virtualmin veroorzaken.
 user_locked=Op slot
+user_plugin=Authenticatie type
+user_hashpass=Huidig gehasht wachtwoord
 user_priv_select=Selecteer tabelgegevens
 user_priv_insert=Tabelgegevens invoegen
 user_priv_update=Tabelgegevens bijwerken
@@ -55,10 +59,14 @@ user_priv_create_tablespace=Maak een tabelruimte
 user_eslash=MySQL ondersteunt geen wachtwoord dat een backslash bevat
 user_cipher=SSL-cijfer
 
+dbs_except=Allemaal, behalve
+dbs_except_and=En
+
 hosts_return=hostrechten
 
 exec_collationdown=Database-sortering is gedowngraded van <tt>$1</tt> naar <tt>$2</tt>
 
+log_restart=MySQL-server opnieuw opgestart
 log_ssl=Gewijzigd SSL-certificaat
 log_genssl=Gegenereerd SSL-certificaat
 log_manual=Handmatig bewerkt configuratiebestand
@@ -80,6 +88,8 @@ cnf_ekey_buffer_size=Ontbrekende of ongeldige sleutelbuffergrootte
 cnf_esort_buffer_size=Ontbrekende of ongeldige sorteerbuffergrootte
 cnf_ilt=Time-out InnoDB-vergrendeling (in seconden)
 cnf_eilt=De time-out voor InnoDB-vergrendeling moet een geheel getal zijn
+cnf_sqlm=Opties voor SQL-modus
+cnf_esqlm=SQL-modusopties moeten een door komma's gescheiden lijst met vlaggen zijn
 
 manual_title=Configuratiebestanden bewerken
 manual_file=Configuratiebestand bewerken:

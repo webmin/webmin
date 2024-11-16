@@ -1,3 +1,5 @@
+index_restart=MySQLサーバを再起動する
+index_restartmsg=このボタンをクリックすると、システム上の MySQL データベース サーバーが再起動されます。すべてのクライアントが切断され、すべての構成ファイルが再ロードされます。
 index_eshow=MySQLステータスプログラム $1がシステムで見つかりませんでした。 MySQLがインストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
 index_estart=MySQL起動スクリプト $1がシステムで見つかりませんでした。 MySQLがインストールされていないか、<a href='$2'>モジュール設定</a>が間違っている可能性があります。
 index_indexes=インデックス
@@ -92,6 +94,8 @@ users_dok=ユーザーを削除する
 
 user_vwarning=警告：このMySQLユーザーは、Virtualminドメイン $1の管理ログインです。ここで設定を変更すると、Virtualminでエラーが発生する場合があります。
 user_locked=ロック済み
+user_plugin=認証タイプ
+user_hashpass=現在のハッシュパスワード
 user_priv_select=テーブルデータを選択
 user_priv_insert=テーブルデータを挿入する
 user_priv_update=テーブルデータを更新する
@@ -139,6 +143,8 @@ user_emax_connections=1時間あたりの最大接続数は数値である必要
 user_emax_updates=1時間あたりの最大更新数は数値である必要があります
 user_emax_questions=1時間あたりの最大クエリ数は数値である必要があります
 
+dbs_except=すべて、ただし
+dbs_except_and=そして
 dbs_derr=データベース権限の削除に失敗しました
 dbs_enone=データベースが選択されていません
 dbs_dtitle=データベース権限を削除する
@@ -193,6 +199,7 @@ acl_indexes=インデックスを表示および管理できますか？
 acl_views=ビューを表示および管理できますか？
 acl_files=ローカルファイルからSQLを実行できますか？
 
+log_restart=MySQLサーバーを再起動しました
 log_cnf=MySQLサーバー構成を変更しました
 log_ssl=SSL証明書を変更しました
 log_genssl=生成されたSSL証明書
@@ -332,6 +339,8 @@ cnf_restart=MySQLを保存して再起動する
 cnf_fpt=InnoDBテーブルごとに個別のファイルですか？
 cnf_ilt=InnoDBロックタイムアウト（秒）
 cnf_eilt=InnoDBロックタイムアウトは整数である必要があります
+cnf_sqlm=SQL モード オプション
+cnf_esqlm=SQLモードオプションは、カンマで区切られたフラグのリストである必要があります。
 
 manual_title=構成ファイルの編集
 manual_file=設定ファイルの編集：

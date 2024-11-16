@@ -1,12 +1,24 @@
+index_restart=Start MySQL Server på nytt
+index_restartmsg=Klikk på denne knappen for å starte MySQL-databaseserveren på systemet på nytt. Alle klienter vil bli frakoblet, og eventuelle konfigurasjonsfiler vil bli lastet inn på nytt.
 index_indexes=Indekser
 index_views=Visninger
 
+user_plugin=Autentiseringstype
+user_hashpass=Gjeldende hashet passord
+
+dbs_except=Alle, bortsett fra
+dbs_except_and=og
+
 exec_collationdown=Databasesortering ble nedgradert fra <tt>$1</tt> til <tt>$2</tt>
 
+log_restart=Startet MySQL-serveren på nytt
 log_ssl=Endret SSL-sertifikat
 log_genssl=Generert SSL-sertifikat
 
 backup_parameters=Vil du legge til egendefinerte parametere i sikkerhetskopieringskommandoen?
+
+cnf_sqlm=Alternativer for SQL-modus
+cnf_esqlm=SQL-modusalternativer må være en kommaseparat liste over flagg
 
 syslog_desc2=MySQL feilmelding
 

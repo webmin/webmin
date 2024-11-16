@@ -1,3 +1,5 @@
+index_restart=Riavviare il server MySQL
+index_restartmsg=Fai clic su questo pulsante per riavviare il server del database MySQL sul tuo sistema. Tutti i client verranno disconnessi e tutti i file di configurazione verranno ricaricati.
 index_eshow=Il programma di stato MySQL $1 non è stato trovato sul tuo sistema. Forse MySQL non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 index_estart=Lo script di avvio MySQL $1 non è stato trovato sul tuo sistema. Forse MySQL non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 index_indexes=Indici
@@ -52,6 +54,8 @@ users_dok=Elimina utenti
 
 user_vwarning=ATTENZIONE: questo utente MySQL è il login di amministrazione per il dominio Virtualmin $1. La modifica di qualsiasi impostazione qui può causare errori in Virtualmin.
 user_locked=Bloccato
+user_plugin=Tipo di autenticazione
+user_hashpass=Password hash corrente
 user_priv_select=Seleziona i dati della tabella
 user_priv_insert=Inserisci i dati della tabella
 user_priv_update=Aggiorna i dati della tabella
@@ -99,6 +103,8 @@ user_emax_connections=Il numero massimo di connessioni all'ora deve essere un nu
 user_emax_updates=Gli aggiornamenti massimi all'ora devono essere un numero
 user_emax_questions=Il numero massimo di query all'ora deve essere un numero
 
+dbs_except=Tutti, tranne
+dbs_except_and=E
 dbs_dtitle=Elimina autorizzazioni database
 dbs_drusure=Sei sicuro di voler eliminare le autorizzazioni del database MySQL $1 selezionato?
 dbs_dok=Elimina autorizzazioni
@@ -140,6 +146,7 @@ cpriv_edb=Nome del database mancante o non valido
 
 acl_files=È possibile eseguire SQL da file locali?
 
+log_restart=Riavviato il server MySQL
 log_ssl=Certificato SSL modificato
 log_genssl=Certificato SSL generato
 log_set=Variabili $1 di MySQL modificate
@@ -196,6 +203,8 @@ cnf_restart=Salva e riavvia MySQL
 cnf_fpt=File separato per ogni tabella InnoDB?
 cnf_ilt=Timeout blocco InnoDB (in secondi)
 cnf_eilt=Il timeout del blocco InnoDB deve essere un numero intero
+cnf_sqlm=Opzioni della modalità SQL
+cnf_esqlm=Le opzioni della modalità SQL devono essere un elenco di flag separati da virgole
 
 manual_title=Modifica file di configurazione
 manual_file=Modifica file di configurazione:

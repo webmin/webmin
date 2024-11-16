@@ -1,3 +1,5 @@
+index_restart=Reinicieu el servidor MySQL
+index_restartmsg=Feu clic a aquest botó per reiniciar el servidor de bases de dades MySQL al vostre sistema. Tots els clients es desconnectaran i es tornaran a carregar els fitxers de configuració.
 index_indexes=Índexs
 index_views=Vistes
 
@@ -7,17 +9,25 @@ view_refresh=Actualització
 view_go=Va
 
 user_locked=Bloquejat
+user_plugin=Tipus d'autenticació
+user_hashpass=Contrasenya hash actual
+
+dbs_except=Tots, excepte
+dbs_except_and=i
 
 exec_collationdown=La classificació de la base de dades es va rebaixar d' <tt>$1</tt> a <tt>$2</tt>
 
 tprivs_drusure=Esteu segur que voleu suprimir els permisos de la taula MySQL seleccionats $1 ?
 
+log_restart=S'ha reiniciat el servidor MySQL
 log_ssl=S'ha canviat el certificat SSL
 log_genssl=Certificat SSL generat
 
 backup_parameters=Vols afegir paràmetres personalitzats a l'ordre de còpia de seguretat?
 
 cnf_table_open_cache=Taules per a la memòria cau
+cnf_sqlm=Opcions del mode SQL
+cnf_esqlm=Les opcions del mode SQL han de ser una llista de senyaladors separada per comes
 
 syslog_desc2=Missatge d'error MySQL
 

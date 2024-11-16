@@ -9,8 +9,11 @@ index_show=节目
 index_toomany=您的系统上有太多用户无法显示。
 
 poll_auth=身份验证方法
+poll_folder=要检查的 IMAP 文件夹
+poll_inbox=默认（收件箱）
 poll_usually=通常没有
 poll_ssl=以SSL模式连接？
+poll_efolder=缺少文件夹名称
 poll_eboth=将消息保留在服务器上并始终提取所有消息的选项不兼容
 poll_eusername=用户不存在！
 poll_foruser=对于用户 $1

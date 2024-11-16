@@ -1,3 +1,5 @@
+index_restart=MySQL Sunucusunu Yeniden Başlat
+index_restartmsg=Sisteminizdeki MySQL veritabanı sunucusunu yeniden başlatmak için bu düğmeye tıklayın. Tüm istemcilerin bağlantısı kesilecek ve tüm yapılandırma dosyaları yeniden yüklenecektir.
 index_eshow=$1 MySQL durum programı sisteminizde bulunamadı. Belki MySQL kurulu değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_estart=$1 MySQL başlangıç komut dosyası sisteminizde bulunamadı. Belki MySQL kurulu değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_indexes=dizinler
@@ -93,6 +95,8 @@ users_dok=Kullanıcıları Sil
 
 user_vwarning=UYARI: Bu MySQL kullanıcısı $1 Virtualmin etki alanı için yönetim oturum açma adıdır. Burada herhangi bir ayarın değiştirilmesi Virtualmin'de hatalara neden olabilir.
 user_locked=Kilitli
+user_plugin=Kimlik doğrulama türü
+user_hashpass=Mevcut karma şifre
 user_priv_select=Tablo verilerini seçin
 user_priv_insert=Tablo verilerini ekle
 user_priv_update=Tablo verilerini güncelleme
@@ -140,6 +144,8 @@ user_emax_connections=Saat başına maksimum bağlantı bir sayı olmalıdır
 user_emax_updates=Saat başına maksimum güncelleme bir sayı olmalıdır
 user_emax_questions=Saat başına maksimum sorgu sayısı bir sayı olmalıdır
 
+dbs_except=Hepsi hariç
+dbs_except_and=Ve
 dbs_derr=Veritabanı izinleri silinemedi
 dbs_enone=Hiçbir veritabanı seçilmedi
 dbs_dtitle=Veritabanı İzinlerini Sil
@@ -195,6 +201,7 @@ acl_indexes=Dizinleri görüntüleyebilir ve yönetebilir mi?
 acl_views=Görünümleri görüntüleyebilir ve yönetebilir mi?
 acl_files=SQL'i yerel dosyalardan yürütebilir mi?
 
+log_restart=MySQL sunucusu yeniden başlatıldı
 log_cnf=MySQL sunucu yapılandırması değiştirildi
 log_ssl=SSL sertifikası değiştirildi
 log_genssl=Oluşturulan SSL sertifikası
@@ -325,6 +332,8 @@ cnf_restart=MySQL'i Kaydet ve Yeniden Başlat
 cnf_fpt=Her InnoDB tablosu için ayrı dosya?
 cnf_ilt=InnoDB kilit zaman aşımı (saniye olarak)
 cnf_eilt=InnoDB kilit zaman aşımı bir tamsayı olmalıdır
+cnf_sqlm=SQL modu seçenekleri
+cnf_esqlm=SQL modu seçenekleri, virgülle ayrılmış bir bayrak listesi olmalıdır
 
 manual_title=Yapılandırma Dosyalarını Düzenle
 manual_file=Yapılandırma dosyasını düzenle:

@@ -1,12 +1,24 @@
+index_restart=Redémarrer le serveur MySQL
+index_restartmsg=Cliquez sur ce bouton pour redémarrer le serveur de base de données MySQL sur votre système. Tous les clients seront déconnectés et tous les fichiers de configuration seront rechargés.
 index_indexes=Index
 index_views=Vues
 
+user_plugin=Type d'authentification
+user_hashpass=Mot de passe haché actuel
+
+dbs_except=Tous, sauf
+dbs_except_and=et
+
 exec_collationdown=Le classement de la base de données a été rétrogradé de <tt>$1</tt> à <tt>$2</tt>
 
+log_restart=Serveur MySQL redémarré
 log_ssl=Certificat SSL modifié
 log_genssl=Certificat SSL généré
 
 backup_parameters=Ajouter des paramètres personnalisés à la commande de sauvegarde ?
+
+cnf_sqlm=Options du mode SQL
+cnf_esqlm=Les options du mode SQL doivent être une liste d'indicateurs séparés par des virgules
 
 syslog_desc2=Message d'erreur MySQL
 

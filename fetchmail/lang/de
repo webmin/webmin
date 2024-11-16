@@ -128,7 +128,6 @@ cron_efile=Fehlender oder ungültiger Ausgabedateiname
 cron_email=Fehlende oder ungültige E-Mail-Adresse
 cron_euser=Fehlender oder ungültiger Unix-Benutzer
 cron_errors=Nur bei Fehlern ausgeben?
-cron_ecannot=Sie sind nicht berechtigt, geplante Überprüfungen zu konfigurieren
 
 user_title=Fetchmail-Konfiguration
 user_header=Für Benutzer $1

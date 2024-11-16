@@ -9,7 +9,10 @@ index_show=Ukázat
 index_toomany=Ve vašem systému je příliš mnoho uživatelů k zobrazení.
 
 poll_auth=Metoda ověřování
+poll_folder=Složka IMAP ke kontrole
+poll_inbox=Výchozí (INBOX)
 poll_ssl=Připojit se v režimu SSL?
+poll_efolder=Chybí název složky
 poll_eboth=Možnosti ponechat zprávy na serveru a vždy načíst všechny zprávy jsou nekompatibilní
 poll_eusername=Uživatel neexistuje!
 poll_foruser=Pro uživatele $1 
