@@ -16,8 +16,11 @@ index_show=보여 주다
 index_toomany=시스템에 표시 할 사용자가 너무 많습니다.
 
 poll_auth=인증 방법
+poll_folder=확인할 IMAP 폴더
+poll_inbox=기본 (받은 편지함)
 poll_usually=보통 아니
 poll_ssl=SSL 모드로 연결 하시겠습니까?
+poll_efolder=폴더 이름이 없습니다
 poll_eboth=서버에 메시지를 남기고 항상 모든 메시지를 가져 오는 옵션이 호환되지 않습니다
 poll_adduser=다른 사용자 추가
 poll_check=이 서버를 확인

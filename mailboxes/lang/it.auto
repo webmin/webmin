@@ -3,10 +3,21 @@ index_return=lista degli utenti
 mail_specialsync=Sincronizza speciale
 
 view_nobody=Questo messaggio non ha contenuti del corpo.
+view_efolder=Questa cartella non esiste!
+view_ical=Evento
+view_ical_when=Quando
+view_ical_where=Dove
+view_ical_who=Chi
+view_ical_orginizertime=Tempo dell'organizzatore
+view_ical_orginizername=Nome dell'organizzatore
+view_ical_orginizeremail=E-mail dell'organizzatore
+view_ical_attendees=Dettagli dei partecipanti
+view_ical_desc=Descrizione dell'evento
 
 search_msg6=Risultati della ricerca per $1 nel campo $2
 
 folder_sent=Inviato
+folder_spam=Spam
 
 left_mail=posta
 left_search=Ricerca:

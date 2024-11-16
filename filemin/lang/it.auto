@@ -11,6 +11,7 @@ acls_perms=Autorizzazioni
 acls_action=Azione
 acls_manual=Parametri manuali
 acls_error=Il comando <tt>setfacl</tt> non è stato trovato sul tuo sistema
+file_showhiddenfiles=Mostra file nascosti
 upload_dirs=Caricamento directory
 extract_uploaded=Estrai compresso
 extract_cmd_not_avail=Impossibile estrarre il file $1 perché manca il comando $2

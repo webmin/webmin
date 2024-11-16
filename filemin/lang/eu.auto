@@ -173,6 +173,7 @@ acls_action=Ekintza
 acls_manual=Eskuzko parametroak
 acls_error=<tt>setfacl</tt> komandoa ez da zure sisteman aurkitzen
 file_detect_encoding=Automatikoki detektatu fitxategien kodeketa
+file_showhiddenfiles=Erakutsi ezkutuko fitxategiak
 index_return=fitxategi zerrenda
 upload_dirs=Direktorioa igotzea
 extract_uploaded=Atera konprimitua

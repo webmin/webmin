@@ -173,6 +173,7 @@ acls_action=Aksie
 acls_manual=Handmatige parameters
 acls_error=<tt>setfacl</tt> opdrag word nie op jou stelsel gevind nie
 file_detect_encoding=Bespeur lêerkodering outomaties
+file_showhiddenfiles=Wys verborge lêers
 index_return=lêerlys
 upload_dirs=Gids oplaai
 extract_uploaded=Uittreksel saamgepers

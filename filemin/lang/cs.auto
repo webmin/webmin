@@ -173,6 +173,7 @@ acls_action=Akce
 acls_manual=Manuální parametry
 acls_error=Příkaz <tt>setfacl</tt> nebyl ve vašem systému nalezen
 file_detect_encoding=Automaticky detekovat kódování souborů
+file_showhiddenfiles=Zobrazit skryté soubory
 index_return=seznam souborů
 upload_dirs=Nahrání adresáře
 extract_uploaded=Extrakt komprimovaný

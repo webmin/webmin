@@ -1,2 +1,2 @@
-desc_pl=Zaplanowane polecenia
-longdesc_pl=Harmonogram wykonywania poleceń lub skryptów.
+longdesc_pl=Twórz i edytuj jednorazowe zadania At.
+desc_pl=Zaplanowane Polecenia

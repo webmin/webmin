@@ -153,7 +153,17 @@ view_return=oriģināls e-pasts
 view_sub=Pievienots e-pasts
 view_sub2=Pievienots e-pasts no $1
 view_egone=Šis ziņojums vairs nepastāv
+view_efolder=Šī mape neeksistē!
 view_eugone=Šis lietotājs neeksistē
+view_ical=Pasākums
+view_ical_when=Kad
+view_ical_where=Kur
+view_ical_who=PVO
+view_ical_orginizertime=Organizatora laiks
+view_ical_orginizername=Organizatora nosaukums
+view_ical_orginizeremail=Organizatora e-pasts
+view_ical_attendees=Sīkāka informācija par dalībniekiem
+view_ical_desc=Pasākuma apraksts
 
 view_gnupg=GnuPG paraksta pārbaude
 view_gnupg_0=$1 paraksts ir derīgs.
@@ -323,6 +333,7 @@ folder_inbox=Iesūtne
 folder_sent=Nosūtīts
 folder_drafts=Melnraksti
 folder_trash=Atkritumi
+folder_spam=Mēstules
 
 detach_err=Neizdevās atdalīt failu
 detach_edir=Nav faila vai direktorija, ko saglabāt ievadītajā

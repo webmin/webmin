@@ -1,3 +1,5 @@
+index_restart=Starta om MySQL Server
+index_restartmsg=Klicka på den här knappen för att starta om MySQL-databasservern på ditt system. Alla klienter kommer att kopplas bort och alla konfigurationsfiler kommer att laddas om.
 index_eshow=MySQL-statusprogrammet $1 hittades inte på ditt system. Kanske är MySQL inte installerat, eller är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_estart=MySQL-startskriptet $1 hittades inte på ditt system. Kanske är MySQL inte installerat, eller är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_indexes=Index
@@ -134,6 +136,8 @@ users_dok=Radera användare
 
 user_vwarning=VARNING: Denna MySQL-användare är administrationsinloggningen för Virtualmin-domänen $1. Ändring av inställningar här kan orsaka fel i Virtualmin.
 user_locked=Låst
+user_plugin=Autentiseringstyp
+user_hashpass=Aktuellt hashat lösenord
 user_priv_select=Välj tabelldata
 user_priv_insert=Infoga tabelldata
 user_priv_update=Uppdatera tabelldata
@@ -181,6 +185,8 @@ user_emax_connections=Maximala anslutningar per timme måste vara ett nummer
 user_emax_updates=Maximala uppdateringar per timme måste vara ett nummer
 user_emax_questions=Maximala frågor per timme måste vara ett nummer
 
+dbs_except=Alla, utom
+dbs_except_and=och
 dbs_derr=Det gick inte att ta bort databasbehörigheter
 dbs_enone=Inga databaser valda
 dbs_dtitle=Radera databasbehörigheter
@@ -256,6 +262,7 @@ acl_indexes=Kan visa och hantera index?
 acl_views=Kan visa och hantera vyer?
 acl_files=Kan köras SQL från lokala filer?
 
+log_restart=Startade om MySQL-servern
 log_cnf=Ändrad MySQL-serverkonfiguration
 log_ssl=Ändrade SSL-certifikat
 log_genssl=Genererat SSL-certifikat
@@ -422,6 +429,8 @@ cnf_restart=Spara och starta om MySQL
 cnf_fpt=Separat fil för varje InnoDB-bord?
 cnf_ilt=InnoDB-låstid (i sekunder)
 cnf_eilt=InnoDB-låset måste vara ett heltal
+cnf_sqlm=SQL-lägesalternativ
+cnf_esqlm=SQL-lägesalternativ måste vara en kommaseparerad lista med flaggor
 
 manual_title=Redigera konfigurationsfiler
 manual_file=Redigera konfigurationsfil:

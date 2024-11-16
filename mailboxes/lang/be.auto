@@ -153,7 +153,17 @@ view_return=арыгінальны ліст
 view_sub=Укладзены ліст
 view_sub2=Укладзены ліст ад $1
 view_egone=Гэта паведамленне больш не існуе
+view_efolder=Гэтая папка не існуе!
 view_eugone=Карыстальніка не існуе
+view_ical=Падзея
+view_ical_when=Калі
+view_ical_where=дзе
+view_ical_who=Сусветная арганізацыя па ахове здароўя
+view_ical_orginizertime=Час арганізатара
+view_ical_orginizername=Імя арганізатара
+view_ical_orginizeremail=Электронная пошта арганізатара
+view_ical_attendees=Падрабязнасці прысутных
+view_ical_desc=Апісанне падзеі
 
 view_gnupg=Пацверджанне подпісу GnuPG
 view_gnupg_0=Подпіс $1 дзейнічае.
@@ -323,6 +333,7 @@ folder_inbox=Уваходныя
 folder_sent=Адпраўлена
 folder_drafts=Чарнавікі
 folder_trash=Хлам
+folder_spam=Спам
 
 detach_err=Не атрымалася адлучыць файл
 detach_edir=Няма файла альбо каталога для захавання

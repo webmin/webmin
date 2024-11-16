@@ -100,7 +100,17 @@ view_markas1=Leer
 view_markas2=Especial
 view_sub2=Correo electrónico adjunto de $1
 view_egone=Este mensaje ya no existe.
+view_efolder=¡Esta carpeta no existe!
 view_eugone=Este usuario no existe
+view_ical=Evento
+view_ical_when=Cuando
+view_ical_where=Dónde
+view_ical_who=OMS
+view_ical_orginizertime=Tiempo de organizador
+view_ical_orginizername=Nombre del organizador
+view_ical_orginizeremail=Correo electrónico del organizador
+view_ical_attendees=Detalles de los asistentes
+view_ical_desc=Descripción del evento
 
 view_gnupg=Verificación de firma de GnuPG
 view_gnupg_0=La firma por $1 es válida.
@@ -241,6 +251,7 @@ folder_inbox=Bandeja de entrada
 folder_sent=Enviado
 folder_drafts=Borradores
 folder_trash=Basura
+folder_spam=Correo basura
 
 detach_err=Error al separar el archivo
 detach_edir=Ningún archivo o directorio para guardar en ingresado

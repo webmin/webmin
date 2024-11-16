@@ -1,38 +1,130 @@
-index_title=Procmail - filtr e-mail
-index_procmail=Procmail - filtr poczty
+index_title=Filtr poczty Procmail
+index_procmail=Filtr poczty Procmail
+index_desc_other=Akcje procmail poniżej z $1 będą miały zastosowanie do <b>wszystkich</b> wiadomości e-mail dostarczanych do użytkowników w Twoim systemie. Jednak będą one używane tylko, jeśli Procmail jest zainstalowany, a Twój serwer pocztowy jest odpowiednio skonfigurowany.
+index_mserr=Ostrzeżenie - jakiekolwiek zdefiniowane poniżej reguły nie będą używane: $1
+index_virtualmin=Konfiguracja procmail w Twoim systemie została utworzona przez Virtualmin w celu umożliwienia filtrowania spamu i wirusów dla poszczególnych domen. Zmiana jej tutaj może zakłócić działanie Virtualmin.
 index_action=Akcja do wykonania
 index_conds=Warunki
 index_move=Przenieś
 index_ba=Dodaj
+index_act6=Ustaw zmienną $1
+index_act5=Wykonaj blok warunkowy
+index_act4=Przekaż do programu $1
+index_act3=Przekaż do $1
+index_act2=Zapisz do katalogu maildir $1
+index_act1=Zapisz do folderu MH $1
+index_act0=Dopisz do pliku $1
+index_noconds=Zawsze wykonuj akcję
+index_re=Dopasuj wyrażenie regularne $1
+index_nre=Nie dopasowuj wyrażenia regularnego $1
+index_shell=Oceń polecenie $1
+index_exit=Status wyjścia polecenia $1
 index_lt=Rozmiar jest < $1
 index_gt=Rozmiar jest > $1
-index_add=Dodaj nową akcję filtru
+index_add=Dodaj nową akcję filtru.
 index_eadd=Dodaj nowe ustawienie zmiennej.
 index_badd=Dodaj nowy blok warunkowy.
-index_iadd=Dodaj nowy plik
-index_return=listy działań
-index_man=Ręcznie edytuj konfigurację
-index_mandesc=Bezpośrednia edycja pliku konfiguracji Procmail. Pozwala stworzyć własne reguły, zmienne i instrukcje warunkwe.
+index_iadd=Dodaj nowy plik włączenia.
+index_none=Nie skonfigurowano jeszcze żadnych akcji Procmail.
+index_return=listy akcji
+index_env=Ustaw zmienną $1 na $2
+index_include=Przetwórz plik włączenia $1
+index_man=Edytuj ręcznie konfigurację
+index_mandesc=Bezpośrednio edytuj główny plik konfiguracyjny Procmail, aby stworzyć własne reguły, zmienne i bloki.
+index_ecmd=Program Procmail $1 nie został znaleziony w Twoim systemie. Albo nie jest zainstalowany, albo <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
 index_delete=Usuń wybrane akcje
 
+edit_title2=Edytuj akcję
+edit_title1=Utwórz akcję
+edit_header1=Szczegóły akcji dostarczenia
+edit_header2=Warunki akcji
 edit_action=Tryb dostarczania
-edit_amode_0=Dołącz do pliku
-edit_amode_1=Zapisz do katalogu MH
-edit_amode_3=Przekieruj na adres
+edit_block=Kod Procmail do wykonania
+edit_amode_0=Dopisz do pliku
+edit_amode_1=Zapisz do folderu MH
+edit_amode_2=Zapisz do katalogu maildir
+edit_amode_3=Przekaż na adres
+edit_amode_4=Przekaż do programu
 edit_amode_6=Ustaw zmienną
+edit_flag_H=Zastosuj warunki do nagłówków
+edit_flag_B=Zastosuj warunki do treści
+edit_flag_D=Dopasowanie wielkości liter
+edit_flag_h=Przekaż nagłówki do celu
+edit_flag_b=Przekaż treść do celu
+edit_flag_c=Kontynuuj przetwarzanie, nawet jeśli warunki pasują
+edit_flag_w=Czekaj na zakończenie programu akcji i sprawdź wynik
+edit_flag_W=Czekaj na zakończenie programu akcji, ale zignoruj wynik
+edit_flag_i=Ignoruj błędy zapisu podczas dostarczania
+edit_flag_r=Zapisz pocztę w trybie surowym
+edit_flag_f=Program akcji jest filtrem
+edit_lockfile=Plik blokady dostarczania
+edit_cmode_re=Pasuje do wyrażenia regularnego
+edit_cmode_nre=Nie pasuje do wyrażenia regularnego
+edit_cmode_shell=Oceń wynik polecenia
+edit_cmode_exit=Sprawdź status wyjścia polecenia
+edit_cmode_lt=Poczta jest mniejsza niż
+edit_cmode_gt=Poczta jest większa niż
+edit_conddesc=Aby powyższa akcja została wykonana, wszystkie poniższe warunki muszą pasować. Jeśli nie ma warunków, akcja zostanie zawsze wykonana.
+edit_none=Brak
+edit_lock=Specyficzny plik
+edit_ctype=Typ warunku
+edit_cvalue=Wyrażenie regularne lub polecenie
 
-env_title1=Tworzenie zmiennej
-env_title2=Edycja zmiennej
+save_err=Nie udało się zapisać akcji
+save_eaction_0=Brak pliku do dopisania
+save_eaction_1=Brak folderu MH do zapisania
+save_eaction_2=Brak katalogu maildir do zapisania
+save_eaction_3=Brak adresu do przekazania
+save_eaction_4=Brak programu do przekazania
+save_eaction_6=Brak zmiennej do ustawienia
+save_eactionvar=Zmienna do ustawienia musi być wprowadzona w formacie NAZWA=wartość
+save_elockfile=Brak nazwy pliku blokady
+save_esize=Brak lub nieprawidłowy rozmiar poczty dla warunku $1
+save_ere=Brak wyrażenia regularnego dla warunku $1
+save_eshell=Brak polecenia dla warunku $1
+
+env_title1=Utwórz zmienną
+env_title2=Edytuj zmienną
+env_header=Zmienna środowiskowa Procmail
 env_name=Nazwa zmiennej
 env_value=Wartość
+env_err=Nie udało się zapisać zmiennej
+env_ename=Brak lub nieprawidłowa nazwa zmiennej
 
-inc_inc=Załącz plik
-inc_einc=Nie wpisano pliku do załączenia
+inc_title1=Dodaj plik włączenia
+inc_title2=Edytuj plik włączenia
+inc_header=Plik reguł Procmail do włączenia
+inc_inc=Włączony plik
+inc_einc=Nie podano pliku włączenia
 
 config_eline=Nieznana linia $1 w $2 : $3
 
-delete_err=błąd usuwania
+manual_title=Edytuj konfigurację
+manual_desc=Ta strona pozwala ręcznie edytować plik konfiguracyjny Procmail $1. Należy zachować ostrożność, ponieważ nie będzie przeprowadzana weryfikacja składni.
+manual_edata=Nie dostarczono danych przez przeglądarkę!
+
+log_create_rec=Utworzono przepis do $1
+log_delete_rec=Usunięto przepis do $1
+log_modify_rec=Zmodyfikowano przepis do $1
+log_delete_recs=Usunięto $1 przepisów
+log_act5=wykonaj blok warunkowy
+log_act4=przekaż do programu $1
+log_act3=przekaż do $1
+log_act2=zapisz do katalogu maildir $1
+log_act1=zapisz do folderu MH $1
+log_act0=dopisz do pliku $1
+log_create_env=Utworzono zmienną środowiskową $1
+log_modify_env=Zmodyfikowano zmienną środowiskową $1
+log_delete_env=Usunięto zmienną środowiskową $1
+log_create_inc=Utworzono plik włączenia $1
+log_modify_inc=Zmodyfikowano plik włączenia $1
+log_delete_inc=Usunięto plik włączenia $1
+log_manual=Ręcznie edytowano konfigurację
+log_up=Przesunięto wpis w górę
+log_down=Przesunięto wpis w dół
+
+delete_err=Nie udało się usunąć akcji
 delete_enone=Nic nie wybrano
 
-check_epostfix=Procmail nie jest włączony w twojej konfiguracji Postfix. W pliku konfiguracyjnym <tt>$2</tt> opcja  <tt>$1</tt> musi być ustawiona na <tt>$3</tt>.
-check_esendmail=Sendmail nie jest skonfigurowany, aby używać Procmail. Możesz to ustawić w module <a href='$1'>Sendmail - serwer e-mailowy</a>
+check_epostfix=Procmail nie jest włączony w Twojej konfiguracji Postfix. Plik konfiguracyjny <tt>$2</tt> musi mieć ustawioną opcję <tt>$1</tt> na <tt>$3</tt>.
+check_esendmail=Sendmail nie jest skonfigurowany do używania Procmail do lokalnego dostarczania. Można to skonfigurować w module <a href='$1'>Serwer pocztowy Sendmail</a> Webmina.

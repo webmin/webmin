@@ -192,7 +192,6 @@ kill_ok=Ja, beenden
 
 range_all=Ausführung an einem beliebigen Datum
 range_start=Nur ab $1 ausführen
-bereich_ende=bis $1
 range_estart=Fehlendes oder ungültiges Startdatum im auszuführenden Bereich
 range_eend=Fehlendes oder ungültiges Enddatum im auszuführenden Bereich
 

@@ -173,6 +173,7 @@ acls_action=Azzjoni
 acls_manual=Parametri manwali
 acls_error=Il-kmand ta' <tt>setfacl</tt> ma jinstabx fis-sistema tiegħek
 file_detect_encoding=Skopri awtomatikament il-kodifikazzjoni tal-fajl
+file_showhiddenfiles=Uri fajls moħbija
 index_return=elenkar tal-fajl
 upload_dirs=Direttorju Upload
 extract_uploaded=Estratt Kompressat

@@ -1,4 +1,16 @@
+view_efolder=Ce dossier n'existe pas !
+view_ical=Événement
+view_ical_when=Quand
+view_ical_where=Où
+view_ical_who=OMS
+view_ical_orginizertime=Heure de l'organisateur
+view_ical_orginizername=Nom de l'organisateur
+view_ical_orginizeremail=E-mail de l'organisateur
+view_ical_attendees=Détails des participants
+view_ical_desc=Description de l'événement
+
 folder_sent=Envoyé
+folder_spam=Courrier indésirable
 
 editor_heading=Titre
 editor_paragraph=Paragraphe

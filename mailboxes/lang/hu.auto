@@ -57,7 +57,17 @@ view_enew=Szerkesztés újként
 view_ecannot=Nem szabad elolvasni a felhasználó e-mailjét
 view_sub2=Csatolt e-mail a $1 -től
 view_egone=Ez az üzenet már nem létezik
+view_efolder=Ez a mappa nem létezik!
 view_eugone=Ez a felhasználó nem létezik
+view_ical=Esemény
+view_ical_when=Amikor
+view_ical_where=Ahol
+view_ical_who=WHO
+view_ical_orginizertime=Szervező idő
+view_ical_orginizername=Szervező neve
+view_ical_orginizeremail=Szervező email
+view_ical_attendees=A résztvevők adatai
+view_ical_desc=Esemény leírása
 
 view_gnupg=GnuPG aláírás-ellenőrzés
 view_gnupg_0=$1 aláírása érvényes.
@@ -182,6 +192,7 @@ search_elatest=Hiányzik vagy érvénytelen a keresett üzenetek száma
 search_withstatus=, állapotával $1
 
 folder_sent=Küldött
+folder_spam=Spam
 
 detach_err=A fájl leválasztása nem sikerült
 detach_edir=Nincs fájl vagy könyvtár, amelyet menteni kellene a megadott fájlba

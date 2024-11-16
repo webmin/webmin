@@ -55,5 +55,3 @@ acl_sel=仅列出文件和列出目录下的文件 ..
 acl_extra=此用户的额外日志文件
 acl_syslog=可以从syslog查看日志吗？
 acl_others=可以查看其他模块的日志吗？
-
-__norefs=1

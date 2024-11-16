@@ -1,3 +1,5 @@
+index_restart=Reiniciar o servidor MySQL
+index_restartmsg=Clique neste botão para reiniciar o servidor de banco de dados MySQL no seu sistema. Todos os clientes serão desconectados e todos os arquivos de configuração serão recarregados.
 index_eshow=O programa de status do MySQL $1 não foi encontrado no seu sistema. Talvez o MySQL não esteja instalado ou a sua <a href='$2'>configuração do módulo</a> esteja incorreta.
 index_estart=O script de inicialização do MySQL $1 não foi encontrado no seu sistema. Talvez o MySQL não esteja instalado ou a sua <a href='$2'>configuração do módulo</a> esteja incorreta.
 index_indexes=Índices
@@ -24,6 +26,8 @@ view_sqlrun=Resultados gerados pela consulta SQL : $1
 
 user_vwarning=AVISO: Esse usuário do MySQL é o logon de administração do domínio $1 do Virtualmin. Alterar as configurações aqui pode causar erros no Virtualmin.
 user_locked=Bloqueado
+user_plugin=Tipo de autenticação
+user_hashpass=Senha com hash atual
 user_priv_select=Selecionar dados da tabela
 user_priv_insert=Inserir dados da tabela
 user_priv_update=Atualizar dados da tabela
@@ -67,11 +71,15 @@ user_emax_connections=O número máximo de conexões por hora deve ser um númer
 user_emax_updates=O número máximo de atualizações por hora deve ser um número
 user_emax_questions=O número máximo de consultas por hora deve ser um número
 
+dbs_except=Todos, exceto
+dbs_except_and=e
+
 hosts_return=permissões de host
 
 exec_cs=Conjunto de caracteres para dados
 exec_collationdown=O agrupamento do banco de dados foi rebaixado de <tt>$1</tt> para <tt>$2</tt>
 
+log_restart=Servidor MySQL reiniciado
 log_ssl=Certificado SSL alterado
 log_genssl=Certificado SSL gerado
 log_manual=Arquivo de configuração editado manualmente
@@ -111,6 +119,8 @@ cnf_ekey_buffer_size=Tamanho do buffer da chave ausente ou inválido
 cnf_esort_buffer_size=Tamanho do buffer de classificação ausente ou inválido
 cnf_ilt=Tempo limite de bloqueio do InnoDB (em segundos)
 cnf_eilt=O tempo limite do bloqueio do InnoDB deve ser um número inteiro
+cnf_sqlm=Opções do modo SQL
+cnf_esqlm=As opções do modo SQL devem ser uma lista de sinalizadores separados por vírgulas
 
 manual_title=Editar arquivos de configuração
 manual_file=Edite o arquivo de configuração:

@@ -47,7 +47,17 @@ view_markas0=未讀
 view_markas1=讀
 view_markas2=特別
 view_sub2=來自$1的電子郵件附件
+view_efolder=該資料夾不存在！
 view_eugone=該用戶不存在
+view_ical=事件
+view_ical_when=什麼時候
+view_ical_where=在哪裡
+view_ical_who=世界衛生組織
+view_ical_orginizertime=主辦時間
+view_ical_orginizername=主辦單位名稱
+view_ical_orginizeremail=主辦單位信箱
+view_ical_attendees=與會者詳情
+view_ical_desc=活動描述
 
 view_dheader=分離到服務器的附件
 view_white=允許發件人
@@ -118,6 +128,7 @@ search_elatest=要搜索的消息丟失或數量無效
 search_withstatus=，狀態為$1
 
 folder_sent=發送
+folder_spam=垃圾郵件
 
 sform_header=進階電子郵件搜尋選項
 sform_andmode=標準模式

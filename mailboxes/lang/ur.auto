@@ -153,7 +153,17 @@ view_return=اصل ای میل
 view_sub=منسلک ای میل
 view_sub2=Attached email from $1
 view_egone=اب یہ پیغام موجود نہیں ہے
+view_efolder=یہ فولڈر موجود نہیں ہے!
 view_eugone=یہ صارف موجود نہیں ہے
+view_ical=واقعہ
+view_ical_when=جب
+view_ical_where=کہاں
+view_ical_who=ڈبلیو ایچ او
+view_ical_orginizertime=منتظم کا وقت
+view_ical_orginizername=آرگنائزر کا نام
+view_ical_orginizeremail=آرگنائزر کا ای میل
+view_ical_attendees=شرکاء کی تفصیلات
+view_ical_desc=واقعہ کی تفصیل
 
 view_gnupg=GnuPG دستخطی کی توثیق
 view_gnupg_0=Signature by $1 is valid.
@@ -323,6 +333,7 @@ folder_inbox=ان باکس
 folder_sent=بھیجا
 folder_drafts=ڈرافٹس
 folder_trash=کوڑے دان
+folder_spam=سپیم
 
 detach_err=فائل کو علیحدہ کرنے میں ناکام
 detach_edir=داخل کرنے کیلئے محفوظ کرنے کے لئے کوئی فائل یا ڈائریکٹری نہیں ہے

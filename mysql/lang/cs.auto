@@ -1,3 +1,5 @@
+index_restart=Restartujte MySQL Server
+index_restartmsg=Klepnutím na toto tlačítko restartujete databázový server MySQL ve vašem systému. Všichni klienti budou odpojeni a všechny konfigurační soubory budou znovu načteny.
 index_eshow=Ve vašem systému nebyl nalezen stavový program MySQL $1. Možná není MySQL nainstalována nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
 index_estart=Spouštěcí skript MySQL $1 nebyl ve vašem systému nalezen. Možná není MySQL nainstalována nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
 index_indexes=Rejstříky
@@ -43,6 +45,8 @@ users_dok=Smazat uživatele
 
 user_vwarning=UPOZORNĚNÍ: Tento uživatel MySQL je administrační přihlašovací jméno pro doménu Virtualmin $1. Změna zde uvedených nastavení může způsobit chyby ve Virtualmin.
 user_locked=Zamčené
+user_plugin=Typ autentizace
+user_hashpass=Aktuální hashované heslo
 user_priv_select=Vyberte data tabulky
 user_priv_insert=Vložte data tabulky
 user_priv_update=Aktualizujte data tabulky
@@ -90,6 +94,8 @@ user_emax_connections=Maximální počet připojení za hodinu musí být čísl
 user_emax_updates=Maximální aktualizace za hodinu musí být číslo
 user_emax_questions=Maximální počet dotazů za hodinu musí být číslo
 
+dbs_except=Všechny, kromě
+dbs_except_and=a
 dbs_dtitle=Odstranit oprávnění databáze
 dbs_drusure=Opravdu chcete odstranit $1 vybraná oprávnění databáze MySQL?
 dbs_dok=Smazat oprávnění
@@ -116,6 +122,7 @@ cprivs_dok=Smazat oprávnění
 
 acl_files=Je možné provádět SQL z lokálních souborů?
 
+log_restart=Restartoval server MySQL
 log_ssl=Změněn certifikát SSL
 log_genssl=Vygenerovaný certifikát SSL
 log_root=Změněno heslo pro správu
@@ -161,6 +168,8 @@ cnf_restart=Uložit a restartovat MySQL
 cnf_fpt=Samostatný soubor pro každou tabulku InnoDB?
 cnf_ilt=Časový limit zámku InnoDB (v sekundách)
 cnf_eilt=Časový limit zámku InnoDB musí být celé číslo
+cnf_sqlm=Možnosti režimu SQL
+cnf_esqlm=Možnosti režimu SQL musí být seznam příznaků oddělených čárkami
 
 manual_title=Upravit konfigurační soubory
 manual_file=Upravit konfigurační soubor:

@@ -10,6 +10,16 @@ mail_subfilter=Vytvořte filtr podle předmětu
 mail_specialsync=Synchronizovat speciální
 
 view_nobody=Tato zpráva nemá obsah těla.
+view_efolder=Tato složka neexistuje!
+view_ical=Událost
+view_ical_when=Když
+view_ical_where=Kde
+view_ical_who=SZO
+view_ical_orginizertime=Čas pořadatele
+view_ical_orginizername=Jméno organizátora
+view_ical_orginizeremail=E-mail organizátora
+view_ical_attendees=Podrobnosti o účastnících
+view_ical_desc=Popis události
 
 reply_dsn=Požádat o oznámení o stavu čtení?
 reply_del=Vyžádat si oznámení o stavu doručení?
@@ -30,6 +40,7 @@ search_msg6=Výsledky hledání $1 v poli $2
 search_attach=Musí mít přílohy?
 
 folder_sent=Odesláno
+folder_spam=Spam
 
 left_mail=Pošta
 left_search=Vyhledávání:

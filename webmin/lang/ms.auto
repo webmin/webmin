@@ -176,6 +176,9 @@ sendmail_ssl0=Jangan sekali-kali menyulitkan
 sendmail_ssl1=Sentiasa gunakan TLS
 sendmail_ssl2=Tukar dengan STARTTLS
 sendmail_authdef=Lalai (kini Cram-MD5)
+sendmail_toaddr=Alamat destinasi lalai untuk pemberitahuan
+sendmail_to_def=Tiada set
+sendmail_etoaddr=Alamat destinasi tiada atau salah format
 sendmail_url=URL Webmin untuk digunakan dalam e-mel
 sendmail_url_def=Lalai ($1)
 sendmail_url_custom=URL tersuai
@@ -192,6 +195,7 @@ web_eredirpref=Awalan mesti bermula dengan garis miring ke hadapan
 web_eredirpref2=Awalan tidak boleh mengandungi ruang
 web_redirssl=Ubah hala SSL
 
+twofactor_totp=Pengesah TOTP
 twofactor_eusers=Pengesahan dua faktor tidak boleh dilumpuhkan, kerana pengguna berikut kini mendaftar : $1
 twofactor_qrcode=Masukkan kod rahsia $1 dalam apl TOTP, atau imbas kod QR di bawah.
 twofactor_etotptoken=Token TOTP mestilah nombor
@@ -258,3 +262,6 @@ os_eol_second=kedua
 os_eol_reached=EOL sampai
 os_eol_reaching=EOL masuk
 os_eol_reaching2=EOL akan berlaku
+
+qr_err=Gagal menjana kod QR
+qr_estr=Rentetan kod QR tiada!

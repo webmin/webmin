@@ -584,6 +584,9 @@ sendmail_authdef=پیش فرض (در حال حاضر Cram-MD5)
 sendmail_from=از آدرس ایمیل برای Webmin
 sendmail_fromdef=Default ($1)
 sendmail_fromaddr=نشانی
+sendmail_toaddr=Ø¢Ø¯Ø±Ø³ ÙÙØµØ¯ Ù¾ÛØ´‌ÙØ±Ø¶ Ø¨Ø±Ø§Û Ø§Ø¹ÙØ§Ù‌ÙØ§
+sendmail_to_def=هیچ کدام تنظیم نشده است
+sendmail_etoaddr=آدرس مقصد وجود ندارد یا فرمت نادرست است
 sendmail_err=گزینه های ارسال نامه ذخیره نشد
 sendmail_esmtp=نام میزبان سرور SMTP وجود ندارد یا غیرقابل حل است
 sendmail_eport=درگاه SMTP وجود ندارد یا غیر عددی است
@@ -658,6 +661,7 @@ twofactor_title=احراز هویت دو عاملی
 twofactor_header=گزینه های تأیید اعتبار دو عاملی
 twofactor_provider=ارائه دهنده تأیید اعتبار
 twofactor_none=هیچ یک
+twofactor_totp=TOTP Authenticator
 twofactor_apikey=کلید تأیید API
 twofactor_test=از حالت تست ارائه دهنده استفاده می کنید؟
 twofactor_desc=احراز هویت دو عاملی به کاربران وبمین اجازه می دهد تا هنگام ورود به سیستم ، از قبیل تولید کننده رمز عبور یک بار ، از دستگاه احراز هویت اضافی استفاده کنند. کاربران پس از فعال شدن در این صفحه باید به صورت جداگانه در ارائه دهنده تأیید اعتبار انتخاب شده ثبت نام کنند.
@@ -753,3 +757,6 @@ os_eol_second=دومین
 os_eol_reached=EOL رسیده است
 os_eol_reaching=EOL در
 os_eol_reaching2=EOL قریب الوقوع
+
+qr_err=کد QR ایجاد نشد
+qr_estr=رشته کد QR وجود ندارد!

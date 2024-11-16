@@ -173,6 +173,7 @@ acls_action=Tindakan
 acls_manual=Params manual
 acls_error=Perintah <tt>setfacl</tt> tidak ditemui pada sistem anda
 file_detect_encoding=Mengesan pengekodan fail secara automatik
+file_showhiddenfiles=Tunjukkan fail tersembunyi
 index_return=senarai fail
 upload_dirs=Muat Naik Direktori
 extract_uploaded=Ekstrak Mampat

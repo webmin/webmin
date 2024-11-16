@@ -153,7 +153,17 @@ view_return=оригінальний електронний лист
 view_sub=Приєднаний електронний лист
 view_sub2=Доданий електронний лист від $1
 view_egone=Це повідомлення більше не існує
+view_efolder=Ця папка не існує!
 view_eugone=Цей користувач не існує
+view_ical=Подія
+view_ical_when=Коли
+view_ical_where=Де
+view_ical_who=ВООЗ
+view_ical_orginizertime=Час організатора
+view_ical_orginizername=Назва організатора
+view_ical_orginizeremail=Електронна пошта організатора
+view_ical_attendees=Деталі учасників
+view_ical_desc=Опис події
 
 view_gnupg=Перевірка підпису GnuPG
 view_gnupg_0=Підпис $1 є дійсним.
@@ -323,6 +333,7 @@ folder_inbox=Вхідні
 folder_sent=Надісланий
 folder_drafts=Чернетки
 folder_trash=Сміття
+folder_spam=Спам
 
 detach_err=Не вдалося вилучити файл
 detach_edir=Немає файлу чи каталогів, які можна зберегти

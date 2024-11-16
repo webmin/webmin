@@ -173,6 +173,7 @@ acls_action=Darbība
 acls_manual=Manuālie parametri
 acls_error=Komanda <tt>setfacl</tt> jūsu sistēmā nav atrasta
 file_detect_encoding=Automātiski noteikt failu kodējumu
+file_showhiddenfiles=Rādīt slēptos failus
 index_return=failu saraksts
 upload_dirs=Direktorija augšupielāde
 extract_uploaded=Ekstrakts saspiests

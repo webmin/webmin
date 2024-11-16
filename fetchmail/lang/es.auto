@@ -9,8 +9,11 @@ index_show=mostrar
 index_toomany=Hay demasiados usuarios en su sistema para mostrar.
 
 poll_auth=Método de autentificación
+poll_folder=Carpeta IMAP para comprobar
+poll_inbox=Predeterminado (BANDEJA DE ENTRADA)
 poll_usually=Por lo general no
 poll_ssl=¿Conectar en modo SSL?
+poll_efolder=Falta el nombre de la carpeta
 poll_eboth=Las opciones para dejar mensajes en el servidor y buscar siempre todos los mensajes son incompatibles
 poll_eusername=¡El usuario no existe!
 poll_foruser=Para el usuario $1 

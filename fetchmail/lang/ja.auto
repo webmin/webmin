@@ -16,8 +16,11 @@ index_show=公演
 index_toomany=システム上に表示するユーザーが多すぎます。
 
 poll_auth=認証方法
+poll_folder=確認するIMAPフォルダ
+poll_inbox=デフォルト (受信トレイ)
 poll_usually=通常はありません
 poll_ssl=SSLモードで接続しますか？
+poll_efolder=フォルダ名がありません
 poll_eboth=サーバーにメッセージを残し、常にすべてのメッセージを取得するオプションには互換性がありません
 poll_adduser=別のユーザーを追加
 poll_check=このサーバーを確認してください

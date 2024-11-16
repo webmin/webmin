@@ -173,6 +173,7 @@ acls_action=Handling
 acls_manual=Manuella parametrar
 acls_error=Kommandot <tt>setfacl</tt> hittades inte på ditt system
 file_detect_encoding=Identifiera filkodning automatiskt
+file_showhiddenfiles=Visa dolda filer
 index_return=fillista
 upload_dirs=Kataloguppladdning
 extract_uploaded=Extrahera komprimerat

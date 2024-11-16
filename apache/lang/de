@@ -931,7 +931,6 @@ mod_ssl_epassph=Kein SSL-Passwort eingegeben
 mod_ssl_epasssc=Fehlendes oder ungültiges SSL-Passwort-Skript
 mod_ssl_ecerton=Wenn SSL aktiviert ist, muss eine Zertifikatdatei ausgewählt werden
 
-# nodo50 v0.1 - Änderung 000003 - Neues Skript. Definiere Editoren für mod_apachessl-Direktiven (Apache-ssl verwendet nicht mod_ssl)
 mod_apachessl_notssl=SSL-Zugriff verweigern
 mod_apachessl_forcessl=SSL/Zugriff ohne SSL erzwingen?
 mod_apachessl_capath=Pfad zum Verzeichnis mit Zertifikaten der Zertifizierungsstellen in
@@ -964,7 +963,6 @@ mod_apachessl_nov2=SSL-Version 2 deaktivieren
 mod_apachessl_fake=Simuliert Benutzer-Basisauthentifizierungsanmeldungen unter Verwendung des Zertifikatsnamens
 mod_apachessl_cdnfile=Datei, gegen die der Client-DN überprüft wird
 mod_apachessl_ecdnfile=Fehlende Datei, gegen die der Client-DN überprüft wird
-# nodo50 v0.1 - Änderung 000003 - Ende
 
 log_global=Globale $1-Optionen geändert
 log_virtc=Server $1 erstellt

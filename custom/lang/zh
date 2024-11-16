@@ -122,7 +122,6 @@ file_edit=编辑文件
 file_owner=文件所有权
 file_user=用户
 file_group=群组
-file_leave保持原样
 file_perms=文件权限
 file_set=设置为八进制
 file_beforeedit=编辑前运行的命令
@@ -175,4 +174,3 @@ srun_cmd=正在执行SQL命令 $1 ..
 srun_eprepare=.. SQL 错误 : $1
 srun_eexecute=.. 执行错误 : $1
 srun_none=.. 没有返回任何结果.
-__norefs=1

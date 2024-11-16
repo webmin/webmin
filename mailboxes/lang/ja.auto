@@ -10,6 +10,16 @@ mail_subfilter=件名でフィルターを作成する
 mail_specialsync=同期スペシャル
 
 view_nobody=このメッセージには本文の内容はありません。
+view_efolder=このフォルダは存在しません。
+view_ical=イベント
+view_ical_when=いつ
+view_ical_where=どこ
+view_ical_who=誰が
+view_ical_orginizertime=主催者時間
+view_ical_orginizername=主催者名
+view_ical_orginizeremail=主催者のメール
+view_ical_attendees=出席者の詳細
+view_ical_desc=イベントの説明
 
 reply_dsn=読み取りステータス通知を要求しますか？
 reply_del=配信ステータス通知をリクエストしますか？
@@ -30,6 +40,7 @@ search_msg6=$2フィールドの$1の検索結果
 search_attach=添付ファイルが必要ですか？
 
 folder_sent=送信済み
+folder_spam=スパム
 
 left_mail=郵便物
 left_search=探す：

@@ -1,2 +1,3 @@
-desc_pl=Filtry i przekierowanie e-maili
-longdesc_pl=Twórz reguły filtrów i przekierowania przychodzących e-maili.
+desc_pl=Filtruj i Przekieruj Poczta
+longdesc_pl=Twórz reguły do filtrowania i przekierowywania przychodzących wiadomości e-mail.
+

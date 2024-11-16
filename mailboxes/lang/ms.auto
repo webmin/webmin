@@ -153,7 +153,17 @@ view_return=e-mel asal
 view_sub=Melampirkan E-mel
 view_sub2=Melampirkan e-mel dari $1
 view_egone=Mesej ini tidak lagi wujud
+view_efolder=Folder ini tidak wujud!
 view_eugone=Pengguna ini tidak wujud
+view_ical=Peristiwa
+view_ical_when=bila
+view_ical_where=di mana
+view_ical_who=WHO
+view_ical_orginizertime=Masa penganjur
+view_ical_orginizername=Nama penganjur
+view_ical_orginizeremail=E-mel penganjur
+view_ical_attendees=Butiran peserta
+view_ical_desc=Penerangan acara
 
 view_gnupg=Pengesahan tandatangan GnuPG
 view_gnupg_0=Tandatangan oleh $1 adalah sah.
@@ -323,6 +333,7 @@ folder_inbox=Peti masuk
 folder_sent=Dihantar
 folder_drafts=Draf
 folder_trash=Sampah
+folder_spam=Spam
 
 detach_err=Gagal melepaskan fail
 detach_edir=Tiada fail atau direktori untuk disimpan untuk dimasukkan

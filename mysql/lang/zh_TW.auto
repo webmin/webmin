@@ -1,3 +1,5 @@
+index_restart=重啟MySQL伺服器
+index_restartmsg=按一下此按鈕可重新啟動系統上的 MySQL 資料庫伺服器。所有客戶端都將斷開連接，並且所有設定檔都將重新載入。
 index_eshow=在您的系統上找不到MySQL狀態程序 $1。也許未安裝MySQL，或者您的<a href='$2'>模塊配置</a>不正確。
 index_estart=在您的系統上找不到MySQL啟動腳本 $1。也許未安裝MySQL，或者您的<a href='$2'>模塊配置</a>不正確。
 index_indexes=索引
@@ -95,6 +97,8 @@ users_dok=刪除用戶
 
 user_vwarning=警告：此MySQL用戶是Virtualmin域 $1的管理登錄名。在此處更改任何設置可能會導致Virtualmin錯誤。
 user_locked=已鎖定
+user_plugin=認證類型
+user_hashpass=目前的哈希密碼
 user_priv_select=選擇表格數據
 user_priv_insert=插入表格數據
 user_priv_update=更新表格數據
@@ -142,6 +146,8 @@ user_emax_connections=每小時最大連接數必須是一個數字
 user_emax_updates=每小時最大更新數必須為數字
 user_emax_questions=每小時最大查詢數必須是一個數字
 
+dbs_except=所有，除了
+dbs_except_and=和
 dbs_derr=刪除數據庫權限失敗
 dbs_enone=未選擇數據庫
 dbs_dtitle=刪除數據庫權限
@@ -199,6 +205,7 @@ acl_indexes=可以查看和管理索引嗎？
 acl_views=可以查看和管理視圖嗎？
 acl_files=可以從本地文件執行SQL嗎？
 
+log_restart=重新啟動MySQL伺服器
 log_cnf=更改了MySQL服務器配置
 log_ssl=更改了 SSL 證書
 log_genssl=生成的 SSL 證書
@@ -344,6 +351,8 @@ cnf_restart=保存並重啟MySQL
 cnf_fpt=每個InnoDB表有單獨的文件嗎？
 cnf_ilt=InnoDB鎖定超時（以秒為單位）
 cnf_eilt=InnoDB鎖定超時必須為整數
+cnf_sqlm=SQL 模式選項
+cnf_esqlm=SQL 模式選項必須是逗號分隔的標誌列表
 
 manual_title=編輯配置文件
 manual_file=編輯配置文件：

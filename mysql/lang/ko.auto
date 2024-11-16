@@ -1,3 +1,5 @@
+index_restart=MySQL 서버 재시작
+index_restartmsg=이 버튼을 클릭하면 시스템에서 MySQL 데이터베이스 서버를 다시 시작합니다. 모든 클라이언트가 연결 해제되고 모든 구성 파일이 다시 로드됩니다.
 index_eshow=시스템에서 MySQL 상태 프로그램 $1 을 (를) 찾을 수 없습니다. MySQL이 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_estart=시스템에서 MySQL 시작 스크립트 $1 을 (를) 찾을 수 없습니다. MySQL이 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_indexes=인덱스
@@ -134,6 +136,8 @@ users_dok=사용자 삭제
 
 user_vwarning=경고 :이 MySQL 사용자는 Virtualmin 도메인 $1 의 관리 로그인입니다. 여기에서 설정을 변경하면 Virtualmin에서 오류가 발생할 수 있습니다.
 user_locked=잠김
+user_plugin=인증 유형
+user_hashpass=현재 해시된 비밀번호
 user_priv_select=테이블 데이터 선택
 user_priv_insert=테이블 데이터 삽입
 user_priv_update=테이블 데이터 업데이트
@@ -181,6 +185,8 @@ user_emax_connections=시간당 최대 연결 수는 숫자 여야합니다
 user_emax_updates=시간당 최대 업데이트는 숫자 여야합니다
 user_emax_questions=시간당 최대 쿼리 수는 숫자 여야합니다
 
+dbs_except=모두 제외
+dbs_except_and=그리고
 dbs_derr=데이터베이스 권한을 삭제하지 못했습니다.
 dbs_enone=선택된 데이터베이스가 없습니다
 dbs_dtitle=데이터베이스 권한 삭제
@@ -254,6 +260,7 @@ acl_indexes=인덱스를보고 관리 할 수 있습니까?
 acl_views=보기를보고 관리 할 수 있습니까?
 acl_files=로컬 파일에서 SQL을 실행할 수 있습니까?
 
+log_restart=MySQL 서버를 다시 시작했습니다
 log_cnf=변경된 MySQL 서버 구성
 log_ssl=변경된 SSL 인증서
 log_genssl=생성된 SSL 인증서
@@ -419,6 +426,8 @@ cnf_restart=MySQL 저장 및 재시작
 cnf_fpt=각 InnoDB 테이블마다 별도의 파일이 있습니까?
 cnf_ilt=InnoDB 잠금 시간 초과 (초)
 cnf_eilt=InnoDB 잠금 시간 종료는 정수 여야합니다
+cnf_sqlm=SQL 모드 옵션
+cnf_esqlm=SQL 모드 옵션은 쉼표로 구분된 플래그 목록이어야 합니다
 
 manual_title=구성 파일 편집
 manual_file=구성 파일 편집 :

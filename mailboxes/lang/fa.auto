@@ -153,7 +153,17 @@ view_return=ایمیل اصلی
 view_sub=ایمیل پیوست شده
 view_sub2=Attached email from $1
 view_egone=این پیام دیگر وجود ندارد
+view_efolder=این پوشه وجود ندارد!
 view_eugone=این کاربر وجود ندارد
+view_ical=رویداد
+view_ical_when=چه زمانی
+view_ical_where=کجا
+view_ical_who=سازمان بهداشت جهانی
+view_ical_orginizertime=زمان سازمان دهنده
+view_ical_orginizername=نام سازمان دهنده
+view_ical_orginizeremail=ایمیل سازمان دهنده
+view_ical_attendees=جزئیات شرکت کنندگان
+view_ical_desc=شرح رویداد
 
 view_gnupg=تأیید امضای GnuPG
 view_gnupg_0=Signature by $1 is valid.
@@ -323,6 +333,7 @@ folder_inbox=صندوق ورودی
 folder_sent=ارسال شد
 folder_drafts=پیش نویس
 folder_trash=زباله ها
+folder_spam=هرزنامه
 
 detach_err=جدا کردن پرونده انجام نشد
 detach_edir=هیچ پرونده یا دایرکتوری برای ذخیره کردن برای وارد کردن وجود ندارد

@@ -53,6 +53,16 @@ view_markas1=Lukea
 view_markas2=erityinen
 view_sub=Liitetty sähköposti
 view_sub2=Liitetty sähköposti osoitteelta $1
+view_efolder=Tätä kansiota ei ole olemassa!
+view_ical=Tapahtuma
+view_ical_when=Kun
+view_ical_where=Jossa
+view_ical_who=WHO
+view_ical_orginizertime=Järjestäjän aika
+view_ical_orginizername=Järjestäjän nimi
+view_ical_orginizeremail=Järjestäjän sähköposti
+view_ical_attendees=Osallistujien tiedot
+view_ical_desc=Tapahtuman kuvaus
 
 view_gnupg=GnuPG-allekirjoituksen varmennus
 view_gnupg_0=Allekirjoitus $1 on kelvollinen.
@@ -126,6 +136,7 @@ search_withstatus=, tila $1
 
 folder_inbox=Saapuneet
 folder_sent=Lähetetty
+folder_spam=Roskaposti
 
 detach_err=Tiedoston irrottaminen epäonnistui
 detach_edir=Ei tiedostoa tai hakemistoa tallennettavaksi syötettyyn

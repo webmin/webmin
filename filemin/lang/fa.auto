@@ -173,6 +173,7 @@ acls_action=عمل
 acls_manual=پارامترهای دستی
 acls_error=دستور <tt>setfacl</tt> در سیستم شما یافت نمی شود
 file_detect_encoding=به طور خودکار رمزگذاری فایل را شناسایی کنید
+file_showhiddenfiles=نمایش فایل های مخفی
 index_return=لیست پرونده
 upload_dirs=آپلود دایرکتوری
 extract_uploaded=استخراج فشرده

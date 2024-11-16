@@ -173,6 +173,7 @@ acls_action=פעולה
 acls_manual=פרמטרים ידניים
 acls_error=הפקודה <tt>setfacl</tt> לא נמצאה במערכת שלך
 file_detect_encoding=זיהוי אוטומטי של קידוד קבצים
+file_showhiddenfiles=הצג קבצים מוסתרים
 index_return=רישום קבצים
 upload_dirs=העלאת ספריה
 extract_uploaded=תמצית דחוסה

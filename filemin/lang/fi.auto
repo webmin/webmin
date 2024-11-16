@@ -173,6 +173,7 @@ acls_action=Toiminta
 acls_manual=Manuaaliset parametrit
 acls_error=<tt>setfacl</tt>-komentoa ei löydy järjestelmästäsi
 file_detect_encoding=Tunnista tiedostojen koodaus automaattisesti
+file_showhiddenfiles=Näytä piilotetut tiedostot
 index_return=tiedostoluettelo
 upload_dirs=Hakemiston lataus
 extract_uploaded=Ote pakattu

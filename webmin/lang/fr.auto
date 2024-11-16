@@ -103,6 +103,9 @@ status_temp2=Collecter les températures du processeur et la vitesse des ventila
 status_err=Échec de l'enregistrement de la collection d'états en arrière-plan
 status_einterval=L'intervalle de collecte doit être un entier
 
+sendmail_toaddr=Adresse de destination par défaut pour les notifications
+sendmail_to_def=Aucun ensemble
+sendmail_etoaddr=Adresse de destination manquante ou mal formatée
 sendmail_url=URL Webmin à utiliser dans les e-mails
 sendmail_url_def=Par défaut ($1)
 sendmail_url_custom=URL personnalisée
@@ -119,6 +122,7 @@ web_eredirpref=Le préfixe doit commencer par une barre oblique
 web_eredirpref2=Le préfixe ne doit pas contenir d'espaces
 web_redirssl=Rediriger SSL
 
+twofactor_totp=Authentificateur TOTP
 twofactor_qrcode=Saisissez le code secret $1 dans l'application TOTP ou scannez le code QR ci-dessous.
 twofactor_etotptoken=Le jeton TOTP doit être un nombre
 
@@ -148,3 +152,6 @@ os_eol_second=deuxième
 os_eol_reached=EOL atteint
 os_eol_reaching=EOL dans
 os_eol_reaching2=Fin de vie imminente
+
+qr_err=Échec de la génération du code QR
+qr_estr=Chaîne de code QR manquante !

@@ -173,6 +173,7 @@ acls_action=عمل
 acls_manual=دستی پیرامیٹرز
 acls_error=<tt>setfacl</tt> command is not found on your system
 file_detect_encoding=خود کار طریقے سے فائل انکوڈنگ کا پتہ لگائیں
+file_showhiddenfiles=چھپی ہوئی فائلیں دکھائیں۔
 index_return=فائل کی فہرست
 upload_dirs=ڈائرکٹری اپ لوڈ
 extract_uploaded=ایکسٹریکٹ کمپریسڈ

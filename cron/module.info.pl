@@ -1,2 +1,2 @@
-desc_pl=Harmonogram zadań Cron
-longdesc_pl=Twórz, edytuj i usuwaj zadania Cron.
+longdesc_pl=Edytuj i twórz powtarzające się zadania Cron.
+desc_pl=Zaplanowane zadania Cron

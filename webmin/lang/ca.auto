@@ -118,6 +118,9 @@ sendmail_port=Port SMTP
 sendmail_ssl0=Mai xifreu
 sendmail_ssl1=Utilitzeu sempre TLS
 sendmail_ssl2=Canvieu amb STARTTLS
+sendmail_toaddr=Adreça de destinació predeterminada per a les notificacions
+sendmail_to_def=Cap establert
+sendmail_etoaddr=Falta l'adreça de destinació o amb un format incorrecte
 sendmail_url=URL Webmin per utilitzar-lo al correu electrònic
 sendmail_url_def=Predeterminat ($1)
 sendmail_url_custom=URL personalitzat
@@ -134,6 +137,7 @@ web_eredirpref=El prefix ha de començar amb una barra inclinada
 web_eredirpref2=El prefix no ha de contenir espais
 web_redirssl=Redirigeix SSL
 
+twofactor_totp=Autenticador TOTP
 twofactor_qrcode=Introduïu el codi secret $1 a l'aplicació TOTP o escanegeu el codi QR a continuació.
 twofactor_etotptoken=El testimoni TOTP ha de ser un número
 
@@ -167,3 +171,6 @@ os_eol_second=segon
 os_eol_reached=EOL assolit
 os_eol_reaching=EOL en
 os_eol_reaching2=EOL imminent
+
+qr_err=No s'ha pogut generar el codi QR
+qr_estr=Falta una cadena de codi QR!

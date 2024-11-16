@@ -1,0 +1,5 @@
+edit_egone=选定的用户不再存在！
+
+cert_ebrowser=Webmin 不知道如何为您的浏览器颁发客户端证书 ($1)
+
+gsave_edesc=无效描述 - 不允许使用 : 字符

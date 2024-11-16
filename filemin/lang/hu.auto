@@ -173,6 +173,7 @@ acls_action=Akció
 acls_manual=Kézi paraméterek
 acls_error=A <tt>setfacl</tt> parancs nem található a rendszeren
 file_detect_encoding=A fájlkódolás automatikus észlelése
+file_showhiddenfiles=Rejtett fájlok megjelenítése
 index_return=fájl felsorolása
 upload_dirs=Címtár feltöltése
 extract_uploaded=Kivonat tömörítve

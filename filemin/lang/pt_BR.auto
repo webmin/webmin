@@ -173,6 +173,7 @@ acls_action=Ação
 acls_manual=Parâmetros manuais
 acls_error=O comando <tt>setfacl</tt> não foi encontrado em seu sistema
 file_detect_encoding=Detectar automaticamente a codificação do arquivo
+file_showhiddenfiles=Mostrar arquivos ocultos
 index_return=lista de arquivos
 upload_dirs=Upload de diretório
 extract_uploaded=Extrair compactado

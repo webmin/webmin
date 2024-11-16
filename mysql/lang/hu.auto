@@ -1,3 +1,5 @@
+index_restart=Indítsa újra a MySQL Servert
+index_restartmsg=Kattintson erre a gombra a MySQL adatbázis-kiszolgáló újraindításához a rendszeren. Az összes kliens leválasztásra kerül, és minden konfigurációs fájl újra betöltődik.
 index_eshow=A (z) $1 MySQL állapotprogram nem található a rendszerén. Lehet, hogy a MySQL nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
 index_estart=A (z) $1 MySQL indító szkript nem található a rendszerén. Lehet, hogy a MySQL nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
 index_indexes=Indexek
@@ -66,6 +68,8 @@ users_dok=Felhasználók törlése
 
 user_vwarning=FIGYELMEZTETÉS: Ez a MySQL felhasználó az adminisztrációs bejelentkezés a $1 Virtualmin domainhez. A beállítások itt történő megváltoztatása hibákat okozhat a Virtualminban.
 user_locked=Zárt
+user_plugin=Hitelesítés típusa
+user_hashpass=Jelenlegi kivonatolt jelszó
 user_priv_select=Válassza ki a táblázat adatait
 user_priv_insert=Helyezze be a táblázat adatait
 user_priv_update=Frissítse a táblázat adatait
@@ -113,6 +117,8 @@ user_emax_connections=A maximális óránkénti kapcsolatnak számnak kell lenni
 user_emax_updates=Az óránkénti legfrissebb frissítéseknek számnak kell lenniük
 user_emax_questions=Az óránkénti maximális lekérdezéseknek számnak kell lenniük
 
+dbs_except=Minden, kivéve
+dbs_except_and=és
 dbs_dtitle=Adatbázis-engedélyek törlése
 dbs_drusure=Biztosan törli a kiválasztott MySQL adatbázis $1 engedélyeket?
 dbs_dok=Engedélyek törlése
@@ -159,6 +165,7 @@ acl_indexes=Megtekintheti és kezelheti az indexeket?
 acl_views=Megtekintheti és kezelheti a nézeteket?
 acl_files=Futtatható az SQL helyi fájlokból?
 
+log_restart=A MySQL szerver újraindult
 log_cnf=Megváltozott a MySQL szerver konfigurációja
 log_ssl=SSL tanúsítvány megváltozott
 log_genssl=Generált SSL tanúsítvány
@@ -263,6 +270,8 @@ cnf_restart=Mentsd el és indítsd újra a MySQL-t
 cnf_fpt=Különálló fájl az egyes InnoDB táblázatokhoz?
 cnf_ilt=InnoDB zárolási időtúllépés (másodpercben)
 cnf_eilt=Az InnoDB zárolásának időkorlátjának egész számnak kell lennie
+cnf_sqlm=SQL mód beállításai
+cnf_esqlm=Az SQL mód beállításainak a jelzők vesszővel elválasztott listájának kell lenniük
 
 manual_title=A Config Files szerkesztése
 manual_file=A konfigurációs fájl szerkesztése:

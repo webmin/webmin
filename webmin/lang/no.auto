@@ -103,6 +103,9 @@ status_temp2=Samle CPU-temperaturer og viftehastighet?
 status_err=Kunne ikke lagre samling av bakgrunnsstatus
 status_einterval=Samlingsintervallet må være et helt tall
 
+sendmail_toaddr=Standard destinasjonsadresse for varsler
+sendmail_to_def=Ingen satt
+sendmail_etoaddr=Manglende eller feil formatert destinasjonsadresse
 sendmail_url=Webmin URL for bruk i e-post
 sendmail_url_def=Standard ($1)
 sendmail_url_custom=Egendefinert nettadresse
@@ -119,6 +122,7 @@ web_eredirpref=Prefikset må starte med skråstrek
 web_eredirpref2=Prefiks må ikke inneholde mellomrom
 web_redirssl=Omdiriger SSL
 
+twofactor_totp=TOTP-autentisering
 twofactor_qrcode=Skriv inn den hemmelige koden $1 i TOTP-appen, eller skann QR-koden nedenfor.
 twofactor_etotptoken=TOTP-token må være et tall
 
@@ -148,3 +152,6 @@ os_eol_second=sekund
 os_eol_reached=EOL nådd
 os_eol_reaching=EOL inn
 os_eol_reaching2=EOL nært forestående
+
+qr_err=Kunne ikke generere QR-kode
+qr_estr=Mangler QR-kodestreng!

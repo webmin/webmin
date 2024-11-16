@@ -173,6 +173,7 @@ acls_action=Aksiyon
 acls_manual=Manuel parametreler
 acls_error=<tt>setfacl</tt> komutu sisteminizde bulunamadı
 file_detect_encoding=Dosya kodlamasını otomatik olarak algıla
+file_showhiddenfiles=Gizli dosyaları göster
 index_return=dosya listesi
 upload_dirs=Dizin Yükleme
 extract_uploaded=Sıkıştırılmış Özü

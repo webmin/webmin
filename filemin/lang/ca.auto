@@ -14,6 +14,7 @@ acls_action=Acció
 acls_manual=Parametres manuals
 acls_error=L'ordre <tt>setfacl</tt> no es troba al vostre sistema
 file_detect_encoding=Detecta automàticament la codificació de fitxers
+file_showhiddenfiles=Mostra els fitxers ocults
 index_return=llistat de fitxers
 upload_dirs=Càrrega del directori
 extract_uploaded=Extracte comprimit
