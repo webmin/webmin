@@ -209,7 +209,9 @@ push(@{$modes},
 	    [ 1, $text{'nologin'} ],
 	    [ 3, $text{'clear'},
 	      &$pffunc("pass", $config{'random_password'} && $n eq "" ?
-				$random_password : "", 15) ],
+				$random_password : "", 15, undef, undef,
+					'autocomplete="off" autocorrect="off" '.
+						'autocapitalize="none"') ],
 	    $access{'nocrypt'} ?
 		( [ 2, $text{'nochange'},
 		    &ui_hidden("encpass", $pass) ] ) :
