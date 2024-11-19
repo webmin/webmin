@@ -38,5 +38,7 @@ my @users = &acl::list_users();
 my ($user) = grep { $_->{'name'} eq $remote_user } @users;
 $user->{'theme'} = $theme;
 &acl::modify_user($user->{'name'}, $user);
+&load_theme_library();
+&theme_post_change_theme() if (defined(&theme_post_change_theme));
 &restart_miniserv();
 &redirect(&get_webprefix() . "/");
