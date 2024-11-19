@@ -3358,6 +3358,11 @@ return sprintf "%2.2d/%s/%4.4d:%2.2d:%2.2d:%2.2d %s",
 # log_error(message)
 sub log_error
 {
+if ($config{'nolog'}) {
+	foreach my $nolog (split(/\s+/, $config{'nolog'})) {
+		return if ($page =~ /^$nolog$/);
+		}
+	}
 seek(STDERR, 0, 2);
 print STDERR "[",&make_datestr(),"] ",
 	$acpthost ? ( "[",$acpthost,"] " ) : ( ),
