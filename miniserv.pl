@@ -2807,9 +2807,16 @@ local $eh = $error_handler_recurse ? undef :
 	    $config{'error_handler'} ? $config{'error_handler'} : undef;
 print DEBUG "http_error code=$code message=$msg body=$body\n";
 if ($eh) {
+	my $found;
+	foreach my $root (@preroots, @roots) {
+		$found++ if (-e $root."/".$eh);
+		}
+	$eh = undef if (!$found);
+	}
+if ($eh) {
 	# Call a CGI program for the error
 	$page = "/$eh";
-	$querystring = "code=$_[0]&message=".&urlize($msg).
+	$querystring = "code=".&urlize($code)."&message=".&urlize($msg).
 		       "&body=".&urlize($body);
 	$error_handler_recurse++;
 	$ok_code = $code;
