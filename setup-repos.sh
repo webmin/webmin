@@ -61,7 +61,7 @@ fi
 
 # Derivatives precise test
 osid_debian_like=$(echo "$osid" | grep "debian\|ubuntu")
-osid_rhel_like=$(echo "$osid" | grep "rhel\|fedora\|centos")
+osid_rhel_like=$(echo "$osid" | grep "rhel\|fedora\|centos\|openEuler")
 
 repoid_debian_like=debian
 if [ -n "${ID}" ]; then
