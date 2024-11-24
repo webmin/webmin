@@ -285,6 +285,16 @@ my %done;
 return grep { !$done{$_->[0]}++ } @rv;
 }
 
+# get_php_ini_dir(file)
+# Given a file like /etc/php.ini, return the include directory for additional
+# .ini files that load modules, like /etc/php.d
+sub get_php_ini_dir
+{
+my ($file) = @_;
+$file =~ s/\/php.ini$/\/php.d/;
+return -d $file ? $file : undef;
+}
+
 # get_php_ini_binary(file)
 # Given a php.ini path, try to guess the PHP command for it
 # Examples: 
@@ -628,6 +638,33 @@ return "@{[&ui_text_wrap($text)]}".&ui_link($link, &ui_help($php_opt_default), '
 sub list_known_disable_functions
 {
 return ( "exec", "passthru", "shell_exec", "system", "proc_open", "popen", "curl_exec", "curl_multi_exec", "parse_ini_file", "show_source", "mail" );
+}
+
+# list_php_ini_modules(dir)
+# Returns a list of hash refs with details of PHP module include files in
+# a directory
+sub list_php_ini_modules
+{
+my ($dir) = @_;
+my @rv;
+opendir(DIR, $dir);
+foreach my $f (readdir(DIR)) {
+	next if ($f !~ /\.ini$/);
+	my $path = "$dir/$f";
+	my $ini = { 'file' => $f,
+		    'path' => $path,
+		  };
+	my $lref = &read_file_lines($path, 1);
+	foreach my $l (@$lref) {
+		if ($l =~ /^\s*(;?)\s*extension\s*=\s*(\S+)\.so/) {
+			$ini->{'enabled'} = !$1;
+			$ini->{'ext'} = $2;
+			}
+		}
+	push(@rv, $ini);
+	}
+closedir(DIR);
+return @rv;
 }
 
 1;

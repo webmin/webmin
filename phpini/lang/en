@@ -170,6 +170,8 @@ disable_leftover=Other functions:
 disable_err=Failed to save disabled features
 disable_classes=Disabled built-in classes
 
+mods_title=PHP Modules
+
 log_manual=Manually edit file $1
 log_vars=Changed PHP variables in $1
 log_dirs=Changed directory settings in $1
