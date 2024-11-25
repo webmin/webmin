@@ -225,7 +225,7 @@ procs_id=ID
 procs_db=Banca dati
 procs_cmd=Modalità
 
-vars_desc=Avvertenza: le variabili impostate in questa pagina verranno ripristinate ai valori predefiniti al riavvio di MySQL. Le impostazioni permanenti devono essere effettuate nella pagina <a href='$1'>Configurazione del server MySQL</a>.
+vars_desc=Le variabili impostate in questa pagina saranno ripristinate ai loro valori predefiniti quando MySQL verrà riavviato. Le impostazioni permanenti devono essere effettuate nella pagina <a href='$1'>MySQL Server Configuration</a>.
 vars_search=Mostra le variabili corrispondenti:
 vars_ok=Ricerca
 vars_none2=Nessuna variabile di sistema corrisponde alla tua ricerca.

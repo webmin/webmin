@@ -408,7 +408,7 @@ kill_ecannot=Veritabanı bağlantılarını yönetme izniniz yok
 kill_enone=Hiçbiri seçilmedi
 
 vars_title=MySQL Sistem Değişkenleri
-vars_desc=Uyarı - MySQL yeniden başlatıldığında bu sayfada ayarlanan değişkenler varsayılan değerlerine sıfırlanır. Kalıcı ayarlar <a href='$1'>MySQL Sunucu Yapılandırması</a> sayfasında yapılmalıdır.
+vars_desc=Bu sayfada ayarlanan değişkenler MySQL yeniden başlatıldığında varsayılan değerlerine sıfırlanacaktır. Kalıcı ayarlar <a href='$1'>MySQL Server Yapılandırma</a> sayfasında yapılmalıdır.
 vars_ecannot=Sistem değişkenlerini düzenleme izniniz yok
 vars_name=Değişken ismi
 vars_value=Mevcut değer

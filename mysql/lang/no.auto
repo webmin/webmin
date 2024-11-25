@@ -22,6 +22,8 @@ cnf_esqlm=SQL-modusalternativer må være en kommaseparat liste over flagg
 
 syslog_desc2=MySQL feilmelding
 
+vars_desc=Variabler satt på denne siden vil bli tilbakestilt til standardverdiene når MySQL startes på nytt. Permanente innstillinger må gjøres på siden <a href='$1'>MySQL Server Configuration</a>.
+
 root_socket=MySQL <tt>$1</tt>-brukeren bruker Unix-socket-autentisering, så det er ikke nødvendig med passord og passordet kan ikke endres.
 
 mysqlpass_err=MySQL sikker modus

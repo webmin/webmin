@@ -838,7 +838,7 @@ kill_ecannot=Nemáte oprávnenie spravovať pripojenia k databáze
 kill_enone=Žiadne vybraté
 
 vars_title=Premenné systému MySQL
-vars_desc=Varovanie - Premenné nastavené na tejto stránke sa po reštarte MySQL obnovia na predvolené hodnoty. Trvalé nastavenia sa musia vykonať na stránke <a href='$1'>Konfigurácia servera MySQL</a>.
+vars_desc=Premenné nastavené na tejto stránke sa po reštarte MySQL obnovia na predvolené hodnoty. Na stránke <a href='$1'>Konfigurácia servera MySQL</a> je potrebné vykonať trvalé nastavenia.
 vars_ecannot=Nemáte oprávnenie upravovať systémové premenné
 vars_name=Názov premennej
 vars_value=Súčasná hodnota

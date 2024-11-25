@@ -809,7 +809,7 @@ kill_ecannot=Et voi hallita tietokantayhteyksiä
 kill_enone=Mitään ei ole valittu
 
 vars_title=MySQL-järjestelmän muuttujat
-vars_desc=Varoitus - Tällä sivulla asetetut muuttujat palautetaan oletusarvoihinsa, kun MySQL käynnistetään uudelleen. Pysyvät asetukset on tehtävä <a href='$1'>MySQL-palvelimen asetukset</a> -sivulla.
+vars_desc=Tällä sivulla asetetut muuttujat palautetaan oletusarvoihinsa, kun MySQL käynnistetään uudelleen. Pysyvät asetukset on tehtävä <a href='$1'>MySQL Server Configuration</a> -sivulla.
 vars_ecannot=Järjestelmämuuttujia ei saa muokata
 vars_name=Muuttujan nimi
 vars_value=Nykyinen arvo

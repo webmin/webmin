@@ -838,7 +838,7 @@ kill_ecannot=Jums nav atļauts pārvaldīt datu bāzes savienojumus
 kill_enone=Nav atlasīts
 
 vars_title=MySQL sistēmas mainīgie
-vars_desc=Brīdinājums - šajā lapā iestatītie mainīgie tiks atiestatīti uz noklusējuma vērtībām, kad MySQL tiks restartēts. Pastāvīgie iestatījumi jāveic lapā <a href='$1'>MySQL servera konfigurācija</a>.
+vars_desc=Restartējot MySQL, šajā lapā iestatītie mainīgie tiks atiestatīti uz noklusējuma vērtībām. Pastāvīgie iestatījumi ir jāveic lapā <a href='$1'>MySQL servera konfigurācija</a>.
 vars_ecannot=Jums nav atļauts rediģēt sistēmas mainīgos
 vars_name=Mainīgais nosaukums
 vars_value=Šī brīža vērtība

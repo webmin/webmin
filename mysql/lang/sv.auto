@@ -505,7 +505,7 @@ kill_ecannot=Du får inte hantera databasanslutningar
 kill_enone=Ingen vald
 
 vars_title=MySQL-systemvariabler
-vars_desc=Varning - Variabler som ställs in på denna sida återställs till standardvärdena när MySQL startas om. Permanenta inställningar måste göras på sidan <a href='$1'>MySQL Server Configuration</a>.
+vars_desc=Variabler som ställs in på den här sidan kommer att återställas till sina standardvärden när MySQL startas om. Permanenta inställningar måste göras på sidan <a href='$1'>MySQL Server Configuration</a>.
 vars_ecannot=Du får inte redigera systemvariabler
 vars_name=Variabelnamn
 vars_value=Nuvarande värde

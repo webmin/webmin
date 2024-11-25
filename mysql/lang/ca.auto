@@ -31,6 +31,8 @@ cnf_esqlm=Les opcions del mode SQL han de ser una llista de senyaladors separada
 
 syslog_desc2=Missatge d'error MySQL
 
+vars_desc=Les variables establertes en aquesta pàgina es restabliran als seus valors predeterminats quan es reiniciï MySQL. La configuració permanent s'ha de fer a la pàgina <a href='$1'>Configuració del servidor MySQL</a>.
+
 root_socket=L'usuari de MySQL <tt>$1</tt> està utilitzant l'autenticació de socket Unix, de manera que no cal cap contrasenya i no es pot canviar.
 
 mysqlpass_err=Mode segur MySQL

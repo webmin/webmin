@@ -838,7 +838,6 @@ kill_ecannot=Sie dürfen Datenbankverbindungen nicht verwalten
 kill_enone=Keine ausgewählt
 
 vars_title=MySQL-Systemvariablen
-vars_desc=Warnung – Variablen, die auf dieser Seite gesetzt werden, werden auf ihre Standardwerte zurückgesetzt, wenn MySQL neu gestartet wird. Permanente Einstellungen müssen auf der Seite <a href='$1'>MySQL-Server-Konfiguration</a> vorgenommen werden.
 vars_ecannot=Sie dürfen Systemvariablen nicht bearbeiten
 vars_name=Variablenname
 vars_value=Aktueller Wert

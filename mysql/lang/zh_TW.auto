@@ -427,7 +427,7 @@ kill_ecannot=您無權管理數據庫連接
 kill_enone=未選擇
 
 vars_title=MySQL系統變量
-vars_desc=警告-重新啟動MySQL時，在此頁面上設置的變量將重置為其默認值。永久設置必須在<a href='$1'>MySQL服務器配置</a>頁面上進行。
+vars_desc=當 MySQL 重新啟動時，此頁面上設定的變數將重設為其預設值。必須在 <a href='$1'>MySQL 伺服器設定</a>頁面上進行永久設定。
 vars_ecannot=您無權編輯系統變量
 vars_name=變量名
 vars_value=當前值

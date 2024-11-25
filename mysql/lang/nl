@@ -749,7 +749,6 @@ kill_ecannot=U bent niet bevoegd om de database verbindingen te beheren
 kill_enone=Niets geselecteerd
 
 vars_title=MySQL Systeem Variabelen
-vars_desc=Waarschuwing - Ingestelde variabelen op deze pagina worden gereset naar de standaard waarde wanneer MySQL word herstart. Permanente instellingen moet u maken in de <a href='$1'>MySQL Server Configuratie</a> pagina.
 vars_ecannot=U bent niet bevoegd om systeem variabelen te bewerken
 vars_name=Variabele naam
 vars_value=Huidige Waarde

@@ -838,7 +838,7 @@ kill_ecannot=Nu aveți voie să gestionați conexiunile la baza de date
 kill_enone=Nimic selectat
 
 vars_title=Variabile de sistem MySQL
-vars_desc=Avertisment - Variabilele setate pe această pagină vor fi resetate la valorile lor implicite atunci când MySQL este repornit. Setările permanente trebuie făcute pe pagina <a href='$1'>Configurarea serverului MySQL</a>.
+vars_desc=Variabilele setate pe această pagină vor fi resetate la valorile implicite când MySQL este repornit. Setările permanente trebuie făcute pe pagina <a href='$1'>Configurare server MySQL</a>.
 vars_ecannot=Nu aveți voie să editați variabile de sistem
 vars_name=Denumirea variabilă
 vars_value=Valoarea curentă

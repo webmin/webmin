@@ -838,7 +838,7 @@ kill_ecannot=Anda tidak dibenarkan menguruskan sambungan pangkalan data
 kill_enone=Tiada yang dipilih
 
 vars_title=Pembolehubah Sistem MySQL
-vars_desc=Amaran - Pembolehubah yang ditetapkan pada halaman ini akan ditetapkan semula kepada nilai lalai apabila MySQL dimulakan semula. Tetapan tetap mesti dilakukan pada halaman <a href='$1'>Konfigurasi Pelayan MySQL</a>.
+vars_desc=Pembolehubah yang ditetapkan pada halaman ini akan ditetapkan semula kepada nilai lalainya apabila MySQL dimulakan semula. Tetapan tetap mesti dibuat pada halaman <a href='$1'>Konfigurasi Pelayan MySQL</a>.
 vars_ecannot=Anda tidak dibenarkan mengedit pembolehubah sistem
 vars_name=Nama berubah
 vars_value=Nilai semasa

@@ -838,7 +838,7 @@ kill_ecannot=Jums neleidžiama tvarkyti duomenų bazių jungčių
 kill_enone=Nepasirinkta
 
 vars_title=„MySQL“ sistemos kintamieji
-vars_desc=Įspėjimas - šiame puslapyje nustatyti kintamieji bus atkurti į numatytąsias reikšmes, kai iš naujo paleisite „MySQL“. Nuolatiniai nustatymai turi būti atlikti puslapyje <a href='$1'>MySQL serverio konfigūracija</a>.
+vars_desc=Šiame puslapyje nustatyti kintamieji bus iš naujo nustatyti į numatytąsias reikšmes, kai MySQL bus paleistas iš naujo. Nuolatiniai nustatymai turi būti nustatyti <a href='$1'>MySQL serverio konfigūracijos</a> puslapyje.
 vars_ecannot=Jums neleidžiama redaguoti sistemos kintamųjų
 vars_name=Kintamasis vardas
 vars_value=Dabartinė vertė
