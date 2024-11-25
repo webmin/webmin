@@ -7,15 +7,15 @@ $access{'perms'} == 1 || &error($text{'vars_ecannot'});
 &ReadParse();
 %d = map { $_, 1 } split(/\0/, $in{'d'});
 
-print &text('vars_desc', 'edit_cnf.cgi'),"<p>\n";
+print &ui_alert_box(&text('vars_desc', 'edit_cnf.cgi'), 'warn');
 
 # Work out which ones can be edited
 %canedit = map { $_->[0], 1 } &list_system_variables();
 
 # Show search form
-print &ui_form_start("list_vars.cgi");
-print "<b>$text{'vars_search'}</b> ",
-      &ui_textbox("search", $in{'search'}, 20)," ",
+print &ui_form_start("list_vars.cgi", undef, undef, "style='float: right;'");
+print &ui_textbox("search", $in{'search'}, 25, undef, undef,
+	"placeholder=\"$text{'vars_search'}\"")," ",
       &ui_submit($text{'vars_ok'});
 print &ui_form_end();
 
