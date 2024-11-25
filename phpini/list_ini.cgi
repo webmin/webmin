@@ -19,7 +19,7 @@ $inidir = &get_php_ini_dir($in{'file'});
 @pages = ( "vars", "dirs", "db", "session", "limits",
 	   "errors", "disable", "misc" );
 push(@pages, "manual") if ($access{'manual'} ne '0');
-push(@pages, "mods") if ($inidir);
+push(@pages, "mods") if ($inidir && $access{'global'});
 @links = map { "edit_${_}.cgi?file=".&urlize($in{'file'})."&oneini=1" } @pages;
 @titles = map { $text{$_."_title"} } @pages;
 @icons = map { "images/$_.gif" } @pages;

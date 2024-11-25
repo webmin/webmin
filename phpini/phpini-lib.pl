@@ -657,14 +657,34 @@ foreach my $f (readdir(DIR)) {
 	my $lref = &read_file_lines($path, 1);
 	foreach my $l (@$lref) {
 		if ($l =~ /^\s*(;?)\s*extension\s*=\s*(\S+)\.so/) {
-			$ini->{'enabled'} = !$1;
-			$ini->{'ext'} = $2;
+			$ini->{'enabled'} = $1 ? 0 : 1;
+			$ini->{'mod'} = $2;
 			}
 		}
 	push(@rv, $ini);
 	}
 closedir(DIR);
-return @rv;
+return sort { $a->{'mod'} cmp $b->{'mod'} } @rv;
+}
+
+# enable_php_ini_module(&ini, enabled?)
+# Enable or disable a module loaded from a php.ini include file
+sub enable_php_ini_module
+{
+my ($ini, $enable) = @_;
+return if ($ini->{'enabled'} == $enable);
+&lock_file($ini->{'path'});
+my $lref = &read_file_lines($ini->{'path'});
+foreach my $l (@$lref) {
+	if ($enable && !$ini->{'enabled'}) {
+		$l =~ s/^\s*;\s*(extension\s*=\s*(\S+)\.so)/$1/;
+		}
+	elsif (!$enable && $ini->{'enabled'}) {
+		$l =~ s/^\s*(extension\s*=\s*(\S+)\.so)/;$1/;
+		}
+	}
+&flush_file_lines($ini->{'path'});
+&unlock_file($ini->{'path'});
 }
 
 1;
