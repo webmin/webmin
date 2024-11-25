@@ -28,6 +28,14 @@ if (@{$d->{'data'}}) {
 	print &ui_columns_start([ "",
 				  $text{'vars_name'},
 				  $text{'vars_value'} ], 100, 0, \@tds);
+	@{$d->{'data'}} = sort {
+		# Editing now (highest priority)
+		($d{$b->[0]} <=> $d{$a->[0]}) ||
+		# Can edit (second priority) 
+		($canedit{$b->[0]} <=> $canedit{$a->[0]}) ||
+		# Natural sort for equal priority
+		$a->[0] cmp $b->[0]
+	} @{$d->{'data'}};
 	foreach $v (@{$d->{'data'}}) {
 		if (!$canedit{$v->[0]}) {
 			# Cannot edit, so just show value
