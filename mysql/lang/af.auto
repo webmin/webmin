@@ -838,7 +838,7 @@ kill_ecannot=U mag nie databasisverbindings bestuur nie
 kill_enone=Geen gekies nie
 
 vars_title=MySQL-stelselveranderlikes
-vars_desc=Waarskuwing - Veranderlikes wat op hierdie bladsy gestel word, sal na hul standaardwaardes teruggestel word wanneer MySQL herbegin word. Permanente instellings moet op die <a href='$1'>MySQL Server Configuration</a> -bladsy gemaak word.
+vars_desc=Veranderlikes wat op hierdie bladsy gestel is, sal na hul verstekwaardes teruggestel word wanneer MySQL herbegin word. Permanente instellings moet op die <a href='$1'>MySQL-bedienerkonfigurasie</a>-bladsy gemaak word.
 vars_ecannot=U mag nie die stelselveranderlikes wysig nie
 vars_name=Veranderlike naam
 vars_value=Huidige waarde

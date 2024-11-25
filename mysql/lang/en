@@ -838,12 +838,12 @@ kill_ecannot=You are not allowed to manage database connections
 kill_enone=None selected
 
 vars_title=MySQL System Variables
-vars_desc=Warning - Variables set on this page will be reset to their default values when MySQL is restarted. Permanent settings must be made on the <a href='$1'>MySQL Server Configuration</a> page.
+vars_desc=Variables set on this page will be reset to their default values when MySQL is restarted. Permanent settings must be made on the <a href='$1'>MySQL Server Configuration</a> page.
 vars_ecannot=You are not allowed to edit system variables
 vars_name=Variable name
 vars_value=Current value
 vars_edit=Edit Selected
-vars_search=Show variables matching:
+vars_search=Show variables matching
 vars_ok=Search
 vars_none2=No system variables matched your search.
 vars_none=No system variables were found!

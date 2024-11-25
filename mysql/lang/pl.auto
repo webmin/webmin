@@ -62,7 +62,7 @@ kill_ecannot=Nie masz uprawnień do zarządzania połączeniami z bazą danych
 kill_enone=Nie wybrano
 
 vars_title=Zmienne systemowe MySQL
-vars_desc=Ostrzeżenie - Zmienne ustawione na tej stronie zostaną zresetowane do wartości domyślnych po ponownym uruchomieniu MySQL. Trwałe ustawienia muszą zostać wprowadzone na stronie <a href='$1'>Konfiguracja serwera MySQL</a>.
+vars_desc=Zmienne ustawione na tej stronie zostaną zresetowane do wartości domyślnych po ponownym uruchomieniu MySQL. Trwałe ustawienia muszą zostać wprowadzone na stronie <a href='$1'>Konfiguracja serwera MySQL</a>.
 vars_ecannot=Nie masz uprawnień do edycji zmiennych systemowych
 vars_name=Nazwa zmiennej
 vars_value=Wartość bieżąca

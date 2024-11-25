@@ -838,7 +838,7 @@ kill_ecannot=Ezin duzu datu-basearen konexioak kudeatu
 kill_enone=Ez da hautatu
 
 vars_title=MySQL sistemaren aldagaiak
-vars_desc=Abisua - Orrialde honetan ezarritako aldagaiak lehenetsitako balioetara berrezarriko dira MySQL berrabiarazten denean. Ezarpen iraunkorrak <a href='$1'>MySQL zerbitzariaren konfigurazioa</a> orrian egin behar dira.
+vars_desc=Orri honetan ezarritako aldagaiak lehenetsitako balioetara berrezarriko dira MySQL berrabiarazten denean. Ezarpen iraunkorrak <a href='$1'>MySQL zerbitzariaren konfigurazioa</a> orrian egin behar dira.
 vars_ecannot=Ezin duzu sistemaren aldagaiak editatu
 vars_name=Izena aldakorra
 vars_value=Uneko balioa

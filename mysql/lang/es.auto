@@ -434,7 +434,7 @@ kill_ecannot=No tiene permiso para administrar conexiones de bases de datos
 kill_enone=Ninguna seleccionada
 
 vars_title=Variables del sistema MySQL
-vars_desc=Advertencia: las variables establecidas en esta página se restablecerán a sus valores predeterminados cuando se reinicie MySQL. La configuración permanente debe realizarse en la página <a href='$1'>Configuración del servidor MySQL</a>.
+vars_desc=Las variables configuradas en esta página se restablecerán a sus valores predeterminados cuando se reinicie MySQL. Las configuraciones permanentes deben realizarse en la página <a href='$1'>Configuración de MySQL Server</a>.
 vars_ecannot=No tiene permiso para editar variables del sistema
 vars_name=Nombre de la variable
 vars_value=Valor actual

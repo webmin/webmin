@@ -838,7 +838,7 @@ kill_ecannot=Bạn không được phép quản lý các kết nối cơ sở d�
 kill_enone=Không được chọn
 
 vars_title=Biến hệ thống MySQL
-vars_desc=Cảnh báo - Các biến được đặt trên trang này sẽ được đặt lại về giá trị mặc định của chúng khi MySQL được khởi động lại. Cài đặt cố định phải được thực hiện trên trang <a href='$1'>Cấu hình máy chủ MySQL</a>.
+vars_desc=Các biến được đặt trên trang này sẽ được đặt lại về giá trị mặc định khi MySQL được khởi động lại. Các thiết lập cố định phải được thực hiện trên trang <a href='$1'>Cấu hình MySQL Server</a>.
 vars_ecannot=Bạn không được phép chỉnh sửa các biến hệ thống
 vars_name=Tên biến
 vars_value=Giá trị hiện tại

@@ -502,7 +502,7 @@ kill_ecannot=데이터베이스 연결을 관리 할 수 없습니다
 kill_enone=선택된 사항 없음
 
 vars_title=MySQL 시스템 변수
-vars_desc=경고-이 페이지에서 설정 한 변수는 MySQL을 다시 시작할 때 기본값으로 재설정됩니다. <a href='$1'>MySQL Server 구성</a> 페이지에서 영구적으로 설정해야합니다.
+vars_desc=이 페이지에서 설정된 변수는 MySQL을 다시 시작하면 기본값으로 재설정됩니다. 영구 설정은 <a href='$1'>MySQL 서버 구성</a> 페이지에서 해야 합니다.
 vars_ecannot=시스템 변수를 편집 할 수 없습니다
 vars_name=변수 이름
 vars_value=현재 가치

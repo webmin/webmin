@@ -838,7 +838,7 @@ kill_ecannot=آپ کو ڈیٹا بیس کنیکشن کا انتظام کرنے �
 kill_enone=کوئی بھی منتخب نہیں ہوا
 
 vars_title=ایس کیو ایل سسٹم متغیرات
-vars_desc=Warning - Variables set on this page will be reset to their default values when MySQL is restarted. Permanent settings must be made on the <a href='$1'>MySQL Server Configuration</a> page.
+vars_desc=Variables set on this page will be reset to their default values when MySQL is restarted. Permanent settings must be made on the <a href='$1'>MySQL Server Configuration</a> page.
 vars_ecannot=آپ کو سسٹم متغیرات میں ترمیم کرنے کی اجازت نہیں ہے
 vars_name=متغیر نام
 vars_value=موجودہ قیمت

@@ -816,7 +816,6 @@ kill_ecannot=No tens permís per gestionar connexions de bases de dades
 kill_enone=No n'has seleccionat cap
 
 vars_title=Variables de Sistema MySQL
-vars_desc=Atenció - Les variables establertes en aquesta pàgina es reiniciaran als seus valors per defecte quan es reiniciï MySQL. El valors permanents s'han d'establir a la pàgina de <a href='$1'>Configuració del Servidor MySQL</a>.
 vars_ecannot=No tens permís per editar les variables de sistema
 vars_name=Nom de la variable
 vars_value=Valor actual

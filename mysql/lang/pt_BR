@@ -718,7 +718,6 @@ kill_ecannot=Você não está autorizado a gerenciar conexões com a base de dad
 kill_enone=Nenhum selecionado
 
 vars_title=Variáveis do Sistema MySQL
-vars_desc=Aviso - Variáveis ​​definidas nesta página serão redefinidas para seus valores padrão quando o MySQL é reiniciado. Configurações permanentes deve ser feita na  <a href='$1'>Configuração do servidor MySQL </a> página.
 vars_ecannot=Você não está autorizado a editar as variáveis do sistema
 vars_name=Nome da variável
 vars_value=Valor atual

@@ -838,7 +838,7 @@ kill_ecannot=M'għandekx permess timmaniġġja konnessjonijiet ta 'database
 kill_enone=L-ebda magħżul
 
 vars_title=Varjabbli tas-Sistema MySQL
-vars_desc=Twissija - Il-varjabbli ssettjati f'din il-paġna se jerġgħu jiddaħħlu għall-valuri awtomatiċi tagħhom meta MySQL jerġa 'jinbeda. L-issettjar permanenti għandu jsir fuq il-paġna <a href='$1'>MySQL Server Configuration</a>.
+vars_desc=Varjabbli stabbiliti f'din il-paġna se jiġu ssettjati mill-ġdid għall-valuri awtomatiċi tagħhom meta MySQL jerġa' jinbeda. Is-settings permanenti għandhom isiru fuq il-paġna <a href='$1'>MySQL Server Configuration</a>.
 vars_ecannot=M'għandekx permess teditja l-varjabbli tas-sistema
 vars_name=Isem varjabbli
 vars_value=Valur kurrenti

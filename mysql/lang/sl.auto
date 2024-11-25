@@ -838,7 +838,7 @@ kill_ecannot=Ni vam dovoljeno upravljati povezav z bazo podatkov
 kill_enone=Izbrana ni nobena
 
 vars_title=Sistemske spremenljivke MySQL
-vars_desc=Opozorilo - Spremenljivke, nastavljene na tej strani, bodo ob ponovnem zagonu MySQL ponastavljene na privzete vrednosti. Trajne nastavitve je treba izvesti na strani <a href='$1'>Konfiguracija strežnika MySQL</a>.
+vars_desc=Spremenljivke, nastavljene na tej strani, bodo ponastavljene na privzete vrednosti, ko bo MySQL znova zagnan. Trajne nastavitve morate narediti na strani <a href='$1'>Konfiguracija strežnika MySQL</a>.
 vars_ecannot=Ne morete urejati sistemskih spremenljivk
 vars_name=Ime spremenljivke
 vars_value=Trenutna vrednost

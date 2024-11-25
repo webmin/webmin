@@ -130,6 +130,8 @@ manual_err=Falha ao salvar o arquivo de configuração
 
 syslog_desc2=Mensagem de erro do MySQL
 
+vars_desc=As variáveis definidas nesta página serão redefinidas para seus valores padrão quando o MySQL for reiniciado. Configurações permanentes devem ser feitas na página <a href='$1'>MySQL Server Configuration</a>.
+
 root_socket=O usuário MySQL <tt>$1</tt> está usando autenticação de soquete Unix, portanto nenhuma senha é necessária e a senha não pode ser alterada.
 
 mysqlpass_err=Modo de segurança MySQL

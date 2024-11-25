@@ -179,7 +179,7 @@ manual_err=Uložení konfiguračního souboru se nezdařilo
 
 syslog_desc2=Chybová zpráva MySQL
 
-vars_desc=Varování - Proměnné nastavené na této stránce budou po restartování MySQL obnoveny na výchozí hodnoty. Na stránce <a href='$1'>MySQL Server Configuration</a> je třeba provést trvalé nastavení.
+vars_desc=Proměnné nastavené na této stránce budou po restartu MySQL resetovány na výchozí hodnoty. Trvalá nastavení je třeba provést na stránce <a href='$1'>Konfigurace serveru MySQL</a>.
 
 root_title=Změňte heslo pro správu
 root_header=Nové heslo pro správu

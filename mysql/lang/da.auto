@@ -838,7 +838,7 @@ kill_ecannot=Du har ikke tilladelse til at administrere databaseforbindelser
 kill_enone=Ingen valgt
 
 vars_title=MySQL-systemvariabler
-vars_desc=Advarsel - Variabler, der er indstillet på denne side, nulstilles til deres standardværdier, når MySQL genstartes. Permanente indstillinger skal foretages på siden <a href='$1'>MySQL Server Configuration</a>.
+vars_desc=Variabler indstillet på denne side vil blive nulstillet til deres standardværdier, når MySQL genstartes. Permanente indstillinger skal foretages på siden <a href='$1'>MySQL Server Configuration</a>.
 vars_ecannot=Du har ikke tilladelse til at redigere systemvariabler
 vars_name=Variabel navn
 vars_value=Nuværende værdi

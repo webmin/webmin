@@ -838,7 +838,7 @@ kill_ecannot=Nije vam dopušteno upravljanje vezama s bazom podataka
 kill_enone=Nijedna nije odabrana
 
 vars_title=Varijable MySQL sustava
-vars_desc=Upozorenje - Varijable postavljene na ovoj stranici vratit će se na zadane vrijednosti nakon ponovnog pokretanja MySQL-a. Trajne postavke moraju se izvršiti na stranici <a href='$1'>Konfiguracija MySQL poslužitelja</a>.
+vars_desc=Varijable postavljene na ovoj stranici bit će vraćene na zadane vrijednosti kada se MySQL ponovno pokrene. Trajne postavke moraju se postaviti na stranici <a href='$1'>Konfiguracija MySQL poslužitelja</a>.
 vars_ecannot=Nije vam dopušteno uređivanje varijabli sustava
 vars_name=Naziv varijable
 vars_value=Trenutna vrijednost

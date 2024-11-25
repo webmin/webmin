@@ -346,7 +346,7 @@ kill_ecannot=Nem engedélyezi az adatbázis-kapcsolatok kezelését
 kill_enone=Egy sincs kiválasztva
 
 vars_title=MySQL rendszerváltozók
-vars_desc=Figyelem - Az ezen az oldalon beállított változók alapértelmezett értékeikre állnak vissza, amikor a MySQL újraindul. Az állandó beállításokat a <a href='$1'>MySQL Server Configuration</a> oldalon kell elvégezni.
+vars_desc=Az ezen az oldalon beállított változók az alapértelmezett értékekre állnak vissza a MySQL újraindításakor. Az állandó beállításokat a <a href='$1'>MySQL Server Configuration</a> oldalon kell elvégezni.
 vars_ecannot=A rendszerváltozókat nem szabad szerkeszteni
 vars_name=Változó név
 vars_value=Jelenlegi érték
