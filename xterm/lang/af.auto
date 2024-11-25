@@ -5,6 +5,8 @@ index_suse=Die Perl-pakket <tt>perl-IO-Tty</tt> ontbreek, en moet eers met die h
 index_euser=Fout: Gebruiker $1 kan nie die dop laat loop nie, aangesien dit nie bestaan nie!
 index_connecting=Koppel aan ..
 index_missing=Die Perl-module <tt>$1</tt> ontbreek. Jy moet jou administrateur kontak om hierdie probleem op te los.
+index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Begin dop as Unix-gebruiker
 acl_sameuser=Dieselfde as Webmin-aanmelding
+acl_sudoenforce=Enforce <em>sudo</em>-only privileges

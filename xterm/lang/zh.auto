@@ -5,6 +5,8 @@ index_suse=缺少 Perl 包 <tt>perl-IO-Tty</tt>，应首先从 <a href='$2' targ
 index_euser=错误：用户 $1 无法运行 shell，因为它不存在！
 index_connecting=连接 ..
 index_missing=Perl 模块 <tt>$1</tt> 丢失。您需要联系您的管理员来解决此问题。
+index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=以 Unix 用户身份运行 shell
 acl_sameuser=与 Webmin 登录相同
+acl_sudoenforce=Enforce <em>sudo</em>-only privileges

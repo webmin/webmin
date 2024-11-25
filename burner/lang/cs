@@ -14,6 +14,7 @@ index_global=Globální nastavení
 index_ecdrecord=CD zapisovací příkaz $1 nebyl ve vašem systému nalezen. Možná není nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
 index_return=seznam profilů
 index_delete=Smazat vybrané profily
+
 edit_title=Editace vypalovacího profilu
 create_title=Vytvoření vypalovacího profilu
 edit_emkisofs=Příkaz pro vytvoření ISO souborového systému $1 nebyl ve vašem systému nalezen. Možná není nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
@@ -49,6 +50,7 @@ edit_fly0=Použit temp soubor
 edit_srcdrv=Ovladač zdrojového zařízení
 edit_dstdrv=Ovladač cílového zařízení
 edit_ecannot=Nemáte oprávnění upravovat vypalovací profil
+
 save_err=Chyba při ukládání profilu
 save_ename=Chybějící název profilu
 save_eiso=Chybějící nebo nesprávný název souboru s ISO obrazem
@@ -62,6 +64,7 @@ save_ecannot1=Obraz ISO není v přístupném adresáři
 save_ecannot2=Zdrojový adresář $1 není uvnitř přístupného adresáře
 save_ecannot3=MP3 soubor neb adresář $1 není v přístupném adresáři
 save_ecannot4=Soubor zdrojového zařízení není v přístupném adresáři
+
 burn_title=Vypálení CD
 burn_rutest1=Skutečně chcete otestovat vypalování ISO obrazu $1 ?
 burn_rusure1=Skutečně chcete vypálit ISO obraz $1 na CD ?
@@ -99,6 +102,7 @@ burn_807=Upozornění! Vaše zvukové stopy mají celkem velikost $1 MB, což je
 burn_mp3size=Konvertované zvukové stopy mají velikost $1 MB, přesahující celkových $2 MB, který je povolen na normální CD.
 burn_seconddesc=Vložte prázdné cílové CD a klepněte na níže uvedené tlačítko.
 burn_second=Vypálit cílové CD
+
 dev_title=Nastavení cíle
 dev_header=Nastavení CD vypalovacího zařízení
 dev_device=Vypalovací zařízení
@@ -109,6 +113,7 @@ dev_extra=Extra <tt>cdrecord</tt> nastavení
 dev_err=Chyba při ukládání nastavení zařízení
 dev_eother=Chybějící nebo nesprávná rychlost zápisu
 dev_ecannot=Nemáte oprávnění k úpravě voleb zařízení
+
 mkisofs_title=Nastavení ISO souborového systému
 mkisofs_header=Globální nastavení ISO souborového systému
 mkisofs_novers=Zahrnout číslo verze do názvů souborů?
@@ -116,6 +121,7 @@ mkisofs_notrans=Povolit všechny znaky v názvech souborů?
 mkisofs_nobak=Přeskočit záložní soubory?
 mkisofs_fsyms=Zahrnout i symbolické linky?
 mkiofs_ecannot=Nemáte oprávnění upravovat volby ISO souborového systému
+
 config_cdrecord=Příkaz pro CD vypalování
 config_mkisofs=Příkaz pro vytvoření ISO souborového systému
 config_mpg123=Příkaz pro MP3 dekódování
@@ -129,6 +135,7 @@ config_empg123=Chybějící nebo nesprávný příkaz pro MP3 dekódování
 config_esox=Chybějící nebo nesprávný SOX příkaz
 config_ecdrdao=Chybějící nebo nesprávný příkaz pro kopírování CD
 config_etemp=Chybějící nebo nesprávný adresář pro temp soubory
+
 acl_create=Může vytvářet nové vypalovací profily?
 acl_edit=Může upravovat existující profily?
 acl_global=Může upravovat obecná nastavení?
@@ -136,5 +143,6 @@ acl_profiles=Může použít profily
 acl_all=Všechno
 acl_sel=Níže vybrané ..
 acl_dirs=Povolit adresáře pro zdrojové soubory
+
 delete_err=Chyba při mazání vypalovacích profilů
 delete_enone=Nic není vybráno

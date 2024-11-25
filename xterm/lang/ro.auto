@@ -5,6 +5,8 @@ index_suse=Pachetul Perl <tt>perl-IO-Tty</tt> lipsește și ar trebui să fie in
 index_euser=Eroare: utilizatorul $1 nu poate rula shell-ul deoarece nu există!
 index_connecting=Conectare ..
 index_missing=Modulul Perl <tt>$1</tt> lipsește. Trebuie să contactați administratorul pentru a rezolva această problemă.
+index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Rulați shell ca utilizator Unix
 acl_sameuser=La fel ca autentificarea Webmin
+acl_sudoenforce=Enforce <em>sudo</em>-only privileges

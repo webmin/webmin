@@ -17,6 +17,8 @@ index_loadname=Medii de încărcare pentru procesor:
 index_loadnums=$1 (1 minute), $2 (5 minute), $3 (15 minute)
 index_cpuname=Tip CPU:
 index_inzone=În zona $1 
+index_core=$1 core
+index_cores=$1 cores
 
 pid=ID-ul
 owner=Proprietar

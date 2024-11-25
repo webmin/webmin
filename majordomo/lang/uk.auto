@@ -7,8 +7,11 @@ index_info=Перелічити інформацію
 index_mail=Адреса пошти
 index_moderated=Модерується
 index_count=# користувачів
+
 global_saved=(збережено)
+
 create_minimum=Мінімально необхідна інформація
+
 check_title=Перевірте налаштування Майордомо
 check_test=Тест на. ..
 check_result=Результат / додаткова перевірка

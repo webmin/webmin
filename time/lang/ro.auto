@@ -19,6 +19,7 @@ index_tabsync2=Rulați serviciul de sistem <tt>$1</tt> pentru sincronizare
 index_desctime=Acest formular este pentru a schimba ora curentă a sistemului, care este utilizat de toate procesele de rulare. La sistemele de operare care au un ceas hardware separat, poate fi folosit și pentru a seta acest lucru.
 index_desczone=Acest formular vă permite să setați fusul orar implicit al sistemului, care este utilizat pentru a converti ora sistemului într-un format cititor și compensat.
 index_descsync=Acest formular este pentru configurarea sistemului pentru a sincroniza automat ora cu un server de la distanță. Sincronizarea se va face folosind protocolul Unix <tt>time</tt> sau NTP, în funcție de comenzile instalate și de ce suportă sistemul de la distanță.
+index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 action_save=salva
 action_apply=aplica

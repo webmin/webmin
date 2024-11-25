@@ -1,3 +1,4 @@
+index_madd=Add monitor of type
 index_refsel=選択を更新
 
 type_sslcert=SSL証明書
@@ -7,8 +8,13 @@ type_dovecot=Dovecot IMAP/POP3サーバー
 type_init=起動アクション
 type_slapd=LDAPサーバー
 type_ldap=LDAP接続
+type_smtp=SMTP Connection
+type_imap=IMAP Connection
+type_firewalld=FirewallD Server
+type_reboot=Reboot Required
 
 mon_virtualmin=警告！このモニターはVirtualminドメイン $1に関連付けられているため、ここで編集または削除しないでください。
+mon_header5=Notification options
 mon_ontimeout=モニターがタイムアウトした場合、コマンドを実行します
 mon_eremote2=Webminサーバー $1に接続できませんでした： $2
 mon_etype=無効なモニタータイプ名
@@ -23,6 +29,7 @@ mon_changes1=変更のみを表示
 mon_all=すべての履歴イベントを表示
 mon_nochanges=最後の $1履歴イベントでステータスの変更は発生しませんでした。
 
+sched_email_def=System default ($1)
 sched_warn3=サービスが稼働している限り
 sched_esmsname=SMS番号が見つからないか無効です
 sched_subject=SMSメッセージの件名行
@@ -141,3 +148,38 @@ ldap_pass=LDAPサーバーのパスワード
 info_desc=システムモニター
 info_last=現在の状態
 info_title=システムとサーバーのステータス
+
+smtp_host=SMTP server host
+smtp_port=SMTP server port
+smtp_ssl=Use SSL connection?
+smtp_ssl0=Plaintext only
+smtp_ssl1=Always SSL
+smtp_ssl2=Switch to SSL with STARTTLS
+smtp_from=Test SMTP sender
+smtp_none=None
+smtp_addr=Use address
+smtp_to=Test SMTP recipient
+smtp_ehost=Missing or unresolvable SMTP server host
+smtp_eport=Missing or non-numeric SMTP server port
+smtp_efrom=Sender address must be like user@domain.com
+smtp_eto=Recipient address must be like user@domain.com
+smtp_ok1=HELO command accepted
+smtp_ok2=Sender address accepted
+smtp_ok3=Recipient address accepted
+smtp_ok4=SMTP login accepted
+smtp_user=SMTP authentication
+smtp_user1=Don't login
+smtp_user0=Login as user
+smtp_pass=with password
+smtp_euser=Missing SMTP login
+
+imap_host=IMAP server host
+imap_port=IMAP server port
+imap_ssl=Use SSL connection?
+imap_user=IMAP login
+imap_pass=IMAP password
+imap_ehost=Missing or unresolvable IMAP server host
+imap_eport=Missing or non-numeric IMAP server port
+imap_euser=Missing IMAP login
+
+reboot_pkgs=Package updates require a reboot

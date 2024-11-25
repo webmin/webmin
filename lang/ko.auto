@@ -32,6 +32,8 @@ progress_size2=$1 ($2) 다운로드 중. ..
 progress_datan=$1 수신 ($2 %)
 progress_data2n=$1을 받았습니다.
 
+password_euserpass=Invalid username or password
+
 ui_filterbox=입력하여 필터링하십시오 ..
 ui_of=~의
 

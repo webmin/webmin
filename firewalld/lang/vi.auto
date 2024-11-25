@@ -45,6 +45,7 @@ index_restart_firewallddesc=Tải lại máy chủ FirewallD và áp dụng các
 index_listrules_restartdesc=Liệt kê chi tiết về các quy tắc FirewallD trực tiếp và phong phú hiện có trong vùng $1.
 index_dependent=Không thể khởi động lại dịch vụ phụ thuộc $1 
 index_manual=Chỉnh sửa tập tin cấu hình.
+index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=Chỉnh sửa tập tin cấu hình
 manual_editsel=Chỉnh sửa tệp cấu hình FirewallD

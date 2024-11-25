@@ -5,6 +5,8 @@ index_suse=Trūksta Perl paketo <tt>perl-IO-Tty</tt>, todėl pirmiausia jį reik
 index_euser=Klaida: vartotojas $1 negali paleisti apvalkalo, nes jo nėra!
 index_connecting=Jungiamasi ..
 index_missing=Trūksta Perl modulio <tt>$1</tt>. Norėdami išspręsti šią problemą, turite susisiekti su administratoriumi.
+index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Paleiskite apvalkalą kaip Unix vartotoją
 acl_sameuser=Tas pats kaip Webmin prisijungimas
+acl_sudoenforce=Enforce <em>sudo</em>-only privileges

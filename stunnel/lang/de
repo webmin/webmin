@@ -29,7 +29,6 @@ edit_name=Dienstname
 edit_port=TCP-Port
 edit_active=Aktiv?
 edit_header2=Tunnel-Zieloptionen
-edit_mode0<tt>inetd</tt>-Stil-Programm ausführen
 edit_mode1=Programm im PTY ausführen
 edit_mode2=Mit Remote-Host verbinden
 edit_cmd=Pfad zum Programm

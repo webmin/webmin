@@ -194,7 +194,6 @@ eacl_program=处理程序
 eacl_noext=未定义外部ACL程序。
 eacl_addext=添加外部ACL程序。
 eacl_eclass=未选择程序类
-eacl_cname类型名称
 eacl_file=来自文件 $1
 eacl_hdelete=删除所选限制
 
@@ -777,10 +776,12 @@ log_pools_delete=已删除延迟池 $1
 log_delay_create=已添加延迟池 $1 的ACL
 log_delay_modify=已修改延迟池 $1 的ACL
 log_delay_delete=已删除延迟池 $1 的ACL
+
 log_delay_move=已移动延迟池 $1的ACL
 log_refresh_create=为$1创建了刷新规则
 log_refresh_modify=修改了 $1的刷新规则
 log_refresh_delete=删除了 $1的刷新规则
+
 log_refresh_move=移动了 $1的刷新规则
 log_refreshes_delete=删除了 $1 的刷新规则
 log_iptables=更新的端口重定向设置
@@ -824,7 +825,6 @@ delay_ecannot=不允许编辑延迟池
 delay_epercent='$1' 不是有效的初始存bucket储桶级别百分比
 delay_return=延迟池列表
 delay_delete=删除所选延迟池
-
 pool_title1=添加延迟池
 pool_title2=编辑延迟池
 pool_header=延迟池选项
@@ -945,7 +945,6 @@ refresh_emin=最小时间缺失或无效
 refresh_emax=最长时间缺失或无效
 refresh_epc=缺少或无效的Age百分比
 refresh_delete=删除所选刷新规则
-
 drefresh_err=删除刷新规则失败
 drefesh_enone=未选择
 
@@ -993,5 +992,3 @@ cachemgr_all=对所有操作使用此密码
 cachemgr_others=其他操作:
 cachemgr_enone=未输入 - 您应该选择 <i>No 不需要密码</i>
 cachemgr_err=保存缓存管理器密码失败
-
-__norefs=1

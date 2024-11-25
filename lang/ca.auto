@@ -12,6 +12,8 @@ progress_size2=Baixant $1 ($2) ..
 progress_datan=S'ha rebut $1 ($2 %)
 progress_data2n=S'ha rebut $1
 
+password_euserpass=Invalid username or password
+
 ui_of=de
 
 log_email_by=$1 per $2

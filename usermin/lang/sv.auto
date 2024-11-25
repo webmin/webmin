@@ -250,6 +250,12 @@ ui_hnm1=Värdnamn från URL
 ui_hnm2=Domännamn från URL
 ui_hnm3=Annat namn ..
 ui_tabs=Kategorisera moduler?
+ui_show=Display on the dashboard​
+ui_show_host=System hostname
+ui_show_os=Operating system
+ui_show_ver=Usermin version
+ui_show_tver=Theme version
+ui_show_time=Time on system
 
 upgrade_title=Uppgradera Usermin
 upgrade_title2=Installera Usermin

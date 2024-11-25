@@ -1,0 +1,21 @@
+index_domain=Website domain
+index_directory=Serve pages from directory
+index_none=No websites have been created yet.
+index_add=Add a new website.
+index_return=website list
+
+edit_title=Edit Website
+create_title=Create Website
+edit_header=Foobar Webserver website details
+edit_domain=Website domain name
+edit_directory=Directory containing website contents
+
+save_err=Failed to save website
+save_edomain=Missing or invalid domain name
+save_edirectory=Directory must be an absolute path
+save_edirectory2=Directory does not exist
+save_egone=Website no longer exists
+
+log_create=Created website $1
+log_modify=Modified website $1
+log_delete=Deleted website $1

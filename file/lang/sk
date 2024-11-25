@@ -1,6 +1,7 @@
 index_title=Správca Systému Súborov
 index_eremote=Žiadny Unixový užívateľ nezodpovedá hodnotám z Webmin prihlásečnia $1.
 switch_euser=Tento Unixový užívateľ  nejestvuje!
+
 top_ret=Index
 top_down=Ulož
 top_edit=Otvor pre zmeny
@@ -18,11 +19,13 @@ top_cut=Vyber
 top_paste=Vlož
 top_share=Zdieľanie
 top_search=Nájdi
+
 right_name=Meno
 right_size=Veľkosť
 right_user=Užívateľ
 right_group=Skupina
 right_date=Dátum
+
 edit_enormal=Len normálne súbory môžu byť menené
 edit_title=Zmeny na $1
 edit_title2=Vytvánie súboru
@@ -30,6 +33,7 @@ edit_filename=Meno súboru:
 edit_eover=$1 nemôže byť prepísané
 edit_esave=NEmoohol uložiť : $1
 edit_eaccess=Nemáš povolenie na ukladanie '$1'
+
 info_file=Súbor
 info_path=Cesta:
 info_type=Typ:
@@ -57,6 +61,7 @@ info_read=Čítaj
 info_write=Píš
 info_list=Zoznam
 info_exec=Exec
+
 eacl_eacls=Načítavanie ACL súborov nebolo úspešné : $1
 eacl_acltype=Typ ACL
 eacl_aclname=Použi na
@@ -75,6 +80,7 @@ eacl_edefmask=Maximálne môže byť použitá jedna základná maskovaná ACL
 eacl_title=ACL pre $1
 eacl_owner=Majiteľ súboru
 eacl_edefaults=Ak súbor má základnú ACL, musí tiež mať základného majiteľa, skupinu a ostatné ACL.
+
 acltype_user=Užívateľ
 acltype_group=Skupina
 acltype_other=Iné
@@ -83,6 +89,7 @@ acltype_default_user=Základný užívateľ
 acltype_default_group=Základná skupina
 acltype_default_other=Základné Iné
 acltype_default_mask=Základná Maska
+
 delete_mtitle=Vymaž viacero súborov
 delete_dtitle=Vymaž adresár
 delete_ftitle=Vymaž súbor
@@ -90,11 +97,13 @@ delete_ddesc=Si si istý že chceš permanente vymazať adresár $1 a všetok je
 delete_fdesc=Si si istý že chceš permanente vymazať súbor $1 ?
 delete_mdesc=Si si istý že chceš permanente vymazať adresáre a súbory? :
 delete_efailed=Nemožné vymazať $1 : $2
+
 mkdir_title=Novo-vytvorený Adresár
 mkdir_dir=Nový Adresár:
 mkdir_eexists=$1 už jestvuje
 mkdir_efailed=Vytvorenie Adresáru nebolo úspešné : $1
 mkdir_eaccess=Nemáš povolenie na vytvorenie '$1'
+
 link_title=Vytvor Spojenie
 link_from=Spojenie z:
 link_to=Spojenie na:
@@ -102,6 +111,7 @@ link_eexists=$1 už jestvuje
 link_efrom=Nemáš dovolené vytvárať spojenia na '$1'
 link_efailed=Spojenie nebolo úspešné : $1
 link_efollow=Nemáš dostatočné povolenie na vytváranie symbolických spojení
+
 rename_title=Premenuj $1
 rename_old=Pôvodné meno:
 rename_new=Nové meno:
@@ -110,6 +120,7 @@ rename_eexists=Súbor s menom $1 už jestvuje
 rename_efailed=Premenovávanie nebolo úspešné : $1
 rename_eold=Nemáš dovolené premenovávať '$1'
 rename_enew=Nemáš dovolené premenovávať na '$1'
+
 file_type0=Adresár
 file_type1=Textový súbor
 file_type2=Obrázok
@@ -118,20 +129,24 @@ file_type4=Súbor
 file_type5=Symbolické spojenie
 file_type6=Súbor ovládača
 file_type7=Rúrka
+
 view_enormal=Len normálne súbory môžu byť prezerané
 view_enormal2=Len normálne súbory môžu byť sťahované
 view_eaccess=Nemáš povolený prístup k $1
 view_eopen=Otvorenie nebolo úspešné $1 : $2
+
 paste_ecopy=Musíš najprv vybrať alebo skopírovať ak chceš vkladať
 paste_egone=Súbor kopírovaný $1 už neexiststuje
 paste_eover=$1 nemôže byť prepísaný
 paste_eself=Nemôžeš vkladať súbor do adresára so súborom s rovnakým menom
 paste_emfailed=Premiestnenie nebolo úspešné : $1
 paste_ecfailed=Vytváranie kópie nebolo úspešné : $1
+
 over_title=Súbor už Existstuje
 over_msg=Súbor $1 už existstuje. Použi políčko nižšie na premenovanie vkladaného súboru.
 over_new=Nové meno súboru:
 over_ok=Ok
+
 upload_efailed=Naložený súbor : $1 sa nepodarilo otvoriť
 upload_title=Nalož súbor
 upload_file=Súbor pre nakladanie
@@ -142,9 +157,11 @@ upload_efile=Nebol vybratý žiaden súbor na nakladanie.
 upload_edir=Adresár na nakladanie neexistuje.
 upload_eperm=You are not allowed to create $1
 upload_ewrite=Failed to write to $1 : $2.
+
 find_eaccess=You are not allowed to access $1
 find_eexist=$1 does not exist in $2
 find_edir=$1 is not a directory in $2
+
 cancel=Zruš
 chmod_eaccess=You are not allowed to access '$1'
 chmod_euser=$1 : no such user
@@ -153,14 +170,19 @@ chmod_elink=symlink failed : $1
 chmod_echown=chown failed : $1
 chmod_echmod=chmod failed : $1
 chmod_efollow=You are not allowed to edit symbolic links
+
 copy_efrom=You are not allowed to copy from '$1'
 copy_eto=You are not allowed to copy to '$1'
 copy_elink=symlink failed : $1
+
 delete_eaccess=You are not allowed to delete '$1'
+
 list_eaccess=You are not allowed to access this directory
 list_edir=Failed to list $1 : $2
+
 move_eto=You are not allowed to move to '$1'
 move_afrom=You are not allowed to move '$1'
+
 acl_user=Access files on server as user
 acl_user_def=Same as Webmin login
 acl_umask=Umask for new files
@@ -170,6 +192,7 @@ acl_dirs=Only allow access to directories
 acl_home=Include home directory of Webmin user
 acl_log=Log all file modifications?
 acl_goto=Open first allowed directory?
+
 share_title=Sharing
 share_samba=Windows
 share_nfs=NFS
@@ -198,6 +221,7 @@ share_s1=Trust non-root
 share_s2=Trust everybody
 share_lro=Read-only
 share_lrw=Read-write
+
 log_create_export=Created NFS export $1
 log_modify_export=Modified NFS export $1
 log_delete_export=Deleted NFS export $1
@@ -215,6 +239,7 @@ log_move=Moved file $1 to $2
 log_delete=Deleted file $1
 log_attr=Set attributes on file $1
 log_acl=Set ACL on file $1
+
 search_eaccess=You are not allowed to search this directory
 search_title=Find files
 search_ok=Search Now
@@ -240,7 +265,9 @@ search_egroup=Missing group name
 search_esize=File size must be an integer
 search_crit=Search criteria
 search_list=Search results
+
 facl_eaccess=You are not allowed to set ACLs for this file
+
 attr_eattrs=Failed to get attributes : $1
 attr_efs=The filesystem $1 does not support attributes
 attr_add=Add Attribute
@@ -251,11 +278,13 @@ attr_title=File Attributes for $1
 attr_create=Add Attribute
 attr_edit=Edit Attribute
 attr_ename=Missing attribute name
+
 ext_eattrs=Failed to get EXT attributes : $1
 ext_efs=The filesystem $1 does not support EXT attributes
 ext_title=EXT attributes for $1
 ext_header=EXT file attributes
 ext_efailed=Failed to set attributes for $1 : $2
+
 eattr_A=Do not update access times
 eattr_a=Can only append to file
 eattr_c=Compress data on disk

@@ -10,6 +10,7 @@ index_clear=پاک کردن
 index_stop=سرور MySQL را متوقف کنید
 index_stopmsg=روی این دکمه کلیک کنید تا سرور پایگاه داده MySQL در سیستم شما متوقف شود. با این کار از دسترسی هر کاربر یا برنامه به پایگاه داده ، از جمله این ماژول Webmin جلوگیری می شود.
 index_restart=سرور MySQL را مجددا راه اندازی کنید
+index_restartmsg=Click this button to restart the MySQL database server on your system. All clients will be disconnected, and any configuration files will be reloaded.
 index_dbs=پایگاه داده MySQL
 index_add=ایجاد یک پایگاه داده جدید.
 index_global=گزینه های جهانی

@@ -10,6 +10,7 @@ index_applymsg3=¡Asegúrese que su configuración sea correcta antes de reinici
 index_return=núcleos y particiones
 index_earch=LILO solo está soportado en sistemas con arquitectura x86
 index_econf=El archivo de configuración de LILO $1 no existe. Quizás otro gestor de arranque está siendo usado en su sistema.
+
 global_title=Opciones Globales
 global_desc=Opciones Globales de Arranque
 global_boot=Escribir gestor de arranque a
@@ -32,8 +33,10 @@ global_any=Cualquier arranque
 global_secs=segundos
 global_lba=¿Permitir arranque mas alla de 1024 cilindros?
 global_err=Fallo al salvar opciones globales
+
 apply_title=Aplicar Configuración
 apply_exec=Aplicando configuración de LILO con comando $1 ..
+
 image_title1=Crear Núcleo de Arranque
 image_title2=Editar Núcleo de Arranque
 image_options=Opciones de Arranque del Núcleo
@@ -64,6 +67,7 @@ image_none=Ninguno
 image_ename=Nombre para este núcleo de arranque no ingresado
 image_ekernel=La imágen del núcleo '$1' no existe
 image_einitrd=El archivo ramdisk inicial '$1' no existe
+
 other_title1=Crear Partición de Arranque
 other_title2=Editar Partición de Arranque
 other_details=Detalles de la Partición
@@ -74,6 +78,7 @@ other_yes=Si, desde
 other_password=Contraseña de arranque
 other_none=Ninguna
 other_ename=Nombre de la partición de arranque no ingresado
+
 log_create_image=Creado núcleo de arranque $1
 log_modify_image=Modificado núcleo de arranque $1
 log_delete_image=Borrado núcleo de arranque $1

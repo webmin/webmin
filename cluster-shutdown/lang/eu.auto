@@ -14,6 +14,7 @@ index_smtp=Bidali SMTP zerbitzariaren bidez
 index_this=Zerbitzari hau
 index_nu=Ez da erabiltzailerik ezarri
 index_nl=Errorea saioa hastean
+
 shut_title=Itzali Zerbitzariak
 shut_rusure=Ziur zaude hautatutako $1 zerbitzariak berehala itzali nahi dituzula?
 shut_ok=Bai, egin ezazu
@@ -22,10 +23,12 @@ shut_failed=.. huts egin du! $1
 shut_done=.. egin.
 shut_sel=Hautatutako zerbitzariak hauek dira :
 shut_ecannot=Ezin duzu zerbitzariak itzali
+
 reboot_title=Berrabiarazi zerbitzariak
 reboot_rusure=Ziur hautatutako $1 zerbitzariak berehala berrabiarazi nahi duzula?
 reboot_doing=$1 berrabiarazten da.
 reboot_ecannot=Ezin duzu zerbitzariak berrabiarazi
+
 sched_err=Ezin izan da zerbitzariaren egiaztapen automatikoa konfiguratu
 sched_eemail=Helbide elektronikoa falta da
 sched_esmtp=SMTP zerbitzari falta edo baliogabea

@@ -2,6 +2,10 @@ index_applymsg2=Klepnutím na toto tlačítko použijete aktuální konfiguraci 
 index_stop=Zastavte server
 index_stopmsg=Klepnutím na toto tlačítko zastavíte FTP server, který zabrání připojení nových FTP klientů.
 index_proftpd=ProFTPd
+index_dlheader=Add Options
+index_dlmode=Add options for
+
+type_7=SSL Options
 
 dir_header5=Globálně pro adresář $1 
 
@@ -20,12 +24,27 @@ mod_core_firstcdt=Vždy ukazovat
 mod_ls_options=Možnosti seznamu adresářů
 mod_ls_strict=Přepsat možnosti uživatele?
 
+mod_tls_engine=Enable SSL encryption?
+mod_tls_required=SSL required?
+mod_tls_ctrl=For control channel
+mod_tls_auth=For authentication
+mod_tls_authdata=For authentication and data
+mod_tls_file=SSL certificate file
+mod_tls_efile=SSL certificate file does not exist!
+mod_tls_key=SSL key file
+mod_tls_ekey=SSL key file does not exist!
+mod_tls_ca=SSL CA certificate file
+mod_tls_eca=SSL CA certificate file does not exist!
+mod_tls_none=None set
+
 stop_err=Zastavení FTP serveru se nezdařilo
 stop_einetd=V režimu inetd nemůžete zastavit démona serveru.
 stop_erun=Nefunguje
 
 apply_err=Nepodařilo se použít konfiguraci FTP
 apply_egone=Už neběží
+
+ftpindex_cmds=FTP commands
 
 log_anonc=Nastavit anonymní FTP pro server $1 
 log_anons=Překonfigurovaný anonymní FTP pro server $1 

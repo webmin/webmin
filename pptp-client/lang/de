@@ -26,7 +26,6 @@ disc_done=Tunnel $1 wurde erfolgreich getrennt.
 
 conn_err=Fehler beim Herstellen der Tunnelverbindung
 conn_egone=Tunnel existiert nicht mehr
-conn_ealready=Bereits verbunden
 conn_einvalid=Fehlende Server-IP-Adresse in der Konfigurationsdatei
 conn_title=Verbindungstunnel
 conn_cmd=Eine PPTP-Verbindung wird mit dem Befehl $1 hergestellt ..

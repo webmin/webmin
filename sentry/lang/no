@@ -1,6 +1,7 @@
 index_title=Sikkerhets-tjenester
 index_ecommands=Ingen av sikkerhets-tjenste kommandoene ($1, $2 eller $3) ble funnet på systemet ditt. Kanskje ingen av dem er installert, eller så er <a href='$4'>modulkonfigurasjonen</a> feil.
 index_return=modul meny
+
 portsentry_title=Portsentry konfigurasjon
 portsentry_below=)Port scan oppdaging)
 portsentry_ecommand=Portsentry daemonen $1 ble ikke funnet på systemet ditt. Kanskje den ikke er installert eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
@@ -39,6 +40,7 @@ portsentry_ekill=Kunne ikke stoppe prosessene $1 : $2
 portsentry_estopped=Kjører ikke lenger
 portsentry_starterr=Kunne ikke starte portsentry
 portsentry_save=Lagre og bruk
+
 hostsentry_title=Hostsentry konfigurasjon
 hostsentry_below=(Oppdaging av mistenkelig innlogging)
 hostsentry_ecommand=Hostsentry pythonscriptet $1 ble ikke funnet på systemet ditt. Kanskje det ikke er installert eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
@@ -63,6 +65,7 @@ hostsentry_save=Lagre og bruk
 hostsentry_err=Kunne ikke lagre hostsentry konfigurasjon
 hostsentry_eignore='$1' er ikke en gyldig bruker å ignorere innlogginger for
 hostsentry_emultiple='$1' er ikke en gyldig vert å ignorere flere innlogginger fra
+
 logcheck_title=Logsjekk konfigurasjon
 logcheck_ecommand=Logsjekk kommandoen $1 ble ikke funnet på systemet ditt. Kanskje den ikke er installert, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
 logcheck_eversion=Logsjekk kommandoen $1 er ikke på versjonen som Webmin forventer.
@@ -79,6 +82,7 @@ logcheck_save=Lagre og bruk
 logcheck_eto=Manglende eller ugyldig e-post adresse
 logcheck_runparts=Logg sjekking kjøres fra cron med scriptet $1
 logcheck_files=Loggfiler som blir overvåket
+
 mod_moduleLoginLogout=Loggfør innlogginger og utlogginger
 mod_moduleFirstLogin=Oppdag første innlogging av bruker
 mod_moduleForeignDomain=Oppdag innlogging fra fremmed domene
@@ -91,6 +95,7 @@ mod_moduleInvalidUtmp=Oppdag endret utmp oppføring
 mod_moduleHistorySuspicious=Oppdag mistenkelige kommandoer i historikk
 mod_moduleNetworkDaemon=Oppdag daemon som blir kjørende
 mod_moduleFileExists=Oppdag mistenkelige filer i hjemmekatalog
+
 log_hostsentry=Lagret hostsentry konfigurasjon
 log_portsentry=Lagret portsentry konfigurasjon
 log_logcheck=Lagre logcheck konfigurasjon

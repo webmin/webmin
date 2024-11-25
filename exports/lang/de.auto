@@ -1,0 +1,6 @@
+index_inactive=Inactive
+
+exports_ngroup=Netgroup&nbsp;$1
+exports_net=Network&nbsp;$1
+exports_hosts=Hosts&nbsp;$1
+exports_host=Host&nbsp;$1

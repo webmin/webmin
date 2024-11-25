@@ -52,7 +52,6 @@ global_other=Andere
 global_password=Boot-Passwort
 global_none=Keine
 global_password_file=Menüdatei verwenden, wenn Passwort eingegeben wird:
-global_pass=Passwort
 global_err=Fehler beim Speichern der globalen Optionen
 global_etimeout=Fehlendes oder ungültiges Timeout
 global_edev=Nicht unterstützte Installations-Festplatte/Partition $1

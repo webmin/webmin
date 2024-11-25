@@ -64,6 +64,7 @@ edit_pre=Döndürmeden önce çalıştırılacak komutlar
 edit_default=Varsayılan ($1)
 edit_sharedscripts=Tüm dosyalar için komut dosyalarını yalnızca bir kez mi çalıştırmak istiyorsunuz?
 edit_now=Şimdi Döndür
+edit_clone=Clone
 
 global_title=Global Seçenekler
 global_header=Tüm günlük dosyaları için varsayılan seçenekler

@@ -51,6 +51,7 @@ index_required=Verifica el sistema de fitxers $1
 index_required2=Verifica $1 sistemes de fitxers
 index_disks=$index_required
 index_disks2=$index_required2
+
 edit_title=Edició de Valors de Classe
 edit_create1=Afegeix una Acció i una Classe
 edit_create2=Afegeix valors a la Classe
@@ -192,6 +193,7 @@ edit_resother=Altres línies de <tt>resolv.conf</tt>
 edit_route=Portal per defecte
 edit_reqfs=Sistema de fitxers a verificar
 edit_reqfree=Espai lliure mínim
+
 save_err=No s'ha pogut desar la classe
 save_eclass=Hi falta el nom de la classe o bé és invàlid
 save_elinkfrom=Hi falta l'origen de l'enllaç simbòlic $1 o bé és invàlid
@@ -254,6 +256,7 @@ save_emiscmode=Opcions de muntatge de $1 invàlides
 save_eroute=Hi falta el portal per omissió o bé és invàlid
 save_ereq=Sistema de fitxers $1 a verificar invàlid
 save_ereqfree=Hi falta l'espai lliure mínim de $1 o bé és invàlid
+
 section_groups=Defineix grups
 section_classes=$section_groups
 section_control_0=Control mestre
@@ -281,6 +284,7 @@ section_grant=$section_admit
 section_deny=Directoris denegats
 section_required=Verifica sistemes de fitxers
 section_disks=$section_required
+
 run_title=Execució del Motor de Configuració
 run_desc=Aquesta pàgina es pot utilitzar per executar el Motor de Configuració en aquest host. En executar-lo, es portaran a terme totes les accions que has configurat allà on sigui necessari.
 run_header=Opcions per a executar CFengine en aquest host
@@ -293,6 +297,7 @@ run_nolinks=Pot crear enllaços simbòlics
 run_verbose=Mostra una sortida exhaustiva
 run_exec=S'està executant l'ordre $1...
 run_ok=Executa'l ara
+
 cfd_title=Dimoni del Motor de Configuració
 cfd_stop=Atura el Dimoni del Motor de Configuració
 cfd_stopdesc=Fes clic sobre aquest botó per aturar el dimoni del Motor de Configuració en execució. Això evitarà que altres hosts executin la configuració en aquest servidor i aturarà l'execució planificada de la configuració.
@@ -301,6 +306,7 @@ cfd_startdesc=Fes clic sobre aquest botó per iniciar el dimoni del Motor de Con
 cfd_return=a les opcions del dimoni
 cfd_none=Encara no s'han creat els valors per al dimoni del Motor de Configuració.
 cfd_ecmd=No s'ha trobat al sistema l'ordre $1 del dimoni del Motor de Configuració. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+
 push_title=Hosts de Configuració Remota
 push_header=Opcions de distribució del servidor de configuració
 push_domain=Nom de domini
@@ -317,6 +323,7 @@ push_return=als hosts de configuració remota
 push_title2=Execució de Configuracions de Host
 push_exec=S'estan executant les configuracions del host amb l'ordre $1...
 push_ecmd=No s'ha trobat al sistema l'ordre $1 d'execució remota del Motor de Configuració. Pot ser que no estigui instal·lada,  o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+
 type_control_0=El camp de sota llista les accions que es porten a terme quan s'executa el motor de configuració, ien l'ordre en què seran executades. Les accions que no estan llistades no es processaran, encara que estiguin llistades a la pàgina principal.
 type_control_1=Les opcions de sota controlen la conducta global del procés en segon pla que accepta peticions per executar la configuració en aquest host a petició d'un host remot, o bé en base a una planificació fixada.
 type_directories=Els directoris llistats a sota es crearan amb el propietari i permisos donats quan no existeixin. Els camps d'usuari, grup i permisos són opcionals.
@@ -338,10 +345,13 @@ type_resolve=Les adreces IP del servidor DNS que introdueixis a sota s'utilitzar
 type_defaultroute=Quan s'executa aquesta acció, el motor de configuració comprovarà la ruta per defecte actual contra el portal especificat a sota.
 type_required=Els sistemes de fitxers llistats a sota seran verificats quan s'executi aquesta acció per comprovar que estan muntats, altrament es mostrarà un missatge d'avís. També es verificarà cada sistema de fitxers per veure si el seu espai lliure ha caigut per sota del mínim (si n'hi ha).
 type_disks=$type_required
+
 stop_err=No s'ha pogut aturar el dimoni del Motor de Configuració
 stop_epids=Ja no està en execució
 stop_ekill=No s'ha pogut matar el procés: $1
+
 start_err=No s'ha pogut iniciar el dimoni del Motor de Configuració
+
 log_create_section=S'ha creat l'acció $1 i la classe
 log_create_class=S'ha afegit la classe a l'acció $1
 log_modify_class=S'ha modificat la classe de l'acció $1
@@ -352,6 +362,7 @@ log_start=S'ha iniciat el dimoni
 log_stop=S'ha aturat el dimoni
 log_push=S'han canviat els hosts de configuració remota
 log_prun=S'han executat les configuracions dels hosts
+
 hosts_title=Cluster CFengine de Webmin CFengine
 hosts_hosts=Servidors del Cluster
 hosts_nohosts=Encara no s'ha definit cap servidor Webmin que executi CFengine
@@ -363,6 +374,7 @@ hosts_rundesc=Fes clic sobre aquest botó per executar el Motor de Configuració
 hosts_copydesc=Fes clic sobre aquest botó per fer que la configuració CFengine d'aquest host es copiï a tots els servidors llistats més amunt i sigui executada tot seguit.
 hosts_opts=Opcions de les configuracions en execució
 hosts_return=a la llista de servidors
+
 add_title=Addició de Servidors
 add_msg=S'està afegint $1...
 add_gmsg=S'estan afegint els servidors al grup $1...
@@ -372,6 +384,7 @@ add_echeck=El servidor $1 no té el mòdul del motor de configuració
 add_ecfengine=CFengine no està instal·lat al servidor $1
 add_ok=S'ha afegit el servidor $1 ($2 $3)
 add_eversion=El CFengine del servidor $1 és de la versió $2, però aquest Webmin només suporta les versions $3.
+
 host_title=Servidor Gestionat
 host_header=Detalls del servidor CFengine gestionat
 host_name=Nom de host
@@ -380,8 +393,10 @@ host_delete=Treu-lo de la llista de gestió
 host_os=SO de Webmin
 host_cfg=Configuració CFengine actual de $1
 host_ver=Versió CFengine
+
 cluster_title=Executa el Motor de Configuració
 cluster_header=S'està executant el motor de configuració a tots els hosts del cluster...
 cluster_success=Sortida de CFengine a $1...
 cluster_failed=No s'ha pogut executar CFengine a $1: $2
+
 this_server=aquest servidor

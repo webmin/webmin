@@ -25,6 +25,7 @@ edit_NAPTR=Указател на пълномощия за име
 recs_CAA=Сертифициращ орган
 recs_NAPTR=Орган по име
 
+value_NSEC3PARAM4_none=None
 value_dmarcfo=Режим на докладване за неуспех
 value_dmarcfo0=Отчетете, ако DKIM и SPF не са успели
 value_dmarcfo1=Отчетете, ако DKIM или SPF не са успели
@@ -56,4 +57,8 @@ massdelete_vwarn=Някои зони са свързани с домейна Vir
 massdelete_vwarn2=Някои зони са свързани с домейна Virtualmin $1 и $2 други и затова не трябва да се изтриват тук!
 
 zonekey_algorithm=DNSSEC алгоритъм : $1
+zonekey_ds_keytag=Key tag
+zonekey_ds_alg=Algorithm
+zonekey_ds_type=Digest type
+zonekey_ds_digest=Digest string
 zonekey_keep=Да се запази съществуващият ключ, ако DNSSEC бъде активиран отново?

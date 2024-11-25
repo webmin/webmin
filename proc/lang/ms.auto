@@ -17,6 +17,8 @@ index_loadname=Purata beban CPU:
 index_loadnums=$1 (1 minit), $2 (5 minit), $3 (15 minit)
 index_cpuname=Jenis CPU:
 index_inzone=Dalam zon $1 
+index_core=$1 core
+index_cores=$1 cores
 
 pid=ID
 owner=Pemilik

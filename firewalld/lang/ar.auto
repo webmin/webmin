@@ -45,6 +45,7 @@ index_restart_firewallddesc=أعد تحميل خادم FirewallD وقم بتطب
 index_listrules_restartdesc=سرد تفاصيل حول قواعد جدار الحماية الغنية والمباشرة الموجودة في منطقة$1.
 index_dependent=فشل في إعادة تشغيل الخدمة التابعة$1
 index_manual=تحرير ملفات التكوين.
+index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=تحرير ملفات التكوين
 manual_editsel=تحرير ملف تكوين جدار الحماية

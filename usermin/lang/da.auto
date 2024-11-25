@@ -250,6 +250,12 @@ ui_hnm1=Værtsnavn fra URL
 ui_hnm2=Domænenavn fra URL
 ui_hnm3=Andet navn ..
 ui_tabs=Kategoriser moduler?
+ui_show=Display on the dashboard​
+ui_show_host=System hostname
+ui_show_os=Operating system
+ui_show_ver=Usermin version
+ui_show_tver=Theme version
+ui_show_time=Time on system
 
 upgrade_title=Opgrader Usermin
 upgrade_title2=Installer Usermin

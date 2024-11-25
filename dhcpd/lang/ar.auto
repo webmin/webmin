@@ -14,6 +14,7 @@ index_memb=$1 من الأعضاء
 index_hst=المضيفين والمجموعات المضيفة
 index_nohst=لم يتم تحديد مضيفين أو مجموعات.
 index_hostgroup=المضيف/المجموعة
+index_comment=Description
 index_parent=الأبوين
 index_hardware=عنوان الجهاز
 index_group=مجموعة:

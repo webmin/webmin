@@ -48,6 +48,7 @@ edit_pre=Príkazy na spustenie pred rotáciou
 edit_default=Predvolené ($1)
 edit_sharedscripts=Skripty spúšťajte iba raz pre všetky súbory?
 edit_now=Otočiť teraz
+edit_clone=Clone
 
 global_title=Globálne možnosti
 global_header=Predvolené možnosti pre všetky protokolové súbory

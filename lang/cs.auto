@@ -10,6 +10,8 @@ config_emodule=Modul neexistuje
 help_efile3=Nepodařilo se přečíst stránku nápovědy $1 z modulu $2
 help_einclude3=Nepodařilo se zahrnout stránku nápovědy $1
 
+password_euserpass=Invalid username or password
+
 ui_of=z
 
 log_email_subject=Akce Webmin v $1

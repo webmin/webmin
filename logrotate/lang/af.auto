@@ -64,6 +64,7 @@ edit_pre=Opdragte om te draai voor rotasie
 edit_default=Standaard ($1)
 edit_sharedscripts=Voer slegs skripte een keer vir alle lêers uit?
 edit_now=Draai nou
+edit_clone=Clone
 
 global_title=Wêreldwye opsies
 global_header=Standaardopsies vir alle loglêers

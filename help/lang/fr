@@ -6,6 +6,7 @@ index_sel=Modules sélectionnés ...
 index_search=Rechercher
 index_header=Recherche globale dans l'aide de Webmin
 index_return=formulaire de recherce
+
 search_err=Recherche ratée
 search_eterms=Terme de recherche manquant
 search_emods=Aucun module séléctionné

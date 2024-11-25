@@ -14,6 +14,7 @@ index_smtp=Lähetä SMTP-palvelimen kautta
 index_this=Tämä palvelin
 index_nu=Ei käyttäjän asetusta
 index_nl=Kirjautuminen epäonnistui
+
 shut_title=Sammuta palvelimet
 shut_rusure=Haluatko varmasti sammuttaa valitut $1 palvelimet välittömästi?
 shut_ok=Kyllä tee se
@@ -22,10 +23,12 @@ shut_failed=.. epäonnistui! $1
 shut_done=.. valmis.
 shut_sel=Valitut palvelimet ovat :
 shut_ecannot=Et voi sulkea palvelimia
+
 reboot_title=Käynnistä palvelimet uudelleen
 reboot_rusure=Haluatko varmasti uudestaan käynnistää valitut $1 palvelimet välittömästi?
 reboot_doing=Käynnistetään $1 ..
 reboot_ecannot=Palvelimia ei saa käynnistää uudelleen
+
 sched_err=Automaattisen palvelimen tarkistuksen määrittäminen epäonnistui
 sched_eemail=Puuttuu sähköpostiosoite
 sched_esmtp=Puuttuva tai virheellinen SMTP-palvelin

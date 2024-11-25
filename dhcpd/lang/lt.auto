@@ -14,6 +14,7 @@ index_memb=$1 nariai
 index_hst=Šeimininkai ir priimančiosios grupės
 index_nohst=Nebuvo apibrėžta jokių šeimininkų ar grupių.
 index_hostgroup=Priimančioji/grupė
+index_comment=Description
 index_parent=Tėvas
 index_hardware=Aparatūros adresas
 index_group=Grupė:

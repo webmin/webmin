@@ -26,6 +26,12 @@ ui_hnm0=Nombre de host real
 ui_hnm1=Nombre de host de URL
 ui_hnm2=Nombre de dominio de URL
 ui_hnm3=Otro nombre ..
+ui_show=Display on the dashboard​
+ui_show_host=System hostname
+ui_show_os=Operating system
+ui_show_ver=Usermin version
+ui_show_tver=Theme version
+ui_show_time=Time on system
 
 upgrade_descdeb=Este formulario le permite actualizar su instalación completa de Usermin a una nueva versión actualizando su paquete Debian. Puede instalar desde un archivo.deb local, un archivo cargado o desde la última versión en <a href=http://www.usermin.com/>www.usermin.com</a>. Al igual que con una actualización manual, se mantendrán todos sus ajustes de configuración y módulos de terceros.
 

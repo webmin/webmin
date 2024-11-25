@@ -14,6 +14,7 @@ index_smtp=Enviar a través del servidor SMTP
 index_this=Este servidor
 index_nu=Ningún usuario configurado
 index_nl=error de inicio de sesion
+
 shut_title=Apagar servidores
 shut_rusure=¿Está seguro de que desea cerrar inmediatamente los servidores seleccionados $1 ?
 shut_ok=Sí, hazlo
@@ -22,10 +23,12 @@ shut_failed=.. ¡ha fallado! $1
 shut_done=.. hecho.
 shut_sel=Los servidores seleccionados son :
 shut_ecannot=No tiene permiso para cerrar servidores
+
 reboot_title=Reiniciar servidores
 reboot_rusure=¿Está seguro de que desea reiniciar inmediatamente los servidores seleccionados $1 ?
 reboot_doing=Reiniciando $1 ..
 reboot_ecannot=No tiene permiso para reiniciar servidores
+
 sched_err=Error al configurar la comprobación automática del servidor
 sched_eemail=Falta la dirección de correo electrónico
 sched_esmtp=Servidor SMTP faltante o no válido

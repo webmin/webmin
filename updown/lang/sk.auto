@@ -8,6 +8,8 @@ index_email=Poslať e-mail po dokončení sťahovania?
 index_emailto=Áno, na adresu
 index_email2=Poslať e-mail po dokončení nahrávania?
 
+upload_direct=Write files directly to disk?
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_eemail=Chýba e-mailová adresa na upozornenie
 upload_saving=Ukladá sa súbor $1 ..
 upload_saved=.. napísal $1 

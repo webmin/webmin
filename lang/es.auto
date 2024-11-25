@@ -8,6 +8,8 @@ help_einclude3=Error al incluir la página de ayuda $1
 
 session_twofailed=La autenticación de dos factores falló : $1
 
+password_euserpass=Invalid username or password
+
 ui_of=de
 
 log_email_by=$1 por $2

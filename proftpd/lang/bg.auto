@@ -27,6 +27,8 @@ index_global=Глобална конфигурация
 index_create=Създайте виртуален сървър
 index_version=ProFTPd версия $1 
 index_proftpd=ProFTPd
+index_dlheader=Add Options
+index_dlmode=Add options for
 
 efailed=$1 запазване не бе успешно
 
@@ -37,6 +39,7 @@ type_3=Контрол на достъпа
 type_4=Разни
 type_5=Потребител и група
 type_6=заверка
+type_7=SSL Options
 
 virt_title=Опции за виртуален сървър
 virt_header1=За $1 
@@ -380,6 +383,19 @@ mod_readme_display=Уведомете потребителя за съвпаде
 mod_readme_none=Нито един
 mod_readme_edisplay=Липсва шаблон на файлове за readme
 
+mod_tls_engine=Enable SSL encryption?
+mod_tls_required=SSL required?
+mod_tls_ctrl=For control channel
+mod_tls_auth=For authentication
+mod_tls_authdata=For authentication and data
+mod_tls_file=SSL certificate file
+mod_tls_efile=SSL certificate file does not exist!
+mod_tls_key=SSL key file
+mod_tls_ekey=SSL key file does not exist!
+mod_tls_ca=SSL CA certificate file
+mod_tls_eca=SSL CA certificate file does not exist!
+mod_tls_none=None set
+
 start_err=FTP сървърът не стартира
 start_einetd=Не можете да стартирате демон на сървъра, когато сте в режим inetd.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Добавете опции за команда за ..
 ftpindex_header2=$1 в $2 
 ftpindex_return=файл с опции за директория
 ftpindex_header=За $1 
+ftpindex_cmds=FTP commands
 
 find_err=Неуспешно намиране на файлове с опции
 find_eanon=Anonymous FTP не е инсталиран на нито един виртуален сървър

@@ -3,6 +3,7 @@ index_nojava=Tento soubor vyžaduje funkčnost Javy, avšak váš prohlížeč J
 index_eremote=Neexistuje žádný Unix uživatel, který by vyhovoval příhlášení ve Webminu $1.
 index_index=Vrátit se na <a href='$1'>Úvod Webminu</a>.
 switch_euser=Unix uživatel neexistuje!
+
 top_ret=Úvodní stránka
 top_down=Uložit
 top_preview=Náhled
@@ -26,11 +27,13 @@ top_mount=Připojit
 top_search=Najít
 top_config=Konfigurovat
 top_efile=Nebyly vybrány žádné soubory
+
 right_name=Jméno
 right_size=Velikost
 right_user=Uživatel
 right_group=Skupina
 right_date=Datum
+
 edit_enormal=Mohou být editovány pouze normální soubory
 edit_title=Editování $1
 edit_title2=Vytvoření souboru
@@ -50,6 +53,7 @@ edit_notfound=Text $1 nebyl nalezen
 edit_saveclose=Uložit a zavřít
 edit_elength=Soubor byl zkomolen!
 edit_textmode=Přepnout se do textového módu
+
 info_file=Soubor
 info_path=Cesta:
 info_type=Typ:
@@ -84,6 +88,7 @@ info_files=Celkový počet souborů:
 info_dirs=Celkový počet adresářů:
 info_getsize=Zjistit velikost
 info_esize=Chyba při zjišťování velikosti: $1
+
 eacl_eacls=Chyba při čtení ACLs : $1
 eacl_acltype=ACL typ
 eacl_aclname=Použít na
@@ -102,6 +107,7 @@ eacl_edefmask=Může být uveden nanejvýš jeden zápis výchozí masky pro ACL
 eacl_title=ACL pro $1
 eacl_owner=Vlastník souboru
 eacl_edefaults=Jestliže má soubor nejaký váchozí ACL, musí mít výchozího uživatele, skupinu a ostatní pro ACLs.
+
 acltype_user=Uživatel
 acltype_group=Skupina
 acltype_other=Ostatní
@@ -110,6 +116,7 @@ acltype_default_user=Výchozí uživatel
 acltype_default_group=Výchozí skupna
 acltype_default_other=Výchozí ostatní
 acltype_default_mask=Výchozí maska
+
 delete_mtitle=Vícenásobné mmazání souborů
 delete_dtitle=Smazat adresář
 delete_ftitle=Smazat soubor
@@ -117,11 +124,13 @@ delete_ddesc=Skutečně chcete permanentně mazat adresář $1 a celý jeho obsa
 delete_fdesc=Skutečně chcete permanentně mazat soubor $1 ?
 delete_mdesc=Skutečně chcete permanentně mazat tyto soubory a adresáře? :
 delete_efailed=Chyba při mazání $1 : $2
+
 mkdir_title=Nový adresář
 mkdir_dir=Nový adresář:
 mkdir_eexists=$1 již existuje
 mkdir_efailed=Chyba při vytváření adresáře : $1
 mkdir_eaccess=Nemáte oprávnění vytvářet '$1'
+
 link_title=Vytvoření linku
 link_from=Link z:
 link_to=Link na:
@@ -130,6 +139,7 @@ link_efrom=Nemáte oprávnění linkovat z '$1'
 link_efailed=Chyba při linku : $1
 link_efrom2=Nemáte oprávnění vytvořit link z '$1'
 link_efollow=Nemáte oprávnění tytvářet symbolické linky
+
 rename_title=Přejmenování $1
 rename_old=Staré jméno:
 rename_new=Nové jméno:
@@ -139,6 +149,7 @@ rename_eslash=Nový název souboru $1 obsahuje /
 rename_efailed=Chyba při přejmenování : $1
 rename_eold=Nemáte oprávnění přejmenovat '$1'
 rename_enew=Nemáte oprávnění přejmenovat na '$1'
+
 file_type0=Adresář
 file_type1=Textový soubor
 file_type2=Image soubor
@@ -147,25 +158,30 @@ file_type4=Soubor
 file_type5=Symbolický link
 file_type6=Soubor zařízení
 file_type7=Roura
+
 view_enormal=Mohou být zobrazovány pouze normální soubory
 view_enormal2=Mohou být stahovány pouze normální soubory
 view_eaccess=Nemáte oprávnění přístupu k $1
 view_eopen=Chyba při otevření $1 : $2
+
 view_edir=Archiv může být vytvořen pouze pro adresář
 view_ecmd=Příkaz $1, potřebný pro vytvoření archívu, není nainstalován
 view_ecomp=Chyba při vytváření archívu : $1
 view_earchive=Nemáte oprávnění stahovat archivy
 view_earchmax=Vybraný adresář je rozsáhlejší než je maximální možná velikost pro archivaci ($1 bytů)
+
 paste_ecopy=Ne ž použijete vložení ze schránky, musíte do ní neco zkopírovat nebo vyjmout
 paste_egone=Kopírované soubory $1 již neexistují
 paste_eover=$1 nemůže být přepsán
 paste_eself=Nemůžete vložit sebe sama
 paste_emfailed=Chyba při přesunu : $1
 paste_ecfailed=Chyba při kopírování : $1
+
 over_title=Soubor existuje
 over_msg=Soubor $1 již existuje. Použijte níže uvedené pole pro zapsání nového jména souboru pro vkládaný soubor.
 over_new=Nové jméno souboru:
 over_ok=Ok
+
 upload_efailed=Chyba při otevřenínahrávky : $1
 upload_title=Nahrání souboru
 upload_file=Soubor pro nahrání
@@ -182,9 +198,11 @@ upload_elink=Nelze nahrát symbolický link
 upload_zip=Dekomprimovat ZIP nebo TAR soubor?
 upload_yes=Ano, a poté smazat
 upload_user=Nahrát pod uživatelem
+
 find_eaccess=Nemáte oprávnění přístupus $1
 find_eexist=$1 neexistuje v $2
 find_edir=$1 není adresář v $2
+
 cancel=Opustit
 close=Zavřít
 eopen=Chyba při nahrávání : $1
@@ -195,15 +213,20 @@ chmod_elink=Symlink neúspěšný: $1
 chmod_echown=Chown neúspěšný : $1
 chmod_echmod=Chmod neúspěšný : $1
 chmod_efollow=Nemáte oprávnění edotovat symbolické linky
+
 copy_efrom=Nemáte oprávnění kopírovat z '$1'
 copy_eto=Nemáte oprávnění kopírovat do '$1'
 copy_elink=Symlink neúspěšně : $1
+
 delete_eaccess=Nemáte oprávnění mazat '$1'
 delete_eroot=Adresář '$1' patří mezi ty, které jste určitým způsobem omezili. Proto nemůže být smazán
+
 list_eaccess=Nemáte oprávnění přístupu do tohoto adresáře
 list_edir=Chyba při vypisování $1 : $2
+
 move_eto=Nemáte oprávnění přesunout do '$1'
 move_afrom=Nemáte oprávnění přesunout '$1'
+
 acl_user=Soubory přístupu na serveru pod uživatelem
 acl_user_def=Shodné s Webmin přihlášením
 acl_umask=Umask pro nové soubory
@@ -249,6 +272,7 @@ acl_noperms=Může změnit oprávnění souborů?
 acl_nousers=Může změnit vlastníka souboru?
 acl_filesystems=Může vidět body připojující souborové systémy?
 acl_contents=Povolit hledání v obsahu souboru?
+
 share_title=Sdílení
 share_samba=Windows
 share_nfs=NFS
@@ -277,6 +301,7 @@ share_s1=Důvěřovat non-root
 share_s2=Důvěřovat každému
 share_lro=Pouze ke čtení
 share_lrw=Čtení i zápis
+
 log_create_export=Vytvořen NFS export $1
 log_modify_export=Modifikován NFS export $1
 log_delete_export=Smazán NFS export $1
@@ -294,6 +319,7 @@ log_move=Přesunut soubor $1 do $2
 log_delete=Smazán soubor $1
 log_attr=Nastaveny adributy souboru $1
 log_acl=Nastavno ACL u souboru $1
+
 search_eaccess=Nemáte oprávnění hledat tento adresář
 search_title=Najít soubory
 search_ok=Hledat
@@ -322,7 +348,9 @@ search_crit=Kritéria hledání
 search_list=Výsledky hledání
 search_down=Stáhnout
 search_edown=Neexistuje žádný výsledek hledání v souboru, který má být vybraně stažen
+
 facl_eaccess=Nemáte oprávnění nastavit ACLs pro tento soubor
+
 attr_eattrs=Chyba při získávání atributů : $1
 attr_efs=Souborový systém $1 nepodporuje atributy
 attr_add=Přidat atribut
@@ -333,11 +361,13 @@ attr_title=Atributy souboru pro $1
 attr_create=Přidat atribut
 attr_edit=Editovat atribut
 attr_ename=Chybějící název atributu
+
 ext_eattrs=Chyba při získávání EXT atributů : $1
 ext_efs=Souborový systém $1 nepodporuje EXT atributy
 ext_title=EXT atributy pro $1
 ext_header=EXT souborové atributy
 ext_efailed=Chyba při nastavení atributů pro $1 : $2
+
 eattr_A=Neaktualizovat čas přístupu
 eattr_a=Může pouze přidat do souboru
 eattr_c=hustit data na disku
@@ -346,6 +376,7 @@ eattr_i=Nepovolit modifikaci
 eattr_s=Nastaviz nulové bloky při mazání
 eattr_S=Vždy synchronizovat po zápisu
 eattr_u=Uložit obsah pro obnovu po smazání
+
 mount_eaccess=Nemáte oprávnění připojovat souborové systémy
 mount_efstab=Na tento přístupový bod není navázán žádný souborový systém
 mount_epoint=$1 není přístupový bod
@@ -355,18 +386,22 @@ mount_err1=Chyba při připojování $1 : $2
 mount_err2=Chyba při odpojování $1 : $2
 mount_title1=Připojit souborový systém
 mount_title2=Odpojit souborový systém
+
 zip_err=Nelze rozbalit soubor : $1
 zip_ecmd=Chybějící příkaz $1
 zip_eunzip=Chyba při odzipování : $1
 zip_ename=Nevypadá to, že se jedná o zip, tar nebo tar.gz soubor
 zip_euntar=Chyby při odtarování : $1
 zip_euntar2=Chyba při dekompresi nebo odtarování : $1
+
 ddir_title=Adresář pro stažení
 ddir_rusure=Chcete-li nahrát obsah souboru $1 jako zabaleného, klepněte na jedno z níže uvedených tlačítek označující typ archivu.
 ddir_zip=ZIP
 ddir_tgz=TAR.GZ
 ddir_tar=TAR
+
 ebutton=Tato vlastnost není k dispozici
+
 preview_etype=Nelze pracovat s typem souboru u $1
 preview_etype2=$1 není podporovaný formát obrázku
 preview_ecmd=Příkaz $1, potřebný pro škálování obrázku, není nainstalován
@@ -374,14 +409,17 @@ preview_eimage=Náhled může být zobrazen pouze u obrázků
 preview_title=Náhled pro $1
 preview_bad=Nelze nahrát obrázek do náhledu
 preview_egd=Chyba při nahrávání obrázku pomocí GD
+
 html_efailed=Chyba při otevírání HTML editoru : $1
 html_title=Upravit HTML soubor
 html_title2=Vytvořit HTML soubor
 html_save=Uložit a zavřít
 html_err=Chyba při ukládání HTML souboru
+
 history_title=Historie cest
 history_ok=Jít na
 history_button=Historie
+
 extract_etype=Mohou být rozbalovány pouze soubory
 extract_title=Rozbalit komprimovaný soubor
 extract_rusure=Určitě chcete rozbalit komprimovaný soubor :

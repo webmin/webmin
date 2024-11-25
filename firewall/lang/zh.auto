@@ -156,7 +156,7 @@ desc_args--match-set=IP设置 $1中包含 $2
 desc_src=资源
 desc_dest=目的地
 
-redhat_einstalled=找不到<tt>iptables（6）</tt>引导操作，表明您的系统上未安装IPtables软件包
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 redhat_eoutput=从命令 $1获取IPtables状态时发生错误。这可能表明您的系统已配置为使用IP链而不是IPtable。
 
 gentoo_escript=在您的系统上找不到Gentoo IPtables启动脚本 $1。

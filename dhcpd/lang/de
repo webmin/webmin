@@ -86,6 +86,7 @@ esub_groups=Gruppen direkt in diesem Subnetz
 esub_pools=Adresspools für Subnetz
 esub_pool=Pool $1
 esub_poolnone=Keine Adresspools definiert
+
 esub_pooladd=Einen Adresspool hinzufügen.
 esub_none=Keine
 esub_return=Subnetzliste
@@ -139,7 +140,6 @@ egroup_desc=Gruppenbeschreibung
 default=Standard
 secs=Sek.
 none=Keine
-
 listl_header=DHCP-Leases
 listl_network=Im Netzwerk $1/$2
 listl_lfnotexist=Die DHCPd-Lease-Datei <tt>$1</tt> existiert nicht.

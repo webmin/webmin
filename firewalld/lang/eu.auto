@@ -45,6 +45,7 @@ index_restart_firewallddesc=Berriz kargatu FirewallD zerbitzaria eta aplikatu be
 index_listrules_restartdesc=Zerrendatu lehendik dauden FirewallD arau aberats eta zuzenei buruzko xehetasunak $1 zonan.
 index_dependent=Ezin izan da $1 menpeko zerbitzua berrabiarazi
 index_manual=Editatu konfigurazio fitxategiak.
+index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=Editatu konfigurazio fitxategiak
 manual_editsel=Editatu FirewallD konfigurazio fitxategia

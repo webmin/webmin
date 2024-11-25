@@ -45,6 +45,7 @@ index_restart_firewallddesc=FirewallD 서버를 다시 로드하고 영구적으
 index_listrules_restartdesc=$1 영역의 기존 풍부하고 직접적인 FirewallD 규칙에 대한 세부 정보를 나열합니다.
 index_dependent=$1 종속 서비스를 다시 시작하지 못했습니다
 index_manual=구성 파일을 편집합니다.
+index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=구성 파일 편집
 manual_editsel=FirewallD 구성 파일 수정

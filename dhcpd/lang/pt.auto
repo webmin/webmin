@@ -1,6 +1,7 @@
 index_key=Editar chaves TSIG (usadas para autenticar atualizações nos servidores DNS)
 index_dhcpdver2=O servidor DHCP <tt>$1</tt> não parece estar na versão correta. O Webmin suporta apenas as versões ISC DHCPD $2 a $3.
 index_hostgroup=Anfitrião/Grupo
+index_comment=Description
 index_parent=Pai
 index_hardware=Endereço de hardware
 index_group=Grupo:

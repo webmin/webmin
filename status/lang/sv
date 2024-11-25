@@ -4,7 +4,6 @@ index_host=På dator
 index_desc=Övervakar
 index_up=Status
 index_local=Lokal
-index_add=Lägg till övervakning av typen
 index_sched=Schemalagd övervakning
 index_return=tjänstelista
 

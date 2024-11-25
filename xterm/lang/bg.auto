@@ -5,6 +5,8 @@ index_suse=Пакетът Perl <tt>perl-IO-Tty</tt> липсва и трябва
 index_euser=Грешка: Потребител $1 не може да стартира обвивката, тъй като тя не съществува!
 index_connecting=Свързване ..
 index_missing=Модулът на Perl <tt>$1</tt> липсва. Трябва да се свържете с вашия администратор, за да разрешите този проблем.
+index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Стартирайте shell като Unix потребител
 acl_sameuser=Същото като влизане в Webmin
+acl_sudoenforce=Enforce <em>sudo</em>-only privileges

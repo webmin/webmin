@@ -37,6 +37,7 @@ index_notify=לשלוח אימייל לפעולות Webmin?
 index_notify_mods=לפעולות במודולים
 index_notify_users=לפעולות של משתמשים
 index_notify_email=שלח אימייל ל
+index_notify_email_def=Default notification address
 index_notify_usub=האם לכלול שם משתמש בנושא האימייל?
 index_notify_msub=האם לכלול פעולה בנושא האימייל?
 index_searchtab=חפש ביומנים
@@ -45,8 +46,7 @@ index_searchdesc=ניתן להשתמש בטופס זה כדי לחפש פעול�
 index_notifydesc=השתמש בטופס זה כדי להגדיר הודעות דוא"ל כאשר פעולות Webmin מבוצעות על ידי משתמשים נבחרים או במודולים שנבחרו.
 
 search_title=תוצאות חיפוש
-search_date=תאריך
-search_time=זמן
+search_datetime=Date and time
 search_user=משתמש
 search_host=כתובת לקוח
 search_webmin=שרת Webmin

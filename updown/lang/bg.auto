@@ -42,7 +42,9 @@ index_emailto=Да, за адрес
 index_email2=Изпращате имейл, когато качването е извършено?
 
 upload_title=Качване на файлове
+upload_direct=Write files directly to disk?
 upload_err=Качването на файлове не бе успешно
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=Липсва директория за качване в
 upload_euser=Липсващо или невалидно потребителско име
 upload_egroup=Липсващо или невалидно име на групата

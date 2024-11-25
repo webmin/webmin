@@ -1,0 +1,3 @@
+index_econf=The LILO configuration file $1 does not exist. Maybe another boot loader is being used on your system.
+
+global_lba=Allow booting from beyond 1024 cylinders?

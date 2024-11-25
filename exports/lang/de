@@ -1,6 +1,5 @@
 index_title=NFS-Exporte
 index_dir=Verzeichnis
-index_inaktiv=Inaktiv
 index_to=Exportiert nach...
 index_none=Sie exportieren noch keine Verzeichnisse.
 index_add=Einen neuen Export hinzufügen.
@@ -82,11 +81,7 @@ save_eanonuid=Ungültiger anonymer Zugriffs-Benutzername
 save_eanongid=Ungültiger Gruppenname für anonymen Zugriff
 
 exports_webnfs=WebNFS-Kunden
-export_ngroup=Netzgruppe&nbsp;$1
-export_net=Netzwerk&nbsp;$1
 exports_all=Alle
-export_hosts=Hosts&nbsp;$1
-export_host=Host&nbsp;$1
 exports_gss=Authentifiziertes Netzwerk:&nbsp;$1
 
 log_modify=NFS-Export $1 geändert

@@ -38,6 +38,7 @@ progress_datan=Λήψη $1 ($2 %)
 progress_data2n=Λήφθηκε $1
 
 password_temp=Πρέπει να επιλέξετε έναν νέο κωδικό πρόσβασης για να αντικαταστήσετε την προσωρινή σύνδεσή σας.
+password_euserpass=Invalid username or password
 password_enewpass=Ο νέος κωδικός πρόσβασης δεν επιτρέπεται : $1
 
 ui_filterbox=Τύπος για φιλτράρισμα ..

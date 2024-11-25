@@ -70,6 +70,7 @@ progress_data2n=Prijatý $1
 progress_incache=Nájdený $1 v pamäti cache.
 
 password_temp=Ak chcete nahradiť dočasné prihlásenie, musíte vybrať nové heslo.
+password_euserpass=Invalid username or password
 password_enewpass=Nové heslo nie je povolené : $1
 
 ui_mandatory=Toto pole je povinné

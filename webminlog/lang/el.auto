@@ -37,6 +37,7 @@ index_notify=Αποστολή email για ενέργειες Webmin;
 index_notify_mods=Για ενέργειες σε ενότητες
 index_notify_users=Για ενέργειες από χρήστες
 index_notify_email=Αποστολή email στο
+index_notify_email_def=Default notification address
 index_notify_usub=Να συμπεριληφθεί το όνομα χρήστη στο θέμα του email;
 index_notify_msub=Συμπερίληψη ενέργειας στο θέμα του email;
 index_searchtab=Αναζήτηση αρχείων καταγραφής
@@ -45,8 +46,7 @@ index_searchdesc=Αυτή η φόρμα μπορεί να χρησιμοποιη
 index_notifydesc=Χρησιμοποιήστε αυτήν τη φόρμα για να διαμορφώσετε τις ειδοποιήσεις μέσω email όταν οι ενέργειες Webmin εκτελούνται από επιλεγμένους χρήστες ή σε επιλεγμένες μονάδες.
 
 search_title=Αποτελέσματα αναζήτησης
-search_date=Ημερομηνία
-search_time=χρόνος
+search_datetime=Date and time
 search_user=Χρήστης
 search_host=Διεύθυνση πελάτη
 search_webmin=Webmin Server

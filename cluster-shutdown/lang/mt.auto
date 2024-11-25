@@ -14,6 +14,7 @@ index_smtp=Ibgħat permezz ta 'server SMTP
 index_this=Dan is-server
 index_nu=L-ebda sett ta 'utenti
 index_nl=Id-dħul ma rnexxiex
+
 shut_title=Għalaq is-Servers
 shut_rusure=Int żgur li trid tagħlaq immedjatament is-servers magħżula $1 ?
 shut_ok=Iva, Do It
@@ -22,10 +23,12 @@ shut_failed=.. naqas! $1
 shut_done=.. sar.
 shut_sel=Is-servers magħżula huma :
 shut_ecannot=M'għandekx permess tintefa 'servers
+
 reboot_title=Reboot Servers
 reboot_rusure=Int żgur li trid terġa 'tibda mill-ġdid is-servers magħżula $1 ?
 reboot_doing=Rebooting $1 ..
 reboot_ecannot=M'għandekx permess tirristartja servers
+
 sched_err=Naqset milli tissettja l-iċċekkjar awtomatiku tas-server
 sched_eemail=Indirizz tal-email nieqes
 sched_esmtp=Server SMTP nieqes jew invalidu

@@ -15,6 +15,8 @@ referer_fix3u=Zorg ervoor dat uw browser is geconfigureerd om verwijzende inform
 session_twofactor=Two-factor token
 session_twofailed=Tweefactorauthenticatie is mislukt : $1
 
+password_euserpass=Invalid username or password
+
 ui_filterbox=Typ om te filteren ..
 ui_of=van
 

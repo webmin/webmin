@@ -45,6 +45,7 @@ index_restart_firewallddesc=טען מחדש את שרת FirewallD והחל את 
 index_listrules_restartdesc=רשום פרטים על כללי FirewallD עשירים וישירים באזור $1.
 index_dependent=ההפעלה מחדש של השירות התלוי $1 נכשלה
 index_manual=ערוך קבצי תצורה.
+index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=ערוך קבצי תצורה
 manual_editsel=ערוך את קובץ התצורה של FirewallD

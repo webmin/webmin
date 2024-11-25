@@ -1,5 +1,6 @@
 index_key=Editar claves TSIG (utilizadas para autenticar actualizaciones en servidores DNS)
 index_dhcpdver2=El servidor DHCP <tt>$1</tt> no parece ser la versión correcta. Webmin solo admite las versiones ISC DHCPD $2 a $3.
+index_comment=Description
 index_desc=Descripción
 index_buttekey=Editar teclas TSIG
 index_stop=Detener servidor

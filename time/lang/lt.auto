@@ -19,6 +19,7 @@ index_tabsync2=Paleiskite sistemos <tt>$1</tt> paslaugą sinchronizavimui
 index_desctime=Ši forma skirta pakeisti esamą sistemos laiką, kurį naudoja visi vykdomi procesai. Operacinėse sistemose, turinčiose atskirą aparatinės įrangos laikrodį, jis gali būti naudojamas ir tam nustatyti.
 index_desczone=Ši forma leidžia nustatyti numatytąją sistemos laiko juostą, kuri naudojama norint konvertuoti sistemos laiką į žmonėms suprantamą formatą ir kompensuoti.
 index_descsync=Ši forma skirta konfigūruoti sistemą, kad ji automatiškai sinchronizuotų laiką su nuotoliniu serveriu. Sinchronizavimas bus atliekamas naudojant „Unix“ <tt>laiko</tt> protokolą arba NTP, atsižvelgiant į tai, kurios komandos yra įdiegtos ir ką palaiko nuotolinė sistema.
+index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 action_save=Sutaupyti
 action_apply=Taikyti

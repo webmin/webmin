@@ -42,7 +42,9 @@ index_emailto=Bai, helbidera
 index_email2=Bidali mezu elektronikoak noiz igotzen direnean?
 
 upload_title=Kargatu fitxategiak
+upload_direct=Write files directly to disk?
 upload_err=Ezin izan da fitxategiak kargatu
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=Direktorioa falta da kargatzeko
 upload_euser=Erabiltzaile-izena falta edo baliogabea
 upload_egroup=Talde izen falta edo baliogabea

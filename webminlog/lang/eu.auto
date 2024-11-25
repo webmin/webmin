@@ -37,6 +37,7 @@ index_notify=Webmin ekintzetarako mezu elektronikoa bidali nahi duzu?
 index_notify_mods=Moduluetako ekintzetarako
 index_notify_users=Erabiltzaileen ekintzetarako
 index_notify_email=Bidali mezu elektronikoa hona
+index_notify_email_def=Default notification address
 index_notify_usub=Erabiltzaile izena gehitu mezu elektronikoaren gaian?
 index_notify_msub=Ekintza sartu mezu elektronikoaren gaian?
 index_searchtab=Bilatu erregistroak
@@ -45,8 +46,7 @@ index_searchdesc=Inprimaki hau Webmin ekintzak bilatzeko erabil daiteke erabiltz
 index_notifydesc=Erabili inprimaki hau posta elektronikoko jakinarazpenak konfiguratzeko, hautatutako erabiltzaileek edo aukeratutako moduluetan Webmin ekintzak egiten dituztenean.
 
 search_title=Bilaketaren emaitzak
-search_date=data
-search_time=Ordua
+search_datetime=Date and time
 search_user=Erabiltzaileak
 search_host=Bezeroaren helbidea
 search_webmin=Webmin zerbitzaria

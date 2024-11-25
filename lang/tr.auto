@@ -179,6 +179,7 @@ password_done=Parolanız başarıyla değiştirildi. Artık yeni şifreyle <a hr
 password_err=Şifre değiştirilemedi
 password_euser=Giriş adınız şifre dosyasında bulunamadı!
 password_eold=Mevcut şifre yanlış
+password_euserpass=Invalid username or password
 password_enew1=Yeni şifre girilmedi
 password_enew2=Yeni şifreleriniz eşleşmiyor
 password_epam=PAM hatası : $1

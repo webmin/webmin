@@ -10,7 +10,9 @@ index_actdesc=El servidor CVS está configurado para ejecutarse desde $1 en su s
 index_deact=Desactivar servidor CVS
 index_deactdesc=El servidor CVS está configurado para ejecutarse desde $1 en su sistema, y está activo. Pulse este botón si desea desactivarlo y evitar que los usuarios remotos accedan a su repositorio CVS.
 index_return=índice del módulo
+
 setup_einet=Ni <tt>inetd</tt> ni <tt>xinetd</tt> parecen estar instalados en tu sistema.
+
 passwd_title=Usuarios CVS
 passwd_header=Usuarios de servidor CVS
 passwd_desc=El servidor CVS permitirá que los usuarios listados debajo hagan login y accedan al repositorio. Si un usuario no listado intenta hacer login, el servidor puede intentar de verificar la clave de acceso del usuario contra la clave de acceso del archivo de sistema en su lugar, dependiendo de la configuración del servidor.
@@ -21,6 +23,7 @@ passwd_sync_create=Añadir un nuevo usuario CVS al añadir un usario Unix.
 passwd_sync_modify=Actualizar un servidor CVS cuando el correspondiente usuario Unix sea modificado.
 passwd_sync_delete=Borrar un usuario CVS cuando el correspondiente usuario Unix sea borrado.
 passwd_return=lista de usuarios
+
 edit_title1=Crear Usuario de CVS
 edit_title2=Editar Usuario de CVS
 edit_header=Detalles de usuario de CVS
@@ -32,11 +35,13 @@ edit_pass1=Dejar sin cambiar
 edit_pass0=Poner a...
 edit_unix=Acceder a archivos como usuario unix
 edit_unixdef=Igual que nombre de usuario
+
 save_err=No pude salvar usuario de CVS
 save_euser=El nombre de usuario falta o es inválido
 save_eunix=El usuario de unix falta o es inválido
 save_ecopy=El usuario de unix de donde copiar la clave de acceso no existe
 save_emd5=La clave de acceso de Unix a copiar tiene formato MD5
+
 access_title=Control de Acceso de Usuario
 access_header=Usuarios de Sólo-lectura en CVS
 access_readers1=No hay usuarios sólo-lectura
@@ -46,8 +51,10 @@ access_writers0=Sólo los usuarios listados pueden escribir...
 access_desc=Si un usuario está en ambas listas (lectura y escritura), tendrá sólo acceso de lectura.
 access_err=No pude salvar control de acceso de usuario
 access_euser=El usuario '$1' no existe
+
 cvsweb_title=Navegar Repositorio
 cvsweb_ecmd=El comando $1 de CVS no fue hallado en su sistema. Este comando es necesario para ver el repositorio CVS.
+
 config_title=Configuración de Servidor
 config_header=Opciones de configuración de servidor
 config_auth=¿Reviso usuario contra archivo de claves de acceso del sistema?
@@ -69,6 +76,7 @@ config_hist_R=Archivo quitado
 config_lock=Directorio de archivos bloqueados
 config_err=No pude salvar configuración del servidor
 config_elock=Directorio de archivos bloqueados falta o no es válido
+
 log_setup=Configurar servidor CVS
 log_activate=Servidor CVS activado
 log_deactivate=Servidor CVS desactivado

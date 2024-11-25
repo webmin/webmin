@@ -30,8 +30,6 @@ index_shost=Сервер Webmin источник
 index_global=&lt;Никаком&gt;
 
 search_title=Результаты поиска
-search_date=Дата
-search_time=Время
 search_user=Пользователь
 search_host=Адрес клиента
 search_webmin=Сервер Webmin

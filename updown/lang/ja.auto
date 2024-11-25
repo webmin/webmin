@@ -42,7 +42,9 @@ index_emailto=はい、対処します
 index_email2=アップロードが完了したらメールを送信しますか？
 
 upload_title=ファイルをアップロードする
+upload_direct=Write files directly to disk?
 upload_err=ファイルをアップロードできませんでした
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=アップロード先のディレクトリがありません
 upload_euser=ユーザー名がないか無効です
 upload_egroup=グループ名が欠落しているか無効です

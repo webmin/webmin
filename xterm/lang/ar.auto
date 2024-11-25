@@ -5,6 +5,8 @@ index_suse=حزمة Perl <tt>perl-IO-Tty</tt> مفقودة ، ويجب تثبي�
 index_euser=خطأ: لا يمكن للمستخدم$1 تشغيل shell لأنه غير موجود!
 index_connecting=توصيل ..
 index_missing=وحدة Perl <tt>$1</tt> مفقودة. تحتاج إلى الاتصال بالمسؤول لحل هذه المشكلة.
+index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=قم بتشغيل shell كمستخدم Unix
 acl_sameuser=مثل تسجيل الدخول إلى Webmin
+acl_sudoenforce=Enforce <em>sudo</em>-only privileges

@@ -156,7 +156,7 @@ desc_args--match-set=$2 finns i IP-set $1
 desc_src=källa
 desc_dest=destination
 
-redhat_einstalled=Inga <tt>iptables (6)</tt> uppstartsåtgärd hittades, vilket indikerar att IPtables-paketet inte är installerat på ditt system
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 redhat_eoutput=Ett fel inträffade med att få IPtables-status från kommandot $1. Detta indikerar antagligen att ditt system har konfigurerats för att använda IP-kedjor istället för IP-tabeller.
 
 gentoo_escript=Gentoo IPtables-startskriptet $1 hittades inte på ditt system.

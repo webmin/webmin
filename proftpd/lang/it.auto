@@ -3,6 +3,10 @@ index_stop=Arresta il server
 index_stopmsg=Fare clic su questo pulsante per arrestare il server FTP, che impedirà a tutti i nuovi client FTP di connettersi.
 index_version=Versione ProFTPd $1 
 index_proftpd=ProFTPd
+index_dlheader=Add Options
+index_dlmode=Add options for
+
+type_7=SSL Options
 
 dir_header5=Per la directory $1 a livello globale
 
@@ -35,12 +39,27 @@ mod_ls_strict=Sostituire le opzioni utente?
 mod_auth_home=Home directory
 mod_auth_none=Nessuna
 
+mod_tls_engine=Enable SSL encryption?
+mod_tls_required=SSL required?
+mod_tls_ctrl=For control channel
+mod_tls_auth=For authentication
+mod_tls_authdata=For authentication and data
+mod_tls_file=SSL certificate file
+mod_tls_efile=SSL certificate file does not exist!
+mod_tls_key=SSL key file
+mod_tls_ekey=SSL key file does not exist!
+mod_tls_ca=SSL CA certificate file
+mod_tls_eca=SSL CA certificate file does not exist!
+mod_tls_none=None set
+
 stop_err=Impossibile arrestare il server FTP
 stop_einetd=Non è possibile arrestare il daemon del server in modalità inetd.
 stop_erun=Non correndo
 
 apply_err=Impossibile applicare la configurazione FTP
 apply_egone=Non più in esecuzione
+
+ftpindex_cmds=FTP commands
 
 log_anonc=Configura FTP anonimo per il server $1 
 log_anons=FTP anonimo riconfigurato per il server $1 

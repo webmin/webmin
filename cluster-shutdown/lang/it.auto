@@ -14,6 +14,7 @@ index_smtp=Invia tramite server SMTP
 index_this=Questo server
 index_nu=Nessun utente impostato
 index_nl=Accesso fallito
+
 shut_title=Spegnere i server
 shut_rusure=Sei sicuro di voler chiudere immediatamente i server selezionati $1 ?
 shut_ok=Si fallo
@@ -22,10 +23,12 @@ shut_failed=.. fallito! $1
 shut_done=.. fatto.
 shut_sel=I server selezionati sono :
 shut_ecannot=Non è consentito arrestare i server
+
 reboot_title=Riavvia i server
 reboot_rusure=Sei sicuro di voler riavviare immediatamente i server selezionati $1 ?
 reboot_doing=Riavvio $1 ..
 reboot_ecannot=Non è consentito riavviare i server
+
 sched_err=Impossibile impostare il controllo automatico del server
 sched_eemail=Indirizzo email mancante
 sched_esmtp=Server SMTP mancante o non valido

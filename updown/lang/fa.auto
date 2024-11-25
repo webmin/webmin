@@ -42,7 +42,9 @@ index_emailto=بله ، برای پرداختن
 index_email2=وقتی بارگذاری انجام شد ایمیل ارسال کنید؟
 
 upload_title=بارگذاری پرونده ها
+upload_direct=Write files directly to disk?
 upload_err=بارگذاری پرونده ها انجام نشد
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=فهرست برای بارگذاری در وجود ندارد
 upload_euser=نام کاربری موجود نیست یا نامعتبر است
 upload_egroup=نام گروه نامعتبر است یا نامعتبر است

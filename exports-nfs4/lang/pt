@@ -6,6 +6,7 @@ index_add=Adicionar nova exportação
 index_apply=Aplicar Alterações
 index_applymsg=Clique neste botão para aplicar a configuração de exportação de ficheiros actual. Desta forma, todos os directórios abaixo listados estarão disponiveis com as opções especificadas.
 index_return=lista de exportações
+
 edit_title=Editar Exportação
 create_title=Criar Exportação
 edit_details=Detalhes da exportação
@@ -32,6 +33,7 @@ edit_gids=Não confiar em GIDs
 edit_anonuid=Tratar utilizadores não fiáveis como
 edit_default=Predefinido
 edit_anongid=Tratar grupos não fiáveis como
+
 save_err=Erro ao guardar exportação
 save_edir=O directório '$1' não existe
 save_enetgroup=Grupo de rede inválido ou em falta

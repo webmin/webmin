@@ -66,6 +66,12 @@ ui_hnm1=Имя хоста из URL
 ui_hnm2=Доменное имя из URL
 ui_hnm3=Другое имя ..
 ui_tabs=Категоризировать модули?
+ui_show=Display on the dashboard​
+ui_show_host=System hostname
+ui_show_os=Operating system
+ui_show_ver=Usermin version
+ui_show_tver=Theme version
+ui_show_time=Time on system
 
 upgrade_title2=Установить Usermin
 upgrade_descdeb=Эта форма позволяет вам обновить всю установку Usermin до новой версии, обновив ее пакет Debian. Вы можете установить из локального файла.deb, загруженного файла или из последней версии на <a href=http://www.usermin.com/>www.usermin.com</a>. Как и при ручном обновлении, все ваши настройки и сторонние модули будут сохранены.

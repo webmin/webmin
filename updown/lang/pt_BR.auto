@@ -42,7 +42,9 @@ index_emailto=Sim, para endereçar
 index_email2=Enviar email quando os uploads forem concluídos?
 
 upload_title=Fazer upload de arquivos
+upload_direct=Write files directly to disk?
 upload_err=Falha ao fazer upload de arquivos
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=Diretório ausente para upload
 upload_euser=Nome de usuário ausente ou inválido
 upload_egroup=Nome de grupo ausente ou inválido

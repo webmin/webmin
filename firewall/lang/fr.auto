@@ -8,6 +8,8 @@ desc_match-set!=$2 ne correspond pas à l'ensemble IP $1
 desc_match-set_src=trafic entrant
 desc_match-set_dst=trafic sortant
 
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+
 edit_matchset=Ensemble d'adresses IP correspondant
 edit_matchsetsrc=sur le trafic entrant
 edit_matchsetdst=sur le trafic sortant

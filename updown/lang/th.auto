@@ -42,7 +42,9 @@ index_emailto=ใช่ไปยังที่อยู่
 index_email2=ส่งอีเมลเมื่ออัพโหลดเสร็จแล้ว?
 
 upload_title=อัพโหลดไฟล์
+upload_direct=Write files directly to disk?
 upload_err=การอัพโหลดไฟล์ล้มเหลว
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=ไม่มีไดเรกทอรีที่จะอัปโหลดไป
 upload_euser=ชื่อผู้ใช้ที่ขาดหายไปหรือไม่ถูกต้อง
 upload_egroup=ชื่อกลุ่มที่ขาดหายไปหรือไม่ถูกต้อง

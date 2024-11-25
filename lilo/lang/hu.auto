@@ -1,0 +1,21 @@
+index_econf=The LILO configuration file $1 does not exist. Maybe another boot loader is being used on your system.
+
+global_lba=Allow booting from beyond 1024 cylinders?
+
+image_initrd=Initial ramdisk file
+image_einitrd=Initial ramdisk file '$1' does not exist
+
+log_create_image=Created boot kernel $1
+log_modify_image=Modified boot kernel $1
+log_delete_image=Deleted boot kernel $1
+log_create_image_l=Created boot kernel $1 for $2
+log_modify_image_l=Modified boot kernel $1 for $2
+log_delete_image_l=Deleted boot kernel $1 for $2
+log_create_other=Created boot partition $1
+log_modify_other=Modified boot partition $1
+log_delete_other=Deleted boot partition $1
+log_create_other_l=Created boot partition $1 on $2
+log_modify_other_l=Modified boot partition $1 on $2
+log_delete_other_l=Deleted boot partition $1 on $2
+log_apply=Applied configuration
+log_global=Changed global options

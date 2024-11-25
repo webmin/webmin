@@ -32,8 +32,6 @@ index_long=عرض أوصاف الفعل الكامل؟
 index_global=&lt;ليس في أي وحدة&gt;
 
 search_title=نتائج البحث
-search_date=تاريخ
-search_time=الوقت
 search_user=المستخدم
 search_host=عنوان العميل
 search_webmin=خادم Webmin

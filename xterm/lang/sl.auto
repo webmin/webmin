@@ -5,6 +5,8 @@ index_suse=Paket Perl <tt>perl-IO-Tty</tt> manjka in ga je treba najprej ročno 
 index_euser=Napaka: Uporabnik $1 ne more zagnati lupine, ker ne obstaja!
 index_connecting=Povezovanje ..
 index_missing=Modul Perl <tt>$1</tt> manjka. Za rešitev te težave se morate obrniti na skrbnika.
+index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Zaženi lupino kot uporabnik Unixa
 acl_sameuser=Enako kot prijava v Webmin
+acl_sudoenforce=Enforce <em>sudo</em>-only privileges

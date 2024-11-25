@@ -42,7 +42,9 @@ index_emailto=Iva, biex tindirizza
 index_email2=Ibgħat imejl meta l-uploads isiru?
 
 upload_title=Itella 'l-Fajls
+upload_direct=Write files directly to disk?
 upload_err=Ma rnexxielux itella 'l-fajls
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=Nieqes id-direttorju biex ittella 'għalih
 upload_euser=Username nieqes jew invalidu
 upload_egroup=Isem tal-grupp nieqes jew invalidu

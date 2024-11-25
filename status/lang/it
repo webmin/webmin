@@ -62,7 +62,6 @@ type_slapd=Server LDAP
 type_ldap=Connessione LDAP
 
 mon_virtualmin=Avvertimento! Questo monitor è associato al dominio Virtualmin $1, quindi non deve essere modificato o eliminato qui.
-mon_header3=Opzioni di servizio monitorate
 mon_remotes2=Esegui su host e gruppi
 mon_none=Nessun server remoto definito
 mon_nosched=Controlla nei tempi previsti?

@@ -51,6 +51,7 @@ index_required=Vérifier le système de fichiers $1
 index_required2=Vérifier $1 systèmes de fichiers
 index_disks=$index_required
 index_disks2=$index_required2
+
 edit_title=Édition des paramètres pour une classe
 edit_create1=Ajouter une action et une classe
 edit_create2=Ajout de paramètres pour une classe
@@ -192,6 +193,7 @@ edit_resother=Autres lignes de <tt>resolv.conf</tt>
 edit_route=Passerelle par défaut
 edit_reqfs=Système de fichiers à vérifier
 edit_reqfree=Espace libre minimal
+
 save_err=Impossible d'enregistrer la classe
 save_eclass=Nom de classe manquant ou invalide
 save_elinkfrom=Champ From pour le lien symbolique $1 manquant ou invalide
@@ -254,6 +256,7 @@ save_emiscmode=Options de montage pour $1 invalides
 save_eroute=Passerelle par défaut manquante ou invalide
 save_ereq=Système de fichiers à vérifier $1 invalide
 save_ereqfree=Espace libre minimal pour $1 manquant ou invalide
+
 section_groups=Définition des groupes
 section_classes=$section_groups
 section_control_0=Contrôle principal
@@ -281,6 +284,7 @@ section_grant=$section_admit
 section_deny=Répertoires interdits
 section_required=Vérification des systèmes de fichiers
 section_disks=$section_required
+
 run_title=Exécution du moteur de configuration 
 run_desc=Cette page peut être utilisée pour exécuter le moteur de configuration sur cet hôte. A l'exécution, toutes les actions que vous avez configurées seront réalisées si nécessaire.
 run_header=Options pour exécuter CFengine sur cet hôte
@@ -293,6 +297,7 @@ run_nolinks=Peut créer des liens symboliques ?
 run_verbose=Afficher une sortie verbeuse ?
 run_exec=Exécution de la commande $1 en cours...
 run_ok=Exécuter maintenant
+
 cfd_title=Démon du moteur de configuration 
 cfd_stop=Arrêter le démon du moteur de configuration 
 cfd_stopdesc=Cliquez sur ce bouton pour arrêter le démon du moteur de configuration actif. Cette action empêchera les autres hôtes d'exécuter la configuration sur ce serveur et d'arrêter l'exécution programmée de la configuration.
@@ -301,6 +306,7 @@ cfd_startdesc=Cliquez sur ce bouton pour démarrer le démon du moteur de config
 cfd_return=aux options du démon
 cfd_none=Aucun réglages pour le démon du moteur de configuration n'a encore été créé.
 cfd_ecmd=Le démon de la commande $1 du moteur de configuration n'a pas été trouvée sur votre système. Peut-être n'est-il pas installé ou votre <a href='$2'>configuration du module</a> est-elle incorrecte.
+
 push_title=Hôtes de configuration distants
 push_header=Options de distribution du serveur de configuration 
 push_domain=Nom du domaine
@@ -317,6 +323,7 @@ push_return=aux hôtes de configurations distants
 push_title2=Exécution des configurations des hôtes
 push_exec=Exécution des configurations des hôtes avec la commande $1 en cours...
 push_ecmd=La commande d'exécution distante $1 du moteur de configuration n'a pas été trouvée sur votre système. Peut-être n'est-il pas installé ou votre <a href='$2'>configuration du module</a> est-elle incorrecte.
+
 type_control_0=Le champ ci-dessous répertorie les actions qui sont effectuées quand le moteur de configuration s'exécute, dans l'ordre dans lequel elles seront réalisées. Les actions qui ne sont pas répertoriées ne seront pas traitées, même si elles sont répertoriées sur la page principale.
 type_control_1=Les options ci-dessous contrôlent le comportement global du processus d'arrière-plan qui accepte des requêtes pour exécuter la configuration sur cet hôte quand un hôte distant le demande ou sur une programmation fixe.
 type_directories=Les répertoires listés ci-dessous seront créés avec l'appartenance et les droits d'accès indiqués quand ils n'existent pas. Les champs « propriétaire », « groupe » et « droits d'accès » sont optionnels.
@@ -338,10 +345,13 @@ type_resolve=Le serveur DNS et les adresses IP que vous saisissez ci-dessous ser
 type_defaultroute=Quand cette action est exécutée, le moteur de configuration vérifie la route par défaut actuelle par rapport à la passerelle spécifiée ci-dessous.
 type_required=Les systèmes de fichiers répertoriés ci-dessous seront vérifiés lors de l'exécution de cette action pour s'assurer qu'ils sont montés et, si tel n'est pas le cas, un message d'avertissement sera affiché. Chaque système de fichiers sera également vérifié pour voir si son espace libre est tombé au-dessous du minimum fixé, s'il y a lieu.
 type_disks=$type_required
+
 stop_err=Impossible d'arrêter le démon du moteur de configuration
 stop_epids=Ne s'exécute plus
 stop_ekill=Impossible de tuer le processus : $1
+
 start_err=Impossible de démarrer le démon du moteur de configuration
+
 log_create_section=Créé l'action $1 et la classe
 log_create_class=Ajouté la classe à l'action $1
 log_modify_class=Modifié la classe dans l'action $1
@@ -352,6 +362,7 @@ log_start=Démarré le démon
 log_stop=Arrêté le démon
 log_push=Changé les hôtes de configuration distants
 log_prun=Exécuté les configurations des hôtes
+
 hosts_title=Cluster CFengine Webmin
 hosts_hosts=Serveurs dans le cluster
 hosts_nohosts=Aucun serveur Webmin exécutant CFengine n'a encore été défini.
@@ -363,6 +374,7 @@ hosts_rundesc=Cliquez sur ce bouton pour que le moteur de configuration s'exécu
 hosts_copydesc=Cliquez sur ce bouton pour que soit copiée la configuration CFengine depuis ce serveur vers tous les serveurs ci-dessus et immédiatement exécutée.
 hosts_opts=Options pour exécuter les configurations
 hosts_return=à la liste des serveurs
+
 add_title=Ajout de serveurs
 add_msg=Ajout de $1 en cours...
 add_gmsg=Ajout de serveurs dans le groupe $1 en cours...
@@ -372,6 +384,7 @@ add_echeck=Le serveur $1 n'a pas le module du moteur de configuration
 add_ecfengine=CFengine n'est pas installé sur le serveur $1
 add_ok=Ajouté le serveur $1 ($2 $3)
 add_eversion=CFengine sur le serveur $1 est la version $2, mais ce module Webmin ne prend en charge que les versions $3 .
+
 host_title=Serveur géré
 host_header=Détails du serveur CFengine géré
 host_name=Nom de l'hôte
@@ -380,8 +393,10 @@ host_delete=Supprimer de la liste des serveurs gérés
 host_os=Système d'exploitation de Webmin
 host_cfg=configuration CFengine actuelle de $1
 host_ver=CFengine version
+
 cluster_title=Exécution du moteur de configuration 
 cluster_header=Exécution du moteur de configuration sur tous les hôtes dans le cluster en cours...
 cluster_success=Sortie de CFengine sur $1 en cours...
 cluster_failed=Impossible d'exécuter CFengine sur $1 : $2
+
 this_server=Ce serveur

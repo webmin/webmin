@@ -3,6 +3,7 @@ index_nojava=Modul ini memerlukan Java berfungsi, tetapi pelayar anda tidak meny
 index_eremote=Tiada pengguna Unix yang memadankan login Webmin $1.
 index_index=Kembali ke <a href='$1'>indeks Webmin</a>.
 switch_euser=Pengguna Unix tidak wujud!
+
 top_ret=Indeks
 top_down=Simpan
 top_preview=Pratonton
@@ -26,11 +27,13 @@ top_mount=Gunung
 top_search=Cari
 top_config=Config
 top_efile=Tiada fail yang dipilih
+
 right_name=Nama
 right_size=Saiz
 right_user=Pengguna
 right_group=Kumpulan
 right_date=Tarikh
+
 edit_enormal=Hanya fail normal sahaja yang boleh diedit
 edit_title=Mengedit $1 
 edit_title2=Membuat fail
@@ -50,6 +53,7 @@ edit_notfound=Teks $1 tidak dijumpai
 edit_saveclose=Simpan & Tutup
 edit_elength=Fail dipotong!
 edit_textmode=Beralih ke mod teks biasa
+
 info_file=Fail
 info_path=Laluan:
 info_type=Jenis:
@@ -86,6 +90,7 @@ info_files=Jumlah fail:
 info_dirs=Jumlah direktori:
 info_getsize=Dapatkan Saiz
 info_esize=Gagal untuk mendapatkan saiz : $1 
+
 eacl_eacls=Gagal membaca ACL : $1 
 eacl_acltype=Jenis ACL
 eacl_aclname=Memohon kepada
@@ -104,6 +109,7 @@ eacl_edefmask=Paling banyak terdapat satu entri topeng ACL lalai
 eacl_title=ACL untuk $1 
 eacl_owner=Pemilik fail
 eacl_edefaults=Sekiranya fail mempunyai ACL lalai, ia mesti mempunyai pengguna lalai, kumpulan dan ACL yang lain.
+
 acltype_user=Pengguna
 acltype_group=Kumpulan
 acltype_other=Lain-lain
@@ -112,6 +118,7 @@ acltype_default_user=Pengguna Lalai
 acltype_default_group=Kumpulan lalai
 acltype_default_other=Default Lain-lain
 acltype_default_mask=Topeng lalai
+
 delete_mtitle=Padam berbilang fail
 delete_dtitle=Padamkan direktori
 delete_ftitle=Padam fail
@@ -119,11 +126,13 @@ delete_ddesc=Adakah anda pasti mahu memadam direktori $1 dan semua kandungannya 
 delete_fdesc=Adakah anda pasti mahu memadamkan fail $1 secara kekal?
 delete_mdesc=Adakah anda pasti mahu memadamkan fail dan direktori ini secara kekal?  :
 delete_efailed=Gagal memadam $1 : $2 
+
 mkdir_title=Direktori Baru
 mkdir_dir=Direktori baru:
 mkdir_eexists=$1 sudah wujud
 mkdir_efailed=Buat direktori gagal : $1 
 mkdir_eaccess=Anda tidak dibenarkan membuat '$1'
+
 link_title=Buat Pautan
 link_from=Pautan dari:
 link_to=Pautan ke:
@@ -132,6 +141,7 @@ link_efrom=Sumber pautan mestilah jalan mutlak
 link_efailed=Pautan gagal : $1 
 link_efrom2=Anda tidak dibenarkan untuk memaut dari '$1'
 link_efollow=Anda tidak dibenarkan membuat symlinks
+
 rename_title=Namakan semula $1 
 rename_old=Nama lama:
 rename_new=Nama baru:
@@ -141,6 +151,7 @@ rename_eslash=Nama fail baru $1 mengandungi a /
 rename_efailed=Nama semula gagal : $1 
 rename_eold=Anda tidak dibenarkan untuk menamakan semula '$1'
 rename_enew=Anda tidak dibenarkan untuk menamakan semula kepada '$1'
+
 file_type0=Direktori
 file_type1=Fail teks
 file_type2=Fail imej
@@ -149,26 +160,31 @@ file_type4=Fail
 file_type5=Pautan simbolik
 file_type6=Fail peranti
 file_type7=Paip
+
 view_enormal=Hanya fail normal yang boleh dilihat
 view_enormal2=Hanya fail normal yang boleh dimuat turun
 view_eaccess=Anda tidak dibenarkan mengakses $1 
 view_eopen=Gagal membuka $1 : $2 
+
 view_edir=Arsip hanya boleh dibuat untuk direktori
 view_ecmd=Perintah $1 diperlukan untuk membuat arkib tidak dipasang
 view_ecomp=Gagal membuat arkib : $1 
 view_earchive=Anda tidak dibenarkan memuat turun arkib
 view_earchmax=Direktori yang dipilih adalah lebih besar daripada yang dibenarkan untuk mengarkibkan ($1 bait)
 view_epathinfo=Laluan mengandungi aksara tidak sah
+
 paste_ecopy=Anda mesti memotong atau menyalin sebelum menampal
 paste_egone=Fail disalin $1 tidak lagi wujud
 paste_eover=$1 tidak boleh ditulis ganti
 paste_eself=Anda tidak boleh menyisipkan fail dengan sendirinya
 paste_emfailed=Pindah gagal : $1 
 paste_ecfailed=Salin gagal : $1 
+
 over_title=Fail wujud
 over_msg=Fail $1 sudah wujud. Gunakan medan di bawah untuk memasukkan nama fail baru untuk fail disisipkan.
 over_new=Nama fail baru:
 over_ok=Okey
+
 upload_efailed=Gagal membuka muat naik : $1 
 upload_title=Muat naik Fail
 upload_file=Fail untuk dimuat naik
@@ -185,9 +201,11 @@ upload_elink=Tidak dapat memuat naik ke pautan simbolik
 upload_zip=Fail ZIP atau TAR yang tidak dikompresi?
 upload_yes=Ya, kemudian padam
 upload_user=Muat naik sebagai pengguna
+
 find_eaccess=Anda tidak dibenarkan mengakses $1 
 find_eexist=$1 tidak wujud dalam $2 
 find_edir=$1 bukan direktori dalam $2 
+
 cancel=Batalkan
 close=Tutup
 eopen=Muat turun gagal : $1 
@@ -198,15 +216,20 @@ chmod_elink=symlink gagal : $1
 chmod_echown=chown gagal : $1 
 chmod_echmod=chmod gagal : $1 
 chmod_efollow=Anda tidak dibenarkan mengedit pautan simbolik
+
 copy_efrom=Anda tidak dibenarkan menyalin dari '$1'
 copy_eto=Anda tidak dibenarkan menyalin ke '$1'
 copy_elink=symlink gagal : $1 
+
 delete_eaccess=Anda tidak dibenarkan memadamkan '$1'
 delete_eroot=Direktori '$1' adalah salah satu daripada yang anda terhad kepada, dan oleh itu tidak dapat dipadamkan
+
 list_eaccess=Anda tidak dibenarkan mengakses direktori ini
 list_edir=Gagal menyenaraikan $1 : $2 
+
 move_eto=Anda tidak dibenarkan pindah ke '$1'
 move_afrom=Anda tidak dibenarkan memindahkan '$1'
+
 acl_user=Akses fail pada pelayan sebagai pengguna
 acl_user_def=Sama seperti log masuk Webmin
 acl_umask=Umask untuk fail baru
@@ -252,6 +275,7 @@ acl_noperms=Boleh menukar kebenaran fail?
 acl_nousers=Boleh menukar pemilikan fail?
 acl_filesystems=Boleh melihat titik mount sistem fail?
 acl_contents=Benarkan carian kandungan fail?
+
 share_title=Perkongsian
 share_samba=Windows
 share_nfs=NFS
@@ -280,6 +304,7 @@ share_s1=Amanah tidak berakar
 share_s2=Percayalah semua orang
 share_lro=Baca sahaja
 share_lrw=Baca tulis
+
 log_create_export=Mengeluarkan eksport NFS $1 
 log_modify_export=Mengubah eksport NFS $1 
 log_delete_export=Eksport NFS yang dipotong $1 
@@ -297,6 +322,7 @@ log_move=Fail yang dipindahkan $1 hingga $2
 log_delete=Fail dipadamkan $1 
 log_attr=Tetapkan atribut pada fail $1 
 log_acl=Tetapkan ACL pada fail $1 
+
 search_eaccess=Anda tidak dibenarkan mencari direktori ini
 search_title=Cari fail
 search_ok=Cari Sekarang
@@ -325,7 +351,9 @@ search_crit=Kriteria carian
 search_list=Keputusan Carian
 search_down=Muat turun
 search_edown=Tiada fail hasil carian untuk dimuat turun dipilih
+
 facl_eaccess=Anda tidak dibenarkan menetapkan ACL untuk fail ini
+
 attr_eattrs=Gagal mendapatkan atribut : $1 
 attr_efs=Fail sistem fail $1 tidak menyokong atribut
 attr_add=Tambah Atribut
@@ -336,11 +364,13 @@ attr_title=Atribut Fail untuk $1
 attr_create=Tambah Atribut
 attr_edit=Edit Atribut
 attr_ename=Nama atribut yang tiada
+
 ext_eattrs=Gagal mendapatkan atribut EXT : $1 
 ext_efs=Sistem fail $1 tidak menyokong atribut EXT
 ext_title=Atribut EXT untuk $1 
 ext_header=Atribut fail EXT
 ext_efailed=Gagal menetapkan atribut untuk $1 : $2 
+
 eattr_A=Jangan kemas kini masa akses
 eattr_a=Hanya boleh menambah fail
 eattr_c=Memadatkan data pada cakera
@@ -349,6 +379,7 @@ eattr_i=Jangan benarkan pengubahsuaian
 eattr_s=Blok sifar apabila memadam
 eattr_S=Sentiasa selaraskan selepas menulis
 eattr_u=Simpan kandungan untuk undeletion
+
 mount_eaccess=Anda tidak dibenarkan untuk melancarkan sistem fail
 mount_efstab=Tiada sistem fail wujud di titik gunung ini
 mount_epoint=$1 bukan titik gunung
@@ -358,18 +389,22 @@ mount_err1=Gagal untuk dipasang $1 : $2
 mount_err2=Gagal un-mount $1 : $2 
 mount_title1=Gunung sistem fail
 mount_title2=Sistem fail yang tidak dipasang
+
 zip_err=Tidak dapat mengeluarkan fail : $1 
 zip_ecmd=Kehilangan arahan $1 
 zip_eunzip=Unzip gagal : $1 
 zip_ename=Tidak kelihatan sebagai fail zip, tar atau tar.gz
 zip_euntar=Un-tar gagal : $1 
 zip_euntar2=Un-compress dan un-tar gagal : $1 
+
 ddir_title=Muat turun Direktori
 ddir_rusure=Untuk memuat turun kandungan $1 sebagai fail arkib, klik pada salah satu butang jenis arkib di bawah.
 ddir_zip=ZIP
 ddir_tgz=TAR.GZ
 ddir_tar=TAR
+
 ebutton=Ciri ini tidak tersedia
+
 preview_etype=Tidak dapat mencipta jenis fail untuk $1 
 preview_etype2=$1 tidak dalam format imej yang disokong
 preview_ecmd=Perintah $1 diperlukan untuk skala imej ini tidak dipasang
@@ -377,14 +412,17 @@ preview_eimage=Hanya imej yang boleh dipratonton
 preview_title=Pratonton $1 
 preview_bad=Tidak boleh memuatkan imej untuk pratonton
 preview_egd=Gagal memuat imej dengan GD
+
 html_efailed=Gagal membuka editor HTML : $1 
 html_title=Edit Fail HTML
 html_title2=Buat Fail HTML
 html_save=Simpan dan tutup
 html_err=Gagal menyimpan fail HTML
+
 history_title=Sejarah Jalur
 history_ok=Pergi ke
 history_button=Sejarah
+
 extract_etype=Hanya fail yang boleh diekstrak
 extract_title=Ekstrak Fail Mampat
 extract_rusure=Adakah anda pasti mahu mengekstrak fail dimampatkan :

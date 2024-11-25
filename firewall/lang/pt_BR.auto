@@ -38,7 +38,7 @@ desc_args--match-set=$2 está contido no conjunto de IP $1
 desc_src=fonte
 desc_dest=destino
 
-redhat_einstalled=Nenhuma ação de inicialização <tt>iptables (6)</tt> foi encontrada, indicando que o pacote IPtables não está instalado no seu sistema
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 
 edit_state_snat=NATd de origem
 edit_state_dnat=NATd de destino

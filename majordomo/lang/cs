@@ -14,6 +14,7 @@ index_global=Editovat nastavení Majordomu
 index_globaldesc=Ediovat globální nastavení Majordom, které budou využity pro všechny mail seznamy
 index_return=mailové seznamy
 index_version=Majordomo verze $1
+
 global_title=Globální nastavení
 global_ecannot=Nemáte oprávnění editovat globální nastavení
 global_header=Globální nastavení Majordoma
@@ -26,6 +27,7 @@ global_ewhereami=Chybějící nebo neplatné jméno hosta mail serveru
 global_ewhoami=Chybějící nebo neplatná adresa Majordoma
 global_eowner=Chybějící nebo neplatná adresa vlastníka
 global_esendmail=Sendmail příkaz '$1' neexistuje
+
 create_ecannot=Nemáte oprávnění vytvářet nové seznamy
 create_title=Vytvoření mailového seznamu
 create_header=Detaily nového seznamu
@@ -49,6 +51,7 @@ create_archive=Archivovat mailový seznam?
 create_archiveyear=Do ročního souboru
 create_archivemonth=Do měsíčního souboru
 create_archiveday=Do denního souboru
+
 cdigest_ecannot=Nemáte oprávnění vytvořit nové zhuštěné seznamy
 cdigest_title=Vytvořit zhuštěný seznam
 cdigest_header=Detaily nového zhuštěného seznamu
@@ -65,18 +68,21 @@ cdigest_lines=Zprávy mají celkem $1 řádků
 cdigest_err=Chyba při vytváření zhuštěného seznamu
 cdigest_edays=Chybějící nebo neplatný počet dnů
 cdigest_elines=Chybějící nebo neplatný počet řádků
+
 edit_title=Editace mailového seznamu
 edit_ecannot=Nemáte oprávnění editovat tento mailový seznam
 edit_delete=Smazat seznam
 edit_deletemsg=Smazat seznam, včetně všech asociovaných souborů a mail aaliasů
 edit_return=mailový seznam
 edit_for=Pro seznam $1
+
 delete_ecannot=Nemáte oprávnění smazat tenot mailový seznam
 delete_edigest=Tento seznam nemůže být smazán, protože to vypadá, že má asociovaný zhuštěný seznam
 delete_title=Smazání seznamu
 delete_rusure=Skutečně chcete smazat mailový seznam $1? Následující soubory budou smazány :
 delete_aliases=Následující mailové aliasy budou taktéž smazány :
 delete_ok=Smazat seznam
+
 members_title=Členové seznamu
 members_desc=Použitím níže uvedeného boxu editujete seznam mailových adres, které budou přijímat maily, poslané do tohoto seznamu.
 members_rodesc=Níže uvedený text box vypisuje seznam všech mailových adres, které budou přijímat maily, poslané do tohoto seznamu.
@@ -91,6 +97,7 @@ members_esub=Musíte si zvolit heslo údržbáře dříve, než přidáte adresy
 members_esubaddr=Přidávaná adresa musí obsahovat plné jméno domény, např.<tt>foo@bar.com</tt>
 members_eunsub=Musíte si zvolit heslo údržbáře dříve, než odeberete adresy z tohoto seznamu
 members_eunsubaddr=Odebíraná adresa musí obsahovat plné jméno domény, např.<tt>foo@bar.com</tt>
+
 info_title=Zprávy a popisy
 info_header=Zprávy a popisy
 info_desc=Popis seznamu, jež bude uveden v obsahu odezvy na příkaz <tt>lists</tt>
@@ -98,6 +105,7 @@ info_info=Informativní zpráva, jež se vrátí jako odezva na příkaz <tt>inf
 info_intro=Úvodní zpráva, jež bude odeslána, jakmile bude někdo přidán do seznamu
 info_same=Shodná s informativní zprávou
 info_below=Jako níže vložené..
+
 subs_title=Příspívání a moderování
 subs_header=Nastavení příspívání a moderování
 subs_sub=Ochrana zahájení přispívání
@@ -123,6 +131,7 @@ subs_eowner=Chybějící emailová adresa vlastníka
 subs_eapproval=Chybějící emailová adresa schvalovatele
 subs_emoderator=Chybějící nebo neplatná adresa moderátora
 subs_epasswd=Chybějící nebo neplatné heslo
+
 mesg_title=Nastavení emailu
 mesg_header=Nastavení odcházejícího emailu
 mesg_reply=<tt>Reply-To:</tt> adresa v přeposílaném mailu
@@ -143,6 +152,7 @@ mesg_esender=Chybějící nebo neplatná <tt>Sender:</tt> adresa
 mesg_esender2=<tt>Sender:</tt> adresa musí obsahovat jméno hosta
 mesg_ehost=Chybějící nebo neplatné jméno hosta
 mesg_emaxlength=Chybějící nebo neplatná maximální velikost zprávy
+
 access_title=Kontrola přístupu
 access_header=Kontrola přístupu pro příkazy Majordoma
 access_open=Kdokoliv
@@ -165,17 +175,20 @@ access_res2=Adresy v souboru
 access_tbody=Tabu v tělu regexps
 access_theader=Tabu v hlavičce regexps
 access_taboo=Poznámka: všechna tabu a edresy regexps musí začínat a končit znakem <tt>/</tt> , například <tt>/foobar.com/</tt> nebo <tt>/obscene/</tt>.
+
 head_title=Hlavičky a patičky
 head_header=Hlavičky a patičky přeposílaného emailu
 head_fronter=Hlavička přeposílaného emailu
 head_footer=Patička přeposílaného emailu
 head_headers=Extra SMTP hlavičky pro přeposíláný mail
+
 misc_title=Ostatní nastavení
 misc_header=Ostatní nastavení seznamu
 misc_munge=Použít pouze doménu, pokud porovnanými adresami?
 misc_debug=Debug mód?
 misc_info=Zahrnout do informační zprávy datum poslední dofifikace?
 misc_intro=Zahrnout do úvodní zprávy datum poslední dofifikace?
+
 digest_title=Nastavení zhuštění
 digest_header=Nastavení generování zhuštění
 digest_name=Titulek zhuštění
@@ -190,6 +203,7 @@ digest_edays=Chybějící nebo neplatné počet dnů
 digest_elines=Chybějící nebo neplatný počet řádků
 digest_evolume=Chybějící nebo neplatné číslo svazku
 digest_eissue=Chybějící nebo neplatný číslo vydání
+
 log_global=Změněna globální nastavení
 log_create_list=Vytvořen mailový seznam $1
 log_create_digest=Vytvořen zhuštěný seznam $1
@@ -206,11 +220,13 @@ log_access=Aktualizována kontrola přístupu pro seznam $1
 log_head=Aktualizovány hlavičky a patičky pro seznam $1
 log_misc=Aktualizována ostatní nastavení pro seznam $1
 log_digest=Aktualizována nastavení zhuštění pro seznam $1
+
 acl_lists=Mailové seznamy, které může tento uživatel udržovat
 acl_lall=Všechny seznamy
 acl_lsel=Vybrané..
 acl_global=Může editovat globální nastavení?
 acl_create=Může vytvářet nové mailové seznamy?
 acl_edit=Může editovat členství v seznamech?
+
 alias_err=Chyba při nastavení aliasů
 alias_eowner=Chybějící email adresa vlastníka

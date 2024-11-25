@@ -64,6 +64,7 @@ edit_pre=Komandas palaist pirms rotācijas
 edit_default=Noklusējums ($1)
 edit_sharedscripts=Vai visiem failiem palaist skriptus tikai vienu reizi?
 edit_now=Pagriezt tūlīt
+edit_clone=Clone
 
 global_title=Globālās iespējas
 global_header=Visu žurnālfailu noklusējuma opcijas

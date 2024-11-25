@@ -30,6 +30,8 @@ progress_size2=$1 deskargatzen ($2) ..
 progress_datan=$1 ($2 %)
 progress_data2n=$1 jaso da
 
+password_euserpass=Invalid username or password
+
 ui_searchfor=Testua dauka
 ui_filterbox=Idatzi iragazkia ..
 ui_of=de

@@ -14,6 +14,7 @@ index_global=Globale innstillinger
 index_ecdrecord=Kommandoen for skriving av CD, $1, ble ikke funnet på systemet ditt. Kanskje den ikke er installert, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
 index_return=liste med profiler
 index_delete=Slett valgte profiler
+
 edit_title=Rediger brenner-profil
 create_title=Opprett brenner-profil
 edit_emkisofs=Kommandoen for bygging av ISO filsystem, $1, ble ikke funnet på systemet ditt. Kanskje den ikke er installert, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
@@ -49,6 +50,7 @@ edit_fly0=Bruk midlertidig fil
 edit_srcdrv=Kilde enhetsdriver
 edit_dstdrv=Enhetsdriver for mål
 edit_ecannot=Du har ikke tilgang til å redigere denne brenner-profilen
+
 save_err=Kunne ikke lagre profil
 save_ename=Manglende profil-navn
 save_eiso=Manglende eller ugyldig ISO image filnavn
@@ -62,6 +64,7 @@ save_ecannot1=ISO avbildingen er ikke i en tillatt katalog
 save_ecannot2=Kildekatalogen $1 ligger ikke under en tillatt katalog
 save_ecannot3=MP3 filen eller katalogen $1 er ikke en tillatt katalog
 save_ecannot4=Enhetsfilen for kilde-enheten er ikke i en tillatt katalog
+
 burn_title=Brenn CD
 burn_rutest1=Er du sikker på at du ønsker å teste brenning av ISO avbildingen $1 ?
 burn_rusure1=Er du sikker på at du ønsker å brenne ISO avbildningen $1 til CD ?
@@ -99,6 +102,7 @@ burn_807=Advarsel! Lydsporene dine har en total størrelse på $1 MB, som er ove
 burn_mp3size=De konverterte lydsporene har en størrelse på $1 MB, av totalt $2 MB som er tillatt på en normal lyd-CD.
 burn_seconddesc=Sett inn en blank mål-CD og klikk på knappen nedenfor.
 burn_second=Brenn mål-CD
+
 dev_title=Enhetsinnstillinger
 dev_header=CD brenner enhetsinnstillinger
 dev_device=Brenner-enhet
@@ -109,6 +113,7 @@ dev_extra=Ekstra <tt>cdrecord</tt> innstillinger
 dev_err=Kunne ikke lagre innstillinger for enhet
 dev_eother=Manglende eller ugyldig skrive-hastighet
 dev_ecannot=Du har ikke tilgang til å redigere innstillinger for enhet
+
 mkisofs_title=Innstillinger for ISO filsystem
 mkisofs_header=Globale innstillinger for ISO filsystem
 mkisofs_novers=Ta med versjonsnummer i filnavn?
@@ -116,6 +121,7 @@ mkisofs_notrans=Tillat alle tegn i filnavn?
 mkisofs_nobak=Hopp over sikkerhetskopi-filer?
 mkisofs_fsyms=Følg symbolske lenker?
 mkiofs_ecannot=Du har ikke tilgang til å redigere innstillinger for ISO filsystem
+
 config_cdrecord=CD brennekommando
 config_mkisofs=Bygge-kommando for ISO filsystem
 config_mpg123=MP3 dekoding kommando
@@ -129,6 +135,7 @@ config_empg123=Manglende eller ugyldig MP3 dekoding kommando
 config_esox=Manglende eller ugyldig SOX kommando
 config_ecdrdao=Manglende eller ugyldig CD kopieringskommando
 config_etemp=Manglende eller ugyldig midlertidig filkatalog
+
 acl_create=Kan opprette nye brenner-profiler?
 acl_edit=Kan redigere eksisterende brenner-profiler?
 acl_global=Kan redigere globale innstillinger?
@@ -136,5 +143,6 @@ acl_profiles=Kan bruke profiler
 acl_all=Alle
 acl_sel=Valgt nedenfor ..
 acl_dirs=Tillat kataloger for kildefiler
+
 delete_err=Kunne ikke slette brenner-profiler
 delete_enone=Ingen valgt

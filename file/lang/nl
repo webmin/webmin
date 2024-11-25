@@ -3,6 +3,7 @@ index_nojava=Deze module heeft java nodig om te functioneren, maar uw browser on
 index_eremote=Er is geen Unix gebruiker die overeenkomt met de Webmin inlog $1.
 index_index=Ga terug naar <a href='$1'>Webmin index</a>.
 switch_euser=Unix gebruiker bestaat niet!
+
 top_ret=Index
 top_down=Opslaan
 top_preview=Bekijk
@@ -26,11 +27,13 @@ top_mount=Mount
 top_search=Vind
 top_config=Config
 top_efile=Geen file geselecteerd
+
 right_name=Naam
 right_size=Grote
 right_user=Gebruiker
 right_group=Groep
 right_date=Datum
+
 edit_enormal=Alleen normale files kunnen bewerkt worden
 edit_title=Bewerken $1
 edit_title2=Maak file
@@ -50,6 +53,7 @@ edit_notfound=De tekst $1 is niet gevonden
 edit_saveclose=Opslaan & Sluiten
 edit_elength=File was beknot!
 edit_textmode=Schakel over naar platte tekst mode
+
 info_file=File
 info_path=Pad :
 info_type=Type :
@@ -84,6 +88,7 @@ info_files=Totaal files :
 info_dirs=Totaal directory's :
 info_getsize=Verkrijg Grote
 info_esize=Mislukt grote te verkrijgen : $1
+
 eacl_eacls=Mislukt om ACL's te lezen : $1
 eacl_acltype=ACL Type
 eacl_aclname=Toevoegen aan
@@ -102,6 +107,7 @@ eacl_edefmask=Er kan op zijn hoogst één standaard mask ACL ingang zijn
 eacl_title=ACL voor $1
 eacl_owner=File eigenaar
 eacl_edefaults=Als een file een standaard ACL heeft, moet hij een standaard gebruiker hebben of groep en andere ACL's
+
 acltype_user=Gebruiker
 acltype_group=Groep
 acltype_other=Andere
@@ -110,6 +116,7 @@ acltype_default_user=Standaard Gebruiker
 acltype_default_group=Standaard Groep
 acltype_default_other=Standaard Andere
 acltype_default_mask=Standaard Mask
+
 delete_mtitle=Verwijder meerdere files
 delete_dtitle=Verwijder directory
 delete_ftitle=Verwijder file
@@ -117,11 +124,13 @@ delete_ddesc=Weet u zeker dat u de directory $1 en de gehele inhoud permanent wi
 delete_fdesc=Weet u zeker dat u de file $1 permanent wilt verwijderen?
 delete_mdesc=Weet u zeker dat u deze files and directory's permanent wilt verwijderen?
 delete_efailed=Verwijderen van $1 is mislukt : $2
+
 mkdir_title=Nieuwe Directory
 mkdir_dir=Nieuwe directory :
 mkdir_eexists=$1 bestaat reeds
 mkdir_efailed=Aanmaken van directory mislukte : $1
 mkdir_eaccess=U bent niet bevoegd om '$1' aan te maken
+
 link_title=Maak Link
 link_from=Link van :
 link_to=Link naar :
@@ -130,6 +139,7 @@ link_efrom=Link bron moet een absoluut pad zijn
 link_efailed=Link mislukte : $1
 link_efrom2=U bent niet bevoegd om te linken van '$1'
 link_efollow=U bent niet bevoegd om symlinks te maken
+
 rename_title=Hernoemen van $1
 rename_old=Oude naam :
 rename_new=Nieuwe naam :
@@ -139,6 +149,7 @@ rename_eslash=De nieuwe file naam $1 bevat een ' / '
 rename_efailed=Hernoemen mislukte : $1
 rename_eold=U bent niet bevoegd om '$1' te hernoemen
 rename_enew=U bent niet bevoegd om te hernoemen naar '$1'
+
 file_type0=Directory
 file_type1=Tekst file
 file_type2=Image file
@@ -147,25 +158,30 @@ file_type4=File
 file_type5=Symbolische link
 file_type6=Apparaat file
 file_type7=Pijp
+
 view_enormal=Alleen normale files kunnen bekeken worden
 view_enormal2=Alleen normale files kunnen gedownload worden
 view_eaccess=U bent niet bevoegd om toegang te hebben tot $1
 view_eopen=Mislukt om $1 te openen : $2
+
 view_edir=U kunt alleen een compressie maken voor een directory
 view_ecmd=De opdracht $1 om een file te comprimeren is niet geinstalleerd
 view_ecomp=mislukt om te comprimeren : $1
 view_earchive=U bent niet bevoegd om ingepakte files te downloaden
 view_earchmax=De geselecteerd directory is groter dan de toegestane ($1 bytes) om in te pakken.
+
 paste_ecopy=U moet knippen of kopieeren voordat u kunt plakken
 paste_egone=Gekopieerde file $1 bestaat niet langer
 paste_eover=$1 kan niet worden overschreven
 paste_eself=U kunt geen file op zichzelf plakken
 paste_emfailed=Verplaatsen mislukte : $1
 paste_ecfailed=Kopie Mislukt : $1
+
 over_title=File Bestaat
 over_msg=De file $1 bestaat reeds. Gebruik het veld hieronder om een nieuwe filenaam in te vullen voor de vorige file.
 over_new=Nieuwe filenaam :
 over_ok=Ok
+
 upload_efailed=Mislukt om upload te openen : $1
 upload_title=Upload File
 upload_file=File om te uploaden
@@ -182,9 +198,11 @@ upload_elink=Kan niet naar een symbolische link uploaden
 upload_zip=ZIP of TAR file uitpakken?
 upload_yes=Ja, dan verwijderen
 upload_user=Uploaden als gebruiker
+
 find_eaccess=U bent niet bevoegd om toegang te hebben tot $1
 find_eexist=$1 bestaat niet in $2
 find_edir=$1 is geen directory in $2
+
 cancel=Annuleer
 close=Sluit
 eopen=Download mislukte : $1
@@ -195,15 +213,20 @@ chmod_elink=symlink mislukt : $1
 chmod_echown=chown mislukt : $1
 chmod_echmod=chmod mislukt : $1
 chmod_efollow=U bent niet bevoegd om symbolische links te bewerken
+
 copy_efrom=U bent niet bevoegd om te kopieeren van '$1'
 copy_eto=U bent niet bevoegd om te kopieeren naar '$1'
 copy_elink=symlink mislukt : $1
+
 delete_eaccess=U bent niet bevoegd om '$1' te verwijderen
 delete_eroot=De directory '$1' is de enige waar u toegang tot heeft, en kan daarom niet verwijdert worden.
+
 list_eaccess=U bent niet bevoegd om deze directory te bekijken
 list_edir=Kon geen lijst maken van $1 : $2
+
 move_eto=U bent niet bevoegd om te verplaatsen naar '$1'
 move_afrom=U bent niet bevoegd om '$1' te verplaatsen
+
 acl_user=File toegang op server als gebruiker
 acl_user_def=Zelfde als Webmin inlog
 acl_umask=Umask voor nieuwe files
@@ -249,6 +272,7 @@ acl_noperms=Mag file permissies veranderen?
 acl_nousers=Mag file eigenaarschap veranderen?
 acl_filesystems=Mag filesysteem mount points zien?
 acl_contents=Sta zoeken van file of inhoud toe?
+
 share_title=Deling
 share_samba=Windows
 share_nfs=NFS
@@ -277,6 +301,7 @@ share_s1=Vertrouw niet-root
 share_s2=Vertrouw iedereen
 share_lro=Alleen-lezen
 share_lrw=Alleen-schrijven
+
 log_create_export=Aangemaakte NFS export $1
 log_modify_export=Gemodificeerde NFS export $1
 log_delete_export=Verwijderde NFS export $1
@@ -294,6 +319,7 @@ log_move=Verplaatste file $1 naar $2
 log_delete=Verwijderde file $1
 log_attr=Zet attributen op file $1
 log_acl=Zet ACL op file $1
+
 search_eaccess=U bent niet bevoegd om te zoeken in deze directory
 search_title=Vind files
 search_ok=Zoek Nu
@@ -322,7 +348,9 @@ search_crit=Zoek criteria
 search_list=Zoek resultaten
 search_down=Download
 search_edown=Geen zoekresultaten file om de geselecteerde te downloaden
+
 facl_eaccess=U bent niet bevoegd om ACL's in te stellen voor deze file
+
 attr_eattrs=Mislukt om attributen te verkrijgen : $1
 attr_efs=Het filesysteem $1 ondersteund geen attributen
 attr_add=Attribuut Toevoegen
@@ -333,11 +361,13 @@ attr_title=File Attributen voor $1
 attr_create=Attribuut Toevoegen
 attr_edit=Bewerk Attributen
 attr_ename=Ontbrekende attributen naam
+
 ext_eattrs=Mislukt om EXT attributen te krijgen : $1
 ext_efs=Het filesysteem $1 ondersteund geen EXT attributen
 ext_title=EXT attributen voor $1
 ext_header=EXT file attributen
 ext_efailed=Mislukt om attributen in te stellen voor $1 : $2
+
 eattr_A=Update niet de toegangs tijden
 eattr_a=Mag alleen toevoegen aan file
 eattr_c=Comprimeer data op harddisk
@@ -346,6 +376,7 @@ eattr_i=Sta geen modificatie toe
 eattr_s=Vul de blokken met een nul wanneer iets word verwijdert
 eattr_S=Altijd synchroniseren na het schrijven
 eattr_u=Sla inhoud op voordat word verwijdert
+
 mount_eaccess=U bent niet bevoegd om filesystemen te mounten
 mount_efstab=Er bestaat geen filesysteem op dit mount punt
 mount_epoint=$1 is geen mount punt
@@ -355,18 +386,22 @@ mount_err1=Mounten van $1 mislukte : $2
 mount_err2=Un-Mounten van $1 mislukte : $2
 mount_title1=Mount filesysteem
 mount_title2=Un-mount filesysteem
+
 zip_err=Uitpakken lukt niet van file : $1
 zip_ecmd=Opdracht $1 ontbreekt
 zip_eunzip=Unzip mislukte : $1
 zip_ename=Lijkt geen zip, tar of tar.gz file te zijn
 zip_euntar=Un-tar mislukt : $1
 zip_euntar2=Decomprimeren en Un-tar mislukte : $1
+
 ddir_title=Download Directory
 ddir_rusure=Om de inhoud van $1 te downloaden als een ingepakte file, klik dan op één van de archief knoppen hieronder.
 ddir_zip=ZIP
 ddir_tgz=TAR.GZ
 ddir_tar=TAR
+
 ebutton=Deze optie is niet beschikbaar
+
 preview_etype=Kan van $1 niet uitzoeken wat voor file type het is
 preview_etype2=$1 is geen ondersteund image formaat
 preview_ecmd=De opdracht $1 die nodig is om de image te verschalen is niet geinstalleerd
@@ -374,14 +409,17 @@ preview_eimage=Alleen plaatjes kunnen vooraf bekeken worden
 preview_title=Bekijken van $1
 preview_bad=Kon geen image laden om te bekijken
 preview_egd=Mislukt om de image met GD te laden
+
 html_efailed=Mislukt om HTML bewerker te openen : $1
 html_title=Bewerk HTML File
 html_title2=Maak HTML File
 html_save=Opslaan en Sluiten
 html_err=Mislukt om HTML file op te slaan
+
 history_title=Pad Geschiedenis
 history_ok=Ga naar
 history_button=Geschiedenis
+
 extract_etype=Alleen files kunnen worden uitgepakt
 extract_title=Uitpakken Gecomprimeerde File
 extract_rusure=Weet u zeker dat u de gecomprimeerde file wilt uitpakken :

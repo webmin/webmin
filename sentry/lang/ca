@@ -1,6 +1,7 @@
 index_title=Sentinelles de Seguretat
 index_ecommands=No s'ha trobat al sistema cap de les ordres de seguretat de <tt>sentry</tt> ($1, $2 or $3). Pot ser que no n'hi hagi cap d'instal·lada, o bé que la <a href='$4'>configuració del mòdul</a> sigui incorrecta.
 index_return=al menú de mòduls
+
 portsentry_title=Configuració de Portsentry
 portsentry_below=(Detecció d'escaneig de ports)
 portsentry_ecommand=No s'ha trobat al sistema el dimoni $1 de Portsentry. Pot ser que no estigui instal·Lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
@@ -39,6 +40,7 @@ portsentry_ekill=No s'han pogut matar els processos $1: $2
 portsentry_estopped=Ja no està en execució
 portsentry_starterr=No s'ha pogut iniciar portsentry
 portsentry_save=Desa i Aplica
+
 hostsentry_title=Configuració de Hostsentry
 hostsentry_below=(Detecció d'entrades sospitoses)
 hostsentry_ecommand=No s'ha trobat al sistema el script python $1 de portsentry. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
@@ -63,6 +65,7 @@ hostsentry_save=Desa i Aplica
 hostsentry_err=No s'ha pogut desar la configuració de hostsentry
 hostsentry_eignore='$1' no és un usuari vàlid
 hostsentry_emultiple='$1' no és un host vàlid a partir del qual ignorar les entrades
+
 logcheck_title=Configuració dels Registres de Verificació
 logcheck_ecommand=No s'ha trobat al sistema l'ordre de verificació de registres $1. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 logcheck_eversion=L'ordre $1 de comprovacio de registres no té la versió esperada per Webmin.
@@ -78,6 +81,7 @@ logcheck_save=Desa i Aplica
 logcheck_eto=Hi falta l'adreça de correu o bé és invàlida
 logcheck_runparts=La comprovació de registres s'executa des de cron amb el script $1
 logcheck_files=Fitxers de registre que es monitoritzen
+
 mod_moduleLoginLogout=Enregistra les entrades i les sortides
 mod_moduleFirstLogin=Detecta la primera entrada d'un usuari
 mod_moduleForeignDomain=Detecta l'entrada des d'un domini foraster
@@ -90,6 +94,7 @@ mod_moduleInvalidUtmp=Detecta entrades utmp modificades
 mod_moduleHistorySuspicious=Detecta ordres sospitoses als historials
 mod_moduleNetworkDaemon=Detecta dimonis que s'han deixat en execució
 mod_moduleFileExists=Detecta fitxers sospitosos als directoris arrel
+
 log_hostsentry=S'ha desat la configuració de hostsentry
 log_portsentry=S'ha desat la configuració de portsentry
 log_logcheck=S'ha desat la configuració de comprovació de registres

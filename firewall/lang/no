@@ -150,7 +150,6 @@ desc_args--match-set=$2 finnes i IP-sett $1
 desc_src=kilde
 desc_dest=mål
 
-redhat_einstalled=Ingen oppstartshandling for <tt>iptables(6)</tt> ble funnet, noe som antyder at IPtables pakken ikke er installert på systemet ditt
 redhat_eoutput=An error occured getting IPtables status from the command $1. This probably indicates that your system has been configured to use IPchains instead of IPtables.
 
 gentoo_escript=The Gentoo IPtables startup script $1 was not found on your system.

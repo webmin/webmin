@@ -1,6 +1,7 @@
 index_title=Centinelas de Seguridad
 index_ecommands=Ninguno de los comandos de centinela de seguridad ($1, $2 o $3) fue hallado en tu sistema. Quizás no está instalado o tu <a href='$4'>configuración del módulo</a> es incorrecta.
 index_return=menú del módulo
+
 portsentry_title=Configuración de Centinela de Puerto
 portsentry_below=(Detección de exploración de puerto)
 portsentry_ecommand=El daemon de Centinela de Puerto $1 no fue hallado en tu sistema. Quizás no está instalado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
@@ -39,6 +40,7 @@ portsentry_ekill=No pude matar los procesos $1: $2
 portsentry_estopped=Ya no está en ejecución
 portsentry_starterr=No pude arrancar portsentry
 portsentry_save=Salvar y Aplicar
+
 hostsentry_title=Configuración de Centinela de Máquina (Hostsentry)
 hostsentry_below=(Detección lo login sospechoso)
 hostsentry_ecommand=El guión de hostsentry de python $1 no fue hallado en tu sistema. Quizás no está instalado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
@@ -63,6 +65,7 @@ hostsentry_save=Salvar y Aplicar
 hostsentry_err=No pude salvar la configuración de hostsentry
 hostsentry_eignore='$1' no es un usuario válido de quien ignorar los login
 hostsentry_emultiple='$1' no es una máquina válida de la que ignorar múltiples login
+
 logcheck_title=Configuración de Revisión de Diario (Logcheck)
 logcheck_ecommand=El comando logcheck $1 no fue hallado en tu sistema. Quizás no está instalado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
 logcheck_below=(Análisis de diario sospechoso)
@@ -78,6 +81,7 @@ logcheck_save=Salvar y Aplicar
 logcheck_eto=La dirección de email falta o es inválida
 logcheck_runparts=La revisión de diario se ejecuta desde cron mediante el guión $1
 logcheck_files=Archivos de diario que son monitorizados
+
 mod_moduleLoginLogout=Grabar logins y logouts
 mod_moduleFirstLogin=Detecta el primer login por usuario
 mod_moduleForeignDomain=Detectar login desde dominio foráneo
@@ -90,6 +94,7 @@ mod_moduleInvalidUtmp=Detectar entrada de utmp modificada
 mod_moduleHistorySuspicious=Detectar comandos sospechosos en historia
 mod_moduleNetworkDaemon=Detectar daemon dejado en ejecución
 mod_moduleFileExists=Detectar archivos sospechosos en directorio inicial
+
 log_hostsentry=Salvada configuración de hostsentry
 log_portsentry=Salvada configuración de portsentry
 log_logcheck=Salvada configuración de logcheck

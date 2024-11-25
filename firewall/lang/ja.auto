@@ -48,7 +48,7 @@ desc_args--match-set=$2はIPセット $1に含まれています
 desc_src=ソース
 desc_dest=先
 
-redhat_einstalled=IPテーブルパッケージがシステムにインストールされていないことを示す<tt>iptables（6）</tt>ブートアップアクションが見つかりませんでした
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 
 edit_state_untracked=追跡されない
 edit_state_snat=ソースNATd

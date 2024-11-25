@@ -13,6 +13,7 @@ index_digest=새 다이제스트 목록 추가
 index_global=majordomo 옵션 편집
 index_globaldesc=모든 메일 목록에 적용되는 글로벌 majordomo 옵션 편집
 index_return=메일 목록
+
 global_title=글로벌 옵션
 global_ecannot=글로벌 옵션을 편집할 수 없습니다
 global_header=글로벌 majordomo 옵션
@@ -25,6 +26,7 @@ global_ewhereami=없거나 잘못된 메일 서버 호스트 이름
 global_ewhoami=없거나 잘못된 majordomo 주소
 global_eowner=없거나 잘못된 소유자 주소
 global_esendmail=sendmail 명령 '$1'이(가) 존재하지 않습니다
+
 create_ecannot=새 메일을 작성할 수 없습니다
 create_title=메일 목록 작성
 create_header=새 목록 정보
@@ -44,6 +46,7 @@ create_ealias='$1'의 메일 별칭이 이미 있습니다
 create_eowner=없거나 잘못된 소유자 전자 메일 주소
 create_epassword=없거나 잘못된 관리 패스워드
 create_emoderator=없거나 잘못된 조정자 전자 메일 주소
+
 cdigest_ecannot=새 다이제스트 목록을 작성할 수 없습니다
 cdigest_title=다이제스트 목록 작성
 cdigest_header=새 다이제스트 목록 정보
@@ -60,18 +63,21 @@ cdigest_lines=총 메시지 행 수가 $1에 도달할 때
 cdigest_err=다이제스트 목록을 작성하지 못했습니다
 cdigest_edays=없거나 잘못된 일 수
 cdigest_elines=없거나 잘못된 행 수
+
 edit_title=메일 목록 편집
 edit_ecannot=이 메일 목록을 편집할 수 없습니다
 edit_delete=목록 삭제
 edit_deletemsg=모든 관련 파일 및 메일 별칭과 함께 이 목록 삭제
 edit_return=메일 목록
 edit_for=목록 $1
+
 delete_ecannot=이 메일 목록을 삭제할 수 없습니다
 delete_edigest=이 목록에는 관련 다이제스트 목록이 있으므로 삭제할 수 없습니다
 delete_title=목록 삭제
 delete_rusure=메일 목록 $1을(를) 삭제하시겠습니까? 다음 파일이 삭제됩니다:
 delete_aliases=또한 다음 메일 별칭도 삭제됩니다:
 delete_ok=목록 삭제
+
 members_title=목록 구성원
 members_desc=아래의 입력란을 사용하여 이 목록으로 전송된 메일을 받을 전자 메일 주소 목록을 편집하십시오.
 members_rodesc=아래의 입력란에는 이 목록에 보내는 메일을 받을 전자 메일 주소가 모두 나열됩니다.
@@ -86,6 +92,7 @@ members_esub=이 목록에 주소를 가입하기 전에 유지보수 패스워�
 members_esubaddr=가입할 주소에는 전체 도메인 이름이 있어야 합니다(예: <tt>foo@bar.com</tt>)
 members_eunsub=이 목록에서 주소를 탈퇴하기 전에 유지보수 패스워드를 선택해야 합니다.
 members_eunsubaddr=탈퇴할 주소에는 전체 도메인 이름이 있어야 합니다(예: <tt>foo@bar.com</tt>)
+
 info_title=메시지 및 설명
 info_header=메시지 및 설명
 info_desc=<tt>lists</tt> 명령에 대한 응답에 포함시킬 설명 나열
@@ -93,6 +100,7 @@ info_info=<tt>info $1</tt> 명령에 대한 응답으로 반환되는 메시지
 info_intro=목록에 가입시킬 때 전송할 소개 메시지
 info_same=정보 제공 메시지와 동일
 info_below=아래에 입력된 대로..
+
 subs_title=가입 및 조정
 subs_header=가입 및 조정 옵션
 subs_sub=가입 정책
@@ -118,6 +126,7 @@ subs_eowner=없는 소유자 전자 메일 주소
 subs_eapproval=없는 승인 전자 메일 주소
 subs_emoderator=없거나 잘못된 조정자 주소
 subs_epasswd=없거나 잘못된 패스워드
+
 mesg_title=전자 메일 옵션
 mesg_header=발신 전자 메일 옵션
 mesg_reply=회신자: 회신 전자 메일에 있는 주소
@@ -138,6 +147,7 @@ mesg_esender=없거나 잘못된 '발신자:' 주소
 mesg_esender2='발신자:' 주소에 호스트 이름을 사용하면 안됩니다
 mesg_ehost=없거나 잘못된 호스트 이름
 mesg_emaxlength=없거나 잘못된 최대 메시지 크기
+
 access_title=액세스 제어
 access_header=majordomo 명령의 액세스 제어
 access_open=모두
@@ -160,17 +170,20 @@ access_res2=파일에 있는 주소
 access_tbody=taboo 본문 정규식
 access_theader=taboo 머리글 정규식
 access_taboo=참고: 모든 taboo 및 주소 정규식은 <tt>/</tt>로 시작해서 <tt>/</tt>로 끝나야 합니다(예: <tt>/foobar.com/</tt>, <tt>/obscene/</tt>).
+
 head_title=머리글 및 바닥글
 head_header=회신 전자 메일 머리글 및 바닥글
 head_fronter=회신 전자 메일 머리글
 head_footer=회신 전자 메일 바닥글
 head_headers=회신 전자 메일의 추가 SMTP 머리글
+
 misc_title=기타 옵션
 misc_header=기타 목록 옵션
 misc_munge=주소를 비교할 때만 도메인을 사용합니까?
 misc_debug=디버그 모드를 사용합니까?
 misc_info=정보 제공 메시지에 마지막으로 수정한 날짜를 포함시킵니까?
 misc_intro=소개 메시지에 마지막으로 수정한 날짜를 포함시킵니까?
+
 digest_title=다이제스트 옵션
 digest_header=다이제스트 생성 옵션
 digest_name=다이제스트 제목
@@ -185,6 +198,7 @@ digest_edays=없거나 잘못된 일 수
 digest_elines=없거나 잘못된 행 수
 digest_evolume=없거나 잘못된 볼륨 번호
 digest_eissue=없거나 잘못된 발행 번호
+
 log_global=글로벌 옵션 변경됨
 log_create_list=메일 목록 $1 작성됨
 log_create_digest=다이제스트 목록 $1 작성됨
@@ -201,6 +215,7 @@ log_access=목록 $1의 액세스 제어 업데이트됨
 log_head=목록 $1의 머리글 및 바닥글 업데이트됨
 log_misc=목록 $1의 기타 옵션 업데이트됨
 log_digest=목록 $1의 다이제스트 옵션 업데이트됨
+
 acl_lists=이 사용자가 관리할 수 있는 메일 목록
 acl_lall=모든 목록
 acl_lsel=선택한 목록..

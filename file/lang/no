@@ -3,6 +3,7 @@ index_nojava=Denne modulen krever java for å virke, men nettleseren din ser ikk
 index_eremote=Det finnes ingen Unix bruker som stemmer overens med Webmin brukeren $1.
 index_index=Returner til <a href='$1'>Webmin indeks</a>.
 switch_euser=Unix bruker finnes ikke!
+
 top_ret=Indeks
 top_down=Lagre
 top_preview=Forhåndsvis
@@ -26,11 +27,13 @@ top_mount=Monter
 top_search=Finn
 top_config=Konfig
 top_efile=Ingen fil valgt
+
 right_name=Navn
 right_size=Størrelse
 right_user=Bruker
 right_group=Gruppe
 right_date=Dato
+
 edit_enormal=Bare normale filer kan redigeres
 edit_title=Redigerer $1
 edit_title2=Oppretter fil fil
@@ -50,6 +53,7 @@ edit_notfound=The text $1 was not found
 edit_saveclose=Lagre og lukk
 edit_elength=Filen ble avkortet!
 edit_textmode=Bytt til vanlig tekst modus
+
 info_file=Fil
 info_path=Sti:
 info_type=Type:
@@ -86,6 +90,7 @@ info_files=Totalt filer:
 info_dirs=Totalt kataloger:
 info_getsize=Hent størrelse
 info_esize=Kunne ikke hente størrelser : $1
+
 eacl_eacls=Kunne ikke lese ACLer : $1
 eacl_acltype=ACL Type
 eacl_aclname=Bruk på
@@ -104,6 +109,7 @@ eacl_edefmask=There can be at most one default mask ACL entry
 eacl_title=ACL for $1
 eacl_owner=Fil eier
 eacl_edefaults=If a file has any default ACL, it must have default user, group and other ACLs.
+
 acltype_user=Bruker
 acltype_group=Gruppe
 acltype_other=Andre
@@ -112,6 +118,7 @@ acltype_default_user=Standard bruker
 acltype_default_group=Standard gruppe
 acltype_default_other=Standard andre
 acltype_default_mask=Standard maske
+
 delete_mtitle=Slett flere filer
 delete_dtitle=Slett katalog
 delete_ftitle=Slett fil
@@ -119,11 +126,13 @@ delete_ddesc=Er du sikker på at du ønsker å slette katalogen $1 og alt dens i
 delete_fdesc=Er du sikker på at du ønsker å slette filen $1 permanent?
 delete_mdesc=Er du sikker på at du ønsker å slette disse filene og katalogene permanent? :
 delete_efailed=Kunne ikke slette $1 : $2
+
 mkdir_title=Ny katalog
 mkdir_dir=Ny katalog:
 mkdir_eexists=$1 finnes allerede
 mkdir_efailed=Create directory failed : $1
 mkdir_eaccess=You are not allowed to create '$1'
+
 link_title=Create Link
 link_from=Link from:
 link_to=Link to:
@@ -132,6 +141,7 @@ link_efrom=Link source must be an absolute path
 link_efailed=Link failed : $1
 link_efrom2=You are not allowed to link from '$1'
 link_efollow=You are not allowed to create symlinks
+
 rename_title=Omdøp $1
 rename_old=Gammelt navn:
 rename_new=Nytt navn:
@@ -141,6 +151,7 @@ rename_eslash=The new file name $1 contains a /
 rename_efailed=Rename failed : $1
 rename_eold=You are not allowed to rename '$1'
 rename_enew=You are not allowed to rename to '$1'
+
 file_type0=Katalog
 file_type1=Tekstfil
 file_type2=Bildefil
@@ -149,26 +160,31 @@ file_type4=Fil
 file_type5=Symbolsk lenke
 file_type6=Device file
 file_type7=Pipe
+
 view_enormal=Only normal files can be viewed
 view_enormal2=Only normal files can be downloaded
 view_eaccess=Du har ikke tilgang til $1
 view_eopen=Failed to open $1 : $2
+
 view_edir=An archive can only be created for a directory
 view_ecmd=The command $1 needed to create an archive is not installed
 view_ecomp=Failed to create archive : $1
 view_earchive=Du har ikke lov til å laste ned arkiver
 view_earchmax=The selected directory is larger than the maximum allowed for archiving ($1 bytes)
 view_epathinfo=Sti inneholder ugyldige tegn
+
 paste_ecopy=You must cut or copy before pasting
 paste_egone=Copied file $1 no longer exists
 paste_eover=$1 cannot be overwritten
 paste_eself=You cannot paste a file over itself
 paste_emfailed=Move failed : $1
 paste_ecfailed=Copy failed : $1
+
 over_title=File Exists
 over_msg=The file $1 already exists. Use the field below to enter a new filename for the pasted file.
 over_new=New filename:
 over_ok=Ok
+
 upload_efailed=Failed to open upload : $1
 upload_title=Last opp fil
 upload_file=Fil som skal lastes opp
@@ -185,9 +201,11 @@ upload_elink=Kan ikke laste opp til en symbolsk lenke
 upload_zip=Dekomprimer ZIP eller TAR file?
 upload_yes=Yes, then delete
 upload_user=Last opp som bruker
+
 find_eaccess=You are not allowed to access $1
 find_eexist=$1 does not exist in $2
 find_edir=$1 is not a directory in $2
+
 cancel=Avbryt
 close=Lukk
 eopen=Nedlasting feilet : $1
@@ -198,15 +216,20 @@ chmod_elink=symlink feilet : $1
 chmod_echown=chown feilet : $1
 chmod_echmod=chmod feilet : $1
 chmod_efollow=Du har ikke lov til å redigere symbolske lenker
+
 copy_efrom=Du har ikke lov til å kopiere fra '$1'
 copy_eto=Du har ikke lov til å kopiere til '$1'
 copy_elink=symlink feilet : $1
+
 delete_eaccess=Du har ikke lov til å slette '$1'
 delete_eroot=Katalogen '$1' er en av de du er begrenset til, og kan derfor ikke slettes
+
 list_eaccess=You are not allowed to access this directory
 list_edir=Failed to list $1 : $2
+
 move_eto=You are not allowed to move to '$1'
 move_afrom=You are not allowed to move '$1'
+
 acl_user=Aksesser filer på tjener som bruker
 acl_user_def=Samme som Webmin bruker
 acl_umask=Umask for nye filer
@@ -252,6 +275,7 @@ acl_noperms=Kan endre filtillatelser?
 acl_nousers=Kan endre fil eierskap?
 acl_filesystems=Kan se monteringspunkter for filsystem?
 acl_contents=Tillat søk etter fil-innhold?
+
 share_title=Deling
 share_samba=Windows
 share_nfs=NFS
@@ -280,6 +304,7 @@ share_s1=Trust non-root
 share_s2=Trust everybody
 share_lro=Read-only
 share_lrw=Read-write
+
 log_create_export=Created NFS export $1
 log_modify_export=Modified NFS export $1
 log_delete_export=Deleted NFS export $1
@@ -297,6 +322,7 @@ log_move=Moved file $1 to $2
 log_delete=Deleted file $1
 log_attr=Set attributes on file $1
 log_acl=Set ACL on file $1
+
 search_eaccess=You are not allowed to search this directory
 search_title=Finn filer
 search_ok=Søk nå
@@ -325,7 +351,9 @@ search_crit=Search criteria
 search_list=Search results
 search_down=Download
 search_edown=No search result file to download selected
+
 facl_eaccess=You are not allowed to set ACLs for this file
+
 attr_eattrs=Kunne ikke hente attributter : $1
 attr_efs=Filsystemet $1 støtter ikke attributter
 attr_add=Legg til attributt
@@ -336,11 +364,13 @@ attr_title=Filattributter for $1
 attr_create=Legg til attributt
 attr_edit=Rediger attributt
 attr_ename=Mangler attributtnavn
+
 ext_eattrs=Failed to get EXT attributes : $1
 ext_efs=The filesystem $1 does not support EXT attributes
 ext_title=EXT attributes for $1
 ext_header=EXT file attributes
 ext_efailed=Failed to set attributes for $1 : $2
+
 eattr_A=Do not update access times
 eattr_a=Can only append to file
 eattr_c=Compress data on disk
@@ -349,6 +379,7 @@ eattr_i=Do not allow modification
 eattr_s=Zero blocks when deleting
 eattr_S=Always sync after writing
 eattr_u=Save contents for undeletion
+
 mount_eaccess=You are not allowed to mount filesystems
 mount_efstab=No filesystem exists at this mount point
 mount_epoint=$1 is not a mount point
@@ -358,18 +389,22 @@ mount_err1=Failed to mount $1 : $2
 mount_err2=Failed to un-mount $1 : $2
 mount_title1=Mount filesystem
 mount_title2=Un-mount filesystem
+
 zip_err=Kunne ikke pakke ut fil : $1
 zip_ecmd=Mangler $1 kommando
 zip_eunzip=Unzip feilet : $1
 zip_ename=Ser ikke ut til å være en zip, tar eller tar.gz fil
 zip_euntar=De-tar feilet : $1
 zip_euntar2=Dekomprimering og de-taring feilet : $1
+
 ddir_title=Download Directory
 ddir_rusure=To download the contents of $1 as an archive file, click on one of the archive type buttons below.
 ddir_zip=ZIP
 ddir_tgz=TAR.GZ
 ddir_tar=TAR
+
 ebutton=This feature is not available
+
 preview_etype=Could not work out file type for $1
 preview_etype2=$1 is not in a supported image format
 preview_ecmd=The command $1 needed to scale this image is not installed
@@ -377,14 +412,17 @@ preview_eimage=Only images can be previewed
 preview_title=Preview of $1
 preview_bad=Could not load image to preview
 preview_egd=Failed to load image with GD
+
 html_efailed=Failed to open HTML editor : $1
 html_title=Rediger HTML fil
 html_title2=Opprett HTML fil
 html_save=Lagre og lukk
 html_err=Failed to save HTML file
+
 history_title=Path History
 history_ok=Gå til
 history_button=Historikk
+
 extract_etype=Kun filer kan pakkes ut
 extract_title=Pakk ut komprimert fil
 extract_rusure=Are you sure you want to extract the compressed file :

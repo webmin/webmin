@@ -125,4 +125,3 @@ uninstalls_err=卸载模块失败
 uninstalls_enone=未选择
 uninstalls_emod=$1 失败 : $2
 uninstalls_rusure=确定要卸载所选的 $1 吗?此操作会将 $2 子模块以及 $3 文件同时删除.
-__norefs=1

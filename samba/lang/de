@@ -91,7 +91,6 @@ convert_who1=Alle außer aufgelisteten Benutzern und UID-Bereichen
 
 misc_title=Verschiedene Optionen
 misc_debug=Debug-Stufe
-misc_cachecall<tt>getwd()</tt>-Aufrufe cachen?
 misc_lockdir=Sperrverzeichnis
 misc_log=Protokolldatei
 misc_maxlog=Maximale Protokolldateigröße

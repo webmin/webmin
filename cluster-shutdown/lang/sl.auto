@@ -14,6 +14,7 @@ index_smtp=Pošlji preko SMTP strežnika
 index_this=Ta strežnik
 index_nu=Uporabnik ni nastavljen
 index_nl=Prijava ni uspela
+
 shut_title=Izklopite strežnike
 shut_rusure=Ali ste prepričani, da želite takoj izklopiti $1 izbrane strežnike?
 shut_ok=Da, naredi
@@ -22,10 +23,12 @@ shut_failed=.. ni uspelo! $1
 shut_done=.. Končano.
 shut_sel=Izbrani strežniki so :
 shut_ecannot=Ni vam dovoljeno izklopiti strežnikov
+
 reboot_title=Znova zaženite strežnike
 reboot_rusure=Ali ste prepričani, da želite takoj znova zagnati $1 izbrane strežnike?
 reboot_doing=Ponovno zagon $1.
 reboot_ecannot=Ne smete znova zagnati strežnikov
+
 sched_err=Samodejno preverjanje strežnika ni uspelo
 sched_eemail=Manjka e-poštni naslov
 sched_esmtp=Manjkajoči ali neveljavni strežnik SMTP

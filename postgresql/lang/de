@@ -16,6 +16,7 @@ index_add=Neue Datenbank erstellen.
 index_users=Benutzer, Gruppen und Berechtigungen
 index_return=Datenbankliste
 index_esql=Das PostgreSQL-Clientprogramm $1 wurde auf Ihrem System nicht gefunden. Vielleicht ist PostgreSQL nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist nicht korrekt.
+
 index_ehba=Die PostgreSQL-Hostkonfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. Vielleicht wurde PostgreSQL nicht initialisiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist nicht korrekt.
 index_superuser=Das PostgreSQL-Clientprogramm psql konnte auf Ihrem System nicht ausgeführt werden. Vielleicht ist PostgreSQL nicht installiert, oder Ihre <a href='$1'>Modulkonfiguration</a> ist nicht korrekt.
 index_eversion=Die PostgreSQL-Datenbank auf Ihrem System ist Version $1, aber Webmin unterstützt nur Versionen $2 und höher.
@@ -193,7 +194,6 @@ view_match0=enthält
 view_match1=entspricht
 view_match2=enthält nicht
 view_match3=entspricht nicht
-view_match4>größer als
 view_match5=kleiner als
 view_searchok=Suche
 view_searchhead=Suchergebnisse für $1 im Feld $2 ..
@@ -229,7 +229,6 @@ newdb_template=Vorlagendatenbank
 newdb_notemplate=None
 
 user_title=PostgreSQL-Benutzer
-user_vwarning>Dieser PostgreSQL-Benutzer ist die Administrationsanmeldung für die Virtualmin-Domain $1. Änderungen an den Einstellungen hier können Fehler in Virtualmin verursachen.
 user_ecannot=Sie dürfen Benutzer nicht bearbeiten
 user_name=Benutzername
 user_db=Kann Datenbanken erstellen?
@@ -366,7 +365,6 @@ group_derr=Fehler beim Löschen der Gruppen
 group_enone=Keine Gruppen ausgewählt
 
 esql=SQL $1 fehlgeschlagen : $2
-
 log_start=PostgreSQL-Server gestartet
 log_stop=PostgreSQL-Server gestoppt
 log_db_create=Datenbank $1 erstellt

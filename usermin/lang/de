@@ -244,7 +244,6 @@ ui_efeedback=Fehlende Feedback-E-Mail-Adresse
 ui_efeedbackmail=Fehlender oder ungültiger SMTP-Server
 ui_feedbackhost=Hostname in der Feedback "Von:" Adresse
 ui_feedbackthis=Hostname des Systems
-ui_hostnamemodeHostname, der in Usermin angezeigt werden soll
 ui_hnm0=Echter Hostname
 ui_hnm1=Hostname aus der URL
 ui_hnm2=Domainname aus der URL
@@ -358,6 +357,7 @@ log_restrict_create=Beschränkung für $1 erstellt
 log_restrict_modify=Beschränkung für $1 geändert
 log_restrict_delete=Beschränkung für $1 gelöscht
 log_restrict_move=Beschränkung für $1 verschoben
+
 log_all=alle Benutzer
 log_group=Gruppe $1
 log_switch=Zu Usermin-Benutzer $1 gewechselt
@@ -416,7 +416,6 @@ restrict_euser=Fehlender oder ungültiger Benutzername
 restrict_egroup=Fehlender oder ungültiger Gruppenname
 restrict_efile=Fehlende, nicht existierende oder nicht absolute Benutzer- und Gruppendatei
 restrict_move=Verschieben
-
 bootup_ecannot=Sie dürfen das Booten nicht konfigurieren
 
 acl_icons=Erlaubte Konfigurationsseiten

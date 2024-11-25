@@ -156,7 +156,7 @@ desc_args--match-set=$2 je sadržan u IP skupu $1
 desc_src=izvor
 desc_dest=odredište
 
-redhat_einstalled=Nije pronađena nijedna radnja pokretanja <tt>iptables (6)</tt>, što ukazuje da paket IPtables nije instaliran na vašem sustavu
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 redhat_eoutput=Došlo je do pogreške pri dobivanju statusa IPtables iz naredbe $1. To vjerojatno ukazuje da je vaš sustav konfiguriran za upotrebu IPchaina umjesto IPtablesa.
 
 gentoo_escript=Skripta pokretanja Gentoo IPtables $1 nije pronađena u vašem sustavu.

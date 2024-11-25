@@ -55,7 +55,7 @@ desc_args--match-set=$2 è contenuto nel set IP $1
 desc_src=fonte
 desc_dest=destinazione
 
-redhat_einstalled=Non è stata trovata alcuna azione di avvio <tt>iptables (6)</tt>, a indicare che il pacchetto IPtables non è installato sul sistema
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 
 edit_state_untracked=Non tracciato
 edit_state_snat=Fonte NATd

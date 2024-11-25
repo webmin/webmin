@@ -1,6 +1,7 @@
 index_key=TSIG anahtarlarını düzenleme (DNS sunucularına yapılan güncelleştirmelerin kimliğini doğrulamak için kullanılır)
 index_dhcpdver2=DHCP sunucusu <tt>$1</tt> doğru sürüm olarak görünmüyor. Webmin yalnızca ISC DHCPD $2 - $3 sürümlerini destekler.
 index_hostgroup=Host/Grup
+index_comment=Description
 index_parent=ebeveyn
 index_hardware=Donanım Adresi
 index_group=Grup:

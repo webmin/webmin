@@ -13,6 +13,7 @@ index_digest=增加一新的文摘列表
 index_global=编辑 Majordomo 选项
 index_globaldesc=编辑适用于全部邮件列表的 Majordomo 选项
 index_return=邮件列表
+
 global_title=全局选项
 global_ecannot=您无权编辑全局选项
 global_header=全局 Majordomo 选项
@@ -25,6 +26,7 @@ global_ewhereami=丢失或无效的邮件服务器主机名
 global_ewhoami=丢失或无效的 Majordomo 地址
 global_eowner=丢失或无效的所有者地址
 global_esendmail=Sendmail 命令 '$1' 不存在
+
 create_ecannot=您无权创建新列表
 create_title=创建邮件列表
 create_header=新列表概述
@@ -44,6 +46,7 @@ create_ealias='$1' 的邮件别名已经存在
 create_eowner=丢失或无效的所有者的邮件地址
 create_epassword=丢失或无效的管理口令
 create_emoderator=丢失或无效的仲裁者邮件地址
+
 cdigest_ecannot=您无权创建新的文摘列表
 cdigest_title=创建文摘列表
 cdigest_header=新文摘列表详述
@@ -60,18 +63,21 @@ cdigest_lines=消息共 $1 行
 cdigest_err=创建文摘列表失败
 cdigest_edays=丢失或无效的的天数
 cdigest_elines=丢失或无效的行数
+
 edit_title=编辑邮件列表
 edit_ecannot=您无权编辑邮件列表
 edit_delete=删除列表
 edit_deletemsg=删除这个列表,及其所包含的所有附件和邮件别名
 edit_return=邮件列表
 edit_for=为列表 $1
+
 delete_ecannot=您无权删除该邮件列表
 delete_edigest=该列表不能删除,是因为它可能有相关的文摘列表
 delete_title=删除列表
 delete_rusure=您确信要删除邮件列表 $1? 下面文件将被删除：
 delete_aliases=下列邮件别名也将被删除：
 delete_ok=删除列表
+
 members_title=列出成员
 members_desc=利用下表编辑邮件地址列表,这些地址将能收到发送到该列表中的邮件。
 members_rodesc=下表列出了所有能收到发送给该列表的邮件的邮件地址。
@@ -86,6 +92,7 @@ members_esub=在预订地址至列表中之前，您必须维护口令
 members_esubaddr=要预订的地址必须域名齐全,例如:<tt>foo@bar.com</tt>
 members_eunsub=在列表中退订地址之前,您必须选择维护口令
 members_eunsubaddr=要退订的地址必须域名齐全,例如:<tt>foo@bar.com</tt>
+
 info_title=消息和描述
 info_header=消息和描述
 info_desc=列出要包含在<tt>lists</tt>命令的回应中的描述
@@ -93,6 +100,7 @@ info_info=回应<tt>info $1</tt>命令而返回的信息性消息
 info_intro=有人预订列表时发出的简要消息
 info_same=与信息性消息相同
 info_below=按照下面输入..
+
 subs_title=预订和仲裁
 subs_header=预订和仲裁选项
 subs_sub=预订规定
@@ -118,6 +126,7 @@ subs_eowner=丢失所有者的邮件地址
 subs_eapproval=丢失批准邮件地址
 subs_emoderator=丢失或无效的仲裁者地址
 subs_epasswd=丢失或无效的口令
+
 mesg_title=Email 选项
 mesg_header=外发邮件选项
 mesg_reply=回复到:地址在重发的邮件中
@@ -138,6 +147,7 @@ mesg_esender=丢失或无效的发送者地址
 mesg_esender2=发送者: 地址不得包括主机名
 mesg_ehost=丢失或无效的主机名
 mesg_emaxlength=丢失或无效的最大邮件的大小
+
 access_title=访问控制
 access_header=majordomo 命令的访问控制
 access_open=任何人
@@ -160,17 +170,20 @@ access_res2=文件中的地址
 access_tbody=Taboo正文正则表达式
 access_theader=Taboo页首正则表达式
 access_taboo=注意:所有Taboo的和地址正则表达式均必须以<tt>/</tt>开头和结束,例如:<tt>/foobar.com/</tt> 或 <tt>/obscene/</tt>。
+
 head_title=页首和注脚
 head_header=重发邮件的页首和注脚
 head_fronter=重发邮件的页首
 head_footer=重发邮件的注脚
 head_headers=重发邮件的 SMTP 额外页首
+
 misc_title=杂类选项
 misc_header=杂类列表选项
 misc_munge=只有在比较地址时使用域名?
 misc_debug=调试模式？
 misc_info=在信息性消息中包括最后的更新日期？
 misc_intro=在简介消息中包括最后的更新日期？
+
 digest_title=文摘选项
 digest_header=产生文摘的选项
 digest_name=文摘标题
@@ -185,6 +198,7 @@ digest_edays=丢失或无效的天数
 digest_elines=丢失或无效的行数
 digest_evolume=丢失或无效的卷号
 digest_eissue=丢失或无效的期号
+
 log_global=已改变全局选项
 log_create_list=创建了邮件列表 $1
 log_create_digest=创建了文摘列表 $1
@@ -201,6 +215,7 @@ log_access=更新了列表 $1 的访问控制
 log_head=更新了列表 $1 的页首和页脚
 log_misc=更新了列表 $1 的杂类
 log_digest=更新了列表 $1 的文摘选项
+
 acl_lists=这个用户能管理的邮件
 acl_lall=所有列表
 acl_lsel=已选择..

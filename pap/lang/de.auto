@@ -1,0 +1,1 @@
+mgetty_desc=For your server to allow logins on a serial port via modem or a direct connection, it must be listed below. When you add a port to this list, the $1 program will be configured to answer modem connections and display a login prompt.

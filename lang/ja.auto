@@ -6,6 +6,8 @@ or=または
 help_efile3=モジュール $2 からヘルプ ページ $1 を読み取ることができませんでした
 help_einclude3=ヘルプ ページ $1 を含めることができませんでした
 
+password_euserpass=Invalid username or password
+
 ui_of=の
 
 log_email_by=$1 by $2

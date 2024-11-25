@@ -19,6 +19,7 @@ index_tabsync2=Exekutatu sistemaren <tt>$1</tt> zerbitzua sinkronizatzeko
 index_desctime=Inprimaki hau sistemaren ordua aldatzeko da, exekutatzen ari diren prozesu guztiek erabiltzen dutena. Aparteko hardware erloju bat duten sistema eragileetan ere erabil daiteke.
 index_desczone=Inprimaki honek sistemaren ordu-zona lehenetsia egiteko aukera ematen du, sistemaren ordua gizakiaren irakurketa formatua eta desplazamendu bihurtzeko erabiltzen dena.
 index_descsync=Inprimaki hau sistema automatikoki denbora urruneko zerbitzari batekin sinkronizatzeko konfiguratzeko da. Sinkronizazioa Unix <tt>time</tt> protokoloa edo NTP erabiliz egingo da, zein komando instalatuta dauden eta zer urruneko sistema onartzen duen.
+index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 action_save=Save
 action_apply=aplikatu

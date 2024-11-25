@@ -98,6 +98,7 @@ password_done=Sua senha foi alterada com sucesso. Agora você pode <a href='$1'>
 password_err=Falha ao alterar a senha
 password_euser=Seu nome de login não foi encontrado no arquivo de senhas!
 password_eold=A senha atual está incorreta
+password_euserpass=Invalid username or password
 password_enew1=Nenhuma nova senha foi inserida
 password_enew2=Suas novas senhas não correspondem
 password_epam=Erro do PAM : $1

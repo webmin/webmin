@@ -2,8 +2,25 @@ index_applymsg2=單擊此按鈕可通過停止並重新啟動ProFTPD來應用當
 index_stop=停止服務器
 index_stopmsg=單擊此按鈕停止FTP服務器，這將阻止任何新的FTP客戶端連接。
 index_proftpd=ProFTPd
+index_dlheader=Add Options
+index_dlmode=Add options for
+
+type_7=SSL Options
 
 mod_core_firstcdt=總是顯示
+
+mod_tls_engine=Enable SSL encryption?
+mod_tls_required=SSL required?
+mod_tls_ctrl=For control channel
+mod_tls_auth=For authentication
+mod_tls_authdata=For authentication and data
+mod_tls_file=SSL certificate file
+mod_tls_efile=SSL certificate file does not exist!
+mod_tls_key=SSL key file
+mod_tls_ekey=SSL key file does not exist!
+mod_tls_ca=SSL CA certificate file
+mod_tls_eca=SSL CA certificate file does not exist!
+mod_tls_none=None set
 
 stop_err=停止FTP服務器失敗
 stop_einetd=在inetd模式下，無法停止服務器守護程序。
@@ -11,3 +28,5 @@ stop_erun=沒有運行
 
 apply_err=無法應用FTP配置
 apply_egone=不再運行
+
+ftpindex_cmds=FTP commands

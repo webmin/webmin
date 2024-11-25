@@ -1,3 +1,4 @@
+index_madd=Add monitor of type
 index_scheddesc=Увімкніть або вимкніть планову перевірку моніторів і встановіть адресу, на яку відмовляються автоматично по електронній пошті.
 index_esnmp=Модуль налаштований для надсилання SNMP-пасток на сторінку <a href='$3'>Config Module</a>, але модуль Perl $1 не встановлений. <a href='$2'>Клацніть тут</a>, щоб завантажити та встановити його зараз.
 index_refresh=Оновити статус
@@ -30,10 +31,14 @@ type_alive=Жива система
 type_rssh=Віддалений SSH
 type_slapd=Сервер LDAP
 type_ldap=Підключення LDAP
+type_smtp=SMTP Connection
+type_imap=IMAP Connection
+type_firewalld=FirewallD Server
+type_reboot=Reboot Required
 
 mon_virtualmin=Увага! Цей монітор пов’язаний із доменом Virtualmin $1, тому його не слід редагувати чи видаляти тут.
 mon_header2=Команди для запуску
-mon_header3=Варіанти обслуговування, що контролюються
+mon_header5=Notification options
 mon_remotes2=Бігайте за хостами та групами
 mon_warndef=Так, і використовувати режим звітування за замовчуванням
 mon_warn3=Так, але ніколи не повідомляйте
@@ -71,6 +76,7 @@ mon_changes1=Показати лише зміни
 mon_all=Показати всі історичні події
 mon_nochanges=В останніх $1 історичних подіях не відбулося змін статусу.
 
+sched_email_def=System default ($1)
 sched_pnone=Не надсилайте сторінки
 sched_warn3=Поки служба закінчується
 sched_eemailserver=Ваш поштовий сервер не встановлений : $1 
@@ -395,3 +401,38 @@ ldap_pass=Пароль сервера LDAP
 info_desc=Системний монітор
 info_last=Поточний статус
 info_title=Статус системи та сервера
+
+smtp_host=SMTP server host
+smtp_port=SMTP server port
+smtp_ssl=Use SSL connection?
+smtp_ssl0=Plaintext only
+smtp_ssl1=Always SSL
+smtp_ssl2=Switch to SSL with STARTTLS
+smtp_from=Test SMTP sender
+smtp_none=None
+smtp_addr=Use address
+smtp_to=Test SMTP recipient
+smtp_ehost=Missing or unresolvable SMTP server host
+smtp_eport=Missing or non-numeric SMTP server port
+smtp_efrom=Sender address must be like user@domain.com
+smtp_eto=Recipient address must be like user@domain.com
+smtp_ok1=HELO command accepted
+smtp_ok2=Sender address accepted
+smtp_ok3=Recipient address accepted
+smtp_ok4=SMTP login accepted
+smtp_user=SMTP authentication
+smtp_user1=Don't login
+smtp_user0=Login as user
+smtp_pass=with password
+smtp_euser=Missing SMTP login
+
+imap_host=IMAP server host
+imap_port=IMAP server port
+imap_ssl=Use SSL connection?
+imap_user=IMAP login
+imap_pass=IMAP password
+imap_ehost=Missing or unresolvable IMAP server host
+imap_eport=Missing or non-numeric IMAP server port
+imap_euser=Missing IMAP login
+
+reboot_pkgs=Package updates require a reboot

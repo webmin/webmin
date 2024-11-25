@@ -27,6 +27,8 @@ index_global=Visuotinė konfigūracija
 index_create=Sukurkite virtualų serverį
 index_version=„ProFTPd“ versija $1 
 index_proftpd=„ProFTPd“
+index_dlheader=Add Options
+index_dlmode=Add options for
 
 efailed=Nepavyko išsaugoti $1 
 
@@ -37,6 +39,7 @@ type_3=Prieigos kontrolė
 type_4=Įvairūs
 type_5=Vartotojas ir grupė
 type_6=Autentifikavimas
+type_7=SSL Options
 
 virt_title=Virtualiojo serverio parinktys
 virt_header1=$1 
@@ -380,6 +383,19 @@ mod_readme_display=Praneškite vartotojui apie „readme“ failų atitikimą
 mod_readme_none=Nė vienas
 mod_readme_edisplay=Trūksta „readme“ failų modelio
 
+mod_tls_engine=Enable SSL encryption?
+mod_tls_required=SSL required?
+mod_tls_ctrl=For control channel
+mod_tls_auth=For authentication
+mod_tls_authdata=For authentication and data
+mod_tls_file=SSL certificate file
+mod_tls_efile=SSL certificate file does not exist!
+mod_tls_key=SSL key file
+mod_tls_ekey=SSL key file does not exist!
+mod_tls_ca=SSL CA certificate file
+mod_tls_eca=SSL CA certificate file does not exist!
+mod_tls_none=None set
+
 start_err=Nepavyko paleisti FTP serverio
 start_einetd=Negalite paleisti serverio demono, kai įjungtas įvesties režimas.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Pridėti kiekvienos komandos parinktis ..
 ftpindex_header2=$1 $2 
 ftpindex_return=katalogų parinkčių failas
 ftpindex_header=$1 
+ftpindex_cmds=FTP commands
 
 find_err=Nepavyko rasti parinkčių failų
 find_eanon=Jokiame virtualiame serveryje nenustatyta anoniminė FTP

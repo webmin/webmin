@@ -9,6 +9,7 @@ index_applymsg2=A jelenlegi beállítások érvényesítése a jelenlegi root es
 index_applymsg3=Újraindítás előtt győződjön meg arról, hogy a beállítások megfelelőek!
 index_return=q kernelekhez és partíciókhoz
 index_earch=LILO csak az x86-os architektúrákat támogatja
+
 global_title=Általános opciók
 global_desc=Általános boot opciók
 global_boot=Boot-betöltő kiírása
@@ -30,8 +31,10 @@ global_extra=az extra kapcsolókkal behúzott kernelekhez
 global_any=minden rendszerindulás esetén
 global_secs=másodpercek
 global_err=Az általános beállítások elmentése nem sikerült.
+
 apply_title=Beállítások érvényesítése
 apply_exec=LILO beállítások érvényesítése a(z) $1 paranccsal...
+
 image_title1=Boot kernel létrehozásal
 image_title2=Boot kernel szerkesztése
 image_options=Boot Kernel kapcsolók
@@ -60,6 +63,7 @@ image_any=minden rendszerindítás esetén
 image_none=Nincs
 image_ename=Nincs neve ennek a boot kernelnek.
 image_ekernel=A(z) '$1' kernel image nem létezik
+
 other_title1=Boot partíció létrehozása
 other_title2=Boot partíció szerkesztése
 other_details=Partíció beállítások Details

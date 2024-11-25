@@ -64,6 +64,7 @@ edit_pre=Kmandi biex jimxu qabel ir-rotazzjoni
 edit_default=Default ($1)
 edit_sharedscripts=Ħaddem skripts darba biss għall-fajls kollha?
 edit_now=Dawwar Issa
+edit_clone=Clone
 
 global_title=Għażliet Globali
 global_header=Għażliet awtomatiċi għall-fajls kollha tal-ġurnal

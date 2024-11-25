@@ -45,6 +45,7 @@ index_restart_firewallddesc=Lataa FirewallD-palvelin uudelleen ja käytä pysyv�
 index_listrules_restartdesc=Luettele tiedot olemassa olevista monipuolisista ja suorista FirewallD-säännöistä $1 vyöhykkeellä.
 index_dependent=$1 riippuvaisen palvelun uudelleenkäynnistys epäonnistui
 index_manual=Muokkaa asetustiedostoja.
+index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=Muokkaa asetustiedostoja
 manual_editsel=Muokkaa FirewallD-määritystiedostoa

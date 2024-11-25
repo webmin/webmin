@@ -145,7 +145,6 @@ session_logout=退出成功. 使用下面的表单可以再次登陆
 session_timed_out=会话超时, 超过 $1 分钟没有活动.
 session_save=下次不输入登陆信息, 直接登陆?
 
-pam_login=登录
 pam_mesg=您必须回答以下问题才能使用 $1 登录Webmin服务器。
 pam_mesg2=您必须回答以下问题才能登录。
 pam_login=继续
@@ -395,5 +394,3 @@ file_truncated_message_tail=结束获取 $1 数据, 截止 $3 中的 $2
 defcert_error=正在使用默认的 $1 捆绑SSL证书。强烈建议在继续登录之前更新默认的 <tt>$2</tt> 证书。
 
 main_error_details=错误详细信息
-
-__norefs=1

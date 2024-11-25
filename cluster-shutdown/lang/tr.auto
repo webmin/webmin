@@ -14,6 +14,7 @@ index_smtp=SMTP sunucusu üzerinden gönder
 index_this=Bu sunucu
 index_nu=Kullanıcı ayarlanmadı
 index_nl=Giriş başarısız
+
 shut_title=Bilgisayarları Kapat
 shut_rusure=Seçili $1 sunucusunu hemen kapatmak istediğinizden emin misiniz?
 shut_ok=Evet yap
@@ -22,10 +23,12 @@ shut_failed=.. başarısız oldu! $1
 shut_done=.. bitti.
 shut_sel=Seçilen sunucular :
 shut_ecannot=Sunucuları kapatma izniniz yok
+
 reboot_title=Sunucuları Yeniden Başlat
 reboot_rusure=Seçilen $1 sunucuyu hemen yeniden başlatmak istediğinizden emin misiniz?
 reboot_doing=$1 yeniden başlatılıyor ..
 reboot_ecannot=Sunucuları yeniden başlatmanıza izin verilmiyor
+
 sched_err=Otomatik sunucu denetimi ayarlanamadı
 sched_eemail=Eksik e-posta adresi
 sched_esmtp=Eksik veya geçersiz SMTP sunucusu

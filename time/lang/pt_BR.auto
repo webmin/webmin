@@ -1,5 +1,6 @@
 index_serviceonboot=Sim, e comece na inicialização
 index_boot=Sincronizar quando o Webmin é iniciado?
 index_tabsync2=Execute o serviço <tt>$1</tt> do sistema para sincronização
+index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 error_serviceunknown=Serviço desconhecido : $1

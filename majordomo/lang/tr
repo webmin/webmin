@@ -13,6 +13,7 @@ index_digest=Yeni bir özet liste oluştur
 index_global=Majordomo Seçneklerini Değiştir
 index_globaldesc=Bütün posta listelerine uygulanacak olan genel majordomo seçenkelerini değiştir
 index_return=posta listeleri
+
 global_title=Genel Seçenekler
 global_ecannot=Genel seçenekleri değiştirmek için izininiz yoktur.
 global_header=Genel Majordomo seçenekleri
@@ -25,6 +26,7 @@ global_ewhereami=Kayıp ya da yanlış posta sunucusu makine adı
 global_ewhoami=Kayıp ya da yanlış Majordomo adresi
 global_eowner=Kayıp ya da yanlış sahip adresi
 global_esendmail=Sendmail komutu '$1' mevcut değil
+
 create_ecannot=Yeni liste oluşturmak için izininiz yoktur
 create_title=Yeni posta listesi oluştur
 create_header=Yeni liste ayrıntıları
@@ -44,18 +46,21 @@ create_ealias=Posta takma ismi '$1' her zaman mevcut
 create_eowner=Kayıp ya da yanlış sahip adresi
 create_epassword=Kayıp ya da yanlış yönetici şifresi
 create_emoderator=Kayıp ya da yanlış moderatör e-posta adresi
+
 edit_title=Posta Listesi Değiştir
 edit_ecannot=Bu posta listesini değiştirmek için izininiz yoktur
 edit_delete=Listeyi Sil
 edit_deletemsg=Bu listeyi ve beraberindeki postalarla, posta takma isimleri sil
 edit_return=posta listesi
 edit_for=$1 listesi için
+
 delete_ecannot=Bu posta listesini silmek için izininiz yoktur
 delete_edigest=Bu liste bir özet listeye sahip olduğundan silinemez
 delete_title=Liste Sil
 delete_rusure=Posta listesi $1 silmek istediğinizden emin misiniz? Takip eden dosyalar silenecektir : 
 delete_aliases=Takip eden posta listeleri silinmiş olabilir :
 delete_ok=Listeyi Sil
+
 members_title=Liste Üyeleri
 members_desc=Takip eden düz metin yazısı kutusundaki e-posta adreslerini değiştirerek bu listeye posta gönderebilecek olan adresleri belirleyebilirsiniz.
 members_rodesc=Takip eden düz metin yazısı kutusundaki adresler bu listeden posta alacak olan adreslerdir.
@@ -70,6 +75,7 @@ members_esub=Listeye adres eklemeden önce yönetici şifresini girmelisiniz.
 members_esubaddr=Eklenecek adres tam alan adına sahip olmalıdır, örneğin <tt>foo@bar.com</tt>
 members_eunsub=Listeden adres silmeden önce yönetici şifresini girmelisiniz.
 members_eunsubaddr=Silinecek adres tam alan adına sahip olmalıdır, örneğin <tt>foo@bar.com</tt>
+
 info_title=Mesajlar ve Açıklama
 info_header=Mesajlar ve açıklama
 info_desc=Liste açıklaması, <tt>lists</tt> komutunda listenin karşısında açıklama olarak görülen kısımdır
@@ -77,6 +83,7 @@ info_info=Bilgi verici mesaj, <tt>info $1</tt> komutunun çıktısı olarak gör
 info_intro=Giriş mesajı, biri listeye üye olduğunda ona gönderilecek olan mesajdır.
 info_same=Bilgi verici mesajla aynı
 info_below=Aşağıda girildiği gibi..
+
 subs_title=Üyelik ve Moderasyon
 subs_header=Üyelik ve moderasyon seçenekleri
 subs_sub=Üyelik politikası
@@ -102,6 +109,7 @@ subs_eowner=Sahip e-posta adresi bulunmadı
 subs_eapproval=Onaylama e-posta adresi bulunmadı
 subs_emoderator=Kayıp ya da yanlış moderatör adresi
 subs_epasswd=Kayıp ya da yanlış şifre
+
 mesg_title=E-posta Seçenekleri
 mesg_header=Dışa giden e-posta seçenekleri
 mesg_reply=Reply-To: geri gönderilecek e-posta adresi
@@ -122,6 +130,7 @@ mesg_esender=Kayıp ya da yanlış Sender: adresi
 mesg_esender2=Sender: adres bir makine adı içermiyor.
 mesg_ehost=Kayıp ya da yanlış makine adı
 mesg_emaxlength=Kayıp ya da yanlış en çok mesaj boyutu
+
 access_title=Giriş Kontrolü
 access_header=Majordomo komutları için giriş kontrolü
 access_open=Herkes
@@ -144,17 +153,20 @@ access_res2=Dosyadaki adresler
 access_tbody=Posta içeriğindeki yasak kelimeler
 access_theader=Posta başlığındaki yasak kelimeler
 access_taboo=Not: bütün yasak kelimeler ve adres tanımlamaları <tt>/</tt> ile başlamalı ve bitmelidir, örnek:<tt>/microsoft.com</tt> ya da <tt>/obscene/</tt>
+
 head_title=Başlıklar ve Dipnotlar
 head_header=Eposta başlık ve dipnotlarını tekrar gönder
 head_fronter=Eposta başlıklarını tekrar gönder
 head_footer=Eposta dipnotlarını tekrar gönder
 head_headers=Tekrar gönderilen e-postalar için ek SMTP başlıkları
+
 misc_title=Çeşitli Seçenekler
 misc_header=Çeşitli liste seçenekleri
 misc_munge=Alanı, yalnızca adresler karşılaştırıldığında kullan?
 misc_debug=Hatasızlaştırma modu?
 misc_info=Bilgilendirici mesaj son değiştirilme tarihini içersin mi?
 misc_intro=Giriş mesajı son değiştirilme tarihini içersin mi?
+
 digest_title=Özet Liste Seçenekleri
 digest_header=Özet liste oluşturma seçenekleri
 digest_name=Özet liste başlığı
@@ -169,6 +181,7 @@ digest_edays=Kayıp ya da yanlış gün sayısı
 digest_elines=Kayıp ya da yanlış satır sayısı
 digest_evolume=Kayıp ya da yanlış e-posta numarası
 digest_eissue=Kayıp ya da yanlış konu numarası
+
 log_global=Genel seçenekler değiştirildi
 log_create_list=Posta listesi oluşturuldu $1
 log_create_digest=Oluşturulan özet listesi $1

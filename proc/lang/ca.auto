@@ -4,5 +4,7 @@ index_memburst=Memòria explosiva:
 index_memtf=$1 total / $2 gratuït
 index_memtfc=$1 total/$2 gratuït/$3 en memòria cau
 index_inzone=A la zona $1 
+index_core=$1 core
+index_cores=$1 cores
 
 freebsd_stime=Va començar

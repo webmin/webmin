@@ -156,7 +156,7 @@ desc_args--match-set=$2 آئی پی سیٹ$1 پر مشتمل ہے
 desc_src=ذریعہ
 desc_dest=منزل
 
-redhat_einstalled=No <tt>iptables(6)</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 redhat_eoutput=کمانڈ$1 سے IPtables کا درجہ حاصل کرنے میں ایک خرابی پیش آگئی۔ یہ شاید اس بات کی نشاندہی کرتا ہے کہ آپ کے سسٹم کو IPtables کے بجائے IPchains استعمال کرنے کے لئے تشکیل دیا گیا ہے۔
 
 gentoo_escript=آپ کے سسٹم پر جنٹو IPtables اسٹارٹ اسکرپٹ$1 نہیں ملا۔

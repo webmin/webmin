@@ -1,3 +1,4 @@
+index_madd=Add monitor of type
 index_refsel=선택한 새로 고침
 
 type_sslcert=SSL 인증서
@@ -7,8 +8,13 @@ type_dovecot=도브 코트 IMAP/POP3 서버
 type_init=부팅 동작
 type_slapd=LDAP 서버
 type_ldap=LDAP 연결
+type_smtp=SMTP Connection
+type_imap=IMAP Connection
+type_firewalld=FirewallD Server
+type_reboot=Reboot Required
 
 mon_virtualmin=경고! 이 모니터는 Virtualmin 도메인 $1 에 연결되어 있으므로 여기에서 편집하거나 삭제하면 안됩니다.
+mon_header5=Notification options
 mon_ontimeout=모니터 시간이 초과되면 명령을 실행하십시오.
 mon_eremote2=Webmin 서버 $1 에 접속할 수 없습니다  : $2 
 mon_etype=잘못된 모니터 유형 이름
@@ -24,6 +30,7 @@ mon_changes1=변경 사항 만 표시
 mon_all=모든 역사적 사건 표시
 mon_nochanges=마지막 $1 기록 이벤트에서 상태 변경이 발생하지 않았습니다.
 
+sched_email_def=System default ($1)
 sched_warn3=서비스가 작동하는 한
 sched_esmsname=누락되거나 잘못된 SMS 번호
 sched_subject=SMS 메시지 제목
@@ -143,3 +150,38 @@ ldap_pass=LDAP 서버 비밀번호
 info_desc=시스템 모니터
 info_last=현재 상태
 info_title=시스템 및 서버 상태
+
+smtp_host=SMTP server host
+smtp_port=SMTP server port
+smtp_ssl=Use SSL connection?
+smtp_ssl0=Plaintext only
+smtp_ssl1=Always SSL
+smtp_ssl2=Switch to SSL with STARTTLS
+smtp_from=Test SMTP sender
+smtp_none=None
+smtp_addr=Use address
+smtp_to=Test SMTP recipient
+smtp_ehost=Missing or unresolvable SMTP server host
+smtp_eport=Missing or non-numeric SMTP server port
+smtp_efrom=Sender address must be like user@domain.com
+smtp_eto=Recipient address must be like user@domain.com
+smtp_ok1=HELO command accepted
+smtp_ok2=Sender address accepted
+smtp_ok3=Recipient address accepted
+smtp_ok4=SMTP login accepted
+smtp_user=SMTP authentication
+smtp_user1=Don't login
+smtp_user0=Login as user
+smtp_pass=with password
+smtp_euser=Missing SMTP login
+
+imap_host=IMAP server host
+imap_port=IMAP server port
+imap_ssl=Use SSL connection?
+imap_user=IMAP login
+imap_pass=IMAP password
+imap_ehost=Missing or unresolvable IMAP server host
+imap_eport=Missing or non-numeric IMAP server port
+imap_euser=Missing IMAP login
+
+reboot_pkgs=Package updates require a reboot

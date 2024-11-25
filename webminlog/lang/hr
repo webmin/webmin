@@ -19,8 +19,6 @@ index_wall=Od bilo kojeg Webmin servera
 index_whost=Od servera
 
 search_title=Rezultat pretrage
-search_date=Datum
-search_time=Vrijeme
 search_user=Korisnik
 search_host=Adresa klijenta
 search_webmin=Webmin server

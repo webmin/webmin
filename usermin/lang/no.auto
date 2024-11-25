@@ -1,6 +1,13 @@
 lang_title=Språk og lokalitet
 lang_title2=Brukermin språk og lokalitet
 
+ui_show=Display on the dashboard​
+ui_show_host=System hostname
+ui_show_os=Operating system
+ui_show_ver=Usermin version
+ui_show_tver=Theme version
+ui_show_time=Time on system
+
 advanced_pass_desc=Gjøre passord tilgjengelig for Usermin-programmer?
 advanced_pass_help=Fungerer ikke når øktautentisering er aktivert
 

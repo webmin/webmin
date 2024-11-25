@@ -27,6 +27,8 @@ index_global=Globálna konfigurácia
 index_create=Vytvorte virtuálny server
 index_version=Verzia ProFTPd $1 
 index_proftpd=proftpd
+index_dlheader=Add Options
+index_dlmode=Add options for
 
 efailed=Uloženie $1 zlyhalo
 
@@ -37,6 +39,7 @@ type_3=Riadenie prístupu
 type_4=Zmiešaný
 type_5=Používateľ a skupina
 type_6=Overenie
+type_7=SSL Options
 
 virt_title=Možnosti virtuálneho servera
 virt_header1=Pre $1 
@@ -380,6 +383,19 @@ mod_readme_display=Upozorniť používateľa na prispôsobenie súborov readme
 mod_readme_none=nikto
 mod_readme_edisplay=Chýba vzor súborov readme
 
+mod_tls_engine=Enable SSL encryption?
+mod_tls_required=SSL required?
+mod_tls_ctrl=For control channel
+mod_tls_auth=For authentication
+mod_tls_authdata=For authentication and data
+mod_tls_file=SSL certificate file
+mod_tls_efile=SSL certificate file does not exist!
+mod_tls_key=SSL key file
+mod_tls_ekey=SSL key file does not exist!
+mod_tls_ca=SSL CA certificate file
+mod_tls_eca=SSL CA certificate file does not exist!
+mod_tls_none=None set
+
 start_err=Server FTP sa nepodarilo spustiť
 start_einetd=V režime inetd nemôžete spustiť serverového démona.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Pridajte možnosti príkazu pre príkaz ..
 ftpindex_header2=$1 v $2 
 ftpindex_return=súbor možností adresára
 ftpindex_header=Pre $1 
+ftpindex_cmds=FTP commands
 
 find_err=Nepodarilo sa nájsť súbory možností
 find_eanon=Anonymný FTP nie je nastavený na žiadnom virtuálnom serveri

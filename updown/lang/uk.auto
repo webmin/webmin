@@ -12,6 +12,8 @@ index_email=Надіслати електронний лист після зав
 index_emailto=Так, на адресу
 index_email2=Надіслати електронний лист після завантаження?
 
+upload_direct=Write files directly to disk?
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_eemail=Відсутня електронна адреса для сповіщення
 upload_saving=Збереження файлу $1 ..
 upload_saved=.. написав $1 

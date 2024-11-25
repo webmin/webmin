@@ -101,9 +101,13 @@ smtpd_nomap2=Aucune carte pour les restrictions sur les adresses des expéditeur
 smtpd_map=Adresses autorisées pour le relais
 smtpd_map2=Restrictions sur les adresses des expéditeurs
 
-opts_smtp_use_tls=Utiliser TLS pour les connexions SMTP
 opts_smtp_sasl_security_options=Options de sécurité SASL
 opts_smtp_tls_security_level=Niveau de sécurité du client SMTP TLS
+opts_inet_protocols=Internet protocols to enable
+opts_inet_protocols_all=All available
+opts_smtp_address_preference=Preferred SMTP client protocol
+opts_smtp_address_preference_any=Either
+opts_smtp_balance_inet_protocols=Validate SMTP client protocols
 
 opts_edebug=Niveau de journalisation détaillé manquant ou non valide - doit être un nombre supérieur à zéro
 
@@ -151,6 +155,8 @@ acl_mailq=Peut gérer la file d'attente de messagerie?
 acl_boxes=Peut lire les courriels des utilisateurs?
 acl_dir=Répertoire autorisé pour les fichiers de carte
 acl_bcc=Peut modifier le mappage BCC?
+acl_body=Can edit body checks?
+acl_dependent=Can edit sender dependent transport maps?
 
 boxes_user=Utilisateur
 boxes_size=Taille de la boîte aux lettres
@@ -199,6 +205,15 @@ mail_forward=Vers l'avant
 mail_rfc=De la ligne
 mail_move=Déménager à:
 mail_eexists=Le message n'existe plus!
+mail_qfile=Mail queue file
+mail_qlast=Last retried at
+mail_qdir=Mail queue status
+mail_qdir_active=Active
+mail_qdir_incoming=Incoming
+mail_qdir_deferred=Deferred
+mail_qdir_corrupt=Corrupt
+mail_qdir_hold=On hold
+mail_qdir_maildrop=Mail drop
 
 view_sent=Message $1 dans la liste de diffusion envoyée
 view_qdesc=Message en file d'attente $1
@@ -288,9 +303,11 @@ mailq_active=actif
 mailq_deferred=Différé
 mailq_hold=Conserver la sélection
 mailq_unhold=Retenir la sélection
+mailq_dir=Queue state
 
 flushq_title=Queue de vidage
 flushq_desc=Forcer la tentative de remise du courrier avec la commande $1 ..
+flushq_desc2=.. check the mail log for results
 
 qview_title=Message en file d'attente
 qview_desc=À partir du fichier $1
@@ -496,6 +513,10 @@ opts_broken_sasl_auth_clients=Gérer les clients SMTP non conformes?
 sasl_opts=Options de sécurité SMTP
 sasl_noanonymous=Refuser les connexions anonymes
 sasl_noplaintext=Refuser les connexions en texte brut
+sasl_noactive=Reject Disallow subject to active (non-dictionary) attack
+sasl_nodictionary=Reject methods subject to passive (dictionary) attack
+sasl_forward_secrecy=Only allow methods that support forward secrecy
+sasl_mutual_auth=Only allow methods that provide mutual authentication
 opts_smtpd_delay_reject=Retarder les clients dont les connexions ont échoué?
 sasl_recip=Restrictions du destinataire SMTP
 sasl_relay=Restrictions de relais SMTP

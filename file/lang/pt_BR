@@ -2,6 +2,7 @@ index_title=Gerenciador de Arquivos
 index_nojava=Este módulo requer java para funcionar, porém o seu navegador não suporta java
 index_eremote=Não há nenhum usuário Unix que corresponda ao login $1 do Webmin.
 switch_euser=O usuário Unix não existe!
+
 top_ret=Índice
 top_down=Salvar
 top_edit=Editar
@@ -19,11 +20,13 @@ top_cut=Recortar
 top_paste=Colar
 top_share=Compartilhar
 top_search=Procurar
+
 right_name=Nome
 right_size=Tamanho
 right_user=Usuário
 right_group=Grupo
 right_date=Data
+
 edit_enormal=Somente arquivos comuns podem ser editados
 edit_title=Editando $1
 edit_title2=Criando o arquivo
@@ -31,6 +34,7 @@ edit_filename=Nome do arquivo:
 edit_eover=$1 não pode ser sobrescrito
 edit_esave=Falha ao salvar o arquivo : $1
 edit_eaccess=Você não está autorizado a salvar '$1'
+
 info_file=Arquivo
 info_path=Caminho:
 info_type=Tipo:
@@ -59,6 +63,7 @@ info_read=Ler
 info_write=Escrever
 info_list=Listar
 info_exec=Executar
+
 eacl_eacls=Falha ao ler ACLs : $1
 eacl_acltype=Tipo de ACL
 eacl_aclname=Aplicar a
@@ -77,6 +82,7 @@ eacl_edefmask=Pode existir uma entrada a mais padrão para a máscara ACL
 eacl_title=ACL para $1
 eacl_owner=Dono do arquivo
 eacl_edefaults=Se o arquivo contém qualquer ACL padrão, ele precisa ter usuário, grupo e outras ACLs padrão.
+
 acltype_user=Usuário
 acltype_group=Grupo
 acltype_other=Outros
@@ -85,6 +91,7 @@ acltype_default_user=Usuário Padrão
 acltype_default_group=Grupo Padrão
 acltype_default_other=Outros Padrão
 acltype_default_mask=Máscara Padrão
+
 delete_mtitle=Apagar múltiplos arquivos
 delete_dtitle=Apagar diretório
 delete_ftitle=Apagar arquivo
@@ -92,11 +99,13 @@ delete_ddesc=Você tem certeza que deseja apagar permanentemente o diretório $1
 delete_fdesc=Você tem certeza que deseja apagar permanentemente o arquivo $1 ?
 delete_mdesc=Você tem certeza que deseja apagar permanentemente estes arquivos e diretórios? :
 delete_efailed=Falha ao apagar $1 : $2
+
 mkdir_title=Novo Diretório
 mkdir_dir=Novo diretório:
 mkdir_eexists=$1 já existe
 mkdir_efailed=Falha ao criar diretório : $1
 mkdir_eaccess=Você não está autorizado a criar '$1'
+
 link_title=Criar Link
 link_from=Link de:
 link_to=Link para:
@@ -104,6 +113,7 @@ link_eexists=$1 já existe
 link_efrom=Você não está autorizado a linkar de '$1'
 link_efailed=Falha ao criar link : $1
 link_efollow=Você não está autorizado a criar links simbólicos
+
 rename_title=Renomear $1
 rename_old=Nome antigo:
 rename_new=Nome novo:
@@ -112,6 +122,7 @@ rename_eexists=Um arquivo chamado $1 já existe
 rename_efailed=Falha ao renomear : $1
 rename_eold=Você não está autorizado a renomear '$1'
 rename_enew=Você não está autorizado a renomear para '$1'
+
 file_type0=Directório
 file_type1=Arquivo texto
 file_type2=Arquivo de Imagem
@@ -120,20 +131,24 @@ file_type4=Arquivo
 file_type5=Link simbólico
 file_type6=Arquivo de dispositivo
 file_type7=Pipe
+
 view_enormal=Somente arquivos comuns podem ser vizualizados
 view_enormal2=Somente pode ser feito download de arquivos comuns
 view_eaccess=Você não está autorizado a acessar $1
 view_eopen=Falha ao abrir $1 : $2
+
 paste_ecopy=Você precisa recortar ou copiar antes de colar
 paste_egone=Arquivo copiado $1 não existe mais
 paste_eover=$1 não pode ser sobrescrito
 paste_eself=Você não pode colar um arquivo sobre ele mesmo
 paste_emfailed=Falha ao mover : $1
 paste_ecfailed=Falha ao copiar : $1
+
 over_title=Arquivo já existe
 over_msg=O arquivo $1 já existe. Use o campo abaixo para digitar o nome do arquivo a ser colado.
 over_new=Novo nome do arquivo:
 over_ok=Ok
+
 upload_efailed=Falha ao abrir upload : $1
 upload_title=Arquivo para upload
 upload_file=Arquivo para upload
@@ -144,9 +159,11 @@ upload_efile=Não foi selecionado nenhum arquivo para upload.
 upload_edir=Diretório de upload não existe.
 upload_eperm=Você não está autorizado a criar $1
 upload_ewrite=Falha a escrever para $1 : $2.
+
 find_eaccess=Você não tem permissão para acessar $1
 find_eexist=$1 não existe em $2
 find_edir=$1 não é um diretório em $2
+
 cancel=Cancelar
 chmod_eaccess=Você não está autorizado a acessar '$1'
 chmod_euser=$1 : usuário inválido
@@ -155,14 +172,19 @@ chmod_elink=falha no link simbólico : $1
 chmod_echown=falha no chown : $1
 chmod_echmod=falha no chmod : $1
 chmod_efollow=Você não está autorizado a editar links simbólicos
+
 copy_efrom=Você não está autorizado a copiar de '$1'
 copy_eto=Você não esta autorizado a copiar para '$1'
 copy_elink=falha no link simbólico : $1
+
 delete_eaccess=Você não esta autorizado a apagar '$1'
+
 list_eaccess=Você não esta autorizado a acessar este diretorio
 list_edir=Falha ao listar $1 : $2
+
 move_eto=Você não está autorizado a mover para '$1'
 move_afrom=Você não está autorizado a mover '$1'
+
 acl_user=Acessar arquivos no servidor como usuário
 acl_user_def=O mesmo que no login do Webmin
 acl_umask=Umask para novos arquivos
@@ -186,6 +208,7 @@ acl_button_makelink=Novo (criar link simbólico)
 acl_button_rename=Renomear (renomear arquivo)
 acl_button_mount=Montar (montar ou demosntar dados)
 acl_button_copy=Copiar, Cortar e Colar
+
 share_title=Compartilhamento
 share_samba=Windows
 share_nfs=NFS
@@ -214,6 +237,7 @@ share_s1=Confiar em não root
 share_s2=Confiar em todos
 share_lro=Somente leitura
 share_lrw=Leitura e escrita
+
 log_create_export=Criada exportação NFS $1
 log_modify_export=Modificada exportação NFS $1
 log_delete_export=Deletada exportação NFS $1
@@ -231,6 +255,7 @@ log_move=Movido o arquivo $1 para $2
 log_delete=Deletado o arquivo $1
 log_attr=Foram setados os atributos no arquivo $1
 log_acl=Setar ACL no arquivo $1
+
 search_eaccess=Você não tem autorização para procurar neste diretório
 search_title=Procurar arquivos
 search_ok=Procurar agora
@@ -256,7 +281,9 @@ search_egroup=Faltando nome do grupo
 search_esize=O tamanho do arquivo precisa ser um inteiro
 search_crit=Critério de pesquisa
 search_list=Resultados da pesquisa
+
 facl_eaccess=Você não tem permissão para alterar ACLs para este arquivo
+
 attr_eattrs=Falha ao receber atributos de : $1
 attr_efs=O sistema de arquivos $1 não suporta atributos
 attr_add=Adicionar atributo
@@ -267,11 +294,13 @@ attr_title=Atributos do arquivo para $1
 attr_create=Adicionar atributo
 attr_edit=Editar atributo
 attr_ename=Faltando o nome do atributo
+
 ext_eattrs=Falha ao receber atributos EXT : $1
 ext_efs=O sistema de arquivos $1 não suporta atributos EXT
 ext_title=Atributos EXT para $1
 ext_header=Atributos EXT do arquivo
 ext_efailed=Falha ao fixar atributos para $1 : $2
+
 eattr_A=Nâo atualize os tempos de acesso
 eattr_a=Pode somente adicionar ao fim do arquivo
 eattr_c=Comprimir dados no disco

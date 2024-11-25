@@ -32,7 +32,7 @@ desc_args--match-set=A $2 a $1 IP-készletben található
 desc_src=forrás
 desc_dest=cél
 
-redhat_einstalled=Nem található <tt>iptables (6)</tt> indítási művelet, amely azt jelzi, hogy az IPtable csomag nincs telepítve a rendszerére
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 
 edit_state_snat=Forrás NATd
 edit_state_dnat=NATd rendeltetési hely

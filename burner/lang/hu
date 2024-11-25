@@ -12,6 +12,7 @@ index_none=Jelenleg nincs megadva írási profil
 index_global=Globális opciók
 index_ecdrecord=A(z) $1 CD-író parancs nem találahtó a rendszeren. Előfordulhat, hogy még nincs telepítve, vagy a <a href='$2'>modul-konfiguráció</a> helytelen.
 index_return=Profillista
+
 edit_title=Írási profil szerkesztése
 create_title=Írási profil létrehozása
 edit_emkisofs=A(z) $1 ISO fájlrendszeralkotó parancs nem található a rendszeren. Előfordulhat, hogy nincs telepítve, vagy a <a href='$2'>modul-konfiguráció</a> helytelen.
@@ -42,6 +43,7 @@ edit_fly1=Közvetlenül a CD-ről az íróra
 edit_fly0=Ideiglenes fájl használata
 edit_srcdrv=A forrás eszközillesztője
 edit_dstdrv=A cél eszközillesztője
+
 save_err=A profil mentése nem sikerült
 save_ename=Hiányzó profilnév
 save_eiso=Hiányzó vagy érvénytelen ISO képfájlnév
@@ -51,6 +53,7 @@ save_edirs=Nem választott ki forráskönyvtárat
 save_emp3s=Nem választott ki MP3 fájlt vagy könyvtárat
 save_emp3=A(z) $1 MP3 fájl vagy könyvtár nem létezik
 save_eother=A forrás eszközillesztője nem létezik
+
 burn_title=CD kiírása
 burn_rutest1=Biztos benne, hogy tesztelni akarja a(z) $1 ISO képfájl kiírását?
 burn_rusure1=Biztos benne, hogy kiírja CD-re a(z) $1 ISO képfájlt?
@@ -87,6 +90,7 @@ burn_807=Figyelem! Az audiosávok mérete $1 MB, ami még a 80 perces audio CD-k
 burn_mp3size=Az átalakított audiosávok mérete $1 MB, a hagyományos audio CD-n megengedhető $2 MB-hoz képest.
 burn_seconddesc=Helyezze be az üres írható CD-t a meghajtóba, majd kattintson a lenti gombra.
 burn_second=CD írása
+
 dev_title=Eszközök beállításai
 dev_header=CD-író eszköz beállításai
 dev_device=CD-író eszköz
@@ -96,12 +100,14 @@ dev_other=Egyéb..
 dev_extra=Extra <tt>cdrecord</tt> opciók
 dev_err=Az eszköz beállításainak mentése sikertelen
 dev_eother=Hiányzó vagy érvénytelen írási sebesség
+
 mkisofs_title=ISO fájlrendszer beállításai
 mkisofs_header=ISO fájlrendszer globális beállításai
 mkisofs_novers=Tartalmazzák a fájlnevek a verziószámot?
 mkisofs_notrans=A fájlnevek bármilyen karaktert tartalmazhatnak?
 mkisofs_nobak=Kihagyja a biztonsági fájlokat?
 mkisofs_fsyms=Követi a szimbolikus hivatkozásokat?
+
 config_cdrecord=CD-író parancs
 config_mkisofs=ISO fájlrendszeralkotó parancs
 config_mpg123=MP3 dekódoló parancs

@@ -17,6 +17,8 @@ index_loadname=Medji tat-tagħbija tas-CPU:
 index_loadnums=$1 (1 min), $2 (5 minuti), $3 (15 minuti)
 index_cpuname=Tip ta 'CPU:
 index_inzone=Fiż-żona $1 
+index_core=$1 core
+index_cores=$1 cores
 
 pid=ID
 owner=Sidha

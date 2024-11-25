@@ -8,6 +8,7 @@ index_apply=Aplica els Canvis
 index_applymsg=Fes clic sobre aquest botó per aplicar la configuració actual d'exportacions. Això farà que tots els directoris llistats més amunt estiguin disponibles amb les opcions especificades.
 index_return=a la llista d'exportació
 index_eprog=No s'ha trobat el sistema l'executable servidor NFS. No sembla que el paquet NFS estigui instal·lat.
+
 edit_title=Edició d'Exportació
 create_title=Creació d'Exportació
 edit_details=Exporta els detalls
@@ -53,6 +54,7 @@ edit_sync1=$yes
 edit_sync2=$no
 edit_sync0=$default
 edit_in=en
+
 save_err=No he pogut desar l'exportació
 save_edir=El directori '$1' no existeix
 save_enetgroup=Hi falta el grup de xarxa o és invàlid
@@ -63,6 +65,7 @@ save_euids=Els UIDs no fiables han de ser una llista de números o rangs separad
 save_egids=Els GIDs no fiables han de ser una llista de números o rangs separada per comes
 save_pfs='$1' ja està exportat com a directori
 save_create_dir=No puc crear el directori '$1'
+
 exports_webnfs=Clients WebNFS
 exports_ngroup=Grup de xarxa $1
 exports_net=Xarxa $1
@@ -70,6 +73,7 @@ exports_all=Tothom
 exports_hosts=Hosts $1
 exports_host=Host $1
 exports_gss=Xarxa autenticada: $1
+
 log_modify=He modificat l'exportació NFS $1
 log_modify_l=He modificat l'exportació NFS $1 a $2
 log_delete=He suprimit l'exportació NFS $1

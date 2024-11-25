@@ -250,6 +250,12 @@ ui_hnm1=网址中的主机名
 ui_hnm2=网址中的域名
 ui_hnm3=其他名字 ..
 ui_tabs=分类模块？
+ui_show=Display on the dashboard​
+ui_show_host=System hostname
+ui_show_os=Operating system
+ui_show_ver=Usermin version
+ui_show_tver=Theme version
+ui_show_time=Time on system
 
 upgrade_title=升级Usermin
 upgrade_title2=安装Usermin

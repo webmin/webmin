@@ -45,6 +45,7 @@ index_restart_firewallddesc=Перезавантажте сервер FirewallD 
 index_listrules_restartdesc=Перелік інформації про існуючі розширені та прямі правила FirewallD у зоні $1.
 index_dependent=Не вдалося перезапустити залежну службу $1
 index_manual=Редагувати конфігураційні файли.
+index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=Редагувати конфігураційні файли
 manual_editsel=Відредагуйте файл конфігурації FirewallD

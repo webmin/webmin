@@ -15,6 +15,7 @@ index_tabsync2=运行系统 <tt>$1</tt> 服务进行同步
 index_desctime=该表格用于更改系统的当前时间，所有正在运行的进程都将使用该时间。在具有独立硬件时钟的操作系统上，也可以使用该时钟进行设置。
 index_desczone=该表格允许您设置系统的默认时区，该默认时区用于将系统时间转换为人类可读的格式和偏移量。
 index_descsync=该表格用于将系统配置为自动与远程服务器同步时间。同步将使用Unix <tt>time</tt>协议或NTP完成，具体取决于安装了哪些命令以及远程系统支持什么。
+index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 acl_timezone=用户可以设置时区吗？
 acl_ntp=可以与时间服务器同步吗？

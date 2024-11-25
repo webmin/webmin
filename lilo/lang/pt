@@ -8,6 +8,7 @@ index_applymsg1=Aplicar a configuração corrente ao sector de arranque $1.
 index_applymsg2=Aplicar a configuração corrente ao sector de arranque no dispositivo root corrente.
 index_applymsg3=Certifique-se que a sua configuração está correcta antes de reiniciar o sistema!
 index_return=kernels e partições
+
 global_title=Opções Gerais
 global_desc=Opções Gerais de Arranque
 global_boot=Escrever o carregador de arranque para
@@ -29,8 +30,10 @@ global_extra=Iniciar kernels com opções extra
 global_any=Qualquer arranque
 global_secs=segundos
 global_err=Falha ao guardar as opções gerais
+
 apply_title=Aplicar Configuração
 apply_exec=A aplicar configuração do LILO com o comando $1 ..
+
 image_title1=Criar Kernel de Arranque
 image_title2=Editar Kernel de Arranque
 image_options=Opções do Kernel de Arranque
@@ -59,6 +62,7 @@ image_any=Qualquer arranque
 image_none=Nenhum
 image_ename=Falta o nome para este kernel de arranque
 image_ekernel=A imagem do kernel '$1' não existe
+
 other_title1=Criar Partição de Arranque
 other_title2=Editar Partição de Arranque
 other_details=Detalhes da Partição

@@ -14,6 +14,7 @@ index_memb=$1 članov
 index_hst=Gostitelji in skupine gostiteljev
 index_nohst=Gostitelji ali skupine niso definirani.
 index_hostgroup=Gostitelj/skupina
+index_comment=Description
 index_parent=Starš
 index_hardware=Naslov strojne opreme
 index_group=Skupina:

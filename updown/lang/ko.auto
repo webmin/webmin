@@ -2,6 +2,8 @@ index_email=다운로드가 완료되면 이메일을 보내시겠습니까?
 index_emailto=그렇습니다
 index_email2=업로드가 완료되면 이메일을 보내시겠습니까?
 
+upload_direct=Write files directly to disk?
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_eemail=통지 할 이메일 주소가 없습니다.
 upload_saving=파일 $1 저장 중 ..
 upload_saved=.. 쓴 $1 

@@ -76,4 +76,3 @@ overlay_refresh=正在刷新Virtualmin用户界面 ..
 overlay_done=.. 完成
 overlay_euser=无法获取当前用户的详细信息！
 overlay_webmin=重新加载Webmin配置 ..
-__norefs=1

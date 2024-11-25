@@ -7,6 +7,7 @@ index_tabsync2=Esegui il servizio di sistema <tt>$1</tt> per la sincronizzazione
 index_desctime=Questo modulo serve per modificare l'ora corrente del sistema, utilizzata da tutti i processi in esecuzione. Sui sistemi operativi che hanno un orologio hardware separato, può essere utilizzato anche per impostarlo.
 index_desczone=Questo modulo consente di impostare il fuso orario predefinito del sistema, che viene utilizzato per convertire l'ora del sistema in un formato leggibile e in offset.
 index_descsync=Questo modulo serve per configurare il sistema per sincronizzare automaticamente l'ora con un server remoto. La sincronizzazione verrà eseguita utilizzando il protocollo Unix <tt>time</tt> o NTP, a seconda di quali comandi sono installati e di cosa supporta il sistema remoto.
+index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 minute=minuto
 second=Secondo

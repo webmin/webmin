@@ -9,6 +9,13 @@ ssl_savekey=Este formulário permite fazer upload de uma chave privada e um cert
 ssl_copycert=Copiar certificado do Webmin
 ssl_copycertdesc=Copie o certificado SSL, chave privada, certificado CA e outras configurações que o Webmin está usando.
 
+ui_show=Display on the dashboard​
+ui_show_host=System hostname
+ui_show_os=Operating system
+ui_show_ver=Usermin version
+ui_show_tver=Theme version
+ui_show_time=Time on system
+
 log_copycert=Configurações de SSL copiadas do Webmin
 
 advanced_pass_desc=Disponibilizar senha para programas Usermin?

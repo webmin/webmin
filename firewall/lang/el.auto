@@ -156,7 +156,7 @@ desc_args--match-set=Το $2 περιέχεται στο σύνολο IP $1
 desc_src=πηγή
 desc_dest=προορισμός
 
-redhat_einstalled=Δεν βρέθηκε <tt>iptables (6)</tt> εντολή εκκίνησης, υποδεικνύοντας ότι το πακέτο IPtables δεν είναι εγκατεστημένο στο σύστημά σας
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 redhat_eoutput=Παρουσιάστηκε σφάλμα κατά την λήψη της κατάστασης του IPtables από την εντολή $1. Αυτό πιθανώς δείχνει ότι το σύστημά σας έχει ρυθμιστεί ώστε να χρησιμοποιεί IPchains αντί για IPtables.
 
 gentoo_escript=Το σενάριο εκκίνησης του Gentoo IPtables $1 δεν βρέθηκε στο σύστημά σας.

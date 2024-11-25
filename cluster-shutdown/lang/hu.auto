@@ -14,6 +14,7 @@ index_smtp=Küldés SMTP szerveren keresztül
 index_this=Ez a szerver
 index_nu=Nincs beállítva felhasználó
 index_nl=Bejelentkezés sikertelen
+
 shut_title=Kiszolgálók leállítása
 shut_rusure=Biztos benne, hogy azonnal le szeretné állítani a kiválasztott $1 kiszolgálót?
 shut_ok=Igen, csináld
@@ -22,10 +23,12 @@ shut_failed=.. nem sikerült! $1
 shut_done=.. Kész.
 shut_sel=A kiválasztott szerverek :
 shut_ecannot=Nem szabad kiszolgálókat leállítani
+
 reboot_title=Indítsa újra a kiszolgálókat
 reboot_rusure=Biztos benne, hogy azonnal elindítja a kiválasztott $1 kiszolgálót?
 reboot_doing=$1 újraindítása ..
 reboot_ecannot=A szervereket nem szabad újraindítani
+
 sched_err=Nem sikerült beállítani az automatikus szerverellenőrzést
 sched_eemail=Hiányzik az e-mail cím
 sched_esmtp=Hiányzó vagy érvénytelen SMTP szerver

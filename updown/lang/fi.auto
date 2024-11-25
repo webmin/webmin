@@ -8,6 +8,8 @@ index_email=Lähetä sähköpostia, kun lataus on valmis?
 index_emailto=Kyllä, osoitteeseen
 index_email2=Lähetä sähköpostia, kun lataus on valmis?
 
+upload_direct=Write files directly to disk?
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_eemail=Puuttuu ilmoitettava sähköpostiosoite
 upload_saving=Tallennetaan tiedosto $1 ..
 upload_saved=.. kirjoitti $1 

@@ -42,7 +42,9 @@ index_emailto=Da, na adresu
 index_email2=Šaljite e-poštu kada se izvrše prijenosi?
 
 upload_title=Prijenos datoteka
+upload_direct=Write files directly to disk?
 upload_err=Prijenos datoteka nije uspio
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=Nedostaje direktorij za učitavanje u
 upload_euser=Nedostaje ili nije valjano korisničko ime
 upload_egroup=Nedostaje ili nevažeće ime grupe

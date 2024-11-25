@@ -12,6 +12,8 @@ help_einclude3=Gagal memasukkan halaman bantuan $1
 
 referer_fix3u=Pastikan pelayar anda dikonfigurasikan untuk menghantar maklumat rujukan supaya ia dapat disahkan oleh Webmin.
 
+password_euserpass=Invalid username or password
+
 ui_of=daripada
 
 log_email_subject=Tindakan Webmin di $1

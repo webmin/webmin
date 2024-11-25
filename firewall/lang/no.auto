@@ -6,6 +6,8 @@ desc_match-set!=$2 samsvarer ikke med IPset $1
 desc_match-set_src=innkommende trafikk
 desc_match-set_dst=utgående trafikk
 
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+
 edit_matchset=Matchende IPset
 edit_matchsetsrc=på innkommende trafikk
 edit_matchsetdst=på utgående trafikk

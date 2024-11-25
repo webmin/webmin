@@ -250,6 +250,12 @@ ui_hnm1=URL의 호스트 이름
 ui_hnm2=URL의 도메인 이름
 ui_hnm3=다른 이름 ..
 ui_tabs=모듈을 분류 하시겠습니까?
+ui_show=Display on the dashboard​
+ui_show_host=System hostname
+ui_show_os=Operating system
+ui_show_ver=Usermin version
+ui_show_tver=Theme version
+ui_show_time=Time on system
 
 upgrade_title=Usermin 업그레이드
 upgrade_title2=Usermin 설치

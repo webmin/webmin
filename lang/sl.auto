@@ -287,6 +287,7 @@ password_done=Vaše geslo je bilo uspešno spremenjeno. Zdaj se lahko <a href='$
 password_err=Gesla ni bilo mogoče spremeniti
 password_euser=Vašega prijavnega imena v datoteki z geslom ni bilo mogoče najti!
 password_eold=Trenutno geslo ni pravilno
+password_euserpass=Invalid username or password
 password_enew1=Nobeno geslo ni bilo vneseno
 password_enew2=Vaša nova gesla se ne ujemajo
 password_epam=Napaka PAM : $1

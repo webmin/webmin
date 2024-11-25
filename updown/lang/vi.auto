@@ -42,7 +42,9 @@ index_emailto=Vâng, đến địa chỉ
 index_email2=Gửi email khi tải lên xong?
 
 upload_title=Tải lên tập tin
+upload_direct=Write files directly to disk?
 upload_err=Không thể tải lên tập tin
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=Thiếu thư mục để tải lên
 upload_euser=Tên người dùng bị thiếu hoặc không hợp lệ
 upload_egroup=Tên nhóm bị thiếu hoặc không hợp lệ

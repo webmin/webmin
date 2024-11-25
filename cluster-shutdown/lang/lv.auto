@@ -14,6 +14,7 @@ index_smtp=Sūtīt caur SMTP serveri
 index_this=Šis serveris
 index_nu=Nav iestatīts neviens lietotājs
 index_nl=Pieslēgšanās neizdevās
+
 shut_title=Izslēgt serverus
 shut_rusure=Vai tiešām vēlaties nekavējoties izslēgt atlasītos serverus $1 ?
 shut_ok=Jā, dari to
@@ -22,10 +23,12 @@ shut_failed=.. neizdevās! $1
 shut_done=.. darīts.
 shut_sel=Atlasītie serveri ir :
 shut_ecannot=Jums nav atļauts slēgt serverus
+
 reboot_title=Atsāknēšanas serveri
 reboot_rusure=Vai tiešām vēlaties nekavējoties atsāknēt atlasītos serverus $1 ?
 reboot_doing=Atsāknēšana $1.
 reboot_ecannot=Jums nav atļauts pārstartēt serverus
+
 sched_err=Neizdevās iestatīt automātisku servera pārbaudi
 sched_eemail=Trūkst e-pasta adreses
 sched_esmtp=Trūkst vai nav derīgs SMTP serveris

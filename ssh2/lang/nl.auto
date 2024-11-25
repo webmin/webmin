@@ -1,0 +1,7 @@
+index_title=SSH2 Login
+index_warn=Warning! This telnet session is <b>not</b> encrypted.
+index_nojava=This module requires java to function, but your browser does not support java
+index_credits=MindTerm applet developed by <a href='$1' target=_top>AppGate</a>.
+index_esocket=There is no telnet server running on $1 port $2.
+index_esocket2=There is no SSH server running on $1 port $2.
+index_elookup=Failed to lookup IP address for $1 to test telnet or SSH server.

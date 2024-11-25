@@ -5,6 +5,8 @@ index_suse=Trūkst Perl pakotnes <tt>perl-IO-Tty</tt>, un tā vispirms ir manuā
 index_euser=Kļūda: lietotājs $1 nevar palaist čaulu, jo tā neeksistē!
 index_connecting=Notiek savienojuma izveide. ..
 index_missing=Trūkst Perl moduļa <tt>$1</tt>. Lai atrisinātu šo problēmu, jums jāsazinās ar administratoru.
+index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Palaidiet apvalku kā Unix lietotāju
 acl_sameuser=Tāpat kā Webmin pieteikšanās
+acl_sudoenforce=Enforce <em>sudo</em>-only privileges

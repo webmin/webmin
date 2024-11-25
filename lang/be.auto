@@ -287,6 +287,7 @@ password_done=Ваш пароль быў паспяхова зменены. Ця
 password_err=Не атрымалася змяніць пароль
 password_euser=Ваша імя для ўваходу ў файл пароля не знойдзена!
 password_eold=Цяперашні пароль няправільны
+password_euserpass=Invalid username or password
 password_enew1=Новы пароль не быў уведзены
 password_enew2=Вашы новыя паролі не супадаюць
 password_epam=Памылка PAM : $1

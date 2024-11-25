@@ -156,7 +156,7 @@ desc_args--match-set=$2 je vsebovan v IP-nizu $1
 desc_src=vir
 desc_dest=cilj
 
-redhat_einstalled=Ni najdeno zagonskega dejanja <tt>iptables (6)</tt>, kar pomeni, da paket IPtables ni nameščen v vašem sistemu
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 redhat_eoutput=Pri pridobivanju statusa IPtables iz ukaza $1 se je pojavila napaka. To verjetno kaže, da je bil vaš sistem konfiguriran tako, da uporablja IPchains namesto IPtables.
 
 gentoo_escript=Začetnega skripta Gentoo IPtables $1 v vašem sistemu ni bilo mogoče najti.

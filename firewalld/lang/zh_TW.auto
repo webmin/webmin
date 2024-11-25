@@ -45,6 +45,7 @@ index_restart_firewallddesc=重新加載 FirewallD 服務器並應用永久創�
 index_listrules_restartdesc=列出有關 $1 區域中現有豐富和直接 FirewallD 規則的詳細信息。
 index_dependent=無法重新啟動 $1 相關服務
 index_manual=編輯配置文件。
+index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=編輯配置文件
 manual_editsel=編輯 FirewallD 配置文件

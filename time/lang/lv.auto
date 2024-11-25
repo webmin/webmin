@@ -19,6 +19,7 @@ index_tabsync2=Palaidiet sistēmas <tt>$1</tt> pakalpojumu sinhronizācijai
 index_desctime=Šī forma ir paredzēta, lai mainītu sistēmas pašreizējo laiku, kuru izmanto visi darbojošie procesi. Operētājsistēmās, kurām ir atsevišķs aparatūras pulkstenis, to var izmantot arī šī iestatīšanai.
 index_desczone=Šī forma ļauj iestatīt sistēmas noklusējuma laika joslu, kas tiek izmantota, lai pārveidotu sistēmas laiku cilvēkam lasāmā formātā un nobīdē.
 index_descsync=Šī veidlapa ir paredzēta sistēmas konfigurēšanai, lai automātiski sinhronizētu laiku ar attālo serveri. Sinhronizācija tiks veikta, izmantojot Unix <tt>laiks</tt> protokolu vai NTP, atkarībā no tā, kuras komandas ir instalētas un ko atbalsta attālā sistēma.
+index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 action_save=Saglabāt
 action_apply=Piesakies

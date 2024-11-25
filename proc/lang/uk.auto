@@ -8,6 +8,8 @@ index_loadname=Середнє завантаження процесора:
 index_loadnums=$1 (1 хв.), $2 (5 хв.), $3 (15 хв.)
 index_cpuname=Тип процесора:
 index_inzone=У зоні $1 
+index_core=$1 core
+index_cores=$1 cores
 
 stime=Почав
 sclass=Клас планування IO

@@ -1,4 +1,5 @@
 index_serviceonboot=Ja, en begin bij het opstarten
 index_tabsync2=Voer de systeemservice <tt>$1</tt> uit voor synchronisatie
+index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 error_serviceunknown=Onbekende dienst : $1

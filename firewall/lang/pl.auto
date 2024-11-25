@@ -29,6 +29,8 @@ desc_args--match-set=$2 jest zawarty w zestawie IP $1
 desc_src=źródło
 desc_dest=Miejsce docelowe
 
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+
 edit_state_snat=Źródło NATd
 edit_state_dnat=Miejsce docelowe NATd
 edit_matchset=Pasujące IPset

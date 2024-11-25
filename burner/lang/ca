@@ -14,6 +14,7 @@ index_global=Opcions Globals
 index_ecdrecord=No s'ha trobat al sistema l'ordre de gravació de CDs <tt>$1</tt>. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_return= a la llista de perfils
 index_delete=Suprimeix els Perfils Seleccionats
+
 edit_title=Edició de Perfil de Gravació
 create_title=Creació de Perfil de Gravació
 edit_emkisofs=No s'ha trobat al sistema l'ordre de creació de sistemes de fitxers ISO <tt>$1</tt>. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
@@ -49,6 +50,7 @@ edit_fly0=Utilitza un fitxer temporal
 edit_srcdrv=Controlador del dispositiu font
 edit_dstdrv=Controlador del dispositiu destí
 edit_ecannot=No tens permís per editar aquest perfil de gravació
+
 save_err=No s'ha pogut desar el perfil
 save_ename=Hi falta el nom del perfil
 save_eiso=Hi falta el nom del fitxer imatge ISO o bé és invàlid
@@ -62,6 +64,7 @@ save_ecannot1=La imatge ISO no està en un directori permès
 save_ecannot2=El directori origen $1 no està en un directori permès
 save_ecannot3=El fitxer MP3 o directori $1 no està en un directori permès
 save_ecannot4=El fitxer de dispositiu origen no està en un directori permès
+
 burn_title=Gravació de CD
 burn_rutest1=Segur que vols fer una prova de gravació de la imatge ISO $1?
 burn_rusure1=Segur que vols gravar la imatge ISO $1 al CD ?
@@ -99,6 +102,7 @@ burn_807=Atenció! La mida total de les pistes fa $1 Mb, que està per damunt de
 burn_mp3size=Les pistes àudio convertides fan $1 Mb, d'un total de $2 Mb permesos en un CD àudio normal.
 burn_seconddesc=Insereix el CD en blanc de destí i fes clic sobre el botó de sota.
 burn_second=Grava el CD de destí
+
 dev_title=Opcions de Dispositiu
 dev_header=Opcions de la gravadora de CDs
 dev_device=Gravadora
@@ -109,6 +113,7 @@ dev_extra=Opcions extres de <tt>cdrecord</tt>
 dev_err=No s'han pogut desar les opcions del dispositiu
 dev_eother=Hi falta la velocitat de gravació o bé és invàlida
 dev_ecannot=No tens permís per editar les opcions del dispositiu
+
 mkisofs_title=Opcions de Sistema de fitxers ISO
 mkisofs_header=Opcions globals del sistema de fitxers ISO
 mkisofs_novers=Inclou el número de la versió als noms de fitxers
@@ -116,6 +121,7 @@ mkisofs_notrans=Permet tots els caràcters als noms de fitxers
 mkisofs_nobak=Omet fitxers de còpies de seguretat
 mkisofs_fsyms=Segueix els enllaços simbòlics
 mkiofs_ecannot=No tens permís per editar les opcions del sistema de fitxers ISO
+
 config_cdrecord=Ordre de gravació de CDs
 config_mkisofs=Ordre de creació de sistemes de fitxers ISO
 config_mpg123=Ordre de descodificació MP3
@@ -129,6 +135,7 @@ config_empg123=Hi falta l'ordre de descodificació MP3 o bé és invàlida
 config_esox=Hi falta l'ordre de SOX o bé és invàlida
 config_ecdrdao=Hi falta l'ordre de còpia de CDs o bé és invàlida
 config_etemp=Hi falta el directori de fitxers temporals o bé és invàlid
+
 acl_create=Pot crear nous perfils de gravació
 acl_edit=Pot editar perfils de gravació existents
 acl_global=Pot editar la configuració global
@@ -136,5 +143,6 @@ acl_profiles=Pot utilitzar els perfils
 acl_all=Tots
 acl_sel=Els seleccionats a sota...
 acl_dirs=Permet els directoris per als fitxers origen
+
 delete_err=No s'han pogut suprimir els perfils de gravació
 delete_enone=No has seleccionat cap perfil

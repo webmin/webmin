@@ -45,6 +45,7 @@ index_restart_firewallddesc=Ponovno naložite strežnik FirewallD in uporabite p
 index_listrules_restartdesc=Navedite podrobnosti o obstoječih obogatenih in neposrednih pravilih FirewallD v območju $1.
 index_dependent=Ponovni zagon odvisne storitve $1 ni uspel
 index_manual=Urejanje konfiguracijskih datotek.
+index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=Urejanje konfiguracijskih datotek
 manual_editsel=Uredite konfiguracijsko datoteko FirewallD

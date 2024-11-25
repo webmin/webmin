@@ -64,5 +64,3 @@ log_start=启动ADSL
 log_bootup=开机时自动启动ADSL
 log_bootdown=关闭开机时自动启动ADSL
 log_setup=设置为默认配置
-
-__norefs=1

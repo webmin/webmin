@@ -19,6 +19,7 @@ index_tabsync2=Mexxi s-servizz tas-sistema <tt>$1</tt> għas-sinkronizzazzjoni
 index_desctime=Din il-formola hija għall-bidla tal-ħin kurrenti tas-sistema, li tintuża mill-proċessi kollha li jmexxu. Fuq sistemi operattivi li għandhom arloġġ tal-ħardwer separat, jista 'jintuża wkoll biex tissettja dan.
 index_desczone=Din il-formola jippermettilek tissettja ż-żona tal-ħin awtomatika tas-sistema, li tintuża biex tikkonverti l-ħin tas-sistema f'format li jinqara mill-bniedem u tikkumpensa.
 index_descsync=Din il-formola hija għall-konfigurazzjoni tas-sistema biex tissinkronizza awtomatikament il-ħin ma 'server remot. Is-sinkronizzazzjoni se ssir bl-użu tal-protokoll Unix <tt>time</tt> jew NTP, skond liema kmandi huma installati u dak li jappoġġja s-sistema remota.
+index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 action_save=Issejvja
 action_apply=Applika

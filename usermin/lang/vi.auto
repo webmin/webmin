@@ -250,6 +250,12 @@ ui_hnm1=Tên máy chủ từ URL
 ui_hnm2=Tên miền từ URL
 ui_hnm3=Tên khác ..
 ui_tabs=Phân loại mô-đun?
+ui_show=Display on the dashboard​
+ui_show_host=System hostname
+ui_show_os=Operating system
+ui_show_ver=Usermin version
+ui_show_tver=Theme version
+ui_show_time=Time on system
 
 upgrade_title=Nâng cấp Usermin
 upgrade_title2=Cài đặt Usermin

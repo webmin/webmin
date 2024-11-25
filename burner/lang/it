@@ -14,6 +14,7 @@ index_global=Opzioni globali
 index_ecdrecord=Il comando di scrittura CD $1 non è stato trovato nel tuo sistema. E' probabile che non sia installato o che la <a href='$2'>configurazione del modulo</a> non sia corretta.
 index_return=Lista profili
 index_delete=Elimina il profilo selezionato
+
 edit_title=Modifica il profilo di masterizzazione
 create_title=Crea profilo di masterizzazione
 edit_emkisofs=Il comando di generazione del filesystem ISO $1 non è stato trovato nel tuo sistema. E' probabile che non sia installato o che la <a href='$2'>configurazione del modulo</a> non sia corretta.
@@ -49,6 +50,7 @@ edit_fly0=Usa i file temporanei
 edit_srcdrv=Driver di dispositivo sorgente
 edit_dstdrv=Driver del dispositivo di destinazione
 edit_ecannot=Non hai i permessi per modificare questo profilo
+
 save_err=Salvataggio del profilo fallito
 save_ename=Nome del profilo mancante
 save_eiso=Immagine ISO mancante o non valida
@@ -62,6 +64,7 @@ save_ecannot1=L'immagine ISO non si trova in una directory permessa
 save_ecannot2=La directory sorgente $1 non si trova al di sotto di una directory permessa
 save_ecannot3=Il file MP3 o la directory $1 non si trova in una directory permessa
 save_ecannot4=Il file del dispositivo sorgente non si trova in una directory permessa
+
 burn_title=Masterizza CD
 burn_rutest1=Sei sicuro di voler effettuare una prova di masterizzazione dell'immagine ISO $1?
 burn_rusure1=Sei sicuro di voler masterizzare l'immagine ISO $1?
@@ -99,6 +102,7 @@ burn_807=Attenzione! Le tracce audio selezionate hanno una dimensione totale di 
 burn_mp3size=Le tracce audio convertite hanno una dimensione di $1 MB, superiore di $2 MB rispetto a quanto consentito da un normale CD audio.
 burn_seconddesc=Inserisci il CD vuoto di destinazione e clicca sul pulsante in basso.
 burn_second=CD di destinazione
+
 dev_title=Opzioni dispositivo
 dev_header=Opzioni del dispositivo di masterizzazione
 dev_device=Masterizzatore
@@ -109,6 +113,7 @@ dev_extra=Opzioni extra di <tt>cdrecord</tt>
 dev_err=Salvataggio delle opzioni del dispositivo fallito
 dev_eother=Velocità di scrittura mancante o non valida
 dev_ecannot=Non hai i permessi per modificare le opzioni del dispositivo
+
 mkisofs_title=Opzioni del filesystem ISO
 mkisofs_header=Opzioni globali del filesystem ISO
 mkisofs_novers=Includere il numero di versione nei nomi dei file?
@@ -116,6 +121,7 @@ mkisofs_notrans=Permettere tutti i caratteri nei nomi dei file?
 mkisofs_nobak=Tralasciare i file di backup?
 mkisofs_fsyms=Segui i link simbolici?
 mkiofs_ecannot=Non hai i permessi per modificare le opzioni del filesystem ISO
+
 config_cdrecord=Comando di masterizzazione CD
 config_mkisofs=Comando di generazione del filesystem ISO
 config_mpg123=Comando di decodifica MP3
@@ -129,6 +135,7 @@ config_empg123=Comando di decodifica MP3 mancante o non valido
 config_esox=Comando SOX mancante o non valido
 config_ecdrdao=Comando di copia CD mancante o non valido
 config_etemp=Directory per i file temporanei mancante o non valida
+
 acl_create=Può creare nuovi profili di masterizzazione?
 acl_edit=Può modificare profili di masterizzazione esistenti?
 acl_global=Può modificare le impostazioni globali?
@@ -136,5 +143,6 @@ acl_profiles=Può usare i profili
 acl_all=Tutti
 acl_sel=Selezionati sotto:
 acl_dirs=Permetti directory per i file sorgenti
+
 delete_err=Cancellazione del profilo fallita
 delete_enone=Nessuna selezione

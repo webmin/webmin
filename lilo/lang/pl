@@ -9,6 +9,7 @@ index_applymsg2=Zastosowanie bieżącej konfiguracji do sektora BOOT na bieżąc
 index_applymsg3=Upewnij się, że konfiguracja jest prawidłowa zanim zrestartujesz system!
 index_return=kerneli i partycji
 index_earch=LILO obsługuje jedynie systemy o architekturze x86.
+
 global_title=Opcje ogólne
 global_desc=Ogólne opcje startowe
 global_boot=Zapisz bootloader na
@@ -31,8 +32,10 @@ global_any=Każdym starcie
 global_secs=sekund
 global_lba=Umożliwić start z obszaru powyżej 1024 cylindra?
 global_err=Nie udało się zachować opcji ogólnych
+
 apply_title=Zastosuj konfigurację
 apply_exec=Zastosowanie konfiguracji LILO popraez wydanie polecenia $1 ..
+
 image_title1=Określ kernel startowy
 image_title2=Zmień kernel startowy
 image_options=Opcje kernela startowego
@@ -63,6 +66,7 @@ image_none=Brak
 image_ename=Nie podano nazwy dla tego kernela.
 image_ekernel=Obraz kernela '$1' nie istnieje.
 image_einitrd=Plik inicjalnego ramdysku '$1' nie istnieje.
+
 other_title1=Określ partycję startową
 other_title2=Zmień partycję startową
 other_details=Dane partycji
@@ -73,6 +77,7 @@ other_yes=Tak, z
 other_password=Hasło startowe
 other_none=Brak
 other_ename=Nie podano nazwy dla tej partycji startowej.
+
 log_create_image=Określono kernel startowy $1
 log_modify_image=Zmieniono kernel startowy $1
 log_delete_image=Usunięto kernel startowy $1

@@ -64,6 +64,7 @@ edit_pre=פקודות להפעלה לפני סיבוב
 edit_default=ברירת מחדל ($1)
 edit_sharedscripts=רק להריץ סקריפטים פעם אחת לכל הקבצים?
 edit_now=סובב עכשיו
+edit_clone=Clone
 
 global_title=אופציות עולמיות
 global_header=אפשרויות ברירת מחדל עבור כל קבצי היומן

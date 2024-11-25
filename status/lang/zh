@@ -5,7 +5,6 @@ index_desc=监视
 index_up=状态
 index_last=最近的检查
 index_local=本地
-index_add=增加监视的类型
 index_sched=定时监视
 index_scheddesc=打开或关闭监视器的定时检查，并设置故障自动通过电子邮件发送到的地址。
 index_return=服务列表
@@ -135,7 +134,6 @@ mon_onemem=一个成员
 mon_members=$1 成员
 mon_enoremote=没有要在所选主机或组上运行的主机或组
 mon_tmpl=消息模板
-mon_notmpl无（使用Webmin默认值）
 mon_header4=状态历史
 mon_hwhen=检查日期
 mon_hold=旧状态
@@ -181,7 +179,6 @@ sched_smtp_prog=本地 sendmail 可执行文件
 sched_smtp_server=SMTP 服务器
 sched_esmtp=未输入或无效的 SMTP 服务器
 sched_esmtpcmd=SMTP 命令 $1 失败 : $2
-sched_eemailserver未安装邮件服务器 : $1
 sched_sms=发送短信给
 sched_smsno=Nobody
 sched_smscarrier=电话
@@ -617,5 +614,3 @@ imap_pass=IMAP 密码
 imap_ehost=IMAP 服务器主机丢失或无法解析
 imap_eport=IMAP 服务器端口号缺失或非数字
 imap_euser=缺少 IMAP 登录
-
-__norefs=1

@@ -1,5 +1,8 @@
 index_descdownload=Ez az űrlap lehetővé teszi fájlok vagy weboldalak letöltését a HTTP vagy FTP URL-ekből a Webmin futtató rendszerbe. A letöltés azonnal elvégezhető, vagy a jövőben egy bizonyos időre tervezhető.
 
+upload_direct=Write files directly to disk?
+upload_emove=Failed to move uploaded file from $1 to $2
+
 download_enone=Nincs megadva letölthető URL
 
 fetch_ezip=A könyvtárat csak akkor lehet letölteni, ha a <tt>zip</tt> parancs telepítve van

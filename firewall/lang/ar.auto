@@ -156,7 +156,7 @@ desc_args--match-set=$2 موجود في مجموعة IP$1
 desc_src=مصدر
 desc_dest=المكان المقصود
 
-redhat_einstalled=لم يتم العثور على <tt>iptables (6)</tt> إجراء تمهيد ، مما يشير إلى أن حزمة IPtables غير مثبتة على نظامك
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 redhat_eoutput=حدث خطأ أثناء الحصول على حالة IPtables من الأمر$1. يشير هذا على الأرجح إلى أن نظامك قد تم تكوينه لاستخدام IPchains بدلاً من IPtables.
 
 gentoo_escript=لم يتم العثور على البرنامج النصي لبدء التشغيل Gentoo IPtables $1 على نظامك.

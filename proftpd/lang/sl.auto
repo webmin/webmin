@@ -27,6 +27,8 @@ index_global=Globalna konfiguracija
 index_create=Ustvari virtualni strežnik
 index_version=ProFTPd različica $1 
 index_proftpd=ProFTPd
+index_dlheader=Add Options
+index_dlmode=Add options for
 
 efailed=$1 ni bilo mogoče shraniti
 
@@ -37,6 +39,7 @@ type_3=Nadzor dostopa
 type_4=Razno
 type_5=Uporabnik in skupina
 type_6=Preverjanje pristnosti
+type_7=SSL Options
 
 virt_title=Možnosti virtualnega strežnika
 virt_header1=Za $1 
@@ -380,6 +383,19 @@ mod_readme_display=Obvesti uporabnika datotek readme, ki se ujemajo
 mod_readme_none=Noben
 mod_readme_edisplay=Manjka vzorec datotek readme
 
+mod_tls_engine=Enable SSL encryption?
+mod_tls_required=SSL required?
+mod_tls_ctrl=For control channel
+mod_tls_auth=For authentication
+mod_tls_authdata=For authentication and data
+mod_tls_file=SSL certificate file
+mod_tls_efile=SSL certificate file does not exist!
+mod_tls_key=SSL key file
+mod_tls_ekey=SSL key file does not exist!
+mod_tls_ca=SSL CA certificate file
+mod_tls_eca=SSL CA certificate file does not exist!
+mod_tls_none=None set
+
 start_err=FTP strežnika ni bilo mogoče zagnati
 start_einetd=Demona strežnika ne morete zagnati, če ste v načinu inetd.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Dodajte možnosti po ukazu za ..
 ftpindex_header2=$1 v $2 
 ftpindex_return=datoteka z možnostmi v imeniku
 ftpindex_header=Za $1 
+ftpindex_cmds=FTP commands
 
 find_err=Ni bilo mogoče najti datotek z možnostmi
 find_eanon=Anonimni FTP ni nameščen v nobenem virtualnem strežniku

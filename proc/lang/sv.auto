@@ -8,6 +8,8 @@ index_loadname=CPU-medelvärden:
 index_loadnums=$1 (1 min), $2 (5 min), $3 (15 minuter)
 index_cpuname=CPU-typ:
 index_inzone=I zon $1 
+index_core=$1 core
+index_cores=$1 cores
 
 stime=Satte igång
 sclass=IO schemaläggningsklass

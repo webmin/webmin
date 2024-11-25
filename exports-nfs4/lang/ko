@@ -8,6 +8,7 @@ index_apply=변경 내용 적용
 index_applymsg=현재 파일의 내보내기 구성을 적용하려면 이 버튼을 누르십시오. 그러면 위에 나열된 모든 디렉토리에 이 옵션이 적용됩니다.
 index_return=내보내기 목록
 index_eprog=시스템에 NFS 서버 실행 파일이 없습니다. NFS 패키지가 설치되어 있지 않습니다.
+
 edit_title=내보내기 편집
 create_title=내보내기 작성
 edit_details=내보내기 세부 정보
@@ -36,6 +37,7 @@ edit_gids=GID 신뢰 안함
 edit_anonuid=신뢰할 수 없는 사용자
 edit_default=기본값
 edit_anongid=신뢰할 수 없는 그룹
+
 save_err=내보내기를 저장하지 못했습니다
 save_edir=디렉토리 '$1'이(가) 존재하지 않습니다
 save_enetgroup=없거나 잘못된 넷그룹
@@ -44,12 +46,14 @@ save_enetmask='$1'은(는) 유효한 넷마스크가 아닙니다
 save_ehost='$1'은(는) 유효한 호스트 이름이 아닙니다 
 save_euids=신뢰할 수 없는 UID는 숫자나 숫자 범위로 지정된 쉼표로 구분된 목록이어야 합니다
 save_egids=신뢰할 수 없는 GID는 숫자나 숫자 범위로 지정된 쉼표로 구분된 목록이어야 합니다.
+
 exports_webnfs=WebNFS 클라이언트
 exports_ngroup=넷그룹 $1
 exports_net=네트워크 $1
 exports_all=모든 사용자
 exports_hosts=호스트 $1
 exports_host=호스트 $1
+
 log_modify=NFS 내보내기 $1 수정됨
 log_modify_l=$2(으)로의 NFS 내보내기 $1이 수정됨
 log_delete=NFS 내보내기 $1 삭제됨

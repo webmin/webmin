@@ -38,7 +38,7 @@ desc_args--match-set=$2 je obsaženo v sadě IP $1
 desc_src=zdroj
 desc_dest=destinace
 
-redhat_einstalled=Nebyla nalezena žádná spouštěcí akce <tt>iptables (6)</tt>, což naznačuje, že balíček IPtables není na vašem systému nainstalován.
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 
 edit_state_untracked=Nesledováno
 edit_state_snat=Zdroj NATd

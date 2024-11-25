@@ -1,0 +1,26 @@
+index_initdesc=Alternately, you can create a new CVS repository under $1 by clicking the button below.
+index_init=Initialize Repository
+index_actdesc2=The CVS server is setup to run from $1 on your system for the CVS root $2, but not currently active. Click this button if you want to activate it and allow remote users to access your CVS repository.
+index_deactdesc2=The CVS server is setup to run from $1 on your system for the CVS root $2, and is active. Click this button if you want to deactivate it and prevent remote users from accessing your CVS repository.
+index_asuser=Run as user:
+index_einetroot=Warning! The CVS root set in the module configuration does not match the root for the CVS server. This can be fixed by deactivating and reactivating the CVS server.
+
+setup_ecannot=You are not allowed to setup the CVS server
+
+passwd_ecannot=You are not allowed to manage CVS users
+
+access_ecannot=You are not allowed to edit user access control
+
+cvsweb_ecannot=You are not allowed to view the CVS repository
+
+config_ecannot=You are not allowed to edit the server configuration
+
+acl_passwd=Can manage CVS users?
+acl_access=Can edit user access control?
+acl_config=Can edit server configuration?
+acl_cvsweb=Can view CVS repository?
+acl_setup=Can setup inetd or xinetd to run CVS server?
+acl_init=Can initialized repository?
+
+init_err=Failed to initialize repository
+init_ecannot=You are not allowed to initialize a repository

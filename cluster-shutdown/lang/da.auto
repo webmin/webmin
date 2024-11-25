@@ -14,6 +14,7 @@ index_smtp=Send via SMTP-server
 index_this=Denne server
 index_nu=Intet brugersæt
 index_nl=Login mislykkedes
+
 shut_title=Luk servere ned
 shut_rusure=Er du sikker på, at du straks vil lukke de $1 valgte servere ned?
 shut_ok=Ja, gør det
@@ -22,10 +23,12 @@ shut_failed=.. mislykkedes! $1
 shut_done=.. Færdig.
 shut_sel=De valgte servere er :
 shut_ecannot=Du må ikke lukke servere ned
+
 reboot_title=Genstart servere
 reboot_rusure=Er du sikker på, at du straks vil genstarte de $1 valgte servere?
 reboot_doing=Genstart $1 ..
 reboot_ecannot=Du har ikke tilladelse til at genstarte servere
+
 sched_err=Kunne ikke konfigurere automatisk serverkontrol
 sched_eemail=Manglende e-mail-adresse
 sched_esmtp=Manglende eller ugyldig SMTP-server

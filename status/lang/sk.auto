@@ -1,3 +1,4 @@
+index_madd=Add monitor of type
 index_scheddesc=Zapnite alebo vypnite plánovanú kontrolu monitorov a nastavte adresu, na ktorú sa automaticky zasielajú zlyhania.
 index_refresh=Obnoviť stav
 index_refreshdesc=Namiesto čakania na ďalšiu naplánovanú aktualizáciu vykonajte okamžité obnovenie všetkých stavov monitora.
@@ -23,10 +24,14 @@ type_alive=Živý systém
 type_rssh=Vzdialené SSH
 type_slapd=LDAP Server
 type_ldap=Pripojenie LDAP
+type_smtp=SMTP Connection
+type_imap=IMAP Connection
+type_firewalld=FirewallD Server
+type_reboot=Reboot Required
 
 mon_virtualmin=Výstraha! Tento monitor je priradený k doméne Virtualmin $1, a preto by sa tu nemal upravovať ani mazať.
 mon_header2=Príkazy na spustenie
-mon_header3=Sledované možnosti služby
+mon_header5=Notification options
 mon_remotes2=Beží na hostiteľoch a skupinách
 mon_ontimeout=Ak monitor vyprší, spustite príkaz
 mon_eremote2=Webmin server $1 nebolo možné kontaktovať : $2 
@@ -58,6 +63,7 @@ mon_changes1=Zobraziť iba zmeny
 mon_all=Zobraziť všetky historické udalosti
 mon_nochanges=V posledných historických udalostiach $1 nedošlo k žiadnym zmenám stavu.
 
+sched_email_def=System default ($1)
 sched_pnone=Neodosielať stránky
 sched_warn3=Pokiaľ bude služba v prevádzke
 sched_eemailserver=Váš poštový server nie je nainštalovaný : $1 
@@ -358,3 +364,38 @@ ldap_pass=Heslo servera LDAP
 info_desc=Monitorovanie systému
 info_last=Súčasný stav
 info_title=Stav systému a servera
+
+smtp_host=SMTP server host
+smtp_port=SMTP server port
+smtp_ssl=Use SSL connection?
+smtp_ssl0=Plaintext only
+smtp_ssl1=Always SSL
+smtp_ssl2=Switch to SSL with STARTTLS
+smtp_from=Test SMTP sender
+smtp_none=None
+smtp_addr=Use address
+smtp_to=Test SMTP recipient
+smtp_ehost=Missing or unresolvable SMTP server host
+smtp_eport=Missing or non-numeric SMTP server port
+smtp_efrom=Sender address must be like user@domain.com
+smtp_eto=Recipient address must be like user@domain.com
+smtp_ok1=HELO command accepted
+smtp_ok2=Sender address accepted
+smtp_ok3=Recipient address accepted
+smtp_ok4=SMTP login accepted
+smtp_user=SMTP authentication
+smtp_user1=Don't login
+smtp_user0=Login as user
+smtp_pass=with password
+smtp_euser=Missing SMTP login
+
+imap_host=IMAP server host
+imap_port=IMAP server port
+imap_ssl=Use SSL connection?
+imap_user=IMAP login
+imap_pass=IMAP password
+imap_ehost=Missing or unresolvable IMAP server host
+imap_eport=Missing or non-numeric IMAP server port
+imap_euser=Missing IMAP login
+
+reboot_pkgs=Package updates require a reboot

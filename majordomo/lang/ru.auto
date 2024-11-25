@@ -7,8 +7,11 @@ index_info=Список информации
 index_mail=Почтовый адрес
 index_moderated=Модерируемый
 index_count=Количество пользователей
+
 global_saved=(Сохранены)
+
 create_minimum=Минимально необходимая информация
+
 check_title=Проверьте Majordomo Config
 check_test=Тест на. ..
 check_result=Результат / дополнительная проверка

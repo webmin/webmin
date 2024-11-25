@@ -10,6 +10,7 @@ index_applymsg3=Wees er zeker van dat uw configuratie correct is voordat u opnie
 index_return=kernels and partities
 index_earch=LILO word alleen ondersteund op x86 architectuur systemen
 index_econf=De LILO configuratie file $1 bestaat niet. Misschien word er een andere boot lader gebruikt op uw systeem.
+
 global_title=Globale Opties
 global_desc=Globale Boot Opties
 global_boot=Schrijf boot lader naar
@@ -32,8 +33,10 @@ global_any=Bij iedere boot
 global_secs=seconden
 global_lba=Booten toestaan vanaf 1024 cilinders?
 global_err=Mislukt om globale opties op te slaan
+
 apply_title=Toevoegen Configuratie
 apply_exec=Toevoegen van de LILO configuratie met de opdracht $1 ..
+
 image_title1=Maak Boot Kernel
 image_title2=Bewerk Boot Kernel
 image_options=Boot Kernel Opties
@@ -64,6 +67,7 @@ image_none=Niets
 image_ename=Ontbrekende naam voor deze boot kernel
 image_ekernel=Kernel image '$1' bestaat niet
 image_einitrd=Aanvankelijke ramdisk file '$1' bestaat niet
+
 other_title1=Maak Boot Partitie
 other_title2=Bewerk Boot Partitie
 other_details=Partitie Details
@@ -74,6 +78,7 @@ other_yes=Ja, van
 other_password=Boot wachtwoord
 other_none=Niets
 other_ename=Ontbrekende naam voor deze boot partitie
+
 log_create_image=Gemaakte boot kernel $1
 log_modify_image=Gemodificeerde boot kernel $1
 log_delete_image=Verwijderde boot kernel $1

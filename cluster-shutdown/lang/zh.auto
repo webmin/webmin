@@ -14,6 +14,7 @@ index_smtp=通过SMTP服务器发送
 index_this=该服务器
 index_nu=没有用户设置
 index_nl=登录失败
+
 shut_title=关闭服务器
 shut_rusure=您确定要立即关闭 $1所选服务器吗？
 shut_ok=是的，请动手
@@ -22,10 +23,12 @@ shut_failed=..失败了！ $1
 shut_done=..完成。
 shut_sel=选择的服务器是：
 shut_ecannot=您不可以关闭服务器
+
 reboot_title=重新启动服务器
 reboot_rusure=您确定要立即重新启动 $1所选服务器吗？
 reboot_doing=正在重新启动 $1 ..
 reboot_ecannot=您不允许重新启动服务器
+
 sched_err=无法设置自动服务器检查
 sched_eemail=电子邮件地址遗失
 sched_esmtp=缺少或无效的SMTP服务器

@@ -10,6 +10,7 @@ index_applymsg3=Uistite sa správnosťou konfigurácie pred reštartovaním!
 index_return=jadrá a partície
 index_earch=LILO je podporované len na architektúre X86
 index_econf=Konfiguračný súbor $1 LILO neexistuje. Pravdepodobne používate iný štartovací manažér.
+
 global_title=Globálne nastavenia
 global_desc=Globálne možnosti bootovania
 global_boot=Zapísať bootloader do
@@ -32,8 +33,10 @@ global_any=Akékoľvek bootovanie
 global_secs=sekúnd
 global_lba=Povoliť bootovanie za hranicou 1024 cylindrov?
 global_err=Zlyhalo uloženie globálnych možností bootovania
+
 apply_title=Uskutočniť zmeny
 apply_exec=Uskutočňujem zmeny v konfigurácii LILO pomocou príkazu $1 ..
+
 image_title1=Vytvoriť štartovacie jadro
 image_title2=Upraviť štartovacie jadro
 image_options=Možnosti bootovaného jadra
@@ -64,6 +67,7 @@ image_none=Žiadne
 image_ename=Chýbajúce meno pre toto jadro
 image_ekernel=Jadro '$1' neexistuje
 image_einitrd=Úvodný ramdisk súbor '$1' neexistuje
+
 other_title1=Vytvoriť štartovaciu partíciu
 other_title2=Upraviť štartovaciu partíciu
 other_details=Podrobnosti partície
@@ -74,6 +78,7 @@ other_yes=Áno, z
 other_password=Heslo pre štart
 other_none=Žiadny
 other_ename=Chýbajúce meno pre túto štartovaciu partíciu
+
 log_create_image=Vytvorené štartovacie jadro $1
 log_modify_image=Upravené štartovacie jadro $1
 log_delete_image=Zmazané štartovacie jadro $1

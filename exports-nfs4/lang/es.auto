@@ -1,0 +1,43 @@
+index_return_edit=edit exports
+index_delete=Delete Selected Exports
+index_disable=Disable Selected
+index_enable=Enable Selected
+index_vr=virtual root
+
+edit_vers=NFS Version
+edit_nfs_vers=NFS Version
+edit_pfs=NFSv4 Pseudofilesystem to export
+edit_ispfs=NFSv4 root
+edit_to_detail=(hosts and associated security flavors)
+edit_address=Address
+edit_prefix=/
+edit_subtree_check=Disable subtree checking?
+edit_hide=Hide the filesystem?
+edit_auth=(with or without Authentication)
+edit_sec=Security level
+edit_integrity=Integrity
+edit_privacy=Privacy (including Integrity)
+edit_v2opts=NFSv2-specific options
+edit_sync=Immediately sync all writes?
+edit_sync1=Yes
+edit_sync2=No
+edit_sync0=Default
+edit_in=Bind to
+
+save_eaddress='$1' is not a valid IPv6 address
+save_eprefix='$1' is not a valid IPv6 prefix
+save_pfs='$1' is already exported as a directory
+save_create_dir=Can't create the directory '$1'
+
+exports_gss=Authenticated network:&nbsp;$1
+
+log_delete_exports=Deleted $1 NFS exports
+
+alert_no_nfsv4root=No NFSv4 virtual root has been defined!\n You should first define a directory as being the NFSv4 root and then bind some directories under this root.
+
+hostsec_host=Host selection
+hostsec_flavors=Ordered list of security flavors allowed for this host
+hostsec_up=Up
+hostsec_down=Down
+hostsec_supported=Supported
+hostsec_enabled=Enabled

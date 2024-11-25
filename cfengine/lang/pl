@@ -4,6 +4,7 @@ index_editfiles2=Edytuj $1 plików
 index_grant=$index_admit
 index_grant2=$index_admit2
 index_files=Ustaw uprawnienia na $1
+
 edit_title=Edytuj ustawienia dla klasy
 edit_create1=Dodaj działanie i klasę
 edit_create2=Dodaj ustawienia dla klasy
@@ -140,6 +141,7 @@ edit_resother=Inne linie <tt>resolv.conf</tt>
 edit_route=Brama domyślna
 edit_reqfs=Sprawdź system plików
 edit_reqfree=Minimalna wolna przestrzeń
+
 section_groups=Definiowanie grup
 section_classes=$section_groups
 section_control_1=Opcje konfiguracyjne demona
@@ -157,6 +159,7 @@ section_admit=dozwolone katalogi
 section_grant=$section_admit
 section_required=Sprawdź systemów plików
 section_disks=$section_required
+
 cfd_title=Konfiguracja silnika daemona
 cfd_stop=Zatrzymaj Konfigurację silnika daemona
 cfd_stopdesc=Kliknij, aby zatrzymać konfigurację silnika daemona. Uniemożliwi to uruchomienie konfigurację na innych hostach tego serwera i zatrzyma skonfigurowany harmonogram (jeżeli włączony).
@@ -165,18 +168,23 @@ cfd_startdesc=Kliknij, aby uruchomić konfigurację silnika daemona. Pozwoli to 
 cfd_return=Opcje daemona
 cfd_none=Brak ustawień dla silnika konfiguracji, daemon został już utworzony.
 cfd_ecmd=Polecenie konfiguracji silnika daemon $1 nie zostało znalezione w systemie. Możliwe, że nie jest zainstalowane lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
+
 type_grant=$type_admit
 type_disks=$type_required
+
 stop_err=Nie udało się zatrzymać konfiguracji demona silnika
 stop_epids=Już nie działa
 stop_ekill=Nie udało się zabić procesu: $1
+
 start_err=Nie udało się uruchomić silnika konfiguracji demona
+
 hosts_hosts=Serwery w klastrze
 hosts_add=Dodaj serwer
 hosts_gadd=Dodaj serwery w grupie
 hosts_copy=Kopiuj i uruchom konfigurację
 hosts_opts=Opcje konfiguracji z systemem
 hosts_return=lista serwerów
+
 add_title=Dodaj serwery
 add_msg=Dodawanie $1 ..
 add_gmsg=Dodawanie serwerów w grupie $1 ..
@@ -186,6 +194,7 @@ add_echeck=Serwer $1 nie ma konfiguracji silnika modułu
 add_ecfengine=CFengine nie jest zainstalowany na serwerze $1
 add_ok=Dodano serwer $1 ($2 $3)
 add_eversion=CFengine na serwerze $1 jest w wersji $2, ale ten moduł Webmin wspiera tylko wersję $3
+
 host_title=Zarządzanie serwerem
 host_header=Szczegóły zarządzania serwerem CFengine
 host_name=Nazwa hosta
@@ -194,8 +203,10 @@ host_delete=Usuń z listy wybranych
 host_os=OS z Webmin
 host_cfg=Aktualna konfiguracja CFengine z $1
 host_ver=Wersja CFengine
+
 cluster_title=Uruchom Konfigurację silnika
 cluster_header=Uruchamianie silnika konfiguracji na wszystkich hostach w klastrze ..
 cluster_success=Dane wyjściowe Z cfengine na $1
 cluster_failed=Błąd uruchamiania CFengine na $1 : $2
+
 this_server=ten serwer

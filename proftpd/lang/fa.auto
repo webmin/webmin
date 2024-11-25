@@ -2,9 +2,26 @@ index_applymsg2=برای توقف تنظیمات فعلی با توقف و شر�
 index_stop=توقف سرور
 index_stopmsg=برای متوقف کردن سرور FTP روی این دکمه کلیک کنید ، که از اتصال هر مشتری جدید FTP جلوگیری می کند.
 index_proftpd=ProFTPd
+index_dlheader=Add Options
+index_dlmode=Add options for
+
+type_7=SSL Options
 
 mod_core_uid=UID
 mod_core_firstcdt=همیشه نشان می دهد
+
+mod_tls_engine=Enable SSL encryption?
+mod_tls_required=SSL required?
+mod_tls_ctrl=For control channel
+mod_tls_auth=For authentication
+mod_tls_authdata=For authentication and data
+mod_tls_file=SSL certificate file
+mod_tls_efile=SSL certificate file does not exist!
+mod_tls_key=SSL key file
+mod_tls_ekey=SSL key file does not exist!
+mod_tls_ca=SSL CA certificate file
+mod_tls_eca=SSL CA certificate file does not exist!
+mod_tls_none=None set
 
 stop_err=سرور FTP متوقف نشد
 stop_einetd=در حالت inetd نمی توانید سیم کارت سرور را متوقف کنید.
@@ -12,6 +29,8 @@ stop_erun=در حال اجرا نیست
 
 apply_err=پیکربندی FTP انجام نشد
 apply_egone=دیگر در حال اجرا نیست
+
+ftpindex_cmds=FTP commands
 
 proftpd_apply=تغغیرات را اعمال کن
 proftpd_stop=ProFTPd را متوقف کنید

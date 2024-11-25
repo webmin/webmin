@@ -8,14 +8,18 @@ index_info=리스트 정보
 index_mail=메일 주소
 index_moderated=검토 됨
 index_count=사용자 수
+
 global_saved=(저장)
+
 create_archive=보관 메일 링리스트?
 create_archiveyear=연간 파일에서
 create_archivemonth=월간 파일에서
 create_archiveday=매일 파일에서
 create_minimum=최소 필수 정보
+
 alias_err=별칭을 설정하지 못했습니다
 alias_eowner=소유자 이메일 주소가 없습니다
+
 check_title=Majordomo 구성 확인
 check_test=테스트. ..
 check_result=결과 / 추가 확인

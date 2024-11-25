@@ -9,6 +9,7 @@ index_applymsg2=現在の root デバイスのブート セクタに現在の設
 index_applymsg3=リブートする前に設定が正しいことを確認してください。
 index_return=カーネルとパーティション
 index_earch=LILO は x86 アーキテクチャ システムでのみサポートされます
+
 global_title=グローバル オプション
 global_desc=グローバル ブート オプション
 global_boot=ブート ローダを書込み
@@ -31,8 +32,10 @@ global_any=不特定でブート
 global_secs=秒
 global_lba=1024 シリンダを超える場合ブートを許可しますか？
 global_err=グローバル オプションを保存できませんでした
+
 apply_title=設定を適用
 apply_exec=LILO 設定をコマンド $1 で適用中..
+
 image_title1=ブート カーネルの作成
 image_title2=ブート カーネルの編集
 image_options=ブート カーネル オプション
@@ -63,6 +66,7 @@ image_none=なし
 image_ename=このブート カーネルの名前がありません
 image_ekernel=カーネル イメージ '$1' は存在しません
 image_einitrd=初期 ramdisk ファイル '$1' は存在しません
+
 other_title1=ブート パーティションの作成
 other_title2=ブート パーティションの編集
 other_details=パーティションの詳細
@@ -73,6 +77,7 @@ other_yes=はい、次から実行
 other_password=ブート パスワード
 other_none=なし
 other_ename=このブート パーティションの名前がありません
+
 log_create_image=ブート カーネル $1 を作成しました
 log_modify_image=ブート カーネル $1 を変更しました
 log_delete_image=ブート カーネル $1 を削除しました

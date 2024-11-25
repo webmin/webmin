@@ -5,7 +5,6 @@ index_desc=Monitorizando
 index_up=Estado
 index_last=Último chequeo
 index_local=Local
-index_add=Añadir monitor de tipo:
 index_sched=Monitorización Planificada
 index_scheddesc=Activar o desactivar el chequeo planificado de los monitores, e introducir la dirección a la cual se enviarán automáticamente los fallos por email.
 index_return=lista de servicios

@@ -42,7 +42,9 @@ index_emailto=Ja, til adresse
 index_email2=Vil du sende e-mail, når uploads er færdig?
 
 upload_title=Upload filer
+upload_direct=Write files directly to disk?
 upload_err=Kunne ikke uploade filer
+upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=Manglende mappe, der skal uploades til
 upload_euser=Manglende eller ugyldigt brugernavn
 upload_egroup=Manglende eller ugyldigt gruppenavn

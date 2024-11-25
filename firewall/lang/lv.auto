@@ -156,7 +156,7 @@ desc_args--match-set=$2 ir ietverts IP komplektā $1
 desc_src=avots
 desc_dest=galapunkts
 
-redhat_einstalled=Netika atrasta <tt>iptables (6)</tt> sāknēšanas darbība, norādot, ka jūsu sistēmā nav instalēta pakete IPtables.
+redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
 redhat_eoutput=Kļūda, iegūstot IPtable statusu no komandas $1, radās. Tas, iespējams, norāda, ka jūsu sistēma ir konfigurēta tā, lai IPtable vietā izmantotu IPchains.
 
 gentoo_escript=Gentoo IPtables starta skripts $1 jūsu sistēmā netika atrasts.

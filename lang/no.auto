@@ -2,6 +2,8 @@ or=eller
 help_efile3=Kunne ikke lese hjelpesiden $1 fra modulen $2
 help_einclude3=Kunne ikke inkludere hjelpeside $1
 
+password_euserpass=Invalid username or password
+
 ui_of=av
 
 log_email_by=$1 av $2

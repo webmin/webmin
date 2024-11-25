@@ -3,6 +3,7 @@ index_nojava=Ovaj modul zahtijeva da Java funkcionira, ali vaš preglednik ne po
 index_eremote=Ne postoji korisnik Unix-a koji odgovara Webmin prijavi $1.
 index_index=Vratite se na <a href='$1'>indeks webmin</a>.
 switch_euser=Unix korisnik ne postoji!
+
 top_ret=Indeks
 top_down=Uštedjeti
 top_preview=pregled
@@ -26,11 +27,13 @@ top_mount=montiranje
 top_search=Pronaći
 top_config=config
 top_efile=Nije odabrana nijedna datoteka
+
 right_name=Ime
 right_size=Veličina
 right_user=Korisnik
 right_group=Skupina
 right_date=Datum
+
 edit_enormal=Mogu se uređivati samo normalne datoteke
 edit_title=Uređivanje $1 
 edit_title2=Izrada datoteke
@@ -50,6 +53,7 @@ edit_notfound=Tekst $1 nije pronađen
 edit_saveclose=Spremi i zatvori
 edit_elength=Datoteka je skraćena!
 edit_textmode=Prebacite se na način jednostavnog teksta
+
 info_file=Datoteka
 info_path=Staza:
 info_type=Tip:
@@ -86,6 +90,7 @@ info_files=Ukupno datoteka:
 info_dirs=Ukupno imenika:
 info_getsize=Dobivanje veličine
 info_esize=Dobivanje veličina : $1 
+
 eacl_eacls=Pročitavanje ACL-ova nije uspjelo : $1 
 eacl_acltype=Vrsta ACL-a
 eacl_aclname=Prijaviti se
@@ -104,6 +109,7 @@ eacl_edefmask=Može postojati najviše jedan zadani ACL unos maske
 eacl_title=ACL za $1 
 eacl_owner=Vlasnik datoteke
 eacl_edefaults=Ako datoteka ima zadani ACL, mora imati zadani korisnik, grupu i druge ACL-ove.
+
 acltype_user=Korisnik
 acltype_group=Skupina
 acltype_other=Drugi
@@ -112,6 +118,7 @@ acltype_default_user=Zadani korisnik
 acltype_default_group=Zadana grupa
 acltype_default_other=Zadani drugi
 acltype_default_mask=Zadana maska
+
 delete_mtitle=Izbrišite više datoteka
 delete_dtitle=Izbriši direktorij
 delete_ftitle=Izbrisati dateoteku
@@ -119,11 +126,13 @@ delete_ddesc=Jeste li sigurni da želite trajno izbrisati imenik $1 i sav njegov
 delete_fdesc=Jeste li sigurni da želite trajno izbrisati datoteku $1 ?
 delete_mdesc=Jeste li sigurni da želite trajno izbrisati ove datoteke i mape?  :
 delete_efailed=Brisanje $1 : $2 nije uspjelo
+
 mkdir_title=Nova mapa
 mkdir_dir=Novi imenik:
 mkdir_eexists=$1 već postoji
 mkdir_efailed=Izrada direktorija nije uspjela : $1 
 mkdir_eaccess=Nije vam dopušteno stvaranje "$1"
+
 link_title=Stvorite vezu
 link_from=Link od:
 link_to=Poveznica za:
@@ -132,6 +141,7 @@ link_efrom=Izvor veze mora biti apsolutni put
 link_efailed=Veza nije uspjela : $1 
 link_efrom2=Nije vam dopušteno povezivanje s "$1"
 link_efollow=Nije vam dopušteno stvaranje simbola
+
 rename_title=Preimenovanje $1 
 rename_old=Staro ime:
 rename_new=Novo ime:
@@ -141,6 +151,7 @@ rename_eslash=Novo ime datoteke $1 sadrži /
 rename_efailed=Preimenovanje nije uspjelo : $1 
 rename_eold=Ne smijete preimenovati '$1'
 rename_enew=Ne možete preimenovati u "$1"
+
 file_type0=Imenik
 file_type1=Tekstualna datoteka
 file_type2=Datoteka slika
@@ -149,26 +160,31 @@ file_type4=Datoteka
 file_type5=Simbolična veza
 file_type6=Datoteka uređaja
 file_type7=Cijev
+
 view_enormal=Mogu se pregledavati samo normalne datoteke
 view_enormal2=Preuzimaju se samo uobičajene datoteke
 view_eaccess=Nije vam dopušten pristup $1 
 view_eopen=Otvaranje $1 : $2 nije uspjelo
+
 view_edir=Arhiva se može stvoriti samo za direktorij
 view_ecmd=Naredba $1 potrebna za stvaranje arhive nije instalirana
 view_ecomp=Izrada arhive nije uspjela : $1 
 view_earchive=Ne možete preuzimati arhive
 view_earchmax=Odabrani direktorij je veći od maksimalno dopuštenog za arhiviranje ($1 bajta)
 view_epathinfo=Put sadrži nevažeće znakove
+
 paste_ecopy=Prije lijepljenja morate izrezati ili kopirati
 paste_egone=Kopirana datoteka $1 više ne postoji
 paste_eover=$1 se ne može prebrisati
 paste_eself=Ne možete zalijepiti datoteku preko sebe
 paste_emfailed=Premještaj nije uspio : $1 
 paste_ecfailed=Kopija nije uspjela : $1 
+
 over_title=Dokument postoji
 over_msg=Datoteka $1 već postoji. Upotrijebite polje u nastavku da biste unijeli novo ime datoteke za zalijepljenu datoteku.
 over_new=Novo ime datoteke:
 over_ok=U redu
+
 upload_efailed=Prijenos nije uspio : $1 
 upload_title=Prijenos datoteke
 upload_file=Datoteka za prijenos
@@ -185,9 +201,11 @@ upload_elink=Prijenos na simboličku vezu nije moguće
 upload_zip=Prestanite komprimirati ZIP ili TAR datoteku?
 upload_yes=Da, onda izbrišite
 upload_user=Prijenos kao korisnik
+
 find_eaccess=Nije vam dopušten pristup $1 
 find_eexist=$1 ne postoji u $2 
 find_edir=$1 nije direktorij u $2 
+
 cancel=Otkazati
 close=Zatvoriti
 eopen=Preuzimanje nije uspjelo : $1 
@@ -198,15 +216,20 @@ chmod_elink=simbol veze nije uspio : $1
 chmod_echown=chown nije uspio : $1 
 chmod_echmod=chmod nije uspio : $1 
 chmod_efollow=Nije vam dopušteno uređivanje simboličkih veza
+
 copy_efrom=Ne smijete kopirati s '$1'
 copy_eto=Nije vam dopušteno kopiranje na '$1'
 copy_elink=simbol veze nije uspio : $1 
+
 delete_eaccess=Ne smijete izbrisati '$1'
 delete_eroot=Imenik "$1" jedan je od onih na koje ste ograničeni i ne može se izbrisati
+
 list_eaccess=Nije vam dopušteno pristupiti ovom direktoriju
 list_edir=Nije uspjelo popis $1 : $2 
+
 move_eto=Ne smijete preći na "$1"
 move_afrom=Ne možete premjestiti "$1"
+
 acl_user=Pristupite datotekama na poslužitelju kao korisniku
 acl_user_def=Isto kao i Webmin prijava
 acl_umask=Umask za nove datoteke
@@ -252,6 +275,7 @@ acl_noperms=Mogu li promijeniti dopuštenja datoteka?
 acl_nousers=Mogu li promijeniti vlasništvo datoteke?
 acl_filesystems=Mogu li vidjeti točke montiranja datotečnog sustava?
 acl_contents=Želite li omogućiti pretraživanje sadržaja datoteke?
+
 share_title=Dijeljenje
 share_samba=Windows
 share_nfs=NFS
@@ -280,6 +304,7 @@ share_s1=Ne vjerujte u korijen
 share_s2=Vjerujte svima
 share_lro=Samo za čitanje
 share_lrw=Čitanje i pisanje
+
 log_create_export=Izrađen izvoz NFS $1 
 log_modify_export=Izmijenjeni izvoz NFS $1 
 log_delete_export=Izbrisan NFS izvoz $1 
@@ -297,6 +322,7 @@ log_move=Premještena je datoteka $1 u $2
 log_delete=Izbrisana datoteka $1 
 log_attr=Postavljanje atributa u datoteci $1 
 log_acl=Postavite ACL u datoteku $1 
+
 search_eaccess=Nije vam dopušteno pretraživati ovaj direktorij
 search_title=Pronađite datoteke
 search_ok=Pretražite sada
@@ -325,7 +351,9 @@ search_crit=Kriterij pretrage
 search_list=Rezultati pretraživanja
 search_down=preuzimanje datoteka
 search_edown=Nije odabrana datoteka rezultata pretraživanja za preuzimanje
+
 facl_eaccess=Ne možete postaviti ACL-ove za ovu datoteku
+
 attr_eattrs=Nije uspjelo dobiti atribute : $1 
 attr_efs=Datotečni sustav $1 ne podržava atribute
 attr_add=Dodavanje atributa
@@ -336,11 +364,13 @@ attr_title=Atributi datoteka za $1
 attr_create=Dodavanje atributa
 attr_edit=Uređivanje atributa
 attr_ename=Nedostaje naziv atributa
+
 ext_eattrs=Nije uspjelo dobiti atribute EXT : $1 
 ext_efs=Datotečni sustav $1 ne podržava atribute EXT
 ext_title=EXT atributi za $1 
 ext_header=EXT atributi datoteka
 ext_efailed=Nije uspjelo postavljanje atributa za $1 : $2 
+
 eattr_A=Ne ažurirajte vrijeme pristupa
 eattr_a=Datoteku se može dodati samo
 eattr_c=Stisnite podatke na disk
@@ -349,6 +379,7 @@ eattr_i=Ne dopustite izmjene
 eattr_s=Nulta blokada prilikom brisanja
 eattr_S=Uvijek sinkronizirajte nakon pisanja
 eattr_u=Spremite sadržaj za poništavanje brisanja
+
 mount_eaccess=Nije vam dopušteno montirati datotečne sustave
 mount_efstab=Na ovom mjestu montiranja ne postoji datotečni sustav
 mount_epoint=$1 nije točka montiranja
@@ -358,18 +389,22 @@ mount_err1=Montiranje $1 : $2 nije uspjelo
 mount_err2=Deinstaliranje $1 : $2 nije uspjelo
 mount_title1=Montirajte datotečni sustav
 mount_title2=Isključi datotečni sustav
+
 zip_err=Nije moguće izdvojiti datoteku : $1 
 zip_ecmd=Nedostaje naredba $1 
 zip_eunzip=Poništivanje nije uspjelo : $1 
 zip_ename=Čini se da nije datoteka zip, tar ili tar.gz
 zip_euntar=Poništavanje tar-a nije uspjelo : $1 
 zip_euntar2=Otpakivanje i uklanjanje katrana nije uspjelo : $1 
+
 ddir_title=Preuzmite direktorij
 ddir_rusure=Da biste preuzeli sadržaj $1 kao arhivsku datoteku, kliknite jedan od gumba vrste arhive u nastavku.
 ddir_zip=poštanski
 ddir_tgz=tar.gz
 ddir_tar=KATRAN
+
 ebutton=Ova značajka nije dostupna
+
 preview_etype=Vrsta datoteke nije uspjela za $1 
 preview_etype2=$1 nije u podržanom formatu slike
 preview_ecmd=Naredba $1 potrebna za skaliranje ove slike nije instalirana
@@ -377,14 +412,17 @@ preview_eimage=Mogu se pregledati samo slike
 preview_title=Pregled $1 
 preview_bad=Učitavanje slike nije moguće
 preview_egd=Učitavanje slike s GD-om nije uspjelo
+
 html_efailed=Otvaranje HTML uređivača nije uspjelo : $1 
 html_title=Uredi HTML datoteku
 html_title2=Stvorite HTML datoteku
 html_save=Spremi i zatvori
 html_err=Spremanje HTML datoteke nije uspjelo
+
 history_title=Povijest puta
 history_ok=Ići
 history_button=Povijest
+
 extract_etype=Izvaditi mogu samo datoteke
 extract_title=Izdvajanje komprimirane datoteke
 extract_rusure=Jeste li sigurni da želite izdvojiti komprimiranu datoteku :

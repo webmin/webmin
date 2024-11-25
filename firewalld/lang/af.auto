@@ -45,6 +45,7 @@ index_restart_firewallddesc=Herlaai die FirewallD-bediener en pas die reëls toe
 index_listrules_restartdesc=Lys besonderhede oor bestaande ryk en direkte FirewallD-reëls in $1-sone.
 index_dependent=Kon nie $1 afhanklike diens herbegin nie
 index_manual=Wysig konfigurasielêers.
+index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=Wysig konfigurasielêers
 manual_editsel=Wysig FirewallD-konfigurasielêer

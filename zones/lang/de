@@ -69,6 +69,7 @@ reboot_title=Zone neu starten
 reboot_rusure=Sind Sie sicher, dass Sie die Zone $1 neu starten möchten? Alle darin laufenden Prozesse werden neu gestartet.
 reboot_err=Fehler beim Neustart der Zone
 reboot_doing=Zone wird jetzt neu gestartet ..
+
 reboot_failed=.. fehlgeschlagen:
 reboot_ok=.. abgeschlossen.
 
@@ -80,7 +81,6 @@ halt_doing=Zone wird jetzt heruntergefahren ..
 boot_title=Zone starten
 boot_err=Fehler beim Starten der Zone
 boot_doing=Zone wird jetzt gestartet ..
-
 delete_title=Zone löschen
 delete_rusure=Sind Sie sicher, dass Sie die Zone $1 löschen möchten? Alle Dateien in ihren privaten Dateisystemen gehen verloren.
 delete_err=Fehler beim Löschen der Zone
@@ -93,7 +93,6 @@ uninstall_doing=System wird jetzt aus der Zone deinstalliert ..
 
 install_title=System installieren
 install_doing=System wird jetzt in der Zone installiert ..
-
 net_title1=Netzwerkschnittstelle erstellen
 net_title2=Netzwerkschnittstelle bearbeiten
 net_header=Details der virtuellen Zonenschnittstelle

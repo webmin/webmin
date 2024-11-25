@@ -3,3 +3,5 @@ index_memswap=Ruimte ruilen:
 index_memburst=Burstable geheugen:
 index_memtf=$1 totaal / $2 gratis
 index_memtfc=$1 totaal / $2 vrij / $3 in cache
+index_core=$1 core
+index_cores=$1 cores

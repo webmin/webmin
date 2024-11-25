@@ -5,6 +5,8 @@ index_suse=Perl-paketet <tt>perl-IO-Tty</tt> saknas och bör installeras manuell
 index_euser=Fel: Användaren $1 kan inte köra skalet eftersom det inte finns!
 index_connecting=Ansluter ..
 index_missing=Perl-modulen <tt>$1</tt> saknas. Du måste kontakta din administratör för att lösa problemet.
+index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Kör skal som Unix-användare
 acl_sameuser=Samma som Webmin-inloggning
+acl_sudoenforce=Enforce <em>sudo</em>-only privileges

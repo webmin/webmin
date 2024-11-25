@@ -9,9 +9,11 @@ index_return=arbol de uso
 index_dir=Directorio
 index_total=Total
 index_files=Archivos
+
 run_title=Recoger Uso
 run_doing=Recogiendo uso de disco ..
 run_done=.. hecho
+
 sched_title=Recogida Planificada
 sched_header=Opciones de recogida planificada de datos de uso de disco
 sched_enabled=¿Recogida planificada habilitada?

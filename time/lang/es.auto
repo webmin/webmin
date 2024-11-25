@@ -8,6 +8,7 @@ index_tabsync2=Ejecute el servicio del sistema <tt>$1</tt> para sincronización
 index_desctime=Este formulario es para cambiar la hora actual del sistema, que es utilizada por todos los procesos en ejecución. En los sistemas operativos que tienen un reloj de hardware separado, también se puede usar para configurarlo.
 index_desczone=Este formulario le permite establecer la zona horaria predeterminada del sistema, que se utiliza para convertir la hora del sistema a un formato y desplazamiento legibles por el ser humano.
 index_descsync=Este formulario es para configurar el sistema para sincronizar automáticamente la hora con un servidor remoto. La sincronización se realizará mediante el protocolo Unix <tt>time</tt> o NTP, según los comandos que estén instalados y el soporte del sistema remoto.
+index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 minute=Minuto
 second=Segundo

@@ -9,4 +9,3 @@ index_eproxy=Das Terminal-Modul kann nicht verwendet werden, wenn auf Webmin üb
 
 acl_user=Shell als Unix-Benutzer ausführen
 acl_sameuser=Gleich wie Webmin-Anmeldung
-acl_sudoenforce<S> Sudo-Only-Berechtigungen durchsetzen

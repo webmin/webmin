@@ -45,6 +45,7 @@ index_restart_firewallddesc=FirewallDサーバーをリロードし、永続的�
 index_listrules_restartdesc=$1ゾーンにある既存のリッチおよびダイレクトFirewallDルールに関する詳細を一覧表示します。
 index_dependent=$1 依存サービスの再起動に失敗しました
 index_manual=設定ファイルを編集します。
+index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=設定ファイルの編集
 manual_editsel=FirewallD 構成ファイルを編集する

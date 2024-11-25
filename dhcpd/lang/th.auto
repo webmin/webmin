@@ -14,6 +14,7 @@ index_memb=สมาชิก $1
 index_hst=โฮสต์และกลุ่มโฮสต์
 index_nohst=ไม่มีการกำหนดโฮสต์หรือกลุ่ม
 index_hostgroup=โฮสต์/กลุ่ม
+index_comment=Description
 index_parent=ผู้ปกครอง
 index_hardware=ที่อยู่ฮาร์ดแวร์
 index_group=กลุ่ม:

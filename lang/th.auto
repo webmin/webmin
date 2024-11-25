@@ -147,6 +147,7 @@ password_done=รหัสผ่านของคุณถูกเปลี่
 password_err=ไม่สามารถเปลี่ยนรหัสผ่าน
 password_euser=ไม่พบชื่อเข้าสู่ระบบของคุณในไฟล์รหัสผ่าน!
 password_eold=รหัสผ่านปัจจุบันไม่ถูกต้อง
+password_euserpass=Invalid username or password
 password_enew1=ไม่มีการป้อนรหัสผ่านใหม่
 password_enew2=รหัสผ่านใหม่ของคุณไม่ตรงกัน
 password_epam=ข้อผิดพลาดของ PAM : $1

@@ -5,6 +5,8 @@ index_suse=<tt>Perl-IO-Tty</tt> Perl paketi eksik ve önce <a href='$2' target='
 index_euser=Hata : $1 kullanıcısı, mevcut olmadığı için kabuğu çalıştıramıyor!
 index_connecting=Bağlanıyor ..
 index_missing=<tt>$1</tt> Perl modülü eksik. Bu sorunu çözmek için yöneticinizle iletişime geçmeniz gerekir.
+index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Shell'i Unix kullanıcısı olarak çalıştırın
 acl_sameuser=Webmin oturum açma ile aynı
+acl_sudoenforce=Enforce <em>sudo</em>-only privileges

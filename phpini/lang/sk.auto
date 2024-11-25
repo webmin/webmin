@@ -152,6 +152,32 @@ misc_path=Informácie o ceste CGI?
 misc_timezone=Časové pásmo PHP
 misc_charset=Predvolená sada znakov
 
+disable_title=Disabled Features
+disable_header=Disabled PHP functions and features
+disable_funcs=Disabled functions
+disable_exec=exec (Execute command)
+disable_passthru=passthru (Execute command and display output)
+disable_shell_exec=shell_exec (Execute command via shell)
+disable_system=system (Execute command and display output)
+disable_proc_open=proc_open (Execute command and capture input and output)
+disable_popen=popen (Open pipe to executed command)
+disable_curl_exec=curl_exec (Execute a URL download session)
+disable_curl_multi_exec=curl_multi_exec (Execute multiple URL download sessions)
+disable_parse_ini_file=parse_ini_file (Read PHP INI file)
+disable_show_source=show_source (Output file with PHP syntax highlighting)
+disable_mail=mail (Send email)
+disable_leftover=Other functions:
+disable_err=Failed to save disabled features
+disable_classes=Disabled built-in classes
+
+mods_title=PHP Modules
+mods_edir=Could not find PHP modules directory!
+mods_ecannot=You are not allowed to edit enabled PHP modules
+mods_desc=This page can be used to globally enable and disable PHP modules for all users on this system.
+mods_enabled=Enabled?
+mods_name=Module name
+mods_file=Config file
+
 log_manual=Ručne upravte súbor $1 
 log_vars=Zmenené premenné PHP v $1 
 log_dirs=Zmenené nastavenia adresára v $1 
@@ -161,6 +187,7 @@ log_safe=Zmenené možnosti núdzového režimu v $1
 log_limits=Zmenené limity zdrojov v $1 
 log_errors=Zmenené protokolovanie chýb v $1 
 log_misc=Ostatné nastavenia boli zmenené v $1 
+log_mods=Updated enabled modules in $1
 
 acl_global=Môžete upraviť globálnu konfiguráciu PHP?
 acl_anyfile=Môžete upravovať ľubovoľný súbor ako konfiguráciu PHP?

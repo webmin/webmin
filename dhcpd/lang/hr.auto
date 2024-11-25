@@ -14,6 +14,7 @@ index_memb=$1 članova
 index_hst=Domaćini i grupe domaćina
 index_nohst=Nisu definirani domaćini ili grupe.
 index_hostgroup=Domaćin/Grupa
+index_comment=Description
 index_parent=Roditelj
 index_hardware=Adresa hardvera
 index_group=Skupina:

@@ -37,6 +37,7 @@ index_notify=Send e-mail til Webmin-handlinger?
 index_notify_mods=Til handlinger i moduler
 index_notify_users=Til handlinger fra brugere
 index_notify_email=Send e-mail til
+index_notify_email_def=Default notification address
 index_notify_usub=Vil du inkludere brugernavn i e-mail-emnet?
 index_notify_msub=Vil du inkludere handling i e-mail-emnet?
 index_searchtab=Søg i logs
@@ -45,8 +46,7 @@ index_searchdesc=Denne formular kan bruges til at søge efter Webmin-handlinger 
 index_notifydesc=Brug denne formular til at konfigurere e-mail-meddelelser, når Webmin-handlinger udføres af udvalgte brugere eller i valgte moduler.
 
 search_title=Søgeresultater
-search_date=Dato
-search_time=Tid
+search_datetime=Date and time
 search_user=Bruger
 search_host=Klientadresse
 search_webmin=Webmin Server

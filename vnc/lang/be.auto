@@ -1,0 +1,6 @@
+index_title=VNC Client
+index_warn=Warning! This VNC session is <b>not</b> encrypted.
+index_nojava=This module requires java to function, but your browser does not support java
+index_credits=VNC client applet created by AT&amp;T. See <a href=http://www.uk.research.att.com/vnc>http://www.uk.research.att.com/vnc</a> for more information.
+index_esocket=There is no VNC server running on $1 port $2.
+index_ecmd=The VNC server program $1 needed for running a specific program is not installed.

@@ -1,3 +1,4 @@
+index_madd=Add monitor of type
 index_refsel=Actualizar seleccionado
 index_group=Miembros de $1 
 index_tmpls=Editar plantillas de correo electrónico
@@ -15,10 +16,14 @@ type_alive=Sistema vivo
 type_rssh=SSH remoto
 type_slapd=Servidor LDAP
 type_ldap=Conexión LDAP
+type_smtp=SMTP Connection
+type_imap=IMAP Connection
+type_firewalld=FirewallD Server
+type_reboot=Reboot Required
 
 mon_virtualmin=¡Advertencia! Este monitor está asociado con el dominio de Virtualmin $1, por lo que no debe editarse ni eliminarse aquí.
 mon_header2=Comandos para ejecutar
-mon_header3=Opciones de servicio monitoreadas
+mon_header5=Notification options
 mon_remotes2=Ejecutar en hosts y grupos
 mon_ontimeout=Si el monitor agota el tiempo de espera, ejecute el comando
 mon_eremote2=No se pudo contactar al servidor Webmin $1 : $2 
@@ -41,6 +46,7 @@ mon_changes1=Mostrar solo cambios
 mon_all=Mostrar todos los eventos históricos
 mon_nochanges=No se produjeron cambios de estado en los últimos $1 eventos históricos.
 
+sched_email_def=System default ($1)
 sched_pnone=No envíes paginas
 sched_warn3=Mientras el servicio esté activo
 sched_eemailserver=Su servidor de correo no está instalado : $1 
@@ -265,3 +271,38 @@ ldap_pass=Contraseña del servidor LDAP
 info_desc=Monitor del sistema
 info_last=Estado actual
 info_title=Sistema y estado del servidor
+
+smtp_host=SMTP server host
+smtp_port=SMTP server port
+smtp_ssl=Use SSL connection?
+smtp_ssl0=Plaintext only
+smtp_ssl1=Always SSL
+smtp_ssl2=Switch to SSL with STARTTLS
+smtp_from=Test SMTP sender
+smtp_none=None
+smtp_addr=Use address
+smtp_to=Test SMTP recipient
+smtp_ehost=Missing or unresolvable SMTP server host
+smtp_eport=Missing or non-numeric SMTP server port
+smtp_efrom=Sender address must be like user@domain.com
+smtp_eto=Recipient address must be like user@domain.com
+smtp_ok1=HELO command accepted
+smtp_ok2=Sender address accepted
+smtp_ok3=Recipient address accepted
+smtp_ok4=SMTP login accepted
+smtp_user=SMTP authentication
+smtp_user1=Don't login
+smtp_user0=Login as user
+smtp_pass=with password
+smtp_euser=Missing SMTP login
+
+imap_host=IMAP server host
+imap_port=IMAP server port
+imap_ssl=Use SSL connection?
+imap_user=IMAP login
+imap_pass=IMAP password
+imap_ehost=Missing or unresolvable IMAP server host
+imap_eport=Missing or non-numeric IMAP server port
+imap_euser=Missing IMAP login
+
+reboot_pkgs=Package updates require a reboot

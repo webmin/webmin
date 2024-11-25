@@ -27,6 +27,8 @@ index_global=التكوين العام
 index_create=إنشاء خادم افتراضي
 index_version=إصدار ProFTPd$1
 index_proftpd=ProFTPd
+index_dlheader=Add Options
+index_dlmode=Add options for
 
 efailed=فشل في حفظ$1
 
@@ -37,6 +39,7 @@ type_3=صلاحية التحكم صلاحية الدخول
 type_4=متنوع
 type_5=المستخدم والمجموعة
 type_6=المصادقة
+type_7=SSL Options
 
 virt_title=خيارات الخادم الظاهري
 virt_header1=ل 1
@@ -380,6 +383,19 @@ mod_readme_display=إعلام المستخدم بملفات التمهيدي ا�
 mod_readme_none=لا يوجد
 mod_readme_edisplay=نمط ملفات المستند التمهيدي مفقود
 
+mod_tls_engine=Enable SSL encryption?
+mod_tls_required=SSL required?
+mod_tls_ctrl=For control channel
+mod_tls_auth=For authentication
+mod_tls_authdata=For authentication and data
+mod_tls_file=SSL certificate file
+mod_tls_efile=SSL certificate file does not exist!
+mod_tls_key=SSL key file
+mod_tls_ekey=SSL key file does not exist!
+mod_tls_ca=SSL CA certificate file
+mod_tls_eca=SSL CA certificate file does not exist!
+mod_tls_none=None set
+
 start_err=فشل بدء تشغيل خادم FTP
 start_einetd=لا يمكنك بدء البرنامج الخفي للخادم عندما تكون في وضع inetd.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=إضافة خيارات لكل أمر لـ ..
 ftpindex_header2=$1 في$2
 ftpindex_return=ملف خيارات لكل دليل
 ftpindex_header=ل 1
+ftpindex_cmds=FTP commands
 
 find_err=فشل في العثور على ملفات الخيارات
 find_eanon=لم يتم إعداد FTP المجهول في أي خادم ظاهري

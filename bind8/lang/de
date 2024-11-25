@@ -849,7 +849,6 @@ findfree_header=In $1
 findfree_sopt=Suchoptionen
 findfree_fromip=Von IP-Adresse
 findfree_toip=Bis IP-Adresse
-findfree_cf<em>freeXXX</em> Hostnamen als freie IP-Adressen betrachten?
 findfree_search=Suche
 findfree_msg=Gefundene $1 freie IP-Adressen
 findfree_msg2=(davon $1 wie <i>freeXXX</i>, $2 wie <i>freemac</i>)

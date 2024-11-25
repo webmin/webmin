@@ -18,8 +18,6 @@ index_wall=Z ktoréhokoľvek serveru Webmina
 index_whost=Zo serveru
 
 search_title=Výsledky vyhľadávania
-search_date=Dátum
-search_time=Čas
 search_user=Užívateľ
 search_host=Adresa klienta
 search_webmin=Server Webmina

@@ -14,6 +14,7 @@ index_smtp=Enviar mitjançant servidor SMTP
 index_this=Aquest servidor
 index_nu=No s'ha definit cap usuari
 index_nl=Error a l'iniciar sessió
+
 shut_title=Servidors d'apagada
 shut_rusure=Esteu segur que voleu tancar immediatament els servidors seleccionats $1 ?
 shut_ok=Sí, fes-ho
@@ -22,10 +23,12 @@ shut_failed=.. fracassat! $1
 shut_done=.. fet.
 shut_sel=Els servidors seleccionats són :
 shut_ecannot=No teniu permès d'apagar els servidors
+
 reboot_title=Reinicieu els servidors
 reboot_rusure=Esteu segur que voleu reiniciar immediatament els servidors seleccionats $1 ?
 reboot_doing=S'ha reiniciat $1.
 reboot_ecannot=No teniu permís de reiniciar servidors
+
 sched_err=No s'ha pogut configurar la verificació automàtica del servidor
 sched_eemail=Falta una adreça de correu electrònic
 sched_esmtp=Falta el servidor SMTP no vàlid

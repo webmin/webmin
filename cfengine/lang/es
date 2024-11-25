@@ -51,6 +51,7 @@ index_required=Revisar sistema de archivos $1
 index_required2=Revisar $1 sistemas de archivo
 index_disks=$index_required
 index_disks2=$index_required2
+
 edit_title=Editar valores para Clase
 edit_create1=Añadir Acción y Clase
 edit_create2=Añadir Valores para Clase
@@ -192,6 +193,7 @@ edit_resother=Otras líneas <tt>resolv.conf</tt>
 edit_route=Pasarela por defecto
 edit_reqfs=Sistema de archivos a revisar
 edit_reqfree=Mínimo espacio libre
+
 save_err=No pude salvar clase
 save_eclass=Nombre de clase falta o es inválido
 save_elinkfrom='Desde' para enlace simbólico $1 falta o es inválido
@@ -254,6 +256,7 @@ save_emiscmode=Opciones de montaje para $1 inválidas
 save_eroute=Pasarela por defecto falta o es inválida
 save_ereq=Sistema de archivos a revisar $1 inválido
 save_ereqfree=Espacio libre mínimo para $1 falta o es inválido
+
 section_groups=Definir grupos
 section_classes=$section_groups
 section_control_0=Control maestro
@@ -281,6 +284,7 @@ section_grant=$section_admit
 section_deny=Directorios denegados
 section_required=Revisar Sistemas de archivo
 section_disks=$section_required
+
 run_title=Ejecutar Motor de Configuración
 run_desc=Esta página puede ser usada para ejecutar el Motor de Configuración de esta máquina. Al ejecutarse, todas las acciones que hayas configurado será llevadas a cabo cuando sea necesario.
 run_header=Opciones para ejecutar CFengine en esta máquina
@@ -293,6 +297,7 @@ run_nolinks=¿Puede crear enlaces simbólicos?
 run_verbose=¿Muestro salida detallada?
 run_exec=Ejecutando comando $1...
 run_ok=Ejecutar Ahora
+
 cfd_title=Daemon de Motor de Configuración
 cfd_stop=Parar Daemon de Motor de Configuración
 cfd_stopdesc=Haz click en este botón para parar el daemon del Motor de Configuración que se está ejecutando. Esto prevendrá que otras máquinas puedan ejecutar la configuración en este servidor y parará la planificación que se esté ejecutando de la configuración.
@@ -301,6 +306,7 @@ cfd_startdesc=Haz click en este botón para arrancar el daemon del Motor de Conf
 cfd_return=opciones de daemon
 cfd_none=Aún no se han puesto valores para el daemon del Motor de Configuración.
 cfd_ecmd=El comando $1 del daemon del Motor de Configuración no fue hallado en tu sistema. Quizás no está instalado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
+
 push_title=Máquinas de Configuración Remota
 push_header=Opciones de distribución del servidor de configuración
 push_domain=Nombre de dominio
@@ -317,6 +323,7 @@ push_return=máquinas de configuración remota
 push_title2=Ejecutar Configuraciones de Máquina
 push_exec=Ejecutando configuraciones de máquina mediante el comando $1...
 push_ecmd=El comando $1 de ejecución remota del Motor de Configuración no fue hallado en tu sistema. Quizás no está instalado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
+
 type_control_0=El campo de abajo lista las acciones que se realizan cuando el motor de configuración se ejecuta, en el orden en que se ejecutará cada una. Aquellas acciones que no estén listadas no serán procesadas, incluso si aparecen listadas en la página principal.
 type_control_1=Las opciones de abajo controlan el comportamiento global del proceso en segundo plano que acepta requerimientos para ejecutar la configuración en esta máquina al ser requerido por una máquina remota o en una lista fija.
 type_directories=Los directorios listados debajo serán creados con la propiedad y permisos dados si no existen. Los campos de propietario, grupo y permisos son opcionales.
@@ -338,10 +345,13 @@ type_resolve=Las direcciones IP del servidor DNS que digites debajo serán usada
 type_defaultroute=Al ejecutar esta acción, el motor de configuración revisará la ruta por defecto en curso contra la pasarela especificada debajo.
 type_required=Los sistemas de archivo listados debajo serán revisados al ejecutar esta acción para verificar que están montados y, si no, mostrar un mensaje de aviso. Cada sistema de archivos será revisado también para ver si su espacio libre ha caído por debajo del mínimo puesto, si hay.
 type_disks=$type_required
+
 stop_err=No pude parar el daemon del Motor de Configuración
 stop_epids=Ya no está en ejecución
 stop_ekill=No pude matar proceso: $1
+
 start_err=No pude arrancar daemon del Motor de Configuración
+
 log_create_section=Creada acción $1 y clase
 log_create_class=Añadida clase a acción $1
 log_modify_class=Modificada clase en acción $1
@@ -352,6 +362,7 @@ log_start=Daemon arrancado
 log_stop=Daemon parado
 log_push=Cambiadas máquinas de configuración remota
 log_prun=Configuraciones de máquina ejecutadas
+
 hosts_title=Clúster de CFengine de Webmin
 hosts_hosts=Servidores en Clúster
 hosts_nohosts=No se han definido aún servidores Webmin ejecutando CFengine.
@@ -363,6 +374,7 @@ hosts_rundesc=Haz click en este botón para ejecutar el Motor de Configuración 
 hosts_copydesc=Haz click en este botón para copiar la configuración de CFengine de este servidor a todos los servidores de arriba y ejecutarla inmediátamente.
 hosts_opts=Opciones para ejecutar configuraciones
 hosts_return=lista de servidores
+
 add_title=Añadir Servidores
 add_msg=Añadiendo $1
 add_gmsg=Añadiendo servidores en grupo $1...
@@ -372,6 +384,7 @@ add_echeck=El servidor $1 no tiene el módulo del motor de configuración
 add_ecfengine=CFengine no está instalado en el servidor $1
 add_ok=Añadido servidor $1 ($2 $3)
 add_eversion=El CFengine en servidor $1 es de la versión $2, pero este módulo de Webmin sólo soporta las versiones $3 .
+
 host_title=Servidor Gestionado
 host_header=Detalles del servidor CFengine gestionado
 host_name=Nombre de máquina
@@ -380,8 +393,10 @@ host_delete=Quitar de lista gestionada
 host_os=SO de Webmin
 host_cfg=Configuración actual de CFengine desde $1
 host_ver=Versión de CFengine
+
 cluster_title=Ejecutar Motor de Configuración
 cluster_header=Ejecutando motor de configuración en todas las máquinas en clúster...
 cluster_success=Salida desde CFengine en $1 ..
 cluster_failed=No pude ejecutar CFengine en $1 : $2
+
 this_server=este servidor

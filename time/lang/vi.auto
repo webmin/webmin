@@ -19,6 +19,7 @@ index_tabsync2=Chạy dịch vụ <tt>$1</tt> hệ thống để đồng bộ h�
 index_desctime=Biểu mẫu này là để thay đổi thời gian hiện tại của hệ thống, được sử dụng bởi tất cả các quy trình đang chạy. Trên các hệ điều hành có đồng hồ phần cứng riêng, nó cũng có thể được sử dụng để đặt điều đó.
 index_desczone=Biểu mẫu này cho phép bạn đặt múi giờ mặc định của hệ thống, được sử dụng để chuyển đổi thời gian hệ thống sang định dạng và phần bù có thể đọc được của con người.
 index_descsync=Hình thức này là để cấu hình hệ thống để tự động đồng bộ hóa thời gian với một máy chủ từ xa. Đồng bộ hóa sẽ được thực hiện bằng giao thức <tt>time</tt> Unix hoặc NTP, tùy thuộc vào lệnh nào được cài đặt và hệ thống từ xa hỗ trợ gì.
+index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 action_save=Tiết kiệm
 action_apply=Ứng dụng
