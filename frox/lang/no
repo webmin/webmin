@@ -9,7 +9,6 @@ index_start=Start Frox tjener
 index_startdesc=Klikk denne knappen for å starte Frox proxy tjener prosessen. Dersom brannmuren er riktig satt opp vil FTP tilkoblinger rutet via denne tjeneren ikke virke før Frox kjører.
 index_inetd=Frox er konfigurert til å kjøre fra inetd, og kan derfor ikke startes og stoppes fra denne modulen.
 index_return=modul indeks
-
 net_title=Nettverks innstillinger
 net_header=Nettverks-relaterte innstillinger
 edit_Listen=Lytt på adressene
@@ -32,7 +31,6 @@ net_eproxy=Manglende eller ugyldig proxy tjener adresse:port
 net_eip=Manglende eller ugyldig IP adresse
 net_eresolv=Manglende eller ugyldig DNS navn
 net_eiface=Manglende eller ugyldig grensesnitt navn
-
 general_title=Generelle innstillinger
 general_header=Generelle Frox bruker-, gruppe- og filinnstillinger
 edit_User=Kjør som Unix bruker
@@ -51,7 +49,6 @@ edit_egroup=Manglende eller ugyldig Unix gruppenavn
 edit_efrom=Manglende eller ugyldig start portnummer
 edit_eto=Manglende eller ugyldig slutt portnummer
 edit_erange=Start port må være mindre enn slutt port
-
 ftp_title=FTP protokoll innstillinger
 ftp_header=Innstillinger for FTP protokoll proxying
 edit_APConv=Konverter aktive tilkoblinger til passive?
@@ -67,7 +64,6 @@ edit_from=Fra
 edit_to=til
 ftp_err=Kunne ikke lagre FTP protokollinnstillinger
 ftp_econv=Du kan ikke aktivere både aktiv til passiv og passiv til aktiv  konvertering!
-
 cache_title=Cachin innstillinger
 cache_header=Innstillinger for caching og virus scanning
 cache_module=Caching modus
@@ -89,7 +85,6 @@ cache_esize=Manglende eller ugyldig størrelse
 cache_eproxy=Manglende eller ugyldig vertsnavn:port
 cache_escanner=Manglende eller ikke-eksisterende scanner program
 cache_eint=Manglende eller ikke-numerisk
-
 acl_title=Tilgangskontroll
 acl_header=Innstillinger for tilgangskontroll og ressursbegrensing
 edit_DoNTP=Aksepter ikke-transparente proxy tilkoblinger også?
@@ -115,7 +110,6 @@ acl_esrc=Manglende eller ugyldig klient adresse, nettverk/størrelse eller nettv
 acl_edest=Manglende eller ugyldig tjeneradresse, nettverk/størrelse eller nettverk/nettmaske i ACL $1
 acl_eports=Uygldig komma-separert liste med porter eller portintervaller i ACL $1
 acl_enone=Ingen tilgangskontrollliste oppføringer ble angitt
-
 iptables_title=Oppsett av redirigering av port
 iptables_inst0=IPtables brannmur kommandoene som er nødvendige for å sette opp port redirigering ser ikke ut til å være installert på systemet ditt. Sjekk modulen <a href='$1'>Linux Brannmur</a> for flere detaljer.
 iptables_inst1=Det ser ikke ut til at modulen <a href='$1'>Linux Brannmur</a> er fullt satt opp på systemet ditt. Denne modulen bruker brannmur modulen til å sette opp Frox port redirigering.
@@ -128,11 +122,9 @@ iptables_err=Kunne ikke lagre videresending av port
 iptables_enet=Manglende eller ugyldig nettverksadresse (må se ut som 192.168.1.0/24)
 iptables_eapply=Bruk feilet : $1
 iptables_eiface=Manglende eller ugyldig nettverksgrensesnitt
-
 start_err=Kunne ikke starte Frox
 stop_err=Kunne ikke stoppe Frox
 stop_egone=Kjører ikke lenger!
-
 log_net=Endret nettverksinnstillinger
 log_general=Endret generelle innstillinger
 log_ftp=Endret FTP protokoll innstillinger

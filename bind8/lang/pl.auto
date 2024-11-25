@@ -50,7 +50,6 @@ value_TLSA4=Dane certyfikatu
 value_SSHFP1=Algorytm klucza publicznego
 value_SSHFP2=Odcisk palca klucza publicznego
 value_SSHFP3=Dane klucza publicznego
-value_NSEC3PARAM4_none=None
 value_dmarcruf=Wyślij informacje sądowe do
 value_dmarcfo=Tryb zgłaszania awarii
 value_dmarcfo0=Zgłoś, jeśli DKIM i SPF zawiodły
@@ -110,10 +109,6 @@ dt_zone_zskrolldesc=Wymuś najazd klucza podpisującego strefę
 dt_zone_kskrolldesc=Wymuś najazd klucza podpisującego klucz strefy
 
 zonekey_algorithm=Algorytm DNSSEC : $1 
-zonekey_ds_keytag=Key tag
-zonekey_ds_alg=Algorithm
-zonekey_ds_type=Digest type
-zonekey_ds_digest=Digest string
 zonekey_eprivate=Nie można odczytać klucza prywatnego powiązanego z tą strefą : $1
 zonekey_keep=Zachować istniejący klucz, jeśli DNSSEC zostanie ponownie włączony?
 

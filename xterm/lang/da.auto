@@ -5,8 +5,6 @@ index_suse=Perl-pakken <tt>perl-IO-Tty</tt> mangler og bør først installeres m
 index_euser=Fejl: Bruger $1 kan ikke køre skallen, da den ikke eksisterer!
 index_connecting=Tilslutning ..
 index_missing=Perl-modulet <tt>$1</tt> mangler. Du skal kontakte din administrator for at løse dette problem.
-index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Kør shell som Unix-bruger
 acl_sameuser=Samme som Webmin login
-acl_sudoenforce=Enforce <em>sudo</em>-only privileges

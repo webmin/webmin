@@ -16,7 +16,6 @@ edit_NAPTR=Pointeur d'autorité de nom
 
 recs_NAPTR=Nom Autorité
 
-value_NSEC3PARAM4_none=None
 value_dmarcfo=Mode de rapport d'échec
 value_dmarcfo0=Signaler si DKIM et SPF ont échoué
 value_dmarcfo1=Signaler si DKIM ou SPF a échoué
@@ -42,8 +41,4 @@ value_NAPTR3_U=Utiliser la sortie regexp ensuite
 value_NAPTR3_P=Action spécifique au protocole
 
 zonekey_algorithm=Algorithme DNSSEC  : $1
-zonekey_ds_keytag=Key tag
-zonekey_ds_alg=Algorithm
-zonekey_ds_type=Digest type
-zonekey_ds_digest=Digest string
 zonekey_keep=Conserver la clé existante si DNSSEC est réactivé ?

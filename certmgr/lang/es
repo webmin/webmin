@@ -1,11 +1,9 @@
 certificate=Certificado
 key=Llave
 csr=CSR (Requisito de firmar certificado)
-
 e_file=Un error ocurrio mientras se trataba de obtener informacion de este archivo
 e_notcert=Quiza este archive no esta encoded en forma PEM o no es un certificado o llave valido
 e_genfailed=Generacion no fue exitoso
-
 cn=Nombre Común (por ejemplo, nombre de este host)
 o=Nombre de Organización (por ejemplo, nombre de empresa)
 ou=Nombre de Unidad de Organización (por ejemplo, división)
@@ -22,7 +20,6 @@ expires_on=Fecha de vencimiento
 md5fingerprint=Huella dactilar MD5
 sha1fingerprint=Huella dactilar SHA-1
 sha256fingerprint=Huella dactilar SHA-256
-
 modulus=Modulus (del llave publico)
 publicExponent=Exponente Publico
 privateExponent=Exponente Privado
@@ -31,26 +28,21 @@ prime2=Número Primo (dos)
 exponent1=Exponente (uno)
 exponent2=Exponente (dos)
 coefficient=Coeficiente
-
 keyfile=Nombre del archivo de la llave
 keycertfile=Nombre del archivo del par de la llave y el certificado
 continue=Continuar
-
 certmgrlib_issuer=Emisor
 certmgrlib_subject=Sujecto
 certmgrlib_e_file_open=Unable to open file
 certmgrlib_e_exec=Unable to determine file type: couldn't execute openssl
 certmgrlib_e_cert=Unable to determine file type: invalid key
-
 index_title=Certificate Manager
 index_header=Certificate Manager Main Index
 index_gencert=Generate Self Signed Certificate and Key
 index_gencsr=Generate Key and Certificate Signing Request (CSR)
 index_import=Import Key or Signed Certificate
 index_view=Manage/View Installed Certificates and Keys
-
 index_index=index
-
 gencert_title=Generate Certificate & Key
 gencert_header=Certificate Manager: Generate Self Signed Certificate and Key
 gencert_generate=Generate Key
@@ -70,7 +62,6 @@ gencert_genworked=Certificate and key generated
 gencert_saved_key=The key was saved as
 gencert_saved_cert=The certificate was saved as
 gencert_saved_keycert=The certificate+key file was saved as
-
 gencsr_title=Generate CSR
 gencsr_csrfile=CSR filename
 gencsr_generate=Generate CSR
@@ -81,12 +72,10 @@ gencsr_e_genfailed=Error, CSR and key not generated
 gencsr_e_nofilename=One CSR and one key filename must be specified
 gencsr_genworked=CSR and key generated
 gencsr_saved_csr=The CSR was saved as
-
 manage_encrypt=Encrypt Private Key
 manage_decrypt=Decrypt Private Key
 manage_changepw=Change Password of Private Key
 manage_delete=Delete Certificate
-
 view_title=Ver el Certificado/CSR/Key
 view_view=Ver
 view_update=Actualizar
@@ -111,7 +100,6 @@ view_revoked_certs=Certificados revocados
 view_revoke_date=Fecha de revocación
 view_revoke_reason=Razón de revocación
 view_crl_number=Número CRL
-
 import_title=Import Key or Signed Certificate
 import_e_nodir=No directory selected
 import_e_nofilename=Filename not received with file
@@ -128,5 +116,4 @@ import_upload_cert=Upload Certificate
 import_key_file=Key file to upload
 import_key_destination=Destination directory of key
 import_upload_key=Upload Key
-
 signcsr_e_nopassword=No CA private key password entered

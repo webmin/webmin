@@ -51,7 +51,6 @@ index_required=Sjekk filsystem $1
 index_required2=Sjekk $1 filsystemer
 index_disks=$index_required
 index_disks2=$index_required2
-
 edit_title=Rediger innstillinger for klasse
 edit_create1=Legg til handling og klasse
 edit_create2=Legg til innstillinger for klasse
@@ -193,7 +192,6 @@ edit_resother=Andre <tt>resolv.conf</tt> linjer
 edit_route=Standard gateway
 edit_reqfs=Filsystem som skal sjekkes
 edit_reqfree=Minimum ledig plass
-
 save_err=Kunne ikke lagre klasse
 save_eclass=Manglende eller ugyldig klassenavn
 save_elinkfrom=Manglende eller ugyldig fra for symlink $1
@@ -256,7 +254,6 @@ save_emiscmode=Ugyldige monteringsinnstillinger for $1
 save_eroute=Manglende eller ugyldig standard gateway
 save_ereq=Ugyldig filsystem å sjekke $1
 save_ereqfree=Manglende eller ugyldig minimum ledig plass for $1
-
 section_groups=Definer grupper
 section_classes=$section_groups
 section_control_0=Master kontroll
@@ -284,7 +281,6 @@ section_grant=$section_admit
 section_deny=Nektede kataloger
 section_required=Sjekk filsystemer
 section_disks=$section_required
-
 run_title=Kjør Konfigurasjonsmotor
 run_desc=Denne siden kan brukes til å kjøre Konfigurasjonsmotor på denne verten. Når den kjøres vil handlingene du har konfigurert bli utført der det er nødvendig.
 run_header=Innstillinger for å kjøre CFengine på denne verten
@@ -297,7 +293,6 @@ run_nolinks=Kan opprette symbolske lenker?
 run_verbose=Vis detaljert output?
 run_exec=Kjører kommando $1 ..
 run_ok=Kjør nå
-
 cfd_title=Konfigurasjonsmotor Daemon
 cfd_stop=Stop Konfigurasjonsmotor Daemon
 cfd_stopdesc=Klikk på denne knappen for å stoppe Konfigurasjonsmotor daemonen. Dette vil forhindre andre verter fra å kjøre konfigurasjonen på denne tjeneren, og stopp den planlagte kjøringen av konfigurasjonen.
@@ -306,7 +301,6 @@ cfd_startdesc=Klikk på denne knappen for å starte Configuration Engine daemone
 cfd_return=daemon innstillinger
 cfd_none=Det er ikke opprettet noen innstillinger for Konfigurasjonsmotoren enda.
 cfd_ecmd=Daemonkommandoen $1 for Konfigurasjonsmotoren ble ikke funnet på systemet ditt. Kanskje den ikke er installert, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
-
 push_title=Eksterne konfigurasjonsverter
 push_header=Konfigurasjonstjener distribusjonsinnstillinger
 push_domain=Domenenavn
@@ -323,7 +317,6 @@ push_return=eksterne konfigurasjonsverter
 push_title2=Kjør vertskonfigurasjoner
 push_exec=Kjører vertskonfigurasjoner med kommandoen $1 ..
 push_ecmd=Konfigurasjonsmotor kommandoen $1 for ekstern eksekvering ble ikke funnet på systemet ditt. Kanskje den ikke er installert, eller så er <a href='$2'>modulkonfigurasjonen</a> feil.
-
 type_control_0=Feltet nedenfor angir handlinger som utføres når konfigurasjonsmotoren kjører, i den rekkefølgen de utføres. Handlinger som ikke vises her vil ikke bli kjørt, selv om de er angitt på hovedsiden.
 type_control_1=Innstillingene nedenfor kontrollerer den globale oppførselsen til bakgrunnsprosessen som mottar forespørsler om å utføre konfigurasjonen på denne verten, når dette forespørres av en ekstern vert, eller i henhold til en fast tidsplan.
 type_directories=Katalogene angitt nedenfor vil bli opprettet med angitt eierskap og tillatelser dersom de ikke finnes. Feltene for eier, gruppe og tillatelser er valgfrie.
@@ -345,13 +338,10 @@ type_resolve=DNS tjeners IP adresse som du angir nedenfor vil bli brukt til å o
 type_defaultroute=Når denne handlingen kjøres vil konfigurasjonsmotoren sjekk gjeldende standard rute mot gateway angitt nedenfor.
 type_required=Filsystemene angitt nedenfor vil bli sjekket når denne handlingen kjøres for å verifisere at de er montert, og hvis ikke vil det bli vist en advarsel. Hvert filsystem vil også bli sjekket for å se om ledig diskplass er under et eventuelt angitt minimum.
 type_disks=$type_required
-
 stop_err=Kunne ikke stoppe Konfigurasjonsmotor daemon
 stop_epids=Kjører ikke lenger
 stop_ekill=Kunne ikke stoppe prosessen : $1
-
 start_err=Kunne ikke starte Konfigurasjonsmotor daemon
-
 log_create_section=Opprettet handling $1 og klasse
 log_create_class=La til klasse til handling $1
 log_modify_class=Endret klasse i handling $1
@@ -362,7 +352,6 @@ log_start=Startet daemon
 log_stop=Stoppet daemon
 log_push=Endret eksterne konfigurasjonsverter
 log_prun=Kjørte vertskonfigurasjoner
-
 hosts_title=Webmin CFengine Klynge
 hosts_hosts=Tjenere i klynge
 hosts_nohosts=Ingen Webmin tjenere som kjører CFengine er definert enda.
@@ -374,7 +363,6 @@ hosts_rundesc=Klikk på denne knappen for å kjøre Konfigurasjonsmotor på alle
 hosts_copydesc=Klikk på denne knappen for å kopiere CFengine konfigurasjonen fra denne tjeneren til alle tjenere ovenfor, og umiddelbart ta denne i bruk,
 hosts_opts=Innstillinger for kjørende konfigurasjoner
 hosts_return=tjener liste
-
 add_title=Legg til tjenere
 add_msg=Legger til  $1 ..
 add_gmsg=Legger til tjenere i gruppe $1 ..
@@ -384,7 +372,6 @@ add_echeck=Tjener $1 har ikke konfigurasjonsmotor modulen
 add_ecfengine=CFengine er ikke installert på tjener $1
 add_ok=Lagt til tjener $1 ($2 $3)
 add_eversion=CFengine på tjener $1 er versjon $2, men denne Webmin modulen støtter bare versjonene $3 .
-
 host_title=Administrert tjener
 host_header=Detaljer for administrert CFengine tjener
 host_name=Vertsnavn
@@ -393,10 +380,8 @@ host_delete=Fjern fra administrert liste
 host_os=OS fra Webmin
 host_cfg=Gjeldende CFengine konfigurasjon fra $1
 host_ver=CFEngine versjon
-
 cluster_title=Kjør Konfigurasjonsmotor
 cluster_header=Kjører konfigurasjonsmotor på alle verter i klyngen ..
 cluster_success=Output fra CFengine på $1 ..
 cluster_failed=Kunne ikke kjøre CFengine på $1 : $2
-
 this_server=denne tjeneren

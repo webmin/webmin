@@ -44,3 +44,4 @@ acl_mode6=用户匹配
 acl_expire=可以强制用户在下次登录时更改密码吗？
 acl_sec=是否包括次要组？
 acl_notusers=除用户之外
+__norefs=1

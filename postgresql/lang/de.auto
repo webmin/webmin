@@ -1,3 +1,0 @@
-view_match4=greater than
-
-user_vwarning=This PostgreSQL user is the administration login for Virtualmin domain $1. Changing any settings here may cause errors in Virtualmin.

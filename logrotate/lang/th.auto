@@ -64,7 +64,6 @@ edit_pre=คำสั่งให้รันก่อนการหมุน
 edit_default=ค่าเริ่มต้น ($1)
 edit_sharedscripts=เรียกใช้สคริปต์เพียงครั้งเดียวสำหรับไฟล์ทั้งหมดหรือไม่
 edit_now=หมุนทันที
-edit_clone=Clone
 
 global_title=ตัวเลือกสากล
 global_header=ตัวเลือกเริ่มต้นสำหรับไฟล์บันทึกทั้งหมด

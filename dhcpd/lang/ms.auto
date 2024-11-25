@@ -14,7 +14,6 @@ index_memb=$1 ahli
 index_hst=Hos dan Kumpulan Tuan Rumah
 index_nohst=Tiada tuan rumah atau kumpulan telah ditakrifkan.
 index_hostgroup=Hos/Kumpulan
-index_comment=Description
 index_parent=Ibu bapa
 index_hardware=Alamat Perkakasan
 index_group=Kumpulan:

@@ -3,7 +3,6 @@ index_nojava=Šis modulis reikalauja, kad „Java“ veiktų, tačiau jūsų nar
 index_eremote=Nėra „Unix“ vartotojo, atitinkančio prisijungimą prie „Webmin“ $1.
 index_index=Grįžkite į <a href='$1'>„Webmin“ rodyklę</a>.
 switch_euser=„Unix“ vartotojo nėra!
-
 top_ret=Indeksas
 top_down=Sutaupyti
 top_preview=Peržiūra
@@ -27,13 +26,11 @@ top_mount=Kalnas
 top_search=Rasti
 top_config=Konfigūruoti
 top_efile=Nepasirinktas failas
-
 right_name=vardas
 right_size=Dydis
 right_user=Vartotojas
 right_group=Grupė
 right_date=Data
-
 edit_enormal=Redaguoti gali tik įprastus failus
 edit_title=Redaguoti $1 
 edit_title2=Kuriamas failas
@@ -53,7 +50,6 @@ edit_notfound=Tekstas $1 nerastas
 edit_saveclose=Išsaugoti ir uždaryti
 edit_elength=Failas buvo sutrumpintas!
 edit_textmode=Perjungti į paprasto teksto režimą
-
 info_file=Byla
 info_path=Kelias:
 info_type=Tipas:
@@ -90,7 +86,6 @@ info_files=Iš viso failų:
 info_dirs=Iš viso katalogų:
 info_getsize=Gaukite dydį
 info_esize=Nepavyko gauti dydžių : $1 
-
 eacl_eacls=Nepavyko nuskaityti ACL : $1 
 eacl_acltype=ACL tipas
 eacl_aclname=Rašyti paraišką į
@@ -109,7 +104,6 @@ eacl_edefmask=Gali būti ne daugiau kaip vienas numatytasis kaukės ACL įrašas
 eacl_title=ACL $1 
 eacl_owner=Failo savininkas
 eacl_edefaults=Jei faile yra numatytasis ACL, jame turi būti numatytasis vartotojo, grupės ir kiti ACL.
-
 acltype_user=Vartotojas
 acltype_group=Grupė
 acltype_other=Kiti
@@ -118,7 +112,6 @@ acltype_default_user=Numatytasis vartotojas
 acltype_default_group=Numatytoji grupė
 acltype_default_other=Numatytasis Kiti
 acltype_default_mask=Numatytoji kaukė
-
 delete_mtitle=Ištrinkite kelis failus
 delete_dtitle=Ištrinti katalogą
 delete_ftitle=Ištrinti failą
@@ -126,13 +119,11 @@ delete_ddesc=Ar tikrai norite visam laikui ištrinti katalogą $1 ir visą jo tu
 delete_fdesc=Ar tikrai norite visam laikui ištrinti failą $1 ?
 delete_mdesc=Ar tikrai norite visam laikui ištrinti šiuos failus ir katalogus?  :
 delete_efailed=Nepavyko ištrinti $1 : $2 
-
 mkdir_title=Naujas katalogas
 mkdir_dir=Naujas katalogas:
 mkdir_eexists=$1 jau yra
 mkdir_efailed=Sukurti katalogą nepavyko : $1 
 mkdir_eaccess=Jums neleidžiama kurti „$1“
-
 link_title=Sukurti nuorodą
 link_from=Nuoroda iš:
 link_to=Nuoroda į:
@@ -141,7 +132,6 @@ link_efrom=Nuorodos šaltinis turi būti absoliutus kelias
 link_efailed=Nepavyko susieti : $1 
 link_efrom2=Jums neleidžiama susieti iš „$1“
 link_efollow=Jums neleidžiama kurti saitų
-
 rename_title=Pervardyti $1 
 rename_old=Senas vardas:
 rename_new=Naujas vardas:
@@ -151,7 +141,6 @@ rename_eslash=Naujame failo pavadinime $1 yra /
 rename_efailed=Pervardyti nepavyko : $1 
 rename_eold=Jums neleidžiama pervardyti „$1“
 rename_enew=Jums neleidžiama pervardyti į „$1“
-
 file_type0=Katalogas
 file_type1=Tekstinis failas
 file_type2=Vaizdo failas
@@ -160,31 +149,26 @@ file_type4=Byla
 file_type5=Simbolinis saitas
 file_type6=Įrenginio failas
 file_type7=Vamzdis
-
 view_enormal=Galima žiūrėti tik įprastus failus
 view_enormal2=Galima atsisiųsti tik įprastus failus
 view_eaccess=Jums neleidžiama patekti į $1 
 view_eopen=Nepavyko atidaryti $1 : $2 
-
 view_edir=Archyvą galima sukurti tik aplankui
 view_ecmd=Komanda $1, reikalinga archyvui sukurti, neįdiegta
 view_ecomp=Nepavyko sukurti archyvo : $1 
 view_earchive=Jums neleidžiama atsisiųsti archyvų
 view_earchmax=Pasirinktas katalogas yra didesnis už maksimalų leidžiamą archyvuoti ($1 baitai)
 view_epathinfo=Kelias apima netinkamus simbolius
-
 paste_ecopy=Prieš įklijuodami turite iškirpti arba nukopijuoti
 paste_egone=Nukopijuotas failas $1 neegzistuoja
 paste_eover=$1 negalima perrašyti
 paste_eself=Negalite įklijuoti failo
 paste_emfailed=Perkelti nepavyko : $1 
 paste_ecfailed=Kopija nepavyko : $1 
-
 over_title=Byla egzistuoja
 over_msg=Failas $1 jau yra. Norėdami įvesti naują įklijuoto failo pavadinimą, naudokite žemiau esantį lauką.
 over_new=Naujas failo vardas:
 over_ok=Gerai
-
 upload_efailed=Nepavyko atidaryti įkėlimo : $1 
 upload_title=Įkelti failą
 upload_file=Įkelti failą
@@ -201,11 +185,9 @@ upload_elink=Neįmanoma įkelti į simbolinę nuorodą
 upload_zip=Atspausti ZIP arba TAR failą?
 upload_yes=Taip, tada ištrinkite
 upload_user=Įkelkite kaip vartotoją
-
 find_eaccess=Jums neleidžiama patekti į $1 
 find_eexist=$1 neegzistuoja $2 
 find_edir=$1 nėra katalogas $2 
-
 cancel=Atšaukti
 close=Uždaryti
 eopen=Atsisiųsti nepavyko : $1 
@@ -216,20 +198,15 @@ chmod_elink=nuoroda nepavyko : $1
 chmod_echown=chown nepavyko : $1 
 chmod_echmod=chmod nepavyko : $1 
 chmod_efollow=Jums neleidžiama redaguoti simbolinių nuorodų
-
 copy_efrom=Jums neleidžiama kopijuoti iš „$1“
 copy_eto=Jums neleidžiama kopijuoti į „$1“
 copy_elink=nuoroda nepavyko : $1 
-
 delete_eaccess=Jums neleidžiama ištrinti „$1“
 delete_eroot=Katalogas „$1“ yra vienas iš tų, kuriuose esate apribotas, todėl jo negalima ištrinti
-
 list_eaccess=Jums neleidžiama patekti į šį katalogą
 list_edir=Nepavyko pateikti $1 sąrašo : $2 
-
 move_eto=Jums neleidžiama persikelti į „$1“
 move_afrom=Jums neleidžiama judėti „$1“
-
 acl_user=Prisijunkite prie serverio failų kaip vartotojas
 acl_user_def=Tas pats, kas prisijungti prie „Webmin“
 acl_umask=Umask naujų failų
@@ -275,7 +252,6 @@ acl_noperms=Ar galima pakeisti failo teises?
 acl_nousers=Ar galima pakeisti failo nuosavybę?
 acl_filesystems=Ar galite pamatyti failų sistemos prijungimo taškus?
 acl_contents=Leisti ieškoti failo turinio?
-
 share_title=Dalijimasis
 share_samba=„Windows“
 share_nfs=NFS
@@ -304,7 +280,6 @@ share_s1=Pasitikėk ne šaknimi
 share_s2=Pasitikėk visais
 share_lro=Tik skaitymui
 share_lrw=Skaityk rašyk
-
 log_create_export=Sukurtas NFS eksportas $1 
 log_modify_export=Modifikuotas NFS eksportas $1 
 log_delete_export=Ištrintas NFS eksportas $1 
@@ -322,7 +297,6 @@ log_move=Perkeltas failas nuo $1 iki $2
 log_delete=Ištrintas failas $1 
 log_attr=Nustatykite failo $1 atributus
 log_acl=Nustatykite ACL faile $1 
-
 search_eaccess=Jums neleidžiama ieškoti šiame kataloge
 search_title=Rasti failus
 search_ok=Ieškokite dabar
@@ -351,9 +325,7 @@ search_crit=Paieškos Reikalavimai
 search_list=Paieškos rezultatai
 search_down=parsisiųsti
 search_edown=Nepasirinktas paieškos rezultatų failas
-
 facl_eaccess=Jums neleidžiama nustatyti šio failo ACL
-
 attr_eattrs=Nepavyko gauti atributų : $1 
 attr_efs=Failo sistema $1 nepalaiko atributų
 attr_add=Pridėti atributą
@@ -364,13 +336,11 @@ attr_title=$1 failo atributai
 attr_create=Pridėti atributą
 attr_edit=Redaguoti atributą
 attr_ename=Trūksta atributo pavadinimo
-
 ext_eattrs=Nepavyko gauti EXT atributų : $1 
 ext_efs=Failo sistema $1 nepalaiko EXT atributų
 ext_title=$1 atributai EXT
 ext_header=EXT failo atributai
 ext_efailed=Nepavyko nustatyti atributų $1 : $2 
-
 eattr_A=Neatnaujinkite prieigos laikų
 eattr_a=Galima tik pridėti prie bylos
 eattr_c=Suspauskite duomenis diske
@@ -379,7 +349,6 @@ eattr_i=Neleiskite modifikuoti
 eattr_s=Nulis blokuojamas ištrinant
 eattr_S=Rašydami visada sinchronizuokite
 eattr_u=Išsaugokite turinį norėdami pašalinti
-
 mount_eaccess=Jums neleidžiama montuoti failų sistemų
 mount_efstab=Šiame prijungimo taške nėra failų sistemos
 mount_epoint=„ $1 “ nėra prijungimo taškas
@@ -389,22 +358,18 @@ mount_err1=Nepavyko prijungti $1 : $2
 mount_err2=Nepavyko išmontuoti $1 : $2 
 mount_title1=Prijunkite failų sistemą
 mount_title2=Pašalinti failų sistemą
-
 zip_err=Nepavyko išgauti failo : $1 
 zip_ecmd=Trūksta komandos $1 
 zip_eunzip=Nepavyko išpakuoti : $1 
 zip_ename=Neatrodo, kad tai yra ZIP, tar arba tar.gz failai
 zip_euntar=Nepavyko pašalinti deguto : $1 
 zip_euntar2=Nepavyko suspausti ir pašalinti deguto : $1 
-
 ddir_title=Atsisiųsti katalogą
 ddir_rusure=Norėdami atsisiųsti $1 turinį kaip archyvo failą, spustelėkite vieną iš žemiau esančių archyvo tipo mygtukų.
 ddir_zip=ZIP
 ddir_tgz=TAR.GZ
 ddir_tar=TAR
-
 ebutton=Ši funkcija negalima
-
 preview_etype=Nepavyko išsiaiškinti $1 failo tipo
 preview_etype2=$1 nepalaikomas atvaizdo formatas
 preview_ecmd=Komanda $1, reikalinga šiam vaizdui padidinti, neįdiegta
@@ -412,17 +377,14 @@ preview_eimage=Galima peržiūrėti tik vaizdus
 preview_title=$1 peržiūra
 preview_bad=Nepavyko įkelti vaizdo peržiūrėti
 preview_egd=Nepavyko įkelti vaizdo į GD
-
 html_efailed=Nepavyko atidaryti HTML redaktoriaus : $1 
 html_title=Redaguoti HTML failą
 html_title2=Sukurkite HTML failą
 html_save=Išsaugoti ir uždaryti
 html_err=Nepavyko išsaugoti HTML failo
-
 history_title=Kelio istorija
 history_ok=Eiti į
 history_button=Istorija
-
 extract_etype=Išgauti galima tik failus
 extract_title=Išskleisti suspaustą failą
 extract_rusure=Ar tikrai norite išgauti suglaudintą failą :

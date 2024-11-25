@@ -777,12 +777,10 @@ log_pools_delete=$1 Delay-Pools gelöscht
 log_delay_create=ACL für Delay-Pool $1 hinzugefügt
 log_delay_modify=ACL für Delay-Pool $1 geändert
 log_delay_delete=ACL für Delay-Pool $1 gelöscht
-
 log_delay_move=ACL für Delay-Pool $1 verschoben
 log_refresh_create=Refresh-Regel für $1 erstellt
 log_refresh_modify=Refresh-Regel für $1 geändert
 log_refresh_delete=Refresh-Regel für $1 gelöscht
-
 log_refresh_move=Refresh-Regel für $1 verschoben
 log_refreshes_delete=$1 Refresh-Regeln gelöscht
 log_iptables=Port-Weiterleitungs-Setup aktualisiert
@@ -826,6 +824,7 @@ delay_ecannot=Sie dürfen Delay-Pools nicht bearbeiten
 delay_epercent='$1' ist kein gültiger Prozentsatz für das anfängliche Bucket-Niveau
 delay_return=Delay-Pools-Liste
 delay_delete=Ausgewählte Delay-Pools löschen
+
 pool_title1=Delay-Pool hinzufügen
 pool_title2=Delay-Pool bearbeiten
 pool_header=Delay-Pool-Optionen
@@ -946,7 +945,9 @@ refresh_emin=Fehlende oder ungültige Mindestzeit
 refresh_emax=Fehlende oder ungültige Maximale Zeit
 refresh_epc=Fehlender oder ungültiger Altersprozentsatz
 refresh_delete=Ausgewählte Refresh-Regeln löschen
+
 drefresh_err=Fehler beim Löschen der Refresh-Regeln
+drefresh_enone=Keine ausgewählt
 
 iptables_title=Port-Weiterleitungs-Setup
 iptables_inst0=Die für die Port-Weiterleitung erforderlichen IPtables-Firewall-Befehle scheinen auf Ihrem System nicht installiert zu sein. Weitere Informationen finden Sie im <a href='$1'>Linux Firewall</a>-Modul.

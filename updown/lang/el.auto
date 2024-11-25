@@ -42,9 +42,7 @@ index_emailto=Ναι, για την αντιμετώπιση
 index_email2=Αποστολή μηνύματος ηλεκτρονικού ταχυδρομείου όταν οι μεταφορτώσεις έχουν ολοκληρωθεί;
 
 upload_title=Μεταφόρτωση αρχείων
-upload_direct=Write files directly to disk?
 upload_err=Αποτυχία φόρτωσης αρχείων
-upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=Λείπει ο κατάλογος για να ανεβάσετε στο
 upload_euser=Λείπει ή μη έγκυρο όνομα χρήστη
 upload_egroup=Λείπει ή μη έγκυρο όνομα ομάδας

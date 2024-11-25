@@ -31,12 +31,6 @@ ui_hnm0=نام میزبان واقعی
 ui_hnm1=نام میزبان از URL
 ui_hnm2=نام دامنه از URL
 ui_hnm3=نام دیگر ..
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
 
 upgrade_descdeb=این فرم به شما امکان می دهد با ارتقاء بسته Debian خود ، کل نصب Usermin خود را به نسخه جدید ارتقا دهید. می توانید از یک پرونده محلی.deb ، یک پرونده بارگذاری شده یا از آخرین نسخه در <a href=http://www.usermin.com/>www.usermin.com</a> نصب کنید. درست مانند یک به روزرسانی دستی ، تمام تنظیمات پیکربندی و ماژول های شخص ثالث شما حفظ می شود.
 

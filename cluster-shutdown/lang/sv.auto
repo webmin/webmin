@@ -14,7 +14,6 @@ index_smtp=Skicka via SMTP-server
 index_this=Denna server
 index_nu=Ingen användaruppsättning
 index_nl=Inloggningen misslyckades
-
 shut_title=Stäng av servrar
 shut_rusure=Är du säker på att du omedelbart vill stänga av de valda $1 -servrarna?
 shut_ok=Ja gör det
@@ -23,12 +22,10 @@ shut_failed=.. misslyckades! $1
 shut_done=.. Gjort.
 shut_sel=De valda servrarna är :
 shut_ecannot=Du får inte stänga av servrar
-
 reboot_title=Starta om servrar
 reboot_rusure=Är du säker på att du omedelbart vill starta om de valda $1 -servrarna?
 reboot_doing=Starta om $1 ..
 reboot_ecannot=Du får inte starta om servrar
-
 sched_err=Det gick inte att konfigurera automatisk serverkontroll
 sched_eemail=E-postadress saknas
 sched_esmtp=Saknad eller ogiltig SMTP-server

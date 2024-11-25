@@ -17,8 +17,6 @@ index_loadname=CPU slodzes vidējie lielumi:
 index_loadnums=$1 (1 minūtes), $2 (5 minūtes), $3 (15 minūtes)
 index_cpuname=CPU tips:
 index_inzone=Zonā $1 
-index_core=$1 core
-index_cores=$1 cores
 
 pid=ID
 owner=Īpašnieks

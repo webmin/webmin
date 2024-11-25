@@ -125,13 +125,9 @@ smtpd_nomap2=Карта ограничений для адресов отпра�
 smtpd_map=Разрешенные адреса для ретрансляции
 smtpd_map2=Ограничения по адресам отправителя
 
+opts_smtp_use_tls=Использовать TLS для SMTP-подключений
 opts_smtp_sasl_security_options=Опции безопасности SASL
 opts_smtp_tls_security_level=Уровень безопасности клиента SMTP TLS
-opts_inet_protocols=Internet protocols to enable
-opts_inet_protocols_all=All available
-opts_smtp_address_preference=Preferred SMTP client protocol
-opts_smtp_address_preference_any=Either
-opts_smtp_balance_inet_protocols=Validate SMTP client protocols
 
 opts_edebug=Отсутствует или неверный уровень подробного ведения журнала - должно быть число больше нуля
 
@@ -184,20 +180,9 @@ acl_postfinger=Можете проверить настройку постфик
 acl_manual=Можно редактировать конфигурационный файл?
 acl_dir=Разрешенный каталог для файлов карт
 acl_bcc=Можно ли редактировать отображение BCC?
-acl_body=Can edit body checks?
-acl_dependent=Can edit sender dependent transport maps?
 
 mail_move=Переместить в:
 mail_eexists=Сообщение больше не существует!
-mail_qfile=Mail queue file
-mail_qlast=Last retried at
-mail_qdir=Mail queue status
-mail_qdir_active=Active
-mail_qdir_incoming=Incoming
-mail_qdir_deferred=Deferred
-mail_qdir_corrupt=Corrupt
-mail_qdir_hold=On hold
-mail_qdir_maildrop=Mail drop
 
 view_flush=Румянец
 view_body=Текстовое сообщение
@@ -240,11 +225,9 @@ mailq_active=активный
 mailq_deferred=Отложенный
 mailq_hold=Удерживать выбранный
 mailq_unhold=Un-Hold Selected
-mailq_dir=Queue state
 
 flushq_title=Flush Queue
 flushq_desc=Принудительная попытка доставки почты с помощью команды $1 ..
-flushq_desc2=.. check the mail log for results
 
 qview_title=Сообщение в очереди
 qview_desc=Из файла $1
@@ -452,10 +435,6 @@ opts_broken_sasl_auth_clients=Обрабатывать несовместимы�
 sasl_opts=Параметры безопасности SMTP
 sasl_noanonymous=Отклонить анонимный вход
 sasl_noplaintext=Отклонить текстовые логины
-sasl_noactive=Reject Disallow subject to active (non-dictionary) attack
-sasl_nodictionary=Reject methods subject to passive (dictionary) attack
-sasl_forward_secrecy=Only allow methods that support forward secrecy
-sasl_mutual_auth=Only allow methods that provide mutual authentication
 opts_smtpd_delay_reject=Задержка клиентов с неудачными входами?
 sasl_recip=Ограничения получателя SMTP
 sasl_relay=Ограничения ретрансляции SMTP

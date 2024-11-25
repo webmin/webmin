@@ -152,32 +152,6 @@ misc_path=CGI修復路徑信息？
 misc_timezone=PHP時區
 misc_charset=默認字符集
 
-disable_title=Disabled Features
-disable_header=Disabled PHP functions and features
-disable_funcs=Disabled functions
-disable_exec=exec (Execute command)
-disable_passthru=passthru (Execute command and display output)
-disable_shell_exec=shell_exec (Execute command via shell)
-disable_system=system (Execute command and display output)
-disable_proc_open=proc_open (Execute command and capture input and output)
-disable_popen=popen (Open pipe to executed command)
-disable_curl_exec=curl_exec (Execute a URL download session)
-disable_curl_multi_exec=curl_multi_exec (Execute multiple URL download sessions)
-disable_parse_ini_file=parse_ini_file (Read PHP INI file)
-disable_show_source=show_source (Output file with PHP syntax highlighting)
-disable_mail=mail (Send email)
-disable_leftover=Other functions:
-disable_err=Failed to save disabled features
-disable_classes=Disabled built-in classes
-
-mods_title=PHP Modules
-mods_edir=Could not find PHP modules directory!
-mods_ecannot=You are not allowed to edit enabled PHP modules
-mods_desc=This page can be used to globally enable and disable PHP modules for all users on this system.
-mods_enabled=Enabled?
-mods_name=Module name
-mods_file=Config file
-
 log_manual=手動編輯文件 $1
 log_vars=已更改 $1中的PHP變量
 log_dirs=已更改 $1中的目錄設置
@@ -187,7 +161,6 @@ log_safe=已更改 $1中的安全模式選項
 log_limits=已更改 $1中的資源限制
 log_errors=已更改 $1中的錯誤記錄
 log_misc=更改了 $1中的其他設置
-log_mods=Updated enabled modules in $1
 
 acl_global=可以編輯全局PHP配置嗎？
 acl_anyfile=可以將任何文件作為PHP配置進行編輯嗎？

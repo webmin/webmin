@@ -6,8 +6,6 @@ index_memtfc=$1 összesen / $2 szabad / $3 gyorsítótárban
 index_loadname=CPU terhelés átlagai:
 index_loadnums=$1 (1 perc), $2 (5 perc), $3 (15 perc)
 index_cpuname=CPU típus:
-index_core=$1 core
-index_cores=$1 cores
 
 sclass=IO ütemezési osztály
 sprio=IO prioritás

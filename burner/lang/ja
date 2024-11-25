@@ -14,7 +14,6 @@ index_global=グローバルオプション
 index_ecdrecord=システムにCD書き込みコマンド$1が見つかりませんでした。 インストールされていないか、<a href='$2'>モジュール構成</a>が正しくない可能性があります。
 index_return=プロファイルリスト
 index_delete=選択したプロファイルを削除
-
 edit_title=Edit Burn Profile
 create_title=Create Burn Profile
 edit_emkisofs=The ISO filesystem building command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
@@ -50,7 +49,6 @@ edit_fly0=Use temporary file
 edit_srcdrv=Source device driver
 edit_dstdrv=Destination device driver
 edit_ecannot=You are not allowed to edit this burn profile
-
 save_err=Failed to save profile
 save_ename=Missing profile name
 save_eiso=Missing or invalid ISO image filename
@@ -64,7 +62,6 @@ save_ecannot1=The ISO image is not in an allowed directory
 save_ecannot2=The source directory $1 is not under an allowed directory
 save_ecannot3=The MP3 file or directory $1 is not in an allowed directory
 save_ecannot4=The source device file is not in an allowed directory
-
 burn_title=Burn CD
 burn_rutest1=Are you sure you want to test burning the ISO image $1 ?
 burn_rusure1=Are you sure you want to burn the ISO image $1 to CD ?
@@ -102,7 +99,6 @@ burn_807=Warning! Your audio tracks total $1 MB in size, which is above the 807 
 burn_mp3size=The converted audio tracks are $1 MB in size, out of a total of $2 MB which is allowed on a normal audio CD.
 burn_seconddesc=Insert the blank destination CD and click the button below.
 burn_second=Burn Destination CD
-
 dev_title=Device Options
 dev_header=CD burner device options
 dev_device=Burner device
@@ -113,7 +109,6 @@ dev_extra=Extra <tt>cdrecord</tt> options
 dev_err=Failed to save device options
 dev_eother=Missing or invalid write speed
 dev_ecannot=You are not allowed to edit device options
-
 mkisofs_title=ISO Filesystem Options
 mkisofs_header=Global ISO filesystem options
 mkisofs_novers=Include version number in filenames?
@@ -121,7 +116,6 @@ mkisofs_notrans=Allow all characters in filenames?
 mkisofs_nobak=Skip backup files?
 mkisofs_fsyms=Follow symbolic links?
 mkiofs_ecannot=You are not allowed to edit ISO filesystem options
-
 config_cdrecord=CD burning command
 config_mkisofs=ISO filesystem building command
 config_mpg123=MP3 decoding command
@@ -135,7 +129,6 @@ config_empg123=Missing or invalid MP3 decoding command
 config_esox=Missing or invalid SOX command
 config_ecdrdao=Missing or invalid CD copying command
 config_etemp=Missing or invalid temporary file directory
-
 acl_create=Can create new burn profiles?
 acl_edit=Can edit existing burn profiles?
 acl_global=Can edit global settings?
@@ -143,6 +136,5 @@ acl_profiles=Can use profiles
 acl_all=All
 acl_sel=Selected below ..
 acl_dirs=Allow directories for source files
-
 delete_err=Failed to delete burn profiles
 delete_enone=None selected

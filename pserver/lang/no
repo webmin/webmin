@@ -16,10 +16,8 @@ index_deactdesc2=CVS tjeneren er satt opp ti lå kjøre fra $1 på systemet ditt
 index_return=modulindeks
 index_asuser=Kjør som bruker:
 index_einetroot=Advarsel! CVS rot satt i modulkonfigurasjonen stemmer ikke med roten for CVS tjeneren. Dette kan fikses ved å deaktivere og gjenaktivere CVS tjeneren.
-
 setup_einet=Hverken <tt>inetd</tt> eller <tt>xinetd</tt> ser ut til å være installert på systemet ditt.
 setup_ecannot=Du har ikke lov til å sette opp CVS tjeneren
-
 passwd_title=CVS brukere
 passwd_header=CVS tjener brukere
 passwd_desc=CVS tjeneren vil la brukere angitt nedenfor logge inn og få tilgang til arkivet. Dersom en ulistet bruker forsøker å logge inn kan tjeneren forsøke å verifisere brukerens passord mot systemets passordfil i stedet, avhengig av tjenerens konfigurasjon.
@@ -31,7 +29,6 @@ passwd_sync_modify=Oppdater en CVS bruker når den samsvarende Unix brukeren er 
 passwd_sync_delete=Slett en CVS bruker når den samsvarende Unix brukeren slettes.
 passwd_return=brukerliste
 passwd_ecannot=Du har ikke lov til å administrere CVS brukere
-
 edit_title1=Opprett CVS bruker
 edit_title2=Rediger CVS bruker
 edit_header=CVS bruker detaljer
@@ -43,13 +40,11 @@ edit_pass1=La stå uendret
 edit_pass0=Sett til..
 edit_unix=Aksesser filer som unix bruker
 edit_unixdef=Samme som brukernavn
-
 save_err=Kunne ikke lagre CVS bruker
 save_euser=Manglende eller ugyldig brukernavn
 save_eunix=Manglende eller ugyldig unux bruker
 save_ecopy=Unix bruker som passord skal kopieres fra, finnes ikke
 save_emd5=Unix passord som skal kopieres er i MD5 format
-
 access_title=Bruker tilgangskontroll
 access_header=CVS brukere med kun lesetilgang
 access_readers1=Ingen brukere med bare lesetilgang
@@ -60,11 +55,9 @@ access_desc=Dersom en bruker er i både leser- og skriver-listen, vil he kun bli
 access_err=Kunne ikke lagre bruker tilgangskontroll
 access_euser=Bruker '$1' finnes ikke
 access_ecannot=Du har ikke lov til å redigere tilganskontroll for bruker
-
 cvsweb_title=Bla gjennom arkiv
 cvsweb_ecmd=CVS kommandoen $1 ble ikke funnet på systemet ditt. Denne kommandoen er nødvendig for å se gjennom CVS arkivet.
 cvsweb_ecannot=Du har ikke lov til å se CVS arkivet
-
 config_title=Tjener konfigurasjon
 config_header=Innstillinger for tjener konfigurasjon
 config_auth=Sjekk brukere mot system passord filen?
@@ -87,7 +80,6 @@ config_lock=Katalog for lås-filer
 config_err=Kunne ikke lagre tjener konfigurasjon
 config_elock=Manglende eller ugyldig katalog for lås-filer
 config_ecannot=Du har ikke lov til å redigere tjener konfigurasjonen
-
 log_setup=Sett opp CVS tjener
 log_activate=Aktivert CVS tjener
 log_deactivate=Deaktivert CVS tjener
@@ -96,13 +88,11 @@ log_delete_user=Slettet bruker $1
 log_modify_user=Endret bruker $1
 log_access=Endret bruker tilgangskontroll
 log_config=Endret tjener konfigurasjon
-
 acl_passwd=Kan administrere CVS brukere?
 acl_access=Kan redigere bruker tilgangskontroll?
 acl_config=Kan redigere tjener konfigurasjon?
 acl_cvsweb=Kan se CVS arkiv?
 acl_setup=Kan sette opp inetd eller xinetd til å kjøre CVS tjener?
 acl_init=Kan initialisere arkiv?
-
 init_err=Kunne ikke initialisere arkiv
 init_ecannot=Du har ikke lov til å initialisere et arkiv

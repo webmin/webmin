@@ -20,11 +20,9 @@ index_download=Download Server
 index_downloaddesc=Klicken Sie diese Schaltfläche um die neuesten Version der Minecraft Server JAR-Datei herunterladen und zu installieren.
 index_upgradedesc=Eine neue Minecraft-Server-Version steht ab sofort zum Download bereit.
 index_upgrade=Upgrade jetzt
-
 check_edir=Das Basis-Verzeichnis $1 existiert nicht
 check_ejar=Die Server JAR Datei $1 existiert nicht
 check_ejava=Das ausführbare Java $1 wurde nicht gefunden
-
 conf_title=Server Konfiguration
 conf_desc=Diese Einstellungen werden nicht aktiviert, bis der Minecraft Server neu gestartet wird.
 conf_header=Globale Serverkonfigurationsseite
@@ -68,7 +66,6 @@ conf_eprotect=Spawn Schutz Radius muss eine Zahl sein
 conf_eip=Fehlende oder ungültige IP-Adresse
 conf_eport=Fehlende oder nicht-numerische Portnummer
 conf_args=Java Befehlszeilen flags
-
 users_title=Benutzer und Operatoren
 users_tabwhite=Erlaubte Benutzer
 users_tabop=Operatoren
@@ -78,7 +75,6 @@ users_whitedesc=Wenn aktiviert, werden nur hier aufgeführte Benutzer erlaubt se
 users_opdesc=Nur Benutzer, die hier aufgeführt sind, wird erlaubt die Verwaltungsbefehle auf diesem Minecraft Server auszuführen.
 users_ipdesc=Die hier aufgeführen IP-Adressen wird es nicht erlaubt sich auf diesen Minecraft Server zu verbinden.
 users_enabled=Whitelist Durchsetzung aktiviert?
-
 conns_title=Verbundene Spieler
 conns_desc=Folgende Spieler sind derzeit mit Ihrem Server verbunden. Klicken Sie auf einen Spielernamen, um Aktionen ausführen.
 conns_edown=Verbundene Spieler können nicht verwaltet werden, wenn der Server läuft
@@ -87,19 +83,16 @@ conns_disc=Gestrennte ausgewählt
 conns_enter=Verwalte Spieler:
 conns_ok=OK
 conns_return=Spieler Liste
-
 logs_title=Suche Log Datei
 logs_lines=Zeige letzte
 logs_matching=Zeile zutreffend
 logs_ok=Suche
-
 console_title=Server Konsole
 console_run=Gib Befehl ein
 console_ok=OK
 console_old=oder wähle Vorheriges
 console_edit=Bearbeite Vorherige
 console_edown=Die Minecraft Server Konsole kann nicht verwendet werden, wenn der Server läuft
-
 conn_title=Verwalte Spieler
 conn_header=Spieler Details und Aktionen
 conn_name=Spieler Name
@@ -172,7 +165,6 @@ conn_stats=Spieler Statistiken
 conn_stat=Statistik
 conn_statv=Wert
 conn_nostats=Keine Statistiken wurden bisher aufgezeichnet
-
 worlds_title=Verwalte Welten
 worlds_def=Aktiv?
 worlds_name=Welt Name
@@ -186,7 +178,6 @@ worlds_none=Keine Welten wurden bisher erstellt!
 worlds_return=Liste an Welten
 worlds_err=Fehlgeschlagen Welt zu ändern
 worlds_esel=Keine Welt ausgewählt!
-
 world_edit=Editiere Welt
 world_create=Erstelle Welt
 world_header=Minecraft Welt Details
@@ -214,7 +205,6 @@ world_ezip=Hochgeladene Welt Daten scheint kein ZIP-Format zu sein
 world_eunzip=Fehlgeschlagen Welt Daten zu entpacken : $1
 world_edat=ZIP-Datei enthält keine level.dat Datei
 world_download=Download ZIP-Datei
-
 chooser_title=Wähle item
 chooser_id=Item ID
 chooser_num=Item Nummer
@@ -222,7 +212,6 @@ chooser_name=Item Name
 chooser_none=Keine items passt zu Ihrer Suche
 chooser_search=Zeige item Treffer
 chooser_ok=Suchen
-
 cmds_title=Welt Befehle
 cmds_header=Welt-Level Operatoren
 cmds_gamemode=Ändere Standard Spiel-Modus
@@ -262,12 +251,10 @@ cmds_difficultydone=Schwierigkeitsstufe geändert
 cmds_say=Broadcast Nachricht
 cmds_sayb=Senden
 cmds_msgdone=Sende Nachricht an alle Spieler
-
 manual_title=Editiere Konfigurationsdatei
 manual_desc=Diese Seite erlaubt manuell die Minecraft Server Konfigurationsdatei <tt>$1</tt> zu bearbeiten. Seien Sie vorsichtig, da keine Validierung auf Ihre Eingabe gemacht wird. Alle Änderungen werden erst aktiviert, wenn der Server neu gestartet wird.
 manual_err=Fehlgeschlagen Konfigurationsdatei zu speichern
 manual_econf=Nichts eingegeben!
-
 download_title=Download Minecraft Server
 download_already=Ihr System läuft bereits mit der neuesten Version des Minecraft Server.
 download_done=Ihr System wurde auf die neueste Version des Minecraft Server upgegradet.
@@ -280,7 +267,6 @@ download_err=Konnte Minecraft Server einrichten
 download_edir=Fehlendes oder nicht absolutes Installationsverzeichnis
 download_euser=Benutzer zum ausführen existiert nicht
 download_eurl=Fehlgeschlagen Server Download URL zu erhalten
-
 backup_title=Geplantes Backup
 backup_header=Optionen für geplante Welt-Backups
 backup_sched=Backup planen
@@ -297,7 +283,6 @@ backup_email=E-Mail Backup-Bericht an
 backup_noemail=Keine
 backup_email_err=Nur E-Mail senden im Fehlerfall
 backup_emailto=Adresse
-
 log_conf=Server Konfiguration geändert
 log_stop=Minecraft Server gestoppt
 log_start=Minecraft Server gestartet
@@ -311,7 +296,6 @@ log_delboot=Deaktiviere Server beim Booten
 log_enable_backup=Geplante Backups auf $1 aktiviert
 log_disable_backup=Geplante Backups deaktiviert
 log_playtime=Spielzeit Limits geändert
-
 monitor_up=Minecraft Server lebt
 monitor_latest=Minecraft Server ist aktuell
 monitor_down=Server-Prozess ist unten
@@ -320,7 +304,6 @@ monitor_notype=Unbekannter Monitortyp!
 monitor_newversion=Neue Version ist verfügbar
 monitor_nojar=JAR Datei $1 existiert nicht
 monitor_checklog=Prüfe Server-Antwort auf Befehle?
-
 playtime_title=Tägliche Spielzeit
 playtime_user=Benutzername
 playtime_time=Zeit online

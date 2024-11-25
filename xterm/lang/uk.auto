@@ -5,8 +5,6 @@ index_suse=Пакет Perl <tt>perl-IO-Tty</tt> відсутній, його с�
 index_euser=Помилка: користувач $1 не може запустити оболонку, оскільки її не існує!
 index_connecting=Підключення ..
 index_missing=Модуль Perl <tt>$1</tt> відсутній. Вам потрібно зв’язатися з адміністратором, щоб вирішити цю проблему.
-index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Запустіть оболонку від імені користувача Unix
 acl_sameuser=Те саме, що і вхід у Webmin
-acl_sudoenforce=Enforce <em>sudo</em>-only privileges

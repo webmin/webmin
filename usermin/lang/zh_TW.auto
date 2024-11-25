@@ -107,12 +107,6 @@ ui_hnm1=網址中的主機名
 ui_hnm2=網址中的域名
 ui_hnm3=其他名字 ..
 ui_tabs=分類模塊？
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
 
 upgrade_title2=安裝Usermin
 upgrade_descdeb=通過此表，您可以通過升級其Debian軟件包將整個Usermin安裝升級到新版本。您可以從本地.deb文件，上載的文件或最新版本的<a href=http://www.usermin.com/>www.usermin.com</a>安裝。與手動升級一樣，所有配置設置和第三方模塊都將保留。

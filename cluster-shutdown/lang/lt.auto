@@ -14,7 +14,6 @@ index_smtp=Siųsti per SMTP serverį
 index_this=Šis serveris
 index_nu=Nenustatytas joks vartotojas
 index_nl=Prisijungimas nepavyko
-
 shut_title=Išjunkite serverius
 shut_rusure=Ar tikrai norite nedelsdami išjungti pasirinktus $1 serverius?
 shut_ok=Taip, daryk
@@ -23,12 +22,10 @@ shut_failed=.. nepavyko! $1
 shut_done=.. padaryta.
 shut_sel=Pasirinkti serveriai yra šie :
 shut_ecannot=Jums neleidžiama išjungti serverių
-
 reboot_title=Iš naujo paleiskite serverius
 reboot_rusure=Ar tikrai norite nedelsdami paleisti iš naujo pasirinktus $1 serverius?
 reboot_doing=Perkraunama $1 ..
 reboot_ecannot=Jums neleidžiama perkrauti serverių
-
 sched_err=Nepavyko nustatyti automatinio serverio tikrinimo
 sched_eemail=Trūksta el. Pašto adreso
 sched_esmtp=Trūksta arba netinkamas SMTP serveris

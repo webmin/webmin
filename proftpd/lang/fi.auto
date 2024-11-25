@@ -27,8 +27,6 @@ index_global=Globaali kokoonpano
 index_create=Luo virtuaalipalvelin
 index_version=ProFTPd-versio $1 
 index_proftpd=proftpd
-index_dlheader=Add Options
-index_dlmode=Add options for
 
 efailed=$1 tallennus epäonnistui
 
@@ -39,7 +37,6 @@ type_3=Kulunvalvonta
 type_4=sekalainen
 type_5=Käyttäjä ja ryhmä
 type_6=Authentication
-type_7=SSL Options
 
 virt_title=Virtuaalipalvelimen asetukset
 virt_header1=$1 : lle
@@ -383,19 +380,6 @@ mod_readme_display=Ilmoita käyttäjälle readme-tiedostojen vastaavuudesta
 mod_readme_none=Ei mitään
 mod_readme_edisplay=Puuttuu readme-tiedostokuvio
 
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
-
 start_err=FTP-palvelimen käynnistäminen epäonnistui
 start_einetd=Et voi käynnistää palvelindeemonia inetd-tilassa.
 
@@ -426,7 +410,6 @@ ftpindex_addlimit=Lisää komentokohtaisia vaihtoehtoja ..
 ftpindex_header2=$1 $2 : ssa
 ftpindex_return=hakemistokohtaisten asetusten tiedosto
 ftpindex_header=$1 : lle
-ftpindex_cmds=FTP commands
 
 find_err=Asetustiedostojen löytäminen epäonnistui
 find_eanon=Anonyymiä FTP: tä ei ole määritetty missään virtuaalipalvelimessa

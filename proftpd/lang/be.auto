@@ -27,8 +27,6 @@ index_global=Глабальная канфігурацыя
 index_create=Стварыце віртуальны сервер
 index_version=Версія ProFTPd $1 
 index_proftpd=ProFTPd
-index_dlheader=Add Options
-index_dlmode=Add options for
 
 efailed=Не ўдалося захаваць $1 
 
@@ -39,7 +37,6 @@ type_3=Кіраванне доступам
 type_4=Рознае
 type_5=Карыстальнік і група
 type_6=Аўтэнтыфікацыя
-type_7=SSL Options
 
 virt_title=Параметры віртуальнага сервера
 virt_header1=Для $1 
@@ -383,19 +380,6 @@ mod_readme_display=Паведаміць карыстачу пра файлы Rea
 mod_readme_none=Не
 mod_readme_edisplay=Адсутнічае шаблон файлаў readme
 
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
-
 start_err=Не атрымалася запусціць FTP-сервер
 start_einetd=Вы не можаце запусціць дэман сервера ў рэжыме inetd.
 
@@ -426,7 +410,6 @@ ftpindex_addlimit=Дадайце параметры для каманды для
 ftpindex_header2=$1 у $2 
 ftpindex_return=файл з варыянтамі каталога
 ftpindex_header=Для $1 
-ftpindex_cmds=FTP commands
 
 find_err=Не атрымалася знайсці файлы опцый
 find_eanon=Ананімны FTP не ўсталёўваецца на любым віртуальным серверы

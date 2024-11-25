@@ -17,8 +17,6 @@ index_loadname=CPU-belastning gennemsnit:
 index_loadnums=$1 (1 min), $2 (5 minutter), $3 (15 minutter)
 index_cpuname=CPU-type:
 index_inzone=I zone $1 
-index_core=$1 core
-index_cores=$1 cores
 
 pid=ID
 owner=Ejer

@@ -6,7 +6,6 @@ index_sel=已选择的模块..
 index_search=搜索
 index_header=全部 Webmin 帮助搜索
 index_return=搜索表格
-
 search_err=搜索失败
 search_eterms=缺失搜索项
 search_emods=没有选择模块

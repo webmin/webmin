@@ -17,8 +17,6 @@ index_loadname=متوسطات حمل وحدة المعالجة المركزية:
 index_loadnums=$1 (1 دقيقة) ،$2 (5 دقائق) ،$3 (15 دقيقة)
 index_cpuname=نوع وحدة المعالجة المركزية:
 index_inzone=في المنطقة$1
-index_core=$1 core
-index_cores=$1 cores
 
 pid=هوية شخصية
 owner=صاحب

@@ -156,7 +156,7 @@ desc_args--match-set=$2 sisältyy IP-joukkoon $1
 desc_src=lähde
 desc_dest=määränpää
 
-redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+redhat_einstalled=<tt>iptables (6)</tt> -käynnistystoimintoa ei löytynyt, mikä osoittaa, että IPtable-pakettia ei ole asennettu järjestelmään
 redhat_eoutput=IPtable-tilan saamisessa komennosta $1 tapahtui virhe. Tämä luultavasti osoittaa, että järjestelmäsi on määritetty käyttämään IP-ketjuja IPtaulujen sijasta.
 
 gentoo_escript=Gentoo IPtables -aloitusohjelmaa $1 ei löydy järjestelmästäsi.

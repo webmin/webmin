@@ -250,12 +250,6 @@ ui_hnm1=Názov hostiteľa z adresy URL
 ui_hnm2=Názov domény z adresy URL
 ui_hnm3=Iné meno ..
 ui_tabs=Kategorizovať moduly?
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
 
 upgrade_title=Aktualizujte Usermin
 upgrade_title2=Nainštalujte Usermin

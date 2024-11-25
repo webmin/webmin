@@ -32,6 +32,8 @@ index_long=アクションの内容を詳細に表示する
 index_global=&lt;このリストにないモジュール&gt;
 
 search_title=検索結果
+search_date=日付
+search_time=時刻
 search_user=ユーザ
 search_host=クライアント アドレス
 search_webmin=Server名

@@ -239,6 +239,7 @@ opts_mydomain_default=デフォルト (システムにより供給)
 opts_myhostname=このメール システムのインターネット ホスト名
 opts_myhostname_default=デフォルト (システムにより供給)
 opts_mynetworks=ローカル ネットワーク
+opts_mynetworks_default=デフォルト (すべてネットワークに接続)
 opts_mynetworks_style=自動ローカルネットワーク
 opts_mynetworks_subnet=Same IP subnet
 opts_mynetworks_class=Same network class

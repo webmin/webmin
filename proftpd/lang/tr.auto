@@ -27,8 +27,6 @@ index_global=Global Yapılandırma
 index_create=Sanal sunucu oluştur
 index_version=ProFTPd sürümü $1 
 index_proftpd=proftpd
-index_dlheader=Add Options
-index_dlmode=Add options for
 
 efailed=$1 kaydedilemedi
 
@@ -39,7 +37,6 @@ type_3=Giriş kontrolu
 type_4=Çeşitli
 type_5=Kullanıcı ve Grup
 type_6=Kimlik Doğrulama
-type_7=SSL Options
 
 virt_title=Sanal Sunucu Seçenekleri
 virt_header1=1 için
@@ -383,19 +380,6 @@ mod_readme_display=Benioku dosyalarını eşleştiren kullanıcıyı bilgilendir
 mod_readme_none=Yok
 mod_readme_edisplay=Benioku dosyaları kalıbı eksik
 
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
-
 start_err=FTP sunucusu başlatılamadı
 start_einetd=İnetd modundayken sunucu arka plan programını başlatamazsınız.
 
@@ -426,7 +410,6 @@ ftpindex_addlimit=İçin komut başına seçenekler ekle ..
 ftpindex_header2=$2 içinde $1 
 ftpindex_return=dizin başına seçenekler dosyası
 ftpindex_header=1 için
-ftpindex_cmds=FTP commands
 
 find_err=Seçenek dosyaları bulunamadı
 find_eanon=Anonim FTP herhangi bir sanal sunucuda ayarlanmamış

@@ -3,5 +3,3 @@ index_memswap=Место подкачки:
 index_memburst=Взрывная память:
 index_memtf=$1 всего / $2 бесплатно
 index_memtfc=Всего $1 / $2 свободно / $3 в кэше
-index_core=$1 core
-index_cores=$1 cores

@@ -148,6 +148,7 @@ desc_args--match-set=$2 est contenu dans l'ensemble IP $1
 desc_src=la source
 desc_dest=destination
 
+redhat_einstalled=Aucune action de démarrage <tt>iptables (6)</tt> n'a été trouvée, indiquant que le package IPtables n'est pas installé sur votre système
 redhat_eoutput=Une erreur est survenue en tentant d'obtenir le status d'IPtables à l'aide de la commande $1. Ceci indique probablement que votre système a été configuré pour utiliser IPchains au lieu de IPtables.
 
 gentoo_escript=Le script de démarrage $1 de Gentoo n'a pas été trouvé sur votre système.

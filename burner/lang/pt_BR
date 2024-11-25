@@ -12,7 +12,6 @@ index_none=Nenhum perfil de gravação foi definido.
 index_global=Opções Globais
 index_ecdrecord=O comando de gravação de CD $1 não foi encontrado em seu sistema. Talvez ele não esteja instalado, ou sua <a href='$2'>configuração do módulo</a> está incorreta.
 index_return=lista de perfis
-
 edit_title=Editar perfil de gravação
 create_title=Criar um perfil de gravação
 edit_emkisofs=O comando para gerar sistemas de arquivo ISO $1 não foi encontrado em seu sistema. Talvez ele não esteja instalado, ou a sua <a href='$2'>configuração de módulo</a> está incorreta.
@@ -43,7 +42,6 @@ edit_fly1=Direto do CD para gravação
 edit_fly0=Usar arquivo temporário
 edit_srcdrv=Driver do dispositivo fonte
 edit_dstdrv=Driver do dispositivo de destino
-
 save_err=Falha ao salvar perfil
 save_ename=Nome do perfil faltando
 save_eiso=Arquivo ISO inválido ou faltando
@@ -53,7 +51,6 @@ save_edirs=Não foram escolhidos diretórios de origem
 save_emp3s=Não foram escolhidos arquivos MP3 ou diretórios
 save_emp3=O arquivo MP3 ou diretório '$1' não existe
 save_eother=Arquivo do dispositivo de origem não existe
-
 burn_title=Gravar CD
 burn_rutest1=Você tem certeza que quer testar a gravação da imagem ISO $1 ?
 burn_rusure1=Você tem certeza que quer gravar a imagem ISO $1 em CD ?
@@ -88,7 +85,6 @@ burn_mp3format=O arquivo $1 não parece estar no formato MP3.
 burn_746=Atenção! Suas trilhas de audio tem o tamanho de $1 MB, que está além do total de 746 MB permitido em um CD comum de audio. Entretando, caberá em um CD de 80 minutos.
 burn_807=Atenção! Suas trilhas de audio tem o tamanho de $1 MB, que está além do total de 807 MB permitido em um CD de 80 minutos.
 burn_mp3size=As trilhas de audio convertidas tem o tamanho de $1 MB, de um total de $2 MB que é permitido em um CD comum de audio.
-
 dev_title=Opções do dispositivo
 dev_header=Opções do dispositivo de gravação de CD
 dev_device=Dispositivo de gravação
@@ -98,14 +94,12 @@ dev_other=Outra..
 dev_extra=Opções extra do <tt>cdrecord</tt>
 dev_err=Falha ao salvar as opções do dispositivo
 dev_eother=Velocidade de gravação invalida ou faltando
-
 mkisofs_title=Opções do sistema de arquivos ISO
 mkisofs_header=Opções globais do sistema de arquivos ISO
 mkisofs_novers=Incluir o número da versão no nome dos arquivos?
 mkisofs_notrans=Permitir todos os caracteres no nome dos arquivos?
 mkisofs_nobak=Pular arquivos de backup?
 mkisofs_fsyms=Seguir links simbólicos?
-
 config_cdrecord=Comando para gravar CD
 config_mkisofs=Comando para gerar sistemas de arquivo ISO
 config_mpg123=Comando para decodificar MP3

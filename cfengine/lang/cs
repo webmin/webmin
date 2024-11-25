@@ -51,7 +51,6 @@ index_required=Zkontrolovat souborový systém $1
 index_required2=Zkontrolovat $1 souborové systémy
 index_disks=$index_required
 index_disks2=$index_required2
-
 edit_title=Editace nastavení pro třídu
 edit_create1=Přidat akci a třídu
 edit_create2=Přidat nastavení pro třídu
@@ -193,7 +192,6 @@ edit_resother=Ostatní <tt>resolv.conf</tt> řádky
 edit_route=Výchozí brána
 edit_reqfs=Souborový systém ke kontrole
 edit_reqfree=Minimální volné místo
-
 save_err=Chyba při ukládání class
 save_eclass=Chybějící nebo nesprávný název třídy
 save_elinkfrom=Chybějící nebo nesprávný zdroj u symbolického linku $1
@@ -256,7 +254,6 @@ save_emiscmode=Neplatná nastavení mountování pro $1
 save_eroute=Chybějící nebo nesprávná výchozí brána
 save_ereq=Neplatný souborový systém ke kontrole $1
 save_ereqfree=Chybějící nebo nesprávné minimum volného místra pro $1
-
 section_groups=Definovat skupiny
 section_classes=$section_groups
 section_control_0=Hlavní kontrola
@@ -284,7 +281,6 @@ section_grant=$section_admit
 section_deny=Zakázané adresáře
 section_required=Kontrolovat souborové systémy
 section_disks=$section_required
-
 run_title=Spuštění konfiguračního stroje
 run_desc=Tato stránka může být použita pro spuštění konfiguračního stroje na tomto hostovi. Jakmile ho spustíte, všechny nakonfigurované akce budou provedeny, pokud to je nezbytné.
 run_header=Nastavení pro spuštění CF stroje na tomto hostovi
@@ -297,7 +293,6 @@ run_nolinks=Může vytvořit symbolické linky?
 run_verbose=Ukázat podrobný výstup?
 run_exec=Spuštění příkazu $1 ..
 run_ok=Spustit
-
 cfd_title=Démon konfiguračního stroje
 cfd_stop=Ukončit démona konfiguračního stroje
 cfd_stopdesc=Klepnutím na toto tlačítko ukončíte spuštěného démona konfiguračního stroje. Tento úkon zamezí ostatním hostům přístup pro spuštění konfigurací na tomto serveru a ukončí naplánovaná spuštění v dané konfiguraci.
@@ -306,7 +301,6 @@ cfd_startdesc=Klepnutím na toto tlačítko spustíte démona konfiguračního s
 cfd_return=nastavení démona
 cfd_none=Doposud nebyla vytvořena žádná nastavení pro démona konfiguračního stroje
 cfd_ecmd=Příkaz démona konfiguračního stroje $1 nebyl ve vašem systému nalezen. Možná není nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
-
 push_title=Hosté pro vzdálenou konfiguraci
 push_header=Nastavení distribuce konfigurace serveru
 push_domain=Název domény
@@ -323,7 +317,6 @@ push_return=Hosté pro vzdálenou konfiguraci
 push_title2=Spustit konfiguraci hostů
 push_exec=Spuštění konfigurace hostů pomocí příkazu $1 ..
 push_ecmd=Příkaz pro spuštění vzdáleného konfiguračního stroje $1. Možná není nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
-
 type_control_0=Níže uvedný seznam obsahuje akce, které budou spuštěny, jakmile se spustí konfigurační stroj, a to v pořadí, ve kterém budou spouštěny. Akce, které nejsou uvedeny v seznamu, nebudou spuštěni, i když se nachází v seznamu na hlavní stránce.
 type_control_1=Níže uvedená nastavení kontrolují globální chování procesu v pozadí, který přijímá požadavky na spuštění konfigurací na tomto hostu v případech, kdy je poslán vzdáleným hostem nebo prostřednictvím plánovače.
 type_directories=Níže uvedené adresáře budou vytvořeny s daným vlastnictvím a právy, pokud již neexistují. Vlastník, skupina a práva jsou vyplněna pouze volitelně.
@@ -345,13 +338,10 @@ type_resolve=DNS server IP adres, který je jste níže vložili, bude využit p
 type_defaultroute=Pokud tato akce běží, konfigurační stroj zkontroluje aktuální výchozí rote proti níže specifikovaných branám.
 type_required=Níže uvedené souborové systémy budou zkontrolovany, zda tato akce poběží při současném ověření, zda jsou tyto systémy přimountovány, a zda nebude zobrazována zpráva s upozorněním. Každý souborový systém bude taktéž zkontrolován, zda má dostatek volného místa, přesahující níže uvedené minimu, pokud je nějaké uvedeno.
 type_disks=$type_required
-
 stop_err=Chyba při ukončení démona konfiguračního stroje
 stop_epids=Dále již nepoběží
 stop_ekill=Chyba při zabití procesu : $1
-
 start_err=Chyba při spuštění démona konfiguračního stroje
-
 log_create_section=Vytvořena akce $1 a třída
 log_create_class=Přidána třída do akce $1
 log_modify_class=Modifikována třída v akci $1
@@ -362,7 +352,6 @@ log_start=Spuštěn démon
 log_stop=Ukončen démon
 log_push=Změněni hosté pro vzdálenou konfiguraci
 log_prun=Spuštěny konfigurace hostů
-
 hosts_title=Webmin CFengine Cluster
 hosts_hosts=Servery v clusteru
 hosts_nohosts=Prozatím nebyly definovány žádné servery, na kterých běží CF stroj.
@@ -374,7 +363,6 @@ hosts_rundesc=Klepnutím na toto tlačítko se spustí na všech výše uvedený
 hosts_copydesc=Klepnutím na toto tlačítko se zkopírují konfigurace CF stroje z tohoto serveru na všechny výše uvedené servery, a zároveň budou ihned spuštěny.
 hosts_opts=Nastavení pro běžící konfigurace
 hosts_return=seznam serverů
-
 add_title=Přidat servery
 add_msg=Přidává se $1 ..
 add_gmsg=Přidávají se servery ve skupině $1 ..
@@ -384,7 +372,6 @@ add_echeck=Server $1 nemá modul konfiguračního stroje
 add_ecfengine=CF stroj není nainstalován na serveru $1
 add_ok=Přidán server $1 ($2 $3)
 add_eversion=CF stroj na serveru $1 je verze $2, avšak tento modul Webminu podporuje pouze verze $3 .
-
 host_title=Spravovaný Server
 host_header=Detaily spravovaného serveru pro správu CF strojů
 host_name=Jméno hosta
@@ -393,10 +380,8 @@ host_delete=Odstranit ze seznamu správy
 host_os=OS od Webminu
 host_cfg=Aktuální konfigurace CFengine stroje od $1
 host_ver=Verze CF stroje
-
 cluster_title=Spuštění konfiguračního stroje
 cluster_header=Probíhá spuštění konfiguračního stroje na všech hostech v clusteru ..
 cluster_success=Výstup z CF stroje na $1 ..
 cluster_failed=Chyba při spuštění CF stroje na $1 : $2
-
 this_server=tento server

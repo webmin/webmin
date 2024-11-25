@@ -127,13 +127,9 @@ smtpd_nomap2=Ingen karta för begränsningar för avsändaradresser har ännu la
 smtpd_map=Tillåtna adresser för vidarebefordran
 smtpd_map2=Begränsningar i avsändarens adresser
 
+opts_smtp_use_tls=Använd TLS för SMTP-anslutningar
 opts_smtp_sasl_security_options=SASL-säkerhetsalternativ
 opts_smtp_tls_security_level=SMTP TLS klient säkerhetsnivå
-opts_inet_protocols=Internet protocols to enable
-opts_inet_protocols_all=All available
-opts_smtp_address_preference=Preferred SMTP client protocol
-opts_smtp_address_preference_any=Either
-opts_smtp_balance_inet_protocols=Validate SMTP client protocols
 
 debug_version=Postfix-modul för Webmin - version $1
 opts_edebug=Saknad eller ogiltig verbos loggningsnivå - måste vara ett nummer större än noll
@@ -219,8 +215,6 @@ acl_postfinger=Kan kontrollera postfixkonfiguration?
 acl_manual=Kan redigera konfigurationsfilen?
 acl_dir=Tillåten katalog för kartfiler
 acl_bcc=Kan redigera BCC-kartläggning?
-acl_body=Can edit body checks?
-acl_dependent=Can edit sender dependent transport maps?
 
 boxes_title=Användarbrevlådor
 boxes_user=Användare
@@ -270,15 +264,6 @@ mail_forward=Framåt
 mail_rfc=Från rad
 mail_move=Flytta till:
 mail_eexists=Meddelandet finns inte längre!
-mail_qfile=Mail queue file
-mail_qlast=Last retried at
-mail_qdir=Mail queue status
-mail_qdir_active=Active
-mail_qdir_incoming=Incoming
-mail_qdir_deferred=Deferred
-mail_qdir_corrupt=Corrupt
-mail_qdir_hold=On hold
-mail_qdir_maildrop=Mail drop
 
 view_title=Läs e-post
 view_desc=Meddelande $1 i $2
@@ -389,11 +374,9 @@ mailq_active=Aktiva
 mailq_deferred=uppskjuten
 mailq_hold=Håll vald
 mailq_unhold=Ta bort valt
-mailq_dir=Queue state
 
 flushq_title=Spolningskö
 flushq_desc=Tvingar försökt leverans av e-post med kommandot $1 ..
-flushq_desc2=.. check the mail log for results
 
 qview_title=Meddelande i kö
 qview_desc=Från fil $1
@@ -601,10 +584,6 @@ opts_broken_sasl_auth_clients=Hanterar du icke-kompatibla SMTP-klienter?
 sasl_opts=SMTP-säkerhetsalternativ
 sasl_noanonymous=Avvisa anonyma inloggningar
 sasl_noplaintext=Avvisa vanliga textinloggningar
-sasl_noactive=Reject Disallow subject to active (non-dictionary) attack
-sasl_nodictionary=Reject methods subject to passive (dictionary) attack
-sasl_forward_secrecy=Only allow methods that support forward secrecy
-sasl_mutual_auth=Only allow methods that provide mutual authentication
 opts_smtpd_delay_reject=Försena klienter med misslyckade inloggningar?
 sasl_recip=SMTP-mottagarbegränsningar
 sasl_relay=SMTP-reläbegränsningar

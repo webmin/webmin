@@ -42,9 +42,7 @@ index_emailto=نعم ، للتصدي
 index_email2=إرسال بريد إلكتروني عند الانتهاء من التحميلات؟
 
 upload_title=تحميل الملفات
-upload_direct=Write files directly to disk?
 upload_err=فشل تحميل الملفات
-upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=دليل مفقود للتحميل
 upload_euser=اسم المستخدم مفقود أو غير صالح
 upload_egroup=اسم مجموعة مفقود أو غير صالح

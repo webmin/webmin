@@ -14,7 +14,6 @@ index_memb=$1 членове
 index_hst=Домакини и групи домакини
 index_nohst=Не са дефинирани хостове или групи.
 index_hostgroup=Водещ/Група
-index_comment=Description
 index_parent=родител
 index_hardware=Адрес на хардуер
 index_group=Група:

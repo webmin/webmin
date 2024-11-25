@@ -37,7 +37,6 @@ index_notify=Stuur e-pos vir Webmin-aksies?
 index_notify_mods=Vir aksies in modules
 index_notify_users=Vir optrede deur gebruikers
 index_notify_email=Stuur e-pos aan
-index_notify_email_def=Default notification address
 index_notify_usub=Sluit gebruikersnaam by e-posonderwerp in?
 index_notify_msub=Sluit handeling by e-posonderwerp in?
 index_searchtab=Soek logs
@@ -46,7 +45,8 @@ index_searchdesc=Hierdie vorm kan gebruik word om te soek vir Webmin-aksies volg
 index_notifydesc=Gebruik hierdie vorm om e-poskennisgewings op te stel wanneer Webmin-aksies deur geselekteerde gebruikers of in gekose modules uitgevoer word.
 
 search_title=Soek Resultate
-search_datetime=Date and time
+search_date=datum
+search_time=tyd
 search_user=gebruiker
 search_host=Kliëntadres
 search_webmin=Webmin-bediener

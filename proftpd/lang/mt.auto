@@ -27,8 +27,6 @@ index_global=Konfigurazzjoni Globali
 index_create=Oħloq server virtwali
 index_version=Verżjoni ProFTPd $1 
 index_proftpd=ProFTPd
-index_dlheader=Add Options
-index_dlmode=Add options for
 
 efailed=Ma rnexxielux jiffranka $1 
 
@@ -39,7 +37,6 @@ type_3=Kontroll tal-Aċċess
 type_4=Diversi
 type_5=Utent u Grupp
 type_6=Awtentikazzjoni
-type_7=SSL Options
 
 virt_title=Għażliet ta 'Server Virtwali
 virt_header1=Għal $1 
@@ -383,19 +380,6 @@ mod_readme_display=Avża lill-utent dwar l-allinjament ta 'fajls readme
 mod_readme_none=Xejn
 mod_readme_edisplay=Nieqes il-mudell ta 'fajls readme
 
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
-
 start_err=Naqset milli tibda server FTP
 start_einetd=Ma tistax tibda d-daemon tas-server meta tkun fil-mod inetd.
 
@@ -426,7 +410,6 @@ ftpindex_addlimit=Żid għażliet għal kull kmand għal ..
 ftpindex_header2=$1 f' $2 
 ftpindex_return=fajl b'għażliet ta 'direttorju
 ftpindex_header=Għal $1 
-ftpindex_cmds=FTP commands
 
 find_err=Naqset milli ssib fajls ta 'għażliet
 find_eanon=FTP anonimu m'huwa installat fl-ebda server virtwali

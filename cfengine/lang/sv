@@ -51,7 +51,6 @@ index_required=Kontroller filsystem $1
 index_required2=Kontrollera $1 filsystem
 index_disks=$index_behövd
 index_disks2=$index_behövd2
-
 edit_title=Ändra Inställning för Klass
 edit_create1=Lägg till Handling och Klass
 edit_create2=Lägg till Inställning för Klass
@@ -193,7 +192,6 @@ edit_resother=Andra <tt>resolv.conf</tt> rader
 edit_route=Standard väg
 edit_reqfs=Filsystem att kontrollera
 edit_reqfree=Minimalt ledigt utrymme
-
 save_err=Misslyckades att spara klass
 save_eclass=Saknad eller felaktig klass namn
 save_elinkfrom=Saknad eller felaktig från för symlänk $1
@@ -256,7 +254,6 @@ save_emiscmode=Felaktig monterings val för $1
 save_eroute=Saknad eller felaktig standard väg
 save_ereq=Felaktigt filsystem att kontrollera $1
 save_ereqfree=Saknad eller felaktig minimal ledigt utrymme för $1
-
 section_groups=Definiera grupper
 section_classes=$avsnitt_grupper
 section_control_0=Master kontroll
@@ -284,7 +281,6 @@ section_grant=$avsnitt_godkänna
 section_deny=Neka sökvägar
 section_required=Kontrollera filsystem
 section_disks=$avsnitt_obligatorisk
-
 run_title=Kör Konfigurations Motor
 run_desc=Den här sida kan användas att köra Konfigurations Motorn på denna värd. När du kör, alla handlingar som du konfigurerat kommer att distribueras ut där det är nödvändigt.
 run_header=Val för körande CFengine på denna värd
@@ -297,7 +293,6 @@ run_nolinks=Kan skapa symboliska länkar?
 run_verbose=Visa utförlig utmatning?
 run_exec=Kör kommando $1 ..
 run_ok=Kör Nu
-
 cfd_title=Konfigurations Motor Demon
 cfd_stop=Stoppa Konfigurations Motor Demonen
 cfd_stopdesc=Klicka på knappen för att stoppa Konfigurations Motor demonen. Detta kommer att hindra andra värdar att köra konfiguration på denna server, och stoppa schemalagd körning av konfiguration.
@@ -306,7 +301,6 @@ cfd_startdesc=Klicka på knappen för att starta Konfigurations Motor demonen me
 cfd_return=demon val
 cfd_none=Inga inställningar för Konfigurations Motor demonen har blivit skapade ännu.
 cfd_ecmd=Konfigurations Motor demon kommando $1 hittades inte på ditt system. Kanske den inte är installerad, eller din <a href='$2'>modul konfiguratin</a> är felaktig.
-
 push_title=Fjärr Konfigurations Värdar
 push_header=Konfigurations server distributions val
 push_domain=Domän namn
@@ -323,7 +317,6 @@ push_return=fjärr konfigurations värdar
 push_title2=Kör Värd Konfigurationer
 push_exec=Kör värd konfiguration med kommando $1 ..
 push_ecmd=Konfigurations Motor fjärr utförande kommando $1 hittades inte på ditt system. Kanske den inte är installerad, eller din <a href='$2'>modul konfiguration</a> är felaktig.
-
 type_control_0=Fältet under listar händelser som genomförs när konfigurations motor'n körs, i den ordning som listas kommer att genomföras. Handlingar som inte är listade kommer inte att bli processade, även om de är listad på huvud sidan.
 type_control_1=Valet ovan kontrollerar den globala beteende mönstret av bakgrunds processen som accepterar förfrågningar att genomföra konfigurationen på denna värd när den får en förfrågan av en fjärr värd, eller på en schemalagd basis.
 type_directories=Sökvägar listade nedanför kommer att bli skapade med given ägarskap och tillåtelse när de inte existerar. Ägaren, Gruppen och tillåtelse fälten ät tillval.
@@ -345,13 +338,10 @@ type_resolve=DNS server IP adressen som du skriver nedanför kommer att använda
 type_defaultroute=När denna handling körs, kommer konfigurations motor'n att kontrollera nuvarande standard väg mot vägen specificerad nedanför.
 type_required=Filsystemet listad nedanför kommer att kontrolleras när händelsen körs för att verifiera att de är monterade, och om inte en varnings meddelande kommer att visas. Varje filsystem kommer också att kontrolleras för att se om ledigt utrymme har minskat under minimum, om något.
 type_disks=$typ_obligatorisk
-
 stop_err=Misslyckades att stoppa Konfigurations Motor demonen
 stop_epids=Körs inte längre
 stop_ekill=Misslyckades att döda process : $1
-
 start_err=Misslyckades att starta Konfigurations Motor demonen
-
 log_create_section=Skapade handling $1 och klass
 log_create_class=Lade till klass till handling $1
 log_modify_class=Modifierade klass i handling $1
@@ -362,7 +352,6 @@ log_start=Startade demon
 log_stop=Stoppade demon
 log_push=Ändrade fjärr konfiguration värdar
 log_prun=Körde värd konfiguration
-
 hosts_title=Webmin CFengine Kluster
 hosts_hosts=Servrar i Kluster
 hosts_nohosts=Ingen Webmin server som kör CFengine har blivit definierad ännu.
@@ -374,7 +363,6 @@ hosts_rundesc=Klicka på knappen för att få Konfigurations Motorn att köra al
 hosts_copydesc=Klicka på knappen för att få CFengine Konfiguration från server kopierad till alla servrar ovan, och omedelbart utförd.
 hosts_opts=Tillval för körande konfiguration
 hosts_return=server lista
-
 add_title=Lägg till Servrar
 add_msg=Lägger till $1 ..
 add_gmsg=Lägger till servrarna till grupp $1 ..
@@ -384,7 +372,6 @@ add_echeck=Server $1 har inte konfigurations motor modulen
 add_ecfengine=CFengine är inte installerad på server $1
 add_ok=Har lagt till server $1 ($2 $3)
 add_eversion=CFengine på server $1 är version $2, men denna Webmin modul stödjer endast versioner $3 .
-
 host_title=Hanterad Server
 host_header=Hantera CFengine server detaljer
 host_name=Värd namn
@@ -393,10 +380,8 @@ host_delete=Ta bort från hanteringslista
 host_os=OS från Webmin
 host_cfg=Nuvarande CFengine konfiguration från $1
 host_ver=CFengine version
-
 cluster_title=Kör Konfigurations Motor
 cluster_header=Köra konfigurations motor på alla värdar på kluster ..
 cluster_success=Utmatning från CFengine på $1 ..
 cluster_failed=Misslyckades att köra CFengine på $1 : $2
-
 this_server=Denna server

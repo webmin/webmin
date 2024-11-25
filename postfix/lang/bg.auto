@@ -3,11 +3,6 @@ opts_resolve_dequoted_address=Да се предотврати използва�
 opts_smtpd_discard_ehlo_keywords=SMTP EHLO ключови думи, които да не се изпращат
 
 opts_smtp_tls_security_level=SMTP TLS ниво на сигурност на клиента
-opts_inet_protocols=Internet protocols to enable
-opts_inet_protocols_all=All available
-opts_smtp_address_preference=Preferred SMTP client protocol
-opts_smtp_address_preference_any=Either
-opts_smtp_balance_inet_protocols=Validate SMTP client protocols
 
 mapping_toomany=Има $1 записи на картата, което е над ограничението за показване на $2.
 mapping_find=Показване на съвпадения:
@@ -22,26 +17,11 @@ sni_dom=Име на хост
 sni_certs=Файлове със сертификати
 
 acl_sni=Може ли да редактирате сертификати?
-acl_body=Can edit body checks?
-acl_dependent=Can edit sender dependent transport maps?
-
-mail_qfile=Mail queue file
-mail_qlast=Last retried at
-mail_qdir=Mail queue status
-mail_qdir_active=Active
-mail_qdir_incoming=Incoming
-mail_qdir_deferred=Deferred
-mail_qdir_corrupt=Corrupt
-mail_qdir_hold=On hold
-mail_qdir_maildrop=Mail drop
 
 view_aname=Прикачен файл
 
 mailq_deleteall=Изчистване на опашката за поща
 mailq_deletealldesc=Кликнете върху този бутон, за да изтриете всички съобщения от опашката за поща.
-mailq_dir=Queue state
-
-flushq_desc2=.. check the mail log for results
 
 opts_mime_header_checks=Таблици за проверка на MIME заглавки
 opts_header_checks_no_map=(В момента не е дефинирана карта за проверка на заглавка. Първо дефинирайте карта, след което можете да я редактирате)
@@ -50,10 +30,6 @@ opts_mime_header_checks_no_map=(В момента не е дефинирана �
 
 log_sni=Променете опциите за картографиране на сертификати
 
-sasl_noactive=Reject Disallow subject to active (non-dictionary) attack
-sasl_nodictionary=Reject methods subject to passive (dictionary) attack
-sasl_forward_secrecy=Only allow methods that support forward secrecy
-sasl_mutual_auth=Only allow methods that provide mutual authentication
 opts_smtp_enforce_tls=Искате ли TLS криптиране?
 sasl_level_dane=Възможности DANE TLS
 sasl_level_dane_only=Задължително DANE TLS

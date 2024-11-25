@@ -64,7 +64,6 @@ edit_pre=Kommandoer, der skal køres inden rotation
 edit_default=Standard ($1)
 edit_sharedscripts=Kun køre scripts én gang for alle filer?
 edit_now=Drej nu
-edit_clone=Clone
 
 global_title=Globale indstillinger
 global_header=Standardindstillinger for alle logfiler

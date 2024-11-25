@@ -250,12 +250,6 @@ ui_hnm1=ชื่อโฮสต์จาก URL
 ui_hnm2=ชื่อโดเมนจาก URL
 ui_hnm3=ชื่ออื่น ๆ ..
 ui_tabs=จัดหมวดหมู่โมดูลหรือไม่
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
 
 upgrade_title=อัพเกรด Usermin
 upgrade_title2=ติดตั้ง Usermin

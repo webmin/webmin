@@ -64,7 +64,6 @@ edit_pre=Ukazi za zagon pred vrtenjem
 edit_default=Privzeto ($1)
 edit_sharedscripts=Za vse datoteke enkrat zaženite skripte?
 edit_now=Zavrtite zdaj
-edit_clone=Clone
 
 global_title=Globalne možnosti
 global_header=Privzete možnosti za vse datoteke dnevnika

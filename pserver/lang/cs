@@ -10,9 +10,7 @@ index_actdesc=CVS server je nastaven pro spuštění z $1 ve vašem systému, al
 index_deact=Deactivovat CVS server
 index_deactdesc=CVS server je nastaven pro spuštění z $1 ve vašem systému, a je navíc aktivní. Klepněte na toto tlačítko, pokud ho chcete deaktivovat a zakázat vzdáleným uživatelům přístup do vašeho CVS skladiště.
 index_return=úvodní stránka modulu
-
 setup_einet=Vypadá to, že buď <tt>inetd</tt> nebo <tt>xinetd</tt> je ve vašem systému nainstalován
-
 passwd_title=CVS uživatelé
 passwd_header=Uživatelé CVS serveru
 passwd_desc=CVS server umožní níže uvedeným uživatelům přihlášení a přístup do skladiště. Pokud se pokusí příhlásit uživatel, který není uveden v seznamu, server se namísto toho může pokusit ověřit heslo uživatele oproti systémovému souboru hesel, uvedeného v konfiguraci serveru.
@@ -23,7 +21,6 @@ passwd_sync_create=Přidat nového CVS uživatele, pokud byl přidán Unix uživ
 passwd_sync_modify=Aktualizovat CVS uživatele, pokud byl odpovídající Unix uživatel modifikován.
 passwd_sync_delete=Smazat CVS uživatele, pokud byl odpovídající Unix uživatel smazán.
 passwd_return=seznam uživatelů
-
 edit_title1=Vytvoření CVS uživatele
 edit_title2=Editace CVS uživatele
 edit_header=Detaily CVS uživatele
@@ -35,13 +32,11 @@ edit_pass1=Opustit beze změn
 edit_pass0=Nastavit na..
 edit_unix=Zpřístupnit soubory pro unix uživatele
 edit_unixdef=Shodné s uživatelským jménem
-
 save_err=Chyba při ukládání CVS uživatele
 save_euser=Chybějící nebo nesprávné jméno uživatele
 save_eunix=Chybějící nebo nesprávný unix uživatel
 save_ecopy=Unix uživatel, od kterého se má kopírovat heslo, neexistuje
 save_emd5=Unix heslo, které se má kopírovat, je v MD5 formátu
-
 access_title=Kontrola přístupu uživatele
 access_header=CVS uživatelé, kteří mají povolení pouze ke čtení
 access_readers1=CVS uživatelé, kteří nemají povolení pouze ke čtení
@@ -51,10 +46,8 @@ access_writers0=Poze uživatelé uvedení v seznamu mohou zapisovat ..
 access_desc=Jestliže je uživatel jak v seznamu s povolením pouhého čtení tak s povolením pro zápis, bude povolen přístup pouze pro čtení.
 access_err=Chyba při ukládání kontroly přístupu uživatelů
 access_euser=Uživatel '$1' neexistuje
-
 cvsweb_title=Prohlížení skaldiště
 cvsweb_ecmd=CVS příkaz $1 nebyl ve vašem systému nalezen. Tento příkaz je potřebný pro zobrazení CVS skladiště.
-
 config_title=Konfigurace serveru
 config_header=Nastavení konfigurace serveru
 config_auth=Kontrolovat uživatele oproti systémovému souboru hesel?
@@ -76,7 +69,6 @@ config_hist_R=Soubor odstraněn
 config_lock=Uzamčení adresáře se soubory
 config_err=Chyba při ukládání konfigurace serveru
 config_elock=Chybějící nebo nesprávné uzamčení adresáře se soubory
-
 log_setup=Nastaven CVS server
 log_activate=Aktivován CVS server
 log_deactivate=Deaktivován CVS server

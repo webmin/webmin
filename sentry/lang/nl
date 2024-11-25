@@ -1,7 +1,6 @@
 index_title=Beveiliging Sentries
 index_ecommands=Geen van de beveiligings opdrachten ($1, $2 or $3) zijn gevonden op uw systeem. Misschien is er nog niets geinstalleerd of uw <a href='$4'>module configuratie</a> is niet correct.
 index_return=module menu
-
 portsentry_title=Portsentry Configuratie
 portsentry_below=(Poort scan detectie)
 portsentry_ecommand=De Portsentry daemon $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
@@ -40,7 +39,6 @@ portsentry_ekill=Killen mislukt van de processen $1 : $2
 portsentry_estopped=Niet langer werkend
 portsentry_starterr=Mislukt om portsentry te starten
 portsentry_save=Opslaan en Toevoegen
-
 hostsentry_title=Hostsentry Configuratie
 hostsentry_below=(Verdachte login detectie)
 hostsentry_ecommand=De hostsentry python script $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
@@ -65,7 +63,6 @@ hostsentry_save=Opslaan en Toevoegen
 hostsentry_err=Mislukt om hostsentry configuratie op te slaan
 hostsentry_eignore='$1' is geen geldige gebruiker om logins te negeren met
 hostsentry_emultiple='$1' is geen geldige host om veelvoudig logins van te negeren
-
 logcheck_title=Logcheck Configuratie
 logcheck_ecommand=De logcheck opdracht $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
 logcheck_eversion=De logcheck opdracht $1 is niet de versie die Wemin verwachte.
@@ -82,7 +79,6 @@ logcheck_save=Opslaan en Toevoegen
 logcheck_eto=Ontbrekend of ongeldig email adres
 logcheck_runparts=Log controle werkt door het cron script $1
 logcheck_files=Log files worden in de gaten gehouden
-
 mod_moduleLoginLogout=Opnemen inloggen en uitloggen
 mod_moduleFirstLogin=Detecteer eerst login door gebruiker
 mod_moduleForeignDomain=Detecteer login van buitenstaande domeinen
@@ -95,7 +91,6 @@ mod_moduleInvalidUtmp=Detecteer gemodificeerde utmp ingangen
 mod_moduleHistorySuspicious=Detecteer verdachte opdrachten in historie
 mod_moduleNetworkDaemon=Detecteer daemon die blijft werken
 mod_moduleFileExists=Detecteer verdachte files in home directory
-
 log_hostsentry=Hostsentry configuratie opgeslagen
 log_portsentry=Opgeslagen portsentry configuratie
 log_logcheck=Opgeslagen logcheck configuratie

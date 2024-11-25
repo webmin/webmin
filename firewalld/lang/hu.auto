@@ -45,7 +45,6 @@ index_restart_firewallddesc=Töltse be újra a FirewallD-kiszolgálót, és alka
 index_listrules_restartdesc=Részletek a(z) $1 zónában meglévő gazdag és közvetlen FirewallD szabályokról.
 index_dependent=Nem sikerült újraindítani a(z) $1 függő szolgáltatást
 index_manual=Konfigurációs fájlok szerkesztése.
-index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=Konfigurációs fájlok szerkesztése
 manual_editsel=Szerkessze a FirewallD konfigurációs fájlját

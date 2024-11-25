@@ -287,7 +287,6 @@ password_done=Your password has been successfully changed. You may now <a href='
 password_err=پاس ورڈ تبدیل کرنے میں ناکام
 password_euser=آپ کا لاگ ان نام پاس ورڈ فائل میں نہیں ملا تھا!
 password_eold=موجودہ پاس ورڈ غلط ہے
-password_euserpass=Invalid username or password
 password_enew1=کوئی نیا پاس ورڈ داخل نہیں کیا گیا تھا
 password_enew2=آپ کے نئے پاس ورڈ مماثل نہیں ہیں
 password_epam=PAM error : $1

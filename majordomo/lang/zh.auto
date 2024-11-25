@@ -8,18 +8,14 @@ index_info=清单信息
 index_mail=邮件地址
 index_moderated=适度
 index_count=用户数
-
 global_saved=（已保存）
-
 create_archive=存档邮件列表？
 create_archiveyear=在年度档案中
 create_archivemonth=在月度档案中
 create_archiveday=在每日档案中
 create_minimum=最低要求信息
-
 alias_err=无法设置别名
 alias_eowner=缺少所有者的电子邮件地址
-
 check_title=检查Majordomo配置
 check_test=测试. ..
 check_result=结果/附加检查

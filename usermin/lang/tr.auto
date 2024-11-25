@@ -250,12 +250,6 @@ ui_hnm1=URL'den ana bilgisayar adı
 ui_hnm2=URL'den alan adı
 ui_hnm3=Diğer isim ..
 ui_tabs=Modüller kategorize edilsin mi?
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
 
 upgrade_title=Usermin'i Yükselt
 upgrade_title2=Usermin'i yükle

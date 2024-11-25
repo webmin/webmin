@@ -1,13 +1,6 @@
 lang_title=Idioma i entorn local
 lang_title2=Usermin Idioma i configuració regional
 
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
-
 advanced_pass_desc=Fer que la contrasenya estigui disponible per als programes Usermin?
 advanced_pass_help=No funciona quan l'autenticació de sessió està activada
 

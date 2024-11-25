@@ -16,7 +16,6 @@ edit_NAPTR=Navneautoritetspeker
 
 recs_NAPTR=Navnemyndighet
 
-value_NSEC3PARAM4_none=None
 value_dmarcfo=Feilrapporteringsmodus
 value_dmarcfo0=Rapporter om DKIM og SPF mislyktes
 value_dmarcfo1=Rapporter om enten DKIM eller SPF mislyktes
@@ -42,8 +41,4 @@ value_NAPTR3_U=Bruk regexp-utdata neste
 value_NAPTR3_P=Protokollspesifikk handling
 
 zonekey_algorithm=DNSSEC-algoritme : $1
-zonekey_ds_keytag=Key tag
-zonekey_ds_alg=Algorithm
-zonekey_ds_type=Digest type
-zonekey_ds_digest=Digest string
 zonekey_keep=Behold eksisterende nøkkel hvis DNSSEC er aktivert på nytt?

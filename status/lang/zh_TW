@@ -5,6 +5,7 @@ index_desc=監控
 index_up=狀態
 index_last=最近的檢查
 index_local=本地
+index_add=增加監控的類型：
 index_sched=定時監控
 index_return=服務列表
 index_none=目前沒有被禁用的監控。

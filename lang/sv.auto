@@ -181,7 +181,6 @@ password_done=Ditt lösenord har ändrats. Du kan nu <a href='$1'>logga in igen<
 password_err=Det gick inte att ändra lösenordet
 password_euser=Ditt inloggningsnamn hittades inte i lösenordsfilen!
 password_eold=Det aktuella lösenordet är felaktigt
-password_euserpass=Invalid username or password
 password_enew1=Inget nytt lösenord anges
 password_enew2=Dina nya lösenord matchar inte
 password_epam=PAM-fel : $1

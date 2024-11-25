@@ -6,7 +6,6 @@ index_sel=選択されたモジュール..
 index_search=検索
 index_header=Webmin ヘルプ グローバル検索
 index_return=検索形式
-
 search_err=検索できませんでした
 search_eterms=検索する用語が入力されていません
 search_emods=モジュールが選択されていません

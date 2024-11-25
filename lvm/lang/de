@@ -8,6 +8,7 @@ index_none=Keine Volume-Gruppen auf Ihrem System gefunden.
 index_add=Eine neue Volume-Gruppe hinzufügen.
 index_nolvs=Diese Volume-Gruppe hat<br>noch keine logischen Volumes.
 index_nopvs=Diese Volume-Gruppe hat<br>noch keine physischen Volumes.
+index_addpv=Ein physisches Volume zur Gruppe hinzufügen.
 index_addpv2=Ein physisches Volume zu <tt>$1</tt> hinzufügen.
 index_addlv2=Ein logisches Volume in <tt>$1</tt> erstellen.
 index_addlv2s=Ein Snapshot in <tt>$1</tt> erstellen.

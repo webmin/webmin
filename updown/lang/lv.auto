@@ -42,9 +42,7 @@ index_emailto=Jā, lai uzrunātu
 index_email2=Vai sūtīt e-pastu, kad augšupielāde ir pabeigta?
 
 upload_title=Augšupielādēt failus
-upload_direct=Write files directly to disk?
 upload_err=Neizdevās augšupielādēt failus
-upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=Trūkst direktorija, kurā augšupielādēt
 upload_euser=Trūkst vai nav derīgs lietotājvārds
 upload_egroup=Trūkst vai nav derīgs grupas nosaukums

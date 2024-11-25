@@ -50,7 +50,6 @@ progress_data2n=$1 reçu
 progress_incache=$1 trouvé dans le cache ..
 
 password_temp=Vous devez sélectionner un nouveau mot de passe pour remplacer votre connexion temporaire.
-password_euserpass=Invalid username or password
 password_enewpass=Le nouveau mot de passe n'est pas autorisé : $1
 
 ui_filterbox=Tapez pour filtrer ..

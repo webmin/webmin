@@ -14,7 +14,6 @@ index_smtp=Hantar melalui pelayan SMTP
 index_this=Pelayan ini
 index_nu=Tiada set pengguna
 index_nl=Daftar masuk gagal
-
 shut_title=Pelayan Shut Down
 shut_rusure=Adakah anda pasti mahu menutup pelayan $1 yang dipilih dengan serta-merta?
 shut_ok=Ya, lakukannya
@@ -23,12 +22,10 @@ shut_failed=.. gagal! $1
 shut_done=.. selesai.
 shut_sel=Pelayan yang dipilih adalah :
 shut_ecannot=Anda tidak dibenarkan menutup pelayan
-
 reboot_title=Reboot Server
 reboot_rusure=Adakah anda pasti mahu terus reboot pelayan $1 yang dipilih?
 reboot_doing=Reboot $1 ..
 reboot_ecannot=Anda tidak dibenarkan reboot pelayan
-
 sched_err=Gagal menyediakan pemeriksaan pelayan automatik
 sched_eemail=Alamat e-mel yang tiada
 sched_esmtp=Pelayan SMTP yang hilang atau tidak sah

@@ -14,7 +14,6 @@ index_smtp=Enviar via servidor SMTP
 index_this=Este servidor
 index_nu=Nenhum conjunto de usuários
 index_nl=Falha na autenticação
-
 shut_title=Desligar servidores
 shut_rusure=Tem certeza de que deseja desligar imediatamente os $1 servidores selecionados?
 shut_ok=Sim, faça isso
@@ -23,12 +22,10 @@ shut_failed=.. falhou! $1
 shut_done=.. feito.
 shut_sel=Os servidores selecionados são :
 shut_ecannot=Você não tem permissão para desligar servidores
-
 reboot_title=Reinicializar servidores
 reboot_rusure=Tem certeza de que deseja reiniciar imediatamente os $1 servidores selecionados?
 reboot_doing=Reiniciando $1 ..
 reboot_ecannot=Você não tem permissão para reiniciar servidores
-
 sched_err=Falha ao configurar a verificação automática do servidor
 sched_eemail=Endereço de e-mail ausente
 sched_esmtp=Servidor SMTP inválido ou ausente

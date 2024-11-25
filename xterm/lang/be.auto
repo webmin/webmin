@@ -5,8 +5,6 @@ index_suse=Пакет Perl <tt>perl-IO-Tty</tt> адсутнічае, і яго 
 index_euser=Памылка: карыстальнік $1 не можа запусціць абалонку, бо яна не існуе!
 index_connecting=Падключэнне ..
 index_missing=Модуль Perl <tt>$1</tt> адсутнічае. Вам трэба звярнуцца да адміністратара, каб вырашыць гэтую праблему.
-index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Запусціце абалонку ад імя карыстальніка Unix
 acl_sameuser=Тое самае, што і ўваход у Webmin
-acl_sudoenforce=Enforce <em>sudo</em>-only privileges

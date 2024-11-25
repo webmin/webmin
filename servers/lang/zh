@@ -160,3 +160,4 @@ email_regsubject=系统 $1 已注册
 email_reg=系统已自动执行 $1 
 email_unregsubject=系统 $1 未注册
 email_unreg=系统 $1 已自动取消注册。
+__norefs=1

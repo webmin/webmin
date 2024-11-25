@@ -23,7 +23,6 @@ index_info=Kurzbescheibung
 index_mail=Mail Adresse
 index_moderated=Modieriert
 index_count=# Teilnehmer
-
 global_title=Globale Einstellungen
 global_ecannot=Sie haben nicht die Berechtigung die globalen Einstellungen zu bearbeiten
 global_header=Globale Majordomo-Einstellungen
@@ -37,7 +36,6 @@ global_ewhoami=Die Majordomo Mail-Adresse fehlt oder ist ungültig
 global_eowner=Die Eigentümer Mail-Adresse fehlt oder ist ungültig
 global_esendmail=Das Sendmail-Kommando '$1' gibt es nicht
 global_saved=(gespeichert)
-
 create_ecannot=Sie haben nicht die Berechtigung neue Listen zu erstellen
 create_title=Mailingliste erstellen
 create_header=Details der neue Liste
@@ -62,7 +60,6 @@ create_archiveyear=In jährlicher Datei
 create_archivemonth=In monatlicher Datei
 create_archiveday=In täglicher Datei
 create_minimum=Mindestens erforderlich Angaben
-
 cdigest_ecannot=Sie haben keine Berechtigung eine neue Übersichtsliste zu erstellen
 cdigest_title=Neue Übersichtsliste
 cdigest_header=Details der neuen Übersichtsliste
@@ -79,21 +76,18 @@ cdigest_lines=Die Nachrichten haben insgesamt $1 Zeilen
 cdigest_err=Erstellender Übersichtsliste ist gescheitert
 cdigest_edays=Die Anzahl der Tage fehlt oder ist ungültig
 cdigest_elines=Die Anzahl der Zeilen fehlt oder ist ungültig
-
 edit_title=Mailingliste bearbeiten
 edit_ecannot=Sie haben nicht die Berechtigung die Mailingliste zu bearbeiten
 edit_delete=Lösche die Liste
 edit_deletemsg=Lösche diese Liste zusammen mit allen verbundenen Dateien und Mail-Aliasen
 edit_return=Mailingliste
 edit_for=Für die Liste $1
-
 delete_ecannot=Sie haben nicht die Berechtigung diese Mailingliste zu löschen
 delete_edigest=Diese Liste kann nicht gelöscht werden, da sie mit einer Übersichtsliste verbunden zu sein scheint
 delete_title=Lösche die Liste
 delete_rusure=Sind Sie sich sicher, dass Sie die Mailingliste $1 löschen möchten? Damit werden die folgenden Dateien entfernt:
 delete_aliases=Diese Mail-Aliase werden ebenfalls entfernt :
 delete_ok=Lösche die Liste
-
 members_title=Mitglieder der Liste
 members_desc=Verwenden Sie das untere Textfeld um die Liste der Mail-Adressen zu bearbeiten, die die Mails erhalten sollen, die an diese Liste gesendet werden.
 members_rodesc=Das untere Textfeld enthält alle Mail-Adressen, die die Mails erhalten sollen, die an diese Liste gesendet werden.
@@ -108,7 +102,6 @@ members_esub=Sie müssen ein Verwalterpasswort auswählen, bevor Sie eine Adress
 members_esubaddr=Die Adresse die hinzugefügt werden soll, muß einen kompletten Domainnamen besitzen, z.B. <tt>foo@bar.de</tt>
 members_eunsub=Sie müssen ein Verwalterpasswort auswählen, bevor Sie Adressen aus der Liste entfernen können
 members_eunsubaddr=Die Adresse, die entfernt werden soll muss einen kompletten Domainnamen besitzen, z.B. <tt>foo@bar.com</tt>
-
 info_title=Mitteilungen und Beschreibung
 info_header=Mitteilungen und Beschreibung
 info_desc=Beschreibung der Liste. Sie wird in die Anwort auf ein <tt>lists</tt> Kommando eingefügt
@@ -116,7 +109,6 @@ info_info=Informative Mitteilung. Sie wird als Antwort auf das <tt>info $1</tt> 
 info_intro=Einleitende Mitteilung. Sie wird versandt, sobald sich jemand in die Liste einschreibt
 info_same=Das Gleiche wie die informative Mitteilung
 info_below=So wie unten eingetragen...
-
 subs_title=Einschreiben und Moderation
 subs_header=Einschreibens- und Moderations Einstellungen
 subs_sub=Einschreibensregeln
@@ -142,7 +134,6 @@ subs_eowner=Die Mail-Adresse des Eigentümers fehlt
 subs_eapproval=Die Mail-Adresse der Genehmigung fehlt
 subs_emoderator=Die Mail-Adresse des Moderators fehlt oder ist ungültig
 subs_epasswd=Das Passwort fehlt oder ist falsch
-
 mesg_title=Mail-Einstellungen
 mesg_header=Einstellungen zum Senden von Mail
 mesg_reply="Reply-To:" Adresse der Liste 
@@ -163,7 +154,6 @@ mesg_esender=Fehlende oder ungültige "Absender:" Mail-Adresse
 mesg_esender2="Absender:" Mail-Adresse darf keinen Hostnamen enthalten
 mesg_ehost=Fehlender oder ungültiger Hostname
 mesg_emaxlength=Fehlende oder ungültige Einstellung der maximalen Nachrichtengröße
-
 access_title=Zugriffskontrolle
 access_header=Zugriffskontrolle für Majordomo-Kommandos
 access_open=Jedermann
@@ -186,20 +176,17 @@ access_res2=Adressen aus der Datei
 access_tbody=Ausdrücke (regexps), die im Nachrichtentext nicht erscheinen dürfen
 access_theader=Ausdrücke (regexps), die in der Kopfzeile nicht erscheinen dürfen
 access_taboo=Alle Ausdrücke (regexps) der Taboo-/ und der Adressen-Liste m&uumlssen mit einem <tt>/</tt> beginnen und enden. Z.B. <tt>/foobar.de/</tt> oder <tt>/obscene/</tt><br>Zum zurückweisen von SPAM tragen sie z.B. <tt>/^X-Spam-Flag: YES/i</tt> oder <tt>/^X-Spam-Level: \*\*\*\*\*/i</tt> als nicht erlaubte Kopfzeile ein.
-
 head_title=Kopf- und Fußzeilen
 head_header=Kopf- und Fußzeile einer zurückgesandten Mail
 head_fronter=Kopfzeile einer zurückgesandten Mail
 head_footer=Fußzeile einer zurückgesandten Mail
 head_headers=Zusätzliche SMTP-Kopfzeilen für zurückgesandte Mail
-
 misc_title=Weitere Einstellungen
 misc_header=Diverse Listen Einstellungen
 misc_munge=Die Domain nur beim Vergleichen von Adressen verwenden?
 misc_debug=Debugmodus?
 misc_info=Einfügen des Datums der letzten Änderung in die informative Nachricht?
 misc_intro=Einfügen des Datums der letzten Änderung in die einleitende Mitteilung?
-
 digest_title=Einstellungen der weiteren Verarbeitung
 digest_header=Allgemeine Verarbeitungs Einstellungen
 digest_name=Verarbeitungstitel
@@ -214,7 +201,6 @@ digest_edays=Die Anzahl der Tage fehlt oder ist ungültig
 digest_elines=Die Anzahl der Linien fehlt oder ist ungültig
 digest_evolume=Die Verarbeitungsgröße fehlt oder ist ungültig
 digest_eissue=Fehlende oder ungültige Ausgabenummer
-
 log_global=Veränderte allgemeine Einstellungen
 log_create_list=Mailingliste wurde erstellt: $1
 log_create_digest=Erstellte Verarbeitungs Einstellungen: $1
@@ -231,17 +217,14 @@ log_access=Aktualisierte Zugriffskontrolle der Liste $1
 log_head=Aktualisierte Kopf- und Fußzeile der Liste $1
 log_misc=Aktualisierte allgemeine Einstellungen der Liste $1
 log_digest=Aktualisierte Verarbeitungs Einstellungen der Liste $1
-
 acl_lists=Mailinglisten, die dieser Benutzer verwalten darf
 acl_lall=Alle Listen
 acl_lsel=Ausgewählte ..
 acl_global=Kann allgemeine Einstellungen verändern?
 acl_create=Darf neue Mailingliste erstellen?
 acl_edit=Kann Liste der Mitglieder verändern?
-
 alias_err=Aliase konnten nicht eingerichtet werden
 alias_eowner=Mail-Adresse des Eigentümers fehlt
-
 check_title=Testen der Majordomo Konfiguration
 check_test=Test f&uumlr ...
 check_result=Ergebnis / weitere Tests

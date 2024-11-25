@@ -2,7 +2,6 @@ index_title=Dosya Yöneticisi
 index_nojava=Bu modül java gerektirir, fakat sizin tarayıcınız java'yi desteklemiyor
 index_eremote=Webmin kullanıcısı $1 ile eşleşen Unix kullanıcısı yok.
 switch_euser=Unix kullanıcısı mevcut değil!
-
 top_ret=İndeks
 top_down=Kaydet
 top_edit=Düzenle
@@ -21,13 +20,11 @@ top_share=Paylaştırma
 top_mount=Mount
 top_search=Ara
 top_config=Yapılandırma
-
 right_name=İsim
 right_size=Boyut
 right_user=Kullanıcı
 right_group=Grup
 right_date=Tarih
-
 edit_enormal=Sadece normal dosyalar düzenlenebilir
 edit_title=$1 düzenleniyor
 edit_title2=Dosya oluşturuluyor
@@ -44,7 +41,6 @@ edit_eaccess='$1'e kaydedilmesine izininiz yoktur
 edit_efollow=Sembolink link '$1'e yazmak için izininiz yoktur
 edit_notfound=$1 metini bulunamadı
 edit_saveclose=Kaydet & Kapat
-
 info_file=Dosya
 info_path=Yol:
 info_type=Tip:
@@ -73,7 +69,6 @@ info_read=Oku
 info_write=Yaz
 info_list=Listele
 info_exec=Çalıştır
-
 eacl_eacls=ACL'lerin okunmasında hata oluştu : $1
 eacl_acltype=ACL Tipi
 eacl_aclperms=İzinler
@@ -85,7 +80,6 @@ eacl_user=Dosya sahibi $1
 eacl_group=Dosya grubu $1
 eacl_owner=Dosya sahibi
 eacl_edefaults=Eğer bir dosyanın öntanımlı ACL'si varsa bu dosya öntanımlı kullanıcı, grup ve diğer ACL'lere de sahip olmalıdır.
-
 acltype_user=Kullanıcı
 acltype_group=Grup
 acltype_other=Diğerleri
@@ -93,7 +87,6 @@ acltype_mask=Mask
 acltype_default_user=Öntanımlı Kullanıcı
 acltype_default_group=Öntanımlı Grup
 acltype_default_mask=Öntanımlı Mask
-
 delete_mtitle=Birden fazla dosya sil
 delete_dtitle=Dizin Sil
 delete_ftitle=Dosya sil
@@ -101,13 +94,11 @@ delete_ddesc=$1 dizinini ve içindekileri silmek istediğinizden emin misiniz?
 delete_fdesc=$1 dosyasını kalıcı olarak silmek istediğinizden emin misiniz?
 delete_mdesc=Bu dosya ve dizinleri kalıcı olarak silmek istediğinizden emin misiniz? :
 delete_efailed=$1'i silme işleminde hata oluştu : $2
-
 mkdir_title=Yeni Dizin
 mkdir_dir=Yeni dizin:
 mkdir_eexists=$1 dizini mevcut
 mkdir_efailed=Dizin oluşturmada hata oluştu : $1
 mkdir_eaccess='$1' dizini oluşturmaya hakkınız yok
-
 link_title=Link Oluştur
 link_from=Link buradan:
 link_to=Buraya link oluştur:
@@ -116,7 +107,6 @@ link_efrom=Link kaynağı tam olarak verilmelidir
 link_efailed=Link yapılırken hata oluştu : $1
 link_efrom2='$1'den link yapmak için izininiz yoktur
 link_efollow=Sembolik link oluşturmak için izininiz yoktur
-
 rename_title=Yeniden Adlandır $1
 rename_old=Eski İsim:
 rename_new=Yeni İsim:
@@ -125,7 +115,6 @@ rename_eexists=$1 dosyası zaten mevcut
 rename_efailed=Yeniden adlandırmada hata oluştu : $1
 rename_eold='$1'i yeniden adlandırmak için izininiz yoktur
 rename_enew='$1' olarak yeniden adlandırmak için izininiz yoktur
-
 file_type0=Dizin
 file_type1=Metin Dosyası
 file_type2=Resim Dosyası
@@ -134,29 +123,24 @@ file_type4=Dosya
 file_type5=Sembolik Link
 file_type6=Aygıt dosyası
 file_type7=Pipe
-
 view_enormal=Sadece normal dosyalar görüntülenebilir
 view_enormal2=Sadece normal dosyalar indirilebilir
 view_eaccess=$1'e erişim izininiz yoktur
 view_eopen=$1 'in açılmasında hata oluştu : $2
-
 view_edir=Bir arşiv sadece bir dizin için oluşturulabilir
 view_ecomp=Arşiv oluşturulmasında hata oluştu : $1
 view_earchive=Arşivleri indirmek için izininiz yoktur
 view_earchmax=Seçili dizin arşivleme için izin verilen maksimum boyuttan ($1 byte) daha büyük
-
 paste_ecopy=Yapıştırmadan önce kopyalamalı veya kesmelisiniz
 paste_egone=Kopyalanan dosya $1 artık yok
 paste_eover=$1 üzerine yazılamaz
 paste_eself=Dosyayı kendi üzerine yapıştıramazsınız
 paste_emfailed=Taşımada hata oluştu : $1
 paste_ecfailed=Kopyalamada hata oluştu : $1
-
 over_title=Dosya Mevcut
 over_msg=$1 dosyası zaten mevcut. Yapıştırılan dosyaya yeni bir isim girmek için aşağıdaki alanı kullanınız.
 over_new=Yeni dosya ismi:
 over_ok=Tamam
-
 upload_efailed=Dosyanın yüklenmesinde hata oluştu : $1
 upload_title=Dosyayı Yükle
 upload_file=Yüklenecek dosya
@@ -169,11 +153,9 @@ upload_eperm=$1 oluşturmanıza izin verilmedi
 upload_ewrite=$1'i yazmada hata oluştu : $2.
 upload_already=$1 dosyası zaten mevcut. Üzerine yazmak istediğinizden emin misiniz?
 upload_zip=ZIP ya da TAR dosyası açılsın mı?
-
 find_eaccess=$1'e erişim izininiz yoktur
 find_eexist=$1, $2 içinde mevcut değil
 find_edir=$1, $2'de bir dizin değil
-
 cancel=İptal
 close=Kapat
 eopen=İndirmede hata : $1
@@ -184,18 +166,13 @@ chmod_elink=Sembolik linkte hata oluştu : $1
 chmod_echown=chown'da hata oluştu : $1
 chmod_echmod=chmod'da hata oluştu  : $1
 chmod_efollow=Sembolink linkleri düzenlemek için izininiz yoktur
-
 copy_efrom='$1'den kopyalamanıza izin verilmemiştir
 copy_eto='$1'e kopyalamanıza izin verilmemiştir
 copy_elink=Sembolik linkte hata oluştu : $1
-
 delete_eaccess='$1'i silmede hata oluştu
-
 list_eaccess=Bu dizine erişim izininiz yoktur
-
 move_eto='$1'e taşımak için izininiz yoktur
 move_afrom='$1'i taşımak için izininiz yoktur
-
 acl_user=Sunucudaki dosyalara bu kullanıcı olarak ulaş :
 acl_user_def=Webmin kullanıcı adı ile aynı
 acl_umask=Yeni dosyalar için umask
@@ -227,7 +204,6 @@ acl_unarchive=Yüklenen arşiv dosyalarını açabilir mi?
 acl_unarchive1=$yes
 acl_unarchive0=$no
 acl_chroot=Dosya yöneticisinin tamamı için chroot dizini
-
 share_title=Paylaştırma
 share_samba=Windows
 share_nfs=NFS
@@ -256,7 +232,6 @@ share_s1=Root olmayanlara güven
 share_s2=Herkese güven
 share_lro=Sadece okunur
 share_lrw=Okunur-yazılır
-
 log_create_export=NFS sunumu $1 oluşturuldu
 log_modify_export=NFS sunumu $1 değiştirildi
 log_delete_export=NFS sunumu $1 silindi
@@ -272,7 +247,6 @@ log_relink=$2'ye sembolik link $1 değiştirildi
 log_copy=$1 dosyası $2'ye kopyalandı
 log_move=$1 dosyası $2'ye taşındı
 log_delete=$1 dosyası silindi
-
 search_eaccess=Bu dizinde arama yapmak için izininiz yoktur
 search_title=Dosya bul
 search_ok=Şimdi Ara
@@ -289,16 +263,13 @@ search_egroup=Grup adı girilmemiş
 search_esize=Dosya boyutu bir tamsayı olmalıdır
 search_crit=Armama kriteri
 search_list=Arama sonuçları
-
 facl_eaccess=Bu dosyanın ACL'lerini belirlemek için izininiz yoktur
-
 eattr_A=Erişim zamanlarını güncelleme
 eattr_a=Dosyaya sadece ekleme yapılabilir
 eattr_c=Diskteki veriyi sıkıştır
 eattr_d=Dump ile yedekleme
 eattr_i=Değiştirilmesine izin verme
 eattr_S=Yazmadan sonra her zaman senkronize et
-
 mount_eaccess=Dosya sistemini mount etmek için izininiz yoktur
 mount_efstab=Bu mount noktasında bir dosya sistemi mevcut değildir
 mount_epoint=$1 bir mount noktası değildir
@@ -308,15 +279,12 @@ mount_err1=$1 'in mount edilmesinde hata oluştu : $2
 mount_err2=$1 'in umount edilmesinde hata oluştu : $2
 mount_title1=Dosya sistemi mount et
 mount_title2=Dosya sistemi umount et
-
 zip_err=Dosya açılamıyor : $1
 zip_ename=Bir zip, tar ya da tar.gz gibi görünmüyor
 zip_euntar=Tar dosyasının açılmasında hata oluştu : $1
-
 ddir_title=İndirme Dizini
 ddir_rusure=$1 'in içeriğini bir arşiv dosyası olarak indirmek için, aşağıdaki arşiv tipi butonlarından birini tıklayınız.
 ddir_zip=ZIP
 ddir_tgz=TAR.GZ
 ddir_tar=TAR
-
 ebutton=Bu özellik kullanılamaz

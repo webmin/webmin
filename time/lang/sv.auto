@@ -15,7 +15,6 @@ index_tabsync2=Kör systemtjänsten <tt>$1</tt> för synkronisering
 index_desctime=Detta formulär är för att ändra systemets nuvarande tid, som används av alla processer som körs. På operativsystem som har en separat hårdvaruklocka kan den också användas för att ställa in det.
 index_desczone=Detta formulär låter dig ställa in systemets standardtidszon, som används för att konvertera systemtiden till ett mänskligt läsbart format och offset.
 index_descsync=Detta formulär är för att konfigurera systemet för att automatiskt synkronisera tiden med en fjärrserver. Synkroniseringen görs med Unix <tt>time</tt> -protokollet eller NTP, beroende på vilka kommandon som är installerade och vad fjärrsystemet stöder.
-index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 acl_timezone=Användaren kan ställa in tidszon?
 acl_ntp=Kan synkroniseras med tidsserver?

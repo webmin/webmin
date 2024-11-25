@@ -14,7 +14,6 @@ index_global=Globala Inställningar
 index_ecdrecord=CD skrivar kommandot $1 hittades inte på ditt system. Kanske den inte är installerad, eller din a href='$2'>modul konfiguration</a> är felaktig.
 index_return=profil lista
 index_delete=Ta Bort Valda Profiler
-
 edit_title=Ändra Bränn Profil
 create_title=Skapa Bränn Profil
 edit_emkisofs=ISO filsystems byggar kommando $1 hittades inte på ditt system. Kanske den inte är installerad, eller din <a href='$2'>modul konfiguration</a> är felaktig.
@@ -50,7 +49,6 @@ edit_fly0=Använd tillfälliga filer
 edit_srcdrv=Käll enhets drivrutiner
 edit_dstdrv=Destinations enhets drivrutiner
 edit_ecannot=Du är inte tillåten att ändra denna brännar profil
-
 save_err=Misslyckades att spara profil
 save_ename=Saknad profil namn
 save_eiso=Saknad eller felaktig ISO bild filnamn
@@ -64,7 +62,6 @@ save_ecannot1=ISO bilden är inte i en tillåten sökväg
 save_ecannot2=Käll sökvägen $1 är inte i en tillåten sökväg
 save_ecannot3=MP3 filen eller sökvägen $1 är inte i en tillåten sökväg
 save_ecannot4=Käll enhetens fil är inte i en tillåten sökväg
-
 burn_title=Bränn CD
 burn_rutest1=Är du söker att du vill test bränna ISO bilden $1?
 burn_rusure1=Är du söker att du vill bränna ISO bilden $1 till CD?
@@ -102,7 +99,6 @@ burn_807=Varning! Dina ljud spårs storlek är $1 MB, som är över 807 MB till�
 burn_mp3size=De konverterade ljud spåren är $1 MB stor, utav totalt $2 som är tillåten på en normal ljud CD.
 burn_seconddesc=Sätt i en blank CD och klicka på knappen under.
 burn_second=Bränn CD
-
 dev_title=Enhets Inställningar
 dev_header=CD brännar enhets inställningar
 dev_device=Brännar enhet
@@ -113,7 +109,6 @@ dev_extra=Extra <tt>cdrecord</tt> inställningar
 dev_err=Misslyckades att spara enhets inställningar
 dev_eother=Saknad eller felaktig bränn hastighet
 dev_ecannot=Du är inte tillåten att ändra enhets inställningar
-
 mkisofs_title=ISO filsystems inställningar
 mkisofs_header=Global ISO filsystems inställningar
 mkisofs_novers=Inkludera versions nummer i fil namnen?
@@ -121,7 +116,6 @@ mkisofs_notrans=Tillåt alla symboler i filnamn?
 mkisofs_nobak=Hoppa över backup filer?
 mkisofs_fsyms=Följ symboliska länkar?
 mkiofs_ecannot=Du är inte tillåten att ändra ISO filsystem inställningar
-
 config_cdrecord=CD brännings kommando
 config_mkisofs=ISO filsystem skapar kommando
 config_mpg123=MP3 dekoder kommando
@@ -135,7 +129,6 @@ config_empg123=Sakand eller felaktig MP3 dekoder kommando
 config_esox=Saknad eller felaktig SOX kommando
 config_ecdrdao=Saknad eller felaktig CD kopierings kommando
 config_etemp=Saknad eller felaktig tillfällig fil sökväg
-
 acl_create=Kan skapa ny bränn profil?
 acl_edit=Kan ändra existerande bränn profiler?
 acl_global=Kan Ändra global inställningar?
@@ -143,6 +136,5 @@ acl_profiles=Kan använda profiler
 acl_all=Alla
 acl_sel=Valda nedanför ..
 acl_dirs=Tillåt sökväg för käll filer
-
 delete_err=Misslyckades att ta bort bränn profiler
 delete_enone=Inget valt

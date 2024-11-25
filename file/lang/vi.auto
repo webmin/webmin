@@ -3,7 +3,6 @@ index_nojava=Mô-đun này yêu cầu Java hoạt động, nhưng trình duyệt
 index_eremote=Không có người dùng Unix phù hợp với thông tin đăng nhập Webmin $1.
 index_index=Quay lại <a href='$1'>Chỉ mục Webmin</a>.
 switch_euser=Người dùng Unix không tồn tại!
-
 top_ret=Mục lục
 top_down=Tiết kiệm
 top_preview=Xem trước
@@ -27,13 +26,11 @@ top_mount=Núi
 top_search=Tìm thấy
 top_config=Cấu hình
 top_efile=Không tài liệu nào được chọn
-
 right_name=Tên
 right_size=Kích thước
 right_user=Người sử dụng
 right_group=Nhóm
 right_date=Ngày
-
 edit_enormal=Chỉ các tệp bình thường có thể được chỉnh sửa
 edit_title=Chỉnh sửa $1 
 edit_title2=Tạo tập tin
@@ -53,7 +50,6 @@ edit_notfound=Không tìm thấy văn bản $1
 edit_saveclose=Lưu và đóng
 edit_elength=Tập tin đã bị cắt ngắn!
 edit_textmode=Chuyển sang chế độ văn bản thuần túy
-
 info_file=Tập tin
 info_path=Con đường:
 info_type=Kiểu:
@@ -90,7 +86,6 @@ info_files=Tổng số tệp:
 info_dirs=Tổng số thư mục:
 info_getsize=Nhận kích thước
 info_esize=Không thể lấy kích thước : $1 
-
 eacl_eacls=Không thể đọc ACL : $1 
 eacl_acltype=Loại ACL
 eacl_aclname=Nộp đơn
@@ -109,7 +104,6 @@ eacl_edefmask=Có thể có nhiều nhất một mục ACL mặt nạ mặc đ�
 eacl_title=ACL cho $1 
 eacl_owner=Chủ sở hữu tệp
 eacl_edefaults=Nếu một tệp có bất kỳ ACL mặc định, nó phải có người dùng, nhóm và các ACL mặc định khác.
-
 acltype_user=Người sử dụng
 acltype_group=Nhóm
 acltype_other=Khác
@@ -118,7 +112,6 @@ acltype_default_user=Người dùng mặc định
 acltype_default_group=Nhóm mặc định
 acltype_default_other=Mặc định Khác
 acltype_default_mask=Mặt nạ mặc định
-
 delete_mtitle=Xóa nhiều tập tin
 delete_dtitle=Xóa thư mục
 delete_ftitle=Xóa tài liệu
@@ -126,13 +119,11 @@ delete_ddesc=Bạn có chắc chắn muốn xóa vĩnh viễn thư mục $1 và 
 delete_fdesc=Bạn có chắc chắn muốn xóa vĩnh viễn tệp $1 không?
 delete_mdesc=Bạn có chắc chắn muốn xóa vĩnh viễn các tệp và thư mục này không?  :
 delete_efailed=Không thể xóa $1 : $2 
-
 mkdir_title=Từ điển mới
 mkdir_dir=Từ điển mới:
 mkdir_eexists=$1 đã tồn tại
 mkdir_efailed=Tạo thư mục không thành công : $1 
 mkdir_eaccess=Bạn không được phép tạo '$1'
-
 link_title=Tạo đường link
 link_from=Liên kết từ:
 link_to=Liên kết đến:
@@ -141,7 +132,6 @@ link_efrom=Nguồn liên kết phải là một đường dẫn tuyệt đối
 link_efailed=Liên kết thất bại : $1 
 link_efrom2=Bạn không được phép liên kết từ '$1'
 link_efollow=Bạn không được phép tạo liên kết tượng trưng
-
 rename_title=Đổi tên $1 
 rename_old=Tên Cu:
 rename_new=Tên mới:
@@ -151,7 +141,6 @@ rename_eslash=Tên tệp mới $1 chứa a /
 rename_efailed=Đổi tên không thành công : $1 
 rename_eold=Bạn không được phép đổi tên '$1'
 rename_enew=Bạn không được phép đổi tên thành '$1'
-
 file_type0=Danh mục
 file_type1=Tập tin văn bản
 file_type2=Tập tin hình ảnh
@@ -160,31 +149,26 @@ file_type4=Tập tin
 file_type5=Liên kết tượng trưng
 file_type6=Tập tin thiết bị
 file_type7=Ống
-
 view_enormal=Chỉ có thể xem các tập tin bình thường
 view_enormal2=Chỉ có thể tải xuống các tệp bình thường
 view_eaccess=Bạn không được phép truy cập $1 
 view_eopen=Không thể mở $1 : $2 
-
 view_edir=Một kho lưu trữ chỉ có thể được tạo cho một thư mục
 view_ecmd=Lệnh $1 cần thiết để tạo tệp lưu trữ chưa được cài đặt
 view_ecomp=Không thể tạo tệp lưu trữ : $1 
 view_earchive=Bạn không được phép tải tài liệu lưu trữ
 view_earchmax=Thư mục đã chọn lớn hơn mức tối đa được phép lưu trữ ($1 byte)
 view_epathinfo=Đường dẫn chứa các ký tự không hợp lệ
-
 paste_ecopy=Bạn phải cắt hoặc sao chép trước khi dán
 paste_egone=Tệp đã sao chép $1 không còn tồn tại
 paste_eover=$1 không thể được ghi đè
 paste_eself=Bạn không thể dán một tập tin lên chính nó
 paste_emfailed=Di chuyển không thành công : $1 
 paste_ecfailed=Sao chép thất bại : $1 
-
 over_title=File tồn tại
 over_msg=Tệp $1 đã tồn tại. Sử dụng trường bên dưới để nhập tên tệp mới cho tệp đã dán.
 over_new=Tên tệp mới:
 over_ok=Đồng ý
-
 upload_efailed=Không thể mở tải lên : $1 
 upload_title=Cập nhật dử liệu
 upload_file=Tập tin để tải lên
@@ -201,11 +185,9 @@ upload_elink=Không thể tải lên một liên kết tượng trưng
 upload_zip=Giải nén tập tin ZIP hoặc TAR?
 upload_yes=Có, sau đó xóa
 upload_user=Tải lên với tư cách người dùng
-
 find_eaccess=Bạn không được phép truy cập $1 
 find_eexist=$1 không tồn tại trong $2 
 find_edir=$1 không phải là thư mục trong $2 
-
 cancel=Hủy bỏ
 close=Đóng
 eopen=Tải xuống thất bại : $1 
@@ -216,20 +198,15 @@ chmod_elink=liên kết tượng trưng không thành công : $1
 chmod_echown=chown thất bại : $1 
 chmod_echmod=chmod thất bại : $1 
 chmod_efollow=Bạn không được phép chỉnh sửa các liên kết tượng trưng
-
 copy_efrom=Bạn không được phép sao chép từ '$1'
 copy_eto=Bạn không được phép sao chép vào '$1'
 copy_elink=liên kết tượng trưng không thành công : $1 
-
 delete_eaccess=Bạn không được phép xóa '$1'
 delete_eroot=Thư mục '$1' là một trong những thư mục mà bạn bị giới hạn và vì vậy không thể xóa được
-
 list_eaccess=Bạn không được phép truy cập thư mục này
 list_edir=Không thể liệt kê $1 : $2 
-
 move_eto=Bạn không được phép chuyển đến '$1'
 move_afrom=Bạn không được phép di chuyển '$1'
-
 acl_user=Truy cập tệp trên máy chủ với tư cách người dùng
 acl_user_def=Giống như đăng nhập Webmin
 acl_umask=Umask cho các tập tin mới
@@ -275,7 +252,6 @@ acl_noperms=Có thể thay đổi quyền truy cập tập tin?
 acl_nousers=Có thể thay đổi quyền sở hữu tập tin?
 acl_filesystems=Có thể thấy các điểm gắn kết hệ thống tập tin?
 acl_contents=Cho phép tìm kiếm nội dung tập tin?
-
 share_title=Chia sẻ
 share_samba=các cửa sổ
 share_nfs=NFS
@@ -304,7 +280,6 @@ share_s1=Tin tưởng không root
 share_s2=Tin tưởng tất cả mọi người
 share_lro=Chỉ đọc
 share_lrw=Đọc viết
-
 log_create_export=Tạo NFS xuất $1 
 log_modify_export=Xuất khẩu NFS đã sửa đổi $1 
 log_delete_export=Đã xóa xuất NFS $1 
@@ -322,7 +297,6 @@ log_move=Đã chuyển tệp $1 sang $2
 log_delete=Đã xóa tệp $1 
 log_attr=Đặt thuộc tính trên tệp $1 
 log_acl=Đặt ACL trên tệp $1 
-
 search_eaccess=Bạn không được phép tìm kiếm thư mục này
 search_title=Tìm tập tin
 search_ok=Tìm kiếm ngay bây giờ
@@ -351,9 +325,7 @@ search_crit=Tiêu chí tìm kiếm
 search_list=Kết quả tìm kiếm
 search_down=Tải xuống
 search_edown=Không có tệp kết quả tìm kiếm để tải về được chọn
-
 facl_eaccess=Bạn không được phép đặt ACL cho tệp này
-
 attr_eattrs=Không thể nhận thuộc tính : $1 
 attr_efs=Hệ thống tập tin $1 không hỗ trợ các thuộc tính
 attr_add=Thêm thuộc tính
@@ -364,13 +336,11 @@ attr_title=Thuộc tính tệp cho $1
 attr_create=Thêm thuộc tính
 attr_edit=Chỉnh sửa thuộc tính
 attr_ename=Thiếu tên thuộc tính
-
 ext_eattrs=Không thể nhận các thuộc tính EXT : $1 
 ext_efs=Hệ thống tập tin $1 không hỗ trợ các thuộc tính EXT
 ext_title=Thuộc tính EXT cho $1 
 ext_header=Thuộc tính tệp EXT
 ext_efailed=Không thể đặt thuộc tính cho $1 : $2 
-
 eattr_A=Không cập nhật thời gian truy cập
 eattr_a=Chỉ có thể nối vào tập tin
 eattr_c=Nén dữ liệu trên đĩa
@@ -379,7 +349,6 @@ eattr_i=Không cho phép sửa đổi
 eattr_s=Không chặn khi xóa
 eattr_S=Luôn đồng bộ sau khi viết
 eattr_u=Lưu nội dung cho undetetion
-
 mount_eaccess=Bạn không được phép gắn kết hệ thống tập tin
 mount_efstab=Không có hệ thống tập tin nào tồn tại ở điểm gắn kết này
 mount_epoint=$1 không phải là điểm gắn kết
@@ -389,22 +358,18 @@ mount_err1=Không thể gắn kết $1 : $2
 mount_err2=Không thể hủy gắn kết $1 : $2 
 mount_title1=Hệ thống tập tin gắn kết
 mount_title2=Hệ thống tập tin un-mount
-
 zip_err=Không thể giải nén tập tin : $1 
 zip_ecmd=Thiếu lệnh $1 
 zip_eunzip=Giải nén thất bại : $1 
 zip_ename=Không xuất hiện dưới dạng tệp zip, tar hoặc tar.gz
 zip_euntar=Un-tar thất bại : $1 
 zip_euntar2=Un-nén và un-tar thất bại : $1 
-
 ddir_title=Tải xuống thư mục
 ddir_rusure=Để tải xuống nội dung của $1 dưới dạng tệp lưu trữ, nhấp vào một trong các nút loại lưu trữ bên dưới.
 ddir_zip=Mã bưu điện
 ddir_tgz=TAR.GZ
 ddir_tar=TAR
-
 ebutton=Tính năng này không có sẵn
-
 preview_etype=Không thể tìm ra loại tệp cho $1 
 preview_etype2=$1 không ở định dạng hình ảnh được hỗ trợ
 preview_ecmd=Lệnh $1 cần thiết để chia tỷ lệ hình ảnh này chưa được cài đặt
@@ -412,17 +377,14 @@ preview_eimage=Chỉ có thể xem trước hình ảnh
 preview_title=Xem trước $1 
 preview_bad=Không thể tải hình ảnh để xem trước
 preview_egd=Không thể tải hình ảnh với GD
-
 html_efailed=Không thể mở trình soạn thảo HTML : $1 
 html_title=Chỉnh sửa tệp HTML
 html_title2=Tạo tệp HTML
 html_save=Lưu và Đóng
 html_err=Không thể lưu tệp HTML
-
 history_title=Lịch sử con đường
 history_ok=Đi đến
 history_button=Lịch sử
-
 extract_etype=Chỉ các tập tin có thể được giải nén
 extract_title=Giải nén tập tin nén
 extract_rusure=Bạn có chắc chắn muốn giải nén tệp nén :

@@ -3,7 +3,6 @@ index_nojava=Questo modulo richiede java per funzionare, il tuo browser non supp
 index_eremote=Non esiste un utente Unix corrispondente al nome utente Webmin $1.
 index_index=Torna alla <a href='$1'>pagina principale di Webmin</a>.
 switch_euser=L'utente Unix non esiste!
-
 top_ret=Indice
 top_down=Salva
 top_preview=Anteprima
@@ -27,13 +26,11 @@ top_mount=Monta
 top_search=Cerca
 top_config=Configura
 top_efile=Nessun file selezionato
-
 right_name=Nome
 right_size=Dimensione
 right_user=Utente
 right_group=Gruppo
 right_date=Data
-
 edit_enormal=Puoi modificare solo file normali
 edit_title=Modifica di $1
 edit_title2=Creazione file
@@ -53,7 +50,6 @@ edit_notfound=Il testo $1 non èï¿½stato trovato
 edit_saveclose=Salva ed esci
 edit_elength=Il file è troncato!
 edit_textmode=Passa alla modalità testo
-
 info_file=File
 info_path=Percorso:
 info_type=Tipo:
@@ -88,7 +84,6 @@ info_files=File totali:
 info_dirs=Cartelle totali:
 info_getsize=Calcola dimensione
 info_esize=Non è stato possibile calcolare la dimensione: $1
-
 eacl_eacls=Lettura ACL non riuscita: $1
 eacl_acltype=Tipo ACL
 eacl_aclname=Applica a
@@ -107,7 +102,6 @@ eacl_edefmask=Può esserci al massimo una maschera ACL di default
 eacl_title=ACL per $1
 eacl_owner=Proprietario File
 eacl_edefaults=Se il file ha ACL di default, deve avere utente, gruppo e altre ACL di default
-
 acltype_user=Utente
 acltype_group=Gruppo
 acltype_other=Altri
@@ -116,7 +110,6 @@ acltype_default_user=Utente di default
 acltype_default_group=Gruppo di default
 acltype_default_other=Altri di default
 acltype_default_mask=Maschera di default
-
 delete_mtitle=Eliminazione multipla di file
 delete_dtitle=Eliminazione cartella
 delete_ftitle=Eliminazione file
@@ -124,13 +117,11 @@ delete_ddesc=Sei sicuro di voler eliminare definitivamente la cartella $1 e tutt
 delete_fdesc=Sei sicuro di voler eliminare definitivamente il file $1 ?
 delete_mdesc=Sei sicuro di voler eliminare definitivamente questi file e cartelle?
 delete_efailed=Eliminazione di $1 non riuscita: $2
-
 mkdir_title=Nuova cartella
 mkdir_dir=Nuova cartella:
 mkdir_eexists=$1 giï¿½esistentem
 mkdir_efailed=Creazione cartella non riuscita: $1
 mkdir_eaccess=Non sei autorizzato a creare '$1'
-
 link_title=Creazione Link
 link_from=Link da:
 link_to=Link a:
@@ -139,7 +130,6 @@ link_efrom=Non sei autorizzato a fare un link da '$1'
 link_efailed=Link non riuscito : $1
 link_efrom2=Non hai i permessi per collegarti da '$1'
 link_efollow=Non sei autorizzato a creare link simbolici
-
 rename_title=Rinomina $1
 rename_old=Vecchio nome:
 rename_new=Nuovo nome:
@@ -149,7 +139,6 @@ rename_eslash=Il nuovo nome file per $1 contiene un /
 rename_efailed=Rinominazione non riuscita : $1
 rename_eold=Non sei autorizzato a rinominare '$1'
 rename_enew=Non sei autorizzato a rinominare a '$1'
-
 file_type0=Cartella
 file_type1=File di testo
 file_type2=File immagine
@@ -158,30 +147,25 @@ file_type4=File
 file_type5=Link simbolico
 file_type6=File Device
 file_type7=Pipe
-
 view_enormal=Possono essere visualizzati solo file normali
 view_enormal2=Possono essere scaricati solo file normali
 view_eaccess=Non sei autorizzato ad accedere $1
 view_eopen=Apertura di $1 non riuscita : $2
-
 view_edir=Un archivio può essere creato solo per una cartella
 view_ecmd=Il comando $1 necessario per creare un archivio non è installato
 view_ecomp=Creazione dell'archivio non riuscita: $1
 view_earchive=Non hai i permessi per scaricare gli archivi
 view_earchmax=La cartella selezionata ha una dimensione che supera quella massima permessa per gli archivi ($1 byte)
-
 paste_ecopy=Devi tagliare o copiare prima di incollare
 paste_egone=Il file copiato $1 non esite pi
 paste_eover=$1 non può essere sovrascritto
 paste_eself=Non puoi incollare un file sopra se stesso
 paste_emfailed=Spostamento non riuscito : $1
 paste_ecfailed=Copia non riuscita : $1
-
 over_title=Il File Esiste Giï¿½over_msg=Il file $1 esiste giï¿½ Usa il campo qui sotto per inserire un nuovo nome per il file incollato.
 over_msg=Il file $1 è già esistente. Usa il campo in basso per inserire un nuovo nome per il file incollato.
 over_new=Nuovo nome:
 over_ok=Vai
-
 upload_efailed=Inizio trasferimento non riuscito : $1
 upload_title=Trasferisci file (upload)
 upload_file=File da trasferire
@@ -198,11 +182,9 @@ upload_elink=Non è possibile fare l'upload ad un link simbolico
 upload_zip=Decomprimere il file ZIP o TAR?
 upload_yes=Si, quindi rimuovilo
 upload_user=Fai l'upload come utente
-
 find_eaccess=Non sei autorizzato ad accedere $1
 find_eexist=$1 non esiste in $2
 find_edir=$1 non ï¿½una cartella in $2
-
 cancel=Annulla
 close=Chiudi
 eopen=Download non riuscito: $1
@@ -213,20 +195,15 @@ chmod_elink=Link simbolico non riuscito: $1
 chmod_echown=chown non riuscito: $1
 chmod_echmod=chmod non riuscito: $1
 chmod_efollow=Non sei autorizzato a modificare link simbolici
-
 copy_efrom=Non sei autorizzato a copiare da '$1'
 copy_eto=Non sei autorizzato a copiare in '$1'
 copy_elink=Link simbolico non riuscito: $1
-
 delete_eaccess=Non sei autorizzato a eliminare '$1'
 delete_eroot=La cartella '$1' è una di quelle su cui hai un accesso limitato, quindi non può essere rimossa
-
 list_eaccess=Non sei autorizzato ad accedere questa cartella
 list_edir=Elenco di $1 non riuscito : $2
-
 move_eto=Non sei autorizzato a muovere in '$1'
 move_afrom=Non sei autorizzato a muovere '$1'
-
 acl_user=Accesso file sul server come utente
 acl_user_def=Uguale al nome utente Webmin
 acl_umask=Umask per i nuovi file
@@ -272,7 +249,6 @@ acl_noperms=Può modificare i permessi ai file?
 acl_nousers=Può cambiare il proprietario di un file?
 acl_filesystems=Può vedere i punti di montaggio dei filesystem?
 acl_contents=Permettere la ricerca di contenuti nel file?
-
 share_title=Condivisione
 share_samba=Windows (Samba)
 share_nfs=NFS
@@ -301,7 +277,6 @@ share_s1=Fidati degli utenti non-root
 share_s2=Fidati di tutti
 share_lro=Sola lettura
 share_lrw=Lettura scrittura
-
 log_create_export=Creata esportazione NFS $1
 log_modify_export=Modificata esportazione NFS $1
 log_delete_export=Eliminata esportazione NFS $1
@@ -319,7 +294,6 @@ log_move=Spostato file $1 a $2
 log_delete=Eliminato file $1
 log_attr=Impostati attributi del file $1
 log_acl=Impostati ACL al file $1
-
 search_eaccess=Non sei autorizzato a cercare questa cartella
 search_title=Cerca file
 search_ok=Esegui Ricerca
@@ -348,9 +322,7 @@ search_crit=Criterio di ricerca
 search_list=Risultati ricerca
 search_down=Download
 search_edown=Non è stato selezionato nessun file di risultati delle ricerche da scaricare
-
 facl_eaccess=Non sei autorizzato a impostare ACL per questo file
-
 attr_eattrs=Lettura attributi non riuscita : $1
 attr_efs=Il filesystem $1 non supporta attributi
 attr_add=Aggiungi Attributo
@@ -361,13 +333,11 @@ attr_title=Attributi per $1
 attr_create=Aggiungi Attributo
 attr_edit=Modifica Attributo
 attr_ename=Nome attributo mancante
-
 ext_eattrs=Lettura attributi EXT non riuscita: $1
 ext_efs=Il filesystem $1 non supporta attributi EXT
 ext_title=Attributi EXT per $1
 ext_header=Attributi EXT
 ext_efailed=Impostazione degli attributi per $1 non riuscita: $2
-
 eattr_A=Non aggiornare il tempo di accesso
 eattr_a=Puoi solo appendere al file
 eattr_c=Dati compressi sul disco
@@ -376,7 +346,6 @@ eattr_i=Non permettere modifiche
 eattr_s=Azzera blocchi in eliminazione
 eattr_S=Sync dopo la scrittura
 eattr_u=Salva il contenuto per de-eliminazione
-
 mount_eaccess=Non sei autorizzato a montare filesystem
 mount_efstab=Non esiste filesystem in questo punto di montaggio
 mount_epoint=$1 non è un punto di montaggio
@@ -386,22 +355,18 @@ mount_err1=Montaggio di $1 non riuscito : $2
 mount_err2=Smontaggio di $1 non riuscito : $2
 mount_title1=Monta filesystem
 mount_title2=Smonta filesystem
-
 zip_err=Non è stato possibile estrarre il file: $1
 zip_ecmd=Comando $1 mancante
 zip_eunzip=Estrazione ZIP non riuscita: $1
 zip_ename=Non sembra essere un file di tipo ZIP, TAR o TAR.GZ
 zip_euntar=Estrazione TAR non riuscita: $1
 zip_euntar2=Decompressione ed estrazione TAR non riuscita: $1
-
 ddir_title=Scarica cartella
 ddir_rusure=Per scaricare i contenuti di $1 come archivio clicca su uno dei pulsanti relativi al tipo di archivio desiderato
 ddir_zip=ZIP
 ddir_tgz=TAR.GZ
 ddir_tar=TAR
-
 ebutton=Questa funzione non è disponibile
-
 preview_etype=Impossibile determinare il tipo di file di $1
 preview_etype2=$1 non è un formato di immagine supportato
 preview_ecmd=Il comando $1 necessario per ridimensionare l'immagine non è installato
@@ -409,17 +374,14 @@ preview_eimage=E' possibile visualizzare l'anteprima solo per le immagini
 preview_title=Anteprima di $1
 preview_bad=Non è stato possibile caricare l'immagine per l'anteprima
 preview_egd=Caricamento dell'immagine con GD non riuscito
-
 html_efailed=Apertura dell'editor HTML non riuscita: $1
 html_title=Modifica il file HTML
 html_title2=Crea file HTML
 html_save=Salva e chiudi
 html_err=Salvataggio del file HTML non riuscito
-
 history_title=Cronologia dei percorsi
 history_ok=Vai a
 history_button=Cronologia
-
 extract_etype=Sono i file possono essere estratti
 extract_title=Estrai file compresso
 extract_rusure=Sei sicuro di voler estrarre il file compresso:

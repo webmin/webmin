@@ -9,7 +9,6 @@ index_applymsg2=Mevcut root aygıtının açılış sektörüne mevcut yapıland
 index_applymsg3=Makineyi yeniden başlatmadan önce yapılandırmanızın doğru olduğuna emin olunuz!
 index_return=çekirdek ve disk bölümleri
 index_earch=LILO sadece x86 mimarisindeki sistemleri destekler
-
 global_title=Genel Seçenekler
 global_desc=Genel Açılış Seçenekleri
 global_boot=Açılış yükleyicisini buraya yaz
@@ -31,10 +30,8 @@ global_extra=Çekirdekler ekstra seçenekler ile açılıyorsa
 global_any=Her açılışta
 global_secs=saniye
 global_err=Genel seçeneklerin kaydedilmesinde hata oluştu
-
 apply_title=Yapılandırmayı Uygula
 apply_exec=LILO yapılandırması $1 komutu ile uygulanıyor..
-
 image_title1=Açılış çekirdeği oluştur
 image_title2=Açılış çekirdeğini değiştir
 image_options=Açılış çekirdeği seçenekleri
@@ -65,7 +62,6 @@ image_none=Hiçbiri
 image_ename=Bu çekirdeğin ismi bulunamadı
 image_ekernel=Çekirdek dosyası '$1' mevcut değil
 image_einitrd=İlk ramdisk dosyası '$1' mevcut değil
-
 other_title1=Açılış Disk Bölümü oluştur
 other_title2=Açılış Disk Bölümleriin Değiştir
 other_details=Disk Bölümü Ayrıntıları
@@ -76,7 +72,6 @@ other_yes=Evet, buradadan
 other_password=Açılış parolası
 other_none=Hiçbiri
 other_ename=Bu açılış disk bölümünün ismi bulunamadı
-
 log_create_image=Açılış çekirdeği $1 oluşturuldu
 log_modify_image=Açılış çekirdeği $1 değiştirildi
 log_delete_image=Açılış çekirdeği $1 silindi

@@ -37,7 +37,6 @@ index_notify=Ibgħat email għal azzjonijiet Webmin?
 index_notify_mods=Għal azzjonijiet f'moduli
 index_notify_users=Għal azzjonijiet mill-utenti
 index_notify_email=Ibgħat email lil
-index_notify_email_def=Default notification address
 index_notify_usub=Inkludi l-isem tal-utent fis-suġġett tal-email?
 index_notify_msub=Inkludi azzjoni fis-suġġett tal-email?
 index_searchtab=Fittex zkuk
@@ -46,7 +45,8 @@ index_searchdesc=Din il-formola tista' tintuża biex tfittex azzjonijiet Webmin 
 index_notifydesc=Uża din il-formola biex tikkonfigura notifiki bl-email meta l-azzjonijiet Webmin jitwettqu minn utenti magħżula jew f'moduli magħżula.
 
 search_title=Riżultati tat-Tiftix
-search_datetime=Date and time
+search_date=Data
+search_time=Ħin
 search_user=Utent
 search_host=Indirizz tal-Klijent
 search_webmin=Webmin Server

@@ -7,11 +7,8 @@ index_info=Seznam informací
 index_mail=Poštovní adresa
 index_moderated=Moderuje
 index_count=Počet uživatelů
-
 global_saved=(uložené)
-
 create_minimum=Minimální požadované informace
-
 check_title=Zkontrolujte Majordomo Config
 check_test=Vyzkoušejte. ..
 check_result=Výsledek / dodatečná kontrola

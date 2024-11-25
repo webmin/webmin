@@ -1,8 +1,2 @@
 net_lmtp=LMTP
 net_ssl_required=Csak az SSL-t fogadja el
-
-login_otp=One time password
-login_skey=Security key
-login_oauthbearer=OAuth2 bearer authentication
-login_xoauth2=Google OAuth2 bearer authentication
-login_external=External SASL authentication

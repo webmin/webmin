@@ -42,9 +42,7 @@ index_emailto=ہاں ، مخاطب کرنا
 index_email2=جب اپ لوڈ ہو جائیں تو ای میل بھیجیں؟
 
 upload_title=فائلیں اپ لوڈ کرو
-upload_direct=Write files directly to disk?
 upload_err=فائلیں اپ لوڈ کرنے میں ناکام
-upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=اپ لوڈ کرنے کیلئے ڈائرکٹری غائب ہے
 upload_euser=غائب یا غلط صارف نام
 upload_egroup=گروپ کا نام غائب یا غلط

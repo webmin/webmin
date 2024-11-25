@@ -42,9 +42,7 @@ index_emailto=Ja, att adressera
 index_email2=Skicka e-post när uppladdningarna är gjorda?
 
 upload_title=Ladda upp filer
-upload_direct=Write files directly to disk?
 upload_err=Det gick inte att ladda upp filer
-upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=Saknas katalog att ladda upp till
 upload_euser=Saknat eller ogiltigt användarnamn
 upload_egroup=Gruppnamn saknas eller ogiltigt

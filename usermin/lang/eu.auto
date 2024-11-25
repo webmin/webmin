@@ -250,12 +250,6 @@ ui_hnm1=Ostalariaren izena URL-tik
 ui_hnm2=Domeinu izena URL batetik
 ui_hnm3=Beste izen bat ..
 ui_tabs=Moduluak sailkatu?
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
 
 upgrade_title=Erabiltzailearen bertsioa berritu
 upgrade_title2=Instalatu Usermin

@@ -5,8 +5,6 @@ index_suse=Perl paketea <tt>perl-IO-Tty</tt> falta da, eta eskuz instalatu behar
 index_euser=Errorea: $1 erabiltzaileak ezin du shell-a exekutatu, ez baitago!
 index_connecting=Konektatzen ..
 index_missing=Perl modulua <tt>$1</tt> falta da. Zure administratzailearekin harremanetan jarri behar duzu arazo hau konpontzeko.
-index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Exekutatu shell Unix erabiltzaile gisa
 acl_sameuser=Webmin-en saioaren berdina
-acl_sudoenforce=Enforce <em>sudo</em>-only privileges

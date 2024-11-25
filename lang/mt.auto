@@ -287,7 +287,6 @@ password_done=Il-password tiegħek inbidlet b'suċċess. Issa tista '<a href='$1
 password_err=Ma rnexxielux ibiddel il-password
 password_euser=L-isem tal-login tiegħek ma nstabx fil-fajl tal-password!
 password_eold=Il-password attwali mhix korretta
-password_euserpass=Invalid username or password
 password_enew1=Ma ddaħħlet l-ebda password ġdida
 password_enew2=Il-passwords il-ġodda tiegħek ma jaqblux
 password_epam=Żball PAM : $1

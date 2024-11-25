@@ -32,7 +32,7 @@ desc_args--match-set=$2 zit in IP-set $1
 desc_src=bron
 desc_dest=bestemming
 
-redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+redhat_einstalled=Er is geen opstartactie <tt>iptables (6)</tt> gevonden, wat aangeeft dat het IPtables-pakket niet op uw systeem is geïnstalleerd
 
 edit_state_snat=Bron NATd
 edit_state_dnat=Bestemming NATd

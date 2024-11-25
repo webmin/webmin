@@ -13,12 +13,6 @@ ui_hnm0=Nome host reale
 ui_hnm1=Nome host dall'URL
 ui_hnm2=Nome di dominio dall'URL
 ui_hnm3=Altro nome ..
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
 
 log_copycert=Impostazioni SSL copiate da Webmin
 

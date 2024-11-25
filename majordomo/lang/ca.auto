@@ -4,13 +4,9 @@ index_info=Informació de llista
 index_mail=Direcció de correu
 index_moderated=Moderada
 index_count=# d’usuaris
-
 global_saved=(desat)
-
 create_minimum=Informació mínima requerida
-
 edit_return=llista d'enviament
-
 check_title=Consulteu Majordomo Config
 check_test=Prova de. ..
 check_result=Resultat / revisió addicional

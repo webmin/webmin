@@ -1,7 +1,1 @@
 net_ssl_required=Godta kun SSL
-
-login_otp=One time password
-login_skey=Security key
-login_oauthbearer=OAuth2 bearer authentication
-login_xoauth2=Google OAuth2 bearer authentication
-login_external=External SASL authentication

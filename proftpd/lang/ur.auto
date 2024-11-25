@@ -27,8 +27,6 @@ index_global=عالمی تشکیل
 index_create=ورچوئل سرور بنائیں
 index_version=ProFTPd ورژن$1
 index_proftpd=پرو ایف ٹی پی ڈی
-index_dlheader=Add Options
-index_dlmode=Add options for
 
 efailed=$1 کو بچانے میں ناکام
 
@@ -39,7 +37,6 @@ type_3=رسائی کنٹرول
 type_4=متفرق
 type_5=صارف اور گروپ
 type_6=توثیق
-type_7=SSL Options
 
 virt_title=ورچوئل سرور کے اختیارات
 virt_header1=$1 کے لئے
@@ -383,19 +380,6 @@ mod_readme_display=ریڈیم فائلوں کے ملاپ کے صارف کو مط
 mod_readme_none=کوئی نہیں
 mod_readme_edisplay=ریڈیم فائلوں کا نمونہ غائب ہے
 
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
-
 start_err=ایف ٹی پی سرور شروع کرنے میں ناکام
 start_einetd=inetd وضع میں ہونے پر آپ سرور ڈیمون شروع نہیں کرسکتے ہیں۔
 
@@ -426,7 +410,6 @@ ftpindex_addlimit=کے لئے فی کمانڈ آپشنز شامل کریں ..
 ftpindex_header2=$2 میں$1
 ftpindex_return=فی ڈائریکٹری اختیارات فائل
 ftpindex_header=$1 کے لئے
-ftpindex_cmds=FTP commands
 
 find_err=اختیارات کی فائلیں ڈھونڈنے میں ناکام
 find_eanon=گمنام ایف ٹی پی کسی بھی ورچوئل سرور میں سیٹ اپ نہیں ہے

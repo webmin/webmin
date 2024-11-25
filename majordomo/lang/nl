@@ -17,7 +17,6 @@ index_global=Bewerk Majordomo Opties
 index_globaldesc=Bewerk globale Majordomo opties die worden toegevoegd aan alle email lijsten.
 index_return=email lijsten
 index_version=Majordomo versie $1
-
 global_title=Globale Opties
 global_ecannot=U bent niet bevoegd om deze globale opties te bewerken
 global_header=Globale Majordomo opties
@@ -30,7 +29,6 @@ global_ewhereami=Ontbrekende of ongeldige email server hostnaam
 global_ewhoami=Ontbrekende of ongeldig Majordomo adres
 global_eowner=Ontbrekend of ongeldig eigenaars adres
 global_esendmail=De opdracht om email te versturen '$1' bestaat niet
-
 create_ecannot=U bent niet bevoegd om een nieuwe lijst te maken
 create_title=Maak Email Lijst
 create_header=Nieuwe lijst details
@@ -54,7 +52,6 @@ create_archive=Maak een archief van email lijst?
 create_archiveyear=In jaarlijkse file
 create_archivemonth=In maandelijkse file
 create_archiveday=In dagelijkse file
-
 cdigest_ecannot=U bent niet bevoegd om een nieuwe samenvatting lijst te maken
 cdigest_title=Maak Samenvatting Lijst
 cdigest_header=Nieuwe samenvatting lijst details
@@ -71,21 +68,18 @@ cdigest_lines=Berichten totaal $1 regels
 cdigest_err=Mislukt om de samenvatting lijst te maken
 cdigest_edays=Ongeldig of ontbrekend aantal dagen
 cdigest_elines=Ongeldig of ontbrekend aantal regels
-
 edit_title=Bewerk Email Lijst
 edit_ecannot=U bent niet bevoegd om deze email lijst te bewerken
 edit_delete=Verwijder Lijst
 edit_deletemsg=Verwijder deze lijst, inclusief alle geassocieerde files en email aliassen.
 edit_return=email lijst
 edit_for=Voor Lijst $1
-
 delete_ecannot=U bent niet bevoegd om deze email lijst weg te gooien
 delete_edigest=Deze lijst kan niet worden verwijderd omdat het erop lijkt dat hij associaties heeft met een samenvatting lijst.
 delete_title=Verwijder Lijst
 delete_rusure=Weet u zeker dat u de $1 email lijst wilt verwijderen? De volgende files zullen worden verwijdert :
 delete_aliases=De volgende email aliassen zullen ook verwijderd worden :
 delete_ok=Verwijder Lijst
-
 members_title=Leden Lijst
 members_desc=Gebruik de tekst box hieronder om de email adressen lijst te bewerken die email ontvangen wat verstuurd word naar deze lijst.
 members_rodesc=De tekst box hieronder is een lijst van alle email adressen die email ontvangen wat verstuurd word naar deze lijst
@@ -100,7 +94,6 @@ members_esub=U moet eerst een onderhouds wachtwoord kiezen voordat u adressen ga
 members_esubaddr=Het adres wat u toevoegt moet een volledige domein naam zijn, zoals <tt>foo@bar.com</tt>
 members_eunsub=U moet eerst een onderhouds wachtwoord kiezen voordat u adressen gaat verwijderen van deze lijst
 members_eunsubaddr=Het adres wat u verwijdert moet een volledige domein naam zijn, zoals <tt>foo@bar.com</tt>
-
 info_title=Berichten en Omschrijvingen
 info_header=Berichten en omschrijvingen
 info_desc=Lijst omschrijving, die moet worden ingevoegd aan de <tt>lijsten</tt> opdracht
@@ -108,7 +101,6 @@ info_info=Informatieve berichten die moeten worden terug gestuurd als reactie op
 info_intro=Introductie bericht, wanneer iemand zich inschrijft bij de lijst
 info_same=Zelfde als het informatieve bericht
 info_below=Zoals ingevuld hieronder ..
-
 subs_title=Toevoegingen en Moderatie
 subs_header=Toevoeg en moderatie opties
 subs_sub=Toevoeg beleid
@@ -134,7 +126,6 @@ subs_eowner=Ontbrekende eigenaars email adres
 subs_eapproval=Ontbrekende goedkeuring van email adres
 subs_emoderator=Ontbrekende of ongeldig moderator adres
 subs_epasswd=Ontbrekende of ongeldig wachtwoord
-
 mesg_title=Email Opties
 mesg_header=Uitgaande email opties
 mesg_reply=Antwoord-Naar: adres in opnieuw verstuurde email
@@ -155,7 +146,6 @@ mesg_esender=Ontbrekende of ongeldige Afzender: adres
 mesg_esender2=Afzender: adres moet niet inclusief hostnaam zijn
 mesg_ehost=Ontbrekende of ongeldige hostnaam
 mesg_emaxlength=Ontbrekende of ongeldige maximum berichten grootte
-
 access_title=Toegang Controle
 access_header=Toegang controle voor de Majordomo opdrachten
 access_open=Iedereen
@@ -178,20 +168,17 @@ access_res2=Adressen in file
 access_tbody=Taboe body regexps
 access_theader=Taboe header regexps
 access_taboo=Let OP: alle taboe en adres regexps moeten beginnen en eindigen met <tt>/</tt>, bijvoorbeeld <tt>/foobar.com/</tt> or <tt>/onguur/</tt>.
-
 head_title=Headers en Footers
 head_header=Opnieuw versturen van email headers en footers
 head_fronter=Opnieuw versturen van email header
 head_footer=Opnieuw versturen van email footer
 head_headers=Extra SMTP headers voor opnieuw versturen email
-
 misc_title=Extra Opties
 misc_header=Extra lijst opties
 misc_munge=Gebruik domein alleen wanneer adressen worden vergeleken?
 misc_debug=Debug mode?
 misc_info=Inclusief de laatste gemodificeerde datum in de informatieve berichten?
 misc_intro=Inclusief de laatste gemodificeerde datum in de introductie berichten?
-
 digest_title=Samenvatting Opties
 digest_header=Samenvatting genereer opties
 digest_name=Samenvatting titel
@@ -206,7 +193,6 @@ digest_edays=Ontbrekende of ongeldig aantal dagen
 digest_elines=Ontbrekende of ongeldig aantal regels
 digest_evolume=Ontbrekende of ongeldig volume nummer
 digest_eissue=Ontbrekende of ongeldig kwestie nummer
-
 log_global=Veranderde globale opties
 log_create_list=Aangemaakte email lijst $1
 log_create_digest=Gemaakte samenvatting lijst $1
@@ -223,13 +209,11 @@ log_access=Ge-update toegang controle voor lijst $1
 log_head=Geupdate headers en footers voor lijst $1
 log_misc=Ge-update extra Opties voor lijst $1
 log_digest=Geupdate samenvatting opties voor lijst $1
-
 acl_lists=Email lijsten die deze gebruiker mag beheren
 acl_lall=Alle lijsten
 acl_lsel=Geselecteerd.
 acl_global=Mag globale opties bewerken?
 acl_create=Mag een nieuwe email lijst maken?
 acl_edit=Mag de lidmaatschap lijst bewerken?
-
 alias_err=Mislukt om aliassen in te stellen
 alias_eowner=Ontbrekende eigenaar email adres

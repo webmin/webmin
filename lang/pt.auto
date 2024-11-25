@@ -21,8 +21,6 @@ session_twofailed=Falha na autenticação de dois fatores : $1
 
 elock_tries2=Falha ao bloquear o arquivo $1 após $2 minutos. O último erro foi : $3
 
-password_euserpass=Invalid username or password
-
 ui_filterbox=Digite para filtrar ..
 ui_of=de
 

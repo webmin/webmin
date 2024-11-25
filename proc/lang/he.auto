@@ -17,8 +17,6 @@ index_loadname=ממוצעי עומס מעבד:
 index_loadnums=$1 (1 דק '), $2 (5 דקות), $3 (15 דקות)
 index_cpuname=סוג מעבד:
 index_inzone=באזור $1 
-index_core=$1 core
-index_cores=$1 cores
 
 pid=תעודת זהות
 owner=בעלים

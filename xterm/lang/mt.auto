@@ -5,8 +5,6 @@ index_suse=Il-pakkett Perl <tt>perl-IO-Tty</tt> huwa nieqes, u għandu jiġi ins
 index_euser=Żball: L-utent $1 ma jistax iħaddem il-qoxra peress li ma teżistix!
 index_connecting=Konnessjoni ..
 index_missing=Il-modulu Perl <tt>$1</tt> huwa nieqes. Għandek bżonn tikkuntattja lill-amministratur tiegħek biex issolvi din il-kwistjoni.
-index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Mexxi shell bħala utent Unix
 acl_sameuser=L-istess bħall-login ta' Webmin
-acl_sudoenforce=Enforce <em>sudo</em>-only privileges

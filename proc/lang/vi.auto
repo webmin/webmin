@@ -17,8 +17,6 @@ index_loadname=Trung bình tải CPU:
 index_loadnums=$1 (1 phút), $2 (5 phút), $3 (15 phút)
 index_cpuname=Loại CPU:
 index_inzone=Trong khu vực $1 
-index_core=$1 core
-index_cores=$1 cores
 
 pid=TÔI
 owner=Chủ nhân

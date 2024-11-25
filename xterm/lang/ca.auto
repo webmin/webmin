@@ -5,8 +5,6 @@ index_suse=Falta el paquet Perl <tt>perl-IO-Tty</tt> i primer s'ha d'instal·lar
 index_euser=Error: l'usuari $1 no pot executar l'intèrpret d'ordres perquè no existeix!
 index_connecting=Connectant ..
 index_missing=Falta el mòdul Perl <tt>$1</tt>. Heu de contactar amb el vostre administrador per resoldre aquest problema.
-index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Executeu shell com a usuari Unix
 acl_sameuser=Igual que l'inici de sessió de Webmin
-acl_sudoenforce=Enforce <em>sudo</em>-only privileges

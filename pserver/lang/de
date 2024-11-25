@@ -16,10 +16,8 @@ index_deactdesc2=Der CVS-Server ist eingerichtet, um von $1 auf Ihrem System fü
 index_return=Modulindex
 index_asuser=Ausführen als Benutzer:
 index_einetroot=Achtung! Der CVS-Root, welcher in der Modulkonfiguration eingestellt ist, ist nicht der Root für den CVS-Server. Dies kann durch Deaktivieren und Reaktivieren des CVS-Server festgelegt werden.
-
 setup_einet=Weder <tt>inetd</tt> noch <tt>xinetd</tt> scheint auf Ihrem System installiert zu sein.
 setup_ecannot=Sie sind nicht berechtigt, den CVS-Server einzurichten
-
 passwd_title=CVS-Benutzer
 passwd_header=CVS-Server-Benutzer
 passwd_desc=Der CVS-Server können die unten aufgeführten Benutzer anmelden und auf das Repository zugreifen. Wenn eine nicht gelisteter Benutzer versucht sich anzumelden, versucht der Server das Passwort des Benutzers mit der System-Passwort-Datei stattdessen zu überprüfen, abhängig von der Serverkonfiguration.
@@ -31,7 +29,6 @@ passwd_sync_modify=Aktualisiere einen CVS-Benutzer, wenn der entsprechende Unix 
 passwd_sync_delete=Lösche eines CVS-Benutzer, wenn der entsprechende Unix Benutzer gelöscht wurde.
 passwd_return=Benutzerliste
 passwd_ecannot=Es ist Ihnen nicht erlaubt CVS-Benutzer zu verwalten
-
 edit_title1=Erstelle CVS-Benutzer
 edit_title2=Editiere CVS-Benutzer
 edit_header=CVS-Benutzerdetails
@@ -43,13 +40,11 @@ edit_pass1=Unverändert lassen
 edit_pass0=Setze auf..
 edit_unix=Dateien als Unix-Benutzer zugreifen
 edit_unixdef=Gleiche wie Benutzername
-
 save_err=Fehlgeschlagen CVS-Benutzer zu speichern
 save_euser=Fehlender oder ungültiger Benutzername
 save_eunix=Fehlender oder ungültiger Unix Benutzer
 save_ecopy=Unix-Benutzer, um Passwort aus zu kopieren, existiert nicht
 save_emd5=Unix-Passwort im MD5-Format kopieren
-
 access_title=Benutzer-Zugangskontrolle
 access_header=Nur lesende CVS-Benutzer
 access_readers1=Keine nur-lese Benutzer
@@ -60,11 +55,9 @@ access_desc=Wenn ein Benutzer sowohl in den Lese als auch in der Schreibe-Liste 
 access_err=Fehlgeschlagen beim Speichern von User Access Control
 access_euser=Benutzer '$1' existiert nicht
 access_ecannot=Es ist Ihnen nicht erlaubt User Access Control zu editieren
-
 cvsweb_title=Browse Repository
 cvsweb_ecmd=Der CVS-Befehl $1 wurde nicht auf Ihrem System gefunden. Dieser Befehl wird für die Anzeige der CVS-Repository benötigt.
 cvsweb_ecannot=Es ist Ihnen nicht erlaupt das CVS repository anzusehen
-
 config_title=Server Konfiguration
 config_header=Server Konfigurationsoptionen
 config_auth=Prüfe Benutzer gegen System-Passwort-Datei?
@@ -87,7 +80,6 @@ config_lock=Lock Datei Verzeichnis
 config_err=Fehlgeschlagen Serverkonfiguration zu speichern
 config_elock=Fehlendes oder ungültiges Lock-Datei-Verzeichnis
 config_ecannot=Sie sind nicht berechtigt, die Serverkonfiguration zu bearbeiten
-
 log_setup=CVS-Server eingerichtet
 log_activate=Aktivierte CVS-Server
 log_deactivate=CVS-Server deaktiviert
@@ -96,13 +88,11 @@ log_delete_user=Benutzer $1 gelöscht
 log_modify_user=Benutzer $1 modifiziert
 log_access=User Access Control geändert
 log_config=Geänderte Serverkonfiguration
-
 acl_passwd=Kann CVS-Benutzer verwalten?
 acl_access=Kann die Benutzerzugriffssteuerung bearbeiten?
 acl_config=Kann Serverkonfiguration editieren?
 acl_cvsweb=Kann CVS repository anzeigen?
 acl_setup=Kann inetd oder xinetd einrichten, um CVS-Server auszuführen?
 acl_init=Kann repository initialisieren?
-
 init_err=Fehlgeschlagen repository zu initialisieren
 init_ecannot=Es ist Ihnen nicht erlaubt ein repository zu initialisieren

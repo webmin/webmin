@@ -14,7 +14,6 @@ index_global=Opcje globalne
 index_ecdrecord=Brak komendy nagrywania CD $1 w systemie. Możliwe że nie jest zainstalowana, albo <a href='$2'>konfiguracja modułu</a> jest niepoprawna.
 index_return=listy profili
 index_delete=Usuń wybrane profile
-
 edit_title=Edytuj profil nagrywania
 create_title=Utwórz profil nagrywania
 edit_emkisofs=Nie znaleziono komendy budowania systemu plików ISO $1 w systemie. Możliwe że nie jest zainstalowana, albo <a href='$2'>konfiguracja modułu</a> jest niepoprawna.
@@ -50,7 +49,6 @@ edit_fly0=Użyj pliku tymczasowego
 edit_srcdrv=Sterownik urządzenia źródłowego
 edit_dstdrv=Sterownik urządzenia docelowego
 edit_ecannot=Nie masz uprawnień do edycji tego profilu nagrywania
-
 save_err=Błąd zapisywania profilu
 save_ename=Brakująca nazwa profilu
 save_eiso=Braująa lub nieprawidłowa nazwa pliku ISO
@@ -64,7 +62,6 @@ save_ecannot1=Brak Obrazu ISO w dozwolonym katalogu
 save_ecannot2=Brak katalogu źródłowego $1 w dozwolonym katalogu
 save_ecannot3=Brak pliku MP3 lub katalogu $1 w dozwolonym katalogu
 save_ecannot4=Brak pliku źródłowego urządzenia w dozwolonym katalogu
-
 burn_title=Nagraj CD
 burn_rutest1=Czy chcesz przetestować narywanie obrazu ISO $1 ?
 burn_rusure1=Czy chcesz nagrać obraz ISO $1 na CD?
@@ -102,7 +99,6 @@ burn_807=Ostrzeżenie! Całkowity rozmiar ścieżek audio to $1, który jest wi�
 burn_mp3size=Przekonwertowane ścieżki audio mają $1 MB, co oznacza, że jest to o $2 MB za dużo w stosunku do normalnego CD audio.
 burn_seconddesc=Włóż pusty nośnik CD i kliknij poniższy przycisk.
 burn_second=Nagraj docelowe CD
-
 dev_title=Opcje urządzenia
 dev_header=Opcje urządzenia nagrywającego CD
 dev_device=Urządzenie nagrywające
@@ -113,7 +109,6 @@ dev_extra=Dodatkowe opcje <tt>cdrecord</tt>
 dev_err=Błąd zapisywania opcji urządzenia
 dev_eother=Brakująca lub nieprawidłowa szybkość nagrywania
 dev_ecannot=Nie masz uprawnień do edytowania opcji urządzenia
-
 mkisofs_title=Opcje systemu plików ISO
 mkisofs_header=Globalne opcje systemu pliów ISO
 mkisofs_novers=Uwzględnić numer wersji w nazwach plików?
@@ -121,7 +116,6 @@ mkisofs_notrans=Pozwolić na dowolne znaki w nazwach plików?
 mkisofs_nobak=Pominąć pliki kopii zapasowej?
 mkisofs_fsyms=Wykorzystać łącza symboliczne?
 mkiofs_ecannot=Nie masz  uprawnień do edycji opcji systemu plików ISO
-
 config_cdrecord=Komenda nagrywania CD
 config_mkisofs=Komenda budowania systemu plików ISO
 config_mpg123=Komeda dekodowania MP3
@@ -135,7 +129,6 @@ config_empg123=Brakująca lub nieprawidłowa komenda dekodowania MP3
 config_esox=Brakująca lub nieprawidłowa komenda SOX
 config_ecdrdao=Brakująca lub nieprawidłowa komenda CD
 config_etemp=Brakujący lub nieprwidłowy katalog plików tymczasowych
-
 acl_create=Może tworzyć profile nagrywania?
 acl_edit=Może edytować istniejące profile nagrywania?
 acl_global=Może edytować ustawienia globalne?
@@ -143,6 +136,5 @@ acl_profiles=Może używać profilach
 acl_all=Wszystkie
 acl_sel=Wybrane poniżej ..
 acl_dirs=Dozwolone katalogi dla plików źródłowych
-
 delete_err=Błęd usuwania profili nagrywania
 delete_enone=Nie wybrano

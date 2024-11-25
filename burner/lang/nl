@@ -14,7 +14,6 @@ index_global=Globale Opties
 index_ecdrecord=De CD schrijf opdracht $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet in orde.
 index_return=profielen lijst
 index_delete=Verwijder Geselecteerde Profielen
-
 edit_title=Bewerk brand profile
 create_title=Maak een brand profiel
 edit_emkisofs=De maak-filesysteem-ISO opdracht $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet in orde.
@@ -50,7 +49,6 @@ edit_fly0=Gebruik tijdelijk file
 edit_srcdrv=Bron apparaat driver
 edit_dstdrv=Driver bestemming's apparaat
 edit_ecannot=U bent niet bevoegd om dit brand profiel te bewerken
-
 save_err=Mislukt om profiel op te slaan
 save_ename=Ontbrekende profiel naam
 save_eiso=Ontbrekende of ongeldige ISO image filenaam
@@ -64,7 +62,6 @@ save_ecannot1=De ISO image zit niet in een toegestane directory
 save_ecannot2=De bron directory $1 zit niet onder een toegestane directory
 save_ecannot3=De MP3 file of directory $1 zit niet onder een toegestane directory
 save_ecannot4=De apparaat file zit niet in een toegestane directory
-
 burn_title=Brand CD
 burn_rutest1=Weet u zeker dat u een brand-test wilt doen met de ISO image $1 ?
 burn_rusure1=Weet u zeker dat u de ISO image $1 naar CD wilt branden ?
@@ -102,7 +99,6 @@ burn_807=Waarschuwing! Uw audio track's is $1 MB in grote, wat groter is dan de 
 burn_mp3size=De geconverteerde audio track's zijn $1 MB in grote, van het totaal van $2 MB wat is toegestaan op een normale audio CD.
 burn_seconddesc=Stop een blanke Bestemming CD in het apparaat en klik op de knop hieronder.
 burn_second=Brand Bestemming CD
-
 dev_title=Apparaat Opties
 dev_header=CD brander apparaat opties
 dev_device=Brander apparaat
@@ -113,7 +109,6 @@ dev_extra=Extra <tt>cd-opneem</tt> opties
 dev_err=Mislukt om apparaat opties op te slaan
 dev_eother=Ontbrekende of ongeldige schrijf snelheid
 dev_ecannot=U bent niet bevoegd om apparaat opties te bewerken
-
 mkisofs_title=ISO Filesysteem Opties
 mkisofs_header=Globale ISO filesysteem opties
 mkisofs_novers=Inclusief versie nummers in filenamen?
@@ -121,7 +116,6 @@ mkisofs_notrans=Sta karakters toe in filenamen?
 mkisofs_nobak=Backup files overslaan?
 mkisofs_fsyms=Volg symbolische links?
 mkiofs_ecannot=U bent niet bevoegd om ISO filesysteem opties te bewerken
-
 config_cdrecord=CD brand opdracht
 config_mkisofs=Commando om een filesysteem ISO te maken
 config_mpg123=MP3 decoder opdracht
@@ -135,7 +129,6 @@ config_empg123=Ontbrekende of ongeldig MP3 decoder opdracht
 config_esox=Ontbrekende of ongeldig SOX opdracht
 config_ecdrdao=Ontbrekende of ongeldig CD kopieer opdracht
 config_etemp=Ontbrekende of ongeldige tijdelijke file directory
-
 acl_create=Mag een nieuw brand profiel aanmaken?
 acl_edit=Mag een bestaande brand profielen bewerken?
 acl_global=Mag globale settings bewerken?
@@ -143,6 +136,5 @@ acl_profiles=Mag gebruik maken van profielen
 acl_all=Alles
 acl_sel=Hieronder geselecteerd ..
 acl_dirs=Directory's toestaan voor source files
-
 delete_err=Mislukt om brandprofiel te verwijderen
 delete_enone=Niets geselecteerd

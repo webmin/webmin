@@ -8,15 +8,12 @@ index_info=Listinfo
 index_mail=E-postadress
 index_moderated=Modererad
 index_count=antal användare
-
 global_saved=(Sparade)
-
 create_archive=Arkivera postlista?
 create_archiveyear=I årlig fil
 create_archivemonth=I månadsfil
 create_archiveday=I daglig fil
 create_minimum=Minsta obligatorisk information
-
 cdigest_ecannot=Du har inte tillåtelse att skapa nya digest-listor
 cdigest_title=Skapa digestlista
 cdigest_header=Nya detaljer för detaljerad lista
@@ -33,13 +30,10 @@ cdigest_lines=Meddelanden totalt $1 rader
 cdigest_err=Det gick inte att skapa listan över upptagning
 cdigest_edays=Ogiltigt eller saknat antal dagar
 cdigest_elines=Ogiltigt eller saknat antal rader
-
 acl_lall=Alla listor
 acl_lsel=Vald ..
-
 alias_err=Det gick inte att konfigurera alias
 alias_eowner=E-postadress saknas
-
 check_title=Kolla Majordomo Config
 check_test=Test för. ..
 check_result=Resultat / ytterligare kontroll

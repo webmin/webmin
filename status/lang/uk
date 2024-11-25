@@ -5,6 +5,7 @@ index_desc=Датчик
 index_up=Стан
 index_last=Остання перевірка
 index_local=Локальний
+index_add=Додати датчик:
 index_sched=Планова перевірка
 index_return=списку служб
 index_none=У даний момент немає жодного датчика.

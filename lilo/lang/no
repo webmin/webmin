@@ -10,7 +10,6 @@ index_applymsg3=Forsikre deg om at konfigurasjonen er korrekt for du omstarter!
 index_return=kjerner og partisjoner
 index_earch=LILO støttes bare på x86-baserte systemet
 index_econf=LILO konfigurasjonsfilen $1 finnes ikke. Kanskje det brukes en annen oppstartslaster på systemet ditt.
-
 global_title=Globale innstillinger
 global_desc=Globale oppstartsinnstillinger
 global_boot=Skriv oppstartslaster til
@@ -33,10 +32,8 @@ global_any=En hver oppstart
 global_secs=sekunder
 global_lba=Tillat oppstart fra utover 1024 sylindere?
 global_err=Kunne ikke ladre globale oppstartsinnstillinger
-
 apply_title=Bruk konfigurasjon
 apply_exec=Tar i bruk LILO konfigurasjon med kommandoen $1 ..
-
 image_title1=Opprett oppstarts-kjerne
 image_title2=Rediger oppstarts-kjerne
 image_options=Innstillinger for oppstarts-kjerne
@@ -67,7 +64,6 @@ image_none=Ingen
 image_ename=Mangler navn for denne oppstarts-kjernen
 image_ekernel=Kjerne-bilde '$1' finnes ikke
 image_einitrd=Initiell ramdisk fil '$1' finnes ikke
-
 other_title1=Opprett oppstartspartisjon
 other_title2=Rediger oppstartspartisjon
 other_details=Partisjons detaljer
@@ -78,7 +74,6 @@ other_yes=Ja, fra
 other_password=Oppstart passord
 other_none=Ingen
 other_ename=Mangler navn for denne oppstartspartisjonen
-
 log_create_image=Opprettet oppstarts-kjerne $1
 log_modify_image=Endret oppstarts-kjerne $1
 log_delete_image=Slettet oppstarts-kjerne $1

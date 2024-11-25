@@ -8,8 +8,6 @@ index_loadname=CPU로드 평균 :
 index_loadnums=$1 (1 분), $2 (5 분), $3 (15 분)
 index_cpuname=CPU 유형 :
 index_inzone=영역 $1 에서
-index_core=$1 core
-index_cores=$1 cores
 
 stime=시작
 sclass=IO 스케줄링 클래스

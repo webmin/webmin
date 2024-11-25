@@ -1,4 +1,3 @@
-index_madd=Add monitor of type
 index_refsel=Obnovit vybrané
 index_tmpls=Upravit e-mailové šablony
 index_tmplsdesc=Zobrazení a úpravy šablon používaných k vytváření e-mailových zpráv odeslaných, když sledované služby klesnou.
@@ -10,13 +9,8 @@ type_dovecot=Server Dovecot IMAP/POP3
 type_init=Bootup Action
 type_slapd=LDAP Server
 type_ldap=Připojení LDAP
-type_smtp=SMTP Connection
-type_imap=IMAP Connection
-type_firewalld=FirewallD Server
-type_reboot=Reboot Required
 
 mon_virtualmin=Varování! Tento monitor je přidružen k doméně Virtualmin $1, a proto by zde neměl být upravován ani mazán.
-mon_header5=Notification options
 mon_remotes2=Běží na hostitelích a skupinách
 mon_ontimeout=Pokud monitor vyprší, spusťte příkaz
 mon_eremote2=Webmin server $1 nelze kontaktovat : $2 
@@ -34,7 +28,6 @@ mon_changes1=Zobrazit pouze změny
 mon_all=Zobrazit všechny historické události
 mon_nochanges=V posledních historických událostech $1 nedošlo k žádným změnám stavu.
 
-sched_email_def=System default ($1)
 sched_warn3=Dokud je služba v provozu
 sched_esmsname=Chybějící nebo neplatně vypadající číslo SMS
 sched_subject=Řádek předmětu pro zprávy SMS
@@ -195,38 +188,3 @@ ldap_pass=Heslo serveru LDAP
 info_desc=Sledování systému
 info_last=Aktuální stav
 info_title=Stav systému a serveru
-
-smtp_host=SMTP server host
-smtp_port=SMTP server port
-smtp_ssl=Use SSL connection?
-smtp_ssl0=Plaintext only
-smtp_ssl1=Always SSL
-smtp_ssl2=Switch to SSL with STARTTLS
-smtp_from=Test SMTP sender
-smtp_none=None
-smtp_addr=Use address
-smtp_to=Test SMTP recipient
-smtp_ehost=Missing or unresolvable SMTP server host
-smtp_eport=Missing or non-numeric SMTP server port
-smtp_efrom=Sender address must be like user@domain.com
-smtp_eto=Recipient address must be like user@domain.com
-smtp_ok1=HELO command accepted
-smtp_ok2=Sender address accepted
-smtp_ok3=Recipient address accepted
-smtp_ok4=SMTP login accepted
-smtp_user=SMTP authentication
-smtp_user1=Don't login
-smtp_user0=Login as user
-smtp_pass=with password
-smtp_euser=Missing SMTP login
-
-imap_host=IMAP server host
-imap_port=IMAP server port
-imap_ssl=Use SSL connection?
-imap_user=IMAP login
-imap_pass=IMAP password
-imap_ehost=Missing or unresolvable IMAP server host
-imap_eport=Missing or non-numeric IMAP server port
-imap_euser=Missing IMAP login
-
-reboot_pkgs=Package updates require a reboot

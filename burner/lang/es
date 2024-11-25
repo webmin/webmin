@@ -11,7 +11,6 @@ index_none=No se han definido perfiles de grabación en este momento.
 index_global=Opciones Globales
 index_ecdrecord=El comando $1 para escribir CDs no fue hallado en su sistema. Quizás no está instalado o su <a href='$2'>configuración del módulo</a> es incorrecta.
 index_return=lista de perfiles
-
 edit_title=Editar Perfil de Grabación
 create_title=Crear Perfil de Grabación
 edit_emkisofs=El comando $1 de construcción de sistemas de archivo ISO no fue hallado en su sistema. Quizás no está instalado o su <a href='$2'>configuración del módulo</a> es incorrecta.
@@ -38,7 +37,6 @@ edit_return=perfil de grabación
 edit_ask=¿Pedir confirmación antes de grabar?
 edit_dstdrv=Driver de Dispositivo destivo
 edit_ecannot=No está autorizado a editar este perfil de grabación
-
 save_err=No se pudo salvar perfil
 save_ename=Falta nombre de perfil
 save_eiso=Falta o no es válido nombre de archivo de imagen ISO
@@ -47,7 +45,6 @@ save_edest=Falta directorio en CD para $1
 save_edirs=No se han seleccionado directorios fuente
 save_emp3s=No se han introducido archivos MP3 o directorios
 save_emp3=Archivo MP3 o directorio '$1' no existe
-
 burn_title=Grabar CD
 burn_rutest1=¿Está seguro de querer probar la grabación de la imagen ISO $1?
 burn_rusure1=¿Está seguro de querer grabar la imagen ISO $1 en CD?
@@ -85,7 +82,6 @@ burn_807=¡Aviso!. Sus pistas de audio miden $1 MB que supera los 807 MB permiti
 burn_mp3size=Las pistas de audio convertidas miden $1 MB de un total de $2 MB que es lo permitido en un CD de audio.
 burn_seconddesc=Insertar el CD de destino en blanco y pulsar el botón.
 burn_second=Grabar CD Destino
-
 dev_title=Opciones de Dispositivo
 dev_header=Opciones de grabadora de CDs
 dev_device=Grabadora
@@ -96,14 +92,12 @@ dev_extra=Opciones extra de <tt>cdrecord</tt>
 dev_err=No se pudo salvar opciones de dispositivo
 dev_eother=Velocidad de escritura falta o no es válida
 dev_ecannot=No está autorizado a editar opciones de dispositivo
-
 mkisofs_title=Opciones de Sistema de archivo ISO
 mkisofs_header=Opciones Globales de sistema de archivo ISO
 mkisofs_novers=¿Incluir el número de versión en nombres de archivo?
 mkisofs_notrans=¿Permitir todos los caracteres en nombres de archivo?
 mkisofs_nobak=¿Saltar los archivos de respaldo?
 mkisofs_fsyms=¿Seguir enlaces simbólicos?
-
 config_cdrecord=Comando de grabación de CD
 config_mkisofs=Comando de construcción de un sistema de archivos ISO
 config_mpg123=Comando de decodificación MP3
@@ -117,7 +111,6 @@ config_empg123=Comando de decodificación de MP3 falta o no es válido
 config_esox=Comando SOX falta o no es válido
 config_ecdrdao=Comando de copia de CD falta o no es válido
 config_etemp=Directorio de archivo temporal falta o no es válido
-
 acl_create=¿Puede crear nuevos perfiles de grabación?
 acl_edit=¿Puede editar perfiles de grabación existentes?
 acl_global=¿Puede editar configuraciones globales?

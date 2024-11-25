@@ -19,7 +19,6 @@ index_tabsync2=Zaženite sistemsko storitev <tt>$1</tt> za sinhronizacijo
 index_desctime=Ta obrazec je namenjen spreminjanju trenutnega časa sistema, ki ga uporabljajo vsi tekoči procesi. V operacijskih sistemih, ki imajo ločeno strojno uro, ga lahko uporabite tudi za nastavitev.
 index_desczone=Ta obrazec vam omogoča, da nastavite privzeti časovni pas sistema, ki se uporablja za pretvorbo sistemskega časa v človeško berljiv format in odmik.
 index_descsync=Ta obrazec je namenjen konfiguriranju sistema za samodejno sinhronizacijo časa z oddaljenim strežnikom. Sinhronizacija bo izvedena s protokolom Unix <tt>time</tt> ali NTP, odvisno od tega, kateri ukazi so nameščeni in kaj oddaljeni sistem podpira.
-index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 action_save=Shrani
 action_apply=Prijavite se

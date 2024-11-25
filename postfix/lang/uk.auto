@@ -125,13 +125,9 @@ smtpd_nomap2=Карта обмежень щодо адрес відправни�
 smtpd_map=Дозволені адреси для ретрансляції
 smtpd_map2=Обмеження щодо адрес відправника
 
+opts_smtp_use_tls=Використовуйте TLS для з'єднань SMTP
 opts_smtp_sasl_security_options=Параметри безпеки SASL
 opts_smtp_tls_security_level=Рівень безпеки клієнта SMTP TLS
-opts_inet_protocols=Internet protocols to enable
-opts_inet_protocols_all=All available
-opts_smtp_address_preference=Preferred SMTP client protocol
-opts_smtp_address_preference_any=Either
-opts_smtp_balance_inet_protocols=Validate SMTP client protocols
 
 opts_edebug=Відсутній або недійсний рівень вхідного журналу - повинен бути числом більше нуля
 
@@ -184,20 +180,9 @@ acl_postfinger=Чи можна перевірити конфігурацію п�
 acl_manual=Чи можна редагувати конфігураційний файл?
 acl_dir=Дозволений каталог для файлів карт
 acl_bcc=Чи можна редагувати відображення BCC?
-acl_body=Can edit body checks?
-acl_dependent=Can edit sender dependent transport maps?
 
 mail_move=Переїжджати:
 mail_eexists=Повідомлення більше не існує!
-mail_qfile=Mail queue file
-mail_qlast=Last retried at
-mail_qdir=Mail queue status
-mail_qdir_active=Active
-mail_qdir_incoming=Incoming
-mail_qdir_deferred=Deferred
-mail_qdir_corrupt=Corrupt
-mail_qdir_hold=On hold
-mail_qdir_maildrop=Mail drop
 
 view_flush=Промийте
 view_body=Текст повідомлення
@@ -240,11 +225,9 @@ mailq_active=Активний
 mailq_deferred=Відкладено
 mailq_hold=Утримуйте вибране
 mailq_unhold=Скасувати вибране
-mailq_dir=Queue state
 
 flushq_title=Черга змивання
 flushq_desc=Примушування спроби доставки пошти за допомогою команди $1.
-flushq_desc2=.. check the mail log for results
 
 qview_title=Повідомлення в черзі
 qview_desc=З файлу $1
@@ -452,10 +435,6 @@ opts_broken_sasl_auth_clients=Обробляти клієнтів, які не �
 sasl_opts=Параметри безпеки SMTP
 sasl_noanonymous=Відхилити анонімні входи
 sasl_noplaintext=Відхилити вхід із звичайним текстом
-sasl_noactive=Reject Disallow subject to active (non-dictionary) attack
-sasl_nodictionary=Reject methods subject to passive (dictionary) attack
-sasl_forward_secrecy=Only allow methods that support forward secrecy
-sasl_mutual_auth=Only allow methods that provide mutual authentication
 opts_smtpd_delay_reject=Затримка клієнтів із невдалою реєстрацією?
 sasl_recip=Обмеження для одержувачів SMTP
 sasl_relay=Обмеження ретрансляції SMTP

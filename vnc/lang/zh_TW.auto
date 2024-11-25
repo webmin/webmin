@@ -1,2 +1,0 @@
-index_esocket=There is no VNC server running on $1 port $2.
-index_ecmd=The VNC server program $1 needed for running a specific program is not installed.

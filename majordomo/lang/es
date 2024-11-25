@@ -15,7 +15,6 @@ index_global=Editar Opciones de Majordomo
 index_globaldesc=Editar opciones globales de Majordomo que se aplican a todas las listas de correo
 index_return=listas de correo
 index_version=Majordomo versión $1
-
 global_title=Opciones Globales
 global_ecannot=No estás autorizado a editar opciones globales
 global_header=Opciones Globales de Majordomo
@@ -28,7 +27,6 @@ global_ewhereami=Nombre de máquina de servidor de correo sin poner o inválido
 global_ewhoami=Dirección de Majordomo sin poner o inválida
 global_eowner=Dirección del propietario sin poner o inválida
 global_esendmail=El comando de Sendmail '$1' no existe
-
 create_ecannot=No estás autorizado a crear nuevas listas
 create_title=Crear Lista de Correo
 create_header=Detalles de la nueva lista
@@ -52,7 +50,6 @@ create_archive=¿Archivar lista de correo?
 create_archiveyear=En archivo anual
 create_archivemonth=En archivo mensual
 create_archiveday=En archivo diario
-
 cdigest_ecannot=No tiene permiso para crear nuevas listas de resumen
 cdigest_title=Crear Lista de Resumen
 cdigest_header=Detalles de la nueva lista de resumen
@@ -69,21 +66,18 @@ cdigest_lines=Los mensajes totalizan $1 líneas
 cdigest_err=No se pudo crear la lista de resumen
 cdigest_edays=Número de días no válido o inexistente
 cdigest_elines=Número de líneas no válido o inexistente
-
 edit_title=Editar Lista de Correo
 edit_ecannot=No estás autorizado a editar esta lista de correo
 edit_delete=Borrar Lista
 edit_deletemsg=Borrar esta lista, incluyendo todos sus archivos asociados y aliases de correo
 edit_return=lista de correo
 edit_for=Para la lista $1
-
 delete_ecannot=No estás autorizado a borrar esta lista de correo
 delete_edigest=Esta lista no puede ser borrada debido a que parece tener una lista resumen asociada
 delete_title=Borrar Lista
 delete_rusure=¿Estás seguro de querer borrar la lista de correo $1?. Los siguientes archivos serán borrados:
 delete_aliases=Los siguientes aliases de correo serán también borrados:
 delete_ok=Borrar Lista
-
 members_title=Miembros de Lista
 members_desc=Utiliza la caja de texto inferior para editar la lista de direcciones de correo que recibirán el correo enviado a esta lista.
 members_rodesc=La caja de texto inferior lista todas las direcciones de correo que recibirán el correo enviado a esta lista.
@@ -98,7 +92,6 @@ members_esub=Debes de seleccionar una clave de acceso de mantenimiento antes de 
 members_esubaddr=La dirección a suscribir debe de tener nombre completo de dominio, como <tt>foo@bar.com</tt>
 members_eunsub=Debes de seleccionar una clave de acceso de mantenimiento antes de quitar suscripciones de direcciones de esta lista
 members_eunsubaddr=La dirección a dar de baja debe de tener un nombre completo de dominio, como <tt>foo@bar.com</tt>
-
 info_title=Mensajes y Descripción
 info_header=Mensajes y descripción
 info_desc=Descripción de lista, a ser incluída en el comando de respuesta a las <tt>listas</tt>
@@ -106,7 +99,6 @@ info_info=Mensaje informativo, a devolver en respuesta al comando <tt>info $1</t
 info_intro=Mensaje introductorio, a enviar cuando alguien se suscriba a la lista
 info_same=El mismo que el mensaje informativo
 info_below=Según se digite debajo...
-
 subs_title=Suscripción y Moderación
 subs_header=Opciones de suscripción y moderación
 subs_sub=Política de suscripción
@@ -132,7 +124,6 @@ subs_eowner=Dirección de correo del propietario sin poner
 subs_eapproval=Dirección de correo de aprobación sin poner
 subs_emoderator=Dirección del moderador inválida o sin poner
 subs_epasswd=Clave de acceso inválida o sin poner
-
 mesg_title=Opciones de Correo
 mesg_header=Opciones de correo saliente
 mesg_reply=Responer-A: dirección en correo reenviado
@@ -153,7 +144,6 @@ mesg_esender=Remitente inválido o sin poner: dirección
 mesg_esender2=Remitente: la dirección no debe de incluir un nombre de máquina
 mesg_ehost=Nombre de máquina inválido o sin poner
 mesg_emaxlength=Medida máxima de mensaje inválida o sin poner
-
 access_title=Control de Acceso
 access_header=Control de acceso para los comandos de majordomo
 access_open=Cualquiera
@@ -176,20 +166,17 @@ access_res2=Direcciones en archivo
 access_tbody=Expresiones en cuerpo que son tabú
 access_theader=Expresiones en cabecera que son tabú
 access_taboo=Nota: todas las expresiones de direcciones y de tabú deben de comenzar y terminar con <tt>/</tt>, como <tt>/foobar.com/</tt> o <tt>/obsceno/</tt>.
-
 head_title=Cabeceras y Pies
 head_header=Cabeceras y pies de correo reenviado
 head_fronter=Cabecera de correo reenviado
 head_footer=Pie de correo reenviado
 head_headers=Cabeceras extra de SMTP para correo reenviado
-
 misc_title=Opciones Varias
 misc_header=Lista de opciones varias
 misc_munge=¿Uso sólo el dominio cuando comparo las direcciones?
 misc_debug=¿Modo depuración?
 misc_info=¿Incluyo la fecha de última modificación en mensaje informativo?
 misc_intro=¿Incluyo la fecha de última modificación en mensaje introductorio?
-
 digest_title=Opciones de Resumen
 digest_header=Opciones de generación de resumen
 digest_name=Título de resumen
@@ -204,7 +191,6 @@ digest_edays=Número de días inválido o sin poner
 digest_elines=Número de líneas inválido o sin poner
 digest_evolume=Número de volumen inválido o sin poner
 digest_eissue=Número de asunto inválido o sin poner
-
 log_global=Cambiadas opciones globales
 log_create_list=Creada lista de correo $1
 log_create_digest=Creada lista resumen $1
@@ -221,13 +207,11 @@ log_access=Actualizado control de acceso para lista $1
 log_head=Actualizadas cabeceras y pies para lista $1
 log_misc=Actualizadas opciones varias para lista $1
 log_digest=Actualizadas opciones de resumen para lista $1
-
 acl_lists=Listas de correo que este usuario puede manejar
 acl_lall=Todas las listas
 acl_lsel=Las seleccionadas...
 acl_global=¿Puede editar opciones globales?
 acl_create=¿Puede crear nuevas listas de correo?
 acl_edit=¿Puede editar pertenecia a listas?
-
 alias_err=No pude configurar aliases
 alias_eowner=Falta dirección de correo de propietario

@@ -45,7 +45,6 @@ index_restart_firewallddesc=Muat semula pelayan FirewallD dan gunakan peraturan 
 index_listrules_restartdesc=Senaraikan butiran tentang peraturan FirewallD yang kaya dan langsung dalam $1 zon.
 index_dependent=Gagal memulakan semula perkhidmatan bergantung $1 
 index_manual=Edit Fail Konfigurasi.
-index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=Edit Fail Konfigurasi
 manual_editsel=Edit fail konfigurasi FirewallD

@@ -1,22 +1,3 @@
 index_applymsg2=ProFTPD를 중지했다가 다시 시작하여 현재 구성을 적용하려면이 버튼을 클릭하십시오.
-index_dlheader=Add Options
-index_dlmode=Add options for
-
-type_7=SSL Options
 
 mod_core_firstcdt=항상 보여
-
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
-
-ftpindex_cmds=FTP commands

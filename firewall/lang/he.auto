@@ -156,7 +156,7 @@ desc_args--match-set=$2 כלול בערכת ה- IP $1
 desc_src=מקור
 desc_dest=יעד
 
-redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+redhat_einstalled=לא נמצאו פעולות <tt>iptables (6)</tt> אתחול, מה שמצביע על כך שחבילת ה- IPtables אינה מותקנת במערכת שלך
 redhat_eoutput=אירעה שגיאה בהשגת סטטוס ה- IPtables מהפקודה $1. זה כנראה מצביע על כך שהמערכת שלך הוגדרה לשימוש ברשתות IP במקום בטבלאות IP.
 
 gentoo_escript=סקריפט ההפעלה של Gentoo IPtables $1 לא נמצא במערכת שלך.

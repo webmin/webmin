@@ -32,7 +32,6 @@ readparse_cdheader=Отсутствует заголовок Content-Disposition
 readparse_enc=Ожидается кодирование данных формы, но получено нормальное кодирование
 
 password_temp=Вы должны выбрать новый пароль, чтобы заменить ваш временный логин.
-password_euserpass=Invalid username or password
 password_epam=Ошибка PAM : $1
 
 ui_filterbox=Тип для фильтрации ..

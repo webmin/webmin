@@ -14,7 +14,6 @@ index_memb=$1 membri
 index_hst=Gazde și grupuri de gazdă
 index_nohst=Nu a fost definită nicio gazdă sau grup.
 index_hostgroup=Gazdă/Grup
-index_comment=Description
 index_parent=Mamă
 index_hardware=Adresa hardware
 index_group=Grup:

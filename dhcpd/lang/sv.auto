@@ -1,6 +1,5 @@
 index_key=Redigera TSIG-nycklar (används för att verifiera uppdateringar till DNS-servrar)
 index_dhcpdver2=DHCP-servern <tt>$1</tt> verkar inte vara rätt version. Webmin stöder endast ISC DHCPD-versioner $2 till $3.
-index_comment=Description
 index_desc=Beskrivning
 index_buttekey=Redigera TSIG-nycklar
 index_stop=Stoppa servern

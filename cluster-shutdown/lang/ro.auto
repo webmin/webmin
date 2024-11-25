@@ -14,7 +14,6 @@ index_smtp=Trimiteți prin server SMTP
 index_this=Acest server
 index_nu=Nici un set de utilizatori
 index_nl=Autentificare esuata
-
 shut_title=Opriți serverele
 shut_rusure=Sigur doriți să opriți imediat serverele selectate $1 ?
 shut_ok=Da, fă-o
@@ -23,12 +22,10 @@ shut_failed=.. a eșuat! $1
 shut_done=.. Terminat.
 shut_sel=Serverele selectate sunt :
 shut_ecannot=Nu aveți voie să opriți serverele
-
 reboot_title=Reboot Servers
 reboot_rusure=Sigur doriți să reporniți imediat serverele selectate $1 ?
 reboot_doing=Repornirea $1.
 reboot_ecannot=Nu aveți voie să reporniți serverele
-
 sched_err=Nu a reușit să configurați verificarea automată a serverului
 sched_eemail=Adresa de e-mail lipsă
 sched_esmtp=Serverul SMTP lipsă sau nevalid

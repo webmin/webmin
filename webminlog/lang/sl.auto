@@ -37,7 +37,6 @@ index_notify=Želite poslati e-pošto za dejanja Webmin?
 index_notify_mods=Za dejanja v modulih
 index_notify_users=Za dejanja uporabnikov
 index_notify_email=Pošlji e-pošto na
-index_notify_email_def=Default notification address
 index_notify_usub=Želite vključiti uporabniško ime v zadevo e-pošte?
 index_notify_msub=Ali želite v zadevo e-pošte vključiti dejanje?
 index_searchtab=Išči dnevnike
@@ -46,7 +45,8 @@ index_searchdesc=Ta obrazec se lahko uporablja za iskanje dejanj Webmin po upora
 index_notifydesc=Uporabite ta obrazec za konfiguriranje e-poštnih obvestil, ko dejanja Webmin izvajajo izbrani uporabniki ali v izbranih modulih.
 
 search_title=Rezultati iskanja
-search_datetime=Date and time
+search_date=Datum
+search_time=Čas
 search_user=Uporabnik
 search_host=Naslov stranke
 search_webmin=Webmin strežnik

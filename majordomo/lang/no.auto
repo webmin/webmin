@@ -1,0 +1,17 @@
+index_esendmail=<tt>$1</tt> -innstillingen av modulkonfigurasjonen er satt til <tt>$2</tt>, som ikke eksisterer. Kanskje er <a href='$3'>modulkonfigurasjonen</a> feil, eller ingen mailer-deamon er installert.
+index_name=Liste navn
+index_info=Listeinfo
+index_mail=E-postadresse
+index_moderated=Moderert
+index_count=antall brukere
+global_saved=(Lagret)
+create_minimum=Minimum nødvendig informasjon
+check_title=Sjekk Majordomo Config
+check_test=Test for. ..
+check_result=Resultat / tilleggssjekk
+check_status=Status
+check_perm=tillatelser
+check_exec=verdens kjørbar!
+check_write=verden skrivbar!
+check_read=verden lesbar!
+check_possible=Mulig problem

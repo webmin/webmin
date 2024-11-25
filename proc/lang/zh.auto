@@ -8,8 +8,6 @@ index_loadname=平均CPU负载：
 index_loadnums=$1（1分钟）， $2（5分钟）， $3（15分钟）
 index_cpuname=CPU类型：
 index_inzone=在 $1区域中
-index_core=$1 core
-index_cores=$1 cores
 
 stime=已开始
 sclass=IO调度类

@@ -1,4 +1,3 @@
-index_madd=Add monitor of type
 index_scheddesc=Включите или выключите запланированную проверку мониторов и установите адрес, по которому сбои автоматически отправляются по электронной почте.
 index_esnmp=Модуль настроен на отправку прерываний SNMP на странице <a href='$3'>«Конфигурация модуля»</a>, но Perl-модуль $1 не установлен. <a href='$2'>Нажмите здесь</a>, чтобы загрузить и установить его сейчас.
 index_refresh=Обновить статус
@@ -31,14 +30,10 @@ type_alive=Живая Система
 type_rssh=Удаленный SSH
 type_slapd=Сервер LDAP
 type_ldap=Соединение LDAP
-type_smtp=SMTP Connection
-type_imap=IMAP Connection
-type_firewalld=FirewallD Server
-type_reboot=Reboot Required
 
 mon_virtualmin=Предупреждение! Этот монитор связан с доменом Virtualmin $1, поэтому его не следует редактировать или удалять здесь.
 mon_header2=Команды для запуска
-mon_header5=Notification options
+mon_header3=Отслеживаемые варианты обслуживания
 mon_remotes2=Бег на хостах и группах
 mon_warndef=Да, и использовать режим отчетности по умолчанию
 mon_warn3=Да, но никогда не сообщать
@@ -76,7 +71,6 @@ mon_changes1=Показать только изменения
 mon_all=Показать все исторические события
 mon_nochanges=Никаких изменений статуса не произошло за последние $1 исторических событий.
 
-sched_email_def=System default ($1)
 sched_pnone=Не отправлять страницы
 sched_warn3=Пока служба работает
 sched_eemailserver=Ваш почтовый сервер не установлен : $1 
@@ -401,38 +395,3 @@ ldap_pass=Пароль сервера LDAP
 info_desc=Системный монитор
 info_last=Текущее состояние
 info_title=Состояние системы и сервера
-
-smtp_host=SMTP server host
-smtp_port=SMTP server port
-smtp_ssl=Use SSL connection?
-smtp_ssl0=Plaintext only
-smtp_ssl1=Always SSL
-smtp_ssl2=Switch to SSL with STARTTLS
-smtp_from=Test SMTP sender
-smtp_none=None
-smtp_addr=Use address
-smtp_to=Test SMTP recipient
-smtp_ehost=Missing or unresolvable SMTP server host
-smtp_eport=Missing or non-numeric SMTP server port
-smtp_efrom=Sender address must be like user@domain.com
-smtp_eto=Recipient address must be like user@domain.com
-smtp_ok1=HELO command accepted
-smtp_ok2=Sender address accepted
-smtp_ok3=Recipient address accepted
-smtp_ok4=SMTP login accepted
-smtp_user=SMTP authentication
-smtp_user1=Don't login
-smtp_user0=Login as user
-smtp_pass=with password
-smtp_euser=Missing SMTP login
-
-imap_host=IMAP server host
-imap_port=IMAP server port
-imap_ssl=Use SSL connection?
-imap_user=IMAP login
-imap_pass=IMAP password
-imap_ehost=Missing or unresolvable IMAP server host
-imap_eport=Missing or non-numeric IMAP server port
-imap_euser=Missing IMAP login
-
-reboot_pkgs=Package updates require a reboot

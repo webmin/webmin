@@ -64,7 +64,6 @@ edit_pre=Các lệnh để chạy trước khi xoay
 edit_default=Mặc định ($1)
 edit_sharedscripts=Chỉ chạy script một lần cho tất cả các tệp?
 edit_now=Xoay ngay bây giờ
-edit_clone=Clone
 
 global_title=Tùy chọn toàn cầu
 global_header=Tùy chọn mặc định cho tất cả các tệp nhật ký

@@ -14,7 +14,6 @@ index_memb=$1 ممبران
 index_hst=میزبان اور میزبان گروپ
 index_nohst=کسی میزبان یا گروپ کی تعریف نہیں کی گئی ہے۔
 index_hostgroup=میزبان/گروپ
-index_comment=Description
 index_parent=والدین
 index_hardware=ہارڈویئر ایڈریس
 index_group=گروپ:

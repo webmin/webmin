@@ -1,0 +1,19 @@
+index_lang=Мова
+index_locale=Локаль
+index_locale2=Формат дат
+index_theme=Тема
+index_langglobal2=Глобальна мова.. $1 ($2)
+index_localeglobal2=Глобальна мова.. $1 ($2)
+index_localeset=Особистий вибір ..
+index_dateformatglobal2=Глобальний формат дати.. $1
+index_dateformatset=Особистий вибір ..
+index_overlay=Накладання тем
+index_overlaydef=Ні - використовуйте параметри за замовчуванням
+index_passagain=Повторно введіть пароль
+
+change_epass2=Нові паролі не збігаються
+change_epass=Новий пароль недійсний : $1 
+change_eoverlay=Ви не можете вибрати накладку теми, якщо також не обрана тема інтерфейсу користувача
+change_eoverlay2=Вибране накладання теми не сумісне з обраною темою інтерфейсу користувача
+
+acl_locale=Чи можна змінити мову?

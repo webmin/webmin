@@ -5,8 +5,6 @@ index_suse=بسته Perl <tt>perl-IO-Tty</tt> وجود ندارد و باید ا
 index_euser=خطا : کاربر $1 نمی تواند پوسته را اجرا کند زیرا وجود ندارد!
 index_connecting=برقراری ارتباط ..
 index_missing=ماژول پرل <tt>$1</tt> وجود ندارد. برای حل این مشکل باید با سرپرست خود تماس بگیرید.
-index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=شل را به عنوان کاربر یونیکس اجرا کنید
 acl_sameuser=مانند ورود به وبمین
-acl_sudoenforce=Enforce <em>sudo</em>-only privileges

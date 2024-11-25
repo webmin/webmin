@@ -45,7 +45,6 @@ index_restart_firewallddesc=Reload the FirewallD server u applika r-regoli li n�
 index_listrules_restartdesc=Elenka d-dettalji dwar ir-regoli FirewallD sinjuri u diretti eżistenti fiż-żona $1.
 index_dependent=Naqas milli jerġa' jibda $1 servizz dipendenti
 index_manual=Editja Fajls tal-Konfigurazzjoni.
-index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=Editja Fajls tal-Konfigurazzjoni
 manual_editsel=Editja l-fajl tal-konfigurazzjoni FirewallD

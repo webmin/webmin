@@ -14,7 +14,6 @@ index_global=Глобални опции
 index_ecdrecord=Командата за CD запис $1 не бе открита на вашата система. Вероятно не е инсталирана или вашата <a href='$2'>модулна конфигурация</a> е грешна.
 index_return=списък на профили
 index_delete=Изтриване на избраните профили
-
 edit_title=Промяна на профил на запис
 create_title=Създаване на профил на запис
 edit_emkisofs=The ISO filesystem building command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
@@ -50,7 +49,6 @@ edit_fly0=Използвай временен файл
 edit_srcdrv=Source device driver
 edit_dstdrv=Destination device driver
 edit_ecannot=Нямате права за редактиране на този профил за запис
-
 save_err=Failed to save profile
 save_ename=Missing profile name
 save_eiso=Missing or invalid ISO image filename
@@ -64,7 +62,6 @@ save_ecannot1=ISO имиджът не е в разрешена директор�
 save_ecannot2=Изходната директория $1 не е в разрешена директория
 save_ecannot3=MP3 файлът или директорията $1 не е в разрешена директория
 save_ecannot4=Изходният файл за устройството не е в разрешена директория
-
 burn_title=Burn CD
 burn_rutest1=Are you sure you want to test burning the ISO image $1 ?
 burn_rusure1=Are you sure you want to burn the ISO image $1 to CD ?
@@ -102,7 +99,6 @@ burn_807=Warning! Your audio tracks total $1 MB in size, which is above the 807 
 burn_mp3size=The converted audio tracks are $1 MB in size, out of a total of $2 MB which is allowed on a normal audio CD.
 burn_seconddesc=Insert the blank destination CD and click the button below.
 burn_second=Burn Destination CD
-
 dev_title=Device Options
 dev_header=CD burner device options
 dev_device=Burner device
@@ -113,7 +109,6 @@ dev_extra=Extra <tt>cdrecord</tt> options
 dev_err=Failed to save device options
 dev_eother=Missing or invalid write speed
 dev_ecannot=Нямате права за редактиране на опциите на устройството
-
 mkisofs_title=ISO Filesystem Options
 mkisofs_header=Global ISO filesystem options
 mkisofs_novers=Include version number in filenames?
@@ -121,7 +116,6 @@ mkisofs_notrans=Allow all characters in filenames?
 mkisofs_nobak=Skip backup files?
 mkisofs_fsyms=Follow symbolic links?
 mkiofs_ecannot=Нямате права за редактиране на опциите на ISO файловата система
-
 config_cdrecord=CD burning command
 config_mkisofs=ISO filesystem building command
 config_mpg123=MP3 decoding command
@@ -135,7 +129,6 @@ config_empg123=Missing or invalid MP3 decoding command
 config_esox=Липсваща или невалидна SOX команда
 config_ecdrdao=Missing or invalid CD copying command
 config_etemp=Missing or invalid temporary file directory
-
 acl_create=Може да създава нови профили за запис?
 acl_edit=Може да редактира съществуващи профили за запис
 acl_global=Може да редактира глобални настройки?
@@ -143,6 +136,5 @@ acl_profiles=Може да използва профили
 acl_all=Всички
 acl_sel=Избраните по-долу ..
 acl_dirs=Позволи директории за изходни файлове
-
 delete_err=Грешка при изтриването на профили за запис
 delete_enone=Няма избрани

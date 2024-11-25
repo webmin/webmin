@@ -156,7 +156,7 @@ desc_args--match-set=$2 yra IP rinkinyje $1
 desc_src=šaltinis
 desc_dest=Kelionės tikslas
 
-redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+redhat_einstalled=Nebuvo rastas <tt>iptables (6)</tt> įkrovos veiksmas, rodantis, kad IPtable paketas neįdiegtas jūsų sistemoje
 redhat_eoutput=Gaunant „IPtable“ būseną iš komandos $1 įvyko klaida. Tai tikriausiai rodo, kad jūsų sistema sukonfigūruota naudoti IPchains, o ne IPtable.
 
 gentoo_escript=„Gentoo IPtables“ paleisties scenarijus $1 jūsų sistemoje nerastas.

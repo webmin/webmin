@@ -1,6 +1,5 @@
 index_title=DHCP-server
 index_subtitle=Undernet og delte netværk
-index_comment=Description
 index_parent=Forældre
 index_start=Klik på denne knap for at starte DHCP-serveren på dit system ved hjælp af den aktuelle konfiguration.
 index_stop=Stop server

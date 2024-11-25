@@ -6,11 +6,8 @@ index_info=Información de la lista
 index_mail=Dirección de correo
 index_moderated=Moderado
 index_count=# de usuarios
-
 global_saved=(salvado)
-
 create_minimum=Información mínima requerida
-
 check_title=Verifique la configuración de Majordomo
 check_test=Hacer una prueba por. ..
 check_result=Resultado / verificación adicional

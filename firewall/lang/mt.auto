@@ -156,7 +156,7 @@ desc_args--match-set=$2 jinsab fis-sett tal-IP $1
 desc_src=sors
 desc_dest=destinazzjoni
 
-redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+redhat_einstalled=L-ebda <tt>iptables (6)</tt> azzjoni ta 'boot ma nstabet, li tindika li l-pakkett IPtables mhuwiex installat fis-sistema tiegħek
 redhat_eoutput=Sar żball li ġab status ta 'IPtables mill-kmand $1. Dan probabbilment jindika li s-sistema tiegħek ġiet ikkonfigurata biex tuża IPchains minflok IPtables.
 
 gentoo_escript=L-iskritt tal-istartjar Gentoo IPtables $1 ma nstabx fis-sistema tiegħek.

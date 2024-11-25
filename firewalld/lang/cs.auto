@@ -45,7 +45,6 @@ index_restart_firewallddesc=Znovu načtěte server FirewallD a použijte pravidl
 index_listrules_restartdesc=Vypsat podrobnosti o existujících rozšířených a přímých pravidlech FirewallD v zóně $1.
 index_dependent=Restartování závislé služby $1 se nezdařilo
 index_manual=Upravit konfigurační soubory.
-index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=Upravit konfigurační soubory
 manual_editsel=Upravte konfigurační soubor FirewallD

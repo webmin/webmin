@@ -152,32 +152,6 @@ misc_path=Informações sobre o caminho de correção CGI?
 misc_timezone=Fuso Horário do PHP
 misc_charset=Conjunto de caracteres padrão
 
-disable_title=Disabled Features
-disable_header=Disabled PHP functions and features
-disable_funcs=Disabled functions
-disable_exec=exec (Execute command)
-disable_passthru=passthru (Execute command and display output)
-disable_shell_exec=shell_exec (Execute command via shell)
-disable_system=system (Execute command and display output)
-disable_proc_open=proc_open (Execute command and capture input and output)
-disable_popen=popen (Open pipe to executed command)
-disable_curl_exec=curl_exec (Execute a URL download session)
-disable_curl_multi_exec=curl_multi_exec (Execute multiple URL download sessions)
-disable_parse_ini_file=parse_ini_file (Read PHP INI file)
-disable_show_source=show_source (Output file with PHP syntax highlighting)
-disable_mail=mail (Send email)
-disable_leftover=Other functions:
-disable_err=Failed to save disabled features
-disable_classes=Disabled built-in classes
-
-mods_title=PHP Modules
-mods_edir=Could not find PHP modules directory!
-mods_ecannot=You are not allowed to edit enabled PHP modules
-mods_desc=This page can be used to globally enable and disable PHP modules for all users on this system.
-mods_enabled=Enabled?
-mods_name=Module name
-mods_file=Config file
-
 log_manual=Editar manualmente o arquivo $1 
 log_vars=Variáveis PHP alteradas em $1 
 log_dirs=Configurações de diretório alteradas em $1 
@@ -187,7 +161,6 @@ log_safe=Opções de modo de segurança alteradas em $1
 log_limits=Limites de recursos alterados em $1 
 log_errors=Erro no log de $1 
 log_misc=Outras configurações alteradas em $1 
-log_mods=Updated enabled modules in $1
 
 acl_global=Pode editar a configuração global do PHP?
 acl_anyfile=Pode editar qualquer arquivo como uma configuração PHP?

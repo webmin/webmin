@@ -60,7 +60,6 @@ password_done=Jelszava sikeresen megváltozott. Most <a href='$1'>ismét bejelen
 password_err=Nem sikerült megváltoztatni a jelszót
 password_euser=A felhasználónév nem található a jelszó fájlban!
 password_eold=A jelenlegi jelszó helytelen
-password_euserpass=Invalid username or password
 password_enew1=Nincs új jelszó megadva
 password_enew2=Az új jelszavak nem egyeznek
 password_epam=PAM hiba : $1

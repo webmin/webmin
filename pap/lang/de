@@ -92,6 +92,7 @@ options_ecannot=Sie dürfen PPP-Optionen nicht bearbeiten
 
 mgetty_title=Konfiguration der seriellen Ports
 mgetty_ecmd=Der Befehl $1 wurde auf Ihrem System nicht gefunden. Dieses Programm wird benötigt, um Anmeldungen über Modem oder Direktverbindung an einem seriellen Port zu behandeln.
+mgetty_desc,Um Ihrem Server zu ermöglichen, Anmeldungen an einem seriellen Port über Modem oder Direktverbindung zuzulassen, muss er unten aufgeführt werden. Wenn Sie einen Port zu dieser Liste hinzufügen, wird das $1-Programm so konfiguriert, dass es Modemverbindungen beantwortet und eine Anmeldeaufforderung anzeigt.
 mgetty_add=Neuen seriellen Port hinzufügen.
 mgetty_tty=Serielles Gerät
 mgetty_vgetty=Voicemail

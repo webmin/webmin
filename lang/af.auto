@@ -99,7 +99,6 @@ password_done=U wagwoord is suksesvol verander. U kan nou weer <a href='$1'>weer
 password_err=Kon nie wagwoord verander nie
 password_euser=U aanmeldnaam is nie in die wagwoordlêer gevind nie!
 password_eold=Die huidige wagwoord is verkeerd
-password_euserpass=Invalid username or password
 password_enew1=Geen nuwe wagwoord is ingevoer nie
 password_enew2=U nuwe wagwoorde stem nie ooreen nie
 password_epam=PAM-fout : $1

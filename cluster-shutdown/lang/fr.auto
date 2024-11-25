@@ -14,7 +14,6 @@ index_smtp=Envoyer via un serveur SMTP
 index_this=Ce serveur
 index_nu=Aucun ensemble d'utilisateurs
 index_nl=Échec de la connexion
-
 shut_title=Arrêter les serveurs
 shut_rusure=Voulez-vous vraiment arrêter immédiatement les serveurs $1 sélectionnés?
 shut_ok=Oui fais le
@@ -23,12 +22,10 @@ shut_failed=.. échoué! $1
 shut_done=.. terminé.
 shut_sel=Les serveurs sélectionnés sont :
 shut_ecannot=Vous n'êtes pas autorisé à arrêter les serveurs
-
 reboot_title=Redémarrez les serveurs
 reboot_rusure=Voulez-vous vraiment redémarrer immédiatement les serveurs $1 sélectionnés?
 reboot_doing=Redémarrage de $1 ..
 reboot_ecannot=Vous n'êtes pas autorisé à redémarrer les serveurs
-
 sched_err=Impossible de configurer la vérification automatique du serveur
 sched_eemail=Adresse e-mail manquante
 sched_esmtp=Serveur SMTP manquant ou invalide

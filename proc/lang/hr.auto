@@ -17,8 +17,6 @@ index_loadname=CPU učitava prosjeke:
 index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
 index_cpuname=Vrsta CPU-a:
 index_inzone=U zoni $1 
-index_core=$1 core
-index_cores=$1 cores
 
 pid=iskaznica
 owner=Vlasnik

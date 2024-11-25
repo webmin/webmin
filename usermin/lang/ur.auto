@@ -250,12 +250,6 @@ ui_hnm1=یو آر ایل کا میزبان نام
 ui_hnm2=یو آر ایل سے ڈومین کا نام
 ui_hnm3=دوسرا نام ..
 ui_tabs=ماڈیول کی درجہ بندی کریں؟
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
 
 upgrade_title=یوزر مین کو اپ گریڈ کریں
 upgrade_title2=یوزر مین انسٹال کریں

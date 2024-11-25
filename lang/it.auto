@@ -2,8 +2,6 @@ or=O
 help_efile3=Impossibile leggere la pagina della guida $1 dal modulo $2
 help_einclude3=Impossibile includere la pagina della guida $1
 
-password_euserpass=Invalid username or password
-
 ui_of=Di
 
 log_email_by=$1 per $2

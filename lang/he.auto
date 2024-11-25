@@ -197,7 +197,6 @@ password_done=Your password has been successfully changed. You may now <a href='
 password_err=שינוי הסיסמה נכשל
 password_euser=שם הכניסה שלך לא נמצא בקובץ הסיסמה!
 password_eold=הסיסמה הנוכחית שגויה
-password_euserpass=Invalid username or password
 password_enew1=לא הוזנה סיסמה חדשה
 password_enew2=הסיסמאות החדשות שלך אינן תואמות
 password_epam=PAM error : $1

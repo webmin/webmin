@@ -1,5 +1,4 @@
 index_serviceonboot=Oui, et démarrez au démarrage
 index_tabsync2=Exécuter le service système <tt>$1</tt> pour la synchronisation
-index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
 
 error_serviceunknown=Service inconnu  : $1

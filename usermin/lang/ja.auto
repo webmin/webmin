@@ -75,12 +75,6 @@ ui_hnm1=URLからのホスト名
 ui_hnm2=URLからのドメイン名
 ui_hnm3=ほかの名前 ..
 ui_tabs=モジュールを分類しますか？
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
 
 upgrade_descdeb=このフォームを使用すると、Debianパッケージをアップグレードすることにより、Userminインストール全体を新しいバージョンにアップグレードできます。ローカルの.debファイル、アップロードされたファイル、または<a href=http://www.usermin.com/>www.usermin.com</a>の最新バージョンからインストールできます。手動アップグレードの場合と同様に、すべての構成設定とサードパーティモジュールが保持されます。
 upgrade_url=ftpまたはhttp URLから

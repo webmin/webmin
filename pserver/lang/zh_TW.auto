@@ -1,4 +1,0 @@
-index_actdesc2=The CVS server is setup to run from $1 on your system for the CVS root $2, but not currently active. Click this button if you want to activate it and allow remote users to access your CVS repository.
-index_deactdesc2=The CVS server is setup to run from $1 on your system for the CVS root $2, and is active. Click this button if you want to deactivate it and prevent remote users from accessing your CVS repository.
-index_asuser=Run as user:
-index_einetroot=Warning! The CVS root set in the module configuration does not match the root for the CVS server. This can be fixed by deactivating and reactivating the CVS server.

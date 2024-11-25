@@ -250,12 +250,6 @@ ui_hnm1=Pagrindinio kompiuterio vardas iš URL
 ui_hnm2=Domeno vardas iš URL
 ui_hnm3=Kitas vardas ..
 ui_tabs=Klasifikuokite modulius?
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
 
 upgrade_title=Atnaujinkite „Usermin“
 upgrade_title2=Įdiekite „Usermin“

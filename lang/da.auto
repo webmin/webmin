@@ -8,8 +8,6 @@ config_emodule=Modulet findes ikke
 help_efile3=Kunne ikke læse hjælpesiden $1 fra modulet $2
 help_einclude3=Kunne ikke inkludere hjælpeside $1
 
-password_euserpass=Invalid username or password
-
 ui_of=af
 
 log_email_by=$1 til $2

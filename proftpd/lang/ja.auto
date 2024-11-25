@@ -2,25 +2,8 @@ index_applymsg2=このボタンをクリックして、ProFTPDを停止して再
 index_stop=サーバーを停止
 index_stopmsg=このボタンをクリックしてFTPサーバーを停止します。これにより、新しいFTPクライアントが接続できなくなります。
 index_proftpd=ProFTPd
-index_dlheader=Add Options
-index_dlmode=Add options for
-
-type_7=SSL Options
 
 mod_core_firstcdt=いつも見せる
-
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
 
 stop_err=FTPサーバーを停止できませんでした
 stop_einetd=inetdモードでは、サーバーデーモンを停止できません。
@@ -28,8 +11,6 @@ stop_erun=走っていない
 
 apply_err=FTP構成の適用に失敗しました
 apply_egone=もう走っていない
-
-ftpindex_cmds=FTP commands
 
 log_anonc=サーバー $1の匿名FTPをセットアップします
 log_anons=サーバー $1の匿名FTPを再構成しました

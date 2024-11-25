@@ -13,7 +13,6 @@ index_digest=新規のダイジェスト リストを追加
 index_global=Majordomo オプションを編集
 index_globaldesc=すべてのメーリング リストに適用するグローバルMajordomo オプションを編集
 index_return=メーリング リスト
-
 global_title=グローバル オプション
 global_ecannot=グローバル オプションを編集できません。
 global_header=グローバル Majordomo オプション
@@ -26,7 +25,6 @@ global_ewhereami=メール サーバ ホスト名がないか無効です
 global_ewhoami=Majordomo アドレスがないか無効です
 global_eowner=所有者のアドレスがないか無効です
 global_esendmail=sendmail コマンド '$1' は存在しません
-
 create_ecannot=新規のリストを作成できません
 create_title=メーリング リストの作成
 create_header=新規のリストの詳細
@@ -46,7 +44,6 @@ create_ealias='$1' というメール エイリアスはすでに存在してい
 create_eowner=所有者の Eメール アドレスがないか無効です
 create_epassword=管理パスワードがないか無効です
 create_emoderator=モデレータの Eメール アドレスがないか無効です
-
 cdigest_ecannot=新規のダイジェスト リストを作成できません
 cdigest_title=ダイジェスト リストを作成
 cdigest_header=新規のダイジェスト リストの詳細
@@ -63,21 +60,18 @@ cdigest_lines=メッセージ合計 $1 行
 cdigest_err=ダイジェスト リストを作成できませんでした
 cdigest_edays=日数がないか無効です
 cdigest_elines=行数がないか無効です
-
 edit_title=メーリング リストの編集
 edit_ecannot=このメーリング リストは編集できません
 edit_delete=リストを削除
 edit_deletemsg=すべての関連ファイルとメール エイリアスを含め、このリストを削除
 edit_return=メーリング リスト
 edit_for=リスト $1 用
-
 delete_ecannot=このメーリング リストは削除できません
 delete_edigest=このリストは関連したダイジェスト リストがあるので削除できません
 delete_title=リストの削除
 delete_rusure=メーリング リスト $1を削除してもよろしいですか？次のファイルが削除されます:
 delete_aliases=次のメール エイリアスも削除されます
 delete_ok=リストの削除
-
 members_title=リスト メンバー
 members_desc=このリストに送信されたメールを受信する Eメール アドレスのリストを編集するには、下のテキスト ボックスを使用してください。
 members_rodesc=下のテキスト ボックスは、このリストに送信されたメールを受信するすべての E メール アドレスを表示します。
@@ -92,7 +86,6 @@ members_esub=アドレスをこのリストに購読する前に保守パスワ�
 members_esubaddr=購読するアドレスは、完全なドメインを持つ必要があります。例:<tt>foo@bar.com</tt>
 members_eunsub=このリストからアドレスを購読中止する前に、保守パスワードを選ぶ必要があります
 members_eunsubaddr=購読を中止するアドレスは、完全なドメインを持つ必要があります。例:<tt>foo@bar.com</tt>
-
 info_title=メッセージと説明
 info_header=メッセージと説明
 info_desc=<tt>リスト</tt> コマンドへの応答に含めるリストの説明
@@ -100,7 +93,6 @@ info_info=コマンド<tt>info $1</tt> への応答に返す情報メッセー�
 info_intro=リストの新規購読者に送信する紹介メッセージ
 info_same=情報メッセージと同じ
 info_below=下に入力されたものを使用..
-
 subs_title=購読とモデレーション
 subs_header=購読とモデレーション オプション
 subs_sub=購読ポリシー
@@ -126,7 +118,6 @@ subs_eowner=所有者の E メール アドレスがありません
 subs_eapproval=承認E メール アドレスがありません
 subs_emoderator=モデレータのアドレスがないか無効です
 subs_epasswd=パスワードがないか無効です
-
 mesg_title=E メール オプション
 mesg_header=E メールの送信オプション
 mesg_reply=再送信された E メールのReply-To: (返信先)アドレス
@@ -147,7 +138,6 @@ mesg_esender=Sender: (送信者)アドレスがないか無効です
 mesg_esender2=Sender: (送信者)アドレスにホスト名を含めることはできません
 mesg_ehost=ホスト名がないか無効です
 mesg_emaxlength=メッセージの最大サイズがないか無効です
-
 access_title=アクセス制御
 access_header=majordomo コマンドのアクセス制御
 access_open=任意のユーザ
@@ -170,20 +160,17 @@ access_res2=ファイル内のアドレス
 access_tbody=禁止する本文の正規表現
 access_theader=禁止するヘッダの正規表現
 access_taboo=注意:すべての禁止とアドレスの正規表現は<tt>/</tt>で開始され終了しなくてはなりません。例:<tt>/foobar.com/</tt> または<tt>/obscene/</tt>。
-
 head_title=ヘッダとフッタ
 head_header=再送信された E メールのヘッダとフッタ
 head_fronter=再送信された E メールのヘッダ
 head_footer=再送信された E メールのフッタ
 head_headers=再送信された E メールの特別の SMTP ヘッダ
-
 misc_title=その他のオプション
 misc_header=その他のリスト オプション
 misc_munge=アドレスの比較にドメインのみを使用しますか？
 misc_debug=デバック モードにしますか？
 misc_info=情報メッセージに最後に更新された日時を含めますか？
 misc_intro=紹介メッセージに最後に更新された日時を含めますか？
-
 digest_title=ダイジェスト オプション
 digest_header=ダイジェストの作成オプション
 digest_name=ダイジェストのタイトル
@@ -198,7 +185,6 @@ digest_edays=日数がないか無効です
 digest_elines=行数がないか無効です
 digest_evolume=巻数がないか無効です
 digest_eissue=号数がないか無効です
-
 log_global=グローバル オプションを変更しました
 log_create_list=メーリング リスト $1 を作成しました
 log_create_digest=ダイジェスト リスト $1 を作成しました
@@ -215,7 +201,6 @@ log_access=リスト $1 のアクセス制御を更新しました
 log_head=リスト $1 のヘッダとフッタを更新しました
 log_misc=リスト $1 のその他のオプションを更新しました
 log_digest=リスト $1 のダイジェスト オプションを更新しました
-
 acl_lists=このユーザが管理できるメーリング リスト
 acl_lall=すべてのリスト
 acl_lsel=選択..

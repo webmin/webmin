@@ -152,32 +152,6 @@ misc_path=ข้อมูลเส้นทาง CGI Fix?
 misc_timezone=PHP เขตเวลา
 misc_charset=ชุดอักขระเริ่มต้น
 
-disable_title=Disabled Features
-disable_header=Disabled PHP functions and features
-disable_funcs=Disabled functions
-disable_exec=exec (Execute command)
-disable_passthru=passthru (Execute command and display output)
-disable_shell_exec=shell_exec (Execute command via shell)
-disable_system=system (Execute command and display output)
-disable_proc_open=proc_open (Execute command and capture input and output)
-disable_popen=popen (Open pipe to executed command)
-disable_curl_exec=curl_exec (Execute a URL download session)
-disable_curl_multi_exec=curl_multi_exec (Execute multiple URL download sessions)
-disable_parse_ini_file=parse_ini_file (Read PHP INI file)
-disable_show_source=show_source (Output file with PHP syntax highlighting)
-disable_mail=mail (Send email)
-disable_leftover=Other functions:
-disable_err=Failed to save disabled features
-disable_classes=Disabled built-in classes
-
-mods_title=PHP Modules
-mods_edir=Could not find PHP modules directory!
-mods_ecannot=You are not allowed to edit enabled PHP modules
-mods_desc=This page can be used to globally enable and disable PHP modules for all users on this system.
-mods_enabled=Enabled?
-mods_name=Module name
-mods_file=Config file
-
 log_manual=แก้ไขไฟล์ $1 ด้วยตนเอง
 log_vars=เปลี่ยนตัวแปร PHP ใน $1 
 log_dirs=เปลี่ยนการตั้งค่าไดเรกทอรีใน $1 
@@ -187,7 +161,6 @@ log_safe=เปลี่ยนตัวเลือกเซฟโหมดใ�
 log_limits=เปลี่ยนขีด จำกัด ทรัพยากรใน $1 
 log_errors=เปลี่ยนข้อผิดพลาดการเข้าสู่ระบบใน $1 
 log_misc=เปลี่ยนการตั้งค่าอื่น ๆ ใน $1 
-log_mods=Updated enabled modules in $1
 
 acl_global=สามารถแก้ไขการกำหนดค่า PHP ทั่วโลกได้หรือไม่
 acl_anyfile=สามารถแก้ไขไฟล์ใด ๆ เป็นการกำหนดค่า PHP ได้หรือไม่?

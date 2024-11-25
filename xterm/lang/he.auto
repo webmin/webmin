@@ -5,8 +5,6 @@ index_suse=חבילת Perl <tt>perl-IO-Tty</tt> חסרה, ויש להתקין ת
 index_euser=שגיאה: המשתמש $1 לא יכול להפעיל את המעטפת מכיוון שהיא לא קיימת!
 index_connecting=מתחבר ..
 index_missing=מודול Perl <tt>$1</tt> חסר. עליך לפנות למנהל המערכת שלך כדי לפתור בעיה זו.
-index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=הפעל מעטפת כמשתמש יוניקס
 acl_sameuser=זהה לכניסה ל-Webmin
-acl_sudoenforce=Enforce <em>sudo</em>-only privileges

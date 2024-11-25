@@ -17,8 +17,6 @@ index_loadname=CPU obremenitve povprečja:
 index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
 index_cpuname=Vrsta CPU-ja:
 index_inzone=V coni $1 
-index_core=$1 core
-index_cores=$1 cores
 
 pid=ID
 owner=Lastnik

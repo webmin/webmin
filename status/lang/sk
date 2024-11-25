@@ -5,6 +5,7 @@ index_desc=Sledovanie
 index_up=Stav
 index_last=Posledná kontrola
 index_local=Lokálne
+index_add=Pridať typ sledovania:
 index_sched=Plánované sledovanie
 index_return=zoznam služieb
 index_none=Nie sú nastavené žiadne sledovania.

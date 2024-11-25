@@ -8,18 +8,14 @@ index_info=リスト情報
 index_mail=メールアドレス
 index_moderated=モデレート
 index_count=ユーザー数
-
 global_saved=（保存済み）
-
 create_archive=メーリングリストをアーカイブしますか？
 create_archiveyear=年次ファイルで
 create_archivemonth=月次ファイルで
 create_archiveday=毎日のファイルで
 create_minimum=最低限必要な情報
-
 alias_err=エイリアスのセットアップに失敗しました
 alias_eowner=所有者のメールアドレスがありません
-
 check_title=Majordomo構成を確認する
 check_test=のテスト. ..
 check_result=結果/追加チェック

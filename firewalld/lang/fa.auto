@@ -45,7 +45,6 @@ index_restart_firewallddesc=سرور FirewallD را دوباره بارگیری 
 index_listrules_restartdesc=جزئیات مربوط به قوانین فایروالD غنی و مستقیم موجود را در منطقه $1 فهرست کنید.
 index_dependent=سرویس وابسته $1 راه اندازی مجدد انجام نشد
 index_manual=ویرایش فایل های پیکربندی
-index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=ویرایش فایل های پیکربندی
 manual_editsel=فایل پیکربندی FirewallD را ویرایش کنید

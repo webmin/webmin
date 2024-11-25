@@ -45,7 +45,6 @@ index_restart_firewallddesc=Ricaricare il server FirewallD e applicare le regole
 index_listrules_restartdesc=Elenca i dettagli sulle regole FirewallD avanzate e dirette esistenti nella zona $1.
 index_dependent=Impossibile riavviare il servizio dipendente $1
 index_manual=Modifica file di configurazione.
-index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=Modifica file di configurazione
 manual_editsel=Modifica il file di configurazione di FirewallD

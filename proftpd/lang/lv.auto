@@ -27,8 +27,6 @@ index_global=Globālā konfigurācija
 index_create=Izveidojiet virtuālo serveri
 index_version=ProFTPd versija $1 
 index_proftpd=ProFTPd
-index_dlheader=Add Options
-index_dlmode=Add options for
 
 efailed=Neizdevās saglabāt $1 
 
@@ -39,7 +37,6 @@ type_3=Piekļuves kontrole
 type_4=Dažādi
 type_5=Lietotājs un grupa
 type_6=Autentifikācija
-type_7=SSL Options
 
 virt_title=Virtuālā servera opcijas
 virt_header1=$1 
@@ -383,19 +380,6 @@ mod_readme_display=Paziņojiet lietotājam par readme failu atbilstību
 mod_readme_none=Nav
 mod_readme_edisplay=Trūkst readme failu parauga
 
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
-
 start_err=Neizdevās startēt FTP serveri
 start_einetd=Iekšējā režīmā nevar palaist servera dēmonu.
 
@@ -426,7 +410,6 @@ ftpindex_addlimit=Pievienojiet katras komandas iespējas
 ftpindex_header2=$1 $2 
 ftpindex_return=direktoriju opciju fails
 ftpindex_header=$1 
-ftpindex_cmds=FTP commands
 
 find_err=Neizdevās atrast iespēju failus
 find_eanon=Nevienā virtuālajā serverī nav iestatīta anonīma FTP

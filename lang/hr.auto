@@ -287,7 +287,6 @@ password_done=Vaša lozinka je uspješno promijenjena. Sada se možete <a href='
 password_err=Promjena zaporke nije uspjela
 password_euser=Vaše ime za prijavu nije pronađeno u datoteci s lozinkom!
 password_eold=Trenutačna lozinka nije ispravna
-password_euserpass=Invalid username or password
 password_enew1=Nije unesena nova lozinka
 password_enew2=Vaše nove lozinke ne odgovaraju
 password_epam=PAM pogreška : $1

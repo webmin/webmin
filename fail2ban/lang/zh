@@ -233,3 +233,6 @@ status_err_unbanjail=无法解除封禁 $1 jail
 status_err_unknownjail=未知 jail监狱
 
 syslog_logtarget=Fail2Ban 操作日志
+
+__norefs=1
+

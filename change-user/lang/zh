@@ -42,3 +42,5 @@ acl_lang=是否修改语言?
 acl_locale=是否更改区域设置吗？
 acl_theme=是否修改页面风格？
 acl_pass=是否修改密码(当设定webmin时)?
+
+__norefs=1

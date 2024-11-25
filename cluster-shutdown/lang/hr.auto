@@ -14,7 +14,6 @@ index_smtp=Slanje putem SMTP poslužitelja
 index_this=Ovaj poslužitelj
 index_nu=Nije postavljen korisnik
 index_nl=Prijava nije uspjela
-
 shut_title=Isključite poslužitelje
 shut_rusure=Jeste li sigurni da želite odmah zatvoriti $1 odabrane poslužitelje?
 shut_ok=Da, učini to
@@ -23,12 +22,10 @@ shut_failed=.. neuspjeh! $1
 shut_done=.. gotovo.
 shut_sel=Odabrani poslužitelji su :
 shut_ecannot=Nije vam dopušteno isključivanje poslužitelja
-
 reboot_title=Ponovno pokrenite poslužitelje
 reboot_rusure=Jeste li sigurni da želite odmah ponovno pokrenuti $1 odabrane poslužitelje?
 reboot_doing=Ponovno pokretanje $1 ..
 reboot_ecannot=Nije vam dopušteno ponovno pokretanje poslužitelja
-
 sched_err=Nije uspjelo postavljanje automatske provjere poslužitelja
 sched_eemail=Nedostaje adresa e-pošte
 sched_esmtp=Nedostaje ili nije važeći SMTP poslužitelj

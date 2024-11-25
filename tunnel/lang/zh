@@ -19,3 +19,5 @@ login_clear=清除
 
 seturl_err=URL网址打开失败
 seturl_eurl=输入的URL网址无效
+
+__norefs=1

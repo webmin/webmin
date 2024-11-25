@@ -27,8 +27,6 @@ index_global=การกำหนดค่าทั่วโลก
 index_create=สร้างเซิร์ฟเวอร์เสมือน
 index_version=ProFTPd รุ่น $1 
 index_proftpd=ProFTPD
-index_dlheader=Add Options
-index_dlmode=Add options for
 
 efailed=ไม่สามารถบันทึก $1 ได้
 
@@ -39,7 +37,6 @@ type_3=การควบคุมการเข้าถึง
 type_4=เบ็ดเตล็ด
 type_5=ผู้ใช้และกลุ่ม
 type_6=การรับรอง
-type_7=SSL Options
 
 virt_title=ตัวเลือกเซิร์ฟเวอร์เสมือน
 virt_header1=สำหรับ $1 
@@ -383,19 +380,6 @@ mod_readme_display=แจ้งผู้ใช้ของไฟล์ readme �
 mod_readme_none=ไม่มี
 mod_readme_edisplay=รูปแบบไฟล์ readme ที่ขาดหายไป
 
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
-
 start_err=ไม่สามารถเริ่มเซิร์ฟเวอร์ FTP
 start_einetd=คุณไม่สามารถเริ่มเซิร์ฟเวอร์ daemon ได้เมื่ออยู่ในโหมด inetd
 
@@ -426,7 +410,6 @@ ftpindex_addlimit=เพิ่มตัวเลือกต่อคำสั�
 ftpindex_header2=$1 ใน $2 
 ftpindex_return=ไฟล์ตัวเลือกต่อไดเรกทอรี
 ftpindex_header=สำหรับ $1 
-ftpindex_cmds=FTP commands
 
 find_err=ไม่พบไฟล์ตัวเลือก
 find_eanon=Anonymous FTP ไม่ได้ตั้งค่าในเซิร์ฟเวอร์เสมือนใด ๆ

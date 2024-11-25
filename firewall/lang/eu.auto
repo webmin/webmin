@@ -156,7 +156,7 @@ desc_args--match-set=$2 IP-multzoan dago $1
 desc_src=iturria
 desc_dest=helmuga
 
-redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+redhat_einstalled=Ez da <tt>iptables (6)</tt> abiarazteko ekintza aurkitu, eta horrek adierazten du IPtables paketea ez dagoela zure sisteman instalatuta.
 redhat_eoutput=Errore bat gertatu da IPtables egoera $1 komandoan lortzean. Horrek ziur asko adierazten du zure sistema IPchains ordez IPchains erabiltzeko konfiguratu dela.
 
 gentoo_escript=Gentoo IPtables hasierako script $1 ez da zure sisteman aurkitu.

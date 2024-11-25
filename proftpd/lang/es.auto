@@ -2,10 +2,6 @@ index_applymsg2=Haga clic en este botón para aplicar la configuración actual d
 index_stop=Detener servidor
 index_stopmsg=Haga clic en este botón para detener el servidor FTP, lo que evitará que se conecten nuevos clientes FTP.
 index_proftpd=ProFTPd
-index_dlheader=Add Options
-index_dlmode=Add options for
-
-type_7=SSL Options
 
 dir_header5=Para el directorio $1 globalmente
 
@@ -34,27 +30,12 @@ mod_ls_strict=¿Anular opciones de usuario?
 mod_auth_home=Directorio de inicio
 mod_auth_none=Ninguna
 
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
-
 stop_err=Error al detener el servidor FTP
 stop_einetd=No puede detener el demonio del servidor cuando está en modo inetd.
 stop_erun=No corras
 
 apply_err=Error al aplicar la configuración FTP
 apply_egone=Ya no se ejecuta
-
-ftpindex_cmds=FTP commands
 
 log_anonc=Configurar FTP anónimo para el servidor $1 
 log_anons=FTP anónimo reconfigurado para el servidor $1 

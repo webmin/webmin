@@ -9,7 +9,6 @@ index_applymsg2=套用目前的組態到目前根目錄設備的開機磁區.
 index_applymsg3=再重新開機前傾確認您的組態是正確的!
 index_return=核心與分割區
 index_earch=LILO 之支援在 x86 的系統上面
-
 global_title=全域選項
 global_desc=全域開機選項
 global_boot=將開機載入器寫入到
@@ -31,10 +30,8 @@ global_extra=含有額外選項的開機核心
 global_any=任何啟動
 global_secs=秒
 global_err=無法儲存全域選項
-
 apply_title=套用組態
 apply_exec=以命令 $1 套用 LILO 組態檔中...
-
 image_title1=建立開機核心
 image_title2=編輯開機核心
 image_options=開機核心選項
@@ -65,7 +62,6 @@ image_none=無
 image_ename=遺失給這個開機核心的名稱
 image_ekernel=核心影像檔 '$1' 不存在
 image_einitrd=起始記憶體磁碟檔案 '$1' 不存在
-
 other_title1=建立開機分割區
 other_title2=編輯開機分割區
 other_details=分割區詳細資料

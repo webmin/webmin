@@ -4,11 +4,8 @@ index_info=Lijstinfo
 index_mail=Mail adres
 index_moderated=Gemodereerd
 index_count=# gebruikers
-
 global_saved=(opgeslagen)
-
 create_minimum=Minimaal vereiste informatie
-
 check_title=Controleer Majordomo Config
 check_test=Test voor. ..
 check_result=Resultaat / aanvullende controle

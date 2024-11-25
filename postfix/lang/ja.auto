@@ -16,13 +16,9 @@ smtpd_nomap2=送信者アドレスの制限のマップはまだ入力されて�
 smtpd_map=中継に許可されたアドレス
 smtpd_map2=送信者アドレスの制限
 
+opts_smtp_use_tls=SMTP接続にTLSを使用する
 opts_smtp_sasl_security_options=SASLセキュリティオプション
 opts_smtp_tls_security_level=SMTPTLSクライアントのセキュリティレベル
-opts_inet_protocols=Internet protocols to enable
-opts_inet_protocols_all=All available
-opts_smtp_address_preference=Preferred SMTP client protocol
-opts_smtp_address_preference_any=Either
-opts_smtp_balance_inet_protocols=Validate SMTP client protocols
 
 opts_edebug=詳細ログレベルが欠落しているか無効です-ゼロより大きい数値である必要があります
 
@@ -41,18 +37,6 @@ sni_certs=証明書ファイル
 
 acl_sni=証明書を編集できますか？
 acl_client=SMTPクライアントの制限を編集できますか？
-acl_body=Can edit body checks?
-acl_dependent=Can edit sender dependent transport maps?
-
-mail_qfile=Mail queue file
-mail_qlast=Last retried at
-mail_qdir=Mail queue status
-mail_qdir_active=Active
-mail_qdir_incoming=Incoming
-mail_qdir_deferred=Deferred
-mail_qdir_corrupt=Corrupt
-mail_qdir_hold=On hold
-mail_qdir_maildrop=Mail drop
 
 view_body=メッセージ本文
 view_afile=添付ファイル名
@@ -64,9 +48,6 @@ mailq_refresh=メールキューを更新
 mailq_refreshdesc=このページをリロードして、メールキューの現在の状態を表示します。
 mailq_deleteall=メールキューをクリア
 mailq_deletealldesc=メールキュー内のすべてのメッセージを削除するには、このボタンをクリックします。
-mailq_dir=Queue state
-
-flushq_desc2=.. check the mail log for results
 
 opts_mime_header_checks=MIMEヘッダーチェックテーブル
 opts_header_checks_no_map=(現在、ヘッダー チェック マップが定義されていません。最初にマップを定義してから編集できます)
@@ -101,10 +82,6 @@ log_manual_sender_dependent_default_transport_mapss=$1の送信者依存アド�
 
 opts_smtp_sasl_auth_enable=SASL SMTP認証を使用しますか？
 opts_smtpd_tls_auth_only=安全でない接続でのSASL認証を禁止しますか？
-sasl_noactive=Reject Disallow subject to active (non-dictionary) attack
-sasl_nodictionary=Reject methods subject to passive (dictionary) attack
-sasl_forward_secrecy=Only allow methods that support forward secrecy
-sasl_mutual_auth=Only allow methods that provide mutual authentication
 sasl_relay=SMTPリレーの制限
 sasl_permit_tls_all_clientcerts=すべての証明書でTLSクライアントを許可する
 sasl_reject_unauth_pipelining=初期のSMTPコマンドを拒否する

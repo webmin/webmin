@@ -45,7 +45,6 @@ index_restart_firewallddesc=โหลดเซิร์ฟเวอร์ Firewa
 index_listrules_restartdesc=แสดงรายการรายละเอียดเกี่ยวกับกฎ FirewallD แบบสมบูรณ์และโดยตรงที่มีอยู่ในโซน $1
 index_dependent=ไม่สามารถเริ่มบริการที่ขึ้นอยู่กับ $1 ใหม่
 index_manual=แก้ไขไฟล์กำหนดค่า
-index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=แก้ไขไฟล์กำหนดค่า
 manual_editsel=แก้ไขไฟล์การกำหนดค่า FirewallD

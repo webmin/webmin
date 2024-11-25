@@ -14,7 +14,6 @@ index_smtp=Verzenden via SMTP-server
 index_this=Deze server
 index_nu=Geen gebruiker ingesteld
 index_nl=Aanmelden mislukt
-
 shut_title=Servers afsluiten
 shut_rusure=Weet u zeker dat u de $1 geselecteerde servers onmiddellijk wilt afsluiten?
 shut_ok=Ja doe het
@@ -23,12 +22,10 @@ shut_failed=.. is mislukt! $1
 shut_done=.. gedaan.
 shut_sel=De geselecteerde servers zijn :
 shut_ecannot=U mag servers niet afsluiten
-
 reboot_title=Start servers opnieuw op
 reboot_rusure=Weet je zeker dat je de $1 geselecteerde servers onmiddellijk opnieuw wilt opstarten?
 reboot_doing=$1 opnieuw opstarten. ..
 reboot_ecannot=Het is niet toegestaan servers opnieuw op te starten
-
 sched_err=Kan automatische servercontrole niet instellen
 sched_eemail=E-mailadres ontbreekt
 sched_esmtp=Ontbrekende of ongeldige SMTP-server

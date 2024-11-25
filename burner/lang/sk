@@ -1,13 +1,10 @@
 index_title=Napaľovačka
 index_name=Meno profilu
-
 edit_name=Meno profilu
 edit_dest=Adresár na CD
 edit_trans=Vytvoriť súbory TRANS.TBL?
 edit_burn2=Napáliť
-
 save_err=Uloženie profilu zlyhalo
-
 burn_title=Napálenie CD
 burn_ok=Napáliť teraz!
 burn_eject=Vysunúť CD po napálení
@@ -15,10 +12,8 @@ burn_blank=Vymazať CD pred napaľovaním?
 burn_bfast=Rýchle mazanie
 burn_ball=Pomalé mazanie
 burn_bg=Začať napaľovanie na pozadí
-
 dev_device=Napaľovačka
 dev_speed=Rýchlosť zápisu
-
 acl_create=Môže vytvoriť nový profil napaľovania?
 acl_profiles=Môže použiť profily
 acl_all=Všetky

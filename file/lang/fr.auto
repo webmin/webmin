@@ -1,6 +1,5 @@
 index_eremote=Aucun utilisateur Unix ne correspond à la connexion Webmin $1.
 index_index=Retournez à <a href='$1'>Index Webmin</a>.
-
 top_ret=Indice
 top_down=sauvegarder
 top_preview=Aperçu
@@ -12,7 +11,6 @@ top_extract=Extrait
 top_mount=Monter
 top_config=Config
 top_efile=Aucun fichier sélectionné
-
 edit_goto=Aller à
 edit_find=Trouver
 edit_gotoline=Aller à la ligne
@@ -25,7 +23,6 @@ edit_notfound=Le texte $1 est introuvable
 edit_saveclose=Sauvegarder et fermer
 edit_elength=Le fichier a été tronqué!
 edit_textmode=Passer en mode texte brut
-
 info_octal=Octal:
 info_apply4=Fichiers sous ce répertoire et sous-répertoires
 info_apply5=Ce répertoire et tous les sous-répertoires
@@ -35,7 +32,6 @@ info_files=Nombre total de fichiers:
 info_dirs=Total répertoires:
 info_getsize=Obtenez la taille
 info_esize=Impossible d'obtenir les tailles : $1 
-
 eacl_eacls=Impossible de lire les ACL : $1 
 eacl_acltype=Type d'ACL
 eacl_aclname=Postuler à
@@ -54,7 +50,6 @@ eacl_edefmask=Il peut y avoir au plus une entrée ACL de masque par défaut
 eacl_title=ACL pour $1 
 eacl_owner=Propriétaire du fichier
 eacl_edefaults=Si un fichier possède une liste de contrôle d'accès par défaut, il doit avoir un utilisateur, un groupe et d'autres listes de contrôle d'accès par défaut.
-
 acltype_user=Utilisateur
 acltype_group=Groupe
 acltype_other=Autres
@@ -63,14 +58,10 @@ acltype_default_user=Utilisateur par defaut
 acltype_default_group=Groupe par défaut
 acltype_default_other=Par défaut Autres
 acltype_default_mask=Masque par défaut
-
 delete_mtitle=Supprimer plusieurs fichiers
 delete_mdesc=Voulez-vous vraiment supprimer définitivement ces fichiers et répertoires?  :
-
 link_efrom2=Vous n'êtes pas autorisé à créer un lien à partir de '$1'
-
 rename_eslash=Le nouveau nom de fichier $1 contient un /
-
 view_enormal2=Seuls les fichiers normaux peuvent être téléchargés
 view_edir=Une archive ne peut être créée que pour un répertoire
 view_ecmd=La commande $1 nécessaire pour créer une archive n'est pas installée
@@ -78,21 +69,16 @@ view_ecomp=Impossible de créer l'archive : $1
 view_earchive=Vous n'êtes pas autorisé à télécharger des archives
 view_earchmax=Le répertoire sélectionné est plus grand que le maximum autorisé pour l'archivage ($1 octets)
 view_epathinfo=Le chemin contient des caractères non valides
-
 upload_euser=L'utilisateur sélectionné n'existe pas.
 upload_already=Le fichier $1 existe déjà. Êtes-vous sûr de vouloir l'écraser?
 upload_elink=Impossible de télécharger vers un lien symbolique
 upload_zip=Décompresser le fichier ZIP ou TAR?
 upload_yes=Oui, puis supprimez
 upload_user=Télécharger en tant qu'utilisateur
-
 close=Fermer
 eopen=Échec du téléchargement : $1 
-
 chmod_efollow=Vous n'êtes pas autorisé à modifier les liens symboliques
-
 delete_eroot=Le répertoire '$1' est l'un de ceux auxquels vous êtes limité et ne peut donc pas être supprimé
-
 acl_fyes=Si les propriétaires correspondent
 acl_ro=Mode lecture seule?
 acl_nodirs=Refuser l'accès aux répertoires
@@ -132,16 +118,12 @@ acl_noperms=Peut changer les permissions des fichiers?
 acl_nousers=Peut changer la propriété du fichier?
 acl_filesystems=Peut voir les points de montage du système de fichiers?
 acl_contents=Autoriser la recherche du contenu du fichier?
-
 log_attr=Définir les attributs sur le fichier $1 
 log_acl=Définir l'ACL sur le fichier $1 
-
 search_cont=Contenant du texte
 search_down=Télécharger
 search_edown=Aucun fichier de résultats de recherche à télécharger sélectionné
-
 facl_eaccess=Vous n'êtes pas autorisé à définir des ACL pour ce fichier
-
 attr_eattrs=Échec d'obtention des attributs : $1 
 attr_efs=Le système de fichiers $1 ne prend pas en charge les attributs
 attr_add=Ajouter un attribut
@@ -152,13 +134,11 @@ attr_title=Attributs de fichier pour $1
 attr_create=Ajouter un attribut
 attr_edit=Modifier l'attribut
 attr_ename=Nom d'attribut manquant
-
 ext_eattrs=Échec d'obtention des attributs EXT : $1 
 ext_efs=Le système de fichiers $1 ne prend pas en charge les attributs EXT
 ext_title=Attributs EXT pour $1 
 ext_header=Attributs de fichier EXT
 ext_efailed=Impossible de définir les attributs pour $1 : $2 
-
 eattr_A=Ne pas mettre à jour les temps d'accès
 eattr_a=Peut seulement ajouter au fichier
 eattr_c=Compressez les données sur le disque
@@ -167,7 +147,6 @@ eattr_i=Ne pas autoriser la modification
 eattr_s=Zéro bloc lors de la suppression
 eattr_S=Toujours synchroniser après l'écriture
 eattr_u=Enregistrer le contenu à restaurer
-
 mount_eaccess=Vous n'êtes pas autorisé à monter des systèmes de fichiers
 mount_efstab=Aucun système de fichiers n'existe à ce point de montage
 mount_epoint=$1 n'est pas un point de montage
@@ -177,22 +156,18 @@ mount_err1=Impossible de monter $1 : $2
 mount_err2=Impossible de démonter $1 : $2 
 mount_title1=Monter le système de fichiers
 mount_title2=Démonter le système de fichiers
-
 zip_err=Impossible d'extraire le fichier : $1 
 zip_ecmd=Commande $1 manquante
 zip_eunzip=Échec de la décompression : $1 
 zip_ename=Ne semble pas être un fichier zip, tar ou tar.gz
 zip_euntar=Échec non tar : $1 
 zip_euntar2=Échec de la décompression et du décompactage : $1 
-
 ddir_title=Répertoire de téléchargement
 ddir_rusure=Pour télécharger le contenu de $1 en tant que fichier d'archive, cliquez sur l'un des boutons de type d'archive ci-dessous.
 ddir_zip=ZIP *: FRANÇAIS
 ddir_tgz=TAR.GZ
 ddir_tar=LE GOUDRON
-
 ebutton=Cette fonctionnalité n'est pas disponible
-
 preview_etype=Impossible de déterminer le type de fichier pour $1 
 preview_etype2=$1 n'est pas dans un format d'image pris en charge
 preview_ecmd=La commande $1 nécessaire pour mettre à l'échelle cette image n'est pas installée
@@ -200,17 +175,14 @@ preview_eimage=Seules les images peuvent être prévisualisées
 preview_title=Aperçu de $1 
 preview_bad=Impossible de charger l'image pour prévisualiser
 preview_egd=Impossible de charger l'image avec GD
-
 html_efailed=Impossible d'ouvrir l'éditeur HTML : $1 
 html_title=Modifier le fichier HTML
 html_title2=Créer un fichier HTML
 html_save=Sauver et fermer
 html_err=Impossible d'enregistrer le fichier HTML
-
 history_title=Historique du chemin
 history_ok=Aller à
 history_button=Histoire
-
 extract_etype=Seuls les fichiers peuvent être extraits
 extract_title=Extraire le fichier compressé
 extract_rusure=Voulez-vous vraiment extraire le fichier compressé :

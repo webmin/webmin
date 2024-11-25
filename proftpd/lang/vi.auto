@@ -27,8 +27,6 @@ index_global=Cấu hình Toàn cầu
 index_create=Tạo máy chủ ảo
 index_version=Phiên bản ProFTPd $1 
 index_proftpd=ProFTPd
-index_dlheader=Add Options
-index_dlmode=Add options for
 
 efailed=Không thể lưu $1 
 
@@ -39,7 +37,6 @@ type_3=Kiểm soát truy cập
 type_4=Điều khoản khác
 type_5=Người dùng và nhóm
 type_6=Xác thực
-type_7=SSL Options
 
 virt_title=Tùy chọn máy chủ ảo
 virt_header1=Cho 1
@@ -383,19 +380,6 @@ mod_readme_display=Thông báo cho người dùng về tập tin readme phù h�
 mod_readme_none=không ai
 mod_readme_edisplay=Thiếu mẫu tập tin readme
 
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
-
 start_err=Không thể khởi động máy chủ FTP
 start_einetd=Bạn không thể khởi động trình nền máy chủ khi ở chế độ inetd.
 
@@ -426,7 +410,6 @@ ftpindex_addlimit=Thêm tùy chọn cho mỗi lệnh cho ..
 ftpindex_header2=$1 trong $2 
 ftpindex_return=tập tin tùy chọn mỗi thư mục
 ftpindex_header=Cho 1
-ftpindex_cmds=FTP commands
 
 find_err=Không thể tìm thấy tệp tùy chọn
 find_eanon=FTP ẩn danh không được thiết lập trong bất kỳ máy chủ ảo nào

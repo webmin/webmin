@@ -156,7 +156,7 @@ desc_args--match-set=$2 is vervat in IP-stel $1
 desc_src=bron
 desc_dest=bestemming
 
-redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+redhat_einstalled=Geen <tt>iptables (6)</tt> opstartaksie is gevind nie, wat aandui dat die IPtables-pakket nie op u stelsel geïnstalleer is nie
 redhat_eoutput=Kon nie IPtables status kry van die opdrag $1 nie. Dit dui waarskynlik daarop dat u stelsel opgestel is om IP-kettings te gebruik in plaas van IP-tabelle.
 
 gentoo_escript=Die Gentoo IPtables-opstartskrif $1 is nie op u stelsel gevind nie.

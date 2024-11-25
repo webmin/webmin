@@ -5,8 +5,6 @@ index_suse=Gói Perl <tt>perl-IO-Tty</tt> bị thiếu và phải được cài 
 index_euser=Lỗi: Người dùng $1 không thể chạy shell vì nó không tồn tại!
 index_connecting=Đang kết nối ..
 index_missing=Thiếu mô-đun Perl <tt>$1</tt>. Bạn cần liên hệ với quản trị viên của mình để giải quyết vấn đề này.
-index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=Chạy shell với tư cách người dùng Unix
 acl_sameuser=Giống như đăng nhập Webmin
-acl_sudoenforce=Enforce <em>sudo</em>-only privileges

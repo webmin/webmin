@@ -37,7 +37,6 @@ index_notify=Lähetetäänkö sähköpostia Webmin-toimintoihin?
 index_notify_mods=Moduulien toimiin
 index_notify_users=Käyttäjien toimiin
 index_notify_email=Lähetä sähköpostia osoitteeseen
-index_notify_email_def=Default notification address
 index_notify_usub=Sisällytetäänkö sähköpostin aiheeseen käyttäjätunnus?
 index_notify_msub=Sisällytetäänkö toiminto sähköpostin aiheeseen?
 index_searchtab=Hakulokit
@@ -46,7 +45,8 @@ index_searchdesc=Tällä lomakkeella voidaan etsiä Webmin-toimintoja käyttäj�
 index_notifydesc=Tällä lomakkeella voit määrittää sähköposti-ilmoitukset, kun valitut käyttäjät tai valitut modulit suorittavat Webmin-toimintoja.
 
 search_title=Hakutulokset
-search_datetime=Date and time
+search_date=Päivämäärä
+search_time=Aika
 search_user=käyttäjä
 search_host=Asiakkaan osoite
 search_webmin=Webmin-palvelin

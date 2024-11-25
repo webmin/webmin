@@ -55,7 +55,7 @@ desc_args--match-set=$2 está contenido en el conjunto de IP $1
 desc_src=fuente
 desc_dest=destino
 
-redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+redhat_einstalled=No se encontró ninguna acción de arranque <tt>iptables (6)</tt>, lo que indica que el paquete IPtables no está instalado en su sistema
 
 edit_cmt=Comentario de regla
 edit_state_untracked=Sin seguimiento

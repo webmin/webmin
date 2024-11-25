@@ -27,8 +27,6 @@ index_global=Global konfiguration
 index_create=Opret virtuel server
 index_version=ProFTPd version $1 
 index_proftpd=proftpd
-index_dlheader=Add Options
-index_dlmode=Add options for
 
 efailed=Kunne ikke gemme $1 
 
@@ -39,7 +37,6 @@ type_3=Adgangskontrol
 type_4=Diverse
 type_5=Bruger og gruppe
 type_6=Godkendelse
-type_7=SSL Options
 
 virt_title=Valg af virtuel server
 virt_header1=For $1 
@@ -383,19 +380,6 @@ mod_readme_display=Underret brugeren om readme-filer, der matcher
 mod_readme_none=Ingen
 mod_readme_edisplay=Manglende readme-filer mønster
 
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
-
 start_err=Kunne ikke starte FTP-server
 start_einetd=Du kan ikke starte serverdemonen, når du er i inetd-tilstand.
 
@@ -426,7 +410,6 @@ ftpindex_addlimit=Tilføj valgmuligheder per kommando for ..
 ftpindex_header2=$1 i $2 
 ftpindex_return=pr. katalogindstillingsfil
 ftpindex_header=For $1 
-ftpindex_cmds=FTP commands
 
 find_err=Kunne ikke finde indstillingsfiler
 find_eanon=Anonym FTP er ikke opsat på nogen virtuel server

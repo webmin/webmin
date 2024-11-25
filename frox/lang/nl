@@ -9,7 +9,6 @@ index_start=Start Frox Server
 index_startdesc=Klik op deze knop om het Frox proxy server proces te starten. Als de firewall goed is opgezet zullen FTP verbindingen die lopen via deze server niet werken totdat Frox is aan het werk is.
 index_inetd=Frox is geconfigureerd om uitgevoerd te worden vanuit Inetd, en kan daarom niet gestart en gestopt worden met gebruik van deze module.
 index_return=module index
-
 net_title=Netwerk Opties
 net_header=Netwerk gerelateerd opties
 edit_Listen=Luister op adressen
@@ -32,7 +31,6 @@ net_eproxy=Ontbrekende of ongeldig proxy server adres:poort
 net_eip=Ontbrekende of ongeldig IP adres
 net_eresolv=Ontbrekende of ongeldige DNS naam
 net_eiface=Ontbrekende of ongeldig interface naam
-
 general_title=Algemene Opties
 general_header=Algemene Frox gebruiker, groep en file opties
 edit_User=Uitvoeren als Unix gebruiker
@@ -51,7 +49,6 @@ edit_egroup=Ontbrekende of ongeldige Unix groep naam
 edit_efrom=Ontbrekende of ongeldige start poort nummer
 edit_eto=Ontbrekende of ongeldige eind poort nummer
 edit_erange=Start poort nummer moet lager zijn dan eind poort nummer
-
 ftp_title=FTP Protocol Opties
 ftp_header=FTP protocol proxying opties
 edit_APConv=Converteer actieve verbindingen naar passieve?
@@ -67,7 +64,6 @@ edit_from=Van
 edit_to=naar
 ftp_err=Mislukt om FTP protocol opties op te slaan
 ftp_econv=Tegelijk actief naar passief en passief naar actief aanzetten kan niet in één keer!
-
 cache_title=Caching Opties
 cache_header=Caching en virus scanner opties
 cache_module=Caching mode
@@ -89,7 +85,6 @@ cache_esize=Ontbrekende of ongeldige grote
 cache_eproxy=Ontbrekende of ongeldige hostnaam:poort
 cache_escanner=Ontbrekende of niet bestaand scanner programma
 cache_eint=Ontbrekend of niet-numeriek
-
 acl_title=Toegang Controle
 acl_header=Toegang kontrole en bron limiet opties
 edit_DoNTP=Ook niet-transparante proxy verbindingen toestaan?
@@ -115,7 +110,6 @@ acl_esrc=Ontbrekende of ongeldige client adres, netwerk/grote of netwerk/netmask
 acl_edest=Ontbrekende of ongeldige server adres, netwerk/grote of netwerk/netmask in ACL $1
 acl_eports=Ongeldige komma-scheiding lijst met poorten of poort reeksen in ACL $1
 acl_enone=Geen toegang controle lijst ingangen ingevuld
-
 iptables_title=Poort Omleiding Instellen
 iptables_inst0=De IPtables firewall opdrachten die nodig zijn om de poort omleiding op te zetten lijken niet geinstalleerd te zijn op uw systeem. Bekijk de <a href='$1'>Linux Firewall</a> module voor meer details.
 iptables_inst1=De <a href='$1'>Linux Firewall</a> module lijkt niet volledig opgezet te zijn op uw systeem. Deze module word gebruikt om poort omleiding op te zetten voor Frox.
@@ -128,11 +122,9 @@ iptables_err=Mislukt om poort doorsturen op te slaan
 iptables_enet=Ontbrekende of ongeldige netwerk adres (moet de vorm hebben 192.168.1.0/24)
 iptables_eapply=Toevoegen mislukt : $1
 iptables_eiface=Ontbrekende of ongeldige netwerk interface
-
 start_err=Mislukt om Frox te starten
 stop_err=Mislukt om Frox te stoppen
 stop_egone=Werkt niet langer!
-
 log_net=Veranderde netwerk opties
 log_general=Veranderde algemene opties
 log_ftp=Veranderde FTP protocol opties

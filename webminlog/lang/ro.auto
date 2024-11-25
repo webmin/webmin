@@ -37,7 +37,6 @@ index_notify=Trimiteți e-mail pentru acțiunile Webmin?
 index_notify_mods=Pentru acțiuni în module
 index_notify_users=Pentru acțiunile utilizatorilor
 index_notify_email=Trimite e-mail la
-index_notify_email_def=Default notification address
 index_notify_usub=Includeți numele de utilizator în subiectul e-mailului?
 index_notify_msub=Includeți acțiunea în subiectul e-mailului?
 index_searchtab=Căutați jurnalele
@@ -46,7 +45,8 @@ index_searchdesc=Acest formular poate fi folosit pentru a căuta acțiuni Webmin
 index_notifydesc=Utilizați acest formular pentru a configura notificările prin e-mail atunci când acțiunile Webmin sunt efectuate de utilizatori selectați sau în modulele alese.
 
 search_title=rezultatele cautarii
-search_datetime=Date and time
+search_date=Data
+search_time=Timp
 search_user=Utilizator
 search_host=Adresa clientului
 search_webmin=Webmin Server

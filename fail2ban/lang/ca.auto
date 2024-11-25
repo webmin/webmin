@@ -1,43 +1,9 @@
-jail_ports=Ports to block
-jail_ebackend=Invalid backend name
-jail_eports=Invalid port name, number or range; use a single port name, number or a range in the form <tt>start:end</tt>; to specify multiple ports, separate them with commas
 jail_systemd=systemd
 jail_pyinotify=piinotificar
 
 log_update_filter=Filtre modificat $1 
 log_update_action=Acció modificada $1 
 log_update_jail=Presó modificada $1 
-
-config_dbpurgeage=Age at which bans should be purged from the database
-config_dbpurgeage_15m=15 minutes
-config_dbpurgeage_30m=30 minutes
-config_dbpurgeage_1h=1 hour
-config_dbpurgeage_6h=6 hours
-config_dbpurgeage_12h=12 hours
-config_dbpurgeage_1d=1 day
-config_dbpurgeage_3d=3 days
-config_dbpurgeage_1w=1 week
-config_dbpurgeage_2w=2 weeks
-config_dbpurgeage_1mo=1 month
-config_ewrongunit=Invalid unit <tt>$1</tt> for database purge age
-config_ewrongtime=Invalid time for database purge age. Time for database purge age must be a number greater than zero
-config_dbpurgeagedef=Default
-config_dbpurgeagesel=Selected
-config_dbpurgeagecus=Custom
-config_dbpurgeagecussec=second
-config_dbpurgeagecussecs=seconds
-config_dbpurgeagecusmin=minute
-config_dbpurgeagecusmins=minutes
-config_dbpurgeagecushr=hour
-config_dbpurgeagecushrs=hours
-config_dbpurgeagecusday=day
-config_dbpurgeagecusdays=days
-config_dbpurgeagecuswk=week
-config_dbpurgeagecuswks=weeks
-config_dbpurgeagecusmo=month
-config_dbpurgeagecusmos=months
-config_dbpurgeagecusyr=year
-config_dbpurgeagecusyrs=years
 
 status_title=Estat i accions de les presons
 status_title3=Blocs de la presó

@@ -125,13 +125,9 @@ smtpd_nomap2=발신자 주소 제한에 대한 맵이 아직 입력되지 않았
 smtpd_map=릴레이를 위해 허용 된 주소
 smtpd_map2=발신자 주소에 대한 제한
 
+opts_smtp_use_tls=SMTP 연결에 TLS 사용
 opts_smtp_sasl_security_options=SASL 보안 옵션
 opts_smtp_tls_security_level=SMTP TLS 클라이언트 보안 수준
-opts_inet_protocols=Internet protocols to enable
-opts_inet_protocols_all=All available
-opts_smtp_address_preference=Preferred SMTP client protocol
-opts_smtp_address_preference_any=Either
-opts_smtp_balance_inet_protocols=Validate SMTP client protocols
 
 opts_edebug=상세하지 않은 상세 로깅 레벨-0보다 큰 숫자 여야합니다.
 
@@ -200,8 +196,6 @@ acl_postfinger=접미사 구성을 확인할 수 있습니까?
 acl_manual=구성 파일을 편집 할 수 있습니까?
 acl_dir=맵 파일의 허용 디렉토리
 acl_bcc=BCC 매핑을 편집 할 수 있습니까?
-acl_body=Can edit body checks?
-acl_dependent=Can edit sender dependent transport maps?
 
 boxes_title=사용자 사서함
 boxes_user=사용자
@@ -251,15 +245,6 @@ mail_forward=앞으로
 mail_rfc=라인에서
 mail_move=이동 :
 mail_eexists=더 이상 메시지가 없습니다!
-mail_qfile=Mail queue file
-mail_qlast=Last retried at
-mail_qdir=Mail queue status
-mail_qdir_active=Active
-mail_qdir_incoming=Incoming
-mail_qdir_deferred=Deferred
-mail_qdir_corrupt=Corrupt
-mail_qdir_hold=On hold
-mail_qdir_maildrop=Mail drop
 
 view_title=이메일 읽기
 view_desc=$2의 메시지 $1
@@ -370,11 +355,9 @@ mailq_active=유효한
 mailq_deferred=연기 됨
 mailq_hold=선택된 홀드
 mailq_unhold=보류되지 않은 선택
-mailq_dir=Queue state
 
 flushq_title=플러시 큐
 flushq_desc=$1 명령으로 메일 배달을 강제로 시도했습니다.
-flushq_desc2=.. check the mail log for results
 
 qview_title=대기중인 메시지
 qview_desc=$1 파일에서
@@ -583,10 +566,6 @@ opts_broken_sasl_auth_clients=비준수 SMTP 클라이언트를 처리 하시겠
 sasl_opts=SMTP 보안 옵션
 sasl_noanonymous=익명 로그인 거부
 sasl_noplaintext=일반 텍스트 로그인 거부
-sasl_noactive=Reject Disallow subject to active (non-dictionary) attack
-sasl_nodictionary=Reject methods subject to passive (dictionary) attack
-sasl_forward_secrecy=Only allow methods that support forward secrecy
-sasl_mutual_auth=Only allow methods that provide mutual authentication
 opts_smtpd_delay_reject=로그인에 실패한 클라이언트를 지연 시키시겠습니까?
 sasl_recip=SMTP받는 사람 제한
 sasl_relay=SMTP 릴레이 제한

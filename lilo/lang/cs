@@ -9,7 +9,6 @@ index_applymsg2=Pouzit tuto kongiguraci na bootovaci sektor na bezne korenove za
 index_applymsg3=Pred restartovanim PC se presvedcte, ze Vase konfigurace je spravna!!
 index_return=jadra a oddily
 index_earch=LILO je podporovano pouze na systemech s x86kovou architekturou
-
 global_title=Globalni nastaveni
 global_desc=Globalni nastaveni bootovani
 global_boot=Zapsat LILO
@@ -31,10 +30,8 @@ global_extra=Bootovaci jadra s rozsirenymi moznostmi
 global_any=Kazde bootovani
 global_secs=sekund
 global_err=Chyba pri ukladani globalniho nastaveni
-
 apply_title=Pouzit konfiguraci
 apply_exec=Pouzit konfiguraci LILA s prikazem $1 ..
-
 image_title1=Vytvorit bootovaci jadro
 image_title2=Editovat bootovaci jadro
 image_options=Moznosti bootovaciho jadra
@@ -65,7 +62,6 @@ image_none=Nic
 image_ename=Chybi pojmenovani pro toto bootovaci jadro
 image_ekernel=Image jadra '$1' neexistuje
 image_einitrd=Inicializace ramdiskoveho souboru '$1' neexistuje
-
 other_title1=Vytvorit bootovaci partisnu
 other_title2=Editovat bootovaci oddil
 other_details=Detaily oddilu

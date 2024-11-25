@@ -1,12 +1,10 @@
 index_index=Retorne ao <a href='$1'>índice Webmin</a>.
-
 top_preview=Pré-visualização
 top_html=HTML
 top_extract=Extrair
 top_mount=Mount
 top_config=Config
 top_efile=Nenhum arquivo selecionado
-
 edit_goto=Vamos para
 edit_find=Encontrar
 edit_gotoline=Ir para a linha
@@ -19,7 +17,6 @@ edit_notfound=O texto $1 não foi encontrado
 edit_saveclose=Salvar fechar
 edit_elength=O arquivo foi truncado!
 edit_textmode=Mudar para o modo de texto sem formatação
-
 info_apply4=Arquivos neste diretório e subdiretórios
 info_apply5=Este diretório e todos os subdiretórios
 info_sizeheader=Tamanho do diretório
@@ -28,30 +25,23 @@ info_files=Total de arquivos:
 info_dirs=Total de diretórios:
 info_getsize=Obter tamanho
 info_esize=Falha ao obter tamanhos : $1 
-
 link_efrom2=Você não tem permissão para vincular a partir de '$1'
-
 rename_eslash=O novo nome de arquivo $1 contém um /
-
 view_edir=Um arquivo morto pode ser criado apenas para um diretório
 view_ecmd=O comando $1 necessário para criar um arquivo morto não está instalado
 view_ecomp=Falha ao criar arquivo : $1 
 view_earchive=Você não tem permissão para baixar arquivos
 view_earchmax=O diretório selecionado é maior que o máximo permitido para arquivamento ($1 bytes)
 view_epathinfo=Caminho contém caracteres inválidos
-
 upload_euser=Usuário selecionado não existe.
 upload_already=O arquivo $1 já existe. Tem certeza de que deseja substituí-lo?
 upload_elink=Não é possível fazer o upload para um link simbólico
 upload_zip=Descompacte o arquivo ZIP ou TAR?
 upload_yes=Sim, apague
 upload_user=Carregar como usuário
-
 close=Fechar
 eopen=Falha no download : $1 
-
 delete_eroot=O diretório '$1' é um dos quais você está limitado e, portanto, não pode ser excluído
-
 acl_fyes=Se os proprietários corresponderem
 acl_nodirs=Negar acesso aos diretórios
 acl_max=Tamanho máximo de upload
@@ -74,11 +64,9 @@ acl_noperms=Pode alterar as permissões de arquivo?
 acl_nousers=Pode alterar a propriedade do arquivo?
 acl_filesystems=Pode ver os pontos de montagem do sistema de arquivos?
 acl_contents=Permitir pesquisa do conteúdo do arquivo?
-
 search_cont=Contendo texto
 search_down=Baixar
 search_edown=Nenhum arquivo de resultado de pesquisa para download selecionado
-
 mount_eaccess=Você não tem permissão para montar sistemas de arquivos
 mount_efstab=Nenhum sistema de arquivos existe neste ponto de montagem
 mount_epoint=$1 não é um ponto de montagem
@@ -88,22 +76,18 @@ mount_err1=Falha ao montar $1 : $2
 mount_err2=Falha ao desmontar $1 : $2 
 mount_title1=Montar sistema de arquivos
 mount_title2=Desmontar sistema de arquivos
-
 zip_err=Não foi possível extrair o arquivo : $1 
 zip_ecmd=Comando $1 ausente
 zip_eunzip=Falha ao descompactar : $1 
 zip_ename=Não parece ser um arquivo zip, tar ou tar.gz
 zip_euntar=Falha na remoção do tar : $1 
 zip_euntar2=Falha ao descompactar e desarquivar : $1 
-
 ddir_title=Diretório de downloads
 ddir_rusure=Para baixar o conteúdo de $1 como um arquivo morto, clique em um dos botões de tipo de arquivo abaixo.
 ddir_zip=fecho eclair
 ddir_tgz=TAR.GZ
 ddir_tar=ALCATRÃO
-
 ebutton=Este recurso não está disponível
-
 preview_etype=Não foi possível calcular o tipo de arquivo para $1 
 preview_etype2=$1 não está em um formato de imagem suportado
 preview_ecmd=O comando $1 necessário para dimensionar esta imagem não está instalado
@@ -111,17 +95,14 @@ preview_eimage=Apenas imagens podem ser visualizadas
 preview_title=Visualização de $1 
 preview_bad=Não foi possível carregar a imagem para visualizar
 preview_egd=Falha ao carregar a imagem com o GD
-
 html_efailed=Falha ao abrir o editor HTML : $1 
 html_title=Editar arquivo HTML
 html_title2=Criar arquivo HTML
 html_save=Salvar e fechar
 html_err=Falha ao salvar o arquivo HTML
-
 history_title=Histórico do caminho
 history_ok=Vamos para
 history_button=História
-
 extract_etype=Somente arquivos podem ser extraídos
 extract_title=Extrair arquivo compactado
 extract_rusure=Tem certeza de que deseja extrair o arquivo compactado :

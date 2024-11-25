@@ -8,8 +8,6 @@ index_email=¿Enviar correo electrónico cuando se realizan las descargas?
 index_emailto=Sí, para abordar
 index_email2=¿Enviar correo electrónico cuando se realizan las cargas?
 
-upload_direct=Write files directly to disk?
-upload_emove=Failed to move uploaded file from $1 to $2
 upload_eemail=Falta la dirección de correo electrónico para notificar
 upload_saving=Guardando el archivo $1 ..
 upload_saved=.. escribió $1 

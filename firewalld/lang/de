@@ -130,9 +130,9 @@ list_rules_plus_more=+ $1 mehr
 log_save_rules=Gelöschte $1 Regeln
 
 restart_err=Fehler beim Anwenden der Konfiguration
-
 stop_err=Fehler beim Stoppen von FirewallD
 start_err=Fehler beim Starten von FirewallD
+
 log_stop=FirewallD gestoppt
 log_start=FirewallD gestartet
 log_restart=FirewallD-Konfiguration angewendet

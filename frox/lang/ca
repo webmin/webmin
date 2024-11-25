@@ -9,7 +9,6 @@ index_start=Inicia el Servidor Frox
 index_startdesc=Fes clic sobre aquest botó per iniciar el procés servidor de proxy FTP Frox. Si has configurat correctament el tallafocs, les connexions FTP encaminades a través d'aquest servidor no funcionaran fins que Frox s'estigui executant.
 index_inetd=Frox està configurat per executar-se des d'inetd, així que no es pot iniciar ni aturar utilitzant aquest mòdul.
 index_return=a l'índex de mòduls
-
 net_title=Opcions de Xarxa
 net_header=Opcions relatives a la xarxa
 edit_Listen=Escolta les adreces
@@ -32,7 +31,6 @@ net_eproxy=Hi falta el servidor proxy adreça:port o bé és invàlid
 net_eip=Hi falta l'adreça IP o bé és invàlida
 net_eresolv=Hi falta el nom del DNS o bé és invàlid
 net_eiface=Hi falta el nom de la interfície o bé és invàlida
-
 general_title=Opcions Generals
 general_header=Opcions generals d'usuari,grup i fitxers Frox
 edit_User=Executa com a usuari Unix
@@ -51,7 +49,6 @@ edit_egroup=Hi falta el nom del grup Unix o bé és invàlid
 edit_efrom=Hi falta el número de port inicial o bé és invàlid
 edit_eto=Hi falta el número de port final o bé és invàlid
 edit_erange=El port inicial ha de ser menor que el port final
-
 ftp_title=Opcions del Protocol FTP
 ftp_header=Opcions de proxy del protocol FTP
 edit_APConv=Converteix les connexions actives a passives
@@ -67,7 +64,6 @@ edit_from=De
 edit_to=a
 ftp_err=No s'han pogut desar les opcions del protocol FTP
 ftp_econv=No es pot activar al mateix temps la conversió d'activa a passiva i de passiva a activa!
-
 cache_title=Opcions del Cau
 cache_header=Opcions del cau i de rastreig de virus
 cache_module=Mode del cau
@@ -89,7 +85,6 @@ cache_esize=Hi falta la mida o bé és invàlida
 cache_eproxy=Hi falta el nom:port o bé és invàlid
 cache_escanner=Hi falta el programa de rastreig o bé és invàlid
 cache_eint=Hi falta o bé no és numèric
-
 acl_title=Control d'Accés
 acl_header=Opcions de control d'accés i de limitació de recursos
 edit_DoNTP=Accepta també les connexions de proxy no transparents
@@ -115,7 +110,6 @@ acl_esrc=Hi falta l'adreça client, xarxa/mida o xarxa/màscara, o bé és invà
 acl_edest=Hi falta l'adreça del servidor, xarxa/mida o xarxa/màscara a l'ACL $1
 acl_eports=Llista de de ports o rangs de ports invàlida a l'ACL $1
 acl_enone=No s'ha introduït cap entrada a la llista de control d'accés
-
 iptables_title=Configuració del Redireccionament de Ports
 iptables_inst0=No sembla que les ordres del tallafoc IPtables necessàries per configurar el redireccionament de ports estiguin instal·lades al sistema. Mira el mòdul <a href='$1'>Tallafocs Linux</a> per a més detalls.
 iptables_inst1=No sembla que el mòdul del <a href='$1'>Tallafocs Linux</a> estigui completament configurat. Aquest mòdul utilitza aquest altre per tal de configurar el redireccionament de ports.
@@ -128,11 +122,9 @@ iptables_err=No s'ha pogut desar el redireccionament de ports
 iptables_enet=Hi falta l'adreça de xarxa o bé és invàlida (hauria de ser com 192.168.1.0/24)
 iptables_eapply=L'aplicació ha fallat: $1
 iptables_eiface=Hi falta la interfície de xarxa o bé és invàlida
-
 start_err=No s'ha pogut iniciar Frox
 stop_err=No s'ha pogut aturar Frox
 stop_egone=Ja no està en execució!
-
 log_net=S'han canviat les opcions de xarxa
 log_general=S'han canviat les opcions generals
 log_ftp=S'han canviat les opcions del protocol FTP

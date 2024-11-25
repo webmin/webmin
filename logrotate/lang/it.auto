@@ -64,7 +64,6 @@ edit_pre=Comandi da eseguire prima della rotazione
 edit_default=Predefinito ($1)
 edit_sharedscripts=Eseguire gli script una sola volta per tutti i file?
 edit_now=Ruota ora
-edit_clone=Clone
 
 global_title=Opzioni globali
 global_header=Opzioni predefinite per tutti i file di registro

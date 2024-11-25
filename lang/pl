@@ -394,3 +394,4 @@ file_truncated_message_tail=pobrano końcowe $1 danych, obcięto $2 z $3
 defcert_error=Domyślny $1 wbudowany certyfikat SSL jest używany. Zaleca się zaktualizowanie domyślnego certyfikatu <tt>$2</tt> przed kontynuowaniem logowania.
 
 main_error_details=Szczegóły błędu
+

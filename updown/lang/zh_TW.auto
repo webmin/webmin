@@ -14,8 +14,6 @@ index_email=完成下載後發送電子郵件嗎？
 index_emailto=是的，解決
 index_email2=上傳完成後發送電子郵件嗎？
 
-upload_direct=Write files directly to disk?
-upload_emove=Failed to move uploaded file from $1 to $2
 upload_ecmd=缺少命令 $1
 upload_eextract=，無法提取： $1
 upload_extracted=，並提取文件 ..

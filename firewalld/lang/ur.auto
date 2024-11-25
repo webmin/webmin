@@ -45,7 +45,6 @@ index_restart_firewallddesc=FirewallD سرور کو دوبارہ لوڈ کریں
 index_listrules_restartdesc=$1 زون میں موجودہ امیر اور براہ راست فائر وال ڈی قوانین کے بارے میں تفصیلات درج کریں۔
 index_dependent=$1 پر منحصر سروس کو دوبارہ شروع کرنے میں ناکام
 index_manual=کنفگ فائلوں میں ترمیم کریں۔
-index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=کنفگ فائلوں میں ترمیم کریں۔
 manual_editsel=FirewallD کنفیگریشن فائل میں ترمیم کریں۔

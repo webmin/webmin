@@ -8,8 +8,6 @@ config_emodule=وحدة غير موجودة
 help_efile3=فشلت قراءة صفحة التعليمات $1 من الوحدة النمطية$2
 help_einclude3=فشل تضمين صفحة التعليمات$1
 
-password_euserpass=Invalid username or password
-
 ui_of=ل
 
 log_email_by=$1 في$2

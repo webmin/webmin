@@ -14,7 +14,6 @@ index_memb=$1 dalībnieki
 index_hst=Saimnieki un saimnieku grupas
 index_nohst=Nav definēti nekādi saimnieki vai grupas.
 index_hostgroup=Saimnieks/grupa
-index_comment=Description
 index_parent=Vecāks
 index_hardware=Aparatūras adrese
 index_group=Grupa:

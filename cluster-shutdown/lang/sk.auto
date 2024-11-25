@@ -14,7 +14,6 @@ index_smtp=Odoslať prostredníctvom servera SMTP
 index_this=Tento server
 index_nu=Nie je nastavený žiadny používateľ
 index_nl=Prihlásenie zlyhalo
-
 shut_title=Vypnite servery
 shut_rusure=Naozaj chcete okamžite vypnúť vybrané servery $1 ?
 shut_ok=Áno, urob to
@@ -23,12 +22,10 @@ shut_failed=.. zlyhalo! $1
 shut_done=.. hotový.
 shut_sel=Vybrané servery sú :
 shut_ecannot=Nie je povolené vypnúť servery
-
 reboot_title=Reštartujte servery
 reboot_rusure=Naozaj chcete okamžite reštartovať vybrané servery $1 ?
 reboot_doing=Reštartuje sa $1 ..
 reboot_ecannot=Nemáte povolenie na reštartovanie serverov
-
 sched_err=Nepodarilo sa nastaviť automatickú kontrolu servera
 sched_eemail=Chýba e-mailová adresa
 sched_esmtp=Chýba alebo je neplatný server SMTP

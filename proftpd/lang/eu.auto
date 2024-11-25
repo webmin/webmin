@@ -27,8 +27,6 @@ index_global=Konfigurazio globala
 index_create=Sortu zerbitzari birtuala
 index_version=ProFTPd $1 bertsioa
 index_proftpd=ProFTPd
-index_dlheader=Add Options
-index_dlmode=Add options for
 
 efailed=Ezin izan da $1 gordetzea
 
@@ -39,7 +37,6 @@ type_3=Sarbide-kontrola
 type_4=Denetarik
 type_5=Erabiltzailea eta Taldea
 type_6=Autentifikazioa
-type_7=SSL Options
 
 virt_title=Zerbitzari birtualaren aukerak
 virt_header1=$1 erako
@@ -383,19 +380,6 @@ mod_readme_display=Erabiltzaileei irakurritako fitxategiak bat datozela jakinara
 mod_readme_none=Bat ere ez
 mod_readme_edisplay=Irakurtzeko fitxategi eredua falta da
 
-mod_tls_engine=Enable SSL encryption?
-mod_tls_required=SSL required?
-mod_tls_ctrl=For control channel
-mod_tls_auth=For authentication
-mod_tls_authdata=For authentication and data
-mod_tls_file=SSL certificate file
-mod_tls_efile=SSL certificate file does not exist!
-mod_tls_key=SSL key file
-mod_tls_ekey=SSL key file does not exist!
-mod_tls_ca=SSL CA certificate file
-mod_tls_eca=SSL CA certificate file does not exist!
-mod_tls_none=None set
-
 start_err=Huts egin du FTP zerbitzaria abiaraztean
 start_einetd=Ezin duzu zerbitzariaren demona abiarazi inetd moduan dagoenean.
 
@@ -426,7 +410,6 @@ ftpindex_addlimit=Gehitu komando bakoitzeko aukerak ..
 ftpindex_header2=$1 $2 an
 ftpindex_return=direktorio bakoitzeko aukeren fitxategia
 ftpindex_header=$1 erako
-ftpindex_cmds=FTP commands
 
 find_err=Ezin izan da aukerak fitxategiak aurkitu
 find_eanon=FTP anonimoak ez du zerbitzari birtualetan konfiguratuta

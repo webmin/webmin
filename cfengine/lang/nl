@@ -51,7 +51,6 @@ index_required=Controleer filesysteem $1
 index_required2=Controleer $1 filesystemen
 index_disks=$index_required
 index_disks2=$index_required2
-
 edit_title=Bewerk Instellingen voor Klasse
 edit_create1=Toevoegen van Actie en Klasse
 edit_create2=Toevoegen van Setting's voor Klasse
@@ -193,7 +192,6 @@ edit_resother=Andere <tt>resolv.conf</tt> regels
 edit_route=Standaard gateway
 edit_reqfs=Filesysteem om te controleren
 edit_reqfree=Minimum vrije ruimte
-
 save_err=Mislukt om klasse op te slaan
 save_eclass=Ontbrekende of ongeldige klasse naam
 save_elinkfrom=Ontbrekende of ongeldige <komende van> voor symlink $1
@@ -256,7 +254,6 @@ save_emiscmode=Ongeldige mount opties voor $1
 save_eroute=Ontbrekende of ongeldige standaard gateway
 save_ereq=Ongeldig filesysteem om te controleren $1
 save_ereqfree=Ontbrekende of ongeldige minimum vrije ruimte voor $1
-
 section_groups=Definieer groepen
 section_classes=$section_groups
 section_control_0=Master controle
@@ -284,7 +281,6 @@ section_grant=$section_admit
 section_deny=Negeer directory's
 section_required=Controleer Filesystemen
 section_disks=$section_required
-
 run_title=Uitvoeren Configuratie Engine
 run_desc=Deze pagina kan worden gebruikt om de Configuratie Engine op deze host uit te voeren, Wanneer deze aan het werk word gezet zullen alle acties die u geconfigureerd heeft worden uitgevoerd waar nodig
 run_header=Opties voor uitvoerende CFengine op deze host
@@ -297,7 +293,6 @@ run_nolinks=Mag symbolische links maken?
 run_verbose=Laat verbose resultaat zien?
 run_exec=Uitvoeren van opdracht $1 ..
 run_ok=Nu Uitvoeren
-
 cfd_title=Configuratie Engine Daemon
 cfd_stop=Stop Configuratie Engine Daemon
 cfd_stopdesc=Klik op deze knop om de Configuratie Engine daemon te stoppen. Dit voorkomt dat andere hosts kunnen werken met de configuratie op deze server, en stopt de geplande configuratie.
@@ -306,7 +301,6 @@ cfd_startdesc=Klik op deze knop om de Configuratie Engine daemon te starten met 
 cfd_return=daemon opties
 cfd_none=Er zijn nog geen instellingen gemaakt voor deze Configuratie Engine daemon
 cfd_ecmd=De Configuratie Engine daemon opdracht $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
-
 push_title=Remote Configuratie Hosts
 push_header=Configuratie server distributie opties
 push_domain=Domein naam
@@ -323,7 +317,6 @@ push_return=remote configuratie hosts
 push_title2=Host Configuraties Uitvoeren
 push_exec=Uitvoeren van host configuraties met de opdracht $1 ..
 push_ecmd=De Configuratie Engine remote uitvoer opdracht $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
-
 type_control_0=In het veld hieronder staat de lijst met acties die worden uitgevoerd als de configuratie engine aan het werk is, in de volgorde dat ze worden uitgevoerd. Acties die niet hier staan worden niet uitgevoerd, zelfs als ze in de lijst staan op de hoofdpagina.
 type_control_1=De opties hieronder hebben controle over het globale gedrag over de processen die op de achtergrond aanvragen accepteren om de configuratie uit te voeren op deze host, ook wanneer die komt van een remote host of door een vast geplande opdracht.
 type_directories=De directory's in de lijst hieronder zullen worden gemaakt met de opgegeven eigenaarschap en permissies wanneer ze niet bestaan, De eigenaar, groep en permissie velden zijn optioneel.
@@ -345,13 +338,10 @@ type_resolve=Wanneer deze actie word uitgevoerd zullen de DNS server IP adressen
 type_defaultroute=Wanneer deze actie word uitgevoerd zal de configuratie engine de standaard route controleren ten op zichten van de gateway die hieronder gespecificeerd is.
 type_required=De filesystemen in de lijst hieronder zullen worden gecontroleerd wanneer deze actie word uitgevoerd om zeker te zijn of ze ge-mount zijn, en zo niet zult u een waarschuwing krijgen. Ieder filesysteem zal ook gecontroleerd worden op de minimaal toegelaten vrije ruimte.
 type_disks=$type_required
-
 stop_err=Mislukt om Configuratie Engine daemon te stoppen
 stop_epids=Werkt niet langer
 stop_ekill=Mislukt om het volgende proces te killen : $1
-
 start_err=Mislukt om Configuratie Engine daemon te starten
-
 log_create_section=Maak actie $1 en klasse
 log_create_class=Klasse toevoegen aan actie $1
 log_modify_class=Gemodificeerde klasse in actie $1
@@ -362,7 +352,6 @@ log_start=Gestarte daemon
 log_stop=Gestopte daemon
 log_push=Veranderde remote configuratie hosts
 log_prun=Uitgevoerde host configuraties
-
 hosts_title=Webmin CFengine Cluster
 hosts_hosts=Servers in Cluster
 hosts_nohosts=Er zijn nog geen Webmin servers met een werkende CFengine gedefinieerd.
@@ -374,7 +363,6 @@ hosts_rundesc=Klik op deze knop om de Configuratie Engine te laten werken op all
 hosts_copydesc=Klik op deze knop om de CFengine configuratie van deze server te kopiëren naar alle servers die hierboven staan, en deze direct uit te voeren.
 hosts_opts=Opties voor werkende configuraties
 hosts_return=servers lijst
-
 add_title=Voeg servers toe
 add_msg=Toevoegen $1 ..
 add_gmsg=Servers toevoegen in groep $1 ..
@@ -384,7 +372,6 @@ add_echeck=Server $1 heeft niet de configuratie engine module
 add_ecfengine=CFengine is niet geinstalleerd op server $1
 add_ok=Toegevoegde server $1 ($2 $3)
 add_eversion=CFengine op server $1 is versie $2, maar deze Webmin module ondersteund alleen versie $3 .
-
 host_title=Beheer Server
 host_header=Beheer CFengine server details
 host_name=Host naam
@@ -393,10 +380,8 @@ host_delete=Verwijderen van beheer lijst
 host_os=OS van Webmin
 host_cfg=Huidige CFengine configuratie van $1
 host_ver=CFengine versie
-
 cluster_title=Configuratie Engine Uitvoeren
 cluster_header=Werkende configuratie engine op alle hosts in cluster ..
 cluster_success=Resultaat van CFengine op $1 ..
 cluster_failed=Mislukt om CFengine in werking te zetten op $1 : $2
-
 this_server=deze server

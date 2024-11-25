@@ -1,13 +1,6 @@
 lang_title=Langue et paramètres régionaux
 lang_title2=Langue et paramètres régionaux Usermin
 
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
-
 advanced_pass_desc=Rendre le mot de passe disponible pour les programmes Usermin ?
 advanced_pass_help=Ne fonctionne pas lorsque l'authentification de session est activée
 

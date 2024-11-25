@@ -4,6 +4,7 @@ index_host=Na hoście
 index_desc=Monitorowanie
 index_up=Stan
 index_local=Lokalny
+index_add=Dodaj monitorowanie:
 index_sched=Monitorowanie okresowe
 index_scheddesc=Włącz harmonogram monitorowania i ustaw adres e-mail na który zostaną wysłane raporty błędów.
 index_return=listy usług

@@ -5,8 +5,6 @@ index_suse=The Perl package <tt>perl-IO-Tty</tt> is missing, and should be manua
 index_euser=خرابی: صارف $1 شیل کو نہیں چلا سکتا کیونکہ یہ موجود نہیں ہے!
 index_connecting=جڑ رہا ہے ..
 index_missing=The Perl module <tt>$1</tt> is missing. You need to contact your administrator to resolve this issue.
-index_eproxy=The Terminal module cannot be used when accessing Webmin via another Webmin server
 
 acl_user=شیل کو یونکس صارف کے طور پر چلائیں۔
 acl_sameuser=Webmin لاگ ان کی طرح
-acl_sudoenforce=Enforce <em>sudo</em>-only privileges

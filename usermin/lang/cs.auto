@@ -13,12 +13,6 @@ ui_hnm0=Skutečné jméno hostitele
 ui_hnm1=Název hostitele z adresy URL
 ui_hnm2=Název domény z adresy URL
 ui_hnm3=Jiné jméno ..
-ui_show=Display on the dashboard​
-ui_show_host=System hostname
-ui_show_os=Operating system
-ui_show_ver=Usermin version
-ui_show_tver=Theme version
-ui_show_time=Time on system
 
 log_copycert=Zkopírováno nastavení SSL z Webmin
 

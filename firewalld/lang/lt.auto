@@ -45,7 +45,6 @@ index_restart_firewallddesc=Iš naujo įkelkite FirewallD serverį ir pritaikyki
 index_listrules_restartdesc=Išsamią informaciją apie esamas išsamias ir tiesiogines ugniasienės taisykles $1 zonoje.
 index_dependent=Nepavyko iš naujo paleisti $1 priklausomos paslaugos
 index_manual=Redaguoti konfigūracijos failus.
-index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
 manual_title=Redaguoti konfigūracijos failus
 manual_editsel=Redaguoti FirewallD konfigūracijos failą

@@ -36,7 +36,7 @@ desc_args--match-set=$2 содержится в наборе IP $1
 desc_src=источник
 desc_dest=место назначения
 
-redhat_einstalled2=No <tt>$1</tt> bootup action was found, indicating that the IPtables package is not installed on your system
+redhat_einstalled=Не найдено ни одного загрузочного действия <tt>iptables (6)</tt>, указывающего на то, что в вашей системе не установлен пакет IPtables
 
 edit_state_snat=Исходный NATd
 edit_state_dnat=NATd назначения

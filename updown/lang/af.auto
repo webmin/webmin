@@ -42,9 +42,7 @@ index_emailto=Ja, om aan te spreek
 index_email2=Stuur e-pos as die oplaai gedoen is?
 
 upload_title=Laai lêers op
-upload_direct=Write files directly to disk?
 upload_err=Kon nie lêers oplaai nie
-upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=Gids ontbreek om na op te laai
 upload_euser=Gebruikernaam ontbreek of ongeldig
 upload_egroup=Groepnaam ontbreek of ongeldig

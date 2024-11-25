@@ -42,9 +42,7 @@ index_emailto=Так, на адрас
 index_email2=Адправіць электронную пошту, калі загрузка будзе зроблена?
 
 upload_title=Загрузіць файлы
-upload_direct=Write files directly to disk?
 upload_err=Не атрымалася загрузіць файлы
-upload_emove=Failed to move uploaded file from $1 to $2
 upload_edir=Адсутны каталог для загрузкі
 upload_euser=Адсутнічае альбо недапушчальнае імя карыстальніка
 upload_egroup=Адсутнічае альбо недапушчальнае імя групы

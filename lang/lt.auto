@@ -97,7 +97,6 @@ password_done=Jūsų slaptažodis buvo sėkmingai pakeistas. Dabar galite vėl <
 password_err=Nepavyko pakeisti slaptažodžio
 password_euser=Slaptažodžio faile nerastas jūsų prisijungimo vardas!
 password_eold=Dabartinis slaptažodis neteisingas
-password_euserpass=Invalid username or password
 password_enew1=Neįvestas naujas slaptažodis
 password_enew2=Nauji slaptažodžiai nesutampa
 password_epam=PAM klaida : $1

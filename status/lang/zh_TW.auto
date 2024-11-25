@@ -1,4 +1,3 @@
-index_madd=Add monitor of type
 index_scheddesc=打開或關閉對監視器的計劃檢查，並設置將故障自動發送到的地址。
 index_esnmp=該模塊配置為在<a href='$3'>Module Config</a>頁面上發送SNMP陷阱，但是未安裝 $1 Perl模塊。 <a href='$2'>單擊此處</a>立即下載並安裝。
 index_refresh=刷新狀態
@@ -27,14 +26,10 @@ type_alive=生存系統
 type_rssh=遠程SSH
 type_slapd=LDAP服務器
 type_ldap=LDAP連接
-type_smtp=SMTP Connection
-type_imap=IMAP Connection
-type_firewalld=FirewallD Server
-type_reboot=Reboot Required
 
 mon_virtualmin=警告！該監視器與Virtualmin域 $1相關聯，因此不應在此處進行編輯或刪除。
 mon_header2=運行命令
-mon_header5=Notification options
+mon_header3=監控服務選項
 mon_remotes2=在主機和組上運行
 mon_ontimeout=如果監視器超時，請運行命令
 mon_eremote2=無法聯繫Webmin服務器 $1 : $2
@@ -69,7 +64,6 @@ mon_changes1=僅顯示更改
 mon_all=顯示所有歷史事件
 mon_nochanges=最近 $1個歷史事件未發生狀態更改。
 
-sched_email_def=System default ($1)
 sched_pnone=不發送頁面
 sched_warn3=只要服務啟動
 sched_eemailserver=您的郵件服務器未安裝： $1
@@ -377,38 +371,3 @@ ldap_pass=LDAP服務器密碼
 info_desc=系統監控器
 info_last=當前狀態
 info_title=系統和服務器狀態
-
-smtp_host=SMTP server host
-smtp_port=SMTP server port
-smtp_ssl=Use SSL connection?
-smtp_ssl0=Plaintext only
-smtp_ssl1=Always SSL
-smtp_ssl2=Switch to SSL with STARTTLS
-smtp_from=Test SMTP sender
-smtp_none=None
-smtp_addr=Use address
-smtp_to=Test SMTP recipient
-smtp_ehost=Missing or unresolvable SMTP server host
-smtp_eport=Missing or non-numeric SMTP server port
-smtp_efrom=Sender address must be like user@domain.com
-smtp_eto=Recipient address must be like user@domain.com
-smtp_ok1=HELO command accepted
-smtp_ok2=Sender address accepted
-smtp_ok3=Recipient address accepted
-smtp_ok4=SMTP login accepted
-smtp_user=SMTP authentication
-smtp_user1=Don't login
-smtp_user0=Login as user
-smtp_pass=with password
-smtp_euser=Missing SMTP login
-
-imap_host=IMAP server host
-imap_port=IMAP server port
-imap_ssl=Use SSL connection?
-imap_user=IMAP login
-imap_pass=IMAP password
-imap_ehost=Missing or unresolvable IMAP server host
-imap_eport=Missing or non-numeric IMAP server port
-imap_euser=Missing IMAP login
-
-reboot_pkgs=Package updates require a reboot

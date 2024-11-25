@@ -17,8 +17,6 @@ index_loadname=ค่าเฉลี่ยโหลด CPU:
 index_loadnums=$1 (1 นาที), $2 (5 นาที), $3 (15 นาที)
 index_cpuname=ประเภท CPU:
 index_inzone=ในโซน $1 
-index_core=$1 core
-index_cores=$1 cores
 
 pid=ID
 owner=เจ้าของ

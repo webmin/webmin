@@ -63,7 +63,6 @@ progress_data2n=Received $1
 progress_incache=Found $1 in cache ..
 
 password_temp=برای جایگزینی ورود موقت خود باید یک رمزعبور جدید انتخاب کنید.
-password_euserpass=Invalid username or password
 password_enewpass=New password is not allowed : $1
 
 ui_filterbox=برای فیلتر کردن تایپ کنید ..

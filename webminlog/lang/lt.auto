@@ -37,7 +37,6 @@ index_notify=Siųsti el. laišką dėl Webmin veiksmų?
 index_notify_mods=Veiksmams moduliuose
 index_notify_users=Už vartotojų veiksmus
 index_notify_email=Siųsti el
-index_notify_email_def=Default notification address
 index_notify_usub=Į el. pašto temą įtraukti vartotojo vardą?
 index_notify_msub=Į el. pašto temą įtraukti veiksmą?
 index_searchtab=Paieškos žurnalai
@@ -46,7 +45,8 @@ index_searchdesc=Ši forma gali būti naudojama ieškant Webmin veiksmų pagal v
 index_notifydesc=Naudokite šią formą norėdami sukonfigūruoti el. pašto pranešimus, kai Webmin veiksmus atlieka pasirinkti vartotojai arba pasirinktuose moduliuose.
 
 search_title=Paieškos rezultatai
-search_datetime=Date and time
+search_date=Data
+search_time=Laikas
 search_user=Vartotojas
 search_host=Kliento adresas
 search_webmin=„Webmin Server“

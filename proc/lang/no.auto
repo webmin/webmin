@@ -3,5 +3,3 @@ index_memswap=Bytt plass:
 index_memburst=Burstable minne:
 index_memtf=$1 totalt / $2 gratis
 index_memtfc=$1 totalt / $2 ledig / $3 bufret
-index_core=$1 core
-index_cores=$1 cores

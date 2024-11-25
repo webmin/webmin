@@ -14,7 +14,6 @@ index_memb=$1 חברים
 index_hst=מארחים וקבוצות מארחים
 index_nohst=לא הוגדרו מארחים או קבוצות.
 index_hostgroup=מארח/קבוצה
-index_comment=Description
 index_parent=הורה
 index_hardware=כתובת חומרה
 index_group=קבוצה:

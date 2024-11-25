@@ -14,7 +14,6 @@ index_global=Options globales
 index_ecdrecord=La commande de gravure de CD $1 n'a pas été trouvée sur votre système. Peut-être n'est-elle pas installée, ou votre <a href='$2'>configuration de module</a> est incorrecte.
 index_return=Liste des profils
 index_delete=Efface les Profiles Sélectionnes
-
 edit_title=Editer le profil de gravure
 create_title=Créer le profil de gravure
 edit_emkisofs=La commande de construction d'un système de fichier ISO  $1 n'a pas été trouvée sur votre système. Peut-être n'est-elle pas installée, ou votre <a href='$2'>configuration de module</a> est incorrecte.
@@ -50,7 +49,6 @@ edit_fly0=Utiliser un fichier temporaire
 edit_srcdrv=Pilote du lecteur source
 edit_dstdrv=Pilote du graveur
 edit_ecannot=Vous n'êtes pas autorisé à éditer ce profil de gravure
-
 save_err=Echec à l'enregistrement du profil
 save_ename=Le nom du profil manque
 save_eiso=Le nom du fichier de l'image ISO manque ou est invalide
@@ -64,7 +62,6 @@ save_ecannot1=Cette image ISO n'est pas dans un répertoire autorisé
 save_ecannot2=Le répertoire source $1 n'est pas dans un répertoire autorisé
 save_ecannot3=Le fichier MP3 ou le répertoire $1 n'est pas dans un répertoire autorisé
 save_ecannot4=Le ficher source du périphérique n'est pas dans un répertoire autorisé.
-
 burn_title=Graver le CD
 burn_rutest1=Etes-vous certains de vouloir tester la gravure de l'image ISO $1 ?
 burn_rusure1=Etes-vous certains de vouloir graver l'image ISO $1 ?
@@ -102,7 +99,6 @@ burn_807=Attention! Vos pistes audios occupent au total $1 MO , ce qui excède l
 burn_mp3size=Les pistes audio converties occupent $1 MO, sur les $2 MO autorisés sur un CD audio normal.
 burn_seconddesc=Insérer le CD vierge et cliquer sur le bouton ci-dessous.
 burn_second=Graver le CD
-
 dev_title=Options des périphériques
 dev_header=Options du graveur
 dev_device=Graveur
@@ -113,7 +109,6 @@ dev_extra=options supplémentaires pour <tt>cdrecord</tt>
 dev_err=Echec lors de l'enregistrement des options du graveur
 dev_eother=La vitesse de gravure manque ou est invalide
 dev_ecannot=Vous n'êtes pas autorisé à editer les options du graveur.
-
 mkisofs_title=Options du système de fichier ISO
 mkisofs_header=Options globales du système de fichier ISO
 mkisofs_novers=Inclure le numéro de version dans le nom des fichiers?
@@ -121,7 +116,6 @@ mkisofs_notrans=Autoriser tous les caractères dans les noms de fichiers?
 mkisofs_nobak=Sauter les fichiers de sauvegarde?
 mkisofs_fsyms=Suivre les liens symboliques?
 mkiofs_ecannot=Vous n'êtes pas autorisé à éditer les options du système de fichiers ISO
-
 config_cdrecord=Commande de gravure de CD
 config_mkisofs=Commande de construction du système de fichier ISO
 config_mpg123=Commande de décompression MP3
@@ -135,7 +129,6 @@ config_empg123=Commande de décompression MP3 manquante ou invalide
 config_esox=Commande SOX invalide ou manquante.
 config_ecdrdao=Commande de copie de CD manquante ou invalide
 config_etemp=Répertoire temporaire de webmin manquant ou invalide
-
 acl_create=Peut créer un nouveau profil de gravure?
 acl_edit=Peut éditer les profils de gravure existants?
 acl_global=Peut éditer les paramètres globaux?
@@ -143,6 +136,5 @@ acl_profiles=Peut utiliser les profils
 acl_all=Tous
 acl_sel=Sélectionnés ci-dessous ..
 acl_dirs=Autoriser les répertoire pour les fichiers sources
-
 delete_err=La suppression du profile de gravure a échouée
 delete_enone=Aucun(e) n'est sélectionnée

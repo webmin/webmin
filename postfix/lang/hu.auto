@@ -10,13 +10,9 @@ smtpd_nomap2=A feladó címeinek korlátozására még nem került sor.
 smtpd_map=Megengedett címek a továbbításhoz
 smtpd_map2=A feladó címeire vonatkozó korlátozások
 
+opts_smtp_use_tls=Használja a TLS-t az SMTP-kapcsolatokhoz
 opts_smtp_sasl_security_options=SASL biztonsági lehetőségek
 opts_smtp_tls_security_level=SMTP TLS kliens biztonsági szint
-opts_inet_protocols=Internet protocols to enable
-opts_inet_protocols_all=All available
-opts_smtp_address_preference=Preferred SMTP client protocol
-opts_smtp_address_preference_any=Either
-opts_smtp_balance_inet_protocols=Validate SMTP client protocols
 
 mapping_toomany=Vannak $1 térképbejegyzések, ami meghaladja a $2 megjelenítési korlátot.
 mapping_find=Megfelelő leképezések megjelenítése:
@@ -31,26 +27,11 @@ sni_dom=Gazdanév
 sni_certs=Tanúsítványfájlok
 
 acl_sni=Szerkesztheti a tanúsítványokat?
-acl_body=Can edit body checks?
-acl_dependent=Can edit sender dependent transport maps?
-
-mail_qfile=Mail queue file
-mail_qlast=Last retried at
-mail_qdir=Mail queue status
-mail_qdir_active=Active
-mail_qdir_incoming=Incoming
-mail_qdir_deferred=Deferred
-mail_qdir_corrupt=Corrupt
-mail_qdir_hold=On hold
-mail_qdir_maildrop=Mail drop
 
 view_aname=Melléklet
 
 mailq_deleteall=Törölje a levél sorát
 mailq_deletealldesc=Kattintson erre a gombra az összes üzenet törléséhez a levél sorban.
-mailq_dir=Queue state
-
-flushq_desc2=.. check the mail log for results
 
 opts_mime_header_checks=MIME fejléc-ellenőrző táblázatok
 opts_header_checks_no_map=(Jelenleg nincs meghatározva fejléc-ellenőrző térkép. Először határozzon meg egy térképet, majd szerkesztheti)
@@ -73,10 +54,6 @@ log_manual_sender_dependent_default_transport_mapss=A feladótól függő címek
 
 opts_smtp_sasl_auth_enable=Használ SASL SMTP hitelesítést?
 opts_smtpd_tls_auth_only=Tilos a SASL hitelesítés nem biztonságos kapcsolatok esetén?
-sasl_noactive=Reject Disallow subject to active (non-dictionary) attack
-sasl_nodictionary=Reject methods subject to passive (dictionary) attack
-sasl_forward_secrecy=Only allow methods that support forward secrecy
-sasl_mutual_auth=Only allow methods that provide mutual authentication
 sasl_relay=SMTP továbbítási korlátozások
 opts_smtp_enforce_tls=TLS titkosítást igényel?
 sasl_level_dane=Opportunista DANE TLS

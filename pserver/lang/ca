@@ -16,10 +16,8 @@ index_deactdesc2=El servidor CVS està configurat per executar-se a partir de $1
 index_return=a l'índex del mòdul
 index_asuser=Executa com a usuari:
 index_einetroot=Atenció! L'arrel CVS establerta a la configuració del mòdul no coincideix amb l'arrel del servidor CVS. Això es pot arreglar desactivant i reactivant el servidor CVS.
-
 setup_einet=No sembla que ni <tt>inetd</tt> ni <tt>xinetd</tt> estiguin instal·lats al sistema.
 setup_ecannot=No tens permís per configurar el servidor CVS
-
 passwd_title=Usuaris CVS
 passwd_header=Usuaris dels servidor CVS
 passwd_desc=El servidor CVS permetrà els usuaris llistats a sota d'entrar i accedir al repositori. Si un usuari no llistat hi intenta entrar, en lloc d'això el servidor pot intentar verficar la contrasenya de l'usuari contra el fitxer de contrasenyes del sistema, depenent de la configuració del servidor.
@@ -31,7 +29,6 @@ passwd_sync_modify=Actualitza un usuari CVS quan l'usuari Unix corresponent es m
 passwd_sync_delete=Suprimeix un usuari CVS quan l'usuari Unix corresponent se suprimeixi.
 passwd_return=a la llista d'usuaris
 passwd_ecannot=No tens permís per gestionar els usuaris CVS
-
 edit_title1=Creació d'Usuari CVS
 edit_title2=Edició d'Usuari CVS
 edit_header=Detalls de l'usuari CVS
@@ -43,13 +40,11 @@ edit_pass1=Deixa-ho tal com està
 edit_pass0=Estableix a...
 edit_unix=Accedeix els fitxers com l'usuari Unix
 edit_unixdef=Igual que l'usuari
-
 save_err=No s'ha pogut desar l'usuari CVS
 save_euser=Hi falta el nom d'usuari o bé és invàlid
 save_eunix=Hi falta el nom de l'usuari Unix o bé és invàlid
 save_ecopy=L'usuari Unix del qual s'ha de copiar la contrasenya no existeix
 save_emd5=La contrasenya Unix està en format MD5
-
 access_title=Control d'Accés d'Usuaris
 access_header=Usuaris CVS de només lectura
 access_readers1=No hi ha cap usuari només lectura
@@ -60,11 +55,9 @@ access_desc=Si un usuari està a totes dues llistes de lectura i escriptura, se 
 access_err=No s'ha pogut desar el control d'accés d'usuaris
 access_euser=L'usuari '$1' no existeix
 access_ecannot=No tens permís per editar el control d'accés d'usuaris
-
 cvsweb_title=Fullejat del Repositori
 cvsweb_ecmd=No s'ha trobat al sistema l'ordre CVS $1. Aquesta ordre és necessària per a visualitzar el repositori CVS.
 cvsweb_ecannot=No tens permís per veure el repositori CVS
-
 config_title=Configuració del Servidor
 config_header=Opcions de configuració del servidor
 config_auth=Verifica els usuaris contra el fitxer de contrasenyes del sistema
@@ -87,7 +80,6 @@ config_lock=Directori de bloqueigs de fitxers
 config_err=No s'ha pogut desar la configuració del servidor
 config_elock=Hi falta el directori de bloqueigs de fitxers o bé és invàlid
 config_ecannot=No tens permís per editar la configuració del servidor
-
 log_setup=S'ha configurat el Servidor CVS
 log_activate=S'ha activat el servidor CVS
 log_deactivate=S'ha desactivat el servidor CVS
@@ -96,13 +88,11 @@ log_delete_user=S'ha suprimit l'usuari $1
 log_modify_user=S'ha modificat l'usuari $1
 log_access=S'ha canviat el control d'accés d'usuaris
 log_config=S'ha canviat la configuració del servidor
-
 acl_passwd=Pot gestionar els usuaris CVS
 acl_access=Pot editar el control d'accés d'usuaris
 acl_config=Pot editar la configuració del servidor
 acl_cvsweb=Pot veure el repositori CVS
 acl_setup=Pot configurar inetd o xinetd per per executar el servidor CVS
 acl_init=Pot inicialitzar el repositori
-
 init_err=No s'ha pogut inicialitzar el repositori
 init_ecannot=No tens permís per inicialitzar repositoris

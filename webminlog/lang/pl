@@ -32,6 +32,8 @@ index_long=Pokazywać pełne opisy zdarzeń?
 index_global=&lt;W żadnym module&gt;
 
 search_title=Wyniki poszukiwania
+search_date=Data
+search_time=Czas
 search_user=Użytkownik
 search_host=Adres IP klienta
 search_webmin=Serwer Webmina

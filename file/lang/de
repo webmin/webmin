@@ -165,7 +165,6 @@ view_enormal=Nur normale Dateien können angezeigt werden
 view_enormal2=Nur normale Dateien können heruntergeladen werden
 view_eaccess=Sie dürfen nicht auf $1 zugreifen
 view_eopen=Fehler beim Öffnen von $1: $2
-
 view_edir=Ein Archiv kann nur für ein Verzeichnis erstellt werden
 view_ecmd=Der Befehl $1, der zum Erstellen eines Archivs erforderlich ist, ist nicht installiert
 view_ecomp=Fehler beim Erstellen des Archivs: $1
@@ -209,6 +208,7 @@ find_edir=$1 ist kein Verzeichnis in $2
 cancel=Abbrechen
 close=Schließen
 eopen=Download fehlgeschlagen: $1
+
 chmod_eaccess=Sie dürfen nicht auf '$1' zugreifen
 chmod_euser=$1: Kein solcher Benutzer
 chmod_egroup=$1: Keine solche Gruppe
