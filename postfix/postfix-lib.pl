@@ -2301,7 +2301,6 @@ return 1;
 sub supports_map_type
 {
 local ($type) = @_;
-return 1 if ($type eq 'hash');	# Assume always supported
 if (!scalar(@supports_map_type_cache)) {
 	@supports_map_type = ( );
 	open(POSTCONF, "$config{'postfix_config_command'} -m |");
