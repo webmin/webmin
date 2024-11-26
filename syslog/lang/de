@@ -28,8 +28,8 @@ index_viewok=Ansehen
 
 restart_ekill=Fehler beim Signalisieren des Syslog-Prozesses $1: $2
 restart_ecannot=Sie sind nicht berechtigt, syslog neu zu starten
-start_ecannot=Sie sind nicht berechtigt, syslog zu starten
 
+start_ecannot=Sie sind nicht berechtigt, syslog zu starten
 edit_title=Systemprotokoll bearbeiten
 create_title=Systemprotokoll hinzufügen
 edit_header1=Protokollziel
