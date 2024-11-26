@@ -1,6 +1,7 @@
 index_title=Sicherheits Sentries
 index_ecommands=Keiner der Sicherheit sentry Befehle ($1, $2 oder $3) wurden auf Ihrem System gefunden. Vielleicht ist keiner installiert, oder Ihre <a href='$4'>Modulkonfiguration</a> ist falsch.
 index_return=Module Menü
+
 portsentry_title=Portsentry Konfiguration
 portsentry_below=(Portscan Erkennung)
 portsentry_ecommand=Der Portsentry Daemon $1 wurde nicht auf Ihrem System gefunden. Vielleicht ist es nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
@@ -39,6 +40,7 @@ portsentry_ekill=Fehlgeschlagen Prozesse zu töten $1 : $2
 portsentry_estopped=Läuft nicht länger
 portsentry_starterr=Fehlgeschlagen portsentry zu starten
 portsentry_save=Speichern und Anwenden
+
 hostsentry_title=Hostsentry Konfiguration
 hostsentry_below=(Verdächtiges Login erkannt)
 hostsentry_ecommand=Das Hostsentry Python-Skript $1 wurde auf Ihrem System nicht gefunden. Vielleicht ist es nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
@@ -63,6 +65,7 @@ hostsentry_save=Speichern und Anwenden
 hostsentry_err=Fehlgeschlagen die hostsentry Konfiguration zu speichern
 hostsentry_eignore='$1' ist kein gültiger Benutzer-Login zum ignorieren
 hostsentry_emultiple='$' ist kein gültiger Host um mehrere Logins zu ignorieren von
+
 logcheck_title=Logcheck Konfiguration
 logcheck_ecommand=Der logcheck Befehl $1 wurde nicht auf Ihrem System gefunden. Vielleicht ist es nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 logcheck_eversion=Der logcheck Befehl $1 ist nicht die Version die Webmin erwartet.
@@ -79,6 +82,7 @@ logcheck_save=Speichern und Anwenden
 logcheck_eto=Fehlende oder ungültige E-Mail-Adresse
 logcheck_runparts=Logs überprüfen wird von cron per Skript $1 ausgeführt
 logcheck_files=Log-Dateien werden überwacht
+
 mod_moduleLoginLogout=Zeichne Logins und Logouts auf
 mod_moduleFirstLogin=Erkennen ersten Login vom Benutzer
 mod_moduleForeignDomain=Erkenne Login von fremden Domain
@@ -91,6 +95,7 @@ mod_moduleInvalidUtmp=Erkenne modifizierten utmp-Eintrag
 mod_moduleHistorySuspicious=Erkenne verdächtige Befehle in der history
 mod_moduleNetworkDaemon=Erkenne laufenden Daemon 
 mod_moduleFileExists=Erkenne verdächtige Dateien im Home-Verzeichnis
+
 log_hostsentry=Hostsentry Konfiguration gespeichert
 log_portsentry=Portsentry Konfiguration gespeichert
 log_logcheck=Logcheck Konfiguration gespeichert

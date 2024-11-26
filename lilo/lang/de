@@ -10,6 +10,7 @@ index_applymsg3=Stellen Sie sicher, dass die Konfiguration korrekt ist, bevor Si
 index_return=Kernel und Partitionen
 index_earch=LILO wird nur auf Systemen mit x86-Architektur unterstützt
 index_econf=Die LILO Konfigurations-Datei $1 existiert nicht. Möglicherweise wird ein anderer 'Boot-Loader' auf Ihrem System benutzt.
+
 global_title=Globale Einstellungen
 global_desc=Globale Boot-Einstellungen
 global_boot=Schreibe 'Boot-Loader' auf
@@ -32,8 +33,10 @@ global_any=Jegliches Booten
 global_secs=Sekunden
 global_lba=Erlaube Booten oberhalb von 1024 Zylindern?
 global_err=Fehler beim Speichern der globalen Einstellungen
+
 apply_title=Konfiguration anwenden
 apply_exec=Wende LILO-Konfiguration an mit dem Befehl $1 ..
+
 image_title1=Boot-Kernel erstellen
 image_title2=Boot-Kernel bearbeiten
 image_options=Boot-Kernel Einstellungen
@@ -64,6 +67,7 @@ image_none=Keines
 image_ename=Fehlender Name für diesen Kernel
 image_ekernel=Kernel-Abbild '$1' existiert nicht
 image_einitrd=Anfängliche RAM-Disk-Datei '$1' existiert nicht
+
 other_title1=Boot-Partition erstellen
 other_title2=Boot-Partition bearbeiten
 other_details=Partitionsdetails
@@ -74,6 +78,7 @@ other_yes=Ja, von
 other_password=Boot-Passwort
 other_none=Keines
 other_ename=Es fehlt der Name für diese Boot-Partition
+
 log_create_image=Boot-Kernel $1 erzeugt
 log_modify_image=Boot-Kernel $1 verändert
 log_delete_image=Boot-Kernel $1 gelöscht

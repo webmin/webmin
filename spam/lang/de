@@ -192,7 +192,6 @@ priv_escore=Fehlende oder ungültige Punktzahl für die Spam-Phrase '$1'
 
 usually=Normalerweise $1
 ecannot=Sie dürfen diese Seite nicht verwenden
-
 setup_title=Procmail für SpamAssassin einrichten
 setup_desc_webmin=Dieses Formular kann verwendet werden, um Procmail in $1 so einzurichten, dass SpamAssassin auf alle empfangenen E-Mail-Nachrichten angewendet wird. Dies wird jedoch nur Auswirkungen haben, wenn Ihr Mailserver für die Verwendung von Procmail für die lokale Zustellung konfiguriert wurde oder wenn die <tt>.forward</tt>-Dateien von Benutzern so eingerichtet sind, dass Procmail verwendet wird.
 setup_desc_usermin=Dieses Formular kann verwendet werden, um Procmail in $1 so einzurichten, dass SpamAssassin auf alle an Ihr Konto gesendeten E-Mail-Nachrichten angewendet wird. Dies wird jedoch nur Auswirkungen haben, wenn der Mailserver für die Verwendung von Procmail für die lokale Zustellung konfiguriert wurde oder wenn die <tt>.forward</tt>-Datei so eingerichtet ist, dass alle E-Mails an Procmail weitergeleitet werden.
