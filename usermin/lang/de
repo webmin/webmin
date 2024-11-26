@@ -358,6 +358,7 @@ log_restrict_create=Einschränkung für $1 erstellt
 log_restrict_modify=Einschränkung für $1 geändert
 log_restrict_delete=Einschränkung für $1 gelöscht
 log_restrict_move=Einschränkung für $1 verschoben
+
 log_all=alle Benutzer
 log_group=Gruppe $1
 log_switch=Zu Usermin-Benutzer $1 gewechselt
@@ -416,7 +417,6 @@ restrict_euser=Fehlender oder ungültiger Benutzername
 restrict_egroup=Fehlender oder ungültiger Gruppenname
 restrict_efile=Fehlende, nicht existente oder nicht absolute Benutzer- und Gruppendatei
 restrict_move=Verschieben
-
 bootup_ecannot=Sie sind nicht berechtigt, den Systemstart zu konfigurieren
 
 acl_icons=Erlaubte Konfigurationsseiten
