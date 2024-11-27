@@ -338,7 +338,6 @@ if ($yum_command =~ /dnf/) {
 else {
 	&open_execute_command(PKG, "$yum_command check-update 2>/dev/null | tr '\n' '#' | sed -e 's/# / /g' | tr '#' '\n'", 1, 1);
 	}
-
 while(<PKG>) {
         s/\r|\n//g;
 	if (/^(\S+)\.([^\.]+)\s+(\S+)\s+(\S+)/ && $2 ne 'src') {
@@ -352,6 +351,7 @@ while(<PKG>) {
 		$done{$pkg->{'name'}} = $pkg;
 		push(@rv, $pkg);
 		}
+	last if (/Obsoleting\s+Packages/i);
 	}
 close(PKG);
 &set_yum_security_field(\%done);
