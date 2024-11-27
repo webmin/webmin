@@ -1,1 +1,0 @@
-vars_desc=Auf dieser Seite festgelegte Variablen werden beim Neustart von MySQL auf ihre Standardwerte zurückgesetzt. Permanente Einstellungen müssen auf der Seite <a href='$1'>MySQL Server-Konfiguration</a> vorgenommen werden.

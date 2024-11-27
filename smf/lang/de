@@ -1,7 +1,5 @@
 cmds_run=Ausgeführte Befehle zur Generierung dieser Seite
-
-close_window=Fenster schließen
-
+whats_this_title=Was ist das?
 state_enable=Aktivieren
 state_disable=Deaktivieren
 state_refresh=Aktualisieren
@@ -9,7 +7,6 @@ state_restart=Neustarten
 state_maintenance=Wartung
 state_degraded=Herabgestuft
 state_clear=Löschen
-
 index_title=Service Management Facility
 index_detail=SMF-Dienstliste
 index_svc_type=Diensttyp auswählen
@@ -30,38 +27,32 @@ index_NSTATE=NÄCHSTER ZUSTAND
 index_SCOPE=UMFANG
 index_STIME=STARTZEIT
 index_deleteconfirm=Möchten Sie die ausgewählten Dienste wirklich dauerhaft löschen?
-
 search_instance_title=Suche
 search_instance_detail=Dienstinstanz(en) suchen/browsen
 search_instance_go=Los!
 search_instance_browse=Dienste durchsuchen
 search_instance_noresults=Keine Ergebnisse für diese Suche!
-
 instance_viewer_title=Instanzinformationen
 instance_viewer_detail=Details zur Instanz
 instance_viewer_goto_pgroup_editor=Eigenschaftsgruppen/Eigenschaften anzeigen/bearbeiten
 instance_viewer_goto_dep_viewer=Abhängigkeitsbäume anzeigen
-
 dep_viewer_title=Abhängigkeiten/Abhängige
 dep_viewer_detail=Abhängigkeitsbaum für Instanz
 dep_viewer_apply=Auf ausgewählte Elemente anwenden
 dep_viewer_depy_info=Abhängigkeitsbaum
 dep_viewer_dept_info=Baum der Abhängigen
 dep_viewer_back=Instanzanzeige
-
 state_editor_title=Dienstzustandsinformationen
 state_editor_detail=Details zum Instanzzustand
 state_editor_stateinfo=Instanzzustandsinformationen
 state_editor_apply=Auf ausgewählte Elemente anwenden
 state_editor_depy_info=Abhängigkeitsinformationen
 state_editor_dept_info=Informationen zu Abhängigen
-
 log_viewer_title=Logdatei-Anzeige
 log_viewer_detail=Logdatei (Ende) anzeigen
 log_viewer_show_last=Letzte anzeigen
 log_viewer_num_lines=Zeilen in
 log_viewer_submit=Ansicht aktualisieren
-
 property_group_editor_title=Eigenschaftsgruppeninformationen
 property_group_editor_detail=Eigenschaftsgruppen für Dienst
 property_group_editor_addsinst=Dienst/Instanz auswählen
@@ -77,7 +68,6 @@ property_group_editor_sinst=Dienst/Instanz
 property_group_editor_pgroup_name=Name der Eigenschaftsgruppe
 property_group_editor_pgroup_type=Typ der Eigenschaftsgruppe
 property_group_editor_back=Instanzanzeige
-
 property_editor_title=Eigenschaftsinformationen
 property_editor_detail=Eigenschaften für Dienst/Eigenschaftsgruppe
 property_editor_addprop=Neue Eigenschaft hinzufügen
@@ -94,7 +84,8 @@ property_editor_prop_type=Eigenschaftstyp
 property_editor_prop_value=Eigenschaftswert
 property_editor_update=Aktualisieren
 property_editor_back=Eigenschaftsgruppen
-
+whats_this=(Was ist das?)
+close_window=Fenster schließen
 svc_chooser_titlesvc=Dienst-FMRI auswählen
 svc_chooser_titleinst=Dienstinstanz-FMRI auswählen
 svc_chooser_titleboth=Dienst/Instanz-FMRI auswählen
@@ -105,7 +96,6 @@ path_chooser_title=Pfad-FMRI auswählen
 path_chooser_ok=OK
 path_chooser_cancel=Abbrechen
 path_chooser_path=Pfad-FMRI-Baumstandort $1
-
 editserv_title=SMF-Dienst bearbeiten
 editserv_newtitle=Neuen SMF-Dienst erstellen
 editserv_propviewer=Dienst anzeigen/erstellen/bearbeiten
@@ -165,7 +155,6 @@ editserv_skip=Überspringen
 editserv_clear=Löschen
 editserv_restarter_fmri=Neustarter-FMRI
 editserv_dependency=Abhängigkeit
-
 editstate_detail=Dienstzustand bearbeiten
 editstate_stateinfo=Instanzzustandsinformationen
 editstate_depy_detail=Abhängigkeitsinformationen zur Instanz
@@ -177,9 +166,6 @@ editstate_restart=Neustarten
 editstate_clear=Löschen
 editstate_maintenance=Wartung
 editstate_degraded=Herabgestuft
-
-whats_this=(Was ist das?)
-whats_this_title=Was ist das?
 whats_this_stateinfo=Es werden Informationen zum Dienstinstanzzustand angezeigt, wie sie vom svcs-Befehl ermittelt wurden. Siehe: svcs(1). Siehe: smf(5).
 whats_this_extraopts=Aktivieren Sie diese zusätzlichen Optionen und klicken Sie auf „Ansicht aktualisieren“, wenn Sie sie in der Dienstliste unten sehen möchten. Die Bedeutung der Optionen finden Sie in der svcs-Manpage. Siehe: svcs(1).
 whats_this_enabledonly=Wählen Sie, ob nur aktivierte Dienste angezeigt werden sollen oder alle Dienste (aktivierte und deaktivierte).
@@ -194,6 +180,7 @@ whats_this_NSTATE=Der nächste Zustand des Dienstes, nützlich, wenn der Dienst 
 whats_this_SCOPE=Der Gültigkeitsbereich der Dienstinstanz. Siehe: smf(5). Siehe: svcs(1).
 whats_this_STIME=Die Zeit (falls heute) oder das Datum, an dem der Dienst den aktuellen Zustand erreicht hat. Siehe: smf(5). Siehe: svcs(1).
 whats_this_Select=Wählen Sie die Liste der Dienste aus, die Sie hier aktivieren/deaktivieren/aktualisieren usw. möchten.
+
 whats_this_service_detail=Geben Sie hier die obersten Dienstinformationen an/bearbeiten Sie diese: Dienstname, Versionsnummer, Paketname für das Manifest und Stabilität. Siehe: smf(5). Siehe: svccfg(1M). Siehe: service_bundle(4).
 whats_this_bundle_name=Name des Dienstpakets im Manifest. Mehrere Dienste können in einem Manifest gebündelt werden, aber der Name hier ist nicht wichtig. Bei bereits vorhandenen Diensten wird es auf Export gesetzt, da svccfg dies tut, wenn es ein Manifest aus dem SMF-Repository exportiert. Siehe: svccfg(1M). Siehe: service_bundle(4).
 whats_this_service_name=Dienstname. Die Konvention besteht darin, das Format [allgemeine_Dienstkategorie]/[Name] zu verwenden. Kategorien, die bereits bereitgestellt werden, umfassen Anwendung (höhere Anwendungen), Meilenstein (Sammlungen anderer Dienste, wie z.B. Namensdienste), Plattform (plattformbezogene Dienste), System (Solaris-Systemdienste), Gerät (gerätbezogene Dienste), Netzwerk (Netzwerk-/Internetdienste) und Standort (standortspezifische Beschreibungen). Sie können natürlich auch Ihre eigene Kategorie angeben, aber die meisten Dienste sollten bequem in eine der oben genannten Kategorien passen. Siehe: smf(5).
@@ -236,7 +223,6 @@ whats_this_man_manpath=Geben Sie den Manpath an. Siehe: man(1).
 whats_this_template_detail=Geben Sie Details zum Dienst, seinen allgemein gebräuchlichen Namen und eine Beschreibung an, was der Dienst macht.
 whats_this_template_common_name=Geben Sie den allgemeinen Namen des Dienstes an.
 whats_this_template_description=Beschreiben Sie den Dienst.
-
 wizard_back=Zurück
 wizard_next=Weiter
 wizard_add=Hinzufügen
@@ -244,7 +230,6 @@ wizard_update=Aktualisieren
 wizard_new=Neu
 wizard_remove=Entfernen
 wizard_finish=Fertigstellen
-
 smfwizard_title=SMF-Dienst erstellen
 smfwizard_service_heading=Dienstinformationen eingeben
 smfwizard_service_description=Geben Sie hier die obersten Dienstinformationen an/bearbeiten Sie diese. Für den Dienstnamen ist die Konvention, das Format [allgemeine_Dienstkategorie]/[Name] zu verwenden. Kategorien, die bereits bereitgestellt werden, umfassen Anwendung (höhere Anwendungen), Meilenstein (Sammlungen anderer Dienste, wie z.B. Namensdienste), Plattform (plattformbezogene Dienste), System (Solaris-Systemdienste), Gerät (gerätbezogene Dienste), Netzwerk (Netzwerk-/Internetdienste) und Standort (standortspezifische Beschreibungen). Sie können natürlich auch Ihre eigene Kategorie angeben, aber die meisten Dienste sollten bequem in eine der oben genannten Kategorien passen. Geben Sie außerdem eine positive Versionsnummer an. Siehe: smf(5). Siehe: svccfg(1M). Siehe: service_bundle(4).
