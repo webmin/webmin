@@ -155,6 +155,9 @@ notallowed=You are not allowed to access $1. The only allowed directories are: $
 error_upload_emax=Uploaded file is larger than the limit of $1
 extract_etype=Unsupported archive file type
 
+error_write=you do not have write permission to this file
+error_move=you do not have permission to move this file
+
 info_total1=Total: $1 file and $2 directory
 info_total2=Total: $1 files and $2 directory
 info_total3=Total: $1 file and $2 directories

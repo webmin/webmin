@@ -10,6 +10,8 @@ my @errors;
 # Validate inputs
 my $file = &simplify_path($cwd.'/'.$in{'file'});
 &check_allowed_path($file);
+&error($text{'error_saving_file'}." : ".ucfirst($text{'error_write'}))
+    if (!can_write($file));
 $data = $in{'data'};
 $data =~ s/\r\n/\n/g;
 

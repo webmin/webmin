@@ -29,7 +29,10 @@ if ($cwd eq $from) {
             }
         }
         elsif ($act eq "cut") {
-            if (-e "$cwd/$arr[$i]") {
+            if (!can_move("$from/$arr[$i]", $cwd, $from)) {
+                push @errors, "$from/$arr[$i] - $text{'error_move'}";
+            }
+            elsif (-e "$cwd/$arr[$i]") {
                 push @errors, "$cwd/$arr[$i] $text{'error_exists'}";
             } else {
                 system("mv ".quotemeta("$from/$arr[$i]").

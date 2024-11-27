@@ -39,6 +39,37 @@ sub get_selinux_command {
   return get_selinux_command_type() ? 'ls -d --scontext ' : 'ls -dmZ ';
 }
 
+sub can_write {
+    my ($file) = @_;
+    if (&webmin_user_is_admin()) {
+        return 1;
+    }
+    # Check if the file is a symbolic link
+    if (-l $file) {
+        # Resolve symbolic link
+        my $resolved_file = readlink($file);
+        # If the link is broken, allow writing to the link itself
+        return -w $file if (!$resolved_file);
+        # Otherwise, check the resolved file
+        $file = $resolved_file;
+    }
+    # Check if the file itself is writable
+    return -w $file;
+}
+
+sub can_move {
+    my ($file, $sdir, $tdir) = @_;
+    # Check if the file itself is writable
+    return 0 if (!&can_write($file));
+    # Check if the source directory is writable
+    return 0 if (!-w $sdir);
+    # Check if the target directory is writable (if given)
+    return 1 if (!$tdir);
+    return -w $tdir;
+    # All checks passed
+    return 1;
+}
+
 sub get_paths {
     %access = &get_module_acl();
 
