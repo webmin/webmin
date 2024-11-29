@@ -7,8 +7,8 @@ index_apply=Aplikovať zmeny
 index_applymsg=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu odoslaním signálu SIGHUP na prebiehajúci proces ProFTPD.
 index_applymsg2=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu zastavením a opätovným spustením ProFTPD.
 index_start=Spustite server
-index_startmsg=Kliknutím na toto tlačidlo spustíte server FTP s aktuálnou konfiguráciou. V prípade potreby môžete tiež nakonfigurovať server tak, aby sa spúšťal automaticky pomocou modulu <a href='$1'>Internet Services</a>.
-index_startmsg2=Kliknutím na toto tlačidlo spustíte server FTP s aktuálnou konfiguráciou. Môžete tiež nakonfigurovať server tak, aby sa v prípade potreby spustil automaticky pomocou inetd alebo nejakého ekvivalentného programu.
+index_startmsg=Kliknutím na toto tlačidlo spustíte FTP server s aktuálnou konfiguráciou.
+index_startmsg2=Kliknutím na toto tlačidlo spustíte FTP server s aktuálnou konfiguráciou.
 index_stop=Zastavte server
 index_stopmsg=Kliknutím na toto tlačidlo zastavíte server FTP, ktorý zabráni novým klientom FTP v pripojení.
 index_return=hlavné menu
@@ -27,6 +27,8 @@ index_global=Globálna konfigurácia
 index_create=Vytvorte virtuálny server
 index_version=Verzia ProFTPd $1 
 index_proftpd=proftpd
+index_dlheader=Pridať možnosti
+index_dlmode=Pridať možnosti pre
 
 efailed=Uloženie $1 zlyhalo
 
@@ -37,6 +39,7 @@ type_3=Riadenie prístupu
 type_4=Zmiešaný
 type_5=Používateľ a skupina
 type_6=Overenie
+type_7=Možnosti SSL
 
 virt_title=Možnosti virtuálneho servera
 virt_header1=Pre $1 
@@ -380,6 +383,19 @@ mod_readme_display=Upozorniť používateľa na prispôsobenie súborov readme
 mod_readme_none=nikto
 mod_readme_edisplay=Chýba vzor súborov readme
 
+mod_tls_engine=Povoliť šifrovanie SSL?
+mod_tls_required=Vyžaduje sa protokol SSL?
+mod_tls_ctrl=Pre riadiaci kanál
+mod_tls_auth=Na overenie
+mod_tls_authdata=Na autentifikáciu a údaje
+mod_tls_file=Súbor certifikátu SSL
+mod_tls_efile=Súbor certifikátu SSL neexistuje!
+mod_tls_key=súbor kľúča SSL
+mod_tls_ekey=Súbor kľúča SSL neexistuje!
+mod_tls_ca=Súbor certifikátu SSL CA
+mod_tls_eca=Súbor certifikátu SSL CA neexistuje!
+mod_tls_none=Žiadne nastavené
+
 start_err=Server FTP sa nepodarilo spustiť
 start_einetd=V režime inetd nemôžete spustiť serverového démona.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Pridajte možnosti príkazu pre príkaz ..
 ftpindex_header2=$1 v $2 
 ftpindex_return=súbor možností adresára
 ftpindex_header=Pre $1 
+ftpindex_cmds=FTP príkazy
 
 find_err=Nepodarilo sa nájsť súbory možností
 find_eanon=Anonymný FTP nie je nastavený na žiadnom virtuálnom serveri

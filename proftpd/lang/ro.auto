@@ -7,8 +7,8 @@ index_apply=Aplica schimbarile
 index_applymsg=Faceți clic pe acest buton pentru a aplica configurația curentă, trimițând un semnal SIGHUP la procesul de execuție ProFTPD.
 index_applymsg2=Faceți clic pe acest buton pentru a aplica configurația curentă prin oprirea și reluarea ProFTPD.
 index_start=Start Server
-index_startmsg=Faceți clic pe acest buton pentru a porni serverul FTP cu configurația curentă. De asemenea, puteți configura serverul să fie pornit automat atunci când este necesar, folosind modulul <a href='$1'>Internet Services</a>.
-index_startmsg2=Faceți clic pe acest buton pentru a porni serverul FTP cu configurația curentă. Puteți configura, de asemenea, serverul pentru a fi pornit automat atunci când este necesar, folosind inetd sau un program echivalent.
+index_startmsg=Faceți clic pe acest buton pentru a porni serverul FTP cu configurația curentă.
+index_startmsg2=Faceți clic pe acest buton pentru a porni serverul FTP cu configurația curentă.
 index_stop=Stop Server
 index_stopmsg=Faceți clic pe acest buton pentru a opri serverul FTP, care va împiedica conectarea oricărui client FTP nou.
 index_return=meniu principal
@@ -27,6 +27,8 @@ index_global=Configurare globală
 index_create=Creați un server virtual
 index_version=Versiunea ProFTPd $1 
 index_proftpd=Proftpd
+index_dlheader=Adăugați opțiuni
+index_dlmode=Adăugați opțiuni pentru
 
 efailed=Salvarea $1 nu a reușit
 
@@ -37,6 +39,7 @@ type_3=Controlul accesului
 type_4=Diverse
 type_5=Utilizator și grup
 type_6=Autentificare
+type_7=Opțiuni SSL
 
 virt_title=Opțiuni server virtual
 virt_header1=Pentru $1 
@@ -380,6 +383,19 @@ mod_readme_display=Notifica utilizatorului potrivirea fișierelor readme
 mod_readme_none=Nici unul
 mod_readme_edisplay=Lipsește modelul fișierelor readme
 
+mod_tls_engine=Activați criptarea SSL?
+mod_tls_required=Este necesar SSL?
+mod_tls_ctrl=Pentru canalul de control
+mod_tls_auth=Pentru autentificare
+mod_tls_authdata=Pentru autentificare și date
+mod_tls_file=Fișier certificat SSL
+mod_tls_efile=Fișierul certificatului SSL nu există!
+mod_tls_key=Fișierul cheii SSL
+mod_tls_ekey=Fișierul cheii SSL nu există!
+mod_tls_ca=Fișier certificat CA SSL
+mod_tls_eca=Fișierul certificatului CA SSL nu există!
+mod_tls_none=Niciunul stabilit
+
 start_err=Eroare la pornirea serverului FTP
 start_einetd=Nu puteți porni demonul serverului în modul inetd.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Adăugați opțiuni per comandă pentru ..
 ftpindex_header2=$1 în $2 
 ftpindex_return=fișier opțiuni per director
 ftpindex_header=Pentru $1 
+ftpindex_cmds=comenzi FTP
 
 find_err=Nu a putut găsi fișierele cu opțiuni
 find_eanon=FTP anonim nu este configurat în niciun server virtual

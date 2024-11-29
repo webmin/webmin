@@ -131,6 +131,8 @@ acl_work_as=Aċċess għall-fajls bħala utent Unix
 acl_root=Għerq (għotja b'attenzjoni lil utenti mhux fdati!)
 acl_same=L-istess bħall-login tal-Webmin
 acl_user=Utent speċifiku Unix
+acl_user_strict=Ippermetti kontrolli stretti tas-sjieda tal-utent
+acl_user_strict_desc=Jekk ikun attivat, l-utent jista 'biss iħassar u jċaqlaq fajls li huma stess. Dan huwa differenti mill-imġieba standard ta' Unix, fejn utent jista' jħassar jew iċċaqlaq kwalunkwe fajl f'direttorju li jkollu aċċess għall-kitba għalih
 acl_euser=Utent Unix magħżul ma jeżistix!
 acl_epath=Il-passaġġ $1 ma jeżistix
 acl_max=Daqs massimu għall-fajls imtellgħin
@@ -154,6 +156,9 @@ menu_bookmarks=Bookmarks
 notallowed=M'għandekx permess ta ' $1. Id-direttorji permessi huma : $2 
 error_upload_emax=Fajl imtella 'huwa akbar mil-limitu ta' $1 
 extract_etype=Tip ta 'fajl ta' arkivju mhux appoġġat
+
+error_write=m'għandekx permess ta' tikteb għal dan il-fajl
+error_move=m'għandekx permess biex iċċaqlaq dan il-fajl
 
 info_total1=Total: $1 fajl u $2 direttorju
 info_total2=Total: $1 fajls u $2 direttorju

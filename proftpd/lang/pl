@@ -7,8 +7,6 @@ index_apply=Zastosuj zmiany
 index_applymsg=Naciśnij ten przycisk, aby zastosować obecną konfigurację przez wysłanie sygnału SIGHUP do działającego procesu ProFTPd.
 index_applymsg2=Kliknij ten przycisk aby zastosować obecną konfigurację przez ponowne uruchomienie ProFTPd.
 index_start=Uruchom serwer
-index_startmsg=Naciśnij ten przycisk, aby uruchomić serwer FTP z obecną konfiguracją. Możesz również skonfigurować serwer, aby był uruchamiany automatycznie w razie potrzeby, korzystając z modułu <a href='$1'>Usługi internetowe</a>.
-index_startmsg2=Naciśnij ten przycisk, aby uruchomić serwer FTP z obecną konfiguracją. Możesz również skonfigurować serwer, aby był uruchamiany automatycznie w razie potrzeby, korzystając z inetd lub równoważnego programu.
 index_stop=Zatrzymaj serwer
 index_stopmsg=Kliknij ten przycisk aby zatrzymać serwer FTP, co uniemożliwi podłączanie nowych klientów FTP.
 index_return=menu głównego

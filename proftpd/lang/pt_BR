@@ -6,8 +6,6 @@ index_econf=O arquivo de configuração do ProFTPD $1 não existe ou é inválid
 index_apply=Aplicar Mudanças
 index_applymsg=Clique este botão para aplicar a configuração atual enviando um sinal SIGHUP para o processo do ProFTPD sendo executado.
 index_start=Iniciar Servidor
-index_startmsg=Clique neste botão para iniciar o servidor FTP com a configuração atual. Você pode também configurar o servidor para ser iniciado automaticamente quando precisar usando o módulo <a href='$1'>Internet Services</a>
-index_startmsg2=Clique neste botão para iniciar o servidor FTP com a configuração atual. Você pode também configurar o servidor para ser iniciado automaticamente quando precisar usando o inetd ou algum aplicativo equivalente.
 index_stop=Parar Servidor
 index_stopmsg=Clique neste botão para parar o servidor FTP, que irá prevenir quaisquer novos clientes FTP de conectar.
 index_return=menu principal

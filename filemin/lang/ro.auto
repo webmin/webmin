@@ -131,6 +131,8 @@ acl_work_as=Accesați fișierele ca utilizator Unix
 acl_root=Root (acordare cu grijă pentru utilizatori care nu au încredere!)
 acl_same=La fel ca autentificarea Webmin
 acl_user=Utilizator specific Unix
+acl_user_strict=Activați verificări stricte ale proprietății utilizatorilor
+acl_user_strict_desc=Dacă este activată, utilizatorul poate șterge și muta numai fișierele pe care le dețin. Acest lucru diferă de comportamentul standard Unix, în care un utilizator poate șterge sau muta orice fișier dintr-un director la care are acces de scriere
 acl_euser=Utilizatorul Unix selectat nu există!
 acl_epath=Calea $1 nu există
 acl_max=Dimensiunea maximă pentru fișierele încărcate
@@ -154,6 +156,9 @@ menu_bookmarks=Marcaje
 notallowed=Nu aveți voie să accesați $1. Directoarele permise sunt : $2 
 error_upload_emax=Fișierul încărcat este mai mare decât limita $1 
 extract_etype=Tipul fișierului de arhivă neacceptat
+
+error_write=nu aveți permisiunea de scriere pentru acest fișier
+error_move=nu aveți permisiunea de a muta acest fișier
 
 info_total1=Total: $1 fișier și $2 director
 info_total2=Total: $1 fișiere și $2 director

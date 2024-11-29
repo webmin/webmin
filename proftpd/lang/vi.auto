@@ -7,8 +7,8 @@ index_apply=Áp dụng các thay đổi
 index_applymsg=Nhấp vào nút này để áp dụng cấu hình hiện tại bằng cách gửi tín hiệu SIGHUP đến quy trình ProFTPD đang chạy.
 index_applymsg2=Nhấp vào nút này để áp dụng cấu hình hiện tại bằng cách dừng và khởi động lại ProFTPD.
 index_start=Khởi động máy chủ
-index_startmsg=Nhấp vào nút này để khởi động máy chủ FTP với cấu hình hiện tại. Bạn cũng có thể định cấu hình máy chủ để tự động khởi động khi cần bằng mô-đun <a href='$1'>Dịch vụ Internet</a>.
-index_startmsg2=Nhấp vào nút này để khởi động máy chủ FTP với cấu hình hiện tại. Bạn cũng có thể định cấu hình máy chủ để được khởi động tự động khi cần sử dụng inetd hoặc một số chương trình tương đương.
+index_startmsg=Nhấp vào nút này để khởi động máy chủ FTP với cấu hình hiện tại.
+index_startmsg2=Nhấp vào nút này để khởi động máy chủ FTP với cấu hình hiện tại.
 index_stop=Dừng máy chủ
 index_stopmsg=Nhấp vào nút này để dừng máy chủ FTP, điều này sẽ ngăn mọi máy khách FTP mới kết nối.
 index_return=thực đơn chính
@@ -27,6 +27,8 @@ index_global=Cấu hình Toàn cầu
 index_create=Tạo máy chủ ảo
 index_version=Phiên bản ProFTPd $1 
 index_proftpd=ProFTPd
+index_dlheader=Thêm Tùy chọn
+index_dlmode=Thêm tùy chọn cho
 
 efailed=Không thể lưu $1 
 
@@ -37,6 +39,7 @@ type_3=Kiểm soát truy cập
 type_4=Điều khoản khác
 type_5=Người dùng và nhóm
 type_6=Xác thực
+type_7=Tùy chọn SSL
 
 virt_title=Tùy chọn máy chủ ảo
 virt_header1=Cho 1
@@ -380,6 +383,19 @@ mod_readme_display=Thông báo cho người dùng về tập tin readme phù h�
 mod_readme_none=không ai
 mod_readme_edisplay=Thiếu mẫu tập tin readme
 
+mod_tls_engine=Bật mã hóa SSL?
+mod_tls_required=Có cần SSL không?
+mod_tls_ctrl=Đối với kênh điều khiển
+mod_tls_auth=Để xác thực
+mod_tls_authdata=Để xác thực và dữ liệu
+mod_tls_file=Tệp chứng chỉ SSL
+mod_tls_efile=Tệp chứng chỉ SSL không tồn tại!
+mod_tls_key=Tệp khóa SSL
+mod_tls_ekey=Tệp khóa SSL không tồn tại!
+mod_tls_ca=Tệp chứng chỉ SSL CA
+mod_tls_eca=Tệp chứng chỉ SSL CA không tồn tại!
+mod_tls_none=Không có thiết lập
+
 start_err=Không thể khởi động máy chủ FTP
 start_einetd=Bạn không thể khởi động trình nền máy chủ khi ở chế độ inetd.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Thêm tùy chọn cho mỗi lệnh cho ..
 ftpindex_header2=$1 trong $2 
 ftpindex_return=tập tin tùy chọn mỗi thư mục
 ftpindex_header=Cho 1
+ftpindex_cmds=lệnh FTP
 
 find_err=Không thể tìm thấy tệp tùy chọn
 find_eanon=FTP ẩn danh không được thiết lập trong bất kỳ máy chủ ảo nào

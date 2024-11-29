@@ -131,6 +131,8 @@ acl_work_as=Käytä tiedostoja Unix-käyttäjänä
 acl_root=Juuri (myöntä huolellisesti epäluotettaville käyttäjille!)
 acl_same=Sama kuin Webmin-kirjautuminen
 acl_user=Tietty Unix-käyttäjä
+acl_user_strict=Ota käyttöön tiukat käyttäjien omistajuuden tarkistukset
+acl_user_strict_desc=Jos tämä on käytössä, käyttäjä voi poistaa ja siirtää vain omistamiaan tiedostoja. Tämä eroaa tavallisesta Unix-käyttäytymisestä, jossa käyttäjä voi poistaa tai siirtää minkä tahansa tiedoston hakemistosta, johon heillä on kirjoitusoikeudet
 acl_euser=Valittua Unix-käyttäjää ei ole!
 acl_epath=Polkua $1 ei ole
 acl_max=Lähetettyjen tiedostojen enimmäiskoko
@@ -154,6 +156,9 @@ menu_bookmarks=kirjanmerkit
 notallowed=Sinulla ei ole pääsyä $1 : een. Sallitut hakemistot ovat : $2 
 error_upload_emax=Lähetetty tiedosto on suurempi kuin $1 -raja
 extract_etype=Ei tuettua arkistotiedostotyyppiä
+
+error_write=sinulla ei ole kirjoitusoikeutta tähän tiedostoon
+error_move=sinulla ei ole oikeutta siirtää tätä tiedostoa
 
 info_total1=Yhteensä: $1 tiedosto ja $2 hakemisto
 info_total2=Yhteensä: $1 tiedostoa ja $2 hakemisto

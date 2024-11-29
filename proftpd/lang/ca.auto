@@ -1,0 +1,21 @@
+index_startmsg=Feu clic a aquest botó per iniciar el servidor FTP amb la configuració actual.
+index_startmsg2=Feu clic a aquest botó per iniciar el servidor FTP amb la configuració actual.
+index_dlheader=Afegeix opcions
+index_dlmode=Afegeix opcions per
+
+type_7=Opcions SSL
+
+mod_tls_engine=Vols activar l'encriptació SSL?
+mod_tls_required=Cal SSL?
+mod_tls_ctrl=Per canal de control
+mod_tls_auth=Per a l'autenticació
+mod_tls_authdata=Per a autenticació i dades
+mod_tls_file=Fitxer de certificat SSL
+mod_tls_efile=El fitxer de certificat SSL no existeix!
+mod_tls_key=Fitxer de clau SSL
+mod_tls_ekey=El fitxer de clau SSL no existeix!
+mod_tls_ca=Fitxer de certificat SSL CA
+mod_tls_eca=El fitxer de certificat SSL CA no existeix!
+mod_tls_none=Cap establert
+
+ftpindex_cmds=Ordres FTP

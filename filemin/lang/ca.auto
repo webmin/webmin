@@ -1,6 +1,11 @@
 acls_selected=Setfacl seleccionat
 acl_allowed_paths_explain=Per a usuaris capaços d'arrel, si el directori permès només s'estableix a $HOME, serà equivalent a / (accés complet al disc)
+acl_user_strict=Activa comprovacions estrictes de propietat dels usuaris
+acl_user_strict_desc=Si està activat, l'usuari només pot suprimir i moure els fitxers que tenen. Això difereix del comportament estàndard d'Unix, on un usuari pot suprimir o moure qualsevol fitxer dins d'un directori al qual tingui accés d'escriptura
 config_per_page=Elements per mostrar per pàgina
+
+error_write=no teniu permís d'escriptura per a aquest fitxer
+error_move=no teniu permís per moure aquest fitxer
 
 acls=Llista de control d’accés
 acls_label=Llista de control per aplicar

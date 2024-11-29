@@ -131,6 +131,8 @@ acl_work_as=Do datotek dostopate kot Unixov uporabnik
 acl_root=Root (dodelite previdno uporabnikom brez zaupanja!)
 acl_same=Enako kot prijava v Webmin
 acl_user=Specifični uporabnik Unixa
+acl_user_strict=Omogočite stroga preverjanja lastništva uporabnikov
+acl_user_strict_desc=Če je omogočeno, lahko uporabnik briše in premika samo datoteke, ki so v njegovi lasti. To se razlikuje od standardnega vedenja Unixa, kjer lahko uporabnik izbriše ali premakne katero koli datoteko v imeniku, do katerega ima dostop za pisanje
 acl_euser=Izbrani uporabnik Unix ne obstaja!
 acl_epath=Pot $1 ne obstaja
 acl_max=Največja velikost za naložene datoteke
@@ -154,6 +156,9 @@ menu_bookmarks=Zaznamki
 notallowed=Dostop do $1 ni dovoljen. Dovoljeni imeniki so : $2 
 error_upload_emax=Naložena datoteka je večja od omejitve $1 
 extract_etype=Nepodprta vrsta arhivske datoteke
+
+error_write=nimate dovoljenja za pisanje v to datoteko
+error_move=nimate dovoljenja za premikanje te datoteke
 
 info_total1=Skupaj: $1 datoteka in $2 imenik
 info_total2=Skupaj: $1 datotek in $2 imenik

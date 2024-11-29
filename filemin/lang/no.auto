@@ -1,6 +1,11 @@
 acls_selected=Setfacl valgt
 acl_allowed_paths_explain=For rotkompatibel bruker, hvis tillatt katalog bare er satt til $HOME, vil den være ekvivalent med / (full disktilgang)
+acl_user_strict=Aktiver strenge brukereierskapskontroller
+acl_user_strict_desc=Hvis aktivert, kan brukeren bare slette og flytte filer de eier. Dette skiller seg fra standard Unix-atferd, der en bruker kan slette eller flytte hvilken som helst fil i en katalog de har skrivetilgang til
 config_per_page=Elementer som skal vises per side
+
+error_write=du har ikke skrivetillatelse til denne filen
+error_move=du har ikke tillatelse til å flytte denne filen
 
 acls=Tilgangskontrolliste
 acls_label=Kontrollliste for å søke

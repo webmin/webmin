@@ -131,6 +131,8 @@ acl_work_as=Dosyalara Unix kullanıcısı olarak erişin
 acl_root=Kök (güvenilir olmayan kullanıcılara özenle verin!)
 acl_same=Webmin girişiyle aynı
 acl_user=Belirli Unix kullanıcısı
+acl_user_strict=Sıkı kullanıcı sahipliği kontrollerini etkinleştirin
+acl_user_strict_desc=Etkinleştirilirse, kullanıcı yalnızca kendisine ait dosyaları silebilir ve taşıyabilir. Bu, bir kullanıcının yazma erişiminin olduğu bir dizindeki herhangi bir dosyayı sildiği veya taşıdığı standart Unix davranışından farklıdır
 acl_euser=Seçilen Unix kullanıcısı yok!
 acl_epath=$1 yolu mevcut değil
 acl_max=Yüklenen dosyalar için maksimum boyut
@@ -154,6 +156,9 @@ menu_bookmarks=Yer imleri
 notallowed=$1 erişimine izin verilmiyor. İzin verilen dizinler : $2 
 error_upload_emax=Yüklenen dosya $1 sınırını aşıyor
 extract_etype=Desteklenmeyen arşiv dosyası türü
+
+error_write=bu dosyaya yazma izniniz yok
+error_move=bu dosyayı taşıma yetkiniz yok
 
 info_total1=Toplam: $1 dosya ve $2 dizin
 info_total2=Toplam: $1 dosya ve $2 dizin

@@ -1,7 +1,13 @@
 index_applymsg2=Haga clic en este botón para aplicar la configuración actual deteniendo y reiniciando ProFTPD.
+index_startmsg=Haga clic en este botón para iniciar el servidor FTP con la configuración actual.
+index_startmsg2=Haga clic en este botón para iniciar el servidor FTP con la configuración actual.
 index_stop=Detener servidor
 index_stopmsg=Haga clic en este botón para detener el servidor FTP, lo que evitará que se conecten nuevos clientes FTP.
 index_proftpd=ProFTPd
+index_dlheader=Agregar opciones
+index_dlmode=Agregar opciones para
+
+type_7=Opciones de SSL
 
 dir_header5=Para el directorio $1 globalmente
 
@@ -30,12 +36,27 @@ mod_ls_strict=¿Anular opciones de usuario?
 mod_auth_home=Directorio de inicio
 mod_auth_none=Ninguna
 
+mod_tls_engine=¿Habilitar el cifrado SSL?
+mod_tls_required=¿Se requiere SSL?
+mod_tls_ctrl=Para canal de control
+mod_tls_auth=Para autenticación
+mod_tls_authdata=Para autenticación y datos
+mod_tls_file=Archivo de certificado SSL
+mod_tls_efile=¡El archivo de certificado SSL no existe!
+mod_tls_key=Archivo de clave SSL
+mod_tls_ekey=¡El archivo de clave SSL no existe!
+mod_tls_ca=Archivo de certificado CA SSL
+mod_tls_eca=¡El archivo de certificado SSL CA no existe!
+mod_tls_none=Ninguno establecido
+
 stop_err=Error al detener el servidor FTP
 stop_einetd=No puede detener el demonio del servidor cuando está en modo inetd.
 stop_erun=No corras
 
 apply_err=Error al aplicar la configuración FTP
 apply_egone=Ya no se ejecuta
+
+ftpindex_cmds=Comandos FTP
 
 log_anonc=Configurar FTP anónimo para el servidor $1 
 log_anons=FTP anónimo reconfigurado para el servidor $1 

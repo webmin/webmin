@@ -7,8 +7,6 @@ index_apply=Ta i bruk endringer
 index_applymsg=Klikk på denne knappen for å ta i bruk gjeldende konfigurasjon ved å sende SIGHUP signal til ProFTPD prosessen.
 index_applymsg2=Klikk på denne knappen for å ta i bruk gjeldende konfigurasjon ved å stoppe og omstarte ProFTPD.
 index_start=Start tjener
-index_startmsg=Klikk på denne knappen for å starte FTP tjeneren med gjeldende konfigurasjon. Du kan også konfigurere tjeneren til å starte automatisk ved behov ved å bruke modulen <a href='$1'>Internett tjenester</a>.
-index_startmsg2=Klikk på denne knappen for å starte FTP tjeneren med gjeldende konfigurasjon. Du kan også konfigurere tjeneren til å starte automatisk ved behov ved å bruke inetd eller et lignende program.
 index_stop=Stopp tjener
 index_stopmsg=Klikk på denne knappen for å stoppe FTP tjeneren. Dette vil forhindre alle nye FTP klienter å koble seg til.
 index_return=hovedmeny

@@ -7,8 +7,6 @@ index_apply=Veranderingen Toevoegen
 index_applymsg=Klik op deze knop om de huidige configuratie toe te voegen met het SIGHUP signaal aan het werkende ProFTPD proces.
 index_applymsg2=Klik op deze knop om de huidige configuratie toe te voegen door middel van stoppen en her-starten van ProFTPD.
 index_start=Start Server
-index_startmsg=Klik op deze knop om de FTP server te starten met de huidige configuratie. U kunt de server ook zo configureren dat hij automatisch start wanneer hij nodig is met behulp van de <a href='$1'>Internet Services</a> module.
-index_startmsg2=Klik op deze knop om de FTP server te starten met de huidige configuratie. U kunt de server ook zo configureren dat hij automatisch start wanneer hij nodig is met behulp van inetd of een ander gelijkwaardig programma.
 index_stop=Stop Server
 index_stopmsg=Klik op deze knop om de FTP server te stoppen, zodat er geen nieuwe clienten meer kunnen verbinden.
 index_return=hoofd menu

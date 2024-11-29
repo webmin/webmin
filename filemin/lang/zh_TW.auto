@@ -131,6 +131,8 @@ acl_work_as=以Unix用戶訪問文件
 acl_root=根（小心不信任的用戶！）
 acl_same=與Webmin登錄相同
 acl_user=特定的Unix用戶
+acl_user_strict=啟用嚴格的使用者所有權檢查
+acl_user_strict_desc=如果啟用，使用者只能刪除和移動自己擁有的檔案。這與標準 Unix 行為不同，在標準 Unix 行為中，使用者可以刪除或移動他們有寫入存取權限的目錄中的任何文件
 acl_euser=所選的Unix用戶不存在！
 acl_epath=路徑 $1不存在
 acl_max=上載文件的最大大小
@@ -154,6 +156,9 @@ menu_bookmarks=書籤
 notallowed=您無權訪問 $1。允許的目錄為： $2
 error_upload_emax=上傳的文件大於 $1的限制
 extract_etype=不支持的存檔文件類型
+
+error_write=您沒有此檔案的寫入權限
+error_move=您沒有移動此文件的權限
 
 info_total1=總計： $1個文件和 $2個目錄
 info_total2=總計： $1個文件和 $2目錄

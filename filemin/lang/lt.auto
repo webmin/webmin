@@ -131,6 +131,8 @@ acl_work_as=Prieikite prie failų kaip „Unix“ vartotojas
 acl_root=Šaknis (atsargiai suteikite nepatikimiems vartotojams!)
 acl_same=Tas pats, kas prisijungti prie „Webmin“
 acl_user=Konkretus „Unix“ vartotojas
+acl_user_strict=Įgalinti griežtą naudotojo nuosavybės patikrą
+acl_user_strict_desc=Jei įjungta, vartotojas gali ištrinti ir perkelti tik jam priklausančius failus. Tai skiriasi nuo standartinio Unix elgesio, kai vartotojas gali ištrinti arba perkelti bet kurį failą kataloge, prie kurio turi rašymo prieigą
 acl_euser=Pasirinktas „Unix“ vartotojas neegzistuoja!
 acl_epath=$1 kelio nėra
 acl_max=Maksimalus įkeltų failų dydis
@@ -154,6 +156,9 @@ menu_bookmarks=Žymos
 notallowed=Jums neleidžiama patekti į $1. Leidžiami katalogai : $2 
 error_upload_emax=Įkeltas failas didesnis nei $1 riba
 extract_etype=Nepalaikomas archyvo failo tipas
+
+error_write=jūs neturite šio failo rašymo leidimo
+error_move=neturite leidimo perkelti šio failo
 
 info_total1=Iš viso: $1 failas ir $2 katalogas
 info_total2=Iš viso: $1 failai ir $2 katalogas

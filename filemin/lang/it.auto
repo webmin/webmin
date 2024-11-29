@@ -1,5 +1,10 @@
 acls_selected=Setfacl Selezionato
+acl_user_strict=Abilitare controlli rigorosi sulla proprietà dell'utente
+acl_user_strict_desc=Se abilitato, l'utente può solo eliminare e spostare i file di sua proprietà. Ciò differisce dal comportamento standard di Unix, in cui un utente può eliminare o spostare qualsiasi file all'interno di una directory a cui ha accesso in scrittura
 config_per_page=Elementi da visualizzare per pagina
+
+error_write=non hai i permessi di scrittura per questo file
+error_move=non hai il permesso di spostare questo file
 
 acls_label=Lista di controllo da applicare
 acls_applyto=Applica a

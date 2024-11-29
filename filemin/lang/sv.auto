@@ -131,6 +131,8 @@ acl_work_as=Få åtkomst till filer som Unix-användare
 acl_root=Rot (bevilja med försiktighet till icke-betrodda användare!)
 acl_same=Samma som Webmin-inloggning
 acl_user=Specifik Unix-användare
+acl_user_strict=Aktivera strikta kontroller av användarens ägande
+acl_user_strict_desc=Om aktiverat kan användaren bara ta bort och flytta filer som de äger. Detta skiljer sig från standard Unix-beteende, där en användare kan ta bort eller flytta vilken fil som helst i en katalog de har skrivåtkomst till
 acl_euser=Den valda Unix-användaren finns inte!
 acl_epath=Sökväg $1 finns inte
 acl_max=Maximal storlek för uppladdade filer
@@ -154,6 +156,9 @@ menu_bookmarks=bokmärken
 notallowed=Du får inte komma åt $1. De tillåtna katalogerna är : $2 
 error_upload_emax=Den uppladdade filen är större än gränsen på $1 
 extract_etype=Arkiverad filtyp som inte stöds
+
+error_write=du har inte skrivbehörighet till den här filen
+error_move=du har inte behörighet att flytta den här filen
 
 info_total1=Totalt: $1 fil och $2 katalog
 info_total2=Totalt: $1 filer och $2 katalog

@@ -7,8 +7,8 @@ index_apply=Ota muutokset käyttöön
 index_applymsg=Napsauta tätä painiketta, jos haluat käyttää nykyistä kokoonpanoa lähettämällä SIGHUP-signaalin käynnissä olevaan ProFTPD-prosessiin.
 index_applymsg2=Napsauta tätä painiketta, kun haluat käyttää nykyistä kokoonpanoa pysäyttämällä ja käynnistämällä ProFTPD: n uudelleen.
 index_start=Käynnistä palvelin
-index_startmsg=Napsauta tätä painiketta, jos haluat käynnistää FTP-palvelimen nykyisellä kokoonpanolla. Voit myös määrittää palvelimen käynnistymään tarvittaessa automaattisesti <a href='$1'>Internet Services</a> -moduulin avulla.
-index_startmsg2=Napsauta tätä painiketta, jos haluat käynnistää FTP-palvelimen nykyisellä kokoonpanolla. Voit myös määrittää palvelimen käynnistyvän automaattisesti tarvittaessa käyttämällä inetd: tä tai jotain vastaavaa ohjelmaa.
+index_startmsg=Napsauta tätä painiketta käynnistääksesi FTP-palvelimen nykyisellä kokoonpanolla.
+index_startmsg2=Napsauta tätä painiketta käynnistääksesi FTP-palvelimen nykyisellä kokoonpanolla.
 index_stop=Lopeta palvelin
 index_stopmsg=Napsauta tätä painiketta, kun haluat pysäyttää FTP-palvelimen, mikä estää uusia FTP-asiakkaita muodostamasta yhteyttä.
 index_return=päävalikko
@@ -27,6 +27,8 @@ index_global=Globaali kokoonpano
 index_create=Luo virtuaalipalvelin
 index_version=ProFTPd-versio $1 
 index_proftpd=proftpd
+index_dlheader=Lisää vaihtoehtoja
+index_dlmode=Lisää vaihtoehtoja kohteelle
 
 efailed=$1 tallennus epäonnistui
 
@@ -37,6 +39,7 @@ type_3=Kulunvalvonta
 type_4=sekalainen
 type_5=Käyttäjä ja ryhmä
 type_6=Authentication
+type_7=SSL-asetukset
 
 virt_title=Virtuaalipalvelimen asetukset
 virt_header1=$1 : lle
@@ -380,6 +383,19 @@ mod_readme_display=Ilmoita käyttäjälle readme-tiedostojen vastaavuudesta
 mod_readme_none=Ei mitään
 mod_readme_edisplay=Puuttuu readme-tiedostokuvio
 
+mod_tls_engine=Otetaanko SSL-salaus käyttöön?
+mod_tls_required=SSL vaaditaan?
+mod_tls_ctrl=Ohjauskanavalle
+mod_tls_auth=Todennusta varten
+mod_tls_authdata=Todennusta ja dataa varten
+mod_tls_file=SSL-sertifikaattitiedosto
+mod_tls_efile=SSL-sertifikaattitiedostoa ei ole olemassa!
+mod_tls_key=SSL-avaintiedosto
+mod_tls_ekey=SSL-avaintiedostoa ei ole olemassa!
+mod_tls_ca=SSL CA -varmennetiedosto
+mod_tls_eca=SSL CA -varmennetiedostoa ei ole olemassa!
+mod_tls_none=Ei asetettu
+
 start_err=FTP-palvelimen käynnistäminen epäonnistui
 start_einetd=Et voi käynnistää palvelindeemonia inetd-tilassa.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Lisää komentokohtaisia vaihtoehtoja ..
 ftpindex_header2=$1 $2 : ssa
 ftpindex_return=hakemistokohtaisten asetusten tiedosto
 ftpindex_header=$1 : lle
+ftpindex_cmds=FTP-komennot
 
 find_err=Asetustiedostojen löytäminen epäonnistui
 find_eanon=Anonyymiä FTP: tä ei ole määritetty missään virtuaalipalvelimessa

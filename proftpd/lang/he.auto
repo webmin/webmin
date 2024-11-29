@@ -7,8 +7,8 @@ index_apply=החל שינויים
 index_applymsg=לחץ על כפתור זה כדי להחיל את התצורה הנוכחית על ידי שליחת אות SIGHUP לתהליך ה- ProFTPD.
 index_applymsg2=לחץ על כפתור זה כדי להחיל את התצורה הנוכחית על ידי עצירה והפעלה מחדש של ProFTPD.
 index_start=הפעל את השרת
-index_startmsg=לחץ על כפתור זה כדי להפעיל את שרת ה- FTP עם התצורה הנוכחית. באפשרותך גם להגדיר את תצורת השרת באופן אוטומטי בעת הצורך באמצעות המודול <a href='$1'>שירותי אינטרנט</a>.
-index_startmsg2=לחץ על כפתור זה כדי להפעיל את שרת ה- FTP עם התצורה הנוכחית. באפשרותך גם להגדיר את תצורת השרת באופן אוטומטי בעת הצורך באמצעות inetd או תוכנית כלשהי.
+index_startmsg=לחץ על לחצן זה כדי להפעיל את שרת ה-FTP עם התצורה הנוכחית.
+index_startmsg2=לחץ על לחצן זה כדי להפעיל את שרת ה-FTP עם התצורה הנוכחית.
 index_stop=עצור את השרת
 index_stopmsg=לחץ על כפתור זה כדי לעצור את שרת ה- FTP, שימנע התחברות של לקוחות FTP חדשים.
 index_return=תפריט ראשי
@@ -27,6 +27,8 @@ index_global=תצורה גלובלית
 index_create=צור שרת וירטואלי
 index_version=גרסת ProFTPd $1 
 index_proftpd=ProFTPd
+index_dlheader=הוסף אפשרויות
+index_dlmode=הוסף אפשרויות עבור
 
 efailed=שמירת $1 נכשלה
 
@@ -37,6 +39,7 @@ type_3=בקרת גישה
 type_4=שונות
 type_5=משתמש וקבוצה
 type_6=אימות
+type_7=אפשרויות SSL
 
 virt_title=אפשרויות שרת וירטואלי
 virt_header1=בשביל 1
@@ -380,6 +383,19 @@ mod_readme_display=הודע למשתמש על התאמת קבצי readme
 mod_readme_none=אף אחד
 mod_readme_edisplay=דפוס קבצי readme חסר
 
+mod_tls_engine=לאפשר הצפנת SSL?
+mod_tls_required=נדרש SSL?
+mod_tls_ctrl=עבור ערוץ בקרה
+mod_tls_auth=לצורך אימות
+mod_tls_authdata=לאימות ונתונים
+mod_tls_file=קובץ אישור SSL
+mod_tls_efile=קובץ אישור SSL אינו קיים!
+mod_tls_key=קובץ מפתח SSL
+mod_tls_ekey=קובץ מפתח SSL לא קיים!
+mod_tls_ca=קובץ אישור SSL CA
+mod_tls_eca=קובץ אישור SSL CA אינו קיים!
+mod_tls_none=אף אחד לא מוגדר
+
 start_err=הפעלת שרת FTP נכשלה
 start_einetd=אינך יכול להפעיל את דמון השרת במצב כניסה.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=הוסף אפשרויות לפקודה עבור ..
 ftpindex_header2=$1 ב- $2 
 ftpindex_return=קובץ אפשרויות לספריה
 ftpindex_header=בשביל 1
+ftpindex_cmds=פקודות FTP
 
 find_err=לא נמצא קבצי אפשרויות
 find_eanon=FTP אנונימי אינו מוגדר בשום שרת וירטואלי

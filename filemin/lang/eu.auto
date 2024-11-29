@@ -131,6 +131,8 @@ acl_work_as=Sartu fitxategiak Unix erabiltzaile gisa
 acl_root=Erro (laguntza eman konfiantzarik ez duten erabiltzaileei arretaz!)
 acl_same=Webmin saioa hasteko gauza bera
 acl_user=Unix-eko berariazko erabiltzailea
+acl_user_strict=Gaitu erabiltzaileen jabetza egiaztapen zorrotzak
+acl_user_strict_desc=Gaituta badago, erabiltzaileak bereak dituen fitxategiak ezabatu eta mugi ditzake soilik. Hau Unix-en portaera estandarraren desberdina da, non erabiltzaileak idazteko sarbidea duen direktorio bateko edozein fitxategi ezabatu edo mugi dezake
 acl_euser=Hautatutako Unix erabiltzailea ez da existitzen!
 acl_epath=$1 bidea ez da existitzen
 acl_max=Kargatutako fitxategien gehienezko tamaina
@@ -154,6 +156,9 @@ menu_bookmarks=Bookmarks
 notallowed=Ezin duzu $1 era sartu. Baimendutako direktorio hauek hauek dira : $2 
 error_upload_emax=Kargatutako fitxategia $1 ren muga baino handiagoa da
 extract_etype=Onartu gabeko artxibo mota
+
+error_write=ez duzu fitxategi honetarako idazteko baimenik
+error_move=ez duzu fitxategi hau mugitzeko baimenik
 
 info_total1=Guztira: $1 fitxategia eta $2 direktorio
 info_total2=Guztira: $1 fitxategi eta $2 direktorio

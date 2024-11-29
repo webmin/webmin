@@ -7,8 +7,6 @@ index_apply=Änderungen anwenden
 index_applymsg=Klicken Sie auf diese Schaltfläche, um die aktuelle Konfiguration anzuwenden, indem ein SIGHUP-Signal an den laufenden ProFTPD-Prozess gesendet wird.
 index_applymsg2=Klicken Sie auf diese Schaltfläche, um die aktuelle Konfiguration anzuwenden, indem Sie ProFTPD stoppen und neu starten.
 index_start=Server starten
-index_startmsg=Klicken Sie auf diese Schaltfläche, um den FTP-Server mit der aktuellen Konfiguration zu starten. Sie können den Server auch so konfigurieren, dass er bei Bedarf automatisch gestartet wird, indem Sie das <a href='$1'>Internet Services</a>-Modul verwenden.
-index_startmsg2=Klicken Sie auf diese Schaltfläche, um den FTP-Server mit der aktuellen Konfiguration zu starten. Sie können den Server auch so konfigurieren, dass er bei Bedarf automatisch mit inetd oder einem ähnlichen Programm gestartet wird.
 index_stop=Server stoppen
 index_stopmsg=Klicken Sie auf diese Schaltfläche, um den FTP-Server zu stoppen, wodurch verhindert wird, dass neue FTP-Clients eine Verbindung herstellen.
 index_return=Hauptmenü

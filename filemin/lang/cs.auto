@@ -131,6 +131,8 @@ acl_work_as=Přístup k souborům jako uživatel Unix
 acl_root=Root (udělejte opatrně nedůvěryhodným uživatelům!)
 acl_same=Stejné jako přihlášení Webmin
 acl_user=Specifický uživatel Unixu
+acl_user_strict=Povolit přísné kontroly vlastnictví uživatelů
+acl_user_strict_desc=Pokud je povoleno, uživatel může mazat a přesouvat pouze soubory, které vlastní. To se liší od standardního chování Unixu, kde uživatel může odstranit nebo přesunout jakýkoli soubor v adresáři, do kterého má přístup pro zápis
 acl_euser=Vybraný uživatel Unix neexistuje!
 acl_epath=Cesta $1 neexistuje
 acl_max=Maximální velikost nahraných souborů
@@ -154,6 +156,9 @@ menu_bookmarks=Záložky
 notallowed=Nemáte přístup k $1. Povolené adresáře jsou : $2 
 error_upload_emax=Nahraný soubor je větší než limit $1 
 extract_etype=Nepodporovaný typ archivního souboru
+
+error_write=nemáte oprávnění k zápisu do tohoto souboru
+error_move=nemáte oprávnění k přesunutí tohoto souboru
 
 info_total1=Celkem: soubor $1 a adresář $2 
 info_total2=Celkem: $1 souborů a $2 adresáře

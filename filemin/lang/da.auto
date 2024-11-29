@@ -131,6 +131,8 @@ acl_work_as=Få adgang til filer som Unix-bruger
 acl_root=Root (bevilg med omhu til ikke-betroede brugere!)
 acl_same=Samme som Webmin-login
 acl_user=Specifik Unix-bruger
+acl_user_strict=Aktiver streng kontrol af brugerejerskab
+acl_user_strict_desc=Hvis aktiveret, kan brugeren kun slette og flytte filer, de ejer. Dette adskiller sig fra standard Unix-adfærd, hvor en bruger kan slette eller flytte enhver fil i en mappe, de har skriveadgang til
 acl_euser=Den valgte Unix-bruger findes ikke!
 acl_epath=Sti $1 findes ikke
 acl_max=Maksimal størrelse for uploadede filer
@@ -154,6 +156,9 @@ menu_bookmarks=bogmærker
 notallowed=Du har ikke adgang til $1. De tilladte mapper er : $2 
 error_upload_emax=Uploadet fil er større end grænsen på $1 
 extract_etype=Ikke-understøttet arkivfiltype
+
+error_write=du har ikke skrivetilladelse til denne fil
+error_move=du har ikke tilladelse til at flytte denne fil
 
 info_total1=I alt: $1 fil og $2 bibliotek
 info_total2=I alt: $1 filer og $2 bibliotek

@@ -6,8 +6,6 @@ index_econf=ProFTPD 설정 파일 $1 이 존재하지 않거나 유효하지 않
 index_apply=변경 적용
 index_applymsg=버튼을 클릭하면 ProFTPD 프로세스에 SIGHUP 시그널이 보내지고 변경이 적용됩니다.
 index_start=서버 시작
-index_startmsg=버튼을 클릭하면, 현재의 설정으로 FTP 서버를 시작합니다. <a href='$1'>인터넷 서비스</a> 모듈을 사용하여 필요할 때 자곧으로 서버가 시작되도록 설정할 수도 있습니다.
-index_startmsg2=버튼을 클릭하면, 현재의 설정으로 FTP 서버를 시작합니다. inetd 나 다른 비슷한 프로그램을 이용하여 필요할 때 자동으로 시작되도록 서버를 설정할 수도 있습니다.
 index_stop=서버 정지
 index_stopmsg=새로운 FTP 클라이언트의 접근을 막기 위하여 FTP 서버를 정지하려면 이 버튼을 클릭 하십시오.
 index_return=메인 메뉴
