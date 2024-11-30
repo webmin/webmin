@@ -1,3 +1,24 @@
 index_applymsg2=ProFTPD를 중지했다가 다시 시작하여 현재 구성을 적용하려면이 버튼을 클릭하십시오.
+index_startmsg=현재 구성으로 FTP 서버를 시작하려면 이 버튼을 클릭하세요.
+index_startmsg2=현재 구성으로 FTP 서버를 시작하려면 이 버튼을 클릭하세요.
+index_dlheader=옵션 추가
+index_dlmode=옵션 추가
+
+type_7=SSL 옵션
 
 mod_core_firstcdt=항상 보여
+
+mod_tls_engine=SSL 암호화를 활성화하시겠습니까?
+mod_tls_required=SSL이 필요합니까?
+mod_tls_ctrl=제어 채널용
+mod_tls_auth=인증을 위해
+mod_tls_authdata=인증 및 데이터용
+mod_tls_file=SSL 인증서 파일
+mod_tls_efile=SSL 인증서 파일이 존재하지 않습니다!
+mod_tls_key=SSL 키 파일
+mod_tls_ekey=SSL 키 파일이 존재하지 않습니다!
+mod_tls_ca=SSL CA 인증서 파일
+mod_tls_eca=SSL CA 인증서 파일이 존재하지 않습니다!
+mod_tls_none=설정 안됨
+
+ftpindex_cmds=FTP 명령

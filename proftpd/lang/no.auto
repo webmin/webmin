@@ -1,0 +1,21 @@
+index_startmsg=Klikk på denne knappen for å starte FTP-serveren med gjeldende konfigurasjon.
+index_startmsg2=Klikk på denne knappen for å starte FTP-serveren med gjeldende konfigurasjon.
+index_dlheader=Legg til alternativer
+index_dlmode=Legg til alternativer for
+
+type_7=SSL-alternativer
+
+mod_tls_engine=Vil du aktivere SSL-kryptering?
+mod_tls_required=SSL nødvendig?
+mod_tls_ctrl=For kontrollkanal
+mod_tls_auth=For autentisering
+mod_tls_authdata=For autentisering og data
+mod_tls_file=SSL-sertifikatfil
+mod_tls_efile=SSL-sertifikatfilen eksisterer ikke!
+mod_tls_key=SSL nøkkelfil
+mod_tls_ekey=SSL nøkkelfil eksisterer ikke!
+mod_tls_ca=SSL CA-sertifikatfil
+mod_tls_eca=SSL CA-sertifikatfil eksisterer ikke!
+mod_tls_none=Ingen satt
+
+ftpindex_cmds=FTP-kommandoer

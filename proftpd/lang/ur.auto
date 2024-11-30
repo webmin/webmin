@@ -7,8 +7,8 @@ index_apply=تبدیلیوں کا اطلاق کریں
 index_applymsg=چل رہے ProFTPD عمل کو ایک SIGHUP سگنل بھیج کر موجودہ ترتیب کو نافذ کرنے کے لئے اس بٹن پر کلک کریں۔
 index_applymsg2=موجودہ کنفیگریشن کو نافذ کرنے اور دوبارہ شروع کرکے ProFTPD کو نافذ کرنے کے لئے اس بٹن پر کلک کریں۔
 index_start=اسٹارٹ سرور
-index_startmsg=Click this button to start the FTP server with the current configuration. You can also configure the server to be started automatically when needed using the <a href='$1'>Internet Services</a> module.
-index_startmsg2=موجودہ ترتیب کے ساتھ FTP سرور شروع کرنے کے لئے اس بٹن پر کلک کریں۔ جب آپ inetd یا کچھ مساوی پروگرام کا استعمال کرتے ہوئے ضرورت ہو تو سرور کو خود بخود شروع کرنے کے لئے بھی تشکیل دے سکتے ہیں۔
+index_startmsg=موجودہ کنفیگریشن کے ساتھ FTP سرور شروع کرنے کے لیے اس بٹن پر کلک کریں۔
+index_startmsg2=موجودہ کنفیگریشن کے ساتھ FTP سرور شروع کرنے کے لیے اس بٹن پر کلک کریں۔
 index_stop=اسٹاپ سرور
 index_stopmsg=ایف ٹی پی سرور کو روکنے کے ل this اس بٹن پر کلک کریں ، جو کسی بھی نئے ایف ٹی پی کلائنٹ کو مربوط ہونے سے بچائے گا۔
 index_return=مین مینو
@@ -27,6 +27,8 @@ index_global=عالمی تشکیل
 index_create=ورچوئل سرور بنائیں
 index_version=ProFTPd ورژن$1
 index_proftpd=پرو ایف ٹی پی ڈی
+index_dlheader=اختیارات شامل کریں۔
+index_dlmode=کے لیے اختیارات شامل کریں۔
 
 efailed=$1 کو بچانے میں ناکام
 
@@ -37,6 +39,7 @@ type_3=رسائی کنٹرول
 type_4=متفرق
 type_5=صارف اور گروپ
 type_6=توثیق
+type_7=SSL اختیارات
 
 virt_title=ورچوئل سرور کے اختیارات
 virt_header1=$1 کے لئے
@@ -380,6 +383,19 @@ mod_readme_display=ریڈیم فائلوں کے ملاپ کے صارف کو مط
 mod_readme_none=کوئی نہیں
 mod_readme_edisplay=ریڈیم فائلوں کا نمونہ غائب ہے
 
+mod_tls_engine=SSL انکرپشن کو فعال کریں؟
+mod_tls_required=SSL کی ضرورت ہے؟
+mod_tls_ctrl=کنٹرول چینل کے لیے
+mod_tls_auth=تصدیق کے لیے
+mod_tls_authdata=تصدیق اور ڈیٹا کے لیے
+mod_tls_file=SSL سرٹیفکیٹ فائل
+mod_tls_efile=SSL سرٹیفکیٹ فائل موجود نہیں ہے!
+mod_tls_key=SSL کلیدی فائل
+mod_tls_ekey=SSL کلیدی فائل موجود نہیں ہے!
+mod_tls_ca=SSL CA سرٹیفکیٹ فائل
+mod_tls_eca=SSL CA سرٹیفکیٹ فائل موجود نہیں ہے!
+mod_tls_none=کوئی سیٹ نہیں۔
+
 start_err=ایف ٹی پی سرور شروع کرنے میں ناکام
 start_einetd=inetd وضع میں ہونے پر آپ سرور ڈیمون شروع نہیں کرسکتے ہیں۔
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=کے لئے فی کمانڈ آپشنز شامل کریں ..
 ftpindex_header2=$2 میں$1
 ftpindex_return=فی ڈائریکٹری اختیارات فائل
 ftpindex_header=$1 کے لئے
+ftpindex_cmds=FTP کمانڈز
 
 find_err=اختیارات کی فائلیں ڈھونڈنے میں ناکام
 find_eanon=گمنام ایف ٹی پی کسی بھی ورچوئل سرور میں سیٹ اپ نہیں ہے

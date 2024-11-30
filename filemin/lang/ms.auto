@@ -131,6 +131,8 @@ acl_work_as=Akses fail sebagai pengguna Unix
 acl_root=Root (memberi perhatian kepada pengguna yang tidak dipercayai!)
 acl_same=Sama seperti log masuk Webmin
 acl_user=Pengguna Unix khusus
+acl_user_strict=Dayakan semakan pemilikan pengguna yang ketat
+acl_user_strict_desc=Jika didayakan, pengguna hanya boleh memadam dan mengalihkan fail yang mereka miliki. Ini berbeza daripada tingkah laku Unix standard, di mana pengguna boleh memadam atau memindahkan mana-mana fail dalam direktori yang mereka mempunyai akses tulis
 acl_euser=Pengguna Unix yang dipilih tidak wujud!
 acl_epath=Laluan $1 tidak wujud
 acl_max=Saiz maksimum untuk fail yang dimuat naik
@@ -154,6 +156,9 @@ menu_bookmarks=Penanda buku
 notallowed=Anda tidak dibenarkan mengakses $1. Direktori yang dibenarkan adalah : $2 
 error_upload_emax=Fail yang dimuat naik lebih besar daripada had $1 
 extract_etype=Jenis fail arkib yang tidak disokong
+
+error_write=anda tidak mempunyai kebenaran menulis pada fail ini
+error_move=anda tidak mempunyai kebenaran untuk mengalihkan fail ini
 
 info_total1=Jumlah: $1 fail dan direktori $2 
 info_total2=Jumlah: $1 fail dan $2 direktori

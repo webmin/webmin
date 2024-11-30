@@ -1,0 +1,21 @@
+index_startmsg=Cliquez sur ce bouton pour démarrer le serveur FTP avec la configuration actuelle.
+index_startmsg2=Cliquez sur ce bouton pour démarrer le serveur FTP avec la configuration actuelle.
+index_dlheader=Ajouter des options
+index_dlmode=Ajouter des options pour
+
+type_7=Options SSL
+
+mod_tls_engine=Activer le cryptage SSL ?
+mod_tls_required=SSL requis ?
+mod_tls_ctrl=Pour le canal de contrôle
+mod_tls_auth=Pour l'authentification
+mod_tls_authdata=Pour l'authentification et les données
+mod_tls_file=Fichier de certificat SSL
+mod_tls_efile=Le fichier de certificat SSL n'existe pas !
+mod_tls_key=Fichier de clé SSL
+mod_tls_ekey=Le fichier de clé SSL n'existe pas !
+mod_tls_ca=Fichier de certificat SSL CA
+mod_tls_eca=Le fichier de certificat SSL CA n'existe pas !
+mod_tls_none=Aucun ensemble
+
+ftpindex_cmds=Commandes FTP

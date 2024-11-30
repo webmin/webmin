@@ -23,7 +23,10 @@ sub acl_security_form {
 	       [ [ 0, $text{'acl_root'} ],
 		 [ 1, $text{'acl_same'} ],
 		 [ 2, $text{'acl_user'},
-		   ui_user_textbox("acl_user", $access->{'work_as_user'}) ] ]),
+		   ui_user_textbox("acl_user", $access->{'work_as_user'})."&nbsp;".
+		       &ui_checkbox("acl_user_strict", 1, $text{'acl_user_strict'}.
+		           &ui_help($text{'acl_user_strict_desc'}),
+                       $access->{'work_as_user_strict'}) ] ]),
 	3);
 
     # Upload max
@@ -57,6 +60,7 @@ sub acl_security_save {
 	defined(getpwnam($in->{'acl_user'})) || &error($text{'acl_euser'});
         $access->{'work_as_root'} = 0;
         $access->{'work_as_user'} = $in->{'acl_user'};
+        $access->{'work_as_user_strict'} = $in->{'acl_user_strict'};
     }
     $access->{'max'} = $in->{'max_def'} ? undef : $in{'max'};
 }

@@ -6,8 +6,6 @@ index_econf=Konfiguračmní soubor ProFTPD $1 neexistuje nebo není platný.  Mo
 index_apply=Použít změny
 index_applymsg=Klepnutím na tlačítko se použije aktuální konfigurace zasláním SIGHUP signálu běžícímu ProFTPD procesu.
 index_start=Spustit server
-index_startmsg=Klepnutím na tlačítko se spustí FTP servers aktuální konfigurací. Můžete taktéž konfigurovat spuštěný server automaticky, je-li to potřeba. Stačí využít modul <a href='$1'>Služby Internetu</a>.
-index_startmsg2=Klepnutím na tlačítko se spustí FTP servers aktuální konfigurací. Můžete taktéž konfigurovat spuštěný server automaticky, je-li to potřeba. Stačí využít inetd nebo ekvivalentní program.
 index_return=hlavní menu
 index_virts=Virtuální servery
 index_virt=Virtuální server

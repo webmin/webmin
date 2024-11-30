@@ -131,6 +131,8 @@ acl_work_as=Toegang tot bestanden als Unix-gebruiker
 acl_root=Root (wees voorzichtig met niet-vertrouwde gebruikers!)
 acl_same=Hetzelfde als inloggen op Webmin
 acl_user=Specifieke Unix-gebruiker
+acl_user_strict=Strikte controles op gebruikerseigendom inschakelen
+acl_user_strict_desc=Als dit is ingeschakeld, kan de gebruiker alleen bestanden verwijderen en verplaatsen die hij/zij bezit. Dit verschilt van standaard Unix-gedrag, waarbij een gebruiker elk bestand in een directory waartoe hij/zij schrijftoegang heeft, kan verwijderen of verplaatsen
 acl_euser=De geselecteerde Unix-gebruiker bestaat niet!
 acl_epath=Pad $1 bestaat niet
 acl_max=Maximale grootte voor geüploade bestanden
@@ -154,6 +156,9 @@ menu_bookmarks=Bladwijzers
 notallowed=U heeft geen toegang tot $1. De toegestane mappen zijn : $2 
 error_upload_emax=Het geüploade bestand is groter dan de limiet van $1 
 extract_etype=Niet-ondersteund archiefbestandstype
+
+error_write=je hebt geen schrijfrechten voor dit bestand
+error_move=je hebt geen toestemming om dit bestand te verplaatsen
 
 info_total1=Totaal: $1 bestand en $2 directory
 info_total2=Totaal: $1 bestanden en $2 directory

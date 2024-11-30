@@ -7,8 +7,8 @@ index_apply=Applicera förändringar
 index_applymsg=Klicka på den här knappen för att tillämpa den aktuella konfigurationen genom att skicka en SIGHUP-signal till den löpande ProFTPD-processen.
 index_applymsg2=Klicka på den här knappen för att tillämpa den aktuella konfigurationen genom att stoppa och starta om ProFTPD.
 index_start=Starta servern
-index_startmsg=Klicka på den här knappen för att starta FTP-servern med den aktuella konfigurationen. Du kan också konfigurera servern så att den startas automatiskt vid behov med modulen <a href='$1'>Internet Services</a>.
-index_startmsg2=Klicka på den här knappen för att starta FTP-servern med den aktuella konfigurationen. Du kan också konfigurera servern så att den startas automatiskt vid behov med hjälp av inetd eller något motsvarande program.
+index_startmsg=Klicka på den här knappen för att starta FTP-servern med den aktuella konfigurationen.
+index_startmsg2=Klicka på den här knappen för att starta FTP-servern med den aktuella konfigurationen.
 index_stop=Stoppa servern
 index_stopmsg=Klicka på den här knappen för att stoppa FTP-servern, vilket förhindrar att nya FTP-klienter ansluter.
 index_return=huvudmeny
@@ -27,6 +27,8 @@ index_global=Global konfiguration
 index_create=Skapa virtuell server
 index_version=ProFTPd-version $1 
 index_proftpd=proftpd
+index_dlheader=Lägg till alternativ
+index_dlmode=Lägg till alternativ för
 
 efailed=Det gick inte att spara $1 
 
@@ -37,6 +39,7 @@ type_3=Åtkomstkontroll
 type_4=Diverse
 type_5=Användare och grupp
 type_6=autentisering
+type_7=SSL-alternativ
 
 virt_title=Virtuella serveralternativ
 virt_header1=För $1 
@@ -380,6 +383,19 @@ mod_readme_display=Meddela användaren om readme-filer som matchar
 mod_readme_none=Ingen
 mod_readme_edisplay=Mönster av readme-filer saknas
 
+mod_tls_engine=Aktivera SSL-kryptering?
+mod_tls_required=SSL krävs?
+mod_tls_ctrl=För kontrollkanal
+mod_tls_auth=För autentisering
+mod_tls_authdata=För autentisering och data
+mod_tls_file=SSL-certifikatfil
+mod_tls_efile=SSL-certifikatfilen finns inte!
+mod_tls_key=SSL-nyckelfil
+mod_tls_ekey=SSL-nyckelfilen finns inte!
+mod_tls_ca=SSL CA-certifikatfil
+mod_tls_eca=SSL CA-certifikatfil finns inte!
+mod_tls_none=Ingen inställd
+
 start_err=Det gick inte att starta FTP-servern
 start_einetd=Du kan inte starta serverdemonen i inetd-läge.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Lägg till alternativ per kommando för ..
 ftpindex_header2=$1 i $2 
 ftpindex_return=per katalogalternativfil
 ftpindex_header=För $1 
+ftpindex_cmds=FTP-kommandon
 
 find_err=Det gick inte att hitta alternativfiler
 find_eanon=Anonym FTP är inte inställd på någon virtuell server

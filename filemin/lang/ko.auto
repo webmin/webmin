@@ -131,6 +131,8 @@ acl_work_as=Unix 사용자로 파일에 액세스
 acl_root=루트 (신뢰할 수없는 사용자에게주의를 기울임)
 acl_same=Webmin 로그인과 동일
 acl_user=특정 유닉스 사용자
+acl_user_strict=엄격한 사용자 소유권 확인 활성화
+acl_user_strict_desc=활성화된 경우 사용자는 자신이 소유한 파일만 삭제하고 이동할 수 있습니다. 이는 사용자가 쓰기 액세스 권한이 있는 디렉토리 내의 모든 파일을 삭제하거나 이동할 수 있는 표준 Unix 동작과 다릅니다
 acl_euser=선택된 유닉스 사용자가 존재하지 않습니다!
 acl_epath=경로 $1 이 존재하지 않습니다
 acl_max=업로드 된 파일의 최대 크기
@@ -154,6 +156,9 @@ menu_bookmarks=북마크
 notallowed=$1 에 액세스 할 수 없습니다. 허용되는 디렉토리는 $2 입니다.
 error_upload_emax=업로드 한 파일이 $1 한도보다 큽니다.
 extract_etype=지원되지 않는 아카이브 파일 유형
+
+error_write=이 파일에 대한 쓰기 권한이 없습니다
+error_move=이 파일을 이동할 수 있는 권한이 없습니다
 
 info_total1=총계 : $1 파일 및 $2 디렉토리
 info_total2=총계 : $1 파일 및 $2 디렉토리

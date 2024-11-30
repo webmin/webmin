@@ -1,1 +1,22 @@
 index_applymsg2=Clique neste botão para aplicar a configuração atual parando e reiniciando o ProFTPD.
+index_startmsg=Clique neste botão para iniciar o servidor FTP com a configuração atual.
+index_startmsg2=Clique neste botão para iniciar o servidor FTP com a configuração atual.
+index_dlheader=Adicionar opções
+index_dlmode=Adicionar opções para
+
+type_7=Opções SSL
+
+mod_tls_engine=Habilitar criptografia SSL?
+mod_tls_required=SSL necessário?
+mod_tls_ctrl=Para canal de controle
+mod_tls_auth=Para autenticação
+mod_tls_authdata=Para autenticação e dados
+mod_tls_file=Arquivo de certificado SSL
+mod_tls_efile=O arquivo do certificado SSL não existe!
+mod_tls_key=Arquivo de chave SSL
+mod_tls_ekey=O arquivo de chave SSL não existe!
+mod_tls_ca=Arquivo de certificado SSL CA
+mod_tls_eca=O arquivo de certificado SSL CA não existe!
+mod_tls_none=Nenhum definido
+
+ftpindex_cmds=Comandos FTP

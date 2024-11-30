@@ -7,8 +7,8 @@ index_apply=Anvend ændringer
 index_applymsg=Klik på denne knap for at anvende den aktuelle konfiguration ved at sende et SIGHUP-signal til den kørende ProFTPD-proces.
 index_applymsg2=Klik på denne knap for at anvende den aktuelle konfiguration ved at stoppe og genstarte ProFTPD.
 index_start=Start server
-index_startmsg=Klik på denne knap for at starte FTP-serveren med den aktuelle konfiguration. Du kan også konfigurere serveren, der skal startes automatisk efter behov ved hjælp af modulet <a href='$1'>Internet Services</a>.
-index_startmsg2=Klik på denne knap for at starte FTP-serveren med den aktuelle konfiguration. Du kan også konfigurere serveren, der skal startes automatisk efter behov ved hjælp af inetd eller et lignende program.
+index_startmsg=Klik på denne knap for at starte FTP-serveren med den aktuelle konfiguration.
+index_startmsg2=Klik på denne knap for at starte FTP-serveren med den aktuelle konfiguration.
 index_stop=Stop server
 index_stopmsg=Klik på denne knap for at stoppe FTP-serveren, hvilket forhindrer, at nye FTP-klienter tilsluttes.
 index_return=hovedmenu
@@ -27,6 +27,8 @@ index_global=Global konfiguration
 index_create=Opret virtuel server
 index_version=ProFTPd version $1 
 index_proftpd=proftpd
+index_dlheader=Tilføj indstillinger
+index_dlmode=Tilføj muligheder for
 
 efailed=Kunne ikke gemme $1 
 
@@ -37,6 +39,7 @@ type_3=Adgangskontrol
 type_4=Diverse
 type_5=Bruger og gruppe
 type_6=Godkendelse
+type_7=SSL-indstillinger
 
 virt_title=Valg af virtuel server
 virt_header1=For $1 
@@ -380,6 +383,19 @@ mod_readme_display=Underret brugeren om readme-filer, der matcher
 mod_readme_none=Ingen
 mod_readme_edisplay=Manglende readme-filer mønster
 
+mod_tls_engine=Aktiver SSL-kryptering?
+mod_tls_required=SSL påkrævet?
+mod_tls_ctrl=Til kontrolkanal
+mod_tls_auth=Til autentificering
+mod_tls_authdata=Til autentificering og data
+mod_tls_file=SSL certifikat fil
+mod_tls_efile=SSL-certifikatfil findes ikke!
+mod_tls_key=SSL nøgle fil
+mod_tls_ekey=SSL nøglefil findes ikke!
+mod_tls_ca=SSL CA-certifikatfil
+mod_tls_eca=SSL CA-certifikatfil findes ikke!
+mod_tls_none=Ingen sæt
+
 start_err=Kunne ikke starte FTP-server
 start_einetd=Du kan ikke starte serverdemonen, når du er i inetd-tilstand.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Tilføj valgmuligheder per kommando for ..
 ftpindex_header2=$1 i $2 
 ftpindex_return=pr. katalogindstillingsfil
 ftpindex_header=For $1 
+ftpindex_cmds=FTP-kommandoer
 
 find_err=Kunne ikke finde indstillingsfiler
 find_eanon=Anonym FTP er ikke opsat på nogen virtuel server

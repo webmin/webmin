@@ -1,0 +1,5 @@
+acl_user_strict=Włącz rygorystyczne sprawdzanie własności użytkownika
+acl_user_strict_desc=Jeśli włączone, użytkownik może usuwać i przenosić tylko pliki, których jest właścicielem. Różni się to od standardowego zachowania Unix, gdzie użytkownik może usuwać lub przenosić dowolne pliki w katalogu, do którego ma dostęp do zapisu
+
+error_write=nie masz uprawnień do zapisu tego pliku
+error_move=nie masz uprawnień do przeniesienia tego pliku

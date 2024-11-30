@@ -7,8 +7,8 @@ index_apply=Applika l-Bidliet
 index_applymsg=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni kurrenti billi tibgħat sinjal SIGHUP għall-proċess ProFTPD li jkun għaddej.
 index_applymsg2=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni kurrenti billi twaqqaf u tibda mill-ġdid ProFTPD.
 index_start=Ibda Server
-index_startmsg=Ikklikkja din il-buttuna biex tibda s-server FTP bil-konfigurazzjoni kurrenti. Tista 'wkoll tikkonfigura s-server biex tibda awtomatikament meta jkun meħtieġ billi tuża l-modulu <a href='$1'>Internet Services</a>.
-index_startmsg2=Ikklikkja din il-buttuna biex tibda s-server FTP bil-konfigurazzjoni kurrenti. Tista 'wkoll tikkonfigura s-server biex jinbeda awtomatikament meta jkun meħtieġ billi tuża inetd jew xi programm ekwivalenti.
+index_startmsg=Ikklikkja din il-buttuna biex tibda s-server FTP bil-konfigurazzjoni attwali.
+index_startmsg2=Ikklikkja din il-buttuna biex tibda s-server FTP bil-konfigurazzjoni attwali.
 index_stop=Waqqaf is-Server
 index_stopmsg=Ikklikkja din il-buttuna biex twaqqaf is-server FTP, li jimpedixxi lil xi klijenti FTP ġodda milli jikkonnettjaw.
 index_return=menu prinċipali
@@ -27,6 +27,8 @@ index_global=Konfigurazzjoni Globali
 index_create=Oħloq server virtwali
 index_version=Verżjoni ProFTPd $1 
 index_proftpd=ProFTPd
+index_dlheader=Żid Għażliet
+index_dlmode=Żid għażliet għal
 
 efailed=Ma rnexxielux jiffranka $1 
 
@@ -37,6 +39,7 @@ type_3=Kontroll tal-Aċċess
 type_4=Diversi
 type_5=Utent u Grupp
 type_6=Awtentikazzjoni
+type_7=Għażliet SSL
 
 virt_title=Għażliet ta 'Server Virtwali
 virt_header1=Għal $1 
@@ -380,6 +383,19 @@ mod_readme_display=Avża lill-utent dwar l-allinjament ta 'fajls readme
 mod_readme_none=Xejn
 mod_readme_edisplay=Nieqes il-mudell ta 'fajls readme
 
+mod_tls_engine=Jippermetti l-encryption SSL?
+mod_tls_required=SSL meħtieġ?
+mod_tls_ctrl=Għall-kanal ta 'kontroll
+mod_tls_auth=Għall-awtentikazzjoni
+mod_tls_authdata=Għal awtentikazzjoni u data
+mod_tls_file=Fajl taċ-ċertifikat SSL
+mod_tls_efile=Il-fajl taċ-ċertifikat SSL ma jeżistix!
+mod_tls_key=Fajl taċ-ċavetta SSL
+mod_tls_ekey=Il-fajl taċ-ċavetta SSL ma jeżistix!
+mod_tls_ca=Fajl taċ-ċertifikat SSL CA
+mod_tls_eca=Il-fajl taċ-ċertifikat SSL CA ma jeżistix!
+mod_tls_none=Xejn stabbilit
+
 start_err=Naqset milli tibda server FTP
 start_einetd=Ma tistax tibda d-daemon tas-server meta tkun fil-mod inetd.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Żid għażliet għal kull kmand għal ..
 ftpindex_header2=$1 f' $2 
 ftpindex_return=fajl b'għażliet ta 'direttorju
 ftpindex_header=Għal $1 
+ftpindex_cmds=Kmandi FTP
 
 find_err=Naqset milli ssib fajls ta 'għażliet
 find_eanon=FTP anonimu m'huwa installat fl-ebda server virtwali

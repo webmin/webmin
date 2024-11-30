@@ -6,8 +6,6 @@ index_econf=Webmin配置文件$1不存在或无效。可能您的<a href='$2'>�
 index_apply=应用更改
 index_applymsg=点击该按钮通过给正在运行的ProFTPD 程序发送SIGHUP信号应用当前的配置。
 index_start=启动服务器
-index_startmsg=点击该按钮以当前的配置来启动FTP服务器。若需要的话，您也可以使用<a href='$1'>Internet 服务</a>模块将服务器配置为自动启动。
-index_startmsg2=点击该按钮以当前的配置来启动FTP服务器。若需要的话，您也可使用inetd或某些同等程序将服务器配置成为自动启动。
 index_return=主菜单
 index_virts=虚拟服务器
 index_virt=虚拟服务器

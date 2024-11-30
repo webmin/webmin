@@ -1,0 +1,5 @@
+acl_user_strict=启用严格的用户所有权检查
+acl_user_strict_desc=如果启用，用户只能删除和移动自己拥有的文件。这与标准的 Unix 行为不同，在标准的 Unix 行为中，用户可以删除或移动他们有写权限的目录中的任何文件
+
+error_write=您没有对此文件的写入权限
+error_move=您无权移动此文件

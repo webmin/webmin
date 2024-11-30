@@ -131,6 +131,8 @@ acl_work_as=A fájlok elérése Unix felhasználóként
 acl_root=Gyökér (óvatosan adja meg a megbízhatatlan felhasználók számára!)
 acl_same=Ugyanaz, mint a Webmin bejelentkezés
 acl_user=Konkrét Unix felhasználó
+acl_user_strict=Engedélyezze a szigorú felhasználói tulajdonjog-ellenőrzést
+acl_user_strict_desc=Ha engedélyezve van, a felhasználó csak a saját fájljait törölheti és helyezheti át. Ez eltér a Unix szabványos viselkedésétől, ahol a felhasználó bármilyen fájlt törölhet vagy áthelyezhet egy olyan könyvtárban, amelyhez írási hozzáférése van
 acl_euser=A kiválasztott Unix felhasználó nem létezik!
 acl_epath=A (z) $1 elérési út nem létezik
 acl_max=A feltöltött fájlok maximális mérete
@@ -154,6 +156,9 @@ menu_bookmarks=Könyvjelzők
 notallowed=A (z) $1 hozzáférése nem engedélyezett. Az engedélyezett könyvtárak : $2 
 error_upload_emax=A feltöltött fájl nagyobb, mint a (z) $1 korlát
 extract_etype=Nem támogatott archívumtípus
+
+error_write=nincs írási jogosultsága ehhez a fájlhoz
+error_move=nincs jogosultsága a fájl áthelyezésére
 
 info_total1=Összesen: $1 fájl és $2 könyvtár
 info_total2=Összesen: $1 fájl és $2 könyvtár

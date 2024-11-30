@@ -1,7 +1,13 @@
 index_applymsg2=Натисніть цю кнопку, щоб застосувати поточну конфігурацію, зупинивши і перезапустивши ProFTPD.
+index_startmsg=Натисніть цю кнопку, щоб запустити FTP-сервер із поточною конфігурацією.
+index_startmsg2=Натисніть цю кнопку, щоб запустити FTP-сервер із поточною конфігурацією.
 index_stop=Зупинити сервер
 index_stopmsg=Натисніть цю кнопку, щоб зупинити FTP-сервер, що запобіжить підключенню нових клієнтів FTP.
 index_proftpd=ProFTPd
+index_dlheader=Додати параметри
+index_dlmode=Додати параметри для
+
+type_7=Параметри SSL
 
 dir_header5=Для каталогу $1 у всьому світі
 
@@ -19,12 +25,27 @@ mod_core_firstcdt=Завжди показуй
 mod_ls_options=Параметри списку каталогів
 mod_ls_strict=Переотримати параметри користувача?
 
+mod_tls_engine=Увімкнути шифрування SSL?
+mod_tls_required=Потрібен SSL?
+mod_tls_ctrl=Для каналу управління
+mod_tls_auth=Для аутентифікації
+mod_tls_authdata=Для автентифікації та даних
+mod_tls_file=Файл сертифіката SSL
+mod_tls_efile=Файл сертифіката SSL не існує!
+mod_tls_key=Ключовий файл SSL
+mod_tls_ekey=Файл ключа SSL не існує!
+mod_tls_ca=Файл сертифіката SSL CA
+mod_tls_eca=Файл сертифіката SSL CA не існує!
+mod_tls_none=Не встановлено
+
 stop_err=Не вдалося зупинити FTP-сервер
 stop_einetd=Ви не можете зупинити демон сервера в режимі inetd.
 stop_erun=Не працює
 
 apply_err=Не вдалося застосувати конфігурацію FTP
 apply_egone=Більше не працює
+
+ftpindex_cmds=Команди FTP
 
 log_anonc=Установіть анонімний FTP для сервера $1 
 log_anons=Переконфігурований анонімний FTP для сервера $1 

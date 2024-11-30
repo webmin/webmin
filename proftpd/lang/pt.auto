@@ -7,8 +7,8 @@ index_apply=Aplicar mudanças
 index_applymsg=Clique neste botão para aplicar a configuração atual enviando um sinal SIGHUP para o processo ProFTPD em execução.
 index_applymsg2=Clique neste botão para aplicar a configuração atual parando e reiniciando o ProFTPD.
 index_start=Iniciar servidor
-index_startmsg=Clique neste botão para iniciar o servidor FTP com a configuração atual. Você também pode configurar o servidor para ser iniciado automaticamente quando necessário, usando o módulo <a href='$1'>Serviços da Internet</a>.
-index_startmsg2=Clique neste botão para iniciar o servidor FTP com a configuração atual. Você também pode configurar o servidor para ser iniciado automaticamente quando necessário, usando o inetd ou algum programa equivalente.
+index_startmsg=Clique neste botão para iniciar o servidor FTP com a configuração atual.
+index_startmsg2=Clique neste botão para iniciar o servidor FTP com a configuração atual.
 index_stop=Parar servidor
 index_stopmsg=Clique neste botão para parar o servidor FTP, o que impedirá a conexão de novos clientes FTP.
 index_return=menu principal
@@ -27,6 +27,8 @@ index_global=Configuração Global
 index_create=Criar servidor virtual
 index_version=Versão ProFTPd $1 
 index_proftpd=ProFTPd
+index_dlheader=Adicionar opções
+index_dlmode=Adicionar opções para
 
 efailed=Falha ao salvar $1 
 
@@ -37,6 +39,7 @@ type_3=Controle de acesso
 type_4=Diversos
 type_5=Usuário e Grupo
 type_6=Autenticação
+type_7=Opções SSL
 
 virt_title=Opções do servidor virtual
 virt_header1=Por 1
@@ -380,6 +383,19 @@ mod_readme_display=Notificar o usuário sobre os arquivos leia-me correspondente
 mod_readme_none=Nenhum
 mod_readme_edisplay=Padrão de arquivos leia-me ausentes
 
+mod_tls_engine=Habilitar criptografia SSL?
+mod_tls_required=SSL necessário?
+mod_tls_ctrl=Para canal de controle
+mod_tls_auth=Para autenticação
+mod_tls_authdata=Para autenticação e dados
+mod_tls_file=Arquivo de certificado SSL
+mod_tls_efile=O arquivo do certificado SSL não existe!
+mod_tls_key=Arquivo de chave SSL
+mod_tls_ekey=O arquivo de chave SSL não existe!
+mod_tls_ca=Arquivo de certificado SSL CA
+mod_tls_eca=O arquivo de certificado SSL CA não existe!
+mod_tls_none=Nenhum definido
+
 start_err=Falha ao iniciar o servidor FTP
 start_einetd=Você não pode iniciar o daemon do servidor quando estiver no modo inetd.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Adicione opções por comando para ..
 ftpindex_header2=$1 em $2 
 ftpindex_return=arquivo de opções por diretório
 ftpindex_header=Por 1
+ftpindex_cmds=Comandos FTP
 
 find_err=Falha ao encontrar arquivos de opções
 find_eanon=O FTP anônimo não está configurado em nenhum servidor virtual

@@ -7,8 +7,6 @@ index_apply=Aplica els Canvis
 index_applymsg=Fes clic sobre aquest botó per aplicar la configuració actual enviant un senyal SIGHUP al procés ProFTPD en execució.
 index_applymsg2=Fes clic sobre aquest botó per aplicar la configuració actual aturant i reiniciant ProFTPD.
 index_start=Engega el Servidor
-index_startmsg=Fes clic sobre aquest botó per engegar el servidor FTP amb la configuració actual. També pots fer que el servidor s'engegui automàticament quan calgui amb el mòdul <a href='$1'>Serveis d'Internet</a>.
-index_startmsg2=Fes clic sobre aquest botó per engegar el servidor FTP amb la configuració actual. També pots fer que el servidor s'engegui automàticament quan calgui amb <i>inetd</i> o algun programa equivalent.
 index_stop=Atura el Servidor
 index_stopmsg=Fes clic sobre aquest botó per aturar el servidor FTP, cosa que impedirà la connexió de nous clients FTP.
 index_return=al menú principal

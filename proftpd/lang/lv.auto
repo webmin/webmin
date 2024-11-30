@@ -7,8 +7,8 @@ index_apply=Lietot izmaiņas
 index_applymsg=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo konfigurāciju, nosūtot SIGHUP signālu uz notiekošo ProFTPD procesu.
 index_applymsg2=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo konfigurāciju, pārtraucot un atkārtoti startējot ProFTPD.
 index_start=Startēt serveri
-index_startmsg=Noklikšķiniet uz šīs pogas, lai startētu FTP serveri ar pašreizējo konfigurāciju. Varat arī konfigurēt servera automātisku palaišanu, ja nepieciešams, izmantojot <a href='$1'>interneta pakalpojumus</a>.
-index_startmsg2=Noklikšķiniet uz šīs pogas, lai startētu FTP serveri ar pašreizējo konfigurāciju. Varat arī konfigurēt serveri tā, lai tas automātiski tiktu startēts, ja nepieciešams, izmantojot inetd vai līdzvērtīgu programmu.
+index_startmsg=Noklikšķiniet uz šīs pogas, lai palaistu FTP serveri ar pašreizējo konfigurāciju.
+index_startmsg2=Noklikšķiniet uz šīs pogas, lai palaistu FTP serveri ar pašreizējo konfigurāciju.
 index_stop=Apturēt serveri
 index_stopmsg=Noklikšķiniet uz šīs pogas, lai apturētu FTP serveri, kas neļaus izveidot jaunus FTP klientus.
 index_return=galvenā izvēlne
@@ -27,6 +27,8 @@ index_global=Globālā konfigurācija
 index_create=Izveidojiet virtuālo serveri
 index_version=ProFTPd versija $1 
 index_proftpd=ProFTPd
+index_dlheader=Pievienot opcijas
+index_dlmode=Pievienojiet opcijas
 
 efailed=Neizdevās saglabāt $1 
 
@@ -37,6 +39,7 @@ type_3=Piekļuves kontrole
 type_4=Dažādi
 type_5=Lietotājs un grupa
 type_6=Autentifikācija
+type_7=SSL opcijas
 
 virt_title=Virtuālā servera opcijas
 virt_header1=$1 
@@ -380,6 +383,19 @@ mod_readme_display=Paziņojiet lietotājam par readme failu atbilstību
 mod_readme_none=Nav
 mod_readme_edisplay=Trūkst readme failu parauga
 
+mod_tls_engine=Vai iespējot SSL šifrēšanu?
+mod_tls_required=Nepieciešams SSL?
+mod_tls_ctrl=Kontroles kanālam
+mod_tls_auth=Autentifikācijai
+mod_tls_authdata=Autentifikācijai un datiem
+mod_tls_file=SSL sertifikāta fails
+mod_tls_efile=SSL sertifikāta fails neeksistē!
+mod_tls_key=SSL atslēgas fails
+mod_tls_ekey=SSL atslēgas fails neeksistē!
+mod_tls_ca=SSL CA sertifikāta fails
+mod_tls_eca=SSL CA sertifikāta fails neeksistē!
+mod_tls_none=Nav iestatīts neviens
+
 start_err=Neizdevās startēt FTP serveri
 start_einetd=Iekšējā režīmā nevar palaist servera dēmonu.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Pievienojiet katras komandas iespējas
 ftpindex_header2=$1 $2 
 ftpindex_return=direktoriju opciju fails
 ftpindex_header=$1 
+ftpindex_cmds=FTP komandas
 
 find_err=Neizdevās atrast iespēju failus
 find_eanon=Nevienā virtuālajā serverī nav iestatīta anonīma FTP

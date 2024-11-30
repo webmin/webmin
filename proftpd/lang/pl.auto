@@ -1,0 +1,21 @@
+index_startmsg=Kliknij ten przycisk, aby uruchomić serwer FTP z bieżącą konfiguracją.
+index_startmsg2=Kliknij ten przycisk, aby uruchomić serwer FTP z bieżącą konfiguracją.
+index_dlheader=Dodaj opcje
+index_dlmode=Dodaj opcje dla
+
+type_7=Opcje SSL
+
+mod_tls_engine=Włączyć szyfrowanie SSL?
+mod_tls_required=Czy SSL jest wymagany?
+mod_tls_ctrl=Dla kanału sterującego
+mod_tls_auth=Do uwierzytelniania
+mod_tls_authdata=Do uwierzytelniania i danych
+mod_tls_file=Plik certyfikatu SSL
+mod_tls_efile=Plik certyfikatu SSL nie istnieje!
+mod_tls_key=Plik klucza SSL
+mod_tls_ekey=Plik klucza SSL nie istnieje!
+mod_tls_ca=Plik certyfikatu SSL CA
+mod_tls_eca=Plik certyfikatu SSL CA nie istnieje!
+mod_tls_none=Nie ustawiono
+
+ftpindex_cmds=Polecenia FTP

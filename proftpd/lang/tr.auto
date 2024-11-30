@@ -7,8 +7,8 @@ index_apply=Değişiklikleri uygula
 index_applymsg=Çalışan ProFTPD işlemine bir SIGHUP sinyali göndererek mevcut yapılandırmayı uygulamak için bu düğmeyi tıklatın.
 index_applymsg2=ProFTPD'yi durdurup yeniden başlatarak mevcut yapılandırmayı uygulamak için bu düğmeyi tıklatın.
 index_start=Sunucuyu Başlat
-index_startmsg=FTP sunucusunu geçerli yapılandırmayla başlatmak için bu düğmeyi tıklatın. <a href='$1'>Internet Hizmetleri</a> modülünü kullanarak sunucuyu gerektiğinde otomatik olarak başlatılacak şekilde de yapılandırabilirsiniz.
-index_startmsg2=FTP sunucusunu geçerli yapılandırmayla başlatmak için bu düğmeyi tıklatın. Sunucuyu, inetd veya eşdeğer bir program kullanarak gerektiğinde otomatik olarak başlatılacak şekilde de yapılandırabilirsiniz.
+index_startmsg=FTP sunucusunu mevcut yapılandırmayla başlatmak için bu butona tıklayın.
+index_startmsg2=FTP sunucusunu mevcut yapılandırmayla başlatmak için bu butona tıklayın.
 index_stop=Sunucuyu Durdur
 index_stopmsg=Yeni FTP istemcilerinin bağlanmasını engelleyecek FTP sunucusunu durdurmak için bu düğmeyi tıklatın.
 index_return=ana menü
@@ -27,6 +27,8 @@ index_global=Global Yapılandırma
 index_create=Sanal sunucu oluştur
 index_version=ProFTPd sürümü $1 
 index_proftpd=proftpd
+index_dlheader=Seçenekleri Ekle
+index_dlmode=Seçenekler ekleyin
 
 efailed=$1 kaydedilemedi
 
@@ -37,6 +39,7 @@ type_3=Giriş kontrolu
 type_4=Çeşitli
 type_5=Kullanıcı ve Grup
 type_6=Kimlik Doğrulama
+type_7=SSL Seçenekleri
 
 virt_title=Sanal Sunucu Seçenekleri
 virt_header1=1 için
@@ -380,6 +383,19 @@ mod_readme_display=Benioku dosyalarını eşleştiren kullanıcıyı bilgilendir
 mod_readme_none=Yok
 mod_readme_edisplay=Benioku dosyaları kalıbı eksik
 
+mod_tls_engine=SSL şifrelemesini etkinleştir?
+mod_tls_required=SSL gerekli mi?
+mod_tls_ctrl=Kontrol kanalı için
+mod_tls_auth=Kimlik doğrulama için
+mod_tls_authdata=Kimlik doğrulama ve veri için
+mod_tls_file=SSL sertifika dosyası
+mod_tls_efile=SSL sertifika dosyası bulunamadı!
+mod_tls_key=SSL anahtar dosyası
+mod_tls_ekey=SSL anahtar dosyası bulunamadı!
+mod_tls_ca=SSL CA sertifika dosyası
+mod_tls_eca=SSL CA sertifika dosyası bulunamadı!
+mod_tls_none=Hiçbiri ayarlanmadı
+
 start_err=FTP sunucusu başlatılamadı
 start_einetd=İnetd modundayken sunucu arka plan programını başlatamazsınız.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=İçin komut başına seçenekler ekle ..
 ftpindex_header2=$2 içinde $1 
 ftpindex_return=dizin başına seçenekler dosyası
 ftpindex_header=1 için
+ftpindex_cmds=FTP komutları
 
 find_err=Seçenek dosyaları bulunamadı
 find_eanon=Anonim FTP herhangi bir sanal sunucuda ayarlanmamış

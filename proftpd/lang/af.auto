@@ -7,8 +7,8 @@ index_apply=Pas veranderinge toe
 index_applymsg=Klik op hierdie knoppie om die huidige konfigurasie toe te pas deur 'n SIGHUP-sein na die ProFTPD-proses te stuur.
 index_applymsg2=Klik op hierdie knoppie om die huidige konfigurasie toe te pas deur ProFTPD te stop en weer te begin.
 index_start=Begin bediener
-index_startmsg=Klik op hierdie knoppie om die FTP-bediener met die huidige konfigurasie te begin. U kan ook die bediener instel om outomaties te begin wanneer dit nodig is met die module <a href='$1'>Internet Services</a>.
-index_startmsg2=Klik op hierdie knoppie om die FTP-bediener met die huidige konfigurasie te begin. U kan ook die bediener instel om outomaties te begin, indien nodig met behulp van inetd of een of ander gelykwaardige program.
+index_startmsg=Klik hierdie knoppie om die FTP-bediener met die huidige konfigurasie te begin.
+index_startmsg2=Klik hierdie knoppie om die FTP-bediener met die huidige konfigurasie te begin.
 index_stop=Stop bediener
 index_stopmsg=Klik op hierdie knoppie om die FTP-bediener te stop, wat sal verhoed dat nuwe FTP-kliente verbind.
 index_return=hoof spyskaart
@@ -27,6 +27,8 @@ index_global=Globale konfigurasie
 index_create=Skep virtuele bediener
 index_version=ProFTPd weergawe $1 
 index_proftpd=proftpd
+index_dlheader=Voeg opsies by
+index_dlmode=Voeg opsies by vir
 
 efailed=Kon nie $1 stoor nie
 
@@ -37,6 +39,7 @@ type_3=Toegangsbeheer
 type_4=diverse
 type_5=Gebruiker en groep
 type_6=verifikasie
+type_7=SSL-opsies
 
 virt_title=Virtuele bedieneropsies
 virt_header1=Vir $1 
@@ -380,6 +383,19 @@ mod_readme_display=Stel die gebruiker in kennis van die readme-lêers wat ooreen
 mod_readme_none=Geen
 mod_readme_edisplay=Ontbrekende leeslêerpatroon
 
+mod_tls_engine=Aktiveer SSL-enkripsie?
+mod_tls_required=SSL vereis?
+mod_tls_ctrl=Vir beheerkanaal
+mod_tls_auth=Vir verifikasie
+mod_tls_authdata=Vir verifikasie en data
+mod_tls_file=SSL-sertifikaatlêer
+mod_tls_efile=SSL-sertifikaatlêer bestaan nie!
+mod_tls_key=SSL sleutel lêer
+mod_tls_ekey=SSL-sleutellêer bestaan nie!
+mod_tls_ca=SSL CA-sertifikaatlêer
+mod_tls_eca=SSL CA-sertifikaatlêer bestaan nie!
+mod_tls_none=Geen gestel nie
+
 start_err=Kon nie FTP-bediener begin nie
 start_einetd=U kan nie die bediener-dememon begin in die inetd-modus nie.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Voeg opsies per opdrag by vir ..
 ftpindex_header2=$1 in $2 
 ftpindex_return=opsies per lêergids
 ftpindex_header=Vir $1 
+ftpindex_cmds=FTP-opdragte
 
 find_err=Kon nie opsielêers vind nie
 find_eanon=Anonieme FTP word nie op enige virtuele bediener opgestel nie

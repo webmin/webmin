@@ -1,7 +1,13 @@
 index_applymsg2=单击此按钮可通过停止并重新启动ProFTPD来应用当前配置。
+index_startmsg=单击此按钮可以使用当前配置启动 FTP 服务器。
+index_startmsg2=单击此按钮可以使用当前配置启动 FTP 服务器。
 index_stop=停止服务器
 index_stopmsg=单击此按钮停止FTP服务器，这将阻止任何新的FTP客户端连接。
 index_proftpd=ProFTPd
+index_dlheader=添加选项
+index_dlmode=添加选项
+
+type_7=SSL 选项
 
 dir_header5=对于全局目录 $1
 
@@ -33,12 +39,27 @@ mod_ls_strict=覆盖用户选项？
 mod_auth_home=主目录
 mod_auth_none=没有
 
+mod_tls_engine=启用 SSL 加密？
+mod_tls_required=需要 SSL 吗？
+mod_tls_ctrl=对于控制通道
+mod_tls_auth=用于身份验证
+mod_tls_authdata=用于身份验证和数据
+mod_tls_file=SSL 证书文件
+mod_tls_efile=SSL 证书文件不存在！
+mod_tls_key=SSL 密钥文件
+mod_tls_ekey=SSL 密钥文件不存在！
+mod_tls_ca=SSL CA 证书文件
+mod_tls_eca=SSL CA 证书文件不存在！
+mod_tls_none=未设置
+
 stop_err=停止FTP服务器失败
 stop_einetd=在inetd模式下，无法停止服务器守护程序。
 stop_erun=没有运行
 
 apply_err=无法应用FTP配置
 apply_egone=不再运行
+
+ftpindex_cmds=FTP 命令
 
 log_anonc=为服务器 $1设置匿名FTP
 log_anons=为服务器 $1重新配置了匿名FTP

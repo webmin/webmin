@@ -7,8 +7,8 @@ index_apply=Uporabi spremembe
 index_applymsg=Kliknite ta gumb, če želite uveljaviti trenutno konfiguracijo, tako da pošljete signal SIGHUP v teče ProFTPD postopek.
 index_applymsg2=Kliknite ta gumb, če želite uporabiti trenutno konfiguracijo, tako da ustavite in znova zaženete ProFTPD.
 index_start=Zaženite strežnik
-index_startmsg=Kliknite ta gumb, da zaženete FTP strežnik s trenutno konfiguracijo. Po potrebi lahko tudi konfigurirate strežnik, da se samodejno zažene s pomočjo modula <a href='$1'>Internet Services</a>.
-index_startmsg2=Kliknite ta gumb, da zaženete FTP strežnik s trenutno konfiguracijo. Prav tako lahko konfigurirate strežnik, da se samodejno zažene po potrebi z uporabo inetd ali katerega koli enakovrednega programa.
+index_startmsg=Kliknite ta gumb, da zaženete strežnik FTP s trenutno konfiguracijo.
+index_startmsg2=Kliknite ta gumb, da zaženete strežnik FTP s trenutno konfiguracijo.
 index_stop=Ustavite strežnik
 index_stopmsg=Kliknite ta gumb, da zaustavite strežnik FTP, kar bo preprečilo povezavo novih odjemalcev FTP.
 index_return=glavni meni
@@ -27,6 +27,8 @@ index_global=Globalna konfiguracija
 index_create=Ustvari virtualni strežnik
 index_version=ProFTPd različica $1 
 index_proftpd=ProFTPd
+index_dlheader=Dodajanje možnosti
+index_dlmode=Dodajte možnosti za
 
 efailed=$1 ni bilo mogoče shraniti
 
@@ -37,6 +39,7 @@ type_3=Nadzor dostopa
 type_4=Razno
 type_5=Uporabnik in skupina
 type_6=Preverjanje pristnosti
+type_7=Možnosti SSL
 
 virt_title=Možnosti virtualnega strežnika
 virt_header1=Za $1 
@@ -380,6 +383,19 @@ mod_readme_display=Obvesti uporabnika datotek readme, ki se ujemajo
 mod_readme_none=Noben
 mod_readme_edisplay=Manjka vzorec datotek readme
 
+mod_tls_engine=Omogočiti šifriranje SSL?
+mod_tls_required=Potreben SSL?
+mod_tls_ctrl=Za nadzorni kanal
+mod_tls_auth=Za avtentikacijo
+mod_tls_authdata=Za avtentikacijo in podatke
+mod_tls_file=Datoteka potrdila SSL
+mod_tls_efile=Datoteka SSL certifikata ne obstaja!
+mod_tls_key=ključna datoteka SSL
+mod_tls_ekey=Datoteka s ključem SSL ne obstaja!
+mod_tls_ca=Datoteka potrdila SSL CA
+mod_tls_eca=Datoteka potrdila SSL CA ne obstaja!
+mod_tls_none=Ni nastavljeno
+
 start_err=FTP strežnika ni bilo mogoče zagnati
 start_einetd=Demona strežnika ne morete zagnati, če ste v načinu inetd.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Dodajte možnosti po ukazu za ..
 ftpindex_header2=$1 v $2 
 ftpindex_return=datoteka z možnostmi v imeniku
 ftpindex_header=Za $1 
+ftpindex_cmds=FTP ukazi
 
 find_err=Ni bilo mogoče najti datotek z možnostmi
 find_eanon=Anonimni FTP ni nameščen v nobenem virtualnem strežniku

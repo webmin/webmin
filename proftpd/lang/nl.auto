@@ -1,0 +1,21 @@
+index_startmsg=Klik op deze knop om de FTP-server te starten met de huidige configuratie.
+index_startmsg2=Klik op deze knop om de FTP-server te starten met de huidige configuratie.
+index_dlheader=Opties toevoegen
+index_dlmode=Voeg opties toe voor
+
+type_7=SSL-opties
+
+mod_tls_engine=SSL-codering inschakelen?
+mod_tls_required=SSL vereist?
+mod_tls_ctrl=Voor besturingskanaal
+mod_tls_auth=Voor authenticatie
+mod_tls_authdata=Voor authenticatie en gegevens
+mod_tls_file=SSL-certificaatbestand
+mod_tls_efile=SSL-certificaatbestand bestaat niet!
+mod_tls_key=SSL-sleutelbestand
+mod_tls_ekey=SSL-sleutelbestand bestaat niet!
+mod_tls_ca=SSL CA-certificaatbestand
+mod_tls_eca=SSL CA-certificaatbestand bestaat niet!
+mod_tls_none=Geen ingesteld
+
+ftpindex_cmds=FTP-opdrachten

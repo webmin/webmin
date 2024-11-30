@@ -1,8 +1,14 @@
 index_applymsg2=Fare clic su questo pulsante per applicare la configurazione corrente arrestando e riavviando ProFTPD.
+index_startmsg=Fare clic su questo pulsante per avviare il server FTP con la configurazione corrente.
+index_startmsg2=Fare clic su questo pulsante per avviare il server FTP con la configurazione corrente.
 index_stop=Arresta il server
 index_stopmsg=Fare clic su questo pulsante per arrestare il server FTP, che impedirà a tutti i nuovi client FTP di connettersi.
 index_version=Versione ProFTPd $1 
 index_proftpd=ProFTPd
+index_dlheader=Aggiungi opzioni
+index_dlmode=Aggiungi opzioni per
+
+type_7=Opzioni SSL
 
 dir_header5=Per la directory $1 a livello globale
 
@@ -35,12 +41,27 @@ mod_ls_strict=Sostituire le opzioni utente?
 mod_auth_home=Home directory
 mod_auth_none=Nessuna
 
+mod_tls_engine=Abilitare la crittografia SSL?
+mod_tls_required=SSL richiesto?
+mod_tls_ctrl=Per il canale di controllo
+mod_tls_auth=Per l'autenticazione
+mod_tls_authdata=Per l'autenticazione e i dati
+mod_tls_file=File del certificato SSL
+mod_tls_efile=Il file del certificato SSL non esiste!
+mod_tls_key=File chiave SSL
+mod_tls_ekey=Il file chiave SSL non esiste!
+mod_tls_ca=File del certificato SSL CA
+mod_tls_eca=Il file del certificato SSL CA non esiste!
+mod_tls_none=Nessuno impostato
+
 stop_err=Impossibile arrestare il server FTP
 stop_einetd=Non è possibile arrestare il daemon del server in modalità inetd.
 stop_erun=Non correndo
 
 apply_err=Impossibile applicare la configurazione FTP
 apply_egone=Non più in esecuzione
+
+ftpindex_cmds=Comandi FTP
 
 log_anonc=Configura FTP anonimo per il server $1 
 log_anons=FTP anonimo riconfigurato per il server $1 

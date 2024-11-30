@@ -1,1 +1,1 @@
-body blockquote:not([style*="border-left"]){border-left:1px solid #ccc;margin-left:6px;margin-top:0;margin-bottom:0;padding-left:12px;}pre{white-space:break-spaces;margin:0 0 4px 0}
+body{font: 13px/1.231 arial,helvetica,clean,sans-serif;}body blockquote:not([style*="border-left"]){border-left:1px solid #ccc;margin-left:6px;margin-top:0;margin-bottom:0;padding-left:12px;}pre{white-space:break-spaces;margin:0 0 4px 0;font-size: 12px;line-height:0.6;padding-top:0.3em;}p{margin:0;line-height:1.333}p:has(>br:only-child){line-height:0.666!important;}

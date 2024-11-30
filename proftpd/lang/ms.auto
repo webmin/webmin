@@ -7,8 +7,8 @@ index_apply=Terapkan Perubahan
 index_applymsg=Klik butang ini untuk menggunakan konfigurasi semasa dengan menghantar isyarat SIGHUP ke proses ProFTPD yang sedang berjalan.
 index_applymsg2=Klik butang ini untuk menerapkan konfigurasi semasa dengan menghentikan dan memulakan semula ProFTPD.
 index_start=Mula Server
-index_startmsg=Klik butang ini untuk memulakan pelayan FTP dengan konfigurasi semasa. Anda juga boleh mengkonfigurasi pelayan untuk dimulakan secara automatik apabila diperlukan menggunakan modul <a href='$1'>Perkhidmatan Internet</a>.
-index_startmsg2=Klik butang ini untuk memulakan pelayan FTP dengan konfigurasi semasa. Anda juga boleh mengkonfigurasi pelayan untuk dimulakan secara automatik apabila diperlukan menggunakan inetd atau beberapa program setara.
+index_startmsg=Klik butang ini untuk memulakan pelayan FTP dengan konfigurasi semasa.
+index_startmsg2=Klik butang ini untuk memulakan pelayan FTP dengan konfigurasi semasa.
 index_stop=Hentikan Server
 index_stopmsg=Klik butang ini untuk menghentikan pelayan FTP, yang akan menghalang mana-mana pelanggan FTP baru daripada menyambungkannya.
 index_return=menu utama
@@ -27,6 +27,8 @@ index_global=Konfigurasi Global
 index_create=Buat pelayan maya
 index_version=Versi ProFTPd $1 
 index_proftpd=ProFTPd
+index_dlheader=Tambah Pilihan
+index_dlmode=Tambah pilihan untuk
 
 efailed=Gagal menyimpan $1 
 
@@ -37,6 +39,7 @@ type_3=Kawalan Akses
 type_4=Pelbagai
 type_5=Pengguna dan Kumpulan
 type_6=Pengesahan
+type_7=Pilihan SSL
 
 virt_title=Pilihan Pelayan Maya
 virt_header1=Untuk $1 
@@ -380,6 +383,19 @@ mod_readme_display=Beritahu pengguna fail readme matching
 mod_readme_none=Tiada
 mod_readme_edisplay=Fail fail readme hilang
 
+mod_tls_engine=Dayakan penyulitan SSL?
+mod_tls_required=SSL diperlukan?
+mod_tls_ctrl=Untuk saluran kawalan
+mod_tls_auth=Untuk pengesahan
+mod_tls_authdata=Untuk pengesahan dan data
+mod_tls_file=Fail sijil SSL
+mod_tls_efile=Fail sijil SSL tidak wujud!
+mod_tls_key=Fail kunci SSL
+mod_tls_ekey=Fail kunci SSL tidak wujud!
+mod_tls_ca=Fail sijil SSL CA
+mod_tls_eca=Fail sijil SSL CA tidak wujud!
+mod_tls_none=Tiada set
+
 start_err=Gagal memulakan pelayan FTP
 start_einetd=Anda tidak boleh memulakan daemon pelayan apabila dalam mod inetd.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Tambah pilihan per-perintah untuk ..
 ftpindex_header2=$1 dalam $2 
 ftpindex_return=fail pilihan per direktori
 ftpindex_header=Untuk $1 
+ftpindex_cmds=arahan FTP
 
 find_err=Gagal mencari fail pilihan
 find_eanon=FTP tanpa nama tidak disediakan dalam mana-mana pelayan maya

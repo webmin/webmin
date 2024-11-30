@@ -1,6 +1,11 @@
 acls_selected=Setfacl sélectionné
 acl_allowed_paths_explain=Pour un utilisateur compatible root, si le répertoire autorisé est uniquement défini sur $HOME, il sera équivalent à / (accès complet au disque)
+acl_user_strict=Activer des contrôles stricts de propriété des utilisateurs
+acl_user_strict_desc=Si cette option est activée, l'utilisateur ne peut supprimer et déplacer que les fichiers dont il est propriétaire. Cela diffère du comportement standard d'Unix, où un utilisateur peut supprimer ou déplacer n'importe quel fichier dans un répertoire auquel il a accès en écriture
 config_per_page=Éléments à afficher par page
+
+error_write=vous n'avez pas l'autorisation d'écriture sur ce fichier
+error_move=vous n'avez pas la permission de déplacer ce fichier
 
 acls=Liste de contrôle d'accès
 acls_label=Liste de contrôle à appliquer

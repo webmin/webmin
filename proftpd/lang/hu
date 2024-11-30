@@ -6,8 +6,6 @@ index_econf=A(z) $1 ProFTPD konfigurációs fájl nem található, vagy érvény
 index_apply=Módosítások alkalmazása
 index_applymsg=Kattintson ide a jelenlegi konfiguráció alkalmazásához, egy SIGHUP jel küldésével a futó ProFTPD folyamatnak.
 index_start=Kiszolgáló elindítása
-index_startmsg=Kattintson ide, hogy a jelenlegi konfigurációval elindítsa az FTP-kiszolgálót. Szükség esetén a kiszolgálót beállíthatja automatikus indulásra is, az <a href='$1'>Internet-szolgáltatások</a> modul segítségével.
-index_startmsg2=Kattintson ide, hogy a jelenlegi konfigurációval elindítsa az FTP-kiszolgálót. Szükség esetén a kiszolgálót beállíthatja automatikus indulásra is, az inetd vagy egy ekvivalens program segítségével.
 index_return=Főmenü
 index_virts=Virtuális kiszolgálók
 index_virt=Virtuális kiszolgáló

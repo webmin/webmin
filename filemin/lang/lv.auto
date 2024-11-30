@@ -131,6 +131,8 @@ acl_work_as=Piekļūstiet failiem kā Unix lietotājs
 acl_root=Sakne (piešķiriet uzmanīgi neuzticamiem lietotājiem!)
 acl_same=Tas pats, kas Webmin pieteikšanās
 acl_user=Konkrēts Unix lietotājs
+acl_user_strict=Iespējot stingras lietotāju īpašumtiesību pārbaudes
+acl_user_strict_desc=Ja tas ir iespējots, lietotājs var dzēst un pārvietot tikai sev piederošos failus. Tas atšķiras no standarta Unix darbības, kad lietotājs var izdzēst vai pārvietot jebkuru failu direktorijā, kuram viņam ir rakstīšanas piekļuve
 acl_euser=Atlasītais Unix lietotājs neeksistē!
 acl_epath=Ceļš $1 neeksistē
 acl_max=Augšupielādēto failu maksimālais izmērs
@@ -154,6 +156,9 @@ menu_bookmarks=Grāmatzīmes
 notallowed=Jums nav atļauts piekļūt $1. Atļautie direktoriji ir : $2 
 error_upload_emax=Augšupielādētais fails ir lielāks par $1 ierobežojumu
 extract_etype=Neatbalstīts arhīva faila tips
+
+error_write=jums nav rakstīšanas atļaujas šim failam
+error_move=jums nav atļaujas pārvietot šo failu
 
 info_total1=Kopā: $1 fails un $2 direktorijs
 info_total2=Kopā: $1 faili un $2 direktorijs

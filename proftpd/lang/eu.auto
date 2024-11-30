@@ -7,8 +7,8 @@ index_apply=Aplikatu aldaketak
 index_applymsg=Egin klik botoi honetan uneko konfigurazioa aplikatzeko exekutatzen ari den ProFTPD prozesura SIGHUP seinale bat bidalita.
 index_applymsg2=Egin klik botoi honetan uneko konfigurazioa ProFTPD gelditu eta berriro martxan jartzeko.
 index_start=Hasi zerbitzaria
-index_startmsg=Egin klik botoi honetan FTP zerbitzaria uneko konfigurazioarekin hasteko. Zerbitzaria automatikoki konfigura dezakezu <a href='$1'>Internet Services</a> modulua erabiliz behar denean automatikoki abiarazteko.
-index_startmsg2=Egin klik botoi honetan FTP zerbitzaria uneko konfigurazioarekin hasteko. Inetd edo antzeko programaren bat erabiliz, zerbitzaria automatikoki abiaraz dezakezu.
+index_startmsg=Egin klik botoi honetan FTP zerbitzaria uneko konfigurazioarekin abiarazteko.
+index_startmsg2=Egin klik botoi honetan FTP zerbitzaria uneko konfigurazioarekin abiarazteko.
 index_stop=Gelditu zerbitzaria
 index_stopmsg=Egin klik botoi honetan FTP zerbitzaria gelditzeko. Horrek FTP bezero berririk konektatzea eragotziko du.
 index_return=menu nagusia
@@ -27,6 +27,8 @@ index_global=Konfigurazio globala
 index_create=Sortu zerbitzari birtuala
 index_version=ProFTPd $1 bertsioa
 index_proftpd=ProFTPd
+index_dlheader=Gehitu Aukerak
+index_dlmode=Gehitu aukerak
 
 efailed=Ezin izan da $1 gordetzea
 
@@ -37,6 +39,7 @@ type_3=Sarbide-kontrola
 type_4=Denetarik
 type_5=Erabiltzailea eta Taldea
 type_6=Autentifikazioa
+type_7=SSL aukerak
 
 virt_title=Zerbitzari birtualaren aukerak
 virt_header1=$1 erako
@@ -380,6 +383,19 @@ mod_readme_display=Erabiltzaileei irakurritako fitxategiak bat datozela jakinara
 mod_readme_none=Bat ere ez
 mod_readme_edisplay=Irakurtzeko fitxategi eredua falta da
 
+mod_tls_engine=SSL enkriptatzea gaitu?
+mod_tls_required=SSL behar da?
+mod_tls_ctrl=Kontrol kanalerako
+mod_tls_auth=Autentifikaziorako
+mod_tls_authdata=Autentifikaziorako eta datuetarako
+mod_tls_file=SSL ziurtagiriaren fitxategia
+mod_tls_efile=SSL ziurtagiriaren fitxategia ez da existitzen!
+mod_tls_key=SSL gako fitxategia
+mod_tls_ekey=SSL gako fitxategia ez da existitzen!
+mod_tls_ca=SSL CA ziurtagiriaren fitxategia
+mod_tls_eca=SSL CA ziurtagiriaren fitxategia ez dago!
+mod_tls_none=Ez dago ezarrita
+
 start_err=Huts egin du FTP zerbitzaria abiaraztean
 start_einetd=Ezin duzu zerbitzariaren demona abiarazi inetd moduan dagoenean.
 
@@ -410,6 +426,7 @@ ftpindex_addlimit=Gehitu komando bakoitzeko aukerak ..
 ftpindex_header2=$1 $2 an
 ftpindex_return=direktorio bakoitzeko aukeren fitxategia
 ftpindex_header=$1 erako
+ftpindex_cmds=FTP komandoak
 
 find_err=Ezin izan da aukerak fitxategiak aurkitu
 find_eanon=FTP anonimoak ez du zerbitzari birtualetan konfiguratuta

@@ -6,8 +6,6 @@ index_econf=El archivo de configuración ProFTPD $1 no existe o es inválido. Qu
 index_apply=Aplicar Cambios
 index_applymsg=Haz click en este botón para aplicar la configuración en curso mediante el envío de la señal SIGHUP al proceso ProFTPD actuálmente en ejecución.
 index_start=Arrancar Servidor
-index_startmsg=Haz click en este botón para arrancar el servidor FTP con la configuración actual. También puedes configurar el servidor para ser arrancado automáticamente cuando sea necesario mediante el módulo de <a href='$1'>Servicios de Internet</a>.
-index_startmsg2=Haz click en este botón para arrancar el servidor FTP con la configuración actual. También puedes configurar el servidor para ser arrancado automáticamente cuando sea necesario mediante inetd o algún programa similar.
 index_return=menú principal
 index_virts=Servidores Virtuales
 index_virt=Servidor Virtual
