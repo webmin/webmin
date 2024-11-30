@@ -348,6 +348,7 @@ if ($file =~ /^php.*?([\d\.]+)$/) {
 	             &has_command("php$nodot");
 	return $binary if ($binary);
 	}
+
 return $ver ? undef : &has_command("php");
 }
 
@@ -374,7 +375,10 @@ if ($file =~ /^php.*?([\d\.]+)$/) {
 	$ver =~ s/^(\d)(\d+)$/$1.$2/;
 	return $ver;
 	}
-return undef;
+
+# The php.ini has no version in the filename, so try to get the version from
+# the default php binary
+return &get_php_binary_version($file);
 }
 
 # get_php_binary_version(file|version-string)
@@ -393,8 +397,10 @@ my ($file) = @_;
 my $phpbinary = &get_php_ini_binary($file || $in{'file'});
 return undef if (!$phpbinary);
 my $phpver = &backquote_command("$phpbinary -v 2>&1");
-($phpver) = $phpver =~ /^PHP\s+([\d\.]+)/;
-return $phpver;
+if ($phpver =~ /(^|\n)PHP\s+([\d\.]+)/) {
+	return $2;
+	}
+return undef;
 }
 
 # php_version_test_against(version, comparison-operator, [file|version-string])
@@ -683,9 +689,10 @@ foreach my $f (readdir(DIR)) {
 		  };
 	my $lref = &read_file_lines($path, 1);
 	foreach my $l (@$lref) {
-		if ($l =~ /^\s*(;?)\s*extension\s*=\s*(\S+)(\.so)?/) {
+		if ($l =~ /^\s*(;?)\s*extension\s*=\s*(\S+(\.so)?)/) {
 			$ini->{'enabled'} = $1 ? 0 : 1;
 			$ini->{'mod'} = $2;
+			$ini->{'mod'} =~ s/\.so$//;
 			}
 		}
 	push(@rv, $ini);

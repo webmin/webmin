@@ -191,12 +191,12 @@ imod_err=Failed to install PHP module
 imod_emod=No PHP module entered
 imod_trying=Installing package $1 ..
 imod_done=.. installed successfully!
-imod_already=.. not needed, as package is already installed
+imod_already=.. already installed, but does not provide the PHP module
 imod_failed=.. install failed
 imod_allfailed=No software packages for the specified PHP module could be installed.
 imod_alreadygot=PHP module $1 is already installed
 imod_alldone=The PHP module was successfully installed and is now available for use.
-imod_allmissing=Package installation completed, but the PHP module was not detected.
+imod_missing=.. install completed, but the PHP module was not detected.
 
 log_manual=Manually edit file $1
 log_vars=Changed PHP variables in $1

@@ -41,16 +41,20 @@ foreach my $pkg (@poss) {
 	my @pinfo = &software::package_info($pkg);
 	if (@pinfo) {
 		print $text{'imod_already'},"<p>\n";
-		$ok = 1;
-		last;
+		next;
 		}
 	my ($out, $rs) = &capture_function_output(
 		\&software::update_system_install, $pkg);
 	my @pinfo = &software::package_info($pkg);
 	if (@pinfo && @$rs) {
-		print $text{'imod_done'},"<p>\n";
-		$ok = 1;
-		last;
+		($got) = grep { $_->{'mod'} eq $in{'mod'} }
+			      &list_php_ini_modules($inidir);
+		if ($got) {
+			print $text{'imod_done'},"<p>\n";
+			$ok = 1;
+			last;
+			}
+		print $text{'imod_missing'},"<p>\n";
 		}
 	print $text{'imod_failed'},"<p>\n";
 	}
@@ -58,14 +62,7 @@ if (!$ok) {
 	print "<b>$text{'imod_allfailed'}</b><p>\n";
 	}
 else {
-	($got) = grep { $_->{'mod'} eq $in{'mod'} }
-		      &list_php_ini_modules($inidir);
-	if ($got) {
-		print "<b>$text{'imod_alldone'}</b><p>\n";
-		}
-	else {
-		print "<b>$text{'imod_allmissing'}</b><p>\n";
-		}
+	print "<b>$text{'imod_alldone'}</b><p>\n";
 	}
 
 &ui_print_footer("edit_mods.cgi?file=".&urlize($in{'file'}),
