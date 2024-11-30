@@ -1,13 +1,13 @@
-index_title=Linux IPTables-Firewall
+index_title=Linux iptables-Firewall
 index_title_v=IPv4-Firewall
 index_title_v6=IPv6-Firewall
 index_position=Anzeige der Regeln $1 bis $2 von $3
 index_editing=Regeldatei $1
-index_ecommand=Der Befehl $1 wurde auf Ihrem System nicht gefunden. Webmin benötigt diesen Befehl, um IPtables zu konfigurieren.
-index_ekernel=Beim Überprüfen Ihrer aktuellen IPtables-Konfiguration ist ein Fehler aufgetreten: $1 Dies könnte darauf hinweisen, dass Ihr Kernel IPtables nicht unterstützt.
+index_ecommand=Der Befehl $1 wurde auf Ihrem System nicht gefunden. Webmin benötigt diesen Befehl, um iptables zu konfigurieren.
+index_ekernel=Beim Überprüfen Ihrer aktuellen iptables-Konfiguration ist ein Fehler aufgetreten: $1 Dies könnte darauf hinweisen, dass Ihr Kernel iptables nicht unterstützt.
 index_header=Firewall-Konfiguration von $1
-index_evalid=WARNUNG! Ihre aktuelle IPtables-Konfiguration ist ungültig: $1
-index_change=Anzeige von IPtable:
+index_evalid=WARNUNG! Ihre aktuelle iptables-Konfiguration ist ungültig: $1
+index_change=Anzeige von iptable:
 index_chain_input=Eingehende Pakete (INPUT) - Gilt nur für Pakete, die an diesen Host adressiert sind
 index_chain_output=Ausgehende Pakete (OUTPUT) - Gilt nur für Pakete, die von diesem Host initiiert wurden
 index_chain_forward=Weitergeleitete Pakete (FORWARD) - Gilt nur für Pakete, die durch diesen Host geleitet werden
@@ -54,15 +54,15 @@ index_unapply2desc=Klicken Sie auf diese Schaltfläche, um die obige Konfigurati
 index_table_filter=Packetfilterung (filter)
 index_table_nat=Netzwerkadressübersetzung (nat)
 index_table_mangle=Packet-Manipulation (mangle)
-index_existing=Webmin hat $1 IPtables-Firewall-Regeln erkannt, die derzeit verwendet werden und nicht in der Speicherdatei $2 aufgezeichnet sind. Diese Regeln wurden wahrscheinlich von einem Skript eingerichtet, das dieses Modul nicht lesen und bearbeiten kann.<p>Wenn Sie dieses Modul zur Verwaltung Ihrer IPtables-Firewall verwenden möchten, klicken Sie auf die untenstehende Schaltfläche, um die bestehenden Regeln in eine Speicherdatei zu konvertieren, und deaktivieren Sie dann Ihr bestehendes Firewall-Skript.
+index_existing=Webmin hat $1 iptables-Firewall-Regeln erkannt, die derzeit verwendet werden und nicht in der Speicherdatei $2 aufgezeichnet sind. Diese Regeln wurden wahrscheinlich von einem Skript eingerichtet, das dieses Modul nicht lesen und bearbeiten kann.<p>Wenn Sie dieses Modul zur Verwaltung Ihrer iptables-Firewall verwenden möchten, klicken Sie auf die untenstehende Schaltfläche, um die bestehenden Regeln in eine Speicherdatei zu konvertieren, und deaktivieren Sie dann Ihr bestehendes Firewall-Skript.
 index_saveex=Firewall-Regeln speichern
 index_atboot=Firewall beim Systemstart aktivieren?
 index_headerex=Bestehende Firewall-Konfiguration
 index_bootup=Beim Start aktivieren
 index_bootupdesc=Ändern Sie diese Option, um zu steuern, ob Ihre Firewall beim Systemstart aktiviert wird oder nicht.
 index_return=Regelliste
-index_setup=Es wurde noch keine IPtables-Firewall auf Ihrem System eingerichtet. Webmin kann eine für Sie einrichten, die in der Speicherdatei $1 gespeichert wird, mit den anfänglichen Einstellungen basierend auf Ihrer unten getätigten Auswahl des Firewall-Typs.
-index_rsetup=Die IPtables-Firewall-Konfiguration auf Ihrem System wird neu gesetzt. Webmin wird neue Standardregeln einrichten, die in der Speicherdatei $1 gespeichert werden, mit den anfänglichen Einstellungen basierend auf Ihrer unten getätigten Auswahl des Firewall-Typs.
+index_setup=Es wurde noch keine iptables-Firewall auf Ihrem System eingerichtet. Webmin kann eine für Sie einrichten, die in der Speicherdatei $1 gespeichert wird, mit den anfänglichen Einstellungen basierend auf Ihrer unten getätigten Auswahl des Firewall-Typs.
+index_rsetup=Die iptables-Firewall-Konfiguration auf Ihrem System wird neu gesetzt. Webmin wird neue Standardregeln einrichten, die in der Speicherdatei $1 gespeichert werden, mit den anfänglichen Einstellungen basierend auf Ihrer unten getätigten Auswahl des Firewall-Typs.
 index_auto0=Alle Verkehr erlauben
 index_auto1=Führen Sie Netzwerkadressübersetzung auf der externen Schnittstelle durch:
 index_auto2=Blockiere alle eingehenden Verbindungen auf der externen Schnittstelle:
@@ -156,12 +156,12 @@ desc_args--match-set=$2 ist enthalten in IP-set $1
 desc_src=Quelle
 desc_dest=Ziel
 
-redhat_einstalled2=Keine <tt>$1</tt> Bootup-Aktion gefunden, was darauf hinweist, dass das IPtables-Paket nicht auf Ihrem System installiert ist
-redhat_eoutput=Beim Abrufen des IPtables-Status mit dem Befehl $1 ist ein Fehler aufgetreten. Dies deutet wahrscheinlich darauf hin, dass Ihr System so konfiguriert wurde, IPchains anstelle von IPtables zu verwenden.
+redhat_einstalled2=Keine <tt>$1</tt> Bootup-Aktion gefunden, was darauf hinweist, dass das iptables-Paket nicht auf Ihrem System installiert ist
+redhat_eoutput=Beim Abrufen des iptables-Status mit dem Befehl $1 ist ein Fehler aufgetreten. Dies deutet wahrscheinlich darauf hin, dass Ihr System so konfiguriert wurde, IPchains anstelle von iptables zu verwenden.
 
-gentoo_escript=Das Gentoo IPtables-Startup-Skript $1 wurde auf Ihrem System nicht gefunden.
+gentoo_escript=Das Gentoo iptables-Startup-Skript $1 wurde auf Ihrem System nicht gefunden.
 
-eiptables=Unbekannte Zeile in IPtables-Speicherdatei: $1
+eiptables=Unbekannte Zeile in iptables-Speicherdatei: $1
 eip6tables=Unbekannte Zeile in IP6tables-Speicherdatei: $1
 
 edit_title1=Regel hinzufügen
@@ -224,7 +224,7 @@ edit_clone=Regel klonen
 edit_before=Vor Regel $1
 edit_after=Nach Regel $1
 edit_args=Zusätzliche Parameter
-edit_mods=Zusätzliche IPtables-Module
+edit_mods=Zusätzliche iptables-Module
 edit_rwith=Zurückweisen mit ICMP-Typ
 edit_rwithtype=Typ $1
 edit_physdevin=Eingehende physische Schnittstelle
@@ -328,7 +328,7 @@ log_openports=Firewall-Ports $1 geöffnet
 setup_eiface=Keine externe Netzwerkschnittstelle eingegeben
 setup_ecannot=Sie sind nicht berechtigt, die Firewall einzurichten
 
-acl_tables=Erlaubte IPtables
+acl_tables=Erlaubte iptables
 acl_apply=Kann Konfiguration anwenden?
 acl_unapply=Kann Konfiguration zurücksetzen?
 acl_bootup=Kann Firewall beim Start aktivieren?
@@ -340,7 +340,7 @@ acl_newchain=Kann neue Ketten erstellen?
 acl_delchain=Kann Ketten löschen oder leeren?
 acl_policy=Kann Standard-Policy ändern?
 
-etable=Sie sind nicht berechtigt, diese IPtable zu bearbeiten
+etable=Sie sind nicht berechtigt, diese iptable zu bearbeiten
 ejump=Sie sind nicht berechtigt, diese Regel zu bearbeiten
 ecluster=Sie sind nicht berechtigt, den Firewall-Cluster zu verwalten
 
