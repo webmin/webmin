@@ -177,6 +177,22 @@ mods_desc=This page can be used to globally enable and disable PHP modules for a
 mods_enabled=Enabled?
 mods_name=Module name
 mods_file=Config file
+mods_idesc=PHP modules not available on this system can be installed from configured software package repositories.
+mods_newpkg=Add PHP module:
+mods_install=Install Now
+mods_err=Failed to save PHP modules
+mods_egetver=Could not figure out PHP version for config file $1
+mods_egetbin=Could not figure out PHP binary for config file $1
+
+imod_title=Install PHP Module
+imod_doing=Installing PHP module $1 for version $2 ..
+imod_err=Failed to install PHP module
+imod_emod=No PHP module entered
+imod_trying=Installing package $1 ..
+imod_done=.. installed successfully!
+imod_already=.. no action needed, as package is already installed
+imod_failed=.. install failed
+imod_allfailed=No software packages for the specified PHP module could be installed.
 
 log_manual=Manually edit file $1
 log_vars=Changed PHP variables in $1

@@ -309,6 +309,7 @@ return -d $file ? $file : undef;
 sub get_php_ini_binary
 {
 my ($file) = @_;
+my $ver;
 
 # Possible php.ini under domain's home dir
 if (&foreign_check("virtual-server")) {
@@ -316,7 +317,7 @@ if (&foreign_check("virtual-server")) {
 	my %vmap = map { $_->[0], $_ }
 		       &virtual_server::list_available_php_versions();
 	if ($file =~ /etc\/php(\S+)\/php.ini/) {
-		my $ver = $1;
+		$ver = $1;
 		my $nodot = $ver;
 		$nodot =~ s/\.//g;
 		my $php = $vmap{$ver} || $vmap{$nodot};
@@ -333,21 +334,47 @@ if (&foreign_check("virtual-server")) {
 # Debian/Ubuntu /etc/php/8.3/fpm/pool.d/www.conf
 #   RHEL and derivatives   Debian/Ubuntu
 if ($file =~ /php(\d+)/ || $file =~ /php\/([\d\.]+)/) {
-	my $ver = $1;
+	$ver = $1;
 	my $binary = &has_command("php$ver");
 	return $binary if ($binary);
 	}
 
 # Given PHP version, e.g. `php7.4` as a string try to get binary
 if ($file =~ /^php.*?([\d\.]+)$/) {
-	my $ver = $1;
+	$ver = $1;
 	my $nodot = $ver;
 	$nodot =~ s/\.//g;
 	my $binary = &has_command("php$ver") ||
 	             &has_command("php$nodot");
 	return $binary if ($binary);
 	}
-return &has_command("php");
+return $ver ? undef : &has_command("php");
+}
+
+# get_php_ini_version(file)
+# Given an ini file, return the version number for it if possible
+sub get_php_ini_version
+{
+my ($file) = @_;
+my $ver;
+
+# Try to get version from the path, e.g.
+# RHEL and derivatives /etc/opt/remi/php83
+# Debian/Ubuntu /etc/php/8.3/fpm/pool.d/www.conf
+#   RHEL and derivatives   Debian/Ubuntu
+if ($file =~ /php(\d+)/ || $file =~ /php\/([\d\.]+)/) {
+	my $ver = $1;
+	$ver =~ s/^(\d)(\d+)$/$1.$2/;
+	return $ver;
+	}
+
+# Given PHP version, e.g. `php7.4` as a string try to get binary
+if ($file =~ /^php.*?([\d\.]+)$/) {
+	my $ver = $1;
+	$ver =~ s/^(\d)(\d+)$/$1.$2/;
+	return $ver;
+	}
+return undef;
 }
 
 # get_php_binary_version(file|version-string)
@@ -656,7 +683,7 @@ foreach my $f (readdir(DIR)) {
 		  };
 	my $lref = &read_file_lines($path, 1);
 	foreach my $l (@$lref) {
-		if ($l =~ /^\s*(;?)\s*extension\s*=\s*(\S+)\.so/) {
+		if ($l =~ /^\s*(;?)\s*extension\s*=\s*(\S+)(\.so)?/) {
 			$ini->{'enabled'} = $1 ? 0 : 1;
 			$ini->{'mod'} = $2;
 			}
@@ -677,14 +704,74 @@ return if ($ini->{'enabled'} == $enable);
 my $lref = &read_file_lines($ini->{'path'});
 foreach my $l (@$lref) {
 	if ($enable && !$ini->{'enabled'}) {
-		$l =~ s/^\s*;\s*(extension\s*=\s*(\S+)\.so)/$1/;
+		$l =~ s/^\s*;\s*(extension\s*=\s*(\S+)(\.so)?)/$1/;
 		}
 	elsif (!$enable && $ini->{'enabled'}) {
-		$l =~ s/^\s*(extension\s*=\s*(\S+)\.so)/;$1/;
+		$l =~ s/^\s*(extension\s*=\s*(\S+)(\.so)?)/;$1/;
 		}
 	}
 &flush_file_lines($ini->{'path'});
 &unlock_file($ini->{'path'});
+}
+
+# php_module_packages(mod, version)
+# Returns possible package names for a given PHP module and PHP version
+sub php_module_packages
+{
+my ($m, $fullver) = @_;
+&foreign_require("software");
+my $ver = $fullver;
+$ver =~ s/^(\d+\.\d+)\..*$/$1/;
+my $nodotphpver = $ver;
+$nodotphpver =~ s/\.//;
+my @poss;
+if ($software::update_system eq "csw") {
+	# On Solaris, packages are named like php52_mysql
+	push(@poss, "php".$nodotphpver."_".$m);
+	}
+elsif ($software::update_system eq "ports") {
+	# On FreeBSD, names are like php52-mysql
+	push(@poss, "php".$nodotphpver."-".$m);
+	}
+else {
+	if ($software::update_system eq "apt") {
+		push(@poss, "php".$ver."-".$m);
+		}
+	else {
+		push(@poss, "php".$nodotphpver."-".$m);
+		}
+	push(@poss, "php-".$m);
+	if ($software::update_system eq "apt" && $m eq "pdo_mysql") {
+		# On Debian, the pdo_mysql module is in the mysql module
+		push(@poss, "php".$ver."-mysql", "php-mysql");
+		}
+	elsif ($software::update_system eq "yum" &&
+	       ($m eq "domxml" || $m eq "dom") && $ver >= 5) {
+		# On Redhat, the domxml module is in php-domxml
+		push(@poss, "php".$nodotphpver."-xml", "php-xml");
+		}
+	if ($ver =~ /\./ && $software::update_system eq "yum") {
+		# PHP 5.3+ packages from software collections are
+		# named like php54-php-mysql or sometimes even
+		# php54-php-mysqlnd
+		unshift(@poss, "php".$nodotphpver."-php-".$m);
+		unshift(@poss, "rh-php".$nodotphpver."-php-".$m);
+		if ($m eq "mysql") {
+			unshift(@poss, "rh-php".$nodotphpver.
+					   "-php-mysqlnd");
+			}
+		}
+	elsif ($software::update_system eq "yum" &&
+	       $fullphpver =~ /^5\.3/) {
+		# If PHP 5.3 is being used, packages may start with
+		# php53- or rh-php53-
+		my @vposs = grep { /^php5-/ } @poss;
+		push(@poss, map { my $p = $_;
+				  $p =~ s/php5/php53/;
+				  ($p, "rh-".$p) } @vposs);
+		}
+	}
+return @poss;
 }
 
 1;
