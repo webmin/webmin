@@ -1,5 +1,0 @@
-acl_user_strict=Aktivieren Sie strenge Benutzereigentumsprüfungen
-acl_user_strict_desc=Wenn diese Option aktiviert ist, kann der Benutzer nur Dateien löschen und verschieben, die ihm gehören. Dies unterscheidet sich vom Standardverhalten unter Unix, wo ein Benutzer jede Datei innerhalb eines Verzeichnisses löschen oder verschieben kann, für das er Schreibzugriff hat
-
-error_write=Sie haben keine Schreibberechtigung für diese Datei
-error_move=Sie haben keine Berechtigung, diese Datei zu verschieben
