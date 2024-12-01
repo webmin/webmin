@@ -64,6 +64,8 @@ if (!$ok) {
 else {
 	print "<b>$text{'imod_alldone'}</b><p>\n";
 	}
+&graceful_apache_restart($in{'file'});
+&webmin_log("imod", undef, $in{'file'}, { 'mod' => $in{'mod'} }) if ($ok);
 
 &ui_print_footer("edit_mods.cgi?file=".&urlize($in{'file'}),
 		 $text{'mods_return'});

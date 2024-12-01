@@ -177,6 +177,7 @@ mods_desc=This page can be used to globally enable and disable PHP modules for a
 mods_enabled=Enabled?
 mods_name=Module name
 mods_file=Config file
+mods_pkg=Package
 mods_idesc=PHP modules not available on this system can be installed from configured software package repositories.
 mods_newpkg=Add PHP module:
 mods_install=Install Now
@@ -208,6 +209,7 @@ log_limits=Changed resource limits in $1
 log_errors=Changed error logging in $1
 log_misc=Changed other settings in $1
 log_mods=Updated enabled modules in $1
+log_imod=Installed PHP module $2 in $1
 
 acl_global=Can edit global PHP configuration?
 acl_anyfile=Can edit any file as a PHP configuration?
