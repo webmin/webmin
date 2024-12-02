@@ -7,13 +7,14 @@ require './phpini-lib.pl';
 my $conf = &get_config($in{'file'});
 my $inidir = &get_php_ini_dir($in{'file'});
 $inidir || &error($text{'mods_edir'});
-my $ver = &get_php_ini_version($in{'file'});
+my $filever = &get_php_ini_version($in{'file'});
+my $ver = $filever || &get_php_binary_version($in{'file'});
 $access{'global'} || &error($text{'mods_ecannot'});
 
 &ui_print_header("<tt>".&html_escape($in{'file'})."</tt>",
 		 $text{'mods_title'}, "");
 
-print $text{'mods_desc'},"<p>\n";
+print &text('mods_desc', $ver),"<p>\n";
 
 # Find software packages if possible
 my $n;
@@ -39,7 +40,7 @@ foreach my $m (@mods) {
 	my $pkg;
 	if ($n && $ver) {
 		($pkg) = grep { $_ } map { $pkgmap{$_} }
-			      &php_module_packages($m->{'mod'}, $ver);
+			      &php_module_packages($m->{'mod'}, $ver, $filever);
 		}
 	print &ui_columns_row([
 		&ui_checkbox("mod", $m->{'mod'}, "", $m->{'enabled'}),

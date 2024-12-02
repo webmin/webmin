@@ -376,9 +376,7 @@ if ($file =~ /^php.*?([\d\.]+)$/) {
 	return $ver;
 	}
 
-# The php.ini has no version in the filename, so try to get the version from
-# the default php binary
-return &get_php_binary_version($file);
+return undef;
 }
 
 # get_php_binary_version(file|version-string)
@@ -721,11 +719,11 @@ foreach my $l (@$lref) {
 &unlock_file($ini->{'path'});
 }
 
-# php_module_packages(mod, version)
+# php_module_packages(mod, version, version-from-filename)
 # Returns possible package names for a given PHP module and PHP version
 sub php_module_packages
 {
-my ($m, $fullver) = @_;
+my ($m, $fullver, $filever) = @_;
 &foreign_require("software");
 my $ver = $fullver;
 $ver =~ s/^(\d+\.\d+)\..*$/$1/;
@@ -747,7 +745,6 @@ else {
 	else {
 		push(@poss, "php".$nodotphpver."-".$m);
 		}
-	push(@poss, "php-".$m);
 	if ($software::update_system eq "apt" && $m eq "pdo_mysql") {
 		# On Debian, the pdo_mysql module is in the mysql module
 		push(@poss, "php".$ver."-mysql", "php-mysql");
@@ -777,6 +774,7 @@ else {
 				  $p =~ s/php5/php53/;
 				  ($p, "rh-".$p) } @vposs);
 		}
+	unshift(@poss, "php-".$m) if (!$filever);
 	}
 return @poss;
 }

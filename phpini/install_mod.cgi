@@ -8,11 +8,12 @@ require './phpini-lib.pl';
 &can_php_config($in{'file'}) || &error($text{'list_ecannot'});
 $access{'global'} || &error($text{'mods_ecannot'});
 $in{'mod'} =~ /^\S+$/ || &error($text{'imod_emod'});
-my $ver = &get_php_ini_version($in{'file'});
+my $filever = &get_php_ini_version($in{'file'});
+my $ver = $filever || &get_php_binary_version($in{'file'});
 $ver || &error(&text('mods_egetver', "<tt>".&html_escape($in{'file'})."</tt>"));
 
 # Work out possible package names
-@poss = &php_module_packages($in{'mod'}, $ver);
+@poss = &php_module_packages($in{'mod'}, $ver, $filever);
 @poss || &error($text{'mods_eposs'});
 
 # Is it already installed?
@@ -32,17 +33,13 @@ if ($got) {
 &ui_print_header("<tt>".&html_escape($in{'file'})."</tt>",
 		 $text{'imod_title'}, "");
 
-print "<b>",&text('imod_doing', "<tt>".&html_escape($in{'mod'})."</tt>",
-		  $ver),"</b><p>\n";
+print &text('imod_alldoing', "<tt>".&html_escape($in{'mod'})."</tt>",
+	    $ver),"<p>\n";
 
 my $ok = 0;
 foreach my $pkg (@poss) {
-	print &text('imod_trying', "<tt>".&html_escape($pkg)."</tt>"),"<br>\n";
 	my @pinfo = &software::package_info($pkg);
-	if (@pinfo) {
-		print $text{'imod_already'},"<p>\n";
-		next;
-		}
+	next if (@pinfo);
 	my ($out, $rs) = &capture_function_output(
 		\&software::update_system_install, $pkg);
 	my @pinfo = &software::package_info($pkg);
@@ -50,22 +47,21 @@ foreach my $pkg (@poss) {
 		($got) = grep { $_->{'mod'} eq $in{'mod'} }
 			      &list_php_ini_modules($inidir);
 		if ($got) {
-			print $text{'imod_done'},"<p>\n";
-			$ok = 1;
+			$ok = $pkg;
 			last;
 			}
-		print $text{'imod_missing'},"<p>\n";
 		}
-	print $text{'imod_failed'},"<p>\n";
 	}
-if (!$ok) {
-	print "<b>$text{'imod_allfailed'}</b><p>\n";
+if ($ok) {
+	print &text('imod_alldone',
+		"<tt>".&html_escape($ok)."</tt>"),"<p>\n";
+	&graceful_apache_restart($in{'file'});
+	&webmin_log("imod", undef, $in{'file'}, { 'mod' => $in{'mod'} });
 	}
 else {
-	print "<b>$text{'imod_alldone'}</b><p>\n";
+	print &text('imod_allfailed',
+		"<tt>".&html_escape(join(" ", @poss))."</tt>"),"<p>\n";
 	}
-&graceful_apache_restart($in{'file'});
-&webmin_log("imod", undef, $in{'file'}, { 'mod' => $in{'mod'} }) if ($ok);
 
 &ui_print_footer("edit_mods.cgi?file=".&urlize($in{'file'}),
 		 $text{'mods_return'});
