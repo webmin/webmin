@@ -22,16 +22,17 @@ fi
 srcdir=$wadir
 ver=`cat "$wadir/version"`
 
-# Find temp directory
-if [ "$tempdir" = "" ]; then
-	tempdir=/tmp/.webmin
-fi
-
 if [ $? != "0" ]; then
 	echo "ERROR: Cannot find the Webmin install directory";
 	echo "";
 	exit 1;
 fi
+
+# Find temp directory
+if [ "$tempdir" = "" ]; then
+	tempdir=/tmp/.webmin
+fi
+
 echo "****************************************************************************"
 echo "           Welcome to the Webmin setup script, version $ver"
 echo "****************************************************************************"
