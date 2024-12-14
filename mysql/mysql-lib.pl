@@ -1149,7 +1149,7 @@ sub get_mysql_config
 {
 if (!scalar(@mysql_config_cache)) {
 	if (!-r $config{'my_cnf'}) {
-		return undef;
+		return [];
 		}
 	@mysql_config_cache = &parse_mysql_config($config{'my_cnf'});
 	}
