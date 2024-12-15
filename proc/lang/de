@@ -60,7 +60,7 @@ run_output=Ausgabe von $1 ..
 run_none=Keine Ausgabe erzeugt
 run_ecannot=Sie dürfen keine Befehle ausführen
 run_as=Als Benutzer ausführen
-run_euser=Fehlender oder ungültiger Benutzername
+run_euser=Fehlender oder ungültiger Benutzer:innenname
 run_euser2=Sie dürfen keine Befehle als der ausgewählte Benutzer ausführen
 
 edit_title=Prozessinformationen

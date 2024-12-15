@@ -37,7 +37,7 @@ edit_ecannot=Sie sind nicht berechtigt, diesen geplanten Befehl zu bearbeiten
 edit_showfull=Volles Skript anzeigen
 
 create_err=Fehler beim Erstellen des geplanten Befehls
-create_euser=Fehlender oder ungültiger Benutzername
+create_euser=Fehlender oder ungültiger Benutzer:innenname
 create_edate=Fehlendes oder ungültiges Datum oder Zeit
 create_ecmd=Keine Befehle eingegeben
 create_efuture=Datum und Zeit liegen in der Vergangenheit

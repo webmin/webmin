@@ -1,7 +1,7 @@
 index_title=PPP Dialin-Server
 index_enopfile=Die PPP-Passwortdatei '$1' existiert nicht auf Ihrem System. Möglicherweise ist PPP nicht installiert.
 index_table=PPP Dial-in und Dial-out Konten
-index_user=Benutzername
+index_user=Benutzer:innenname
 index_server=Server
 index_uany=ANY
 index_sany=ANY
@@ -23,7 +23,7 @@ secrets_ecannot=Sie sind nicht berechtigt, PPP-Konten zu bearbeiten
 edit_secret_etitle=PPP-Konto bearbeiten
 edit_secret_ctitle=PPP-Konto erstellen
 edit_secret_acc=PPP-Konto
-edit_secret_user=Benutzername
+edit_secret_user=Benutzer:innenname
 edit_secret_serv=Server
 edit_secret_sany=ANY
 edit_secret_uany=ANY

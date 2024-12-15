@@ -7,7 +7,7 @@ index_eschema=Webmin hat eine Verbindung zum LDAP-Server hergestellt, konnte das
 index_eimap=$1. Möglicherweise ist Ihre <a href='$2'>Modulkonfiguration</a> falsch.
 index_emd5=Dieses Modul wurde <a href='$1'>konfiguriert</a>, um MD5-Verschlüsselung für Passwörter zu verwenden, aber das $2 Perl-Modul ist nicht installiert. <a href='$3'>Klicken Sie hier</a>, um das $2 Modul herunterzuladen und zu installieren.
 index_eslappasswd=Dieses Modul wurde <a href='$1'>konfiguriert</a>, um LDAP-MD5-Verschlüsselung für Passwörter zu verwenden, aber das Programm <tt>$2</tt>, das zur Verschlüsselung eines Passworts verwendet wird, ist nicht installiert.
-index_eusearch=Fehler beim Suchen von Benutzern unter $1 : $2
+index_eusearch=Fehler beim Suchen von Benutzer:innen unter $1 : $2
 index_uadd=Neuen LDAP-Benutzer hinzufügen.
 index_gadd=Neue LDAP-Gruppe hinzufügen.
 index_unone=Keine LDAP-Benutzer unter $1 gefunden.
@@ -99,5 +99,5 @@ raw_for=Für $1
 
 batch_samba=Erstellen Sie ein Samba-Konto für neue Benutzer?
 batch_imap=Erstellen Sie ein IMAP-Konto für neue Benutzer?
-batch_descafter3=In <b>create</b> und <b>modify</b>-Zeilen können optional zusätzliche Felder hinzugefügt werden, die LDAP-Attribute im <i>name</i>=<i>value</i>-Format enthalten, die den neuen oder geänderten Benutzern zugewiesen werden.
+batch_descafter3=In <b>create</b> und <b>modify</b>-Zeilen können optional zusätzliche Felder hinzugefügt werden, die LDAP-Attribute im <i>name</i>=<i>value</i>-Format enthalten, die den neuen oder geänderten Benutzer:innen zugewiesen werden.
 batch_eattr=Ungültiges LDAP-Attribut in Zeile $1 : $2

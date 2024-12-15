@@ -92,7 +92,7 @@ base_etimelimit=Fehlendes oder ungültiges Suchzeitlimit
 pam_title=Authentifizierungsoptionen
 pam_header=PAM-Authentifizierungs- und Passwort-Einstellungen
 pam_filter=Zusätzlicher LDAP-Filter
-pam_login=LDAP-Attribut für Benutzernamen
+pam_login=LDAP-Attribut für Benutzer:innennamen
 pam_groupdn=LDAP-Gruppe, deren Mitgliedschaft erzwungen werden soll
 pam_member=LDAP-Attribut für Gruppenmitglieder
 pam_password=Passwortspeicherungsart
@@ -106,7 +106,7 @@ pam_none=Keine
 pam_ignored=Ignoriert
 pam_err=Fehler beim Speichern der Authentifizierungsoptionen
 pam_efilter=Fehlender zusätzlicher LDAP-Filter
-pam_elogin=Fehlendes oder ungültiges LDAP-Attribut für Benutzernamen
+pam_elogin=Fehlendes oder ungültiges LDAP-Attribut für Benutzer:innennamen
 pam_egroupdn=Fehlende LDAP-Gruppe, deren Mitgliedschaft erzwungen werden soll
 pam_emember=Fehlendes oder ungültiges LDAP-Attribut für Gruppenmitglieder
 

@@ -26,7 +26,7 @@ add_gerr=Fehler beim Hinzufügen der Gruppe
 add_echeck=Server $1 hat das Modul für Benutzer und Gruppen nicht
 add_epft=Server $1 verwendet nicht dasselbe Format für Benutzerdateien wie dieser Host
 add_egft=Server $1 verwendet nicht dasselbe Format für Gruppendateien wie dieser Host
-add_ok=Hinzugefügt: $1 mit $2 Benutzern und $3 Gruppen.
+add_ok=Hinzugefügt: $1 mit $2 Benutzer:innen und $3 Gruppen.
 
 host_title=Verwalteter Server
 host_header=Details des Benutzer- und Gruppenverwaltungsservers
@@ -134,7 +134,7 @@ sync_users=Zu erstellende Benutzer
 sync_uall=Alle fehlenden Benutzer
 sync_unone=Keine Benutzer
 sync_usel=Nur Benutzer
-sync_unot=Alle außer Benutzern
+sync_unot=Alle außer Benutzer:innen
 sync_ugid=Benutzer mit primärer Gruppe
 sync_uuid=Benutzer mit UID im Bereich
 sync_groups=Zu erstellende Gruppen

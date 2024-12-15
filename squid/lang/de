@@ -532,7 +532,7 @@ eprogs_return=squid Index
 euser_header=Proxy-Benutzer erstellen
 euser_header1=Proxy-Benutzer bearbeiten
 euser_pud=Proxy-Benutzer-Details
-euser_u=Benutzername
+euser_u=Benutzer:innenname
 euser_p=Passwort
 euser_u1=Unverändert
 euser_e=Aktiviert?
@@ -660,8 +660,8 @@ sprog_emsg10='$1' ist kein gültiges TTL
 sprog_echildren=Anzahl der Programme muss eine Zahl größer als Null sein
 
 suser_ftsu=Speichern des Benutzers fehlgeschlagen
-suser_emsg1=Ungültiger oder fehlender Benutzername
-suser_etaken=Benutzername ist bereits vergeben
+suser_emsg1=Ungültiger oder fehlender Benutzer:innenname
+suser_etaken=Benutzer:innenname ist bereits vergeben
 
 start_ftsq=Starten von Squid fehlgeschlagen
 start_ecannot=Sie sind nicht berechtigt, Squid zu starten

@@ -200,10 +200,10 @@ unix_emin=Fehlende oder ungültige minimale Passwortlänge
 unix_emax=Fehlende oder ungültige maximale Passwortlänge
 
 listfile_item=Datei nach suchen
-listfile_item_user=Benutzername
+listfile_item_user=Benutzer:innenname
 listfile_item_tty=TTY
 listfile_item_rhost=Remote-Hostname
-listfile_item_ruser=Remote-Benutzername
+listfile_item_ruser=Remote-Benutzer:innenname
 listfile_item_group=Gruppe
 listfile_item_shell=Shell
 listfile_sense=Falls in der Datei gefunden

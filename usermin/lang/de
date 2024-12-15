@@ -33,7 +33,7 @@ mods_uploaded=Von hochgeladener Datei
 mods_ftp=Von FTP- oder HTTP-URL
 mods_nodeps=Modulabhängigkeiten bei der Installation ignorieren
 mods_installok=Modul aus Datei installieren
-mods_desc2=Wenn Sie mehr als eine Kopie desselben Moduls mit unterschiedlichen Konfigurationen haben möchten, ermöglicht Ihnen das Formular rechts, ein bestehendes Modul zu klonen. Der Klon erhält einen neuen Namen, eine neue Modulkonfiguration und kann verschiedenen Benutzern zur Verfügung gestellt werden.
+mods_desc2=Wenn Sie mehr als eine Kopie desselben Moduls mit unterschiedlichen Konfigurationen haben möchten, ermöglicht Ihnen das Formular rechts, ein bestehendes Modul zu klonen. Der Klon erhält einen neuen Namen, eine neue Modulkonfiguration und kann verschiedenen Benutzer:innen zur Verfügung gestellt werden.
 mods_clone=Modul klonen
 mods_cname=Zu klonendes Modul
 mods_cnew=Name des geklonten Moduls
@@ -68,13 +68,13 @@ session_authmode1=Authentifizierung mit Passwortdatei $1 Spalten $2 und $3
 session_authmode2=Externe squid-ähnliche Authentifizierungsprogramm verwenden
 session_eauthmode1=Sie müssen eine Passwortdatei eingeben, wenn Sie diese Option gewählt haben
 session_eauthmode2=Sie müssen ein externes Authentifizierungsprogramm eingeben, wenn Sie diese Option gewählt haben
-session_domain=Automatisch versuchen, den Domainnamen zu Benutzernamen hinzuzufügen?
-session_strip=Automatisch versuchen, die Domain aus Benutzernamen zu entfernen?
-session_usermap=Benutzernamen-Zuordnungsdatei verwenden
+session_domain=Automatisch versuchen, den Domainnamen zu Benutzer:innennamen hinzuzufügen?
+session_strip=Automatisch versuchen, die Domain aus Benutzer:innennamen zu entfernen?
+session_usermap=Benutzer:innennamen-Zuordnungsdatei verwenden
 session_userfmt=Dateiformat
 session_userfmt0=Generische Tabelle (Name zu Adresse)
 session_userfmt1=Virtusertabelle (Adresse zu Name)
-session_eusermap=Fehlende oder nicht existente Benutzernamen-Zuordnungsdatei
+session_eusermap=Fehlende oder nicht existente Benutzer:innennamen-Zuordnungsdatei
 session_blank=Benutzer mit leerem Passwort auffordern, beim ersten Login ein Passwort zu wählen?
 session_homedir=Fehlende Home-Verzeichnisse nach dem Login erstellen?
 session_homedir_perms=Berechtigungen für neues Verzeichnis
@@ -123,7 +123,7 @@ configs_sels=Nur ausgewählte ..
 configs_global=Globale Modulkonfiguration
 configs_globaldesc=Die Einstellungen in diesem Formular gelten für alle Benutzer des Moduls und legen im Allgemeinen Optionen im Zusammenhang mit den Programmen und Dateien fest, die es verwendet.
 configs_user=Standardbenutzereinstellungen
-configs_userdesc=Die Einstellungen in diesem Formular definieren die Standardwerte für benutzerbearbeitbare Einstellungen für dieses Modul. Sofern nicht anders angegeben, können sie von einzelnen Benutzern überschrieben werden.
+configs_userdesc=Die Einstellungen in diesem Formular definieren die Standardwerte für benutzerbearbeitbare Einstellungen für dieses Modul. Sofern nicht anders angegeben, können sie von einzelnen Benutzer:innen überschrieben werden.
 
 acl_title=Verfügbare Module
 acl_desc=Verwenden Sie diese Seite, um auszuwählen, welche installierten Usermin-Module für Benutzer sichtbar sind.
@@ -162,7 +162,7 @@ users_allow=Nur aufgelistete Benutzer erlauben ..
 users_deny=Aufgelistete Benutzer verweigern ..
 users_err=Benutzerliste aktualisieren fehlgeschlagen
 users_none=Keine Benutzer eingegeben
-users_euser='$1' ist kein gültiger Benutzername
+users_euser='$1' ist kein gültiger Benutzer:innenname
 users_egroup='$1' ist kein gültiger Gruppenname
 users_shells=Benutzer verweigern, deren Shells nicht in Datei enthalten sind
 users_eshells=Fehlende oder nicht existente Shell-Datei
@@ -387,7 +387,7 @@ update_subject=Update-Bericht für Usermin-Module
 update_version=Eine neue Version von Usermin (Version $1) ist jetzt zum Download verfügbar. Zukünftige Updates werden nur für die neueste Version veröffentlicht.
 
 restrict_title=Modulbeschränkungen
-restrict_desc=Diese Seite ermöglicht es Ihnen, zu steuern, welche Usermin-Module verschiedenen Benutzern und Gruppen zur Verfügung stehen. Alle Modulhinzufügungen und -entfernungen in der Liste gelten, nicht nur die erste, die mit jedem Benutzer übereinstimmt.<br>Module, die auf der <a href='$1'>Verfügbare Module</a>-Seite nicht ausgewählt sind, stehen Benutzern niemals zur Verfügung, auch wenn sie hier ausgewählt sind.
+restrict_desc=Diese Seite ermöglicht es Ihnen, zu steuern, welche Usermin-Module verschiedenen Benutzer:innen und Gruppen zur Verfügung stehen. Alle Modulhinzufügungen und -entfernungen in der Liste gelten, nicht nur die erste, die mit jedem Benutzer übereinstimmt.<br>Module, die auf der <a href='$1'>Verfügbare Module</a>-Seite nicht ausgewählt sind, stehen Benutzer:innen niemals zur Verfügung, auch wenn sie hier ausgewählt sind.
 restrict_who=Usermin-Benutzer
 restrict_what=Verfügbare Module
 restrict_all=Alle Benutzer
@@ -413,10 +413,11 @@ restrict_mmode1=Ausgewählte hinzufügen ..
 restrict_mmode2=Ausgewählte entfernen ..
 restrict_return=Einschränkungs-Liste
 restrict_err=Speichern der Einschränkung fehlgeschlagen
-restrict_euser=Fehlender oder ungültiger Benutzername
+restrict_euser=Fehlender oder ungültiger Benutzer:innenname
 restrict_egroup=Fehlender oder ungültiger Gruppenname
 restrict_efile=Fehlende, nicht existente oder nicht absolute Benutzer- und Gruppendatei
 restrict_move=Verschieben
+
 bootup_ecannot=Sie sind nicht berechtigt, den Systemstart zu konfigurieren
 
 acl_icons=Erlaubte Konfigurationsseiten
@@ -481,7 +482,7 @@ dav_desc=Die DAV-Unterstützung von Usermin ermöglicht es Clients, die das DAV-
 dav_err=Speichern der DAV-Server-Optionen fehlgeschlagen
 dav_epath=Fehlender oder ungültiger URL-Pfad
 dav_eroot=Fehlendes oder ungültiges Root-Verzeichnis
-dav_users=Benutzer, die DAV verwenden können
+dav_users=Benutzer:innen, die DAV verwenden können
 dav_users1=Alle Benutzer
 dav_users0=Benutzer und Gruppen unten aufgeführt ..
 dav_eusers=Keine Benutzer eingegeben
@@ -506,7 +507,7 @@ copycert_err=SSL-Einstellungen von Webmin kopieren fehlgeschlagen
 copycert_essl=SSL ist nicht aktiviert
 copycert_ekeyfile=Keine private Schlüsseldatei in Webmin festgelegt
 
-twofactor_desc=Zwei-Faktor-Authentifizierung ermöglicht es Usermin-Benutzern, die Verwendung eines zusätzlichen Authentifizierungsgeräts beim Anmelden zu aktivieren, wie z.B. einen Einmal-Passcode-Generator. Benutzer müssen sich nach der Aktivierung auf dieser Seite individuell bei dem ausgewählten Authentifizierungsanbieter registrieren.
+twofactor_desc=Zwei-Faktor-Authentifizierung ermöglicht es Usermin-Benutzer:innen, die Verwendung eines zusätzlichen Authentifizierungsgeräts beim Anmelden zu aktivieren, wie z.B. einen Einmal-Passcode-Generator. Benutzer müssen sich nach der Aktivierung auf dieser Seite individuell bei dem ausgewählten Authentifizierungsanbieter registrieren.
 twofactor_eversion=Die auf Ihrem System installierte Usermin-Version unterstützt keine Zwei-Faktor-Authentifizierung.
 
 web_header=Optionen für den integrierten Webserver von Usermin

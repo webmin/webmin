@@ -76,7 +76,7 @@ secrets_return=index
 secrets_none=Es wurden noch keine PPP-Konten erstellt.
 secrets_enopfile=Die PPP-Passwortdatei $1 existiert nicht auf Ihrem System. Vielleicht ist PPP nicht installiert oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 secrets_table=PPP-Konten für $1
-secrets_user=Benutzername
+secrets_user=Benutzer:innenname
 secrets_ips=IP-Adressen
 secrets_uany=BELIEBIG
 secrets_sany=BELIEBIG
@@ -87,7 +87,7 @@ secrets_delete=Ausgewählte PPP-Konten löschen
 edit_secret_etitle=PPP-Konto bearbeiten
 edit_secret_ctitle=PPP-Konto erstellen
 edit_secret_acc=PPP-Konto
-edit_secret_user=Benutzername
+edit_secret_user=Benutzer:innenname
 edit_secret_serv=Server
 edit_secret_sany=Beliebig
 edit_secret_uany=Beliebig
@@ -127,7 +127,7 @@ conns_local=Server-VPN-Adresse
 conns_remote=Client-VPN-Adresse
 conns_none=Es scheinen derzeit keine aktiven PPTP-Verbindungen zu bestehen.
 conns_unknown=Unbekannt
-conns_user=Benutzername
+conns_user=Benutzer:innenname
 
 disc_err=Fehler beim Trennen der Verbindung
 disc_egone=Verbindung ist nicht mehr aktiv

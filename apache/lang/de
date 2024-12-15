@@ -263,13 +263,13 @@ authu_add=Neuen Benutzer hinzufügen
 authu_return=Benutzerliste
 authu_edit=Benutzer bearbeiten
 authu_create=Benutzer erstellen
-authu_user=Benutzername
+authu_user=Benutzer:innenname
 authu_pass=Passwort
 authu_enc=Verschlüsselt..
 authu_plain=Klartext..
 authu_err=Fehler beim Speichern des Benutzers
-authu_euser=Kein Benutzername eingegeben
-authu_euser2=Benutzername darf kein : enthalten
+authu_euser=Kein Benutzer:innenname eingegeben
+authu_euser2=Benutzer:innenname darf kein : enthalten
 authu_edup=Ein Benutzer mit dem Namen '$1' existiert bereits
 authu_sync=Die folgenden Optionen ermöglichen es Ihnen, Webmin so zu konfigurieren, dass beim Hinzufügen, Ändern oder Entfernen eines Benutzers im Modul <tt>Benutzer und Gruppen</tt> automatisch ein Benutzer in diese Passwortdatei eingefügt, aktualisiert oder gelöscht wird.
 authu_screate=Benutzer hinzufügen, wenn ein Unix-Benutzer hinzugefügt wird
@@ -470,7 +470,7 @@ core_escore=Ungültige Scoreboard-Datei
 core_sroot=Server-Stammverzeichnis
 core_group=Gruppenname
 core_gid=Gruppen-ID
-core_user=Benutzername
+core_user=Benutzer:innenname
 core_uid=Benutzer-ID
 core_asgroup=Als Unix-Gruppe ausführen
 core_asuser=Als Unix-Benutzer ausführen
@@ -931,6 +931,8 @@ mod_ssl_epassph=Kein SSL-Passwort eingegeben
 mod_ssl_epasssc=Fehlendes oder ungültiges SSL-Passwort-Skript
 mod_ssl_ecerton=Wenn SSL aktiviert ist, muss eine Zertifikatdatei ausgewählt werden
 
+# nodo50 v0.1 - Change 000003 - New Script. Define Editors for mod_apachessl directives (Apache-ssl not use mod_ssl)
+# nodo50 v0.1 - Change 000003 - Nuevo Script. Define edici&#243;n de directivas de mod_apachessl (Apache-ssl no usa mod_ssl)
 mod_apachessl_notssl=SSL-Zugriff verweigern
 mod_apachessl_forcessl=SSL/Zugriff ohne SSL erzwingen?
 mod_apachessl_capath=Pfad zum Verzeichnis mit Zertifikaten der Zertifizierungsstellen in
@@ -963,6 +965,7 @@ mod_apachessl_nov2=SSL-Version 2 deaktivieren
 mod_apachessl_fake=Simuliert Benutzer-Basisauthentifizierungsanmeldungen unter Verwendung des Zertifikatsnamens
 mod_apachessl_cdnfile=Datei, gegen die der Client-DN überprüft wird
 mod_apachessl_ecdnfile=Fehlende Datei, gegen die der Client-DN überprüft wird
+# nodo50 v0.1 - Change 000003 - End
 
 log_global=Globale $1-Optionen geändert
 log_virtc=Server $1 erstellt

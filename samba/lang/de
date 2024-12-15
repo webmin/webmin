@@ -73,9 +73,9 @@ error_delcopy=Die Freigabe '$1' kopiert von dieser Freigabe
 error_savename=Dateinamensgebung konnte nicht gespeichert werden
 
 convert_title=Benutzer konvertieren
-convert_msg=Dieses Formular ermöglicht die Synchronisierung der Unix- und Samba-Benutzerliste. Wenn Samba <a href=$1>verschlüsselte Passwörter</a> verwendet, wird eine separate Liste von Benutzern und Passwörtern anstelle der Systembenutzerliste verwendet.
+convert_msg=Dieses Formular ermöglicht die Synchronisierung der Unix- und Samba-Benutzerliste. Wenn Samba <a href=$1>verschlüsselte Passwörter</a> verwendet, wird eine separate Liste von Benutzer:innen und Passwörtern anstelle der Systembenutzerliste verwendet.
 convert_noconv=Diese Benutzer nicht konvertieren oder entfernen:
-convert_ncdesc=Die Liste der nicht zu konvertierenden Benutzer kann Benutzernamen, UIDs, Gruppennamen mit einem <tt>@</tt> Präfix oder UID-Bereiche wie <i>500-1000</i> oder <i>500-</i> enthalten.
+convert_ncdesc=Die Liste der nicht zu konvertierenden Benutzer kann Benutzer:innennamen, UIDs, Gruppennamen mit einem <tt>@</tt> Präfix oder UID-Bereiche wie <i>500-1000</i> oder <i>500-</i> enthalten.
 convert_update=Existierende Samba-Benutzer anhand ihrer Unix-Details aktualisieren
 convert_add=Neue Samba-Benutzer aus der Unix-Benutzerliste hinzufügen
 convert_delete=Samba-Benutzer löschen, die unter Unix nicht existieren
@@ -85,7 +85,7 @@ convert_lock=Konto gesperrt
 convert_passwd=Dieses Passwort verwenden
 convert_convert=Benutzer konvertieren
 convert_cannot=Unix-Benutzer können nicht in Samba-Benutzer konvertiert werden
-convert_who=Unix-Benutzer, die konvertiert werden sollen
+convert_who=Unix-Benutzer:innen, die konvertiert werden sollen
 convert_who0=Nur aufgeführte Benutzer oder UID-Bereiche
 convert_who1=Alle außer aufgeführte Benutzer und UID-Bereiche
 
@@ -129,7 +129,7 @@ passwd_chat=Passwortänderungs-Chat
 passwd_below=Unten aufgeführt:
 passwd_waitfor=Warten auf
 passwd_send=Senden
-passwd_map=Benutzernamen-Mapping
+passwd_map=Benutzer:innennamen-Mapping
 passwd_unixuser=Unix-Benutzer
 passwd_winuser=Windows-Benutzer
 
@@ -181,7 +181,7 @@ smbuser_nouser=Keine Samba-Benutzer definiert.
 smbuser_cannot=Samba-Benutzer können nicht aufgelistet werden
 
 euser_title=Samba-Benutzer bearbeiten
-euser_name=Benutzername
+euser_name=Benutzer:innenname
 euser_uid=Unix UID
 euser_passwd=Passwort
 euser_noaccess=Kein Zugriff
@@ -315,7 +315,7 @@ sec_rwuser=Lesen/Schreiben Benutzer
 sec_rwgroup=Lesen/Schreiben Gruppen
 
 esync_title=Benutzersynchronisation
-esync_msg=Webmin kann so konfiguriert werden, dass Änderungen an der Unix-Benutzerliste automatisch auf die Samba-Benutzerliste angewendet werden. Dies funktioniert nur, wenn das <b>Benutzer und Gruppen</b> Webmin-Modul zum Hinzufügen, Löschen oder Ändern von Benutzern verwendet wird.
+esync_msg=Webmin kann so konfiguriert werden, dass Änderungen an der Unix-Benutzerliste automatisch auf die Samba-Benutzerliste angewendet werden. Dies funktioniert nur, wenn das <b>Benutzer und Gruppen</b> Webmin-Modul zum Hinzufügen, Löschen oder Ändern von Benutzer:innen verwendet wird.
 esync_add=Samba-Benutzer hinzufügen, wenn ein Unix-Benutzer hinzugefügt wird
 esync_chg=Samba-Benutzer ändern, wenn ein Unix-Benutzer geändert wird
 esync_del=Samba-Benutzer löschen, wenn ein Unix-Benutzer gelöscht wird
@@ -335,7 +335,7 @@ mkpass_update=Aktualisiert
 mkpass_added=Hinzugefügt
 mkpass_del=Gelöscht
 mkpass_passfail=Passwort konnte nicht gesetzt werden
-mkpass_user=Benutzername
+mkpass_user=Benutzer:innenname
 mkpass_action=Durchgeführte Aktion
 mkpass_skipcount=$1 Benutzer wurden für die Konvertierung übersprungen.
 
@@ -415,8 +415,8 @@ start_err_wb=Winbind-Server konnten nicht gestartet werden
 restart_err=Samba-Server konnten nicht neu gestartet werden
 restart_err_wb=Winbind-Server konnten nicht neu gestartet werden
 
-swats_fail=Benutzernamen konnten nicht gespeichert werden
-swats_user=SWAT-Benutzername fehlt
+swats_fail=Benutzer:innennamen konnten nicht gespeichert werden
+swats_user=SWAT-Benutzer:innenname fehlt
 
 viewu_index=Aktuelle Benutzer
 viewu_list=Aktuelle Benutzer von $1
@@ -479,11 +479,11 @@ log_manual=Konfigurationsdatei $1 manuell bearbeitet
 
 swat_title=SWAT-Anmeldung
 swat_list=SWAT-Anmeldung
-swat_msg1=Ihr aktueller SWAT-Benutzername und Passwort sind inkorrekt. Verwenden Sie das untenstehende Formular, um sich erneut anzumelden.
-swat_msg2=Ein Benutzername und Passwort sind erforderlich, um sich bei SWAT anzumelden. Dies kann normalerweise jeder Benutzer auf Ihrem System sein.
+swat_msg1=Ihr aktueller SWAT-Benutzer:innenname und Passwort sind inkorrekt. Verwenden Sie das untenstehende Formular, um sich erneut anzumelden.
+swat_msg2=Ein Benutzer:innenname und Passwort sind erforderlich, um sich bei SWAT anzumelden. Dies kann normalerweise jeder Benutzer auf Ihrem System sein.
 swat_msg3=Sie können SWAT nicht über Webmin ausführen, da Ihre Samba-Konfiguration die Option <tt>$1:...</tt> (Hosts erlauben) gesetzt hat.
 swat_msg4=Sie können sich jedoch möglicherweise direkt unter $1 mit SWAT verbinden
-swat_username=Benutzername
+swat_username=Benutzer:innenname
 swat_password=Passwort
 swat_login=Anmelden
 swat_clear=Löschen
@@ -633,7 +633,7 @@ winbind_save=Jetzt binden
 winbind_default=Domäne aus Samba-Konfiguration
 winbind_pass=Benutzerpasswort
 winbind_err=An Domäne binden fehlgeschlagen
-winbind_euser=Benutzername fehlt
+winbind_euser=Benutzer:innenname fehlt
 winbind_edom=Domänenname fehlt
 winbind_cmd=An Domäne binden mit Befehl $1 ..
 winbind_failed=.. fehlgeschlagen! Siehe die obige Ausgabe für den Grund.
@@ -644,7 +644,7 @@ bind_ecannot=Sie dürfen Winbind-Optionen nicht bearbeiten
 bind_header=Windows-Domänenbindungsoptionen
 bind_local=Winbind für lokale Konten aktivieren?
 bind_trust=Domänenserver-Benutzer vertrauen?
-bind_users=Auflisten von Benutzern untersagen?
+bind_users=Auflisten von Benutzer:innen untersagen?
 bind_groups=Auflisten von Gruppen untersagen?
 bind_defaultdomain=Immer Standarddomäne verwenden?
 bind_realm=Kerberos-Realm auf Domänenserver

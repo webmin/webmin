@@ -1,3 +1,4 @@
+TITLES:
 index_title=MON Dienste Monitor
 index_return=MON Index
 index_edir=Das MON Verzeichnis $1 existiert nicht. Vielleicht ist MON nicht installiert, oder die <a href='$2'>Modulkonfiguration</a> ist falsch.
@@ -7,6 +8,7 @@ mon_status_title=Operationaler Status
 hostgroups_title=MON Konfigurations-Hostgruppe
 services_title=Beobachtungsgruppe-Dienste Definitionen
 
+HEADERS:
 head_hostgroups=Hostgruppe und Dienste
 head_groups=Hostgruppe Name
 head_members=Hostgruppe Mitglieder
@@ -15,10 +17,11 @@ head_service=Dienste zum beobachten
 head_param=Dienst Parameter
 head_watch=Beobachte diese Gruppe?
 head_monauth=Gebe Authentifizierung für MONCMD
-head_usr=Benutzername
+head_usr=Benutzer:innenname
 head_pass=Passwort
 head_mand=(Parameter in "Roter Farbe" sind Pflichtfelder)
 
+ERRORS:
 err_nomon=Paket 'mon' ist nicht auf dem System installiert
 err_nomonconf=Die MON-Konfigurationsdatei $1 wurde auf Ihrem System nicht gefunden. Vielleicht ist MON nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> ist falsch.
 err_nowatch=Keine watchgroup ausgewählt. Wählen Sie mindestens eine Beobachtungsgruppe zum fortfahren aus.
@@ -31,6 +34,7 @@ start_err=Fehlgeschlagen MON zu starten
 restart_err=Fehlgeschlagen MON neuzustarten
 restart_epid=Fehlgeschlagen PID zu empfangen
 
+LABLES:
 other=Andere (Leerzeichen getrennt)
 next=Nächstes
 mon_stat=MON Status
@@ -47,6 +51,7 @@ watch=Beobachtungsgruppe
 members=Mitglieder
 def_perargs=wd {Sa-Son}
 
+SERVICES DEFINITIONS:
 def_desc=Beschreibung
 def_inter=Intervall
 def_mon=Monitor
@@ -170,11 +175,11 @@ users_return=MON Benutzer Liste
 user_create=Erstelle MON Benutzer
 user_edit=Editiere MON Benutzer
 user_header=MON Benutzer Details
-user_user=Benutzername
+user_user=Benutzer:innenname
 user_pass=Passwort
 user_leave=Unverändert lassen
 user_err=Fehlgeschlagen Benutzer zu speichern
-user_euser=Fehlender oder ungültiger Benutzername
+user_euser=Fehlender oder ungültiger Benutzer:innenname
 user_esame=Ein Benutzer mit demselben Namen existiert bereits
 
 auth_title=Client Befehle

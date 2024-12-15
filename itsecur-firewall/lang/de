@@ -275,10 +275,10 @@ acl_apply=Konfiguration anwenden
 acl_bootup=Beim Start aktivieren
 acl_edit=Darf Firewalleinstellungen bearbeiten?
 
-users_desc=Die Benutzer, die auf dieser Seite auf das Firewall-Modul zugreifen können, mit den ausgewählten Berechtigungen.
+users_desc=Die Benutzer:innen, die auf dieser Seite auf das Firewall-Modul zugreifen können, mit den ausgewählten Berechtigungen.
 users_title=Firewall-Benutzer
 users_add=Einen neuen Firewall-Benutzer hinzufügen.
-users_name=Benutzername
+users_name=Benutzer:innenname
 users_ips=Erlaubte IP-Adressen
 users_enabled=Aktiviert?
 users_allow=Nur $1
@@ -297,7 +297,7 @@ user_same=Nichts ändern
 user_change=Festlegen auf
 user_enabled=Login erlaubt?
 user_err=Fehler beim Speichern des Benutzers
-user_ename=Fehlender Benutzername
+user_ename=Fehlender Benutzer:innenname
 user_mods=Verfügbare Webmin-Module
 
 bootup_ecannot=Sie dürfen die Firewall beim Booten nicht aktivieren oder deaktivieren
@@ -387,7 +387,7 @@ remote_user=Anmelden als Benutzer
 remote_pass=Anmelden mit Passwort
 remote_err=Fehler beim Speichern der Fernprotokollierungseinstellungen
 remote_ehost=Fehlender oder ungültiger Hostname
-remote_euser=Fehlender Benutzername
+remote_euser=Fehlender Benutzer:innenname
 remote_econnect=Verbindung zum Host fehlgeschlagen: $1
 remote_etimeout=Zeitüberschreitung
 

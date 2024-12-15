@@ -143,7 +143,7 @@ group_encrypted=Vorverschlüsseltes Passwort
 group_clear=Normales Passwort
 group_err=Fehler beim Speichern der Gruppe
 
-passwd_name=Benutzername
+passwd_name=Benutzer:innenname
 passwd_uid=Benutzer-ID
 passwd_real=Echter Name
 passwd_home=Home-Verzeichnis
@@ -168,7 +168,7 @@ passwd_max=Maximale Tage
 passwd_warn=Warnungstage
 passwd_inactive=Inaktive Tage
 passwd_err=Fehler beim Speichern des Benutzers
-passwd_ename=Fehlender oder ungültiger Benutzername
+passwd_ename=Fehlender oder ungültiger Benutzer:innenname
 passwd_euid=Fehlende oder ungültige UID
 passwd_egid=Fehlende oder ungültige GID
 passwd_ereal=Fehlender oder ungültiger echter Name

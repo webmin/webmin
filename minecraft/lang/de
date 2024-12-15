@@ -333,7 +333,7 @@ monitor_nojar=JAR-Datei $1 existiert nicht
 monitor_checklog=Serverantwort auf Befehle überprüfen?
 
 playtime_title=Tägliche Spielzeit
-playtime_user=Benutzername
+playtime_user=Benutzer:innenname
 playtime_time=Online-Zeit
 playtime_ltime=Erzwungene Zeit
 playtime_now=Status

@@ -142,19 +142,19 @@ users_title=iSCSI-Authentifizierung
 users_none=Es wurden noch keine iSCSI-Benutzer erstellt. Clients können auf gemeinsam genutzte Geräte zugreifen, ohne sich zu authentifizieren.
 users_add=Neuen iSCSI-Benutzer hinzufügen.
 users_delete=Ausgewählte Benutzer löschen
-users_name=Benutzername
+users_name=Benutzer:innenname
 users_mode=Authentifizierungsmethode
 users_return=Liste der Benutzer
 
 user_create=iSCSI-Benutzer erstellen
 user_edit=iSCSI-Benutzer bearbeiten
 user_header=iSCSI-Benutzerdetails
-user_user=Client-Benutzername
+user_user=Client-Benutzer:innenname
 user_mode=Authentifizierungsmethode
 user_pass=Client-Passwort
 user_egone=Benutzer existiert nicht mehr!
 user_err=Fehler beim Speichern des iSCSI-Benutzers
-user_euser=Fehlender oder ungültiger Benutzername – Leerzeichen und Doppelpunkte sind nicht erlaubt
+user_euser=Fehlender oder ungültiger Benutzer:innenname – Leerzeichen und Doppelpunkte sind nicht erlaubt
 user_epass=Fehlendes oder ungültiges Passwort – Leerzeichen und Doppelpunkte sind nicht erlaubt
 
 desc_extent=Gerät zum Teilen $1
