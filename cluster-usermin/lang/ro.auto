@@ -310,7 +310,7 @@ upgrade_ok=Actualizarea cu succes a pachetului Usermin $1 pe $2
 upgrade_failed=Instalarea eșuată pe $1 : $2
 upgrade_done=.. Terminat
 upgrade_efast=Doar serverele care utilizează modul RPC rapid pot fi actualizate
-upgrade_ereconn=Nu a reușit să vă reconectați la Usermin după actualizare!  : $1
+upgrade_ereconn=Nu a reușit să vă reconectați la Usermin după actualizare! : $1
 
 update_title=Module de actualizare
 update_header=Actualizarea modulelor pentru toate gazdele ..

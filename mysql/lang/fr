@@ -215,7 +215,7 @@ view_match5=moins de
 view_searchok=Recherche
 view_searchhead=Résultats de recherche pour $1 en champ $2 ...
 view_searchheadnot=Résultats de la recherche pour non $1 dans le champ $2 ...
-view_searchhead2=Résultats de la recherche avancée sur  $1 champs ...
+view_searchhead2=Résultats de la recherche avancée sur $1 champs ...
 view_searchreset=Réinitialiser recherche
 view_sorthead1=Tri de $1, ordre décroissant
 view_sorthead2=Tri de $1, ordre croissant
@@ -429,7 +429,7 @@ exec_tabimport=Importer fichier texte
 exec_isource=Source de fichier texte
 exec_iheader=Fichier texte d'options d'importation
 exec_created=$1 tableaux ont été créés.
-exec_inserted=$1 enregistrements  ont été insérés.
+exec_inserted=$1 enregistrements ont été insérés.
 exec_cs=Jeu de caractères pour les données
 
 tprivs_title=Autorisations de table
@@ -709,7 +709,7 @@ csv_cols=Colonnes à inclure dans CSV
 csv_ecols=Aucun colonnes sélectionnées
 
 cnf_title=Configuration du serveur MySQL
-cnf_efile=Le fichier de configuration MySQL $1 n'a pas été trouvé sur votre système. Vous devrez peut-être ajuster la  <a href='$2'>configuration du module</a> d'utiliser le bon chemin.
+cnf_efile=Le fichier de configuration MySQL $1 n'a pas été trouvé sur votre système. Vous devrez peut-être ajuster la <a href='$2'>configuration du module</a> d'utiliser le bon chemin.
 cnf_header=Options de serveur MySQL
 cnf_port=Port du serveur MySQL
 cnf_bind=Serveur MySQL adresse d'écoute

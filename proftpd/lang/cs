@@ -2,7 +2,7 @@ index_title=ProFTPD Server
 index_eproftpd=ProFTPD server $1 nemohl být ve vašem systému nalezen. Možná není nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
 index_eproftpd2=Program $1 nevypadá na ProFTPD server. Možná není nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná. Výstup z příkazu $3 byl : $4
 index_eversion=Verze ProFTPD serveru $1 není Webminem podporována. Je podporována pouze verze 0.99 a vyšší.
-index_econf=Konfiguračmní soubor ProFTPD $1 neexistuje nebo není platný.  Možná vaše <a href='$2'>konfigurace modulu</a> není správná.
+index_econf=Konfiguračmní soubor ProFTPD $1 neexistuje nebo není platný. Možná vaše <a href='$2'>konfigurace modulu</a> není správná.
 index_apply=Použít změny
 index_applymsg=Klepnutím na tlačítko se použije aktuální konfigurace zasláním SIGHUP signálu běžícímu ProFTPD procesu.
 index_start=Spustit server

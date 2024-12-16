@@ -155,7 +155,7 @@ listl_all=Išvardinkite visas galiojančias ir pasibaigusias nuomos sutartis
 listl_delete=Ištrinti pasirinktas nuomos sutartis
 listl_unknown=Nežinoma
 listl_allocs=$1 turimas IP adresas, $2 paskirta ($3 %)
-listl_mode=Rodymo rėžimas  :
+listl_mode=Rodymo rėžimas :
 listl_mode_0=DHCP nuoma
 listl_mode_1=Potinkliai ir naudojimas
 listl_size=Iš viso IP
@@ -168,7 +168,7 @@ listl_refresh=Atnaujinti sąrašą
 restart_errmsg1=Nepavyko iš naujo paleisti dhcpd
 restart_errmsg2=Nepavyko signalizuoti apie procesą
 start_failstart=Nepavyko paleisti dhcpd
-restart_conftext=Linijos aplink $1 $2  :
+restart_conftext=Linijos aplink $1 $2 :
 
 sgroup_faildel=Nepavyko ištrinti grupės
 sgroup_failsave=Nepavyko išsaugoti grupės

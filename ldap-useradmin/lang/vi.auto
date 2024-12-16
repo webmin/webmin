@@ -90,7 +90,7 @@ udel_pass=Xóa mục nhập người dùng LDAP ..
 udel_book=Xóa khỏi sổ địa chỉ ..
 udel_imap=Xóa thư mục IMAP ..
 udel_warnimap=Hộp thư thư hiện có sẽ bị xóa khi xóa thư mục chính!
-udel_failed=.. thất bại!  : $1
+udel_failed=.. thất bại! : $1
 
 raw_title=Thuộc tính LDAP
 raw_name=Tên thuộc tính

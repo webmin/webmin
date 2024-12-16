@@ -193,7 +193,7 @@ delete_edep=El Módulo $1 no puede ser borrado pues el módulo $2 depende de él
 delete_desc1=$1 (Clon de $2)
 delete_desc2=$1 en $2 ($3 kB)
 delete_title=Borrar Módulos
-delete_msg=Los siguientes módulos han sido borrados correctamente de su instalación de  Webmin:
+delete_msg=Los siguientes módulos han sido borrados correctamente de su instalación de Webmin:
 delete_rusure=¿Está seguro de querer borrar los módulos seleccionados?. $1 KB de archivos serán borrados.
 delete_rusure2=¿Está seguro de querer borrar el tema $2? $1 kB de archivos se borrarán.
 delete_rusure3=¿Está seguro de querer borrar los clones de módulos $2?
@@ -267,7 +267,7 @@ newkey_err=Fallo al crear clave SSL
 newkey_ecn=Nombre de servidor no válido o sin introducir
 newkey_efile=Nombre de archivo clave sin introducir
 newkey_title=Generar Clave
-newkey_ecmd=El comando SSL $1 no se encontró en su sistema. O bien no está instalado, o la  <a href='$2'>Configuración del módulo de Usuarios Webmin</a> es incorrecta.
+newkey_ecmd=El comando SSL $1 no se encontró en su sistema. O bien no está instalado, o la <a href='$2'>Configuración del módulo de Usuarios Webmin</a> es incorrecta.
 newkey_essl=Ocurrió un error al generar la nueva clave :
 newkey_ecat=Ocurrió un error en la escritura del nuevo archivo clave :
 newkey_ok=Se generó correctamente la siguiente clave SSL.
@@ -358,7 +358,7 @@ update_apply=Salvar y Aplicar
 update_sched2=Actualizar módulos a las $1:$2 cada $3 días
 update_none=No hay actualizacionesde Webmin para esta versión.
 update_failed=No pude instalar el módulo: $1
-update_desc2=Este formulario es para planificar la actualización automática de los módulos de Webmin que contengar errores  o agujeros de seguridad desde la página de <a href=http://www.webmin.com/webmin/updates.html>Actualizaciones de Webmin</a> o desde otra fuente. Aunque este servicio es útil, debería de tener cuidado al usarlo ya que puede hacer que atacantes tomen posesión de su sistema si el servidor de actualizaciones se viera alguna vez comprometido.
+update_desc2=Este formulario es para planificar la actualización automática de los módulos de Webmin que contengar errores o agujeros de seguridad desde la página de <a href=http://www.webmin.com/webmin/updates.html>Actualizaciones de Webmin</a> o desde otra fuente. Aunque este servicio es útil, debería de tener cuidado al usarlo ya que puede hacer que atacantes tomen posesión de su sistema si el servidor de actualizaciones se viera alguna vez comprometido.
 
 ca_title=Autoridad de Certificado
 ca_old=Certificado existente

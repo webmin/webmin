@@ -155,7 +155,7 @@ listl_all=Naštejte vse aktivne in potekle najeme
 listl_delete=Izbrišite izbrane najeme
 listl_unknown=Neznano
 listl_allocs=$1 IP naslovi na voljo, dodeljeno $2 ($3 %)
-listl_mode=Način prikaza  :
+listl_mode=Način prikaza :
 listl_mode_0=Najem DHCP
 listl_mode_1=Podomrežja in uporaba
 listl_size=Skupaj IP
@@ -168,7 +168,7 @@ listl_refresh=Osveži seznam
 restart_errmsg1=Znova ni bilo mogoče ponovno zagnati dhcpd
 restart_errmsg2=Postopek signala ni uspel
 start_failstart=Zagon dhcpd ni uspel
-restart_conftext=Vrstice okoli $1 v $2  :
+restart_conftext=Vrstice okoli $1 v $2 :
 
 sgroup_faildel=Skupine ni bilo mogoče izbrisati
 sgroup_failsave=Skupine ni bilo mogoče shraniti

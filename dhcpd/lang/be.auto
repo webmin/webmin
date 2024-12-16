@@ -168,7 +168,7 @@ listl_refresh=Абнавіць спіс
 restart_errmsg1=Не атрымалася перазагрузіць dhcpd
 restart_errmsg2=Не атрымалася апрацаваць сігнал
 start_failstart=Не атрымалася запусціць dhcpd
-restart_conftext=Радкі каля $1 у $2  :
+restart_conftext=Радкі каля $1 у $2 :
 
 sgroup_faildel=Не атрымалася выдаліць групу
 sgroup_failsave=Не ўдалося захаваць групу

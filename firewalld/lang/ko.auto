@@ -10,7 +10,7 @@ index_start=FirewallD 시작
 index_startdesc=FirewallD 서버를 시작합니다.
 index_stop=방화벽 중지
 index_stopdesc=FirewallD 서버를 종료하고 위에 나열된 모든 규칙을 제거하십시오.
-index_cerr=FirewallD 모듈을 사용할 수 없습니다  : $1
+index_cerr=FirewallD 모듈을 사용할 수 없습니다 : $1
 index_zone=영역에 규칙 표시 :
 index_zoneok=변화
 index_zoneadd=영역 추가
@@ -90,7 +90,7 @@ check_ecmd=시스템에서 FirewallD 제어 명령 $1 을 (를) 찾을 수 없�
 
 delete_err=규칙을 삭제하지 못했습니다.
 delete_enone=선택하지 않았습니다!
-delete_edel=$1 제거 실패  : $2
+delete_edel=$1 제거 실패 : $2
 
 zone_title=영역 만들기
 zone_header=새로운 영역 옵션

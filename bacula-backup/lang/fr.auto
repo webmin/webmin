@@ -200,7 +200,7 @@ backup_failed=.. la sauvegarde ne s'est pas terminée avec succès. Consultez le
 
 gbackup_title=Exécuter le travail de sauvegarde du groupe Bacula
 gbackup_run=Démarrage du travail de sauvegarde $1 sur les clients $2.
-gbackup_on=Exécution d'une tâche de sauvegarde sur le client $1  :
+gbackup_on=Exécution d'une tâche de sauvegarde sur le client $1 :
 gbackup_header=Détails du travail de sauvegarde du groupe Bacula
 gbackup_jd=$1 (ensemble de fichiers $2 sur le groupe $3)
 

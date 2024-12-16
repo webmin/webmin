@@ -192,7 +192,7 @@ open_file=pad
 
 trace_title=Spoorproses
 trace_start=Begin stelseloproepspoor vir $1.
-trace_doing=Stelseloproepspoor vir $1  :
+trace_doing=Stelseloproepspoor vir $1 :
 trace_done=.. proses beëindig is.
 trace_failed=.. opsporing misluk!
 trace_sorry=Hierdie bladsy benodig Java-ondersteuning in u blaaier. Pas die module-opstelling aan om slegs 'n teksopsporingsteks te gebruik.

@@ -178,7 +178,7 @@ aliases_value=Синоним на..
 new_alias=Създаване на нов синоним
 new_aliasmsg=Натиснете този бутон, за да създадете нов синоним
 
-local_delivery_ecannot=Нямате права за редактиране на опциите за  локално доставяне
+local_delivery_ecannot=Нямате права за редактиране на опциите за локално доставяне
 local_delivery_title=Локално доставяне
 opts_local_transport=Име на транспорта за локални доставки
 opts_local_transport_local=Локален
@@ -264,7 +264,7 @@ opts_delay_warning_time_default2=Подразбиращ се за Postfix
 opts_content_filter_default=Няма
 
 smtpd_title=Опции за SMTP сървър
-smtpd_ecannot=Нямате права за  редактиране на опциите за SMTP сървъри
+smtpd_ecannot=Нямате права за редактиране на опциите за SMTP сървъри
 opts_disable_vrfy_command=Изключване на SMTP командата VRFY
 opts_smtpd_banner=Инициализиращ SMTP текст
 opts_smtpd_etrn_restrictions=Ограничи командата ETRN при...

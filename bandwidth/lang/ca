@@ -4,7 +4,7 @@ index_efiresys2=No s'ha trobat al sistema el tallafoc $1 configurat. Ajusta la <
 index_elog=El fitxer $1 utilitzat per al registre d'amplada de banda és de fet un directori del sistema. Ajusta la <a href='$2'>configuració del mòdul</a> per utilitzar un camí diferent.
 index_edir=El directori per emmagatzemar les dades $1 de bandwidth no existeix, o no és un directori. Ajusta la <a href='$2'>configuració del mòdul</a> per utilitzar un camí diferent.
 index_emod=El mòdul $1 de Webmin no es troba instal·lat al sistema, o bé no està suportat pel SO. El mòdul de Monitorització d'Amplada de Banda no pot operar sense ell.
-index_esyslog=No hi ha cap mòdul de Registres del Sistema instal·lat ni suportat pel sistema. El mòdul de Monitorització d'Amplada de Banda no pot operar sense  un d'ells.
+index_esyslog=No hi ha cap mòdul de Registres del Sistema instal·lat ni suportat pel sistema. El mòdul de Monitorització d'Amplada de Banda no pot operar sense un d'ells.
 index_firesys=S'està utilitzant el tallafoc $1 i $2
 index_setupcannot=De totes maneres, tu no tens permís per configurar-lo.
 index_setupdesc=Abans que aquest mòdul pugui informar de l'ús de la xarxa al sistema, cal configurar-lo per monitoritzar el trànsit en la interfície de xarxa externa seleccionada.

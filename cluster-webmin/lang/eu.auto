@@ -312,7 +312,7 @@ upgrade_ok=$2 ko Webmin $1 paketeak berritu du $2 an
 upgrade_failed=Ezin izan da instalatu $1 : $2 an
 upgrade_done=.. egin
 upgrade_efast=RPC modu azkarra erabiliz zerbitzariak bakarrik berritu daitezke
-upgrade_ereconn=Ezin izan da berritu berriro konektatu Webminera konektatu ondoren!  : $1
+upgrade_ereconn=Ezin izan da berritu berriro konektatu Webminera konektatu ondoren! : $1
 
 update_title=Eguneratzeko moduluak
 update_header=Modulu ostalari guztiak eguneratzen ..

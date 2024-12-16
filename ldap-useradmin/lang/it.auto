@@ -90,7 +90,7 @@ udel_pass=Eliminazione voce utente LDAP.
 udel_book=Eliminazione dalla rubrica.
 udel_imap=Eliminazione cartella IMAP ..
 udel_warnimap=La casella postale esistente verrà eliminata quando si elimina la home directory!
-udel_failed=.. fallito!  : $1
+udel_failed=.. fallito! : $1
 
 raw_title=Attributi LDAP
 raw_name=Nome attributo

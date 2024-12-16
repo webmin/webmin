@@ -155,7 +155,7 @@ listl_all=Κατάλογος όλων των ενεργών και ληξιπρ�
 listl_delete=Διαγραφή επιλεγμένων μισθώσεων
 listl_unknown=Αγνωστος
 listl_allocs=$1 διαθέσιμες διευθύνσεις IP, $2 κατανεμημένες ($3 %)
-listl_mode=Λειτουργία προβολής  :
+listl_mode=Λειτουργία προβολής :
 listl_mode_0=DHCP μισθώσεις
 listl_mode_1=Υποδίκτυα και χρήση
 listl_size=Συνολικά IP
@@ -168,7 +168,7 @@ listl_refresh=Λίστα ανανέωσης
 restart_errmsg1=Αποτυχία επανεκκίνησης του dhcpd
 restart_errmsg2=Η διαδικασία σήματος απέτυχε
 start_failstart=Δεν ήταν δυνατή η εκκίνηση του dhcpd
-restart_conftext=Γραμμές γύρω από $1 σε $2  :
+restart_conftext=Γραμμές γύρω από $1 σε $2 :
 
 sgroup_faildel=Αποτυχία κατάργησης ομάδας
 sgroup_failsave=Αποτυχία αποθήκευσης ομάδας

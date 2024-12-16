@@ -127,7 +127,7 @@ acl_delete=Kan slette Cron jobber?
 acl_move=Kan flytte Cron jobber?
 acl_kill=Kan avslutte Cron jobber?
 acl_hourly=Begrens jobber til "at most hourly"?
-acl_hourlydef=Som  satt i modulkonfig.
+acl_hourlydef=Som satt i modulkonfig.
 
 log_modify=Endret cron jobb for $1
 log_modify_l=Endret cron jobb "$2" for $1

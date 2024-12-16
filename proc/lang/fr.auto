@@ -83,7 +83,7 @@ open_file=Chemin
 
 trace_title=Processus de suivi
 trace_start=Démarrage de la trace d'appel système pour $1 ..
-trace_doing=Trace d'appel système pour $1  :
+trace_doing=Trace d'appel système pour $1 :
 trace_done=.. le processus est terminé.
 trace_failed=.. le traçage a échoué!
 trace_sorry=Cette page nécessite la prise en charge Java dans votre navigateur. Pour utiliser une trace de processus en texte uniquement, ajustez la configuration du module.

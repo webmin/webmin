@@ -19,7 +19,7 @@ index_modgroups=$1 taldeko moduluak
 index_sync=Unix erabiltzaileen sinkronizazioa konfiguratu
 index_unix=Unix erabiltzailearen kautotzea konfiguratu
 index_sessions=Sarrerako saioak ikusi
-index_rbac=RBAC	konfiguratu
+index_rbac=RBAC konfiguratu
 index_delete=Ezabatu aukeratutakoa
 
 edit_title=Webmin erabiltzailea editatu
@@ -106,11 +106,11 @@ save_eunix=Ez da '$1' Unix erabiltzailea existitzen
 save_emod=Ez zaude baimenduta '$1' modulurako atzipena emateko
 save_ecreate=Ez zaude erabiltzaile berriak esleitzeko baimendua
 save_euser=Ez zaude erabiltzaile hau editatzeko baimendua
-save_ecolon=Pasahitzak ezin du  : karakterea bere baitan izan
+save_ecolon=Pasahitzak ezin du : karakterea bere baitan izan
 save_epass=Pasahitza ez da baliozkoa : $1
 save_eself=Zure uneko IP helbidea ($1) baliogabetua izango da
 save_epam=PAM autentikazioa ez dago eskuragarri Perl-en <tt>Authen::PAM</tt> modulua instalatu gabe dagoelako edo ez duelako ongi funtzionatzen
-save_epam2=Webminen Perl moduluak erabil ditzakezu  <a href='$1'>Authen::PAM deskargatu eta instalatzeko</a> orain.
+save_epam2=Webminen Perl moduluak erabil ditzakezu <a href='$1'>Authen::PAM deskargatu eta instalatzeko</a> orain.
 save_egroup=Ez zaude talde horretara esleitzeko baimendua
 save_enone=Ez da helbiderik sartu
 save_enet='$1' ez da baliozko sare helbidea
@@ -270,7 +270,7 @@ sync_ecannot=Ez zaude erabiltzaileen sinkronizazioa konfiguratzeko baimendua
 
 unix_title=Unix erabiltzaileen autentikazioa
 unix_err=Akatsa Unix autentikazioa gordetzean
-unix_desc=Orri honen bidez Webmin konfigura daiteke sistemako erabiltzaileen aurka egindako saio saiakerak  eta PAM balidatzeko. Hau lagungarri da Unix erabiltzaile askori Webminerako atzipena eman nahi zaionean.
+unix_desc=Orri honen bidez Webmin konfigura daiteke sistemako erabiltzaileen aurka egindako saio saiakerak eta PAM balidatzeko. Hau lagungarri da Unix erabiltzaile askori Webminerako atzipena eman nahi zaionean.
 unix_def=Soilik Webmin erabiltzaileei baimendu saioa hastea
 unix_sel=Behean zerrendatutako Unix erabiltzaileei utzi soilik login egiten
 unix_mode=Baimendu
@@ -293,7 +293,7 @@ unix_ewhogroup=Missing group to allow in row $1
 unix_ewhouser=Missing user to allow in row $1
 unix_enone=Ez da sartu baimentzeko Unix erabiltzaile edo talderik
 unix_same=&lt;Talde edo erabiltzaile bera&gt;
-unix_sudo=<tt>sudo</tt> eran komando guztiak exekuta ditzaketen erabiltzaileei baimendu  <tt>root</tt> gisa saioa hasten
+unix_sudo=<tt>sudo</tt> eran komando guztiak exekuta ditzaketen erabiltzaileei baimendu <tt>root</tt> gisa saioa hasten
 unix_pamany=Treat logins that only pass PAM validation as $1
 unix_esudo=$1 komandoa ez dago instalatua
 unix_esudomod=Perl-en $1 modulua beharrezkoa da <tt>sudo</tt> autentikaziorako eta ez dago instalatua
@@ -316,9 +316,9 @@ switch_euser=Ez zaude erabiltze honetara bihurtzeko baimendua
 switch_eold=Ez da aurkitu sortuta dagoen saioa!
 
 rbac_title=RBAC konfiguratu
-rbac_desc=Webminen RBAC en integrazioak erabiltzaileen moduluak eta ACL baimenak RBAC (Role Based Access Control) datu base batetik egitea ahalbidetzen du, Webminen konfigurazio fitxategitik egin beharrean. Behin RBAC euskarria gaituta,  RBAK ek kontrolatuko ditu modulu eta ACL guztiak aukera aktibatuta duten erabiltzaileak bere baitan izango ditu RBAC ek definitutako ahalmenak, Webminen atzipen konfigurazioaren partez.
+rbac_desc=Webminen RBAC en integrazioak erabiltzaileen moduluak eta ACL baimenak RBAC (Role Based Access Control) datu base batetik egitea ahalbidetzen du, Webminen konfigurazio fitxategitik egin beharrean. Behin RBAC euskarria gaituta, RBAK ek kontrolatuko ditu modulu eta ACL guztiak aukera aktibatuta duten erabiltzaileak bere baitan izango ditu RBAC ek definitutako ahalmenak, Webminen atzipen konfigurazioaren partez.
 rbac_esolaris=Momentu honetan RBAC soilik Solaris-en dago eskuragarri, ondorioz ezin da $1 sistema honetan erabili.
-rbac_eperl=RBAC-en integraziorako beharrezko den $1 Perl-en modulua ez dago instalatua.  <a href='$2'>Egin klik hemen</a> orain instalatzeko.
+rbac_eperl=RBAC-en integraziorako beharrezko den $1 Perl-en modulua ez dago instalatua. <a href='$2'>Egin klik hemen</a> orain instalatzeko.
 rbac_ecpan=Ez daukazu Webmin-en Perl moduluen orrietarako atzipena RBAC-en integraziorako beharrezko den $1 modulua instalatzeko.
 rbac_ok=RBAC integrazioa eskuragarri dago sistema honetan, eta gaitua izan daiteke erabiltzaile bakoitzarentzat Webminen erabiltzaileak editatzeko orrian.
 
@@ -363,5 +363,5 @@ cpass_notre=Debekatutako patroi batekin dator bat
 cpass_re=Ez du eskatzen den patroia betetzen
 cpass_name=Erabiltzaile izena du bere baitan
 cpass_dict=Hiztegiko hitz bat da
-cpass_spellcmd=Hiztegiko hitzak kontsultatzeko  $1 eta $2 komandoak ez dira instalatuak izan
+cpass_spellcmd=Hiztegiko hitzak kontsultatzeko $1 eta $2 komandoak ez dira instalatuak izan
 cpass_old=Pasahitz zaharrak ezin dira berrerabili

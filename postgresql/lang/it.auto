@@ -63,7 +63,7 @@ exec_tabfile=Esegui SQL dal file
 exec_tabimport=Importa file di testo
 exec_return=eseguire il modulo SQL
 exec_ecompress=Il file SQL è compresso, ma il programma $1 necessario per decomprimerlo non è installato.
-exec_ecompress2=Decompressione non riuscita  : $1
+exec_ecompress2=Decompressione non riuscita : $1
 
 view_refresh=ricaricare
 view_match4=più grande di

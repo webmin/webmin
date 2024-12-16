@@ -298,7 +298,7 @@ update_apply=Desa i Aplica
 update_sched=Actualitza els mòduls a les $1:00 cada $2 dies
 update_none=No hi ha cap actualització d'Usermin per aquesta versió.
 update_failed=No s'ha pogut instal·lar el mòdul: $1
-update_desc2=Aquest formulari és per planificar l'actualització automàtica dels mòduls d'Usermin que continguin errors o forats de seguretat des de la pàgina d'<a href=http://www.usermin.com/updates.html>Actualitzacions d'Usermin</a>  des d'una altra font. Tot i que aquest servei és útil, cal anar amb compte, ja que això pot permetre els atacants de prendre el teu sistema si el servidor queda compromès.
+update_desc2=Aquest formulari és per planificar l'actualització automàtica dels mòduls d'Usermin que continguin errors o forats de seguretat des de la pàgina d'<a href=http://www.usermin.com/updates.html>Actualitzacions d'Usermin</a> des d'una altra font. Tot i que aquest servei és útil, cal anar amb compte, ja que això pot permetre els atacants de prendre el teu sistema si el servidor queda compromès.
 
 assignment_title=Reassignació de Mòduls
 assignment_header=Assignacions de categories de mòduls

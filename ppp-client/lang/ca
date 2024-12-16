@@ -41,7 +41,7 @@ connect_ip=... connexió establerta amb èxit amb l'adreça IP $1.
 connect_noip=... connexió establerta amb èxit.
 connect_dns=S'està utilitzant la configuració DNS assignada pel PPP.
 connect_dns2=S'ha establert la configuració DNS assignada pel PPP.
-connect_dnsto=Límit de temps en intentar la configuració  DNS assignada pel PPP.
+connect_dnsto=Límit de temps en intentar la configuració DNS assignada pel PPP.
 connect_dnsdown=Sembla que la connexió ha fallat en esperar la configuració DNS assignada pel PPP.
 
 disc_title=Tancament del PPP

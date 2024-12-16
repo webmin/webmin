@@ -64,7 +64,7 @@ nfs_ip=Dirección IP
 nfs_host=Nombre de máquina
 nfs_none=No se encontraron servidores NFS locales
 nfs_choose=Elegir directorio NFS en $1
-nfs_failed=Fallo al recuperar la exportación de NFS desde $1 : $2  Quizás no hay servidores NFS corriendo
+nfs_failed=Fallo al recuperar la exportación de NFS desde $1 : $2 Quizás no hay servidores NFS corriendo
 nfs_seldir=Seleccione un directorio NFS para montar..
 nfs_dir=Directorio
 nfs_clients=Clientes
@@ -86,7 +86,7 @@ smb_noshares=No hay recursos compartidos disponibles en el servidor $1
 
 solaris_scsidev=Controlador SCSI $1 destino $2 unidad $3 partición $4
 solaris_mddev=Dispositivo RAID $1
-solaris_ecacheexists=El directorio $1 ya existe.  Bórrelo.
+solaris_ecacheexists=El directorio $1 ya existe. Bórrelo.
 solaris_ebusy=$1 está ocupado
 solaris_ekill=Fallo al matar rumba
 solaris_epid=Fallo al buscar id del proceso de rumba

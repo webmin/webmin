@@ -70,7 +70,7 @@ reboot_rusure=Jeste li sigurni da želite ponovno pokrenuti zonu $1 ? Svi proces
 reboot_err=Ponovno pokretanje zone nije uspjelo
 reboot_doing=Sada ponovo pokrenite zonu ..
 
-reboot_failed=.. neuspjeh  :
+reboot_failed=.. neuspjeh :
 reboot_ok=.. kompletna.
 
 halt_title=Zona isključivanja

@@ -312,7 +312,7 @@ upgrade_ok=Veiksmīgi jaunināta Webmin $1 pakotne $2
 upgrade_failed=Neizdevās instalēt vietnē $1 : $2
 upgrade_done=.. darīts
 upgrade_efast=Jaunināt var tikai tos serverus, kuri izmanto ātro RPC režīmu
-upgrade_ereconn=Pēc jaunināšanas neizdevās atkārtoti izveidot savienojumu ar Webmin!  : $1
+upgrade_ereconn=Pēc jaunināšanas neizdevās atkārtoti izveidot savienojumu ar Webmin! : $1
 
 update_title=Atjauniniet moduļus
 update_header=Visu resursdatoru moduļu atjaunināšana ..

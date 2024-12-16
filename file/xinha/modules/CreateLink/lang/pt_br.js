@@ -14,5 +14,5 @@
 // Distributed under the same terms as HTMLArea itself.
 // This notice MUST stay intact for use (see license.txt).
 {
-  "You need to select some text before creating a link": "Você precisa selecionar um texto antes de criar um link"
+ "You need to select some text before creating a link": "Você precisa selecionar um texto antes de criar um link"
 }

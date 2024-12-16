@@ -3,7 +3,7 @@ main_feedback=Feedback..
 main_switch=Aldatu erabiltzailea..
 main_logout=Amaitu saioa
 main_version=$1 bertsioa $2 -n ($3)
-main_title=Webmin $1  $2 -n ($3)
+main_title=Webmin $1 $2 -n ($3)
 main_title2=Webmin
 main_none=Ez daukazu Webminen moduluetarako atzipenik.
 main_skill=Skill level
@@ -107,8 +107,8 @@ config_ewebmin=14 motako parametroak soilik Webminekin egiten du lan
 help_err=Akatsa laguntza bistaratzean
 help_epath=Laguntza helbidea falta da edo ez da zuzena
 help_eheader=&lt;goiburuko&gt; atala falta da
-help_eif=Akatsa $1  : $2
-help_eexec=Aktsa $1  : $2
+help_eif=Akatsa $1 : $2
+help_eexec=Aktsa $1 : $2
 
 referer_title=Segurtasun Abisua
 referer_warn=s
@@ -243,7 +243,7 @@ feedback_esend=Akatsa feedback-a bidaltzean SMTP zerbitzari bidez edo posta bida
 feedback_to=Bidali feedback-a helbide hauetara
 feedback_enoto=Feedback-a bidaltzeko helburu helbiderik ez da sartu
 feedback_ecannot=Ez zaude feedback-a bidaltzeko baimendua
-feedback_ecannot2=Ez zaude  konfigurazio fitxategiak dituen feedback mezuak bidaltzeko baimendua
+feedback_ecannot2=Ez zaude konfigurazio fitxategiak dituen feedback mezuak bidaltzeko baimendua
 
 progress_nosize=$1 deskargatzen ..
 progress_done=.. deskarga amaitu da.
@@ -283,7 +283,7 @@ ui_selinv=Alderantzikatu hautapena.
 ui_edate=Data ez da baliozkoa
 ui_etime=Denbora ez da baliozkoa
 ui_paging=$3 ren lerroak erakusten $1 etik $2 ra
-ui_rowlabel=$2  $1 lerroan :
+ui_rowlabel=$2 $1 lerroan :
 
 header_statusmsg=$1 logged into $2 $3 on $4 ($5)
 
@@ -300,7 +300,7 @@ wsearch_modt=Modulua
 wsearch_mtitle=Modulu izena
 wsearch_what=Matching page
 wsearch_type=Match type
-wsearch_mod=$1  modulua
+wsearch_mod=$1 modulua
 wsearch_config_webmin=Webmin modulu konfigurazioa
 wsearch_config_usermin=Usermin preferences
 wsearch_help=Laguntza orria

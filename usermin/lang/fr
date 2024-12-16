@@ -119,7 +119,7 @@ configs_return=à la configuration du module Usermin
 configs_prefs=Les utilisateurs peuvent-ils modifier les préférences ?
 configs_sels=Seulement sélectionnés ..
 configs_global=Configuration globale du module
-configs_globaldesc=Les paramètres de ce formulaire s'appliquent à tous les utilisateurs du module et, en général,  activent les options relatives aux programmes et fichiers qu'il utilise.
+configs_globaldesc=Les paramètres de ce formulaire s'appliquent à tous les utilisateurs du module et, en général, activent les options relatives aux programmes et fichiers qu'il utilise.
 configs_user=Préférences utilisateurs par défaut
 configs_userdesc=Les paramètres de ce formulaire définissent les options par défaut pour les préférences de ce module modifiables par les utilisateurs . Sauf si vous le spécifiez, ils peuvent être modifiées par les utilisateurs.
 
@@ -253,7 +253,7 @@ upgrade_title=Mise à niveau de Usermin
 upgrade_title2=Installer Usermin
 upgrade_desc=Ce formulaire vous permet de mettre à niveau l'ensemble de votre installation Usermin vers une nouvelle version. Vous pouvez installer à partir d'un fichier local, d'un fichier déposé sur le serveur ou à partir de la toute dernière version sur <a href=http://www.usermin.com/>www.usermin.com</a>. Tout comme pour une mise à niveau manuelle, tous vos paramètres de configuration et les modules tiers seront conservés.
 upgrade_descrpm=Ce formulaire vous permet de mettre à niveau la totalité de votre installation Usermin vers une nouvelle version à l'aide de l'option de mise à niveau de RPM. Vous pouvez effectuer l'installation à partir d'un fichier RPM local, d'un fichier téléchargé ou de la toute dernière version sur <a href=http://www.usermin.com/>www.usermin.com</a>. Tout comme pour une une mise à niveau manuelle, tous vos paramètres de configuration et les modules tiers seront conservés.
-upgrade_descdeb=Ce formulaire vous permet de mettre à niveau l'ensemble de votre installation Usermin  en mettant à jour son paquet Debian. Vous pouvez installer à partir d'un fichier local .deb, téléchargé ou à partir de la dernière version sur <a href=http://www.usermin.com/>www.usermin.com</a>. Tous vos paramètres de configuration ainsi que vos modules seront conservés, de la même manière qu'avec une mise à jour manuelle.
+upgrade_descdeb=Ce formulaire vous permet de mettre à niveau l'ensemble de votre installation Usermin en mettant à jour son paquet Debian. Vous pouvez installer à partir d'un fichier local .deb, téléchargé ou à partir de la dernière version sur <a href=http://www.usermin.com/>www.usermin.com</a>. Tous vos paramètres de configuration ainsi que vos modules seront conservés, de la même manière qu'avec une mise à jour manuelle.
 upgrade_local=À partir d'un fichier local
 upgrade_uploaded=À partir d'un fichier déposé sur le serveur
 upgrade_url=À partir de l'URL ftp ou http

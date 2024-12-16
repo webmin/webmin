@@ -34,7 +34,7 @@ listl_all=Liste over alle aktive og udløbne leasingkontrakter
 listl_delete=Slet valgte leasingkontrakter
 listl_unknown=Ukendt
 listl_allocs=$1 IP-adresser tilgængelige, $2 tildelt ($3 %)
-listl_mode=Visningstilstand  :
+listl_mode=Visningstilstand :
 listl_mode_0=DHCP-lejekontrakter
 listl_mode_1=Undernet og brug
 listl_size=I alt IP
@@ -47,7 +47,7 @@ listl_refresh=Opdater liste
 restart_errmsg1=Kunne ikke genstarte dhcpd
 restart_errmsg2=Kunne ikke signalere processen
 start_failstart=Kunne ikke starte dhcpd
-restart_conftext=Linjer omkring $1 i $2  :
+restart_conftext=Linjer omkring $1 i $2 :
 
 sgroup_faildel=Kunne ikke slette gruppen
 sgroup_failsave=Gruppen blev ikke gemt

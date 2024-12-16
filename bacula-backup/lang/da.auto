@@ -207,7 +207,7 @@ backup_failed=.. sikkerhedskopien blev ikke fuldført. Tjek fejlmeddelelsen oven
 
 gbackup_title=Kør Bacula Group Backup Job
 gbackup_run=Start af backupjob $1 på $2 klienter ..
-gbackup_on=Køres backupjob på klient $1  :
+gbackup_on=Køres backupjob på klient $1 :
 gbackup_header=Oplysninger om Bacula-gruppe backup-job
 gbackup_jd=$1 (Filsæt $2 på gruppe $3)
 

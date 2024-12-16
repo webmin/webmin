@@ -60,7 +60,7 @@ global_bind=Winbind Seçenekleri
 
 error_nosamba=Samba sunucusu çalıştırılabiliri <tt>$1</tt> bulunamadı. Sisteminizde Samba sunucusu kurulmamış ya da <a href="$2">modül yapılandırmanız</a> yanlış olabilir.
 error_version=Webmin Samba sunucusu çalıştırılabiliri olan <tt>$1</tt>'in sürümünü okuyamadı. Doğru yolu belirtmek için <a href="$2">modül yapılandırma</a>nızı kontrol ediniz.
-error_config=Yapılandırma dosyası $1 bulunamadı. Büyük ihtimalle sisteminize Samba kurulmamıştır, ya da  <a href="$2">modül yapılandırma</a>nız yanlıştır
+error_config=Yapılandırma dosyası $1 bulunamadı. Büyük ihtimalle sisteminize Samba kurulmamıştır, ya da <a href="$2">modül yapılandırma</a>nız yanlıştır
 error_include=Webmin <tt>config</tt> ya da <tt>include</tt> komutlarını kullanmak için yapılandırma dosyasını kullanamadı.
 error_delshare=Paylaşımın silinmesinde hata oluştu
 error_delcopy=Bu paylaşım '$1' paylaşımından kopyalanmıştır

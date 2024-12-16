@@ -666,7 +666,7 @@ backup_bodydoing=S'està copiant $1 a $2...
 backup_bodyfailed=...la còpia ha fallat: $1
 backup_bodyok=...la còpia de $1 s'ha creat correctament
 backup_bodytotal=Mida total de la còpia: $1
-backup_bodyspace=Mida del sistema de fitxers: $1  Espai lliure: $2
+backup_bodyspace=Mida del sistema de fitxers: $1 Espai lliure: $2
 backup_bodyall=tot
 backup_edownloadall=Només es pot descarregar una còpia de seguretat d'una base de dades
 backup_edownloadsave=El mode de descàrrega no es pot utilitzar per a les còpies planificades
@@ -744,7 +744,7 @@ cnf_fpt=Un fitxer separat per a cada taula InnoDB
 cnf_ilt=Temps límit de blocatge InnoDB (en segons)
 cnf_eilt=El temps límit de blocatge InnoDB ha de ser un enter
 
-manual_title=Edició de Fitxers de  Configuració
+manual_title=Edició de Fitxers de Configuració
 manual_file=Edita el fitxer de configuració:
 manual_ok=Bé
 manual_efile=Fitxer de configuració invàlid!

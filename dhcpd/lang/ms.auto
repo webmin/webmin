@@ -168,7 +168,7 @@ listl_refresh=Senarai semak semula
 restart_errmsg1=Gagal memulakan semula dhcpd
 restart_errmsg2=Gagal menandakan proses
 start_failstart=Gagal memulakan dhcpd
-restart_conftext=Talian sekitar $1 dalam $2  :
+restart_conftext=Talian sekitar $1 dalam $2 :
 
 sgroup_faildel=Gagal memadam kumpulan
 sgroup_failsave=Gagal menyimpan kumpulan

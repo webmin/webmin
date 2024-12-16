@@ -192,7 +192,7 @@ open_file=Pot
 
 trace_title=Proces sledenja
 trace_start=Zagon sledenja sistemskega klica za $1 ..
-trace_doing=Sled sistemskega klica za $1  :
+trace_doing=Sled sistemskega klica za $1 :
 trace_done=.. postopek se je končal.
 trace_failed=.. sledenje ni uspelo!
 trace_sorry=Ta stran zahteva podporo Java v vašem brskalniku. Če želite uporabiti samo sled besedila, prilagodite konfiguracijo modula.

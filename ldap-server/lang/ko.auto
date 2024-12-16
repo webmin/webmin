@@ -26,8 +26,8 @@ connect_epass2=LDAP 서버 구성에서 로그인 할 비밀번호가 없습니�
 connect_epass3=LDAP 서버 구성의 비밀번호는 암호화되어 Webmin에서 사용할 수 없습니다
 connect_emod=LDAP 서버에 연결하는 데 필요한 Perl 모듈 $1 이 (가) 설치되지 않았습니다. 전체 Perl 오류 메시지는 $2 입니다.
 connect_eldap=포트 $2 에서 LDAP 서버 $1 에 연결하지 못했습니다.
-connect_essl=LDAP 서버 $1 (으)로 TLS 암호화를 시작하지 못했습니다  : $2
-connect_elogin=$2 (으)로 LDAP 서버 $1 에 로그인하지 못했습니다  : $3
+connect_essl=LDAP 서버 $1 (으)로 TLS 암호화를 시작하지 못했습니다 : $2
+connect_elogin=$2 (으)로 LDAP 서버 $1 에 로그인하지 못했습니다 : $3
 connect_cpan=CPAN에서 <tt>$1</tt> Perl 모듈 <a href='$2'>자동 설치</a>를 할 수 있습니다.
 
 slapd_title=OpenLDAP 서버 구성
@@ -109,11 +109,11 @@ acl_add=새로운 액세스 제어 규칙을 추가하십시오.
 acl_return=액세스 제어 규칙
 
 browser_title=데이터베이스 찾아보기
-browser_econn=LDAP 브라우저를 사용할 수 없습니다  : $1
+browser_econn=LDAP 브라우저를 사용할 수 없습니다 : $1
 browser_ecannot=LDAP 데이터베이스를 찾아 볼 수 없습니다
 browser_base=브라우징 :
 browser_ok=보여 주다
-browser_esearch=LDAP 검색 실패  : $1
+browser_esearch=LDAP 검색 실패 : $1
 browser_subs=자식 개체
 browser_attrs=객체 속성
 browser_parent=부모 찾아보기
@@ -138,32 +138,32 @@ browser_return=데이터베이스 브라우저
 browser_toomany=하위 오브젝트 수가 Webmin의 한계 $1 보다 큽니다.
 browser_toomany2=$1 과 (와) 일치하는 하위 오브젝트 수가 Webmin의 한계 $2 보다 큽니다.
 browser_nomatch=$1 와 일치하는 개체가 없습니다.
-browser_search=일치하는 객체 찾기  :
-browser_search2=일치하는 객체 표시  :
+browser_search=일치하는 객체 찾기 :
+browser_search2=일치하는 객체 표시 :
 browser_sok=검색
 
 save_err=속성을 변경하지 못했습니다
 save_ebase=데이터베이스에서 $1 개체를 가져올 수 없습니다
-save_emodify=$1 에서 $2 의 LDAP 수정에 실패했습니다  : $3
+save_emodify=$1 에서 $2 의 LDAP 수정에 실패했습니다 : $3
 save_enone=입력 된 값이 없습니다
 
 add_err=속성을 추가하지 못했습니다
 add_eadd=속성 이름이 없거나 잘못되었습니다
 add_evalue=결 측값
-add_emodify=$1 을 (를) $1 에 추가하지 못했습니다  : $3
+add_emodify=$1 을 (를) $1 에 추가하지 못했습니다 : $3
 
 delete_err=속성을 제거하지 못했습니다
 delete_enone=선택된 사항 없음
-delete_emodify=$1 에서 $2 의 LDAP 삭제에 실패했습니다  : $3
+delete_emodify=$1 에서 $2 의 LDAP 삭제에 실패했습니다 : $3
 
 sdelete_err=객체를 삭제하지 못했습니다.
 sdelete_edn=$1 개체를 찾을 수 없습니다
-sdelete_edel=$1 의 LDAP 삭제 실패  : $2
+sdelete_edel=$1 의 LDAP 삭제 실패 : $2
 
 rename_err=개체 이름을 바꾸지 못했습니다.
 rename_eget=DN이 $1 인 개체를 찾을 수 없습니다
 rename_enew=새 이름이 유효하지 않은 것 같습니다
-rename_erename=$1 에서 $2 (으) 로의 LDAP newdn이 실패했습니다  : $3
+rename_erename=$1 에서 $2 (으) 로의 LDAP newdn이 실패했습니다 : $3
 
 oadd_title=객체 생성
 oadd_header=새로운 LDAP 객체 정보
@@ -176,10 +176,10 @@ oadd_edn2=DN 값이 없거나 잘못되었습니다
 oadd_eclasses=입력 된 객체 클래스가 없습니다
 oadd_eclass='$1'은 (는) 유효한 객체 클래스처럼 보이지 않습니다
 oadd_ename=속성 $1 의 이름이 잘못되었습니다.
-oadd_eget=$1 개체를 가져 오지 못했습니다  : $2
-oadd_eget2=$1 과 (와)의 충돌을 확인하지 못했습니다  : $2
+oadd_eget=$1 개체를 가져 오지 못했습니다 : $2
+oadd_eget2=$1 과 (와)의 충돌을 확인하지 못했습니다 : $2
 oadd_eclash=DN이 $1 인 개체가 이미 존재합니다
-oadd_eadd=$1 의 LDAP 추가 실패  : $2
+oadd_eadd=$1 의 LDAP 추가 실패 : $2
 oadd_err=새 개체를 만들지 못했습니다
 
 create_title=트리 만들기
@@ -198,7 +198,7 @@ create_edom=도메인 이름이 없거나 잘못되었습니다
 create_edn=식별 이름이 없거나 유효하지 않습니다
 create_err=새 트리를 만들지 못했습니다
 create_doingdn=기본 DN $1 생성 중 ..
-create_edoingdn=.. 실패  : $1
+create_edoingdn=.. 실패 : $1
 create_done=.. 완료
 create_doingex=DN $1 을 사용하여 예제 개체 만들기
 create_edoingex=.. 실패 : $1. 그러나 트리를 계속 사용할 수 있습니다.
@@ -207,17 +207,17 @@ create_eoc=새로운 DN에 적합한 객체 클래스를 찾을 수 없습니다
 eunknown=알수없는 오류
 
 apply_err=구성을 적용하지 못했습니다
-apply_ecmd=$1 실패  : $2
+apply_ecmd=$1 실패 : $2
 apply_ecannot=구성을 적용 할 수 없습니다
 
 stop_err=LDAP 서버를 중지하지 못했습니다
-stop_ecmd=$1 실패  : $2
+stop_ecmd=$1 실패 : $2
 stop_egone=더 이상 달리지 않습니다!
-stop_ekill=강제 종료 프로세스  : $1
+stop_ekill=강제 종료 프로세스 : $1
 stop_ecannot=LDAP 서버를 중지 할 수 없습니다
 
 start_err=LDAP 서버를 시작하지 못했습니다
-start_ecmd=$1 실패  : $2
+start_ecmd=$1 실패 : $2
 start_ecannot=LDAP 서버를 시작할 수 없습니다
 
 log_create_dn=생성 된 개체 $1
@@ -308,8 +308,8 @@ eacl_base=이 객체 만
 eacl_one=한 수준 아래
 eacl_subtree=전체 하위 트리
 eacl_children=아이들 만
-eacl_filter=객체 필터로 제한  :
-eacl_attrs=나열된 속성으로 제한  :
+eacl_filter=객체 필터로 제한 :
+eacl_attrs=나열된 속성으로 제한 :
 eacl_who=에 대한 액세스 권한 부여
 eacl_access=접근 수준
 eacl_control=고급 옵션

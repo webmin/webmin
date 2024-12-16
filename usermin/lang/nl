@@ -127,7 +127,7 @@ acl_desc=Gebruik deze pagina om te selecteren welke geinstalleerde Usermin modul
 
 ssl_title=SSL Encryptie
 ssl_desc1=De host waar Usermin op werkt heeft de SSLeay Perl module geinstalleerd. En deze Usermin support SSL encryptie communicatie gebruikt tussen uw browser en de server. Wanneer gebruikers vanaf het internet op uw Usermin server komen moet u beslist gaan denken om SSL te gaan gebruiken om te voorkomen dat een aanvaller hun wachtwoorden kan onderscheppen.
-ssl_desc2=Waarschuwing - alleen SSL support aanzetten indien uw browser SSL ondersteund (zoals IE, Firefox of Opera) en er geen firewall de <tt>https</tt>  aanvraag kan blokkeren tussen de Usermin host en uw browser.
+ssl_desc2=Waarschuwing - alleen SSL support aanzetten indien uw browser SSL ondersteund (zoals IE, Firefox of Opera) en er geen firewall de <tt>https</tt> aanvraag kan blokkeren tussen de Usermin host en uw browser.
 ssl_newkey=Dit formulier kan gebruikt worden om een nieuwe SSL sleutel te maken voor uw Usermin server.
 ssl_hole=Omdat u op dit moment gebruikt maakt van de standaard Usermin SSL sleutel die iedereen heeft kunt u beter onmiddellijk een nieuwe sleutel maken. Anders is uw SSL verbinding niet veilig.
 ssl_savekey=Met dit formulier kunt u een bestaande PEM formaat SSL prive sleutel uploaden voor uw Usermin server.

@@ -8,7 +8,7 @@ index_delete=선택된 내보내기 삭제
 index_apply=변경 승인
 index_applydesc=현재 파일 내보내기 구성을 적용하려면이 버튼을 클릭하십시오. 이렇게하면 위에 나열된 모든 디렉토리를 지정된 옵션으로 사용할 수 있습니다.
 index_return=수출 목록
-index_echeck=이 시스템에서 NFS 서버를 사용할 수 없습니다  : $1
+index_echeck=이 시스템에서 NFS 서버를 사용할 수 없습니다 : $1
 
 check_ecmd=NFS 서버 명령 $1 이 (가) 설치되지 않았습니다
 

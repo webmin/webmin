@@ -1,7 +1,7 @@
 index_title=WU-FTPD Server
 index_eftpd=FTP server $1 nije pronađen. Možda nije instaliran ili je <a href='$2'> FTP serverski file konfiguracije neispravan.
 index_eftpaccess=Konfiguracijski file '$1' ne postoji. Možda nije instaliran ili je <a href='$2'> FTP serverski file konfiguracije neispravan.
-index_eversion=FTP server $1 nije WU-FTPd. Možda koristite stari FTPd koji je došao uz sustav ili je vaš <a href='$2'>FTP serverski konfiguracijsi file ispravan. Rezultat  FTP servera je: $3
+index_eversion=FTP server $1 nije WU-FTPd. Možda koristite stari FTPd koji je došao uz sustav ili je vaš <a href='$2'>FTP serverski konfiguracijsi file ispravan. Rezultat FTP servera je: $3
 index_apply=Prihvati izmjene
 index_applymsg=Klikni ovdje za prihvat izmjena. Ova naredba će zaustaviti i ponovno startati FTP serverske procese i odspojit će sve spojene korisnike.
 index_start=Startaj Server

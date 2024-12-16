@@ -134,8 +134,8 @@ session_pass=Contraseña
 session_twofactor=Autentificación en dos pasos
 session_login=Ingresar
 session_clear=Limpiar
-session_failed=Fallo el ingreso.  Por favor intente nuevamente.
-session_logout=Salida del sistema exitosa.  Use el formulario de abajo para ingresar nuevamente.
+session_failed=Fallo el ingreso. Por favor intente nuevamente.
+session_logout=Salida del sistema exitosa. Use el formulario de abajo para ingresar nuevamente.
 session_timed_out=Tiempo de espera agotado después de $1 minutos de inactividad.
 session_save=¿Recordar el usuario en forma permanente?
 

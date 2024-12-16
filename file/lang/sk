@@ -1,6 +1,6 @@
 index_title=Správca Systému Súborov
 index_eremote=Žiadny Unixový užívateľ nezodpovedá hodnotám z Webmin prihlásečnia $1.
-switch_euser=Tento Unixový užívateľ  nejestvuje!
+switch_euser=Tento Unixový užívateľ nejestvuje!
 top_ret=Index
 top_down=Ulož
 top_edit=Otvor pre zmeny
@@ -52,7 +52,7 @@ info_apply=AKtivuj zmeny
 info_apply1=Len tento adresár
 info_apply2=Tento adresár a jeho súbory
 info_apply3=Tento adresár a všetky jeho priradené adresáre
-info_efailed=Porucha pri  zmene $1 : $2
+info_efailed=Porucha pri zmene $1 : $2
 info_read=Čítaj
 info_write=Píš
 info_list=Zoznam

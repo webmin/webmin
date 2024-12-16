@@ -91,7 +91,7 @@ open_file=Väg
 
 trace_title=Spårningsprocess
 trace_start=Starta systemsamtal för $1 ..
-trace_doing=Spårning av systemsamtal för $1  :
+trace_doing=Spårning av systemsamtal för $1 :
 trace_done=.. processen har avslutats.
 trace_failed=.. spårning misslyckades!
 trace_sorry=Denna sida kräver Java-stöd i din webbläsare. Justera modulkonfigurationen för att använda en textspårningsprocess.

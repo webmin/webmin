@@ -90,7 +90,7 @@ udel_pass=Brisanje unosa korisnika LDAP. ..
 udel_book=Brisanje iz adresara ..
 udel_imap=Brisanje IMAP mape ..
 udel_warnimap=Postojeća poštanska pošta će se izbrisati prilikom brisanja kućnog imenika!
-udel_failed=.. neuspjeh!  : $1
+udel_failed=.. neuspjeh! : $1
 
 raw_title=LDAP atributi
 raw_name=Naziv atributa

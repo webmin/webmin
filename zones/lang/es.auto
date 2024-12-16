@@ -70,7 +70,7 @@ reboot_rusure=¿Seguro que quieres reiniciar la zona $1 ? Todos los procesos que
 reboot_err=Error al reiniciar zona
 reboot_doing=Ahora reiniciando zona ..
 
-reboot_failed=.. ha fallado  :
+reboot_failed=.. ha fallado :
 reboot_ok=.. completo.
 
 halt_title=Zona de apagado

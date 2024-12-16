@@ -312,7 +312,7 @@ upgrade_ok=Mtejjeb b’suċċess il-pakkett ta ’Webmin $1 fuq $2
 upgrade_failed=Ma rnexxiex tinstalla fuq $1 : $2
 upgrade_done=.. sar
 upgrade_efast=Servers biss li jużaw il-mod RPC veloċi jistgħu jiġu aġġornati
-upgrade_ereconn=Naqset milli terġa 'tikkonnettja għal Webmin wara l-aġġornament!  : $1
+upgrade_ereconn=Naqset milli terġa 'tikkonnettja għal Webmin wara l-aġġornament! : $1
 
 update_title=Moduli ta 'Aġġornament
 update_header=Aġġornament tal-moduli tal-ospiti kollha ..

@@ -192,7 +192,7 @@ open_file=Sti
 
 trace_title=Sporeproces
 trace_start=Starter systemopkaldsspor for $1 ..
-trace_doing=Systemopkaldsspor for $1  :
+trace_doing=Systemopkaldsspor for $1 :
 trace_done=.. processen er afsluttet.
 trace_failed=.. sporingen mislykkedes!
 trace_sorry=Denne side kræver Java-understøttelse i din browser. For at bruge et tekst-processpor, skal du justere modulkonfigurationen.

@@ -109,7 +109,7 @@ open_file=Caminho
 
 trace_title=Processo de rastreamento
 trace_start=Iniciando o rastreamento de chamada do sistema para $1 ..
-trace_doing=Rastreio de chamada do sistema para $1  :
+trace_doing=Rastreio de chamada do sistema para $1 :
 trace_done=.. processo foi encerrado.
 trace_failed=.. rastreamento falhou!
 trace_sorry=Esta página requer suporte Java no seu navegador. Para usar um rastreamento de processo somente de texto, ajuste a configuração do módulo.

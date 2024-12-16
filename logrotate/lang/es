@@ -1,5 +1,5 @@
 index_title=Rotación de Archivo de Bitácora
-index_econf=El archivo de configuración de rotación de la bitácora $1 no fue encontrado en su sistema.  Quizás logrotate no está instalado, o la <a href='$2'>configuración del módulo</a> es incorrecta.
+index_econf=El archivo de configuración de rotación de la bitácora $1 no fue encontrado en su sistema. Quizás logrotate no está instalado, o la <a href='$2'>configuración del módulo</a> es incorrecta.
 index_ecmd=El programa de rotación de bitácora $1 no fué encontrado en su sistema. Quizás no está instalado, o la <a href='$2'>configuración del módulo</a> es incorrecta.
 index_eversion=Fallo al obtener la versión de logrotate con el comando $1 : $2
 index_version=Versión $1 de Logrotate

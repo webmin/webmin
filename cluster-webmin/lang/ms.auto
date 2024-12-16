@@ -312,7 +312,7 @@ upgrade_ok=Meningkatkan pakej Webmin $1 dengan sukses pada $2
 upgrade_failed=Gagal memasang pada $1 : $2
 upgrade_done=.. selesai
 upgrade_efast=Hanya pelayan yang menggunakan mod RPC yang cepat boleh dinaik taraf
-upgrade_ereconn=Gagal menyambung semula ke Webmin selepas naik taraf!  : $1
+upgrade_ereconn=Gagal menyambung semula ke Webmin selepas naik taraf! : $1
 
 update_title=Kemas kini Modul
 update_header=Mengemas kini modul semua tuan rumah ..

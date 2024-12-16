@@ -90,7 +90,7 @@ listl_all=Zoznam všetkých aktívnych a vypršaných lízingov
 listl_delete=Odstrániť vybrané nájmy
 listl_unknown=nevedno
 listl_allocs=Dostupné adresy IP: $1, pridelené $2 ($3 %)
-listl_mode=Režim zobrazenia  :
+listl_mode=Režim zobrazenia :
 listl_mode_0=Prenájom DHCP
 listl_mode_1=Podsieť a použitie
 listl_size=Celkový počet IP
@@ -102,7 +102,7 @@ listl_refresh=Obnoviť zoznam
 
 restart_errmsg1=Nepodarilo sa reštartovať program dhcpd
 restart_errmsg2=Nepodarilo sa signalizovať proces
-restart_conftext=Riadky okolo $1 v $2  :
+restart_conftext=Riadky okolo $1 v $2 :
 
 sgroup_faildel=Nepodarilo sa odstrániť skupinu
 sgroup_failsave=Uloženie skupiny zlyhalo

@@ -207,7 +207,7 @@ backup_failed=.. záloha nebola úspešne dokončená. Podrobnosti nájdete v ch
 
 gbackup_title=Spustite úlohu zálohovania skupiny Bacula
 gbackup_run=Spúšťa sa úloha zálohovania $1 u klientov $2 ..
-gbackup_on=Spustenie úlohy zálohovania na klientovi $1  :
+gbackup_on=Spustenie úlohy zálohovania na klientovi $1 :
 gbackup_header=Podrobnosti o úlohe zálohovania skupiny Bacula
 gbackup_jd=$1 (Sada súborov $2 v skupine $3)
 

@@ -90,7 +90,7 @@ udel_pass=Vee LDAP-gebruikersinskrywing uit.
 udel_book=Vee uit adresboek uit ..
 udel_imap=Vee IMAP-lêergids uit ..
 udel_warnimap=Die bestaande posbus sal uitgevee word as u die tuisgids uitvee!
-udel_failed=.. misluk!  : $1
+udel_failed=.. misluk! : $1
 
 raw_title=LDAP-eienskappe
 raw_name=Kenmerknaam

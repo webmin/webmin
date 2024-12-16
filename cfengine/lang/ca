@@ -78,7 +78,7 @@ edit_admit=Concedeix l'accés als directoris
 edit_grant=$edit_admit
 edit_deny=Denega l'accés als directoris
 edit_grantdir=Directori
-edit_granthosts=Hosts  patrons de hosts
+edit_granthosts=Hosts patrons de hosts
 edit_groups=Definicions de grup
 edit_groupname=Nom del grup
 edit_groupmems=Membres
@@ -316,7 +316,7 @@ push_ethis='$1' és aquest host!
 push_return=als hosts de configuració remota
 push_title2=Execució de Configuracions de Host
 push_exec=S'estan executant les configuracions del host amb l'ordre $1...
-push_ecmd=No s'ha trobat al sistema l'ordre $1 d'execució remota del Motor de Configuració. Pot ser que no estigui instal·lada,  o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+push_ecmd=No s'ha trobat al sistema l'ordre $1 d'execució remota del Motor de Configuració. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 type_control_0=El camp de sota llista les accions que es porten a terme quan s'executa el motor de configuració, ien l'ordre en què seran executades. Les accions que no estan llistades no es processaran, encara que estiguin llistades a la pàgina principal.
 type_control_1=Les opcions de sota controlen la conducta global del procés en segon pla que accepta peticions per executar la configuració en aquest host a petició d'un host remot, o bé en base a una planificació fixada.
 type_directories=Els directoris llistats a sota es crearan amb el propietari i permisos donats quan no existeixin. Els camps d'usuari, grup i permisos són opcionals.

@@ -90,7 +90,7 @@ udel_pass=Ta bort LDAP-användarpost. ..
 udel_book=Ta bort från adressboken ..
 udel_imap=Tar bort IMAP-mapp ..
 udel_warnimap=Den befintliga postlådan raderas när du tar bort hemmakatalogen!
-udel_failed=.. misslyckades!  : $1
+udel_failed=.. misslyckades! : $1
 
 raw_title=LDAP-attribut
 raw_name=Attributnamn

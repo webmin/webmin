@@ -206,7 +206,7 @@ backup_failed=.. sandaran tidak berjaya berjaya. Periksa mesej ralat di atas unt
 
 gbackup_title=Jalankan Pekerjaan Cadangan Kumpulan Bacula
 gbackup_run=Memulakan kerja sandaran $1 pada $2 pelanggan ..
-gbackup_on=Kerja sandaran berjalan pada klien $1  :
+gbackup_on=Kerja sandaran berjalan pada klien $1 :
 gbackup_header=Butiran tugas sandaran kumpulan Bacula
 gbackup_jd=$1 (Fail set $2 pada kumpulan $3)
 

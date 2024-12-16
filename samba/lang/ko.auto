@@ -67,7 +67,7 @@ saveuser_ews=기존 사용자는 '워크 스테이션 트러스트 계정'옵션
 savefshare_owner=새 디렉토리의 소유자가 없거나 잘못되었습니다
 savefshare_group=새 디렉토리에 대한 그룹이 없거나 유효하지 않습니다
 savefshare_perms=새 디렉토리에 대한 권한이 없거나 유효하지 않습니다
-savefshare_emkdir=디렉토리를 만들지 못했습니다  : $1
+savefshare_emkdir=디렉토리를 만들지 못했습니다 : $1
 
 start_err_wb=Winbind 서버를 시작하지 못했습니다
 

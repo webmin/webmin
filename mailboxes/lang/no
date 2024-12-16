@@ -409,7 +409,7 @@ razor_report2=Rapporterer de valgte meldingene til Razor ag andre SpamAssassin d
 razor_report3=Avrapporterer de valgte meldingene til Razor og andre SpamAssassin databaser
 razor_done=.. ferdig
 razor_err=.. feilet! Se feilmeldingen ovenfor for å finne mer om årsaken.
-razor_moved=.. ferdig, og  flyttet til mappe $1.
+razor_moved=.. ferdig, og flyttet til mappe $1.
 razor_deleted=.. ferdig, og slettet melding også.
 
 ham_title=Rapporterer som Vennepost

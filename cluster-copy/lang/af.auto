@@ -46,12 +46,12 @@ exec_files2=Kopieer $1 na geselekteerde bedieners $2.
 exec_under=(onder gids $1)
 exec_failed=Kon nie na $1 : $2 kopieër nie
 exec_success=Die volgende lêers is na $1 gekopieër :
-exec_made=Skep die volgende kaarte op $1  :
+exec_made=Skep die volgende kaarte op $1 :
 exec_nohosts=Geen leërskare is gekies om mee te hardloop nie, of geselekteerde groepe bevat geen bruikbare leërskare nie.
 exec_nothing=Geen lêers is suksesvol na $1 gekopieër nie.
 exec_not=Kon nie die volgende lêers na $1 kopieër nie :
-exec_cmd=Na-kopie opdraguitset op $1  :
-exec_before=Vooropskrifopdrag op $1  :
+exec_cmd=Na-kopie opdraguitset op $1 :
+exec_before=Vooropskrifopdrag op $1 :
 exec_on=Kon nie op $1 : $2 loop nie
 
 log_create=Geskep kopie vir $1 tot $2 bedieners

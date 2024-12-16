@@ -51,7 +51,7 @@ acl_who2=Usuarios listados. ..
 
 trace_title=Proceso de rastreo
 trace_start=Iniciando el rastreo de llamadas del sistema para $1 ..
-trace_doing=Seguimiento de llamadas del sistema para $1  :
+trace_doing=Seguimiento de llamadas del sistema para $1 :
 trace_done=.. proceso ha terminado.
 trace_failed=.. el seguimiento falló!
 trace_sorry=Esta página requiere soporte de Java en su navegador. Para usar una traza de proceso de solo texto, ajuste la configuración del módulo.

@@ -90,7 +90,7 @@ udel_pass=LDAP kullanıcı girişi siliniyor ..
 udel_book=Adres defterinden siliniyor ..
 udel_imap=IMAP klasörü siliniyor ..
 udel_warnimap=Giriş dizini silinirken mevcut posta posta kutusu silinecek!
-udel_failed=.. başarısız oldu!  : $1
+udel_failed=.. başarısız oldu! : $1
 
 raw_title=LDAP Özellikleri
 raw_name=Özellik adı

@@ -192,7 +192,7 @@ open_file=Kelias
 
 trace_title=Pėdsakų procesas
 trace_start=Pradinė sistemos skambučio sekimo priemonė $1.
-trace_doing=Sistemos skambučio sekimas $1  :
+trace_doing=Sistemos skambučio sekimas $1 :
 trace_done=.. procesas baigtas.
 trace_failed=.. atsekti nepavyko!
 trace_sorry=Šis puslapis reikalauja „Java“ palaikymo jūsų naršyklėje. Norėdami naudoti tik teksto proceso pėdsaką, sureguliuokite modulio konfigūraciją.

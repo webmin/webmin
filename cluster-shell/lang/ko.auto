@@ -13,7 +13,7 @@ index_edit=이전 편집
 run_title=명령 실행
 run_err=명령을 실행하지 못했습니다
 run_ecmd=명령이 입력되지 않았습니다
-run_failed=$1 에서 실행하지 못했습니다  : $2
+run_failed=$1 에서 실행하지 못했습니다 : $2
 run_success=$1 에서 출력
 run_enone=선택된 서버를 실행할 필요가 없습니다
 

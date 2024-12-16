@@ -90,7 +90,7 @@ udel_pass=Ištrinamas LDAP vartotojo įrašas
 udel_book=Ištrinama iš adresų knygos ..
 udel_imap=Trinamas IMAP aplankas.
 udel_warnimap=Ištrynus namų katalogą, esamas pašto dėžutė bus ištrinta!
-udel_failed=.. nepavyko!  : $1
+udel_failed=.. nepavyko! : $1
 
 raw_title=LDAP atributai
 raw_name=Atributo vardas

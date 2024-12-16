@@ -270,7 +270,7 @@ bootup_ecannot=Nie masz uprawnień do włączenia i wyłączenia uruchamiania fi
 
 log_create_rule=Dodano regułę do łańcucha $1 w tabeli $2
 log_modify_rule=Zmodyfikowano regułę w łańcuchu $1 w tabeli $2
-log_delete_rule=Usunięto regułę z łańcucha $1 w tabeli  $2
+log_delete_rule=Usunięto regułę z łańcucha $1 w tabeli $2
 log_move_rule=Przeniesiono regułę w łańcuchu $1 w tabeli $2
 log_delete_chain=Usunięto łańcuch $1 z tabeli $2
 log_rename_chain=Zmieniono nazwę łańcucha $1 w tabeli $2

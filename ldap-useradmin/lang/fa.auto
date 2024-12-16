@@ -90,7 +90,7 @@ udel_pass=حذف ورودی کاربر LDAP ..
 udel_book=حذف از دفترچه آدرس ..
 udel_imap=حذف پوشه IMAP ..
 udel_warnimap=صندوق پستی موجود در هنگام حذف فهرست خانه حذف می شود!
-udel_failed=.. ناموفق!  :$1
+udel_failed=.. ناموفق! :$1
 
 raw_title=ویژگی های LDAP
 raw_name=نام مشخصه

@@ -197,7 +197,7 @@ suse_yast2=YAST2-ohjain
 suse_edriver=Tulostintyyppiä ei ole valittu
 suse_eres=Puuttuva tai virheellinen ratkaisu
 
-estop=Lpd: $1  : n lopettaminen epäonnistui
+estop=Lpd: $1 : n lopettaminen epäonnistui
 
 acl_printers=Tämän käyttäjän määrittämät tulostimet
 acl_add=Voiko uusia tulostimia lisätä?

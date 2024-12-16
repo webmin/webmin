@@ -207,7 +207,7 @@ backup_failed=.. die rugsteun nie suksesvol voltooi is nie. Kyk na die foutboods
 
 gbackup_title=Begin Bacula Group Backup Job
 gbackup_run=Begin rugsteunwerk $1 op $2 kliënte ..
-gbackup_on=Gebruik rugsteuntaak op kliënt $1  :
+gbackup_on=Gebruik rugsteuntaak op kliënt $1 :
 gbackup_header=Bacula-groep se rugsteunkopie-besonderhede
 gbackup_jd=$1 (Lêerset $2 op groep $3)
 

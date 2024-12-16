@@ -1,7 +1,7 @@
 index_title=SSH server
 index_econfig=Konfigurační soubor SSH serveru $1 nebyl ve vašem systému nalezen. Možná není SSHD nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
 index_esshd=Program SSH serveru $1 nebyl ve vašem systému nalezen. Možná není SSHD nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
-index_eversion=Chyba oři získávání čísla verze o SSH serverového programu $1.  Možná vaše <a href='$2'>konfigurace modulu</a> není správná. Výstup z příkazu $3 byl : $4
+index_eversion=Chyba oři získávání čísla verze o SSH serverového programu $1. Možná vaše <a href='$2'>konfigurace modulu</a> není správná. Výstup z příkazu $3 byl : $4
 index_eversion2=SSH server program $1 je ve verzi $2, avšak Webmin podporuje pouze SSH verze 1 a 2.
 index_return=úvodní stránka modulu
 index_apply=Použít změny

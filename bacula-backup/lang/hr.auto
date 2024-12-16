@@ -207,7 +207,7 @@ backup_failed=.. sigurnosna kopija nije uspješno završena. Pojedinosti potraž
 
 gbackup_title=Pokrenite sigurnosnu kopiju grupe Bacula
 gbackup_run=Pokretanje rezervnog posla $1 na $2 klijenta ..
-gbackup_on=Izvođenje sigurnosnih kopija na klijentu $1  :
+gbackup_on=Izvođenje sigurnosnih kopija na klijentu $1 :
 gbackup_header=Pojedinosti o sigurnosnim kopijama Bacula grupe
 gbackup_jd=$1 (Skup datoteka $2 u grupi $3)
 

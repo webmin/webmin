@@ -207,7 +207,7 @@ backup_failed=.. dublēšana netika pabeigta veiksmīgi. Sīkāku informāciju s
 
 gbackup_title=Palaist Bacula grupas rezerves darbu
 gbackup_run=$2 klientu rezerves darba sākšana ..
-gbackup_on=Rezerves darba veikšana klientam $1  :
+gbackup_on=Rezerves darba veikšana klientam $1 :
 gbackup_header=Bacula grupas rezerves darba informācija
 gbackup_jd=$1 (failu kopa $2 grupā $3)
 

@@ -55,7 +55,7 @@ gen_title=Genereer Rapport
 gen_header=Start webalizer om een rapport te genereren van $1 ..
 gen_done=.. klaar
 gen_failed=.. Webalizer mislukten! Bekijk het resultaat hierboven waarom.
-gen_nothing=.. Webalizer is klaar, maar er is geen rapport gegenereerd. Bekijk het resultaat  hierboven waarom.
+gen_nothing=.. Webalizer is klaar, maar er is geen rapport gegenereerd. Bekijk het resultaat hierboven waarom.
 gen_view=Bekijk het complete rapport
 
 save_err=Opslaan van de log file is mislukt

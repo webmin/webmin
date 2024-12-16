@@ -90,7 +90,7 @@ udel_pass=Suppression de l'entrée utilisateur LDAP.
 udel_book=Suppression du carnet d'adresses ..
 udel_imap=Suppression du dossier IMAP ..
 udel_warnimap=La boîte aux lettres existante sera supprimée lors de la suppression du répertoire personnel!
-udel_failed=.. échoué!  : $1
+udel_failed=.. échoué! : $1
 
 raw_title=Attributs LDAP
 raw_name=Nom d'attribut

@@ -8,14 +8,14 @@ upload_saved=.. 쓴 $1
 upload_unzipping=파일 $1 추출 중 ..
 upload_unzipdone=.. $1
 
-email_downmsg=다음 다운로드가 완료되었습니다  :
+email_downmsg=다음 다운로드가 완료되었습니다 :
 email_downurl=URL : $1
 email_downerr=오류 메시지 : $1
 email_downpath=대상 파일 이름 : $1
 email_downsize=다운로드 크기 : $1
 email_subjectd=다운로드를 완료하였습니다
-email_eextract=실패  : $1
-email_extfailed=추출 실패  : $1
+email_eextract=실패 : $1
+email_extfailed=추출 실패 : $1
 email_extdone_zip=ZIP 파일 추출
 email_extdone_tar=TAR 파일 추출
 email_extdone_tgz=압축 된 TAR 파일 추출

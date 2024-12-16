@@ -47,7 +47,7 @@ desc_kpackage=KDE RPM ツール
 desc_ppp=PPP デーモン ログイン
 desc_rp3-config=Redhat PPP クライアント ツール
 desc_up2date=Redhat Linux アップデート エージェント
-desc_up2date-config=Redhat Linux  アップデート設定
+desc_up2date-config=Redhat Linux アップデート設定
 desc_sudo=root コマンドの実行制限
 desc_httpd=Web サーバ
 desc_qpop=POP メール サーバ
@@ -245,14 +245,14 @@ time_services=サービス
 time_ttys=TTY
 time_users=ユーザ
 time_times=アクセス時間
-time_info=すべてのフィールドは  | で分離した複数の値を含むことができ、値はワイルド カードとして * または否定辞として ! を使用できます。
+time_info=すべてのフィールドは | で分離した複数の値を含むことができ、値はワイルド カードとして * または否定辞として ! を使用できます。
 
 group_services=サービス
 group_ttys=TTY
 group_users=ユーザ
 group_times=アクセス時間
 group_groups=グループを追加
-group_info=すべてのフィールドは  | で分離した複数の値を含むことができ、値はワイルド カードとして * または否定辞として ! を使用できます。
+group_info=すべてのフィールドは | で分離した複数の値を含むことができ、値はワイルド カードとして * または否定辞として ! を使用できます。
 
 wheel_group=グループのメンバーシップを検査
 wheel_group_def=デフォルト(<tt>wheel</tt> または GID 0)

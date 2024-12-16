@@ -35,7 +35,7 @@ host_groups=Broj grupa
 
 refresh_title=Obnovljeni Korisnici i Grupe
 refresh_header=Ponovno zatražene liste korisnika i grupa sa svih servera ..
-refresh_header5=Ponovno zatražene liste korisnika i grupa od  $2 ..
+refresh_header5=Ponovno zatražene liste korisnika i grupa od $2 ..
 refresh_header4=Ponovno zatražene liste korisnika i grupa od članova iz $2 ..
 refresh_host=Obnovljeni $1
 refresh_uadd=dodano $1 korisnika

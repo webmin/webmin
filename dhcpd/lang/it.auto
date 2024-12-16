@@ -155,7 +155,7 @@ listl_all=Elencare tutti i contratti di locazione attivi e scaduti
 listl_delete=Elimina i contratti di locazione selezionati
 listl_unknown=Sconosciuto
 listl_allocs=$1 indirizzi IP disponibili, $2 allocato ($3 %)
-listl_mode=Modalità display  :
+listl_mode=Modalità display :
 listl_mode_0=Leasing DHCP
 listl_mode_1=Sottoreti e utilizzo
 listl_size=IP totali
@@ -168,7 +168,7 @@ listl_refresh=Aggiorna la lista
 restart_errmsg1=Impossibile riavviare dhcpd
 restart_errmsg2=Impossibile segnalare il processo
 start_failstart=Impossibile avviare dhcpd
-restart_conftext=Righe intorno a $1 in $2  :
+restart_conftext=Righe intorno a $1 in $2 :
 
 sgroup_faildel=Impossibile eliminare il gruppo
 sgroup_failsave=Impossibile salvare il gruppo

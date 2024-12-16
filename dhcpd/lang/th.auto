@@ -168,7 +168,7 @@ listl_refresh=รีเฟรชรายการ
 restart_errmsg1=ไม่สามารถเริ่ม dhcpd ใหม่ได้
 restart_errmsg2=กระบวนการส่งสัญญาณล้มเหลว
 start_failstart=ไม่สามารถเริ่ม dhcpd
-restart_conftext=เส้นรอบ ๆ $1 ใน $2  :
+restart_conftext=เส้นรอบ ๆ $1 ใน $2 :
 
 sgroup_faildel=การลบกลุ่มล้มเหลว
 sgroup_failsave=ไม่สามารถบันทึกกลุ่ม

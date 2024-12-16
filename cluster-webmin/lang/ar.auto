@@ -312,7 +312,7 @@ upgrade_ok=تمت ترقية حزمة Webmin $1 بنجاح على$2
 upgrade_failed=فشل التثبيت على $1 : $2
 upgrade_done=.. فعله
 upgrade_efast=يمكن ترقية الخوادم التي تستخدم وضع RPC السريع فقط
-upgrade_ereconn=فشل إعادة الاتصال بـ Webmin بعد الترقية!  :$1
+upgrade_ereconn=فشل إعادة الاتصال بـ Webmin بعد الترقية! :$1
 
 update_title=وحدات التحديث
 update_header=تحديث الوحدات النمطية كافة المضيفين ..

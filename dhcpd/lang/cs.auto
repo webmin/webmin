@@ -1,4 +1,4 @@
-listl_mode=Zobrazovací mód  :
+listl_mode=Zobrazovací mód :
 listl_mode_0=Pronájem DHCP
 listl_mode_1=Podsítě a použití
 listl_size=Celkem IP
@@ -9,7 +9,7 @@ listl_enone=Nebyl vybrán žádný
 
 listl_refresh=Obnovit seznam
 
-restart_conftext=Řádky kolem $1 v $2  :
+restart_conftext=Řádky kolem $1 v $2 :
 
 sopt_ecval=Chybí hodnota pro vlastní možnost '$1'
 sopt_ecip=Hodnota pro vlastní možnost „$1“ musí být adresa IP

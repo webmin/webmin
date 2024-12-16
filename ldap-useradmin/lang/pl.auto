@@ -90,7 +90,7 @@ udel_pass=Usuwanie wpisu użytkownika LDAP ..
 udel_book=Usuwanie z książki adresowej ..
 udel_imap=Usuwanie folderu IMAP ..
 udel_warnimap=Istniejąca skrzynka pocztowa zostanie usunięta podczas usuwania katalogu domowego!
-udel_failed=.. nie powiodło się!  : $1
+udel_failed=.. nie powiodło się! : $1
 
 raw_title=Atrybuty LDAP
 raw_name=Nazwa atrybutu

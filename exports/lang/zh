@@ -56,7 +56,7 @@ exports_host=Host ；$1
 
 log_modify=已更新的 NFS 输出 $1
 log_modify_l=已更新到 $2 的 NFS 输出 $1
-log_delete=删除  NFS 输出 $1
+log_delete=删除 NFS 输出 $1
 log_delete_l=删除到 $2 的 NFS 输出 $1
 log_create=创建 NFS 输出 $1
 log_create_l=创建到 $2 的 NFS 输出 $1

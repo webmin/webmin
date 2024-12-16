@@ -85,11 +85,11 @@ acl_control=cron ジョブへのユーザ アクセスを制御しますか？
 acl_uid=UID範囲内のユーザ
 acl_gid=プライマリグループのユーザ
 
-log_modify=$1 の cron  ジョブを変更しました
-log_modify_l=ユーザ $1のcron  ジョブ "$2" を変更しました
-log_create=$1 の cron  ジョブを作成しました
-log_create_l=cron  ジョブ "$2" をユーザ $1 に作成しました
-log_delete=$1 のcron  ジョブを削除しました
+log_modify=$1 の cron ジョブを変更しました
+log_modify_l=ユーザ $1のcron ジョブ "$2" を変更しました
+log_create=$1 の cron ジョブを作成しました
+log_create_l=cron ジョブ "$2" をユーザ $1 に作成しました
+log_delete=$1 のcron ジョブを削除しました
 log_exec=ユーザ $1 として cron ジョブを実行しました
 log_exec_l=cron ジョブ "$2" をユーザ $1 として実行しました
 log_allow=cron ジョブへのユーザのアクセスを変更しました

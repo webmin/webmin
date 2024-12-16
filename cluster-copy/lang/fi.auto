@@ -45,14 +45,14 @@ exec_files1=Kopioidaan $1 tiedostoja valittuihin palvelimiin $2 ..
 exec_files2=Kopioidaan $1 valittuihin palvelimiin $2 ..
 exec_under=(hakemistossa $1)
 exec_failed=Kopiointi tiedostoon $1 epäonnistui : $2
-exec_success=Kopioi seuraavat tiedostot tiedostoon $1  :
+exec_success=Kopioi seuraavat tiedostot tiedostoon $1 :
 exec_made=Luonut seuraavat hakemistot $1 : lle :
 exec_nohosts=Mikään isäntä, jota ei ole valittu toimimaan, tai valitut ryhmät eivät sisällä käyttökelpoisia isäntiä.
 exec_nothing=Yhtään tiedostoa ei kopioitu onnistuneesti tiedostoon $1.
 exec_not=Seuraavien tiedostojen kopiointi epäonnistui $1 : een :
 exec_cmd=Kopioi komennon lähtö $1 : llä :
 exec_before=Komentolähtö ennen kopiointia $1 : llä :
-exec_on=$1:$2  : n suorittaminen epäonnistui
+exec_on=$1:$2 : n suorittaminen epäonnistui
 
 log_create=Luotu kopio $1 - $2 palvelimille
 log_modify=Muokattu kopio $1 - $2 palvelimille

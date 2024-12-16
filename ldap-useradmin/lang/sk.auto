@@ -90,7 +90,7 @@ udel_pass=Odstraňuje sa položka používateľa LDAP.
 udel_book=Odstraňuje sa z adresára.
 udel_imap=Odstraňuje sa priečinok IMAP.
 udel_warnimap=Pri odstraňovaní domovského adresára sa odstráni existujúca poštová schránka!
-udel_failed=.. zlyhalo!  : $1
+udel_failed=.. zlyhalo! : $1
 
 raw_title=Atribúty LDAP
 raw_name=Názov atribútu

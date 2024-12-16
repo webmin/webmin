@@ -190,7 +190,7 @@ reconfig_ok=구성
 defines_title=정의된 매개 변수 편집
 defines_ecannot=httpd 정의를 편집할 수 없습니다
 defines_desc=Apache가 시작되면 매개 변수가 <tt>-D</tt> 명령행 옵션과 함께 전달될 수 있습니다. 그러한 매개 변수는 어떤 지시어가 사용자의 구성 파일에 사용되는지에 영향을 줄 수 있으므로, Webmin은 시작 시 Apache에 전달되는 지시어를 알고 있어야 합니다. 시스템에 사용된 매개 변수를 오른쪽의 텍스트 필드에 입력하십시오.
-defines_config=다음 정의된 매개 변수는 이미 알려져 있다는 점에 유의하십시오:  $1
+defines_config=다음 정의된 매개 변수는 이미 알려져 있다는 점에 유의하십시오: $1
 
 authu_ecannot='$1'은(는) 허용되는 사용자 텍스트 파일이 아닙니다
 authu_title=사용자 목록
@@ -435,7 +435,7 @@ mod_alias_from=시작
 mod_alias_to=끝
 mod_alias_status=상태
 mod_alias_efrom='$1'은(는) 유효한 $2이(가) 아닙니다
-mod_alias_edest='$1'은(는) 유효한 $2  목적지가 아닙니다
+mod_alias_edest='$1'은(는) 유효한 $2 목적지가 아닙니다
 mod_alias_alias=문서 디렉토리 별칭
 mod_alias_alias2=문서 별칭
 mod_alias_regexp=정규식 문서 디렉토리 별칭

@@ -99,7 +99,7 @@ shutdown_ecannot=Ez zaude sistema itzaltzeko baimendua
 shutdown_title=Itzali
 shutdown_rusure=Ziur zaude $1 komandoarekin itzali nahi duzula sistema?
 shutdown_ok=Itzali Sistema
-shutdown_exec=Itzaltzen $1 komandoarekin  ..
+shutdown_exec=Itzaltzen $1 komandoarekin ..
 
 reboot_ecannot=Ez zaude sistema berrabiarazteko baimendua
 reboot_title=Berrabiatu
@@ -143,7 +143,7 @@ edit_hostconfig_actionname=Ekintza izena
 edit_hostconfig_scriptname=Script izena
 edit_hostconfig_array=$1, $2 eta $3 bektore eremuak dira eta balio bat baino gehiago izan ditzakete. Balio anitzak bi puntuz banatu.
 edit_hostconfig_further=Behin abiarazte ekintza berria sortuta, orri batera berbideratua izango zara non behar izan ezkero, abiarazte scripta aldatzea posible izango duzun eta baita parametro zerrenda ere.
-edit_hostconfig_hostconfig=$1 fitxategiak sistemaren karga unean martxan jartzen diren  zerbitzu eta deabruak kontrolatzen ditu. Posible duzu behean editatzea
+edit_hostconfig_hostconfig=$1 fitxategiak sistemaren karga unean martxan jartzen diren zerbitzu eta deabruak kontrolatzen ditu. Posible duzu behean editatzea
 edit_hostconfig_title=Makinaren konfigurazioa editatu
 
 mass_enone=Ez da ekintzarik aukeratu

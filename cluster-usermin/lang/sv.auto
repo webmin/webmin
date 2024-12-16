@@ -310,7 +310,7 @@ upgrade_ok=Uppgraderat Usermin $1 -paket på $2 lyckades
 upgrade_failed=Det gick inte att installera på $1 : $2
 upgrade_done=.. Gjort
 upgrade_efast=Endast servrar som använder snabbt RPC-läge kan uppgraderas
-upgrade_ereconn=Det gick inte att ansluta till Usermin efter uppgradering!  : $1
+upgrade_ereconn=Det gick inte att ansluta till Usermin efter uppgradering! : $1
 
 update_title=Uppdatera moduler
 update_header=Uppdaterar moduler alla värdar ..

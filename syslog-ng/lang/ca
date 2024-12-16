@@ -2,7 +2,7 @@ index_title=Registres del Sistema NG
 index_eprog=No s'ha trobat al sistema el dimoni de registres $1, o bé no és el programa syslog-ng. Ajusta la <a href='$2'>configuració del mòdul</a> per utilitzar el camí correcte.
 index_econf=No s'ha trobat al sistema el fitxer $1 de configuració de Syslog-NG. Ajusta la <a href='$2'>configuració del mòdul</a> per utilitzar el camí correcte.
 index_apply=Aplica la Configuració
-index_applydesc=Fes clic  sobre aquest botó per activar la configuració actual de Syslog-NG.
+index_applydesc=Fes clic sobre aquest botó per activar la configuració actual de Syslog-NG.
 index_stop=Atura Syslog-NG
 index_stopdesc=Fes clic sobre aquest botó per aturar el dimoni Syslog-NG en execució. Un cop aturat, ja no s'escriuran missatges d'altres programes als fitxers de registres.
 index_start=Inicia Syslog-NG
@@ -91,7 +91,7 @@ destination_dir_perm=Permisos dels directoris
 destination_fsync=Fes un sync després de cada escriptura
 destination_group=Grup del fitxer de registre
 destination_owner=Usuari del fitxer de registre
-destination_perm=Permisos  del fitxer de registre
+destination_perm=Permisos del fitxer de registre
 destination_sync_freq=Missatges entre syncs
 destination_users=Usuaris llistats
 destination_net=Servidor syslog

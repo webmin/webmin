@@ -366,7 +366,7 @@ create_enone=Musisz wpisać co najmniej jeden serwer podstawowy
 
 boot_err=Błąd pobierania
 boot_egzip=Plik strefy głównej jest skompresowany, a w systemie nie zainstalowano komendy <tt>gzip</tt>.
-boot_egzip2=Błąd dekompresji pliku strefy głównej :  $1
+boot_egzip2=Błąd dekompresji pliku strefy głównej : $1
 
 type_A=Adresy
 type_AAAA=Adresy IPv6

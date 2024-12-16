@@ -35,7 +35,7 @@ connect_elogin=$1 데이터베이스에 로그인하지 못했습니다 : $2.
 connect_equery=$1 데이터베이스에 Bacula 테이블이 포함되어 있지 않습니다.
 connect_equery2=설치된 SQLite Perl 모듈이 너무 새 버전이고 Bacula에서 사용하는 이전 SQLite 데이터베이스 형식을 지원하지 않기 때문일 수 있습니다.
 connect_equery3=$1 데이터베이스에 OC Bacula 그룹 테이블이 포함되어 있지 않습니다.
-esql=SQL 오류  : $1
+esql=SQL 오류 : $1
 
 check_edir=시스템에서 Bacula 구성 디렉토리 $1 을 (를) 찾을 수 없습니다.
 check_ebacula=Bacula 제어 명령 $1 을 (를) 찾을 수 없습니다.
@@ -56,11 +56,11 @@ proc_bareos-dir=Bacula Director 데몬
 stop_err=Bacula를 멈추지 못했습니다
 start_err=Bacula를 시작하지 못했습니다
 start_einit=$1 에 대한 초기화 스크립트를 찾을 수 없습니다
-start_erun=$1 을 (를) 시작하지 못했습니다  : $2
+start_erun=$1 을 (를) 시작하지 못했습니다 : $2
 restart_err=Bacula를 다시 시작하지 못했습니다
 apply_err=구성을 적용하지 못했습니다
 apply_failed=구성 오류가 감지되었습니다
-apply_problem=구성을 적용하지 못했습니다  : $1
+apply_problem=구성을 적용하지 못했습니다 : $1
 
 jobs_title=백업 작업
 jobs_none=아직 백업 작업이 정의되지 않았습니다.
@@ -207,7 +207,7 @@ backup_failed=.. 백업이 완료되지 않았습니다. 자세한 내용은 위
 
 gbackup_title=Bacula Group 백업 작업 실행
 gbackup_run=$2 클라이언트에서 백업 작업 $1 을 (를) 시작합니다.
-gbackup_on=클라이언트 $1 에서 백업 작업 실행 중  :
+gbackup_on=클라이언트 $1 에서 백업 작업 실행 중 :
 gbackup_header=Bacula 그룹 백업 작업 세부 사항
 gbackup_jd=$1 (그룹 $3 의 파일 세트 $2)
 
@@ -233,8 +233,8 @@ dirstatus_cancel=선택한 작업 취소
 dirstatus_refresh=새로 고침 목록
 
 clientstatus_title=고객 상태
-clientstatus_err=$1 에서 상태를 가져 오지 못했습니다  : $2
-clientstatus_msg=$1 상태  : $2
+clientstatus_err=$1 에서 상태를 가져 오지 못했습니다 : $2
+clientstatus_msg=$1 상태 : $2
 clientstatus_show=고객 상태 표시 :
 clientstatus_ok=확인
 clientstatus_on=$1 ($2 에)
@@ -304,8 +304,8 @@ device_edevice=아카이브 장치 또는 디렉토리가 없거나 유효하지
 device_echild=이 클라이언트는 $1 에 의해 사용되므로 삭제할 수 없습니다
 
 storagestatus_title=스토리지 데몬 상태
-storagestatus_err=$1 에서 상태를 가져 오지 못했습니다  : $2
-storagestatus_msg=$1 상태  : $2
+storagestatus_err=$1 에서 상태를 가져 오지 못했습니다 : $2
+storagestatus_msg=$1 상태 : $2
 storagestatus_show=스토리지 데몬 상태 표시 :
 storagestatus_ok=확인
 
@@ -373,7 +373,7 @@ poolstatus_delete=선택된 볼륨 삭제
 
 dvolumes_err=볼륨을 삭제하지 못했습니다
 dvolumes_enone=선택된 사항 없음
-dvolumes_ebacula=Bacula error  : $1
+dvolumes_ebacula=Bacula error : $1
 
 mount_title=마운트 또는 마운트 해제
 mount_header=스토리지 마운트 또는 마운트 해제 옵션

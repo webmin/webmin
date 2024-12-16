@@ -38,7 +38,7 @@ listl_network=I nätverk $1 / $2
 listl_lfnotcont2=DHCPd-hyresfilen <tt>$1</tt> innehåller inga hyresavtal som är aktiva för närvarande.
 listl_unknown=Okänd
 listl_allocs=$1 IP-adresser tillgängliga, $2 tilldelade ($3 %)
-listl_mode=Visningsläge  :
+listl_mode=Visningsläge :
 listl_mode_0=DHCP-leasingavtal
 listl_mode_1=Undernät och användning
 listl_size=Totala IP: er
@@ -49,7 +49,7 @@ listl_enone=Ingen vald
 
 listl_refresh=Uppdatera listan
 
-restart_conftext=Linjer runt $1 i $2  :
+restart_conftext=Linjer runt $1 i $2 :
 
 sopt_edname='$1' är inte ett giltigt alternativnamn
 sopt_ednum='$1' är inte ett giltigt alternativnummer

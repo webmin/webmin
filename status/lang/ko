@@ -261,7 +261,7 @@ change_file=감시할 파일 또는 디렉토리 (변경시 실패)
 
 jabber_eparser=$1 펄 모듈이 설치되어 있지 않습니다.
 
-memory_min2=최소 사용 가능  메모리
+memory_min2=최소 사용 가능 메모리
 memory_emin=사용 가능 메모리 양이 지정되지 않았거나 올바르지 않습니다.
 memory_eproc=Webmin이 이 시스템의 사용 가능 메모리를 체크할 수 없습니다.
 memory_free2=$1 남음

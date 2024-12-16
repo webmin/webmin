@@ -24,7 +24,7 @@ edit_edit=プリンタを編集
 edit_conf=プリンタ設定
 edit_name=プリンタ名
 edit_acc=要請を受け入れますか？
-edit_why=いいえ -  はい
+edit_why=いいえ - はい
 edit_desc=説明
 edit_ena=印刷可能にしますか？
 edit_acl=アクセス制御
@@ -212,7 +212,7 @@ unixware_serial=シリアル ポート $1
 unixware_null=Null デバイス
 
 hpux_paralel=パラレル $1
-hpux_serial=シリアル  $1
+hpux_serial=シリアル $1
 hpux_null=Null デバイス
 
 lprng_paralel=パラレル ポート $1

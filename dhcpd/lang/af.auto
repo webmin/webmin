@@ -168,7 +168,7 @@ listl_refresh=Herlaai lys
 restart_errmsg1=Kon nie dhcpd herbegin nie
 restart_errmsg2=Kon nie die proses seineer nie
 start_failstart=Kon nie dhcpd begin nie
-restart_conftext=Lyne rondom $1 in $2  :
+restart_conftext=Lyne rondom $1 in $2 :
 
 sgroup_faildel=Kon nie groep uitvee nie
 sgroup_failsave=Kon nie groep stoor nie

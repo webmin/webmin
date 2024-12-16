@@ -137,8 +137,8 @@ master_esoagone=Nenhum registro SOA válido!
 master_einclude=Arquivo de modelo adicional não existe
 
 delete_title=Remover Zona
-delete_mesg=Você ter certeza de que deseja remover a zona $1?  Todos os registros e o arquivo de zona serão removidos.
-delete_mesg2=Você ter certeza de que deseja remover a zona raiz?  Seu servidor de DNS pode não ser mais capaz de resolver endereços na Internet.
+delete_mesg=Você ter certeza de que deseja remover a zona $1? Todos os registros e o arquivo de zona serão removidos.
+delete_mesg2=Você ter certeza de que deseja remover a zona raiz? Seu servidor de DNS pode não ser mais capaz de resolver endereços na Internet.
 delete_mesg3=Você tem certeza que deseja apagar a zona $1 ?
 delete_rev=Remover registros reversos de outras zonas?
 delete_fwd=Remover registros diretos de outras zonas?
@@ -264,7 +264,7 @@ edit_ecname2=Você não pode criar um registro com o mesmo nome de um registro d
 edit_erevmust=Zona reversa para endereço IP não encontrada
 edit_proto=Protocolo
 edit_serv=Nome do serviço
-edit_eflags='$1' não é um  decimal ou um número chave de flags hexa válido
+edit_eflags='$1' não é um decimal ou um número chave de flags hexa válido
 edit_eproto='$1' não é um chave numérica de protocolo válida
 edit_ealg='$1' não é uma chave numérica de algoritmo válida
 edit_ekey=Dados da chave de base-64 codificada faltando ou inválida
@@ -792,7 +792,7 @@ vcreate_eclass=Nome de classe ausente ou inválido
 vcreate_ecannot=Você não está autorizado a criar novas visões
 
 hint_title=Editar Zona Raiz
-hint_desc=A zona raiz é usada pelo ser servidor de DNS para contactar os servidores raiz da Internet de modo que ele possa resolver nomes em domínios externos, como <tt>.com</tt> ou <tt>.net.br</tt>.  A menos que ser servidor de DNS seja de uso exclusivamente interno ou que ele esteja encaminhando (forwarding) todas as consultas para outros servidores, você não deveria remover esta zona raiz.
+hint_desc=A zona raiz é usada pelo ser servidor de DNS para contactar os servidores raiz da Internet de modo que ele possa resolver nomes em domínios externos, como <tt>.com</tt> ou <tt>.net.br</tt>. A menos que ser servidor de DNS seja de uso exclusivamente interno ou que ele esteja encaminhando (forwarding) todas as consultas para outros servidores, você não deveria remover esta zona raiz.
 hint_move=Mover para a visualização:
 hint_ecannot=Você não tem permissão para editar esta zona raiz
 hint_refetch=Baixar novamente Servidor de Nomes Raiz
@@ -801,7 +801,7 @@ hint_delete=Apagar Zona Raiz
 hint_deletedesc=Clique neste botão para remover esta zona raiz. Sem ela, seu servidor de nomes não estará habilitado a resolver domínios na Internet ou em outros.
 
 hcreate_title=Criar Zona Raiz
-hcreate_desc=A zona raiz é usada pelo ser servidor de DNS para contactar os servidores raiz da Internet de modo que ele possa resolver nomes em domínios externos, como <tt>.com</tt> ou <tt>.net.br</tt>.  Se você está usando múltiplas visualizações, você pode precisar ter zonas root separadas em cada visualização de modo que todos os clientes possam resolver domínios de Internet apropriadamente.
+hcreate_desc=A zona raiz é usada pelo ser servidor de DNS para contactar os servidores raiz da Internet de modo que ele possa resolver nomes em domínios externos, como <tt>.com</tt> ou <tt>.net.br</tt>. Se você está usando múltiplas visualizações, você pode precisar ter zonas root separadas em cada visualização de modo que todos os clientes possam resolver domínios de Internet apropriadamente.
 hcreate_header=Detalhes da zona raiz
 hcreate_file=Salvar servidores raiz no arquivo
 hcreate_real=Obter servidores raiz de
@@ -815,7 +815,7 @@ mcreate_erecs=Não é um arquivo de servidores raiz existentes válido
 hcreate_err=Falhou a criação da zona raiz
 
 vdelete_title=Remover Visualização
-vdelete_mesg=Você tem certeza de que deseja remover a visualização de cliente $1?  Todas as zonas nesta visualização serão removidas (juntamente com seus arquivos de zona) ou movidas para outra visualização dependendo da sua seleção abaixo.
+vdelete_mesg=Você tem certeza de que deseja remover a visualização de cliente $1? Todas as zonas nesta visualização serão removidas (juntamente com seus arquivos de zona) ou movidas para outra visualização dependendo da sua seleção abaixo.
 vdelete_mesg2=Você tem certeza de que deseja remover a visualização de cliente $1?
 vdelete_newview=Zonas nesta visualização
 vdelete_root=Mover pra fora de visualizações

@@ -424,7 +424,7 @@ emem_hlru=Heap least frequently used
 emem_return=índice do squid
 emem_mrp=Política de substituição de memória
 
-emisc_ecannot=Você não está autorizado a editar as opções de  miscelânea
+emisc_ecannot=Você não está autorizado a editar as opções de miscelânea
 emisc_header=Opções de Miscelânea
 emisc_mo=Opções de Miscelânea
 emisc_sdta=Inicialização de endereço de teste do DNS
@@ -876,7 +876,7 @@ ext_enegative_ttl=Negativo TTL inválido ou faltando
 ext_econcurrency=Número de programas inválido ou faltando
 ext_ecache=Tamanho do cache inválido ou faltando
 ext_eprogram=Caminho para o programa inválido
-ext_eclash=Um tipo de programa externo  com o mesmo nome já existe
+ext_eclash=Um tipo de programa externo com o mesmo nome já existe
 ext_eused=Este programa externo está em uso pelo ACL
 
 header_title=Cabeçalho de Controle de Acesso

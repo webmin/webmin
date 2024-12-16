@@ -1,5 +1,5 @@
 index_title=DHCP Sunucusu
-index_dhcpdnotfound=DHCP sunucusu <i>$1</i> sisteminizde bulunamadı.Kurulmamış ya da  <a href="$2">DHCP modül ayarları </a> yanlış olabilir
+index_dhcpdnotfound=DHCP sunucusu <i>$1</i> sisteminizde bulunamadı.Kurulmamış ya da <a href="$2">DHCP modül ayarları </a> yanlış olabilir
 index_return=indeks
 index_subtitle=Alt ve Paylaşılmış Ağlar
 index_nosubdef=Alt ya da paylaşılmış ağ tanımlanmamış

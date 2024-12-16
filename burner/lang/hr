@@ -86,7 +86,7 @@ burn_mheader=Izrađujem ICO sustav dokumenata s naredbom $1 ..
 burn_mfailed=Neuspjelo kreiranje ISO sustava dokumenata!
 burn_egone=ISO slika je izbrisana - Morat ćete se vratiti na <a href='$1'>profil snimanja</a> da bi je ponovno generirali.
 burn_egone2=Tenutni audio zapisi su izbrisani - Morat ćete se vratiti na <a href='$1'>profil snimanja</a> da bi ih ponovno generirali.
-burn_700=Upozorenje! Vaša ISO slika je veličine $1 MB, što je više od dopuštenih 700 MB na  CD-u od 80 minuta.
+burn_700=Upozorenje! Vaša ISO slika je veličine $1 MB, što je više od dopuštenih 700 MB na CD-u od 80 minuta.
 burn_650=Upozorenje! Vaša ISO slika je veličine $1 MB, što je više od dopuštenih 650 MB na normalnom CD-u. Ipak, ,ože se smjestiti na CD od 80 minuta.
 burn_size=Generirana ISO slika je veličine $1 MB, što je više od $2 MB dopuštenih na normalnom CD-u.
 burn_nomp3s=Nema dokumenata u odabranim direktorijima.

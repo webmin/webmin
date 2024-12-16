@@ -15,7 +15,7 @@ index_delegation=대표단
 index_view=($1보기)
 index_inview=보기에서 $1
 index_views=기존 고객 조회
-index_viewwarn=경고-다음 영역은 보이지 않습니다  : $1
+index_viewwarn=경고-다음 영역은 보이지 않습니다 : $1
 index_viewwarn2=뷰로 이동할 때까지 BIND를 시작하지 못할 수 있습니다.
 index_vnone=이 서버에 클라이언트보기가 정의되어 있지 않습니다.
 index_addview=클라이언트보기를 작성하십시오.
@@ -34,7 +34,7 @@ index_bind=묶다
 index_ewrongchroot=경고 : Webmin이 BIND를 사용한다고 생각하는 chroot 디렉토리 $2가 올바르지 않을 수 있습니다. $1 도메인의 영역 파일을 찾을 수 없습니다.
 index_emissingchroot=경고 : Webmin은 BIND가 chroot 디렉토리를 사용하지 않는다고 생각하지만 올바르지 않을 수 있습니다. $1 도메인의 영역 파일을 찾을 수 없습니다.
 index_checkconfig=<a href='$1'>모듈 구성</a> 페이지에서 chroot 디렉토리가 올바르게 설정되어 있는지 확인하십시오.
-index_eexpired=경고  : 다음 영역은 DNSSEC 서명이 만료되었습니다. $1
+index_eexpired=경고 : 다음 영역은 DNSSEC 서명이 만료되었습니다. $1
 index_eexpired_conf=$1 페이지에서 자동 서명을 다시 활성화해야합니다.
 index_eexpired_mod=$1 모듈을 사용하여 이러한 도메인에 대해 DNSSEC를 비활성화하거나 서명이 실패한 이유를 확인하십시오.
 
@@ -84,8 +84,8 @@ delete_vwarn2=이 영역은 Virtualmin 도메인 $1 및 $2 기타와 연결되�
 
 mcreate_dnssec_tools_enable=DNSSEC 도구를 사용하여 DNSSEC 사용
 mcreate_view=보기에서 작성
-mcreate_ednssecsize=키 크기를 계산하지 못했습니다  : $1
-mcreate_ednssec=레코드 생성에 성공했지만 DNSSEC에 실패했습니다  : $1
+mcreate_ednssecsize=키 크기를 계산하지 못했습니다 : $1
+mcreate_ednssec=레코드 생성에 성공했지만 DNSSEC에 실패했습니다 : $1
 
 slave_masterport=서버 포트
 slave_format=영역 파일 형식
@@ -98,7 +98,7 @@ slave_manual=레코드 파일보기
 slave_delmsg=이 버튼을 클릭하면 DNS 서버에서이 영역이 삭제됩니다. 소스 마스터 존은 변경되지 않습니다.
 slave_apply=강제 업데이트
 slave_applymsg2=이 버튼을 클릭하면 마스터 서버에서 영역을 강제로 다시 전송하여 모든 최신 레코드를 가져옵니다.
-slave_last=마지막 전송  : $1
+slave_last=마지막 전송 : $1
 slave_never=못
 slave_xfer=테스트 영역 전송
 
@@ -168,10 +168,10 @@ text_rawformat=이 영역은 원시 이진 형식이므로 텍스트로 표시 �
 
 restart_err=변경 사항을 적용하지 못했습니다
 restart_epidfile=$1에서 BIND PID를 찾을 수 없습니다.
-restart_errslave=이 서버는 정상적으로 재시작되었지만 다음 오류가 슬레이브에서 발생했습니다  : $1
+restart_errslave=이 서버는 정상적으로 재시작되었지만 다음 오류가 슬레이브에서 발생했습니다 : $1
 restart_erunning2=BIND가 슬레이브 서버 $1에서 실행되지 않는 것 같습니다
-restart_endc=NDC 명령 실패  : $1
-restart_ecmd=재시작 명령 실패  : $1
+restart_endc=NDC 명령 실패 : $1
+restart_ecmd=재시작 명령 실패 : $1
 restart_eversion=슬레이브 서버 $1에서 Webmin 버전 $2 이상을 실행하지 않습니다.
 
 stop_epid=BIND가 실행되고 있지 않습니다
@@ -194,7 +194,7 @@ dcreate_err=위임 영역을 만들지 못했습니다.
 create_efile4=$1 파일이 이미 존재합니다
 
 boot_egzip=루트 영역 파일은 압축되었지만 <tt>gzip</tt> 명령이 시스템에 설치되어 있지 않습니다!
-boot_egzip2=루트 영역 파일 압축 해제에 실패했습니다  : $1
+boot_egzip2=루트 영역 파일 압축 해제에 실패했습니다 : $1
 
 type_NSEC3PARAM=DNSSEC 매개 변수
 type_SPF=발신자가 보낸 사람
@@ -491,7 +491,7 @@ convert_err=영역을 변환하지 못했습니다
 convert_efile=슬레이브 영역을 마스터로 변환하려면 레코드 파일을 지정해야합니다.
 convert_efilesize=레코드 파일 $1이 존재하지 않거나 비어 있습니다
 convert_ebinary=이진 슬레이브 영역에서 텍스트 형식 마스터로 변환하는 데 필요한 명령이 설치되지 않았습니다
-convert_ecompile=이진에서 텍스트 형식으로 변환하지 못했습니다  : $1
+convert_ecompile=이진에서 텍스트 형식으로 변환하지 못했습니다 : $1
 
 whois_title=WHOIS 정보
 whois_header=$1 명령의 출력
@@ -645,7 +645,7 @@ mass_dotext=입력 한 텍스트에서 영역 만들기 ..
 mass_done=.. 완료.
 mass_emips=마스터 IP 주소가 없습니다
 mass_addedslaves=슬레이브 서버에 $1 추가 OK.
-mass_eonslave=슬레이브 서버에서 오류가 발생했습니다  : $1
+mass_eonslave=슬레이브 서버에서 오류가 발생했습니다 : $1
 mass_eviewcannot=이보기에 영역을 추가 할 수 없습니다
 
 massdelete_title=영역 삭제
@@ -654,7 +654,7 @@ massdelete_ok=지금 삭제
 massdelete_zone=영역 삭제 $1 ..
 massdelete_done=.. 완료.
 massdelete_slaves=슬레이브 서버에서 영역 $1 삭제 ..
-massdelete_failed=.. 일부 노예가 실패했습니다  :
+massdelete_failed=.. 일부 노예가 실패했습니다 :
 massdelete_vwarn=일부 영역은 Virtualmin 도메인 $1 과 (와) 연결되어 있으므로 여기서 삭제하면 안됩니다!
 massdelete_vwarn2=일부 영역은 Virtualmin 도메인 $1 및 $2 다른 영역과 연결되어 있으므로 여기서 삭제하면 안됩니다!
 
@@ -736,7 +736,7 @@ rmass_ename2=레코드 이름은로 끝날 수 없습니다.
 rmass_ettl=유효 기간이 없거나 잘못되었습니다
 rmass_doing=영역 $1에 레코드 추가 ..
 rmass_done=.. 완료
-rmass_esign=.. 완료되었지만 서명에 실패했습니다  : $1
+rmass_esign=.. 완료되었지만 서명에 실패했습니다 : $1
 rmass_eclash=.. 이름과 값이 $1 인 레코드가 이미 존재합니다.
 rmass_eclash2=.. 이름이 같고 값이 $1 인 레코드가 이미 존재합니다.
 rmass_clash=레코드가 이미 존재하더라도 작성 하시겠습니까?
@@ -788,8 +788,8 @@ dt_zone_done=... 완료
 dt_zone_deleting_state=영역 $1과 관련된 모든 상태 삭제 중. ..
 dt_zone_zoneupdate=영역 $1에서 레코드 업데이트 중. ..
 dt_zone_expandsep=현재 KSK 및 DS 세트 세부 사항 표시 ..
-dt_zone_ksksep=KSK 기록  :
-dt_zone_dssep=DS 기록  :
+dt_zone_ksksep=KSK 기록 :
+dt_zone_dssep=DS 기록 :
 dt_zone_resign=재 서명 영역
 dt_zone_resigndesc=기존 키를 사용하여 영역 데이터를 즉시 사임
 dt_zone_zskroll=롤 ZSK
@@ -844,22 +844,22 @@ zonekey_enable=키 생성 및 추가
 zonekey_err=DNSSEC 키를 만들지 못했습니다
 zonekey_esize=키 크기는 $1과 $2 사이의 비트 수 여야합니다.
 zonekey_creating=$1에 대한 DNSSEC 키 작성 ..
-zonekey_ecreate=.. 작성 실패  : $1
+zonekey_ecreate=.. 작성 실패 : $1
 zonekey_done=.. 완료
 zonekey_signing=새 키로 서명 영역 $1 ..
-zonekey_esign=.. 서명 실패  : $1
+zonekey_esign=.. 서명 실패 : $1
 zonekey_already=영역에 이미 DNSSEC 키가 있으므로 이미 서명되어 있습니다.
 zonekey_webmin=Webmin은 변경이있을 때 자동으로 영역에 다시 서명합니다.
-zonekey_public=공개 키 기록  :
-zonekey_publicfile=공개 키 파일  : $1
-zonekey_private=개인 키 정보  :
-zonekey_privatefile=개인 키 파일  : $1
+zonekey_public=공개 키 기록 :
+zonekey_publicfile=공개 키 파일 : $1
+zonekey_private=개인 키 정보 :
+zonekey_privatefile=개인 키 파일 : $1
 zonekey_algorithm=DNSSEC 알고리즘 : $1
-zonekey_ds=부모 영역에 대한 DS 레코드  :
+zonekey_ds=부모 영역에 대한 DS 레코드 :
 zonekey_expandksk=공개 및 개인 키 서명 키 세부 정보 표시 ..
 zonekey_expandzone=공개 및 개인 영역 키 세부 정보 표시 ..
 zonekey_noprivate=그러나 Webmin은 영역과 관련된 개인 키를 찾을 수 없으므로 다시 서명 할 수 없습니다.
-zonekey_eprivate=이 영역과 연관된 개인 키를 읽을 수 없습니다  : $1
+zonekey_eprivate=이 영역과 연관된 개인 키를 읽을 수 없습니다 : $1
 zonekey_disable=키 제거
 zonekey_keep=DNSSEC가 다시 활성화된 경우 기존 키를 유지하시겠습니까?
 zonekey_disabledesc=이 영역과 모든 서명 레코드에서 DNSSEC 키를 제거합니다. 이 작업이 완료되면 새 키를 생성 할 수 있습니다.
@@ -869,7 +869,7 @@ zonekey_resign=재 서명 영역
 zonekey_resigndesc=새 영역 서명 키를 생성하고 영역의 마스터 키로 서명 한 다음 모든 레코드를 다시 서명하십시오.
 
 sign_err=영역에 서명하지 못했습니다
-sign_emsg=레코드 변경 실패 후 DNSSEC 서명  : $1
+sign_emsg=레코드 변경 실패 후 DNSSEC 서명 : $1
 
 resign_err=영역을 다시 서명하지 못했습니다
 
@@ -910,7 +910,7 @@ trusted_fix=DNSSEC 구성 수정
 
 xfer_title=테스트 영역 전송
 xfer_doing=$1에서 슬레이브 영역의 전송 테스트 ..
-xfer_failed=.. from $1 : 실패  : $2
+xfer_failed=.. from $1 : 실패 : $2
 xfer_done=.. from $1 : 완료 완료
 xfer_count=테스트 전송이 하나 이상의 네임 서버에서 $1 레코드를 성공적으로 가져 왔습니다. BIND에 의한 실제 전송도 성공해야합니다.
 xfer_none=테스트 전송이 성공한 것으로 보이지만 실제로 레코드를 가져 오지 못했습니다!

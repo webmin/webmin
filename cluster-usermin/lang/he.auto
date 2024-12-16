@@ -310,7 +310,7 @@ upgrade_ok=שודרג בהצלחה חבילת Usermin $1 ב- $2
 upgrade_failed=התקנת $1 : $2 נכשלה
 upgrade_done=.. בוצע
 upgrade_efast=ניתן לשדרג רק שרתים המשתמשים במצב RPC מהיר
-upgrade_ereconn=לא התחבר מחדש ל- Usermin לאחר השדרוג!  : $1
+upgrade_ereconn=לא התחבר מחדש ל- Usermin לאחר השדרוג! : $1
 
 update_title=עדכן מודולים
 update_header=עדכון המודולים של כל המארחים ..

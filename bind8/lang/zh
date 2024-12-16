@@ -203,7 +203,7 @@ edit_eloc=未输入经度和纬度
 edit_eweight='$1' 不是有效的服务器重要性值
 edit_eport='$1' 不是有效的端口
 
-edit_etarget='$1'  不是有效的服务器名称或地址
+edit_etarget='$1' 不是有效的服务器名称或地址
 edit_return=记录
 edit_ecname1=您无法创建与现有的记录同名的别名记录。
 edit_ecname2=您无法创建与现有的名称别名记录同名的记录。

@@ -45,13 +45,13 @@ exec_files1=Kopíruje sa súbor $1 na vybrané servery $2 ..
 exec_files2=Kopíruje sa $1 na vybrané servery $2 ..
 exec_under=(v adresári $1)
 exec_failed=Nepodarilo sa skopírovať do $1 : $2
-exec_success=Skopírovali nasledujúce súbory do $1  :
+exec_success=Skopírovali nasledujúce súbory do $1 :
 exec_made=Na $1 boli vytvorené nasledujúce adresáre :
 exec_nohosts=Nie sú vybraní hostitelia, na ktorých sa má spustiť, alebo vybrané skupiny neobsahujú použiteľných hostiteľov.
 exec_nothing=Do $1 neboli úspešne skopírované žiadne súbory.
-exec_not=Nepodarilo sa skopírovať nasledujúce súbory do $1  :
-exec_cmd=Výstup príkazu po kopírovaní na $1  :
-exec_before=Výstup príkazu pred kopírovaním na $1  :
+exec_not=Nepodarilo sa skopírovať nasledujúce súbory do $1 :
+exec_cmd=Výstup príkazu po kopírovaní na $1 :
+exec_before=Výstup príkazu pred kopírovaním na $1 :
 exec_on=Spustenie zlyhalo na $1 : $2
 
 log_create=Vytvorená kópia pre servery $1 až $2

@@ -1,14 +1,14 @@
 index_title=Pemantauan Jalur lebar
 index_efiresys=Tiada sebarang firewall (iptables, IPFW, IPFilter atau Shorewall) dikesan pada sistem anda. Periksa modul yang sesuai untuk memastikan ia dikonfigurasikan.
 index_efiresys2=Sistem firewall $1 yang telah dikonfigurasikan tidak dijumpai pada sistem anda. Laraskan <a href='$2'>modul konfigurasi</a> untuk menggunakan firewall yang betul.
-index_elog=Fail $1 yang digunakan untuk log jalur lebar sebenarnya adalah direktori pada sistem anda.  Laraskan <a href='$2'>konfigurasi modul</a> untuk menggunakan lokasi lain.
-index_edir=Direktori untuk menyimpan data jalur lebar $1 tidak wujud, atau bukan direktori. Laraskan <a href='$2'>modul  konfigurasi</a> untuk menggunakan lokasi lain.
+index_elog=Fail $1 yang digunakan untuk log jalur lebar sebenarnya adalah direktori pada sistem anda. Laraskan <a href='$2'>konfigurasi modul</a> untuk menggunakan lokasi lain.
+index_edir=Direktori untuk menyimpan data jalur lebar $1 tidak wujud, atau bukan direktori. Laraskan <a href='$2'>modul konfigurasi</a> untuk menggunakan lokasi lain.
 index_emod=Modul Webmin $1 tidak dipasang pada sistem ini atau tidak disokong oleh OS anda. Modul Pemantauan Jalur Lebar tidak boleh beroperasi tanpanya.
 index_esyslog=Tiada modul Sistem Log dipasang pada sistem ini dan disokong oleh OS anda. Modul Pemantauan Bandwidth tidak dapat beroperasi tanpa salah satu darinya.
 index_firesys=Menggunakan firewall $1 dan $2
 index_setupcannot=Walau bagaimanapun, anda tidak mempunyai kebenaran untuk membinanya!
 index_setupdesc=Sebelum modul ini dapat melaporkan penggunaan rangkaian pada sistem anda, ia mesti ditetapkan untuk memantau trafik pada antara muka rangkaian luaran yang dipilih.
-index_setupdesc2=<b>Amaran - modul ini akan log SEMUA trafik rangkaian yang dihantar atau diterima pada antara muka yang dipilih. Ini akan menggunakan jumlah ruang cakera yang besar  dan masa CPU pada sambungan rangkaian yang pantas. </b>
+index_setupdesc2=<b>Amaran - modul ini akan log SEMUA trafik rangkaian yang dihantar atau diterima pada antara muka yang dipilih. Ini akan menggunakan jumlah ruang cakera yang besar dan masa CPU pada sambungan rangkaian yang pantas. </b>
 index_missing3=Beberapa peraturan firewall perlu ditambah, dan entri konfigurasi syslog diwujudkan.
 index_missing2=Beberapa peraturan firewall mesti ditambah.
 index_missing1=Entri konfigurasi syslog perlu diwujudkan.

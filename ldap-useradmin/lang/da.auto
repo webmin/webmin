@@ -90,7 +90,7 @@ udel_pass=Sletning af LDAP-brugerindgang ..
 udel_book=Sletning fra adressebog ..
 udel_imap=Sletning af IMAP-mappe ..
 udel_warnimap=Den eksisterende postpostkasse slettes, når du sletter hjemmekataloget!
-udel_failed=.. mislykkedes!  : $1
+udel_failed=.. mislykkedes! : $1
 
 raw_title=LDAP-attributter
 raw_name=Attributnavn

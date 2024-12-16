@@ -29,7 +29,7 @@ index_import=파일에서 연결을 가져옵니다.
 stop_err=IPsec 서버를 중지하지 못했습니다
 start_err=IPsec 서버를 시작하지 못했습니다
 restart_err=IPsec 서버를 다시 시작하지 못했습니다
-start_elog=다음 오류가 기록되었습니다  : $1
+start_elog=다음 오류가 기록되었습니다 : $1
 
 newkey_err=키를 생성하지 못했습니다
 newkey_ehost=호스트 이름이 없거나 유효하지 않습니다
@@ -201,7 +201,7 @@ export_save=구성을 파일에 ..
 export_ok=지금 수출
 export_err=구성을 내 보내지 못했습니다.
 export_efile=파일명 누락
-export_esave=파일에 쓰지 못했습니다  : $1
+export_esave=파일에 쓰지 못했습니다 : $1
 export_done=연결 $1 에서 $2 ($3 바이트)에 대한 구성을 내보냈습니다.
 
 import_title=구성 가져 오기

@@ -90,7 +90,7 @@ udel_pass=Excluindo a entrada do usuário LDAP.
 udel_book=Excluindo da lista de endereços.
 udel_imap=Excluindo pasta IMAP ..
 udel_warnimap=A caixa postal existente será excluída ao excluir o diretório inicial!
-udel_failed=.. falhou!  : $1
+udel_failed=.. falhou! : $1
 
 raw_title=Atributos LDAP
 raw_name=Nome do Atributo

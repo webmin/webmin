@@ -59,7 +59,7 @@ search_global_logout=Telah log keluar dari Webmin
 search_csv=Eskport sebagai CSV.
 
 view_title=Butiran Tindakan
-view_header=Butiran tidan yang telah  dilog $1
+view_header=Butiran tidan yang telah dilog $1
 view_action=Penerangan
 view_module=Modul Webmin
 view_script=Dijanakan oleh skrip

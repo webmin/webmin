@@ -168,7 +168,7 @@ listl_refresh=Aġġorna lista
 restart_errmsg1=Ma rnexxielux jerġa 'jibda dhcpd
 restart_errmsg2=Naqset milli proċess tas-sinjal
 start_failstart=Naqas milli jibda dhcpd
-restart_conftext=Linji ta 'madwar $1 f' $2  :
+restart_conftext=Linji ta 'madwar $1 f' $2 :
 
 sgroup_faildel=Ma rnexxielux jitħassar il-grupp
 sgroup_failsave=Ma rnexxielux isalva grupp

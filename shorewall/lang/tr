@@ -14,7 +14,7 @@ index_cleardesc=Bu butona tıklayarak Firewall üzerinde tanımlamış olduğunu
 index_stop=Firewallu Durdur
 index_stopdesc=Bu butona tıklayarak Shorewall'ı stop edebilirsiniz. Sistem otomatik olarak <tt>shorewall stop</tt> komutunu işletecektir. Uyarı! bu komut verildikten sonra bütün erişimler iptal edilecektir. Sadece "Stop Durumu" dosyasında izin verdiğiniz adreslere erişim devam edecektir.
 index_status=Firewall Durumu
-index_statusdesc=Bu butona tıklayarak Shorewall dosyalarını ve uygulamış olduğunuz kuralları görebilirsiniz. Sistem otomatik olarak  <tt>shorewall status</tt> komutunu işletecektir.
+index_statusdesc=Bu butona tıklayarak Shorewall dosyalarını ve uygulamış olduğunuz kuralları görebilirsiniz. Sistem otomatik olarak <tt>shorewall status</tt> komutunu işletecektir.
 index_check=Firewall Kontrolü
 index_checkdesc=Bu butona tıklayarak yapmış olduğunuz konfigurasyonun hatalı olup olmadığını görebilirsiniz. Sistem otomatik olarak <tt>shorewall check</tt> komutunu işletecektir.
 
@@ -53,7 +53,7 @@ zones_create=Yeni Bölge Oluştur
 zones_header=Ağ Bölge Detayları
 zones_err=Ağ bölgesi kaydedilemedi
 zones_eid=Hatalı ya da eksik bölge kimliği
-zones_efwid=$FW ve fw  bölge kimlikleri firewall için rezerve edilmiştir,kullanılamaz.
+zones_efwid=$FW ve fw bölge kimlikleri firewall için rezerve edilmiştir,kullanılamaz.
 zones_ename=Hatalı ya da eksik bölge ismi
 zones_edesc=Hatalı ya da eksik bölge açıklaması
 
@@ -79,7 +79,7 @@ policy_elimit=Hatalı ya da eksik Trafik Limiti Numarası
 policy_eburst=Hatalı ya da eksik Trafik Burst Numarası
 
 rules_title=Firewall Kuralları
-rules_desc=Bu sayfada ağınız için belirlemiş olduğunuz Firewall kurallarını uyugulayabilirsiniz. Firewall kuralları yapılandırırken  Standart Denetimlerde uygulamış olduğunuz kuralların aksi bir kural belirtirseniz Standart Denetimlerde tanımlı olan kural kullanılacaktır.
+rules_desc=Bu sayfada ağınız için belirlemiş olduğunuz Firewall kurallarını uyugulayabilirsiniz. Firewall kuralları yapılandırırken Standart Denetimlerde uygulamış olduğunuz kuralların aksi bir kural belirtirseniz Standart Denetimlerde tanımlı olan kural kullanılacaktır.
 rules_add=Yeni Firewall Kuralı Ekle
 rules_none=Tanımlı herhangi bir firewall kuralı bulunmamaktadır.
 rules_0=Eylem
@@ -112,8 +112,8 @@ rules_esother=Hatalı ya da eksik kaynak bölgesi
 rules_edother=Hatalı ya da eksik hedef bölgesi
 rules_esinzone=Kaynak için herhangi bir host adresi tanımlanmadı
 rules_edinzone=Hedef için herhangi bir host adresi tanımlanmadı
-rules_esport=Kaynak  port adı, numarası ya da port aralığı tanımlanmadı
-rules_edport=Hedef  port adı, numarası ya da port aralığı tanımlanmadı
+rules_esport=Kaynak port adı, numarası ya da port aralığı tanımlanmadı
+rules_edport=Hedef port adı, numarası ya da port aralığı tanımlanmadı
 rules_ednat=Orjinal hedef adresi tek bir IP addresi olmak zorunda. İki farklı adres tanımı için ip adreslerini " : " işareti ile ayırmanız gerekiyor.
 rules_ednat2=Orjinal hedef adresi sadece DNAT ve REDIRECT eylemleri için tanımlanabilir.
 rules_rate=Rate Limit
@@ -140,7 +140,7 @@ tos_header=Servis Türü Detayları
 tos_err=Servis türü kaydedilemedi.
 
 interfaces_title=Ağ Arayüzleri
-interfaces_desc=Sisteminizde konfigure etmek istediğiniz bütün arayüzleri bu bölgede tanıtmanız gerekmektedir. Her tanıtılan yeni arayüz " Ağ Bölgeleri" sayfasında tanıtmış olduğunuz bölgelerle ilişkilendirilmek zorundadır. loopback arayüzü olan  <tt>lo</tt> arayüzünün bu bölgede kullanılmaması gerekmektedir.
+interfaces_desc=Sisteminizde konfigure etmek istediğiniz bütün arayüzleri bu bölgede tanıtmanız gerekmektedir. Her tanıtılan yeni arayüz " Ağ Bölgeleri" sayfasında tanıtmış olduğunuz bölgelerle ilişkilendirilmek zorundadır. loopback arayüzü olan <tt>lo</tt> arayüzünün bu bölgede kullanılmaması gerekmektedir.
 interfaces_add=Yeni Bir Arayüz Ekle
 interfaces_none=Tanımlı herhangi bir ağ arayüzü bulunmamaktadır.
 interfaces_0=Arayüzü
@@ -181,7 +181,7 @@ masq_emnete=Hariç Ağlar Listesi Boş
 masq_esnat=Hatalı SNAT IP Adresi
 
 nat_title=Statik NAT
-nat_desc=Maskeleme Sayfası' ndaki NAT işlemlerinden farklı olarak, statik nat özelliğini birebir uygulamalar için kullanabilirsiniz. Bu uygulama genellikle iç ağınızda yer alan lokal ip adresine sahip bilgisayar veya serverlara internet ortamından  erişim içim kullanılabilir.
+nat_desc=Maskeleme Sayfası' ndaki NAT işlemlerinden farklı olarak, statik nat özelliğini birebir uygulamalar için kullanabilirsiniz. Bu uygulama genellikle iç ağınızda yer alan lokal ip adresine sahip bilgisayar veya serverlara internet ortamından erişim içim kullanılabilir.
 nat_add=Yeni Statik NAT Kuralı Ekle
 nat_none=Tanımlı herhangi bir statik nat kuralı bulunmamaktadır.
 nat_0=Dış Adres
@@ -260,7 +260,7 @@ tunnels_generic=Standart
 tunnels_generic_l=Standart, protokol..
 tunnels_gsel=Listelenen bölgeler
 tunnels_eopenvpn=VPN tünel için Hatalı port numarası
-tunnels_egeneric=Eksik  protokol veya protokol:standart tünel portu
+tunnels_egeneric=Eksik protokol veya protokol:standart tünel portu
 
 hosts_title=Bölge Hostları
 hosts_desc=Bu sayfada tanımlı bölgelere ait host ve ağ gruplarını konfigure edebilirsiniz. Normal koşullarda bu sayfada herhangi bir işlem yapmanızda gerek bulunmamaktadır.

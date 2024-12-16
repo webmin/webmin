@@ -43,7 +43,7 @@ error_serviceexist=En tjeneste som bruker port $1 og protokoll $2 finnes allered
 error_nameexist=En tjeneste med navn $1 og protokoll $2 finnes allerede
 error_inetservice=En internet tjeneste med navn $1 og protokoll $2 finnes allerede
 error_smfservice=Kunne ikke oppdatere smf tjeneste med kmd '$1', feilkode $2
-error_smf_cmdfield=For smf,  må filnavnet til programmet '$1' stemme med første argument i kommandofeltet, dvs. være '$2'
+error_smf_cmdfield=For smf, må filnavnet til programmet '$1' stemme med første argument i kommandofeltet, dvs. være '$2'
 
 editrpc_title1=Opprett RPC program
 editrpc_title2=Rediger RPC program

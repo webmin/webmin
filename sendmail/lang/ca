@@ -809,7 +809,7 @@ restart_ekill=no s'ha pogut enviar el senyal als processos sendmail: $1
 start_err=No s'ha pogut iniciar sendmail
 start_ecannot=No tens permís per iniciar sendmail
 
-ports_title=Ports  de Xarxa
+ports_title=Ports de Xarxa
 ports_name=Nom del port
 ports_addr=Escolta les adreces
 ports_all=Totes

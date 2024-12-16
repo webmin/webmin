@@ -310,7 +310,7 @@ upgrade_ok=Pacote Usermin $1 atualizado com sucesso em $2
 upgrade_failed=Falha ao instalar no $1 : $2
 upgrade_done=.. feito
 upgrade_efast=Apenas servidores que usam o modo RPC rápido podem ser atualizados
-upgrade_ereconn=Falha ao conectar novamente ao Usermin após a atualização!  : $1
+upgrade_ereconn=Falha ao conectar novamente ao Usermin após a atualização! : $1
 
 update_title=Módulos de atualização
 update_header=Atualizando módulos todos os hosts.

@@ -192,7 +192,7 @@ open_file=cale
 
 trace_title=Procesul de urmărire
 trace_start=Pornirea urmăririi apelului de sistem pentru $1 ..
-trace_doing=Urmărirea apelului de sistem pentru $1  :
+trace_doing=Urmărirea apelului de sistem pentru $1 :
 trace_done=.. procesul s-a încheiat.
 trace_failed=.. urmărirea nu a reușit!
 trace_sorry=Această pagină necesită suport Java în browserul dvs. Pentru a utiliza o urmă de proces doar pentru text, ajustați configurația modulului.

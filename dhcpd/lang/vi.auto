@@ -155,7 +155,7 @@ listl_all=Liệt kê tất cả các hợp đồng thuê đang hoạt động v�
 listl_delete=Xóa các hợp đồng đã chọn
 listl_unknown=không xác định
 listl_allocs=$1 địa chỉ IP khả dụng, $2 được phân bổ ($3 %)
-listl_mode=Chế độ hiển thị  :
+listl_mode=Chế độ hiển thị :
 listl_mode_0=DHCP cho thuê
 listl_mode_1=Mạng con và cách sử dụng
 listl_size=Tổng số IP
@@ -168,7 +168,7 @@ listl_refresh=Làm mới danh sách
 restart_errmsg1=Không thể khởi động lại dhcpd
 restart_errmsg2=Không thể xử lý tín hiệu
 start_failstart=Không thể bắt đầu dhcpd
-restart_conftext=Các dòng xung quanh $1 trong $2  :
+restart_conftext=Các dòng xung quanh $1 trong $2 :
 
 sgroup_faildel=Không thể xóa nhóm
 sgroup_failsave=Không thể lưu nhóm

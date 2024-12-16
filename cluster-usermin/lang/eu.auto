@@ -310,7 +310,7 @@ upgrade_ok=Eguneratu Usermin $1 paketeak $2 an
 upgrade_failed=Ezin izan da instalatu $1 : $2 an
 upgrade_done=.. egin
 upgrade_efast=RPC modu azkarra erabiliz zerbitzariak bakarrik berritu daitezke
-upgrade_ereconn=Ezin izan da berritu berriro Usermin-ekin konektatu ondoren!  : $1
+upgrade_ereconn=Ezin izan da berritu berriro Usermin-ekin konektatu ondoren! : $1
 
 update_title=Eguneratzeko moduluak
 update_header=Modulu ostalari guztiak eguneratzen ..

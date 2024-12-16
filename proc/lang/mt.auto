@@ -192,7 +192,7 @@ open_file=Triq
 
 trace_title=Proċess ta ’Traċċar
 trace_start=Tibda sistema ta ’traċċa ta’ sejħa għal $1 ..
-trace_doing=Traċċa tas-sejħa tas-sistema għal $1  :
+trace_doing=Traċċa tas-sejħa tas-sistema għal $1 :
 trace_done=.. il-proċess intemm.
 trace_failed=.. irnexxielu jsegwi!
 trace_sorry=Din il-paġna teħtieġ appoġġ Java fil-browser tiegħek. Biex tuża traċċa ta 'proċess ta' test biss, aġġusta l-konfigurazzjoni tal-modulu.

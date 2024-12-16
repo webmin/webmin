@@ -5,7 +5,7 @@ index_globalmsg=编辑将会应用到全部开机菜单选项的开机全局选�
 index_install=安装 GRUB
 index_installmsg=在$1安装GRUB开机装载程序，在时开机显示以上的选项。这样做将覆盖象是LILO这种现有的开机装载程序，甚至会无法重新启动系统。
 index_none=没有定义任何开机选项。请确定少新增了至一个grub的开机选项。
-index_efile=在您的系统上未找到 GRUB菜单文件。可能没有安装GRUB，或者 <a href='$2'>模块设置</a>  有误。
+index_efile=在您的系统上未找到 GRUB菜单文件。可能没有安装GRUB，或者 <a href='$2'>模块设置</a> 有误。
 index_epath=在您的系统上未找到可执行的GRUB $1。可能没有安装GRUB, 或者 <a href='$2'>模组设置</a> 有误。
 index_return=选项列表
 

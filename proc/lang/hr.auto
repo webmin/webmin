@@ -192,7 +192,7 @@ open_file=Staza
 
 trace_title=Proces tragova
 trace_start=Traženje sistemskog poziva za $1 ..
-trace_doing=Traženje sistemskog poziva za $1  :
+trace_doing=Traženje sistemskog poziva za $1 :
 trace_done=.. proces je završen.
 trace_failed=.. traženje nije uspjelo!
 trace_sorry=Ova stranica zahtijeva podršku Java u vašem pregledniku. Za korištenje tekstualnog traga samo za tekst prilagodite konfiguraciju modula.

@@ -310,7 +310,7 @@ upgrade_ok=Balík Usermin $1 bol úspešne inovovaný na $2
 upgrade_failed=Inštalácia zlyhala na $1 : $2
 upgrade_done=.. hotový
 upgrade_efast=Inovovať sa môžu iba servery používajúce rýchly RPC režim
-upgrade_ereconn=Po inovácii sa nepodarilo znova pripojiť k Usermin!  : $1
+upgrade_ereconn=Po inovácii sa nepodarilo znova pripojiť k Usermin! : $1
 
 update_title=Aktualizujte moduly
 update_header=Aktualizácia modulov všetkých hostiteľov.

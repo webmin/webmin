@@ -209,7 +209,7 @@ masq_eports=Hi falta la llista de ports separats per comes o bé és invàlida
 masq_eipsec=Hi falten les opcions IPsec
 
 nat_title=NAT estàtica
-nat_desc=Les entrades de traducció d'adreces de xarxa origen d'aquesta taula es poden utilitzar per configurar una correspondència 1 a 1 entre una adreça externa del tallafoc i una adreça RFC1918 d'una màquina darrere el tallafoc. La NAT  estàtica s'utilitza sovint per permetre connexions a un servidor intern des de fora de la teva xarxa.
+nat_desc=Les entrades de traducció d'adreces de xarxa origen d'aquesta taula es poden utilitzar per configurar una correspondència 1 a 1 entre una adreça externa del tallafoc i una adreça RFC1918 d'una màquina darrere el tallafoc. La NAT estàtica s'utilitza sovint per permetre connexions a un servidor intern des de fora de la teva xarxa.
 nat_add=Afegeix una nova entrada NAT estàtica.
 nat_none=Encara no s'ha definit cap entrada NAT estàtica
 nat_0=Adreça externa
@@ -416,7 +416,7 @@ opts_dest=Permet cap al host des de qualsevol origen
 opts_critical=Mostra sempre el trànsit entre el tallafoc
 opts_maclist=Compara amb la llista de MACs
 opts_norfc1918=Rebutja els paquets privats IP
-opts_blacklist=Rebutja els paquets  de la llista negra
+opts_blacklist=Rebutja els paquets de la llista negra
 opts_tcpflags=Comprova les banderes TCP il·legals
 opts_nosmurfs=Comprova els paquets retransmesos d'origen
 opts_ipsec=Zona IPsec

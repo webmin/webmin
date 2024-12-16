@@ -1,6 +1,6 @@
 index_serviceonboot=예, 부팅 시 시작됩니다
 index_boot=Webmin이 시작될 때 동기화 하시겠습니까?
-index_ehwclock=$1 실패  : $2
+index_ehwclock=$1 실패 : $2
 index_tabtime=시간 설정
 index_tabzone=시간대 변경
 index_tabsync=시간 서버 동기화

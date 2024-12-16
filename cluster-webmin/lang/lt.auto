@@ -312,7 +312,7 @@ upgrade_ok=Sėkmingai atnaujintas „Webmin $1 “ paketas $2
 upgrade_failed=Nepavyko įdiegti $1 : $2
 upgrade_done=.. padaryta
 upgrade_efast=Galima atnaujinti tik tuos serverius, kurie naudoja greitą RPC režimą
-upgrade_ereconn=Po atnaujinimo nepavyko prisijungti prie „Webmin“!  : $1
+upgrade_ereconn=Po atnaujinimo nepavyko prisijungti prie „Webmin“! : $1
 
 update_title=Atnaujinkite modulius
 update_header=Atnaujinami visi pagrindiniai moduliai ..

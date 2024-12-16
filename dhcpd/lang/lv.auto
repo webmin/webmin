@@ -168,7 +168,7 @@ listl_refresh=Atsvaidzināt sarakstu
 restart_errmsg1=Neizdevās restartēt dhcpd
 restart_errmsg2=Neizdevās signalizēt procesu
 start_failstart=Neizdevās startēt dhcpd
-restart_conftext=Līnijas ap $1 $2  :
+restart_conftext=Līnijas ap $1 $2 :
 
 sgroup_faildel=Neizdevās izdzēst grupu
 sgroup_failsave=Neizdevās saglabāt grupu

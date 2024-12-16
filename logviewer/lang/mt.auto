@@ -41,7 +41,7 @@ view_loading=Il-fajl tal-ġurnal qed jiġi osservat.. S'issa l-ebda linja ġdida
 view_filter=Iffiltra linji bit-test $1
 view_filter_btn=Iffiltra
 
-save_efile='$1' mhuwiex isem tal-fajl validu  : $2
+save_efile='$1' mhuwiex isem tal-fajl validu : $2
 save_ecannot2=M'intix permess tara dan il-log
 save_ecannot3=Żball: M'intix permess li tara dan ir-reġistru
 save_ecannot4=Żball: Ma setgħetx tiftaħ '$1'

@@ -90,7 +90,7 @@ udel_pass=Az LDAP felhasználói bejegyzés törlése ..
 udel_book=Törlés a címjegyzékből ..
 udel_imap=IMAP mappa törlése ..
 udel_warnimap=A meglévő postafiók törlődik, ha törli az otthoni könyvtárat!
-udel_failed=.. nem sikerült!  : $1
+udel_failed=.. nem sikerült! : $1
 
 raw_title=LDAP attribútumok
 raw_name=Attribútum neve

@@ -266,7 +266,7 @@ readparse_enc=Esperava la codificació de dades de formulari, però he rebut la 
 readparse_max=Les dades excedeixen la mida màxima de $1 bytes
 
 password_expired=La teva contrasenya ha caducat i n'has de triar una de nova.
-password_temp=Has de seleccionar una nova contrasenya  per substituir la teva entrada temporal.
+password_temp=Has de seleccionar una nova contrasenya per substituir la teva entrada temporal.
 password_header=Selecciona la Nova Contrasenya
 password_user=Usuari
 password_old=Contrasenya actual
@@ -321,7 +321,7 @@ wsearch_help=Pàgina d'ajuda
 wsearch_inmod=A $1
 wsearch_text=Text d'interfície d'usuari
 wsearch_esearch=No has introduït res per buscar.
-wsearch_enone=No s'ha trobat cap mòdul ni pàgina de Webmin que coincideixi amb  $1.
+wsearch_enone=No s'ha trobat cap mòdul ni pàgina de Webmin que coincideixi amb $1.
 wsearch_on=(A $1)
 wsearch_helpfor=Ajuda de <i>$1</i>
 wsearch_htext=Text de coincidència

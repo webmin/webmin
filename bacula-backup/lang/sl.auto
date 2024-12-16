@@ -207,7 +207,7 @@ backup_failed=.. varnostno kopiranje ni bilo uspešno zaključeno. Preverite zgo
 
 gbackup_title=Izvedite Bacula Group Backup Job
 gbackup_run=Zagon rezervnega opravila $1 za $2 odjemalce ..
-gbackup_on=Zagon rezervnega opravila na odjemalcu $1  :
+gbackup_on=Zagon rezervnega opravila na odjemalcu $1 :
 gbackup_header=Podrobnosti o opravljenem varnostnem kopiranju skupine Bacula
 gbackup_jd=$1 (Niz datotek $2 v skupini $3)
 

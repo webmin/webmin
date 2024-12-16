@@ -315,7 +315,7 @@ search_onestatus=Només l'estat
 search_latest=Missatges a buscar
 search_nolatest=Tots els de la carpeta
 search_latestnum=Només els darrers
-search_elatest=Hi falta el nombre de missatges a buscar  o bé és invàlid
+search_elatest=Hi falta el nombre de missatges a buscar o bé és invàlid
 search_withstatus=, amb estat $1
 
 folder_inbox=Entrada

@@ -260,7 +260,7 @@ mailq_qmailadmin=Qmail
 mailq_postfix=Postfix
 mailq_sendmail=Sendmail
 mailq_toomany=Nie działa - $1 wiadomości w kolejce
-mailq_ok=Działą  - $1 wiadomości w kolejce
+mailq_ok=Działą - $1 wiadomości w kolejce
 
 dns_server=Serwer DNS
 dns_address=Spodziewany adres IP
@@ -280,7 +280,7 @@ monitor_pager_webmin=$1: $2 Webmin nie działa $3
 monitor_snmp_webmin=$1: $2 Webmin nie działa
 monitor_sub_timed=$1 przekroczono czas (timed out) na $2
 monitor_pager_timed=$1: "$2" przekroczono czas (TIME OUT) $3
-monitor_snmp_timed=$1: $2  przekroczono czas (timed out)
+monitor_snmp_timed=$1: $2 przekroczono czas (timed out)
 monitor_sub_isdown=$1 nie działa na $2
 monitor_pager_isdown=$1: "$2" nie działa $3
 monitor_snmp_isdown=$1: $2

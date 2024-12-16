@@ -207,7 +207,7 @@ backup_failed=.. säkerhetskopian avslutades inte framgångsrikt. Mer informatio
 
 gbackup_title=Kör Bacula Group Backup Job
 gbackup_run=Starta backupjobb $1 på $2 klienter ..
-gbackup_on=Kör backupjobb på klient $1  :
+gbackup_on=Kör backupjobb på klient $1 :
 gbackup_header=Detaljer för Bacula-säkerhetskopieringsjobb
 gbackup_jd=$1 (Filuppsättning $2 på grupp $3)
 

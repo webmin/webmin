@@ -155,7 +155,7 @@ listl_all=Enumerați toate contractele de închiriere active și expirate
 listl_delete=Ștergeți închirieri selectate
 listl_unknown=Necunoscut
 listl_allocs=Adrese IP $1 disponibile, $2 alocate ($3 %)
-listl_mode=Modul de afișare  :
+listl_mode=Modul de afișare :
 listl_mode_0=DHCP închirieri
 listl_mode_1=Rețele și utilizare
 listl_size=IP-uri totale
@@ -168,7 +168,7 @@ listl_refresh=Actualizare listă
 restart_errmsg1=Nu a putut reporni dhcpd
 restart_errmsg2=Procesul de semnal nu a reușit
 start_failstart=Eșecul la pornirea dhcpd
-restart_conftext=Linii în jur de $1 în $2  :
+restart_conftext=Linii în jur de $1 în $2 :
 
 sgroup_faildel=Nu a reușit ștergerea grupului
 sgroup_failsave=Nu a reușit să salveze grupul

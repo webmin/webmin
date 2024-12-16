@@ -38,7 +38,7 @@ listl_network=네트워크 $1 / $2 에서
 listl_lfnotcont2=DHCPd 임대 파일 <tt>$1</tt>에 현재 활성 상태 인 임대가 없습니다.
 listl_unknown=알 수 없는
 listl_allocs=사용 가능한 $1 IP 주소, 할당 된 $2 ($3 %)
-listl_mode=디스플레이 모드  :
+listl_mode=디스플레이 모드 :
 listl_mode_0=DHCP 임대
 listl_mode_1=서브넷 및 사용법
 listl_size=총 IP
@@ -49,7 +49,7 @@ listl_enone=선택된 사항 없음
 
 listl_refresh=새로 고침 목록
 
-restart_conftext=$2 의 $1 주위 줄  :
+restart_conftext=$2 의 $1 주위 줄 :
 
 sopt_edname='$1'은 (는) 유효한 옵션 이름이 아닙니다.
 sopt_ednum='$1'은 (는) 유효한 옵션 번호가 아닙니다.

@@ -1,5 +1,5 @@
 index_title=Sistem Log
-index_m4msg=Sistem konfigurasi fail log and  $1 nampaknya mengandungi arahan <tt>m4</tt>. Sebelum ia boleh disunting, Webmin perlu menggunakan arahan <tt>m4</tt> ke atas fail ini bagi membuang perintah m4 dengan selamat.
+index_m4msg=Sistem konfigurasi fail log and $1 nampaknya mengandungi arahan <tt>m4</tt>. Sebelum ia boleh disunting, Webmin perlu menggunakan arahan <tt>m4</tt> ke atas fail ini bagi membuang perintah m4 dengan selamat.
 index_m4=Keluarkan perintah m4 dari fail config
 index_econf=Fail konfigurasi syslog $1 tidak dijumpai pada sistem anda. Mungkin syslog tidak dipasang, atau versi yang lebih baharu seperti syslog-ng sedang digunakan, atau <a href='$2'>konfigurasi modul</a> adalah tidak betul.
 index_active=Aktif?

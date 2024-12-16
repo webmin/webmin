@@ -8,7 +8,7 @@ index_startdesc=Inicia el procés IMAP/POP3 de IMAP/POP3 de forma que els usuari
 index_apply=Aplica la Configuració
 index_applydesc=Activa la configuració actual de Dovecot aturant i reiniciant el procés servidor.
 index_boot=Inicia'l en engegar el sistema
-index_bootdesc=Canvia aquest valor per activar o desactivar el servidor Dovecot  en engegar el sistema.
+index_bootdesc=Canvia aquest valor per activar o desactivar el servidor Dovecot en engegar el sistema.
 index_return=a l'índex de mòduls
 index_version=Versió $1
 

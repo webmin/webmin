@@ -1,4 +1,4 @@
-index_enopfile=在您的系统中没能找到 PPP 口令文件  '$1',可能没安装 PPP
+index_enopfile=在您的系统中没能找到 PPP 口令文件 '$1',可能没安装 PPP
 index_table=PPP 拨入和拨出帐户
 index_user=用户
 index_server=服务器

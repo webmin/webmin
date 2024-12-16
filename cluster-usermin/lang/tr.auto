@@ -310,7 +310,7 @@ upgrade_ok=$2 üzerindeki Usermin $1 paketi başarıyla yükseltildi
 upgrade_failed=$1 : $2 üzerine yüklenemedi
 upgrade_done=.. bitti
 upgrade_efast=Yalnızca hızlı RPC modunu kullanan sunucular yükseltilebilir
-upgrade_ereconn=Yükseltme işleminden sonra Usermin'e yeniden bağlanılamadı!  : $1
+upgrade_ereconn=Yükseltme işleminden sonra Usermin'e yeniden bağlanılamadı! : $1
 
 update_title=Modülleri Güncelle
 update_header=Tüm ana bilgisayarlar güncelleniyor ..

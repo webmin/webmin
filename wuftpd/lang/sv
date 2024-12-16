@@ -1,6 +1,6 @@
 index_title=WU-FTPD-server
 index_eftpd=FTP-server $1 finns inte på ditt system. Den kanske inte är installerad, eller också är dina <a href='$2'>inställningar för FTP-servermodulen</a> felaktiga.
-index_eftpaccess=Inställningsfilen $1 för FTP-servern finns inte.  Den kanske inte är installerad, eller också är dina <a href='$2'>inställningar för FTP-servermodulen</a> felaktiga.
+index_eftpaccess=Inställningsfilen $1 för FTP-servern finns inte. Den kanske inte är installerad, eller också är dina <a href='$2'>inställningar för FTP-servermodulen</a> felaktiga.
 index_eversion=FTP-server $1 verkar inte vara WU-FTPd. Du kanske kör en äldre FTPd som hör till ditt operativsystem, eller också är dina <a href='$2'>inställningar för FTP-servermodulen</a> felaktiga.
 index_apply=Genomför ändringar
 index_applymsg=Tryck på denna knapp för att inställningarna ska tas i drift. Alla FTP-serverprocesser kommer att stannas och startas om, vilket kopplar ner alla användare.

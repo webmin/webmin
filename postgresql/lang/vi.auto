@@ -159,7 +159,7 @@ exec_tabfile=Chạy SQL từ tệp
 exec_tabimport=Nhập tệp văn bản
 exec_return=thực thi mẫu SQL
 exec_ecompress=Tệp SQL được nén, nhưng chương trình $1 cần thiết để giải nén nó chưa được cài đặt.
-exec_ecompress2=Giải nén không thành công  : $1
+exec_ecompress2=Giải nén không thành công : $1
 
 stop_err=Không thể dừng máy chủ cơ sở dữ liệu
 stop_epidfile=Không thể mở tệp PID $1

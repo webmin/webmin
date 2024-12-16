@@ -70,7 +70,7 @@ reboot_rusure=$1 bölgesini yeniden başlatmak istediğinizden emin misiniz? İ�
 reboot_err=Bölge yeniden başlatılamadı
 reboot_doing=Şimdi bölge yeniden başlatılıyor ..
 
-reboot_failed=.. başarısız oldu  :
+reboot_failed=.. başarısız oldu :
 reboot_ok=.. tamamlayınız.
 
 halt_title=Kapatma Bölgesi

@@ -90,7 +90,7 @@ udel_pass=Ștergerea intrării utilizatorului LDAP ..
 udel_book=Ștergerea din agenda de adrese ..
 udel_imap=Ștergerea dosarului IMAP ..
 udel_warnimap=Căsuța poștală existentă va fi ștersă la ștergerea directorului de acasă!
-udel_failed=.. a eșuat!  : $1
+udel_failed=.. a eșuat! : $1
 
 raw_title=Atributele LDAP
 raw_name=Numele atributului

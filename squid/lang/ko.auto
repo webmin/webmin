@@ -368,8 +368,8 @@ iptables_save=저장하고 적용
 iptables_err=포트 전달을 저장하지 못했습니다
 iptables_enet=네트워크 주소가 없거나 유효하지 않습니다 (192.168.1.0/24와 같아야 함)
 iptables_eiface=네트워크 인터페이스가 없거나 유효하지 않습니다
-iptables_eapply=방화벽 적용 실패  : $1
-iptables_eapply2=오징어 적용 실패  : $1
+iptables_eapply=방화벽 적용 실패 : $1
+iptables_eapply2=오징어 적용 실패 : $1
 
 syslog_access=오징어 액세스 로그
 syslog_cache=오징어 캐싱 로그

@@ -310,7 +310,7 @@ upgrade_ok=Nâng cấp thành công gói Usermin $1 trên $2
 upgrade_failed=Không thể cài đặt trên $1 : $2
 upgrade_done=.. làm xong
 upgrade_efast=Chỉ các máy chủ sử dụng chế độ RPC nhanh mới có thể được nâng cấp
-upgrade_ereconn=Không thể kết nối lại với Usermin sau khi nâng cấp!  : $1
+upgrade_ereconn=Không thể kết nối lại với Usermin sau khi nâng cấp! : $1
 
 update_title=Cập nhật các mô-đun
 update_header=Cập nhật các mô-đun tất cả các máy chủ ..

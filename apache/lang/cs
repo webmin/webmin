@@ -234,7 +234,7 @@ reconfig_ecannot=Nemáte oprávnění rekonfigurovat apache
 reconfig_ever=Chyba při zjišťování verze spuštěného Apache serveru $1. Zkontrolujte vaši <a href='$2'>konfiguraci modulu</a> a ujistěte se, zda je zapsánasprávná cesta.
 reconfig_desc1=Vaše konfigurace Apache byla změněna, nebo není spustitelná Webminem. Níže je uveden seznam všech modulů Apache, které podporuje Webmin, s tím, zda jsou označeny správně nainstalovné moduly. Můžete si označit (či zrušit označení) moduly, pokud není seznam v pořádku.
 reconfig_desc2=Níže je uveden seznam všech modulů Apache, které podporuje Webmin, s tím, zda jsou označeny správně nainstalovné moduly. Pokud používáte dynamické nahrávání modulů, můžete označit ty moduly, které byly dynamicky nahrány.
-reconfig_desc3=Nejste-li si jisti, které moduly Apache váš systém podporuje, pak Webminová  konfigurace může pracovat s podporovanými moduly automaticky.
+reconfig_desc3=Nejste-li si jisti, které moduly Apache váš systém podporuje, pak Webminová konfigurace může pracovat s podporovanými moduly automaticky.
 reconfig_ok=Konfigurovat
 
 defines_title=Editace definovaných parametrů
@@ -765,7 +765,7 @@ autoindex_diricon=Ikony pro rejstřík adresáře
 autoindex_deficon=Výchozí ikona pro rejstřík adresáře
 autoindex_default=Výchozí
 autoindex_edeficon=Neplatná výchozí URL k ikoně
-autoindex_diralt=ALT tagy  pro rejstřík adresáře
+autoindex_diralt=ALT tagy pro rejstřík adresáře
 autoindex_desc=Popis
 autoindex_fnames=Jména souborů
 autoindex_dirdesc=Popisy pro rejstřík adresáře

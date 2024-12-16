@@ -253,7 +253,7 @@ mail_delall=모든 스팸 삭제
 mail_search3=위의 점수를 검색하십시오.
 
 process_eclean=이 이메일에서 SpamAssassin 헤더를 제거하는 중에 오류가 발생했습니다
-process_ereport=SpamAssassin에 이메일을보고하지 못했습니다  : $1
+process_ereport=SpamAssassin에 이메일을보고하지 못했습니다 : $1
 
 apply_err=변경 사항을 적용하지 못했습니다
 apply_none=SpamAssassin 데몬 프로세스가 없습니다!
@@ -337,19 +337,19 @@ simple_score=적용 점수
 simple_describe=기술
 simple_err=메시지 테스트를 저장하지 못했습니다
 
-before_ecmd=저장 전 명령 실패  : $1
-after_ecmd=저장 후 명령 실패  : $1
+before_ecmd=저장 전 명령 실패 : $1
+after_ecmd=저장 후 명령 실패 : $1
 
 connect_emysql=데이터베이스 드라이버 $1 을 (를)로드하지 못했습니다.
 connect_elogin=$1 데이터베이스에 로그인하지 못했습니다 : $2.
 connect_equery=데이터베이스 $1 에 기본 설정 테이블 $2 이 (가) 없습니다
 connect_eldapmod=LDAP와 통신하는 데 필요한 Perl 모듈 $1 이 (가) 설치되지 않았거나로드 할 수 없습니다
 connect_eldap=포트 $2 에서 LDAP 서버 $1 에 연결하지 못했습니다.
-connect_eldaplogin=$2 (으)로 LDAP 서버 $1 에 로그인하지 못했습니다  : $3
-connect_ebase=LDAP 기본 DN $1 이 (가) 유효하지 않습니다  : $2
+connect_eldaplogin=$2 (으)로 LDAP 서버 $1 에 로그인하지 못했습니다 : $3
+connect_ebase=LDAP 기본 DN $1 이 (가) 유효하지 않습니다 : $2
 
-eldap=LDAP 작업 실패  : $1
-esql=SQL 실패  : $1
+eldap=LDAP 작업 실패 : $1
+esql=SQL 실패 : $1
 ldap_euser=$1 에 대한 LDAP 사용자 개체를 찾을 수 없습니다
 
 db_title=SQL 및 LDAP 데이터베이스

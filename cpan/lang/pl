@@ -84,7 +84,7 @@ install_err=Instalacja $1 nie powiodła się. Sprawdź powyższe dane wyjściowe
 install_err2=Możesz także zainstalować moduły przez CPAN poleceniem $1.
 install_exec=Uruchamianie $1 ..
 install_efile=Plik modułu $1 już nie istnieje
-install_needunlink=Możesz spróbować zainstalować ponownie wracając do poprzedniej strony i wybierając różne opcje. W przeciwnym wypadku  <a href='$1'>kliknij tutaj, aby usunąć pliki tymczasowe pakietu</a> i zaoszczędzić miejsce na dysku.
+install_needunlink=Możesz spróbować zainstalować ponownie wracając do poprzedniej strony i wybierając różne opcje. W przeciwnym wypadku <a href='$1'>kliknij tutaj, aby usunąć pliki tymczasowe pakietu</a> i zaoszczędzić miejsce na dysku.
 
 cpan_sel=Moduły w $1 ..
 cpan_title=Wybierz moduł Perla
@@ -111,7 +111,7 @@ edit_manual=Ręczna instalacja pakietu Perl
 
 uninstall_title=Odinstalowywanie modułu
 uninstall_rusure=Na pewno chcesz odinstalować moduł Perla '$1' ? Następujące pliki zostaną usunięte :
-uninstall_rusure2=Na pewno chcesz odinstalować moduł Perla '$1'  i pod-moduły $2 ? <br>Następujące pliki zostaną usunięte :
+uninstall_rusure2=Na pewno chcesz odinstalować moduł Perla '$1' i pod-moduły $2 ? <br>Następujące pliki zostaną usunięte :
 uninstall_ok=Odinstaluj teraz
 uninstall_rpm=Moduł zostanie usunięty przez odinstalowanie pakietu $1 RPM.
 uninstall_debian=Moduł zostanie usunięty przez odinstalowanie pakietu $1 Debiana.

@@ -46,7 +46,7 @@ edit_newdesc2=n nem tud egy Łj file rendszert ltrehozni ezen a partĄci˘, 
 edit_newdesc3=n nem tud egy Łj file rendszert ltrehozni ezen a partĄci˘ ha az csatlakoztatva van. Elszr haszn lja a <a href=/mount/>file rendszer modult</a> hogy lecsatlakoztassa ezt a partĄci˘t.
 edit_fsckfs=File rendszer javĄt sa
 edit_fsck=JavĄt s
-edit_fsckdesc1=Az  <tt>fsck</tt> program hĄv sa a file rendszer javĄt s t vgzi, ha nem lehet csatlakoztattni. Ez nha szksges ha az n rendszere nem lett j˘l le llĄtva.
+edit_fsckdesc1=Az <tt>fsck</tt> program hĄv sa a file rendszer javĄt s t vgzi, ha nem lehet csatlakoztattni. Ez nha szksges ha az n rendszere nem lett j˘l le llĄtva.
 edit_fsckdesc2=n nem tudja ellenrizni ezt a file rendszert ezen a partĄci˘n, mert mg nem lett be llĄtva.
 edit_fsckdesc3=n nem tudja ellenrizni ezt a file rendszert ezen a partĄci˘n, mert ez jelenleg csatlakoztatva van.Elszr haszn lja a <a href=/mount/>file rendszer modult</a> hogy lecsatlakoztassa.
 edit_fsckdesc4=n nem tudja ellenrizni ezt a file rendszert ezen a partĄci˘n, mert ezen nincs file rendszer.
@@ -71,7 +71,7 @@ save_estartend=A kezd cilindernek kisebbnek kell lenni, mint a befejez cilin
 newfs_title=File rendszer ltrehoz sa
 newfs_ecannot=nnek nincs joga form zni ezt a lemezt
 newfs_desc=Az als˘ gombra kattintva ez az oldal felpĄt egy Łj $1 -t a $2 eszkzn. Az sszes adat ezen a partĄci˘ vgleg trlve lesz.
-newfs_warn=Ez a  partĄci˘ m r csatlakoztattva van ezen $1. Egy Łj file rendszer ltrehoz sa trlni fogja az sszes file -t ami elzleg hozz frt ehhez a knyvt rhoz.
+newfs_warn=Ez a partĄci˘ m r csatlakoztattva van ezen $1. Egy Łj file rendszer ltrehoz sa trlni fogja az sszes file -t ami elzleg hozz frt ehhez a knyvt rhoz.
 newfs_header=File rendszer be llĄt sok
 ufs_a=Tartalk blokk / cilinder
 ufs_b=Logikai blokk mret
@@ -90,13 +90,13 @@ ufs_t=S v / cilinder
 ufs_cb=Maxim lis sszefgg blokkok
 newfs_create=File rendszer ltrehoz sa
 newfs_err=Nem lehet ltrehozni a file rendszert
-newfs_exec=Futtatom a  $1 parancsot..
+newfs_exec=Futtatom a $1 parancsot..
 newfs_failed=.. parancs hib s!
 newfs_ok=.. parancs rendben.
 
 fsck_title=File rendszer javĄt sa
 fsck_ecannot=nnek nincs joga javĄtani ezt a lemez
-fsck_desc=A <b>JavĄt s</b> gombra kattintva ellenrizve s opcion lisan javĄtva lesz a(z) $1 a(z) $2 -n. Az ellenrzsi s  javĄt si szintet az n v laszt sa befoly solja.
+fsck_desc=A <b>JavĄt s</b> gombra kattintva ellenrizve s opcion lisan javĄtva lesz a(z) $1 a(z) $2 -n. Az ellenrzsi s javĄt si szintet az n v laszt sa befoly solja.
 fsck_mode0=Csak jelents a file rendszer  llapot r˘l.
 fsck_mode1=Az egsz file rendszer hibavizsg lata, de ne legyenek kijavĄtva a hib k.
 fsck_mode2=Az egsz file rendszer hibavizsg lata, s hiba esetn a javĄt s.
@@ -125,7 +125,7 @@ tunefs_d=Forgat si sznet
 tunefs_e=Maxim lis file blokk / cilinder csoport
 tunefs_m=Fentartott hely
 tunefs_err=Nem lehet hangolni a file rendszert
-tunefs_exec=Futtatom a $1  parancsot..
+tunefs_exec=Futtatom a $1 parancsot..
 tunefs_failed=.. parancs hib s!
 tunefs_ok=.. parancs rendben.
 

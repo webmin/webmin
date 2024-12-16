@@ -68,7 +68,7 @@ action_check=在禁止IP之前运行的命令
 action_ban=禁止IP的命令
 action_unban=解除IP禁令的命令
 action_desc=<i>&lt;ip&gt;</i> 将替换为被禁止的IP地址。
-action_einuse=此操作无法删除，因为它被jails监狱使用  : $1
+action_einuse=此操作无法删除，因为它被jails监狱使用 : $1
 
 jails_title=筛选操作 Jails监狱
 jails_add=新增一个 jail监狱.

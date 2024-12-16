@@ -165,7 +165,7 @@ save_ereplyto=응답 할 인터페이스가 없거나 잘못되었습니다.
 save_ereplytoip=응답 할 잘못된 IP 주소
 
 apply_err=구성을 적용하지 못했습니다
-apply_remote=$1 의 오류  : $2
+apply_remote=$1 의 오류 : $2
 unapply_err=구성을 되 돌리지 못했습니다
 unapply_ein=입력 규칙을 가져 오지 못했습니다.
 unapply_eout=출력 규칙을 가져 오지 못했습니다.

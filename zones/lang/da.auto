@@ -70,7 +70,7 @@ reboot_rusure=Er du sikker på, at du vil genstarte zonen $1 ? Alle processer, d
 reboot_err=Kunne ikke genstarte zone
 reboot_doing=Genstart nu zone ..
 
-reboot_failed=.. mislykkedes  :
+reboot_failed=.. mislykkedes :
 reboot_ok=.. komplet.
 
 halt_title=Lukningszone

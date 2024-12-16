@@ -90,7 +90,7 @@ udel_pass=حذف إدخال مستخدم LDAP ..
 udel_book=جاري الحذف من دفتر العناوين ..
 udel_imap=جارٍ حذف مجلد IMAP ..
 udel_warnimap=سيتم حذف صندوق بريد البريد الحالي عند حذف الدليل الرئيسي!
-udel_failed=.. فشل!  :$1
+udel_failed=.. فشل! :$1
 
 raw_title=سمات LDAP
 raw_name=اسم السمة

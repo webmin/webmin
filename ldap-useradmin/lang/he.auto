@@ -90,7 +90,7 @@ udel_pass=מוחק את רשומת המשתמש של LDAP ..
 udel_book=מוחק מתוך פנקס הכתובות ..
 udel_imap=מוחק תיקיית IMAP ..
 udel_warnimap=תיבת הדואר הקיימת תימחק בעת מחיקת ספריית הבית!
-udel_failed=.. נכשל!  : $1
+udel_failed=.. נכשל! : $1
 
 raw_title=תכונות LDAP
 raw_name=שם מאפיין

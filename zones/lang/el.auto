@@ -70,7 +70,7 @@ reboot_rusure=Είστε βέβαιοι ότι θέλετε να επανεκκ�
 reboot_err=Αποτυχία επανεγκατάστασης ζώνης
 reboot_doing=Τώρα η ζώνη επανεκκίνησης ..
 
-reboot_failed=.. απέτυχε  :
+reboot_failed=.. απέτυχε :
 reboot_ok=.. πλήρης.
 
 halt_title=Ζώνη τερματισμού λειτουργίας

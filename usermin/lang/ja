@@ -1,5 +1,5 @@
 index_title=Usermin 設定
-index_econfig=Usermin 設定 ディレクトリー $1 あなたの システムにみつかりません。 おそらく Usermin がインストールされていないか,  あなたの<a href='$2'>module configuration</a>  が正しくありません.
+index_econfig=Usermin 設定 ディレクトリー $1 あなたの システムにみつかりません。 おそらく Usermin がインストールされていないか, あなたの<a href='$2'>module configuration</a> が正しくありません.
 index_return=Usermin 設定
 index_stop=Usermin をストップ
 index_stopmsg=Click this button to stop the Usermin server running on your system. Once stopped, no users will be able to login to it.

@@ -207,7 +207,7 @@ backup_failed=.. sao lưu không hoàn thành thành công. Kiểm tra thông b�
 
 gbackup_title=Chạy công việc sao lưu nhóm Bacula
 gbackup_run=Bắt đầu công việc sao lưu $1 trên $2 khách hàng ..
-gbackup_on=Chạy công việc sao lưu trên máy khách $1  :
+gbackup_on=Chạy công việc sao lưu trên máy khách $1 :
 gbackup_header=Chi tiết công việc sao lưu nhóm Bacula
 gbackup_jd=$1 (Tệp được đặt $2 trên nhóm $3)
 

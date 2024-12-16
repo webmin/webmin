@@ -207,7 +207,7 @@ backup_failed=.. backup-ul nu s-a finalizat cu succes. Verificați mesajul de er
 
 gbackup_title=Rulați Jobul de Backup Group Bacula
 gbackup_run=Pornirea jobului de rezervă $1 la $2 clienți ..
-gbackup_on=Se execută o copie de rezervă pentru clientul $1  :
+gbackup_on=Se execută o copie de rezervă pentru clientul $1 :
 gbackup_header=Detalii despre jobul de rezervă al grupului Bacula
 gbackup_jd=$1 (set de fișiere $2 pentru grupul $3)
 

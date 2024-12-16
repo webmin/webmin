@@ -155,7 +155,7 @@ listl_all=Navedi sve aktivne i istekle najmove
 listl_delete=Izbrišite odabrane najmove
 listl_unknown=Nepoznata
 listl_allocs=Dostupna je $1 IP adresa, dodijeljeno $2 ($3 %)
-listl_mode=Način prikaza  :
+listl_mode=Način prikaza :
 listl_mode_0=DHCP iznajmljuje
 listl_mode_1=Podmreže i upotreba
 listl_size=Ukupno IP-ova
@@ -168,7 +168,7 @@ listl_refresh=Osvježi popis
 restart_errmsg1=Ponovno pokretanje dhcpd-a nije uspjelo
 restart_errmsg2=Proces signalizacije nije uspio
 start_failstart=Dhcpd nije uspio
-restart_conftext=Linije oko $1 u $2  :
+restart_conftext=Linije oko $1 u $2 :
 
 sgroup_faildel=Brisanje grupe nije uspjelo
 sgroup_failsave=Spremanje grupe nije uspjelo

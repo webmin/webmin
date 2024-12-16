@@ -89,7 +89,7 @@ listl_all=Listar todas as concessões ativas e expiradas
 listl_delete=Excluir concessões selecionadas
 listl_unknown=Desconhecido
 listl_allocs=$1 endereços IP disponíveis, $2 alocados ($3 %)
-listl_mode=Modo de exibição  :
+listl_mode=Modo de exibição :
 listl_mode_0=Concessões de DHCP
 listl_mode_1=Sub-redes e uso
 listl_size=IPs totais
@@ -99,7 +99,7 @@ listl_err=Falha ao excluir concessões
 listl_enone=Nenhum selecionado
 listl_refresh=Atualizar lista
 
-restart_conftext=Linhas em torno de $1 em $2  :
+restart_conftext=Linhas em torno de $1 em $2 :
 
 sgroup_invassign=grupo atribuído a uma seção incorreta
 sgroup_echanged=O conteúdo do arquivo de configuração foi alterado. Tente novamente.

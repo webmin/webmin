@@ -310,7 +310,7 @@ upgrade_ok=Usermin $1 -pakket is suksesvol opgegradeer op $2
 upgrade_failed=Kon nie installeer op $1 : $2 nie
 upgrade_done=.. klaar
 upgrade_efast=Slegs bedieners wat vinnige RPC-modus gebruik, kan opgegradeer word
-upgrade_ereconn=Kon nie weer na opdatering aan Usermin koppel nie!  : $1
+upgrade_ereconn=Kon nie weer na opdatering aan Usermin koppel nie! : $1
 
 update_title=Modules opdateer
 update_header=Opdatering van alle gashere van modules ..

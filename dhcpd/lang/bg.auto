@@ -168,7 +168,7 @@ listl_refresh=Обновяване на списъка
 restart_errmsg1=Рестартирането на dhcpd не бе успешно
 restart_errmsg2=Процесът на сигнализиране не бе успешен
 start_failstart=Стартирането на dhcpd не бе успешно
-restart_conftext=Линии около $1 в $2  :
+restart_conftext=Линии около $1 в $2 :
 
 sgroup_faildel=Изтриването на групата не бе успешно
 sgroup_failsave=Запазването на групата не бе успешно

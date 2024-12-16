@@ -31,7 +31,7 @@ listl_network=Dans le réseau $1 / $2
 listl_lfnotcont2=Le fichier de bail DHCPd <tt>$1</tt> ne contient aucun bail actif à l'heure actuelle.
 listl_unknown=Inconnue
 listl_allocs=$1 adresses IP disponibles, $2 allouées ($3 %)
-listl_mode=Mode d'affichage  :
+listl_mode=Mode d'affichage :
 listl_mode_0=Baux DHCP
 listl_mode_1=Sous-réseaux et utilisation
 listl_size=IP totales
@@ -42,7 +42,7 @@ listl_enone=Aucune sélection
 
 listl_refresh=Rafraîchir la liste
 
-restart_conftext=Lignes autour de $1 dans $2  :
+restart_conftext=Lignes autour de $1 dans $2 :
 
 sopt_edname='$1' n'est pas un nom d'option valide
 sopt_ednum='$1' n'est pas un numéro d'option valide

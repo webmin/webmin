@@ -452,8 +452,8 @@ controls_eport=Номер порту не зазначений чи зазнач
 controls_eip='$1' не є коректною IP-адресою
 controls_efile=Ім'я файлу FIFO
 controls_eperms=Права на FIFO чи не зазначені зазначені невірно
-controls_eowner=UID власника FIFO чи  не зазначений зазначений невірно
-controls_egroup=GID власника FIFO чи  не зазначений зазначений невірно
+controls_eowner=UID власника FIFO чи не зазначений зазначений невірно
+controls_egroup=GID власника FIFO чи не зазначений зазначений невірно
 
 keys_title=Ключі DNS
 keys_id=Ідентифікатор ключа

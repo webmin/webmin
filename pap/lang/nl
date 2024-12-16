@@ -134,7 +134,7 @@ mgetty_ecannot=U bent niet bevoegd om seriële poort configuraties te bewerken
 
 dialin_title=Beller ID Toegang
 dialin_desc=Op deze pagina kunt u Mgetty configureren zodat deze een inbel toegang weigert of toestaat gebaseerd op een telefoonnummer of een beller. Wanneer er een telefoontje binnenkomt zal de eerste in de lijst die overeenkomt met het telefoonnummer bepalen of het inkomende telefoontje word geaccepteerd of niet.
-dialin_efile=De Mgetty beller ID toegangs controle file $1 is niet gevonden op uw systeem. Misschien is Mgetty niet geinstalleerd of uw <a href='$2'>module configuratie</a> is  niet correct.
+dialin_efile=De Mgetty beller ID toegangs controle file $1 is niet gevonden op uw systeem. Misschien is Mgetty niet geinstalleerd of uw <a href='$2'>module configuratie</a> is niet correct.
 dialin_add=Voeg een nieuw beller ID nummer toe.
 dialin_number=Telefoon nummer
 dialin_ad=Actie

@@ -90,7 +90,7 @@ udel_pass=Notiek LDAP lietotāja ieraksta dzēšana.
 udel_book=Notiek dzēšana no adrešu grāmatas ..
 udel_imap=Notiek IMAP mapes dzēšana.
 udel_warnimap=Dzēšot mājas direktoriju, esošā pasta pastkaste tiks izdzēsta!
-udel_failed=.. neizdevās!  : $1
+udel_failed=.. neizdevās! : $1
 
 raw_title=LDAP atribūti
 raw_name=Atribūta nosaukums

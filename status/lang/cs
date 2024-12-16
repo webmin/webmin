@@ -315,7 +315,7 @@ mailq_sendmail=Sendmail
 mailq_size=Maximální velikost poštovní fronty
 mailq_esize=Chybějící nebo neplatná maximální velikost fronty
 mailq_toomany=Shodit - $1 zpráv ve frontě
-mailq_ok=Nahodit -  $1 zpráv ve frontě
+mailq_ok=Nahodit - $1 zpráv ve frontě
 
 dns_server=DNS server
 dns_host=Hostname pro zpětné vyhledávání

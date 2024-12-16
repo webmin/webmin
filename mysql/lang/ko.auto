@@ -115,7 +115,7 @@ view_download=다운로드
 view_keep=그대로 두십시오
 view_set=파일 내용으로 설정합니다.
 view_adv=고급 검색
-view_sqlrun=SQL 쿼리에 의해 생성 된 결과  : $1
+view_sqlrun=SQL 쿼리에 의해 생성 된 결과 : $1
 
 users_sync=아래 옵션은 Webmin과 MySQL 사용자를 통해 생성 된 Unix 사용자 간의 동기화를 구성합니다.
 users_syncwhen=동기화시기
@@ -222,7 +222,7 @@ exec_ignore=중복 행을 무시 하시겠습니까?
 exec_edit=이전 편집
 exec_format=파일 형식
 exec_ecompress=SQL 파일이 압축되었지만 압축 해제에 필요한 $1 프로그램이 설치되지 않았습니다.
-exec_ecompress2=압축 해제 실패  : $1
+exec_ecompress2=압축 해제 실패 : $1
 exec_tabexec=SQL 실행
 exec_tabfile=파일에서 SQL 실행
 exec_tabimport=텍스트 파일 가져 오기
@@ -241,7 +241,7 @@ tprivs_dok=권한 삭제
 
 tpriv_edb=데이터베이스 이름이 없거나 유효하지 않습니다
 
-cprivs_add2=새로운 권한 추가  :
+cprivs_add2=새로운 권한 추가 :
 cprivs_derr=필드 권한을 삭제하지 못했습니다.
 cprivs_enone=선택된 필드가 없습니다
 cprivs_dtitle=열 권한 삭제
@@ -345,10 +345,10 @@ backup_subject_failed=MySQL 데이터베이스 $1 의 백업에서 $3 에 오류
 backup_subject_ok=$3 에서 MySQL 데이터베이스 $1 의 백업에 성공했습니다
 backup_body=$1 에서 $2 MySQL 데이터베이스 백업 ..
 backup_bodydoing=$1 을 (를) $2 에 백업 중입니다.
-backup_bodyfailed=.. 백업 실패  : $1
+backup_bodyfailed=.. 백업 실패 : $1
 backup_bodyok=.. $1 의 백업이 생성되었습니다.
-backup_bodytotal=총 백업 크기  : $1
-backup_bodyspace=파일 시스템 크기 : $1 여유 공간  : $2
+backup_bodytotal=총 백업 크기 : $1
+backup_bodyspace=파일 시스템 크기 : $1 여유 공간 : $2
 backup_bodyall=모두
 backup_edownloadall=단일 데이터베이스 백업 만 다운로드 할 수 있습니다
 backup_edownloadsave=예약 된 백업에는 다운로드 모드를 사용할 수 없습니다
@@ -542,10 +542,10 @@ root_socket=MySQL <tt>$1</tt> 사용자는 Unix 소켓 인증을 사용하고 �
 
 mysqlpass_err=MySQL 안전 모드
 mysqlpass_esafecmd=인증이 비활성화 된 상태에서 MySQL을 시작하는 데 필요한 $1 명령을 찾을 수 없습니다.
-mysqlpass_eshutdown=종료 실패  : $1
-mysqlpass_esafe=안전 모드로 시작하지 못했습니다  : $1
-mysqlpass_estartup=시작 실패  : $1
-mysqlpass_echange=암호 변경 실패  : $1
+mysqlpass_eshutdown=종료 실패 : $1
+mysqlpass_esafe=안전 모드로 시작하지 못했습니다 : $1
+mysqlpass_estartup=시작 실패 : $1
+mysqlpass_echange=암호 변경 실패 : $1
 mysqlpass_echange_forcepass=분실하거나 잊어 버린 경우 주어진 암호를 강제로 덮어 씁니다.
 
 ssl_title=SSL 인증서

@@ -192,7 +192,7 @@ open_file=cesta
 
 trace_title=Stopový proces
 trace_start=Spustenie sledovania systémových hovorov pre $1 ..
-trace_doing=Sledovanie systémových volaní pre $1  :
+trace_doing=Sledovanie systémových volaní pre $1 :
 trace_done=.. proces sa skončil.
 trace_failed=.. sledovanie zlyhalo!
 trace_sorry=Táto stránka vyžaduje podporu Java vo vašom prehliadači. Ak chcete použiť sledovanie textu iba v texte, upravte konfiguráciu modulu.

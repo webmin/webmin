@@ -457,7 +457,7 @@ sql_eprefix=Manglende eller ugyldig base DN (mellomrom ikke tillatt)
 sql_eprefix2=Ugyldig-utseende base DN - skal være på formen <tt>dc=mittdomene,dc=no</tt>
 sql_title2=Opprett manglende tabeller
 sql_tableerr=Instillinger for bruker- og gruppedatabase er gyldig, men noen tabeller som Webmin trenger, mangler : $1
-sql_tableerr2=Klikk på knappen <b>Opprett tabeller</b> nedenfor,  for å få opprettet dem automatisk, eller du kan kjøre SQL uttrykket nedenfor manuelt.
+sql_tableerr2=Klikk på knappen <b>Opprett tabeller</b> nedenfor, for å få opprettet dem automatisk, eller du kan kjøre SQL uttrykket nedenfor manuelt.
 sql_make=Opprett tabeller
 sql_title3=Opprett manglende DN
 sql_dnerr=Innstillinger for bruker- og gruppedatabase er gyldige, men LDAP DN som kreves av Webmin, mangler : $1

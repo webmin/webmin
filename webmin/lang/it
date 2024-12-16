@@ -446,7 +446,7 @@ update_apply=Salva ed applica
 update_sched2=Aggiorna i moduli alle ore $1:$2 ogni $3 giorni
 update_none=Nessun aggiornamento Webmin per questa versione.
 update_failed=Installazione del modulo non riuscita: $1
-update_desc2=Questo modulo ti permette di programmare l'aggiornamento automatico dei moduli di Webmin contenente bug o falle di sicurezza dalla pagina degli <a href=http://www.webmin.com/updates.html>aggiornamenti di Webmin</a> o da un'altra sorgente.  Questo sistema è molto utile per mantenere Webmin aggiornato. Tuttavia deve essere usato con cura in quanto potrebbe permettere degli attacchi al sistema nel caso in cui il server su cui risiedono gli aggiornamenti sia compromesso.
+update_desc2=Questo modulo ti permette di programmare l'aggiornamento automatico dei moduli di Webmin contenente bug o falle di sicurezza dalla pagina degli <a href=http://www.webmin.com/updates.html>aggiornamenti di Webmin</a> o da un'altra sorgente. Questo sistema è molto utile per mantenere Webmin aggiornato. Tuttavia deve essere usato con cura in quanto potrebbe permettere degli attacchi al sistema nel caso in cui il server su cui risiedono gli aggiornamenti sia compromesso.
 
 ca_title=Autorità di certificazione
 ca_old=Certificato esistente
@@ -476,7 +476,7 @@ ca_stopmsg=Clicca questo pulsante per impedire a Webmin di accettare certificati
 ca_stopok=La tua autorità di certificazione è stata fermata.
 ca_eminiserv=SSL client certificates sono supportati solo con miniserv.
 ca_eversion=La versione di Perl Net::SSLeay installata non supporta gli SSL client certificates.
-ca_essleay=Il comando di amministrazione SSL  $1 non è stato trovato sul tuo sistema. Potresti dover modificare il percorso nella configurazione Utenti Webmin.
+ca_essleay=Il comando di amministrazione SSL $1 non è stato trovato sul tuo sistema. Potresti dover modificare il percorso nella configurazione Utenti Webmin.
 ca_essl=La certificazione SSL può essere impostata solo quando il webserver gira in modalità SSL.
 
 session_title=Autenticazione

@@ -114,7 +114,7 @@ opts_message_size_limit=Maximální velikost zprávy
 opts_qmgr_message_active_limit=Maximální počet zpráv v aktivní frontě
 opts_qmgr_message_recipient_limit=Maximální počet příjemců v paměti
 opts_queue_minfree=Minimální volné místo v souborovém systému s frontou
-opts_stale_lock_time=Maximální čas, po  kterém je provedeno staré uzamčení
+opts_stale_lock_time=Maximální čas, po kterém je provedeno staré uzamčení
 opts_transport_retry_time=Čas ve vteřinách mezi pokusy o kontakt s přerušeným MDT
 
 opts_always_bcc=Adresy příjemců bcc v každé zprávě
@@ -181,7 +181,7 @@ smtp_title=Nastavení SMTP klienta
 smtp_ecannot=Nemáte oprávnění to editovat nastavení SMTP klienta
 opts_best_mx_transport=Akce, pokud je uveden jako nejlepší MX host
 opts_best_mx_transport_default=Výchozí (odskočit zprávu)
-opts_fallback_relay=Hosté/domény k propuštění mailu  k neplatnému cíli
+opts_fallback_relay=Hosté/domény k propuštění mailu k neplatnému cíli
 opts_ignore_mx_lookup_error=Ignorovat MX chyby zpětné kontroly
 opts_smtp_skip_4xx_greeting=Přeskočit 4xx pozdrav
 opts_smtp_skip_quit_response=Přeskočit čekání na QUIT příkaz
@@ -385,7 +385,7 @@ send_eattach=Přílohy nemohou mít více než $1 kB.
 send_eperms=Uživatel $1 nemůže číst $2
 send_eperms2=Nemáte oprávnění odeslat soubor $1
 send_epath=Sendmail spouštěč $1 neexistuje.
-send_ewrapper=Program s rozhraním  pro Postfix a Sendmail neexistuje
+send_ewrapper=Program s rozhraním pro Postfix a Sendmail neexistuje
 
 search_title=Výsledky hledání
 search_ecannot=Nemáte oprávnění vyhledávat mail u tohoto uživatele

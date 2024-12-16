@@ -70,7 +70,7 @@ reboot_rusure=Bạn có chắc chắn muốn khởi động lại vùng $1 khôn
 reboot_err=Không thể khởi động lại vùng
 reboot_doing=Bây giờ khởi động lại khu vực ..
 
-reboot_failed=.. thất bại  :
+reboot_failed=.. thất bại :
 reboot_ok=.. hoàn thành.
 
 halt_title=Khu vực tắt máy

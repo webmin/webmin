@@ -41,7 +41,7 @@ view_loading=Fail log sedang diperhatikan.. Tiada baris baru lagi.
 view_filter=Tapis baris dengan teks $1
 view_filter_btn=Penapis
 
-save_efile='$1' bukan nama fail yang sah  : $2
+save_efile='$1' bukan nama fail yang sah : $2
 save_ecannot2=Anda tidak dibenarkan melihat log ini
 save_ecannot3=Ralat: Anda tidak dibenarkan melihat log ini
 save_ecannot4=Ralat: Tidak dapat membuka '$1'

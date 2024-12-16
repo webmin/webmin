@@ -90,7 +90,7 @@ udel_pass=Tħassar id-dħul ta 'l-utent LDAP ..
 udel_book=Ħassar mill-addressbook ..
 udel_imap=Tħassir ta 'folder IMAP ..
 udel_warnimap=Il-kaxxa postali eżistenti se titħassar meta tħassar id-direttorju tad-dar!
-udel_failed=.. naqas!  : $1
+udel_failed=.. naqas! : $1
 
 raw_title=Attributi LDAP
 raw_name=Isem tal-attribut

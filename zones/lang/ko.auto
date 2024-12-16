@@ -70,7 +70,7 @@ reboot_rusure=$1 영역을 재부팅 하시겠습니까? 그 안에서 실행중
 reboot_err=영역을 재부팅하지 못했습니다
 reboot_doing=이제 재부팅 영역 ..
 
-reboot_failed=.. 실패  :
+reboot_failed=.. 실패 :
 reboot_ok=.. 완료
 
 halt_title=셧다운 존
@@ -223,7 +223,7 @@ create_pkgs=추가 패키지 디렉토리
 create_epkg='$1'은 (는) 유효한 패키지 디렉토리가 아닙니다
 create_addingpkgs=패키지 디렉토리 추가 ..
 create_webmining=Webmin 설정하기 ..
-created_wfailed=.. 실패  : $1
+created_wfailed=.. 실패 : $1
 create_cfg=새 영역을 구성 하시겠습니까?
 create_hostname=초기 호스트 이름
 create_samehost=구역 이름과 동일

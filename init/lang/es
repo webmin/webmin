@@ -103,14 +103,14 @@ log_massenable=Acciones habilitadas $1
 log_massdisable=Acciones deshabilitadas $1
 log_telinit=Cambiado a nivel de ejecución $1
 
-edit_hostconfig_startup=El script $1 se corre en tiempo de inicio del sistema si esta acción está activa.  Puede editarla debajo.
-edit_hostconfig_plist=El archivo $1 configura ciertos parámetros con respecto al script de inicio.  Puede editarlo debajo.
+edit_hostconfig_startup=El script $1 se corre en tiempo de inicio del sistema si esta acción está activa. Puede editarla debajo.
+edit_hostconfig_plist=El archivo $1 configura ciertos parámetros con respecto al script de inicio. Puede editarlo debajo.
 edit_hostconfig_new=Crear Nueva Acción
 edit_hostconfig_noquotes=No use comillas en ningún campo, excepto en el campo $1.
 edit_hostconfig_startitems=El campo $1 no debe comenzar con un número o un infraguión, y por convensión, todos los caracteres alfabéticos deben estar en mayúscula. El campo $2 debe ser un nombre de archivo legal y no debe contener un punto.
 edit_hostconfig_actionname=Nombre de la acción
 edit_hostconfig_scriptname=Nombre del script
-edit_hostconfig_array=Los campos $1, $2, y $3 son campos vectores y pueden contener mas de un valor.  Delimite valores múltiples con dos puntos.
+edit_hostconfig_array=Los campos $1, $2, y $3 son campos vectores y pueden contener mas de un valor. Delimite valores múltiples con dos puntos.
 edit_hostconfig_further=Después de crear la nueva acción de comienzo, será redireccionado a una página donde podrá modificar el script de inicio y la lista de parámetros si es necesario.
 edit_hostconfig_hostconfig=El archivo $1 controla los servicios y demonios del sistema que son comenzados al inicio del sistema. Puede editarlo debajo
 edit_hostconfig_title=Editar configuración de la máquina

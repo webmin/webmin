@@ -243,6 +243,6 @@ secret_rsa=RSA $1
 secret_value=Valor de la clau
 secret_err=No s'ha pogut desar la clau secreta
 secret_elast=No es pot suprimir la darrera clau secreta
-secret_ename=Hi falten els hosts  per als quals es fa la clau
+secret_ename=Hi falten els hosts per als quals es fa la clau
 secret_epass=Hi falta la contrasenya compartida
 secret_ersa=Hi falta el valor de la clau RSA $1

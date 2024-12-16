@@ -1,5 +1,5 @@
 index_ecmd=Serwer Dovecot $1 nie został znaleziony. Możliwe że nie został zainstalowany, lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
-index_econf=Plik konfiguracyjny $1 serwera Dovecot  nie został znaleziony. Możliwe że nie został zainstalowany, lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
+index_econf=Plik konfiguracyjny $1 serwera Dovecot nie został znaleziony. Możliwe że nie został zainstalowany, lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
 index_dovecot=Dovecot
 index_stop=Zatrzymaj serwer Dovecot
 index_stopdesc=Zatrzymaj serwer Dovecot IMAP/POP3, aby użytkownicy NIE mogli pobierać swoich e-maili.

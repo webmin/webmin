@@ -192,7 +192,7 @@ open_file=Jalan
 
 trace_title=Melacak Proses
 trace_start=Memulakan jejak panggilan sistem untuk $1 ..
-trace_doing=Jejak panggilan sistem untuk $1  :
+trace_doing=Jejak panggilan sistem untuk $1 :
 trace_done=.. proses telah ditamatkan.
 trace_failed=.. tracing gagal!
 trace_sorry=Halaman ini memerlukan sokongan Java dalam penyemak imbas anda. Untuk menggunakan jejak proses teks sahaja, laraskan konfigurasi modul.

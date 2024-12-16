@@ -312,7 +312,7 @@ upgrade_ok=Webmin $1 -pakke blev opgraderet på $2
 upgrade_failed=Kunne ikke installere på $1 : $2
 upgrade_done=.. Færdig
 upgrade_efast=Kun servere, der bruger hurtig RPC-tilstand, kan opgraderes
-upgrade_ereconn=Kunne ikke genoprette forbindelse til Webmin efter opgradering!  : $1
+upgrade_ereconn=Kunne ikke genoprette forbindelse til Webmin efter opgradering! : $1
 
 update_title=Opdater moduler
 update_header=Opdaterer moduler alle værter ..

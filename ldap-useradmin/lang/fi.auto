@@ -90,7 +90,7 @@ udel_pass=Poistetaan LDAP-käyttäjän tieto ..
 udel_book=Poistetaan osoitekirjasta ..
 udel_imap=Poistetaan IMAP-kansio ..
 udel_warnimap=Olemassa oleva postilaatikko poistetaan, kun poistetaan kotihakemisto!
-udel_failed=.. epäonnistui!  : $1
+udel_failed=.. epäonnistui! : $1
 
 raw_title=LDAP-ominaisuudet
 raw_name=Ominaisuuden nimi

@@ -23,7 +23,7 @@ index_tables=테이블
 login_err=로그인 실패
 login_ecannot=데이터베이스 로그인을 구성할 수 없습니다
 login_elogin=없는 관리자 로그인
-login_epass=잘못된 관리자  이름 또는 패스워드
+login_epass=잘못된 관리자 이름 또는 패스워드
 
 stop_err=데이터베이스를 중지하지 못했습니다
 start_err=데이터베이스를 시작하지 못했습니다

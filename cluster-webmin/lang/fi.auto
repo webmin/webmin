@@ -312,7 +312,7 @@ upgrade_ok=Webmin $1 -paketin päivitys onnistui $2 : lla
 upgrade_failed=Asennus tiedostoon $1 epäonnistui : $2
 upgrade_done=.. valmis
 upgrade_efast=Vain palvelimet, jotka käyttävät nopeaa RPC-tilaa, voidaan päivittää
-upgrade_ereconn=Yhteyden muodostaminen Webminiin uudelleen epäonnistui päivityksen jälkeen!  : $1
+upgrade_ereconn=Yhteyden muodostaminen Webminiin uudelleen epäonnistui päivityksen jälkeen! : $1
 
 update_title=Päivitä moduulit
 update_header=Päivitetään moduulit kaikki isännät ..

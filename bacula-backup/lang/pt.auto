@@ -207,7 +207,7 @@ backup_failed=.. o backup não foi concluído com sucesso. Verifique a mensagem 
 
 gbackup_title=Executar tarefa de backup do grupo Bacula
 gbackup_run=Iniciando o trabalho de backup $1 em $2 clientes.
-gbackup_on=Executando trabalho de backup no cliente $1  :
+gbackup_on=Executando trabalho de backup no cliente $1 :
 gbackup_header=Detalhes da tarefa de backup do grupo Bacula
 gbackup_jd=$1 (conjunto de arquivos $2 no grupo $3)
 

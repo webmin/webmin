@@ -192,7 +192,7 @@ open_file=Ceļš
 
 trace_title=Izsekošanas process
 trace_start=Sākuma sistēmas zvana izsekošana $1.
-trace_doing=Sistēmas zvana izsekošana $1  :
+trace_doing=Sistēmas zvana izsekošana $1 :
 trace_done=.. process ir beidzies.
 trace_failed=.. izsekot neizdevās!
 trace_sorry=Šī lapa prasa Java atbalstu jūsu pārlūkprogrammā. Lai izmantotu tikai teksta procesa izsekošanu, pielāgojiet moduļa konfigurāciju.

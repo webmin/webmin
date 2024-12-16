@@ -38,7 +38,7 @@ listl_network=En la red $1 / $2
 listl_lfnotcont2=El archivo de concesión DHCPd <tt>$1</tt> no contiene ninguna concesión que esté activa en este momento.
 listl_unknown=Desconocido
 listl_allocs=$1 direcciones IP disponibles, $2 asignado ($3 %)
-listl_mode=Modo de visualización  :
+listl_mode=Modo de visualización :
 listl_mode_0=Arrendamientos DHCP
 listl_mode_1=Subredes y uso
 listl_size=IP totales
@@ -49,7 +49,7 @@ listl_enone=Ninguna seleccionada
 
 listl_refresh=Actualizar lista
 
-restart_conftext=Líneas alrededor de $1 en $2  :
+restart_conftext=Líneas alrededor de $1 en $2 :
 
 sopt_edname='$1' no es un nombre de opción válido
 sopt_ednum='$1' no es un número de opción válido

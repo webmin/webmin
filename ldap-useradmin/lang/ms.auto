@@ -90,7 +90,7 @@ udel_pass=Memadam kemasukan pengguna LDAP ..
 udel_book=Memadam dari buku alamat ..
 udel_imap=Memadam folder IMAP ..
 udel_warnimap=Kotak pos mel sedia ada akan dipadamkan apabila memadam direktori rumah!
-udel_failed=.. gagal!  : $1
+udel_failed=.. gagal! : $1
 
 raw_title=Atribut LDAP
 raw_name=Nama Atribut

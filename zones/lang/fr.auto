@@ -70,7 +70,7 @@ reboot_rusure=Voulez-vous vraiment redémarrer la zone $1 ? Tous les processus e
 reboot_err=Impossible de redémarrer la zone
 reboot_doing=Zone de redémarrage en cours ..
 
-reboot_failed=.. échoué  :
+reboot_failed=.. échoué :
 reboot_ok=.. Achevée.
 
 halt_title=Zone d'arrêt

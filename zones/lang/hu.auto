@@ -70,7 +70,7 @@ reboot_rusure=Biztosan újra akarja indítani a (z) $1 zónát? A benne futó ö
 reboot_err=A zóna újraindítása nem sikerült
 reboot_doing=Most újraindul a zóna ..
 
-reboot_failed=.. nem sikerült  :
+reboot_failed=.. nem sikerült :
 reboot_ok=.. teljes.
 
 halt_title=Leállási zóna

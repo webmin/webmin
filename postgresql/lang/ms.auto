@@ -159,7 +159,7 @@ exec_tabfile=Jalankan SQL dari fail
 exec_tabimport=Import fail teks
 exec_return=laksanakan borang SQL
 exec_ecompress=Fail SQL dimampatkan, tetapi program $1 yang diperlukan untuk menyahmampatnya tidak dipasang.
-exec_ecompress2=Gagal nyahmampatan  : $1
+exec_ecompress2=Gagal nyahmampatan : $1
 
 stop_err=Gagal menghentikan pelayan pangkalan data
 stop_epidfile=Gagal membuka fail PID $1

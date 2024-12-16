@@ -70,7 +70,7 @@ reboot_rusure=Sigur doriți să reporniți zona $1 ? Toate procesele care se exe
 reboot_err=Nu a reușit să reporniți zona
 reboot_doing=Acum reporniți zona ..
 
-reboot_failed=.. a eșuat  :
+reboot_failed=.. a eșuat :
 reboot_ok=.. complet.
 
 halt_title=Zona de închidere

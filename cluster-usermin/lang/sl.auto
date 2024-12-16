@@ -310,7 +310,7 @@ upgrade_ok=Paket Usermin $1 je uspešno nadgrajen na $2
 upgrade_failed=Namestitve na $1 : $2 ni bilo mogoče namestiti
 upgrade_done=.. Končano
 upgrade_efast=Nadgraditi je mogoče le strežnike, ki uporabljajo hitri način RPC
-upgrade_ereconn=Po nadgradnji ni bilo mogoče ponovno povezati s Userminom!  : $1
+upgrade_ereconn=Po nadgradnji ni bilo mogoče ponovno povezati s Userminom! : $1
 
 update_title=Posodobiti module
 update_header=Posodabljanje modulov vseh gostiteljev ..

@@ -31,7 +31,7 @@ egroup_desc=Опис групи
 listl_lfnotcont2=Файл оренди DHCPd <tt>$1</tt> не містить жодної оренди, яка є активною в поточний час.
 listl_unknown=Невідомо
 listl_allocs=Доступно $1 IP-адреси, виділено $2 ($3 %)
-listl_mode=Режим відображення  :
+listl_mode=Режим відображення :
 listl_mode_0=Оренда DHCP
 listl_mode_1=Підмережі та використання
 listl_size=Всього IP-адрес
@@ -42,7 +42,7 @@ listl_enone=Не вибрано жодного
 
 listl_refresh=Оновити список
 
-restart_conftext=Рядки близько $1 у $2  :
+restart_conftext=Рядки близько $1 у $2 :
 
 sopt_edname='$1' - невірна назва опції
 sopt_ednum='$1' - недійсний номер опції

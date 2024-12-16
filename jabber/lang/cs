@@ -3,7 +3,7 @@ index_econfig=Konfigurační soubor Jabberu $1 neexistuje. Buď není Jabber nai
 index_edir=Jabber základní adresář $1 neexistuje. Buď není Jabber nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
 index_emodule=Modul Perlu $1, který je vyžadován Webminem pro údržbu Jabber XML konfigurace není nainstalován. <a href='$2'>Klepnutím zde</a> jej nainstalujete z CPAN.
 index_eparse=Modul Perlu $1 nemůže rozebrat váš konfigurační soubor Jabberu : $2
-index_ejabberd=Program Jabber serveru  $1 nebyl ve vašem systému nalezen. Buď není Jabber nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
+index_ejabberd=Program Jabber serveru $1 nebyl ve vašem systému nalezen. Buď není Jabber nainstalován, nebo vaše <a href='$2'>konfigurace modulu</a> není správná.
 index_eversion=Webmin podporuje pouze Jabber verze $2, avšak příkaz $3 předal informaci o následující verzi : $1
 index_start=Spustit Jabber server
 index_startmsg=Klepnutím na toto tlačítko se ve vašem systému spustí Jabbe severr. Dokud nebude spuštěn, nemohou ho využívat žádní klienti pro okamžité zprávy.

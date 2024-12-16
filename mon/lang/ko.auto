@@ -71,7 +71,7 @@ watches_title=감시 목록
 watches_group=감시 그룹
 watches_services=보고있는 서비스
 watches_sadd=서비스 추가
-watches_add=그룹에 대한 관심 목록 추가  :
+watches_add=그룹에 대한 관심 목록 추가 :
 watches_return=감시 목록
 watches_none=아직 감시 목록이 정의되지 않았습니다.
 

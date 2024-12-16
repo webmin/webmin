@@ -239,7 +239,7 @@ urpmi_title_upgrade=설치된 패키지 업그레이드
 urpmi_updatedesc=$1 명령 실행 ..
 uprmi_upgradefailed=.. 실패!
 urpmi_upgradeok=.. 완료
-urpmi_install=$1 명령으로  패키지 설치
+urpmi_install=$1 명령으로 패키지 설치
 urpmi_failed=.. 설치 실패!
 
 rpm_missing=없음

@@ -1,4 +1,4 @@
-index_mode=부팅 시스템  : $1
+index_mode=부팅 시스템 : $1
 index_sboot5=아니요(마스크됨)
 index_sboot6=예(항상)
 index_uname=서비스 이름

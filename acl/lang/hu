@@ -92,7 +92,7 @@ save_euser=Nem módosíthatod ennek a felhasználónak az adatait
 save_ecolon=A jelszóban nem lehet kettőspont (:)
 save_eself=Nem tilthatod le a sajat IP címedet ($1)
 save_epam=A PAM azonosítási nem létezik, mert a <tt>Authen::PAM</tt> PERL modul nem nem lett telepítve vagy nem jól működik.
-save_epam2=Ön csak akkor tudja használni a Webmin Perl modulját, hogyha  <a href='$1'>letölti és telepíti Authen::PAM</a> a modult most.
+save_epam2=Ön csak akkor tudja használni a Webmin Perl modulját, hogyha <a href='$1'>letölti és telepíti Authen::PAM</a> a modult most.
 save_egroup=Önnek nincs joga azt a csoporthoz rendelni
 save_enone=Nem lett megadva cím
 save_enet='$1' nem érvényes hálózati cím
@@ -287,7 +287,7 @@ switch_eold=Meglévő folyamatot nem találom!
 rbac_title=RBAC beállítása
 rbac_desc=A webmin RBAC integráció segítségével Ön hozzá tud kapcsolódni és fel tudja használni az RBAC (Jogosultság bázisú hozzáférési kontroll) adatbázist, ahelyett, hogy a Webmin saját ACL rendszerét használná. Miután az RBAC engedélyezve lett, bármelyik felhasználó aki <b>$edit_rbacdeny1</b> beállítást kiváalsztotta kontrollálni tudja, hogy az RBAC -t használja a Webmin sdaját jogosultsági rendszere helyett.
 rbac_esolaris=RBAC csak a Solaris rendszereket támogatja jelenleg, ezért az Ön rendszerében $1 nem használható.
-rbac_eperl=A Perl modul $1 szükséges az RBAC integrációhoz, de nem lett installálva.  <a href='$2'>Kattintson ide</a>, hogyha telepíteni szeretné.
+rbac_eperl=A Perl modul $1 szükséges az RBAC integrációhoz, de nem lett installálva. <a href='$2'>Kattintson ide</a>, hogyha telepíteni szeretné.
 rbac_ecpan=Önnek nincs joga hozzáférni a Webmin Perl modul oldalhoz, hogy a megfelelő modult $1 telepítse a RBAC integrációhoz.
 rbac_ok=RBAC integráció létezik az Ön rendszerében, és engedélyezni lehet a per felhasználó bázisú használatát a Webmin felhasználó szerkesztése oldalon.
 

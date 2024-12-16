@@ -70,7 +70,7 @@ reboot_rusure=آیا مطمئن هستید که می خواهید منطقه$1 �
 reboot_err=راه اندازی مجدد منطقه انجام نشد
 reboot_doing=اکنون راه اندازی مجدد منطقه ..
 
-reboot_failed=.. ناموفق  :
+reboot_failed=.. ناموفق :
 reboot_ok=.. کامل.
 
 halt_title=منطقه خاموش کردن

@@ -192,7 +192,7 @@ open_file=Con đường
 
 trace_title=Quá trình theo dõi
 trace_start=Bắt đầu theo dõi cuộc gọi hệ thống cho $1 ..
-trace_doing=Theo dõi cuộc gọi hệ thống cho $1  :
+trace_doing=Theo dõi cuộc gọi hệ thống cho $1 :
 trace_done=.. quá trình đã chấm dứt.
 trace_failed=.. truy tìm thất bại!
 trace_sorry=Trang này yêu cầu hỗ trợ Java trong trình duyệt của bạn. Để sử dụng theo dõi quá trình chỉ văn bản, điều chỉnh cấu hình mô-đun.

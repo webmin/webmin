@@ -144,7 +144,7 @@ global_ehistory=Eksik veya geçersiz geçmiş dosyası ismi
 global_ecurrent=Eksik veya geçersiz Webalizer dosyası
 global_ecache=Eksik veya geçersiz DNS biriktirme dosyası
 
-log_create_log=$1	için rapor yaratıdı
+log_create_log=$1 için rapor yaratıdı
 log_modify_log=$1 için rapor güncellendi
 log_delete_log=$1 için rapor silindi
 log_generate_log=$1 için rapor oluşturuldu

@@ -207,7 +207,7 @@ backup_failed=.. il-backup ma tlestiex b'suċċess. Iċċekkja l-messaġġ ta '�
 
 gbackup_title=Mexxi l-impjieg Backup Group Bacula
 gbackup_run=Tibda xogħol ta 'backup $1 fuq $2 klijenti ..
-gbackup_on=It-tħaddim ta 'xogħol ta' backup fuq il-klijent $1  :
+gbackup_on=It-tħaddim ta 'xogħol ta' backup fuq il-klijent $1 :
 gbackup_header=Dettalji dwar ix-xogħol tal-backup tal-grupp Bacula
 gbackup_jd=$1 (Sett ta 'fajl $2 fuq grupp $3)
 

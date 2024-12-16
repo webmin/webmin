@@ -48,7 +48,7 @@ add_gmsg=Dodawanie serwerów w grupie $1 ..
 add_err=Błąd dodawania serwera
 add_gerr=Błąd dodawania grupy
 add_echeck=Serwer $1 nie posiada modułu Konfiguracja Usermin
-add_echeck2=Serwer $1 nie posiada modułu  Użytkownicy Usermin
+add_echeck2=Serwer $1 nie posiada modułu Użytkownicy Usermin
 add_eversion=Serwer $1 nie ma uruchomionego Usermin w wersji $2 lub wyższej.
 add_ok=Dodano $1 z $2 modułami i $3 motywami
 
