@@ -13,7 +13,7 @@ index_edit=Uredi prejšnji
 run_title=Zaženite ukaz
 run_err=Ukaza ni bilo mogoče zagnati
 run_ecmd=Noben ukaz ni bil vnesen
-run_failed= $1 : $2 ni bilo mogoče zagnati
+run_failed=$1 : $2 ni bilo mogoče zagnati
 run_success=Izhod iz $1.
 run_enone=Izbranih strežnikov ni
 

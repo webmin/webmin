@@ -11,7 +11,7 @@ index_anyfile=Uredi drugo konfiguracijsko datoteko PHP:
 index_return=konfiguracijske datoteke
 
 file_global=Globalna konfiguracija PHP
-file_eread= $1 : $2 ni bilo mogoče prebrati
+file_eread=$1 : $2 ni bilo mogoče prebrati
 
 manual_title=Konfiguracijo ročno uredite
 manual_desc=To stran lahko uporabite za ročno urejanje konfiguracijske datoteke PHP. To je treba storiti previdno, saj sintaksa ali drugo preverjanje veljavnosti vaših sprememb ne bo izvedeno.

@@ -11,7 +11,7 @@ index_anyfile=Diğer PHP yapılandırma dosyasını düzenleyin:
 index_return=yapılandırma dosyaları
 
 file_global=Global PHP yapılandırması
-file_eread= $1 : $2 okunamadı
+file_eread=$1 : $2 okunamadı
 
 manual_title=Yapılandırmayı Manuel Olarak Düzenleme
 manual_desc=Bu sayfa bir PHP yapılandırma dosyasını manuel olarak düzenlemek için kullanılabilir. Bu, değişiklikleriniz üzerinde herhangi bir sözdizimi veya başka bir geçerlilik denetimi yapılmayacağı için dikkatli bir şekilde yapılmalıdır.

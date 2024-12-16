@@ -281,7 +281,7 @@ edit_before=$1 numaralı girdi öncesi
 edit_after=$1 numaralı girdi sonrası
 
 blacklist_title=Kara Liste hostları
-blacklist_desc= Bu sayfada ağınıza zararlı içerik göndermek isteyen veya ağınıza zarar vermek isteyen host ve/veya ağları Kara Liste'ye ekleyerek, bu host ve/veya ağların ağınıza erişimini engelleyebilirsiniz.
+blacklist_desc=Bu sayfada ağınıza zararlı içerik göndermek isteyen veya ağınıza zarar vermek isteyen host ve/veya ağları Kara Liste'ye ekleyerek, bu host ve/veya ağların ağınıza erişimini engelleyebilirsiniz.
 blacklist_add=Yeni Kara Liste Hostu Ekle
 blacklist_none=Tanımlı herhangi bir kara liste hostu bulunmamaktadır.
 blacklist_0=Host veya Ağ

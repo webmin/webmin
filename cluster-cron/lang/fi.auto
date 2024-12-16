@@ -19,7 +19,7 @@ save_err=Klusterin cron-työn tallentaminen epäonnistui
 
 exec_title=Suorita klusterin Cron Job
 exec_cmd=Suoritetaan $1 valituilla palvelimilla ..
-exec_failed= $1:$2  : n suorittaminen epäonnistui
+exec_failed=$1:$2  : n suorittaminen epäonnistui
 exec_success=Lähtö $1 : stä ..
 exec_nohosts=Mikään isäntä, jota ei ole valittu toimimaan, tai valitut ryhmät eivät sisällä käyttökelpoisia isäntiä.
 

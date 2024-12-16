@@ -114,7 +114,7 @@ refresh_3=Osvežen $1 (odstranjen $2)
 refresh_4=Osvežen $1 (brez sprememb)
 refresh_done=.. Končano
 refresh_del=Odstranjen je $1 s seznama strežnikov
-refresh_failed= $1 : $2 ni bilo mogoče osvežiti
+refresh_failed=$1 : $2 ni bilo mogoče osvežiti
 
 delete_err=Paketa $1 ni bilo mogoče izbrisati
 delete_epack=Paket $1 ne obstaja

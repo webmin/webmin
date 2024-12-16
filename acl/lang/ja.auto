@@ -37,7 +37,7 @@ acl_locale=ロケールを変更できますか?
 acl_pass=パスワード制限を変更できますか？
 acl_sql=ユーザーおよびグループデータベースを構成できますか？
 
-log_joingroup= $1 Webminユーザーをグループ $2 に追加しました
+log_joingroup=$1 Webminユーザーをグループ $2 に追加しました
 log_sql=変更されたユーザーおよびグループデータベース
 log_twofactor=登録済みユーザー $1 と2要素プロバイダー $2 
 log_onefactor=二要素認証の登録解除ユーザー $1 
@@ -50,7 +50,7 @@ gsave_edesc=無効な説明-：文字は使用できません
 convert_sync2=将来的にUnixユーザーとパスワードを同期しますか？
 convert_user=Unixユーザー
 convert_action=実行されたアクション
-convert_done= $1 変換されたユーザー、 $2 無効、 $3 は既に存在し、 $4 除外。
+convert_done=$1 変換されたユーザー、 $2 無効、 $3 は既に存在し、 $4 除外。
 convert_users=変換するユーザー
 
 sync_when=同期するタイミング

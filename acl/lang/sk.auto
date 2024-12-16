@@ -83,7 +83,7 @@ gsave_edesc=Neplatný popis - znak: nie je povolený
 convert_sync2=Synchronizovať heslo s používateľom Unix v budúcnosti?
 convert_user=Unixový užívateľ
 convert_action=Prijaté opatrenia
-convert_done= $1 konvertovaní používatelia, $2 neplatné, $3 už existujú, $4 vylúčené.
+convert_done=$1 konvertovaní používatelia, $2 neplatné, $3 už existujú, $4 vylúčené.
 convert_users=Používatelia majú prevádzať
 
 sync_when=Kedy synchronizovať

@@ -146,7 +146,7 @@ delete_header_mod=$1 modulua ezabatzen ..
 delete_header_theme=$1 gaia ezabatzen da.
 delete_edepends=$1 modulua (k) horren araberakoa da.
 delete_egone=Modulua ez dago jada
-delete_esuccess= $1 : $2 ezabatu da
+delete_esuccess=$1 : $2 ezabatu da
 delete_acls=Erabiltzaileetatik kendu eta sarbidea kontrolatzeko ezarpenak berrezarri?
 
 user_title1=Sortu Webmin erabiltzailea

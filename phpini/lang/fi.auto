@@ -11,7 +11,7 @@ index_anyfile=Muokkaa muuta PHP-asetustiedostoa:
 index_return=kokoonpanotiedostot
 
 file_global=Globaali PHP-kokoonpano
-file_eread= $1:$2  : n lukeminen epäonnistui
+file_eread=$1:$2  : n lukeminen epäonnistui
 
 manual_title=Muokkaa kokoonpanoa manuaalisesti
 manual_desc=Tätä sivua voidaan käyttää PHP-määritystiedoston manuaaliseen muokkaamiseen. Tämä on tehtävä huolellisesti, koska muutoksille ei suoriteta syntaksia tai muuta voimassaolon tarkistusta.

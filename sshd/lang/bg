@@ -225,7 +225,7 @@ sync_auth=Копиране на новия <tt>identify.pub</tt> като <tt>au
 sync_pass=Използване на паролата като парола за ключа?
 sync_gnupg=Настройване на GNUPG ключ за нови Unix потребители.
 sync_type=Тип на ключа
-sync_auto=	&lt;Автоматичноc&gt;
+sync_auto=&lt;Автоматичноc&gt;
 
 keys_title=SSH ключове за хост
 keys_desc=Тази страница ви позволява да разглеждате SSH ключовете за този хост.

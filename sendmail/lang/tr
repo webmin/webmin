@@ -68,7 +68,7 @@ aform_create=Takma isim oluştur
 aform_name=Adres
 aform_enabled=Geçerli mi?
 aform_val=Takma isim
-aform_afile= Değiştir...
+aform_afile=Değiştir...
 aform_return=takma isim
 
 afile_title=Adres Dosyasını Değiştir

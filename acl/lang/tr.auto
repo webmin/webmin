@@ -95,7 +95,7 @@ gsave_edesc=Geçersiz açıklama -: karakterine izin verilmiyor
 convert_sync2=Gelecekte şifre Unix kullanıcısıyla senkronize edilsin mi?
 convert_user=Unix kullanıcısı
 convert_action=Eylem alındı
-convert_done= $1 kullanıcılar dönüştürüldü, $2 geçersiz, $3 zaten var, $4 hariç tutulur.
+convert_done=$1 kullanıcılar dönüştürüldü, $2 geçersiz, $3 zaten var, $4 hariç tutulur.
 convert_users=Dönüştürülecek kullanıcılar
 
 sync_when=Ne zaman senkronize edilir

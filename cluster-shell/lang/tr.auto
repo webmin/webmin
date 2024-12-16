@@ -13,7 +13,7 @@ index_edit=Öncekini Düzenle
 run_title=Komutu Çalıştır
 run_err=Komut çalıştırılamadı
 run_ecmd=Komut girilmedi
-run_failed= $1 : $2 üzerinde çalıştırılamadı
+run_failed=$1 : $2 üzerinde çalıştırılamadı
 run_success=$1 'den çıktı ..
 run_enone=Seçilen sunucuda çalıştırılacak sunucu yok
 

@@ -36,7 +36,7 @@ acl_who0=Tüm kullanıcılar
 acl_who1=Geçerli Webmin kullanıcısı
 acl_who2=Listelenen kullanıcılar ..
 
-open_recv= $1:$2 üzerinden alma
+open_recv=$1:$2 üzerinden alma
 
 trace_doing=$1 için sistem çağrısı izleme :
 

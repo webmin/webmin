@@ -53,7 +53,7 @@ gsave_edesc=Nevažeći opis - znak: nije dopušten
 convert_sync2=Sinkronizirati lozinku s Unix korisnikom u budućnosti?
 convert_user=Unix korisnik
 convert_action=Poduzeta akcija
-convert_done= $1 korisnici su pretvorili, $2 nevaljani, $3 već postoje, $4 isključeno.
+convert_done=$1 korisnici su pretvorili, $2 nevaljani, $3 već postoje, $4 isključeno.
 convert_users=Korisnici koji žele pretvoriti
 
 sync_when=Kada se sinkronizirati

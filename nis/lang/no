@@ -24,7 +24,7 @@ switch_service=Tjeneste
 switch_srcs=Data kilder
 switch_return=klient tjenester
 
-order_= 
+order_=
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS

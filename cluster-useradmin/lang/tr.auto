@@ -51,7 +51,7 @@ refresh_gadd=$1 grup eklendi
 refresh_gdel=$1 grubu kaldır
 refresh_done=.. bitti
 refresh_del=$1 sunucu listesinden kaldırıldı
-refresh_failed= $1 : $2 yenilenemedi
+refresh_failed=$1 : $2 yenilenemedi
 
 uedit_host=$1 ile ilgili ayrıntılar
 uedit_leave=Değişme

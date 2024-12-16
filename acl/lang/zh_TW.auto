@@ -10,8 +10,8 @@ edit_title3=創建安全的Webmin用戶
 edit_readonly=該Webmin用戶不能編輯，因為它是由 $1 模塊管理的。 <a href='$2'>單擊此處</a>以繞過此警告並仍然編輯用戶-但請注意，任何手動更改都可能被覆蓋！
 edit_cloneof=克隆Webmin用戶
 edit_real=真正的名字
-edit_passlocked= $1 天未更改密碼-帳戶已鎖定！
-edit_passmax= $1 天未更改密碼-下次登錄時必須更改
+edit_passlocked=$1 天未更改密碼-帳戶已鎖定！
+edit_passmax=$1 天未更改密碼-下次登錄時必須更改
 edit_passold=密碼最後一次更改是 $1 天前
 edit_passtoday=密碼更改不到一天前
 edit_twofactor=兩因素認證類型
@@ -101,10 +101,10 @@ gedit_egone=選定的組不再存在！
 gsave_edesc=說明無效-不允許使用：字符
 
 convert_sync2=將來與Unix用戶同步密碼嗎？
-convert_invalid= $1 不是有效的Webmin用戶名
+convert_invalid=$1 不是有效的Webmin用戶名
 convert_user=Unix用戶
 convert_action=所採取的行動
-convert_done= $1 用戶已轉換， $2 無效， $3 已經存在， $4 已排除。
+convert_done=$1 用戶已轉換， $2 無效， $3 已經存在， $4 已排除。
 convert_users=用戶轉換
 
 sync_when=何時同步

@@ -107,7 +107,7 @@ log_kills_l=Skickade signal $1 till processerna<br>$2
 acl_manage=Hantera processer som användare
 
 kill_kill=Slå ihjäl process
-kill_term=  Avbryt   
-kill_hup= Starta om 
-kill_stop=  Stanna   
-kill_cont= Fortsätt  
+kill_term=Avbryt   
+kill_hup=Starta om 
+kill_stop=Stanna   
+kill_cont=Fortsätt  

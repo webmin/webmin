@@ -67,7 +67,7 @@ ss_stop=توقف عمل
 ss_restart=آغاز دوباره عمل
 ss_reload=بارگيري دوباره عمل
 ss_status=وضعيت عمل
-ss_exec= اجراي ..$1
+ss_exec=اجراي ..$1
 
 shutdown_ecannot=شما اجازه خاموش کردن سيستم را نداريد
 shutdown_title=خاموش کردن

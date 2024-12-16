@@ -77,7 +77,7 @@ list_size=Velikost
 list_status=Stanje
 list_ok=v redu
 list_view=(Pogled)
-list_eview= $1 : $2 ni bilo mogoče odpreti
+list_eview=$1 : $2 ni bilo mogoče odpreti
 
 delete_err=Paketa $1 ni bilo mogoče izbrisati
 delete_epack=Paket $1 ne obstaja

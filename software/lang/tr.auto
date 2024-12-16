@@ -38,7 +38,7 @@ edit_egone=Paket artık yüklü değil
 
 list_ok=tamam
 list_view=(Görünüm)
-list_eview= $1 : $2 açılamadı
+list_eview=$1 : $2 açılamadı
 
 delete_rusure2=$1 paketini silmek istediğinizden emin misiniz?
 delete_nodeps=Bağımlılıklar yoksayılsın mı?
@@ -260,7 +260,7 @@ deletes_err=Paketler silinemedi
 deletes_enone=Hiçbir paket seçilmedi
 deletes_title=Paketleri Sil
 deletes_desc=$1 paketleri kaldırılıyor ..
-deletes_failed1= $1 : $2 kaldırılamadı
+deletes_failed1=$1 : $2 kaldırılamadı
 deletes_success1=$1 başarıyla kaldırıldı
 deletes_failed2=Kaldırma başarısız oldu : $1 
 deletes_success2=.. kaldırma işlemi tamamlandı.

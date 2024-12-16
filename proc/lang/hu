@@ -143,10 +143,10 @@ acl_who1=Az aktuális Webmin felhasználóét
 acl_who2=A felhasználói listából..
 
 kill_kill=Processz lelövése
-kill_term= Megszakítás  
-kill_hup=  Újraindítás   
-kill_stop=    Stop    
-kill_cont=  Folytatás  
+kill_term=Megszakítás  
+kill_hup=Újraindítás   
+kill_stop=Stop    
+kill_cont=Folytatás  
 
 open_title=Nyitott file -ok és csatlakozások
 open_proc=A $1 processznek (PID $2)
