@@ -2,7 +2,7 @@ index_title=Inktvisverslaggenerator
 index_econf=Die Sarg-konfigurasielêer $1 is nie op u stelsel gevind nie. Miskien is Sarg nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
 index_ecmd=Die Sarg-program $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
 index_eversion=Kon nie die weergawe van Sarg met die opdrag $1 : $2 kry nie
-index_version=Sarg weergawe $1 
+index_version=Sarg weergawe $1
 index_generate=Genereer nou verslag
 index_generatedesc=Klik op hierdie knoppie om onmiddellik 'n Sarg-verslag in $1 te genereer met behulp van die huidige konfigurasie.
 index_clear=Vee bestaande verslag in die gids uit?

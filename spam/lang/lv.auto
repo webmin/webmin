@@ -4,7 +4,7 @@ index_ecmd2=Jūsu sistēmā nav atrasta komanda SpamAssassin $1.
 index_econfig=SpamAssassin vietējās konfigurācijas fails vai direktorijs $1 jūsu sistēmā netika atrasts. Varbūt SpamAssassin nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_unknown=nezināms
 index_edb=Neizdevās izveidot savienojumu ar SpamAssassin konfigurācijas datu bāzi: $1. Pārbaudiet <a href='$2'>moduļa konfigurāciju</a>, lai pārliecinātos, ka izmantojat pareizos iestatījumus.
-index_version=SpamAssassin versija $1 
+index_version=SpamAssassin versija $1
 index_warn_usermin=Šķiet, ka SpamAssassin nav iestatīts jūsu Procmail konfigurācijas failā $2 vai globālajā failā $1, tāpēc jebkurai konfigurācijai, kas veikta, izmantojot šo moduli, nebūs nekādas ietekmes, ja vien SpamAssassin nav iestatīta globāli.
 index_warn_webmin=Šķiet, ka SpamAssassin nav iestatīts sistēmas Procmail konfigurācijas failā $1, tāpēc jebkurai konfigurācijai, kas veikta, izmantojot šo moduli, nebūs nekādas ietekmes, ja vien lietotāji to nav iestatījuši individuāli.
 index_return=moduļa indekss
@@ -12,7 +12,7 @@ index_apply=Lietot izmaiņas
 index_applydesc=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo SpamAssassin konfigurāciju, nosūtot HUP signālu visiem notiekošajiem $1 procesiem.
 index_cpan=Tā kā SpamAssassin ir Perl modulis, varat to arī automātiski instalēt, izmantojot Webmin moduli <a href='$2'>Perl Modules</a>, lai lejupielādētu $1 no CPAN.
 index_spamassassin=SpamAssassin
-index_ecannot=Jums nav atļauts pārvaldīt SpamAssassin konfigurācijas failu $1 
+index_ecannot=Jums nav atļauts pārvaldīt SpamAssassin konfigurācijas failu $1
 
 white_title=Atļautās un noraidītās adreses
 white_desc=Šīs lapas tabulas ļauj jums norādīt No: un Kam: adreses e-pastam, kas vienmēr vai nekad nav klasificēts kā surogātpasts. Visi citi e-pasti tiks apstrādāti kā parasti saskaņā ar SpamAssassin noteikumiem. Visās e-pasta adresēs var būt aizstājējzīmes, piemēram, *@foo.com vai *.foo.com, lai tās atbilstu veseliem domēniem.
@@ -111,7 +111,7 @@ report_addtext=Galvenei teksts
 report_addspam=Spams
 report_addham=Šķiņķis
 report_addall=Visi
-report_eaddheader=Trūkst vai nav derīga papildu galvene, lai pievienotu $1 
+report_eaddheader=Trūkst vai nav derīga papildu galvene, lai pievienotu $1
 
 user_title=Dažādas lietotāja iespējas
 user_desc=Šīs lapas opcijas galvenokārt ir saistītas ar ceļiem un iestatījumiem, kurus SpamAssassin izmanto ārējām surogātpasta identifikācijas pakotnēm Razor, DCC un Pyzor. Varat arī pateikt SpamAssassin, vai tā spēs veikt DNS meklēšanu vai nē.
@@ -190,7 +190,7 @@ priv_emscore=“$1” nav derīgs augstākais frāzes vērtējums
 priv_ephrase=“$1” nav derīga divu vārdu surogātpasta frāze
 priv_escore=Trūkst vai nav derīgs surogātpasta frāzes “$1” vērtējums
 
-usually=Parasti $1 
+usually=Parasti $1
 ecannot=Jums nav atļauts izmantot šo lapu
 setup_title=Iestatīt Procmail vietnei SpamAssassin
 setup_desc_webmin=Šo veidlapu var izmantot, lai iestatītu Procmail $1, lai palaistu SpamAssassin visos e-pasta ziņojumos, kurus saņem jūsu sistēma. Tomēr tam būs ietekme tikai tad, ja jūsu pasta serveris ir konfigurēts vietējai piegādei izmantot Procmail vai lietotājiem, kuru <tt>.forward</tt> faili ir iestatīti Procmail darbināšanai.
@@ -244,7 +244,7 @@ mail_razor=Ziņot par surogātpastu un dzēst
 mail_ham=Ziņot par šķiņķi un iesūtni
 mail_delete=Dzēst
 mail_return=surogātpastu saraksts
-mail_pos=Mēstules no $1 līdz $2 no $3 
+mail_pos=Mēstules no $1 līdz $2 no $3
 mail_none=Jūsu surogātpasta mapē nav ziņojumu
 mail_refresh=atjaunot
 mail_will=Automātiska atsvaidzināšana $1 minūtēs
@@ -253,7 +253,7 @@ mail_delall=Dzēst visu surogātpastu
 mail_search3=Meklējiet rezultātu augstāk:
 
 process_eclean=Noņemot SpamAssassin galvenes no šī e-pasta, radās kļūda
-process_ereport=Neizdevās ziņot par e-pastu SpamAssassin : $1 
+process_ereport=Neizdevās ziņot par e-pastu SpamAssassin : $1
 
 apply_err=Neizdevās piemērot izmaiņas
 apply_none=Netika atrasts SpamAssassin dēmonu process!
@@ -263,7 +263,7 @@ acl_file=SpamAssassin konfigurācijas fails rediģēšanai
 acl_filedef=Globālais konfigurācijas fails
 acl_awl=Atļauts lietotājiem automātiskā baltā saraksta rediģēšana
 acl_awl0=Visi lietotāji
-acl_awl1=Tikai uzskaitītie lietotāji $1 
+acl_awl1=Tikai uzskaitītie lietotāji $1
 acl_awl2=Tikai grupu $1 dalībnieki
 
 search_escore=Trūkst vai nav derīgs surogātpasta rādītājs
@@ -337,20 +337,20 @@ simple_score=Rezultāts jāpiemēro
 simple_describe=Apraksts
 simple_err=Neizdevās saglabāt ziņojumu testus
 
-before_ecmd=Pirms saglabāšanas komanda neizdevās : $1 
-after_ecmd=Komanda pēc saglabāšanas neizdevās : $1 
+before_ecmd=Pirms saglabāšanas komanda neizdevās : $1
+after_ecmd=Komanda pēc saglabāšanas neizdevās : $1
 
-connect_emysql=Neizdevās ielādēt datu bāzes draiveri $1 
+connect_emysql=Neizdevās ielādēt datu bāzes draiveri $1
 connect_elogin=Neizdevās pieteikties datu bāzē $1:$2.
-connect_equery=Datu bāzē $1 nav preferenču tabulas $2 
+connect_equery=Datu bāzē $1 nav preferenču tabulas $2
 connect_eldapmod=Perl modulis $1, kas nepieciešams saziņai ar LDAP, nav instalēts vai nav ielādējams
-connect_eldap=Neizdevās izveidot savienojumu ar LDAP serveri $1 ostā $2 
-connect_eldaplogin=Neizdevās pieteikties LDAP serverī $1 kā $2 : $3 
-connect_ebase=LDAP bāze DN $1 nav derīga : $2 
+connect_eldap=Neizdevās izveidot savienojumu ar LDAP serveri $1 ostā $2
+connect_eldaplogin=Neizdevās pieteikties LDAP serverī $1 kā $2 : $3
+connect_ebase=LDAP bāze DN $1 nav derīga : $2
 
-eldap=LDAP darbība neizdevās : $1 
-esql=SQL neizdevās : $1 
-ldap_euser=Nevarēju atrast LDAP lietotāja objektu $1 
+eldap=LDAP darbība neizdevās : $1
+esql=SQL neizdevās : $1
+ldap_euser=Nevarēju atrast LDAP lietotāja objektu $1
 
 db_title=SQL un LDAP datu bāzes
 db_header=Konfigurācijas datu bāzes datu bāzes iespējas

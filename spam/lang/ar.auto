@@ -345,7 +345,7 @@ connect_elogin=فشل تسجيل الدخول إلى قاعدة البيانات
 connect_equery=لا تحتوي قاعدة البيانات $1 على جدول التفضيلات$2
 connect_eldapmod=الوحدة النمطية Perl $1 المطلوبة للاتصال بـ LDAP غير مثبتة أو غير قابلة للتحميل
 connect_eldap=فشل الاتصال بملقم LDAP $1 على المنفذ$2
-connect_eldaplogin=فشل تسجيل الدخول إلى خادم LDAP $1 كـ $2 : $3 
+connect_eldaplogin=فشل تسجيل الدخول إلى خادم LDAP $1 كـ $2 : $3
 connect_ebase=الاسم المميز لقاعدة LDAP $1 غير صالح :$2
 
 eldap=فشلت عملية LDAP :$1

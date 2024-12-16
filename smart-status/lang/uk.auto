@@ -1,12 +1,12 @@
 index_title=Статус SMART Drive
 index_ecmd=Команда управління SMART $1 не знайдена у вашій системі або неправильно встановлена в конфігурації модуля <a href='$2'></a>. Він повинен бути встановлений до використання цього модуля.
 index_ecmd2=Здається, що команда $1 не є командою управління SMART. Він повинен бути правильно встановлений у конфігурації модуля <a href='$2'></a>, перш ніж цей модуль може бути використаний.
-index_version=Версія SMARTsuite $1 
+index_version=Версія SMARTsuite $1
 index_show=Показати стан накопичувача:
 index_ok=Показати
 index_eidescsi=У вашій системі не знайдено накопичувачів IDE, SCSI або SATA.
-index_drive=Стан накопичувача $1 
-index_drivesub=Стан накопичувача $1, диск $2 
+index_drive=Стан накопичувача $1
+index_drivesub=Стан накопичувача $1, диск $2
 index_desc=Місцезнаходження
 index_size=Розмір диска
 index_model=Зробіть і моделюйте
@@ -36,11 +36,11 @@ monitor_edrive=Відсутній або недійсний привід для 
 monitor_nosuch=Такого приводу немає
 monitor_nosmart=Немає підтримки SMART
 monitor_errorsfound=Повідомлено $1 помилки
-monitor_errorsinced=Помилки зросли з $2 до $1 
+monitor_errorsinced=Помилки зросли з $2 до $1
 monitor_wearlevel=Збій, якщо рівень зносу опуститься нижче
 monitor_ewearlevel=Недійсний відсоток зносу
 monitor_nowearout=Привід не повідомляє про показник SSD
-monitor_wornout=Рівень зносу впав до $1 
+monitor_wornout=Рівень зносу впав до $1
 
 short_title=Короткий самотест
 short_doing=Початок короткого самотестування $1.

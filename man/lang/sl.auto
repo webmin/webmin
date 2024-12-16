@@ -45,16 +45,16 @@ search_perl=Perl modul
 search_help=Pomoč za Webmin
 search_custom=Dokumentacija po meri
 search_none=Ni najdeno dokumentacije $1.
-search_for=Za $1 
+search_for=Za $1
 search_google=Googlov rezultat iskanja
 search_doxfer=Spletna dokumentacija Webmin
 
 howto_title=KAKO dokument
-howto_header=KAKO datoteka dokumenta $1 
+howto_header=KAKO datoteka dokumenta $1
 howto_epath=Neveljavna pot dokumenta HOWTO
 
 doc_title=Dokumentacija paketa
-doc_header=Datoteka dokumenta o paketu $1 
+doc_header=Datoteka dokumenta o paketu $1
 doc_epath=Neveljavna pot dokumentacije paketa
 
 man_title=Priročna stran
@@ -63,15 +63,15 @@ man_noentry=Ročna stran za $1 ne obstaja!
 man_epath=Ročna stran ne more biti pot!
 
 kernel_title=Dokument jedra
-kernel_header=Datoteka dokumenta jedra $1 
+kernel_header=Datoteka dokumenta jedra $1
 kernel_epath=Neveljavna pot dokumenta jedra
 
 kde_title=Dokumentacija KDE
-kde_header=Datoteka dokumenta KDE $1 
+kde_header=Datoteka dokumenta KDE $1
 kde_epath=Neveljavna pot dokumenta KDE
 
 perl_title=Modul Perl
-perl_header=Dokumentacija za modul Perl $1 
+perl_header=Dokumentacija za modul Perl $1
 perl_emod=Neveljavno ime modula Perl
 
 acl_allow=Ali lahko urejate dovoljene vrste iskanja?

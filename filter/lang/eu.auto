@@ -52,7 +52,7 @@ edit_title2=Editatu iragazkia
 edit_header1=Iragazkia egiteko baldintza
 edit_cmode0=E-posta guztiak
 edit_cmode4=Goiburua oinarri hartuta
-edit_cheader2=Goiburua $1 $2 $3 $4 
+edit_cheader2=Goiburua $1 $2 $3 $4
 edit_cmode3=Posta elektronikoa baino txikiagoa
 edit_cmode2=Posta elektronikoa baino handiagoa
 edit_cmode5=Spam gisa sailkatutako posta elektronikoa
@@ -104,7 +104,7 @@ aliases_type5=$1 fitxategi automatikoki hornitzea
 aliases_type6=Aplikatu $1 iragazkia
 aliases_your=Zure postontzia
 aliases_delete=Ezabatu mezu elektronikoa
-aliases_other=Erabiltzailearen postontzia $1 
+aliases_other=Erabiltzailearen postontzia $1
 aliases_auto=$1 mezuarekin erantzun automatikoa
 
 auto_title=E-posta erantzun automatikoa

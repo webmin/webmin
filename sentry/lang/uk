@@ -6,7 +6,7 @@ portsentry_below=(Виявлення сканування портів)
 portsentry_ecommand=Демон portsentry $1 у вашій системі не виявлений. Можливо, він не встановлений, чи невірна <a href='$2'>конфігурація модуля</a>.
 portsentry_eversion=Програма $1 не є демоном portsentry. Можливо він не встановлений, чи невірна <a href='$2'>конфігурація модуля</a>.
 portsentry_eversion2=У вашій системі встановленийі portsentry версії $2, а цей випуск Webmin підтримує тільки версію 1.
-portsentry_version=Версія portsentry  $1
+portsentry_version=Версія portsentry $1
 portsentry_header=Настроювання виявлення сканування портів
 portsentry_tmode=Порти, що відслідковуються, TCP
 portsentry_mode0=Для базового режиму - перераховані порти

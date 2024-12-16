@@ -17,4 +17,4 @@ edit_special_monthly=รายเดือน (วันที่ 1)
 edit_special_yearly=รายปี (วันที่ 1 มกราคม)
 
 log_success=ประสบความสำเร็จในการรัน <tt>$2</tt> ใน <tt>$1</tt>
-log_failure=ไม่สามารถเรียกใช้ <tt>$2</tt> ใน <tt>$1</tt> : $3 
+log_failure=ไม่สามารถเรียกใช้ <tt>$2</tt> ใน <tt>$1</tt> : $3

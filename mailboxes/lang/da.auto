@@ -252,7 +252,7 @@ send_eattach=Vedhæftede filer kan ikke udgøre mere end $1 kB i størrelse.
 send_eperms=Bruger $1 kan ikke læse $2
 send_eperms2=Du har ikke tilladelse til at sende fil $1
 send_epath=Sendmail-eksekverbar $1 findes ikke.
-send_efile=Kunne ikke læse vedhæftning $1 : $2 
+send_efile=Kunne ikke læse vedhæftning $1 : $2
 send_done=.. Færdig.
 
 send_epass=Du kan ikke underskrive en meddelelse, fordi din adgangssætning ikke er konfigureret endnu i GnuPG-modulet.
@@ -337,8 +337,8 @@ folder_spam=Spam
 
 detach_err=Kunne ikke fjerne filen
 detach_edir=Ingen fil eller bibliotek, der skal gemmes i den indtastede
-detach_eopen=Kunne ikke åbne $1 : $2 
-detach_ewrite=Kunne ikke skrive til $1 : $2 
+detach_eopen=Kunne ikke åbne $1 : $2
+detach_ewrite=Kunne ikke skrive til $1 : $2
 detach_title=Fjern fil
 detach_ok=Skrivede vedhæftning til serversidefilen $1 ($2).
 
@@ -437,7 +437,7 @@ white_already=E-mail-adressen $1 findes allerede på SpamAssassins tilladte adre
 
 ldap_emod=Manglende Perl-modul $1 er nødvendig for at oprette forbindelse til LDAP
 ldap_econn=Kunne ikke oprette forbindelse til LDAP-server $1 port $2
-ldap_elogin=Kunne ikke binde til LDAP-server $1 som $2 : $3 
+ldap_elogin=Kunne ikke binde til LDAP-server $1 som $2 : $3
 ldap_ehost=Ingen LDAP-server er indstillet i modulkonfiguration
 ldap_eport=Ingen gyldig LDAP-serverport sat i modulkonfiguration
 ldap_euser=Intet LDAP-login er sat i modulkonfiguration

@@ -7,7 +7,7 @@ index_none=Файли настроювання PAM у каталозі $1 ваш
 
 desc_su=Зміна користувача
 desc_login=Локальний чи вилучений вхід у систему
-desc_samba=Файловий сервер для Windows Samba 
+desc_samba=Файловий сервер для Windows Samba
 desc_imap=Поштовий сервер IMAP
 desc_pop=Поштовий сервер POP
 desc_kde=Вхід у KDE

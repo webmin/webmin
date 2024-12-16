@@ -1,7 +1,7 @@
 index_title=Shorewall6 Güvenlik Duvarı
 index_ecmd=$1 komutu sisteminizde bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırması</a> yanlış.
 index_edir=$1 Shorewall yapılandırma dizini sisteminizde bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırması</a> yanlış.
-index_version=Shorewall6 sürüm $1 
+index_version=Shorewall6 sürüm $1
 index_return=tablo listesi
 index_restart=Yapılandırmayı Uygula
 index_restartdesc=<tt>shorewall6 restart</tt> komutuyla mevcut Shorewall yapılandırmasını etkinleştirmek için bu düğmeyi tıklatın.
@@ -85,7 +85,7 @@ policy_1=Hedef bölge
 policy_2=Politika
 policy_3=Sistem günlüğü düzeyi
 policy_4=Trafik limiti
-policy_limit=Sınır $1, Seri Çekim $2 
+policy_limit=Sınır $1, Seri Çekim $2
 policy_return=politikalar listesi
 policy_edit=Varsayılan İlkeyi Düzenle
 policy_create=Varsayılan Politika Oluştur
@@ -310,9 +310,9 @@ hosts_err=Bölge barındırıcısı kaydedilemedi
 hosts_enet=Eksik veya geçersiz ana bilgisayar adresi
 hosts_header=Bölge ana bilgisayar ayrıntıları
 hosts_routestopped=Güvenlik duvarı durdurulduğunda bile rota?
-hosts_ip=Adres veya ağ $1 
-hosts_mac=MAC adresi $1 
-hosts_ipset=IP seti $1 
+hosts_ip=Adres veya ağ $1
+hosts_mac=MAC adresi $1
+hosts_ipset=IP seti $1
 hosts_any=Herhangi bir ana bilgisayar
 
 edit_before=$1 girişinden önce

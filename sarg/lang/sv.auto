@@ -1,8 +1,8 @@
 index_title=Bläckfiskrapportgenerator
 index_econf=Sarg-konfigurationsfilen $1 hittades inte på ditt system. Kanske är Sarg inte installerat, eller <a href='$2'>modulkonfiguration</a> är felaktig.
 index_ecmd=Sarg-programmet $1 hittades inte på ditt system. Kanske är den inte installerad, eller <a href='$2'>modulkonfiguration</a> är felaktig.
-index_eversion=Det gick inte att få versionen av Sarg med kommandot $1 : $2 
-index_version=Sarg version $1 
+index_eversion=Det gick inte att få versionen av Sarg med kommandot $1 : $2
+index_version=Sarg version $1
 index_generate=Skapa rapport nu
 index_generatedesc=Klicka på den här knappen för att omedelbart generera en Sarg-rapport i $1 med den aktuella konfigurationen.
 index_clear=Radera befintlig rapport i katalogen?

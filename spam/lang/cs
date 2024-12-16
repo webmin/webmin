@@ -61,7 +61,7 @@ score_descr=Poznámka
 score_err=Chyba při ukládání zprávy o vyhodnocení
 score_ename='$1' není povoleným jménem testu
 score_epoints='$1' není povoleným počtem bodů
-score_edesc=Chybějící poznámka pro skóre  '$1'
+score_edesc=Chybějící poznámka pro skóre '$1'
 score_ehits=Chybějící nebo nevhodný počet bodů nutných k tomu aby zpráva byla označena za spem
 score_eauto=Chybějící nebo nevhodný skóre faktor pro bílou listinu (má být v rozmezí 0 až 1)
 score_emx=Chybějící nebo nesprávný počet opakování kontroly adresy Od koho: na MX
@@ -221,7 +221,7 @@ import_title=Import adres
 import_err=Import adres selhal
 import_efile=Není vybrán žádný soubor pro import
 import_enone=Žádná e-mailová adresa nebyla v souboru nalezena
-import_ok1=V souboru se nachází $2 e-mailových adres, z čehož je $1 nových které budou přidány  do seznamu povolených adres.
+import_ok1=V souboru se nachází $2 e-mailových adres, z čehož je $1 nových které budou přidány do seznamu povolených adres.
 import_ok2=V souboru se nachází $1 e-mailových adres, ale všechny již existují v seznamu povolených adres.
 
 mail_title=Čtení spam pošty

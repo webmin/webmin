@@ -1,6 +1,6 @@
 index_header=Servidor Proxy Squid
 index_msgnoconfig=El archivo de configuración de Squid <tt>$1</tt> no existe. Si tiene instalado Squid, ajuste su <a href=/config.cgi?$2 >configuración del módulo</a> para que utilice trayectorias correctas.
-index_msgnoexe=El ejecutable Squid <tt>$1</tt> no existe.  Si tiene instalado Squid, ajuste su <a href=/config.cgi?$2 >configuración del módulo</a> para que utilice trayectorias correctas.
+index_msgnoexe=El ejecutable Squid <tt>$1</tt> no existe. Si tiene instalado Squid, ajuste su <a href=/config.cgi?$2 >configuración del módulo</a> para que utilice trayectorias correctas.
 index_msgnosupported2=Su versión de Squid no está soportada por Webmin. Este módulo sólo soporta las versiones entre $1 y $2.
 index_msgnodir1=Sus directorios de caché de Squid <tt>$1</tt> no han sido inicializados.
 index_msgnodir2=Su directorio de caché de Squid <tt>$1</tt> no ha sido inicializado.

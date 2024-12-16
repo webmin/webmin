@@ -1,12 +1,12 @@
 index_title=Stato dell'unità SMART
 index_ecmd=Il comando di controllo SMART $1 non è stato trovato sul sistema o non è impostato correttamente nella <a href='$2'>configurazione del modulo</a>. Deve essere installato prima di poter utilizzare questo modulo.
 index_ecmd2=Il comando $1 non sembra essere il comando di controllo SMART. Deve essere impostato correttamente nella <a href='$2'>configurazione del modulo</a> prima di poter utilizzare questo modulo.
-index_version=SMARTsuite versione $1 
+index_version=SMARTsuite versione $1
 index_show=Mostra stato dell'unità:
 index_ok=Mostrare
 index_eidescsi=Nessuna unità IDE, SCSI o SATA trovata sul sistema.
-index_drive=Stato dell'unità $1 
-index_drivesub=Stato dell'unità $1, disco $2 
+index_drive=Stato dell'unità $1
+index_drivesub=Stato dell'unità $1, disco $2
 index_desc=Posizione
 index_size=Dimensioni dell'unità
 index_model=Marca e modello
@@ -36,11 +36,11 @@ monitor_edrive=Unità mancante o non valida da verificare
 monitor_nosuch=Nessuna tale unità
 monitor_nosmart=Nessun supporto SMART
 monitor_errorsfound=$1 errori segnalati
-monitor_errorsinced=Gli errori sono aumentati da $2 a $1 
+monitor_errorsinced=Gli errori sono aumentati da $2 a $1
 monitor_wearlevel=Fallire se il livello di usura scende al di sotto
 monitor_ewearlevel=Percentuale del livello di usura non valida
 monitor_nowearout=L'unità non segnala un indicatore di usura SSD
-monitor_wornout=Il livello di usura è sceso a $1 
+monitor_wornout=Il livello di usura è sceso a $1
 
 short_title=Autotest breve
 short_doing=Avvio di un breve autotest di $1 ..

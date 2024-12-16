@@ -117,7 +117,7 @@ service_monitor=Pomocou monitora
 service_mon1=Štandardný monitor
 service_mon0=Ďalší monitor ..
 service_args=Monitorujte parametre
-service_period=Monitorovacie obdobie $1 
+service_period=Monitorovacie obdobie $1
 service_days=Dni na kontrolu
 service_hours=Hodiny na kontrolu
 service_all=všetko
@@ -162,7 +162,7 @@ status_esame=Program MON stav CGI $1 bol v tomto module Webmin nastavený na skr
 
 users_title=Používatelia MON
 users_etype=Zoznam používateľov MON nie je možné upravovať, pretože MON nie je momentálne nakonfigurovaný na používanie na overenie na stránke <a href='$1'>Globálne možnosti</a>.
-users_header=Povolené používatelia MON v $1 
+users_header=Povolené používatelia MON v $1
 users_nousers=V $1 neboli definovaní žiadni používatelia MON.
 users_add=Vytvorte nového používateľa.
 users_return=Zoznam používateľov MON

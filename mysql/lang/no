@@ -601,7 +601,7 @@ backup_title=Sikkerhetskopier database
 backup_title2=Sikkerhetskopier alle databaser
 backup_edump=MySQL sitt sikkerhetskopieringsprogram $1 ble ikke funnet på systemet ditt. Kanskje <a href='$2'>modulkonfigurasjonen</a> er feil.
 backup_desc=Dette skjemaet lar deg ta sikkerhetskopi av databasen $1 som en fil med SQL setninger. For å gjenopprette en sikkerhetskopi kan du bruke "Utfør SQL" skjemaet til å kjøre kommandoene i filen.
-backup_desc3=Dette skjemaet lar deg ta sikkerhetskopi av alle databaser som filer med SQL setninger.  For å gjenopprette en sikkerhetskopi kan du bruke "Utfør SQL" skjemaet til å kjøre kommandoene i filen.
+backup_desc3=Dette skjemaet lar deg ta sikkerhetskopi av alle databaser som filer med SQL setninger. For å gjenopprette en sikkerhetskopi kan du bruke "Utfør SQL" skjemaet til å kjøre kommandoene i filen.
 backup_desc2=Sikkerhetskopieringen kan utføres umiddelbart, eller automatisk etter en valgt tidsplan.
 backup_header1=Mål for sikkerhetskopi
 backup_header2=Andre innstillinger for sikkerhetskopi

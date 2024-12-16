@@ -56,7 +56,7 @@ global_err=Gagal untuk menyimpan pilihan global
 global_etimeout=Had masa hilang atau tidak sah
 global_edev=Pemasangan disk/pemetakan $1 tidak disokong
 global_eother=Disk/pemetakan hilang atau tidak sah
-global_epassword=Kata laluan boot  hilang atau tidak sah
+global_epassword=Kata laluan boot hilang atau tidak sah
 global_epasswordfile=Nama fail menu alternatif hilang
 
 install_title=Pasang GRUB

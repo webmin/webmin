@@ -69,7 +69,7 @@ cvirt_eroot2=Ma rnexxielux joħloq direttorju '$1' : $2
 cvirt_eroot3=M'għandekx permess tuża d-direttorju tal-għeruq "$1"
 cvirt_eroot4=L-ebda Utent definit fil-konfigurazzjoni Apache
 cvirt_etaken=Diġà jeżisti server virtwali bl-istess isem u port
-cvirt_efile=Ma rnexxielux jikteb lil $1 : $2 
+cvirt_efile=Ma rnexxielux jikteb lil $1 : $2
 cvirt_emissing=Is-server virtwali l-ġdid ġie miżjud ma '$1, iżda dan il-fajl ma jintużax minn Apache. Iċċekkja l- <a href='$2'>konfigurazzjoni tal-modulu</a> u kun żgur li l-'Fajl jew direttorju biex iżżid servers virtwali 'hija korretta.
 
 etype=M'għandekx permess teditja għażliet ta 'dan it-tip

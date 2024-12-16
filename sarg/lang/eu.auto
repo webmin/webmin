@@ -2,7 +2,7 @@ index_title=Txipiroien txostena
 index_econf=$1 Sarg konfigurazio fitxategia ez da zure sisteman aurkitu. Agian Sarg ez dago instalatuta edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_ecmd=$1 Sarg programa ez da zure sisteman aurkitu. Agian ez dago instalatuta edo <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_eversion=Huts egin du Sarg-en bertsioa lortzeko $1 : $2 komandoarekin
-index_version=Sarg bertsioa $1 
+index_version=Sarg bertsioa $1
 index_generate=Sortu txostena orain
 index_generatedesc=Egin klik botoi honetan Sarg txostena berehala sortzeko $1 uneko konfigurazioa erabiliz.
 index_clear=Ezabatu lehendik dagoen txostena direktorioan?

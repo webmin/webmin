@@ -9,7 +9,7 @@ index_eha_cf=Il-fajl tal-konfigurazzjoni ta 'taħbit tal-qalb $1 ma nstabx fis-s
 index_eharesources=Il-fajl tar-riżorsi $1 ma nstabx fis-sistema tiegħek. Forsi għadu ma ġiex ikkupjat fil-post, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
 index_eauthkeys=Iċ-ċwievet tal-awtentikazzjoni tal-fajl $1 ma nstabux fis-sistema tiegħek. Forsi għadu ma ġiex ikkupjat fil-post, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
 index_ereq_resource_cmd=L-iskript biex titlob riżorsi mill-għoqda l-oħra ($1) ma nstabx fis-sistema tiegħek. Forsi għadu ma ġiex ikkupjat fil-post, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
-index_version=Verżjoni ta 'taħbit tal-qalb $1 
+index_version=Verżjoni ta 'taħbit tal-qalb $1
 index_noversion=Twissija - Il-verżjoni tal-Heartbeat installata fis-sistema tiegħek ma setgħetx tiġi skoperta awtomatikament. Għandek tissettjaha fuq il-paġna <a href='$1'>konfigurazzjoni tal-modulu</a>.
 index_status=Status ta 'taħbit tal-qalb
 
@@ -21,7 +21,7 @@ conf_bcasts=Interfaċċi ta 'taħbit tal-qalb Ethernet
 conf_none=Xejn
 conf_udpport=Port ta 'taħbit tal-qalb UDP
 conf_mcast=Tagħmir ta 'taħbit tal-qalb multicast
-conf_mcastv=Apparat $1, grupp $2, port $3, TTL $4, loopback $5 
+conf_mcastv=Apparat $1, grupp $2, port $3, TTL $4, loopback $5
 conf_enabled=Attivat
 conf_disabled=B'diżabilità
 conf_keepalive=Ħin bejn it-taħbit tal-qalb

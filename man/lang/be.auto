@@ -45,16 +45,16 @@ search_perl=Модуль Perl
 search_help=Даведка Webmin
 search_custom=Нестандартная дакументацыя
 search_none=Не знойдзена ніякай дакументацыі, якая адпавядае $1.
-search_for=Для $1 
+search_for=Для $1
 search_google=Вынік пошуку Google
 search_doxfer=Інтэрнэт-дакументацыя Webmin
 
 howto_title=Дакумент HOWTO
-howto_header=HOWTO файл дакумента $1 
+howto_header=HOWTO файл дакумента $1
 howto_epath=Няправільны шлях дакумента HOWTO
 
 doc_title=Дакументацыя на пакет
-doc_header=Файл дакумента пакета $1 
+doc_header=Файл дакумента пакета $1
 doc_epath=Няправільны шлях дакументацыі пакета
 
 man_title=Старонка кіраўніцтва
@@ -63,15 +63,15 @@ man_noentry=Старонка кіраўніцтва для $1 не існуе!
 man_epath=Старонка ўручную не можа быць шляху!
 
 kernel_title=Дакумент ядра
-kernel_header=Файл дакумента ў ядры $1 
+kernel_header=Файл дакумента ў ядры $1
 kernel_epath=Няправільны шлях дакумента да ядра
 
 kde_title=Дакументацыя KDE
-kde_header=Файл дакумента KDE $1 
+kde_header=Файл дакумента KDE $1
 kde_epath=Няправільны шлях дакументацыі KDE
 
 perl_title=Модуль Perl
-perl_header=Дакументацыя для модуля Perl $1 
+perl_header=Дакументацыя для модуля Perl $1
 perl_emod=Несапраўднае імя модуля Perl
 
 acl_allow=Ці можна рэдагаваць дазволеныя тыпы пошуку?

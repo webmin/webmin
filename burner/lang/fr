@@ -16,7 +16,7 @@ index_return=Liste des profils
 index_delete=Efface les Profiles Sélectionnes
 edit_title=Editer le profil de gravure
 create_title=Créer le profil de gravure
-edit_emkisofs=La commande de construction d'un système de fichier ISO  $1 n'a pas été trouvée sur votre système. Peut-être n'est-elle pas installée, ou votre <a href='$2'>configuration de module</a> est incorrecte.
+edit_emkisofs=La commande de construction d'un système de fichier ISO $1 n'a pas été trouvée sur votre système. Peut-être n'est-elle pas installée, ou votre <a href='$2'>configuration de module</a> est incorrecte.
 edit_empg123=La commande de décompression mp3 $1 n'a pas été trouvée sur votre système. Peut-être n'est-elle pas installée, ou votre <a href='$2'>configuration de module</a> est incorrecte.
 edit_ecdrdao=La commande de copie de CD $1 n'a pas été trouvée sur votre système. Peut-être n'est-elle pas installée, ou votre <a href='$2'>configuration de module</a> est incorrecte.
 edit_header=Options du profil de gravure

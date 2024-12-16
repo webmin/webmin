@@ -1,8 +1,8 @@
 index_procmail=Filtre de messagerie Procmail
 index_desc_other=Les actions procmail ci-dessous à partir de $1 s'appliqueront à <b>tous</b> les e-mails envoyés aux utilisateurs de votre système. Cependant, ils ne seront utilisés que si Procmail est installé et que votre serveur de messagerie est configuré pour l'utiliser.
-index_mserr=Avertissement - les règles définies ci-dessous ne seront pas utilisées : $1 
+index_mserr=Avertissement - les règles définies ci-dessous ne seront pas utilisées : $1
 index_virtualmin=Avertissement - la configuration procmail de votre système a été créée par Virtualmin pour permettre le filtrage du spam et des virus par domaine. Le changer ici peut interférer avec la fonctionnalité de Virtualmin.
-index_act6=Définir la variable $1 
+index_act6=Définir la variable $1
 index_man=Modifier manuellement la configuration
 index_mandesc=Modifiez directement le fichier de configuration Procmail principal, pour créer vos propres règles, variables et blocs.
 index_ecmd=Le programme Procmail $1 est introuvable sur votre système. Soit il n'est pas installé, soit la <a href='$2'>configuration du module</a> est incorrecte.

@@ -8,7 +8,7 @@ index_delete=Ħassar Esportazzjonijiet magħżula
 index_apply=Applika l-Bidliet
 index_applydesc=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni attwali tal-esportazzjonijiet tal-fajls. Dan jagħmel id-direttorji elenkati hawn fuq disponibbli bl-għażliet speċifikati.
 index_return=lista tal-esportazzjonijiet
-index_echeck=Is-server NFS ma jistax jintuża fuq din is-sistema : $1 
+index_echeck=Is-server NFS ma jistax jintuża fuq din is-sistema : $1
 
 check_ecmd=Il-kmand tas-server NFS $1 mhux installat
 

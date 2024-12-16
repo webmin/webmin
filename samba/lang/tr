@@ -60,7 +60,7 @@ global_bind=Winbind Seçenekleri
 
 error_nosamba=Samba sunucusu çalıştırılabiliri <tt>$1</tt> bulunamadı. Sisteminizde Samba sunucusu kurulmamış ya da <a href="$2">modül yapılandırmanız</a> yanlış olabilir.
 error_version=Webmin Samba sunucusu çalıştırılabiliri olan <tt>$1</tt>'in sürümünü okuyamadı. Doğru yolu belirtmek için <a href="$2">modül yapılandırma</a>nızı kontrol ediniz.
-error_config=Yapılandırma dosyası $1 bulunamadı. Büyük ihtimalle sisteminize Samba kurulmamıştır, ya da  <a href="$2">modül yapılandırma</a>nız yanlıştır
+error_config=Yapılandırma dosyası $1 bulunamadı. Büyük ihtimalle sisteminize Samba kurulmamıştır, ya da <a href="$2">modül yapılandırma</a>nız yanlıştır
 error_include=Webmin <tt>config</tt> ya da <tt>include</tt> komutlarını kullanmak için yapılandırma dosyasını kullanamadı.
 error_delshare=Paylaşımın silinmesinde hata oluştu
 error_delcopy=Bu paylaşım '$1' paylaşımından kopyalanmıştır
@@ -440,7 +440,7 @@ log_save_euser=Samba kullanıcısı $1 değiştirildi
 log_delete_euser=Samba kullanıcısı $1 silindi
 log_create_group=Oluşturulan Samba $1 grubu
 log_modify_group=Değiştirilen Samba grubu $1
-log_delete_group=Silinen $1 Samba grubu 
+log_delete_group=Silinen $1 Samba grubu
 log_gsync=Yapılandırılan Unix grup sekronizasyonu
 log_manual=Elle düzenlenen yapılandırma dosyası $1
 
@@ -612,7 +612,7 @@ bind_local=Alan hesapları için Winbind'i sağlayayım mı?
 bind_trust=Güvenli alan sunucu kullanıcıları?
 bind_users=Kullanıcıların listelenmesine izin vermiyorum?
 bind_groups=Grupları listelemeye izin vermiyorum?
-bind_realm=Alan sunucusundaki Kerberos alanı 
+bind_realm=Alan sunucusundaki Kerberos alanı
 bind_cache=Kullanıcı detaylarını kaç saniye önbellekleyeceğiz
 bind_uid=Windows grupları için UID aralığı
 bind_gid=Windows grupları için GID aralığı
@@ -624,7 +624,7 @@ bind_euid=UID geçersiz aralık - aralık 20000-30000 gibi olmalıdır
 bind_egid=GID geçersiz aralık - aralık 20000-30000 gibi olmalıdır
 
 manual_title=Yapılandırma Dosyasını Düzenle
-manual_desc=Samba yapılandırma $1 dosyasını düzenliyor .. 
+manual_desc=Samba yapılandırma $1 dosyasını düzenliyor ..
 manual_err=Yapılandırma dosyası saklanırken hata oluştu
 manual_edata=Hiçbir şey girilmedi!
 

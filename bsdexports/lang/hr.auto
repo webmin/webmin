@@ -8,7 +8,7 @@ index_delete=Izbriši odabrane izvoze
 index_apply=Primijeni promjene
 index_applydesc=Kliknite ovaj gumb da biste primijenili trenutnu konfiguraciju izvoza datoteka. Ovo će učiniti dostupnim sve opcije s navedenim opcijama.
 index_return=izvozni popis
-index_echeck=NFS poslužitelj se ne može koristiti u ovom sustavu : $1 
+index_echeck=NFS poslužitelj se ne može koristiti u ovom sustavu : $1
 
 check_ecmd=Naredba NFS poslužitelja $1 nije instalirana
 

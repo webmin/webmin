@@ -93,7 +93,7 @@ mod_moduleMultipleLogins=Erkenne multiple gleichzeitige Logins
 mod_moduleOddLoginTime=Ermittle ungerade Login-Zeit
 mod_moduleInvalidUtmp=Erkenne modifizierten utmp-Eintrag
 mod_moduleHistorySuspicious=Erkenne verdächtige Befehle in der history
-mod_moduleNetworkDaemon=Erkenne laufenden Daemon 
+mod_moduleNetworkDaemon=Erkenne laufenden Daemon
 mod_moduleFileExists=Erkenne verdächtige Dateien im Home-Verzeichnis
 
 log_hostsentry=Hostsentry Konfiguration gespeichert

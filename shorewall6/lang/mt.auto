@@ -1,7 +1,7 @@
 index_title=Shorewall6 Firewall
 index_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
 index_edir=Id-direttorju tal-konfigurazzjoni ta 'Shorewall $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
-index_version=Shorewall6 verżjoni $1 
+index_version=Shorewall6 verżjoni $1
 index_return=lista tat-tabelli
 index_restart=Applika Konfigurazzjoni
 index_restartdesc=Ikklikkja din il-buttuna biex tattiva l-konfigurazzjoni attwali ta 'Shorewall bil-kmand <tt>shorewall6 restart</tt>.
@@ -85,7 +85,7 @@ policy_1=Żona ta 'destinazzjoni
 policy_2=Politika
 policy_3=Livell Syslog
 policy_4=Limitu tat-traffiku
-policy_limit=Limitu $1, Burst $2 
+policy_limit=Limitu $1, Burst $2
 policy_return=Lista tal-politiki
 policy_edit=Editja Politika Default
 policy_create=Oħloq Politika Default
@@ -310,13 +310,13 @@ hosts_err=Ma rnexxielux isalva ż-żona ospitanti
 hosts_enet=Indirizz tal-host nieqes jew invalidu
 hosts_header=Dettalji dwar iż-żona ospitanti
 hosts_routestopped=Ir-rotta anke meta l-firewall jitwaqqaf?
-hosts_ip=Indirizz jew netwerk $1 
-hosts_mac=Indirizz MAC $1 
-hosts_ipset=Sett tal-IP $1 
+hosts_ip=Indirizz jew netwerk $1
+hosts_mac=Indirizz MAC $1
+hosts_ipset=Sett tal-IP $1
 hosts_any=Kull ospitanti
 
-edit_before=Qabel id-dħul $1 
-edit_after=Wara d-dħul $1 
+edit_before=Qabel id-dħul $1
+edit_after=Wara d-dħul $1
 
 blacklist_title=Hosts bil-Lista l-Iswed
 blacklist_desc=Din il-paġna telenka ospiti u servizzi li se jiġu mblukkati jekk it-traffiku minnhom jasal fuq interface bl-għażla <b>lista sewda</b> ssettjata.
@@ -422,16 +422,16 @@ comment_msg=Messaġġ
 comment_err=Ma rnexxielux isalva kumment
 comment_enone=Ma daħal l-ebda messaġġ
 
-log_create_table=Id-dħul miżjud fit-tabella $1 
-log_modify_table=Dħul modifikat fit-tabella $1 
-log_delete_table=Id-dħul imħassar mit-tabella $1 
-log_deletes_table=Entrati mħassra mit-tabella $1 
-log_up_table=Spjegajt id-dħul fit-tabella $1 
-log_down_table=Tniżżel id-dħul fit-tabella $1 
-log_manual_table=Editja manwalment il-fajl tat-tabella $1 
-log_create_comment=Miżjud kumment mat-tabella $1 
-log_modify_comment=Kumment modifikat fit-tabella $1 
-log_delete_comment=Kumment imħassar mit-tabella $1 
+log_create_table=Id-dħul miżjud fit-tabella $1
+log_modify_table=Dħul modifikat fit-tabella $1
+log_delete_table=Id-dħul imħassar mit-tabella $1
+log_deletes_table=Entrati mħassra mit-tabella $1
+log_up_table=Spjegajt id-dħul fit-tabella $1
+log_down_table=Tniżżel id-dħul fit-tabella $1
+log_manual_table=Editja manwalment il-fajl tat-tabella $1
+log_create_comment=Miżjud kumment mat-tabella $1
+log_modify_comment=Kumment modifikat fit-tabella $1
+log_delete_comment=Kumment imħassar mit-tabella $1
 log_stop=Twaqqaf firewall
 log_start=Beda firewall
 log_refresh=Firewall aġġornat

@@ -295,7 +295,7 @@ grace_months=hilabeteak
 
 log_activate_u=Erabiltzaileen kuotak $1 gaituta
 log_activate_g=Gaitutako talde kuotak $1 ean
-log_activate_ug=Erabiltzaile eta talde kuotak gaituta $1 
+log_activate_ug=Erabiltzaile eta talde kuotak gaituta $1
 log_deactivate_u=Ezgaituta dauden erabiltzaile kuotak $1 ean
 log_deactivate_g=Ezgaituta dauden talde kuotak $1 ean
 log_deactivate_ug=Ezgaituta dagoen erabiltzaile eta talde kuotak $1 ean

@@ -15,7 +15,7 @@ esync_chg_profile=Zmień nazwę profilu mobilnego po zmianie nazwy użytkownika 
 
 saveuser_ews=Opcja „Konto zaufania stacji roboczej” nie może być włączona dla istniejących użytkowników
 
-savefshare_emkdir=Nie udało się utworzyć katalogu : $1 
+savefshare_emkdir=Nie udało się utworzyć katalogu : $1
 
 viewu_ecmd=Program statusu Samba $1 nie wydaje się być zainstalowany w twoim systemie. Być może konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
 

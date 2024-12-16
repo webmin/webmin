@@ -7,8 +7,8 @@ index_installmsg=Pilih lokasi untuk memasang pakej $1 baharu.
 index_ftp=Daripada URL
 index_identok2=Cari Pakej Untuk Fail:
 index_tree2=Semak imbas Pokok Pakej
-index_epackagecmd=Sistem pakej $1 memerlukan perintah $2 
-index_eupdatecmd=Sistem kemas kini $1 memerlukan perintah $2 
+index_epackagecmd=Sistem pakej $1 memerlukan perintah $2
+index_eupdatecmd=Sistem kemas kini $1 memerlukan perintah $2
 index_epackagecheck=Sistem pengurusan pakej yang dipilih tidak sah: $1. <br>Anda mungkin perlu memilih sistem lain pada halaman<a href='$2'> konfigurasi modul </a>.
 index_eupdatecheck=Sistem kemas kini yang dipilih tidak sah: $1. <br>Anda mungkin perlu memilih kaedah kemas kini yang berbeza pada halaman<a href='$2'> konfigurasi modul </a>.
 index_echeckpackage=Tiada sistem pakej yang dikesan!
@@ -38,7 +38,7 @@ rpm_findrpm=Nama fail pakej
 rpm_finddistro=Pengedaran
 rpm_finddesc=Penerangan
 
-slack_edir=Direktori pakej Slackware yang tiada $1 
+slack_edir=Direktori pakej Slackware yang tiada $1
 
 debian_manager=Debian
 
@@ -103,7 +103,7 @@ emerge_title=Cari Portage
 emerge_name=Portage
 
 cygwin_badpostscript=Amaran: skrip ini tidak kelihatan telah dijalankan
-cygwin_edb=Pangkalan data bungkusan Cygwin yang tiada $1 
+cygwin_edb=Pangkalan data bungkusan Cygwin yang tiada $1
 
 csw_input=Pakej dari CSW
 csw_install=Memasang pakej dengan arahan $1 ..

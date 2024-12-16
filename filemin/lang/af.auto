@@ -153,8 +153,8 @@ menu_file=lêer
 menu_edit=wysig
 menu_tools=gereedskap
 menu_bookmarks=boekmerke
-notallowed=U mag nie toegang tot $1 hê nie. Die toegelate kaarte is : $2 
-error_upload_emax=Opgelaaide lêer is groter as die limiet van $1 
+notallowed=U mag nie toegang tot $1 hê nie. Die toegelate kaarte is : $2
+error_upload_emax=Opgelaaide lêer is groter as die limiet van $1
 extract_etype=Ongesteunde argieflêertipe
 
 error_write=jy het nie skryftoestemming vir hierdie lêer nie

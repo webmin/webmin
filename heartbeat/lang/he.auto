@@ -9,7 +9,7 @@ index_eha_cf=קובץ התצורה של פעימות הלב $1 לא נמצא ב�
 index_eharesources=קובץ המשאבים $1 לא נמצא במערכת שלך. אולי הוא טרם הועתק למקומו, או <a href='$2'>תצורת המודול</a> שגויה.
 index_eauthkeys=קובץ מפתחות האימות $1 לא נמצא במערכת שלך. אולי הוא טרם הועתק למקומו, או <a href='$2'>תצורת המודול</a> שגויה.
 index_ereq_resource_cmd=הסקריפט לבקשת משאבים מהצומת האחר ($1) לא נמצא במערכת שלך. אולי הוא טרם הועתק למקומו, או <a href='$2'>תצורת המודול</a> שגויה.
-index_version=גרסת פעימות הלב $1 
+index_version=גרסת פעימות הלב $1
 index_noversion=אזהרה - לא ניתן היה לאתר אוטומטית את גרסת Heartbeat המותקנת במערכת שלך. עליך להגדיר אותו בדף <a href='$1'>תצורת המודול</a>.
 index_status=מצב פעימות לב
 
@@ -21,7 +21,7 @@ conf_bcasts=ממשקי פעימות לב Ethernet
 conf_none=אף אחד
 conf_udpport=יציאת פעימות לב UDP
 conf_mcast=מכשיר דופק לב לקבוצה
-conf_mcastv=התקן $1, קבוצה $2, יציאה $3, TTL $4, loopback $5 
+conf_mcastv=התקן $1, קבוצה $2, יציאה $3, TTL $4, loopback $5
 conf_enabled=מופעל
 conf_disabled=נכים
 conf_keepalive=זמן בין פעימות לב

@@ -85,7 +85,7 @@ net_tcp=TCP doorsturen toestaan?
 net_gateway=Sta verbinding toe om poorten door te sturen?
 net_reverse=Omgekeerde-validatie van client IP adressen?
 net_err=Mislukt om netwerken op te slaan
-net_elisten=Ontbrekende of ongeldig IP adres  om naar te luisteren
+net_elisten=Ontbrekende of ongeldig IP adres om naar te luisteren
 net_eport=Ontbrekende of ongeldig poort nummer
 net_eidle=Ontbrekende of ongeldige time-out om te wachten
 net_egrace=Ontbrekende of ongeldige tijd om te wachten bij login
@@ -141,7 +141,7 @@ apply_epid=Niet werkend
 
 hosts_title=Client Host Opties
 hosts_header=SSH Client Hosts
-hosts_none=Er zijn geen client host opties gedefinieerd. Alle SSH inlog clients  zullen de standaard instellingen gebruiken.
+hosts_none=Er zijn geen client host opties gedefinieerd. Alle SSH inlog clients zullen de standaard instellingen gebruiken.
 hosts_all=Alle Hosts
 hosts_add=Opties toevoegen voor client host.
 hosts_return=client hosts lijst
@@ -223,12 +223,12 @@ sync_create=SSH sleutel instellen voor nieuwe Unix gebruiker.
 sync_auth=Kopieer nieuwe <tt>identify.pub</tt> naar <tt>authorized_keys</tt>.
 sync_pass=Gebruik wachtwoord als sleutel toegang
 sync_gnupg=GNUPG sleutel instellen voor nieuwe Unix gebruikers.
-sync_type=Sleutel  soort
+sync_type=Sleutel soort
 sync_auto=&lt;Automatisch&gt;
 
 keys_title=Host SSH Sleutels
 keys_desc=Deze pagina laat u de SSH sleutels zien van deze host.
-keys_none=Kon geen enkele Host-Sleutel  ingang vinden in uw SSHD  configuratie.
+keys_none=Kon geen enkele Host-Sleutel ingang vinden in uw SSHD configuratie.
 
 manual_title=Bewerk Configuratie Files
 manual_ecannot=U bent niet bevoegd om de SSH server configuratie file te bewerken

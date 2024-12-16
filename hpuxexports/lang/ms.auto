@@ -68,10 +68,10 @@ save_enohost='$1' - Anda tidak menyenaraikan mana-mana tuan rumah
 save_euids=UID tidak boleh dipercayai mestilah senarai atau rentang yang dipisahkan koma
 save_egids=GID tidak boleh dipercayai mestilah senarai atau rentang yang dipisahkan koma
 
-log_modify=Mengubah eksport NFS $1 
-log_modify_l=Mengubah eksport NFS $1 hingga $2 
-log_delete=Eksport NFS yang dipotong $1 
-log_delete_l=Eksport NFS dipadamkan $1 hingga $2 
-log_create=Mengeluarkan eksport NFS $1 
-log_create_l=Eksport NFS yang dibuat $1 hingga $2 
+log_modify=Mengubah eksport NFS $1
+log_modify_l=Mengubah eksport NFS $1 hingga $2
+log_delete=Eksport NFS yang dipotong $1
+log_delete_l=Eksport NFS dipadamkan $1 hingga $2
+log_create=Mengeluarkan eksport NFS $1
+log_create_l=Eksport NFS yang dibuat $1 hingga $2
 log_apply=Konfigurasi terapan

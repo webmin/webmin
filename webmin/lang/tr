@@ -418,7 +418,7 @@ log_theme_def=Tema öntanımlı olarak değiştirildi
 log_referers=Güvenilir referanslar değiştirildi
 
 themes_title=Webmin Temaları
-themes_desc=Tema, Webmin'in simgeleri, renkleri, arkaplan renklerini ve sayfaların biçimlerini  de içeren kullanıcı arayüzünü kontrol etmek için kullanılır. Aşağıdan kurulu temalardan birini seçerek kullanabilirsiniz.
+themes_desc=Tema, Webmin'in simgeleri, renkleri, arkaplan renklerini ve sayfaların biçimlerini de içeren kullanıcı arayüzünü kontrol etmek için kullanılır. Aşağıdan kurulu temalardan birini seçerek kullanabilirsiniz.
 themes_sel=Mevcut tema :
 themes_default=Eski Webmin teması
 themes_change=Değiştir

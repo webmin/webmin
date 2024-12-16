@@ -17,4 +17,4 @@ edit_special_monthly=Månedligt (den 1.)
 edit_special_yearly=Årligt (den 1. januar)
 
 log_success=Kørte <tt>$2</tt> i <tt>$1</tt>
-log_failure=Kunne ikke køre <tt>$2</tt> i <tt>$1</tt> : $3 
+log_failure=Kunne ikke køre <tt>$2</tt> i <tt>$1</tt> : $3

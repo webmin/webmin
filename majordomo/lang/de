@@ -145,7 +145,7 @@ subs_epasswd=Das Passwort fehlt oder ist falsch
 
 mesg_title=Mail-Einstellungen
 mesg_header=Einstellungen zum Senden von Mail
-mesg_reply="Reply-To:" Adresse der Liste 
+mesg_reply="Reply-To:" Adresse der Liste
 mesg_none=Nichts
 mesg_sender="Sender:" Mail-Adresse in der Mail
 mesg_host=Hostname für die zurückgesandte Mail

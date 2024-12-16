@@ -68,7 +68,7 @@ save_enohost='$1'-호스트를 나열하지 않았습니다
 save_euids=신뢰할 수없는 UID는 쉼표로 구분 된 숫자 또는 범위 목록이어야합니다.
 save_egids=신뢰할 수없는 GID는 쉼표로 구분 된 숫자 또는 범위 목록이어야합니다.
 
-log_modify=수정 된 NFS 내보내기 $1 
+log_modify=수정 된 NFS 내보내기 $1
 log_modify_l=NFS 내보내기 $1 을 (를) $2 (으)로 수정했습니다.
 log_delete=NFS 내보내기 $1 을 (를) 삭제했습니다.
 log_delete_l=NFS 내보내기 $1 을 (를) $2 로 삭제했습니다.

@@ -19,7 +19,7 @@ ui_nice_size_type=Utilitzeu unitats de mesura binàries (KiB, MiB, GiB en lloc d
 
 delete_rusure=Esteu segur que voleu suprimir el mòdul (s) $2? $1 kB de fitxers s'esborraran per sempre.
 
-os_incorrect=El sistema operatiu $1 s'ha actualitzat a la versió $2 
+os_incorrect=El sistema operatiu $1 s'ha actualitzat a la versió $2
 os_release_notes=Notes de publicació
 
 lang_title=Idioma i entorn local
@@ -63,7 +63,7 @@ session_eyescrypt=El format hashing yescrypt no es pot utilitzar, ja que el mòd
 session_passapi=Voleu activar l'API de canvi de contrasenya remota?
 session_passapi0=API desactivada
 session_passapi1=API habilitada per als usuaris d'Unix
-session_passurl=Quan està activat, les contrasenyes d'usuari es poden canviar mitjançant una sol·licitud POST a $1 
+session_passurl=Quan està activat, les contrasenyes d'usuari es poden canviar mitjançant una sol·licitud POST a $1
 
 log_fixrepo=S'ha solucionat el repositori Webmin
 

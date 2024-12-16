@@ -8,9 +8,9 @@ index_delete=Odstrániť vybraté vývozy
 index_apply=Aplikovať zmeny
 index_applydesc=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu exportu súboru. Tým sa sprístupnia všetky vyššie uvedené adresáre so špecifikovanými možnosťami.
 index_return=zoznam exportov
-index_echeck=Server NFS sa v tomto systéme nedá použiť : $1 
+index_echeck=Server NFS sa v tomto systéme nedá použiť : $1
 
-check_ecmd=Nie je nainštalovaný príkaz servera NFS $1 
+check_ecmd=Nie je nainštalovaný príkaz servera NFS $1
 
 delete_err=Export sa nepodarilo odstrániť
 delete_enone=Žiadne vybraté

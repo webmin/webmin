@@ -28,7 +28,7 @@ index_delete=Ħassar il-Proċessi magħżula
 inittab_none2=L-ebda proċess ta 'boot ma nstab fis-sistema tiegħek. Probabbilment dan jindika li ma jużax il-fajl tal-konfigurazzjoni init SysV.
 
 edit_inittab_err=Mhux permess li teditja proċess tiegħek
-edit_inittab_title=Proċess ta 'Editja $1 
+edit_inittab_title=Proċess ta 'Editja $1
 edit_inittab_details=Dettalji tal-Proċess
 edit_inittab_del=Ħassar
 edit_inittab_save=Issejvja
@@ -40,10 +40,10 @@ save_inittab_err=Tiegħek mhux permess isalva proċess
 save_inittab_noid=Żball, ma daħal l-ebda proċess ta 'isem
 save_inittab_already=Żball, il-proċess tal-isem diġà jeżisti
 
-log_modify=Proċess tal-bidu modifikat $1 
-log_rename=Proċedura tal-bidu tal-bidu $1 sa $2 
-log_create=Proċess ta 'bidu maħluq $1 
-log_delete=Proċess tal-bidu imħassar $1 
+log_modify=Proċess tal-bidu modifikat $1
+log_rename=Proċedura tal-bidu tal-bidu $1 sa $2
+log_create=Proċess ta 'bidu maħluq $1
+log_delete=Proċess tal-bidu imħassar $1
 log_apply=Konfigurazzjoni applikata
 log_deletes=Proċessi ta 'init $1 imħassra
 

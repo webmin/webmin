@@ -1,12 +1,12 @@
 index_screate=Crie um novo usuário seguro.
 index_twofactor=Autenticação de dois fatores
 index_joingroup=Adicionar ao grupo:
-index_eulist=Falha ao listar usuários: $1 
-index_eglist=Falha ao listar grupos: $1 
+index_eulist=Falha ao listar usuários: $1
+index_eglist=Falha ao listar grupos: $1
 
 edit_title3=Criar usuário Webmin seguro
 edit_twofactor=Tipo de autenticação de dois fatores
-edit_twofactorprov=Usando o provedor $1 com o ID $2 
+edit_twofactorprov=Usando o provedor $1 com o ID $2
 edit_twofactorcancel=Remover requisito de autenticação de dois fatores
 edit_twofactornone=Nenhuma configuração ainda
 edit_twofactoradd=Ativar dois fatores para o usuário
@@ -33,9 +33,9 @@ acl_locale=Pode mudar de localidade?
 acl_pass=Pode alterar as restrições de senha?
 acl_sql=Pode configurar o banco de dados de usuários e grupos?
 
-log_joingroup=Adicionados $1 usuários Webmin ao grupo $2 
+log_joingroup=Adicionados $1 usuários Webmin ao grupo $2
 log_sql=Banco de dados de usuário e grupo alterado
-log_twofactor=Usuário registrado $1 com o provedor de dois fatores $2 
+log_twofactor=Usuário registrado $1 com o provedor de dois fatores $2
 log_onefactor=Usuário desinscrito $1 para autenticação de dois fatores
 
 gedit_desc=Descrição do grupo
@@ -97,7 +97,7 @@ sql_addto1=Adicionar novos usuários a arquivos locais
 sql_nocache0=Conexões de cache para banco de dados
 sql_nocache1=Abra uma nova conexão para cada pesquisa
 sql_emod=Módulo Perl obrigatório ausente <tt>$1</tt>
-sql_etable=Falha ao consultar a tabela necessária $1:$2 
+sql_etable=Falha ao consultar a tabela necessária $1:$2
 sql_eldapdn=DN LDAP base $1 não foi encontrado
 sql_eclass=A classe de objeto LDAP $1 não existe no esquema do servidor
 sql_err=Falha ao salvar as configurações de banco de dados do usuário e grupo
@@ -108,11 +108,11 @@ sql_edb=Nome de banco de dados inválido (nenhum espaço permitido)
 sql_eprefix=DN base ausente ou inválido (nenhum espaço permitido)
 sql_eprefix2=DN base com aparência inválida - deve ser como <tt>dc = mydomain, dc = com</tt>
 sql_title2=Criar tabelas ausentes
-sql_tableerr=As configurações de banco de dados de usuário e grupo são válidas, mas algumas tabelas necessárias pelo Webmin estão ausentes: $1 
+sql_tableerr=As configurações de banco de dados de usuário e grupo são válidas, mas algumas tabelas necessárias pelo Webmin estão ausentes: $1
 sql_tableerr2=Clique no botão <b>Criar tabelas</b> abaixo para que elas sejam criadas automaticamente ou execute manualmente o SQL abaixo.
 sql_make=Criar tabelas
 sql_title3=Criar DN ausente
-sql_dnerr=As configurações de banco de dados de usuário e grupo são válidas, mas o DN LDAP necessário ao Webmin está ausente: $1 
+sql_dnerr=As configurações de banco de dados de usuário e grupo são válidas, mas o DN LDAP necessário ao Webmin está ausente: $1
 sql_dnerr2=Clique no botão <b>Criar DN</b> abaixo para que ele seja criado automaticamente ou adicione-o ao servidor LDAP manualmente.
 sql_makedn=Criar DN
 sql_schema=Faça o download do esquema LDAP
@@ -124,16 +124,16 @@ sql_etimeout=O tempo limite de conexão em cache deve ser um número
 make_title=Criar tabelas de usuário e grupo
 make_err=Falha ao criar tabelas de usuário e grupo
 make_exec=Executando SQL $1..
-make_failed=.. criação falhou: $1 
+make_failed=.. criação falhou: $1
 make_done=.. feito
-make_still=Alguns problemas foram encontrados mesmo após a criação da tabela: $1 
+make_still=Alguns problemas foram encontrados mesmo após a criação da tabela: $1
 
 makedn_title=Criar DN LDAP
 makedn_eoc=Nenhuma classe de objeto estrutural encontrada!
 makedn_exec=Criando DN pai $1..
-makedn_failed=.. criação falhou: $1 
+makedn_failed=.. criação falhou: $1
 makedn_done=.. feito
-makedn_still=Alguns problemas foram encontrados mesmo após a criação do DN: $1 
+makedn_still=Alguns problemas foram encontrados mesmo após a criação do DN: $1
 
 schema_title=Faça o download do esquema LDAP
 schema_desc=Antes que o Webmin possa usar um servidor LDAP para armazenar usuários e grupos, ele deve ser configurado para usar o esquema abaixo. Isso geralmente pode ser feito salvando a definição do esquema em <tt>/etc/ldap/schema</tt> ou <tt>/etc/openldap/schema</tt> como <tt>webmin.schema</tt>, depois, configurando o servidor para carregar esse arquivo de esquema.
@@ -150,7 +150,7 @@ twofactor_desc2=Esta página permite ativar a autenticação de dois fatores par
 twofactor_enable=Inscreva-se para autenticação de dois fatores
 twofactor_header=Detalhes de registro de autenticação de dois fatores
 twofactor_enrolling=Registrando para autenticação de dois fatores com o provedor $1..
-twofactor_failed=.. inscrição falhou: $1 
+twofactor_failed=.. inscrição falhou: $1
 twofactor_done=.. completo. Seu ID com este provedor é <tt>$1</tt>.
 twofactor_setup=A autenticação de dois fatores ainda não foi ativada neste sistema, mas pode ser ativada usando o módulo <a href='$1'>Webmin Configuration</a>.
 twofactor_ebutton=Nenhum botão clicou!

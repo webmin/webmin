@@ -1,14 +1,14 @@
 index_title=Server WU-FTPD
 index_eftpd=Server FTP $1 sa vo vašom systéme nenašiel. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu servera FTP</a> nesprávna.
 index_eftpaccess=Konfiguračný súbor FTP servera $1 neexistuje. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu servera FTP</a> nesprávna.
-index_eversion=Zdá sa, že FTP server $1 nie je WU-FTPd. Možno používate staršiu verziu FTPd dodanú s operačným systémom alebo je vaša <a href='$2'>konfigurácia modulu servera FTP</a> v poriadku. Výstup zo servera FTP bol : $3 
+index_eversion=Zdá sa, že FTP server $1 nie je WU-FTPd. Možno používate staršiu verziu FTPd dodanú s operačným systémom alebo je vaša <a href='$2'>konfigurácia modulu servera FTP</a> v poriadku. Výstup zo servera FTP bol : $3
 index_apply=Aplikovať zmeny
 index_applymsg=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu. Týmto sa zastavia a reštartujú všetky bežiace procesy servera FTP, čím sa odpojia všetci pripojení používatelia.
 index_start=Spustite server
 index_startmsg=Kliknutím na toto tlačidlo spustíte server FTP s aktuálnou konfiguráciou. V prípade potreby môžete tiež nakonfigurovať server tak, aby sa spúšťal automaticky pomocou modulu <a href='$1'>Internet Services</a>.
 index_startmsg2=Kliknutím na toto tlačidlo spustíte server FTP s aktuálnou konfiguráciou. Môžete tiež nakonfigurovať server tak, aby sa v prípade potreby spustil automaticky pomocou inetd alebo nejakého ekvivalentného programu.
 index_return=Možnosti servera FTP
-index_version=Verzia WU-FTPd $1 
+index_version=Verzia WU-FTPd $1
 
 class_title=Používatelia a triedy
 class_header=Triedy používateľov a možnosti používateľa

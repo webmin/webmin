@@ -107,7 +107,7 @@ edit_none=L-ebda moduli PAM speċifikati għal dan il-pass.
 edit_delete=Ħassar is-servizz PAM
 edit_move=Tmexxi
 edit_return=Servizz PAM
-edit_inc=Inkludi servizz $1 
+edit_inc=Inkludi servizz $1
 edit_iheader=Inklużi servizzi PAM
 
 pam_pwdb.so=Awtentikazzjoni tal-password Unix
@@ -273,17 +273,17 @@ mail_edir=Direttorju tat-tabella tal-posta elettronika nieqes jew invalidu
 
 stack_service=Għaddi ċekk fuq is-servizz PAM
 
-log_pam_create=Ħoloq servizz PAM $1 
-log_pam_delete=Servizz imħassar PAM $1 
-log_mod_create=Il-modulu PAM $1 ġie miżjud mas-servizz $2 
-log_mod_modify=Modulu PAM modifikat $1 fis-servizz $2 
-log_mod_delete=Modulu PAM imħassar $1 fis-servizz $2 
-log_mod_move=Moduli PAM mibdula fis-servizz $3 
-log_mod_move_l=Moduli PAM skambjati $1 u $2 fis-servizz $3 
-log_inc_create=Miżjud jinkludi $1 għas-servizz $2 
-log_inc_modify=Modifikat jinkludi $1 għas-servizz $2 
-log_inc_delete=Imħassar jinkludi $1 għas-servizz $2 
-log_incs=Aġġornat jinkludi għas-servizz $1 
+log_pam_create=Ħoloq servizz PAM $1
+log_pam_delete=Servizz imħassar PAM $1
+log_mod_create=Il-modulu PAM $1 ġie miżjud mas-servizz $2
+log_mod_modify=Modulu PAM modifikat $1 fis-servizz $2
+log_mod_delete=Modulu PAM imħassar $1 fis-servizz $2
+log_mod_move=Moduli PAM mibdula fis-servizz $3
+log_mod_move_l=Moduli PAM skambjati $1 u $2 fis-servizz $3
+log_inc_create=Miżjud jinkludi $1 għas-servizz $2
+log_inc_modify=Modifikat jinkludi $1 għas-servizz $2
+log_inc_delete=Imħassar jinkludi $1 għas-servizz $2
+log_incs=Aġġornat jinkludi għas-servizz $1
 
 inc_edit=Editja Servizz Inkluż
 inc_create=Oħloq Servizz Inkluż

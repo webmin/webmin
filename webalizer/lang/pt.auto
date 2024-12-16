@@ -1,6 +1,6 @@
 index_title=Análise do arquivo de log do Webalizer
-index_version=Versão do Webalizer $1 
-index_version_webalizer=Versão do Webalizer $1 
+index_version=Versão do Webalizer $1
+index_version_webalizer=Versão do Webalizer $1
 index_version_awffull=AWFFull
 index_ewebalizer=O comando de análise do arquivo de log $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.
 index_econf=O arquivo de configuração do Webalizer $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.
@@ -21,8 +21,8 @@ index_return=lista de arquivos de log
 index_global=Editar opções globais
 index_globaldesc=Clique neste botão para editar as opções do Webalizer que se aplicam aos relatórios gerados a partir de todos os arquivos de log.
 index_eversion=O comando Webalizer $1 no seu sistema é a versão $2, mas este módulo suporta apenas as versões $3 e superiores.
-index_egetversion=Falha ao obter a versão do Webalizer com o comando $1 : $2 
-index_when=Sim, $1 
+index_egetversion=Falha ao obter a versão do Webalizer com o comando $1 : $2
+index_when=Sim, $1
 index_webalizer=Webalizer
 index_enable=Programação selecionada
 index_disable=De-Schedule Selected
@@ -63,10 +63,10 @@ save_efile=O arquivo de log não foi inserido ou não existe
 save_ecfile=Outro arquivo de configuração ausente ou inexistente
 save_edir=O diretório do relatório não foi inserido ou não existe
 save_euser=Usuário ausente ou inválido para executar o webalizer como
-save_ewuser=Não existe nenhum usuário Unix chamado $1 
+save_ewuser=Não existe nenhum usuário Unix chamado $1
 save_ehost=Nome de host do site ausente ou inválido
 save_etitle=Título do relatório ausente
-save_ecannot=Você só pode gerar relatórios para logs abaixo de $1 
+save_ecannot=Você só pode gerar relatórios para logs abaixo de $1
 
 view_epath=PATH_INFO inválido
 view_efile=Nome de arquivo do relatório inválido
@@ -77,7 +77,7 @@ view_title=Exibir relatório
 
 global_title=Opções globais do Webalizer
 global_title2=Opções de relatório do Webalizer
-global_for=Para o arquivo de log $1 
+global_for=Para o arquivo de log $1
 global_first=Atualmente, nenhuma opção foi definida para esse arquivo de log, o que significa que as opções globais serão usadas. Quando esse formulário é salvo, os relatórios gerados para esse log usarão as configurações escolhidas nesta página a partir de agora.
 global_header=Opções do Webalizer para todos os relatórios
 global_host=Nome do host do site
@@ -146,12 +146,12 @@ global_ehistory=Nome do arquivo de histórico ausente ou inválido
 global_ecurrent=Nome de arquivo incremental ausente ou inválido
 global_ecache=Nome do arquivo de cache DNS ausente ou inválido
 
-log_create_log=Relatórios criados para $1 
-log_modify_log=Relatório modificado para $1 
-log_delete_log=Relatórios excluídos para $1 
-log_generate_log=Relatório gerado para $1 
+log_create_log=Relatórios criados para $1
+log_modify_log=Relatório modificado para $1
+log_delete_log=Relatórios excluídos para $1
+log_generate_log=Relatório gerado para $1
 log_global=Opções globais do Webalizer modificadas
-log_global2=Opções do Webalizer modificadas para $1 
+log_global2=Opções do Webalizer modificadas para $1
 log_enable_logs=Relatório agendado em $1 logs
 log_disable_logs=Relatório agendado em $1 logs
 

@@ -339,7 +339,7 @@ unix_same=&lt;同一用户或群组&gt;
 unix_sudo=允许可以通过 <tt>sudo</tt> 运行所有命令的用户以 <tt>root</tt> 身份登录
 unix_pamany=将仅通过PAM验证的登录视为 $1
 unix_esudo=命令 $1 未安装
-unix_esudomod=未安装身份验证所需的Perl模块 $1 需要 <tt>sudo</tt> 
+unix_esudomod=未安装身份验证所需的Perl模块 $1 需要 <tt>sudo</tt>
 unix_header=Unix 用户认证设置
 unix_utable=允许 Unix 用户
 

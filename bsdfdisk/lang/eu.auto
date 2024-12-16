@@ -1,6 +1,6 @@
 index_title=Partizioak Disko Lokaletan
 index_ecmd=$1 agindua falta da
-index_problem=Modulu hau ezin da erabili : $1 
+index_problem=Modulu hau ezin da erabili : $1
 index_none=Ez da diskorik aurkitu sistema honetan!
 index_dname=Diskoaren izena
 index_dsize=Tamaina osoa
@@ -23,19 +23,19 @@ disk_vm=Memoria birtuala
 disk_iscsi=iSCSI $1 gailu partekatua
 disk_none=Disko honek ez dauka xerrik.
 disk_size=Tamaina
-disk_dsize=<b>Diskoaren tamaina:</b> $1 
-disk_model=<b>Egin eta modelatu:</b> $1 
-disk_cylinders=<b>Zilindroak:</b> $1 
-disk_blocks=<b>Blokeak:</b> $1 
-disk_device=<b>Gailuaren fitxategia:</b> $1 
+disk_dsize=<b>Diskoaren tamaina:</b> $1
+disk_model=<b>Egin eta modelatu:</b> $1
+disk_cylinders=<b>Zilindroak:</b> $1
+disk_blocks=<b>Blokeak:</b> $1
+disk_device=<b>Gailuaren fitxategia:</b> $1
 disk_return=diskoaren xehetasunak eta xerren zerrenda
 disk_add=Sortu xerra berri bat.
 disk_smart=Erakutsi SMART egoera
 disk_smartdesc=Erakutsi disko honen uneko egoera SMART-ek hauteman duen moduan, eta egiaztatu diskoko akatsak.
 
-select_device=$1 gailua $2 
-select_slice=$1 gailua $2 xerra $3 
-select_part=$1 gailua $2 zati $3 partizio $4 
+select_device=$1 gailua $2
+select_slice=$1 gailua $2 xerra $3
+select_part=$1 gailua $2 zati $3 partizio $4
 
 slice_title=Editatu xerra
 slice_egone=Hautatutako xerra ez da existitzen!
@@ -64,10 +64,10 @@ slice_suse=Zuzenean erabiltzen du
 
 dslice_title=Ezabatu xerra
 dslice_rusure=Ziur $1 xerra ezabatu nahi duzula? Bere barruan dauden partizioak eta fitxategi-sistemak ere ezabatu egingo dira.
-dslice_warn=Abisua: xerra hau erabiltzen du : $1 
+dslice_warn=Abisua: xerra hau erabiltzen du : $1
 dslice_confirm=Ezabatu orain
 dslice_deleting=$1 xerra ezabatzen ..
-dslice_failed=.. ezabatzeak huts egin du : $1 
+dslice_failed=.. ezabatzeak huts egin du : $1
 dslice_done=.. egin
 
 nslice_title=Sortu Xerra
@@ -86,10 +86,10 @@ nslice_eend=Amaiera-blokeak zenbaki bat izan behar du
 nslice_erange=Hasierako blokea amaierako blokea baino txikiagoa izan behar da
 nslice_emax=Amaierako blokea ezin da $1 blokearen disko-tamaina baino handiagoa izan
 nslice_creating=$1 laukia sortzen ari da $2 an.
-nslice_failed=.. xerra sortzeak huts egin du : $1 
+nslice_failed=.. xerra sortzeak huts egin du : $1
 nslice_done=.. xerra gehitu da
 nslice_parting=Sortu partizio lehenetsiak $1 -ko $1 zatian.
-nslice_pfailed=.. partizioaren sorrerak huts egin du : $1 
+nslice_pfailed=.. partizioaren sorrerak huts egin du : $1
 nslice_pdone=.. partizioa gehitu da
 
 npart_title=Sortu partizioa
@@ -102,7 +102,7 @@ npart_eletter=Zatikiaren zenbakia A eta D letra izan behar da
 npart_eclash=$1 letra duen partizioa badago lehendik
 npart_emax=Amaiera-blokea ezin da $1 blokeen xerra tamaina baino handiagoa izan
 npart_creating=$1 partizioa sortzen $2 an.
-npart_failed=.. partizioaren sorrerak huts egin du : $1 
+npart_failed=.. partizioaren sorrerak huts egin du : $1
 npart_done=.. partizioa gehitu da
 
 part_title=Editatu partizioa
@@ -137,7 +137,7 @@ dpart_rusure=Ziur zaude $1 partizioa ezabatu nahi duzula? Bertan dauden fitxateg
 dpart_warn=Abisua: partizio hau $1 ek erabiltzen du gaur egun
 dpart_confirm=Ezabatu orain
 dpart_deleting=$1 partizioa ezabatzen ..
-dpart_failed=.. ezabatzeak huts egin du : $1 
+dpart_failed=.. ezabatzeak huts egin du : $1
 dpart_done=.. egin
 
 newfs_title=Sortu fitxategi sistema

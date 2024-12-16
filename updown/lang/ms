@@ -87,7 +87,7 @@ log_upload=$1 fail dimuat naik
 log_download_l=Muatnaik URL $1
 log_download=$1 URL dimuat turun
 log_sdownload_l=Jadualkan muat turun untuk URL $1
-log_sdownload=Jadualkan $1 URL untuk  dimuat turun
+log_sdownload=Jadualkan $1 URL untuk dimuat turun
 
 acl_users=Boleh muat naik dan muat turun fail sebagai pengguna
 acl_all=Semua pengguna

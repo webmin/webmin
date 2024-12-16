@@ -26,6 +26,6 @@ lusers_pc_sblocks=Blød %
 lusers_cc=Send også e-mail til
 lusers_nocc=Ingen
 
-log_support=Aktiv kvotastøtte for $1 
+log_support=Aktiv kvotastøtte for $1
 
 email_ecc=Manglende eller ugyldig Cc: adresse

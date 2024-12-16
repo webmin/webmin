@@ -1,7 +1,7 @@
 index_title=NIS Client en Server
 index_return=NIS menu
 index_enis=Het lijkt erop dat uw machine geen ondersteuning voor NIS client of server heeft geinstalleerd.
-index_enis2=Alleen de client  service opties van deze module zijn bruikbaar.
+index_enis2=Alleen de client service opties van deze module zijn bruikbaar.
 
 client_title=NIS Client
 client_header=NIS client configuratie

@@ -8,7 +8,7 @@ index_inet=Internet
 index_proto=Protokoll
 index_user=Utent
 index_server=Programm tas-server
-index_redirect=Quddiem sa $1 
+index_redirect=Quddiem sa $1
 index_enabled=Abilitata?
 index_internal=Intern għal Xinetd
 index_add_inet=Oħloq servizz ġdid tal-internet
@@ -70,7 +70,7 @@ serv_eport=Numru tal-port nieqes jew invalidu
 serv_einst=Numru nieqes jew invalidi ta 'servers fl-istess ħin
 serv_euser=Trid tidħol minn utent
 serv_egroup=Trid tidħol fi grupp
-serv_estd=M'hemm l-ebda numru tal-port standard għas-servizz $1 
+serv_estd=M'hemm l-ebda numru tal-port standard għas-servizz $1
 serv_eproto=Trid tagħżel protokoll għal dan is-servizz
 serv_eserver=Programm tas-server nieqes jew invalidu
 serv_erhost=Ospitanti li jibagħtu nieqes jew invalidi
@@ -91,11 +91,11 @@ proto_tcp=TCP (Protokoll tal-Kontroll tat-Trasmissjoni)
 proto_udp=UDP (Protokoll ta 'Datagramma ta' l-Utent)
 
 restart_err=Ma rnexxielux japplika tibdil
-restart_ekill=Naqas milli jibgħat is-sinjal USR2 lill-PID $1 : $2 
+restart_ekill=Naqas milli jibgħat is-sinjal USR2 lill-PID $1 : $2
 restart_epid=Ma għadux għaddej
 
 start_err=Naqas milli jibda xinetd
-start_estart=$1 falla : $2 
+start_estart=$1 falla : $2
 
 defs_title=Għażliet Default
 defs_header=Għażliet awtomatiċi għas-servizzi
@@ -122,16 +122,16 @@ defs_efile=Isem tal-fajl tal-ġurnal nieqes jew invalidu
 defs_esoft=Limitu artab nieqes jew invalidu
 defs_ehard=Limitu iebes jew nieqes jew invalidu
 
-log_create_serv=$2 Servizz maħluq $1 
-log_modify_serv=Servizz immodifikat $2 $1 
-log_delete_serv=Servizz imħassar $2 $1 
+log_create_serv=$2 Servizz maħluq $1
+log_modify_serv=Servizz immodifikat $2 $1
+log_delete_serv=Servizz imħassar $2 $1
 log_start=Beda s-server Xinetd
 log_apply=Bidliet applikati
 log_defaults=Bidliet b'għażliet default
 log_enable=Is-servizzi $1 attivati
-log_disable=Servizzi b'diżabilità $1 
-log_enable_l=Servizzi attivati $1 
-log_disable_l=Servizzi b'diżabilità $1 
+log_disable=Servizzi b'diżabilità $1
+log_enable_l=Servizzi attivati $1
+log_disable_l=Servizzi b'diżabilità $1
 
 config_dirdef=Xinetd file file
 config_dirto=Fajl ġdid fid-direttorju

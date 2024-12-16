@@ -58,7 +58,7 @@ saveuser_ews=Параметр "Довірчий обліковий запис р
 savefshare_owner=Відсутній або недійсний власник для нового каталогу
 savefshare_group=Відсутня або недійсна група для нового каталогу
 savefshare_perms=Відсутні або недійсні дозволи для нового каталогу
-savefshare_emkdir=Не вдалося створити каталог : $1 
+savefshare_emkdir=Не вдалося створити каталог : $1
 
 start_err_wb=Не вдалося запустити сервери Winbind
 
@@ -75,14 +75,14 @@ log_stop=Зупинено на серверах Samba
 log_stop_wb=Зупинилися сервери Winbind
 log_start_wb=Запущені сервери Winbind
 log_kills=Відключені $1 процеси
-log_skills=Відключено $1 процеси від частки $2 
+log_skills=Відключено $1 процеси від частки $2
 log_delete_shares=Видалено $1 спільного доступу
 log_bind=Змініть параметри Winbind
-log_create_group=Створено групу Samba $1 
-log_modify_group=Модифікована група Samba $1 
-log_delete_group=Видалено групу Samba $1 
+log_create_group=Створено групу Samba $1
+log_modify_group=Модифікована група Samba $1
+log_delete_group=Видалено групу Samba $1
 log_gsync=Налаштована синхронізація групи Unix
-log_manual=Конфігураційний файл вручну відредагований $1 
+log_manual=Конфігураційний файл вручну відредагований $1
 
 acl_manual=Чи можете вручну редагувати конфігураційний файл?
 acl_group_opts=Варіанти групи Samba

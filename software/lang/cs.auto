@@ -7,8 +7,8 @@ index_installmsg=Vyberte umístění pro instalaci nového balíčku $1.
 index_ftp=Z adresy URL
 index_identok2=Hledat balíčky pro soubor:
 index_tree2=Procházet strom balíčků
-index_epackagecmd=Balíčkový systém $1 vyžaduje příkaz $2 
-index_eupdatecmd=Aktualizační systém $1 vyžaduje příkaz $2 
+index_epackagecmd=Balíčkový systém $1 vyžaduje příkaz $2
+index_eupdatecmd=Aktualizační systém $1 vyžaduje příkaz $2
 index_epackagecheck=Vybraný systém správy balíků není platný: $1. <br>Možná budete muset vybrat jiný systém na stránce<a href='$2'> konfigurace modulu </a>.
 index_eupdatecheck=Vybraný aktualizační systém není platný: $1. <br>Možná budete muset vybrat jinou metodu aktualizace na stránce<a href='$2'> konfigurace modulu </a>.
 index_echeckpackage=Nebyl detekován žádný systém balíků!
@@ -33,7 +33,7 @@ delete_depstoo=Také jste odstranili nepoužívané závislosti?
 
 install_eupdate=Nebyl zadán žádný balíček k instalaci
 
-slack_edir=Chybí adresář balíčků Slackware $1 
+slack_edir=Chybí adresář balíčků Slackware $1
 
 debian_manager=Debian
 
@@ -67,7 +67,7 @@ urpmi_ok=... instalace dokončena
 
 emerge_ok=.. instalace dokončena
 
-cygwin_edb=Chybí databáze balíčků Cygwin $1 
+cygwin_edb=Chybí databáze balíčků Cygwin $1
 
 csw_ok=.. instalace dokončena
 

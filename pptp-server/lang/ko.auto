@@ -1,5 +1,5 @@
 index_title=PPTP VPN 서버
-index_version=PoPToP 버전 $1 
+index_version=PoPToP 버전 $1
 index_epptpd=시스템에 PoPToP PPTP 서버 $1 이 (가) 없거나 올바른 프로그램이 아닙니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_econfig=시스템에서 PPTP 서버 구성 파일 $1 을 (를) 찾을 수 없습니다. <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_stop=PPTP 서버 중지
@@ -63,7 +63,7 @@ options_err=PPP 옵션을 저장하지 못했습니다
 options_emtu=최대 전송 패킷 크기가 없거나 유효하지 않습니다
 options_emru=최대 수신 패킷 크기가 없거나 유효하지 않습니다
 options_ename=인증을위한 서버 이름이 없거나 유효하지 않습니다
-options_version=PPPd 버전 $1 
+options_version=PPPd 버전 $1
 options_msdesc=아래 옵션은 Windows VPN 클라이언트에서 기본적으로 사용되는 MS-CHAP 인증 방법 및 MPPE 암호화를 활성화합니다. 그러나 MPPE는 PPP 데몬과 운영 체제 커널 모두에서 지원이 필요합니다.
 options_mschap=MS-CHAP 인증
 options_mschap-v2=MS-CHAP 버전 2 인증
@@ -134,12 +134,12 @@ disc_egone=연결이 더 이상 활성화되지 않습니다
 disc_ekill=프로세스가 더 이상 실행되지 않습니다
 
 log_secret_create=PPP 계정 $1 생성
-log_secret_modify=수정 된 PPP 계정 $1 
+log_secret_modify=수정 된 PPP 계정 $1
 log_secret_delete=PPP 계정 $1 을 (를) 삭제했습니다.
 log_deletes=$1 PPP 계정을 삭제했습니다.
 log_conf=수정 된 PPTP 서버 옵션
 log_options=수정 된 PPP 옵션
-log_disc=연결이 끊어진 클라이언트 $1 
+log_disc=연결이 끊어진 클라이언트 $1
 log_start=PPTP 서버 시작
 log_stop=PPTP 서버 중지
 log_apply=적용된 PPTP 서버 구성

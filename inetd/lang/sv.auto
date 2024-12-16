@@ -6,7 +6,7 @@ index_none=Inga internettjänster matchade din sökning.
 
 error_user=Saknad eller ogiltig användare att köra som
 error_group=Gruppen saknas eller ogiltig att köra som
-error_smfservice=Det gick inte att uppdatera smf-tjänsten med cmd '$1', felkod $2 
+error_smfservice=Det gick inte att uppdatera smf-tjänsten med cmd '$1', felkod $2
 error_smf_cmdfield=För smf måste filnamnet för programmet '$1' matcha det första argumentet i kommandofältet, dvs vara '$2'
 
 editrpc_act=Programtillstånd

@@ -35,6 +35,6 @@ save_create_dir='$1'디렉토리를 만들 수 없습니다
 save_eanonuid=잘못된 익명 액세스 사용자 이름
 save_eanongid=잘못된 익명 액세스 그룹 이름
 
-exports_gss=인증 된 네트워크 : $1 
+exports_gss=인증 된 네트워크 : $1
 
 log_delete_exports=$1 NFS 내보내기 삭제

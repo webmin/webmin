@@ -1,8 +1,8 @@
 index_screate=新しい安全なユーザーを作成します。
 index_twofactor=二要素認証
 index_joingroup=グループに追加：
-index_eulist=ユーザーのリストに失敗しました： $1 
-index_eglist=グループのリストに失敗しました： $1 
+index_eulist=ユーザーのリストに失敗しました： $1
+index_eglist=グループのリストに失敗しました： $1
 
 edit_title3=安全なWebminユーザーを作成する
 edit_twofactor=二要素認証タイプ
@@ -39,8 +39,8 @@ acl_sql=ユーザーおよびグループデータベースを構成できます
 
 log_joingroup=$1 Webminユーザーをグループ $2 に追加しました
 log_sql=変更されたユーザーおよびグループデータベース
-log_twofactor=登録済みユーザー $1 と2要素プロバイダー $2 
-log_onefactor=二要素認証の登録解除ユーザー $1 
+log_twofactor=登録済みユーザー $1 と2要素プロバイダー $2
+log_onefactor=二要素認証の登録解除ユーザー $1
 
 gedit_desc=グループの説明
 gedit_egone=選択したグループはもう存在しません！
@@ -101,7 +101,7 @@ sql_addto1=新しいユーザーをローカルファイルに追加する
 sql_nocache0=データベースへの接続をキャッシュする
 sql_nocache1=ルックアップごとに新しい接続を開きます
 sql_emod=必要なPerlモジュール<tt>$1</tt>がありません
-sql_etable=必要なテーブル $1 のクエリに失敗しました： $2 
+sql_etable=必要なテーブル $1 のクエリに失敗しました： $2
 sql_eldapdn=ベースLDAP DN $1 が見つかりませんでした
 sql_eclass=LDAPオブジェクトクラス $1 はサーバーのスキーマに存在しません
 sql_err=ユーザーとグループのデータベース設定を保存できませんでした
@@ -112,11 +112,11 @@ sql_edb=無効なデータベース名（スペースは使用できません）
 sql_eprefix=ベースDNがないか無効です（スペースは使用できません）
 sql_eprefix2=無効に見えるベースDN-<tt>dc = mydomain、dc = com</tt>のようにする必要があります
 sql_title2=不足しているテーブルを作成する
-sql_tableerr=ユーザーおよびグループのデータベース設定は有効ですが、Webminに必要ないくつかのテーブルがありません： $1 
+sql_tableerr=ユーザーおよびグループのデータベース設定は有効ですが、Webminに必要ないくつかのテーブルがありません： $1
 sql_tableerr2=下の[<b>テーブルの作成</b>]ボタンをクリックしてテーブルを自動的に作成するか、下のSQLを手動で実行します。
 sql_make=テーブルを作成する
 sql_title3=欠落しているDNを作成する
-sql_dnerr=ユーザーとグループのデータベース設定は有効ですが、Webminに必要なLDAP DNがありません： $1 
+sql_dnerr=ユーザーとグループのデータベース設定は有効ですが、Webminに必要なLDAP DNがありません： $1
 sql_dnerr2=下の[<b>DNを作成</b>]ボタンをクリックして自動的に作成するか、LDAPサーバーに手動で追加します。
 sql_makedn=DNを作成
 sql_schema=LDAPスキーマをダウンロードする
@@ -128,16 +128,16 @@ sql_etimeout=キャッシュされた接続タイムアウトは数値である�
 make_title=ユーザーテーブルとグループテーブルを作成する
 make_err=ユーザーテーブルとグループテーブルの作成に失敗しました
 make_exec=SQL $1 の実行..
-make_failed=..作成に失敗しました： $1 
+make_failed=..作成に失敗しました： $1
 make_done=..完了
-make_still=テーブルの作成後でもいくつかの問題が見つかりました： $1 
+make_still=テーブルの作成後でもいくつかの問題が見つかりました： $1
 
 makedn_title=LDAP DNを作成する
 makedn_eoc=構造オブジェクトクラスが見つかりません！
 makedn_exec=親DNの作成 $1..
-makedn_failed=..作成に失敗しました： $1 
+makedn_failed=..作成に失敗しました： $1
 makedn_done=..完了
-makedn_still=DNの作成後でもいくつかの問題が見つかりました： $1 
+makedn_still=DNの作成後でもいくつかの問題が見つかりました： $1
 
 schema_title=LDAPスキーマをダウンロードする
 schema_desc=WebminがLDAPサーバーを使用してユーザーとグループを保存する前に、以下のスキーマを使用するように構成する必要があります。これは通常、スキーマ定義を<tt>/etc/ldap/schema</tt>または<tt>/etc/openldap/schema</tt>に<tt>webmin.schema</tt>として保存することで実行できます。次に、そのスキーマファイルを読み込むようにサーバーを構成します。
@@ -154,7 +154,7 @@ twofactor_desc2=このページでは、<a href='$2' target=_blank>$1</a>。ア�
 twofactor_enable=2要素認証の登録
 twofactor_header=二要素認証の登録の詳細
 twofactor_enrolling=プロバイダー $1 による2要素認証の登録..
-twofactor_failed=..登録に失敗しました： $1 
+twofactor_failed=..登録に失敗しました： $1
 twofactor_done=..完了。このプロバイダーのIDは<tt>$1</tt>です。
 twofactor_setup=このシステムでは2要素認証はまだ有効になっていませんが、<a href='$1'>Webmin Configuration</a>モジュールを使用して有効にすることができます。
 twofactor_ebutton=ボタンがクリックされていません！

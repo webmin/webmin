@@ -153,7 +153,7 @@ menu_file=fájl
 menu_edit=szerkesztése
 menu_tools=Eszközök
 menu_bookmarks=Könyvjelzők
-notallowed=A (z) $1 hozzáférése nem engedélyezett. Az engedélyezett könyvtárak : $2 
+notallowed=A (z) $1 hozzáférése nem engedélyezett. Az engedélyezett könyvtárak : $2
 error_upload_emax=A feltöltött fájl nagyobb, mint a (z) $1 korlát
 extract_etype=Nem támogatott archívumtípus
 

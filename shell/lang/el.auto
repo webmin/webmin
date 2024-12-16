@@ -14,5 +14,5 @@ acl_user_def=Τρέχων χρήστης Webmin
 acl_shellenv=Χρήση επιλεγμένου περιβάλλοντος χρήστη;
 acl_chroot=Chroot στον κατάλογο
 
-log_run=Εντολή Ran $1 
+log_run=Εντολή Ran $1
 log_clear=Εκκαθαρισμένο ιστορικό εντολών

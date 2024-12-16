@@ -187,7 +187,7 @@ euser_disable=Compte désactivé
 euser_trust=Compte de confiance de la station de travail
 
 fmisc_title=Paramètres divers par défaut des fichiers
-fmisc_for=Pour le partage  <tt>$1</tt>
+fmisc_for=Pour le partage <tt>$1</tt>
 fmisc_lockfile=Verrouiller les fichiers ?
 fmisc_maxconn=Nombre maximal de connexions
 fmisc_fake=Faux verrous opportunistes (oplocks) ?

@@ -20,4 +20,4 @@ acl_uonly=Voiko suojattuja hakemistoja lisätä ja muuttaa?
 search_found=Löytyi uusi Apache-asetusten tiedosto $1 käyttäjillä $2 : ssa.
 search_already=Ohitetaan tunnettu Apache-asetusten tiedosto $1.
 search_noprot=Ohitetaan Apache-asetusten tiedosto $1, koska se ei suojaa hakemistoa.
-search_open=Apache-asetusten tiedostoa $1 ei voitu avata : $2 
+search_open=Apache-asetusten tiedostoa $1 ei voitu avata : $2

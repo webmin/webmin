@@ -13,7 +13,7 @@ index_rpm=Zainstaluj Usermina z paczki RPM
 index_tgz=Zainstaluj Usermina z paczki tar.gz
 index_deb=Zainstaluj Usermina z paczki Debiana
 index_esame=Katalog konfiguracji Usermina $1 ustawiony w <a href='$2'> module konfiguracji </ a> jest taki sam jak katalog Webmina, co jest nie prawidłowe.
-index_eroot=Katalog konfiguracyjny Usermina $1 istnieje, ale program  katalogu głównego $2 sygnalizuje, że nie istnieje! Należy ręcznie pobrać i zainstalować ponownie Usermina.
+index_eroot=Katalog konfiguracyjny Usermina $1 istnieje, ale program katalogu głównego $2 sygnalizuje, że nie istnieje! Należy ręcznie pobrać i zainstalować ponownie Usermina.
 index_restart=Uruchom ponownie Usermina
 index_restartmsg=Kliknij aby uruchomić ponownie Usermina . Może to być konieczne jeśli ostatnio aktualizowałeś Perla.
 
@@ -202,7 +202,7 @@ delete_desc1=$1 (Kopia $2)
 delete_desc2=$1 z $2 ($3 kB)
 delete_title=Usuń moduły
 delete_msg=Następujące moduły zostały z powodzeniem usunięte z Twojej instalacji Usermina :
-delete_rusure=Czy jesteś pewien, że chcesz usunąć moduł(-y) $2?  $1 kB plików zostanie nieodwracalnie skasowanych.
+delete_rusure=Czy jesteś pewien, że chcesz usunąć moduł(-y) $2? $1 kB plików zostanie nieodwracalnie skasowanych.
 delete_rusure2=Czy jesteś pewien, że chcesz usunąć skórkę $2 ? $1 kB plików zostanie usunięte na zawsze.
 delete_enone=Nie wybrano żadnego modułu
 

@@ -62,7 +62,7 @@ convert_title=Convertir Usuarios
 convert_msg=Este formulario te permite sicronizar la lista de usuarios de Unix y Samba. Cuando Samba usa <a href=$1>claves de acceso encriptadas</a>, se usa una lista separada de usuarios y claves de acceso en vez de la lista de usuarios del sistema.
 convert_noconv=No convertir o quitar estos usuarios:
 convert_update=Actualizar los usuarios ya existentes en Samba a partir de sus detalles en Unix
-convert_add=Añadir nuevos usuarios de Samba a  partir de la lista de usuarios de Unix
+convert_add=Añadir nuevos usuarios de Samba a partir de la lista de usuarios de Unix
 convert_delete=Borrar los usuarios de Samba que no existen en Unix
 convert_newuser=Para los recién creados usuarios, poner la clave de acceso a:
 convert_nopasswd=Sin clave de acceso

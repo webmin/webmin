@@ -252,7 +252,7 @@ send_eattach=Lampiran tidak boleh melebihi saiz $1 kB.
 send_eperms=Pengguna $1 tidak dapat membaca $2
 send_eperms2=Anda tidak dibenarkan menghantar fail $1
 send_epath=Sendmail boleh dieksekusi $1 tidak wujud.
-send_efile=Gagal membaca lampiran $1 : $2 
+send_efile=Gagal membaca lampiran $1 : $2
 send_done=.. selesai.
 
 send_epass=Anda tidak boleh menandatangani mesej kerana frasa laluan anda belum lagi diatur dalam modul GnuPG.
@@ -337,8 +337,8 @@ folder_spam=Spam
 
 detach_err=Gagal melepaskan fail
 detach_edir=Tiada fail atau direktori untuk disimpan untuk dimasukkan
-detach_eopen=Gagal membuka $1 : $2 
-detach_ewrite=Gagal menulis ke $1 : $2 
+detach_eopen=Gagal membuka $1 : $2
+detach_ewrite=Gagal menulis ke $1 : $2
 detach_title=Tanggalkan Fail
 detach_ok=Tulis lampiran ke fail sisi pelayan $1 ($2).
 
@@ -437,7 +437,7 @@ white_already=Alamat email $1 sudah ada pada senarai alamat yang dibenarkan Spam
 
 ldap_emod=Mod Perl Perl hilang $1 diperlukan untuk menyambung ke LDAP
 ldap_econn=Gagal menyambung ke pelayan LDAP $1 port $2
-ldap_elogin=Gagal mengikat pelayan LDAP $1 sebagai $2 : $3 
+ldap_elogin=Gagal mengikat pelayan LDAP $1 sebagai $2 : $3
 ldap_ehost=Tiada pelayan LDAP ditetapkan dalam konfigurasi modul
 ldap_eport=Tiada pelabuhan pelayan LDAP yang ditetapkan dalam konfigurasi modul
 ldap_euser=Tiada log masuk LDAP ditetapkan dalam konfigurasi modul

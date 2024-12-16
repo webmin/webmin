@@ -1,5 +1,5 @@
 index_econf2=Le service <tt>systemd-journald</tt> a été détecté sur votre système pour la collecte et le stockage des données de journalisation. Il est recommandé d'utiliser un nouveau module <a href='$2'>$1</a> à la place.
-index_cmd=Sortie de $1 
+index_cmd=Sortie de $1
 index_viewfile=Afficher le fichier journal:
 index_viewok=Vue
 

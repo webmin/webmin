@@ -1,8 +1,8 @@
 index_title=Vrtenje datoteke dnevnika
 index_econf=Konfiguracijske datoteke rotacije dnevnika $1 v vašem sistemu ni bilo mogoče najti. Mogoče logrotate ni nameščen ali pa je konfiguracija <a href='$2'>modula</a> napačna.
 index_ecmd=Programa vrtenja dnevnika $1 v vašem sistemu ni bilo mogoče najti. Mogoče ni nameščen ali je konfiguracija <a href='$2'>modula</a> napačna.
-index_eversion=Ni bilo mogoče dobiti različice logrotate z ukazom $1 : $2 
-index_version=Logrotate različica $1 
+index_eversion=Ni bilo mogoče dobiti različice logrotate z ukazom $1 : $2
+index_version=Logrotate različica $1
 index_add=Za vrtenje dodajte novo datoteko dnevnika.
 index_file=Dnevnik
 index_period=Obdobje rotacije
@@ -50,7 +50,7 @@ edit_mailfl=Prijavite datoteko v e-pošto
 edit_mailfirst=Najnovejše, ki se je ravno zavrtilo
 edit_maillast=Najstarejša, ki jo je treba izbrisati
 edit_create=Ali po vrtenju ustvarite datoteko dnevnika?
-edit_createas=Da, v načinu $1 in v lasti uporabnika $2 in skupine $3 
+edit_createas=Da, v načinu $1 in v lasti uporabnika $2 in skupine $3
 edit_createno=Ne, ne ustvarite na novo
 edit_createsame=Da, s starimi dovoljenji
 edit_olddir=Shranite stare zasukane dnevnike
@@ -91,8 +91,8 @@ log_create_sched=Ustvarjeno vrtenje dnevnika Cron
 log_delete_sched=Izbrisano vrtenje dnevnika Cron opravilo
 log_global=Spremenjene globalne možnosti
 log_create=Za datoteko dnevnika $1 je dodano vrtenje
-log_modify=Spremenjeno vrtenje datoteke dnevnika $1 
-log_delete=Izbrisano vrtenje datoteke dnevnika $1 
+log_modify=Spremenjeno vrtenje datoteke dnevnika $1
+log_delete=Izbrisano vrtenje datoteke dnevnika $1
 log_delete_logs=Izbrisana rotacija za $1 datoteke datotek
 
 sched_title=Načrt vrtenja dnevnika

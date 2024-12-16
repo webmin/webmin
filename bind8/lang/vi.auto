@@ -67,7 +67,7 @@ index_eexpired_conf=Việc đăng nhập tự động phải được bật lạ
 index_eexpired_mod=Sử dụng mô đun $1 để vô hiệu hóa DNSSEC cho các tên miền này hoặc kiểm tra lý do tại sao việc ký không thành công.
 
 master_title=Chỉnh sửa vùng chính
-master_inview=$1 trong lượt xem $2 
+master_inview=$1 trong lượt xem $2
 master_ecannot=Bạn không được phép chỉnh sửa vùng này
 master_egone=Vùng $1 không tồn tại trong bất kỳ chế độ xem nào
 master_egone2=Vùng $1 không tồn tại!
@@ -1280,7 +1280,7 @@ zonekey_public=Hồ sơ khóa công khai :
 zonekey_publicfile=Tệp khóa công khai : $1
 zonekey_private=Chi tiết khóa riêng :
 zonekey_privatefile=Tệp khóa riêng : $1
-zonekey_algorithm=Thuật toán DNSSEC : $1 
+zonekey_algorithm=Thuật toán DNSSEC : $1
 zonekey_ds=Bản ghi DS cho vùng cha mẹ :
 zonekey_expandksk=Hiển thị chi tiết khóa công khai và khóa riêng tư ..
 zonekey_expandzone=Hiển thị chi tiết khóa công khai và riêng tư ..

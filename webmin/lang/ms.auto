@@ -27,7 +27,7 @@ ui_nice_size_type=Gunakan unit pengukuran binari (KiB, MiB, GiB daripada KB, MB,
 
 mods_checksig=Periksa fail tandatangan untuk modul yang dimuat turun?
 
-os_incorrect=Sistem operasi $1 telah ditingkatkan ke versi $2 
+os_incorrect=Sistem operasi $1 telah ditingkatkan ke versi $2
 os_release_notes=Nota keluaran
 
 lang_title=Bahasa dan Tempatan
@@ -105,7 +105,7 @@ session_eyescrypt=format pencincangan yescrypt tidak boleh digunakan, kerana mod
 session_passapi=Dayakan API pertukaran kata laluan jauh?
 session_passapi0=API dilumpuhkan
 session_passapi1=API diaktifkan untuk pengguna Unix
-session_passurl=Apabila diaktifkan, kata laluan pengguna dapat diubah melalui permintaan POST menjadi $1 
+session_passurl=Apabila diaktifkan, kata laluan pengguna dapat diubah melalui permintaan POST menjadi $1
 
 log_fixrepo=Repositori Webmin tetap
 log_letsencrypt=Meminta sijil SSL baru dari Let's Encrypt
@@ -137,10 +137,10 @@ kill_pid=Proses membunuh $1 ..
 term_pid=Menamatkan proses $1 ..
 kill_gone=.. proses tidak lagi wujud!
 kill_gone2=.. kunci tidak wujud lagi!
-kill_dead=.. membunuh $1 dan melepaskan kunci $2 
+kill_dead=.. membunuh $1 dan melepaskan kunci $2
 kill_alive=.. menghantar isyarat bunuh kepada $1 tetapi ia tidak keluar!
 kill_failed=.. bunuh gagal kerana $1, tetapi melepaskan kunci $2 pula
-kill_already=.. dilepaskan kunci pada $1 
+kill_already=.. dilepaskan kunci pada $1
 
 ipkey_ips2=Untuk alamat IP dan nama host
 ipkey_eip2='$1' bukan alamat IP atau nama hos yang sah

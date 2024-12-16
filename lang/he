@@ -4,7 +4,7 @@ main_switch=החלפץ משתמש..
 main_version=גירסא $1 על $2 ($3)
 main_title=Webmin $1 על $2 ($3)
 main_none=אין לך גישה למודולים של webmin.
-main_return=חזור אל  ה$1
+main_return=חזור אל ה$1
 
 category_servers=שרתים
 category_hardware=חומרה
@@ -34,7 +34,7 @@ cancel=ביטול
 
 chooser_title1=בחר קובץ..
 chooser_title2=בחר תיקיה..
-chooser_dir=רשימת הקבצים ב  $1
+chooser_dir=רשימת הקבצים ב $1
 chooser_ok=אישור
 
 users_title1=בחר משתמשים..
@@ -55,10 +55,10 @@ groups_clear=Clear
 
 config_ecannot=אין לך הרשאה לשנות את התצורה של המודולים
 config_title=תצורה
-config_dir=למודול  $1
-config_header=אפשרויות תצורה למודול  $1
+config_dir=למודול $1
+config_header=אפשרויות תצורה למודול $1
 config_none=ללא
-config_eaccess=אסור לך לגשת למודול 
+config_eaccess=אסור לך לגשת למודול
 
 help_err=Failed to display help
 help_epath=Missing help path

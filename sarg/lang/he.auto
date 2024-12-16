@@ -1,8 +1,8 @@
 index_title=מחולל דוח דיונון
 index_econf=קובץ התצורה של Sarg $1 לא נמצא במערכת שלך. אולי Sarg לא מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
 index_ecmd=תוכנית Sarg $1 לא נמצאה במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
-index_eversion=השגת הגרסה של Sarg נכשלה עם הפקודה $1 : $2 
-index_version=גרסת Sarg $1 
+index_eversion=השגת הגרסה של Sarg נכשלה עם הפקודה $1 : $2
+index_version=גרסת Sarg $1
 index_generate=צור דוח עכשיו
 index_generatedesc=לחץ על כפתור זה כדי ליצור מיידית דוח Sarg ב- $1 באמצעות התצורה הנוכחית.
 index_clear=למחוק דוח קיים בספריה?

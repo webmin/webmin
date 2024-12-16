@@ -1,8 +1,8 @@
 index_screate=Hozzon létre egy új biztonságos felhasználót.
 index_twofactor=Két tényezős hitelesítés
 index_joingroup=Hozzáadás a csoporthoz:
-index_eulist=Nem sikerült felsorolni a felhasználókat: $1 
-index_eglist=A csoportok felsorolása nem sikerült: $1 
+index_eulist=Nem sikerült felsorolni a felhasználókat: $1
+index_eglist=A csoportok felsorolása nem sikerült: $1
 
 edit_title3=Hozzon létre biztonságos Webmin felhasználót
 edit_cloneof=A Webmin felhasználó klónozása
@@ -42,7 +42,7 @@ edit_unsafe=Állítsa vissza korlátozás nélkül
 
 save_eunixname=Az '$1' felhasználónév nem Unix felhasználó, ezért biztonságos módban nem használható
 save_eoverlay=A téma átfedés csak akkor választható ki, ha egy téma van
-save_epass=A jelszó nem érvényes: $1 
+save_epass=A jelszó nem érvényes: $1
 save_eminsize=Hiányzik vagy nem numerikus minimális jelszóhossz
 save_edays=Nincs nap kiválasztva
 save_ehours=Hiányzó vagy érvénytelen idő megengedhető
@@ -157,7 +157,7 @@ sql_addto1=Új felhasználók hozzáadása a helyi fájlokhoz
 sql_nocache0=Gyorsítótár-kapcsolatok az adatbázissal
 sql_nocache1=Nyisson meg új kapcsolatot minden kereséshez
 sql_emod=Hiányzik a szükséges Perl-modul <tt>$1</tt>
-sql_etable=Nem sikerült lekérdezni a szükséges táblát $1:$2 
+sql_etable=Nem sikerült lekérdezni a szükséges táblát $1:$2
 sql_eldapdn=Az alap LDAP DN $1 nem található
 sql_eclass=A $1 LDAP objektum osztály nem létezik a kiszolgáló sémájában
 sql_err=Nem sikerült menteni a felhasználói és csoportos adatbázis-beállításokat
@@ -168,11 +168,11 @@ sql_edb=Érvénytelen adatbázis neve (szóköz nem megengedett)
 sql_eprefix=Hiányzó vagy érvénytelen alap DN (nincs szóköz)
 sql_eprefix2=Érvénytelen kinézetű alap DN - legyen olyan, mint <tt>dc = saját domain, dc = com</tt>
 sql_title2=Készítsen hiányzó táblákat
-sql_tableerr=A felhasználói és a csoport adatbázis beállításai érvényesek, de hiányoznak néhány, a Webmin számára szükséges táblázat: $1 
+sql_tableerr=A felhasználói és a csoport adatbázis beállításai érvényesek, de hiányoznak néhány, a Webmin számára szükséges táblázat: $1
 sql_tableerr2=Kattintson az alábbi <b>Táblák létrehozása</b> gombra, hogy automatikusan elkészítse őket, vagy manuálisan futtassa az alábbi SQL-t.
 sql_make=Táblázatok létrehozása
 sql_title3=Hozza létre a hiányzó DN-t
-sql_dnerr=A felhasználói és a csoport adatbázis beállításai érvényesek, de hiányzik a Webminhez szükséges LDAP DN: $1 
+sql_dnerr=A felhasználói és a csoport adatbázis beállításai érvényesek, de hiányzik a Webminhez szükséges LDAP DN: $1
 sql_dnerr2=Kattintson az alábbi <b>DN létrehozása</b> gombra, hogy automatikusan létrehozza, vagy kézzel adja hozzá az LDAP szerverhez.
 sql_makedn=Hozzon létre DN
 sql_schema=Töltse le az LDAP sémát
@@ -184,14 +184,14 @@ sql_etimeout=A gyorsítótárazott kapcsolat időkorlátjának számnak kell len
 make_title=Hozzon létre felhasználói és csoporttáblákat
 make_err=Nem sikerült létrehozni felhasználói és csoport táblákat
 make_exec=SQL $1 végrehajtása..
-make_failed=.. a létrehozás sikertelen: $1 
-make_still=Néhány problémát találtak még a tábla létrehozása után: $1 
+make_failed=.. a létrehozás sikertelen: $1
+make_still=Néhány problémát találtak még a tábla létrehozása után: $1
 
 makedn_title=Hozzon létre LDAP DN-t
 makedn_eoc=Nem található szerkezeti objektum osztály!
 makedn_exec=Szülő DN létrehozása $1..
-makedn_failed=.. a létrehozás sikertelen: $1 
-makedn_still=Néhány problémát találtak még a DN létrehozása után: $1 
+makedn_failed=.. a létrehozás sikertelen: $1
+makedn_still=Néhány problémát találtak még a DN létrehozása után: $1
 
 schema_title=Töltse le az LDAP sémát
 schema_desc=Mielőtt a Webmin LDAP szervert használhat a felhasználók és csoportok tárolására, be kell állítania az alábbi sémát. Ezt általában úgy lehet megtenni, ha a sémadefiníciót <tt>/etc/ldap/schema</tt> vagy <tt>/etc/openldap/schema</tt> fájlba menti <tt>webmin.schema</tt> majd a kiszolgáló konfigurálása a sémafájl betöltésére.
@@ -208,7 +208,7 @@ twofactor_desc2=Ez az oldal lehetővé teszi a kétfaktoros hitelesítést a Web
 twofactor_enable=Jelentkezzen be két tényezős hitelesítésre
 twofactor_header=Két tényezős hitelesítési beiratkozási részletek
 twofactor_enrolling=Regisztráció két tényezőjű hitelesítéshez a $1 szolgáltatóval..
-twofactor_failed=.. a regisztráció sikertelen: $1 
+twofactor_failed=.. a regisztráció sikertelen: $1
 twofactor_done=.. teljes. Az Ön azonosítója ezzel a szolgáltatóval <tt>$1</tt>.
 twofactor_setup=A kétfaktoros hitelesítés még nem engedélyezve van ebben a rendszeren, de bekapcsolható a <a href='$1'>Webmin konfigurálása</a> modul segítségével.
 twofactor_ebutton=Nincs gombra kattintva!

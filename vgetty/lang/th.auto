@@ -18,7 +18,7 @@ vgetty_return=รายการพอร์ตอนุกรม
 vgetty_create=เพิ่มพอร์ตอนุกรม
 vgetty_edit=แก้ไขพอร์ตอนุกรม
 vgetty_header=ตัวเลือกการกำหนดค่าพอร์ตอนุกรม
-vgetty_ts=พอร์ตอนุกรม $1 
+vgetty_ts=พอร์ตอนุกรม $1
 vgetty_other=อุปกรณ์อื่น ๆ ..
 vgetty_rings=ส่งเสียงกริ่งก่อนตอบรับ
 vgetty_default=ค่าเริ่มต้นทั่วโลก
@@ -100,19 +100,19 @@ pvfdesc=$1, $2 บิต
 
 upload_err=ไม่สามารถเพิ่มข้อความ
 upload_emessage=ไม่ได้เลือกไฟล์ WAV
-upload_ewav=ไม่สามารถแปลงไฟล์ WAV : $1 
-upload_epvf=ไม่สามารถสร้างไฟล์ RMD : $1 
+upload_ewav=ไม่สามารถแปลงไฟล์ WAV : $1
+upload_epvf=ไม่สามารถสร้างไฟล์ RMD : $1
 upload_esame=มีไฟล์ข้อความ $1 อยู่แล้ว
 
 log_apply=ใช้การกำหนดค่า
-log_upload=ข้อความทักทายที่อัปโหลด $1 
-log_move=แปลงข้อความที่ได้รับ $1 
-log_delete0=ลบข้อความที่ได้รับ $1 
-log_delete1=ลบข้อความทักทาย $1 
+log_upload=ข้อความทักทายที่อัปโหลด $1
+log_move=แปลงข้อความที่ได้รับ $1
+log_delete0=ลบข้อความที่ได้รับ $1
+log_delete1=ลบข้อความทักทาย $1
 log_options=เปลี่ยนตัวเลือกข้อความเสียง
-log_vgetty_create=เพิ่มพอร์ตอนุกรม $1 
-log_vgetty_modify=แก้ไขพอร์ตอนุกรม $1 
+log_vgetty_create=เพิ่มพอร์ตอนุกรม $1
+log_vgetty_modify=แก้ไขพอร์ตอนุกรม $1
 log_vgetty_delete=ลบพอร์ตอนุกรม $1 แล้ว
 
 email_subject=ข้อความเสียง
-email_body=ได้รับข้อความเสียงที่ $1 โดย $2 
+email_body=ได้รับข้อความเสียงที่ $1 โดย $2

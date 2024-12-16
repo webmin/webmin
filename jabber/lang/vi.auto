@@ -4,10 +4,10 @@ index_edir=Thư mục cơ sở Jabber $1 không tồn tại. Jabber chưa đư�
 index_emodules=Các mô-đun Perl $1 và $2 được Webmin yêu cầu để xử lý cấu hình XML của Jabber không được cài đặt. <a href='$3'>Nhấp vào đây</a> để cài đặt chúng trực tiếp từ CPAN.
 index_emodule=Mô-đun Perl $1 được Webmin yêu cầu để xử lý cấu hình XML của Jabber chưa được cài đặt. <a href='$2'>Nhấp vào đây</a> để cài đặt trực tiếp từ CPAN.
 index_expat=Đảm bảo rằng bạn đã cài đặt thư viện Expat C và các tiêu đề trước khi thử cài đặt các mô-đun Perl, vì chúng phụ thuộc vào nó và sẽ thất bại nếu không có sẵn.
-index_eparse=Mô-đun $1 perl không thể phân tích tệp cấu hình Jabber của bạn : $2 
+index_eparse=Mô-đun $1 perl không thể phân tích tệp cấu hình Jabber của bạn : $2
 index_ejabberd=Không tìm thấy chương trình máy chủ Jabber $1 trên hệ thống của bạn. Jabber chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
-index_eversion=Webmin chỉ hỗ trợ phiên bản Jabber $2, nhưng lệnh $3 đã báo cáo thông tin phiên bản sau : $1 
-index_eversion2=Webmin chỉ hỗ trợ các phiên bản Jabber dưới $2, nhưng lệnh $3 đã báo cáo thông tin phiên bản sau : $1 
+index_eversion=Webmin chỉ hỗ trợ phiên bản Jabber $2, nhưng lệnh $3 đã báo cáo thông tin phiên bản sau : $1
+index_eversion2=Webmin chỉ hỗ trợ các phiên bản Jabber dưới $2, nhưng lệnh $3 đã báo cáo thông tin phiên bản sau : $1
 index_start=Khởi động máy chủ Jabber
 index_startmsg=Nhấp vào nút này để khởi động máy chủ Jabber trên hệ thống của bạn. Cho đến khi nó được bắt đầu, không có ứng dụng nhắn tin tức thời nào có thể sử dụng nó.
 index_stop=Dừng máy chủ Jabber
@@ -16,7 +16,7 @@ index_restart=Áp dụng các thay đổi
 index_restartmsg=Nhấp vào nút này để áp dụng cấu hình hiện tại bằng cách dừng và sau đó khởi động lại máy chủ Jabber.
 index_comments=Cảnh báo - tệp cấu hình Jabber của bạn $1 chứa các nhận xét, sẽ bị xóa nếu có bất kỳ thay đổi cấu hình nào được thực hiện bằng mô-đun này.
 index_return=Thực đơn Jabber
-index_version=Phiên bản Jabber $1 
+index_version=Phiên bản Jabber $1
 
 general_title=Tùy chọn chung
 general_header=Tùy chọn máy chủ Jabber toàn cầu
@@ -44,7 +44,7 @@ messages_rnotify=Thông báo cho quản trị viên khi đăng ký?
 messages_rfields=Các trường đăng ký bắt buộc
 messages_vcard2jud=Gửi vCard đến thư mục người dùng Jabber?
 messages_err=Không thể lưu tin nhắn
-messages_evcard=VCard XML không hợp lệ : $1 
+messages_evcard=VCard XML không hợp lệ : $1
 messages_etag=Máy chủ vCard XML không bắt đầu bằng &lt;vCard&gt;
 
 modules_title=Mô-đun Jabber
@@ -60,7 +60,7 @@ karma_title=Kiểm soát giao thông Karma
 karma_header=Tùy chọn kiểm soát lưu lượng
 karma_rate=Xử lý kết nối quá mức
 karma_rate_def=Tàn tật
-karma_rate_sel=Chặn khách hàng trong $2 giây sau khi kết nối $1 
+karma_rate_sel=Chặn khách hàng trong $2 giây sau khi kết nối $1
 karma_mode=Chế độ nghiệp chướng
 karma_none=Không giới hạn
 karma_low=Giới hạn giao thông thấp

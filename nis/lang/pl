@@ -85,7 +85,7 @@ tables_find=Znajdź $1, gdzie $2 pasuje do $3
 tables_search=Szukaj
 tables_nomatch=Nie znaleziono pasujących rekordów
 tables_build=Przebuduj tabele NIS
-tables_buildmsg=Naciśnij ten przycisk, aby przebudować bazy NIS na podstawie stablicowanych danych. Jeśli dokonałeś jakichś zmian, będziesz musiał to  uczynić, aby te zmiany udostępnić klientom NIS.
+tables_buildmsg=Naciśnij ten przycisk, aby przebudować bazy NIS na podstawie stablicowanych danych. Jeśli dokonałeś jakichś zmian, będziesz musiał to uczynić, aby te zmiany udostępnić klientom NIS.
 
 desc_aliases=Aliasy Sendmaila
 desc_mail=Aliasy Sendmaila

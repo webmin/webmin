@@ -1,8 +1,8 @@
 index_addauto=Nopea automaattisen vastauksen asetus.
 index_addfwd=Nopea edelleenlähetys.
-index_clevel=Roskapostitulos on vähintään $1 
-index_cheader0=Otsikon $1 on aloitettava luvulla $2 
-index_cheader1=Otsikon $1 täytyy sisältää $2 
+index_clevel=Roskapostitulos on vähintään $1
+index_cheader0=Otsikon $1 on aloitettava luvulla $2
+index_cheader1=Otsikon $1 täytyy sisältää $2
 index_cheader2=Otsikon $1 on päästävä $2 : lle
 edit_modestart=alkaa
 edit_modecont=sisältää
@@ -18,7 +18,7 @@ index_charset=Vastaa viestin merkistöä
 index_subject=Automaattivastauksen viestin aihe
 index_nowebmin=Tämä moduuli on tarkoitettu käytettäväksi vain Usermin-sovelluksessa. Jos se näkyy Webminissä, käyttämäsi teema on epätäydellinen.
 
-edit_cheader2=Otsikko $1 $2 $3 $4 
+edit_cheader2=Otsikko $1 $2 $3 $4
 edit_cmode6=Roskapostitulos on ainakin
 edit_nobounce=Estää palautusviestien edelleenlähettäminen
 edit_apply=Näytä vastaava sähköposti kansiossa:
@@ -48,14 +48,14 @@ delete_enone=Mitään ei ole valittu
 
 aliases_type1=Osoite 1
 aliases_type2=Tiedoston $1 osoitteet
-aliases_type3=Tiedosto $1 
-aliases_type4=Ohjelma $1 
-aliases_type5=Vastaa tiedosto $1 
-aliases_type6=Käytä suodatustiedostoa $1 
+aliases_type3=Tiedosto $1
+aliases_type4=Ohjelma $1
+aliases_type5=Vastaa tiedosto $1
+aliases_type6=Käytä suodatustiedostoa $1
 aliases_your=Postilaatikko
 aliases_delete=Poista viesti
 aliases_other=Käyttäjän $1 postilaatikko
-aliases_auto=Automaattivastaaja viestillä $1 
+aliases_auto=Automaattivastaaja viestillä $1
 
 auto_title=Sähköpostin automaattinen vastaus
 auto_header=Automaattiset sähköpostivastausasetukset

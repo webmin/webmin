@@ -171,7 +171,7 @@ masq_ecannot=U bent niet bevoegd om de maskerade te configureren
 masq_domain=Maskerade als domein
 masq_domains=Domeinen die vermomt (maskerade) moeten worden
 masq_ndomains=Domeinen niet voor maskerade
-masq_desc1=Wanneer een domein word opgegeven hierboven zal Sendmail alle <tt>Van</tt> adressen van alle uitgaande berichten die van dit domein komen veranderen. Daarnaast zal bij ieder email bericht wat door uw systeem gaat van één van de hosts of domeinen die hieronder in de lijst staan ook hun <tt>Van</tt> adressen   op dezelfde manier worden gemodificeerd. Let op dat iedere domein maskerade (=vermommen) wat hier gedefinieerd is kan worden overschreven voor specifieke gebruikers met gebruik van de <a href='$1'>Uitgaande Adressen</a> pagina.
+masq_desc1=Wanneer een domein word opgegeven hierboven zal Sendmail alle <tt>Van</tt> adressen van alle uitgaande berichten die van dit domein komen veranderen. Daarnaast zal bij ieder email bericht wat door uw systeem gaat van één van de hosts of domeinen die hieronder in de lijst staan ook hun <tt>Van</tt> adressen op dezelfde manier worden gemodificeerd. Let op dat iedere domein maskerade (=vermommen) wat hier gedefinieerd is kan worden overschreven voor specifieke gebruikers met gebruik van de <a href='$1'>Uitgaande Adressen</a> pagina.
 masq_desc2=Deze optie kan bruikbaar zijn indien u wilt dat email vanaf uw systeem lijkt te komen van uw domein in plaats van uw hostnaam, of wanneer uw systeem de mailhub is voor een aantal andere hosts die hun eigen mailservers hebben.
 masq_err=Mislukt om domein maskerade op te slaan
 masq_edomain='$1' is geen geldig domein om te vermommen (maskerade) als
@@ -242,7 +242,7 @@ vdelete_ecannot=U bent niet bevoegd om mapping voor $1 te verwijderen
 mailers_title=Domein Routing
 mailers_cannot=U bent niet bevoegd om domein routing te bewerken
 mailers_edirective=Uw Sendmail configuratie file heeft niet de noodzakelijke richtlijnen voor domein routing.
-mailers_efeature=Uw Sendmail configuratie heeft niet de domein routing (<tt>mailertable</tt>)  optie aanstaan. <a href='$1'>Klik hier</a> om uw Sendmail opties te modificeren.
+mailers_efeature=Uw Sendmail configuratie heeft niet de domein routing (<tt>mailertable</tt>) optie aanstaan. <a href='$1'>Klik hier</a> om uw Sendmail opties te modificeren.
 mailers_efile=De tekst file $1 vanwaar de domein routing database $2 is opgebouwd bestaat niet. Misschien moet u de <a href='$3'>module configuratie</a> modificeren zodat het juiste pad gebruikt word.
 mailers_desc1=Domein routing geeft een mogelijkheid om een special overdracht methoden te definiëren voor email naar bepaalde domeinen. Dit kan erg handig zijn indien uw systeem een gateway is voor email servers die niet bereikt kunnen worden van buiten uw netwerk of wanneer u wilt forceren dat alle email van een bepaald domein word door gestuurd door een andere server.
 mailers_desc2=U hoeft <b>geen</b> ingang te hebben in de <a href='$1'>locale domeinen</a> lijst voor doorgestuurde domeinen. Echter u moet dan wel een DNS MX record hebben die verwijst naar uw systeem voor alle domeinen waar het een gateway voor is.
@@ -295,7 +295,7 @@ generics_desc2=Let op u moet een ingang hebben in de <a href='$1'>uitgaande dome
 generics_from=Mail van ..
 generics_to=Verander naar ..
 generics_return=adres mapping lijst
-generics_toomany=Er zijn teveel  uitgaande adressen op uw systeem om te laten zien op deze pagina.
+generics_toomany=Er zijn teveel uitgaande adressen op uw systeem om te laten zien op deze pagina.
 generics_go=Vind uitgaande adressen overeenkomend met :
 generics_delete=Verwijder Geselecteerde Uitgaande Adressen
 
@@ -330,7 +330,7 @@ domains_ecannot=U bent niet bevoegd om domein mapping te bewerken
 domains_econfig=Uw Sendmail configuratie file heeft niet de noodzakelijk richtlijnen voor domein mapping.
 domains_efeature=Uw Sendmail configuratie heeft geen domein mapping (<tt>domaintable</tt>) optie aanstaan. <a href='$1'>Klik hier</a> op uw Sendmail opties aan te passen.
 domains_efile=De tekst file $1 waarvan de domein mapping database $2 is opgebouwd bestaat niet. Misschien moet u de <a href='$3'>module configuratie</a> aanpassen om het juiste pad aan te geven.
-domains_desc=Domein mapping modificeerde de <tt>Naar:</tt> adres of berichten die verstuurt werden van, of doorgeschakeld werden door of afgeleverd aan gebruikers op uw systeem. Het <tt>Van:</tt> adres van de doorgeschakelde  berichten of de berichten naar locale gebruikers is ook gemodificeerd. Dit is erg nuttig wanneer uw domein naam verandert, en u al uw huidige zaken wilt verplaatsen van de oude naar het nieuwe domein.
+domains_desc=Domein mapping modificeerde de <tt>Naar:</tt> adres of berichten die verstuurt werden van, of doorgeschakeld werden door of afgeleverd aan gebruikers op uw systeem. Het <tt>Van:</tt> adres van de doorgeschakelde berichten of de berichten naar locale gebruikers is ook gemodificeerd. Dit is erg nuttig wanneer uw domein naam verandert, en u al uw huidige zaken wilt verplaatsen van de oude naar het nieuwe domein.
 domains_from=Van domein..
 domains_to=Naar domein..
 domains_return=domein mapping lijst
@@ -352,8 +352,8 @@ ddelete_ecannot=U bent niet bevoegd om de mapping (afbeelding) te verwijderen vo
 
 access_title=Spam Controle
 access_ecannot=U bent niet bevoegd om spam controle te configureren.
-access_efeature=Uw Sendmail configuratie heeft niet de  spam controle (<tt>access_db</tt>) optie aanstaan. <a href='$1'>Klik hier</a> om de set-up van Sendmail opties te starten.
-access_efile=De tekst file $1 waarvan de  spam controle database $2 is gemaakt bestaat niet. Misschien moet u de  <a href='$3'>module configuratie</a> veranderen om het juiste pad aan te geven.
+access_efeature=Uw Sendmail configuratie heeft niet de spam controle (<tt>access_db</tt>) optie aanstaan. <a href='$1'>Klik hier</a> om de set-up van Sendmail opties te starten.
+access_efile=De tekst file $1 waarvan de spam controle database $2 is gemaakt bestaat niet. Misschien moet u de <a href='$3'>module configuratie</a> veranderen om het juiste pad aan te geven.
 access_desc1=Met Sendmail's spam controle opties kunt u voorkomen dat spam uw gebruikers bereikt door email te weigeren van bepaalde adressen, en om te voorkomen dat spammers uw systeem misbruiken als relais voor email. Standaard zal Sendmail alle email accepteren vanaf ieder adres voor een locale gebruiker, maar zal iedere client of email server tegenhouden om email te versturen via uw systeem. Normaal gesproken moet u spam controle regels toevoegen om email te weigeren van spammers, en regels toevoegen om dit toe te staan van computers op uw netwerk.
 access_desc2=Let op dat Sendmail standaard alle email zal doorlaten van clients die op uw systeem staan via SMTP naar iedere bestemming. Het is dus niet nodig om het locale netwerk <tt>127.0.0</tt> toe te voegen aan de lijst om email door te laten.
 access_source=Bron..

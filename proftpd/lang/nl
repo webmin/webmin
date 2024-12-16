@@ -1,7 +1,7 @@
 index_title=ProFTPD Server
 index_eproftpd=De ProFTPD server $1 werd niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of is uw <a href='$2'>module configuratie</a> niet in orde.
 index_eproftpd2=Het programma $1 lijkt niet de ProFTPD server te zijn. Misschien is het niet geinstalleerd, of is uw <a href='$2'>module configuratie</a> niet in orde. Het resultaat van opdracht $3 was : $4
-index_eversion=Versie  $1 van ProFTPD server word niet ondersteund door Webmin.
+index_eversion=Versie $1 van ProFTPD server word niet ondersteund door Webmin.
 index_econf=De ProFTPD config file $1 bestaat niet of is niet geldig. Misschien is uw <a href='$2'>module configuratie</a> niet in orde.
 index_apply=Veranderingen Toevoegen
 index_applymsg=Klik op deze knop om de huidige configuratie toe te voegen met het SIGHUP signaal aan het werkende ProFTPD proces.
@@ -446,7 +446,7 @@ log_anon=Verander $1 in anonieme FTP voor server $2
 log_start=Gestarte proftpd
 log_apply=Veranderingen toevoegen
 
-eafter=Configuratie en verificatie mislukt  : $1 veranderingen zijn niet opgeslagen.
+eafter=Configuratie en verificatie mislukt : $1 veranderingen zijn niet opgeslagen.
 proftpd_apply=Veranderingen Toevoegen
 proftpd_stop=Stop ProFTPd
 proftpd_start=Start ProFTPd

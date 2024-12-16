@@ -310,13 +310,13 @@ hosts_err=A zóna gazdagépének mentése nem sikerült
 hosts_enet=Hiányzó vagy érvénytelen host cím
 hosts_header=Zóna gazdagép adatai
 hosts_routestopped=Útvonalat akkor is, ha a tűzfalat leállítják?
-hosts_ip=Cím vagy hálózat $1 
+hosts_ip=Cím vagy hálózat $1
 hosts_mac=$1 MAC-cím
 hosts_ipset=$1 IP beállítása
 hosts_any=Bármely házigazda
 
-edit_before=A belépés előtt $1 
-edit_after=A belépés után $1 
+edit_before=A belépés előtt $1
+edit_after=A belépés után $1
 
 blacklist_title=Feketelista-házigazdák
 blacklist_desc=Ez az oldal felsorolja azokat a gazdagépeket és szolgáltatásokat, amelyek blokkolva vannak, ha tőlük érkező forgalom a <b>feketelistát</b> beállító felülettel érkezik.

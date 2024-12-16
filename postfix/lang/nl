@@ -404,11 +404,11 @@ start_ecannot=U bent niet bevoegd om Postfix te starten
 reload_efailed=Mislukt om Postfix te herladen.
 reload_ecannot=U bent niet bevoegd om Postfix te herladen
 
-query_get_efailed=Opvragen mislukt van de Postfix config opdracht voor de huidige waarde van  parameter $1: <tt>$2</tt>
+query_get_efailed=Opvragen mislukt van de Postfix config opdracht voor de huidige waarde van parameter $1: <tt>$2</tt>
 query_set_efailed=Opvragen mislukt van de Postfix config opdracht om de huidige waarde te zetten van parameter $1 naar $2: <tt>$3</tt>
 regenerate_ecannot=U bent niet bevoegd om de Aliassen te her-genereren
 regenerate_alias_efailed=Her-genereren mislukt van aliassen: <tt>$1</tt>
-regenerate_table_efailed=Her-genereren mislukt van  tabel $1: <tt>$2</tt>
+regenerate_table_efailed=Her-genereren mislukt van tabel $1: <tt>$2</tt>
 
 acl_resource=Mag bronnen bewerken?
 acl_aliases=Mag aliassen bewerken?

@@ -1,7 +1,7 @@
 index_title=Shorewall6 Firewall
 index_ecmd=W systemie nie znaleziono polecenia $1. Być może nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
 index_edir=Katalog konfiguracji Shorewall $1 nie został znaleziony w twoim systemie. Być może nie jest zainstalowany lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
-index_version=Wersja Shorewall6 $1 
+index_version=Wersja Shorewall6 $1
 index_return=wykaz tabel
 index_restart=Zastosuj konfigurację
 index_restartdesc=Kliknij ten przycisk, aby aktywować bieżącą konfigurację Shorewall za pomocą polecenia <tt>shorewall6 restart</tt>.
@@ -85,7 +85,7 @@ policy_1=Strefa docelowa
 policy_2=Polityka
 policy_3=Poziom Syslog
 policy_4=Limit ruchu
-policy_limit=Limit $1, Wybuch $2 
+policy_limit=Limit $1, Wybuch $2
 policy_return=lista polityk
 policy_edit=Edytuj domyślne zasady
 policy_create=Utwórz domyślne zasady
@@ -310,13 +310,13 @@ hosts_err=Nie udało się zapisać hosta strefy
 hosts_enet=Brakujący lub nieprawidłowy adres hosta
 hosts_header=Szczegóły hosta strefy
 hosts_routestopped=Trasa nawet po zatrzymaniu zapory?
-hosts_ip=Adres lub sieć $1 
-hosts_mac=Adres MAC $1 
-hosts_ipset=Zestaw IP $1 
+hosts_ip=Adres lub sieć $1
+hosts_mac=Adres MAC $1
+hosts_ipset=Zestaw IP $1
 hosts_any=Dowolny host
 
-edit_before=Przed wpisem $1 
-edit_after=Po wpisie $1 
+edit_before=Przed wpisem $1
+edit_after=Po wpisie $1
 
 blacklist_title=Gospodarze czarnej listy
 blacklist_desc=Ta strona zawiera listę hostów i usług, które zostaną zablokowane, jeśli ruch z nich dotrze do interfejsu z ustawioną opcją <b>czarna lista</b>.
@@ -422,16 +422,16 @@ comment_msg=Wiadomość
 comment_err=Nie udało się zapisać komentarza
 comment_enone=Nie wprowadzono żadnej wiadomości
 
-log_create_table=Dodano wpis do tabeli $1 
-log_modify_table=Zmodyfikowany wpis w tabeli $1 
-log_delete_table=Usunięto wpis z tabeli $1 
-log_deletes_table=Usunięte wpisy z tabeli $1 
-log_up_table=Przeniesiono wpis w górę w tabeli $1 
-log_down_table=Przeniesiono pozycję w dół w tabeli $1 
-log_manual_table=Ręcznie edytowałem plik tabeli $1 
-log_create_comment=Dodano komentarz do tabeli $1 
-log_modify_comment=Zmodyfikowany komentarz w tabeli $1 
-log_delete_comment=Usunięto komentarz z tabeli $1 
+log_create_table=Dodano wpis do tabeli $1
+log_modify_table=Zmodyfikowany wpis w tabeli $1
+log_delete_table=Usunięto wpis z tabeli $1
+log_deletes_table=Usunięte wpisy z tabeli $1
+log_up_table=Przeniesiono wpis w górę w tabeli $1
+log_down_table=Przeniesiono pozycję w dół w tabeli $1
+log_manual_table=Ręcznie edytowałem plik tabeli $1
+log_create_comment=Dodano komentarz do tabeli $1
+log_modify_comment=Zmodyfikowany komentarz w tabeli $1
+log_delete_comment=Usunięto komentarz z tabeli $1
 log_stop=Zatrzymano zaporę ogniową
 log_start=Uruchomiona zapora ogniowa
 log_refresh=Odświeżona zapora ogniowa

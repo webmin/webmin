@@ -77,7 +77,7 @@ list_size=بحجم
 list_status=الحالة
 list_ok=حسنا
 list_view=(رأي)
-list_eview=فشل في فتح $1 : $2 
+list_eview=فشل في فتح $1 : $2
 
 delete_err=فشل في حذف الحزمة$1
 delete_epack=الحزمة$1 غير موجودة
@@ -312,7 +312,7 @@ rpm_dev=جهاز
 rpm_user=ملكية المستخدم
 rpm_perm=أذونات
 rpm_group=ملكية المجموعة
-rpm_erpm=لم يتم العثور على RPM $1 : $2 
+rpm_erpm=لم يتم العثور على RPM $1 : $2
 
 soft_reg=ملف منتظم
 soft_dir=الدليل
@@ -374,7 +374,7 @@ deletes_err=فشل في حذف الحزم
 deletes_enone=لم يتم تحديد حزم
 deletes_title=حذف الحزم
 deletes_desc=إلغاء تثبيت الحزم$1 ..
-deletes_failed1=فشل إلغاء التثبيت $1 : $2 
+deletes_failed1=فشل إلغاء التثبيت $1 : $2
 deletes_success1=تم إلغاء التثبيت بنجاح$1
 deletes_failed2=أخفقت عملية التثبيت :$1
 deletes_success2=.. إلغاء التثبيت كاملة.

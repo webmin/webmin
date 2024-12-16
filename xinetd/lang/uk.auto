@@ -6,10 +6,10 @@ index_disable=Вимкнути вибране
 
 restart_epid=Більше не працює
 
-log_enable=Увімкнено послуги $1 
-log_disable=Відключені послуги $1 
-log_enable_l=Увімкнено послуги $1 
-log_disable_l=Послуги з обмеженими можливостями $1 
+log_enable=Увімкнено послуги $1
+log_disable=Відключені послуги $1
+log_enable_l=Увімкнено послуги $1
+log_disable_l=Послуги з обмеженими можливостями $1
 
 config_dirdef=Файл конфігурації Xinetd
 config_dirto=Новий файл у каталозі

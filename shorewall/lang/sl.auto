@@ -1,7 +1,7 @@
 index_title=Požarni zid Shorewall
 index_ecmd=Ukaza $1 v vašem sistemu ni bilo mogoče najti. Mogoče ni nameščen ali je konfiguracija <a href='$2'>modula</a> napačna.
 index_edir=Imenika konfiguracije Shorewall $1 v vašem sistemu ni bilo mogoče najti. Mogoče ni nameščen ali je konfiguracija <a href='$2'>modula</a> napačna.
-index_version=Različica Shorewall $1 
+index_version=Različica Shorewall $1
 index_return=seznam tabel
 index_restart=Uporabi konfiguracijo
 index_restartdesc=Kliknite ta gumb, da aktivirate trenutno konfiguracijo Shorewall z ukazom <tt>ponovni zagon shorewall</tt>.
@@ -82,7 +82,7 @@ policy_1=Destinacijsko območje
 policy_2=Politika
 policy_3=Raven sistema
 policy_4=Omejitev prometa
-policy_limit=Omejitev $1, rafal $2 
+policy_limit=Omejitev $1, rafal $2
 policy_return=seznam pravilnikov
 policy_edit=Uredite privzeti pravilnik
 policy_create=Ustvari privzeti pravilnik
@@ -306,13 +306,13 @@ hosts_err=Gostitelja območja ni bilo mogoče shraniti
 hosts_enet=Manjkajoč ali neveljaven naslov gostitelja
 hosts_header=Podrobnosti gostitelja cone
 hosts_routestopped=Pot celo, ko je požarni zid ustavljen?
-hosts_ip=Naslov ali omrežje $1 
-hosts_mac=MAC naslov $1 
-hosts_ipset=IP set $1 
+hosts_ip=Naslov ali omrežje $1
+hosts_mac=MAC naslov $1
+hosts_ipset=IP set $1
 hosts_any=Vsak gostitelj
 
-edit_before=Pred vnosom $1 
-edit_after=Po vnosu $1 
+edit_before=Pred vnosom $1
+edit_after=Po vnosu $1
 
 blacklist_title=Gostitelji črnega seznama
 blacklist_desc=Ta stran vsebuje gostitelje in storitve, ki bodo blokirani, če promet z njih prispe na vmesnik z nastavljeno možnostjo <b>črni seznam</b>.
@@ -436,16 +436,16 @@ comment_msg=Sporočilo
 comment_err=Komentarja ni bilo mogoče shraniti
 comment_enone=Nobeno sporočilo ni vneseno
 
-log_create_table=Dodan vnos v tabelo $1 
-log_modify_table=Spremenjen vnos v tabeli $1 
-log_delete_table=Izbrisan je vnos iz tabele $1 
-log_deletes_table=Izbrisani vnosi iz tabele $1 
-log_up_table=Premaknjen vnos v tabeli $1 
-log_down_table=Premaknjen vnos v tabeli $1 
-log_manual_table=Ročno urejena datoteka tabele $1 
-log_create_comment=Dodan komentar v tabelo $1 
-log_modify_comment=Spremenjen komentar v tabeli $1 
-log_delete_comment=Izbrisan komentar iz tabele $1 
+log_create_table=Dodan vnos v tabelo $1
+log_modify_table=Spremenjen vnos v tabeli $1
+log_delete_table=Izbrisan je vnos iz tabele $1
+log_deletes_table=Izbrisani vnosi iz tabele $1
+log_up_table=Premaknjen vnos v tabeli $1
+log_down_table=Premaknjen vnos v tabeli $1
+log_manual_table=Ročno urejena datoteka tabele $1
+log_create_comment=Dodan komentar v tabelo $1
+log_modify_comment=Spremenjen komentar v tabeli $1
+log_delete_comment=Izbrisan komentar iz tabele $1
 log_stop=Ustavljen požarni zid
 log_start=Začeten požarni zid
 log_refresh=Osvežen požarni zid

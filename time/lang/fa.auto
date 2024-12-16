@@ -17,4 +17,4 @@ second=دومین
 
 error_entp=همگام سازی زمان NTP انجام نشد :$1
 error_etimeserver=هیچ سرور وقت برای همگام سازی با وارد شده وجود ندارد
-error_serviceunknown=سرویس ناشناخته : $1 
+error_serviceunknown=سرویس ناشناخته : $1

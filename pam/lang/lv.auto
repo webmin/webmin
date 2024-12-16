@@ -107,7 +107,7 @@ edit_none=Šim solim nav norādīts neviens PAM modulis.
 edit_delete=Dzēst PAM pakalpojumu
 edit_move=Kustēties
 edit_return=PAM pakalpojums
-edit_inc=Iekļaut pakalpojumu $1 
+edit_inc=Iekļaut pakalpojumu $1
 edit_iheader=Iekļauti PAM pakalpojumi
 
 pam_pwdb.so=Unix paroles autentifikācija
@@ -273,17 +273,17 @@ mail_edir=Trūkst vai nav derīga pasta pakešu direktorija
 
 stack_service=Nododiet pārbaudi PAM pakalpojumam
 
-log_pam_create=Izveidots PAM pakalpojums $1 
-log_pam_delete=Izdzēsts PAM pakalpojums $1 
-log_mod_create=Pievienots PAM modulis $1 pakalpojumam $2 
-log_mod_modify=Modificēts PAM modulis $1 pakalpojumā $2 
-log_mod_delete=Izdzēsts PAM modulis $1 pakalpojumā $2 
-log_mod_move=Apmainīti PAM moduļi pakalpojumā $3 
-log_mod_move_l=Apmainīti PAM moduļi $1 un $2 servisā $3 
-log_inc_create=Pievienots $1 pakalpojumam $2 
-log_inc_modify=Modificēts ietver $1 pakalpojumam $2 
-log_inc_delete=Dzēsts ietver $1 par pakalpojumu $2 
-log_incs=Atjaunināts iekļauts pakalpojumam $1 
+log_pam_create=Izveidots PAM pakalpojums $1
+log_pam_delete=Izdzēsts PAM pakalpojums $1
+log_mod_create=Pievienots PAM modulis $1 pakalpojumam $2
+log_mod_modify=Modificēts PAM modulis $1 pakalpojumā $2
+log_mod_delete=Izdzēsts PAM modulis $1 pakalpojumā $2
+log_mod_move=Apmainīti PAM moduļi pakalpojumā $3
+log_mod_move_l=Apmainīti PAM moduļi $1 un $2 servisā $3
+log_inc_create=Pievienots $1 pakalpojumam $2
+log_inc_modify=Modificēts ietver $1 pakalpojumam $2
+log_inc_delete=Dzēsts ietver $1 par pakalpojumu $2
+log_incs=Atjaunināts iekļauts pakalpojumam $1
 
 inc_edit=Rediģēt iekļauto pakalpojumu
 inc_create=Izveidojiet iekļauto pakalpojumu

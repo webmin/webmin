@@ -68,10 +68,10 @@ save_enohost='$1' - Non hai elencato alcun host
 save_euids=Gli UID di cui non fidarsi devono essere un elenco separato da virgole di numeri o intervalli
 save_egids=I GID di cui non fidarsi devono essere un elenco separato da virgole di numeri o intervalli
 
-log_modify=Esportazione NFS modificata $1 
-log_modify_l=Esportazione NFS modificata da $1 a $2 
-log_delete=Esportazione NFS eliminata $1 
-log_delete_l=Esportazione NFS eliminata da $1 a $2 
-log_create=Esportazione NFS creata $1 
-log_create_l=Esportazione NFS creata da $1 a $2 
+log_modify=Esportazione NFS modificata $1
+log_modify_l=Esportazione NFS modificata da $1 a $2
+log_delete=Esportazione NFS eliminata $1
+log_delete_l=Esportazione NFS eliminata da $1 a $2
+log_create=Esportazione NFS creata $1
+log_create_l=Esportazione NFS creata da $1 a $2
 log_apply=Configurazione applicata

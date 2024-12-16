@@ -1,6 +1,6 @@
 index_title=Serveur DNS BIND
-index_enamed=Le serveur $1 DNS BIND n'a pas été trouvé sur votre système.  Peut-être n'est-il pas installé ou votre <a href='$2'>configuration du module</a> est-elle incorrecte.
-index_eempty=Le fichier de configuration primaire de BIND '$1' n'existe pas ou est invalide.  Faut-il en créer un nouveau ?
+index_enamed=Le serveur $1 DNS BIND n'a pas été trouvé sur votre système. Peut-être n'est-il pas installé ou votre <a href='$2'>configuration du module</a> est-elle incorrecte.
+index_eempty=Le fichier de configuration primaire de BIND '$1' n'existe pas ou est invalide. Faut-il en créer un nouveau ?
 index_local=Configurer le serveur de noms pour une utilisation interne sans Internet seulement
 index_download=Configurer comme un serveur de noms Internet et télécharger les informations du serveur racine
 index_webmin=Configurer comme un serveur de noms Internet, mais utiliser les informations du serveur racine antérieur de Webmin

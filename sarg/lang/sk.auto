@@ -1,8 +1,8 @@
 index_title=Squid Report Generator
 index_econf=Vo vašom systéme sa nenašiel konfiguračný súbor Sarg $1. Možno Sarg nie je nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
 index_ecmd=Program Sarg $1 nebol vo vašom systéme nájdený. Možno nie je nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
-index_eversion=Nepodarilo sa získať verziu Sarg s príkazom $1 : $2 
-index_version=Sarg verzia $1 
+index_eversion=Nepodarilo sa získať verziu Sarg s príkazom $1 : $2
+index_version=Sarg verzia $1
 index_generate=Vygenerovať prehľad
 index_generatedesc=Kliknutím na toto tlačidlo okamžite vygenerujete správu Sarg v $1 pomocou aktuálnej konfigurácie.
 index_clear=Odstrániť existujúci prehľad v adresári?

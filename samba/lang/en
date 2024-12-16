@@ -77,8 +77,8 @@ convert_msg=This form allows you to synchronize the Unix and Samba user list. Wh
 convert_noconv=Don't convert or remove these users:
 convert_ncdesc=The list of users not to convert can contain usernames, UIDs, group names prefixed with an <tt>@</tt>, or UID ranges like <i>500-1000</i> or <i>500-</i>.
 convert_update=Update existing Samba users from their Unix details
-convert_add=Add new Samba users from the Unix user list 
-convert_delete=Delete Samba users who do not exist under Unix 
+convert_add=Add new Samba users from the Unix user list
+convert_delete=Delete Samba users who do not exist under Unix
 convert_newuser=For newly created users, set the password to:
 convert_nopasswd=No password
 convert_lock=Account locked
@@ -171,7 +171,7 @@ smb_ip=IP Address
 smb_asworkgroup=<b>As Workgroup</b> (optional)
 
 create_title=Create Copy
-create_msg=A copy share will inherit all its default values from the share you choose. If the source share is changed, so will the copy. 
+create_msg=A copy share will inherit all its default values from the share you choose. If the source share is changed, so will the copy.
 create_from=Share to copy from:
 create_name=New share name:
 

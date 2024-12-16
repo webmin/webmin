@@ -273,17 +273,17 @@ mail_edir=Trūksta arba netinkamas pašto paketų katalogas
 
 stack_service=Perduokite patikrinimą PAM tarnybai
 
-log_pam_create=Sukurta PAM paslauga $1 
-log_pam_delete=Ištrinta PAM paslauga $1 
-log_mod_create=Pridėtas PAM modulis $1 prie paslaugos $2 
-log_mod_modify=Modifikuotas PAM modulis $1 tarnyboje $2 
-log_mod_delete=Panaikintas $1 PAM modulis, naudojamas $2 
-log_mod_move=Sukeisti PAM moduliai tarnyboje $3 
-log_mod_move_l=Sukeisti PAM moduliai $1 ir $2 naudojami $3 
-log_inc_create=Pridėta $2 už paslaugą $2 
-log_inc_modify=Modifikuotas apima $1 paslaugų $2 
-log_inc_delete=Ištrinta apima $1 už paslaugą $2 
-log_incs=Atnaujinta apima paslaugą $1 
+log_pam_create=Sukurta PAM paslauga $1
+log_pam_delete=Ištrinta PAM paslauga $1
+log_mod_create=Pridėtas PAM modulis $1 prie paslaugos $2
+log_mod_modify=Modifikuotas PAM modulis $1 tarnyboje $2
+log_mod_delete=Panaikintas $1 PAM modulis, naudojamas $2
+log_mod_move=Sukeisti PAM moduliai tarnyboje $3
+log_mod_move_l=Sukeisti PAM moduliai $1 ir $2 naudojami $3
+log_inc_create=Pridėta $2 už paslaugą $2
+log_inc_modify=Modifikuotas apima $1 paslaugų $2
+log_inc_delete=Ištrinta apima $1 už paslaugą $2
+log_incs=Atnaujinta apima paslaugą $1
 
 inc_edit=Redaguoti įtrauktą paslaugą
 inc_create=Sukurti įtrauktą paslaugą

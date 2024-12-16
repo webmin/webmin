@@ -63,7 +63,7 @@ rpm_finddesc=Açıklama
 bsd_manager=$1 Paket Yöneticisi
 
 slack_manager=Slackware Paket Yöneticisi
-slack_edir=Eksik Slackware paketleri dizini $1 
+slack_edir=Eksik Slackware paketleri dizini $1
 
 debian_manager=Debian
 
@@ -75,7 +75,7 @@ log_install_rhn_l=Redhat Network'ten $1 yüklenmiş paketler
 log_install_rhn=Redhat Network'ten $2 paket yüklendi
 log_check_apt_l=APT'den $1 yükseltilmiş paket (ler)
 log_check_apt=APT'den $2 paket yükseltildi
-log_deletes_l=Kurulu olmayan paketler $1 
+log_deletes_l=Kurulu olmayan paketler $1
 log_deletes=Yüklü $1 paket
 log_urpmi_update=Güncellenmiş mevcut URPMI paketleri
 log_urpmi_upgrade=Yükseltilmiş kurulu URPMI paketleri
@@ -198,7 +198,7 @@ rpm_dev=cihaz
 rpm_user=kullanıcı sahipliği
 rpm_perm=izinler
 rpm_group=grup sahipliği
-rpm_erpm=RPM $1 bulunamadı : $2 
+rpm_erpm=RPM $1 bulunamadı : $2
 
 soft_reg=Normal Dosya
 soft_dir=rehber
@@ -208,9 +208,9 @@ soft_hard=Sabit Bağlantı
 soft_edit=Düzenlenebilir Dosya
 soft_efunc=$1 paket sistemi için işlevler yüklenemedi.
 soft_euncompress=Dosya sıkıştırılmış, ancak sisteminizde <tt>sıkıştırmayı kaldır</tt> komutu bulunamadı.
-soft_euncmsg=Dosya sıkıştırılamadı : $1 
+soft_euncmsg=Dosya sıkıştırılamadı : $1
 soft_egzip=Dosya gzip ile sıkıştırıldı, ancak gzip komutu sisteminizde bulunamadı.
-soft_egzmsg=Gunzip dosyası başarısız oldu : $1 
+soft_egzmsg=Gunzip dosyası başarısız oldu : $1
 
 aix_unknown=Bilinmeyen
 aix_device=Yazılım için INPUT cihazı / dizini
@@ -248,9 +248,9 @@ emerge_name=nakliyat
 
 cygwin_fmissing=Dosya eksik
 cygwin_lmissing=Bağlantı noktalarının eksik olduğu dosya
-cygwin_estat=Stat dosyası başarısız oldu: $1 
-cygwin_elread=Symlink okunamadı: $1 
-cygwin_elstat=Symlink statüsü başarısız oldu: $1 
+cygwin_estat=Stat dosyası başarısız oldu: $1
+cygwin_elread=Symlink okunamadı: $1
+cygwin_elstat=Symlink statüsü başarısız oldu: $1
 cygwin_badpostscript=Uyarı: Bu komut dosyasının çalıştırıldığı görülmüyor
 cygwin_pkgexists=$1 paketi zaten var.
 cygwin_warnuse=Uyarı: Bu, Cygwin yazılımını yönetmek için resmi bir arayüz değildir. Kendi sorumluluğunuzdadır kullanın.
@@ -262,7 +262,7 @@ deletes_title=Paketleri Sil
 deletes_desc=$1 paketleri kaldırılıyor ..
 deletes_failed1=$1 : $2 kaldırılamadı
 deletes_success1=$1 başarıyla kaldırıldı
-deletes_failed2=Kaldırma başarısız oldu : $1 
+deletes_failed2=Kaldırma başarısız oldu : $1
 deletes_success2=.. kaldırma işlemi tamamlandı.
 deletes_rusure=$1 paketlerini kaldırmak istediğinizden emin misiniz?
 deletes_ok=Hepsini sil

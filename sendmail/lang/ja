@@ -1,7 +1,7 @@
 index_title=sendmail 設定
 index_econfig=sendmail 設定ファイル $1 は存在しません。ご使用の <a href='$2'>モジュール設定</a> が不正な可能性があります。
 index_eversion=このsendmail 設定ファイルは最新の sendmail バージョン用でないように思われます。Webmin はバージョン 8.8 以降のみサポートします。
-index_epath=sendmail 実行ファイル $1 がシステムにインストールされていませんご使用の<a href='$2'>モジュール設定</a> が不正か、sendmail  がインストールされていない可能性があります。
+index_epath=sendmail 実行ファイル $1 がシステムにインストールされていませんご使用の<a href='$2'>モジュール設定</a> が不正か、sendmail がインストールされていない可能性があります。
 index_return=sendmail 設定
 index_stop=sendmail を停止
 index_stopmsg=実行中の sendmail プロセスを停止するにはこのボタンをクリックしてください。これは、他のシステムからローカル ユーザにメールが配信されるのを停止し、このシステムをメール サーバとして使用中のクライアントがメールを送信するのを防ぎます。
@@ -90,10 +90,10 @@ asave_ealready='$1' のエイリアスはすでに存在しています
 asave_ematch='$1' に一致するエイリアスのみ作成する許可があります
 asave_etype=この種類のエイリアスは作成できません
 asave_etype1='$1' は無効な E メール アドレスです
-asave_etype2=アドレス ファイル  '$1' は無効か存在しません
+asave_etype2=アドレス ファイル '$1' は無効か存在しません
 asave_etype3='$1' は無効なファイル名です
 asave_etype4='$1' は無効なプログラムか存在しません
-asave_etype5=自動応答ファイル  '$1' は無効か存在しません
+asave_etype5=自動応答ファイル '$1' は無効か存在しません
 asave_etype4none=プログラムがありません
 
 cws_title=ローカル ドメイン
@@ -347,7 +347,7 @@ mail_size=サイズ
 mail_delete=選択されたメッセージを削除
 mail_compose=新規メールを作成
 mail_return=ユーザ E メール
-mail_pos=$3の $2へのメッセージ $1 
+mail_pos=$3の $2へのメッセージ $1
 mail_none=このメールボックスにはメッセージがありません
 mail_ecannot=このユーザーのメールは読めません
 mail_all=すべて選択

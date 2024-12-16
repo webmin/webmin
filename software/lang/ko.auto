@@ -38,9 +38,9 @@ slack_edir=슬랙웨어 패키지 디렉토리 $1 이 (가) 없습니다.
 
 debian_manager=데비안
 
-log_install_yum_l=YUM에서 설치된 패키지 $1 
+log_install_yum_l=YUM에서 설치된 패키지 $1
 log_install_yum=YUM에서 $2 패키지 설치
-log_install_rhn_l=Redhat Network에서 설치된 패키지 $1 
+log_install_rhn_l=Redhat Network에서 설치된 패키지 $1
 log_install_rhn=Redhat Network에서 $2 패키지 설치
 
 rhn_ok=.. 설치 완료

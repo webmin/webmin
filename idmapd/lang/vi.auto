@@ -7,5 +7,5 @@ domain=Tên miền
 nobody_user=Không có người dùng
 nobody_group=Không ai thuộc nhóm
 save=Lưu cấu hình và khởi động lại daemon
-save_err=Không thể lưu tệp cấu hình $1 
+save_err=Không thể lưu tệp cấu hình $1
 error_dir=Thư mục $1 không tồn tại

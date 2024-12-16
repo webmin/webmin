@@ -238,7 +238,7 @@ gsave_edup=O nome do grupo já está em uso
 
 convert_title=Converter Usuários
 convert_ecannot=Você não tem permissão para converte usuários Unix
-convert_nogroups=Nenhum grupo do Webmin foi definido em seu sistema. Pelo menos um grupo deve ser criao antes 
+convert_nogroups=Nenhum grupo do Webmin foi definido em seu sistema. Pelo menos um grupo deve ser criao antes
 convert_desc=Este formulário lhe permite converter usuários Unix existentes para usuários Webmin. As permissões de cada usuário Webmin serão determinadas pelo grupo selecionado abaixo.
 convert_0=Todos os usuários
 convert_1=Somente os usuários
@@ -303,7 +303,7 @@ unix_esudomod=O módulo Perl $1 necessário para autenticação <tt>sudo</tt> n�
 sessions_title=Sessões de Login Atuais
 sessions_id=ID de Sessão
 sessions_user=Usuário Webmin
-sessions_login=Logado em 
+sessions_login=Logado em
 sessions_host=Endereço IP
 sessions_lview=Visualizar logs ..
 

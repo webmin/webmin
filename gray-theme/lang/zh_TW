@@ -3,7 +3,7 @@ left_home=系統信息
 right_edit=配置本頁
 right_return=系統信息
 
-vmain_title=$2 ($3)上的Virtualmin $1 
+vmain_title=$2 ($3)上的Virtualmin $1
 vmain_title2=Virtualmin
 
 config_section=配置類別：

@@ -97,7 +97,7 @@ acl_allowret=거부한 경우에도 파일 접근 허용
 acl_afiles=허용할 파일
 acl_arel=chroot에 상대적입니까?
 acl_aclass=클래스에 대해 허용
-acl_err=제한 및 접근 제어를 저장하지 못했습니다 
+acl_err=제한 및 접근 제어를 저장하지 못했습니다
 acl_edaddr='$1'은(는) 유효한 주소가 아닙니다
 acl_edfile='$1'은(는) 유효한 주소 파일이 아닙니다
 acl_edmsg='$1'은(는) 유효한 오류 메시지 파일이 아닙니다
@@ -105,7 +105,7 @@ acl_eln='$1'은(는) 유효한 최대 사용자 수가 아닙니다
 acl_etimes='$1'은(는) 유효한 UUCP 형식 시간 범위가 아닙니다
 acl_elmsg='$1'은(는) 유효한 오류 메시지 파일이 아닙니다
 acl_efbcount='$1'은(는) 유효한 파일 또는 바이트 수가 아닙니다
-acl_elimit='$1'은(는) 유효한 시간 제한이 아닙니다 
+acl_elimit='$1'은(는) 유효한 시간 제한이 아닙니다
 acl_efails='$1'은(는) 유효한 로그인 실패 수가 아닙니다
 
 net_title=네트워킹

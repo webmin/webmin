@@ -68,9 +68,9 @@ deletes_err=Không thể hủy lệnh
 deletes_enone=Không được chọn
 
 log_allow=Thay đổi người dùng được phép
-log_create_job=Tạo lệnh theo lịch trình cho $1 
-log_delete_job=Lệnh đã hủy theo lịch trình cho $1 
-log_exec_job=Đã thực hiện lệnh theo lịch trình cho $1 
+log_create_job=Tạo lệnh theo lịch trình cho $1
+log_delete_job=Lệnh đã hủy theo lịch trình cho $1
+log_exec_job=Đã thực hiện lệnh theo lịch trình cho $1
 log_delete_jobs=Đã hủy $1 lệnh theo lịch
 log_stop=Máy chủ lệnh đã lên lịch đã dừng
 log_start=Đã khởi động máy chủ lệnh theo lịch trình

@@ -153,8 +153,8 @@ menu_file=mapa
 menu_edit=Uredi
 menu_tools=Orodja
 menu_bookmarks=Zaznamki
-notallowed=Dostop do $1 ni dovoljen. Dovoljeni imeniki so : $2 
-error_upload_emax=Naložena datoteka je večja od omejitve $1 
+notallowed=Dostop do $1 ni dovoljen. Dovoljeni imeniki so : $2
+error_upload_emax=Naložena datoteka je večja od omejitve $1
 extract_etype=Nepodprta vrsta arhivske datoteke
 
 error_write=nimate dovoljenja za pisanje v to datoteko

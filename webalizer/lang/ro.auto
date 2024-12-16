@@ -1,6 +1,6 @@
 index_title=Webalizer Logfile Analysis
-index_version=Versiunea Webalizer $1 
-index_version_webalizer=Versiunea Webalizer $1 
+index_version=Versiunea Webalizer $1
+index_version_webalizer=Versiunea Webalizer $1
 index_version_awffull=AWFFull
 index_ewebalizer=Comanda de analiză a fișierelor de înregistrare $1 nu a fost găsită în sistemul dvs. Poate că nu este instalat, sau <a href='$2'>configurația modulului</a> este incorectă.
 index_econf=Fișierul de configurare Webalizer $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat, sau <a href='$2'>configurația modulului</a> este incorectă.
@@ -21,8 +21,8 @@ index_return=listă fișiere jurnal
 index_global=Editează opțiuni globale
 index_globaldesc=Faceți clic pe acest buton pentru a edita opțiunile Webalizer care se aplică rapoartelor generate din toate fișierele jurnal.
 index_eversion=Comanda Webalizer $1 de pe sistemul dvs. este versiunea $2, dar acest modul acceptă doar versiunile $3 și superioare.
-index_egetversion=Nu a reușit să obțineți versiunea de Webalizer cu comanda $1 : $2 
-index_when=Da, $1 
+index_egetversion=Nu a reușit să obțineți versiunea de Webalizer cu comanda $1 : $2
+index_when=Da, $1
 index_webalizer=webalizer
 index_enable=Programul selectat
 index_disable=Programare selectată
@@ -63,10 +63,10 @@ save_efile=Fișierul jurnal nu a fost introdus sau nu există
 save_ecfile=Lipsește sau nu există alt fișier de configurare
 save_edir=Directorul raportului nu a fost introdus sau nu există
 save_euser=Utilizator care lipsește sau este nevalid pentru a rula webalizer ca
-save_ewuser=Nu există un utilizator Unix numit $1 
+save_ewuser=Nu există un utilizator Unix numit $1
 save_ehost=Numele gazdă al site-ului lipsă sau nevalid
 save_etitle=Lipsește titlul raportului
-save_ecannot=Aveți voie să generați doar rapoarte pentru jurnalele sub $1 
+save_ecannot=Aveți voie să generați doar rapoarte pentru jurnalele sub $1
 
 view_epath=PATH_INFO nevalid
 view_efile=Nume de fișier raport nevalid
@@ -77,7 +77,7 @@ view_title=Vizualizează raportul
 
 global_title=Opțiuni Global Webalizer
 global_title2=Opțiuni raport webalizer
-global_for=Pentru fișierul logistic $1 
+global_for=Pentru fișierul logistic $1
 global_first=În prezent nu au fost setate opțiuni pentru acest fișier jurnal, ceea ce înseamnă că opțiunile globale vor fi utilizate în schimb. Când acest formular este salvat, rapoartele generate pentru acest jurnal vor utiliza setările alese pe această pagină de acum încolo.
 global_header=Opțiuni de Webalizer pentru toate rapoartele
 global_host=Numele gazdei site-ului
@@ -146,14 +146,14 @@ global_ehistory=Numele fișierului istoric lipsesc sau nevalide
 global_ecurrent=Numele fișierului incremental lipsesc sau nevalide
 global_ecache=Numele fișierului de memorie cache DNS lipsă sau nevalid
 
-log_create_log=Creare de raportare pentru $1 
-log_modify_log=Raportare modificată pentru $1 
-log_delete_log=Raportarea ștersă pentru $1 
-log_generate_log=Raport generat pentru $1 
+log_create_log=Creare de raportare pentru $1
+log_modify_log=Raportare modificată pentru $1
+log_delete_log=Raportarea ștersă pentru $1
+log_generate_log=Raport generat pentru $1
 log_global=Opțiuni modificate pentru Webalizer global
-log_global2=Opțiuni modificate pentru Webalizer pentru $1 
-log_enable_logs=Raportare programată la jurnalele $1 
-log_disable_logs=Raportare programată în jurnalele $1 
+log_global2=Opțiuni modificate pentru Webalizer pentru $1
+log_enable_logs=Raportare programată la jurnalele $1
+log_disable_logs=Raportare programată în jurnalele $1
 
 acl_view=Pot vizualiza doar rapoartele existente?
 acl_global=Poate edita opțiunile de webalizer global?

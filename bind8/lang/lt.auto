@@ -67,7 +67,7 @@ index_eexpired_conf=Automatinis pasirašymas turėtų būti vėl įjungtas $1 pu
 index_eexpired_mod=Norėdami išjungti DNSSEC šiuose domenuose arba patikrinti, kodėl nepavyksta pasirašyti, naudokite modulį $1.
 
 master_title=Redaguoti pagrindinę zoną
-master_inview=$1, žiūrint $2 
+master_inview=$1, žiūrint $2
 master_ecannot=Jums neleidžiama redaguoti šios zonos
 master_egone=Zona $1 neegzistuoja jokiame rodinyje
 master_egone2=Zona $1 neegzistuoja!

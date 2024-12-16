@@ -4,7 +4,7 @@ index_ecmd2=Die SpamAssassin-opdrag $1 is nie op u stelsel gevind nie.
 index_econfig=Die SpamAssassin plaaslike konfigurasielêer of gids $1 is nie op u stelsel gevind nie. Miskien is SpamAssassin nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
 index_unknown=onbekend
 index_edb=Kon nie aan die SpamAssassin-konfigurasiedatabasis koppel nie: $1. Gaan na die <a href='$2'>module-opstelling</a> om seker te maak dat u die regte instellings gebruik.
-index_version=SpamAssassin-weergawe $1 
+index_version=SpamAssassin-weergawe $1
 index_warn_usermin=Dit lyk nie of SpamAssassin in u Procmail-konfigurasielêer $2 of die globale lêer $1 opgestel is nie, dus enige konfigurasie wat met hierdie module gedoen word, sal geen effek hê nie, tensy SpamAssassin wêreldwyd opgestel is.
 index_warn_webmin=Dit lyk nie of SpamAssassin in die Procmail-konfigurasielêer $1 van die stelsel opgestel is nie, dus enige konfigurasie wat met hierdie module gedoen word, sal geen effek hê nie, tensy gebruikers dit afsonderlik opstel.
 index_return=module-indeks
@@ -190,7 +190,7 @@ priv_emscore='$1' is nie 'n geldige telling vir die hoogste frase nie
 priv_ephrase='$1' is nie 'n geldige spam-frase met twee woorde nie
 priv_escore=Ontbrekende of ongeldige telling vir strooiposfrase '$1'
 
-usually=Gewoonlik $1 
+usually=Gewoonlik $1
 ecannot=U mag nie hierdie bladsy gebruik nie
 setup_title=Installeer Procmail vir SpamAssassin
 setup_desc_webmin=Hierdie vorm kan gebruik word om Procmail in $1 op te stel om SpamAssassin uit te voer op alle e-posboodskappe wat u stelsel ontvang. Dit sal egter net enige effek hê as u e-posbediener opgestel is om Procmail vir plaaslike aflewering te gebruik, of vir gebruikers wie se <tt>. Vorentoe</tt> lêers opgestel is om Procmail uit te voer.
@@ -244,7 +244,7 @@ mail_razor=Rapporteer as strooipos en uitvee
 mail_ham=Rapporteer as ham en inkassie
 mail_delete=Delete
 mail_return=spam-poslys
-mail_pos=Strooiposboodskappe $1 tot $2 van $3 
+mail_pos=Strooiposboodskappe $1 tot $2 van $3
 mail_none=Daar is geen boodskappe in u strooiposmap nie
 mail_refresh=Verfris
 mail_will=Outomatiese opdatering binne $1 minute
@@ -253,7 +253,7 @@ mail_delall=Vee alle strooipos uit
 mail_search3=Soek vir die telling hierbo:
 
 process_eclean=Kon nie die SpamAssassin-opskrifte uit hierdie e-pos verwyder nie
-process_ereport=Kon nie e-pos aan SpamAssassin rapporteer nie : $1 
+process_ereport=Kon nie e-pos aan SpamAssassin rapporteer nie : $1
 
 apply_err=Kon nie veranderinge toepas nie
 apply_none=Geen SpamAssassin-demoonprosesse gevind nie!
@@ -263,8 +263,8 @@ acl_file=SpamAssassin-konfigurasielêer om te redigeer
 acl_filedef=Globale konfigurasielêer
 acl_awl=Toegestane gebruikers vir outomatiese witlysredigering
 acl_awl0=Alle gebruikers
-acl_awl1=Slegs gelysde gebruikers $1 
-acl_awl2=Slegs lede van groepe $1 
+acl_awl1=Slegs gelysde gebruikers $1
+acl_awl2=Slegs lede van groepe $1
 
 search_escore=Ontbrekende of ongeldige spam-telling
 search_results5=$1 e-posboodskappe met spam is hoër as $2.
@@ -337,8 +337,8 @@ simple_score=Telling om toe te pas
 simple_describe=beskrywing
 simple_err=Kon nie boodskaptoetse stoor nie
 
-before_ecmd=Die opdrag voor stoor misluk : $1 
-after_ecmd=Na-besparing opdrag misluk : $1 
+before_ecmd=Die opdrag voor stoor misluk : $1
+after_ecmd=Na-besparing opdrag misluk : $1
 
 connect_emysql=Kon nie die databasisbestuurder $1 laai nie
 connect_elogin=Kon nie by die databasis $1:$2 aanmeld nie.
@@ -346,10 +346,10 @@ connect_equery=Die databasis $1 bevat nie die voorkeurtabel $2 nie
 connect_eldapmod=Perl-module $1 wat nodig is om met LDAP te kommunikeer, is nie geïnstalleer of nie laaibaar nie
 connect_eldap=Kon nie aan LDAP-bediener $1 op poort $2 koppel nie
 connect_eldaplogin=Kon nie by LDAP-bediener $1 aanmeld as $2 : $3 nie
-connect_ebase=LDAP-basis DN $1 is nie geldig nie : $2 
+connect_ebase=LDAP-basis DN $1 is nie geldig nie : $2
 
-eldap=LDAP-werking misluk : $1 
-esql=SQL misluk : $1 
+eldap=LDAP-werking misluk : $1
+esql=SQL misluk : $1
 ldap_euser=Kon nie LDAP-gebruikersvoorwerp vir $1 vind nie
 
 db_title=SQL- en LDAP-databasisse

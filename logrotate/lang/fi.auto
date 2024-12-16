@@ -1,8 +1,8 @@
 index_title=Lokitiedoston kierto
 index_econf=Lokin rotaation määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä logrotatea ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
 index_ecmd=Lokin kierto-ohjelmaa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
-index_eversion=Logrotate-version hakeminen komennolla $1 epäonnistui : $2 
-index_version=Logrotate-versio $1 
+index_eversion=Logrotate-version hakeminen komennolla $1 epäonnistui : $2
+index_version=Logrotate-versio $1
 index_add=Lisää uusi lokitiedosto kiertääksesi.
 index_file=Loki tiedosto
 index_period=Kiertoaika
@@ -90,7 +90,7 @@ log_modify_sched=Muutettu lokin kierto Cron-työ
 log_create_sched=Luotu lokin kierto Cron-työ
 log_delete_sched=Poistettu lokin kierto Cron-työ
 log_global=Muokatut globaalit vaihtoehdot
-log_create=Lisätty lokitiedoston rotaatio $1 
+log_create=Lisätty lokitiedoston rotaatio $1
 log_modify=Lokitiedoston $1 muutettu rotaatio
 log_delete=Lokitiedoston $1 kierto on poistettu
 log_delete_logs=Poistettu kierto $1 lokitiedostoille

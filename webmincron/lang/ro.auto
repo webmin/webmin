@@ -17,4 +17,4 @@ edit_special_monthly=Lunar (pe 1)
 edit_special_yearly=Anual (la 1 ianuarie)
 
 log_success=A rulat cu succes <tt>$2</tt> în <tt>$1</tt>
-log_failure=Nu a putut fi executat <tt>$2</tt> în <tt>$1</tt> : $3 
+log_failure=Nu a putut fi executat <tt>$2</tt> în <tt>$1</tt> : $3

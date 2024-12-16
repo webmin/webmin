@@ -68,10 +68,10 @@ save_enohost='$1' - คุณไม่ได้โฮสต์รายการ
 save_euids=UID ที่ไม่น่าเชื่อถือจะต้องเป็นรายการหมายเลขหรือช่วงที่คั่นด้วยเครื่องหมายจุลภาค
 save_egids=GID ที่ไม่น่าเชื่อถือจะต้องเป็นรายการหมายเลขหรือช่วงที่คั่นด้วยเครื่องหมายจุลภาค
 
-log_modify=แก้ไขการส่งออก NFS $1 
-log_modify_l=แก้ไขการส่งออก NFS $1 เป็น $2 
-log_delete=ลบ NFS export $1 
-log_delete_l=ลบ NFS ที่ส่งออก $1 ไปยัง $2 
-log_create=สร้างการส่งออก NFS $1 
-log_create_l=สร้าง NFS การส่งออก $1 ไปยัง $2 
+log_modify=แก้ไขการส่งออก NFS $1
+log_modify_l=แก้ไขการส่งออก NFS $1 เป็น $2
+log_delete=ลบ NFS export $1
+log_delete_l=ลบ NFS ที่ส่งออก $1 ไปยัง $2
+log_create=สร้างการส่งออก NFS $1
+log_create_l=สร้าง NFS การส่งออก $1 ไปยัง $2
 log_apply=ใช้การกำหนดค่า

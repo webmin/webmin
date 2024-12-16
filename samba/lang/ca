@@ -77,7 +77,7 @@ convert_noconv=No converteixis o elimina aquests usuaris:
 convert_ncdesc=La llista d'usuaris a no convertir pot contenir noms d'usuari, UIDs, noms de grup prefixats amb <tt>@</tt>, o rangs d'UIDs com ara <i>500-1000</i> o <i>500-</i>.
 convert_update=Actualitza els usuaris del Samba a partir dels detalls de Unix
 convert_add=Afegeix nous usuaris de Samba a partir de la llista d'usuaris Unix
-convert_delete=Suprimeix els usuaris de Samba que no existeixin en Unix 
+convert_delete=Suprimeix els usuaris de Samba que no existeixin en Unix
 convert_newuser=Per a nous usuaris, estableix la contrasenya a:
 convert_nopasswd=Sense contrasenya
 convert_lock=Compte bloquejat
@@ -170,7 +170,7 @@ smb_ip=Adreça IP
 smb_asworkgroup=<b>Com a Grup de Treball</b> (opcional)
 
 create_title=Creació de Còpia
-create_msg=Una còpia d'un recurs heretarà tots els seus valors per defecte del recurs que triïs. Si el recurs original es canvia, la còpia també. 
+create_msg=Una còpia d'un recurs heretarà tots els seus valors per defecte del recurs que triïs. Si el recurs original es canvia, la còpia també.
 create_from=Recurs origen:
 create_name=Nou recurs:
 
@@ -265,7 +265,7 @@ share_security=Seguretat i Control d'Accés
 share_permission=Permisos de Fitxers
 share_naming=Nomenament de Fitxers
 share_misc=Opcions Miscel·lànies
-share_samedesc1=Nota - aquests valors també afectaran els valors per defecte de tots els recursos compartits. 
+share_samedesc1=Nota - aquests valors també afectaran els valors per defecte de tots els recursos compartits.
 share_samedesc2=Nota - aquests valors també afectaran els valors per defecte de totes les impressores compartides.
 
 print_title1=Opcions d'Impressió
@@ -504,7 +504,7 @@ eacl_pkill=matar aquesta connexió
 eacl_pus=actualitzar el recurs
 eacl_pcrs=crear el recurs
 eacl_pds=suprimir el recurs
-eacl_pusec=actualitzar les opcions de  seguretat i control d'accés d'aquest recurs
+eacl_pusec=actualitzar les opcions de seguretat i control d'accés d'aquest recurs
 eacl_pufperm=actualitzar les opcions de permisos de fitxers d'aquest recurs
 eacl_pufname=actualitzar les opcions de nomenament de fitxers d'aquest recurs
 eacl_pufmisc=actualitzar les opcions miscel·lànies d'aquest recurs

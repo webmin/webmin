@@ -41,7 +41,7 @@ save_eroot=U het geen gashere gelys om mee wortel te deel nie
 save_ealready=Die gids '$1' word reeds gedeel
 save_ehost=Die gasheer '$1' bestaan nie
 
-log_modify=Gewysigde NFS-aandeel $1 
+log_modify=Gewysigde NFS-aandeel $1
 log_rename=NFS-aandeel $1 na $2 verander
 log_create=NFS-aandeel $1 geskep
 log_delete=NFS-aandeel $1 is uitgevee

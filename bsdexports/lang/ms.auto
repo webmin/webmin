@@ -8,7 +8,7 @@ index_delete=Padamkan Eksport Terpilih
 index_apply=Terapkan Perubahan
 index_applydesc=Klik butang ini untuk menerapkan konfigurasi eksport fail semasa. Ini akan menjadikan semua direktori yang disenaraikan di atas tersedia dengan pilihan yang ditentukan.
 index_return=senarai eksport
-index_echeck=Pelayan NFS tidak boleh digunakan pada sistem ini : $1 
+index_echeck=Pelayan NFS tidak boleh digunakan pada sistem ini : $1
 
 check_ecmd=Perintah pelayan NFS $1 tidak dipasang
 

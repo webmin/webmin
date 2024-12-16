@@ -1,6 +1,6 @@
 index_title=ניתוח Logfile של Webalizer
-index_version=גרסת Webalizer $1 
-index_version_webalizer=גרסת Webalizer $1 
+index_version=גרסת Webalizer $1
+index_version_webalizer=גרסת Webalizer $1
 index_version_awffull=מדהים
 index_ewebalizer=פקודת ניתוח קובץ logfile $1 לא נמצאה במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
 index_econf=קובץ התצורה של Webalizer $1 לא נמצא במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
@@ -21,8 +21,8 @@ index_return=רשימת קבצי יומן
 index_global=ערוך אפשרויות גלובליות
 index_globaldesc=לחץ על כפתור זה כדי לערוך אפשרויות Webalizer החלות על דוחות שנוצרו מכל קבצי היומן.
 index_eversion=פקודת Webalizer $1 במערכת שלך היא גרסה $2, אך מודול זה תומך רק בגרסאות $3 ומעלה.
-index_egetversion=השגת הגירסה של Webalizer נכשלה עם הפקודה $1 : $2 
-index_when=כן, $1 
+index_egetversion=השגת הגירסה של Webalizer נכשלה עם הפקודה $1 : $2
+index_when=כן, $1
 index_webalizer=Webalizer
 index_enable=לוח הזמנים שנבחר
 index_disable=נבחרה לוח הזמנים
@@ -63,10 +63,10 @@ save_efile=קובץ היומן לא הוזן או שאינו קיים
 save_ecfile=קובץ תצורה אחר חסר או שאינו קיים
 save_edir=ספריית הדוחות לא הוזנה או אינה קיימת
 save_euser=משתמש חסר או לא תקין כדי להפעיל את ה- webalizer בתור
-save_ewuser=אין משתמש Unix בשם $1 
+save_ewuser=אין משתמש Unix בשם $1
 save_ehost=שם מארח אתרים חסר או לא חוקי
 save_etitle=חסר שם הכותרת
-save_ecannot=אתה רשאי להפיק דוחות רק ליומנים מתחת ל- $1 
+save_ecannot=אתה רשאי להפיק דוחות רק ליומנים מתחת ל- $1
 
 view_epath=PATH_INFO לא חוקי
 view_efile=שם קובץ דוח לא חוקי
@@ -77,7 +77,7 @@ view_title=צפה בדוח
 
 global_title=אפשרויות גלובלי וובליזר
 global_title2=אפשרויות דוח של Webalizer
-global_for=עבור קובץ logfile $1 
+global_for=עבור קובץ logfile $1
 global_first=נכון לעכשיו לא נקבעו אפשרויות לקובץ יומן זה, מה שאומר שהאופציות הגלובליות ישמשו במקום. כאשר נשמר טופס זה, דוחות שנוצרו עבור יומן זה ישתמשו בהגדרות שנבחרו בדף זה מעכשיו.
 global_header=אפשרויות Webalizer לכל הדוחות
 global_host=שם מארח אתר
@@ -146,13 +146,13 @@ global_ehistory=שם קובץ היסטוריה חסר או לא חוקי
 global_ecurrent=שם קובץ מצטבר חסר או לא חוקי
 global_ecache=שם קובץ מטמון DNS חסר או לא חוקי
 
-log_create_log=נוצר דיווח עבור $1 
-log_modify_log=דיווח שונה עבור $1 
-log_delete_log=הדיווח נמחק עבור $1 
-log_generate_log=דוח שנוצר עבור $1 
+log_create_log=נוצר דיווח עבור $1
+log_modify_log=דיווח שונה עבור $1
+log_delete_log=הדיווח נמחק עבור $1
+log_generate_log=דוח שנוצר עבור $1
 log_global=אפשרויות Webalizer גלובליות השתנו
-log_global2=אפשרויות Webalizer השתנו עבור $1 
-log_enable_logs=דיווח מתוזמן על יומני $1 
+log_global2=אפשרויות Webalizer השתנו עבור $1
+log_enable_logs=דיווח מתוזמן על יומני $1
 log_disable_logs=דיווח מתוזמן על $1 יומני
 
 acl_view=האם ניתן להציג דוחות קיימים רק?

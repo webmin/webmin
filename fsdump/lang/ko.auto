@@ -22,6 +22,6 @@ restore_efile=복원 할 파일 또는 장치가 없습니다.
 restore_ehost=복원 할 호스트가 없거나 유효하지 않습니다
 restore_ehuser=호스트에서 복원 할 잘못된 사용자 이름
 restore_ehfile=호스트에서 복원 할 파일 또는 장치가 없거나 유효하지 않습니다.
-restore_equestion=복원에서 알 수없는 질문  : $1 
+restore_equestion=복원에서 알 수없는 질문 : $1
 
 log_kill=$1 에 대한 백업 종료

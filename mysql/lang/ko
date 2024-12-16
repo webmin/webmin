@@ -16,14 +16,14 @@ index_return=데이터베이스 목록
 index_eadmin=시스템에 MySQL 관리 프로그램 $1이(가) 없습니다. MySQL이 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 정확하지 않을 수 있습니다.
 index_esql=시스템에 MySQL 클라이언트 프로그램 $1이(가) 없습니다. MySQL이 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 정확하지 않을 수 있습니다.
 index_ever=MySQL 클라이언트 프로그램 $1의 버전이 정확하지 않습니다. Webmin에서는 MySQL 버전 3만 지원합니다.
-index_nouser=Webmin 계정은 사용자 $1(으)로 MySQL 서버에 연결하도록 구성되어 있지만, 이 사용자의 액세스가 거부되었습니다. 
+index_nouser=Webmin 계정은 사용자 $1(으)로 MySQL 서버에 연결하도록 구성되어 있지만, 이 사용자의 액세스가 거부되었습니다.
 index_db=데이터베이스 이름
 index_tables=테이블
 
 login_err=로그인 실패
 login_ecannot=데이터베이스 로그인을 구성할 수 없습니다
 login_elogin=없는 관리자 로그인
-login_epass=잘못된 관리자  이름 또는 패스워드
+login_epass=잘못된 관리자 이름 또는 패스워드
 
 stop_err=데이터베이스를 중지하지 못했습니다
 start_err=데이터베이스를 시작하지 못했습니다

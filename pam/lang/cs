@@ -225,7 +225,7 @@ motd_file_def=Výchozí (<tt>/etc/motd</tt>)
 motd_efile=Chybějící nebo nesprávné jméno souboru
 
 mail_nopen=Zobrazit notifikaci mailu při přihlášení?
-mail_close=Zobrazit notifikaci mailu při  při odhlášení?
+mail_close=Zobrazit notifikaci mailu při při odhlášení?
 mail_empty=Ověřit, zda je mailový soubor prázdný?
 mail_noenv=Nastavit $MAIL ystémovou proměnnou?
 mail_dir=Spool adresář pro mail

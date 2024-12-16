@@ -1,6 +1,6 @@
 index_title=ProFTPD zerbitzaria
 index_eproftpd=Ezin izan da ProFTPD $1 zerbitzaria aurkitu zure sisteman. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
-index_eproftpd2=Ez dirudi $1 programa ProFTPD zerbitzaria denik. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da. $3 komandoaren irteera hau izan da : $4 
+index_eproftpd2=Ez dirudi $1 programa ProFTPD zerbitzaria denik. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da. $3 komandoaren irteera hau izan da : $4
 index_eversion=ProFTPD zerbitzariaren $1 bertsioak ez du Webmin onartzen.
 index_econf=ProFTPD $1 konfigurazio fitxategia ez da edo ez du balio. Agian zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_apply=Aplikatu aldaketak
@@ -102,7 +102,7 @@ manual_configs=Editatu Konfigurazio fitxategiak
 manual_ecannot=Ezin duzu eskuz editatu direktibak
 manual_file=Editatu arauak Fitxategian:
 manual_efile=ProFTPd konfigurazio fitxategi baliogabea
-manual_etest=Konfigurazio fitxategiaren akatsa hauteman da : $1 
+manual_etest=Konfigurazio fitxategiaren akatsa hauteman da : $1
 
 limit_title=Komandoko Aukerak
 limit_header4=$1 komandoetarako $2 direktoriorako
@@ -110,7 +110,7 @@ limit_header2=$1 komandoak zerbitzari lehenetsian
 limit_header1=$1 komandoak $2 zerbitzari birtualan
 limit_edit=Editatu Zuzentarauak
 limit_limit=Konfiguratu komandoak
-limit_header3=$1 komandoetarako aukerak $2 
+limit_header3=$1 komandoetarako aukerak $2
 limit_return=komando bakoitzeko aukerak
 limit_header5=$1 komandoak FTP anonimoan
 limit_header6=$1 komandoetarako $2 fitxategian

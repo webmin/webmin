@@ -1,8 +1,8 @@
 index_title=Ġeneratur tar-Rapport tal-Klamari
 index_econf=Il-fajl tal-konfigurazzjoni Sarg $1 ma nstabx fis-sistema tiegħek. Forsi Sarg mhuwiex installat, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
 index_ecmd=Il-programm Sarg $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
-index_eversion=Ma rnexxielux jikseb il-verżjoni ta ’Sarg bil-kmand $1 : $2 
-index_version=Verżjoni Sarg $1 
+index_eversion=Ma rnexxielux jikseb il-verżjoni ta ’Sarg bil-kmand $1 : $2
+index_version=Verżjoni Sarg $1
 index_generate=Iġġenera Rapport issa
 index_generatedesc=Ikklikkja din il-buttuna biex tiġġenera minnufih rapport Sarg f ' $1 billi tuża l-konfigurazzjoni kurrenti.
 index_clear=Ħassar ir-rapport eżistenti fid-direttorju?

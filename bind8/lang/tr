@@ -564,7 +564,7 @@ controls_unixgroup=FIFO, grubu tarafından sahiplenir
 controls_err=Arayüz seçeneklerinin kaydedilmesinde hata oluştu
 controls_einetip=Eksik ya da geçersiz IP adresi
 controls_einetport=Eksik ya da geçersiz port sayısı
-controls_einetallow='$1'  izin vermek izin geçersiz bir IP adresidir
+controls_einetallow='$1' izin vermek izin geçersiz bir IP adresidir
 controls_einetallows=İzin verilecek IP adresi girmediniz
 controls_eunixpath=Eksik ya da geçersiz FIFO dosya yolu
 controls_eunixperm=Eksik ya da geçersiz oktal dosya izinleri
@@ -718,13 +718,13 @@ vcreate_eclass=Eksik ya da geçersiz sınıf ismi
 vcreate_ecannot=Görüntü oluşturmaya yetkili değilsiniz
 
 hint_title=Kök Bölgelerini Düzenle
-hint_desc=Kök bölge (root zone), DNS sunucunuzun kök sunucuları ile kontak kurmasını sağlar.  DNS sunucunuz tarafından çözümlenemeyen alanlarda <tt>.com</tt> veya <tt>.net.tr</tt> gibi isimleri çözebilir. DNS sunucunuz iç ağda kullanılmadığı veya tüm sorgular başka bir sunucuya yönlendirilmediği takdirde bu kök bölgeyi silmemelisiniz.
+hint_desc=Kök bölge (root zone), DNS sunucunuzun kök sunucuları ile kontak kurmasını sağlar. DNS sunucunuz tarafından çözümlenemeyen alanlarda <tt>.com</tt> veya <tt>.net.tr</tt> gibi isimleri çözebilir. DNS sunucunuz iç ağda kullanılmadığı veya tüm sorgular başka bir sunucuya yönlendirilmediği takdirde bu kök bölgeyi silmemelisiniz.
 hint_move=Görüntüye taşı:
 hint_ecannot=Bu kök bölgesini düzenlemenize izin verilmiyor
 hint_refetch=Kök İsim Sunucularını Tekrar Yükle
 
 hcreate_title=Kök Bölge Oluştur
-hcreate_desc=Kök bölge (root zone), DNS sunucunuzun kök sunucuları ile kontak kurmasını sağlar.  DNS sunucunuz tarafından çözümlenemeyen alanlarda <tt>.com</tt> veya <tt>.net.tr</tt> gibi isimleri çözebilir. Eğer birden fazla görüntü kullanıyorsanız, her birinde ayrı kök bölgeye sahip olarak tüm istemcilerin internet alanlarını doğru çözümlemelerini sağlayabilirsiniz.
+hcreate_desc=Kök bölge (root zone), DNS sunucunuzun kök sunucuları ile kontak kurmasını sağlar. DNS sunucunuz tarafından çözümlenemeyen alanlarda <tt>.com</tt> veya <tt>.net.tr</tt> gibi isimleri çözebilir. Eğer birden fazla görüntü kullanıyorsanız, her birinde ayrı kök bölgeye sahip olarak tüm istemcilerin internet alanlarını doğru çözümlemelerini sağlayabilirsiniz.
 hcreate_file=Dosyada kök sunucularını depola
 hcreate_real=Kök sunucularına eriş
 hcreate_keep=Dosyada var olan kök sunucular

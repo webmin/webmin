@@ -1,4 +1,4 @@
-file_eread=Impossibile leggere $1 : $2 
+file_eread=Impossibile leggere $1 : $2
 
 list_efile=Il file da modificare deve essere un percorso assoluto
 list_format_ini=Formato INI
@@ -40,9 +40,9 @@ misc_path=Informazioni sul percorso di correzione CGI?
 misc_timezone=Fuso orario PHP
 misc_charset=Set di caratteri predefinito
 
-log_vars=Variabili PHP modificate in $1 
-log_session=Opzioni di sessione modificate in $1 
-log_safe=Opzioni della modalità provvisoria modificate in $1 
+log_vars=Variabili PHP modificate in $1
+log_session=Opzioni di sessione modificate in $1
+log_safe=Opzioni della modalità provvisoria modificate in $1
 
 acl_user=Leggi e scrivi i file come utente
 

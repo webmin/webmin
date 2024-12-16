@@ -38,9 +38,9 @@ enable_err=ไม่สามารถเปิดใช้งานโปรแ
 enable_eclash=มีโปรแกรมประเภท MIME สำหรับ $1 อยู่แล้ว
 delete_enone=ไม่ได้เลือก
 
-log_delete_mailcap=ลบโปรแกรมประเภท MIME สำหรับ $1 
-log_create_mailcap=สร้างโปรแกรมประเภท MIME สำหรับ $1 
-log_modify_mailcap=โปรแกรมประเภท MIME ดัดแปลงสำหรับ $1 
+log_delete_mailcap=ลบโปรแกรมประเภท MIME สำหรับ $1
+log_create_mailcap=สร้างโปรแกรมประเภท MIME สำหรับ $1
+log_modify_mailcap=โปรแกรมประเภท MIME ดัดแปลงสำหรับ $1
 log_delete_mailcaps=ลบโปรแกรมประเภท $1 MIME แล้ว
 log_disable_mailcaps=ปิดใช้งานโปรแกรมประเภท $1 MIME
 log_enable_mailcaps=เปิดใช้งานโปรแกรมประเภท $1 MIME แล้ว

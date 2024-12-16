@@ -1,5 +1,5 @@
 index_eprogs=Ani narzędzia RAID, ani pakiety MDADM nie są zainstalowane w systemie.
-index_mdadm=Korzystanie z MDADM w wersji $1 
+index_mdadm=Korzystanie z MDADM w wersji $1
 index_raidtools=Korzystanie z RaidTools
 index_name=Nazwa urządzenia
 index_active=Aktywny?
@@ -23,7 +23,7 @@ blocks=Bloki
 
 create_missing=Czy dołączyć aktualnie brakujący dysk?
 create_assume=Pominąć inicjalizację urządzeń?
-create_lvm=LVM VG $1, LV $2 
+create_lvm=LVM VG $1, LV $2
 create_group=Członek grupy rezerwowej
 create_nogroup=Brak (użyj tylko własnych części zamiennych)
 create_oldgroup=Istniejąca grupa
@@ -38,10 +38,10 @@ create_o3_layout=3 kopie offsetowe
 
 view_uuid=UUID
 view_errors=Błędy RAID
-view_bad=Awaria dysków $1 
-view_mount=Do montażu na $1 
-view_lvm=Używany w LVM VG $1 
-view_iscsi=Używany przez urządzenie współdzielone iSCSI $1 
+view_bad=Awaria dysków $1
+view_mount=Do montażu na $1
+view_lvm=Używany w LVM VG $1
+view_iscsi=Używany przez urządzenie współdzielone iSCSI $1
 view_stopdesc=Kliknij ten przycisk, aby zamknąć urządzenie RAID i uniemożliwić dostęp do niego.
 view_startdesc=Kliknij ten przycisk, aby ponownie aktywować to urządzenie RAID.
 view_delayed=Oczekiwanie na innym urządzeniu
@@ -83,9 +83,9 @@ emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
 
-log_add=Dodano partycję $2 do urządzenia RAID $1 
-log_remove=Usunięto partycję $2 z urządzenia RAID $1 
-log_replace=Wymieniona na gorąco partycja $2 w urządzeniu RAID $1 z wolną partycją $3 
+log_add=Dodano partycję $2 do urządzenia RAID $1
+log_remove=Usunięto partycję $2 z urządzenia RAID $1
+log_replace=Wymieniona na gorąco partycja $2 w urządzeniu RAID $1 z wolną partycją $3
 log_grow=Wyhodowano urządzenie RAID $1 do łącznie $2 dysków
 log_convert_to_raid6=Konwertowane urządzenie RAID5 $1 na urządzenie RAID6
 log_convert_to_raid5=Konwertowane urządzenie RAID6 $1 na urządzenie RAID5

@@ -7,14 +7,14 @@ index_active=Aktivan?
 index_tag=Program
 index_to=Odredite zapisnik
 index_rule=Odabrane poruke
-index_file=Datoteka $1 
-index_pipe=Nazivna cijev $1 
-index_pipe2=Pipe za naredbu $1 
-index_host=Syslog poslužitelj na $1 
-index_socket=Unix datoteka utičnice $1 
-index_cmd=Izlaz iz $1 
+index_file=Datoteka $1
+index_pipe=Nazivna cijev $1
+index_pipe2=Pipe za naredbu $1
+index_host=Syslog poslužitelj na $1
+index_socket=Unix datoteka utičnice $1
+index_cmd=Izlaz iz $1
 index_all=Svi korisnici
-index_users=Korisnici $1 
+index_users=Korisnici $1
 index_add=Dodavanje novog dnevnika sustava.
 index_return=zapisnici sustava
 index_restart=Primijeni promjene
@@ -26,7 +26,7 @@ index_view=Pogled ..
 index_viewfile=Pogledajte datoteku dnevnika:
 index_viewok=Pogled
 
-restart_ekill=Nije uspio signal syslog procesa $1 : $2 
+restart_ekill=Nije uspio signal syslog procesa $1 : $2
 restart_ecannot=Nije vam dopušteno ponovno pokretanje syslog-a
 
 start_ecannot=Nije vam dopušteno pokrenuti syslog
@@ -61,13 +61,13 @@ edit_ecannot=Nije vam dopušteno uređivanje postavki dnevnika
 edit_ecannot2=Nije vam dopušteno uređivanje ovog dnevnika
 
 view_title=Pogledajte Zapisnik
-view_header=Zadnji $1 redovi od $2 
+view_header=Zadnji $1 redovi od $2
 view_empty=Datoteka dnevnika je prazna
 view_refresh=Osvježiti
-view_filter=Pokaži samo retke s tekstom $1 
+view_filter=Pokaži samo retke s tekstom $1
 
 save_err=Spremanje dnevnika nije uspjelo
-save_efile='$1' nije valjano ime datoteke : $2 
+save_efile='$1' nije valjano ime datoteke : $2
 save_epipe='$1' nije važeća cijev s nazivom
 save_epipe2=Nedostaje naredba za slanje u
 save_esocket=Nedostaje ili nevažeća unix domena
@@ -86,9 +86,9 @@ save_ecannot6=Nije vam dopušteno pregledati proizvoljne zapisnike
 save_ecannot7=Nije vam dopušteno vidjeti ovaj dodatni zapisnik
 save_emissing=Nedostaje datoteka dnevnika za pregled
 
-log_modify=Izmijenjeni dnevnik u $1 
-log_create=Dnevnik je dodan u $1 
-log_delete=Izbrisani dnevnik u $1 
+log_modify=Izmijenjeni dnevnik u $1
+log_create=Dnevnik je dodan u $1
+log_delete=Izbrisani dnevnik u $1
 log_apply=Primijenjene promjene
 log_start=Pokrenut poslužitelj za prijavu
 

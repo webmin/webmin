@@ -6,7 +6,7 @@ index_delete=Usuń wybrane procesy
 inittab_none2=W systemie nie znaleziono procesów rozruchowych. Prawdopodobnie oznacza to, że nie używa on pliku konfiguracyjnego inicjalizacji SysV.
 
 log_apply=Zastosowana konfiguracja
-log_deletes=Usunięte procesy inicjowania $1 
+log_deletes=Usunięte procesy inicjowania $1
 
 apply_err=Nie można zastosować konfiguracji
 

@@ -2,7 +2,7 @@ index_title=Канфігурацыя OpenSLP
 index_return=Канфігурацыя OpenSLP
 index_eslpd=Дэман OpenSLP $1 не быў знойдзены ў вашай сістэме. Магчыма, ён не ўсталяваны, альбо ваша канфігурацыя модуля <a href='$2'></a> няправільная.
 index_econf=Файл канфігурацыі OpenSLP $1 у вашай сістэме не знойдзены. Магчыма, ён не ўсталяваны, альбо ваша канфігурацыя модуля <a href='$2'></a> няправільная.
-index_version=Версія OpenSLP $1 
+index_version=Версія OpenSLP $1
 
 slp_apply=Прымяніць змены
 slp_stop=Спыніць OpenSLP

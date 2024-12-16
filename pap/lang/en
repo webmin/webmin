@@ -29,7 +29,7 @@ edit_secret_sany=Any
 edit_secret_uany=Any
 edit_secret_pass=Password
 edit_secret_none=None
-edit_secret_ffile=From file 
+edit_secret_ffile=From file
 edit_secret_leave=Leave unchanged
 edit_secret_setto=Set to
 edit_secret_vaddr=Valid Addresses
@@ -40,7 +40,7 @@ edit_secret_save=Save
 edit_secret_del=Delete
 edit_secret_return=account list
 
-save_secret_esave=Failed to save account 
+save_secret_esave=Failed to save account
 save_secret_enoip='$1' is not a valid address
 
 log_create=Created PPP account $1

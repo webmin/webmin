@@ -12,7 +12,7 @@ index_notifytab=E-mail notificatie
 index_searchdesc=Dit formulier kan worden gebruikt om te zoeken naar Webmin-acties op gebruiker, module, datumbereik en uitgevoerde bestanden.
 index_notifydesc=Gebruik dit formulier om e-mailmeldingen te configureren wanneer Webmin-acties worden uitgevoerd door geselecteerde gebruikers of in gekozen modules.
 
-search_global_failed=Aanmelden bij Webmin is mislukt : $1 
+search_global_failed=Aanmelden bij Webmin is mislukt : $1
 search_global_expiredpass=Wachtwoord is verlopen
 search_global_wronguser=Ongeldige gebruiker
 search_global_wrongpass=Ongeldig wachtwoord

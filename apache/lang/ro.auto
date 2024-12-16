@@ -69,7 +69,7 @@ cvirt_eroot2=Crearea directorului '$1' : $2
 cvirt_eroot3=Nu aveți voie să utilizați directorul rădăcină „$1”
 cvirt_eroot4=Niciun utilizator definit în configurația Apache
 cvirt_etaken=Există deja un server virtual cu același nume și port
-cvirt_efile=Nu a reușit să scrie la $1 : $2 
+cvirt_efile=Nu a reușit să scrie la $1 : $2
 cvirt_emissing=Noul server virtual a fost adăugat la $1, dar acest fișier nu este folosit de Apache. Verificați configurația modulului <a href='$2'></a> și asigurați-vă că „Fișier sau director în care să adăugați servere virtuale” este corect.
 
 etype=Nu aveți voie să editați opțiuni de acest tip

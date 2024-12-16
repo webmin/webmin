@@ -1,5 +1,5 @@
 index_title=DHCP Sunucusu
-index_dhcpdnotfound=DHCP sunucusu <i>$1</i> sisteminizde bulunamadı.Kurulmamış ya da  <a href="$2">DHCP modül ayarları </a> yanlış olabilir
+index_dhcpdnotfound=DHCP sunucusu <i>$1</i> sisteminizde bulunamadı.Kurulmamış ya da <a href="$2">DHCP modül ayarları </a> yanlış olabilir
 index_return=indeks
 index_subtitle=Alt ve Paylaşılmış Ağlar
 index_nosubdef=Alt ya da paylaşılmış ağ tanımlanmamış
@@ -107,7 +107,7 @@ plib_thisserv=Bu sunucu
 plib_servname=Sunucu ismi
 plib_llbc=BOOTP istemcileri için gecikme uzunluğu
 plib_forever=Daima
-plib_lebc=BOOTP istemcileri için gecikme sonu 
+plib_lebc=BOOTP istemcileri için gecikme sonu
 plib_never=Asla
 plib_invalidlt=geçerli bir gecikme süresi değil
 plib_invalidsn=geçerli bir sunucu ismi değil

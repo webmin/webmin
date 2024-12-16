@@ -19,9 +19,9 @@ deletes_err=Nepodarilo sa zrušiť príkazy
 deletes_enone=Žiadne vybraté
 
 log_allow=Zmenení povolení používatelia
-log_create_job=Bol vytvorený naplánovaný príkaz pre $1 
-log_delete_job=Zrušený naplánovaný príkaz pre $1 
-log_exec_job=Vykonal sa naplánovaný príkaz pre $1 
+log_create_job=Bol vytvorený naplánovaný príkaz pre $1
+log_delete_job=Zrušený naplánovaný príkaz pre $1
+log_exec_job=Vykonal sa naplánovaný príkaz pre $1
 log_delete_jobs=Zrušené $1 naplánované príkazy
 log_stop=Server plánovaných príkazov bol zastavený
 log_start=Server spustených naplánovaných príkazov

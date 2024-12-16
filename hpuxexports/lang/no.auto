@@ -68,10 +68,10 @@ save_enohost='$1' - Du har ikke vist noen verter
 save_euids=UID-er som ikke stoler på, må være en kommaseparert liste over tall eller områder
 save_egids=GID-er som ikke stoler på, må være en kommaseparert liste over tall eller områder
 
-log_modify=Endret NFS-eksport $1 
-log_modify_l=Endret NFS-eksport $1 til $2 
+log_modify=Endret NFS-eksport $1
+log_modify_l=Endret NFS-eksport $1 til $2
 log_delete=NFS-eksport $1 er slettet
 log_delete_l=NFS-eksport $1 til $2 er slettet
-log_create=Opprettet NFS-eksport $1 
-log_create_l=Opprettet NFS-eksport $1 til $2 
+log_create=Opprettet NFS-eksport $1
+log_create_l=Opprettet NFS-eksport $1 til $2
 log_apply=Anvendt konfigurasjon

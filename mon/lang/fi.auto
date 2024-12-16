@@ -117,7 +117,7 @@ service_monitor=Monitorin käyttö
 service_mon1=Vakiomonitori
 service_mon0=Muu näyttö ..
 service_args=Tarkkaile parametreja
-service_period=Seurantakausi $1 
+service_period=Seurantakausi $1
 service_days=Päivät tarkistaa
 service_hours=Tunnit tarkistaa
 service_all=Kaikki
@@ -185,7 +185,7 @@ auth_none=ei kukaan
 auth_all=jokainen
 auth_sel=Vain käyttäjät
 auth_err=Asiakaskomentojen tallentaminen epäonnistui
-auth_eusers=Yksikään käyttäjä ei anna komentoa $1 
+auth_eusers=Yksikään käyttäjä ei anna komentoa $1
 
 periods_title=Määritetyt ajanjaksot
 periods_period=Kauden nimi

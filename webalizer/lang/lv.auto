@@ -1,6 +1,6 @@
 index_title=Webalizer logfile analīze
-index_version=Webalizer versija $1 
-index_version_webalizer=Webalizer versija $1 
+index_version=Webalizer versija $1
+index_version_webalizer=Webalizer versija $1
 index_version_awffull=AWFFull
 index_ewebalizer=Logfile analīzes komanda $1 jūsu sistēmā netika atrasta. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_econf=Webalizer konfigurācijas fails $1 jūsu sistēmā netika atrasts. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
@@ -21,8 +21,8 @@ index_return=žurnālfailu saraksts
 index_global=Rediģēt globālās iespējas
 index_globaldesc=Noklikšķiniet uz šīs pogas, lai rediģētu Webalizer opcijas, kas attiecas uz pārskatiem, kas ģenerēti no visiem žurnāla failiem.
 index_eversion=Webalizer komanda $1 jūsu sistēmā ir versija $2, taču šis modulis atbalsta tikai versijas $3 un jaunākas.
-index_egetversion=Neizdevās iegūt Webalizer versiju ar komandu $1 : $2 
-index_when=Jā, $1 
+index_egetversion=Neizdevās iegūt Webalizer versiju ar komandu $1 : $2
+index_when=Jā, $1
 index_webalizer=Webalizer
 index_enable=Grafiks izvēlēts
 index_disable=Izvēlēts grafiks
@@ -66,7 +66,7 @@ save_euser=Trūkst vai nav derīgs lietotājs, lai palaistu webalizer kā
 save_ewuser=Neviens Unix lietotājs ar nosaukumu $1 nepastāv
 save_ehost=Trūkst vai nav derīgs vietnes resursdators
 save_etitle=Trūkst pārskata nosaukuma
-save_ecannot=Jums ir atļauts ģenerēt pārskatus tikai žurnāliem, kas ir zem $1 
+save_ecannot=Jums ir atļauts ģenerēt pārskatus tikai žurnāliem, kas ir zem $1
 
 view_epath=Nederīgs PATH_INFO
 view_efile=Nederīgs pārskata faila nosaukums
@@ -77,7 +77,7 @@ view_title=Skatīt ziņojumu
 
 global_title=Globālās Webalizer opcijas
 global_title2=Webalizer pārskata iespējas
-global_for=Logfailam $1 
+global_for=Logfailam $1
 global_first=Pašlaik šim žurnālfailam nav iestatītas opcijas, kas nozīmē, ka tā vietā tiks izmantotas globālās opcijas. Saglabājot šo veidlapu, šim žurnālam izveidotajos pārskatos no šī brīža tiks izmantoti šajā lapā izvēlētie iestatījumi.
 global_header=Visu pārskatu Webalizer opcijas
 global_host=Vietnes resursdators
@@ -146,12 +146,12 @@ global_ehistory=Trūkst vai nav derīgs vēstures faila nosaukums
 global_ecurrent=Trūkst vai nav derīgs faila nosaukums
 global_ecache=Trūkst vai nav derīgs DNS kešatmiņas faila nosaukums
 
-log_create_log=Izveidots pārskats par $1 
-log_modify_log=Modificēts pārskats $1 
-log_delete_log=Dzēsti pārskati par $1 
-log_generate_log=Ģenerēts pārskats $1 
+log_create_log=Izveidots pārskats par $1
+log_modify_log=Modificēts pārskats $1
+log_delete_log=Dzēsti pārskati par $1
+log_generate_log=Ģenerēts pārskats $1
 log_global=Pārveidotas globālās Webalizer iespējas
-log_global2=Modificētas Webalizer iespējas $1 
+log_global2=Modificētas Webalizer iespējas $1
 log_enable_logs=Plānota ziņošana par $1 žurnāliem
 log_disable_logs=Atskaites par pārtraukšanu $1 žurnālos
 

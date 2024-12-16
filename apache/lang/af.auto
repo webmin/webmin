@@ -69,7 +69,7 @@ cvirt_eroot2=Kon nie '$1' gids skep nie : $2
 cvirt_eroot3=U mag nie die wortelgids '$1' gebruik nie
 cvirt_eroot4=Geen gebruiker is gedefinieër in die Apache-opset nie
 cvirt_etaken=Daar bestaan reeds 'n virtuele bediener met dieselfde naam en poort
-cvirt_efile=Kon nie skryf aan $1 : $2 
+cvirt_efile=Kon nie skryf aan $1 : $2
 cvirt_emissing=Die nuwe virtuele bediener is bygevoeg tot $1, maar hierdie lêer word nie deur Apache gebruik nie. Gaan die <a href='$2'>modulekonfigurasie</a> na en maak seker dat die 'Lêer of gids om virtuele bedieners toe te voeg' korrek is.
 
 etype=U mag nie hierdie tipe opsies wysig nie

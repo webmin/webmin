@@ -68,10 +68,10 @@ save_enohost='$1' - Nem adott meg gazdagépet
 save_euids=A nem megbízható UID-k vesszővel elválasztott számok vagy tartományok listájának kell lennie
 save_egids=A nem megbízható GID-knek vesszővel elválasztott számok vagy tartományok listájának kell lennie
 
-log_modify=Módosított NFS export $1 
-log_modify_l=Módosított NFS export $1 - $2 
-log_delete=Törölt NFS export $1 
-log_delete_l=Törölt NFS export $1 - $2 
-log_create=Létrehozta az NFS exportálását $1 
-log_create_l=Létrehozta az NFS exportálását $1 - $2 
+log_modify=Módosított NFS export $1
+log_modify_l=Módosított NFS export $1 - $2
+log_delete=Törölt NFS export $1
+log_delete_l=Törölt NFS export $1 - $2
+log_create=Létrehozta az NFS exportálását $1
+log_create_l=Létrehozta az NFS exportálását $1 - $2
 log_apply=Alkalmazott konfiguráció

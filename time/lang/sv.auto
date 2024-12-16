@@ -7,7 +7,7 @@ index_sync=Synkronisera och applicera
 index_hardware2=Ställ in hårdvara också
 index_boot=Synkronisera när Webmin startar?
 index_tzheader=Tidszon
-index_ehwclock=$1 misslyckades : $2 
+index_ehwclock=$1 misslyckades : $2
 index_tabtime=Ställ klockan
 index_tabzone=Ändra tidszon
 index_tabsync=Tidsserversynkronisering
@@ -24,11 +24,11 @@ minute=Minut
 second=Andra
 
 error_ediff=Tidsservern annorlunda med lokal tid är för stor: $1 dagar
-error_entp=NTP-tidssynkronisering misslyckades : $1 
+error_entp=NTP-tidssynkronisering misslyckades : $1
 error_etimeserver=Inga tidsservrar att synkronisera med angivna
 error_serviceunknown=Okänd tjänst : $1
 
-log_timezone=Ändrade tidszon till $1 
+log_timezone=Ändrade tidszon till $1
 
 timezone_err=Det gick inte att spara tidszon
 timezone_ecannot=Du får inte ändra tidszonen

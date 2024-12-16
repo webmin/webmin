@@ -1,7 +1,7 @@
 index_title=Shorewall6 ugunsmūris
 index_ecmd=Komanda $1 jūsu sistēmā netika atrasta. Varbūt tas nav instalēts, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_edir=Shorewall konfigurācijas direktorijs $1 jūsu sistēmā netika atrasts. Varbūt tas nav instalēts, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
-index_version=Shorewall6 versija $1 
+index_version=Shorewall6 versija $1
 index_return=tabulu saraksts
 index_restart=Lietot konfigurāciju
 index_restartdesc=Noklikšķiniet uz šīs pogas, lai aktivizētu pašreizējo Shorewall konfigurāciju ar komandu <tt>shorewall6 restart</tt>.
@@ -85,7 +85,7 @@ policy_1=Galamērķa zona
 policy_2=Politika
 policy_3=Syslog līmenis
 policy_4=Satiksmes ierobežojums
-policy_limit=Ierobežot $1, sēriju $2 
+policy_limit=Ierobežot $1, sēriju $2
 policy_return=politikas saraksts
 policy_edit=Rediģēt noklusējuma politiku
 policy_create=Izveidot noklusējuma politiku
@@ -310,13 +310,13 @@ hosts_err=Neizdevās saglabāt zonas resursdatoru
 hosts_enet=Trūkst vai nav derīga resursdatora adrese
 hosts_header=Zonas resursdatora informācija
 hosts_routestopped=Maršruts pat tad, ja ugunsmūris ir apturēts?
-hosts_ip=Adrese vai tīkls $1 
-hosts_mac=MAC adrese $1 
-hosts_ipset=IP komplekts $1 
+hosts_ip=Adrese vai tīkls $1
+hosts_mac=MAC adrese $1
+hosts_ipset=IP komplekts $1
 hosts_any=Jebkura saimniece
 
-edit_before=Pirms iebraukšanas $1 
-edit_after=Pēc iebraukšanas $1 
+edit_before=Pirms iebraukšanas $1
+edit_after=Pēc iebraukšanas $1
 
 blacklist_title=Melnā saraksta saimnieki
 blacklist_desc=Šajā lapā ir uzskaitīti resursdatori un pakalpojumi, kas tiks bloķēti, ja satiksme no tiem notiks saskarnē ar iestatīto <b>melno sarakstu</b>.
@@ -422,15 +422,15 @@ comment_msg=Ziņa
 comment_err=Neizdevās saglabāt komentāru
 comment_enone=Nav ievadīts neviens ziņojums
 
-log_create_table=Pievienots ieraksts tabulā $1 
-log_modify_table=Modificēts ieraksts tabulā $1 
+log_create_table=Pievienots ieraksts tabulā $1
+log_modify_table=Modificēts ieraksts tabulā $1
 log_delete_table=Izdzēsts ieraksts no $1 tabulas
 log_deletes_table=Izdzēsti ieraksti no $1 tabulas
-log_up_table=Ieraksts pārvietots uz augšu tabulā $1 
-log_down_table=Ieraksts tika pārvietots uz leju tabulā $1 
+log_up_table=Ieraksts pārvietots uz augšu tabulā $1
+log_down_table=Ieraksts tika pārvietots uz leju tabulā $1
 log_manual_table=Manuāli rediģēja $1 tabulas failu
-log_create_comment=Pievienots komentārs tabulai $1 
-log_modify_comment=Modificēts komentārs tabulā $1 
+log_create_comment=Pievienots komentārs tabulai $1
+log_modify_comment=Modificēts komentārs tabulā $1
 log_delete_comment=Izdzēsts komentārs no $1 tabulas
 log_stop=Pārtraukts ugunsmūris
 log_start=Startēja ugunsmūris

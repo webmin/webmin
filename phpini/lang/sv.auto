@@ -11,7 +11,7 @@ index_anyfile=Redigera annan PHP-konfigurationsfil:
 index_return=konfigurationsfiler
 
 file_global=Global PHP-konfiguration
-file_eread=Det gick inte att läsa $1 : $2 
+file_eread=Det gick inte att läsa $1 : $2
 
 manual_title=Redigera konfiguration manuellt
 manual_desc=Den här sidan kan användas för att manuellt redigera en PHP-konfigurationsfil. Detta bör göras noggrant, eftersom ingen syntax eller annan giltighetskontroll kommer att utföras på dina ändringar.
@@ -124,7 +124,7 @@ errors_maxlen=Maximal storlek på inloggade fel
 errors_file=Loggfil för fel
 errors_none=Ingen
 errors_syslog=syslog
-errors_other=Annan fil $1 
+errors_other=Annan fil $1
 errors_unlimited=Obegränsat
 errors_err=Det gick inte att spara felloggning
 errors_ereporting=Inget fel typ uttryckt in
@@ -153,14 +153,14 @@ misc_timezone=PHP-tidszon
 misc_charset=Standardteckenuppsättning
 
 log_manual=Redigera filen $1 manuellt
-log_vars=Ändrade PHP-variabler i $1 
-log_dirs=Ändrade kataloginställningar i $1 
-log_db=Ändrade databasinställningar i $1 
-log_session=Ändrade sessionalternativ i $1 
-log_safe=Ändrade alternativ för säkert läge i $1 
-log_limits=Ändrade resursgränser i $1 
-log_errors=Ändrad felinloggning i $1 
-log_misc=Ändrade andra inställningar i $1 
+log_vars=Ändrade PHP-variabler i $1
+log_dirs=Ändrade kataloginställningar i $1
+log_db=Ändrade databasinställningar i $1
+log_session=Ändrade sessionalternativ i $1
+log_safe=Ändrade alternativ för säkert läge i $1
+log_limits=Ändrade resursgränser i $1
+log_errors=Ändrad felinloggning i $1
+log_misc=Ändrade andra inställningar i $1
 
 acl_global=Kan redigera global PHP-konfiguration?
 acl_anyfile=Kan redigera vilken fil som helst som en PHP-konfiguration?

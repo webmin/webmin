@@ -83,17 +83,17 @@ save_eanongid=Neteisingas anoniminės prieigos grupės pavadinimas
 
 exports_webnfs=„WebNFS“ klientai
 exports_ngroup=$1 tinklo grupė
-exports_net=Tinklas $1 
+exports_net=Tinklas $1
 exports_all=Visi
-exports_hosts=Prieglobos $1 
+exports_hosts=Prieglobos $1
 exports_host=$1 pagrindinis kompiuteris
-exports_gss=Autentifikuotas tinklas: $1 
+exports_gss=Autentifikuotas tinklas: $1
 
-log_modify=Modifikuotas NFS eksportas $1 
-log_modify_l=Modifikuotas NFS eksportas nuo $1 iki $2 
-log_delete=Ištrintas NFS eksportas $1 
-log_delete_l=Ištrintas NFS eksportas nuo $1 iki $2 
-log_create=Sukurtas NFS eksportas $1 
-log_create_l=Sukurtas NFS eksportas nuo $1 iki $2 
+log_modify=Modifikuotas NFS eksportas $1
+log_modify_l=Modifikuotas NFS eksportas nuo $1 iki $2
+log_delete=Ištrintas NFS eksportas $1
+log_delete_l=Ištrintas NFS eksportas nuo $1 iki $2
+log_create=Sukurtas NFS eksportas $1
+log_create_l=Sukurtas NFS eksportas nuo $1 iki $2
 log_apply=Taikoma konfigūracija
 log_delete_exports=Ištrintas $1 NFS eksportas

@@ -18,7 +18,7 @@ vgetty_return=seriel portliste
 vgetty_create=Tilføj seriel port
 vgetty_edit=Rediger serieport
 vgetty_header=Indstillinger for seriel portkonfiguration
-vgetty_ts=Seriel port $1 
+vgetty_ts=Seriel port $1
 vgetty_other=Andet udstyr ..
 vgetty_rings=Ringer inden svar
 vgetty_default=Global standard
@@ -100,19 +100,19 @@ pvfdesc=$1, $2 bit
 
 upload_err=Kunne ikke tilføje besked
 upload_emessage=Ingen WAV-fil valgt
-upload_ewav=Kunne ikke konvertere WAV-fil : $1 
-upload_epvf=Kunne ikke oprette RMD-fil : $1 
+upload_ewav=Kunne ikke konvertere WAV-fil : $1
+upload_epvf=Kunne ikke oprette RMD-fil : $1
 upload_esame=Meddelelsesfilen $1 findes allerede
 
 log_apply=Anvendt konfiguration
-log_upload=Uploadet hilsen $1 
+log_upload=Uploadet hilsen $1
 log_move=Konverterede $1 modtagne meddelelser
 log_delete0=Slet $1 modtagne meddelelser
 log_delete1=Slet $1 hilsen meddelelser
 log_options=Ændrede valgmuligheder for voicemail
-log_vgetty_create=Tilføjet seriel port $1 
-log_vgetty_modify=Ændret seriel port $1 
-log_vgetty_delete=Slettet seriel port $1 
+log_vgetty_create=Tilføjet seriel port $1
+log_vgetty_modify=Ændret seriel port $1
+log_vgetty_delete=Slettet seriel port $1
 
 email_subject=Talebesked
 email_body=Talemeddelelsesmeddelelse modtaget $1 af $2.

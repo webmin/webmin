@@ -4,10 +4,10 @@ index_edir=Jabber bāzes direktorija $1 neeksistē. Vai nu Jabber nav instalēts
 index_emodules=Perl moduļi $1 un $2, kas Webmin nepieciešami Jabber XML konfigurācijas apstrādei, nav instalēti. <a href='$3'>Noklikšķiniet šeit</a>, lai instalētu tos tieši no CPAN.
 index_emodule=Perl modulis $1, kas Webmin nepieciešams Jabber XML konfigurācijas apstrādei, nav instalēts. <a href='$2'>Noklikšķiniet šeit</a>, lai instalētu to tieši no CPAN.
 index_expat=Pirms mēģināt instalēt Perl moduļus, pārliecinieties, vai esat instalējis Expat C bibliotēku un galvenes, jo tie ir atkarīgi no tā un neizdosies, ja tas nebūs pieejams.
-index_eparse=Perl modulis $1 nevarēja parsēt jūsu Jabber konfigurācijas failu : $2 
+index_eparse=Perl modulis $1 nevarēja parsēt jūsu Jabber konfigurācijas failu : $2
 index_ejabberd=Jabber servera programma $1 jūsu sistēmā netika atrasta. Vai nu Jabber nav instalēts, vai arī jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
-index_eversion=Webmin atbalsta tikai Jabber versiju $2, bet komanda $3 ziņoja par šādu versijas informāciju : $1 
-index_eversion2=Webmin atbalsta tikai Jabber versijas zem $2, bet komanda $3 ziņoja par šādu versijas informāciju : $1 
+index_eversion=Webmin atbalsta tikai Jabber versiju $2, bet komanda $3 ziņoja par šādu versijas informāciju : $1
+index_eversion2=Webmin atbalsta tikai Jabber versijas zem $2, bet komanda $3 ziņoja par šādu versijas informāciju : $1
 index_start=Startējiet Jabber Server
 index_startmsg=Noklikšķiniet uz šīs pogas, lai savā sistēmā startētu Jabber serveri. Kamēr tā nav sākta, neviens tērzēšanas klients to nevarēs izmantot.
 index_stop=Apturiet Jabber Server
@@ -16,7 +16,7 @@ index_restart=Lietot izmaiņas
 index_restartmsg=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo konfigurāciju, apstādinot un pēc tam atkārtoti palaižot Jabber serveri.
 index_comments=Brīdinājums - jūsu Jabber konfigurācijas failā $1 ir komentāri, kas tiks noņemti, ja, izmantojot šo moduli, tiks veiktas kādas konfigurācijas izmaiņas.
 index_return=Jabber izvēlne
-index_version=Jabber versija $1 
+index_version=Jabber versija $1
 
 general_title=Vispārīgās iespējas
 general_header=Globālās Jabber servera iespējas
@@ -44,7 +44,7 @@ messages_rnotify=Vai paziņot administratoram par reģistrāciju?
 messages_rfields=Obligāti reģistrācijas lauki
 messages_vcard2jud=Vai sūtīt vCard uz Jabber lietotāju direktoriju?
 messages_err=Neizdevās saglabāt ziņojumus
-messages_evcard=Nederīgs vCard XML : $1 
+messages_evcard=Nederīgs vCard XML : $1
 messages_etag=Servera vCard XML nesākas ar &lt;vCard&gt;
 
 modules_title=Jabber moduļi

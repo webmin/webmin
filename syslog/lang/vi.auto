@@ -7,14 +7,14 @@ index_active=Chủ động?
 index_tag=Chương trình
 index_to=Đăng nhập đích
 index_rule=Tin nhắn được chọn
-index_file=Tệp $1 
-index_pipe=Đặt tên ống $1 
-index_pipe2=Ống để lệnh $1 
-index_host=Máy chủ nhật ký hệ thống trên $1 
-index_socket=Tệp ổ cắm Unix $1 
-index_cmd=Đầu ra từ $1 
+index_file=Tệp $1
+index_pipe=Đặt tên ống $1
+index_pipe2=Ống để lệnh $1
+index_host=Máy chủ nhật ký hệ thống trên $1
+index_socket=Tệp ổ cắm Unix $1
+index_cmd=Đầu ra từ $1
 index_all=Tất cả người dùng
-index_users=Người dùng $1 
+index_users=Người dùng $1
 index_add=Thêm một nhật ký hệ thống mới.
 index_return=nhật ký hệ thống
 index_restart=Áp dụng các thay đổi
@@ -26,7 +26,7 @@ index_view=Lượt xem ..
 index_viewfile=Xem tệp nhật ký:
 index_viewok=Lượt xem
 
-restart_ekill=Không thể báo hiệu quá trình nhật ký hệ thống $1 : $2 
+restart_ekill=Không thể báo hiệu quá trình nhật ký hệ thống $1 : $2
 restart_ecannot=Bạn không được phép khởi động lại syslog
 
 start_ecannot=Bạn không được phép bắt đầu nhật ký hệ thống
@@ -61,13 +61,13 @@ edit_ecannot=Bạn không được phép chỉnh sửa cài đặt nhật ký
 edit_ecannot2=Bạn không được phép chỉnh sửa nhật ký này
 
 view_title=Xem logfile
-view_header=$1 dòng cuối cùng của $2 
+view_header=$1 dòng cuối cùng của $2
 view_empty=Tệp nhật ký trống
 view_refresh=Làm tươi
-view_filter=Chỉ hiển thị các dòng có văn bản $1 
+view_filter=Chỉ hiển thị các dòng có văn bản $1
 
 save_err=Không thể lưu nhật ký
-save_efile='$1' không phải là tên tệp hợp lệ : $2 
+save_efile='$1' không phải là tên tệp hợp lệ : $2
 save_epipe='$1' không phải là một ống có tên hợp lệ
 save_epipe2=Thiếu lệnh để đường ống đến
 save_esocket=Thiếu hoặc không hợp lệ ổ cắm tên miền unix
@@ -86,9 +86,9 @@ save_ecannot6=Bạn không được phép xem nhật ký tùy ý
 save_ecannot7=Bạn không được phép xem nhật ký bổ sung này
 save_emissing=Thiếu tệp nhật ký để xem
 
-log_modify=Nhật ký đã sửa đổi thành $1 
-log_create=Đã thêm nhật ký vào $1 
-log_delete=Đã xóa nhật ký thành $1 
+log_modify=Nhật ký đã sửa đổi thành $1
+log_create=Đã thêm nhật ký vào $1
+log_delete=Đã xóa nhật ký thành $1
 log_apply=Áp dụng thay đổi
 log_start=Bắt đầu đăng nhập máy chủ
 

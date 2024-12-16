@@ -9,9 +9,9 @@ save_ehost2=Tuan rumah tidak wujud
 save_eport2=Pelabuhan mesti diberikan jika jenis pautan dengan log masuk dipilih
 save_egroup2=Nama kumpulan baru tidak sah
 
-find_but=Menemui pelayan baru di $1, tetapi pengesahan gagal : $2 
-find_already2=Hos pelayan yang diketahui pada $1 
-find_skip=Mengabaikan pelayan di $1 
+find_but=Menemui pelayan baru di $1, tetapi pengesahan gagal : $2
+find_already2=Hos pelayan yang diketahui pada $1
+find_skip=Mengabaikan pelayan di $1
 find_eiface=Tidak dapat mencari antara muka untuk mengimbas
 find_eport=Nombor port hilang atau tidak sah
 

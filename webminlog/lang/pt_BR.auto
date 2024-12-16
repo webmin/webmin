@@ -36,7 +36,7 @@ search_critd=onde a descrição contém <tt>$1</tt>
 search_global=Nenhum
 search_global_login=Conectado ao Webmin
 search_global_logout=Desconectado do Webmin
-search_global_failed=Falha no login no Webmin : $1 
+search_global_failed=Falha no login no Webmin : $1
 search_global_expiredpass=Senha expirada
 search_global_wronguser=Usuário Inválido
 search_global_wrongpass=Senha inválida
@@ -94,5 +94,5 @@ notify_emods=Nenhum módulo selecionado
 notify_eusers=Nenhum usuário selecionado
 notify_eemail=Nenhum endereço de e-mail inserido
 
-log_rollback=Ação revertida $1 no módulo $2 
+log_rollback=Ação revertida $1 no módulo $2
 log_notify=Opções de notificações de e-mail salvas

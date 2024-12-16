@@ -38,7 +38,7 @@ index_to=A forgalomhoz előbb
 index_efrom=Érvénytelen kezdő dátum és idő
 index_eto=Érvénytelen záró dátum és idő
 index_err=Sikertelen a riport generálása
-index_usage=Hálózati forgalom  <font color=#ff0000>letöltött</font> és <font color=#0000ff>feltöltött</font>
+index_usage=Hálózati forgalom <font color=#ff0000>letöltött</font> és <font color=#0000ff>feltöltött</font>
 index_hhour=Óra
 index_hhost=Hoszt
 index_hday=Nap

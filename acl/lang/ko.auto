@@ -1,8 +1,8 @@
 index_screate=안전한 새 사용자를 작성하십시오.
 index_twofactor=2 단계 인증
 index_joingroup=그룹에 추가 :
-index_eulist=사용자를 나열하지 못했습니다 : $1 
-index_eglist=그룹을 나열하지 못했습니다 : $1 
+index_eulist=사용자를 나열하지 못했습니다 : $1
+index_eglist=그룹을 나열하지 못했습니다 : $1
 
 edit_title3=안전한 Webmin 사용자 생성
 edit_twofactor=이중 인증 유형
@@ -39,8 +39,8 @@ acl_sql=사용자 및 그룹 데이터베이스를 구성 할 수 있습니까?
 
 log_joingroup=$1 Webmin 사용자를 $2 그룹에 추가했습니다.
 log_sql=변경된 사용자 및 그룹 데이터베이스
-log_twofactor=2 단계 공급자 $2 에 등록 된 사용자 $1 
-log_onefactor=이중 인증을위한 등록 해제 된 사용자 $1 
+log_twofactor=2 단계 공급자 $2 에 등록 된 사용자 $1
+log_onefactor=이중 인증을위한 등록 해제 된 사용자 $1
 
 gedit_desc=그룹 설명
 gedit_egone=선택된 그룹이 더 이상 존재하지 않습니다!
@@ -101,7 +101,7 @@ sql_addto1=로컬 파일에 새로운 사용자 추가
 sql_nocache0=데이터베이스에 대한 캐시 연결
 sql_nocache1=조회 할 때마다 새 연결 열기
 sql_emod=필수 Perl 모듈이 누락되었습니다 <tt>$1</tt>
-sql_etable=필수 테이블 $1 을 (를) 쿼리하지 못했습니다 : $2 
+sql_etable=필수 테이블 $1 을 (를) 쿼리하지 못했습니다 : $2
 sql_eldapdn=기본 LDAP DN $1 을 찾을 수 없습니다
 sql_eclass=서버의 스키마에 LDAP 객체 클래스 $1 이 없습니다.
 sql_err=사용자 및 그룹 데이터베이스 설정을 저장하지 못했습니다.
@@ -112,11 +112,11 @@ sql_edb=데이터베이스 이름이 잘못되었습니다 (공백이 허용되�
 sql_eprefix=기본 DN이 없거나 유효하지 않습니다 (공백 허용 안 됨)
 sql_eprefix2=잘못된 기본 DN-<tt>dc = mydomain, dc = com</tt>과 같아야합니다.
 sql_title2=누락 된 테이블 만들기
-sql_tableerr=사용자 및 그룹 데이터베이스 설정이 유효하지만 Webmin에 필요한 일부 테이블이 누락되었습니다 : $1 
+sql_tableerr=사용자 및 그룹 데이터베이스 설정이 유효하지만 Webmin에 필요한 일부 테이블이 누락되었습니다 : $1
 sql_tableerr2=아래의 <b>테이블 생성</b> 버튼을 클릭하여 자동으로 생성하거나 아래 SQL을 수동으로 실행하십시오.
 sql_make=테이블 만들기
 sql_title3=누락 된 DN 생성
-sql_dnerr=사용자 및 그룹 데이터베이스 설정이 유효하지만 Webmin에 필요한 LDAP DN이 누락되었습니다 : $1 
+sql_dnerr=사용자 및 그룹 데이터베이스 설정이 유효하지만 Webmin에 필요한 LDAP DN이 누락되었습니다 : $1
 sql_dnerr2=아래의 <b>DN 만들기</b> 버튼을 클릭하여 자동으로 만들거나 LDAP 서버에 수동으로 추가하십시오.
 sql_makedn=DN 생성
 sql_schema=LDAP 스키마 다운로드
@@ -128,16 +128,16 @@ sql_etimeout=캐시 된 연결 시간 제한은 숫자 여야합니다.
 make_title=사용자 및 그룹 테이블 생성
 make_err=사용자 및 그룹 테이블을 작성하지 못했습니다.
 make_exec=SQL $1 실행 중..
-make_failed=.. 작성 실패 : $1 
+make_failed=.. 작성 실패 : $1
 make_done=.. 완료
 make_still=$1 : 테이블 생성 후에도 몇 가지 문제가 발견되었습니다.
 
 makedn_title=LDAP DN 생성
 makedn_eoc=구조적 객체 클래스가 없습니다!
 makedn_exec=상위 DN $1 만들기..
-makedn_failed=.. 작성 실패 : $1 
+makedn_failed=.. 작성 실패 : $1
 makedn_done=.. 완료
-makedn_still=DN 생성 후에도 몇 가지 문제가 발견되었습니다. $1 
+makedn_still=DN 생성 후에도 몇 가지 문제가 발견되었습니다. $1
 
 schema_title=LDAP 스키마 다운로드
 schema_desc=Webmin이 LDAP 서버를 사용하여 사용자 및 그룹을 저장하려면 아래 스키마를 사용하도록 구성해야합니다. 이것은 일반적으로 <tt>/etc/ldap/schema</tt> 또는 <tt>/etc/openldap/schema</tt>의 스키마 정의를 <tt>webmin.schema</tt>로 저장하여 수행 할 수 있습니다. 그런 다음 해당 스키마 파일을로드하도록 서버를 구성하십시오.
@@ -154,7 +154,7 @@ twofactor_desc2=이 페이지에서 <a href='$2' target=_blank>$1</a>. 활성화
 twofactor_enable=2 단계 인증에 등록
 twofactor_header=이중 인증 등록 세부 사항
 twofactor_enrolling=제공자 $1 로 2 단계 인증에 등록하는 중입니다.
-twofactor_failed=.. 등록 실패 : $1 
+twofactor_failed=.. 등록 실패 : $1
 twofactor_done=.. 완료 이 제공자의 귀하의 ID는 <tt>$1</tt>입니다.
 twofactor_setup=이 시스템에서 2 단계 인증이 아직 활성화되지 않았지만 <a href='$1'>Webmin 구성</a> 모듈을 사용하여 켤 수 있습니다.
 twofactor_ebutton=버튼을 클릭하지 않았습니다!

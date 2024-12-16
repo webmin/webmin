@@ -1,7 +1,7 @@
 index_title=Shorewall6-palomuuri
 index_ecmd=Komentoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
 index_edir=Shorewall-kokoonpanohakemistoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
-index_version=Shorewall6-versio $1 
+index_version=Shorewall6-versio $1
 index_return=luettelo taulukoista
 index_restart=Käytä määritystä
 index_restartdesc=Napsauta tätä painiketta aktivoidaksesi nykyisen Shorewall-kokoonpanon <tt>shorewall6 uudelleenkäynnistys</tt> -komennolla.
@@ -85,7 +85,7 @@ policy_1=Kohdevyöhyke
 policy_2=Käytäntö
 policy_3=Syslog-taso
 policy_4=Liikenteen rajoitus
-policy_limit=Raja $1, purske $2 
+policy_limit=Raja $1, purske $2
 policy_return=käytäntöluettelo
 policy_edit=Muokkaa oletuskäytäntöä
 policy_create=Luo oletuskäytäntö
@@ -310,13 +310,13 @@ hosts_err=Alueen isännän tallentaminen epäonnistui
 hosts_enet=Puuttuva tai virheellinen isäntäosoite
 hosts_header=Alueen isäntötiedot
 hosts_routestopped=Reitti jopa palomuurin ollessa pysäytettynä?
-hosts_ip=Osoite tai verkko $1 
-hosts_mac=MAC-osoite $1 
-hosts_ipset=IP asetettu $1 
+hosts_ip=Osoite tai verkko $1
+hosts_mac=MAC-osoite $1
+hosts_ipset=IP asetettu $1
 hosts_any=Mikä tahansa isäntä
 
-edit_before=Ennen tuloa $1 
-edit_after=Tulon jälkeen $1 
+edit_before=Ennen tuloa $1
+edit_after=Tulon jälkeen $1
 
 blacklist_title=Mustan listan isännät
 blacklist_desc=Tällä sivulla luetellaan isännät ja palvelut, jotka estetään, jos niiden liikenne saapuu rajapintaan <b>mustan listan</b> kanssa.
@@ -422,16 +422,16 @@ comment_msg=Viesti
 comment_err=Kommentin tallentaminen epäonnistui
 comment_enone=Viestiä ei annettu
 
-log_create_table=Lisätty merkintä taulukkoon $1 
+log_create_table=Lisätty merkintä taulukkoon $1
 log_modify_table=Muokattu merkintä $1 -taulukossa
-log_delete_table=Poistettu merkintä taulukosta $1 
+log_delete_table=Poistettu merkintä taulukosta $1
 log_deletes_table=Poistetut merkinnät $1 -taulusta
 log_up_table=Siirretty merkintä $1 -tauluun
 log_down_table=Siirretty alaspäin kohtaan $1 taulukko
 log_manual_table=Muokattu $1 -taulukkotiedostoa manuaalisesti
-log_create_comment=Lisätty kommentti taulukkoon $1 
-log_modify_comment=Muokattu kommentti taulukossa $1 
-log_delete_comment=Poistettu kommentti taulukosta $1 
+log_create_comment=Lisätty kommentti taulukkoon $1
+log_modify_comment=Muokattu kommentti taulukossa $1
+log_delete_comment=Poistettu kommentti taulukosta $1
 log_stop=Pysäytetty palomuuri
 log_start=Käynnistetty palomuuri
 log_refresh=Päivitetty palomuuri

@@ -8,7 +8,7 @@ index_inet=internetas
 index_proto=Protokolas
 index_user=Vartotojas
 index_server=Serverio programa
-index_redirect=Pirmyn į $1 
+index_redirect=Pirmyn į $1
 index_enabled=Įjungtas?
 index_internal=Vidinis Xinetd
 index_add_inet=Sukurkite naują interneto paslaugą
@@ -91,11 +91,11 @@ proto_tcp=TCP (perdavimo valdymo protokolas)
 proto_udp=UDP (vartotojo duomenų diagramos protokolas)
 
 restart_err=Nepavyko pritaikyti pakeitimų
-restart_ekill=Nepavyko nusiųsti USR2 signalo į PID $1 : $2 
+restart_ekill=Nepavyko nusiųsti USR2 signalo į PID $1 : $2
 restart_epid=Daugiau nebėga
 
 start_err=Nepavyko paleisti xinetd
-start_estart=$1 nepavyko : $2 
+start_estart=$1 nepavyko : $2
 
 defs_title=Numatytosios parinktys
 defs_header=Numatytosios paslaugų parinktys
@@ -122,16 +122,16 @@ defs_efile=Trūksta arba netinkamas žurnalo failo vardas
 defs_esoft=Trūksta arba neteisinga minkšta riba
 defs_ehard=Trūksta arba netinkama pagrindinė riba
 
-log_create_serv=Sukurta $2 paslauga $1 
-log_modify_serv=Modifikuota $2 paslauga $1 
-log_delete_serv=Ištrinta $2 paslauga $1 
+log_create_serv=Sukurta $2 paslauga $1
+log_modify_serv=Modifikuota $2 paslauga $1
+log_delete_serv=Ištrinta $2 paslauga $1
 log_start=Paleistas „Xinetd“ serveris
 log_apply=Taikomi pakeitimai
 log_defaults=Pakeistos numatytosios parinktys
 log_enable=Įgalintos $1 paslaugos
 log_disable=Išjungtos $1 paslaugos
-log_enable_l=Įgalintos paslaugos $1 
-log_disable_l=Paslaugos neįgaliesiems $1 
+log_enable_l=Įgalintos paslaugos $1
+log_disable_l=Paslaugos neįgaliesiems $1
 
 config_dirdef=Xinetd konfigūracijos failas
 config_dirto=Naujas failas kataloge

@@ -4,7 +4,7 @@ index_emd5=Modul ini telah <a href='$1'>dikonfigurasikan</a> untuk menggunakan p
 index_header=Pengguna fail kata laluan
 index_none=Tiada pengguna wujud dalam fail kata laluan yang dikonfigurasikan.
 index_add=Tambahkan pengguna baharu pada fail kata laluan.
-index_file=Pengguna dalam Fail Kata Laluan $1 
+index_file=Pengguna dalam Fail Kata Laluan $1
 index_sync=Penyegerakan Pengguna Unix
 index_return=senarai pengguna
 index_eversion=Modul ini telah <a href='$1'>dikonfigurasikan</a> untuk menggunakan penyulitan MD5 untuk kata laluan, tetapi versi modul Pengguna dan Kumpulan yang dipasang pada sistem anda tidak termasuk fungsi MD5 yang diperlukan. Tingkatkan kepada versi 1.114 atau lebih baru.
@@ -49,6 +49,6 @@ acl_single=Langkau senarai pengguna dan pergi terus ke borang pertukaran kata la
 sync_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi penyegerakan
 
 log_sync=Pilihan penyegerakan diubah
-log_create=Pengguna yang dibuat $1 
-log_delete=Pengguna dipadamkan $1 
-log_modify=Pengguna yang diubah suai $1 
+log_create=Pengguna yang dibuat $1
+log_delete=Pengguna dipadamkan $1
+log_modify=Pengguna yang diubah suai $1

@@ -1,8 +1,8 @@
 index_title_v=IPv4 брандмауер
 index_title_v6=IPv6 брандмауер
 index_position=Показано правила від $1 до $2 з $3
-index_editing=Файл правил $1 
-index_evalid=УВАГА! Ваша поточна конфігурація IPtables недійсна : $1 
+index_editing=Файл правил $1
+index_evalid=УВАГА! Ваша поточна конфігурація IPtables недійсна : $1
 index_comm=Прокоментуйте
 index_no_comment=
 index_jump_reject=<font color=#ff4400>Відхилити</font>
@@ -37,23 +37,23 @@ index_ipvxmode=Змінити версію протоколу IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
 
-desc_i=вхідний інтерфейс $1 
-desc_i!=інтерфейс вводу не $1 
-desc_icmpv6-type=Тип ICMP - $1 
-desc_icmpv6-type!=Тип ICMP не $1 
-desc_mac-source=адреса ethernet - $1 
-desc_mac-source!=Ethernet-адреса не $1 
-desc_ctstate=стан з'єднання - $1 
-desc_ctstate!=стан з'єднання не $1 
+desc_i=вхідний інтерфейс $1
+desc_i!=інтерфейс вводу не $1
+desc_icmpv6-type=Тип ICMP - $1
+desc_icmpv6-type!=Тип ICMP не $1
+desc_mac-source=адреса ethernet - $1
+desc_mac-source!=Ethernet-адреса не $1
+desc_ctstate=стан з'єднання - $1
+desc_ctstate!=стан з'єднання не $1
 desc_match-set=$2 відповідає IPset $1
 desc_match-set!=$2 не відповідає IPset $1
 desc_match-set_src=вхідний трафік
 desc_match-set_dst=вихідний трафік
-desc_physdev-in=фізичний інтерфейс вводу - $1 
-desc_physdev-in!=фізичний інтерфейс вводу не $1 
-desc_physdev-out=фізичний інтерфейс виводу становить $1 
-desc_physdev-out!=фізичний інтерфейс виводу не $1 
-desc_args--match-set=$2 міститься в IP-наборі $1 
+desc_physdev-in=фізичний інтерфейс вводу - $1
+desc_physdev-in!=фізичний інтерфейс вводу не $1
+desc_physdev-out=фізичний інтерфейс виводу становить $1
+desc_physdev-out!=фізичний інтерфейс виводу не $1
+desc_args--match-set=$2 міститься в IP-наборі $1
 desc_src=джерело
 desc_dest=пункт призначення
 
@@ -65,7 +65,7 @@ edit_state_dnat=Призначення NATd
 edit_args=Додаткові параметри
 edit_mods=Додаткові модулі IPtables
 edit_rwith=Відхилити з типом ICMP
-edit_rwithtype=Введіть $1 
+edit_rwithtype=Введіть $1
 edit_physdevin=Вхідний фізичний інтерфейс
 edit_physdevout=Вихідний фізичний інтерфейс
 edit_physdevisin=Пакет, що надходить на інтерфейс моста
@@ -87,18 +87,18 @@ clear_ecannot=Вам не дозволяється очищати ланцюги
 new_ecannot=Вам не дозволяється створювати ланцюги
 
 apply_ecannot=Вам заборонено застосовувати конфігурацію
-apply_remote=Помилка від $1 : $2 
+apply_remote=Помилка від $1 : $2
 unapply_ecannot=Вам не дозволяється відновити конфігурацію
 bootup_ecannot=Вам не дозволяється вмикати або вимикати брандмауер під час завантаження
 
-log_rename_chain=Перейменований ланцюг $1 у таблиці $2 
-log_delsel_chain=Видалено $3 правила з ланцюга $1 у таблиці $2 
-log_movesel_chain=Переміщено $3 правила з ланцюга $1 у таблиці $2 
-log_add_host=Додано сервер кластерів $1 
-log_add_group=Додано кластерні сервери з групи $1 
-log_delete_host=Видалений сервер кластерів $1 
+log_rename_chain=Перейменований ланцюг $1 у таблиці $2
+log_delsel_chain=Видалено $3 правила з ланцюга $1 у таблиці $2
+log_movesel_chain=Переміщено $3 правила з ланцюга $1 у таблиці $2
+log_add_host=Додано сервер кластерів $1
+log_add_group=Додано кластерні сервери з групи $1
+log_delete_host=Видалений сервер кластерів $1
 log_delete_group=Видалено $1 сервери кластерів
-log_openports=Відкриті порти брандмауера $1 
+log_openports=Відкриті порти брандмауера $1
 
 setup_ecannot=Вам заборонено встановлювати брандмауер
 
@@ -135,7 +135,7 @@ add_gmsg=Додавання серверів у групу $1 ..
 add_err=Не вдалося додати сервер
 add_gerr=Не вдалося додати групу
 add_echeck=Сервер $1 не має модуля брандмауера Linux
-add_emissing=Сервер $1 не містить команди брандмауера $2 
+add_emissing=Сервер $1 не містить команди брандмауера $2
 add_ok=Додано $1 із правилами активного брандмауера $2.
 add_enone=Немає серверів для додавання вибраних!
 

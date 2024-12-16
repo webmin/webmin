@@ -1,4 +1,4 @@
-index_title=IPsec VPN 配置 
+index_title=IPsec VPN 配置
 index_eipsec=FreeSWAN 命令 $1 没有找到. 可能它没有安装, 或者点这里 <a href='$2'>模块配置</a> 修改配置文件路径.
 index_out=输出来自 $1 为 :
 index_version2=$2 版本为QL $1

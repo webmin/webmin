@@ -4,10 +4,10 @@ index_edir=Die Jabber-basisgids $1 bestaan nie. Óf Jabber is nie geïnstalleer 
 index_emodules=Die Perl-modules $1 en $2 wat deur Webmin benodig word vir die hantering van Jabber se XML-opstelling, is nie geïnstalleer nie. <a href='$3'>Klik hier</a> om dit direk vanaf CPAN te installeer.
 index_emodule=Die Perl-module $1 wat deur Webmin benodig word om die XML-konfigurasie van Jabber te hanteer, is nie geïnstalleer nie. <a href='$2'>Klik hier</a> om dit direk vanaf CPAN te installeer.
 index_expat=Maak seker dat u die Expat C-biblioteek en kopkaarte het voordat u die Perl-modules probeer installeer, aangesien dit daarvan afhanklik is en sal misluk as dit nie beskikbaar is nie.
-index_eparse=Die $1 perl-module kon nie u Jabber-konfigurasielêer ontleed nie : $2 
+index_eparse=Die $1 perl-module kon nie u Jabber-konfigurasielêer ontleed nie : $2
 index_ejabberd=Die Jabber-bedienerprogram $1 is nie op u stelsel gevind nie. Óf Jabber is nie geïnstalleer nie, óf u <a href='$2'>module-opstelling</a> is verkeerd.
-index_eversion=Webmin ondersteun slegs Jabber-weergawe $2, maar die opdrag $3 het die volgende weergawe-inligting gerapporteer : $1 
-index_eversion2=Webmin ondersteun slegs Jabber-weergawes onder $2, maar die opdrag $3 het die volgende weergawe-inligting gerapporteer : $1 
+index_eversion=Webmin ondersteun slegs Jabber-weergawe $2, maar die opdrag $3 het die volgende weergawe-inligting gerapporteer : $1
+index_eversion2=Webmin ondersteun slegs Jabber-weergawes onder $2, maar die opdrag $3 het die volgende weergawe-inligting gerapporteer : $1
 index_start=Begin Jabber Server
 index_startmsg=Klik op hierdie knoppie om die Jabber-bediener op u stelsel te begin. Totdat dit begin word, sal geen kitsboodskapkliënte dit kan gebruik nie.
 index_stop=Stop Jabber Server
@@ -16,7 +16,7 @@ index_restart=Pas veranderinge toe
 index_restartmsg=Klik op hierdie knoppie om die huidige konfigurasie toe te pas deur die Jabber-bediener te stop en dan weer te begin.
 index_comments=Waarskuwing - u Jabber config-lêer $1 bevat opmerkings, wat verwyder sal word indien enige konfigurasieveranderings met hierdie module aangebring word.
 index_return=Jabber-spyskaart
-index_version=Jabber-weergawe $1 
+index_version=Jabber-weergawe $1
 
 general_title=Algemene opsies
 general_header=Globale Jabber-bedieneropsies
@@ -44,7 +44,7 @@ messages_rnotify=Stel admin by registrasie in kennis?
 messages_rfields=Vereiste registrasievelde
 messages_vcard2jud=Stuur vCard na die gebruikersgids van Jabber?
 messages_err=Kon nie boodskappe stoor nie
-messages_evcard=Ongeldige vCard XML : $1 
+messages_evcard=Ongeldige vCard XML : $1
 messages_etag=Bediener vCard XML begin nie met &lt;vCard&gt; nie
 
 modules_title=Jabber-modules

@@ -2,7 +2,7 @@ index_title=OpenSLP конфигурация
 index_return=OpenSLP конфигурация
 index_eslpd=OpenSLP демон $1 не е намерен във вашата система. Може би не е инсталиран или вашата <a href='$2'>конфигурация на модул</a> е неправилна.
 index_econf=Конфигурационният файл OpenSLP $1 не беше намерен във вашата система. Може би не е инсталиран или вашата <a href='$2'>конфигурация на модул</a> е неправилна.
-index_version=OpenSLP версия $1 
+index_version=OpenSLP версия $1
 
 slp_apply=Прилага промени
 slp_stop=Спрете OpenSLP

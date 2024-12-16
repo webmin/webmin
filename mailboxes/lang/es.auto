@@ -178,7 +178,7 @@ reply_save=Guardar y editar
 send_esubject=Asunto de correo electrónico faltante
 send_title2=Correo guardado
 send_sending=Enviando correo a $1 ..
-send_efile=Error al leer el archivo adjunto $1 : $2 
+send_efile=Error al leer el archivo adjunto $1 : $2
 send_done=.. hecho.
 
 send_epass=No puede firmar un mensaje porque su frase de contraseña aún no se ha configurado en el módulo GnuPG.
@@ -255,8 +255,8 @@ folder_spam=Correo basura
 
 detach_err=Error al separar el archivo
 detach_edir=Ningún archivo o directorio para guardar en ingresado
-detach_eopen=Error al abrir $1 : $2 
-detach_ewrite=Error al escribir en $1 : $2 
+detach_eopen=Error al abrir $1 : $2
+detach_ewrite=Error al escribir en $1 : $2
 detach_title=Separar archivo
 detach_ok=Escribió un archivo adjunto en el archivo del lado del servidor $1 ($2).
 
@@ -334,7 +334,7 @@ white_already=La dirección de correo electrónico $1 ya está en la lista de di
 
 ldap_emod=Falta el módulo Perl $1 necesario para conectarse a LDAP
 ldap_econn=Error al conectarse al servidor LDAP $1 puerto $2
-ldap_elogin=Error al enlazar con el servidor LDAP $1 como $2 : $3 
+ldap_elogin=Error al enlazar con el servidor LDAP $1 como $2 : $3
 ldap_ehost=No hay un servidor LDAP configurado en la configuración del módulo
 ldap_eport=No hay un puerto de servidor LDAP válido establecido en la configuración del módulo
 ldap_euser=No hay inicio de sesión LDAP establecido en la configuración del módulo

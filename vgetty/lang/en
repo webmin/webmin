@@ -86,7 +86,7 @@ received_invert=Invert selection
 listen_efile=Invalid message filename!
 listen_epath=Voicemail message no longer exists
 
-delete_efile=Invalid message filename! 
+delete_efile=Invalid message filename!
 
 messages_title=Greeting Messages
 messages_desc=This page lists greeting messages that will be played when a caller connects to your voicemail server. If you have more that one, a single randomly chosen message will be used.

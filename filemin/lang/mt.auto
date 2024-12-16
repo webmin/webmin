@@ -153,8 +153,8 @@ menu_file=Fajl
 menu_edit=Editja
 menu_tools=Għodda
 menu_bookmarks=Bookmarks
-notallowed=M'għandekx permess ta ' $1. Id-direttorji permessi huma : $2 
-error_upload_emax=Fajl imtella 'huwa akbar mil-limitu ta' $1 
+notallowed=M'għandekx permess ta ' $1. Id-direttorji permessi huma : $2
+error_upload_emax=Fajl imtella 'huwa akbar mil-limitu ta' $1
 extract_etype=Tip ta 'fajl ta' arkivju mhux appoġġat
 
 error_write=m'għandekx permess ta' tikteb għal dan il-fajl

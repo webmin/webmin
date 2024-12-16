@@ -234,7 +234,7 @@ dirstatus_refresh=تازه کردن لیست
 
 clientstatus_title=وضعیت مشتری
 clientstatus_err=واکشی وضعیت از $1 : $2 انجام نشد
-clientstatus_msg=وضعیت از $1 : $2 
+clientstatus_msg=وضعیت از $1 : $2
 clientstatus_show=نمایش وضعیت مشتری:
 clientstatus_ok=خوب
 clientstatus_on=$1 (با$2)
@@ -305,7 +305,7 @@ device_echild=این سرویس گیرنده را نمی توان حذف کرد 
 
 storagestatus_title=وضعیت Daemon Storage
 storagestatus_err=واکشی وضعیت از $1 : $2 انجام نشد
-storagestatus_msg=وضعیت از $1 : $2 
+storagestatus_msg=وضعیت از $1 : $2
 storagestatus_show=نمایش وضعیت شبح ذخیره:
 storagestatus_ok=خوب
 

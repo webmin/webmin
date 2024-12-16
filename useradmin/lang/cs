@@ -37,7 +37,7 @@ index_gmass=Smazat vybrané skupiny
 search_title=Výsledek hledání
 search_notfound=Nenalezeni žádní odpovídající uživatelé
 search_found=Nalezeno $1 odpovídajících uživatelů ..
-search_gnotfound=Nenalezeny žádné odpovídající  skupiny
+search_gnotfound=Nenalezeny žádné odpovídající skupiny
 search_gfound=Nalezeno $1 odpovídajících skupin ..
 
 uedit_title=Editovat uživatele

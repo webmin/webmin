@@ -41,7 +41,7 @@ view_loading=Log dosyası izleniyor.. Henüz yeni satır yok.
 view_filter=$1 metinli satırları filtrele
 view_filter_btn=Filtre
 
-save_efile='$1' geçerli bir dosya adı değil  : $2
+save_efile='$1' geçerli bir dosya adı değil : $2
 save_ecannot2=Bu günlüğü görüntüleme izniniz yok
 save_ecannot3=Hata: Bu günlüğü görüntülemenize izin verilmiyor
 save_ecannot4=Hata: '$1' açılamadı

@@ -437,7 +437,7 @@ white_already=Die e-posadres $1 is reeds op die toegelate adreslys van SpamAssas
 
 ldap_emod=Perl-module ontbreek $1 wat nodig is om aan LDAP te koppel
 ldap_econn=Kon nie aan LDAP-bediener $1 poort $2 koppel nie
-ldap_elogin=Kon nie bind aan LDAP-bediener $1 as $2 : $3 
+ldap_elogin=Kon nie bind aan LDAP-bediener $1 as $2 : $3
 ldap_ehost=Geen LDAP-bediener is in die module-opstelling gestel nie
 ldap_eport=Geen geldige LDAP-bedienerspoort is in die module-opstelling gestel nie
 ldap_euser=Geen LDAP-aanmelding is in die module-opstelling gestel nie

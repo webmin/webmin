@@ -33,7 +33,7 @@ save_erw=Inga läs- och skrivvärdar har angetts
 save_eroot=Inga värd för rootfilåtkomst har angivits
 save_eaccess=Inga monteringsvärdar angivna
 
-log_create_export=Skapat export av $1 
-log_delete_export=Raderad export av $1 
-log_modify_export=Ändrad export av $1 
+log_create_export=Skapat export av $1
+log_delete_export=Raderad export av $1
+log_modify_export=Ändrad export av $1
 log_apply=Tillämpad konfiguration

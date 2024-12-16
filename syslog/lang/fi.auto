@@ -7,14 +7,14 @@ index_active=Aktiivinen?
 index_tag=Ohjelmoida
 index_to=Lokikohde
 index_rule=Viestit valittu
-index_file=Tiedosto $1 
-index_pipe=Nimeltään putki $1 
-index_pipe2=Putki komennolle $1 
+index_file=Tiedosto $1
+index_pipe=Nimeltään putki $1
+index_pipe2=Putki komennolle $1
 index_host=Syslog-palvelin $1 : ssä
-index_socket=Unix-kansiotiedosto $1 
+index_socket=Unix-kansiotiedosto $1
 index_cmd=Tulos $1 : stä
 index_all=Kaikki käyttäjät
-index_users=Käyttäjät $1 
+index_users=Käyttäjät $1
 index_add=Lisää uusi järjestelmäloki.
 index_return=järjestelmälokit
 index_restart=Ota muutokset käyttöön
@@ -26,7 +26,7 @@ index_view=View ..
 index_viewfile=Näytä lokitiedosto:
 index_viewok=näkymä
 
-restart_ekill=Syslog-prosessin signalointi epäonnistui $1 : $2 
+restart_ekill=Syslog-prosessin signalointi epäonnistui $1 : $2
 restart_ecannot=Et voi käynnistää syslogia uudelleen
 
 start_ecannot=Sinulla ei ole oikeutta käynnistää syslogia
@@ -61,13 +61,13 @@ edit_ecannot=Lokiasetuksia ei voi muokata
 edit_ecannot2=Et voi muokata tätä lokia
 
 view_title=Näytä lokitiedosto
-view_header=$2 : n viimeiset rivit $1 
+view_header=$2 : n viimeiset rivit $1
 view_empty=Lokitiedosto on tyhjä
 view_refresh=virkistää
-view_filter=Näytä vain rivit, joissa on teksti $1 
+view_filter=Näytä vain rivit, joissa on teksti $1
 
 save_err=Lokin tallentaminen epäonnistui
-save_efile='$1' ei ole kelvollinen tiedostonimi : $2 
+save_efile='$1' ei ole kelvollinen tiedostonimi : $2
 save_epipe='$1' ei ole kelvollinen nimetty putki
 save_epipe2=Puuttuva komento putkeen
 save_esocket=Puuttuva tai virheellinen unix-verkkotunnuksen pistorasia
@@ -86,7 +86,7 @@ save_ecannot6=Et voi katsella mielivaltaisia lokit
 save_ecannot7=Et voi tarkastella tätä ylimääräistä lokia
 save_emissing=Puuttuva lokitiedosto
 
-log_modify=Lokiin muokattu $1 
+log_modify=Lokiin muokattu $1
 log_create=Lisätty loki $1 : een
 log_delete=Poistettu loki $1 : een
 log_apply=Sovelletut muutokset

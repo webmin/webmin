@@ -4,10 +4,10 @@ index_edir=Directorul de bază Jabber $1 nu există. Fie Jabber nu este instalat
 index_emodules=Modulele Perl $1 și $2 care sunt necesare de Webmin pentru gestionarea configurației XML a Jabber nu sunt instalate. <a href='$3'>Faceți clic aici</a> pentru a le instala direct din CPAN.
 index_emodule=Modulul Perl $1 care este necesar de Webmin pentru gestionarea configurației XML a Jabber nu este instalat. <a href='$2'>Faceți clic aici</a> pentru a o instala direct din CPAN.
 index_expat=Asigurați-vă că aveți biblioteca și antetele Expat C instalate înainte de a încerca să instalați modulele Perl, deoarece acestea depind de aceasta și nu vor reuși dacă nu sunt disponibile.
-index_eparse=Modulul $1 perl nu a putut analiza fișierul dvs. de configurare Jabber : $2 
+index_eparse=Modulul $1 perl nu a putut analiza fișierul dvs. de configurare Jabber : $2
 index_ejabberd=Programul Jabber server $1 nu a fost găsit în sistemul dvs. Fie Jabber nu este instalat, fie <a href='$2'>configurația modulului</a> este incorectă.
-index_eversion=Webmin acceptă doar versiunea Jabber $2, dar comanda $3 a raportat următoarele informații despre versiune : $1 
-index_eversion2=Webmin acceptă doar versiunile Jabber sub $2, dar comanda $3 a raportat următoarele informații despre versiune : $1 
+index_eversion=Webmin acceptă doar versiunea Jabber $2, dar comanda $3 a raportat următoarele informații despre versiune : $1
+index_eversion2=Webmin acceptă doar versiunile Jabber sub $2, dar comanda $3 a raportat următoarele informații despre versiune : $1
 index_start=Porniți Jabber Server
 index_startmsg=Faceți clic pe acest buton pentru a porni serverul Jabber de pe sistemul dvs. Până la începerea acesteia, niciun client de mesagerie instantanee nu îl va putea folosi.
 index_stop=Opriți Jabber Server
@@ -16,7 +16,7 @@ index_restart=Aplica schimbarile
 index_restartmsg=Faceți clic pe acest buton pentru a aplica configurația curentă prin oprire și apoi relansarea serverului Jabber.
 index_comments=Avertisment - fișierul dvs. de configurare Jabber $1 conține comentarii, care vor fi eliminate dacă se efectuează modificări de configurare cu acest modul.
 index_return=Meniu Jabber
-index_version=Versiunea Jabber $1 
+index_version=Versiunea Jabber $1
 
 general_title=Optiuni generale
 general_header=Opțiunile serverului Global Jabber
@@ -44,7 +44,7 @@ messages_rnotify=Notificați administratorul la înregistrare?
 messages_rfields=Câmpurile de înregistrare obligatorii
 messages_vcard2jud=Trimiteți vCard către directorul utilizatorului Jabber?
 messages_err=Nu a putut salva mesajele
-messages_evcard=XML vCard nevalid : $1 
+messages_evcard=XML vCard nevalid : $1
 messages_etag=Serverul vCard XML nu începe cu &lt;vCard&gt;
 
 modules_title=Module Jabber
@@ -60,7 +60,7 @@ karma_title=Controlul traficului Karma
 karma_header=Opțiuni de control al ratei de trafic
 karma_rate=Manipulare excesivă a conexiunilor
 karma_rate_def=Dezactivat
-karma_rate_sel=Blocați clientul pentru $2 secunde după conexiunile $1 
+karma_rate_sel=Blocați clientul pentru $2 secunde după conexiunile $1
 karma_mode=Modul Karma
 karma_none=Fără limite
 karma_low=Limite mici de trafic

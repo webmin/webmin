@@ -16,7 +16,7 @@ index_memtfc=$1 i alt / $2 ledig / $3 cachelagret
 index_loadname=CPU-belastning gennemsnit:
 index_loadnums=$1 (1 min), $2 (5 minutter), $3 (15 minutter)
 index_cpuname=CPU-type:
-index_inzone=I zone $1 
+index_inzone=I zone $1
 
 pid=ID
 owner=Ejer
@@ -81,12 +81,12 @@ edit_open=Filer og forbindelser
 edit_trace=Sporeproces
 edit_return=process detaljer
 
-kill_err=Kunne ikke sende signal $1 til proces $2 
+kill_err=Kunne ikke sende signal $1 til proces $2
 kill_title=Send signal
 kill_sent=sendt
 kill_ecannot=Du må ikke dræbe processer
 
-renice_err=Kunne ikke omdøbe processen $1 
+renice_err=Kunne ikke omdøbe processen $1
 renice_ecannot=Du har ikke tilladelse til at omdøbe processer
 
 linux_pri=Prioritet
@@ -144,11 +144,11 @@ sysv_task=Opgave-ID
 sysv_zone=Zone navn
 
 log_run=Kørte kommandoen "$1"
-log_kill=Sendt signal $1 til proces $2 
+log_kill=Sendt signal $1 til proces $2
 log_kills=Send signal $1 til $2 processer
-log_kill_l=Sendt signal $1 til proces $2 
-log_kills_l=Sendt signal $1 til processer <br> $2 
-log_renice=Ændret prioritet for proces $2 til $1 
+log_kill_l=Sendt signal $1 til proces $2
+log_kills_l=Sendt signal $1 til processer <br> $2
+log_renice=Ændret prioritet for proces $2 til $1
 
 acl_manage=Administrer processer som bruger
 acl_manage_def=Nuværende Webmin-bruger
@@ -174,10 +174,10 @@ open_type=Type
 open_proto=protokol
 open_desc=detaljer
 open_fd=Filbeskrivelse
-open_listen1=Lytter til port $1 
-open_listen2=Lytter på adresse $1 port $2 
-open_recv=Modtagelse på $1:$2 
-open_conn=Tilsluttet fra $1 til $2 i tilstand $3 
+open_listen1=Lytter til port $1
+open_listen2=Lytter på adresse $1 port $2
+open_recv=Modtagelse på $1:$2
+open_conn=Tilsluttet fra $1 til $2 i tilstand $3
 open_cwd=Nuværende dir
 open_rtd=Root dir
 open_txt=Programkode
@@ -192,7 +192,7 @@ open_file=Sti
 
 trace_title=Sporeproces
 trace_start=Starter systemopkaldsspor for $1 ..
-trace_doing=Systemopkaldsspor for $1  :
+trace_doing=Systemopkaldsspor for $1 :
 trace_done=.. processen er afsluttet.
 trace_failed=.. sporingen mislykkedes!
 trace_sorry=Denne side kræver Java-understøttelse i din browser. For at bruge et tekst-processpor, skal du justere modulkonfigurationen.

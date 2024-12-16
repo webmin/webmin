@@ -8,7 +8,7 @@ index_inet=Internets
 index_proto=Protokols
 index_user=Lietotājs
 index_server=Servera programma
-index_redirect=Pārsūtīt uz $1 
+index_redirect=Pārsūtīt uz $1
 index_enabled=Iespējots?
 index_internal=Iekšējs Xinetd
 index_add_inet=Izveidojiet jaunu interneta pakalpojumu
@@ -91,11 +91,11 @@ proto_tcp=TCP (pārraides vadības protokols)
 proto_udp=UDP (lietotāja datugrammas protokols)
 
 restart_err=Neizdevās piemērot izmaiņas
-restart_ekill=Neizdevās nosūtīt USR2 signālu uz PID $1 : $2 
+restart_ekill=Neizdevās nosūtīt USR2 signālu uz PID $1 : $2
 restart_epid=Vairs neskrienu
 
 start_err=Neizdevās sākt xinetd
-start_estart=$1 neizdevās : $2 
+start_estart=$1 neizdevās : $2
 
 defs_title=Noklusējuma opcijas
 defs_header=Noklusējuma iespējas pakalpojumiem
@@ -122,16 +122,16 @@ defs_efile=Trūkst vai nav derīgs žurnāla faila nosaukums
 defs_esoft=Trūkst vai nav derīga izvēles robeža
 defs_ehard=Trūkst vai nav derīga pamatlimita robeža
 
-log_create_serv=Izveidots $2 pakalpojums $1 
-log_modify_serv=Modificēts $2 pakalpojums $1 
-log_delete_serv=Dzēsts $2 pakalpojums $1 
+log_create_serv=Izveidots $2 pakalpojums $1
+log_modify_serv=Modificēts $2 pakalpojums $1
+log_delete_serv=Dzēsts $2 pakalpojums $1
 log_start=Startēja Xinetd serveris
 log_apply=Lietotās izmaiņas
 log_defaults=Mainītas noklusējuma opcijas
 log_enable=Iespējoti $1 pakalpojumi
 log_disable=Atspējoti $1 pakalpojumi
-log_enable_l=Iespējotie pakalpojumi $1 
-log_disable_l=Pakalpojumi invalīdiem $1 
+log_enable_l=Iespējotie pakalpojumi $1
+log_disable_l=Pakalpojumi invalīdiem $1
 
 config_dirdef=Xinetd konfigurācijas fails
 config_dirto=Jauns fails direktorijā

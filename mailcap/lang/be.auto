@@ -38,9 +38,9 @@ enable_err=Не атрымалася ўключыць праграмы тыпу 
 enable_eclash=Уключаная праграма тыпу MIME для $1 ужо існуе
 delete_enone=Ні адзін не абраны
 
-log_delete_mailcap=Выдаліць праграму тыпу MIME для $1 
-log_create_mailcap=Створана праграма тыпу MIME для $1 
-log_modify_mailcap=Мадыфікаваная праграма тыпу MIME для $1 
+log_delete_mailcap=Выдаліць праграму тыпу MIME для $1
+log_create_mailcap=Створана праграма тыпу MIME для $1
+log_modify_mailcap=Мадыфікаваная праграма тыпу MIME для $1
 log_delete_mailcaps=Выдалены $1 праграмы MIME
 log_disable_mailcaps=Адключаныя праграмы $1 MIME
 log_enable_mailcaps=Уключана $1 праграмы MIME

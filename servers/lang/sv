@@ -4,7 +4,7 @@ index_add=Registrera en ny server
 index_broad=Sök servrar via broadcast
 index_findmsg=Tryck på denna knapp för att automatiskt söka efter Webmin-servrar av version 0.75 eller högre på ditt lokala nätverk.
 index_scan=Sök servrar
-index_scanmsg=Tryck på denna knapp för att söka på varje adress på nätverket $1 efter Webmin-servrar med version 0.75 eller högre. 
+index_scanmsg=Tryck på denna knapp för att söka på varje adress på nätverket $1 efter Webmin-servrar med version 0.75 eller högre.
 index_return=servrar
 index_none=Ingen server har registrerats.
 

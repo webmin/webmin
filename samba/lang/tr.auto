@@ -30,7 +30,7 @@ mkpass_skipcount=$1 kullanıcı dönüşüm için atlandı.
 
 savefshare_group=Yeni dizin için eksik veya geçersiz grup
 savefshare_perms=Yeni dizin için eksik veya geçersiz izinler
-savefshare_emkdir=Dizin oluşturulamadı : $1 
+savefshare_emkdir=Dizin oluşturulamadı : $1
 
 start_err_wb=Winbind sunucuları başlatılamadı
 

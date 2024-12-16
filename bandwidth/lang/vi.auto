@@ -5,7 +5,7 @@ index_elog=Tệp $1 được sử dụng để ghi nhật ký băng thông thự
 index_edir=Thư mục lưu trữ dữ liệu băng thông $1 không tồn tại hoặc không phải là thư mục. Điều chỉnh <a href='$2'>cấu hình mô-đun</a> để sử dụng một đường dẫn khác.
 index_emod=Mô-đun Webmin $1 không được cài đặt trên hệ thống này hoặc không được hệ điều hành của bạn hỗ trợ. Mô-đun giám sát băng thông không thể hoạt động mà không có nó.
 index_esyslog=Cả hai mô-đun Nhật ký hệ thống đều được cài đặt trên hệ thống này và được hệ điều hành của bạn hỗ trợ. Mô-đun giám sát băng thông không thể hoạt động mà không có một trong số chúng.
-index_firesys=Sử dụng tường lửa $1 và $2 
+index_firesys=Sử dụng tường lửa $1 và $2
 index_setupcannot=Tuy nhiên, bạn không có quyền để thiết lập nó!
 index_setupdesc=Trước khi mô-đun này có thể báo cáo về việc sử dụng mạng trên hệ thống của bạn, nó phải được thiết lập để giám sát lưu lượng trên giao diện mạng bên ngoài đã chọn.
 index_setupdesc2=<b>Cảnh báo - mô-đun này sẽ ghi lại TẤT CẢ lưu lượng truy cập mạng được gửi hoặc nhận trên giao diện đã chọn. Điều này sẽ tiêu tốn một lượng lớn dung lượng ổ đĩa và thời gian CPU trên kết nối mạng nhanh.</B>
@@ -61,7 +61,7 @@ index_rotatedesc=Nhấp vào nút này để xử lý tất cả lưu lượng t
 index_eiptables=Cảnh báo - Cấu hình IPtables của bạn có lỗi: $1. Thiết lập giám sát băng thông sẽ xóa tất cả các quy tắc tường lửa.
 index_return=mẫu báo cáo
 
-log_setup=Thiết lập giám sát băng thông trên giao diện $1 
+log_setup=Thiết lập giám sát băng thông trên giao diện $1
 log_turnoff=Giám sát băng thông bị vô hiệu hóa
 log_rotate=Thống kê cập nhật
 

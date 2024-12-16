@@ -21,7 +21,7 @@ second=第二
 error_ediff=現地時間と異なるタイムサーバーが大きすぎます： $1日
 error_entp=NTP時間の同期に失敗しました： $1
 error_etimeserver=入力したものと同期するタイムサーバーはありません
-error_serviceunknown=不明なサービス  : $1
+error_serviceunknown=不明なサービス : $1
 
 log_timezone=タイムゾーンを $1に変更しました
 

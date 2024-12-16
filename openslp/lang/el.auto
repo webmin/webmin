@@ -2,7 +2,7 @@ index_title=Διαμόρφωση OpenSLP
 index_return=Διαμόρφωση OpenSLP
 index_eslpd=Ο δαίμονας OpenSLP $1 δεν βρέθηκε στο σύστημά σας. Ίσως να μην έχει εγκατασταθεί ή η διαμόρφωση της μονάδας σας <a href='$2'></a> είναι εσφαλμένη.
 index_econf=Το αρχείο διαμόρφωσης OpenSLP $1 δεν βρέθηκε στο σύστημά σας. Ίσως να μην έχει εγκατασταθεί ή η διαμόρφωση της μονάδας σας <a href='$2'></a> είναι εσφαλμένη.
-index_version=Η έκδοση OpenSLP $1 
+index_version=Η έκδοση OpenSLP $1
 
 slp_apply=Εφαρμογή αλλαγών
 slp_stop=Σταματήστε το OpenSLP

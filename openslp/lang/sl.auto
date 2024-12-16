@@ -2,7 +2,7 @@ index_title=Konfiguracija OpenSLP
 index_return=Konfiguracija OpenSLP
 index_eslpd=V vašem sistemu ni bilo mogoče najti demona OpenSLP $1. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
 index_econf=Konfiguracijske datoteke OpenSLP $1 v vašem sistemu ni bilo mogoče najti. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
-index_version=Različica OpenSLP $1 
+index_version=Različica OpenSLP $1
 
 slp_apply=Uporabi spremembe
 slp_stop=Ustavite OpenSLP

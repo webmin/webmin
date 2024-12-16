@@ -1,7 +1,7 @@
 index_title=WU-FTPD zerbitzaria
 index_eftpd=Ezin da $1 FTP zerbitzaria aurkitu zure sisteman. Agian ez dago instalatuta edo zure <a href='$2'>FTP zerbitzariaren moduluaren konfigurazioa</a> okerra da.
 index_eftpaccess=$1 FTP zerbitzariaren konfigurazio fitxategia ez da existitzen. Agian ez dago instalatuta edo zure <a href='$2'>FTP zerbitzariaren moduluaren konfigurazioa</a> okerra da.
-index_eversion=$1 FTP zerbitzaria ez dirudi WU-FTPd denik. Agian zure sistema eragilearekin emandako FTPd zaharrago bat erabiltzen ari zara, edo zure <a href='$2'>FTP zerbitzariaren moduluaren konfigurazioa</a> ondo dago. FTP zerbitzariaren irteera hau izan da : $3 
+index_eversion=$1 FTP zerbitzaria ez dirudi WU-FTPd denik. Agian zure sistema eragilearekin emandako FTPd zaharrago bat erabiltzen ari zara, edo zure <a href='$2'>FTP zerbitzariaren moduluaren konfigurazioa</a> ondo dago. FTP zerbitzariaren irteera hau izan da : $3
 index_apply=Aplikatu aldaketak
 index_applymsg=Egin klik botoi honetan uneko konfigurazioa aplikatzeko. Honek FTP zerbitzariko prozesu guztiak gelditzen eta berrabiaraziko ditu, eta horrela konektatutako erabiltzaile guztiak deskonektatuko dira.
 index_start=Hasi zerbitzaria

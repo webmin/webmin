@@ -1,12 +1,12 @@
 index_title=Trạng thái ổ đĩa thông minh
 index_ecmd=Không tìm thấy lệnh điều khiển SMART $1 trên hệ thống của bạn hoặc không được đặt chính xác trong cấu hình mô-đun <a href='$2'></a>. Nó phải được cài đặt trước khi mô-đun này có thể được sử dụng.
 index_ecmd2=Lệnh $1 dường như không phải là lệnh điều khiển SMART. Nó phải được đặt chính xác trong <a href='$2'>cấu hình mô-đun</a> trước khi mô-đun này có thể được sử dụng.
-index_version=Phiên bản SMARTsuite $1 
+index_version=Phiên bản SMARTsuite $1
 index_show=Hiển thị trạng thái của ổ đĩa:
 index_ok=Chỉ
 index_eidescsi=Không tìm thấy ổ đĩa IDE, SCSI hoặc SATA trên hệ thống của bạn.
-index_drive=Trạng thái của ổ $1 
-index_drivesub=Trạng thái của ổ $1, đĩa $2 
+index_drive=Trạng thái của ổ $1
+index_drivesub=Trạng thái của ổ $1, đĩa $2
 index_desc=Vị trí
 index_size=Kích thước ổ đĩa
 index_model=Làm và làm mẫu
@@ -36,11 +36,11 @@ monitor_edrive=Ổ đĩa bị thiếu hoặc không hợp lệ để kiểm tra
 monitor_nosuch=Không có ổ đĩa như vậy
 monitor_nosmart=Không hỗ trợ SMART
 monitor_errorsfound=Đã báo cáo $1 lỗi
-monitor_errorsinced=Lỗi tăng từ $2 lên $1 
+monitor_errorsinced=Lỗi tăng từ $2 lên $1
 monitor_wearlevel=Thất bại nếu mức độ mòn xuống dưới
 monitor_ewearlevel=Tỷ lệ hao mòn không hợp lệ
 monitor_nowearout=Ổ đĩa không báo cáo chỉ số hao mòn SSD
-monitor_wornout=Mức độ hao mòn đã giảm xuống $1 
+monitor_wornout=Mức độ hao mòn đã giảm xuống $1
 
 short_title=Tự kiểm tra ngắn
 short_doing=Bắt đầu tự kiểm tra ngắn $1 ..

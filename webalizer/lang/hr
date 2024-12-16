@@ -79,7 +79,7 @@ global_AllAgents=User agenti
 global_AllSearchStr=Internet pretraživači
 global_AllUsers=Korisnici
 global_delete=Izbriši i upotrebi globalnu konfigiraciju.
-global_ignoreagent=Ignoriraj  browsere
+global_ignoreagent=Ignoriraj browsere
 
 global_err=Neuspjela pohrana Webalizer opcije
 global_ereport=Nedostaje naslov raporta i prefiksa

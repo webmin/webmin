@@ -45,16 +45,16 @@ search_perl=„Perlo“ modulis
 search_help=„Webmin“ pagalba
 search_custom=Individualizuota dokumentacija
 search_none=Nerasta dokumentų, atitinkančių $1.
-search_for=$1 
+search_for=$1
 search_google=„Google“ paieškos rezultatas
 search_doxfer=„Webmin“ internetinė dokumentacija
 
 howto_title=HOWTO dokumentas
-howto_header=HOWTO dokumento byla $1 
+howto_header=HOWTO dokumento byla $1
 howto_epath=Netinkamas HOWTO dokumento kelias
 
 doc_title=Pakuotės dokumentai
-doc_header=Paketo dokumento failas $1 
+doc_header=Paketo dokumento failas $1
 doc_epath=Netinkamas paketo dokumentacijos kelias
 
 man_title=Rankinis puslapis
@@ -63,11 +63,11 @@ man_noentry=Vadovo $1 puslapis neegzistuoja!
 man_epath=Rankinis puslapis negali būti kelias!
 
 kernel_title=Branduolio dokumentas
-kernel_header=Branduolio dokumento failas $1 
+kernel_header=Branduolio dokumento failas $1
 kernel_epath=Netinkamas branduolio dokumento kelias
 
 kde_title=KDE dokumentacija
-kde_header=KDE dokumento failas $1 
+kde_header=KDE dokumento failas $1
 kde_epath=Netinkamas KDE dokumentacijos kelias
 
 perl_title=„Perlo“ modulis

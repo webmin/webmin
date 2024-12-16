@@ -26,7 +26,7 @@ filters_add=Gehitu egunkari iragazki berria.
 filters_return=iragazkien zerrenda
 filters_derr=Ezin izan da iragazkiak ezabatu
 filters_enone=Ez da hautatu
-filters_einuse=$1 iragazkia ezin da ezabatu kartzelek erabiltzen duten moduan : $2 
+filters_einuse=$1 iragazkia ezin da ezabatu kartzelek erabiltzen duten moduan : $2
 
 filter_title1=Sortu iragazkia
 filter_title2=Editatu iragazkia
@@ -41,7 +41,7 @@ filter_err=Ezin izan da iragazkia gorde
 filter_ename=Iragazkiaren izen falta edo baliogabea
 filter_eclash=Iragazki izena dagoeneko erabiltzen ari da
 filter_efail=Ez da sartu adierazpenarekin bat egiteko ohiko adierazpenik
-filter_einuse=Iragazki hau ezin da ezabatu kartzelek erabiltzen baitute : $1 
+filter_einuse=Iragazki hau ezin da ezabatu kartzelek erabiltzen baitute : $1
 
 actions_title=Partiduen ekintzak
 actions_name=Ekintzaren izena
@@ -51,7 +51,7 @@ actions_add=Gehitu ekintza berria.
 actions_return=ekintzen zerrenda
 actions_derr=Ezin izan dira ekintzak ezabatu
 actions_enone=Ez da hautatu
-actions_einuse=$1 ekintza ezin da ezabatu kartzelek erabiltzen duten moduan : $2 
+actions_einuse=$1 ekintza ezin da ezabatu kartzelek erabiltzen duten moduan : $2
 
 action_title1=Sortu Partiduen Ekintza
 action_title2=Editatu Partidaren ekintza
@@ -68,7 +68,7 @@ action_check=IP bat debekatu aurretik exekutatzeko agindua
 action_ban=IP debekatzeko agindua
 action_unban=IP bat debekatzeko agindua
 action_desc=<i>&lt;ip&gt;</i> IP helbidea debekatuta egongo da.
-action_einuse=Ekintza hau ezin da ezabatu kartzelek erabiltzen duten moduan : $1 
+action_einuse=Ekintza hau ezin da ezabatu kartzelek erabiltzen duten moduan : $1
 
 jails_title=Iragazkiaren ekintza kartzelak
 jails_add=Gehitu kartzela berria.
@@ -138,7 +138,7 @@ log_create_filter=$1 iragazkia sortu da
 log_update_filter=$1 iragazkia aldatu da
 log_delete_filter=$1 iragazkia ezabatu da
 log_create_action=$1 ekintza sortua
-log_update_action=Aldatutako ekintza $1 
+log_update_action=Aldatutako ekintza $1
 log_delete_action=$1 ekintza ezabatu da
 log_create_jail=$1 kartzela sortu
 log_update_jail=$1 espetxeratua

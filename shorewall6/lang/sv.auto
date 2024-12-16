@@ -1,7 +1,7 @@
 index_title=Shorewall6 Firewall
 index_ecmd=Kommandot $1 hittades inte på ditt system. Kanske är den inte installerad, eller <a href='$2'>modulkonfiguration</a> är felaktig.
 index_edir=Shorewall-konfigureringskatalogen $1 hittades inte på ditt system. Kanske är den inte installerad, eller <a href='$2'>modulkonfiguration</a> är felaktig.
-index_version=Shorewall6 version $1 
+index_version=Shorewall6 version $1
 index_return=lista över tabeller
 index_restart=Använd konfigurering
 index_restartdesc=Klicka på den här knappen för att aktivera den aktuella Shorewall-konfigurationen med kommandot <tt>shorewall6 omstart</tt>.
@@ -85,7 +85,7 @@ policy_1=Destinationszon
 policy_2=Politik
 policy_3=Syslog-nivå
 policy_4=Trafikgräns
-policy_limit=Begränsa $1, Burst $2 
+policy_limit=Begränsa $1, Burst $2
 policy_return=policy lista
 policy_edit=Redigera standardpolicy
 policy_create=Skapa standardpolicy
@@ -310,13 +310,13 @@ hosts_err=Det gick inte att spara zonvärd
 hosts_enet=Saknad eller ogiltig värdadress
 hosts_header=Information om zonvärd
 hosts_routestopped=Väg även när brandväggen är stoppad?
-hosts_ip=Adress eller nätverk $1 
-hosts_mac=MAC-adress $1 
-hosts_ipset=IP-inställning $1 
+hosts_ip=Adress eller nätverk $1
+hosts_mac=MAC-adress $1
+hosts_ipset=IP-inställning $1
 hosts_any=Varje värd
 
-edit_before=Innan post $1 
-edit_after=Efter post $1 
+edit_before=Innan post $1
+edit_after=Efter post $1
 
 blacklist_title=Svartlista värdar
 blacklist_desc=Denna sida visar värdar och tjänster som kommer att blockeras om trafik från dem anländer till ett gränssnitt med alternativet <b>svartlista</b>.
@@ -423,15 +423,15 @@ comment_err=Det gick inte att spara kommentar
 comment_enone=Inget meddelande har matats in
 
 log_create_table=Lagt till posten i $1 -tabellen
-log_modify_table=Ändrad post i tabellen $1 
-log_delete_table=Radering av posten från tabellen $1 
-log_deletes_table=Raderade poster från tabellen $1 
+log_modify_table=Ändrad post i tabellen $1
+log_delete_table=Radering av posten från tabellen $1
+log_deletes_table=Raderade poster från tabellen $1
 log_up_table=Flyttade upp posten i $1 -tabellen
-log_down_table=Flyttade nedgången i tabellen $1 
+log_down_table=Flyttade nedgången i tabellen $1
 log_manual_table=Redigerade manuellt $1 -tabellfilen
-log_create_comment=Lade till kommentar till tabellen $1 
-log_modify_comment=Ändrad kommentar i tabellen $1 
-log_delete_comment=Raderad kommentar från tabellen $1 
+log_create_comment=Lade till kommentar till tabellen $1
+log_modify_comment=Ändrad kommentar i tabellen $1
+log_delete_comment=Raderad kommentar från tabellen $1
 log_stop=Stoppad brandvägg
 log_start=Startad brandvägg
 log_refresh=Uppdaterad brandvägg

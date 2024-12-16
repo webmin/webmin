@@ -70,7 +70,7 @@ cvirt_eroot3=Du har ikke tilgang til å bruke rot-katalogen '$1'
 cvirt_eroot4=Ingen bruker definert i Apache konfigurasjonen
 cvirt_etaken=En virtuell tjener med samme navn og port finnes allerede
 cvirt_efile=Kunne ikke skrive til $1 : $2
-cvirt_emissing=Den nye virtuelle tjeneren ble lagt til $1,  men denne filen brukes ikke av Apache. Sjekk <a href='$2'>modulkonfigurasjonen</a> og forsikre deg om at 'Fil eller katalog som virtuelle servere skal legges til' er korrekt
+cvirt_emissing=Den nye virtuelle tjeneren ble lagt til $1, men denne filen brukes ikke av Apache. Sjekk <a href='$2'>modulkonfigurasjonen</a> og forsikre deg om at 'Fil eller katalog som virtuelle servere skal legges til' er korrekt
 
 etype=Du har ikke lov til å redigere innstillinger av denne typen
 efailed=Kunne ikke lagre $1

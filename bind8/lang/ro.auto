@@ -67,7 +67,7 @@ index_eexpired_conf=Semnarea automată ar trebui să fie reactivată pe pagina $
 index_eexpired_mod=Utilizați modulul $1 pentru a dezactiva DNSSEC pentru aceste domenii sau pentru a verifica de ce semnarea nu reușește.
 
 master_title=Editează zona principală
-master_inview=$1 în vizualizare $2 
+master_inview=$1 în vizualizare $2
 master_ecannot=Nu aveți voie să editați această zonă
 master_egone=Zona $1 nu există în nicio vedere
 master_egone2=Zona $1 nu există!

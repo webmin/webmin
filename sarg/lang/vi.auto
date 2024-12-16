@@ -1,8 +1,8 @@
 index_title=Máy tạo báo cáo mực
 index_econf=Không tìm thấy tệp cấu hình Sarg $1 trên hệ thống của bạn. Có thể Sarg chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
 index_ecmd=Không tìm thấy chương trình Sarg $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
-index_eversion=Không thể tải phiên bản Sarg bằng lệnh $1 : $2 
-index_version=Phiên bản sarg $1 
+index_eversion=Không thể tải phiên bản Sarg bằng lệnh $1 : $2
+index_version=Phiên bản sarg $1
 index_generate=Tạo báo cáo ngay
 index_generatedesc=Nhấp vào nút này để ngay lập tức tạo báo cáo Sarg trong $1 bằng cách sử dụng cấu hình hiện tại.
 index_clear=Xóa báo cáo hiện có trong thư mục?

@@ -3,7 +3,7 @@ index_startmsg=Fare clic su questo pulsante per avviare il server FTP con la con
 index_startmsg2=Fare clic su questo pulsante per avviare il server FTP con la configurazione corrente.
 index_stop=Arresta il server
 index_stopmsg=Fare clic su questo pulsante per arrestare il server FTP, che impedirà a tutti i nuovi client FTP di connettersi.
-index_version=Versione ProFTPd $1 
+index_version=Versione ProFTPd $1
 index_proftpd=ProFTPd
 index_dlheader=Aggiungi opzioni
 index_dlmode=Aggiungi opzioni per
@@ -16,7 +16,7 @@ manual_configs=Modifica file di configurazione
 manual_ecannot=Non è consentito modificare manualmente le direttive
 manual_file=Modifica direttive nel file:
 manual_efile=File di configurazione ProFTPd non valido
-manual_etest=Rilevato errore del file di configurazione : $1 
+manual_etest=Rilevato errore del file di configurazione : $1
 
 limit_header7=Per i comandi $1 a livello globale
 
@@ -63,11 +63,11 @@ apply_egone=Non più in esecuzione
 
 ftpindex_cmds=Comandi FTP
 
-log_anonc=Configura FTP anonimo per il server $1 
-log_anons=FTP anonimo riconfigurato per il server $1 
-log_anond=FTP anonimo eliminato per il server $1 
-log_anonm=FTP anonimo modificato manualmente per il server $1 
-log_anon=Modificato $1 in FTP anonimo per il server $2 
+log_anonc=Configura FTP anonimo per il server $1
+log_anons=FTP anonimo riconfigurato per il server $1
+log_anond=FTP anonimo eliminato per il server $1
+log_anonm=FTP anonimo modificato manualmente per il server $1
+log_anon=Modificato $1 in FTP anonimo per il server $2
 
 eafter=Verifica della configurazione non riuscita: $1 Le modifiche non sono state salvate.
 proftpd_apply=Applica i cambiamenti

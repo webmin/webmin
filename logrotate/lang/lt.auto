@@ -1,8 +1,8 @@
 index_title=Žurnalo failo pasukimas
 index_econf=Jūsų sistemoje nerastas žurnalo pasukimo konfigūracijos failas $1. Galbūt logrotatas neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
 index_ecmd=Jūsų sistemoje nerasta žurnalo pasukimo programa $1. Galbūt jis neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
-index_eversion=Nepavyko gauti logrotato versijos su komanda $1 : $2 
-index_version=Logrotate versija $1 
+index_eversion=Nepavyko gauti logrotato versijos su komanda $1 : $2
+index_version=Logrotate versija $1
 index_add=Pridėkite naują žurnalo failą, kad pasuktumėte.
 index_file=Žurnalo failas
 index_period=Rotacijos laikotarpis
@@ -50,7 +50,7 @@ edit_mailfl=Užregistruokite failą el. Paštu
 edit_mailfirst=Naujausias, kuris buvo ką tik sukamas
 edit_maillast=Seniausia, kurią ketinama ištrinti
 edit_create=Iš naujo sukurti žurnalo failą po pasukimo?
-edit_createas=Taip, naudojant $1 režimą ir priklauso vartotojui $2 ir grupei $3 
+edit_createas=Taip, naudojant $1 režimą ir priklauso vartotojui $2 ir grupei $3
 edit_createno=Ne, nekurkite iš naujo
 edit_createsame=Taip, su senais leidimais
 edit_olddir=Laikykite senus pasuktus rąstus
@@ -90,9 +90,9 @@ log_modify_sched=Pakeistas žurnalo pasukimas Cron darbas
 log_create_sched=Sukurtas rąstų rotacijos „Cron“ darbas
 log_delete_sched=Ištrinta žurnalo kaitaliojimo „Cron“ užduotis
 log_global=Modifikuotos visuotinės parinktys
-log_create=Pridėta žurnalo failo rotacija $1 
-log_modify=Modifikuota žurnalo failo rotacija $1 
-log_delete=Ištrinta žurnalo failo rotacija $1 
+log_create=Pridėta žurnalo failo rotacija $1
+log_modify=Modifikuota žurnalo failo rotacija $1
+log_delete=Ištrinta žurnalo failo rotacija $1
 log_delete_logs=Ištrinta $1 žurnalo failų rotacija
 
 sched_title=Žurnalų pasukimo grafikas

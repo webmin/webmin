@@ -9,7 +9,7 @@ index_stopdesc=Klik på denne knap for at stoppe den kørende Syslog-NG-dæmon. 
 index_start=Start Syslog-NG
 index_startdesc=Klik på denne knap for at starte Syslog-NG-dæmonen ved hjælp af den aktuelle konfiguration.
 index_return=modul indeks
-index_version=Syslog-NG $1 
+index_version=Syslog-NG $1
 
 options_title=Logningsindstillinger
 options_header=Valgmuligheder for alle logfiler
@@ -71,15 +71,15 @@ destinations_typet=TCP syslog server
 destinations_typeg=Datagramstik
 destinations_types=Stream stikkontakt
 destinations_allusers=Alle brugere
-destinations_users=Kun brugere $1 
-destinations_host=Vært $1 
+destinations_users=Kun brugere $1
+destinations_host=Vært $1
 destinations_view=Udsigt ..
 destinations_none=Der er endnu ikke defineret nogen destinationslogfiler.
 destinations_delete=Slet valgte destinationer
 destinations_add=Tilføj en ny logdestination.
 destinations_return=log destinationer
 destinations_desc=Andet modulets log
-destinations_cmd=Output fra $1 
+destinations_cmd=Output fra $1
 
 destination_header=Log destinationsindstillinger
 destination_title1=Opret logdestination
@@ -259,10 +259,10 @@ source_edoor=Manglende eller ugyldig Sun streams dørfilnavn
 source_transport=Netværksprotokol
 
 view_title=Se Logfile
-view_header=Sidste $1 linjer af $2 
+view_header=Sidste $1 linjer af $2
 view_empty=Logfilen er tom
 view_refresh=Opdater
-view_filter=Vis kun linjer med tekst $1 
+view_filter=Vis kun linjer med tekst $1
 
 apply_err=Kunne ikke anvende konfiguration
 apply_egone=Kører ikke!
@@ -271,17 +271,17 @@ start_err=Kunne ikke starte Syslog-NG-server
 
 stop_err=Kunne ikke stoppe Syslog-NG-server
 
-log_create_destination=Oprettet logdestination $1 
-log_modify_destination=Ændret logdestination $1 
-log_delete_destination=Slettet logdestination $1 
+log_create_destination=Oprettet logdestination $1
+log_modify_destination=Ændret logdestination $1
+log_delete_destination=Slettet logdestination $1
 log_delete_destinations=Slet $1 logdestinationer
-log_create_filter=Oprettet logfilter $1 
-log_modify_filter=Ændret logfilter $1 
-log_delete_filter=Slettet logfilter $1 
+log_create_filter=Oprettet logfilter $1
+log_modify_filter=Ændret logfilter $1
+log_delete_filter=Slettet logfilter $1
 log_delete_filters=Slet $1 logfiltre
-log_create_source=Oprettet logkilde $1 
-log_modify_source=Ændret logkilde $1 
-log_delete_source=Slettet logkilde $1 
+log_create_source=Oprettet logkilde $1
+log_modify_source=Ændret logkilde $1
+log_delete_source=Slettet logkilde $1
 log_delete_sources=Slet $1 logkilder
 log_create_log=Oprettet log mål
 log_modify_log=Ændret logmål

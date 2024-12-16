@@ -149,7 +149,7 @@ repos_err_create=Failed to create repository
 repos_ebutton=No button clicked!
 repos_enone=None selected
 repos_title=Delete Repositories
-repos_rusure=Are you sure you want to delete the $1 selected package repositories? Packages installed from them will still be available, but may not be updatable. 
+repos_rusure=Are you sure you want to delete the $1 selected package repositories? Packages installed from them will still be available, but may not be updatable.
 repos_ok=Delete Now
 
 __norefs=1

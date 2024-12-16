@@ -1,7 +1,7 @@
 index_title=IPsec VPN konfiguráció
 index_eipsec=A (z) $1 FreeSWAN parancs nem található a rendszeren, vagy nem a megfelelő program. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
 index_out=A $1 outputja :
-index_version2=$2 verzió: $1 
+index_version2=$2 verzió: $1
 index_econfig=A (z) $1 FreeSWAN konfigurációs fájl nem található a rendszerén. Lehet, hogy nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
 index_nokey=A (z) $1 fájlban nem jelenik meg gazdakulcs. A VPN-kapcsolatok meghatározása előtt elő kell állítani a rendszert.
 index_newkey=Kulcs generálása a host számára:
@@ -29,7 +29,7 @@ index_import=Importálja a kapcsolatot a fájlból.
 stop_err=Nem sikerült leállítani az IPsec szervert
 start_err=Az IPsec szerver indítása nem sikerült
 restart_err=Az IPsec szerver újraindítása nem sikerült
-start_elog=A következő hibákat naplózta : $1 
+start_elog=A következő hibákat naplózta : $1
 
 newkey_err=A kulcs generálása nem sikerült
 newkey_ehost=Hiányzó vagy érvénytelen gazdagépnév
@@ -173,11 +173,11 @@ save_ekeylife=Hiányzó vagy érvénytelen kapcsolatkulcs-élettartam
 save_eikelifetime=Hiányzik vagy érvénytelen a kulcscsatorna élettartama
 
 log_create_conn=Létrehozva a (z) $1 kapcsolat
-log_delete_conn=Törölt kapcsolat $1 
-log_modify_conn=Módosított kapcsolat $1 
-log_import_conn=Importált kapcsolat $1 
+log_delete_conn=Törölt kapcsolat $1
+log_modify_conn=Módosított kapcsolat $1
+log_import_conn=Importált kapcsolat $1
 log_up=Elindult a $1 kapcsolat
-log_policy=Mentett $1 
+log_policy=Mentett $1
 log_start=Indított IPsec szerver
 log_stop=Leállt az IPsec szerver
 log_restart=Indította újra az IPsec szervert
@@ -201,7 +201,7 @@ export_save=Konfiguráció írása a fájlba ..
 export_ok=Exportálás most
 export_err=A konfiguráció exportálása nem sikerült
 export_efile=Hiányzik a fájlnév
-export_esave=Nem sikerült írni a fájlba : $1 
+export_esave=Nem sikerült írni a fájlba : $1
 export_done=Exportált konfiguráció a $1 és $2 kapcsolathoz ($3 bájt).
 
 import_title=Konfiguráció importálása
@@ -241,7 +241,7 @@ secret_name=A titkos kulcs az
 secret_for=Otthont ad
 secret_type=Kulcs típusa
 secret_pass=Megosztott jelszó
-secret_rsa=RSA $1 
+secret_rsa=RSA $1
 secret_value=Kulcs érték
 secret_err=A titkos kulcs mentése nem sikerült
 secret_elast=Az utolsó megmaradt titkos kulcs nem törölhető

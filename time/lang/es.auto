@@ -1,6 +1,6 @@
 index_serviceonboot=Sí, y comienza en el arranque
 index_boot=¿Sincronizar cuando se inicia Webmin?
-index_ehwclock=$1 falló : $2 
+index_ehwclock=$1 falló : $2
 index_tabtime=Fijar tiempo
 index_tabzone=Cambiar zona horaria
 index_tabsync=Hora del servidor de sincronización

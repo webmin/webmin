@@ -1,5 +1,5 @@
 index_title=PPTP VPN-server
-index_version=PoPToP-version $1 
+index_version=PoPToP-version $1
 index_epptpd=PoPToP PPTP-servern $1 hittades inte på ditt system eller är inte rätt program. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_econfig=PPTP-serverns konfigurationsfil $1 hittades inte på ditt system. Kanske är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_stop=Stoppa PPTP-servern
@@ -63,7 +63,7 @@ options_err=Det gick inte att spara PPP-alternativ
 options_emtu=Saknas eller ogiltig maximalt skickande paketstorlek
 options_emru=Saknas eller ogiltig maximalt mottagande paketstorlek
 options_ename=Servernamn saknas för autentisering
-options_version=PPPd-version $1 
+options_version=PPPd-version $1
 options_msdesc=Alternativen nedan aktiverar MS-CHAP-autentiseringsmetod och MPPE-kryptering, som används som standard av Windows VPN-klienter. MPPE kräver dock stöd i både PPP-demonen och operativsystemkärnan.
 options_mschap=MS-CHAP-autentisering
 options_mschap-v2=MS-CHAP version 2-autentisering
@@ -75,7 +75,7 @@ secrets_ecannot=Du får inte redigera PPP-konton
 secrets_return=index
 secrets_none=Inga PPP-konton har skapats än.
 secrets_enopfile=PPP-lösenordsfilen $1 finns inte i ditt system. Kanske är PPP inte installerat, eller din <a href='$2'>modulkonfiguration</a> är felaktig.
-secrets_table=PPP står för $1 
+secrets_table=PPP står för $1
 secrets_user=Användarnamn
 secrets_ips=IP-adresser
 secrets_uany=NÅGRA
@@ -133,13 +133,13 @@ disc_err=Det gick inte att koppla bort
 disc_egone=Anslutningarna är inte längre aktiva
 disc_ekill=Processen körs inte längre
 
-log_secret_create=Skapat PPP-konto $1 
-log_secret_modify=Ändrat PPP-konto $1 
-log_secret_delete=Raderat PPP-konto $1 
+log_secret_create=Skapat PPP-konto $1
+log_secret_modify=Ändrat PPP-konto $1
+log_secret_delete=Raderat PPP-konto $1
 log_deletes=Raderade $1 PPP-konton
 log_conf=Modifierade PPTP-serveralternativ
 log_options=Modifierade PPP-alternativ
-log_disc=Kopplad klient $1 
+log_disc=Kopplad klient $1
 log_start=Startad PPTP-server
 log_stop=Stoppad PPTP-server
 log_apply=Tillämpad PPTP-serverkonfiguration

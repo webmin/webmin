@@ -367,7 +367,7 @@ cygwin_elread=Failed to read symlink: $1
 cygwin_elstat=Failed to stat symlink: $1
 cygwin_badpostscript=Warning: this script does not appear to have been run
 cygwin_pkgexists=Package $1 already exists.
-cygwin_warnuse=Warning: This is not an official interface for managing Cygwin software.  Use at your own risk.
+cygwin_warnuse=Warning: This is not an official interface for managing Cygwin software. Use at your own risk.
 cygwin_edb=Missing Cygwin packages database $1
 
 deletes_err=Failed to delete packages

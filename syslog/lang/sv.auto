@@ -1,7 +1,7 @@
 index_econf=Syslog-konfigurationsfilen $1 hittades inte på ditt system. Kanske är syslog inte installerat, eller en nyare version som syslog-ng används, eller <a href='$2'>modulkonfiguration</a> är felaktig.
 index_econf2=Tjänsten <tt>systemd-journald</tt> upptäcktes på ditt system för att samla in och lagra loggdata. Det rekommenderas att använda en ny <a href='$2'>$1</a>-modul istället.
-index_socket=Unix socket-fil $1 
-index_cmd=Utgång från $1 
+index_socket=Unix socket-fil $1
+index_cmd=Utgång från $1
 index_viewfile=Visa loggfil:
 index_viewok=Se
 
@@ -13,7 +13,7 @@ edit_return=logga detaljer
 edit_ecannot=Du får inte redigera logginställningar
 edit_ecannot2=Du får inte redigera den här loggen
 
-view_filter=Visa bara rader med text $1 
+view_filter=Visa bara rader med text $1
 
 save_esocket=Saknad eller ogiltig unix-domänuttag
 save_ecannot1=Du får inte ta bort den här loggen

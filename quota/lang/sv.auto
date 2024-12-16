@@ -46,8 +46,8 @@ lgroups_emailheader=E-post till grupper som närmar sig kvoten
 lgroups_email=Skicka e-post till grupper?
 lgroups_tovirt=Virtualmin domänägare
 
-suser_emaxblocks=Du får inte bevilja blockgränser över $1 
-suser_emaxfiles=Du får inte bevilja filgränser över $1 
+suser_emaxblocks=Du får inte bevilja blockgränser över $1
+suser_emaxfiles=Du får inte bevilja filgränser över $1
 
 ufilesys_kbs=kilobyte
 ufilesys_space=Disk utrymme
@@ -78,10 +78,10 @@ lusers_mass=Uppdatera utvalda användare
 lusers_cc=Skicka också e-post till
 lusers_nocc=Ingen
 
-log_email_user=Ändra e-postalternativ för användare på $1 
-log_email_group=Ändra gruppens e-postalternativ på $1 
-log_gsync=Ändrade nya gruppkvoter på $1 
-log_support=Aktiverat kvotstöd för $1 
+log_email_user=Ändra e-postalternativ för användare på $1
+log_email_group=Ändra gruppens e-postalternativ på $1
+log_gsync=Ändrade nya gruppkvoter på $1
+log_support=Aktiverat kvotstöd för $1
 
 email_err=Det gick inte att spara e-postalternativ
 email_ecannot=Du får inte ändra e-postalternativ

@@ -8,5 +8,5 @@ view_epathinfo=경로에 유효하지 않은 문자가 포함되어 있습니다
 acl_relto=(모든 chroot 디렉토리에 상대적)
 eattr_s=삭제할 때 제로 블록
 extract_show=내용보기
-extract_err2=파일 내용을 가져 오지 못했습니다  : $1 
+extract_err2=파일 내용을 가져 오지 못했습니다 : $1
 extract_shown=압축 파일의 내용

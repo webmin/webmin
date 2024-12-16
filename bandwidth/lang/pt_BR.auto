@@ -5,7 +5,7 @@ index_elog=O arquivo $1 usado para o log da largura de banda é na verdade um di
 index_edir=O diretório para armazenar dados da largura de banda $1 não existe ou não é um diretório. Ajuste a <a href='$2'>configuração do módulo</a> para usar um caminho diferente.
 index_emod=O módulo Webmin $1 não está instalado neste sistema ou não é suportado pelo seu sistema operacional. O módulo de monitoramento de largura de banda não pode operar sem ele.
 index_esyslog=Nenhum dos módulos System Logs está instalado neste sistema e é suportado pelo seu sistema operacional. O módulo Monitoramento de largura de banda não pode operar sem um deles.
-index_firesys=Usando $1 firewall e $2 
+index_firesys=Usando $1 firewall e $2
 index_setupcannot=No entanto, você não tem permissões para configurá-lo!
 index_setupdesc=Antes que este módulo possa relatar o uso da rede em seu sistema, ele deve ser configurado para monitorar o tráfego na interface de rede externa selecionada.
 index_setupdesc2=<b>Aviso - este módulo registrará TODO o tráfego de rede enviado ou recebido na interface selecionada. Isso consumirá uma grande quantidade de espaço em disco e tempo de CPU em uma conexão de rede rápida.</b>
@@ -61,7 +61,7 @@ index_rotatedesc=Clique neste botão para processar todo o tráfego de rede regi
 index_eiptables=Aviso - Sua configuração de tabelas de IP tem um erro: $1. A configuração do monitoramento da largura de banda limpará todas as regras do firewall.
 index_return=formulário de relatório
 
-log_setup=Configurar o monitoramento da largura de banda na interface $1 
+log_setup=Configurar o monitoramento da largura de banda na interface $1
 log_turnoff=Monitoramento de largura de banda desativado
 log_rotate=Estatísticas atualizadas
 

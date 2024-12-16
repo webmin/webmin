@@ -1,4 +1,4 @@
-index_mode=Typ konfiguracji sieci: $1 
+index_mode=Typ konfiguracji sieci: $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
 index_mode_freebsd=FreeBSD

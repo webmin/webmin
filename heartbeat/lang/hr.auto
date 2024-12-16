@@ -9,7 +9,7 @@ index_eha_cf=Konfiguracijska datoteka otkucaja srca $1 nije pronađena u vašem 
 index_eharesources=Datoteka resursa $1 nije pronađena u vašem sustavu. Možda još nije kopiran na svoje mjesto ili je <a href='$2'>konfiguracija modula</a> netočna.
 index_eauthkeys=Datoteka ključeva za provjeru autentičnosti $1 nije pronađena u vašem sustavu. Možda još nije kopiran na svoje mjesto ili je <a href='$2'>konfiguracija modula</a> netočna.
 index_ereq_resource_cmd=Skripta za traženje resursa iz drugog čvora ($1) nije pronađena u vašem sustavu. Možda još nije kopiran na svoje mjesto ili je <a href='$2'>konfiguracija modula</a> netočna.
-index_version=Verzija otkucaja srca $1 
+index_version=Verzija otkucaja srca $1
 index_noversion=Upozorenje - Verziju otkucaja srca instaliranu na vašem sustavu nije moguće automatski prepoznati. Trebali biste ga postaviti na stranici <a href='$1'>konfiguracija modula</a>.
 index_status=Status otkucaja srca
 
@@ -21,7 +21,7 @@ conf_bcasts=Ethernet sučelja za otkucaje srca
 conf_none=nijedan
 conf_udpport=UDP otkucaja srca
 conf_mcast=Uređaj za otkucaje srca s višestrukim otkucajima
-conf_mcastv=Uređaj $1, grupa $2, priključak $3, TTL $4, povratna veza $5 
+conf_mcastv=Uređaj $1, grupa $2, priključak $3, TTL $4, povratna veza $5
 conf_enabled=Omogućeno
 conf_disabled=Onemogućeno
 conf_keepalive=Vrijeme između otkucaja srca

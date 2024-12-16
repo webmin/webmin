@@ -132,7 +132,7 @@ save_eminsize=Lunghezza minima della password mancante o non numerica
 save_edays=Non è stato selezionato alcun giorno in cui permettere l'accesso
 save_ehours=Orario in cui permettere l'accesso mancante o non valido
 save_ehours2=L'orario di partenza deve precedere quello finale.
-save_etemp=L' opzione per forzare il cambiamento della password al prossimo login non può essere usata  meno che non sia abilitato <a href='$1'>il prompt per inserire una nuova password</a>
+save_etemp=L' opzione per forzare il cambiamento della password al prossimo login non può essere usata meno che non sia abilitato <a href='$1'>il prompt per inserire una nuova password</a>
 
 delete_err=Errore nell'eliminazione dell'utente
 delete_eself=Non puoi eliminare te stesso
@@ -217,7 +217,7 @@ log_reset=Reimposta l'accesso per $1 in $2
 log_cert=Emesso certificato per l'utente $1
 log_modify_g=Modificato il gruppo Webmin $1
 log_rename_g=Rinominato il gruppo Webmin $1 in $2
-log_create_g=Creato il gruppo Webmin  $1
+log_create_g=Creato il gruppo Webmin $1
 log_delete_g=Eliminato il gruppo Webmin $1
 log_switch=Si è passati all'utente Webmin $1
 log_delete_users=$1 utenti Webmin cancellati
@@ -316,10 +316,10 @@ unix_esudo=Il comando $1 non è installato
 unix_esudomod=Il modulo Perl $1, necessario per l'autenticazione <tt>sudo</tt>, non è installato
 
 sessions_title=Sessioni attualmente attive
-sessions_id=<pre>ID di sessione                  </pre>
-sessions_user=<pre>Utente Webmin  </pre>
-sessions_login=<pre>Collegato alle ore        </pre>
-sessions_host=<pre>Indirizzo IP  </pre>
+sessions_id=<pre>ID di sessione </pre>
+sessions_user=<pre>Utente Webmin </pre>
+sessions_login=<pre>Collegato alle ore </pre>
+sessions_host=<pre>Indirizzo IP </pre>
 sessions_lview=Visualizza il registro...
 
 hide_title=Nascondi i moduli inutilizzati

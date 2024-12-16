@@ -33,7 +33,7 @@ save_erw=לא נכנסו מארחי קריאה וכתיבה
 save_eroot=לא הוזנו מארחי גישה לקובצי שורש
 save_eaccess=לא הוזנו מארחי גישה להר
 
-log_create_export=יצר יצוא של $1 
+log_create_export=יצר יצוא של $1
 log_delete_export=ייצוא של $1 נמחק
-log_modify_export=ייצוא שונה של $1 
+log_modify_export=ייצוא שונה של $1
 log_apply=תצורה מיושמת

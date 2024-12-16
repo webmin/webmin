@@ -12,7 +12,7 @@ index_delete=Supprimer les Sélections
 index_none=aucun
 
 edit_title1allow=Création d'un Règle de Permission
-edit_title2allow=Édition de Règles de Permission 
+edit_title2allow=Édition de Règles de Permission
 edit_title1deny=Création d'une Règle d'Interdiction
 edit_title2deny=Édition de Règles d'Interdiction
 edit_eid=La règle n'a pas été trouvée

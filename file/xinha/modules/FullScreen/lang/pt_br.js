@@ -14,5 +14,5 @@
 // Distributed under the same terms as HTMLArea itself.
 // This notice MUST stay intact for use (see license.txt).
 {
-  "Maximize/Minimize Editor": "Maximizar/Minimizar Editor"
+ "Maximize/Minimize Editor": "Maximizar/Minimizar Editor"
 };

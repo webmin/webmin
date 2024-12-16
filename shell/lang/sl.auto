@@ -14,5 +14,5 @@ acl_user_def=Trenutni uporabnik Webmin-a
 acl_shellenv=Uporabljate izbrano uporabniško okolje?
 acl_chroot=Chroot v imenik
 
-log_run=Ukaz Ran $1 
+log_run=Ukaz Ran $1
 log_clear=Izbrisana zgodovina ukazov

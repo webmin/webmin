@@ -1,6 +1,6 @@
 index_title=WU-FTPD سرور
 index_eftpd=The FTP server $1 could not be found on your system. Maybe it is not installed, or your <a href='$2'>FTP Server module configuration</a> is incorrect.
-index_eftpaccess=The FTP server configuration file $1 does not exist.  Maybe it is not installed, or your <a href='$2'>FTP Server module configuration</a> is incorrect.
+index_eftpaccess=The FTP server configuration file $1 does not exist. Maybe it is not installed, or your <a href='$2'>FTP Server module configuration</a> is incorrect.
 index_eversion=The FTP server $1 does not appear to be WU-FTPd. Maybe you are using an older FTPd provided with your operating system, or your <a href='$2'>FTP Server module configuration</a> is in correct. The output from the FTP server was : $3
 index_apply=تبدیلیوں کا اطلاق کریں
 index_applymsg=موجودہ تشکیل کو لاگو کرنے کے لئے اس بٹن پر کلک کریں۔ یہ FTP سرور کے چلنے والے تمام عملوں کو روک دے گا اور اسے دوبارہ شروع کردے گا ، اس طرح تمام منسلک صارفین کو منقطع کردیا جائے گا۔

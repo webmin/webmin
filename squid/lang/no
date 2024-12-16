@@ -1,5 +1,5 @@
 index_header=Squid proxytjener
-index_msgnoconfig=Squid konfigfilen <tt>$1</tt> finnes ikke. Dersom du har Squid installert, må du justere  <a href=/config.cgi?$2 >modulkonfigurasjonen</a> til å bruke korrekte stier.
+index_msgnoconfig=Squid konfigfilen <tt>$1</tt> finnes ikke. Dersom du har Squid installert, må du justere <a href=/config.cgi?$2 >modulkonfigurasjonen</a> til å bruke korrekte stier.
 index_msgnoexe=Squid-programmet <tt>$1</tt> finnes ikke. Dersom du har Squid installert, må du justere <a href=/config.cgi?$2 >modulkonfigurasjonen</a> til å bruke riktig sti.
 index_msgnosupported2=Din versjon av Squid støttes ikke av Webmin. Bare versjoner fra $1 til $2 støttes av denne modulen.
 index_msgnodir1=Dine Squid kataloger <tt>$1</tt> er ikke blitt initialisert.
@@ -613,7 +613,7 @@ slogs_emsg4='$1' er ikke en gyldig nettmaske
 slogs_emsg5='$1' er ikke en gyldig list med debug innstillinger
 slogs_efname=Ugyldig formatnavn i rad $1
 slogs_effmt=Mangler loggformat i rad $1
-slogs_eafile=Manglende eller ugyldig  loggfil i rad $1
+slogs_eafile=Manglende eller ugyldig loggfil i rad $1
 
 smem_ftsmo=Kunne ikke lagre minne innstillinger
 smem_emsg1='$1' er ikke en gyldig cache størrelse
@@ -766,7 +766,7 @@ delay_epercent='$1' er ikke en gyldig prosent for initielt bucket nivå
 delay_return=liste med forsinkelsespooler
 delay_delete=Slett valgte forsinkelsespooler
 
-pool_title1=Legg  til forsinkelsessamling
+pool_title1=Legg til forsinkelsessamling
 pool_title2=Rediger forsinkelsessamling
 pool_num=Samling nummer
 pool_ind=Individuell grense (for klassene 2 og 3)
@@ -803,7 +803,7 @@ authparam_reuses=Antall ganger en NTLM utfordring kan gjenbrukes
 authparam_lifetime=Levetid for NTLM utfordringer
 authparam_ereuses='$1' er ikke et gyldig antall ganger for gjenbruk
 authparam_elifetime='$1' er ikke en gyldig levetid for utfordring
-authparam_mui_msg=Autentiser IP TTL MÅ være > 0 dersom du bruker en <b>"max_user_ip"</b> ACL.  Angi hvor lenge du ønsker Squid skal huske Bruker/IP relasjonen. Brukeren kan bare logge inn fra den memorerte IP-en inntil denne tidsperioden er utløpt, selv om han/hun har lukket nettleseren sin.
+authparam_mui_msg=Autentiser IP TTL MÅ være > 0 dersom du bruker en <b>"max_user_ip"</b> ACL. Angi hvor lenge du ønsker Squid skal huske Bruker/IP relasjonen. Brukeren kan bare logge inn fra den memorerte IP-en inntil denne tidsperioden er utløpt, selv om han/hun har lukket nettleseren sin.
 ext_title1=Opprett eksternt program
 ext_title2=Rediger eksternt program
 ext_header=Detaljer for eksternt ACL program

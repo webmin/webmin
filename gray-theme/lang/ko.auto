@@ -13,10 +13,10 @@ mmain_title=$2 의 Cloudmin $1 ($3)
 mmain_title2=클라우드 민
 mmain_title3=Cloudmin $1 ($2)
 
-index_virtualmintitle=Virtualmin $1 
-index_cloudmintitle=Cloudmin $1 
-index_webmintitle=Webmin $1 
-index_usermintitle=Usermin $1 
+index_virtualmintitle=Virtualmin $1
+index_cloudmintitle=Cloudmin $1
+index_webmintitle=Webmin $1
+index_usermintitle=Usermin $1
 
 config_section=구성 카테고리 :
 config_change=변화

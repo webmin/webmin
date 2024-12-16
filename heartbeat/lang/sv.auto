@@ -9,7 +9,7 @@ index_eha_cf=Hjärtslagkonfigurationsfilen $1 hittades inte på ditt system. Kan
 index_eharesources=Resursfilen $1 hittades inte på ditt system. Kanske har den inte kopierats på plats ännu, eller <a href='$2'>modulkonfiguration</a> är felaktig.
 index_eauthkeys=Autentiseringsnyckelfilen $1 hittades inte på ditt system. Kanske har den inte kopierats på plats ännu, eller <a href='$2'>modulkonfiguration</a> är felaktig.
 index_ereq_resource_cmd=Skriptet för att begära resurser från den andra noden ($1) hittades inte på ditt system. Kanske har den inte kopierats på plats ännu, eller <a href='$2'>modulkonfiguration</a> är felaktig.
-index_version=Hjärtslagversion $1 
+index_version=Hjärtslagversion $1
 index_noversion=Varning - Versionen av Heartbeat installerad på ditt system kunde inte upptäckas automatiskt. Du bör ställa in den på <a href='$1'>modulkonfiguration</a> -sidan.
 index_status=Hjärtslagstatus
 
@@ -21,7 +21,7 @@ conf_bcasts=Ethernet-hjärtslaggränssnitt
 conf_none=Ingen
 conf_udpport=UDP-hjärtslagsport
 conf_mcast=Multicast-hjärtslagsenhet
-conf_mcastv=Enhet $1, grupp $2, port $3, TTL $4, loopback $5 
+conf_mcastv=Enhet $1, grupp $2, port $3, TTL $4, loopback $5
 conf_enabled=Aktiverad
 conf_disabled=Inaktiverad
 conf_keepalive=Tid mellan hjärtslag

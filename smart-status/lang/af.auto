@@ -1,12 +1,12 @@
 index_title=SMART Drive-status
 index_ecmd=Die SMART-beheeropdrag $1 is nie op u stelsel gevind nie, of is nie korrek opgestel in die <a href='$2'>module-opstelling</a> nie. Dit moet geïnstalleer word voordat hierdie module gebruik kan word.
 index_ecmd2=Die opdrag $1 blyk nie die SMART-beheeropdrag te wees nie. Dit moet korrek in die <a href='$2'>module-opstelling</a> gestel word voordat hierdie module gebruik kan word.
-index_version=SMARTsuite weergawe $1 
+index_version=SMARTsuite weergawe $1
 index_show=Wys die status van die skyf:
 index_ok=Wys
 index_eidescsi=Geen IDE-, SCSI- of SATA-aandrywers is op u stelsel gevind nie.
-index_drive=Status van drywer $1 
-index_drivesub=Status van skyf $1, skyf $2 
+index_drive=Status van drywer $1
+index_drivesub=Status van skyf $1, skyf $2
 index_desc=plek
 index_size=Ry grootte
 index_model=Maak en modelleer
@@ -36,7 +36,7 @@ monitor_edrive=Ontbrekende of ongeldige stasie om na te gaan
 monitor_nosuch=Geen so ry nie
 monitor_nosmart=Geen SMART-ondersteuning nie
 monitor_errorsfound=Gerapporteer $1 foute
-monitor_errorsinced=Foute het toegeneem van $2 tot $1 
+monitor_errorsinced=Foute het toegeneem van $2 tot $1
 monitor_wearlevel=Misluk as die slytasievlak onder is
 monitor_ewearlevel=Ongeldige slytasiepersentasie
 monitor_nowearout=Drive meld nie 'n SSD-wearout-aanwyser aan nie

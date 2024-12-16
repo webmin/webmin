@@ -315,7 +315,7 @@ rbac_desc=Webmin RBA integracija omogućava korisničkim modulima i ACL da budu 
 rbac_esolaris=RBAC je trenutno podržan jedino na Solarisu, tako da ne može biti korišten na $1 sustavu.
 rbac_eperl=Perl modul $1 potreban za RBAC integraciju nije instaliran. <a href='$2'>Kliknte ovdje</a> da ga instalirate.
 rbac_ecpan=Nemate mogućnost pristupa stranicam Webmin Perl Modula u svrhu instaliranja nužnih $1 modula za RBCA integraciju.
-rbac_ok=RBAC integracija  je dosupna na ovom sustavu i može biti omogućena osnovi pojedinog korisnika na stranici Edit Webmin User.
+rbac_ok=RBAC integracija je dosupna na ovom sustavu i može biti omogućena osnovi pojedinog korisnika na stranici Edit Webmin User.
 
 udeletes_err=Neuspješno brisanje korisnika
 udeletes_enone=Ništa nije odabrano

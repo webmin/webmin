@@ -17,4 +17,4 @@ edit_special_monthly=Mesačne (1.)
 edit_special_yearly=Ročne (1. januára)
 
 log_success=Úspešne bežal <tt>$2</tt> v <tt>$1</tt>
-log_failure=Nepodarilo sa spustiť <tt>$2</tt> v <tt>$1</tt> : $3 
+log_failure=Nepodarilo sa spustiť <tt>$2</tt> v <tt>$1</tt> : $3

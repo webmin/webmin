@@ -10,7 +10,7 @@ index_actions=Handlingar
 edit_title=Redigera Cluster Cron Job
 create_title=Skapa Cluster Cron Job
 edit_servers=Kör på servrar
-edit_group=Medlemmar av $1 
+edit_group=Medlemmar av $1
 edit_this=den här servern
 edit_all=&lt;Alla värdar&gt;
 edit_emissing=Cron jobb finns inte längre!
@@ -19,18 +19,18 @@ save_err=Det gick inte att spara kluster cron-jobb
 
 exec_title=Utför Cluster Cron Job
 exec_cmd=Kör $1 på utvalda servrar ..
-exec_failed=Det gick inte att köra på $1 : $2 
+exec_failed=Det gick inte att köra på $1 : $2
 exec_success=Utgång från $1 ..
 exec_nohosts=Inga värdar valda att köra på, eller utvalda grupper innehåller inga användbara värdar.
 
 log_run=Kör $1 på $2 -servrar
-log_run_l=Ran $1 på $2 
-log_create=Skapade cluster cron-jobb för $1 
-log_create_l=Skapade cluster cron-jobb $2 för $1 
-log_modify=Modifierat kluster cron-jobb för $1 
-log_modify_l=Modifierat kluster cron-jobb $2 för $1 
-log_delete=Raderade kluster cron-jobb för $1 
-log_delete_l=Raderade kluster cron-jobb $2 för $1 
+log_run_l=Ran $1 på $2
+log_create=Skapade cluster cron-jobb för $1
+log_create_l=Skapade cluster cron-jobb $2 för $1
+log_modify=Modifierat kluster cron-jobb för $1
+log_modify_l=Modifierat kluster cron-jobb $2 för $1
+log_delete=Raderade kluster cron-jobb för $1
+log_delete_l=Raderade kluster cron-jobb $2 för $1
 log_deletes=Raderade $1 cluster cron-jobb
 
 delete_err=Det gick inte att ta bort cluster-cron-jobb

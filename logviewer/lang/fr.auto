@@ -41,7 +41,7 @@ view_loading=Le fichier journal est surveillé... Pas encore de nouvelles lignes
 view_filter=Filtrer les lignes avec le texte $1
 view_filter_btn=Filtre
 
-save_efile='$1' n'est pas un nom de fichier valide  : $2
+save_efile='$1' n'est pas un nom de fichier valide : $2
 save_ecannot2=Vous n'êtes pas autorisé à afficher ce journal
 save_ecannot3=Erreur : vous n'êtes pas autorisé à voir ce journal
 save_ecannot4=Erreur : impossible d'ouvrir « $1 »

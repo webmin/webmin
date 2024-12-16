@@ -1,5 +1,5 @@
-index_version2=Sendmail versión $1, config $2 
-index_xversion=Versión de Sendmail $1 
+index_version2=Sendmail versión $1, config $2
+index_xversion=Versión de Sendmail $1
 index_sendmail=Enviar correo
 
 opts_maxbad=Máximo destinatarios malos
@@ -33,7 +33,7 @@ rfile_fromdesc=Siempre se debe especificar una dirección De: siempre que sea po
 
 adelete_err=Error al eliminar alias
 adelete_enone=Ninguna seleccionada
-adelete_ecannot=No tiene permiso para eliminar el alias $1 
+adelete_ecannot=No tiene permiso para eliminar el alias $1
 
 masq_ndomains=Dominios para no enmascarar
 
@@ -47,7 +47,7 @@ vform_err_tempfail=Fallo temporal
 vform_err_protocol=Error de protocolo
 
 vdelete_err=Error al eliminar asignaciones de direcciones
-vdelete_ecannot=No tiene permiso para eliminar la asignación de $1 
+vdelete_ecannot=No tiene permiso para eliminar la asignación de $1
 
 mailers_desc3=También debe tener una entrada en la lista de <a href='$1'>dominios de retransmisión</a> para cada dominio también.
 mailers_delete=Eliminar rutas de dominio seleccionadas
@@ -57,7 +57,7 @@ mform_domain2=Todos los hosts en el dominio.
 mform_domain3=Dominio y todos sus anfitriones
 
 mdelete_err=Error al eliminar el enrutador de dominio
-mdelete_ecannot=No está permitido eliminar la ruta para $1 
+mdelete_ecannot=No está permitido eliminar la ruta para $1
 
 generics_delete=Eliminar direcciones salientes seleccionadas
 
@@ -65,14 +65,14 @@ gsave_ecannot3=No tiene permiso para guardar esta dirección saliente
 gsave_ealready=Ya existe una asignación de dirección saliente para '$1'
 
 gdelete_err=Error al eliminar asignaciones de direcciones salientes
-gdelete_ecannot=No tiene permiso para eliminar la asignación de $1 
+gdelete_ecannot=No tiene permiso para eliminar la asignación de $1
 
 domains_delete=Eliminar asignaciones de dominio seleccionadas
 
 dsave_ealready=Ya existe una asignación de dominio para '$1'
 
 ddelete_err=Error al eliminar asignaciones de dominio
-ddelete_ecannot=No tiene permiso para eliminar la asignación de $1 
+ddelete_ecannot=No tiene permiso para eliminar la asignación de $1
 
 access_delete=Eliminar reglas de control de spam seleccionadas
 
@@ -87,7 +87,7 @@ sform_tag_spam=Información de spam
 ssave_ecannot2=No tiene permiso para guardar esta regla de control de spam
 
 sdelete_err=Error al eliminar las reglas de control de spam
-sdelete_ecannot=No está permitido eliminar la regla para $1 
+sdelete_ecannot=No está permitido eliminar la regla para $1
 
 mailq_dir=Directorio
 mailq_locked=Incluso si está bloqueado
@@ -139,7 +139,7 @@ delete_emovenone=No hay correo seleccionado para mover
 delete_nobutton=No se hizo clic en ningún botón
 
 search_efield=Debes seleccionar un tipo de búsqueda.
-search_ewhat=No se ha ingresado ningún texto para la fila $1 
+search_ewhat=No se ha ingresado ningún texto para la fila $1
 search_enone=No se ingresaron criterios de búsqueda
 search_results2=$1 mensajes de correo que coinciden con $2 ..
 search_results4=$1 mensajes de correo que coinciden con su búsqueda ..
@@ -148,8 +148,8 @@ search_all=En todas las carpetas
 search_eboolean=Las búsquedas booleanas que usan 'y' y 'o' no son compatibles
 
 file_ecannot=No tienes permiso para editar este archivo
-file_ealias=Formato no válido para la línea de archivo de alias : $1 
-file_etab=Formato no válido para la línea del archivo de mapa : $1 
+file_ealias=Formato no válido para la línea de archivo de alias : $1
+file_etab=Formato no válido para la línea del archivo de mapa : $1
 
 acl_ports=Puede editar puertos de red?
 acl_manual=¿Se pueden editar archivos manualmente?
@@ -164,7 +164,7 @@ acl_usersu=Con UID en rango
 acl_spam=Direcciones de control de spam que este usuario puede editar
 
 log_ports=Cambiar puertos de red
-log_movemail=Se movieron $1 mensajes de $2 a $3 
+log_movemail=Se movieron $1 mensajes de $2 a $3
 log_delete_aliases=$1 alias eliminados
 log_delete_virtusers=Asignaciones de direcciones $1 eliminadas
 log_delete_domains=Asignaciones de dominio $1 eliminadas
@@ -182,7 +182,7 @@ stop_err=Error al detener sendmail
 stop_ecannot=No tienes permiso para detener sendmail
 stop_epid=Sendmail no parece estar ejecutándose
 restart_epids=No se pudieron encontrar los procesos de sendmail
-restart_ekill=Error al señalar los procesos de sendmail : $1 
+restart_ekill=Error al señalar los procesos de sendmail : $1
 
 start_err=Error al iniciar sendmail
 start_ecannot=No tienes permiso para iniciar sendmail
@@ -208,7 +208,7 @@ ports_def1=Aceptar correo electrónico en el puerto 25 y todas las direcciones
 ports_def0=Acepte correo electrónico solo en los puertos a continuación.
 ports_err=Error al guardar los puertos de red
 ports_ecannot=No tiene permiso para administrar puertos de red
-ports_ename=Nombre de puerto no válido en la fila $1 
-ports_eclash=Nombre de puerto duplicado en la fila $1 
-ports_eaddress=Dirección IP faltante o no válida en la fila $1 
-ports_eport=Número de puerto faltante o no válido en la fila $1 
+ports_ename=Nombre de puerto no válido en la fila $1
+ports_eclash=Nombre de puerto duplicado en la fila $1
+ports_eaddress=Dirección IP faltante o no válida en la fila $1
+ports_eport=Número de puerto faltante o no válido en la fila $1

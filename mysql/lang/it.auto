@@ -4,7 +4,7 @@ index_eshow=Il programma di stato MySQL $1 non è stato trovato sul tuo sistema.
 index_estart=Lo script di avvio MySQL $1 non è stato trovato sul tuo sistema. Forse MySQL non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 index_indexes=Indici
 index_views=Visualizzazioni
-index_version2=$3 versione $1 su $2 
+index_version2=$3 versione $1 su $2
 index_eenvpass=Il programma client MySQL $1 non accetta le password passate utilizzando la variabile di ambiente <tt>MYSQL_PWD</tt>. Per garantire che Webmin sia in grado di comunicare completamente con MySQL, questa opzione deve essere disattivata nella pagina <a href='$2'>configurazione del modulo</a>. In alternativa, puoi rimuovere qualsiasi password impostata nel file <tt>root</tt> dell'utente <tt>.my.cnf</tt>.
 index_ecnf=Il file di configurazione MySQL $1 non è stato trovato sul tuo sistema. Utilizzare la pagina <a href='$2'>configurazione del modulo</a> per impostare il percorso corretto.
 index_nodbs3=Nessun database MySQL corrisponde alla tua ricerca.
@@ -44,7 +44,7 @@ view_match4=più grande di
 view_match5=meno di
 view_searchheadnot=Risultati della ricerca per non $1 nel campo $2 ..
 view_go=Partire
-view_sqlrun=Risultati generati dalla query SQL : $1 
+view_sqlrun=Risultati generati dalla query SQL : $1
 
 users_syncwhen=Quando sincronizzare
 users_ssl=Certificato
@@ -169,16 +169,16 @@ backup_notify=Invia e-mail per
 backup_notify0=Tutti i backup
 backup_notify1=Solo in caso di fallimento
 backup_notify2=Solo in caso di successo
-backup_allsubject_failed=Il backup di $2 database MySQL ha riscontrato degli errori su $3 
-backup_allsubject_ok=Il backup di $2 database MySQL è riuscito su $3 
-backup_subject_failed=Il backup del database MySQL $1 ha riscontrato alcuni errori su $3 
-backup_subject_ok=Il backup del database MySQL $1 è riuscito su $3 
+backup_allsubject_failed=Il backup di $2 database MySQL ha riscontrato degli errori su $3
+backup_allsubject_ok=Il backup di $2 database MySQL è riuscito su $3
+backup_subject_failed=Il backup del database MySQL $1 ha riscontrato alcuni errori su $3
+backup_subject_ok=Il backup del database MySQL $1 è riuscito su $3
 backup_body=Backup di $2 database MySQL su $1 ..
 backup_bodydoing=Backup da $1 a $2 ..
-backup_bodyfailed=.. backup non riuscito : $1 
+backup_bodyfailed=.. backup non riuscito : $1
 backup_bodyok=.. backup di $1 creato OK
-backup_bodytotal=Dimensione totale del backup : $1 
-backup_bodyspace=Dimensione del filesystem: $1 Spazio libero : $2 
+backup_bodytotal=Dimensione totale del backup : $1
+backup_bodyspace=Dimensione del filesystem: $1 Spazio libero : $2
 backup_bodyall=tutti
 backup_edownloadall=È possibile scaricare un solo backup del database
 backup_edownloadsave=La modalità di download non può essere utilizzata per i backup pianificati
@@ -259,10 +259,10 @@ root_socket=L'utente MySQL <tt>$1</tt> sta utilizzando l'autenticazione socket U
 
 mysqlpass_err=Modalità sicura di MySQL
 mysqlpass_esafecmd=Il comando $1 necessario per avviare MySQL con l'autenticazione disabilitata non è stato trovato
-mysqlpass_eshutdown=Arresto non riuscito : $1 
-mysqlpass_esafe=Avvio in modalità provvisoria non riuscito : $1 
-mysqlpass_estartup=Avvio non riuscito : $1 
-mysqlpass_echange=Modifica della password non riuscita : $1 
+mysqlpass_eshutdown=Arresto non riuscito : $1
+mysqlpass_esafe=Avvio in modalità provvisoria non riuscito : $1
+mysqlpass_estartup=Avvio non riuscito : $1
+mysqlpass_echange=Modifica della password non riuscita : $1
 mysqlpass_echange_forcepass=Forza l'override della password fornita, se persa o dimenticata
 
 ssl_title=Certificato SSL

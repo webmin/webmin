@@ -36,9 +36,9 @@ masq_eipsec=IPsec seçenekleri eksik
 routestopped_2=Rota seçenekleri
 
 hosts_enet=Eksik veya geçersiz ana bilgisayar adresi
-hosts_ip=Adres veya ağ $1 
-hosts_mac=MAC adresi $1 
-hosts_ipset=IP seti $1 
+hosts_ip=Adres veya ağ $1
+hosts_mac=MAC adresi $1
+hosts_ipset=IP seti $1
 hosts_any=Herhangi bir ana bilgisayar
 
 blacklist_emac=Eksik veya geçersiz MAC adresi

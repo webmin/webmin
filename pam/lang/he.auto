@@ -107,7 +107,7 @@ edit_none=לא נקבעו מודולי PAM לשלב זה.
 edit_delete=מחק את שירות PAM
 edit_move=מהלך \ לזוז \ לעבור
 edit_return=שירות PAM
-edit_inc=כלול שירות $1 
+edit_inc=כלול שירות $1
 edit_iheader=שירותי PAM כללו
 
 pam_pwdb.so=אימות אימות סיסמה
@@ -273,17 +273,17 @@ mail_edir=ספריית סליל דואר חסרה או לא חוקית
 
 stack_service=העבר את הסימון לשירות PAM
 
-log_pam_create=יצר שירות PAM $1 
-log_pam_delete=שירות PAM נמחק $1 
-log_mod_create=מודול PAM $1 נוסף לשירות $2 
-log_mod_modify=מודול PAM שונה $1 בשירות $2 
+log_pam_create=יצר שירות PAM $1
+log_pam_delete=שירות PAM נמחק $1
+log_mod_create=מודול PAM $1 נוסף לשירות $2
+log_mod_modify=מודול PAM שונה $1 בשירות $2
 log_mod_delete=מודול PAM $1 בשירות $2 נמחק
-log_mod_move=החלפת מודולי PAM בשירות $3 
-log_mod_move_l=החלף מודולי PAM $1 ו- $2 בשירות $3 
-log_inc_create=נוסף כלול $1 לשירות $2 
-log_inc_modify=השינוי כולל $1 לשירות $2 
-log_inc_delete=נמחק כלול $1 לשירות $2 
-log_incs=עדכון כולל שירות $1 
+log_mod_move=החלפת מודולי PAM בשירות $3
+log_mod_move_l=החלף מודולי PAM $1 ו- $2 בשירות $3
+log_inc_create=נוסף כלול $1 לשירות $2
+log_inc_modify=השינוי כולל $1 לשירות $2
+log_inc_delete=נמחק כלול $1 לשירות $2
+log_incs=עדכון כולל שירות $1
 
 inc_edit=ערוך שירות כלול
 inc_create=צור שירות כלול

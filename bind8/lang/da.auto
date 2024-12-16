@@ -67,7 +67,7 @@ index_eexpired_conf=Automatisk signering skal aktiveres på siden $1.
 index_eexpired_mod=Brug modulet $1 til enten at deaktivere DNSSEC for disse domæner, eller kontrollere, hvorfor signering mislykkes.
 
 master_title=Rediger Master Zone
-master_inview=$1 i visning $2 
+master_inview=$1 i visning $2
 master_ecannot=Du har ikke tilladelse til at redigere denne zone
 master_egone=Zone $1 findes ikke i nogen visning
 master_egone2=Zone $1 findes ikke!

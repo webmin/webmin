@@ -1,7 +1,7 @@
 index_title=WU-FTPD Szerver
 index_eftpd=A(z) $1 FTP szervert nem találom az Ön rendszerében. Talán nem lett installálva, vagy az Ön <a href='$2'>FTP szerver modul konfigurációja</a> hibás.
 index_eftpaccess=Az FTP szerver konfigurációs file-ja $1 nem létezik. Talán nem lett installálva, vagy az Ön <a href='$2'>FTP szerver modul konfigurációja</a> hibás.
-index_eversion=A(z) $1 FTP szerver úgytűnik nem WU-FTPd. Ön talán egy régebbi verziót telepített az operációs rendszerével,  vagy az Ön <a href='$2'>FTP szerver modul konfigurációja</a> hibás.
+index_eversion=A(z) $1 FTP szerver úgytűnik nem WU-FTPd. Ön talán egy régebbi verziót telepített az operációs rendszerével, vagy az Ön <a href='$2'>FTP szerver modul konfigurációja</a> hibás.
 index_apply=Változások engedélyezése
 index_applymsg=Kattintson erre a gombra, hogy elfogadja az aktuális beállításokat. Ekkor leáll, majd újraindul az összes futó FTP szerver procesz, tehát minden csatlakozott felhasználót lecsatlakoztat.
 index_start=Szerver indítása
@@ -155,7 +155,7 @@ alias_eto='$1' nem valós álnév könyvtár
 alias_ecdpath='$1' nem valós CD keresési könyvtár
 
 anon_title=Névtelen FTP
-anon_eftp=Figyelem  - az Ön rendszere nem rendelkezik <tt>ftp</tt> felhasználóval, és ezért lehetséges, hogy nem lehet beállítani névtelen FTP bejelentkezést.
+anon_eftp=Figyelem - az Ön rendszere nem rendelkezik <tt>ftp</tt> felhasználóval, és ezért lehetséges, hogy nem lehet beállítani névtelen FTP bejelentkezést.
 anon_header=Névtelen FTP beállítások
 anon_auto=Unix csoport a névtelen felhasználókhoz
 anon_group=Váltson csoportot

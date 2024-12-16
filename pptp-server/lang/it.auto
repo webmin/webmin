@@ -1,5 +1,5 @@
 index_title=Server VPN PPTP
-index_version=Versione PoPToP $1 
+index_version=Versione PoPToP $1
 index_epptpd=Il server PPTP PoPToP $1 non è stato trovato sul tuo sistema o non è il programma giusto. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 index_econfig=Il file di configurazione del server PPTP $1 non è stato trovato sul tuo sistema. Forse la tua <a href='$2'>configurazione del modulo</a> non è corretta.
 index_stop=Arresta il server PPTP
@@ -63,7 +63,7 @@ options_err=Impossibile salvare le opzioni PPP
 options_emtu=Dimensione massima del pacchetto di invio mancante o non valida
 options_emru=Dimensione massima del pacchetto di ricezione mancante o non valida
 options_ename=Nome del server mancante o non valido per l'autenticazione
-options_version=Versione PPPd $1 
+options_version=Versione PPPd $1
 options_msdesc=Le opzioni seguenti abilitano il metodo di autenticazione MS-CHAP e la crittografia MPPE, utilizzati per impostazione predefinita dai client VPN di Windows. Tuttavia, MPPE richiede il supporto sia nel demone PPP che nel kernel del sistema operativo.
 options_mschap=Autenticazione MS-CHAP
 options_mschap-v2=Autenticazione MS-CHAP versione 2
@@ -75,7 +75,7 @@ secrets_ecannot=Non sei autorizzato a modificare gli account PPP
 secrets_return=indice
 secrets_none=Non sono ancora stati creati account PPP.
 secrets_enopfile=Il file di password PPP $1 non esiste sul tuo sistema. Forse PPP non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
-secrets_table=Account PPP per $1 
+secrets_table=Account PPP per $1
 secrets_user=Nome utente
 secrets_ips=Indirizzi IP
 secrets_uany=QUALUNQUE
@@ -133,13 +133,13 @@ disc_err=Impossibile disconnettersi
 disc_egone=Le connessioni non sono più attive
 disc_ekill=Il processo non è più in esecuzione
 
-log_secret_create=Account PPP creato $1 
-log_secret_modify=Account PPP modificato $1 
-log_secret_delete=Account PPP eliminato $1 
+log_secret_create=Account PPP creato $1
+log_secret_modify=Account PPP modificato $1
+log_secret_delete=Account PPP eliminato $1
 log_deletes=Account PPP $1 eliminati
 log_conf=Opzioni del server PPTP modificate
 log_options=Opzioni PPP modificate
-log_disc=Client disconnesso $1 
+log_disc=Client disconnesso $1
 log_start=Server PPTP avviato
 log_stop=Server PPTP arrestato
 log_apply=Configurazione del server PPTP applicata

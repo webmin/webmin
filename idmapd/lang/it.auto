@@ -7,5 +7,5 @@ domain=Nome del dominio
 nobody_user=Nessuno utente
 nobody_group=Nessuno gruppo
 save=Salva la configurazione e riavvia il demone
-save_err=Impossibile salvare il file di configurazione $1 
+save_err=Impossibile salvare il file di configurazione $1
 error_dir=La directory $1 non esiste

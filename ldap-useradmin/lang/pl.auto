@@ -7,21 +7,21 @@ index_eschema=Webmin nawiązał połączenie z serwerem LDAP, ale nie udało si�
 index_eimap=$1. Może Twoja <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
 index_emd5=Ten moduł został <a href='$1'>skonfigurowany</a>, aby używać szyfrowania MD5 dla haseł, ale moduł $2 Perl nie jest zainstalowany. <a href='$3'>Kliknij tutaj</a>, aby pobrać i zainstalować moduł $2.
 index_eslappasswd=Moduł ten został <a href='$1'>skonfigurowany</a> do używania szyfrowania LDAP MD5 dla haseł, ale program <tt>$2</tt> używany do szyfrowania hasła nie jest zainstalowany.
-index_eusearch=Nie udało się wyszukać użytkowników poniżej $1 : $2 
+index_eusearch=Nie udało się wyszukać użytkowników poniżej $1 : $2
 index_uadd=Dodaj nowego użytkownika LDAP.
 index_gadd=Dodaj nową grupę LDAP.
 index_unone=Nie znaleziono użytkowników LDAP w $1.
 index_gnone=Nie znaleziono grup LDAP w $1.
 index_return=Lista użytkowników
 index_greturn=lista grup
-index_egsearch=Nie można wyszukać grup poniżej $1 : $2 
+index_egsearch=Nie można wyszukać grup poniżej $1 : $2
 index_samba=Samba?
 index_cyrus=IMAP?
 index_users=Użytkownicy LDAP
 index_groups=Grupy LDAP
 
-imap_econn=Nie udało się połączyć z serwerem IMAP $1 
-imap_elogin=Nie udało się zalogować do serwera IMAP $1 jako $2 : $3 
+imap_econn=Nie udało się połączyć z serwerem IMAP $1
+imap_elogin=Nie udało się zalogować do serwera IMAP $1 jako $2 : $3
 conn_eldap_host=W systemie nie znaleziono pliku konfiguracji klienta LDAP, dlatego serwer LDAP musi być ustawiony na stronie Modułu konfiguracji
 conn_elogin=W systemie nie znaleziono pliku konfiguracyjnego klienta LDAP, dlatego logowanie LDAP musi być ustawione na stronie Modułu konfiguracji
 conn_efile_open=Nie można otworzyć pliku danych logowania LDAP:
@@ -45,33 +45,33 @@ uedit_sambapwdcanchange=Hasło można zmienić
 uedit_sambabadpasswordcount=Liczba złych haseł
 uedit_sambaacctflags=Flagi kont
 
-usave_eadd=Nie można dodać użytkownika do bazy danych LDAP : $1 
-usave_emod=Nie można zmodyfikować użytkownika w bazie danych LDAP : $1 
-usave_emoddn=Nie można zmienić nazwy użytkownika w bazie danych LDAP : $1 
-usave_egroupmod=Nie można zmodyfikować grupy $1 w bazie danych LDAP : $2 
-usave_edelete=Nie można usunąć użytkownika z bazy danych LDAP : $1 
+usave_eadd=Nie można dodać użytkownika do bazy danych LDAP : $1
+usave_emod=Nie można zmodyfikować użytkownika w bazie danych LDAP : $1
+usave_emoddn=Nie można zmienić nazwy użytkownika w bazie danych LDAP : $1
+usave_egroupmod=Nie można zmodyfikować grupy $1 w bazie danych LDAP : $2
+usave_edelete=Nie można usunąć użytkownika z bazy danych LDAP : $1
 usave_eicreate=Nie udało się utworzyć użytkownika
 usave_eiacl=Nie można przyznać uprawnień administratorowi
-usave_eimap=Użytkownik został pomyślnie zapisany w bazie danych LDAP, ale wystąpił błąd IMAP: $1 : $2 
-usave_eisub=Nie udało się subskrybować użytkownika do folderu $1 
+usave_eimap=Użytkownik został pomyślnie zapisany w bazie danych LDAP, ale wystąpił błąd IMAP: $1 : $2
+usave_eisub=Nie udało się subskrybować użytkownika do folderu $1
 usave_eiquota=Nie udało się ustawić limitu IMAP
-usave_eifolder=Nie udało się utworzyć folderu $1 
+usave_eifolder=Nie udało się utworzyć folderu $1
 usave_eilogin=Nie udało się zalogować jako nowy użytkownik
 usave_ecyruspass=Należy wprowadzić normalne hasło użytkownika lub wybrać opcję Nie wymaga hasła przy włączaniu protokołu IMAP.
-usave_ebook=Nie udało się utworzyć wpisu książki adresowej : $1 
-usave_emodbook=Nie można zmodyfikować wpisu książki adresowej : $1 
-usave_emodbookdn=Nie można zmienić nazwy pozycji książki adresowej : $1 
+usave_ebook=Nie udało się utworzyć wpisu książki adresowej : $1
+usave_emodbook=Nie można zmodyfikować wpisu książki adresowej : $1
+usave_emodbookdn=Nie można zmienić nazwy pozycji książki adresowej : $1
 usave_egone=Użytkownik już nie istnieje!
 usave_ex86=Tego modułu nie można użyć do ustawienia hasła dla użytkownika Samby w systemach innych niż Intel, ponieważ zależy to od skompilowanego programu x86.
 usave_esamba=Tego modułu nie można użyć do ustawienia hasła dla użytkownika Samby, ponieważ moduł udostępniania plików Samby dla systemu Windows nie jest zainstalowany.
-usave_ealiasdup=Alias $1 jest już używany przez $2 
-usave_eattrdup=Obiekt $1 już używa $2 $3 
-usave_eattrdupu=Użytkownik $1 już używa $2 $3 
-usave_eattrdupg=Grupa $1 już używa $2 $3 
+usave_ealiasdup=Alias $1 jest już używany przez $2
+usave_eattrdup=Obiekt $1 już używa $2 $3
+usave_eattrdupu=Użytkownik $1 już używa $2 $3
+usave_eattrdupg=Grupa $1 już używa $2 $3
 usave_ereal=Brakuje prawdziwego imienia
 usave_equota=Brakujący lub nieprawidłowy limit IMAP
 
-search_err=Wyszukiwanie $1 pod $2 nie powiodło się : $3 
+search_err=Wyszukiwanie $1 pod $2 nie powiodło się : $3
 
 gedit_dn=DN LDAP grupy
 gedit_return=szczegóły grupy
@@ -79,10 +79,10 @@ gedit_cap=Możliwości grupowe
 gedit_samba=Grupa Samba?
 
 gsave_egone=Grupa już nie istnieje!
-gsave_edelete=Nie można usunąć grupy z bazy danych LDAP : $1 
-gsave_eadd=Nie udało się dodać grupy do bazy danych LDAP : $1 
-gsave_emod=Nie można zmodyfikować grupy w bazie danych LDAP : $1 
-gsave_emoddn=Nie można zmienić nazwy grupy w bazie danych LDAP : $1 
+gsave_edelete=Nie można usunąć grupy z bazy danych LDAP : $1
+gsave_eadd=Nie udało się dodać grupy do bazy danych LDAP : $1
+gsave_emod=Nie można zmodyfikować grupy w bazie danych LDAP : $1
+gsave_emoddn=Nie można zmienić nazwy grupy w bazie danych LDAP : $1
 
 gdel_group=Usuwanie wpisu grupy LDAP ..
 
@@ -90,7 +90,7 @@ udel_pass=Usuwanie wpisu użytkownika LDAP ..
 udel_book=Usuwanie z książki adresowej ..
 udel_imap=Usuwanie folderu IMAP ..
 udel_warnimap=Istniejąca skrzynka pocztowa zostanie usunięta podczas usuwania katalogu domowego!
-udel_failed=.. nie powiodło się!  : $1 
+udel_failed=.. nie powiodło się! : $1
 
 raw_title=Atrybuty LDAP
 raw_name=Nazwa atrybutu
@@ -100,4 +100,4 @@ raw_for=Za 1
 batch_samba=Czy utworzyć konto Samba dla nowych użytkowników?
 batch_imap=Czy utworzyć konto IMAP dla nowych użytkowników?
 batch_descafter3=W wierszach <b>utwórz</b> i <b>zmodyfikuj</b> możesz opcjonalnie dołączyć dodatkowe pola zawierające atrybuty LDAP w formacie <i>nazwa</i> = <i>wartość</i>, aby zostać przypisani do nowych lub zmodyfikowanych użytkowników.
-batch_eattr=Nieprawidłowy atrybut LDAP w wierszu $1 : $2 
+batch_eattr=Nieprawidłowy atrybut LDAP w wierszu $1 : $2

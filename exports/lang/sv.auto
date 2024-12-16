@@ -35,6 +35,6 @@ save_create_dir=Det går inte att skapa katalogen '$1'
 save_eanonuid=Ogiltigt anonymt användarnamn
 save_eanongid=Ogiltigt anonymt åtkomstgruppens namn
 
-exports_gss=Autentiserat nätverk: $1 
+exports_gss=Autentiserat nätverk: $1
 
 log_delete_exports=$1 NFS-export raderades

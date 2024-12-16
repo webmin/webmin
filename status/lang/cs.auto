@@ -13,7 +13,7 @@ type_ldap=Připojení LDAP
 mon_virtualmin=Varování! Tento monitor je přidružen k doméně Virtualmin $1, a proto by zde neměl být upravován ani mazán.
 mon_remotes2=Běží na hostitelích a skupinách
 mon_ontimeout=Pokud monitor vyprší, spusťte příkaz
-mon_eremote2=Webmin server $1 nelze kontaktovat : $2 
+mon_eremote2=Webmin server $1 nelze kontaktovat : $2
 mon_etype=Neplatný název typu monitoru
 mon_notifywebhook=Webhook
 mon_tmpl=Šablona pro zprávy
@@ -62,15 +62,15 @@ exec_remode=Regexp kontrola
 exec_remode0=Selhání, pokud se výstup neshoduje
 exec_remode1=Selhání, pokud výstup neodpovídá
 
-file_elarge=Příliš velké soubory : $1 
-file_esmall=Soubory příliš malé : $1 
-file_eowner=Soubory se špatným vlastníkem : $1 
-file_egroup=Soubory se špatnou skupinou : $1 
+file_elarge=Příliš velké soubory : $1
+file_esmall=Soubory příliš malé : $1
+file_eowner=Soubory se špatným vlastníkem : $1
+file_egroup=Soubory se špatnou skupinou : $1
 file_owner=Vlastník souboru musí být
 file_group=Skupina souborů musí být
 file_nocheck=Cokoliv
 file_perms=Osmová oprávnění musí být
-file_eperm=Soubory s nesprávnými oprávněními : $1 
+file_eperm=Soubory s nesprávnými oprávněními : $1
 
 space_mode0=Absolutní velikost
 space_mode1=Procento z celkového počtu
@@ -79,10 +79,10 @@ space_merr=Pouze $1 volného místa
 space_perr=Pouze $1% volného
 space_dferr=Velikost souborového systému se nepodařilo získat
 
-log_tmpl_create=Vytvořená šablona e-mailu $1 
-log_tmpl_modify=Upravená šablona e-mailu $1 
-log_tmpl_delete=Smazaná e-mailová šablona $1 
-log_tmpl_deletes=Smazané e-mailové šablony $1 
+log_tmpl_create=Vytvořená šablona e-mailu $1
+log_tmpl_modify=Upravená šablona e-mailu $1
+log_tmpl_delete=Smazaná e-mailová šablona $1
+log_tmpl_deletes=Smazané e-mailové šablony $1
 log_refresh=Aktualizované stavy monitoru
 
 memory_freeswap=$1 virtuální paměti zdarma
@@ -96,20 +96,20 @@ init_eaction=Nebyla vybrána žádná akce
 
 refresh_doing2=Aktualizace stavu vybraných monitorů $1.
 
-monitor_sub_isup=$1 až $2 
-monitor_pager_isup=$1 : „$2“ vzrostl o $3 
-monitor_snmp_isup=$1:$2 
-monitor_email_isup=Monitor na $1 pro „$2“ zjistil, že služba vzrostla na $3 
-monitor_email_stat=Aktuální stav: $1 
+monitor_sub_isup=$1 až $2
+monitor_pager_isup=$1 : „$2“ vzrostl o $3
+monitor_snmp_isup=$1:$2
+monitor_email_isup=Monitor na $1 pro „$2“ zjistil, že služba vzrostla na $3
+monitor_email_stat=Aktuální stav: $1
 
 deletes_enone=Nebyly vybrány žádné monitory
 
 ftp_tls=Použít šifrování TLS?
 ftp_etls=TLS nelze povolit, pokud není nainstalován modul $1 Perl
 ftp_econn=FTP připojení TLS se nezdařilo
-ftp_econn2=Připojení FTP k TLS se nezdařilo : $1 
-ftp_elogin=Přihlášení TLS FTP se nezdařilo : $1 
-ftp_etlsfile=Stahování TLS FTP se nezdařilo : $1 
+ftp_econn2=Připojení FTP k TLS se nezdařilo : $1
+ftp_elogin=Přihlášení TLS FTP se nezdařilo : $1
+ftp_etlsfile=Stahování TLS FTP se nezdařilo : $1
 
 rssh_haspass=Heslo
 rssh_port=Port serveru SSH
@@ -147,11 +147,11 @@ tmpl_emsg=Chybí e-mailová zpráva
 tmpl_esms=Chybí SMS zpráva
 tmpl_esnmp=Chybí zpráva SNMP
 tmpl_err2=Smazání e-mailové šablony se nezdařilo
-tmpl_eusers=Používají ho následující monitory : $1 
+tmpl_eusers=Používají ho následující monitory : $1
 
 dtmpls_err=Šablony se nepodařilo smazat
 dtmpls_enone=Nebyl vybrán žádný
-dtmpls_eusers=$1 je používán následujícími monitory : $2 
+dtmpls_eusers=$1 je používán následujícími monitory : $2
 
 sslcert_src=Umístění certifikátu
 sslcert_url=Z adresy HTTPS
@@ -165,18 +165,18 @@ sslcert_when=Po vypršení platnosti
 sslcert_mismatch=Zjistit také nesoulad názvu hostitele?
 sslcert_edays=Chybějící nebo neplatný počet dní
 sslcert_eopenssl=K ověření certifikátů je nutný příkaz <tt>openssl</tt>
-sslcert_estart=Neplatí do $1 
-sslcert_eend=Neplatí po $1 
+sslcert_estart=Neplatí do $1
+sslcert_eend=Neplatí po $1
 sslcert_left=Up - $1 dní do vypršení platnosti
-sslcert_ematch=Název hostitele $1 neodpovídá certifikátu $2 
+sslcert_ematch=Název hostitele $1 neodpovídá certifikátu $2
 sslcert_emismatch=Kontrola názvu hostitele certifikátu lze použít pouze při kontrole adresy URL
 
 du_dir=Adresář ke sledování
 du_max=Maximální velikost
 du_edir=Chybí nebo není absolutní cesta k adresáři
 du_emax=Chybějící nebo nečíselná maximální velikost
-du_over=Velikost je $1 
-du_under=Velikost je pouze $1 
+du_over=Velikost je $1
+du_under=Velikost je pouze $1
 
 ldap_edriver=Modul Perl $1 není nainstalován
 ldap_host=Název hostitele serveru LDAP

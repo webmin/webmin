@@ -416,10 +416,10 @@ clone_desc=Clone di $1
 
 sessions_title=Sessioni attualmente attive
 sessions_desc=Le sessioni attualmente attive sono elencate qui sotto.<br>Per terminare una sessione esistente e costringere l'utente a riconnettersi è sufficiente cliccare sul relativo ID di sessione.
-sessions_id=<pre>ID di sessione                  </pre>
-sessions_user=<pre>Utente Webmin  </pre>
+sessions_id=<pre>ID di sessione </pre>
+sessions_user=<pre>Utente Webmin </pre>
 sessions_host=Indirizzo IP
-sessions_login=<pre>Collegato alle ore        </pre>
+sessions_login=<pre>Collegato alle ore </pre>
 sessions_none=Nessun utente attualmente collegato a Usermin
 sessions_switch=Passa all'utente Usermin:
 sessions_ok=Passa a...

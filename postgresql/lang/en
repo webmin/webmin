@@ -2,8 +2,8 @@ index_title=PostgreSQL Database Server
 index_notrun=PostgreSQL is not running on your system!
 index_start=Start PostgreSQL Server
 index_startmsg2=Click this button to start the PostgreSQL database server on your system. This Webmin module cannot administer the database until it is started.
-index_nopass=Webmin needs to know your PostgreSQL administration login and password in order to manage your database. Please enter your administration username  and password below.
-index_nouser=Your Webmin account is configured to connect to the PostgreSQL server as user $1, but this user has been denied access. 
+index_nopass=Webmin needs to know your PostgreSQL administration login and password in order to manage your database. Please enter your administration username and password below.
+index_nouser=Your Webmin account is configured to connect to the PostgreSQL server as user $1, but this user has been denied access.
 index_ltitle=PostgreSQL Login
 index_sameunix=Connect as same Unix user?
 index_login=Login
@@ -312,7 +312,7 @@ host_viassl=Via SSL
 host_derr=Failed to delete allowed hosts
 host_enone=No hosts selected
 host_manual=Edit Config File
-host_manualdesc=Click this button to manually edit the allowed hosts configuration file. 
+host_manualdesc=Click this button to manually edit the allowed hosts configuration file.
 
 manual_title=Edit Config File
 manual_err=Failed to save config file
@@ -446,7 +446,7 @@ acl_seqs=Can view and manage sequences?
 
 fdrop_err=Failed to delete fields
 fdrop_enone=None selected
-fdrop_eall=You cannot delete all fields from a table! 
+fdrop_eall=You cannot delete all fields from a table!
 
 setup_err=Failed to initialize database
 setup_ecannot=You are not allowed to initialize the database

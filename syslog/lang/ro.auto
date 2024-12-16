@@ -7,14 +7,14 @@ index_active=Activ?
 index_tag=Program
 index_to=Jurnal de destinație
 index_rule=Mesaje selectate
-index_file=Fișier $1 
-index_pipe=Denumită țeavă $1 
-index_pipe2=Pipe pentru a comanda $1 
-index_host=Server Syslog pe $1 
-index_socket=Fișier socket Unix $1 
-index_cmd=Ieșire de la $1 
+index_file=Fișier $1
+index_pipe=Denumită țeavă $1
+index_pipe2=Pipe pentru a comanda $1
+index_host=Server Syslog pe $1
+index_socket=Fișier socket Unix $1
+index_cmd=Ieșire de la $1
 index_all=Toți utilizatorii
-index_users=Utilizatori $1 
+index_users=Utilizatori $1
 index_add=Adăugați un nou jurnal de sistem.
 index_return=jurnalele de sistem
 index_restart=Aplica schimbarile
@@ -26,7 +26,7 @@ index_view=Vedere ..
 index_viewfile=Vizualizați fișierul jurnal:
 index_viewok=Vedere
 
-restart_ekill=Eroare la semnalarea procesului syslog $1 : $2 
+restart_ekill=Eroare la semnalarea procesului syslog $1 : $2
 restart_ecannot=Nu aveți voie să reporniți syslog
 
 start_ecannot=Nu aveți voie să începeți syslog
@@ -61,13 +61,13 @@ edit_ecannot=Nu aveți voie să editați setările de jurnal
 edit_ecannot2=Nu aveți voie să editați acest jurnal
 
 view_title=Vizualizați fișierul de înregistrare
-view_header=Ultimele $1 linii din $2 
+view_header=Ultimele $1 linii din $2
 view_empty=Fișierul jurnal este gol
 view_refresh=Reîmprospăta
-view_filter=Afișați doar linii cu text $1 
+view_filter=Afișați doar linii cu text $1
 
 save_err=Nu a reușit salvarea jurnalului
-save_efile=„$1” nu este un nume de fișier valid : $2 
+save_efile=„$1” nu este un nume de fișier valid : $2
 save_epipe=„$1” nu este o conductă numită valabilă
 save_epipe2=Lipsă comanda să se pipeze
 save_esocket=Priza de domeniu unix lipsă sau nevalidă
@@ -86,9 +86,9 @@ save_ecannot6=Nu aveți voie să vizualizați jurnalele arbitrare
 save_ecannot7=Nu aveți voie să vizualizați acest jurnal suplimentar
 save_emissing=Fișierul jurnal lipsit de vizualizat
 
-log_modify=Jurnal modificat la $1 
-log_create=Adăugarea jurnalului la $1 
-log_delete=Jurnal șters la $1 
+log_modify=Jurnal modificat la $1
+log_create=Adăugarea jurnalului la $1
+log_delete=Jurnal șters la $1
 log_apply=Modificări aplicate
 log_start=A început serverul de logare
 

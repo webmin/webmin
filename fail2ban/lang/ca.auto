@@ -1,9 +1,9 @@
 jail_systemd=systemd
 jail_pyinotify=piinotificar
 
-log_update_filter=Filtre modificat $1 
-log_update_action=Acció modificada $1 
-log_update_jail=Presó modificada $1 
+log_update_filter=Filtre modificat $1
+log_update_action=Acció modificada $1
+log_update_jail=Presó modificada $1
 
 status_title=Estat i accions de les presons
 status_title3=Blocs de la presó

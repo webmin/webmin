@@ -20,7 +20,7 @@ index_restart=Ponovo pokrenite Scheduler
 index_restartmsg=Kliknite ovaj gumb da biste ponovno pokrenuli postupak rasporeda ispisa. To će primorati primijeniti trenutnu konfiguraciju ispisa.
 index_return=popis pisača
 index_esystem=Instalirajte softver za svoj odabrani sustav ispisa ili ga promijenite konfiguracijom <a href='$1'></a>.
-index_style=Sustav ispisa: $1 
+index_style=Sustav ispisa: $1
 index_cluster=Poslužitelji klastera
 index_clusterdesc=Kliknite ovaj gumb za postavljanje dodatnih Webmin poslužitelja na kojima će se pisači stvarati, ažurirati i brisati.
 index_delete=Izbrišite odabrane pisače
@@ -99,12 +99,12 @@ save_eremote=Upravljačke programe nije moguće koristiti s udaljenim Unix pisa�
 save_edhost=Izravni host '$1' ne postoji
 save_edport=Nedostaje ili nije važeći izravni port
 save_evalid=Sustav ispisa nije dopuštao ovaj pisač
-save_errslave=Pisač je u ovom sustavu kreiran u redu, ali na slijedećim greškama na sustavima klastera : $1 
+save_errslave=Pisač je u ovom sustavu kreiran u redu, ali na slijedećim greškama na sustavima klastera : $1
 save_egone=Nije pronađen nijedan pisač s imenom "$1"
-save_errdelslave=Pisač je izbrisan u redu na ovom sustavu, ali na sistemima klastera došlo je do sljedeće pogreške : $1 
+save_errdelslave=Pisač je izbrisan u redu na ovom sustavu, ali na sistemima klastera došlo je do sljedeće pogreške : $1
 
 jobs_title=Poslovi ispisa
-jobs_header=Ispiši zadatke na $1 
+jobs_header=Ispiši zadatke na $1
 jobs_id=ID posla
 jobs_size=Veličina
 jobs_by=Predložio
@@ -117,7 +117,7 @@ jobs_all=Otkažite sve zadatke ispisa
 jobs_bytes=bajtova
 jobs_test=Ispiši stranicu za testiranje
 jobs_cancelsel=Otkaži odabrane zadatke
-jobs_on=Na pisaču $1 
+jobs_on=Na pisaču $1
 jobs_return=popis poslova ispisa
 
 cancel_ecannot=Ne možete otkazati zadatke ispisa
@@ -197,7 +197,7 @@ suse_yast2=YAST2 vozač
 suse_edriver=Nije odabrana vrsta pisača
 suse_eres=Nedostaje ili nevažeća rezolucija
 
-estop=Zaustavljanje lpd-a nije uspjelo : $1 
+estop=Zaustavljanje lpd-a nije uspjelo : $1
 
 acl_printers=Pisači koje ovaj korisnik može konfigurirati
 acl_add=Mogu li dodati nove pisače?
@@ -218,20 +218,20 @@ acl_cluster=Može li upravljati grupom pisača?
 log_stop=Zaustavljen planer ispisa
 log_start=Započeo planer ispisa
 log_restart=Restartirani planer ispisa
-log_cancel_job=Otkazani zadatak ispisa $2 na $1 
-log_cancel_all=Otkazani su svi zadaci ispisa na $1 
-log_cancel_sel=Otkazani su zadaci ispisa $2 na $1 
-log_create=Izrađen pisač $1 na $2 
-log_modify=Izmijenjen pisač $1 na $2 
-log_delete=Izbrisan je pisač $1 na $2 
-log_create_l=Izrađen $3 pisač $1 na $2 
-log_modify_l=Izmijenjeno $3 pisača $1 na $2 
-log_delete_l=Izbrisan je pisač $3 $1 na $2 
+log_cancel_job=Otkazani zadatak ispisa $2 na $1
+log_cancel_all=Otkazani su svi zadaci ispisa na $1
+log_cancel_sel=Otkazani su zadaci ispisa $2 na $1
+log_create=Izrađen pisač $1 na $2
+log_modify=Izmijenjen pisač $1 na $2
+log_delete=Izbrisan je pisač $1 na $2
+log_create_l=Izrađen $3 pisač $1 na $2
+log_modify_l=Izmijenjeno $3 pisača $1 na $2
+log_delete_l=Izbrisan je pisač $3 $1 na $2
 
-linux_paralel=Luka paralele $1 
+linux_paralel=Luka paralele $1
 linux_serial=Serijski priključak $1 (COM $1)
 linux_null=Nulti uređaj
-linux_usb=USB pisač $1 
+linux_usb=USB pisač $1
 linux_ecmd=Naredba $1 nije pronađena u vašem sustavu, što ukazuje da Linux ispisni sustav nije instaliran.
 linux_espool=Imenik spool $1 ne postoji u vašem sustavu, što ukazuje da Linux ispisni sustav nije instaliran.
 
@@ -243,18 +243,18 @@ freebsd_espool=Imenik spool $1 ne postoji u vašem sustavu, što znači da FreeB
 openbsd_paralel=Paralelni port
 openbsd_serial=Serijski priključak $1 (COM $1)
 
-unixware_paralel=Luka paralele $1 
-unixware_serial=Serijski ulaz $1 
+unixware_paralel=Luka paralele $1
+unixware_serial=Serijski ulaz $1
 unixware_null=Nulti uređaj
 unixware_ecmd=Naredba $1 nije pronađena u vašem sustavu, što pokazuje da UnixWare sustav ispisa nije instaliran.
 
-hpux_paralel=Paralela $1 
-hpux_serial=Serijski $1 
+hpux_paralel=Paralela $1
+hpux_serial=Serijski $1
 hpux_null=Nulti uređaj
 hpux_ecmd=Naredba $1 nije pronađena u vašem sustavu, što znači da HPUX sustav ispisa nije instaliran.
 hpux_eiface=U vašem sustavu ne postoji direktorij skripti sučelja $1, što znači da HPUX sustav ispisa nije instaliran.
 
-lprng_paralel=Luka paralele $1 
+lprng_paralel=Luka paralele $1
 lprng_serial=Serijski priključak $1 (COM $1)
 lprng_null=Nulti uređaj
 lprng_ecmd=Naredba $1 nije pronađena u vašem sustavu, što znači da LPRng sustav ispisa nije instaliran.
@@ -262,7 +262,7 @@ lprng_espool=Imenik spool $1 ne postoji u vašem sustavu, što znači da LPRng s
 
 solaris_paralel=Paralelni port
 solaris_uparalel=Ultra 5/10 paralelni port
-solaris_serial=Serijski ulaz $1 
+solaris_serial=Serijski ulaz $1
 solaris_null=Nulti uređaj
 solaris_ecmd=Naredba $1 nije pronađena u vašem sustavu, što znači da Solaris sustav ispisa nije instaliran.
 
@@ -283,13 +283,13 @@ cups_nonemsg=Daljinski ili sirovi pisač
 cups_prog=Program
 cups_driver=CUPS vozač
 cups_eprog='$1' nije valjan program
-cups_opts=Opcije za $1 
+cups_opts=Opcije za $1
 cups_ecmd=Naredba $1 nije pronađena u vašem sustavu, što znači da CUPS sustav ispisa nije instaliran.
 
 irix_ecmd=Naredba $1 nije pronađena u vašem sustavu, što znači da IRIX sustav ispisa nije instaliran.
 irix_eiface=Imenik skripti sučelja $1 ne postoji u vašem sustavu, što znači da IRIX sustav ispisa nije instaliran.
 
-aix_port=Prilaz pisača $1 
+aix_port=Prilaz pisača $1
 aix_edesc=Nevažeći opis - dopuštena su samo slova i brojevi i nema razmaka
 aix_ecmd=AIX poslužitelj pisača $1 nije pronađen. Možda nije instaliran ili se koristi drugi sustav ispisa.
 

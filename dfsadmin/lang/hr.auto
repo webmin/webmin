@@ -41,10 +41,10 @@ save_eroot=Niste naveli nijednog domaćina s kojim biste dijelili root
 save_ealready=Direktorijum "$1" već se dijeli
 save_ehost=Domaćin '$1' ne postoji
 
-log_modify=Izmijenjeni udio NFS $1 
-log_rename=Izmijenjeni udio NFS $1 u $2 
-log_create=Izrađen udio NFS $1 
-log_delete=Izbrisani udio NFS $1 
+log_modify=Izmijenjeni udio NFS $1
+log_rename=Izmijenjeni udio NFS $1 u $2
+log_create=Izrađen udio NFS $1
+log_delete=Izbrisani udio NFS $1
 log_apply=Primijenjene promjene
 
 acl_view=Može li se uređivati NFS dionice?

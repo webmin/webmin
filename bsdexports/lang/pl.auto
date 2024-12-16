@@ -8,7 +8,7 @@ index_delete=Usuń wybrane eksporty
 index_apply=Zatwierdź zmiany
 index_applydesc=Kliknij ten przycisk, aby zastosować bieżącą konfigurację eksportu plików. Dzięki temu wszystkie wyżej wymienione katalogi będą dostępne z określonymi opcjami.
 index_return=lista eksportu
-index_echeck=Serwer NFS nie może być używany w tym systemie : $1 
+index_echeck=Serwer NFS nie może być używany w tym systemie : $1
 
 check_ecmd=Polecenie serwera NFS $1 nie jest zainstalowane
 

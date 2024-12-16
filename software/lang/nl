@@ -220,7 +220,7 @@ apt_title=Zoek APT
 apt_name=APT
 
 yum_input=Pakket van YUM
-yum_install=Installeer pakket(ten) met  de opdracht $1 ..
+yum_install=Installeer pakket(ten) met de opdracht $1 ..
 yum_failed=.. installatie mislukte!
 yum_find=Doorzoek YUM ..
 yum_package=Pakket

@@ -80,7 +80,7 @@ rcpts_title=Godtatte domener
 rcpts_domains=Godtatte lokale og relédomener
 rcpts_all=Hvilket som helst domene
 rcpts_sel=Domener angitt nedenfor ..
-rcpts_desc=QMail vil bare godta videresending eller lokal levering av e-post til domener som er angitt i tekstboksen til venstre. Du kan også angi jokertegn som matcher aller verter i et domene som f.eks <tt>.foo.no</tt>. Dersom du ønsker at e-post tjeneren din skal  videresende e-post fra klienter må du godta e-post fra alle domener.
+rcpts_desc=QMail vil bare godta videresending eller lokal levering av e-post til domener som er angitt i tekstboksen til venstre. Du kan også angi jokertegn som matcher aller verter i et domene som f.eks <tt>.foo.no</tt>. Dersom du ønsker at e-post tjeneren din skal videresende e-post fra klienter må du godta e-post fra alle domener.
 rcpts_domains2=Ekstra lokale og relédomener
 rcpts_desc2=Dersom du har et stort antall godtatte domener bær du angi de minst brukte i denne tekstboksen. Generelt bør dine første $0 tillatte domener angis i den øverste tekstboksen og resten i denne tekstboksen.
 

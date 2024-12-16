@@ -153,8 +153,8 @@ menu_file=Fil
 menu_edit=Redigere
 menu_tools=Værktøj
 menu_bookmarks=bogmærker
-notallowed=Du har ikke adgang til $1. De tilladte mapper er : $2 
-error_upload_emax=Uploadet fil er større end grænsen på $1 
+notallowed=Du har ikke adgang til $1. De tilladte mapper er : $2
+error_upload_emax=Uploadet fil er større end grænsen på $1
 extract_etype=Ikke-understøttet arkivfiltype
 
 error_write=du har ikke skrivetilladelse til denne fil

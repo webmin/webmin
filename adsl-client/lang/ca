@@ -1,5 +1,5 @@
 index_title=Client ADSL
-index_eadsl= No s'ha trobat al sistema l'ordre $1 de RP-PPPoE. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_eadsl=No s'ha trobat al sistema l'ordre $1 de RP-PPPoE. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_econfig=No s'ha trobat al sistema el fitxer de configuració ADSL RP-PPPoE $1. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_emodem=El fitxer de configuració actual és per a un mòdem en un Linux de RedHat, no una connexió ADSL. Utilitza la pàgina de <a href='$2'>configuració del mòdul</a> per especificar un dels altres fitxers <tt>ifcfg-ppp*</tt> de $1, o bé un que encara no existeixi per tal que el mòdul el creï per a tu.
 index_stop=Desactiva l'ADSL
@@ -34,7 +34,7 @@ index_bytes=bytes
 index_fw=En connectar-se, activa el tallafoc
 index_fw_none=Cap
 index_fw_standalone=Per a un sol host
-index_fw_masquerade=Per al portal NAT 
+index_fw_masquerade=Per al portal NAT
 index_connect=Temps durant el qual cal intentar la connexió
 index_forever=Sempre
 

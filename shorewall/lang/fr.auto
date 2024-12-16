@@ -42,7 +42,7 @@ hosts_err=Échec de l'enregistrement de l'hôte de zone
 hosts_enet=Adresse hôte manquante ou invalide
 hosts_header=Détails de l'hôte de zone
 hosts_routestopped=Route même lorsque le pare-feu est arrêté?
-hosts_ipset=Ensemble IP $1 
+hosts_ipset=Ensemble IP $1
 
 blacklist_title=Hôtes de la liste noire
 blacklist_desc=Cette page répertorie les hôtes et les services qui seront bloqués si leur trafic arrive sur une interface avec l'option <b>liste noire</b>.
@@ -138,16 +138,16 @@ opts_upnp=Remapper les paquets via UPNP
 
 comment_header=Détails des commentaires du tableau
 
-log_create_table=Entrée ajoutée à la table $1 
-log_modify_table=Entrée modifiée dans la table $1 
-log_delete_table=Entrée supprimée de la table $1 
-log_deletes_table=Entrées supprimées de la table $1 
-log_up_table=Entrée déplacée vers le haut dans la table $1 
-log_down_table=Entrée déplacée vers le bas dans le tableau $1 
-log_manual_table=Modification manuelle du fichier de table $1 
-log_create_comment=Ajout d'un commentaire au tableau $1 
-log_modify_comment=Commentaire modifié dans le tableau $1 
-log_delete_comment=Commentaire supprimé de la table $1 
+log_create_table=Entrée ajoutée à la table $1
+log_modify_table=Entrée modifiée dans la table $1
+log_delete_table=Entrée supprimée de la table $1
+log_deletes_table=Entrées supprimées de la table $1
+log_up_table=Entrée déplacée vers le haut dans la table $1
+log_down_table=Entrée déplacée vers le bas dans le tableau $1
+log_manual_table=Modification manuelle du fichier de table $1
+log_create_comment=Ajout d'un commentaire au tableau $1
+log_modify_comment=Commentaire modifié dans le tableau $1
+log_delete_comment=Commentaire supprimé de la table $1
 log_refresh=Pare-feu actualisé
 log_clear=Pare-feu effacé
 

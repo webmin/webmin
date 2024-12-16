@@ -1,5 +1,5 @@
 index_econf2=Se detectó el servicio <tt>systemd-journald</tt> en su sistema para recopilar y almacenar datos de registro. Se recomienda utilizar un nuevo módulo <a href='$2'>$1</a> en su lugar.
-index_cmd=Salida de $1 
+index_cmd=Salida de $1
 index_viewfile=Ver archivo de registro:
 index_viewok=Ver
 

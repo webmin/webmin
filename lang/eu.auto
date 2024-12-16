@@ -56,7 +56,7 @@ sql_epostgresqlconnect=Huts egin du PostgreSQL datu-basera konektatzean : $1
 sql_eldapdriver=Ezin izan da LDAP perl modulua kargatu
 sql_eldapconnect=Huts egin du LDAP zerbitzarira konektatzean $1
 sql_eldaptls=Huts egin du LDL enkriptatzeko TLS abiaraztean : $1
-sql_eldaplogin=Huts egin du LDAP zerbitzarira sartzean $1 : $2 
+sql_eldaplogin=Huts egin du LDAP zerbitzarira sartzean $1 : $2
 
 log_email_subject=Webmin ekintza $1
 log_email_global=Webmin ekintza globala

@@ -103,7 +103,7 @@ field_err=Det gick inte att spara fältet
 field_esize='$1' är inte en giltig fältstorlek
 field_eenum=Du har inte angivit något numrerat värde
 field_efield='$1' är inte ett giltigt fältnamn
-field_ekey=Fält som tillåts vara tomma kan inte vara en del av primär nyckel 
+field_ekey=Fält som tillåts vara tomma kan inte vara en del av primär nyckel
 
 view_title=Tabellinformation
 view_pos=Raderna $1 - $2 ur $3

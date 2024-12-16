@@ -7,5 +7,5 @@ domain=Domän namn
 nobody_user=Ingen användare
 nobody_group=Ingen grupp
 save=Spara config och starta om daemon
-save_err=Det gick inte att spara konfigurationsfilen $1 
+save_err=Det gick inte att spara konfigurationsfilen $1
 error_dir=Katalog $1 finns inte

@@ -186,7 +186,7 @@ acl_rbacyes=Yes (overrides settings below)
 
 acl_uall=All users
 acl_uthis=This user
-acl_usel=Selected  users ..
+acl_usel=Selected users ..
 acl_gr=Members of $1
 acl_users=Users who can be edited
 acl_mods=Can grant access to

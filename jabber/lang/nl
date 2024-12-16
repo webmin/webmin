@@ -48,7 +48,7 @@ messages_evcard=Ongeldige vCard XML : $1
 messages_etag=Server vCard XML start niet met &lt;vCard&gt;
 
 modules_title=Jabber Modules
-modules_desc=De modules in de lijst hieronder worden in deze volgorde gebruikt  om ontvangen berichten te verwerken door de Jabber sessie manager.
+modules_desc=De modules in de lijst hieronder worden in deze volgorde gebruikt om ontvangen berichten te verwerken door de Jabber sessie manager.
 modules_header=Jabber server sessie manager modules
 modules_mod=Module naam
 modules_so=Gedeelde bibliotheek

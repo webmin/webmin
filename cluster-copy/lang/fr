@@ -50,8 +50,8 @@ exec_made=Créé les répertoires suivants sur $1 :
 exec_nohosts=Aucun hôte sélectionné sur lequel exécuter ou les groupes sélectionnés ne contiennent aucun hôte susceptible d'être utilisé.
 exec_nothing=Aucun fichier n'a été copié avec succès dans $1.
 exec_not=Impossible de copier les fichiers suivants dans $1 :
-exec_cmd=Sortie de la commande de post-copie sur $1  :
-exec_before=Sortie de la commande avant copie sur $1  :
+exec_cmd=Sortie de la commande de post-copie sur $1 :
+exec_before=Sortie de la commande avant copie sur $1 :
 exec_on=L'exécution a échouée sur $1 : $2
 
 log_create=Créé le copie pour $1 dans $2 serveurs

@@ -1,6 +1,6 @@
 index_title=Webalizer 로그 파일 분석
-index_version=Webalizer 버전 $1 
-index_version_webalizer=Webalizer 버전 $1 
+index_version=Webalizer 버전 $1
+index_version_webalizer=Webalizer 버전 $1
 index_version_awffull=전체
 index_ewebalizer=시스템에서 로그 파일 분석 명령 $1 을 (를) 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_econf=시스템에서 Webalizer 구성 파일 $1 을 (를) 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
@@ -21,8 +21,8 @@ index_return=로그 파일 목록
 index_global=글로벌 옵션 편집
 index_globaldesc=모든 로그 파일에서 생성 된 보고서에 적용되는 Webalizer 옵션을 편집하려면이 단추를 클릭하십시오.
 index_eversion=시스템의 Webalizer 명령 $1 은 (는) 버전 $2 이지만이 모듈은 버전 $3 이상 만 지원합니다.
-index_egetversion=$1 명령으로 Webalizer 버전을 가져 오는 데 실패했습니다  : $2 
-index_when=예, $1 
+index_egetversion=$1 명령으로 Webalizer 버전을 가져 오는 데 실패했습니다 : $2
+index_when=예, $1
 index_webalizer=웹 라이저
 index_enable=선택된 일정
 index_disable=스케줄 취소 선택

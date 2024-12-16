@@ -51,7 +51,7 @@ sql_epostgresqlconnect=Не удалось подключиться к базе 
 sql_eldapdriver=Не удалось загрузить Perl-модуль LDAP
 sql_eldapconnect=Не удалось подключиться к серверу LDAP $1
 sql_eldaptls=Не удалось запустить шифрование TLS для LDAP : $1
-sql_eldaplogin=Не удалось войти на сервер LDAP как $1 : $2 
+sql_eldaplogin=Не удалось войти на сервер LDAP как $1 : $2
 
 log_email_subject=Действие Webmin в $1
 log_email_global=Webmin глобальное действие
@@ -84,9 +84,9 @@ paginator_nosearchrs=Нет результатов, соответствующи
 
 langauto_include=Включить машинные переводы
 
-file_truncated_message=получено $1 данных, усечено $2 из $3 
-file_truncated_message_head=извлечено начало $1 данных, усечено $2 из $3 
-file_truncated_message_tail=получено окончание $1 данных, усечено $2 из $3 
+file_truncated_message=получено $1 данных, усечено $2 из $3
+file_truncated_message_head=извлечено начало $1 данных, усечено $2 из $3
+file_truncated_message_tail=получено окончание $1 данных, усечено $2 из $3
 
 defcert_error=Используется связанный SSL-сертификат $1 по умолчанию. Настоятельно рекомендуется обновить сертификат по умолчанию <tt>$2</tt>, прежде чем продолжить вход в систему.
 

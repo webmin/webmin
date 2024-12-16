@@ -25,15 +25,15 @@ save_ehost2=Hostitel neexistuje
 save_eport2=Pokud je vybrán typ odkazu s přihlašovacím jménem, musí být zadán port
 save_egroup2=Neplatný nový název skupiny
 
-find_but=Nový server byl nalezen na $1, ale ověření se nezdařilo : $2 
-find_already2=Našel se známý hostitel serveru na adrese $1 
-find_skip=Ignorování serveru na $1 
+find_but=Nový server byl nalezen na $1, ale ověření se nezdařilo : $2
+find_already2=Našel se známý hostitel serveru na adrese $1
+find_skip=Ignorování serveru na $1
 find_eiface=Nelze najít rozhraní pro skenování
 find_scanning=Hledání serverů v síti $1 ..
 find_broading=Vysílání pro servery na adresách $1 ..
 find_eport=Chybějící nebo neplatné číslo portu
 
-log_deletes=Smazané servery $1 
+log_deletes=Smazané servery $1
 
 link_eautologin=Neplatné přihlašovací jméno nebo heslo pro $1. <a href='$2'>Klikněte sem</a> a zkuste to znovu.
 
@@ -67,8 +67,8 @@ auto_sched=Vyhledat nové servery?
 auto_sched1=Ano, každých $1 minut
 auto_net=IP síť ke skenování
 auto_auto=Lokální síť
-auto_ip=Sítě IP $1 
-auto_iface=Síť na rozhraní $1 
+auto_ip=Sítě IP $1
+auto_iface=Síť na rozhraní $1
 auto_user=Uživatelské jméno pro nové servery
 auto_pass=Heslo pro nové servery
 auto_type=Výchozí typ systému

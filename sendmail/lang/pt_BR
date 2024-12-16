@@ -192,7 +192,7 @@ virtusers_efeature=Sua configuração do sendmail não possui o recurso de mapea
 virtusers_efile=O arquivo de texto $1 da qual a base de dados de mapeamento de endereço $2 é construída não existe. Talvez você precise modificar o <a href='$3'>configuração do módulo</a> para usar o caminho correto.
 virtusers_createfile=Ou se este recurso foi habilitado, <a href='$1'>Clique aqui</a> para criar o arquivo.
 virtusers_desc1=O mapeamento de endereço é similar ao <a href='$1'>alias</a>, embora mais adequados para um sistema que manipula múltiplos e-mail de domínios. Eles podem ser utilizados para redirecionar e-mail de um domínio completo para um endereço, manipular usuários com o mesmo nome em diferentes domínios ou mapear todos os e-mails de um domínio para outro.
-virtusers_desc2=Note que você deve possuir uma entrada na tabela de <a href='$1'>domínios locais</a>, para qualquer domínio usado para mapeamento de endereços, e estes devem ser um registro DNS MX para cada apontamento de domínio para o  seu sistema.
+virtusers_desc2=Note que você deve possuir uma entrada na tabela de <a href='$1'>domínios locais</a>, para qualquer domínio usado para mapeamento de endereços, e estes devem ser um registro DNS MX para cada apontamento de domínio para o seu sistema.
 virtusers_for=E-mail para..
 virtusers_to=Enviar para..
 virtusers_error=Erro $1

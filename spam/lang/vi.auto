@@ -4,7 +4,7 @@ index_ecmd2=Lệnh SpamAssassin $1 không được tìm thấy trên hệ thốn
 index_econfig=Không tìm thấy tệp cấu hình cục bộ SpamAssassin hoặc thư mục $1 trên hệ thống của bạn. Có thể SpamAssassin chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
 index_unknown=không xác định
 index_edb=Không thể kết nối với cơ sở dữ liệu cấu hình SpamAssassin: $1. Kiểm tra <a href='$2'>cấu hình mô-đun</a> để chắc chắn rằng bạn đang sử dụng các cài đặt chính xác.
-index_version=Phiên bản SpamAssassin $1 
+index_version=Phiên bản SpamAssassin $1
 index_warn_usermin=SpamAssassin dường như không được thiết lập trong tệp cấu hình Procmail của bạn $2 hoặc tệp toàn cầu $1, do đó, mọi cấu hình được thực hiện bằng mô-đun này sẽ không có hiệu lực trừ khi SpamAssassin đã được thiết lập trên toàn cầu.
 index_warn_webmin=SpamAssassin dường như không được thiết lập trong tệp cấu hình Procmail của hệ thống $1, do đó, mọi cấu hình được thực hiện bằng mô-đun này sẽ không có hiệu lực trừ khi người dùng cài đặt riêng lẻ.
 index_return=chỉ số mô-đun
@@ -12,7 +12,7 @@ index_apply=Áp dụng các thay đổi
 index_applydesc=Nhấp vào nút này để áp dụng cấu hình SpamAssassin hiện tại bằng cách gửi tín hiệu HUP cho tất cả các quy trình $1 đang chạy.
 index_cpan=Vì SpamAssassin là mô-đun Perl, bạn cũng có thể tự động cài đặt nó bằng mô-đun <a href='$2'>Mô-đun Perl</a> của Webmin để tải xuống $1 từ CPAN.
 index_spamassassin=SpamAssassin
-index_ecannot=Bạn không được phép quản lý tệp cấu hình SpamAssassin $1 
+index_ecannot=Bạn không được phép quản lý tệp cấu hình SpamAssassin $1
 
 white_title=Địa chỉ được phép và bị từ chối
 white_desc=Các bảng trên trang này cho phép bạn chỉ định các địa chỉ Từ: và Đến: cho email luôn luôn hoặc không bao giờ được phân loại là thư rác. Bất kỳ email nào khác sẽ được xử lý như bình thường theo quy tắc của SpamAssassin. Tất cả các địa chỉ email có thể chứa các ký tự đại diện, như *@foo.com hoặc *.foo.com để khớp với toàn bộ tên miền.
@@ -111,7 +111,7 @@ report_addtext=Văn bản cho tiêu đề
 report_addspam=Thư rác
 report_addham=giăm bông
 report_addall=Tất cả
-report_eaddheader=Thiếu tiêu đề bổ sung hoặc không hợp lệ để thêm $1 
+report_eaddheader=Thiếu tiêu đề bổ sung hoặc không hợp lệ để thêm $1
 
 user_title=Tùy chọn người dùng khác
 user_desc=Các tùy chọn trên trang này hầu hết liên quan đến các đường dẫn và cài đặt mà SpamAssassin sử dụng cho các gói nhận dạng thư rác bên ngoài là Dao cạo, DCC và Pyzor. Bạn cũng có thể nói với SpamAssassin nếu nó có thể thực hiện tra cứu DNS hay không.
@@ -190,7 +190,7 @@ priv_emscore='$1' không phải là điểm số cụm từ cao nhất hợp l�
 priv_ephrase='$1' không phải là cụm từ spam hai từ hợp lệ
 priv_escore=Điểm thiếu hoặc không hợp lệ cho cụm từ spam '$1'
 
-usually=Thường là $1 
+usually=Thường là $1
 ecannot=Bạn không được phép sử dụng trang này
 setup_title=Cài đặt Procmail cho SpamAssassin
 setup_desc_webmin=Biểu mẫu này có thể được sử dụng để thiết lập Procmail trong $1 để chạy SpamAssassin trên tất cả các email mà hệ thống của bạn nhận được. Tuy nhiên, điều này sẽ chỉ có tác dụng nếu máy chủ thư của bạn đã được định cấu hình để sử dụng Procmail để gửi cục bộ hoặc cho người dùng có tệp <tt>.forward</tt> được thiết lập để chạy Procmail.
@@ -244,7 +244,7 @@ mail_razor=Báo cáo là Spam & Xóa
 mail_ham=Báo cáo là Ham & Hộp thư đến
 mail_delete=Xóa bỏ
 mail_return=danh sách thư rác
-mail_pos=Tin nhắn rác $1 đến $2 của $3 
+mail_pos=Tin nhắn rác $1 đến $2 của $3
 mail_none=Không có tin nhắn trong thư mục thư rác của bạn
 mail_refresh=Làm tươi
 mail_will=Tự động làm mới trong $1 phút
@@ -253,7 +253,7 @@ mail_delall=Xóa tất cả thư rác
 mail_search3=Tìm kiếm điểm trên:
 
 process_eclean=Đã xảy ra lỗi khi xóa các tiêu đề SpamAssassin khỏi email này
-process_ereport=Không thể báo cáo email đến SpamAssassin : $1 
+process_ereport=Không thể báo cáo email đến SpamAssassin : $1
 
 apply_err=Không thể áp dụng thay đổi
 apply_none=Không tìm thấy quy trình daemon SpamAssassin!
@@ -263,8 +263,8 @@ acl_file=Tệp cấu hình SpamAssassin để chỉnh sửa
 acl_filedef=Tập tin cấu hình toàn cầu
 acl_awl=Người dùng được phép chỉnh sửa danh sách trắng tự động
 acl_awl0=Tất cả người dùng
-acl_awl1=Chỉ người dùng được liệt kê $1 
-acl_awl2=Chỉ thành viên của nhóm $1 
+acl_awl1=Chỉ người dùng được liệt kê $1
+acl_awl2=Chỉ thành viên của nhóm $1
 
 search_escore=Điểm thư rác bị thiếu hoặc không hợp lệ
 search_results5=$1 thư có điểm thư rác bằng hoặc cao hơn $2 ..
@@ -337,20 +337,20 @@ simple_score=Điểm để áp dụng
 simple_describe=Sự miêu tả
 simple_err=Không thể lưu kiểm tra tin nhắn
 
-before_ecmd=Lệnh lưu trước không thành công : $1 
-after_ecmd=Lệnh lưu sau thất bại : $1 
+before_ecmd=Lệnh lưu trước không thành công : $1
+after_ecmd=Lệnh lưu sau thất bại : $1
 
-connect_emysql=Không thể tải trình điều khiển cơ sở dữ liệu $1 
+connect_emysql=Không thể tải trình điều khiển cơ sở dữ liệu $1
 connect_elogin=Không thể đăng nhập vào cơ sở dữ liệu $1:$2.
-connect_equery=Cơ sở dữ liệu $1 không chứa bảng tùy chọn $2 
+connect_equery=Cơ sở dữ liệu $1 không chứa bảng tùy chọn $2
 connect_eldapmod=Mô-đun Perl $1 cần thiết để giao tiếp với LDAP không được cài đặt hoặc không tải được
-connect_eldap=Không thể kết nối với máy chủ LDAP $1 trên cổng $2 
-connect_eldaplogin=Không thể đăng nhập vào máy chủ LDAP $1 dưới dạng $2 : $3 
-connect_ebase=Cơ sở LDAP DN $1 không hợp lệ : $2 
+connect_eldap=Không thể kết nối với máy chủ LDAP $1 trên cổng $2
+connect_eldaplogin=Không thể đăng nhập vào máy chủ LDAP $1 dưới dạng $2 : $3
+connect_ebase=Cơ sở LDAP DN $1 không hợp lệ : $2
 
-eldap=Hoạt động LDAP không thành công : $1 
-esql=SQL thất bại : $1 
-ldap_euser=Không thể tìm thấy đối tượng người dùng LDAP cho $1 
+eldap=Hoạt động LDAP không thành công : $1
+esql=SQL thất bại : $1
+ldap_euser=Không thể tìm thấy đối tượng người dùng LDAP cho $1
 
 db_title=Cơ sở dữ liệu SQL và LDAP
 db_header=Tùy chọn cơ sở dữ liệu lưu trữ cấu hình

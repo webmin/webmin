@@ -26,7 +26,7 @@ mkpass_skipcount=$1 utilisateurs ont été ignorés pour la conversion.
 savefshare_group=Groupe manquant ou invalide pour le nouveau répertoire
 
 savefshare_perms=Autorisations manquantes ou non valides pour le nouveau répertoire
-savefshare_emkdir=Impossible de créer le répertoire : $1 
+savefshare_emkdir=Impossible de créer le répertoire : $1
 
 start_err_wb=Impossible de démarrer les serveurs Winbind
 

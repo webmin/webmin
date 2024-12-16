@@ -41,10 +41,10 @@ save_eroot=Neuvedli jste žádné hostitele, se kterými chcete sdílet root
 save_ealready=Adresář '$1' je již sdílen
 save_ehost=Hostitel '$1' neexistuje
 
-log_modify=Upravený podíl NFS $1 
-log_rename=Změněný podíl NFS $1 na $2 
-log_create=Vytvořený podíl NFS $1 
-log_delete=Smazaný podíl NFS $1 
+log_modify=Upravený podíl NFS $1
+log_rename=Změněný podíl NFS $1 na $2
+log_create=Vytvořený podíl NFS $1
+log_delete=Smazaný podíl NFS $1
 log_apply=Aplikované změny
 
 acl_view=Lze upravovat sdílené složky NFS?

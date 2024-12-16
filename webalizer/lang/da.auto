@@ -1,6 +1,6 @@
 index_title=Webalizer Logfilfil
-index_version=Webalizer-version $1 
-index_version_webalizer=Webalizer-version $1 
+index_version=Webalizer-version $1
+index_version_webalizer=Webalizer-version $1
 index_version_awffull=AWFFull
 index_ewebalizer=Logfile-analyse-kommandoen $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
 index_econf=Webalizer-konfigurationsfilen $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
@@ -21,8 +21,8 @@ index_return=logfiler liste
 index_global=Rediger globale indstillinger
 index_globaldesc=Klik på denne knap for at redigere Webalizer-indstillinger, der gælder for rapporter, der er genereret fra alle logfiler.
 index_eversion=Webalizer-kommandoen $1 på dit system er version $2, men dette modul understøtter kun versioner $3 og nyere.
-index_egetversion=Kunne ikke hente versionen af Webalizer med kommandoen $1 : $2 
-index_when=Ja, $1 
+index_egetversion=Kunne ikke hente versionen af Webalizer med kommandoen $1 : $2
+index_when=Ja, $1
 index_webalizer=Webalizer
 index_enable=Planlagt valgt
 index_disable=De-plan valgt
@@ -63,10 +63,10 @@ save_efile=Logfil blev ikke indtastet eller findes ikke
 save_ecfile=Manglende eller ikke-eksisterende konfigurationsfil mangler
 save_edir=Rapportkatalog blev ikke indtastet eller findes ikke
 save_euser=Manglende eller ugyldig bruger til at køre webalizer som
-save_ewuser=Der findes ingen Unix-bruger kaldet $1 
+save_ewuser=Der findes ingen Unix-bruger kaldet $1
 save_ehost=Manglende eller ugyldigt webstedets værtsnavn
 save_etitle=Manglende rapporttitel
-save_ecannot=Du har kun tilladelse til at generere rapporter til logfiler under $1 
+save_ecannot=Du har kun tilladelse til at generere rapporter til logfiler under $1
 
 view_epath=Ugyldig PATH_INFO
 view_efile=Ugyldigt rapportfilnavn
@@ -77,7 +77,7 @@ view_title=Se rapport
 
 global_title=Globale indstillinger for webalizer
 global_title2=Webalizer-rapportindstillinger
-global_for=For logfil $1 
+global_for=For logfil $1
 global_first=I øjeblikket er der ikke indstillet nogen indstillinger for denne logfil, hvilket betyder, at de globale indstillinger i stedet bliver brugt. Når denne formular gemmes, bruger rapporter, der er genereret til denne log, de indstillinger, der er valgt på denne side fra nu af.
 global_header=Webalizer-indstillinger til alle rapporter
 global_host=Websteds værtnavn
@@ -146,12 +146,12 @@ global_ehistory=Manglende eller ugyldig historiefilnavn
 global_ecurrent=Manglende eller ugyldigt trinvis filnavn
 global_ecache=Manglende eller ugyldig DNS-cache-filnavn
 
-log_create_log=Oprettet rapportering for $1 
-log_modify_log=Ændret rapportering for $1 
+log_create_log=Oprettet rapportering for $1
+log_modify_log=Ændret rapportering for $1
 log_delete_log=Rapportering for $1 er slettet
-log_generate_log=Genereret rapport for $1 
+log_generate_log=Genereret rapport for $1
 log_global=Ændrede globale Webalizer-indstillinger
-log_global2=Ændrede Webalizer-indstillinger for $1 
+log_global2=Ændrede Webalizer-indstillinger for $1
 log_enable_logs=Planlagt rapportering om $1 -logfiler
 log_disable_logs=De-planlagt rapportering om $1 -logfiler
 

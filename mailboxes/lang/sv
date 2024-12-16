@@ -77,7 +77,7 @@ acl_fdoms=brevlåda@domäner
 acl_faddrs=Angivna adresser
 acl_fdom=valfri adress@domän
 acl_apath=Begränsa filer och program till katalog
-acl_attach=Maximal sammanlagd storlek på bilagor 
+acl_attach=Maximal sammanlagd storlek på bilagor
 
 log_delmail=Tog bort $1 brev från $2
 log_send=Skickade e-post till $1

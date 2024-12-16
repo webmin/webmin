@@ -176,7 +176,7 @@ text_ecannot=기록 파일을 편집할 수 없습니다
 restart_ecannot=BIND를 다시 시작할 수 없습니다
 
 start_ecannot=BIND를 시작할 수 없습니다
-start_error=BIND를 시작하지 못했습니다:  $1
+start_error=BIND를 시작하지 못했습니다: $1
 
 fwd_title=정방향 역역 편집
 fwd_ecannot=이 영역을 편집할 수 없습니다
@@ -201,7 +201,7 @@ create_edom='$1'은(는) 유효한 도메인 이름이 아닙니다
 create_edom2='$1'은(는) 네트워크가 아닌, 도메인이어야 합니다
 create_efile='$1'은(는) 유효한 파일 이름이 아닙니다
 create_efile2='$1'은(는) 허용 가능한 영역 파일이 아닙니다
-create_efile3='$1'을(를) 작성하지 못했습니다:  $2
+create_efile3='$1'을(를) 작성하지 못했습니다: $2
 create_emaster='$1'은(는) 유효한 마스터 서버 주소가 아닙니다
 create_enone=적어도 하나의 마스터 서버를 입력해야 합니다
 

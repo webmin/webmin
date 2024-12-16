@@ -1,7 +1,7 @@
 index_title=חומת אש Shorewall6
 index_ecmd=הפקודה $1 לא נמצאה במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
 index_edir=ספריית התצורה של Shorewall $1 לא נמצאה במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
-index_version=גרסת Shorewall6 $1 
+index_version=גרסת Shorewall6 $1
 index_return=רשימת שולחנות
 index_restart=החל תצורה
 index_restartdesc=לחץ על כפתור זה כדי להפעיל את התצורה הנוכחית של קיר החוף באמצעות הפקודה <tt>shorewall6 הפעלה מחדש</tt>.
@@ -85,7 +85,7 @@ policy_1=אזור יעד
 policy_2=מדיניות
 policy_3=רמת סיסלוג
 policy_4=מגבלת תנועה
-policy_limit=הגבל $1, פרץ $2 
+policy_limit=הגבל $1, פרץ $2
 policy_return=רשימת מדיניות
 policy_edit=ערוך מדיניות ברירת מחדל
 policy_create=צור מדיניות ברירת מחדל
@@ -310,13 +310,13 @@ hosts_err=שמירת מארח האזור נכשלה
 hosts_enet=כתובת מארח חסרה או לא חוקית
 hosts_header=פרטי מארח אזור
 hosts_routestopped=מסלול גם כאשר עצירת חומת האש?
-hosts_ip=כתובת או רשת $1 
-hosts_mac=כתובת MAC $1 
-hosts_ipset=קבוצת ה- IP $1 
+hosts_ip=כתובת או רשת $1
+hosts_mac=כתובת MAC $1
+hosts_ipset=קבוצת ה- IP $1
 hosts_any=כל מארח
 
-edit_before=לפני הכניסה $1 
-edit_after=לאחר הכניסה $1 
+edit_before=לפני הכניסה $1
+edit_after=לאחר הכניסה $1
 
 blacklist_title=מארחים ברשימה השחורה
 blacklist_desc=בדף זה מופיעים מארחים ושירותים שייחסמו אם התנועה מהם תגיע בממשק עם הגדרת האפשרות <b>רשימה שחורה</b>.
@@ -422,16 +422,16 @@ comment_msg=הודעה
 comment_err=שמירת התגובה נכשלה
 comment_enone=לא הוזנה הודעה
 
-log_create_table=נוסף ערך לטבלה $1 
-log_modify_table=ערך שונה בטבלה $1 
-log_delete_table=הערך נמחק מהטבלה $1 
-log_deletes_table=ערכים שנמחקו מהטבלה $1 
-log_up_table=הערך הועבר בטבלה $1 
-log_down_table=הועבר הכניסה למטה בטבלה $1 
-log_manual_table=ערכה ידנית את קובץ הטבלה $1 
-log_create_comment=הוסיף תגובה לטבלה $1 
-log_modify_comment=תגובה שונה בטבלה $1 
-log_delete_comment=הערה נמחקה מהטבלה $1 
+log_create_table=נוסף ערך לטבלה $1
+log_modify_table=ערך שונה בטבלה $1
+log_delete_table=הערך נמחק מהטבלה $1
+log_deletes_table=ערכים שנמחקו מהטבלה $1
+log_up_table=הערך הועבר בטבלה $1
+log_down_table=הועבר הכניסה למטה בטבלה $1
+log_manual_table=ערכה ידנית את קובץ הטבלה $1
+log_create_comment=הוסיף תגובה לטבלה $1
+log_modify_comment=תגובה שונה בטבלה $1
+log_delete_comment=הערה נמחקה מהטבלה $1
 log_stop=חומת אש עצרה
 log_start=התחיל חומת אש
 log_refresh=חומת אש מרעננת

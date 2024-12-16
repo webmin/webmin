@@ -153,8 +153,8 @@ menu_file=het dossier
 menu_edit=Bewerk
 menu_tools=Gereedschap
 menu_bookmarks=Bladwijzers
-notallowed=U heeft geen toegang tot $1. De toegestane mappen zijn : $2 
-error_upload_emax=Het geüploade bestand is groter dan de limiet van $1 
+notallowed=U heeft geen toegang tot $1. De toegestane mappen zijn : $2
+error_upload_emax=Het geüploade bestand is groter dan de limiet van $1
 extract_etype=Niet-ondersteund archiefbestandstype
 
 error_write=je hebt geen schrijfrechten voor dit bestand

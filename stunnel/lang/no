@@ -8,9 +8,9 @@ index_none=Ingen SSL tunneller er for øyeblikket satt opp til å kjøre fra <tt
 index_estunnel=Fant ikke STunnel kommandoen $1 på systemet ditt. Kanskje STunnel ikke er installert, eller så er <a href='$1'>modulkonfigurasjonen</a> feil.
 index_einetd=Hverken <tt>inetd</tt> eller <tt>xinetd</tt> er installert på systemet ditt. Du trenger en av dem for å lytte etter nettverkstilkoblinger som skal videresendes til <tt>stunnel</tt>.
 index_apply=Bruk endringer
-index_applymsg1=Klikk på denne knappen for å aktivere din gjeldende SSL tunnell konfigurasjon ved å sende HUP signaler til  de kjørende <tt>inetd</tt> eller <tt>xinetd</tt> prosessene.
-index_applymsg2=Klikk på denne knappen for å aktivere din gjeldende SSL tunnell konfigurasjon ved å sende HUP signaler til  den kjørende <tt>inetd</tt> prosessen.
-index_applymsg3=Klikk på denne knappen for å aktivere din gjeldende SSL tunnell konfigurasjon ved å sende HUP signaler til  den kjørende <tt>xinetd</tt> prosessen.
+index_applymsg1=Klikk på denne knappen for å aktivere din gjeldende SSL tunnell konfigurasjon ved å sende HUP signaler til de kjørende <tt>inetd</tt> eller <tt>xinetd</tt> prosessene.
+index_applymsg2=Klikk på denne knappen for å aktivere din gjeldende SSL tunnell konfigurasjon ved å sende HUP signaler til den kjørende <tt>inetd</tt> prosessen.
+index_applymsg3=Klikk på denne knappen for å aktivere din gjeldende SSL tunnell konfigurasjon ved å sende HUP signaler til den kjørende <tt>xinetd</tt> prosessen.
 index_return=SSL tunnell liste
 index_action=Tunnel mål
 index_cmd=Kjør kommandoen $1

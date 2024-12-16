@@ -86,7 +86,7 @@ rcpts_desc2=Als u een groot aantal geaccepteerde domeinen heeft kunt u de minst 
 
 bads_title=Geweigerde Adressen
 bads_addresses=Geweigerde email adressen
-bads_desc=QMAIL zal alle mail weigeren om af te leveren om in relais door te sturen van de lijst van adressen die in de tekst box aan de linkerkant staan, Om een adres hier neer te zetten doet u dit bijv zo <tt>gebruikersnaam@domeinnaam</tt>. Indien u mail van een complete host wilt weigeren vult u dit in als  <tt>@domeinnaam</tt>.
+bads_desc=QMAIL zal alle mail weigeren om af te leveren om in relais door te sturen van de lijst van adressen die in de tekst box aan de linkerkant staan, Om een adres hier neer te zetten doet u dit bijv zo <tt>gebruikersnaam@domeinnaam</tt>. Indien u mail van een complete host wilt weigeren vult u dit in als <tt>@domeinnaam</tt>.
 
 routes_title=Domein Routing
 routes_toomany=Er zijn teveel domein routes op uw systeem om te laten zien op deze pagina.
@@ -113,7 +113,7 @@ rdelete_err=Mislukt om domein routes te verwijderen
 
 percents_title=% Adres Domeinen
 percents_domains=Domeinen die % adressen ondersteunen
-percents_desc=QMail zal alleen email accepteren in het formaat <tt>gebruiker%eerstedomein@tweededomein</tt> als het <tt>tweededomein</tt>  in de lijst aan de linkerkant staat. Berichten in dit formaat worden doorgestuurd naar <tt>gebruiker@eerstedomein</tt> door deze email server.
+percents_desc=QMail zal alleen email accepteren in het formaat <tt>gebruiker%eerstedomein@tweededomein</tt> als het <tt>tweededomein</tt> in de lijst aan de linkerkant staat. Berichten in dit formaat worden doorgestuurd naar <tt>gebruiker@eerstedomein</tt> door deze email server.
 
 virts_title=Virtuele Mappings
 virts_toomany=Er zijn teveel virtuele mappings om te kunnen laten zien op deze pagina.
@@ -360,7 +360,7 @@ send_ok=Email successvol verzonden aan $1
 send_ecannot=U bent niet bevoegd email te versturen zijnde deze gebruiker
 send_esmtp=SMTP opdracht $1 mislukte : $2
 send_efile=file $1 als bijlagen bestaat niet
-send_eattach=Bijlages kunnen niet groter zijn dan  $1 kB in grote.
+send_eattach=Bijlages kunnen niet groter zijn dan $1 kB in grote.
 send_eperms=Gebruiker $1 kan $2 niet lezen
 send_eperms2=U bent niet bevoegd om de file $1 te versturen
 send_epath=Uitvoerbaar bestand Sendmail $1 bestaat niet.

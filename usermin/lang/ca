@@ -15,7 +15,7 @@ index_deb=Instal·la el paquet Debian d'Usermin
 index_esame=El directori $1 de configuració d'Usermin establert a la pàgina de <a href='$2'>configuració del mòdul</a> és el mateix que el directori de Webmin, cosa que no és correcta.
 index_eroot=El directori de configuració $1 d'Usermin existeix, però el directori arrel de programes $2 al qual fa referència, no! Has de descarregar i reinstal·lar Usermin manualment.
 index_restart=Reinicia Usermin
-index_restartmsg=Fes clic sobre aquest botó per reiniciar el procés servidor d'Usermin. Això pot ser necessari si has actualitzat Perl fa poc. 
+index_restartmsg=Fes clic sobre aquest botó per reiniciar el procés servidor d'Usermin. Això pot ser necessari si has actualitzat Perl fa poc.
 
 access_title=Control d'Accés IP
 access_desc=Amb aquest formulari, el servidor Usermin pot configurar-se per a permetre o denegar l'accés només des de certes adreces IP. Es poden introduir també noms de host (com ara foo.bar.com) i xarxes IP (com 10.254.3.0 o 10.254.1.0/255.255.255.128 o 10.254.1.0/25 o 10.254.1.5-10.254.97.127). Hauries de limitar l'accés al servidor a les adreces fiables, sobretot si és accessible des d'Internet. Altrament, algú que endevini la teva contrasenya tindrà el control complet del sistema.
@@ -33,7 +33,7 @@ mods_uploaded=Des d'un fitxer pujat
 mods_ftp=Des d'un URL FTP o HTTP
 mods_nodeps=Ignora les dependències del mòdul en instal·lar-lo
 mods_installok=Instal·la el Mòdul des de Fitxer
-mods_desc2=Si vols tenir més d'una còpia del mateix mòdul amb configuracions diferents, el formulari de la dreta permet clonar qualsevol mòdul existent. El clon tindrà un nom nou, una nova configuració i es pot posar a disposició d'usuaris diferents. 
+mods_desc2=Si vols tenir més d'una còpia del mateix mòdul amb configuracions diferents, el formulari de la dreta permet clonar qualsevol mòdul existent. El clon tindrà un nom nou, una nova configuració i es pot posar a disposició d'usuaris diferents.
 mods_clone=Clonació de Mòdul
 mods_cname=Mòdul a clonar
 mods_cnew=Nom del mòdul clonat
@@ -298,7 +298,7 @@ update_apply=Desa i Aplica
 update_sched=Actualitza els mòduls a les $1:00 cada $2 dies
 update_none=No hi ha cap actualització d'Usermin per aquesta versió.
 update_failed=No s'ha pogut instal·lar el mòdul: $1
-update_desc2=Aquest formulari és per planificar l'actualització automàtica dels mòduls d'Usermin que continguin errors o forats de seguretat des de la pàgina d'<a href=http://www.usermin.com/updates.html>Actualitzacions d'Usermin</a>  des d'una altra font. Tot i que aquest servei és útil, cal anar amb compte, ja que això pot permetre els atacants de prendre el teu sistema si el servidor queda compromès.
+update_desc2=Aquest formulari és per planificar l'actualització automàtica dels mòduls d'Usermin que continguin errors o forats de seguretat des de la pàgina d'<a href=http://www.usermin.com/updates.html>Actualitzacions d'Usermin</a> des d'una altra font. Tot i que aquest servei és útil, cal anar amb compte, ja que això pot permetre els atacants de prendre el teu sistema si el servidor queda compromès.
 
 assignment_title=Reassignació de Mòduls
 assignment_header=Assignacions de categories de mòduls

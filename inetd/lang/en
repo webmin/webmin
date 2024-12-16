@@ -42,7 +42,7 @@ error_childnum=If a maximum per minute is given, so must a number of child proce
 error_serviceexist=A service using port $1 and protocol $2 already exists
 error_nameexist=A service with name $1 and protocol $2 already exists
 error_inetservice=An internet service with name $1 and protocol $2 already exists
-error_smfservice=Failed to update smf service with cmd  '$1', errorcode $2 
+error_smfservice=Failed to update smf service with cmd '$1', errorcode $2
 error_smf_cmdfield=For smf, filename of program '$1' must match first argument of command field, i.e. be '$2'
 
 editrpc_title1=Create RPC Program

@@ -44,11 +44,11 @@ dav_title=Servidor DAV
 dav_header=Opciones del servidor DAV
 dav_path=DAV habilitado?
 dav_disabled=Discapacitado
-dav_enabled=Habilitado, en la ruta URL $1 
+dav_enabled=Habilitado, en la ruta URL $1
 dav_root=Permitir acceso al directorio
 dav_root0=Sistema de archivos completo
 dav_root1=Directorio de inicio del usuario
-dav_root2=Directorio $1 
+dav_root2=Directorio $1
 dav_ecannot=No tiene permiso para configurar el servidor DAV
 dav_emodule=El módulo Perl $1 necesario para habilitar DAV no está instalado.
 dav_cpan=<a href='$1'>Haga clic aquí</a> para que Webmin lo descargue e instale automáticamente.

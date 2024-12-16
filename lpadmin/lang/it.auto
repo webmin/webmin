@@ -6,7 +6,7 @@ index_jcount=$1 lavori ..
 index_restart=Riavvia Scheduler
 index_restartmsg=Fare clic su questo pulsante per riavviare il processo dello scheduler di stampa. Ciò forzerà l'applicazione della configurazione di stampa corrente.
 index_esystem=Installa il software per il tuo sistema di stampa scelto o usa la <a href='$1'>configurazione del modulo</a> per cambiarlo.
-index_style=Sistema di stampa: $1 
+index_style=Sistema di stampa: $1
 index_cluster=Server cluster
 index_clusterdesc=Fare clic su questo pulsante per configurare server Webmin aggiuntivi su cui verranno create, aggiornate ed eliminate le stampanti.
 index_delete=Elimina stampanti selezionate
@@ -30,15 +30,15 @@ save_erport=La porta remota '$1' non è valida
 save_edhost=L'host diretto '$1' non esiste
 save_edport=Porta diretta mancante o non valida
 save_evalid=Il sistema di stampa non ha consentito questa stampante
-save_errslave=La stampante ha creato OK su questo sistema, ma i seguenti errori si sono verificati sui sistemi cluster : $1 
+save_errslave=La stampante ha creato OK su questo sistema, ma i seguenti errori si sono verificati sui sistemi cluster : $1
 save_egone=Nessuna stampante denominata '$1' è stata trovata
-save_errdelslave=La stampante ha eliminato OK su questo sistema, ma i seguenti errori si sono verificati sui sistemi cluster : $1 
+save_errdelslave=La stampante ha eliminato OK su questo sistema, ma i seguenti errori si sono verificati sui sistemi cluster : $1
 
 jobs_all=Annulla tutti i lavori di stampa
 jobs_bytes=byte
 jobs_test=Stampa pagina di prova
 jobs_cancelsel=Annulla lavori selezionati
-jobs_on=Sulla stampante $1 
+jobs_on=Sulla stampante $1
 jobs_return=elenco di lavori di stampa
 
 restart_ecannot=Non è consentito riavviare lo scheduler
@@ -63,7 +63,7 @@ suse_yast2=Driver YAST2
 suse_edriver=Nessun tipo di stampante selezionato
 suse_eres=Risoluzione mancante o non valida
 
-estop=Impossibile arrestare lpd : $1 
+estop=Impossibile arrestare lpd : $1
 
 acl_restart=Riavvia solo
 acl_pall=Tutte le stampanti
@@ -79,20 +79,20 @@ acl_cluster=È possibile gestire il cluster di stampanti?
 log_stop=Pianificatore di stampa interrotto
 log_start=Pianificatore di stampa avviato
 log_restart=Pianificatore di stampa riavviato
-log_cancel_job=Processo di stampa annullato $2 su $1 
-log_cancel_all=Annullati tutti i lavori di stampa su $1 
-log_cancel_sel=$2 lavori di stampa annullati su $1 
-log_create=Stampante creata $1 su $2 
-log_modify=Stampante modificata $1 su $2 
-log_delete=Stampante eliminata $1 su $2 
-log_create_l=Creazione $3 stampante $1 su $2 
-log_modify_l=$3 stampante modificata $1 su $2 
-log_delete_l=$3 stampante eliminata $1 su $2 
+log_cancel_job=Processo di stampa annullato $2 su $1
+log_cancel_all=Annullati tutti i lavori di stampa su $1
+log_cancel_sel=$2 lavori di stampa annullati su $1
+log_create=Stampante creata $1 su $2
+log_modify=Stampante modificata $1 su $2
+log_delete=Stampante eliminata $1 su $2
+log_create_l=Creazione $3 stampante $1 su $2
+log_modify_l=$3 stampante modificata $1 su $2
+log_delete_l=$3 stampante eliminata $1 su $2
 
-linux_paralel=Porta parallela $1 
+linux_paralel=Porta parallela $1
 linux_serial=Porta seriale $1 (COM $1)
 linux_null=Dispositivo nullo
-linux_usb=Stampante USB $1 
+linux_usb=Stampante USB $1
 linux_ecmd=Il comando $1 non è stato trovato sul tuo sistema, a indicare che il sistema di stampa Linux non è installato.
 linux_espool=La directory di spool $1 non esiste sul tuo sistema, il che indica che il sistema di stampa Linux non è installato.
 
@@ -104,18 +104,18 @@ freebsd_espool=La directory di spool $1 non esiste sul tuo sistema, il che indic
 openbsd_paralel=Porta parallela
 openbsd_serial=Porta seriale $1 (COM $1)
 
-unixware_paralel=Porta parallela $1 
-unixware_serial=Porta seriale $1 
+unixware_paralel=Porta parallela $1
+unixware_serial=Porta seriale $1
 unixware_null=Dispositivo nullo
 unixware_ecmd=Il comando $1 non è stato trovato sul tuo sistema, a indicare che il sistema di stampa UnixWare non è installato.
 
-hpux_paralel=Parallelo $1 
-hpux_serial=Seriale $1 
+hpux_paralel=Parallelo $1
+hpux_serial=Seriale $1
 hpux_null=Dispositivo nullo
 hpux_ecmd=Il comando $1 non è stato trovato sul tuo sistema, a indicare che il sistema di stampa HPUX non è installato.
 hpux_eiface=La directory degli script di interfaccia $1 non esiste sul sistema, a indicare che il sistema di stampa HPUX non è installato.
 
-lprng_paralel=Porta parallela $1 
+lprng_paralel=Porta parallela $1
 lprng_serial=Porta seriale $1 (COM $1)
 lprng_null=Dispositivo nullo
 lprng_ecmd=Il comando $1 non è stato trovato sul tuo sistema, il che indica che il sistema di stampa LPRng non è installato.
@@ -123,7 +123,7 @@ lprng_espool=La directory di spool $1 non esiste sul sistema, il che indica che 
 
 solaris_paralel=Porta parallela
 solaris_uparalel=Porta parallela Ultra 5/10
-solaris_serial=Porta seriale $1 
+solaris_serial=Porta seriale $1
 solaris_null=Dispositivo nullo
 solaris_ecmd=Il comando $1 non è stato trovato sul sistema, a indicare che il sistema di stampa Solaris non è installato.
 
@@ -144,13 +144,13 @@ cups_nonemsg=Stampante remota o raw
 cups_prog=Programma
 cups_driver=Driver CUPS
 cups_eprog='$1' non è un programma valido
-cups_opts=Opzioni per $1 
+cups_opts=Opzioni per $1
 cups_ecmd=Il comando $1 non è stato trovato sul tuo sistema, a indicare che il sistema di stampa CUPS non è installato.
 
 irix_ecmd=Il comando $1 non è stato trovato sul tuo sistema, il che indica che il sistema di stampa IRIX non è installato.
 irix_eiface=La directory degli script di interfaccia $1 non esiste sul sistema, a indicare che il sistema di stampa IRIX non è installato.
 
-aix_port=Porta stampante $1 
+aix_port=Porta stampante $1
 aix_edesc=Descrizione non valida: sono consentite solo lettere e numeri e nessuno spazio
 aix_ecmd=Il server di stampa AIX $1 non è stato trovato. Forse non è installato o è in uso un altro sistema di stampa.
 

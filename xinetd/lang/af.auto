@@ -8,7 +8,7 @@ index_inet=internet
 index_proto=Protokol
 index_user=gebruiker
 index_server=Bedienerprogram
-index_redirect=Stuur na $1 
+index_redirect=Stuur na $1
 index_enabled=In staat gestel?
 index_internal=Intern vir Xinetd
 index_add_inet=Skep 'n nuwe internetdiens
@@ -95,7 +95,7 @@ restart_ekill=Kon nie USR2-sein na PID $1 : $2 stuur nie
 restart_epid=Nie meer hardloop nie
 
 start_err=Kon nie xinetd begin nie
-start_estart=$1 het misluk : $2 
+start_estart=$1 het misluk : $2
 
 defs_title=Standaardopsies
 defs_header=Standaardopsies vir dienste
@@ -122,16 +122,16 @@ defs_efile=Ontbrekende of ongeldige log-lêernaam
 defs_esoft=Sagte limiet ontbreek of ongeldig
 defs_ehard=Ontbrekende of ongeldige harde limiet
 
-log_create_serv=Skep $2 diens $1 
-log_modify_serv=Gewysigde $2 diens $1 
+log_create_serv=Skep $2 diens $1
+log_modify_serv=Gewysigde $2 diens $1
 log_delete_serv=$2 diens $1 is uitgevee
 log_start=Xinetd-bediener is begin
 log_apply=Toegepaste wysigings
 log_defaults=Verander verstekopsies
 log_enable=$1 -dienste geaktiveer
 log_disable=Gestremd $1 dienste
-log_enable_l=Geaktiveerde dienste $1 
-log_disable_l=Dienste vir gestremdes $1 
+log_enable_l=Geaktiveerde dienste $1
+log_disable_l=Dienste vir gestremdes $1
 
 config_dirdef=Xinetd konfigurasie lêer
 config_dirto=Nuwe lêer in die gids

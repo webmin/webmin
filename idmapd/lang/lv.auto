@@ -7,5 +7,5 @@ domain=Domēna vārds
 nobody_user=Neviens lietotājs
 nobody_group=Neviena grupa
 save=Saglabājiet konfigurāciju un restartējiet dēmonu
-save_err=Neizdevās saglabāt konfigurācijas failu $1 
+save_err=Neizdevās saglabāt konfigurācijas failu $1
 error_dir=Katalogs $1 neeksistē

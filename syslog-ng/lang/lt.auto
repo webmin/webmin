@@ -79,7 +79,7 @@ destinations_delete=Ištrinti pasirinktus tikslus
 destinations_add=Pridėti naują žurnalo vietą.
 destinations_return=žurnalo paskirties vietos
 destinations_desc=Kito modulio žurnalas
-destinations_cmd=Išvestis iš $1 
+destinations_cmd=Išvestis iš $1
 
 destination_header=Žurnalo paskirties vietos parinktys
 destination_title1=Sukurti žurnalo tikslą
@@ -259,10 +259,10 @@ source_edoor=Trūksta arba netinkamas „Sun“ srautų durų failo vardas
 source_transport=Tinklo protokolas
 
 view_title=Peržiūrėti žurnalo failą
-view_header=Paskutinės $1 eilutės iš $2 
+view_header=Paskutinės $1 eilutės iš $2
 view_empty=Žurnalo failas tuščias
 view_refresh=Atnaujinkite
-view_filter=Rodyti tik eilutes su tekstu $1 
+view_filter=Rodyti tik eilutes su tekstu $1
 
 apply_err=Nepavyko pritaikyti konfigūracijos
 apply_egone=Nebėga!
@@ -271,17 +271,17 @@ start_err=Nepavyko paleisti „Syslog-NG“ serverio
 
 stop_err=Nepavyko sustabdyti „Syslog-NG“ serverio
 
-log_create_destination=Sukurtas žurnalo tikslas $1 
-log_modify_destination=Modifikuota žurnalo paskirties vieta $1 
-log_delete_destination=Ištrinta žurnalo paskirties vieta $1 
+log_create_destination=Sukurtas žurnalo tikslas $1
+log_modify_destination=Modifikuota žurnalo paskirties vieta $1
+log_delete_destination=Ištrinta žurnalo paskirties vieta $1
 log_delete_destinations=Ištrintos $1 žurnalo vietos
-log_create_filter=Sukurtas žurnalo filtras $1 
-log_modify_filter=Modifikuotas žurnalo filtras $1 
-log_delete_filter=Ištrintas žurnalo filtras $1 
+log_create_filter=Sukurtas žurnalo filtras $1
+log_modify_filter=Modifikuotas žurnalo filtras $1
+log_delete_filter=Ištrintas žurnalo filtras $1
 log_delete_filters=Ištrinti $1 žurnalo filtrai
-log_create_source=Sukurtas žurnalo šaltinis $1 
-log_modify_source=Modifikuotas žurnalo šaltinis $1 
-log_delete_source=Ištrintas žurnalo šaltinis $1 
+log_create_source=Sukurtas žurnalo šaltinis $1
+log_modify_source=Modifikuotas žurnalo šaltinis $1
+log_delete_source=Ištrintas žurnalo šaltinis $1
 log_delete_sources=Ištrinti $1 žurnalo šaltiniai
 log_create_log=Sukurtas žurnalo taikinys
 log_modify_log=Modifikuotas žurnalo taikinys

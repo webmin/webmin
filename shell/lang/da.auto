@@ -14,5 +14,5 @@ acl_user_def=Nuværende Webmin-bruger
 acl_shellenv=Brug den valgte brugers miljø?
 acl_chroot=Chroot til katalog
 
-log_run=Kørte kommando $1 
+log_run=Kørte kommando $1
 log_clear=Ryddet kommandohistorie

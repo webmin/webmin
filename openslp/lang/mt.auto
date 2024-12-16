@@ -2,7 +2,7 @@ index_title=Konfigurazzjoni OpenSLP
 index_return=Konfigurazzjoni OpenSLP
 index_eslpd=Id-daemon OpenSLP $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
 index_econf=Il-fajl tal-konfigurazzjoni OpenSLP $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
-index_version=Verżjoni OpenSLP $1 
+index_version=Verżjoni OpenSLP $1
 
 slp_apply=Applika l-Bidliet
 slp_stop=Waqqaf OpenSLP

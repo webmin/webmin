@@ -4,7 +4,7 @@ index_emd5=Aquest mòdul s'ha <a href='$1'>configurat</a> per utilitzar el xifra
 index_header=Usuaris del fitxer de contrasenyes
 index_none=No hi ha usuari al fitxer de contrasenya configurat.
 index_add=Afegiu un usuari nou al fitxer de contrasenyes.
-index_file=Usuaris al fitxer de contrasenyes $1 
+index_file=Usuaris al fitxer de contrasenyes $1
 index_sync=Sincronització d'usuaris Unix
 index_return=llista d'usuaris
 index_eversion=Aquest mòdul s'ha <a href='$1'>configurat</a> per utilitzar el xifratge MD5 per a les contrasenyes, però la versió del mòdul Usuaris i grups instal·lat al vostre sistema no inclou les funcions MD5 necessàries. Actualitzeu a la versió 1.114 o posterior.
@@ -49,6 +49,6 @@ acl_single=Ometeu la llista d'usuaris i aneu directament al formulari de canvi d
 sync_ecannot=No teniu permís per configurar la sincronització
 
 log_sync=S'han canviat les opcions de sincronització
-log_create=S'ha creat l'usuari $1 
-log_delete=S'ha suprimit l'usuari $1 
-log_modify=S'ha modificat l'usuari $1 
+log_create=S'ha creat l'usuari $1
+log_delete=S'ha suprimit l'usuari $1
+log_modify=S'ha modificat l'usuari $1

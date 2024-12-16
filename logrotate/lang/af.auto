@@ -2,7 +2,7 @@ index_title=Loglêerrotasie
 index_econf=Die log-rotasie-opstellinglêer $1 is nie op u stelsel gevind nie. Miskien is logrotate nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
 index_ecmd=Die log-rotasieprogram $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
 index_eversion=Kon nie die weergawe van logrotate met die opdrag $1 : $2 kry nie
-index_version=Logrotate weergawe $1 
+index_version=Logrotate weergawe $1
 index_add=Voeg 'n nuwe loglêer by om te draai.
 index_file=Loglêer
 index_period=Rotasieperiode
@@ -50,7 +50,7 @@ edit_mailfl=Teken lêer na e-pos
 edit_mailfirst=Nuutste wat pas geroteer is
 edit_maillast=Die oudste wat op die punt staan om uit te vee
 edit_create=Skep loglêers weer na rotasie?
-edit_createas=Ja, met modus $1 en word besit deur gebruiker $2 en groep $3 
+edit_createas=Ja, met modus $1 en word besit deur gebruiker $2 en groep $3
 edit_createno=Nee, moenie weer skep nie
 edit_createsame=Ja, met ou toestemmings
 edit_olddir=Bêre ou geroteerde logboeke in
@@ -90,8 +90,8 @@ log_modify_sched=Verander log-rotasie Cron-baan
 log_create_sched=Log rotasie Cron werk geskep
 log_delete_sched=Log-rotasie Cron-baan is uitgevee
 log_global=Gewysigde globale opsies
-log_create=Rotasie bygevoeg vir loglêer $1 
-log_modify=Gewysigde rotasie vir loglêer $1 
+log_create=Rotasie bygevoeg vir loglêer $1
+log_modify=Gewysigde rotasie vir loglêer $1
 log_delete=Rotasie vir loglêer $1 is uitgevee
 log_delete_logs=Rotasie is verwyder vir $1 loglêers
 

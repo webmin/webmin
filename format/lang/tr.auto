@@ -128,8 +128,8 @@ tunefs_exec=$1 komutu çalıştırılıyor.
 tunefs_failed=.. komut başarısız!
 tunefs_ok=.. komut tamamlandı.
 
-select_idedevice=IDE cihazı $1 
-select_idepart=IDE aygıtı $1 bölüm $2 
+select_idedevice=IDE cihazı $1
+select_idepart=IDE aygıtı $1 bölüm $2
 opt_error='$1' geçerli bir $2 değil
 esun=Bölümler yalnızca Sun donanımında değiştirilebilir
 emounted=Disk bölümleri monte etti

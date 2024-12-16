@@ -20,7 +20,7 @@ index_restart=Herbeplanner weer
 index_restartmsg=Klik op hierdie knoppie om die drukskeduleringsproses weer te begin. Dit sal dwing om die huidige drukkonfigurasie toe te pas.
 index_return=drukker lys
 index_esystem=Installeer die sagteware vir u gekose drukstelsel, of gebruik die <a href='$1'>module-opstelling</a> om dit te verander.
-index_style=Drukstelsel: $1 
+index_style=Drukstelsel: $1
 index_cluster=Cluster Servers
 index_clusterdesc=Klik op hierdie knoppie om addisionele Webmin-bedieners op te stel waarop drukkers geskep, opgedateer en geskrap sal word.
 index_delete=Vee geselekteerde drukkers uit
@@ -99,12 +99,12 @@ save_eremote=Bestuurders kan nie met eksterne Unix-drukkers gebruik word nie
 save_edhost=Direkte gasheer '$1' bestaan nie
 save_edport=Direkte poort ontbreek of ongeldig
 save_evalid=Die drukker het hierdie drukker nie toegelaat nie
-save_errslave=Drukker het OK op hierdie stelsel geskep, maar die volgende foute het op groepstelsels voorgekom : $1 
+save_errslave=Drukker het OK op hierdie stelsel geskep, maar die volgende foute het op groepstelsels voorgekom : $1
 save_egone=Geen drukker met die naam '$1' is gevind nie
-save_errdelslave=Drukker het OK op hierdie stelsel uitgevee, maar die volgende foute het op groepstelsels voorgekom : $1 
+save_errdelslave=Drukker het OK op hierdie stelsel uitgevee, maar die volgende foute het op groepstelsels voorgekom : $1
 
 jobs_title=Drukwerk
-jobs_header=Drukwerk op $1 
+jobs_header=Drukwerk op $1
 jobs_id=Pos-ID
 jobs_size=grootte
 jobs_by=Voorgelê deur
@@ -117,7 +117,7 @@ jobs_all=Kanselleer alle drukwerk
 jobs_bytes=grepe
 jobs_test=Druk toets bladsy
 jobs_cancelsel=Kanselleer geselekteerde poste
-jobs_on=Op drukker $1 
+jobs_on=Op drukker $1
 jobs_return=lys van afdruktaak
 
 cancel_ecannot=U mag nie afdruktaak kanselleer nie
@@ -197,7 +197,7 @@ suse_yast2=YAST2 bestuurder
 suse_edriver=Geen druktipe is gekies nie
 suse_eres=Ontbrekende of ongeldige resolusie
 
-estop=Kon nie lpd stop : $1 
+estop=Kon nie lpd stop : $1
 
 acl_printers=Drukkers wat hierdie gebruiker kan instel
 acl_add=Kan nuwe drukkers bygevoeg word?
@@ -218,20 +218,20 @@ acl_cluster=Kan u drukklus bestuur?
 log_stop=Gestopte drukkerbeplanner
 log_start=Drukbeplanner begin
 log_restart=Herbegin afdrukbeplanner
-log_cancel_job=Gekanselleerde afdruktaak $2 op $1 
+log_cancel_job=Gekanselleerde afdruktaak $2 op $1
 log_cancel_all=Alle drukwerk op $1 gekanselleer
-log_cancel_sel=Kanselleer $2 drukwerk op $1 
-log_create=Skep drukker $1 op $2 
-log_modify=Gewysigde drukker $1 op $2 
+log_cancel_sel=Kanselleer $2 drukwerk op $1
+log_create=Skep drukker $1 op $2
+log_modify=Gewysigde drukker $1 op $2
 log_delete=Drukker $1 op $2 is uitgevee
-log_create_l=Skep $3 drukker $1 op $2 
-log_modify_l=Gewysig $3 drukker $1 op $2 
+log_create_l=Skep $3 drukker $1 op $2
+log_modify_l=Gewysig $3 drukker $1 op $2
 log_delete_l=$3 drukker $1 op $2 is uitgevee
 
-linux_paralel=Parallelle hawe $1 
+linux_paralel=Parallelle hawe $1
 linux_serial=Seriële poort $1 (COM $1)
 linux_null=Nul toestel
-linux_usb=USB drukker $1 
+linux_usb=USB drukker $1
 linux_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat daarop dui dat die Linux-afdrukstelsel nie geïnstalleer is nie.
 linux_espool=Die spoelgids $1 bestaan nie op u stelsel nie, wat daarop dui dat die Linux-druksisteem nie geïnstalleer is nie.
 
@@ -243,18 +243,18 @@ freebsd_espool=Die spoelgids $1 bestaan nie op u stelsel nie, wat aandui dat die
 openbsd_paralel=Parallelle hawe
 openbsd_serial=Seriële poort $1 (COM $1)
 
-unixware_paralel=Parallelle hawe $1 
-unixware_serial=Reekspoort $1 
+unixware_paralel=Parallelle hawe $1
+unixware_serial=Reekspoort $1
 unixware_null=Nul toestel
 unixware_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat daarop dui dat die UnixWare-afdrukstelsel nie geïnstalleer is nie.
 
-hpux_paralel=Parallel $1 
-hpux_serial=Reeks $1 
+hpux_paralel=Parallel $1
+hpux_serial=Reeks $1
 hpux_null=Nul toestel
 hpux_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat aandui dat die HPUX-afdrukstelsel nie geïnstalleer is nie.
 hpux_eiface=Die koppelvlak-skriptsgids $1 bestaan nie op u stelsel nie, wat daarop dui dat die HPUX-afdrukstelsel nie geïnstalleer is nie.
 
-lprng_paralel=Parallelle hawe $1 
+lprng_paralel=Parallelle hawe $1
 lprng_serial=Seriële poort $1 (COM $1)
 lprng_null=Nul toestel
 lprng_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat daarop dui dat die LPRng-afdrukstelsel nie geïnstalleer is nie.
@@ -262,7 +262,7 @@ lprng_espool=Die spoelgids $1 bestaan nie op u stelsel nie, wat aandui dat die L
 
 solaris_paralel=Parallelle hawe
 solaris_uparalel=Ultra 5/10 parallelle hawe
-solaris_serial=Reekspoort $1 
+solaris_serial=Reekspoort $1
 solaris_null=Nul toestel
 solaris_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat aandui dat die Solaris-afdrukstelsel nie geïnstalleer is nie.
 
@@ -283,13 +283,13 @@ cups_nonemsg=Afstandsbediening of rou drukker
 cups_prog=program
 cups_driver=CUPS bestuurder
 cups_eprog='$1' is nie 'n geldige program nie
-cups_opts=Opsies vir $1 
+cups_opts=Opsies vir $1
 cups_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat aandui dat die CUPS-afdrukstelsel nie geïnstalleer is nie.
 
 irix_ecmd=Die opdrag $1 is nie op u stelsel gevind nie, wat daarop dui dat die IRIX-afdrukstelsel nie geïnstalleer is nie.
 irix_eiface=Die koppelvlak-skripgids $1 bestaan nie op u stelsel nie, wat daarop dui dat die IRIX-afdrukstelsel nie geïnstalleer is nie.
 
-aix_port=Drukkerpoort $1 
+aix_port=Drukkerpoort $1
 aix_edesc=Ongeldige beskrywing - slegs letters en syfers word toegelaat, en geen spasies nie
 aix_ecmd=Die AIX-drukkerbediener $1 is nie gevind nie. Miskien is dit nie geïnstalleer nie, of is daar 'n ander afdrukstelsel in gebruik.
 

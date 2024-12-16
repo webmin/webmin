@@ -11,7 +11,7 @@ index_anyfile=Editați alt fișier de configurare PHP:
 index_return=fișiere de configurare
 
 file_global=Configurația PHP globală
-file_eread=Nu a reușit să citească $1 : $2 
+file_eread=Nu a reușit să citească $1 : $2
 
 manual_title=Editează configurația manual
 manual_desc=Această pagină poate fi utilizată pentru a edita manual un fișier de configurare PHP. Acest lucru trebuie făcut cu atenție, deoarece nu se efectuează nicio sintaxă sau altă verificare a validității asupra modificărilor dvs.
@@ -124,7 +124,7 @@ errors_maxlen=Mărimea maximă a erorilor înregistrate
 errors_file=Fișier jurnal pentru erori
 errors_none=Nici unul
 errors_syslog=Syslog
-errors_other=Alt fișier $1 
+errors_other=Alt fișier $1
 errors_unlimited=Nelimitat
 errors_err=Eroare la salvarea înregistrării erorilor
 errors_ereporting=Nu a fost introdusă nicio expresie de tip eroare
@@ -152,15 +152,15 @@ misc_path=Informații despre calea CGI?
 misc_timezone=Fus orar PHP
 misc_charset=Set de caractere implicit
 
-log_manual=Editează manual fișierul $1 
-log_vars=Modificată variabilele PHP în $1 
-log_dirs=Setările directoarelor modificate în $1 
-log_db=Setările bazei de date modificate în $1 
-log_session=Opțiuni modificate ale sesiunii în $1 
-log_safe=Opțiunile modului sigur au fost schimbate în $1 
-log_limits=Limitarea resurselor modificată în $1 
-log_errors=Schimbare de eroare modificată în $1 
-log_misc=S-au modificat alte setări în $1 
+log_manual=Editează manual fișierul $1
+log_vars=Modificată variabilele PHP în $1
+log_dirs=Setările directoarelor modificate în $1
+log_db=Setările bazei de date modificate în $1
+log_session=Opțiuni modificate ale sesiunii în $1
+log_safe=Opțiunile modului sigur au fost schimbate în $1
+log_limits=Limitarea resurselor modificată în $1
+log_errors=Schimbare de eroare modificată în $1
+log_misc=S-au modificat alte setări în $1
 
 acl_global=Poate edita configurația PHP globală?
 acl_anyfile=Poate edita orice fișier ca configurație PHP?

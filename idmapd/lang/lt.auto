@@ -7,5 +7,5 @@ domain=Domeno vardas
 nobody_user=Niekas vartotojo
 nobody_group=Niekas grupės
 save=Įrašykite konfigūraciją ir paleiskite demoną iš naujo
-save_err=Nepavyko išsaugoti konfigūracijos failo $1 
+save_err=Nepavyko išsaugoti konfigūracijos failo $1
 error_dir=Katalogas $1 neegzistuoja

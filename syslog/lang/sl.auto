@@ -7,14 +7,14 @@ index_active=Aktivno?
 index_tag=Program
 index_to=Prijava cilja
 index_rule=Izbrana sporočila
-index_file=Datoteka $1 
-index_pipe=Poimenovana cev $1 
-index_pipe2=Pipe za ukaz $1 
-index_host=Syslog strežnik na $1 
-index_socket=Unix datoteka vtičnice $1 
-index_cmd=Izhod iz $1 
+index_file=Datoteka $1
+index_pipe=Poimenovana cev $1
+index_pipe2=Pipe za ukaz $1
+index_host=Syslog strežnik na $1
+index_socket=Unix datoteka vtičnice $1
+index_cmd=Izhod iz $1
 index_all=Vsi uporabniki
-index_users=Uporabniki $1 
+index_users=Uporabniki $1
 index_add=Dodajte nov sistemski dnevnik.
 index_return=sistemski dnevniki
 index_restart=Uporabi spremembe
@@ -26,7 +26,7 @@ index_view=Prikaži ..
 index_viewfile=Prikaži datoteko dnevnika:
 index_viewok=Pogled
 
-restart_ekill=Ni bilo mogoče signalizirati postopka syslog $1 : $2 
+restart_ekill=Ni bilo mogoče signalizirati postopka syslog $1 : $2
 restart_ecannot=Ni vam dovoljeno znova zagnati sistema
 
 start_ecannot=Ni vam dovoljeno zagnati sistema syslog
@@ -61,13 +61,13 @@ edit_ecannot=Ni vam dovoljeno urejati nastavitev dnevnika
 edit_ecannot2=Tega dnevnika ne morete urejati
 
 view_title=Ogled dnevnika
-view_header=Zadnje $1 vrstice $2 
+view_header=Zadnje $1 vrstice $2
 view_empty=Datoteka dnevnika je prazna
 view_refresh=Osveži
-view_filter=Pokaži samo vrstice z besedilom $1 
+view_filter=Pokaži samo vrstice z besedilom $1
 
 save_err=Dnevnika ni bilo mogoče shraniti
-save_efile='$1' ni veljavno ime datoteke : $2 
+save_efile='$1' ni veljavno ime datoteke : $2
 save_epipe='$1' ni veljavna poimenovana cev
 save_epipe2=Manjka ukaz za prenos v
 save_esocket=Manjkajoča ali neveljavna unix domena domene
@@ -86,9 +86,9 @@ save_ecannot6=Nimate dovoljenja za ogled samovoljnih dnevnikov
 save_ecannot7=Tega dodatnega dnevnika ni dovoljeno videti
 save_emissing=Manjka datoteko dnevnika za ogled
 
-log_modify=Spremenjen dnevnik v $1 
-log_create=Dnevnik je dodan v $1 
-log_delete=Izbrisan dnevnik v $1 
+log_modify=Spremenjen dnevnik v $1
+log_create=Dnevnik je dodan v $1
+log_delete=Izbrisan dnevnik v $1
 log_apply=Uporabljene spremembe
 log_start=Zažen strežniški strežnik
 

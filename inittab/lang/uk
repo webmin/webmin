@@ -38,7 +38,7 @@ save_inittab_noid=Помилка, не зазначена ім'я процесу
 save_inittab_already=Помилка, процес з таким ім'ям вже існує
 
 log_modify=Процес init $1 змінений
-log_rename=Процес init  $1 перейменований у $2
+log_rename=Процес init $1 перейменований у $2
 log_create=Створений процес init $1
 log_delete=Вилучений процес init $1
 log_apply=Зміни застосовані

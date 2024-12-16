@@ -21,11 +21,11 @@ passwd_ecannot=Jums nav atļauts mainīt šī lietotāja paroli
 passwd_euser=lietotājs neeksistē
 passwd_eold=Nepareiza vecā parole
 passwd_erepeat=Jaunās paroles nav vienādas
-passwd_ecmd=$1 neizdevās : $2 
+passwd_ecmd=$1 neizdevās : $2
 passwd_ok=Lietotāja $1 parole ir veiksmīgi nomainīta. Ja šis ir jūsu pašreizējais Webmin lietotājs, jūs, iespējams, būsit spiests pieteikties vēlreiz.
 passwd_ok2=Lietotāja $1 parole ir veiksmīgi nomainīta.
 
-log_passwd=Mainīta parole lietotājam $1 
+log_passwd=Mainīta parole lietotājam $1
 
 acl_repeat=Vai atkal jāievada jaunā parole?
 acl_self=Vai vienmēr atļaut mainīt savu paroli?

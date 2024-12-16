@@ -117,7 +117,7 @@ service_monitor=Utilisation du moniteur
 service_mon1=Moniteur standard
 service_mon0=Autre moniteur ..
 service_args=Surveiller les paramètres
-service_period=Période de surveillance $1 
+service_period=Période de surveillance $1
 service_days=Jours pour vérifier
 service_hours=Heures de vérification
 service_all=Tout
@@ -146,7 +146,7 @@ service_ename=Nom de service manquant ou invalide
 service_einterval=Intervalle de vérification manquant ou invalide
 service_eother=Moniteur manquant ou invalide
 service_ehour=Heure manquante ou invalide pour la période $1 (doit être comme 9h ou 17h)
-service_eperiod=Aucun jour ou heure spécifié pour la période $1 
+service_eperiod=Aucun jour ou heure spécifié pour la période $1
 service_eevery=Intervalle d'alerte de service manquant ou non valide
 service_eafter=Nombre d'échecs manquant ou non valide avant l'alerte
 service_enum=Alertes maximales manquantes ou non valides à envoyer
@@ -162,7 +162,7 @@ status_esame=Le programme CGI d'état MON $1 a été défini sur le script <tt>m
 
 users_title=Utilisateurs MON
 users_etype=La liste des utilisateurs MON ne peut pas être modifiée, car MON n'est pas actuellement configuré pour l'utiliser pour l'authentification sur la page <a href='$1'>Options globales</a>.
-users_header=Utilisateurs MON autorisés dans $1 
+users_header=Utilisateurs MON autorisés dans $1
 users_nousers=Aucun utilisateur MON n'a été défini dans $1.
 users_add=Créez un nouvel utilisateur.
 users_return=Liste des utilisateurs MON
@@ -185,7 +185,7 @@ auth_none=Personne
 auth_all=Tout le monde
 auth_sel=Seuls les utilisateurs
 auth_err=Impossible d'enregistrer les commandes client
-auth_eusers=Aucun utilisateur n'entre pour la commande $1 
+auth_eusers=Aucun utilisateur n'entre pour la commande $1
 
 periods_title=Périodes définies
 periods_period=Nom de la période

@@ -2,7 +2,7 @@ index_elink=Oraindik ez da ezarri tuneleko URLrik.
 index_url=Sartu URL irekitzeko:
 index_open=Open
 
-link_eurl=Tunelaren URL baliogabea : $1 
+link_eurl=Tunelaren URL baliogabea : $1
 link_elogin=Huts egin du $1 gisa $1 saiatzean.
 link_eautologin=$1 sarbide edo pasahitz baliogabea. <a href='$2'>Egin klik hemen</a> saioa hasteko.
 link_enouser=Erabiltzaile-izena eta pasahitza behar dira $1 era sartzeko, baina ez da batere konfiguratu.

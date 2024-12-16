@@ -252,7 +252,7 @@ send_eattach=Pielikumu kopsumma nedrīkst pārsniegt $1 kB.
 send_eperms=Lietotājs $1 nevar nolasīt $2
 send_eperms2=Jums nav atļauts sūtīt failu $1
 send_epath=Sendmail izpildāmā $1 neeksistē.
-send_efile=Neizdevās nolasīt pielikumu $1 : $2 
+send_efile=Neizdevās nolasīt pielikumu $1 : $2
 send_done=.. darīts.
 
 send_epass=Jūs nevarat parakstīt ziņojumu, jo ieejas frāze vēl nav iestatīta GnuPG modulī.
@@ -337,8 +337,8 @@ folder_spam=Mēstules
 
 detach_err=Neizdevās atdalīt failu
 detach_edir=Nav faila vai direktorija, ko saglabāt ievadītajā
-detach_eopen=Neizdevās atvērt $1 : $2 
-detach_ewrite=Neizdevās rakstīt uz $1 : $2 
+detach_eopen=Neizdevās atvērt $1 : $2
+detach_ewrite=Neizdevās rakstīt uz $1 : $2
 detach_title=Atvienot failu
 detach_ok=Uzrakstīja pielikumu servera puses failam $1 ($2).
 
@@ -437,7 +437,7 @@ white_already=E-pasta adrese $1 jau ir SpamAssassin atļauto adrešu sarakstā.
 
 ldap_emod=Trūkst Perla moduļa $1, kas nepieciešams savienojumam ar LDAP
 ldap_econn=Neizdevās izveidot savienojumu ar LDAP serveri $1 portu $2
-ldap_elogin=Neizdevās saistīties ar LDAP serveri $1 kā $2 : $3 
+ldap_elogin=Neizdevās saistīties ar LDAP serveri $1 kā $2 : $3
 ldap_ehost=Moduļa konfigurācijā nav iestatīts LDAP serveris
 ldap_eport=Moduļa konfigurācijā nav iestatīts derīgs LDAP servera ports
 ldap_euser=Moduļa konfigurācijā nav iestatīta LDAP pieteikšanās

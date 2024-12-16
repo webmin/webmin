@@ -9,7 +9,7 @@ index_stopdesc=Haga clic en este botón para detener el demonio Syslog-NG en eje
 index_start=Inicie Syslog-NG
 index_startdesc=Haga clic en este botón para iniciar el demonio Syslog-NG, utilizando la configuración actual.
 index_return=índice del módulo
-index_version=Syslog-NG $1 
+index_version=Syslog-NG $1
 
 options_title=Opciones de registro
 options_header=Opciones para todos los archivos de registro
@@ -71,15 +71,15 @@ destinations_typet=Servidor syslog TCP
 destinations_typeg=Datagram socket
 destinations_types=Toma de corriente
 destinations_allusers=Todos los usuarios
-destinations_users=Solo usuarios $1 
-destinations_host=Host $1 
+destinations_users=Solo usuarios $1
+destinations_host=Host $1
 destinations_view=Ver ..
 destinations_none=Aún no se han definido archivos de registro de destino.
 destinations_delete=Eliminar destinos seleccionados
 destinations_add=Agregar un nuevo destino de registro.
 destinations_return=destinos de registro
 destinations_desc=Registro de otro módulo
-destinations_cmd=Salida de $1 
+destinations_cmd=Salida de $1
 
 destination_header=Opciones de registro de destino
 destination_title1=Crear destino de registro
@@ -259,10 +259,10 @@ source_edoor=Nombre de archivo de puerta de Sun Streams perdido o no válido
 source_transport=Protocolo de red
 
 view_title=Ver archivo de registro
-view_header=Últimas $1 líneas de $2 
+view_header=Últimas $1 líneas de $2
 view_empty=El archivo de registro está vacío.
 view_refresh=Actualizar
-view_filter=Mostrar solo líneas con texto $1 
+view_filter=Mostrar solo líneas con texto $1
 
 apply_err=Error al aplicar la configuración
 apply_egone=¡No corras!
@@ -271,17 +271,17 @@ start_err=Error al iniciar el servidor Syslog-NG
 
 stop_err=Error al detener el servidor Syslog-NG
 
-log_create_destination=Destino de registro creado $1 
-log_modify_destination=Destino de registro modificado $1 
-log_delete_destination=Destino de registro eliminado $1 
+log_create_destination=Destino de registro creado $1
+log_modify_destination=Destino de registro modificado $1
+log_delete_destination=Destino de registro eliminado $1
 log_delete_destinations=$1 destinos de registro eliminados
-log_create_filter=Filtro de registro creado $1 
-log_modify_filter=Filtro de registro modificado $1 
-log_delete_filter=Filtro de registro eliminado $1 
+log_create_filter=Filtro de registro creado $1
+log_modify_filter=Filtro de registro modificado $1
+log_delete_filter=Filtro de registro eliminado $1
 log_delete_filters=Se eliminaron $1 filtros de registro
-log_create_source=Origen de registro creado $1 
-log_modify_source=Origen de registro modificado $1 
-log_delete_source=Origen de registro eliminado $1 
+log_create_source=Origen de registro creado $1
+log_modify_source=Origen de registro modificado $1
+log_delete_source=Origen de registro eliminado $1
 log_delete_sources=Fuentes de registro $1 eliminadas
 log_create_log=Objetivo de registro creado
 log_modify_log=Objetivo de registro modificado

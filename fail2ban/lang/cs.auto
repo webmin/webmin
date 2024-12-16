@@ -1,5 +1,5 @@
 index_title=Fail2Ban Intrusion Detector
-index_ver=Verze $1 
+index_ver=Verze $1
 index_echeck=Při detekci Fail2Ban v tomto systému došlo k chybě: $1. Buď není nainstalována, nebo je <a href='$2'>konfigurace modulu</a> nesprávná.
 index_fail2ban=Fail2Ban
 index_atboot=Začít při spuštění?
@@ -26,7 +26,7 @@ filters_add=Přidejte nový filtr protokolu.
 filters_return=seznam filtrů
 filters_derr=Filtry se nepodařilo smazat
 filters_enone=Nebyl vybrán žádný
-filters_einuse=Filtr $1 nelze odstranit, protože ho používají vězení : $2 
+filters_einuse=Filtr $1 nelze odstranit, protože ho používají vězení : $2
 
 filter_title1=Vytvořit filtr
 filter_title2=Upravit filtr
@@ -41,7 +41,7 @@ filter_err=Uložení filtru se nezdařilo
 filter_ename=Chybějící nebo neplatný název filtru
 filter_eclash=Název filtru se již používá
 filter_efail=Nebyl zadán žádný regulární výraz
-filter_einuse=Tento filtr nelze odstranit, protože ho používají vězení : $1 
+filter_einuse=Tento filtr nelze odstranit, protože ho používají vězení : $1
 
 actions_title=Zápasové akce
 actions_name=Název akce
@@ -51,7 +51,7 @@ actions_add=Přidejte novou akci.
 actions_return=seznam akcí
 actions_derr=Akce se nepodařilo smazat
 actions_enone=Nebyl vybrán žádný
-actions_einuse=Akci $1 nelze odstranit, protože ji používají vězení : $2 
+actions_einuse=Akci $1 nelze odstranit, protože ji používají vězení : $2
 
 action_title1=Vytvořte akci zápasu
 action_title2=Upravit akci akce
@@ -68,7 +68,7 @@ action_check=Příkaz ke spuštění před zákazem IP
 action_ban=Příkaz k zákazu IP
 action_unban=Příkaz k zákazu IP
 action_desc=<i>&lt;ip&gt;</i> bude nahrazeno zakázanou IP adresou.
-action_einuse=Tuto akci nelze odstranit, protože ji používají vězení : $1 
+action_einuse=Tuto akci nelze odstranit, protože ji používají vězení : $1
 
 jails_title=Filtrovat akce vězení
 jails_add=Přidejte nový vězení.
@@ -104,8 +104,8 @@ jail_ignoreip=IP adresy, které nikdy nezakáží
 jail_err=Uložení vězení se nepodařilo
 jail_eclash=Vězení se stejným názvem již existuje
 jail_ename=Chybějící nebo neplatné jméno vězení
-jail_eaname=Neplatný parametr hledajícího názvu pro akci $1 
-jail_eport=Neplatné číslo portu pro akci $1 
+jail_eaname=Neplatný parametr hledajícího názvu pro akci $1
+jail_eport=Neplatné číslo portu pro akci $1
 jail_eactions=Nebyly vybrány žádné akce!
 jail_elogpaths=Nebyly zadány žádné cesty k souborům protokolu
 jail_elogpath=Všechny soubory protokolu musí být absolutní cesty nebo vzory
@@ -134,22 +134,22 @@ start_err=Spuštění serveru se nezdařilo
 stop_err=Zastavení serveru se nezdařilo
 restart_err=Server se nepodařilo restartovat
 
-log_create_filter=Vytvořen filtr $1 
-log_update_filter=Upravený filtr $1 
-log_delete_filter=Smazaný filtr $1 
-log_create_action=Vytvořená akce $1 
-log_update_action=Upravená akce $1 
-log_delete_action=Odstraněná akce $1 
-log_create_jail=Vytvořeno vězení $1 
-log_update_jail=Upravený vězení $1 
-log_delete_jail=Smazaný vězení $1 
+log_create_filter=Vytvořen filtr $1
+log_update_filter=Upravený filtr $1
+log_delete_filter=Smazaný filtr $1
+log_create_action=Vytvořená akce $1
+log_update_action=Upravená akce $1
+log_delete_action=Odstraněná akce $1
+log_create_jail=Vytvořeno vězení $1
+log_update_jail=Upravený vězení $1
+log_delete_jail=Smazaný vězení $1
 log_config=Změněna globální konfigurace
 log_stop=Zastaven server Fail2Ban
 log_start=Spuštěn server Fail2Ban
 log_restart=Restartovaný server Fail2Ban
 log_atboot=Povoleno Fail2Ban v době spuštění
 log_delboot=Zakázáno Fail2Ban v době spuštění
-log_manual=Upravený konfigurační soubor $1 
+log_manual=Upravený konfigurační soubor $1
 log_jaildef=Upravené výchozí možnosti vězení
 
 config_title=Globální konfigurace

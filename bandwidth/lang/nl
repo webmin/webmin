@@ -4,7 +4,7 @@ index_efiresys2=De geconfigureerde $1 firewall is niet gevonden op uw systeem. V
 index_elog=De file $1 die gebruikt word voor loggen van bandbreedte is een directory op uw systeem. Verander de <a href='$2'>module configuratie</a> om een ander pad te gebruiken.
 index_edir=De directory om de bandbreedte data $1 op te slaan bestaat niet, of is geen directory. Verander de <a href='$2'>module configuratie</a> om het pad te wijzigen.
 index_emod=De Webmin module $1 is niet geinstalleerd op uw systeem of word niet ondersteund door uw OS. De Bandbreedte Monitor module kan niet werken zonder de Webmin module $1.
-index_esyslog=Er is geen enkele Systeem Log module geinstalleerd op uw systeem en/of word niet ondersteund door uw OS.  De Bandbreedte Monitor module kan niet werken zonder één van deze modules.
+index_esyslog=Er is geen enkele Systeem Log module geinstalleerd op uw systeem en/of word niet ondersteund door uw OS. De Bandbreedte Monitor module kan niet werken zonder één van deze modules.
 index_firesys=Gebruik $1 firewall en $2
 index_setupcannot=U heeft echter geen permissie om dit in te stellen!
 index_setupdesc=Voordat deze module rapporten kan maken van het netwerk verkeer van uw systeem, moet het ingesteld worden om het verkeer te monitoren van de geselecteerde externe netwerk interface.

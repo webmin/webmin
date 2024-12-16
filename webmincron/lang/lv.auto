@@ -17,4 +17,4 @@ edit_special_monthly=Mēnesī (1. datumā)
 edit_special_yearly=Katru gadu (1. janvārī)
 
 log_success=Veiksmīgi palaida <tt>$2</tt> <tt>$1</tt>
-log_failure=Neizdevās palaist <tt>$2</tt> <tt>$1</tt> : $3 
+log_failure=Neizdevās palaist <tt>$2</tt> <tt>$1</tt> : $3

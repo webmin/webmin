@@ -5,7 +5,7 @@ index_elog=Filen $1, der bruges til logbogbredde, er faktisk et bibliotek på di
 index_edir=Kataloget til lagring af båndbreddedata $1 findes ikke, eller er ikke et bibliotek. Juster <a href='$2'>modulkonfiguration</a> for at bruge en anden sti.
 index_emod=Webmin-modulet $1 er ikke installeret på dette system eller understøttes ikke af dit operativsystem. Båndbreddeovervågningsmodulet kan ikke fungere uden det.
 index_esyslog=Ingen af System Logs-modulerne er installeret på dette system og understøttes af dit operativsystem. Båndbreddeovervågningsmodulet kan ikke fungere uden et af dem.
-index_firesys=Brug af $1 firewall og $2 
+index_firesys=Brug af $1 firewall og $2
 index_setupcannot=Du har dog ikke tilladelser til at konfigurere det!
 index_setupdesc=Før dette modul kan rapportere om netværksbrug på dit system, skal det konfigureres til at overvåge trafik på den valgte eksterne netværksgrænseflade.
 index_setupdesc2=<b>Advarsel - dette modul logger ALT netværkstrafik, der er sendt eller modtaget på den valgte grænseflade. Dette vil forbruge en stor mængde diskplads og CPU-tid på en hurtig netværksforbindelse.</b>
@@ -61,7 +61,7 @@ index_rotatedesc=Klik på denne knap for at behandle al logget netværkstrafik o
 index_eiptables=Advarsel - Din IPtables-konfiguration har en fejl: $1. Opsætning af båndbreddeovervågning retter alle firewall-regler.
 index_return=rapportformular
 
-log_setup=Opsætning af båndbreddeovervågning på interface $1 
+log_setup=Opsætning af båndbreddeovervågning på interface $1
 log_turnoff=Deaktiveret båndbreddeovervågning
 log_rotate=Opdateret statistik
 

@@ -5,7 +5,7 @@ index_elog=Soubor $1 používaný pro protokolování šířky pásma je ve skut
 index_edir=Adresář pro ukládání dat šířky pásma $1 neexistuje nebo není adresářem. Upravte konfiguraci modulu <a href='$2'></a> a použijte jinou cestu.
 index_emod=Modul Webmin $1 není v tomto systému nainstalován nebo váš operační systém nepodporuje. Modul monitorování šířky pásma nemůže fungovat bez něj.
 index_esyslog=V tomto systému není nainstalován ani jeden z modulů systémových protokolů a váš operační systém je podporuje. Modul monitorování šířky pásma nemůže fungovat bez jednoho z nich.
-index_firesys=Používám firewall $1 a $2 
+index_firesys=Používám firewall $1 a $2
 index_setupcannot=Nemáte oprávnění k jeho nastavení!
 index_setupdesc=Než bude tento modul moci vykazovat využití sítě ve vašem systému, musí být nastaven tak, aby monitoroval provoz na vybraném externím síťovém rozhraní.
 index_setupdesc2=<b>Upozornění - tento modul bude zaznamenávat veškerý síťový provoz odeslaný nebo přijatý na vybraném rozhraní. Při rychlém síťovém připojení to zabere velké množství místa na disku a čas CPU.</b>
@@ -61,7 +61,7 @@ index_rotatedesc=Klepnutím na toto tlačítko zpracujete veškerý zaznamenaný
 index_eiptables=Varování - V konfiguraci protokolu IPtables došlo k chybě: $1. Nastavení sledování šířky pásma vymaže všechna pravidla brány firewall.
 index_return=formulář hlášení
 
-log_setup=Nastavení sledování šířky pásma na rozhraní $1 
+log_setup=Nastavení sledování šířky pásma na rozhraní $1
 log_turnoff=Monitorování zakázané šířky pásma
 log_rotate=Aktualizované statistiky
 

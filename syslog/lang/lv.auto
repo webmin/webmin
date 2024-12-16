@@ -7,14 +7,14 @@ index_active=Aktīvs?
 index_tag=Programma
 index_to=Žurnāla galamērķis
 index_rule=Atlasīti ziņojumi
-index_file=Fails $1 
-index_pipe=Nosaukta caurule $1 
-index_pipe2=Izveidojiet komandu $1 
-index_host=Syslog serveris $1 
-index_socket=Unix ligzdas fails $1 
-index_cmd=Izeja no $1 
+index_file=Fails $1
+index_pipe=Nosaukta caurule $1
+index_pipe2=Izveidojiet komandu $1
+index_host=Syslog serveris $1
+index_socket=Unix ligzdas fails $1
+index_cmd=Izeja no $1
 index_all=Visi lietotāji
-index_users=Lietotāji $1 
+index_users=Lietotāji $1
 index_add=Pievienojiet jaunu sistēmas žurnālu.
 index_return=sistēmas žurnāli
 index_restart=Lietot izmaiņas
@@ -26,7 +26,7 @@ index_view=Skatīt ..
 index_viewfile=Skatīt žurnālfailu:
 index_viewok=Skats
 
-restart_ekill=Neizdevās signalizēt par sistēmas žurnāla procesu $1 : $2 
+restart_ekill=Neizdevās signalizēt par sistēmas žurnāla procesu $1 : $2
 restart_ecannot=Jums nav atļauts restartēt syslog
 
 start_ecannot=Jums nav atļauts sākt syslog
@@ -64,10 +64,10 @@ view_title=Skatīt žurnālfailu
 view_header=$2 pēdējās $1 rindas
 view_empty=Žurnāla fails ir tukšs
 view_refresh=atjaunot
-view_filter=Rādīt tikai tās līnijas ar tekstu $1 
+view_filter=Rādīt tikai tās līnijas ar tekstu $1
 
 save_err=Neizdevās saglabāt žurnālu
-save_efile='$1' nav derīgs faila nosaukums : $2 
+save_efile='$1' nav derīgs faila nosaukums : $2
 save_epipe='$1' nav derīgs nosauktais pīpiņš
 save_epipe2=Trūkst komandas, kas jāizvada
 save_esocket=Trūkst vai nav derīga unix domēna ligzda
@@ -86,9 +86,9 @@ save_ecannot6=Jums nav atļauts skatīt patvaļīgus žurnālus
 save_ecannot7=Jums nav atļauts skatīt šo papildu žurnālu
 save_emissing=Trūkst apskatāma žurnālfaila
 
-log_modify=Modificēts žurnāls uz $1 
-log_create=Pievienots žurnāls $1 
-log_delete=Izdzēsts žurnāls uz $1 
+log_modify=Modificēts žurnāls uz $1
+log_create=Pievienots žurnāls $1
+log_delete=Izdzēsts žurnāls uz $1
 log_apply=Lietotās izmaiņas
 log_start=Sākts reģistrēšanas serveris
 

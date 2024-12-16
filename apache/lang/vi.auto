@@ -69,7 +69,7 @@ cvirt_eroot2=Không thể tạo thư mục '$1' : $2
 cvirt_eroot3=Bạn không được phép sử dụng thư mục gốc '$1'
 cvirt_eroot4=Không có người dùng nào được định nghĩa trong cấu hình Apache
 cvirt_etaken=Một máy chủ ảo có cùng tên và cổng đã tồn tại
-cvirt_efile=Không thể ghi vào $1 : $2 
+cvirt_efile=Không thể ghi vào $1 : $2
 cvirt_emissing=Máy chủ ảo mới đã được thêm vào $1, nhưng tệp này không được Apache sử dụng. Kiểm tra <a href='$2'>cấu hình mô-đun</a> và đảm bảo 'Tệp hoặc thư mục để thêm máy chủ ảo vào' là chính xác.
 
 etype=Bạn không được phép chỉnh sửa các tùy chọn loại này

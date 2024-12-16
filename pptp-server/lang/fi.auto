@@ -1,5 +1,5 @@
 index_title=PPTP VPN -palvelin
-index_version=PoPToP-versio $1 
+index_version=PoPToP-versio $1
 index_epptpd=PoPToP PPTP-palvelinta $1 ei löydy järjestelmästäsi, tai se ei ole oikea ohjelma. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
 index_econfig=PPTP-palvelimen määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä <a href='$2'>moduulin kokoonpano</a> on väärä.
 index_stop=Pysäytä PPTP-palvelin
@@ -63,7 +63,7 @@ options_err=PPP-asetusten tallentaminen epäonnistui
 options_emtu=Puuttuva tai virheellinen lähetyspaketin koko
 options_emru=Puuttuva tai virheellinen vastaanottopaketin enimmäiskoko
 options_ename=Puuttuva tai virheellinen palvelimen nimi todennusta varten
-options_version=PPPd-versio $1 
+options_version=PPPd-versio $1
 options_msdesc=Alla olevat vaihtoehdot mahdollistavat MS-CHAP-todennusmenetelmän ja MPPE-salauksen, joita Windows VPN -asiakkaat käyttävät oletuksena. MPPE vaatii kuitenkin tukea sekä PPP-daemonissa että käyttöjärjestelmän ytimessä.
 options_mschap=MS-CHAP-todennus
 options_mschap-v2=MS-CHAP-version 2 todennus
@@ -75,7 +75,7 @@ secrets_ecannot=Et voi muokata PPP-tilejä
 secrets_return=indeksi
 secrets_none=PPP-tilejä ei ole vielä luotu.
 secrets_enopfile=PPP-salasanatiedostoa $1 ei ole järjestelmässäsi. Ehkä PPP: tä ei ole asennettu tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
-secrets_table=PPP on $1 
+secrets_table=PPP on $1
 secrets_user=Käyttäjätunnus
 secrets_ips=IP-osoitteet
 secrets_uany=MINKÄ TAHANSA
@@ -133,13 +133,13 @@ disc_err=Yhteyden katkaiseminen epäonnistui
 disc_egone=Yhteydet eivät ole enää aktiivisia
 disc_ekill=Prosessi ei ole enää käynnissä
 
-log_secret_create=Luotu PPP-tili $1 
-log_secret_modify=Muokattu PPP-tili $1 
-log_secret_delete=Poistettu PPP-tili $1 
+log_secret_create=Luotu PPP-tili $1
+log_secret_modify=Muokattu PPP-tili $1
+log_secret_delete=Poistettu PPP-tili $1
 log_deletes=Poistettu $1 PPP-tili
 log_conf=Muokatut PPTP-palvelimen asetukset
 log_options=Muokatut PPP-asetukset
-log_disc=Yhteys katkaistu $1 
+log_disc=Yhteys katkaistu $1
 log_start=Käynnistettiin PPTP-palvelin
 log_stop=Pysäytetty PPTP-palvelin
 log_apply=Käytetty PPTP-palvelimen määritys

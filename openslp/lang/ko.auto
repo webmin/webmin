@@ -2,7 +2,7 @@ index_title=OpenSLP 구성
 index_return=OpenSLP 구성
 index_eslpd=시스템에서 OpenSLP 데몬 $1 을 (를) 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_econf=시스템에서 OpenSLP 구성 파일 $1 을 (를) 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
-index_version=OpenSLP 버전 $1 
+index_version=OpenSLP 버전 $1
 
 slp_apply=변경 승인
 slp_stop=OpenSLP 중지

@@ -6,7 +6,7 @@ fetch_ezip=A könyvtárat csak akkor lehet letölteni, ha a <tt>zip</tt> parancs
 fetch_eroot=A gyökérkönyvtár nem tölthető le!
 
 email_downmsg=A következő letöltés befejeződött :
-email_extfailed=a kinyerés sikertelen : $1 
+email_extfailed=a kinyerés sikertelen : $1
 email_extdone_zip=ZIP fájl kibontva
 email_extdone_tar=A TAR fájl kibontva
 email_extdone_tgz=Gzipelt TAR fájl kibontva

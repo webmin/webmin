@@ -1,12 +1,12 @@
 index_screate=Vytvořte nového bezpečného uživatele.
 index_twofactor=Dvoufaktorové ověření
 index_joingroup=Přidat do skupiny:
-index_eulist=Seznam uživatelů se nepodařilo uvést: $1 
-index_eglist=Seznam se nezdařil: $1 
+index_eulist=Seznam uživatelů se nepodařilo uvést: $1
+index_eglist=Seznam se nezdařil: $1
 
 edit_title3=Vytvořte bezpečného webmin uživatele
 edit_twofactor=Typ dvoufaktorové autentizace
-edit_twofactorprov=Použití poskytovatele $1 s ID $2 
+edit_twofactorprov=Použití poskytovatele $1 s ID $2
 edit_twofactorcancel=Odstraňte požadavek na dvoufaktorovou autentizaci
 edit_twofactornone=Zatím žádné nastavení
 edit_twofactoradd=Povolit pro uživatele dvoufaktor
@@ -39,9 +39,9 @@ acl_locale=Lze změnit národní prostředí?
 acl_pass=Lze změnit omezení hesla?
 acl_sql=Lze konfigurovat databázi uživatelů a skupin?
 
-log_joingroup=Přidáno $1 Webmin users do skupiny $2 
+log_joingroup=Přidáno $1 Webmin users do skupiny $2
 log_sql=Změněna databáze uživatelů a skupin
-log_twofactor=Registrovaný uživatel $1 s dvoufaktorovým poskytovatelem $2 
+log_twofactor=Registrovaný uživatel $1 s dvoufaktorovým poskytovatelem $2
 log_onefactor=Registrovaný uživatel $1 pro dvoufaktorové ověření
 
 gedit_desc=Popis skupiny
@@ -104,7 +104,7 @@ sql_addto1=Přidání nových uživatelů do místních souborů
 sql_nocache0=Cache připojení k databázi
 sql_nocache1=Otevřete nové připojení pro každé vyhledávání
 sql_emod=Chybí požadovaný Perl modul <tt>$1</tt>
-sql_etable=Požadovaná tabulka $1:$2 
+sql_etable=Požadovaná tabulka $1:$2
 sql_eldapdn=Základní LDAP DN $1 nebyl nalezen
 sql_eclass=Třída objektu LDAP $1 ve schématu serveru neexistuje
 sql_err=Uložení nastavení databáze uživatelů a skupin se nezdařilo
@@ -115,11 +115,11 @@ sql_edb=Neplatný název databáze (bez mezer)
 sql_eprefix=Chybějící nebo neplatný základní DN (bez mezer)
 sql_eprefix2=Neplatně vypadající základní DN - mělo by být jako <tt>dc = mydomain, dc = com</tt>
 sql_title2=Vytvořit chybějící tabulky
-sql_tableerr=Nastavení databáze uživatelů a skupin jsou platná, ale některé tabulky, které potřebuje Webmin, chybí: $1 
+sql_tableerr=Nastavení databáze uživatelů a skupin jsou platná, ale některé tabulky, které potřebuje Webmin, chybí: $1
 sql_tableerr2=Klepnutím na tlačítko <b>Vytvořit tabulky</b> níže je necháte vytvořit automaticky, nebo ručně spusťte níže uvedený SQL.
 sql_make=Vytvořit tabulky
 sql_title3=Vytvořit chybějící DN
-sql_dnerr=Nastavení databáze uživatelů a skupin jsou platná, ale chybí DN LDAP, které potřebuje webmin: $1 
+sql_dnerr=Nastavení databáze uživatelů a skupin jsou platná, ale chybí DN LDAP, které potřebuje webmin: $1
 sql_dnerr2=Kliknutím na tlačítko <b>Vytvořit DN</b> níže jej vytvoříte automaticky, nebo jej ručně přidejte na server LDAP.
 sql_makedn=Vytvořte DN
 sql_schema=Stáhněte si schéma LDAP
@@ -131,16 +131,16 @@ sql_etimeout=Časový limit připojení v mezipaměti musí být číslo
 make_title=Vytvořit tabulky uživatelů a skupin
 make_err=Nepodařilo se vytvořit tabulky uživatelů a skupin
 make_exec=Provádění SQL $1..
-make_failed=.. vytvoření se nezdařilo: $1 
+make_failed=.. vytvoření se nezdařilo: $1
 make_done=.. Hotovo
-make_still=Některé problémy byly zjištěny i po vytvoření tabulky: $1 
+make_still=Některé problémy byly zjištěny i po vytvoření tabulky: $1
 
 makedn_title=Vytvořit LDAP DN
 makedn_eoc=Nebyly nalezeny žádné třídy strukturálních objektů!
 makedn_exec=Vytváření nadřazeného DN $1..
-makedn_failed=.. vytvoření se nezdařilo: $1 
+makedn_failed=.. vytvoření se nezdařilo: $1
 makedn_done=.. Hotovo
-makedn_still=Některé problémy byly zjištěny i po vytvoření DN: $1 
+makedn_still=Některé problémy byly zjištěny i po vytvoření DN: $1
 
 schema_title=Stáhněte si schéma LDAP
 schema_desc=Předtím, než bude Webmin moci použít server LDAP k ukládání uživatelů a skupin, musí být nakonfigurován pro použití níže uvedeného schématu. To lze obvykle provést uložením definice schématu do <tt>/etc/ldap/schema</tt> nebo <tt>/etc/openldap/schema</tt> jako <tt>webmin.schema</tt>, a poté nakonfigurujte server tak, aby načítal tento soubor schématu.
@@ -157,7 +157,7 @@ twofactor_desc2=Tato stránka umožňuje povolit dvoufaktorovou autentizaci pro 
 twofactor_enable=Zaregistrujte se pro dvoufaktorové ověření
 twofactor_header=Podrobnosti o zápisu dvoufaktorového ověření
 twofactor_enrolling=Registrace pro dvoufaktorové ověřování u poskytovatele $1..
-twofactor_failed=.. zápis se nezdařil: $1 
+twofactor_failed=.. zápis se nezdařil: $1
 twofactor_done=.. kompletní. Vaše ID u tohoto poskytovatele je <tt>$1</tt>.
 twofactor_setup=V tomto systému zatím není aktivována dvoufaktorová autentizace, ale lze ji zapnout pomocí modulu <a href='$1'>Webmin Configuration</a>.
 twofactor_ebutton=Nebylo kliknuto žádné tlačítko!

@@ -90,7 +90,7 @@ routes_go=Знайти збігу маршрутів доменів:
 routes_from=Пошта для домену
 routes_to=Відправляти через сервер
 routes_direct=Відправляти прямо
-routes_defroute=Відправляти усю вихідну пошту через: 
+routes_defroute=Відправляти усю вихідну пошту через:
 routes_return=маршрути доменів
 
 rform_edit=Редагування маршрутів доменів
@@ -105,7 +105,7 @@ rsave_eto='$1' не є коректним сервером SMTP
 rsave_eport='$1' не є коректним номером порту
 
 percents_title=% адреси доменів
-percents_domains=Домени, що підтримують адреси % 
+percents_domains=Домени, що підтримують адреси %
 percents_desc=QMail буде приймати повідомлення з адресами у форматі <tt>user%firstdomain@seconddomain</tt>, якщо <tt>seconddomain</tt> зазначений у текстовому полі ліворуч. Повідомлення в цьому форматі будуть потім переспрямовані на <tt>user@firstdomain</tt> цим поштовим сервером.
 
 virts_title=Віртуальні відповідності

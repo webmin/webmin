@@ -4,7 +4,7 @@ index_ecmd2=시스템에서 SpamAssassin 명령 $1 을 (를) 찾을 수 없습�
 index_econfig=시스템에서 SpamAssassin 로컬 구성 파일 또는 $1 디렉토리를 찾을 수 없습니다. SpamAssassin이 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_unknown=알 수 없는
 index_edb=SpamAssassin 구성 데이터베이스에 연결하지 못했습니다 : $1. <a href='$2'>모듈 구성</a>을 확인하여 올바른 설정을 사용하고 있는지 확인하십시오.
-index_version=SpamAssassin 버전 $1 
+index_version=SpamAssassin 버전 $1
 index_warn_usermin=SpamAssassin이 Procmail 구성 파일 $2 또는 전역 파일 $1 에 설정되지 않은 것으로 보이므로이 모듈을 사용하여 수행 한 구성은 SpamAssassin이 전체적으로 설정되어 있지 않으면 아무런 영향을 미치지 않습니다.
 index_warn_webmin=SpamAssassin이 시스템의 Procmail 구성 파일 $1 에 설정되지 않은 것으로 보이므로이 모듈을 사용하여 수행 한 구성은 사용자가 개별적으로 설정하지 않은 한 적용되지 않습니다.
 index_return=모듈 색인
@@ -190,7 +190,7 @@ priv_emscore='$1'은 (는) 유효한 최고 문구 점수가 아닙니다.
 priv_ephrase='$1'은 (는) 유효한 두 단어 스팸 문구가 아닙니다.
 priv_escore=스팸 문구 '$1'에 대한 점수가 없거나 잘못되었습니다
 
-usually=보통 $1 
+usually=보통 $1
 ecannot=이 페이지를 사용할 수 없습니다
 setup_title=SpamAssassin에 대한 설정 Procmail
 setup_desc_webmin=이 양식은 $1 에서 Procmail을 설정하여 시스템이 수신 한 모든 전자 메일 메시지에서 SpamAssassin을 실행하는 데 사용할 수 있습니다. 그러나 메일 서버가 로컬 배달에 Procmail을 사용하도록 구성되었거나 <tt>.forward</tt> 파일이 Procmail을 실행하도록 설정된 사용자에게만 적용됩니다.
@@ -244,7 +244,7 @@ mail_razor=스팸으로 신고 및 삭제
 mail_ham=Ham & Inbox로보고
 mail_delete=지우다
 mail_return=스팸 메일 목록
-mail_pos=스팸 메시지 $1 에서 $2 의 $3 
+mail_pos=스팸 메시지 $1 에서 $2 의 $3
 mail_none=스팸 폴더에 메시지가 없습니다
 mail_refresh=새롭게 하다
 mail_will=$1 분 안에 자동 새로 고침
@@ -253,7 +253,7 @@ mail_delall=모든 스팸 삭제
 mail_search3=위의 점수를 검색하십시오.
 
 process_eclean=이 이메일에서 SpamAssassin 헤더를 제거하는 중에 오류가 발생했습니다
-process_ereport=SpamAssassin에 이메일을보고하지 못했습니다  : $1 
+process_ereport=SpamAssassin에 이메일을보고하지 못했습니다 : $1
 
 apply_err=변경 사항을 적용하지 못했습니다
 apply_none=SpamAssassin 데몬 프로세스가 없습니다!
@@ -263,7 +263,7 @@ acl_file=편집 할 SpamAssassin 구성 파일
 acl_filedef=글로벌 구성 파일
 acl_awl=자동 화이트리스트 편집이 허용 된 사용자
 acl_awl0=모든 사용자들
-acl_awl1=나열된 사용자 만 $1 
+acl_awl1=나열된 사용자 만 $1
 acl_awl2=그룹 $1 의 회원 만
 
 search_escore=스팸 점수가 없거나 잘못되었습니다
@@ -337,19 +337,19 @@ simple_score=적용 점수
 simple_describe=기술
 simple_err=메시지 테스트를 저장하지 못했습니다
 
-before_ecmd=저장 전 명령 실패  : $1 
-after_ecmd=저장 후 명령 실패  : $1 
+before_ecmd=저장 전 명령 실패 : $1
+after_ecmd=저장 후 명령 실패 : $1
 
 connect_emysql=데이터베이스 드라이버 $1 을 (를)로드하지 못했습니다.
 connect_elogin=$1 데이터베이스에 로그인하지 못했습니다 : $2.
 connect_equery=데이터베이스 $1 에 기본 설정 테이블 $2 이 (가) 없습니다
 connect_eldapmod=LDAP와 통신하는 데 필요한 Perl 모듈 $1 이 (가) 설치되지 않았거나로드 할 수 없습니다
 connect_eldap=포트 $2 에서 LDAP 서버 $1 에 연결하지 못했습니다.
-connect_eldaplogin=$2 (으)로 LDAP 서버 $1 에 로그인하지 못했습니다  : $3 
-connect_ebase=LDAP 기본 DN $1 이 (가) 유효하지 않습니다  : $2 
+connect_eldaplogin=$2 (으)로 LDAP 서버 $1 에 로그인하지 못했습니다 : $3
+connect_ebase=LDAP 기본 DN $1 이 (가) 유효하지 않습니다 : $2
 
-eldap=LDAP 작업 실패  : $1 
-esql=SQL 실패  : $1 
+eldap=LDAP 작업 실패 : $1
+esql=SQL 실패 : $1
 ldap_euser=$1 에 대한 LDAP 사용자 개체를 찾을 수 없습니다
 
 db_title=SQL 및 LDAP 데이터베이스

@@ -32,7 +32,7 @@ init_modems=Modemak $1 eta $2 konfiguratuta daude.
 init_modem=$1 ean modem bat hauteman da.
 init_none=Ez da modemik hauteman!
 
-device_serial=serieko ataka $1 
+device_serial=serieko ataka $1
 
 connect_title=Ezarri konexioa
 connect_cmd=$1 komandoarekin konexio bat ezartzen saiatzen ari da.

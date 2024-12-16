@@ -4,7 +4,7 @@ index_proto=Protocollo
 index_active=Attivo?
 index_users=Utenti remoti e locali
 index_add=Aggiungi un nuovo server
-index_run=Controlla tutti i  server
+index_run=Controlla tutti i server
 index_global=Modifica le impostazioni predefinite
 index_user=Utente Unix
 index_conf=Configurazione di Fetchmail
@@ -15,7 +15,7 @@ index_start=Avvia il demone Fetchmail
 index_stop=Interrompi il demone Fetchmail
 index_startmsg=Clicca su questo pulsante per avviare il demone fetchmail sul server, e fai in modo che controlli la posta ogni $1 secondi.<br>Il demone girerà come utente $2 ed userà la configurazione visualizzata sopra.
 index_stopmsg=Clicca su questo pulsante per fermare il demone fetchmail che è attualmente in esecuzione per l'utente $1.<br>La posta non sarà più automaticamente scaricata ogni $2 secondi.
-index_efetchmail=Il programma $1 non è stato trovato.  E' probabile che fetchmail non sia installato nel tuo sistema, o che la <a href='$2'>configurazione del modulo</a> non sia corretta.
+index_efetchmail=Il programma $1 non è stato trovato. E' probabile che fetchmail non sia installato nel tuo sistema, o che la <a href='$2'>configurazione del modulo</a> non sia corretta.
 index_none=Nessun utente Unix ha i file <tt>.fetchmailrc</tt>.
 index_cron=Controllo pianificato
 index_crondesc=Clicca su questo pulsante per creare, cambiare o rimuovere un Cron Job per eseguire Fetchmail automaticamente in modo da controllare e scaricare la posta sulla base della pianificazione, utilizzando la configurazione in alto.
@@ -77,7 +77,7 @@ check_ok=... controllo completato!
 check_failed=... controllo non riuscito!
 
 global_title=Impostazioni predefinite
-global_header=Impostazioni predefinite valide per tutti i  server
+global_header=Impostazioni predefinite valide per tutti i server
 global_err=Salvataggio delle impostazioni predefinito non riuscito
 
 log_create_poll_file=Il server $1 è stato aggiunto nel file $2

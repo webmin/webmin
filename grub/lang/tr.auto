@@ -34,7 +34,7 @@ title_etitle=Seçenek başlığı eksik
 title_eroot=Kök bölümü eksik
 title_ekernel=Eksik veya geçersiz çekirdek yolu
 title_echain=Eksik veya geçersiz zincir yükleyici dosyası
-title_edev=Desteklenmeyen kök bölümleme aygıtı $1 
+title_edev=Desteklenmeyen kök bölümleme aygıtı $1
 title_einitrd=İlk ramdisk dosya adı eksik
 title_lock=Şifre kilitlendi mi?
 
@@ -54,7 +54,7 @@ global_none=Yok
 global_password_file=Şifre girilirse menü dosyasını kullanın:
 global_err=Global seçenekler kaydedilemedi
 global_etimeout=Eksik veya geçersiz zaman aşımı
-global_edev=Desteklenmeyen yükleme diski/bölümü $1 
+global_edev=Desteklenmeyen yükleme diski/bölümü $1
 global_eother=Eksik veya geçersiz disk/bölüm
 global_epassword=Eksik veya geçersiz önyükleme parolası
 global_epasswordfile=Alternatif menü dosya adı eksik
@@ -68,7 +68,7 @@ install_failed=.. yükleme başarısız!
 
 log_create_title=$1 önyükleme seçeneği oluşturuldu
 log_delete_title=$1 silinen önyükleme seçeneği
-log_modify_title=Değiştirilmiş önyükleme seçeneği $1 
+log_modify_title=Değiştirilmiş önyükleme seçeneği $1
 log_up_title=Önyükleme seçeneği $1 taşındı
 log_down_title=$1 önyükleme seçeneği taşındı
 log_global=Değişen global seçenekler

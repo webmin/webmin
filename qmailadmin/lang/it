@@ -90,7 +90,7 @@ routes_go=Find domain routes matching:
 routes_from=Mail for domain
 routes_to=Send via server
 routes_direct=Deliver directly
-routes_defroute=Deliver all other outgoing mail via: 
+routes_defroute=Deliver all other outgoing mail via:
 routes_return=domain routes
 
 rform_edit=Edit Domain Route

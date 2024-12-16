@@ -41,10 +41,10 @@ save_eroot=Bạn không liệt kê bất kỳ máy chủ nào để chia sẻ ro
 save_ealready=Thư mục '$1' đã được chia sẻ
 save_ehost=Máy chủ '$1' không tồn tại
 
-log_modify=Chia sẻ NFS đã sửa đổi $1 
-log_rename=Thay đổi chia sẻ NFS $1 thành $2 
-log_create=Tạo NFS chia sẻ $1 
-log_delete=Đã xóa chia sẻ NFS $1 
+log_modify=Chia sẻ NFS đã sửa đổi $1
+log_rename=Thay đổi chia sẻ NFS $1 thành $2
+log_create=Tạo NFS chia sẻ $1
+log_delete=Đã xóa chia sẻ NFS $1
 log_apply=Áp dụng thay đổi
 
 acl_view=Có thể chỉnh sửa cổ phiếu NFS?

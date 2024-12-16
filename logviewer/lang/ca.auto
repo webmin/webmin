@@ -2,7 +2,7 @@ index_title=Visualitzador de registres del sistema
 index_elogs=No s'han trobat registres per mostrar
 index_to=Destinació del registre
 index_rule=Missatges seleccionats
-index_file=Fitxer $1 
+index_file=Fitxer $1
 index_cmd=Sortida de $1
 index_return=visor de registres del sistema
 index_view=Veure...
@@ -38,7 +38,7 @@ view_header2=Últimes $1 línies
 view_header3=Línies de $1
 view_empty=El fitxer de registre està buit
 view_loading=S'està mirant el fitxer de registre.. Encara no hi ha cap línia nova.
-view_filter=Filtra les línies amb el text $1 
+view_filter=Filtra les línies amb el text $1
 view_filter_btn=Filtre
 
 save_efile='$1' no és un nom de fitxer vàlid : $2

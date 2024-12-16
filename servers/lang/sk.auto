@@ -20,13 +20,13 @@ save_ehost2=Hostiteľ neexistuje
 save_eport2=Ak je vybratý typ prepojenia s prihlásením, musí sa zadať port
 save_egroup2=Neplatný nový názov skupiny
 
-find_but=Našiel sa nový server na $1, ale autentifikácia zlyhala : $2 
-find_already2=Našiel sa známy serverový server na $1 
-find_skip=Ignoruje sa server na $1 
+find_but=Našiel sa nový server na $1, ale autentifikácia zlyhala : $2
+find_already2=Našiel sa známy serverový server na $1
+find_skip=Ignoruje sa server na $1
 find_eiface=Nepodarilo sa nájsť rozhranie na skenovanie
 find_eport=Chýbajúce alebo neplatné číslo portu
 
-log_deletes=Odstránené servery $1 
+log_deletes=Odstránené servery $1
 
 acl_auto=Je možné nastaviť automatickú detekciu serverov?
 acl_add=Dokážete zaregistrovať nové servery?
@@ -50,8 +50,8 @@ auto_sched=Vyhľadať nové servery?
 auto_sched1=Áno, každé $1 minúty
 auto_net=Sieť IP na skenovanie
 auto_auto=Lokálna sieť
-auto_ip=Siete IP $1 
-auto_iface=Sieť na rozhraní $1 
+auto_ip=Siete IP $1
+auto_iface=Sieť na rozhraní $1
 auto_user=Používateľské meno pre nové servery
 auto_pass=Heslo pre nové servery
 auto_type=Predvolený typ systému

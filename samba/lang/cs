@@ -32,7 +32,7 @@ index_start=Spustit Samba Servery
 index_startmsg=Vypadá to, že Samba servery neběží ve vašem systému. To znamená, výše uvedená sdílení nejsou ostatním počítačům k dispozici.
 index_restart=Restartovat Samba Servery
 index_restartmsg=Klepnutím na toto tlačítko dojde k restartování běžících Samba serverů ve vašem systému. Toto způsobí aplikování aktuální konfigurace.
-index_restartmsg2=Tento úkol taktéž odpojí všechna připojení k serveru, takže pokud chcete používat aktuální konfiguraci co nejdříve,  měli byste počkat asi 1 minutu, kterou Samba potřebuje k přehrání konfigurace.
+index_restartmsg2=Tento úkol taktéž odpojí všechna připojení k serveru, takže pokud chcete používat aktuální konfiguraci co nejdříve, měli byste počkat asi 1 minutu, kterou Samba potřebuje k přehrání konfigurace.
 index_stop=Zastavit Samba servery
 index_stopmsg=Klepnutím na toto tlačítko shodíte na vašem systému běžící Samba servery. Všichni aktuálně připojení uživatelé budou bez varování odpojeni.
 index_einclude=Pozor - váš konfigurační soubor Samby obsahuje $2 nebo $3 direktivu. Může se stát, že Webmin provede změny nekorektně.
@@ -96,7 +96,7 @@ misc_readprediction=Číst předpověď?
 
 net_title=Nastavení Unix sítě
 net_idle=Časová prodleva nečinnosti před odpojením
-net_trustlist=Soubor  důvěryhodných hostů/uživatelů
+net_trustlist=Soubor důvěryhodných hostů/uživatelů
 net_netinterface=Rozhraní sítě
 net_auto=Automaticky
 net_uselist=Použít seznam...
@@ -297,7 +297,7 @@ sec_rwuser=Uživatelé, kteří mají povoleno čtení i zápis
 sec_rwgroup=Skupiny, které mají povoleno čtení i zápis
 
 esync_title=Synchronizace uživatelů
-esync_msg=Webmin může být nakonfigurován tak, aby se změna v seznamu Unix uživatelů automaticky promítla do seznamu uživatelů Samby. Toto však bude funkční pouze v případě,  kdy je Webmin modul <tt>Uživatelé a skupiny</tt> používán pro přidávání, mazání a změny uživatelů.
+esync_msg=Webmin může být nakonfigurován tak, aby se změna v seznamu Unix uživatelů automaticky promítla do seznamu uživatelů Samby. Toto však bude funkční pouze v případě, kdy je Webmin modul <tt>Uživatelé a skupiny</tt> používán pro přidávání, mazání a změny uživatelů.
 esync_add=Přidat uživatele Samby v momentě, kdy je přidán Unix uživatel
 esync_chg=Změnit uživatele Samby v momentě, kdy je změněn Unix uživatel
 esync_del=Smazat uživatele Samby v momentě, kdy je smazán Unix uživatel

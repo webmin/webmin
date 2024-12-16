@@ -55,7 +55,7 @@ error_file=Fajl
 error_line=Linja
 error_sub=Funzjoni
 error_stackline=Fil-fajl $1 fil-linja $2 li ssejjaħ $3
-efilewrite=Ma rnexxielux jikteb lil $1 : $2 
+efilewrite=Ma rnexxielux jikteb lil $1 : $2
 efileclose=Naqas milli jikteb lil $1 meta għalaq : $2
 efileopen=Ma rnexxiex tiftaħ $1 għall-kitba : $2
 default=Default
@@ -117,9 +117,9 @@ config_ewebmin=Il-parametru tat-tip 14 jaħdem biss fil-Webmin
 
 help_err=Ma rnexxielux juri l-għajnuna
 help_epath=Triq ta 'għajnuna nieqsa jew invalida
-help_efile3=Naqset milli taqra l-paġna ta' għajnuna $1 mill-modulu $2 
+help_efile3=Naqset milli taqra l-paġna ta' għajnuna $1 mill-modulu $2
 help_eheader=Nieqes it-taqsima &lt;intestatura&gt;
-help_einclude3=Naqset milli tinkludi l-paġna ta' għajnuna $1 
+help_einclude3=Naqset milli tinkludi l-paġna ta' għajnuna $1
 help_eif=$1 falla : $2
 help_eexec=$1 falla : $2
 
@@ -354,7 +354,7 @@ sql_epostgresqlconnect=Naqset milli tikkonnettja mad-database PostgreSQL : $1
 sql_eldapdriver=Ma rnexxielhiex tgħabbi l-modulu perl LDAP
 sql_eldapconnect=Naqset milli tikkonnettja mas-server LDAP $1
 sql_eldaptls=Ma rnexxielux jibda encryption TLS għal LDAP : $1
-sql_eldaplogin=Naqset milli tidħol fis-server LDAP bħala $1 : $2 
+sql_eldaplogin=Naqset milli tidħol fis-server LDAP bħala $1 : $2
 
 log_email_subject=Azzjoni tal-Webmin f '$1
 log_email_global=Azzjoni globali tal-Webmin
@@ -387,9 +387,9 @@ paginator_nosearchrs=M'hemm l-ebda riżultat li jaqbel mal-mistoqsija <tt>$1</tt
 
 langauto_include=Inkludi traduzzjonijiet bil-magni
 
-file_truncated_message=ġab $1 ta 'dejta, maqtugħ $2 minn $3 
-file_truncated_message_head=ġab il-bidu ta ' $1 ta' dejta, maqtugħ $2 minn $3 
-file_truncated_message_tail=ġab it-tmiem $1 ta 'dejta, maqtugħ $2 minn $3 
+file_truncated_message=ġab $1 ta 'dejta, maqtugħ $2 minn $3
+file_truncated_message_head=ġab il-bidu ta ' $1 ta' dejta, maqtugħ $2 minn $3
+file_truncated_message_tail=ġab it-tmiem $1 ta 'dejta, maqtugħ $2 minn $3
 
 defcert_error=Qed jintuża ċertifikat SSL magħqud ta' default $1. Huwa rakkomandat ħafna li taġġorna ċ-ċertifikat default <tt>$2</tt> qabel ma tipproċedi bil-login.
 

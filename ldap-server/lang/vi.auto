@@ -1,4 +1,4 @@
-index_version=OpenLDAP $1 
+index_version=OpenLDAP $1
 index_openldap=OpenLDAP
 index_eslapd=Không tìm thấy chương trình máy chủ OpenLDAP $1 trên hệ thống của bạn. Có lẽ đường dẫn trên trang <a href='$2'>cấu hình mô-đun</a> không chính xác?
 index_econfig=Không tìm thấy tệp cấu hình máy chủ OpenLDAP $1 trên hệ thống của bạn. Có lẽ đường dẫn trên trang <a href='$2'>cấu hình mô-đun</a> không chính xác?
@@ -24,10 +24,10 @@ connect_efile=Không tìm thấy tệp cấu hình OpenLDAP $1 - có thể khôn
 connect_euser2=Không có người dùng đăng nhập như được tìm thấy trong cấu hình máy chủ LDAP
 connect_epass2=Không tìm thấy mật khẩu để đăng nhập trong cấu hình máy chủ LDAP
 connect_epass3=Mật khẩu trong cấu hình máy chủ LDAP được mã hóa và Webmin không thể sử dụng
-connect_emod=Mô-đun Perl $1 cần thiết để kết nối với máy chủ LDAP chưa được cài đặt. Thông báo lỗi Perl đầy đủ là : $2 
-connect_eldap=Không thể kết nối với máy chủ LDAP $1 trên cổng $2 
-connect_essl=Không thể bắt đầu mã hóa TLS với máy chủ LDAP $1 : $2 
-connect_elogin=Không thể đăng nhập vào máy chủ LDAP $1 dưới dạng $2 : $3 
+connect_emod=Mô-đun Perl $1 cần thiết để kết nối với máy chủ LDAP chưa được cài đặt. Thông báo lỗi Perl đầy đủ là : $2
+connect_eldap=Không thể kết nối với máy chủ LDAP $1 trên cổng $2
+connect_essl=Không thể bắt đầu mã hóa TLS với máy chủ LDAP $1 : $2
+connect_elogin=Không thể đăng nhập vào máy chủ LDAP $1 dưới dạng $2 : $3
 connect_cpan=Bạn có thể cài đặt <tt>$1</tt> Perl mô-đun <a href='$2'>tự động</a> từ CPAN.
 
 slapd_title=Cấu hình máy chủ OpenLDAP
@@ -109,11 +109,11 @@ acl_add=Thêm một quy tắc kiểm soát truy cập mới.
 acl_return=quy tắc kiểm soát truy cập
 
 browser_title=Duyệt cơ sở dữ liệu
-browser_econn=Trình duyệt LDAP không thể được sử dụng : $1 
+browser_econn=Trình duyệt LDAP không thể được sử dụng : $1
 browser_ecannot=Bạn không được phép duyệt cơ sở dữ liệu LDAP
 browser_base=Đang duyệt:
 browser_ok=Chỉ
-browser_esearch=Tìm kiếm LDAP không thành công : $1 
+browser_esearch=Tìm kiếm LDAP không thành công : $1
 browser_subs=Đối tượng trẻ em
 browser_attrs=Thuộc tính đối tượng
 browser_parent=Duyệt phụ huynh
@@ -144,26 +144,26 @@ browser_sok=Tìm kiếm
 
 save_err=Không thể thay đổi thuộc tính
 save_ebase=Không thể tìm nạp đối tượng $1 từ cơ sở dữ liệu
-save_emodify=Sửa đổi LDAP của $2 trong $1 không thành công : $3 
+save_emodify=Sửa đổi LDAP của $2 trong $1 không thành công : $3
 save_enone=Không có giá trị nào được nhập
 
 add_err=Không thể thêm thuộc tính
 add_eadd=Tên thuộc tính bị thiếu hoặc không hợp lệ
 add_evalue=Thiếu giá trị
-add_emodify=LDAP thêm $2 vào $1 không thành công : $3 
+add_emodify=LDAP thêm $2 vào $1 không thành công : $3
 
 delete_err=Không thể xóa thuộc tính
 delete_enone=Không được chọn
-delete_emodify=Xóa LDAP của $2 từ $1 không thành công : $3 
+delete_emodify=Xóa LDAP của $2 từ $1 không thành công : $3
 
 sdelete_err=Không thể xóa các đối tượng
-sdelete_edn=Không tìm thấy đối tượng $1 
-sdelete_edel=Xóa LDAP của $1 không thành công : $2 
+sdelete_edn=Không tìm thấy đối tượng $1
+sdelete_edel=Xóa LDAP của $1 không thành công : $2
 
 rename_err=Không thể đổi tên đối tượng
-rename_eget=Không thể tìm thấy đối tượng có DN $1 
+rename_eget=Không thể tìm thấy đối tượng có DN $1
 rename_enew=Tên mới dường như không hợp lệ
-rename_erename=LDAP mới đến $2 từ $1 không thành công : $3 
+rename_erename=LDAP mới đến $2 từ $1 không thành công : $3
 
 oadd_title=Tạo đối tượng
 oadd_header=Chi tiết đối tượng LDAP mới
@@ -175,11 +175,11 @@ oadd_edn1=Tên thiếu hoặc không hợp lệ cho DN
 oadd_edn2=Thiếu hoặc không hợp lệ giá trị cho DN
 oadd_eclasses=Không có lớp đối tượng nào được nhập
 oadd_eclass='$1' trông không giống một lớp đối tượng hợp lệ
-oadd_ename=Tên tìm kiếm không hợp lệ cho thuộc tính $1 
-oadd_eget=Không thể lấy đối tượng $1 : $2 
-oadd_eget2=Không thể kiểm tra xung đột với $1 : $2 
+oadd_ename=Tên tìm kiếm không hợp lệ cho thuộc tính $1
+oadd_eget=Không thể lấy đối tượng $1 : $2
+oadd_eget2=Không thể kiểm tra xung đột với $1 : $2
 oadd_eclash=Một đối tượng có DN $1 đã tồn tại
-oadd_eadd=Thêm LDAP của $1 không thành công : $2 
+oadd_eadd=Thêm LDAP của $1 không thành công : $2
 oadd_err=Không thể tạo đối tượng mới
 
 create_title=Tạo cây
@@ -198,7 +198,7 @@ create_edom=Tên miền bị thiếu hoặc không hợp lệ
 create_edn=Tên phân biệt thiếu hoặc không hợp lệ
 create_err=Không thể tạo cây mới
 create_doingdn=Tạo cơ sở DN $1 ..
-create_edoingdn=.. thất bại : $1 
+create_edoingdn=.. thất bại : $1
 create_done=.. làm xong
 create_doingex=Tạo đối tượng ví dụ với DN $1 ..
 create_edoingex=.. thất bại: $1. Tuy nhiên, cây vẫn có thể được sử dụng.
@@ -207,49 +207,49 @@ create_eoc=Không thể tìm thấy lớp đối tượng phù hợp cho DN mớ
 eunknown=Lỗi không thể nhận biết
 
 apply_err=Không thể áp dụng cấu hình
-apply_ecmd=$1 thất bại : $2 
+apply_ecmd=$1 thất bại : $2
 apply_ecannot=Bạn không được phép áp dụng cấu hình
 
 stop_err=Không thể dừng máy chủ LDAP
-stop_ecmd=$1 thất bại : $2 
+stop_ecmd=$1 thất bại : $2
 stop_egone=Không còn chạy!
-stop_ekill=Quá trình tiêu diệt không thành công : $1 
+stop_ekill=Quá trình tiêu diệt không thành công : $1
 stop_ecannot=Bạn không được phép dừng máy chủ LDAP
 
 start_err=Không thể khởi động máy chủ LDAP
-start_ecmd=$1 thất bại : $2 
+start_ecmd=$1 thất bại : $2
 start_ecannot=Bạn không được phép khởi động máy chủ LDAP
 
-log_create_dn=Đã tạo đối tượng $1 
-log_delete_dn=Đã xóa đối tượng $1 
-log_rename_dn=Đổi tên đối tượng $1 
+log_create_dn=Đã tạo đối tượng $1
+log_delete_dn=Đã xóa đối tượng $1
+log_rename_dn=Đổi tên đối tượng $1
 log_delete_dns=Đã xóa $1 đối tượng
-log_create_attr=Đã thêm thuộc tính cho đối tượng $2 
-log_create_attr_l=Đã thêm thuộc tính $1 với giá trị $3 cho đối tượng $2 
-log_modify_attr=Cập nhật thuộc tính trong đối tượng $2 
-log_modify_attr_l=Cập nhật thuộc tính $1 với giá trị $3 trong đối tượng $2 
-log_delete_attr=Đã xóa khỏi đối tượng $2 
-log_delete_attr_l=Đã xóa thuộc tính $1 khỏi đối tượng $2 
-log_delete_attrs=Đã xóa các thuộc tính $1 khỏi đối tượng $2 
+log_create_attr=Đã thêm thuộc tính cho đối tượng $2
+log_create_attr_l=Đã thêm thuộc tính $1 với giá trị $3 cho đối tượng $2
+log_modify_attr=Cập nhật thuộc tính trong đối tượng $2
+log_modify_attr_l=Cập nhật thuộc tính $1 với giá trị $3 trong đối tượng $2
+log_delete_attr=Đã xóa khỏi đối tượng $2
+log_delete_attr_l=Đã xóa thuộc tính $1 khỏi đối tượng $2
+log_delete_attrs=Đã xóa các thuộc tính $1 khỏi đối tượng $2
 log_stop=Máy chủ LDAP đã dừng
 log_start=Bắt đầu máy chủ LDAP
 log_apply=Cấu hình ứng dụng
 log_slapd=Thay đổi cấu hình máy chủ LDAP
 log_schema=Đã thay đổi lược đồ LDAP
 log_gencert=Tạo chứng chỉ SSL mới
-log_sfile=Tệp lược đồ đã sửa đổi $1 
-log_sup=Đã chuyển lên tệp lược đồ $1 
-log_sdown=Đã chuyển xuống tệp lược đồ $1 
+log_sfile=Tệp lược đồ đã sửa đổi $1
+log_sup=Đã chuyển lên tệp lược đồ $1
+log_sdown=Đã chuyển xuống tệp lược đồ $1
 log_create=Đã tạo DN $1 mới
 log_bootup=Máy chủ LDAP được bật khi khởi động
 log_bootdown=Máy chủ LDAP bị vô hiệu hóa khi khởi động
 log_perms=Đã sửa lỗi máy chủ LDAP
-log_create_access=Đã tạo quy tắc kiểm soát truy cập cho $1 
-log_delete_access=Xóa quy tắc kiểm soát truy cập cho $1 
-log_modify_access=Cập nhật quy tắc kiểm soát truy cập cho $1 
-log_up_access=Đã chuyển lên quy tắc kiểm soát truy cập cho $1 
-log_down_access=Đã chuyển xuống quy tắc kiểm soát truy cập cho $1 
-log_delete_accesses=Đã xóa quy tắc kiểm soát truy cập $1 
+log_create_access=Đã tạo quy tắc kiểm soát truy cập cho $1
+log_delete_access=Xóa quy tắc kiểm soát truy cập cho $1
+log_modify_access=Cập nhật quy tắc kiểm soát truy cập cho $1
+log_up_access=Đã chuyển lên quy tắc kiểm soát truy cập cho $1
+log_down_access=Đã chuyển xuống quy tắc kiểm soát truy cập cho $1
+log_delete_accesses=Đã xóa quy tắc kiểm soát truy cập $1
 log_all=tất cả các đối tượng
 
 gencert_title=Tạo chứng chỉ SSL
@@ -275,7 +275,7 @@ acl_create=Có thể tạo cây mới?
 acl_start=Có thể bắt đầu và dừng máy chủ LDAP không?
 acl_apply=Có thể áp dụng thay đổi cấu hình?
 
-access_desc=$2 bằng $1 
+access_desc=$2 bằng $1
 access_self=tự
 access_users=người dùng xác thực
 access_anon=người dùng ẩn danh
@@ -322,7 +322,7 @@ eacl_err=Không thể lưu quy tắc kiểm soát truy cập
 eacl_edn=DN bị thiếu hoặc không hợp lệ - phải giống như <tt>uid=joe,dc=my-domain,dc=com</tt>
 eacl_efilter=Bộ lọc bị thiếu hoặc không hợp lệ - phải giống như <tt>(objectClass = posixAccount)</tt>
 eacl_eattrs=Danh sách các thuộc tính được phân tách bằng dấu phẩy hoặc không hợp lệ
-eacl_ewho=DN bị thiếu hoặc không hợp lệ trong hàng $1 
-eacl_eaccess=Cấp truy cập bị thiếu hoặc không hợp lệ trong hàng $1 
+eacl_ewho=DN bị thiếu hoặc không hợp lệ trong hàng $1
+eacl_eaccess=Cấp truy cập bị thiếu hoặc không hợp lệ trong hàng $1
 eacl_order=Thứ tự quy tắc
 eacl_noorder=Không có bộ nào

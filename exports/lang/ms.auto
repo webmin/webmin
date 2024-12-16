@@ -35,6 +35,6 @@ save_create_dir=Tidak dapat membuat direktori '$1'
 save_eanonuid=Nama pengguna akses tanpa nama tidak sah
 save_eanongid=Nama kumpulan akses tanpa nama yang tidak sah
 
-exports_gss=Rangkaian dikesahkan: $1 
+exports_gss=Rangkaian dikesahkan: $1
 
 log_delete_exports=Dihapus $1 eksport NFS

@@ -1,5 +1,5 @@
 index_title=Fail2Ban Intruzijski detektor
-index_ver=Verzija $1 
+index_ver=Verzija $1
 index_echeck=Došlo je do pogreške prilikom otkrivanja Fail2Ban na ovom sustavu: $1. Ili nije instaliran ili je <a href='$2'>konfiguracija modula</a> netočna.
 index_fail2ban=Fail2Ban
 index_atboot=Započnite pri pokretanju?
@@ -26,7 +26,7 @@ filters_add=Dodajte novi filtar dnevnika.
 filters_return=popis filtera
 filters_derr=Brisanje filtera nije uspjelo
 filters_enone=Nijedna nije odabrana
-filters_einuse=Filter $1 se ne može izbrisati, jer ga koriste zatvori : $2 
+filters_einuse=Filter $1 se ne može izbrisati, jer ga koriste zatvori : $2
 
 filter_title1=Stvorite filtar
 filter_title2=Uredi filtar
@@ -41,7 +41,7 @@ filter_err=Spremanje filtra nije uspjelo
 filter_ename=Nedostaje ili nevažeće ime filtra
 filter_eclash=Naziv filtra već se koristi
 filter_efail=Nije upisan regularni izraz koji bi se podudarao
-filter_einuse=Ovaj se filtar ne može izbrisati, jer ga koriste zatvori : $1 
+filter_einuse=Ovaj se filtar ne može izbrisati, jer ga koriste zatvori : $1
 
 actions_title=Akcije podudaranja
 actions_name=Naziv radnje
@@ -51,7 +51,7 @@ actions_add=Dodajte novu radnju.
 actions_return=popis radnji
 actions_derr=Brisanje radnji nije uspjelo
 actions_enone=Nijedna nije odabrana
-actions_einuse=Akcija $1 ne može se izbrisati, jer je koriste zatvori : $2 
+actions_einuse=Akcija $1 ne može se izbrisati, jer je koriste zatvori : $2
 
 action_title1=Stvorite akciju podudaranja
 action_title2=Uređivanje radnje podudaranja
@@ -68,7 +68,7 @@ action_check=Naredba za pokretanje prije zabrane IP-a
 action_ban=Naredba za zabranu IP-a
 action_unban=Naredba za uklanjanje zabrane IP adrese
 action_desc=<i>&lt;ip&gt;</i> bit će zamijenjen zabranom IP adrese.
-action_einuse=Ne može se izbrisati ovu radnju jer je koriste zatvorske jedinice : $1 
+action_einuse=Ne može se izbrisati ovu radnju jer je koriste zatvorske jedinice : $1
 
 jails_title=Filtrirajte akcijske zatvore
 jails_add=Dodajte novi zatvor.
@@ -104,8 +104,8 @@ jail_ignoreip=IP adrese nikada ne zabraniti
 jail_err=Nije uspjelo spremanje zatvora
 jail_eclash=Zatvor s istim imenom već postoji
 jail_ename=Nedostaje ili nevažeće ime zatvora
-jail_eaname=Nevažeći parametar naziva traženog za radnju $1 
-jail_eport=Nevažeći broj priključka za radnju $1 
+jail_eaname=Nevažeći parametar naziva traženog za radnju $1
+jail_eport=Nevažeći broj priključka za radnju $1
 jail_eactions=Nijedna radnja nije odabrana!
 jail_elogpaths=Staze datoteke dnevnika nisu unesene
 jail_elogpath=Sve datoteke dnevnika moraju biti apsolutni putanje ili obrasci
@@ -134,22 +134,22 @@ start_err=Pokretanje poslužitelja nije uspjelo
 stop_err=Zaustavljanje poslužitelja nije uspjelo
 restart_err=Ponovno pokretanje poslužitelja nije uspjelo
 
-log_create_filter=Izrađen je filter $1 
-log_update_filter=Izmijenjeni filter $1 
-log_delete_filter=Izbrisani filter $1 
-log_create_action=Stvorena radnja $1 
-log_update_action=Izmijenjeno djelovanje $1 
-log_delete_action=Izbrisana radnja $1 
-log_create_jail=Stvoren zatvor $1 
-log_update_jail=Izmijenjeni zatvor $1 
-log_delete_jail=Izbrisan zatvor $1 
+log_create_filter=Izrađen je filter $1
+log_update_filter=Izmijenjeni filter $1
+log_delete_filter=Izbrisani filter $1
+log_create_action=Stvorena radnja $1
+log_update_action=Izmijenjeno djelovanje $1
+log_delete_action=Izbrisana radnja $1
+log_create_jail=Stvoren zatvor $1
+log_update_jail=Izmijenjeni zatvor $1
+log_delete_jail=Izbrisan zatvor $1
 log_config=Izmijenjena globalna konfiguracija
 log_stop=Zaustavljen poslužitelj Fail2Ban
 log_start=Pokrenut poslužitelj Fail2Ban
 log_restart=Ponovno pokrenut Fail2Ban poslužitelj
 log_atboot=Omogućeno Fail2Ban u vrijeme dizanja
 log_delboot=Onemogućeno Fail2Ban u vrijeme dizanja
-log_manual=Izmijenjena konfiguracijska datoteka $1 
+log_manual=Izmijenjena konfiguracijska datoteka $1
 log_jaildef=Izmijenjene zadane mogućnosti zatvora
 
 config_title=Globalna konfiguracija

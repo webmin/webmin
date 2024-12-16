@@ -35,7 +35,7 @@ index_tabdownload=Letöltés a webről (URL)
 index_tabupload=Feltöltés a szerverre
 index_tabfetch=Letöltés a szerverről
 index_descupload=Ezen az oldalon lehet böngészőből feltölteni fájlokat a saját gépről a Webmin szerverre.
-index_descfetch=Ezen az oldalon lehet böngészőből letölteni fájlokat a saját gépre, vagy a Webmin szerverre. 
+index_descfetch=Ezen az oldalon lehet böngészőből letölteni fájlokat a saját gépre, vagy a Webmin szerverre.
 index_email=Email küldése amikor a letöltés elkészült?
 index_emailto=Igen, a következő címre
 index_email2=Email küldése amikor a feltöltés elkészült?
@@ -107,7 +107,7 @@ fetch_ecannot=Önnek nincs engedélyezve hogy letöltsön file-okat a PC -re
 fetch_efile=Nem lett filenév megadva
 fetch_eexists2=Fájl vagy könyvtár nem található
 fetch_eopen=Nem lehet megnyitni a file -t: $1
-fetch_eaccess=Nem szabad fájlok letöltése innen $1 
+fetch_eaccess=Nem szabad fájlok letöltése innen $1
 
 email_downurl=URL (webcím): $1
 email_downerr=Hiba üzenet: $1

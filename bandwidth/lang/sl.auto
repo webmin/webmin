@@ -5,7 +5,7 @@ index_elog=Datoteka $1, ki se uporablja za beleženje pasovne širine, je dejans
 index_edir=Imenik za shranjevanje podatkov o pasovni širini $1 ne obstaja ali ni imenik. Prilagodite konfiguracijo modula <a href='$2'></a>, da uporabite drugo pot.
 index_emod=Webmin modul $1 ni nameščen v tem sistemu ali ga vaš operacijski sistem ne podpira. Modul za spremljanje pasovne širine ne more delovati brez njega.
 index_esyslog=V tem sistemu ni nameščen noben modul sistemskih dnevnikov in ga ne podpira vaš operacijski sistem. Modul za spremljanje pasovne širine ne more delovati brez enega od njih.
-index_firesys=Uporaba požarnega zidu $1 in $2 
+index_firesys=Uporaba požarnega zidu $1 in $2
 index_setupcannot=Vendar nimate dovoljenj, da bi ga nastavili!
 index_setupdesc=Preden ta modul lahko poroča o uporabi omrežja v vašem sistemu, mora biti nastavljen za spremljanje prometa na izbranem zunanjem omrežnem vmesniku.
 index_setupdesc2=<b>Opozorilo - ta modul bo beležil VSE omrežni promet, ki je bil poslan ali prejet na izbrani vmesnik. To bo porabilo veliko prostora na disku in čas CPU-ja na hitri omrežni povezavi.</b>
@@ -61,7 +61,7 @@ index_rotatedesc=Kliknite ta gumb, če želite obdelati ves zabeleženi omrežni
 index_eiptables=Opozorilo - V konfiguraciji IPtables je prišlo do napake: $1. Z nastavitvijo nadzora pasovne širine bodo izbrisana vsa pravila požarnega zidu.
 index_return=obrazec za poročilo
 
-log_setup=Nastavitev nadzora pasovne širine na vmesniku $1 
+log_setup=Nastavitev nadzora pasovne širine na vmesniku $1
 log_turnoff=Onemogočeno spremljanje pasovne širine
 log_rotate=Posodobljena statistika
 

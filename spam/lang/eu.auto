@@ -190,7 +190,7 @@ priv_emscore='$1' ez da esaldi gehien lortzen duen puntuazioa
 priv_ephrase='$1' ez da baliozko bi hitzen spam esaldia
 priv_escore='$1' esamoldearen puntuazio falta edo baliogabea
 
-usually=Normalean $1 
+usually=Normalean $1
 ecannot=Ez duzu orrialde hau erabiltzeko baimenik
 setup_title=Ezarri Procmail SpamAssassin For
 setup_desc_webmin=Inprimaki hau Procmail $1 konfiguratzeko SpamAssassin sistemak jasotako mezu elektroniko guztietan exekutatzeko erabil daiteke. Hala ere, horrek ez du eraginik izango zure posta zerbitzaria Procmail konfiguratuta badago bidalketa lokaletarako edo <tt>.forward</tt> fitxategiak Procmail erabiltzeko konfiguratuta dauden erabiltzaileentzat.
@@ -244,7 +244,7 @@ mail_razor=Txostena Spam eta Ezabatu gisa
 mail_ham=Txostena Ham & Inbox gisa
 mail_delete=Ezabatu
 mail_return=spam posta zerrenda
-mail_pos=Spam mezuak $1 eta $2 $3 
+mail_pos=Spam mezuak $1 eta $2 $3
 mail_none=Ez dago mezurik zure spam karpetan
 mail_refresh=Freskatu
 mail_will=Freskapen automatikoa $1 minututan
@@ -253,7 +253,7 @@ mail_delall=Ezabatu Spam guztiak
 mail_search3=Aurreko puntuazioa bilatu:
 
 process_eclean=Errore bat gertatu da SpamAssassin goiburuak mezu elektroniko hau kentzean
-process_ereport=Huts egin du SpamAssassin-ri mezu elektronikoa jakinaraztean : $1 
+process_ereport=Huts egin du SpamAssassin-ri mezu elektronikoa jakinaraztean : $1
 
 apply_err=Ezin izan dira aldaketak aplikatu
 apply_none=Ez da SpamAssassin daemon prozesurik aurkitu!
@@ -337,8 +337,8 @@ simple_score=Aplikatu beharreko puntuazioa
 simple_describe=deskribapena
 simple_err=Ezin izan da mezuen probak gorde
 
-before_ecmd=Aurreztearen aginduak huts egin du : $1 
-after_ecmd=Gorde ondoren komandoak huts egin du : $1 
+before_ecmd=Aurreztearen aginduak huts egin du : $1
+after_ecmd=Gorde ondoren komandoak huts egin du : $1
 
 connect_emysql=Ezin izan da $1 datu-basearen kontrolatzailea kargatu
 connect_elogin=Ezin izan da $1:$2 datu-basean saioa hasi.
@@ -346,10 +346,10 @@ connect_equery=$1 datu-baseak ez du $2 hobespen taula
 connect_eldapmod=LDAPekin komunikatzeko behar den $1 moduluko Perl ez dago instalatuta edo ez da kargatu
 connect_eldap=Ezin izan da $1 portuko $1 LDAP zerbitzariarekin konektatzean
 connect_eldaplogin=Ezin izan da $2 : $3 LDAP zerbitzarira saioa hasi
-connect_ebase=LDAP $1 DN oinarria ez da baliozkoa : $2 
+connect_ebase=LDAP $1 DN oinarria ez da baliozkoa : $2
 
-eldap=LDAP eragiketak huts egin du : $1 
-esql=SQL huts egin du : $1 
+eldap=LDAP eragiketak huts egin du : $1
+esql=SQL huts egin du : $1
 ldap_euser=Ezin izan da LDAP erabiltzailearen objektua aurkitu
 
 db_title=SQL eta LDAP datu-baseak

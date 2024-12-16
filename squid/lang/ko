@@ -433,7 +433,7 @@ saicp_ftsir=ICP 제한을 저장하지 못했습니다
 
 icache_ftic=캐시를 초기화하지 못했습니다
 icache_ymcautrsa=squid를 실행할 사용자를 선택해야 합니다
-icache_itscwtc=<tt>$1</tt> 명령으로 squid 캐시를 초기화하는 중  ..
+icache_itscwtc=<tt>$1</tt> 명령으로 squid 캐시를 초기화하는 중 ..
 icache_return=squid 인덱스
 icache_title=캐시 초기화
 

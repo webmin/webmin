@@ -1,12 +1,12 @@
 index_title=Status SMART pogona
 index_ecmd=Nadzorni ukaz SMART $1 ni bil najden v vašem sistemu ali ni pravilno nastavljen v konfiguraciji modula <a href='$2'></a>. Pred uporabo tega modula ga morate namestiti.
 index_ecmd2=Zdi se, da ukaz $1 ni nadzorni ukaz SMART. Pred uporabo tega modula mora biti pravilno nastavljen v konfiguraciji modula <a href='$2'></a>.
-index_version=SMARTspletna različica $1 
+index_version=SMARTspletna različica $1
 index_show=Prikaži stanje pogona:
 index_ok=Pokaži
 index_eidescsi=V vašem sistemu ni bilo najdenih pogonov IDE, SCSI ali SATA.
-index_drive=Status pogona $1 
-index_drivesub=Stanje pogona $1, disk $2 
+index_drive=Status pogona $1
+index_drivesub=Stanje pogona $1, disk $2
 index_desc=Lokacija
 index_size=Velikost pogona
 index_model=Znamka in model
@@ -36,11 +36,11 @@ monitor_edrive=Manjka ali neveljaven pogon za preverjanje
 monitor_nosuch=Ni takšnega pogona
 monitor_nosmart=Brez SMART podpore
 monitor_errorsfound=Poročanih $1 napak
-monitor_errorsinced=Napake so se povečale z $2 na $1 
+monitor_errorsinced=Napake so se povečale z $2 na $1
 monitor_wearlevel=Neuspešno, če raven obrabe pade pod
 monitor_ewearlevel=Neveljaven odstotek obrabe
 monitor_nowearout=Pogon ne poroča o indikatorju SSD
-monitor_wornout=Raven obrabe je padla na $1 
+monitor_wornout=Raven obrabe je padla na $1
 
 short_title=Kratek samopreizkus
 short_doing=Začetek kratkega samotesta $1.

@@ -1,5 +1,5 @@
 index_title=PPTP strežnik VPN
-index_version=Različica PoPToP $1 
+index_version=Različica PoPToP $1
 index_epptpd=PoPToP PPTP strežnika $1 v vašem sistemu ni bilo mogoče najti ali pa ni pravi program. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
 index_econfig=Konfiguracijske datoteke strežnika PPTP $1 v vašem sistemu ni bilo mogoče najti. Mogoče je vaša <a href='$2'>konfiguracija modula</a> napačna.
 index_stop=Ustavite PPTP strežnik
@@ -63,7 +63,7 @@ options_err=Možnosti PPP ni bilo mogoče shraniti
 options_emtu=Manjkajoča ali neveljavna največja velikost paketnega pošiljanja
 options_emru=Manjkajoča ali neveljavna največja velikost prejemajočega paketa
 options_ename=Manjkajoče ali neveljavno ime strežnika za preverjanje pristnosti
-options_version=Različica PPPd $1 
+options_version=Različica PPPd $1
 options_msdesc=Spodnje možnosti omogočajo način preverjanja pristnosti MS-CHAP in šifriranje MPPE, ki ga privzeto uporabljajo odjemalci Windows VPN. MPPE pa potrebuje podporo tako v demonu PPP kot v jedru operacijskega sistema.
 options_mschap=Preverjanje pristnosti MS-CHAP
 options_mschap-v2=Preverjanje pristnosti MS-CHAP različice 2
@@ -75,7 +75,7 @@ secrets_ecannot=Nimate dovoljenja za urejanje računov PPP
 secrets_return=kazalo
 secrets_none=Računov PPP še ni ustvaril.
 secrets_enopfile=Datoteka gesel PPP $1 v vašem sistemu ne obstaja. Mogoče PPP ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
-secrets_table=PPP predstavlja $1 
+secrets_table=PPP predstavlja $1
 secrets_user=Uporabniško ime
 secrets_ips=IP naslovi
 secrets_uany=KAJ
@@ -133,13 +133,13 @@ disc_err=Prekinitve povezave ni bilo mogoče
 disc_egone=Povezave niso več aktivne
 disc_ekill=Proces se ne izvaja več
 
-log_secret_create=Ustvarjen PPP račun $1 
-log_secret_modify=Spremenjen račun JPP $1 
-log_secret_delete=Izbrisan račun PPP $1 
+log_secret_create=Ustvarjen PPP račun $1
+log_secret_modify=Spremenjen račun JPP $1
+log_secret_delete=Izbrisan račun PPP $1
 log_deletes=Izbrisani $1 računi PPP
 log_conf=Spremenjene možnosti strežnika PPTP
 log_options=Spremenjene možnosti PPP
-log_disc=Odklopljena stranka $1 
+log_disc=Odklopljena stranka $1
 log_start=Začetek strežnika PPTP
 log_stop=Ustavljen strežnik PPTP
 log_apply=Uporabljena konfiguracija strežnika PPTP

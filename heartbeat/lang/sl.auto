@@ -9,7 +9,7 @@ index_eha_cf=Konfiguracijske datoteke za srčni utrip $1 v vašem sistemu ni bil
 index_eharesources=Datoteke virov $1 v vašem sistemu ni bilo mogoče najti. Mogoče še ni bil kopiran, ali je konfiguracija <a href='$2'>modula</a> napačna.
 index_eauthkeys=Datoteke ključev za preverjanje pristnosti $1 v vašem sistemu ni bilo mogoče najti. Mogoče še ni bil kopiran, ali je konfiguracija <a href='$2'>modula</a> napačna.
 index_ereq_resource_cmd=Skripta za zahtevanje virov iz drugega vozlišča ($1) v vašem sistemu ni bilo mogoče najti. Mogoče še ni bil kopiran, ali je konfiguracija <a href='$2'>modula</a> napačna.
-index_version=Različica srčnega utripa $1 
+index_version=Različica srčnega utripa $1
 index_noversion=Opozorilo - Različice Heartbeat, nameščene v vašem sistemu, ni bilo mogoče samodejno zaznati. Nastavite ga na strani <a href='$1'>konfiguracija modula</a>.
 index_status=Status srčnega utripa
 
@@ -21,7 +21,7 @@ conf_bcasts=Vmesniki srčnega utripa Ethernet
 conf_none=Noben
 conf_udpport=UDP srčni utrip
 conf_mcast=Naprava za večkratno bitje srca
-conf_mcastv=Naprava $1, skupina $2, vrata $3, TTL $4, povratna povezava $5 
+conf_mcastv=Naprava $1, skupina $2, vrata $3, TTL $4, povratna povezava $5
 conf_enabled=Omogočeno
 conf_disabled=Onemogočeno
 conf_keepalive=Čas med srčnimi utripi

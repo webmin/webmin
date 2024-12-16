@@ -4,10 +4,10 @@ index_edir=Osnovni direktorij Jabber $1 ne postoji. Ili Jabber nije instaliran i
 index_emodules=Perl moduli $1 i $2 koje Webmin treba za rukovanje Jabberovom XML konfiguracijom nisu instalirani. <a href='$3'>Kliknite ovdje</a> da biste ih instalirali izravno iz CPAN-a.
 index_emodule=Perl modul $1 koji je Webmin potreban za rukovanje Jabberovom XML konfiguracijom nije instaliran. <a href='$2'>Kliknite ovdje</a> da biste ga instalirali izravno iz CPAN-a.
 index_expat=Provjerite imate li instaliranu biblioteku i zaglavlja Expat-a prije pokušaja instalacije Perl modula, jer oni ovise o njemu i neće uspjeti ako nisu dostupni.
-index_eparse=$1 perl modul nije mogao raščistiti vašu Jabber config datoteku : $2 
+index_eparse=$1 perl modul nije mogao raščistiti vašu Jabber config datoteku : $2
 index_ejabberd=Program Jabber poslužitelja $1 nije pronađen u vašem sustavu. Ili Jabber nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
-index_eversion=Webmin podržava samo verziju Jabber $2, ali naredba $3 izvijestila je sljedeće informacije o verziji : $1 
-index_eversion2=Webmin podržava samo verzije Jabbera ispod $2, ali naredba $3 izvijestila je sljedeće informacije o verziji : $1 
+index_eversion=Webmin podržava samo verziju Jabber $2, ali naredba $3 izvijestila je sljedeće informacije o verziji : $1
+index_eversion2=Webmin podržava samo verzije Jabbera ispod $2, ali naredba $3 izvijestila je sljedeće informacije o verziji : $1
 index_start=Pokrenite Jabber Server
 index_startmsg=Kliknite ovaj gumb za pokretanje Jabber poslužitelja u vašem sustavu. Dok ga ne pokrene, klijenti za instant messaging neće ga moći koristiti.
 index_stop=Zaustavi poslužitelj Jabber
@@ -16,7 +16,7 @@ index_restart=Primijeni promjene
 index_restartmsg=Kliknite ovaj gumb kako biste primijenili trenutnu konfiguraciju zaustavljanjem i ponovnim pokretanjem Jabber poslužitelja.
 index_comments=Upozorenje - vaša Jabber config datoteka $1 sadrži komentare koji će biti uklonjeni ako se bilo kakve promjene konfiguracije izvrše pomoću ovog modula.
 index_return=Izbornik Jabber
-index_version=Verzija klizača $1 
+index_version=Verzija klizača $1
 
 general_title=Opće mogućnosti
 general_header=Opcije Jabber poslužitelja
@@ -44,7 +44,7 @@ messages_rnotify=Obavijestiti administratora o registraciji?
 messages_rfields=Obavezna polja za registraciju
 messages_vcard2jud=Pošalji vCard u korisnički vodič Jabber?
 messages_err=Spremanje poruka nije uspjelo
-messages_evcard=Nevažeća XML vCard : $1 
+messages_evcard=Nevažeća XML vCard : $1
 messages_etag=Poslužitelj vCard XML ne počinje s &lt;vCard&gt;
 
 modules_title=Jabber moduli

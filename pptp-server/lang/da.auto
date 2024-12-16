@@ -1,5 +1,5 @@
 index_title=PPTP VPN-server
-index_version=PoPToP version $1 
+index_version=PoPToP version $1
 index_epptpd=PoPToP PPTP-server $1 blev ikke fundet på dit system eller er ikke det rigtige program. Måske er det ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
 index_econfig=PPTP-serverkonfigurationsfilen $1 blev ikke fundet på dit system. Måske er din <a href='$2'>modulkonfiguration</a> forkert.
 index_stop=Stop PPTP-server
@@ -63,7 +63,7 @@ options_err=Kunne ikke gemme PPP-indstillinger
 options_emtu=Manglende eller ugyldig maksimal afsendelse af pakkestørrelse
 options_emru=Manglende eller ugyldig maksimal modtagende pakkestørrelse
 options_ename=Manglende eller ugyldigt servernavn til godkendelse
-options_version=PPPd version $1 
+options_version=PPPd version $1
 options_msdesc=Valgmulighederne nedenfor aktiverer MS-CHAP-godkendelsesmetode og MPPE-kryptering, der som standard bruges af Windows VPN-klienter. MPPE kræver dog support i både PPP-dæmonen og operativsystemkernen.
 options_mschap=MS-CHAP-godkendelse
 options_mschap-v2=MS-CHAP version 2-godkendelse
@@ -75,7 +75,7 @@ secrets_ecannot=Du har ikke tilladelse til at redigere PPP-konti
 secrets_return=indeks
 secrets_none=Der er ikke oprettet nogen PPP-konti endnu.
 secrets_enopfile=PPP-adgangskodefilen $1 findes ikke på dit system. Måske er PPP ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
-secrets_table=OPP tegner sig for $1 
+secrets_table=OPP tegner sig for $1
 secrets_user=Brugernavn
 secrets_ips=IP-adresser
 secrets_uany=NOGEN
@@ -133,13 +133,13 @@ disc_err=Kunne ikke afbryde forbindelsen
 disc_egone=Forbindelser er ikke længere aktive
 disc_ekill=Processen kører ikke længere
 
-log_secret_create=Oprettet PPP-konto $1 
-log_secret_modify=Ændret PPP-konto $1 
-log_secret_delete=Slet PPP-konto $1 
+log_secret_create=Oprettet PPP-konto $1
+log_secret_modify=Ændret PPP-konto $1
+log_secret_delete=Slet PPP-konto $1
 log_deletes=Slet $1 PPP-konti
 log_conf=Ændrede PPTP-serverindstillinger
 log_options=Ændrede PPP-indstillinger
-log_disc=Frakoblet klient $1 
+log_disc=Frakoblet klient $1
 log_start=Startet PPTP-server
 log_stop=Stopet PPTP-server
 log_apply=Anvendt PPTP-serverkonfiguration

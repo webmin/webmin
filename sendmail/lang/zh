@@ -105,7 +105,7 @@ ffile_eaction=未输入转发地址
 
 rfile_title=编辑自动答复文件
 rfile_desc=在文件 $1 中使用下面的文本区来编辑自动答复邮件。该邮件包含宏 $SUBJECT、$FROM、$TO、$DATE 和 $BODY，它们在自动答复激活时将扩展。
-rfile_desc2=您也可以在邮件的顶端编写这样的几行:<br><tt>来自: foo@bar.com</tt><br><tt>主题: On holiday</tt><br>来新增或更换自动答复使用的默认设置，用空白行与邮件正文分离。 
+rfile_desc2=您也可以在邮件的顶端编写这样的几行:<br><tt>来自: foo@bar.com</tt><br><tt>主题: On holiday</tt><br>来新增或更换自动答复使用的默认设置，用空白行与邮件正文分离。
 rfile_efile=您没有编辑 $1的权限。
 rfile_undo=撤销改变
 
@@ -397,7 +397,7 @@ mail_size=大小
 mail_delete=删除选定的邮件
 mail_compose=编写新邮件
 mail_return=用户邮箱
-mail_pos=将邮件 $1发送 $3 的 $2 
+mail_pos=将邮件 $1发送 $3 的 $2
 mail_none=该邮箱中无邮件
 mail_ecannot=您没有阅读该用户的邮件的权限
 mail_all=全部选中
@@ -575,7 +575,7 @@ log_delmailq=已从队列删除来自 $1 的邮件
 log_delmailqs=已从队列删除来自 $1 的邮件
 log_stop=已停止 sendmail 守护进程
 log_start=已启动 sendmail 守护进程
-log_delmail=已从 $2 删除 $1邮件 
+log_delmail=已从 $2 删除 $1邮件
 log_send=已发送邮件到 $1
 log_feature_create=已添加M4条目$1
 log_feature_modify=已修改M4条目 $1

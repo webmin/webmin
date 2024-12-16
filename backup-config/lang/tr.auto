@@ -28,8 +28,8 @@ restore_emods=Hiçbir modül veya başka dosya seçilmedi
 restore_testing=$1 kaynağından yedek içeriği çıkarılıyor.
 restore_done2=.. yedek dosya :
 
-nice_ftpp=FTP aracılığıyla $1 bağlantı noktasında $3 $3 
-nice_sshp=$1 bağlantı noktasında $2, SSH üzerinden $3 
+nice_ftpp=FTP aracılığıyla $1 bağlantı noktasında $3 $3
+nice_sshp=$1 bağlantı noktasında $2, SSH üzerinden $3
 
 log_run_backup=$1 modülünün $2 konumuna yürütülmesi
 

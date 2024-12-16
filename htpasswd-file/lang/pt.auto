@@ -4,7 +4,7 @@ index_emd5=Este módulo foi <a href='$1'>configurado</a> para usar criptografia 
 index_header=Usuários do arquivo de senha
 index_none=Nenhum usuário existe no arquivo de senha configurado.
 index_add=Adicione um novo usuário ao arquivo de senha.
-index_file=Utilizadores no Ficheiro de Senha $1 
+index_file=Utilizadores no Ficheiro de Senha $1
 index_sync=Sincronização de usuários Unix
 index_return=Lista de usuários
 index_eversion=Este módulo foi <a href='$1'>configurado</a> para usar criptografia MD5 para senhas, mas a versão do módulo Usuários e Grupos instalada em seu sistema não inclui as funções MD5 necessárias. Atualize para a versão 1.114 ou posterior.
@@ -50,5 +50,5 @@ sync_ecannot=Você não tem permissão para configurar a sincronização
 
 log_sync=Opções de sincronização alteradas
 log_create=Usuário $1 criado
-log_delete=Utilizador eliminado $1 
-log_modify=Utilizador modificado $1 
+log_delete=Utilizador eliminado $1
+log_modify=Utilizador modificado $1

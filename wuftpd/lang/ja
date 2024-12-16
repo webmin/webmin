@@ -1,11 +1,11 @@
 index_title=WU-FTPD サーバ
 index_eftpd=FTP サーバ $1 はご使用のシステムに見つかりませんでした。FTP サーバがインストールされてい
-index_eftpaccess=FTP サーバ設定ファイル $1 は存在しません。FTP サーバがインストールされていないか、 
-index_eversion=FTP サーバ $1 は WU-FTPd ではありません。オペレーティング システムで提供された古い 
+index_eftpaccess=FTP サーバ設定ファイル $1 は存在しません。FTP サーバがインストールされていないか、
+index_eversion=FTP サーバ $1 は WU-FTPd ではありません。オペレーティング システムで提供された古い
 index_apply=変更を適用
-index_applymsg=現在の設定を適用するには、このボタンをクリックしてください。これは、すべての実行中の 
+index_applymsg=現在の設定を適用するには、このボタンをクリックしてください。これは、すべての実行中の
 index_start=サーバの起動
-index_startmsg=FTP サーバを現在の設定で起動するには、このボタンをクリックしてください。また、<a 
+index_startmsg=FTP サーバを現在の設定で起動するには、このボタンをクリックしてください。また、<a
 index_startmsg2=FTP サーバを現在の設定で起動するには、このボタンをクリックしてください。また、inetd ま
 index_return=FTP サーバ オプション
 
@@ -24,9 +24,9 @@ class_realuser=ゲストとして<i>扱わない</i> Unix ユーザと UID
 class_realgroup=ゲストとして<i>扱わない</i> Unix グループとGID
 class_ftpusers=拒否する Unix ユーザ ($1 から)
 class_deny_uid=拒否する Unix ユーザと UID
-class_deny_gid=拒否する Unix グループと GID 
+class_deny_gid=拒否する Unix グループと GID
 class_allow_uid=拒否<i>しない</i> Unix ユーザと UID
-class_allow_gid=拒否<i>しない</i> Unix グループと GID 
+class_allow_gid=拒否<i>しない</i> Unix グループと GID
 class_err=ユーザのクラスを保存できませんでした
 class_eclass='$1' は無効なクラス名です
 class_etypes=クラス '$1' の種類が選択されていません

@@ -107,7 +107,7 @@ edit_none=Tiada modul PAM yang dinyatakan untuk langkah ini.
 edit_delete=Padamkan perkhidmatan PAM
 edit_move=Pindah
 edit_return=Perkhidmatan PAM
-edit_inc=Sertakan perkhidmatan $1 
+edit_inc=Sertakan perkhidmatan $1
 edit_iheader=Termasuk perkhidmatan PAM
 
 pam_pwdb.so=Pengesahan kata laluan Unix
@@ -273,17 +273,17 @@ mail_edir=Direktori rol mel yang hilang atau tidak sah
 
 stack_service=Lulus cek ke perkhidmatan PAM
 
-log_pam_create=Perkhidmatan PAM yang dibuat $1 
-log_pam_delete=Perkhidmatan PAM dipadam $1 
-log_mod_create=Modul PAM yang ditambah $1 ke perkhidmatan $2 
-log_mod_modify=Mod modul PAM $1 dalam perkhidmatan $2 
-log_mod_delete=Mod PAM yang dipadam $1 dalam perkhidmatan $2 
-log_mod_move=Mod PAM bertukar dalam perkhidmatan $3 
-log_mod_move_l=Mod PAM bertukar $1 dan $2 dalam perkhidmatan $3 
-log_inc_create=Ditambah termasuk $1 untuk perkhidmatan $2 
-log_inc_modify=Diubah suai termasuk $1 untuk perkhidmatan $2 
-log_inc_delete=Dihapus termasuk $1 untuk perkhidmatan $2 
-log_incs=Dikemas kini termasuk untuk perkhidmatan $1 
+log_pam_create=Perkhidmatan PAM yang dibuat $1
+log_pam_delete=Perkhidmatan PAM dipadam $1
+log_mod_create=Modul PAM yang ditambah $1 ke perkhidmatan $2
+log_mod_modify=Mod modul PAM $1 dalam perkhidmatan $2
+log_mod_delete=Mod PAM yang dipadam $1 dalam perkhidmatan $2
+log_mod_move=Mod PAM bertukar dalam perkhidmatan $3
+log_mod_move_l=Mod PAM bertukar $1 dan $2 dalam perkhidmatan $3
+log_inc_create=Ditambah termasuk $1 untuk perkhidmatan $2
+log_inc_modify=Diubah suai termasuk $1 untuk perkhidmatan $2
+log_inc_delete=Dihapus termasuk $1 untuk perkhidmatan $2
+log_incs=Dikemas kini termasuk untuk perkhidmatan $1
 
 inc_edit=Edit Perkhidmatan Termasuk
 inc_create=Buat Perkhidmatan Termasuk

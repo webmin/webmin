@@ -8,8 +8,8 @@ index_ftp=À partir de l'URL
 index_identok2=Rechercher des packages pour un fichier :
 index_treturn=arbre de package
 index_tree2=Parcourir l’arborescence des packages
-index_epackagecmd=Le système de package $1 nécessite la commande $2 
-index_eupdatecmd=Le système de mise à jour $1 nécessite la commande $2 
+index_epackagecmd=Le système de package $1 nécessite la commande $2
+index_eupdatecmd=Le système de mise à jour $1 nécessite la commande $2
 index_epackagecheck=Le système de gestion des packages sélectionné n'est pas valide: $1. <br>Vous devrez peut-être sélectionner un autre système sur la page<a href='$2'> configuration du module </a>.
 index_eupdatecheck=Le système de mise à jour sélectionné n'est pas valide: $1. <br>Vous devrez peut-être sélectionner une méthode de mise à jour différente sur la page<a href='$2'> configuration du module </a>.
 index_echeckpackage=Aucun système de package n'a été détecté!
@@ -52,7 +52,7 @@ rpm_findrpm=Nom de fichier du package
 rpm_finddistro=Distribution
 rpm_finddesc=La description
 
-slack_edir=Répertoire des packages Slackware manquant $1 
+slack_edir=Répertoire des packages Slackware manquant $1
 
 debian_manager=Debian
 
@@ -60,7 +60,7 @@ log_install_yum_l=Package (s) installé (s) $1 à partir de YUM
 log_install_yum=$2 package (s) installé (s) depuis YUM
 log_install_rhn_l=Package (s) installé (s) $1 à partir du réseau Redhat
 log_install_rhn=$2 package (s) installé (s) depuis le réseau Redhat
-log_deletes_l=Packages non installés $1 
+log_deletes_l=Packages non installés $1
 log_deletes=Packages $1 non installés
 log_urpmi_update=Packages URPMI disponibles et mis à jour
 log_urpmi_upgrade=Packages URPMI installés et mis à niveau
@@ -161,19 +161,19 @@ emerge_name=Portage
 
 cygwin_fmissing=Le fichier est manquant
 cygwin_lmissing=Le fichier vers lequel le lien pointe est manquant
-cygwin_estat=Échec de la création du fichier de statistiques: $1 
-cygwin_elread=Impossible de lire le lien symbolique: $1 
-cygwin_elstat=Impossible de créer un lien symbolique: $1 
+cygwin_estat=Échec de la création du fichier de statistiques: $1
+cygwin_elread=Impossible de lire le lien symbolique: $1
+cygwin_elstat=Impossible de créer un lien symbolique: $1
 cygwin_badpostscript=Attention: ce script ne semble pas avoir été exécuté
 cygwin_pkgexists=Le package $1 existe déjà.
 cygwin_warnuse=Avertissement: Ce n'est pas une interface officielle pour gérer le logiciel Cygwin. À utiliser à vos risques et périls.
-cygwin_edb=Base de données des packages Cygwin manquante $1 
+cygwin_edb=Base de données des packages Cygwin manquante $1
 
 deletes_err=Impossible de supprimer les packages
 deletes_desc=Désinstallation des packages $1 ..
-deletes_failed1=Échec de la désinstallation de $1 : $2 
-deletes_success1=Désinstallation réussie de $1 
-deletes_failed2=La désinstallation a échoué : $1 
+deletes_failed1=Échec de la désinstallation de $1 : $2
+deletes_success1=Désinstallation réussie de $1
+deletes_failed2=La désinstallation a échoué : $1
 deletes_success2=.. désinstallation terminée.
 deletes_rusure=Voulez-vous vraiment désinstaller les packages $1 ?
 deletes_ok=Supprimez-les tous

@@ -9,7 +9,7 @@ index_stopdesc=Ikklikkja din il-buttuna biex twaqqaf it-tmexxija tad-daemon Sysl
 index_start=Ibda Syslog-NG
 index_startdesc=Ikklikkja din il-buttuna biex tibda d-daemon Syslog-NG, billi tuża l-konfigurazzjoni attwali.
 index_return=indiċi tal-modulu
-index_version=Syslog-NG $1 
+index_version=Syslog-NG $1
 
 options_title=Għażliet ta 'qtugħ
 options_header=Għażliet għall-fajls tal-ġurnal kollha
@@ -72,14 +72,14 @@ destinations_typeg=Sokit tad-datagramma
 destinations_types=Sokit tal-fluss
 destinations_allusers=L-utenti kollha
 destinations_users=Utenti $1 biss
-destinations_host=Ospitanti $1 
+destinations_host=Ospitanti $1
 destinations_view=Ara ..
 destinations_none=L-ebda fajl ta 'reġistrazzjoni ta' destinazzjoni ma ġie definit s'issa.
 destinations_delete=Ħassar il-Destinazzjonijiet magħżula
 destinations_add=Żid destinazzjoni log ġdida.
 destinations_return=destinazzjonijiet tal-log
 destinations_desc=Log tal-modulu l-ieħor
-destinations_cmd=Ħruġ minn $1 
+destinations_cmd=Ħruġ minn $1
 
 destination_header=Idħol id-destinazzjoni tal-għażliet
 destination_title1=Oħloq Destinazzjoni Log
@@ -259,10 +259,10 @@ source_edoor=Nieqes jew invalidu l-isem tal-fajl tal-bieb tan-nixxiegħa
 source_transport=Protokoll tan-netwerk
 
 view_title=Ara Logfile
-view_header=L-aħħar $1 linji ta ' $2 
+view_header=L-aħħar $1 linji ta ' $2
 view_empty=Il-fajl tal-ġurnal huwa vojt
 view_refresh=Aġġorna
-view_filter=Uri biss linji bit-test $1 
+view_filter=Uri biss linji bit-test $1
 
 apply_err=Ma rnexxielux japplika l-konfigurazzjoni
 apply_egone=Mhux għaddej!
@@ -271,17 +271,17 @@ start_err=Ma rnexxielux jibda s-server Syslog-NG
 
 stop_err=Ma rnexxielux iwaqqaf is-server Syslog-NG
 
-log_create_destination=Destinazzjoni ta 'log maħluqa ta' $1 
-log_modify_destination=Destinazzjoni modifikata tal-log $1 
-log_delete_destination=Destinazzjoni tal-log imħassra $1 
+log_create_destination=Destinazzjoni ta 'log maħluqa ta' $1
+log_modify_destination=Destinazzjoni modifikata tal-log $1
+log_delete_destination=Destinazzjoni tal-log imħassra $1
 log_delete_destinations=Id-destinazzjonijiet tal-log $1 imħassra
-log_create_filter=Filtru tal-ġurnal maħluq $1 
-log_modify_filter=Filtru tal-ġurnal modifikat $1 
-log_delete_filter=Filtru tal-ġurnal imħassar $1 
+log_create_filter=Filtru tal-ġurnal maħluq $1
+log_modify_filter=Filtru tal-ġurnal modifikat $1
+log_delete_filter=Filtru tal-ġurnal imħassar $1
 log_delete_filters=Filtri tal-log $1 imħassra
-log_create_source=Sors tal-ġurnal maħluq $1 
-log_modify_source=Sors ta 'log modifikat $1 
-log_delete_source=Sors tal-ġurnal imħassar $1 
+log_create_source=Sors tal-ġurnal maħluq $1
+log_modify_source=Sors ta 'log modifikat $1
+log_delete_source=Sors tal-ġurnal imħassar $1
 log_delete_sources=Sorsi tal-log $1 imħassra
 log_create_log=Inħoloq mira tal-ġurnal
 log_modify_log=Log immodifikat fil-mira

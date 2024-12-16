@@ -1,7 +1,7 @@
 index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
 index_position=Zobrazují se pravidla $1 až $2 z $3
-index_evalid=VAROVÁNÍ! Vaše aktuální konfigurace IPtables je neplatná : $1 
+index_evalid=VAROVÁNÍ! Vaše aktuální konfigurace IPtables je neplatná : $1
 index_no_comment=
 index_crename=Přejmenovat řetězec
 index_cmovesel=Přesunout vybrané
@@ -22,19 +22,19 @@ index_ipvxmode=Změnit verzi protokolu IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
 
-desc_icmpv6-type=Typ ICMP je $1 
-desc_icmpv6-type!=Typ ICMP není $1 
-desc_ctstate=stav připojení je $1 
-desc_ctstate!=stav připojení není $1 
+desc_icmpv6-type=Typ ICMP je $1
+desc_icmpv6-type!=Typ ICMP není $1
+desc_ctstate=stav připojení je $1
+desc_ctstate!=stav připojení není $1
 desc_match-set=$2 odpovídá IPset $1
 desc_match-set!=$2 neodpovídá IPset $1
 desc_match-set_src=příchozí provoz
 desc_match-set_dst=odchozí provoz
-desc_physdev-in=vstupní fyzické rozhraní je $1 
-desc_physdev-in!=vstupní fyzické rozhraní není $1 
-desc_physdev-out=výstupní fyzické rozhraní je $1 
-desc_physdev-out!=výstupní fyzické rozhraní není $1 
-desc_args--match-set=$2 je obsaženo v sadě IP $1 
+desc_physdev-in=vstupní fyzické rozhraní je $1
+desc_physdev-in!=vstupní fyzické rozhraní není $1
+desc_physdev-out=výstupní fyzické rozhraní je $1
+desc_physdev-out!=výstupní fyzické rozhraní není $1
+desc_args--match-set=$2 je obsaženo v sadě IP $1
 desc_src=zdroj
 desc_dest=destinace
 
@@ -55,9 +55,9 @@ edit_matchsetdst=na odchozím provozu
 save_ephysdevin=Chybějící nebo neplatné příchozí fyzické rozhraní
 save_ephysdevout=Chybějící nebo neplatné odchozí fyzické rozhraní
 
-log_rename_chain=Přejmenovaný řetězec $1 v tabulce $2 
-log_movesel_chain=Pravidla $3 byla přesunuta z řetězce $1 v tabulce $2 
-log_openports=Otevřené porty brány firewall $1 
+log_rename_chain=Přejmenovaný řetězec $1 v tabulce $2
+log_movesel_chain=Pravidla $3 byla přesunuta z řetězce $1 v tabulce $2
+log_openports=Otevřené porty brány firewall $1
 
 add_enone=Nebyly vybrány žádné servery, které chcete přidat!
 

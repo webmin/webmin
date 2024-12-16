@@ -252,7 +252,7 @@ send_eattach=Priedai negali viršyti $1 kB.
 send_eperms=Vartotojas $1 negali skaityti $2
 send_eperms2=Jums neleidžiama siųsti failo $1
 send_epath=„Sendmail“ vykdomojo failo $1 nėra.
-send_efile=Nepavyko nuskaityti priedo $1 : $2 
+send_efile=Nepavyko nuskaityti priedo $1 : $2
 send_done=.. padaryta.
 
 send_epass=Negalite pasirašyti pranešimo, nes jūsų slaptafrazė dar nėra nustatyta „GnuPG“ modulyje.
@@ -337,8 +337,8 @@ folder_spam=Šlamštas
 
 detach_err=Nepavyko atskirti failo
 detach_edir=Nėra failo ar katalogo, kurį būtų galima išsaugoti įvestame
-detach_eopen=Nepavyko atidaryti $1 : $2 
-detach_ewrite=Nepavyko parašyti į $1 : $2 
+detach_eopen=Nepavyko atidaryti $1 : $2
+detach_ewrite=Nepavyko parašyti į $1 : $2
 detach_title=Nuimkite failą
 detach_ok=Parašė priedą prie serverio failo $1 ($2).
 
@@ -437,7 +437,7 @@ white_already=El. Pašto adresas $1 jau yra „SpamAssassin“ leidžiamų adres
 
 ldap_emod=Trūksta „Perl“ modulio $1, reikalingo prisijungimui prie LDAP
 ldap_econn=Nepavyko prisijungti prie LDAP serverio $1 prievado $2
-ldap_elogin=Nepavyko prisijungti prie LDAP serverio $1 kaip $2 : $3 
+ldap_elogin=Nepavyko prisijungti prie LDAP serverio $1 kaip $2 : $3
 ldap_ehost=Modulio konfigūracijoje nenustatytas nė vienas LDAP serveris
 ldap_eport=Modulio konfigūracijoje nenustatytas tinkamas LDAP serverio prievadas
 ldap_euser=Modulio konfigūracijoje nenustatytas LDAP prisijungimas
