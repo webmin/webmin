@@ -2,8 +2,8 @@ index_title=Pemapar Log Sistem
 index_elogs=Tiada log ditemui untuk dipaparkan
 index_to=Log destinasi
 index_rule=Mesej dipilih
-index_file=Fail $1 
-index_cmd=Output daripada $1 
+index_file=Fail $1
+index_cmd=Output daripada $1
 index_return=pemapar log sistem
 index_view=Lihat..
 index_viewfile=Lihat fail log:
@@ -33,12 +33,12 @@ journal_since=sejak
 
 view_title=Lihat Fail Log
 view_titlejournal=Lihat Jurnal
-view_header=$1 baris terakhir $2 
+view_header=$1 baris terakhir $2
 view_header2=$1 baris terakhir
-view_header3=Barisan $1 
+view_header3=Barisan $1
 view_empty=Fail log kosong
 view_loading=Fail log sedang diperhatikan.. Tiada baris baru lagi.
-view_filter=Tapis baris dengan teks $1 
+view_filter=Tapis baris dengan teks $1
 view_filter_btn=Penapis
 
 save_efile='$1' bukan nama fail yang sah  : $2

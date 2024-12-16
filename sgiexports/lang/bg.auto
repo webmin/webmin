@@ -33,7 +33,7 @@ save_erw=Не са въведени хостове за четене и запи
 save_eroot=Не са въведени хостове за достъп до корен файл
 save_eaccess=Не са въведени хостове за достъп до монтиране
 
-log_create_export=Създаден експорт от $1 
-log_delete_export=Изтрит износ на $1 
-log_modify_export=Модифициран износ на $1 
+log_create_export=Създаден експорт от $1
+log_delete_export=Изтрит износ на $1
+log_modify_export=Модифициран износ на $1
 log_apply=Приложна конфигурация

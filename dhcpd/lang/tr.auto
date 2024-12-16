@@ -24,7 +24,7 @@ index_ndisplay=Ağları ve alt ağları şu şekilde göster:
 index_norder0=Görev
 index_norder1=Dosya yapısı
 index_norder2=İsim/IP adresi
-index_version=ISC DHCPd sürümü $1 
+index_version=ISC DHCPd sürümü $1
 index_buttiface=Ağ Arayüzünü Düzenle
 index_iface=DHCP sunucusunun başlatıldığında dinleyeceği ağ arabirimlerini ayarlayın.
 index_subtoomany=Görüntülenecek çok fazla alt ağ var.
@@ -48,7 +48,7 @@ butt_leases=Kira Listesi
 esub_hosts=Doğrudan bu alt ağda barındırılıyor
 esub_groups=Doğrudan bu alt ağdaki gruplar
 esub_pools=Alt Ağ için Adres Havuzları
-esub_pool=Havuz $1 
+esub_pool=Havuz $1
 esub_poolnone=Tanımlanmış adres havuzu yok
 
 esub_pooladd=Bir adres havuzu ekleyin.

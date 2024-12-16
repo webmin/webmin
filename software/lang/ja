@@ -111,7 +111,7 @@ rpm_eroot=root ディレクトリ '$1' は存在しません
 bsd_unknown=不明
 bsd_scripts=プリ インストールおよびポスト インストール スクリプトを実行しますか？
 bsd_force=前提条件がない場合はインストールを強制しますか？
-bsd_manager=$1 パッケージ マネージャ  
+bsd_manager=$1 パッケージ マネージャ
 
 slack_unclass=その他
 slack_unknown=不明

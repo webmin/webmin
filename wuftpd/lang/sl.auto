@@ -1,14 +1,14 @@
 index_title=WU-FTPD strežnik
 index_eftpd=FTP strežnika $1 v vašem sistemu ni bilo mogoče najti. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula FTP strežnika</a> napačna.
 index_eftpaccess=Konfiguracijska datoteka strežnika FTP $1 ne obstaja. Mogoče ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula FTP strežnika</a> napačna.
-index_eversion=FTP strežnik $1 ni WU-FTPd. Mogoče uporabljate starejši FTPd, ki je na voljo v vašem operacijskem sistemu, ali je vaša <a href='$2'>konfiguracija modula FTP strežnika</a> pravilna. Izhod iz FTP strežnika je bil : $3 
+index_eversion=FTP strežnik $1 ni WU-FTPd. Mogoče uporabljate starejši FTPd, ki je na voljo v vašem operacijskem sistemu, ali je vaša <a href='$2'>konfiguracija modula FTP strežnika</a> pravilna. Izhod iz FTP strežnika je bil : $3
 index_apply=Uporabi spremembe
 index_applymsg=Kliknite ta gumb, če želite uporabiti trenutno konfiguracijo. To bo ustavilo in znova zagnalo vse tekoče procese strežnika FTP in s tem odklopilo vse povezane uporabnike.
 index_start=Zaženite strežnik
 index_startmsg=Kliknite ta gumb, da zaženete FTP strežnik s trenutno konfiguracijo. Po potrebi lahko tudi konfigurirate strežnik, da se samodejno zažene s pomočjo modula <a href='$1'>Internet Services</a>.
 index_startmsg2=Kliknite ta gumb, da zaženete FTP strežnik s trenutno konfiguracijo. Prav tako lahko konfigurirate strežnik, da se samodejno zažene po potrebi z uporabo inetd ali katerega koli enakovrednega programa.
 index_return=Možnosti strežnika FTP
-index_version=Različica WU-FTPd $1 
+index_version=Različica WU-FTPd $1
 
 class_title=Uporabniki in razredi
 class_header=Uporabniški razredi in uporabniške možnosti

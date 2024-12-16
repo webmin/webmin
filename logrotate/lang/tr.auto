@@ -2,7 +2,7 @@ index_title=Günlük Dosyası Döndürme
 index_econf=$1 günlük döndürme yapılandırma dosyası sisteminizde bulunamadı. Belki logrotate kurulu değil veya <a href='$2'>modül yapılandırması</a> yanlış.
 index_ecmd=$1 günlük döndürme programı sisteminizde bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırması</a> yanlış.
 index_eversion=$1 : $2 komutuyla logrotate sürümü alınamadı
-index_version=Logrotate sürüm $1 
+index_version=Logrotate sürüm $1
 index_add=Döndürmek için yeni bir günlük dosyası ekleyin.
 index_file=Log dosyası
 index_period=Dönme süresi

@@ -1,5 +1,5 @@
 index_title=침입 탐지기
-index_ver=버전 $1 
+index_ver=버전 $1
 index_echeck=이 시스템에서 Fail2Ban을 감지하는 동안 오류가 발생했습니다 : $1. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 올바르지 않습니다.
 index_fail2ban=Fail2Ban
 index_atboot=부팅 할 때 시작 하시겠습니까?
@@ -26,7 +26,7 @@ filters_add=새 로그 필터를 추가하십시오.
 filters_return=필터 목록
 filters_derr=필터를 삭제하지 못했습니다
 filters_enone=선택된 사항 없음
-filters_einuse=$1 필터는 탈옥에 의해 사용되므로 삭제할 수 없습니다  : $2 
+filters_einuse=$1 필터는 탈옥에 의해 사용되므로 삭제할 수 없습니다  : $2
 
 filter_title1=필터 만들기
 filter_title2=필터 편집
@@ -41,7 +41,7 @@ filter_err=필터를 저장하지 못했습니다
 filter_ename=필터 이름이 없거나 잘못되었습니다
 filter_eclash=필터 이름이 이미 사용 중입니다
 filter_efail=입력 한 정규식이 없습니다.
-filter_einuse=이 필터는 감옥에서 사용되므로 삭제할 수 없습니다  : $1 
+filter_einuse=이 필터는 감옥에서 사용되므로 삭제할 수 없습니다  : $1
 
 actions_title=경기 액션
 actions_name=액션 이름
@@ -51,7 +51,7 @@ actions_add=새로운 액션을 추가하십시오.
 actions_return=행동 목록
 actions_derr=작업을 삭제하지 못했습니다.
 actions_enone=선택된 사항 없음
-actions_einuse=$1 조치는 감옥에서 사용되므로 삭제할 수 없습니다  : $2 
+actions_einuse=$1 조치는 감옥에서 사용되므로 삭제할 수 없습니다  : $2
 
 action_title1=경기 액션 만들기
 action_title2=매치 액션 편집
@@ -68,7 +68,7 @@ action_check=IP를 금지하기 전에 실행할 명령
 action_ban=IP 금지 명령
 action_unban=IP 차단 해제 명령
 action_desc=<i>&lt;ip&gt;</i>은 금지 된 IP 주소로 대체됩니다.
-action_einuse=이 조치는 감옥에서 사용되므로 삭제할 수 없습니다  : $1 
+action_einuse=이 조치는 감옥에서 사용되므로 삭제할 수 없습니다  : $1
 
 jails_title=필터 액션 감옥
 jails_add=새로운 감옥을 추가하십시오.
@@ -134,14 +134,14 @@ start_err=서버를 시작하지 못했습니다
 stop_err=서버를 중지하지 못했습니다
 restart_err=서버를 다시 시작하지 못했습니다
 
-log_create_filter=생성 된 필터 $1 
-log_update_filter=수정 된 필터 $1 
-log_delete_filter=삭제 된 필터 $1 
-log_create_action=작성된 작업 $1 
-log_update_action=수정 된 작업 $1 
-log_delete_action=삭제 된 작업 $1 
+log_create_filter=생성 된 필터 $1
+log_update_filter=수정 된 필터 $1
+log_delete_filter=삭제 된 필터 $1
+log_create_action=작성된 작업 $1
+log_update_action=수정 된 작업 $1
+log_delete_action=삭제 된 작업 $1
 log_create_jail=감옥 $1 을 (를) 생성 함
-log_update_jail=수정 된 감옥 $1 
+log_update_jail=수정 된 감옥 $1
 log_delete_jail=감옥 $1 을 (를) 삭제했습니다.
 log_config=변경된 글로벌 구성
 log_stop=Fail2Ban 서버 중지

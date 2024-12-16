@@ -252,7 +252,7 @@ send_eattach=Os anexos não podem totalizar mais que $1 kB de tamanho.
 send_eperms=O usuário $1 não pode ler $2
 send_eperms2=Você não tem permissão para enviar o arquivo $1
 send_epath=O executável Sendmail $1 não existe.
-send_efile=Falha ao ler o anexo $1 : $2 
+send_efile=Falha ao ler o anexo $1 : $2
 send_done=.. feito.
 
 send_epass=Você não pode assinar uma mensagem porque sua senha ainda não foi configurada no módulo GnuPG.
@@ -335,8 +335,8 @@ folder_spam=Spam
 
 detach_err=Falha ao desanexar arquivo
 detach_edir=Nenhum arquivo ou diretório para salvar na entrada
-detach_eopen=Falha ao abrir $1 : $2 
-detach_ewrite=Falha ao gravar em $1 : $2 
+detach_eopen=Falha ao abrir $1 : $2
+detach_ewrite=Falha ao gravar em $1 : $2
 detach_title=Desanexar arquivo
 detach_ok=Gravou o anexo no arquivo do lado do servidor $1 ($2).
 
@@ -435,7 +435,7 @@ white_already=O endereço de email $1 já está na lista de endereços permitido
 
 ldap_emod=Módulo Perl ausente $1 necessário para conectar-se ao LDAP
 ldap_econn=Falha ao conectar ao servidor LDAP $1 porta $2
-ldap_elogin=Falha ao ligar ao servidor LDAP $1 como $2 : $3 
+ldap_elogin=Falha ao ligar ao servidor LDAP $1 como $2 : $3
 ldap_ehost=Nenhum servidor LDAP definido na configuração do módulo
 ldap_eport=Nenhuma porta do servidor LDAP válida definida na configuração do módulo
 ldap_euser=Nenhum login LDAP definido na configuração do módulo

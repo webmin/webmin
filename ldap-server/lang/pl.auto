@@ -1,4 +1,4 @@
-index_version=OpenLDAP $1 
+index_version=OpenLDAP $1
 index_openldap=OpenLDAP
 index_eslapd=W systemie nie znaleziono programu serwerowego OpenLDAP $1. Być może ścieżka na stronie <a href='$2'>konfiguracji modułu</a> jest nieprawidłowa?
 index_econfig=Plik konfiguracyjny serwera OpenLDAP $1 nie został znaleziony w twoim systemie. Być może ścieżka na stronie <a href='$2'>konfiguracji modułu</a> jest nieprawidłowa?
@@ -24,10 +24,10 @@ connect_efile=Nie znaleziono pliku konfiguracyjnego OpenLDAP $1 - być może w t
 connect_euser2=Brak użytkownika do zalogowania, jak stwierdzono w konfiguracji serwera LDAP
 connect_epass2=W konfiguracji serwera LDAP nie znaleziono hasła do logowania
 connect_epass3=Hasło w konfiguracji serwera LDAP jest szyfrowane i nie może być używane przez Webmin
-connect_emod=Moduł Perl $1 potrzebny do połączenia z serwerem LDAP nie jest zainstalowany. Pełny komunikat o błędzie Perla to : $2 
-connect_eldap=Nie udało się połączyć z serwerem LDAP $1 na porcie $2 
-connect_essl=Nie można uruchomić szyfrowania TLS na serwerze LDAP $1 : $2 
-connect_elogin=Nie udało się zalogować do serwera LDAP $1 jako $2 : $3 
+connect_emod=Moduł Perl $1 potrzebny do połączenia z serwerem LDAP nie jest zainstalowany. Pełny komunikat o błędzie Perla to : $2
+connect_eldap=Nie udało się połączyć z serwerem LDAP $1 na porcie $2
+connect_essl=Nie można uruchomić szyfrowania TLS na serwerze LDAP $1 : $2
+connect_elogin=Nie udało się zalogować do serwera LDAP $1 jako $2 : $3
 connect_cpan=Możesz mieć <tt>$1</tt> moduł Perla <a href='$2'>automatycznie zainstalowany</a> z CPAN.
 
 slapd_title=Konfiguracja serwera OpenLDAP
@@ -109,11 +109,11 @@ acl_add=Dodaj nową regułę kontroli dostępu.
 acl_return=zasady kontroli dostępu
 
 browser_title=Przeglądaj bazę danych
-browser_econn=Nie można użyć przeglądarki LDAP : $1 
+browser_econn=Nie można użyć przeglądarki LDAP : $1
 browser_ecannot=Nie możesz przeglądać bazy danych LDAP
 browser_base=Przeglądanie:
 browser_ok=Pokazać
-browser_esearch=Wyszukiwanie LDAP nie powiodło się : $1 
+browser_esearch=Wyszukiwanie LDAP nie powiodło się : $1
 browser_subs=Obiekty potomne
 browser_attrs=Atrybuty obiektów
 browser_parent=Przeglądaj rodzica
@@ -144,26 +144,26 @@ browser_sok=Szukaj
 
 save_err=Nie udało się zmienić atrybutu
 save_ebase=Nie można pobrać obiektu $1 z bazy danych
-save_emodify=Modyfikacja LDAP $2 w $1 nie powiodła się : $3 
+save_emodify=Modyfikacja LDAP $2 w $1 nie powiodła się : $3
 save_enone=Nie wprowadzono żadnych wartości
 
 add_err=Nie udało się dodać atrybutu
 add_eadd=Brak lub nieprawidłowa nazwa atrybutu
 add_evalue=Brakująca wartość
-add_emodify=Nie udało się dodać LDAP $2 do $1 : $3 
+add_emodify=Nie udało się dodać LDAP $2 do $1 : $3
 
 delete_err=Nie udało się usunąć atrybutów
 delete_enone=Nie wybrano
-delete_emodify=Usunięcie LDAP $2 z $1 nie powiodło się : $3 
+delete_emodify=Usunięcie LDAP $2 z $1 nie powiodło się : $3
 
 sdelete_err=Nie udało się usunąć obiektów
 sdelete_edn=Obiekt $1 nie został znaleziony
-sdelete_edel=Usunięcie LDAP $1 nie powiodło się : $2 
+sdelete_edel=Usunięcie LDAP $1 nie powiodło się : $2
 
 rename_err=Nie można zmienić nazwy obiektu
-rename_eget=Nie można znaleźć obiektu o DN $1 
+rename_eget=Nie można znaleźć obiektu o DN $1
 rename_enew=Nowa nazwa wydaje się nieprawidłowa
-rename_erename=Błąd LDAP newdn do $2 z $1 nie powiódł się : $3 
+rename_erename=Błąd LDAP newdn do $2 z $1 nie powiódł się : $3
 
 oadd_title=Utwórz obiekt
 oadd_header=Nowe szczegóły obiektu LDAP
@@ -175,11 +175,11 @@ oadd_edn1=Brakująca lub niepoprawna nazwa nazwy wyróżniającej
 oadd_edn2=Brakująca lub niepoprawna wartość dla nazwy wyróżniającej
 oadd_eclasses=Nie wprowadzono żadnych klas obiektów
 oadd_eclass=„$1” nie wygląda jak poprawna klasa obiektowa
-oadd_ename=Niepoprawnie wyglądająca nazwa dla atrybutu $1 
-oadd_eget=Nie udało się pobrać obiektu $1 : $2 
-oadd_eget2=Nie udało się sprawdzić kolizji z $1 : $2 
+oadd_ename=Niepoprawnie wyglądająca nazwa dla atrybutu $1
+oadd_eget=Nie udało się pobrać obiektu $1 : $2
+oadd_eget2=Nie udało się sprawdzić kolizji z $1 : $2
 oadd_eclash=Obiekt o nazwie DN $1 już istnieje
-oadd_eadd=Nie udało się dodać LDAP $1 : $2 
+oadd_eadd=Nie udało się dodać LDAP $1 : $2
 oadd_err=Nie udało się utworzyć nowego obiektu
 
 create_title=Utwórz drzewo
@@ -198,7 +198,7 @@ create_edom=Brakująca lub nieprawidłowa nazwa domeny
 create_edn=Brakująca lub niepoprawna nazwa wyróżniająca
 create_err=Nie udało się utworzyć nowego drzewa
 create_doingdn=Tworzenie bazy DN DN 1 ..
-create_edoingdn=.. nie powiodło się : $1 
+create_edoingdn=.. nie powiodło się : $1
 create_done=.. gotowy
 create_doingex=Tworzenie przykładowego obiektu z DN $1 ..
 create_edoingex=.. nie powiodło się: $1. Z drzewa można jednak nadal korzystać.
@@ -207,49 +207,49 @@ create_eoc=Nie można znaleźć odpowiedniej klasy obiektu dla nowej nazwy wyró
 eunknown=Nieznany błąd
 
 apply_err=Nie można zastosować konfiguracji
-apply_ecmd=Błąd $1 : $2 
+apply_ecmd=Błąd $1 : $2
 apply_ecannot=Nie możesz zastosować konfiguracji
 
 stop_err=Nie udało się zatrzymać serwera LDAP
-stop_ecmd=Błąd $1 : $2 
+stop_ecmd=Błąd $1 : $2
 stop_egone=Już nie działa!
-stop_ekill=Proces zabijania nie powiódł się : $1 
+stop_ekill=Proces zabijania nie powiódł się : $1
 stop_ecannot=Nie możesz zatrzymać serwera LDAP
 
 start_err=Nie udało się uruchomić serwera LDAP
-start_ecmd=Błąd $1 : $2 
+start_ecmd=Błąd $1 : $2
 start_ecannot=Nie możesz uruchomić serwera LDAP
 
-log_create_dn=Utworzono obiekt $1 
-log_delete_dn=Usunięty obiekt $1 
-log_rename_dn=Nazwa obiektu zmieniona $1 
+log_create_dn=Utworzono obiekt $1
+log_delete_dn=Usunięty obiekt $1
+log_rename_dn=Nazwa obiektu zmieniona $1
 log_delete_dns=Usunięto $1 obiektów
-log_create_attr=Dodano atrybut do obiektu $2 
-log_create_attr_l=Dodano atrybut $1 o wartości $3 do obiektu $2 
-log_modify_attr=Zaktualizowano atrybut w obiekcie $2 
-log_modify_attr_l=Zaktualizowano atrybut $1 o wartość $3 w obiekcie $2 
-log_delete_attr=Usunięto z obiektu $2 
-log_delete_attr_l=Usunięto atrybut $1 z obiektu $2 
-log_delete_attrs=Usunięto atrybuty $1 z obiektu $2 
+log_create_attr=Dodano atrybut do obiektu $2
+log_create_attr_l=Dodano atrybut $1 o wartości $3 do obiektu $2
+log_modify_attr=Zaktualizowano atrybut w obiekcie $2
+log_modify_attr_l=Zaktualizowano atrybut $1 o wartość $3 w obiekcie $2
+log_delete_attr=Usunięto z obiektu $2
+log_delete_attr_l=Usunięto atrybut $1 z obiektu $2
+log_delete_attrs=Usunięto atrybuty $1 z obiektu $2
 log_stop=Zatrzymano serwer LDAP
 log_start=Uruchomiono serwer LDAP
 log_apply=Zastosowana konfiguracja
 log_slapd=Zmieniono konfigurację serwera LDAP
 log_schema=Zmieniono włączone schematy LDAP
 log_gencert=Wygenerowano nowy certyfikat SSL
-log_sfile=Zmodyfikowany plik schematu $1 
-log_sup=Przeniesiono plik schematu w górę $1 
-log_sdown=Przeniesiono plik schematu $1 
-log_create=Utworzono nową nazwę wyróżniającą $1 
+log_sfile=Zmodyfikowany plik schematu $1
+log_sup=Przeniesiono plik schematu w górę $1
+log_sdown=Przeniesiono plik schematu $1
+log_create=Utworzono nową nazwę wyróżniającą $1
 log_bootup=Włączono serwer LDAP podczas rozruchu
 log_bootdown=Wyłączono serwer LDAP podczas uruchamiania
 log_perms=Naprawiono uprawnienia serwera LDAP
-log_create_access=Utworzono regułę kontroli dostępu dla $1 
-log_delete_access=Usuń regułę kontroli dostępu dla $1 
-log_modify_access=Zaktualizowano regułę kontroli dostępu dla $1 
-log_up_access=Przeniesiono w górę regułę kontroli dostępu dla $1 
-log_down_access=Przeniesiono regułę kontroli dostępu w dół dla $1 
-log_delete_accesses=Usunięte reguły kontroli dostępu $1 
+log_create_access=Utworzono regułę kontroli dostępu dla $1
+log_delete_access=Usuń regułę kontroli dostępu dla $1
+log_modify_access=Zaktualizowano regułę kontroli dostępu dla $1
+log_up_access=Przeniesiono w górę regułę kontroli dostępu dla $1
+log_down_access=Przeniesiono regułę kontroli dostępu w dół dla $1
+log_delete_accesses=Usunięte reguły kontroli dostępu $1
 log_all=wszystkie przedmioty
 
 gencert_title=Wygeneruj certyfikat SSL
@@ -275,7 +275,7 @@ acl_create=Czy można utworzyć nowe drzewo?
 acl_start=Czy można uruchomić i zatrzymać serwer LDAP?
 acl_apply=Czy można zastosować zmiany w konfiguracji?
 
-access_desc=$2 o $1 
+access_desc=$2 o $1
 access_self=samego siebie
 access_users=uwierzytelnieni użytkownicy
 access_anon=anonimowi użytkownicy
@@ -322,7 +322,7 @@ eacl_err=Nie udało się zapisać reguły kontroli dostępu
 eacl_edn=Brakująca lub niepoprawna nazwa wyróżniająca - powinna być jak <tt>uid=joe,dc=moja-domena,dc=com</tt>
 eacl_efilter=Brakujący lub nieprawidłowy filtr - powinien być podobny do <tt>(objectClass = posixAccount)</tt>
 eacl_eattrs=Brakująca lub niepoprawna lista atrybutów oddzielona przecinkami
-eacl_ewho=Brakująca lub niepoprawnie wyglądająca nazwa wyróżniająca w wierszu $1 
-eacl_eaccess=Brakujący lub nieprawidłowy poziom dostępu w wierszu $1 
+eacl_ewho=Brakująca lub niepoprawnie wyglądająca nazwa wyróżniająca w wierszu $1
+eacl_eaccess=Brakujący lub nieprawidłowy poziom dostępu w wierszu $1
 eacl_order=Porządek reguł
 eacl_noorder=Brak zestawu

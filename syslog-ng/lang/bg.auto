@@ -9,7 +9,7 @@ index_stopdesc=Щракнете върху този бутон, за да спр
 index_start=Стартирайте Syslog-NG
 index_startdesc=Щракнете върху този бутон, за да стартирате демон Syslog-NG, използвайки текущата конфигурация.
 index_return=индекс на модула
-index_version=Syslog-NG $1 
+index_version=Syslog-NG $1
 
 options_title=Опции за регистрация
 options_header=Опции за всички лог файлове
@@ -71,15 +71,15 @@ destinations_typet=TCP syslog сървър
 destinations_typeg=Гнездо за дейтаграма
 destinations_types=Гнездо за поток
 destinations_allusers=Всички потребители
-destinations_users=Само потребители $1 
-destinations_host=Домакин $1 
+destinations_users=Само потребители $1
+destinations_host=Домакин $1
 destinations_view=Виж ..
 destinations_none=Засега не са дефинирани файлове на местоназначение.
 destinations_delete=Изтриване на избраните дестинации
 destinations_add=Добавете ново местоназначение на журнала.
 destinations_return=лог дестинации
 destinations_desc=Дневник на другия модул
-destinations_cmd=Резултат от $1 
+destinations_cmd=Резултат от $1
 
 destination_header=Влезте в опциите за дестинация
 destination_title1=Създаване на дестинация в лога
@@ -259,10 +259,10 @@ source_edoor=Липсващо или невалидно име на файлов
 source_transport=Мрежов протокол
 
 view_title=Преглед на логфайла
-view_header=Последни $1 реда от $2 
+view_header=Последни $1 реда от $2
 view_empty=Файлът на журнала е празен
 view_refresh=Обновяване
-view_filter=Показване само на редове с текст $1 
+view_filter=Показване само на редове с текст $1
 
 apply_err=Конфигурацията не се прилага
 apply_egone=Не работи!
@@ -271,17 +271,17 @@ start_err=Неуспешно стартиране на Syslog-NG сървър
 
 stop_err=Спирането на Syslog-NG сървъра не бе успешно
 
-log_create_destination=Създадена дестинация в дневника $1 
-log_modify_destination=Променено местоназначение на журнала $1 
-log_delete_destination=Изтрита дестинация на журнала $1 
+log_create_destination=Създадена дестинация в дневника $1
+log_modify_destination=Променено местоназначение на журнала $1
+log_delete_destination=Изтрита дестинация на журнала $1
 log_delete_destinations=Изтрити $1 дестинации за лог
-log_create_filter=Създаден филтър за лог $1 
-log_modify_filter=Променен лог филтър $1 
-log_delete_filter=Изтрит лог филтър $1 
+log_create_filter=Създаден филтър за лог $1
+log_modify_filter=Променен лог филтър $1
+log_delete_filter=Изтрит лог филтър $1
 log_delete_filters=Изтрити филтри за $1 журнал
-log_create_source=Създаден източник на журнала $1 
-log_modify_source=Модифициран източник на журнал $1 
-log_delete_source=Изтрит източник на журнала $1 
+log_create_source=Създаден източник на журнала $1
+log_modify_source=Модифициран източник на журнал $1
+log_delete_source=Изтрит източник на журнала $1
 log_delete_sources=Изтрити $1 източници на журнал
 log_create_log=Създадена цел на дневника
 log_modify_log=Модифицирана цел на лога

@@ -6,7 +6,7 @@ index_none=Nessun servizio Internet corrisponde alla tua ricerca.
 
 error_user=Utente mancante o non valido da eseguire come
 error_group=Gruppo mancante o non valido da eseguire come
-error_smfservice=Aggiornamento del servizio smf non riuscito con cmd '$1', codice errore $2 
+error_smfservice=Aggiornamento del servizio smf non riuscito con cmd '$1', codice errore $2
 error_smf_cmdfield=Per smf, il nome file del programma '$1' deve corrispondere al primo argomento del campo di comando, ovvero essere '$2'
 
 editrpc_act=Stato del programma

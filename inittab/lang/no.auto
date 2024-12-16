@@ -28,7 +28,7 @@ index_delete=Slett valgte prosesser
 inittab_none2=Ingen oppstartsprosesser ble funnet på systemet ditt. Dette indikerer sannsynligvis at den ikke bruker SysV init-konfigurasjonsfilen.
 
 edit_inittab_err=Du har ikke lov til å redigere en prosess
-edit_inittab_title=Rediger prosess $1 
+edit_inittab_title=Rediger prosess $1
 edit_inittab_details=Behandle detaljer
 edit_inittab_del=Slett
 edit_inittab_save=Lagre
@@ -40,10 +40,10 @@ save_inittab_err=Du har ikke lov til å lagre en prosess
 save_inittab_noid=Feil, ingen navneprosesser er angitt
 save_inittab_already=Feil, navneprosessen eksisterer allerede
 
-log_modify=Endret startprosess $1 
-log_rename=Omdøpt til prosess $1 til $2 
-log_create=Opprettet startprosess $1 
-log_delete=Slettet startprosess $1 
+log_modify=Endret startprosess $1
+log_rename=Omdøpt til prosess $1 til $2
+log_create=Opprettet startprosess $1
+log_delete=Slettet startprosess $1
 log_apply=Anvendt konfigurasjon
 log_deletes=$1 init prosesser er slettet
 

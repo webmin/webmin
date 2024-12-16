@@ -8,7 +8,7 @@ index_inet=Internet
 index_proto=Protocolo
 index_user=Do utilizador
 index_server=Programa servidor
-index_redirect=Encaminhar para $1 
+index_redirect=Encaminhar para $1
 index_enabled=Ativado?
 index_internal=Interno para o Xinetd
 index_add_inet=Crie um novo serviço de Internet
@@ -70,7 +70,7 @@ serv_eport=Número de porta ausente ou inválido
 serv_einst=Número ausente ou inválido de servidores simultâneos
 serv_euser=Você deve inserir um usuário
 serv_egroup=Você deve inserir um grupo
-serv_estd=Não há número de porta padrão para o serviço $1 
+serv_estd=Não há número de porta padrão para o serviço $1
 serv_eproto=Você deve selecionar um protocolo para este serviço
 serv_eserver=Programa de servidor ausente ou inválido
 serv_erhost=Host de encaminhamento ausente ou inválido
@@ -91,11 +91,11 @@ proto_tcp=TCP (Protocolo de Controle de Transmissão)
 proto_udp=UDP (User Datagram Protocol)
 
 restart_err=Falha ao aplicar as alterações
-restart_ekill=Falha ao enviar o sinal USR2 para o PID $1 : $2 
+restart_ekill=Falha ao enviar o sinal USR2 para o PID $1 : $2
 restart_epid=Não está mais em execução
 
 start_err=Falha ao iniciar o xinetd
-start_estart=$1 falhou : $2 
+start_estart=$1 falhou : $2
 
 defs_title=Opções padrão
 defs_header=Opções padrão para serviços
@@ -122,7 +122,7 @@ defs_efile=Nome de arquivo de log inválido ou ausente
 defs_esoft=Limite flexível ausente ou inválido
 defs_ehard=Limite físico ausente ou inválido
 
-log_create_serv=Criado $2 serviço $1 
+log_create_serv=Criado $2 serviço $1
 log_modify_serv=$2 serviço $1 modificado
 log_delete_serv=$2 serviço $1 excluído
 log_start=Servidor Xinetd iniciado
@@ -130,8 +130,8 @@ log_apply=Alterações aplicadas
 log_defaults=Opções padrão alteradas
 log_enable=$1 serviços ativados
 log_disable=$1 serviços desativados
-log_enable_l=Serviços ativados $1 
-log_disable_l=Serviços desativados $1 
+log_enable_l=Serviços ativados $1
+log_disable_l=Serviços desativados $1
 
 config_dirdef=Arquivo de configuração do Xinetd
 config_dirto=Novo arquivo no diretório

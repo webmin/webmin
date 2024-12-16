@@ -107,7 +107,7 @@ edit_none=Tätä vaihetta varten ei ole määritetty PAM-moduuleja.
 edit_delete=Poista PAM-palvelu
 edit_move=Liikkua
 edit_return=PAM-palvelu
-edit_inc=Sisällytä palvelu $1 
+edit_inc=Sisällytä palvelu $1
 edit_iheader=Mukana PAM-palvelut
 
 pam_pwdb.so=Unix-salasanatunnistus
@@ -273,17 +273,17 @@ mail_edir=Puuttuva tai virheellinen postikertahakemisto
 
 stack_service=Anna tarkistus PAM-palveluun
 
-log_pam_create=Luotu PAM-palvelu $1 
-log_pam_delete=Poistettu PAM-palvelu $1 
-log_mod_create=Lisätty PAM-moduuli $1 palveluun $2 
-log_mod_modify=Muokattu PAM-moduuli $1 palvelussa $2 
-log_mod_delete=Poistettu PAM-moduuli $1 palvelusta $2 
-log_mod_move=Vaihdetut PAM-moduulit palvelussa $3 
-log_mod_move_l=Vaihdettiin PAM-moduulit $1 ja $2 palvelussa $3 
-log_inc_create=Lisätty sisältää $1 palvelulle $2 
-log_inc_modify=Muokattu sisältää $1 palvelulle $2 
-log_inc_delete=Poistettu sisältää $1 palvelulle $2 
-log_incs=Päivitetty sisältää palvelun $1 
+log_pam_create=Luotu PAM-palvelu $1
+log_pam_delete=Poistettu PAM-palvelu $1
+log_mod_create=Lisätty PAM-moduuli $1 palveluun $2
+log_mod_modify=Muokattu PAM-moduuli $1 palvelussa $2
+log_mod_delete=Poistettu PAM-moduuli $1 palvelusta $2
+log_mod_move=Vaihdetut PAM-moduulit palvelussa $3
+log_mod_move_l=Vaihdettiin PAM-moduulit $1 ja $2 palvelussa $3
+log_inc_create=Lisätty sisältää $1 palvelulle $2
+log_inc_modify=Muokattu sisältää $1 palvelulle $2
+log_inc_delete=Poistettu sisältää $1 palvelulle $2
+log_incs=Päivitetty sisältää palvelun $1
 
 inc_edit=Muokkaa mukana olevaa palvelua
 inc_create=Luo mukana toimitettu palvelu

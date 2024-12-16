@@ -1,6 +1,6 @@
-index_version_webalizer=Версия Webalizer $1 
+index_version_webalizer=Версия Webalizer $1
 index_version_awffull=AWFFull
-index_when=Да, $1 
+index_when=Да, $1
 index_webalizer=Webalizer
 index_enable=Расписание выбрано
 index_disable=Выбрано расписание
@@ -19,5 +19,5 @@ global_includereferrer=Рефереры не игнорировать
 global_includeuser=Пользователи не игнорировать
 global_includeagent=Браузеры не игнорировать
 
-log_enable_logs=Запланированная отчетность по журналам $1 
-log_disable_logs=Запланированные отчеты по журналам $1 
+log_enable_logs=Запланированная отчетность по журналам $1
+log_disable_logs=Запланированные отчеты по журналам $1

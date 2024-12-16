@@ -107,7 +107,7 @@ edit_none=Ingen PAM-moduler er specificeret til dette trin.
 edit_delete=Slet PAM-service
 edit_move=Bevæge sig
 edit_return=PAM-service
-edit_inc=Inkluder service $1 
+edit_inc=Inkluder service $1
 edit_iheader=Inkluderede PAM-tjenester
 
 pam_pwdb.so=Unix adgangskodegodkendelse
@@ -273,17 +273,17 @@ mail_edir=Manglende eller ugyldig mail-spoolkatalog
 
 stack_service=Kontroller videre til PAM-service
 
-log_pam_create=Oprettet PAM-service $1 
-log_pam_delete=Slettet PAM-service $1 
-log_mod_create=Føjet PAM-modul $1 til service $2 
-log_mod_modify=Ændret PAM-modul $1 i service $2 
+log_pam_create=Oprettet PAM-service $1
+log_pam_delete=Slettet PAM-service $1
+log_mod_create=Føjet PAM-modul $1 til service $2
+log_mod_modify=Ændret PAM-modul $1 i service $2
 log_mod_delete=PAM-modul $1 i service $2 blev slettet
-log_mod_move=Byttede PAM-moduler i service $3 
-log_mod_move_l=Byttede PAM-moduler $1 og $2 i service $3 
-log_inc_create=Tilføjet inkluderer $1 for service $2 
-log_inc_modify=Ændret inkluderer $1 for service $2 
-log_inc_delete=Slettet inkluderer $1 for service $2 
-log_incs=Opdateret inkluderer service $1 
+log_mod_move=Byttede PAM-moduler i service $3
+log_mod_move_l=Byttede PAM-moduler $1 og $2 i service $3
+log_inc_create=Tilføjet inkluderer $1 for service $2
+log_inc_modify=Ændret inkluderer $1 for service $2
+log_inc_delete=Slettet inkluderer $1 for service $2
+log_incs=Opdateret inkluderer service $1
 
 inc_edit=Rediger inkluderet service
 inc_create=Opret inkluderet service

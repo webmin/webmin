@@ -101,14 +101,14 @@ acl_home=לכלול את ספריית הבית של המשתמש של יוניק
 acl_sync=האם ניתן להגדיר את סנכרון המשתמש של יוניקס?
 acl_uonly=האם ניתן להוסיף ולשנות ספריות מוגנות?
 
-log_create_dir=התווסף מדריך $1 
+log_create_dir=התווסף מדריך $1
 log_modify_dir=ספרייה שונה 1
 log_delete_dir=המדריך $1 נמחק
-log_create_user=יצר משתמש $1 
-log_modify_user=משתמש שונה $1 
+log_create_user=יצר משתמש $1
+log_modify_user=משתמש שונה $1
 log_delete_user=המשתמש $1 נמחק
-log_create_group=נוצר קבוצה $1 
-log_modify_group=קבוצה שונה $1 
+log_create_group=נוצר קבוצה $1
+log_modify_group=קבוצה שונה $1
 log_delete_group=הקבוצה נמחקה 1
 log_delete_dirs=ספריות $1 נמחקו
 
@@ -120,5 +120,5 @@ search_doing=מחפש ספריות מוגנות מתחת ל $1 ..
 search_found=מצא קובץ אפשרויות Apache חדשות $1 עם משתמשים ב- $2.
 search_already=מדלג על קובץ אפשרויות Apache ידועות $1.
 search_noprot=דילוג על קובץ אפשרויות Apache $1 מכיוון שהוא אינו מגן על הספרייה.
-search_open=לא ניתן היה לפתוח את קובץ אפשרויות Apache $1 : $2 
+search_open=לא ניתן היה לפתוח את קובץ אפשרויות Apache $1 : $2
 search_done=.. בוצע

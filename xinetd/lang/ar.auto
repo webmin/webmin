@@ -91,11 +91,11 @@ proto_tcp=TCP (بروتوكول التحكم في الإرسال)
 proto_udp=UDP (بروتوكول مخطط بيانات المستخدم)
 
 restart_err=فشل في تطبيق التغييرات
-restart_ekill=فشل إرسال إشارة USR2 إلى PID $1 : $2 
+restart_ekill=فشل إرسال إشارة USR2 إلى PID $1 : $2
 restart_epid=لم يعد يعمل
 
 start_err=فشل في بدء xinetd
-start_estart=فشل $1 : $2 
+start_estart=فشل $1 : $2
 
 defs_title=الخيارات الافتراضية
 defs_header=الخيارات الافتراضية للخدمات

@@ -2,7 +2,7 @@ index_title=Configurare OpenSLP
 index_return=Configurație OpenSLP
 index_eslpd=Daemon OpenSLP $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
 index_econf=Fișierul de configurare OpenSLP $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
-index_version=Versiunea OpenSLP $1 
+index_version=Versiunea OpenSLP $1
 
 slp_apply=Aplica schimbarile
 slp_stop=Opriți OpenSLP

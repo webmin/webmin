@@ -1,8 +1,8 @@
 index_header=Serwer proxy Squid
 index_msgnoconfig=Plik konfiguracyjny Squida <tt>$1</tt> nie istnieje. Jeśli Squid jest zainstalowany, dostosuj swoją <a href=/config.cgi?$2 >konfigurację modułu</a>, aby korzystała z prawidłowych ścieżek.
 index_msgnoexe=Program Squida <tt>$1</tt> nie istnieje. Jeśli Squid jest zainstalowany, dostosuj swoją <a href=/config.cgi?$2 >konfigurację modułu</a>, aby korzystała z prawidłowej ścieżki.
-index_msgnodir1=Twoje katalogi buforów Squida <tt>$1</tt> nie zostały zainicjalizowane. 
-index_msgnodir2=Twój katalog buforów Squida <tt>$1</tt> nie został zainicjalizowany. 
+index_msgnodir1=Twoje katalogi buforów Squida <tt>$1</tt> nie zostały zainicjalizowane.
+index_msgnodir2=Twój katalog buforów Squida <tt>$1</tt> nie został zainicjalizowany.
 index_msgnodir3=Dopiero jak to uczynisz, będzie można uruchomić Squida.
 index_buttinit=Inicjalizuj bufory cache
 index_asuser=jako użytkownik Uniksa
@@ -150,7 +150,7 @@ eadm_group=Grupa
 eadm_runasug=Uruchom jako grupa Uniksa
 eadm_par=Dziedzina autoryzacji proxy
 eadm_default=Domyślne
-eadm_cmemail=Adres e-mail zarządcy proxy       
+eadm_cmemail=Adres e-mail zarządcy proxy
 eadm_vhost=Widoczna nazwa hosta
 eadm_uniq=Unikalna nazwa hosta
 eadm_haliases=Inne zbuforowane nazwy DNS

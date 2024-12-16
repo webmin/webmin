@@ -198,7 +198,7 @@ send_esubject=E-postämne saknas
 send_title2=E-post sparat
 send_sending=Skickar e-post till $1 ..
 send_epath=Sendmail körbar $1 finns inte.
-send_efile=Det gick inte att läsa bilaga $1 : $2 
+send_efile=Det gick inte att läsa bilaga $1 : $2
 send_done=.. Gjort.
 
 send_epass=Du kan inte skriva under ett meddelande eftersom din lösenfras ännu inte är inställd i GnuPG-modulen.
@@ -277,8 +277,8 @@ folder_spam=Spam
 
 detach_err=Det gick inte att ta bort filen
 detach_edir=Ingen fil eller katalog att spara till inmatad
-detach_eopen=Det gick inte att öppna $1 : $2 
-detach_ewrite=Det gick inte att skriva till $1 : $2 
+detach_eopen=Det gick inte att öppna $1 : $2
+detach_ewrite=Det gick inte att skriva till $1 : $2
 detach_title=Ta bort filen
 detach_ok=Skrev bilaga till serversidofilen $1 ($2).
 
@@ -361,7 +361,7 @@ white_already=E-postadressen $1 finns redan på SpamAssassins tillåtna adressli
 
 ldap_emod=Perl-modul $1 saknas för att ansluta till LDAP
 ldap_econn=Det gick inte att ansluta till LDAP-server $1 port $2
-ldap_elogin=Det gick inte att binda till LDAP-server $1 som $2 : $3 
+ldap_elogin=Det gick inte att binda till LDAP-server $1 som $2 : $3
 ldap_ehost=Ingen LDAP-server inställd i modulkonfigurationen
 ldap_eport=Ingen giltig LDAP-serverport anges i modulkonfigurationen
 ldap_euser=Ingen LDAP-inloggning inställd i modulkonfigurationen

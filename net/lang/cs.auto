@@ -1,5 +1,5 @@
 index_vmin=Virtualmin
-index_mode=Typ konfigurace sítě: $1 
+index_mode=Typ konfigurace sítě: $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
 index_mode_freebsd=FreeBSD
@@ -31,7 +31,7 @@ ifcs_duplex=, $1 duplex
 
 aifc_eaddress6=Adresa IPv6 v řádku $1 není platná
 aifc_enetmask6=Síťová maska IPv6 v řádku $1 musí být celé číslo mezi 1 a 128
-aifc_eclash6=Adresa IPv6 v řádku $1 je již používána rozhraním $2 
+aifc_eclash6=Adresa IPv6 v řádku $1 je již používána rozhraním $2
 aifc_eaddresses6=Nebyly zadány žádné adresy IPv6
 
 bifc_act=Aktivovat při spuštění?
@@ -71,7 +71,7 @@ hosts_active=Povoleno?
 ipnodes_none=Zatím nebyly definovány žádné adresy hostitelů IPv6.
 ipnodes_delete=Odstranění vybraných adres hostitele IPv6
 
-log_delete_ipnodes=Byly odstraněny adresy hostitele IPv6 $1 
+log_delete_ipnodes=Byly odstraněny adresy hostitele IPv6 $1
 log_delete_aifcs=Deaktivováno $1 rozhraní
 log_delete_bifcs=Smazáno $1 rozhraní
 

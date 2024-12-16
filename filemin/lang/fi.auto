@@ -153,7 +153,7 @@ menu_file=tiedosto
 menu_edit=Muokata
 menu_tools=Työkalut
 menu_bookmarks=kirjanmerkit
-notallowed=Sinulla ei ole pääsyä $1 : een. Sallitut hakemistot ovat : $2 
+notallowed=Sinulla ei ole pääsyä $1 : een. Sallitut hakemistot ovat : $2
 error_upload_emax=Lähetetty tiedosto on suurempi kuin $1 -raja
 extract_etype=Ei tuettua arkistotiedostotyyppiä
 

@@ -16,7 +16,7 @@ index_memtfc=$1 kopā / $2 brīvi / $3 kešatmiņā
 index_loadname=CPU slodzes vidējie lielumi:
 index_loadnums=$1 (1 minūtes), $2 (5 minūtes), $3 (15 minūtes)
 index_cpuname=CPU tips:
-index_inzone=Zonā $1 
+index_inzone=Zonā $1
 
 pid=ID
 owner=Īpašnieks
@@ -81,12 +81,12 @@ edit_open=Faili un savienojumi
 edit_trace=Izsekošanas process
 edit_return=procesa detaļas
 
-kill_err=Neizdevās nosūtīt signālu $1, lai apstrādātu $2 
+kill_err=Neizdevās nosūtīt signālu $1, lai apstrādātu $2
 kill_title=Sūtīt signālu
 kill_sent=nosūtīts
 kill_ecannot=Jums nav atļauts nogalināt procesus
 
-renice_err=Neizdevās pārnest procesu $1 
+renice_err=Neizdevās pārnest procesu $1
 renice_ecannot=Jums nav atļauts nomāt procesus
 
 linux_pri=Prioritāte
@@ -144,11 +144,11 @@ sysv_task=Uzdevuma ID
 sysv_zone=Zonas nosaukums
 
 log_run=Notika komanda "$1"
-log_kill=Nosūtīts signāls $1, lai apstrādātu $2 
+log_kill=Nosūtīts signāls $1, lai apstrādātu $2
 log_kills=Sūtīt signālu no $1 uz $2 procesiem
-log_kill_l=Nosūtīts signāls $1, lai apstrādātu $2 
-log_kills_l=Nosūtīts signāls $1 procesiem <br> $2 
-log_renice=Mainīta procesa $2 prioritāte uz $1 
+log_kill_l=Nosūtīts signāls $1, lai apstrādātu $2
+log_kills_l=Nosūtīts signāls $1 procesiem <br> $2
+log_renice=Mainīta procesa $2 prioritāte uz $1
 
 acl_manage=Pārvaldiet procesus kā lietotājs
 acl_manage_def=Pašreizējais Webmin lietotājs
@@ -174,10 +174,10 @@ open_type=Veids
 open_proto=Protokols
 open_desc=Sīkāka informācija
 open_fd=Failu aprakstītājs
-open_listen1=Klausīšanās ostā $1 
-open_listen2=Klausos adresē $1 ports $2 
-open_recv=Saņemšana uz $1:$2 
-open_conn=Savienots no $1 līdz $2 stāvoklī $3 
+open_listen1=Klausīšanās ostā $1
+open_listen2=Klausos adresē $1 ports $2
+open_recv=Saņemšana uz $1:$2
+open_conn=Savienots no $1 līdz $2 stāvoklī $3
 open_cwd=Pašreizējais rež
 open_rtd=Saknes rež
 open_txt=Programmas kods

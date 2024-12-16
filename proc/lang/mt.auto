@@ -16,7 +16,7 @@ index_memtfc=$1 totali / $2 ħielsa / $3 fil-cache
 index_loadname=Medji tat-tagħbija tas-CPU:
 index_loadnums=$1 (1 min), $2 (5 minuti), $3 (15 minuti)
 index_cpuname=Tip ta 'CPU:
-index_inzone=Fiż-żona $1 
+index_inzone=Fiż-żona $1
 
 pid=ID
 owner=Sidha
@@ -81,12 +81,12 @@ edit_open=Fajls u Konnessjonijiet
 edit_trace=Proċess ta ’Traċċar
 edit_return=dettalji tal-proċess
 
-kill_err=Naqas milli jibgħat is-sinjal $1 għall-proċess $2 
+kill_err=Naqas milli jibgħat is-sinjal $1 għall-proċess $2
 kill_title=Ibgħat Sinjal
 kill_sent=mibgħut
 kill_ecannot=M'għandekx permess toqtol proċessi
 
-renice_err=Ma rnexxilux jerġa 'jibda l-proċess $1 
+renice_err=Ma rnexxilux jerġa 'jibda l-proċess $1
 renice_ecannot=M'għandekx permess li terġa 'titlaq mill-ġdid il-proċessi
 
 linux_pri=Prijorità
@@ -144,11 +144,11 @@ sysv_task=ID tal-Kompitu
 sysv_zone=Isem taż-żona
 
 log_run=Ikkomanda l-kmand "$1"
-log_kill=Intbagħat sinjal $1 biex jipproċessa $2 
+log_kill=Intbagħat sinjal $1 biex jipproċessa $2
 log_kills=Ibgħat is-sinjal $1 sa $2 proċessi
-log_kill_l=Intbagħat sinjal $1 biex jipproċessa $2 
-log_kills_l=Intbagħat sinjal $1 għal proċessi <br> $2 
-log_renice=Prijorità mibdula tal-proċess $2 għal $1 
+log_kill_l=Intbagħat sinjal $1 biex jipproċessa $2
+log_kills_l=Intbagħat sinjal $1 għal proċessi <br> $2
+log_renice=Prijorità mibdula tal-proċess $2 għal $1
 
 acl_manage=Immaniġġja l-proċessi bħala utent
 acl_manage_def=Utent Webmin attwali
@@ -174,10 +174,10 @@ open_type=Tip
 open_proto=Protokoll
 open_desc=Dettalji
 open_fd=Deskrittur tal-Fajl
-open_listen1=Nisimgħu fuq il-port $1 
-open_listen2=Nisma 'fuq l-indirizz $1 port $2 
-open_recv=Tirċievi fuq $1:$2 
-open_conn=Konnessi minn $1 sa $2 fl-istat $3 
+open_listen1=Nisimgħu fuq il-port $1
+open_listen2=Nisma 'fuq l-indirizz $1 port $2
+open_recv=Tirċievi fuq $1:$2
+open_conn=Konnessi minn $1 sa $2 fl-istat $3
 open_cwd=Dir kurrenti
 open_rtd=Għerq dir
 open_txt=Kodiċi tal-programm

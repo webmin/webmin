@@ -26,7 +26,7 @@ ui_nice_size_type=Użyj binarnych jednostek miary (KiB, MiB, GiB zamiast KB, MB,
 
 mods_checksig=Sprawdź plik podpisu dla pobranych modułów?
 
-os_incorrect=System operacyjny $1 został zaktualizowany do wersji $2 
+os_incorrect=System operacyjny $1 został zaktualizowany do wersji $2
 os_release_notes=Informacje o wydaniu
 
 lang_title=Język i lokalizacja
@@ -90,7 +90,7 @@ session_eyescrypt=Nie można użyć formatu haszującego yescrypt, ponieważ mod
 session_passapi=Włączyć interfejs API zdalnej zmiany hasła?
 session_passapi0=API wyłączone
 session_passapi1=API włączone dla użytkowników Uniksa
-session_passurl=Po włączeniu hasła użytkowników można zmienić za pomocą żądania POST do $1 
+session_passurl=Po włączeniu hasła użytkowników można zmienić za pomocą żądania POST do $1
 
 log_fixrepo=Naprawiono repozytorium Webmina
 log_letsencrypt=Zażądałem nowego certyfikatu SSL od Let's Encrypt

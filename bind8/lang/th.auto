@@ -67,7 +67,7 @@ index_eexpired_conf=ควรเปิดใช้งานการเซ็น
 index_eexpired_mod=ใช้โมดูล $1 เพื่อปิดการใช้งาน DNSSEC สำหรับโดเมนเหล่านี้หรือตรวจสอบสาเหตุที่การลงชื่อล้มเหลว
 
 master_title=แก้ไข Master Zone
-master_inview=$1 ในมุมมอง $2 
+master_inview=$1 ในมุมมอง $2
 master_ecannot=คุณไม่ได้รับอนุญาตให้แก้ไขโซนนี้
 master_egone=โซน $1 ไม่มีอยู่ในมุมมองใด ๆ
 master_egone2=โซน $1 ไม่มีอยู่!

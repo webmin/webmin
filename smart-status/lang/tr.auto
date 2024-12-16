@@ -1,7 +1,7 @@
 index_title=SMART Sürücü Durumu
 index_ecmd=$1 SMART kontrol komutu sisteminizde bulunamadı veya <a href='$2'>modül yapılandırmasında</a> doğru ayarlanmadı. Bu modülün kullanılabilmesi için önce takılması gerekir.
 index_ecmd2=$1 komutu SMART kontrol komutu olarak görünmüyor. Bu modülün kullanılabilmesi için <a href='$2'>modül yapılandırmasında</a> doğru ayarlanması gerekir.
-index_version=SMARTsuite sürümü $1 
+index_version=SMARTsuite sürümü $1
 index_show=Sürücünün durumunu göster:
 index_ok=Göstermek
 index_eidescsi=Sisteminizde IDE, SCSI veya SATA sürücü bulunamadı.

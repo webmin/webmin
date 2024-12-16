@@ -44,7 +44,7 @@ howto_header=HOGYAN $1 dokumentumfájl
 howto_epath=Érvénytelen HOWTO dokumentum elérési útja
 
 doc_title=Csomagok dokumentációja
-doc_header=Csomagdokumentum $1 
+doc_header=Csomagdokumentum $1
 doc_epath=Érvénytelen csomagdokumentációs útvonal
 
 man_title=Kézi oldal

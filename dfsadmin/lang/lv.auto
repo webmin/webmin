@@ -41,10 +41,10 @@ save_eroot=Jūs neesat uzskaitījis nevienu saimnieku, ar kuru koplietot saknes
 save_ealready=Mape “$1” jau tiek koplietota
 save_ehost=Resursdators '$1' neeksistē
 
-log_modify=Pārveidota NFS daļa $1 
-log_rename=Mainīta NFS daļa no $1 līdz $2 
-log_create=Izveidota NFS daļa $1 
-log_delete=Dzēsta NFS daļa $1 
+log_modify=Pārveidota NFS daļa $1
+log_rename=Mainīta NFS daļa no $1 līdz $2
+log_create=Izveidota NFS daļa $1
+log_delete=Dzēsta NFS daļa $1
 log_apply=Lietotās izmaiņas
 
 acl_view=Vai var rediģēt NFS akcijas?

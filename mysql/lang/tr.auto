@@ -4,7 +4,7 @@ index_eshow=$1 MySQL durum programı sisteminizde bulunamadı. Belki MySQL kurul
 index_estart=$1 MySQL başlangıç komut dosyası sisteminizde bulunamadı. Belki MySQL kurulu değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_indexes=dizinler
 index_views=Görüntüleme
-index_version2=$2 üzerinde $3 sürüm $1 
+index_version2=$2 üzerinde $3 sürüm $1
 index_eenvpass=$1 MySQL istemci programı, <tt>MYSQL_PWD</tt> ortam değişkeni kullanılarak iletilen şifreleri kabul etmez. Webmin'in MySQL ile tam olarak iletişim kurabilmesini sağlamak için, bu seçeneğin <a href='$2'>modül yapılandırması</a> sayfasında kapatılması gerekir. Alternatif olarak, <tt>root</tt> kullanıcısının <tt>.my.cnf</tt> dosyasında ayarlanan tüm şifreleri kaldırabilirsiniz.
 index_ecnf=$1 MySQL yapılandırma dosyası sisteminizde bulunamadı. Doğru yolu ayarlamak için <a href='$2'>modül yapılandırması</a> sayfasını kullanın.
 index_nodbs2=Sisteminizde MySQL veritabanı bulunamadı.
@@ -17,7 +17,7 @@ index_mysqlstatus=MySQL başlangıç komut dosyası
 index_toomany=Görüntülenecek çok fazla veritabanı var. Eşleşen veritabanlarını bulun:
 index_search=Arama
 index_showing=$1 ile eşleşen veritabanları gösteriliyor.
-index_emsg=Tam MySQL hata mesajı : $1 
+index_emsg=Tam MySQL hata mesajı : $1
 index_jump=Veya veritabanını düzenleyin:
 index_jumpok=Açık
 
@@ -82,7 +82,7 @@ view_sorthead2=$1 sıralaması, artan düzen
 view_sortreset=Sıralamayı sıfırla
 view_go=Git
 view_set=Dosyanın içeriğine ayarla ..
-view_sqlrun=SQL sorgusu tarafından oluşturulan sonuçlar : $1 
+view_sqlrun=SQL sorgusu tarafından oluşturulan sonuçlar : $1
 
 users_syncwhen=Ne zaman senkronize edilir
 users_delete=Silme seçildi
@@ -169,7 +169,7 @@ exec_header2a=Bu, yalnızca SQL komutlarının bir dosyası olan MySQL yedekleme
 exec_import=Verileri içe aktarma tablosu
 exec_format=Dosya formatı
 exec_ecompress=SQL dosyası sıkıştırılmıştır, ancak sıkıştırılmamış dosyayı açmak için gereken $1 programı yüklü değildir.
-exec_ecompress2=Sıkıştırmanın kaldırılması başarısız oldu : $1 
+exec_ecompress2=Sıkıştırmanın kaldırılması başarısız oldu : $1
 exec_tabexec=SQL yürütme
 exec_tabfile=SQL'i dosyadan çalıştır
 exec_tabimport=Metin dosyasını içe aktar
@@ -214,7 +214,7 @@ log_cprivs_delete=$1 alan ayrıcalığı silindi
 log_users_delete=$1 kullanıcı silindi
 log_index_create=$2 veritabanında $1 dizini oluşturuldu
 log_index_delete=$2 dizini $2 veritabanından bırakıldı
-log_index_modify=$2 veritabanında değiştirilmiş dizin $1 
+log_index_modify=$2 veritabanında değiştirilmiş dizin $1
 log_view_create=$2 veritabanında $1 görünümü oluşturuldu
 log_view_delete=$2, $2 veritabanından bırakıldı
 log_view_modify=$2 veritabanında $1 değiştirilmiş görünümü
@@ -262,10 +262,10 @@ backup_subject_failed=$1 MySQL veritabanının yedeklenmesinde $3 üzerinde baz�
 backup_subject_ok=$1 MySQL veritabanının yedeklenmesi $3 'te başarılı oldu
 backup_body=$1 üzerinde $2 MySQL veritabanını yedekleme.
 backup_bodydoing=$1 - $2 yedekleniyor ..
-backup_bodyfailed=.. yedekleme başarısız : $1 
+backup_bodyfailed=.. yedekleme başarısız : $1
 backup_bodyok=.. $1 yedeklemesi tamamlandı
-backup_bodytotal=Toplam yedekleme boyutu : $1 
-backup_bodyspace=Dosya sistemi boyutu: $1 Boş alan : $2 
+backup_bodytotal=Toplam yedekleme boyutu : $1
+backup_bodyspace=Dosya sistemi boyutu: $1 Boş alan : $2
 backup_bodyall=herşey
 backup_edownloadall=Yalnızca tek bir veritabanı yedeklemesi indirilebilir
 backup_edownloadsave=İndirme modu, zamanlanmış yedeklemeler için kullanılamaz
@@ -449,10 +449,10 @@ root_socket=MySQL <tt>$1</tt> kullanıcısı Unix soket kimlik doğrulamasını 
 
 mysqlpass_err=MySQL güvenli mod
 mysqlpass_esafecmd=Kimlik doğrulama devre dışı bırakılarak MySQL'i başlatmak için gereken $1 komutu bulunamadı
-mysqlpass_eshutdown=Kapatma başarısız oldu : $1 
-mysqlpass_esafe=Güvenli modda başlatma başarısız oldu : $1 
-mysqlpass_estartup=Başlatma başarısız oldu : $1 
-mysqlpass_echange=Parola değişikliği başarısız oldu : $1 
+mysqlpass_eshutdown=Kapatma başarısız oldu : $1
+mysqlpass_esafe=Güvenli modda başlatma başarısız oldu : $1
+mysqlpass_estartup=Başlatma başarısız oldu : $1
+mysqlpass_echange=Parola değişikliği başarısız oldu : $1
 mysqlpass_echange_forcepass=Kaybolursa veya unutulursa, verilen parolayı geçersiz kılmaya zorla
 
 ssl_title=SSL Sertifikası

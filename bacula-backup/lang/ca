@@ -280,7 +280,7 @@ devices_name=Nom del dispositiu
 devices_device=Directori o fitxer de dispositiu
 devices_type=Tipus de mitjà
 devices_add=Afegeix un nou dispositiu d'emmagatzematge.
-devices_delete=Suprimeix els Dispositius d'Emmagatzematge Seleccionats 
+devices_delete=Suprimeix els Dispositius d'Emmagatzematge Seleccionats
 devices_return=a la llista de dispositius d'emmagatzematge
 devices_derr=No s'ha pogut suprimir els dispositius d'emmagatzematge
 

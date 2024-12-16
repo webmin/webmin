@@ -8,7 +8,7 @@ index_delete=Törölje a kiválasztott exportálást
 index_apply=Módosítások elfogadása
 index_applydesc=Kattintson erre a gombra az aktuális fájl exportálási konfiguráció alkalmazásához. Ez a fent felsorolt összes könyvtárat elérhetővé teszi a megadott lehetőségekkel.
 index_return=export lista
-index_echeck=Az NFS szerver nem használható ebben a rendszeren : $1 
+index_echeck=Az NFS szerver nem használható ebben a rendszeren : $1
 
 check_ecmd=A (z) $1 NFS szerver parancs nincs telepítve
 

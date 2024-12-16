@@ -1,6 +1,6 @@
 index_econf=Vo vašom systéme nebol nájdený konfiguračný súbor striedania protokolov $1. Možno nie je logrotate nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
 index_ecmd=Program striedania protokolov $1 nebol vo vašom systéme nájdený. Možno nie je nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
-index_eversion=Nepodarilo sa získať verziu logrotate s príkazom $1 : $2 
+index_eversion=Nepodarilo sa získať verziu logrotate s príkazom $1 : $2
 index_add=Ak chcete rotovať, pridajte nový súbor denníka.
 index_file=Súbor denníka
 index_none=Zatiaľ neboli definované žiadne protokolové súbory.
@@ -36,7 +36,7 @@ edit_mailno=Nie, neposielajte e-mailom
 edit_mailfl=Prihláste sa do e-mailu
 edit_mailfirst=Najnovšie, ktoré sa práve striedalo
 edit_maillast=Najstarší, ktorý sa má odstrániť
-edit_createas=Áno, v režime $1 a vo vlastníctve používateľa $2 a skupiny $3 
+edit_createas=Áno, v režime $1 a vo vlastníctve používateľa $2 a skupiny $3
 edit_olddir=Uložte staré otočené záznamy
 edit_olddirto=adresár
 edit_olddirsame=Rovnaký adresár ako súbor denníka
@@ -71,9 +71,9 @@ save_enofiles=Neboli zadané žiadne súbory na rotáciu
 
 log_modify_sched=Zmenená úloha Cron rotácie protokolu
 log_delete_sched=Odstránená úloha Cron rotácie protokolu
-log_modify=Upravené striedanie pre súbor denníka $1 
-log_delete=Odstránená rotácia pre súbor denníka $1 
-log_delete_logs=Odstránená rotácia pre súbory denníka $1 
+log_modify=Upravené striedanie pre súbor denníka $1
+log_delete=Odstránená rotácia pre súbor denníka $1
+log_delete_logs=Odstránená rotácia pre súbory denníka $1
 
 sched_title=Plán striedania protokolov
 sched_desc=Aby bolo možné vykonávať rotáciu protokolov pomocou tohto modulu, príkaz $1 musí byť spustený v pravidelnom rozvrhu (zvyčajne denne) pomocou Cron.

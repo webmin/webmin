@@ -67,7 +67,7 @@ help_eif=$1 misslyckades : $2
 help_eexec=$1 misslyckades : $2
 
 referer_title=Säkerhetsvarning
-referer_warn=<b>Varning!</b> Webmin har upptäckt att URL $1 länkar till programmet $2, som verkar vara utanför Webminservern. Detta kan vara ett försök att lura din server att utföra ett farligt kommando. 
+referer_warn=<b>Varning!</b> Webmin har upptäckt att URL $1 länkar till programmet $2, som verkar vara utanför Webminservern. Detta kan vara ett försök att lura din server att utföra ett farligt kommando.
 
 month_1=januari
 month_2=februari

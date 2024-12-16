@@ -33,14 +33,14 @@ save_edesc=Невалидно описание на типа MIME
 
 delete_err=Изтриването на програмите от типа MIME не бе успешно
 disable_err=Деактивирането на програми тип MIME не бе успешно
-disable_eclash=Вече съществува инвалидна програма от тип MIME за $1 
+disable_eclash=Вече съществува инвалидна програма от тип MIME за $1
 enable_err=Неуспешно активиране на програми тип MIME
 enable_eclash=Активирана програма тип MIME за $1 вече съществува
 delete_enone=Няма избран
 
-log_delete_mailcap=Изтриване на MIME тип програма за $1 
-log_create_mailcap=Създадена програма от тип MIME за $1 
-log_modify_mailcap=Променена програма тип MIME за $1 
+log_delete_mailcap=Изтриване на MIME тип програма за $1
+log_create_mailcap=Създадена програма от тип MIME за $1
+log_modify_mailcap=Променена програма тип MIME за $1
 log_delete_mailcaps=Изтрити $1 MIME програми
 log_disable_mailcaps=Деактивирани програми $1 MIME тип
 log_enable_mailcaps=Активирани $1 MIME програми

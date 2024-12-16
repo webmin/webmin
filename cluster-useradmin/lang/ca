@@ -65,7 +65,7 @@ uedit_sync=Afegeix als Altres Servidors
 uedit_makehome=Crea el directori arrel si no hi és
 uedit_others=Crea l'usuari als altres mòduls
 uedit_servers=Servidor(s) per crear-l'hi
-uedit_all=&lt;tots els hosts&gt; 
+uedit_all=&lt;tots els hosts&gt;
 uedit_donthave=&lt;hosts que no el/la tenen&gt;
 uedit_group=Membres de $1
 

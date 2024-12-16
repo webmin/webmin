@@ -2,7 +2,7 @@ index_eversion2=Majordomo 버전 파일 $1 이 (가) 프로그램 디렉토리 $
 index_esendmail2=Sendmail이 설치되어 있지 않거나 시스템에 올바르게 설정되어 있지 않습니다. <a href=$2>Sendmail 모듈</a> 구성을 확인하십시오.
 index_epostfix=시스템에 Postfix가 설치되지 않았거나 올바르게 설정되지 않았습니다. <a href='$1'>Postfix 모듈</a> 구성을 확인하십시오.
 index_esendmail3=별명을 관리하는 데 필요한 Sendmail Webmin 모듈이 설치되지 않았습니다.
-index_version=Majordomo 버전 $1 
+index_version=Majordomo 버전 $1
 index_name=리스트 이름
 index_info=리스트 정보
 index_mail=메일 주소

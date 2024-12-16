@@ -14,5 +14,5 @@ acl_user_def=Pašreizējais Webmin lietotājs
 acl_shellenv=Vai izmantot izvēlētā lietotāja vidi?
 acl_chroot=Chroot direktorijā
 
-log_run=Izpildīja komandu $1 
+log_run=Izpildīja komandu $1
 log_clear=Notīrīta komandu vēsture

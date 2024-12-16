@@ -68,10 +68,10 @@ save_enohost='$1' - et ilmoittanut mitään isäntiä
 save_euids=UID: ien, joita ei pidä luottaa, on oltava pilkuilla erotettu luettelo numeroista tai alueista
 save_egids=GID: ien, joita ei luota, on oltava pilkuilla erotettu luettelo numeroista tai alueista
 
-log_modify=Muokattu NFS-vienti $1 
-log_modify_l=Muokattu NFS-vienti $1 - $2 
-log_delete=Poistettu NFS-vienti $1 
-log_delete_l=Poistettu NFS-vienti $1 - $2 
-log_create=Luotu NFS-vienti $1 
-log_create_l=Luotu NFS-vienti $1 - $2 
+log_modify=Muokattu NFS-vienti $1
+log_modify_l=Muokattu NFS-vienti $1 - $2
+log_delete=Poistettu NFS-vienti $1
+log_delete_l=Poistettu NFS-vienti $1 - $2
+log_create=Luotu NFS-vienti $1
+log_create_l=Luotu NFS-vienti $1 - $2
 log_apply=Sovellettu kokoonpano

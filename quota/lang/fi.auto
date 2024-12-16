@@ -204,8 +204,8 @@ ssync_ecannot=Et voi asettaa oletuskiintiötä tälle tiedostojärjestelmälle
 
 suser_euser=Et voi muokata tämän käyttäjän kiintiöitä
 suser_efs=Et voi muokata kiintiöitä tässä tiedostojärjestelmässä
-suser_emaxblocks=Et voi myöntää lohkon rajoituksia, jotka ylittävät $1 
-suser_emaxfiles=Et voi myöntää tiedostorajoja, jotka ylittävät $1 
+suser_emaxblocks=Et voi myöntää lohkon rajoituksia, jotka ylittävät $1
+suser_emaxfiles=Et voi myöntää tiedostorajoja, jotka ylittävät $1
 
 ufilesys_title=Käyttäjäkiintiöt
 ufilesys_return=tiedostojärjestelmäluettelo

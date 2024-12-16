@@ -34,7 +34,7 @@ title_etitle=Ontbrekende opsietitel
 title_eroot=Wortelpartisie ontbreek
 title_ekernel=Ontbrekende of ongeldige kernpad
 title_echain=Ontbrekende of ongeldige kettinglaaierlêer
-title_edev=Ongesteunde wortelpartisietoestel $1 
+title_edev=Ongesteunde wortelpartisietoestel $1
 title_einitrd=Aanvanklike ramdisk-lêernaam ontbreek
 title_lock=Wagwoord gesluit?
 
@@ -54,7 +54,7 @@ global_none=Geen
 global_password_file=Gebruik die menu-lêer as u die wagwoord invoer:
 global_err=Globale opsies kon nie gestoor word nie
 global_etimeout=Ontbrekende of ongeldige tydsverloop
-global_edev=Ongesteunde installasie skyf/partisie $1 
+global_edev=Ongesteunde installasie skyf/partisie $1
 global_eother=Ontbrekende of ongeldige skyf/partisie
 global_epassword=Ontbrekende of ongeldige opstartwagwoord ontbreek
 global_epasswordfile=Alternatiewe menu-lêernaam ontbreek
@@ -68,7 +68,7 @@ install_failed=.. installering misluk!
 
 log_create_title=Die opstartopsie $1 is geskep
 log_delete_title=Opstelopsie $1 is uitgevee
-log_modify_title=Gewysigde opstartopsie $1 
+log_modify_title=Gewysigde opstartopsie $1
 log_up_title=Opstartopsie $1 is opgeskuif
 log_down_title=Oplaai-opsie $1 is verwyder
 log_global=Verander globale opsies

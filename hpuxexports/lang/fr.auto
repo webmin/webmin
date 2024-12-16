@@ -22,10 +22,10 @@ edit_async=Écritures asynchrones
 
 save_enohost='$1' - Vous n'avez répertorié aucun hôte
 
-log_modify=Exportation NFS modifiée $1 
-log_modify_l=Exportation NFS modifiée $1 vers $2 
-log_delete=Exportation NFS supprimée $1 
-log_delete_l=Exportation NFS supprimée $1 vers $2 
-log_create=Exportation NFS créée $1 
-log_create_l=Exportation NFS créée $1 vers $2 
+log_modify=Exportation NFS modifiée $1
+log_modify_l=Exportation NFS modifiée $1 vers $2
+log_delete=Exportation NFS supprimée $1
+log_delete_l=Exportation NFS supprimée $1 vers $2
+log_create=Exportation NFS créée $1
+log_create_l=Exportation NFS créée $1 vers $2
 log_apply=Configuration appliquée

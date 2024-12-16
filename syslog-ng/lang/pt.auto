@@ -9,7 +9,7 @@ index_stopdesc=Clique neste botão para parar o daemon Syslog-NG em execução. 
 index_start=Iniciar Syslog-NG
 index_startdesc=Clique neste botão para iniciar o daemon Syslog-NG, usando a configuração atual.
 index_return=índice do módulo
-index_version=Syslog-NG $1 
+index_version=Syslog-NG $1
 
 options_title=Opções de registro
 options_header=Opções para todos os arquivos de log
@@ -71,15 +71,15 @@ destinations_typet=Servidor syslog TCP
 destinations_typeg=Soquete de datagrama
 destinations_types=Soquete de fluxo
 destinations_allusers=Todos os usuários
-destinations_users=Somente usuários $1 
-destinations_host=Host $1 
+destinations_users=Somente usuários $1
+destinations_host=Host $1
 destinations_view=Visão ..
 destinations_none=Nenhum arquivo de log de destino foi definido ainda.
 destinations_delete=Excluir destinos selecionados
 destinations_add=Adicione um novo destino de log.
 destinations_return=destinos de log
 destinations_desc=Log de outro módulo
-destinations_cmd=Saída de $1 
+destinations_cmd=Saída de $1
 
 destination_header=Opções de destino de log
 destination_title1=Criar destino de log
@@ -259,10 +259,10 @@ source_edoor=Nome do arquivo da porta de fluxos Sun ausente ou inválido
 source_transport=Protocolo de rede
 
 view_title=Exibir arquivo de log
-view_header=Últimas $1 linhas de $2 
+view_header=Últimas $1 linhas de $2
 view_empty=O arquivo de log está vazio
 view_refresh=Atualizar
-view_filter=Mostrar apenas linhas com o texto $1 
+view_filter=Mostrar apenas linhas com o texto $1
 
 apply_err=Falha ao aplicar a configuração
 apply_egone=Não está funcionando!
@@ -271,17 +271,17 @@ start_err=Falha ao iniciar o servidor Syslog-NG
 
 stop_err=Falha ao parar o servidor Syslog-NG
 
-log_create_destination=Destino de log criado $1 
-log_modify_destination=Destino de log modificado $1 
+log_create_destination=Destino de log criado $1
+log_modify_destination=Destino de log modificado $1
 log_delete_destination=$1 destino de log excluído
 log_delete_destinations=$1 destinos de log excluídos
-log_create_filter=Filtro de log criado $1 
-log_modify_filter=Filtro de log modificado $1 
-log_delete_filter=Filtro de log excluído $1 
+log_create_filter=Filtro de log criado $1
+log_modify_filter=Filtro de log modificado $1
+log_delete_filter=Filtro de log excluído $1
 log_delete_filters=$1 filtros de log excluídos
-log_create_source=Origem de log criada $1 
-log_modify_source=Origem de log modificada $1 
-log_delete_source=Origem de log excluída $1 
+log_create_source=Origem de log criada $1
+log_modify_source=Origem de log modificada $1
+log_delete_source=Origem de log excluída $1
 log_delete_sources=$1 fontes de log excluídas
 log_create_log=Destino de log criado
 log_modify_log=Destino de log modificado

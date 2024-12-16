@@ -280,7 +280,7 @@ devices_name=Device name
 devices_device=Device file or directory
 devices_type=Media type
 devices_add=Add a new storage device.
-devices_delete=Delete Selected Storage Devices 
+devices_delete=Delete Selected Storage Devices
 devices_return=list of storage devices
 devices_derr=Failed to delete storage devices
 

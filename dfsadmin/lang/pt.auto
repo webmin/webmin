@@ -41,10 +41,10 @@ save_eroot=Você não listou nenhum host para compartilhar root
 save_ealready=O diretório '$1' já está sendo compartilhado
 save_ehost=O host '$1' não existe
 
-log_modify=Compartilhamento NFS modificado $1 
-log_rename=Compartilhamento NFS alterado $1 para $2 
-log_create=Compartilhamento NFS criado $1 
-log_delete=Compartilhamento NFS excluído $1 
+log_modify=Compartilhamento NFS modificado $1
+log_rename=Compartilhamento NFS alterado $1 para $2
+log_create=Compartilhamento NFS criado $1
+log_delete=Compartilhamento NFS excluído $1
 log_apply=Alterações aplicadas
 
 acl_view=Pode editar compartilhamentos NFS?

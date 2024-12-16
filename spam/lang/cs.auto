@@ -1,5 +1,5 @@
 index_unknown=neznámý
-index_ecannot=Nemáte oprávnění spravovat konfigurační soubor SpamAssassin $1 
+index_ecannot=Nemáte oprávnění spravovat konfigurační soubor SpamAssassin $1
 
 white_addr2=Adresa příjemce
 white_rcvd2=Odesílatel nikdy klasifikovat jako spam
@@ -14,8 +14,8 @@ log_manual=Ručně upravený konfigurační soubor
 
 acl_awl=Povoleno uživatelům pro automatické úpravy bílé listiny
 acl_awl0=Všichni uživatelé
-acl_awl1=Pouze uvedení uživatelé $1 
-acl_awl2=Pouze členové skupin $1 
+acl_awl1=Pouze uvedení uživatelé $1
+acl_awl2=Pouze členové skupin $1
 
 amavisd_title=Amavisd Spam Delivery
 amavisd_desc=Formulář lze použít ke změně konfigurace Amavisd, která určuje, co se stane se zprávami klasifikovanými jako spam.

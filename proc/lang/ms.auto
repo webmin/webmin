@@ -16,7 +16,7 @@ index_memtfc=$1 jumlah / $2 percuma / $3 dicache
 index_loadname=Purata beban CPU:
 index_loadnums=$1 (1 minit), $2 (5 minit), $3 (15 minit)
 index_cpuname=Jenis CPU:
-index_inzone=Dalam zon $1 
+index_inzone=Dalam zon $1
 
 pid=ID
 owner=Pemilik
@@ -81,12 +81,12 @@ edit_open=Fail dan Sambungan
 edit_trace=Melacak Proses
 edit_return=butiran proses
 
-kill_err=Gagal menghantar isyarat $1 untuk memproses $2 
+kill_err=Gagal menghantar isyarat $1 untuk memproses $2
 kill_title=Hantar Isyarat
 kill_sent=dihantar
 kill_ecannot=Anda tidak dibenarkan membunuh proses
 
-renice_err=Gagal merombak proses $1 
+renice_err=Gagal merombak proses $1
 renice_ecannot=Anda tidak dibenarkan mengubah proses
 
 linux_pri=Keutamaan
@@ -144,11 +144,11 @@ sysv_task=ID Petugas
 sysv_zone=Nama zon
 
 log_run=Perintah Ran "$1"
-log_kill=Isyarat dihantar $1 untuk memproses $2 
+log_kill=Isyarat dihantar $1 untuk memproses $2
 log_kills=Hantar isyarat $1 hingga $2 proses
-log_kill_l=Isyarat dihantar $1 untuk memproses $2 
-log_kills_l=Isyarat dihantar $1 ke proses $2 
-log_renice=Mengganti keutamaan proses $2 hingga $1 
+log_kill_l=Isyarat dihantar $1 untuk memproses $2
+log_kills_l=Isyarat dihantar $1 ke proses $2
+log_renice=Mengganti keutamaan proses $2 hingga $1
 
 acl_manage=Menguruskan proses sebagai pengguna
 acl_manage_def=Pengguna Webmin semasa
@@ -174,10 +174,10 @@ open_type=Taipkan
 open_proto=Protokol
 open_desc=Butiran
 open_fd=Deskriptor Fail
-open_listen1=Mendengar pada port $1 
-open_listen2=Mendengar alamat $1 port $2 
-open_recv=Menerima pada $1:$2 
-open_conn=Disambungkan dari $1 hingga $2 dalam keadaan $3 
+open_listen1=Mendengar pada port $1
+open_listen2=Mendengar alamat $1 port $2
+open_recv=Menerima pada $1:$2
+open_conn=Disambungkan dari $1 hingga $2 dalam keadaan $3
 open_cwd=Dir dir
 open_rtd=Root dir
 open_txt=Kod program

@@ -327,7 +327,7 @@ restart_ecmd=L'ordre de reinici ha fallat: $1
 restart_eversion=El servidor esclau $1 no està executant la versió de Webmin $2 o superior.
 
 start_ecannot=No tens permís per iniciar BIND
-start_error=No s'ha pogut iniciar BIND: $1 
+start_error=No s'ha pogut iniciar BIND: $1
 stop_epid=BIND no està en execució
 stop_ecannot=No tens permís per aturar BIND
 
@@ -1272,7 +1272,7 @@ trusted_root=Zona arrel
 trusted_err=No s'ha pogut desar la verificació de DNSSEC
 trusted_eanchor=Hi falta la zona d'àncora a la fila $1 o bé és invàlida
 trusted_edlv=Hi falta la zona real a la fila $1 o bé és invàlida
-trusted_ezone=Hi falta el nom de la zona fiable a la línia $1 o bé és invàlida 
+trusted_ezone=Hi falta el nom de la zona fiable a la línia $1 o bé és invàlida
 trusted_eflags=Hi falten les banderes de la clau a la fila $1 o bé és invàlida - ha de ser un número com ara 257
 trusted_eproto=Hi falta el número de protocol a la fila $1 o bé és invàlid
 trusted_ealg=Hi falta el número d'algoritme a la fila $1 o bé és invàlid

@@ -9,7 +9,7 @@ index_eha_cf=Hjerteslagskonfigurationsfilen $1 blev ikke fundet på dit system. 
 index_eharesources=Ressourcefilen $1 blev ikke fundet på dit system. Måske er det ikke blevet kopieret på plads endnu, eller <a href='$2'>modulkonfiguration</a> er forkert.
 index_eauthkeys=Autentificeringstasterfilen $1 blev ikke fundet på dit system. Måske er det ikke blevet kopieret på plads endnu, eller <a href='$2'>modulkonfiguration</a> er forkert.
 index_ereq_resource_cmd=Scriptet til at anmode om ressourcer fra den anden knude ($1) blev ikke fundet på dit system. Måske er det ikke blevet kopieret på plads endnu, eller <a href='$2'>modulkonfiguration</a> er forkert.
-index_version=Heartbeat version $1 
+index_version=Heartbeat version $1
 index_noversion=Advarsel - Den version af Heartbeat, der er installeret på dit system, kunne ikke automatisk opdages. Du skal indstille den på siden <a href='$1'>modulkonfiguration</a>.
 index_status=Pulsslagstatus
 
@@ -21,7 +21,7 @@ conf_bcasts=Ethernet-hjerteslaggrænseflader
 conf_none=Ingen
 conf_udpport=UDP-hjerteslagsport
 conf_mcast=Multicast hjerteslag
-conf_mcastv=Enhed $1, gruppe $2, port $3, TTL $4, loopback $5 
+conf_mcastv=Enhed $1, gruppe $2, port $3, TTL $4, loopback $5
 conf_enabled=Aktiveret
 conf_disabled=handicappet
 conf_keepalive=Tid mellem hjerteslag

@@ -4,10 +4,10 @@ index_edir=Jabber-basismapperen $1 findes ikke. Enten er Jabber ikke installeret
 index_emodules=Perl-modulerne $1 og $2, som kræves af Webmin til håndtering af Jabbers XML-konfiguration, er ikke installeret. <a href='$3'>Klik her</a> for at installere dem direkte fra CPAN.
 index_emodule=Perl-modulet $1, som kræves af Webmin til håndtering af Jabbers XML-konfiguration, er ikke installeret. <a href='$2'>Klik her</a> for at installere det direkte fra CPAN.
 index_expat=Sørg for, at du har Expat C-biblioteket og overskrifter installeret, før du prøver at installere Perl-modulerne, da de er afhængige af det og vil mislykkes, hvis det ikke er tilgængeligt.
-index_eparse=Modulet $1 perl kunne ikke analysere din Jabber-konfigurationsfil : $2 
+index_eparse=Modulet $1 perl kunne ikke analysere din Jabber-konfigurationsfil : $2
 index_ejabberd=Jabber-serverprogrammet $1 blev ikke fundet på dit system. Enten er Jabber ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
-index_eversion=Webmin understøtter kun Jabber version $2, men kommandoen $3 rapporterede følgende versioninformation : $1 
-index_eversion2=Webmin understøtter kun Jabber-versioner under $2, men kommandoen $3 rapporterede følgende versioninformation : $1 
+index_eversion=Webmin understøtter kun Jabber version $2, men kommandoen $3 rapporterede følgende versioninformation : $1
+index_eversion2=Webmin understøtter kun Jabber-versioner under $2, men kommandoen $3 rapporterede følgende versioninformation : $1
 index_start=Start Jabber Server
 index_startmsg=Klik på denne knap for at starte Jabber-serveren på dit system. Indtil det er startet, vil ingen onlinemeddelelsesklienter være i stand til at bruge det.
 index_stop=Stop Jabber Server
@@ -16,7 +16,7 @@ index_restart=Anvend ændringer
 index_restartmsg=Klik på denne knap for at anvende den aktuelle konfiguration ved at stoppe og derefter genstarte Jabber-serveren.
 index_comments=Advarsel - din Jabber-konfigurationsfil $1 indeholder kommentarer, som fjernes, hvis der foretages konfigurationsændringer ved hjælp af dette modul.
 index_return=Jabber-menu
-index_version=Jabber version $1 
+index_version=Jabber version $1
 
 general_title=Generelle indstillinger
 general_header=Globale Jabber-serverindstillinger
@@ -44,7 +44,7 @@ messages_rnotify=Meddeles administrator ved registrering?
 messages_rfields=Påkrævede registreringsfelter
 messages_vcard2jud=Send vCard til Jabber brugerkatalog?
 messages_err=Kunne ikke gemme beskeder
-messages_evcard=Ugyldig vCard XML : $1 
+messages_evcard=Ugyldig vCard XML : $1
 messages_etag=Server vCard XML starter ikke med &lt;vCard&gt;
 
 modules_title=Jabber-moduler

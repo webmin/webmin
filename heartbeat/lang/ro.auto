@@ -9,7 +9,7 @@ index_eha_cf=Fișierul de configurare a bătăilor inimii $1 nu a fost găsit î
 index_eharesources=Fișierul de resurse $1 nu a fost găsit în sistemul dvs. Poate că nu a fost încă copiat în loc sau configurația <a href='$2'>a modulului</a> este incorectă.
 index_eauthkeys=Fișierul cheilor de autentificare $1 nu a fost găsit în sistemul dvs. Poate că nu a fost încă copiat în loc sau configurația <a href='$2'>a modulului</a> este incorectă.
 index_ereq_resource_cmd=Scriptul pentru a solicita resurse de la celălalt nod ($1) nu a fost găsit în sistemul tău. Poate că nu a fost încă copiat în loc sau configurația <a href='$2'>a modulului</a> este incorectă.
-index_version=Versiunea bătăilor inimii $1 
+index_version=Versiunea bătăilor inimii $1
 index_noversion=Avertisment - versiunea de Heartbeat instalată pe sistemul dvs. nu a putut fi detectată automat. Ar trebui să îl setați pe pagina <a href='$1'>de configurare a modulului</a>.
 index_status=Starea bătăilor inimii
 
@@ -21,7 +21,7 @@ conf_bcasts=Interfețe de bătăi inimii Ethernet
 conf_none=Nici unul
 conf_udpport=Portul batailor inimii UDP
 conf_mcast=Dispozitiv de bătăi cardiace multicast
-conf_mcastv=Dispozitiv $1, grup $2, port $3, TTL $4, loopback $5 
+conf_mcastv=Dispozitiv $1, grup $2, port $3, TTL $4, loopback $5
 conf_enabled=Activat
 conf_disabled=Dezactivat
 conf_keepalive=Timpul dintre bătăile inimii

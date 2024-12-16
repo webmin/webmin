@@ -19,8 +19,8 @@ index_all=כל החבילות
 index_return=אינדקס מודול
 index_treturn=עץ חבילה
 index_tree2=עיין בעץ החבילות
-index_epackagecmd=מערכת החבילה $1 דורשת את הפקודה $2 
-index_eupdatecmd=מערכת העדכון $1 דורשת את הפקודה $2 
+index_epackagecmd=מערכת החבילה $1 דורשת את הפקודה $2
+index_eupdatecmd=מערכת העדכון $1 דורשת את הפקודה $2
 index_epackagecheck=מערכת ניהול החבילות שנבחרה אינה תקפה: $1. <br>יתכן שתצטרך לבחור מערכת אחרת בדף<a href='$2'> תצורת המודול </a>.
 index_eupdatecheck=מערכת העדכונים שנבחרה אינה תקפה: $1. <br>יתכן שתצטרך לבחור שיטת עדכון אחרת בדף<a href='$2'> תצורת המודול </a>.
 index_echeckpackage=לא אותרה מערכת חבילה!
@@ -30,12 +30,12 @@ index_filterclear=נקה את המסנן
 index_filtered=מציג <tt>$1</tt> חבילות מתוך <tt>$2</tt>
 
 search_title=חיפוש חבילות
-search_nomatch=אין חבילות תואמות $1 
+search_nomatch=אין חבילות תואמות $1
 search_none=אף אחד
 search_desc=תיאור
 search_class=מעמד
 search_pack=חבילה
-search_match=חבילות התואמות $1 
+search_match=חבילות התואמות $1
 search_return=תוצאות חיפוש
 search_esearch=לא נכנסת לחיפוש!
 search_delete=הסר התקנת חבילות שנבחרו
@@ -68,7 +68,7 @@ edit_return=פרטי חבילה
 edit_egone=החבילה כבר לא מותקנת
 
 list_title=קבצי חבילה
-list_files=קבצים לחבילה $1 
+list_files=קבצים לחבילה $1
 list_path=נתיב
 list_owner=בעלים
 list_group=קבוצה
@@ -121,7 +121,7 @@ install_ok=להתקין
 
 do_err=התקנת החבילה $1 נכשלה
 do_title=התקן את החבילה
-do_efailed=ההתקנה נכשלה : $1 
+do_efailed=ההתקנה נכשלה : $1
 do_efailedmsg1=תוכלו לנסות להתקין שוב על ידי חזרה לדף הקודם ובחירת אפשרויות התקנה שונות.
 do_efailedmsg2=אחרת, <a href='$1'>לחץ כאן כדי למחוק את קובץ החבילה הזמני</a> כדי לחסוך שטח בדיסק.
 do_success=החבילה $1 הותקנה בהצלחה
@@ -162,7 +162,7 @@ rpm_finddesc=תיאור
 bsd_unknown=לא ידוע
 bsd_scripts=לבצע סקריפטים לפני התקנה ופרסום?
 bsd_force=לכפות התקנה אם חסרים תנאים מוקדמים?
-bsd_manager=מנהל חבילות $1 
+bsd_manager=מנהל חבילות $1
 
 slack_unclass=אחר
 slack_unknown=לא ידוע
@@ -170,7 +170,7 @@ slack_missing=חסר
 slack_root=ספריית שורש
 slack_eroot=ספריית שורש חסרה או לא חוקית
 slack_manager=מנהל חבילות Slackware
-slack_edir=ספריית חבילות Slackware חסרה $1 
+slack_edir=ספריית חבילות Slackware חסרה $1
 
 debian_unknown=לא ידוע
 debian_depends=להתעלם מבעיות תלות?
@@ -179,7 +179,7 @@ debian_overwrite=להחליף קבצים מחבילות אחרות?
 debian_downgrade=החלף חבילה חדשה יותר ישנה?
 debian_manager=דביאן
 
-log_install_package=חבילה מותקנת $1 
+log_install_package=חבילה מותקנת $1
 log_install_apt_l=חבילות מותקנות $1 מ- APT
 log_install_apt=התקנת חבילות $2 מ- APT
 log_install_yum_l=חבילות מותקנות $1 מ- YUM
@@ -312,7 +312,7 @@ rpm_dev=התקן
 rpm_user=בעלות על משתמשים
 rpm_perm=הרשאות
 rpm_group=בעלות בקבוצה
-rpm_erpm=RPM $1 לא נמצא : $2 
+rpm_erpm=RPM $1 לא נמצא : $2
 
 soft_reg=קובץ רגיל
 soft_dir=מדריך
@@ -322,9 +322,9 @@ soft_hard=קישור קשה
 soft_edit=קובץ הניתן לעריכה
 soft_efunc=טעינת פונקציות נכשלה עבור מערכת חבילה $1.
 soft_euncompress=הקובץ דחוס, אך הפקודה <tt>ביטול הדחיסה</strong> לא נמצאה במערכת שלך.
-soft_euncmsg=ביטול דחיסת הקובץ נכשל : $1 
+soft_euncmsg=ביטול דחיסת הקובץ נכשל : $1
 soft_egzip=הקובץ gzipped, אך פקודת ה- gzip לא נמצאה במערכת שלך.
-soft_egzmsg=נכשל קובץ האקדח : $1 
+soft_egzmsg=נכשל קובץ האקדח : $1
 
 aix_unknown=לא ידוע
 aix_device=התקן / ספריית INPUT לתוכנה
@@ -362,13 +362,13 @@ emerge_name=פורטאג '
 
 cygwin_fmissing=הקובץ חסר
 cygwin_lmissing=הקובץ שאליו מצביע הקישור חסר
-cygwin_estat=נכשל קובץ ה- stat: $1 
-cygwin_elread=קריאת symlink נכשלה: $1 
-cygwin_elstat=כניסה לסטטוס symlink: $1 
+cygwin_estat=נכשל קובץ ה- stat: $1
+cygwin_elread=קריאת symlink נכשלה: $1
+cygwin_elstat=כניסה לסטטוס symlink: $1
 cygwin_badpostscript=אזהרה: נראה כי סקריפט זה אינו מופעל
 cygwin_pkgexists=החבילה $1 כבר קיימת.
 cygwin_warnuse=אזהרה: זהו אינו ממשק רשמי לניהול תוכנת Cygwin. השתמש על אחריותך בלבד.
-cygwin_edb=בסיס הנתונים של חבילות Cygwin חסר $1 
+cygwin_edb=בסיס הנתונים של חבילות Cygwin חסר $1
 
 deletes_err=מחיקת החבילות נכשלה
 deletes_enone=לא נבחרו חבילות
@@ -376,7 +376,7 @@ deletes_title=מחק חבילות
 deletes_desc=הסרת ההתקנה של חבילות $1 ..
 deletes_failed1=הסרת ההתקנה של $1 : $2 נכשלה
 deletes_success1=הסרת ההתקנה של $1 בהצלחה
-deletes_failed2=הסרת ההתקנה נכשלה : $1 
+deletes_failed2=הסרת ההתקנה נכשלה : $1
 deletes_success2=הסרת ההתקנה.
 deletes_rusure=האם אתה בטוח שברצונך להסיר את ההתקנה של החבילות $1 ?
 deletes_ok=מחק את כולם

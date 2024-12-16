@@ -20,7 +20,7 @@ index_restart=Reštartujte plánovač
 index_restartmsg=Kliknutím na toto tlačidlo reštartujete proces plánovania tlače. Vynúti sa použitie aktuálnej konfigurácie tlače.
 index_return=zoznam tlačiarní
 index_esystem=Nainštalujte softvér pre vybraný tlačový systém alebo ho zmeňte pomocou <a href='$1'>konfigurácie modulu</a>.
-index_style=Tlačový systém: $1 
+index_style=Tlačový systém: $1
 index_cluster=Clusterové servery
 index_clusterdesc=Kliknutím na toto tlačidlo nastavíte ďalšie servery Webmin, na ktorých sa budú tlačiarne vytvárať, aktualizovať a odstraňovať.
 index_delete=Odstrániť vybrané tlačiarne
@@ -99,12 +99,12 @@ save_eremote=Ovládače nie je možné používať so vzdialenými tlačiarňami
 save_edhost=Priamy hostiteľ „$1“ neexistuje
 save_edport=Chýba alebo je neplatný priamy port
 save_evalid=Tlačový systém túto tlačiareň nepovolil
-save_errslave=Tlačiareň vytvorila v tomto systéme OK, ale v klastrových systémoch sa vyskytli nasledujúce chyby : $1 
+save_errslave=Tlačiareň vytvorila v tomto systéme OK, ale v klastrových systémoch sa vyskytli nasledujúce chyby : $1
 save_egone=Nenašla sa žiadna tlačiareň s názvom '$1'
-save_errdelslave=Tlačiareň bola v tomto systéme odstránená, ale v klastrových systémoch sa vyskytli nasledujúce chyby : $1 
+save_errdelslave=Tlačiareň bola v tomto systéme odstránená, ale v klastrových systémoch sa vyskytli nasledujúce chyby : $1
 
 jobs_title=Tlačové úlohy
-jobs_header=Tlačové úlohy na $1 
+jobs_header=Tlačové úlohy na $1
 jobs_id=ID úlohy
 jobs_size=veľkosť
 jobs_by=Predloženej
@@ -117,7 +117,7 @@ jobs_all=Zrušte všetky tlačové úlohy
 jobs_bytes=bajtov
 jobs_test=Tlač testovacej stránky
 jobs_cancelsel=Zrušiť vybraté úlohy
-jobs_on=Na tlačiarni $1 
+jobs_on=Na tlačiarni $1
 jobs_return=zoznam tlačových úloh
 
 cancel_ecannot=Nie je povolené rušiť tlačové úlohy
@@ -197,7 +197,7 @@ suse_yast2=Ovládač YAST2
 suse_edriver=Nie je vybratý žiadny typ tlačiarne
 suse_eres=Chýbajúce alebo neplatné rozlíšenie
 
-estop=Nepodarilo sa zastaviť lpd : $1 
+estop=Nepodarilo sa zastaviť lpd : $1
 
 acl_printers=Tlačiarne, ktoré môže tento užívateľ konfigurovať
 acl_add=Môžete pridať nové tlačiarne?
@@ -218,20 +218,20 @@ acl_cluster=Dokážete spravovať klaster tlačiarní?
 log_stop=Zastavený plánovač tlače
 log_start=Spustený plánovač tlače
 log_restart=Reštartovaný plánovač tlače
-log_cancel_job=Zrušená tlačová úloha $2 na $1 
-log_cancel_all=Zrušené všetky tlačové úlohy na $1 
-log_cancel_sel=Zrušené $2 tlačové úlohy na $1 
-log_create=Vytvorená tlačiareň $1 na $2 
-log_modify=Upravená tlačiareň $1 na $2 
-log_delete=Odstránená tlačiareň $1 na $2 
-log_create_l=Vytvorená $3 tlačiareň $1 na $2 
-log_modify_l=Upravená $3 tlačiareň $1 na $2 
-log_delete_l=Odstránená $3 tlačiareň $1 na $2 
+log_cancel_job=Zrušená tlačová úloha $2 na $1
+log_cancel_all=Zrušené všetky tlačové úlohy na $1
+log_cancel_sel=Zrušené $2 tlačové úlohy na $1
+log_create=Vytvorená tlačiareň $1 na $2
+log_modify=Upravená tlačiareň $1 na $2
+log_delete=Odstránená tlačiareň $1 na $2
+log_create_l=Vytvorená $3 tlačiareň $1 na $2
+log_modify_l=Upravená $3 tlačiareň $1 na $2
+log_delete_l=Odstránená $3 tlačiareň $1 na $2
 
-linux_paralel=Paralelný port $1 
+linux_paralel=Paralelný port $1
 linux_serial=Sériový port $1 (COM $1)
 linux_null=Null Device
-linux_usb=USB tlačiareň $1 
+linux_usb=USB tlačiareň $1
 linux_ecmd=Príkaz $1 sa vo vašom systéme nenašiel, čo znamená, že tlačový systém Linux nie je nainštalovaný.
 linux_espool=Vo vašom systéme neexistuje spoolový adresár $1, čo naznačuje, že tlačový systém Linux nie je nainštalovaný.
 
@@ -243,18 +243,18 @@ freebsd_espool=Vo vašom systéme neexistuje spoolový adresár $1, čo naznaču
 openbsd_paralel=Paralelný port
 openbsd_serial=Sériový port $1 (COM $1)
 
-unixware_paralel=Paralelný port $1 
-unixware_serial=Sériový port $1 
+unixware_paralel=Paralelný port $1
+unixware_serial=Sériový port $1
 unixware_null=Null Device
 unixware_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo naznačuje, že tlačový systém UnixWare nie je nainštalovaný.
 
-hpux_paralel=Paralelné $1 
-hpux_serial=Sériové $1 
+hpux_paralel=Paralelné $1
+hpux_serial=Sériové $1
 hpux_null=Null Device
 hpux_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo znamená, že tlačový systém HPUX nie je nainštalovaný.
 hpux_eiface=Adresár skriptov rozhrania $1 vo vašom systéme neexistuje, čo naznačuje, že tlačový systém HPUX nie je nainštalovaný.
 
-lprng_paralel=Paralelný port $1 
+lprng_paralel=Paralelný port $1
 lprng_serial=Sériový port $1 (COM $1)
 lprng_null=Null Device
 lprng_ecmd=Príkaz $1 sa vo vašom systéme nenašiel, čo znamená, že tlačový systém LPRng nie je nainštalovaný.
@@ -262,7 +262,7 @@ lprng_espool=Vo vašom systéme neexistuje spoolový adresár $1, čo naznačuje
 
 solaris_paralel=Paralelný port
 solaris_uparalel=Paralelný port Ultra 5/10
-solaris_serial=Sériový port $1 
+solaris_serial=Sériový port $1
 solaris_null=Null Device
 solaris_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo znamená, že tlačový systém Solaris nie je nainštalovaný.
 
@@ -283,13 +283,13 @@ cups_nonemsg=Vzdialená alebo surová tlačiareň
 cups_prog=Program
 cups_driver=Ovládač CUPS
 cups_eprog=$1 nie je platný program
-cups_opts=Možnosti pre $1 
+cups_opts=Možnosti pre $1
 cups_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo znamená, že tlačový systém CUPS nie je nainštalovaný.
 
 irix_ecmd=Príkaz $1 nebol vo vašom systéme nájdený, čo naznačuje, že tlačový systém IRIX nie je nainštalovaný.
 irix_eiface=Adresár skriptov rozhrania $1 vo vašom systéme neexistuje, čo naznačuje, že tlačový systém IRIX nie je nainštalovaný.
 
-aix_port=Port tlačiarne $1 
+aix_port=Port tlačiarne $1
 aix_edesc=Neplatný popis - sú povolené iba písmená a čísla, bez medzier
 aix_ecmd=Tlačový server AIX $1 nebol nájdený. Možno nie je nainštalovaný alebo sa používa iný tlačový systém.
 

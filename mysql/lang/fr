@@ -15,7 +15,7 @@ index_global=Options globales
 index_return=Liste de base de données
 index_eadmin=Le programme MySQL admin $1 n'a pas été trouvé sur votre système. Peut-être que MySQL n'n'est pas installé, ou votre <a href='$2'>configuration du module</a> est incorrect.
 index_esql=Le programme client MySQL $1 n'a pas été trouvé sur votre système. Peut-être que MySQL n'est pas installé, ou votre <a href='$2'>configuration du module</a> est incorrect.
-index_eshow=  Le programme d'état MySQL $1 n'a pas été trouvé sur votre système. Peut-être que MySQL n'est pas installé, ou votre <a href='$2'>configuration du module</a> est incorrect.
+index_eshow=Le programme d'état MySQL $1 n'a pas été trouvé sur votre système. Peut-être que MySQL n'est pas installé, ou votre <a href='$2'>configuration du module</a> est incorrect.
 index_estart=Le script de démarrage MySQL $1 n'a pas été trouvé sur votre système. Peut-être que MySQL n'est pas installé, ou votre <a href='$2'>configuration du module</a> est incorrect.
 index_ever=Le programme client MySQL $1 ne semble pas être la bonne version. Webmin prend uniquement en charge les versions de MySQL 3 et ci-dessus.
 index_nouser=Votre compte Webmin est configuré pour se connecter au serveur MySQL comme utilisateur $1, mais cet utilisateur a été refusé l'accès.
@@ -48,7 +48,7 @@ index_jumpok=Ouvrir
 
 login_err=Échec de la connexion
 login_ecannot=Vous n'êtes pas autorisé à configurer la connexion de base de données
-login_elogin=Connexion d'administration manquant  
+login_elogin=Connexion d'administration manquant
 login_epass=Mauvaise nom d'utilisateur ou mot de passe d'administration
 
 stop_err=Impossible d'arrêter la base de données
@@ -130,7 +130,7 @@ table_copydata=Copie ainsi données
 table_initial=Champs initiaux
 table_header2=Nouvelles options de table
 table_err=Impossible de créer le tableau
-table_ename=Nom de la table manquant ou invalide 
+table_ename=Nom de la table manquant ou invalide
 table_efield='$1' n'est pas un nom de domaine valide
 table_epnull=Le champ de clé primaire $1 ne peut permettre nulls
 table_etype=Type manquant pour le champ $1
@@ -432,7 +432,7 @@ exec_created=$1 tableaux ont été créés.
 exec_inserted=$1 enregistrements  ont été insérés.
 exec_cs=Jeu de caractères pour les données
 
-tprivs_title=Autorisations de table  
+tprivs_title=Autorisations de table
 tprivs_table=Table
 tprivs_db=Base de données
 tprivs_host=Hôtes
@@ -489,7 +489,7 @@ cprivs_drusure=Êtes-vous sûr de vouloir supprimer les autorisations de colonne
 cprivs_dok=autorisations de suppression
 
 cpriv_title1=Créer des autorisations de champ
-cpriv_title2=Modifier Autorisations de champ 
+cpriv_title2=Modifier Autorisations de champ
 cpriv_header=Champ des options d'autorisation
 cpriv_db=Base de données
 cpriv_table=Table
@@ -543,14 +543,14 @@ log_dbs_delete=Supprimés $1 bases de données
 log_dbprivs_delete=$1 supprimés privilèges de base de données
 log_tprivs_delete=$1 supprimés privilèges de table
 log_cprivs_delete=$1 supprimés privilèges sur le champ
-log_users_delete=Supprimés $1 utilisateurs 
+log_users_delete=Supprimés $1 utilisateurs
 log_table_create=Table créée $1 en base de données $2
 log_table_delete=Table supprimée $1 en la base de données $2
 log_index_create=Index créé $1 en base de données $2
 log_index_delete=Index supprimé $1 de base de données $2
 log_index_modify=Index Modifié $1 en base de données $2
 log_view_create=Vue Créé $1 en base de données $2
-log_view_delete=Vue supprimé $1 en base de données $2 
+log_view_delete=Vue supprimé $1 en base de données $2
 log_view_modify=Vue Modifié $1 en base de données $2
 log_tables_delete=Supprimés $1 objets de base de données $2
 log_field_create=Ajouté le champ $1 $4 à $2 dans la base de données $3
@@ -586,7 +586,7 @@ log_cpriv_modify_l=Permissions modifiés pour champ de $5, tableau $4, base de d
 log_anon=anonyme
 log_any=tout
 log_backup=Sauvegardé base $1
-log_backup_l=Sauvegardé base de données $1 à fichier $2 
+log_backup_l=Sauvegardé base de données $1 à fichier $2
 log_backup_all=Sauvegardé toutes les bases de données
 log_backup_all_l=Sauvegardé toutes les bases de données à fichier $2
 log_execupload=Commandes SQL exécutées à partir du fichier téléchargé
@@ -679,7 +679,7 @@ backup_edownloadsave=Le mode de téléchargement ne peut pas être utilisé pour
 import_title=Importation de données
 import_uploadout=Importation de données à partir du fichier téléchargé ..
 import_fileout=Importation de données depuis le fichier $1 ..
-import_eupload=fichier d'importation téléchargé manquant 
+import_eupload=fichier d'importation téléchargé manquant
 import_efile=Nom de fichier d'importation manquant
 
 adv_title=Recherche Avancée
@@ -700,7 +700,7 @@ csv_format0=CSV avec citations
 csv_format1=CSV sans les guillemets
 csv_format2=Séparées par des tabulations
 cvs_err=Échec de l'exportation CSV
-csv_efile=Fichier de destination manquant ou invalide 
+csv_efile=Fichier de destination manquant ou invalide
 csv_ebuser=Vous n'êtes pas autorisé à exporter vers un fichier
 csv_ewhere=Manquant <tt>where</tt> clause
 csv_done=Export CSV à $1 est complet. La taille du fichier résultant est de $2.
@@ -721,7 +721,7 @@ cnf_big-tables=Autoriser les grandes tables?
 cnf_emysqld=Impossible de trouver section [mysqld] dans my.cnf
 cnf_err=Impossible d'enregistrer les options du serveur MySQL
 cnf_eport=numéro de port manquant ou invalide
-cnf_ebind=Adresse IP à écouter sur manquant ou invalide 
+cnf_ebind=Adresse IP à écouter sur manquant ou invalide
 cnf_esocket=manquant fichier de socket
 cnf_edatadir=Répertoire des fichiers de base de données manquantes ou invalides
 cnf_key_buffer=Taille du tampon de clé
@@ -744,7 +744,7 @@ cnf_esort_buffer=Sort buffer size manquant ou invalide
 cnf_esort_buffer_size=Taille du tampon de tri manquante ou non valide
 cnf_enet_buffer_length=Network buffer size manquant ou invalide
 cnf_emyisam_sort_buffer_size=taille du tampon manquant ou invalide MyISAM sorte
-cnf_emax_connections=Nombre maximum de connexions manquant ou invalide 
+cnf_emax_connections=Nombre maximum de connexions manquant ou invalide
 cnf_restart=Enregistrer et Redémarrer MySQL
 cnf_fpt=Fichier séparé pour chaque table InnoDB?
 cnf_ilt=Délai d'expiration du verrouillage InnoDB (en secondes)

@@ -4,10 +4,10 @@ index_edir=Id-direttorju tal-bażi Jabber $1 ma jeżistix. Jew Jabber mhuwiex in
 index_emodules=Il-moduli Perl $1 u $2 li huma meħtieġa minn Webmin għall-immaniġġjar tal-konfigurazzjoni XML ta 'Jabber mhumiex installati. <a href='$3'>Ikklikkja hawn</a> biex tinstallahom direttament minn CPAN.
 index_emodule=Il-modulu Perl $1 li huwa meħtieġ minn Webmin għall-immaniġġjar tal-konfigurazzjoni XML ta 'Jabber mhuwiex installat. <a href='$2'>Ikklikkja hawn</a> biex tinstallaha direttament minn CPAN.
 index_expat=Kun żgur li għandek il-librerija u l-intestaturi tal-Expat C installati qabel ma tipprova tinstalla l-moduli Perl, peress li jiddependu minnha u se jonqsu jekk ma tkunx disponibbli.
-index_eparse=Il-modulu ta ' $1 perl ma setax jiddekorri l-fajl ta' konfigurazzjoni Jabber tiegħek : $2 
+index_eparse=Il-modulu ta ' $1 perl ma setax jiddekorri l-fajl ta' konfigurazzjoni Jabber tiegħek : $2
 index_ejabberd=Il-programm tas-server Jabber $1 ma nstabx fis-sistema tiegħek. Jew Jabber mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
-index_eversion=Webmin jappoġġja biss il-verżjoni Jabber $2, iżda l-kmand $3 irrapporta l-informazzjoni tal-verżjoni li ġejja : $1 
-index_eversion2=Webmin jappoġġja biss il-verżjonijiet Jabber taħt $2, iżda l-kmand $3 irrapporta l-informazzjoni tal-verżjoni li ġejja : $1 
+index_eversion=Webmin jappoġġja biss il-verżjoni Jabber $2, iżda l-kmand $3 irrapporta l-informazzjoni tal-verżjoni li ġejja : $1
+index_eversion2=Webmin jappoġġja biss il-verżjonijiet Jabber taħt $2, iżda l-kmand $3 irrapporta l-informazzjoni tal-verżjoni li ġejja : $1
 index_start=Ibda Jabber Server
 index_startmsg=Ikklikkja din il-buttuna biex tibda s-server Jabber fis-sistema tiegħek. Sakemm jinbeda, l-ebda klijenti ta 'messaġġi istantanji ma jkunu jistgħu jużawha.
 index_stop=Waqqaf is-Server Jabber
@@ -16,7 +16,7 @@ index_restart=Applika l-Bidliet
 index_restartmsg=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni kurrenti billi twaqqaf u terġa 'tibda s-server Jabber.
 index_comments=Twissija - il-fajl ta 'konfigurazzjoni Jabber tiegħek $1 fih kummenti, li jitneħħew jekk isiru xi tibdiliet fil-konfigurazzjoni billi tuża dan il-modulu.
 index_return=Menu Jabber
-index_version=Verżjoni Jabber $1 
+index_version=Verżjoni Jabber $1
 
 general_title=Għażliet Ġenerali
 general_header=Għażliet ta 'server Global Jabber
@@ -44,7 +44,7 @@ messages_rnotify=Tinnotifika lill-amministratur dwar ir-reġistrazzjoni?
 messages_rfields=Oqsma meħtieġa reġistrazzjoni
 messages_vcard2jud=Ibgħat vCard lid-direttorju tal-utenti ta 'Jabber?
 messages_err=Ma rnexxielux isalva messaġġi
-messages_evcard=XML vCard mhux validu : $1 
+messages_evcard=XML vCard mhux validu : $1
 messages_etag=Server XML vCard ma jibda bl-&lt;vCard&gt;
 
 modules_title=Moduli Jabber
@@ -60,7 +60,7 @@ karma_title=Kontroll tat-Traffiku tal-Karma
 karma_header=Għażliet ta 'kontroll tar-rata tat-traffiku
 karma_rate=Immaniġġjar eċċessiv tal - konnessjoni
 karma_rate_def=B'diżabilità
-karma_rate_sel=Imblokka klijent għal $2 sekondi wara konnessjonijiet $1 
+karma_rate_sel=Imblokka klijent għal $2 sekondi wara konnessjonijiet $1
 karma_mode=Modalità Karma
 karma_none=L-ebda limiti
 karma_low=Limiti baxxi tat-traffiku

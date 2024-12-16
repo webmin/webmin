@@ -153,7 +153,7 @@ menu_file=file
 menu_edit=Editatu
 menu_tools=tresnak
 menu_bookmarks=Bookmarks
-notallowed=Ezin duzu $1 era sartu. Baimendutako direktorio hauek hauek dira : $2 
+notallowed=Ezin duzu $1 era sartu. Baimendutako direktorio hauek hauek dira : $2
 error_upload_emax=Kargatutako fitxategia $1 ren muga baino handiagoa da
 extract_etype=Onartu gabeko artxibo mota
 

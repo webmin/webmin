@@ -115,7 +115,7 @@ freebsd_lim=¨οριο μνήμης
 hpux_pri=Προτεραιότητα
 hpux_tty=TTY
 hpux_status=Κατάσταση
-hpux_wchan=Αναμονή για 
+hpux_wchan=Αναμονή για
 hpux_stime=Ξεκίνησε
 
 hpuxstat_0=Μη υπαρκτές

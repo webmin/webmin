@@ -7,7 +7,7 @@ switch_return=klienttjänster
 
 server_epwdir=Ogiltig katalog för lösenordskällfiler
 
-tables_find=Hitta $1 där $2 matchar $3 
+tables_find=Hitta $1 där $2 matchar $3
 tables_search=Sök
 tables_nomatch=Inga poster matchade din sökning
 tables_build=Ombygga NIS-bord
@@ -31,7 +31,7 @@ eswitch_1=Andra datakällan
 eswitch_2=Tredje datakälla
 eswitch_3=Fjärde datakälla
 eswitch_4=Femte datakälla
-eswitch_nth=Datakälla $1 
+eswitch_nth=Datakälla $1
 eswitch_success=På framgång
 eswitch_notfound=Om inte hittas
 eswitch_unavail=Om inte tillgängligt

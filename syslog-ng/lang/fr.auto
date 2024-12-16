@@ -9,7 +9,7 @@ index_stopdesc=Cliquez sur ce bouton pour arrêter le démon Syslog-NG en cours 
 index_start=Démarrez Syslog-NG
 index_startdesc=Cliquez sur ce bouton pour démarrer le démon Syslog-NG, en utilisant la configuration actuelle.
 index_return=index du module
-index_version=Syslog-NG $1 
+index_version=Syslog-NG $1
 
 options_title=Options de journalisation
 options_header=Options pour tous les fichiers journaux
@@ -71,15 +71,15 @@ destinations_typet=Serveur TCP Syslog
 destinations_typeg=Prise de datagramme
 destinations_types=Prise de flux
 destinations_allusers=Tous les utilisateurs
-destinations_users=Seuls les utilisateurs $1 
-destinations_host=Hôte $1 
+destinations_users=Seuls les utilisateurs $1
+destinations_host=Hôte $1
 destinations_view=Vue ..
 destinations_none=Aucun fichier journal de destination n'a encore été défini.
 destinations_delete=Supprimer les destinations sélectionnées
 destinations_add=Ajoutez une nouvelle destination de journal.
 destinations_return=destinations de journal
 destinations_desc=Journal d'un autre module
-destinations_cmd=Sortie de $1 
+destinations_cmd=Sortie de $1
 
 destination_header=Options de destination du journal
 destination_title1=Créer une destination de journal
@@ -259,10 +259,10 @@ source_edoor=Nom de fichier de porte Sun streams manquant ou non valide
 source_transport=Protocole réseau
 
 view_title=Afficher le fichier journal
-view_header=$1 dernières lignes de $2 
+view_header=$1 dernières lignes de $2
 view_empty=Le fichier journal est vide
 view_refresh=Rafraîchir
-view_filter=Afficher uniquement les lignes avec le texte $1 
+view_filter=Afficher uniquement les lignes avec le texte $1
 
 apply_err=Impossible d'appliquer la configuration
 apply_egone=Ne pas courrir!
@@ -271,17 +271,17 @@ start_err=Impossible de démarrer le serveur Syslog-NG
 
 stop_err=Impossible d'arrêter le serveur Syslog-NG
 
-log_create_destination=Destination de journal créée $1 
-log_modify_destination=Destination de journal modifiée $1 
-log_delete_destination=Destination de journal supprimée $1 
+log_create_destination=Destination de journal créée $1
+log_modify_destination=Destination de journal modifiée $1
+log_delete_destination=Destination de journal supprimée $1
 log_delete_destinations=$1 destinations de journal supprimées
-log_create_filter=Filtre de journal créé $1 
-log_modify_filter=Filtre de journal modifié $1 
-log_delete_filter=Filtre de journal supprimé $1 
+log_create_filter=Filtre de journal créé $1
+log_modify_filter=Filtre de journal modifié $1
+log_delete_filter=Filtre de journal supprimé $1
 log_delete_filters=Filtres de journal $1 supprimés
-log_create_source=Source de journal créée $1 
-log_modify_source=Source de journal modifiée $1 
-log_delete_source=Source de journal supprimée $1 
+log_create_source=Source de journal créée $1
+log_modify_source=Source de journal modifiée $1
+log_delete_source=Source de journal supprimée $1
 log_delete_sources=$1 sources de journal supprimées
 log_create_log=Cible de journal créée
 log_modify_log=Cible de journal modifiée

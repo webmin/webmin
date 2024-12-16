@@ -7,10 +7,10 @@ index_relabeldesc=Odstraňte všechny stávající oddíly a vytvořte novou tab
 index_relabel2=Vytvořte tabulku oddílů
 index_relabeldesc2=Na tomto disku vytvořte novou prázdnou tabulku oddílů, aby bylo možné přidat oddíly.
 
-select_nvme=Jednotka NVME SSD $1 
-select_nvmepart=Jednotka NVME SSD $1 $2 partition $3 
+select_nvme=Jednotka NVME SSD $1
+select_nvmepart=Jednotka NVME SSD $1 $2 partition $3
 
-edit_mountiscsi=Sdílené zařízení iSCSI $1 
+edit_mountiscsi=Sdílené zařízení iSCSI $1
 edit_name=Název oddílu
 edit_eparted=Tento oddíl nelze změnit, pokud není nainstalován příkaz <tt>parted</tt>.
 edit_eparted2=Tento oddíl nelze změnit, pokud není <tt>parted</tt> nastaveno jako příkaz pro správu v konfiguraci modulu.
@@ -28,8 +28,8 @@ blink_back=Vraťte se
 fs_ext4=Nový Linux Native
 fs_btrfs=BTR
 
-disk_iscsi=Sdílené zařízení iSCSI $1 
-disk_table=<b>Formát tabulky oddílů:</b> $1 
+disk_iscsi=Sdílené zařízení iSCSI $1
+disk_table=<b>Formát tabulky oddílů:</b> $1
 disk_notable=<b>Formát tabulky oddílů:</b> Nebyl vytvořen
 disk_needtable=Žádné oddíly nelze vytvořit bez tabulky oddílů.
 disk_return=seznam oddílů

@@ -4,7 +4,7 @@ index_desc=Beskrivning
 index_buttekey=Redigera TSIG-nycklar
 index_stop=Stoppa servern
 index_stopdesc=Klicka på den här knappen för att stoppa den körande DHCP-servern på ditt system. När de stoppas kan DHCP-klienter inte begära IP-adresser.
-index_version=ISC DHCPd-version $1 
+index_version=ISC DHCPd-version $1
 index_buttiface=Redigera nätverksgränssnitt
 index_iface=Ställ in nätverksgränssnitten som DHCP-servern lyssnar på när den startas.
 index_subtoomany=Det finns för många undernät att visa.
@@ -15,7 +15,7 @@ index_hsttoomany=Det finns för många värdar att visa.
 index_grptoomany=Det finns för många grupper att visa.
 index_hstlook2=Redigera värdens namn:
 index_grplook2=Redigera gruppen som heter:
-index_gdom=Gruppera för $1 
+index_gdom=Gruppera för $1
 index_match0=jämlikar
 index_match1=innehåller
 index_match2=tändstickor
@@ -34,7 +34,7 @@ ehost_desc=Värdbeskrivning
 
 egroup_desc=Gruppbeskrivning
 
-listl_network=I nätverk $1 / $2 
+listl_network=I nätverk $1 / $2
 listl_lfnotcont2=DHCPd-hyresfilen <tt>$1</tt> innehåller inga hyresavtal som är aktiva för närvarande.
 listl_unknown=Okänd
 listl_allocs=$1 IP-adresser tillgängliga, $2 tilldelade ($3 %)
@@ -99,7 +99,7 @@ keys_secret=Hemlig sträng
 keys_ecannot=Du får inte redigera DNS-nycklar
 keys_err=Det gick inte att spara DNS-nycklar
 keys_ekey='$1' är inte ett giltigt nyckel-ID
-keys_esecret=Saknad eller ogiltig base-64-kodad hemlighet för nyckel $1 
+keys_esecret=Saknad eller ogiltig base-64-kodad hemlighet för nyckel $1
 
 eacl_uniqh=skapa värdar med duplicerade hårdvaruadresser
 eacl_uniqi=skapa värdar med duplicerade IP-adresser
@@ -112,13 +112,13 @@ iface_title=Nätverksgränssnitt
 iface_desc=DHCP-servern kan endast tilldela IP-adresser i nätverk som är anslutna till ett av gränssnitten som valts nedan. Nätverksgränssnittet för alla definierade undernät måste inkluderas. Om ingen är vald försöker DHCP-servern hitta en automatiskt.
 iface_listen=Lyssna på gränssnitt
 
-lookup_ehost=Det finns ingen värd med namn, IP-adress eller MAC-adress $1 
+lookup_ehost=Det finns ingen värd med namn, IP-adress eller MAC-adress $1
 lookup_ehostname=Ingen värdnamn, IP-adress eller MAC-adress har angetts
 lookup_egroup=Ingen grupp med namnet eller domännamnet $1 finns
 lookup_egroupname=Inget gruppnamn eller domännamn har angetts
-lookup_esubnet=Det finns inget undernät med adress eller adress/nätmask $1 
+lookup_esubnet=Det finns inget undernät med adress eller adress/nätmask $1
 lookup_esubnetname=Ingen subnätadress eller adress/nätmask har angetts
-lookup_eshared=Det finns inget delat nätverk med namnet $1 
+lookup_eshared=Det finns inget delat nätverk med namnet $1
 lookup_esharedname=Inget delat nätverksnamn har matats in
 
 zone_key=DNS-zoner

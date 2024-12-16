@@ -1,6 +1,6 @@
 index_title=Phân tích logfile Webalizer
-index_version=Phiên bản webalizer $1 
-index_version_webalizer=Phiên bản webalizer $1 
+index_version=Phiên bản webalizer $1
+index_version_webalizer=Phiên bản webalizer $1
 index_version_awffull=TUYỆT VỜI
 index_ewebalizer=Lệnh phân tích logfile $1 không được tìm thấy trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
 index_econf=Không tìm thấy tệp cấu hình Webalizer $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
@@ -21,8 +21,8 @@ index_return=danh sách tập tin
 index_global=Chỉnh sửa tùy chọn toàn cầu
 index_globaldesc=Nhấp vào nút này để chỉnh sửa các tùy chọn Webalizer áp dụng cho các báo cáo được tạo từ tất cả các tệp nhật ký.
 index_eversion=Lệnh Webalizer $1 trên hệ thống của bạn là phiên bản $2, nhưng mô-đun này chỉ hỗ trợ các phiên bản $3 trở lên.
-index_egetversion=Không thể tải phiên bản Webalizer bằng lệnh $1 : $2 
-index_when=Có, $1 
+index_egetversion=Không thể tải phiên bản Webalizer bằng lệnh $1 : $2
+index_when=Có, $1
 index_webalizer=Webalizer
 index_enable=Lịch trình đã chọn
 index_disable=Bỏ lịch trình đã chọn
@@ -66,7 +66,7 @@ save_euser=Người dùng bị thiếu hoặc không hợp lệ để chạy web
 save_ewuser=Không có người dùng Unix nào gọi là $1 tồn tại
 save_ehost=Tên máy chủ trang web bị thiếu hoặc không hợp lệ
 save_etitle=Thiếu tiêu đề báo cáo
-save_ecannot=Bạn chỉ được phép tạo báo cáo cho nhật ký dưới $1 
+save_ecannot=Bạn chỉ được phép tạo báo cáo cho nhật ký dưới $1
 
 view_epath=PATH_INFO không hợp lệ
 view_efile=Tên tệp báo cáo không hợp lệ
@@ -77,7 +77,7 @@ view_title=Xem báo cáo
 
 global_title=Tùy chọn Webalizer toàn cầu
 global_title2=Tùy chọn báo cáo Webalizer
-global_for=Đối với logfile $1 
+global_for=Đối với logfile $1
 global_first=Hiện tại không có tùy chọn nào được đặt cho tệp nhật ký này, điều đó có nghĩa là các tùy chọn toàn cầu sẽ được sử dụng thay thế. Khi biểu mẫu này được lưu, các báo cáo được tạo cho nhật ký này sẽ sử dụng các cài đặt được chọn trên trang này kể từ bây giờ.
 global_header=Tùy chọn Webalizer cho tất cả các báo cáo
 global_host=Tên máy chủ trang web
@@ -146,14 +146,14 @@ global_ehistory=Tên tệp lịch sử bị thiếu hoặc không hợp lệ
 global_ecurrent=Tên tệp gia tăng bị thiếu hoặc không hợp lệ
 global_ecache=Tên tệp bộ đệm DNS bị thiếu hoặc không hợp lệ
 
-log_create_log=Đã tạo báo cáo cho $1 
-log_modify_log=Báo cáo đã sửa đổi cho $1 
-log_delete_log=Đã xóa báo cáo cho $1 
-log_generate_log=Báo cáo được tạo cho $1 
+log_create_log=Đã tạo báo cáo cho $1
+log_modify_log=Báo cáo đã sửa đổi cho $1
+log_delete_log=Đã xóa báo cáo cho $1
+log_generate_log=Báo cáo được tạo cho $1
 log_global=Tùy chọn Webalizer toàn cầu đã sửa đổi
-log_global2=Tùy chọn Webalizer đã sửa đổi cho $1 
-log_enable_logs=Báo cáo theo lịch trình trên nhật ký $1 
-log_disable_logs=Báo cáo không theo lịch trình trên nhật ký $1 
+log_global2=Tùy chọn Webalizer đã sửa đổi cho $1
+log_enable_logs=Báo cáo theo lịch trình trên nhật ký $1
+log_disable_logs=Báo cáo không theo lịch trình trên nhật ký $1
 
 acl_view=Chỉ có thể xem các báo cáo hiện có?
 acl_global=Có thể chỉnh sửa các tùy chọn webalizer toàn cầu?

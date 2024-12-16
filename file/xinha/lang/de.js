@@ -151,18 +151,18 @@
   // Loading messages
   "Loading in progress. Please wait!": "Editor wird geladen. Bitte warten !",
   "Loading plugin $plugin" : "Plugin $plugin wird geladen",
-  "Register plugin $plugin" : "Plugin $plugin wird registriert", 
+  "Register plugin $plugin" : "Plugin $plugin wird registriert",
   "Constructing object": "Objekt wird generiert",
   "Generate Xinha framework": "Xinha Framework wird generiert",
-  "Init editor size":"Größe wird berechnet", 
+  "Init editor size":"Größe wird berechnet",
   "Create Toolbar": "Werkzeugleiste wird generiert",
   "Create Statusbar" : "Statusleiste wird generiert",
-  "Register right panel" : "Rechtes Panel wird generiert", 
-  "Register left panel" : "Linkes Panel wird generiert", 
-  "Register bottom panel" : "Unteres Panel wird generiert", 
-  "Register top panel" : "Oberes Panel wird generiert", 
-  "Finishing" : "Laden wird abgeschlossen", 
-  
+  "Register right panel" : "Rechtes Panel wird generiert",
+  "Register left panel" : "Linkes Panel wird generiert",
+  "Register bottom panel" : "Unteres Panel wird generiert",
+  "Register top panel" : "Oberes Panel wird generiert",
+  "Finishing" : "Laden wird abgeschlossen",
+
   // ColorPicker
   "Click a color..." : "Farbe wählen",
   "Sample" : "Beispiel",

@@ -1,7 +1,7 @@
 index_unknown=inconnue
 index_edb=Impossible de se connecter à la base de données de configuration SpamAssassin: $1. Vérifiez la <a href='$2'>configuration du module</a> pour vous assurer que vous utilisez les bons paramètres.
 index_spamassassin=SpamAssassin
-index_ecannot=Vous n'êtes pas autorisé à gérer le fichier de configuration de SpamAssassin $1 
+index_ecannot=Vous n'êtes pas autorisé à gérer le fichier de configuration de SpamAssassin $1
 
 white_addr2=Adresse du destinataire
 white_rcvd2=L'expéditeur ne doit jamais être classé comme spam
@@ -31,8 +31,8 @@ acl_file=Fichier de configuration de SpamAssassin à modifier
 acl_filedef=Fichier de configuration globale
 acl_awl=Utilisateurs autorisés pour la modification de la liste blanche automatique
 acl_awl0=Tous les utilisateurs
-acl_awl1=Uniquement les utilisateurs répertoriés $1 
-acl_awl2=Uniquement les membres des groupes $1 
+acl_awl1=Uniquement les utilisateurs répertoriés $1
+acl_awl2=Uniquement les membres des groupes $1
 
 amavisd_title=Amavisd Spam Delivery
 amavisd_desc=Le formulaire peut être utilisé pour modifier la configuration d'Amavisd qui détermine ce qui arrive aux messages classés comme spam.
@@ -87,20 +87,20 @@ simple_score=Score à appliquer
 simple_describe=La description
 simple_err=Échec de l'enregistrement des tests de message
 
-before_ecmd=Échec de la commande avant l'enregistrement : $1 
-after_ecmd=Échec de la commande après l'enregistrement : $1 
+before_ecmd=Échec de la commande avant l'enregistrement : $1
+after_ecmd=Échec de la commande après l'enregistrement : $1
 
-connect_emysql=Impossible de charger le pilote de base de données $1 
+connect_emysql=Impossible de charger le pilote de base de données $1
 connect_elogin=Impossible de se connecter à la base de données $1:$2.
-connect_equery=La base de données $1 ne contient pas la table de préférences $2 
+connect_equery=La base de données $1 ne contient pas la table de préférences $2
 connect_eldapmod=Le module Perl $1 nécessaire pour communiquer avec LDAP n'est pas installé ou ne peut pas être chargé
-connect_eldap=Impossible de se connecter au serveur LDAP $1 sur le port $2 
-connect_eldaplogin=Impossible de se connecter au serveur LDAP $1 en tant que $2 : $3 
-connect_ebase=Le DN de base LDAP $1 n'est pas valide : $2 
+connect_eldap=Impossible de se connecter au serveur LDAP $1 sur le port $2
+connect_eldaplogin=Impossible de se connecter au serveur LDAP $1 en tant que $2 : $3
+connect_ebase=Le DN de base LDAP $1 n'est pas valide : $2
 
-eldap=Échec de l'opération LDAP : $1 
-esql=Échec de SQL : $1 
-ldap_euser=Impossible de trouver l'objet utilisateur LDAP pour $1 
+eldap=Échec de l'opération LDAP : $1
+esql=Échec de SQL : $1
+ldap_euser=Impossible de trouver l'objet utilisateur LDAP pour $1
 
 db_title=Bases de données SQL et LDAP
 db_header=Options de base de données de stockage de configuration

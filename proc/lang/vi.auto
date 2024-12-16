@@ -16,7 +16,7 @@ index_memtfc=Tổng cộng $1 / $2 miễn phí / $3 được lưu vào bộ nh�
 index_loadname=Trung bình tải CPU:
 index_loadnums=$1 (1 phút), $2 (5 phút), $3 (15 phút)
 index_cpuname=Loại CPU:
-index_inzone=Trong khu vực $1 
+index_inzone=Trong khu vực $1
 
 pid=TÔI
 owner=Chủ nhân
@@ -81,12 +81,12 @@ edit_open=Tập tin và kết nối
 edit_trace=Quá trình theo dõi
 edit_return=chi tiết quá trình
 
-kill_err=Không thể gửi tín hiệu $1 để xử lý $2 
+kill_err=Không thể gửi tín hiệu $1 để xử lý $2
 kill_title=Gửi tín hiệu
 kill_sent=gởi
 kill_ecannot=Bạn không được phép giết các tiến trình
 
-renice_err=Không thể gia hạn quy trình $1 
+renice_err=Không thể gia hạn quy trình $1
 renice_ecannot=Bạn không được phép gia hạn các quy trình
 
 linux_pri=Sự ưu tiên
@@ -144,11 +144,11 @@ sysv_task=ID nhiệm vụ
 sysv_zone=Tên khu vực
 
 log_run=Lệnh Ran "$1"
-log_kill=Đã gửi tín hiệu $1 để xử lý $2 
+log_kill=Đã gửi tín hiệu $1 để xử lý $2
 log_kills=Gửi tín hiệu $1 đến $2 quá trình
-log_kill_l=Đã gửi tín hiệu $1 để xử lý $2 
-log_kills_l=Đã gửi tín hiệu $1 đến các quy trình <br> $2 
-log_renice=Thay đổi mức độ ưu tiên của quy trình $2 thành $1 
+log_kill_l=Đã gửi tín hiệu $1 để xử lý $2
+log_kills_l=Đã gửi tín hiệu $1 đến các quy trình <br> $2
+log_renice=Thay đổi mức độ ưu tiên của quy trình $2 thành $1
 
 acl_manage=Quản lý các quy trình như người dùng
 acl_manage_def=Người dùng Webmin hiện tại
@@ -174,10 +174,10 @@ open_type=Kiểu
 open_proto=Giao thức
 open_desc=Chi tiết
 open_fd=Mô tả tập tin
-open_listen1=Nghe trên cổng $1 
-open_listen2=Nghe địa chỉ $1 cổng $2 
-open_recv=Nhận trên $1:$2 
-open_conn=Đã kết nối từ $1 đến $2 ở trạng thái $3 
+open_listen1=Nghe trên cổng $1
+open_listen2=Nghe địa chỉ $1 cổng $2
+open_recv=Nhận trên $1:$2
+open_conn=Đã kết nối từ $1 đến $2 ở trạng thái $3
 open_cwd=Thư mục hiện tại
 open_rtd=Root thư mục
 open_txt=Mã chương trình

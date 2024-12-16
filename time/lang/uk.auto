@@ -1,7 +1,7 @@
 index_serviceonboot=Так, і почати при завантаженні
 index_boot=Синхронізувати при запуску Webmin?
 index_tzheader=Часовий пояс
-index_ehwclock=$1 не вдалося : $2 
+index_ehwclock=$1 не вдалося : $2
 index_tabtime=Встановити час
 index_tabzone=Зміна часового поясу
 index_tabsync=Синхронізація сервера часу
@@ -18,11 +18,11 @@ minute=Хвилина
 second=Друге
 
 error_ediff=Час сервера, який відрізняється від місцевого часу, занадто великий: $1 день
-error_entp=Помилка синхронізації за часом NTP : $1 
+error_entp=Помилка синхронізації за часом NTP : $1
 error_etimeserver=Немає часу сервери для синхронізації із введеними
 error_serviceunknown=Невідома служба : $1
 
-log_timezone=Змінено часовий пояс на $1 
+log_timezone=Змінено часовий пояс на $1
 
 timezone_err=Не вдалося зберегти часовий пояс
 timezone_ecannot=Вам не дозволяється змінювати часовий пояс

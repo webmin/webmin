@@ -1,7 +1,7 @@
 index_title=Shorewall6 Firewall
 index_ecmd=Die opdrag $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
 index_edir=Die Shorewall-konfigurasiegids $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
-index_version=Shorewall6 weergawe $1 
+index_version=Shorewall6 weergawe $1
 index_return=lys van tabelle
 index_restart=Pas konfigurasie toe
 index_restartdesc=Klik op hierdie knoppie om die huidige Shorewall-konfigurasie te aktiveer met die <tt>shorewall6-herstart</tt> -opdrag.
@@ -85,7 +85,7 @@ policy_1=Bestemmingsone
 policy_2=beleid
 policy_3=Syslog vlak
 policy_4=Verkeersbeperking
-policy_limit=Beperk $1, burst $2 
+policy_limit=Beperk $1, burst $2
 policy_return=beleidslys
 policy_edit=Wysig verstekbeleid
 policy_create=Skep verstekbeleid
@@ -310,13 +310,13 @@ hosts_err=Kon nie die sone gasheer stoor nie
 hosts_enet=Ontbrekende of ongeldige gasheeradres
 hosts_header=Sone gasheer besonderhede
 hosts_routestopped=Roete, selfs as firewall gestop word?
-hosts_ip=Adres of netwerk $1 
-hosts_mac=MAC-adres $1 
-hosts_ipset=IP-stel $1 
+hosts_ip=Adres of netwerk $1
+hosts_mac=MAC-adres $1
+hosts_ipset=IP-stel $1
 hosts_any=Enige gasheer
 
-edit_before=Voor inskrywing $1 
-edit_after=Na inskrywing $1 
+edit_before=Voor inskrywing $1
+edit_after=Na inskrywing $1
 
 blacklist_title=Swartlys-gashere
 blacklist_desc=Hierdie bladsy bevat 'n lys van leërskare en dienste wat geblokkeer sal word as die verkeer van hulle af kom op 'n koppelvlak met die opsie <b>swartlys</b>.

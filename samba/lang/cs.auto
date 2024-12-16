@@ -30,7 +30,7 @@ mkpass_skipcount=Uživatelé $1 byli přeskočeni pro převod.
 
 savefshare_group=Chybějící nebo neplatná skupina pro nový adresář
 savefshare_perms=Chybějící nebo neplatná oprávnění pro nový adresář
-savefshare_emkdir=Nepodařilo se vytvořit adresář : $1 
+savefshare_emkdir=Nepodařilo se vytvořit adresář : $1
 
 start_err_wb=Spuštění serverů Winbind se nezdařilo
 

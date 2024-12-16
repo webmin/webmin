@@ -165,7 +165,7 @@ save_ereplyto=واجهة مفقودة أو غير صالحة للرد عليها
 save_ereplytoip=عنوان IP غير صالح للرد عليه
 
 apply_err=فشل في تطبيق التكوين
-apply_remote=خطأ من $1 : $2 
+apply_remote=خطأ من $1 : $2
 unapply_err=فشل في إعادة التكوين
 unapply_ein=فشل في الحصول على قواعد الإدخال
 unapply_eout=فشل في الحصول على قواعد الإخراج

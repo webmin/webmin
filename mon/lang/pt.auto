@@ -117,7 +117,7 @@ service_monitor=Usando o monitor
 service_mon1=Monitor padrão
 service_mon0=Outro monitor ..
 service_args=Parâmetros do monitor
-service_period=Período de monitoramento $1 
+service_period=Período de monitoramento $1
 service_days=Dias para verificar
 service_hours=Horas a verificar
 service_all=Todos
@@ -146,7 +146,7 @@ service_ename=Nome de serviço ausente ou inválido
 service_einterval=Intervalo de verificação ausente ou inválido
 service_eother=Monitor ausente ou inválido
 service_ehour=Hora ausente ou inválida para o período $1 (deve ser 9:00 ou 17:00)
-service_eperiod=Não há dias ou horas especificados para o período $1 
+service_eperiod=Não há dias ou horas especificados para o período $1
 service_eevery=Intervalo de alerta de serviço ausente ou inválido
 service_eafter=Número de falhas ausente ou inválido antes do alerta
 service_enum=Alertas máximos ausentes ou inválidos para envio
@@ -162,7 +162,7 @@ status_esame=O programa CGI de status MON $1 foi definido como o script <tt>mon.
 
 users_title=Usuários MON
 users_etype=A lista de usuários do MON não pode ser editada porque o MON não está atualmente configurado para usá-lo para autenticação na página <a href='$1'>Opções globais</a>.
-users_header=Usuários MON permitidos em $1 
+users_header=Usuários MON permitidos em $1
 users_nousers=Nenhum usuário MON foi definido em $1.
 users_add=Crie um novo usuário.
 users_return=Lista de usuários MON
@@ -185,7 +185,7 @@ auth_none=Ninguém
 auth_all=Todo o mundo
 auth_sel=Somente usuários
 auth_err=Falha ao salvar comandos do cliente
-auth_eusers=Nenhum usuário entra no comando $1 
+auth_eusers=Nenhum usuário entra no comando $1
 
 periods_title=Períodos definidos
 periods_period=Nome do período

@@ -50,11 +50,11 @@ search_google=תוצאת חיפוש בגוגל
 search_doxfer=תיעוד מקוון של Webmin
 
 howto_title=מסמך HOWTO
-howto_header=קובץ מסמך HOWTO $1 
+howto_header=קובץ מסמך HOWTO $1
 howto_epath=נתיב מסמך HOWTO לא חוקי
 
 doc_title=תיעוד חבילה
-doc_header=קובץ מסמך חבילה $1 
+doc_header=קובץ מסמך חבילה $1
 doc_epath=נתיב תיעוד חבילה לא חוקי
 
 man_title=עמוד ידני
@@ -63,15 +63,15 @@ man_noentry=דף ידני עבור $1 אינו קיים!
 man_epath=דף ידני לא יכול להיות נתיב!
 
 kernel_title=מסמך ליבנה
-kernel_header=קובץ מסמך ליבנה $1 
+kernel_header=קובץ מסמך ליבנה $1
 kernel_epath=נתיב מסמך גרעיני לא חוקי
 
 kde_title=תיעוד KDE
-kde_header=קובץ מסמך KDE $1 
+kde_header=קובץ מסמך KDE $1
 kde_epath=נתיב תיעוד KDE לא חוקי
 
 perl_title=מודול פרל
-perl_header=תיעוד עבור מודול Perl $1 
+perl_header=תיעוד עבור מודול Perl $1
 perl_emod=שם מודול Perl לא חוקי
 
 acl_allow=האם ניתן לערוך סוגי חיפוש מותרים?

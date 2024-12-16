@@ -69,7 +69,7 @@ cvirt_eroot2=Nepavyko sukurti katalogo '$1' : $2
 cvirt_eroot3=Jums neleidžiama naudoti šakninio katalogo „$1“
 cvirt_eroot4=„Apache“ konfigūracijoje nėra apibrėžtas joks vartotojas
 cvirt_etaken=Virtualus serveris tuo pačiu pavadinimu ir prievadu jau yra
-cvirt_efile=Nepavyko parašyti į $1 : $2 
+cvirt_efile=Nepavyko parašyti į $1 : $2
 cvirt_emissing=Naujas virtualus serveris buvo pridėtas prie $1, tačiau šis failas nenaudojamas „Apache“. Patikrinkite <a href='$2'>modulio konfigūraciją</a> ir įsitikinkite, kad „Failas ar katalogas, į kurį norite įtraukti virtualius serverius“ yra teisingi.
 
 etype=Jums neleidžiama redaguoti šio tipo parinkčių

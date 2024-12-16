@@ -10,7 +10,7 @@ type_ldap=LDAP 연결
 
 mon_virtualmin=경고! 이 모니터는 Virtualmin 도메인 $1 에 연결되어 있으므로 여기에서 편집하거나 삭제하면 안됩니다.
 mon_ontimeout=모니터 시간이 초과되면 명령을 실행하십시오.
-mon_eremote2=Webmin 서버 $1 에 접속할 수 없습니다  : $2 
+mon_eremote2=Webmin 서버 $1 에 접속할 수 없습니다  : $2
 mon_etype=잘못된 모니터 유형 이름
 mon_notifywebhook=웹훅
 mon_onemem=한 멤버
@@ -59,15 +59,15 @@ exec_remode=정규식 확인
 exec_remode0=출력이 일치하지 않으면 실패
 exec_remode1=출력이 일치하면 실패
 
-file_elarge=파일이 너무 큼  : $1 
-file_esmall=파일이 너무 작습니다  : $1 
-file_eowner=소유자가 잘못된 파일  : $1 
-file_egroup=그룹이 잘못된 파일  : $1 
+file_elarge=파일이 너무 큼  : $1
+file_esmall=파일이 너무 작습니다  : $1
+file_eowner=소유자가 잘못된 파일  : $1
+file_egroup=그룹이 잘못된 파일  : $1
 file_owner=파일 소유자는
 file_group=파일 그룹은
 file_nocheck=아무것도
 file_perms=8 진 권한은
-file_eperm=권한이 잘못된 파일  : $1 
+file_eperm=권한이 잘못된 파일  : $1
 
 space_mode0=절대 크기
 space_mode1=총 백분율
@@ -78,7 +78,7 @@ space_dferr=파일 시스템 크기를 가져 오지 못했습니다
 
 log_refresh=새로 고침 된 모니터 상태
 
-memory_freeswap=가상 메모리 여유 $1 
+memory_freeswap=가상 메모리 여유 $1
 memory_freelow=실제 메모리는 $1 개만 사용 가능
 memory_freelowswap=사용 가능한 $1 가상 메모리 만
 memory_minswap=최소 여유 가상 메모리
@@ -89,20 +89,20 @@ init_eaction=선택된 조치가 없습니다
 
 refresh_doing2=선택된 모니터 $1 의 상태를 새로 고칩니다.
 
-monitor_sub_isup=$2 에 $1 
+monitor_sub_isup=$2 에 $1
 monitor_pager_isup=$1 : "$2"가 $3 상승했습니다
-monitor_snmp_isup=$1:$2 
+monitor_snmp_isup=$1:$2
 monitor_email_isup=$1 에서 '$2'에 대한 모니터가 서비스가 $3 에서 작동 중임을 감지했습니다.
-monitor_email_stat=현재 상태 : $1 
+monitor_email_stat=현재 상태 : $1
 
 deletes_enone=선택된 모니터가 없습니다
 
 ftp_tls=TLS 암호화를 사용 하시겠습니까?
 ftp_etls=$1 Perl 모듈이 설치되어 있지 않으면 TLS를 사용할 수 없습니다
 ftp_econn=TLS FTP 연결 실패
-ftp_econn2=TLS FTP 연결 실패  : $1 
-ftp_elogin=TLS FTP 로그인 실패  : $1 
-ftp_etlsfile=TLS FTP 다운로드 실패  : $1 
+ftp_econn2=TLS FTP 연결 실패  : $1
+ftp_elogin=TLS FTP 로그인 실패  : $1
+ftp_etlsfile=TLS FTP 다운로드 실패  : $1
 
 rssh_haspass=암호
 rssh_port=SSH 서버 포트

@@ -1,7 +1,7 @@
 index_title=Shorewall6 Firewall
 index_ecmd=Comanda $1 nu a fost găsită în sistemul dvs. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
 index_edir=Directorul de configurare Shorewall $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
-index_version=Shorewall6 versiunea $1 
+index_version=Shorewall6 versiunea $1
 index_return=lista de mese
 index_restart=Aplicați configurare
 index_restartdesc=Faceți clic pe acest buton pentru a activa configurația curentă Shorewall cu comanda <tt>shorewall6 restart</tt>.
@@ -85,7 +85,7 @@ policy_1=Zona de destinație
 policy_2=Politică
 policy_3=Nivel Syslog
 policy_4=Limita de trafic
-policy_limit=Limita $1, Burst $2 
+policy_limit=Limita $1, Burst $2
 policy_return=lista de politici
 policy_edit=Editează politica implicită
 policy_create=Creați o politică implicită
@@ -310,13 +310,13 @@ hosts_err=Nu a reușit salvarea gazdei zonei
 hosts_enet=Adresa gazdă lipsă sau nevalidă
 hosts_header=Detalii despre gazda zonei
 hosts_routestopped=Căutați chiar și atunci când firewallul este oprit?
-hosts_ip=Adresa sau rețea $1 
-hosts_mac=Adresa MAC $1 
-hosts_ipset=Set IP $1 
+hosts_ip=Adresa sau rețea $1
+hosts_mac=Adresa MAC $1
+hosts_ipset=Set IP $1
 hosts_any=Orice gazdă
 
-edit_before=Înainte de intrare $1 
-edit_after=După intrare $1 
+edit_before=Înainte de intrare $1
+edit_after=După intrare $1
 
 blacklist_title=Gazde cu lista neagră
 blacklist_desc=Această pagină listează gazdele și serviciile care vor fi blocate dacă traficul de la ele ajunge pe o interfață cu opțiunea <b>Lista neagră</b> setată.
@@ -422,16 +422,16 @@ comment_msg=Mesaj
 comment_err=Nu a putut salva comentariul
 comment_enone=Nu a fost introdus niciun mesaj
 
-log_create_table=A fost adăugată intrarea în tabelul $1 
-log_modify_table=Intrare modificată în tabelul $1 
-log_delete_table=Intrare ștersă din tabelul $1 
-log_deletes_table=Intrări șterse din tabelul $1 
-log_up_table=A mutat intrarea în tabelul $1 
-log_down_table=S-a mutat intrarea în tabelul $1 
-log_manual_table=Editarea manuală a fișierului tabelului $1 
-log_create_comment=Se adaugă un comentariu la tabelul $1 
-log_modify_comment=Comentariu modificat în tabelul $1 
-log_delete_comment=Comentariu șters din tabelul $1 
+log_create_table=A fost adăugată intrarea în tabelul $1
+log_modify_table=Intrare modificată în tabelul $1
+log_delete_table=Intrare ștersă din tabelul $1
+log_deletes_table=Intrări șterse din tabelul $1
+log_up_table=A mutat intrarea în tabelul $1
+log_down_table=S-a mutat intrarea în tabelul $1
+log_manual_table=Editarea manuală a fișierului tabelului $1
+log_create_comment=Se adaugă un comentariu la tabelul $1
+log_modify_comment=Comentariu modificat în tabelul $1
+log_delete_comment=Comentariu șters din tabelul $1
 log_stop=Firewall-ul oprit
 log_start=Firewall pornit
 log_refresh=Firewall actualizat

@@ -33,7 +33,7 @@ save_erw=Nisu uneseni hostovi za čitanje i pisanje
 save_eroot=Nisu upisani hostovi pristup korijenskim datotekama
 save_eaccess=Nisu upisani hostovi za pristup montiranju
 
-log_create_export=Izrađen izvoz $1 
-log_delete_export=Izbrisani izvoz $1 
-log_modify_export=Izmijenjeni izvoz od $1 
+log_create_export=Izrađen izvoz $1
+log_delete_export=Izbrisani izvoz $1
+log_modify_export=Izmijenjeni izvoz od $1
 log_apply=Primijenjena konfiguracija

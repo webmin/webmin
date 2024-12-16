@@ -20,7 +20,7 @@ index_restart=Iš naujo paleiskite planuoklę
 index_restartmsg=Spustelėkite šį mygtuką, kad iš naujo paleistumėte spausdinimo planavimo procesą. Tai privers pritaikyti dabartinę spausdinimo konfigūraciją.
 index_return=spausdintuvų sąrašas
 index_esystem=Įdėkite pasirinktos spausdinimo sistemos programinę įrangą arba naudokite <a href='$1'>modulio konfigūraciją</a>, kad ją pakeistumėte.
-index_style=Spausdinimo sistema: $1 
+index_style=Spausdinimo sistema: $1
 index_cluster=Klasterių serveriai
 index_clusterdesc=Spustelėkite šį mygtuką norėdami nustatyti papildomus „Webmin“ serverius, kuriuose bus kuriami, atnaujinami ir ištrinami spausdintuvai.
 index_delete=Ištrinti pasirinktus spausdintuvus
@@ -99,12 +99,12 @@ save_eremote=Tvarkyklės negali būti naudojamos su nuotoliniais „Unix“ spau
 save_edhost=Tiesioginio pagrindinio kompiuterio „$1“ nėra
 save_edport=Trūksta arba netinkamas tiesioginis prievadas
 save_evalid=Spausdinimo sistema neleido šio spausdintuvo
-save_errslave=Šioje sistemoje spausdintuvas sukūrė gerai, tačiau grupių grupėse įvyko šios klaidos : $1 
+save_errslave=Šioje sistemoje spausdintuvas sukūrė gerai, tačiau grupių grupėse įvyko šios klaidos : $1
 save_egone=Nerastas spausdintuvas pavadinimu '$1'
-save_errdelslave=Spausdintuvas ištrynė gerai šioje sistemoje, tačiau grupių grupėse įvyko šios klaidos : $1 
+save_errdelslave=Spausdintuvas ištrynė gerai šioje sistemoje, tačiau grupių grupėse įvyko šios klaidos : $1
 
 jobs_title=Spausdinimo darbai
-jobs_header=Spausdinimo užduotys $1 
+jobs_header=Spausdinimo užduotys $1
 jobs_id=Darbovietės ID
 jobs_size=Dydis
 jobs_by=Pateikė
@@ -117,7 +117,7 @@ jobs_all=Atšaukite visus spausdinimo darbus
 jobs_bytes=baitų
 jobs_test=Spausdinti bandomąjį puslapį
 jobs_cancelsel=Atšaukti pasirinktus darbus
-jobs_on=Spausdintuve $1 
+jobs_on=Spausdintuve $1
 jobs_return=spausdinimo darbų sąrašas
 
 cancel_ecannot=Jums neleidžiama atšaukti spausdinimo darbų
@@ -197,7 +197,7 @@ suse_yast2=YAST2 vairuotojas
 suse_edriver=Nepasirinktas spausdintuvo tipas
 suse_eres=Trūksta arba netinkama rezoliucija
 
-estop=Nepavyko sustabdyti lpd : $1 
+estop=Nepavyko sustabdyti lpd : $1
 
 acl_printers=Spausdintuvai, kuriuos šis vartotojas gali sukonfigūruoti
 acl_add=Ar galite pridėti naujų spausdintuvų?
@@ -218,20 +218,20 @@ acl_cluster=Ar gali valdyti spausdintuvų grupę?
 log_stop=Sustabdytas spausdinimo planavimas
 log_start=Pradėtas spausdinimo planavimas
 log_restart=Iš naujo paleistas spausdinimo planavimas
-log_cancel_job=Atšaukta $2 spausdinimo užduotis $1 
-log_cancel_all=Atšaukė visas spausdinimo užduotis $1 
+log_cancel_job=Atšaukta $2 spausdinimo užduotis $1
+log_cancel_all=Atšaukė visas spausdinimo užduotis $1
 log_cancel_sel=$2 spausdinimo užduotys atšauktos
-log_create=Sukurtas spausdintuvas $1 $2 
-log_modify=Modifikuotas spausdintuvas $1 $2 
-log_delete=Ištrintas spausdintuvas $1 iš $2 
-log_create_l=Sukurtas $3 spausdintuvas $1 $2 
-log_modify_l=Modifikuotas $3 spausdintuvas $1 $2 
-log_delete_l=Ištrintas $3 spausdintuvas $1 iš $2 
+log_create=Sukurtas spausdintuvas $1 $2
+log_modify=Modifikuotas spausdintuvas $1 $2
+log_delete=Ištrintas spausdintuvas $1 iš $2
+log_create_l=Sukurtas $3 spausdintuvas $1 $2
+log_modify_l=Modifikuotas $3 spausdintuvas $1 $2
+log_delete_l=Ištrintas $3 spausdintuvas $1 iš $2
 
-linux_paralel=Lygiagretus prievadas $1 
+linux_paralel=Lygiagretus prievadas $1
 linux_serial=$1 nuoseklusis prievadas (COM $1)
 linux_null=Null įrenginys
-linux_usb=USB spausdintuvas $1 
+linux_usb=USB spausdintuvas $1
 linux_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad „Linux“ spausdinimo sistema neįdiegta.
 linux_espool=Jūsų sistemos spiralės aplanko $1 nėra, o tai rodo, kad „Linux“ spausdinimo sistema neįdiegta.
 
@@ -243,18 +243,18 @@ freebsd_espool=Ritinių katalogo $1 jūsų sistemoje nėra, o tai rodo, kad „F
 openbsd_paralel=Lygiagretus uostas
 openbsd_serial=$1 nuoseklusis prievadas (COM $1)
 
-unixware_paralel=Lygiagretus prievadas $1 
-unixware_serial=Serijos prievadas $1 
+unixware_paralel=Lygiagretus prievadas $1
+unixware_serial=Serijos prievadas $1
 unixware_null=Null įrenginys
 unixware_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad „UnixWare“ spausdinimo sistema neįdiegta.
 
-hpux_paralel=Lygiagretus $1 
-hpux_serial=Serija $1 
+hpux_paralel=Lygiagretus $1
+hpux_serial=Serija $1
 hpux_null=Null įrenginys
 hpux_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad HPUX spausdinimo sistema neįdiegta.
 hpux_eiface=Sąsajos scenarijų katalogo $1 jūsų sistemoje nėra. Tai rodo, kad HPUX spausdinimo sistema neįdiegta.
 
-lprng_paralel=Lygiagretus prievadas $1 
+lprng_paralel=Lygiagretus prievadas $1
 lprng_serial=$1 nuoseklusis prievadas (COM $1)
 lprng_null=Null įrenginys
 lprng_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad LPRng spausdinimo sistema neįdiegta.
@@ -262,7 +262,7 @@ lprng_espool=Ryšio aplanko $1 jūsų sistemoje nėra, o tai rodo, kad LPRng spa
 
 solaris_paralel=Lygiagretus uostas
 solaris_uparalel=„Ultra 5/10“ lygiagretus prievadas
-solaris_serial=Serijos prievadas $1 
+solaris_serial=Serijos prievadas $1
 solaris_null=Null įrenginys
 solaris_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad „Solaris“ spausdinimo sistema neįdiegta.
 
@@ -289,7 +289,7 @@ cups_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad CUPS spausdinimo si
 irix_ecmd=Komanda $1 jūsų sistemoje nerasta. Tai rodo, kad IRIX spausdinimo sistema neįdiegta.
 irix_eiface=Sąsajos scenarijų katalogo $1 jūsų sistemoje nėra. Tai rodo, kad IRIX spausdinimo sistema neįdiegta.
 
-aix_port=Spausdintuvo prievadas $1 
+aix_port=Spausdintuvo prievadas $1
 aix_edesc=Netinkamas aprašymas - leidžiamos tik raidės ir skaičiai, be tarpų
 aix_ecmd=AIX spausdintuvo serveris $1 nerastas. Galbūt jis neįdiegtas, arba naudojama kita spausdinimo sistema.
 

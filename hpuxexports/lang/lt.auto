@@ -68,10 +68,10 @@ save_enohost=„$1“ - neišvardinote jokių prieglobos
 save_euids=UID nepasitikėjimas turi būti kableliais atskirtas skaičių ar diapazonų sąrašas
 save_egids=Nepasitikimi GID turi būti kableliais atskirtas skaičių ar diapazonų sąrašas
 
-log_modify=Modifikuotas NFS eksportas $1 
-log_modify_l=Modifikuotas NFS eksportas nuo $1 iki $2 
-log_delete=Ištrintas NFS eksportas $1 
-log_delete_l=Ištrintas NFS eksportas nuo $1 iki $2 
-log_create=Sukurtas NFS eksportas $1 
-log_create_l=Sukurtas NFS eksportas nuo $1 iki $2 
+log_modify=Modifikuotas NFS eksportas $1
+log_modify_l=Modifikuotas NFS eksportas nuo $1 iki $2
+log_delete=Ištrintas NFS eksportas $1
+log_delete_l=Ištrintas NFS eksportas nuo $1 iki $2
+log_create=Sukurtas NFS eksportas $1
+log_create_l=Sukurtas NFS eksportas nuo $1 iki $2
 log_apply=Taikoma konfigūracija

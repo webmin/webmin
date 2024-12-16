@@ -33,7 +33,7 @@ save_erw=Geen lees-skryf-gashere is ingevoer nie
 save_eroot=Daar is geen gasheer vir root-lêertoegang ingevoer nie
 save_eaccess=Geen gashere vir toegang tot bergings is ingevoer nie
 
-log_create_export=Geskep van $1 
+log_create_export=Geskep van $1
 log_delete_export=Uitvoer van $1 is uitgevee
-log_modify_export=Gewysigde uitvoer van $1 
+log_modify_export=Gewysigde uitvoer van $1
 log_apply=Toegepaste konfigurasie

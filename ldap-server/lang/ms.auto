@@ -1,4 +1,4 @@
-index_version=OpenLDAP $1 
+index_version=OpenLDAP $1
 index_openldap=OpenLDAP
 index_eslapd=Program pelayan OpenLDAP $1 tidak dijumpai pada sistem anda. Mungkin laluan pada halaman <a href='$2'>konfigurasi modul</a> tidak betul?
 index_econfig=Fail konfigurasi pelayan OpenLDAP $1 tidak dijumpai pada sistem anda. Mungkin laluan pada halaman <a href='$2'>konfigurasi modul</a> tidak betul?
@@ -24,10 +24,10 @@ connect_efile=Fail konfigurasi OpenLDAP $1 tidak dijumpai - mungkin tiada pelaya
 connect_euser2=Tiada pengguna untuk masuk seperti yang dijumpai dalam konfigurasi pelayan LDAP
 connect_epass2=Tiada kata laluan untuk masuk dengan dijumpai dalam konfigurasi pelayan LDAP
 connect_epass3=Kata laluan dalam konfigurasi pelayan LDAP dienkripsi dan tidak boleh digunakan oleh Webmin
-connect_emod=Mod Perl $1 yang diperlukan untuk menyambung ke pelayan LDAP tidak dipasang. Mesej ralat Perl sepenuhnya adalah : $2 
-connect_eldap=Gagal menyambung ke pelayan LDAP $1 pada port $2 
-connect_essl=Gagal memulakan penyulitan TLS dengan pelayan LDAP $1 : $2 
-connect_elogin=Gagal masuk ke pelayan LDAP $1 sebagai $2 : $3 
+connect_emod=Mod Perl $1 yang diperlukan untuk menyambung ke pelayan LDAP tidak dipasang. Mesej ralat Perl sepenuhnya adalah : $2
+connect_eldap=Gagal menyambung ke pelayan LDAP $1 pada port $2
+connect_essl=Gagal memulakan penyulitan TLS dengan pelayan LDAP $1 : $2
+connect_elogin=Gagal masuk ke pelayan LDAP $1 sebagai $2 : $3
 connect_cpan=Anda boleh mempunyai mod <tt>$1</tt> Perl perlulah <a href='$2'>dipasang secara automatik</a> dari CPAN.
 
 slapd_title=Konfigurasi Server OpenLDAP
@@ -109,11 +109,11 @@ acl_add=Tambah peraturan kawalan akses baharu.
 acl_return=peraturan kawalan akses
 
 browser_title=Semak Pangkalan Data
-browser_econn=Penyemak imbas LDAP tidak boleh digunakan : $1 
+browser_econn=Penyemak imbas LDAP tidak boleh digunakan : $1
 browser_ecannot=Anda tidak dibenarkan melayari pangkalan data LDAP
 browser_base=Pelayaran:
 browser_ok=Tunjukkan
-browser_esearch=Carian LDAP gagal : $1 
+browser_esearch=Carian LDAP gagal : $1
 browser_subs=Objek kanak-kanak
 browser_attrs=Atribut objek
 browser_parent=Semak imbas Ibu Bapa
@@ -144,26 +144,26 @@ browser_sok=Carian
 
 save_err=Gagal menukar atribut
 save_ebase=Tidak dapat mengambil objek $1 dari pangkalan data
-save_emodify=Pengubahsuaian LDAP $2 dalam $1 gagal : $3 
+save_emodify=Pengubahsuaian LDAP $2 dalam $1 gagal : $3
 save_enone=Tiada nilai yang dimasukkan
 
 add_err=Gagal menambah atribut
 add_eadd=Nama atribut yang tiada atau tidak sah
 add_evalue=Nilai yang tiada
-add_emodify=LDAP tambah $2 hingga $1 gagal : $3 
+add_emodify=LDAP tambah $2 hingga $1 gagal : $3
 
 delete_err=Gagal untuk mengalih keluar atribut
 delete_enone=Tiada yang dipilih
-delete_emodify=Hapus LDAP dari $2 dari $1 gagal : $3 
+delete_emodify=Hapus LDAP dari $2 dari $1 gagal : $3
 
 sdelete_err=Gagal memadamkan objek
 sdelete_edn=Objek $1 tidak dijumpai
-sdelete_edel=Hapus LDAP dari $1 gagal : $2 
+sdelete_edel=Hapus LDAP dari $1 gagal : $2
 
 rename_err=Gagal menukar nama objek
-rename_eget=Tidak dapat mencari objek dengan DN $1 
+rename_eget=Tidak dapat mencari objek dengan DN $1
 rename_enew=Nama baru tidak kelihatan sah
-rename_erename=Newdn LDAP ke $2 dari $1 gagal : $3 
+rename_erename=Newdn LDAP ke $2 dari $1 gagal : $3
 
 oadd_title=Buat Objek
 oadd_header=Butiran objek LDAP baru
@@ -175,11 +175,11 @@ oadd_edn1=Nama yang hilang atau tidak sah untuk DN
 oadd_edn2=Nilai hilang atau tidak sah untuk DN
 oadd_eclasses=Tiada kelas objek yang dimasukkan
 oadd_eclass='$1' tidak kelihatan seperti kelas objek yang sah
-oadd_ename=Nama tidak sah untuk atribut $1 
-oadd_eget=Gagal mendapatkan objek $1 : $2 
-oadd_eget2=Gagal menyemak pertempuran dengan $1 : $2 
+oadd_ename=Nama tidak sah untuk atribut $1
+oadd_eget=Gagal mendapatkan objek $1 : $2
+oadd_eget2=Gagal menyemak pertempuran dengan $1 : $2
 oadd_eclash=Objek dengan DN $1 sudah wujud
-oadd_eadd=LDAP tambah $1 gagal : $2 
+oadd_eadd=LDAP tambah $1 gagal : $2
 oadd_err=Gagal membuat objek baru
 
 create_title=Buat Pokok
@@ -198,7 +198,7 @@ create_edom=Nama domain yang hilang atau tidak sah
 create_edn=Nama yang dibuang atau tidak sah
 create_err=Gagal membuat pokok baru
 create_doingdn=Mewujudkan asas DN $1 ..
-create_edoingdn=.. gagal : $1 
+create_edoingdn=.. gagal : $1
 create_done=.. selesai
 create_doingex=Membuat objek contoh dengan DN $1 ..
 create_edoingex=.. gagal: $1. Walau bagaimanapun, pokok itu masih boleh digunakan.
@@ -207,48 +207,48 @@ create_eoc=Tidak dapat mencari kelas objek yang sesuai untuk DN baru
 eunknown=Ralat tidak diketahui
 
 apply_err=Gagal menggunakan konfigurasi
-apply_ecmd=$1 gagal : $2 
+apply_ecmd=$1 gagal : $2
 apply_ecannot=Anda tidak dibenarkan memohon konfigurasi
 
 stop_err=Gagal menghentikan pelayan LDAP
-stop_ecmd=$1 gagal : $2 
+stop_ecmd=$1 gagal : $2
 stop_egone=Tidak lagi berlari!
-stop_ekill=Proses membunuh gagal : $1 
+stop_ekill=Proses membunuh gagal : $1
 stop_ecannot=Anda tidak dibenarkan untuk menghentikan pelayan LDAP
 
 start_err=Gagal memulakan pelayan LDAP
-start_ecmd=$1 gagal : $2 
+start_ecmd=$1 gagal : $2
 start_ecannot=Anda tidak dibenarkan memulakan pelayan LDAP
 
-log_create_dn=Objek yang dibuat $1 
-log_delete_dn=Objek dibuang $1 
-log_rename_dn=Nama semula nama $1 
+log_create_dn=Objek yang dibuat $1
+log_delete_dn=Objek dibuang $1
+log_rename_dn=Nama semula nama $1
 log_delete_dns=Objek $1 dibuang
-log_create_attr=Ditambah atribut ke objek $2 
-log_create_attr_l=Ditambah atribut $1 dengan nilai $3 hingga objek $2 
-log_modify_attr=Dikemaskini atribut dalam objek $2 
-log_modify_attr_l=Dikemaskini atribut $1 dengan nilai $3 dalam objek $2 
-log_delete_attr=Dihapus daripada objek $2 
-log_delete_attr_l=Atribut dipadam $1 dari objek $2 
-log_delete_attrs=Dihapus $1 atribut daripada objek $2 
+log_create_attr=Ditambah atribut ke objek $2
+log_create_attr_l=Ditambah atribut $1 dengan nilai $3 hingga objek $2
+log_modify_attr=Dikemaskini atribut dalam objek $2
+log_modify_attr_l=Dikemaskini atribut $1 dengan nilai $3 dalam objek $2
+log_delete_attr=Dihapus daripada objek $2
+log_delete_attr_l=Atribut dipadam $1 dari objek $2
+log_delete_attrs=Dihapus $1 atribut daripada objek $2
 log_stop=Menghentikan pelayan LDAP
 log_start=Memulakan pelayan LDAP
 log_apply=Konfigurasi terapan
 log_slapd=Konfigurasi pelayan LDAP yang diubah
 log_schema=Berubah membolehkan skema LDAP
 log_gencert=Diterbitkan sijil SSL baru
-log_sfile=Fail skema yang diubah suai $1 
-log_sup=Memindah fail skema $1 
-log_sdown=Memindah fail skema $1 
+log_sfile=Fail skema yang diubah suai $1
+log_sup=Memindah fail skema $1
+log_sdown=Memindah fail skema $1
 log_create=DN baru dibuat $1
 log_bootup=Dihidupkan pelayan LDAP semasa boot
 log_bootdown=Pelayan LDAP yang dilumpuhkan pada boot
 log_perms=Kebenaran pelayan LDAP tetap
-log_create_access=Peraturan kawalan akses yang dibuat untuk $1 
-log_delete_access=Padam peraturan kawalan akses untuk $1 
-log_modify_access=Peraturan kawalan akses yang dikemas kini untuk $1 
-log_up_access=Mengawal peraturan kawalan akses untuk $1 
-log_down_access=Menurun ke bawah kawalan kawalan akses untuk $1 
+log_create_access=Peraturan kawalan akses yang dibuat untuk $1
+log_delete_access=Padam peraturan kawalan akses untuk $1
+log_modify_access=Peraturan kawalan akses yang dikemas kini untuk $1
+log_up_access=Mengawal peraturan kawalan akses untuk $1
+log_down_access=Menurun ke bawah kawalan kawalan akses untuk $1
 log_delete_accesses=Kawalan $1 peraturan kawalan akses yang dipadam
 log_all=semua objek
 
@@ -275,7 +275,7 @@ acl_create=Bolehkah membuat pokok baru?
 acl_start=Boleh memulakan dan menghentikan pelayan LDAP?
 acl_apply=Boleh memohon perubahan konfigurasi?
 
-access_desc=$2 oleh $1 
+access_desc=$2 oleh $1
 access_self=diri sendiri
 access_users=pengguna yang disahkan
 access_anon=pengguna tanpa nama
@@ -322,7 +322,7 @@ eacl_err=Gagal menyimpan peraturan kawalan akses
 eacl_edn=DN hilang atau tidak sah - sepatutnya seperti <tt>uid=joe,dc=my-domain,dc=com</tt>
 eacl_efilter=Penapis yang hilang atau tidak sah - sepatutnya seperti <tt>(objectClass = posixAccount)</tt>
 eacl_eattrs=Senarai ciri-ciri yang hilang atau tidak sah
-eacl_ewho=DN yang hilang atau tidak sah dalam baris $1 
-eacl_eaccess=Tahap akses hilang atau tidak sah dalam baris $1 
+eacl_ewho=DN yang hilang atau tidak sah dalam baris $1
+eacl_eaccess=Tahap akses hilang atau tidak sah dalam baris $1
 eacl_order=Aturan perintah
 eacl_noorder=Tiada set

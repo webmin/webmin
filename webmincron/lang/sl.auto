@@ -17,4 +17,4 @@ edit_special_monthly=Mesečno (na 1.)
 edit_special_yearly=Letno (1. januarja)
 
 log_success=<tt>$2</tt> v <tt>$1</tt> uspešno
-log_failure=Zagon <tt>$2</tt> v <tt>$1</tt> ni uspel : $3 
+log_failure=Zagon <tt>$2</tt> v <tt>$1</tt> ni uspel : $3

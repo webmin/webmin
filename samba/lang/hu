@@ -150,7 +150,7 @@ smb_ip=IP-cím
 smb_asworkgroup=<b>Munkacsoportként</b> (opcionális)
 
 create_title=Másolat létrehozatala
-create_msg=A másolatmegosztás az ön által kiválasztott megosztástól fogja örökölni az összes alapértelmezett értéket. Ha a forrásmegosztás módosul, a másolat vele változik. 
+create_msg=A másolatmegosztás az ön által kiválasztott megosztástól fogja örökölni az összes alapértelmezett értéket. Ha a forrásmegosztás módosul, a másolat vele változik.
 create_from=Másolandó megosztás:
 create_name=Új megosztásnév:
 

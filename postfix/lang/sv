@@ -5,7 +5,7 @@ internal_error=Internt fel
 index_econfig=Inställningskommandot $1 för Postfix finns inte. Dina <a href='$2'>modulinställningar</a> kanske är felaktiga.
 index_stop=Stoppa Postfix
 index_start=Starta Postfix
-index_stopmsg=Tryck på denna knapp för att sluta köra e-postservern Postfix. Detta gör så att ingen e-post från andra system delas ut till lokala användare och hindrar klienter som använder detta system som e-postserver att skicka e-post. 
+index_stopmsg=Tryck på denna knapp för att sluta köra e-postservern Postfix. Detta gör så att ingen e-post från andra system delas ut till lokala användare och hindrar klienter som använder detta system som e-postserver att skicka e-post.
 index_startmsg=Tryck på denna knapp för att starta e-postservern Postfix. Innan Postfix startats delas ingen e-post från andra system ut till lokala användare, och e-postklienter kan inte använda detta system som e-postserver.
 opts_err=Det gick inte att spara inställningarna
 
@@ -64,7 +64,7 @@ opts_masquerade_exceptions=Maskeringsundantag
 index_return=Postfix-inställningar
 
 opts_alias_maps=Alias-databaser som används av den lokala MTA:n
-opts_alias_database=Alias-databas byggd av kommandot "newaliases" 
+opts_alias_database=Alias-databas byggd av kommandot "newaliases"
 aliases_warning=Varning: <ul><li>när det första fältet inte är tomt används standardkommandot för Postfix alias-skapande till att bygga upp motsvarande databas; <li>annars används Sendmails kompatibilitetskommando "newaliases". Detta använder databaserna i det andra fältet.</ul>
 
 aliases_name=Namn

@@ -8,7 +8,7 @@ index_delete=Radera vald export
 index_apply=Applicera förändringar
 index_applydesc=Klicka på den här knappen för att tillämpa den aktuella filexportkonfigurationen. Detta kommer att göra alla kataloger listade ovan tillgängliga med de angivna alternativen.
 index_return=exportlista
-index_echeck=NFS-servern kan inte användas på det här systemet : $1 
+index_echeck=NFS-servern kan inte användas på det här systemet : $1
 
 check_ecmd=NFS-serverkommando $1 är inte installerat
 

@@ -2,7 +2,7 @@ index_title=OpenSLP Yapılandırması
 index_return=OpenSLP yapılandırması
 index_eslpd=$1 OpenSLP arka plan programı sisteminizde bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_econf=$1 OpenSLP yapılandırma dosyası sisteminizde bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
-index_version=OpenSLP sürüm $1 
+index_version=OpenSLP sürüm $1
 
 slp_apply=Değişiklikleri uygula
 slp_stop=OpenSLP'yi Durdur

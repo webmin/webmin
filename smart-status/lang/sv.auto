@@ -1,12 +1,12 @@
 index_title=SMART Drive Status
 index_ecmd=SMART-kontrollkommandot $1 hittades inte på ditt system eller är inte korrekt inställt i <a href='$2'>modulkonfiguration</a>. Den måste installeras innan den här modulen kan användas.
 index_ecmd2=Kommandot $1 verkar inte vara SMART-kontrollkommandot. Det måste ställas in korrekt i <a href='$2'>modulkonfiguration</a> innan den här modulen kan användas.
-index_version=SMARTsuite-version $1 
+index_version=SMARTsuite-version $1
 index_show=Visa status för enhet:
 index_ok=Visa
 index_eidescsi=Inga IDE-, SCSI- eller SATA-enheter hittades på ditt system.
-index_drive=Status för enhet $1 
-index_drivesub=Status för enhet $1, disk $2 
+index_drive=Status för enhet $1
+index_drivesub=Status för enhet $1, disk $2
 index_desc=Plats
 index_size=Drive storlek
 index_model=Märke och modellera
@@ -36,11 +36,11 @@ monitor_edrive=Saknad eller ogiltig enhet för att kontrollera
 monitor_nosuch=Ingen sådan enhet
 monitor_nosmart=Inget SMART-stöd
 monitor_errorsfound=Rapporterade $1 -fel
-monitor_errorsinced=Fel ökade från $2 till $1 
+monitor_errorsinced=Fel ökade från $2 till $1
 monitor_wearlevel=Misslyckas om slitagenivån faller under
 monitor_ewearlevel=Ogiltig förslitningsnivå
 monitor_nowearout=Drive rapporterar inte en SSD-wearout-indikator
-monitor_wornout=Slitagivån har sjunkit till $1 
+monitor_wornout=Slitagivån har sjunkit till $1
 
 short_title=Kort självtest
 short_doing=Starta kort självtest på $1 ..

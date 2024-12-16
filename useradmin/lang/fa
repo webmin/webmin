@@ -149,7 +149,7 @@ usave_epasswd_min=کمينه طول اسم‌رمز بايد $1 حرف باشد
 usave_epasswd_re=اسم‌رمز با نقاب $1 تطابق ندارد
 usave_epasswd_dict=اسم‌رمز از لغات فرهنگ لغت است
 usave_epasswd_same=اسم‌رمز شامل اسم‌کاربر يا مشابه آن است
-usave_eothers=کاربر با موفقيت حفظ شد، اما يک خطا در پيمانه ديگري رخ داده است: $1 
+usave_eothers=کاربر با موفقيت حفظ شد، اما يک خطا در پيمانه ديگري رخ داده است: $1
 
 gedit_title=ويرايش گروه
 gedit_title2=ايجاد گروه
@@ -175,7 +175,7 @@ gsave_einuse=نام گروه '$1' قبلا استفاده شده‌است
 gsave_egid='$1' يک شناسه گروه نامعتبر است
 gsave_eggid=شما اجازه تغيير شناسه گروه، گروه‌ها را نداريد
 gsave_eallgid=همه شناسه گروههاي مجاز تخصيص داده شده‌اند
-gsave_eothers=گروه با موفقيت حفظ شد، اما يک خطا در پيمانه ديگري رخ داده است: $1 
+gsave_eothers=گروه با موفقيت حفظ شد، اما يک خطا در پيمانه ديگري رخ داده است: $1
 usave_elowgid=شناسه گروه بايد بزرگ‌تر يا مساوي $1 باشد
 usave_ehigid=شناسه گروه بايد کوچک‌تر يا مساوي $1 باشد
 usave_egidused=گروه $1 از شناسه گروه $2 استفاده مي‌کند
@@ -185,7 +185,7 @@ usave_etoroot=شما نمي‌توانيد فهرست شخصي را به / من�
 logins_title=ورود به سيستمهاي ضبط شده
 logins_from=ورود از
 logins_tty=TTY
-logins_in=زمان ورود 
+logins_in=زمان ورود
 logins_out=زمان خروج
 logins_for=به مدت
 logins_still=هنوز ارتباط برقرار است
@@ -298,7 +298,7 @@ acl_export=آيا مي‌توان پرونده دسته‌اي را برون‌�
 acl_export1=بله،اما فقط براي نمايش در مرورگر
 acl_egp=آيا مي‌توان اسم‌رمزهاي گروه را ويرايش کرد؟
 acl_saveopts=گزينه هاي مجاز براي ذخيره کردن
-acl_on=هميشه 
+acl_on=هميشه
 acl_off=هرگز
 acl_canedit=مي‌توان انتخاب کرد
 acl_autouid=شماره شناسه کاربر به‌صورت اتوماتيک افزايش يابد
@@ -325,12 +325,12 @@ batch_title=اجراي پرونده دسته‌اي
 batch_ecannot=شما نمي‌توانيد از برگه پرونده دسته‌اي استفاده کنيد
 batch_desc=اين برگه به شما اين اجازه را مي‌دهد که بتوانيد يکباره با استفاده از يک پرونده متني بارگيري شده يا محلي، تعداد زيادي کاربر ايجاد، اصلاح يا حذف کنيد. هر خط در پرونده مشخص کننده يک عمل مرتبط با اولين حوزه آن است. قالبهاي خط عبارتند از:
 batch_desc6=$batch_desc1
-batch_desc5=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell:min:max<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:min:max<p><b>delete</b>:username 
-batch_desc4=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell:min:max:expire:flags<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:min:max:expire:flags<p><b>delete</b>:username 
+batch_desc5=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell:min:max<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:min:max<p><b>delete</b>:username
+batch_desc4=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell:min:max:expire:flags<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:min:max:expire:flags<p><b>delete</b>:username
 batch_desc3=$batch_desc0
 batch_desc2=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:min:max:warn:inactive:expire<p><b>delete</b>:username
-batch_desc1=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell:class:change:expire<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:class:change:expire<p><b>delete</b>:username 
-batch_desc0=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell<p><b>delete</b>:username 
+batch_desc1=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell:class:change:expire<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell:class:change:expire<p><b>delete</b>:username
+batch_desc0=<b>create</b>:username:passwd:uid:gid:realname:homedir:shell<p><b>modify</b>:oldusername:username:passwd:uid:gid:realname:homedir:shell<p><b>delete</b>:username
 batch_descafter=در خطهاي<b> ايجاد</b>، اگر حوزه <شناسه کاربر>خالي بماند وب‌مين به‌صورت اتوماتيک يک شناسه کاربر اختصاص مي‌دهد، اگر حوزه<شناسه گروه>خالي باشد، وب‌مين يک گروه جديد همنام با اسم‌کاربر ايجاد خواهد کرد. حوزه‌هاي <username>، <homedir> و <shell> بايد براي هر کاربري مشخص شود. اگر حوزه <passwd>خالي باشد هيچ اسم‌رمزي به کاربر اختصاص داده نمي‌شود. اگر فقط شامل يک کاراکتر <x>باشد، حساب قفل مي‌شود در غير اين صورت مقدار درون حوزه به‌عنوان اسم‌رمز در نظر گرفته شده و رمز گذاري مي‌شود.
 batch_descafter2=در خطهاي <اصلاح>، يک حوزه خالي به اين معني است که آن صفت نبايد تغيير کند.
 batch_source=منبع داده دسته‌اي
@@ -353,7 +353,7 @@ batch_elen=خط $1 شامل حوزه‌هاي $2 نمي‌باشد
 batch_eline=اسم‌کاربر در خط $1 : $2 يافت نشد
 batch_euser=اسم‌کاربري در خط $1 : $2 تکراري است
 batch_echeck=اسم‌کاربري در خط $1 : $2 نامعتبر است
-batch_egid=شناسه گروه در خط $1 : $2 نامعتبر است 
+batch_egid=شناسه گروه در خط $1 : $2 نامعتبر است
 batch_ehome=فهرست راهنماي خط $1 : $2 نامعتبر است
 batch_eshell=پوسته خط $1 : $2 نامعتبر است
 batch_emkdir=عدم موفقيت در ساختن فهرست راهنماي $1 : $2
@@ -394,8 +394,8 @@ export_who=کاربران براي برون‌برد
 
 pft_0=فقط پرونده <tt>passwd</tt> معمول
 pft_1=پرونده<tt>master.passwd </tt>BSD
-pft_2=پرونده‌هاي استاندارد<tt>passwd</tt> و <tt>shadow</tt> 
-pft_3=پرونده <tt>passwd</tt> Unixware. 
+pft_2=پرونده‌هاي استاندارد<tt>passwd</tt> و <tt>shadow</tt>
+pft_3=پرونده <tt>passwd</tt> Unixware.
 pft_4=پرونده<tt>passwd</tt> و <tt>security</tt> AIX
 pft_5=پرونده <tt>passwd</tt> و خلاصه شده<tt>shadow</tt> کارساز باز
 pft_6=پايگاه‌داده اطلاعات شبکه MacOS

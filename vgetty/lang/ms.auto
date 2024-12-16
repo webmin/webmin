@@ -18,7 +18,7 @@ vgetty_return=senarai port siri
 vgetty_create=Tambah Port Serial
 vgetty_edit=Edit Port Serial
 vgetty_header=Pilihan konfigurasi port serial
-vgetty_ts=Port siri $1 
+vgetty_ts=Port siri $1
 vgetty_other=Peranti lain ..
 vgetty_rings=Cincin sebelum menjawab
 vgetty_default=Lalai global
@@ -100,19 +100,19 @@ pvfdesc=$1, $2 bit
 
 upload_err=Gagal menambah mesej
 upload_emessage=Fail WAV tidak dipilih
-upload_ewav=Gagal menukar fail WAV : $1 
-upload_epvf=Gagal membuat fail RMD : $1 
+upload_ewav=Gagal menukar fail WAV : $1
+upload_epvf=Gagal membuat fail RMD : $1
 upload_esame=Fail mesej $1 sudah wujud
 
 log_apply=Konfigurasi terapan
-log_upload=Mesej ucapan yang dimuat naik $1 
+log_upload=Mesej ucapan yang dimuat naik $1
 log_move=Dikonversi $1 menerima mesej
 log_delete0=Dihapus $1 menerima mesej
 log_delete1=Dihapus $1 mesej ucapan
 log_options=Pilihan mel suara yang diubah
-log_vgetty_create=Menambah port bersiri $1 
-log_vgetty_modify=Port siri yang diubahsuai $1 
-log_vgetty_delete=Port siri terpadam $1 
+log_vgetty_create=Menambah port bersiri $1
+log_vgetty_modify=Port siri yang diubahsuai $1
+log_vgetty_delete=Port siri terpadam $1
 
 email_subject=Mesej mel suara
 email_body=Mesej mel suara diterima pada $1 oleh $2.

@@ -50,11 +50,11 @@ search_google=Kết quả tìm kiếm Google
 search_doxfer=Tài liệu trực tuyến trên Webmin
 
 howto_title=Tài liệu HOWTO
-howto_header=Tệp tài liệu HOWTO $1 
+howto_header=Tệp tài liệu HOWTO $1
 howto_epath=Đường dẫn tài liệu HOWTO không hợp lệ
 
 doc_title=Tài liệu trọn gói
-doc_header=Gói tài liệu tệp $1 
+doc_header=Gói tài liệu tệp $1
 doc_epath=Đường dẫn tài liệu gói không hợp lệ
 
 man_title=Trang hướng dẫn
@@ -63,15 +63,15 @@ man_noentry=Trang hướng dẫn cho $1 không tồn tại!
 man_epath=Trang hướng dẫn không thể là đường dẫn!
 
 kernel_title=Tài liệu hạt nhân
-kernel_header=Tệp tài liệu kernel $1 
+kernel_header=Tệp tài liệu kernel $1
 kernel_epath=Đường dẫn tài liệu kernel không hợp lệ
 
 kde_title=Tài liệu KDE
-kde_header=Tệp tài liệu KDE $1 
+kde_header=Tệp tài liệu KDE $1
 kde_epath=Đường dẫn tài liệu KDE không hợp lệ
 
 perl_title=Mô-đun Perl
-perl_header=Tài liệu cho mô-đun Perl $1 
+perl_header=Tài liệu cho mô-đun Perl $1
 perl_emod=Tên mô-đun Perl không hợp lệ
 
 acl_allow=Có thể chỉnh sửa các loại tìm kiếm được phép?

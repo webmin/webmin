@@ -29,10 +29,10 @@ edit_mask=Maskara
 
 save_err=Exportazioak kale egin du
 save_enone=Exportatzeko directorio bat gehitu behar dizu gutxienez
-save_eroot=<b> exportaziorako azpidirektorioa </b> erabilia izaten denean, 
+save_eroot=<b> exportaziorako azpidirektorioa </b> erabilia izaten denean,
 save_euser=$1 erabiltzailea baliogabea da edo UID
 save_egroup=$1 baliogabea da edo GID taldea
-save_ekerb=Erabiltzaileen ingurunea, erabiltzaile guztien ingurunea eta 
+save_ekerb=Erabiltzaileen ingurunea, erabiltzaile guztien ingurunea eta
 save_enetwork=$1 sarea baliogabea da
 save_enetmask=$1 maskara baliogabea da sarearentzat
 save_esame2=<tt>$1</tt> direktorioa <tt>$2</tt> direktoriora exportatzen hari da.

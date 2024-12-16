@@ -22,6 +22,6 @@ run_failed=종료 상태 $1 로 명령이 실패했습니다.
 
 file_beforeedit=편집하기 전에 실행할 명령
 
-view_ebeforeedit=편집 전 명령 실패  : $1 
-view_ebefore=저장 전 명령 실패  : $1 
-view_eafter=저장 후 명령 실패  : $1 
+view_ebeforeedit=편집 전 명령 실패  : $1
+view_ebefore=저장 전 명령 실패  : $1
+view_eafter=저장 후 명령 실패  : $1

@@ -58,7 +58,7 @@
   "Formatted": "整形済み",
   "&mdash; font &mdash;": "&mdash; フォント &mdash;",
   "&mdash; size &mdash;": "&mdash; サイズ &mdash;",
-  
+
   //dialogs
   "OK": "OK",
   "Cancel": "中止",
@@ -155,21 +155,21 @@
   // Loading messages
   "Loading in progress. Please wait!": "ロード中です。しばらくお待ちください",
   "Loading plugin $plugin" : "ロード中プラグイン $plugin",
-  "Register plugin $plugin" : "登録中プラグイン $plugin", 
+  "Register plugin $plugin" : "登録中プラグイン $plugin",
   "Constructing object": "オブジェクト構築中",
   "Generate Xinha framework": "Xinhaフレームワーク生成中",
-  "Init editor size":"エディタサイズの初期化", 
+  "Init editor size":"エディタサイズの初期化",
   "Create Toolbar": "ツールバーの作成",
   "Create Statusbar" : "ステータスバーの作成",
-  "Register right panel" : "登録 右パネル", 
-  "Register left panel" : "登録 左パネル", 
-  "Register bottom panel" : "登録 下パネル", 
-  "Register top panel" : "登録 上パネル", 
+  "Register right panel" : "登録 右パネル",
+  "Register left panel" : "登録 左パネル",
+  "Register bottom panel" : "登録 下パネル",
+  "Register top panel" : "登録 上パネル",
   "Finishing" : "完了",
-  
+
   // ColorPicker
   "Click a color..." : "色をクリック...",
   "Sample" : "サンプル",
   "Web Safe: " : "Webセーフ: ",
-  "Color: " : "色: "  
+  "Color: " : "色: "
 };

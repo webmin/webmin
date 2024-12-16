@@ -124,7 +124,7 @@ errors_maxlen=Maksimum grootte van aangemelde foute
 errors_file=Teken lêer vir foute
 errors_none=Geen
 errors_syslog=syslog
-errors_other=Ander lêer $1 
+errors_other=Ander lêer $1
 errors_unlimited=Unlimited
 errors_err=Kon nie foutmelding stoor nie
 errors_ereporting=Geen fouttipe-uitdrukking is ingevoer nie
@@ -158,7 +158,7 @@ log_dirs=Die gidsinstellings in $1 verander
 log_db=Die databasisinstellings in $1 verander
 log_session=Sessieopsies in $1 verander
 log_safe=Die veilige modus-opsies in $1 verander
-log_limits=Veranderde hulpbronlimiete in $1 
+log_limits=Veranderde hulpbronlimiete in $1
 log_errors=Fout aanmelding $1 verander
 log_misc=Ander instellings in $1 verander
 

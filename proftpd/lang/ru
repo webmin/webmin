@@ -59,7 +59,7 @@ vserv_ename=Не указано имя сервера
 
 anon_title=Параметры анонимного FTP
 anon_header1=В виртуальном сервере $1
-anon_header2=В сервере по умолчанию 
+anon_header2=В сервере по умолчанию
 anon_anon=Настройка анонимного FTP
 anon_return=параметры анонимного FTP
 anon_header3=Для анонимного FTP в виртуальном сервере $1

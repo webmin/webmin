@@ -11,9 +11,9 @@ index_bootdesc=Ändra denna inställning för att aktivera eller inaktivera star
 acl_stop=Kan du stoppa och starta <tt>atd</tt>?
 
 log_allow=Ändrade tillåtna användare
-log_create_job=Skapat schemalagd kommando för $1 
-log_delete_job=Avbruten schemalagd kommando för $1 
-log_exec_job=Utfört schemalagd kommando för $1 
+log_create_job=Skapat schemalagd kommando för $1
+log_delete_job=Avbruten schemalagd kommando för $1
+log_exec_job=Utfört schemalagd kommando för $1
 log_delete_jobs=Avbruten $1 schemalagda kommandon
 log_stop=Stoppade schemalagda kommandoserver
 log_start=Startade schemalagda kommandoserver

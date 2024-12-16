@@ -153,8 +153,8 @@ menu_file=Fişier
 menu_edit=Editați | ×
 menu_tools=Unelte
 menu_bookmarks=Marcaje
-notallowed=Nu aveți voie să accesați $1. Directoarele permise sunt : $2 
-error_upload_emax=Fișierul încărcat este mai mare decât limita $1 
+notallowed=Nu aveți voie să accesați $1. Directoarele permise sunt : $2
+error_upload_emax=Fișierul încărcat este mai mare decât limita $1
 extract_etype=Tipul fișierului de arhivă neacceptat
 
 error_write=nu aveți permisiunea de scriere pentru acest fișier

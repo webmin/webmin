@@ -9,7 +9,7 @@ index_eha_cf=Fail konfigurasi jantung $1 tidak ditemukan pada sistem anda. Mungk
 index_eharesources=Fail sumber $1 tidak ditemui pada sistem anda. Mungkin ia belum disalin ke tempatnya, atau konfigurasi modul <a href='$2'></a> tidak betul.
 index_eauthkeys=Fail kekunci pengesahan $1 tidak dijumpai pada sistem anda. Mungkin ia belum disalin ke tempatnya, atau konfigurasi modul <a href='$2'></a> tidak betul.
 index_ereq_resource_cmd=Skrip untuk meminta sumber dari nod lain ($1) tidak dijumpai pada sistem anda. Mungkin ia belum disalin ke tempatnya, atau konfigurasi modul <a href='$2'></a> tidak betul.
-index_version=Versi degupan jantung $1 
+index_version=Versi degupan jantung $1
 index_noversion=Amaran - Versi Heartbeat yang dipasang pada sistem anda tidak dapat dikesan secara automatik. Anda harus menetapkannya pada halaman konfigurasi <a href='$1'></a>.
 index_status=Status degupan jantung
 
@@ -21,7 +21,7 @@ conf_bcasts=Antara muka degupan jantung Ethernet
 conf_none=Tiada
 conf_udpport=UDP denyutan jantung
 conf_mcast=Peranti denyutan jantung pelbagai
-conf_mcastv=Peranti $1, kumpulan $2, port $3, TTL $4, gelung balik $5 
+conf_mcastv=Peranti $1, kumpulan $2, port $3, TTL $4, gelung balik $5
 conf_enabled=Dihidupkan
 conf_disabled=Dinyahdayakan
 conf_keepalive=Masa antara degupan jantung

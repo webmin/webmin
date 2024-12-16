@@ -1,6 +1,6 @@
 index_title=Webalizer Analiżi tal-Logfile
-index_version=Verżjoni tal-webalizer $1 
-index_version_webalizer=Verżjoni tal-webalizer $1 
+index_version=Verżjoni tal-webalizer $1
+index_version_webalizer=Verżjoni tal-webalizer $1
 index_version_awffull=Tħassbux
 index_ewebalizer=Il-kmand tal-analiżi tal-fajl $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
 index_econf=Il-fajl tal-konfigurazzjoni tal-Webalizer $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
@@ -21,8 +21,8 @@ index_return=lista ta 'fajls ta' log
 index_global=Editja l-Għażliet Globali
 index_globaldesc=Ikklikkja din il-buttuna biex teditja l-għażliet tal-Webalizer li japplikaw għar-rapporti ġġenerati mill-fajls tal-log kollha.
 index_eversion=Il-kmand tal-Webalizer $1 fis-sistema tiegħek huwa l-verżjoni $2, iżda dan il-modulu jappoġġja biss il-verżjonijiet $3 u aktar.
-index_egetversion=Ma rnexxielux jikseb il-verżjoni tal-Webalizer bil-kmand $1 : $2 
-index_when=Iva, $1 
+index_egetversion=Ma rnexxielux jikseb il-verżjoni tal-Webalizer bil-kmand $1 : $2
+index_when=Iva, $1
 index_webalizer=Webalizer
 index_enable=Skeda Magħżula
 index_disable=Skeda Magħżula
@@ -66,7 +66,7 @@ save_euser=Utent nieqes jew invalidu biex imexxi webalizer bħala
 save_ewuser=L-ebda utent Unix imsejjaħ $1 ma jeżisti
 save_ehost=Kunjom tal-websajt nieqes jew invalidu
 save_etitle=Titlu tar-rapport nieqes
-save_ecannot=Int biss permess li tiġġenera rapporti għal zkuk taħt $1 
+save_ecannot=Int biss permess li tiġġenera rapporti għal zkuk taħt $1
 
 view_epath=PATH_INFO Invalidu
 view_efile=Isem tal-fajl tar-rapport mhux validu
@@ -77,7 +77,7 @@ view_title=Ara r-Rapport
 
 global_title=Għażliet ta 'Webalizer Globali
 global_title2=Webalizer Għażliet ta 'Rapport
-global_for=Għall-logfile $1 
+global_for=Għall-logfile $1
 global_first=Bħalissa ma ġew stabbiliti l-ebda għażliet għal dan il-fajl tal-ġurnal, li jfisser li l-għażliet globali se jintużaw minflok. Meta din il-formola tiġi ssejvjata, ir-rapporti ġġenerati għal dan il-ġurnal jużaw is-settings magħżula fuq din il-paġna minn issa 'l quddiem.
 global_header=Webalizer għażliet għar-rapporti kollha
 global_host=Isem il-websajt
@@ -146,14 +146,14 @@ global_ehistory=Isem tal-fajl tal-istorja nieqes jew invalidu
 global_ecurrent=Isem tal-fajl inkrementali nieqes jew invalidu
 global_ecache=Isem tal-fajl tal-cache DNS nieqes jew invalidu
 
-log_create_log=Rapport maħluq għal $1 
-log_modify_log=Rappurtaġġ modifikat għal $1 
-log_delete_log=Rapportar imħassar għal $1 
-log_generate_log=Rapport iġġenerat għal $1 
+log_create_log=Rapport maħluq għal $1
+log_modify_log=Rappurtaġġ modifikat għal $1
+log_delete_log=Rapportar imħassar għal $1
+log_generate_log=Rapport iġġenerat għal $1
 log_global=Opzjonijiet ta 'Webalizer globali modifikati
-log_global2=Għażliet immodifikati tal-Webalizer għal $1 
+log_global2=Għażliet immodifikati tal-Webalizer għal $1
 log_enable_logs=Rappurtaġġ skedat fuq $1 zkuk
-log_disable_logs=Rappurtaġġ skedat fuq zkuk $1 
+log_disable_logs=Rappurtaġġ skedat fuq zkuk $1
 
 acl_view=Tista 'tara biss ir-rapporti eżistenti?
 acl_global=Tista 'teditja l-għażliet tal-webalizer globali?

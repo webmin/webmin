@@ -9,7 +9,7 @@ index_eha_cf=Plik konfiguracyjny pulsu $1 nie został znaleziony w twoim systemi
 index_eharesources=Plik zasobów $1 nie został znaleziony w twoim systemie. Może nie został jeszcze skopiowany na miejsce lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
 index_eauthkeys=Plik kluczy uwierzytelniających $1 nie został znaleziony w twoim systemie. Może nie został jeszcze skopiowany na miejsce lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
 index_ereq_resource_cmd=Skrypt żądający zasobów z drugiego węzła ($1) nie został znaleziony w twoim systemie. Może nie został jeszcze skopiowany na miejsce lub konfiguracja modułu <a href='$2'></a> jest nieprawidłowa.
-index_version=Wersja pulsu $1 
+index_version=Wersja pulsu $1
 index_noversion=Ostrzeżenie - nie można automatycznie wykryć wersji Heartbeat zainstalowanej w systemie. Powinieneś to ustawić na stronie <a href='$1'>konfiguracji modułu</a>.
 index_status=Status bicia serca
 
@@ -21,7 +21,7 @@ conf_bcasts=Interfejsy pulsu Ethernet
 conf_none=Żaden
 conf_udpport=Port pulsu UDP
 conf_mcast=Urządzenie pulsu multiemisji
-conf_mcastv=Urządzenie $1, grupa $2, port $3, TTL $4, sprzężenie zwrotne $5 
+conf_mcastv=Urządzenie $1, grupa $2, port $3, TTL $4, sprzężenie zwrotne $5
 conf_enabled=Włączone
 conf_disabled=Niepełnosprawny
 conf_keepalive=Czas między uderzeniami serca

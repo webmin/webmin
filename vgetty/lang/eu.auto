@@ -100,8 +100,8 @@ pvfdesc=$1, $2 bit
 
 upload_err=Ezin izan da mezua gehitzean
 upload_emessage=Ez da WAV fitxategia hautatu
-upload_ewav=Huts egin du WAV fitxategia bihurtzean : $1 
-upload_epvf=Huts egin du RMD fitxategia sortzean : $1 
+upload_ewav=Huts egin du WAV fitxategia bihurtzean : $1
+upload_epvf=Huts egin du RMD fitxategia sortzean : $1
 upload_esame=$1 mezu fitxategia lehendik dago
 
 log_apply=Aplikatutako konfigurazioa

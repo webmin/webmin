@@ -7,14 +7,14 @@ index_active=Актыўны?
 index_tag=Праграма
 index_to=Уваходны пункт прызначэння
 index_rule=Паведамленні выбраны
-index_file=Файл $1 
-index_pipe=Названая труба $1 
-index_pipe2=Труба для каманды $1 
-index_host=Сервер Syslog на $1 
-index_socket=Файл сокета Unix $1 
-index_cmd=Выснова ад $1 
+index_file=Файл $1
+index_pipe=Названая труба $1
+index_pipe2=Труба для каманды $1
+index_host=Сервер Syslog на $1
+index_socket=Файл сокета Unix $1
+index_cmd=Выснова ад $1
 index_all=Усе карыстальнікі
-index_users=Карыстальнікі $1 
+index_users=Карыстальнікі $1
 index_add=Дадайце новы сістэмны часопіс.
 index_return=сістэмныя часопісы
 index_restart=Прымяніць змены
@@ -26,7 +26,7 @@ index_view=Паглядзець ..
 index_viewfile=Паглядзець файл часопіса:
 index_viewok=Выгляд
 
-restart_ekill=Не атрымалася сігналізаваць працэс syslog $1 : $2 
+restart_ekill=Не атрымалася сігналізаваць працэс syslog $1 : $2
 restart_ecannot=Вам не дазволена перазапусціць syslog
 
 start_ecannot=Вам не дазволена запускаць syslog
@@ -61,13 +61,13 @@ edit_ecannot=Вам не дазволена рэдагаваць налады ч
 edit_ecannot2=Вам не дазволена рэдагаваць гэты часопіс
 
 view_title=Паглядзець пратакол
-view_header=Апошні $1 радок $2 
+view_header=Апошні $1 радок $2
 view_empty=Файл часопіса пусты
 view_refresh=Абнавіць
-view_filter=Паказаць толькі радкі з тэкстам $1 
+view_filter=Паказаць толькі радкі з тэкстам $1
 
 save_err=Не атрымалася захаваць часопіс
-save_efile='$1' не з'яўляецца правільным імем файла : $2 
+save_efile='$1' не з'яўляецца правільным імем файла : $2
 save_epipe='$1' не з'яўляецца сапраўднай назвай трубы
 save_epipe2=Адсутнічае каманда для перадачы ў
 save_esocket=Адсутнічае ці недапушчальны гнездо дамена unix
@@ -86,9 +86,9 @@ save_ecannot6=Вам не дазволена праглядаць адвольн
 save_ecannot7=Вам не дазволена праглядаць гэты дадатковы часопіс
 save_emissing=Файл часопіса адсутнічае для прагляду
 
-log_modify=Мадыфікаваны часопіс у $1 
-log_create=Дададзены часопіс да $1 
-log_delete=Выдалены часопіс у $1 
+log_modify=Мадыфікаваны часопіс у $1
+log_create=Дададзены часопіс да $1
+log_delete=Выдалены часопіс у $1
 log_apply=Прымяняюцца змены
 log_start=Пачаў сервер рэгістрацыі
 

@@ -40,7 +40,7 @@ desc_common-session=Vanlig sessioninställning
 
 edit_file=Konfigurationsfil
 edit_addinc=Lägg till inkluderad service
-edit_inc=Inkludera tjänst $1 
+edit_inc=Inkludera tjänst $1
 edit_iheader=Inkluderade PAM-tjänster
 
 pam_stack.so=Ring annan PAM-tjänst
@@ -57,10 +57,10 @@ unix_emax=Saknas eller ogiltig maximal lösenordslängd
 
 stack_service=Gå vidare till PAM-tjänsten
 
-log_inc_create=Tillagd inkluderar $1 för tjänsten $2 
-log_inc_modify=Modifierad inkluderar $1 för service $2 
-log_inc_delete=Raderade inkluderar $1 för service $2 
-log_incs=Uppdaterad inkluderar för service $1 
+log_inc_create=Tillagd inkluderar $1 för tjänsten $2
+log_inc_modify=Modifierad inkluderar $1 för service $2
+log_inc_delete=Raderade inkluderar $1 för service $2
+log_incs=Uppdaterad inkluderar för service $1
 
 inc_edit=Redigera inkluderad tjänst
 inc_create=Skapa inkluderad tjänst

@@ -7,8 +7,8 @@ restart_epid=Már nem fut
 
 log_enable=Engedélyezve $1 szolgáltatás
 log_disable=$1 szolgáltatás letiltva
-log_enable_l=Engedélyezett szolgáltatások $1 
-log_disable_l=Fogyatékkal élő szolgáltatások $1 
+log_enable_l=Engedélyezett szolgáltatások $1
+log_disable_l=Fogyatékkal élő szolgáltatások $1
 
 config_dirdef=Xinetd konfigurációs fájl
 config_dirto=Új fájl a könyvtárban

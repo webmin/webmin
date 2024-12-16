@@ -1,14 +1,14 @@
 index_title=WU-FTPD-server
 index_eftpd=FTP-serveren $1 kunne ikke findes på dit system. Måske er det ikke installeret, eller din <a href='$2'>FTP-servermodulkonfiguration</a> er forkert.
 index_eftpaccess=FTP-serverkonfigurationsfilen $1 findes ikke. Måske er det ikke installeret, eller din <a href='$2'>FTP-servermodulkonfiguration</a> er forkert.
-index_eversion=FTP-serveren $1 ser ikke ud til at være WU-FTPd. Måske bruger du en ældre FTPd, der leveres med dit operativsystem, eller din <a href='$2'>FTP-servermodulkonfiguration</a> er korrekt. Outputet fra FTP-serveren var : $3 
+index_eversion=FTP-serveren $1 ser ikke ud til at være WU-FTPd. Måske bruger du en ældre FTPd, der leveres med dit operativsystem, eller din <a href='$2'>FTP-servermodulkonfiguration</a> er korrekt. Outputet fra FTP-serveren var : $3
 index_apply=Anvend ændringer
 index_applymsg=Klik på denne knap for at anvende den aktuelle konfiguration. Dette vil stoppe og genstarte alle de kørende FTP-serverprocesser og dermed afbryde alle tilsluttede brugere.
 index_start=Start server
 index_startmsg=Klik på denne knap for at starte FTP-serveren med den aktuelle konfiguration. Du kan også konfigurere serveren, der skal startes automatisk efter behov ved hjælp af modulet <a href='$1'>Internet Services</a>.
 index_startmsg2=Klik på denne knap for at starte FTP-serveren med den aktuelle konfiguration. Du kan også konfigurere serveren, der skal startes automatisk efter behov ved hjælp af inetd eller et lignende program.
 index_return=FTP-serverindstillinger
-index_version=WU-FTPd version $1 
+index_version=WU-FTPd version $1
 
 class_title=Brugere og klasser
 class_header=Brugerklasser og brugerindstillinger

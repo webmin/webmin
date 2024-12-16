@@ -1,14 +1,14 @@
 index_title=WU-FTPD-palvelin
 index_eftpd=FTP-palvelinta $1 ei löytynyt järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>FTP-palvelinmoduulin määritykset</a> ovat vääriä.
 index_eftpaccess=FTP-palvelimen määritystiedostoa $1 ei ole. Ehkä sitä ei ole asennettu, tai <a href='$2'>FTP-palvelinmoduulin määritykset</a> ovat vääriä.
-index_eversion=FTP-palvelin $1 ei näytä olevan WU-FTPd. Ehkä käytät vanhempaa käyttöjärjestelmän mukana toimitettua FTP-tiedostoa tai <a href='$2'>FTP-palvelinmoduulin määritykset</a> ovat oikein. FTP-palvelimen lähtö oli : $3 
+index_eversion=FTP-palvelin $1 ei näytä olevan WU-FTPd. Ehkä käytät vanhempaa käyttöjärjestelmän mukana toimitettua FTP-tiedostoa tai <a href='$2'>FTP-palvelinmoduulin määritykset</a> ovat oikein. FTP-palvelimen lähtö oli : $3
 index_apply=Ota muutokset käyttöön
 index_applymsg=Napsauta tätä painiketta, jos haluat käyttää nykyistä kokoonpanoa. Tämä pysäyttää ja käynnistää kaikki käynnissä olevat FTP-palvelinprosessit, irrottaen siten kaikki kytketyt käyttäjät.
 index_start=Käynnistä palvelin
 index_startmsg=Napsauta tätä painiketta, jos haluat käynnistää FTP-palvelimen nykyisellä kokoonpanolla. Voit myös määrittää palvelimen käynnistymään tarvittaessa automaattisesti <a href='$1'>Internet Services</a> -moduulin avulla.
 index_startmsg2=Napsauta tätä painiketta, jos haluat käynnistää FTP-palvelimen nykyisellä kokoonpanolla. Voit myös määrittää palvelimen käynnistyvän automaattisesti tarvittaessa käyttämällä inetd: tä tai jotain vastaavaa ohjelmaa.
 index_return=FTP-palvelimen asetukset
-index_version=WU-FTPd-versio $1 
+index_version=WU-FTPd-versio $1
 
 class_title=Käyttäjät ja luokat
 class_header=Käyttäjäluokat ja käyttäjän vaihtoehdot

@@ -33,7 +33,7 @@ save_erw=Ingen læse-skriv værter indtastet
 save_eroot=Der er ikke angivet nogen rootfiladgangsværter
 save_eaccess=Der er ikke angivet nogen monteringsadgangshosts
 
-log_create_export=Oprettet eksport af $1 
-log_delete_export=Slet eksport af $1 
-log_modify_export=Ændret eksport af $1 
+log_create_export=Oprettet eksport af $1
+log_delete_export=Slet eksport af $1
+log_modify_export=Ændret eksport af $1
 log_apply=Anvendt konfiguration

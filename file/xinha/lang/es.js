@@ -147,18 +147,18 @@
   // Loading messages
   "Loading in progress. Please wait!": "Carga en proceso. Por favor espere.",
   "Loading plugin $plugin" : "Cargando el plugin $plugin",
-  "Register plugin $plugin" : "Registro de plugin $plugin", 
+  "Register plugin $plugin" : "Registro de plugin $plugin",
   "Constructing object": "Construyendo objeto",
   "Generate Xinha framework": "Generar Xinha framework",
-  "Init editor size":"Iniciar el tamaño del editor", 
+  "Init editor size":"Iniciar el tamaño del editor",
   "Create Toolbar": "Crear barra de herramientas",
   "Create Statusbar" : "Crear barra de estado",
-  "Register right panel" : "Registrar panel derecho", 
-  "Register left panel" : "Registrar panel izquierdo", 
-  "Register bottom panel" : "Registar panel inferior", 
-  "Register top panel" : "Registar panel superior", 
+  "Register right panel" : "Registrar panel derecho",
+  "Register left panel" : "Registrar panel izquierdo",
+  "Register bottom panel" : "Registar panel inferior",
+  "Register top panel" : "Registar panel superior",
   "Finishing" : "Finalizando",
-  
+
   // ColorPicker
   "Click a color..." : "Seleccione un color...",
   "Sample" : "Muestra",

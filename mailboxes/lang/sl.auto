@@ -252,7 +252,7 @@ send_eattach=Priloge ne morejo biti večje od velikosti $1 kB.
 send_eperms=Uporabnik $1 ne more brati $2
 send_eperms2=Ni vam dovoljeno pošiljati datoteke $1
 send_epath=Sendmail izvršljiv $1 ne obstaja.
-send_efile=Priloge ni bilo mogoče prebrati $1 : $2 
+send_efile=Priloge ni bilo mogoče prebrati $1 : $2
 send_done=.. Končano.
 
 send_epass=Ne morete podpisati sporočila, ker vaša gesla še ni bila nastavljena v modulu GnuPG.
@@ -337,7 +337,7 @@ folder_spam=Neželena pošta
 
 detach_err=Datoteke ni bilo mogoče odstraniti
 detach_edir=Nobene datoteke ali imenika, ki bi ga shranili
-detach_eopen=Ni mogoče odpreti $1 : $2 
+detach_eopen=Ni mogoče odpreti $1 : $2
 detach_ewrite=Pisanje v $1 : $2 ni uspelo.
 detach_title=Odstranite datoteko
 detach_ok=Napisal je prilogo na datoteko na strani strežnika $1 ($2).
@@ -437,7 +437,7 @@ white_already=E-poštni naslov $1 je že na seznamu dovoljenih naslovov SpamAssa
 
 ldap_emod=Manjka Perl modul $1, potreben za povezavo z LDAP
 ldap_econn=Povezave s strežnikom LDAP ni bilo mogoče $2
-ldap_elogin=Ni bilo mogoče povezati na LDAP strežnik $1 kot $2 : $3 
+ldap_elogin=Ni bilo mogoče povezati na LDAP strežnik $1 kot $2 : $3
 ldap_ehost=V konfiguraciji modula ni nastavljen strežnik LDAP
 ldap_eport=V konfiguraciji modula ni nastavljenih veljavnih vrat strežnika LDAP
 ldap_euser=V konfiguraciji modula ni nastavljena prijava LDAP

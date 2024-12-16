@@ -4,7 +4,7 @@ index_ecmd2=SpamAssassin-komentoa $1 ei löydy järjestelmästäsi.
 index_econfig=SpamAssassin-paikallista määritystiedostoa tai hakemistoa $1 ei löydy järjestelmästäsi. Ehkä SpamAssassinia ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
 index_unknown=tuntematon
 index_edb=Yhdistäminen SpamAssassin -määritystietokantaan epäonnistui: $1. Tarkista <a href='$2'>moduulin kokoonpano</a> ja varmista, että käytät oikeita asetuksia.
-index_version=SpamAssassin-versio $1 
+index_version=SpamAssassin-versio $1
 index_warn_usermin=SpamAssassin ei vaikuta olevan asetettu Procmail-asetustiedostoosi $2 tai globaaliin tiedostoon $1, joten millään tämän moduulin avulla tehdyllä kokoonpanolla ei ole vaikutusta, ellei SpamAssassin ole määritetty globaalisti.
 index_warn_webmin=SpamAssassin ei vaikuta olevan asetettu järjestelmän Procmail-määritystiedostoon $1, joten kaikilla tämän moduulin avulla tehdyillä määrityksillä ei ole vaikutusta, elleivät käyttäjät ole määrittäneet sitä erikseen.
 index_return=moduulihakemisto
@@ -12,7 +12,7 @@ index_apply=Ota muutokset käyttöön
 index_applydesc=Napsauta tätä painiketta, kun haluat käyttää nykyistä SpamAssassin-määritystä lähettämällä HUP-signaalin kaikille käynnissä oleville $1 -prosesseille.
 index_cpan=Koska SpamAssassin on Perl-moduuli, voit myös asentaa sen automaattisesti Webminin <a href='$2'>Perl-moduulit</a> -moduulilla ja ladata $1 CPANista.
 index_spamassassin=SpamAssassin
-index_ecannot=Sinulla ei ole oikeutta hallita SpamAssassin -määritystiedostoa $1 
+index_ecannot=Sinulla ei ole oikeutta hallita SpamAssassin -määritystiedostoa $1
 
 white_title=Sallitut ja evätyt osoitteet
 white_desc=Tämän sivun taulukot antavat sinun määrittää Lähettäjä: ja Vastaanottaja: osoitteet sähköposteille, jotka on aina tai koskaan luokiteltu roskapostiksi. Kaikkia muita sähköposteja käsitellään normaalisti SpamAssassinin sääntöjen mukaisesti. Kaikki sähköpostiosoitteet voivat sisältää yleismerkkejä, kuten *@foo.com tai *.foo.com, jotta ne vastaavat kokonaisia verkkotunnuksia.
@@ -190,7 +190,7 @@ priv_emscore='$1' ei ole kelvollinen korkein lauseke
 priv_ephrase='$1' ei ole kelvollinen kaksisanainen spamlause
 priv_escore=Puuttuva tai virheellinen pisteet roskapostiehdotukselle '$1'
 
-usually=Yleensä $1 
+usually=Yleensä $1
 ecannot=Sinulla ei ole oikeutta käyttää tätä sivua
 setup_title=Asenna Procmail SpamAssassinille
 setup_desc_webmin=Tätä lomaketta voidaan käyttää asettamaan Procmail $1 : een, jotta SpamAssassin voidaan suorittaa kaikissa järjestelmän vastaanottamissa sähköpostiviesteissä. Tällä on kuitenkin vaikutusta vain, jos postipalvelimesi on määritetty käyttämään Procmailia paikallisiin toimituksiin tai käyttäjille, joiden <tt>.lähetys</tt> tiedostot on määritetty ajamaan Procmailia.
@@ -244,7 +244,7 @@ mail_razor=Ilmoita roskapostina ja poista
 mail_ham=Ilmoita kinkku ja postilaatikko
 mail_delete=Poistaa
 mail_return=roskapostilista
-mail_pos=Roskapostit $1 - $2 / $3 
+mail_pos=Roskapostit $1 - $2 / $3
 mail_none=Roskapostikansiossasi ei ole viestejä
 mail_refresh=virkistää
 mail_will=Automaattinen päivitys $1 minuutissa
@@ -253,7 +253,7 @@ mail_delall=Poista kaikki roskapostit
 mail_search3=Etsi pisteet yllä:
 
 process_eclean=SpamAssassin-otsikoiden poistamisessa tästä sähköpostista tapahtui virhe
-process_ereport=Sähköpostin ilmoittaminen SpamAssassinille epäonnistui : $1 
+process_ereport=Sähköpostin ilmoittaminen SpamAssassinille epäonnistui : $1
 
 apply_err=Muutosten asettaminen epäonnistui
 apply_none=SpamAssassin-daemon-prosesseja ei löytynyt!
@@ -263,7 +263,7 @@ acl_file=SpamAssassin -määritystiedosto muokattavaksi
 acl_filedef=Globaali konfigurointitiedosto
 acl_awl=Sallittu käyttäjille automaattinen sallittujen luetteloiden muokkaaminen
 acl_awl0=Kaikki käyttäjät
-acl_awl1=Vain luetellut käyttäjät $1 
+acl_awl1=Vain luetellut käyttäjät $1
 acl_awl2=Vain ryhmien $1 jäsenet
 
 search_escore=Puuttuva tai virheellinen roskapostitulos
@@ -337,19 +337,19 @@ simple_score=Sovellettava pisteet
 simple_describe=Kuvaus
 simple_err=Viestitestien tallentaminen epäonnistui
 
-before_ecmd=Ennen tallennusta -komento epäonnistui : $1 
-after_ecmd=Jälkitallennuskomento epäonnistui : $1 
+before_ecmd=Ennen tallennusta -komento epäonnistui : $1
+after_ecmd=Jälkitallennuskomento epäonnistui : $1
 
 connect_emysql=Tietokanta-ohjaimen $1 lataus epäonnistui
 connect_elogin=Kirjautuminen tietokantaan $1 epäonnistui: $2.
-connect_equery=Tietokanta $1 ei sisällä asetustaulua $2 
+connect_equery=Tietokanta $1 ei sisällä asetustaulua $2
 connect_eldapmod=LDAP: n kanssa kommunikointiin tarvittavaa Perl-moduulia $1 ei ole asennettu tai sitä ei voi ladata
 connect_eldap=Yhdistäminen LDAP-palvelimeen $1 portissa $2 epäonnistui
-connect_eldaplogin=Kirjautuminen LDAP-palvelimeen $1 epäonnistui muodossa $2 : $3 
-connect_ebase=LDAP-pohja DN $1 ei kelpaa : $2 
+connect_eldaplogin=Kirjautuminen LDAP-palvelimeen $1 epäonnistui muodossa $2 : $3
+connect_ebase=LDAP-pohja DN $1 ei kelpaa : $2
 
-eldap=LDAP-toiminta epäonnistui : $1 
-esql=SQL epäonnistui : $1 
+eldap=LDAP-toiminta epäonnistui : $1
+esql=SQL epäonnistui : $1
 ldap_euser=LDAP-käyttäjäobjektia ei löytynyt kohdasta $1
 
 db_title=SQL- ja LDAP-tietokannat

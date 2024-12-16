@@ -7,14 +7,14 @@ index_active=פעיל?
 index_tag=תכנית
 index_to=יומן יעד
 index_rule=ההודעות שנבחרו
-index_file=קובץ $1 
-index_pipe=נקרא צינור $1 
-index_pipe2=צנרת לפקודה $1 
-index_host=שרת Syslog ב- $1 
-index_socket=קובץ שקע יוניקס $1 
-index_cmd=תפוקה מ- $1 
+index_file=קובץ $1
+index_pipe=נקרא צינור $1
+index_pipe2=צנרת לפקודה $1
+index_host=שרת Syslog ב- $1
+index_socket=קובץ שקע יוניקס $1
+index_cmd=תפוקה מ- $1
 index_all=כל המשתמשים
-index_users=משתמשים $1 
+index_users=משתמשים $1
 index_add=הוסף יומן מערכת חדש.
 index_return=יומני מערכת
 index_restart=החל שינויים
@@ -26,7 +26,7 @@ index_view=נוף ..
 index_viewfile=הצג קובץ יומן:
 index_viewok=נוף
 
-restart_ekill=כניסה לאיתור תהליך הסיסמאות $1 : $2 
+restart_ekill=כניסה לאיתור תהליך הסיסמאות $1 : $2
 restart_ecannot=אינך רשאי להפעיל מחדש את ה- syslog
 
 start_ecannot=אינך מורשה להתחיל ב- syslog
@@ -61,13 +61,13 @@ edit_ecannot=אינך מורשה לערוך הגדרות יומן
 edit_ecannot2=אינך רשאי לערוך יומן זה
 
 view_title=הצג Logfile
-view_header=$1 שורות אחרונות של $2 
+view_header=$1 שורות אחרונות של $2
 view_empty=קובץ היומן ריק
 view_refresh=רענן
-view_filter=הצג רק שורות עם טקסט $1 
+view_filter=הצג רק שורות עם טקסט $1
 
 save_err=שמירת היומן נכשלה
-save_efile='$1' אינו שם קובץ חוקי : $2 
+save_efile='$1' אינו שם קובץ חוקי : $2
 save_epipe='$1' אינו צינור בשם תקף
 save_epipe2=פקודה חסרה לצינור אל
 save_esocket=שקע תחום יוניקס חסר או לא חוקי
@@ -86,9 +86,9 @@ save_ecannot6=אינך רשאי להציג יומנים שרירותיים
 save_ecannot7=אינך רשאי להציג יומן נוסף זה
 save_emissing=קובץ היומן חסר לצפייה
 
-log_modify=יומן שונה ל- $1 
-log_create=יומן נוסף ל- $1 
-log_delete=היומן נמחק ל- $1 
+log_modify=יומן שונה ל- $1
+log_create=יומן נוסף ל- $1
+log_delete=היומן נמחק ל- $1
 log_apply=שינויים שהוחלו
 log_start=התחיל שרת כניסה
 

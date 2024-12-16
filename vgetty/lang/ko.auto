@@ -18,7 +18,7 @@ vgetty_return=직렬 포트 목록
 vgetty_create=직렬 포트 추가
 vgetty_edit=직렬 포트 편집
 vgetty_header=직렬 포트 구성 옵션
-vgetty_ts=시리얼 포트 $1 
+vgetty_ts=시리얼 포트 $1
 vgetty_other=다른 장치 ..
 vgetty_rings=응답하기 전에 울림
 vgetty_default=글로벌 기본값
@@ -100,8 +100,8 @@ pvfdesc=$1, $2 비트
 
 upload_err=메시지를 추가하지 못했습니다
 upload_emessage=선택된 WAV 파일이 없습니다
-upload_ewav=WAV 파일을 변환하지 못했습니다  : $1 
-upload_epvf=RMD 파일을 만들지 못했습니다  : $1 
+upload_ewav=WAV 파일을 변환하지 못했습니다  : $1
+upload_epvf=RMD 파일을 만들지 못했습니다  : $1
 upload_esame=메시지 파일 $1 이 (가) 이미 존재합니다
 
 log_apply=적용되는 구성
@@ -111,7 +111,7 @@ log_delete0=$1 받은 메시지를 삭제했습니다.
 log_delete1=인사말 $1 개를 삭제했습니다.
 log_options=변경된 음성 메일 옵션
 log_vgetty_create=시리얼 포트 $1 추가
-log_vgetty_modify=수정 된 직렬 포트 $1 
+log_vgetty_modify=수정 된 직렬 포트 $1
 log_vgetty_delete=직렬 포트 $1 을 (를) 삭제했습니다.
 
 email_subject=음성 사서함 메시지

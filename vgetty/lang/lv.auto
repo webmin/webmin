@@ -18,7 +18,7 @@ vgetty_return=seriālo portu saraksts
 vgetty_create=Pievienot seriālo portu
 vgetty_edit=Rediģēt seriālo portu
 vgetty_header=Seriālā porta konfigurācijas iespējas
-vgetty_ts=Sērijas osta $1 
+vgetty_ts=Sērijas osta $1
 vgetty_other=Cita ierīce ..
 vgetty_rings=Zvana pirms atbildes
 vgetty_default=Globālais noklusējums
@@ -100,19 +100,19 @@ pvfdesc=$1, $2 biti
 
 upload_err=Neizdevās pievienot ziņojumu
 upload_emessage=Nav atlasīts WAV fails
-upload_ewav=Neizdevās konvertēt WAV failu : $1 
-upload_epvf=Neizdevās izveidot RMD failu : $1 
+upload_ewav=Neizdevās konvertēt WAV failu : $1
+upload_epvf=Neizdevās izveidot RMD failu : $1
 upload_esame=Ziņojuma fails $1 jau pastāv
 
 log_apply=Lietotā konfigurācija
-log_upload=Augšupielādēts sveiciena ziņojums $1 
+log_upload=Augšupielādēts sveiciena ziņojums $1
 log_move=Pārveidoti $1 saņemtie ziņojumi
 log_delete0=Izdzēsa $1 saņemtos ziņojumus
 log_delete1=Izdzēsti $1 apsveikuma ziņojumi
 log_options=Mainītas balss pasta iespējas
-log_vgetty_create=Pievienots sērijas ports $1 
-log_vgetty_modify=Pārveidots seriālais ports $1 
-log_vgetty_delete=Dzēsts sērijas ports $1 
+log_vgetty_create=Pievienots sērijas ports $1
+log_vgetty_modify=Pārveidots seriālais ports $1
+log_vgetty_delete=Dzēsts sērijas ports $1
 
 email_subject=Balss pasta ziņojums
 email_body=Balss pasta ziņojums saņemts no $1 līdz $2.

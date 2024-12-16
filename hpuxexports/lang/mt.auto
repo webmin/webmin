@@ -68,10 +68,10 @@ save_enohost="$1" - Inti ma elenkat l-ebda host
 save_euids=L-UIDs li ma jafdawx għandhom ikunu lista separata mill-virgola ta 'numri jew meded
 save_egids=L-GIDs m'għandhomx fiduċja għandhom ikunu lista separata mill-virgoli ta 'numri jew meded
 
-log_modify=Esportazzjoni NFS modifikata $1 
-log_modify_l=Esportazzjoni NFS modifikata $1 sa $2 
-log_delete=Esportazzjoni NFS imħassra $1 
-log_delete_l=Esportazzjoni NFS imħassra $1 sa $2 
-log_create=Esportazzjoni NFS maħluqa $1 
-log_create_l=NFS maħluq esportat $1 sa $2 
+log_modify=Esportazzjoni NFS modifikata $1
+log_modify_l=Esportazzjoni NFS modifikata $1 sa $2
+log_delete=Esportazzjoni NFS imħassra $1
+log_delete_l=Esportazzjoni NFS imħassra $1 sa $2
+log_create=Esportazzjoni NFS maħluqa $1
+log_create_l=NFS maħluq esportat $1 sa $2
 log_apply=Konfigurazzjoni applikata

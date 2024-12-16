@@ -3,8 +3,8 @@ index_eipfw=De BSD firewall opdracht $1 is niet gevonden op uw systeem. Misschie
 index_elist=Er ontstond een fout bij het ophalen van de actieve firewall regels met de opdracht $1 : $2. Misschien is de kernel niet geconfigureerd om de firewall te ondersteunen, of uw <a href='$3'>module configuratie</a> is niet correct.
 index_version=IPFW versie $1
 index_apply=Configuratie Toevoegen
-index_applydesc=Klik op deze knop om de firewall configuratie hierboven actief te maken. Iedere firewall regel die op dit moment in gebruik is zal worden gewist en worden vervangen. 
-index_applydesc2=Klik op deze knop om de firewall configuratie hierboven actief te maken op alle servers in de cluster. Iedere firewall regel die op dit moment in gebruik is zal worden gewist en worden vervangen. 
+index_applydesc=Klik op deze knop om de firewall configuratie hierboven actief te maken. Iedere firewall regel die op dit moment in gebruik is zal worden gewist en worden vervangen.
+index_applydesc2=Klik op deze knop om de firewall configuratie hierboven actief te maken op alle servers in de cluster. Iedere firewall regel die op dit moment in gebruik is zal worden gewist en worden vervangen.
 index_unapply=Configuratie Omkeren
 index_unapplydesc=Klik op deze knop om de configuratie in de lijst hierboven te resetten naar de configuratie die op dit moment actief is.
 index_boot=Activeren tijdens booten

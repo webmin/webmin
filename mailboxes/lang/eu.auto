@@ -252,7 +252,7 @@ send_eattach=Eranskinetan ezin da $1 kB tamaina gehiago.
 send_eperms=Erabiltzaileak $1 ezin ditu $2 irakurri
 send_eperms2=Ezin duzu $1 fitxategia bidali
 send_epath=Sendmail exekutagarria $1 ez dago.
-send_efile=Ezin izan da eranskina irakurri $1 : $2 
+send_efile=Ezin izan da eranskina irakurri $1 : $2
 send_done=.. egin.
 
 send_epass=Ezin duzu mezu bat sinatu zure pasahitza oraindik ez dagoelako konfiguratuta GnuPG moduluan.
@@ -337,7 +337,7 @@ folder_spam=Spama
 
 detach_err=Ezin izan da fitxategia desblokeatu
 detach_edir=Ez da sartu edo gordetzeko fitxategirik edo direktoriorik
-detach_eopen=Ezin izan da ireki $1 : $2 
+detach_eopen=Ezin izan da ireki $1 : $2
 detach_ewrite=Ezin izan da $1 idazlean idatzi : $2
 detach_title=Xehetasun fitxategia
 detach_ok=Idatzi eranskina zerbitzariaren alboko fitxategian $1 ($2).

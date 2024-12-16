@@ -107,7 +107,7 @@ edit_none=Nema PAM modula za ovaj korak.
 edit_delete=Izbriši PAM uslugu
 edit_move=Pomicati
 edit_return=PAM usluga
-edit_inc=Uključi uslugu $1 
+edit_inc=Uključi uslugu $1
 edit_iheader=Uključene PAM usluge
 
 pam_pwdb.so=Unix autentifikacija lozinke
@@ -273,17 +273,17 @@ mail_edir=Nedostaje ili nevažeći imenik spool-a za poštu
 
 stack_service=Provjerite prijavu na PAM uslugu
 
-log_pam_create=Napravljena PAM usluga $1 
-log_pam_delete=Izbrisana PAM usluga $1 
-log_mod_create=PAM modul $1 dodan je usluzi $2 
-log_mod_modify=Izmijenjeni PAM modul $1 u servisu $2 
-log_mod_delete=Izbrisan PAM modul $1 u usluzi $2 
-log_mod_move=Zamijenjeni PAM moduli u servisu $3 
-log_mod_move_l=Zamijenjeni PAM moduli $1 i $2 u servisu $3 
-log_inc_create=Dodano je uključeno $1 za uslugu $2 
-log_inc_modify=Izmijenjeno uključuje $1 za uslugu $2 
-log_inc_delete=Izbrisano uključuje $1 za uslugu $2 
-log_incs=Ažurirano uključuje za uslugu $1 
+log_pam_create=Napravljena PAM usluga $1
+log_pam_delete=Izbrisana PAM usluga $1
+log_mod_create=PAM modul $1 dodan je usluzi $2
+log_mod_modify=Izmijenjeni PAM modul $1 u servisu $2
+log_mod_delete=Izbrisan PAM modul $1 u usluzi $2
+log_mod_move=Zamijenjeni PAM moduli u servisu $3
+log_mod_move_l=Zamijenjeni PAM moduli $1 i $2 u servisu $3
+log_inc_create=Dodano je uključeno $1 za uslugu $2
+log_inc_modify=Izmijenjeno uključuje $1 za uslugu $2
+log_inc_delete=Izbrisano uključuje $1 za uslugu $2
+log_incs=Ažurirano uključuje za uslugu $1
 
 inc_edit=Uređivanje usluge uključeno
 inc_create=Stvorite uključenu uslugu

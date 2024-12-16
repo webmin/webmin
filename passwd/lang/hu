@@ -4,7 +4,7 @@ index_return=felhsználó lista
 index_user=A következő felhsználó jelszavának megváltoztatása:
 index_euseradmin=Ez a modul nem használható mert a Felhasználók és Csoportok modul nincs telepítve vagy a rendszer nem támogatja.
 index_toomany=Túl sok felhasználó van a rendszerben ahhoz, hogy listázni lehessen. Adja meg az a felhasználót akinek a jelszavát megkívánja változtatni..
-index_none=Ön nem férhet hozzá a felhasználó jelszavának módosításához. 
+index_none=Ön nem férhet hozzá a felhasználó jelszavának módosításához.
 
 passwd_title=Jelszó megváltoztatása
 passwd_header=Unix jelszó megváltoztatása

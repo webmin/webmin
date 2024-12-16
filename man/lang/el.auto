@@ -44,17 +44,17 @@ search_kde=Τεκμηρίωση του KDE
 search_perl=Μονάδα Perl
 search_help=Βοήθεια Webmin
 search_custom=Προσαρμοσμένη τεκμηρίωση
-search_none=Δεν βρέθηκε καμία τεκμηρίωση που να αντιστοιχεί στο $1 
-search_for=Για το $1 
+search_none=Δεν βρέθηκε καμία τεκμηρίωση που να αντιστοιχεί στο $1
+search_for=Για το $1
 search_google=Αποτέλεσμα αναζήτησης Google
 search_doxfer=Ηλεκτρονική τεκμηρίωση Webmin
 
 howto_title=HOWTO Document
-howto_header=HOWTO αρχείο εγγράφου $1 
+howto_header=HOWTO αρχείο εγγράφου $1
 howto_epath=Μη έγκυρη διαδρομή εγγράφου HOWTO
 
 doc_title=Τεκμηρίωση συσκευασίας
-doc_header=Αρχείο εγγράφου πακέτου $1 
+doc_header=Αρχείο εγγράφου πακέτου $1
 doc_epath=Μη έγκυρη διαδρομή τεκμηρίωσης πακέτου
 
 man_title=Εγχειρίδιο σελίδας
@@ -63,15 +63,15 @@ man_noentry=Η μη αυτόματη σελίδα για το $1 δεν υπάρ
 man_epath=Η χειροκίνητη σελίδα δεν μπορεί να είναι διαδρομή!
 
 kernel_title=Αρχείο πυρήνα
-kernel_header=Αρχείο εγγράφου πυρήνα $1 
+kernel_header=Αρχείο εγγράφου πυρήνα $1
 kernel_epath=Μη έγκυρη διαδρομή εγγράφου πυρήνα
 
 kde_title=Τεκμηρίωση του KDE
-kde_header=Αρχείο εγγράφου του KDE $1 
+kde_header=Αρχείο εγγράφου του KDE $1
 kde_epath=Μη έγκυρη διαδρομή τεκμηρίωσης του KDE
 
 perl_title=Μονάδα Perl
-perl_header=Τεκμηρίωση για τη μονάδα Perl $1 
+perl_header=Τεκμηρίωση για τη μονάδα Perl $1
 perl_emod=Μη έγκυρο όνομα μονάδας Perl
 
 acl_allow=Μπορούν να επεξεργαστούν επιτρεπόμενους τύπους αναζήτησης

@@ -53,7 +53,7 @@ saveuser_ews=A 'Munkaállomás megbízható fiók' opció nem engedélyezhető a
 savefshare_owner=Hiányzó vagy érvénytelen tulajdonos az új könyvtárhoz
 savefshare_group=Hiányzó vagy érvénytelen csoport az új könyvtárhoz
 savefshare_perms=Hiányzó vagy érvénytelen engedélyek az új könyvtárhoz
-savefshare_emkdir=Nem sikerült létrehozni a könyvtárat : $1 
+savefshare_emkdir=Nem sikerült létrehozni a könyvtárat : $1
 
 start_err_wb=A Winbind szerverek indítása nem sikerült
 

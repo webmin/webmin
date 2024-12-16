@@ -14,5 +14,5 @@ acl_user_def=Utent Webmin attwali
 acl_shellenv=Uża l-ambjent tal-utent magħżul?
 acl_chroot=Chroot għad-direttorju
 
-log_run=Ibda kmand $1 
+log_run=Ibda kmand $1
 log_clear=Maħlub l-istorja tal-kmand

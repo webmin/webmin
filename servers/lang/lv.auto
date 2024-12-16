@@ -56,7 +56,7 @@ edit_timeout=Savienojuma noildze
 edit_failed=Neizdevās izveidot savienojumu
 edit_baduser=Pieteikšanās noraidīta
 edit_invalid=Lietotājs nevar veikt RPC
-edit_version=Darbojas Webmin $1 
+edit_version=Darbojas Webmin $1
 edit_same=Pieejams tikai sesijas autentifikācijas režīmā un kad parole ir pieejama Webmin programmām.
 
 save_err=Neizdevās saglabāt serveri
@@ -71,12 +71,12 @@ save_elogin=Nederīga resursdatora pieteikšanās vai parole
 save_egroup2=Nederīgs jauns grupas nosaukums
 
 find_title=Atrodiet serverus
-find_new=Tika atrasts jauns serveris $1 
-find_but=Tika atrasts jauns serveris $1, bet autentificēšana neizdevās : $2 
-find_already=Atrasts zināms serveris $1 
-find_already2=Atrasta zināma servera resursdators $1 
-find_skip=Tiek ignorēts serveris $1 
-find_me=Šo serveri atradu $1 
+find_new=Tika atrasts jauns serveris $1
+find_but=Tika atrasts jauns serveris $1, bet autentificēšana neizdevās : $2
+find_already=Atrasts zināms serveris $1
+find_already2=Atrasta zināma servera resursdators $1
+find_skip=Tiek ignorēts serveris $1
+find_me=Šo serveri atradu $1
 find_escan=Skenējamajam tīklam jābūt C klases tīkla adresei.
 find_eiface=Nevarēju atrast saskarni skenēšanai
 find_none=Neviens serveris neatbildēja uz skenēšanu.
@@ -85,13 +85,13 @@ find_scanning=Skenēšana serveriem tīklā $1.
 find_broading=Apraide serveriem uz adresēm $1.
 find_eport=Trūkst vai nav derīgs porta numurs
 
-log_modify=Pārveidots serveris $1 
-log_create=Reģistrēts serveris $1 
-log_delete=Izdzēsts serveris $1 
-log_find=Atrasts serveris $1 
+log_modify=Pārveidots serveris $1
+log_create=Reģistrēts serveris $1
+log_delete=Izdzēsts serveris $1
+log_find=Atrasts serveris $1
 log_deletes=Izdzēsti $1 serveri
 
-link_elogin=Neizdevās pieteikties $1 kā $2 
+link_elogin=Neizdevās pieteikties $1 kā $2
 link_ecannot=Jums nav atļauts izmantot šo serveri
 link_essl=Jums nav instalēta perl Net::SSLeay bibliotēka
 link_eautologin=Nederīga pieteikšanās vai parole $1. <a href='$2'>Noklikšķiniet šeit</a>, lai mēģinātu vēlreiz.
@@ -133,8 +133,8 @@ auto_sched=Vai jums nav jaunu serveru?
 auto_sched1=Jā, ik pēc $1 minūtēm
 auto_net=IP tīkls skenēšanai
 auto_auto=Vietējais tīkls
-auto_ip=IP tīkli $1 
-auto_iface=Tīkls interfeisā $1 
+auto_ip=IP tīkli $1
+auto_iface=Tīkls interfeisā $1
 auto_user=Lietotājvārds jauniem serveriem
 auto_pass=Jaunu serveru parole
 auto_type=Noklusējuma sistēmas tips

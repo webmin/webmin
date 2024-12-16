@@ -21,11 +21,11 @@ passwd_ecannot=M'għandekx permess tibdel il-password ta 'dan l-utent
 passwd_euser=Utent ma jeżistix
 passwd_eold=Password antika mhux korretta
 passwd_erepeat=Passwords ġodda mhumiex l-istess
-passwd_ecmd=$1 falla : $2 
+passwd_ecmd=$1 falla : $2
 passwd_ok=Il-password għall-utent $1 inbidlet b'suċċess. Jekk dan hu l-utent tal-Webmin attwali tiegħek, tista 'tkun imġiegħel terġa' tidħol.
 passwd_ok2=Il-password għall-utent $1 inbidlet b'suċċess.
 
-log_passwd=Password mibdula għall-utent $1 
+log_passwd=Password mibdula għall-utent $1
 
 acl_repeat=Għandek terġa 'tidħol password ġdida?
 acl_self=Dejjem ħalli l-password proprja tinbidel?

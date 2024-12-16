@@ -1,6 +1,6 @@
 index_title=Analisi dei file di log di Webalizer
-index_version=Versione webalizer $1 
-index_version_webalizer=Versione webalizer $1 
+index_version=Versione webalizer $1
+index_version_webalizer=Versione webalizer $1
 index_version_awffull=awffull
 index_ewebalizer=Il comando di analisi del file di registro $1 non è stato trovato sul tuo sistema. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 index_econf=Il file di configurazione Webalizer $1 non è stato trovato sul tuo sistema. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
@@ -21,8 +21,8 @@ index_return=elenco dei file di registro
 index_global=Modifica opzioni globali
 index_globaldesc=Fare clic su questo pulsante per modificare le opzioni di Webalizer che si applicano ai report generati da tutti i file di registro.
 index_eversion=Il comando Webalizer $1 sul tuo sistema è la versione $2, ma questo modulo supporta solo le versioni $3 e successive.
-index_egetversion=Impossibile ottenere la versione di Webalizer con il comando $1 : $2 
-index_when=Sì, $1 
+index_egetversion=Impossibile ottenere la versione di Webalizer con il comando $1 : $2
+index_when=Sì, $1
 index_webalizer=webalizer
 index_enable=Programma selezionato
 index_disable=De-Schedule selezionato
@@ -63,10 +63,10 @@ save_efile=Il file di registro non è stato inserito o non esiste
 save_ecfile=Altro file di configurazione mancante o inesistente
 save_edir=La directory di report non è stata inserita o non esiste
 save_euser=Utente mancante o non valido per eseguire webalizer come
-save_ewuser=Non esiste alcun utente Unix chiamato $1 
+save_ewuser=Non esiste alcun utente Unix chiamato $1
 save_ehost=Nome host del sito Web mancante o non valido
 save_etitle=Titolo del rapporto mancante
-save_ecannot=Puoi generare rapporti solo per i registri in $1 
+save_ecannot=Puoi generare rapporti solo per i registri in $1
 
 view_epath=PATH_INFO non valido
 view_efile=Nome file del rapporto non valido
@@ -77,7 +77,7 @@ view_title=Visualizza rapporto
 
 global_title=Opzioni Webalizer globali
 global_title2=Opzioni del rapporto Webalizer
-global_for=Per il file di registro $1 
+global_for=Per il file di registro $1
 global_first=Attualmente non sono state impostate opzioni per questo file di registro, il che significa che verranno utilizzate invece le opzioni globali. Quando questo modulo viene salvato, i rapporti generati per questo registro utilizzeranno le impostazioni scelte in questa pagina da ora in poi.
 global_header=Opzioni di Webalizer per tutti i report
 global_host=Nome host del sito Web
@@ -146,14 +146,14 @@ global_ehistory=Nome del file della cronologia mancante o non valido
 global_ecurrent=Nome file incrementale mancante o non valido
 global_ecache=Nome file cache DNS mancante o non valido
 
-log_create_log=Creazione di rapporti per $1 
-log_modify_log=Rapporti modificati per $1 
-log_delete_log=Rapporti eliminati per $1 
-log_generate_log=Rapporto generato per $1 
+log_create_log=Creazione di rapporti per $1
+log_modify_log=Rapporti modificati per $1
+log_delete_log=Rapporti eliminati per $1
+log_generate_log=Rapporto generato per $1
 log_global=Opzioni Webalizer globali modificate
-log_global2=Opzioni di Webalizer modificate per $1 
-log_enable_logs=Rapporti pianificati sui registri $1 
-log_disable_logs=Rapporti non programmati sui registri $1 
+log_global2=Opzioni di Webalizer modificate per $1
+log_enable_logs=Rapporti pianificati sui registri $1
+log_disable_logs=Rapporti non programmati sui registri $1
 
 acl_view=Puoi visualizzare solo i rapporti esistenti?
 acl_global=Puoi modificare le opzioni globali del webalizer?

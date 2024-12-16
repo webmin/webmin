@@ -9,7 +9,7 @@ index_stopdesc=Klik butang ini untuk menghentikan daemon Syslog-NG yang sedang b
 index_start=Mulakan Syslog-NG
 index_startdesc=Klik butang ini untuk memulakan daemon Syslog-NG, menggunakan konfigurasi semasa.
 index_return=indeks modul
-index_version=Syslog-NG $1 
+index_version=Syslog-NG $1
 
 options_title=Pilihan Pembalakan
 options_header=Pilihan untuk semua fail log
@@ -71,15 +71,15 @@ destinations_typet=Pelayan syslog TCP
 destinations_typeg=Soket Datagram
 destinations_types=Soket aliran
 destinations_allusers=Semua pengguna
-destinations_users=Hanya pengguna $1 
-destinations_host=Hos $1 
+destinations_users=Hanya pengguna $1
+destinations_host=Hos $1
 destinations_view=Lihat ..
 destinations_none=Tiada fail log destinasi yang ditakrifkan lagi.
 destinations_delete=Padamkan Destinasi Terpilih
 destinations_add=Tambah destinasi log baru.
 destinations_return=destinasi log
 destinations_desc=Log modul lain
-destinations_cmd=Output dari $1 
+destinations_cmd=Output dari $1
 
 destination_header=Pilihan destinasi log
 destination_title1=Buat Destinasi Log
@@ -257,26 +257,26 @@ source_edoor=Nama fail pintu aliran matahari yang hilang atau tidak sah
 source_transport=Protokol rangkaian
 
 view_title=Lihat Logfile
-view_header=$1 baris terakhir $2 
+view_header=$1 baris terakhir $2
 view_empty=Fail log kosong
 view_refresh=Refresh
-view_filter=Hanya tunjukkan baris dengan teks $1 
+view_filter=Hanya tunjukkan baris dengan teks $1
 
 start_err=Gagal memulakan pelayan Syslog-NG
 
 stop_err=Gagal menghentikan pelayan Syslog-NG
 
-log_create_destination=Destinasi log yang dibuat $1 
-log_modify_destination=Destinasi log diubahsuai $1 
-log_delete_destination=Destinasi log yang dipadam $1 
+log_create_destination=Destinasi log yang dibuat $1
+log_modify_destination=Destinasi log diubahsuai $1
+log_delete_destination=Destinasi log yang dipadam $1
 log_delete_destinations=Destinasi $1 log dipadam
-log_create_filter=Penapis log yang dibuat $1 
-log_modify_filter=Penapis log yang diubah suai $1 
-log_delete_filter=Penapis log dipadamkan $1 
+log_create_filter=Penapis log yang dibuat $1
+log_modify_filter=Penapis log yang diubah suai $1
+log_delete_filter=Penapis log dipadamkan $1
 log_delete_filters=Penapis $1 penapis dipadam
-log_create_source=Sumber log yang dibuat $1 
-log_modify_source=Sumber log diubah suai $1 
-log_delete_source=Sumber log dipadam $1 
+log_create_source=Sumber log yang dibuat $1
+log_modify_source=Sumber log diubah suai $1
+log_delete_source=Sumber log dipadam $1
 log_delete_sources=Diperolehi $1 sumber log
 log_create_log=Sasaran log yang dibuat
 log_modify_log=Sasaran log diubah suai

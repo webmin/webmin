@@ -95,10 +95,10 @@ save_eidle=Hiányzó vagy érvénytelen tétlen időtúllépés
 save_einherits=Ezt a tárcsázót nem lehet törölni, mert a '$1' örökli a beállításokat tőle.
 save_eclash=Az azonos nevű tárcsázó már létezik
 
-log_create=Létrehozva: $1 
-log_update=Frissítve: $1 
-log_delete=Törölve: $1 
+log_create=Létrehozva: $1
+log_update=Frissítve: $1
+log_delete=Törölve: $1
 log_init=Inicializált vagy frissített konfiguráció
-log_connect=Összekötve a következővel: $1 
-log_fail=Nem sikerült csatlakozni a következőhöz: $1 
+log_connect=Összekötve a következővel: $1
+log_fail=Nem sikerült csatlakozni a következőhöz: $1
 log_disconnect=Leválasztva a (z) $1 -től

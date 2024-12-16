@@ -69,7 +69,7 @@ deletes_enone=Mitään ei ole valittu
 
 log_allow=Muutettu sallittuja käyttäjiä
 log_create_job=Luotu komento $1 : lle
-log_delete_job=Peruutettu ajoitettu komento kohteelle $1 
+log_delete_job=Peruutettu ajoitettu komento kohteelle $1
 log_exec_job=Suoritettu ajoitettu komento $1 : lle
 log_delete_jobs=Peruutettiin $1 ajoitetut komennot
 log_stop=Ajastettujen komentojen palvelin pysäytetty

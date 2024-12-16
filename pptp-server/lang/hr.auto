@@ -1,5 +1,5 @@
 index_title=PPTP VPN poslužitelj
-index_version=Verzija PoPToP $1 
+index_version=Verzija PoPToP $1
 index_epptpd=PoPToP PPTP poslužitelj $1 nije pronađen u vašem sustavu ili nije pravi program. Možda nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
 index_econfig=Konfiguracijska datoteka PPTP poslužitelja $1 nije pronađena u vašem sustavu. Možda je vaša konfiguracija <a href='$2'>modula</a> netočna.
 index_stop=Zaustavite PPTP poslužitelj
@@ -63,7 +63,7 @@ options_err=Spremanje opcija PPP-a nije uspjelo
 options_emtu=Nedostaje ili neispravna maksimalna veličina paketa za slanje
 options_emru=Nedostaje ili neispravna maksimalna veličina prijemnog paketa
 options_ename=Nedostaje ili nevažeće ime poslužitelja za provjeru autentičnosti
-options_version=PPPd verzija $1 
+options_version=PPPd verzija $1
 options_msdesc=Dolje opcije omogućuju MS-CHAP metodu provjere autentičnosti i MPPE enkripciju, koju Windows VPN klijenti zadani koriste prema zadanim postavkama. Međutim, MPPE zahtijeva podršku i u PPP-ovom demonu i u jezgri operacijskog sustava.
 options_mschap=MS-CHAP provjera autentičnosti
 options_mschap-v2=MS-CHAP verzija 2 autentifikacija
@@ -75,7 +75,7 @@ secrets_ecannot=Nije vam dopušteno uređivanje PPP računa
 secrets_return=indeks
 secrets_none=Još nije stvoren PPP račun.
 secrets_enopfile=Datoteka PPP lozinke $1 ne postoji u vašem sustavu. Možda PPP nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
-secrets_table=PPP čini $1 
+secrets_table=PPP čini $1
 secrets_user=Korisničko ime
 secrets_ips=IP adrese
 secrets_uany=BILO
@@ -133,13 +133,13 @@ disc_err=Prekid veze nije uspio
 disc_egone=Veze više nisu aktivne
 disc_ekill=Proces se više ne pokreće
 
-log_secret_create=Izrađen PPP račun $1 
-log_secret_modify=Izmijenjen PPP račun $1 
-log_secret_delete=Izbrisan PPP račun $1 
+log_secret_create=Izrađen PPP račun $1
+log_secret_modify=Izmijenjen PPP račun $1
+log_secret_delete=Izbrisan PPP račun $1
 log_deletes=Izbrisani $1 PPP računi
 log_conf=Izmijenjene opcije PPTP poslužitelja
 log_options=Izmijenjene opcije PPP-a
-log_disc=Prekinuta klijent $1 
+log_disc=Prekinuta klijent $1
 log_start=Pokrenut PPTP poslužitelj
 log_stop=Zaustavljen PPTP poslužitelj
 log_apply=Primijenjena konfiguracija PPTP poslužitelja

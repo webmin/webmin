@@ -14,5 +14,5 @@ acl_user_def=Uneko Webmin erabiltzailea
 acl_shellenv=Erabili hautatutako erabiltzailearen ingurunea?
 acl_chroot=Koadernatu direktoriora
 
-log_run=Rango komandoa $1 
+log_run=Rango komandoa $1
 log_clear=Komandoen historia garbitu

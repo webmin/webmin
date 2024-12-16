@@ -55,7 +55,7 @@ error_file=Tập tin
 error_line=Hàng
 error_sub=Chức năng
 error_stackline=Trong tệp $1 tại dòng $2 gọi $3
-efilewrite=Không thể ghi vào $1 : $2 
+efilewrite=Không thể ghi vào $1 : $2
 efileclose=Không thể ghi vào $1 khi đóng : $2
 efileopen=Không thể mở $1 để viết : $2
 default=Mặc định
@@ -354,7 +354,7 @@ sql_epostgresqlconnect=Không thể kết nối với cơ sở dữ liệu Postg
 sql_eldapdriver=Không thể tải mô-đun LDAP perl
 sql_eldapconnect=Không thể kết nối với máy chủ LDAP $1
 sql_eldaptls=Không thể bắt đầu mã hóa TLS cho LDAP : $1
-sql_eldaplogin=Không thể đăng nhập vào máy chủ LDAP dưới dạng $1 : $2 
+sql_eldaplogin=Không thể đăng nhập vào máy chủ LDAP dưới dạng $1 : $2
 
 log_email_subject=Hành động trên webmin trong $1
 log_email_global=Webmin hành động toàn cầu
@@ -387,9 +387,9 @@ paginator_nosearchrs=Không có kết quả phù hợp với truy vấn <tt>$1</
 
 langauto_include=Bao gồm dịch máy
 
-file_truncated_message=đã tìm nạp $1 dữ liệu, bị cắt bớt $2 / $3 
-file_truncated_message_head=đã tìm nạp bắt đầu $1 dữ liệu, bị cắt bớt $2 / $3 
-file_truncated_message_tail=đã tìm nạp kết thúc $1 của dữ liệu, bị cắt bớt $2 / $3 
+file_truncated_message=đã tìm nạp $1 dữ liệu, bị cắt bớt $2 / $3
+file_truncated_message_head=đã tìm nạp bắt đầu $1 dữ liệu, bị cắt bớt $2 / $3
+file_truncated_message_tail=đã tìm nạp kết thúc $1 của dữ liệu, bị cắt bớt $2 / $3
 
 defcert_error=Chứng chỉ SSL đi kèm $1 mặc định đang được sử dụng. Bạn nên cập nhật chứng chỉ <tt>$2</tt> mặc định trước khi tiếp tục đăng nhập.
 

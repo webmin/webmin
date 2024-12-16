@@ -149,7 +149,7 @@ acl_who0=All users
 acl_who1=Current Webmin user
 acl_who2=Listed users ..
 
-kill_kill=プロセスを Kill 
+kill_kill=プロセスを Kill
 kill_term=終了   
 kill_hup=再度開始    
 kill_stop=停止     

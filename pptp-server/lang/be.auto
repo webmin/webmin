@@ -1,5 +1,5 @@
 index_title=PPTP Server VPN
-index_version=Версія PoPToP $1 
+index_version=Версія PoPToP $1
 index_epptpd=Сервер PoPToP PPTP $1 не знойдзены ў вашай сістэме альбо не з'яўляецца патрэбнай праграмай. Магчыма, ён не ўсталяваны, альбо ваша канфігурацыя модуля <a href='$2'></a> няправільная.
 index_econfig=Файл канфігурацыі сервера PPTP $1 не знойдзены ў вашай сістэме. Магчыма, ваша <a href='$2'>канфігурацыя модуля</a> няправільная.
 index_stop=Спыніць сервер PPTP
@@ -63,7 +63,7 @@ options_err=Не атрымалася захаваць параметры PPP
 options_emtu=Адсутнічае альбо недапушчальны максімальны памер адпраўкі пакета
 options_emru=Максімальны памер прыёму пакета адсутнічае альбо недапушчальны
 options_ename=Адсутнічае альбо недапушчальнае імя сервера для праверкі сапраўднасці
-options_version=Версія PPPd $1 
+options_version=Версія PPPd $1
 options_msdesc=Прыведзеныя ніжэй параметры дазваляюць выкарыстоўваць спосаб аўтэнтыфікацыі MS-CHAP і шыфраванне MPPE, які па змаўчанні выкарыстоўваецца кліентамі Windows VPN. Аднак MPPE патрабуе падтрымкі як у дэман-PPP, так і ў ядры аперацыйнай сістэмы.
 options_mschap=Аўтэнтыфікацыя MS-CHAP
 options_mschap-v2=Аўтэнтыфікацыя MS-CHAP версіі 2
@@ -75,7 +75,7 @@ secrets_ecannot=Вам не дазволена рэдагаваць уліков
 secrets_return=паказальнік
 secrets_none=Уліковых запісаў ПЧП яшчэ не створаны.
 secrets_enopfile=Файл пароляў PPP $1 не існуе ў вашай сістэме. Магчыма, PPP не ўсталяваны альбо ваша канфігурацыя модуля <a href='$2'></a> няправільная.
-secrets_table=ППС складае $1 
+secrets_table=ППС складае $1
 secrets_user=Імя карыстальніка
 secrets_ips=IP-адрасы
 secrets_uany=БУДЗЕ
@@ -133,13 +133,13 @@ disc_err=Адключэнне не атрымалася
 disc_egone=Злучэнні больш не актыўныя
 disc_ekill=Працэс больш не працуе
 
-log_secret_create=Створаны рахунак PPP $1 
-log_secret_modify=Зменены рахунак ППС $1 
-log_secret_delete=Выдалены рахунак PPP $1 
+log_secret_create=Створаны рахунак PPP $1
+log_secret_modify=Зменены рахунак ППС $1
+log_secret_delete=Выдалены рахунак PPP $1
 log_deletes=Выдалены $1 ППС-рахункі
 log_conf=Зменены параметры сервера PPTP
 log_options=Зменены варыянты ПЧП
-log_disc=Адключаны кліент $1 
+log_disc=Адключаны кліент $1
 log_start=Запушчаны сервер PPTP
 log_stop=Спынены сервер PPTP
 log_apply=Прымяняецца налада сервера PPTP

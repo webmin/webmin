@@ -7,5 +7,5 @@ domain=ชื่อโดเมน
 nobody_user=ไม่มีผู้ใช้
 nobody_group=ไม่มีใครในกลุ่ม
 save=บันทึก config และ restart daemon
-save_err=ไม่สามารถบันทึกไฟล์กำหนดค่า $1 
+save_err=ไม่สามารถบันทึกไฟล์กำหนดค่า $1
 error_dir=ไดเรกทอรี $1 ไม่มีอยู่

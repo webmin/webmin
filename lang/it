@@ -5,7 +5,7 @@ main_logout=Esci
 main_version=Versione $1 su $2 ($3)
 main_title=Webmin $1 su $2 ($3)
 main_title2=Webmin
-main_title3=Webmin $1 ($2) 
+main_title3=Webmin $1 ($2)
 main_none=Non hai accesso a nessun modulo Webmin
 main_skill=Livello abilità
 main_readonly=(Modalità sola lettura)
@@ -137,7 +137,7 @@ session_twofactor=Token a due fattori
 session_login=Accedi
 session_clear=Pulisci
 session_failed=Errore durante l'accesso. Reinserire dati.
-session_twofailed=Autenticazione a due fattori fallita : $1 
+session_twofailed=Autenticazione a due fattori fallita : $1
 session_logout=Uscita eseguita. Per accedere di nuovo usa questo modulo.
 session_timed_out=La sessione è scaduta dopo $1 minuti di inattività
 session_save=Ricordare l'accesso permanentemente?
@@ -378,6 +378,6 @@ nice_size_b=byte
 
 langauto_include=Includi traduzioni automatiche
 
-file_truncated_message=recuperati $1 di dati, troncati $2 su $3 
-file_truncated_message_head=recuperati $1 dati iniziali, troncati $2 su $3 
-file_truncated_message_tail=recuperati $1 dati finali, $2 troncati su $3 
+file_truncated_message=recuperati $1 di dati, troncati $2 su $3
+file_truncated_message_head=recuperati $1 dati iniziali, troncati $2 su $3
+file_truncated_message_tail=recuperati $1 dati finali, $2 troncati su $3

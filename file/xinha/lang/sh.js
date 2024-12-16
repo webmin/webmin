@@ -63,7 +63,7 @@
         "Normal": "Običan",
         "Address": "Adresa",
         "Formatted": "Formatiran",
-        
+
         // dialogs
 		"OK": "OK",
 		"Cancel": "Poništi",
@@ -92,7 +92,7 @@
         "Vertical padding": "Vertikalno odstojanje",
         "Border thickness:": "Debljina okvira",
         "Leave empty for no border": "Ostavi prazno kad nema okvira",
-		
+
         // Insert Link
 		"Insert/Modify Link": "Dodaj/promeni Link",
 		"None (use implicit)": "koristi podrazumevano",
@@ -104,7 +104,7 @@
 		"Title (tooltip):": "Naziv (tooltip):",
 		"URL:": "URL:",
 		"You must enter the URL where this link points to": "Morate uneti URL na koji vodi ovaj link",
-		
+
         // Insert Table
         "Insert Table": "Ubaci tabelu",
         "Rows:": "Redovi",
@@ -134,7 +134,7 @@
         "For browsers that don't support images": "Za pretraživače koji ne podržavaju slike",
         "Positioning of this image": "Postavljanje ove slike",
         "Image Preview:": "Pregled slike",
-        
+
         // Select Color popup
 		"Select Color": "Izaberite boju"
 };

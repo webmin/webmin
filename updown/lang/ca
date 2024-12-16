@@ -104,7 +104,7 @@ acl_unlim=Il·limitada
 acl_b=bytes
 acl_fetch=Pot descarregar fitxers al PC
 
-fetch_err=No s'ha pogut descarregar el fitxer 
+fetch_err=No s'ha pogut descarregar el fitxer
 fetch_ecannot=No tens permís per descarregar fitxers a un PC
 fetch_efile=No has introduït cap nom de fitxer
 fetch_eexists2=El fitxer o directori no existeix

@@ -62,8 +62,8 @@
         "Heading 6": "Заглавље 6",
         "Normal": "обичан",
         "Address": "адреса",
-        "Formatted": "форматиран",		
-		
+        "Formatted": "форматиран",
+
         // dialogs
 		"OK": "OK",
 		"Cancel": "Поништи",
@@ -71,7 +71,7 @@
 		"You are in TEXT MODE.  Use the [<>] button to switch back to WYSIWYG.":    "Налазите се у ТЕКСТ режиму.  Користите [<>] дугме за повратак на ШВТИД (WYSIWYG).",
 
 		"The Paste button does not work in Mozilla based web browsers (technical security reasons). Press CTRL-V on your keyboard to paste directly.": "Дугме 'залепи' не ради у претраживачима породице Mozilla (из разлога сигурности). Притисните CTRL-V на тастатури да директно залепите.",
-		
+
         "Alignment:": "Равнање",
         "Not set": "Није постављено",
         "Left": "Лево",

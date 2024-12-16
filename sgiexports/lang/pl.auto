@@ -33,7 +33,7 @@ save_erw=Nie wprowadzono hostów do odczytu i zapisu
 save_eroot=Nie wprowadzono hostów dostępu do plików root
 save_eaccess=Nie wprowadzono hostów dostępu do montowania
 
-log_create_export=Utworzono eksport $1 
-log_delete_export=Usunięto eksport $1 
-log_modify_export=Zmodyfikowano eksport $1 
+log_create_export=Utworzono eksport $1
+log_delete_export=Usunięto eksport $1
+log_modify_export=Zmodyfikowano eksport $1
 log_apply=Zastosowana konfiguracja

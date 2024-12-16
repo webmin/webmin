@@ -8,7 +8,7 @@ index_delete=Slet valgte eksport
 index_apply=Anvend ændringer
 index_applydesc=Klik på denne knap for at anvende den aktuelle konfiguration af fileksport. Dette gør alle de mapper, der er anført ovenfor, tilgængelige med de specificerede indstillinger.
 index_return=eksportliste
-index_echeck=NFS-serveren kan ikke bruges på dette system : $1 
+index_echeck=NFS-serveren kan ikke bruges på dette system : $1
 
 check_ecmd=NFS-serverkommando $1 er ikke installeret
 

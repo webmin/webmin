@@ -19,8 +19,8 @@ index_all=Alle pakker
 index_return=modul indeks
 index_treturn=pakke træ
 index_tree2=Gennemse pakketræet
-index_epackagecmd=Pakkesystemet $1 kræver kommandoen $2 
-index_eupdatecmd=Opdateringssystemet $1 kræver kommandoen $2 
+index_epackagecmd=Pakkesystemet $1 kræver kommandoen $2
+index_eupdatecmd=Opdateringssystemet $1 kræver kommandoen $2
 index_epackagecheck=Det valgte pakkehåndteringssystem er ikke gyldigt: $1. <br>Du skal muligvis vælge et andet system på siden<a href='$2'> modulkonfiguration </a>.
 index_eupdatecheck=Det valgte opdateringssystem er ikke gyldigt: $1. <br>Du skal muligvis vælge en anden opdateringsmetode på siden<a href='$2'> modulkonfiguration </a>.
 index_echeckpackage=Der blev ikke fundet noget pakkesystem!
@@ -30,12 +30,12 @@ index_filterclear=Ryd filter
 index_filtered=Viser <tt>$1</tt> pakker ud af <tt>$2</tt>
 
 search_title=Pakkesøgning
-search_nomatch=Ingen pakker matchede $1 
+search_nomatch=Ingen pakker matchede $1
 search_none=Ingen
 search_desc=Beskrivelse
 search_class=klasse
 search_pack=Pakke
-search_match=Pakker, der matcher $1 
+search_match=Pakker, der matcher $1
 search_return=Søgeresultater
 search_esearch=Du har ikke indtastet noget for at søge efter!
 search_delete=Afinstaller valgte pakker
@@ -68,7 +68,7 @@ edit_return=pakkeoplysninger
 edit_egone=Pakken er ikke længere installeret
 
 list_title=Pakkefiler
-list_files=Filer til pakke $1 
+list_files=Filer til pakke $1
 list_path=Sti
 list_owner=Ejer
 list_group=Gruppe
@@ -77,9 +77,9 @@ list_size=Størrelse
 list_status=status
 list_ok=Okay
 list_view=(Udsigt)
-list_eview=Kunne ikke åbne $1 : $2 
+list_eview=Kunne ikke åbne $1 : $2
 
-delete_err=Kunne ikke slette pakke $1 
+delete_err=Kunne ikke slette pakke $1
 delete_epack=Pakken $1 findes ikke
 delete_title=Slet pakke
 delete_rusure=Er du sikker på, at du vil slette pakken $1 ? Op til $2 filer ($3) vil blive slettet for evigt.
@@ -119,9 +119,9 @@ install_header=Installer pakken
 install_packs=Pakke (r), der skal installeres
 install_ok=Installere
 
-do_err=Kunne ikke installere pakke $1 
+do_err=Kunne ikke installere pakke $1
 do_title=Installer pakken
-do_efailed=Installationen mislykkedes : $1 
+do_efailed=Installationen mislykkedes : $1
 do_efailedmsg1=Du kan prøve at installere igen ved at gå tilbage til den forrige side og vælge forskellige installationsindstillinger.
 do_efailedmsg2=Ellers <a href='$1'>klik her for at slette den midlertidige pakkefil</a> for at spare diskplads.
 do_success=Pakke $1 blev installeret med succes
@@ -170,7 +170,7 @@ slack_missing=Mangler
 slack_root=Rodkatalog
 slack_eroot=Manglende eller ugyldig rodkatalog
 slack_manager=Slackware Package Manager
-slack_edir=Manglende mappe med Slackware-pakker $1 
+slack_edir=Manglende mappe med Slackware-pakker $1
 
 debian_unknown=Ukendt
 debian_depends=Ignorerer afhængighedsproblemer?
@@ -179,7 +179,7 @@ debian_overwrite=Overskrive filer fra andre pakker?
 debian_downgrade=Erstat nyere pakke med gammel?
 debian_manager=Debian
 
-log_install_package=Installeret pakke $1 
+log_install_package=Installeret pakke $1
 log_install_apt_l=Installeret pakke (r) $1 fra APT
 log_install_apt=Installeret $2 pakke (r) fra APT
 log_install_yum_l=Installeret pakke (r) $1 fra YUM
@@ -188,8 +188,8 @@ log_install_rhn_l=Installeret pakke (r) $1 fra Redhat Network
 log_install_rhn=Installeret $2 -pakke (r) fra Redhat Network
 log_check_apt_l=Opgraderet pakke (r) $1 fra APT
 log_check_apt=Opgraderet $2 -pakke (r) fra APT
-log_delete=Afinstalleret pakke $1 
-log_deletes_l=Afinstallerede pakker $1 
+log_delete=Afinstalleret pakke $1
+log_deletes_l=Afinstallerede pakker $1
 log_deletes=Afinstalleret $1 pakker
 log_urpmi_update=Opdaterede tilgængelige URPMI-pakker
 log_urpmi_upgrade=Opgraderede installerede URPMI-pakker
@@ -312,7 +312,7 @@ rpm_dev=apparat
 rpm_user=bruger ejerskab
 rpm_perm=tilladelser
 rpm_group=koncernsejerskab
-rpm_erpm=RPM $1 ikke fundet : $2 
+rpm_erpm=RPM $1 ikke fundet : $2
 
 soft_reg=Regelmæssig fil
 soft_dir=Vejviser
@@ -322,9 +322,9 @@ soft_hard=Hårdt link
 soft_edit=Redigerbar fil
 soft_efunc=Kunne ikke indlæse funktioner til pakkesystemet $1.
 soft_euncompress=Filen er komprimeret, men kommandoen <tt>uncompress</tt> blev ikke fundet på dit system.
-soft_euncmsg=Kunne ikke fjerne komprimering af fil : $1 
+soft_euncmsg=Kunne ikke fjerne komprimering af fil : $1
 soft_egzip=Filen gzippes, men gzip-kommandoen blev ikke fundet på dit system.
-soft_egzmsg=Kunne ikke skrue filen : $1 
+soft_egzmsg=Kunne ikke skrue filen : $1
 
 aix_unknown=Ukendt
 aix_device=INPUT enhed / bibliotek til software
@@ -362,21 +362,21 @@ emerge_name=Portage
 
 cygwin_fmissing=Filen mangler
 cygwin_lmissing=Filen, som linket peger på, mangler
-cygwin_estat=Kunne ikke stat-filen: $1 
-cygwin_elread=Kunne ikke læse symlink: $1 
-cygwin_elstat=Kunne ikke stat symlink: $1 
+cygwin_estat=Kunne ikke stat-filen: $1
+cygwin_elread=Kunne ikke læse symlink: $1
+cygwin_elstat=Kunne ikke stat symlink: $1
 cygwin_badpostscript=Advarsel: dette script ser ikke ud til at være kørt
 cygwin_pkgexists=Pakke $1 findes allerede.
 cygwin_warnuse=Advarsel: Dette er ikke en officiel grænseflade til styring af Cygwin-software. Brug på din egen risiko.
-cygwin_edb=Manglende Cygwin-pakkedatabase $1 
+cygwin_edb=Manglende Cygwin-pakkedatabase $1
 
 deletes_err=Kunne ikke slette pakker
 deletes_enone=Ingen pakker valgt
 deletes_title=Slet pakker
 deletes_desc=Afinstallation af pakker $1 ..
-deletes_failed1=Kunne ikke afinstallere $1 : $2 
-deletes_success1=Afinstalleret $1 
-deletes_failed2=Afinstallation mislykkedes : $1 
+deletes_failed1=Kunne ikke afinstallere $1 : $2
+deletes_success1=Afinstalleret $1
+deletes_failed2=Afinstallation mislykkedes : $1
 deletes_success2=.. afinstallation afsluttet.
 deletes_rusure=Er du sikker på, at du vil afinstallere pakkerne $1 ?
 deletes_ok=Slet dem alle

@@ -19,8 +19,8 @@ index_all=Visi paketai
 index_return=modulio rodyklė
 index_treturn=pakuotės medis
 index_tree2=Naršyti paketų medį
-index_epackagecmd=$1 paketo sistemai reikalinga komanda $2 
-index_eupdatecmd=$1 atnaujinimo sistemai reikalinga komanda $2 
+index_epackagecmd=$1 paketo sistemai reikalinga komanda $2
+index_eupdatecmd=$1 atnaujinimo sistemai reikalinga komanda $2
 index_epackagecheck=Pasirinkta paketo tvarkymo sistema netinkama: $1. <br>Jums gali reikėti pasirinkti kitą sistemą<a href='$2'> modulio konfigūracijos </a> puslapyje.
 index_eupdatecheck=Pasirinkta atnaujinimo sistema negalioja: $1. <br>Jums gali reikėti pasirinkti kitą atnaujinimo metodą<a href='$2'> modulio konfigūracijos </a> puslapyje.
 index_echeckpackage=Nepavyko aptikti jokios pakuotės sistemos!
@@ -30,12 +30,12 @@ index_filterclear=Išvalyti filtrą
 index_filtered=Rodomi <tt>$1</tt> paketai iš <tt>$2</tt>
 
 search_title=Pakuotės paieška
-search_nomatch=Nei vienas paketas neatitiko $1 
+search_nomatch=Nei vienas paketas neatitiko $1
 search_none=Nė vienas
 search_desc=apibūdinimas
 search_class=Klasė
 search_pack=Pakuotė
-search_match=Paketai, atitinkantys $1 
+search_match=Paketai, atitinkantys $1
 search_return=Paieškos rezultatai
 search_esearch=Jūs nieko neįvedėte ieškoti!
 search_delete=Pašalinkite pasirinktus paketus
@@ -77,9 +77,9 @@ list_size=Dydis
 list_status=Statusas
 list_ok=Gerai
 list_view=(Žiūrėti)
-list_eview=Nepavyko atidaryti $1 : $2 
+list_eview=Nepavyko atidaryti $1 : $2
 
-delete_err=Nepavyko ištrinti paketo $1 
+delete_err=Nepavyko ištrinti paketo $1
 delete_epack=Paketas $1 neegzistuoja
 delete_title=Ištrinti paketą
 delete_rusure=Ar tikrai norite ištrinti paketą $1 ? Iki $2 failų ($3) bus ištrinti visam laikui.
@@ -119,9 +119,9 @@ install_header=Įdiekite paketą
 install_packs=Diegiamas paketas (-ai)
 install_ok=Diegti
 
-do_err=Nepavyko įdiegti paketo $1 
+do_err=Nepavyko įdiegti paketo $1
 do_title=Įdiekite paketą
-do_efailed=Įdiegti nepavyko : $1 
+do_efailed=Įdiegti nepavyko : $1
 do_efailedmsg1=Galite pabandyti įdiegti dar kartą, grįždami į ankstesnį puslapį ir pasirinkę skirtingas diegimo parinktis.
 do_efailedmsg2=Kitu atveju <a href='$1'>spustelėkite čia, norėdami ištrinti laikiną paketo failą</a>, kad sutaupytumėte vietos diske.
 do_success=$1 paketas buvo sėkmingai įdiegtas
@@ -170,7 +170,7 @@ slack_missing=Dingęs
 slack_root=Šaknies katalogas
 slack_eroot=Trūksta arba netinkamas šakninis katalogas
 slack_manager=„Slackware“ paketo tvarkyklė
-slack_edir=Trūksta „Slackware“ paketų katalogo $1 
+slack_edir=Trūksta „Slackware“ paketų katalogo $1
 
 debian_unknown=Nežinoma
 debian_depends=Ignoruoti priklausomybės problemas?
@@ -179,7 +179,7 @@ debian_overwrite=Parašyti failus iš kitų paketų?
 debian_downgrade=Pakeisti naujesnį paketą į seną?
 debian_manager=Debian
 
-log_install_package=Įdiegta pakuotė $1 
+log_install_package=Įdiegta pakuotė $1
 log_install_apt_l=Įdiegtas paketas (-ai) $1 iš APT
 log_install_apt=Įdiegtas $2 paketas (-ai) iš APT
 log_install_yum_l=Įdiegtas paketas (-ai) $1 iš YUM
@@ -188,14 +188,14 @@ log_install_rhn_l=Įdiegtas paketas (-ai) $1 iš „Redhat Network“
 log_install_rhn=Įdiegtas $2 paketas (-ai) iš „Redhat Network“
 log_check_apt_l=Patobulintas paketas (-ai) $1 iš APT
 log_check_apt=Naujovintas $2 paketas (-ai) iš APT
-log_delete=Neįdiegtas paketas $1 
-log_deletes_l=Neįdiegti paketai $1 
+log_delete=Neįdiegtas paketas $1
+log_deletes_l=Neįdiegti paketai $1
 log_deletes=Neįdiegti $1 paketai
 log_urpmi_update=Atnaujinti galimi URPMI paketai
 log_urpmi_upgrade=Atnaujinti įdiegti URPMI paketai
-log_upgrade_yum_l=„YUM“ atnaujintas paketas (-ai) $1 
+log_upgrade_yum_l=„YUM“ atnaujintas paketas (-ai) $1
 log_upgrade_yum=„YUM“ atnaujintas $2 paketas (-ai)
-log_check_rhn_l=„Redhat Network“ atnaujintas paketas (-ai) $1 
+log_check_rhn_l=„Redhat Network“ atnaujintas paketas (-ai) $1
 log_check_rhn=Naujovintas $2 paketas (-ai) iš „Redhat Network“
 
 rhn_input=Paketas iš „Redhat Network“
@@ -303,7 +303,7 @@ urpmi_ok=.. įdiegimas baigtas
 urpmi_failed=.. įdiegti nepavyko!
 
 rpm_missing=Dingęs
-rpm_checkfail=Nepavyko patikrinti $1 
+rpm_checkfail=Nepavyko patikrinti $1
 rpm_md5=MD5
 rpm_fsize=failo dydis
 rpm_sym=saitas
@@ -312,7 +312,7 @@ rpm_dev=prietaisas
 rpm_user=vartotojo nuosavybė
 rpm_perm=leidimus
 rpm_group=grupės nuosavybė
-rpm_erpm=RPM $1 nerastas : $2 
+rpm_erpm=RPM $1 nerastas : $2
 
 soft_reg=Įprasta byla
 soft_dir=Katalogas
@@ -322,9 +322,9 @@ soft_hard=Kieta nuoroda
 soft_edit=Redaguojamas failas
 soft_efunc=Nepavyko įkelti $1 paketo sistemos funkcijų.
 soft_euncompress=Failas yra suglaudintas, tačiau komanda <tt>uncompress</tt> jūsų sistemoje nerasta.
-soft_euncmsg=Nepavyko išspausti failo : $1 
+soft_euncmsg=Nepavyko išspausti failo : $1
 soft_egzip=Failas yra suglaudintas, tačiau jūsų sistemoje nerasta komandos gzip.
-soft_egzmsg=Nepavyko surinkti failo : $1 
+soft_egzmsg=Nepavyko surinkti failo : $1
 
 aix_unknown=Nežinoma
 aix_device=Įvesties įrenginys / programinės įrangos katalogas
@@ -362,21 +362,21 @@ emerge_name=„Portage“
 
 cygwin_fmissing=Trūksta failo
 cygwin_lmissing=Trūksta failo, į kurį būtų nukreipta
-cygwin_estat=Nepavyko įregistruoti failo: $1 
-cygwin_elread=Nepavyko nuskaityti nuorodos: $1 
-cygwin_elstat=Nepavyko sukonfigūruoti nuorodos: $1 
+cygwin_estat=Nepavyko įregistruoti failo: $1
+cygwin_elread=Nepavyko nuskaityti nuorodos: $1
+cygwin_elstat=Nepavyko sukonfigūruoti nuorodos: $1
 cygwin_badpostscript=Įspėjimas: neatrodo, kad šis scenarijus buvo paleistas
 cygwin_pkgexists=Paketas $1 jau yra.
 cygwin_warnuse=Įspėjimas: Tai nėra oficiali „Cygwin“ programinės įrangos valdymo sąsaja. Naudokite savo rizika.
-cygwin_edb=Trūksta „Cygwin“ paketų duomenų bazės $1 
+cygwin_edb=Trūksta „Cygwin“ paketų duomenų bazės $1
 
 deletes_err=Nepavyko ištrinti paketų
 deletes_enone=Nepasirinktas paketas
 deletes_title=Ištrinti paketus
 deletes_desc=Pašalinami paketai $1.
-deletes_failed1=Nepavyko pašalinti $1 : $2 
-deletes_success1=Sėkmingai pašalinta $1 
-deletes_failed2=Nepavyko pašalinti : $1 
+deletes_failed1=Nepavyko pašalinti $1 : $2
+deletes_success1=Sėkmingai pašalinta $1
+deletes_failed2=Nepavyko pašalinti : $1
 deletes_success2=.. pašalinimas baigtas.
 deletes_rusure=Ar tikrai norite pašalinti paketus $1 ?
 deletes_ok=Ištrinkite juos visus

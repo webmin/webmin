@@ -1,5 +1,5 @@
 index_title=גלאי חדירות Fail2Ban
-index_ver=גרסה $1 
+index_ver=גרסה $1
 index_echeck=אירעה שגיאה בזיהוי Fail2Ban במערכת זו: $1. או שהוא אינו מותקן או שה <a href='$2'>תצורת המודול</a> אינה נכונה.
 index_fail2ban=Fail2Ban
 index_atboot=מתחילים באתחול?
@@ -26,7 +26,7 @@ filters_add=הוסף פילטר יומן חדש.
 filters_return=רשימת המסננים
 filters_derr=מחיקת המסננים נכשלה
 filters_enone=לא נבחר
-filters_einuse=לא ניתן למחוק את המסנן $1 מכיוון שהוא משמש בכלא : $2 
+filters_einuse=לא ניתן למחוק את המסנן $1 מכיוון שהוא משמש בכלא : $2
 
 filter_title1=צור פילטר
 filter_title2=ערוך מסנן
@@ -41,7 +41,7 @@ filter_err=שמירת המסנן נכשלה
 filter_ename=שם מסנן חסר או לא חוקי
 filter_eclash=שם המסנן כבר נמצא בשימוש
 filter_efail=לא נכנס שום ביטוי רגיל להתאמה
-filter_einuse=לא ניתן למחוק את המסנן הזה, מכיוון שהוא משמש בכלא : $1 
+filter_einuse=לא ניתן למחוק את המסנן הזה, מכיוון שהוא משמש בכלא : $1
 
 actions_title=פעולות התאמה
 actions_name=שם הפעולה
@@ -51,7 +51,7 @@ actions_add=הוסף פעולה חדשה.
 actions_return=רשימת פעולות
 actions_derr=מחיקת הפעולות נכשלה
 actions_enone=לא נבחר
-actions_einuse=לא ניתן למחוק את הפעולה $1 מכיוון שהיא משמשת את הכלא : $2 
+actions_einuse=לא ניתן למחוק את הפעולה $1 מכיוון שהיא משמשת את הכלא : $2
 
 action_title1=צור משחק פעולה
 action_title2=ערוך פעולת התאמה
@@ -68,7 +68,7 @@ action_check=פקודה להפעלה לפני האיסור על IP
 action_ban=פקודה לאסור IP
 action_unban=פקודה לבטל איסור על IP
 action_desc=<i>&lt;ip&gt;</i> יוחלף בכתובת ה- IP שנאסרה.
-action_einuse=לא ניתן למחוק פעולה זו מכיוון שהיא משמשת את הכלא : $1 
+action_einuse=לא ניתן למחוק פעולה זו מכיוון שהיא משמשת את הכלא : $1
 
 jails_title=סנן כללי פעולה
 jails_add=הוסף כלא חדש.
@@ -104,8 +104,8 @@ jail_ignoreip=כתובות IP שלא אסור לעולם
 jail_err=שמירת הכלא נכשלה
 jail_eclash=כלא עם אותו שם כבר קיים
 jail_ename=שם כלא חסר או לא תקף
-jail_eaname=פרמטר שם לא חוקי למראה לפעולה $1 
-jail_eport=מספר יציאה לא חוקי לפעולה $1 
+jail_eaname=פרמטר שם לא חוקי למראה לפעולה $1
+jail_eport=מספר יציאה לא חוקי לפעולה $1
 jail_eactions=לא נבחרו פעולות!
 jail_elogpaths=לא הוזנו נתיבי קובץ יומן
 jail_elogpath=כל קבצי היומן חייבים להיות נתיבים או תבניות מוחלטים
@@ -134,13 +134,13 @@ start_err=הפעלת השרת נכשלה
 stop_err=עצירת השרת נכשלה
 restart_err=ההפעלה מחדש של השרת נכשלה
 
-log_create_filter=נוצר מסנן $1 
+log_create_filter=נוצר מסנן $1
 log_update_filter=מסנן $1 שונה
 log_delete_filter=המסנן $1 נמחק
-log_create_action=יצרה פעולה $1 
-log_update_action=פעולה שונה $1 
+log_create_action=יצרה פעולה $1
+log_update_action=פעולה שונה $1
 log_delete_action=פעולה $1 נמחקה
-log_create_jail=יצר את הכלא $1 
+log_create_jail=יצר את הכלא $1
 log_update_jail=כלא שונה 1
 log_delete_jail=כלא $1 נמחק
 log_config=תצורה גלובלית השתנתה
@@ -149,7 +149,7 @@ log_start=שרת Fail2Ban התחיל
 log_restart=התחל מחדש את שרת Fail2Ban
 log_atboot=מופעל Fail2Ban בזמן האתחול
 log_delboot=מושבת Fail2Ban בזמן האתחול
-log_manual=קובץ התצורה נערך $1 
+log_manual=קובץ התצורה נערך $1
 log_jaildef=אפשרויות ברירת המחדל של כלא השתנו
 
 config_title=תצורה גלובלית

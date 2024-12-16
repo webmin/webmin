@@ -1,7 +1,7 @@
 index_title=SMART-aseman tila
 index_ecmd=SMART-ohjauskomentoa $1 ei löydy järjestelmästäsi, tai sitä ei ole asetettu oikein <a href='$2'>moduulin kokoonpanossa</a>. Se on asennettava ennen kuin tätä moduulia voidaan käyttää.
 index_ecmd2=Komento $1 ei näytä olevan SMART-ohjauskomento. Se on asetettava oikein <a href='$2'>moduulin kokoonpanossa</a>, ennen kuin tätä moduulia voidaan käyttää.
-index_version=SMARTsuite-versio $1 
+index_version=SMARTsuite-versio $1
 index_show=Näytä aseman tila:
 index_ok=Näytä
 index_eidescsi=Järjestelmästäsi ei löytynyt IDE-, SCSI- tai SATA-asemia.

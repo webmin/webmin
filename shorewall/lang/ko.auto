@@ -1,7 +1,7 @@
 index_title=쇼어 월 방화벽
 index_ecmd=시스템에서 $1 명령을 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_edir=시스템에서 Shorewall 구성 디렉토리 $1 을 (를) 찾을 수 없습니다. 설치되지 않았거나 <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
-index_version=쇼어 월 버전 $1 
+index_version=쇼어 월 버전 $1
 index_return=테이블 목록
 index_restart=구성 적용
 index_restartdesc=<tt>shorewall restart</tt> 명령으로 현재 Shorewall 구성을 활성화하려면이 버튼을 클릭하십시오.
@@ -82,7 +82,7 @@ policy_1=대상 영역
 policy_2=수단
 policy_3=Syslog 레벨
 policy_4=교통 제한
-policy_limit=한계 $1, 버스트 $2 
+policy_limit=한계 $1, 버스트 $2
 policy_return=정책 목록
 policy_edit=기본 정책 편집
 policy_create=기본 정책 생성
@@ -306,13 +306,13 @@ hosts_err=영역 호스트를 저장하지 못했습니다
 hosts_enet=호스트 주소가 없거나 유효하지 않습니다
 hosts_header=영역 호스트 세부 사항
 hosts_routestopped=방화벽이 중지 된 경우에도 라우팅 하시겠습니까?
-hosts_ip=주소 또는 네트워크 $1 
-hosts_mac=MAC 주소 $1 
-hosts_ipset=IP 세트 $1 
+hosts_ip=주소 또는 네트워크 $1
+hosts_mac=MAC 주소 $1
+hosts_ipset=IP 세트 $1
 hosts_any=모든 호스트
 
-edit_before=입학 전 $1 
-edit_after=입장 후 $1 
+edit_before=입학 전 $1
+edit_after=입장 후 $1
 
 blacklist_title=블랙리스트 호스트
 blacklist_desc=이 페이지에는 <b>블랙리스트</b> 옵션이 설정된 인터페이스에 트래픽이 도착하면 차단 될 호스트 및 서비스가 나열됩니다.

@@ -8,7 +8,7 @@ index_delete=Poista valitut vientit
 index_apply=Ota muutokset käyttöön
 index_applydesc=Napsauta tätä painiketta, jos haluat käyttää nykyisiä tiedostojen vientimäärityksiä. Tämän avulla kaikki yllä luetellut hakemistot ovat käytettävissä määritettyjen asetusten kanssa.
 index_return=vientiluettelo
-index_echeck=NFS-palvelinta ei voi käyttää tässä järjestelmässä : $1 
+index_echeck=NFS-palvelinta ei voi käyttää tässä järjestelmässä : $1
 
 check_ecmd=NFS-palvelinkomentoa $1 ei ole asennettu
 

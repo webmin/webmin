@@ -11,7 +11,7 @@ index_anyfile=Rediģēt citu PHP konfigurācijas failu:
 index_return=konfigurācijas faili
 
 file_global=Globālā PHP konfigurācija
-file_eread=Neizdevās nolasīt $1 : $2 
+file_eread=Neizdevās nolasīt $1 : $2
 
 manual_title=Rediģēt konfigurāciju manuāli
 manual_desc=Šo lapu var izmantot, lai manuāli rediģētu PHP konfigurācijas failu. Tas jādara uzmanīgi, jo jūsu izmaiņām netiks veikta sintakse vai cita derīguma pārbaude.
@@ -124,7 +124,7 @@ errors_maxlen=Reģistrēto kļūdu maksimālais lielums
 errors_file=Žurnāla fails par kļūdām
 errors_none=Nav
 errors_syslog=Syslog
-errors_other=Cits fails $1 
+errors_other=Cits fails $1
 errors_unlimited=Neierobežots
 errors_err=Neizdevās saglabāt kļūdu reģistrēšanu
 errors_ereporting=Nav ievadīts kļūdas veida izteiciens
@@ -153,13 +153,13 @@ misc_timezone=PHP laika josla
 misc_charset=Noklusējuma rakstzīmju kopa
 
 log_manual=Failu $1 manuāli rediģēt
-log_vars=Mainīti PHP mainīgie $1 
-log_dirs=Mainīti direktorija iestatījumi $1 
-log_db=Mainīti datu bāzes iestatījumi $1 
-log_session=Mainītas sesijas iespējas $1 
-log_safe=Mainītas drošā režīma iespējas $1 
-log_limits=Mainīti resursu ierobežojumi $1 
-log_errors=Mainītas kļūdas, reģistrējoties $1 
+log_vars=Mainīti PHP mainīgie $1
+log_dirs=Mainīti direktorija iestatījumi $1
+log_db=Mainīti datu bāzes iestatījumi $1
+log_session=Mainītas sesijas iespējas $1
+log_safe=Mainītas drošā režīma iespējas $1
+log_limits=Mainīti resursu ierobežojumi $1
+log_errors=Mainītas kļūdas, reģistrējoties $1
 log_misc=Mainīti citi $1 iestatījumi
 
 acl_global=Vai var rediģēt globālo PHP konfigurāciju?

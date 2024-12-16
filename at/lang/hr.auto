@@ -15,9 +15,9 @@ edit_showfull=Prikaži cijelu skriptu.
 acl_stop=Može li se zaustaviti i pokrenuti <tt>atd</tt>?
 
 log_allow=Promijenjeni dopušteni korisnici
-log_create_job=Napravljena je zakazana naredba za $1 
-log_delete_job=Otkazana zakazana naredba za $1 
-log_exec_job=Izvršena zakazana naredba za $1 
+log_create_job=Napravljena je zakazana naredba za $1
+log_delete_job=Otkazana zakazana naredba za $1
+log_exec_job=Izvršena zakazana naredba za $1
 log_delete_jobs=Otkazane $1 zakazane naredbe
 log_stop=Zaustavljen poslužitelj zakazanih naredbi
 log_start=Započeo poslužitelj zakazanih naredbi

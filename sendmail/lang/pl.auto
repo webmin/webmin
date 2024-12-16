@@ -1,6 +1,6 @@
-index_version2=Wersja Sendmail $1, konfiguracja $2 
-index_xversion=Wersja Sendmail $1 
-index_version=Konfiguracja Sendmail $1 
+index_version2=Wersja Sendmail $1, konfiguracja $2
+index_xversion=Wersja Sendmail $1
+index_version=Konfiguracja Sendmail $1
 index_sendmail=Wyślij maila
 
 opts_daemon=Opcje portu SMTP
@@ -21,7 +21,7 @@ aform_ecannot=Nie możesz edytować tego aliasu
 aform_file=Dodaj do pliku aliasów
 aform_cmt=Opis
 
-afile_ewrite=Nie udało się zapisać do pliku adresów : $1 
+afile_ewrite=Nie udało się zapisać do pliku adresów : $1
 
 rfile_desc2=Możesz także ustawić nagłówki wiadomości, które dodają lub zastępują wartości domyślne używane w odpowiedzi automatycznej, wstawiając wiersze takie jak: <br><tt> Od: foo@bar.com </tt><br> <tt>Temat: W wakacje</tt> <br> u góry wiadomości, oddzielone od treści pojedynczym pustym wierszem.
 rfile_replies=Śledzić odpowiedzi, aby uniknąć pętli poczty?
@@ -43,7 +43,7 @@ asave_esame=Możesz utworzyć tylko alias o tej samej nazwie co login do webmina
 
 adelete_err=Nie udało się usunąć aliasów
 adelete_enone=Nie wybrano
-adelete_ecannot=Nie możesz usunąć aliasu $1 
+adelete_ecannot=Nie możesz usunąć aliasu $1
 
 masq_ndomains=Domeny nie do maskarady
 
@@ -62,7 +62,7 @@ vform_err_protocol=Błąd protokołu
 vsave_esame=Możesz tworzyć mapowania adresów tylko dla swojej nazwy użytkownika
 
 vdelete_err=Nie udało się usunąć mapowań adresów
-vdelete_ecannot=Nie możesz usunąć mapowania dla $1 
+vdelete_ecannot=Nie możesz usunąć mapowania dla $1
 
 mailers_efeature=Twoja konfiguracja sendmaila nie ma włączonej funkcji routingu domen (<tt>mailertable</tt>). <a href='$1'>Kliknij tutaj</a>, aby skonfigurować funkcje sendmaila.
 mailers_desc3=Powinieneś także mieć wpis na liście <a href='$1'>domen przekazywania</a> dla każdej domeny.
@@ -73,7 +73,7 @@ mform_domain2=Wszystkie hosty w domenie
 mform_domain3=Domena i wszystkie jej hosty
 
 mdelete_err=Nie udało się usunąć routera domeny
-mdelete_ecannot=Nie możesz usunąć trasy dla $1 
+mdelete_ecannot=Nie możesz usunąć trasy dla $1
 
 generics_efeature=Twoja konfiguracja sendmaila nie ma włączonej funkcji mapowania adresów wychodzących (<tt>generics</tt>). <a href='$1'>Kliknij tutaj</a>, aby skonfigurować funkcje sendmaila.
 generics_toomany=W systemie jest zbyt wiele adresów wychodzących, aby można je było wyświetlić na tej stronie.
@@ -84,7 +84,7 @@ gsave_ecannot3=Nie możesz zapisać tego adresu wychodzącego
 gsave_ealready=Mapowanie adresu wychodzącego dla „$1” już istnieje
 
 gdelete_err=Nie udało się usunąć mapowań adresów wychodzących
-gdelete_ecannot=Nie możesz usunąć mapowania dla $1 
+gdelete_ecannot=Nie możesz usunąć mapowania dla $1
 
 domains_efeature=Twoja konfiguracja sendmaila nie ma włączonej funkcji mapowania domen (<tt>domaintable</tt>). <a href='$1'>Kliknij tutaj</a>, aby skonfigurować funkcje sendmaila.
 domains_delete=Usuń wybrane mapowania domen
@@ -92,7 +92,7 @@ domains_delete=Usuń wybrane mapowania domen
 dsave_ealready=Mapowanie domen dla „$1” już istnieje
 
 ddelete_err=Nie udało się usunąć mapowań domen
-ddelete_ecannot=Nie możesz usunąć mapowania dla $1 
+ddelete_ecannot=Nie możesz usunąć mapowania dla $1
 
 access_efeature=Twoja konfiguracja sendmaila nie ma włączonej funkcji kontroli spamu (<tt>access_db</tt>). <a href='$1'>Kliknij tutaj</a>, aby skonfigurować funkcje sendmaila.
 access_toomany=W twoim systemie jest zbyt wiele reguł kontroli spamu, aby można je było wyświetlić na tej stronie.
@@ -110,7 +110,7 @@ ssave_ealready=Reguła kontroli spamu dla „$1” już istnieje
 ssave_ecannot2=Nie możesz zapisać tej reguły kontroli spamu
 
 sdelete_err=Nie udało się usunąć reguł kontroli spamu
-sdelete_ecannot=Nie możesz usunąć reguły dla $1 
+sdelete_ecannot=Nie możesz usunąć reguły dla $1
 
 mailq_count=$1 wiadomości
 mailq_cc=DW
@@ -178,7 +178,7 @@ delete_emovenone=Nie wybrano poczty do przeniesienia
 delete_nobutton=Nie kliknięto żadnego przycisku
 
 search_efield=Musisz wybrać typ wyszukiwania.
-search_ewhat=Brak tekstu do dopasowania z wprowadzonym dla wiersza $1 
+search_ewhat=Brak tekstu do dopasowania z wprowadzonym dla wiersza $1
 search_enone=Nie wprowadzono kryteriów wyszukiwania
 search_results2=$1 wiadomości e-mail pasujących do $2 ..
 search_results3=Wiadomości $1 nie pasują do $2 ..
@@ -188,8 +188,8 @@ search_all=We wszystkich folderach
 search_eboolean=Wyszukiwanie boolowskie przy użyciu „i” oraz „lub” nie są obsługiwane
 
 file_ecannot=Nie możesz edytować tego pliku
-file_ealias=Nieprawidłowy format linii pliku aliasów : $1 
-file_etab=Nieprawidłowy format wiersza pliku mapy : $1 
+file_ealias=Nieprawidłowy format linii pliku aliasów : $1
+file_etab=Nieprawidłowy format wiersza pliku mapy : $1
 
 acl_ports=Czy można edytować porty sieciowe?
 acl_manual=Czy można ręcznie edytować pliki?
@@ -207,16 +207,16 @@ acl_usersu=Z UID w zasięgu
 acl_spam=Adresy kontroli spamu, które ten użytkownik może edytować
 
 log_ports=Zmień porty sieciowe
-log_movemail=Przeniesiono wiadomości $1 z $2 do $3 
-log_feature_create=Dodano pozycję M4 $1 
-log_feature_modify=Zmodyfikowany wpis M4 $1 
-log_feature_delete=Usunięto wpis M4 $1 
-log_feature_move=Przeniesiono wpis M4 $1 
+log_movemail=Przeniesiono wiadomości $1 z $2 do $3
+log_feature_create=Dodano pozycję M4 $1
+log_feature_modify=Zmodyfikowany wpis M4 $1
+log_feature_delete=Usunięto wpis M4 $1
+log_feature_move=Przeniesiono wpis M4 $1
 log_build=Odbudowana konfiguracja sendmaila
-log_delete_aliases=Usunięto aliasy $1 
-log_delete_virtusers=Usunięto mapowania adresów $1 
-log_delete_domains=Usunięto mapowania domen $1 
-log_delete_accesses=Usunięte wpisy kontroli spamu $1 
+log_delete_aliases=Usunięto aliasy $1
+log_delete_virtusers=Usunięto mapowania adresów $1
+log_delete_domains=Usunięto mapowania domen $1
+log_delete_accesses=Usunięte wpisy kontroli spamu $1
 log_delete_generics=Usunięto $1 adresów wychodzących
 log_delete_mailers=Usunięto trasy $1 domeny
 
@@ -270,7 +270,7 @@ feature_err=Nie udało się zapisać wpisu konfiguracji
 feature_efeat=Funkcja $1 już istnieje
 feature_edef=Definicja $1 już istnieje
 feature_emailer=Mailer $1 już istnieje
-feature_eostype=Typ systemu operacyjnego jest już zdefiniowany jako $1 
+feature_eostype=Typ systemu operacyjnego jest już zdefiniowany jako $1
 feature_manual=Edytuj plik M4
 feature_mdesc=Strona umożliwia ręczną edycję pliku konfiguracyjnego Sendmail M4 $1. Bądź ostrożny, ponieważ nie będziesz sprawdzać składni twoich edycji.
 
@@ -284,7 +284,7 @@ mailer_local=Lokalny Unix
 
 build_title=Odbuduj konfigurację Sendmaila
 build_em4=W systemie nie znaleziono polecenia $1 potrzebnego do odbudowania pliku konfiguracyjnego Sendmail.
-build_ebuild=Nie udało się zbudować konfiguracji : $1 
+build_ebuild=Nie udało się zbudować konfiguracji : $1
 build_rusure=Czy na pewno chcesz zastąpić plik konfiguracyjny Sendmail $1 nową wersją zbudowaną z $2 ?
 build_rusure2=Pamiętaj, że jeśli dokonałeś zmian w Sendmail na stronie Opcje Sendmail, przebudowanie pliku konfiguracyjnego może zastąpić te zmiany, jeśli nie zostały one również wprowadzone w pliku M4.
 build_ok=Tak, wymień go teraz
@@ -295,7 +295,7 @@ stop_err=Nie udało się zatrzymać sendmaila
 stop_ecannot=Nie możesz zatrzymać sendmaila
 stop_epid=Wygląda na to, że Sendmail nie działa
 restart_epids=Nie można znaleźć procesów sendmaila
-restart_ekill=Nie udało się zasygnalizować procesów sendmaila : $1 
+restart_ekill=Nie udało się zasygnalizować procesów sendmaila : $1
 
 start_err=Nie udało się uruchomić sendmaila
 start_ecannot=Nie możesz rozpocząć sendmaila
@@ -321,7 +321,7 @@ ports_def1=Zaakceptuj adres e-mail na porcie 25 i wszystkie adresy
 ports_def0=Akceptuj wiadomości e-mail tylko na poniższych portach.
 ports_err=Nie udało się zapisać portów sieciowych
 ports_ecannot=Nie możesz zarządzać portami sieciowymi
-ports_ename=Niepoprawna nazwa portu w wierszu $1 
-ports_eclash=Zduplikowana nazwa portu w wierszu $1 
-ports_eaddress=Brakujący lub nieprawidłowy adres IP w wierszu $1 
-ports_eport=Brakujący lub nieprawidłowy numer portu w wierszu $1 
+ports_ename=Niepoprawna nazwa portu w wierszu $1
+ports_eclash=Zduplikowana nazwa portu w wierszu $1
+ports_eaddress=Brakujący lub nieprawidłowy adres IP w wierszu $1
+ports_eport=Brakujący lub nieprawidłowy numer portu w wierszu $1

@@ -90,7 +90,7 @@ routes_go=查找符合的域路由:
 routes_from=邮件域
 routes_to=通过服务器发送
 routes_direct=直接递送
-routes_defroute=递送所有的外发邮件，通过: 
+routes_defroute=递送所有的外发邮件，通过:
 routes_return=域路由
 
 rform_edit=编辑域路由

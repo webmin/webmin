@@ -18,7 +18,7 @@ vgetty_return=nuosekliųjų prievadų sąrašas
 vgetty_create=Pridėti nuoseklųjį prievadą
 vgetty_edit=Redaguoti serijos prievadą
 vgetty_header=Serijinio prievado konfigūracijos parinktys
-vgetty_ts=Serijinis prievadas $1 
+vgetty_ts=Serijinis prievadas $1
 vgetty_other=Kitas prietaisas ..
 vgetty_rings=Žiedai prieš atsakant
 vgetty_default=Visuotinis nutylėjimas
@@ -100,19 +100,19 @@ pvfdesc=$1, $2 bitai
 
 upload_err=Nepavyko pridėti pranešimo
 upload_emessage=Nepasirinktas WAV failas
-upload_ewav=Nepavyko konvertuoti WAV failo : $1 
-upload_epvf=Nepavyko sukurti RMD failo : $1 
+upload_ewav=Nepavyko konvertuoti WAV failo : $1
+upload_epvf=Nepavyko sukurti RMD failo : $1
 upload_esame=Žinutės failas $1 jau yra
 
 log_apply=Taikoma konfigūracija
-log_upload=Įkeltas sveikinimo pranešimas $1 
+log_upload=Įkeltas sveikinimo pranešimas $1
 log_move=Konvertuoti $1 gauti pranešimai
 log_delete0=Ištrinta $1 gauta žinutė
 log_delete1=Ištrinta $1 sveikinimo žinutė
 log_options=Pakeistos balso pašto parinktys
-log_vgetty_create=Pridėtas serijinis prievadas $1 
-log_vgetty_modify=Modifikuotas serijinis prievadas $1 
-log_vgetty_delete=Ištrintas serijinis prievadas $1 
+log_vgetty_create=Pridėtas serijinis prievadas $1
+log_vgetty_modify=Modifikuotas serijinis prievadas $1
+log_vgetty_delete=Ištrintas serijinis prievadas $1
 
 email_subject=Balso pašto pranešimas
 email_body=Balso pašto pranešimas, gautas $1, $2.

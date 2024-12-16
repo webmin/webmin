@@ -38,9 +38,9 @@ enable_err=Neizdevās iespējot MIME tipa programmas
 enable_eclash=Iespējota MIME tipa programma $1 jau pastāv
 delete_enone=Nav atlasīts
 
-log_delete_mailcap=Dzēsiet MIME tipa programmu $1 
-log_create_mailcap=Izveidota MIME tipa programma $1 
-log_modify_mailcap=Modificēta MIME tipa programma $1 
+log_delete_mailcap=Dzēsiet MIME tipa programmu $1
+log_create_mailcap=Izveidota MIME tipa programma $1
+log_modify_mailcap=Modificēta MIME tipa programma $1
 log_delete_mailcaps=Izdzēstas $1 MIME tipa programmas
 log_disable_mailcaps=Atspējotas $1 MIME tipa programmas
 log_enable_mailcaps=Iespējotas $1 MIME tipa programmas

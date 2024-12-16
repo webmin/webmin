@@ -33,7 +33,7 @@ save_erw=Nu a fost introdusă nicio gazdă de scriere citită
 save_eroot=Nu a fost introdusă nicio gazdă de acces la fișierul root
 save_eaccess=Nu a fost introdusă nicio gazdă de acces de montaj
 
-log_create_export=Export creat de $1 
-log_delete_export=Export șters de $1 
-log_modify_export=Export modificat de $1 
+log_create_export=Export creat de $1
+log_delete_export=Export șters de $1
+log_modify_export=Export modificat de $1
 log_apply=Configurație aplicată

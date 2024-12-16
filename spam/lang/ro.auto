@@ -4,7 +4,7 @@ index_ecmd2=Comanda SpamAssassin $1 nu a fost găsită în sistemul tău.
 index_econfig=Fișierul de configurare local SpamAssassin sau directorul $1 nu a fost găsit în sistemul dvs. Poate că SpamAssassin nu este instalat sau <a href='$2'>configurația modulului</a> este incorectă.
 index_unknown=necunoscut
 index_edb=Eroare la conectarea la baza de date de configurare SpamAssassin: $1. Verificați configurația modulului <a href='$2'></a> pentru a vă asigura că utilizați setările corecte.
-index_version=Versiunea SpamAssassin $1 
+index_version=Versiunea SpamAssassin $1
 index_warn_usermin=SpamAssassin nu pare să fie configurat în fișierul dvs. de configurare Procmail $2 sau în fișierul global $1, astfel încât orice configurație efectuată folosind acest modul nu va avea efect decât dacă SpamAssassin a fost configurat la nivel global.
 index_warn_webmin=SpamAssassin nu pare să fie configurat în fișierul de configurare Procmail al sistemului $1, astfel încât orice configurație efectuată folosind acest modul nu va avea efect decât dacă utilizatorii îl vor configura individual.
 index_return=indexul modulului
@@ -12,7 +12,7 @@ index_apply=Aplica schimbarile
 index_applydesc=Faceți clic pe acest buton pentru a aplica configurația curentă SpamAssassin, trimițând un semnal HUP la toate procesele $1 care rulează.
 index_cpan=Deoarece SpamAssassin este un modul Perl, îl puteți instala automat utilizând modulul Weba <a href='$2'>Perl Modules</a> pentru a descărca $1 din CPAN.
 index_spamassassin=SpamAssassin
-index_ecannot=Nu aveți voie să gestionați fișierul de configurare SpamAssassin $1 
+index_ecannot=Nu aveți voie să gestionați fișierul de configurare SpamAssassin $1
 
 white_title=Adresele permise și refuzate
 white_desc=Tabelele de pe această pagină vă permit să specificați de la: și la: adrese pentru e-mail care sunt întotdeauna sau niciodată clasificate ca spam. Orice alt e-mail va fi procesat normal după regulile SpamAssassin. Toate adresele de e-mail pot conține wildcards, cum ar fi *@foo.com sau *.foo.com pentru a se potrivi cu domenii întregi.
@@ -111,7 +111,7 @@ report_addtext=Text pentru antet
 report_addspam=Spam
 report_addham=șuncă
 report_addall=Toate
-report_eaddheader=Lipsesc sau nevalide antetul suplimentar pentru a adăuga $1 
+report_eaddheader=Lipsesc sau nevalide antetul suplimentar pentru a adăuga $1
 
 user_title=Opțiuni diverse pentru utilizatori
 user_desc=Opțiunile de pe această pagină sunt în mare parte legate de căile și setările pe care SpamAssassin le folosește pentru pachetele externe de identificare a spam-ului Razor, DCC și Pyzor. Puteți spune, de asemenea, SpamAssassin dacă va putea efectua căutări DNS sau nu.
@@ -190,7 +190,7 @@ priv_emscore=„$1” nu este un scor valid cu fraza cea mai mare
 priv_ephrase=„$1” nu este o expresie spam de două cuvinte valabilă
 priv_escore=Scor lipsă sau nevalid pentru expresia spam „$1”
 
-usually=De obicei $1 
+usually=De obicei $1
 ecannot=Nu aveți voie să utilizați această pagină
 setup_title=Configurare Procmail pentru SpamAssassin
 setup_desc_webmin=Acest formular poate fi folosit pentru a configura Procmail în $1 pentru a rula SpamAssassin pe toate mesajele de e-mail primite de sistemul tău. Cu toate acestea, acest lucru va avea vreun efect numai dacă serverul dvs. de poștă a fost configurat pentru a utiliza Procmail pentru livrare locală sau pentru utilizatorii ale căror fișiere <tt>.forward</tt> sunt configurate pentru a rula Procmail.
@@ -244,7 +244,7 @@ mail_razor=Raportați drept spam și ștergeți
 mail_ham=Raportați sub formă de Ham & Inbox
 mail_delete=Șterge
 mail_return=lista de poștă spam
-mail_pos=Mesaje spam $1 la $2 din $3 
+mail_pos=Mesaje spam $1 la $2 din $3
 mail_none=Nu există mesaje în folderul de spam
 mail_refresh=Reîmprospăta
 mail_will=Actualizare automată în $1 minute
@@ -253,7 +253,7 @@ mail_delall=Ștergeți tot spamul
 mail_search3=Caută scorul de mai sus:
 
 process_eclean=A apărut o eroare la eliminarea anteturilor SpamAssassin din acest e-mail
-process_ereport=Nu a putut raporta e-mailul către SpamAssassin : $1 
+process_ereport=Nu a putut raporta e-mailul către SpamAssassin : $1
 
 apply_err=Eroare la aplicarea modificărilor
 apply_none=Nu a fost găsit niciun proces de demoni SpamAssassin!
@@ -263,8 +263,8 @@ acl_file=Fișier de configurare SpamAssassin pentru editare
 acl_filedef=Fișier de configurare global
 acl_awl=Permis utilizatorilor pentru editare automată cu lista albă
 acl_awl0=Toți utilizatorii
-acl_awl1=Numai utilizatorii enumerați $1 
-acl_awl2=Numai membrii grupurilor $1 
+acl_awl1=Numai utilizatorii enumerați $1
+acl_awl2=Numai membrii grupurilor $1
 
 search_escore=Scor de spam lipsă sau nevalid
 search_results5=$1 mesaje de poștă cu scor spam sau peste $2.
@@ -337,20 +337,20 @@ simple_score=Scorul de aplicat
 simple_describe=Descriere
 simple_err=Nu a reușit salvarea testelor de mesaje
 
-before_ecmd=Comanda înainte de salvare a eșuat : $1 
-after_ecmd=Comanda după salvare a eșuat : $1 
+before_ecmd=Comanda înainte de salvare a eșuat : $1
+after_ecmd=Comanda după salvare a eșuat : $1
 
-connect_emysql=Nu a putut încărca driverul bazei de date $1 
+connect_emysql=Nu a putut încărca driverul bazei de date $1
 connect_elogin=Eroare la autentificarea la baza de date $1:$2.
-connect_equery=Baza de date $1 nu conține tabelul de preferințe $2 
+connect_equery=Baza de date $1 nu conține tabelul de preferințe $2
 connect_eldapmod=Modulul Perl $1 necesar pentru a comunica cu LDAP nu este instalat sau nu se poate încărca
-connect_eldap=Eroare la conectarea la serverul LDAP $1 pe portul $2 
-connect_eldaplogin=Eroare la autentificarea pe serverul LDAP $1 ca $2 : $3 
-connect_ebase=Baza LDAP DN $1 nu este valabilă : $2 
+connect_eldap=Eroare la conectarea la serverul LDAP $1 pe portul $2
+connect_eldaplogin=Eroare la autentificarea pe serverul LDAP $1 ca $2 : $3
+connect_ebase=Baza LDAP DN $1 nu este valabilă : $2
 
-eldap=Operația LDAP a eșuat : $1 
-esql=SQL a eșuat : $1 
-ldap_euser=Nu s-a putut găsi obiectul utilizator LDAP pentru $1 
+eldap=Operația LDAP a eșuat : $1
+esql=SQL a eșuat : $1
+ldap_euser=Nu s-a putut găsi obiectul utilizator LDAP pentru $1
 
 db_title=Baze de date SQL și LDAP
 db_header=Opțiuni ale bazei de date de stocare de configurare

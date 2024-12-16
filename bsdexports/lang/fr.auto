@@ -8,7 +8,7 @@ index_delete=Supprimer les exportations sélectionnées
 index_apply=Appliquer les modifications
 index_applydesc=Cliquez sur ce bouton pour appliquer la configuration d'exportation de fichiers actuelle. Cela rendra tous les répertoires répertoriés ci-dessus disponibles avec les options spécifiées.
 index_return=liste des exportations
-index_echeck=Le serveur NFS ne peut pas être utilisé sur ce système : $1 
+index_echeck=Le serveur NFS ne peut pas être utilisé sur ce système : $1
 
 check_ecmd=La commande du serveur NFS $1 n'est pas installée
 

@@ -1,5 +1,5 @@
 index_title=Fail2Ban Intrusion Detector
-index_ver=Weergawe $1 
+index_ver=Weergawe $1
 index_echeck=Kon nie Fail2Ban op hierdie stelsel opspoor nie: $1. Óf dit is nie geïnstalleer nie, óf die <a href='$2'>module-opstelling</a> is verkeerd.
 index_fail2ban=Fail2Ban
 index_atboot=Begin met die boot?
@@ -26,7 +26,7 @@ filters_add=Voeg 'n nuwe logfilter by.
 filters_return=lys filters
 filters_derr=Kon nie filters uitvee nie
 filters_enone=Geen gekies nie
-filters_einuse=Die filter $1 kan nie uitgevee word nie, omdat dit deur die tronke gebruik word : $2 
+filters_einuse=Die filter $1 kan nie uitgevee word nie, omdat dit deur die tronke gebruik word : $2
 
 filter_title1=Skep filter
 filter_title2=Wysig filter
@@ -41,7 +41,7 @@ filter_err=Kon nie die filter stoor nie
 filter_ename=Ontbrekende of ongeldige filternaam
 filter_eclash=Die filternaam is reeds in gebruik
 filter_efail=Geen gewone uitdrukking om in te pas nie
-filter_einuse=Hierdie filter kan nie uitgevee word nie, omdat dit deur die tronke gebruik word : $1 
+filter_einuse=Hierdie filter kan nie uitgevee word nie, omdat dit deur die tronke gebruik word : $1
 
 actions_title=Pas aksies
 actions_name=Aksie naam
@@ -51,7 +51,7 @@ actions_add=Voeg 'n nuwe aksie by.
 actions_return=lys van aksies
 actions_derr=Kon nie handelinge uitvee nie
 actions_enone=Geen gekies nie
-actions_einuse=Die aksie $1 kan nie uitgevee word nie, aangesien dit deur die tronke gebruik word : $2 
+actions_einuse=Die aksie $1 kan nie uitgevee word nie, aangesien dit deur die tronke gebruik word : $2
 
 action_title1=Skep wedstrydaksie
 action_title2=Wysig wedstrydhandeling
@@ -68,7 +68,7 @@ action_check=Opdrag om te loop voordat u 'n IP verbied
 action_ban=Opdrag om 'n IP te verbied
 action_unban=Opdrag om 'n IP te verbied
 action_desc=<i>&lt;ip&gt;</i> sal vervang word met die IP-adres wat verbied word.
-action_einuse=Hierdie aksie kan nie uitgevee word nie, aangesien dit deur die tronke gebruik word : $1 
+action_einuse=Hierdie aksie kan nie uitgevee word nie, aangesien dit deur die tronke gebruik word : $1
 
 jails_title=Filter aksie tronke
 jails_add=Voeg 'n nuwe tronk by.
@@ -104,8 +104,8 @@ jail_ignoreip=IP-adresse om nooit te verbied nie
 jail_err=Kon nie die tronk opslaan nie
 jail_eclash=Daar bestaan reeds 'n tronk met dieselfde naam
 jail_ename=Ontbrekende of ongeldige tronknaam
-jail_eaname=Ongeldige soekparameter vir aksie $1 
-jail_eport=Ongeldige poortnommer vir aksie $1 
+jail_eaname=Ongeldige soekparameter vir aksie $1
+jail_eport=Ongeldige poortnommer vir aksie $1
 jail_eactions=Geen aksies gekies nie!
 jail_elogpaths=Geen loglêerpaaie is ingevoer nie
 jail_elogpath=Alle loglêers moet absolute paaie of patrone wees
@@ -134,14 +134,14 @@ start_err=Kon nie bediener begin nie
 stop_err=Kon nie bediener stop nie
 restart_err=Kon nie bediener herbegin nie
 
-log_create_filter=Geskep filter $1 
-log_update_filter=Gewysigde filter $1 
+log_create_filter=Geskep filter $1
+log_update_filter=Gewysigde filter $1
 log_delete_filter=Filter $1 is uitgevee
 log_create_action=Aksie $1 geskep
-log_update_action=Gewysigde aksie $1 
+log_update_action=Gewysigde aksie $1
 log_delete_action=Aksie $1 is uitgevee
 log_create_jail=Gevangenis $1 geskep
-log_update_jail=Gewysigde tronk $1 
+log_update_jail=Gewysigde tronk $1
 log_delete_jail=Gevangenis $1 is uitgevee
 log_config=Wêreldkonfigurasie verander
 log_stop=Gestopte Fail2Ban-bediener
@@ -149,7 +149,7 @@ log_start=Fail2Ban-bediener is begin
 log_restart=Die Fail2Ban-bediener is weer begin
 log_atboot=Fail2Ban is tydens oplaaityd aangeskakel
 log_delboot=Gedeaktiveer Fail2Ban tydens opstart tyd
-log_manual=Geredigeerde konfigurasielêer $1 
+log_manual=Geredigeerde konfigurasielêer $1
 log_jaildef=Gewysigde standaard tronkopsies
 
 config_title=Globale konfigurasie

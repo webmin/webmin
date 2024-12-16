@@ -31,7 +31,7 @@ create_f3_layout=3 copias lejanas
 create_o3_layout=3 copias compensadas
 
 view_uuid=UUID
-view_iscsi=Utilizado por el dispositivo compartido iSCSI $1 
+view_iscsi=Utilizado por el dispositivo compartido iSCSI $1
 view_delayed=Esperando en otro dispositivo
 view_remove_det=Eliminar separado
 view_remove_detdesc=Elimine las particiones que ya están físicamente separadas del sistema.
@@ -50,7 +50,7 @@ view_sparegroup=Grupo de repuesto
 emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 
-log_replace=Partición reemplazada en caliente $2 en el dispositivo RAID $1 con partición de repuesto $3 
+log_replace=Partición reemplazada en caliente $2 en el dispositivo RAID $1 con partición de repuesto $3
 log_grow=Dispositivo RAID desarrollado $1 a un total de $2 discos
 log_convert_to_raid6=Dispositivo RAID5 convertido $1 en un dispositivo RAID6
 log_convert_to_raid5=Dispositivo RAID6 convertido $1 en un dispositivo RAID5

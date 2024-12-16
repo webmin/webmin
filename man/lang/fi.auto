@@ -50,11 +50,11 @@ search_google=Google-hakutulos
 search_doxfer=Webminin online-dokumentaatio
 
 howto_title=HOWTO-asiakirja
-howto_header=HOWTO-tiedosto tiedosto $1 
+howto_header=HOWTO-tiedosto tiedosto $1
 howto_epath=Virheellinen HOWTO-dokumenttipolku
 
 doc_title=Pakkausdokumentaatio
-doc_header=Pakkausdokumentitiedosto $1 
+doc_header=Pakkausdokumentitiedosto $1
 doc_epath=Virheellinen paketin dokumentointipolku
 
 man_title=Manuaalinen sivu
@@ -63,11 +63,11 @@ man_noentry=Kohdan $1 manuaalista sivua ei ole!
 man_epath=Manuaalinen sivu ei voi olla polku!
 
 kernel_title=Ydindokumentti
-kernel_header=Ydindokumentitiedosto $1 
+kernel_header=Ydindokumentitiedosto $1
 kernel_epath=Virheellinen ytimen asiakirjapolku
 
 kde_title=KDE-dokumentaatio
-kde_header=KDE-dokumentitiedosto $1 
+kde_header=KDE-dokumentitiedosto $1
 kde_epath=Virheellinen KDE-dokumentointipolku
 
 perl_title=Perl-moduuli

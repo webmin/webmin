@@ -17,4 +17,4 @@ edit_special_monthly=Mensuel (le 1er)
 edit_special_yearly=Annuellement (le 1er janvier)
 
 log_success=Exécution réussie de <tt>$2</tt> dans <tt>$1</tt>
-log_failure=Impossible d'exécuter <tt>$2</tt> dans <tt>$1</tt> : $3 
+log_failure=Impossible d'exécuter <tt>$2</tt> dans <tt>$1</tt> : $3

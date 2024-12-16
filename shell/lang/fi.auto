@@ -14,5 +14,5 @@ acl_user_def=Nykyinen Webmin-käyttäjä
 acl_shellenv=Käytätkö valittua käyttäjän ympäristöä?
 acl_chroot=Chroot hakemistoon
 
-log_run=Ran komento $1 
+log_run=Ran komento $1
 log_clear=Puhdistettu komentohistoria

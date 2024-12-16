@@ -94,7 +94,7 @@ routes_go=Busca les rutes de dominis que coincideixin amb:
 routes_from=Correu del domini
 routes_to=Envia a través del servidor
 routes_direct=Lliura directament
-routes_defroute=Lliura tota la resta de correu a través de: 
+routes_defroute=Lliura tota la resta de correu a través de:
 routes_return=a les rutes de dominis
 routes_delete=Suprimeix les Rutes de Dominis Seleccionades
 

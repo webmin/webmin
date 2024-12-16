@@ -94,7 +94,7 @@ edit_selhours=Från $1:$2 till $3:$4
 edit_ui=Användargränssnitts val
 edit_security=Säkerhet och begränsnings val.
 edit_mods=Tillgängliga Webmin moduler.
-edit_modsg=Tillgängliga Webmin moduler 
+edit_modsg=Tillgängliga Webmin moduler
 
 save_err=Det gick inte att spara användare
 save_ename='$1' är inget giltigt användarnamn

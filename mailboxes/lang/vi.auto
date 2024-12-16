@@ -252,7 +252,7 @@ send_eattach=Tệp đính kèm không thể có tổng kích thước lớn hơn
 send_eperms=Người dùng $1 không thể đọc $2
 send_eperms2=Bạn không được phép gửi tệp $1
 send_epath=Sendmail thực thi $1 không tồn tại.
-send_efile=Không thể đọc tệp đính kèm $1 : $2 
+send_efile=Không thể đọc tệp đính kèm $1 : $2
 send_done=.. làm xong.
 
 send_epass=Bạn không thể ký tin nhắn vì cụm mật khẩu của bạn chưa được thiết lập trong mô-đun GnuPG.
@@ -337,8 +337,8 @@ folder_spam=Thư rác
 
 detach_err=Không thể tách tệp
 detach_edir=Không có tập tin hoặc thư mục để lưu để nhập
-detach_eopen=Không thể mở $1 : $2 
-detach_ewrite=Không thể ghi vào $1 : $2 
+detach_eopen=Không thể mở $1 : $2
+detach_ewrite=Không thể ghi vào $1 : $2
 detach_title=Tách tập tin
 detach_ok=Đã viết tệp đính kèm vào tệp phía máy chủ $1 ($2).
 
@@ -437,7 +437,7 @@ white_already=Địa chỉ email $1 đã có trong danh sách địa chỉ đư�
 
 ldap_emod=Thiếu mô-đun Perl $1 cần thiết để kết nối với LDAP
 ldap_econn=Không thể kết nối với máy chủ LDAP $1 cổng $2
-ldap_elogin=Không thể liên kết với máy chủ LDAP $1 dưới dạng $2 : $3 
+ldap_elogin=Không thể liên kết với máy chủ LDAP $1 dưới dạng $2 : $3
 ldap_ehost=Không có máy chủ LDAP nào được đặt trong cấu hình mô-đun
 ldap_eport=Không có cổng máy chủ LDAP hợp lệ được đặt trong cấu hình mô-đun
 ldap_euser=Không có thông tin đăng nhập LDAP trong cấu hình mô-đun

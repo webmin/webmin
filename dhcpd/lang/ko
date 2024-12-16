@@ -139,7 +139,7 @@ shost_invalidaddr='$1'에 잘못된 호스트 이름이나 IP 주소가 있습�
 shost_invassign=호스트가 잘못된 섹션에 할당되었습니다
 
 sopt_failsave=클라이언트 옵션을 저장하지 못했습니다
-sopt_invalidip=은(는) 유효한 IP 주소가 아닙니다 
+sopt_invalidip=은(는) 유효한 IP 주소가 아닙니다
 sopt_invalidint=은(는) 정수가 아닙니다
 sopt_invalidipp=은(는) 유효한 IP 주소 쌍(예: 1.2.3.4, 5.6.7.8)이 아닙니다
 
@@ -152,7 +152,7 @@ ssub_faildel=서브넷을 삭제하지 못했습니다
 ssub_failsave=서브넷을 저장하지 못했습니다
 ssub_invalidsubaddr=은(는) 유효한 서브넷 주소가 아닙니다
 ssub_invalidnmask=은(는) 유효한 넷마스크가 아닙니다
-ssub_invalidipr=은(는) 유효한 범위의 IP 주소가 아닙니다 
+ssub_invalidipr=은(는) 유효한 범위의 IP 주소가 아닙니다
 ssub_nosubnet=공유 네트워크 '$1'에 서브넷이 포함되어 있지 않습니다.
 
 plib_deflt=기본 임대 시간

@@ -1,7 +1,7 @@
 index_title_v=IPv4-firewall
 index_title_v6=IPv6-firewall
 index_position=Regels $1 tot $2 van $3 worden weergegeven
-index_evalid=WAARSCHUWING! Uw huidige IPtables-configuratie is ongeldig : $1 
+index_evalid=WAARSCHUWING! Uw huidige IPtables-configuratie is ongeldig : $1
 index_no_comment=
 index_unapply2=Configuratie opslaan
 index_unapply2desc=Klik op deze knop om de bovenstaande configuratie op te slaan in het permanente firewall-configuratiebestand.
@@ -20,15 +20,15 @@ index_ipvxmode=IP-protocolversie wijzigen:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
 
-desc_icmpv6-type=ICMP-type is $1 
-desc_icmpv6-type!=ICMP-type is niet $1 
-desc_ctstate=staat van verbinding is $1 
-desc_ctstate!=verbindingsstatus is niet $1 
+desc_icmpv6-type=ICMP-type is $1
+desc_icmpv6-type!=ICMP-type is niet $1
+desc_ctstate=staat van verbinding is $1
+desc_ctstate!=verbindingsstatus is niet $1
 desc_match-set=$2 komt overeen met IP-set $1
 desc_match-set!=$2 komt niet overeen met IP-set $1
 desc_match-set_src=inkomend verkeer
 desc_match-set_dst=uitgaand verkeer
-desc_args--match-set=$2 zit in IP-set $1 
+desc_args--match-set=$2 zit in IP-set $1
 desc_src=bron
 desc_dest=bestemming
 

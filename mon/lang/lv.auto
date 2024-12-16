@@ -117,7 +117,7 @@ service_monitor=Izmantojot monitoru
 service_mon1=Standarta monitors
 service_mon0=Cits monitors ..
 service_args=Monitora parametri
-service_period=Monitoringa periods $1 
+service_period=Monitoringa periods $1
 service_days=Pārbaudes dienas
 service_hours=Pārbaudes stundas
 service_all=Visi
@@ -162,7 +162,7 @@ status_esame=MON statusa CGI programma $1 šajā Webmin modulī ir iestatīta uz
 
 users_title=MON lietotāji
 users_etype=MON lietotāju sarakstu nevar rediģēt, jo MON pašlaik nav konfigurēts tā izmantošanai autentifikācijai <a href='$1'>globālo iespēju</a> lapā.
-users_header=Atļautie MON lietotāji $1 
+users_header=Atļautie MON lietotāji $1
 users_nousers=$1 nav definēts neviens MON lietotājs.
 users_add=Izveidojiet jaunu lietotāju.
 users_return=MON lietotāju saraksts
@@ -185,7 +185,7 @@ auth_none=Neviens
 auth_all=Visi
 auth_sel=Tikai lietotāji
 auth_err=Neizdevās saglabāt klienta komandas
-auth_eusers=Neviens lietotājs neievada komandu $1 
+auth_eusers=Neviens lietotājs neievada komandu $1
 
 periods_title=Noteiktie periodi
 periods_period=Perioda nosaukums

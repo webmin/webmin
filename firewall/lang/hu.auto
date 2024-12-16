@@ -1,7 +1,7 @@
 index_title_v=IPv4 tűzfal
 index_title_v6=IPv6 tűzfal
 index_position=Szabályok megjelenítése: $3/$1–$2
-index_evalid=FIGYELEM! A jelenlegi IPtable-konfiguráció érvénytelen : $1 
+index_evalid=FIGYELEM! A jelenlegi IPtable-konfiguráció érvénytelen : $1
 index_no_comment=
 index_unapply2=Konfiguráció mentése
 index_unapply2desc=Kattintson erre a gombra a fenti konfiguráció mentéséhez az állandó tűzfal konfigurációs fájlba.
@@ -20,10 +20,10 @@ index_ipvxmode=IP-protokoll verziójának módosítása:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
 
-desc_icmpv6-type=Az ICMP típusa $1 
-desc_icmpv6-type!=Az ICMP típusa nem $1 
-desc_ctstate=a kapcsolat állapota $1 
-desc_ctstate!=a kapcsolat állapota nem $1 
+desc_icmpv6-type=Az ICMP típusa $1
+desc_icmpv6-type!=Az ICMP típusa nem $1
+desc_ctstate=a kapcsolat állapota $1
+desc_ctstate!=a kapcsolat állapota nem $1
 desc_match-set=$2 megfelel a $1 IP-készletnek
 desc_match-set!=$2 nem egyezik a $1 IP-készlettel
 desc_match-set_src=bejövő forgalom

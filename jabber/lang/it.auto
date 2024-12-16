@@ -4,10 +4,10 @@ index_edir=La directory di base Jabber $1 non esiste. Jabber non è installato o
 index_emodules=I moduli Perl $1 e $2 richiesti da Webmin per la gestione della configurazione XML di Jabber non sono installati. <a href='$3'>Fai clic qui</a> per installarli direttamente da CPAN.
 index_emodule=Il modulo Perl $1 richiesto da Webmin per la gestione della configurazione XML di Jabber non è installato. <a href='$2'>Fai clic qui</a> per installarlo direttamente da CPAN.
 index_expat=Assicurati di avere la libreria Expat C e le intestazioni installate prima di provare a installare i moduli Perl, poiché dipendono da esso e falliranno se non sono disponibili.
-index_eparse=Il modulo $1 perl non ha potuto analizzare il file di configurazione di Jabber : $2 
+index_eparse=Il modulo $1 perl non ha potuto analizzare il file di configurazione di Jabber : $2
 index_ejabberd=Il programma server Jabber $1 non è stato trovato sul tuo sistema. Jabber non è installato oppure la <a href='$2'>configurazione del modulo</a> non è corretta.
-index_eversion=Webmin supporta solo la versione Jabber $2, ma il comando $3 ha riportato le seguenti informazioni sulla versione : $1 
-index_eversion2=Webmin supporta solo versioni di Jabber inferiori a $2, ma il comando $3 ha riportato le seguenti informazioni sulla versione : $1 
+index_eversion=Webmin supporta solo la versione Jabber $2, ma il comando $3 ha riportato le seguenti informazioni sulla versione : $1
+index_eversion2=Webmin supporta solo versioni di Jabber inferiori a $2, ma il comando $3 ha riportato le seguenti informazioni sulla versione : $1
 index_start=Avviare Jabber Server
 index_startmsg=Fare clic su questo pulsante per avviare il server Jabber sul proprio sistema. Fino all'avvio, nessun client di messaggistica istantanea sarà in grado di utilizzarlo.
 index_stop=Arresta Jabber Server
@@ -16,7 +16,7 @@ index_restart=Applica i cambiamenti
 index_restartmsg=Fare clic su questo pulsante per applicare la configurazione corrente arrestando e quindi riavviando il server Jabber.
 index_comments=Avvertenza: il file di configurazione Jabber $1 contiene commenti, che verranno rimossi se vengono apportate modifiche alla configurazione utilizzando questo modulo.
 index_return=Menu Jabber
-index_version=Versione Jabber $1 
+index_version=Versione Jabber $1
 
 general_title=Opzioni generali
 general_header=Opzioni del server Jabber globale
@@ -44,7 +44,7 @@ messages_rnotify=Avvisare l'amministratore al momento della registrazione?
 messages_rfields=Campi di registrazione obbligatori
 messages_vcard2jud=Invia vCard alla directory utente di Jabber?
 messages_err=Impossibile salvare i messaggi
-messages_evcard=XML vCard non valido : $1 
+messages_evcard=XML vCard non valido : $1
 messages_etag=Server vCard XML non inizia con &lt;vCard&gt;
 
 modules_title=Moduli Jabber

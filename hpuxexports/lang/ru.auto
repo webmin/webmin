@@ -25,10 +25,10 @@ edit_async=Асинхронные записи
 
 save_enohost='$1' - Вы не указали ни одного хоста
 
-log_modify=Модифицированный экспорт NFS $1 
-log_modify_l=Модифицированный экспорт NFS от $1 до $2 
-log_delete=Удаленный экспорт NFS $1 
-log_delete_l=Удаленный экспорт NFS от $1 до $2 
-log_create=Создан экспорт NFS $1 
-log_create_l=Создан экспорт NFS от $1 до $2 
+log_modify=Модифицированный экспорт NFS $1
+log_modify_l=Модифицированный экспорт NFS от $1 до $2
+log_delete=Удаленный экспорт NFS $1
+log_delete_l=Удаленный экспорт NFS от $1 до $2
+log_create=Создан экспорт NFS $1
+log_create_l=Создан экспорт NFS от $1 до $2
 log_apply=Прикладная конфигурация

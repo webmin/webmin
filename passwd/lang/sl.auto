@@ -21,11 +21,11 @@ passwd_ecannot=Ni vam dovoljeno spreminjati gesla tega uporabnika
 passwd_euser=Uporabnik ne obstaja
 passwd_eold=Napačno staro geslo
 passwd_erepeat=Nova gesla niso enaka
-passwd_ecmd=$1 ni uspelo : $2 
+passwd_ecmd=$1 ni uspelo : $2
 passwd_ok=Geslo za uporabnika $1 je bilo uspešno spremenjeno. Če je to vaš trenutni uporabnik Webmin, boste morda prisiljeni ponovno prijaviti se.
 passwd_ok2=Geslo za uporabnika $1 je bilo uspešno spremenjeno.
 
-log_passwd=Spremenjeno geslo za uporabnika $1 
+log_passwd=Spremenjeno geslo za uporabnika $1
 
 acl_repeat=Ali morate znova vnesti novo geslo?
 acl_self=Vedno dovolite spreminjanje lastnega gesla?

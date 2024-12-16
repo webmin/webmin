@@ -56,7 +56,7 @@ edit_timeout=Istek vremena povezivanja
 edit_failed=Povezivanje nije uspjelo
 edit_baduser=Prijava je odbijena
 edit_invalid=Korisnik ne može vršiti RPC
-edit_version=Trčanje Webmin $1 
+edit_version=Trčanje Webmin $1
 edit_same=Dostupno je samo u načinu provjere autentičnosti sesije i kad lozinka postane dostupna Webmin programima.
 
 save_err=Spremanje poslužitelja nije uspjelo
@@ -71,12 +71,12 @@ save_elogin=Nevažeća prijava ili lozinka za host
 save_egroup2=Nevažeće novo ime grupe
 
 find_title=Pronađite poslužitelje
-find_new=Pronađen je novi poslužitelj na $1 
-find_but=Pronađen je novi poslužitelj na $1, ali provjera identiteta nije uspjela : $2 
-find_already=Pronađen poznati poslužitelj na $1 
-find_already2=Pronađen je poznati poslužitelj na $1 
-find_skip=Zanemarivanje poslužitelja na $1 
-find_me=Pronađen je ovaj poslužitelj na $1 
+find_new=Pronađen je novi poslužitelj na $1
+find_but=Pronađen je novi poslužitelj na $1, ali provjera identiteta nije uspjela : $2
+find_already=Pronađen poznati poslužitelj na $1
+find_already2=Pronađen je poznati poslužitelj na $1
+find_skip=Zanemarivanje poslužitelja na $1
+find_me=Pronađen je ovaj poslužitelj na $1
 find_escan=Mreža za skeniranje mora biti mrežna adresa klase C.
 find_eiface=Ne mogu pronaći sučelje za skeniranje
 find_none=Nijedan poslužitelj nije odgovorio na skeniranje.
@@ -85,13 +85,13 @@ find_scanning=Traženje poslužitelja u mreži $1 ..
 find_broading=Emitiranje poslužitelja na adresama $1 ..
 find_eport=Nedostaje ili nevažeći broj porta
 
-log_modify=Izmijenjen poslužitelj $1 
-log_create=Registrirani poslužitelj $1 
-log_delete=Izbrisan poslužitelj $1 
-log_find=Pronađen poslužitelj $1 
+log_modify=Izmijenjen poslužitelj $1
+log_create=Registrirani poslužitelj $1
+log_delete=Izbrisan poslužitelj $1
+log_find=Pronađen poslužitelj $1
 log_deletes=Izbrisani su $1 poslužitelji
 
-link_elogin=Prijava nije uspjela na $1 kao $2 
+link_elogin=Prijava nije uspjela na $1 kao $2
 link_ecannot=Nije vam dopušteno korištenje ovog poslužitelja
 link_essl=Nemate instaliranu biblioteku perl Net::SSLeay
 link_eautologin=Nevažeća prijava ili zaporka za $1. <a href='$2'>Kliknite ovdje</a> da biste pokušali ponovo.
@@ -133,8 +133,8 @@ auto_sched=Potražite nove poslužitelje?
 auto_sched1=Da, svaki $1 minuta
 auto_net=IP mreža za skeniranje
 auto_auto=Lokalna mreža
-auto_ip=IP mreže $1 
-auto_iface=Mreža na sučelju $1 
+auto_ip=IP mreže $1
+auto_iface=Mreža na sučelju $1
 auto_user=Korisničko ime za nove poslužitelje
 auto_pass=Lozinka za nove poslužitelje
 auto_type=Zadani tip sustava

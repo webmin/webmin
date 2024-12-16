@@ -20,7 +20,7 @@ index_restart=Irristartja Scheduler
 index_restartmsg=Ikklikkja din il-buttuna biex terġa 'tibda l-proċess tal-istampar tal-iskedar. Dan se jġiegħel il-konfigurazzjoni stampata attwali tiġi applikata.
 index_return=lista tal-istampaturi
 index_esystem=Jew installa l-software għas-sistema ta 'stampar magħżula tiegħek, jew uża l- <a href='$1'>konfigurazzjoni tal-modulu</a> biex tibdelha.
-index_style=Sistema ta 'stampar: $1 
+index_style=Sistema ta 'stampar: $1
 index_cluster=Servers ta 'Kluster
 index_clusterdesc=Ikklikkja din il-buttuna biex twaqqaf servers addizzjonali tal-Webmin li fuqhom se jinħolqu, jiġu aġġornati u mħassra printers.
 index_delete=Ħassar Printers magħżula
@@ -99,12 +99,12 @@ save_eremote=Is-sewwieqa ma jistgħux jintużaw bi stampaturi Unix remoti
 save_edhost=Ospitanti diretti "$1" ma jeżistux
 save_edport=Port dirett nieqes jew invalidu
 save_evalid=Is-sistema tal-istampar ma tippermettix din il-printer
-save_errslave=Stampatur ħoloq OK fuq din is-sistema, iżda seħħew l-iżbalji li ġejjin fuq sistemi ta 'raggruppament : $1 
+save_errslave=Stampatur ħoloq OK fuq din is-sistema, iżda seħħew l-iżbalji li ġejjin fuq sistemi ta 'raggruppament : $1
 save_egone=L-ebda printer bl-isem ta '"$1" ma nstab
-save_errdelslave=Stampatur imħassar OK minn din is-sistema, iżda seħħew l-iżbalji li ġejjin fuq sistemi ta 'raggruppament : $1 
+save_errdelslave=Stampatur imħassar OK minn din is-sistema, iżda seħħew l-iżbalji li ġejjin fuq sistemi ta 'raggruppament : $1
 
 jobs_title=Impjiegi Stampati
-jobs_header=Impjiegi stampati fuq $1 
+jobs_header=Impjiegi stampati fuq $1
 jobs_id=Identifikazzjoni tal-impjieg
 jobs_size=Daqs
 jobs_by=Sottomessi minn
@@ -117,7 +117,7 @@ jobs_all=Ikkanċella l-impjiegi kollha stampati
 jobs_bytes=bytes
 jobs_test=Stampa paġna tat-test
 jobs_cancelsel=Ikkanċella l-Impjiegi magħżula
-jobs_on=Fuq printer $1 
+jobs_on=Fuq printer $1
 jobs_return=lista tal-impjiegi stampati
 
 cancel_ecannot=M'għandekx permess tikkanċella xogħol stampat
@@ -197,7 +197,7 @@ suse_yast2=Sewwieq YAST2
 suse_edriver=Ma ntgħażel l-ebda tip ta 'stampatur
 suse_eres=Riżoluzzjoni nieqsa jew invalida
 
-estop=Ma rnexxiex twaqqaf lpd : $1 
+estop=Ma rnexxiex twaqqaf lpd : $1
 
 acl_printers=Stampaturi li dan l-utent jista 'jikkonfigura
 acl_add=Tista 'żżid printers ġodda?
@@ -218,20 +218,20 @@ acl_cluster=Tista 'tmexxi cluster tal-istampatur?
 log_stop=Waqqaf Skedar Stampar
 log_start=Beda l-istampar Scheduler
 log_restart=Irrestartja l-iskedar tal-istampar
-log_cancel_job=Xogħol stampat imħassar $2 fuq $1 
-log_cancel_all=Ikkanċellaw l-impjiegi kollha stampati fuq $1 
-log_cancel_sel=Ikkanċellat $2 xogħol stampat fuq $1 
-log_create=Inħoloq printer $1 fuq $2 
-log_modify=Stampatur modifikat $1 fuq $2 
-log_delete=Stampatur imħassar $1 fuq $2 
-log_create_l=Inħoloq $3 printer $1 fuq $2 
-log_modify_l=Immodifikat $3 printer $1 fuq $2 
-log_delete_l=Imħassar $3 printer $1 fuq $2 
+log_cancel_job=Xogħol stampat imħassar $2 fuq $1
+log_cancel_all=Ikkanċellaw l-impjiegi kollha stampati fuq $1
+log_cancel_sel=Ikkanċellat $2 xogħol stampat fuq $1
+log_create=Inħoloq printer $1 fuq $2
+log_modify=Stampatur modifikat $1 fuq $2
+log_delete=Stampatur imħassar $1 fuq $2
+log_create_l=Inħoloq $3 printer $1 fuq $2
+log_modify_l=Immodifikat $3 printer $1 fuq $2
+log_delete_l=Imħassar $3 printer $1 fuq $2
 
-linux_paralel=Port paralleli $1 
+linux_paralel=Port paralleli $1
 linux_serial=Port tas-serje $1 (COM $1)
 linux_null=Apparat Nul
-linux_usb=Stampatur USB $1 
+linux_usb=Stampatur USB $1
 linux_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema tal-istampar Linux mhix installata.
 linux_espool=Id-direttorju spool $1 ma jeżistix fis-sistema tiegħek, li jindika li s-sistema ta 'stampar Linux mhix installata.
 
@@ -243,8 +243,8 @@ freebsd_espool=Id-direttorju spool $1 ma jeżistix fis-sistema tiegħek, li jind
 openbsd_paralel=Port parallel
 openbsd_serial=Port tas-serje $1 (COM $1)
 
-unixware_paralel=Port paralleli $1 
-unixware_serial=Port tas-serje $1 
+unixware_paralel=Port paralleli $1
+unixware_serial=Port tas-serje $1
 unixware_null=Apparat Nul
 unixware_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema tal-istampar UnixWare mhix installata.
 
@@ -254,7 +254,7 @@ hpux_null=Apparat Nul
 hpux_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema tal-istampar HPUX mhix installata.
 hpux_eiface=Id-direttorju tal-iskripts tal-interface $1 ma jeżistix fis-sistema tiegħek, li jindika li s-sistema tal-istampar HPUX mhix installata.
 
-lprng_paralel=Port paralleli $1 
+lprng_paralel=Port paralleli $1
 lprng_serial=Port tas-serje $1 (COM $1)
 lprng_null=Apparat Nul
 lprng_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema tal-istampar LPRng mhix installata.
@@ -262,7 +262,7 @@ lprng_espool=Id-direttorju spool $1 ma jeżistix fis-sistema tiegħek, li jindik
 
 solaris_paralel=Port parallel
 solaris_uparalel=Port Parallel Ultra 5/10
-solaris_serial=Port tas-serje $1 
+solaris_serial=Port tas-serje $1
 solaris_null=Apparat Nul
 solaris_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema ta 'stampar Solaris mhix installata.
 
@@ -283,13 +283,13 @@ cups_nonemsg=Stampatur mill-bogħod jew mhux maħdum
 cups_prog=Programm
 cups_driver=Sewwieq CUPS
 cups_eprog="$1" mhuwiex programm validu
-cups_opts=Għażliet għal $1 
+cups_opts=Għażliet għal $1
 cups_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema ta 'stampar CUPS mhix installata.
 
 irix_ecmd=Il-kmand $1 ma nstabx fis-sistema tiegħek, li jindika li s-sistema tal-istampar IRIX mhix installata.
 irix_eiface=Id-direttorju tal-iskripts tal-interface $1 ma jeżistix fis-sistema tiegħek, li jindika li s-sistema tal-istampar IRIX mhix installata.
 
-aix_port=Port tal-istampatur $1 
+aix_port=Port tal-istampatur $1
 aix_edesc=Deskrizzjoni mhux valida - huma permessi biss ittri u numri, u l-ebda spazji
 aix_ecmd=Is-server tal-istampatur AIX $1 ma nstabx. Forsi mhuwiex installat, jew sistema stampata oħra qed tintuża.
 

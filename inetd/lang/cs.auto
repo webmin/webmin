@@ -3,7 +3,7 @@ index_sok=Vyhledávání
 index_toomany=Na této stránce je příliš mnoho internetových služeb.
 index_none=Vášmu vyhledávání neodpovídají žádné internetové služby.
 
-error_smfservice=Aktualizace služby smf se nezdařila s cmd '$1', kód chyby $2 
+error_smfservice=Aktualizace služby smf se nezdařila s cmd '$1', kód chyby $2
 error_smf_cmdfield=Pro smf musí název souboru programu '$1' odpovídat prvnímu argumentu příkazového pole, tj. Musí být '$2'
 
 editrpc_act=Stav programu

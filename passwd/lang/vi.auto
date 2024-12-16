@@ -21,11 +21,11 @@ passwd_ecannot=Bạn không được phép thay đổi mật khẩu người dù
 passwd_euser=người dùng không tồn tại
 passwd_eold=Mật mã cũ không chính xác
 passwd_erepeat=Mật khẩu mới không giống nhau
-passwd_ecmd=$1 thất bại : $2 
+passwd_ecmd=$1 thất bại : $2
 passwd_ok=Mật khẩu cho người dùng $1 đã được thay đổi thành công. Nếu đây là người dùng Webmin hiện tại của bạn, bạn có thể buộc phải đăng nhập lại.
 passwd_ok2=Mật khẩu cho người dùng $1 đã được thay đổi thành công.
 
-log_passwd=Mật khẩu đã thay đổi cho người dùng $1 
+log_passwd=Mật khẩu đã thay đổi cho người dùng $1
 
 acl_repeat=Phải nhập lại mật khẩu mới?
 acl_self=Luôn cho phép mật khẩu riêng được thay đổi?

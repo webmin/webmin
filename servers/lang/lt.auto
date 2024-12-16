@@ -71,12 +71,12 @@ save_elogin=Netinkamas prieglobos prisijungimo vardas arba slaptažodis
 save_egroup2=Netinkamas naujas grupės pavadinimas
 
 find_title=Rasti serverius
-find_new=Rastas naujas serveris $1 
-find_but=Rastas naujas serveris $1, tačiau autentifikuoti nepavyko : $2 
-find_already=Rastas žinomas serveris $1 
-find_already2=Rastas žinomas serverio priegloba $1 
-find_skip=Nepaisoma serverio $1 
-find_me=Šį serverį rado $1 
+find_new=Rastas naujas serveris $1
+find_but=Rastas naujas serveris $1, tačiau autentifikuoti nepavyko : $2
+find_already=Rastas žinomas serveris $1
+find_already2=Rastas žinomas serverio priegloba $1
+find_skip=Nepaisoma serverio $1
+find_me=Šį serverį rado $1
 find_escan=Nuskaitytinas tinklas turi būti C klasės tinklo adresas.
 find_eiface=Nepavyko rasti sąsajos nuskaityti
 find_none=Į nuskaitymą neatsakė nė vienas serveris.
@@ -85,13 +85,13 @@ find_scanning=Nuskaitoma serverių tinklo $1 ..
 find_broading=Transliacija serveriams adresuose $1.
 find_eport=Trūksta arba netinkamas prievado numeris
 
-log_modify=Modifikuotas serveris $1 
-log_create=Registruotas serveris $1 
-log_delete=Ištrintas serveris $1 
-log_find=Rastas serveris $1 
+log_modify=Modifikuotas serveris $1
+log_create=Registruotas serveris $1
+log_delete=Ištrintas serveris $1
+log_find=Rastas serveris $1
 log_deletes=Ištrinti $1 serveriai
 
-link_elogin=Nepavyko prisijungti prie $1 kaip $2 
+link_elogin=Nepavyko prisijungti prie $1 kaip $2
 link_ecannot=Jums neleidžiama naudotis šiuo serveriu
 link_essl=Neturite įdiegtos „perl Net::SSLeay“ bibliotekos
 link_eautologin=Netinkamas prisijungimo vardas arba slaptažodis, skirtas $1. <a href='$2'>Spustelėkite čia</a> ir bandykite dar kartą.
@@ -133,7 +133,7 @@ auto_sched=Ieškote naujų serverių?
 auto_sched1=Taip, kas $1 min
 auto_net=Skenuoti IP tinklas
 auto_auto=Vietinis tinklas
-auto_ip=IP tinklai $1 
+auto_ip=IP tinklai $1
 auto_iface=Tinklas $1 sąsajoje
 auto_user=Naujų serverių vartotojo vardas
 auto_pass=Naujų serverių slaptažodis

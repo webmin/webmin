@@ -4,10 +4,10 @@ index_edir=Základný adresár Jabber $1 neexistuje. Buď nie je nainštalovaný
 index_emodules=Moduly Perl $1 a $2, ktoré vyžaduje Webmin na spracovanie konfigurácie XML Jabberu, nie sú nainštalované. <a href='$3'>Kliknite sem</a> a nainštalujte ich priamo z CPAN.
 index_emodule=Nie je nainštalovaný modul Perl $1, ktorý vyžaduje Webmin na spracovanie konfigurácie XML Jabberu. <a href='$2'>Kliknite sem</a> a nainštalujte ho priamo z CPAN.
 index_expat=Pred inštaláciou modulov Perl sa uistite, že máte nainštalovanú knižnicu a hlavičky Expat C, pretože na nich závisia a ak nie sú k dispozícii, zlyhajú.
-index_eparse=Modul $1 perl nemohol analyzovať váš konfiguračný súbor Jabber : $2 
+index_eparse=Modul $1 perl nemohol analyzovať váš konfiguračný súbor Jabber : $2
 index_ejabberd=Program servera Jabber $1 nebol vo vašom systéme nájdený. Buď nie je nainštalovaný Jabber alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
-index_eversion=Webmin podporuje iba Jabber verziu $2, ale príkaz $3 vykázal nasledujúce informácie o verzii : $1 
-index_eversion2=Webmin podporuje iba verzie Jabber pod $2, ale príkaz $3 vykázal nasledujúce informácie o verzii : $1 
+index_eversion=Webmin podporuje iba Jabber verziu $2, ale príkaz $3 vykázal nasledujúce informácie o verzii : $1
+index_eversion2=Webmin podporuje iba verzie Jabber pod $2, ale príkaz $3 vykázal nasledujúce informácie o verzii : $1
 index_start=Spustite server Jabber
 index_startmsg=Kliknutím na toto tlačidlo spustíte server Jabber vo vašom systéme. Kým sa nespustí, nebudú ho môcť používať žiadni klienti okamžitých správ.
 index_stop=Zastavte server Jabber
@@ -16,7 +16,7 @@ index_restart=Aplikovať zmeny
 index_restartmsg=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu zastavením a opätovným spustením servera Jabber.
 index_comments=Upozornenie - váš konfiguračný súbor Jabber $1 obsahuje komentáre, ktoré sa odstránia, ak sa pomocou tohto modulu vykonajú akékoľvek zmeny konfigurácie.
 index_return=Jabber menu
-index_version=Jabber verzia $1 
+index_version=Jabber verzia $1
 
 general_title=Všeobecné možnosti
 general_header=Možnosti globálneho servera Jabber
@@ -44,7 +44,7 @@ messages_rnotify=Upozorniť administrátora na registráciu?
 messages_rfields=Povinné registračné polia
 messages_vcard2jud=Chcete odoslať vizitku vCard do adresára používateľa Jabber?
 messages_err=Uloženie správ zlyhalo
-messages_evcard=Neplatný formát XML vCard : $1 
+messages_evcard=Neplatný formát XML vCard : $1
 messages_etag=Server vCard XML sa nezačína s kartou &lt;vCard&gt;
 
 modules_title=Jabber moduly
@@ -60,7 +60,7 @@ karma_title=Karma Traffic Control
 karma_header=Možnosti riadenia rýchlosti premávky
 karma_rate=Nadmerná manipulácia s pripojením
 karma_rate_def=invalidný
-karma_rate_sel=Blokujte klienta na $2 s po pripojení $1 
+karma_rate_sel=Blokujte klienta na $2 s po pripojení $1
 karma_mode=Režim Karma
 karma_none=Bez limitov
 karma_low=Nízke dopravné limity

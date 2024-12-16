@@ -117,7 +117,7 @@ service_monitor=Uporaba monitorja
 service_mon1=Standardni monitor
 service_mon0=Drugi monitor ..
 service_args=Parametri monitorja
-service_period=Obdobje spremljanja $1 
+service_period=Obdobje spremljanja $1
 service_days=Dnevi za preverjanje
 service_hours=Ure za preverjanje
 service_all=Vse
@@ -162,7 +162,7 @@ status_esame=Program CGI statusa MON $1 je v tem modulu Webmin nastavljen na skr
 
 users_title=Uporabniki MON
 users_etype=Seznam uporabnikov MON ni mogoče urediti, ker MON trenutno ni konfiguriran, da bi ga uporabljal za preverjanje pristnosti na strani <a href='$1'>Globalne možnosti</a>.
-users_header=Dovoljeni uporabniki MON v $1 
+users_header=Dovoljeni uporabniki MON v $1
 users_nousers=V $1 ni bilo opredeljenih nobenih MON uporabnikov.
 users_add=Ustvari novega uporabnika.
 users_return=Seznam uporabnikov MON

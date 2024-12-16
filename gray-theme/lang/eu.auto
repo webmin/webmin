@@ -13,10 +13,10 @@ mmain_title=% Cloudmin $1 $2 an ($3)
 mmain_title2=Cloudmin
 mmain_title3=Hodei $1 ($2)
 
-index_virtualmintitle=Virtualmin $1 
-index_cloudmintitle=Cloudmin $1 
-index_webmintitle=Webmin $1 
-index_usermintitle=Usermin $1 
+index_virtualmintitle=Virtualmin $1
+index_cloudmintitle=Cloudmin $1
+index_webmintitle=Webmin $1
+index_usermintitle=Usermin $1
 
 config_section=Konfigurazio kategoria:
 config_change=Aldaketa

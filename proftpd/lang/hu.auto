@@ -9,7 +9,7 @@ index_dlmode=Beállítások hozzáadása a következőhöz:
 
 type_7=SSL beállítások
 
-manual_etest=Konfigurációs fájl hibája észlelve : $1 
+manual_etest=Konfigurációs fájl hibája észlelve : $1
 
 dserv_eanondir=A könyvtárnak a névtelen FTP könyvtár alatt kell lennie
 

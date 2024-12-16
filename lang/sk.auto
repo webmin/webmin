@@ -14,7 +14,7 @@ error_file=súbor
 error_line=riadok
 error_sub=funkcie
 error_stackline=V súbore $1 na riadku $2 volanie $3
-efileclose=Pri zatváraní sa nepodarilo zapísať na $1 : $2 
+efileclose=Pri zatváraní sa nepodarilo zapísať na $1 : $2
 efileopen=Nepodarilo sa otvoriť $1 na zápis : $2
 fail=neúspešný
 euserdbacl=Nepodarilo sa načítať používateľa ACL : $1
@@ -133,7 +133,7 @@ sql_epostgresqlconnect=Nepodarilo sa pripojiť k databáze PostgreSQL : $1
 sql_eldapdriver=Nepodarilo sa načítať modul perl LDAP
 sql_eldapconnect=Nepodarilo sa pripojiť k serveru LDAP $1
 sql_eldaptls=Nepodarilo sa spustiť šifrovanie TLS pre LDAP : $1
-sql_eldaplogin=Nepodarilo sa prihlásiť na server LDAP ako $1 : $2 
+sql_eldaplogin=Nepodarilo sa prihlásiť na server LDAP ako $1 : $2
 
 log_email_subject=Akcia Webmin v $1
 log_email_global=Webmin globálna akcia
@@ -166,9 +166,9 @@ paginator_nosearchrs=Neexistujú žiadne výsledky zodpovedajúce dopytu <tt>$1<
 
 langauto_include=Zahrňte strojové preklady
 
-file_truncated_message=načítal $1 dát, skrátený $2 z $3 
-file_truncated_message_head=načítaný začiatok $1 dát, skrátený $2 z $3 
-file_truncated_message_tail=načítaný koniec $1 dát, skrátený $2 z $3 
+file_truncated_message=načítal $1 dát, skrátený $2 z $3
+file_truncated_message_head=načítaný začiatok $1 dát, skrátený $2 z $3
+file_truncated_message_tail=načítaný koniec $1 dát, skrátený $2 z $3
 
 defcert_error=Používa sa predvolený $1 pribalený certifikát SSL. Dôrazne sa odporúča aktualizovať predvolený certifikát <tt>$2</tt> pred pokračovaním v prihlásení.
 

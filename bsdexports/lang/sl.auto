@@ -8,7 +8,7 @@ index_delete=Izbrišite izbrane izvoznike
 index_apply=Uporabi spremembe
 index_applydesc=Kliknite ta gumb, če želite uporabiti trenutno konfiguracijo izvoza datotek. Tako bodo vsi našteti imeniki na voljo z navedenimi možnostmi.
 index_return=izvozni seznam
-index_echeck=V tem sistemu strežnika NFS ni mogoče uporabiti : $1 
+index_echeck=V tem sistemu strežnika NFS ni mogoče uporabiti : $1
 
 check_ecmd=Ukaz strežnika NFS $1 ni nameščen
 

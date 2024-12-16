@@ -9,7 +9,7 @@ index_eha_cf=O arquivo de configuração de pulsação $1 não foi encontrado no
 index_eharesources=O arquivo de recursos $1 não foi encontrado no seu sistema. Talvez ainda não tenha sido copiado no lugar ou a <a href='$2'>configuração do módulo</a> está incorreta.
 index_eauthkeys=O arquivo de chaves de autenticação $1 não foi encontrado no seu sistema. Talvez ainda não tenha sido copiado no lugar ou a <a href='$2'>configuração do módulo</a> está incorreta.
 index_ereq_resource_cmd=O script para solicitar recursos do outro nó ($1) não foi encontrado no seu sistema. Talvez ainda não tenha sido copiado no lugar ou a <a href='$2'>configuração do módulo</a> está incorreta.
-index_version=Versão de pulsação $1 
+index_version=Versão de pulsação $1
 index_noversion=Aviso - A versão do Heartbeat instalada no seu sistema não pôde ser detectada automaticamente. Você deve configurá-lo na página <a href='$1'>configuração do módulo</a>.
 index_status=Status de pulsação
 
@@ -21,7 +21,7 @@ conf_bcasts=Interfaces de pulsação Ethernet
 conf_none=Nenhum
 conf_udpport=Porta de pulsação UDP
 conf_mcast=Dispositivo de pulsação multicast
-conf_mcastv=Dispositivo $1, grupo $2, porta $3, TTL $4, loopback $5 
+conf_mcastv=Dispositivo $1, grupo $2, porta $3, TTL $4, loopback $5
 conf_enabled=ativado
 conf_disabled=Desativado
 conf_keepalive=Tempo entre batimentos cardíacos

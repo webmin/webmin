@@ -23,7 +23,7 @@ mkpass_user=Nome do usuário
 mkpass_action=Medida tomada
 mkpass_skipcount=$1 usuários foram ignorados para conversão.
 
-savefshare_emkdir=Falha ao criar o diretório : $1 
+savefshare_emkdir=Falha ao criar o diretório : $1
 
 start_err_wb=Falha ao iniciar servidores Winbind
 

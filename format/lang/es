@@ -139,7 +139,7 @@ emounted=El disco tiene particiones montadas
 elast=La última partición no puede ser removida
 eformat=¡<tt>formato</tt> no encontró ningún disco!
 
-fstype_ufs=Sistema de archivos Unix Solaris 
+fstype_ufs=Sistema de archivos Unix Solaris
 fstype_unknown=Sistema de archivos desconocido
 
 acl_disks=Discos que este usuario puede particionar y formatear

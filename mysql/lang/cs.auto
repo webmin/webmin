@@ -4,7 +4,7 @@ index_eshow=Ve vašem systému nebyl nalezen stavový program MySQL $1. Možná 
 index_estart=Spouštěcí skript MySQL $1 nebyl ve vašem systému nalezen. Možná není MySQL nainstalována nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
 index_indexes=Rejstříky
 index_views=Pohledy
-index_version2=$3 verze $1 na $2 
+index_version2=$3 verze $1 na $2
 index_eenvpass=Klientský program MySQL $1 nepřijímá hesla předaná pomocí proměnné prostředí <tt>MYSQL_PWD</tt>. Aby bylo zajištěno, že Webmin bude schopen plně komunikovat s MySQL, měla by být tato možnost vypnuta na stránce <a href='$2'>konfigurace modulu</a>. Alternativně můžete odebrat jakékoli heslo nastavené v souboru <tt>root</tt> uživatele <tt>.my.cnf</tt>.
 index_ecnf=Ve vašem systému nebyl nalezen konfigurační soubor MySQL $1. Pomocí stránky <a href='$2'>konfigurace modulu</a> nastavte správnou cestu.
 index_nodbs3=Vášmu hledání neodpovídají žádné databáze MySQL.
@@ -35,7 +35,7 @@ view_match4=větší než
 view_match5=méně než
 view_searchheadnot=Výsledky hledání pro ne $1 v poli $2 ..
 view_go=Jít
-view_sqlrun=Výsledky generované dotazem SQL : $1 
+view_sqlrun=Výsledky generované dotazem SQL : $1
 
 users_syncwhen=Kdy synchronizovat
 users_ssl=Osvědčení
@@ -142,16 +142,16 @@ backup_notify=Odeslat e-mail pro
 backup_notify0=Všechny zálohy
 backup_notify1=Pouze při selhání
 backup_notify2=Pouze na úspěch
-backup_allsubject_failed=Při zálohování databází MySQL $2 došlo k chybám na $3 
-backup_allsubject_ok=Zálohování MySQL databází $2 bylo úspěšné na $3 
+backup_allsubject_failed=Při zálohování databází MySQL $2 došlo k chybám na $3
+backup_allsubject_ok=Zálohování MySQL databází $2 bylo úspěšné na $3
 backup_subject_failed=Záloha databáze MySQL $1 měla na $3 nějaké chyby
-backup_subject_ok=Zálohování databáze MySQL $1 proběhlo úspěšně na $3 
+backup_subject_ok=Zálohování databáze MySQL $1 proběhlo úspěšně na $3
 backup_body=Zálohování $2 MySQL databází na $1 ..
 backup_bodydoing=Zálohování $1 na $2 ..
-backup_bodyfailed=.. záloha selhala : $1 
+backup_bodyfailed=.. záloha selhala : $1
 backup_bodyok=.. záloha $1 byla vytvořena v pořádku
-backup_bodytotal=Celková velikost zálohy : $1 
-backup_bodyspace=Velikost souborového systému: $1 Volné místo : $2 
+backup_bodytotal=Celková velikost zálohy : $1
+backup_bodyspace=Velikost souborového systému: $1 Volné místo : $2
 backup_bodyall=Všechno
 backup_edownloadall=Lze stáhnout pouze jednu zálohu databáze
 backup_edownloadsave=Režim stahování nelze použít pro naplánované zálohování
@@ -197,10 +197,10 @@ root_socket=Uživatel MySQL <tt>$1</tt> používá autentizaci soketu Unix, tak�
 
 mysqlpass_err=Bezpečný režim MySQL
 mysqlpass_esafecmd=Příkaz $1 potřebný ke spuštění MySQL s deaktivovaným ověřováním nebyl nalezen
-mysqlpass_eshutdown=Vypnutí se nezdařilo : $1 
-mysqlpass_esafe=Spuštění v nouzovém režimu se nezdařilo : $1 
-mysqlpass_estartup=Spuštění se nezdařilo : $1 
-mysqlpass_echange=Změna hesla se nezdařila : $1 
+mysqlpass_eshutdown=Vypnutí se nezdařilo : $1
+mysqlpass_esafe=Spuštění v nouzovém režimu se nezdařilo : $1
+mysqlpass_estartup=Spuštění se nezdařilo : $1
+mysqlpass_echange=Změna hesla se nezdařila : $1
 mysqlpass_echange_forcepass=Pokud dojde ke ztrátě nebo zapomenutí, vynucené přepsání daného hesla
 
 ssl_title=SSL certifikát

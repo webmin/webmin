@@ -1,5 +1,5 @@
 index_title=PPTP VPN serveris
-index_version=PoPToP versija $1 
+index_version=PoPToP versija $1
 index_epptpd=PoPToP PPTP serveris $1 jūsu sistēmā netika atrasts, vai arī tā nav pareizā programma. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_econfig=Jūsu sistēmā netika atrasts PPTP servera konfigurācijas fails $1. Varbūt jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_stop=Apturēt PPTP serveri
@@ -63,7 +63,7 @@ options_err=Neizdevās saglabāt PPP iespējas
 options_emtu=Trūkst vai nav derīgs maksimālais sūtīšanas paketes lielums
 options_emru=Trūkst vai nav derīgs maksimālais saņemošās paketes lielums
 options_ename=Trūkst vai nav derīgs servera nosaukums autentifikācijai
-options_version=PPPd versija $1 
+options_version=PPPd versija $1
 options_msdesc=Tālāk esošās iespējas iespējot MS-CHAP autentifikācijas metodi un MPPE šifrēšanu, ko pēc noklusējuma izmanto Windows VPN klienti. Tomēr MPPE ir nepieciešams atbalsts gan PPP dēmonā, gan operētājsistēmas kodolā.
 options_mschap=MS-CHAP autentifikācija
 options_mschap-v2=MS-CHAP 2. versijas autentifikācija
@@ -75,7 +75,7 @@ secrets_ecannot=Jums nav atļauts rediģēt PPP kontus
 secrets_return=indekss
 secrets_none=PPP konti vēl nav izveidoti.
 secrets_enopfile=PPP paroļu fails $1 jūsu sistēmā neeksistē. Varbūt PPP nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
-secrets_table=PPP veido $1 
+secrets_table=PPP veido $1
 secrets_user=Lietotājvārds
 secrets_ips=IP adreses
 secrets_uany=JEBKĀDA
@@ -133,13 +133,13 @@ disc_err=Neizdevās atvienot
 disc_egone=Savienojumi vairs nav aktīvi
 disc_ekill=Process vairs nedarbojas
 
-log_secret_create=Izveidots PPP konts $1 
-log_secret_modify=Modificēts PPP konts $1 
-log_secret_delete=Dzēsts PPP konts $1 
+log_secret_create=Izveidots PPP konts $1
+log_secret_modify=Modificēts PPP konts $1
+log_secret_delete=Dzēsts PPP konts $1
 log_deletes=Izdzēsti $1 PPP konti
 log_conf=Pārveidotas PPTP servera opcijas
 log_options=Pārveidotas PPP iespējas
-log_disc=Atvienots klients $1 
+log_disc=Atvienots klients $1
 log_start=Sācis PPTP serveri
 log_stop=Apturēts PPTP serveris
 log_apply=Lietotā PPTP servera konfigurācija

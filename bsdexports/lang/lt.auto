@@ -8,7 +8,7 @@ index_delete=Ištrinti pasirinktus eksportus
 index_apply=Taikyti pakeitimus
 index_applydesc=Spustelėkite šį mygtuką, kad pritaikytumėte dabartinę failų eksporto konfigūraciją. Tai leis visus aukščiau išvardytus katalogus pasiekti su nurodytomis parinktimis.
 index_return=eksporto sąrašas
-index_echeck=NFS serverio negalima naudoti šioje sistemoje : $1 
+index_echeck=NFS serverio negalima naudoti šioje sistemoje : $1
 
 check_ecmd=NFS serverio komanda $1 neįdiegta
 

@@ -45,16 +45,16 @@ search_perl=Perl modul
 search_help=Webmin hjælp
 search_custom=Tilpasset dokumentation
 search_none=Der blev ikke fundet nogen dokumentation, der matchede $1.
-search_for=For $1 
+search_for=For $1
 search_google=Googles søgeresultat
 search_doxfer=Webmin online-dokumentation
 
 howto_title=HOWTO-dokument
-howto_header=HOWTO dokumentfil $1 
+howto_header=HOWTO dokumentfil $1
 howto_epath=Ugyldig HOWTO-dokumentsti
 
 doc_title=Pakkedokumentation
-doc_header=Pakkedokumentfil $1 
+doc_header=Pakkedokumentfil $1
 doc_epath=Ugyldig pakkedokumentationssti
 
 man_title=Manuel side
@@ -63,15 +63,15 @@ man_noentry=Manuel side for $1 findes ikke!
 man_epath=Manuel side kan ikke være sti!
 
 kernel_title=Kernedokument
-kernel_header=Kernedokumentfil $1 
+kernel_header=Kernedokumentfil $1
 kernel_epath=Ugyldig kerne-dokumentsti
 
 kde_title=KDE-dokumentation
-kde_header=KDE-dokumentfil $1 
+kde_header=KDE-dokumentfil $1
 kde_epath=Ugyldig KDE-dokumentationssti
 
 perl_title=Perl-modul
-perl_header=Dokumentation for Perl-modul $1 
+perl_header=Dokumentation for Perl-modul $1
 perl_emod=Ugyldigt Perl-modulnavn
 
 acl_allow=Kan redigere tilladte søgetyper?

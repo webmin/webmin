@@ -95,7 +95,7 @@ restart_ekill=Huts egin du USR2 seinalea PID $1 : $2 ra bidaltzean
 restart_epid=Jada ez da martxan
 
 start_err=Huts egin du xinetd abiaraztean
-start_estart=$1 huts egin du : $2 
+start_estart=$1 huts egin du : $2
 
 defs_title=Lehenetsitako aukerak
 defs_header=Zerbitzuen aukera lehenetsiak
@@ -130,8 +130,8 @@ log_apply=Aplikatutako aldaketak
 log_defaults=Aldatutako aukera lehenetsiak
 log_enable=$1 zerbitzuak gaituta
 log_disable=$1 zerbitzu ezgaituak
-log_enable_l=Gaitutako zerbitzuak $1 
-log_disable_l=Ezgaitutako zerbitzuak $1 
+log_enable_l=Gaitutako zerbitzuak $1
+log_disable_l=Ezgaitutako zerbitzuak $1
 
 config_dirdef=Xinetd konfigurazio fitxategia
 config_dirto=Fitxategi berria direktorioan

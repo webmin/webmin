@@ -68,9 +68,9 @@ deletes_err=Nepavyko atšaukti komandų
 deletes_enone=Nepasirinkta
 
 log_allow=Pakeisti leidžiami vartotojai
-log_create_job=Sukurta suplanuota komanda $1 
-log_delete_job=Atšaukta suplanuota komanda $1 
-log_exec_job=Vykdyta suplanuota komanda $1 
+log_create_job=Sukurta suplanuota komanda $1
+log_delete_job=Atšaukta suplanuota komanda $1
+log_exec_job=Vykdyta suplanuota komanda $1
 log_delete_jobs=Atšauktos $1 suplanuotos komandos
 log_stop=Sustabdytas suplanuotų komandų serveris
 log_start=Paleistas suplanuotų komandų serveris

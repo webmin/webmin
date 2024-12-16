@@ -41,9 +41,9 @@ save_eroot=Du har ikke vist nogen værter at dele rod med
 save_ealready=Kataloget '$1' deles allerede
 save_ehost=Værten '$1' findes ikke
 
-log_modify=Ændret NFS-andel $1 
-log_rename=Ændret NFS-andel $1 til $2 
-log_create=Oprettet NFS-andel $1 
+log_modify=Ændret NFS-andel $1
+log_rename=Ændret NFS-andel $1 til $2
+log_create=Oprettet NFS-andel $1
 log_delete=NFS-andel $1 er slettet
 log_apply=Anvendte ændringer
 

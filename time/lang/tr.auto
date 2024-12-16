@@ -1,6 +1,6 @@
 index_serviceonboot=Evet ve açılışta başla
 index_boot=Webmin başladığında senkronize edilsin mi?
-index_ehwclock=$1 başarısız oldu : $2 
+index_ehwclock=$1 başarısız oldu : $2
 index_tabtime=Ayarlanan zaman
 index_tabzone=Saat dilimini değiştir
 index_tabsync=Zaman sunucusu senkronizasyonu
@@ -15,6 +15,6 @@ acl_nontp=Zaman sunucusuyla senkronizasyon yapmanıza izin verilmiyor
 minute=Dakika
 second=İkinci
 
-error_entp=NTP zaman senkronizasyonu başarısız oldu : $1 
+error_entp=NTP zaman senkronizasyonu başarısız oldu : $1
 error_etimeserver=Girilenlerle senkronize edilecek zaman sunucusu yok
 error_serviceunknown=Bilinmeyen hizmet : $1

@@ -18,7 +18,7 @@ vgetty_return=serieportlista
 vgetty_create=Lägg till serieport
 vgetty_edit=Redigera serieport
 vgetty_header=Alternativ för seriell portkonfiguration
-vgetty_ts=Seriell port $1 
+vgetty_ts=Seriell port $1
 vgetty_other=Annan enhet ..
 vgetty_rings=Ringar innan du svarar
 vgetty_default=Global standard
@@ -100,18 +100,18 @@ pvfdesc=$1, $2 bitar
 
 upload_err=Det gick inte att lägga till meddelande
 upload_emessage=Ingen WAV-fil vald
-upload_ewav=Det gick inte att konvertera WAV-filen : $1 
-upload_epvf=Det gick inte att skapa RMD-fil : $1 
+upload_ewav=Det gick inte att konvertera WAV-filen : $1
+upload_epvf=Det gick inte att skapa RMD-fil : $1
 upload_esame=Meddelandefilen $1 finns redan
 
 log_apply=Tillämpad konfiguration
-log_upload=Uppladdat hälsningsmeddelande $1 
+log_upload=Uppladdat hälsningsmeddelande $1
 log_move=Konverterade $1 mottagna meddelanden
 log_delete0=Raderade $1 mottagna meddelanden
 log_delete1=$1 hälsningsmeddelanden raderade
 log_options=Ändrade röstmeddelandealternativ
-log_vgetty_create=Lade till seriell port $1 
-log_vgetty_modify=Modifierad serieport $1 
+log_vgetty_create=Lade till seriell port $1
+log_vgetty_modify=Modifierad serieport $1
 log_vgetty_delete=Seriell port $1 raderad
 
 email_subject=Röstmeddelande

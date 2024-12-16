@@ -5,7 +5,7 @@ index_elog=Die lêer $1 wat gebruik word vir logboekbreedte, is eintlik 'n gids 
 index_edir=Die gids vir die berging van bandwydte-data $1 bestaan nie, of is nie 'n gids nie. Pas die <a href='$2'>module-opstelling</a> aan om 'n ander pad te gebruik.
 index_emod=Die Webmin-module $1 is nie op hierdie stelsel geïnstalleer nie, of word nie deur u bedryfstelsel ondersteun nie. Die bandwydte-moniteringsmodule kan nie daarsonder werk nie.
 index_esyslog=Nie een van die System Logs-modules word op hierdie stelsel geïnstalleer en deur u OS ondersteun nie. Die bandwydte-moniteringsmodule kan nie sonder een daarvan werk nie.
-index_firesys=Gebruik $1 firewall en $2 
+index_firesys=Gebruik $1 firewall en $2
 index_setupcannot=U het egter nie die regte om dit op te stel nie!
 index_setupdesc=Voordat hierdie module oor die netwerkgebruik op u stelsel kan verslag doen, moet dit opgestel word om verkeer op die gekose eksterne netwerk-koppelvlak te monitor.
 index_setupdesc2=<b>Waarskuwing - hierdie module log ALLE netwerkverkeer wat gestuur of ontvang is op die gekose koppelvlak. Dit sal 'n groot hoeveelheid skyfruimte en SVE-tyd op 'n vinnige netwerkverbinding verbruik.</b>

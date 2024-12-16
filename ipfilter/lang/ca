@@ -2,7 +2,7 @@ index_title=Tallafoc IPFilter
 index_ecmd=No s'ha trobat al sistema l'ordre $1 del tallafoc IPFilter. Pot ser que no estigui instal·lat o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_version=IPFilter versió $1
 index_apply=Aplica la Configuració
-index_applydesc=Fes clic sobre aquest botó per fer que la configuració del tallafoc llistada més amunt sigui activa. Totes les regles del tallafoc actualment en funcionament es buidaran i substituiran 
+index_applydesc=Fes clic sobre aquest botó per fer que la configuració del tallafoc llistada més amunt sigui activa. Totes les regles del tallafoc actualment en funcionament es buidaran i substituiran
 index_applydesc2=Fes clic sobre aquest botó per fer que la configuració del tallafoc llistada més amunt sigui activa a tots els servidors del clúster. Totes les regles del tallafoc actualment en funcionament es buidaran i substituiran
 index_unapply=Reverteix la Configuració
 index_unapplydesc=Fes clic sobre aquest botó per tornar a deixar la configuració llistada més a munt a la que està actualment activa.<br><b>Atenció</b> - es perdran totes les regles, comentaris de les regles i noms de host inactius.

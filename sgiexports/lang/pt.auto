@@ -33,7 +33,7 @@ save_erw=Nenhum host de leitura e gravação inserido
 save_eroot=Nenhum host de acesso ao arquivo raiz inserido
 save_eaccess=Nenhum host de acesso de montagem inserido
 
-log_create_export=Exportação criada de $1 
-log_delete_export=Exportação excluída de $1 
-log_modify_export=Exportação modificada de $1 
+log_create_export=Exportação criada de $1
+log_delete_export=Exportação excluída de $1
+log_modify_export=Exportação modificada de $1
 log_apply=Configuração aplicada

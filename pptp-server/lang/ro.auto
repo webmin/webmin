@@ -1,5 +1,5 @@
 index_title=Server VPN PPTP
-index_version=Versiunea PoPToP $1 
+index_version=Versiunea PoPToP $1
 index_epptpd=Serverul 1 1 PoPToP PPTP nu a fost găsit pe sistemul dvs. sau nu este programul potrivit. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
 index_econfig=Fișierul de configurare a serverului PPTP $1 nu a fost găsit în sistemul dvs. Poate că configurația modulului <a href='$2'></a> este incorectă.
 index_stop=Opriți serverul PPTP
@@ -63,7 +63,7 @@ options_err=Nu a reușit să salvați opțiunile PPP
 options_emtu=Lipsește sau nu este valabilă dimensiunea maximă a pachetului de trimitere
 options_emru=Lipsește sau nu este valabil dimensiunea maximă a pachetului de primire
 options_ename=Numele serverului lipsit sau nevalid pentru autentificare
-options_version=Versiunea PPPd $1 
+options_version=Versiunea PPPd $1
 options_msdesc=Opțiunile de mai jos activează metoda de autentificare MS-CHAP și criptarea MPPE, utilizate în mod implicit de clienții VPN Windows. Cu toate acestea, MPPE necesită sprijin atât în demonul PPP, cât și în nucleul sistemului de operare.
 options_mschap=Autentificare MS-CHAP
 options_mschap-v2=Autentificare MS-CHAP versiunea 2
@@ -75,7 +75,7 @@ secrets_ecannot=Nu aveți voie să editați conturi PPP
 secrets_return=index
 secrets_none=Nu s-au creat încă conturi PPP.
 secrets_enopfile=Fișierul de parole PPP $1 nu există pe sistemul tău. Poate că PPP nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
-secrets_table=PPP reprezintă $1 
+secrets_table=PPP reprezintă $1
 secrets_user=Nume de utilizator
 secrets_ips=Adrese IP
 secrets_uany=ORICE
@@ -133,13 +133,13 @@ disc_err=Eroare la deconectare
 disc_egone=Conexiunile nu mai sunt active
 disc_ekill=Procesul nu mai rulează
 
-log_secret_create=Cont PPP creat $1 
-log_secret_modify=Cont PPP modificat $1 
-log_secret_delete=Contul PPP șters $1 
+log_secret_create=Cont PPP creat $1
+log_secret_modify=Cont PPP modificat $1
+log_secret_delete=Contul PPP șters $1
 log_deletes=Conturi PPP $1 șterse
 log_conf=Opțiuni modificate pentru server PPTP
 log_options=Opțiuni PPP modificate
-log_disc=Client deconectat $1 
+log_disc=Client deconectat $1
 log_start=A început serverul PPTP
 log_stop=Server PPTP oprit
 log_apply=Configurarea serverului PPTP aplicat

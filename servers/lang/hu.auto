@@ -45,7 +45,7 @@ save_egroup=Hiányzik a csoport neve
 save_elogin=Érvénytelen bejelentkezési név vagy jelszó a hosthoz
 save_egroup2=Érvénytelen az új csoportnév
 
-find_but=Új szervert talált a következő helyen: $1, de a hitelesítés sikertelen : $2 
+find_but=Új szervert talált a következő helyen: $1, de a hitelesítés sikertelen : $2
 find_already2=Az ismert szerver gazdagépet találta a (z) $1 oldalon
 find_skip=A kiszolgáló figyelmen kívül hagyása $1 -en
 find_eiface=Nem található a felület a beolvasáshoz

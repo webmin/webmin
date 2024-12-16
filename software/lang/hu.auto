@@ -39,7 +39,7 @@ edit_egone=A csomag már nincs telepítve
 
 list_ok=rendben
 list_view=(Kilátás)
-list_eview=A (z) $1 megnyitása nem sikerült : $2 
+list_eview=A (z) $1 megnyitása nem sikerült : $2
 
 delete_rusure2=Biztosan törli a (z) $1 csomagot?
 delete_nodeps=Nem veszi figyelembe a függőségeket?
@@ -64,7 +64,7 @@ rpm_finddesc=Leírás
 bsd_manager=$1 Csomagkezelő
 
 slack_manager=Slackware csomagkezelő
-slack_edir=Hiányzó Slackware csomagok könyvtár $1 
+slack_edir=Hiányzó Slackware csomagok könyvtár $1
 
 debian_manager=Debian
 
@@ -78,7 +78,7 @@ log_install_rhn=Telepített $2 csomagot a Redhat Network-től
 log_check_apt_l=Frissített csomag (ok) $1 az APT-től
 log_check_apt=Frissített $2 csomag (ok) az APT-től
 log_delete=Távolítsa el a (z) $1 csomagot
-log_deletes_l=Nem eltávolított csomagok $1 
+log_deletes_l=Nem eltávolított csomagok $1
 log_deletes=Nem eltávolított $1 csomag
 log_urpmi_update=Frissítve az elérhető URPMI csomagokat
 log_urpmi_upgrade=Frissített telepített URPMI csomagok
@@ -201,7 +201,7 @@ rpm_dev=eszköz
 rpm_user=felhasználói tulajdon
 rpm_perm=jogosultságok
 rpm_group=csoporttulajdon
-rpm_erpm=RPM $1 nem található : $2 
+rpm_erpm=RPM $1 nem található : $2
 
 soft_reg=Normál fájl
 soft_dir=Könyvtár
@@ -211,9 +211,9 @@ soft_hard=Hard Link
 soft_edit=Szerkeszthető fájl
 soft_efunc=Nem sikerült betölteni a $1 csomagrendszer funkcióit.
 soft_euncompress=A fájl tömörítve van, de a <tt>kicsomagolás</tt> parancs a rendszerben nem található.
-soft_euncmsg=A fájl kibontása nem sikerült : $1 
+soft_euncmsg=A fájl kibontása nem sikerült : $1
 soft_egzip=A fájl gzippelve van, de a gzip parancs nem található a rendszeren.
-soft_egzmsg=Nem sikerült feladni a fájlt : $1 
+soft_egzmsg=Nem sikerült feladni a fájlt : $1
 
 aix_unknown=Ismeretlen
 aix_device=INPUT eszköz / könyvtár a szoftverhez
@@ -251,21 +251,21 @@ emerge_name=fuvarozás
 
 cygwin_fmissing=A fájl hiányzik
 cygwin_lmissing=Hiányzik a linkre mutató fájl
-cygwin_estat=Nem sikerült a stat fájl: $1 
-cygwin_elread=Nem sikerült olvasni a szimbólumot: $1 
-cygwin_elstat=Nem sikerült létrehozni a hivatkozás: $1 
+cygwin_estat=Nem sikerült a stat fájl: $1
+cygwin_elread=Nem sikerült olvasni a szimbólumot: $1
+cygwin_elstat=Nem sikerült létrehozni a hivatkozás: $1
 cygwin_badpostscript=Figyelem: Ez a szkript nem tűnik futtatottnak
 cygwin_pkgexists=A $1 csomag már létezik.
 cygwin_warnuse=Figyelem: Ez nem egy hivatalos felület a Cygwin szoftver kezeléséhez. Használat csak saját felelősségre.
-cygwin_edb=Hiányzó Cygwin csomag adatbázis $1 
+cygwin_edb=Hiányzó Cygwin csomag adatbázis $1
 
 deletes_err=Nem sikerült a csomagok törlése
 deletes_enone=Nincs kiválasztva csomag
 deletes_title=Törölje a csomagokat
 deletes_desc=$1 csomagok eltávolítása ..
-deletes_failed1=A (z) $1 eltávolítása nem sikerült : $2 
+deletes_failed1=A (z) $1 eltávolítása nem sikerült : $2
 deletes_success1=$1 sikeres eltávolítása
-deletes_failed2=Az eltávolítás sikertelen : $1 
+deletes_failed2=Az eltávolítás sikertelen : $1
 deletes_success2=.. az eltávolítás befejeződött.
 deletes_rusure=Biztosan eltávolítani akarja a (z) $1 csomagokat?
 deletes_ok=Törölje őket

@@ -8,7 +8,7 @@ index_inet=อินเทอร์เน็ต
 index_proto=มาตรการ
 index_user=ผู้ใช้งาน
 index_server=โปรแกรมเซิร์ฟเวอร์
-index_redirect=ส่งต่อไปยัง $1 
+index_redirect=ส่งต่อไปยัง $1
 index_enabled=เปิดการใช้งาน?
 index_internal=ภายใน Xinetd
 index_add_inet=สร้างบริการอินเทอร์เน็ตใหม่
@@ -70,7 +70,7 @@ serv_eport=หมายเลขพอร์ตหายไปหรือไม
 serv_einst=เซิร์ฟเวอร์ที่เกิดขึ้นพร้อมกันจำนวนที่ขาดหายไปหรือไม่ถูกต้อง
 serv_euser=คุณต้องป้อนผู้ใช้
 serv_egroup=คุณต้องป้อนกลุ่ม
-serv_estd=ไม่มีหมายเลขพอร์ตมาตรฐานสำหรับบริการ $1 
+serv_estd=ไม่มีหมายเลขพอร์ตมาตรฐานสำหรับบริการ $1
 serv_eproto=คุณต้องเลือกโปรโตคอลสำหรับบริการนี้
 serv_eserver=โปรแกรมเซิร์ฟเวอร์ขาดหายไปหรือไม่ถูกต้อง
 serv_erhost=โฮสต์การส่งต่อที่ขาดหายไปหรือไม่ถูกต้อง
@@ -91,11 +91,11 @@ proto_tcp=TCP (โปรโตคอลควบคุมการส่ง)
 proto_udp=UDP (โปรโตคอลดาต้าแกรมผู้ใช้)
 
 restart_err=ไม่สามารถใช้การเปลี่ยนแปลง
-restart_ekill=ไม่สามารถส่งสัญญาณ USR2 ไปที่ PID $1 : $2 
+restart_ekill=ไม่สามารถส่งสัญญาณ USR2 ไปที่ PID $1 : $2
 restart_epid=ไม่ทำงานอีกต่อไป
 
 start_err=ไม่สามารถเริ่ม xinetd
-start_estart=$1 ล้มเหลว : $2 
+start_estart=$1 ล้มเหลว : $2
 
 defs_title=ตัวเลือกเริ่มต้น
 defs_header=ตัวเลือกเริ่มต้นสำหรับบริการ
@@ -122,16 +122,16 @@ defs_efile=ชื่อไฟล์บันทึกที่ขาดหาย
 defs_esoft=ขีด จำกัด ซอฟต์หายไปหรือไม่ถูกต้อง
 defs_ehard=ขีด จำกัด ฮาร์ดหายไปหรือไม่ถูกต้อง
 
-log_create_serv=สร้าง $2 บริการ $1 
+log_create_serv=สร้าง $2 บริการ $1
 log_modify_serv=แก้ไข $2 บริการ $1 แล้ว
 log_delete_serv=ลบบริการ $2 $1 แล้ว
 log_start=เริ่มเซิร์ฟเวอร์ Xinetd
 log_apply=การเปลี่ยนแปลงที่นำไปใช้
 log_defaults=เปลี่ยนตัวเลือกเริ่มต้น
 log_enable=เปิดใช้งานบริการ $1 แล้ว
-log_disable=ปิดใช้งานบริการ $1 
-log_enable_l=บริการที่เปิดใช้งาน $1 
-log_disable_l=บริการที่ปิดใช้งาน $1 
+log_disable=ปิดใช้งานบริการ $1
+log_enable_l=บริการที่เปิดใช้งาน $1
+log_disable_l=บริการที่ปิดใช้งาน $1
 
 config_dirdef=ไฟล์การกำหนดค่า Xinetd
 config_dirto=ไฟล์ใหม่ในไดเรกทอรี

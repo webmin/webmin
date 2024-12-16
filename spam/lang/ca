@@ -1,6 +1,6 @@
 index_title=Filtre de Correu SpamAssassin
 index_ecmd=No s'ha trobat al sistema l'ordre $1 de SpamAssassin. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-index_ecmd2=No s'ha trobat al sistema l'ordre $1 de spamassassin. 
+index_ecmd2=No s'ha trobat al sistema l'ordre $1 de spamassassin.
 index_econfig=No s'ha trobat al sistema el directori o fitxer de configuració local $1 de SpamAssassin. Pot ser que SpamAssassin no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_unknown=desconegut
 index_edb=No s'ha pogut connectar amb la base de dades de configuracio de SpamAssassin: $1. Comprova la <a href='$2'>configuració del mòdul</a> per assegurar que estàs utilitzant els valors correctes.
@@ -307,7 +307,7 @@ amavis_delete_level=Impactes per sobre dels quals s'esborra un missatge de Spam.
 amavis_report_header=Insereix la capçalera X-Spam-Header al missatge
 amavis_level_char=Caràcter utilitzat per mostrar el nivell de Spam a la capçalera X-Spam-Level:
 amavis_rewrite=Modifica la capçalera Assumpte: de spam
-amavis_rsubject=Prefixa text a la capçalera Subject: 
+amavis_rsubject=Prefixa text a la capçalera Subject:
 amavis_size_limit=Mida de missatge en bytes per sobre de la qual no es comprova si el missatge és Spam.
 amavis_local_only=Desactiva els orígens d'Internet per a la comprovació de Spam
 amavis_quarantine_desc=Mostra on posa Amavisd el Spam en Quarantena, mostra també les Estadístiques de Spam si està activada la Quarantena local. Si la Quarantena està desactivada o reenviada a una adreça de correu, no es podem mostrar les Estadístiques de Spam.

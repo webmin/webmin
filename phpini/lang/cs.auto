@@ -1,4 +1,4 @@
-file_eread=Nepodařilo se přečíst $1 : $2 
+file_eread=Nepodařilo se přečíst $1 : $2
 
 list_efile=Soubor, který chcete upravit, musí být absolutní cesta
 list_format_ini=Formát INI

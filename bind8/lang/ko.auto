@@ -38,7 +38,7 @@ index_eexpired=경고  : 다음 영역은 DNSSEC 서명이 만료되었습니다
 index_eexpired_conf=$1 페이지에서 자동 서명을 다시 활성화해야합니다.
 index_eexpired_mod=$1 모듈을 사용하여 이러한 도메인에 대해 DNSSEC를 비활성화하거나 서명이 실패한 이유를 확인하십시오.
 
-master_inview=뷰 $2 의 $1 
+master_inview=뷰 $2 의 $1
 master_egone=$1 영역이 뷰에 존재하지 않습니다
 master_egone2=영역 $1이 없습니다!
 master_egone3=$2보기의 $1 영역이 존재하지 않습니다!

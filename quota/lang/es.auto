@@ -34,9 +34,9 @@ lusers_mass=Actualizar usuarios seleccionados
 lusers_cc=También envíe un correo electrónico a
 lusers_nocc=Nadie
 
-log_email_user=Cambiar las opciones de correo electrónico del usuario en $1 
-log_email_group=Cambiar las opciones de correo electrónico grupal en $1 
-log_support=Soporte de cuota habilitado para $1 
+log_email_user=Cambiar las opciones de correo electrónico del usuario en $1
+log_email_group=Cambiar las opciones de correo electrónico grupal en $1
+log_support=Soporte de cuota habilitado para $1
 
 email_ecc=Falta o no válido CC: dirección
 gemail_msg=El uso del disco para el grupo $1 en el sistema de archivos $2 ha alcanzado $3% de la cuota permitida. Se está utilizando $4 del espacio en disco, de un máximo de $5.

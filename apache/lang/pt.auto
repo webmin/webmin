@@ -37,7 +37,7 @@ index_delete=Excluir servidores selecionados
 cvirt_eroot3=Você não tem permissão para usar o diretório raiz '$1'
 cvirt_eroot4=Nenhum usuário definido na configuração do Apache
 cvirt_etaken=Já existe um servidor virtual com o mesmo nome e porta
-cvirt_efile=Falha ao gravar em $1 : $2 
+cvirt_efile=Falha ao gravar em $1 : $2
 cvirt_emissing=O novo servidor virtual foi adicionado a $1, mas esse arquivo não é usado pelo Apache. Verifique a <a href='$2'>configuração do módulo</a> e verifique se o 'Arquivo ou diretório ao qual adicionar servidores virtuais' está correto.
 
 default_serv=servidor padrão

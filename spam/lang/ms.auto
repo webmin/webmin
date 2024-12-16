@@ -4,7 +4,7 @@ index_ecmd2=Perintah SpamAssassin $1 tidak dijumpai pada sistem anda.
 index_econfig=Fail konfigurasi atau direktori konfigurasi SpamAssassin $1 tidak ditemui pada sistem anda. Mungkin SpamAssassin tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
 index_unknown=tidak diketahui
 index_edb=Gagal menyambung ke pangkalan data konfigurasi SpamAssassin: $1. Semak <a href='$2'>konfigurasi modul</a> untuk memastikan anda menggunakan tetapan yang betul.
-index_version=Versi SpamAssassin $1 
+index_version=Versi SpamAssassin $1
 index_warn_usermin=SpamAssassin tidak muncul dalam fail konfigurasi Procmail anda $2 atau fail global $1, jadi apa-apa konfigurasi yang dilakukan dengan menggunakan modul ini akan tiada kesan kecuali SpamAassassin telah ditetapkan secara global.
 index_warn_webmin=SpamAssassin tidak kelihatan didirikan dalam fail konfigurasi Procmail system $1, jadi apa-apa konfigurasi yang dilakukan menggunakan modul ini tidak akan memberi kesan melainkan jika pengguna memasangnya secara individu.
 index_return=indeks modul
@@ -12,7 +12,7 @@ index_apply=Terapkan Perubahan
 index_applydesc=Klik butang ini untuk menggunakan konfigurasi SpamAssassin semasa dengan menghantar isyarat HUP ke semua proses $1 berjalan.
 index_cpan=Oleh kerana SpamAssassin adalah mod Perl, anda juga boleh memasangnya secara automatik menggunakan modul <a href='$2'>Perl Modul</a> Webmin untuk memuat turun $1 dari CPAN.
 index_spamassassin=SpamAssassin
-index_ecannot=Anda tidak dibenarkan untuk menguruskan fail konfigurasi SpamAssassin $1 
+index_ecannot=Anda tidak dibenarkan untuk menguruskan fail konfigurasi SpamAssassin $1
 
 white_title=Alamat yang Dibenarkan dan Ditolak
 white_desc=Jadual-jadual di halaman ini membolehkan anda menentukan Dari: dan Ke: alamat untuk e-mel yang selalu atau tidak pernah dikategorikan sebagai spam. Sebarang e-mel lain akan diproses seperti biasa oleh peraturan SpamAssassin. Semua alamat e-mel boleh mengandungi wildcard, seperti *@foo.com atau *. Foo.com untuk memadankan seluruh domain.
@@ -111,7 +111,7 @@ report_addtext=Teks untuk pengepala
 report_addspam=Spam
 report_addham=Ham
 report_addall=Semua
-report_eaddheader=Tandukan tambahan atau tidak sah untuk menambah $1 
+report_eaddheader=Tandukan tambahan atau tidak sah untuk menambah $1
 
 user_title=Pelbagai Pilihan Pengguna
 user_desc=Pilihan di halaman ini kebanyakannya berkaitan dengan laluan dan tetapan yang digunakan oleh SpamAssassin untuk pakej pengenalan spam luaran Razor, DCC dan Pyzor. Anda juga boleh memberitahu SpamAssassin jika ia dapat melakukan carian DNS atau tidak.
@@ -190,7 +190,7 @@ priv_emscore='$1' bukan skor frasa tertinggi yang sah
 priv_ephrase='$1' bukan frasa spam dua perkataan yang sah
 priv_escore=Skor hilang atau tidak sah untuk frasa '$1'
 
-usually=Biasanya $1 
+usually=Biasanya $1
 ecannot=Anda tidak dibenarkan menggunakan halaman ini
 setup_title=Setup Procmail Untuk SpamAssassin
 setup_desc_webmin=Borang ini boleh digunakan untuk menyiapkan Procmail dalam $1 untuk menjalankan SpamAassassin pada semua mesej e-mel yang diterima oleh sistem anda. Walau bagaimanapun, ini hanya akan berkuatkuasa sekiranya pelayan mel anda telah dikonfigurasi untuk menggunakan Procmail untuk penghantaran tempatan, atau untuk pengguna yang fail <tt>.forward</tt> ditetapkan untuk menjalankan Procmail.
@@ -244,7 +244,7 @@ mail_razor=Laporkan sebagai Spam & Padam
 mail_ham=Laporkan sebagai Ham & Peti Masuk
 mail_delete=Padam
 mail_return=senarai mel spam
-mail_pos=Mesej spam $1 hingga $2 daripada $3 
+mail_pos=Mesej spam $1 hingga $2 daripada $3
 mail_none=Tiada mesej dalam folder spam anda
 mail_refresh=Refresh
 mail_will=Segerakan automatik dalam $1 minit
@@ -253,7 +253,7 @@ mail_delall=Padamkan Semua Spam
 mail_search3=Cari skor di atas:
 
 process_eclean=Ralat berlaku mengalih keluar tajuk SpamAssassin dari e-mel ini
-process_ereport=Gagal melaporkan e-mel kepada SpamAssassin : $1 
+process_ereport=Gagal melaporkan e-mel kepada SpamAssassin : $1
 
 apply_err=Gagal menggunakan perubahan
 apply_none=Tiada proses daemon SpamAssassin dijumpai!
@@ -263,8 +263,8 @@ acl_file=Fail konfigurasi SpamAssassin untuk diedit
 acl_filedef=Fail konfigurasi global
 acl_awl=Pengguna yang dibenarkan untuk penyuntingan auto-whitelist
 acl_awl0=Semua pengguna
-acl_awl1=Hanya pengguna yang disenaraikan $1 
-acl_awl2=Hanya ahli kumpulan $1 
+acl_awl1=Hanya pengguna yang disenaraikan $1
+acl_awl2=Hanya ahli kumpulan $1
 
 search_escore=Skor spam hilang atau tidak sah
 search_results5=$1 mesej mel dengan skor spam pada atau di atas $2 ..
@@ -337,20 +337,20 @@ simple_score=Skor untuk memohon
 simple_describe=Penerangan
 simple_err=Gagal menyimpan ujian mesej
 
-before_ecmd=Perintah sebelum penjimatan gagal : $1 
-after_ecmd=Arahan penjimatan gagal : $1 
+before_ecmd=Perintah sebelum penjimatan gagal : $1
+after_ecmd=Arahan penjimatan gagal : $1
 
-connect_emysql=Gagal memuat pemacu pangkalan data $1 
+connect_emysql=Gagal memuat pemacu pangkalan data $1
 connect_elogin=Gagal masuk ke pangkalan data $1:$2.
-connect_equery=Pangkalan data $1 tidak mengandungi jadual pilihan $2 
+connect_equery=Pangkalan data $1 tidak mengandungi jadual pilihan $2
 connect_eldapmod=Modul Perl $1 yang diperlukan untuk berkomunikasi dengan LDAP tidak dipasang atau tidak boleh dimuatkan
-connect_eldap=Gagal menyambung ke pelayan LDAP $1 pada port $2 
-connect_eldaplogin=Gagal masuk ke pelayan LDAP $1 sebagai $2 : $3 
-connect_ebase=Pangkalan LDAP DN $1 tidak sah : $2 
+connect_eldap=Gagal menyambung ke pelayan LDAP $1 pada port $2
+connect_eldaplogin=Gagal masuk ke pelayan LDAP $1 sebagai $2 : $3
+connect_ebase=Pangkalan LDAP DN $1 tidak sah : $2
 
-eldap=Operasi LDAP gagal : $1 
-esql=SQL gagal : $1 
-ldap_euser=Tidak dapat mencari objek pengguna LDAP untuk $1 
+eldap=Operasi LDAP gagal : $1
+esql=SQL gagal : $1
+ldap_euser=Tidak dapat mencari objek pengguna LDAP untuk $1
 
 db_title=Pangkalan Data SQL dan LDAP
 db_header=Pilihan pangkalan penyimpanan konfigurasi

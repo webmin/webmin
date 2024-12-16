@@ -107,7 +107,7 @@ edit_none=Nenhum módulo PAM especificado para esta etapa.
 edit_delete=Excluir serviço PAM
 edit_move=Mover
 edit_return=Serviço PAM
-edit_inc=Incluir serviço $1 
+edit_inc=Incluir serviço $1
 edit_iheader=Serviços PAM incluídos
 
 pam_pwdb.so=Autenticação de senha Unix
@@ -273,17 +273,17 @@ mail_edir=Diretório de spool de correio ausente ou inválido
 
 stack_service=Passe a verificação para o serviço PAM
 
-log_pam_create=Serviço PAM criado $1 
-log_pam_delete=Serviço de PAM excluído $1 
-log_mod_create=Módulo PAM $1 adicionado ao serviço $2 
-log_mod_modify=Módulo PAM modificado $1 em serviço $2 
-log_mod_delete=Módulo PAM excluído $1 em serviço $2 
-log_mod_move=Módulos PAM trocados em serviço $3 
-log_mod_move_l=Módulos PAM trocados $1 e $2 em serviço $3 
-log_inc_create=Adicionado $1 para o serviço $2 
-log_inc_modify=Modificado inclui $1 para o serviço $2 
-log_inc_delete=Excluídos incluem $1 para o serviço $2 
-log_incs=Atualizado inclui para o serviço $1 
+log_pam_create=Serviço PAM criado $1
+log_pam_delete=Serviço de PAM excluído $1
+log_mod_create=Módulo PAM $1 adicionado ao serviço $2
+log_mod_modify=Módulo PAM modificado $1 em serviço $2
+log_mod_delete=Módulo PAM excluído $1 em serviço $2
+log_mod_move=Módulos PAM trocados em serviço $3
+log_mod_move_l=Módulos PAM trocados $1 e $2 em serviço $3
+log_inc_create=Adicionado $1 para o serviço $2
+log_inc_modify=Modificado inclui $1 para o serviço $2
+log_inc_delete=Excluídos incluem $1 para o serviço $2
+log_incs=Atualizado inclui para o serviço $1
 
 inc_edit=Editar serviço incluído
 inc_create=Criar serviço incluído

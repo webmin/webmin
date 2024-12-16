@@ -134,7 +134,7 @@ ucwhen_cron=Cron işi $1'de
 move_err=Cron işinin taşınmasında hata oluştu
 move_etype=Bu iş taşınamaz
 
-kill_err=Cron işinin durdurulmasında hata oluştu 
+kill_err=Cron işinin durdurulmasında hata oluştu
 kill_ecannot=Bu işi durdurmak için izininiz yoktur
 kill_egone=Artık çalışmıyor
 kill_ekill=Durdurulurken hata oluştu : $1

@@ -14,5 +14,5 @@ acl_user_def=Người dùng Webmin hiện tại
 acl_shellenv=Sử dụng môi trường người dùng đã chọn?
 acl_chroot=Chroot vào thư mục
 
-log_run=Lệnh Ran $1 
+log_run=Lệnh Ran $1
 log_clear=Xóa lịch sử lệnh

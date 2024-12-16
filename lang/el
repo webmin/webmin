@@ -29,7 +29,7 @@ longcategory_net=Αρθρώματα για δικτυακές ρυθμίσεις
 longcategory_cluster=Αρθρώματα που μπορούν να χειριστούν πολλαπλούς εξυπηρετητές μέσα από μία μόνο διεπαφή
 longcategory_info=Αρθρώματα που εμφανίζουν πληροφορίες σχετικά με το σύστημά σας
 
-header_webmin=Ευρετήριο Webmin 
+header_webmin=Ευρετήριο Webmin
 header_module=Ευρετήριο Αρθρωμάτων
 header_help=Βοήθεια..
 header_config=Ρυθμίσεις Αρθρώματος
@@ -100,7 +100,7 @@ config_none=Κανένα
 config_eaccess=Δεν έχετε δικαίωμα πρόσβασης σε αυτό το άρθρωμα
 config_err=Αποτυχία αποθήκευσης αρχείου ρυθμίσεων
 config_nochange=Να μην αλλάξει
-config_setto=Ορισμός σε 
+config_setto=Ορισμός σε
 config_ewebmin=Η παράμετρος τύπου 14 λειτουργεί μόνο στο Webmin
 
 help_err=Αποτυχία εμφάνισης Βοήθειας
@@ -222,7 +222,7 @@ feedback_os=Συμπερίληψη πληροφοριών λειτουργικο
 feedback_osdesc=Εάν αυτή η επιλογή είναι ενεργή, το αυτόματο email ανατροφοδότησης θα συμπεριλαμβάνει το όνομα του λειτουργικού σας συστήματος και την έκδοσή του.
 feedback_config=Συμπερίληψη ρύθμισης αρθρώματος στο email;
 feedback_configdesc=Εάν είναι επιλεγμένο, το email θα περιλαμβάνει και την ρύθμιση του σχετικού αρθρώματος και τα περιεχόμενα των αρχείων ρυθμίσεων που χρησιμοποιεί. Για παράδειγμα, εάν οι πληροφορίες αφορούσαν το άρθρωμα <i>Χρήστες και Ομάδες</i>, θα στέλνονταν επίσης και τα αρχεία <tt>/etc/passwd</tt> και <tt>/etc/shadow</tt>.
-feedback_attach=Επιπλέον αρχεία για επισύναψη 
+feedback_attach=Επιπλέον αρχεία για επισύναψη
 feedback_send=Αποστολή Ανατροφοδότησης
 feedback_mailserver=Αποστολή μέσω SMTP διακομιστή
 feedback_mailserver_def=Τοπική εφαρμογή sendmail
@@ -242,7 +242,7 @@ progress_nosize=Λήψη $1 ..
 progress_done=.. η λήψη ολοκληρώθηκε
 progress_incache=Βρέθηκε $1 στην cache ..
 
-readparse_cdheader=Λείπει Content-Disposition επικεφαλίδα 
+readparse_cdheader=Λείπει Content-Disposition επικεφαλίδα
 readparse_enc=Αναμενόταν κωδικοποίηση δεδομένων φόρμας, αλλά παραλήφθηκε κανονική κωδικοποίηση
 readparse_max=Το μέγεθος των δεδομένων ξεπέρασε το μέγιστο δυνατό των $1 bytes
 

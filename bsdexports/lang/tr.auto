@@ -8,7 +8,7 @@ index_delete=Seçilen Dışa Aktarmaları Sil
 index_apply=Değişiklikleri uygula
 index_applydesc=Geçerli dosya dışa aktarma yapılandırmasını uygulamak için bu düğmeyi tıklatın. Bu, yukarıda listelenen tüm dizinleri belirtilen seçeneklerle kullanılabilir hale getirecektir.
 index_return=ihracat listesi
-index_echeck=NFS sunucusu bu sistemde kullanılamaz : $1 
+index_echeck=NFS sunucusu bu sistemde kullanılamaz : $1
 
 check_ecmd=$1 NFS sunucu komutu yüklü değil
 

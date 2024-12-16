@@ -7,10 +7,10 @@ index_relabeldesc=Удалите все существующие разделы 
 index_relabel2=Создать таблицу разделов
 index_relabeldesc2=Создайте новую пустую таблицу разделов на этом диске, чтобы можно было добавлять разделы.
 
-select_nvme=NVME SSD $1 диск $2 
-select_nvmepart=NVME SSD $1 диск $2 раздел $3 
+select_nvme=NVME SSD $1 диск $2
+select_nvmepart=NVME SSD $1 диск $2 раздел $3
 
-edit_mountiscsi=Общее устройство iSCSI $1 
+edit_mountiscsi=Общее устройство iSCSI $1
 edit_name=Название раздела
 edit_eparted=Этот раздел нельзя изменить, если не установлена команда <tt>parted</tt>.
 edit_eparted2=Этот раздел нельзя изменить, если <tt>parted</tt> не задан как команда управления в конфигурации модуля.
@@ -28,8 +28,8 @@ blink_back=Возвращаться
 fs_ext4=Новый Linux Native
 fs_btrfs=BTR
 
-disk_iscsi=Общее устройство iSCSI $1 
-disk_table=<b>Формат таблицы разделов:</b> $1 
+disk_iscsi=Общее устройство iSCSI $1
+disk_table=<b>Формат таблицы разделов:</b> $1
 disk_notable=<b>Формат таблицы разделов:</b> не создан
 disk_needtable=Никакие разделы не могут быть созданы без таблицы разделов.
 disk_return=список разделов

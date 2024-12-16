@@ -94,7 +94,7 @@ udel_failed=...ha fallat!: $1
 raw_title=Atributs LDAP
 raw_name=Nom de l'atribut
 raw_value=Valors
-raw_for=De $1 
+raw_for=De $1
 
 batch_samba=Crea un compte Samba per als usuaris nous
 batch_imap=Crea un compte IMAP per als usuaris nous

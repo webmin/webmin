@@ -30,7 +30,7 @@ search_critd=gdje opis sadrži <tt>$1</tt>
 search_global=nijedan
 search_global_login=Prijavljeni ste na Webmin
 search_global_logout=Odjavljeni su s Webmin-a
-search_global_failed=Prijava na Webmin nije uspjela : $1 
+search_global_failed=Prijava na Webmin nije uspjela : $1
 search_global_expiredpass=Zaporka je istekla
 search_global_wronguser=Nevažeći korisnik
 search_global_wrongpass=Netočna zaporka
@@ -58,5 +58,5 @@ notify_emods=Nije odabran nijedan modul
 notify_eusers=Nije odabran nijedan korisnik
 notify_eemail=Nema unesene adrese e-pošte
 
-log_rollback=Vratna akcija natrag $1 u modulu $2 
+log_rollback=Vratna akcija natrag $1 u modulu $2
 log_notify=Opcije spremljenih obavijesti e-poštom

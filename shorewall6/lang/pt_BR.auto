@@ -1,7 +1,7 @@
 index_title=Shorewall6 Firewall
 index_ecmd=O comando $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou a <a href='$2'>configuração do módulo</a> está incorreta.
 index_edir=O diretório de configuração Shorewall $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou a <a href='$2'>configuração do módulo</a> está incorreta.
-index_version=Shorewall6 versão $1 
+index_version=Shorewall6 versão $1
 index_return=lista de mesas
 index_restart=Aplicar configuração
 index_restartdesc=Clique neste botão para ativar a configuração atual do Shorewall com o comando <tt>shorewall6 restart</tt>.
@@ -85,7 +85,7 @@ policy_1=Zona de destino
 policy_2=Política
 policy_3=Nível Syslog
 policy_4=Limite de tráfego
-policy_limit=Limite $1, explosão $2 
+policy_limit=Limite $1, explosão $2
 policy_return=lista de políticas
 policy_edit=Editar política padrão
 policy_create=Criar diretiva padrão
@@ -310,13 +310,13 @@ hosts_err=Falha ao salvar o host da zona
 hosts_enet=Endereço de host ausente ou inválido
 hosts_header=Detalhes do host da zona
 hosts_routestopped=Rota mesmo quando o firewall está parado?
-hosts_ip=Endereço ou rede $1 
-hosts_mac=Endereço MAC $1 
-hosts_ipset=Conjunto de IP $1 
+hosts_ip=Endereço ou rede $1
+hosts_mac=Endereço MAC $1
+hosts_ipset=Conjunto de IP $1
 hosts_any=Qualquer host
 
-edit_before=Antes da entrada $1 
-edit_after=Após a entrada $1 
+edit_before=Antes da entrada $1
+edit_after=Após a entrada $1
 
 blacklist_title=Anfitriões da lista negra
 blacklist_desc=Esta página lista hosts e serviços que serão bloqueados se o tráfego deles chegar em uma interface com a opção <b>lista negra</b> definida.
@@ -422,16 +422,16 @@ comment_msg=mensagem
 comment_err=Falha ao salvar o comentário
 comment_enone=Nenhuma mensagem inserida
 
-log_create_table=Entrada adicionada à tabela $1 
-log_modify_table=Entrada modificada na tabela $1 
-log_delete_table=Entrada excluída da tabela $1 
-log_deletes_table=Entradas excluídas da tabela $1 
-log_up_table=Entrada movida na tabela $1 
-log_down_table=Entrada movida para baixo na tabela $1 
-log_manual_table=Editado manualmente o arquivo de tabela $1 
-log_create_comment=Comentário adicionado à tabela $1 
-log_modify_comment=Comentário modificado na tabela $1 
-log_delete_comment=Comentário excluído da tabela $1 
+log_create_table=Entrada adicionada à tabela $1
+log_modify_table=Entrada modificada na tabela $1
+log_delete_table=Entrada excluída da tabela $1
+log_deletes_table=Entradas excluídas da tabela $1
+log_up_table=Entrada movida na tabela $1
+log_down_table=Entrada movida para baixo na tabela $1
+log_manual_table=Editado manualmente o arquivo de tabela $1
+log_create_comment=Comentário adicionado à tabela $1
+log_modify_comment=Comentário modificado na tabela $1
+log_delete_comment=Comentário excluído da tabela $1
 log_stop=Firewall parado
 log_start=Firewall iniciado
 log_refresh=Firewall atualizado

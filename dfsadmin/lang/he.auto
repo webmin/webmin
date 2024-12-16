@@ -41,10 +41,10 @@ save_eroot=לא רשמת אף מארח שאיתו תוכל לשתף שורש
 save_ealready=הספריה '$1' כבר משותפת
 save_ehost=המארח '$1' אינו קיים
 
-log_modify=נתח NFS שונה $1 
-log_rename=נתח NFS שינה $1 ל- $2 
-log_create=יצר את נתח NFS $1 
-log_delete=נתח NFS נמחק $1 
+log_modify=נתח NFS שונה $1
+log_rename=נתח NFS שינה $1 ל- $2
+log_create=יצר את נתח NFS $1
+log_delete=נתח NFS נמחק $1
 log_apply=שינויים שהוחלו
 
 acl_view=האם ניתן לערוך שיתופי NFS?

@@ -4,7 +4,7 @@ index_desc=La description
 index_buttekey=Modifier les clés TSIG
 index_stop=Arrêter le serveur
 index_stopdesc=Cliquez sur ce bouton pour arrêter le serveur DHCP en cours d'exécution sur votre système. À l'arrêt, les clients DHCP ne pourront pas demander d'adresses IP.
-index_version=ISC DHCPd version $1 
+index_version=ISC DHCPd version $1
 index_subtoomany=Il y a trop de sous-réseaux à afficher.
 index_shatoomany=Il y a trop de réseaux partagés à afficher.
 index_sublook2=Modifiez le sous-réseau avec l'adresse:
@@ -13,7 +13,7 @@ index_hsttoomany=Il y a trop d'hôtes à afficher.
 index_grptoomany=Il y a trop de groupes à afficher.
 index_hstlook2=Modifiez l'hôte nommé:
 index_grplook2=Modifiez le groupe nommé:
-index_gdom=Groupe pour $1 
+index_gdom=Groupe pour $1
 index_match0=équivaut à
 index_match1=contient
 index_match2=allumettes
@@ -27,7 +27,7 @@ ehost_desc=Description de l'hôte
 
 egroup_desc=Description du groupe
 
-listl_network=Dans le réseau $1 / $2 
+listl_network=Dans le réseau $1 / $2
 listl_lfnotcont2=Le fichier de bail DHCPd <tt>$1</tt> ne contient aucun bail actif à l'heure actuelle.
 listl_unknown=Inconnue
 listl_allocs=$1 adresses IP disponibles, $2 allouées ($3 %)
@@ -85,7 +85,7 @@ keys_secret=Chaîne secrète
 keys_ecannot=Vous n'êtes pas autorisé à modifier les clés DNS
 keys_err=Impossible d'enregistrer les clés DNS
 keys_ekey='$1' n'est pas un ID de clé valide
-keys_esecret=Secret codé en base 64 manquant ou non valide pour la clé $1 
+keys_esecret=Secret codé en base 64 manquant ou non valide pour la clé $1
 
 eacl_uniqh=créer des hôtes avec des adresses matérielles en double
 eacl_uniqi=créer des hôtes avec des adresses IP en double
@@ -98,9 +98,9 @@ lookup_ehost=Aucun hôte portant le nom, l'adresse IP ou l'adresse MAC $1 n'exis
 lookup_ehostname=Aucun nom d'hôte, adresse IP ou adresse MAC entré
 lookup_egroup=Aucun groupe portant le nom ou le nom de domaine $1 n'existe
 lookup_egroupname=Aucun nom de groupe ou nom de domaine saisi
-lookup_esubnet=Il n'existe aucun sous-réseau avec l'adresse ou l'adresse/le masque de réseau $1 
+lookup_esubnet=Il n'existe aucun sous-réseau avec l'adresse ou l'adresse/le masque de réseau $1
 lookup_esubnetname=Aucune adresse de sous-réseau ou adresse/masque de réseau saisi
-lookup_eshared=Il n'existe aucun réseau partagé portant le nom $1 
+lookup_eshared=Il n'existe aucun réseau partagé portant le nom $1
 lookup_esharedname=Aucun nom de réseau partagé entré
 
 zone_key=Zones DNS

@@ -4,7 +4,7 @@ index_ecmd2=Naredba SpamAssassin $1 nije pronađena u vašem sustavu.
 index_econfig=Lokalna konfiguracijska datoteka ili direktorij $1 SpamAssassin nisu pronađeni u vašem sustavu. Možda SpamAssassin nije instaliran ili je vaša <a href='$2'>konfiguracija modula</a> netočna.
 index_unknown=nepoznata
 index_edb=Nije uspjelo spajanje na bazu podataka SpamAssassin konfiguracije: $1. Provjerite konfiguraciju <a href='$2'>modula</a> da biste bili sigurni da koristite ispravne postavke.
-index_version=Verzija SpamAssassin $1 
+index_version=Verzija SpamAssassin $1
 index_warn_usermin=Čini se da SpamAssassin nije postavljen u vašoj Procmail konfiguracijskoj datoteci $2 ili globalnoj datoteci $1, tako da bilo koja konfiguracija izvršena ovim modulom neće imati učinka ako se SpamAssassin ne postavi globalno.
 index_warn_webmin=Čini se da SpamAssassin nije postavljen u sistemskoj datoteci konfiguracije Procmail $1, tako da svaka konfiguracija izvršena ovim modulom neće imati učinka ako ga korisnici ne postave pojedinačno.
 index_return=indeks modula
@@ -12,7 +12,7 @@ index_apply=Primijeni promjene
 index_applydesc=Kliknite ovaj gumb da biste primijenili trenutnu konfiguraciju SpamAssassin slanjem HUP signala na sve pokrenute $1 procese.
 index_cpan=Budući da je SpamAssassin modul Perl, možete ga automatski instalirati i pomoću Webminovog <a href='$2'>Perl modula</a> da biste preuzeli $1 iz CPAN-a.
 index_spamassassin=SpamAssassin
-index_ecannot=Nije vam dopušteno upravljanje spamAssassin konfiguracijskom datotekom $1 
+index_ecannot=Nije vam dopušteno upravljanje spamAssassin konfiguracijskom datotekom $1
 
 white_title=Dopuštene i uskraćene adrese
 white_desc=Tablice na ovoj stranici omogućuju vam da odredite From: i To: adrese e-pošte koje su uvijek ili nikada kategorizirane kao neželjena pošta. Sva druga poruka e-pošte obrađivat će se kao uobičajena pravila SpamAssassina. Sve adrese e-pošte mogu sadržavati zamjenske znakove, poput *@foo.com ili *.foo.com da odgovaraju cijelim domenama.
@@ -111,7 +111,7 @@ report_addtext=Tekst za zaglavlje
 report_addspam=spam
 report_addham=šunka
 report_addall=svi
-report_eaddheader=Nedostaje ili nije valjano dodatno zaglavlje za dodavanje $1 
+report_eaddheader=Nedostaje ili nije valjano dodatno zaglavlje za dodavanje $1
 
 user_title=Ostale korisničke mogućnosti
 user_desc=Opcije na ovoj stranici uglavnom su povezane s putovima i postavkama koje SpamAssassin koristi za vanjske identifikacijske pakete neželjene pošte Razor, DCC i Pyzor. Možete također reći SpamAssassinu da li će moći izvoditi DNS pretrage ili ne.
@@ -190,7 +190,7 @@ priv_emscore='$1' nije valjana najviša ocjena fraze
 priv_ephrase="$1" nije valjana dvodelna neželjena fraza
 priv_escore=Nedostaje ili nevažeća ocjena za neželjenu frazu '$1'
 
-usually=Obično $1 
+usually=Obično $1
 ecannot=Nije vam dopušteno koristiti ovu stranicu
 setup_title=Postavljanje Procmail za SpamAssassin
 setup_desc_webmin=Ovaj se obrazac može koristiti za postavljanje Procmail-a u $1 radi pokretanja SpamAssassina na svim porukama e-pošte koje je primio vaš sustav. Međutim, to će imati učinka samo ako je vaš poslužitelj e-pošte konfiguriran za upotrebu Procmail-a za lokalnu dostavu ili za korisnike čije su datoteke <tt>.forward</tt> postavljene za pokretanje Procmail-a.
@@ -244,7 +244,7 @@ mail_razor=Prijavi kao neželjenu poštu i izbriši
 mail_ham=Prijavi se kao šunka i pretinac
 mail_delete=Izbrisati
 mail_return=popis neželjene pošte
-mail_pos=Neželjene poruke $1 do $2 od $3 
+mail_pos=Neželjene poruke $1 do $2 od $3
 mail_none=U vašoj mapi s neželjenom porukom nema poruka
 mail_refresh=Osvježiti
 mail_will=Automatsko osvježavanje u $1 minuti
@@ -253,7 +253,7 @@ mail_delall=Izbriši svu neželjenu poštu
 mail_search3=Potražite gornji rezultat:
 
 process_eclean=Došlo je do pogreške prilikom uklanjanja zaglavlja SpamAssassin iz ove e-pošte
-process_ereport=Nije uspjelo prijavljivanje e-pošte SpamAssassin : $1 
+process_ereport=Nije uspjelo prijavljivanje e-pošte SpamAssassin : $1
 
 apply_err=Primjena promjena nije uspjela
 apply_none=Nisu pronađeni procesi SpamAssassin demona!
@@ -263,8 +263,8 @@ acl_file=SpamAssassin konfiguracijsku datoteku za uređivanje
 acl_filedef=Globalna konfiguracijska datoteka
 acl_awl=Dopušteno korisnicima za uređivanje automatskog popisa
 acl_awl0=Svi korisnici
-acl_awl1=Samo navedeni korisnici $1 
-acl_awl2=Samo članovi grupa $1 
+acl_awl1=Samo navedeni korisnici $1
+acl_awl2=Samo članovi grupa $1
 
 search_escore=Nedostaje ili je nevažeća ocjena neželjene pošte
 search_results5=$1 poruke e-pošte s ocjenom neželjene pošte na ili iznad $2 ..
@@ -337,20 +337,20 @@ simple_score=Rezultat za primjenu
 simple_describe=Opis
 simple_err=Spremanje testova poruka nije uspjelo
 
-before_ecmd=Naredba prije spremanja nije uspjela : $1 
-after_ecmd=Naredba nakon spremanja nije uspjela : $1 
+before_ecmd=Naredba prije spremanja nije uspjela : $1
+after_ecmd=Naredba nakon spremanja nije uspjela : $1
 
-connect_emysql=Nije uspio učitavanje pogonitelja baze podataka $1 
+connect_emysql=Nije uspio učitavanje pogonitelja baze podataka $1
 connect_elogin=Prijavljivanje u bazu podataka $1:$2 nije uspjelo.
-connect_equery=Baza $1 ne sadrži tablicu s preferencijama $2 
+connect_equery=Baza $1 ne sadrži tablicu s preferencijama $2
 connect_eldapmod=Perl modul $1 potreban za komunikaciju s LDAP-om nije instaliran ili nije dostupan
-connect_eldap=Nije uspjelo povezivanje s LDAP serverom $1 na priključku $2 
-connect_eldaplogin=Prijava za LDAP poslužitelj $1 nije uspjela kao $2 : $3 
-connect_ebase=LDAP baza DN $1 nije valjana : $2 
+connect_eldap=Nije uspjelo povezivanje s LDAP serverom $1 na priključku $2
+connect_eldaplogin=Prijava za LDAP poslužitelj $1 nije uspjela kao $2 : $3
+connect_ebase=LDAP baza DN $1 nije valjana : $2
 
-eldap=Operacija LDAP nije uspjela : $1 
-esql=SQL nije uspio : $1 
-ldap_euser=Nije moguće pronaći korisnički LDAP objekt za $1 
+eldap=Operacija LDAP nije uspjela : $1
+esql=SQL nije uspio : $1
+ldap_euser=Nije moguće pronaći korisnički LDAP objekt za $1
 
 db_title=SQL i LDAP baze podataka
 db_header=Opcije baze podataka za konfiguraciju

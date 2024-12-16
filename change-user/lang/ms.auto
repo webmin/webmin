@@ -5,7 +5,7 @@ index_theme=Tema
 index_langglobal2=Bahasa global.. $1 ($2)
 index_localeglobal2=Tempat global.. $1 ($2)
 index_localeset=Pilihan peribadi ..
-index_dateformatglobal2=Format tarikh global.. $1 
+index_dateformatglobal2=Format tarikh global.. $1
 index_dateformatset=Pilihan peribadi ..
 
 acl_locale=Boleh tukar tempat?

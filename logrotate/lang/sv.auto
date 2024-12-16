@@ -1,8 +1,8 @@
 index_title=Loggfilrotation
 index_econf=Loggrotationskonfigurationsfilen $1 hittades inte på ditt system. Kanske är logrotate inte installerat, eller <a href='$2'>modulkonfiguration</a> är felaktig.
 index_ecmd=Loggarotationsprogrammet $1 hittades inte på ditt system. Kanske är den inte installerad, eller <a href='$2'>modulkonfiguration</a> är felaktig.
-index_eversion=Det gick inte att få versionen av logrotate med kommandot $1 : $2 
-index_version=Logrotate-version $1 
+index_eversion=Det gick inte att få versionen av logrotate med kommandot $1 : $2
+index_version=Logrotate-version $1
 index_add=Lägg till en ny loggfil för att rotera.
 index_file=Loggfil
 index_period=Rotationsperiod
@@ -50,7 +50,7 @@ edit_mailfl=Logga fil till e-post
 edit_mailfirst=Det nyaste som bara roterades
 edit_maillast=Äldsta som håller på att raderas
 edit_create=Skapa loggfilen igen efter rotation?
-edit_createas=Ja, med läge $1 och ägs av användare $2 och grupp $3 
+edit_createas=Ja, med läge $1 och ägs av användare $2 och grupp $3
 edit_createno=Nej, skapa inte om
 edit_createsame=Ja, med gamla behörigheter
 edit_olddir=Lagra gamla roterade loggar
@@ -90,9 +90,9 @@ log_modify_sched=Ändrat logrotation Cron-jobb
 log_create_sched=Skapad logrotation Cron-jobb
 log_delete_sched=Raderad logrotation Cron-jobb
 log_global=Modifierade globala alternativ
-log_create=Lagt till rotation för loggfil $1 
-log_modify=Ändrad rotation för loggfil $1 
-log_delete=Raderad rotation för loggfil $1 
+log_create=Lagt till rotation för loggfil $1
+log_modify=Ändrad rotation för loggfil $1
+log_delete=Raderad rotation för loggfil $1
 log_delete_logs=Raderad rotation för $1 loggfiler
 
 sched_title=Logga rotationsschema

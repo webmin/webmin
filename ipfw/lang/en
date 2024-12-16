@@ -3,8 +3,8 @@ index_eipfw=The BSD firewall command $1 was not found on your system. Maybe it i
 index_elist=An error occurred fetching the active firewall rules using the command $1 : $2. Maybe the kernel has not been configured to support firewalling, or the <a href='$3'>module configuration</a> is incorrect.
 index_version=IPFW version $1
 index_apply=Apply Configuration
-index_applydesc=Click this button to make the firewall configuration listed above active. Any firewall rules currently in effect will be flushed and replaced 
-index_applydesc2=Click this button to make the firewall configuration listed above active on all servers in the cluster. Any firewall rules currently in effect will be flushed and replaced 
+index_applydesc=Click this button to make the firewall configuration listed above active. Any firewall rules currently in effect will be flushed and replaced
+index_applydesc2=Click this button to make the firewall configuration listed above active on all servers in the cluster. Any firewall rules currently in effect will be flushed and replaced
 index_unapply=Revert Configuration
 index_unapplydesc=Click this button to reset the configuration listed above to the one that is currently active.
 index_boot=Activate at boot

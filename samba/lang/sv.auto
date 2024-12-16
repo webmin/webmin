@@ -1,4 +1,4 @@
-index_version=Samba version $1 
+index_version=Samba version $1
 index_samba=Samba
 
 index_start_wb=Starta Winbind-servrar
@@ -67,7 +67,7 @@ saveuser_ews=Alternativet 'Workstation trust account' kan inte aktiveras för be
 savefshare_owner=Saknad eller ogiltig ägare för ny katalog
 savefshare_group=Gruppen saknas eller ogiltig för ny katalog
 savefshare_perms=Saknade eller ogiltiga behörigheter för ny katalog
-savefshare_emkdir=Det gick inte att skapa katalog : $1 
+savefshare_emkdir=Det gick inte att skapa katalog : $1
 
 savenet_fail=Det gick inte att spara alternativ
 savenet_timeout='$1' är inte en giltig timeout för bortkoppling
@@ -119,14 +119,14 @@ log_stop=Stoppade Samba-servrar
 log_stop_wb=Stoppade Winbind-servrar
 log_start_wb=Startade Winbind-servrar
 log_kills=Frånkopplade $1 -processer
-log_skills=Frånkopplade $1 -processer från andel $2 
+log_skills=Frånkopplade $1 -processer från andel $2
 log_delete_shares=$1 aktier raderade
 log_bind=Ändra Winbind-alternativ
-log_create_group=Skapade Samba-gruppen $1 
-log_modify_group=Modifierad Samba-grupp $1 
+log_create_group=Skapade Samba-gruppen $1
+log_modify_group=Modifierad Samba-grupp $1
 log_delete_group=Samba-gruppen $1 raderad
 log_gsync=Konfigurerad Unix-gruppsynkronisering
-log_manual=Manuell redigerad konfigurationsfil $1 
+log_manual=Manuell redigerad konfigurationsfil $1
 
 swat_logout=Utloggning av SWAT
 

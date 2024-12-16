@@ -51,7 +51,7 @@ refresh_gadd=تمت إضافة$1 مجموعة
 refresh_gdel=إزالة$1 مجموعات
 refresh_done=.. فعله
 refresh_del=تمت إزالة$1 من قائمة الخادم
-refresh_failed=فشل في تحديث $1 : $2 
+refresh_failed=فشل في تحديث $1 : $2
 
 uedit_host=التفاصيل من$1
 uedit_leave=لا تتغير

@@ -68,7 +68,7 @@ iscsi_ecmds=Hiányzó vagy nem numerikus maximális parancs, amely soronként so
 iscsi_equeue=Hiányzó vagy nem numerikus maximális parancs, amely sorba áll az eszközönként
 
 ifaces_title=iSCSI interfészek
-ifaces_elist=Nem sikerült felsorolni az interfészeket : $1 
+ifaces_elist=Nem sikerült felsorolni az interfészeket : $1
 ifaces_name=Interfész neve
 ifaces_transport=Szállítás
 ifaces_uses=Használva
@@ -92,7 +92,7 @@ iadd_ename=Hiányzik a felület neve, vagy érvénytelen karaktereket tartalmaz
 
 difaces_err=Nem sikerült eltávolítani az interfészeket
 difaces_enone=Egy sincs kiválasztva
-difaces_edelete=A (z) $1 interfész eltávolítása sikertelen : $2 
+difaces_edelete=A (z) $1 interfész eltávolítása sikertelen : $2
 difaces_title=Távolítsa el az iSCSI interfészeket
 difaces_rusure=Biztos benne, hogy el akarja távolítani a kiválasztott $1 interfészeket?
 difaces_rusure1=Biztos benne, hogy el akarja távolítani a (z) $1 felületet?
@@ -102,7 +102,7 @@ difaces_ip=iSCSI szerver
 difaces_users=Az interfészeket használó egyes kapcsolatok jelenleg aktívak, és az interfészek eltávolításakor nem működnek :
 
 conns_title=iSCSI kapcsolatok
-conns_elist=Nem sikerült felsorolni a kapcsolatokat : $1 
+conns_elist=Nem sikerült felsorolni a kapcsolatokat : $1
 conns_ip=Szerver IP
 conns_sport=Szerver port
 conns_name=Szerver név
@@ -120,7 +120,7 @@ conns_start=Csatlakozás ..
 conns_return=a kapcsolatok listája
 conns_iface=iSCSI interfész
 conns_ifacedef=Válassza ki automatikusan
-conns_ifaceerr=Az interfészek letöltése nem sikerült : $1 
+conns_ifaceerr=Az interfészek letöltése nem sikerült : $1
 
 add_title=Add hozzá az iSCSI kapcsolatot
 add_err=Nem sikerült hozzáadni az iSCSI kapcsolatot
@@ -132,7 +132,7 @@ add_target=Csatlakozás a célhoz
 add_alltargets=Minden cél
 add_ok=Add Connection
 add_etarget=Nem található $1 cél
-add_dev=Csatlakoztatva, mint $1 
+add_dev=Csatlakoztatva, mint $1
 add_used=Már csatlakoztatva
 add_on=$1 a $2 -en
 add_auth=Bejelentkezés a szerverre
@@ -141,7 +141,7 @@ add_auth0=Jelentkezzen be mint $2 a $3 jelszóval, $1 módszerrel
 
 dconns_err=Nem sikerült megszakítani a kapcsolatokat
 dconns_enone=Egy sincs kiválasztva
-dconns_edelete=A (z) $2 cél eltávolítása a (z) $1 gazdagépről sikertelen : $3 
+dconns_edelete=A (z) $2 cél eltávolítása a (z) $1 gazdagépről sikertelen : $3
 dconns_title=Válasszuk le az iSCSI kapcsolatokat
 dconns_rusure=Biztos benne, hogy el akarja távolítani a kiválasztott $1 kapcsolatokat?
 dconns_rusure1=Biztosan el akarja távolítani a (z) $1 kapcsolatot?

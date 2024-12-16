@@ -1,7 +1,7 @@
 index_title=Shorewall Firewall
 index_ecmd=Il comando $1 non è stato trovato sul tuo sistema. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 index_edir=La directory di configurazione Shorewall $1 non è stata trovata sul tuo sistema. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
-index_version=Versione Shorewall $1 
+index_version=Versione Shorewall $1
 index_return=elenco delle tabelle
 index_restart=Applica configurazione
 index_restartdesc=Fare clic su questo pulsante per attivare l'attuale configurazione di Shorewall con il comando <tt>shorewall restart</tt>.
@@ -82,7 +82,7 @@ policy_1=Zona di destinazione
 policy_2=Politica
 policy_3=Livello syslog
 policy_4=Limite di traffico
-policy_limit=Limite $1, Burst $2 
+policy_limit=Limite $1, Burst $2
 policy_return=elenco delle politiche
 policy_edit=Modifica politica di default
 policy_create=Crea politica di default
@@ -306,13 +306,13 @@ hosts_err=Impossibile salvare l'host di zona
 hosts_enet=Indirizzo host mancante o non valido
 hosts_header=Dettagli dell'host di zona
 hosts_routestopped=Instradare anche quando il firewall viene arrestato?
-hosts_ip=Indirizzo o rete $1 
-hosts_mac=Indirizzo MAC $1 
-hosts_ipset=IP impostato $1 
+hosts_ip=Indirizzo o rete $1
+hosts_mac=Indirizzo MAC $1
+hosts_ipset=IP impostato $1
 hosts_any=Qualsiasi host
 
-edit_before=Prima dell'entrata $1 
-edit_after=Dopo l'ingresso $1 
+edit_before=Prima dell'entrata $1
+edit_after=Dopo l'ingresso $1
 
 blacklist_title=Host nella lista nera
 blacklist_desc=Questa pagina elenca host e servizi che verranno bloccati se il traffico da loro arriva su un'interfaccia con l'opzione <b>lista nera</b> impostata.
@@ -436,16 +436,16 @@ comment_msg=Messaggio
 comment_err=Impossibile salvare il commento
 comment_enone=Nessun messaggio inserito
 
-log_create_table=Aggiunta voce alla tabella $1 
-log_modify_table=Voce modificata nella tabella $1 
-log_delete_table=Voce eliminata dalla tabella $1 
-log_deletes_table=Voci cancellate dalla tabella $1 
-log_up_table=Sposta in alto la voce nella tabella $1 
-log_down_table=Sposta in basso la voce nella tabella $1 
-log_manual_table=Modificato manualmente il file della tabella $1 
-log_create_comment=Aggiunto commento alla tabella $1 
-log_modify_comment=Commento modificato nella tabella $1 
-log_delete_comment=Commento eliminato dalla tabella $1 
+log_create_table=Aggiunta voce alla tabella $1
+log_modify_table=Voce modificata nella tabella $1
+log_delete_table=Voce eliminata dalla tabella $1
+log_deletes_table=Voci cancellate dalla tabella $1
+log_up_table=Sposta in alto la voce nella tabella $1
+log_down_table=Sposta in basso la voce nella tabella $1
+log_manual_table=Modificato manualmente il file della tabella $1
+log_create_comment=Aggiunto commento alla tabella $1
+log_modify_comment=Commento modificato nella tabella $1
+log_delete_comment=Commento eliminato dalla tabella $1
 log_stop=Firewall bloccato
 log_start=Firewall avviato
 log_refresh=Firewall aggiornato

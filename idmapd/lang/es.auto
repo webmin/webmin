@@ -7,5 +7,5 @@ domain=Nombre de dominio
 nobody_user=Nadie usuario
 nobody_group=Nadie grupo
 save=Guardar configuración y reiniciar demonio
-save_err=Error al guardar el archivo de configuración $1 
+save_err=Error al guardar el archivo de configuración $1
 error_dir=El directorio $1 no existe

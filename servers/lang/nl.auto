@@ -4,7 +4,7 @@ index_ok=Zoeken
 
 edit_checkssl=Extern SSL-certificaat controleren?
 
-find_already2=Bekende serverhost gevonden op $1 
+find_already2=Bekende serverhost gevonden op $1
 
 delete_title=Servers verwijderen
 delete_rusure=Weet u zeker dat u de $1 geselecteerde servers wilt verwijderen?

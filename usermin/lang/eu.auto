@@ -5,7 +5,7 @@ index_stop=Utzi Usermin
 index_stopmsg=Egin klik botoi honetan zure sisteman exekutatzen den Usermin zerbitzaria gelditzeko. Behin geldituta, erabiltzaileek ezin izango dute bertara saioa egin.
 index_start=Hasi Erabiltzailea
 index_startmsg=Egin klik botoi honetan zure sisteman Usermin zerbitzaria abiarazteko. Hasi arte, erabiltzaileek ezin izango dute saioa hasi.
-index_version=Erabiltzailea $1 
+index_version=Erabiltzailea $1
 index_boot=Hasi abiarazi den momentuan
 index_bootmsg=Aldatu aukera hau Usermin abiaraztean abiarazi den edo ez kontrolatzeko. Une honetan abian ez bada hasi eta Bai aukeratzen bada, init script berria sortuko da.
 index_install=Webmin-ek automatikoki deskargatu eta instalatu dezake Usermin-en azken bertsioa. Hala ere, hori ez da egin behar programa dagoeneko instalatuta badago eta konfigurazio direktorio desberdin bat erabiltzen ari bada.
@@ -22,7 +22,7 @@ access_desc=Erabiltzaile zerbitzaria konfiguratu daiteke formulario hau erabiliz
 
 bind_title=Portuak eta helbideak
 bind_desc2=Inprimaki hau Usermin-ek entzuten duen ataka zenbakia aldatzeko erabil daiteke edo zure sisteman IP helbide bakar batetan entzun ahal izateko. Hainbat portutan konexioak onartzeko edo IP helbideetan entzuteko ere konfigura dezakezu. Oharra: zure web-arakatzaileak berriro saioa hasteko eskatu dezake portua edo loteslearen helbidea aldatu ondoren.
-bind_erestart=Errorea gertatu da Usermin helbide berriarekin eta ataka ezarpenekin hasita : $1 
+bind_erestart=Errorea gertatu da Usermin helbide berriarekin eta ataka ezarpenekin hasita : $1
 
 mods_title=Usermin moduluak
 umods_title=Usermin moduluak
@@ -93,18 +93,18 @@ themes_err2=Ezin izan da kargatutako gaia instalatu
 themes_ebrowser=Zure arakatzaileak ez du fitxategien igoerak onartzen
 themes_err3=Ezin izan da $1 gaia instalatu
 themes_eurl=URL baliogabea
-themes_etar=Ez da baliozko gai fitxategi bat : $1 
+themes_etar=Ez da baliozko gai fitxategi bat : $1
 themes_einfo=$1 gaia theme.info fitxategia falta da
 themes_enone=Badirudi fitxategiak ez duela gairik
-themes_eextract=Ateratzea huts egin du : $1 
+themes_eextract=Ateratzea huts egin du : $1
 themes_done=Gaia ondo instalatu da zure sisteman :
 themes_line=$1 $2 ($3 kB)
 themes_ecomp=Fitxategia konprimituta dago, baina $1 komandoa ez da zure sisteman aurkitu
-themes_ecomp2=Ezin izan da fitxategia deskonprimitu : $1 
+themes_ecomp2=Ezin izan da fitxategia deskonprimitu : $1
 themes_egzip=Fitxategia zurituta dago, baina $1 komandoa ez da zure sisteman aurkitu
-themes_egzip2=Huts egin du gunzip fitxategian : $1 
+themes_egzip2=Huts egin du gunzip fitxategian : $1
 themes_erpm=Ez da Usermin gaia RPM
-themes_eirpm=RPM instalazioak huts egin du : $1 
+themes_eirpm=RPM instalazioak huts egin du : $1
 themes_ok=Gaia aldatu egin da... Webmin aurkibidearen orrialdera birbideratzea.
 themes_delete=Inprimaki hau erabiltzen ari ez den sisteman instalatutako gairen bat ezabatzeko erabil daiteke.
 themes_delok=Ezabatu beharreko gaia :
@@ -146,7 +146,7 @@ ca_c=Herrialde kodea
 newkey_ok=Erabiltzailearentzako SSL gakoa ondo sortu da.
 
 stop_err=Ezin izan da Usermin gelditu
-stop_ekill=Huts egin du prozesua hiltzean : $1 
+stop_ekill=Huts egin du prozesua hiltzean : $1
 stop_efile=Dagoeneko gelditu da
 stop_ecannot=Ez duzu baimenik Usermin uzteko
 
@@ -178,7 +178,7 @@ install_err2=Ezin izan da kargatutako modulua instalatu
 install_ebrowser=Zure arakatzaileak ez du fitxategien igoerak onartzen
 install_err3=Ezin izan da $1 modulua instalatu
 install_eurl=URL baliogabea
-install_etar=Ez da baliozko moduluko fitxategia : $1 
+install_etar=Ez da baliozko moduluko fitxategia : $1
 install_einfo=$1 modulua module.info fitxategia falta da
 install_enone=Ez dirudi fitxategiak modulurik duenik
 install_eos=$1 moduluak ez du sistema eragile hau onartzen ($2 $3)
@@ -186,16 +186,16 @@ install_eusermin=$1 modulua Webminentzako da, eta ez Usermin
 install_ever=$1 moduluak Usermin bertsioaren $2 edo berriagoa behar du
 install_edep=$1 moduluak $2 modulua behar du
 install_eperldep=$1 moduluak $2 ko Perl modulua behar du. Hala ere, Webmin <a href='$3'>deskargatu eta instalatu dezakezu</a> Perl modulua zuretzat.
-install_eextract=Ateratzea huts egin du : $1 
+install_eextract=Ateratzea huts egin du : $1
 install_title=Instalatu modulua
 install_desc=Modulu hauek arrakastaz instalatu dira eta erabiltzaileen sarbide kontrol zerrendara gehitu dira :
 install_line2=$1 -en $2 ($3 kB) $4 kategorian
 install_ecomp=Fitxategia konprimituta dago, baina $1 komandoa ez da zure sisteman aurkitu
-install_ecomp2=Ezin izan da fitxategia deskonprimitu : $1 
+install_ecomp2=Ezin izan da fitxategia deskonprimitu : $1
 install_egzip=Fitxategia zurituta dago, baina $1 komandoa ez da zure sisteman aurkitu
-install_egzip2=Huts egin du gunzip fitxategian : $1 
+install_egzip2=Huts egin du gunzip fitxategian : $1
 install_erpm=Ez da Usermin modulua edo gaia RPM
-install_eirpm=RPM instalazioak huts egin du : $1 
+install_eirpm=RPM instalazioak huts egin du : $1
 install_cat=$1 kategorian.
 install_eneither=RPM ez du usermin modulu edo gairik
 
@@ -273,9 +273,9 @@ upgrade_eversion=Ezin da $1 bertsiora jaitsi
 upgrade_elatest=Erabiltzailearen azken bertsioa exekutatzen ari zara
 upgrade_erpm=Ez da baliozko Usermin RPM fitxategia
 upgrade_egunzip=Zure sistemak ez du <tt>gunzip</tt> komandoa
-upgrade_egzip=Huts egin du gunzip fitxategian : $1 
+upgrade_egzip=Huts egin du gunzip fitxategian : $1
 upgrade_etar=Ez da baliozko Usermin tar fitxategi bat
-upgrade_euntar=Ezin izan da fitxategia deskargatu : $1 
+upgrade_euntar=Ezin izan da fitxategia deskargatu : $1
 upgrade_emod=Fitxategia Usermin modulua da, eta ez Usermin berritze osoa. Baliteke <a href='$1'>Usermin Modules</a> orria erabili nahi duzula instalatzeko.
 upgrade_ewebmin=Fitxategia Webmin $1 bertsioa da, eta ez Usermin eguneratzea.
 upgrade_setup=Usermin bertsio berritzailea $1 komandoarekin.
@@ -283,7 +283,7 @@ upgrade_setup2=Usermin instalatzea $1 komandoarekin ..
 upgrade_done=.. bertsio berritzea.
 upgrade_failed=.. bertsio berritzea huts egin du!
 upgrade_updates=Erabiltzailearen bertsio berri honetarako $1 eguneratze daude. <a href='$2'>Egin klik hemen</a> orain deskargatu eta instalatzeko automatikoki.
-upgrade_eupdates=Ezin izan da eguneratzeen zerrenda deskargatu : $1 
+upgrade_eupdates=Ezin izan da eguneratzeen zerrenda deskargatu : $1
 
 update_desc1=Inprimaki honek <a href=http://www.usermin.com/uupdates.html>Usermin eguneratzeak</a> orrialdetik akatsak edo segurtasun zuloak aurkitu dituzten Usermin moduluak berritzea ahalbidetzen du. Honek gaur egun instalatutako moduluak eguneratzeko erabilgarri daudenekin alderatuko ditu eta, aukeran, zaharkituta dauden modulu guztiak deskargatu eta instalatuko ditu.
 update_header1=Eguneratu moduluak orain
@@ -299,7 +299,7 @@ update_enabled=Eguneratutako egutegia aktibatuta dago
 update_apply=Gorde eta aplikatu
 update_sched=Eguneratu moduluak $1 : 00 bakoitzean $2 egun bakoitzean
 update_none=Ez dago Usermin eguneratzeik bertsio honetarako.
-update_failed=Ezin izan da modulua instalatu : $1 
+update_failed=Ezin izan da modulua instalatu : $1
 update_desc2=Inprimaki hau <a href=http://www.usermin.com/uupdates.html>Usermin Eguneratzeak</a> orritik edo beste iturri batetik akatsak edo segurtasun zuloak dituzten Usermin moduluen eguneratze automatikoa programatzeko da. Zerbitzua erabilgarria den bitartean, kontuz ibili beharko zenuke erasoei erasotzaileei zure sistema har dezaten eguneratze zerbitzaria arriskuan jarriko balitz.
 
 assignment_title=Moduluak berriro esleitu
@@ -387,9 +387,9 @@ restrict_what=Modulu erabilgarriak
 restrict_all=Erabiltzaile guztiak
 restrict_group=$1 taldea
 restrict_file=Erabiltzaileak $1 fitxategian
-restrict_plus=<b>Guztia gehi</b> $1 
+restrict_plus=<b>Guztia gehi</b> $1
 restrict_minus=<b>Guztiak</b> $1 izan ezik
-restrict_set=<b>Bakarrik</b> $1 
+restrict_set=<b>Bakarrik</b> $1
 restrict_nomods=<b>Ez da modulu</b>
 restrict_add=Gehitu erabiltzaile edo talde murrizketa berria
 restrict_edit=Editatu Murrizketa
@@ -422,8 +422,8 @@ acl_bootup=Konfigura daiteke abiapuntuan hasita?
 acl_ecannot=Ez duzu orrialde hau erabiltzeko baimenik
 
 clone_err=Huts egin du modulua klonatzerakoan
-clone_elink=symlink huts egin du : $1 
-clone_ecopy=Ezin izan da konfigurazioa kopiatu : $1 
+clone_elink=symlink huts egin du : $1
+clone_ecopy=Ezin izan da konfigurazioa kopiatu : $1
 clone_desc=$1 klona
 
 sessions_title=Uneko saioa

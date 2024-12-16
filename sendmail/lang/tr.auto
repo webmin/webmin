@@ -1,6 +1,6 @@
-index_version2=Sendmail sürümü $1, yapılandırma $2 
-index_xversion=Sendmail sürümü $1 
-index_version=Sendmail yapılandırma $1 
+index_version2=Sendmail sürümü $1, yapılandırma $2
+index_xversion=Sendmail sürümü $1
+index_version=Sendmail yapılandırma $1
 index_sendmail=Posta göndermek
 
 opts_gecos=Kullanıcıların gerçek adları için posta kabul edilsin mi?
@@ -25,7 +25,7 @@ aform_type6=Filtre dosyasını uygula
 aform_file=Takma ad dosyasına ekle
 aform_cmt=Açıklama
 
-afile_ewrite=Adres dosyasına yazılamadı : $1 
+afile_ewrite=Adres dosyasına yazılamadı : $1
 
 ffile_title=Filtre Dosyasını Düzenle
 ffile_desc=$1 dosyasındaki filtre kurallarını ayarlamak için aşağıdaki formu kullanın.
@@ -188,7 +188,7 @@ mail_rfc=Satırdan
 mail_eexists=Mesaj artık mevcut değil!
 
 view_desc2=$2 kullanıcısı için $1 iletisi
-view_desc3=Mesaj $1 
+view_desc3=Mesaj $1
 view_sent=Gönderilen posta listesinde $1 mesajı
 view_body=Mesaj metni
 view_allheaders=Tüm başlıkları görüntüle
@@ -239,8 +239,8 @@ search_eboolean=Hem 'hem de' ve 'veya' kullanılan Boole aramaları desteklenmez
 
 file_edomains=Alan adı eşleme dosyasını düzenlemenize izin verilmiyor.
 file_ecannot=Bu dosyayı düzenlemenize izin verilmiyor
-file_ealias=Takma ad dosya satırı için geçersiz biçim : $1 
-file_etab=Harita dosya satırı için geçersiz biçim : $1 
+file_ealias=Takma ad dosya satırı için geçersiz biçim : $1
+file_etab=Harita dosya satırı için geçersiz biçim : $1
 
 acl_ports=Ağ bağlantı noktalarını düzenleyebilir mi?
 acl_manual=Dosyaları elle düzenleyebilir mi?
@@ -271,7 +271,7 @@ log_ports=Ağ bağlantı noktalarını değiştirme
 log_delmailqs=Kuyruktan $1 posta silindi
 log_movemail=$1 iletiyi $2 'den $3 'e taşıdı
 log_feature_create=$1 M4 girişi eklendi
-log_feature_modify=Değiştirilmiş M4 girişi $1 
+log_feature_modify=Değiştirilmiş M4 girişi $1
 log_feature_delete=$1 M4 girişi silindi
 log_feature_move=$1 M4 girişi taşındı
 log_build=Sendmail yapılandırmasını yeniden oluştur
@@ -353,7 +353,7 @@ mailer_local=Yerel Unix dağıtımı
 
 build_title=Sendmail Yapılandırmasını Yeniden Oluşturma
 build_em4=Sendmail yapılandırma dosyasını yeniden oluşturmak için gereken $1 komutu sisteminizde bulunamadı.
-build_ebuild=Yapılandırma oluşturulamadı : $1 
+build_ebuild=Yapılandırma oluşturulamadı : $1
 build_rusure=$1 Sendmail yapılandırma dosyasını $2 'den oluşturulmuş yeni bir sürümle değiştirmek istediğinizden emin misiniz?
 build_rusure2=Sendmail Seçenekleri sayfasında Sendmail'de değişiklik yaptıysanız, yapılandırma dosyasını yeniden oluşturmanın M4 dosyasında da yapılmadıysa bu değişikliklerin üzerine yazabileceğini unutmayın.
 build_ok=Evet, şimdi değiştirin
@@ -364,7 +364,7 @@ stop_err=Sendmail durdurulamadı
 stop_ecannot=Sendmail'i durdurmanıza izin verilmiyor
 stop_epid=Sendmail çalışıyor gibi görünmüyor
 restart_epids=Sendmail işlemleri bulunamadı
-restart_ekill=Sendmail işlemleri bildirilemedi : $1 
+restart_ekill=Sendmail işlemleri bildirilemedi : $1
 
 start_err=Sendmail başlatılamadı
 start_ecannot=Sendmail başlatmanıza izin verilmiyor

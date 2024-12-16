@@ -149,18 +149,18 @@
   // Loading messages
   "Loading in progress. Please wait!": "Kargatzen. Itxaron mesedez",
   "Loading plugin $plugin" : "$plugin plugina kargatzen",
-  "Register plugin $plugin" : "$plugin plugina erregistratu", 
+  "Register plugin $plugin" : "$plugin plugina erregistratu",
   "Constructing object": "Objektua eraikitzen",
   "Generate Xinha framework": "Xinha Framework sortzen",
-  "Init editor size":"Editorearen hasierako neurria", 
+  "Init editor size":"Editorearen hasierako neurria",
   "Create Toolbar": "Tresna-barra sortu",
   "Create Statusbar" : "Egoera-barra sortu",
-  "Register right panel" : "Eskuin-panela erregistratu", 
-  "Register left panel" : "Ezker-panela erregistratu", 
-  "Register bottom panel" : "Beheko panela erregistratu", 
-  "Register top panel" : "Goiko panela erregistratu", 
-  "Finishing" : "Bukatzen", 
-  
+  "Register right panel" : "Eskuin-panela erregistratu",
+  "Register left panel" : "Ezker-panela erregistratu",
+  "Register bottom panel" : "Beheko panela erregistratu",
+  "Register top panel" : "Goiko panela erregistratu",
+  "Finishing" : "Bukatzen",
+
   // ColorPicker
   "Click a color..." : "Kolore bat aukeratu...",
   "Sample" : "Lagina",

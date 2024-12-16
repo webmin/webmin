@@ -38,9 +38,9 @@ enable_err=Programov tipa MIME ni bilo mogoče omogočiti
 enable_eclash=Omogočen program tipa MIME za $1 že obstaja
 delete_enone=Izbrana ni nobena
 
-log_delete_mailcap=Brisanje programa vrste MIME za $1 
-log_create_mailcap=Ustvaril program tipa MIME za $1 
-log_modify_mailcap=Spremenjen program tipa MIME za $1 
+log_delete_mailcap=Brisanje programa vrste MIME za $1
+log_create_mailcap=Ustvaril program tipa MIME za $1
+log_modify_mailcap=Spremenjen program tipa MIME za $1
 log_delete_mailcaps=Izbrisani so $1 programi MIME
 log_disable_mailcaps=Onemogočeni programi $1 MIME
 log_enable_mailcaps=Omogočeni programi $1 MIME

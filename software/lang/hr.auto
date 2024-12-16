@@ -19,8 +19,8 @@ index_all=Svi paketi
 index_return=indeks modula
 index_treturn=stablo paketa
 index_tree2=Pregled stabla paketa
-index_epackagecmd=Sustav paketa $1 zahtijeva naredbu $2 
-index_eupdatecmd=Sustav ažuriranja $1 zahtijeva naredbu $2 
+index_epackagecmd=Sustav paketa $1 zahtijeva naredbu $2
+index_eupdatecmd=Sustav ažuriranja $1 zahtijeva naredbu $2
 index_epackagecheck=Odabrani sustav upravljanja paketima nije valjan: $1. <br>Možda ćete trebati odabrati drugi sustav na stranici<a href='$2'> konfiguracija modula </a>.
 index_eupdatecheck=Odabrani sustav ažuriranja nije valjan: $1. <br>Možda ćete trebati odabrati drugu metodu ažuriranja na stranici<a href='$2'> konfiguracija modula </a>.
 index_echeckpackage=Nije otkriven sustav paketa!
@@ -30,12 +30,12 @@ index_filterclear=Očisti filtar
 index_filtered=Prikaz <tt>$1</tt> paketa iz <tt>$2</tt>
 
 search_title=Pretraživanje paketa
-search_nomatch=Nijedan paket ne odgovara $1 
+search_nomatch=Nijedan paket ne odgovara $1
 search_none=nijedan
 search_desc=Opis
 search_class=klasa
 search_pack=Paket
-search_match=Paketi koji odgovaraju $1 
+search_match=Paketi koji odgovaraju $1
 search_return=Rezultati pretraživanja
 search_esearch=Niste unijeli ništa za traženje!
 search_delete=Deinstalirajte odabrane pakete
@@ -68,7 +68,7 @@ edit_return=detalji paketa
 edit_egone=Paket više nije instaliran
 
 list_title=Kartonske datoteke
-list_files=Datoteke za paket $1 
+list_files=Datoteke za paket $1
 list_path=Staza
 list_owner=Vlasnik
 list_group=Skupina
@@ -92,7 +92,7 @@ delete_purge=Pročišćavanje konfiguracijskih datoteka?
 delete_depstoo=Uklonjene i neiskorištene ovisnosti?
 
 file_title=Podaci o datoteci
-file_notfound=Nema podataka o $1 
+file_notfound=Nema podataka o $1
 file_path=Staza
 file_type=Tip
 file_perms=dozvole
@@ -121,7 +121,7 @@ install_ok=Instalirati
 
 do_err=Instalacija paketa $1 nije uspjela
 do_title=Instalirajte paket
-do_efailed=Instalacija nije uspjela : $1 
+do_efailed=Instalacija nije uspjela : $1
 do_efailedmsg1=Možete je pokušati ponovo instalirati vraćajući se na prethodnu stranicu i odabirom različitih opcija instalacije.
 do_efailedmsg2=U suprotnom, <a href='$1'>kliknite ovdje za brisanje privremene datoteke paketa</a> kako biste uštedjeli prostor na disku.
 do_success=Paket $1 uspješno je instaliran
@@ -170,7 +170,7 @@ slack_missing=nedostaje
 slack_root=Korijenski direktorij
 slack_eroot=Nedostaje ili nije važeći korijenski direktorij
 slack_manager=Upravitelj slackware paketa
-slack_edir=Nedostaje direktorij paketa Slackware $1 
+slack_edir=Nedostaje direktorij paketa Slackware $1
 
 debian_unknown=Nepoznata
 debian_depends=Zanemarite probleme ovisnosti?
@@ -179,7 +179,7 @@ debian_overwrite=Prepisati datoteke iz drugih paketa?
 debian_downgrade=Zamijenite noviji paket starim?
 debian_manager=Debian
 
-log_install_package=Instalirani paket $1 
+log_install_package=Instalirani paket $1
 log_install_apt_l=Instalirani paketi $1 od APT
 log_install_apt=Instalirani paketi $1 od APT
 log_install_yum_l=Instalirani paketi $1 od YUM
@@ -188,8 +188,8 @@ log_install_rhn_l=Instalirani paketi $1 iz Redhat mreže
 log_install_rhn=Instalirani paketi $2 iz Redhat mreže
 log_check_apt_l=Nadograđeni paketi $1 od APT
 log_check_apt=Nadograđeni $2 paketi iz APT-a
-log_delete=Deinstalirani paket $1 
-log_deletes_l=Deinstalirani paketi $1 
+log_delete=Deinstalirani paket $1
+log_deletes_l=Deinstalirani paketi $1
 log_deletes=Deinstalirani $1 paketi
 log_urpmi_update=Ažurirani dostupni URPMI paketi
 log_urpmi_upgrade=Nadograđeni instalirani URPMI paketi
@@ -312,7 +312,7 @@ rpm_dev=uređaj
 rpm_user=vlasništvo korisnika
 rpm_perm=dozvole
 rpm_group=vlasništvo grupe
-rpm_erpm=RPM $1 nije nađeno : $2 
+rpm_erpm=RPM $1 nije nađeno : $2
 
 soft_reg=Redovna datoteka
 soft_dir=Imenik
@@ -322,9 +322,9 @@ soft_hard=Tvrda veza
 soft_edit=Datoteka za uređivanje
 soft_efunc=Učitavanje funkcija za sustav paketa $1 nije uspjelo.
 soft_euncompress=Datoteka je komprimirana, ali naredba <tt>rasklopi</tt> nije pronađena u vašem sustavu.
-soft_euncmsg=Nekomprimiranje datoteke nije uspjelo : $1 
+soft_euncmsg=Nekomprimiranje datoteke nije uspjelo : $1
 soft_egzip=Datoteka je gziped, ali naredba gzip nije pronađena u vašem sustavu.
-soft_egzmsg=Nije uspjelo kopiranje datoteke : $1 
+soft_egzmsg=Nije uspjelo kopiranje datoteke : $1
 
 aix_unknown=Nepoznata
 aix_device=INPUT uređaj / direktorij softvera
@@ -362,13 +362,13 @@ emerge_name=prevoženje
 
 cygwin_fmissing=Datoteka nedostaje
 cygwin_lmissing=Datoteka do koje točke veze nedostaju
-cygwin_estat=Datoteka za stat nije uspjela: $1 
-cygwin_elread=Simbol za čitanje nije uspio: $1 
-cygwin_elstat=Neuspješno uspostavljanje simboličke veze: $1 
+cygwin_estat=Datoteka za stat nije uspjela: $1
+cygwin_elread=Simbol za čitanje nije uspio: $1
+cygwin_elstat=Neuspješno uspostavljanje simboličke veze: $1
 cygwin_badpostscript=Upozorenje: čini se da se ta skripta nije pokrenula
 cygwin_pkgexists=Paket $1 već postoji.
 cygwin_warnuse=Upozorenje: Ovo nije službeno sučelje za upravljanje Cygwin softverom. Koristite na vlastiti rizik.
-cygwin_edb=Nedostaje baza podataka Cygwin paketa $1 
+cygwin_edb=Nedostaje baza podataka Cygwin paketa $1
 
 deletes_err=Brisanje paketa nije uspjelo
 deletes_enone=Nije odabran nijedan paket
@@ -376,7 +376,7 @@ deletes_title=Izbriši pakete
 deletes_desc=Deinstalacija paketa $1 ..
 deletes_failed1=Deinstalacija $1 : $2 nije uspjela
 deletes_success1=Deinstalirano $1 uspješno
-deletes_failed2=Deinstalacija nije uspjela : $1 
+deletes_failed2=Deinstalacija nije uspjela : $1
 deletes_success2=.. deinstalacija je dovršena.
 deletes_rusure=Jeste li sigurni da želite deinstalirati pakete $1 ?
 deletes_ok=Izbrišite ih sve

@@ -2,11 +2,11 @@ index_elink=Ingen URL till tunneln till har ställts in ännu.
 index_url=Ange URL för att öppna:
 index_open=Öppen
 
-link_eurl=Ogiltig tunnel-URL : $1 
+link_eurl=Ogiltig tunnel-URL : $1
 link_elogin=Det gick inte att logga in på $1 som $2.
 link_eautologin=Ogiltigt inloggning eller lösenord för $1. <a href='$2'>Klicka här</a> för att logga in.
 link_enouser=Ett användarnamn och lösenord krävs för att logga in på $1, men inget har konfigurerats.
-link_ebadurl=Du får inte komma åt URL: en $1 
+link_ebadurl=Du får inte komma åt URL: en $1
 link_mconfig=Använd sidan <a href='$1'>modulkonfiguration</a> för att ändra inloggningen.
 
 login_title=Logga in på webbplatsen

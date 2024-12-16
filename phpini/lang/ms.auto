@@ -11,7 +11,7 @@ index_anyfile=Edit fail konfigurasi PHP yang lain:
 index_return=fail konfigurasi
 
 file_global=Konfigurasi PHP Global
-file_eread=Gagal membaca $1 : $2 
+file_eread=Gagal membaca $1 : $2
 
 manual_title=Edit Konfigurasi secara manual
 manual_desc=Halaman ini boleh digunakan untuk mengedit fail konfigurasi PHP secara manual. Ini perlu dilakukan dengan teliti, kerana tiada sintaks atau pemeriksaan kesahan lain akan dilakukan pada perubahan anda.
@@ -124,7 +124,7 @@ errors_maxlen=Saiz maksimum kesalahan yang telah dilog masuk
 errors_file=Log fail untuk kesilapan
 errors_none=Tiada
 errors_syslog=Syslog
-errors_other=Fail lain $1 
+errors_other=Fail lain $1
 errors_unlimited=Tidak terhad
 errors_err=Gagal menyimpan log kesalahan
 errors_ereporting=Tiada ungkapan jenis ralat yang dimasukkan
@@ -152,15 +152,15 @@ misc_path=CGI Fix Info Path?
 misc_timezone=PHP Timezone
 misc_charset=Set aksara piawai
 
-log_manual=Edit fail secara manual $1 
-log_vars=Perubahan PHP berubah dalam $1 
-log_dirs=Tetapan direktori berubah dalam $1 
-log_db=Tetapan pangkalan data berubah dalam $1 
-log_session=Pilihan sesi berubah dalam $1 
-log_safe=Pilihan mod selamat yang diubah dalam $1 
-log_limits=Had sumber yang berubah dalam $1 
-log_errors=Pembalakan ralat berubah dalam $1 
-log_misc=Menukar tetapan lain dalam $1 
+log_manual=Edit fail secara manual $1
+log_vars=Perubahan PHP berubah dalam $1
+log_dirs=Tetapan direktori berubah dalam $1
+log_db=Tetapan pangkalan data berubah dalam $1
+log_session=Pilihan sesi berubah dalam $1
+log_safe=Pilihan mod selamat yang diubah dalam $1
+log_limits=Had sumber yang berubah dalam $1
+log_errors=Pembalakan ralat berubah dalam $1
+log_misc=Menukar tetapan lain dalam $1
 
 acl_global=Boleh mengedit konfigurasi PHP global?
 acl_anyfile=Bolehkah mengedit sebarang fail sebagai konfigurasi PHP?

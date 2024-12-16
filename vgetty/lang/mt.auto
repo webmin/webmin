@@ -18,7 +18,7 @@ vgetty_return=Lista tal-port serjali
 vgetty_create=Żid il-Port tas-Serje
 vgetty_edit=Editja l-Port tas-Serje
 vgetty_header=Għażliet ta 'konfigurazzjoni tal-port serjali
-vgetty_ts=Port tas-serje $1 
+vgetty_ts=Port tas-serje $1
 vgetty_other=Apparat ieħor ..
 vgetty_rings=Ċrieki qabel ma twieġeb
 vgetty_default=Inadempjenza globali
@@ -100,19 +100,19 @@ pvfdesc=$1, $2 bits
 
 upload_err=Ma rnexxielux iżid messaġġ
 upload_emessage=L-ebda fajl WAV ma ntgħażel
-upload_ewav=Ma rnexxielux jikkonverti l-fajl WAV : $1 
-upload_epvf=Ma rnexxielux joħloq fajl RMD : $1 
+upload_ewav=Ma rnexxielux jikkonverti l-fajl WAV : $1
+upload_epvf=Ma rnexxielux joħloq fajl RMD : $1
 upload_esame=Il-fajl tal-messaġġ $1 diġà jeżisti
 
 log_apply=Konfigurazzjoni applikata
-log_upload=Imtella 'l-messaġġ ta' awguri $1 
+log_upload=Imtella 'l-messaġġ ta' awguri $1
 log_move=Mibdula $1 messaġġi riċevuti
 log_delete0=Messaġġi rċevuti $1 imħassra
 log_delete1=Messaġġi ta 'awguri ta' $1 imħassra
 log_options=Inbidlu b'għażliet tal-voicemail
 log_vgetty_create=Port tas-serje $1 miżjud
-log_vgetty_modify=Port tas-serje modifikat $1 
-log_vgetty_delete=Port tas-serje mħassar $1 
+log_vgetty_modify=Port tas-serje modifikat $1
+log_vgetty_delete=Port tas-serje mħassar $1
 
 email_subject=Messaġġ tal-voicemail
 email_body=Messaġġ tal-voicemail riċevut fi $1 minn $2.

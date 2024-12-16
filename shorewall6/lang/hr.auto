@@ -1,7 +1,7 @@
 index_title=Shorewall6 vatrozid
 index_ecmd=Naredba $1 nije pronađena u vašem sustavu. Možda nije instaliran ili je <a href='$2'>konfiguracija modula</a> netočna.
 index_edir=Direkcijski direktorij Shorewall $1 nije pronađen u vašem sustavu. Možda nije instaliran ili je <a href='$2'>konfiguracija modula</a> netočna.
-index_version=Verzija Shorewall6 $1 
+index_version=Verzija Shorewall6 $1
 index_return=popis tablica
 index_restart=Primijeni konfiguraciju
 index_restartdesc=Kliknite ovaj gumb da biste aktivirali trenutnu konfiguraciju Shorewall-a pomoću naredbe <tt>shorewall6 restart</tt>.
@@ -85,7 +85,7 @@ policy_1=Odredišna zona
 policy_2=Politika
 policy_3=Razina sustava
 policy_4=Ograničenje prometa
-policy_limit=Ograničenje $1, rafal $2 
+policy_limit=Ograničenje $1, rafal $2
 policy_return=popis pravila
 policy_edit=Uređivanje zadanih pravila
 policy_create=Stvorite zadano pravilo
@@ -310,13 +310,13 @@ hosts_err=Spremanje glavnog računala zone nije uspjelo
 hosts_enet=Nedostaje ili nije valjana adresa domaćina
 hosts_header=Pojedinosti o domaćinu zone
 hosts_routestopped=Ruti se čak i kad je firewall zaustavljen?
-hosts_ip=Adresa ili mreža $1 
-hosts_mac=MAC adresa $1 
-hosts_ipset=IP postavljena $1 
+hosts_ip=Adresa ili mreža $1
+hosts_mac=MAC adresa $1
+hosts_ipset=IP postavljena $1
 hosts_any=Bilo koji domaćin
 
-edit_before=Prije unosa $1 
-edit_after=Nakon unosa $1 
+edit_before=Prije unosa $1
+edit_after=Nakon unosa $1
 
 blacklist_title=Domaćini na crnoj listi
 blacklist_desc=Ova stranica navodi hostove i usluge koje će biti blokirane ako promet s njih dođe na sučelje s postavljenom opcijom <b>crna lista</b>.
@@ -422,16 +422,16 @@ comment_msg=Poruka
 comment_err=Spremanje komentara nije uspjelo
 comment_enone=Nije unesena poruka
 
-log_create_table=Dodan je unos u tablicu $1 
-log_modify_table=Izmijenjeni unos u tablici $1 
+log_create_table=Dodan je unos u tablicu $1
+log_modify_table=Izmijenjeni unos u tablici $1
 log_delete_table=Izbrisan je unos iz $1 tablice
-log_deletes_table=Izbrisani su unosi iz tablice $1 
-log_up_table=Pomaknut je unos u tablici $1 
-log_down_table=Pomaknuo se prema dolje u tablici $1 
-log_manual_table=Ručno uređena datoteka tablice $1 
-log_create_comment=Dodan komentar u tablicu $1 
-log_modify_comment=Izmijenjeni komentar u tablici $1 
-log_delete_comment=Izbrisani komentar iz tablice $1 
+log_deletes_table=Izbrisani su unosi iz tablice $1
+log_up_table=Pomaknut je unos u tablici $1
+log_down_table=Pomaknuo se prema dolje u tablici $1
+log_manual_table=Ručno uređena datoteka tablice $1
+log_create_comment=Dodan komentar u tablicu $1
+log_modify_comment=Izmijenjeni komentar u tablici $1
+log_delete_comment=Izbrisani komentar iz tablice $1
 log_stop=Zaustavljen je vatrozid
 log_start=Pokrenut vatrozid
 log_refresh=Osvježeni vatrozid

@@ -27,7 +27,7 @@ desc_common-session=Configuration de session commune
 
 edit_file=Fichier de configuration
 edit_addinc=Ajouter le service inclus
-edit_inc=Inclure le service $1 
+edit_inc=Inclure le service $1
 edit_iheader=Services PAM inclus
 
 pam_foreground.so=Configuration de la console
@@ -41,10 +41,10 @@ unix_obscure=Empêcher l'utilisation de mots de passe faciles?
 unix_emin=Longueur minimale du mot de passe manquante ou invalide
 unix_emax=Longueur maximale du mot de passe manquante ou invalide
 
-log_inc_create=Ajout de $1 pour le service $2 
-log_inc_modify=Modifié inclure $1 pour le service $2 
-log_inc_delete=Supprimé $1 pour le service $2 
-log_incs=La mise à jour inclut le service $1 
+log_inc_create=Ajout de $1 pour le service $2
+log_inc_modify=Modifié inclure $1 pour le service $2
+log_inc_delete=Supprimé $1 pour le service $2
+log_incs=La mise à jour inclut le service $1
 
 inc_edit=Modifier le service inclus
 inc_create=Créer un service inclus

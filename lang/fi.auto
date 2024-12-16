@@ -78,7 +78,7 @@ sql_epostgresqlconnect=Yhdistäminen PostgreSQL-tietokantaan epäonnistui : $1
 sql_eldapdriver=LDAP perl -moduulin lataus epäonnistui
 sql_eldapconnect=Yhteyden muodostaminen LDAP-palvelimeen $1 epäonnistui
 sql_eldaptls=TLS-salauksen aloittaminen epäonnistui LDAP: lle : $1
-sql_eldaplogin=Kirjautuminen LDAP-palvelimelle epäonnistui $1 : $2 
+sql_eldaplogin=Kirjautuminen LDAP-palvelimelle epäonnistui $1 : $2
 
 log_email_subject=Webmin-toiminto $1
 log_email_global=Webminin globaali toiminta
@@ -112,8 +112,8 @@ paginator_nosearchrs=Ei tuloksia, jotka vastaavat kyselyä <tt>$1</tt>
 langauto_include=Sisällytä konekäännökset
 
 file_truncated_message=noutaa $1 datasta, katkaisi $2 / $3 : sta
-file_truncated_message_head=noutaa tiedon alun $1, katkaisi $2 / $3 
-file_truncated_message_tail=haettu loppu $1 datasta, katkaistu $2 / $3 
+file_truncated_message_head=noutaa tiedon alun $1, katkaisi $2 / $3
+file_truncated_message_tail=haettu loppu $1 datasta, katkaistu $2 / $3
 
 defcert_error=Oletusarvoinen $1 niputettu SSL-varmenne on käytössä. On erittäin suositeltavaa päivittää oletussertifikaatti <tt>$2</tt> ennen kuin jatkat kirjautumista.
 

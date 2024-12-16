@@ -20,9 +20,9 @@ save_ehost2=L'hôte n'existe pas
 save_eport2=Un port doit être attribué si un type de lien avec une connexion est sélectionné
 save_egroup2=Nouveau nom de groupe non valide
 
-find_but=Nouveau serveur trouvé à $1, mais l'authentification a échoué : $2 
-find_already2=Hôte de serveur connu trouvé à $1 
-find_skip=Ignorer le serveur à $1 
+find_but=Nouveau serveur trouvé à $1, mais l'authentification a échoué : $2
+find_already2=Hôte de serveur connu trouvé à $1
+find_skip=Ignorer le serveur à $1
 find_eiface=Impossible de trouver l'interface à analyser
 find_eport=Numéro de port manquant ou invalide
 
@@ -50,8 +50,8 @@ auto_sched=Recherchez de nouveaux serveurs?
 auto_sched1=Oui, toutes les $1 minutes
 auto_net=Réseau IP à analyser
 auto_auto=Réseau local
-auto_ip=Réseaux IP $1 
-auto_iface=Réseau sur l'interface $1 
+auto_ip=Réseaux IP $1
+auto_iface=Réseau sur l'interface $1
 auto_user=Nom d'utilisateur pour les nouveaux serveurs
 auto_pass=Mot de passe pour les nouveaux serveurs
 auto_type=Type de système par défaut

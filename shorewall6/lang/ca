@@ -273,7 +273,7 @@ tunnels_3=Zones del portal
 tunnels_gnone=Cap
 tunnels_return=a la llista de túnels VPN
 tunnels_edit=Edita el Túnel VPN
-tunnels_create=Crea un Túnel VPN 
+tunnels_create=Crea un Túnel VPN
 tunnels_header=Detalls del túnel VPN
 tunnels_err=No s'ha pogut desar el túnel VPN
 tunnels_sel=IP del Portal
@@ -319,7 +319,7 @@ edit_before=Abans de l'entrada $1
 edit_after=Després de l'entrada $1
 
 blacklist_title=Llista Negra de Hosts
-blacklist_desc=Aquesta pàgina llista els hosts i els serveis que es bloquejaran si el trànsit des dels mateixos arriba en una interfície amb l'opció <b>blacklist</b> establerta. 
+blacklist_desc=Aquesta pàgina llista els hosts i els serveis que es bloquejaran si el trànsit des dels mateixos arriba en una interfície amb l'opció <b>blacklist</b> establerta.
 blacklist_add=Afegeix un nou host de llista negra.
 blacklist_none=Encara no s'ha decidit cap host de llista negra.
 blacklist_0=Host o xarxa

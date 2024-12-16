@@ -82,18 +82,18 @@ save_eanonuid=Ugyldigt anonymt brugernavn
 save_eanongid=Ugyldigt anonymt adgangsgruppenavn
 
 exports_webnfs=WebNFS klienter
-exports_ngroup=Netgroup $1 
-exports_net=Netværk $1 
+exports_ngroup=Netgroup $1
+exports_net=Netværk $1
 exports_all=Alle sammen
-exports_hosts=Værter $1 
-exports_host=Host $1 
-exports_gss=Godkendt netværk: $1 
+exports_hosts=Værter $1
+exports_host=Host $1
+exports_gss=Godkendt netværk: $1
 
-log_modify=Ændret NFS-eksport $1 
-log_modify_l=Ændret NFS-eksport $1 til $2 
+log_modify=Ændret NFS-eksport $1
+log_modify_l=Ændret NFS-eksport $1 til $2
 log_delete=NFS-eksport $1 er slettet
 log_delete_l=NFS-eksport $1 til $2 blev slettet
-log_create=Oprettet NFS-eksport $1 
-log_create_l=Oprettet NFS-eksport $1 til $2 
+log_create=Oprettet NFS-eksport $1
+log_create_l=Oprettet NFS-eksport $1 til $2
 log_apply=Anvendt konfiguration
 log_delete_exports=Slet $1 NFS-eksport

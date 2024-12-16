@@ -107,7 +107,7 @@ edit_none=Không có mô-đun PAM được chỉ định cho bước này.
 edit_delete=Xóa dịch vụ PAM
 edit_move=Di chuyển
 edit_return=Dịch vụ PAM
-edit_inc=Bao gồm dịch vụ $1 
+edit_inc=Bao gồm dịch vụ $1
 edit_iheader=Bao gồm các dịch vụ PAM
 
 pam_pwdb.so=Xác thực mật khẩu Unix
@@ -273,17 +273,17 @@ mail_edir=Thư mục spool thư bị thiếu hoặc không hợp lệ
 
 stack_service=Kiểm tra qua dịch vụ PAM
 
-log_pam_create=Đã tạo dịch vụ PAM $1 
-log_pam_delete=Đã xóa dịch vụ PAM $1 
-log_mod_create=Đã thêm mô-đun PAM $1 vào dịch vụ $2 
-log_mod_modify=Mô-đun PAM đã sửa đổi $1 trong dịch vụ $2 
-log_mod_delete=Đã xóa mô-đun PAM $1 trong dịch vụ $2 
-log_mod_move=Hoán đổi các mô-đun PAM trong dịch vụ $3 
-log_mod_move_l=Hoán đổi các mô-đun PAM $1 và $2 trong dịch vụ $3 
-log_inc_create=Đã thêm bao gồm $1 cho dịch vụ $2 
-log_inc_modify=Đã sửa đổi bao gồm $1 cho dịch vụ $2 
-log_inc_delete=Đã xóa bao gồm $1 cho dịch vụ $2 
-log_incs=Đã cập nhật bao gồm dịch vụ $1 
+log_pam_create=Đã tạo dịch vụ PAM $1
+log_pam_delete=Đã xóa dịch vụ PAM $1
+log_mod_create=Đã thêm mô-đun PAM $1 vào dịch vụ $2
+log_mod_modify=Mô-đun PAM đã sửa đổi $1 trong dịch vụ $2
+log_mod_delete=Đã xóa mô-đun PAM $1 trong dịch vụ $2
+log_mod_move=Hoán đổi các mô-đun PAM trong dịch vụ $3
+log_mod_move_l=Hoán đổi các mô-đun PAM $1 và $2 trong dịch vụ $3
+log_inc_create=Đã thêm bao gồm $1 cho dịch vụ $2
+log_inc_modify=Đã sửa đổi bao gồm $1 cho dịch vụ $2
+log_inc_delete=Đã xóa bao gồm $1 cho dịch vụ $2
+log_incs=Đã cập nhật bao gồm dịch vụ $1
 
 inc_edit=Chỉnh sửa dịch vụ đi kèm
 inc_create=Tạo dịch vụ đi kèm

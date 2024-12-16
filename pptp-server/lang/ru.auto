@@ -1,5 +1,5 @@
 index_title=PPTP VPN сервер
-index_version=Версия PoPToP $1 
+index_version=Версия PoPToP $1
 index_epptpd=PPP-сервер PoPToP $1 не найден в вашей системе или является неподходящей программой. Возможно, он не установлен или ваша <a href='$2'>конфигурация модуля</a> неверна.
 index_econfig=Файл конфигурации сервера PPTP $1 не найден в вашей системе. Возможно, ваша <a href='$2'>конфигурация модуля</a> неверна.
 index_stop=Остановить сервер PPTP
@@ -63,7 +63,7 @@ options_err=Не удалось сохранить параметры PPP
 options_emtu=Отсутствует или неверный максимальный размер отправляемого пакета
 options_emru=Отсутствует или неверен максимальный размер принимаемого пакета
 options_ename=Отсутствует или неверное имя сервера для аутентификации
-options_version=Версия PPPd $1 
+options_version=Версия PPPd $1
 options_msdesc=Приведенные ниже параметры включают метод проверки подлинности MS-CHAP и шифрование MPPE, используемые по умолчанию клиентами Windows VPN. Однако для MPPE требуется поддержка как демона PPP, так и ядра операционной системы.
 options_mschap=MS-CHAP аутентификация
 options_mschap-v2=Проверка подлинности MS-CHAP версии 2
@@ -75,7 +75,7 @@ secrets_ecannot=Вам не разрешено редактировать уче
 secrets_return=показатель
 secrets_none=Учетные записи PPP еще не созданы.
 secrets_enopfile=Файл паролей PPP $1 не существует в вашей системе. Возможно, PPP не установлен или ваша <a href='$2'>конфигурация модуля</a> неверна.
-secrets_table=PPP составляет $1 
+secrets_table=PPP составляет $1
 secrets_user=имя пользователя
 secrets_ips=IP-адреса
 secrets_uany=ЛЮБЫЕ
@@ -133,13 +133,13 @@ disc_err=Не удалось отключиться
 disc_egone=Соединения больше не активны
 disc_ekill=Процесс больше не работает
 
-log_secret_create=Создан аккаунт PPP $1 
-log_secret_modify=Модифицированная учетная запись PPP $1 
-log_secret_delete=Удаленный счет PPP $1 
+log_secret_create=Создан аккаунт PPP $1
+log_secret_modify=Модифицированная учетная запись PPP $1
+log_secret_delete=Удаленный счет PPP $1
 log_deletes=Удалены $1 PPP аккаунты
 log_conf=Модифицированные опции сервера PPTP
 log_options=Модифицированные параметры PPP
-log_disc=Отключенный клиент $1 
+log_disc=Отключенный клиент $1
 log_start=Запущен PPTP сервер
 log_stop=Остановлен сервер PPTP
 log_apply=Прикладная конфигурация сервера PPTP

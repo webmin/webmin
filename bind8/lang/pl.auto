@@ -2,7 +2,7 @@ index_eexpired=Ostrzeżenie: następujące strefy wygasły sygnatury DNSSEC : $1
 index_eexpired_conf=Automatyczne podpisywanie powinno zostać ponownie włączone na stronie $1.
 index_eexpired_mod=Użyj modułu $1, aby wyłączyć DNSSEC dla tych domen lub sprawdzić, dlaczego podpisywanie kończy się niepowodzeniem.
 
-master_inview=$1 w widoku $2 
+master_inview=$1 w widoku $2
 master_vmin=Tą strefą zarządza Virtualmin. Rekordy należy edytować za pomocą interfejsu użytkownika Virtualmin, aby zapewnić ich spójność z innymi ustawieniami serwera wirtualnego.
 master_vminalias=Ta strefa jest aliasem domeny Virtualmin, która jest synchronizowana z celem. Rekordów nigdy nie należy tutaj edytować, ponieważ wszelkie zmiany zostaną nadpisane!
 
@@ -108,7 +108,7 @@ dnssec_secs=sekundy
 dt_zone_zskrolldesc=Wymuś najazd klucza podpisującego strefę
 dt_zone_kskrolldesc=Wymuś najazd klucza podpisującego klucz strefy
 
-zonekey_algorithm=Algorytm DNSSEC : $1 
+zonekey_algorithm=Algorytm DNSSEC : $1
 zonekey_eprivate=Nie można odczytać klucza prywatnego powiązanego z tą strefą : $1
 zonekey_keep=Zachować istniejący klucz, jeśli DNSSEC zostanie ponownie włączony?
 

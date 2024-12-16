@@ -1,4 +1,4 @@
-index_version=OpenLDAP $1 
+index_version=OpenLDAP $1
 index_openldap=OpenLDAP
 index_eslapd=Program servera OpenLDAP $1 nebol vo vašom systéme nájdený. Možno je cesta na stránke <a href='$2'>konfigurácia modulu</a> nesprávna?
 index_econfig=Vo vašom systéme sa nenašiel konfiguračný súbor servera OpenLDAP $1. Možno je cesta na stránke <a href='$2'>konfigurácia modulu</a> nesprávna?
@@ -24,10 +24,10 @@ connect_efile=Konfiguračný súbor OpenLDAP $1 nebol nájdený - možno v tomto
 connect_euser2=Žiadny používateľ na prihlásenie, ako sa našiel v konfigurácii servera LDAP
 connect_epass2=V konfigurácii servera LDAP nebolo nájdené žiadne heslo na prihlásenie
 connect_epass3=Heslo v konfigurácii servera LDAP je šifrované a server Webmin ho nemôže použiť
-connect_emod=Nie je nainštalovaný modul Perl $1 potrebný na pripojenie k serveru LDAP. Úplné chybové hlásenie Perl je : $2 
-connect_eldap=Nepodarilo sa pripojiť k serveru LDAP $1 na porte $2 
-connect_essl=Nepodarilo sa spustiť šifrovanie TLS so serverom LDAP $1 : $2 
-connect_elogin=Nepodarilo sa prihlásiť na server LDAP $1 ako $2 : $3 
+connect_emod=Nie je nainštalovaný modul Perl $1 potrebný na pripojenie k serveru LDAP. Úplné chybové hlásenie Perl je : $2
+connect_eldap=Nepodarilo sa pripojiť k serveru LDAP $1 na porte $2
+connect_essl=Nepodarilo sa spustiť šifrovanie TLS so serverom LDAP $1 : $2
+connect_elogin=Nepodarilo sa prihlásiť na server LDAP $1 ako $2 : $3
 connect_cpan=Môžete mať <tt>$1</tt> Perl modul <a href='$2'>automaticky nainštalovaný</a> z CPAN.
 
 slapd_title=Konfigurácia servera OpenLDAP
@@ -109,11 +109,11 @@ acl_add=Pridajte nové pravidlo riadenia prístupu.
 acl_return=pravidlá kontroly prístupu
 
 browser_title=Prehliadať databázu
-browser_econn=Prehliadač LDAP nie je možné použiť : $1 
+browser_econn=Prehliadač LDAP nie je možné použiť : $1
 browser_ecannot=Nemáte povolenie prehľadávať databázu LDAP
 browser_base=prechádzanie:
 browser_ok=Šou
-browser_esearch=Vyhľadávanie LDAP zlyhalo : $1 
+browser_esearch=Vyhľadávanie LDAP zlyhalo : $1
 browser_subs=Detské predmety
 browser_attrs=Atribúty objektu
 browser_parent=Prejdite na položku Rodič
@@ -144,26 +144,26 @@ browser_sok=Vyhľadávanie
 
 save_err=Atribút sa nepodarilo zmeniť
 save_ebase=Nepodarilo sa načítať objekt $1 z databázy
-save_emodify=Úprava LDAP $2 v $1 zlyhala : $3 
+save_emodify=Úprava LDAP $2 v $1 zlyhala : $3
 save_enone=Neboli zadané žiadne hodnoty
 
 add_err=Nepodarilo sa pridať atribút
 add_eadd=Chýba alebo je neplatný názov atribútu
 add_evalue=Chýba hodnota
-add_emodify=Pridanie LDAP $2 do $1 zlyhalo : $3 
+add_emodify=Pridanie LDAP $2 do $1 zlyhalo : $3
 
 delete_err=Atribúty sa nepodarilo odstrániť
 delete_enone=Žiadne vybraté
-delete_emodify=Odstránenie LDAP $2 z $1 zlyhalo : $3 
+delete_emodify=Odstránenie LDAP $2 z $1 zlyhalo : $3
 
 sdelete_err=Nepodarilo sa odstrániť objekty
 sdelete_edn=Objekt $1 nebol nájdený
-sdelete_edel=Odstránenie LDAP z $1 zlyhalo : $2 
+sdelete_edel=Odstránenie LDAP z $1 zlyhalo : $2
 
 rename_err=Nepodarilo sa premenovať objekt
-rename_eget=Nepodarilo sa nájsť objekt s DN $1 
+rename_eget=Nepodarilo sa nájsť objekt s DN $1
 rename_enew=Zdá sa, že nový názov nie je platný
-rename_erename=Zlyhanie protokolu LDAP do $2 z $1 zlyhalo : $3 
+rename_erename=Zlyhanie protokolu LDAP do $2 z $1 zlyhalo : $3
 
 oadd_title=Vytvorenie objektu
 oadd_header=Nové podrobnosti o objekte LDAP
@@ -175,11 +175,11 @@ oadd_edn1=Chýbajúci alebo neplatný názov DN
 oadd_edn2=Chýbajúca alebo neplatná hodnota pre DN
 oadd_eclasses=Neboli zadané žiadne triedy objektov
 oadd_eclass='$1' nevyzerá ako platná trieda objektov
-oadd_ename=Neplatné hľadané meno pre atribút $1 
-oadd_eget=Nepodarilo sa získať objekt $1 : $2 
-oadd_eget2=Nepodarilo sa skontrolovať stret s $1 : $2 
+oadd_ename=Neplatné hľadané meno pre atribút $1
+oadd_eget=Nepodarilo sa získať objekt $1 : $2
+oadd_eget2=Nepodarilo sa skontrolovať stret s $1 : $2
 oadd_eclash=Objekt s DN $1 už existuje
-oadd_eadd=Pridanie LDAP $1 zlyhalo : $2 
+oadd_eadd=Pridanie LDAP $1 zlyhalo : $2
 oadd_err=Nepodarilo sa vytvoriť nový objekt
 
 create_title=Vytvorte strom
@@ -198,7 +198,7 @@ create_edom=Chýba alebo je neplatný názov domény
 create_edn=Chýba alebo je neplatný rozlišujúci názov
 create_err=Nový strom sa nepodarilo vytvoriť
 create_doingdn=Vytvára sa základná DN $1 ..
-create_edoingdn=.. zlyhalo : $1 
+create_edoingdn=.. zlyhalo : $1
 create_done=.. hotový
 create_doingex=Vytvára sa vzorový objekt s DN $1 ..
 create_edoingex=.. zlyhalo: $1. Strom však stále môžete používať.
@@ -207,29 +207,29 @@ create_eoc=Nepodarilo sa nájsť vhodnú triedu objektov pre nový DN
 eunknown=Neznáma chyba
 
 apply_err=Nepodarilo sa použiť konfiguráciu
-apply_ecmd=$1 zlyhalo : $2 
+apply_ecmd=$1 zlyhalo : $2
 apply_ecannot=Nemáte povolenie použiť konfiguráciu
 
 stop_err=Zastavenie servera LDAP zlyhalo
-stop_ecmd=$1 zlyhalo : $2 
+stop_ecmd=$1 zlyhalo : $2
 stop_egone=Už nebeží!
-stop_ekill=Proces zabitia zlyhal : $1 
+stop_ekill=Proces zabitia zlyhal : $1
 stop_ecannot=Nemáte povolenie zastaviť server LDAP
 
 start_err=Nepodarilo sa spustiť server LDAP
-start_ecmd=$1 zlyhalo : $2 
+start_ecmd=$1 zlyhalo : $2
 start_ecannot=Nemáte povolenie na spustenie servera LDAP
 
-log_create_dn=Vytvorený objekt $1 
-log_delete_dn=Odstránený objekt $1 
-log_rename_dn=Premenovaný objekt $1 
+log_create_dn=Vytvorený objekt $1
+log_delete_dn=Odstránený objekt $1
+log_rename_dn=Premenovaný objekt $1
 log_delete_dns=Odstránené $1 objekty
-log_create_attr=Pridaný atribút k objektu $2 
-log_create_attr_l=K objektu $2 bol pridaný atribút $1 s hodnotou $3 
-log_modify_attr=Aktualizovaný atribút v objekte $2 
-log_modify_attr_l=Aktualizovaný atribút $1 s hodnotou $3 v objekte $2 
-log_delete_attr=Odstránené z objektu $2 
-log_delete_attr_l=Z objektu $2 bol odstránený atribút $1 
+log_create_attr=Pridaný atribút k objektu $2
+log_create_attr_l=K objektu $2 bol pridaný atribút $1 s hodnotou $3
+log_modify_attr=Aktualizovaný atribút v objekte $2
+log_modify_attr_l=Aktualizovaný atribút $1 s hodnotou $3 v objekte $2
+log_delete_attr=Odstránené z objektu $2
+log_delete_attr_l=Z objektu $2 bol odstránený atribút $1
 log_delete_attrs=Z objektu $2 boli odstránené $1 atribúty
 log_stop=Zastavený server LDAP
 log_start=Spustený server LDAP
@@ -237,19 +237,19 @@ log_apply=Aplikovaná konfigurácia
 log_slapd=Zmenená konfigurácia servera LDAP
 log_schema=Zmenené povolené schémy LDAP
 log_gencert=Vygenerovaný nový certifikát SSL
-log_sfile=Upravený súbor schémy $1 
+log_sfile=Upravený súbor schémy $1
 log_sup=Súbor schémy $1 bol presunutý nahor
 log_sdown=Súbor schémy $1 bol presunutý nadol
-log_create=Vytvorené nové DN $1 
+log_create=Vytvorené nové DN $1
 log_bootup=Pri štarte povolený server LDAP
 log_bootdown=Pri zavádzaní bol zakázaný server LDAP
 log_perms=Opravené povolenia servera LDAP
-log_create_access=Vytvorilo sa pravidlo riadenia prístupu pre $1 
-log_delete_access=Odstráňte pravidlo riadenia prístupu pre $1 
-log_modify_access=Aktualizované pravidlo riadenia prístupu pre $1 
-log_up_access=Pravidlo riadenia prístupu bolo posunuté o $1 
-log_down_access=Pravidlo riadenia prístupu bolo posunuté o $1 
-log_delete_accesses=Odstránené pravidlá prístupu $1 
+log_create_access=Vytvorilo sa pravidlo riadenia prístupu pre $1
+log_delete_access=Odstráňte pravidlo riadenia prístupu pre $1
+log_modify_access=Aktualizované pravidlo riadenia prístupu pre $1
+log_up_access=Pravidlo riadenia prístupu bolo posunuté o $1
+log_down_access=Pravidlo riadenia prístupu bolo posunuté o $1
+log_delete_accesses=Odstránené pravidlá prístupu $1
 log_all=všetky objekty
 
 gencert_title=Vygenerujte certifikát SSL
@@ -275,7 +275,7 @@ acl_create=Dokážete vytvoriť nový strom?
 acl_start=Môže spustiť a zastaviť server LDAP?
 acl_apply=Je možné aplikovať zmeny konfigurácie?
 
-access_desc=$2 po $1 
+access_desc=$2 po $1
 access_self=sám
 access_users=overených používateľov
 access_anon=anonymní používatelia
@@ -322,7 +322,7 @@ eacl_err=Nepodarilo sa uložiť pravidlo riadenia prístupu
 eacl_edn=Chýbajúce alebo neplatné DN - malo by byť ako <tt>uid=joe,dc=my-domain,dc=com</tt>
 eacl_efilter=Chýbajúci alebo neplatný filter - mal by byť ako <tt>(objectClass = posixAccount)</tt>
 eacl_eattrs=Chýbajúci alebo neplatný zoznam atribútov oddelených čiarkami
-eacl_ewho=Chýbajúce alebo zle vyzerajúce DN v riadku $1 
-eacl_eaccess=Chýbajúca alebo neplatná úroveň prístupu v riadku $1 
+eacl_ewho=Chýbajúce alebo zle vyzerajúce DN v riadku $1
+eacl_eaccess=Chýbajúca alebo neplatná úroveň prístupu v riadku $1
 eacl_order=Poradie pravidiel
 eacl_noorder=Žiadne

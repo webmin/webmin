@@ -20,7 +20,7 @@ save_ehost2=Ana makine yok
 save_eport2=Girişli bir bağlantı türü seçiliyse bir bağlantı noktası verilmelidir
 save_egroup2=Geçersiz yeni grup adı
 
-find_but=$1 adresinde yeni sunucu bulundu, ancak kimlik doğrulama başarısız oldu : $2 
+find_but=$1 adresinde yeni sunucu bulundu, ancak kimlik doğrulama başarısız oldu : $2
 find_already2=$1 adresinde bilinen sunucu ana bilgisayarı bulundu
 find_skip=$1 sunucusunda yoksayılıyor
 find_eiface=Taranacak arayüz bulunamadı
@@ -50,7 +50,7 @@ auto_sched=Yeni sunucuları kontrol etmek istiyor musunuz?
 auto_sched1=Evet, her $1 dakikada bir
 auto_net=Taranacak IP ağı
 auto_auto=Yerel ağ
-auto_ip=IP ağları $1 
+auto_ip=IP ağları $1
 auto_iface=$1 arabirimindeki ağ
 auto_user=Yeni sunucular için kullanıcı adı
 auto_pass=Yeni sunucular için şifre

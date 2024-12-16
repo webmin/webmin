@@ -17,4 +17,4 @@ edit_special_monthly=Kas mėnesį (pirmą dieną)
 edit_special_yearly=Kasmet (sausio 1 d.)
 
 log_success=Sėkmingai paleidote <tt>$2</tt> į <tt>$1</tt>
-log_failure=Nepavyko paleisti <tt>$2</tt> <tt>$1</tt> : $3 
+log_failure=Nepavyko paleisti <tt>$2</tt> <tt>$1</tt> : $3

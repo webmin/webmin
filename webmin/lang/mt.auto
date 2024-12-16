@@ -309,7 +309,7 @@ os_name=Isem varjabbli
 os_value=Valur
 os_eversion=Verżjoni tas-sistema operattiva nieqsa
 os_eiversion=Nieqes il-verżjoni tas-sistema operattiva interna
-os_incorrect=Is-sistema operattiva $1 ġiet aġġornata għall-verżjoni $2 
+os_incorrect=Is-sistema operattiva $1 ġiet aġġornata għall-verżjoni $2
 os_release_notes=Noti tar-rilaxx
 os_fix=Aġġornat Sistema Operattiva Maqbuda
 os_usermin=Aġġorna wkoll OS Usermin
@@ -672,7 +672,7 @@ session_blocklock=Issakkar ukoll lill-utenti bi logins falluti
 session_passapi=Tippermetti l-API tal-bidla tal-password mill-bogħod?
 session_passapi0=API diżattivat
 session_passapi1=API attivata għal utenti Unix
-session_passurl=Meta tkun attivata, il-passwords tal-utent jistgħu jinbidlu permezz ta 'talba POST għal $1 
+session_passurl=Meta tkun attivata, il-passwords tal-utent jistgħu jinbidlu permezz ta 'talba POST għal $1
 
 assignment_title=Moduli mill-ġdid
 assignment_header=Assenjazzjonijiet tal-kategorija tal-moduli

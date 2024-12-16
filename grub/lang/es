@@ -1,4 +1,4 @@
-index_title=Gestor de arranque GRUB 
+index_title=Gestor de arranque GRUB
 index_add=Agregar una nueva opción de arranque
 index_global=Editar Opciones Globales
 index_globalmsg=Editar opciones de arranque globales que aplican a todas las selecciones del menú de arranque, y seleccione el dispositivo en el cual GRUB se instalará.

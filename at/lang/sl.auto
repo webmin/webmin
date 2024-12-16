@@ -68,9 +68,9 @@ deletes_err=Ukazov ni bilo mogoče preklicati
 deletes_enone=Izbrana ni nobena
 
 log_allow=Spremenjeni dovoljeni uporabniki
-log_create_job=Ustvarjen načrtovan ukaz za $1 
-log_delete_job=Preklic načrtovanega ukaza za $1 
-log_exec_job=Izveden načrtovani ukaz za $1 
+log_create_job=Ustvarjen načrtovan ukaz za $1
+log_delete_job=Preklic načrtovanega ukaza za $1
+log_exec_job=Izveden načrtovani ukaz za $1
 log_delete_jobs=Preklicani $1 razporejeni ukazi
 log_stop=Ustavljen strežnik za načrtovane ukaze
 log_start=Začel strežnik načrtovanih ukazov

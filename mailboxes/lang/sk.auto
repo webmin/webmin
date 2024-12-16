@@ -252,7 +252,7 @@ send_eattach=Prílohy nemôžu celkovo presahovať veľkosť $1 kB.
 send_eperms=Používateľ $1 nevie čítať $2
 send_eperms2=Nemáte oprávnenie odosielať súbor $1
 send_epath=Spustiteľný súbor Sendmail $1 neexistuje.
-send_efile=Nepodarilo sa prečítať prílohu $1 : $2 
+send_efile=Nepodarilo sa prečítať prílohu $1 : $2
 send_done=.. hotový.
 
 send_epass=Správu nemôžete podpísať, pretože vaše prístupové frázy ešte neboli v module GnuPG nastavené.
@@ -337,8 +337,8 @@ folder_spam=Spam
 
 detach_err=Súbor sa nepodarilo odpojiť
 detach_edir=Do súboru nebol vložený žiadny súbor alebo adresár
-detach_eopen=Nepodarilo sa otvoriť $1 : $2 
-detach_ewrite=Nepodarilo sa zapísať do $1 : $2 
+detach_eopen=Nepodarilo sa otvoriť $1 : $2
+detach_ewrite=Nepodarilo sa zapísať do $1 : $2
 detach_title=Odpojte súbor
 detach_ok=Napísaná príloha k súboru na strane servera $1 ($2).
 
@@ -437,7 +437,7 @@ white_already=E-mailová adresa $1 je už na zozname povolených adries SpamAssa
 
 ldap_emod=Chýba modul Perl $1 potrebný na pripojenie k LDAP
 ldap_econn=Nepodarilo sa pripojiť k serveru LDAP $1 port $2
-ldap_elogin=Nepodarilo sa naviazať na server LDAP $1 ako $2 : $3 
+ldap_elogin=Nepodarilo sa naviazať na server LDAP $1 ako $2 : $3
 ldap_ehost=V konfigurácii modulu nie je nastavený žiadny server LDAP
 ldap_eport=V konfigurácii modulu nie je nastavený žiadny platný port servera LDAP
 ldap_euser=V konfigurácii modulu nie je nastavené žiadne prihlásenie LDAP

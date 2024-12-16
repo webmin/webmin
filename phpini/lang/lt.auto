@@ -11,7 +11,7 @@ index_anyfile=Redaguoti kitą PHP konfigūracijos failą:
 index_return=konfigūracijos failai
 
 file_global=Visuotinė PHP konfigūracija
-file_eread=Nepavyko nuskaityti $1 : $2 
+file_eread=Nepavyko nuskaityti $1 : $2
 
 manual_title=Redaguoti konfigūraciją rankiniu būdu
 manual_desc=Šis puslapis gali būti naudojamas rankiniu būdu redaguoti PHP konfigūracijos failą. Tai turėtų būti daroma atsargiai, nes pakeitimai nebus atliekami nei sintaksės, nei kitokio galiojimo patikrinimo.
@@ -124,7 +124,7 @@ errors_maxlen=Didžiausias užregistruotų klaidų dydis
 errors_file=Žurnalo failas klaidų
 errors_none=Nė vienas
 errors_syslog=„Syslog“
-errors_other=Kitas failas $1 
+errors_other=Kitas failas $1
 errors_unlimited=Neribota
 errors_err=Nepavyko išsaugoti klaidų registravimo
 errors_ereporting=Neįvesta klaidos tipo išraiška
@@ -152,15 +152,15 @@ misc_path=CGI nustatyto kelio informacija?
 misc_timezone=PHP laiko juosta
 misc_charset=Numatytasis simbolių rinkinys
 
-log_manual=Rankiniu būdu redaguoti failą $1 
-log_vars=Pakeisti PHP kintamieji $1 
-log_dirs=Pakeisti katalogo nustatymai $1 
-log_db=Pakeisti duomenų bazės parametrai $1 
-log_session=Pakeistos sesijos parinktys $1 
-log_safe=Pakeistos saugaus režimo parinktys $1 
-log_limits=Pakeisti išteklių apribojimai $1 
-log_errors=Pakeista prisijungimo klaida $1 
-log_misc=Pakeitė kitus parametrus $1 
+log_manual=Rankiniu būdu redaguoti failą $1
+log_vars=Pakeisti PHP kintamieji $1
+log_dirs=Pakeisti katalogo nustatymai $1
+log_db=Pakeisti duomenų bazės parametrai $1
+log_session=Pakeistos sesijos parinktys $1
+log_safe=Pakeistos saugaus režimo parinktys $1
+log_limits=Pakeisti išteklių apribojimai $1
+log_errors=Pakeista prisijungimo klaida $1
+log_misc=Pakeitė kitus parametrus $1
 
 acl_global=Ar galite redaguoti visuotinę PHP konfigūraciją?
 acl_anyfile=Ar galite redaguoti bet kurį failą kaip PHP konfigūraciją?

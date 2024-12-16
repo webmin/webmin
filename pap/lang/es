@@ -33,7 +33,7 @@ edit_secret_save=Salvar
 edit_secret_del=Borrar
 edit_secret_return=lista de cuentas
 
-save_secret_esave=No pude salvar cuenta 
+save_secret_esave=No pude salvar cuenta
 save_secret_enoip='$1' no es una dirección válida
 
 log_create=Creado usuario PPP $1

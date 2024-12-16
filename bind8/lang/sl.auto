@@ -67,7 +67,7 @@ index_eexpired_conf=Samodejno podpisovanje bi bilo treba ponovno omogočiti na s
 index_eexpired_mod=Z modulom $1 bodisi onemogočite DNSSEC za te domene ali preverite, zakaj podpisuje neuspešno.
 
 master_title=Uredi glavno cono
-master_inview=$1 v pogledu $2 
+master_inview=$1 v pogledu $2
 master_ecannot=Ni vam dovoljeno urejati te cone
 master_egone=Cona $1 ne obstaja v nobenem pogledu
 master_egone2=Cona $1 ne obstaja!

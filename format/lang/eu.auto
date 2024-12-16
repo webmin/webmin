@@ -128,10 +128,10 @@ tunefs_exec=$1 komandoa exekutatzen.
 tunefs_failed=.. Komandoak huts egin du!
 tunefs_ok=.. agindua bukatuta.
 
-select_device=SCSI kontrola $1 xede $2 unitate $3 
-select_idedevice=IDE gailua $1 
-select_part=SCSI kontrola $1 xede $2 unitate $3 partizio $4 
-select_idepart=IDE gailua $1 partizio $2 
+select_device=SCSI kontrola $1 xede $2 unitate $3
+select_idedevice=IDE gailua $1
+select_part=SCSI kontrola $1 xede $2 unitate $3 partizio $4
+select_idepart=IDE gailua $1 partizio $2
 opt_error='$1' ez da $2 baliozkoa
 esun=Partizioak Sun hardwarean soilik alda daitezke
 emounted=Diskoak partizioak muntatu ditu

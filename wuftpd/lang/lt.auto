@@ -1,7 +1,7 @@
 index_title=WU-FTPD serveris
 index_eftpd=FTP serverio $1 nepavyko rasti jūsų sistemoje. Galbūt jis neįdiegtas, arba <a href='$2'>FTP serverio modulio konfigūracija</a> yra neteisinga.
 index_eftpaccess=FTP serverio konfigūracijos failo $1 nėra. Galbūt jis neįdiegtas, arba <a href='$2'>FTP serverio modulio konfigūracija</a> yra neteisinga.
-index_eversion=Neatrodo, kad FTP serveris $1 yra WU-FTPd. Galbūt jūs naudojate senesnį FTPd, pateiktą kartu su operacine sistema, arba teisinga jūsų <a href='$2'>FTP serverio modulio konfigūracija</a>. Išvestis iš FTP serverio buvo : $3 
+index_eversion=Neatrodo, kad FTP serveris $1 yra WU-FTPd. Galbūt jūs naudojate senesnį FTPd, pateiktą kartu su operacine sistema, arba teisinga jūsų <a href='$2'>FTP serverio modulio konfigūracija</a>. Išvestis iš FTP serverio buvo : $3
 index_apply=Taikyti pakeitimus
 index_applymsg=Spustelėkite šį mygtuką, kad pritaikytumėte dabartinę konfigūraciją. Tai sustabdys ir iš naujo paleis visus veikiančius FTP serverio procesus, taip atjungdami visus prisijungusius vartotojus.
 index_start=Pradėti serverį

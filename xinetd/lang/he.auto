@@ -8,7 +8,7 @@ index_inet=מרשתת
 index_proto=נוהל
 index_user=משתמש
 index_server=תוכנית שרת
-index_redirect=העבר ל $1 
+index_redirect=העבר ל $1
 index_enabled=מופעל?
 index_internal=פנימי ל- Xinetd
 index_add_inet=צור שירות אינטרנט חדש
@@ -70,7 +70,7 @@ serv_eport=מספר יציאה חסר או לא חוקי
 serv_einst=מספר שרתים במקביל חסר או לא חוקי
 serv_euser=עליך להזין משתמש
 serv_egroup=עליך להיכנס לקבוצה
-serv_estd=אין מספר יציאה סטנדרטי לשירות $1 
+serv_estd=אין מספר יציאה סטנדרטי לשירות $1
 serv_eproto=עליך לבחור פרוטוקול לשירות זה
 serv_eserver=תוכנית שרת חסרה או לא תקפה
 serv_erhost=מארח העברת העברה חסר או לא חוקי
@@ -91,11 +91,11 @@ proto_tcp=TCP (פרוטוקול בקרת הולכה)
 proto_udp=UDP (פרוטוקול נתוני משתמש)
 
 restart_err=החלת השינויים נכשלה
-restart_ekill=שליחת האות USR2 נכשלה ל- PID $1 : $2 
+restart_ekill=שליחת האות USR2 נכשלה ל- PID $1 : $2
 restart_epid=כבר לא רץ
 
 start_err=ההתחלה של xinet נכשלה
-start_estart=$1 נכשל : $2 
+start_estart=$1 נכשל : $2
 
 defs_title=אפשרויות ברירת מחדל
 defs_header=אפשרויות ברירת מחדל לשירותים
@@ -122,16 +122,16 @@ defs_efile=שם קובץ יומן חסר או לא חוקי
 defs_esoft=מגבלה רכה חסרה או לא תקפה
 defs_ehard=מגבלה קשה חסרה או לא תקפה
 
-log_create_serv=נוצר שירות $2 $1 
-log_modify_serv=שינוי $2 שירות $1 
-log_delete_serv=נמחק $2 שירות $1 
+log_create_serv=נוצר שירות $2 $1
+log_modify_serv=שינוי $2 שירות $1
+log_delete_serv=נמחק $2 שירות $1
 log_start=שרת ה- Xinetd התחיל
 log_apply=שינויים שהוחלו
 log_defaults=אפשרויות ברירת מחדל השתנו
 log_enable=שירותי $1 מופעלים
 log_disable=מושבתים $1 שירותים
-log_enable_l=שירותים מופעלים $1 
-log_disable_l=שירותים נכים $1 
+log_enable_l=שירותים מופעלים $1
+log_disable_l=שירותים נכים $1
 
 config_dirdef=קובץ תצורה של Xinetd
 config_dirto=קובץ חדש בספרייה

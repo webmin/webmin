@@ -68,10 +68,10 @@ save_enohost='$1' - Neuvedli jste žádného hostitele
 save_euids=UID, kterým nedůvěřují, musí být seznam čísel nebo rozsahů oddělených čárkami
 save_egids=GID, kterým nedůvěřujte, musí být seznam čísel nebo rozsahů oddělených čárkami
 
-log_modify=Upravený export NFS $1 
-log_modify_l=Upravený export NFS $1 do $2 
-log_delete=Odstraněn export NFS $1 
-log_delete_l=Byl odstraněn export NFS $1 do $2 
-log_create=Byl vytvořen export NFS $1 
-log_create_l=Byl vytvořen export NFS $1 do $2 
+log_modify=Upravený export NFS $1
+log_modify_l=Upravený export NFS $1 do $2
+log_delete=Odstraněn export NFS $1
+log_delete_l=Byl odstraněn export NFS $1 do $2
+log_create=Byl vytvořen export NFS $1
+log_create_l=Byl vytvořen export NFS $1 do $2
 log_apply=Použitá konfigurace

@@ -1,6 +1,6 @@
 index_header=Проксі-сервер Squid
 index_msgnoconfig=Файл настроювань Squid <tt>$1</tt> не існує. Якщо у вас установлений Squid, то виправте шляху в <a href=/config.cgi?$2 >настроюваннях модуля</a>.
-index_msgnoexe= файл, ЩоВиконується, Squid <tt>$1</tt> не існує. Якщо у вас установлений Squid, то виправте шляху в <a href=/config.cgi?$2 >настроюваннях модуля</a>.
+index_msgnoexe=файл, ЩоВиконується, Squid <tt>$1</tt> не існує. Якщо у вас установлений Squid, то виправте шляху в <a href=/config.cgi?$2 >настроюваннях модуля</a>.
 index_msgnosupported2=Ваша версія Squid не підтримується Webmin. Цим модулем підтримуються тільки версії з $1 по $2.
 index_msgnodir1=Каталоги кеша Squid <tt>$1</tt> не були ініціалізовані.
 index_msgnodir2=Каталог кеша Squid <tt>$1</tt> не був ініціалізований.

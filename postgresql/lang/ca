@@ -19,7 +19,7 @@ index_esql=No s'ha trobat al sistema el programa client PostgreSQL $1. Pot ser q
 
 index_ehba=No s'ha trobat el fitxer de configuració del host PostgreSQL $1. Pot ser que PostgreSQL no hagi estat inicialitzat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_superuser=No s'ha pogut executar al sistema el programa client de PostgreSQL. Pot ser que PostgreSQL no estigui instal·lat, o bé que la <a href='$1'>configuració del mòdul</a> sigui incorrecta.
-index_eversion=La base de dades PostgreSQL del sistema és de la versió $1, però Webmin només suporta de la versió $2 en amunt. 
+index_eversion=La base de dades PostgreSQL del sistema és de la versió $1, però Webmin només suporta de la versió $2 en amunt.
 index_elibrary=No es pot executar el programa client PostgreSQL $1 perquè no es troben les llibreries compartides de Postgres. Comprova la <a href='$2'>configuració del mòdul</a> assegura't que el <i>Camí de les llibreries compartides de PostgreSQL</i> està posat.
 index_ldpath=La llibreria compartida està establerta a $1, i la resposta de $2 ha estat:
 index_version=Versió PostgreSQL $1
@@ -36,7 +36,7 @@ index_db=Nom de la base de dades
 index_tables=Taules
 index_drops=Destrueix les Bases de Dades Seleccionades
 index_postgresql=PostgreSQL
-index_toomany=Hi ha massa bases de dades per mostrar. Busca les bases de dades que coincideixin amb: 
+index_toomany=Hi ha massa bases de dades per mostrar. Busca les bases de dades que coincideixin amb:
 index_search=Busca
 index_showing=S'estan mostrant les bases de dades que coincideixen amb $1...
 index_emsg=El missatge d'error de PostgreSQL complet és: $1
@@ -307,7 +307,7 @@ host_viassl=Via SSL
 host_derr=No s'han pogut suprimir els hosts seleccionats
 host_enone=No has seleccionat cap host
 host_manual=Edita el Fitxer de Configuració
-host_manualdesc=Fes clic sobre aquest botó per editar manualment el fitxer de configuració de hosts permesos. 
+host_manualdesc=Fes clic sobre aquest botó per editar manualment el fitxer de configuració de hosts permesos.
 
 manual_title=Edició del Fitxer de Configuració
 manual_err=No d'ha pogut desar el fitxer de configuració

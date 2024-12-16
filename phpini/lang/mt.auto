@@ -11,7 +11,7 @@ index_anyfile=Editja fajl ta 'konfigurazzjoni PHP ieħor:
 index_return=Fajls ta 'konfigurazzjoni
 
 file_global=Konfigurazzjoni PHP Globali
-file_eread=Naqas milli jaqra $1 : $2 
+file_eread=Naqas milli jaqra $1 : $2
 
 manual_title=Editja l-Konfigurazzjoni Manwalment
 manual_desc=Din il-paġna tista 'tintuża biex teditja manwalment fajl ta' konfigurazzjoni PHP. Dan għandu jsir bir-reqqa, peress li ebda sintassi jew verifika oħra tal-validità ma jsiru fuq il-bidliet tiegħek.
@@ -124,7 +124,7 @@ errors_maxlen=Daqs massimu ta 'żbalji rreġistrati
 errors_file=Log fajl għal żbalji
 errors_none=Xejn
 errors_syslog=Syslog
-errors_other=Fajl ieħor $1 
+errors_other=Fajl ieħor $1
 errors_unlimited=Illimitat
 errors_err=Ma rnexxielux isalva l-iżball tal-qtugħ
 errors_ereporting=Ma daħlet l-ebda espressjoni tat-tip ta 'żball
@@ -152,15 +152,15 @@ misc_path=Informazzjoni dwar il-Path Waħħal CGI?
 misc_timezone=Żona tal-ħin PHP
 misc_charset=Sett ta 'karattri awtomatiku
 
-log_manual=Editja l-fajl manwalment $1 
-log_vars=Bidliet fil-varjabbli PHP f' $1 
-log_dirs=Inbidlet is-settings tad-direttorju f ' $1 
-log_db=L-issettjar mibdul fid-database f ' $1 
-log_session=Bidliet fl-għażliet tas-sessjoni f' $1 
-log_safe=L-għażliet tal-modalità sikura nbidlu f' $1 
-log_limits=Limiti ta 'riżorsi mibdula f' $1 
-log_errors=Inbidlet żball fl-illoggjar f ' $1 
-log_misc=Inbidlet issettjar ieħor f' $1 
+log_manual=Editja l-fajl manwalment $1
+log_vars=Bidliet fil-varjabbli PHP f' $1
+log_dirs=Inbidlet is-settings tad-direttorju f ' $1
+log_db=L-issettjar mibdul fid-database f ' $1
+log_session=Bidliet fl-għażliet tas-sessjoni f' $1
+log_safe=L-għażliet tal-modalità sikura nbidlu f' $1
+log_limits=Limiti ta 'riżorsi mibdula f' $1
+log_errors=Inbidlet żball fl-illoggjar f ' $1
+log_misc=Inbidlet issettjar ieħor f' $1
 
 acl_global=Tista 'teditja l-konfigurazzjoni PHP globali?
 acl_anyfile=Tista 'teditja kwalunkwe fajl bħala konfigurazzjoni PHP?

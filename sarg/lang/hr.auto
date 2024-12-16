@@ -1,8 +1,8 @@
 index_title=Generator izvještaja o lignjama
 index_econf=Sarg konfiguracijska datoteka $1 nije pronađena u vašem sustavu. Možda Sarg nije instaliran ili je <a href='$2'>konfiguracija modula</a> netočna.
 index_ecmd=Sarg program $1 nije pronađen u vašem sustavu. Možda nije instaliran ili je <a href='$2'>konfiguracija modula</a> netočna.
-index_eversion=Nije uspjelo dobiti verziju Sarga sa naredbom $1 : $2 
-index_version=Verzija Sarg $1 
+index_eversion=Nije uspjelo dobiti verziju Sarga sa naredbom $1 : $2
+index_version=Verzija Sarg $1
 index_generate=Generiraj izvještaj odmah
 index_generatedesc=Kliknite ovaj gumb da biste odmah generirali Sarg izvješće u $1 koristeći trenutnu konfiguraciju.
 index_clear=Želite li izbrisati postojeće izvješće u direktoriju?

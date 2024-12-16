@@ -7,14 +7,14 @@ index_active=Aktiv?
 index_tag=Program
 index_to=Log destination
 index_rule=Valgte meddelelser
-index_file=Fil $1 
-index_pipe=Navngivet rør $1 
-index_pipe2=Rør til kommando $1 
-index_host=Syslog-server på $1 
-index_socket=Unix-socket-fil $1 
-index_cmd=Output fra $1 
+index_file=Fil $1
+index_pipe=Navngivet rør $1
+index_pipe2=Rør til kommando $1
+index_host=Syslog-server på $1
+index_socket=Unix-socket-fil $1
+index_cmd=Output fra $1
 index_all=Alle brugere
-index_users=Brugere $1 
+index_users=Brugere $1
 index_add=Tilføj en ny systemlog.
 index_return=systemlogfiler
 index_restart=Anvend ændringer
@@ -26,7 +26,7 @@ index_view=Udsigt ..
 index_viewfile=Se logfil:
 index_viewok=Udsigt
 
-restart_ekill=Kunne ikke signalere syslog-processen $1 : $2 
+restart_ekill=Kunne ikke signalere syslog-processen $1 : $2
 restart_ecannot=Du har ikke tilladelse til at genstarte syslog
 
 start_ecannot=Du må ikke starte syslog
@@ -61,13 +61,13 @@ edit_ecannot=Du har ikke tilladelse til at redigere logindstillinger
 edit_ecannot2=Du har ikke tilladelse til at redigere denne log
 
 view_title=Se Logfile
-view_header=Sidste $1 linjer af $2 
+view_header=Sidste $1 linjer af $2
 view_empty=Logfilen er tom
 view_refresh=Opdater
-view_filter=Vis kun linjer med tekst $1 
+view_filter=Vis kun linjer med tekst $1
 
 save_err=Kunne ikke gemme loggen
-save_efile='$1' er ikke et gyldigt filnavn : $2 
+save_efile='$1' er ikke et gyldigt filnavn : $2
 save_epipe='$1' er ikke et gyldigt navngivet rør
 save_epipe2=Manglende kommando til rør til
 save_esocket=Manglende eller ugyldig unix-domænesokkel
@@ -86,9 +86,9 @@ save_ecannot6=Du har ikke lov til at se vilkårlige logfiler
 save_ecannot7=Du har ikke tilladelse til at se denne ekstra log
 save_emissing=Manglende logfil for at se
 
-log_modify=Ændret log til $1 
-log_create=Føjet log til $1 
-log_delete=Slettet log til $1 
+log_modify=Ændret log til $1
+log_create=Føjet log til $1
+log_delete=Slettet log til $1
 log_apply=Anvendte ændringer
 log_start=Begyndt at logge server
 

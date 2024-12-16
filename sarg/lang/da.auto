@@ -1,8 +1,8 @@
 index_title=Generator for blæksprutter rapporter
 index_econf=Sarg-konfigurationsfilen $1 blev ikke fundet på dit system. Måske er Sarg ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
 index_ecmd=Sarg-programmet $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
-index_eversion=Kunne ikke hente versionen af Sarg med kommandoen $1 : $2 
-index_version=Sarg version $1 
+index_eversion=Kunne ikke hente versionen af Sarg med kommandoen $1 : $2
+index_version=Sarg version $1
 index_generate=Generer rapport nu
 index_generatedesc=Klik på denne knap for straks at generere en Sarg-rapport i $1 ved hjælp af den aktuelle konfiguration.
 index_clear=Slet eksisterende rapport i biblioteket?

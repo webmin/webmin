@@ -168,7 +168,7 @@ white_already=Sähköpostiosoite $1 on jo SpamAssassinin sallittujen osoitteiden
 
 ldap_emod=Puuttuva Perl-moduuli $1 tarvitaan LDAP-yhteyteen
 ldap_econn=Yhteyden muodostaminen epäonnistui LDAP-palvelimeen $1 portti $2
-ldap_elogin=Sidonta LDAP-palvelimeen $1 epäonnistui $2 : $3 
+ldap_elogin=Sidonta LDAP-palvelimeen $1 epäonnistui $2 : $3
 ldap_ehost=LDAP-palvelinta ei ole asetettu moduulin kokoonpanossa
 ldap_eport=Ei kelvollista LDAP-palvelinporttia asetettu moduulin kokoonpanossa
 ldap_euser=Ei LDAP-sisäänkirjautumista asetettu moduulin kokoonpanossa

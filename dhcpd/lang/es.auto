@@ -14,7 +14,7 @@ index_hsttoomany=Hay demasiados hosts para mostrar.
 index_grptoomany=Hay demasiados grupos para mostrar.
 index_hstlook2=Edite el host llamado:
 index_grplook2=Edite el grupo llamado:
-index_gdom=Grupo para $1 
+index_gdom=Grupo para $1
 index_match0=es igual
 index_match1=contiene
 index_match2=partidos
@@ -34,7 +34,7 @@ ehost_desc=Descripción del anfitrión
 
 egroup_desc=Descripción del Grupo
 
-listl_network=En la red $1 / $2 
+listl_network=En la red $1 / $2
 listl_lfnotcont2=El archivo de concesión DHCPd <tt>$1</tt> no contiene ninguna concesión que esté activa en este momento.
 listl_unknown=Desconocido
 listl_allocs=$1 direcciones IP disponibles, $2 asignado ($3 %)
@@ -95,7 +95,7 @@ keys_secret=Cadena secreta
 keys_ecannot=No tiene permiso para editar claves DNS
 keys_err=Error al guardar las claves DNS
 keys_ekey='$1' no es una ID de clave válida
-keys_esecret=Secreto codificado en base 64 faltante o no válido para la clave $1 
+keys_esecret=Secreto codificado en base 64 faltante o no válido para la clave $1
 
 eacl_uniqh=crear hosts con direcciones de hardware duplicadas
 eacl_uniqi=crear hosts con direcciones IP duplicadas
@@ -108,13 +108,13 @@ iface_title=Interfaz de red
 iface_desc=El servidor DHCP solo puede asignar direcciones IP en redes conectadas a una de las interfaces seleccionadas a continuación. Se debe incluir la interfaz de red para todas las subredes definidas. Si no se selecciona ninguno, el servidor DHCP intentará encontrar uno automáticamente.
 iface_listen=Escuchar en interfaces
 
-lookup_ehost=No existe un host con el nombre, la dirección IP o la dirección MAC $1 
+lookup_ehost=No existe un host con el nombre, la dirección IP o la dirección MAC $1
 lookup_ehostname=No se ingresó ningún nombre de host, dirección IP o dirección MAC
-lookup_egroup=No existe ningún grupo con el nombre o el nombre de dominio $1 
+lookup_egroup=No existe ningún grupo con el nombre o el nombre de dominio $1
 lookup_egroupname=No se ingresó ningún nombre de grupo o nombre de dominio
-lookup_esubnet=No existe una subred con la dirección o la dirección/máscara de red $1 
+lookup_esubnet=No existe una subred con la dirección o la dirección/máscara de red $1
 lookup_esubnetname=No se ingresó ninguna dirección de subred o dirección/máscara de red
-lookup_eshared=No existe una red compartida con el nombre $1 
+lookup_eshared=No existe una red compartida con el nombre $1
 lookup_esharedname=No se ingresó ningún nombre de red compartido
 
 zone_key=Zonas DNS

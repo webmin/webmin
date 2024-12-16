@@ -1,4 +1,4 @@
-index_mode=Typ sieťovej konfigurácie: $1 
+index_mode=Typ sieťovej konfigurácie: $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
 index_mode_freebsd=FreeBSD
@@ -28,7 +28,7 @@ ifcs_duplex=, $1 duplex
 
 aifc_eaddress6=Adresa IPv6 v riadku $1 nie je platná
 aifc_enetmask6=Sieťová maska IPv6 v riadku $1 musí byť celé číslo medzi 1 a 128
-aifc_eclash6=Adresa IPv6 v riadku $1 sa už používa v rozhraní $2 
+aifc_eclash6=Adresa IPv6 v riadku $1 sa už používa v rozhraní $2
 aifc_eaddresses6=Neboli zadané žiadne adresy IPv6
 
 bifc_act=Aktivovať pri štarte?

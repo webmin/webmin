@@ -153,8 +153,8 @@ menu_file=súbor
 menu_edit=editovať
 menu_tools=náradie
 menu_bookmarks=záložky
-notallowed=Nemáte povolenie na prístup k $1. Povolené adresáre sú : $2 
-error_upload_emax=Nahraný súbor je väčší ako limit $1 
+notallowed=Nemáte povolenie na prístup k $1. Povolené adresáre sú : $2
+error_upload_emax=Nahraný súbor je väčší ako limit $1
 extract_etype=Nepodporovaný typ archívneho súboru
 
 error_write=nemáte oprávnenie na zápis do tohto súboru

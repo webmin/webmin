@@ -67,7 +67,7 @@ index_eexpired_conf=Automātiska parakstīšana ir atkārtoti jāatspējo lapā 
 index_eexpired_mod=Izmantojiet moduli $1, lai vai nu atspējotu DNSSEC šiem domēniem, vai pārbaudītu, kāpēc neizdodas parakstīt.
 
 master_title=Rediģēt galveno zonu
-master_inview=$1 skatā $2 
+master_inview=$1 skatā $2
 master_ecannot=Jums nav atļauts rediģēt šo zonu
 master_egone=Zona $1 nevienā skatā neeksistē
 master_egone2=Zona $1 neeksistē!

@@ -1,5 +1,5 @@
 index_ereq_resource_cmd=Skript pro vyžádání prostředků z druhého uzlu ($1) nebyl ve vašem systému nalezen. Možná to ještě nebylo zkopírováno na místo, nebo je <a href='$2'>konfigurace modulu</a> nesprávná.
-index_version=Verze prezenčního signálu $1 
+index_version=Verze prezenčního signálu $1
 index_noversion=Varování - Verze Heartbeat nainstalovaná ve vašem systému nemohla být automaticky detekována. Měli byste ji nastavit na stránce <a href='$1'>konfigurace modulu</a>.
 index_status=Stav prezenčního signálu
 

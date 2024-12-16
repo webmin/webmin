@@ -7,5 +7,5 @@ domain=Domænenavn
 nobody_user=Ingen bruger
 nobody_group=Ingen gruppe
 save=Gem config og genstart dæmonen
-save_err=Kunne ikke gemme konfigurationsfilen $1 
+save_err=Kunne ikke gemme konfigurationsfilen $1
 error_dir=Katalog $1 findes ikke

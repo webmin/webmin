@@ -39,8 +39,8 @@ enable_eclash=Įgalinta MIME tipo programa $1 jau egzistuoja
 delete_enone=Nepasirinkta
 
 log_delete_mailcap=Ištrinkite $1 MIME tipo programą
-log_create_mailcap=Sukurta MIME tipo programa $1 
-log_modify_mailcap=Modifikuota MIME tipo programa $1 
+log_create_mailcap=Sukurta MIME tipo programa $1
+log_modify_mailcap=Modifikuota MIME tipo programa $1
 log_delete_mailcaps=Ištrintos $1 MIME tipo programos
 log_disable_mailcaps=Išjungtos $1 MIME tipo programos
 log_enable_mailcaps=Įgalintos $1 MIME tipo programos

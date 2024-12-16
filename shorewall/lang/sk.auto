@@ -1,7 +1,7 @@
 index_title=Brána Shorewall
 index_ecmd=Príkaz $1 sa vo vašom systéme nenašiel. Možno nie je nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
 index_edir=Vo vašom systéme sa nenašiel konfiguračný adresár Shorewall $1. Možno nie je nainštalovaný alebo je <a href='$2'>konfigurácia modulu</a> nesprávna.
-index_version=Verzia Shorewall $1 
+index_version=Verzia Shorewall $1
 index_return=zoznam tabuliek
 index_restart=Použiť konfiguráciu
 index_restartdesc=Kliknutím na toto tlačidlo aktivujete aktuálnu konfiguráciu Shorewall príkazom <tt>reštart Shorewall</tt>.
@@ -82,7 +82,7 @@ policy_1=Cieľová zóna
 policy_2=politika
 policy_3=Úroveň Syslogu
 policy_4=Dopravný limit
-policy_limit=Limit $1, Burst $2 
+policy_limit=Limit $1, Burst $2
 policy_return=zoznam politík
 policy_edit=Upraviť predvolené pravidlá
 policy_create=Vytvorte predvolenú politiku
@@ -306,13 +306,13 @@ hosts_err=Uloženie hostiteľa zóny zlyhalo
 hosts_enet=Chýbajúca alebo neplatná adresa hostiteľa
 hosts_header=Podrobnosti o hostiteľovi zóny
 hosts_routestopped=Trasa, aj keď je brána firewall zastavená?
-hosts_ip=Adresa alebo sieť $1 
-hosts_mac=Adresa MAC $1 
-hosts_ipset=Sada IP $1 
+hosts_ip=Adresa alebo sieť $1
+hosts_mac=Adresa MAC $1
+hosts_ipset=Sada IP $1
 hosts_any=Akýkoľvek hostiteľ
 
-edit_before=Pred vstupom $1 
-edit_after=Po zadaní $1 
+edit_before=Pred vstupom $1
+edit_after=Po zadaní $1
 
 blacklist_title=Hostitelia na čiernej listine
 blacklist_desc=Táto stránka obsahuje zoznam hostiteľov a služieb, ktoré budú blokované, ak dôjde k ich prenosu na rozhranie s nastavenou možnosťou <b>čierna listina</b>.
@@ -436,16 +436,16 @@ comment_msg=správa
 comment_err=Uloženie komentára zlyhalo
 comment_enone=Nebola zadaná žiadna správa
 
-log_create_table=Pridaný záznam do tabuľky $1 
-log_modify_table=Upravený záznam v tabuľke $1 
-log_delete_table=Odstránený záznam z tabuľky $1 
-log_deletes_table=Odstránené položky z tabuľky $1 
+log_create_table=Pridaný záznam do tabuľky $1
+log_modify_table=Upravený záznam v tabuľke $1
+log_delete_table=Odstránený záznam z tabuľky $1
+log_deletes_table=Odstránené položky z tabuľky $1
 log_up_table=Záznam v tabuľke $1 bol posunutý nahor
 log_down_table=Záznam v tabuľke $1 bol presunutý nadol
-log_manual_table=Ručne upravil tabuľkový súbor $1 
-log_create_comment=Pridal komentár do tabuľky $1 
-log_modify_comment=Upravený komentár v tabuľke $1 
-log_delete_comment=Odstránený komentár z tabuľky $1 
+log_manual_table=Ručne upravil tabuľkový súbor $1
+log_create_comment=Pridal komentár do tabuľky $1
+log_modify_comment=Upravený komentár v tabuľke $1
+log_delete_comment=Odstránený komentár z tabuľky $1
 log_stop=Zastavený firewall
 log_start=Spustený firewall
 log_refresh=Obnovený firewall

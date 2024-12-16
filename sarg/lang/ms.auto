@@ -1,8 +1,8 @@
 index_title=Penjana Laporan Saringan
 index_econf=Fail konfigurasi Sarg $1 tidak ditemui pada sistem anda. Mungkin Sarg tidak dipasang, atau konfigurasi modul <a href='$2'></a> tidak betul.
 index_ecmd=Program Sarg $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'></a> tidak betul.
-index_eversion=Gagal untuk mendapatkan versi Sarg dengan arahan $1 : $2 
-index_version=Sarg versi $1 
+index_eversion=Gagal untuk mendapatkan versi Sarg dengan arahan $1 : $2
+index_version=Sarg versi $1
 index_generate=Buat Laporan Sekarang
 index_generatedesc=Klik butang ini untuk segera menghasilkan laporan Sarg dalam $1 menggunakan konfigurasi semasa.
 index_clear=Padamkan laporan sedia ada dalam direktori?

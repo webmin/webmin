@@ -1,6 +1,6 @@
 index_title=Webalizer-lokitiedoston analyysi
-index_version=Webalizer-versio $1 
-index_version_webalizer=Webalizer-versio $1 
+index_version=Webalizer-versio $1
+index_version_webalizer=Webalizer-versio $1
 index_version_awffull=AWFFull
 index_ewebalizer=Lokitiedoston analysointikomentoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
 index_econf=Webalizer-määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
@@ -21,8 +21,8 @@ index_return=lokitiedostoluettelo
 index_global=Muokkaa yleisiä asetuksia
 index_globaldesc=Napsauta tätä painiketta, jos haluat muokata Webalizer-asetuksia, jotka koskevat kaikista lokitiedostoista luotuja raportteja.
 index_eversion=Järjestelmäsi Webalizer-komento $1 on versio $2, mutta tämä moduuli tukee vain versioita $3 tai uudempi.
-index_egetversion=Webalizer-version hankkiminen epäonnistui komennolla $1 : $2 
-index_when=Kyllä, $1 
+index_egetversion=Webalizer-version hankkiminen epäonnistui komennolla $1 : $2
+index_when=Kyllä, $1
 index_webalizer=Webalizer
 index_enable=Aikataulu valittu
 index_disable=Aikataulu poistettu valittuna
@@ -77,7 +77,7 @@ view_title=Katso raportti
 
 global_title=Global Webalizer -asetukset
 global_title2=Webalizer-raporttivaihtoehdot
-global_for=Lokitiedostolle $1 
+global_for=Lokitiedostolle $1
 global_first=Tällä lokitiedostolle ei tällä hetkellä ole asetettu vaihtoehtoja, mikä tarkoittaa, että sen sijaan käytetään globaalia vaihtoehtoa. Kun tämä lomake tallennetaan, tälle lokille luodut raportit käyttävät tällä sivulla valittuja asetuksia.
 global_header=Kaikkien raporttien Webalizer-vaihtoehdot
 global_host=Verkkosivuston isäntänimi

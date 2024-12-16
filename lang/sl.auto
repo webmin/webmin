@@ -56,7 +56,7 @@ error_line=Vrstica
 error_sub=Funkcija
 error_stackline=V datoteki $1 v vrstici $2 kliče $3
 efilewrite=Pisanje v $1 ni uspelo : $2
-efileclose=Pri zaprtju ni bilo mogoče zapisati na $1 : $2 
+efileclose=Pri zaprtju ni bilo mogoče zapisati na $1 : $2
 efileopen=$1 ni bilo mogoče odpreti za pisanje : $2
 default=Privzeto
 modify=Spremeni
@@ -354,7 +354,7 @@ sql_epostgresqlconnect=Povezave z bazo podatkov PostgreSQL ni uspelo : $1
 sql_eldapdriver=Ni bilo mogoče naložiti LDAP perl modula
 sql_eldapconnect=Povezave s strežnikom LDAP $1 ni bilo mogoče
 sql_eldaptls=Šifriranja TLS za LDAP ni bilo mogoče zagnati : $1
-sql_eldaplogin=Na strežniku LDAP ni bilo mogoče prijaviti kot $1 : $2 
+sql_eldaplogin=Na strežniku LDAP ni bilo mogoče prijaviti kot $1 : $2
 
 log_email_subject=Ukrep za Webmin v $1
 log_email_global=Globalna akcija Webmin
@@ -387,9 +387,9 @@ paginator_nosearchrs=Ni rezultatov, ki bi ustrezali poizvedbi <tt>$1</tt>
 
 langauto_include=Vključite strojne prevode
 
-file_truncated_message=pridobljeno $1 podatkov, okrnjeno $2 od $3 
-file_truncated_message_head=pridobljen začetek $1 podatkov, okrnjen $2 od $3 
-file_truncated_message_tail=prenesen konec $1 podatkov, okrnjen $2 od $3 
+file_truncated_message=pridobljeno $1 podatkov, okrnjeno $2 od $3
+file_truncated_message_head=pridobljen začetek $1 podatkov, okrnjen $2 od $3
+file_truncated_message_tail=prenesen konec $1 podatkov, okrnjen $2 od $3
 
 defcert_error=Uporablja se privzeto potrdilo SSL v paketu $1. Zelo priporočljivo je, da posodobite privzeto potrdilo <tt>$2</tt>, preden nadaljujete s prijavo.
 

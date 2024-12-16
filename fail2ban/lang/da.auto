@@ -1,5 +1,5 @@
 index_title=Fail2Ban Intrusion Detector
-index_ver=Version $1 
+index_ver=Version $1
 index_echeck=Der opstod en fejl ved registrering af Fail2Ban på dette system: $1. Enten er den ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
 index_fail2ban=fail2ban
 index_atboot=Start ved opstart?
@@ -26,7 +26,7 @@ filters_add=Tilføj et nyt logfilter.
 filters_return=liste over filtre
 filters_derr=Kunne ikke slette filtre
 filters_enone=Ingen valgt
-filters_einuse=Filteret $1 kan ikke slettes, da det bruges af fængslerne : $2 
+filters_einuse=Filteret $1 kan ikke slettes, da det bruges af fængslerne : $2
 
 filter_title1=Opret filter
 filter_title2=Rediger filter
@@ -41,7 +41,7 @@ filter_err=Kunne ikke gemme filter
 filter_ename=Manglende eller ugyldigt filternavn
 filter_eclash=Filternavn er allerede i brug
 filter_efail=Der er ikke indtastet noget regulært udtryk, der matcher
-filter_einuse=Dette filter kan ikke slettes, da det bruges af fængslerne : $1 
+filter_einuse=Dette filter kan ikke slettes, da det bruges af fængslerne : $1
 
 actions_title=Match handlinger
 actions_name=Handlingsnavn
@@ -51,7 +51,7 @@ actions_add=Tilføj en ny handling.
 actions_return=liste over handlinger
 actions_derr=Kunne ikke slette handlinger
 actions_enone=Ingen valgt
-actions_einuse=Handlingen $1 kan ikke slettes, da den bruges af fængslerne : $2 
+actions_einuse=Handlingen $1 kan ikke slettes, da den bruges af fængslerne : $2
 
 action_title1=Opret matchhandling
 action_title2=Rediger matchhandling
@@ -68,7 +68,7 @@ action_check=Kommando, der skal køres, før en IP forbydes
 action_ban=Kommando til at forbyde en IP
 action_unban=Kommando til at fjerne forbud mod en IP
 action_desc=<i>&lt;ip&gt;</i> erstattes med den IP-adresse, der er forbudt.
-action_einuse=Denne handling kan ikke slettes, da den bruges af fængslerne : $1 
+action_einuse=Denne handling kan ikke slettes, da den bruges af fængslerne : $1
 
 jails_title=Filtrer handlingsfængsler
 jails_add=Tilføj et nyt fængsel.
@@ -104,8 +104,8 @@ jail_ignoreip=IP-adresser til aldrig at forbyde
 jail_err=Kunne ikke gemme fængsel
 jail_eclash=Der findes allerede et fængsel med samme navn
 jail_ename=Manglende eller ugyldigt fængselsnavn
-jail_eaname=Ugyldig navneparameter for handling $1 
-jail_eport=Ugyldigt portnummer for handling $1 
+jail_eaname=Ugyldig navneparameter for handling $1
+jail_eport=Ugyldigt portnummer for handling $1
 jail_eactions=Ingen handlinger valgt!
 jail_elogpaths=Der er ikke indtastet nogen logfilstier
 jail_elogpath=Alle logfiler skal være absolutte stier eller mønstre
@@ -134,22 +134,22 @@ start_err=Kunne ikke starte serveren
 stop_err=Kunne ikke stoppe serveren
 restart_err=Kunne ikke genstarte serveren
 
-log_create_filter=Oprettet filter $1 
-log_update_filter=Ændret filter $1 
-log_delete_filter=Slet filter $1 
-log_create_action=Oprettet handling $1 
-log_update_action=Ændret handling $1 
+log_create_filter=Oprettet filter $1
+log_update_filter=Ændret filter $1
+log_delete_filter=Slet filter $1
+log_create_action=Oprettet handling $1
+log_update_action=Ændret handling $1
 log_delete_action=Handling $1 er slettet
-log_create_jail=Oprettet fængsel $1 
-log_update_jail=Ændret fængsel $1 
-log_delete_jail=Slettet fængsel $1 
+log_create_jail=Oprettet fængsel $1
+log_update_jail=Ændret fængsel $1
+log_delete_jail=Slettet fængsel $1
 log_config=Ændret global konfiguration
 log_stop=Stoppet Fail2Ban-server
 log_start=Startet Fail2Ban-server
 log_restart=Genstartet Fail2Ban-server
 log_atboot=Aktiveret Fail2Ban ved starttidspunktet
 log_delboot=Deaktiveret Fail2Ban ved starttidspunktet
-log_manual=Redigeret konfigurationsfil $1 
+log_manual=Redigeret konfigurationsfil $1
 log_jaildef=Ændrede standardfængselsindstillinger
 
 config_title=Global konfiguration

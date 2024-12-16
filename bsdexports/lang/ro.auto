@@ -8,7 +8,7 @@ index_delete=Ștergeți exporturile selectate
 index_apply=Aplica schimbarile
 index_applydesc=Faceți clic pe acest buton pentru a aplica configurația actuală a exporturilor de fișiere. Acest lucru va face ca toate directoarele enumerate mai sus să fie disponibile cu opțiunile specificate.
 index_return=lista exporturilor
-index_echeck=Serverul NFS nu poate fi utilizat pe acest sistem : $1 
+index_echeck=Serverul NFS nu poate fi utilizat pe acest sistem : $1
 
 check_ecmd=Comanda serverului NFS $1 nu este instalată
 

@@ -7,7 +7,7 @@ index_globaldesc=Tüm çeviriciler için geçerli yapılandırma seçeneklerini 
 index_refresh=Yapılandırmayı Yenile
 index_refreshdesc=Bu düğmeyi tıklatmak sisteminize bağlı modemin yeniden algılanmasına ve yapılandırmanın güncellenmesine neden olur.
 index_defaults=Varsayılan ayarları
-index_dialer=Çevirici $1 
+index_dialer=Çevirici $1
 index_none=Henüz modem veya çevirici tanımlanmadı.
 index_header=Modemler ve Çeviriciler
 index_dadd=Yeni bir ISS çevirici yapılandırması ekleyin.
@@ -32,7 +32,7 @@ init_modems=Modemler $1 ve $2 üzerinde yapılandırılmış.
 init_modem=$1 üzerinde bir modem algılandı.
 init_none=Modem bulunamadı!
 
-device_serial=seri bağlantı noktası $1 
+device_serial=seri bağlantı noktası $1
 
 connect_title=Bağlantı Kur
 connect_cmd=$1 komutu ile bağlantı kurulmaya çalışılıyor.
@@ -65,7 +65,7 @@ edit_prefix=Arama öneki
 edit_stupid=Bağlandıktan hemen sonra PPP başlatılsın mı?
 edit_serial=Modem bağlantı noktası
 edit_modem=Standart modem
-edit_port=Seri bağlantı noktası $1 
+edit_port=Seri bağlantı noktası $1
 edit_otherm=Diğer cihaz ..
 edit_baud=Baud hızı
 edit_init=Modem başlatma komutları

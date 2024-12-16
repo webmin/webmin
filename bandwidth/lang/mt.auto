@@ -5,7 +5,7 @@ index_elog=Il-fajl $1 użat għall-qtugħ tal-frekwenza tal-frekwenza huwa attwa
 index_edir=Id-direttorju għall-ħażna tad-dejta tal-bandwid $1 ma jeżistix, jew mhuwiex direttorju. Aġġusta l- <a href='$2'>konfigurazzjoni tal-modulu</a> biex tuża mogħdija differenti.
 index_emod=Il-modulu Webmin $1 mhuwiex installat fuq din is-sistema jew mhuwiex sostnut mill-OS tiegħek. Il-modulu ta 'Monitoraġġ tal-Bandwidth ma jistax jaħdem mingħajrha.
 index_esyslog=L-ebda wieħed mill-moduli ta 'Zkuk tas-Sistema ma huma installati fuq din is-sistema u huma appoġġjati mill-OS tiegħek. Il-modulu ta 'Monitoraġġ tal-Bandwidth ma jistax jaħdem mingħajr wieħed minnhom.
-index_firesys=Uża firewall $1 u $2 
+index_firesys=Uża firewall $1 u $2
 index_setupcannot=Madankollu, m'għandekx permessi biex twaqqafha!
 index_setupdesc=Qabel ma dan il-modulu jkun jista 'jirrapporta dwar l-użu tan-netwerk fis-sistema tiegħek, għandu jkun stabbilit biex jimmonitorja t-traffiku fuq l-interface tan-netwerk estern magħżul.
 index_setupdesc2=<b>Twissija - dan il-modulu jilloggja KOLLHA tat-traffiku tan-netwerk mibgħut jew riċevut fuq l-interface magħżula. Dan jikkonsma ammont kbir ta 'spazju fuq id-diska u ħin tas-CPU fuq konnessjoni ta' netwerk veloċi.</b>
@@ -61,7 +61,7 @@ index_rotatedesc=Ikklikkja din il-buttuna biex tipproċessa t-traffiku kollu re�
 index_eiptables=Twissija - Il-konfigurazzjoni IPtables tiegħek għandha żball: $1. It-twaqqif ta 'monitoraġġ tal-frekwenza tal-frekwenza se jitneħħew ir-regoli tal-firewall kollha.
 index_return=formola tar-rapport
 
-log_setup=Twaqqaf monitoraġġ tal-bandwidth fuq interface $1 
+log_setup=Twaqqaf monitoraġġ tal-bandwidth fuq interface $1
 log_turnoff=B'diżabilità tal-monitoraġġ tal-bandwidth
 log_rotate=Statistika aġġornata
 

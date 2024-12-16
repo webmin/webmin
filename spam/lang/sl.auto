@@ -4,7 +4,7 @@ index_ecmd2=Ukaza SpamAssassin $1 v vašem sistemu ni bilo mogoče najti.
 index_econfig=Lokalne konfiguracijske datoteke ali imenika $1 SpamAssassin v vašem sistemu ni bilo mogoče najti. Mogoče SpamAssassin ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
 index_unknown=neznano
 index_edb=Povezava s konfiguracijsko bazo SpamAssassin ni uspela: $1. Preverite <a href='$2'>konfiguracijo modula</a> in se prepričajte, da uporabljate pravilne nastavitve.
-index_version=Različica SpamAssassin $1 
+index_version=Različica SpamAssassin $1
 index_warn_usermin=Zdi se, da SpamAssassin ni postavljen v vašo konfiguracijsko datoteko Procmail $2 ali globalni datoteki $1, zato vsaka konfiguracija, izvedena s tem modulom, ne bo imela učinka, če se SpamAssassin ne nastavi globalno.
 index_warn_webmin=Zdi se, da SpamAssassin ni postavljen v sistemski konfiguracijski datoteki Procmail $1, zato vsaka konfiguracija, izvedena s tem modulom, ne bo imela učinka, če ga uporabniki ne bodo nastavili posebej.
 index_return=kazalo modula
@@ -12,7 +12,7 @@ index_apply=Uporabi spremembe
 index_applydesc=Kliknite ta gumb, če želite uporabiti trenutno konfiguracijo SpamAssassin tako, da pošljete HUP signal vsem izvajanim $1 postopkom.
 index_cpan=Ker je SpamAssassin modul Perl, ga lahko samodejno namestite tudi z uporabo Webminovega <a href='$2'>modula Perl</a>, da prenesete $1 iz CPAN-a.
 index_spamassassin=SpamAssassin
-index_ecannot=Ni vam dovoljeno upravljati konfiguracijske datoteke SpamAssassin $1 
+index_ecannot=Ni vam dovoljeno upravljati konfiguracijske datoteke SpamAssassin $1
 
 white_title=Dovoljeni in zavrnjeni naslovi
 white_desc=Tabele na tej strani omogočajo, da določite od: in do: naslove za e-pošto, ki je vedno ali nikoli kategoriziran kot neželena pošta. Vsa druga e-poštna sporočila bodo po pravilih SpamAssassin obdelana kot običajno. Vsi e-poštni naslovi lahko vsebujejo nadomestne znake, na primer *@foo.com ali *.foo.com, da ustrezajo celotnim domenom.
@@ -111,7 +111,7 @@ report_addtext=Besedilo za glavo
 report_addspam=Nezaželena pošta
 report_addham=Šunka
 report_addall=Vse
-report_eaddheader=Manjkajoča ali neveljavna dodatna glava za dodajanje $1 
+report_eaddheader=Manjkajoča ali neveljavna dodatna glava za dodajanje $1
 
 user_title=Dodatne uporabniške možnosti
 user_desc=Možnosti na tej strani so večinoma povezane s potmi in nastavitvami, ki jih SpamAssassin uporablja za zunanje identifikacijske pakete za neželeno pošto Razor, DCC in Pyzor. SpamAssassin lahko tudi sporočite, ali bo lahko izvedel iskanje DNS ali ne.
@@ -190,7 +190,7 @@ priv_emscore='$1' ni veljavna najvišja ocena stavkov
 priv_ephrase='$1' ni veljavna dvobesedna fraza z neželeno pošto
 priv_escore=Manjkajoči ali neveljavni rezultat za neželeno besedno zvezo '$1'
 
-usually=Običajno $1 
+usually=Običajno $1
 ecannot=Te strani ni dovoljeno uporabljati
 setup_title=Nastavite Procmail za SpamAssassin
 setup_desc_webmin=Ta obrazec lahko uporabite za nastavitev Procmail-a v $1 za zagon SpamAssassin-a za vsa e-poštna sporočila, ki jih prejme vaš sistem. Vendar pa bo to imelo učinek le, če je bil vaš poštni strežnik konfiguriran za uporabo Procmail za lokalno dostavo ali za uporabnike, katerih datoteke <tt>.forward</tt> so nastavljene za zagon Procmail.
@@ -244,7 +244,7 @@ mail_razor=Poročajte kot neželena pošta in izbriši
 mail_ham=Poročajte kot Ham & Inbox
 mail_delete=Izbriši
 mail_return=seznam neželene pošte
-mail_pos=Neželena sporočila $1 do $2 od $3 
+mail_pos=Neželena sporočila $1 do $2 od $3
 mail_none=V mapi z neželeno pošto ni nobenih sporočil
 mail_refresh=Osveži
 mail_will=Samodejna osvežitev v $1 minutah
@@ -253,7 +253,7 @@ mail_delall=Izbriši vso neželeno pošto
 mail_search3=Zgoraj poiščite rezultat:
 
 process_eclean=Napaka pri odstranjevanju glav SpamAssassin iz tega e-poštnega sporočila
-process_ereport=Ni uspelo prijaviti e-pošte SpamAssassin : $1 
+process_ereport=Ni uspelo prijaviti e-pošte SpamAssassin : $1
 
 apply_err=Sprememb ni bilo mogoče uporabiti
 apply_none=Najdenih ni bilo nobenih procesov v programu SpamAssassin.
@@ -263,8 +263,8 @@ acl_file=Konfiguracijska datoteka SpamAssassin za urejanje
 acl_filedef=Globalna konfiguracijska datoteka
 acl_awl=Uporabnikom dovoljeno samodejno urejanje seznamov
 acl_awl0=Vsi uporabniki
-acl_awl1=Samo našteti uporabniki $1 
-acl_awl2=Samo člani skupin $1 
+acl_awl1=Samo našteti uporabniki $1
+acl_awl2=Samo člani skupin $1
 
 search_escore=Manjkajoča ali neveljavna ocena nezaželene pošte
 search_results5=$1 e-poštna sporočila z oceno neželene pošte pri $2 ali več.
@@ -337,20 +337,20 @@ simple_score=Rezultat za prijavo
 simple_describe=Opis
 simple_err=Testov za sporočila ni bilo mogoče shraniti
 
-before_ecmd=Ukaza pred shranjevanjem ni uspelo : $1 
-after_ecmd=Ukaza po varčevanju ni uspelo : $1 
+before_ecmd=Ukaza pred shranjevanjem ni uspelo : $1
+after_ecmd=Ukaza po varčevanju ni uspelo : $1
 
-connect_emysql=Gonilnika baze podatkov ni bilo mogoče naložiti $1 
+connect_emysql=Gonilnika baze podatkov ni bilo mogoče naložiti $1
 connect_elogin=Prijava v bazo podatkov ni uspela $1:$2.
-connect_equery=Baza podatkov $1 ne vsebuje tabele s preferencami $2 
+connect_equery=Baza podatkov $1 ne vsebuje tabele s preferencami $2
 connect_eldapmod=Perl modul $1, potreben za komunikacijo z LDAP, ni nameščen ali ga ni mogoče naložiti
 connect_eldap=Povezave s strežnikom LDAP $1 na vratih $2 ni bilo mogoče
-connect_eldaplogin=Prijava na strežnik LDAP $1 ni bila uspešna kot $2 : $3 
-connect_ebase=LDAP osnova DN $1 ni veljavna : $2 
+connect_eldaplogin=Prijava na strežnik LDAP $1 ni bila uspešna kot $2 : $3
+connect_ebase=LDAP osnova DN $1 ni veljavna : $2
 
-eldap=Operacija LDAP ni uspela : $1 
-esql=SQL ni uspel : $1 
-ldap_euser=Ni mogoče najti uporabniškega predmeta LDAP za $1 
+eldap=Operacija LDAP ni uspela : $1
+esql=SQL ni uspel : $1
+ldap_euser=Ni mogoče najti uporabniškega predmeta LDAP za $1
 
 db_title=SQL in LDAP baze podatkov
 db_header=Možnosti baze podatkov konfiguracijske konfiguracije

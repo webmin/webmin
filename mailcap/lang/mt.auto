@@ -33,14 +33,14 @@ save_edesc=Deskrizzjoni tat-tip MIME mhux valida
 
 delete_err=Naqset milli tħassar il-programmi tat-tip MIME
 disable_err=Naqset milli tiddiżattiva l-programmi tat-tip MIME
-disable_eclash=Diġa jeżisti programm tat-tip MIME b'diżabilità għal $1 
+disable_eclash=Diġa jeżisti programm tat-tip MIME b'diżabilità għal $1
 enable_err=Naqas milli jippermetti programmi tat-tip MIME
-enable_eclash=Diġa jeżisti programm tat-tip MIME attivat għal $1 
+enable_eclash=Diġa jeżisti programm tat-tip MIME attivat għal $1
 delete_enone=L-ebda magħżul
 
-log_delete_mailcap=Ħassar il-programm tat-tip MIME għal $1 
-log_create_mailcap=Inħoloq programm tat-tip MIME għal $1 
-log_modify_mailcap=Programm modifikat tat-tip MIME għal $1 
-log_delete_mailcaps=Programmi mħassra tat-tip MIME $1 
+log_delete_mailcap=Ħassar il-programm tat-tip MIME għal $1
+log_create_mailcap=Inħoloq programm tat-tip MIME għal $1
+log_modify_mailcap=Programm modifikat tat-tip MIME għal $1
+log_delete_mailcaps=Programmi mħassra tat-tip MIME $1
 log_disable_mailcaps=Programmi tat-tip MIME $1 b'diżabilità
-log_enable_mailcaps=Attiva l-programmi tat-tip MIME $1 
+log_enable_mailcaps=Attiva l-programmi tat-tip MIME $1

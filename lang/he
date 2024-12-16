@@ -58,7 +58,7 @@ config_title=תצורה
 config_dir=למודול  $1
 config_header=אפשרויות תצורה למודול  $1
 config_none=ללא
-config_eaccess=אסור לך לגשת למודול 
+config_eaccess=אסור לך לגשת למודול
 
 help_err=Failed to display help
 help_epath=Missing help path

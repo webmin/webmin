@@ -1,14 +1,14 @@
 index_title=Máy chủ WU-FTPD
 index_eftpd=Không thể tìm thấy máy chủ FTP $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>Cấu hình mô-đun FTP Server</a> của bạn không chính xác.
 index_eftpaccess=Tệp cấu hình máy chủ FTP $1 không tồn tại. Có thể nó chưa được cài đặt hoặc <a href='$2'>Cấu hình mô-đun FTP Server</a> của bạn không chính xác.
-index_eversion=Máy chủ FTP $1 dường như không phải là WU-FTPd. Có thể bạn đang sử dụng FTPd cũ hơn được cung cấp cùng với hệ điều hành của bạn hoặc <a href='$2'>cấu hình mô-đun FTP Server</a> của bạn là chính xác. Đầu ra từ máy chủ FTP là : $3 
+index_eversion=Máy chủ FTP $1 dường như không phải là WU-FTPd. Có thể bạn đang sử dụng FTPd cũ hơn được cung cấp cùng với hệ điều hành của bạn hoặc <a href='$2'>cấu hình mô-đun FTP Server</a> của bạn là chính xác. Đầu ra từ máy chủ FTP là : $3
 index_apply=Áp dụng các thay đổi
 index_applymsg=Nhấn vào nút này để áp dụng cấu hình hiện tại. Điều này sẽ dừng và khởi động lại tất cả các quy trình máy chủ FTP đang chạy, do đó ngắt kết nối tất cả người dùng được kết nối.
 index_start=Khởi động máy chủ
 index_startmsg=Nhấp vào nút này để khởi động máy chủ FTP với cấu hình hiện tại. Bạn cũng có thể định cấu hình máy chủ để tự động khởi động khi cần bằng mô-đun <a href='$1'>Dịch vụ Internet</a>.
 index_startmsg2=Nhấp vào nút này để khởi động máy chủ FTP với cấu hình hiện tại. Bạn cũng có thể định cấu hình máy chủ để được khởi động tự động khi cần sử dụng inetd hoặc một số chương trình tương đương.
 index_return=Tùy chọn máy chủ FTP
-index_version=Phiên bản WU-FTPd $1 
+index_version=Phiên bản WU-FTPd $1
 
 class_title=Người dùng và lớp học
 class_header=Các lớp người dùng và tùy chọn người dùng

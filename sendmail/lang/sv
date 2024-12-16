@@ -401,11 +401,11 @@ file_desc=Använd inmatningsrutan nedan för att manuellt ändra i Sendmail-file
 file_undo=Ångra ändringar
 file_edit=Ändra $1 manuellt
 file_ealiases=Du kan bara ändra en alias-fil om du har tillgång till alla alias.
-file_evirtusers=Du kan bara ändra adressöversättningsfilen om du har tillgång till alla adressöversättningar. 
+file_evirtusers=Du kan bara ändra adressöversättningsfilen om du har tillgång till alla adressöversättningar.
 file_emailers=Du får inte ändra domänroutingsfilen.
 file_egenerics=Du får bara ändra filen för utgående adresser om du har tillgång till alla utgående adresser.
-file_edomains=Du får inte ändra domänöversättningsfilen. 
-file_eaccess=Du får inte ändra spam-kontrollfilen. 
+file_edomains=Du får inte ändra domänöversättningsfilen.
+file_eaccess=Du får inte ändra spam-kontrollfilen.
 file_emode=Okänd mode!
 file_err=Det gick inte att ändra filen
 
@@ -452,7 +452,7 @@ acl_fdoms=brevlåda@domäner
 acl_faddrs=Angivna adresser
 acl_fdom=valfri adress@domän
 acl_apath=Begränsa filer och program till katalog
-acl_attach=Maximal sammanlagd storlek på bilagor 
+acl_attach=Maximal sammanlagd storlek på bilagor
 
 log_opts=Ändrade sendmail-inställningar
 log_alias_create=Lade till alias $1

@@ -4,7 +4,7 @@ index_ecmd2=SpamAssassin-kommandoen $1 blev ikke fundet på dit system.
 index_econfig=Den lokale konfigurationsfil eller mappe $1 SpamAssassin blev ikke fundet på dit system. Måske er SpamAssassin ikke installeret, eller din <a href='$2'>modulkonfiguration</a> er forkert.
 index_unknown=ukendt
 index_edb=Det lykkedes ikke at oprette forbindelse til SpamAssassin konfigurationsdatabase: $1. Kontroller <a href='$2'>modulkonfiguration</a> for at være sikker på at du bruger de korrekte indstillinger.
-index_version=SpamAssassin version $1 
+index_version=SpamAssassin version $1
 index_warn_usermin=SpamAssassin ser ikke ud til at være konfigureret i din Procmail-konfigurationsfil $2 eller den globale fil $1, så enhver konfiguration, der udføres ved hjælp af dette modul, har ingen virkning, medmindre SpamAssassin er blevet opsat globalt.
 index_warn_webmin=SpamAssassin ser ikke ud til at være konfigureret i systemets Procmail-konfigurationsfil $1, så enhver konfiguration, der udføres ved hjælp af dette modul, har ingen virkning, medmindre brugerne har konfigureret det individuelt.
 index_return=modul indeks
@@ -12,7 +12,7 @@ index_apply=Anvend ændringer
 index_applydesc=Klik på denne knap for at anvende den aktuelle SpamAssassin-konfiguration ved at sende et HUP-signal til alle kører $1 -processer.
 index_cpan=Da SpamAssassin er et Perl-modul, kan du også installere det automatisk ved hjælp af Webmins <a href='$2'>Perl-moduler</a> -modul til at downloade $1 fra CPAN.
 index_spamassassin=SpamAssassin
-index_ecannot=Du har ikke tilladelse til at administrere SpamAssassin-konfigurationsfilen $1 
+index_ecannot=Du har ikke tilladelse til at administrere SpamAssassin-konfigurationsfilen $1
 
 white_title=Tilladte og afvist adresser
 white_desc=Tabellerne på denne side giver dig mulighed for at specificere Fra: og Til: adresser til e-mail, der altid eller aldrig er kategoriseret som spam. Enhver anden e-mail vil blive behandlet som normalt efter SpamAssassins regler. Alle e-mail-adresser kan indeholde jokertegn, som *@foo.com eller *.foo.com for at matche hele domæner.
@@ -111,7 +111,7 @@ report_addtext=Tekst til overskrift
 report_addspam=Spam
 report_addham=skinke
 report_addall=Alle
-report_eaddheader=Manglende eller ugyldig yderligere header for at tilføje $1 
+report_eaddheader=Manglende eller ugyldig yderligere header for at tilføje $1
 
 user_title=Diverse brugerindstillinger
 user_desc=Indstillingerne på denne side er for det meste relateret til stier og indstillinger, som SpamAssassin bruger til de eksterne spam-identifikationspakker Razor, DCC og Pyzor. Du kan også fortælle SpamAssassin, hvis det vil være i stand til at udføre DNS-opslag eller ej.
@@ -190,7 +190,7 @@ priv_emscore='$1' er ikke en gyldig score for højeste sætning
 priv_ephrase='$1' er ikke en gyldig spam-sætning med to ord
 priv_escore=Manglende eller ugyldig score for spam-sætning '$1'
 
-usually=Normalt $1 
+usually=Normalt $1
 ecannot=Du har ikke tilladelse til at bruge denne side
 setup_title=Opsætning af Procmail til SpamAssassin
 setup_desc_webmin=Denne formular kan bruges til at konfigurere Procmail i $1 til at køre SpamAssassin på alle e-mail-meddelelser modtaget af dit system. Dette vil dog kun have nogen virkning, hvis din mailserver er konfigureret til at bruge Procmail til lokal levering, eller for brugere, hvis <tt>.forward</tt> filer er konfigureret til at køre Procmail.
@@ -244,7 +244,7 @@ mail_razor=Rapporter som spam og slet
 mail_ham=Rapporter som skinke og indbakke
 mail_delete=Slet
 mail_return=spam-mail-liste
-mail_pos=Spammeddelelser $1 til $2 af $3 
+mail_pos=Spammeddelelser $1 til $2 af $3
 mail_none=Der er ingen meddelelser i din spam-mappe
 mail_refresh=Opdater
 mail_will=Automatisk opdatering på $1 minutter
@@ -253,7 +253,7 @@ mail_delall=Slet al spam
 mail_search3=Søg efter score ovenfor:
 
 process_eclean=Der opstod en fejl ved fjernelse af SpamAssassin-overskrifterne fra denne e-mail
-process_ereport=Kunne ikke rapportere e-mail til SpamAssassin : $1 
+process_ereport=Kunne ikke rapportere e-mail til SpamAssassin : $1
 
 apply_err=Kunne ikke anvende ændringer
 apply_none=Der blev ikke fundet nogen SpamAssassin-dæmonprocesser!
@@ -263,8 +263,8 @@ acl_file=SpamAssassin-konfigurationsfil, der skal redigeres
 acl_filedef=Global konfigurationsfil
 acl_awl=Tilladte brugere til redigering af automatisk hvidliste
 acl_awl0=Alle brugere
-acl_awl1=Kun listede brugere $1 
-acl_awl2=Kun medlemmer af grupper $1 
+acl_awl1=Kun listede brugere $1
+acl_awl2=Kun medlemmer af grupper $1
 
 search_escore=Manglende eller ugyldig spam-score
 search_results5=$1 e-mail med spam-score på eller over $2 ..
@@ -337,20 +337,20 @@ simple_score=Score, der skal anvendes
 simple_describe=Beskrivelse
 simple_err=Kunne ikke gemme meddelelsestests
 
-before_ecmd=Før-gemning kommando mislykkedes : $1 
-after_ecmd=Efter-gemenskommando mislykkedes : $1 
+before_ecmd=Før-gemning kommando mislykkedes : $1
+after_ecmd=Efter-gemenskommando mislykkedes : $1
 
-connect_emysql=Kunne indlæse databasedriveren $1 
+connect_emysql=Kunne indlæse databasedriveren $1
 connect_elogin=Kunne ikke logge ind på databasen $1:$2.
-connect_equery=Databasen $1 indeholder ikke præferencetabellen $2 
+connect_equery=Databasen $1 indeholder ikke præferencetabellen $2
 connect_eldapmod=Perl-modul $1, der er nødvendigt for at kommunikere med LDAP, er ikke installeret eller ikke belastbart
-connect_eldap=Kunne ikke oprette forbindelse til LDAP-server $1 på port $2 
-connect_eldaplogin=Kunne ikke logge ind på LDAP-server $1 som $2 : $3 
-connect_ebase=LDAP-base DN $1 er ikke gyldig : $2 
+connect_eldap=Kunne ikke oprette forbindelse til LDAP-server $1 på port $2
+connect_eldaplogin=Kunne ikke logge ind på LDAP-server $1 som $2 : $3
+connect_ebase=LDAP-base DN $1 er ikke gyldig : $2
 
-eldap=LDAP-operation mislykkedes : $1 
-esql=SQL mislykkedes : $1 
-ldap_euser=Kunne ikke finde LDAP-brugerobjekt for $1 
+eldap=LDAP-operation mislykkedes : $1
+esql=SQL mislykkedes : $1
+ldap_euser=Kunne ikke finde LDAP-brugerobjekt for $1
 
 db_title=SQL- og LDAP-databaser
 db_header=Indstillinger for konfigurationslagerdatabase

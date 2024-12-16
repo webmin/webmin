@@ -41,10 +41,10 @@ save_eroot=Вы не паказалі ніводнага хаста, з якім
 save_ealready=Каталог "$1" ужо адкрыты
 save_ehost=Хост "$1" не існуе
 
-log_modify=Мадыфікаваная доля NFS $1 
-log_rename=Зменена доля NFS $1 да $2 
-log_create=Створана доля NFS $1 
-log_delete=Выдалена доля NFS $1 
+log_modify=Мадыфікаваная доля NFS $1
+log_rename=Зменена доля NFS $1 да $2
+log_create=Створана доля NFS $1
+log_delete=Выдалена доля NFS $1
 log_apply=Прымяняюцца змены
 
 acl_view=Ці можна рэдагаваць акцыі NFS?

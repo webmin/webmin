@@ -18,7 +18,7 @@ vgetty_return=liste des ports série
 vgetty_create=Ajouter un port série
 vgetty_edit=Modifier le port série
 vgetty_header=Options de configuration du port série
-vgetty_ts=Port série $1 
+vgetty_ts=Port série $1
 vgetty_other=Autre appareil ..
 vgetty_rings=Sonne avant de répondre
 vgetty_default=Défaut global
@@ -100,19 +100,19 @@ pvfdesc=$1, $2 bits
 
 upload_err=Échec de l'ajout du message
 upload_emessage=Aucun fichier WAV sélectionné
-upload_ewav=Impossible de convertir le fichier WAV : $1 
-upload_epvf=Impossible de créer le fichier RMD : $1 
+upload_ewav=Impossible de convertir le fichier WAV : $1
+upload_epvf=Impossible de créer le fichier RMD : $1
 upload_esame=Le fichier de message $1 existe déjà
 
 log_apply=Configuration appliquée
-log_upload=Message d'accueil téléchargé $1 
+log_upload=Message d'accueil téléchargé $1
 log_move=$1 messages reçus convertis
 log_delete0=$1 messages reçus supprimés
 log_delete1=$1 messages d'accueil supprimés
 log_options=Options de messagerie vocale modifiées
 log_vgetty_create=Port série $1 ajouté
-log_vgetty_modify=Port série modifié $1 
-log_vgetty_delete=Port série supprimé $1 
+log_vgetty_modify=Port série modifié $1
+log_vgetty_delete=Port série supprimé $1
 
 email_subject=Message vocal
 email_body=Message vocal reçu à $1 par $2.

@@ -8,7 +8,7 @@ index_delete=Xóa xuất khẩu đã chọn
 index_apply=Áp dụng các thay đổi
 index_applydesc=Nhấn vào nút này để áp dụng cấu hình xuất tệp hiện tại. Điều này sẽ làm cho tất cả các thư mục được liệt kê ở trên có sẵn với các tùy chọn được chỉ định.
 index_return=danh sách xuất khẩu
-index_echeck=Máy chủ NFS không thể được sử dụng trên hệ thống này : $1 
+index_echeck=Máy chủ NFS không thể được sử dụng trên hệ thống này : $1
 
 check_ecmd=Lệnh máy chủ NFS $1 chưa được cài đặt
 

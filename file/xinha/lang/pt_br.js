@@ -140,7 +140,7 @@
   "Your Document is not well formed. Check JavaScript console for details.": "Seu Documento não está formatado corretamente. Verifique o console do JavaScript para maiores detalhes.",
   "insert linebreak": "inserir quebra de linha",
   "new paragraph": "novo parágrafo",
-  
+
   // not find with lc_parse_strings.php
   "Subscript": "Subescrito",
   "Superscript": "Sobrescrito",

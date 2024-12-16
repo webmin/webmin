@@ -1,7 +1,7 @@
-index_clevel=Skóre spamu je alespoň $1 
-index_cheader0=Záhlaví $1 musí začínat $2 
-index_cheader1=Záhlaví $1 musí obsahovat $2 
-index_cheader2=Záhlaví $1 musí končit $2 
+index_clevel=Skóre spamu je alespoň $1
+index_cheader0=Záhlaví $1 musí začínat $2
+index_cheader1=Záhlaví $1 musí obsahovat $2
+index_cheader2=Záhlaví $1 musí končit $2
 edit_modestart=začíná s
 edit_modecont=obsahuje
 edit_modeend=končí s
@@ -13,7 +13,7 @@ index_ondate=datum
 index_charset=Znaková sada autoreply zprávy
 index_subject=Autoreply předmět zprávy
 
-edit_cheader2=Záhlaví $1 $2 $3 $4 
+edit_cheader2=Záhlaví $1 $2 $3 $4
 edit_cmode6=Spam skóre je alespoň
 edit_nobounce=Potlačte přeposílání zpráv o odskokech
 edit_apply=Zobrazit odpovídající e-mail ve složce:

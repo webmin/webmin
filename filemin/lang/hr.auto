@@ -153,8 +153,8 @@ menu_file=Datoteka
 menu_edit=Uredi
 menu_tools=alat
 menu_bookmarks=Oznake
-notallowed=Nije vam dopušten pristup $1. Dopušteni direktoriji su : $2 
-error_upload_emax=Prenesena datoteka veća je od granice od $1 
+notallowed=Nije vam dopušten pristup $1. Dopušteni direktoriji su : $2
+error_upload_emax=Prenesena datoteka veća je od granice od $1
 extract_etype=Nepodržana vrsta datoteke arhiva
 
 error_write=nemate dopuštenje za pisanje ove datoteke
