@@ -56,10 +56,10 @@ cancel_enone=未選取
 cancel_ecannot=您不被允許取消使用者$1的下載
 
 log_cancel=取消$1的下載
-log_upload_l= 已上傳檔案$1
-log_upload= 已上傳檔案$1
-log_download_l= 已下載網址$1
-log_download= 已下載網址$1
+log_upload_l=已上傳檔案$1
+log_upload=已上傳檔案$1
+log_download_l=已下載網址$1
+log_download=已下載網址$1
 log_sdownload_l=已排程網址$1的下載
 log_sdownload=已排程網址$1的下載
 

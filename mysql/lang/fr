@@ -26,7 +26,7 @@ index_version=MySQL Version $1
 index_version2=$3 version $1 sur $2
 index_nomod=Attention: Le module Perl $1 n'est pas installé sur votre système, si Webmin ne sera pas en mesure d'accéder de façon fiable votre base de données MySQL. <a href='$2'>Cliquez ici</a> pour l'installer maintenant.
 index_nomods=Avertissement: Le Perl modules $1 et $2 ne sont pas installés sur votre système, aussi Webmin ne sera pas en mesure d'accéder de façon fiable votre base de données MySQL. <a href='$3'>Cliquez ici</a> pour les installer maintenant.
-index_mysqlver=  La commande <tt>$1</tt> a retourné:
+index_mysqlver=La commande <tt>$1</tt> a retourné:
 index_eenvpass=Le programme client MySQL $1 ne pas accepter les mots de passe transmis en utilisant les <tt>MYSQL_PWD</tt> variable d'environnement. Pour veiller à ce que Webmin est capable de communiquer pleinement avec MySQL, cette option doit être désactivée sur le <a href='$2'>configuration du module</a> <a.
 index_ecnf=Le fichier de configuration MySQL $1 est introuvable sur votre système. Utilisez la page <a href='$2'>de configuration du module</a> pour définir le chemin correct.
 index_nodbs=Vous n'avez pas accès à des bases de données MySQL.
@@ -215,7 +215,7 @@ view_match5=moins de
 view_searchok=Recherche
 view_searchhead=Résultats de recherche pour $1 en champ $2 ...
 view_searchheadnot=Résultats de la recherche pour non $1 dans le champ $2 ...
-view_searchhead2= Résultats de la recherche avancée sur  $1 champs ...
+view_searchhead2=Résultats de la recherche avancée sur  $1 champs ...
 view_searchreset=Réinitialiser recherche
 view_sorthead1=Tri de $1, ordre décroissant
 view_sorthead2=Tri de $1, ordre croissant
@@ -408,7 +408,7 @@ exec_err=Impossible d'exécuter SQL
 exec_out=Sortie de commande SQL $1 ..
 exec_none=Pas de données renvoyées
 exec_eupload=Aucun fichier sélectionné à télécharger
-exec_efile= fichier local ne existe pas
+exec_efile=fichier local ne existe pas
 exec_uploadout=La sortie des commandes SQL téléchargées ..
 exec_fileout=Sortie de commandes SQL dans le fichier $1 ..
 exec_noout=Pas de sortie généré
@@ -480,7 +480,7 @@ cprivs_anon=Anonyme
 cprivs_add=Ajouter de nouvelles autorisations dans la base de données et la table:
 cprivs_add2=Ajouter de nouvelles autorisations:
 cprivs_norows=Aucune autorisation de champs définis
-cprivs_return= Autorisations de champ
+cprivs_return=Autorisations de champ
 cprivs_none=Aucun
 cprivs_derr=Impossible de supprimer des autorisations de champ
 cprivs_enone=Aucun champs sélectionnés
@@ -716,7 +716,7 @@ cnf_bind=Serveur MySQL adresse d'écoute
 cnf_all=Tout
 cnf_socket=Socket MySQL Unix
 cnf_datadir=Bases de données du répertoire des fichiers
-cnf_stor= Moteur de stockage par défaut
+cnf_stor=Moteur de stockage par défaut
 cnf_big-tables=Autoriser les grandes tables?
 cnf_emysqld=Impossible de trouver section [mysqld] dans my.cnf
 cnf_err=Impossible d'enregistrer les options du serveur MySQL

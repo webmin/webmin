@@ -51,7 +51,7 @@ refresh_gadd=$1 گروپس کو شامل کیا
 refresh_gdel=$1 گروپس کو ہٹا دیں
 refresh_done=.. ہو گیا
 refresh_del=سرور فہرست میں سے$1 ہٹا دیا
-refresh_failed= $1 : $2 کو ریفریش کرنے میں ناکام
+refresh_failed=$1 : $2 کو ریفریش کرنے میں ناکام
 
 uedit_host=تفصیلات $1 سے
 uedit_leave=مت بدلاؤ

@@ -48,7 +48,7 @@ gsave_edesc=Deskribapen baliogabea - the: pertsonaia ez da onartzen
 convert_sync2=Sinkronizatu pasahitza Unix erabiltzailearekin etorkizunean?
 convert_user=Unix erabiltzailea
 convert_action=Egindako ekintza
-convert_done= $1 erabiltzaile bihurtu dira, $2 baliogabeak dira, $3 lehendik daude, $4 baztertuta.
+convert_done=$1 erabiltzaile bihurtu dira, $2 baliogabeak dira, $3 lehendik daude, $4 baztertuta.
 convert_users=Erabiltzaileak bihurtzeko
 
 sync_when=Noiz sinkronizatu

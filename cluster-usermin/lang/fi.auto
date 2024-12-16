@@ -66,7 +66,7 @@ refresh_g1=Lisätty $1 ryhmää.
 refresh_g2=Poistettu $1 ryhmää.
 refresh_done=.. valmis
 refresh_del=Poistettu $1 palvelinluettelosta
-refresh_failed= $1 : $2 päivitys epäonnistui
+refresh_failed=$1 : $2 päivitys epäonnistui
 
 host_title=Hallittu palvelin
 host_header=Hallittuja Usermin-palvelimen tietoja
@@ -266,7 +266,7 @@ acl_err=Käyttöoikeuksien tallennus epäonnistui
 acl_doing=Asettaa kulunvalvonnan $1 : lle kaikilla isännöimillä ..
 acl_doing2=$1 : n käyttöoikeuden asettaminen $2 : lla
 acl_success=Aseta käyttöoikeuden hallinta $1 : lle onnistuneesti
-acl_failed= $1 : $2 käyttöoikeuksien määrittäminen epäonnistui
+acl_failed=$1 : $2 käyttöoikeuksien määrittäminen epäonnistui
 acl_done=.. valmis
 
 sync_title=Synkronoi palvelimet

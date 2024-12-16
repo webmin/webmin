@@ -46,7 +46,7 @@ log_onefactor=Utilisateur désinscrit $1 pour l'authentification à deux facteur
 convert_sync2=Synchroniser le mot de passe avec l'utilisateur Unix à l'avenir?
 convert_user=Utilisateur Unix
 convert_action=Action prise
-convert_done= $1 utilisateurs convertis, $2 invalide, $3 existent déjà, $4 exclus.
+convert_done=$1 utilisateurs convertis, $2 invalide, $3 existent déjà, $4 exclus.
 convert_users=Utilisateurs à convertir
 
 sync_when=Quand synchroniser

@@ -1,6 +1,6 @@
 index_title=Системний час
 index_timeserver=Сервер часу
-index_addresses= чиАдреси імена сервера часу
+index_addresses=чиАдреси імена сервера часу
 index_zone=Тимчасова зона
 index_eformat=Невідомий формат висновку <tt>hwclock</tt>
 index_sched=Синхронізувати за розкладом?

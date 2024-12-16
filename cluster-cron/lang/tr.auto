@@ -19,7 +19,7 @@ save_err=Küme cron işi kaydedilemedi
 
 exec_title=Küme Cron İşini Yürüt
 exec_cmd=$1 seçili sunucularda çalıştırılıyor.
-exec_failed= $1 : $2 üzerinde çalıştırılamadı
+exec_failed=$1 : $2 üzerinde çalıştırılamadı
 exec_success=$1 'den çıktı ..
 exec_nohosts=Çalıştırmak için seçilen ana bilgisayar yok veya seçilen gruplar kullanılabilir ana bilgisayar içermiyor.
 

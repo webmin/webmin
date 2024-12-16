@@ -77,7 +77,7 @@ list_size=размер
 list_status=Статус
 list_ok=Добре
 list_view=(Изглед)
-list_eview= $1 : $2 не можа да се отвори
+list_eview=$1 : $2 не можа да се отвори
 
 delete_err=Изтриването на пакета $1 не бе успешно
 delete_epack=Пакетът $1 не съществува

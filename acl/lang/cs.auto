@@ -52,7 +52,7 @@ gsave_edesc=Neplatný popis - znak: není povolen
 convert_sync2=Synchronizovat heslo s Unixem v budoucnu?
 convert_user=Unixový uživatel
 convert_action=Přijatá opatření
-convert_done= $1 převedení uživatelé, $2 neplatné, $3 již existuje, $4 vyloučeno.
+convert_done=$1 převedení uživatelé, $2 neplatné, $3 již existuje, $4 vyloučeno.
 convert_users=Uživatelé převést
 
 sync_when=Kdy synchronizovat

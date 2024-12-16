@@ -51,7 +51,7 @@ refresh_gadd=lisäsi $1 ryhmää
 refresh_gdel=poista $1 ryhmää
 refresh_done=.. valmis
 refresh_del=Poistettu $1 palvelinluettelosta
-refresh_failed= $1 : $2 päivitys epäonnistui
+refresh_failed=$1 : $2 päivitys epäonnistui
 
 uedit_host=Tiedot $1 : ltä
 uedit_leave=Älä muuta

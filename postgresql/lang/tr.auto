@@ -163,7 +163,7 @@ exec_ecompress2=Sıkıştırmayı kaldırma başarısız oldu : $1
 
 stop_err=Veritabanı sunucusu durdurulamadı
 stop_epidfile=$1 PID dosyası açılamadı
-stop_ekill= $1 : $2 işlemi öldürülemedi
+stop_ekill=$1 : $2 işlemi öldürülemedi
 stop_ecannot=Veritabanı sunucusunu durdurmanıza izin verilmiyor
 start_err=Veritabanı sunucusu başlatılamadı
 start_ecannot=Veritabanı sunucusunu başlatma izniniz yok

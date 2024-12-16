@@ -52,7 +52,7 @@ exec_nothing=Nobena datoteka ni bila uspešno kopirana v $1.
 exec_not=Kopiranje naslednjih datotek v $1 ni uspelo :
 exec_cmd=Izpis ukaza za naknadno kopiranje na $1  :
 exec_before=Pred kopiranje izhodnega ukaza na $1  :
-exec_on= $1 : $2 ni bilo mogoče zagnati
+exec_on=$1 : $2 ni bilo mogoče zagnati
 
 log_create=Ustvarjena kopija za $1 do $2 strežnike
 log_modify=Spremenjena kopija za $1 do $2 strežnike

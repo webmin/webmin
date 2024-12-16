@@ -77,7 +77,7 @@ list_size=Koko
 list_status=Tila
 list_ok=kunnossa
 list_view=(Katso)
-list_eview= $1 : $2 avaaminen epäonnistui
+list_eview=$1 : $2 avaaminen epäonnistui
 
 delete_err=Paketin $1 poistaminen epäonnistui
 delete_epack=Paketti $1 ei ole olemassa
@@ -374,7 +374,7 @@ deletes_err=Pakettien poistaminen epäonnistui
 deletes_enone=Ei paketteja valittu
 deletes_title=Poista paketit
 deletes_desc=Poista paketteja $1.
-deletes_failed1= $1:$2  : n asennuksen poistaminen epäonnistui
+deletes_failed1=$1:$2  : n asennuksen poistaminen epäonnistui
 deletes_success1=Asennus $1 onnistui
 deletes_failed2=Asennuksen poisto epäonnistui : $1 
 deletes_success2=.. asennus on valmis.

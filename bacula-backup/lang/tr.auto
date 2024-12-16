@@ -31,7 +31,7 @@ index_actions=Eylemleri Yedekleme ve Geri Yükleme
 index_ocmin=Katkıda bulunan: <a href=$2 target=_new>Linmin</a> </a>
 
 connect_emysql=$1 veritabanı DBI sürücüsü yüklenemedi
-connect_elogin= $1:$2 veritabanına giriş yapılamadı.
+connect_elogin=$1:$2 veritabanına giriş yapılamadı.
 connect_equery=$1 veritabanı Bacula tablolarını içermiyor.
 connect_equery2=Bunun nedeni, kurulu SQLite Perl modülünün çok yeni olması ve Bacula tarafından kullanılan daha eski SQLite veritabanı formatını desteklememesi olabilir.
 connect_equery3=$1 veritabanı OC Bacula grup tablolarını içermiyor.
@@ -56,7 +56,7 @@ proc_bareos-dir=Bacula Yönetmen arka plan programı
 stop_err=Bacula durdurulamadı
 start_err=Bacula başlatılamadı
 start_einit=$1 için init betiği bulunamadı
-start_erun= $1 : $2 başlatılamadı
+start_erun=$1 : $2 başlatılamadı
 restart_err=Bacula yeniden başlatılamadı
 apply_err=Yapılandırma uygulanamadı
 apply_failed=Bir yapılandırma hatası tespit edildi
@@ -233,7 +233,7 @@ dirstatus_cancel=Seçilen İşleri İptal Et
 dirstatus_refresh=Listeyi Yenile
 
 clientstatus_title=Müşteri Durumu
-clientstatus_err= $1 : $2 konumundan durum getirilemedi
+clientstatus_err=$1 : $2 konumundan durum getirilemedi
 clientstatus_msg=$1 durumundan : $2 
 clientstatus_show=İstemcinin durumunu göster:
 clientstatus_ok=tamam
@@ -304,7 +304,7 @@ device_edevice=Eksik veya geçersiz arşivleme cihazı veya dizini
 device_echild=Bu istemci $1 tarafından kullanıldığı için silinemiyor
 
 storagestatus_title=Depolama Daemon Durumu
-storagestatus_err= $1 : $2 konumundan durum getirilemedi
+storagestatus_err=$1 : $2 konumundan durum getirilemedi
 storagestatus_msg=$1 durumundan : $2 
 storagestatus_show=Depolama arka plan programının durumunu göster:
 storagestatus_ok=tamam

@@ -7,14 +7,14 @@ index_eschema=Webmin LDAP sunucusuna bağlandı, ancak şemayı getiremedi. <a h
 index_eimap=$1. Belki <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_emd5=Bu modül, şifreler için MD5 şifrelemesini kullanmak üzere <a href='$1'>yapılandırıldı</a>, ancak $2 Perl modülü kurulu değil. $2 modülünü indirip kurmak için <a href='$3'>burayı tıklayın</a>.
 index_eslappasswd=Bu modül, şifreler için LDAP MD5 şifrelemesini kullanmak üzere <a href='$1'>yapılandırıldı</a>, ancak bir şifreyi şifrelemek için kullanılan <tt>$2</tt> programı yüklü değil.
-index_eusearch= $1 : $2 altındaki kullanıcılar aranamadı
+index_eusearch=$1 : $2 altındaki kullanıcılar aranamadı
 index_uadd=Yeni bir LDAP kullanıcısı ekleyin.
 index_gadd=Yeni bir LDAP grubu ekleyin.
 index_unone=$1 altında LDAP kullanıcısı bulunamadı.
 index_gnone=$1 altında LDAP grubu bulunamadı.
 index_return=Kullanıcı listesi
 index_greturn=grup listesi
-index_egsearch= $1 : $2 altındaki gruplar aranamadı
+index_egsearch=$1 : $2 altındaki gruplar aranamadı
 index_samba=Samba?
 index_cyrus=IMAP?
 index_users=LDAP Kullanıcıları

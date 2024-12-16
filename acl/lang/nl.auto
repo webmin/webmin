@@ -22,7 +22,7 @@ cert_etempdir=Ongeldig certificaatbestand
 
 acl_locale=Kan de locatie worden gewijzigd?
 
-log_joingroup= $1 Webmin-gebruikers toegevoegd aan $2 
+log_joingroup=$1 Webmin-gebruikers toegevoegd aan $2 
 log_twofactor=Ingeschreven gebruiker $1 bij two-factor provider $2 
 log_onefactor=Uitgeschreven gebruiker $1 voor tweefactorauthenticatie
 

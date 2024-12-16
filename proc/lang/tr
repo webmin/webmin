@@ -131,10 +131,10 @@ acl_run=Komut çalıştırabilir mi?
 acl_only=Sadece kendi işlemlerini görebilsin?
 
 kill_kill=İşlemi Öldür
-kill_term= Yoket  
-kill_hup=  Yeniden başlat  
-kill_stop=    Durdur    
-kill_cont=  Devam  
+kill_term=Yoket  
+kill_hup=Yeniden başlat  
+kill_stop=Durdur    
+kill_cont=Devam  
 
 open_title=Açık Dosyalar ve Bağlantılar
 open_proc=$1 işlemi (PID $2)

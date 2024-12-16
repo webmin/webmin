@@ -341,7 +341,7 @@ before_ecmd=Kaydetmeden önce komut başarısız oldu : $1
 after_ecmd=Kayıt sonrası komutu başarısız oldu : $1 
 
 connect_emysql=$1 veritabanı sürücüsü yüklenemedi
-connect_elogin= $1:$2 veritabanına giriş yapılamadı.
+connect_elogin=$1:$2 veritabanına giriş yapılamadı.
 connect_equery=$1 veritabanı $2 tercih tablosunu içermiyor
 connect_eldapmod=LDAP ile iletişim kurmak için gereken $1 perl modülü kurulu değil veya yüklenemez
 connect_eldap=$2 bağlantı noktasındaki $1 LDAP sunucusuna bağlanılamadı

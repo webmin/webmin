@@ -50,7 +50,7 @@ gsave_edesc=Ogiltig beskrivning -: -tecknet är inte tillåtet
 convert_sync2=Synkronisera lösenord med Unix-användare i framtiden?
 convert_user=Unix-användare
 convert_action=Åtgärder som vidtagits
-convert_done= $1 användare konverterade, $2 ogiltig, $3 finns redan, $4 uteslutet.
+convert_done=$1 användare konverterade, $2 ogiltig, $3 finns redan, $4 uteslutet.
 convert_users=Användare att konvertera
 
 sync_when=När du ska synkronisera

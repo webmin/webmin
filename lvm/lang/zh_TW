@@ -1,6 +1,6 @@
 index_title=邏輯管理系統
 index_ecommands=在您的系統上找不到LVM指令$1，Webmin需要 LVM的管理指令來設定和管理邏輯容體 
-index_emodule= LVM狀態目錄 $1並不存在。這代表您的核心並不支援LVM，或是這個 $2 核心模組沒有載入。
+index_emodule=LVM狀態目錄 $1並不存在。這代表您的核心並不支援LVM，或是這個 $2 核心模組沒有載入。
 index_vgs=容體群組
 index_pvs=實體容體
 index_lvs=邏輯容體

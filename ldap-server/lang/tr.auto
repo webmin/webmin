@@ -26,7 +26,7 @@ connect_epass2=LDAP sunucusu yapılandırmasında giriş yapmak için bir şifre
 connect_epass3=LDAP sunucusu yapılandırmasındaki şifre şifreli ve Webmin tarafından kullanılamıyor
 connect_emod=LDAP sunucusuna bağlanmak için gereken $1 Perl modülü kurulu değil. Tam Perl hata mesajı : $2 
 connect_eldap=$2 bağlantı noktasından $1 LDAP sunucusuna bağlanılamadı
-connect_essl= $1 : $2 LDAP sunucusuyla TLS şifrelemesi başlatılamadı
+connect_essl=$1 : $2 LDAP sunucusuyla TLS şifrelemesi başlatılamadı
 connect_elogin=$1 LDAP sunucusuna $2 olarak giriş yapılamadı : $3 
 connect_cpan=CPAN'dan <tt>$1</tt> Perl modülünün <a href='$2'>otomatik olarak kurulu</a> olmasını sağlayabilirsiniz.
 
@@ -176,8 +176,8 @@ oadd_edn2=DN için eksik veya geçersiz değer
 oadd_eclasses=Nesne sınıfı girilmedi
 oadd_eclass='$1' geçerli bir nesne sınıfına benzemiyor
 oadd_ename=$1 özelliği için geçersiz görünen ad
-oadd_eget= $1 : $2 nesnesi alınamadı
-oadd_eget2= $1 : $2 ile çakışma kontrol edilemedi
+oadd_eget=$1 : $2 nesnesi alınamadı
+oadd_eget2=$1 : $2 ile çakışma kontrol edilemedi
 oadd_eclash=$1 DN'si olan bir nesne zaten var
 oadd_eadd=$1 LDAP eklenemedi : $2 
 oadd_err=Yeni nesne oluşturulamadı

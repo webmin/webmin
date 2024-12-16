@@ -64,7 +64,7 @@ save_euser=Eksik veya geçersiz Webalizer kullanıcısı
 save_ewuser=$1 diye bir unix kullanıcısı yok
 save_ehost=Eksik veya geçersiz websitesi makinismi
 save_etitle=Eksik rapor başlığı
-save_ecannot= Yalnızca $1 klasörü altındaki log dosyaları için rapor düzenleyebilirisiniz
+save_ecannot=Yalnızca $1 klasörü altındaki log dosyaları için rapor düzenleyebilirisiniz
 
 view_epath=Geçersiz PATH_INFO
 view_efile=Geçersiz rapor dosyaismi

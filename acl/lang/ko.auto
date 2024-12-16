@@ -37,7 +37,7 @@ acl_locale=로케일을 변경할 수 있습니까?
 acl_pass=비밀번호 제한을 변경할 수 있습니까?
 acl_sql=사용자 및 그룹 데이터베이스를 구성 할 수 있습니까?
 
-log_joingroup= $1 Webmin 사용자를 $2 그룹에 추가했습니다.
+log_joingroup=$1 Webmin 사용자를 $2 그룹에 추가했습니다.
 log_sql=변경된 사용자 및 그룹 데이터베이스
 log_twofactor=2 단계 공급자 $2 에 등록 된 사용자 $1 
 log_onefactor=이중 인증을위한 등록 해제 된 사용자 $1 
@@ -50,7 +50,7 @@ gsave_edesc=잘못된 설명-: 문자는 허용되지 않습니다
 convert_sync2=향후 Unix 사용자와 비밀번호를 동기화 하시겠습니까?
 convert_user=유닉스 사용자
 convert_action=취한 조치
-convert_done= $1 사용자 변환, $2 유효하지 않음, $3 이 (가) 이미 존재 함, $4 는 제외되었습니다.
+convert_done=$1 사용자 변환, $2 유효하지 않음, $3 이 (가) 이미 존재 함, $4 는 제외되었습니다.
 convert_users=변환 할 사용자
 
 sync_when=동기화시기
@@ -130,7 +130,7 @@ make_err=사용자 및 그룹 테이블을 작성하지 못했습니다.
 make_exec=SQL $1 실행 중..
 make_failed=.. 작성 실패 : $1 
 make_done=.. 완료
-make_still= $1 : 테이블 생성 후에도 몇 가지 문제가 발견되었습니다.
+make_still=$1 : 테이블 생성 후에도 몇 가지 문제가 발견되었습니다.
 
 makedn_title=LDAP DN 생성
 makedn_eoc=구조적 객체 클래스가 없습니다!

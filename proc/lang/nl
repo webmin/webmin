@@ -156,10 +156,10 @@ acl_who1=Huidige Webmin gebruiker
 acl_who2=Gebruikers in lijst ..
 
 kill_kill=Kil Proces
-kill_term= Uitschakelen  
-kill_hup=  Herstart   
-kill_stop=    Stop    
-kill_cont=  Doorgaan  
+kill_term=Uitschakelen  
+kill_hup=Herstart   
+kill_stop=Stop    
+kill_cont=Doorgaan  
 
 open_title=Open Files en verbindingen
 open_proc=Voor proces $1 (PID $2)

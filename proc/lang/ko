@@ -107,7 +107,7 @@ log_kills_l=프로세스 $2에 신호 $1 보냄 완료<br>
 acl_manage=사용자로서 프로세스 관리
 
 kill_kill=프로세스 중단
-kill_term= 종료  
-kill_hup=  다시 시작   
-kill_stop=    중지    
-kill_cont=  계속  
+kill_term=종료  
+kill_hup=다시 시작   
+kill_stop=중지    
+kill_cont=계속  

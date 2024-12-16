@@ -156,10 +156,10 @@ acl_who1=Текущего пользователя Webmin
 acl_who2=Перечисленных пользователей ..
 
 kill_kill=Снять процесс
-kill_term= Завершить  
-kill_hup=  Перезапустить   
-kill_stop=    Приостановить    
-kill_cont=  Возобновить  
+kill_term=Завершить  
+kill_hup=Перезапустить   
+kill_stop=Приостановить    
+kill_cont=Возобновить  
 
 open_title=Открытые файлы и соединения
 open_proc=Для процесса $1 (PID $2)

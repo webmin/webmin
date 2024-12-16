@@ -82,7 +82,7 @@ misc_overlapread=Розмір перекриття читання
 misc_chroot=Каталог <tt>chroot()</tt>
 misc_smbrun=Шлях до <tt>smbrun</tt>
 misc_clienttime=Зсув клієнта за часом
-misc_readprediction= читання, ЩоВипереджає?
+misc_readprediction=читання, ЩоВипереджає?
 
 net_title=Параметри мережі Unix
 net_idle=Час чекання бездіяльності до роз'єднання

@@ -120,7 +120,7 @@ acl_edit=可以删除并renice进程吗？
 acl_run=可以执行命令吗？
 
 kill_kill=删除进程
-kill_term=    终止    
-kill_hup=  重新启动  
-kill_stop=    停止    
-kill_cont=    继续    
+kill_term=终止    
+kill_hup=重新启动  
+kill_stop=停止    
+kill_cont=继续    

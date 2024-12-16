@@ -114,7 +114,7 @@ refresh_3=Päivitetty $1 (poistettu $2)
 refresh_4=Päivitetty $1 (ei muutoksia)
 refresh_done=.. valmis
 refresh_del=Poistettu $1 palvelinluettelosta
-refresh_failed= $1 : $2 päivitys epäonnistui
+refresh_failed=$1 : $2 päivitys epäonnistui
 
 delete_err=Paketin $1 poistaminen epäonnistui
 delete_epack=Paketti $1 ei ole olemassa
@@ -169,7 +169,7 @@ deletes_err=Pakettien poistaminen epäonnistui
 deletes_enone=Ei paketteja valittu
 deletes_title=Poista paketit
 deletes_desc=Poista paketteja $1.
-deletes_failed1= $1:$2  : n asennuksen poistaminen epäonnistui
+deletes_failed1=$1:$2  : n asennuksen poistaminen epäonnistui
 deletes_success1=Asennus $1 onnistui
 deletes_failed2=Asennuksen poisto epäonnistui : $1 
 deletes_success2=.. asennus on valmis.

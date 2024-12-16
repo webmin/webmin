@@ -91,21 +91,21 @@ ss_restart=Berrabiatu ekintza
 ss_reload=Ekintza birkargatzen
 ss_status=Ekintzaren egoera
 ss_exec=$1 exekutatzen ..
-ss_doingstart= $1 ekintza martxan jartzen ..
-ss_doingstop= $1 ekintza gelditzen ..
+ss_doingstart=$1 ekintza martxan jartzen ..
+ss_doingstop=$1 ekintza gelditzen ..
 ss_doingstatus=$1 ekintzaren egoera eskatzen ..
 
 shutdown_ecannot=Ez zaude sistema itzaltzeko baimendua
 shutdown_title=Itzali
 shutdown_rusure=Ziur zaude $1 komandoarekin itzali nahi duzula sistema?
 shutdown_ok=Itzali Sistema
-shutdown_exec= Itzaltzen $1 komandoarekin  ..
+shutdown_exec=Itzaltzen $1 komandoarekin  ..
 
 reboot_ecannot=Ez zaude sistema berrabiarazteko baimendua
 reboot_title=Berrabiatu
 reboot_rusure=Ziur zaude $1 komandoarekin berrabiarazi nahi duzula sistema?
 reboot_ok=Berrabiarazi Sistema
-reboot_exec= Berrabiarazten $1 komandoarekin ..
+reboot_exec=Berrabiarazten $1 komandoarekin ..
 
 acl_script=Karga uneko scripta edita dezake?
 acl_actions=Ekintzak martxan jarri, editatu, sortu eta ezabatzea posible?

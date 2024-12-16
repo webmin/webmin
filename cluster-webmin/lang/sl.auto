@@ -66,7 +66,7 @@ refresh_g1=Dodano $1 skupin.
 refresh_g2=Odstranjenih $1 skupin.
 refresh_done=.. Končano
 refresh_del=Odstranjen je $1 s seznama strežnikov
-refresh_failed= $1 : $2 ni bilo mogoče osvežiti
+refresh_failed=$1 : $2 ni bilo mogoče osvežiti
 
 host_title=Upravljavec strežnika
 host_header=Podrobnosti o upravljanem spletnem strežniku
@@ -182,7 +182,7 @@ user_doing5=Ustvarjanje uporabnika $1 v gostitelju $2 ..
 user_doing2=Posodabljanje uporabnika $1 za vse gostitelje ..
 user_success=Ustvarjen uporabnik v $1 
 user_success2=Posodobljen uporabnik na $1 
-user_failed= $1 : $2 ni bilo mogoče ustvariti uporabnika
+user_failed=$1 : $2 ni bilo mogoče ustvariti uporabnika
 user_failed2=Uporabnika ni mogoče posodobiti na $1 : $2 
 user_done=.. Končano
 user_egroup=Skupina ne obstaja na strežniku
@@ -268,7 +268,7 @@ acl_err=Nadzor dostopa ni uspel shraniti
 acl_doing=Nastavitev nadzora dostopa za $1 za vse gostitelje ..
 acl_doing2=Nastavitev nadzora dostopa za $1 na $2.
 acl_success=Nadzor dostopa je uspešno nastavljen na $1 
-acl_failed= $1 : $2 ni bilo mogoče nastaviti nadzora dostopa
+acl_failed=$1 : $2 ni bilo mogoče nastaviti nadzora dostopa
 acl_done=.. Končano
 
 sync_title=Sinhronizirajte strežnike

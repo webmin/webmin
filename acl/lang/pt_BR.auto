@@ -46,7 +46,7 @@ gsave_edesc=Descrição inválida - o caractere: não é permitido
 convert_sync2=Sincronizar senha com o usuário Unix no futuro?
 convert_user=Usuário Unix
 convert_action=Medida tomada
-convert_done= $1 usuários convertidos, $2 inválidos, $3 já existem, $4 excluído.
+convert_done=$1 usuários convertidos, $2 inválidos, $3 já existem, $4 excluído.
 convert_users=Usuários para converter
 
 sync_when=Quando sincronizar

@@ -156,10 +156,10 @@ acl_who1=Aktualny użytkownik Webmina
 acl_who2=Wybranych użytkowników ..
 
 kill_kill=Zabij proces
-kill_term=  Przerwij  
-kill_hup= Zrestartuj 
-kill_stop= Zatrzymaj  
-kill_cont= Kontynuuj  
+kill_term=Przerwij  
+kill_hup=Zrestartuj 
+kill_stop=Zatrzymaj  
+kill_cont=Kontynuuj  
 
 open_title=Otwarte pliki i połączenia
 open_proc=Dla procesu $1 (PID $2)

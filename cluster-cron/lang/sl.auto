@@ -19,7 +19,7 @@ save_err=Ni bilo mogoče shraniti opravila cluster cron
 
 exec_title=Izvedite delo Cluster Cron
 exec_cmd=Teče $1 na izbranih strežnikih ..
-exec_failed= $1 : $2 ni bilo mogoče zagnati
+exec_failed=$1 : $2 ni bilo mogoče zagnati
 exec_success=Izhod iz $1.
 exec_nohosts=Noben gostitelj ni izbran, če želite izvajati, ali izbrane skupine ne vsebujejo uporabnih gostiteljev.
 
