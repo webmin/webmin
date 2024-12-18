@@ -1173,7 +1173,8 @@ foreach my $pmrc (@pmrcs) {
 			$delivery_enabled ||= 1;
 			}
 		}
-	if (&find_virtualmin_recipe(\@recipes)) {
+	if (&find_virtualmin_recipe(\@recipes) ||
+	    &foreign_installed("virtual-server")) {
 		# Controlled by Virtualmin
 		if ($isglobal &&
 		    &find_force_default_receipe(
