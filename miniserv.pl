@@ -1704,8 +1704,9 @@ if ($header{'user-agent'} =~ /webmin/i ||
 	}
 
 # Check for SSL authentication
+my $trust_ssl = $config{'trust_real_ip'} && !$config{'no_trust_ssl'};
 if ($use_ssl && $verified_client ||
-    $config{'trust_real_ip'} && $header{'x-ssl-client-dn'}) {
+    $trust_ssl && $header{'x-ssl-client-dn'}) {
 	if ($use_ssl && $verified_client) {
 		$peername = Net::SSLeay::X509_NAME_oneline(
 				Net::SSLeay::X509_get_subject_name(
@@ -1713,7 +1714,7 @@ if ($use_ssl && $verified_client ||
 						$ssl_con)));
 		$u = &find_user_by_cert($peername);
 		}
-	if ($config{'trust_real_ip'} && !$u && $header{'x-ssl-client-dn'}) {
+	if ($trust_ssl && !$u && $header{'x-ssl-client-dn'}) {
 		# Use proxied client cert
 		$u = &find_user_by_cert($header{'x-ssl-client-dn'});
 		}

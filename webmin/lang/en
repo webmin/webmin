@@ -32,6 +32,7 @@ access_ehost=Failed to find IP address for '$1'
 access_eself=Your current IP address ($1) would be denied
 access_always=Resolve hostnames on every request?
 access_trust=Trust remote IP address provided by proxies?
+access_trust_ssl=Trust SSL client cert provided by proxies?
 
 bind_title=Ports and Addresses
 bind_desc2=This form can be used to change the port number that Webmin listens on, or have it listen on only a single IP address on your system. You can also configure it to accept connections on multiple ports, or to listen on several IP addresses. Note - your web browser may prompt you to log in again after changing the port or binding address.
