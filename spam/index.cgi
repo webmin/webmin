@@ -62,56 +62,7 @@ elsif ($dberr = &check_spamassassin_db()) {
 	}
 else {
 	# Work out if SpamAssassin is enabled in procmail
-	if ($warn_procmail && &foreign_check("procmail")) {
-		&foreign_require("procmail");
-		$spam_enabled = 0;	# Found call to spamassassin
-		$delivery_enabled = 0;	# Found X-Spam: header rule
-		@pmrcs = &get_procmailrc();
-		foreach $pmrc (@pmrcs) {
-			my @recipes =
-				&procmail::parse_procmail_file($pmrc);
-			my $isglobal = $pmrc eq
-					$config{'global_procmailrc'} ||
-				       $pmrc eq
-					$config{'procmailrc'} ||
-				       $pmrc eq
-					$procmail::procmailrc;
-			if (&find_spam_recipe(\@recipes)) {
-				$spam_enabled ||= 1;
-				}
-			if (&find_file_recipe(\@recipes)) {
-				if ($isglobal) {
-					# Enabled globally, and so
-					# cannot be changed by user
-					$delivery_enabled ||= -2;
-					}
-				else {
-					$delivery_enabled ||= 1;
-					}
-				}
-			if (&find_virtualmin_recipe(\@recipes)) {
-				# Controlled by Virtualmin
-				if ($isglobal &&
-				    &find_force_default_receipe(
-				      \@recipes)) {
-					# User .procmailrc files are
-					# prevented
-					$spam_enabled ||= -2;
-					$delivery_enabled ||= -2;
-					}
-				else {
-					# Users can have a .procmailrc
-					$spam_enabled ||= -2;
-					$delivery_enabled ||= 1;
-					}
-				}
-			}
-		}
-	else {
-		# don't know, or checking disabled
-		$spam_enabled = -1;
-		$delivery_enabled = -1;
-		}
+	($spam_enabled, $delivery_enabled) = &get_procmail_status();
 	if ($spam_enabled == 0) {
 		if ($module_info{'usermin'}) {
 			print &ui_alert_box(&text('index_warn_usermin',
