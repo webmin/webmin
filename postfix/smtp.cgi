@@ -90,8 +90,7 @@ if (&compare_version_numbers($postfix_version, 2.8) >= 0) {
 	$pref = &get_current_value("smtp_address_preference");
 	print &ui_table_row($text{'opts_smtp_address_preference'},
 		&ui_select("smtp_address_preference_def", $pref,
-		   [ [ "", $text{'default'} ],
-		     [ "any", $text{'opts_smtp_address_preference_any'} ],
+		   [ [ "any", $text{'opts_smtp_address_preference_any'} ],
 		     [ "ipv4", "IPv4" ],
 		     [ "ipv6", "IPv6" ] ]));
 	}
