@@ -16,7 +16,7 @@ index_dtheme=το θέμα που ελέγχει την εμφάνιση του 
 index_dpass=Ο κωδικός σύνδεσης που χρησιμοποιείται
 
 change_title=Αλλαγή Ρυθμίσεων
-change_user=Τροποποίηση σύνδεσης σε Webmin  ..
+change_user=Τροποποίηση σύνδεσης σε Webmin ..
 change_done=.. ολοκληρώθηκε
 change_restart=Επανεκκίνηση Webmin ..
 change_redirect=Ανακατεύθυνση στο βασικό μενού ..

@@ -143,7 +143,7 @@ edit_hostconfig_startitems=Pole $1 by nemělo začít číslem nebo podtržítke
 edit_hostconfig_actionname=Název akce
 edit_hostconfig_scriptname=Název skriptu
 edit_hostconfig_array=Pole $1, $2, a $3 jsou pole typu array a mohou obsahovat více jak jednu hodnotu. Oddělujte vícenásobné hodnoty dvojtečkou.
-edit_hostconfig_further=Po vytvoření nové spouštěcí akce, byste měli přejít na stránku, která vám  umožní upravit spouštěcí skript a seznam parametrů, pokud je potřeba.
+edit_hostconfig_further=Po vytvoření nové spouštěcí akce, byste měli přejít na stránku, která vám umožní upravit spouštěcí skript a seznam parametrů, pokud je potřeba.
 edit_hostconfig_hostconfig=Soubor $1 kontroluje systémové služby a démony, které jsou spouštěny během startu. Můžete ho editovat níže
 edit_hostconfig_title=Editovat Hostconfig
 

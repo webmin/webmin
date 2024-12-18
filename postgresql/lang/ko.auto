@@ -26,7 +26,7 @@ view_match5=이하
 view_go=가다
 view_set=파일 내용으로 설정합니다.
 view_warn=경고- $1 및 $2 Perl 모듈을 설치하여 사용하지 않으면 <tt>text</tt> 또는 <tt>bytea</tt> 필드에 파일을 업로드하고 내용을 볼 수 없습니다.
-view_sqlrun=SQL 쿼리에 의해 생성 된 결과  : $1 
+view_sqlrun=SQL 쿼리에 의해 생성 된 결과 : $1
 
 newdb_template=템플릿 데이터베이스
 newdb_notemplate=없음

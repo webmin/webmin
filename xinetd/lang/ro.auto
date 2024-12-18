@@ -8,7 +8,7 @@ index_inet=Internet
 index_proto=Protocol
 index_user=Utilizator
 index_server=Program de server
-index_redirect=Transmite până la $1 
+index_redirect=Transmite până la $1
 index_enabled=Activat?
 index_internal=Intern la Xinetd
 index_add_inet=Creați un nou serviciu de internet
@@ -70,7 +70,7 @@ serv_eport=Număr de port lipsă sau nevalid
 serv_einst=Număr de servere concurente lipsă sau nevalide
 serv_euser=Trebuie să introduceți un utilizator
 serv_egroup=Trebuie să introduceți un grup
-serv_estd=Nu există un număr de port standard pentru serviciul $1 
+serv_estd=Nu există un număr de port standard pentru serviciul $1
 serv_eproto=Trebuie să selectați un protocol pentru acest serviciu
 serv_eserver=Programul serverului lipsă sau nevalid
 serv_erhost=Gazda de redirecționare lipsă sau nevalidă
@@ -91,11 +91,11 @@ proto_tcp=TCP (Protocol de control al transmisiei)
 proto_udp=UDP (User Datagram Protocol)
 
 restart_err=Eroare la aplicarea modificărilor
-restart_ekill=Eroare la trimiterea semnalului USR2 la PID $1 : $2 
+restart_ekill=Eroare la trimiterea semnalului USR2 la PID $1 : $2
 restart_epid=Nu mai alerga
 
 start_err=Nu a reușit să înceapă xinetd
-start_estart=$1 a eșuat : $2 
+start_estart=$1 a eșuat : $2
 
 defs_title=Opțiuni implicite
 defs_header=Opțiuni implicite pentru servicii
@@ -122,16 +122,16 @@ defs_efile=Numele de fișier de jurnal lipsă sau nevalid
 defs_esoft=Lipsește o limită soft nevalidă
 defs_ehard=Lipsește sau nu este o limită greșită
 
-log_create_serv=Creat serviciu $2 $1 
-log_modify_serv=Serviciu modificat $2 $1 
+log_create_serv=Creat serviciu $2 $1
+log_modify_serv=Serviciu modificat $2 $1
 log_delete_serv=Serviciul $2 a fost șters
 log_start=A început serverul Xinetd
 log_apply=Modificări aplicate
 log_defaults=Opțiuni implicite modificate
 log_enable=Activare $1 servicii
-log_disable=Servicii dezactivate $1 
-log_enable_l=Servicii activate $1 
-log_disable_l=Servicii dezactivate $1 
+log_disable=Servicii dezactivate $1
+log_enable_l=Servicii activate $1
+log_disable_l=Servicii dezactivate $1
 
 config_dirdef=Fișier de configurare Xinetd
 config_dirto=Fișier nou în director

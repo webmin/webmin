@@ -24,7 +24,7 @@ edit_edit=プリンタを編集
 edit_conf=プリンタ設定
 edit_name=プリンタ名
 edit_acc=要請を受け入れますか？
-edit_why=いいえ -  はい
+edit_why=いいえ - はい
 edit_desc=説明
 edit_ena=印刷可能にしますか？
 edit_acl=アクセス制御
@@ -59,7 +59,7 @@ edit_port=ポート
 edit_direct=ダイレクト TCP 接続
 edit_dport=ポート
 edit_driver=プリンタ ドライバ
-edit_check=リモート サーバが実行中か確認しますか？ 
+edit_check=リモート サーバが実行中か確認しますか？
 
 blocks=ブロック
 
@@ -176,7 +176,7 @@ estop=lpd を停止できませんでした: $1
 acl_printers=このユーザが設定できるプリンタ
 acl_add=新規のプリンタを追加可能にしますか？
 acl_cancel=プリント ジョブをキャンセル可能にしますか？
-acl_stop=スケジューラを停止または開始可能にしますか？ 
+acl_stop=スケジューラを停止または開始可能にしますか？
 acl_restart=再開のみ
 acl_listed=選択されたプリンタのみ ..
 acl_pall=すべてのプリンタ
@@ -212,7 +212,7 @@ unixware_serial=シリアル ポート $1
 unixware_null=Null デバイス
 
 hpux_paralel=パラレル $1
-hpux_serial=シリアル  $1
+hpux_serial=シリアル $1
 hpux_null=Null デバイス
 
 lprng_paralel=パラレル ポート $1

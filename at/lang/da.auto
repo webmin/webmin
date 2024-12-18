@@ -68,9 +68,9 @@ deletes_err=Kunne ikke annullere kommandoer
 deletes_enone=Ingen valgt
 
 log_allow=Ændrede tilladte brugere
-log_create_job=Oprettet planlagt kommando til $1 
-log_delete_job=Annulleret planlagt kommando for $1 
-log_exec_job=Udført planlagt kommando for $1 
+log_create_job=Oprettet planlagt kommando til $1
+log_delete_job=Annulleret planlagt kommando for $1
+log_exec_job=Udført planlagt kommando for $1
 log_delete_jobs=Annulleret $1 planlagte kommandoer
 log_stop=Stoppet planlagte kommandoserver
 log_start=Startet planlagt kommandoserver

@@ -156,10 +156,10 @@ acl_who1=Gjeldende Webmin bruker
 acl_who2=Brukere i listen ..
 
 kill_kill=Drep prosess
-kill_term= Terminer  
-kill_hup=  Omstart   
-kill_stop=    Stopp    
-kill_cont=  Fortsett  
+kill_term=Terminer  
+kill_hup=Omstart   
+kill_stop=Stopp    
+kill_cont=Fortsett  
 
 open_title=Åpne filer og tilkoblinger
 open_proc=For prosess $1 (PID $2)

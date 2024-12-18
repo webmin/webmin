@@ -7,12 +7,12 @@ index_active=Aktyvus?
 index_tag=Programa
 index_to=Žurnalo paskirties vieta
 index_rule=Pasirinkti pranešimai
-index_file=Failas $1 
-index_pipe=Pavadintas vamzdis $1 
-index_pipe2=Vamzdis komandai $1 
-index_host=„Syslog“ serveris $1 
-index_socket=„Unix“ lizdo failas $1 
-index_cmd=Išvestis iš $1 
+index_file=Failas $1
+index_pipe=Pavadintas vamzdis $1
+index_pipe2=Vamzdis komandai $1
+index_host=„Syslog“ serveris $1
+index_socket=„Unix“ lizdo failas $1
+index_cmd=Išvestis iš $1
 index_all=Visi vartotojai
 index_users=$1 vartotojai
 index_add=Pridėkite naują sistemos žurnalą.
@@ -26,7 +26,7 @@ index_view=Peržiūrėti ..
 index_viewfile=Peržiūrėti žurnalo failą:
 index_viewok=Vaizdas
 
-restart_ekill=Nepavyko pranešti apie sistemos žurnalo procesą $1 : $2 
+restart_ekill=Nepavyko pranešti apie sistemos žurnalo procesą $1 : $2
 restart_ecannot=Jums neleidžiama paleisti „syslog“ iš naujo
 
 start_ecannot=Jums neleidžiama paleisti syslog
@@ -61,13 +61,13 @@ edit_ecannot=Jums neleidžiama redaguoti žurnalo nustatymų
 edit_ecannot2=Jums neleidžiama redaguoti šio žurnalo
 
 view_title=Peržiūrėti žurnalo failą
-view_header=Paskutinės $1 eilutės iš $2 
+view_header=Paskutinės $1 eilutės iš $2
 view_empty=Žurnalo failas tuščias
 view_refresh=Atnaujinkite
-view_filter=Rodyti tik eilutes su tekstu $1 
+view_filter=Rodyti tik eilutes su tekstu $1
 
 save_err=Nepavyko išsaugoti žurnalo
-save_efile=„$1“ nėra teisingas failo vardas : $2 
+save_efile=„$1“ nėra teisingas failo vardas : $2
 save_epipe=„$1“ nėra tinkamas pavadintas vamzdis
 save_epipe2=Trūksta komandos, į kurią reikia kreiptis
 save_esocket=Trūksta arba netinkamas „unix“ domeno lizdas
@@ -86,9 +86,9 @@ save_ecannot6=Jums neleidžiama žiūrėti savavališkų žurnalų
 save_ecannot7=Jums neleidžiama žiūrėti šio papildomo žurnalo
 save_emissing=Trūksta žiūrimo failo
 
-log_modify=Pakeistas žurnalas į $1 
-log_create=Pridėtas žurnalas prie $1 
-log_delete=Ištrintas žurnalas į $1 
+log_modify=Pakeistas žurnalas į $1
+log_create=Pridėtas žurnalas prie $1
+log_delete=Ištrintas žurnalas į $1
 log_apply=Taikomi pakeitimai
 log_start=Pradėtas registravimo serveris
 

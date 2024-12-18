@@ -327,7 +327,7 @@ restart_ecmd=L'ordre de reinici ha fallat: $1
 restart_eversion=El servidor esclau $1 no està executant la versió de Webmin $2 o superior.
 
 start_ecannot=No tens permís per iniciar BIND
-start_error=No s'ha pogut iniciar BIND: $1 
+start_error=No s'ha pogut iniciar BIND: $1
 stop_epid=BIND no està en execució
 stop_ecannot=No tens permís per aturar BIND
 
@@ -919,8 +919,8 @@ mcreate_erecs=No és un fitxer de zona arrel vàlid
 hcreate_err=No s'ha pogut crear la zona arrel
 
 vdelete_title=Supressió de Vista
-vdelete_mesg=Segur que vols suprimir la vista client $1? Totes les zones d'aquesta vista seran esborrades  (juntament amb tots els seus fitxers de zona) o desplaçats a una altra vista depenent de la selecció inferior.
-vdelete_mesg2=Segur que vols  suprimir la vista client $1?
+vdelete_mesg=Segur que vols suprimir la vista client $1? Totes les zones d'aquesta vista seran esborrades (juntament amb tots els seus fitxers de zona) o desplaçats a una altra vista depenent de la selecció inferior.
+vdelete_mesg2=Segur que vols suprimir la vista client $1?
 vdelete_newview=Zones d'aquesta vista
 vdelete_root=Treu-les de les vistes
 vdelete_delete=Suprimeix-les totalment
@@ -1174,7 +1174,7 @@ dt_zone_kskroll=Rodament KSK
 dt_zone_kskrolldesc=Força el rodament de la clau de signatura de la zona
 dt_zone_ksknotify=Continua el Rodament KSK
 dt_zone_ksknotifydesc=Continua el rodament KSK. L'operador ha de confirmar que el nou conjunt DS per als KSKs de la zona ha estat publicat a la zona mare
-dt_zone_keyrollon=El rodament de claus està actualment en  marxa
+dt_zone_keyrollon=El rodament de claus està actualment en marxa
 dt_zone_rollerdrst=Inicia Rollerd
 dt_zone_rollerdrstdesc=Inicia el dimoni Rollerd
 dt_zone_migrate=Migra a DNSSEC-Tools
@@ -1272,7 +1272,7 @@ trusted_root=Zona arrel
 trusted_err=No s'ha pogut desar la verificació de DNSSEC
 trusted_eanchor=Hi falta la zona d'àncora a la fila $1 o bé és invàlida
 trusted_edlv=Hi falta la zona real a la fila $1 o bé és invàlida
-trusted_ezone=Hi falta el nom de la zona fiable a la línia $1 o bé és invàlida 
+trusted_ezone=Hi falta el nom de la zona fiable a la línia $1 o bé és invàlida
 trusted_eflags=Hi falten les banderes de la clau a la fila $1 o bé és invàlida - ha de ser un número com ara 257
 trusted_eproto=Hi falta el número de protocol a la fila $1 o bé és invàlid
 trusted_ealg=Hi falta el número d'algoritme a la fila $1 o bé és invàlid

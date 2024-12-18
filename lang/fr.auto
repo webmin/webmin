@@ -98,7 +98,7 @@ sql_epostgresqlconnect=Impossible de se connecter à la base de données Postgre
 sql_eldapdriver=Impossible de charger le module perl LDAP
 sql_eldapconnect=Impossible de se connecter au serveur LDAP $1
 sql_eldaptls=Impossible de démarrer le chiffrement TLS pour LDAP : $1
-sql_eldaplogin=Impossible de se connecter au serveur LDAP en tant que $1 : $2 
+sql_eldaplogin=Impossible de se connecter au serveur LDAP en tant que $1 : $2
 
 log_email_subject=Action Webmin dans $1
 log_email_global=Action globale Webmin
@@ -121,9 +121,9 @@ paginator_nosearchrs=Il n'y a aucun résultat correspondant à la requête <tt>$
 
 langauto_include=Inclure les traductions automatiques
 
-file_truncated_message=extrait $1 des données, tronqué $2 sur $3 
-file_truncated_message_head=récupéré au début $1 des données, tronqué $2 sur $3 
-file_truncated_message_tail=récupéré se terminant $1 des données, tronqué $2 sur $3 
+file_truncated_message=extrait $1 des données, tronqué $2 sur $3
+file_truncated_message_head=récupéré au début $1 des données, tronqué $2 sur $3
+file_truncated_message_tail=récupéré se terminant $1 des données, tronqué $2 sur $3
 
 defcert_error=Le certificat SSL groupé $1 par défaut est utilisé. Il est fortement conseillé de mettre à jour le certificat <tt>$2</tt> par défaut avant de procéder à la connexion.
 

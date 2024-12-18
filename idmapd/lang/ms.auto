@@ -7,5 +7,5 @@ domain=Nama domain
 nobody_user=Tiada pengguna
 nobody_group=Tiada sesiapa
 save=Simpan config dan mulakan semula daemon
-save_err=Gagal menyimpan fail konfig $1 
+save_err=Gagal menyimpan fail konfig $1
 error_dir=Direktori $1 tidak wujud

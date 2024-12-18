@@ -41,10 +41,10 @@ save_eroot=Et luetellut mitään isäntiä, joiden kanssa jaettaisiin juuri
 save_ealready=Hakemisto '$1' on jo jaettu
 save_ehost=Isäntä '$1' ei ole olemassa
 
-log_modify=Muokattu NFS-osuus $1 
-log_rename=NFS: n osuus muutettu $1 - $2 
-log_create=Luotu NFS-osuus $1 
-log_delete=Poistettu NFS-osuus $1 
+log_modify=Muokattu NFS-osuus $1
+log_rename=NFS: n osuus muutettu $1 - $2
+log_create=Luotu NFS-osuus $1
+log_delete=Poistettu NFS-osuus $1
 log_apply=Sovelletut muutokset
 
 acl_view=Voiko NFS-osakkeita muokata?

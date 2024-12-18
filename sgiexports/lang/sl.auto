@@ -33,7 +33,7 @@ save_erw=Gostitelji branja in pisanja niso vneseni
 save_eroot=Gostitelji dostopa do korenske datoteke niso vneseni
 save_eaccess=Gostitelji dostopa do montaže niso vneseni
 
-log_create_export=Ustvaril izvoz $1 
-log_delete_export=Izbrisan izvoz $1 
-log_modify_export=Spremenjen izvoz $1 
+log_create_export=Ustvaril izvoz $1
+log_delete_export=Izbrisan izvoz $1
+log_modify_export=Spremenjen izvoz $1
 log_apply=Uporabljena konfiguracija

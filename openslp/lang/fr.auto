@@ -2,7 +2,7 @@ index_title=Configuration d'OpenSLP
 index_return=Configuration OpenSLP
 index_eslpd=Le démon OpenSLP $1 est introuvable sur votre système. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.
 index_econf=Le fichier de configuration OpenSLP $1 est introuvable sur votre système. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.
-index_version=Version OpenSLP $1 
+index_version=Version OpenSLP $1
 
 slp_apply=Appliquer les modifications
 slp_stop=Arrêtez OpenSLP

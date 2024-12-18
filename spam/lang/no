@@ -77,7 +77,7 @@ score_eauto=Manglende eller ugyldig hvitliste score faktor (må være mellom 0 o
 score_emx=Manglende eller ugyldig antall ganger From: adressens MX sjekkes
 score_emxdelay=Manglende eller ugyldig antall sekunder å vente mellom MX sjekker
 score_etimeout=Manglende eller ugyldig antall sekunder å vente på RSL forespørsler
-score_ereceived=Manglende eller ugyldig antall  Received: headere som sjekkes med RBL
+score_ereceived=Manglende eller ugyldig antall Received: headere som sjekkes med RBL
 score_bayes=Bruk Bayesisk læringsklassifikator?
 
 report_title=Meldings-endringer

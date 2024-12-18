@@ -100,7 +100,7 @@ mail_search2=Hledat:
 mail_search3=Vyhledat ve výsledku:
 mail_advanced=Rozšířené hledání
 mail_return2=email uživatele
-mail_esystem=Vyskytla se chyba dotykající se poštovního systému  : $1. Tato musí být opravena administrátorem.
+mail_esystem=Vyskytla se chyba dotykající se poštovního systému : $1. Tato musí být opravena administrátorem.
 mail_selread=Označit jako přečtené.
 mail_selunread=Označit jako nepřečtené.
 mail_selspecial=Označit jako speciální.
@@ -400,7 +400,7 @@ white_already=E-mailová adresa $1 již existuje v seznamu povolených adres Spa
 
 ldap_emod=Chybějící Perl modul $1 potřebný pro připojení k LDAP
 ldap_econn=Chyba při připojení k LDAP serveru $1 na portu $2
-ldap_elogin=Chyba propojení k LDAP serveru  $1 jako $2 : $3
+ldap_elogin=Chyba propojení k LDAP serveru $1 jako $2 : $3
 ldap_ehost=LDAP server není nastaven v configuraci modulu
 ldap_eport=Chybný port LDAP serveru nastavený v configuraci modulu
 ldap_euser=LDAP přihlášení není nastaveno v configuraci modulu

@@ -1,7 +1,7 @@
 index_title=WU-FTPD Sunucusu
 index_eftpd=FTP sunucusu $1 sisteminizde bulunamadı. Kurulmamış ya da <a href='$2'>FTP Sunucusu Modül Yapılandırması</a> yanlış olabilir
-index_eftpaccess=FTP sunucusu yapılandırma dosyası $1 mevcut değil.  Kurulmamış ya da <a href='$2'>FTP Sunucusu Modül Yapılandırması</a> yanlış olabilir
-index_eversion=FTP sunucusu $1 WU-FTPd gibi görünmüyor. İşletim sisteminizin sunduğu daha eski bir FTPd kullanıyor olabilirsiniz ya da <a href='$2'>FTP Sunucusu Modül Yapılandırması</a>  yanlış olabilir.
+index_eftpaccess=FTP sunucusu yapılandırma dosyası $1 mevcut değil. Kurulmamış ya da <a href='$2'>FTP Sunucusu Modül Yapılandırması</a> yanlış olabilir
+index_eversion=FTP sunucusu $1 WU-FTPd gibi görünmüyor. İşletim sisteminizin sunduğu daha eski bir FTPd kullanıyor olabilirsiniz ya da <a href='$2'>FTP Sunucusu Modül Yapılandırması</a> yanlış olabilir.
 index_apply=Değişiklikleri Uygula
 index_applymsg=Bu butonu tıklayarak mevcut yapılandırmayı uygulayabilirsiniz. Bu ftp sunucusunu yeniden durdurup başlatacaktır ve bu arada sisteminize bağlı kullanıcıların bağlantıları kesilecektir.
 index_start=Sunucuyu Başlat
@@ -103,7 +103,7 @@ acl_edmsg='$1' geçerli bir hata mesaj dosyası değildir
 acl_eln='$1' geçerli bir en çok kullanıcı sayısı değildir
 acl_etimes='$1' geçerli bir UUCP-stili zaman aralığı değildir
 acl_elmsg='$1' geçerli bir hata mesaj dosyası değildir
-acl_efbcount='$1' geçerli bir dosya  ya da byte sayısı değildir
+acl_efbcount='$1' geçerli bir dosya ya da byte sayısı değildir
 acl_elimit='$1' geçerli bir zaman limiti değildir
 acl_efails='$1' geçerli bir giriş başarsızlığı sayısı değildir
 

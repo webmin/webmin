@@ -67,7 +67,7 @@ index_eexpired_conf=Automaattinen allekirjoittaminen tulisi ottaa uudelleen käy
 index_eexpired_mod=Käytä $1 -moduulia joko poistamaan DNSSEC käytöstä näillä verkkotunnuksilla tai tarkistamaan, miksi allekirjoittaminen epäonnistuu.
 
 master_title=Muokkaa pääaluetta
-master_inview=$1 näkymässä $2 
+master_inview=$1 näkymässä $2
 master_ecannot=Et voi muokata tätä vyöhykettä
 master_egone=Vyöhyke $1 ei ole missään näkymässä
 master_egone2=Vyöhykeä $1 ei ole!

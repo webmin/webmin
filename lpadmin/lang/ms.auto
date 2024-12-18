@@ -20,7 +20,7 @@ index_restart=Restart Scheduler
 index_restartmsg=Klik butang ini untuk memulakan semula proses penjadual cetak. Ini akan memaksa konfigurasi cetakan semasa digunakan.
 index_return=senarai pencetak
 index_esystem=Sama ada memasang perisian untuk sistem cetakan yang anda pilih, atau gunakan konfigurasi modul <a href='$1'></a> untuk mengubahnya.
-index_style=Sistem cetakan: $1 
+index_style=Sistem cetakan: $1
 index_cluster=Pelayan Kluster
 index_clusterdesc=Klik butang ini untuk menyediakan pelayan Webmin tambahan di mana pencetak akan dicipta, dikemas kini dan dipadam.
 index_delete=Padam Pencetak yang Dipilih
@@ -99,12 +99,12 @@ save_eremote=Pemacu tidak boleh digunakan dengan pencetak Unix jauh
 save_edhost=Tuan rumah langsung '$1' tidak wujud
 save_edport=Pelabuhan langsung atau tidak sah
 save_evalid=Sistem cetak tidak membenarkan pencetak ini
-save_errslave=Pencetak mencipta OK pada sistem ini, tetapi ralat berikut berlaku pada sistem kluster : $1 
+save_errslave=Pencetak mencipta OK pada sistem ini, tetapi ralat berikut berlaku pada sistem kluster : $1
 save_egone=Tiada pencetak bernama '$1' telah dijumpai
-save_errdelslave=Pencetak dipadamkan OK pada sistem ini, tetapi ralat berikut berlaku pada sistem kluster : $1 
+save_errdelslave=Pencetak dipadamkan OK pada sistem ini, tetapi ralat berikut berlaku pada sistem kluster : $1
 
 jobs_title=Cetak Pekerjaan
-jobs_header=Mencetak pekerjaan pada $1 
+jobs_header=Mencetak pekerjaan pada $1
 jobs_id=ID kerja
 jobs_size=Saiz
 jobs_by=Dikemukakan oleh
@@ -117,7 +117,7 @@ jobs_all=Batalkan semua kerja cetak
 jobs_bytes=bait
 jobs_test=Halaman Ujian Cetak
 jobs_cancelsel=Batalkan Pekerjaan Terpilih
-jobs_on=Pada pencetak $1 
+jobs_on=Pada pencetak $1
 jobs_return=senarai kerja cetak
 
 cancel_ecannot=Anda tidak dibenarkan membatalkan kerja cetakan
@@ -197,7 +197,7 @@ suse_yast2=Pemandu YAST2
 suse_edriver=Tiada jenis pencetak dipilih
 suse_eres=Resolusi yang hilang atau tidak sah
 
-estop=Gagal menghentikan lpd : $1 
+estop=Gagal menghentikan lpd : $1
 
 acl_printers=Pencetak pengguna boleh mengkonfigurasi
 acl_add=Boleh menambah pencetak baru?
@@ -218,20 +218,20 @@ acl_cluster=Boleh menguruskan cluster pencetak?
 log_stop=Berhenti penjadual cetak
 log_start=Memulakan penjadual cetak
 log_restart=Penjadual cetak semula
-log_cancel_job=Membatalkan kerja cetak $2 pada $1 
-log_cancel_all=Membatalkan semua tugas cetak pada $1 
-log_cancel_sel=Dibatalkan $2 pekerjaan cetak pada $1 
-log_create=Pencetak yang dibuat $1 pada $2 
-log_modify=Pencetak yang diubahsuai $1 pada $2 
-log_delete=Pencetak yang dipotong $1 pada $2 
-log_create_l=Dibuat $3 pencetak $1 pada $2 
-log_modify_l=Diperbodakan $3 pencetak $1 pada $2 
-log_delete_l=Dihapus $3 pencetak $1 pada $2 
+log_cancel_job=Membatalkan kerja cetak $2 pada $1
+log_cancel_all=Membatalkan semua tugas cetak pada $1
+log_cancel_sel=Dibatalkan $2 pekerjaan cetak pada $1
+log_create=Pencetak yang dibuat $1 pada $2
+log_modify=Pencetak yang diubahsuai $1 pada $2
+log_delete=Pencetak yang dipotong $1 pada $2
+log_create_l=Dibuat $3 pencetak $1 pada $2
+log_modify_l=Diperbodakan $3 pencetak $1 pada $2
+log_delete_l=Dihapus $3 pencetak $1 pada $2
 
-linux_paralel=Port Selari $1 
+linux_paralel=Port Selari $1
 linux_serial=Port Serial $1 (COM $1)
 linux_null=Peranti Null
-linux_usb=Pencetak USB $1 
+linux_usb=Pencetak USB $1
 linux_ecmd=Perintah $1 tidak dijumpai pada sistem anda, yang menunjukkan sistem cetak Linux tidak dipasang.
 linux_espool=Direktori spool $1 tidak wujud pada sistem anda, yang menunjukkan sistem cetak Linux tidak dipasang.
 
@@ -243,18 +243,18 @@ freebsd_espool=Direktori spool $1 tidak wujud pada sistem anda, yang menunjukkan
 openbsd_paralel=Pelabuhan Selari
 openbsd_serial=Port Serial $1 (COM $1)
 
-unixware_paralel=Port Selari $1 
-unixware_serial=Port Serial $1 
+unixware_paralel=Port Selari $1
+unixware_serial=Port Serial $1
 unixware_null=Peranti Null
 unixware_ecmd=Perintah $1 tidak ditemui pada sistem anda, yang menunjukkan bahawa sistem cetak UnixWare tidak dipasang.
 
-hpux_paralel=Selari $1 
-hpux_serial=Serial $1 
+hpux_paralel=Selari $1
+hpux_serial=Serial $1
 hpux_null=Peranti Null
 hpux_ecmd=Perintah $1 tidak ditemui pada sistem anda, yang menunjukkan bahawa sistem cetak HPUX tidak dipasang.
 hpux_eiface=Direktori skrip antara muka $1 tidak wujud pada sistem anda, yang menunjukkan bahawa sistem cetak HPUX tidak dipasang.
 
-lprng_paralel=Port Selari $1 
+lprng_paralel=Port Selari $1
 lprng_serial=Port Serial $1 (COM $1)
 lprng_null=Peranti Null
 lprng_ecmd=Perintah $1 tidak dijumpai pada sistem anda, yang menunjukkan bahawa sistem cetakan LPRng tidak dipasang.
@@ -262,7 +262,7 @@ lprng_espool=Direktori spool $1 tidak wujud pada sistem anda, yang menunjukkan b
 
 solaris_paralel=Pelabuhan Selari
 solaris_uparalel=Pelabuhan Selari Ultra 5/10
-solaris_serial=Port Serial $1 
+solaris_serial=Port Serial $1
 solaris_null=Peranti Null
 solaris_ecmd=Perintah $1 tidak ditemui pada sistem anda, yang menunjukkan bahawa sistem cetak Solaris tidak dipasang.
 
@@ -283,13 +283,13 @@ cups_nonemsg=Pencetak jauh atau mentah
 cups_prog=Program
 cups_driver=Pemandu CUPS
 cups_eprog='$1' bukan program yang sah
-cups_opts=Pilihan untuk $1 
+cups_opts=Pilihan untuk $1
 cups_ecmd=Perintah $1 tidak ditemui pada sistem anda, yang menunjukkan bahawa sistem cetakan CUPS tidak dipasang.
 
 irix_ecmd=Perintah $1 tidak ditemui pada sistem anda, yang menunjukkan sistem cetak IRIX tidak dipasang.
 irix_eiface=Direktori skrip antara muka $1 tidak wujud pada sistem anda, yang menunjukkan sistem cetak IRIX tidak dipasang.
 
-aix_port=Port pencetak $1 
+aix_port=Port pencetak $1
 aix_edesc=Huraian tidak sah - hanya huruf dan nombor yang dibenarkan, dan tiada ruang
 aix_ecmd=Pelayar pencetak AIX $1 tidak dijumpai. Mungkin ia tidak dipasang, atau sistem cetakan lain sedang digunakan.
 

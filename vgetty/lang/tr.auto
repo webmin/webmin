@@ -18,7 +18,7 @@ vgetty_return=seri port listesi
 vgetty_create=Seri Bağlantı Noktası Ekle
 vgetty_edit=Seri Bağlantı Noktasını Düzenle
 vgetty_header=Seri bağlantı noktası yapılandırma seçenekleri
-vgetty_ts=Seri bağlantı noktası $1 
+vgetty_ts=Seri bağlantı noktası $1
 vgetty_other=Diğer cihaz ..
 vgetty_rings=Yanıtlamadan önce çalıyor
 vgetty_default=Genel varsayılan
@@ -100,18 +100,18 @@ pvfdesc=$1, $2 bit
 
 upload_err=Mesaj eklenemedi
 upload_emessage=Hiçbir WAV dosyası seçilmedi
-upload_ewav=WAV dosyası dönüştürülemedi : $1 
-upload_epvf=RMD dosyası oluşturulamadı : $1 
+upload_ewav=WAV dosyası dönüştürülemedi : $1
+upload_epvf=RMD dosyası oluşturulamadı : $1
 upload_esame=$1 ileti dosyası zaten var
 
 log_apply=Uygulamalı yapılandırma
-log_upload=Yüklenen karşılama mesajı $1 
+log_upload=Yüklenen karşılama mesajı $1
 log_move=Dönüştürülen $1 alınan mesaj
 log_delete0=$1 alınan mesaj silindi
 log_delete1=$1 tebrik mesajı silindi
 log_options=Sesli mesaj seçeneklerini değiştirme
 log_vgetty_create=$1 seri bağlantı noktası eklendi
-log_vgetty_modify=Değiştirilmiş seri bağlantı noktası $1 
+log_vgetty_modify=Değiştirilmiş seri bağlantı noktası $1
 log_vgetty_delete=Seri bağlantı noktası $1 silindi
 
 email_subject=Sesli mesaj

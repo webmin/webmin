@@ -1,5 +1,5 @@
 index_title=PPTP VPN server
-index_version=Verze PoPToP $1 
+index_version=Verze PoPToP $1
 index_epptpd=Server PoPToP PPTP $1 nebyl ve vašem systému nalezen nebo není správným programem. Možná není nainstalována nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
 index_econfig=Konfigurační soubor serveru PPTP $1 nebyl ve vašem systému nalezen. Možná je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
 index_stop=Zastavte server PPTP
@@ -63,7 +63,7 @@ options_err=Možnosti PPP se nepodařilo uložit
 options_emtu=Chybí nebo je neplatná maximální velikost odesílacího paketu
 options_emru=Chybí nebo je neplatná maximální velikost přijímajícího paketu
 options_ename=Chybějící nebo neplatný název serveru pro ověření
-options_version=Verze PPPd $1 
+options_version=Verze PPPd $1
 options_msdesc=Níže uvedené možnosti povolují metodu ověřování MS-CHAP a šifrování MPPE, které ve výchozím nastavení používají klienti Windows VPN. MPPE však vyžaduje podporu jak v démonu PPP, tak v jádře operačního systému.
 options_mschap=Ověřování MS-CHAP
 options_mschap-v2=Ověřování MS-CHAP verze 2
@@ -75,7 +75,7 @@ secrets_ecannot=Není dovoleno upravovat účty PPP
 secrets_return=index
 secrets_none=Zatím nebyly vytvořeny žádné účty PPP.
 secrets_enopfile=Soubor hesel PPP $1 ve vašem systému neexistuje. Možná není nainstalován PPP nebo je vaše <a href='$2'>konfigurace modulu</a> nesprávná.
-secrets_table=PPP odpovídá $1 
+secrets_table=PPP odpovídá $1
 secrets_user=Uživatelské jméno
 secrets_ips=IP adresy
 secrets_uany=ŽÁDNÝ
@@ -133,13 +133,13 @@ disc_err=Nepodařilo se odpojit
 disc_egone=Připojení již není aktivní
 disc_ekill=Proces již není spuštěn
 
-log_secret_create=Vytvořený účet PPP $1 
-log_secret_modify=Upravený účet PPP $1 
-log_secret_delete=Smazaný účet PPP $1 
+log_secret_create=Vytvořený účet PPP $1
+log_secret_modify=Upravený účet PPP $1
+log_secret_delete=Smazaný účet PPP $1
 log_deletes=Smazané účty $1 PPP
 log_conf=Změněné možnosti serveru PPTP
 log_options=Upravené možnosti PPP
-log_disc=Odpojený klient $1 
+log_disc=Odpojený klient $1
 log_start=Spuštěn PPTP server
 log_stop=Zastaven server PPTP
 log_apply=Použitá konfigurace serveru PPTP

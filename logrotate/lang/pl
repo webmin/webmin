@@ -2,7 +2,7 @@ index_title=Rotacja logów
 index_econf=Plik konfiguracyjny rotacji logów $1 nie został znaleziony w systemie. Możliwe, że lograte nie jest zainstalowany lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
 index_ecmd=Program rotacji logów $1 nie został znaleziony w systemie. Możliwe, że nie jest zainstalowany lub <a href='$2'>konfiguracja modułu</a> jest nieprawidłowa.
 index_eversion=Nie można było uzyskać wersji lograte poleceniem $1 : $2
-index_version=Logrotate:  wersja $1
+index_version=Logrotate: wersja $1
 index_add=Dodaj nowy plik loga do rotacji
 index_file=Plik loga
 index_period=Okres rotacji

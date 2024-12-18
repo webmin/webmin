@@ -1,8 +1,8 @@
 index_title=Rotação do arquivo de log
 index_econf=O arquivo de configuração de rotação de log $1 não foi encontrado no seu sistema. Talvez o logrotate não esteja instalado ou a <a href='$2'>configuração do módulo</a> esteja incorreta.
 index_ecmd=O programa de rotação de log $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou a <a href='$2'>configuração do módulo</a> está incorreta.
-index_eversion=Falha ao obter a versão do logrotate com o comando $1 : $2 
-index_version=Logrotate versão $1 
+index_eversion=Falha ao obter a versão do logrotate com o comando $1 : $2
+index_version=Logrotate versão $1
 index_add=Adicione um novo arquivo de log para girar.
 index_file=Arquivo de log
 index_period=Período de rotação
@@ -50,7 +50,7 @@ edit_mailfl=Arquivo de log para email
 edit_mailfirst=O mais recente que acabou de ser girado
 edit_maillast=Mais antigo que está prestes a ser excluído
 edit_create=Recriar arquivo de log após a rotação?
-edit_createas=Sim, com o modo $1 e de propriedade do usuário $2 e do grupo $3 
+edit_createas=Sim, com o modo $1 e de propriedade do usuário $2 e do grupo $3
 edit_createno=Não, não recrie
 edit_createsame=Sim, com permissões antigas
 edit_olddir=Armazenar logs rotativos antigos
@@ -90,9 +90,9 @@ log_modify_sched=Trabalho de Cron de rotação de log alterado
 log_create_sched=Trabalho Cron de rotação de log criado
 log_delete_sched=Trabalho de cron de rotação de log excluído
 log_global=Opções globais modificadas
-log_create=Adicionada rotação para o arquivo de log $1 
-log_modify=Rotação modificada para o arquivo de log $1 
-log_delete=Rotação excluída para o arquivo de log $1 
+log_create=Adicionada rotação para o arquivo de log $1
+log_modify=Rotação modificada para o arquivo de log $1
+log_delete=Rotação excluída para o arquivo de log $1
 log_delete_logs=Rotação excluída para $1 arquivos de log
 
 sched_title=Programação de rotação de logs

@@ -13,13 +13,13 @@ index_dbs=MySQL Veritabanları
 index_add=Yeni bir veritabanı oluştur
 index_global=Genel Seçenekler
 index_return=veritabanı listesi
-index_eadmin=MySQL yönetim programı $1 sisteminizde bulunamadı.MySQL yüklenmemiş ya da <a href='$2'>modül ayarları</a>  doğru olmayabilir
-index_esql=MySQL istemci programı $1 sisteminizde bulunamadı. MySQL yüklenmemiş ya da <a href='$2'>modül ayarları</a>  doğru olmayabilir
+index_eadmin=MySQL yönetim programı $1 sisteminizde bulunamadı.MySQL yüklenmemiş ya da <a href='$2'>modül ayarları</a> doğru olmayabilir
+index_esql=MySQL istemci programı $1 sisteminizde bulunamadı. MySQL yüklenmemiş ya da <a href='$2'>modül ayarları</a> doğru olmayabilir
 index_ever=MySQL istemci programı doğru sürüme sahip değil. Webmin sadece MySQL 3 ve daha üzeri sürümleri desteklemektedir.
 index_nouser=Webmin hesabınız Mysql sunucuya $1 kullanıcısı ile bağlanacak şekilde yapılandırıldı, ama kullanıcının erişimine izin verilmedi.
 index_db=Veritabanı adı
 index_tables=Tablolar
-index_elibrary=MySQL istemci programı $1 çalıştırılamadı, çünkü MySQL paylaştırılmış kütüphaneleri bulunamadı. <a href='$2'>Modül yapılandırmasını</a> kontrol ederek  <i>MySQL paylaştırılmış kütüphanelerinin</i> doğru belirtildiğinden emin olunuz.
+index_elibrary=MySQL istemci programı $1 çalıştırılamadı, çünkü MySQL paylaştırılmış kütüphaneleri bulunamadı. <a href='$2'>Modül yapılandırmasını</a> kontrol ederek <i>MySQL paylaştırılmış kütüphanelerinin</i> doğru belirtildiğinden emin olunuz.
 index_version=MySQL sürüm $1
 index_nomod=Uyarı : Perl modülü $1 sisteminizde bulunamadı. Yani şu an Webmin, MySQL veritabanına erişebilecek yeteneğe sahip değil. Kurmak için <a href='$2'>Burayı yıklayınız</a> .
 index_nomods=Uyarı: $1 ve $2 perl modülleri sisteminizde kurulmadı. Yani şu an Webmin, MySQL veritabanına erişebilecek yeteneğe sahip değildir. Kurmak için <a href='$3'>burayı tıklayınız</a>

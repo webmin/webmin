@@ -1,5 +1,5 @@
 index_title=VPN server PPTP
-index_version=Verzia PoPToP $1 
+index_version=Verzia PoPToP $1
 index_epptpd=Server PoPToP PPTP $1 nebol vo vašom systéme nájdený alebo nie je správnym programom. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
 index_econfig=Vo vašom systéme sa nenašiel konfiguračný súbor servera PPTP $1. Možno je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
 index_stop=Zastavte server PPTP
@@ -63,7 +63,7 @@ options_err=Možnosti PPP sa nepodarilo uložiť
 options_emtu=Chýba alebo je neplatná maximálna veľkosť odosielacieho paketu
 options_emru=Chýba alebo je neplatná maximálna veľkosť prijímaného paketu
 options_ename=Chýba alebo je neplatný názov servera na overenie
-options_version=Verzia PPPd $1 
+options_version=Verzia PPPd $1
 options_msdesc=Možnosti uvedené nižšie povoľujú metódu autentifikácie MS-CHAP a šifrovanie MPPE, ktoré štandardne používajú klienti Windows VPN. MPPE však vyžaduje podporu v jadre PPP aj v operačnom systéme.
 options_mschap=Autentifikácia MS-CHAP
 options_mschap-v2=Autentifikácia MS-CHAP verzie 2
@@ -75,7 +75,7 @@ secrets_ecannot=Nemáte oprávnenie upravovať účty PPP
 secrets_return=index
 secrets_none=Zatiaľ neboli vytvorené žiadne účty PPP.
 secrets_enopfile=Súbor hesiel PPP $1 vo vašom systéme neexistuje. Možno nie je nainštalovaný PPP alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
-secrets_table=PPP predstavuje $1 
+secrets_table=PPP predstavuje $1
 secrets_user=užívateľské meno
 secrets_ips=IP adresy
 secrets_uany=AKÝKOĽVEK
@@ -133,13 +133,13 @@ disc_err=Nepodarilo sa odpojiť
 disc_egone=Spojenia už nie sú aktívne
 disc_ekill=Proces už nie je spustený
 
-log_secret_create=Vytvorený účet PPP $1 
-log_secret_modify=Upravený účet PPP $1 
-log_secret_delete=Odstránený účet PPP $1 
+log_secret_create=Vytvorený účet PPP $1
+log_secret_modify=Upravený účet PPP $1
+log_secret_delete=Odstránený účet PPP $1
 log_deletes=Odstránené $1 účty PPP
 log_conf=Upravené možnosti servera PPTP
 log_options=Upravené možnosti PPP
-log_disc=Odpojený klient $1 
+log_disc=Odpojený klient $1
 log_start=Spustený server PPTP
 log_stop=Zastavený server PPTP
 log_apply=Aplikovaná konfigurácia servera PPTP

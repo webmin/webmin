@@ -1,14 +1,14 @@
 index_screate=Créez un nouvel utilisateur sécurisé.
 index_twofactor=Authentification à deux facteurs
 index_joingroup=Ajouter au groupe:
-index_eulist=Échec de la liste des utilisateurs: $1 
-index_eglist=Échec de la liste des groupes: $1 
+index_eulist=Échec de la liste des utilisateurs: $1
+index_eglist=Échec de la liste des groupes: $1
 
 edit_title3=Créer un utilisateur Webmin sécurisé
 edit_passold=Le dernier mot de passe a été modifié il y a $1 jours
 edit_passtoday=Le mot de passe a été modifié il y a moins d'un jour
 edit_twofactor=Type d'authentification à deux facteurs
-edit_twofactorprov=Utilisation du fournisseur $1 avec l'ID $2 
+edit_twofactorprov=Utilisation du fournisseur $1 avec l'ID $2
 edit_twofactorcancel=Supprimer l'exigence d'authentification à deux facteurs
 edit_twofactornone=Aucune configuration pour le moment
 edit_twofactoradd=Activer deux facteurs pour l'utilisateur
@@ -35,18 +35,18 @@ cert_etempdir=Fichier de certificat non valide
 
 acl_locale=Peut changer de paramètres régionaux ?
 
-log_joingroup=Ajout de $1 utilisateurs Webmin au groupe $2 
+log_joingroup=Ajout de $1 utilisateurs Webmin au groupe $2
 log_pass=Restrictions de mot de passe modifiées
 log_unix=Authentification utilisateur Unix modifiée
 log_sync=Changement de la synchronisation des utilisateurs Unix
 log_sql=Base de données d'utilisateurs et de groupes modifiée
-log_twofactor=Utilisateur inscrit $1 avec un fournisseur à deux facteurs $2 
+log_twofactor=Utilisateur inscrit $1 avec un fournisseur à deux facteurs $2
 log_onefactor=Utilisateur désinscrit $1 pour l'authentification à deux facteurs
 
 convert_sync2=Synchroniser le mot de passe avec l'utilisateur Unix à l'avenir?
 convert_user=Utilisateur Unix
 convert_action=Action prise
-convert_done= $1 utilisateurs convertis, $2 invalide, $3 existent déjà, $4 exclus.
+convert_done=$1 utilisateurs convertis, $2 invalide, $3 existent déjà, $4 exclus.
 convert_users=Utilisateurs à convertir
 
 sync_when=Quand synchroniser
@@ -100,7 +100,7 @@ sql_addto1=Ajouter de nouveaux utilisateurs aux fichiers locaux
 sql_nocache0=Cache les connexions à la base de données
 sql_nocache1=Ouvrez une nouvelle connexion pour chaque recherche
 sql_emod=Module Perl requis manquant <tt>$1</tt>
-sql_etable=Impossible d'interroger la table requise $1:$2 
+sql_etable=Impossible d'interroger la table requise $1:$2
 sql_eldapdn=DN LDAP de base $1 est introuvable
 sql_eclass=La classe d'objets LDAP $1 n'existe pas dans le schéma du serveur
 sql_err=Échec de l'enregistrement des paramètres de base de données d'utilisateurs et de groupes
@@ -111,10 +111,10 @@ sql_edb=Nom de base de données non valide (aucun espace autorisé)
 sql_eprefix=DN de base manquant ou invalide (aucun espace autorisé)
 sql_eprefix2=DN de base d'apparence non valide - devrait être comme <tt>dc = mydomain, dc = com</tt>
 sql_title2=Créer des tables manquantes
-sql_tableerr=Les paramètres de base de données d'utilisateurs et de groupes sont valides, mais certaines tables nécessaires à Webmin sont manquantes: $1 
+sql_tableerr=Les paramètres de base de données d'utilisateurs et de groupes sont valides, mais certaines tables nécessaires à Webmin sont manquantes: $1
 sql_tableerr2=Cliquez sur le bouton <b>Créer des tables</b> ci-dessous pour les créer automatiquement ou exécutez manuellement le SQL ci-dessous.
 sql_title3=Créer un DN manquant
-sql_dnerr=Les paramètres de base de données d'utilisateurs et de groupes sont valides, mais le DN LDAP requis par Webmin est manquant: $1 
+sql_dnerr=Les paramètres de base de données d'utilisateurs et de groupes sont valides, mais le DN LDAP requis par Webmin est manquant: $1
 sql_dnerr2=Cliquez sur le bouton <b>Créer un DN</b> ci-dessous pour le créer automatiquement ou l'ajouter manuellement à votre serveur LDAP.
 sql_schema=Télécharger le schéma LDAP
 sql_timeout_def=Utiliser le délai de connexion par défaut (60 secondes)
@@ -126,8 +126,8 @@ make_exec=Exécution de SQL $1..
 
 makedn_eoc=Aucune classe d'objets structurelle trouvée!
 makedn_exec=Création du DN parent $1..
-makedn_failed=.. la création a échoué: $1 
-makedn_still=Certains problèmes ont été détectés même après la création du DN: $1 
+makedn_failed=.. la création a échoué: $1
+makedn_still=Certains problèmes ont été détectés même après la création du DN: $1
 
 schema_desc=Avant que Webmin puisse utiliser un serveur LDAP pour stocker des utilisateurs et des groupes, il doit être configuré pour utiliser le schéma ci-dessous. Cela peut généralement être fait en enregistrant la définition de schéma dans <tt>/etc/ldap/schema</tt> ou <tt>/etc/openldap/schema</tt> sous <tt>webmin.schema</tt>, puis en configurant le serveur pour charger ce fichier de schéma.
 schema_download=Téléchargez le fichier de schéma: <a href=$1>$1</a>
@@ -143,7 +143,7 @@ twofactor_desc2=Cette page vous permet d'activer l'authentification à deux fact
 twofactor_enable=S'inscrire à l'authentification à deux facteurs
 twofactor_header=Détails de l'inscription à l'authentification à deux facteurs
 twofactor_enrolling=Inscription à l'authentification à deux facteurs avec le fournisseur $1..
-twofactor_failed=.. l'inscription a échoué: $1 
+twofactor_failed=.. l'inscription a échoué: $1
 twofactor_done=.. Achevée. Votre ID auprès de ce fournisseur est <tt>$1</tt>.
 twofactor_setup=L'authentification à deux facteurs n'a pas encore été activée sur ce système, mais peut être activée à l'aide du module <a href='$1'>Configuration Webmin</a>.
 twofactor_ebutton=Aucun bouton cliqué!

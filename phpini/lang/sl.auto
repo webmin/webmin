@@ -11,7 +11,7 @@ index_anyfile=Uredi drugo konfiguracijsko datoteko PHP:
 index_return=konfiguracijske datoteke
 
 file_global=Globalna konfiguracija PHP
-file_eread= $1 : $2 ni bilo mogoče prebrati
+file_eread=$1 : $2 ni bilo mogoče prebrati
 
 manual_title=Konfiguracijo ročno uredite
 manual_desc=To stran lahko uporabite za ročno urejanje konfiguracijske datoteke PHP. To je treba storiti previdno, saj sintaksa ali drugo preverjanje veljavnosti vaših sprememb ne bo izvedeno.
@@ -124,7 +124,7 @@ errors_maxlen=Največja velikost prijavljenih napak
 errors_file=Dnevnik za napake
 errors_none=Noben
 errors_syslog=Syslog
-errors_other=Druga datoteka $1 
+errors_other=Druga datoteka $1
 errors_unlimited=Neomejeno
 errors_err=Beleženja napak ni bilo mogoče shraniti
 errors_ereporting=Izraz vrste napake ni vnesen
@@ -152,15 +152,15 @@ misc_path=Podatki o popravilu poti CGI?
 misc_timezone=Vremenski pas PHP
 misc_charset=Privzeti nabor znakov
 
-log_manual=Ročno uredite datoteko $1 
-log_vars=Spremenjene spremenljivke PHP v $1 
-log_dirs=Spremenjene nastavitve imenika v $1 
-log_db=Spremenjene nastavitve baze podatkov v $1 
-log_session=Spremenjene možnosti seje v $1 
-log_safe=Spremenjene možnosti varnega načina v $1 
-log_limits=Spremenjene omejitve virov v $1 
-log_errors=Spremenjena napaka pri prijavi v $1 
-log_misc=Spremenjene druge nastavitve v $1 
+log_manual=Ročno uredite datoteko $1
+log_vars=Spremenjene spremenljivke PHP v $1
+log_dirs=Spremenjene nastavitve imenika v $1
+log_db=Spremenjene nastavitve baze podatkov v $1
+log_session=Spremenjene možnosti seje v $1
+log_safe=Spremenjene možnosti varnega načina v $1
+log_limits=Spremenjene omejitve virov v $1
+log_errors=Spremenjena napaka pri prijavi v $1
+log_misc=Spremenjene druge nastavitve v $1
 
 acl_global=Ali lahko uredite globalno konfiguracijo PHP?
 acl_anyfile=Ali lahko uredite katero koli datoteko kot konfiguracijo PHP?

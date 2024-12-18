@@ -5,7 +5,7 @@ index_elog=Failas $1, naudojamas pralaidumui registruoti, iš tikrųjų yra jūs
 index_edir=Duomenų pralaidumo duomenų saugojimo katalogas $1 neegzistuoja arba nėra katalogas. Norėdami naudoti kitą kelią, sureguliuokite <a href='$2'>modulio konfigūraciją</a>.
 index_emod=„Webmin“ modulis $1 neįdiegtas šioje sistemoje arba jo nepalaiko jūsų OS. Pralaidumo stebėjimo modulis negali veikti be jo.
 index_esyslog=Nei vienas iš sistemos žurnalų modulių nėra įdiegtas šioje sistemoje ir nepalaikomas jūsų OS. Pralaidumo stebėjimo modulis negali veikti be vieno iš jų.
-index_firesys=Naudojant $1 užkardą ir $2 
+index_firesys=Naudojant $1 užkardą ir $2
 index_setupcannot=Tačiau jūs neturite leidimų jį nustatyti!
 index_setupdesc=Kad šis modulis galėtų pranešti apie tinklo naudojimą jūsų sistemoje, jis turi būti nustatytas stebint srautą pasirinktoje išorinėje tinklo sąsajoje.
 index_setupdesc2=<b>Įspėjimas - šis modulis užregistruos VISĄ tinklo srautą, išsiųstą ar gautą pasirinktoje sąsajoje. Tai užims daug vietos diske ir procesoriaus laiką greitam tinklo ryšiui.</b>
@@ -61,7 +61,7 @@ index_rotatedesc=Spustelėkite šį mygtuką, kad apdorotumėte visą prisijungu
 index_eiptables=Įspėjimas - jūsų IPtable konfigūracijoje yra klaida: $1. Nustačius pralaidumo stebėjimą, bus pašalintos visos ugniasienės taisyklės.
 index_return=ataskaitos forma
 
-log_setup=Nustatykite pralaidumo stebėjimą sąsajoje $1 
+log_setup=Nustatykite pralaidumo stebėjimą sąsajoje $1
 log_turnoff=Išjungtas pralaidumo stebėjimas
 log_rotate=Atnaujinta statistika
 

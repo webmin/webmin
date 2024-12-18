@@ -146,10 +146,10 @@ log_exec_l=Выполнено задание Cron "$2" для $1
 log_kill=Прекращенное задание Cron для $1
 log_kill_l=Прекращенное задание Cron "$2" для $1
 log_allow=Изменен доступ пользователей к заданиям Cron
-log_env_create=Создана переменная среды для $1 
-log_env_modify=Изменена переменная среды для $1 
-log_env_delete=Удалена переменная среды для $1 
-log_move=Задание Cron перемещено для $1 
+log_env_create=Создана переменная среды для $1
+log_env_modify=Изменена переменная среды для $1
+log_env_delete=Удалена переменная среды для $1
+log_move=Задание Cron перемещено для $1
 log_crons_delete=Удалено $1 заданий Cron
 log_crons_disable=Отключено $1 заданий Cron
 log_crons_enable=Включено $1 заданий Cron
@@ -158,23 +158,23 @@ log_start=Daemon Cron запущен
 log_bootup=Daemon Cron включен при загрузке
 log_bootdown=Daemon Cron отключен при загрузке
 
-ecopy=Обнаружена ошибка в новой конфигурации Cron: $1 $2 
+ecopy=Обнаружена ошибка в новой конфигурации Cron: $1 $2
 
 when_min=каждую минуту
 when_hour=каждый час в $1 минут
-when_day=каждый день в $2:$1 
-when_month=в $3 день каждый месяц в $2:$1 
-when_weekday=каждый $3 в $2:$1 
-when_cron=по времени cron $1 
+when_day=каждый день в $2:$1
+when_month=в $3 день каждый месяц в $2:$1
+when_weekday=каждый $3 в $2:$1
+when_cron=по времени cron $1
 when_interval=каждые $1 секунд(ы)
 when_boot=во время запуска
 
 ucwhen_min=Каждую минуту
 ucwhen_hour=Каждый час в $1 минут
-ucwhen_day=Каждый день в $2:$1 
-ucwhen_month=В $3 день каждый месяц в $2:$1 
-ucwhen_weekday=Каждый $3 на $2:$1 
-ucwhen_cron=По времени cron $1 
+ucwhen_day=Каждый день в $2:$1
+ucwhen_month=В $3 день каждый месяц в $2:$1
+ucwhen_weekday=Каждый $3 на $2:$1
+ucwhen_cron=По времени cron $1
 ucwhen_interval=Каждые $1 секунд(ы)
 ucwhen_boot=Во время запуска
 
@@ -184,15 +184,15 @@ move_etype=Эта работа не может быть перемещена
 kill_err=Не удалось завершить задание Cron
 kill_ecannot=Вы не можете прекратить это задание
 kill_egone=Больше не выполняется
-kill_ekill=Убить не удалось : $1 
+kill_ekill=Убить не удалось : $1
 kill_title=Завершить задание Cron
 kill_rusure=Вы уверены, что хотите завершить процесс $1 с PID $2 ?
 kill_rusure2=Вы уверены, что хотите завершить процесс $1 с PID $2 и всеми его подпроцессами?
 kill_ok=Да, Завершить процесс
 
 range_all=Запускать в любую дату
-range_start=Запускать только с $1 
-range_end=по $1 
+range_start=Запускать только с $1
+range_end=по $1
 range_estart=Отсутствует или неверная дата начала диапазона для запуска
 range_eend=Отсутствует или недействительная дата окончания диапазона для запуска
 

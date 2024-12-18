@@ -672,7 +672,7 @@ session_blocklock=Era berean, blokeatu erabiltzaileek huts egin duten saioak
 session_passapi=Urruneko pasahitza aldatzeko APIa gaitu nahi duzu?
 session_passapi0=APIa desgaituta dago
 session_passapi1=API gaituta dago Unix erabiltzaileentzat
-session_passurl=Gaituta dagoenean, erabiltzaileen pasahitzak POST eskaera baten bidez alda daitezke $1 
+session_passurl=Gaituta dagoenean, erabiltzaileen pasahitzak POST eskaera baten bidez alda daitezke $1
 
 assignment_title=Moduluak berriro esleitu
 assignment_header=Moduluen kategoriako esleipenak

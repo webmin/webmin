@@ -7,8 +7,8 @@ index_installmsg=Seleccione la ubicación para instalar un nuevo paquete $1.
 index_ftp=Desde URL
 index_identok2=Buscar paquetes para archivos:
 index_tree2=Examinar el árbol de paquetes
-index_epackagecmd=El sistema de paquetes $1 requiere el comando $2 
-index_eupdatecmd=El sistema de actualización $1 requiere el comando $2 
+index_epackagecmd=El sistema de paquetes $1 requiere el comando $2
+index_eupdatecmd=El sistema de actualización $1 requiere el comando $2
 index_epackagecheck=El sistema de administración de paquetes seleccionado no es válido: $1. <br>Es posible que deba seleccionar un sistema diferente en la página<a href='$2'> configuración del módulo </a>.
 index_eupdatecheck=El sistema de actualización seleccionado no es válido: $1. <br>Es posible que deba seleccionar un método de actualización diferente en la página<a href='$2'> configuración del módulo </a>.
 index_echeckpackage=¡No se detectó ningún sistema de paquete!
@@ -38,7 +38,7 @@ rpm_findrpm=Nombre del paquete
 rpm_finddistro=Distribución
 rpm_finddesc=Descripción
 
-slack_edir=Falta el directorio de paquetes de Slackware $1 
+slack_edir=Falta el directorio de paquetes de Slackware $1
 
 debian_manager=Debian
 
@@ -74,7 +74,7 @@ urpmi_ok=..instalación completa
 
 emerge_ok=..instalación completa
 
-cygwin_edb=Falta la base de datos de paquetes de Cygwin $1 
+cygwin_edb=Falta la base de datos de paquetes de Cygwin $1
 
 csw_ok=..instalación completa
 csw_already=.. ya instalado.

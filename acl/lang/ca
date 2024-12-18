@@ -1,4 +1,4 @@
-index_title=Usuaris de Webmin 
+index_title=Usuaris de Webmin
 index_user=Usuari
 index_modules=Mòduls
 index_create=Crea un nou usuari Webmin.
@@ -322,7 +322,7 @@ unix_deny=Denega els usuaris Unix llistats
 unix_none=No has introduït cap usuari
 unix_euser='$1' no és un usuari a vàlid
 unix_egroup='$1' no és un grup vàlid
-unix_shells=Denega els usuaris Unix  les shells dels quals no són al fitxer
+unix_shells=Denega els usuaris Unix les shells dels quals no són al fitxer
 unix_eshells=Hi falta el fitxer de shells o bé no existeix
 unix_restrict2=Restriccions addicionals
 unix_ewhogroup=Hi falta el grup permès a la fila $1

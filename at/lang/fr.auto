@@ -11,9 +11,9 @@ index_bootdesc=Modifiez ce paramètre pour activer ou désactiver le démarrage 
 acl_stop=Peut-on arrêter et démarrer <tt>atd</tt> ?
 
 log_allow=Utilisateurs autorisés modifiés
-log_create_job=Commande planifiée créée pour $1 
-log_delete_job=Commande planifiée annulée pour $1 
-log_exec_job=Commande planifiée exécutée pour $1 
+log_create_job=Commande planifiée créée pour $1
+log_delete_job=Commande planifiée annulée pour $1
+log_exec_job=Commande planifiée exécutée pour $1
 log_delete_jobs=Commandes programmées $1 annulées
 log_stop=Serveur de commandes planifiées arrêté
 log_start=Démarrage du serveur de commandes planifiées

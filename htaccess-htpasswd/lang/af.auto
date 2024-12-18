@@ -102,13 +102,13 @@ acl_sync=Kan die gebruiker sinchronisasie Unix opstel?
 acl_uonly=Kan beskermde kaarte bygevoeg en verander word?
 
 log_create_dir=Gids $1 bygevoeg
-log_modify_dir=Gewysigde gids $1 
+log_modify_dir=Gewysigde gids $1
 log_delete_dir=Gids $1 is verwyder
 log_create_user=Gebruiker $1 geskep
-log_modify_user=Gewysigde gebruiker $1 
+log_modify_user=Gewysigde gebruiker $1
 log_delete_user=Gebruiker $1 is uitgevee
 log_create_group=Groep $1 geskep
-log_modify_group=Gewysigde groep $1 
+log_modify_group=Gewysigde groep $1
 log_delete_group=Groep $1 is uitgevee
 log_delete_dirs=$1 -kaarte is uitgevee
 

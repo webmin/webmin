@@ -2,14 +2,14 @@ index_eha_cf=El archivo de configuración de latido $1 no se encontró en su sis
 index_eharesources=El archivo de recursos $1 no se encontró en su sistema. Quizás todavía no se haya copiado en su lugar o la <a href='$2'>configuración del módulo</a> sea incorrecta.
 index_eauthkeys=El archivo de claves de autenticación $1 no se encontró en su sistema. Quizás todavía no se haya copiado en su lugar o la <a href='$2'>configuración del módulo</a> sea incorrecta.
 index_ereq_resource_cmd=El script para solicitar recursos del otro nodo ($1) no se encontró en su sistema. Quizás todavía no se haya copiado en su lugar o la <a href='$2'>configuración del módulo</a> sea incorrecta.
-index_version=Versión de latido $1 
+index_version=Versión de latido $1
 index_noversion=Advertencia: no se pudo detectar automáticamente la versión de Heartbeat instalada en su sistema. Debe configurarlo en la página <a href='$1'>configuración del módulo</a>.
 index_status=Estado de los latidos del corazón
 
 conf_serials=Puertos serie de latidos
 conf_bcasts=Interfaces de latido de Ethernet
 conf_mcast=Dispositivo de latido multicast
-conf_mcastv=Dispositivo $1, grupo $2, puerto $3, TTL $4, loopback $5 
+conf_mcastv=Dispositivo $1, grupo $2, puerto $3, TTL $4, loopback $5
 conf_enabled=Habilitado
 conf_disabled=Discapacitado
 conf_nice_failback=Comportamiento Failback agradable

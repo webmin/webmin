@@ -2,7 +2,7 @@ index_title=Konfigurácia OpenSLP
 index_return=Konfigurácia OpenSLP
 index_eslpd=Vo vašom systéme sa nenašiel démon OpenSLP $1. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
 index_econf=Vo vašom systéme sa nenašiel konfiguračný súbor OpenSLP $1. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
-index_version=Verzia OpenSLP $1 
+index_version=Verzia OpenSLP $1
 
 slp_apply=Aplikovať zmeny
 slp_stop=Zastavte OpenSLP

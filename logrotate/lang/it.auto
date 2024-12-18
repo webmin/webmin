@@ -1,8 +1,8 @@
 index_title=Rotazione del file di registro
 index_econf=Il file di configurazione di rotazione del registro $1 non è stato trovato sul tuo sistema. Forse logrotate non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 index_ecmd=Il programma di rotazione del registro $1 non è stato trovato sul tuo sistema. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
-index_eversion=Impossibile ottenere la versione di logrotate con il comando $1 : $2 
-index_version=Logrotate versione $1 
+index_eversion=Impossibile ottenere la versione di logrotate con il comando $1 : $2
+index_version=Logrotate versione $1
 index_add=Aggiungi un nuovo file di registro da ruotare.
 index_file=File di registro
 index_period=Periodo di rotazione
@@ -50,7 +50,7 @@ edit_mailfl=File di registro per e-mail
 edit_mailfirst=Il più recente è stato appena ruotato
 edit_maillast=Il più vecchio che sta per essere eliminato
 edit_create=Ricreare il file di registro dopo la rotazione?
-edit_createas=Sì, con la modalità $1 e di proprietà dell'utente $2 e del gruppo $3 
+edit_createas=Sì, con la modalità $1 e di proprietà dell'utente $2 e del gruppo $3
 edit_createno=No, non ricreare
 edit_createsame=Sì, con vecchie autorizzazioni
 edit_olddir=Archivia i vecchi log ruotati
@@ -90,10 +90,10 @@ log_modify_sched=Rotazione registro modificata Processo cron
 log_create_sched=Processo cron di rotazione registro creato
 log_delete_sched=Rot cron log cancellato
 log_global=Opzioni globali modificate
-log_create=Aggiunta rotazione per il file di registro $1 
-log_modify=Rotazione modificata per il file di registro $1 
-log_delete=Rotazione eliminata per il file di registro $1 
-log_delete_logs=Rotazione eliminata per i file di registro $1 
+log_create=Aggiunta rotazione per il file di registro $1
+log_modify=Rotazione modificata per il file di registro $1
+log_delete=Rotazione eliminata per il file di registro $1
+log_delete_logs=Rotazione eliminata per i file di registro $1
 
 sched_title=Pianificazione rotazione registro
 sched_desc=Per eseguire la rotazione del registro configurata utilizzando questo modulo, il comando $1 deve essere eseguito su una pianificazione regolare (in genere giornaliera) da Cron.

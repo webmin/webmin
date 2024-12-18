@@ -164,7 +164,7 @@ sql_epostgresqlconnect=Nepavyko prisijungti prie „PostgreSQL“ duomenų bazė
 sql_eldapdriver=Nepavyko įkelti LDAP perl modulio
 sql_eldapconnect=Nepavyko prisijungti prie LDAP serverio $1
 sql_eldaptls=Nepavyko pradėti LDS TLS šifravimo : $1
-sql_eldaplogin=Nepavyko prisijungti prie LDAP serverio kaip $1 : $2 
+sql_eldaplogin=Nepavyko prisijungti prie LDAP serverio kaip $1 : $2
 
 log_email_subject=„Webmin“ veiksmas $1
 log_email_global=„Webmin“ globalus veiksmas
@@ -197,9 +197,9 @@ paginator_nosearchrs=Nėra rezultatų, atitinkančių <tt>$1</tt> užklausą
 
 langauto_include=Įtraukite mašininius vertimus
 
-file_truncated_message=atnešė $1 duomenų, sutrumpino $2 iš $3 
-file_truncated_message_head=atnešė $1 duomenų pradžią, sutrumpino $2 iš $3 
-file_truncated_message_tail=parsivežta duomenų pabaigos pabaiga $1, sutrumpinta $2 iš $3 
+file_truncated_message=atnešė $1 duomenų, sutrumpino $2 iš $3
+file_truncated_message_head=atnešė $1 duomenų pradžią, sutrumpino $2 iš $3
+file_truncated_message_tail=parsivežta duomenų pabaigos pabaiga $1, sutrumpinta $2 iš $3
 
 defcert_error=Naudojamas numatytasis $1 susietas SSL sertifikatas. Labai patartina atnaujinti numatytąjį <tt>$2</tt> sertifikatą prieš prisijungiant.
 

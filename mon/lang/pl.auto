@@ -117,7 +117,7 @@ service_monitor=Korzystanie z monitora
 service_mon1=Standardowy monitor
 service_mon0=Inny monitor ..
 service_args=Monitoruj parametry
-service_period=Okres monitorowania $1 
+service_period=Okres monitorowania $1
 service_days=Dni do sprawdzenia
 service_hours=Godziny do sprawdzenia
 service_all=Wszystko
@@ -146,7 +146,7 @@ service_ename=Brak lub nieprawidłowa nazwa usługi
 service_einterval=Brak lub nieprawidłowy interwał sprawdzania
 service_eother=Brakujący lub nieprawidłowy monitor
 service_ehour=Brakująca lub nieprawidłowa godzina w okresie $1 (musi być jak 9 rano lub 5 po południu)
-service_eperiod=Nie określono dni ani godzin dla okresu $1 
+service_eperiod=Nie określono dni ani godzin dla okresu $1
 service_eevery=Brak lub nieprawidłowy interwał alertu usługi
 service_eafter=Brakująca lub niepoprawna liczba awarii przed alarmem
 service_enum=Brakujące lub nieprawidłowe maksymalne alerty do wysłania
@@ -162,7 +162,7 @@ status_esame=Program CGI stanu MON $1 został ustawiony na skrypt <tt>mon.cgi</t
 
 users_title=Użytkownicy MON
 users_etype=Nie można edytować listy użytkowników MON, ponieważ MON nie jest obecnie skonfigurowany do używania jej do uwierzytelniania na stronie <a href='$1'>Opcje globalne</a>.
-users_header=Dozwoleni użytkownicy MON w $1 
+users_header=Dozwoleni użytkownicy MON w $1
 users_nousers=W $1 nie zdefiniowano użytkowników MON.
 users_add=Utwórz nowego użytkownika.
 users_return=Lista użytkowników MON
@@ -185,7 +185,7 @@ auth_none=Nikt
 auth_all=Wszyscy
 auth_sel=Tylko użytkownicy
 auth_err=Nie udało się zapisać poleceń klienta
-auth_eusers=Brak użytkowników dla polecenia $1 
+auth_eusers=Brak użytkowników dla polecenia $1
 
 periods_title=Zdefiniowane okresy
 periods_period=Nazwa okresu

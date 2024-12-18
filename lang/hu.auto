@@ -103,7 +103,7 @@ sql_epostgresqlconnect=Nem sikerült csatlakozni a PostgreSQL adatbázishoz : $1
 sql_eldapdriver=Nem sikerült betölteni az LDAP perl modult
 sql_eldapconnect=Nem sikerült csatlakozni az $1 LDAP szerverhez
 sql_eldaptls=Nem sikerült elindítani a TLS titkosítást az LDAP számára : $1
-sql_eldaplogin=Nem sikerült bejelentkezni az LDAP szerverre, mivel $1 : $2 
+sql_eldaplogin=Nem sikerült bejelentkezni az LDAP szerverre, mivel $1 : $2
 
 log_email_subject=Webmin művelet a $1 kategóriában
 log_email_global=A Webmin globális akciója

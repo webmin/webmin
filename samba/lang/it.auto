@@ -1,4 +1,4 @@
-index_version=Versione Samba $1 
+index_version=Versione Samba $1
 index_samba=Samba
 
 index_start_wb=Avviare i server Winbind
@@ -66,7 +66,7 @@ saveuser_ews=L'opzione "Account di fiducia workstation" non può essere abilitat
 savefshare_owner=Proprietario mancante o non valido per la nuova directory
 savefshare_group=Gruppo mancante o non valido per la nuova directory
 savefshare_perms=Autorizzazioni mancanti o non valide per la nuova directory
-savefshare_emkdir=Impossibile creare la directory : $1 
+savefshare_emkdir=Impossibile creare la directory : $1
 
 start_err_wb=Impossibile avviare i server Winbind
 
@@ -83,12 +83,12 @@ log_stop=Server Samba arrestati
 log_stop_wb=Server Winbind arrestati
 log_start_wb=Server Winbind avviati
 log_kills=Processi $1 disconnessi
-log_skills=Processi $1 disconnessi dalla condivisione $2 
+log_skills=Processi $1 disconnessi dalla condivisione $2
 log_delete_shares=Eliminate $1 condivisioni
 log_bind=Modifica le opzioni di Winbind
-log_create_group=Creato gruppo Samba $1 
-log_modify_group=Gruppo Samba modificato $1 
-log_delete_group=Gruppo Samba eliminato $1 
+log_create_group=Creato gruppo Samba $1
+log_modify_group=Gruppo Samba modificato $1
+log_delete_group=Gruppo Samba eliminato $1
 log_gsync=Sincronizzazione del gruppo Unix configurata
 log_manual=File di configurazione $1 modificato manualmente
 

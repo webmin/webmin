@@ -1,6 +1,6 @@
 main_homepage=Home pagina
 main_feedback=Terugkoppeling ..
-main_switch=Gebruiker  wisselen ..
+main_switch=Gebruiker wisselen ..
 main_logout=Loguit
 main_version=Versie $1 op $2 ($3)
 main_title=Webmin $1 op $2 ($3)

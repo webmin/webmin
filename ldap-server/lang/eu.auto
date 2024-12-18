@@ -1,4 +1,4 @@
-index_version=OpenLDAP $1 
+index_version=OpenLDAP $1
 index_openldap=OpenLDAP
 index_eslapd=$1 OpenLDAP zerbitzariaren programa ez da aurkitu zure sisteman. Agian <a href='$2'>moduluaren konfigurazio</a> orrialdearen bidea okerra da?
 index_econfig=$1 OpenLDAP zerbitzariaren konfigurazio fitxategia ez da zure sisteman aurkitu. Agian <a href='$2'>moduluaren konfigurazio</a> orrialdearen bidea okerra da?
@@ -24,9 +24,9 @@ connect_efile=$1 OpenLDAP konfigurazio fitxategia ez da aurkitu - agian ez da si
 connect_euser2=LDAP zerbitzariaren konfigurazioan ez da inon saioa hasi
 connect_epass2=LDAP zerbitzariaren konfigurazioan ez da saioa hasteko pasahitza aurkitu
 connect_epass3=LDAP zerbitzariaren konfigurazioko pasahitza enkriptatuta dago eta ezin du Webmin-ek erabili
-connect_emod=LDAP zerbitzariarekin konektatzeko behar den $1 Perl modulua ez dago instalatuta. Perl errore-mezu osoa hau da : $2 
+connect_emod=LDAP zerbitzariarekin konektatzeko behar den $1 Perl modulua ez dago instalatuta. Perl errore-mezu osoa hau da : $2
 connect_eldap=Huts egin du $1 atakako LDAP zerbitzariarekin konektatzerakoan
-connect_essl=Huts egin du TLS enkriptazioa hasterakoan LDAP zerbitzariarekin $1 : $2 
+connect_essl=Huts egin du TLS enkriptazioa hasterakoan LDAP zerbitzariarekin $1 : $2
 connect_elogin=Ezin izan da $2 : $3 LDAP zerbitzarira saioa hasi
 connect_cpan=<tt>$1</tt> Perl modulua <a href='$2'>automatikoki instalatu dezakezu</a> CPAN-en.
 
@@ -109,11 +109,11 @@ acl_add=Gehitu sarbide kontrolerako arau berria.
 acl_return=sarbide kontrolerako arauak
 
 browser_title=Arakatu datu-basea
-browser_econn=LDAP arakatzailea ezin da erabili : $1 
+browser_econn=LDAP arakatzailea ezin da erabili : $1
 browser_ecannot=Ezin duzu LDAP datu-basean arakatu
 browser_base=arakatzen:
 browser_ok=Show
-browser_esearch=LDAP bilaketa huts egin da : $1 
+browser_esearch=LDAP bilaketa huts egin da : $1
 browser_subs=Umeentzako objektuak
 browser_attrs=Objektuen atributuak
 browser_parent=Arakatu Guraso
@@ -144,26 +144,26 @@ browser_sok=Search
 
 save_err=Ezin izan da atributua aldatu
 save_ebase=Ezin izan da $1 objektua datu-basetik atera
-save_emodify=$2 ko LDAP aldaketak $1 huts egin du : $3 
+save_emodify=$2 ko LDAP aldaketak $1 huts egin du : $3
 save_enone=Ez da balorerik sartu
 
 add_err=Ezin izan da atributua gehitu
 add_eadd=Ezaugarri atributuaren izena edo falta da
 add_evalue=Falta den balioa
-add_emodify=$2 eta $1 LDAP gehitzeak huts egin du : $3 
+add_emodify=$2 eta $1 LDAP gehitzeak huts egin du : $3
 
 delete_err=Ezin izan da atributuak kendu
 delete_enone=Ez da hautatu
-delete_emodify=$2 -tik LDAP ezabatzeak $1 huts egin du : $3 
+delete_emodify=$2 -tik LDAP ezabatzeak $1 huts egin du : $3
 
 sdelete_err=Ezin izan dira objektuak ezabatu
 sdelete_edn=Ez da $1 objektua aurkitu
-sdelete_edel=$1 LDAP ezabatzeak huts egin du : $2 
+sdelete_edel=$1 LDAP ezabatzeak huts egin du : $2
 
 rename_err=Huts egin du objektua berriz aldatzean
 rename_eget=Ezin izan da $1 DN duen objektua aurkitu
 rename_enew=Izen berriak ez du balio
-rename_erename=LDAP $1 etik $2 ra $1 huts egin da : $3 
+rename_erename=LDAP $1 etik $2 ra $1 huts egin da : $3
 
 oadd_title=Objektua sortu
 oadd_header=LDAP objektuaren xehetasun berriak
@@ -179,7 +179,7 @@ oadd_ename=$1 atributuarentzako itxurarik gabeko izena
 oadd_eget=Huts egin du $1 objektua lortzeko
 oadd_eget2=Ezin izan da $1 : $2 liskarra egiaztatu
 oadd_eclash=$1 DN duen objektu bat dagoeneko
-oadd_eadd=$1 LDAP gehitzeak huts egin du : $2 
+oadd_eadd=$1 LDAP gehitzeak huts egin du : $2
 oadd_err=Huts egin du objektu berria sortzerakoan
 
 create_title=Sortu zuhaitza
@@ -198,7 +198,7 @@ create_edom=Domeinu izen falta edo baliogabea
 create_edn=Bereizitako izen falta edo baliogabea
 create_err=Huts egin du zuhaitz berria sortzerakoan
 create_doingdn=Oinarria DN $1 sortzen.
-create_edoingdn=.. huts egin du : $1 
+create_edoingdn=.. huts egin du : $1
 create_done=.. egin
 create_doingex=Adibide objektua DN $1 -rekin sortzen.
 create_edoingex=.. huts egin du: $1. Hala ere, zuhaitza oraindik erabil daiteke.
@@ -207,17 +207,17 @@ create_eoc=Ezin izan da objektu klase egokia aurkitu DN berrirako
 eunknown=Akats ezezaguna
 
 apply_err=Ezin izan da konfigurazioa aplikatu
-apply_ecmd=$1 huts egin da : $2 
+apply_ecmd=$1 huts egin da : $2
 apply_ecannot=Ezin duzu konfigurazioa aplikatu
 
 stop_err=Ezin izan da LDAP zerbitzaria gelditu
-stop_ecmd=$1 huts egin da : $2 
+stop_ecmd=$1 huts egin da : $2
 stop_egone=Jada ez korrika!
-stop_ekill=Hiltze prozesua huts egin da : $1 
+stop_ekill=Hiltze prozesua huts egin da : $1
 stop_ecannot=Ezin duzu LDAP zerbitzaria gelditu
 
 start_err=Huts egin du LDAP zerbitzaria abiaraztean
-start_ecmd=$1 huts egin da : $2 
+start_ecmd=$1 huts egin da : $2
 start_ecannot=Ezin duzu LDAP zerbitzaria abiarazi
 
 log_create_dn=$1 objektua sortu da

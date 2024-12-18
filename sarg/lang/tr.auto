@@ -1,8 +1,8 @@
 index_title=Kalamar Rapor Oluşturucu
 index_econf=$1 Sarg yapılandırma dosyası sisteminizde bulunamadı. Belki Sarg kurulu değildir veya <a href='$2'>modül yapılandırması</a> yanlıştır.
 index_ecmd=$1 Sarg programı sisteminizde bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırması</a> yanlış.
-index_eversion= $1 : $2 komutuyla Sarg sürümü alınamadı
-index_version=Sarg sürümü $1 
+index_eversion=$1 : $2 komutuyla Sarg sürümü alınamadı
+index_version=Sarg sürümü $1
 index_generate=Şimdi Rapor Oluştur
 index_generatedesc=Mevcut yapılandırmayı kullanarak $1 içinde hemen bir Sarg raporu oluşturmak için bu düğmeyi tıklayın.
 index_clear=Dizindeki mevcut rapor silinsin mi?

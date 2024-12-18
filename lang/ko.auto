@@ -6,10 +6,10 @@ longcategory_=기타 기타 작업을 수행하는 모듈
 
 or=또는
 fail=실패한
-euserdbacl=사용자 ACL을 가져 오지 못했습니다  : $1
-euserdbacl2=사용자 ACL을 업데이트하지 못했습니다  : $1
-egroupdbacl=그룹 ACL을 가져 오지 못했습니다  : $1
-egroupdbacl2=그룹 ACL을 업데이트하지 못했습니다  : $1
+euserdbacl=사용자 ACL을 가져 오지 못했습니다 : $1
+euserdbacl2=사용자 ACL을 업데이트하지 못했습니다 : $1
+egroupdbacl=그룹 ACL을 가져 오지 못했습니다 : $1
+egroupdbacl2=그룹 ACL을 업데이트하지 못했습니다 : $1
 
 config_emodule=모듈이 존재하지 않습니다
 
@@ -19,14 +19,14 @@ help_einclude3=도움말 페이지 $1 을(를) 포함하지 못했습니다
 referer_fix3u=Webmin에서 확인할 수 있도록 브라우저가 리퍼러 정보를 보내도록 구성되어 있는지 확인하십시오.
 
 session_twofactor=2 단계 토큰
-session_twofailed=이중 인증 실패  : $1
+session_twofailed=이중 인증 실패 : $1
 
 acl_readonly2=사용자가 데모 모드입니까?
 acl_readonlyyes=예 (일부 모듈을 사용하지 못할 수 있음)
 acl_negative=사용자에게 새로운 모듈 권한을 부여 하시겠습니까?
 acl_webminsearch=Webmin 검색 필드를 표시 하시겠습니까?
 
-elock_tries2=$2 분 후에 $1 파일을 잠그지 못했습니다. 마지막 오류  : $3
+elock_tries2=$2 분 후에 $1 파일을 잠그지 못했습니다. 마지막 오류 : $3
 
 progress_size2=$1 ($2) 다운로드 중. ..
 progress_datan=$1 수신 ($2 %)
@@ -51,13 +51,13 @@ wsearch_searching=$1 검색 중 ..
 wsearch_found=$1 결과를 찾았습니다.
 
 sql_emysqldriver=MySQL DBI 드라이버를로드하지 못했습니다
-sql_emysqlconnect=MySQL 데이터베이스에 연결하지 못했습니다  : $1
+sql_emysqlconnect=MySQL 데이터베이스에 연결하지 못했습니다 : $1
 sql_epostgresqldriver=PostgreSQL DBI 드라이버를로드하지 못했습니다
-sql_epostgresqlconnect=PostgreSQL 데이터베이스에 연결하지 못했습니다  : $1
+sql_epostgresqlconnect=PostgreSQL 데이터베이스에 연결하지 못했습니다 : $1
 sql_eldapdriver=LDAP perl 모듈을로드하지 못했습니다.
 sql_eldapconnect=LDAP 서버 $1에 연결하지 못했습니다.
-sql_eldaptls=LDAP에 대한 TLS 암호화를 시작하지 못했습니다  : $1
-sql_eldaplogin=$1으로 LDAP 서버에 로그인하지 못했습니다  : $2
+sql_eldaptls=LDAP에 대한 TLS 암호화를 시작하지 못했습니다 : $1
+sql_eldaplogin=$1으로 LDAP 서버에 로그인하지 못했습니다 : $2
 
 log_email_subject=$1의 Webmin 작업
 log_email_global=Webmin 글로벌 액션

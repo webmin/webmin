@@ -110,5 +110,5 @@ acl_canattach=可以粘附服务器文件吗？
 acl_usersm=匹配的用户
 acl_asame=与用户相同
 
-log_delmail=已从 $2 删除 $1邮件 
+log_delmail=已从 $2 删除 $1邮件
 log_send=已发送邮件到 $1

@@ -4,10 +4,10 @@ index_edir=„Jabber“ bazinis katalogas $1 neegzistuoja. Arba „Jabber“ ne�
 index_emodules=„Perl“ moduliai $1 ir $2, kurių „Webmin“ reikalauja tvarkyti „Jabber“ XML konfigūraciją, neįdiegti. <a href='$3'>Spustelėkite čia</a>, kad įdiegtumėte juos tiesiai iš CPAN.
 index_emodule=„Perl“ modulis $1, kurio „Webmin“ reikalauja tvarkyti „Jabber“ XML konfigūraciją, neįdiegtas. <a href='$2'>Norėdami įdiegti tiesiogiai iš CPAN, spustelėkite čia</a>.
 index_expat=Prieš bandant įdiegti „Perl“ modulius, įsitikinkite, kad turite „Expat C“ biblioteką ir antraštes, nes jie priklauso nuo jos ir žlugs, jei jos nėra.
-index_eparse=$1 perl modulis negalėjo išanalizuoti jūsų „Jabber“ konfigūracijos failo : $2 
+index_eparse=$1 perl modulis negalėjo išanalizuoti jūsų „Jabber“ konfigūracijos failo : $2
 index_ejabberd=„Jabber“ serverio programa $1 jūsų sistemoje nerasta. Arba „Jabber“ neįdiegtas, arba jūsų <a href='$2'>modulio konfigūracija</a> yra neteisinga.
-index_eversion=„Webmin“ palaiko tik „Jabber“ $2 versiją, tačiau komanda $3 pranešė šią versiją : $1 
-index_eversion2=„Webmin“ palaiko tik „Jabber“ versijas, mažesnes nei $2, tačiau komanda $3 pranešė šią versiją : $1 
+index_eversion=„Webmin“ palaiko tik „Jabber“ $2 versiją, tačiau komanda $3 pranešė šią versiją : $1
+index_eversion2=„Webmin“ palaiko tik „Jabber“ versijas, mažesnes nei $2, tačiau komanda $3 pranešė šią versiją : $1
 index_start=Paleiskite „Jabber Server“
 index_startmsg=Spustelėkite šį mygtuką, norėdami paleisti „Jabber“ serverį savo sistemoje. Kol jis nebus paleistas, jokie tiesioginių pranešimų klientai negalės juo naudotis.
 index_stop=Sustabdykite „Jabber Server“
@@ -44,7 +44,7 @@ messages_rnotify=Pranešti administratoriui apie registraciją?
 messages_rfields=Privalomi registracijos laukai
 messages_vcard2jud=Siųsti „vCard“ į „Jabber“ vartotojo katalogą?
 messages_err=Nepavyko išsaugoti pranešimų
-messages_evcard=Neteisingas „vCard“ XML : $1 
+messages_evcard=Neteisingas „vCard“ XML : $1
 messages_etag=„Server vCard XML“ neprasideda &lt;vCard&gt;
 
 modules_title=„Jabber“ moduliai

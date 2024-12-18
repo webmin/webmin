@@ -5,9 +5,9 @@ index_to=Partager à
 index_none=Aucun répertoire encore partagé.
 index_add=Ajouter un nouveau partage
 index_apply=Appliquer tous les changements
-index_applymsg=Cliquer sur ce bouton pour appliquer la configuration.  Ceci va rendre tous répertoires listés disponibles avec les options spécifiées.
+index_applymsg=Cliquer sur ce bouton pour appliquer la configuration. Ceci va rendre tous répertoires listés disponibles avec les options spécifiées.
 index_return=liste des partages
-index_eprog=L'exécutable du serveur NFS n'a pas été trouvé sur votre système.  Le paquetage NFS ne semble pas avoir été installé.
+index_eprog=L'exécutable du serveur NFS n'a pas été trouvé sur votre système. Le paquetage NFS ne semble pas avoir été installé.
 
 edit_title=Éditer un Partage
 create_title=Créer un Partage

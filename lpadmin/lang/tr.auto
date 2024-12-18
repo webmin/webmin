@@ -3,12 +3,12 @@ index_clusterdesc=Yazıcıların oluşturulacağı, güncelleneceği ve silinece
 index_delete=Seçilen Yazıcıları Sil
 
 save_evalid=Yazdırma sistemi bu yazıcıya izin vermedi
-save_errslave=Yazıcı bu sistemde Tamam oluşturdu, ancak küme sistemlerinde aşağıdaki hatalar oluştu : $1 
+save_errslave=Yazıcı bu sistemde Tamam oluşturdu, ancak küme sistemlerinde aşağıdaki hatalar oluştu : $1
 save_egone='$1' adlı yazıcı bulunamadı
-save_errdelslave=Yazıcı bu sistemde Tamam'ı sildi, ancak küme sistemlerinde aşağıdaki hatalar oluştu : $1 
+save_errdelslave=Yazıcı bu sistemde Tamam'ı sildi, ancak küme sistemlerinde aşağıdaki hatalar oluştu : $1
 
 jobs_cancelsel=Seçilen İşleri İptal Et
-jobs_on=Yazıcıda $1 
+jobs_on=Yazıcıda $1
 jobs_return=yazdırma işleri listesi
 
 acl_delete=Yazıcıları silebilir mi?

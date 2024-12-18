@@ -56,7 +56,7 @@ edit_timeout=It-timeout jgħaqqad
 edit_failed=Naqset milli tikkonnettja
 edit_baduser=Id-dħul miċħad
 edit_invalid=L-utent ma jistax jagħmel RPC
-edit_version=Tmexxi Webmin $1 
+edit_version=Tmexxi Webmin $1
 edit_same=Disponibbli biss mhux fil-mod tal-awtentikazzjoni tas-sessjoni, u meta l-password issir disponibbli għall-programmi Webmin.
 
 save_err=Ma rnexxielux isalva s-server
@@ -71,11 +71,11 @@ save_elogin=Login jew password mhux validi għall-host
 save_egroup2=Isem tal-grupp ġdid invalidu
 
 find_title=Sib Servers
-find_new=Jinstab server ġdid f ' $1 
-find_but=Jinstab server ġdid f ' $1, iżda l-awtentikazzjoni naqset : $2 
-find_already=Jinstab server magħruf f ' $1 
-find_already2=Ser ikun magħruf server ospitanti f ' $1 
-find_skip=Injorat server f ' $1 
+find_new=Jinstab server ġdid f ' $1
+find_but=Jinstab server ġdid f ' $1, iżda l-awtentikazzjoni naqset : $2
+find_already=Jinstab server magħruf f ' $1
+find_already2=Ser ikun magħruf server ospitanti f ' $1
+find_skip=Injorat server f ' $1
 find_me=Dan is-server sab $1
 find_escan=In-netwerk li tiskennja għandu jkun indirizz tan-netwerk tal-klassi C.
 find_eiface=Ma setgħetx issib interface biex tiskennja
@@ -85,13 +85,13 @@ find_scanning=Skennjar għal servers fin-netwerk $1 ..
 find_broading=Xandir għal servers fuq indirizzi $1 ..
 find_eport=Numru tal-port nieqes jew invalidu
 
-log_modify=Server modifikat $1 
-log_create=Server reġistrat $1 
-log_delete=Server imħassar $1 
-log_find=Server misjub $1 
-log_deletes=Server imħassar $1 
+log_modify=Server modifikat $1
+log_create=Server reġistrat $1
+log_delete=Server imħassar $1
+log_find=Server misjub $1
+log_deletes=Server imħassar $1
 
-link_elogin=Naqas mill-login għal $1 bħala $2 
+link_elogin=Naqas mill-login għal $1 bħala $2
 link_ecannot=M'għandekx permess tuża dan is-server
 link_essl=M'għandekx il-librerija perl Net::SSLeay installata
 link_eautologin=Login jew password mhux validi għal $1. <a href='$2'>Ikklikkja hawn</a> biex terġa 'tipprova.
@@ -133,8 +133,8 @@ auto_sched=Iċċekkja għal servers ġodda?
 auto_sched1=Iva, kull $1 minuta
 auto_net=Netwerk IP biex tiskennja
 auto_auto=Netwerk lokali
-auto_ip=Netwerks IP $1 
-auto_iface=Netwerk fuq l-interface $1 
+auto_ip=Netwerks IP $1
+auto_iface=Netwerk fuq l-interface $1
 auto_user=Username għal servers ġodda
 auto_pass=Password għal servers ġodda
 auto_type=Tip ta 'sistema awtomatiku
@@ -156,7 +156,7 @@ auto_findself=Irreġistra din is-sistema wkoll?
 config_deftype=Tip ta 'sistema awtomatiku
 config_typeauto=Awtomatiku
 
-email_regsubject=Sistema reġistrata $1 
+email_regsubject=Sistema reġistrata $1
 email_reg=Is-sistema $1 ġiet reġistrata awtomatikament.
 email_unregsubject=Sistema $1 mhux reġistrata
 email_unreg=Is-sistema $1 ġiet irreġistrata awtomatikament.

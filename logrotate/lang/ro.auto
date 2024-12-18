@@ -1,8 +1,8 @@
 index_title=Rotire fișier jurnal
 index_econf=Fișierul de configurare de rotație a jurnalului $1 nu a fost găsit în sistemul dvs. Poate că logrotatul nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
 index_ecmd=Programul de rotație a jurnalului $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
-index_eversion=Nu a reușit să obțineți versiunea de logrotate cu comanda $1 : $2 
-index_version=Versiunea logotatei $1 
+index_eversion=Nu a reușit să obțineți versiunea de logrotate cu comanda $1 : $2
+index_version=Versiunea logotatei $1
 index_add=Adăugați un nou fișier jurnal pentru a roti.
 index_file=Fișier jurnal
 index_period=Perioada de rotație
@@ -50,7 +50,7 @@ edit_mailfl=Fișier de jurnal la e-mail
 edit_mailfirst=Cel mai nou care a fost doar rotit
 edit_maillast=Cea mai veche, care este pe cale să fie ștersă
 edit_create=Re-creați fișierul de jurnal după rotire?
-edit_createas=Da, cu modul $1 și deținut de utilizatorul $2 și grupul $3 
+edit_createas=Da, cu modul $1 și deținut de utilizatorul $2 și grupul $3
 edit_createno=Nu, nu creați din nou
 edit_createsame=Da, cu permisiuni vechi
 edit_olddir=Stocați jurnalele vechi rotite
@@ -90,10 +90,10 @@ log_modify_sched=Schimbare de rotație a jurnalului Lucrare Cron
 log_create_sched=Creare rotire jurnal de lucru Cron
 log_delete_sched=Ștergere rotire jurnal jurnal Cron
 log_global=Opțiuni globale modificate
-log_create=Se adaugă rotirea pentru fișierul jurnal $1 
-log_modify=Rotire modificată pentru fișierul jurnal $1 
-log_delete=Rotire ștersă pentru fișierul jurnal $1 
-log_delete_logs=Rotire ștersă pentru fișierele jurnal $1 
+log_create=Se adaugă rotirea pentru fișierul jurnal $1
+log_modify=Rotire modificată pentru fișierul jurnal $1
+log_delete=Rotire ștersă pentru fișierul jurnal $1
+log_delete_logs=Rotire ștersă pentru fișierele jurnal $1
 
 sched_title=Program de rotație a jurnalului
 sched_desc=Pentru ca rotirea jurnalului configurată folosind acest modul să fie executată, comanda $1 trebuie executată de Cron într-un program regulat (de obicei zilnic).

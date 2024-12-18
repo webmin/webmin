@@ -10,7 +10,7 @@ index_vmin=Virtualmin
 
 ifcs_title=Interfejsy sieciowe
 ifcs_now=Interfejsy aktywne obecnie
-ifcs_activedesc=Interfejsy z poniższej tabli są aktualnie aktywne w systemie. W większości przypadków powinieneś edytować je w zakładce  <b>Interfejsy aktywne podczas startu</b>
+ifcs_activedesc=Interfejsy z poniższej tabli są aktualnie aktywne w systemie. W większości przypadków powinieneś edytować je w zakładce <b>Interfejsy aktywne podczas startu</b>
 ifcs_bootdesc=Interfejsy z poniższej tabeli będą aktywowane przy uruchamianiu systemu i na ogół są aktywne także teraz.
 ifcs_name=Nazwa
 ifcs_type=Rodzaj
@@ -260,7 +260,7 @@ log_delete_routes=Usunięto aktywną trasę $1
 acl_ifcs=Może zmieniać interfejsy sieciowe?
 acl_routes=Może zmieniać routing i bramki?
 acl_dns=Może zmieniać ustawienia klienta DNS?
-acl_hosts=Może zmieniać  adresy hostów?
+acl_hosts=Może zmieniać adresy hostów?
 acl_view=Tylko podgląd
 acl_ifcs_only=Tylko interfejsy
 acl_ifcs_ex=Wyjątki interfejsów

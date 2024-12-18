@@ -7,14 +7,14 @@ index_active=Ativo?
 index_tag=Programa
 index_to=Destino do log
 index_rule=Mensagens selecionadas
-index_file=Arquivo $1 
-index_pipe=Canal nomeado $1 
-index_pipe2=Canal para comandar $1 
-index_host=Servidor Syslog em $1 
-index_socket=Arquivo de soquete Unix $1 
-index_cmd=Saída de $1 
+index_file=Arquivo $1
+index_pipe=Canal nomeado $1
+index_pipe2=Canal para comandar $1
+index_host=Servidor Syslog em $1
+index_socket=Arquivo de soquete Unix $1
+index_cmd=Saída de $1
 index_all=Todos os usuários
-index_users=Usuários $1 
+index_users=Usuários $1
 index_add=Adicione um novo log do sistema.
 index_return=logs do sistema
 index_restart=Aplicar mudanças
@@ -26,7 +26,7 @@ index_view=Visão ..
 index_viewfile=Exibir arquivo de log:
 index_viewok=Visão
 
-restart_ekill=Falha ao sinalizar o processo syslog $1 : $2 
+restart_ekill=Falha ao sinalizar o processo syslog $1 : $2
 restart_ecannot=Você não tem permissão para reiniciar o syslog
 
 start_ecannot=Você não tem permissão para iniciar o syslog
@@ -61,13 +61,13 @@ edit_ecannot=Você não tem permissão para editar configurações de log
 edit_ecannot2=Você não tem permissão para editar este log
 
 view_title=Exibir arquivo de log
-view_header=Últimas $1 linhas de $2 
+view_header=Últimas $1 linhas de $2
 view_empty=O arquivo de log está vazio
 view_refresh=Atualizar
-view_filter=Mostrar apenas linhas com o texto $1 
+view_filter=Mostrar apenas linhas com o texto $1
 
 save_err=Falha ao salvar o log
-save_efile='$1' não é um nome de arquivo válido : $2 
+save_efile='$1' não é um nome de arquivo válido : $2
 save_epipe='$1' não é um canal nomeado válido
 save_epipe2=Comando ausente para canalizar para
 save_esocket=Soquete de domínio unix ausente ou inválido
@@ -86,9 +86,9 @@ save_ecannot6=Você não tem permissão para visualizar logs arbitrários
 save_ecannot7=Você não tem permissão para visualizar este log extra
 save_emissing=Arquivo de log ausente para exibição
 
-log_modify=Log modificado para $1 
-log_create=Registro adicionado a $1 
-log_delete=Registro excluído para $1 
+log_modify=Log modificado para $1
+log_create=Registro adicionado a $1
+log_delete=Registro excluído para $1
 log_apply=Alterações aplicadas
 log_start=Servidor de registro iniciado
 

@@ -8,7 +8,7 @@ index_delete=Dzēst atlasītos eksportus
 index_apply=Lietot izmaiņas
 index_applydesc=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo failu eksporta konfigurāciju. Tādējādi visi iepriekš uzskaitītie direktoriji būs pieejami ar norādītajām opcijām.
 index_return=eksporta saraksts
-index_echeck=NFS serveri nevar izmantot šajā sistēmā : $1 
+index_echeck=NFS serveri nevar izmantot šajā sistēmā : $1
 
 check_ecmd=NFS servera komanda $1 nav instalēta
 

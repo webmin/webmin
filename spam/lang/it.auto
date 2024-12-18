@@ -4,7 +4,7 @@ index_ecmd2=Il comando SpamAssassin $1 non è stato trovato sul tuo sistema.
 index_econfig=Il file di configurazione locale SpamAssassin o la directory $1 non sono stati trovati sul tuo sistema. Forse SpamAssassin non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 index_unknown=sconosciuto
 index_edb=Impossibile connettersi al database di configurazione SpamAssassin: $1. Controlla la <a href='$2'>configurazione del modulo</a> per essere sicuro di utilizzare le impostazioni corrette.
-index_version=SpamAssassin versione $1 
+index_version=SpamAssassin versione $1
 index_warn_usermin=SpamAssassin non sembra essere impostato nel file di configurazione di Procmail $2 o nel file globale $1, quindi qualsiasi configurazione eseguita utilizzando questo modulo non avrà alcun effetto a meno che SpamAssassin non sia stato impostato a livello globale.
 index_warn_webmin=SpamAssassin non sembra essere impostato nel file di configurazione Procmail $1 del sistema, quindi qualsiasi configurazione effettuata utilizzando questo modulo non avrà alcun effetto a meno che gli utenti non lo abbiano impostato singolarmente.
 index_return=indice del modulo
@@ -12,7 +12,7 @@ index_apply=Applica i cambiamenti
 index_applydesc=Fare clic su questo pulsante per applicare la configurazione corrente di SpamAssassin inviando un segnale HUP a tutti i processi $1 in esecuzione.
 index_cpan=Poiché SpamAssassin è un modulo Perl, puoi anche installarlo automaticamente utilizzando il modulo <a href='$2'>moduli Perl</a> di Webmin per scaricare $1 da CPAN.
 index_spamassassin=SpamAssassin
-index_ecannot=Non puoi gestire il file di configurazione SpamAssassin $1 
+index_ecannot=Non puoi gestire il file di configurazione SpamAssassin $1
 
 white_title=Indirizzi consentiti e negati
 white_desc=Le tabelle in questa pagina consentono di specificare gli indirizzi Da: e A: per l'e-mail che è sempre o mai classificato come spam. Qualsiasi altra e-mail verrà elaborata normalmente dalle regole di SpamAssassin. Tutti gli indirizzi e-mail possono contenere caratteri jolly, come *@foo.com o *.foo.com per abbinare interi domini.
@@ -111,7 +111,7 @@ report_addtext=Testo per intestazione
 report_addspam=Spam
 report_addham=prosciutto
 report_addall=Tutti
-report_eaddheader=Intestazione aggiuntiva mancante o non valida per aggiungere $1 
+report_eaddheader=Intestazione aggiuntiva mancante o non valida per aggiungere $1
 
 user_title=Opzioni utente varie
 user_desc=Le opzioni in questa pagina sono principalmente correlate ai percorsi e alle impostazioni che SpamAssassin utilizza per i pacchetti di identificazione spam esterni Razor, DCC e Pyzor. Puoi anche dire a SpamAssassin se sarà in grado di eseguire ricerche DNS o meno.
@@ -190,7 +190,7 @@ priv_emscore='$1' non è un punteggio di frase più alto valido
 priv_ephrase='$1' non è una frase spam valida per due parole
 priv_escore=Punteggio mancante o non valido per la frase di spam "$1"
 
-usually=Di solito $1 
+usually=Di solito $1
 ecannot=Non ti è permesso usare questa pagina
 setup_title=Installa Procmail per SpamAssassin
 setup_desc_webmin=Questo modulo può essere utilizzato per configurare Procmail in $1 per eseguire SpamAssassin su tutti i messaggi e-mail ricevuti dal sistema. Tuttavia, ciò avrà effetto solo se il tuo server di posta è stato configurato per utilizzare Procmail per il recapito locale o per gli utenti i cui file <tt>.forward</tt> sono impostati per eseguire Procmail.
@@ -244,7 +244,7 @@ mail_razor=Segnala come spam ed elimina
 mail_ham=Segnala come prosciutto e posta in arrivo
 mail_delete=Elimina
 mail_return=lista di posta spam
-mail_pos=Messaggi spam da $1 a $2 di $3 
+mail_pos=Messaggi spam da $1 a $2 di $3
 mail_none=Non ci sono messaggi nella tua cartella spam
 mail_refresh=ricaricare
 mail_will=Aggiornamento automatico in $1 minuti
@@ -253,7 +253,7 @@ mail_delall=Elimina tutto lo spam
 mail_search3=Cerca il punteggio sopra:
 
 process_eclean=Si è verificato un errore durante la rimozione delle intestazioni di SpamAssassin da questa e-mail
-process_ereport=Impossibile segnalare l'email a SpamAssassin : $1 
+process_ereport=Impossibile segnalare l'email a SpamAssassin : $1
 
 apply_err=Impossibile applicare le modifiche
 apply_none=Nessun processo daemon SpamAssassin trovato!
@@ -263,8 +263,8 @@ acl_file=SpamAssassin file di configurazione da modificare
 acl_filedef=File di configurazione globale
 acl_awl=Utenti consentiti per la modifica della whitelist automatica
 acl_awl0=Tutti gli utenti
-acl_awl1=Solo gli utenti elencati $1 
-acl_awl2=Solo membri di gruppi $1 
+acl_awl1=Solo gli utenti elencati $1
+acl_awl2=Solo membri di gruppi $1
 
 search_escore=Punteggio di spam mancante o non valido
 search_results5=$1 messaggi di posta con punteggio di spam pari o superiore a $2 ..
@@ -337,20 +337,20 @@ simple_score=Punteggio da applicare
 simple_describe=Descrizione
 simple_err=Impossibile salvare i test dei messaggi
 
-before_ecmd=Comando prima del salvataggio non riuscito : $1 
-after_ecmd=Comando dopo il salvataggio non riuscito : $1 
+before_ecmd=Comando prima del salvataggio non riuscito : $1
+after_ecmd=Comando dopo il salvataggio non riuscito : $1
 
 connect_emysql=Caricamento del driver del database $1 non riuscito
 connect_elogin=Impossibile accedere al database $1:$2.
-connect_equery=Il database $1 non contiene la tabella delle preferenze $2 
+connect_equery=Il database $1 non contiene la tabella delle preferenze $2
 connect_eldapmod=Il modulo Perl $1 necessario per comunicare con LDAP non è installato o non è caricabile
-connect_eldap=Impossibile connettersi al server LDAP $1 sulla porta $2 
-connect_eldaplogin=Impossibile accedere al server LDAP $1 come $2 : $3 
-connect_ebase=Il DN di base LDAP $1 non è valido : $2 
+connect_eldap=Impossibile connettersi al server LDAP $1 sulla porta $2
+connect_eldaplogin=Impossibile accedere al server LDAP $1 come $2 : $3
+connect_ebase=Il DN di base LDAP $1 non è valido : $2
 
-eldap=Operazione LDAP non riuscita : $1 
-esql=SQL non riuscito : $1 
-ldap_euser=Impossibile trovare l'oggetto utente LDAP per $1 
+eldap=Operazione LDAP non riuscita : $1
+esql=SQL non riuscito : $1
+ldap_euser=Impossibile trovare l'oggetto utente LDAP per $1
 
 db_title=Database SQL e LDAP
 db_header=Opzioni del database di archiviazione della configurazione

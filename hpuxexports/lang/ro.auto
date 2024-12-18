@@ -68,10 +68,10 @@ save_enohost='$1' - Nu ați listat nicio gazdă
 save_euids=UID-urile care nu au încredere trebuie să fie o listă de numere sau intervale separate de virgule
 save_egids=GID-urile care nu au încredere trebuie să fie o listă de numere sau intervale separate de virgule
 
-log_modify=Export modificat NFS $1 
-log_modify_l=Export modificat NFS $1 la $2 
-log_delete=Export șters NFS $1 
-log_delete_l=Export eliminat NFS $1 la $2 
-log_create=Export creat NFS $1 
-log_create_l=Export NFS creat $1 la $2 
+log_modify=Export modificat NFS $1
+log_modify_l=Export modificat NFS $1 la $2
+log_delete=Export șters NFS $1
+log_delete_l=Export eliminat NFS $1 la $2
+log_create=Export creat NFS $1
+log_create_l=Export NFS creat $1 la $2
 log_apply=Configurație aplicată

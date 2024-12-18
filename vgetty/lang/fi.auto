@@ -18,7 +18,7 @@ vgetty_return=sarjaporttiluettelo
 vgetty_create=Lisää sarjaportti
 vgetty_edit=Muokkaa sarjaporttia
 vgetty_header=Sarjaportin määritysasetukset
-vgetty_ts=Sarjaportti $1 
+vgetty_ts=Sarjaportti $1
 vgetty_other=Muu laite ..
 vgetty_rings=Soi ennen vastaamista
 vgetty_default=Yleinen oletus
@@ -100,18 +100,18 @@ pvfdesc=$1, $2 bittiä
 
 upload_err=Viestin lisäys epäonnistui
 upload_emessage=WAV-tiedostoa ei ole valittu
-upload_ewav=WAV-tiedoston muuntaminen epäonnistui : $1 
-upload_epvf=RMD-tiedoston luominen epäonnistui : $1 
+upload_ewav=WAV-tiedoston muuntaminen epäonnistui : $1
+upload_epvf=RMD-tiedoston luominen epäonnistui : $1
 upload_esame=Viestitiedosto $1 on jo olemassa
 
 log_apply=Sovellettu kokoonpano
-log_upload=Ladattu tervehdysviesti $1 
+log_upload=Ladattu tervehdysviesti $1
 log_move=Muunnettu $1 vastaanotetut viestit
 log_delete0=Poistettu $1 vastaanotetut viestit
 log_delete1=Poistettu $1 tervehdysviesti
 log_options=Vaihdetut vastaajaasetukset
-log_vgetty_create=Lisätty sarjaportti $1 
-log_vgetty_modify=Muokattu sarjaportti $1 
+log_vgetty_create=Lisätty sarjaportti $1
+log_vgetty_modify=Muokattu sarjaportti $1
 log_vgetty_delete=Sarjaportti $1 poistettu
 
 email_subject=Vastaajaviesti

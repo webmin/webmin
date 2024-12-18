@@ -8,7 +8,7 @@ index_inet=Internet
 index_proto=Protokol
 index_user=Uporabnik
 index_server=Strežniški program
-index_redirect=Posreduj k $1 
+index_redirect=Posreduj k $1
 index_enabled=Omogočeno?
 index_internal=Notranji za Xinetd
 index_add_inet=Ustvarite novo internetno storitev
@@ -91,11 +91,11 @@ proto_tcp=TCP (protokol za nadzor prenosa)
 proto_udp=UDP (User Datagram Protocol)
 
 restart_err=Spremembe ni bilo mogoče uporabiti
-restart_ekill=USL2 signala ni bilo mogoče poslati PID $1 : $2 
+restart_ekill=USL2 signala ni bilo mogoče poslati PID $1 : $2
 restart_epid=Ne teče več
 
 start_err=Zagon xinetd ni uspel
-start_estart=$1 ni uspelo : $2 
+start_estart=$1 ni uspelo : $2
 
 defs_title=Privzete možnosti
 defs_header=Privzete možnosti za storitve
@@ -122,16 +122,16 @@ defs_efile=Manjkajoče ali neveljavno ime datoteke dnevnika
 defs_esoft=Manjkajoča ali neveljavna mejna meja
 defs_ehard=Manjkajoča ali neveljavna trdna meja
 
-log_create_serv=Ustvarjena storitev $2 storitev $1 
-log_modify_serv=Spremenjena $2 storitev $1 
-log_delete_serv=Izbrisana $2 storitev $1 
+log_create_serv=Ustvarjena storitev $2 storitev $1
+log_modify_serv=Spremenjena $2 storitev $1
+log_delete_serv=Izbrisana $2 storitev $1
 log_start=Zagnan Xinetd strežnik
 log_apply=Uporabljene spremembe
 log_defaults=Spremenjene privzete možnosti
 log_enable=Omogočene $1 storitve
-log_disable=Onemogočene storitve $1 
-log_enable_l=Omogočene storitve $1 
-log_disable_l=Invalidske storitve $1 
+log_disable=Onemogočene storitve $1
+log_enable_l=Omogočene storitve $1
+log_disable_l=Invalidske storitve $1
 
 config_dirdef=Konfiguracijska datoteka Xinetd
 config_dirto=Nova datoteka v imeniku

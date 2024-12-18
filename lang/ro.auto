@@ -92,7 +92,7 @@ sql_epostgresqlconnect=Eroare la conectarea la baza de date PostgreSQL : $1
 sql_eldapdriver=Nu a putut încărca modulul perl LDAP
 sql_eldapconnect=Nu a reușit conectarea la serverul LDAP $1
 sql_eldaptls=Nu a reușit să înceapă criptarea TLS pentru LDAP : $1
-sql_eldaplogin=Eroare la autentificarea pe serverul LDAP ca $1 : $2 
+sql_eldaplogin=Eroare la autentificarea pe serverul LDAP ca $1 : $2
 
 log_email_subject=Acțiune Webmin în $1
 log_email_global=Webmin acțiune globală
@@ -125,9 +125,9 @@ paginator_nosearchrs=Nu există rezultate care să corespundă interogării <tt>
 
 langauto_include=Includeți traduceri automate
 
-file_truncated_message=a preluat $1 din date, a trunchiat $2 din $3 
-file_truncated_message_head=preluat începutul $1 din date, trunchiat $2 din $3 
-file_truncated_message_tail=a fost preluat sfârșitul $1 din date, trunchiat $2 din $3 
+file_truncated_message=a preluat $1 din date, a trunchiat $2 din $3
+file_truncated_message_head=preluat începutul $1 din date, trunchiat $2 din $3
+file_truncated_message_tail=a fost preluat sfârșitul $1 din date, trunchiat $2 din $3
 
 defcert_error=Este utilizat certificatul SSL implicit $1. Este foarte recomandat să actualizați certificatul implicit <tt>$2</tt> înainte de a continua cu autentificare.
 

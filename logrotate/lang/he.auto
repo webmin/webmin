@@ -1,8 +1,8 @@
 index_title=יומן סיבוב קבצים
 index_econf=קובץ תצורת סיבוב היומן $1 לא נמצא במערכת שלך. אולי logrotate אינו מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
 index_ecmd=תוכנית סיבוב היומן $1 לא נמצאה במערכת שלך. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שגויה.
-index_eversion=נכשלה קבלת גרסת logrotate עם הפקודה $1 : $2 
-index_version=גרסת Logrotate $1 
+index_eversion=נכשלה קבלת גרסת logrotate עם הפקודה $1 : $2
+index_version=גרסת Logrotate $1
 index_add=הוסף קובץ יומן חדש לסיבוב.
 index_file=קובץ לוג
 index_period=תקופת הסיבוב
@@ -50,7 +50,7 @@ edit_mailfl=רישום קובץ לדוא"ל
 edit_mailfirst=הכי חדש שזה עתה הסתובב
 edit_maillast=העתיק ביותר שעומד למחוק
 edit_create=ליצור מחדש קובץ יומן לאחר סיבוב?
-edit_createas=כן, במצב $1 ובבעלות המשתמש $2 וקבוצה $3 
+edit_createas=כן, במצב $1 ובבעלות המשתמש $2 וקבוצה $3
 edit_createno=לא, אל תיצור מחדש
 edit_createsame=כן, עם הרשאות ישנות
 edit_olddir=אחסן יומנים מסתובבים ישנים
@@ -90,10 +90,10 @@ log_modify_sched=שינוי סיבוב יומן Cron עבודה
 log_create_sched=יצר סיבוב יומן Cron עבודה
 log_delete_sched=סיבוב יומן נמחק משימת Cron
 log_global=אפשרויות גלובליות השתנו
-log_create=סיבוב נוסף לקובץ היומן $1 
-log_modify=סיבוב שונה לקובץ היומן $1 
-log_delete=הסיבוב נמחק לקובץ היומן $1 
-log_delete_logs=הסיבוב נמחק עבור קבצי יומן $1 
+log_create=סיבוב נוסף לקובץ היומן $1
+log_modify=סיבוב שונה לקובץ היומן $1
+log_delete=הסיבוב נמחק לקובץ היומן $1
+log_delete_logs=הסיבוב נמחק עבור קבצי יומן $1
 
 sched_title=לוח זמנים לסיבוב יומן
 sched_desc=לצורך ביצוע סיבוב יומנים המוגדר באמצעות מודול זה, יש לבצע את הפקודה $1 בלוח זמנים קבוע (לרוב מדי יום) על ידי Cron.

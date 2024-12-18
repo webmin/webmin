@@ -56,7 +56,7 @@ edit_timeout=Timeout tilslutning
 edit_failed=Forbindelsen fejlede
 edit_baduser=Login afvist
 edit_invalid=Brugeren kan ikke gøre RPC
-edit_version=Kører Webmin $1 
+edit_version=Kører Webmin $1
 edit_same=Kun tilgængelig ikke i sessiongodkendelsestilstand, og når adgangskoden stilles til rådighed for Webmin-programmer.
 
 save_err=Kunne ikke gemme serveren
@@ -71,12 +71,12 @@ save_elogin=Ugyldigt login eller adgangskode til vært
 save_egroup2=Ugyldigt nyt gruppenavn
 
 find_title=Find servere
-find_new=Fundet ny server på $1 
-find_but=Fundet ny server på $1, men godkendelsen mislykkedes : $2 
-find_already=Fundet kendt server på $1 
-find_already2=Fundet kendt serverhost hos $1 
-find_skip=Ignorerer serveren ved $1 
-find_me=Fundet denne server på $1 
+find_new=Fundet ny server på $1
+find_but=Fundet ny server på $1, men godkendelsen mislykkedes : $2
+find_already=Fundet kendt server på $1
+find_already2=Fundet kendt serverhost hos $1
+find_skip=Ignorerer serveren ved $1
+find_me=Fundet denne server på $1
 find_escan=Det netværk, der skal scannes, skal være en klasse C-netværksadresse.
 find_eiface=Kunne ikke finde interface til at scanne
 find_none=Ingen servere svarede på scanningen.
@@ -85,13 +85,13 @@ find_scanning=Scanning efter servere i netværk $1 ..
 find_broading=Broadcasting for servere på adresser $1 ..
 find_eport=Manglende eller ugyldigt portnummer
 
-log_modify=Ændret server $1 
-log_create=Registreret server $1 
-log_delete=Slet server $1 
-log_find=Fundet server $1 
+log_modify=Ændret server $1
+log_create=Registreret server $1
+log_delete=Slet server $1
+log_find=Fundet server $1
 log_deletes=Slet $1 -servere
 
-link_elogin=Kunne ikke logge ind på $1 som $2 
+link_elogin=Kunne ikke logge ind på $1 som $2
 link_ecannot=Du har ikke tilladelse til at bruge denne server
 link_essl=Du har ikke det perl Net::SSLeay-bibliotek installeret
 link_eautologin=Ugyldig login eller adgangskode til $1. <a href='$2'>Klik her</a> for at prøve igen.
@@ -133,8 +133,8 @@ auto_sched=Kontroller, om der er nye servere?
 auto_sched1=Ja, hvert $1 minut
 auto_net=IP-netværk, der skal scannes
 auto_auto=Lokalt netværk
-auto_ip=IP-netværk $1 
-auto_iface=Netværk på interface $1 
+auto_ip=IP-netværk $1
+auto_iface=Netværk på interface $1
 auto_user=Brugernavn til nye servere
 auto_pass=Adgangskode til nye servere
 auto_type=Standard systemtype

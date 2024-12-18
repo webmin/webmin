@@ -123,7 +123,7 @@ cron_user=Executa Fetchmail com a usuari
 cron_err=No s'ha pogut desar la comprovació planificada
 cron_efile=Hi falta el nom del fitxer de sortida o bé és invàlid
 cron_email=Hi falta l'adreça de correu o bé és invàlida
-cron_euser=Hi falta l'usuari Unix  o bé és invàlid
+cron_euser=Hi falta l'usuari Unix o bé és invàlid
 cron_errors=Dóna un missatge només si es produeix un error
 cron_ecannot2=No tens permís per configurar la comprovació planificada
 

@@ -11,7 +11,7 @@ index_anyfile=Upraviť ďalší konfiguračný súbor PHP:
 index_return=konfiguračné súbory
 
 file_global=Globálna konfigurácia PHP
-file_eread=Nepodarilo sa prečítať $1 : $2 
+file_eread=Nepodarilo sa prečítať $1 : $2
 
 manual_title=Manuálne upraviť konfiguráciu
 manual_desc=Táto stránka sa dá použiť na manuálnu úpravu konfiguračného súboru PHP. Toto by sa malo robiť opatrne, pretože pri vašich zmenách sa nevykonáva žiadna syntax alebo iná kontrola platnosti.
@@ -124,7 +124,7 @@ errors_maxlen=Maximálna veľkosť zaznamenaných chýb
 errors_file=Súbor denníka pre chyby
 errors_none=nikto
 errors_syslog=syslog
-errors_other=Iný súbor $1 
+errors_other=Iný súbor $1
 errors_unlimited=neobmedzený
 errors_err=Uloženie protokolovania chýb zlyhalo
 errors_ereporting=Nebol zadaný žiadny výraz typu chyby
@@ -152,15 +152,15 @@ misc_path=Informácie o ceste CGI?
 misc_timezone=Časové pásmo PHP
 misc_charset=Predvolená sada znakov
 
-log_manual=Ručne upravte súbor $1 
-log_vars=Zmenené premenné PHP v $1 
-log_dirs=Zmenené nastavenia adresára v $1 
-log_db=Zmenené nastavenia databázy v $1 
-log_session=Zmenené možnosti relácie v $1 
-log_safe=Zmenené možnosti núdzového režimu v $1 
-log_limits=Zmenené limity zdrojov v $1 
-log_errors=Zmenené protokolovanie chýb v $1 
-log_misc=Ostatné nastavenia boli zmenené v $1 
+log_manual=Ručne upravte súbor $1
+log_vars=Zmenené premenné PHP v $1
+log_dirs=Zmenené nastavenia adresára v $1
+log_db=Zmenené nastavenia databázy v $1
+log_session=Zmenené možnosti relácie v $1
+log_safe=Zmenené možnosti núdzového režimu v $1
+log_limits=Zmenené limity zdrojov v $1
+log_errors=Zmenené protokolovanie chýb v $1
+log_misc=Ostatné nastavenia boli zmenené v $1
 
 acl_global=Môžete upraviť globálnu konfiguráciu PHP?
 acl_anyfile=Môžete upravovať ľubovoľný súbor ako konfiguráciu PHP?

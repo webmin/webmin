@@ -6,8 +6,8 @@ view_atype=Tipo de anexo
 view_aname=Acessório
 view_asize=Tamanho do arquivo
 
-file_ealias=Formato inválido para a linha do arquivo de alias : $1 
-file_etab=Formato inválido para a linha do arquivo de mapa : $1 
+file_ealias=Formato inválido para a linha do arquivo de alias : $1
+file_etab=Formato inválido para a linha do arquivo de mapa : $1
 
 ports_family=Protocolo
 ports_inet=IPv4

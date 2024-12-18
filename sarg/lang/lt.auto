@@ -1,8 +1,8 @@
 index_title=Kalmarų ataskaitų generatorius
 index_econf=Jūsų sistemoje nerastas „Sarg“ konfigūracijos failas $1. Gal Sarg neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
 index_ecmd=„Sarg“ programa $1 jūsų sistemoje nerasta. Galbūt jis neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
-index_eversion=Nepavyko gauti „Sarg“ versijos su komanda $1 : $2 
-index_version=Sargo versija $1 
+index_eversion=Nepavyko gauti „Sarg“ versijos su komanda $1 : $2
+index_version=Sargo versija $1
 index_generate=Sukurti ataskaitą dabar
 index_generatedesc=Spustelėkite šį mygtuką, kad iš karto sugeneruotumėte Sarg ataskaitą $1, naudodami dabartinę konfigūraciją.
 index_clear=Ištrinti esamą ataskaitą iš katalogo?

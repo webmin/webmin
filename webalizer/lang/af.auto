@@ -1,6 +1,6 @@
 index_title=Webalizer Logfile Analise
-index_version=Webalizer-weergawe $1 
-index_version_webalizer=Webalizer-weergawe $1 
+index_version=Webalizer-weergawe $1
+index_version_webalizer=Webalizer-weergawe $1
 index_version_awffull=AWFFull
 index_ewebalizer=Die logfile-analise-opdrag $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
 index_econf=Die Webalizer-konfigurasielêer $1 is nie op u stelsel gevind nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>module-opstelling</a> verkeerd.
@@ -22,7 +22,7 @@ index_global=Wysig globale opsies
 index_globaldesc=Klik op hierdie knoppie om Webalizer-opsies te wysig wat van toepassing is op verslae wat gegenereer word uit alle loglêers.
 index_eversion=Die Webalizer-opdrag $1 op u stelsel is weergawe $2, maar hierdie module ondersteun slegs weergawes $3 en hoër.
 index_egetversion=Kon nie die weergawe van Webalizer met opdrag $1 : $2 kry nie
-index_when=Ja, $1 
+index_when=Ja, $1
 index_webalizer=Webalizer
 index_enable=Skedule gekies
 index_disable=De-skedule gekies
@@ -66,7 +66,7 @@ save_euser=Ontbrekende of ongeldige gebruiker om webalisator te gebruik as
 save_ewuser=Geen Unix-gebruiker genaamd $1 bestaan nie
 save_ehost=Ontbrekende of ongeldige webwerfgasheernaam
 save_etitle=Verslagtitel ontbreek
-save_ecannot=U mag slegs verslae genereer vir logs onder $1 
+save_ecannot=U mag slegs verslae genereer vir logs onder $1
 
 view_epath=Ongeldige PATH_INFO
 view_efile=Ongeldige verslaglêernaam
@@ -77,7 +77,7 @@ view_title=Bekyk verslag
 
 global_title=Wêreldwye webalizer-opsies
 global_title2=Webalizer-verslagopsies
-global_for=Vir loglêer $1 
+global_for=Vir loglêer $1
 global_first=Daar is tans geen opsies vir hierdie loglêer opgestel nie, wat beteken dat die wêreldopsies in plaas daarvan gebruik sal word. As hierdie vorm gestoor word, gebruik verslae wat vir hierdie log gemaak word, van nou af die instellings wat op hierdie bladsy gekies is.
 global_header=Webalizer-opsies vir alle verslae
 global_host=Webwerf gasheernaam
@@ -147,11 +147,11 @@ global_ecurrent=Inkrementele lêernaam ontbreek of ongeldig
 global_ecache=DNS-cache-lêernaam ontbreek of ongeldig
 
 log_create_log=Rapportering vir $1 geskep
-log_modify_log=Gewysigde verslagdoening vir $1 
+log_modify_log=Gewysigde verslagdoening vir $1
 log_delete_log=Rapportering vir $1 is uitgevee
-log_generate_log=Gegenereerde verslag vir $1 
+log_generate_log=Gegenereerde verslag vir $1
 log_global=Gewysigde globale Webalizer-opsies
-log_global2=Gewysigde Webalizer-opsies vir $1 
+log_global2=Gewysigde Webalizer-opsies vir $1
 log_enable_logs=Geplande verslagdoening oor $1 -loglêers
 log_disable_logs=Geprogrammeerde verslagdoening oor $1 logs
 

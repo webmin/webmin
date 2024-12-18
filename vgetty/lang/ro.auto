@@ -18,7 +18,7 @@ vgetty_return=lista porturilor seriale
 vgetty_create=Adăugați Serial Port
 vgetty_edit=Editează portul serial
 vgetty_header=Opțiuni de configurare a portului serial
-vgetty_ts=Port serial $1 
+vgetty_ts=Port serial $1
 vgetty_other=Alt dispozitiv ..
 vgetty_rings=Inele înainte de a răspunde
 vgetty_default=Implicit global
@@ -100,19 +100,19 @@ pvfdesc=$1, $2 biți
 
 upload_err=Eroare la adăugarea mesajului
 upload_emessage=Nu a fost selectat niciun fișier WAV
-upload_ewav=Conversia fișierului WAV nu a reușit : $1 
-upload_epvf=Crearea fișierului RMD nu a reușit : $1 
+upload_ewav=Conversia fișierului WAV nu a reușit : $1
+upload_epvf=Crearea fișierului RMD nu a reușit : $1
 upload_esame=Fișierul de mesaj $1 există deja
 
 log_apply=Configurație aplicată
-log_upload=A fost încărcat mesajul de salut $1 
+log_upload=A fost încărcat mesajul de salut $1
 log_move=Conversia $1 a primit mesaje
 log_delete0=$1 au fost șterse mesaje
 log_delete1=Mesaje de felicitare $1 șterse
 log_options=Opțiuni modificate pentru mesajele vocale
-log_vgetty_create=Se adaugă portul serial $1 
-log_vgetty_modify=Port seriat modificat $1 
-log_vgetty_delete=Portul serial șterge $1 
+log_vgetty_create=Se adaugă portul serial $1
+log_vgetty_modify=Port seriat modificat $1
+log_vgetty_delete=Portul serial șterge $1
 
 email_subject=Mesaj vocal
 email_body=Mesajul vocal primit la $1 cu $2.

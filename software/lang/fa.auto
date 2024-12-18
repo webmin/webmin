@@ -77,7 +77,7 @@ list_size=اندازه
 list_status=وضعیت
 list_ok=خوب
 list_view=(چشم انداز)
-list_eview= $1 : $2 باز نشد
+list_eview=$1 : $2 باز نشد
 
 delete_err=پاک کردن بسته$1 انجام نشد
 delete_epack=بسته$1 وجود ندارد

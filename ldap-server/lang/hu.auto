@@ -1,4 +1,4 @@
-index_version=OpenLDAP $1 
+index_version=OpenLDAP $1
 index_openldap=OpenLDAP
 index_eslapd=A (z) $1 OpenLDAP szerverprogram nem található a rendszerén. Lehet, hogy a <a href='$2'>modulkonfiguráció</a> oldal elérési útja helytelen?
 index_econfig=A (z) $1 OpenLDAP szerver konfigurációs fájl nem található a rendszerén. Lehet, hogy a <a href='$2'>modulkonfiguráció</a> oldal elérési útja helytelen?
@@ -24,10 +24,10 @@ connect_efile=A (z) $1 OpenLDAP konfigurációs fájl nem található - talán n
 connect_euser2=Nincs felhasználó bejelentkeznie, mint az LDAP-kiszolgáló konfigurációjában található
 connect_epass2=Az LDAP-kiszolgáló konfigurációjában nem található jelszó
 connect_epass3=Az LDAP-kiszolgáló konfigurációjában szereplő jelszó titkosítva van, és a Webmin nem tudja használni
-connect_emod=Az LDAP-kiszolgálóhoz való csatlakozáshoz szükséges $1 Perl-modul nincs telepítve. A Perl teljes hibaüzenete : $2 
+connect_emod=Az LDAP-kiszolgálóhoz való csatlakozáshoz szükséges $1 Perl-modul nincs telepítve. A Perl teljes hibaüzenete : $2
 connect_eldap=Nem sikerült csatlakozni a (z) $2 porthoz tartozó $1 LDAP szerverhez
-connect_essl=A TLS titkosítás elindítása nem sikerült az LDAP kiszolgálón: $1 : $2 
-connect_elogin=Nem sikerült bejelentkezni a (z) $1 LDAP kiszolgálóra, mint $2 : $3 
+connect_essl=A TLS titkosítás elindítása nem sikerült az LDAP kiszolgálón: $1 : $2
+connect_elogin=Nem sikerült bejelentkezni a (z) $1 LDAP kiszolgálóra, mint $2 : $3
 connect_cpan=A <tt>$1</tt> Perl modul <a href='$2'>automatikusan telepíthető</a> a CPAN-ból.
 
 slapd_title=OpenLDAP szerver konfiguráció
@@ -109,11 +109,11 @@ acl_add=Adjon hozzá egy új hozzáférés-vezérlő szabályt.
 acl_return=hozzáférés-ellenőrzési szabályok
 
 browser_title=Böngészés az adatbázisban
-browser_econn=Az LDAP böngésző nem használható : $1 
+browser_econn=Az LDAP böngésző nem használható : $1
 browser_ecannot=Az LDAP adatbázisban nem szabad böngészni
 browser_base=böngészés:
 browser_ok=Előadás
-browser_esearch=Az LDAP keresése sikertelen : $1 
+browser_esearch=Az LDAP keresése sikertelen : $1
 browser_subs=Gyermek tárgyak
 browser_attrs=Objektum attribútumok
 browser_parent=Böngészés a szülő között
@@ -144,26 +144,26 @@ browser_sok=Keresés
 
 save_err=Az attribútum megváltoztatása nem sikerült
 save_ebase=Nem sikerült beolvasni a (z) $1 objektumot az adatbázisból
-save_emodify=$2 LDAP módosítása az $1 -ben sikertelen : $3 
+save_emodify=$2 LDAP módosítása az $1 -ben sikertelen : $3
 save_enone=Nincs megadva érték
 
 add_err=Nem sikerült hozzáadni az attribútumot
 add_eadd=Hiányzó vagy érvénytelen attribútumnév
 add_evalue=Hiányzó érték
-add_emodify=$2 LDAP hozzáadás a $1 -hez : $3 
+add_emodify=$2 LDAP hozzáadás a $1 -hez : $3
 
 delete_err=Az attribútumok eltávolítása nem sikerült
 delete_enone=Egy sincs kiválasztva
-delete_emodify=$2 LDAP törlése a (z) $1 helyről sikertelen : $3 
+delete_emodify=$2 LDAP törlése a (z) $1 helyről sikertelen : $3
 
 sdelete_err=Az objektumok törlése nem sikerült
 sdelete_edn=A (z) $1 objektum nem található
-sdelete_edel=$1 LDAP törlése sikertelen : $2 
+sdelete_edel=$1 LDAP törlése sikertelen : $2
 
 rename_err=Az objektum átnevezése nem sikerült
-rename_eget=Nem található objektum a következővel: DN $1 
+rename_eget=Nem található objektum a következővel: DN $1
 rename_enew=Úgy tűnik, hogy az új név nem érvényes
-rename_erename=LDAP newdn a $2 -re $1 -ből sikertelen : $3 
+rename_erename=LDAP newdn a $2 -re $1 -ből sikertelen : $3
 
 oadd_title=Objektum létrehozása
 oadd_header=Új LDAP-objektum részletei
@@ -176,10 +176,10 @@ oadd_edn2=Hiányzó vagy érvénytelen DN érték
 oadd_eclasses=Nincs megadva objektumosztály
 oadd_eclass=A '$1' nem tűnik érvényes objektumosztálynak
 oadd_ename=Érvénytelen megjelenésű név a (z) $1 attribútumhoz
-oadd_eget=Nem sikerült beolvasni a (z) $1 objektumot : $2 
-oadd_eget2=Nem sikerült ellenőrizni a (z) $1 ütközését : $2 
+oadd_eget=Nem sikerült beolvasni a (z) $1 objektumot : $2
+oadd_eget2=Nem sikerült ellenőrizni a (z) $1 ütközését : $2
 oadd_eclash=A DN $1 objektum már létezik
-oadd_eadd=$1 LDAP hozzáadása sikertelen : $2 
+oadd_eadd=$1 LDAP hozzáadása sikertelen : $2
 oadd_err=Nem sikerült új objektumot létrehozni
 
 create_title=Fa létrehozása
@@ -198,7 +198,7 @@ create_edom=Hiányzó vagy érvénytelen domain név
 create_edn=Hiányzó vagy érvénytelen megkülönböztető név
 create_err=Nem sikerült új fát létrehozni
 create_doingdn=Alap létrehozása DN $1 ..
-create_edoingdn=.. sikertelen : $1 
+create_edoingdn=.. sikertelen : $1
 create_done=.. Kész
 create_doingex=Példaobjektum létrehozása DN $1 értékkel.
 create_edoingex=.. sikertelen: $1. A fa azonban továbbra is használható.
@@ -207,22 +207,22 @@ create_eoc=Nem található megfelelő objektumosztály az új DN-hez
 eunknown=Ismeretlen hiba
 
 apply_err=A konfiguráció alkalmazása nem sikerült
-apply_ecmd=$1 sikertelen : $2 
+apply_ecmd=$1 sikertelen : $2
 apply_ecannot=A konfiguráció alkalmazása nem engedélyezett
 
 stop_err=Az LDAP szerver megállítása nem sikerült
-stop_ecmd=$1 sikertelen : $2 
+stop_ecmd=$1 sikertelen : $2
 stop_egone=Már nem fut!
-stop_ekill=A gyilkos folyamat sikertelen : $1 
+stop_ekill=A gyilkos folyamat sikertelen : $1
 stop_ecannot=Nem szabad megállítani az LDAP szervert
 
 start_err=Nem sikerült elindítani az LDAP szervert
-start_ecmd=$1 sikertelen : $2 
+start_ecmd=$1 sikertelen : $2
 start_ecannot=Az LDAP szerver nem indítható el
 
-log_create_dn=Létrehozott objektum: $1 
-log_delete_dn=Törölt objektum: $1 
-log_rename_dn=Objektum átnevezése: $1 
+log_create_dn=Létrehozott objektum: $1
+log_delete_dn=Törölt objektum: $1
+log_rename_dn=Objektum átnevezése: $1
 log_delete_dns=$1 objektum törölve
 log_create_attr=Hozzáadott attribútum a (z) $2 objektumhoz
 log_create_attr_l=Hozzáadta a (z) $1 attribútumot $3 értékkel a (z) $2 objektumhoz
@@ -237,7 +237,7 @@ log_apply=Alkalmazott konfiguráció
 log_slapd=Megváltozott az LDAP szerver konfigurációja
 log_schema=Megváltozott engedélyezett LDAP sémák
 log_gencert=Generált új SSL tanúsítvány
-log_sfile=Módosított sémafájl $1 
+log_sfile=Módosított sémafájl $1
 log_sup=A (z) $1 sémafájl átkerült
 log_sdown=Lekerült a (z) $1 sémafájl
 log_create=Új DN $1 létrehozva
@@ -275,7 +275,7 @@ acl_create=Új fát hozhat létre?
 acl_start=Indíthatom és leállíthatom az LDAP szervert?
 acl_apply=Alkalmazhatja a konfigurációs változtatásokat?
 
-access_desc=$2 $1 
+access_desc=$2 $1
 access_self=maga
 access_users=hitelesített felhasználók
 access_anon=névtelen felhasználók

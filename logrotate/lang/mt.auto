@@ -1,8 +1,8 @@
 index_title=Ġurnal tal-File Rotation
 index_econf=Il-fajl tal-konfigurazzjoni tar-rotazzjoni tal-log $1 ma nstabx fis-sistema tiegħek. Forsi logrotate mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
 index_ecmd=Il-programm ta ’rotazzjoni tal-log $1 ma nstabx fis-sistema tiegħek. Forsi mhuwiex installat, jew il-<a href='$2'>konfigurazzjoni tal-modulu</a> mhix korretta.
-index_eversion=Ma rnexxielux jikseb il-verżjoni tal-logrotate bil-kmand $1 : $2 
-index_version=Verżjoni logrotate $1 
+index_eversion=Ma rnexxielux jikseb il-verżjoni tal-logrotate bil-kmand $1 : $2
+index_version=Verżjoni logrotate $1
 index_add=Żid fajl tal-ġurnal ġdid biex iddawwar.
 index_file=Log fajl
 index_period=Perjodu ta 'rotazzjoni
@@ -50,7 +50,7 @@ edit_mailfl=Idħol fil-fajl bl-email
 edit_mailfirst=L-aktar ġdid li kien biss imdawwar
 edit_maillast=Oldest li wasal biex jitħassar
 edit_create=Erġa 'toħloq file log wara rotazzjoni?
-edit_createas=Iva, bil-mod $1 u l-proprjetà ta 'l-utent $2 u l-grupp $3 
+edit_createas=Iva, bil-mod $1 u l-proprjetà ta 'l-utent $2 u l-grupp $3
 edit_createno=Le, toħloqx mill-ġdid
 edit_createsame=Iva, bil-permessi qodma
 edit_olddir=Aħżen zkuk imdawrin qodma
@@ -90,10 +90,10 @@ log_modify_sched=Inbidlet ir-rotazzjoni tal-log tal-impjieg Cron
 log_create_sched=Ħoloq xogħol ta 'rotazzjoni ta' log Cron
 log_delete_sched=Impjieg ta 'Cron b'rotazzjoni ta' log imħassar
 log_global=Għażliet globali modifikati
-log_create=Rotazzjoni miżjuda għall-fajl tal-ġurnal $1 
-log_modify=Rotazzjoni modifikata għall-fajl tal-ġurnal $1 
-log_delete=Rotazzjoni mħassra għall-fajl tal-ġurnal $1 
-log_delete_logs=Rotazzjoni mħassra għal fajls ta 'reġistrazzjoni $1 
+log_create=Rotazzjoni miżjuda għall-fajl tal-ġurnal $1
+log_modify=Rotazzjoni modifikata għall-fajl tal-ġurnal $1
+log_delete=Rotazzjoni mħassra għall-fajl tal-ġurnal $1
+log_delete_logs=Rotazzjoni mħassra għal fajls ta 'reġistrazzjoni $1
 
 sched_title=Skeda ta ’Rotazzjoni tal-Ġurnal
 sched_desc=Sabiex ir-rotazzjoni tal-ġurnal ikkonfigurata bl-użu ta 'dan il-modulu biex titwettaq, il-kmand $1 għandu jkun immexxi minn Cron fi skeda regolari (ġeneralment kuljum).

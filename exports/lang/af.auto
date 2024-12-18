@@ -82,15 +82,15 @@ save_eanonuid=Ongeldige anonieme toegangsnaam
 save_eanongid=Ongeldige naam van die anonieme toegangsgroep
 
 exports_webnfs=WebNFS kliënte
-exports_ngroup=NETGroup $1 
-exports_net=Network $1 
+exports_ngroup=NETGroup $1
+exports_net=Network $1
 exports_all=almal
-exports_hosts=Gashere $1 
-exports_host=Host $1 
-exports_gss=Gemagtigde netwerk: $1 
+exports_hosts=Gashere $1
+exports_host=Host $1
+exports_gss=Gemagtigde netwerk: $1
 
-log_modify=Gewysigde NFS-uitvoer $1 
-log_modify_l=Gewysigde NFS-uitvoer $1 tot $2 
+log_modify=Gewysigde NFS-uitvoer $1
+log_modify_l=Gewysigde NFS-uitvoer $1 tot $2
 log_delete=NFS-uitvoer $1 is uitgevee
 log_delete_l=NFS-uitvoer $1 na $2 is uitgevee
 log_create=NFS-uitvoer $1 geskep

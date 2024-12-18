@@ -11,7 +11,7 @@ type_7=Opciones de SSL
 
 dir_header5=Para el directorio $1 globalmente
 
-manual_etest=Error de archivo de configuración detectado : $1 
+manual_etest=Error de archivo de configuración detectado : $1
 
 limit_header7=Para los comandos $1 globalmente
 
@@ -58,11 +58,11 @@ apply_egone=Ya no se ejecuta
 
 ftpindex_cmds=Comandos FTP
 
-log_anonc=Configurar FTP anónimo para el servidor $1 
-log_anons=FTP anónimo reconfigurado para el servidor $1 
-log_anond=FTP anónimo eliminado para el servidor $1 
-log_anonm=FTP anónimo editado manualmente para el servidor $1 
-log_anon=Se modificó $1 en FTP anónimo para el servidor $2 
+log_anonc=Configurar FTP anónimo para el servidor $1
+log_anons=FTP anónimo reconfigurado para el servidor $1
+log_anond=FTP anónimo eliminado para el servidor $1
+log_anonm=FTP anónimo editado manualmente para el servidor $1
+log_anon=Se modificó $1 en FTP anónimo para el servidor $2
 
 eafter=Error de verificación de configuración: $1 Los cambios no se han guardado.
 proftpd_apply=Aplicar los cambios

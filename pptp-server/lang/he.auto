@@ -1,5 +1,5 @@
 index_title=שרת VPN VPTP
-index_version=גרסת PoPToP $1 
+index_version=גרסת PoPToP $1
 index_epptpd=שרת ה- PPPToP PPTP $1 לא נמצא במערכת שלך, או שהוא לא התוכנית הנכונה. אולי הוא לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
 index_econfig=קובץ תצורת שרת ה- PPTP $1 לא נמצא במערכת שלך. אולי <a href='$2'>תצורת המודול</a> שלך שגויה.
 index_stop=עצור את שרת ה- PPTP
@@ -63,7 +63,7 @@ options_err=שמירת אפשרויות PPP נכשלה
 options_emtu=גודל מנות משלוח מקסימלי חסר או לא חוקי
 options_emru=גודל מנות קבלה מקסימלי חסר או לא חוקי
 options_ename=שם שרת חסר או לא חוקי לאימות
-options_version=גרסת PPPd $1 
+options_version=גרסת PPPd $1
 options_msdesc=האפשרויות שלהלן מאפשרות את שיטת האימות MS-CHAP ואת קידוד MPPE, המשמשות כברירת מחדל על ידי לקוחות VPN של Windows. עם זאת, MPPE דורש תמיכה הן בדמון ה- PPP והן בגרעין מערכת ההפעלה.
 options_mschap=אימות MS-CHAP
 options_mschap-v2=אימות MS-CHAP גרסה 2
@@ -75,7 +75,7 @@ secrets_ecannot=אינך רשאי לערוך חשבונות PPP
 secrets_return=אינדקס
 secrets_none=עדיין לא נוצרו חשבונות PPP.
 secrets_enopfile=קובץ סיסמאות PPP $1 אינו קיים במערכת שלך. אולי PPP אינו מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
-secrets_table=PPP מהווה $1 
+secrets_table=PPP מהווה $1
 secrets_user=שם משתמש
 secrets_ips=כתובות IP
 secrets_uany=כל
@@ -133,13 +133,13 @@ disc_err=ניתוק נכשל
 disc_egone=החיבורים אינם פעילים עוד
 disc_ekill=התהליך אינו פועל עוד
 
-log_secret_create=יצר חשבון PPP $1 
-log_secret_modify=חשבון PPP שונה $1 
+log_secret_create=יצר חשבון PPP $1
+log_secret_modify=חשבון PPP שונה $1
 log_secret_delete=חשבון PPP $1 נמחק
 log_deletes=נמחקו $1 חשבונות PPP
 log_conf=אפשרויות שרת PPTP השתנו
 log_options=אפשרויות PPP השתנו
-log_disc=לקוח מנותק $1 
+log_disc=לקוח מנותק $1
 log_start=שרת PPTP התחיל
 log_stop=שרת PPTP הופסק
 log_apply=תצורת שרת PPTP מיושמת

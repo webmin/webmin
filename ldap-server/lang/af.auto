@@ -1,4 +1,4 @@
-index_version=OpenLDAP $1 
+index_version=OpenLDAP $1
 index_openldap=OpenLDAP
 index_eslapd=Die OpenLDAP-bedienerprogram $1 is nie op u stelsel gevind nie. Miskien is die pad op die <a href='$2'>modulekonfigurasie</a> </a> foutief?
 index_econfig=Die OpenLDAP-bediener se konfigurasielêer $1 is nie op u stelsel gevind nie. Miskien is die pad op die <a href='$2'>modulekonfigurasie</a> </a> foutief?
@@ -24,7 +24,7 @@ connect_efile=Die OpenLDAP-konfigurasielêer $1 is nie gevind nie - miskien is d
 connect_euser2=Geen gebruiker om aan te meld soos gevind in die LDAP-bedieneropstelling nie
 connect_epass2=Geen wagwoord om mee aan te meld is in die LDAP-bedieneropstelling gevind nie
 connect_epass3=Die wagwoord in die LDAP-bediener se konfigurasie is geïnkripteer en kan nie deur Webmin gebruik word nie
-connect_emod=Die Perl-module $1 wat nodig is om aan die LDAP-bediener te koppel, is nie geïnstalleer nie. Die volledige Perl-foutboodskap is : $2 
+connect_emod=Die Perl-module $1 wat nodig is om aan die LDAP-bediener te koppel, is nie geïnstalleer nie. Die volledige Perl-foutboodskap is : $2
 connect_eldap=Kon nie aan LDAP-bediener $1 op poort $2 koppel nie
 connect_essl=Kon nie TLS-kodering met LDAP-bediener $1 : $2 begin nie
 connect_elogin=Kon nie by LDAP-bediener $1 aanmeld as $2 : $3 nie
@@ -109,11 +109,11 @@ acl_add=Voeg 'n nuwe reël vir toegangsbeheer by.
 acl_return=reëls vir toegangsbeheer
 
 browser_title=Blaai deur die databasis
-browser_econn=Die LDAP-blaaier kan nie gebruik word nie : $1 
+browser_econn=Die LDAP-blaaier kan nie gebruik word nie : $1
 browser_ecannot=U mag nie in die LDAP-databasis blaai nie
 browser_base=op:
 browser_ok=Wys
-browser_esearch=LDAP-soektog misluk : $1 
+browser_esearch=LDAP-soektog misluk : $1
 browser_subs=Kindervoorwerpe
 browser_attrs=Voorwerpkenmerke
 browser_parent=Blaai deur ouer
@@ -144,26 +144,26 @@ browser_sok=Soek
 
 save_err=Kon nie kenmerk verander nie
 save_ebase=Kon nie objek $1 uit die databasis haal nie
-save_emodify=LDAP-modifikasie van $2 in $1 het misluk : $3 
+save_emodify=LDAP-modifikasie van $2 in $1 het misluk : $3
 save_enone=Geen waardes ingevoer nie
 
 add_err=Kon nie attribuut byvoeg nie
 add_eadd=Ontbrekende of ongeldige kenmerknaam
 add_evalue=Waarde ontbreek
-add_emodify=LDAP-byvoeging van $2 tot $1 het misluk : $3 
+add_emodify=LDAP-byvoeging van $2 tot $1 het misluk : $3
 
 delete_err=Kon nie eienskappe verwyder nie
 delete_enone=Geen gekies nie
-delete_emodify=LDAP-verwydering van $2 van $1 het misluk : $3 
+delete_emodify=LDAP-verwydering van $2 van $1 het misluk : $3
 
 sdelete_err=Kon nie voorwerpe uitvee nie
 sdelete_edn=Voorwerp $1 is nie gevind nie
-sdelete_edel=LDAP-skrap van $1 het misluk : $2 
+sdelete_edel=LDAP-skrap van $1 het misluk : $2
 
 rename_err=Kon nie die naam van voorwerp hernoem nie
 rename_eget=Kon geen voorwerp met DN $1 vind nie
 rename_enew=Dit lyk nie of die nuwe naam geldig is nie
-rename_erename=LDAP nuut na $2 vanaf $1 misluk : $3 
+rename_erename=LDAP nuut na $2 vanaf $1 misluk : $3
 
 oadd_title=Skep voorwerp
 oadd_header=Nuwe LDAP-objekbesonderhede
@@ -175,11 +175,11 @@ oadd_edn1=Ontbrekende of ongeldige naam vir DN
 oadd_edn2=Ontbrekende of ongeldige waarde vir DN
 oadd_eclasses=Geen objekklasse is ingeskryf nie
 oadd_eclass='$1' lyk nie soos 'n geldige objekklas nie
-oadd_ename=Ongeldige naam vir kenmerk $1 
+oadd_ename=Ongeldige naam vir kenmerk $1
 oadd_eget=Kon nie objek $1 : $2 kry nie
 oadd_eget2=Kon nie na botsing met $1 : $2 kyk nie
 oadd_eclash='N Voorwerp met die DN $1 bestaan reeds
-oadd_eadd=LDAP-byvoeging van $1 het misluk : $2 
+oadd_eadd=LDAP-byvoeging van $1 het misluk : $2
 oadd_err=Kon nie nuwe voorwerp skep nie
 
 create_title=Skep boom
@@ -198,7 +198,7 @@ create_edom=Domeinnaam ontbreek of ongeldig
 create_edn=Naam of ontbrekende naam ontbreek
 create_err=Kon nie nuwe boom skep nie
 create_doingdn=Skep basis DN $1.
-create_edoingdn=.. misluk : $1 
+create_edoingdn=.. misluk : $1
 create_done=.. klaar
 create_doingex=Skep voorbeeldvoorwerp met DN $1.
 create_edoingex=.. misluk: $1. Die boom kan egter steeds gebruik word.
@@ -207,17 +207,17 @@ create_eoc=Kon nie 'n geskikte objekklas vir die nuwe DN vind nie
 eunknown=Onbekende fout
 
 apply_err=Kon nie konfigurasie toepas nie
-apply_ecmd=$1 het misluk : $2 
+apply_ecmd=$1 het misluk : $2
 apply_ecannot=U mag nie die konfigurasie toepas nie
 
 stop_err=Kon nie LDAP-bediener stop nie
-stop_ecmd=$1 het misluk : $2 
+stop_ecmd=$1 het misluk : $2
 stop_egone=Nie meer hardloop nie!
-stop_ekill=Doodsproses het misluk : $1 
+stop_ekill=Doodsproses het misluk : $1
 stop_ecannot=U mag nie die LDAP-bediener stop nie
 
 start_err=Kon nie LDAP-bediener begin nie
-start_ecmd=$1 het misluk : $2 
+start_ecmd=$1 het misluk : $2
 start_ecannot=U mag nie die LDAP-bediener begin nie
 
 log_create_dn=Voorwerp $1 geskep
@@ -225,9 +225,9 @@ log_delete_dn=Voorwerp $1 is uitgevee
 log_rename_dn=Voorwerp $1 hernoem
 log_delete_dns=$1 voorwerpe uitgevee
 log_create_attr=Kenmerk by voorwerp $2 gevoeg
-log_create_attr_l=Kenmerk $1 met waarde $3 bygevoeg tot objek $2 
-log_modify_attr=Kenmerk bygewerk in objek $2 
-log_modify_attr_l=Kenmerk $1 is opgedateer met waarde $3 in objek $2 
+log_create_attr_l=Kenmerk $1 met waarde $3 bygevoeg tot objek $2
+log_modify_attr=Kenmerk bygewerk in objek $2
+log_modify_attr_l=Kenmerk $1 is opgedateer met waarde $3 in objek $2
 log_delete_attr=Van objek $2 verwyder
 log_delete_attr_l=Kenmerk $1 van objek $2 is verwyder
 log_delete_attrs=$1 attribute van objek $2 is uitgevee
@@ -237,7 +237,7 @@ log_apply=Toegepaste konfigurasie
 log_slapd=Die LDAP-bediener se konfigurasie is verander
 log_schema=LDAP-skemas is verander
 log_gencert=Nuwe SSL-sertifikaat genereer
-log_sfile=Gewysigde skemabestand $1 
+log_sfile=Gewysigde skemabestand $1
 log_sup=Skemalêer $1 is opgeskuif
 log_sdown=Skema-lêer $1 is verwyder
 log_create=Nuwe DN $1 geskep
@@ -248,7 +248,7 @@ log_create_access=Toegangsbeheerreël vir $1 geskep
 log_delete_access=Vee toegangsbeheerreël vir $1 uit
 log_modify_access=Reël vir toegangsbeheer vir $1 opgedateer
 log_up_access=Reël vir toegangsbeheer vir $1 opgeskuif
-log_down_access=Reël vir toegangsbeheer is verwyder vir $1 
+log_down_access=Reël vir toegangsbeheer is verwyder vir $1
 log_delete_accesses=$1 toegangsbeheerreëls is uitgevee
 log_all=alle voorwerpe
 
@@ -275,7 +275,7 @@ acl_create=Kan u nuwe boom skep?
 acl_start=Kan LDAP-bediener begin en stop?
 acl_apply=Kan konfigurasieveranderings toegepas word?
 
-access_desc=$2 by $1 
+access_desc=$2 by $1
 access_self=self
 access_users=geverifieerde gebruikers
 access_anon=anonieme gebruikers
@@ -323,6 +323,6 @@ eacl_edn=DN ontbreek of ongeldig - moet soos <tt>uid=joe,dc=my-domein,dc=com</tt
 eacl_efilter=Ontbrekende of ongeldige filter - moet soos <tt>(objectClass = posixAccount)</tt> wees
 eacl_eattrs=Ontbrekende of ongeldige komma-geskeide lys kenmerke
 eacl_ewho=DN in ry $1 ontbreek of ongeldig lyk
-eacl_eaccess=Toegangsvlak ontbreek of ongeldig in ry $1 
+eacl_eaccess=Toegangsvlak ontbreek of ongeldig in ry $1
 eacl_order=Reël orde
 eacl_noorder=Geen stel nie

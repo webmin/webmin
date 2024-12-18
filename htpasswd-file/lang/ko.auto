@@ -50,5 +50,5 @@ sync_ecannot=동기화를 구성할 수 없습니다
 
 log_sync=변경된 동기화 옵션
 log_create=생성된 사용자 $1
-log_delete=삭제된사용자 $1 
-log_modify=수정된 사용자 $1 
+log_delete=삭제된사용자 $1
+log_modify=수정된 사용자 $1

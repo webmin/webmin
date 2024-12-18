@@ -214,7 +214,7 @@ send_draft=$1'e gönderilecek mesaj taslak dizinine kaydedildi.
 send_drafting=$1'e gönderilecek postayı taslak dizinine kaydediyor ..
 send_eattachsize=Mail eklentisi maksimum boyut olan $1'i aştı
 
-delete_title=Postayı  Sil
+delete_title=Postayı Sil
 delete_rusure=$2'nin seçilmiş $1 mesajını silmek istediğinizden emin misiniz? Dosya büyük bir dosya olduğu için silme işlemi biraz zaman alabilir. Silme işlemi bitinceye kadar, baska bir program caliştırmayın.
 delete_rusure2=$1'den gelen mesajı silmek istediğinizden emin misiniz? Dosya boyutunun büyüklüğü yüzünden silme işlemi uzun sürebilir. Silme işlemi bitene kadar başka bir program caliştırmayın.
 delete_ok=Şimdi Sil

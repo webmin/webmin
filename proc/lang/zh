@@ -109,10 +109,10 @@ sysv_pgid=进程组ID
 sysv_tty=TTY
 
 log_run=已运行命令 "$1"
-log_kill=已向进程 $2发送信号 $1 
-log_kills=已到 $2 进程发送信号 $1 
-log_kill_l=已向进程 $2发送信号 $1 
-log_kills_l=已向进程<br>$2发送信号 $1 
+log_kill=已向进程 $2发送信号 $1
+log_kills=已到 $2 进程发送信号 $1
+log_kill_l=已向进程 $2发送信号 $1
+log_kills_l=已向进程<br>$2发送信号 $1
 
 acl_manage=以用户的身份管理进程
 acl_manage_def=当前Webmin用户
@@ -120,7 +120,7 @@ acl_edit=可以删除并renice进程吗？
 acl_run=可以执行命令吗？
 
 kill_kill=删除进程
-kill_term=    终止    
-kill_hup=  重新启动  
-kill_stop=    停止    
-kill_cont=    继续    
+kill_term=终止    
+kill_hup=重新启动  
+kill_stop=停止    
+kill_cont=继续    

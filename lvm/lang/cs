@@ -70,7 +70,7 @@ mkfs_ok=.. příkaz byl proveden.
 resize_title=Změna velikosti souborového svazku
 resize_mesg=U souborového systému $1 na logickém disku nemůže být změněna velikost. Chcete-li změnit velikost logického svazku, musíte znovu vytvořit souborový systém. To však smaže všechna data na něm.
 resize_mesg2=Webmin neví, jaký druh souborového systému se na vašem svazku nachází, je-li tam vůbec nějaký. Chcete-li změnit velikost logického svazku, musíte znovu vytvořit souborový systém. To však smaže všechna data na něm.
-resize_fs=Stala se chyba během změny velikosti $1 souborového systému na vašem svazku : $2  Chcete-li právě teď změnit velikost logického svazku, musíte znovu vytvořit souborový systém. To však smaže všechna data na něm.
+resize_fs=Stala se chyba během změny velikosti $1 souborového systému na vašem svazku : $2 Chcete-li právě teď změnit velikost logického svazku, musíte znovu vytvořit souborový systém. To však smaže všechna data na něm.
 resize_ok=Změnit velikost souborového svazku
 
 init_title=Activace LVM

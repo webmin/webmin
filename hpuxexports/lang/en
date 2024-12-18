@@ -54,7 +54,7 @@ edit_all_hosts=All hosts
 edit_user_access=User access
 edit_root_access=Root access
 edit_anon_access=Anonymous user
-edit_anon_notset=Not set 
+edit_anon_notset=Not set
 edit_anon_noaccess=No access
 edit_async=Asynchronous writes
 

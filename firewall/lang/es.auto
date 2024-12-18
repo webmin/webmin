@@ -1,8 +1,8 @@
 index_title_v=Cortafuegos IPv4
 index_title_v6=Cortafuegos IPv6
 index_position=Mostrando las reglas $1 a $2 de $3
-index_editing=Archivo de reglas $1 
-index_evalid=¡ADVERTENCIA! Su configuración actual de IPtables no es válida : $1 
+index_editing=Archivo de reglas $1
+index_evalid=¡ADVERTENCIA! Su configuración actual de IPtables no es válida : $1
 index_comm=Comentario
 index_no_comment=
 index_jump_reject=<font color=#ff4400>Rechazar</font>
@@ -37,21 +37,21 @@ index_ipvxmode=Cambiar la versión del protocolo IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
 
-desc_icmpv6-type=El tipo de ICMP es $1 
-desc_icmpv6-type!=El tipo de ICMP no es $1 
-desc_mac-source=la dirección de ethernet es $1 
-desc_mac-source!=la dirección de ethernet no es $1 
-desc_ctstate=el estado de conexión es $1 
-desc_ctstate!=el estado de conexión no es $1 
+desc_icmpv6-type=El tipo de ICMP es $1
+desc_icmpv6-type!=El tipo de ICMP no es $1
+desc_mac-source=la dirección de ethernet es $1
+desc_mac-source!=la dirección de ethernet no es $1
+desc_ctstate=el estado de conexión es $1
+desc_ctstate!=el estado de conexión no es $1
 desc_match-set=$2 coincide con el conjunto de IP $1
 desc_match-set!=$2 no coincide con el IPset $1
 desc_match-set_src=trafico entrante
 desc_match-set_dst=trafico saliente
-desc_physdev-in=la interfaz física de entrada es $1 
-desc_physdev-in!=la interfaz física de entrada no es $1 
-desc_physdev-out=la interfaz física de salida es $1 
-desc_physdev-out!=la interfaz física de salida no es $1 
-desc_args--match-set=$2 está contenido en el conjunto de IP $1 
+desc_physdev-in=la interfaz física de entrada es $1
+desc_physdev-in!=la interfaz física de entrada no es $1
+desc_physdev-out=la interfaz física de salida es $1
+desc_physdev-out!=la interfaz física de salida no es $1
+desc_args--match-set=$2 está contenido en el conjunto de IP $1
 desc_src=fuente
 desc_dest=destino
 
@@ -86,18 +86,18 @@ clear_ecannot=No está permitido limpiar cadenas
 new_ecannot=No tienes permitido crear cadenas
 
 apply_ecannot=No tiene permitido aplicar la configuración
-apply_remote=Error de $1 : $2 
+apply_remote=Error de $1 : $2
 unapply_ecannot=No está permitido revertir la configuración
 bootup_ecannot=No está permitido habilitar o deshabilitar el firewall en el arranque
 
-log_rename_chain=Cadena renombrada $1 en la tabla $2 
-log_delsel_chain=Se eliminaron $3 reglas de la cadena $1 en la tabla $2 
-log_movesel_chain=Se movieron $3 reglas de la cadena $1 en la tabla $2 
-log_add_host=Servidor de clúster agregado $1 
-log_add_group=Se agregaron servidores de clúster del grupo $1 
-log_delete_host=Se eliminó el servidor de clúster $1 
+log_rename_chain=Cadena renombrada $1 en la tabla $2
+log_delsel_chain=Se eliminaron $3 reglas de la cadena $1 en la tabla $2
+log_movesel_chain=Se movieron $3 reglas de la cadena $1 en la tabla $2
+log_add_host=Servidor de clúster agregado $1
+log_add_group=Se agregaron servidores de clúster del grupo $1
+log_delete_host=Se eliminó el servidor de clúster $1
 log_delete_group=Se eliminaron $1 servidores de clúster
-log_openports=Puertos de firewall abiertos $1 
+log_openports=Puertos de firewall abiertos $1
 
 setup_ecannot=No tienes permiso para configurar el firewall
 
@@ -134,7 +134,7 @@ add_gmsg=Agregando servidores en el grupo $1 ..
 add_err=Error al agregar servidor
 add_gerr=Error al agregar grupo
 add_echeck=El servidor $1 no tiene el módulo de firewall de Linux
-add_emissing=Al servidor $1 le falta el comando de firewall $2 
+add_emissing=Al servidor $1 le falta el comando de firewall $2
 add_ok=Se agregó $1, con $2 reglas de firewall activas.
 add_enone=No hay servidores para agregar seleccionados!
 

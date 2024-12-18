@@ -38,7 +38,7 @@ ui_ehostnamedisplay=Nome de host de exibição ausente ou inválido
 
 mods_checksig=Verifique o arquivo de assinatura para obter os módulos baixados?
 
-os_incorrect=O sistema operacional $1 foi atualizado para a versão $2 
+os_incorrect=O sistema operacional $1 foi atualizado para a versão $2
 os_release_notes=Notas de lançamento
 os_usermin=Atualize também o SO Usermin
 
@@ -151,7 +151,7 @@ session_eyescrypt=o formato hash yescrypt não pode ser usado, pois o módulo Pe
 session_passapi=Ativar API de alteração de senha remota?
 session_passapi0=API desativada
 session_passapi1=API habilitada para usuários Unix
-session_passurl=Quando habilitado, as senhas do usuário podem ser alteradas por meio de uma solicitação POST para $1 
+session_passurl=Quando habilitado, as senhas do usuário podem ser alteradas por meio de uma solicitação POST para $1
 
 categories_custom=personalizadas
 
@@ -194,10 +194,10 @@ kill_pid=Eliminando processo $1 ..
 term_pid=Encerrando processo $1 ..
 kill_gone=.. o processo não existe mais!
 kill_gone2=.. o bloqueio não existe mais!
-kill_dead=.. matou $1 e liberou o bloqueio $2 
+kill_dead=.. matou $1 e liberou o bloqueio $2
 kill_alive=.. enviou sinal de eliminação para $1 mas não saiu!
 kill_failed=.. kill falhou devido a $1, mas liberou o bloqueio $2 mesmo assim
-kill_already=.. liberou o bloqueio em $1 
+kill_already=.. liberou o bloqueio em $1
 
 ipkey_ips2=Para endereços IP e nomes de host
 ipkey_eip2='$1' não é um endereço IP ou nome de host válido

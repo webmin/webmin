@@ -4,10 +4,10 @@ index_edir=ספריית בסיס Jabber $1 אינה קיימת. ג'אבר לא �
 index_emodules=מודולי Perl $1 ו- $2 הנדרשים על ידי Webmin לטיפול בתצורת ה- XML של Jabber אינם מותקנים. <a href='$3'>לחץ כאן</a> כדי להתקין אותם ישירות מ- CPAN.
 index_emodule=מודול Perl $1 הנדרש על ידי Webmin לטיפול בתצורת ה- XML של Jabber אינו מותקן. <a href='$2'>לחץ כאן</a> כדי להתקין אותו ישירות מ- CPAN.
 index_expat=הקפד להתקין את ספריית הכותרות של Expat C לפני שתנסה להתקין את המודולים של פרל, מכיוון שהם תלויים בה ויכשלו אם הם אינם זמינים.
-index_eparse=מודול $1 perl לא הצליח לנתח את קובץ ה- Jabber שלך : $2 
+index_eparse=מודול $1 perl לא הצליח לנתח את קובץ ה- Jabber שלך : $2
 index_ejabberd=תוכנית שרת Jabber $1 לא נמצאה במערכת שלך. ג'אבר לא מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
-index_eversion=Webmin תומך רק בגירסת Jabber $2, אך הפקודה $3 דיווחה על פרטי הגרסה הבאה : $1 
-index_eversion2=Webmin תומך רק בגרסאות ג'אבר מתחת ל- $2, אך הפקודה $3 דיווחה על מידע הגירסאות הבא : $1 
+index_eversion=Webmin תומך רק בגירסת Jabber $2, אך הפקודה $3 דיווחה על פרטי הגרסה הבאה : $1
+index_eversion2=Webmin תומך רק בגרסאות ג'אבר מתחת ל- $2, אך הפקודה $3 דיווחה על מידע הגירסאות הבא : $1
 index_start=הפעל את שרת Jabber
 index_startmsg=לחץ על כפתור זה כדי להפעיל את שרת Jabber במערכת שלך. עד שתתחיל, אף לקוח להודעות מיידיות לא יוכל להשתמש בו.
 index_stop=עצור את שרת ג'אבר
@@ -16,7 +16,7 @@ index_restart=החל שינויים
 index_restartmsg=לחץ על כפתור זה כדי להחיל את התצורה הנוכחית על ידי עצירה והפעלה מחדש של שרת Jabber.
 index_comments=אזהרה - קובץ ה- Jabber config $1 שלך מכיל הערות, שיוסרו אם יבוצעו שינויים בתצורה באמצעות מודול זה.
 index_return=תפריט ג'אבר
-index_version=גרסת ג'אבר $1 
+index_version=גרסת ג'אבר $1
 
 general_title=אפשרויות כלליות
 general_header=אפשרויות שרת ג'אבר גלובליות
@@ -44,7 +44,7 @@ messages_rnotify=להודיע למנהל על ההרשמה?
 messages_rfields=שדות רישום חובה
 messages_vcard2jud=לשלוח vCard לספריית המשתמשים של ג'אבר?
 messages_err=שמירת ההודעות נכשלה
-messages_evcard=XML לא חוקי של vCard : $1 
+messages_evcard=XML לא חוקי של vCard : $1
 messages_etag=שרת vCard XML אינו מתחיל ב- &lt;vCard&gt;
 
 modules_title=מודולי ג'אבר
@@ -60,7 +60,7 @@ karma_title=בקרת תנועה בקרמה
 karma_header=אפשרויות בקרת תעבורה
 karma_rate=טיפול חיבור מוגזם
 karma_rate_def=נכים
-karma_rate_sel=חסום לקוח למשך $2 שניות לאחר חיבורי $1 
+karma_rate_sel=חסום לקוח למשך $2 שניות לאחר חיבורי $1
 karma_mode=מצב קארמה
 karma_none=ללא גבולות
 karma_low=מגבלות תנועה נמוכות

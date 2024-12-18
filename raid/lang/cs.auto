@@ -17,7 +17,7 @@ create_f3_layout=3 vzdálené kopie
 create_o3_layout=3 ofsetové kopie
 
 view_uuid=UUID
-view_iscsi=Používá sdílené zařízení iSCSI $1 
+view_iscsi=Používá sdílené zařízení iSCSI $1
 view_delayed=Čekání na jiném zařízení
 view_remove_det=Odpojit
 view_remove_detdesc=Odeberte oddíly, které jsou již fyzicky odpojeny od systému.
@@ -35,7 +35,7 @@ view_sparegroup=Náhradní skupina
 emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmreplace=<tt>mdadm</tt> in <tt>--manage --replace</tt> mode failed : $1
 
-log_replace=Nahrazený oddíl $2 v zařízení RAID $1 náhradním oddílem $3 
+log_replace=Nahrazený oddíl $2 v zařízení RAID $1 náhradním oddílem $3
 log_grow=Vytvořil RAID zařízení $1 na celkem $2 disků
 log_convert_to_raid6=Převedeno zařízení RAID5 $1 na zařízení RAID6
 log_convert_to_raid5=Převedeno zařízení RAID6 $1 na zařízení RAID5

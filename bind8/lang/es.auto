@@ -17,7 +17,7 @@ index_eexpired=Advertencia: Las siguientes zonas tienen firmas DNSSEC caducadas 
 index_eexpired_conf=La firma automática debe volver a habilitarse en la página $1.
 index_eexpired_mod=Use el módulo $1 para deshabilitar DNSSEC para estos dominios, o verifique por qué falla la firma.
 
-master_inview=$1 en vista $2 
+master_inview=$1 en vista $2
 master_egone=La zona $1 no existe en ninguna vista
 master_egone2=¡La zona $1 no existe!
 master_egone3=La zona $1 a la vista $2 no existe.

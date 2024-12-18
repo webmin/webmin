@@ -354,7 +354,7 @@ sql_epostgresqlconnect=Nije uspjelo povezivanje s PostgreSQL bazom podataka : $1
 sql_eldapdriver=Nije uspjelo učitavanje LDAP perl modula
 sql_eldapconnect=Nije uspjelo povezivanje s poslužiteljem LDAP $1
 sql_eldaptls=Nije uspjelo pokretanje TLS enkripcije za LDAP : $1
-sql_eldaplogin=Nije uspjela prijava na LDAP poslužitelj kao $1 : $2 
+sql_eldaplogin=Nije uspjela prijava na LDAP poslužitelj kao $1 : $2
 
 log_email_subject=Akcija webmin-a u $1
 log_email_global=Webmin globalna akcija
@@ -387,9 +387,9 @@ paginator_nosearchrs=Nema rezultata koji odgovaraju <tt>$1</tt> upitu
 
 langauto_include=Uključite strojne prijevode
 
-file_truncated_message=dohvatio $1 podataka, skratio $2 od $3 
-file_truncated_message_head=dohvaćen početak $1 podataka, skraćen $2 od $3 
-file_truncated_message_tail=dohvaćen završetak $1 podataka, skraćen $2 od $3 
+file_truncated_message=dohvatio $1 podataka, skratio $2 od $3
+file_truncated_message_head=dohvaćen početak $1 podataka, skraćen $2 od $3
+file_truncated_message_tail=dohvaćen završetak $1 podataka, skraćen $2 od $3
 
 defcert_error=Koristi se zadani $1 SSL certifikat u paketu. Preporučljivo je ažurirati zadani <tt>$2</tt> certifikat prije nego što nastavite s prijavom.
 

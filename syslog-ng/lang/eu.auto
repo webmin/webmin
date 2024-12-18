@@ -9,7 +9,7 @@ index_stopdesc=Egin klik botoi honetan Syslog-NG deabrua martxan jartzeko. Behin
 index_start=Hasi Syslog-NG
 index_startdesc=Egin klik botoi honetan Syslog-NG deabrua abiarazteko, uneko konfigurazioa erabiliz.
 index_return=moduluaren aurkibidea
-index_version=Syslog-NG $1 
+index_version=Syslog-NG $1
 
 options_title=Logging Aukerak
 options_header=Log fitxategi guztientzako aukerak
@@ -259,7 +259,7 @@ source_edoor=Falta da edo ez da baliozkoa Sun Streams atearen fitxategiaren izen
 source_transport=Sareko protokoloa
 
 view_title=Ikusi Fitxategia
-view_header=Azken $1 lerroak $2 
+view_header=Azken $1 lerroak $2
 view_empty=Erregistroaren fitxategia hutsik dago
 view_refresh=Freskatu
 view_filter=Erakutsi $1 testuarekin lerroak soilik

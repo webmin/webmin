@@ -1,5 +1,5 @@
 index_title=MySQL 数据库服务器
-index_notrun=您的系统没有运行 MySQL - 不能检索数据库列表。    
+index_notrun=您的系统没有运行 MySQL - 不能检索数据库列表。
 index_start=启动 MySQL 服务器
 index_startmsg=点击这个按钮用命令$1启动系统上的MySQL数据库服务器。只有数据库启动后， Webmin 模块才能管理它。
 index_nopass=为了管理您的数据库，Webmin 需要知道 MySQL 管理员的登录名以及密码。请在下面输入管理员的用户名（通常是<tt>root</tt>） 和密码。
@@ -28,7 +28,7 @@ index_nodbs=你没有访问任何MySQL数据库的权限。
 
 login_err=登录失败
 login_ecannot=您没有配置数据库登录名的权限
-login_elogin=未输入管理员的登录名  
+login_elogin=未输入管理员的登录名
 login_epass=错误的管理员用户名或密码
 
 stop_err=无法停止数据库
@@ -420,4 +420,4 @@ import_title=导入数据
 import_uploadout=从上传的文件中导入数据…
 import_fileout=从文件 $1 导入数据…
 import_eupload=缺少上传的导入文件
-import_efile= 缺少导入文件名
+import_efile=缺少导入文件名

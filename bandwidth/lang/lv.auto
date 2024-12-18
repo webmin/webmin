@@ -5,7 +5,7 @@ index_elog=Fails $1, ko izmanto joslas platuma reģistrēšanai, faktiski ir jū
 index_edir=Joslas platuma datu glabāšanas direktorija $1 neeksistē vai arī nav direktorija. Pielāgojiet <a href='$2'>moduļa konfigurāciju</a>, lai izmantotu citu ceļu.
 index_emod=Webmin modulis $1 nav instalēts šajā sistēmā vai to neatbalsta jūsu operētājsistēma. Joslas platuma uzraudzības modulis bez tā nevar darboties.
 index_esyslog=Neviens no sistēmas žurnālu moduļiem nav instalēts šajā sistēmā un netiek atbalstīts jūsu OS. Joslas platuma uzraudzības modulis nevar darboties bez viena no tiem.
-index_firesys=Izmantojot $1 ugunsmūri un $2 
+index_firesys=Izmantojot $1 ugunsmūri un $2
 index_setupcannot=Tomēr jums nav atļauju to iestatīt!
 index_setupdesc=Lai šis modulis varētu ziņot par tīkla izmantošanu jūsu sistēmā, tas jāiestata, lai pārraudzītu trafiku izvēlētajā ārējā tīkla saskarnē.
 index_setupdesc2=<b>Brīdinājums - šis modulis reģistrēs VISU tīkla trafiku, kas nosūtīts vai saņemts izvēlētajā interfeisā. Tas ātram tīkla savienojumam patērēs daudz vietas diskā un CPU laiku</b>
@@ -61,7 +61,7 @@ index_rotatedesc=Noklikšķiniet uz šīs pogas, lai apstrādātu visu reģistr�
 index_eiptables=Brīdinājums - jūsu IPtable konfigurācijā ir kļūda: $1. Iestatot joslas platuma uzraudzību, tiks notīrīti visi ugunsmūra noteikumi.
 index_return=ziņojuma forma
 
-log_setup=Iestatīt joslas platuma uzraudzību interfeisā $1 
+log_setup=Iestatīt joslas platuma uzraudzību interfeisā $1
 log_turnoff=Atspējota joslas platuma uzraudzība
 log_rotate=Atjaunināta statistika
 

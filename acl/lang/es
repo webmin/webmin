@@ -149,7 +149,7 @@ delete_euser=No está autorizado a borrar a este usuario
 cert_title=Solicitar Certificado
 cert_issue=Emitir Certificado
 cert_header=Detalles del nuevo certificado
-cert_msg=Este formulario le permite solicitar un certificado SSL cliente que será usado en el futuro para otorgarle acceso a Webmin en lugar de ingresar su nombre de usuario y contraseña.  Esto es mas seguro, pero debido a que la autenticación es automática usted no podrá cambiarse a otro usuario cuando use el certificado.
+cert_msg=Este formulario le permite solicitar un certificado SSL cliente que será usado en el futuro para otorgarle acceso a Webmin en lugar de ingresar su nombre de usuario y contraseña. Esto es mas seguro, pero debido a que la autenticación es automática usted no podrá cambiarse a otro usuario cuando use el certificado.
 cert_ebrowser=Webmin no sabe como emitir certificados cliente para su navegador ( $1 )
 cert_cn=Su nombre
 cert_email=Dirección de correo electrónico
@@ -353,7 +353,7 @@ switch_euser=No está autorizado a cambiar a este usuario
 switch_eold=¡Sesión existente no encontrada!
 
 rbac_title=Configurar RBAC
-rbac_desc=La integración RBAC de Webmin proporciona la capacidad de configurar el módulo de usuarios y permisos ACL desde una base de datos RBAC (Role Based Access Control, o Control de Acceso Basado en Roles), en lugar de desde los archivos de configuración propios de Webmin. Una vez que el soporte de RBAC se habilita, cualquier usuario para el cual esté seleccionada la opción  <b>$edit_rbacdeny1</b> tendrá sus capacidades determinadas por RBAC en lugar de por la configuración de acceso del propio Webmin.
+rbac_desc=La integración RBAC de Webmin proporciona la capacidad de configurar el módulo de usuarios y permisos ACL desde una base de datos RBAC (Role Based Access Control, o Control de Acceso Basado en Roles), en lugar de desde los archivos de configuración propios de Webmin. Una vez que el soporte de RBAC se habilita, cualquier usuario para el cual esté seleccionada la opción <b>$edit_rbacdeny1</b> tendrá sus capacidades determinadas por RBAC en lugar de por la configuración de acceso del propio Webmin.
 rbac_esolaris=Por el momento, RBAC sólo se soporta en Solaris, y por tanto no puede utilizarse en este sistema $1.
 rbac_eperl=El módulo Perl $1, necesario para la integración con RBAC, no está instalado. <a href='$2'>Pulse aquí</a> para instalarlo ahora.
 rbac_ecpan=No tiene acceso a la página de Módulos Perl de Webmin que le permitiría instalar el módulo $1, necesario para la integración con RBAC.

@@ -1,6 +1,6 @@
 index_title=Системний час
 index_timeserver=Сервер часу
-index_addresses= чиАдреси імена сервера часу
+index_addresses=чиАдреси імена сервера часу
 index_zone=Тимчасова зона
 index_eformat=Невідомий формат висновку <tt>hwclock</tt>
 index_sched=Синхронізувати за розкладом?
@@ -43,6 +43,6 @@ log_set_hwclock=Апаратний час встановлений у $1
 log_remote_date=Системний час лічений з $2
 log_remote_hwclock=Системний час лічений з $2
 log_remote_date_l=Системний час $1 лічений з $2
-log_remote_hwclock_l=Апаратний час  $1 лічений з $2
+log_remote_hwclock_l=Апаратний час $1 лічений з $2
 log_sync=Системний час синхронізований з апаратним
 log_sync_s=Апаратний час синхронізований із системним

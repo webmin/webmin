@@ -29,7 +29,7 @@ error_file=Fil
 error_line=Linje
 error_sub=Fungera
 error_stackline=I filen $1 vid rad $2 ringer $3
-efilewrite=Det gick inte att skriva till $1 : $2 
+efilewrite=Det gick inte att skriva till $1 : $2
 efileclose=Det gick inte att skriva till $1 vid stängning : $2
 efileopen=Det gick inte att öppna $1 för att skriva : $2
 fail=misslyckades
@@ -248,7 +248,7 @@ sql_epostgresqlconnect=Det gick inte att ansluta till PostgreSQL-databasen : $1
 sql_eldapdriver=Det gick inte att ladda LDAP perl-modulen
 sql_eldapconnect=Det gick inte att ansluta till LDAP-servern $1
 sql_eldaptls=Det gick inte att starta TLS-kryptering för LDAP : $1
-sql_eldaplogin=Det gick inte att logga in på LDAP-servern som $1 : $2 
+sql_eldaplogin=Det gick inte att logga in på LDAP-servern som $1 : $2
 
 log_email_subject=Webminåtgärd i $1
 log_email_global=Webmin globala åtgärder
@@ -281,9 +281,9 @@ paginator_nosearchrs=Det finns inga resultat som matchar <tt>$1</tt>-frågan
 
 langauto_include=Inkludera maskinöversättningar
 
-file_truncated_message=hämtade $1 av data, trunkerade $2 av $3 
-file_truncated_message_head=hämtade början $1 av data, trunkerade $2 av $3 
-file_truncated_message_tail=hämtade slut $1 av data, trunkerat $2 av $3 
+file_truncated_message=hämtade $1 av data, trunkerade $2 av $3
+file_truncated_message_head=hämtade början $1 av data, trunkerade $2 av $3
+file_truncated_message_tail=hämtade slut $1 av data, trunkerat $2 av $3
 
 defcert_error=Standard-$1 buntade SSL-certifikat används. Det rekommenderas starkt att uppdatera standardcertifikatet <tt>$2</tt> innan du fortsätter med inloggningen.
 

@@ -117,7 +117,7 @@ service_monitor=Monitoriaus naudojimas
 service_mon1=Standartinis monitorius
 service_mon0=Kitas monitorius ..
 service_args=Monitoriaus parametrai
-service_period=Stebėjimo laikotarpis $1 
+service_period=Stebėjimo laikotarpis $1
 service_days=Dienos, kurias reikia patikrinti
 service_hours=Valandos tikrinti
 service_all=Visi
@@ -162,7 +162,7 @@ status_esame=MON statuso CGI programa $1 buvo nustatyta <tt>mon.cgi</tt> scenari
 
 users_title=MON vartotojai
 users_etype=MON vartotojų sąrašas negali būti redaguojamas, nes MON šiuo metu nėra sukonfigūruotas naudoti jį autentifikavimui puslapyje <a href='$1'>Visuotinės parinktys</a>.
-users_header=Leisti MON vartotojams $1 
+users_header=Leisti MON vartotojams $1
 users_nousers=$1 nebuvo apibrėžta jokių MON vartotojų.
 users_add=Sukurkite naują vartotoją.
 users_return=MON vartotojų sąrašas
@@ -185,7 +185,7 @@ auth_none=Niekas
 auth_all=Visi
 auth_sel=Tik vartotojai
 auth_err=Nepavyko išsaugoti kliento komandų
-auth_eusers=Joks vartotojas neįveskite komandos $1 
+auth_eusers=Joks vartotojas neįveskite komandos $1
 
 periods_title=Apibrėžti laikotarpiai
 periods_period=Laikotarpio pavadinimas

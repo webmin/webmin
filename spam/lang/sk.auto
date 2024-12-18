@@ -4,7 +4,7 @@ index_ecmd2=Príkaz SpamAssassin $1 sa vo vašom systéme nenašiel.
 index_econfig=Vo vašom systéme sa nenašiel lokálny konfiguračný súbor alebo adresár SpamAssassin $1. Možno nie je nainštalovaný program SpamAssassin alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
 index_unknown=nevedno
 index_edb=Nepodarilo sa pripojiť k konfiguračnej databáze SpamAssassin: $1. Skontrolujte <a href='$2'>konfiguráciu modulu</a> a uistite sa, že používate správne nastavenia.
-index_version=Verzia programu SpamAssassin $1 
+index_version=Verzia programu SpamAssassin $1
 index_warn_usermin=Nezdá sa, že by sa program SpamAssassin nastavil v konfiguračnom súbore Procmail $2 alebo globálnom súbore $1, takže akákoľvek konfigurácia vykonaná pomocou tohto modulu nebude mať žiadny účinok, pokiaľ nebude program SpamAssassin nastavený globálne.
 index_warn_webmin=Nezdá sa, že by sa program SpamAssassin nastavil v konfiguračnom súbore systému Procmail $1, takže akákoľvek konfigurácia vykonaná pomocou tohto modulu nebude mať žiadny účinok, pokiaľ ho používatelia nenastavia jednotlivo.
 index_return=index modulu
@@ -12,7 +12,7 @@ index_apply=Aplikovať zmeny
 index_applydesc=Kliknutím na toto tlačidlo použijete aktuálnu konfiguráciu SpamAssassinu odoslaním signálu HUP na všetky spustené procesy $1.
 index_cpan=Pretože SpamAssassin je modul Perl, môžete ho tiež nainštalovať automaticky pomocou modulu <a href='$2'>Perl Moduly</a> od správcu Webmin na stiahnutie $1 z CPAN.
 index_spamassassin=SpamAssassin
-index_ecannot=Nemáte povolenie spravovať konfiguračný súbor SpamAssassin $1 
+index_ecannot=Nemáte povolenie spravovať konfiguračný súbor SpamAssassin $1
 
 white_title=Povolené a zamietnuté adresy
 white_desc=Tabuľky na tejto stránke vám umožňujú zadať adresy od: a do: pre e-mail, ktorý je vždy alebo nikdy klasifikovaný ako spam. Akýkoľvek iný e-mail bude spracovaný obvyklým spôsobom podľa pravidiel SpamAssassin. Všetky e-mailové adresy môžu obsahovať zástupné znaky, napríklad *@foo.com alebo *.foo.com, aby sa zhodovali s celými doménami.
@@ -111,7 +111,7 @@ report_addtext=Text pre hlavičku
 report_addspam=Nevyžiadaná pošta
 report_addham=šunka
 report_addall=všetko
-report_eaddheader=Chýba alebo neplatná ďalšia hlavička na pridanie $1 
+report_eaddheader=Chýba alebo neplatná ďalšia hlavička na pridanie $1
 
 user_title=Rôzne možnosti používateľa
 user_desc=Možnosti na tejto stránke väčšinou súvisia s cestami a nastaveniami, ktoré používa program SpamAssassin pre externé balíky na identifikáciu spamu Razor, DCC a Pyzor. Môžete tiež povedať SpamAssassin, či bude schopný vyhľadávať DNS alebo nie.
@@ -190,7 +190,7 @@ priv_emscore='$1' nie je platné najvyššie skóre frázy
 priv_ephrase='$1' nie je platná dvojslovná fráza o spamu
 priv_escore=Chýbajúce alebo neplatné skóre pre frázu „$1“
 
-usually=Zvyčajne $1 
+usually=Zvyčajne $1
 ecannot=Túto stránku nemôžete používať
 setup_title=Nastavenie programu Procmail pre SpamAssassin
 setup_desc_webmin=Tento formulár sa dá použiť na nastavenie Procmailu v $1 na spustenie SpamAssassinu na všetky e-mailové správy prijaté vaším systémom. Toto však bude mať účinok iba v prípade, že váš poštový server bol nakonfigurovaný na používanie protokolu Procmail na lokálne doručenie, alebo na používateľov, ktorých súbory <tt>.forward</tt> sú nastavené na spustenie programu Procmail.
@@ -244,7 +244,7 @@ mail_razor=Nahlásiť ako spam a odstrániť
 mail_ham=Nahlásiť ako Ham & Inbox
 mail_delete=delete
 mail_return=zoznam nevyžiadanej pošty
-mail_pos=Spamové správy $1 až $2 z $3 
+mail_pos=Spamové správy $1 až $2 z $3
 mail_none=Vo vašom priečinku so spamom nie sú žiadne správy
 mail_refresh=Obnoviť
 mail_will=Automatické obnovenie o $1 minúty
@@ -253,7 +253,7 @@ mail_delall=Odstrániť všetok spam
 mail_search3=Vyhľadajte skóre vyššie:
 
 process_eclean=Pri odstraňovaní hlavičiek SpamAssassinu z tohto e-mailu sa vyskytla chyba
-process_ereport=Nepodarilo sa nahlásiť e-mail na adresu SpamAssassin : $1 
+process_ereport=Nepodarilo sa nahlásiť e-mail na adresu SpamAssassin : $1
 
 apply_err=Nepodarilo sa uplatniť zmeny
 apply_none=Nenašli sa žiadne démonické procesy SpamAssassin!
@@ -263,8 +263,8 @@ acl_file=Konfiguračný súbor SpamAssassin na úpravu
 acl_filedef=Globálny konfiguračný súbor
 acl_awl=Povolené používateľom na úpravy na bielej listine
 acl_awl0=Všetci používatelia
-acl_awl1=Iba uvedení používatelia $1 
-acl_awl2=Iba členovia skupín $1 
+acl_awl1=Iba uvedení používatelia $1
+acl_awl2=Iba členovia skupín $1
 
 search_escore=Chýbajúce alebo neplatné skóre spamu
 search_results5=E-mailové správy $1 s skóre nevyžiadanej pošty najmenej $2 ..
@@ -337,20 +337,20 @@ simple_score=Skóre sa použije
 simple_describe=popis
 simple_err=Nepodarilo sa uložiť testy správ
 
-before_ecmd=Príkaz pred uložením zlyhal : $1 
-after_ecmd=Príkaz dodatočného uloženia zlyhal : $1 
+before_ecmd=Príkaz pred uložením zlyhal : $1
+after_ecmd=Príkaz dodatočného uloženia zlyhal : $1
 
 connect_emysql=Načítanie ovládača databázy $1 zlyhalo
 connect_elogin=Nepodarilo sa prihlásiť do databázy $1:$2.
-connect_equery=Databáza $1 neobsahuje tabuľku preferencií $2 
+connect_equery=Databáza $1 neobsahuje tabuľku preferencií $2
 connect_eldapmod=Perl modul $1 potrebný na komunikáciu s LDAP nie je nainštalovaný alebo sa nedá načítať
-connect_eldap=Nepodarilo sa pripojiť k serveru LDAP $1 na porte $2 
-connect_eldaplogin=Nepodarilo sa prihlásiť na server LDAP $1 ako $2 : $3 
-connect_ebase=LDAP báza DN $1 nie je platná : $2 
+connect_eldap=Nepodarilo sa pripojiť k serveru LDAP $1 na porte $2
+connect_eldaplogin=Nepodarilo sa prihlásiť na server LDAP $1 ako $2 : $3
+connect_ebase=LDAP báza DN $1 nie je platná : $2
 
-eldap=Operácia LDAP zlyhala : $1 
-esql=SQL zlyhalo : $1 
-ldap_euser=Nepodarilo sa nájsť objekt používateľa LDAP pre $1 
+eldap=Operácia LDAP zlyhala : $1
+esql=SQL zlyhalo : $1
+ldap_euser=Nepodarilo sa nájsť objekt používateľa LDAP pre $1
 
 db_title=Databázy SQL a LDAP
 db_header=Možnosti databázy konfiguračného úložiska

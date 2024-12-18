@@ -50,11 +50,11 @@ search_google=Resultado de pesquisa do Google
 search_doxfer=Documentação online do Webmin
 
 howto_title=Documento HOWTO
-howto_header=Arquivo de documento HOWTO $1 
+howto_header=Arquivo de documento HOWTO $1
 howto_epath=Caminho do documento HOWTO inválido
 
 doc_title=Documentação do pacote
-doc_header=Arquivo de documento do pacote $1 
+doc_header=Arquivo de documento do pacote $1
 doc_epath=Caminho de documentação do pacote inválido
 
 man_title=Página Manual
@@ -63,15 +63,15 @@ man_noentry=A página do manual para $1 não existe!
 man_epath=A página do manual não pode ser o caminho!
 
 kernel_title=Documento do Kernel
-kernel_header=Arquivo de documento do kernel $1 
+kernel_header=Arquivo de documento do kernel $1
 kernel_epath=Caminho de documento do kernel inválido
 
 kde_title=Documentação do KDE
-kde_header=Arquivo de documento KDE $1 
+kde_header=Arquivo de documento KDE $1
 kde_epath=Caminho de documentação do KDE inválido
 
 perl_title=Módulo Perl
-perl_header=Documentação para o módulo Perl $1 
+perl_header=Documentação para o módulo Perl $1
 perl_emod=Nome de módulo Perl inválido
 
 acl_allow=Pode editar os tipos de pesquisa permitidos?

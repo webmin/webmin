@@ -1,14 +1,14 @@
 index_title=Server WU-FTPD
 index_eftpd=Is-server FTP $1 ma jistax jinstab fis-sistema tiegħek. Forsi mhuwiex installat, jew il-<a href='$2'>il-konfigurazzjoni tal-modulu Server FTP tiegħek</a> mhix korretta.
 index_eftpaccess=Il-fajl tal-konfigurazzjoni tas-server FTP $1 ma jeżistix. Forsi mhuwiex installat, jew il-<a href='$2'>il-konfigurazzjoni tal-modulu Server FTP tiegħek</a> mhix korretta.
-index_eversion=Is-server FTP $1 ma jidhirx li huwa WU-FTPd. Forsi qed tuża FTPd anzjan provdut mas-sistema operattiva tiegħek, jew il-konfigurazzjoni <a href='$2'>tal-modulu FTP Server</a> tiegħek hija korretta. Il-produzzjoni mis-server FTP kienet : $3 
+index_eversion=Is-server FTP $1 ma jidhirx li huwa WU-FTPd. Forsi qed tuża FTPd anzjan provdut mas-sistema operattiva tiegħek, jew il-konfigurazzjoni <a href='$2'>tal-modulu FTP Server</a> tiegħek hija korretta. Il-produzzjoni mis-server FTP kienet : $3
 index_apply=Applika l-Bidliet
 index_applymsg=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni kurrenti. Dan se jieqaf u jerġa 'jibda l-proċessi kollha li qed jaħdmu fis-server FTP, u b'hekk jiskonnettja l-utenti kollha konnessi.
 index_start=Ibda Server
 index_startmsg=Ikklikkja din il-buttuna biex tibda s-server FTP bil-konfigurazzjoni kurrenti. Tista 'wkoll tikkonfigura s-server biex tibda awtomatikament meta jkun meħtieġ billi tuża l-modulu <a href='$1'>Internet Services</a>.
 index_startmsg2=Ikklikkja din il-buttuna biex tibda s-server FTP bil-konfigurazzjoni kurrenti. Tista 'wkoll tikkonfigura s-server biex jinbeda awtomatikament meta jkun meħtieġ billi tuża inetd jew xi programm ekwivalenti.
 index_return=Għażliet ta 'server FTP
-index_version=Verżjoni tal-WU-FTPd $1 
+index_version=Verżjoni tal-WU-FTPd $1
 
 class_title=Utenti u Klassijiet
 class_header=Klassijiet ta 'utenti u għażliet ta' utent

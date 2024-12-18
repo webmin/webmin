@@ -1,6 +1,6 @@
 index_unknown=desconocido
 index_edb=Error al conectarse a la base de datos de configuración de SpamAssassin: $1. Compruebe la <a href='$2'>configuración del módulo</a> para asegurarse de que está utilizando la configuración correcta.
-index_ecannot=No tiene permiso para administrar el archivo de configuración de SpamAssassin $1 
+index_ecannot=No tiene permiso para administrar el archivo de configuración de SpamAssassin $1
 
 white_title=Direcciones permitidas y denegadas
 white_desc=Las tablas de esta página le permiten especificar las direcciones De: y Para: para el correo electrónico que siempre o nunca se clasifica como spam. Cualquier otro correo electrónico será procesado normalmente por las reglas de SpamAssassin. Todas las direcciones de correo electrónico pueden contener comodines, como *@foo.com o *.foo.com para que coincidan con dominios completos.
@@ -99,7 +99,7 @@ report_addtext=Texto para encabezado
 report_addspam=Correo no deseado
 report_addham=jamón
 report_addall=Todos
-report_eaddheader=Encabezado adicional faltante o no válido para agregar $1 
+report_eaddheader=Encabezado adicional faltante o no válido para agregar $1
 
 user_title=Opciones de usuario varias
 user_desc=Las opciones en esta página están relacionadas principalmente con las rutas y configuraciones que SpamAssassin usa para los paquetes externos de identificación de spam Razor, DCC y Pyzor. También puede decirle a SpamAssassin si podrá realizar búsquedas de DNS o no.
@@ -133,7 +133,7 @@ priv_phrases=Frases indicadoras de spam
 priv_phrase=Frase de dos palabras
 priv_score=Puntuación
 
-usually=Por lo general, $1 
+usually=Por lo general, $1
 setup_title=Configurar Procmail para SpamAssassin
 setup_desc_webmin=Este formulario se puede usar para configurar Procmail en $1 para ejecutar SpamAssassin en todos los mensajes de correo electrónico recibidos por su sistema. Sin embargo, esto solo tendrá efecto si su servidor de correo ha sido configurado para usar Procmail para entrega local, o para usuarios cuyos archivos <tt>.forward</tt> están configurados para ejecutar Procmail.
 setup_desc_usermin=Este formulario se puede usar para configurar Procmail en $1 para ejecutar SpamAssassin en todos los mensajes de correo electrónico enviados a su cuenta. Sin embargo, esto solo tendrá efecto si el servidor de correo se ha configurado para usar Procmail para la entrega local, o si sus archivos <tt>.forward</tt> están configurados para alimentar todo el correo electrónico a Procmail.
@@ -161,12 +161,12 @@ setup_eemail=Dirección de correo electrónico faltante o inválida
 log_manual=Archivo de configuración editado manualmente
 
 process_eclean=Se produjo un error al eliminar los encabezados de SpamAssassin de este correo electrónico
-process_ereport=Error al informar el correo electrónico a SpamAssassin : $1 
+process_ereport=Error al informar el correo electrónico a SpamAssassin : $1
 
 acl_awl=Usuarios permitidos para la edición automática de la lista blanca
 acl_awl0=Todos los usuarios
-acl_awl1=Solo usuarios listados $1 
-acl_awl2=Solo miembros de grupos $1 
+acl_awl1=Solo usuarios listados $1
+acl_awl2=Solo miembros de grupos $1
 
 search_escore=Puntaje de spam faltante o no válido
 search_results5=$1 mensajes de correo con puntaje de spam igual o superior a $2 ..
@@ -239,20 +239,20 @@ simple_score=Puntuación para aplicar
 simple_describe=Descripción
 simple_err=Error al guardar las pruebas de mensajes
 
-before_ecmd=Error de comando antes de guardar : $1 
-after_ecmd=Error de comando después de guardar : $1 
+before_ecmd=Error de comando antes de guardar : $1
+after_ecmd=Error de comando después de guardar : $1
 
-connect_emysql=Error al cargar el controlador de base de datos $1 
+connect_emysql=Error al cargar el controlador de base de datos $1
 connect_elogin=Error al iniciar sesión en la base de datos $1:$2.
-connect_equery=La base de datos $1 no contiene la tabla de preferencias $2 
+connect_equery=La base de datos $1 no contiene la tabla de preferencias $2
 connect_eldapmod=El módulo Perl $1 necesario para comunicarse con LDAP no está instalado o no se puede cargar
-connect_eldap=Error al conectarse al servidor LDAP $1 en el puerto $2 
-connect_eldaplogin=Error al iniciar sesión en el servidor LDAP $1 como $2 : $3 
-connect_ebase=El DN base LDAP $1 no es válido : $2 
+connect_eldap=Error al conectarse al servidor LDAP $1 en el puerto $2
+connect_eldaplogin=Error al iniciar sesión en el servidor LDAP $1 como $2 : $3
+connect_ebase=El DN base LDAP $1 no es válido : $2
 
-eldap=Error en la operación LDAP : $1 
-esql=Error de SQL : $1 
-ldap_euser=No se pudo encontrar el objeto de usuario LDAP para $1 
+eldap=Error en la operación LDAP : $1
+esql=Error de SQL : $1
+ldap_euser=No se pudo encontrar el objeto de usuario LDAP para $1
 
 db_title=Bases de datos SQL y LDAP
 db_header=Opciones de la base de datos de almacenamiento de configuración

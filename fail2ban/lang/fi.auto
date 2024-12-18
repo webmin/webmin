@@ -1,5 +1,5 @@
 index_title=Fail2Ban tunkeutumisen ilmaisin
-index_ver=Versio $1 
+index_ver=Versio $1
 index_echeck=Fail2Banin havaitsemisessa tapahtui virhe tässä järjestelmässä: $1. Joko sitä ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
 index_fail2ban=fail2ban
 index_atboot=Aloita käynnistyessä?
@@ -26,7 +26,7 @@ filters_add=Lisää uusi lokisuodatin.
 filters_return=luettelo suodattimista
 filters_derr=Suodattimien poistaminen epäonnistui
 filters_enone=Mitään ei ole valittu
-filters_einuse=Suodatinta $1 ei voi poistaa, koska vankilat käyttävät sitä : $2 
+filters_einuse=Suodatinta $1 ei voi poistaa, koska vankilat käyttävät sitä : $2
 
 filter_title1=Luo suodatin
 filter_title2=Muokkaa suodatinta
@@ -41,7 +41,7 @@ filter_err=Suodattimen tallennus epäonnistui
 filter_ename=Puuttuva tai virheellinen suodattimen nimi
 filter_eclash=Suodattimen nimi on jo käytössä
 filter_efail=Ei säännöllistä lauseketta vastaavaa varten
-filter_einuse=Tätä suodatinta ei voi poistaa, koska vankilat käyttävät sitä : $1 
+filter_einuse=Tätä suodatinta ei voi poistaa, koska vankilat käyttävät sitä : $1
 
 actions_title=Ottelutoimet
 actions_name=Toiminnan nimi
@@ -51,7 +51,7 @@ actions_add=Lisää uusi toiminto.
 actions_return=luettelo toimista
 actions_derr=Toimintojen poistaminen epäonnistui
 actions_enone=Mitään ei ole valittu
-actions_einuse=Toimintoa $1 ei voi poistaa, koska vankilat käyttävät sitä : $2 
+actions_einuse=Toimintoa $1 ei voi poistaa, koska vankilat käyttävät sitä : $2
 
 action_title1=Luo hakutoiminto
 action_title2=Muokkaa hakutoimintoa
@@ -68,7 +68,7 @@ action_check=Komento suorittaa ennen IP: n kieltämistä
 action_ban=Komento estää IP
 action_unban=Komento estää IP: n kieltäminen
 action_desc=<i>&lt;ip&gt;</i> korvataan IP-osoitteella, joka kielletään.
-action_einuse=Tätä toimintoa ei voi poistaa, koska vankilat käyttävät sitä : $1 
+action_einuse=Tätä toimintoa ei voi poistaa, koska vankilat käyttävät sitä : $1
 
 jails_title=Suodata toimintakynnet
 jails_add=Lisää uusi vankila.
@@ -104,8 +104,8 @@ jail_ignoreip=IP-osoitteet koskaan kieltää
 jail_err=Vankilan tallentaminen epäonnistui
 jail_eclash=Saman nimen vankila on jo olemassa
 jail_ename=Puuttuva tai virheellinen vankilan nimi
-jail_eaname=Virheellinen näköinen nimiparametri toiminnolle $1 
-jail_eport=Virheellinen portin numero toiminnolle $1 
+jail_eaname=Virheellinen näköinen nimiparametri toiminnolle $1
+jail_eport=Virheellinen portin numero toiminnolle $1
 jail_eactions=Toimintoja ei valittu!
 jail_elogpaths=Lokitiedostopolkuja ei ole annettu
 jail_elogpath=Kaikkien lokitiedostojen on oltava absoluuttisia polkuja tai malleja
@@ -134,22 +134,22 @@ start_err=Palvelimen käynnistäminen epäonnistui
 stop_err=Palvelimen pysäyttäminen epäonnistui
 restart_err=Palvelimen uudelleenkäynnistys epäonnistui
 
-log_create_filter=Luotu suodatin $1 
-log_update_filter=Muokattu suodatin $1 
-log_delete_filter=Poistettu suodatin $1 
-log_create_action=Luotu toiminto $1 
-log_update_action=Muokattu toiminto $1 
-log_delete_action=Poistettu toiminto $1 
-log_create_jail=Perusti vankilan $1 
-log_update_jail=Muokattu vankila $1 
-log_delete_jail=Poistettu vankila $1 
+log_create_filter=Luotu suodatin $1
+log_update_filter=Muokattu suodatin $1
+log_delete_filter=Poistettu suodatin $1
+log_create_action=Luotu toiminto $1
+log_update_action=Muokattu toiminto $1
+log_delete_action=Poistettu toiminto $1
+log_create_jail=Perusti vankilan $1
+log_update_jail=Muokattu vankila $1
+log_delete_jail=Poistettu vankila $1
 log_config=Muutettu globaali kokoonpano
 log_stop=Pysäytetty Fail2Ban-palvelin
 log_start=Käynnistettiin Fail2Ban-palvelin
 log_restart=Käynnisti Fail2Ban-palvelimen uudelleen
 log_atboot=Aktivoinut Fail2Ban käynnistyshetkellä
 log_delboot=Poistettu käytöstä Fail2Ban käynnistyshetkellä
-log_manual=Muokattu määritystiedosto $1 
+log_manual=Muokattu määritystiedosto $1
 log_jaildef=Muutetut vankilavaihtoehdot
 
 config_title=Globaali kokoonpano

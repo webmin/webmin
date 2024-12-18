@@ -21,7 +21,7 @@ passwd_euser=Korisnik ne postoji
 passwd_eold=Neispravna stara lozinka
 passwd_erepeat=Nove lozinke nisu jednake
 passwd_ecmd=$1 neuspjelo : $2
-passwd_ok=Lozinka zabkorisnika $1 uspješno je promijenjena. Ako je ovo vaš trenutni Webmin korisnik, možda ćete se morati ponovno prijaviti. 
+passwd_ok=Lozinka zabkorisnika $1 uspješno je promijenjena. Ako je ovo vaš trenutni Webmin korisnik, možda ćete se morati ponovno prijaviti.
 passwd_ok2=Lozinka za korisnika $1 usoješno je promijenjena.
 
 log_passwd=Promijeni lozinku za korisnika $1

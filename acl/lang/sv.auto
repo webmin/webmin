@@ -1,12 +1,12 @@
 index_screate=Skapa en ny säker användare.
 index_twofactor=Tvåfaktorautentisering
 index_joingroup=Lägg till i gruppen:
-index_eulist=Det gick inte att lista användare: $1 
-index_eglist=Det gick inte att lista grupper: $1 
+index_eulist=Det gick inte att lista användare: $1
+index_eglist=Det gick inte att lista grupper: $1
 
 edit_title3=Skapa säker Webmin-användare
 edit_twofactor=Tvåfaktors autentiseringstyp
-edit_twofactorprov=Använda leverantör $1 med ID $2 
+edit_twofactorprov=Använda leverantör $1 med ID $2
 edit_twofactorcancel=Ta bort tvåfaktors autentiseringskrav
 edit_twofactornone=Ingen installation ännu
 edit_twofactoradd=Aktivera tvåfaktorer för användare
@@ -35,11 +35,11 @@ acl_locale=Kan du byta språk?
 acl_pass=Kan ändra lösenordsbegränsningar?
 acl_sql=Kan konfigurera användar- och gruppdatabas?
 
-log_joingroup=Lade till $1 Webmin-användare för att gruppera $2 
+log_joingroup=Lade till $1 Webmin-användare för att gruppera $2
 log_unix=Ändrad unix användarautentisering
 log_sync=Ändrad unix användarsynkronisering
 log_sql=Ändrad användare och gruppdatabas
-log_twofactor=Registrerad användare $1 med tvåfaktureleverantör $2 
+log_twofactor=Registrerad användare $1 med tvåfaktureleverantör $2
 log_onefactor=Inskrivna användare $1 för tvåfaktorautentisering
 
 gedit_desc=Gruppbeskrivning
@@ -50,7 +50,7 @@ gsave_edesc=Ogiltig beskrivning -: -tecknet är inte tillåtet
 convert_sync2=Synkronisera lösenord med Unix-användare i framtiden?
 convert_user=Unix-användare
 convert_action=Åtgärder som vidtagits
-convert_done= $1 användare konverterade, $2 ogiltig, $3 finns redan, $4 uteslutet.
+convert_done=$1 användare konverterade, $2 ogiltig, $3 finns redan, $4 uteslutet.
 convert_users=Användare att konvertera
 
 sync_when=När du ska synkronisera
@@ -105,7 +105,7 @@ sql_addto1=Lägg till nya användare i lokala filer
 sql_nocache0=Cache-anslutningar till databasen
 sql_nocache1=Öppna en ny anslutning för varje sökning
 sql_emod=Saknas Perl-modul <tt>$1</tt>
-sql_etable=Det gick inte att fråga obligatorisk tabell $1:$2 
+sql_etable=Det gick inte att fråga obligatorisk tabell $1:$2
 sql_eldapdn=Bas LDAP DN $1 hittades inte
 sql_eclass=LDAP-objektklass $1 finns inte i serverens schema
 sql_err=Det gick inte att spara användar- och gruppdatabasinställningar
@@ -116,11 +116,11 @@ sql_edb=Ogiltigt databasnamn (inga platser tillåtna)
 sql_eprefix=Saknad eller ogiltig bas-DN (inga platser tillåtna)
 sql_eprefix2=Ogiltig utseende bas DN - bör vara <tt>dc = mydomain, dc = com</tt>
 sql_title2=Skapa tabeller som saknas
-sql_tableerr=Användar- och gruppdatabasinställningar är giltiga, men vissa tabeller som behövs av Webmin saknas: $1 
+sql_tableerr=Användar- och gruppdatabasinställningar är giltiga, men vissa tabeller som behövs av Webmin saknas: $1
 sql_tableerr2=Klicka på <b>Skapa tabeller</b> nedan för att få dem att skapas automatiskt, eller kör SQL nedan manuellt.
 sql_make=Skapa tabeller
 sql_title3=Skapa saknad DN
-sql_dnerr=Användar- och gruppdatabasinställningar är giltiga, men LDAP DN som behövs av Webmin saknas: $1 
+sql_dnerr=Användar- och gruppdatabasinställningar är giltiga, men LDAP DN som behövs av Webmin saknas: $1
 sql_dnerr2=Klicka på <b>Skapa DN</b> -knappen nedan för att skapa den automatiskt, eller lägg till den till din LDAP-server manuellt.
 sql_makedn=Skapa DN
 sql_schema=Ladda ner LDAP-schema
@@ -132,16 +132,16 @@ sql_etimeout=Tidsgräns för cachad anslutning måste vara ett nummer
 make_title=Skapa användar- och grupptabeller
 make_err=Det gick inte att skapa användar- och grupptabeller
 make_exec=Utför SQL $1..
-make_failed=.. skapelsen misslyckades: $1 
+make_failed=.. skapelsen misslyckades: $1
 make_done=.. Gjort
-make_still=Vissa problem hittades även efter skapandet av tabellen: $1 
+make_still=Vissa problem hittades även efter skapandet av tabellen: $1
 
 makedn_title=Skapa LDAP DN
 makedn_eoc=Inga strukturella objektklasser hittade!
 makedn_exec=Skapa förälder DN $1..
-makedn_failed=.. skapelsen misslyckades: $1 
+makedn_failed=.. skapelsen misslyckades: $1
 makedn_done=.. Gjort
-makedn_still=Vissa problem hittades även efter skapandet av DN: $1 
+makedn_still=Vissa problem hittades även efter skapandet av DN: $1
 
 schema_title=Ladda ner LDAP-schema
 schema_desc=Innan Webmin kan använda en LDAP-server för att lagra användare och grupper måste den konfigureras för att använda schemat nedan. Detta kan vanligtvis göras genom att spara schemadefinitionen i <tt>/etc/ldap/schema</tt> eller <tt>/etc/openldap/schema</tt> som <tt>webmin.schema</tt>, konfigurera sedan servern för att ladda schemafilen.
@@ -158,7 +158,7 @@ twofactor_desc2=På denna sida kan du aktivera tvåfaktorsautentisering för Web
 twofactor_enable=Anmäl dig till tvåfaktorautentisering
 twofactor_header=Tvåfaktors autentiseringsregistreringsinformation
 twofactor_enrolling=Registrerar dig för tvåfaktorautentisering med leverantören $1..
-twofactor_failed=.. anmälan misslyckades: $1 
+twofactor_failed=.. anmälan misslyckades: $1
 twofactor_done=.. komplett. Ditt ID med denna leverantör är <tt>$1</tt>.
 twofactor_setup=Tvåfaktorsautentisering har inte aktiverats i det här systemet ännu, men kan aktiveras med <a href='$1'>Webmin Configuration</a> -modulen.
 twofactor_ebutton=Ingen knapp klickade!

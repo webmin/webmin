@@ -92,7 +92,7 @@ iadd_ename=اسم الواجهة مفقود أو يحتوي على أحرف غي
 
 difaces_err=فشل في إزالة الواجهات
 difaces_enone=لم يتم تحديد شيء
-difaces_edelete=فشلت إزالة الواجهة $1 : $2 
+difaces_edelete=فشلت إزالة الواجهة $1 : $2
 difaces_title=إزالة واجهات iSCSI
 difaces_rusure=هل تريد بالتأكيد إزالة الواجهات المحددة$1؟
 difaces_rusure1=هل تريد بالتأكيد إزالة الواجهة$1؟
@@ -126,7 +126,7 @@ add_title=إضافة اتصال iSCSI
 add_err=فشلت إضافة اتصال iSCSI
 add_ehost=اسم مضيف مفقود أو غير قابل للحل
 add_eport=منفذ مفقود أو غير رقمي
-add_etargets=تعذر استرداد أهداف iSCSI من $1:$2 
+add_etargets=تعذر استرداد أهداف iSCSI من $1:$2
 add_etargets2=لم يتم العثور على أهداف iSCSI في$1
 add_target=اتصل بالهدف
 add_alltargets=جميع الأهداف
@@ -141,7 +141,7 @@ add_auth0=قم بتسجيل الدخول باسم$2 باستخدام كلمة ا
 
 dconns_err=فشل في قطع الاتصالات
 dconns_enone=لم يتم تحديد شيء
-dconns_edelete=فشلت إزالة الهدف$2 من المضيف $1 : $3 
+dconns_edelete=فشلت إزالة الهدف$2 من المضيف $1 : $3
 dconns_title=افصل اتصالات iSCSI
 dconns_rusure=هل تريد بالتأكيد إزالة الاتصالات المحددة$1؟
 dconns_rusure1=هل تريد بالتأكيد إزالة الاتصال بـ$1؟

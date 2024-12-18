@@ -1,7 +1,7 @@
 index_title=لاگ ان فائل گھماؤ
 index_econf=The log rotation configuration file $1 was not found on your system. Maybe logrotate is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_ecmd=The log rotation program $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
-index_eversion= $1 : $2 کمانڈ کے ساتھ لوگوٹریٹ کا ورژن حاصل کرنے میں ناکام
+index_eversion=$1 : $2 کمانڈ کے ساتھ لوگوٹریٹ کا ورژن حاصل کرنے میں ناکام
 index_version=لوگوٹریٹ ورژن$1
 index_add=گھومنے کے لئے ایک نئی لاگ فائل شامل کریں۔
 index_file=لاگ فائل

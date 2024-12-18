@@ -306,13 +306,13 @@ hosts_err=Nepavyko išsaugoti zonos pagrindinio kompiuterio
 hosts_enet=Trūksta arba netinkamas pagrindinio kompiuterio adresas
 hosts_header=Informacija apie zonos pagrindinį kompiuterį
 hosts_routestopped=Maršrutas net sustabdžius ugniasienę?
-hosts_ip=Adresas arba tinklas $1 
-hosts_mac=MAC adresas $1 
-hosts_ipset=IP nustatytas $1 
+hosts_ip=Adresas arba tinklas $1
+hosts_mac=MAC adresas $1
+hosts_ipset=IP nustatytas $1
 hosts_any=Bet kuris šeimininkas
 
-edit_before=Prieš įvažiavimą $1 
-edit_after=Po įėjimo $1 
+edit_before=Prieš įvažiavimą $1
+edit_after=Po įėjimo $1
 
 blacklist_title=Juodojo sąrašo šeimininkai
 blacklist_desc=Šiame puslapyje pateikiami prieglobos ir paslaugos, kurios bus blokuojamos, jei srautas iš jų pateks į sąsają su nustatytu <b>juodu sąrašu</b>.

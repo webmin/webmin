@@ -17,8 +17,8 @@ save_ehost2=El host no existe
 save_eport2=Se debe proporcionar un puerto si se selecciona un tipo de enlace con un inicio de sesión
 save_egroup2=Nuevo nombre de grupo no válido
 
-find_already2=Se encontró un servidor host conocido en $1 
-find_skip=Ignorando el servidor en $1 
+find_already2=Se encontró un servidor host conocido en $1
+find_skip=Ignorando el servidor en $1
 find_eiface=No se pudo encontrar la interfaz para escanear
 find_eport=Número de puerto faltante o no válido
 
@@ -41,8 +41,8 @@ auto_sched=¿Buscar nuevos servidores?
 auto_sched1=Sí, cada $1 minutos
 auto_net=Red IP para escanear
 auto_auto=Red local
-auto_ip=Redes IP $1 
-auto_iface=Red en la interfaz $1 
+auto_ip=Redes IP $1
+auto_iface=Red en la interfaz $1
 auto_user=Nombre de usuario para nuevos servidores
 auto_pass=Contraseña para nuevos servidores
 auto_type=Tipo de sistema predeterminado

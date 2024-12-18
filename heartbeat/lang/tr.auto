@@ -9,7 +9,7 @@ index_eha_cf=$1 kalp atışı yapılandırma dosyası sisteminizde bulunamadı. 
 index_eharesources=$1 kaynak dosyası sisteminizde bulunamadı. Belki henüz kopyalanmadı veya <a href='$2'>modül yapılandırması</a> yanlış.
 index_eauthkeys=$1 kimlik doğrulama anahtarları dosyası sisteminizde bulunamadı. Belki henüz kopyalanmadı veya <a href='$2'>modül yapılandırması</a> yanlış.
 index_ereq_resource_cmd=Diğer düğümden ($1) kaynak talep eden komut dosyası sisteminizde bulunamadı. Belki henüz kopyalanmadı veya <a href='$2'>modül yapılandırması</a> yanlış.
-index_version=Kalp atışı sürümü $1 
+index_version=Kalp atışı sürümü $1
 index_noversion=Uyarı - Sisteminizde kurulu olan Kalp Atışı sürümü otomatik olarak algılanamadı. <a href='$1'>modül yapılandırması</a> sayfasında ayarlamanız gerekir.
 index_status=Kalp atışı durumu
 
@@ -21,7 +21,7 @@ conf_bcasts=Ethernet kalp atışı arabirimleri
 conf_none=Yok
 conf_udpport=UDP kalp atışı bağlantı noktası
 conf_mcast=Multicast kalp atışı cihazı
-conf_mcastv=Aygıt $1, grup $2, bağlantı noktası $3, TTL $4, geri döngü $5 
+conf_mcastv=Aygıt $1, grup $2, bağlantı noktası $3, TTL $4, geri döngü $5
 conf_enabled=Etkin
 conf_disabled=engelli
 conf_keepalive=Kalp atışları arasındaki süre

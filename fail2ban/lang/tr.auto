@@ -26,7 +26,7 @@ filters_add=Yeni bir günlük filtresi ekleyin.
 filters_return=filtre listesi
 filters_derr=Filtreler silinemedi
 filters_enone=Hiçbiri seçilmedi
-filters_einuse=$1 filtresi, hapishaneler tarafından kullanıldığı için silinemiyor : $2 
+filters_einuse=$1 filtresi, hapishaneler tarafından kullanıldığı için silinemiyor : $2
 
 filter_title1=Filtre Oluştur
 filter_title2=Filtreyi Düzenle
@@ -41,7 +41,7 @@ filter_err=Filtre kaydedilemedi
 filter_ename=Eksik veya geçersiz filtre adı
 filter_eclash=Filtre adı zaten kullanılıyor
 filter_efail=Eşleşecek normal ifade girilmedi
-filter_einuse=Bu filtre, hapishaneler tarafından kullanıldığı için silinemez : $1 
+filter_einuse=Bu filtre, hapishaneler tarafından kullanıldığı için silinemez : $1
 
 actions_title=Maç İşlemleri
 actions_name=İşlem adı
@@ -51,7 +51,7 @@ actions_add=Yeni bir eylem ekleyin.
 actions_return=eylemler listesi
 actions_derr=İşlemler silinemedi
 actions_enone=Hiçbiri seçilmedi
-actions_einuse=$1 işlemi, hapishaneler tarafından kullanıldığı için silinemiyor : $2 
+actions_einuse=$1 işlemi, hapishaneler tarafından kullanıldığı için silinemiyor : $2
 
 action_title1=Eşleme İşlemi Oluştur
 action_title2=Eşleşme İşlemini Düzenle
@@ -68,7 +68,7 @@ action_check=Bir IP yasaklanmadan önce çalıştırma komutu
 action_ban=Bir IP'yi yasaklama komutu
 action_unban=Bir IP'nin yasağını kaldırma komutu
 action_desc=<i>&lt;ip&gt;</i> yerine IP adresi yasaklandı.
-action_einuse=Bu eylem, hapishaneler tarafından kullanıldığı için silinemez : $1 
+action_einuse=Bu eylem, hapishaneler tarafından kullanıldığı için silinemez : $1
 
 jails_title=Filtre Hapishaneleri
 jails_add=Yeni bir hapishane ekle.
@@ -135,13 +135,13 @@ stop_err=Sunucu durdurulamadı
 restart_err=Sunucu yeniden başlatılamadı
 
 log_create_filter=$1 filtresi oluşturuldu
-log_update_filter=Değiştirilmiş filtre $1 
+log_update_filter=Değiştirilmiş filtre $1
 log_delete_filter=$1 filtre silindi
 log_create_action=$1 eylemi oluşturuldu
-log_update_action=Değiştirilmiş eylem $1 
+log_update_action=Değiştirilmiş eylem $1
 log_delete_action=$1 silindi eylemi
 log_create_jail=$1 hapishane oluşturuldu
-log_update_jail=Değiştirilmiş hapis $1 
+log_update_jail=Değiştirilmiş hapis $1
 log_delete_jail=$1 cezaevi silindi
 log_config=Genel yapılandırma değişti
 log_stop=Fail2Ban sunucusu durduruldu

@@ -1,18 +1,18 @@
 index_title=زمان سيستم
 index_timeserver=کارساز زمان
-index_addresses= آدرس يا نام ناحيه کارساز زمان
+index_addresses=آدرس يا نام ناحيه کارساز زمان
 index_zone=حوزه زمان
 index_eformat=عدم شناسايي <tt>hwclock</tt> حالت خروجي
 index_sched=همزاني در زمانبندي؟
 index_schedyes=بله، در زمانهاي زير..
 index_sync=همزماني و اعمال
-index_hardware2=همچنين بارگيري زمان سخت افزار 
+index_hardware2=همچنين بارگيري زمان سخت افزار
 index_tzheader=حوزه زمان
 index_tz=تغيير حوزه زماني به
 
 action_save=ذخيره
 action_apply=اعمال
-action_sync=بارگيري زمان سيستم با زمان سخت افزار 
+action_sync=بارگيري زمان سيستم با زمان سخت افزار
 action_sync_s=بارگيري زمان سخت افزار با زمان سيستم
 action_timeserver_sys=همزماني زمان سيستم
 action_timeserver_hw=همزماني زمان سخت افزار
@@ -53,4 +53,4 @@ log_timezone=تغيير حوزه زمان به $1
 
 timezone_err=عدم موفقيت در ذخيره حوزه زماني
 timezone_ecannot=به شما اجازه تغيير حوزه زمان داده نشده است
-timezone_enone= هيچ حوزه‌اي انتخاب نشده است
+timezone_enone=هيچ حوزه‌اي انتخاب نشده است

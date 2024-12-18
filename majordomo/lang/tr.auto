@@ -2,7 +2,7 @@ index_eversion2=$1 Majordomo sürüm dosyası $2 program dizini altında bulunam
 index_esendmail2=Sendmail yüklü değil veya sisteminizde düzgün ayarlanmamış. <a href=$2>Sendmail modülü</a> yapılandırmasını kontrol edin.
 index_epostfix=Postfix yüklü değil veya sisteminizde doğru şekilde ayarlanmamış. <a href='$1'>Postfix modülü</a> yapılandırmasını kontrol edin.
 index_esendmail3=Takma adları yönetmek için gereken Sendmail Webmin modülü yüklü değil.
-index_version=Majordomo sürüm $1 
+index_version=Majordomo sürüm $1
 index_name=Liste adı
 index_info=Liste bilgisi
 index_mail=Posta adresi

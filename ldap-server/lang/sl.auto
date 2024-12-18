@@ -1,4 +1,4 @@
-index_version=OpenLDAP $1 
+index_version=OpenLDAP $1
 index_openldap=OpenLDAP
 index_eslapd=Program strežnika OpenLDAP $1 v vašem sistemu ni bil najden. Morda pot na strani <a href='$2'>konfiguracija modula</a> ni pravilna?
 index_econfig=Konfiguracijske datoteke strežnika OpenLDAP $1 v vašem sistemu ni bilo mogoče najti. Morda pot na strani <a href='$2'>konfiguracija modula</a> ni pravilna?
@@ -24,10 +24,10 @@ connect_efile=Konfiguracijske datoteke OpenLDAP $1 ni bilo mogoče najti - morda
 connect_euser2=Nobenega uporabnika za prijavo, kot je bilo ugotovljeno v konfiguraciji strežnika LDAP
 connect_epass2=V konfiguraciji strežnika LDAP ni bilo najdenega gesla za prijavo
 connect_epass3=Geslo v konfiguraciji strežnika LDAP je šifrirano in ga Webmin ne more uporabljati
-connect_emod=Modul Perl $1, potreben za povezavo s strežnikom LDAP, ni nameščen. Celotno sporočilo o napaki Perl je : $2 
+connect_emod=Modul Perl $1, potreben za povezavo s strežnikom LDAP, ni nameščen. Celotno sporočilo o napaki Perl je : $2
 connect_eldap=Povezave s strežnikom LDAP $1 na vratih $2 ni bilo mogoče
-connect_essl=Šifriranja TLS ni bilo mogoče zagnati s strežnikom LDAP $1 : $2 
-connect_elogin=Prijava na strežnik LDAP $1 ni bila uspešna kot $2 : $3 
+connect_essl=Šifriranja TLS ni bilo mogoče zagnati s strežnikom LDAP $1 : $2
+connect_elogin=Prijava na strežnik LDAP $1 ni bila uspešna kot $2 : $3
 connect_cpan=Lahko vam je <tt>$1</tt> Perl modul <a href='$2'>samodejno nameščen</a> iz CPAN-a.
 
 slapd_title=Konfiguracija strežnika OpenLDAP
@@ -109,11 +109,11 @@ acl_add=Dodajte novo pravilo nadzora dostopa.
 acl_return=pravila za nadzor dostopa
 
 browser_title=Brskanje po zbirki podatkov
-browser_econn=Brskalnika LDAP ni mogoče uporabiti : $1 
+browser_econn=Brskalnika LDAP ni mogoče uporabiti : $1
 browser_ecannot=Ne morete brskati po LDAP bazi
 browser_base=Brskanje:
 browser_ok=Pokaži
-browser_esearch=Iskanje LDAP ni uspelo : $1 
+browser_esearch=Iskanje LDAP ni uspelo : $1
 browser_subs=Otroški predmeti
 browser_attrs=Atributi predmeta
 browser_parent=Prebrskaj starš
@@ -144,26 +144,26 @@ browser_sok=Iskanje
 
 save_err=Atributa ni bilo mogoče spremeniti
 save_ebase=Objekta $1 iz baze podatkov ni bilo mogoče pridobiti
-save_emodify=Sprememba LDAP $2 v $1 ni uspela : $3 
+save_emodify=Sprememba LDAP $2 v $1 ni uspela : $3
 save_enone=Vnesene vrednosti niso bile
 
 add_err=Atributa ni bilo mogoče dodati
 add_eadd=Manjkajoče ali neveljavno ime atributa
 add_evalue=Manjka vrednost
-add_emodify=Dodatek LDAP od $2 do $1 ni uspel : $3 
+add_emodify=Dodatek LDAP od $2 do $1 ni uspel : $3
 
 delete_err=Odstranjevanja atributov ni uspelo
 delete_enone=Izbrana ni nobena
-delete_emodify=Izbrisa LDAP $2 iz $1 ni uspela : $3 
+delete_emodify=Izbrisa LDAP $2 iz $1 ni uspela : $3
 
 sdelete_err=Izbris predmetov ni uspel
 sdelete_edn=Objekta $1 ni bilo mogoče najti
-sdelete_edel=Izbrisa LDAP $1 ni uspela : $2 
+sdelete_edel=Izbrisa LDAP $1 ni uspela : $2
 
 rename_err=Objekta ni bilo mogoče preimenovati
-rename_eget=Ni mogoče najti predmeta z DN $1 
+rename_eget=Ni mogoče najti predmeta z DN $1
 rename_enew=Zdi se, da novo ime ni veljavno
-rename_erename=LDAP newdn do $2 od $1 ni uspel : $3 
+rename_erename=LDAP newdn do $2 od $1 ni uspel : $3
 
 oadd_title=Ustvari objekt
 oadd_header=Nove podrobnosti predmeta LDAP
@@ -175,11 +175,11 @@ oadd_edn1=Manjkajoče ali neveljavno ime za DN
 oadd_edn2=Manjkajoča ali neveljavna vrednost za DN
 oadd_eclasses=Št predmetnih razredov ni vnesen
 oadd_eclass='$1' ne izgleda kot veljaven objektni razred
-oadd_ename=Neveljavno ime za atribut $1 
+oadd_ename=Neveljavno ime za atribut $1
 oadd_eget=Objekta $1 : $2 ni bilo mogoče dobiti
-oadd_eget2=Ni bilo mogoče preveriti spopada s $1 : $2 
+oadd_eget2=Ni bilo mogoče preveriti spopada s $1 : $2
 oadd_eclash=Predmet z DN $1 že obstaja
-oadd_eadd=Dodatek LDAP $1 ni uspel : $2 
+oadd_eadd=Dodatek LDAP $1 ni uspel : $2
 oadd_err=Ni bilo mogoče ustvariti novega predmeta
 
 create_title=Ustvari drevo
@@ -198,7 +198,7 @@ create_edom=Manjkajoče ali neveljavno ime domene
 create_edn=Manjkajoče ali neveljavno razlikovano ime
 create_err=Ni bilo mogoče ustvariti novega drevesa
 create_doingdn=Ustvarjanje baze DN $1 ..
-create_edoingdn=.. ni uspelo : $1 
+create_edoingdn=.. ni uspelo : $1
 create_done=.. Končano
 create_doingex=Ustvarjanje primera predmeta z DN $1 ..
 create_edoingex=.. ni uspelo: $1. Vendar se drevo še vedno lahko uporablja.
@@ -207,49 +207,49 @@ create_eoc=Za novi DN ni bilo mogoče najti ustreznega razreda predmeta
 eunknown=Neznana napaka
 
 apply_err=Konfiguracije ni bilo mogoče uporabiti
-apply_ecmd=$1 ni uspelo : $2 
+apply_ecmd=$1 ni uspelo : $2
 apply_ecannot=Konfiguracije ne morete uporabiti
 
 stop_err=Zaustavitve strežnika LDAP ni uspelo
-stop_ecmd=$1 ni uspelo : $2 
+stop_ecmd=$1 ni uspelo : $2
 stop_egone=Ne teče več!
-stop_ekill=Postopek ubijanja ni uspel : $1 
+stop_ekill=Postopek ubijanja ni uspel : $1
 stop_ecannot=Ne morete ustaviti strežnika LDAP
 
 start_err=Zagon strežnika LDAP ni uspel
-start_ecmd=$1 ni uspelo : $2 
+start_ecmd=$1 ni uspelo : $2
 start_ecannot=Ni vam dovoljeno zagnati strežnika LDAP
 
-log_create_dn=Ustvarjen objekt $1 
-log_delete_dn=Izbrisan predmet $1 
-log_rename_dn=Preimenovani objekt $1 
+log_create_dn=Ustvarjen objekt $1
+log_delete_dn=Izbrisan predmet $1
+log_rename_dn=Preimenovani objekt $1
 log_delete_dns=Izbrisanih $1 predmetov
-log_create_attr=Dodan atribut predmetu $2 
-log_create_attr_l=Za predmet $2 je dodan atribut $1 z vrednostjo $3 
-log_modify_attr=Posodobljen atribut v predmetu $2 
-log_modify_attr_l=Posodobljen atribut $1 z vrednostjo $3 v objektu $2 
-log_delete_attr=Izbrisan iz predmeta $2 
-log_delete_attr_l=Izbrisan atribut $1 iz predmeta $2 
-log_delete_attrs=Izbrisani atributi $1 iz predmeta $2 
+log_create_attr=Dodan atribut predmetu $2
+log_create_attr_l=Za predmet $2 je dodan atribut $1 z vrednostjo $3
+log_modify_attr=Posodobljen atribut v predmetu $2
+log_modify_attr_l=Posodobljen atribut $1 z vrednostjo $3 v objektu $2
+log_delete_attr=Izbrisan iz predmeta $2
+log_delete_attr_l=Izbrisan atribut $1 iz predmeta $2
+log_delete_attrs=Izbrisani atributi $1 iz predmeta $2
 log_stop=Ustavljen LDAP strežnik
 log_start=Začetek strežnika LDAP
 log_apply=Uporabljena konfiguracija
 log_slapd=Spremenjena konfiguracija strežnika LDAP
 log_schema=Spremenjene omogočene sheme LDAP
 log_gencert=Generirano novo SSL potrdilo
-log_sfile=Spremenjena datoteka sheme $1 
-log_sup=Premaknjena datoteka sheme navzgor $1 
-log_sdown=Datoteka sheme premaknjena navzdol $1 
-log_create=Ustvarjeno novo DN $1 
+log_sfile=Spremenjena datoteka sheme $1
+log_sup=Premaknjena datoteka sheme navzgor $1
+log_sdown=Datoteka sheme premaknjena navzdol $1
+log_create=Ustvarjeno novo DN $1
 log_bootup=Omogočen strežnik LDAP ob zagonu
 log_bootdown=Onemogočen strežnik LDAP ob zagonu
 log_perms=Fiksna dovoljenja strežnika LDAP
-log_create_access=Ustvarjeno pravilo nadzora dostopa za $1 
-log_delete_access=Izbriši pravilo nadzora dostopa za $1 
-log_modify_access=Posodobljeno pravilo nadzora dostopa za $1 
-log_up_access=Pravilo nadzora dostopa premaknjeno za $1 
-log_down_access=Premaknjeno pravilo za nadzor dostopa navzdol za $1 
-log_delete_accesses=Izbrisana so pravila za nadzor dostopa $1 
+log_create_access=Ustvarjeno pravilo nadzora dostopa za $1
+log_delete_access=Izbriši pravilo nadzora dostopa za $1
+log_modify_access=Posodobljeno pravilo nadzora dostopa za $1
+log_up_access=Pravilo nadzora dostopa premaknjeno za $1
+log_down_access=Premaknjeno pravilo za nadzor dostopa navzdol za $1
+log_delete_accesses=Izbrisana so pravila za nadzor dostopa $1
 log_all=vsi predmeti
 
 gencert_title=Ustvari SSL potrdilo
@@ -275,7 +275,7 @@ acl_create=Ali lahko ustvarite novo drevo?
 acl_start=Ali lahko zažene in ustavi strežnik LDAP?
 acl_apply=Ali lahko uporabite spremembe konfiguracije?
 
-access_desc=$2 za $1 
+access_desc=$2 za $1
 access_self=jaz
 access_users=pristnih uporabnikov
 access_anon=anonimni uporabniki
@@ -322,7 +322,7 @@ eacl_err=Pravila nadzora dostopa ni bilo mogoče shraniti
 eacl_edn=Manjkajoča ali neveljavna DN - mora biti kot <tt>uid=joe,dc=mojadomena,dc=com</tt>
 eacl_efilter=Manjkajoči ali neveljaven filter - mora biti kot <tt>(objectClass = posixAccount)</tt>
 eacl_eattrs=Manjkajoči ali neveljavni seznam atributov, ločenih z vejicami
-eacl_ewho=Manjkajoč ali neveljaven videz DN v vrstici $1 
+eacl_ewho=Manjkajoč ali neveljaven videz DN v vrstici $1
 eacl_eaccess=V vrstici $1 manjka ali ni veljavna raven dostopa
 eacl_order=Redni red
 eacl_noorder=Ni nastavljeno

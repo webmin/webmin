@@ -123,5 +123,5 @@ delete_efile=ملف حزمة غير صالح!
 uninstalls_title=إلغاء تثبيت الوحدات النمطية
 uninstalls_err=فشل في إلغاء تثبيت الوحدات النمطية
 uninstalls_enone=لا شيء محدد
-uninstalls_emod=فشل $1 : $2 
+uninstalls_emod=فشل $1 : $2
 uninstalls_rusure=هل تريد بالتأكيد إلغاء تثبيت الوحدات النمطية المحددة$1؟ ستتم إزالة$2 من الوحدات الفرعية وملفات$3.

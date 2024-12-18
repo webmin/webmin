@@ -22,7 +22,7 @@ list_ecannot=Nemáte oprávnění spravovat tento PHP konfigurační soubor
 list_return=PHP konfigurace
 
 vars_title=PHP proměnné
-vars_header=Volby pro tvorbu a přidělování PHP proměnných 
+vars_header=Volby pro tvorbu a přidělování PHP proměnných
 vars_magic=Přidělovat všechny vkládané proměnné?
 vars_runtime=Přidělovat data generovaná v rámci runtime?
 vars_register=Zahrnout veškerý vstup do globálních proměnných?

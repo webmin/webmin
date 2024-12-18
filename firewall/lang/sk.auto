@@ -1,7 +1,7 @@
 index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
 index_position=Zobrazujú sa pravidlá $1 až $2 z $3
-index_evalid=VÝSTRAHA! Vaša aktuálna konfigurácia IPtables je neplatná : $1 
+index_evalid=VÝSTRAHA! Vaša aktuálna konfigurácia IPtables je neplatná : $1
 index_no_comment=
 index_crename=Premenovať reťazec
 index_cmovesel=Presunúť vybraté
@@ -22,19 +22,19 @@ index_ipvxmode=Zmeniť verziu protokolu IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
 
-desc_icmpv6-type=Typ ICMP je $1 
-desc_icmpv6-type!=Typ ICMP nie je $1 
-desc_ctstate=stav pripojenia je $1 
-desc_ctstate!=stav pripojenia nie je $1 
+desc_icmpv6-type=Typ ICMP je $1
+desc_icmpv6-type!=Typ ICMP nie je $1
+desc_ctstate=stav pripojenia je $1
+desc_ctstate!=stav pripojenia nie je $1
 desc_match-set=$2 zodpovedá súprave IP $1
 desc_match-set!=$2 sa nezhoduje s IPset $1
 desc_match-set_src=prichádzajúca premávka
 desc_match-set_dst=odchádzajúca prevádzka
-desc_physdev-in=vstupné fyzické rozhranie je $1 
-desc_physdev-in!=vstupné fyzické rozhranie nie je $1 
-desc_physdev-out=výstupné fyzické rozhranie je $1 
-desc_physdev-out!=výstupné fyzické rozhranie nie je $1 
-desc_args--match-set=$2 je obsiahnutý v IP-súbore $1 
+desc_physdev-in=vstupné fyzické rozhranie je $1
+desc_physdev-in!=vstupné fyzické rozhranie nie je $1
+desc_physdev-out=výstupné fyzické rozhranie je $1
+desc_physdev-out!=výstupné fyzické rozhranie nie je $1
+desc_args--match-set=$2 je obsiahnutý v IP-súbore $1
 desc_src=zdroj
 desc_dest=destinácia
 
@@ -54,9 +54,9 @@ edit_matchsetdst=na odchádzajúcej premávke
 save_ephysdevin=Chýbajúce alebo neplatné prichádzajúce fyzické rozhranie
 save_ephysdevout=Chýbajúce alebo neplatné odchádzajúce fyzické rozhranie
 
-log_rename_chain=Premenovaný reťazec $1 v tabuľke $2 
-log_movesel_chain=Presunuli sa pravidlá $3 z reťazca $1 v tabuľke $2 
-log_openports=Otvorené porty brány firewall $1 
+log_rename_chain=Premenovaný reťazec $1 v tabuľke $2
+log_movesel_chain=Presunuli sa pravidlá $3 z reťazca $1 v tabuľke $2
+log_openports=Otvorené porty brány firewall $1
 
 add_enone=Nie sú vybrané žiadne servery na pridanie!
 

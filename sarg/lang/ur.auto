@@ -1,7 +1,7 @@
 index_title=اسکویڈ رپورٹ جنریٹر
 index_econf=The Sarg configuration file $1 was not found on your system. Maybe Sarg is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_ecmd=The Sarg program $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
-index_eversion= $1 : $2 کمانڈ کے ساتھ سرگ کا ورژن حاصل کرنے میں ناکام
+index_eversion=$1 : $2 کمانڈ کے ساتھ سرگ کا ورژن حاصل کرنے میں ناکام
 index_version=سارگ ورژن$1
 index_generate=ابھی رپورٹ تیار کریں
 index_generatedesc=موجودہ تشکیل کا استعمال کرتے ہوئے فوری طور پر$1 میں سارگ کی رپورٹ تیار کرنے کے لئے اس بٹن پر کلک کریں۔

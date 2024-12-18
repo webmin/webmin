@@ -1,8 +1,8 @@
 index_title=Generator poročil o lignjih
 index_econf=Konfiguracijske datoteke Sarg $1 v vašem sistemu ni bilo mogoče najti. Morda Sarg ni nameščen ali je konfiguracija <a href='$2'>modula</a> napačna.
 index_ecmd=Programa Sarg $1 v vašem sistemu ni bilo mogoče najti. Mogoče ni nameščen ali je konfiguracija <a href='$2'>modula</a> napačna.
-index_eversion=Ni bilo mogoče dobiti različice Sarga z ukazom $1 : $2 
-index_version=Različica Sarg $1 
+index_eversion=Ni bilo mogoče dobiti različice Sarga z ukazom $1 : $2
+index_version=Različica Sarg $1
 index_generate=Ustvari poročilo zdaj
 index_generatedesc=Kliknite ta gumb, da takoj ustvarite Sarg poročilo v $1 s trenutno konfiguracijo.
 index_clear=Ali želite izbrisati obstoječe poročilo v imeniku?

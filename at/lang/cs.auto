@@ -12,9 +12,9 @@ index_bootdesc=Toto nastavení změňte, abyste povolili nebo zakázali spoušt�
 acl_stop=Lze zastavit a spustit <tt>atd</tt>?
 
 log_allow=Změnili povolení uživatelé
-log_create_job=Byl vytvořen naplánovaný příkaz pro $1 
-log_delete_job=Zrušený naplánovaný příkaz pro $1 
-log_exec_job=Byl proveden naplánovaný příkaz pro $1 
+log_create_job=Byl vytvořen naplánovaný příkaz pro $1
+log_delete_job=Zrušený naplánovaný příkaz pro $1
+log_exec_job=Byl proveden naplánovaný příkaz pro $1
 log_delete_jobs=Zrušené $1 naplánované příkazy
 log_stop=Server plánovaných příkazů zastaven
 log_start=Spuštěn server naplánovaných příkazů

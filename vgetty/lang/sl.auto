@@ -18,7 +18,7 @@ vgetty_return=seznam serijskih vrat
 vgetty_create=Dodajte serijska vrata
 vgetty_edit=Uredi serijska vrata
 vgetty_header=Možnosti konfiguracije serijskih vrat
-vgetty_ts=Serijska vrata $1 
+vgetty_ts=Serijska vrata $1
 vgetty_other=Druga naprava ..
 vgetty_rings=Zvoni pred odgovorom
 vgetty_default=Globalno privzeto
@@ -100,19 +100,19 @@ pvfdesc=$1, $2 bita
 
 upload_err=Sporočila ni bilo mogoče dodati
 upload_emessage=Izbrana ni nobena datoteka WAV
-upload_ewav=Ni bilo mogoče pretvoriti datoteke WAV : $1 
-upload_epvf=Ni bilo mogoče ustvariti datoteke RMD : $1 
+upload_ewav=Ni bilo mogoče pretvoriti datoteke WAV : $1
+upload_epvf=Ni bilo mogoče ustvariti datoteke RMD : $1
 upload_esame=Datoteka s sporočilom $1 že obstaja
 
 log_apply=Uporabljena konfiguracija
-log_upload=Naloženo pozdravno sporočilo $1 
+log_upload=Naloženo pozdravno sporočilo $1
 log_move=Pretvoril $1 prejeta sporočila
 log_delete0=Izbrisana $1 prejeta sporočila
 log_delete1=Izbrisanih $1 pozdravnih sporočil
 log_options=Spremenjene možnosti glasovne pošte
-log_vgetty_create=Dodana so serijska vrata $1 
-log_vgetty_modify=Spremenjena serijska vrata $1 
-log_vgetty_delete=Izbrisana serijska vrata $1 
+log_vgetty_create=Dodana so serijska vrata $1
+log_vgetty_modify=Spremenjena serijska vrata $1
+log_vgetty_delete=Izbrisana serijska vrata $1
 
 email_subject=Sporočilo glasovne pošte
 email_body=Sporočilo glasovne pošte, prejeto v $1, $2.

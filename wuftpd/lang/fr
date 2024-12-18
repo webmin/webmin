@@ -1,11 +1,11 @@
 index_title=Serveur WU-FTPD
-index_eftpd=Le serveur FTP $1 ne peut être trouvé sur votre système.  Peut-être n'est-il pas installé ou votre <a href='$2'>Configuration du module du serveur FTP</a> est incorrecte.
-index_eftpaccess=Le fichier de configuration $1 du serveur FTP n'existe pas.  Peut-être n'est-il pas installé ou votre <a href='$2'>Configuration du module du serveur FTP</a> est incorrecte.
-index_eversion=Le serveur FTP $1 ne semble pas être WU-FTPd.  Peut-être utilisez-vous une vieille version de FTPd fournit avec votre système d'exploitation ou votre <a href='$2'>Configuration du module du serveur FTP</a> est incorrecte.
+index_eftpd=Le serveur FTP $1 ne peut être trouvé sur votre système. Peut-être n'est-il pas installé ou votre <a href='$2'>Configuration du module du serveur FTP</a> est incorrecte.
+index_eftpaccess=Le fichier de configuration $1 du serveur FTP n'existe pas. Peut-être n'est-il pas installé ou votre <a href='$2'>Configuration du module du serveur FTP</a> est incorrecte.
+index_eversion=Le serveur FTP $1 ne semble pas être WU-FTPd. Peut-être utilisez-vous une vieille version de FTPd fournit avec votre système d'exploitation ou votre <a href='$2'>Configuration du module du serveur FTP</a> est incorrecte.
 index_apply=Appliquer les Changements
-index_applymsg=Cliquer sur ce bouton appliquera la configuration courante.  Ceci va arrêter et redémarrer tout les processus du serveur FTP qui sont exécuté, et ainsi déconnecté tout les usagers utilisant actuellement le serveur FTP.
+index_applymsg=Cliquer sur ce bouton appliquera la configuration courante. Ceci va arrêter et redémarrer tout les processus du serveur FTP qui sont exécuté, et ainsi déconnecté tout les usagers utilisant actuellement le serveur FTP.
 index_start=Démarrer le Serveur
-index_startmsg=Cliquer sur ce bouton démarrera le service FTP avec la configuration actuelle.  Vous pouvez aussi configurer le serveur pour qu'il soit démarrer automatiquement en utilisant le module <a href='$1'>Services Internet</a>.
+index_startmsg=Cliquer sur ce bouton démarrera le service FTP avec la configuration actuelle. Vous pouvez aussi configurer le serveur pour qu'il soit démarrer automatiquement en utilisant le module <a href='$1'>Services Internet</a>.
 index_return=options du serveur FTP
 
 class_title=Usagers et Classes

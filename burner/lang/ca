@@ -12,7 +12,7 @@ index_none=No hi ha cap perfil de gravació definit.
 index_noaccess=No tens accés a cap perfil de gravació.
 index_global=Opcions Globals
 index_ecdrecord=No s'ha trobat al sistema l'ordre de gravació de CDs <tt>$1</tt>. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-index_return= a la llista de perfils
+index_return=a la llista de perfils
 index_delete=Suprimeix els Perfils Seleccionats
 edit_title=Edició de Perfil de Gravació
 create_title=Creació de Perfil de Gravació

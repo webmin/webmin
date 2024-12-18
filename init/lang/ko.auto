@@ -1,4 +1,4 @@
-index_mode=부팅 시스템  : $1 
+index_mode=부팅 시스템 : $1
 index_sboot5=아니요(마스크됨)
 index_sboot6=예(항상)
 index_uname=서비스 이름
@@ -13,9 +13,9 @@ index_lname=에이전트 이름
 
 edit_reloadnow2=구성 파일 다시 읽기
 
-log_restart=재시작 된 작업 $1 
-log_condrestart=조건부로 재시작 된 작업 $1 
-log_reload=재로드 된 작업 $1 
+log_restart=재시작 된 작업 $1
+log_condrestart=조건부로 재시작 된 작업 $1
+log_reload=재로드 된 작업 $1
 log_status=작업 $1 의 페치 상태
 
 mass_enoallow=<tt>$1</tt>을(를) 중지할 수 없습니다

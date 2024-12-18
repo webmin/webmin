@@ -28,7 +28,7 @@ download_act=Telepítési tevékenység
 download_src=Forrás
 download_m=Csak előállítás
 download_mt=Előállítás és tesztelés
-download_mi=Előállítás  és telepítés
+download_mi=Előállítás és telepítés
 download_mti=Előállítás , tesztelés és telepítés
 download_cont=A telepítés folytatása
 download_epackages=Érvénytelen CPAN modul URL
@@ -36,7 +36,7 @@ download_ecpan=A $1 modult nem találom a CPAN modulok listájában
 download_args=<tt>Makefile.PL</tt> paraméterei
 
 install_title=Modul telepítése
-install_untar=Untar futtatása a  modul file-on
+install_untar=Untar futtatása a modul file-on
 install_make=A modul lefordítésa
 install_test=A modul tesztelése
 install_install=A modul TELEPÍTÉSE

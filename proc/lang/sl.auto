@@ -16,7 +16,7 @@ index_memtfc=$1 skupaj / $2 prosto / $3 predpomnjeno
 index_loadname=CPU obremenitve povprečja:
 index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
 index_cpuname=Vrsta CPU-ja:
-index_inzone=V coni $1 
+index_inzone=V coni $1
 
 pid=ID
 owner=Lastnik
@@ -81,7 +81,7 @@ edit_open=Datoteke in povezave
 edit_trace=Proces sledenja
 edit_return=podrobnosti procesa
 
-kill_err=Ni bilo mogoče poslati signala $1 za obdelavo $2 
+kill_err=Ni bilo mogoče poslati signala $1 za obdelavo $2
 kill_title=Pošlji signal
 kill_sent=poslan
 kill_ecannot=Ni vam dovoljeno ubijati procesov
@@ -144,11 +144,11 @@ sysv_task=ID naloge
 sysv_zone=Ime cone
 
 log_run=Ukaz ran "$1"
-log_kill=Poslan signal $1 za obdelavo $2 
+log_kill=Poslan signal $1 za obdelavo $2
 log_kills=Pošlji signal $1 do $2 procesov
-log_kill_l=Poslan signal $1 za obdelavo $2 
-log_kills_l=Poslan signal $1 procesom <br> $2 
-log_renice=Spremenjena prednost postopka $2 na $1 
+log_kill_l=Poslan signal $1 za obdelavo $2
+log_kills_l=Poslan signal $1 procesom <br> $2
+log_renice=Spremenjena prednost postopka $2 na $1
 
 acl_manage=Upravljanje procesov kot uporabnik
 acl_manage_def=Trenutni uporabnik Webmin-a
@@ -174,10 +174,10 @@ open_type=Vtipkajte
 open_proto=Protokol
 open_desc=Podrobnosti
 open_fd=Deskriptor datoteke
-open_listen1=Poslušanje v pristanišču $1 
-open_listen2=Poslušanje naslova $1 vrata $2 
-open_recv=Prejemanje $1:$2 
-open_conn=Povezana od $1 do $2 v stanju $3 
+open_listen1=Poslušanje v pristanišču $1
+open_listen2=Poslušanje naslova $1 vrata $2
+open_recv=Prejemanje $1:$2
+open_conn=Povezana od $1 do $2 v stanju $3
 open_cwd=Trenutni dir
 open_rtd=Root dir
 open_txt=Programska koda
@@ -192,7 +192,7 @@ open_file=Pot
 
 trace_title=Proces sledenja
 trace_start=Zagon sledenja sistemskega klica za $1 ..
-trace_doing=Sled sistemskega klica za $1  :
+trace_doing=Sled sistemskega klica za $1 :
 trace_done=.. postopek se je končal.
 trace_failed=.. sledenje ni uspelo!
 trace_sorry=Ta stran zahteva podporo Java v vašem brskalniku. Če želite uporabiti samo sled besedila, prilagodite konfiguracijo modula.

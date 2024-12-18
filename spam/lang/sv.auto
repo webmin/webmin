@@ -4,7 +4,7 @@ index_ecmd2=SpamAssassin-kommandot $1 hittades inte på ditt system.
 index_econfig=Den lokala konfigurationsfilen eller katalogen $1 SpamAssassin hittades inte på ditt system. Kanske är SpamAssassin inte installerat, eller är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_unknown=okänd
 index_edb=Det gick inte att ansluta till SpamAssassin-konfigurationsdatabasen: $1. Kontrollera <a href='$2'>modulkonfigurationen</a> för att vara säker på att du använder rätt inställningar.
-index_version=SpamAssassin-version $1 
+index_version=SpamAssassin-version $1
 index_warn_usermin=SpamAssassin verkar inte vara inställt i din Procmail-konfigurationsfil $2 eller den globala filen $1, så alla konfigurationer som görs med den här modulen kommer inte att ha någon effekt om inte SpamAssassin har konfigurerats globalt.
 index_warn_webmin=SpamAssassin verkar inte vara inställt i systemets Procmail-konfigurationsfil $1, så all konfiguration som görs med den här modulen kommer inte att ha någon effekt om inte användarna har konfigurerat den individuellt.
 index_return=modulindex
@@ -12,7 +12,7 @@ index_apply=Applicera förändringar
 index_applydesc=Klicka på den här knappen för att tillämpa den aktuella SpamAssassin-konfigurationen genom att skicka en HUP-signal till alla $1 -processer som körs.
 index_cpan=Eftersom SpamAssassin är en Perl-modul kan du också installera den automatiskt med Webmins modul <a href='$2'>Perl-moduler</a> för att ladda ner $1 från CPAN.
 index_spamassassin=Spamassassin
-index_ecannot=Du får inte hantera SpamAssassin-konfigurationsfilen $1 
+index_ecannot=Du får inte hantera SpamAssassin-konfigurationsfilen $1
 
 white_title=Tillåtna och avvisade adresser
 white_desc=I tabellerna på denna sida kan du ange Från: och till: adresser för e-post som alltid eller aldrig kategoriseras som skräppost. Alla andra e-postmeddelanden kommer att behandlas som normalt enligt SpamAssassins regler. Alla e-postadresser kan innehålla jokertecken, som *@foo.com eller *.foo.com för att matcha hela domäner.
@@ -111,7 +111,7 @@ report_addtext=Text för rubrik
 report_addspam=spam
 report_addham=Skinka
 report_addall=Allt
-report_eaddheader=Saknar eller ogiltig ytterligare rubrik för att lägga till $1 
+report_eaddheader=Saknar eller ogiltig ytterligare rubrik för att lägga till $1
 
 user_title=Diverse användaralternativ
 user_desc=Alternativen på denna sida är mest relaterade till sökvägarna och inställningarna som SpamAssassin använder för de externa skräppostidentifieringspaketen Razor, DCC och Pyzor. Du kan också berätta för SpamAssassin om den kan utföra DNS-sökningar eller inte.
@@ -190,7 +190,7 @@ priv_emscore='$1' är inte en giltig högsta fraspoäng
 priv_ephrase='$1' är inte en giltig två-ordspamfras
 priv_escore=Saknad eller ogiltig poäng för skräppostfras "$1"
 
-usually=Vanligtvis $1 
+usually=Vanligtvis $1
 ecannot=Du får inte använda den här sidan
 setup_title=Installera Procmail för SpamAssassin
 setup_desc_webmin=Detta formulär kan användas för att konfigurera Procmail i $1 för att köra SpamAssassin på alla e-postmeddelanden som mottagits av ditt system. Detta kommer dock endast att ha någon effekt om din e-postserver har konfigurerats för att använda Procmail för lokal leverans, eller för användare vars <tt>. Framåt</tt> -filer är inställda för att köra Procmail.
@@ -244,7 +244,7 @@ mail_razor=Rapportera som skräppost och radera
 mail_ham=Rapportera som Ham & Inbox
 mail_delete=Radera
 mail_return=skräppostlista
-mail_pos=Skräppostmeddelanden $1 till $2 av $3 
+mail_pos=Skräppostmeddelanden $1 till $2 av $3
 mail_none=Det finns inga meddelanden i din skräppostmapp
 mail_refresh=Uppdatera
 mail_will=Automatisk uppdatering på $1 minuter
@@ -253,7 +253,7 @@ mail_delall=Radera allt skräppost
 mail_search3=Sök efter poäng ovan:
 
 process_eclean=Ett fel uppstod när SpamAssassin-rubrikerna togs bort från det här e-postmeddelandet
-process_ereport=Det gick inte att rapportera e-post till SpamAssassin : $1 
+process_ereport=Det gick inte att rapportera e-post till SpamAssassin : $1
 
 apply_err=Det gick inte att tillämpa ändringar
 apply_none=Inga SpamAssassin daemon-processer hittades!
@@ -263,8 +263,8 @@ acl_file=SpamAssassin-konfigurationsfil som ska redigeras
 acl_filedef=Global konfigurationsfil
 acl_awl=Tillåtna användare för automatisk vitlistning
 acl_awl0=Alla användare
-acl_awl1=Endast listade användare $1 
-acl_awl2=Endast medlemmar i grupper $1 
+acl_awl1=Endast listade användare $1
+acl_awl2=Endast medlemmar i grupper $1
 
 search_escore=Saknad eller ogiltig skräppost
 search_results5=$1 e-postmeddelanden med skräppost på eller över $2 ..
@@ -337,20 +337,20 @@ simple_score=Betyg som ska tillämpas
 simple_describe=Beskrivning
 simple_err=Det gick inte att spara meddelandetester
 
-before_ecmd=Före-spara kommandot misslyckades : $1 
-after_ecmd=Efter-sparande-kommando misslyckades : $1 
+before_ecmd=Före-spara kommandot misslyckades : $1
+after_ecmd=Efter-sparande-kommando misslyckades : $1
 
-connect_emysql=Det gick inte att ladda databasdrivrutinen $1 
+connect_emysql=Det gick inte att ladda databasdrivrutinen $1
 connect_elogin=Det gick inte att logga in på databasen $1:$2.
-connect_equery=Databasen $1 innehåller inte inställningstabellen $2 
+connect_equery=Databasen $1 innehåller inte inställningstabellen $2
 connect_eldapmod=Perl-modul $1 som behövs för att kommunicera med LDAP är inte installerad eller inte laddbar
-connect_eldap=Det gick inte att ansluta till LDAP-servern $1 på port $2 
-connect_eldaplogin=Det gick inte att logga in på LDAP-servern $1 som $2 : $3 
-connect_ebase=LDAP-bas DN $1 är inte giltig : $2 
+connect_eldap=Det gick inte att ansluta till LDAP-servern $1 på port $2
+connect_eldaplogin=Det gick inte att logga in på LDAP-servern $1 som $2 : $3
+connect_ebase=LDAP-bas DN $1 är inte giltig : $2
 
-eldap=LDAP-operationen misslyckades : $1 
-esql=SQL misslyckades : $1 
-ldap_euser=Det gick inte att hitta LDAP-användarobjekt för $1 
+eldap=LDAP-operationen misslyckades : $1
+esql=SQL misslyckades : $1
+ldap_euser=Det gick inte att hitta LDAP-användarobjekt för $1
 
 db_title=SQL- och LDAP-databaser
 db_header=Alternativ för konfigurationslagringsdatabas

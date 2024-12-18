@@ -71,7 +71,7 @@ watches_title=감시 목록
 watches_group=감시 그룹
 watches_services=보고있는 서비스
 watches_sadd=서비스 추가
-watches_add=그룹에 대한 관심 목록 추가  :
+watches_add=그룹에 대한 관심 목록 추가 :
 watches_return=감시 목록
 watches_none=아직 감시 목록이 정의되지 않았습니다.
 
@@ -117,7 +117,7 @@ service_monitor=모니터 사용
 service_mon1=표준 모니터
 service_mon0=다른 모니터 ..
 service_args=모니터 파라미터
-service_period=모니터링 기간 $1 
+service_period=모니터링 기간 $1
 service_days=확인할 일
 service_hours=확인 시간
 service_all=모두

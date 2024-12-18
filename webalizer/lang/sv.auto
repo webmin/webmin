@@ -1,6 +1,6 @@
 index_title=Webalizer Logfile-analys
-index_version=Webalizer-version $1 
-index_version_webalizer=Webalizer-version $1 
+index_version=Webalizer-version $1
+index_version_webalizer=Webalizer-version $1
 index_version_awffull=AWFFull
 index_ewebalizer=Loggfilanalyskommandot $1 hittades inte på ditt system. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_econf=Webalizer-konfigurationsfilen $1 hittades inte på ditt system. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
@@ -21,8 +21,8 @@ index_return=loggfiler lista
 index_global=Redigera globala alternativ
 index_globaldesc=Klicka på den här knappen för att redigera Webalizeralternativ som gäller för rapporter som genereras från alla loggfiler.
 index_eversion=Webalizer-kommandot $1 på ditt system är version $2, men den här modulen stöder endast versioner $3 och högre.
-index_egetversion=Det gick inte att få versionen av Webalizer med kommandot $1 : $2 
-index_when=Ja, $1 
+index_egetversion=Det gick inte att få versionen av Webalizer med kommandot $1 : $2
+index_when=Ja, $1
 index_webalizer=Webalizer
 index_enable=Schema vald
 index_disable=De-schemat valt
@@ -66,7 +66,7 @@ save_euser=Saknad eller ogiltig användare att köra webalizer som
 save_ewuser=Ingen Unix-användare som heter $1 finns
 save_ehost=Saknat eller ogiltigt webbhotellnamn
 save_etitle=Saknas rapporttitel
-save_ecannot=Du får bara generera rapporter för loggar under $1 
+save_ecannot=Du får bara generera rapporter för loggar under $1
 
 view_epath=Ogiltig PATH_INFO
 view_efile=Ogiltigt rapportfilnamn
@@ -77,7 +77,7 @@ view_title=Visa rapport
 
 global_title=Globala webalizeralternativ
 global_title2=Webalizer-rapportalternativ
-global_for=För loggfil $1 
+global_for=För loggfil $1
 global_first=För närvarande har inga alternativ ställts in för den här loggfilen, vilket innebär att de globala alternativen kommer att användas istället. När detta formulär sparas kommer rapporter som genereras för den här loggen att använda de inställningar som valts på denna sida från och med nu.
 global_header=Webalizeralternativ för alla rapporter
 global_host=Webbhotellnamn
@@ -146,12 +146,12 @@ global_ehistory=Saknat eller ogiltigt historikfilnamn
 global_ecurrent=Saknas eller ogiltigt inkrementellt filnamn
 global_ecache=Saknat eller ogiltigt DNS-cache-filnamn
 
-log_create_log=Skapad rapportering för $1 
-log_modify_log=Ändrad rapportering för $1 
-log_delete_log=Raderad rapportering för $1 
-log_generate_log=Genererad rapport för $1 
+log_create_log=Skapad rapportering för $1
+log_modify_log=Ändrad rapportering för $1
+log_delete_log=Raderad rapportering för $1
+log_generate_log=Genererad rapport för $1
 log_global=Modifierade globala Webalizer-alternativ
-log_global2=Modifierade Webalizer-alternativ för $1 
+log_global2=Modifierade Webalizer-alternativ för $1
 log_enable_logs=Schemalagd rapportering av $1 loggar
 log_disable_logs=De schemalagda rapportering av $1 loggar
 

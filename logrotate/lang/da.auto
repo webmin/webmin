@@ -1,8 +1,8 @@
 index_title=Logfilrotation
 index_econf=Logrotations-konfigurationsfilen $1 blev ikke fundet på dit system. Måske er logrotate ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
 index_ecmd=Logrotationsprogrammet $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
-index_eversion=Kunne ikke hente versionen af logrotate med kommandoen $1 : $2 
-index_version=Logrotate version $1 
+index_eversion=Kunne ikke hente versionen af logrotate med kommandoen $1 : $2
+index_version=Logrotate version $1
 index_add=Tilføj en ny logfil, der skal roteres.
 index_file=Logfil
 index_period=Rotationsperiode
@@ -50,7 +50,7 @@ edit_mailfl=Log fil til e-mail
 edit_mailfirst=Det nyeste, der lige blev roteret
 edit_maillast=Ældste, der er ved at blive slettet
 edit_create=Genoprette logfil efter rotation?
-edit_createas=Ja, med tilstand $1 og ejes af bruger $2 og gruppe $3 
+edit_createas=Ja, med tilstand $1 og ejes af bruger $2 og gruppe $3
 edit_createno=Nej, opret ikke igen
 edit_createsame=Ja, med gamle tilladelser
 edit_olddir=Opbevar gamle roterede logfiler
@@ -90,9 +90,9 @@ log_modify_sched=Ændret logrotation Cron-job
 log_create_sched=Oprettet logrotation Cron-job
 log_delete_sched=Slet logrotation Cron-job
 log_global=Ændrede globale indstillinger
-log_create=Tilføjet rotation for logfil $1 
-log_modify=Ændret rotation for logfil $1 
-log_delete=Slettet rotation for logfil $1 
+log_create=Tilføjet rotation for logfil $1
+log_modify=Ændret rotation for logfil $1
+log_delete=Slettet rotation for logfil $1
 log_delete_logs=Slettet rotation for $1 logfiler
 
 sched_title=Logrotationsplan

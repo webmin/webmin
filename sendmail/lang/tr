@@ -61,14 +61,14 @@ aform_type0=Hiçbiri
 aform_type1=E-posta adresi
 aform_type2=Dosyadaki adresler
 aform_type3=Dosyaya yaz
-aform_type4=Programı besle 
+aform_type4=Programı besle
 aform_type5=Dosyadan geri gönder
 aform_edit=Takma isimleri değiştir
 aform_create=Takma isim oluştur
 aform_name=Adres
 aform_enabled=Geçerli mi?
 aform_val=Takma isim
-aform_afile= Değiştir...
+aform_afile=Değiştir...
 aform_return=takma isim
 
 afile_title=Adres Dosyasını Değiştir
@@ -98,7 +98,7 @@ asave_etype4none=Program girilmedi
 cws_title=Yerel Alanlar
 cws_ecannot=Yerel alanları değiştirmenize izin verilmedi
 cws_domains=Alanlar bu sunucu tarafından tutulmaktadır
-cws_desc1=$1'e gelen posta hariç, sendmail sadece sol taraftaki yazı kutusundaki alan ve makine adları için yerel posta dağıtıcılığını yapacaktır. Eğer çoklu e-posta alanlarını tutmak istiyorsanız bu formda listelemelisiniz. 
+cws_desc1=$1'e gelen posta hariç, sendmail sadece sol taraftaki yazı kutusundaki alan ve makine adları için yerel posta dağıtıcılığını yapacaktır. Eğer çoklu e-posta alanlarını tutmak istiyorsanız bu formda listelemelisiniz.
 cws_desc2=Listedeki bir alan genellikle tek başına yeterli değildir.
 cws_err=Yerel alanlanların kaydedilmesinde hata oluştu
 cws_ehost='$1' geçerli bir alan ya da makine ismi değil
@@ -109,7 +109,7 @@ masq_ecannot=Maskelemeyi yapılandırmanıza izininiz yoktur
 masq_domain=Alanı maskele
 masq_domains=Maskelenmiş olan alanlar
 masq_desc1=Eğer bir alan yukarı gidiyorsa, sendmail bu alandan gelen görünen bütün dış mesajların <tt>From</tt> adres kısmını değiştirecektir.Ayrıca sisteminizden geçen soldaki listedeki alan ya da makine isimlerinden gelen postalarda da <tt>From</tt> kısmı da aynı yolla değiştirilecektir.Tanınlanan bu alan maskelemeleri önemli kullanıcıların kullandığı <a href='$1'>Dış Adresler</a> sayfasından önemli olmalıdır
-masq_desc2=Bu mesajı makine adınızdan göndermektense alanınızdaki sisteminizden  göndermek isterseniz, ya da sisteminizi diğer makinelerin çalışan posta sunucularının merkezi yapmak için  oldukça kullanışlıdır  
+masq_desc2=Bu mesajı makine adınızdan göndermektense alanınızdaki sisteminizden göndermek isterseniz, ya da sisteminizi diğer makinelerin çalışan posta sunucularının merkezi yapmak için oldukça kullanışlıdır
 masq_err=Alan maskelemesinin kaydedilmesinde hata oluştu
 masq_edomain='$1' maskelenecek geçerli bir alan adı değil
 masq_ehost='$1' geçerli bir alan ya da makine adı değil
@@ -165,8 +165,8 @@ vsave_ecannot5=Hata haritalarını oluşturmak için izininiz yoktur
 mailers_title=Alan Yönlendirme
 mailers_cannot=Alan yönlendirmeleri değiştirmenize izin verilmemiştir
 mailers_edirective=Sendmail yapılandırma dosyanız alan yöneldirme için gerekli komutları içermiyor
-mailers_efile=Alan yönlendirme veri tabanı $2'nin inşasında kullanılan $1 dosyası mevcut değil 
-mailers_desc1=Alan yönlendirmeyi sağlamanın bir yolu da belirli alanlara posta göndermek için özel transfer yöntemi tanımlamaktır. Sisteminiz posta sunucuları için bir ağ geçidi ise ağınıza dışarıdan ulaşılamaz ya da isterseniz diğer sunucudan yönlendirilmiş olan parçalı alan için  sistminizi güçlendirebilirsiniz.
+mailers_efile=Alan yönlendirme veri tabanı $2'nin inşasında kullanılan $1 dosyası mevcut değil
+mailers_desc1=Alan yönlendirmeyi sağlamanın bir yolu da belirli alanlara posta göndermek için özel transfer yöntemi tanımlamaktır. Sisteminiz posta sunucuları için bir ağ geçidi ise ağınıza dışarıdan ulaşılamaz ya da isterseniz diğer sunucudan yönlendirilmiş olan parçalı alan için sistminizi güçlendirebilirsiniz.
 mailers_desc2=Herhangi yönlendirilmiş alanlar için <a href='$1'>yerel alanlar</a> listesine birşey girmemelisiniz.Bununla birlikte, herhangi alanda ağ geçidi olan sisteminiz için DNS MX kaydına sahip olmalısınız
 mailers_for=Posta..
 mailers_delivery=Dağıtıcı
@@ -186,7 +186,7 @@ mform_relay=SMTP iletimi
 mform_local=Yerel kullanıcı
 mform_prog=Programı besle
 mform_uucp=UUCp
-mform_usenet=USENET'e  gönder
+mform_usenet=USENET'e gönder
 mform_fax=HylaFAX
 mform_pop=POP3
 mform_procmail=Procmail
@@ -251,8 +251,8 @@ dsave_edomain='$1' geçerli bir alan adı değildir
 
 access_title=Spam Kontrolü
 access_ecannot=Spam kontrol yapılandırmasını değiştirmeye izininiz yoktur.
-access_efile=Adres haritalandırma veritabanı $2'nin inşasında kullanılan $1 yazı dosyası mevcut değildir.Doğru yol tanımlamalarını bulmak için belki de  <a href='$3'>modül yapılandırması</a>nı değiştirmelisiniz.
-access_desc1=Sendmail'in spam kontrol özelliği, belirli adreslerden  reddedilen postalar ile erişilen kullanıcılarınızdan yapılan spam'i ve posta göndermek için sisteminizi kullanan reddedilen spammer'ı engellemenize izin verir. Öntanımlı sendmail yapılandırması yerel kullanıcıya herhangi bir adresten gelen postaları kabul eder, ama sisteminizden gönderilenler herhangi bir posta sunucusu ya da istemcisi tarafından reddedilir.
+access_efile=Adres haritalandırma veritabanı $2'nin inşasında kullanılan $1 yazı dosyası mevcut değildir.Doğru yol tanımlamalarını bulmak için belki de <a href='$3'>modül yapılandırması</a>nı değiştirmelisiniz.
+access_desc1=Sendmail'in spam kontrol özelliği, belirli adreslerden reddedilen postalar ile erişilen kullanıcılarınızdan yapılan spam'i ve posta göndermek için sisteminizi kullanan reddedilen spammer'ı engellemenize izin verir. Öntanımlı sendmail yapılandırması yerel kullanıcıya herhangi bir adresten gelen postaları kabul eder, ama sisteminizden gönderilenler herhangi bir posta sunucusu ya da istemcisi tarafından reddedilir.
 access_desc2=Sendmail sisteminizde posta istemcilerinin herhangi bir hedefe SMTP yoluyla göndermesine izin verir. Böylece gönderme izini listesine yerel <tt>127.0.0</tt> ağını eklemenize ihtiyaç kalmayacaktır
 access_source=Kaynak..
 access_action=Servis..

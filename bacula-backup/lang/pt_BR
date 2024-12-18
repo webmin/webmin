@@ -20,7 +20,7 @@ index_up=Para cima
 index_down=Para baixo
 index_return=índice do módulo
 index_notrun=Backups e outras operações não podem ser realizadas como o daemon do Bacula Directory está parado.
-index_eversion=Seus sistema está usando a versão $2, mas o módulo do Webmin  somente suporta versões $1 e acima.
+index_eversion=Seus sistema está usando a versão $2, mas o módulo do Webmin somente suporta versões $1 e acima.
 index_dir=Configuração do Director
 index_sd=Configuração do Daemon de Armazenamento
 index_fd=Arquivo de configuração do Daemon
@@ -36,7 +36,7 @@ connect_equery3=A base de dados $1 não parece possuir grupos de tabelas OC do B
 esql=Erro SQL : $1
 
 check_edir=A configuração de diretório do Bacula $1 não foi encontrada no seu sistema.
-check_ebacula=O controle de comando do Bacula  $1 não foi encontrado.
+check_ebacula=O controle de comando do Bacula $1 não foi encontrado.
 check_econsole=O console de comandos do Bacula $1 não foi encontrado.
 check_edirector=O arquivo de configuração do Bacula director $1 não foi encontrado.
 check_eclient=Este sistema parece ser um <a href=$2'>cliente Bacula</a> assim como um director.
@@ -235,7 +235,7 @@ storages_address=Nome do computador ou endereço
 storages_device=Dispositivo de armazenamento
 storages_type=Tipo de mídia
 storages_add=Adicionar um novo daemon de armazenamento.
-storages_delete=Apagar  Daemons de Armazenamento Selecionados
+storages_delete=Apagar Daemons de Armazenamento Selecionados
 storages_return=lista de daemons de armazenamento
 storages_derr=Falhou ao apagar daemons de armazenamento
 
@@ -376,7 +376,7 @@ mount_done=.. montado com sucesso.
 unmount_done=.. desmontado com sucesso.
 mount_failed=.. ação de montar falhou! Veja a mensagem de erro acima para descobrir o motivo.
 unmount_failed=.. ação de desmontar falhou! Veja a mensagem de erro acima para descobrir o motivo.
-mount_return=forma  de montagem
+mount_return=forma de montagem
 mount_err=Falhou ao montar dispositivos de armazenamento
 mount_eslot=Número do slot faltando ou inválido
 
@@ -630,7 +630,7 @@ restore_ejobfiles=Sem arquivos registrados para trabalho
 restore_run=Iniciando o trabalho de restore $1 para cliente $2 do armazenameto $3 ..
 restore_return=forma de restauração
 restore_eok=.. o trabalho não pôde ser iniciado
-restore_running=.. o restore está sendo executado agora. Quando completo, o  resultado irá ser exibido abaixo ..
+restore_running=.. o restore está sendo executado agora. Quando completo, o resultado irá ser exibido abaixo ..
 restore_running2=.. o restore foi iniciado em segundo plano.
 restore_done=.. restore completo.
 restore_failed=.. o restore não foi completado com sucesso. Verifique mensagem de erros acima para maiores detalhes.

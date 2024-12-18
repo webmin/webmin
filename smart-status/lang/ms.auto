@@ -1,12 +1,12 @@
 index_title=Status Pemacu SMART
 index_ecmd=Perintah kawalan SMART $1 tidak dijumpai pada sistem anda, atau tidak ditetapkan dengan betul dalam konfigurasi modul <a href='$2'></a>. Ia mesti dipasang sebelum modul ini boleh digunakan.
 index_ecmd2=Perintah $1 tidak kelihatan sebagai arahan kawalan SMART. Ia mesti ditetapkan dengan betul dalam <a href='$2'>konfigurasi modul</a> sebelum modul ini boleh digunakan.
-index_version=Versi SMARTsuite $1 
+index_version=Versi SMARTsuite $1
 index_show=Tunjukkan status pemacu:
 index_ok=Tunjukkan
 index_eidescsi=Tiada pemacu IDE, SCSI atau SATA yang terdapat pada sistem anda.
-index_drive=Status pemacu $1 
-index_drivesub=Status pemacu $1, cakera $2 
+index_drive=Status pemacu $1
+index_drivesub=Status pemacu $1, cakera $2
 index_desc=Lokasi
 index_size=Saiz pemacu
 index_model=Buat dan model
@@ -36,11 +36,11 @@ monitor_edrive=Pemandu hilang atau tidak sah untuk memeriksa
 monitor_nosuch=Tiada pemacu sedemikian
 monitor_nosmart=Tiada sokongan SMART
 monitor_errorsfound=Dilaporkan $1 ralat
-monitor_errorsinced=Kesilapan meningkat dari $2 hingga $1 
+monitor_errorsinced=Kesilapan meningkat dari $2 hingga $1
 monitor_wearlevel=Gagal jika tahap memakai jatuh di bawah
 monitor_ewearlevel=Peratusan paras haus tidak sah
 monitor_nowearout=Drive tidak melaporkan penunjuk pemakaian SSD
-monitor_wornout=Tahap pakai telah jatuh ke $1 
+monitor_wornout=Tahap pakai telah jatuh ke $1
 
 short_title=Ujian Diri Ringkas
 short_doing=Memulakan ujian diri pendek $1 ..

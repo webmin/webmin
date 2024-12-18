@@ -67,7 +67,7 @@ index_eexpired_conf=Outomatiese ondertekening moet heraktiveer word op die $1 bl
 index_eexpired_mod=Gebruik die $1 module om DNSSEC vir hierdie domeine óf te deaktiveer, of kyk waarom ondertekening misluk.
 
 master_title=Edit Master Zone
-master_inview=$1 sig $2 
+master_inview=$1 sig $2
 master_ecannot=U mag nie hierdie sone wysig nie
 master_egone=Sone $1 bestaan in geen siening nie
 master_egone2=Sone $1 bestaan nie!

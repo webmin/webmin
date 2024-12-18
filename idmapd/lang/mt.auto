@@ -7,5 +7,5 @@ domain=Isem tad-domain
 nobody_user=Ħadd ma jużah
 nobody_group=Ħadd ma grupp
 save=Issejvja l-konfigurazzjoni u terġa 'tibda d-daemon
-save_err=Ma rnexxielux isalva l-fajl tal-konfigurazzjoni $1 
+save_err=Ma rnexxielux isalva l-fajl tal-konfigurazzjoni $1
 error_dir=Direttorju $1 ma jeżistix

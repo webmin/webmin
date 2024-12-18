@@ -33,7 +33,7 @@ save_erw=Neboli zadaní žiadni hostitelia na čítanie a zápis
 save_eroot=Neboli zadaní žiadni hostitelia prístupu k koreňovým súborom
 save_eaccess=Neboli zadaní žiadni hostitelia pre pripojenie
 
-log_create_export=Bol vytvorený export $1 
-log_delete_export=Odstránený vývoz $1 
-log_modify_export=Upravený vývoz $1 
+log_create_export=Bol vytvorený export $1
+log_delete_export=Odstránený vývoz $1
+log_modify_export=Upravený vývoz $1
 log_apply=Aplikovaná konfigurácia

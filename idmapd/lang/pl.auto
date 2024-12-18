@@ -7,5 +7,5 @@ domain=Nazwa domeny
 nobody_user=Nikt nie jest użytkownikiem
 nobody_group=Grupa nikogo
 save=Zapisz config i zrestartuj demona
-save_err=Nie udało się zapisać pliku konfiguracyjnego $1 
+save_err=Nie udało się zapisać pliku konfiguracyjnego $1
 error_dir=Katalog $1 nie istnieje

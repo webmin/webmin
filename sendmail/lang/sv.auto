@@ -1,6 +1,6 @@
-index_version2=Sendmail-version $1, config $2 
-index_xversion=Sendmail-version $1 
-index_version=Sendmailkonfigurering $1 
+index_version2=Sendmail-version $1, config $2
+index_xversion=Sendmail-version $1
+index_version=Sendmailkonfigurering $1
 index_sendmail=Skicka brev
 
 opts_gecos=Accepterar du mail för användarnas riktiga namn?
@@ -15,7 +15,7 @@ opts_host=Värdnamn
 opts_time=Tid mottagen
 
 aliases_enofile=Ingen aliasfil definieras i din Sendmail-konfiguration
-aliases_type6=Använd filterfil $1 
+aliases_type6=Använd filterfil $1
 aliases_toomany=Det finns för många e-postalias på ditt system för att visas på den här sidan.
 aliases_go=Hitta alias matchande:
 aliases_delete=Radera valda alias
@@ -25,12 +25,12 @@ aform_type6=Använd filterfil
 aform_file=Lägg till i aliasfilen
 aform_cmt=Beskrivning
 
-afile_ewrite=Det gick inte att skriva till adressfilen : $1 
+afile_ewrite=Det gick inte att skriva till adressfilen : $1
 
 ffile_title=Redigera filterfil
 ffile_desc=Använd formuläret nedan för att ställa in filterregler i filen $1.
 ffile_efile=Du får inte redigera $1.
-ffile_line=Om fältet $1 $2 $3, vidarebefordra till $4 
+ffile_line=Om fältet $1 $2 $3, vidarebefordra till $4
 ffile_from=från
 ffile_to=till
 ffile_subject=ämne
@@ -38,7 +38,7 @@ ffile_cc=CC
 ffile_body=kropp
 ffile_what0=matchar inte
 ffile_what1=tändstickor
-ffile_other=Annars vidare till $1 
+ffile_other=Annars vidare till $1
 ffile_err=Det gick inte att spara filterfilen
 ffile_ematch=Matchen saknas
 ffile_eaction=Saknad vidarebefordringsadress
@@ -64,7 +64,7 @@ asave_esame=Du får bara skapa ett alias med samma namn som din webmin-inloggnin
 
 adelete_err=Det gick inte att ta bort alias
 adelete_enone=Ingen vald
-adelete_ecannot=Du får inte ta bort aliaset $1 
+adelete_ecannot=Du får inte ta bort aliaset $1
 
 masq_ndomains=Domäner inte till maskerad
 
@@ -83,7 +83,7 @@ vform_err_protocol=Protokollfel
 vsave_esame=Du får bara skapa adresskartläggningar för ditt användarnamn
 
 vdelete_err=Det gick inte att ta bort adresskartläggningar
-vdelete_ecannot=Du får inte ta bort mappningen för $1 
+vdelete_ecannot=Du får inte ta bort mappningen för $1
 
 mailers_efeature=Din sendmail-konfiguration har inte domänrutningsfunktionen (<tt>mailertable</tt>) aktiverad. <a href='$1'>Klicka här</a> för att ställa in sendmailfunktioner.
 mailers_desc3=Du bör också ha en post i listan <a href='$1'>relädomäner</a> för varje domän också.
@@ -94,7 +94,7 @@ mform_domain2=Alla värdar i domän
 mform_domain3=Domän och alla dess värdar
 
 mdelete_err=Det gick inte att ta bort domänrutern
-mdelete_ecannot=Du får inte ta bort rutten för $1 
+mdelete_ecannot=Du får inte ta bort rutten för $1
 
 generics_efeature=Din sendmail-konfiguration har inte funktionen för utgående adressmappning (<tt>generik</tt>) aktiverad. <a href='$1'>Klicka här</a> för att ställa in sendmailfunktioner.
 generics_toomany=Det finns för många utgående adresser på ditt system för att visas på den här sidan.
@@ -105,7 +105,7 @@ gsave_ecannot3=Du får inte spara den utgående adressen
 gsave_ealready=En utgående adresskartläggning för '$1' finns redan
 
 gdelete_err=Det gick inte att ta bort utgående adresskartläggningar
-gdelete_ecannot=Du får inte ta bort mappningen för $1 
+gdelete_ecannot=Du får inte ta bort mappningen för $1
 
 domains_efeature=Din sendmail-konfiguration har inte domänmappning (<tt>domaintable</tt>) -funktionen aktiverad. <a href='$1'>Klicka här</a> för att ställa in sendmailfunktioner.
 domains_delete=Radera utvalda domänavbildningar
@@ -113,7 +113,7 @@ domains_delete=Radera utvalda domänavbildningar
 dsave_ealready=En domänkartläggning för '$1' finns redan
 
 ddelete_err=Det gick inte att ta bort domänmappningar
-ddelete_ecannot=Du får inte ta bort mappningen för $1 
+ddelete_ecannot=Du får inte ta bort mappningen för $1
 
 access_efeature=Din sendmail-konfiguration har inte skräppostkontrollfunktionen (<tt>access_db</tt>) aktiverad. <a href='$1'>Klicka här</a> för att ställa in sendmailfunktioner.
 access_toomany=Det finns för många regler för skräppostkontroll på ditt system för att visas på den här sidan.
@@ -131,7 +131,7 @@ ssave_ealready=En skräppostkontrollregel för '$1' finns redan
 ssave_ecannot2=Du får inte spara denna skräppostkontrollregel
 
 sdelete_err=Det gick inte att ta bort regler för skräppostkontroll
-sdelete_ecannot=Du får inte ta bort regeln för $1 
+sdelete_ecannot=Du får inte ta bort regeln för $1
 
 mailq_count=$1 meddelanden
 mailq_cc=cc
@@ -164,7 +164,7 @@ boxes_sent=Skickade post
 boxes_toomany=Det finns för många användare på ditt system för att lista alla sina brevlådor.
 boxes_go=Visa e-post för användare:
 
-mail_for2=För användare $1 
+mail_for2=För användare $1
 mail_sent=I skickad e-postlista
 mail_euserexists=Den här Unix-användaren finns inte
 mail_mark=Markera som:
@@ -177,8 +177,8 @@ mail_copy=Kopia till:
 mail_rfc=Från rad
 mail_eexists=Meddelandet finns inte längre!
 
-view_desc2=Meddelande $1 för användare $2 
-view_desc3=Meddelande $1 
+view_desc2=Meddelande $1 för användare $2
+view_desc3=Meddelande $1
 view_sent=Meddelande $1 i skickad e-postlista
 view_body=Meddelandetext
 view_allheaders=Visa alla rubriker
@@ -217,7 +217,7 @@ delete_emovenone=Ingen e-post valt att flytta
 delete_nobutton=Ingen knapp klickade
 
 search_efield=Du måste välja en söktyp.
-search_ewhat=Ingen text att matcha mot angavs för rad $1 
+search_ewhat=Ingen text att matcha mot angavs för rad $1
 search_enone=Inga sökkriterier har angivits
 search_results2=$1 e-postmeddelanden som matchar $2 ..
 search_results3=$1 e-postmeddelanden som inte matchar $2 ..
@@ -227,8 +227,8 @@ search_all=I alla mappar
 search_eboolean=Booleska sökningar med både 'och' och 'eller' stöds inte
 
 file_ecannot=Du får inte redigera den här filen
-file_ealias=Ogiltigt format för fillinjens alias : $1 
-file_etab=Ogiltigt format för kartfilraden : $1 
+file_ealias=Ogiltigt format för fillinjens alias : $1
+file_etab=Ogiltigt format för kartfilraden : $1
 
 acl_ports=Kan redigera nätverksportar?
 acl_manual=Kan man redigera filer manuellt?
@@ -254,11 +254,11 @@ acl_usersu=Med UID inom räckvidd
 acl_spam=Spamkontroll adresserar den här användaren kan redigera
 
 log_ports=Byt nätverksportar
-log_movemail=Flyttade $1 meddelanden från $2 till $3 
-log_feature_create=Lade till M4-post $1 
-log_feature_modify=Ändrad M4-post $1 
-log_feature_delete=Raderad M4-post $1 
-log_feature_move=Flyttade M4-post $1 
+log_movemail=Flyttade $1 meddelanden från $2 till $3
+log_feature_create=Lade till M4-post $1
+log_feature_modify=Ändrad M4-post $1
+log_feature_delete=Raderad M4-post $1
+log_feature_move=Flyttade M4-post $1
 log_build=Ombyggd sendmail-konfiguration
 log_delete_aliases=$1 alias raderade
 log_delete_virtusers=Raderade $1 adresskartläggningar
@@ -317,7 +317,7 @@ feature_err=Det gick inte att spara konfigurationsposten
 feature_efeat=Funktionen $1 finns redan
 feature_edef=Definitionen $1 finns redan
 feature_emailer=Mailaren $1 finns redan
-feature_eostype=OS-typen är redan definierad som $1 
+feature_eostype=OS-typen är redan definierad som $1
 feature_manual=Redigera M4-fil
 feature_mdesc=På sidan kan du manuellt redigera Sendmail M4-konfigurationsfilen $1. Var försiktig, eftersom ingen syntaxkontroll kommer att göras på dina redigeringar.
 
@@ -331,7 +331,7 @@ mailer_local=Lokal Unix-leverans
 
 build_title=Ombygga Sendmail-konfiguration
 build_em4=Kommandot $1 som behövs för att bygga om konfigurationsfilen för Sendmail hittades inte på ditt system.
-build_ebuild=Det gick inte att bygga konfiguration : $1 
+build_ebuild=Det gick inte att bygga konfiguration : $1
 build_rusure=Är du säker på att du vill ersätta Sendmail-konfigurationsfilen $1 med en ny version byggd från $2 ?
 build_rusure2=Var medveten om att om du har gjort ändringar i Sendmail på sidan Sendmail-alternativ kan ombyggnad av konfigurationsfilen överskriva dessa ändringar om de inte också har gjorts i M4-filen.
 build_ok=Ja, byt ut det nu
@@ -342,7 +342,7 @@ stop_err=Det gick inte att stoppa sendmail
 stop_ecannot=Du får inte stoppa sendmail
 stop_epid=Sendmail verkar inte köras
 restart_epids=Det gick inte att hitta sendmail-processer
-restart_ekill=Det gick inte att signalera sendmail-processer : $1 
+restart_ekill=Det gick inte att signalera sendmail-processer : $1
 
 start_err=Det gick inte att starta sendmail
 start_ecannot=Du får inte starta sendmail
@@ -368,7 +368,7 @@ ports_def1=Acceptera e-post på port 25 och alla adresser
 ports_def0=Acceptera e-post endast på portarna nedan ..
 ports_err=Det gick inte att spara nätverksportar
 ports_ecannot=Du får inte hantera nätverksportar
-ports_ename=Ogiltigt portnamn i rad $1 
-ports_eclash=Duplicera portnamnet i rad $1 
-ports_eaddress=IP-adress saknas eller ogiltig i rad $1 
-ports_eport=Portnumret saknas eller ogiltigt i rad $1 
+ports_ename=Ogiltigt portnamn i rad $1
+ports_eclash=Duplicera portnamnet i rad $1
+ports_eaddress=IP-adress saknas eller ogiltig i rad $1
+ports_eport=Portnumret saknas eller ogiltigt i rad $1

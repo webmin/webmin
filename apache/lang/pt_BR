@@ -909,7 +909,7 @@ mod_ssl_ecerton=Quando o SSL é habilitado, um arquivo de certificado deve ser s
 
 mod_apachessl_notssl=Negar acesso SSL
 mod_apachessl_forcessl=Forçar acesso SSL/não-SSL?
-mod_apachessl_capath=Caminho do diretório com  os certificados das Autoridades Certificadoras
+mod_apachessl_capath=Caminho do diretório com os certificados das Autoridades Certificadoras
 mod_apachessl_cafile=Arquivo com os certificados das Autoridades Certificadoras
 mod_apachessl_requiredcifher=Suítes de cifras possível que poderão ser usadas nas negociações SSL
 mod_apachessl_requirecifher=Suítes de cifras requeridas, usadas depois que a conexão está estabelecida para verificar a cifra

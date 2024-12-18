@@ -117,7 +117,7 @@ service_monitor=Sử dụng màn hình
 service_mon1=Màn hình chuẩn
 service_mon0=Màn hình khác ..
 service_args=Giám sát thông số
-service_period=Thời gian giám sát $1 
+service_period=Thời gian giám sát $1
 service_days=Ngày kiểm tra
 service_hours=Giờ kiểm tra
 service_all=Tất cả
@@ -146,7 +146,7 @@ service_ename=Tên dịch vụ bị thiếu hoặc không hợp lệ
 service_einterval=Khoảng thời gian kiểm tra thiếu hoặc không hợp lệ
 service_eother=Màn hình bị thiếu hoặc không hợp lệ
 service_ehour=Giờ thiếu hoặc không hợp lệ cho giai đoạn $1 (phải như 9 giờ sáng hoặc 5 giờ chiều)
-service_eperiod=Không có ngày hoặc giờ được chỉ định cho giai đoạn $1 
+service_eperiod=Không có ngày hoặc giờ được chỉ định cho giai đoạn $1
 service_eevery=Khoảng thời gian cảnh báo dịch vụ bị thiếu hoặc không hợp lệ
 service_eafter=Thiếu hoặc không hợp lệ số lần thất bại trước khi cảnh báo
 service_enum=Thiếu thông báo tối đa hoặc không hợp lệ để gửi
@@ -162,7 +162,7 @@ status_esame=Chương trình CGI trạng thái MON $1 đã được đặt thàn
 
 users_title=Người dùng MON
 users_etype=Danh sách người dùng MON không thể được chỉnh sửa vì MON hiện chưa được định cấu hình để sử dụng nó để xác thực trên trang <a href='$1'>Tùy chọn toàn cầu</a>.
-users_header=Người dùng MON được phép trong $1 
+users_header=Người dùng MON được phép trong $1
 users_nousers=Không có người dùng MON nào được xác định trong $1.
 users_add=Tạo một người dùng mới.
 users_return=Danh sách người dùng MON
@@ -185,7 +185,7 @@ auth_none=Không ai
 auth_all=Mọi người
 auth_sel=Chỉ người dùng
 auth_err=Không thể lưu lệnh máy khách
-auth_eusers=Không có người dùng nhập lệnh $1 
+auth_eusers=Không có người dùng nhập lệnh $1
 
 periods_title=Thời gian xác định
 periods_period=Tên thời gian

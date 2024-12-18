@@ -33,7 +33,7 @@ save_erw=L-ebda host ta 'read-write ma daħal
 save_eroot=L-ebda host għall-aċċess tal-fajl għeruq ma daħal
 save_eaccess=L-ebda host ta 'aċċess għall-impunjazzjoni ma daħal
 
-log_create_export=Esportazzjoni maħluqa ta ' $1 
-log_delete_export=Esportazzjoni mħassra ta ' $1 
-log_modify_export=Esportazzjoni modifikata ta ' $1 
+log_create_export=Esportazzjoni maħluqa ta ' $1
+log_delete_export=Esportazzjoni mħassra ta ' $1
+log_modify_export=Esportazzjoni modifikata ta ' $1
 log_apply=Konfigurazzjoni applikata

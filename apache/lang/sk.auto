@@ -69,7 +69,7 @@ cvirt_eroot2=Nepodarilo sa vytvoriť adresár '$1' : $2
 cvirt_eroot3=Nemáte oprávnenie používať koreňový adresár '$1'
 cvirt_eroot4=V konfigurácii Apache nie je definovaný žiadny užívateľ
 cvirt_etaken=Virtuálny server s rovnakým názvom a portom už existuje
-cvirt_efile=Nepodarilo sa zapísať na $1 : $2 
+cvirt_efile=Nepodarilo sa zapísať na $1 : $2
 cvirt_emissing=Nový virtuálny server bol pridaný do $1, ale tento súbor Apache nepoužíva. Skontrolujte <a href='$2'>konfiguráciu modulu</a> a uistite sa, že je správne zadaný súbor alebo adresár, do ktorého chcete pridať virtuálne servery.
 
 etype=Nemáte povolenie upravovať možnosti tohto typu

@@ -7,14 +7,14 @@ index_eschema=Webmin has connected to the LDAP server, but failed to fetch the s
 index_eimap=$1. Maybe your <a href='$2'>module configuration</a> is incorrect.
 index_emd5=This module has been <a href='$1'>configured</a> to use MD5 encryption for passwords, but the $2 Perl module is not installed. <a href='$3'>Click here</a> to have the $2 module downloaded and installed.
 index_eslappasswd=This module has been <a href='$1'>configured</a> to use LDAP MD5 encryption for passwords, but the program <tt>$2</tt> used for encrypting a password is not installed.
-index_eusearch= $1 : $2 کے تحت صارفین کو تلاش کرنے میں ناکام
+index_eusearch=$1 : $2 کے تحت صارفین کو تلاش کرنے میں ناکام
 index_uadd=نیا ایل ڈی اے پی صارف شامل کریں۔
 index_gadd=ایک نیا ایل ڈی اے پی گروپ شامل کریں۔
 index_unone=$1 کے تحت کوئی ایل ڈی اے پی صارف نہیں ملا۔
 index_gnone=$1 کے تحت کوئی LDAP گروپ نہیں ملا۔
 index_return=صارف کی فہرست
 index_greturn=گروپ کی فہرست
-index_egsearch= $1 : $2 سے کم گروپوں کی تلاش میں ناکام
+index_egsearch=$1 : $2 سے کم گروپوں کی تلاش میں ناکام
 index_samba=سمبا۔
 index_cyrus=IMAP۔
 index_users=ایل ڈی اے پی صارفین
@@ -52,7 +52,7 @@ usave_egroupmod=LDAP ڈیٹا بیس میں $1 گروپ میں ترمیم کرن
 usave_edelete=ایل ڈی اے پی ڈیٹا بیس سے صارف کو حذف کرنے میں ناکام :$1
 usave_eicreate=صارف بنانے میں ناکام
 usave_eiacl=ایڈمن کو حقوق دینے میں ناکام
-usave_eimap=صارف LDAP ڈیٹا بیس میں کامیابی کے ساتھ محفوظ ہوا تھا ، لیکن IMAP میں ایک خرابی پیش آگئی: $1 : $2 
+usave_eimap=صارف LDAP ڈیٹا بیس میں کامیابی کے ساتھ محفوظ ہوا تھا ، لیکن IMAP میں ایک خرابی پیش آگئی: $1 : $2
 usave_eisub=$1 فولڈر میں صارف کو سبسکرائب کرنے میں ناکام
 usave_eiquota=IMAP کوٹہ مقرر کرنے میں ناکام
 usave_eifolder=$1 فولڈر بنانے میں ناکام
@@ -90,7 +90,7 @@ udel_pass=ایل ڈی اے پی صارف کے اندراج کو حذف کیا ج
 udel_book=ایڈریس بک سے حذف ہو رہا ہے ..
 udel_imap=IMAP فولڈر کو حذف کیا جارہا ہے ..
 udel_warnimap=ہوم ڈائرکٹری کو خارج کرتے وقت موجودہ میل پوسٹ باکس حذف ہوجائیں گے!
-udel_failed=.. ناکام!  :$1
+udel_failed=.. ناکام! :$1
 
 raw_title=ایل ڈی اے پی اوصاف
 raw_name=صفت نام

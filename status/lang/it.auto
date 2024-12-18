@@ -121,7 +121,7 @@ dns_eserver=Server DNS mancante o non valido
 dns_eaddress=Indirizzo IP previsto mancante o non valido
 dns_ecmds=Né i comandi <tt>nslookup</tt> né <tt>dig</tt> sono installati sul tuo sistema
 
-monitor_snmp_down= $1:$2 
+monitor_snmp_down=$1:$2
 monitor_run1=$1 in esecuzione su $2 ..
 monitor_run2=Esecuzione $1 ..
 

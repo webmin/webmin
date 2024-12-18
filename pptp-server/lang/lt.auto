@@ -75,7 +75,7 @@ secrets_ecannot=Jums neleidžiama redaguoti PPP paskyrų
 secrets_return=indeksas
 secrets_none=Dar nesukurtos PPP sąskaitos.
 secrets_enopfile=Jūsų sistemoje nėra PPP slaptažodžių failo $1. Galbūt PPP neįdiegtas, arba <a href='$2'>modulio konfigūracija</a> yra neteisinga.
-secrets_table=AAP sudaro $1 
+secrets_table=AAP sudaro $1
 secrets_user=Vartotojo vardas
 secrets_ips=IP adresai
 secrets_uany=JOKIŲ
@@ -133,13 +133,13 @@ disc_err=Nepavyko atsijungti
 disc_egone=Ryšiai nebeveikia
 disc_ekill=Procesas nebeveikia
 
-log_secret_create=Sukurta VPSP sąskaita $1 
-log_secret_modify=Modifikuota PPP sąskaita $1 
-log_secret_delete=Ištrinta VPSP sąskaita $1 
+log_secret_create=Sukurta VPSP sąskaita $1
+log_secret_modify=Modifikuota PPP sąskaita $1
+log_secret_delete=Ištrinta VPSP sąskaita $1
 log_deletes=Ištrintos $1 PPP sąskaitos
 log_conf=Modifikuotos PPTP serverio parinktys
 log_options=Modifikuotos PPP parinktys
-log_disc=Atsijungęs klientas $1 
+log_disc=Atsijungęs klientas $1
 log_start=Paleistas PPTP serveris
 log_stop=Sustabdytas PPTP serveris
 log_apply=Taikoma PPTP serverio konfigūracija

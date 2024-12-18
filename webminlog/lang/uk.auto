@@ -36,7 +36,7 @@ search_critd=де опис містить <tt>$1</tt>
 search_global=Жоден
 search_global_login=Увійшли до Webmin
 search_global_logout=Вийшов із Webmin
-search_global_failed=Помилка входу в Webmin : $1 
+search_global_failed=Помилка входу в Webmin : $1
 search_global_expiredpass=Термін дії пароля минув
 search_global_wronguser=Недійсний користувач
 search_global_wrongpass=Недійсний пароль
@@ -94,5 +94,5 @@ notify_emods=Не вибрано жодного модуля
 notify_eusers=Користувачів не вибрано
 notify_eemail=Адреса електронної пошти не введена
 
-log_rollback=Відкат назад дії $1 у модулі $2 
+log_rollback=Відкат назад дії $1 у модулі $2
 log_notify=Збережені параметри сповіщень електронною поштою

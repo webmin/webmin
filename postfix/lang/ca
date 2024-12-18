@@ -71,7 +71,7 @@ aform_create=Crea l'Àlies
 aform_name=Adreça
 aform_enabled=Activat
 aform_val=Àlies de
-aform_afile=Edita... 
+aform_afile=Edita...
 aform_return=als àlies
 aform_cmt=Descripció
 
@@ -869,7 +869,7 @@ chooser_mdbname=Nom de la base de dades
 chooser_mtable=Taula que conte el mapa
 chooser_mselect_field=Camp del valor
 chooser_mwhere_field=Camp de la clau
-chooser_madditional_conditions=SQL  de la clàusula <tt>where</tt>
+chooser_madditional_conditions=SQL de la clàusula <tt>where</tt>
 chooser_err=No s'ha pogut desar l'origen del mapa
 chooser_ehash=Hi falta el nom del fitxer de mapejat del mapa $1 o bé és invàlid
 chooser_eregexp=Hi falta el nom del fitxer d'expressions regulars del mapa $1 o bé és invàlid
@@ -918,7 +918,7 @@ mysql_edelete=La supressió SQL ha fallat: $1
 mysql_eupdate=L'actualització SQL ha fallat: $1
 mysql_elist=La consulta SQL ha fallat: $1
 mysql_esource=No s'ha trobat cap origen MySQL anomenat $1
-mysql_eneed=No s'ha trobat el paràmetre de configuració $1 de MySQL. Webmin  el necessita per saber quina taula i quins camps cal consultar.
+mysql_eneed=No s'ha trobat el paràmetre de configuració $1 de MySQL. Webmin el necessita per saber quina taula i quins camps cal consultar.
 
 ldap_ecfile=No s'ha trobat el fitxer de configuració $1 de LDAP
 ldap_eldapmod=El mòdul Perl $1 necessari per comunicar-se amb LDAP no està instal·lat o bé bo es pot carregar

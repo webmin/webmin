@@ -4,7 +4,7 @@ index_eshow=O programa de status do MySQL $1 não foi encontrado no seu sistema.
 index_estart=O script de inicialização do MySQL $1 não foi encontrado no seu sistema. Talvez o MySQL não esteja instalado ou a sua <a href='$2'>configuração do módulo</a> esteja incorreta.
 index_indexes=Índices
 index_views=Visualizações
-index_version2=$3 versão $1 em $2 
+index_version2=$3 versão $1 em $2
 index_ecnf=O arquivo de configuração do MySQL $1 não foi encontrado no seu sistema. Use a página de configuração do módulo <a href='$2'></a> para definir o caminho correto.
 index_nodbs3=Nenhum banco de dados MySQL corresponde à sua pesquisa.
 index_mysqlstatus=Script de inicialização do MySQL
@@ -22,7 +22,7 @@ ddrop_empty2=Excluir todas as tabelas
 view_refresh=Atualizar
 view_searchheadnot=Resultados da pesquisa para não $1 no campo $2 ..
 view_go=Ir
-view_sqlrun=Resultados gerados pela consulta SQL : $1 
+view_sqlrun=Resultados gerados pela consulta SQL : $1
 
 user_vwarning=AVISO: Esse usuário do MySQL é o logon de administração do domínio $1 do Virtualmin. Alterar as configurações aqui pode causar erros no Virtualmin.
 user_locked=Bloqueado
@@ -97,16 +97,16 @@ backup_notify=Enviar email para
 backup_notify0=Todos os backups
 backup_notify1=Somente em caso de falha
 backup_notify2=Somente com sucesso
-backup_allsubject_failed=O backup de $2 bancos de dados MySQL teve alguns erros em $3 
-backup_allsubject_ok=O backup de $2 bancos de dados MySQL foi bem-sucedido em $3 
-backup_subject_failed=O backup do banco de dados MySQL $1 teve alguns erros em $3 
-backup_subject_ok=O backup do banco de dados MySQL $1 foi bem-sucedido em $3 
+backup_allsubject_failed=O backup de $2 bancos de dados MySQL teve alguns erros em $3
+backup_allsubject_ok=O backup de $2 bancos de dados MySQL foi bem-sucedido em $3
+backup_subject_failed=O backup do banco de dados MySQL $1 teve alguns erros em $3
+backup_subject_ok=O backup do banco de dados MySQL $1 foi bem-sucedido em $3
 backup_body=Fazendo backup de $2 bancos de dados MySQL em $1 ..
 backup_bodydoing=Fazendo backup de $1 a $2 ..
-backup_bodyfailed=.. falha no backup : $1 
+backup_bodyfailed=.. falha no backup : $1
 backup_bodyok=.. backup de $1 criado OK
-backup_bodytotal=Tamanho total do backup : $1 
-backup_bodyspace=Tamanho do sistema de arquivos: $1 Espaço livre : $2 
+backup_bodytotal=Tamanho total do backup : $1
+backup_bodyspace=Tamanho do sistema de arquivos: $1 Espaço livre : $2
 backup_bodyall=todos
 backup_edownloadall=Somente um backup de banco de dados único pode ser baixado
 backup_edownloadsave=O modo de download não pode ser usado para backups agendados
@@ -136,10 +136,10 @@ root_socket=O usuário MySQL <tt>$1</tt> está usando autenticação de soquete 
 
 mysqlpass_err=Modo de segurança MySQL
 mysqlpass_esafecmd=O comando $1 necessário para iniciar o MySQL com autenticação desactivada não foi encontrado
-mysqlpass_eshutdown=O encerramento falhou : $1 
-mysqlpass_esafe=A inicialização em modo de segurança falhou : $1 
-mysqlpass_estartup=A inicialização falhou : $1 
-mysqlpass_echange=A alteração da senha falhou : $1 
+mysqlpass_eshutdown=O encerramento falhou : $1
+mysqlpass_esafe=A inicialização em modo de segurança falhou : $1
+mysqlpass_estartup=A inicialização falhou : $1
+mysqlpass_echange=A alteração da senha falhou : $1
 mysqlpass_echange_forcepass=Forçar a substituição da senha fornecida, se perdida ou esquecida
 
 ssl_title=Certificado SSL

@@ -252,14 +252,14 @@ ui_tabs=Kategoriser moduler på indeks siden?
 upgrade_title=Oppgrader Usermin
 upgrade_title2=Installer Usermin
 upgrade_desc=Dette skjemaet lar deg oppgradere hele Usermin installasjonen din til en ny versjon. Du kan installere fra en lokal fil, en opplastet fil eller fra siste versjon på <a href=http://www.usermin.com/>www.usermin.com</a>. På samme måte som ved manuell oppgradering, vil alle dine konfigurasjonsinnstillinger og tredjeparts moduler bli beholdt.
-upgrade_descrpm=Dette skjemaet lar deg oppgradere hele Usermin installasjonen din til en ny versjon  ved hjelp av RPMs oppgraderingsfunksjon.  Du kan installere fra en lokal RPM fil, en opplastet fil eller fra siste versjon på <a href=http://www.usermin.com/>www.usermin.com</a>.  På samme måte som ved manuell oppgradering, vil alle dine konfigurasjonsinnstillinger og tredjeparts moduler bli beholdt.
+upgrade_descrpm=Dette skjemaet lar deg oppgradere hele Usermin installasjonen din til en ny versjon ved hjelp av RPMs oppgraderingsfunksjon. Du kan installere fra en lokal RPM fil, en opplastet fil eller fra siste versjon på <a href=http://www.usermin.com/>www.usermin.com</a>. På samme måte som ved manuell oppgradering, vil alle dine konfigurasjonsinnstillinger og tredjeparts moduler bli beholdt.
 upgrade_descdeb=Dette skjemaet lar deg oppgradere hele Usermin installasjonen din til en ny versjon ved å oppgradere dens Debian pakke. Du kan installere fra en lokal .deb fil, en opplastet fil eller fra siste versjon på <a href=http://www.usermin.com/>www.usermin.com</a>. På samme måte som ved manuell oppgradering, vil alle dine konfigurasjonsinnstillinger og tredjeparts moduler bli beholdt.
 upgrade_local=Fra lokal fil
 upgrade_uploaded=Fra opplastet fil
 upgrade_url=Fra ftp eller http URL
 upgrade_ftp=Siste versjon fra www.usermin.com
 upgrade_delete=Slett katalog for gammel versjon etter oppgradering?
-upgrade_ok=Oppgrader  Usermin
+upgrade_ok=Oppgrader Usermin
 upgrade_err1=Kunne ikke oppgradere fra $1
 upgrade_err2=Kunne ikke oppgradere fra opplastet fil
 upgrade_err3=Kunne ikke oppgradere fra www.usermin.com
@@ -283,7 +283,7 @@ upgrade_failed=.. oppgradering feilet!
 upgrade_updates=Det er $1 oppdateringer for denne nye versjonen av Usermin. <a href='$2'>Klikk her</a> for å laste dem ned og installere dem automatisk.
 upgrade_eupdates=Kunne ikke laste ned liste med oppdateringer : $1
 
-update_desc1=Dette skjemaet lar deg oppgradere Usermin moduler som har kjente feil eller sikkerhetshull, fra siden <a href=http://www.usermin.com/uupdates.html>Usermin Oppdateringer</a> eller fra en annen kilde. Det vi lda bli gjort en sammenligning mellom de installerte modulene og de som er tilgjengelige for oppdatering, og du får valget om  automatisk laste ned og installere de modulene som er utdatert.
+update_desc1=Dette skjemaet lar deg oppgradere Usermin moduler som har kjente feil eller sikkerhetshull, fra siden <a href=http://www.usermin.com/uupdates.html>Usermin Oppdateringer</a> eller fra en annen kilde. Det vi lda bli gjort en sammenligning mellom de installerte modulene og de som er tilgjengelige for oppdatering, og du får valget om automatisk laste ned og installere de modulene som er utdatert.
 update_header1=Oppdater moduler nå
 update_header2=Oppdater moduler ihht tidsplan
 update_webmin=Oppdater fra www.usermin.com
@@ -379,7 +379,7 @@ update_subject=Usermin moduler oppdateringsrapport
 update_version=En ny utgivelse av Usermin (versjon $1) er nå tilgjengelig for nedlasting. Fremtidige oppdateringer vil kun bli sluppet for den siste versjonen.
 
 restrict_title=Modul begrensinger
-restrict_desc=Denne siden lar deg kontrollere hvilke Usermin moduler som er tilgjengelige for forskjellige brukere og grupper. Alle modul tillegg og fratrekk i listen gjelder, ikke bare den første som matcher hver bruker.<br>Moduler som ike er valgt på siden  <a href='$1'>tilgjengelige moduler</a> vil aldri være tilgjengelige for brukere, selv om de er valgt her
+restrict_desc=Denne siden lar deg kontrollere hvilke Usermin moduler som er tilgjengelige for forskjellige brukere og grupper. Alle modul tillegg og fratrekk i listen gjelder, ikke bare den første som matcher hver bruker.<br>Moduler som ike er valgt på siden <a href='$1'>tilgjengelige moduler</a> vil aldri være tilgjengelige for brukere, selv om de er valgt her
 restrict_who=Usermin bruker
 restrict_what=Tilgjengelige moduler
 restrict_all=Alle brukere

@@ -297,7 +297,7 @@ new_ecannot=لا يسمح لك بإنشاء سلاسل
 
 apply_err=فشل في تطبيق التكوين
 apply_ecannot=لا يسمح لك بتطبيق التكوين
-apply_remote=خطأ من $1 : $2 
+apply_remote=خطأ من $1 : $2
 unapply_err=فشل في إعادة التكوين
 unapply_ecannot=غير مسموح لك بإعادة التهيئة
 bootup_ecannot=لا يُسمح لك بتمكين جدار الحماية أو تعطيله عند التمهيد

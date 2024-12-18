@@ -34,7 +34,7 @@ title_etitle=חסר כותרת אופציה
 title_eroot=מחיצת שורש חסרה
 title_ekernel=נתיב גרעין חסר או לא חוקי
 title_echain=קובץ טוען שרשרת חסר או לא חוקי
-title_edev=התקן מחיצת שורש לא נתמך $1 
+title_edev=התקן מחיצת שורש לא נתמך $1
 title_einitrd=חסר שם קובץ ramdisk ראשוני
 title_lock=סיסמא נעולה?
 
@@ -66,9 +66,9 @@ install_desc=התקנת GRUB על $1 עם פקודות $2 ו- $3.
 install_ok=.. התקן הושלם.
 install_failed=.. ההתקנה נכשלה!
 
-log_create_title=נוצר אפשרות אתחול $1 
+log_create_title=נוצר אפשרות אתחול $1
 log_delete_title=אפשרות האתחול $1 נמחקה
-log_modify_title=אפשרות אתחול שונה $1 
+log_modify_title=אפשרות אתחול שונה $1
 log_up_title=אפשרות האתחול $1 הועברה
 log_down_title=אפשרות האתחול למטה $1 הועברה
 log_global=אפשרויות גלובליות השתנו

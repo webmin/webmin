@@ -82,18 +82,18 @@ save_eanonuid=שם משתמש לא חוקי בגישה אנונימית
 save_eanongid=שם לא חוקי של קבוצת גישה אנונימית
 
 exports_webnfs=לקוחות WebNFS
-exports_ngroup=Netgroup $1 
-exports_net=רשת $1 
+exports_ngroup=Netgroup $1
+exports_net=רשת $1
 exports_all=כל אחד
-exports_hosts=מארחים $1 
-exports_host=מארח $1 
-exports_gss=רשת מאומתת: $1 
+exports_hosts=מארחים $1
+exports_host=מארח $1
+exports_gss=רשת מאומתת: $1
 
-log_modify=ייצוא NFS שונה $1 
-log_modify_l=ייצוא NFS שונה $1 ל- $2 
+log_modify=ייצוא NFS שונה $1
+log_modify_l=ייצוא NFS שונה $1 ל- $2
 log_delete=ייצוא NFS $1 נמחק
 log_delete_l=ייצוא NFS של $1 ל- $2 נמחק
-log_create=יצר יצוא NFS $1 
-log_create_l=יצר ייצוא NFS $1 ל- $2 
+log_create=יצר יצוא NFS $1
+log_create_l=יצר ייצוא NFS $1 ל- $2
 log_apply=תצורה מיושמת
 log_delete_exports=ייצוא $1 יצוא NFS

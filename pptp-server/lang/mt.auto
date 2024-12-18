@@ -1,5 +1,5 @@
 index_title=Server VPN PPTP
-index_version=Verżjoni PoPToP $1 
+index_version=Verżjoni PoPToP $1
 index_epptpd=Is-server PPTP PoPToP $1 ma nstabx fis-sistema tiegħek, jew mhuwiex il-programm it-tajjeb. Forsi mhuwiex installat, jew il-konfigurazzjoni <a href='$2'>tal-modulu</a> tiegħek mhix korretta.
 index_econfig=Il-fajl tal-konfigurazzjoni tas-server PPTP $1 ma nstabx fis-sistema tiegħek. Forsi l-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
 index_stop=Waqqaf is-server PPTP
@@ -63,7 +63,7 @@ options_err=Ma rnexxielux isalva l-għażliet PPP
 options_emtu=Id-daqs massimu tal-pakkett li jibgħat jew invalidu huwa nieqes
 options_emru=Id-daqs massimu tal-pakkett li jirċievi huwa nieqes jew invalidu
 options_ename=Isem tas-server nieqes jew invalidu għall-awtentikazzjoni
-options_version=Verżjoni PPPd $1 
+options_version=Verżjoni PPPd $1
 options_msdesc=L-għażliet ta 'hawn taħt jippermettu l-metodu ta' awtentikazzjoni MS-CHAP u l-kriptaġġ MPPE, użati b'mod awtomatiku mill-klijenti VPN tal-Windows. Madankollu, MPPE teħtieġ appoġġ kemm fid-daemon PPP kif ukoll fil-qalba tas-sistema operattiva.
 options_mschap=Awtentikazzjoni MS-CHAP
 options_mschap-v2=Awtentikazzjoni MS-CHAP verżjoni 2
@@ -75,7 +75,7 @@ secrets_ecannot=M'għandekx permess teditja kontijiet PPP
 secrets_return=indiċi
 secrets_none=L-ebda kont PPP għadu ma nħoloq.
 secrets_enopfile=Il-fajl tal-passwords PPP $1 ma jeżistix fis-sistema tiegħek. Forsi PPP mhux installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
-secrets_table=Il-PPP jammonta għal $1 
+secrets_table=Il-PPP jammonta għal $1
 secrets_user=Username
 secrets_ips=Indirizzi IP
 secrets_uany=KULL
@@ -133,13 +133,13 @@ disc_err=Ma rnexxielux jiskonnettja
 disc_egone=Il-konnessjonijiet m'għadhomx attivi
 disc_ekill=Il-proċess ma għadux għaddej
 
-log_secret_create=Kont PPP maħluq $1 
-log_secret_modify=Kont PPP modifikat $1 
-log_secret_delete=Kont PPP imħassar $1 
+log_secret_create=Kont PPP maħluq $1
+log_secret_modify=Kont PPP modifikat $1
+log_secret_delete=Kont PPP imħassar $1
 log_deletes=Kontijiet PPP $1 imħassra
 log_conf=Opzjonijiet modifikati tas-server PPTP
 log_options=Opzjonijiet modifikati ta 'PPP
-log_disc=Klijent skonnettjat $1 
+log_disc=Klijent skonnettjat $1
 log_start=Beda server PPTP
 log_stop=Waqfet server PPTP
 log_apply=Konfigurazzjoni tas-server PPTP applikata

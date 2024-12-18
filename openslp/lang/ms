@@ -12,7 +12,7 @@ snda_useScopes=Senarai statik skop
 snda_DAAddresses=Senarai statik Agen Direktori (DA)
 
 netcfg_title=KOnfigurasi Rangkaian
-netcfg_isBroadcastOnly=Paksa penggunaan penyiaran selain multicast 
+netcfg_isBroadcastOnly=Paksa penggunaan penyiaran selain multicast
 netcfg_passiveDADetection=Guna pengesan pasif DA
 netcfg_activeDADetection=Guna pengesan aktif DA (terhad kepada DHCP atau DAAddresses sahaja)
 netcfg_DAActiveDiscoveryInterval=Penemuan Actif dalam saat (0 untuk melumpuhkan PEnemuan Aktif)

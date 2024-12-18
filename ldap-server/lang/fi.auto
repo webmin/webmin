@@ -1,4 +1,4 @@
-index_version=OpenLDAP $1 
+index_version=OpenLDAP $1
 index_openldap=OpenLDAP
 index_eslapd=OpenLDAP-palvelinohjelmaa $1 ei löydy järjestelmästäsi. Ehkä <a href='$2'>moduulin määritys</a> -sivun polku on väärä?
 index_econfig=OpenLDAP-palvelimen määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä <a href='$2'>moduulin määritys</a> -sivun polku on väärä?
@@ -24,10 +24,10 @@ connect_efile=OpenLDAP-määritystiedostoa $1 ei löydy - ehkä järjestelmään
 connect_euser2=Kukaan käyttäjä ei kirjaudu sisään, koska löydettiin LDAP-palvelimen kokoonpanosta
 connect_epass2=LDAP-palvelimen kokoonpanosta ei löytynyt salasanaa kirjautumiseen
 connect_epass3=LDAP-palvelimen kokoonpanossa oleva salasana on salattu, eikä Webmin voi käyttää sitä
-connect_emod=Perl-moduulia $1, jota tarvitaan yhteyden muodostamiseen LDAP-palvelimeen, ei ole asennettu. Täysi Perl-virheviesti : $2 
+connect_emod=Perl-moduulia $1, jota tarvitaan yhteyden muodostamiseen LDAP-palvelimeen, ei ole asennettu. Täysi Perl-virheviesti : $2
 connect_eldap=Yhteyttä portin $2 LDAP-palvelimeen $1 epäonnistui
-connect_essl=TLS-salauksen aloittaminen epäonnistui LDAP-palvelimella $1 : $2 
-connect_elogin=Kirjautuminen LDAP-palvelimeen $1 epäonnistui muodossa $2 : $3 
+connect_essl=TLS-salauksen aloittaminen epäonnistui LDAP-palvelimella $1 : $2
+connect_elogin=Kirjautuminen LDAP-palvelimeen $1 epäonnistui muodossa $2 : $3
 connect_cpan=Voit saada <tt>$1</tt> Perl-moduulin <a href='$2'>automaattisesti asennettuna</a> CPANista.
 
 slapd_title=OpenLDAP-palvelimen kokoonpano
@@ -109,11 +109,11 @@ acl_add=Lisää uusi kulunvalvontasääntö.
 acl_return=kulunvalvonnan säännöt
 
 browser_title=Selaa tietokantaa
-browser_econn=LDAP-selainta ei voi käyttää : $1 
+browser_econn=LDAP-selainta ei voi käyttää : $1
 browser_ecannot=Et voi selata LDAP-tietokantaa
 browser_base=lukemassa:
 browser_ok=Näytä
-browser_esearch=LDAP-haku epäonnistui : $1 
+browser_esearch=LDAP-haku epäonnistui : $1
 browser_subs=Lasten esineet
 browser_attrs=Objektimääritteet
 browser_parent=Selaa vanhempaa
@@ -144,26 +144,26 @@ browser_sok=Hae
 
 save_err=Määritteen muuttaminen epäonnistui
 save_ebase=Objektia $1 ei voitu hakea tietokannasta
-save_emodify=$2 : n LDAP-muokkaus $1 : ssä epäonnistui : $3 
+save_emodify=$2 : n LDAP-muokkaus $1 : ssä epäonnistui : $3
 save_enone=Arvoja ei annettu
 
 add_err=Määritteen lisääminen epäonnistui
 add_eadd=Puuttuva tai virheellinen määritteen nimi
 add_evalue=Puuttuva arvo
-add_emodify=$2 : n LDAP-lisäys $1 : een epäonnistui : $3 
+add_emodify=$2 : n LDAP-lisäys $1 : een epäonnistui : $3
 
 delete_err=Määritteiden poistaminen epäonnistui
 delete_enone=Mitään ei ole valittu
-delete_emodify=$2 : n LDAP-poisto kohdasta $1 epäonnistui : $3 
+delete_emodify=$2 : n LDAP-poisto kohdasta $1 epäonnistui : $3
 
 sdelete_err=Objektien poistaminen epäonnistui
 sdelete_edn=Kohteta $1 ei löytynyt
-sdelete_edel=$1 LDAP-poisto epäonnistui : $2 
+sdelete_edel=$1 LDAP-poisto epäonnistui : $2
 
 rename_err=Objektin nimeäminen epäonnistui
 rename_eget=Objektia, jonka DN $1 ei löytynyt
 rename_enew=Uusi nimi ei vaikuta olevan kelvollinen
-rename_erename=$1 LDAP newdn $2 : een epäonnistui : $3 
+rename_erename=$1 LDAP newdn $2 : een epäonnistui : $3
 
 oadd_title=Luo objekti
 oadd_header=Uudet LDAP-objektitiedot
@@ -175,11 +175,11 @@ oadd_edn1=Puuttuva tai virheellinen nimi DN: ltä
 oadd_edn2=Puuttuva tai virheellinen arvo DN: lle
 oadd_eclasses=Objektiluokkia ei annettu
 oadd_eclass='$1' ei näytä kelvolliselta objektiluokalta
-oadd_ename=Virheellinen näköinen nimi attribuutille $1 
-oadd_eget=Objektin $1 hakeminen epäonnistui : $2 
+oadd_ename=Virheellinen näköinen nimi attribuutille $1
+oadd_eget=Objektin $1 hakeminen epäonnistui : $2
 oadd_eget2=Kohdan $1 : $2 virheiden tarkistaminen epäonnistui
 oadd_eclash=Objekti, jolla on DN $1, on jo olemassa
-oadd_eadd=$1 : n LDAP-lisäys epäonnistui : $2 
+oadd_eadd=$1 : n LDAP-lisäys epäonnistui : $2
 oadd_err=Uuden objektin luominen epäonnistui
 
 create_title=Luo puu
@@ -198,7 +198,7 @@ create_edom=Puuttuva tai virheellinen verkkotunnus
 create_edn=Puuttuva tai virheellinen tunnistettu nimi
 create_err=Uuden puun luominen epäonnistui
 create_doingdn=Perustan luominen DN $1 ..
-create_edoingdn=.. epäonnistui : $1 
+create_edoingdn=.. epäonnistui : $1
 create_done=.. valmis
 create_doingex=Esimerkkiobjektin luominen DN $1 : llä.
 create_edoingex=.. epäonnistui: $1. Puua voidaan kuitenkin käyttää.
@@ -207,40 +207,40 @@ create_eoc=Uudelle DN: lle ei löytynyt sopivaa kohdeluokkaa
 eunknown=Tuntematon virhe
 
 apply_err=Asetusten määrittäminen epäonnistui
-apply_ecmd=$1 epäonnistui : $2 
+apply_ecmd=$1 epäonnistui : $2
 apply_ecannot=Et voi käyttää kokoonpanoa
 
 stop_err=LDAP-palvelimen pysäyttäminen epäonnistui
-stop_ecmd=$1 epäonnistui : $2 
+stop_ecmd=$1 epäonnistui : $2
 stop_egone=Ei enää juokse!
-stop_ekill=Tappoprosessi epäonnistui : $1 
+stop_ekill=Tappoprosessi epäonnistui : $1
 stop_ecannot=Et voi pysäyttää LDAP-palvelinta
 
 start_err=LDAP-palvelimen käynnistäminen epäonnistui
-start_ecmd=$1 epäonnistui : $2 
+start_ecmd=$1 epäonnistui : $2
 start_ecannot=Et voi käynnistää LDAP-palvelinta
 
-log_create_dn=Luotu objekti $1 
-log_delete_dn=Poistettu objekti $1 
-log_rename_dn=Nimeä uusi objekti $1 
+log_create_dn=Luotu objekti $1
+log_delete_dn=Poistettu objekti $1
+log_rename_dn=Nimeä uusi objekti $1
 log_delete_dns=Poistettu $1 objektia
-log_create_attr=Lisätty määrite objektiin $2 
-log_create_attr_l=Lisätty määrite $1 arvolla $3 objektiin $2 
-log_modify_attr=Päivitetty määrite objektissa $2 
-log_modify_attr_l=Päivitetty määrite $1 arvolla $3 objektissa $2 
-log_delete_attr=Poistettu objektista $2 
-log_delete_attr_l=Poistettu ominaisuus $1 objektista $2 
-log_delete_attrs=Poistettu $1 määritteet objektista $2 
+log_create_attr=Lisätty määrite objektiin $2
+log_create_attr_l=Lisätty määrite $1 arvolla $3 objektiin $2
+log_modify_attr=Päivitetty määrite objektissa $2
+log_modify_attr_l=Päivitetty määrite $1 arvolla $3 objektissa $2
+log_delete_attr=Poistettu objektista $2
+log_delete_attr_l=Poistettu ominaisuus $1 objektista $2
+log_delete_attrs=Poistettu $1 määritteet objektista $2
 log_stop=Pysäytetty LDAP-palvelin
 log_start=Käynnistettiin LDAP-palvelin
 log_apply=Sovellettu kokoonpano
 log_slapd=Muutettu LDAP-palvelimen kokoonpano
 log_schema=Vaihdetut käytössä olevat LDAP-mallit
 log_gencert=Luotu uusi SSL-varmenne
-log_sfile=Muokattu kaavatiedosto $1 
-log_sup=Siirretty kaavatiedosto $1 
-log_sdown=Siirretty alas kaavatiedosto $1 
-log_create=Luotu uusi DN $1 
+log_sfile=Muokattu kaavatiedosto $1
+log_sup=Siirretty kaavatiedosto $1
+log_sdown=Siirretty alas kaavatiedosto $1
+log_create=Luotu uusi DN $1
 log_bootup=Ota käyttöön LDAP-palvelin käynnistyksen yhteydessä
 log_bootdown=Poistettu käytöstä LDAP-palvelin käynnistyksen yhteydessä
 log_perms=Kiinteät LDAP-palvelimen käyttöoikeudet
@@ -275,7 +275,7 @@ acl_create=Voiko luoda uuden puun?
 acl_start=Voiko LDAP-palvelimen käynnistää ja pysäyttää?
 acl_apply=Voiko asetusehdotuksia muuttaa?
 
-access_desc=$2, $1 
+access_desc=$2, $1
 access_self=itse
 access_users=todennetut käyttäjät
 access_anon=tuntemattomat käyttäjät
@@ -322,7 +322,7 @@ eacl_err=Kulunvalvontasäännön tallentaminen epäonnistui
 eacl_edn=Puuttuva tai virheellinen DN - pitäisi olla kuten <tt>uid=joe,dc=omaverkkotunnus,dc=com</tt>
 eacl_efilter=Puuttuva tai virheellinen suodatin - pitäisi olla kuten <tt>(objectClass = posixAccount)</tt>
 eacl_eattrs=Puuttuva tai virheellinen pilkuilla erotettu attribuuttilista
-eacl_ewho=Puuttuva tai virheellisen näköinen DN rivillä $1 
-eacl_eaccess=Puuttuva tai virheellinen käyttöoikeustaso rivillä $1 
+eacl_ewho=Puuttuva tai virheellisen näköinen DN rivillä $1
+eacl_eaccess=Puuttuva tai virheellinen käyttöoikeustaso rivillä $1
 eacl_order=Sääntöjärjestys
 eacl_noorder=Ei asetettu

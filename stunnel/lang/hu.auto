@@ -61,7 +61,7 @@ save_epclash=A (z) $1 portot a $2 szolgáltatás már használja.
 save_epem=A (z) $1 SSL tanúsítványfájl nem létezik
 save_etcpw=Hiányzó vagy érvénytelen TCP-csomagolók neve
 save_eiface=Hiányzó vagy érvénytelen kimenő forráscím
-save_exinetd=Van már egy xinetd szolgáltatás, az úgynevezett $1 
+save_exinetd=Van már egy xinetd szolgáltatás, az úgynevezett $1
 save_export=A $1 portot a xinetd $2 szolgáltatás már használja
 
 log_apply=Alkalmazott változások

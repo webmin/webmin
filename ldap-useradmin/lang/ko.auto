@@ -7,21 +7,21 @@ index_eschema=Webmin이 LDAP 서버에 연결되었지만 스키마를 가져 �
 index_eimap=$1. <a href='$2'>모듈 구성</a>이 잘못되었을 수 있습니다.
 index_emd5=이 모듈은 암호에 MD5 암호화를 사용하도록 <a href='$1'>구성</a>되었지만 $2 Perl 모듈이 설치되지 않았습니다. $2 모듈을 다운로드하여 설치하려면 <a href='$3'>여기를 클릭</a>하십시오.
 index_eslappasswd=이 모듈은 암호에 LDAP MD5 암호화를 사용하도록 <a href='$1'>구성</a>되었지만 암호를 암호화하는 데 사용되는 <tt>$2</tt> 프로그램이 설치되지 않았습니다.
-index_eusearch=$1 에서 사용자를 검색하지 못했습니다  : $2 
+index_eusearch=$1 에서 사용자를 검색하지 못했습니다 : $2
 index_uadd=새 LDAP 사용자를 추가하십시오.
 index_gadd=새 LDAP 그룹을 추가하십시오.
 index_unone=$1 아래에 LDAP 사용자가 없습니다.
 index_gnone=$1 아래에 LDAP 그룹이 없습니다.
 index_return=사용자 목록
 index_greturn=그룹 목록
-index_egsearch=$1 에서 그룹을 검색하지 못했습니다  : $2 
+index_egsearch=$1 에서 그룹을 검색하지 못했습니다 : $2
 index_samba=삼바?
 index_cyrus=IMAP?
 index_users=LDAP 사용자
 index_groups=LDAP 그룹
 
 imap_econn=IMAP 서버 $1 에 연결하지 못했습니다
-imap_elogin=$2 (으)로 IMAP 서버 $1 에 로그인하지 못했습니다  : $3 
+imap_elogin=$2 (으)로 IMAP 서버 $1 에 로그인하지 못했습니다 : $3
 conn_eldap_host=시스템에 LDAP 클라이언트 구성 파일이 없으므로 모듈 구성 페이지에서 LDAP 서버를 설정해야합니다.
 conn_elogin=시스템에서 LDAP 클라이언트 구성 파일을 찾을 수 없으므로 모듈 구성 페이지에서 LDAP 로그인을 설정해야합니다.
 conn_efile_open=LDAP 바인드 자격 증명 파일을 열 수 없습니다.
@@ -45,22 +45,22 @@ uedit_sambapwdcanchange=비밀번호 변경 가능
 uedit_sambabadpasswordcount=잘못된 비밀번호
 uedit_sambaacctflags=계정 플래그
 
-usave_eadd=LDAP 데이터베이스에 사용자를 추가하지 못했습니다  : $1 
-usave_emod=LDAP 데이터베이스에서 사용자를 수정하지 못했습니다  : $1 
-usave_emoddn=LDAP 데이터베이스에서 사용자 이름을 바꾸지 못했습니다  : $1 
-usave_egroupmod=LDAP 데이터베이스에서 $1 그룹을 수정하지 못했습니다  : $2 
-usave_edelete=LDAP 데이터베이스에서 사용자를 삭제하지 못했습니다  : $1 
+usave_eadd=LDAP 데이터베이스에 사용자를 추가하지 못했습니다 : $1
+usave_emod=LDAP 데이터베이스에서 사용자를 수정하지 못했습니다 : $1
+usave_emoddn=LDAP 데이터베이스에서 사용자 이름을 바꾸지 못했습니다 : $1
+usave_egroupmod=LDAP 데이터베이스에서 $1 그룹을 수정하지 못했습니다 : $2
+usave_edelete=LDAP 데이터베이스에서 사용자를 삭제하지 못했습니다 : $1
 usave_eicreate=사용자를 만들지 못했습니다
 usave_eiacl=관리자에게 권한을 부여하지 못했습니다
-usave_eimap=사용자가 LDAP 데이터베이스에 성공적으로 저장되었지만 IMAP 오류가 발생했습니다 : $1 : $2 
+usave_eimap=사용자가 LDAP 데이터베이스에 성공적으로 저장되었지만 IMAP 오류가 발생했습니다 : $1 : $2
 usave_eisub=$1 폴더에 사용자를 가입하지 못했습니다
 usave_eiquota=IMAP 할당량을 설정하지 못했습니다
 usave_eifolder=$1 폴더를 만들지 못했습니다
 usave_eilogin=새로운 사용자로 로그인하지 못했습니다
 usave_ecyruspass=IMAP을 활성화 할 때 사용자의 일반 비밀번호를 입력하거나 비밀번호 필요 없음 옵션을 선택해야합니다.
-usave_ebook=주소록 항목을 만들지 못했습니다  : $1 
-usave_emodbook=주소록 항목을 수정하지 못했습니다  : $1 
-usave_emodbookdn=주소록 항목 이름을 바꾸지 못했습니다  : $1 
+usave_ebook=주소록 항목을 만들지 못했습니다 : $1
+usave_emodbook=주소록 항목을 수정하지 못했습니다 : $1
+usave_emodbookdn=주소록 항목 이름을 바꾸지 못했습니다 : $1
 usave_egone=사용자가 더 이상 존재하지 않습니다!
 usave_ex86=이 모듈은 인텔 이외의 시스템에서 Samba 사용자의 암호를 설정하는 데 사용할 수 없습니다. 컴파일 된 x86 프로그램에 따라 다릅니다.
 usave_esamba=Samba Windows 파일 공유 모듈이 설치되어 있지 않으므로이 모듈을 사용하여 Samba 사용자의 비밀번호를 설정할 수 없습니다.
@@ -71,7 +71,7 @@ usave_eattrdupg=그룹 $1 이 (가) 이미 $2 $3 을 (를) 사용하고 있습�
 usave_ereal=실명 누락
 usave_equota=누락되거나 잘못된 IMAP 할당량
 
-search_err=$2 에서 $1 을 (를) 검색하지 못했습니다  : $3 
+search_err=$2 에서 $1 을 (를) 검색하지 못했습니다 : $3
 
 gedit_dn=그룹의 LDAP DN
 gedit_return=그룹 세부 사항
@@ -79,10 +79,10 @@ gedit_cap=그룹 기능
 gedit_samba=삼바 그룹?
 
 gsave_egone=그룹이 더 이상 존재하지 않습니다!
-gsave_edelete=LDAP 데이터베이스에서 그룹을 삭제하지 못했습니다  : $1 
-gsave_eadd=LDAP 데이터베이스에 그룹을 추가하지 못했습니다  : $1 
-gsave_emod=LDAP 데이터베이스에서 그룹을 수정하지 못했습니다  : $1 
-gsave_emoddn=LDAP 데이터베이스에서 그룹 이름을 바꾸지 못했습니다  : $1 
+gsave_edelete=LDAP 데이터베이스에서 그룹을 삭제하지 못했습니다 : $1
+gsave_eadd=LDAP 데이터베이스에 그룹을 추가하지 못했습니다 : $1
+gsave_emod=LDAP 데이터베이스에서 그룹을 수정하지 못했습니다 : $1
+gsave_emoddn=LDAP 데이터베이스에서 그룹 이름을 바꾸지 못했습니다 : $1
 
 gdel_group=LDAP 그룹 항목 삭제 ..
 
@@ -90,7 +90,7 @@ udel_pass=LDAP 사용자 항목 삭제 중 ..
 udel_book=주소록에서 삭제 ..
 udel_imap=IMAP 폴더 삭제 중 ..
 udel_warnimap=홈 디렉토리를 삭제하면 기존 메일 우편함이 삭제됩니다!
-udel_failed=.. 실패했습니다!  : $1
+udel_failed=.. 실패했습니다! : $1
 
 raw_title=LDAP 속성
 raw_name=속성 이름
@@ -100,4 +100,4 @@ raw_for=$1 의 경우
 batch_samba=신규 사용자를위한 Samba 계정을 만드시겠습니까?
 batch_imap=새로운 사용자를위한 IMAP 계정을 만드시겠습니까?
 batch_descafter3=<b>만들기</b> 및 <b>수정</b> 줄에서 <i>이름</i> = <i>값</i> 형식의 LDAP 속성을 포함하는 추가 필드를 선택적으로 추가 할 수 있습니다. 신규 또는 수정 된 사용자에게 할당됩니다.
-batch_eattr=$1 행의 잘못된 LDAP 속성  : $2 
+batch_eattr=$1 행의 잘못된 LDAP 속성 : $2

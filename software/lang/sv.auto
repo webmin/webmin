@@ -9,8 +9,8 @@ index_identok2=Sök paket efter fil:
 index_all=Alla paket
 index_treturn=paketträd
 index_tree2=Bläddra i paketträdet
-index_epackagecmd=Paketsystemet $1 kräver kommandot $2 
-index_eupdatecmd=Uppdateringssystemet $1 kräver kommandot $2 
+index_epackagecmd=Paketsystemet $1 kräver kommandot $2
+index_eupdatecmd=Uppdateringssystemet $1 kräver kommandot $2
 index_epackagecheck=Det valda pakethanteringssystemet är inte giltigt: $1. <br>Du kan behöva välja ett annat system på<a href='$2'> modulkonfiguration </a>.
 index_eupdatecheck=Det valda uppdateringssystemet är inte giltigt: $1. <br>Du kan behöva välja en annan uppdateringsmetod på<a href='$2'> modulkonfiguration </a>.
 index_echeckpackage=Inget paketsystem upptäcktes!
@@ -38,7 +38,7 @@ edit_egone=Paketet är inte längre installerat
 
 list_ok=OK
 list_view=(Se)
-list_eview=Det gick inte att öppna $1 : $2 
+list_eview=Det gick inte att öppna $1 : $2
 
 delete_rusure2=Är du säker på att du vill ta bort paketet $1 ?
 delete_nodeps=Ignorera beroenden?
@@ -63,7 +63,7 @@ rpm_finddesc=Beskrivning
 bsd_manager=$1 paketansvarig
 
 slack_manager=Slackware Package Manager
-slack_edir=Saknade Slackware-paketkatalog $1 
+slack_edir=Saknade Slackware-paketkatalog $1
 
 debian_manager=Debian
 
@@ -71,7 +71,7 @@ log_install_yum_l=Installerat paket (er) $1 från YUM
 log_install_yum=Installerat $2 -paket (er) från YUM
 log_install_rhn_l=Installerat paket (er) $1 från Redhat Network
 log_install_rhn=Installerat $2 -paket (er) från Redhat Network
-log_deletes_l=Avinstallerade paket $1 
+log_deletes_l=Avinstallerade paket $1
 log_deletes=Avinstallerade $1 -paket
 log_urpmi_update=Uppdaterade tillgängliga URPMI-paket
 log_urpmi_upgrade=Uppgraderade installerade URPMI-paket
@@ -148,7 +148,7 @@ urpmi_ok=.. installationen klar
 urpmi_failed=.. installation misslyckades!
 
 rpm_missing=Saknas
-rpm_checkfail=Det gick inte att kontrollera $1 
+rpm_checkfail=Det gick inte att kontrollera $1
 rpm_md5=MD5
 rpm_fsize=filstorlek
 rpm_sym=symlink
@@ -157,7 +157,7 @@ rpm_dev=enhet
 rpm_user=användarägande
 rpm_perm=behörigheter
 rpm_group=gruppägande
-rpm_erpm=RPM $1 hittades inte : $2 
+rpm_erpm=RPM $1 hittades inte : $2
 
 soft_reg=Vanlig fil
 soft_dir=Directory
@@ -167,9 +167,9 @@ soft_hard=Hård länk
 soft_edit=Redigerbar fil
 soft_efunc=Det gick inte att ladda funktioner för paketsystem $1.
 soft_euncompress=Filen är komprimerad, men kommandot <tt>uncompress</tt> hittades inte på ditt system.
-soft_euncmsg=Det gick inte att komprimera filen : $1 
+soft_euncmsg=Det gick inte att komprimera filen : $1
 soft_egzip=Filen gzipped, men gzip-kommandot hittades inte på ditt system.
-soft_egzmsg=Det gick inte att skjuta filen : $1 
+soft_egzmsg=Det gick inte att skjuta filen : $1
 
 aix_unknown=Okänd
 aix_device=INPUT-enhet / katalog för programvara
@@ -207,21 +207,21 @@ emerge_name=Portage
 
 cygwin_fmissing=Filen saknas
 cygwin_lmissing=Filen till vilken länken pekar saknas
-cygwin_estat=Det gick inte att statfilen: $1 
-cygwin_elread=Det gick inte att läsa symlink: $1 
-cygwin_elstat=Det gick inte att stat symlink: $1 
+cygwin_estat=Det gick inte att statfilen: $1
+cygwin_elread=Det gick inte att läsa symlink: $1
+cygwin_elstat=Det gick inte att stat symlink: $1
 cygwin_badpostscript=Varning: detta skript verkar inte ha körts
 cygwin_pkgexists=Paket $1 finns redan.
 cygwin_warnuse=Varning: Detta är inte ett officiellt gränssnitt för hantering av Cygwin-programvara. Använd på egen risk.
-cygwin_edb=Cygwin-paketets databas saknas $1 
+cygwin_edb=Cygwin-paketets databas saknas $1
 
 deletes_err=Det gick inte att ta bort paket
 deletes_enone=Inga paket valda
 deletes_title=Radera paket
 deletes_desc=Avinstallera paket $1 ..
-deletes_failed1=Det gick inte att avinstallera $1 : $2 
-deletes_success1=Avinstallerat $1 
-deletes_failed2=Avinstallationen misslyckades : $1 
+deletes_failed1=Det gick inte att avinstallera $1 : $2
+deletes_success1=Avinstallerat $1
+deletes_failed2=Avinstallationen misslyckades : $1
 deletes_success2=.. avinstallationen avslutad.
 deletes_rusure=Är du säker på att du vill avinstallera paketen $1 ?
 deletes_ok=Ta bort dem alla

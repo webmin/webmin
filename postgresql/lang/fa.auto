@@ -159,7 +159,7 @@ exec_tabfile=SQL را از پرونده اجرا کنید
 exec_tabimport=وارد کردن پرونده متنی
 exec_return=فرم SQL را اجرا کنید
 exec_ecompress=فایل SQL فشرده شده است، اما برنامه $1 که برای فشرده سازی آن لازم است، نصب نشده است.
-exec_ecompress2=فشرده سازی انجام نشد : $1 
+exec_ecompress2=فشرده سازی انجام نشد : $1
 
 stop_err=سرور بانک اطلاعاتی متوقف نشد
 stop_epidfile=پرونده PID $1 باز نشد

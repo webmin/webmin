@@ -2,7 +2,7 @@ index_title=OpenSLP-konfiguration
 index_return=OpenSLP-konfiguration
 index_eslpd=OpenSLP-demonen $1 hittades inte på ditt system. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
 index_econf=OpenSLP-konfigurationsfilen $1 hittades inte på ditt system. Kanske är den inte installerad eller så är din <a href='$2'>modulkonfiguration</a> felaktig.
-index_version=OpenSLP-version $1 
+index_version=OpenSLP-version $1
 
 slp_apply=Applicera förändringar
 slp_stop=Stoppa OpenSLP

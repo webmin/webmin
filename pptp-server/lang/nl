@@ -66,7 +66,7 @@ options_ename=Ontbrekende of ongeldige server naam voor identificatie
 options_version=PPPd versie $1
 options_msdesc=De opties hieronder zetten de MS-CHAP authenticatie methoden aan en de MPPE versleuteling die standaard gebruikt word door Windows VPN clients. Echter MPPE heeft ondersteuning nodig zowel in de PPP deamon als in de kernel van het besturing systeem.
 options_mschap=MS-CHAP authenticatie
-options_mschap-v2=MS-CHAP  versie 2 authenticatie
+options_mschap-v2=MS-CHAP versie 2 authenticatie
 options_chapms=MS-CHAP authenticatie
 options_chapms-v2=MS-CHAP versie 2 authenticatie
 

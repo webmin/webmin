@@ -1,7 +1,7 @@
 index_title=IPsec VPN-ren konfigurazioa
 index_eipsec=$1 FreeSWAN komandoa ez da zure sisteman aurkitu edo ez da programa egokia. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_out=$1 -eko irteera hau izan da :
-index_version2=$2 bertsioa $1 
+index_version2=$2 bertsioa $1
 index_econfig=$1 FreeSWAN konfigurazio fitxategia ez da zure sisteman aurkitu. Agian ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
 index_nokey=Ez da ostalari gako bat agertzen $1 fitxategian. Zure sistemarako sortu behar da VPN konexioak definitu aurretik.
 index_newkey=Sortu gakoa ostalariarentzat:
@@ -29,7 +29,7 @@ index_import=Inportatu konexioa fitxategitik.
 stop_err=Ezin izan da IPsec zerbitzaria gelditu
 start_err=Huts egin du IPsec zerbitzaria abiaraztean
 restart_err=Huts egin du IPsec zerbitzaria berriro abiaraztean
-start_elog=Hurrengo akatsak erregistratu dira : $1 
+start_elog=Hurrengo akatsak erregistratu dira : $1
 
 newkey_err=Huts egin du gakoa sortzerakoan
 newkey_ehost=Ostalari-izen falta edo baliogabea
@@ -175,7 +175,7 @@ save_eikelifetime=Ez dago gaizki edo baliogabea keying kanalaren bizitza osoan
 log_create_conn=$1 konexioa sortu da
 log_delete_conn=$1 konexioa ezabatu da
 log_modify_conn=$1 konexio aldatua
-log_import_conn=Inportatutako konexioa $1 
+log_import_conn=Inportatutako konexioa $1
 log_up=$1 konexioa abiarazi da
 log_policy=$1 gorde da
 log_start=IPsec zerbitzaria hasi da
@@ -201,7 +201,7 @@ export_save=Idatzi konfigurazioa fitxategian ..
 export_ok=Esportatu orain
 export_err=Ezin izan da esportatu konfigurazioa
 export_efile=Fitxategi izena falta da
-export_esave=Ezin izan da fitxategian idatzi : $1 
+export_esave=Ezin izan da fitxategian idatzi : $1
 export_done=Konexiorako esportatutako konfigurazioa $1 eta $2 ($3 byte).
 
 import_title=Inportatu konfigurazioa
@@ -228,7 +228,7 @@ secrets_desc=Xehetasunak
 secrets_psk=Sekretu partekatua
 secrets_rsa=RSA gako publikoa
 secrets_any=Edozein ostalari
-secrets_pass=Pasahitza $1 
+secrets_pass=Pasahitza $1
 secrets_mod=$1 modulua
 secrets_newpsk=Sortu partekatutako sekretu gako berria.
 secrets_newrsa=Sortu RSA gako berria.

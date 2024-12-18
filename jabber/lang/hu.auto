@@ -4,10 +4,10 @@ index_edir=A (z) $1 Jabber alapkönyvtár nem létezik. Vagy a Jabber nincs tele
 index_emodules=A Perl $1 és $2 modulok, amelyeket a Webmin igényel a Jabber XML konfigurációjának kezeléséhez, nincs telepítve. <a href='$3'>Kattintson ide</a>, hogy közvetlenül a CPAN-ból telepítse.
 index_emodule=A (z) $1 Perl-modul, amelyet a Webmin igényel a Jabber XML-konfigurációjának kezeléséhez, nincs telepítve. <a href='$2'>Kattintson ide</a>, hogy közvetlenül a CPAN-ből telepítse.
 index_expat=A Perl-modulok telepítése előtt győződjön meg arról, hogy az Expat C könyvtár és a fejlécek vannak-e telepítve, mivel ezek attól függnek, és nem lesznek elérhetők, ha nem állnak rendelkezésre.
-index_eparse=A $1 perl modul nem tudta elemezni a Jabber konfigurációs fájlt : $2 
+index_eparse=A $1 perl modul nem tudta elemezni a Jabber konfigurációs fájlt : $2
 index_ejabberd=A (z) $1 Jabber szerverprogram nem található a rendszerén. Vagy a Jabber nincs telepítve, vagy a <a href='$2'>modul konfigurációja</a> helytelen.
-index_eversion=A Webmin csak a Jabber $2 verziót támogatja, de a $3 parancs a következő verzióinformációkat jelentette : $1 
-index_eversion2=A Webmin csak a Jabber verziókat támogatja a $2 alatt, de a $3 parancs a következő verzióinformációkat jelentette : $1 
+index_eversion=A Webmin csak a Jabber $2 verziót támogatja, de a $3 parancs a következő verzióinformációkat jelentette : $1
+index_eversion2=A Webmin csak a Jabber verziókat támogatja a $2 alatt, de a $3 parancs a következő verzióinformációkat jelentette : $1
 index_start=Indítsa el a Jabber Server alkalmazást
 index_startmsg=Kattintson erre a gombra a Jabber szerver elindításához a rendszeren. Az indulásig egyetlen azonnali üzenetküldő ügyfél sem fogja tudni használni.
 index_stop=Állítsa le a Jabber Server alkalmazást
@@ -44,7 +44,7 @@ messages_rnotify=Értesíti az adminot a regisztráció során?
 messages_rfields=Kötelező regisztrációs mezők
 messages_vcard2jud=Küldjön vCard kártyát a Jabber felhasználói könyvtárba?
 messages_err=Az üzenetek mentése nem sikerült
-messages_evcard=Érvénytelen vCard XML : $1 
+messages_evcard=Érvénytelen vCard XML : $1
 messages_etag=A vCard kiszolgáló XML-je nem &lt;vCard&gt; -nel kezdődik
 
 modules_title=Jabber modulok

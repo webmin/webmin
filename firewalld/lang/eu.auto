@@ -10,7 +10,7 @@ index_start=FirewallD abiarazi
 index_startdesc=Hasi FirewallD zerbitzaria.
 index_stop=FirewallD Gelditu
 index_stopdesc=Itxi FirewallD zerbitzaria eta kendu goiko zerrendako arau guztiak.
-index_cerr=FirewallD modulua ezin da erabili : $1 
+index_cerr=FirewallD modulua ezin da erabili : $1
 index_zone=Erakutsi arauak zonaldean:
 index_zoneok=Aldaketa
 index_zoneadd=Gehitu Zona
@@ -90,7 +90,7 @@ check_ecmd=Ez da FirewallD kontrol-komandoa $1 zure sisteman aurkitu
 
 delete_err=Ezin izan dira arauak ezabatu
 delete_enone=Ez da hautatu!
-delete_edel=$1 kentzeak huts egin du : $2 
+delete_edel=$1 kentzeak huts egin du : $2
 
 zone_title=Sortu Zona
 zone_header=Zonako aukera berriak

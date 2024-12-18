@@ -13,7 +13,7 @@ index_edit=Muokkaa edellinen
 run_title=Suorita komento
 run_err=Komenton suorittaminen epäonnistui
 run_ecmd=Komentoa ei annettu
-run_failed= $1:$2  : n suorittaminen epäonnistui
+run_failed=$1:$2 : n suorittaminen epäonnistui
 run_success=Lähtö $1 : stä ..
 run_enone=Ei palvelimia käytettäväksi valituissa
 

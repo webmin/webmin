@@ -352,7 +352,7 @@ sql_eldapconnect=Kunne ikke koble til LDAP tjener $1
 sql_eldaptls=Kunne ikke starte TLS kryptering for LDAP : $1
 sql_eldaplogin=Kunne ikke logge inn på LDAP tjener som $1 : $2
 
-log_email_subject=Webmin handling i  $1
+log_email_subject=Webmin handling i $1
 log_email_global=Webmin global handling
 log_email_desc=Denne meldingen ble sendt av Webmin som svar på en bruker-handling.
 log_email_mod=Webmin modul: $1

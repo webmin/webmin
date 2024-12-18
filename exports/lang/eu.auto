@@ -82,12 +82,12 @@ save_eanonuid=Sarbide erabiltzaile anonimo baliogabea
 save_eanongid=Sarbide-talde anonimo baten baliogabea
 
 exports_webnfs=WebNFS bezero
-exports_ngroup=Netgroup $1 
-exports_net=Network $1 
+exports_ngroup=Netgroup $1
+exports_net=Network $1
 exports_all=Denek
-exports_hosts=Ostalariak $1 
-exports_host=Ostalaria $1 
-exports_gss=Autentifikatutako sarea: $1 
+exports_hosts=Ostalariak $1
+exports_host=Ostalaria $1
+exports_gss=Autentifikatutako sarea: $1
 
 log_modify=$1 esportatutako NFS esportazioa
 log_modify_l=Aldatutako NFS esportazioa $1 etik $2 ra

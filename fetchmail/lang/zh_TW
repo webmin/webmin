@@ -56,7 +56,7 @@ start_err=啟動fetchmail失敗
 start_einterval=沒有輸入或錯誤的檢查間隔
 
 check_title=檢查伺服器
-check_exec=在伺服器上用$1指令檢查郵件  ..
+check_exec=在伺服器上用$1指令檢查郵件 ..
 check_ok=.. 檢查完成
 check_failed=.. 檢查失敗!
 

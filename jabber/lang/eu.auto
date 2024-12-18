@@ -4,10 +4,10 @@ index_edir=$1 Jabber base direktorioa ez da existitzen. Jabber ez dago instalatu
 index_emodules=Ez dira instalatuta Jabber-en XML konfigurazioa kudeatzeko Webmin-ek behar dituzten $1 eta $2 Perl moduluak. <a href='$3'>Egin klik hemen</a> zuzenean instalatzeko CPAN-tik.
 index_emodule=Ez dago instalatuta Webmin-ek Jabber-en XML konfigurazioa kudeatzeko behar duen $1 Perl modulua. <a href='$2'>Egin klik hemen</a> zuzenean CPAN-tik instalatzeko.
 index_expat=Ziurtatu Expat C liburutegia eta goiburuak instalatuta dituzula Perl moduluak instalatzen saiatu aurretik, haien mende baitago eta huts egingo ez balego.
-index_eparse=$1 perl moduluak ezin izan du Jabber konfigurazio fitxategia analizatu : $2 
+index_eparse=$1 perl moduluak ezin izan du Jabber konfigurazio fitxategia analizatu : $2
 index_ejabberd=$1 Jabber zerbitzariaren programa ez da aurkitu zure sisteman. Jabber ez dago instalatuta edo zure <a href='$2'>moduluaren konfigurazioa</a> okerra da.
-index_eversion=Webmin-ek Jabber $2 bertsioa bakarrik onartzen du, baina $3 komandoak hurrengo bertsioaren informazioa eman zuen : $1 
-index_eversion2=Webmin-ek Jabber bertsioak $2 azpitik onartzen ditu, baina $3 komandoak honako bertsioaren informazioa eman zuen : $1 
+index_eversion=Webmin-ek Jabber $2 bertsioa bakarrik onartzen du, baina $3 komandoak hurrengo bertsioaren informazioa eman zuen : $1
+index_eversion2=Webmin-ek Jabber bertsioak $2 azpitik onartzen ditu, baina $3 komandoak honako bertsioaren informazioa eman zuen : $1
 index_start=Hasi Jabber Server
 index_startmsg=Egin klik botoi honetan Jabber zerbitzaria zure sisteman abiarazteko. Hasi arte, ez da berehalako mezularitzako bezeroek erabili ahal izango.
 index_stop=Utzi Jabber Server
@@ -44,7 +44,7 @@ messages_rnotify=Eman izena erregistratzean administratzailea?
 messages_rfields=Beharrezkoak diren erregistro-eremuak
 messages_vcard2jud=Bidali vCard Jabber erabiltzailearen direktoriora?
 messages_err=Huts egin du mezuak gordetzean
-messages_evcard=VCard XML baliogabea : $1 
+messages_evcard=VCard XML baliogabea : $1
 messages_etag=Server vCard XML ez da &lt;vCard&gt; ekin hasten
 
 modules_title=Jabber moduluak

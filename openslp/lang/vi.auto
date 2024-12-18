@@ -2,7 +2,7 @@ index_title=Cấu hình OpenSLP
 index_return=Cấu hình OpenSLP
 index_eslpd=Trình nền OpenSLP $1 không tìm thấy trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
 index_econf=Không tìm thấy tệp cấu hình OpenSLP $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
-index_version=Phiên bản OpenSLP $1 
+index_version=Phiên bản OpenSLP $1
 
 slp_apply=Áp dụng các thay đổi
 slp_stop=Dừng OpenSLP

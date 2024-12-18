@@ -33,7 +33,7 @@ save_erw=Ingen lese-skriv verter angitt
 save_eroot=Ingen rotfiltilgangsverter er angitt
 save_eaccess=Ingen angitte verter for monteringstilgang
 
-log_create_export=Opprettet eksport av $1 
-log_delete_export=Slettet eksport av $1 
-log_modify_export=Endret eksport av $1 
+log_create_export=Opprettet eksport av $1
+log_delete_export=Slettet eksport av $1
+log_modify_export=Endret eksport av $1
 log_apply=Anvendt konfigurasjon

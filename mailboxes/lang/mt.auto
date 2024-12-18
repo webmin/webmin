@@ -252,7 +252,7 @@ send_eattach=L-annessi ma jistgħux jammontaw għal aktar minn $1 kB.
 send_eperms=Utent $1 ma jistax jaqra $2
 send_eperms2=M'għandekx permess tibgħat fajl $1
 send_epath=Sendmail eżegwibbli $1 ma jeżistix.
-send_efile=Ma rnexxielux jaqra t-twaħħil $1 : $2 
+send_efile=Ma rnexxielux jaqra t-twaħħil $1 : $2
 send_done=.. sar.
 
 send_epass=Ma tistax tiffirma messaġġ għaliex il-passphrase tiegħek għadha ma ġietx installata fil-modulu GnuPG.
@@ -337,8 +337,8 @@ folder_spam=Spam
 
 detach_err=Ma rnexxiex tinqata 'l-fajl
 detach_edir=L-ebda fajl jew direttorju li jsalva biex jiddaħħal
-detach_eopen=Ma rnexxielux jiftaħ $1 : $2 
-detach_ewrite=Naqas milli jikteb lil $1 : $2 
+detach_eopen=Ma rnexxielux jiftaħ $1 : $2
+detach_ewrite=Naqas milli jikteb lil $1 : $2
 detach_title=Ibdel il-Fajl
 detach_ok=Ikteb anness mal-fajl tal-ġenb tas-server $1 ($2).
 
@@ -437,7 +437,7 @@ white_already=L-indirizz elettroniku $1 huwa diġà fuq il-lista ta 'indirizzi p
 
 ldap_emod=Modulu Perl Nieqes $1 meħtieġ għall-konnessjoni ma 'LDAP
 ldap_econn=Naqset milli tikkonnettja mas-server LDAP $1 port $2
-ldap_elogin=Ma rnexxielux jorbot lis-server LDAP $1 bħala $2 : $3 
+ldap_elogin=Ma rnexxielux jorbot lis-server LDAP $1 bħala $2 : $3
 ldap_ehost=L-ebda server LDAP issettjat fil-konfigurazzjoni tal-modulu
 ldap_eport=L-ebda port tas-server LDAP validu fil-konfigurazzjoni tal-modulu
 ldap_euser=L-ebda sett ta 'login LDAP fil-konfigurazzjoni tal-modulu

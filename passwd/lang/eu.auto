@@ -21,7 +21,7 @@ passwd_ecannot=Ezin duzu erabiltzaile honen pasahitza aldatu
 passwd_euser=Erabiltzailea ez da existitzen
 passwd_eold=Pasahitz zaharra okerra
 passwd_erepeat=Pasahitz berriak ez dira berdinak
-passwd_ecmd=$1 huts egin du : $2 
+passwd_ecmd=$1 huts egin du : $2
 passwd_ok=$1 erabiltzailearen pasahitza ondo aldatu da. Hau zure uneko Webmin erabiltzailea bada, berriro saioa egitera behartu ahal izango zara.
 passwd_ok2=$1 erabiltzailearen pasahitza ondo aldatu da.
 

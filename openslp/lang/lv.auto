@@ -2,7 +2,7 @@ index_title=OpenSLP konfigurācija
 index_return=OpenSLP konfigurācija
 index_eslpd=Jūsu sistēmā netika atrasts OpenSLP dēmons $1. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_econf=Jūsu sistēmā netika atrasts OpenSLP konfigurācijas fails $1. Varbūt tas nav instalēts, vai jūsu <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
-index_version=OpenSLP versija $1 
+index_version=OpenSLP versija $1
 
 slp_apply=Lietot izmaiņas
 slp_stop=Apturiet OpenSLP

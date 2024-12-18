@@ -8,7 +8,7 @@ index_defconn=Valeurs par défaut pour toutes les connexions
 index_nopol=Aucune stratégie réseau n'a été trouvée. La <a href='$1'>configuration réseau</a> est peut-être incorrecte.
 
 restart_err=Impossible de redémarrer le serveur IPsec
-start_elog=Les erreurs suivantes ont été enregistrées : $1 
+start_elog=Les erreurs suivantes ont été enregistrées : $1
 
 newkey_err=Impossible de générer la clé
 newkey_ehost=Nom d'hôte manquant ou invalide
@@ -59,8 +59,8 @@ policy_longdesc_block=La communication avec les réseaux sélectionnés ci-desso
 policy_longdesc_clear-or-private=La communication avec les réseaux sélectionnés ci-dessous sera claire sauf si l'autre extrémité lance le cryptage IPsec.
 policy_longdesc=Les réseaux sélectionnés ci-dessous sont utilisés pour la stratégie $1.
 policy_err=Échec de l'enregistrement des réseaux
-policy_enet=Adresse IP réseau non valide sur la ligne $1 
-policy_emask=Longueur de préfixe non valide sur la ligne $2 
+policy_enet=Adresse IP réseau non valide sur la ligne $1
+policy_emask=Longueur de préfixe non valide sur la ligne $2
 
 save_err=Échec de l'enregistrement de la connexion
 save_ename=Nom de connexion manquant ou invalide
@@ -82,11 +82,11 @@ save_erightcert=Certificat de serveur distant manquant ou non valide
 save_ekeylife=Durée de vie de la clé de connexion manquante ou non valide
 save_eikelifetime=Durée de vie du canal de saisie manquante ou non valide
 
-log_create_conn=Connexion créée $1 
-log_delete_conn=Connexion supprimée $1 
-log_modify_conn=Connexion modifiée $1 
-log_import_conn=Connexion importée $1 
-log_up=Connexion démarrée $1 
+log_create_conn=Connexion créée $1
+log_delete_conn=Connexion supprimée $1
+log_modify_conn=Connexion modifiée $1
+log_import_conn=Connexion importée $1
+log_up=Connexion démarrée $1
 log_policy=$1 enregistré
 log_start=Serveur IPsec démarré
 log_stop=Serveur IPsec arrêté
@@ -94,9 +94,9 @@ log_restart=Redémarrage du serveur IPsec
 log_boot=IPsec activé au démarrage
 log_unboot=IPsec désactivé au démarrage
 log_config=Configuration du serveur enregistrée
-log_create_secret=Clé secrète créée pour $1 
-log_modify_secret=Clé secrète modifiée pour $1 
-log_delete_secret=Clé secrète supprimée pour $1 
+log_create_secret=Clé secrète créée pour $1
+log_modify_secret=Clé secrète modifiée pour $1
+log_delete_secret=Clé secrète supprimée pour $1
 log_create_secret_nn=Clé secrète créée pour tout hôte
 log_modify_secret_nn=Clé secrète modifiée pour tout hôte
 log_delete_secret_nn=Clé secrète supprimée pour tout hôte
@@ -104,7 +104,7 @@ log_delete_secret_nn=Clé secrète supprimée pour tout hôte
 export_desc=Ce formulaire peut être utilisé pour exporter la section du fichier de configuration pour la connexion $1, afin qu'il puisse être facilement importé sur le serveur à l'autre extrémité.
 export_err=Échec de l'exportation de la configuration
 export_efile=Nom de fichier manquant
-export_esave=Impossible d'écrire dans le fichier : $1 
+export_esave=Impossible d'écrire dans le fichier : $1
 export_done=Configuration exportée pour la connexion $1 à $2 ($3 octets).
 
 import_desc=Ce formulaire peut être utilisé pour importer une section de fichier de configuration pour une connexion, telle que celle créée par la fonction d'exportation du module sur un autre système.
@@ -121,8 +121,8 @@ import_done1=La nouvelle connexion IPsec $1 a été ajoutée avec succès.
 import_done2=Mise à jour réussie de la connexion IPsec $1.
 import_over=Remplacer la connexion existante avec le même nom?
 
-secret_rsa=RSA $1 
+secret_rsa=RSA $1
 secret_err=Impossible d'enregistrer la clé secrète
 secret_elast=La dernière clé secrète restante ne peut pas être supprimée
 secret_ename=Hôtes manquants pour cette clé
-secret_ersa=Valeur manquante pour RSA $1 
+secret_ersa=Valeur manquante pour RSA $1

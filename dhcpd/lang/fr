@@ -1,5 +1,5 @@
 index_title=Serveur DHCP
-index_dhcpdnotfound=L'exécutable du serveur DHCP '$1' est introuvable sur votre système.  Peut-être devriez-vous éditer la <a href="$2">configuration du module DHCP</a>.
+index_dhcpdnotfound=L'exécutable du serveur DHCP '$1' est introuvable sur votre système. Peut-être devriez-vous éditer la <a href="$2">configuration du module DHCP</a>.
 index_return=index
 index_subtitle=Sous-réseaux et réseaux partagés
 index_nosubdef=Aucun sous-réseaux ou réseaux partagé n'ont été définis

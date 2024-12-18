@@ -94,7 +94,7 @@ log_deletes=删除 $1 服务器
 link_elogin=以 $2身份登录 $1 失败
 link_ecannot=您没有使用此服务器的权限
 link_essl=您没有安装 perl Net::SSLeay 库
-link_eautologin= $1的登录名或密码无效. <a href='$2'>点击此处</a> 重试.
+link_eautologin=$1的登录名或密码无效. <a href='$2'>点击此处</a> 重试.
 
 lib_other=其他
 
@@ -157,7 +157,7 @@ config_deftype=默认系统类型
 config_typeauto=自动
 
 email_regsubject=系统 $1 已注册
-email_reg=系统已自动执行 $1 
+email_reg=系统已自动执行 $1
 email_unregsubject=系统 $1 未注册
 email_unreg=系统 $1 已自动取消注册。
 __norefs=1

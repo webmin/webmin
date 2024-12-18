@@ -701,7 +701,7 @@ ipkey_eips=Nenhum endereço IP inserido
 descs_title=Títulos dos Módulos
 descs_info=Esta página permite especificar títulos alternativos para os módulos do Webmin, para sobrescrever suas descrições padrão.
 descs_mod=Módulo
-descs_desc=Novo  título
+descs_desc=Novo título
 descs_err=Falhou ao salvar títulos dos módulos
 descs_edesc=Título para módulo '$1' faltando
 
@@ -781,7 +781,7 @@ blocked_type=Tipo
 blocked_who=Nome do computador e nome do usuário
 blocked_fails=Falhas de autenticação
 blocked_when=Bloqueado em
-blocked_none=Nenhum host ou  usuário está atualmente bloqueado pelo Webmin.
+blocked_none=Nenhum host ou usuário está atualmente bloqueado pelo Webmin.
 blocked_user=Usuário do Webmin
 blocked_host=Host cliente
 blocked_clear=Limpar Todos os Bloqueios

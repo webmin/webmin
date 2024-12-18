@@ -1,6 +1,6 @@
 index_serviceonboot=Áno, a začať pri štarte
 index_boot=Synchronizovať pri spustení Webmin?
-index_ehwclock=$1 zlyhalo : $2 
+index_ehwclock=$1 zlyhalo : $2
 index_tabtime=Nastav čas
 index_tabzone=Zmeniť časové pásmo
 index_tabsync=Synchronizácia časového servera

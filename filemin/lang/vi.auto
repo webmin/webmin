@@ -96,7 +96,7 @@ error_chown=Không thể thay đổi chủ sở hữu
 error_delete=Không thể xóa
 error_user_not_found=không tìm thấy người dùng trên hệ thống này
 error_group_not_found=nhóm không tồn tại trên hệ thống này
-error_archive_type_not_supported= loại lưu trữ chưa được hỗ trợ
+error_archive_type_not_supported=loại lưu trữ chưa được hỗ trợ
 error_opening_file_for_writing=Không thể mở tệp để viết:
 error_writing_file=Lỗi ghi tập tin:
 error_numeric=phải là số!
@@ -153,15 +153,15 @@ menu_file=Tập tin
 menu_edit=Biên tập
 menu_tools=Công cụ
 menu_bookmarks=Dấu trang
-notallowed=Bạn không được phép truy cập $1. Các thư mục được phép là : $2 
-error_upload_emax=Tệp đã tải lên lớn hơn giới hạn của $1 
+notallowed=Bạn không được phép truy cập $1. Các thư mục được phép là : $2
+error_upload_emax=Tệp đã tải lên lớn hơn giới hạn của $1
 extract_etype=Loại tệp lưu trữ không được hỗ trợ
 
 error_write=bạn không có quyền ghi vào tập tin này
 error_move=bạn không có quyền di chuyển tập tin này
 
-info_total1=Tổng cộng: $1 tệp và thư mục $2 
-info_total2=Tổng cộng: $1 tệp và thư mục $2 
+info_total1=Tổng cộng: $1 tệp và thư mục $2
+info_total2=Tổng cộng: $1 tệp và thư mục $2
 info_total3=Tổng cộng: $1 tệp và $2 thư mục
 info_total4=Tổng cộng: $1 tệp và $2 thư mục
 

@@ -72,7 +72,7 @@ dbase_jump=Nebo editovat tabulku:
 ddrop_err=Neúspěšné vypuštění databáze
 ddrop_title=Vypuštění databáze
 ddrop_rusure=Jste si jisti, že chcete vypustit databázi $1 ? $2 tabulek obsahuje $3 řádků dat, která budou smazána.
-ddrop_mysql=Protože je to hlavní databáze, její vypuštění bude pravděpodobně znamenat, ze váš  MySQL server bude nepoužitelný!!!
+ddrop_mysql=Protože je to hlavní databáze, její vypuštění bude pravděpodobně znamenat, ze váš MySQL server bude nepoužitelný!!!
 ddrop_ok=Vypustit databázi
 ddrop_empty=Pouze smazat všechny tabulky
 
@@ -429,7 +429,7 @@ acl_pass=heslo
 acl_edonly=Editovat pouze data v tabulkách?
 acl_bnone=Zakázat zálohy
 acl_indexes=Možno prohlížet a spravovat indexy?
-acl_views=Možno prohlížet  a spravovat pohledy?
+acl_views=Možno prohlížet a spravovat pohledy?
 
 log_start=MySQL server spuštěn
 log_stop=MySQL server zastaven

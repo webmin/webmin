@@ -68,10 +68,10 @@ lusers_mass=Atualizar usuários selecionados
 lusers_cc=Envie também email para
 lusers_nocc=Ninguém
 
-log_email_user=Alterar as opções de email do usuário em $1 
-log_email_group=Alterar as opções de e-mail do grupo em $1 
-log_gsync=Novas cotas de grupos alteradas em $1 
-log_support=Suporte de cota ativado para $1 
+log_email_user=Alterar as opções de email do usuário em $1
+log_email_group=Alterar as opções de e-mail do grupo em $1
+log_gsync=Novas cotas de grupos alteradas em $1
+log_support=Suporte de cota ativado para $1
 
 email_err=Falha ao salvar as opções de email
 email_ecannot=Você não tem permissão para modificar opções de email

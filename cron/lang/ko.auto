@@ -22,7 +22,7 @@ index_search=일치하는 Cron 작업 찾기
 index_ok=검색
 index_searchres=$1 과 (와) 일치하는 Cron 작업
 index_reset=검색을 재설정하십시오.
-index_econfigcheck=모듈 구성이 유효하지 않으므로 시스템에서 Cron 작업을 관리 할 수 없습니다  : $1 
+index_econfigcheck=모듈 구성이 유효하지 않으므로 시스템에서 Cron 작업을 관리 할 수 없습니다 : $1
 index_stop=크론 데몬 중지
 index_stopdesc=예약된 cron 작업을 실행하는 <tt>crond</tt> 백그라운드 서버 프로세스를 종료합니다. 이렇게 하면 명령이 지정된 시간에 실행되지 않습니다.
 index_start=크론 데몬 시작
@@ -96,22 +96,22 @@ log_start=cron 데몬 시작
 log_bootup=부팅 시 활성화된 cron 데몬
 log_bootdown=부팅 시 비활성화된 cron 데몬
 
-ecopy=새 Cron 구성에서 오류가 발견되었습니다 : $1 $2 
+ecopy=새 Cron 구성에서 오류가 발견되었습니다 : $1 $2
 
 when_min=매 순간
 when_hour=매시간 $1 의 시간마다
-when_day=매일 $2:$1 
-when_month=매월 $3 의 $2:$1 
-when_weekday=$2 에서 $3 마다 : $1 
+when_day=매일 $2:$1
+when_month=매월 $3 의 $2:$1
+when_weekday=$2 에서 $3 마다 : $1
 when_cron=크론 시간 $1 에서
 when_interval=$1 초마다
 when_boot=시작시
 
 ucwhen_min=매 순간
 ucwhen_hour=매시간 $1 의 시간마다
-ucwhen_day=매일 $2:$1 
-ucwhen_month=매월 $3 의 $2:$1 
-ucwhen_weekday= $2:$1 의 $3 마다
+ucwhen_day=매일 $2:$1
+ucwhen_month=매월 $3 의 $2:$1
+ucwhen_weekday=$2:$1 의 $3 마다
 ucwhen_cron=크론 시간 $1 에서
 ucwhen_interval=$1 초마다
 ucwhen_boot=시작시
@@ -122,7 +122,7 @@ move_etype=이 작업은 이동할 수 없습니다
 kill_err=Cron 작업을 종료하지 못했습니다
 kill_ecannot=이 작업을 종료 할 수 없습니다
 kill_egone=더 이상 달리지 않는다
-kill_ekill=처치 실패  : $1 
+kill_ekill=처치 실패 : $1
 kill_title=크론 작업 종료
 kill_rusure=PID $2 (으)로 프로세스 $1 을 (를) 종료 하시겠습니까?
 kill_rusure2=PID $2 (으)로 프로세스 $1 을 (를) 종료하고 모든 하위 프로세스를 종료 하시겠습니까?
@@ -130,7 +130,7 @@ kill_ok=예, 종료
 
 range_all=어떤 날짜 에나 실행
 range_start=$1 에서만 실행
-range_end=$1 
+range_end=$1
 range_estart=실행할 범위에서 시작 날짜가 없거나 유효하지 않습니다.
 range_eend=실행할 범위의 결말 날짜가 없거나 잘못되었습니다.
 

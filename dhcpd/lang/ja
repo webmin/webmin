@@ -175,7 +175,7 @@ ssub_failsave=サブネットを保存できませんでした
 ssub_invalidsubaddr=は無効なサブネット アドレスです
 ssub_invalidnmask=は無効なネットマスクです
 ssub_invalidipr=は無効な IP アドレスです
-ssub_nosubnet=共有ネットワーク  '$1' はサブネットを含んでいません。
+ssub_nosubnet=共有ネットワーク '$1' はサブネットを含んでいません。
 
 plib_deflt=デフォルト リース時間
 plib_bfname=ブート ファイル名

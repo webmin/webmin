@@ -14,5 +14,5 @@ acl_user_def=Dabartinis „Webmin“ vartotojas
 acl_shellenv=Naudoti pasirinktą vartotojo aplinką?
 acl_chroot=„Chroot“ į katalogą
 
-log_run=Paleido komandą $1 
+log_run=Paleido komandą $1
 log_clear=Išvalyta komandų istorija

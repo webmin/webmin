@@ -34,9 +34,9 @@ paginator_nosearchrs=No hi ha resultats que coincideixin amb la consulta <tt>$1<
 
 langauto_include=Inclou traduccions automàtiques
 
-file_truncated_message=s'ha obtingut $1 de dades, s'ha truncat $2 de $3 
-file_truncated_message_head=s'ha obtingut l'inici de $1 de dades, s'ha truncat $2 de $3 
-file_truncated_message_tail=S'ha obtingut el final $1 de dades, s'ha truncat $2 de $3 
+file_truncated_message=s'ha obtingut $1 de dades, s'ha truncat $2 de $3
+file_truncated_message_head=s'ha obtingut l'inici de $1 de dades, s'ha truncat $2 de $3
+file_truncated_message_tail=S'ha obtingut el final $1 de dades, s'ha truncat $2 de $3
 
 defcert_error=S'està utilitzant el certificat SSL agrupat $1 per defecte. És molt recomanable actualitzar el certificat per defecte <tt>$2</tt> abans de continuar amb l'inici de sessió.
 

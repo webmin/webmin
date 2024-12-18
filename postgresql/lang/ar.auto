@@ -163,7 +163,7 @@ exec_ecompress2=فشل فك الضغط :$1
 
 stop_err=فشل في إيقاف خادم قاعدة البيانات
 stop_epidfile=فشل في فتح ملف PID$1
-stop_ekill=فشل في إنهاء العملية $1 : $2 
+stop_ekill=فشل في إنهاء العملية $1 : $2
 stop_ecannot=لا يسمح لك بإيقاف خادم قاعدة البيانات
 start_err=فشل بدء تشغيل خادم قاعدة البيانات
 start_ecannot=غير مسموح لك ببدء خادم قاعدة البيانات
@@ -366,7 +366,7 @@ group_none=لا توجد مجموعات PostgreSQL حاليًا.
 group_derr=فشل في حذف المجموعات
 group_enone=لم يتم تحديد مجموعات
 
-esql=فشل SQL $1 : $2 
+esql=فشل SQL $1 : $2
 log_start=بدأت خادم PostgreSQL
 log_stop=توقف خادم PostgreSQL
 log_db_create=تم إنشاء قاعدة البيانات$1

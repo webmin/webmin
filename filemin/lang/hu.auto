@@ -96,7 +96,7 @@ error_chown=A tulajdonos megváltoztatása nem sikerült
 error_delete=nem lehet törölni
 error_user_not_found=a felhasználó nem található a rendszeren
 error_group_not_found=csoport nem létezik ezen a rendszeren
-error_archive_type_not_supported= az archívum típusa még nem támogatott
+error_archive_type_not_supported=az archívum típusa még nem támogatott
 error_opening_file_for_writing=Nem sikerült megnyitni a fájlt írásra:
 error_writing_file=Hiba a fájl írásakor:
 error_numeric=numerikusnak kell lennie!
@@ -153,7 +153,7 @@ menu_file=fájl
 menu_edit=szerkesztése
 menu_tools=Eszközök
 menu_bookmarks=Könyvjelzők
-notallowed=A (z) $1 hozzáférése nem engedélyezett. Az engedélyezett könyvtárak : $2 
+notallowed=A (z) $1 hozzáférése nem engedélyezett. Az engedélyezett könyvtárak : $2
 error_upload_emax=A feltöltött fájl nagyobb, mint a (z) $1 korlát
 extract_etype=Nem támogatott archívumtípus
 

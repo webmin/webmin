@@ -46,7 +46,7 @@ save_eorder=Beställning på huvudsidan måste vara ett nummer
 save_etimeout=Saknas eller ogiltig maximal tid att vänta
 save_eusermin=Kommandon som körs på andra servrar kan inte köras från Usermin
 save_eformat=Ogiltig utgång MIME-typ
-save_eopts=Saknade alternativfil för parameter $1 
+save_eopts=Saknade alternativfil för parameter $1
 save_eopts2=Alternativfil eller standardvärde för parameter $1 kan inte innehålla :
 
 run_out2=Utgång från kommando ..
@@ -57,12 +57,12 @@ run_eopt=Ogiltigt alternativ valt
 run_eupload=Ingen fil att ladda upp vald
 run_emust=Värdet för parametern "$1" saknas
 run_timeout=Kommandot kunde inte slutföras innan timeout för $1 sekund.
-run_failed=Kommandot misslyckades med utgångsstatus $1 
+run_failed=Kommandot misslyckades med utgångsstatus $1
 
-log_modify_edit=Modifierad filredigerare $1 
-log_create_edit=Skapad filredigerare $1 
-log_delete_edit=Raderad filredigerare $1 
-log_save_edit=Sparad fil $1 
+log_modify_edit=Modifierad filredigerare $1
+log_create_edit=Skapad filredigerare $1
+log_delete_edit=Raderad filredigerare $1
+log_save_edit=Sparad fil $1
 
 acl_cexcept=Alla utom valda ..
 
@@ -93,11 +93,11 @@ file_id=Redaktörs-ID
 view_err=Det gick inte att redigera filen
 view_ecannot=Du får inte redigera den här filen
 view_title=Redigera fil
-view_efile=Skriv till $1 misslyckades : $2 
-view_header=Redigerar fil $1 
-view_ebeforeedit=Före redigeringskommandot misslyckades : $1 
-view_ebefore=Före-spara kommandot misslyckades : $1 
-view_eafter=Efter-sparande-kommando misslyckades : $1 
+view_efile=Skriv till $1 misslyckades : $2
+view_header=Redigerar fil $1
+view_ebeforeedit=Före redigeringskommandot misslyckades : $1
+view_ebefore=Före-spara kommandot misslyckades : $1
+view_eafter=Efter-sparande-kommando misslyckades : $1
 
 form_ecannot=Du får inte köra det här kommandot
 form_title=Kör kommando
@@ -123,8 +123,8 @@ sql_edb=Saknat eller ogiltigt databasnamn
 srun_title=Kör SQL-kommando
 srun_err=Det gick inte att utföra SQL-kommando
 srun_edriver=Det gick inte att ladda DBI-drivrutinen
-srun_econnect=Det gick inte att ansluta till databasen : $1 
+srun_econnect=Det gick inte att ansluta till databasen : $1
 srun_cmd=Utför SQL-kommando $1 ..
-srun_eprepare=.. SQL-fel : $1 
-srun_eexecute=.. exekveringsfel : $1 
+srun_eprepare=.. SQL-fel : $1
+srun_eexecute=.. exekveringsfel : $1
 srun_none=.. inga resultat returnerades.

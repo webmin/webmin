@@ -1,5 +1,5 @@
 index_title=Detectorul de intruziune Fail2Ban
-index_ver=Versiunea $1 
+index_ver=Versiunea $1
 index_echeck=A apărut o eroare la detectarea Fail2Ban pe acest sistem: $1. Ori nu este instalat, sau configurația modulului <a href='$2'></a> este incorectă.
 index_fail2ban=fail2ban
 index_atboot=Începeți la pornire?
@@ -26,7 +26,7 @@ filters_add=Adăugați un nou filtru de jurnal.
 filters_return=lista filtrelor
 filters_derr=Nu au reușit ștergerea filtrelor
 filters_enone=Nimic selectat
-filters_einuse=Filtrul $1 nu poate fi șters, deoarece este folosit de închisori : $2 
+filters_einuse=Filtrul $1 nu poate fi șters, deoarece este folosit de închisori : $2
 
 filter_title1=Creați filtru
 filter_title2=Editează filtrul
@@ -41,7 +41,7 @@ filter_err=Salvarea filtrului nu a reușit
 filter_ename=Numele filtrului lipsă sau nevalid
 filter_eclash=Numele filtrului este deja utilizat
 filter_efail=Nu a fost introdusă nicio expresie obișnuită care să se potrivească
-filter_einuse=Acest filtru nu poate fi șters, deoarece este folosit de închisori : $1 
+filter_einuse=Acest filtru nu poate fi șters, deoarece este folosit de închisori : $1
 
 actions_title=Acțiuni de potrivire
 actions_name=Numele acțiunii
@@ -51,7 +51,7 @@ actions_add=Adăugați o nouă acțiune.
 actions_return=lista acțiunilor
 actions_derr=Eroare la ștergerea acțiunilor
 actions_enone=Nimic selectat
-actions_einuse=Acțiunea $1 nu poate fi ștearsă, deoarece este folosită de închisori : $2 
+actions_einuse=Acțiunea $1 nu poate fi ștearsă, deoarece este folosită de închisori : $2
 
 action_title1=Creați acțiune de potrivire
 action_title2=Editați Acțiunea de potrivire
@@ -68,7 +68,7 @@ action_check=Comanda de a rula înainte de interzicerea unui IP
 action_ban=Comanda de interzicere a unui IP
 action_unban=Comanda de dez-interzicere a unui IP
 action_desc=<i>&lt;ip&gt;</i> va fi înlocuit cu adresa IP interzisă.
-action_einuse=Această acțiune nu poate fi ștearsă, deoarece este folosită de închisori : $1 
+action_einuse=Această acțiune nu poate fi ștearsă, deoarece este folosită de închisori : $1
 
 jails_title=Filtrele de acțiune ale filtrului
 jails_add=Adăugați o nouă închisoare.
@@ -104,8 +104,8 @@ jail_ignoreip=Adresele IP pentru a nu interzice niciodată
 jail_err=Nu a reușit să salveze închisoarea
 jail_eclash=Există deja o închisoare cu același nume
 jail_ename=Lipsesc sau nevalide numele închisorii
-jail_eaname=Parametru pentru numele de căutare nevalid pentru acțiunea $1 
-jail_eport=Număr de port nevalid pentru acțiunea $1 
+jail_eaname=Parametru pentru numele de căutare nevalid pentru acțiunea $1
+jail_eport=Număr de port nevalid pentru acțiunea $1
 jail_eactions=Nu sunt selectate acțiuni!
 jail_elogpaths=Nu au fost introduse căi de fișier jurnal
 jail_elogpath=Toate fișierele de jurnal trebuie să fie căi sau modele absolute
@@ -134,22 +134,22 @@ start_err=Eroare la pornirea serverului
 stop_err=Nu a reușit oprirea serverului
 restart_err=Eroare la repornirea serverului
 
-log_create_filter=Filtrul creat $1 
-log_update_filter=Filtru modificat $1 
-log_delete_filter=Filtru șters $1 
-log_create_action=Acțiune creată $1 
-log_update_action=Acțiune modificată $1 
-log_delete_action=Acțiune ștersă $1 
-log_create_jail=Crearea închisorii $1 
-log_update_jail=Închisoare modificată $1 
-log_delete_jail=Închisoare eliminată $1 
+log_create_filter=Filtrul creat $1
+log_update_filter=Filtru modificat $1
+log_delete_filter=Filtru șters $1
+log_create_action=Acțiune creată $1
+log_update_action=Acțiune modificată $1
+log_delete_action=Acțiune ștersă $1
+log_create_jail=Crearea închisorii $1
+log_update_jail=Închisoare modificată $1
+log_delete_jail=Închisoare eliminată $1
 log_config=Configurație globală modificată
 log_stop=Serverul Fail2Ban oprit
 log_start=A început serverul Fail2Ban
 log_restart=Re-a început serverul Fail2Ban
 log_atboot=Activat Fail2Ban la momentul de pornire
 log_delboot=Dezactivat Fail2Ban la momentul de pornire
-log_manual=Fișierul de configurare modificat $1 
+log_manual=Fișierul de configurare modificat $1
 log_jaildef=Opțiuni implicite modificate pentru închisoare
 
 config_title=Configurare globală

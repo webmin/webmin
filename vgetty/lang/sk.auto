@@ -18,7 +18,7 @@ vgetty_return=zoznam sériových portov
 vgetty_create=Pridajte sériový port
 vgetty_edit=Upraviť sériový port
 vgetty_header=Možnosti konfigurácie sériového portu
-vgetty_ts=Sériový port $1 
+vgetty_ts=Sériový port $1
 vgetty_other=Iné zariadenie ..
 vgetty_rings=Krúžky pred odpoveďou
 vgetty_default=Globálne predvolené
@@ -100,19 +100,19 @@ pvfdesc=$1, $2 bitov
 
 upload_err=Nepodarilo sa pridať správu
 upload_emessage=Nie je vybratý žiadny súbor WAV
-upload_ewav=Nepodarilo sa skonvertovať súbor WAV : $1 
-upload_epvf=Nepodarilo sa vytvoriť súbor RMD : $1 
+upload_ewav=Nepodarilo sa skonvertovať súbor WAV : $1
+upload_epvf=Nepodarilo sa vytvoriť súbor RMD : $1
 upload_esame=Súbor správ $1 už existuje
 
 log_apply=Aplikovaná konfigurácia
-log_upload=Odovzdaná uvítacia správa $1 
+log_upload=Odovzdaná uvítacia správa $1
 log_move=Konvertované $1 prijaté správy
 log_delete0=Odstránené $1 prijaté správy
 log_delete1=Odstránené $1 uvítacie správy
 log_options=Zmenené možnosti hlasovej schránky
-log_vgetty_create=Pridaný sériový port $1 
-log_vgetty_modify=Upravený sériový port $1 
-log_vgetty_delete=Vymazaný sériový port $1 
+log_vgetty_create=Pridaný sériový port $1
+log_vgetty_modify=Upravený sériový port $1
+log_vgetty_delete=Vymazaný sériový port $1
 
 email_subject=Správa hlasovej schránky
 email_body=Správa hlasovej schránky bola prijatá na $1 po $2.

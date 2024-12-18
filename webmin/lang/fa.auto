@@ -220,7 +220,7 @@ startpage_webminup=نمایش به روزرسانی های وبمین در صف�
 startpage_moduleup=نمایش به روز رسانی های ماژول در صفحه اطلاعات سیستم؟
 
 upgrade_descdeb=This form allows you to upgrade your entire Webmin installation to a new version by upgrading its Debian package. You can install from a local .deb file, an uploaded file or from the latest version at <a href=http://www.webmin.com/>www.webmin.com</a>. Just as with a manual upgrade, all your config settings and third-party modules will be kept.
-upgrade_repo=آخرین نسخه از مخزن $1 
+upgrade_repo=آخرین نسخه از مخزن $1
 upgrade_edeb=یک فایل بسته معتبر Webmin Debian نیست
 upgrade_egzip=Failed to gunzip file : $1
 upgrade_setup=اجرای اسکریپت <tt>setup.sh</tt> برای ارتقای وبمین ..

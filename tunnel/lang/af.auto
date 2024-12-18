@@ -2,7 +2,7 @@ index_elink=Daar is nog nie 'n URL om na die tonnel in te stel nie.
 index_url=Voer URL in om oop te maak:
 index_open=oop
 
-link_eurl=Ongeldige tonnel-URL : $1 
+link_eurl=Ongeldige tonnel-URL : $1
 link_elogin=Kon nie by $1 as $2 aanmeld nie.
 link_eautologin=Ongeldige aanmelding of wagwoord vir $1. <a href='$2'>Klik hier</a> om aan te meld.
 link_enouser='N Gebruikernaam en wagwoord is nodig om aan te meld by $1, maar niks is opgestel nie.

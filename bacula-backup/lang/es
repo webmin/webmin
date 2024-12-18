@@ -25,7 +25,7 @@ index_dir=Configuración del Director (DIR)
 index_sd=Configuración del Programa de Almacenamiento (SD)
 index_fd=Configuración del Programa de Cliente (FD)
 index_groups=Configuracion de Grupos de Bacula
-index_actions=Acciones de Respaldo y Recuperación 
+index_actions=Acciones de Respaldo y Recuperación
 index_ocmin=Contribución de <a href=$2 target=_new>Linmin<img align=middle border=0 src='$1'></a>. Traducción por <a href="http://www.skinatech.com">SkinaTech</a>
 
 connect_emysql=No fue posible cargar el soporte DBI para la base de datos $1
@@ -36,9 +36,9 @@ connect_equery3=La base de datos $1 no parece contener tablas de grupos de Bacul
 esql=SQL error : $1
 
 check_edir=El directorio de configuración de Bacula $1 no se encuentra en su sistema.
-check_ebacula=No se encuentra el comando de control de Bacula $1 
-check_econsole=No se encuentra el comando de consola de Bacula $1 
-check_edirector=No se encuentra la configuracion del director de Bacula $1 
+check_ebacula=No se encuentra el comando de control de Bacula $1
+check_econsole=No se encuentra el comando de consola de Bacula $1
+check_edirector=No se encuentra la configuracion del director de Bacula $1
 check_eclient=Este sistema parece ser mas un <a href='$2'>cliente de Bacula</a> más que un director.
 check_econfigs=No se encuentran los archivos de configuración de Bacula en $1
 check_eservers=No se ha definido grupos de servidores de Webmin
@@ -99,7 +99,7 @@ fileset_gzipdef=&lt;Nivel de compresión por omisión&gt;
 fileset_gzip=Gzip nivel $1
 fileset_onefs=Limitar el respaldo a un solo sistema de archivos?
 
-clients_title=Clientes 
+clients_title=Clientes
 clients_none=Aun no se han definido clientes para respaldar.
 clients_name=Nombre del Cliente
 clients_address=Nombre o Dirección del servidor
@@ -123,7 +123,7 @@ client_fileret=Mantener los archivos respaldados por
 client_jobret=Mantener los trabajos de respaldo por
 client_err=No ha sido posible guardar el respaldo del cliente
 client_ename=Nombre del client inválido o inexistente
-client_eclash=Ya existe un cliente con ese mismo nombre 
+client_eclash=Ya existe un cliente con ese mismo nombre
 client_epass=No existe contraseña
 client_eaddress=Nombre o dirección del servidor inválida o inexistente
 client_eport=Puerto del cliente (FD) inválido o inexistente
@@ -205,7 +205,7 @@ gbackup_on=Running backup job on client $1 :
 gbackup_header=Bacula group backup job details
 gbackup_jd=$1 (File set $2 on group $3)
 
-dirstatus_title=Estado del Director 
+dirstatus_title=Estado del Director
 dirstatus_sched=Trabajos Programados
 dirstatus_name=Trabajo
 dirstatus_type=Tipo
@@ -356,7 +356,7 @@ poolstatus_show=Show volumes in pool:
 poolstatus_ok=OK
 poolstatus_volumes=Volúmenes en el pool seleccionado
 poolstatus_name=Volumen
-poolstatus_type=Tipo de Medio 
+poolstatus_type=Tipo de Medio
 poolstatus_first=Inicio de uso
 poolstatus_last=Último uso
 poolstatus_bytes=Bytes escritos

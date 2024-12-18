@@ -18,7 +18,7 @@ index_printableto=Skrivbar for
 index_prneveryone=Skrivbar for alle
 index_prnalluser=Skrivbar for alle brukere
 index_rwpublic=Skrivbar for alle
-index_readonly=Skrivebeskyttet for  $1<br>Skrivbar for alle andre kjente brukere
+index_readonly=Skrivebeskyttet for $1<br>Skrivbar for alle andre kjente brukere
 index_rwalluser=Skrivbar for alle kjente brukere
 index_roeveryone=Skrivebeskyttet for alle
 index_readwrite=Skrivbar for $1<br>Skrivebeskyttet for alle andre kjente brukere
@@ -218,7 +218,7 @@ fmisc_rootconn=Kommando som skal kjøres ved tilkobling <i>som root</i>
 fmisc_rootdisconn=Kommando som skal kjøres ved frakobling <i>som root</i>
 
 fname_title1=Standardverdier for fil-navngiving
-fname_title2=Rediger  fil-navngiving
+fname_title2=Rediger fil-navngiving
 fname_option=Innstillinger for fil-navngiving
 fname_manglecase=Bland store og små bokstaver?
 fname_case=Skill små og store bokstaver?

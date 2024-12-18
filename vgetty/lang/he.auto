@@ -18,7 +18,7 @@ vgetty_return=רשימת יציאה טורית
 vgetty_create=הוסף יציאה טורית
 vgetty_edit=ערוך יציאה טורית
 vgetty_header=אפשרויות תצורה של יציאה טורית
-vgetty_ts=יציאה טורית $1 
+vgetty_ts=יציאה טורית $1
 vgetty_other=מכשיר אחר ..
 vgetty_rings=צלצולים לפני התשובה
 vgetty_default=ברירת מחדל עולמית
@@ -100,17 +100,17 @@ pvfdesc=$1, $2 ביטים
 
 upload_err=הוספת הודעה נכשלה
 upload_emessage=לא נבחר קובץ WAV
-upload_ewav=המרת קובץ WAV נכשלה : $1 
-upload_epvf=יצירת קובץ RMD נכשלה : $1 
+upload_ewav=המרת קובץ WAV נכשלה : $1
+upload_epvf=יצירת קובץ RMD נכשלה : $1
 upload_esame=קובץ ההודעה $1 כבר קיים
 
 log_apply=תצורה מיושמת
-log_upload=הודעת ברכה שהועלתה $1 
+log_upload=הודעת ברכה שהועלתה $1
 log_move=המרה של $1 הודעות שהתקבלו
 log_delete0=$1 הודעות שהתקבלו נמחקו
 log_delete1=$1 הודעות ברכה נמחקו
 log_options=אפשרויות הדואר הקולי השתנו
-log_vgetty_create=נוסף יציאה טורית $1 
+log_vgetty_create=נוסף יציאה טורית $1
 log_vgetty_modify=יציאה טורית שונה 1
 log_vgetty_delete=יציאה טורית $1 נמחקה
 

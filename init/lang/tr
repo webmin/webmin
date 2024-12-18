@@ -20,12 +20,12 @@ edit_startmsg=Açılış mesajı
 edit_stopmsg=Kapanış mesajı
 edit_start=Açılış komutları
 edit_stop=Kapanış komutları
-edit_script=Servis Programcığı 
+edit_script=Servis Programcığı
 edit_boot=Açılışta başlatılsın mı?
 edit_badS=Çünkü bu servis düzgün olarak oluşturulamadı,bu sadece çalışma seviyesi $1 olarak başlatılabilir.
-edit_badK=Çünkü bu servis düzgün olarak oluşturulamadı,bu sadece çalışma seviyesi $1 olarak durdurulabilir.  
+edit_badK=Çünkü bu servis düzgün olarak oluşturulamadı,bu sadece çalışma seviyesi $1 olarak durdurulabilir.
 edit_fix=Butonu tıklayarak bu servisi diğer çalışma seviyelerine uygun hale getirebilirsiniz.
-edit_levels= Başlatma ve durdurmadaki çalışma seviyeleri 
+edit_levels=Başlatma ve durdurmadaki çalışma seviyeleri
 edit_rl=Çalışma seviyesi $1
 edit_startat=Başla
 edit_stopat=Dur
@@ -39,7 +39,7 @@ save_ealready='$1' servisi her zaman mevcut.
 save_ewrite=$1'e yazmada hata oluştu : $2
 
 ss_ecannot=Açılış servislerini başlatma ya da durdurmaya izininiz yoktur.
-ss_start=Servis Başlat 
+ss_start=Servis Başlat
 ss_stop=Servis Durdur
 ss_exec=$1 Çalıştırılıyor ..
 

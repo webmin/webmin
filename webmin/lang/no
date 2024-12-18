@@ -35,7 +35,7 @@ access_trust=Stol på ekstern IP-adresse angitt av proxyer?
 
 bind_title=Port og IP adresse
 bind_desc2=Dette skjemaet kan benyttes for å endre porten Webmin lytter på, eller be Webmin om kun å lytte på en enkelt IP adresse på systemet ditt. Du kan også konfigurere Webmin til å lytte på flere porter eller IP adresser. Merk - nettleseren din kan be deg om å logge inn på nytt etter at du har endret port eller adresse som Webmin lytter på.
-bind_header=IP Adresse og  Port
+bind_header=IP Adresse og Port
 bind_sockets=Lytt på IP-er og porter
 bind_firewall=Åpne nye porter i brannmuren?
 bind_sip=Lytt på IP adresse
@@ -629,7 +629,7 @@ assignment_desc=Her kan du velge hvilke kategori modulene skal vises i på Webmi
 
 categories_title=Rediger kategorier
 categories_header=Kategori ID og beskrivelse
-categories_desc=Her kan du endre navn på eksisterende eller lage nye Webmin kategorier for å legge moduler under. I den øvre delen kan du endre beskrivelsen for de innebygde kategoriene, mens den nedre delen er  for å legge til nye kategorier og beskrivelse.
+categories_desc=Her kan du endre navn på eksisterende eller lage nye Webmin kategorier for å legge moduler under. I den øvre delen kan du endre beskrivelsen for de innebygde kategoriene, mens den nedre delen er for å legge til nye kategorier og beskrivelse.
 categories_ok=Lagre kategorier
 categories_err=Feilet under lagring av kategorier
 categories_edesc=Mangler beskrivelse for $1

@@ -62,9 +62,9 @@ save_err=Neuspjelo spremanje crona
 save_ecmd=Niste unijeli naredbu za koju treba izvršiti
 save_euser=Morate odabrati korisnika
 save_euser2=Korisnik '$1' ne postoji
-save_eallow=Korisniku '$1' nije dopušteno pokretanje crona 
+save_eallow=Korisniku '$1' nije dopušteno pokretanje crona
 save_ecannot=Nije Vam dopušteno kreiranje i uređivanje crona za '$1'
-save_enone=Niste odabrali ni jedan $1 koji se treba izvršiti 
+save_enone=Niste odabrali ni jedan $1 koji se treba izvršiti
 save_ecannot2=Nije Vam dopušteno kreiranje cronova
 
 allow_title=Kontroliraj Cron Pristup

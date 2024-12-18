@@ -8,7 +8,7 @@ index_inet=Internet
 index_proto=protokol
 index_user=Bruger
 index_server=Serverprogram
-index_redirect=Videresend til $1 
+index_redirect=Videresend til $1
 index_enabled=Aktiveret?
 index_internal=Internt for Xinetd
 index_add_inet=Opret en ny internettjeneste
@@ -70,7 +70,7 @@ serv_eport=Manglende eller ugyldigt portnummer
 serv_einst=Manglende eller ugyldigt antal samtidige servere
 serv_euser=Du skal indtaste en bruger
 serv_egroup=Du skal gå ind i en gruppe
-serv_estd=Der er ikke noget standardportnummer for service $1 
+serv_estd=Der er ikke noget standardportnummer for service $1
 serv_eproto=Du skal vælge en protokol til denne service
 serv_eserver=Manglende eller ugyldigt serverprogram
 serv_erhost=Manglende eller ugyldig videresendelse af videresendelse
@@ -91,11 +91,11 @@ proto_tcp=TCP (Transmission Control Protocol)
 proto_udp=UDP (User Datagram Protocol)
 
 restart_err=Kunne ikke anvende ændringer
-restart_ekill=Kunne ikke sende USR2-signal til PID $1 : $2 
+restart_ekill=Kunne ikke sende USR2-signal til PID $1 : $2
 restart_epid=Kører ikke længere
 
 start_err=Kunne ikke starte xinetd
-start_estart=$1 mislykkedes : $2 
+start_estart=$1 mislykkedes : $2
 
 defs_title=Standardindstillinger
 defs_header=Standardindstillinger for tjenester
@@ -122,16 +122,16 @@ defs_efile=Manglende eller ugyldig logfilnavn
 defs_esoft=Manglende eller ugyldig soft limit
 defs_ehard=Manglende eller ugyldig hard grænse
 
-log_create_serv=Oprettet $2 service $1 
-log_modify_serv=Ændret $2 service $1 
-log_delete_serv=Slet $2 service $1 
+log_create_serv=Oprettet $2 service $1
+log_modify_serv=Ændret $2 service $1
+log_delete_serv=Slet $2 service $1
 log_start=Startet Xinetd-server
 log_apply=Anvendte ændringer
 log_defaults=Ændrede standardindstillinger
 log_enable=Aktiveret $1 tjenester
 log_disable=Deaktiveret $1 tjenester
-log_enable_l=Aktiverede tjenester $1 
-log_disable_l=Handicappede tjenester $1 
+log_enable_l=Aktiverede tjenester $1
+log_disable_l=Handicappede tjenester $1
 
 config_dirdef=Xinetd konfigurationsfil
 config_dirto=Ny fil i biblioteket

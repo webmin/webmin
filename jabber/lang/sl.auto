@@ -4,10 +4,10 @@ index_edir=Osnovni imenik Jabber $1 ne obstaja. Jabber ni nameščen ali pa je v
 index_emodules=Modula Perl $1 in $2, ki ju Webmin potrebuje za upravljanje konfiguracije XML Jabberja, nista nameščena. <a href='$3'>Kliknite tukaj</a>, da jih namestite neposredno iz CPAN-a.
 index_emodule=Modul Perl $1, ki ga Webmin potrebuje za ravnanje z Jabberjevo konfiguracijo XML, ni nameščen. <a href='$2'>Kliknite tukaj</a>, da ga namestite neposredno iz CPAN-a.
 index_expat=Prepričajte se, da imate nameščeno knjižnico Expat C in glave, preden poskusite namestiti module Perl, saj so ti odvisni od tega in če ne bodo na voljo.
-index_eparse=Modul $1 perl ni mogel razčleniti vaše konfiguracijske datoteke Jabber : $2 
+index_eparse=Modul $1 perl ni mogel razčleniti vaše konfiguracijske datoteke Jabber : $2
 index_ejabberd=Program za strežnik Jabber $1 v vašem sistemu ni bil najden. Jabber ni nameščen ali pa je vaša <a href='$2'>konfiguracija modula</a> napačna.
-index_eversion=Webmin podpira samo različico Jabber $2, vendar je ukaz $3 sporočil naslednje informacije o različici : $1 
-index_eversion2=Webmin podpira samo različice Jabber pod $2, vendar je ukaz $3 sporočil naslednje informacije o različici : $1 
+index_eversion=Webmin podpira samo različico Jabber $2, vendar je ukaz $3 sporočil naslednje informacije o različici : $1
+index_eversion2=Webmin podpira samo različice Jabber pod $2, vendar je ukaz $3 sporočil naslednje informacije o različici : $1
 index_start=Zaženite strežnik Jabber
 index_startmsg=Kliknite ta gumb za zagon strežnika Jabber v vašem sistemu. Dokler ga ne začnete, noben odjemalec za takojšnje sporočanje ne bo mogel uporabljati.
 index_stop=Ustavi strežnik Jabber
@@ -16,7 +16,7 @@ index_restart=Uporabi spremembe
 index_restartmsg=Kliknite ta gumb, če želite uporabiti trenutno konfiguracijo, tako da ustavite in nato znova zaženete Jabberjev strežnik.
 index_comments=Opozorilo - vaša konfiguracijska datoteka Jabber $1 vsebuje komentarje, ki bodo odstranjeni, če se s tem modulom opravijo kakršne koli spremembe konfiguracije.
 index_return=Jabber meni
-index_version=Različica Jabber $1 
+index_version=Različica Jabber $1
 
 general_title=Splošne možnosti
 general_header=Možnosti globalnega strežnika Jabber
@@ -44,7 +44,7 @@ messages_rnotify=Ali ob prijavi obvestite skrbnika?
 messages_rfields=Obvezna polja za registracijo
 messages_vcard2jud=Pošlji vCard v uporabniški imenik Jabber?
 messages_err=Sporočila ni bilo mogoče shraniti
-messages_evcard=Neveljaven XML vCard : $1 
+messages_evcard=Neveljaven XML vCard : $1
 messages_etag=Server vCard XML se ne začne z &lt;vCard&gt;
 
 modules_title=Jabber moduli

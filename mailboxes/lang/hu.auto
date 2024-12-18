@@ -121,7 +121,7 @@ send_eattach=A mellékletek összesen nem haladhatják meg a $1 kB-ot.
 send_eperms=$2
 send_eperms2=Nem küldhet $1 fájlt
 send_epath=A Sendmail végrehajtható $1 nem létezik.
-send_efile=A melléklet olvasása nem sikerült $1 : $2 
+send_efile=A melléklet olvasása nem sikerült $1 : $2
 send_done=.. Kész.
 
 send_epass=Nem írhat alá üzenetet, mert a jelmondat még nincs beállítva a GnuPG modulban.
@@ -283,7 +283,7 @@ white_already=Az $1 e-mail cím már szerepel a SpamAssassin megengedett címlis
 
 ldap_emod=Hiányzó Perl-modul $1 szükséges az LDAP-hoz való csatlakozáshoz
 ldap_econn=Nem sikerült csatlakozni az LDAP szerverhez $1 port $2
-ldap_elogin=Nem sikerült kapcsolódni az LDAP szerverhez $1 mint $2 : $3 
+ldap_elogin=Nem sikerült kapcsolódni az LDAP szerverhez $1 mint $2 : $3
 ldap_ehost=Nincs beállítva LDAP szerver a modul konfigurációjában
 ldap_eport=Nincs beállítva érvényes LDAP szerver port a modul konfigurációjában
 ldap_euser=Nincs beállítva LDAP bejelentkezés a modul konfigurációjában

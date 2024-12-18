@@ -11,7 +11,7 @@ index_hardware2=Ezarri hardware denbora ere
 index_boot=Sinkronizatu Webmin hasten denean?
 index_tzheader=Ordu eremu
 index_tz=Aldatu ordu zona
-index_ehwclock=$1 huts egin du : $2 
+index_ehwclock=$1 huts egin du : $2
 index_tabtime=Ezarri ordua
 index_tabzone=Aldatu zona-eremua
 index_tabsync=Denbora zerbitzariaren sinkronizazioa
@@ -51,10 +51,10 @@ minute=Minute
 second=bigarren
 
 error_cnf=Errorea: $1 komandoa ez da aurkitu
-error_hw=Ezin da hardwarearen denbora ezarri : $1 
-error_sync=Ezin da sinkronizatu sistemaren denborarekin : $1 
+error_hw=Ezin da hardwarearen denbora ezarri : $1
+error_sync=Ezin da sinkronizatu sistemaren denborarekin : $1
 error_ediff=Denbora-zerbitzaria ezberdina da ordu lokalarekin: $1 egun
-error_entp=NTP denboraren sinkronizazioak huts egin du : $1 
+error_entp=NTP denboraren sinkronizazioak huts egin du : $1
 error_etimeserver=Ez da sartu denborarekin zerbitzaririk sinkronizatzeko
 error_serviceunknown=Zerbitzu ezezaguna : $1
 

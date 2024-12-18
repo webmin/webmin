@@ -82,7 +82,7 @@ rcpts_all=Qualsevol domini
 rcpts_sel=Dominis llistats...
 rcpts_desc=Qmail acceptarà retrametre o lliurar localment correu només als dominis de correu i noms de hosts llistats a la caixa de l'esquerra. També pots introduir-hi patrons que coincideixin amb tots els hosts d'un domini local, com <tt>.foo.com</tt>. Si vols que el teu servidor de correu retrameti el correu dels clients, cal que acceptis correu des de qualsevol domini.
 rcpts_domains2=Dominis locals i de reemissió addicionals
-rcpts_desc2=Si tens un nombre gran de dominis acceptats, hauries d'introduir en aquesta caixa els que s'utilitzin amb menys freqüència. En general, els teus primers 50 dominis permesos s'haurien d'introduir a la caixa de text superior,  la resta en aquesta altra.
+rcpts_desc2=Si tens un nombre gran de dominis acceptats, hauries d'introduir en aquesta caixa els que s'utilitzin amb menys freqüència. En general, els teus primers 50 dominis permesos s'haurien d'introduir a la caixa de text superior, la resta en aquesta altra.
 
 bads_title=Adreces Rebutjades
 bads_addresses=Adreces de correu rebutjades
@@ -94,7 +94,7 @@ routes_go=Busca les rutes de dominis que coincideixin amb:
 routes_from=Correu del domini
 routes_to=Envia a través del servidor
 routes_direct=Lliura directament
-routes_defroute=Lliura tota la resta de correu a través de: 
+routes_defroute=Lliura tota la resta de correu a través de:
 routes_return=a les rutes de dominis
 routes_delete=Suprimeix les Rutes de Dominis Seleccionades
 
@@ -170,7 +170,7 @@ log_route_delete=S'ha suprimit la ruta de $1
 log_route_modifed=S'ha modificat la ruta de $1
 log_delete_routes=S'han suprimit $1 rutes
 log_defroute=S'ha modificat la ruta per defecte
-log_assign_create= S'ha creat l'usuari de correu $1
+log_assign_create=S'ha creat l'usuari de correu $1
 log_assign_delete=S'ha suprimit l'usuari de correu $1
 log_assign_modifed=S'ha modificat l'usuari de correu $1
 log_delete_assigns=S'han suprimit $1 usuaris de correu

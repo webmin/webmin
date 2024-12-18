@@ -19,9 +19,9 @@ deletes_err=Error al cancelar comandos
 deletes_enone=Ninguna seleccionada
 
 log_allow=Usuarios permitidos modificados
-log_create_job=Comando programado creado para $1 
-log_delete_job=Comando programado cancelado para $1 
-log_exec_job=Comando programado ejecutado para $1 
+log_create_job=Comando programado creado para $1
+log_delete_job=Comando programado cancelado para $1
+log_exec_job=Comando programado ejecutado para $1
 log_delete_jobs=Se cancelaron $1 comandos programados
 log_stop=Servidor de comandos programados detenido
 log_start=Servidor de comandos programados iniciado

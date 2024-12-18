@@ -38,9 +38,9 @@ enable_err=Falha ao ativar programas do tipo MIME
 enable_eclash=Um programa do tipo MIME ativado para $1 já existe
 delete_enone=Nenhum selecionado
 
-log_delete_mailcap=Excluir programa do tipo MIME para $1 
-log_create_mailcap=Programa de tipo MIME criado para $1 
-log_modify_mailcap=Programa do tipo MIME modificado para $1 
+log_delete_mailcap=Excluir programa do tipo MIME para $1
+log_create_mailcap=Programa de tipo MIME criado para $1
+log_modify_mailcap=Programa do tipo MIME modificado para $1
 log_delete_mailcaps=$1 programas do tipo MIME excluídos
 log_disable_mailcaps=$1 programas do tipo MIME desativados
 log_enable_mailcaps=$1 programas do tipo MIME ativados

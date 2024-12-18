@@ -1,7 +1,7 @@
 index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
-index_position=A mostrar as regras $1 a $2 de $3 
-index_evalid=ATENÇÃO! Sua configuração atual de tabelas de IP é inválida : $1 
+index_position=A mostrar as regras $1 a $2 de $3
+index_evalid=ATENÇÃO! Sua configuração atual de tabelas de IP é inválida : $1
 index_no_comment=
 index_crename=Renomear cadeia
 index_cmovesel=Mover selecionado
@@ -22,19 +22,19 @@ index_ipvxmode=Alterar a versão do protocolo IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
 
-desc_icmpv6-type=O tipo de ICMP é $1 
-desc_icmpv6-type!=O tipo de ICMP não é $1 
-desc_ctstate=o estado da conexão é $1 
-desc_ctstate!=estado da conexão não é $1 
+desc_icmpv6-type=O tipo de ICMP é $1
+desc_icmpv6-type!=O tipo de ICMP não é $1
+desc_ctstate=o estado da conexão é $1
+desc_ctstate!=estado da conexão não é $1
 desc_match-set=$2 corresponde ao IPset $1
-desc_match-set!=$2 não corresponde ao conjunto de IPs $1 
+desc_match-set!=$2 não corresponde ao conjunto de IPs $1
 desc_match-set_src=tráfego de entrada
 desc_match-set_dst=tráfego de saída
-desc_physdev-in=interface física de entrada é $1 
-desc_physdev-in!=interface física de entrada não é $1 
-desc_physdev-out=interface física de saída é $1 
-desc_physdev-out!=interface física de saída não é $1 
-desc_args--match-set=$2 está contido no conjunto de IP $1 
+desc_physdev-in=interface física de entrada é $1
+desc_physdev-in!=interface física de entrada não é $1
+desc_physdev-out=interface física de saída é $1
+desc_physdev-out!=interface física de saída não é $1
+desc_args--match-set=$2 está contido no conjunto de IP $1
 desc_src=fonte
 desc_dest=destino
 
@@ -54,9 +54,9 @@ edit_matchsetdst=no tráfego de saída
 save_ephysdevin=Interface física de entrada ausente ou inválida
 save_ephysdevout=Interface física de saída ausente ou inválida
 
-log_rename_chain=Cadeia renomeada $1 na tabela $2 
-log_movesel_chain=$3 regras foram movidas da cadeia $1 na tabela $2 
-log_openports=Portas de firewall abertas $1 
+log_rename_chain=Cadeia renomeada $1 na tabela $2
+log_movesel_chain=$3 regras foram movidas da cadeia $1 na tabela $2
+log_openports=Portas de firewall abertas $1
 
 add_enone=Nenhum servidor para adicionar selecionado!
 

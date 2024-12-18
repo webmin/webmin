@@ -21,7 +21,7 @@ passwd_ecannot=Jums neleidžiama pakeisti šio vartotojo slaptažodžio
 passwd_euser=Vartotojas neegzistuoja
 passwd_eold=Neteisingas senas slaptažodis
 passwd_erepeat=Nauji slaptažodžiai nėra tie patys
-passwd_ecmd=$1 nepavyko : $2 
+passwd_ecmd=$1 nepavyko : $2
 passwd_ok=$1 vartotojo slaptažodis buvo sėkmingai pakeistas. Jei tai yra jūsų dabartinis „Webmin“ vartotojas, galite būti priversti prisijungti dar kartą.
 passwd_ok2=$1 vartotojo slaptažodis buvo sėkmingai pakeistas.
 

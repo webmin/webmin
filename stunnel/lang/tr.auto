@@ -67,5 +67,5 @@ save_export=$1 bağlantı noktası zaten $2 xinetd hizmeti tarafından kullanıl
 log_apply=Uygulanan Değişiklikler
 log_create=$1 SSL tüneli oluşturuldu
 log_delete=$1 SSL tüneli silindi
-log_modify=Değiştirilmiş SSL tüneli $1 
+log_modify=Değiştirilmiş SSL tüneli $1
 log_delete_stunnels=$1 SSL tüneli silindi

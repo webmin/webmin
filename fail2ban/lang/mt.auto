@@ -1,5 +1,5 @@
 index_title=Fail2Ban Intrusion Detector
-index_ver=Verżjoni $1 
+index_ver=Verżjoni $1
 index_echeck=Sar żball meta ġiet osservata Fail2Ban fuq din is-sistema: $1. Jew mhix installata, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> mhix korretta.
 index_fail2ban=Fail2Ban
 index_atboot=Ibda mill-ibbutjar?
@@ -26,7 +26,7 @@ filters_add=Żid filtru tal-ġurnal ġdid.
 filters_return=lista tal-filtri
 filters_derr=Naqset milli tħassar il-filtri
 filters_enone=L-ebda magħżul
-filters_einuse=Il-filtru $1 ma jistax jitħassar, billi jintuża mill-ħabsijiet : $2 
+filters_einuse=Il-filtru $1 ma jistax jitħassar, billi jintuża mill-ħabsijiet : $2
 
 filter_title1=Oħloq Iffiltra
 filter_title2=Editja Iffiltra
@@ -41,7 +41,7 @@ filter_err=Ma rnexxielux isalva l-filtru
 filter_ename=Isem il-filtru nieqes jew invalidu
 filter_eclash=Isem tal-filtru diġà qiegħed jintuża
 filter_efail=Ma daħlet l-ebda espressjoni regolari li taqbel
-filter_einuse=Dan il-filtru ma jistax jitħassar għax jintuża mill-ħabsijiet : $1 
+filter_einuse=Dan il-filtru ma jistax jitħassar għax jintuża mill-ħabsijiet : $1
 
 actions_title=Azzjonijiet tal-Logħba
 actions_name=Isem ta 'azzjoni
@@ -51,7 +51,7 @@ actions_add=Żid azzjoni ġdida.
 actions_return=lista ta 'l - azzjonijiet
 actions_derr=Ma rnexxielhomx iħassru l-azzjonijiet
 actions_enone=L-ebda magħżul
-actions_einuse=L-azzjoni $1 ma tistax titħassar, peress li tintuża mill-ħabsijiet : $2 
+actions_einuse=L-azzjoni $1 ma tistax titħassar, peress li tintuża mill-ħabsijiet : $2
 
 action_title1=Oħloq Azzjoni Match
 action_title2=Editja Azzjoni tat-Tqabbil
@@ -68,7 +68,7 @@ action_check=Kmand biex titħaddem qabel ma tipprojbixxi IP
 action_ban=Kmand biex tipprojbixxi IP
 action_unban=Kmand biex tipprojbixxi IP
 action_desc=<i>&lt;ip&gt;</i> se jinbidel bl-indirizz IP jiġi pprojbit.
-action_einuse=Din l-azzjoni ma tistax titħassar, peress li tintuża mill-ħabsijiet : $1 
+action_einuse=Din l-azzjoni ma tistax titħassar, peress li tintuża mill-ħabsijiet : $1
 
 jails_title=Iffiltra Ħabsijiet ta 'Azzjoni
 jails_add=Żid ħabs ġdid.
@@ -104,8 +104,8 @@ jail_ignoreip=Indirizzi IP li qatt ma jipprojbixxu
 jail_err=Naqset milli ssalva l-ħabs
 jail_eclash=Ħabs diġà jeżisti fl-istess isem
 jail_ename=Isem il-ħabs nieqes jew invalidu
-jail_eaname=Parametru tal-isem li qed iħares mhux validu għall-azzjoni $1 
-jail_eport=Numru tal-port mhux validu għall-azzjoni $1 
+jail_eaname=Parametru tal-isem li qed iħares mhux validu għall-azzjoni $1
+jail_eport=Numru tal-port mhux validu għall-azzjoni $1
 jail_eactions=L-ebda azzjoni magħżula!
 jail_elogpaths=L-ebda passaġġ tal-fajl tal-ġurnal ma daħal
 jail_elogpath=Il-fajls kollha tal-ġurnal għandhom ikunu mogħdijiet jew mudelli assoluti
@@ -134,22 +134,22 @@ start_err=Naqas milli jibda s-server
 stop_err=Ma rnexxielux iwaqqaf is-server
 restart_err=Naqset milli terġa 'tibda s-server
 
-log_create_filter=Filtru maħluq $1 
-log_update_filter=Filtru modifikat $1 
-log_delete_filter=Filtru mħassar $1 
-log_create_action=Azzjoni maħluqa $1 
-log_update_action=Azzjoni modifikata $1 
-log_delete_action=Azzjoni mħassra $1 
-log_create_jail=Ħolqot ħabs $1 
-log_update_jail=Ħabs immodifikat $1 
-log_delete_jail=Ħabs imħassar $1 
+log_create_filter=Filtru maħluq $1
+log_update_filter=Filtru modifikat $1
+log_delete_filter=Filtru mħassar $1
+log_create_action=Azzjoni maħluqa $1
+log_update_action=Azzjoni modifikata $1
+log_delete_action=Azzjoni mħassra $1
+log_create_jail=Ħolqot ħabs $1
+log_update_jail=Ħabs immodifikat $1
+log_delete_jail=Ħabs imħassar $1
 log_config=Konfigurazzjoni globali mibdula
 log_stop=Waqqaf is-server Fail2Ban
 log_start=Beda s-server Fail2Ban
 log_restart=Reġa 'beda s-server Fail2Ban
 log_atboot=Attiva Fail2Ban fil-ħin tal-bidu
 log_delboot=B'diżabilità Fail2Ban fil-ħin tal-bidu
-log_manual=Fajl ta 'konfigurazzjoni editat $1 
+log_manual=Fajl ta 'konfigurazzjoni editat $1
 log_jaildef=Għażliet ta 'ħabs default modifikati
 
 config_title=Konfigurazzjoni Globali

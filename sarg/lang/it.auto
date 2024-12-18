@@ -1,8 +1,8 @@
 index_title=Squid Report Generator
 index_econf=Il file di configurazione Sarg $1 non è stato trovato sul tuo sistema. Forse Sarg non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
 index_ecmd=Il programma Sarg $1 non è stato trovato sul tuo sistema. Forse non è installato o la <a href='$2'>configurazione del modulo</a> non è corretta.
-index_eversion=Impossibile ottenere la versione di Sarg con il comando $1 : $2 
-index_version=Versione Sarg $1 
+index_eversion=Impossibile ottenere la versione di Sarg con il comando $1 : $2
+index_version=Versione Sarg $1
 index_generate=Genera report ora
 index_generatedesc=Fare clic su questo pulsante per generare immediatamente un rapporto Sarg in $1 utilizzando la configurazione corrente.
 index_clear=Elimina il rapporto esistente nella directory?

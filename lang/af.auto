@@ -166,7 +166,7 @@ sql_epostgresqlconnect=Kon nie konnekteer met PostgreSQL-databasis nie : $1
 sql_eldapdriver=Kon nie LDAP-perl-module laai nie
 sql_eldapconnect=Kon nie aan die LDAP-bediener koppel nie $1
 sql_eldaptls=Kon nie TLS-kodering vir LDAP begin nie : $1
-sql_eldaplogin=Kon nie by LDAP-bediener aanmeld as $1 : $2 
+sql_eldaplogin=Kon nie by LDAP-bediener aanmeld as $1 : $2
 
 log_email_subject=Webmin-aksie in $1
 log_email_global=Webmin wêreldwye aksie
@@ -200,8 +200,8 @@ paginator_nosearchrs=Daar is geen resultate wat by <tt>$1</tt> navraag pas nie
 langauto_include=Sluit masjienvertalings in
 
 file_truncated_message=het $1 van die data gehaal, $2 uit $3 afgekap
-file_truncated_message_head=begin $1 van die data, afgekap $2 uit $3 
-file_truncated_message_tail=beëindig $1 van die data, afgekap $2 uit $3 
+file_truncated_message_head=begin $1 van die data, afgekap $2 uit $3
+file_truncated_message_tail=beëindig $1 van die data, afgekap $2 uit $3
 
 defcert_error=Verstek $1 gebundelde SSL-sertifikaat word gebruik. Dit word sterk aangeraai om verstek <tt>$2</tt>-sertifikaat op te dateer voordat u met aanmelding voortgaan.
 

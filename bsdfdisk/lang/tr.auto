@@ -1,6 +1,6 @@
 index_title=Yerel Disklerdeki Bölümler
 index_ecmd=Gerekli $1 komutu eksik
-index_problem=Bu modül kullanılamaz : $1 
+index_problem=Bu modül kullanılamaz : $1
 index_none=Bu sistemde disk bulunamadı!
 index_dname=Disk adı
 index_dsize=Toplam boyut
@@ -20,22 +20,22 @@ disk_scount=$1 bölüm
 disk_parts=bölmeler
 disk_free=Boş alan
 disk_vm=Sanal bellek
-disk_iscsi=iSCSI paylaşılan cihazı $1 
+disk_iscsi=iSCSI paylaşılan cihazı $1
 disk_none=Bu diskte henüz dilim yok.
 disk_size=Boyut
-disk_dsize=<b>Disk boyutu:</b> $1 
-disk_model=<b>Marka ve model:</b> $1 
-disk_cylinders=<b>Silindirler:</b> $1 
-disk_blocks=<b>Bloklar:</b> $1 
-disk_device=<b>Cihaz dosyası:</b> $1 
+disk_dsize=<b>Disk boyutu:</b> $1
+disk_model=<b>Marka ve model:</b> $1
+disk_cylinders=<b>Silindirler:</b> $1
+disk_blocks=<b>Bloklar:</b> $1
+disk_device=<b>Cihaz dosyası:</b> $1
 disk_return=disk ayrıntıları ve dilim listesi
 disk_add=Yeni bir dilim oluşturun.
 disk_smart=SMART Durumunu Göster
 disk_smartdesc=Bu sürücünün geçerli durumunu SMART tarafından tespit edildiği gibi gösterin ve disk hataları olup olmadığını kontrol edin.
 
-select_device=$1 cihaz $2 
-select_slice=$1 cihaz $2 dilim $3 
-select_part=$1 cihaz $2 dilim $3 bölüm $4 
+select_device=$1 cihaz $2
+select_slice=$1 cihaz $2 dilim $3
+select_part=$1 cihaz $2 dilim $3 bölüm $4
 
 slice_title=Dilim Düzenle
 slice_egone=Seçilen dilim mevcut değil!
@@ -64,10 +64,10 @@ slice_suse=Doğrudan tarafından kullanılan
 
 dslice_title=Dilim Sil
 dslice_rusure=$1 dilimini silmek istediğinizden emin misiniz? İçindeki bölümler ve dosya sistemleri de silinecektir.
-dslice_warn=Uyarı - bu dilim şu anda tarafından kullanılıyor : $1 
+dslice_warn=Uyarı - bu dilim şu anda tarafından kullanılıyor : $1
 dslice_confirm=Şimdi sil
 dslice_deleting=$1 dilimi siliniyor ..
-dslice_failed=.. silme başarısız oldu : $1 
+dslice_failed=.. silme başarısız oldu : $1
 dslice_done=.. bitti
 
 nslice_title=Dilim Oluştur
@@ -86,10 +86,10 @@ nslice_eend=Bitiş bloğu bir sayı olmalıdır
 nslice_erange=Başlangıç bloğu bitiş bloğundan daha düşük olmalıdır
 nslice_emax=Bitiş bloğu $1 blok disk boyutundan daha büyük olamaz
 nslice_creating=$2 üzerinde $1 dilim oluşturuluyor ..
-nslice_failed=.. dilim oluşturulamadı : $1 
+nslice_failed=.. dilim oluşturulamadı : $1
 nslice_done=.. dilim eklendi
 nslice_parting=$2 diliminde $1 diliminde varsayılan bölümler oluşturun.
-nslice_pfailed=.. bölüm oluşturulamadı : $1 
+nslice_pfailed=.. bölüm oluşturulamadı : $1
 nslice_pdone=.. bölüm eklendi
 
 npart_title=Ayrım yarat
@@ -102,7 +102,7 @@ npart_eletter=Bölüm numarası A'dan D'ye bir harf olmalıdır
 npart_eclash=$1 harfli bir bölüm zaten var
 npart_emax=Bitiş bloğu, $1 blok dilim boyutundan daha büyük olamaz
 npart_creating=$2 üzerinde $1 bölümü oluşturuluyor ..
-npart_failed=.. bölüm oluşturulamadı : $1 
+npart_failed=.. bölüm oluşturulamadı : $1
 npart_done=.. bölüm eklendi
 
 part_title=Bölümü Düzenle
@@ -137,7 +137,7 @@ dpart_rusure=$1 bölümünü silmek istediğinizden emin misiniz? İçindeki tü
 dpart_warn=Uyarı - bu bölüm şu anda $1 tarafından kullanılıyor
 dpart_confirm=Şimdi sil
 dpart_deleting=$1 bölümü siliniyor ..
-dpart_failed=.. silme başarısız oldu : $1 
+dpart_failed=.. silme başarısız oldu : $1
 dpart_done=.. bitti
 
 newfs_title=Dosya Sistemi Oluştur
@@ -163,9 +163,9 @@ fsck_done=.. kontrol, hiçbir hata bulunmadan tamamlandı
 
 log_create_slice=$1 dilim oluşturuldu
 log_delete_slice=$1 dilim silindi
-log_modify_slice=Değiştirilmiş dilim $1 
+log_modify_slice=Değiştirilmiş dilim $1
 log_create_part=$1 bölümü oluşturuldu
 log_delete_part=$1 bölümü silindi
-log_modify_part=Değiştirilmiş bölüm $1 
+log_modify_part=Değiştirilmiş bölüm $1
 log_newfs_part=$1 bölümünde dosya sistemi oluşturuldu
 log_fsck_part=$1 bölümünde dosya sistemi kontrol edildi

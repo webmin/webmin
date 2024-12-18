@@ -8,7 +8,7 @@ index_startdesc=Inicia el procés IMAP/POP3 de IMAP/POP3 de forma que els usuari
 index_apply=Aplica la Configuració
 index_applydesc=Activa la configuració actual de Dovecot aturant i reiniciant el procés servidor.
 index_boot=Inicia'l en engegar el sistema
-index_bootdesc=Canvia aquest valor per activar o desactivar el servidor Dovecot  en engegar el sistema.
+index_bootdesc=Canvia aquest valor per activar o desactivar el servidor Dovecot en engegar el sistema.
 index_return=a l'índex de mòduls
 index_version=Versió $1
 
@@ -155,7 +155,7 @@ mail_uidl_other=Un altre...
 mail_uidl_none=No establert (ATENCIÓ - Pot ser que dove no arrenqui)
 mail_uidl_dovecot=Dovecot antic, Cyrus nou
 mail_uidl_uw=ipop3d UW
-mail_uidl_courier0=Courier versió 0 
+mail_uidl_courier0=Courier versió 0
 mail_uidl_courier1=Courier versió 1, Cyrus antic
 mail_uidl_courier2=Courier versió 2
 mail_uidl_tpop3d=tpop3d

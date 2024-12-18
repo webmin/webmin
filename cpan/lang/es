@@ -13,7 +13,7 @@ index_uploaded=Desde el archivo descargado
 index_ftp=Desde ftp o http URL
 index_installok=Instalar
 index_return=Lista de módulos
-index_pversion=Versión  Perl $1
+index_pversion=Versión Perl $1
 
 download_err=Fallo al instalar el módulo
 download_elocal=No está dado el archivo local

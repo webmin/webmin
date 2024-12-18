@@ -1,4 +1,4 @@
-index_mode=Tipo de configuração de rede: $1 
+index_mode=Tipo de configuração de rede: $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
 index_mode_freebsd=FreeBSD
@@ -28,7 +28,7 @@ ifcs_duplex=, $1 dúplex
 
 aifc_eaddress6=O endereço IPv6 na linha $1 não é válido
 aifc_enetmask6=A máscara de rede IPv6 na linha $1 deve ser um número inteiro entre 1 e 128
-aifc_eclash6=O endereço IPv6 na linha $1 já está em uso pela interface $2 
+aifc_eclash6=O endereço IPv6 na linha $1 já está em uso pela interface $2
 aifc_eaddresses6=Nenhum endereço IPv6 inserido
 
 bifc_act=Ativar na inicialização?

@@ -68,9 +68,9 @@ deletes_err=Neizdevās atcelt komandas
 deletes_enone=Nav atlasīts
 
 log_allow=Mainīti atļautie lietotāji
-log_create_job=Izveidota plānota komanda $1 
-log_delete_job=Atcelta plānotā komanda $1 
-log_exec_job=Izpildīta plānotā komanda $1 
+log_create_job=Izveidota plānota komanda $1
+log_delete_job=Atcelta plānotā komanda $1
+log_exec_job=Izpildīta plānotā komanda $1
 log_delete_jobs=Atceltas $1 plānotās komandas
 log_stop=Apturēts ieplānoto komandu serveris
 log_start=Sācis ieplānoto komandu serveris

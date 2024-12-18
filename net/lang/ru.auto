@@ -1,4 +1,4 @@
-index_mode=Тип конфигурации сети: $1 
+index_mode=Тип конфигурации сети: $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
 index_mode_freebsd=FreeBSD
@@ -28,7 +28,7 @@ ifcs_duplex=$1 дуплекс
 
 aifc_eaddress6=IPv6-адрес в строке $1 недействителен
 aifc_enetmask6=Маска IPv6 в строке $1 должна быть целым числом от 1 до 128
-aifc_eclash6=IPv6-адрес в строке $1 уже используется интерфейсом $2 
+aifc_eclash6=IPv6-адрес в строке $1 уже используется интерфейсом $2
 aifc_eaddresses6=IPv6-адреса не введены
 
 bifc_act=Активировать при загрузке?

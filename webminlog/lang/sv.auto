@@ -33,14 +33,14 @@ index_notifydesc=Använd det här formuläret för att konfigurera e-postmeddela
 
 search_webmin=Webmin Server
 search_none2=Inga åtgärder matchade din sökning efter åtgärder
-search_critnu=av alla utom användare $1 
+search_critnu=av alla utom användare $1
 search_critd=där beskrivningen innehåller <tt>$1</tt>
 search_etime=Ogiltig start- eller sluttid
 search_err=Sökningen misslyckades
 search_global=Ingen
 search_global_login=Loggat in på Webmin
 search_global_logout=Loggade ut från Webmin
-search_global_failed=Inloggning till Webmin misslyckades : $1 
+search_global_failed=Inloggning till Webmin misslyckades : $1
 search_global_expiredpass=Lösenordet har löpt ut
 search_global_wronguser=Ogiltig användare
 search_global_wrongpass=Felaktigt lösenord
@@ -98,5 +98,5 @@ notify_emods=Inga moduler har valts
 notify_eusers=Inga användare har valts
 notify_eemail=Ingen e-postadress har angetts
 
-log_rollback=Återuppspelning $1 i modul $2 
+log_rollback=Återuppspelning $1 i modul $2
 log_notify=Sparade alternativ för e-postmeddelanden

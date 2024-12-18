@@ -5,7 +5,7 @@ index_elog=Fișierul $1 utilizat pentru înregistrarea lățimii de bandă este 
 index_edir=Directorul pentru stocarea datelor de lățime de bandă $1 nu există sau nu este un director. Reglați configurația modulului <a href='$2'></a> pentru a utiliza o altă cale.
 index_emod=Modulul Webmin $1 nu este instalat pe acest sistem sau nu este acceptat de sistemul de operare. Modulul de monitorizare a lățimii de bandă nu poate funcționa fără acesta.
 index_esyslog=Niciunul dintre modulele de jurnal de sistem nu sunt instalate pe acest sistem și sunt acceptate de sistemul de operare. Modulul de monitorizare a lățimii de bandă nu poate funcționa fără unul dintre ele.
-index_firesys=Utilizarea firewallului $1 și $2 
+index_firesys=Utilizarea firewallului $1 și $2
 index_setupcannot=Cu toate acestea, nu aveți permisiunile de configurare!
 index_setupdesc=Înainte ca acest modul să poată raporta despre utilizarea rețelei pe sistemul dvs., acesta trebuie configurat pentru a monitoriza traficul pe interfața de rețea externă selectată.
 index_setupdesc2=<b>Avertisment - acest modul va înregistra TOATE traficul de rețea trimis sau primit pe interfața selectată. Aceasta va consuma o cantitate mare de spațiu pe disc și timp de procesare pe o conexiune de rețea rapidă.</b>
@@ -61,7 +61,7 @@ index_rotatedesc=Faceți clic pe acest buton pentru a procesa tot traficul de re
 index_eiptables=Avertisment - configurația dvs. IPtables are o eroare: $1. Configurarea monitorizării lățimii de bandă va șterge toate regulile firewall-ului.
 index_return=formular de raport
 
-log_setup=Configurarea monitorizării lățimii de bandă pe interfața $1 
+log_setup=Configurarea monitorizării lățimii de bandă pe interfața $1
 log_turnoff=Monitorizarea lățimii de bandă dezactivată
 log_rotate=Statistici actualizate
 

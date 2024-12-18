@@ -1168,9 +1168,12 @@ local $lref = &read_file_lines($file, 1);
 local $_;
 foreach (@$lref) {
 	s/\r|\n//g;
-	s/#.*$//;
 	s/\s+$//;
-	if (/^\s*\[(\S+)\]$/) {
+	if (/^\s*(#|;)/) {
+		$lnum++;
+		next;
+		}
+	elsif (/^\s*\[(\S+)\]$/) {
 		# Start of a section
 		$sect = { 'name' => $1,
 			  'members' => [ ],

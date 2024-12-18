@@ -7,7 +7,7 @@ index_memtfc=$1 totalt / $2 ledig / $3 cachad
 index_loadname=CPU-medelvärden:
 index_loadnums=$1 (1 min), $2 (5 min), $3 (15 minuter)
 index_cpuname=CPU-typ:
-index_inzone=I zon $1 
+index_inzone=I zon $1
 
 stime=Satte igång
 sclass=IO schemaläggningsklass
@@ -54,7 +54,7 @@ sysv_stime=Satte igång
 sysv_task=Uppgifts-ID
 sysv_zone=Zonnamn
 
-log_renice=Ändrad prioritet för process $2 till $1 
+log_renice=Ändrad prioritet för process $2 till $1
 
 acl_manage_def=Nuvarande Webmin-användare
 acl_edit=Kan döda och renisera processer?
@@ -73,10 +73,10 @@ open_type=Typ
 open_proto=Protokoll
 open_desc=detaljer
 open_fd=Filbeskrivare
-open_listen1=Lyssnar på port $1 
-open_listen2=Lyssnar på adress $1 port $2 
-open_recv=Mottar på $1:$2 
-open_conn=Ansluten från $1 till $2 i tillstånd $3 
+open_listen1=Lyssnar på port $1
+open_listen2=Lyssnar på adress $1 port $2
+open_recv=Mottar på $1:$2
+open_conn=Ansluten från $1 till $2 i tillstånd $3
 open_cwd=Nuvarande dir
 open_rtd=Root dir
 open_txt=Programkod
@@ -91,7 +91,7 @@ open_file=Väg
 
 trace_title=Spårningsprocess
 trace_start=Starta systemsamtal för $1 ..
-trace_doing=Spårning av systemsamtal för $1  :
+trace_doing=Spårning av systemsamtal för $1 :
 trace_done=.. processen har avslutats.
 trace_failed=.. spårning misslyckades!
 trace_sorry=Denna sida kräver Java-stöd i din webbläsare. Justera modulkonfigurationen för att använda en textspårningsprocess.

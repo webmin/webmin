@@ -21,7 +21,7 @@ index_return=la lista de conexiones
 index_header1=Conexiones VPN existentes
 index_header2=Opciones globales y políticas
 index_up=Iniciar Conexión:
-index_updesc=Seleccione una connexión de la lista de al lado del botón y presione el botón para intentar establecer la conexión inmediatamente. 
+index_updesc=Seleccione una connexión de la lista de al lado del botón y presione el botón para intentar establecer la conexión inmediatamente.
 index_nopol=No se ha encontrado ninguna política de red -puede ser que la <a href='$1'>configuración de la red</a> sea incorrecta.
 index_import=Importa la conexión del fichero.
 
@@ -74,7 +74,7 @@ edit_key2=Introducida a bajo...
 edit_none=Ninguna
 edit_default=Valores por defecto de todas las conexiones
 edit_export=Exporta la Configuración
-edit_return=a los detalles de la 
+edit_return=a los detalles de la
 edit_authby=Método de autenticación
 edit_authbydef=Por defecto (normalmente, $edit_rsasig)
 edit_rsasig=Clave RSA
@@ -100,8 +100,8 @@ config_eri=La interfaz real '$1' esta listada más de una vez
 config_enone=No se ha especificado ninguna interfaz de red
 
 showkey_title=Mostrar la Clave Pública
-showkey_desc1=Habría que copiar la clave pública RSA mostrada a bajo de la configuración de los otros sistemas que se conectan con éste, en la sección relacionada con este host. 
-showkey_desc2=Los valores mostrados a bajo se pueden utilizar para crear un registro KEY de DNS para este host, de manera que los otros sistemas que se conectan la puedan consultar. 
+showkey_desc1=Habría que copiar la clave pública RSA mostrada a bajo de la configuración de los otros sistemas que se conectan con éste, en la sección relacionada con este host.
+showkey_desc2=Los valores mostrados a bajo se pueden utilizar para crear un registro KEY de DNS para este host, de manera que los otros sistemas que se conectan la puedan consultar.
 showkey_flags=Banderas
 showkey_proto=Protocolo
 showkey_alg=Algoritmo
@@ -116,7 +116,7 @@ policy_longdesc_block=No se permitirá nunca la conexión a las redes selecciona
 policy_longdesc_clear=La comunicación con las redes seleccionadas a bajo serán siempre transparentes.
 policy_longdesc_clear-or-private=La comunicación con las redes seleccionadas a bajo será transparente a menos que la otra no inicie el cifrado IPsec.
 policy_longdesc_private=La comunicación con las redes seleccionadas a bajo siempre se cifraran con IPsec.
-policy_longdesc_private-or-clear=La comunicación con las redes seleccionadas a bajo será cifrada si es posible, de otra manera será transparente. Si el host de destino tiene un registro KEY de DNS, los datos serán enviados cifrados. 
+policy_longdesc_private-or-clear=La comunicación con las redes seleccionadas a bajo será cifrada si es posible, de otra manera será transparente. Si el host de destino tiene un registro KEY de DNS, los datos serán enviados cifrados.
 policy_longdesc=Las redes seleccionadas a bajo utilizan la política $1.
 policy_mode0=Ninguna red
 policy_mode1=Todas las redes

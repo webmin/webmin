@@ -20,7 +20,7 @@ index_restart=Znova zaženite Scheduler
 index_restartmsg=Kliknite ta gumb, če želite znova zagnati postopek načrtovanja tiskanja. S tem bo uporabljena trenutna konfiguracija tiskanja.
 index_return=seznam tiskalnikov
 index_esystem=Namestite programsko opremo za izbrani tiskalni sistem ali uporabite <a href='$1'>konfiguracijo modula</a>, da jo spremenite.
-index_style=Tiskalni sistem: $1 
+index_style=Tiskalni sistem: $1
 index_cluster=Cluster strežniki
 index_clusterdesc=Kliknite ta gumb za nastavitev dodatnih strežnikov Webmin, na katerih bodo tiskalniki ustvarjeni, posodobljeni in izbrisani.
 index_delete=Izbrišite izbrane tiskalnike
@@ -99,12 +99,12 @@ save_eremote=Gonilnikov ni mogoče uporabljati z oddaljenimi tiskalniki Unix
 save_edhost=Neposredni gostitelj '$1' ne obstaja
 save_edport=Manjkajoča ali neveljavna neposredna vrata
 save_evalid=Tiskalni sistem tega tiskalnika ni omogočil
-save_errslave=Tiskalnik je v tem sistemu ustvaril OK, vendar so se v sistemih grozdov pojavile naslednje napake : $1 
+save_errslave=Tiskalnik je v tem sistemu ustvaril OK, vendar so se v sistemih grozdov pojavile naslednje napake : $1
 save_egone=Najden ni bil tiskalnik z imenom "$1"
-save_errdelslave=Tiskalnik je v tem sistemu izbrisan V redu, vendar so se v sistemih grozdov pojavile naslednje napake : $1 
+save_errdelslave=Tiskalnik je v tem sistemu izbrisan V redu, vendar so se v sistemih grozdov pojavile naslednje napake : $1
 
 jobs_title=Tiskalna opravila
-jobs_header=Tiskalna opravila na $1 
+jobs_header=Tiskalna opravila na $1
 jobs_id=ID delovnega mesta
 jobs_size=Velikost
 jobs_by=Oddal
@@ -117,7 +117,7 @@ jobs_all=Prekličite vsa tiskalna opravila
 jobs_bytes=bajti
 jobs_test=Natisni preskusno stran
 jobs_cancelsel=Prekliči izbrana opravila
-jobs_on=Na tiskalniku $1 
+jobs_on=Na tiskalniku $1
 jobs_return=seznam tiskalnih opravil
 
 cancel_ecannot=Ne smete preklicati tiskalnih opravil
@@ -197,7 +197,7 @@ suse_yast2=Voznik YAST2
 suse_edriver=Ni izbrana vrsta tiskalnika
 suse_eres=Manjkajoča ali neveljavna ločljivost
 
-estop=Stopnja lpd ni uspela : $1 
+estop=Stopnja lpd ni uspela : $1
 
 acl_printers=Tiskalniki, ki jih ta uporabnik lahko konfigurira
 acl_add=Ali lahko dodate nove tiskalnike?
@@ -218,20 +218,20 @@ acl_cluster=Ali lahko upravljate gručo tiskalnikov?
 log_stop=Ustavljen planer tiskanja
 log_start=Začetek planerja tiskanja
 log_restart=Restartirani planer tiskanja
-log_cancel_job=Preklicano tiskalno opravilo $2 na $1 
-log_cancel_all=Preklicali so vsa tiskalna opravila na $1 
-log_cancel_sel=Preklicana opravila tiskanja $2 na $1 
-log_create=Ustvarjen tiskalnik $1 na $2 
-log_modify=Spremenjen tiskalnik $1 na $2 
-log_delete=Izbrisan tiskalnik $1 na $2 
-log_create_l=Ustvarjen $3 tiskalnik $1 na $2 
-log_modify_l=Spremenjen $3 tiskalnik $1 na $2 
-log_delete_l=Izbrisan $3 3 tiskalnik $1 na $2 
+log_cancel_job=Preklicano tiskalno opravilo $2 na $1
+log_cancel_all=Preklicali so vsa tiskalna opravila na $1
+log_cancel_sel=Preklicana opravila tiskanja $2 na $1
+log_create=Ustvarjen tiskalnik $1 na $2
+log_modify=Spremenjen tiskalnik $1 na $2
+log_delete=Izbrisan tiskalnik $1 na $2
+log_create_l=Ustvarjen $3 tiskalnik $1 na $2
+log_modify_l=Spremenjen $3 tiskalnik $1 na $2
+log_delete_l=Izbrisan $3 3 tiskalnik $1 na $2
 
-linux_paralel=Vzporedni vhod $1 
+linux_paralel=Vzporedni vhod $1
 linux_serial=Serijska vrata $1 (COM $1)
 linux_null=Ničelna naprava
-linux_usb=Tiskalnik USB $1 
+linux_usb=Tiskalnik USB $1
 linux_ecmd=V vašem sistemu ukaza $1 ni bilo, kar pomeni, da tiskalni sistem Linux ni nameščen.
 linux_espool=Imenik spool $1 v vašem sistemu ne obstaja, kar pomeni, da tiskalni sistem Linux ni nameščen.
 
@@ -243,18 +243,18 @@ freebsd_espool=Imenik spool $1 v vašem sistemu ne obstaja, kar pomeni, da tiska
 openbsd_paralel=Vzporednica
 openbsd_serial=Serijska vrata $1 (COM $1)
 
-unixware_paralel=Vzporedni vhod $1 
-unixware_serial=Serijska vrata $1 
+unixware_paralel=Vzporedni vhod $1
+unixware_serial=Serijska vrata $1
 unixware_null=Ničelna naprava
 unixware_ecmd=Ukaza $1 v vašem sistemu ni bilo mogoče najti, kar pomeni, da tiskalni sistem UnixWare ni nameščen.
 
-hpux_paralel=Vzporednica $1 
-hpux_serial=Serijski $1 
+hpux_paralel=Vzporednica $1
+hpux_serial=Serijski $1
 hpux_null=Ničelna naprava
 hpux_ecmd=V vašem sistemu ukaza $1 ni bilo, kar pomeni, da tiskalni sistem HPUX ni nameščen.
 hpux_eiface=Imenik skriptov vmesnikov $1 v vašem sistemu ne obstaja, kar pomeni, da tiskalni sistem HPUX ni nameščen.
 
-lprng_paralel=Vzporedni vhod $1 
+lprng_paralel=Vzporedni vhod $1
 lprng_serial=Serijska vrata $1 (COM $1)
 lprng_null=Ničelna naprava
 lprng_ecmd=Ukaza $1 v vašem sistemu ni bilo mogoče najti, kar pomeni, da tiskalni sistem LPRng ni nameščen.
@@ -262,7 +262,7 @@ lprng_espool=Imenik spool $1 v vašem sistemu ne obstaja, kar pomeni, da tiskaln
 
 solaris_paralel=Vzporednica
 solaris_uparalel=Ultra 5/10 vzporedna vrata
-solaris_serial=Serijska vrata $1 
+solaris_serial=Serijska vrata $1
 solaris_null=Ničelna naprava
 solaris_ecmd=Ukaza $1 v vašem sistemu ni bilo, kar pomeni, da tiskalni sistem Solaris ni nameščen.
 
@@ -283,13 +283,13 @@ cups_nonemsg=Oddaljeni ali surovi tiskalnik
 cups_prog=Program
 cups_driver=Voznik CUPS
 cups_eprog='$1' ni veljaven program
-cups_opts=Možnosti za $1 
+cups_opts=Možnosti za $1
 cups_ecmd=V vašem sistemu ukaza $1 ni bilo, kar pomeni, da tiskalni sistem CUPS ni nameščen.
 
 irix_ecmd=Ukaza $1 v vašem sistemu ni bilo mogoče najti, kar pomeni, da tiskalni sistem IRIX ni nameščen.
 irix_eiface=Imenik skriptov vmesnikov $1 v vašem sistemu ne obstaja, kar pomeni, da tiskalni sistem IRIX ni nameščen.
 
-aix_port=Vrata tiskalnika $1 
+aix_port=Vrata tiskalnika $1
 aix_edesc=Neveljaven opis - dovoljene so samo črke in številke in nobenih presledkov
 aix_ecmd=Tiskalniškega strežnika AIX $1 ni bilo mogoče najti. Mogoče ni nameščen ali pa je v uporabi drug tiskalni sistem.
 

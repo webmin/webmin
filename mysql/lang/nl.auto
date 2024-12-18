@@ -4,7 +4,7 @@ index_eshow=Het MySQL-statusprogramma $1 is niet gevonden op uw systeem. Misschi
 index_estart=Het MySQL-opstartscript $1 is niet gevonden op uw systeem. Misschien is MySQL niet geïnstalleerd of is uw <a href='$2'>moduleconfiguratie</a> onjuist.
 index_indexes=Indexen
 index_views=Keer bekeken
-index_version2=$3 versie $1 op $2 
+index_version2=$3 versie $1 op $2
 index_ecnf=Het MySQL-configuratiebestand $1 is niet gevonden op uw systeem. Gebruik de <a href='$2'>module configuratie</a> pagina om het juiste pad in te stellen.
 index_mysqlstatus=MySQL-opstartscript
 
@@ -105,10 +105,10 @@ root_socket=De MySQL <tt>$1</tt>-gebruiker gebruikt Unix-socket-authenticatie, d
 
 mysqlpass_err=MySQL veilige modus
 mysqlpass_esafecmd=De opdracht $1 die nodig is om MySQL te starten met uitgeschakelde authenticatie, is niet gevonden
-mysqlpass_eshutdown=Afsluiten mislukt : $1 
-mysqlpass_esafe=Opstarten in veilige modus is mislukt : $1 
-mysqlpass_estartup=Opstarten mislukt : $1 
-mysqlpass_echange=Wachtwoordwijziging mislukt : $1 
+mysqlpass_eshutdown=Afsluiten mislukt : $1
+mysqlpass_esafe=Opstarten in veilige modus is mislukt : $1
+mysqlpass_estartup=Opstarten mislukt : $1
+mysqlpass_echange=Wachtwoordwijziging mislukt : $1
 mysqlpass_echange_forcepass=Forceer overschrijving van het gegeven wachtwoord, indien verloren of vergeten
 
 ssl_title=SSL Certificaat

@@ -36,11 +36,11 @@ monitor_edrive=Trūkst vai nav derīgs disks, lai pārbaudītu
 monitor_nosuch=Tādas piedziņas nav
 monitor_nosmart=Nav SMART atbalsta
 monitor_errorsfound=Ziņots par $1 kļūdām
-monitor_errorsinced=Kļūdu skaits palielinājās no $2 līdz $1 
+monitor_errorsinced=Kļūdu skaits palielinājās no $2 līdz $1
 monitor_wearlevel=Neveiksmīgi, ja nodiluma līmenis nokrītas zemāk
 monitor_ewearlevel=Nederīgs nodiluma līmeņa procents
 monitor_nowearout=Disks neziņo par SSD nolietojuma indikatoru
-monitor_wornout=Nodiluma līmenis ir samazinājies līdz $1 
+monitor_wornout=Nodiluma līmenis ir samazinājies līdz $1
 
 short_title=Īss pašpārbaude
 short_doing=Sākas īsa $1 pašpārbaude.

@@ -19,8 +19,8 @@ index_all=Toate pachetele
 index_return=indexul modulului
 index_treturn=arbore de pachete
 index_tree2=Răsfoiți arborele de pachete
-index_epackagecmd=Sistemul de pachete $1 necesită comanda $2 
-index_eupdatecmd=Sistemul de actualizare $1 necesită comanda $2 
+index_epackagecmd=Sistemul de pachete $1 necesită comanda $2
+index_eupdatecmd=Sistemul de actualizare $1 necesită comanda $2
 index_epackagecheck=Sistemul de gestionare a pachetelor selectat nu este valid: $1. <br>Este posibil să fie necesar să selectați un alt sistem în pagina<a href='$2'> configurația modulului </a>.
 index_eupdatecheck=Sistemul de actualizare selectat nu este valid: $1. <br>Este posibil să fie necesar să selectați o metodă de actualizare diferită pe pagina<a href='$2'> configurația modulului </a>.
 index_echeckpackage=Nu a fost detectat niciun sistem de pachete!
@@ -30,12 +30,12 @@ index_filterclear=Ștergeți filtrul
 index_filtered=Se afișează <tt>$1</tt> pachete din <tt>$2</tt>
 
 search_title=Căutare pachete
-search_nomatch=Niciun pachet nu se potrivește cu $1 
+search_nomatch=Niciun pachet nu se potrivește cu $1
 search_none=Nici unul
 search_desc=Descriere
 search_class=Clasă
 search_pack=Pachet
-search_match=Pachetele potrivite cu $1 
+search_match=Pachetele potrivite cu $1
 search_return=rezultatele cautarii
 search_esearch=Nu ai introdus nimic pentru a căuta!
 search_delete=Dezinstalați pachetele selectate
@@ -68,7 +68,7 @@ edit_return=detalii pachet
 edit_egone=Pachetul nu mai este instalat
 
 list_title=Fișiere pachet
-list_files=Fișiere pentru pachetul $1 
+list_files=Fișiere pentru pachetul $1
 list_path=cale
 list_owner=Proprietar
 list_group=grup
@@ -77,9 +77,9 @@ list_size=mărimea
 list_status=stare
 list_ok=O.K
 list_view=(Vedere)
-list_eview=Nu a putut deschide $1 : $2 
+list_eview=Nu a putut deschide $1 : $2
 
-delete_err=Nu a reușit să ștergeți pachetul $1 
+delete_err=Nu a reușit să ștergeți pachetul $1
 delete_epack=Pachetul $1 nu există
 delete_title=Ștergeți pachetul
 delete_rusure=Sigur doriți să ștergeți pachetul $1 ? Până la $2 fișiere ($3) vor fi șterse pentru totdeauna.
@@ -92,7 +92,7 @@ delete_purge=Purgeți fișierele de configurare?
 delete_depstoo=Și ați eliminat dependențele neutilizate?
 
 file_title=Informații despre fișier
-file_notfound=Nu sunt disponibile informații despre $1 
+file_notfound=Nu sunt disponibile informații despre $1
 file_path=cale
 file_type=Tip
 file_perms=Permisiuni
@@ -121,7 +121,7 @@ install_ok=Instalare
 
 do_err=Instalarea pachetului $1 nu a reușit
 do_title=Instalează pachetul
-do_efailed=Instalarea a eșuat : $1 
+do_efailed=Instalarea a eșuat : $1
 do_efailedmsg1=Puteți încerca să instalați din nou revenind la pagina anterioară și selectând diferite opțiuni de instalare.
 do_efailedmsg2=În caz contrar, <a href='$1'>faceți clic aici pentru a șterge fișierul pachet temporar</a> pentru a economisi spațiu pe disc.
 do_success=Pachetul $1 a fost instalat cu succes
@@ -170,7 +170,7 @@ slack_missing=Dispărut
 slack_root=Directorul rădăcină
 slack_eroot=Directorul rădăcină lipsă sau nevalid
 slack_manager=Managerul de pachete Slackware
-slack_edir=Lipsește directorul pachetelor Slackware $1 
+slack_edir=Lipsește directorul pachetelor Slackware $1
 
 debian_unknown=Necunoscut
 debian_depends=Ignorați probleme de dependență?
@@ -179,7 +179,7 @@ debian_overwrite=Suprascrieți fișierele de la alte pachete?
 debian_downgrade=Înlocuiți pachetul mai nou cu cel vechi?
 debian_manager=Debian
 
-log_install_package=Pachetul instalat $1 
+log_install_package=Pachetul instalat $1
 log_install_apt_l=Pachet (e) instalat (e) $1 din APT
 log_install_apt=Instalat $2 pachet (e) din APT
 log_install_yum_l=Pachetul (pachetele) instalat (e) $1 de la YUM
@@ -188,9 +188,9 @@ log_install_rhn_l=Pachetul (pachetele) instalat (e) $1 din rețeaua Redhat
 log_install_rhn=Instalat $2 pachet (e) din rețeaua Redhat
 log_check_apt_l=Pachetul (pachetele) actualizat $1 din APT
 log_check_apt=Pachetul actualizat $2 din APT
-log_delete=Pachetul dezinstalat $1 
-log_deletes_l=Pachetele dezinstalate $1 
-log_deletes=Pachetele dezinstalate $1 
+log_delete=Pachetul dezinstalat $1
+log_deletes_l=Pachetele dezinstalate $1
+log_deletes=Pachetele dezinstalate $1
 log_urpmi_update=Pachetele disponibile URPMI actualizate
 log_urpmi_upgrade=Pachetele URPMI instalate modernizate
 log_upgrade_yum_l=Pachetul (pachetele) actualizat $1 de la YUM
@@ -312,7 +312,7 @@ rpm_dev=dispozitiv
 rpm_user=proprietatea utilizatorului
 rpm_perm=permisiuni
 rpm_group=proprietatea grupului
-rpm_erpm=RPM $1 nu a fost găsit : $2 
+rpm_erpm=RPM $1 nu a fost găsit : $2
 
 soft_reg=Fișier regulat
 soft_dir=Director
@@ -322,9 +322,9 @@ soft_hard=Hard Link
 soft_edit=Fișier modificabil
 soft_efunc=Nu a putut încărca funcțiile pentru sistemul de pachete $1.
 soft_euncompress=Fișierul este comprimat, dar comanda <tt>uncompress</tt> nu a fost găsită în sistemul dvs.
-soft_euncmsg=Nu a putut fi decomprimat fișierul : $1 
+soft_euncmsg=Nu a putut fi decomprimat fișierul : $1
 soft_egzip=Fișierul este gzipped, dar comanda gzip nu a fost găsită în sistemul dvs.
-soft_egzmsg=Eroare la fișierul gunzip : $1 
+soft_egzmsg=Eroare la fișierul gunzip : $1
 
 aix_unknown=Necunoscut
 aix_device=Dispozitiv / director INPUT pentru software
@@ -362,21 +362,21 @@ emerge_name=taxă de transport
 
 cygwin_fmissing=Fișierul lipsește
 cygwin_lmissing=Fișierul la care punctează link-ul lipsește
-cygwin_estat=Nu a reușit fișierul stat: $1 
-cygwin_elread=Eroare la citirea simbolului: $1 
-cygwin_elstat=Eroare la statistica simlink: $1 
+cygwin_estat=Nu a reușit fișierul stat: $1
+cygwin_elread=Eroare la citirea simbolului: $1
+cygwin_elstat=Eroare la statistica simlink: $1
 cygwin_badpostscript=Avertisment: acest script nu pare să fi fost executat
 cygwin_pkgexists=Pachetul $1 există deja.
 cygwin_warnuse=Avertisment: aceasta nu este o interfață oficială pentru gestionarea software-ului Cygwin. Folosiți pe propria răspundere.
-cygwin_edb=Lipsește baza de date de pachete Cygwin $1 
+cygwin_edb=Lipsește baza de date de pachete Cygwin $1
 
 deletes_err=Nu a reușit să ștergeți pachetele
 deletes_enone=Nu au fost selectate pachete
 deletes_title=Ștergeți pachetele
 deletes_desc=Dezinstalarea pachetelor $1 ..
 deletes_failed1=Dezinstalarea $1 : $2 a eșuat
-deletes_success1=Dezinstalat cu succes $1 
-deletes_failed2=Dezinstalarea a eșuat : $1 
+deletes_success1=Dezinstalat cu succes $1
+deletes_failed2=Dezinstalarea a eșuat : $1
 deletes_success2=.. dezinstalarea finalizată.
 deletes_rusure=Sigur doriți să dezinstalați pachetele $1 ?
 deletes_ok=Ștergeți-le pe toate

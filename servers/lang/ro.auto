@@ -56,7 +56,7 @@ edit_timeout=Timpul de conectare
 edit_failed=Eroare de conexiune
 edit_baduser=Logare respinsă
 edit_invalid=Utilizatorul nu poate face RPC
-edit_version=Se execută Webmin $1 
+edit_version=Se execută Webmin $1
 edit_same=Disponibil numai în modul de autentificare a sesiunii și când parola este pusă la dispoziția programelor Webmin.
 
 save_err=Salvarea serverului nu a reușit
@@ -71,12 +71,12 @@ save_elogin=Logare sau parolă nevalide pentru gazdă
 save_egroup2=Nume de grup nou nevalid
 
 find_title=Găsiți servere
-find_new=Găsit server nou la $1 
-find_but=S-a găsit noul server la $1, dar autentificarea a eșuat : $2 
-find_already=S-a găsit serverul cunoscut la $1 
-find_already2=Găsit serverul gazdă cunoscut la $1 
-find_skip=Ignorarea serverului la $1 
-find_me=Găsit acest server la $1 
+find_new=Găsit server nou la $1
+find_but=S-a găsit noul server la $1, dar autentificarea a eșuat : $2
+find_already=S-a găsit serverul cunoscut la $1
+find_already2=Găsit serverul gazdă cunoscut la $1
+find_skip=Ignorarea serverului la $1
+find_me=Găsit acest server la $1
 find_escan=Rețeaua de scanat trebuie să fie o adresă de rețea de clasă C.
 find_eiface=Nu s-a putut găsi interfața de scanat
 find_none=Niciun server nu a răspuns la scanare.
@@ -85,13 +85,13 @@ find_scanning=Scanarea serverelor din rețeaua $1 ..
 find_broading=Difuzarea pentru servere pe adrese $1 ..
 find_eport=Număr de port lipsă sau nevalid
 
-log_modify=Server modificat $1 
-log_create=Serverul înregistrat $1 
-log_delete=Server șters $1 
+log_modify=Server modificat $1
+log_create=Serverul înregistrat $1
+log_delete=Server șters $1
 log_find=Serverul $1 găsit
-log_deletes=Șters serverele $1 
+log_deletes=Șters serverele $1
 
-link_elogin=Nu a reușit autentificarea la $1 ca $2 
+link_elogin=Nu a reușit autentificarea la $1 ca $2
 link_ecannot=Nu aveți voie să utilizați acest server
 link_essl=Nu aveți instalată biblioteca perl Net::SSLeay
 link_eautologin=Logare sau parolă nevalide pentru $1. <a href='$2'>Faceți clic aici</a> pentru a încerca din nou.
@@ -133,8 +133,8 @@ auto_sched=Caută noi servere?
 auto_sched1=Da, la fiecare $1 minut
 auto_net=Rețea IP de scanat
 auto_auto=Retea locala
-auto_ip=Rețele IP $1 
-auto_iface=Rețea pe interfața $1 
+auto_ip=Rețele IP $1
+auto_iface=Rețea pe interfața $1
 auto_user=Nume de utilizator pentru servere noi
 auto_pass=Parolă pentru servere noi
 auto_type=Tip de sistem implicit

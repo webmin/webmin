@@ -68,9 +68,9 @@ deletes_err=Nu a reușit anularea comenzilor
 deletes_enone=Nimic selectat
 
 log_allow=Utilizatorii au fost schimbați
-log_create_job=Crearea comenzii programate pentru $1 
-log_delete_job=A fost anulată comanda programată pentru $1 
-log_exec_job=Execută comanda programată pentru $1 
+log_create_job=Crearea comenzii programate pentru $1
+log_delete_job=A fost anulată comanda programată pentru $1
+log_exec_job=Execută comanda programată pentru $1
 log_delete_jobs=Anulează $1 comenzi programate
 log_stop=Server de comenzi programate oprit
 log_start=A pornit serverul de comenzi programate

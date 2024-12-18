@@ -94,7 +94,7 @@ edit_modsg=Webmin moduly, které jsou k dispozici (navíc z dané skupiny)
 save_err=Chyba při ukládání uživatele
 save_ename='$1' není platné jméno uživatele
 save_enamewebmin=Uživatelské jméno 'webmin' je blokováno pro vnitřní užití
-save_edup=Uživatel  '$1' již existuje
+save_edup=Uživatel '$1' již existuje
 save_edeny=nemůžete zrušit vlastní přístup k Webmin Uživatelskému modulu
 save_eos=Stejná hesla jako systémová nejsou na vašem systému podporována
 save_emd5=Stejná hesla jako systémová nemohou být použita na systému s MD5 kryptováním
@@ -302,7 +302,7 @@ sessions_host=IP adresa
 sessions_lview=Zobrazit logs..
 
 hide_title=skrýt nepoužívané moduly
-hide_desc=Následující moduly budou odstraněny ze seznamu přístupů pro $1, protože  as their corresponding servers nejsou ve vašem systému nainstalován ..
+hide_desc=Následující moduly budou odstraněny ze seznamu přístupů pro $1, protože as their corresponding servers nejsou ve vašem systému nainstalován ..
 hide_ok=Ihned skrýt moduly
 hide_none=Není co skrýt - $1 nemá přístup k žádnému modulu whose corresponding servers are not installed on your system.
 hide_desc2=Mějte nap paměti, že tyto moduly nemusí být automaticky k dispozici, pokud nejsou nainstalovány odpovídající servery. Navíc budete muset pro tento modul ručně nastavit práva.

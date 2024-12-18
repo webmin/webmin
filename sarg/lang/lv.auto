@@ -1,8 +1,8 @@
 index_title=Kalmāru ziņojumu ģenerators
 index_econf=Sarg konfigurācijas fails $1 jūsu sistēmā netika atrasts. Varbūt Sarg nav instalēts, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_ecmd=Sarg programma $1 jūsu sistēmā netika atrasta. Varbūt tas nav instalēts, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
-index_eversion=Neizdevās iegūt Sarg versiju ar komandu $1 : $2 
-index_version=Sargas versija $1 
+index_eversion=Neizdevās iegūt Sarg versiju ar komandu $1 : $2
+index_version=Sargas versija $1
 index_generate=Ģenerēt pārskatu tūlīt
 index_generatedesc=Noklikšķiniet uz šīs pogas, lai nekavējoties ģenerētu Sarg ziņojumu $1, izmantojot pašreizējo konfigurāciju.
 index_clear=Vai izdzēst esošo pārskatu direktorijā?

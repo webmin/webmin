@@ -18,7 +18,7 @@ vgetty_return=reekspoortlys
 vgetty_create=Voeg seriepoort by
 vgetty_edit=Wysig seriële poort
 vgetty_header=Opstellingsopsies vir seriële poort
-vgetty_ts=Reekspoort $1 
+vgetty_ts=Reekspoort $1
 vgetty_other=Ander toestel ..
 vgetty_rings=Ringe voordat jy antwoord
 vgetty_default=Wêreldwye standaard
@@ -100,8 +100,8 @@ pvfdesc=$1, $2 bisse
 
 upload_err=Kon nie boodskap byvoeg nie
 upload_emessage=Geen WAV-lêer is gekies nie
-upload_ewav=Kon nie WAV-lêer omskakel nie : $1 
-upload_epvf=Kon nie RMD-lêer skep nie : $1 
+upload_ewav=Kon nie WAV-lêer omskakel nie : $1
+upload_epvf=Kon nie RMD-lêer skep nie : $1
 upload_esame=Die boodskaplêer $1 bestaan reeds
 
 log_apply=Toegepaste konfigurasie
@@ -111,7 +111,7 @@ log_delete0=$1 ontvangde boodskappe is uitgevee
 log_delete1=$1 groeteboodskappe is verwyder
 log_options=Verander stemposopsies
 log_vgetty_create=Seriële poort $1 bygevoeg
-log_vgetty_modify=Gewysigde reekspoort $1 
+log_vgetty_modify=Gewysigde reekspoort $1
 log_vgetty_delete=Seriële poort $1 is uitgevee
 
 email_subject=Stemposboodskap

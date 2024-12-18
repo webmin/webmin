@@ -67,7 +67,7 @@ index_eexpired_conf=Automatsko potpisivanje treba ponovo omogućiti na stranici 
 index_eexpired_mod=Koristite modul $1 da biste onemogućili DNSSEC za ove domene ili provjerili zašto potpisivanje ne uspijeva.
 
 master_title=Uredi glavnu zonu
-master_inview=$1 u pogledu $2 
+master_inview=$1 u pogledu $2
 master_ecannot=Nije vam dopušteno uređivanje ove zone
 master_egone=Zona $1 ne postoji ni u jednom prikazu
 master_egone2=Zona $1 ne postoji!

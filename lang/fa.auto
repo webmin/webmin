@@ -115,7 +115,7 @@ sql_eldaplogin=Failed to login to LDAP server as $1 : $2
 
 log_email_subject=Webmin action in $1
 log_email_global=اقدام جهانی وبمین
-log_email_by=$1 در $2 
+log_email_by=$1 در $2
 log_email_desc=این ایمیل در پاسخ به عملکرد کاربر توسط Webmin ارسال شد.
 log_email_mod=Webmin module: $1
 log_email_moddesc=Module title: $1

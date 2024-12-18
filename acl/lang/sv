@@ -94,7 +94,7 @@ edit_selhours=Från $1:$2 till $3:$4
 edit_ui=Användargränssnitts val
 edit_security=Säkerhet och begränsnings val.
 edit_mods=Tillgängliga Webmin moduler.
-edit_modsg=Tillgängliga Webmin moduler 
+edit_modsg=Tillgängliga Webmin moduler
 
 save_err=Det gick inte att spara användare
 save_ename='$1' är inget giltigt användarnamn
@@ -317,7 +317,7 @@ rbac_title=Ställ in RBÅK
 rbac_desc=Webmin's RBÅK integration bereder en väg för modul ach ACL tillåtelse att bli bestämd från RBÅK (Roll Baserad Åtkomst Kontroll) databas, snarare än Webmin's egen konfiguration filer. När RBÅK stöd är möjliggjord, alla användare för vilka som <b>$edit_rbacdeny1</b> val är utvald kommer att ha denna kompetens bestämd av RBÅK snarare än Webmin's egen kontroll inställning.
 rbac_esolaris=RBÅK har endast stöd på Solaris för tillfället, och kan därför inte användas på detta $1 system.
 rbac_eperl=Perl modulen $1 behövd av RBÅK integration är inte installerad. <a href='$2'>Klicka här</a> för att installera den nu.
-rbac_ecpan=Du har inte åtkomst till Webmin's Perl Modul sida för  att installera nödvändiga $1 moduler till RBÅK integration.
+rbac_ecpan=Du har inte åtkomst till Webmin's Perl Modul sida för att installera nödvändiga $1 moduler till RBÅK integration.
 rbac_ok=RBÅK integration är tillgänglig på detta sytem, och kan bli möjliggjord på en per-användar basis på sidan Ändar Webmin Användar sidan.
 
 udeletes_err=Misslyckades att ta bort användare

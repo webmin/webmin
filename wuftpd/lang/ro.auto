@@ -1,14 +1,14 @@
 index_title=Server WU-FTPD
 index_eftpd=Serverul FTP $1 nu a putut fi găsit în sistemul dvs. Poate că nu este instalat, sau <a href='$2'>Configurarea modulului server FTP</a> este incorectă.
 index_eftpaccess=Fișierul de configurare a serverului FTP $1 nu există. Poate că nu este instalat, sau <a href='$2'>Configurarea modulului server FTP</a> este incorectă.
-index_eversion=Serverul FTP $1 nu pare a fi WU-FTPd. Poate că utilizați un FTPd mai vechi furnizat cu sistemul dvs. de operare sau <a href='$2'>Configurația modulului serverului FTP</a> este corectă. Rezultatul de pe serverul FTP a fost : $3 
+index_eversion=Serverul FTP $1 nu pare a fi WU-FTPd. Poate că utilizați un FTPd mai vechi furnizat cu sistemul dvs. de operare sau <a href='$2'>Configurația modulului serverului FTP</a> este corectă. Rezultatul de pe serverul FTP a fost : $3
 index_apply=Aplica schimbarile
 index_applymsg=Faceți clic pe acest buton pentru a aplica configurația curentă. Acest lucru va opri și reporni toate procesele de server FTP în curs, deconectând astfel toți utilizatorii conectați.
 index_start=Start Server
 index_startmsg=Faceți clic pe acest buton pentru a porni serverul FTP cu configurația curentă. De asemenea, puteți configura serverul să fie pornit automat atunci când este necesar, folosind modulul <a href='$1'>Internet Services</a>.
 index_startmsg2=Faceți clic pe acest buton pentru a porni serverul FTP cu configurația curentă. Puteți configura, de asemenea, serverul pentru a fi pornit automat atunci când este necesar, folosind inetd sau un program echivalent.
 index_return=Opțiuni server FTP
-index_version=Versiunea WU-FTPd $1 
+index_version=Versiunea WU-FTPd $1
 
 class_title=Utilizatori și clase
 class_header=Clase de utilizator și opțiuni de utilizator

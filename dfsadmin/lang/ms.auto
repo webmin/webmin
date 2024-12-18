@@ -41,10 +41,10 @@ save_eroot=Anda tidak menyenaraikan mana-mana tuan rumah untuk berkongsi dengan 
 save_ealready=Direktori '$1' sudah dikongsi
 save_ehost=Hos '$1' tidak wujud
 
-log_modify=Modified NFS share $1 
-log_rename=Saham NFS berubah $1 hingga $2 
-log_create=Dibuat NFS saham $1 
-log_delete=Diperolehi bahagian NFS $1 
+log_modify=Modified NFS share $1
+log_rename=Saham NFS berubah $1 hingga $2
+log_create=Dibuat NFS saham $1
+log_delete=Diperolehi bahagian NFS $1
 log_apply=Perubahan yang digunakan
 
 acl_view=Bolehkah mengedit saham NFS?

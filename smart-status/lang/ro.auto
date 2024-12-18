@@ -1,12 +1,12 @@
 index_title=SMART Status Drive
 index_ecmd=Comanda de control SMART $1 nu a fost găsită pe sistemul dvs. sau nu este setată corect în configurația modulului <a href='$2'></a>. Trebuie să fie instalat înainte ca acest modul să poată fi utilizat.
 index_ecmd2=Comanda $1 nu pare a fi comanda de control SMART. Trebuie să fie setat corect în <a href='$2'>configurația modulului</a> înainte de a putea fi utilizat.
-index_version=Versiunea SMARTsuite $1 
+index_version=Versiunea SMARTsuite $1
 index_show=Afișează starea unității:
 index_ok=Spectacol
 index_eidescsi=Nu s-au găsit unități IDE, SCSI sau SATA în sistemul dvs.
-index_drive=Starea unității $1 
-index_drivesub=Starea unității $1, discul $2 
+index_drive=Starea unității $1
+index_drivesub=Starea unității $1, discul $2
 index_desc=Locație
 index_size=Dimensiunea unității
 index_model=Marcă și model
@@ -35,12 +35,12 @@ monitor_other=Alte ..
 monitor_edrive=Unitatea lipsește sau este nevalidă pentru a verifica
 monitor_nosuch=Nici o astfel de unitate
 monitor_nosmart=Fără suport SMART
-monitor_errorsfound=Raportate erori $1 
-monitor_errorsinced=Erorile au crescut de la $2 la $1 
+monitor_errorsfound=Raportate erori $1
+monitor_errorsinced=Erorile au crescut de la $2 la $1
 monitor_wearlevel=Eșec dacă nivelul de uzură scade sub
 monitor_ewearlevel=Procent procentaj nevalid
 monitor_nowearout=Drive nu raportează un indicator de uzură SSD
-monitor_wornout=Nivelul de uzură a scăzut la $1 
+monitor_wornout=Nivelul de uzură a scăzut la $1
 
 short_title=Autotestare scurtă
 short_doing=Începerea autotestului scurt de $1 ..

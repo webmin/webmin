@@ -80,7 +80,7 @@ log_find=Temui pelayan $1
 link_elogin=Gagal untuk log masuk ke $1 sebagai $2
 link_ecannot=Anda tidak dibenar menggunakan pelayan ini
 link_essl=Anda tidak mempunyai modul perl Net::SSLeay yang dipasang
-link_eautologin=Log masuk atau kata laluan untuk $1 tidak sah.  <a href='$2'>Klik sini</a> untuk mencuba lagi.
+link_eautologin=Log masuk atau kata laluan untuk $1 tidak sah. <a href='$2'>Klik sini</a> untuk mencuba lagi.
 
 lib_other=Lain
 

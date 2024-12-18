@@ -260,7 +260,7 @@ password_new1=새 암호
 password_new2=새 암호 다시
 password_ok=변경
 password_clear=초기화
-password_done=암호가 변경 되었습니다. 지금 새로운 암호로  <a href='$1'>다시 로그인</a> 하십시오.
+password_done=암호가 변경 되었습니다. 지금 새로운 암호로 <a href='$1'>다시 로그인</a> 하십시오.
 password_err=암호 변경 실패
 password_euser=password 파일에서 로그인 이름을 찾을 수 없습니다!
 password_eold=현재 암호가 맞지 않습니다.

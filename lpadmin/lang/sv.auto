@@ -2,7 +2,7 @@ index_header=Tillgängliga skrivare
 index_jlist=Jobb ..
 index_jcount=$1 jobb ..
 index_esystem=Antingen installera programvaran för ditt valda utskriftssystem, eller använd <a href='$1'>modulkonfiguration</a> för att ändra det.
-index_style=Utskriftssystem: $1 
+index_style=Utskriftssystem: $1
 index_cluster=Cluster-servrar
 index_clusterdesc=Klicka på den här knappen för att ställa in ytterligare webmin-servrar som skrivare skapas, uppdateras och raderas.
 index_delete=Radera valda skrivare
@@ -19,12 +19,12 @@ style_aix=AIX
 
 save_erport=Fjärrporten '$1' är inte giltig
 save_evalid=Utskriftssystemet tillät inte denna skrivare
-save_errslave=Skrivare skapade OK på det här systemet, men följande fel inträffade i klustrsystem : $1 
+save_errslave=Skrivare skapade OK på det här systemet, men följande fel inträffade i klustrsystem : $1
 save_egone=Ingen skrivare med namnet '$1' hittades
-save_errdelslave=Skrivaren raderade OK på det här systemet, men följande fel inträffade på klustrsystem : $1 
+save_errdelslave=Skrivaren raderade OK på det här systemet, men följande fel inträffade på klustrsystem : $1
 
 jobs_cancelsel=Avbryt valda jobb
-jobs_on=På skrivaren $1 
+jobs_on=På skrivaren $1
 jobs_return=lista över utskriftsjobb
 
 redhat_printer2=Skrivarmodell och drivrutin
@@ -41,7 +41,7 @@ acl_user_this=Nuvarande Webmin-användare
 acl_delete=Kan radera skrivare?
 acl_cluster=Kan hantera skrivarkluster?
 
-log_cancel_sel=Avbruten $2 utskriftsjobb på $1 
+log_cancel_sel=Avbruten $2 utskriftsjobb på $1
 
 linux_ecmd=Kommandot $1 hittades inte på ditt system, vilket indikerar att Linux-utskriftssystemet inte är installerat.
 linux_espool=Spoolkatalogen $1 finns inte på ditt system, vilket indikerar att Linux-utskriftssystemet inte är installerat.
@@ -60,13 +60,13 @@ lprng_espool=Spoolkatalogen $1 finns inte i ditt system, vilket indikerar att LP
 solaris_ecmd=Kommandot $1 hittades inte på ditt system, vilket indikerar att Solaris-skrivarsystemet inte är installerat.
 
 cups_eprog='$1' är inte ett giltigt program
-cups_opts=Alternativ för $1 
+cups_opts=Alternativ för $1
 cups_ecmd=Kommandot $1 hittades inte på ditt system, vilket indikerar att CUPS-utskriftssystemet inte är installerat.
 
 irix_ecmd=Kommandot $1 hittades inte på ditt system, vilket indikerar att IRIX-skrivarsystemet inte är installerat.
 irix_eiface=Gränssnittsskriptkatalogen $1 finns inte på ditt system, vilket indikerar att IRIX-skrivarsystemet inte är installerat.
 
-aix_port=Skrivarport $1 
+aix_port=Skrivarport $1
 aix_edesc=Ogiltig beskrivning - endast bokstäver och siffror är tillåtna och inga mellanslag
 aix_ecmd=AIX-skrivarservern $1 hittades inte. Kanske är det inte installerat, eller så används ett annat utskriftssystem.
 

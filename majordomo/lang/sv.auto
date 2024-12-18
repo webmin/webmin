@@ -2,7 +2,7 @@ index_eversion2=Majordomo-versionen $1 hittades inte under programkatalogen $2. 
 index_esendmail2=Sendmail är antingen inte installerat eller inte korrekt konfigurerat på ditt system. Kontrollera <a href=$2>Sendmail-modulen</a> -konfigurationen.
 index_epostfix=Postfix är antingen inte installerat eller inte korrekt konfigurerat på ditt system. Kontrollera <a href='$1'>Postfix-modulen</a> -konfigurationen.
 index_esendmail3=Sendmail Webmin-modulen som behövs för att hantera alias är inte installerad.
-index_version=Majordomo-version $1 
+index_version=Majordomo-version $1
 index_name=Namnlista
 index_info=Listinfo
 index_mail=E-postadress

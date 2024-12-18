@@ -4,7 +4,7 @@ index_ecmd2=פקודת SpamAssassin $1 לא נמצאה במערכת שלך.
 index_econfig=קובץ התצורה המקומי SpamAssassin או הספרייה $1 לא נמצא במערכת שלך. אולי SpamAssassin אינו מותקן, או <a href='$2'>תצורת המודול</a> שלך שגויה.
 index_unknown=לא ידוע
 index_edb=התחברות למסד הנתונים של SpamAssassin נכשלה: $1. בדוק את <a href='$2'>תצורת המודול</a> כדי לוודא שאתה משתמש בהגדרות הנכונות.
-index_version=גרסת SpamAssassin $1 
+index_version=גרסת SpamAssassin $1
 index_warn_usermin=נראה כי SpamAssassin לא מוגדר בקובץ התצורה של Procmail $2 או בקובץ הגלובלי $1, כך שלכל תצורה שתבוצע באמצעות מודול זה לא תהיה השפעה אלא אם הוגדרו SpamAssassin באופן גלובלי.
 index_warn_webmin=נראה כי SpamAssassin לא מוגדר בקובץ התצורה Procmail של המערכת $1, כך שלכל תצורה שתבוצע באמצעות מודול זה לא תהיה השפעה אלא אם כן המשתמשים יוגדרו בנפרד.
 index_return=אינדקס מודול
@@ -12,7 +12,7 @@ index_apply=החל שינויים
 index_applydesc=לחץ על כפתור זה כדי להחיל את התצורה הנוכחית של SpamAssassin על ידי שליחת אות HUP לכל תהליכי $1.
 index_cpan=מכיוון SpamAssassin הוא מודול פרל, באפשרותך להתקין אותו באופן אוטומטי באמצעות מודול <a href='$2'>מודולי Perl</a> של Webmin כדי להוריד $1 מ- CPAN.
 index_spamassassin=דואר זבל
-index_ecannot=אינך רשאי לנהל את קובץ התצורה SpamAssassin $1 
+index_ecannot=אינך רשאי לנהל את קובץ התצורה SpamAssassin $1
 
 white_title=כתובות מורשות ונדחות
 white_desc=הטבלאות בדף זה מאפשרות לך לציין מ: ו - ל: כתובות לדוא"ל שתמיד או לעולם לא מסווגות כדואר זבל. כל אימייל אחר יעובד כרגיל על פי כללי SpamAssassin. כל כתובות הדוא"ל יכולות להכיל תווים כלליים, כגון *@foo.com או *.foo.com כדי להתאים לדומיינים שלמים.
@@ -111,7 +111,7 @@ report_addtext=טקסט לכותרת
 report_addspam=ספאם
 report_addham=חזיר
 report_addall=את כל
-report_eaddheader=חסר כותרת נוספת או לא חוקית להוספת $1 
+report_eaddheader=חסר כותרת נוספת או לא חוקית להוספת $1
 
 user_title=אפשרויות משתמש שונות
 user_desc=האפשרויות בדף זה קשורות לרוב לנתיבים וההגדרות בהם SpamAssassin משתמש עבור חבילות הזיהוי החיצוניות של דואר זבל Razor, DCC ו- Pyzor. אתה יכול גם לומר ל- SpamAssassin אם הוא יוכל לבצע בדיקות DNS או לא.
@@ -190,7 +190,7 @@ priv_emscore='$1' אינו ציון הביטוי הגבוה ביותר
 priv_ephrase='$1' אינו ביטוי ספאם תקף של שתי מילים
 priv_escore=ציון חסר או לא חוקי לביטוי הספאם '$1'
 
-usually=בדרך כלל $1 
+usually=בדרך כלל $1
 ecannot=אינך מורשה להשתמש בדף זה
 setup_title=הגדרת Procmail עבור SpamAssassin
 setup_desc_webmin=ניתן להשתמש בטופס זה כדי להגדיר את Procmail ב- $1 להפעלת SpamAssassin בכל הודעות הדואר האלקטרוני שהתקבלו על ידי המערכת שלך. עם זאת, תהיה לכך השפעה רק אם שרת הדואר שלך הוגדר לשימוש ב- Procmail למשלוח מקומי, או למשתמשים ש- <tt>. Forward</tt> קבצים שלהם מוגדרים להפעלת Procmail.
@@ -244,7 +244,7 @@ mail_razor=דווח כספאם ומחק
 mail_ham=דווח כ"האם & תיבת הדואר הנכנס "
 mail_delete=מחק
 mail_return=רשימת דואר זבל
-mail_pos=הודעות דואר זבל $1 עד $2 מתוך $3 
+mail_pos=הודעות דואר זבל $1 עד $2 מתוך $3
 mail_none=אין הודעות בתיקיית הספאם שלך
 mail_refresh=רענן
 mail_will=רענון אוטומטי תוך $1 דקות
@@ -253,7 +253,7 @@ mail_delall=מחק את כל הספאם
 mail_search3=חפש ציון למעלה:
 
 process_eclean=אירעה שגיאה בהסרת כותרות SpamAssassin מהודעת דוא"ל זו
-process_ereport=דיווח דוא"ל ל- SpamAssassin נכשל : $1 
+process_ereport=דיווח דוא"ל ל- SpamAssassin נכשל : $1
 
 apply_err=החלת השינויים נכשלה
 apply_none=לא נמצאו תהליכי דממון של SpamAssassin!
@@ -264,7 +264,7 @@ acl_filedef=קובץ תצורה גלובלי
 acl_awl=משתמשים מורשים לעריכה אוטומטית של רשימת לבן
 acl_awl0=כל המשתמשים
 acl_awl1=משתמשים רשומים $1 בלבד
-acl_awl2=רק חברים בקבוצות $1 
+acl_awl2=רק חברים בקבוצות $1
 
 search_escore=ציון זבל חסר או לא חוקי
 search_results5=$1 הודעות דואר עם ציון דואר זבל ב- $2 ומעלה.
@@ -337,20 +337,20 @@ simple_score=ציון ליישום
 simple_describe=תיאור
 simple_err=שמירת בדיקות ההודעה נכשלה
 
-before_ecmd=הפקודה לפני שמירת נכשלה : $1 
-after_ecmd=הפקודה לאחר שמירת נכשלה : $1 
+before_ecmd=הפקודה לפני שמירת נכשלה : $1
+after_ecmd=הפקודה לאחר שמירת נכשלה : $1
 
 connect_emysql=טעינת מנהל התקן של מסד הנתונים $1 נכשלה
 connect_elogin=כניסה למאגר $1:$2 נכשלה.
-connect_equery=בסיס הנתונים $1 אינו מכיל את טבלת ההעדפות $2 
+connect_equery=בסיס הנתונים $1 אינו מכיל את טבלת ההעדפות $2
 connect_eldapmod=מודול Perl $1 הדרוש לתקשורת עם LDAP אינו מותקן או לא ניתן לטעינה
 connect_eldap=התחברות לשרת LDAP $1 ביציאה $2 נכשלה
-connect_eldaplogin=הכניסה לשרת LDAP $1 נכשלה כ- $2 : $3 
-connect_ebase=בסיס LDAP DN $1 אינו תקף : $2 
+connect_eldaplogin=הכניסה לשרת LDAP $1 נכשלה כ- $2 : $3
+connect_ebase=בסיס LDAP DN $1 אינו תקף : $2
 
-eldap=פעולת LDAP נכשלה : $1 
-esql=SQL נכשל : $1 
-ldap_euser=לא ניתן למצוא אובייקט משתמש LDAP עבור $1 
+eldap=פעולת LDAP נכשלה : $1
+esql=SQL נכשל : $1
+ldap_euser=לא ניתן למצוא אובייקט משתמש LDAP עבור $1
 
 db_title=מאגרי SQL ו- LDAP
 db_header=אפשרויות מסד נתונים לאחסון תצורה

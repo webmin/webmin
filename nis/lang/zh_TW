@@ -20,7 +20,7 @@ client_ehosts='$1' 不在 hosts 檔裏
 switch_title=客戶端服務
 switch_service=服務
 
-order_= 
+order_=
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS
@@ -47,7 +47,7 @@ server_tables=服務的 NIS 表格
 server_dns=在 DNS 搜尋遺失的主機？
 server_push=把更新推入 slave 伺服器？
 server_minuid='Unix 使用者' 表格紀錄的最小 UID
-server_mingid='Unix 群組' 表格紀錄的最小 GID  
+server_mingid='Unix 群組' 表格紀錄的最小 GID
 server_ok=儲存及套用
 server_err=無法儲存 NIS 伺服器
 server_edomain='$1' 不是一個有效的 NIS 網域

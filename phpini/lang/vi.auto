@@ -11,7 +11,7 @@ index_anyfile=Chỉnh sửa tập tin cấu hình PHP khác:
 index_return=tập tin cấu hình
 
 file_global=Cấu hình PHP toàn cầu
-file_eread=Không thể đọc $1 : $2 
+file_eread=Không thể đọc $1 : $2
 
 manual_title=Chỉnh sửa cấu hình thủ công
 manual_desc=Trang này có thể được sử dụng để chỉnh sửa thủ công tệp cấu hình PHP. Điều này nên được thực hiện cẩn thận, vì không có cú pháp hoặc kiểm tra tính hợp lệ khác sẽ được thực hiện trên các thay đổi của bạn.
@@ -124,7 +124,7 @@ errors_maxlen=Kích thước tối đa của lỗi đăng nhập
 errors_file=Đăng nhập lỗi
 errors_none=không ai
 errors_syslog=Nhật ký hệ thống
-errors_other=Tệp khác $1 
+errors_other=Tệp khác $1
 errors_unlimited=Vô hạn
 errors_err=Không thể lưu lỗi đăng nhập
 errors_ereporting=Không có biểu thức loại lỗi được nhập
@@ -152,15 +152,15 @@ misc_path=CGI Sửa thông tin đường dẫn?
 misc_timezone=Múi giờ PHP
 misc_charset=Bộ ký tự mặc định
 
-log_manual=Chỉnh sửa thủ công tệp $1 
-log_vars=Các biến PHP đã thay đổi trong $1 
-log_dirs=Thay đổi cài đặt thư mục trong $1 
-log_db=Thay đổi cài đặt cơ sở dữ liệu trong $1 
-log_session=Tùy chọn phiên đã thay đổi trong $1 
-log_safe=Thay đổi tùy chọn chế độ an toàn trong $1 
-log_limits=Thay đổi giới hạn tài nguyên trong $1 
-log_errors=Đã thay đổi đăng nhập lỗi trong $1 
-log_misc=Đã thay đổi cài đặt khác trong $1 
+log_manual=Chỉnh sửa thủ công tệp $1
+log_vars=Các biến PHP đã thay đổi trong $1
+log_dirs=Thay đổi cài đặt thư mục trong $1
+log_db=Thay đổi cài đặt cơ sở dữ liệu trong $1
+log_session=Tùy chọn phiên đã thay đổi trong $1
+log_safe=Thay đổi tùy chọn chế độ an toàn trong $1
+log_limits=Thay đổi giới hạn tài nguyên trong $1
+log_errors=Đã thay đổi đăng nhập lỗi trong $1
+log_misc=Đã thay đổi cài đặt khác trong $1
 
 acl_global=Có thể chỉnh sửa cấu hình PHP toàn cầu?
 acl_anyfile=Có thể chỉnh sửa bất kỳ tập tin như một cấu hình PHP?

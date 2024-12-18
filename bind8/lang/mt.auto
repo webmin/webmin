@@ -67,7 +67,7 @@ index_eexpired_conf=L-iffirmar awtomatiku għandu jkun attivat mill-ġdid fuq il
 index_eexpired_mod=Uża l-modulu $1 biex jew tiddiżattiva DNSSEC għal dawn l-oqsma, jew ivverifika għaliex l-iffirmar qed ifalli.
 
 master_title=Editja Żona tal-Kaptan
-master_inview=$1 fil-fehma $2 
+master_inview=$1 fil-fehma $2
 master_ecannot=M'għandekx permess teditja din iż-żona
 master_egone=Iż-żona $1 ma teżisti fl-ebda fehma
 master_egone2=Iż-żona $1 ma teżistix!
@@ -1280,7 +1280,7 @@ zonekey_public=Rekord taċ-ċavetta pubblika :
 zonekey_publicfile=Fajl taċ-ċavetta pubblika : $1
 zonekey_private=Dettalji ewlenin privati :
 zonekey_privatefile=Fajl taċ-ċavetta privata : $1
-zonekey_algorithm=Algoritmu DNSSEC  : $1
+zonekey_algorithm=Algoritmu DNSSEC : $1
 zonekey_ds=Rekord DS għaż-żona ġenitur :
 zonekey_expandksk=Uri d-dettalji ewlenin taċ-ċavetta għall-iffirmar taċ-ċavetta pubblika u privata ..
 zonekey_expandzone=Uri d-dettalji ewlenin taż-żona pubblika u privata ..

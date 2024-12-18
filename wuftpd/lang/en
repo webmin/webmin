@@ -1,6 +1,6 @@
 index_title=WU-FTPD Server
 index_eftpd=The FTP server $1 could not be found on your system. Maybe it is not installed, or your <a href='$2'>FTP Server module configuration</a> is incorrect.
-index_eftpaccess=The FTP server configuration file $1 does not exist.  Maybe it is not installed, or your <a href='$2'>FTP Server module configuration</a> is incorrect.
+index_eftpaccess=The FTP server configuration file $1 does not exist. Maybe it is not installed, or your <a href='$2'>FTP Server module configuration</a> is incorrect.
 index_eversion=The FTP server $1 does not appear to be WU-FTPd. Maybe you are using an older FTPd provided with your operating system, or your <a href='$2'>FTP Server module configuration</a> is in correct. The output from the FTP server was : $3
 index_apply=Apply Changes
 index_applymsg=Click this button to apply the current configuration. This will stop and restart all the running FTP server processes, thus disconnecting all connected users.

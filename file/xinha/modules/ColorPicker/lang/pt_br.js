@@ -14,9 +14,9 @@
 // Distributed under the same terms as HTMLArea itself.
 // This notice MUST stay intact for use (see license.txt).
 {
-  "Click a color...": "Selecione uma côr...",
-  "Close": "Fechar",
-  "Color: ": "Côr:",
-  "Sample": "Exemplo",
-  "Web Safe: ": "Web Segura:"
+ "Click a color...": "Selecione uma côr...",
+ "Close": "Fechar",
+ "Color: ": "Côr:",
+ "Sample": "Exemplo",
+ "Web Safe: ": "Web Segura:"
 }

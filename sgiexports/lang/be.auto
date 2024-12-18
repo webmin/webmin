@@ -33,7 +33,7 @@ save_erw=Не ўведзены хосты для чытання і запісу
 save_eroot=Не ўведзены хасты доступу да каранёвага файла
 save_eaccess=Хасты доступу да мантажу не ўвялі
 
-log_create_export=Створаны экспарт $1 
-log_delete_export=Выдалены экспарт $1 
-log_modify_export=Мадыфікаваны экспарт $1 
+log_create_export=Створаны экспарт $1
+log_delete_export=Выдалены экспарт $1
+log_modify_export=Мадыфікаваны экспарт $1
 log_apply=Прыкладная канфігурацыя

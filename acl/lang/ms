@@ -29,7 +29,7 @@ index_eglist=Gagal untuk menyenaraikan grup : $1
 
 edit_title=Ubah Pengguna Webmin
 edit_title2=Cipta Pengguna Webmin
-edit_readonly=Pengguna Webmin ini tidak boleh diubah kerana ia diuruskan oleh modul $1. <a href='$2'>Klik di sini / a> untuk memintas amaran ini dan mengubah pengguna  - tetapi berhati-hati bahawa sebarang perubahan akan kekal!
+edit_readonly=Pengguna Webmin ini tidak boleh diubah kerana ia diuruskan oleh modul $1. <a href='$2'>Klik di sini / a> untuk memintas amaran ini dan mengubah pengguna - tetapi berhati-hati bahawa sebarang perubahan akan kekal!
 edit_rights=Hak akses pengguna Webmin
 edit_user=Id Pengguna
 edit_cloneof=Mengklon pengguna Webmin
@@ -401,7 +401,7 @@ cpass_notre=Sepadan dengan corak yang dibenarkan
 cpass_re=Tidak sepadan dengan corak yang diperlukan
 cpass_name=Mengandungi nama pengguna
 cpass_dict=Adalah perkataan yang ada dalam kamus
-cpass_spellcmd=Sama ada $1 atau  2 arahan yang diperlukan untuk memeriksa perkataan kamus yang telah dipasang
+cpass_spellcmd=Sama ada $1 atau 2 arahan yang diperlukan untuk memeriksa perkataan kamus yang telah dipasang
 cpass_old=Kata laluan lama tidak boleh digunakan semula
 
 sql_title=Pengguna dan Grup Pangkalan Data
@@ -476,6 +476,6 @@ twofactor_desc2=Laman ini membenarkan anda untuk mengaktifkan pengesahan dua-fak
 twofactor_enable=Daftar Untuk Pengesahan Dua-Faktor
 twofactor_header=Butiran pendaftaran pengesahan dua-faktor
 twofactor_enrolling=Mendaftarkan untuk pengesahan dua-faktor dengan pembekal $1 ..
-twofactor_failed=.. pendaftaran gagal :  $1
+twofactor_failed=.. pendaftaran gagal : $1
 twofactor_done=.. selesai. ID anda dengan pembekal ini adalah <tt>$1</tt>.
 twofactor_setup=Pengesahan dua-faktor tidak diaktifkan pada sistem ini, tetapi boleh dihidupkan menggunakan modul <a href='$1'>Konfigurasi Webmin</a>.

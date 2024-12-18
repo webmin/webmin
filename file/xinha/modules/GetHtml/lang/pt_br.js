@@ -14,5 +14,5 @@
 // Distributed under the same terms as HTMLArea itself.
 // This notice MUST stay intact for use (see license.txt).
 {
-  "Your Document is not well formed. Check JavaScript console for details.": "Seu documento não está formatado corretamente. Verifique os detalhes no console do Javascript."
+ "Your Document is not well formed. Check JavaScript console for details.": "Seu documento não está formatado corretamente. Verifique os detalhes no console do Javascript."
 }

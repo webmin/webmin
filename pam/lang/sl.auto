@@ -107,7 +107,7 @@ edit_none=Za ta korak ni določenih modulov PAM.
 edit_delete=Brisanje storitve PAM
 edit_move=Premakni se
 edit_return=PAM storitev
-edit_inc=Vključi storitev $1 
+edit_inc=Vključi storitev $1
 edit_iheader=Vključene storitve PAM
 
 pam_pwdb.so=Unix preverjanje pristnosti gesla
@@ -273,17 +273,17 @@ mail_edir=Manjkajoči ali neveljaven imenik spool pošte
 
 stack_service=Preverite prijavo na storitev PAM
 
-log_pam_create=Ustvarjena storitev PAM $1 
-log_pam_delete=Izbrisana storitev PAM $1 
-log_mod_create=V storitev $2 je bil dodan modul PAM $1 
-log_mod_modify=Spremenjen modul PAM $1 v storitvi $2 
-log_mod_delete=Izbrisan PAM modul $1 v storitvi $2 
-log_mod_move=Zamenjani PAM moduli v storitvi $3 
-log_mod_move_l=Zamenjani moduli PAM $1 in $2 v storitvi $3 
-log_inc_create=Dodano je vključeno $1 za storitev $2 
-log_inc_modify=Spremenjeni vključujejo $1 za storitev $2 
-log_inc_delete=Izbrisani vključujejo $1 za storitev $2 
-log_incs=Posodobljeno vključuje storitev $1 
+log_pam_create=Ustvarjena storitev PAM $1
+log_pam_delete=Izbrisana storitev PAM $1
+log_mod_create=V storitev $2 je bil dodan modul PAM $1
+log_mod_modify=Spremenjen modul PAM $1 v storitvi $2
+log_mod_delete=Izbrisan PAM modul $1 v storitvi $2
+log_mod_move=Zamenjani PAM moduli v storitvi $3
+log_mod_move_l=Zamenjani moduli PAM $1 in $2 v storitvi $3
+log_inc_create=Dodano je vključeno $1 za storitev $2
+log_inc_modify=Spremenjeni vključujejo $1 za storitev $2
+log_inc_delete=Izbrisani vključujejo $1 za storitev $2
+log_incs=Posodobljeno vključuje storitev $1
 
 inc_edit=Uredi vključeno storitev
 inc_create=Ustvari vključeno storitev

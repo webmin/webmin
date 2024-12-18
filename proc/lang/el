@@ -115,7 +115,7 @@ freebsd_lim=¨οριο μνήμης
 hpux_pri=Προτεραιότητα
 hpux_tty=TTY
 hpux_status=Κατάσταση
-hpux_wchan=Αναμονή για 
+hpux_wchan=Αναμονή για
 hpux_stime=Ξεκίνησε
 
 hpuxstat_0=Μη υπαρκτές
@@ -156,10 +156,10 @@ acl_who1=Τον τρέχων χρήστη Webmin
 acl_who2=Την παρακάτω λίστα ..
 
 kill_kill=Σκότωμα Διεργασίας
-kill_term= Τερματισμός  
-kill_hup=  Επανεκκίνηση   
-kill_stop=    Σταμάτημα    
-kill_cont=  Συνέχεια  
+kill_term=Τερματισμός  
+kill_hup=Επανεκκίνηση   
+kill_stop=Σταμάτημα    
+kill_cont=Συνέχεια  
 
 open_title=Ανοικτά Αρχεία και Συνδέσεις
 open_proc=Για τη διεργασία $1 (PID $2)

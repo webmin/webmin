@@ -33,7 +33,7 @@ conn_cmd=Etablerer en PPTP tilkobling med kommandoen $1 ..
 conn_ok=.. tilkobling aktivert vha. gresesnitt $1. Din lokale adresse er $2, og den eksterne adressen er $3.
 conn_timeout=.. tilkobling feilet! Sjekk loggmeldingene nedenfor for å finne ut hvorfor.
 conn_routes=Legger til ruter med kommandoer ..
-conn_mppe=MPPE protokollen for VPN kryptering krever PPP daemon og kjerne støtte. Feilene ovenfor antyder imidlertid at en eller begge disse mangler på systemet ditt. Dersom PPTP tjeneren ikke krever MPPE kan du forsøke å slå av alle innstillinger som er MPPE relatert på siden for  <a href='$1'>globale innstillinger</a>.
+conn_mppe=MPPE protokollen for VPN kryptering krever PPP daemon og kjerne støtte. Feilene ovenfor antyder imidlertid at en eller begge disse mangler på systemet ditt. Dersom PPTP tjeneren ikke krever MPPE kan du forsøke å slå av alle innstillinger som er MPPE relatert på siden for <a href='$1'>globale innstillinger</a>.
 
 edit_title1=Ny PPTP tunnel
 edit_title2=Rediger PPTP tunnel
@@ -51,7 +51,7 @@ edit_def2=Via gateway ..
 edit_deldef=Slett gammel standard rute?
 edit_routes=Ruter som skal legges til etter tilkobling
 edit_type=Type
-edit_type0= 
+edit_type0=
 edit_type1=Nettverk
 edit_type2=Enkelt vert
 edit_net=Nettverk eller vert

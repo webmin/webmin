@@ -1,7 +1,7 @@
 index_title=IPsec VPN Yapılandırması
 index_eipsec=$1 FreeSWAN komutu sisteminizde bulunamadı veya doğru program değil. Belki yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_out=$1 'den çıktı :
-index_version2=$2 sürüm $1 
+index_version2=$2 sürüm $1
 index_econfig=$1 FreeSWAN yapılandırma dosyası sisteminizde bulunamadı. Belki yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_nokey=$1 dosyasında listelenen ana bilgisayar anahtarı görünmüyor. Herhangi bir VPN bağlantısı tanımlayabilmeniz için sisteminiz için bir tane oluşturulmalıdır.
 index_newkey=Ana bilgisayar için anahtar üret:
@@ -14,7 +14,7 @@ index_stop=IPsec Sunucusunu Durdurma
 index_stopdesc=FreeSWAN IPsec sunucu işlemini kapatmak ve kurulan tüm bağlantıları sonlandırmak için bu düğmeyi tıklatın.
 index_restart=Yapılandırmayı Uygula
 index_restartdesc=Çalışan FreeSWAN IPsec sunucu işlemini yeniden başlatarak mevcut yapılandırmayı etkinleştirmek için bu düğmeyi tıklatın. Kurulan tüm bağlantılar sonlandırılacaktır.
-index_conn=Bağlantı $1 
+index_conn=Bağlantı $1
 index_defconn=Tüm bağlantılar için varsayılanlar
 index_boot=Önyükleme zamanında başla
 index_bootdesc=IPsec sunucusunun önyükleme zamanında başlatılıp başlatılmayacağını denetlemek için bu seçeneği değiştirin.
@@ -29,7 +29,7 @@ index_import=Bağlantıyı dosyadan içe aktar.
 stop_err=IPsec sunucusu durdurulamadı
 start_err=IPsec sunucusu başlatılamadı
 restart_err=IPsec sunucusu yeniden başlatılamadı
-start_elog=Aşağıdaki hatalar günlüğe kaydedildi : $1 
+start_elog=Aşağıdaki hatalar günlüğe kaydedildi : $1
 
 newkey_err=Anahtar oluşturulamadı
 newkey_ehost=Eksik veya geçersiz ana bilgisayar adı
@@ -174,8 +174,8 @@ save_eikelifetime=Kanal anahtarlama ömrü eksik veya geçersiz
 
 log_create_conn=$1 bağlantısı kuruldu
 log_delete_conn=$1 silinen bağlantı
-log_modify_conn=Değiştirilmiş bağlantı $1 
-log_import_conn=İçe aktarılan bağlantı $1 
+log_modify_conn=Değiştirilmiş bağlantı $1
+log_import_conn=İçe aktarılan bağlantı $1
 log_up=$1 başlatıldı
 log_policy=$1 kaydedildi
 log_start=Başlatılan IPsec sunucusu
@@ -201,7 +201,7 @@ export_save=Yapılandırmayı dosyaya yaz ..
 export_ok=Şimdi Dışa Aktar
 export_err=Yapılandırma dışa aktarılamadı
 export_efile=Eksik dosya adı
-export_esave=Dosyaya yazılamadı : $1 
+export_esave=Dosyaya yazılamadı : $1
 export_done=$1 - $2 bağlantısı için dışa aktarılan yapılandırma ($3 bayt).
 
 import_title=Yapılandırmayı İçe Aktar
@@ -229,7 +229,7 @@ secrets_psk=Paylaşılan sır
 secrets_rsa=RSA genel anahtarı
 secrets_any=Herhangi bir ana bilgisayar
 secrets_pass=$1 şifresi
-secrets_mod=Modül $1 
+secrets_mod=Modül $1
 secrets_newpsk=Yeni paylaşılan gizli anahtar oluşturun.
 secrets_newrsa=Yeni RSA anahtarı oluşturun.
 secrets_return=gizli anahtar listesi
@@ -241,7 +241,7 @@ secret_name=Gizli anahtar
 secret_for=Sunucular
 secret_type=Anahtar türü
 secret_pass=Paylaşılan şifre
-secret_rsa=RSA $1 
+secret_rsa=RSA $1
 secret_value=Anahtar değer
 secret_err=Gizli anahtar kaydedilemedi
 secret_elast=Kalan son gizli anahtar silinemez

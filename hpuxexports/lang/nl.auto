@@ -68,8 +68,8 @@ save_enohost='$1' - U heeft geen hosts vermeld
 save_euids=UID's die u niet kunt vertrouwen, moeten een door komma's gescheiden lijst met cijfers of bereiken zijn
 save_egids=GID's die u niet kunt vertrouwen, moeten een door komma's gescheiden lijst met nummers of bereiken zijn
 
-log_modify=Gewijzigde NFS-export $1 
-log_modify_l=Gewijzigde NFS-export $1 naar $2 
+log_modify=Gewijzigde NFS-export $1
+log_modify_l=Gewijzigde NFS-export $1 naar $2
 log_delete=NFS-export $1 verwijderd
 log_delete_l=NFS-export $1 naar $2 verwijderd
 log_create=NFS-export $1 gemaakt

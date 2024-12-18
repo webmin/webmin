@@ -13,10 +13,10 @@ global_password_file=Użyj pliku menu, jeśli hasło zostało wprowadzone:
 global_epassword=Brakujące lub nieprawidłowe hasło rozruchowe
 global_epasswordfile=Brak alternatywnej nazwy pliku menu
 
-log_create_title=Utworzono opcję rozruchu $1 
-log_delete_title=Usunięto opcję rozruchu $1 
-log_modify_title=Zmodyfikowana opcja rozruchu $1 
-log_up_title=Opcja rozruchu w górę $1 
-log_down_title=Przeniesiono opcję uruchamiania w dół $1 
+log_create_title=Utworzono opcję rozruchu $1
+log_delete_title=Usunięto opcję rozruchu $1
+log_modify_title=Zmodyfikowana opcja rozruchu $1
+log_up_title=Opcja rozruchu w górę $1
+log_down_title=Przeniesiono opcję uruchamiania w dół $1
 log_global=Zmieniono opcje globalne
 log_install=Zainstalowany GRUB

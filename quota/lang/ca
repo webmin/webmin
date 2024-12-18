@@ -34,7 +34,7 @@ check_title=Comprovació de Quotes
 check_return=a la llista $1
 check_ecannot=No pots verificar les quotes d'aquest sistema de fitxers
 check_running=Ara s'està executant l'ordre <tt>quotacheck</tt> per verificar l'ús dels blocs i els fitxers a <tt>$1</tt>. Això pot trigar molt si el sistema de fitxers és molt gran...
-check_done=...Fet. 
+check_done=...Fet.
 check_rgroup=grup
 check_ruser=usuari
 
@@ -71,7 +71,7 @@ cuform_members=Membres dels grups seleccionats
 cuform_doit=Copia
 
 egroup_title=Edició de Quota de Grup
-egroup_freturn=llista de sistemes de fitxers 
+egroup_freturn=llista de sistemes de fitxers
 egroup_greturn=llista de grups
 egroup_eallowgr=No tens permís per editar les quotes de '$1'
 egroup_eallowfs=No tens permís per editar les quotes d'aquest sistema de fitxers
@@ -134,7 +134,7 @@ gfilesys_enone=No has introduït cap nom de grup
 ggracef_title=Períodes de Gràcia
 ggracef_return=a la llista de grups
 ggracef_ecannot=No pots editar els períodes de gràcia en aquest sistema de fitxers
-ggracef_info=Cada sistema de fitxers té un període de gràcia per a les quotes de blocs i fitxers. El període de gràcia determina quant temps pot estar un grup per damunt del límit de programari abans no se li permeti de seguir creant fitxers. 
+ggracef_info=Cada sistema de fitxers té un període de gràcia per a les quotes de blocs i fitxers. El període de gràcia determina quant temps pot estar un grup per damunt del límit de programari abans no se li permeti de seguir creant fitxers.
 ggracef_graces=Períodes de Gràcia de Grup de <tt>$1</tt>
 ggracef_block=De la quota de blocs
 ggracef_file=De la quota de fitxers

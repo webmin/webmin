@@ -1,14 +1,14 @@
 index_title=WU-FTPD serveris
 index_eftpd=Jūsu sistēmā nevarēja atrast FTP serveri $1. Varbūt tas nav instalēts, vai jūsu <a href='$2'>FTP servera moduļa konfigurācija</a> ir nepareiza.
 index_eftpaccess=FTP servera konfigurācijas fails $1 neeksistē. Varbūt tas nav instalēts, vai jūsu <a href='$2'>FTP servera moduļa konfigurācija</a> ir nepareiza.
-index_eversion=Šķiet, ka FTP serveris $1 nav WU-FTPd. Varbūt jūs izmantojat vecāku FTPd, kas piegādāts kopā ar jūsu operētājsistēmu, vai <a href='$2'>FTP servera moduļa konfigurācija</a> ir pareiza. Izvade no FTP servera bija : $3 
+index_eversion=Šķiet, ka FTP serveris $1 nav WU-FTPd. Varbūt jūs izmantojat vecāku FTPd, kas piegādāts kopā ar jūsu operētājsistēmu, vai <a href='$2'>FTP servera moduļa konfigurācija</a> ir pareiza. Izvade no FTP servera bija : $3
 index_apply=Lietot izmaiņas
 index_applymsg=Noklikšķiniet uz šīs pogas, lai lietotu pašreizējo konfigurāciju. Tas pārtrauks un restartēs visus darbojošos FTP servera procesus, tādējādi atvienojot visus pievienotos lietotājus.
 index_start=Startēt serveri
 index_startmsg=Noklikšķiniet uz šīs pogas, lai startētu FTP serveri ar pašreizējo konfigurāciju. Varat arī konfigurēt servera automātisku palaišanu, ja nepieciešams, izmantojot <a href='$1'>interneta pakalpojumus</a>.
 index_startmsg2=Noklikšķiniet uz šīs pogas, lai startētu FTP serveri ar pašreizējo konfigurāciju. Varat arī konfigurēt serveri tā, lai tas automātiski tiktu startēts, ja nepieciešams, izmantojot inetd vai līdzvērtīgu programmu.
 index_return=FTP servera opcijas
-index_version=WU-FTPd versija $1 
+index_version=WU-FTPd versija $1
 
 class_title=Lietotāji un klases
 class_header=Lietotāju klases un lietotāju iespējas

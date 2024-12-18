@@ -1,4 +1,4 @@
-index_version=OpenLDAP $1 
+index_version=OpenLDAP $1
 index_openldap=OpenLDAP
 index_eslapd=Programul serverului OpenLDAP $1 nu a fost găsit în sistemul dvs. Poate că calea din pagina de configurare a modulului <a href='$2'></a> este incorectă?
 index_econfig=Fișierul de configurare a serverului OpenLDAP $1 nu a fost găsit în sistemul dvs. Poate că calea din pagina de configurare a modulului <a href='$2'></a> este incorectă?
@@ -24,10 +24,10 @@ connect_efile=Fișierul de configurare OpenLDAP $1 nu a fost găsit - poate că 
 connect_euser2=Niciun utilizator să se autentifice așa cum a fost găsit în configurația serverului LDAP
 connect_epass2=În configurația serverului LDAP nu s-a găsit nicio parolă cu care să vă autentificați
 connect_epass3=Parola din configurația serverului LDAP este criptată și nu poate fi utilizată de Webmin
-connect_emod=Modulul Perl $1 necesar pentru conectarea la serverul LDAP nu este instalat. Mesajul complet de eroare Perl este : $2 
-connect_eldap=Eroare la conectarea la serverul LDAP $1 pe portul $2 
-connect_essl=Nu a putut începe criptarea TLS cu serverul LDAP $1 : $2 
-connect_elogin=Eroare la autentificarea pe serverul LDAP $1 ca $2 : $3 
+connect_emod=Modulul Perl $1 necesar pentru conectarea la serverul LDAP nu este instalat. Mesajul complet de eroare Perl este : $2
+connect_eldap=Eroare la conectarea la serverul LDAP $1 pe portul $2
+connect_essl=Nu a putut începe criptarea TLS cu serverul LDAP $1 : $2
+connect_elogin=Eroare la autentificarea pe serverul LDAP $1 ca $2 : $3
 connect_cpan=Puteți avea <tt>$1</tt> Modulul Perl <a href='$2'>instalat automat</a> din CPAN.
 
 slapd_title=Configurare server OpenLDAP
@@ -109,11 +109,11 @@ acl_add=Adăugați o nouă regulă de control de acces.
 acl_return=reguli de control de acces
 
 browser_title=Parcurgeți baza de date
-browser_econn=Navigatorul LDAP nu poate fi utilizat : $1 
+browser_econn=Navigatorul LDAP nu poate fi utilizat : $1
 browser_ecannot=Nu aveți voie să navigați în baza de date LDAP
 browser_base=Răsfoirea:
 browser_ok=Spectacol
-browser_esearch=Căutarea LDAP a eșuat : $1 
+browser_esearch=Căutarea LDAP a eșuat : $1
 browser_subs=Obiecte pentru copii
 browser_attrs=Atributele obiectului
 browser_parent=Căutați părinte
@@ -144,26 +144,26 @@ browser_sok=Căutare
 
 save_err=Nu a reușit să schimbe atributul
 save_ebase=Nu s-a putut extrage obiectul $1 din baza de date
-save_emodify=Modificarea LDAP a $2 în $1 a eșuat : $3 
+save_emodify=Modificarea LDAP a $2 în $1 a eșuat : $3
 save_enone=Nu au fost introduse valori
 
 add_err=Eroare la adăugarea atributului
 add_eadd=Numele atributului lipsește sau este nevalid
 add_evalue=Valoarea lipsă
-add_emodify=Adăugarea LDAP de $2 la $1 a eșuat : $3 
+add_emodify=Adăugarea LDAP de $2 la $1 a eșuat : $3
 
 delete_err=Nu a reușit să elimine atributele
 delete_enone=Nimic selectat
-delete_emodify=Ștergerea LDAP din $2 din $1 a eșuat : $3 
+delete_emodify=Ștergerea LDAP din $2 din $1 a eșuat : $3
 
 sdelete_err=Nu a putut șterge obiectele
 sdelete_edn=Obiectul $1 nu a fost găsit
-sdelete_edel=Ștergerea LDAP din $1 a eșuat : $2 
+sdelete_edel=Ștergerea LDAP din $1 a eșuat : $2
 
 rename_err=Nu a putut redenumi un obiect
-rename_eget=Nu s-a putut găsi obiectul cu DN $1 
+rename_eget=Nu s-a putut găsi obiectul cu DN $1
 rename_enew=Numele nou nu pare să fie valid
-rename_erename=LDAP newdn la $2 din $1 a eșuat : $3 
+rename_erename=LDAP newdn la $2 din $1 a eșuat : $3
 
 oadd_title=Creați obiect
 oadd_header=Detalii despre obiectul LDAP noi
@@ -175,11 +175,11 @@ oadd_edn1=Numele care lipsește sau este nevalid pentru DN
 oadd_edn2=Valoare lipsă sau nevalidă pentru DN
 oadd_eclasses=Nu au fost introduse clase de obiecte
 oadd_eclass=„$1” nu arată ca o clasă de obiect valabilă
-oadd_ename=Nume cu aspect nevalid pentru atributul $1 
-oadd_eget=Nu a reușit să obțină obiectul $1 : $2 
-oadd_eget2=Nu a reușit verificarea ciocnirii cu $1 : $2 
-oadd_eclash=Există deja un obiect cu DN $1 
-oadd_eadd=Adăugarea LDAP din $1 a eșuat : $2 
+oadd_ename=Nume cu aspect nevalid pentru atributul $1
+oadd_eget=Nu a reușit să obțină obiectul $1 : $2
+oadd_eget2=Nu a reușit verificarea ciocnirii cu $1 : $2
+oadd_eclash=Există deja un obiect cu DN $1
+oadd_eadd=Adăugarea LDAP din $1 a eșuat : $2
 oadd_err=Nu a reușit să creeze un obiect nou
 
 create_title=Creați Arbore
@@ -198,7 +198,7 @@ create_edom=Numele de domeniu lipsesc sau nevalide
 create_edn=Numele distinct lipsit sau nevalid
 create_err=Nu a reușit să creeze un arbore nou
 create_doingdn=Crearea bazei de date DN $1 ..
-create_edoingdn=.. eșuat : $1 
+create_edoingdn=.. eșuat : $1
 create_done=.. Terminat
 create_doingex=Crearea unui obiect de exemplu cu DN $1 ..
 create_edoingex=.. eșuat: $1. Cu toate acestea, arborele poate fi încă utilizat.
@@ -207,48 +207,48 @@ create_eoc=Nu s-a putut găsi o clasă de obiect adecvată pentru noul DN
 eunknown=Eroare necunoscută
 
 apply_err=Eroare la aplicarea configurației
-apply_ecmd=$1 a eșuat : $2 
+apply_ecmd=$1 a eșuat : $2
 apply_ecannot=Nu aveți voie să aplicați configurația
 
 stop_err=Nu a reușit oprirea serverului LDAP
-stop_ecmd=$1 a eșuat : $2 
+stop_ecmd=$1 a eșuat : $2
 stop_egone=Nu mai alerga!
-stop_ekill=Procesul de ucidere a eșuat : $1 
+stop_ekill=Procesul de ucidere a eșuat : $1
 stop_ecannot=Nu aveți voie să opriți serverul LDAP
 
 start_err=Eroare la pornirea serverului LDAP
-start_ecmd=$1 a eșuat : $2 
+start_ecmd=$1 a eșuat : $2
 start_ecannot=Nu aveți voie să porniți serverul LDAP
 
-log_create_dn=Obiect creat $1 
-log_delete_dn=Obiectul șters $1 
-log_rename_dn=Redenumit obiect $1 
+log_create_dn=Obiect creat $1
+log_delete_dn=Obiectul șters $1
+log_rename_dn=Redenumit obiect $1
 log_delete_dns=$1 obiecte șterse
-log_create_attr=Se adaugă atribut la obiectul $2 
-log_create_attr_l=S-a adăugat atributul $1 cu valoarea $3 la obiectul $2 
-log_modify_attr=Atribut actualizat în obiectul $2 
-log_modify_attr_l=Actualizat atribut $1 cu valoarea $3 în obiectul $2 
-log_delete_attr=Șters din obiectul $2 
-log_delete_attr_l=S-a șters atributul $1 din obiectul $2 
-log_delete_attrs=Atributele $1 șterse de la obiectul $2 
+log_create_attr=Se adaugă atribut la obiectul $2
+log_create_attr_l=S-a adăugat atributul $1 cu valoarea $3 la obiectul $2
+log_modify_attr=Atribut actualizat în obiectul $2
+log_modify_attr_l=Actualizat atribut $1 cu valoarea $3 în obiectul $2
+log_delete_attr=Șters din obiectul $2
+log_delete_attr_l=S-a șters atributul $1 din obiectul $2
+log_delete_attrs=Atributele $1 șterse de la obiectul $2
 log_stop=Serverul LDAP oprit
 log_start=A început serverul LDAP
 log_apply=Configurație aplicată
 log_slapd=Modificarea configurației serverului LDAP
 log_schema=Schimbat schemele LDAP activate
 log_gencert=A fost generat un nou certificat SSL
-log_sfile=Fișier de schemă modificat $1 
-log_sup=Mutat fișierul de schemă $1 
-log_sdown=Mutat în jos fișierul de schemă $1 
-log_create=Creat nou DN $1 
+log_sfile=Fișier de schemă modificat $1
+log_sup=Mutat fișierul de schemă $1
+log_sdown=Mutat în jos fișierul de schemă $1
+log_create=Creat nou DN $1
 log_bootup=Activat serverul LDAP la pornire
 log_bootdown=Dezactivat serverul LDAP la pornire
 log_perms=S-au rezolvat permisiunile serverului LDAP
-log_create_access=Creată regula de control de acces pentru $1 
-log_delete_access=Ștergeți regula de control de acces pentru $1 
-log_modify_access=Regula de control de acces actualizată pentru $1 
-log_up_access=A mutat regula de control de acces pentru $1 
-log_down_access=Reglarea controlului accesului pentru $1 
+log_create_access=Creată regula de control de acces pentru $1
+log_delete_access=Ștergeți regula de control de acces pentru $1
+log_modify_access=Regula de control de acces actualizată pentru $1
+log_up_access=A mutat regula de control de acces pentru $1
+log_down_access=Reglarea controlului accesului pentru $1
 log_delete_accesses=Reguli de control de acces $1 șterse
 log_all=toate obiectele
 
@@ -275,7 +275,7 @@ acl_create=Poate crea un copac nou?
 acl_start=Poate porni și opri serverul LDAP?
 acl_apply=Poate aplica modificări de configurare?
 
-access_desc=$2 cu $1 
+access_desc=$2 cu $1
 access_self=de sine
 access_users=utilizatori autentificați
 access_anon=utilizatori anonimi
@@ -322,7 +322,7 @@ eacl_err=Nu a reușit să salveze regula de control de acces
 eacl_edn=DN lipsă sau invalid - ar trebui să fie ca <tt>uid=joe,dc=my-domain,dc=com</tt>
 eacl_efilter=Filtrul lipsă sau invalid - ar trebui să fie ca <tt>(objectClass = posixAccount)</tt>
 eacl_eattrs=Lista de atribute care lipsește sau nu este validă
-eacl_ewho=DN lipsă sau cu aspect nevalid din rândul $1 
-eacl_eaccess=Nivelul de acces lipsă sau nevalid din rândul $1 
+eacl_ewho=DN lipsă sau cu aspect nevalid din rândul $1
+eacl_eaccess=Nivelul de acces lipsă sau nevalid din rândul $1
 eacl_order=Ordinea regulilor
 eacl_noorder=Nu este setat

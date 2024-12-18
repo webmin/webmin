@@ -4,7 +4,7 @@ index_ecmd2=De SpamAssassin opdracht $1 is niet gevonden op uw systeem.
 index_econfig=De SpamAssassin locale configuratie file of directory $1 is niet gevonden op uw systeem. Misschien is SpamAssassin niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
 index_edb=Mislukt om te verbinden met de SpamAssassin configuratie database : $1. Controleer de <a href='$2'>module configuratie</a> om er zeker van te zijn dat u de juiste instellingen gebruikt.
 index_version=SpamAssassin versie $1
-index_warn_usermin=SpamAssassin lijkt niet te zijn ingesteld in uw Procmail configuratie file $2  of de globale file $1, dus iedere configuratie die deze module gebruikt zal geen effect hebben totdat SpamAssassin globaal is opgezet.
+index_warn_usermin=SpamAssassin lijkt niet te zijn ingesteld in uw Procmail configuratie file $2 of de globale file $1, dus iedere configuratie die deze module gebruikt zal geen effect hebben totdat SpamAssassin globaal is opgezet.
 index_warn_webmin=SpamAssassin lijkt niet te zijn opgezet in uw systeem Procmail configuratie file $1, dus iedere configuratie die deze module gebruikt zal geen effect hebben totdat gebruikers het individueel hebben ingesteld.
 index_return=module index
 index_apply=Veranderingen toevoegen

@@ -3,7 +3,7 @@ index_header=Velg en bruker for å endre hans/hennes passord
 index_return=bruker liste
 index_user=Endre passord for bruker:
 index_euseradmin=Denne modulen kan ikke brukes siden bruker og gruppe modulen ikke er installert eller ikke støttes på maskinen.
-index_toomany=Det er for mange brukere for å kunne vise på skjermen.  Skriv inn navnet på brukeren som du ønsker og endre passord på nedenfor..
+index_toomany=Det er for mange brukere for å kunne vise på skjermen. Skriv inn navnet på brukeren som du ønsker og endre passord på nedenfor..
 index_none=Du har ikke tilgang til å endre passord for noen brukere.
 
 passwd_title=Endre Passord

@@ -574,7 +574,7 @@ themes_desc=Motivy určují vzhled uživatelského rozhraní Webminu, předevš�
 themes_sel=Aktuální motiv :
 themes_default=Výchozí Webmin motiv
 themes_change=Změnit
-themes_installdesc=Při použití níže zobrazeného formuláře můžete nainstalovat ndo vašeho systému nový motiv Webminu. Motivy jsou standardně distribuovány pomocí souborů <tt>.wbt</tt>, mohou však být instalovány  pomocí souboru RPM, pokud to podporuje váš operační systém.
+themes_installdesc=Při použití níže zobrazeného formuláře můžete nainstalovat ndo vašeho systému nový motiv Webminu. Motivy jsou standardně distribuovány pomocí souborů <tt>.wbt</tt>, mohou však být instalovány pomocí souboru RPM, pokud to podporuje váš operační systém.
 themes_installok=Instalovat motiv
 
 themes_err1=Chyba při instalaci motivu z $1

@@ -14,5 +14,5 @@ acl_user_def=Trenutačni korisnik Webmina
 acl_shellenv=Koristite odabrano okruženje korisnika?
 acl_chroot=Chroot u imenik
 
-log_run=Naredba ran $1 
+log_run=Naredba ran $1
 log_clear=Izbrisana povijest naredbi

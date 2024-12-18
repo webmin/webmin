@@ -9,7 +9,7 @@ index_eha_cf=Sykemääritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä sit
 index_eharesources=Resurssitiedostoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole vielä kopioitu paikalleen tai <a href='$2'>moduulin kokoonpano</a> on väärä.
 index_eauthkeys=Autentikointiavaintiedostoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole vielä kopioitu paikalleen tai <a href='$2'>moduulin kokoonpano</a> on väärä.
 index_ereq_resource_cmd=Skriptiä resurssien pyytämiseksi toiselta solmulta ($1) ei löytynyt järjestelmästäsi. Ehkä sitä ei ole vielä kopioitu paikalleen tai <a href='$2'>moduulin kokoonpano</a> on väärä.
-index_version=Sykeversio $1 
+index_version=Sykeversio $1
 index_noversion=Varoitus - Järjestelmään asennettua Heartbeat-versiota ei voitu tunnistaa automaattisesti. Sinun tulisi asettaa se <a href='$1'>moduulin kokoonpano</a> -sivulle.
 index_status=Sydämen syke
 
@@ -21,7 +21,7 @@ conf_bcasts=Ethernet-sykerajapinnat
 conf_none=Ei mitään
 conf_udpport=UDP-sykeportti
 conf_mcast=Multicast-sykelaite
-conf_mcastv=Laite $1, ryhmä $2, portti $3, TTL $4, silmukka $5 
+conf_mcastv=Laite $1, ryhmä $2, portti $3, TTL $4, silmukka $5
 conf_enabled=käytössä
 conf_disabled=Liikuntarajoitteinen
 conf_keepalive=Aika sydämenlyöntien välillä

@@ -701,7 +701,7 @@ mod_setenvif_var=Variabele
 mod_setenvif_value=Waarde
 mod_setenvif_txt=Variabelen instellen op basis van aanvraag headers
 mod_setenvif_eheader=Ongeldige aanvraag header '$1'
-mod_setenvif_eregex=Ongeldige reguliere expressie  '$1'
+mod_setenvif_eregex=Ongeldige reguliere expressie '$1'
 mod_setenvif_evar=Ongeldige variabele naam '$1'
 mod_setenvif_clear=Wissen
 

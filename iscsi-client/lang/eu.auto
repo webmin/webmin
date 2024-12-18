@@ -68,7 +68,7 @@ iscsi_ecmds=Saio bakoitzeko ilaran dauden gehieneko komandoak falta edo ez diren
 iscsi_equeue=Gailu bakoitzeko ilaran dauden gehieneko komando falta edo ez-zenbakiak
 
 ifaces_title=iSCSI interfazeak
-ifaces_elist=Huts egin du interfazeak zerrendatzean : $1 
+ifaces_elist=Huts egin du interfazeak zerrendatzean : $1
 ifaces_name=Interfazearen izena
 ifaces_transport=Garraioa
 ifaces_uses=Erabilitakoak
@@ -92,7 +92,7 @@ iadd_ename=Interfazearen izena falta da edo karaktere baliogabeak ditu
 
 difaces_err=Ezin izan da interfazeak kendu
 difaces_enone=Ez da hautatu
-difaces_edelete=$1 interfazea kentzeak huts egin du : $2 
+difaces_edelete=$1 interfazea kentzeak huts egin du : $2
 difaces_title=Kendu iSCSI interfazeak
 difaces_rusure=Ziur hautatutako $1 interfazeak kendu nahi dituzula?
 difaces_rusure1=Ziur $1 interfazea kendu nahi duzula?
@@ -102,7 +102,7 @@ difaces_ip=iSCSI zerbitzaria
 difaces_users=Interfaze hauek erabiltzen dituzten konexio batzuk aktibatuta daude eta ez dute funtzionatzen interfazeak kentzean :
 
 conns_title=iSCSI konexioak
-conns_elist=Huts egin du konexioen zerrendak : $1 
+conns_elist=Huts egin du konexioen zerrendak : $1
 conns_ip=Zerbitzariaren IPa
 conns_sport=Zerbitzari portua
 conns_name=Zerbitzariaren izena
@@ -120,7 +120,7 @@ conns_start=Konektatu ..
 conns_return=konexioen zerrenda
 conns_iface=iSCSI interfazea
 conns_ifacedef=Aukeratu automatikoki
-conns_ifaceerr=Huts egin du interfazeak eskuratzean : $1 
+conns_ifaceerr=Huts egin du interfazeak eskuratzean : $1
 
 add_title=Gehitu iSCSI konexioa
 add_err=Ezin izan da iSCSI konexioa gehitu
@@ -141,7 +141,7 @@ add_auth0=Sartu $2 gisa $3 pasahitzarekin $1 metodoa erabiliz
 
 dconns_err=Ezin izan da konexioak deskonektatu
 dconns_enone=Ez da hautatu
-dconns_edelete=$2 ostalariaren $1 kentzeak huts egin du : $3 
+dconns_edelete=$2 ostalariaren $1 kentzeak huts egin du : $3
 dconns_title=Deskonektatu iSCSI konexioak
 dconns_rusure=Ziur zaude $1 hautatutako konexioak kendu nahi dituzula?
 dconns_rusure1=Ziur konexioa $1 -era kentzea nahi duzula?

@@ -1,7 +1,7 @@
 index_title=Tường lửa Shorewall
 index_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
 index_edir=Không tìm thấy thư mục cấu hình Shorewall $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
-index_version=Phiên bản Shorewall $1 
+index_version=Phiên bản Shorewall $1
 index_return=danh sách các bảng
 index_restart=Áp dụng cấu hình
 index_restartdesc=Nhấp vào nút này để kích hoạt cấu hình Shorewall hiện tại bằng lệnh <tt>shorewall restart</tt>.
@@ -82,7 +82,7 @@ policy_1=Vùng đích
 policy_2=Chính sách
 policy_3=Cấp độ nhật ký hệ thống
 policy_4=Giới hạn lưu lượng
-policy_limit=Giới hạn $1, Burst $2 
+policy_limit=Giới hạn $1, Burst $2
 policy_return=danh sách chính sách
 policy_edit=Chỉnh sửa chính sách mặc định
 policy_create=Tạo chính sách mặc định
@@ -306,13 +306,13 @@ hosts_err=Không thể lưu máy chủ khu vực
 hosts_enet=Địa chỉ máy chủ bị thiếu hoặc không hợp lệ
 hosts_header=Chi tiết máy chủ khu vực
 hosts_routestopped=Tuyến đường ngay cả khi tường lửa bị dừng?
-hosts_ip=Địa chỉ hoặc mạng $1 
-hosts_mac=Địa chỉ MAC $1 
-hosts_ipset=IP đặt $1 
+hosts_ip=Địa chỉ hoặc mạng $1
+hosts_mac=Địa chỉ MAC $1
+hosts_ipset=IP đặt $1
 hosts_any=Bất kỳ máy chủ lưu trữ
 
-edit_before=Trước khi nhập $1 
-edit_after=Sau khi nhập $1 
+edit_before=Trước khi nhập $1
+edit_after=Sau khi nhập $1
 
 blacklist_title=Chủ nhà trong danh sách đen
 blacklist_desc=Trang này liệt kê các máy chủ và dịch vụ sẽ bị chặn nếu lưu lượng truy cập từ chúng đến trên một giao diện với tùy chọn <b>danh sách đen</b> được đặt.
@@ -436,16 +436,16 @@ comment_msg=Thông điệp
 comment_err=Không thể lưu bình luận
 comment_enone=Không có tin nhắn nào được nhập
 
-log_create_table=Đã thêm mục vào bảng $1 
-log_modify_table=Mục đã sửa đổi trong bảng $1 
-log_delete_table=Đã xóa mục nhập từ bảng $1 
-log_deletes_table=Đã xóa các mục từ bảng $1 
-log_up_table=Đã chuyển lên mục trong bảng $1 
-log_down_table=Đã chuyển xuống mục trong bảng $1 
+log_create_table=Đã thêm mục vào bảng $1
+log_modify_table=Mục đã sửa đổi trong bảng $1
+log_delete_table=Đã xóa mục nhập từ bảng $1
+log_deletes_table=Đã xóa các mục từ bảng $1
+log_up_table=Đã chuyển lên mục trong bảng $1
+log_down_table=Đã chuyển xuống mục trong bảng $1
 log_manual_table=Chỉnh sửa thủ công tệp bảng $1
-log_create_comment=Đã thêm nhận xét vào bảng $1 
-log_modify_comment=Nhận xét đã sửa đổi trong bảng $1 
-log_delete_comment=Đã xóa nhận xét từ bảng $1 
+log_create_comment=Đã thêm nhận xét vào bảng $1
+log_modify_comment=Nhận xét đã sửa đổi trong bảng $1
+log_delete_comment=Đã xóa nhận xét từ bảng $1
 log_stop=Tường lửa đã dừng
 log_start=Bắt đầu tường lửa
 log_refresh=Tường lửa được làm mới

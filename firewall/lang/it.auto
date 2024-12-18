@@ -1,8 +1,8 @@
 index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
 index_position=Visualizzazione delle regole da $1 a $2 di $3
-index_editing=File delle regole $1 
-index_evalid=AVVERTIMENTO! La configurazione corrente di IPtables non è valida : $1 
+index_editing=File delle regole $1
+index_evalid=AVVERTIMENTO! La configurazione corrente di IPtables non è valida : $1
 index_comm=Commento
 index_no_comment=
 index_jump_reject=<font color=#ff4400>Rifiuta</font>
@@ -37,21 +37,21 @@ index_ipvxmode=Cambia versione protocollo IP:
 index_ipvx4=IPv4
 index_ipvx6=IPv6
 
-desc_icmpv6-type=Il tipo ICMP è $1 
-desc_icmpv6-type!=Il tipo ICMP non è $1 
-desc_mac-source=l'indirizzo Ethernet è $1 
-desc_mac-source!=l'indirizzo Ethernet non è $1 
-desc_ctstate=lo stato della connessione è $1 
-desc_ctstate!=lo stato della connessione non è $1 
+desc_icmpv6-type=Il tipo ICMP è $1
+desc_icmpv6-type!=Il tipo ICMP non è $1
+desc_mac-source=l'indirizzo Ethernet è $1
+desc_mac-source!=l'indirizzo Ethernet non è $1
+desc_ctstate=lo stato della connessione è $1
+desc_ctstate!=lo stato della connessione non è $1
 desc_match-set=$2 corrisponde al set IP $1
 desc_match-set!=$2 non corrisponde al set IP $1
 desc_match-set_src=traffico in entrata
 desc_match-set_dst=traffico in uscita
-desc_physdev-in=l'interfaccia fisica di input è $1 
-desc_physdev-in!=l'interfaccia fisica di input non è $1 
-desc_physdev-out=l'interfaccia fisica di output è $1 
-desc_physdev-out!=l'interfaccia fisica di output non è $1 
-desc_args--match-set=$2 è contenuto nel set IP $1 
+desc_physdev-in=l'interfaccia fisica di input è $1
+desc_physdev-in!=l'interfaccia fisica di input non è $1
+desc_physdev-out=l'interfaccia fisica di output è $1
+desc_physdev-out!=l'interfaccia fisica di output non è $1
+desc_args--match-set=$2 è contenuto nel set IP $1
 desc_src=fonte
 desc_dest=destinazione
 
@@ -85,18 +85,18 @@ clear_ecannot=Non è consentito cancellare le catene
 new_ecannot=Non ti è permesso creare catene
 
 apply_ecannot=Non è consentito applicare la configurazione
-apply_remote=Errore da $1 : $2 
+apply_remote=Errore da $1 : $2
 unapply_ecannot=Non è consentito ripristinare la configurazione
 bootup_ecannot=Non è consentito abilitare o disabilitare il firewall all'avvio
 
-log_rename_chain=Catena rinominata $1 nella tabella $2 
-log_delsel_chain=Eliminate le regole $3 dalla catena $1 nella tabella $2 
-log_movesel_chain=Spostato $3 regole dalla catena $1 nella tabella $2 
-log_add_host=Server cluster aggiunto $1 
-log_add_group=Server cluster aggiunti dal gruppo $1 
-log_delete_host=Server cluster rimosso $1 
+log_rename_chain=Catena rinominata $1 nella tabella $2
+log_delsel_chain=Eliminate le regole $3 dalla catena $1 nella tabella $2
+log_movesel_chain=Spostato $3 regole dalla catena $1 nella tabella $2
+log_add_host=Server cluster aggiunto $1
+log_add_group=Server cluster aggiunti dal gruppo $1
+log_delete_host=Server cluster rimosso $1
 log_delete_group=Server cluster $1 rimossi
-log_openports=Porte firewall aperte $1 
+log_openports=Porte firewall aperte $1
 
 setup_ecannot=Non è consentito configurare il firewall
 
@@ -133,7 +133,7 @@ add_gmsg=Aggiunta di server nel gruppo $1 ..
 add_err=Impossibile aggiungere il server
 add_gerr=Impossibile aggiungere il gruppo
 add_echeck=Il server $1 non ha il modulo Linux Firewall
-add_emissing=Nel server $1 manca il comando firewall $2 
+add_emissing=Nel server $1 manca il comando firewall $2
 add_ok=Aggiunto $1, con $2 regole firewall attive.
 add_enone=Nessun server da aggiungere selezionato!
 

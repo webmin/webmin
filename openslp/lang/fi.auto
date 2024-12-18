@@ -2,7 +2,7 @@ index_title=OpenSLP-määritykset
 index_return=OpenSLP-määritykset
 index_eslpd=OpenSLP-demonia $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
 index_econf=OpenSLP-määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
-index_version=OpenSLP-versio $1 
+index_version=OpenSLP-versio $1
 
 slp_apply=Ota muutokset käyttöön
 slp_stop=Lopeta OpenSLP

@@ -9,7 +9,7 @@ index_eha_cf=Die hartklop-konfigurasielêer $1 is nie op u stelsel gevind nie. M
 index_eharesources=Die hulpbronlêer $1 is nie op u stelsel gevind nie. Miskien is dit nog nie op sy plek gekopieër nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
 index_eauthkeys=Die verifikasiesleutelslêer $1 is nie op u stelsel gevind nie. Miskien is dit nog nie op sy plek gekopieër nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
 index_ereq_resource_cmd=Die skrip om hulpbronne van die ander node ($1) aan te vra, is nie op u stelsel gevind nie. Miskien is dit nog nie op sy plek gekopieër nie, of is die <a href='$2'>module-opstelling</a> verkeerd.
-index_version=Hartklopweergawe $1 
+index_version=Hartklopweergawe $1
 index_noversion=Waarskuwing - die weergawe van Heartbeat wat op u stelsel geïnstalleer is, kon nie outomaties opgespoor word nie. U moet dit op die <a href='$1'>module-opstelling</a> instel.
 index_status=Hartslagstatus
 
@@ -21,7 +21,7 @@ conf_bcasts=Ethernet-hartklop-koppelvlakke
 conf_none=Geen
 conf_udpport=UDP hartklop hawe
 conf_mcast=Multicast-hartklop-toestel
-conf_mcastv=Toestel $1, groep $2, poort $3, TTL $4, terugloop $5 
+conf_mcastv=Toestel $1, groep $2, poort $3, TTL $4, terugloop $5
 conf_enabled=enabled
 conf_disabled=gestremde
 conf_keepalive=Tyd tussen hartklop

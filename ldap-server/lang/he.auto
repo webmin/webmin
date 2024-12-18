@@ -1,4 +1,4 @@
-index_version=OpenLDAP $1 
+index_version=OpenLDAP $1
 index_openldap=OpenLDAP
 index_eslapd=תוכנית שרת OpenLDAP $1 לא נמצאה במערכת שלך. אולי הנתיב בדף <a href='$2'>תצורת המודול</a> אינו נכון?
 index_econfig=קובץ התצורה של שרת OpenLDAP $1 לא נמצא במערכת שלך. אולי הנתיב בדף <a href='$2'>תצורת המודול</a> אינו נכון?
@@ -24,10 +24,10 @@ connect_efile=קובץ התצורה של OpenLDAP $1 לא נמצא - אולי ל
 connect_euser2=אין משתמש בכניסה כפי שנמצא בתצורת שרת LDAP
 connect_epass2=בתצורת שרת LDAP לא נמצאה סיסמה להתחברות אליה
 connect_epass3=הסיסמה בתצורת שרת LDAP מוצפנת ולא יכולה לשמש את Webmin
-connect_emod=מודול Perl $1 הדרוש כדי להתחבר לשרת LDAP אינו מותקן. הודעת השגיאה המלאה של Perl היא : $2 
+connect_emod=מודול Perl $1 הדרוש כדי להתחבר לשרת LDAP אינו מותקן. הודעת השגיאה המלאה של Perl היא : $2
 connect_eldap=התחברות לשרת LDAP $1 ביציאה $2 נכשלה
-connect_essl=לא הצליח להפעיל קידוד TLS עם שרת LDAP $1 : $2 
-connect_elogin=הכניסה לשרת LDAP $1 נכשלה כ- $2 : $3 
+connect_essl=לא הצליח להפעיל קידוד TLS עם שרת LDAP $1 : $2
+connect_elogin=הכניסה לשרת LDAP $1 נכשלה כ- $2 : $3
 connect_cpan=אתה יכול להתקין את <tt>$1</tt> מודול Perl <a href='$2'>באופן אוטומטי</a> מ- CPAN.
 
 slapd_title=תצורת שרת OpenLDAP
@@ -109,11 +109,11 @@ acl_add=הוסף כלל בקרת גישה חדש.
 acl_return=כללי בקרת גישה
 
 browser_title=עיין במאגר
-browser_econn=לא ניתן להשתמש בדפדפן LDAP : $1 
+browser_econn=לא ניתן להשתמש בדפדפן LDAP : $1
 browser_ecannot=אינך מורשה לגלוש במסד הנתונים של LDAP
 browser_base=גלישה:
 browser_ok=הופעה
-browser_esearch=חיפוש LDAP נכשל : $1 
+browser_esearch=חיפוש LDAP נכשל : $1
 browser_subs=חפצים מילדים
 browser_attrs=תכונות אובייקט
 browser_parent=עיין בהורה
@@ -144,26 +144,26 @@ browser_sok=לחפש
 
 save_err=שינוי התכונה נכשל
 save_ebase=לא ניתן היה להביא את האובייקט $1 ממסד הנתונים
-save_emodify=שינוי LDAP של $2 ב- $1 נכשל : $3 
+save_emodify=שינוי LDAP של $2 ב- $1 נכשל : $3
 save_enone=לא הוזנו ערכים
 
 add_err=הוספת תכונה נכשלה
 add_eadd=שם תכונה חסר או לא חוקי
 add_evalue=ערך חסר
-add_emodify=תוספת LDAP של $2 ל- $1 נכשלה : $3 
+add_emodify=תוספת LDAP של $2 ל- $1 נכשלה : $3
 
 delete_err=הסרת התכונות נכשלה
 delete_enone=לא נבחר
-delete_emodify=מחיקת LDAP של $2 מ- $1 נכשלה : $3 
+delete_emodify=מחיקת LDAP של $2 מ- $1 נכשלה : $3
 
 sdelete_err=מחיקת אובייקטים נכשלה
 sdelete_edn=אובייקט $1 לא נמצא
-sdelete_edel=מחיקת LDAP של $1 נכשלה : $2 
+sdelete_edel=מחיקת LDAP של $1 נכשלה : $2
 
 rename_err=שינוי שם האובייקט נכשל
-rename_eget=לא נמצא אובייקט עם DN $1 
+rename_eget=לא נמצא אובייקט עם DN $1
 rename_enew=נראה כי שם חדש אינו תקף
-rename_erename=LDAP חדש ל- $2 מ- $1 נכשל : $3 
+rename_erename=LDAP חדש ל- $2 מ- $1 נכשל : $3
 
 oadd_title=צור אובייקט
 oadd_header=פרטי אובייקט LDAP חדשים
@@ -175,11 +175,11 @@ oadd_edn1=שם חסר או לא חוקי עבור DN
 oadd_edn2=ערך חסר או לא חוקי עבור DN
 oadd_eclasses=לא נכנסו כיתות אובייקט
 oadd_eclass='$1' לא נראה כמו מחלקת אובייקטים תקפה
-oadd_ename=שם לא חוקי למראה של תכונה $1 
-oadd_eget=נכשל השגת האובייקט $1 : $2 
+oadd_ename=שם לא חוקי למראה של תכונה $1
+oadd_eget=נכשל השגת האובייקט $1 : $2
 oadd_eget2=בדיקת ההתנגשות עם $1 : $2 נכשלה
 oadd_eclash=אובייקט עם ה- DN $1 כבר קיים
-oadd_eadd=תוספת LDAP של $1 נכשלה : $2 
+oadd_eadd=תוספת LDAP של $1 נכשלה : $2
 oadd_err=יצירת אובייקט חדש נכשלה
 
 create_title=צור עץ
@@ -198,7 +198,7 @@ create_edom=שם תחום חסר או לא חוקי
 create_edn=שם מכובד חסר או לא תקף
 create_err=יצירת עץ חדש נכשלה
 create_doingdn=יצירת בסיס DN $1.
-create_edoingdn=.. נכשל : $1 
+create_edoingdn=.. נכשל : $1
 create_done=.. בוצע
 create_doingex=יצירת אובייקט דוגמה עם DN $1.
 create_edoingex=.. נכשל: $1. עם זאת, עדיין ניתן להשתמש בעץ.
@@ -207,48 +207,48 @@ create_eoc=לא ניתן למצוא מעמד אובייקטים מתאים ל- D
 eunknown=שגיאה לא ידועה
 
 apply_err=החלת התצורה נכשלה
-apply_ecmd=$1 נכשל : $2 
+apply_ecmd=$1 נכשל : $2
 apply_ecannot=אינך מורשה להחיל את התצורה
 
 stop_err=עצירת שרת LDAP נכשלה
-stop_ecmd=$1 נכשל : $2 
+stop_ecmd=$1 נכשל : $2
 stop_egone=כבר לא רץ!
-stop_ekill=תהליך ההרג נכשל : $1 
+stop_ekill=תהליך ההרג נכשל : $1
 stop_ecannot=אינך רשאי לעצור את שרת LDAP
 
 start_err=הפעלת שרת LDAP נכשלה
-start_ecmd=$1 נכשל : $2 
+start_ecmd=$1 נכשל : $2
 start_ecannot=אינך מורשה להפעיל את שרת LDAP
 
-log_create_dn=נוצר אובייקט $1 
+log_create_dn=נוצר אובייקט $1
 log_delete_dn=אובייקט $1 נמחק
-log_rename_dn=שונה שם לאובייקט $1 
+log_rename_dn=שונה שם לאובייקט $1
 log_delete_dns=$1 אובייקטים נמחקו
-log_create_attr=נוסף תכונה לאובייקט $2 
-log_create_attr_l=נוסף תכונה $1 עם ערך $3 לאובייקט $2 
-log_modify_attr=תכונה מעודכנת באובייקט $2 
-log_modify_attr_l=תכונה $1 מעודכנת עם ערך $3 באובייקט $2 
-log_delete_attr=נמחק מהאובייקט $2 
-log_delete_attr_l=התכונה $1 נמחקה מהאובייקט $2 
-log_delete_attrs=נמחקו תכונות $1 מאובייקט $2 
+log_create_attr=נוסף תכונה לאובייקט $2
+log_create_attr_l=נוסף תכונה $1 עם ערך $3 לאובייקט $2
+log_modify_attr=תכונה מעודכנת באובייקט $2
+log_modify_attr_l=תכונה $1 מעודכנת עם ערך $3 באובייקט $2
+log_delete_attr=נמחק מהאובייקט $2
+log_delete_attr_l=התכונה $1 נמחקה מהאובייקט $2
+log_delete_attrs=נמחקו תכונות $1 מאובייקט $2
 log_stop=שרת LDAP הופסק
 log_start=שרת LDAP התחיל
 log_apply=תצורה מיושמת
 log_slapd=שינוי תצורת שרת LDAP
 log_schema=סכיני LDAP מופעלים השתנו
 log_gencert=הפיק תעודת SSL חדשה
-log_sfile=קובץ הסכימה השתנה $1 
-log_sup=קובץ הסכימה הועבר $1 
-log_sdown=הועבר קובץ הסכימה למטה $1 
+log_sfile=קובץ הסכימה השתנה $1
+log_sup=קובץ הסכימה הועבר $1
+log_sdown=הועבר קובץ הסכימה למטה $1
 log_create=יצר DN $1 חדש
 log_bootup=שרת LDAP מופעל בעת האתחול
 log_bootdown=שרת LDAP מושבת בעת האתחול
 log_perms=הרשאות שרת LDAP קבועות
-log_create_access=יצר כלל בקרת גישה עבור $1 
-log_delete_access=מחק את כלל בקרת הגישה עבור $1 
-log_modify_access=כלל בקרת הגישה המעודכן עבור $1 
-log_up_access=כלל בקרת הגישה הועבר ל- $1 
-log_down_access=כלל בקרת הגישה למטה הועבר ל- $1 
+log_create_access=יצר כלל בקרת גישה עבור $1
+log_delete_access=מחק את כלל בקרת הגישה עבור $1
+log_modify_access=כלל בקרת הגישה המעודכן עבור $1
+log_up_access=כלל בקרת הגישה הועבר ל- $1
+log_down_access=כלל בקרת הגישה למטה הועבר ל- $1
 log_delete_accesses=כללי בקרת הגישה של $1 נמחקו
 log_all=כל החפצים
 
@@ -275,7 +275,7 @@ acl_create=האם ניתן ליצור עץ חדש?
 acl_start=האם ניתן להתחיל ולעצור את שרת LDAP?
 acl_apply=האם ניתן להחיל שינויי תצורה?
 
-access_desc=$2 על $1 
+access_desc=$2 על $1
 access_self=עצמי
 access_users=משתמשים מאומתים
 access_anon=משתמשים אנונימיים
@@ -322,7 +322,7 @@ eacl_err=שמירת כלל בקרת הגישה נכשלה
 eacl_edn=DN חסר או לא חוקי - אמור להיות כמו <tt>uid=joe,dc=my-domain,dc=com</tt>
 eacl_efilter=פילטר חסר או לא חוקי - אמור להיות כמו <tt>(objectClass = posixAccount)</tt>
 eacl_eattrs=רשימת תכונות חסרות או לא חוקיות מופרדות בפסיקים
-eacl_ewho=DN חסר או לא חוקי למראה בשורה $1 
-eacl_eaccess=רמת גישה חסרה או לא חוקית בשורה $1 
+eacl_ewho=DN חסר או לא חוקי למראה בשורה $1
+eacl_eaccess=רמת גישה חסרה או לא חוקית בשורה $1
 eacl_order=סדר שלטון
 eacl_noorder=אין סטים

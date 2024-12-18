@@ -9,7 +9,7 @@ index_stopdesc=Нажмите эту кнопку, чтобы остановит
 index_start=Запустить Syslog-NG
 index_startdesc=Нажмите эту кнопку, чтобы запустить демон Syslog-NG, используя текущую конфигурацию.
 index_return=индекс модуля
-index_version=Системный журнал-NG $1 
+index_version=Системный журнал-NG $1
 
 options_title=Параметры ведения журнала
 options_header=Параметры для всех файлов журнала
@@ -71,15 +71,15 @@ destinations_typet=TCP системный журнал
 destinations_typeg=Гнездо датаграммы
 destinations_types=Потоковая розетка
 destinations_allusers=Все пользователи
-destinations_users=Только пользователи $1 
-destinations_host=Хост $1 
+destinations_users=Только пользователи $1
+destinations_host=Хост $1
 destinations_view=Посмотреть ..
 destinations_none=Файлы журнала назначения еще не определены.
 destinations_delete=Удалить выбранные пункты назначения
 destinations_add=Добавьте новое место назначения журнала.
 destinations_return=журнал назначения
 destinations_desc=Журнал другого модуля
-destinations_cmd=Выход из $1 
+destinations_cmd=Выход из $1
 
 destination_header=Варианты назначения журнала
 destination_title1=Создать журнал назначения
@@ -259,10 +259,10 @@ source_edoor=Отсутствует или неверно указано имя 
 source_transport=Сетевой протокол
 
 view_title=Просмотр лог файла
-view_header=Последние $1 строк $2 
+view_header=Последние $1 строк $2
 view_empty=Файл журнала пуст
 view_refresh=обновление
-view_filter=Показывать только строки с текстом $1 
+view_filter=Показывать только строки с текстом $1
 
 apply_err=Не удалось применить конфигурацию
 apply_egone=Не бегать!
@@ -271,17 +271,17 @@ start_err=Не удалось запустить сервер Syslog-NG
 
 stop_err=Не удалось остановить сервер Syslog-NG
 
-log_create_destination=Создан журнал назначения $1 
-log_modify_destination=Изменено назначение журнала $1 
-log_delete_destination=Удаленный журнал назначения $1 
+log_create_destination=Создан журнал назначения $1
+log_modify_destination=Изменено назначение журнала $1
+log_delete_destination=Удаленный журнал назначения $1
 log_delete_destinations=Удалено $1 пунктов назначения журнала
-log_create_filter=Создан фильтр журнала $1 
-log_modify_filter=Модифицированный фильтр журнала $1 
-log_delete_filter=Удаленный фильтр журнала $1 
+log_create_filter=Создан фильтр журнала $1
+log_modify_filter=Модифицированный фильтр журнала $1
+log_delete_filter=Удаленный фильтр журнала $1
 log_delete_filters=Удалены $1 журнальные фильтры
-log_create_source=Создан источник журнала $1 
-log_modify_source=Модифицированный источник журнала $1 
-log_delete_source=Удаленный источник журнала $1 
+log_create_source=Создан источник журнала $1
+log_modify_source=Модифицированный источник журнала $1
+log_delete_source=Удаленный источник журнала $1
 log_delete_sources=Удалено $1 источников журнала
 log_create_log=Созданная цель журнала
 log_modify_log=Модифицированная цель журнала

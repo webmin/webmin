@@ -14,5 +14,5 @@ acl_user_def=משתמש נוכחי Webmin
 acl_shellenv=משתמשים בסביבת המשתמש הנבחרת?
 acl_chroot=גרוט לספריה
 
-log_run=רץ פקודה $1 
+log_run=רץ פקודה $1
 log_clear=ניקוי היסטוריית הפקודה

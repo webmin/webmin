@@ -18,7 +18,7 @@ edit_title=Sunting Profil Membakar
 create_title=Cipta Profile Membakar
 edit_emkisofs=Arahan untuk membina sistem fail ISO $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau <a href='$2'>konfigurasi modul</a> ada adalah tidak betul.
 edit_empg123=Arahan penyahkodan MP3 $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau <a href='$2'>konfigurasi modul</a> ada adalah tidak betul.
-edit_ecdrdao=Arahan menyalin CD $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau  <a href='$2'>konfigurasi modul</a> anda adalah tidak betul.
+edit_ecdrdao=Arahan menyalin CD $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau <a href='$2'>konfigurasi modul</a> anda adalah tidak betul.
 edit_header=Pilihan profil membakar
 edit_name=Nama profil
 edit_iso=Imej ISO untuk ditulis
@@ -60,7 +60,7 @@ save_emp3=Fail MP3 atau direktori '$1' tidak wujud
 save_eother=Fail sumber peranti tidak wujud
 save_ecannot1=Imej ISO dalam direktori yang tidak dibenarkan
 save_ecannot2=Direktori sumber $1 adalah di bawah direktori yang tidak dibenarkan
-save_ecannot3=Fail MP3 atau direktori $1 adalah dalam direktori yang  tidak dibenarkan
+save_ecannot3=Fail MP3 atau direktori $1 adalah dalam direktori yang tidak dibenarkan
 save_ecannot4=Fail peranti sumber dalam direktori yang tidak dibenarkan
 burn_title=Membakar CD
 burn_rutest1=Adakah anda pasti anda mahu menguji membakar imej ISO $1 ?
@@ -125,7 +125,7 @@ config_temp=Direktori fail sementara
 config_temp_def=Direktori sementara Webmin
 config_ecdrecord=Hilang atau arahan membakar CD tidak sah
 config_emkisofs=Hilang atau arahan membina sistem fail ISO tidak sah
-config_empg123=Hilang atau arahan penyahkodan MP3  tidak sah
+config_empg123=Hilang atau arahan penyahkodan MP3 tidak sah
 config_esox=Hilang atau arahan SOX tidak sah
 config_ecdrdao=Hilang atau arahan menyalin CD tidak sah
 config_etemp=Hilang atau direktori fail sementara tidak sah

@@ -1,12 +1,12 @@
 index_title=État du lecteur SMART
 index_ecmd=La commande de contrôle SMART $1 est introuvable sur votre système ou n'est pas définie correctement dans la <a href='$2'>configuration du module</a>. Il doit être installé avant que ce module puisse être utilisé.
 index_ecmd2=La commande $1 ne semble pas être la commande de contrôle SMART. Il doit être correctement défini dans la <a href='$2'>configuration du module</a> avant de pouvoir utiliser ce module.
-index_version=Version SMARTsuite $1 
+index_version=Version SMARTsuite $1
 index_show=Afficher l'état du lecteur:
 index_ok=Spectacle
 index_eidescsi=Aucun disque IDE, SCSI ou SATA n'a été trouvé sur votre système.
-index_drive=État du lecteur $1 
-index_drivesub=État du lecteur $1, disque $2 
+index_drive=État du lecteur $1
+index_drivesub=État du lecteur $1, disque $2
 index_desc=Emplacement
 index_size=Taille du lecteur
 index_model=Marque et modèle
@@ -36,11 +36,11 @@ monitor_edrive=Disque manquant ou non valide à vérifier
 monitor_nosuch=Pas un tel lecteur
 monitor_nosmart=Pas de support SMART
 monitor_errorsfound=$1 erreurs signalées
-monitor_errorsinced=Les erreurs sont passées de $2 à $1 
+monitor_errorsinced=Les erreurs sont passées de $2 à $1
 monitor_wearlevel=Échec si le niveau d'usure tombe en dessous
 monitor_ewearlevel=Pourcentage de niveau d'usure non valide
 monitor_nowearout=Le lecteur ne signale pas d'indicateur d'usure SSD
-monitor_wornout=Le niveau d'usure est tombé à $1 
+monitor_wornout=Le niveau d'usure est tombé à $1
 
 short_title=Autotest court
 short_doing=Démarrage d'un autotest court de $1 ..

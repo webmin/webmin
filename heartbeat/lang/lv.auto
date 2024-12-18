@@ -9,7 +9,7 @@ index_eha_cf=Jūsu sistēmā netika atrasts sirdsdarbības konfigurācijas fails
 index_eharesources=Resursu fails $1 jūsu sistēmā netika atrasts. Varbūt tas vēl nav nokopēts vietā, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_eauthkeys=Autentifikācijas atslēgu fails $1 jūsu sistēmā netika atrasts. Varbūt tas vēl nav nokopēts vietā, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_ereq_resource_cmd=Jūsu sistēmā netika atrasts skripts resursu pieprasīšanai no otra mezgla ($1). Varbūt tas vēl nav nokopēts vietā, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
-index_version=Sirdsdarbības versija $1 
+index_version=Sirdsdarbības versija $1
 index_noversion=Brīdinājums: jūsu sistēmā instalēto Heartbeat versiju nevarēja automātiski noteikt. Jums tas jāiestata <a href='$1'>moduļa konfigurācijas lapā</a>.
 index_status=Sirdsdarbības statuss
 
@@ -21,7 +21,7 @@ conf_bcasts=Ethernet sirdsdarbības saskarnes
 conf_none=Nav
 conf_udpport=UDP sirdsdarbības osta
 conf_mcast=Multicast sirdsdarbības ierīce
-conf_mcastv=Ierīce $1, grupa $2, ports $3, TTL $4, atgriezeniskā saite $5 
+conf_mcastv=Ierīce $1, grupa $2, ports $3, TTL $4, atgriezeniskā saite $5
 conf_enabled=Iespējots
 conf_disabled=Invalīds
 conf_keepalive=Laiks starp sirdspukstiem

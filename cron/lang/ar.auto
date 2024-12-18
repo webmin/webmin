@@ -162,18 +162,18 @@ ecopy=تم اكتشاف خطأ في تكوين Cron الجديد:$1 $2
 
 when_min=كل دقيقة
 when_hour=كل ساعة عند$1 بعد الساعة
-when_day=كل يوم في $2:$1 
-when_month=في اليوم$3 كل شهر عند $2:$1 
-when_weekday=كل$3 في $2:$1 
+when_day=كل يوم في $2:$1
+when_month=في اليوم$3 كل شهر عند $2:$1
+when_weekday=كل$3 في $2:$1
 when_cron=في وقت كرون$1
 when_interval=كل$1 ثانية
 when_boot=في وقت بدء التشغيل
 
 ucwhen_min=كل دقيقة
 ucwhen_hour=كل ساعة عند$1 بعد الساعة
-ucwhen_day=كل يوم في $2:$1 
-ucwhen_month=في اليوم$3 كل شهر عند $2:$1 
-ucwhen_weekday=كل$3 في $2:$1 
+ucwhen_day=كل يوم في $2:$1
+ucwhen_month=في اليوم$3 كل شهر عند $2:$1
+ucwhen_weekday=كل$3 في $2:$1
 ucwhen_cron=في وقت كرون$1
 ucwhen_interval=كل$1 ثانية
 ucwhen_boot=في وقت بدء التشغيل

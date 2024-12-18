@@ -9,7 +9,7 @@ index_eha_cf=Không tìm thấy tệp cấu hình nhịp tim $1 trên hệ thố
 index_eharesources=Không tìm thấy tệp tài nguyên $1 trên hệ thống của bạn. Có thể nó chưa được sao chép vào vị trí hoặc <a href='$2'>cấu hình mô-đun</a> không chính xác.
 index_eauthkeys=Không tìm thấy tệp khóa xác thực $1 trên hệ thống của bạn. Có thể nó chưa được sao chép vào vị trí hoặc <a href='$2'>cấu hình mô-đun</a> không chính xác.
 index_ereq_resource_cmd=Tập lệnh yêu cầu tài nguyên từ nút khác ($1) không được tìm thấy trên hệ thống của bạn. Có thể nó chưa được sao chép vào vị trí hoặc <a href='$2'>cấu hình mô-đun</a> không chính xác.
-index_version=Phiên bản nhịp tim $1 
+index_version=Phiên bản nhịp tim $1
 index_noversion=Cảnh báo - Không thể tự động phát hiện phiên bản Heartbeat được cài đặt trên hệ thống của bạn. Bạn nên đặt nó trên trang <a href='$1'>cấu hình mô-đun</a>.
 index_status=Tình trạng nhịp tim
 
@@ -21,7 +21,7 @@ conf_bcasts=Giao diện nhịp tim Ethernet
 conf_none=không ai
 conf_udpport=Cổng nhịp tim UDP
 conf_mcast=Thiết bị nhịp tim đa điểm
-conf_mcastv=Thiết bị $1, nhóm $2, cổng $3, TTL $4, loopback $5 
+conf_mcastv=Thiết bị $1, nhóm $2, cổng $3, TTL $4, loopback $5
 conf_enabled=Đã bật
 conf_disabled=Tàn tật
 conf_keepalive=Thời gian giữa những nhịp đập

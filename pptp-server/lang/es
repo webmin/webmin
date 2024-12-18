@@ -7,7 +7,7 @@ index_stopdesc=Presione sobre este botón para cerrar el proceso PPTP servidor e
 index_start=Iniciar el servidor PPTP
 index_startdesc=Presione sobre este botón para iniciar el proceso PPTP servidor de manera que se pueda recibir conexiones VPN de los clientes.
 index_apply=Aplicar la Configuración
-index_applydesc=Presione sobre este botón para aplicar las opciones actuales del servidor PPTP deteniendo y reiniciando el proceso PPTP servidor. Los cambios de las opciones PPP y las cuentas PPP se aplicaran siempre en cualquier nueva conexión. 
+index_applydesc=Presione sobre este botón para aplicar las opciones actuales del servidor PPTP deteniendo y reiniciando el proceso PPTP servidor. Los cambios de las opciones PPP y las cuentas PPP se aplicaran siempre en cualquier nueva conexión.
 index_return=índice de módulos
 index_epppd=El programa servidor PPP $1 no está instalado. PPTP depende para poder operar.
 
@@ -62,7 +62,7 @@ options_emtu=Falta la longitud máxima de los paquetes enviados o bien es invál
 options_emru=Falta la longitud máxima de los paquetes recibidos o bien es inválida
 options_ename=Falta el nombre del servidor para la autenticación o bien es inválido
 options_version=PPPd versión $1
-options_msdesc= Las opciones de a bajo activan el método de autenticación MS-CHAP y el cifrado MPPE, que es el utilizado por defecto por los clientes VPN de Windows. No obstante, MPPE necesita soporte tanto en el demonio PPP como en el kernel del sistema operativo.
+options_msdesc=Las opciones de a bajo activan el método de autenticación MS-CHAP y el cifrado MPPE, que es el utilizado por defecto por los clientes VPN de Windows. No obstante, MPPE necesita soporte tanto en el demonio PPP como en el kernel del sistema operativo.
 options_mschap=Autenticación MS-CHAP
 options_mschap-v2=Autenticación MS-CHAP versión 2
 options_chapms=$options_mschap

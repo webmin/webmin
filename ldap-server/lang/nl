@@ -46,7 +46,7 @@ slapd_set=Ingesteld naar
 slapd_cachesize=Indexen om in cache te zetten
 slapd_dbcachesize=Database ingangen om in cache te zetten
 slapd_err=Mislukt om LDAP server configuratie op te slaan
-slapd_elocal=Er is geen LDAP server  geinstalleerd op dit systeem
+slapd_elocal=Er is geen LDAP server geinstalleerd op dit systeem
 slapd_esuffix=Ontbrekende of ongeldig lijkende root DN - het moet lijken op <tt>dc=jouw-domein,dc=com</tt>
 slapd_erootdn=Ontbrekende of ongeldig lijkende Administratie login - het moet lijken op <tt>cn=Manager,dc=jouw-domein,dc=com</tt>
 slapd_erootpw=Ontbrekend nieuwe administratie wachtwoord

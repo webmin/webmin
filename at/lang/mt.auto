@@ -68,9 +68,9 @@ deletes_err=Naqset milli tikkanċella l-kmandi
 deletes_enone=L-ebda magħżul
 
 log_allow=Utenti permessi mibdula
-log_create_job=Inħoloq kmand skedat għal $1 
-log_delete_job=Ikkanċella l-kmand skedat għal $1 
-log_exec_job=Eżegwit kmand skedat għal $1 
+log_create_job=Inħoloq kmand skedat għal $1
+log_delete_job=Ikkanċella l-kmand skedat għal $1
+log_exec_job=Eżegwit kmand skedat għal $1
 log_delete_jobs=Ikkanċellat $1 kmandi skedati
 log_stop=Server tal-kmand skedat imwaqqaf
 log_start=Server tal-kmand skedat beda

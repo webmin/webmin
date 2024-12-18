@@ -56,7 +56,7 @@ edit_timeout=Tempo limite de conexão
 edit_failed=Falhou ao conectar
 edit_baduser=Login rejeitado
 edit_invalid=O usuário não pode fazer RPC
-edit_version=Executando o Webmin $1 
+edit_version=Executando o Webmin $1
 edit_same=Disponível apenas não no modo de autenticação de sessão e quando a senha é disponibilizada para os programas Webmin.
 
 save_err=Falha ao salvar o servidor
@@ -71,12 +71,12 @@ save_elogin=Login ou senha inválida para hospedar
 save_egroup2=Novo nome de grupo inválido
 
 find_title=Localizar servidores
-find_new=Novo servidor encontrado em $1 
-find_but=Foi encontrado um novo servidor em $1, mas a autenticação falhou : $2 
-find_already=Servidor conhecido encontrado em $1 
-find_already2=Host de servidor conhecido encontrado em $1 
-find_skip=Ignorando o servidor em $1 
-find_me=Encontrou este servidor em $1 
+find_new=Novo servidor encontrado em $1
+find_but=Foi encontrado um novo servidor em $1, mas a autenticação falhou : $2
+find_already=Servidor conhecido encontrado em $1
+find_already2=Host de servidor conhecido encontrado em $1
+find_skip=Ignorando o servidor em $1
+find_me=Encontrou este servidor em $1
 find_escan=A rede a digitalizar deve ser um endereço de rede de classe C.
 find_eiface=Não foi possível encontrar a interface para verificar
 find_none=Nenhum servidor respondeu à verificação.
@@ -85,13 +85,13 @@ find_scanning=Procurando servidores na rede $1 ..
 find_broading=Transmissão para servidores nos endereços $1 ..
 find_eport=Número de porta ausente ou inválido
 
-log_modify=Servidor modificado $1 
-log_create=Servidor registrado $1 
-log_delete=Servidor excluído $1 
-log_find=Servidor encontrado $1 
+log_modify=Servidor modificado $1
+log_create=Servidor registrado $1
+log_delete=Servidor excluído $1
+log_find=Servidor encontrado $1
 log_deletes=$1 servidores excluídos
 
-link_elogin=Falha ao fazer login em $1 como $2 
+link_elogin=Falha ao fazer login em $1 como $2
 link_ecannot=Você não tem permissão para usar este servidor
 link_essl=Você não possui a biblioteca perl Net::SSLeay instalada
 link_eautologin=Login ou senha inválida para $1. <a href='$2'>Clique aqui</a> para tentar novamente.
@@ -133,8 +133,8 @@ auto_sched=Verificar novos servidores?
 auto_sched1=Sim, a cada $1 minuto
 auto_net=Rede IP para digitalizar
 auto_auto=Rede local
-auto_ip=Redes IP $1 
-auto_iface=Rede na interface $1 
+auto_ip=Redes IP $1
+auto_iface=Rede na interface $1
 auto_user=Nome de usuário para novos servidores
 auto_pass=Senha para novos servidores
 auto_type=Tipo de sistema padrão

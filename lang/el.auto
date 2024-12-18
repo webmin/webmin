@@ -78,11 +78,11 @@ sql_epostgresqlconnect=Αποτυχία σύνδεσης με τη βάση δε
 sql_eldapdriver=Αποτυχία φόρτωσης της λειτουργικής μονάδας LDAP perl
 sql_eldapconnect=Αποτυχία σύνδεσης με το διακομιστή LDAP $1
 sql_eldaptls=Δεν ήταν δυνατή η εκκίνηση της κρυπτογράφησης TLS για το LDAP : $1
-sql_eldaplogin=Αποτυχία σύνδεσης στο διακομιστή LDAP ως $1 : $2 
+sql_eldaplogin=Αποτυχία σύνδεσης στο διακομιστή LDAP ως $1 : $2
 
 log_email_subject=Ενέργεια Webmin σε $1
 log_email_global=Webmin παγκόσμια δράση
-log_email_by=$1 κατά $2 
+log_email_by=$1 κατά $2
 log_email_desc=Αυτό το μήνυμα ηλεκτρονικού ταχυδρομείου εστάλη από το Webmin ως απόκριση σε μια ενέργεια χρήστη.
 log_email_mod=Μονάδα Webmin: $1
 log_email_moddesc=Τίτλος ενότητας: $1
@@ -111,9 +111,9 @@ paginator_nosearchrs=Δεν υπάρχουν αποτελέσματα που ν�
 
 langauto_include=Συμπεριλάβετε μηχανικές μεταφράσεις
 
-file_truncated_message=ανάκτησε $1 δεδομένων, περικοπή $2 από $3 
-file_truncated_message_head=ανάκτησε την αρχή $1 των δεδομένων, περικοπή $2 από το $3 
-file_truncated_message_tail=ανακτήθηκε το $1 των δεδομένων, περικοπή $2 από το $3 
+file_truncated_message=ανάκτησε $1 δεδομένων, περικοπή $2 από $3
+file_truncated_message_head=ανάκτησε την αρχή $1 των δεδομένων, περικοπή $2 από το $3
+file_truncated_message_tail=ανακτήθηκε το $1 των δεδομένων, περικοπή $2 από το $3
 
 defcert_error=Χρησιμοποιείται το προεπιλεγμένο $1 ομαδοποιημένο πιστοποιητικό SSL. Συνιστάται ιδιαίτερα να ενημερώσετε το προεπιλεγμένο πιστοποιητικό <tt>$2</tt> πριν προχωρήσετε στη σύνδεση.
 

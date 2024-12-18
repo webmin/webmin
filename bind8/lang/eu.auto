@@ -67,7 +67,7 @@ index_eexpired_conf=Sinadura automatikoa berriro gaitu behar da $1 orrian.
 index_eexpired_mod=Erabili $1 modulua DNSSEC ezgaitzeko domeinu horietarako, edo egiaztatu zergatik sinatu huts egiten duen.
 
 master_title=Editatu zona nagusia
-master_inview=$1 ikusita $2 
+master_inview=$1 ikusita $2
 master_ecannot=Ezin duzu zona hau editatu
 master_egone=$1 zona ez dago inolako bistatik
 master_egone2=$1 gunea ez dago!

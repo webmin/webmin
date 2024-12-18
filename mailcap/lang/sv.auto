@@ -38,9 +38,9 @@ enable_err=Det gick inte att aktivera MIME-program
 enable_eclash=Ett aktiverat MIME-program för $1 finns redan
 delete_enone=Ingen vald
 
-log_delete_mailcap=Radera MIME-program för $1 
-log_create_mailcap=Skapat MIME-program för $1 
-log_modify_mailcap=Modifierat MIME-program för $1 
+log_delete_mailcap=Radera MIME-program för $1
+log_create_mailcap=Skapat MIME-program för $1
+log_modify_mailcap=Modifierat MIME-program för $1
 log_delete_mailcaps=Raderade $1 MIME-program
 log_disable_mailcaps=Inaktiverad $1 MIME-program
 log_enable_mailcaps=Aktiverat $1 MIME-program

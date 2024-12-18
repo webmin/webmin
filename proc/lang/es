@@ -121,10 +121,10 @@ acl_edit=¿Puede matar y cambiar procesos de prioridad?
 acl_run=¿Puede ejecutar comandos?
 
 kill_kill=Matar Proceso
-kill_term= Terminar  
-kill_hup=  Rearrancar   
-kill_stop=    Parar    
-kill_cont=  Continuar  
+kill_term=Terminar  
+kill_hup=Rearrancar   
+kill_stop=Parar    
+kill_cont=Continuar  
 
 open_title=Archivos Abiertos y Conexiones
 open_proc=Para proceso $1 (PID $2)

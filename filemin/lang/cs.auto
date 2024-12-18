@@ -96,7 +96,7 @@ error_chown=Vlastníka se nepodařilo změnit
 error_delete=nelze smazat
 error_user_not_found=uživatel nebyl v tomto systému nalezen
 error_group_not_found=skupina v tomto systému neexistuje
-error_archive_type_not_supported= typ archivu zatím není podporován
+error_archive_type_not_supported=typ archivu zatím není podporován
 error_opening_file_for_writing=Nelze otevřít soubor pro zápis:
 error_writing_file=Chyba při zápisu souboru:
 error_numeric=musí být číselné!
@@ -153,14 +153,14 @@ menu_file=Soubor
 menu_edit=Upravit
 menu_tools=Nástroje
 menu_bookmarks=Záložky
-notallowed=Nemáte přístup k $1. Povolené adresáře jsou : $2 
-error_upload_emax=Nahraný soubor je větší než limit $1 
+notallowed=Nemáte přístup k $1. Povolené adresáře jsou : $2
+error_upload_emax=Nahraný soubor je větší než limit $1
 extract_etype=Nepodporovaný typ archivního souboru
 
 error_write=nemáte oprávnění k zápisu do tohoto souboru
 error_move=nemáte oprávnění k přesunutí tohoto souboru
 
-info_total1=Celkem: soubor $1 a adresář $2 
+info_total1=Celkem: soubor $1 a adresář $2
 info_total2=Celkem: $1 souborů a $2 adresáře
 info_total3=Celkem: $1 soubor a $2 adresáře
 info_total4=Celkem: $1 souborů a $2 adresářů

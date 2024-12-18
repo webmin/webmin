@@ -69,7 +69,7 @@ cvirt_eroot2=Neizdevās izveidot direktoriju '$1' : $2
 cvirt_eroot3=Jums nav atļauts izmantot saknes direktoriju '$1'
 cvirt_eroot4=Apache konfigurācijā nav definēts neviens lietotājs
 cvirt_etaken=Virtuālais serveris ar tādu pašu nosaukumu un portu jau pastāv
-cvirt_efile=Neizdevās uzrakstīt $1 : $2 
+cvirt_efile=Neizdevās uzrakstīt $1 : $2
 cvirt_emissing=Jaunais virtuālais serveris tika pievienots $1, taču Apache šo failu neizmanto. Pārbaudiet <a href='$2'>moduļa konfigurāciju</a> un pārliecinieties, vai 'Fails vai direktorijs, lai virtuālajiem serveriem pievienotu' ir pareizs.
 
 etype=Jums nav atļauts rediģēt šāda veida opcijas

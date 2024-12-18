@@ -8,8 +8,8 @@ view_atype=Typ přílohy
 view_aname=Příloha
 view_asize=Velikost souboru
 
-file_ealias=Neplatný formát pro řádek souboru aliasu : $1 
-file_etab=Neplatný formát pro řádek souboru mapy : $1 
+file_ealias=Neplatný formát pro řádek souboru aliasu : $1
+file_etab=Neplatný formát pro řádek souboru mapy : $1
 
 acl_vcatchall=Mohou vytvářet záchytná mapování?
 

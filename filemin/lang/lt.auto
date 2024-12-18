@@ -96,7 +96,7 @@ error_chown=Nepavyko pakeisti savininko
 error_delete=nepavyko ištrinti
 error_user_not_found=vartotojas nerastas šioje sistemoje
 error_group_not_found=grupės šioje sistemoje nėra
-error_archive_type_not_supported= archyvo tipas dar nepalaikomas
+error_archive_type_not_supported=archyvo tipas dar nepalaikomas
 error_opening_file_for_writing=Nepavyko atidaryti failo rašyti:
 error_writing_file=Klaida rašant failą:
 error_numeric=turi būti skaitiniai!
@@ -153,7 +153,7 @@ menu_file=Byla
 menu_edit=Redaguoti
 menu_tools=Įrankiai
 menu_bookmarks=Žymos
-notallowed=Jums neleidžiama patekti į $1. Leidžiami katalogai : $2 
+notallowed=Jums neleidžiama patekti į $1. Leidžiami katalogai : $2
 error_upload_emax=Įkeltas failas didesnis nei $1 riba
 extract_etype=Nepalaikomas archyvo failo tipas
 

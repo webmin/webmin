@@ -41,10 +41,10 @@ save_eroot=Не посочихте никакви хостове, с които 
 save_ealready=Директорията „$ $1“ вече се споделя
 save_ehost=Хостът "$ $1" не съществува
 
-log_modify=Модифициран дял на NFS $1 
-log_rename=Променен дял на NFS $1 до $2 
-log_create=Създаден дял от NFS $1 
-log_delete=Изтрити дял от NFS $1 
+log_modify=Модифициран дял на NFS $1
+log_rename=Променен дял на NFS $1 до $2
+log_create=Създаден дял от NFS $1
+log_delete=Изтрити дял от NFS $1
 log_apply=Приложени промени
 
 acl_view=Може ли да редактирате акции на NFS?

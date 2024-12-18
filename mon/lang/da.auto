@@ -117,7 +117,7 @@ service_monitor=Brug af skærm
 service_mon1=Standard skærm
 service_mon0=Anden skærm ..
 service_args=Overvåg parametre
-service_period=Overvågningsperiode $1 
+service_period=Overvågningsperiode $1
 service_days=Dage til kontrol
 service_hours=Åbningstider
 service_all=Alle
@@ -146,7 +146,7 @@ service_ename=Manglende eller ugyldigt servicenavn
 service_einterval=Manglende eller ugyldigt kontrolinterval
 service_eother=Manglende eller ugyldig skærm
 service_ehour=Manglende eller ugyldig time for periode $1 (skal være kl. 9 eller 17)
-service_eperiod=Ingen angivne dage eller timer for periode $1 
+service_eperiod=Ingen angivne dage eller timer for periode $1
 service_eevery=Manglende eller ugyldig servicealarminterval
 service_eafter=Manglende eller ugyldigt antal fejl inden alarm
 service_enum=Manglende eller ugyldige maksimale advarsler, der skal sendes
@@ -162,7 +162,7 @@ status_esame=MON-status CGI-programmet $1 er indstillet til <tt>mon.cgi</tt> scr
 
 users_title=MON brugere
 users_etype=MON-brugernes liste kan ikke redigeres, fordi MON ikke i øjeblikket er konfigureret til at bruge den til godkendelse på siden <a href='$1'>Globale indstillinger</a>.
-users_header=Tilladte MON-brugere i $1 
+users_header=Tilladte MON-brugere i $1
 users_nousers=Ingen MON-brugere er defineret i $1.
 users_add=Opret en ny bruger.
 users_return=MON brugere liste
@@ -185,7 +185,7 @@ auth_none=Ingen
 auth_all=Alle
 auth_sel=Kun brugere
 auth_err=Kunne ikke gemme klientkommandoer
-auth_eusers=Ingen brugere indtaster til kommando $1 
+auth_eusers=Ingen brugere indtaster til kommando $1
 
 periods_title=Definerede perioder
 periods_period=Periodens navn

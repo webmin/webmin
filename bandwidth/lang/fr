@@ -4,7 +4,7 @@ index_efiresys2=Le pare-feu $1 a été configuré mais n'a pu être trouvé. Mod
 index_elog=Le fichier $1 utilisé comme journal de l'utilisation de la bande passante est en fait un répertoire. Modifiez <a href='$2'>module configuration</a> to use a different path.
 index_edir=Le répertoire d'enregistrement des données de bande passante $1 n'existe pas ou n'est pas un répertoire. Modifiez la <a href='$2'>configuration du module</a> pour utiliser un autre chemin.
 index_emod=Le module Webmin $1 n'est pas installé sur ce système ou n'est pas supporté par votre système d'exploitation. Le module de Surveillance de bande passante ne peut fonctionner sans celui-ci.
-index_esyslog=Aucun des modules de gestion des Journaux Système n'est installé. Neither of the System Logs modules are installed on this system and supported by your OS.  Le module de Surveillance de bande passante ne peut fonctionner sans au moins un d'eux.
+index_esyslog=Aucun des modules de gestion des Journaux Système n'est installé. Neither of the System Logs modules are installed on this system and supported by your OS. Le module de Surveillance de bande passante ne peut fonctionner sans au moins un d'eux.
 index_firesys=via le pare-feu $1 et $2
 index_setupcannot=Cependant, vous n'avez pas les permissions pour l'installer !
 index_setupdesc=Avant que ce module puisse rendre compte de l'utilisation réseau de votre système, il doit être installé pour surveiller le trafic sur l'interface réseau externe choisie.

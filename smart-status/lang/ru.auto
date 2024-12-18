@@ -7,4 +7,4 @@ monitor_type2=Износ SSD
 monitor_wearlevel=Сбой, если уровень износа падает ниже
 monitor_ewearlevel=Неверный процент уровня износа
 monitor_nowearout=Накопитель не сообщает индикатор износа SSD
-monitor_wornout=Уровень износа упал до $1 
+monitor_wornout=Уровень износа упал до $1

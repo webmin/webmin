@@ -444,6 +444,6 @@ dmass_doing=$1 kullanıcısını pasifleştiriyor ..
 dmass_already=.. zaten pasifleştirilmiş!
 
 emass_title=Kullanıcıları Aktifleştir
-emass_pass=Şifre açılıyor .. 
+emass_pass=Şifre açılıyor ..
 emass_doing=$1 kullanıcısı aktifleşiyor ..
 emass_already=.. henüz aktifleştirildi!

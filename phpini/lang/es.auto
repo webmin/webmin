@@ -11,7 +11,7 @@ index_anyfile=Edite otro archivo de configuración de PHP:
 index_return=Archivos de configuración
 
 file_global=Configuración global de PHP
-file_eread=Error al leer $1 : $2 
+file_eread=Error al leer $1 : $2
 
 manual_title=Editar configuración manualmente
 manual_desc=Esta página se puede usar para editar manualmente un archivo de configuración de PHP. Esto debe hacerse con cuidado, ya que no se realizará ninguna sintaxis u otra verificación de validez en sus cambios.
@@ -124,7 +124,7 @@ errors_maxlen=Tamaño máximo de errores registrados
 errors_file=Archivo de registro de errores
 errors_none=Ninguna
 errors_syslog=Syslog
-errors_other=Otro archivo $1 
+errors_other=Otro archivo $1
 errors_unlimited=Ilimitado
 errors_err=Error al guardar el registro de errores
 errors_ereporting=No se ingresó ninguna expresión de tipo de error
@@ -152,15 +152,15 @@ misc_path=Información de ruta de reparación de CGI?
 misc_timezone=Zona horaria de PHP
 misc_charset=Conjunto de caracteres predeterminado
 
-log_manual=Editar manualmente el archivo $1 
-log_vars=Variables PHP modificadas en $1 
-log_dirs=Se modificó la configuración del directorio en $1 
-log_db=Se modificó la configuración de la base de datos en $1 
-log_session=Opciones de sesión modificadas en $1 
-log_safe=Se cambiaron las opciones de modo seguro en $1 
-log_limits=Se modificaron los límites de recursos en $1 
-log_errors=Se modificó el registro de errores en $1 
-log_misc=Cambió otras configuraciones en $1 
+log_manual=Editar manualmente el archivo $1
+log_vars=Variables PHP modificadas en $1
+log_dirs=Se modificó la configuración del directorio en $1
+log_db=Se modificó la configuración de la base de datos en $1
+log_session=Opciones de sesión modificadas en $1
+log_safe=Se cambiaron las opciones de modo seguro en $1
+log_limits=Se modificaron los límites de recursos en $1
+log_errors=Se modificó el registro de errores en $1
+log_misc=Cambió otras configuraciones en $1
 
 acl_global=¿Se puede editar la configuración global de PHP?
 acl_anyfile=¿Se puede editar cualquier archivo como una configuración PHP?

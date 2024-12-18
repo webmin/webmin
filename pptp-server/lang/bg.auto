@@ -1,5 +1,5 @@
 index_title=PPTP VPN сървър
-index_version=PoPToP версия $1 
+index_version=PoPToP версия $1
 index_epptpd=PoPToP PPTP сървър $1 не е намерен във вашата система или не е правилната програма. Може би не е инсталиран или вашата <a href='$2'>конфигурация на модул</a> е неправилна.
 index_econfig=Конфигурационният файл PPTP сървър $1 не бе намерен във вашата система. Може би вашата <a href='$2'>конфигурация на модул</a> е неправилна.
 index_stop=Спрете PPTP сървъра
@@ -63,7 +63,7 @@ options_err=Неуспешно запазване на PPP опции
 options_emtu=Липсващ или невалиден максимален размер на изпращане
 options_emru=Липсващ или невалиден максимален размер на приемащия пакет
 options_ename=Липсващо или невалидно име на сървъра за удостоверяване
-options_version=PPPd версия $1 
+options_version=PPPd версия $1
 options_msdesc=Опциите по-долу позволяват MS-CHAP метод за удостоверяване и MPPE криптиране, използвано по подразбиране от Windows VPN клиенти. MPPE обаче изисква поддръжка както в демон-PPP, така и в ядрото на операционната система.
 options_mschap=MS-CHAP удостоверяване
 options_mschap-v2=Удостоверяване на MS-CHAP версия 2
@@ -75,7 +75,7 @@ secrets_ecannot=Нямате право да редактирате PPP акау
 secrets_return=индекс
 secrets_none=Все още не са създадени PPP акаунти.
 secrets_enopfile=Файлът за PPP пароли $1 не съществува във вашата система. Може би PPP не е инсталиран или вашата <a href='$2'>конфигурация на модул</a> е неправилна.
-secrets_table=ПЧП съставлява $1 
+secrets_table=ПЧП съставлява $1
 secrets_user=Потребител
 secrets_ips=IP адреси
 secrets_uany=НЯКОЙ
@@ -133,13 +133,13 @@ disc_err=Прекъсването на връзката не бе успешно
 disc_egone=Връзките вече не са активни
 disc_ekill=Процесът вече не се изпълнява
 
-log_secret_create=Създаден PPP акаунт $1 
-log_secret_modify=Модифицирана PPP сметка $1 
-log_secret_delete=Изтрита PPP сметка $1 
+log_secret_create=Създаден PPP акаунт $1
+log_secret_modify=Модифицирана PPP сметка $1
+log_secret_delete=Изтрита PPP сметка $1
 log_deletes=Изтрити $1 PPP акаунти
 log_conf=Модифицирани опции на PPTP сървъра
 log_options=Модифицирани опции за ПЧП
-log_disc=Прекъснат клиент $1 
+log_disc=Прекъснат клиент $1
 log_start=Стартиран PPTP сървър
 log_stop=Спиран PPTP сървър
 log_apply=Приложена конфигурация на PPTP сървър

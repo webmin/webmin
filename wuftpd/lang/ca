@@ -223,7 +223,7 @@ misc_elsplain=Hi falta l'ordre de llistat normal
 misc_eshutdown=Hi falta el fitxer de notificació de tancament
 misc_eumask='$1' no és una <i>umask</i> vàlida
 
-log_class=S'han canviat els usuaris i les  classes
+log_class=S'han canviat els usuaris i les classes
 log_message=S'han canviat els missatges i les banderes
 log_acl=S'han canviat els límits i el control d'accés
 log_net=S'han canviat les opcions de xarxa

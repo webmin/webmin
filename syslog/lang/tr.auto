@@ -1,6 +1,6 @@
 index_econf=$1 syslog yapılandırma dosyası sisteminizde bulunamadı. Belki syslog yüklü değil veya syslog-ng gibi daha yeni bir sürüm kullanılıyor veya <a href='$2'>modül yapılandırması</a> yanlış.
 index_econf2=Günlük verilerini toplamak ve depolamak için sisteminizde <tt>systemd-journald</tt> hizmeti algılandı. Bunun yerine yeni bir <a href='$2'>$1</a> modülünün kullanılması önerilir.
-index_pipe=Adlandırılmış boru $1 
+index_pipe=Adlandırılmış boru $1
 index_cmd=$1 çıktısı
 index_viewfile=Günlük dosyasını görüntüle:
 index_viewok=Görünüm

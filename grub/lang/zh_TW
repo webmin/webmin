@@ -3,7 +3,7 @@ index_add=新增開機選項
 index_global=編輯通用選項
 index_globalmsg=編輯開機通用選項將會套用在全部開機目錄中的選項, 和選擇安裝 GRUB的裝置
 index_install=安裝 GRUB
-index_installmsg=安裝  GRUB 開機管理程式在 $1上，在開機時顯示上方的選項.這將會覆寫任何已經存在的開機管理程式像是 LILO,甚至會讓系統無法開機!
+index_installmsg=安裝 GRUB 開機管理程式在 $1上，在開機時顯示上方的選項.這將會覆寫任何已經存在的開機管理程式像是 LILO,甚至會讓系統無法開機!
 index_none=沒有定義任何開機選項.請確定至少新增了一個grub的開機選項
 index_efile=在您的系統上找不到GRUB 的目錄檔案 $1.也許沒有安裝GRUB, 或著 <a href='$2'>模組設定</a> 不正確
 index_epath=在您的系統上無法執行GRUB 的目錄檔案 $1.也許沒有安裝GRUB, 或著 <a href='$2'>模組設定</a> 不正確

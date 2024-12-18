@@ -4,7 +4,7 @@ index_ecmd2=$1 SpamAssassin komutu sisteminizde bulunamadı.
 index_econfig=SpamAssassin yerel yapılandırma dosyası veya $1 dizini sisteminizde bulunamadı. Belki SpamAssassin yüklü değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
 index_unknown=Bilinmeyen
 index_edb=SpamAssassin yapılandırma veritabanına bağlanılamadı: $1. Doğru ayarları kullandığınızdan emin olmak için <a href='$2'>modül yapılandırmasını</a> kontrol edin.
-index_version=SpamAssassin sürümü $1 
+index_version=SpamAssassin sürümü $1
 index_warn_usermin=SpamAssassin, $2 Procmail yapılandırma dosyanızda veya $1 genel dosyasında ayarlanmış gibi görünmediğinden, SpamAssassin genel olarak kurulmadıkça bu modül kullanılarak yapılan herhangi bir yapılandırmanın bir etkisi olmayacaktır.
 index_warn_webmin=SpamAssassin, sistemin $1 Procmail yapılandırma dosyasında ayarlanmış gibi görünmediğinden, kullanıcılar ayrı ayrı ayarlamadıkça bu modül kullanılarak yapılan herhangi bir yapılandırmanın bir etkisi olmayacaktır.
 index_return=modül dizini
@@ -190,7 +190,7 @@ priv_emscore='$1' geçerli bir en yüksek ifade puanı değil
 priv_ephrase='$1' geçerli bir iki kelimelik spam ifadesi değil
 priv_escore='$1' spam ifadesi için eksik veya geçersiz puan
 
-usually=Genellikle $1 
+usually=Genellikle $1
 ecannot=Bu sayfayı kullanma izniniz yok
 setup_title=SpamAssassin için Procmail'i Kur
 setup_desc_webmin=Bu form, sisteminiz tarafından alınan tüm e-posta iletilerinde SpamAssassin'i çalıştırmak için $1 'de Procmail'i kurmak için kullanılabilir. Ancak, bunun yalnızca posta sunucunuz yerel teslimat için Procmail kullanacak şekilde yapılandırılmışsa veya <tt>.forward</tt> dosyaları Procmail'i çalıştırmak üzere ayarlanmış kullanıcılar için yapılandırılmışsa etkili olur.
@@ -253,7 +253,7 @@ mail_delall=Tüm Spam'leri Sil
 mail_search3=Yukarıdaki puanı arayın:
 
 process_eclean=Bu e-postadaki SpamAssassin başlıkları kaldırılırken bir hata oluştu
-process_ereport=SpamAssassin'e e-posta bildirilemedi : $1 
+process_ereport=SpamAssassin'e e-posta bildirilemedi : $1
 
 apply_err=Değişiklikler uygulanamadı
 apply_none=SpamAssassin arka plan programı bulunamadı!
@@ -263,7 +263,7 @@ acl_file=Düzenlenecek SpamAssassin yapılandırma dosyası
 acl_filedef=Global yapılandırma dosyası
 acl_awl=Otomatik beyaz liste düzenleme için izin verilen kullanıcılar
 acl_awl0=Tüm kullanıcılar
-acl_awl1=Sadece listelenen kullanıcılar $1 
+acl_awl1=Sadece listelenen kullanıcılar $1
 acl_awl2=Sadece $1 grubunun üyeleri
 
 search_escore=Eksik veya geçersiz spam puanı
@@ -337,19 +337,19 @@ simple_score=Başvuru puanı
 simple_describe=Açıklama
 simple_err=Mesaj testleri kaydedilemedi
 
-before_ecmd=Kaydetmeden önce komut başarısız oldu : $1 
-after_ecmd=Kayıt sonrası komutu başarısız oldu : $1 
+before_ecmd=Kaydetmeden önce komut başarısız oldu : $1
+after_ecmd=Kayıt sonrası komutu başarısız oldu : $1
 
 connect_emysql=$1 veritabanı sürücüsü yüklenemedi
-connect_elogin= $1:$2 veritabanına giriş yapılamadı.
+connect_elogin=$1:$2 veritabanına giriş yapılamadı.
 connect_equery=$1 veritabanı $2 tercih tablosunu içermiyor
 connect_eldapmod=LDAP ile iletişim kurmak için gereken $1 perl modülü kurulu değil veya yüklenemez
 connect_eldap=$2 bağlantı noktasındaki $1 LDAP sunucusuna bağlanılamadı
-connect_eldaplogin=$1 LDAP sunucusuna $2 olarak giriş yapılamadı : $3 
-connect_ebase=LDAP tabanı DN $1 geçerli değil : $2 
+connect_eldaplogin=$1 LDAP sunucusuna $2 olarak giriş yapılamadı : $3
+connect_ebase=LDAP tabanı DN $1 geçerli değil : $2
 
-eldap=LDAP işlemi başarısız oldu : $1 
-esql=SQL başarısız oldu : $1 
+eldap=LDAP işlemi başarısız oldu : $1
+esql=SQL başarısız oldu : $1
 ldap_euser=$1 için LDAP kullanıcı nesnesi bulunamadı
 
 db_title=SQL ve LDAP Veritabanları

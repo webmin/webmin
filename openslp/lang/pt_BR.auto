@@ -2,7 +2,7 @@ index_title=Configuração OpenSLP
 index_return=Configuração OpenSLP
 index_eslpd=O daemon OpenSLP $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.
 index_econf=O arquivo de configuração do OpenSLP $1 não foi encontrado no seu sistema. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.
-index_version=Versão OpenSLP $1 
+index_version=Versão OpenSLP $1
 
 slp_apply=Aplicar mudanças
 slp_stop=Stop OpenSLP

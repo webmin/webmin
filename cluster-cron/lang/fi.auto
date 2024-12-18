@@ -19,7 +19,7 @@ save_err=Klusterin cron-työn tallentaminen epäonnistui
 
 exec_title=Suorita klusterin Cron Job
 exec_cmd=Suoritetaan $1 valituilla palvelimilla ..
-exec_failed= $1:$2  : n suorittaminen epäonnistui
+exec_failed=$1:$2 : n suorittaminen epäonnistui
 exec_success=Lähtö $1 : stä ..
 exec_nohosts=Mikään isäntä, jota ei ole valittu toimimaan, tai valitut ryhmät eivät sisällä käyttökelpoisia isäntiä.
 
@@ -30,7 +30,7 @@ log_create_l=Luonut klusterin cron-työn $2 $1 : lle
 log_modify=Muokattu klusterin cron-tehtävä $1 : lle
 log_modify_l=Muokattu klusterin cron-tehtävä $2 $1 : lle
 log_delete=Poistettu klusterin cron-tehtävä $1 : lle
-log_delete_l=Poistettu ryppää cron -työ $2 kohdasta $1 
+log_delete_l=Poistettu ryppää cron -työ $2 kohdasta $1
 log_deletes=Poistettu $1 klusterin cron-työt
 
 delete_err=Klusterin cron-töiden poistaminen epäonnistui

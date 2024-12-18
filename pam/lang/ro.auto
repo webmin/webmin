@@ -107,7 +107,7 @@ edit_none=Nu sunt specificate module PAM pentru acest pas.
 edit_delete=Ștergeți serviciul PAM
 edit_move=Mișcare
 edit_return=Serviciul PAM
-edit_inc=Includeți serviciul $1 
+edit_inc=Includeți serviciul $1
 edit_iheader=Servicii PAM incluse
 
 pam_pwdb.so=Autentificare parolă Unix
@@ -274,16 +274,16 @@ mail_edir=Directorul spool de e-mail lipsă sau nevalid
 stack_service=Verificați serviciul PAM
 
 log_pam_create=Serviciul PAM creat 1
-log_pam_delete=S-a șters serviciul PAM $1 
-log_mod_create=S-a adăugat modulul PAM $1 la serviciul $2 
-log_mod_modify=Modul PAM modificat $1 în serviciu $2 
-log_mod_delete=S-a șters modulul PAM $1 în service $2 
-log_mod_move=Module PAM schimbate în service $3 
-log_mod_move_l=Module PAM schimbate $1 și $2 în service $3 
-log_inc_create=Adăugat include $1 pentru serviciul $2 
-log_inc_modify=Modificat include $1 pentru serviciul $2 
-log_inc_delete=Șterse include $1 pentru serviciul $2 
-log_incs=Actualizate includ pentru serviciul $1 
+log_pam_delete=S-a șters serviciul PAM $1
+log_mod_create=S-a adăugat modulul PAM $1 la serviciul $2
+log_mod_modify=Modul PAM modificat $1 în serviciu $2
+log_mod_delete=S-a șters modulul PAM $1 în service $2
+log_mod_move=Module PAM schimbate în service $3
+log_mod_move_l=Module PAM schimbate $1 și $2 în service $3
+log_inc_create=Adăugat include $1 pentru serviciul $2
+log_inc_modify=Modificat include $1 pentru serviciul $2
+log_inc_delete=Șterse include $1 pentru serviciul $2
+log_incs=Actualizate includ pentru serviciul $1
 
 inc_edit=Editare serviciu inclus
 inc_create=Creați un serviciu inclus

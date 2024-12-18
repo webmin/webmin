@@ -18,7 +18,7 @@ rfile_no_regexp=N'envoyez pas de réponses automatiques aux messages corresponda
 adelete_err=Impossible de supprimer les alias
 adelete_enone=Aucune sélection
 
-adelete_ecannot=Vous n'êtes pas autorisé à supprimer l'alias $1 
+adelete_ecannot=Vous n'êtes pas autorisé à supprimer l'alias $1
 
 virtusers_cmt=La description
 virtusers_delete=Supprimer les mappages d'adresses sélectionnés
@@ -29,12 +29,12 @@ vform_err_tempfail=Échec temporaire
 vform_err_protocol=Erreur de protocole
 
 vdelete_err=Impossible de supprimer les mappages d'adresses
-vdelete_ecannot=Vous n'êtes pas autorisé à supprimer le mappage pour $1 
+vdelete_ecannot=Vous n'êtes pas autorisé à supprimer le mappage pour $1
 
 mailers_delete=Supprimer les itinéraires de domaine sélectionnés
 
 mdelete_err=Impossible de supprimer le routeur de domaine
-mdelete_ecannot=Vous n'êtes pas autorisé à supprimer l'itinéraire pour $1 
+mdelete_ecannot=Vous n'êtes pas autorisé à supprimer l'itinéraire pour $1
 
 generics_delete=Supprimer les adresses sortantes sélectionnées
 
@@ -42,14 +42,14 @@ gsave_ecannot3=Vous n'êtes pas autorisé à enregistrer cette adresse sortante
 gsave_ealready=Un mappage d'adresses sortantes pour «$1» existe déjà
 
 gdelete_err=Impossible de supprimer les mappages d'adresses sortants
-gdelete_ecannot=Vous n'êtes pas autorisé à supprimer le mappage pour $1 
+gdelete_ecannot=Vous n'êtes pas autorisé à supprimer le mappage pour $1
 
 domains_delete=Supprimer les mappages de domaine sélectionnés
 
 dsave_ealready=Un mappage de domaine pour «$1» existe déjà
 
 ddelete_err=Impossible de supprimer les mappages de domaine
-ddelete_ecannot=Vous n'êtes pas autorisé à supprimer le mappage pour $1 
+ddelete_ecannot=Vous n'êtes pas autorisé à supprimer le mappage pour $1
 
 access_ecannot=Vous n'êtes pas autorisé à configurer le contrôle du spam
 access_delete=Supprimer les règles de contrôle du spam sélectionnées
@@ -59,7 +59,7 @@ sform_ecannot=Vous n'êtes pas autorisé à modifier cette règle de contrôle d
 ssave_ecannot2=Vous n'êtes pas autorisé à enregistrer cette règle de contrôle du spam
 
 sdelete_err=Impossible de supprimer les règles de contrôle du spam
-sdelete_ecannot=Vous n'êtes pas autorisé à supprimer la règle pour $1 
+sdelete_ecannot=Vous n'êtes pas autorisé à supprimer la règle pour $1
 
 mailq_dir=Annuaire
 mailq_flushsel=Vider les messages sélectionnés
@@ -77,8 +77,8 @@ view_atype=Type de pièce jointe
 view_aname=Attachement
 view_asize=Taille du fichier
 
-file_ealias=Format non valide pour la ligne du fichier d'alias : $1 
-file_etab=Format non valide pour la ligne du fichier de mappage : $1 
+file_ealias=Format non valide pour la ligne du fichier d'alias : $1
+file_etab=Format non valide pour la ligne du fichier de mappage : $1
 
 acl_ports=Peut modifier les ports réseau?
 acl_vcatchall=Peut créer des mappages de fourre-tout?
@@ -96,7 +96,7 @@ stop_err=Impossible d'arrêter sendmail
 stop_ecannot=Vous n'êtes pas autorisé à arrêter sendmail
 stop_epid=Sendmail ne semble pas être en cours d'exécution
 restart_epids=Impossible de trouver les processus sendmail
-restart_ekill=Impossible de signaler les processus sendmail : $1 
+restart_ekill=Impossible de signaler les processus sendmail : $1
 
 start_err=Impossible de démarrer sendmail
 start_ecannot=Vous n'êtes pas autorisé à démarrer sendmail
@@ -122,7 +122,7 @@ ports_def1=Acceptez l'email sur le port 25 et toutes les adresses
 ports_def0=Acceptez l'e-mail uniquement sur les ports ci-dessous.
 ports_err=Échec de l'enregistrement des ports réseau
 ports_ecannot=Vous n'êtes pas autorisé à gérer les ports réseau
-ports_ename=Nom de port non valide dans la ligne $1 
-ports_eclash=Nom de port en double dans la ligne $1 
-ports_eaddress=Adresse IP manquante ou non valide dans la ligne $1 
-ports_eport=Numéro de port manquant ou non valide dans la ligne $1 
+ports_ename=Nom de port non valide dans la ligne $1
+ports_eclash=Nom de port en double dans la ligne $1
+ports_eaddress=Adresse IP manquante ou non valide dans la ligne $1
+ports_eport=Numéro de port manquant ou non valide dans la ligne $1

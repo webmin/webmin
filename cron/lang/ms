@@ -124,7 +124,7 @@ acl_kill=Boleh matikan tugas Cron?
 acl_hourly=Hadkan pekerjaan pada setiap jam?
 acl_hourlydef=Seperti yang dinyatakan dalam Config Modul
 
-log_modify=Ubahsuai tugas cron untuk  $1
+log_modify=Ubahsuai tugas cron untuk $1
 log_modify_l=Ubahsuai tugas cron "$2" untuk $1
 log_create=Mencipta tugas cron untuk $1
 log_create_l=Mencipta tugas cron "$2" untuk $1

@@ -108,5 +108,5 @@ log_delete=$1 PPTP tunela ezabatu da
 log_conn=$1 konektatutako tunela
 log_conn_l=Lotutako tunela $1 tokiko helbidearekin $2 da
 log_failed=Huts egin du $1 tunela konektatzean
-log_disc=Deskonektatutako tunela $1 
+log_disc=Deskonektatutako tunela $1
 log_opts=PPP aukerak editatu ditu

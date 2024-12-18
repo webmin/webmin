@@ -21,11 +21,11 @@ passwd_ecannot=Nu aveți voie să modificați parola acestui utilizator
 passwd_euser=Utilizatorul nu exista
 passwd_eold=Parolă veche incorectă
 passwd_erepeat=Parolele noi nu sunt aceleași
-passwd_ecmd=$1 a eșuat : $2 
+passwd_ecmd=$1 a eșuat : $2
 passwd_ok=Parola pentru utilizator $1 a fost schimbată cu succes. Dacă acesta este actualul dvs. utilizator Webmin, este posibil să fiți forțat să vă autentificați din nou.
 passwd_ok2=Parola pentru utilizator $1 a fost schimbată cu succes.
 
-log_passwd=Parolă modificată pentru utilizator $1 
+log_passwd=Parolă modificată pentru utilizator $1
 
 acl_repeat=Trebuie să introduceți din nou parola nouă?
 acl_self=Întotdeauna permiteți modificarea propriei parole?

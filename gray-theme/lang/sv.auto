@@ -13,10 +13,10 @@ mmain_title=Cloudmin $1 på $2 ($3)
 mmain_title2=Cloudmin
 mmain_title3=Cloudmin $1 ($2)
 
-index_virtualmintitle=Virtualmin $1 
-index_cloudmintitle=Cloudmin $1 
-index_webmintitle=Webmin $1 
-index_usermintitle=Usermin $1 
+index_virtualmintitle=Virtualmin $1
+index_cloudmintitle=Cloudmin $1
+index_webmintitle=Webmin $1
+index_usermintitle=Usermin $1
 
 config_section=Konfigureringskategori:
 config_change=Förändra

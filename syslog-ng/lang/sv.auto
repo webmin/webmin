@@ -9,7 +9,7 @@ index_stopdesc=Klicka på den här knappen för att stoppa den igång Syslog-NG-
 index_start=Starta Syslog-NG
 index_startdesc=Klicka på den här knappen för att starta Syslog-NG-demonen med den aktuella konfigurationen.
 index_return=modulindex
-index_version=Syslog-NG $1 
+index_version=Syslog-NG $1
 
 options_title=Loggningsalternativ
 options_header=Alternativ för alla loggfiler
@@ -71,15 +71,15 @@ destinations_typet=TCP syslog-server
 destinations_typeg=Datagramuttag
 destinations_types=Strömuttag
 destinations_allusers=Alla användare
-destinations_users=Endast användare $1 
-destinations_host=Värd $1 
+destinations_users=Endast användare $1
+destinations_host=Värd $1
 destinations_view=Se ..
 destinations_none=Inga destinationsloggfiler har definierats än.
 destinations_delete=Radera valda destinationer
 destinations_add=Lägg till en ny loggdestination.
 destinations_return=logga destinationer
 destinations_desc=Övrig moduls logg
-destinations_cmd=Utgång från $1 
+destinations_cmd=Utgång från $1
 
 destination_header=Logga destinationsalternativ
 destination_title1=Skapa loggdestination
@@ -259,10 +259,10 @@ source_edoor=Saknad eller ogiltig Sun strömmar dörrfilnamn
 source_transport=Nätverksprotokoll
 
 view_title=Visa Logfile
-view_header=Sista $1 rader av $2 
+view_header=Sista $1 rader av $2
 view_empty=Loggfilen är tom
 view_refresh=Uppdatera
-view_filter=Visa bara rader med text $1 
+view_filter=Visa bara rader med text $1
 
 apply_err=Det gick inte att tillämpa konfigurationen
 apply_egone=Springer inte!
@@ -271,17 +271,17 @@ start_err=Det gick inte att starta Syslog-NG-servern
 
 stop_err=Det gick inte att stoppa Syslog-NG-servern
 
-log_create_destination=Skapad logdestination $1 
-log_modify_destination=Ändrad logdestination $1 
-log_delete_destination=Raderad logdestination $1 
+log_create_destination=Skapad logdestination $1
+log_modify_destination=Ändrad logdestination $1
+log_delete_destination=Raderad logdestination $1
 log_delete_destinations=$1 loggdestinationer raderade
-log_create_filter=Skapad logfilter $1 
-log_modify_filter=Modifierat logfilter $1 
-log_delete_filter=Raderat logfilter $1 
+log_create_filter=Skapad logfilter $1
+log_modify_filter=Modifierat logfilter $1
+log_delete_filter=Raderat logfilter $1
 log_delete_filters=Raderade $1 loggfilter
-log_create_source=Skapad loggkälla $1 
-log_modify_source=Modifierad loggkälla $1 
-log_delete_source=Raderad loggkälla $1 
+log_create_source=Skapad loggkälla $1
+log_modify_source=Modifierad loggkälla $1
+log_delete_source=Raderad loggkälla $1
 log_delete_sources=$1 loggkällor raderade
 log_create_log=Skapad loggmål
 log_modify_log=Ändrat loggmål

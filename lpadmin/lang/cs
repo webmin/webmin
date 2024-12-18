@@ -188,7 +188,7 @@ acl_view=Zobrazit nekonfigurovatelné tiskárny?
 acl_test=Může tiskonout zkušební stránku tiskárny?
 acl_user=Spravovat tiskové úlohy vlastněné
 acl_user_all=Všichni uživatelé
-acl_user_this=Aktuální  uživatel Webminu
+acl_user_this=Aktuální uživatel Webminu
 
 log_stop=Ukončen plánovač tisku
 log_start=Spuštěn plánovač tisku

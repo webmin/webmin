@@ -1,6 +1,6 @@
 index_title=Analýza súboru protokolu webového prehľadávača
-index_version=Verzia webového servera $1 
-index_version_webalizer=Verzia webového servera $1 
+index_version=Verzia webového servera $1
+index_version_webalizer=Verzia webového servera $1
 index_version_awffull=AWFFull
 index_ewebalizer=Príkaz analýzy logfile $1 nebol vo vašom systéme nájdený. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
 index_econf=Vo vašom systéme sa nenašiel konfiguračný súbor Webalizer $1. Možno nie je nainštalovaný alebo je vaša <a href='$2'>konfigurácia modulu</a> nesprávna.
@@ -21,8 +21,8 @@ index_return=zoznam protokolových súborov
 index_global=Upraviť globálne možnosti
 index_globaldesc=Kliknutím na toto tlačidlo upravíte možnosti webového prehľadávača, ktoré sa vzťahujú na správy generované zo všetkých protokolových súborov.
 index_eversion=Príkaz Webalizer $1 vo vašom systéme je verzia $2, ale tento modul podporuje iba verzie $3 a vyššie.
-index_egetversion=Nepodarilo sa získať verziu servera Webalizer pomocou príkazu $1 : $2 
-index_when=Áno, $1 
+index_egetversion=Nepodarilo sa získať verziu servera Webalizer pomocou príkazu $1 : $2
+index_when=Áno, $1
 index_webalizer=Webalizer
 index_enable=Vybratý rozvrh
 index_disable=Vybraté rozvrhnutie
@@ -63,10 +63,10 @@ save_efile=Súbor denníka nebol zadaný alebo neexistuje
 save_ecfile=Chýba alebo neexistuje žiadny iný konfiguračný súbor
 save_edir=Adresár prehľadov nebol zadaný alebo neexistuje
 save_euser=Chýbajúci alebo neplatný používateľ na spustenie webalizátora ako
-save_ewuser=Neexistuje žiadny používateľ Unix s názvom $1 
+save_ewuser=Neexistuje žiadny používateľ Unix s názvom $1
 save_ehost=Chýba alebo je neplatný názov hostiteľa webovej stránky
 save_etitle=Chýba názov prehľadu
-save_ecannot=Môžete generovať prehľady iba pre protokoly pod $1 
+save_ecannot=Môžete generovať prehľady iba pre protokoly pod $1
 
 view_epath=Neplatný PATH_INFO
 view_efile=Neplatný názov súboru prehľadu
@@ -77,7 +77,7 @@ view_title=Pozrieť si správu
 
 global_title=Globálne možnosti webového prehľadávača
 global_title2=Možnosti prehľadu webového prehľadávača
-global_for=Pre súbor denníka $1 
+global_for=Pre súbor denníka $1
 global_first=V súčasnosti nie sú pre tento súbor denníka nastavené žiadne možnosti, čo znamená, že namiesto neho sa použijú globálne možnosti. Keď sa tento formulár uloží, v prehľadoch vygenerovaných pre tento denník sa budú odteraz používať nastavenia vybrané na tejto stránke.
 global_header=Možnosti webového prehľadávača pre všetky prehľady
 global_host=Názov hostiteľa webovej stránky
@@ -146,14 +146,14 @@ global_ehistory=Chýba alebo je neplatný názov súboru histórie
 global_ecurrent=Chýba alebo je neplatný názov prírastkového súboru
 global_ecache=Chýba alebo je neplatný názov súboru vyrovnávacej pamäte DNS
 
-log_create_log=Vytvorené prehľady pre $1 
-log_modify_log=Upravené prehľady pre $1 
-log_delete_log=Odstránené prehľady pre $1 
-log_generate_log=Vygenerovaný prehľad pre $1 
+log_create_log=Vytvorené prehľady pre $1
+log_modify_log=Upravené prehľady pre $1
+log_delete_log=Odstránené prehľady pre $1
+log_generate_log=Vygenerovaný prehľad pre $1
 log_global=Upravené globálne možnosti webového prehľadávača
-log_global2=Upravené možnosti webového prehľadávača pre $1 
-log_enable_logs=Naplánované podávanie správ v protokoloch $1 
-log_disable_logs=Plánované prehľady v protokoloch $1 
+log_global2=Upravené možnosti webového prehľadávača pre $1
+log_enable_logs=Naplánované podávanie správ v protokoloch $1
+log_disable_logs=Plánované prehľady v protokoloch $1
 
 acl_view=Môžete zobraziť iba existujúce prehľady?
 acl_global=Môžete upraviť možnosti globálneho webalizátora?

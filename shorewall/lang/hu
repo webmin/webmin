@@ -426,7 +426,7 @@ log_restart=Restarted firewall
 log_clear=Cleared firewall
 
 shorewall_conf_title=Master configuration file
-shorewall_conf_desc=This page allows you to configure the global configuration variables.  NOTE: Changing the order of variables here is not recommended if you wish to preserve the relative position of comments in the configuration file.
+shorewall_conf_desc=This page allows you to configure the global configuration variables. NOTE: Changing the order of variables here is not recommended if you wish to preserve the relative position of comments in the configuration file.
 shorewall_conf_add=Add a new configuration variable.
 shorewall_conf_none=No shorewall configuration found.
 shorewall_conf_0=Variable
@@ -440,7 +440,7 @@ shorewall_conf_err=Failed to save configuration variable
 shorewall_conf_varname=Invalid variable name (must be a valid shell variable name)
 
 params_title=Custom parameters
-params_desc=This page allows you to configure Shorewall's custom parameters.  NOTE: Changing the order of parameters here is not recommended if you wish to preserve the relative position of comments in the configuration file.
+params_desc=This page allows you to configure Shorewall's custom parameters. NOTE: Changing the order of parameters here is not recommended if you wish to preserve the relative position of comments in the configuration file.
 params_add=Add a new custom parameter.
 params_none=No custom parameters found.
 params_0=Parameter

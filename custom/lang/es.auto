@@ -20,18 +20,18 @@ edit_format4=Descargar cuando sea posible
 edit_clone=Clon
 
 save_eformat=Tipo de MIME de salida no válido
-save_eopts=Falta el archivo de opciones para el parámetro $1 
+save_eopts=Falta el archivo de opciones para el parámetro $1
 save_eopts2=El archivo de opciones o el valor predeterminado para el parámetro $1 no puede contener :
 
 run_eupload=Ningún archivo para cargar seleccionado
 run_emust=Valor perdido para el parámetro '$1'
-run_failed=El comando falló con el estado de salida $1 
+run_failed=El comando falló con el estado de salida $1
 
 file_beforeedit=Comando para ejecutar antes de editar
 
-view_header=Edición del archivo $1 
-view_ebeforeedit=El comando de edición anterior falló : $1 
-view_ebefore=Error de comando antes de guardar : $1 
-view_eafter=Error de comando después de guardar : $1 
+view_header=Edición del archivo $1
+view_ebeforeedit=El comando de edición anterior falló : $1
+view_ebefore=Error de comando antes de guardar : $1
+view_eafter=Error de comando después de guardar : $1
 
 form_edit=Editar

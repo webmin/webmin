@@ -28,7 +28,7 @@ index_delete=Ștergeți procesele selectate
 inittab_none2=Nu s-au găsit procese de pornire în sistemul dvs. Aceasta indică probabil că nu folosește fișierul de configurare init SysV.
 
 edit_inittab_err=Nu aveți voie să editați un proces
-edit_inittab_title=Procesul de editare $1 
+edit_inittab_title=Procesul de editare $1
 edit_inittab_details=Detalii despre proces
 edit_inittab_del=Șterge
 edit_inittab_save=salva
@@ -40,10 +40,10 @@ save_inittab_err=Nu este permis să salvați un proces
 save_inittab_noid=Eroare, nu a fost introdus niciun proces de nume
 save_inittab_already=Eroare, procesul de nume există deja
 
-log_modify=Proces inițial modificat $1 
-log_rename=Redenumit procesul init $1 la $2 
-log_create=Procesul inițial creat $1 
-log_delete=Procesul inițial șters $1 
+log_modify=Proces inițial modificat $1
+log_rename=Redenumit procesul init $1 la $2
+log_create=Procesul inițial creat $1
+log_delete=Procesul inițial șters $1
 log_apply=Configurație aplicată
 log_deletes=Procesele de inițiere $1 șterse
 

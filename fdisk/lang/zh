@@ -96,7 +96,7 @@ fsck_err4=发现错误但无法改正
 fsck_err16=命令行错误
 fsck_unknown=未知的返回代码$1
 
-tunefs_title=调整文件系统	
+tunefs_title=调整文件系统
 tunefs_ecannot=您没有调整本文件系统的权限
 tunefs_desc=您可以在此表中调整 $2 上文件系统 $1 的各种参数，以便将其加载到 $3上。此文件系统中的任何文件都不会受到影响。
 tunefs_params=调整参数
@@ -171,7 +171,7 @@ hdparm_label=IDE 驱动器设置
 hdparm_conf_X=传输模式
 hdparm_conf_X_defaut=默认模式
 hdparm_conf_X_disable=关闭 IORDY
-hdparm_conf_d=使用内存直接访问(DMA)	
+hdparm_conf_d=使用内存直接访问(DMA)
 hdparm_conf_a=扇区计数
 hdparm_conf_A=向前预读
 hdparm_conf_W=写入高速缓存

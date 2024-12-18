@@ -96,7 +96,7 @@ error_chown=Neizdevās mainīt īpašnieku
 error_delete=nevar izdzēst
 error_user_not_found=lietotājs nav atrasts šajā sistēmā
 error_group_not_found=grupa šajā sistēmā neeksistē
-error_archive_type_not_supported= arhīva tips vēl netiek atbalstīts
+error_archive_type_not_supported=arhīva tips vēl netiek atbalstīts
 error_opening_file_for_writing=Nevarēja atvērt failu rakstīšanai:
 error_writing_file=Kļūda, rakstot failu:
 error_numeric=jābūt skaitļiem!
@@ -153,7 +153,7 @@ menu_file=Fails
 menu_edit=Rediģēt
 menu_tools=Rīki
 menu_bookmarks=Grāmatzīmes
-notallowed=Jums nav atļauts piekļūt $1. Atļautie direktoriji ir : $2 
+notallowed=Jums nav atļauts piekļūt $1. Atļautie direktoriji ir : $2
 error_upload_emax=Augšupielādētais fails ir lielāks par $1 ierobežojumu
 extract_etype=Neatbalstīts arhīva faila tips
 

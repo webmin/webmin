@@ -113,7 +113,7 @@ acl_edit=Peut tuer et renicer des processus ?
 acl_run=Peut lancer des commandes ?
 
 kill_kill=Tuer processus
-kill_term= Terminer  
-kill_hup=  Redémarrer   
-kill_stop=    Stopper    
-kill_cont=  Continuer  
+kill_term=Terminer  
+kill_hup=Redémarrer   
+kill_stop=Stopper    
+kill_cont=Continuer  

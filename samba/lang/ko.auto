@@ -1,4 +1,4 @@
-index_version=삼바 버전 $1 
+index_version=삼바 버전 $1
 index_samba=삼바
 
 index_start_wb=Winbind 서버 시작
@@ -67,7 +67,7 @@ saveuser_ews=기존 사용자는 '워크 스테이션 트러스트 계정'옵션
 savefshare_owner=새 디렉토리의 소유자가 없거나 잘못되었습니다
 savefshare_group=새 디렉토리에 대한 그룹이 없거나 유효하지 않습니다
 savefshare_perms=새 디렉토리에 대한 권한이 없거나 유효하지 않습니다
-savefshare_emkdir=디렉토리를 만들지 못했습니다  : $1 
+savefshare_emkdir=디렉토리를 만들지 못했습니다 : $1
 
 start_err_wb=Winbind 서버를 시작하지 못했습니다
 
@@ -93,7 +93,7 @@ log_create_group=삼바 그룹 $1 생성
 log_modify_group=삼바 그룹 $1 수정
 log_delete_group=삼바 그룹 $1 을 (를) 삭제했습니다.
 log_gsync=구성된 유닉스 그룹 동기화
-log_manual=수동으로 편집 한 구성 파일 $1 
+log_manual=수동으로 편집 한 구성 파일 $1
 
 swat_logout=SWAT의 로그 아웃
 

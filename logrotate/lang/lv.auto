@@ -1,8 +1,8 @@
 index_title=Žurnāla faila pagriešana
 index_econf=Žurnāla rotācijas konfigurācijas fails $1 jūsu sistēmā netika atrasts. Varbūt logrotāts nav instalēts vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
 index_ecmd=Žurnāla pagriešanas programma $1 jūsu sistēmā netika atrasta. Varbūt tas nav instalēts, vai <a href='$2'>moduļa konfigurācija</a> ir nepareiza.
-index_eversion=Neizdevās iegūt logrotāta versiju ar komandu $1 : $2 
-index_version=Logrotāta versija $1 
+index_eversion=Neizdevās iegūt logrotāta versiju ar komandu $1 : $2
+index_version=Logrotāta versija $1
 index_add=Pievienojiet jaunu žurnālfailu, lai pagrieztu.
 index_file=Žurnāla fails
 index_period=Rotācijas periods
@@ -50,7 +50,7 @@ edit_mailfl=Reģistrējieties uz e-pastu
 edit_mailfirst=Jaunākais, kas tikko tika pagriezts
 edit_maillast=Vecākā, kuru drīz sāks dzēst
 edit_create=Vai pēc rotācijas atkal izveidot žurnāla failu?
-edit_createas=Jā, ar režīmu $1 un pieder lietotājam $2 un grupai $3 
+edit_createas=Jā, ar režīmu $1 un pieder lietotājam $2 un grupai $3
 edit_createno=Nē, neveidojiet no jauna
 edit_createsame=Jā, ar vecām atļaujām
 edit_olddir=Glabājiet vecos pagrieztos baļķus
@@ -91,7 +91,7 @@ log_create_sched=Izveidots žurnāla rotācijas Cron darbs
 log_delete_sched=Izdzēsts žurnāla pagriešanas Cron darbs
 log_global=Pārveidotas globālās iespējas
 log_create=Pievienota žurnāla faila $1 rotācija
-log_modify=Modificēta žurnāla faila rotācija $1 
+log_modify=Modificēta žurnāla faila rotācija $1
 log_delete=Izdzēsta žurnāla faila $1 rotācija
 log_delete_logs=Izdzēsta pagriešana $1 žurnālfailiem
 

@@ -150,7 +150,7 @@ do_none=Cap
 do_edeleted=El fitxer d'instal·lació ha estat esborrat - torna al mòdul i prova-ho altre cop.
 
 compare_title=Compara els Paquets
-compare_desc=Aquest formulari es pot utilitzar per comparar els paquets instal·lats en dos o més servidors i trobar qualsevol discrepància entre les versions dels paquets disponibles. 
+compare_desc=Aquest formulari es pot utilitzar per comparar els paquets instal·lats en dos o més servidors i trobar qualsevol discrepància entre les versions dels paquets disponibles.
 compare_hosts=Servidors a comparar
 compare_all=Tots els servidors
 compare_sel=Els seleccionats...

@@ -62,7 +62,7 @@ saveuser_ews=La opción 'Cuenta de confianza de estación de trabajo' no se pued
 savefshare_owner=Propietario faltante o no válido para el nuevo directorio
 savefshare_group=Grupo faltante o no válido para el nuevo directorio
 savefshare_perms=Permisos faltantes o no válidos para el nuevo directorio
-savefshare_emkdir=Error al crear el directorio : $1 
+savefshare_emkdir=Error al crear el directorio : $1
 
 start_err_wb=Error al iniciar los servidores Winbind
 
@@ -79,14 +79,14 @@ log_stop=Servidores Samba detenidos
 log_stop_wb=Servidores Winbind detenidos
 log_start_wb=Servidores Winbind iniciados
 log_kills=Procesos $1 desconectados
-log_skills=Procesos $1 desconectados de la participación $2 
+log_skills=Procesos $1 desconectados de la participación $2
 log_delete_shares=$1 acciones eliminadas
 log_bind=Cambiar las opciones de Winbind
-log_create_group=Se creó el grupo Samba $1 
-log_modify_group=Grupo Samba modificado $1 
-log_delete_group=Grupo Samba eliminado $1 
+log_create_group=Se creó el grupo Samba $1
+log_modify_group=Grupo Samba modificado $1
+log_delete_group=Grupo Samba eliminado $1
 log_gsync=Sincronización de grupo Unix configurada
-log_manual=Archivo de configuración editado manualmente $1 
+log_manual=Archivo de configuración editado manualmente $1
 
 acl_manual=¿Se puede editar manualmente el archivo de configuración?
 acl_group_opts=Opciones de grupo de samba

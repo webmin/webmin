@@ -3,7 +3,7 @@ index_efiles=A hozzáférhető PHP-fájlok egyike sem létezik.
 index_efiles2=Nem található PHP konfigurációs fájl. Állítsa be a <a href='$1'>modulkonfigurációt</a> a globális PHP konfigurációs fájl helyes elérési útjának beállításához.
 index_anyfile=Más PHP konfigurációs fájl szerkesztése:
 
-file_eread=A (z) $1 olvasása nem sikerült : $2 
+file_eread=A (z) $1 olvasása nem sikerült : $2
 
 manual_desc=Ez az oldal a PHP konfigurációs fájl manuális szerkesztéséhez használható. Ezt óvatosan kell elvégezni, mivel a változtatásokra nem kerül sor szintaxis vagy más érvényesség-ellenőrzés.
 manual_err=A konfigurációs fájl szerkesztése nem sikerült

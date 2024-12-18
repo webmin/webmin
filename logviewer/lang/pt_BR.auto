@@ -3,7 +3,7 @@ index_elogs=Não foram encontrados registros para exibição
 index_to=Destino do registro
 index_rule=Mensagens selecionadas
 index_file=Arquivo $1
-index_cmd=Saída de $1 
+index_cmd=Saída de $1
 index_return=visualizador de logs do sistema
 index_view=Visão..
 index_viewfile=Visualizar arquivo de registro:
@@ -38,7 +38,7 @@ view_header2=Últimas $1 linhas
 view_header3=Linhas de $1
 view_empty=O arquivo de log está vazio
 view_loading=O arquivo de log está sendo monitorado. Nenhuma linha nova ainda.
-view_filter=Filtrar linhas com texto $1 
+view_filter=Filtrar linhas com texto $1
 view_filter_btn=Filtro
 
 save_efile='$1' não é um nome de arquivo válido : $2

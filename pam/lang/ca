@@ -269,7 +269,7 @@ mail_close=Mostra la notificació de correu en desconnectar
 mail_empty=Notifica si el fitxer de correu està buit
 mail_noenv=Estableix la variable d'entorn MAIL
 mail_dir=Directori de spool de correu
-mail_edir=Hi falta el directori de spool de correu  o bé no és vàlid
+mail_edir=Hi falta el directori de spool de correu o bé no és vàlid
 
 stack_service=Passa la comprovació al servei PAM
 

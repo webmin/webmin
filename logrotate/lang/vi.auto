@@ -1,8 +1,8 @@
 index_title=Nhật ký xoay tệp
 index_econf=Không tìm thấy tệp cấu hình xoay vòng nhật ký $1 trên hệ thống của bạn. Có thể logrotate chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
 index_ecmd=Không tìm thấy chương trình xoay vòng nhật ký $1 trên hệ thống của bạn. Có thể nó chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> không chính xác.
-index_eversion=Không thể tải phiên bản logrotate bằng lệnh $1 : $2 
-index_version=Phiên bản logrotate $1 
+index_eversion=Không thể tải phiên bản logrotate bằng lệnh $1 : $2
+index_version=Phiên bản logrotate $1
 index_add=Thêm một tệp nhật ký mới để xoay.
 index_file=Đăng nhập tập tin
 index_period=Thời gian luân chuyển
@@ -50,7 +50,7 @@ edit_mailfl=Đăng nhập tập tin vào email
 edit_mailfirst=Mới nhất vừa được quay
 edit_maillast=Cũ nhất sắp bị xóa
 edit_create=Tạo lại tệp nhật ký sau khi xoay?
-edit_createas=Có, với chế độ $1 và được sở hữu bởi người dùng $2 và nhóm $3 
+edit_createas=Có, với chế độ $1 và được sở hữu bởi người dùng $2 và nhóm $3
 edit_createno=Không, đừng tạo lại
 edit_createsame=Có, với quyền cũ
 edit_olddir=Lưu trữ nhật ký xoay cũ trong
@@ -90,10 +90,10 @@ log_modify_sched=Thay đổi luân chuyển nhật ký Cron job
 log_create_sched=Tạo nhật ký luân chuyển công việc Cron
 log_delete_sched=Đã xóa luân chuyển công việc Cron
 log_global=Tùy chọn toàn cầu sửa đổi
-log_create=Đã thêm xoay vòng cho tệp nhật ký $1 
-log_modify=Xoay vòng đã sửa đổi cho tệp nhật ký $1 
-log_delete=Đã xóa xoay vòng cho tệp nhật ký $1 
-log_delete_logs=Đã xóa xoay vòng cho các tệp nhật ký $1 
+log_create=Đã thêm xoay vòng cho tệp nhật ký $1
+log_modify=Xoay vòng đã sửa đổi cho tệp nhật ký $1
+log_delete=Đã xóa xoay vòng cho tệp nhật ký $1
+log_delete_logs=Đã xóa xoay vòng cho các tệp nhật ký $1
 
 sched_title=Nhật ký luân chuyển
 sched_desc=Để xoay vòng nhật ký được cấu hình bằng mô-đun này được thực hiện, lệnh $1 phải được chạy theo lịch trình thông thường (thường là hàng ngày) bởi Cron.

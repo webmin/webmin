@@ -44,7 +44,7 @@ cs_header=Tábla fejléc
 cs_link=Link szöveg
 
 mods_title=Webmin modulok
-mods_desc1=Telepítés után a Webminhez további modulok adhatók a jobboldali űrlappal. Az összetevők jellemzően <tt>.wbm</tt> fájlokban terjednek, amelyegy vagy több modult is tartalmazhat. Ha egy modul licensze olyan, hogy csakegy adott hosztról futhat, akkor azt nem telepítheti. 
+mods_desc1=Telepítés után a Webminhez további modulok adhatók a jobboldali űrlappal. Az összetevők jellemzően <tt>.wbm</tt> fájlokban terjednek, amelyegy vagy több modult is tartalmazhat. Ha egy modul licensze olyan, hogy csakegy adott hosztról futhat, akkor azt nem telepítheti.
 mods_install=Modul telepítése
 mods_local=Helyi fájlból
 mods_uploaded=Feltöltött fájlból
@@ -73,7 +73,7 @@ install_ever=A(z) $1 modulhoz $2 vagy nagyobb verziószámú Webmin szükséges
 install_edep=A(z) $1 igényli a(z) $2 modult
 install_eextract=A kicsomagolás nem sikerült : $1
 install_title=Modul telepítése
-install_desc=Az alábbi modulok telepítése sikeresen befejeződött és hozzáadódtak  a hozzáférés-vezérlési listához :
+install_desc=Az alábbi modulok telepítése sikeresen befejeződött és hozzáadódtak a hozzáférés-vezérlési listához :
 
 clone_err=A modul klónozása nem sikerült
 clone_elink=sikertelen symlink : $1

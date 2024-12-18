@@ -33,14 +33,14 @@ save_edesc=Недійсний опис типу MIME
 
 delete_err=Не вдалося видалити програми типу MIME
 disable_err=Не вдалося вимкнути програми типу MIME
-disable_eclash=Уже відключена програма типу MIME для $1 
+disable_eclash=Уже відключена програма типу MIME для $1
 enable_err=Не вдалося включити програми типу MIME
 enable_eclash=Увімкнена програма типу MIME для $1 вже існує
 delete_enone=Не вибрано жодного
 
-log_delete_mailcap=Видалити програму типу MIME для $1 
-log_create_mailcap=Створено програму типу MIME для $1 
-log_modify_mailcap=Модифікована програма типу MIME для $1 
+log_delete_mailcap=Видалити програму типу MIME для $1
+log_create_mailcap=Створено програму типу MIME для $1
+log_modify_mailcap=Модифікована програма типу MIME для $1
 log_delete_mailcaps=Видалено $1 програми типу MIME
 log_disable_mailcaps=Вимкнено програми $1 MIME
 log_enable_mailcaps=Увімкнено програми $1 MIME

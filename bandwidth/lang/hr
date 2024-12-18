@@ -8,7 +8,7 @@ index_esyslog=Ni jedan od Sistem Log modula nije instaliran na vašem sustavu i 
 index_firesys=Korištenje $1 vatrozida i $2
 index_setupcannot=Ipak nemate dopuštenje da ga postavite!
 index_setupdesc=Prije nego što ovaj modul bude u mogućnosti izvjestiti o korištenju mreže na vašem sustavu, on mora biti postavljen da nadzire promet na odabranom vanjskom mrežnom sučelju.
-index_setupdesc2=<b>Upozorenje - ovaj modul će logirati SAV mrežni promet poslan i primljen na odabranom sučelju. Ovo će iscrpiti veliku količinu prostora na discu i CPU vrijeme na brzoj vezi. 
+index_setupdesc2=<b>Upozorenje - ovaj modul će logirati SAV mrežni promet poslan i primljen na odabranom sučelju. Ovo će iscrpiti veliku količinu prostora na discu i CPU vrijeme na brzoj vezi.
 index_missing3=Nekoliko vatrozida trebabiti dodano, i sistemski zapis postavke ulaza kreirane
 index_missing2=Nekoliko vatrozid pravila mora biti dodano.
 index_missing1=Postavke sistemskog zapisa moraju biti kreirane.
@@ -53,7 +53,7 @@ index_nomatch=Ni jedan promet ne odgovara odabranim zahtjevima.
 index_turnoff=Prekini Nadzor
 index_turnoffdesc=Klikom na ovu tipku uklonit ćete paravila vatrozida, postavke sistemskog zapisa i Cron korišten za opseg nadzora. Svi postojeći skupljeni podaciostat će netaknuti.
 index_rotate=Ispravi Statistiku
-index_rotatedesc=Klikom na ovu tipku za upućivanje mrežnog prometa prema trenutnom vremenu, čini ga  odmah aktivnim za izvještavanje.
+index_rotatedesc=Klikom na ovu tipku za upućivanje mrežnog prometa prema trenutnom vremenu, čini ga odmah aktivnim za izvještavanje.
 index_eiptables=Upozorenje - Vaša IPtables konfiguracija sadrži grešku : $1. Postavke opsega nadzora izbrisat će sva pravila vatrozida.
 index_return=forma za izvješće
 

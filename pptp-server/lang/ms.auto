@@ -1,5 +1,5 @@
 index_title=PPTP VPN Server
-index_version=Versi PoPToP $1 
+index_version=Versi PoPToP $1
 index_epptpd=Pelayan PPTP PoPToP $1 tidak dijumpai pada sistem anda, atau bukan program yang betul. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
 index_econfig=Fail konfigurasi pelayan PPTP $1 tidak ditemukan pada sistem anda. Mungkin konfigurasi modul <a href='$2'>anda</a> tidak betul.
 index_stop=Hentikan pelayan PPTP
@@ -63,7 +63,7 @@ options_err=Gagal menyimpan pilihan PPP
 options_emtu=Saiz paket penghantaran maksimum atau tidak sah
 options_emru=Saiz maksimum paket yang diterima atau tidak sah
 options_ename=Nama pelayan yang hilang atau tidak sah untuk pengesahan
-options_version=Versi PPPd $1 
+options_version=Versi PPPd $1
 options_msdesc=Pilihan di bawah membolehkan kaedah pengesahan MS-CHAP dan penyulitan MPPE, digunakan secara lalai oleh klien VPN Windows. Bagaimanapun, MPPE memerlukan sokongan dalam daemon PPP dan kernel sistem operasi.
 options_mschap=Pengesahan MS-CHAP
 options_mschap-v2=Pengesahan MS-CHAP versi 2
@@ -75,7 +75,7 @@ secrets_ecannot=Anda tidak dibenarkan mengedit akaun PPP
 secrets_return=indeks
 secrets_none=Tiada akaun PPP telah dibuat lagi.
 secrets_enopfile=Fail kata laluan PPP $1 tidak wujud pada sistem anda. Mungkin PPP tidak dipasang, atau konfigurasi modul <a href='$2'>anda</a> tidak betul.
-secrets_table=Akaun PPP untuk $1 
+secrets_table=Akaun PPP untuk $1
 secrets_user=Nama pengguna
 secrets_ips=Alamat IP
 secrets_uany=APAPUN
@@ -133,13 +133,13 @@ disc_err=Gagal melepaskan sambungan
 disc_egone=Sambungan tidak lagi aktif
 disc_ekill=Proses tidak lagi berjalan
 
-log_secret_create=Dicipta akaun PPP $1 
-log_secret_modify=Akaun PPP yang diubahsuai $1 
-log_secret_delete=Akaun PPP yang dipadam $1 
+log_secret_create=Dicipta akaun PPP $1
+log_secret_modify=Akaun PPP yang diubahsuai $1
+log_secret_delete=Akaun PPP yang dipadam $1
 log_deletes=Dihapus $1 akaun PPP
 log_conf=Pilihan server PPTP yang dimodifikasi
 log_options=Pilihan PPP yang diubah suai
-log_disc=Pelanggan terputus $1 
+log_disc=Pelanggan terputus $1
 log_start=Memulakan pelayan PPTP
 log_stop=Berhenti pelayan PPTP
 log_apply=Konfigurasi pelayan PPTP yang digunakan

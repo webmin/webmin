@@ -4,7 +4,7 @@ index_emd5=Dan il-modulu ġie <a href='$1'>konfigurat</a> biex juża l-encryptio
 index_header=Utenti tal-fajl tal-password
 index_none=L-ebda utent ma jeżisti fil-fajl tal-password konfigurat.
 index_add=Żid utent ġdid fil-fajl tal-password.
-index_file=Utenti fil-Password File $1 
+index_file=Utenti fil-Password File $1
 index_sync=Sinkronizzazzjoni tal-Utent Unix
 index_return=lista tal-utenti
 index_eversion=Dan il-modulu ġie <a href='$1'>konfigurat</a> biex juża l-encryption MD5 għall-passwords, iżda l-verżjoni tal-modulu Utenti u Gruppi installat fis-sistema tiegħek ma tinkludix il-funzjonijiet MD5 meħtieġa. Aġġorna għall-verżjoni 1.114 jew aktar tard.
@@ -49,6 +49,6 @@ acl_single=Aqbeż il-lista tal-utenti u mur direttament fil-formola tal-bidla ta
 sync_ecannot=M'intix permess li tikkonfigura s-sinkronizzazzjoni
 
 log_sync=Għażliet ta' sinkronizzazzjoni mibdula
-log_create=Utent maħluq $1 
+log_create=Utent maħluq $1
 log_delete=Utent $1 imħassar
 log_modify=Utent $1 modifikat

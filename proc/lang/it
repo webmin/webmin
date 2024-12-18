@@ -156,10 +156,10 @@ acl_who1=Utente Webmin corrente
 acl_who2=Gli utenti elencati:
 
 kill_kill=Invia il segnale di kill al processo
-kill_term= Termina  
-kill_hup=  Riavvia   
-kill_stop=    Ferma    
-kill_cont=  Continua  
+kill_term=Termina  
+kill_hup=Riavvia   
+kill_stop=Ferma    
+kill_cont=Continua  
 
 open_title=File e Connessioni aperte
 open_proc=Per il processo $1 (PID $2)

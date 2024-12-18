@@ -1,7 +1,7 @@
 index_title=Firewall Shorewall
 index_ecmd=Perintah $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'></a> tidak betul.
 index_edir=Direktori konfigurasi Shorewall $1 tidak dijumpai pada sistem anda. Mungkin ia tidak dipasang, atau konfigurasi modul <a href='$2'></a> tidak betul.
-index_version=Versi Shorewall $1 
+index_version=Versi Shorewall $1
 index_return=senarai jadual
 index_restart=Terapkan Konfigurasi
 index_restartdesc=Klik butang ini untuk mengaktifkan konfigurasi Shorewall semasa dengan perintah <tt>shorewall restart</tt>.
@@ -82,7 +82,7 @@ policy_1=Zon destinasi
 policy_2=Dasar
 policy_3=Tahap Syslog
 policy_4=Had trafik
-policy_limit=Had $1, Burst $2 
+policy_limit=Had $1, Burst $2
 policy_return=senarai dasar
 policy_edit=Edit Dasar Lalai
 policy_create=Cipta Dasar Lalai
@@ -306,13 +306,13 @@ hosts_err=Gagal menyimpan hos zon
 hosts_enet=Alamat tuan rumah yang hilang atau tidak sah
 hosts_header=Butiran hos zon
 hosts_routestopped=Laluan walaupun firewall dihentikan?
-hosts_ip=Alamat atau rangkaian $1 
-hosts_mac=Alamat MAC $1 
-hosts_ipset=IP ditetapkan $1 
+hosts_ip=Alamat atau rangkaian $1
+hosts_mac=Alamat MAC $1
+hosts_ipset=IP ditetapkan $1
 hosts_any=Mana-mana hos
 
-edit_before=Sebelum masuk $1 
-edit_after=Selepas masuk $1 
+edit_before=Sebelum masuk $1
+edit_after=Selepas masuk $1
 
 blacklist_title=Blacklist Hosts
 blacklist_desc=Halaman ini menyenaraikan tuan rumah dan perkhidmatan yang akan disekat jika trafik dari mereka tiba di antara muka dengan pilihan opsyen <b>senarai hitam</b>.
@@ -436,16 +436,16 @@ comment_msg=Mesej
 comment_err=Gagal menyimpan komen
 comment_enone=Tiada mesej yang dimasukkan
 
-log_create_table=Menambah kemasukan ke jadual $1 
-log_modify_table=Kemasukan diubah suai dalam jadual $1 
-log_delete_table=Kemasukan yang dipadamkan daripada jadual $1 
-log_deletes_table=Kemasukan yang dipadamkan dari jadual $1 
-log_up_table=Memasukkan kemasukan dalam jadual $1 
-log_down_table=Memasukkan kemasukan ke dalam jadual $1 
-log_manual_table=Didapati secara manual fail jadual $1 
-log_create_comment=Menambah komen pada jadual $1 
-log_modify_comment=Ubah komen dalam jadual $1 
-log_delete_comment=Ulasan dipadamkan dari jadual $1 
+log_create_table=Menambah kemasukan ke jadual $1
+log_modify_table=Kemasukan diubah suai dalam jadual $1
+log_delete_table=Kemasukan yang dipadamkan daripada jadual $1
+log_deletes_table=Kemasukan yang dipadamkan dari jadual $1
+log_up_table=Memasukkan kemasukan dalam jadual $1
+log_down_table=Memasukkan kemasukan ke dalam jadual $1
+log_manual_table=Didapati secara manual fail jadual $1
+log_create_comment=Menambah komen pada jadual $1
+log_modify_comment=Ubah komen dalam jadual $1
+log_delete_comment=Ulasan dipadamkan dari jadual $1
 log_stop=Berhenti firewall
 log_start=Memulakan firewall
 log_refresh=Firewall yang dipulihkan

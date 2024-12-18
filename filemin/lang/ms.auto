@@ -96,7 +96,7 @@ error_chown=Gagal menukar pemilik
 error_delete=tidak dapat memadam
 error_user_not_found=pengguna tidak dijumpai pada sistem ini
 error_group_not_found=kumpulan tidak wujud pada sistem ini
-error_archive_type_not_supported= jenis arkib tidak disokong lagi
+error_archive_type_not_supported=jenis arkib tidak disokong lagi
 error_opening_file_for_writing=Tidak dapat membuka fail untuk menulis:
 error_writing_file=Ralat menulis fail:
 error_numeric=mesti berangka!
@@ -153,14 +153,14 @@ menu_file=Fail
 menu_edit=Edit
 menu_tools=Alat
 menu_bookmarks=Penanda buku
-notallowed=Anda tidak dibenarkan mengakses $1. Direktori yang dibenarkan adalah : $2 
-error_upload_emax=Fail yang dimuat naik lebih besar daripada had $1 
+notallowed=Anda tidak dibenarkan mengakses $1. Direktori yang dibenarkan adalah : $2
+error_upload_emax=Fail yang dimuat naik lebih besar daripada had $1
 extract_etype=Jenis fail arkib yang tidak disokong
 
 error_write=anda tidak mempunyai kebenaran menulis pada fail ini
 error_move=anda tidak mempunyai kebenaran untuk mengalihkan fail ini
 
-info_total1=Jumlah: $1 fail dan direktori $2 
+info_total1=Jumlah: $1 fail dan direktori $2
 info_total2=Jumlah: $1 fail dan $2 direktori
 info_total3=Jumlah: $1 fail dan $2 direktori
 info_total4=Jumlah: $1 fail dan $2 direktori

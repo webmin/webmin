@@ -1,6 +1,6 @@
-index_version_webalizer=Verze webalizeru $1 
+index_version_webalizer=Verze webalizeru $1
 index_version_awffull=AWFFull
-index_when=Ano, $1 
+index_when=Ano, $1
 index_webalizer=Webalizer
 index_enable=Vybraný rozvrh
 index_disable=Odvolení vybrané

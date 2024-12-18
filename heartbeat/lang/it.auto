@@ -9,7 +9,7 @@ index_eha_cf=Il file di configurazione heartbeat $1 non è stato trovato sul tuo
 index_eharesources=Il file di risorse $1 non è stato trovato sul tuo sistema. Forse non è stato ancora copiato in posizione o la <a href='$2'>configurazione del modulo</a> non è corretta.
 index_eauthkeys=Il file delle chiavi di autenticazione $1 non è stato trovato sul tuo sistema. Forse non è stato ancora copiato in posizione o la <a href='$2'>configurazione del modulo</a> non è corretta.
 index_ereq_resource_cmd=Lo script per richiedere risorse dall'altro nodo ($1) non è stato trovato sul tuo sistema. Forse non è stato ancora copiato in posizione o la <a href='$2'>configurazione del modulo</a> non è corretta.
-index_version=Versione Heartbeat $1 
+index_version=Versione Heartbeat $1
 index_noversion=Avviso: la versione di Heartbeat installata sul sistema non può essere rilevata automaticamente. Dovresti impostarlo nella pagina <a href='$1'>configurazione del modulo</a>.
 index_status=Stato del battito cardiaco
 
@@ -21,7 +21,7 @@ conf_bcasts=Interfacce heartbeat Ethernet
 conf_none=Nessuna
 conf_udpport=Porta heartbeat UDP
 conf_mcast=Dispositivo per il battito cardiaco multicast
-conf_mcastv=Dispositivo $1, gruppo $2, porta $3, TTL $4, loopback $5 
+conf_mcastv=Dispositivo $1, gruppo $2, porta $3, TTL $4, loopback $5
 conf_enabled=Abilitato
 conf_disabled=Disabilitato
 conf_keepalive=Tempo tra i battiti del cuore

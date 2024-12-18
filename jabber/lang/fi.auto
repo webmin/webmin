@@ -4,10 +4,10 @@ index_edir=Jabber-kantahakemistoa $1 ei ole. Joko Jabberia ei ole asennettu, tai
 index_emodules=Perlin moduuleja $1 ja $2, joita Webmin vaatii Jabberin XML-kokoonpanon käsittelemiseksi, ei ole asennettu. <a href='$3'>Asenna ne suoraan CPANista napsauttamalla tätä</a>.
 index_emodule=Perlin moduulia $1, jota Webmin vaatii Jabberin XML-määritysten käsittelemiseksi, ei ole asennettu. <a href='$2'>Asenna se suoraan CPANista napsauttamalla tätä</a>.
 index_expat=Varmista, että Expat C -kirjasto ja otsikot on asennettu ennen kuin yrität asentaa Perl-moduuleja, koska ne ovat riippuvaisia siitä ja epäonnistuvat, jos sitä ei ole saatavana.
-index_eparse=$1 perl -moduuli ei voinut jäsentää Jabber-asetustiedostoasi : $2 
+index_eparse=$1 perl -moduuli ei voinut jäsentää Jabber-asetustiedostoasi : $2
 index_ejabberd=Jabber-palvelinohjelmaa $1 ei löydy järjestelmästäsi. Joko Jabberia ei ole asennettu, tai <a href='$2'>moduulin määritykset</a> ovat vääriä.
-index_eversion=Webmin tukee vain Jabber-versiota $2, mutta komento $3 ilmoitti seuraavat versiotiedot : $1 
-index_eversion2=Webmin tukee vain alle 2: n alla olevia Jabber-versioita, mutta komento $3 ilmoitti seuraavat versiotiedot : $1 
+index_eversion=Webmin tukee vain Jabber-versiota $2, mutta komento $3 ilmoitti seuraavat versiotiedot : $1
+index_eversion2=Webmin tukee vain alle 2: n alla olevia Jabber-versioita, mutta komento $3 ilmoitti seuraavat versiotiedot : $1
 index_start=Käynnistä Jabber Server
 index_startmsg=Napsauta tätä painiketta, jos haluat käynnistää Jabber-palvelimen järjestelmässä. Ennen kuin se käynnistetään, yksikään pikaviestiohjelma ei voi käyttää sitä.
 index_stop=Pysäytä Jabber Server
@@ -16,7 +16,7 @@ index_restart=Ota muutokset käyttöön
 index_restartmsg=Napsauta tätä painiketta, kun haluat käyttää nykyistä kokoonpanoa pysäyttämällä ja käynnistämällä sitten Jabber-palvelimen uudelleen.
 index_comments=Varoitus - Jabber-konfigurointitiedosto $1 sisältää kommentteja, jotka poistetaan, jos mitään muutoksia tehdään tällä moduulilla.
 index_return=Jabber-valikko
-index_version=Jabber-versio $1 
+index_version=Jabber-versio $1
 
 general_title=Yleiset vaihtoehdot
 general_header=Global Jabber -palvelimen vaihtoehdot
@@ -44,7 +44,7 @@ messages_rnotify=Ilmoita järjestelmänvalvojalle rekisteröinnissä?
 messages_rfields=Vaadittavat rekisteröintikentät
 messages_vcard2jud=Lähetetäänkö vCard Jabber-käyttäjän hakemistoon?
 messages_err=Viestien tallentaminen epäonnistui
-messages_evcard=Virheellinen vCard XML : $1 
+messages_evcard=Virheellinen vCard XML : $1
 messages_etag=Palvelimen vCard XML ei ala &lt;vCard&gt;
 
 modules_title=Jabber-moduulit

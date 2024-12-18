@@ -43,9 +43,9 @@ paginator_nosearchrs=<tt>$1</tt> dotazu neodpovídají žádné výsledky
 
 langauto_include=Zahrňte strojové překlady
 
-file_truncated_message=načteno $1 dat, zkráceno $2 z $3 
-file_truncated_message_head=načteno začátek $1 dat, zkráceno $2 z $3 
-file_truncated_message_tail=načtený konec $1 dat, zkrácen $2 z $3 
+file_truncated_message=načteno $1 dat, zkráceno $2 z $3
+file_truncated_message_head=načteno začátek $1 dat, zkráceno $2 z $3
+file_truncated_message_tail=načtený konec $1 dat, zkrácen $2 z $3
 
 defcert_error=Používá se výchozí $1 přiložený certifikát SSL. Před pokračováním v přihlášení se důrazně doporučuje aktualizovat výchozí certifikát <tt>$2</tt>.
 

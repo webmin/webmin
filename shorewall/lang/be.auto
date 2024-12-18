@@ -1,7 +1,7 @@
 index_title=Брандмаўэр Shorewall
 index_ecmd=Каманда $1 не знойдзена ў вашай сістэме. Магчыма, ён не ўсталяваны, альбо канфігурацыя модуля <a href='$2'></a> няправільная.
 index_edir=Каталог канфігурацыі Shorewall $1 у вашай сістэме не знойдзены. Магчыма, ён не ўсталяваны, альбо канфігурацыя модуля <a href='$2'></a> няправільная.
-index_version=Версія Shorewall $1 
+index_version=Версія Shorewall $1
 index_return=спіс табліц
 index_restart=Прымяніць канфігурацыю
 index_restartdesc=Націсніце гэтую кнопку, каб актываваць бягучую канфігурацыю Shorewall з дапамогай каманды <tt>перазагрузка shorewall</tt>.
@@ -82,7 +82,7 @@ policy_1=Зона прызначэння
 policy_2=Палітыка
 policy_3=Сістэмны ўзровень
 policy_4=Абмежаванне руху
-policy_limit=Абмежаванне $1, Burst $2 
+policy_limit=Абмежаванне $1, Burst $2
 policy_return=спіс палітык
 policy_edit=Рэдагаваць палітыку па змаўчанні
 policy_create=Стварыце палітыку па змаўчанні
@@ -306,13 +306,13 @@ hosts_err=Не атрымалася захаваць хост зоны
 hosts_enet=Адсутнічае альбо недапушчальны адрас хаста
 hosts_header=Дэталі размяшчэння зоны
 hosts_routestopped=Маршрут, нават калі брандмаўэр спынены?
-hosts_ip=Адрас або сетка $1 
-hosts_mac=MAC-адрас $1 
-hosts_ipset=IP усталяваны $1 
+hosts_ip=Адрас або сетка $1
+hosts_mac=MAC-адрас $1
+hosts_ipset=IP усталяваны $1
 hosts_any=Любы гаспадар
 
-edit_before=Перад запісам $1 
-edit_after=Пасля запісу $1 
+edit_before=Перад запісам $1
+edit_after=Пасля запісу $1
 
 blacklist_title=Гаспадары чорнага спісу
 blacklist_desc=На гэтай старонцы прыведзены хосты і паслугі, якія будуць заблакіраваны, калі трафік ад іх паступае на інтэрфейс з усталяванай опцыяй <b>чорны спіс</b>.
@@ -436,16 +436,16 @@ comment_msg=Паведамленне
 comment_err=Не ўдалося захаваць каментар
 comment_enone=Няма паведамлення
 
-log_create_table=Дададзены запіс у табліцу $1 
-log_modify_table=Зменены запіс у табліцы $1 
-log_delete_table=Выдалены запіс з табліцы $1 
-log_deletes_table=Выдалены запісы з табліцы $1 
-log_up_table=Перамешчаны запіс у табліцы $1 
-log_down_table=Перайшоў уніз у табліцы $1 
+log_create_table=Дададзены запіс у табліцу $1
+log_modify_table=Зменены запіс у табліцы $1
+log_delete_table=Выдалены запіс з табліцы $1
+log_deletes_table=Выдалены запісы з табліцы $1
+log_up_table=Перамешчаны запіс у табліцы $1
+log_down_table=Перайшоў уніз у табліцы $1
 log_manual_table=Файл табліцы $1 адрэдагаваны ўручную
-log_create_comment=Дададзены каментар да табліцы $1 
-log_modify_comment=Мадыфікаваны каментар у табліцы $1 
-log_delete_comment=Выдалены каментар з табліцы $1 
+log_create_comment=Дададзены каментар да табліцы $1
+log_modify_comment=Мадыфікаваны каментар у табліцы $1
+log_delete_comment=Выдалены каментар з табліцы $1
 log_stop=Спынены брандмаўэр
 log_start=Пачаўся брандмаўэр
 log_refresh=Абноўлены брандмаўэр

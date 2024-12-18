@@ -154,10 +154,10 @@ acl_who1=Usuari Webmin actual
 acl_who2=Usuaris llistats...
 
 kill_kill=Mata el procés
-kill_term= Mata  
-kill_hup=  Reinicia   
-kill_stop=    Atura    
-kill_cont=  Continua  
+kill_term=Mata  
+kill_hup=Reinicia   
+kill_stop=Atura    
+kill_cont=Continua  
 
 open_title=Obertura de Fitxers i Connexions
 open_proc=Del procés $1 (PID $2)

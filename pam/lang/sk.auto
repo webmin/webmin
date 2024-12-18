@@ -107,7 +107,7 @@ edit_none=Pre tento krok neboli špecifikované žiadne moduly PAM.
 edit_delete=Odstrániť službu PAM
 edit_move=sťahovať
 edit_return=Služba PAM
-edit_inc=Zahrnúť službu $1 
+edit_inc=Zahrnúť službu $1
 edit_iheader=Zahrnuté služby PAM
 
 pam_pwdb.so=Autentifikácia hesla Unix
@@ -273,17 +273,17 @@ mail_edir=Chýbajúci alebo neplatný adresár spoolovej pošty
 
 stack_service=Odovzdajte kontrolu do služby PAM
 
-log_pam_create=Vytvorená služba PAM $1 
-log_pam_delete=Odstránená služba PAM $1 
-log_mod_create=Modul PAM $1 bol pridaný do služby $2 
-log_mod_modify=Modifikovaný modul PAM $1 v službe $2 
-log_mod_delete=Vymazaný modul PAM $1 v službe $2 
-log_mod_move=Zamenené moduly PAM v službe $3 
-log_mod_move_l=Vymenené moduly PAM $1 a $2 v službe $3 
-log_inc_create=Pridané zahŕňajú $1 pre službu $2 
-log_inc_modify=Upravené zahŕňajú $1 pre službu $2 
-log_inc_delete=Odstránené zahŕňajú $1 pre službu $2 
-log_incs=Aktualizované zahŕňa službu $1 
+log_pam_create=Vytvorená služba PAM $1
+log_pam_delete=Odstránená služba PAM $1
+log_mod_create=Modul PAM $1 bol pridaný do služby $2
+log_mod_modify=Modifikovaný modul PAM $1 v službe $2
+log_mod_delete=Vymazaný modul PAM $1 v službe $2
+log_mod_move=Zamenené moduly PAM v službe $3
+log_mod_move_l=Vymenené moduly PAM $1 a $2 v službe $3
+log_inc_create=Pridané zahŕňajú $1 pre službu $2
+log_inc_modify=Upravené zahŕňajú $1 pre službu $2
+log_inc_delete=Odstránené zahŕňajú $1 pre službu $2
+log_incs=Aktualizované zahŕňa službu $1
 
 inc_edit=Upraviť zahrnutú službu
 inc_create=Vytvorte zahrnutú službu

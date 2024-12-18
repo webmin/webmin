@@ -8,7 +8,7 @@ index_inet=Internet
 index_proto=Giao thức
 index_user=Người sử dụng
 index_server=Chương trình máy chủ
-index_redirect=Chuyển tiếp tới $1 
+index_redirect=Chuyển tiếp tới $1
 index_enabled=Đã bật?
 index_internal=Nội bộ cho Xinetd
 index_add_inet=Tạo một dịch vụ internet mới
@@ -70,7 +70,7 @@ serv_eport=Số cổng bị thiếu hoặc không hợp lệ
 serv_einst=Thiếu hoặc không hợp lệ số lượng máy chủ đồng thời
 serv_euser=Bạn phải nhập người dùng
 serv_egroup=Bạn phải nhập một nhóm
-serv_estd=Không có số cổng tiêu chuẩn cho dịch vụ $1 
+serv_estd=Không có số cổng tiêu chuẩn cho dịch vụ $1
 serv_eproto=Bạn phải chọn một giao thức cho dịch vụ này
 serv_eserver=Chương trình máy chủ bị thiếu hoặc không hợp lệ
 serv_erhost=Máy chủ chuyển tiếp bị thiếu hoặc không hợp lệ
@@ -91,11 +91,11 @@ proto_tcp=TCP (Giao thức điều khiển truyền)
 proto_udp=UDP (Giao thức gói dữ liệu người dùng)
 
 restart_err=Không thể áp dụng thay đổi
-restart_ekill=Không thể gửi tín hiệu USR2 tới PID $1 : $2 
+restart_ekill=Không thể gửi tín hiệu USR2 tới PID $1 : $2
 restart_epid=Không còn chạy
 
 start_err=Không thể bắt đầu xinetd
-start_estart=$1 thất bại : $2 
+start_estart=$1 thất bại : $2
 
 defs_title=Tùy chọn mặc định
 defs_header=Tùy chọn mặc định cho dịch vụ
@@ -122,16 +122,16 @@ defs_efile=Tên tệp nhật ký bị thiếu hoặc không hợp lệ
 defs_esoft=Giới hạn mềm bị thiếu hoặc không hợp lệ
 defs_ehard=Thiếu hoặc giới hạn cứng không hợp lệ
 
-log_create_serv=Đã tạo $2 dịch vụ $1 
-log_modify_serv=Đã sửa đổi $2 dịch vụ $1 
-log_delete_serv=Đã xóa $2 dịch vụ $1 
+log_create_serv=Đã tạo $2 dịch vụ $1
+log_modify_serv=Đã sửa đổi $2 dịch vụ $1
+log_delete_serv=Đã xóa $2 dịch vụ $1
 log_start=Bắt đầu máy chủ Xinetd
 log_apply=Áp dụng thay đổi
 log_defaults=Thay đổi tùy chọn mặc định
 log_enable=Đã bật $1 dịch vụ
 log_disable=Dịch vụ $1 bị vô hiệu hóa
-log_enable_l=Đã bật dịch vụ $1 
-log_disable_l=Dịch vụ bị vô hiệu hóa $1 
+log_enable_l=Đã bật dịch vụ $1
+log_disable_l=Dịch vụ bị vô hiệu hóa $1
 
 config_dirdef=Tập tin cấu hình Xinetd
 config_dirto=Tập tin mới trong thư mục

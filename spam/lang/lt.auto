@@ -12,7 +12,7 @@ index_apply=Taikyti pakeitimus
 index_applydesc=Spustelėkite šį mygtuką, norėdami pritaikyti dabartinę „SpamAssassin“ konfigūraciją, siųsdami HUP signalą visiems vykstantiems $1 procesams.
 index_cpan=Kadangi „SpamAssassin“ yra „Perl“ modulis, galite jį automatiškai įdiegti naudodami „Webmin“ modulį <a href='$2'>„Perl“ moduliai</a> “, kad atsisiųstumėte $1 iš CPAN.
 index_spamassassin=„SpamAssassin“
-index_ecannot=Jums neleidžiama tvarkyti „SpamAssassin“ konfigūracijos failo $1 
+index_ecannot=Jums neleidžiama tvarkyti „SpamAssassin“ konfigūracijos failo $1
 
 white_title=Leidžiami ir atmetami adresai
 white_desc=Šiame puslapyje pateiktose lentelėse galima nurodyti Nuo: ir Kam: el. Pašto adresus, kurie visada arba niekada nepriskiriami šlamšto kategorijai. Bet koks kitas el. Paštas bus tvarkomas kaip įprasta pagal „SpamAssassin“ taisykles. Visuose el. Pašto adresuose gali būti pakaitos simbolių, pvz., *@Foo.com arba *.foo.com, kad jie atitiktų visus domenus.
@@ -111,7 +111,7 @@ report_addtext=Antraštės tekstas
 report_addspam=Šlamštas
 report_addham=Kumpis
 report_addall=Visi
-report_eaddheader=Trūksta arba netinkama papildoma antraštė, norint pridėti $1 
+report_eaddheader=Trūksta arba netinkama papildoma antraštė, norint pridėti $1
 
 user_title=Įvairios vartotojo parinktys
 user_desc=Šiame puslapyje pateiktos parinktys daugiausia susijusios su keliais ir nustatymais, kuriuos „SpamAssassin“ naudoja išoriniams šlamšto identifikavimo paketams „Razor“, DCC ir „Pyzor“. Taip pat galite pasakyti „SpamAssassin“, ar ji galės atlikti DNS paiešką, ar ne.
@@ -190,7 +190,7 @@ priv_emscore=„$1“ nėra teisingas didžiausias frazės balas
 priv_ephrase=„$1“ nėra tinkama dviejų žodžių šlamšto frazė
 priv_escore=Trūksta arba netinkamas šlamšto frazės „$1“ balas
 
-usually=Paprastai $1 
+usually=Paprastai $1
 ecannot=Jums neleidžiama naudotis šiuo puslapiu
 setup_title=Nustatyti „SpamAssassin“ „Procmail“
 setup_desc_webmin=Ši forma gali būti naudojama norint nustatyti „Procmail“ $1 ir paleisti „SpamAssassin“ visose el. Pašto žinutėse, kurias gauna jūsų sistema. Tačiau tai turės jokios įtakos tik tuo atveju, jei jūsų pašto serveris sukonfigūruotas naudoti „Procmail“ vietiniam perdavimui arba vartotojams, kurių <tt>.forward</tt> failai yra nustatyti paleisti „Procmail“.
@@ -244,7 +244,7 @@ mail_razor=Pranešti kaip apie šlamštą ir ištrinti
 mail_ham=Pranešti kaip „Kumpis ir gautieji“
 mail_delete=Ištrinti
 mail_return=šlamšto laiškų sąrašas
-mail_pos=Šlamšto žinutės nuo $1 iki $2 iš $3 
+mail_pos=Šlamšto žinutės nuo $1 iki $2 iš $3
 mail_none=Šlamšto aplanke nėra jokių pranešimų
 mail_refresh=Atnaujinkite
 mail_will=Automatinis atnaujinimas per $1 minutes
@@ -253,7 +253,7 @@ mail_delall=Ištrinti visą šlamštą
 mail_search3=Ieškokite aukščiau:
 
 process_eclean=Pašalinant „SpamAssassin“ antraštes iš šio el. Pašto įvyko klaida
-process_ereport=Nepavyko pranešti el. Pašto „SpamAssassin“ : $1 
+process_ereport=Nepavyko pranešti el. Pašto „SpamAssassin“ : $1
 
 apply_err=Nepavyko pritaikyti pakeitimų
 apply_none=Nerasta „SpamAssassin“ demonų procesų!
@@ -263,7 +263,7 @@ acl_file=Redaguoti „SpamAssassin“ konfigūracijos failą
 acl_filedef=Visuotinis konfigūracijos failas
 acl_awl=Leidžiama vartotojams redaguoti automatinį baltąjį sąrašą
 acl_awl0=Visi vartotojai
-acl_awl1=Tik išvardyti vartotojai $1 
+acl_awl1=Tik išvardyti vartotojai $1
 acl_awl2=Tik grupių $1 nariai
 
 search_escore=Trūksta arba netinkamas šlamšto balas
@@ -337,20 +337,20 @@ simple_score=Taškas, kurį reikia pritaikyti
 simple_describe=apibūdinimas
 simple_err=Nepavyko išsaugoti pranešimų testų
 
-before_ecmd=Nepavyko išsaugoti komandos : $1 
-after_ecmd=Nepavyko išsaugoti komandos : $1 
+before_ecmd=Nepavyko išsaugoti komandos : $1
+after_ecmd=Nepavyko išsaugoti komandos : $1
 
-connect_emysql=Nepavyko įkelti duomenų bazės tvarkyklės $1 
+connect_emysql=Nepavyko įkelti duomenų bazės tvarkyklės $1
 connect_elogin=Nepavyko prisijungti prie duomenų bazės $1:$2.
-connect_equery=Duomenų bazėje $1 nėra nuostatų lentelės $2 
+connect_equery=Duomenų bazėje $1 nėra nuostatų lentelės $2
 connect_eldapmod=„Perl“ modulis $1, reikalingas ryšiui su LDAP, neįdiegtas arba neįkeltas
-connect_eldap=Nepavyko prisijungti prie $2 prievado LDAP serverio $1 
-connect_eldaplogin=Nepavyko prisijungti prie LDAP serverio $1 kaip $2 : $3 
-connect_ebase=LDAP bazė DN $1 negalioja : $2 
+connect_eldap=Nepavyko prisijungti prie $2 prievado LDAP serverio $1
+connect_eldaplogin=Nepavyko prisijungti prie LDAP serverio $1 kaip $2 : $3
+connect_ebase=LDAP bazė DN $1 negalioja : $2
 
-eldap=LDAP operacija nepavyko : $1 
-esql=SQL nepavyko : $1 
-ldap_euser=Nepavyko rasti LDAP vartotojo objekto $1 
+eldap=LDAP operacija nepavyko : $1
+esql=SQL nepavyko : $1
+ldap_euser=Nepavyko rasti LDAP vartotojo objekto $1
 
 db_title=SQL ir LDAP duomenų bazės
 db_header=Konfigūracijos saugyklos duomenų bazės parinktys

@@ -1,5 +1,5 @@
 index_title=Servidor VPN PPTP
-index_version=Versão PoPToP $1 
+index_version=Versão PoPToP $1
 index_epptpd=O servidor PoPToP PPTP $1 não foi encontrado no seu sistema ou não é o programa certo. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo</a> está incorreta.
 index_econfig=O arquivo de configuração do servidor PPTP $1 não foi encontrado no seu sistema. Talvez sua <a href='$2'>configuração do módulo</a> esteja incorreta.
 index_stop=Parar servidor PPTP
@@ -63,7 +63,7 @@ options_err=Falha ao salvar opções de PPP
 options_emtu=Tamanho máximo de pacote de envio ausente ou inválido
 options_emru=Tamanho máximo de pacote de recebimento ausente ou inválido
 options_ename=Nome de servidor ausente ou inválido para autenticação
-options_version=Versão PPPd $1 
+options_version=Versão PPPd $1
 options_msdesc=As opções abaixo habilitam o método de autenticação MS-CHAP e a criptografia MPPE, usadas por padrão pelos clientes VPN do Windows. No entanto, o MPPE requer suporte no daemon PPP e no kernel do sistema operacional.
 options_mschap=Autenticação MS-CHAP
 options_mschap-v2=Autenticação MS-CHAP versão 2
@@ -75,7 +75,7 @@ secrets_ecannot=Você não tem permissão para editar contas PPP
 secrets_return=índice
 secrets_none=Ainda não foram criadas contas PPP.
 secrets_enopfile=O arquivo de senhas PPP $1 não existe no seu sistema. Talvez o PPP não esteja instalado ou sua <a href='$2'>configuração do módulo</a> esteja incorreta.
-secrets_table=Contas PPP para $1 
+secrets_table=Contas PPP para $1
 secrets_user=Nome do usuário
 secrets_ips=Endereços IP
 secrets_uany=QUALQUER
@@ -133,13 +133,13 @@ disc_err=Falha ao desconectar
 disc_egone=O Connections não está mais ativo
 disc_ekill=O processo não está mais em execução
 
-log_secret_create=Conta PPP criada $1 
-log_secret_modify=Conta PPP modificada $1 
-log_secret_delete=Conta PPP excluída $1 
+log_secret_create=Conta PPP criada $1
+log_secret_modify=Conta PPP modificada $1
+log_secret_delete=Conta PPP excluída $1
 log_deletes=$1 contas PPP excluídas
 log_conf=Opções de servidor PPTP modificado
 log_options=Opções de PPP modificadas
-log_disc=Cliente desconectado $1 
+log_disc=Cliente desconectado $1
 log_start=Servidor PPTP iniciado
 log_stop=Servidor PPTP parado
 log_apply=Configuração do servidor PPTP aplicado

@@ -1,4 +1,4 @@
-index_mode=Загрузочная система : $1 
+index_mode=Загрузочная система : $1
 index_sboot5=Нет (в маске)
 index_sboot6=Да всегда)
 index_uname=Наименование услуги
@@ -13,7 +13,7 @@ index_lname=Имя агента
 
 edit_reloadnow2=Перечитайте файл конфигурации
 
-log_condrestart=Условно перезапущенное действие $1 
+log_condrestart=Условно перезапущенное действие $1
 
 mass_enoallow=не могу остановить <tt>$1</tt>
 mass_failed=.. не удалось
@@ -51,7 +51,7 @@ upstart_conf=Файл конфигурации
 upstart_boot=Начать во время загрузки?
 upstart_status=Текущее состояние
 upstart_status0=Не бегать
-upstart_status1=Запуск с PID $1 
+upstart_status1=Запуск с PID $1
 upstart_err=Не удалось сохранить сервис upstart
 upstart_econf=Не введено содержимое файла конфигурации
 upstart_ename=Отсутствует или недействительно имя службы выскочки upstart
@@ -76,7 +76,7 @@ systemd_conf=Конфигурация Systemd
 systemd_boot=Начать во время загрузки?
 systemd_status=Текущее состояние
 systemd_status0=Не бегать
-systemd_status1=Запуск с PID $1 
+systemd_status1=Запуск с PID $1
 systemd_status2=Бег
 systemd_status3=Неизвестный!
 systemd_err=Не удалось сохранить службу systemd
@@ -99,7 +99,7 @@ launchd_conf=Конфигурация запуска
 launchd_boot=Начать во время загрузки?
 launchd_status=Текущее состояние
 launchd_status0=Не бегать
-launchd_status1=Запуск с PID $1 
+launchd_status1=Запуск с PID $1
 launchd_status2=Бег
 launchd_err=Не удалось сохранить запускаемый агент
 launchd_ename=Отсутствует или недопустимо имя агента запуска

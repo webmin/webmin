@@ -41,10 +41,10 @@ save_eroot=Non hai elencato alcun host con cui condividere root
 save_ealready=La directory '$1' è già stata condivisa
 save_ehost=L'host '$1' non esiste
 
-log_modify=Condivisione NFS modificata $1 
-log_rename=Modificata condivisione NFS da $1 a $2 
-log_create=Quota NFS creata $1 
-log_delete=Condivisione NFS eliminata $1 
+log_modify=Condivisione NFS modificata $1
+log_rename=Modificata condivisione NFS da $1 a $2
+log_create=Quota NFS creata $1
+log_delete=Condivisione NFS eliminata $1
 log_apply=Modifiche applicate
 
 acl_view=È possibile modificare le condivisioni NFS?

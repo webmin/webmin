@@ -67,7 +67,7 @@ index_eexpired_conf=Penandatanganan automatik mesti didayakan semula pada halama
 index_eexpired_mod=Gunakan modul $1 untuk sama ada mematikan DNSSEC untuk domain ini, atau periksa mengapa penandatanganan gagal.
 
 master_title=Edit Master Master
-master_inview=$1 dalam pandangan $2 
+master_inview=$1 dalam pandangan $2
 master_ecannot=Anda tidak dibenarkan mengedit zon ini
 master_egone=Zon $1 tidak wujud dalam sebarang pandangan
 master_egone2=Zon $1 tidak wujud!
@@ -1278,7 +1278,7 @@ zonekey_public=Rekod utama awam :
 zonekey_publicfile=Fail utama awam : $1
 zonekey_private=Butiran utama peribadi :
 zonekey_privatefile=Fail kunci peribadi : $1
-zonekey_algorithm=Algoritma DNSSEC  : $1 
+zonekey_algorithm=Algoritma DNSSEC : $1
 zonekey_ds=Rekod DS untuk zon ibu bapa :
 zonekey_expandksk=Tunjukkan butiran kunci utama-awam dan peribadi ..
 zonekey_expandzone=Tunjukkan butiran kunci zon awam dan swasta ..

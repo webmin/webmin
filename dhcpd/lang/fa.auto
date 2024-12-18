@@ -5,7 +5,7 @@ index_delete=انتخاب شده را پاک کن
 
 listl_unknown=ناشناخته
 listl_allocs=$1 آدرس IP موجود ،$2 اختصاص یافته ($3٪)
-listl_mode=حالت نمایش  :
+listl_mode=حالت نمایش :
 listl_mode_0=DHCP اجاره می دهد
 listl_mode_1=زیرمجموعه‌ها و موارد استفاده
 listl_size=کل IP ها

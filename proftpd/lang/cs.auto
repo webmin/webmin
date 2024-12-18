@@ -9,11 +9,11 @@ index_dlmode=Přidat možnosti pro
 
 type_7=Možnosti SSL
 
-dir_header5=Globálně pro adresář $1 
+dir_header5=Globálně pro adresář $1
 
-manual_etest=Byla zjištěna chyba konfiguračního souboru : $1 
+manual_etest=Byla zjištěna chyba konfiguračního souboru : $1
 
-limit_header7=Globálně pro příkazy $1 
+limit_header7=Globálně pro příkazy $1
 
 dserv_eanondir=Adresář musí být v anonymním adresáři FTP
 
@@ -48,11 +48,11 @@ apply_egone=Už neběží
 
 ftpindex_cmds=FTP příkazy
 
-log_anonc=Nastavit anonymní FTP pro server $1 
-log_anons=Překonfigurovaný anonymní FTP pro server $1 
-log_anond=Odstraněn anonymní FTP pro server $1 
-log_anonm=Ručně upravený anonymní FTP pro server $1 
-log_anon=Byl změněn $1 v anonymním FTP pro server $2 
+log_anonc=Nastavit anonymní FTP pro server $1
+log_anons=Překonfigurovaný anonymní FTP pro server $1
+log_anond=Odstraněn anonymní FTP pro server $1
+log_anonm=Ručně upravený anonymní FTP pro server $1
+log_anon=Byl změněn $1 v anonymním FTP pro server $2
 
 eafter=Ověření konfigurace se nezdařilo: $1 Změny nebyly uloženy.
 proftpd_apply=Aplikuj změny

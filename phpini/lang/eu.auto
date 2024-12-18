@@ -11,7 +11,7 @@ index_anyfile=Editatu beste PHP konfigurazio fitxategia:
 index_return=konfigurazio fitxategiak
 
 file_global=PHP konfigurazio globala
-file_eread=Ezin izan da irakurri $1 : $2 
+file_eread=Ezin izan da irakurri $1 : $2
 
 manual_title=Editatu konfigurazioa eskuz
 manual_desc=Orrialde hau PHP konfigurazio fitxategia eskuz editatzeko erabil daiteke. Hori kontu handiz egin beharko da, ez baita sintaxirik edo beste baliozkotasun egiaztapenik egingo zure aldaketetan.

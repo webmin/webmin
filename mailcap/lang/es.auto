@@ -33,14 +33,14 @@ save_edesc=Descripción de tipo MIME no válida
 
 delete_err=Error al eliminar programas de tipo MIME
 disable_err=Error al deshabilitar programas de tipo MIME
-disable_eclash=Ya existe un programa de tipo MIME deshabilitado para $1 
+disable_eclash=Ya existe un programa de tipo MIME deshabilitado para $1
 enable_err=Error al habilitar programas de tipo MIME
-enable_eclash=Ya existe un programa de tipo MIME habilitado para $1 
+enable_eclash=Ya existe un programa de tipo MIME habilitado para $1
 delete_enone=Ninguna seleccionada
 
-log_delete_mailcap=Eliminar el programa de tipo MIME para $1 
-log_create_mailcap=Se creó el programa de tipo MIME para $1 
-log_modify_mailcap=Programa de tipo MIME modificado para $1 
+log_delete_mailcap=Eliminar el programa de tipo MIME para $1
+log_create_mailcap=Se creó el programa de tipo MIME para $1
+log_modify_mailcap=Programa de tipo MIME modificado para $1
 log_delete_mailcaps=Programas de tipo MIME $1 eliminados
 log_disable_mailcaps=Programas de tipo MIME $1 deshabilitados
 log_enable_mailcaps=Programas de tipo MIME $1 habilitados

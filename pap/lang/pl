@@ -23,7 +23,7 @@ edit_secret_sany=Dowolny
 edit_secret_uany=Dowolna
 edit_secret_pass=Hasło
 edit_secret_none=Brak
-edit_secret_ffile=Z pliku 
+edit_secret_ffile=Z pliku
 edit_secret_leave=Pozostaw niezmienione
 edit_secret_setto=Ustaw na
 edit_secret_vaddr=Dozwolone<br>adresy
@@ -31,7 +31,7 @@ edit_secret_aany=Pozwól wszystkim
 edit_secret_anone=Nie pozwól żadnemu
 edit_secret_alist=Pozwól wymienionym..
 edit_secret_save=Zachowaj
-edit_secret_del=Usuń 
+edit_secret_del=Usuń
 edit_secret_return=listy kont
 
 save_secret_esave=Nie udało się zachować konta

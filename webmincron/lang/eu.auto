@@ -17,4 +17,4 @@ edit_special_monthly=Hilero (hilaren 1ean)
 edit_special_yearly=Urtero (urtarrilaren 1ean)
 
 log_success=Behar bezala <tt>$2</tt> exekutatu da <tt>$1</tt>
-log_failure=Ezin izan da <tt>$2</tt> exekutatu <tt>$1</tt> : $3 
+log_failure=Ezin izan da <tt>$2</tt> exekutatu <tt>$1</tt> : $3

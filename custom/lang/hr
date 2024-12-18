@@ -114,7 +114,7 @@ file_id=ID editora
 view_err=Neuspjelo uređivanje dokumenta
 view_ecannot=Nije Vam dopušteno uređivati ovaj dokument
 view_title=Uredi Dokument
-view_efile=Upisivanje u $1 nije uspjelo : $2 
+view_efile=Upisivanje u $1 nije uspjelo : $2
 
 form_ecannot=Nije Vam dopušteno pokretanje ove naredbe
 form_title=Izvrši Naredbu
@@ -132,7 +132,7 @@ sql_user=Prijavi se kao korisnik
 sql_pass=S lozinkom
 sql_host=Poslužiteljski host baze podataka
 sql_local=Ovaj poslužitelj
-sql_err=Neuspjelo spremanje SQL naredbe 
+sql_err=Neuspjelo spremanje SQL naredbe
 sql_esql=Nije unešen SQL
 sql_ehost=Nepostojeći ili neispravan poslužiteljski host baze podataka
 sql_edb=Nepostojeći ili neispravan naziv baze podataka

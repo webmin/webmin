@@ -1,4 +1,4 @@
-index_ecmd=El programa servidor Dovecot $1 no se encontró en su sistema. Puede que no esté instalado, o que su  <a href='$2'>Configuración del módulo</a> sea incorrecta.
+index_ecmd=El programa servidor Dovecot $1 no se encontró en su sistema. Puede que no esté instalado, o que su <a href='$2'>Configuración del módulo</a> sea incorrecta.
 index_econf=El archivo de configuración de Dovecot $1 no se encontró en su sistema. Puede que no esté instalado, o que su <a href='$2'>Configuración del módulo</a> sea incorrecta.
 index_dovecot=Dovecot
 index_stop=Parar Servidor Dovecot

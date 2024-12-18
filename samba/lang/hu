@@ -150,7 +150,7 @@ smb_ip=IP-cím
 smb_asworkgroup=<b>Munkacsoportként</b> (opcionális)
 
 create_title=Másolat létrehozatala
-create_msg=A másolatmegosztás az ön által kiválasztott megosztástól fogja örökölni az összes alapértelmezett értéket. Ha a forrásmegosztás módosul, a másolat vele változik. 
+create_msg=A másolatmegosztás az ön által kiválasztott megosztástól fogja örökölni az összes alapértelmezett értéket. Ha a forrásmegosztás módosul, a másolat vele változik.
 create_from=Másolandó megosztás:
 create_name=Új megosztásnév:
 
@@ -405,7 +405,7 @@ log_delete_pshare=A(z) $1 nyomtatómegosztás törölve
 log_net=Unix hálózatkezelési opciók módosítva
 log_smb=Windows hálózatkezelési opciók módosítva
 log_pass=Hitelesítési opciók módosítva
-log_print= Windows - Unix nyomtatási opciók módosítva
+log_print=Windows - Unix nyomtatási opciók módosítva
 log_misc=További opciók módosítva
 log_sync=Unix felhasználók hangolása konfigurálva
 log_epass=Unix felhasználók Samba felhasználókká alakítva

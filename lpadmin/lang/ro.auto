@@ -20,7 +20,7 @@ index_restart=Reporniți Scheduler
 index_restartmsg=Faceți clic pe acest buton pentru a reporni procesul de planificare a tipăririi. Acest lucru va forța să fie aplicată configurația curentă de imprimare.
 index_return=lista de imprimante
 index_esystem=Fie instalați software-ul pentru sistemul de imprimare ales, fie utilizați <a href='$1'>configurația modulului</a> pentru ao schimba.
-index_style=Sistem de imprimare: $1 
+index_style=Sistem de imprimare: $1
 index_cluster=Servere Cluster
 index_clusterdesc=Faceți clic pe acest buton pentru a configura servere Webmin suplimentare pe care vor fi create, actualizate și șterse imprimante.
 index_delete=Ștergeți imprimante selectate
@@ -99,12 +99,12 @@ save_eremote=Driverele nu pot fi utilizate cu imprimante Unix la distanță
 save_edhost=Gazda directă „$1” nu există
 save_edport=Portul direct lipsă sau nevalid
 save_evalid=Sistemul de imprimare nu a permis această imprimantă
-save_errslave=Imprimanta a creat OK pe acest sistem, dar au apărut următoarele erori la sistemele de cluster : $1 
+save_errslave=Imprimanta a creat OK pe acest sistem, dar au apărut următoarele erori la sistemele de cluster : $1
 save_egone=Nu a fost găsită nicio imprimantă numită „$1”
-save_errdelslave=Imprimanta a șters OK pe acest sistem, dar au apărut următoarele erori pe sistemele de cluster : $1 
+save_errdelslave=Imprimanta a șters OK pe acest sistem, dar au apărut următoarele erori pe sistemele de cluster : $1
 
 jobs_title=Tipărire lucrări
-jobs_header=Tipăriți lucrările pe $1 
+jobs_header=Tipăriți lucrările pe $1
 jobs_id=ID post
 jobs_size=mărimea
 jobs_by=Trimis de
@@ -117,7 +117,7 @@ jobs_all=Anulați toate lucrările de tipărire
 jobs_bytes=bytes
 jobs_test=Tipăriți pagina de testare
 jobs_cancelsel=Anulați lucrările selectate
-jobs_on=Pe imprimantă $1 
+jobs_on=Pe imprimantă $1
 jobs_return=lista lucrărilor tipărite
 
 cancel_ecannot=Nu aveți voie să anulați lucrările de imprimare
@@ -197,7 +197,7 @@ suse_yast2=Șofer YAST2
 suse_edriver=Nu a fost selectat tipul de imprimantă
 suse_eres=Rezoluție lipsă sau nevalidă
 
-estop=Nu a reușit oprirea lpd : $1 
+estop=Nu a reușit oprirea lpd : $1
 
 acl_printers=Imprimantele pe care le poate configura acest utilizator
 acl_add=Poți adăuga noi imprimante?
@@ -218,20 +218,20 @@ acl_cluster=Poate gestiona clusterul de imprimantă?
 log_stop=Planificatorul de imprimare oprit
 log_start=A început programatorul de imprimare
 log_restart=S-a repornit programatorul de imprimare
-log_cancel_job=Lucrare de imprimare anulată $2 pe $1 
-log_cancel_all=A anulat toate lucrările de tipărire pe $1 
-log_cancel_sel=Anulează $2 lucrări de imprimare pe $1 
-log_create=Imprimantă creată $1 pe $2 
-log_modify=Imprimantă modificată $1 pe $2 
-log_delete=S-a șters imprimanta $1 pe $2 
-log_create_l=Imprimantă creată $3 $1 pe $2 
-log_modify_l=Imprimantă modificată $3 $1 pe $2 
-log_delete_l=S-a șters imprimanta $3 $1 pe $2 
+log_cancel_job=Lucrare de imprimare anulată $2 pe $1
+log_cancel_all=A anulat toate lucrările de tipărire pe $1
+log_cancel_sel=Anulează $2 lucrări de imprimare pe $1
+log_create=Imprimantă creată $1 pe $2
+log_modify=Imprimantă modificată $1 pe $2
+log_delete=S-a șters imprimanta $1 pe $2
+log_create_l=Imprimantă creată $3 $1 pe $2
+log_modify_l=Imprimantă modificată $3 $1 pe $2
+log_delete_l=S-a șters imprimanta $3 $1 pe $2
 
-linux_paralel=Port paralel $1 
+linux_paralel=Port paralel $1
 linux_serial=Port serial $1 (COM $1)
 linux_null=Dispozitiv nul
-linux_usb=Imprimantă USB $1 
+linux_usb=Imprimantă USB $1
 linux_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare Linux nu este instalat.
 linux_espool=Directorul spool $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare Linux nu este instalat.
 
@@ -243,18 +243,18 @@ freebsd_espool=Directorul spool $1 nu există pe sistemul dvs., ceea ce indică 
 openbsd_paralel=Port paralel
 openbsd_serial=Port serial $1 (COM $1)
 
-unixware_paralel=Port paralel $1 
-unixware_serial=Port serial $1 
+unixware_paralel=Port paralel $1
+unixware_serial=Port serial $1
 unixware_null=Dispozitiv nul
 unixware_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare UnixWare nu este instalat.
 
-hpux_paralel=Paralel $1 
-hpux_serial=Serial $1 
+hpux_paralel=Paralel $1
+hpux_serial=Serial $1
 hpux_null=Dispozitiv nul
 hpux_ecmd=Comanda $1 nu a fost găsită în sistemul dvs., ceea ce indică faptul că sistemul de imprimare HPUX nu este instalat.
 hpux_eiface=Directorul scripturilor de interfață $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare HPUX nu este instalat.
 
-lprng_paralel=Port paralel $1 
+lprng_paralel=Port paralel $1
 lprng_serial=Port serial $1 (COM $1)
 lprng_null=Dispozitiv nul
 lprng_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare LPRng nu este instalat.
@@ -262,7 +262,7 @@ lprng_espool=Directorul spool $1 nu există pe sistemul dvs., ceea ce indică fa
 
 solaris_paralel=Port paralel
 solaris_uparalel=Port paralel Ultra 5/10
-solaris_serial=Port serial $1 
+solaris_serial=Port serial $1
 solaris_null=Dispozitiv nul
 solaris_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare Solaris nu este instalat.
 
@@ -283,13 +283,13 @@ cups_nonemsg=Imprimantă la distanță sau brută
 cups_prog=Program
 cups_driver=Sofer CUPS
 cups_eprog=„$1” nu este un program valid
-cups_opts=Opțiuni pentru $1 
+cups_opts=Opțiuni pentru $1
 cups_ecmd=Comanda $1 nu a fost găsită pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare CUPS nu este instalat.
 
 irix_ecmd=Comanda $1 nu a fost găsită în sistemul dvs., ceea ce indică faptul că sistemul de imprimare IRIX nu este instalat.
 irix_eiface=Directorul scripturilor de interfață $1 nu există pe sistemul dvs., ceea ce indică faptul că sistemul de imprimare IRIX nu este instalat.
 
-aix_port=Portul de imprimantă $1 
+aix_port=Portul de imprimantă $1
 aix_edesc=Descriere nevalidă - sunt permise doar litere și numere și fără spații
 aix_ecmd=Serverul de imprimantă AIX $1 nu a fost găsit. Poate că nu este instalat sau este folosit un alt sistem de imprimare.
 

@@ -102,7 +102,7 @@ acl_uedit_all=Visi vartotojai
 acl_uedit_none=Be vartotojø
 acl_uedit_only=Tiktai vartotojai
 acl_uedit_except=Visi iðskyrus vartotojams
-acl_uedit_uid=Vartotojai su  UID reikðmëmis
+acl_uedit_uid=Vartotojai su UID reikðmëmis
 acl_uedit_group=Vartotojai priklausantys grupei
 acl_gedit=Matomas grupiø sàraðas
 acl_gedit_all=Visoms grupëms
@@ -161,15 +161,15 @@ sday_4=Ket
 sday_5=Pen
 sday_6=Ðeð
 
-emodule=Uþdrausta: Vartotojui $1 yra ribojamas naudojimas  $2 moduliu
+emodule=Uþdrausta: Vartotojui $1 yra ribojamas naudojimas $2 moduliu
 
 skill_high=Ekspertas
 skill_medium=Profesionalas
 skill_low=Naujokas
 
 feedback_title=Webmin atsiliepimai
-feedback_desc=Ði forma jums leis praneðti apie pasitaikiusià klaidà, ar pastabas webmin programuotojams atsiþvelgiant á tai kokios jums iðkilo problemos ar pasigedote kokiø nors savybiø. Kai paspausite siøsti, apraðymas,  uþpildytas formoje, bus iðsiøstas adresu $1.
-feedback_desc2=Atsiliepimai bus nusiøsti  Usermin programuotojams, ne sistemos administratoriui, ne interneto ar paslaugø tiekëjui. Praðau raðyti atsiliepimus anglø kalba, net jei jûsø webmin pasirinkta kalba ne anglø.
+feedback_desc=Ði forma jums leis praneðti apie pasitaikiusià klaidà, ar pastabas webmin programuotojams atsiþvelgiant á tai kokios jums iðkilo problemos ar pasigedote kokiø nors savybiø. Kai paspausite siøsti, apraðymas, uþpildytas formoje, bus iðsiøstas adresu $1.
+feedback_desc2=Atsiliepimai bus nusiøsti Usermin programuotojams, ne sistemos administratoriui, ne interneto ar paslaugø tiekëjui. Praðau raðyti atsiliepimus anglø kalba, net jei jûsø webmin pasirinkta kalba ne anglø.
 feedback_header=Atsiliepimai
 feedback_name=Jûsø vardas
 feedback_email=Jûsø e-paðtas

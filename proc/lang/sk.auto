@@ -16,7 +16,7 @@ index_memtfc=Celkom $1 / $2 voľných / $3 vo vyrovnávacej pamäti
 index_loadname=Priemer zaťaženia procesora:
 index_loadnums=$1 (1 min.), $2 (5 min.), $3 (15 min.)
 index_cpuname=Typ CPU:
-index_inzone=V zóne $1 
+index_inzone=V zóne $1
 
 pid=ID
 owner=vlastník
@@ -81,12 +81,12 @@ edit_open=Súbory a pripojenia
 edit_trace=Stopový proces
 edit_return=podrobnosti procesu
 
-kill_err=Nepodarilo sa odoslať signál $1 na spracovanie $2 
+kill_err=Nepodarilo sa odoslať signál $1 na spracovanie $2
 kill_title=Poslať signál
 kill_sent=zaslaná
 kill_ecannot=Nemáte povolené zabíjať procesy
 
-renice_err=Proces sa nepodarilo premenovať $1 
+renice_err=Proces sa nepodarilo premenovať $1
 renice_ecannot=Nemáte povolenie na opakovanie procesov
 
 linux_pri=priorita
@@ -144,11 +144,11 @@ sysv_task=ID úlohy
 sysv_zone=Názov zóny
 
 log_run=Príkaz Ran $1
-log_kill=Odoslal sa signál $1 na spracovanie $2 
-log_kills=Pošlite signál $1 procesom $2 
-log_kill_l=Odoslal sa signál $1 na spracovanie $2 
-log_kills_l=Odoslal sa signál $1 na spracovanie <br> $2 
-log_renice=Zmenená priorita procesu $2 na $1 
+log_kill=Odoslal sa signál $1 na spracovanie $2
+log_kills=Pošlite signál $1 procesom $2
+log_kill_l=Odoslal sa signál $1 na spracovanie $2
+log_kills_l=Odoslal sa signál $1 na spracovanie <br> $2
+log_renice=Zmenená priorita procesu $2 na $1
 
 acl_manage=Spravujte procesy ako užívateľ
 acl_manage_def=Aktuálny užívateľ Webmin
@@ -174,10 +174,10 @@ open_type=typ
 open_proto=Protokol
 open_desc=podrobnosti
 open_fd=Popisovač súborov
-open_listen1=Počúvanie na porte $1 
-open_listen2=Počúvanie na adrese $1 port $2 
-open_recv=Príjem na $1:$2 
-open_conn=Pripojené od $1 do $2 v stave $3 
+open_listen1=Počúvanie na porte $1
+open_listen2=Počúvanie na adrese $1 port $2
+open_recv=Príjem na $1:$2
+open_conn=Pripojené od $1 do $2 v stave $3
 open_cwd=Aktuálny smer
 open_rtd=Root dir
 open_txt=Programový kód
@@ -192,7 +192,7 @@ open_file=cesta
 
 trace_title=Stopový proces
 trace_start=Spustenie sledovania systémových hovorov pre $1 ..
-trace_doing=Sledovanie systémových volaní pre $1  :
+trace_doing=Sledovanie systémových volaní pre $1 :
 trace_done=.. proces sa skončil.
 trace_failed=.. sledovanie zlyhalo!
 trace_sorry=Táto stránka vyžaduje podporu Java vo vašom prehliadači. Ak chcete použiť sledovanie textu iba v texte, upravte konfiguráciu modulu.

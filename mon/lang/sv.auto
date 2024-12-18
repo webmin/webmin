@@ -117,7 +117,7 @@ service_monitor=Använda skärmen
 service_mon1=Standard monitor
 service_mon0=Övrig skärm ..
 service_args=Övervaka parametrar
-service_period=Övervakningsperiod $1 
+service_period=Övervakningsperiod $1
 service_days=Dagar att kontrollera
 service_hours=Öppettider att kontrollera
 service_all=Allt
@@ -146,7 +146,7 @@ service_ename=Saknat eller ogiltigt servicenamn
 service_einterval=Missande eller ogiltigt kontrollintervall
 service_eother=Saknad eller ogiltig bildskärm
 service_ehour=Saknas eller ogiltig timme för period $1 (måste vara som 09:00 eller 17:00)
-service_eperiod=Inga dagar eller timmar angivna för period $1 
+service_eperiod=Inga dagar eller timmar angivna för period $1
 service_eevery=Saknad eller ogiltig serviceintervall
 service_eafter=Saknas eller ogiltigt antal fel innan varning
 service_enum=Saknade eller ogiltiga maximala varningar som skickats
@@ -162,7 +162,7 @@ status_esame=MON-status CGI-programmet $1 har ställts in på <tt>mon.cgi</tt> -
 
 users_title=MON-användare
 users_etype=MON-användarlistan kan inte redigeras eftersom MON för närvarande inte är konfigurerad för att använda den för autentisering på sidan <a href='$1'>Globala alternativ</a>.
-users_header=Tillåtna MON-användare i $1 
+users_header=Tillåtna MON-användare i $1
 users_nousers=Inga MON-användare har definierats i $1.
 users_add=Skapa en ny användare.
 users_return=MON-användare lista
@@ -185,7 +185,7 @@ auth_none=Ingen
 auth_all=Alla
 auth_sel=Endast användare
 auth_err=Det gick inte att spara klientkommandon
-auth_eusers=Inga användare anger kommandot $1 
+auth_eusers=Inga användare anger kommandot $1
 
 periods_title=Definierade perioder
 periods_period=Periodnamn

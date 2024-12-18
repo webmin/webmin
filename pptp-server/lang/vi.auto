@@ -1,5 +1,5 @@
 index_title=Máy chủ VPN PPTP
-index_version=Phiên bản PoPToP $1 
+index_version=Phiên bản PoPToP $1
 index_epptpd=Không tìm thấy máy chủ PoPToP PPTP $1 trên hệ thống của bạn hoặc không phải là chương trình phù hợp. Có thể nó chưa được cài đặt hoặc <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
 index_econfig=Không tìm thấy tệp cấu hình máy chủ PPTP $1 trên hệ thống của bạn. Có thể <a href='$2'>cấu hình mô-đun</a> của bạn không chính xác.
 index_stop=Dừng máy chủ PPTP
@@ -63,7 +63,7 @@ options_err=Không thể lưu tùy chọn PPP
 options_emtu=Thiếu kích thước gói gửi tối đa hoặc không hợp lệ
 options_emru=Thiếu kích thước gói nhận tối đa hoặc không hợp lệ
 options_ename=Tên máy chủ bị thiếu hoặc không hợp lệ để xác thực
-options_version=Phiên bản PPPd $1 
+options_version=Phiên bản PPPd $1
 options_msdesc=Các tùy chọn bên dưới cho phép phương thức xác thực MS-CHAP và mã hóa MPPE, được sử dụng theo mặc định bởi các máy khách Windows VPN. Tuy nhiên, MPPE yêu cầu hỗ trợ trong cả daemon PPP và nhân hệ điều hành.
 options_mschap=Xác thực MS-CHAP
 options_mschap-v2=Xác thực MS-CHAP phiên bản 2
@@ -75,7 +75,7 @@ secrets_ecannot=Bạn không được phép chỉnh sửa tài khoản PPP
 secrets_return=mục lục
 secrets_none=Chưa có tài khoản PPP nào được tạo.
 secrets_enopfile=Tệp mật khẩu PPP $1 không tồn tại trên hệ thống của bạn. Có thể PPP chưa được cài đặt hoặc cấu hình mô-đun <a href='$2'></a> của bạn không chính xác.
-secrets_table=PPP chiếm $1 
+secrets_table=PPP chiếm $1
 secrets_user=tên tài khoản
 secrets_ips=Các địa chỉ IP
 secrets_uany=BẤT KÌ
@@ -133,13 +133,13 @@ disc_err=Không thể ngắt kết nối
 disc_egone=Kết nối không còn hoạt động
 disc_ekill=Quá trình không còn chạy
 
-log_secret_create=Đã tạo tài khoản PPP $1 
-log_secret_modify=Tài khoản PPP được sửa đổi $1 
-log_secret_delete=Đã xóa tài khoản PPP $1 
+log_secret_create=Đã tạo tài khoản PPP $1
+log_secret_modify=Tài khoản PPP được sửa đổi $1
+log_secret_delete=Đã xóa tài khoản PPP $1
 log_deletes=Đã xóa $1 tài khoản PPP
 log_conf=Tùy chọn máy chủ PPTP được sửa đổi
 log_options=Tùy chọn PPP được sửa đổi
-log_disc=Khách hàng bị ngắt kết nối $1 
+log_disc=Khách hàng bị ngắt kết nối $1
 log_start=Bắt đầu máy chủ PPTP
 log_stop=Máy chủ PPTP đã dừng
 log_apply=Cấu hình máy chủ PPTP được áp dụng

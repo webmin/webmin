@@ -36,9 +36,9 @@ deletes_err=Falha ao cancelar comandos
 deletes_enone=Nenhum selecionado
 
 log_allow=Usuários permitidos alterados
-log_create_job=Comando agendado criado para $1 
-log_delete_job=Comando agendado cancelado para $1 
-log_exec_job=Comando agendado executado para $1 
+log_create_job=Comando agendado criado para $1
+log_delete_job=Comando agendado cancelado para $1
+log_exec_job=Comando agendado executado para $1
 log_delete_jobs=$1 comandos agendados cancelados
 log_stop=Servidor de comandos programados parado
 log_start=Servidor de comandos programados iniciado

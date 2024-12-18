@@ -58,7 +58,7 @@ config_nochange=אל תשתנה
 config_setto=מכוון ל
 config_ewebmin=פרמטר מסוג 14 עובד רק ב- Webmin
 
-help_efile3=נכשל לקרוא את דף העזרה $1 מהמודול $2 
+help_efile3=נכשל לקרוא את דף העזרה $1 מהמודול $2
 help_einclude3=הכללת דף העזרה $1 נכשלה
 
 referer_warn_unknown=<b>Warning!</b> Webmin has detected that the program $1 was linked to from an unknown URL, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
@@ -268,7 +268,7 @@ sql_eldaplogin=Failed to login to LDAP server as $1 : $2
 
 log_email_subject=Webmin action in $1
 log_email_global=פעולה גלובלית של Webmin
-log_email_by=$1 על $2 
+log_email_by=$1 על $2
 log_email_desc=דוא"ל זה נשלח על ידי Webmin בתגובה לפעולת משתמש.
 log_email_mod=Webmin module: $1
 log_email_moddesc=Module title: $1
@@ -297,9 +297,9 @@ paginator_nosearchrs=אין תוצאות התואמות לשאילתת <tt>$1</t
 
 langauto_include=כלול תרגומי מכונה
 
-file_truncated_message=הביא $1 מהנתונים, קטוע $2 מתוך $3 
-file_truncated_message_head=הביא $1 מתחיל הנתונים, קטוע $2 מתוך $3 
-file_truncated_message_tail=הושג סיום $1 מהנתונים, קטוע $2 מתוך $3 
+file_truncated_message=הביא $1 מהנתונים, קטוע $2 מתוך $3
+file_truncated_message_head=הביא $1 מתחיל הנתונים, קטוע $2 מתוך $3
+file_truncated_message_tail=הושג סיום $1 מהנתונים, קטוע $2 מתוך $3
 
 defcert_error=ברירת המחדל של $1 אישור SSL ארוז בשימוש. מומלץ מאוד לעדכן את אישור ברירת המחדל <tt>$2</tt> לפני שתמשיך בכניסה.
 

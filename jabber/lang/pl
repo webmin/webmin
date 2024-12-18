@@ -104,7 +104,7 @@ admin_title=Użytkownicy administracyjni
 admin_header=Użytkownicy administracyjni serwera
 admin_read=Admini z dostępem odczytu
 admin_write=Admini z dostępem zapisu
-admin_reply=Auto-odpowiedź  do wiadomości admina?
+admin_reply=Auto-odpowiedź do wiadomości admina?
 admin_rsubject=Temat auto-odpowiedzi
 admin_rbody=Wiadomość auto-odpowiedzi
 

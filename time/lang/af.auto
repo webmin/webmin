@@ -11,7 +11,7 @@ index_hardware2=Stel ook hardeware tyd in
 index_boot=Sinkroniseer wanneer Webmin begin?
 index_tzheader=Tydsone
 index_tz=Verander tydsone na
-index_ehwclock=$1 het misluk : $2 
+index_ehwclock=$1 het misluk : $2
 index_tabtime=Vasgestelde tyd
 index_tabzone=Verander tydsone
 index_tabsync=Tydbedienersinkronisering
@@ -51,22 +51,22 @@ minute=minuut
 second=tweede
 
 error_cnf=Fout: opdrag $1 nie gevind nie
-error_hw=Kan nie die hardeware tyd instel nie : $1 
-error_sync=Kan nie met die stelseltyd sinkroniseer nie : $1 
+error_hw=Kan nie die hardeware tyd instel nie : $1
+error_sync=Kan nie met die stelseltyd sinkroniseer nie : $1
 error_ediff=Die tydbediener verskil met plaaslike tyd is te groot: $1 dae
-error_entp=NTP-tydsinkronisasie het misluk : $1 
+error_entp=NTP-tydsinkronisasie het misluk : $1
 error_etimeserver=Geen tydbedieners om mee te sinkroniseer met ingevoerde nie
 error_serviceunknown=Onbekende diens : $1
 
-log_set_date=Stel stelseltyd op $1 
-log_set_hwclock=Stel hardewarehorlosie op $1 
+log_set_date=Stel stelseltyd op $1
+log_set_hwclock=Stel hardewarehorlosie op $1
 log_remote_date=Stelseltyd van $2 afgehaal
 log_remote_hwclock=Hardeware tyd van $2 afgehaal
 log_remote_date_l=Stelseltyd $1 van $2 afgehaal
 log_remote_hwclock_l=Hardeware tyd $1 van $2 gaan haal
 log_sync=Gesinchroniseerde stelseltyd met hardeware-tyd
 log_sync_s=Gesynchroniseerde hardeware tyd met stelseltyd
-log_timezone=Tydsone verander na $1 
+log_timezone=Tydsone verander na $1
 
 timezone_err=Kon nie tydsone stoor nie
 timezone_ecannot=U mag nie die tydsone verander nie

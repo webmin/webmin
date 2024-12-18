@@ -1,8 +1,8 @@
 index_title=Kalmariraportin generaattori
 index_econf=Sargin määritystiedostoa $1 ei löydy järjestelmästäsi. Ehkä Sargia ei ole asennettu tai <a href='$2'>moduulin kokoonpano</a> on väärä.
 index_ecmd=Sarg-ohjelmaa $1 ei löydy järjestelmästäsi. Ehkä sitä ei ole asennettu, tai <a href='$2'>moduulin kokoonpano</a> on väärä.
-index_eversion=Sargin version hankkiminen epäonnistui komennolla $1 : $2 
-index_version=Sarg-versio $1 
+index_eversion=Sargin version hankkiminen epäonnistui komennolla $1 : $2
+index_version=Sarg-versio $1
 index_generate=Luo raportti nyt
 index_generatedesc=Napsauta tätä painiketta, kun haluat luoda välittömästi Sarg-raportin $1 : ssä nykyisen kokoonpanon avulla.
 index_clear=Poistetaanko olemassa oleva raportti hakemistosta?

@@ -7,14 +7,14 @@ index_active=Aktívne?
 index_tag=Program
 index_to=Cieľ protokolu
 index_rule=Vybraté správy
-index_file=Súbor $1 
-index_pipe=Pomenovaná rúra $1 
-index_pipe2=Potrubie na príkaz $1 
-index_host=Server Syslog na $1 
-index_socket=Súbor soketu Unix $1 
-index_cmd=Výstup z $1 
+index_file=Súbor $1
+index_pipe=Pomenovaná rúra $1
+index_pipe2=Potrubie na príkaz $1
+index_host=Server Syslog na $1
+index_socket=Súbor soketu Unix $1
+index_cmd=Výstup z $1
 index_all=Všetci používatelia
-index_users=Používatelia $1 
+index_users=Používatelia $1
 index_add=Pridajte nový systémový denník.
 index_return=systémové denníky
 index_restart=Aplikovať zmeny
@@ -26,7 +26,7 @@ index_view=Vyhliadka ..
 index_viewfile=Zobraziť súbor denníka:
 index_viewok=vyhliadka
 
-restart_ekill=Nepodarilo sa signalizovať proces syslog $1 : $2 
+restart_ekill=Nepodarilo sa signalizovať proces syslog $1 : $2
 restart_ecannot=Nemáte oprávnenie reštartovať syslog
 
 start_ecannot=Nemáte povolenie spustiť syslog
@@ -61,13 +61,13 @@ edit_ecannot=Nemáte povolenie upravovať nastavenia denníka
 edit_ecannot2=Nemáte oprávnenie upravovať tento denník
 
 view_title=Zobraziť denník súborov
-view_header=Posledných $1 riadkov $2 
+view_header=Posledných $1 riadkov $2
 view_empty=Súbor denníka je prázdny
 view_refresh=Obnoviť
-view_filter=Zobraziť iba riadky s textom $1 
+view_filter=Zobraziť iba riadky s textom $1
 
 save_err=Protokol sa nepodarilo uložiť
-save_efile='$1' nie je platný názov súboru : $2 
+save_efile='$1' nie je platný názov súboru : $2
 save_epipe='$1' nie je platný pomenovaný kanál
 save_epipe2=Chýba príkaz na potrubie
 save_esocket=Chýbajúci alebo neplatný soket unixovej domény
@@ -86,9 +86,9 @@ save_ecannot6=Nemáte povolené prezerať ľubovoľné denníky
 save_ecannot7=Nemáte povolenie na zobrazenie tohto denníka navyše
 save_emissing=Chýba súbor denníka na zobrazenie
 
-log_modify=Upravený protokol do $1 
+log_modify=Upravený protokol do $1
 log_create=Do denníka $1 bol pridaný protokol
-log_delete=Protokol bol odstránený do $1 
+log_delete=Protokol bol odstránený do $1
 log_apply=Použité zmeny
 log_start=Spustil sa protokolovací server
 

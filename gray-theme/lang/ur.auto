@@ -13,10 +13,10 @@ mmain_title=کلاؤڈ مائن$1 پر$2 ($3)
 mmain_title2=کلاؤڈ مائن
 mmain_title3=کلاؤڈ مائن$1 ($2)
 
-index_virtualmintitle=Virtualmin $1 
-index_cloudmintitle=Cloudmin $1 
-index_webmintitle=Webmin $1 
-index_usermintitle=Usermin $1 
+index_virtualmintitle=Virtualmin $1
+index_cloudmintitle=Cloudmin $1
+index_webmintitle=Webmin $1
+index_usermintitle=Usermin $1
 
 config_section=ترتیب زمرہ:
 config_change=بدلیں

@@ -7,9 +7,9 @@ index_add=Ajouter un nouveau tunnel SSL
 index_none=Aucun tunnel SSL n'est actuellement configuré pour être exécuté depuis <tt>inetd</tt> ou <tt>xinetd</tt>.
 index_estunnel=La commande $1 de STunnel est introuvable. STunnel n'est peut-être pas installé ou votre <a href='$2'>configuration du module</a> est incorrecte.
 index_apply=Appliquer les changements
-index_applymsg1=Cliquez sur ce bouton pour activer votre configuration courante des tunnels SSL  en envoyant un signal HUP aux processus <tt>inetd</tt> et <tt>xinetd</tt>
-index_applymsg2=Cliquez sur ce bouton pour activer votre configuration courante des tunnels SSL  en envoyant un signal HUP au processus <tt>inetd</tt>
-index_applymsg3=Cliquez sur ce bouton pour activer votre configuration courante des tunnels SSL  en envoyant un signal HUP au processus <tt>xinetd</tt>
+index_applymsg1=Cliquez sur ce bouton pour activer votre configuration courante des tunnels SSL en envoyant un signal HUP aux processus <tt>inetd</tt> et <tt>xinetd</tt>
+index_applymsg2=Cliquez sur ce bouton pour activer votre configuration courante des tunnels SSL en envoyant un signal HUP au processus <tt>inetd</tt>
+index_applymsg3=Cliquez sur ce bouton pour activer votre configuration courante des tunnels SSL en envoyant un signal HUP au processus <tt>xinetd</tt>
 index_return=la liste des tunnels SSL
 index_action=Destination du tunnel
 index_cmd=Exécute la commande $1

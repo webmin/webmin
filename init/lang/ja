@@ -135,7 +135,7 @@ log_massenable=Enabled actions $1
 log_massdisable=Disabled actions $1
 log_telinit=Switched to runlevel $1
 
-edit_hostconfig_startup=スクリプト  $1 はこのアクションがアクティブな場合、システム起動時に実行されます。以下で編集することができます
+edit_hostconfig_startup=スクリプト $1 はこのアクションがアクティブな場合、システム起動時に実行されます。以下で編集することができます
 edit_hostconfig_plist=The file $1 sets certain parameters with respect the boot script. You may edit it below
 edit_hostconfig_new=アクションの新規作成
 edit_hostconfig_noquotes=フィールド $1 以外ではクオートを使用しないでください

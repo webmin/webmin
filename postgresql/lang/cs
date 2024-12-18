@@ -20,7 +20,7 @@ index_eversion=PostgreSQL databáze ve vašem systému je ve verzi $1, avšak We
 index_elibrary=PostgreSQL klientský program $1 nemůže být spuštěn, protože nemůže najít Postgres sdílené knihovny. Zkontrolujte <a href='$2'>konfiguraci modulu</a> a ujistěte se, že je nastavena<i>Cesta k PostgreSQL sdíleným knihovnám</i>.
 index_ldpath=Vaše cesta ke sdíleným knihovnám je nastavena na $1 a výstup z $2 byl :
 index_version=PostgreSQL verze $1
-index_setup=PostgreSQL  konfigurační soubor hostů $1 nebyl ve vašem systému nalezen,což znamená, že dposud nebyly databáze inicializovány. Klepnutím na níže uvedené tlačítko nastaví PostgreSQL pomocí příkazu $2.
+index_setup=PostgreSQL konfigurační soubor hostů $1 nebyl ve vašem systému nalezen,což znamená, že dposud nebyly databáze inicializovány. Klepnutím na níže uvedené tlačítko nastaví PostgreSQL pomocí příkazu $2.
 index_setupok=Inicializovat databázi
 
 login_err=Chyba při přihlášení

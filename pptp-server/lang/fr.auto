@@ -1,5 +1,5 @@
 index_title=Serveur VPN PPTP
-index_version=Version PoPToP $1 
+index_version=Version PoPToP $1
 index_epptpd=Le serveur PPPT PoPToP $1 est introuvable sur votre système ou n'est pas le bon programme. Il n'est peut-être pas installé ou la configuration de votre <a href='$2'>module</a> est incorrecte.
 index_econfig=Le fichier de configuration du serveur PPTP $1 est introuvable sur votre système. La <a href='$2'>configuration du module</a> est peut-être incorrecte.
 index_stop=Arrêter le serveur PPTP
@@ -62,7 +62,7 @@ options_chapms-v2=Authentification MS-CHAP version 2
 secrets_return=indice
 secrets_none=Aucun compte PPP n'a encore été créé.
 secrets_enopfile=Le fichier de mots de passe PPP $1 n'existe pas sur votre système. Peut-être que PPP n'est pas installé ou que la <a href='$2'>configuration du module</a> est incorrecte.
-secrets_table=PPP représente $1 
+secrets_table=PPP représente $1
 secrets_user=Nom d'utilisateur
 secrets_uany=TOUT
 secrets_sany=TOUT
@@ -118,13 +118,13 @@ disc_err=Impossible de se déconnecter
 disc_egone=Les connexions ne sont plus actives
 disc_ekill=Le processus n'est plus en cours d'exécution
 
-log_secret_create=Compte PPP créé $1 
-log_secret_modify=Compte PPP modifié $1 
-log_secret_delete=Compte PPP supprimé $1 
+log_secret_create=Compte PPP créé $1
+log_secret_modify=Compte PPP modifié $1
+log_secret_delete=Compte PPP supprimé $1
 log_deletes=Comptes PPP $1 supprimés
 log_conf=Options de serveur PPTP modifiées
 log_options=Options PPP modifiées
-log_disc=Client déconnecté $1 
+log_disc=Client déconnecté $1
 log_apply=Configuration du serveur PPTP appliqué
 
 acl_conf=Peut modifier la configuration?

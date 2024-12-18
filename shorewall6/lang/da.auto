@@ -1,7 +1,7 @@
 index_title=Shorewall6 Firewall
 index_ecmd=Kommandoen $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
 index_edir=Shorewall-konfigurationsbiblioteket $1 blev ikke fundet på dit system. Måske er det ikke installeret, eller <a href='$2'>modulkonfiguration</a> er forkert.
-index_version=Shorewall6 version $1 
+index_version=Shorewall6 version $1
 index_return=liste over tabeller
 index_restart=Anvend konfiguration
 index_restartdesc=Klik på denne knap for at aktivere den aktuelle Shorewall-konfiguration med kommandoen <tt>shorewall6 genstart</tt>.
@@ -85,7 +85,7 @@ policy_1=Destinationszone
 policy_2=Politik
 policy_3=Syslog-niveau
 policy_4=Trafikgrænse
-policy_limit=Begræns $1, burst $2 
+policy_limit=Begræns $1, burst $2
 policy_return=politikker liste
 policy_edit=Rediger standardpolitik
 policy_create=Opret standardpolitik
@@ -310,13 +310,13 @@ hosts_err=Kunne ikke gemme zonens vært
 hosts_enet=Manglende eller ugyldig værtadresse
 hosts_header=Detaljer om zonehost
 hosts_routestopped=Rute, selv når firewall er stoppet?
-hosts_ip=Adresse eller netværk $1 
-hosts_mac=MAC-adresse $1 
-hosts_ipset=IP sæt $1 
+hosts_ip=Adresse eller netværk $1
+hosts_mac=MAC-adresse $1
+hosts_ipset=IP sæt $1
 hosts_any=Enhver vært
 
-edit_before=Før post $1 
-edit_after=Efter post $1 
+edit_before=Før post $1
+edit_after=Efter post $1
 
 blacklist_title=Sortliste-værter
 blacklist_desc=Denne side viser værter og tjenester, der vil blive blokeret, hvis trafik fra dem ankommer på en grænseflade med indstillingen <b>sortliste</b>.
@@ -422,16 +422,16 @@ comment_msg=Besked
 comment_err=Kunne ikke gemme kommentaren
 comment_enone=Der er ikke indtastet nogen meddelelse
 
-log_create_table=Føjet indgang til tabellen $1 
-log_modify_table=Ændret post i tabellen $1 
+log_create_table=Føjet indgang til tabellen $1
+log_modify_table=Ændret post i tabellen $1
 log_delete_table=Slettet post fra $1 -tabellen
 log_deletes_table=Slettede poster fra $1 -tabellen
 log_up_table=Flyttet op i $1 -tabellen
-log_down_table=Flyttede indgang i tabellen $1 
+log_down_table=Flyttede indgang i tabellen $1
 log_manual_table=Redigeret manuelt tabel $1 -filen
-log_create_comment=Føjet kommentar til tabellen $1 
-log_modify_comment=Ændret kommentar i tabellen $1 
-log_delete_comment=Kommentar slettet fra tabellen $1 
+log_create_comment=Føjet kommentar til tabellen $1
+log_modify_comment=Ændret kommentar i tabellen $1
+log_delete_comment=Kommentar slettet fra tabellen $1
 log_stop=Stopet firewall
 log_start=Startet firewall
 log_refresh=Opfrisket firewall

@@ -4,10 +4,10 @@ index_edir=Jabber temel dizini $1 mevcut değil. Jabber kurulu değil veya <a hr
 index_emodules=Webmin tarafından Jabber'in XML yapılandırmasını işlemek için gereken $1 ve $2 Perl modülleri kurulu değildir. Doğrudan CPAN'dan yüklemek için <a href='$3'>burayı tıklayın</a>.
 index_emodule=Webmin tarafından Jabber'in XML yapılandırmasını işlemek için gereken $1 Perl modülü kurulu değil. Doğrudan CPAN'dan yüklemek için <a href='$2'>burayı tıklayın</a>.
 index_expat=Perl modüllerini kurmaya çalışmadan önce Expat C kütüphanesinin ve başlıklarının kurulu olduğundan emin olun, çünkü bunlar modüllere bağlıdır ve mevcut değilse başarısız olacaktır.
-index_eparse=$1 perl modülü Jabber yapılandırma dosyanızı ayrıştıramadı : $2 
+index_eparse=$1 perl modülü Jabber yapılandırma dosyanızı ayrıştıramadı : $2
 index_ejabberd=$1 Jabber sunucu programı sisteminizde bulunamadı. Jabber kurulu değil veya <a href='$2'>modül yapılandırmanız</a> yanlış.
-index_eversion=Webmin yalnızca $2 Jabber sürümünü destekler, ancak $3 komutu aşağıdaki sürüm bilgilerini bildirdi : $1 
-index_eversion2=Webmin yalnızca $2 'nin altındaki Jabber sürümlerini destekler, ancak $3 komutu aşağıdaki sürüm bilgilerini bildirdi : $1 
+index_eversion=Webmin yalnızca $2 Jabber sürümünü destekler, ancak $3 komutu aşağıdaki sürüm bilgilerini bildirdi : $1
+index_eversion2=Webmin yalnızca $2 'nin altındaki Jabber sürümlerini destekler, ancak $3 komutu aşağıdaki sürüm bilgilerini bildirdi : $1
 index_start=Jabber Server'ı başlatın
 index_startmsg=Sisteminizde Jabber sunucusunu başlatmak için bu düğmeyi tıklatın. Başlatılana kadar hiçbir anlık ileti istemcisi bunu kullanamaz.
 index_stop=Jabber Server'ı durdurun
@@ -16,7 +16,7 @@ index_restart=Değişiklikleri uygula
 index_restartmsg=Jabber sunucusunu durdurup yeniden başlatarak geçerli yapılandırmayı uygulamak için bu düğmeyi tıklatın.
 index_comments=Uyarı - $1 Jabber yapılandırma dosyanız, bu modül kullanılarak herhangi bir yapılandırma değişikliği yapılırsa kaldırılacak yorumlar içeriyor.
 index_return=Jabber menüsü
-index_version=Jabber sürümü $1 
+index_version=Jabber sürümü $1
 
 general_title=Genel seçenekler
 general_header=Global Jabber sunucu seçenekleri
@@ -44,7 +44,7 @@ messages_rnotify=Kayıt sırasında yöneticiye bildirilsin mi?
 messages_rfields=Zorunlu kayıt alanları
 messages_vcard2jud=VCard Jabber kullanıcı dizinine gönderilsin mi?
 messages_err=Mesajlar kaydedilemedi
-messages_evcard=Geçersiz vCard XML : $1 
+messages_evcard=Geçersiz vCard XML : $1
 messages_etag=Sunucu vCard XML'si &lt;vCard&gt; ile başlamıyor
 
 modules_title=Jabber Modülleri

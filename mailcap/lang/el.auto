@@ -35,12 +35,12 @@ delete_err=Δεν ήταν δυνατή η διαγραφή προγραμμάτ
 disable_err=Αποτυχία απενεργοποίησης προγραμμάτων τύπου MIME
 disable_eclash=Ένα απενεργοποιημένο πρόγραμμα τύπου MIME για το $1 υπάρχει ήδη
 enable_err=Αποτυχία ενεργοποίησης προγραμμάτων τύπου MIME
-enable_eclash=Υπάρχει ήδη ενεργοποιημένο πρόγραμμα τύπου MIME για το $1 
+enable_eclash=Υπάρχει ήδη ενεργοποιημένο πρόγραμμα τύπου MIME για το $1
 delete_enone=Δεν έχει επιλεγεί
 
-log_delete_mailcap=Διαγράψτε το πρόγραμμα τύπου MIME για το $1 
-log_create_mailcap=Δημιουργήθηκε πρόγραμμα τύπου MIME για το $1 
-log_modify_mailcap=Τροποποιημένο πρόγραμμα τύπου MIME για το $1 
+log_delete_mailcap=Διαγράψτε το πρόγραμμα τύπου MIME για το $1
+log_create_mailcap=Δημιουργήθηκε πρόγραμμα τύπου MIME για το $1
+log_modify_mailcap=Τροποποιημένο πρόγραμμα τύπου MIME για το $1
 log_delete_mailcaps=Διαγράφηκαν $1 προγράμματα τύπου MIME
 log_disable_mailcaps=Απενεργοποιημένα προγράμματα $1 MIME
 log_enable_mailcaps=Ενεργοποιήθηκαν $1 προγράμματα τύπου MIME

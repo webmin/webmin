@@ -55,8 +55,8 @@ error_file=Fails
 error_line=Līnija
 error_sub=Funkcija
 error_stackline=Failā $1 rindā $2 izsaucot $3
-efilewrite=Neizdevās uzrakstīt $1 : $2 
-efileclose=Slēdzot neizdevās uzrakstīt $1 : $2 
+efilewrite=Neizdevās uzrakstīt $1 : $2
+efileclose=Slēdzot neizdevās uzrakstīt $1 : $2
 efileopen=Neizdevās atvērt $1 rakstīšanai : $2
 default=Noklusējums
 modify=Modificēt
@@ -354,7 +354,7 @@ sql_epostgresqlconnect=Neizdevās izveidot savienojumu ar PostgreSQL datu bāzi 
 sql_eldapdriver=Neizdevās ielādēt LDAP perl moduli
 sql_eldapconnect=Neizdevās izveidot savienojumu ar LDAP serveri $1
 sql_eldaptls=Neizdevās sākt TLS šifrēšanu LDAP : $1
-sql_eldaplogin=Neizdevās pieteikties LDAP serverī kā $1 : $2 
+sql_eldaplogin=Neizdevās pieteikties LDAP serverī kā $1 : $2
 
 log_email_subject=Webmin darbība $1
 log_email_global=Webmin globālā darbība
@@ -387,9 +387,9 @@ paginator_nosearchrs=Nav neviena rezultāta, kas atbilstu vaicājumam <tt>$1</tt
 
 langauto_include=Iekļaujiet mašīntulkojumus
 
-file_truncated_message=ienesa $1 no datiem, saīsināja $2 no $3 
-file_truncated_message_head=ienesa datu sākumu $1, saīsināja $2 no $3 
-file_truncated_message_tail=ienesa datu beigas $1, saīsināja $2 no $3 
+file_truncated_message=ienesa $1 no datiem, saīsināja $2 no $3
+file_truncated_message_head=ienesa datu sākumu $1, saīsināja $2 no $3
+file_truncated_message_tail=ienesa datu beigas $1, saīsināja $2 no $3
 
 defcert_error=Tiek izmantots noklusējuma $1 komplektētais SSL sertifikāts. Pirms pieteikšanās ir ļoti ieteicams atjaunināt noklusējuma <tt>$2</tt> sertifikātu.
 

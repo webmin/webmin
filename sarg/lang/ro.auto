@@ -1,8 +1,8 @@
 index_title=Generator de Rapoarte Squid
 index_econf=Fișierul de configurare Sarg $1 nu a fost găsit în sistemul dvs. Poate că Sarg nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
 index_ecmd=Programul Sarg $1 nu a fost găsit în sistemul dvs. Poate că nu este instalat sau configurația modulului <a href='$2'></a> este incorectă.
-index_eversion=Nu a reușit să obțineți versiunea Sarg cu comanda $1 : $2 
-index_version=Versiunea Sarg $1 
+index_eversion=Nu a reușit să obțineți versiunea Sarg cu comanda $1 : $2
+index_version=Versiunea Sarg $1
 index_generate=Generați raportul acum
 index_generatedesc=Faceți clic pe acest buton pentru a genera imediat un raport Sarg în $1 utilizând configurația curentă.
 index_clear=Ștergeți raportul existent din director?

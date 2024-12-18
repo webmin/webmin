@@ -33,7 +33,7 @@ save_erw=ไม่มีโฮสต์การอ่าน - เขียน
 save_eroot=ไม่ได้โฮสต์โฮสต์การเข้าถึงไฟล์รูท
 save_eaccess=ไม่ได้ป้อนโฮสต์การเข้าถึงแบบเมาท์
 
-log_create_export=สร้างการส่งออกของ $1 
-log_delete_export=ลบการส่งออกของ $1 
-log_modify_export=แก้ไขการส่งออกของ $1 
+log_create_export=สร้างการส่งออกของ $1
+log_delete_export=ลบการส่งออกของ $1
+log_modify_export=แก้ไขการส่งออกของ $1
 log_apply=ใช้การกำหนดค่า

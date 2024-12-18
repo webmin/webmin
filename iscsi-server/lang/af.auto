@@ -24,7 +24,7 @@ extents_delete=Vee geselekteerde toestelle uit
 extents_return=lys met toestelle om te deel
 extents_derr=Kon nie toestelle uitvee nie
 extents_denone=Geen gekies nie
-extents_einuse=Toestel $1 kan nie uitgevee word nie, aangesien dit gebruik word deur : $2 
+extents_einuse=Toestel $1 kan nie uitgevee word nie, aangesien dit gebruik word deur : $2
 extents_drusure=Is u seker dat u die volgende toestelle wil verwyder: $1 ? Die inhoud daarvan sal bewaar word, maar dit is nie meer toeganklik vir iSCSI-kliënte nie.
 extents_sure=Verwyder toestelle
 
@@ -40,9 +40,9 @@ extent_size_def1=Die hele lêer of toestel
 extent_size_def0=Gespesifiseerde grootte
 extent_part=Plaaslike skyfpartisie
 extent_raid=RAID-toestel
-extent_md=RAID-toestel $1 
+extent_md=RAID-toestel $1
 extent_lvm=LVM logiese volume
-extent_lv=LVM VG $1, LV $2 
+extent_lv=LVM VG $1, LV $2
 extent_other=Ander lêer of toestel
 extent_rusure=Is u seker dat u die gedeelde toestel $1 wil uitvee? Die inhoud daarvan sal bewaar word, maar dit is nie meer toeganklik vir iSCSI-kliënte nie.
 extent_sure=Vee toestel uit
@@ -52,7 +52,7 @@ extent_eother=Lêer om te deel bestaan nie
 extent_estart=Begin van omvang moet 'n nommer wees
 extent_esize=Grootte van omvang moet 'n getal wees
 extent_esizemax=Einde van die omvang kan nie groter wees as die toestelgrootte van $1 nie
-extent_einuse=Hierdie toestel kan nie uitgevee word nie, want dit word gebruik deur : $1 
+extent_einuse=Hierdie toestel kan nie uitgevee word nie, want dit word gebruik deur : $1
 
 devices_title=Toestelle kombinasies
 devices_none=Geen toestelkombinasies is nog geskep nie.
@@ -66,7 +66,7 @@ devices_delete=Vee geselekteerde kombinasies uit
 devices_return=lys met kombinasies van toestelle
 devices_derr=Kon nie toestelkombinasies uitvee nie
 devices_denone=Geen gekies nie
-devices_einuse=Kombinasie $1 kan nie uitgevee word nie, aangesien dit gebruik word deur : $2 
+devices_einuse=Kombinasie $1 kan nie uitgevee word nie, aangesien dit gebruik word deur : $2
 devices_drusure=Is u seker dat u die volgende toestelkombinasies wil verwyder: $1 ? Die inhoud daarvan sal bewaar word, maar dit is nie meer toeganklik vir iSCSI-kliënte nie.
 devices_sure=Vee toestelkombinasies uit
 
@@ -83,7 +83,7 @@ device_err=Kon nie die kombinasie van toestelle stoor nie
 device_derr=Kon nie die kombinasie van toestelle uitvee nie
 device_rusure=Is u seker dat u die toestelkombinasie $1 wil uitvee? Die inhoud daarvan sal bewaar word, maar dit is nie meer toeganklik vir iSCSI-kliënte nie.
 device_sure=Verwyder toestelle kombinasie
-device_einuse=Hierdie toestelkombinasie kan nie uitgevee word nie, aangesien dit gebruik word deur : $1 
+device_einuse=Hierdie toestelkombinasie kan nie uitgevee word nie, aangesien dit gebruik word deur : $1
 device_eextents=Geen lidtoestelle gekies nie
 device_eself=Een van die gekose lid-toestelle bevat hierdie toestel!
 
@@ -158,8 +158,8 @@ user_euser=Gebruikersnaam ontbreek of ongeldig - spasies en kolonne word nie toe
 user_epass=Wagwoord ontbreek of ongeldig - spasies en kolonne word nie toegelaat nie
 
 desc_extent=Toestel om $1 te deel
-desc_device=Toestelkombinasie $1 
-desc_target=Deelteiken $1 
+desc_device=Toestelkombinasie $1
+desc_target=Deelteiken $1
 
 start_err=Kon nie die iSCSI-bediener begin nie
 stop_err=Kon nie iSCSI-bediener stop nie
@@ -173,7 +173,7 @@ log_create_device=Toestelkombinasie $1 geskep
 log_modify_device=Opdateringskombinasie $1 opgedateer
 log_delete_device=Toestelkombinasie $1 is uitgevee
 log_create_target=Deelteiken $1 geskep
-log_modify_target=Opgedateerde deelteiken $1 
+log_modify_target=Opgedateerde deelteiken $1
 log_delete_target=Deelteiken $1 is uitgevee
 log_delete_extents=$1 toestelle om te deel, is uitgevee
 log_delete_devices=$1 toestelkombinasies is uitgevee

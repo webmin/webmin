@@ -150,10 +150,10 @@ acl_who1=Aktuální Webmin uživatel
 acl_who2=Uživatelé ze seznamu ..
 
 kill_kill=Zabít proces
-kill_term= Přerušit  
-kill_hup=  Restartovat   
-kill_stop=    Ukončit    
-kill_cont=  Pokračovat  
+kill_term=Přerušit  
+kill_hup=Restartovat   
+kill_stop=Ukončit    
+kill_cont=Pokračovat  
 
 open_title=Otevřené soubory a připojení
 open_proc=Pro proces $1 (PID $2)

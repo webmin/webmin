@@ -22,7 +22,7 @@ index_groups=LDAP Groepen
 
 imap_econn=Mislukt te verbinden met IMAP server $1
 imap_elogin=Mislukt in te loggen bij IMAP server $1 als $2 : $3
-conn_eldap_host=Er is geen LDAP client configuratie file gevonden op uw systeem, controleer of de LDAP server aangevinkt staat op de  Module Configuratie pagina.
+conn_eldap_host=Er is geen LDAP client configuratie file gevonden op uw systeem, controleer of de LDAP server aangevinkt staat op de Module Configuratie pagina.
 conn_elogin=Bind mislukt naar LDAP server $1 als $2 : $3
 
 uedit_cap=Gebruiker mogelijkheden

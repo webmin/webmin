@@ -7,14 +7,14 @@ index_active=Attiv?
 index_tag=Programm
 index_to=Id-destinazzjoni tal-log
 index_rule=Messaġġi magħżula
-index_file=Fajl $1 
-index_pipe=Pajp imsemmi $1 
-index_pipe2=Pipe għall-kmand $1 
-index_host=Syslog server fuq $1 
-index_socket=Fajl tas-sokit Unix $1 
-index_cmd=Ħruġ minn $1 
+index_file=Fajl $1
+index_pipe=Pajp imsemmi $1
+index_pipe2=Pipe għall-kmand $1
+index_host=Syslog server fuq $1
+index_socket=Fajl tas-sokit Unix $1
+index_cmd=Ħruġ minn $1
 index_all=L-utenti kollha
-index_users=Utenti $1 
+index_users=Utenti $1
 index_add=Żid ġurnal ġdid tas-sistema.
 index_return=zkuk tas-sistema
 index_restart=Applika l-Bidliet
@@ -26,7 +26,7 @@ index_view=Ara ..
 index_viewfile=Ara l-fajl tal-ġurnal:
 index_viewok=Ara
 
-restart_ekill=Naqset milli tissinjalja l-proċess ta ’syslog $1 : $2 
+restart_ekill=Naqset milli tissinjalja l-proċess ta ’syslog $1 : $2
 restart_ecannot=M'għandekx permess terġa 'tibda syslog
 
 start_ecannot=M'għandekx permess tibda syslog
@@ -61,13 +61,13 @@ edit_ecannot=M'għandekx permess teditja s-settings tal-log
 edit_ecannot2=M'għandekx permess teditja dan il-log
 
 view_title=Ara Logfile
-view_header=L-aħħar $1 linji ta ' $2 
+view_header=L-aħħar $1 linji ta ' $2
 view_empty=Il-fajl tal-ġurnal huwa vojt
 view_refresh=Aġġorna
-view_filter=Uri biss linji bit-test $1 
+view_filter=Uri biss linji bit-test $1
 
 save_err=Ma rnexxielux isalva l-log
-save_efile="$1" mhux isem tal-fajl validu : $2 
+save_efile="$1" mhux isem tal-fajl validu : $2
 save_epipe="$1" mhux pajp validu msemmi
 save_epipe2=Tkun nieqsa l-kmand għall-pajp
 save_esocket=Sokit tad-dominju unix nieqes jew invalidu
@@ -86,9 +86,9 @@ save_ecannot6=M'intix permess li tara zkuk arbitrarji
 save_ecannot7=M'għandekx permess tara dan il-ġurnal żejjed
 save_emissing=Fajl tal-ġurnal nieqes biex tarah
 
-log_modify=Log modifikat għal $1 
-log_create=Log miżjud ma ' $1 
-log_delete=Log imħassar għal $1 
+log_modify=Log modifikat għal $1
+log_create=Log miżjud ma ' $1
+log_delete=Log imħassar għal $1
 log_apply=Bidliet applikati
 log_start=Beda l-qtugħ fis-server
 

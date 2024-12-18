@@ -33,7 +33,7 @@ save_erw=Nebyli zadáni žádní hostitelé pro čtení a zápis
 save_eroot=Nebyli zadáni žádní hostitelé pro přístup k kořenovým souborům
 save_eaccess=Nebyli zadáni žádní hostitelé pro připojení
 
-log_create_export=Byl vytvořen export $1 
-log_delete_export=Vymazaný export $1 
-log_modify_export=Upravený export $1 
+log_create_export=Byl vytvořen export $1
+log_delete_export=Vymazaný export $1
+log_modify_export=Upravený export $1
 log_apply=Použitá konfigurace

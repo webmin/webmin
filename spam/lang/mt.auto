@@ -4,7 +4,7 @@ index_ecmd2=Il-kmand SpamAssassin $1 ma nstabx fis-sistema tiegħek.
 index_econfig=Il-fajl tal-konfigurazzjoni lokali SpamAssassin jew id-direttorju $1 ma nstabx fis-sistema tiegħek. Forsi SpamAssassin mhuwiex installat, jew il-konfigurazzjoni tal-modulu <a href='$2'></a> tiegħek mhix korretta.
 index_unknown=mhux magħruf
 index_edb=Ma rnexxielux jaqbad mal-bażi tad-dejta tal-konfigurazzjoni SpamAssassin: $1. Iċċekkja l- <a href='$2'>konfigurazzjoni tal-modulu</a> biex tkun żgur li qed tuża l-issettjar korrett.
-index_version=Verżjoni SpamAssassin $1 
+index_version=Verżjoni SpamAssassin $1
 index_warn_usermin=SpamAssassin ma jidhirx li huwa mwaqqaf fil-fajl tal-konfigurazzjoni ta 'Procmail tiegħek $2 jew fil-fajl globali $1, u għalhekk kull konfigurazzjoni magħmula bl-użu ta' dan il-modulu ma jkollha l-ebda effett sakemm SpamAssassin ma jkunx installat globalment.
 index_warn_webmin=SpamAssassin ma jidhirx li huwa mwaqqaf fil-fajl tal-konfigurazzjoni Procmail tas-sistema $1, u għalhekk kull konfigurazzjoni li tintuża bl-użu ta 'dan il-modulu ma jkollha l-ebda effett sakemm l-utenti ma jitwaqqfu individwalment.
 index_return=indiċi tal-modulu
@@ -12,7 +12,7 @@ index_apply=Applika l-Bidliet
 index_applydesc=Ikklikkja din il-buttuna biex tapplika l-konfigurazzjoni SpamAssassin kurrenti billi tibgħat sinjal HUP lill-proċessi kollha ta ' $1 li jmexxu.
 index_cpan=Minħabba li SpamAssassin huwa modulu Perl, tista 'wkoll tinstallah awtomatikament billi tuża <a href='$2'>Moduli Perl</a> ta' Webmin biex tniżżel $1 minn CPAN.
 index_spamassassin=SpamAssassin
-index_ecannot=M'għandekx permess timmaniġġja l-fajl tal-konfigurazzjoni SpamAssassin $1 
+index_ecannot=M'għandekx permess timmaniġġja l-fajl tal-konfigurazzjoni SpamAssassin $1
 
 white_title=Indirizzi permessi u miċħuda
 white_desc=It-tabelli f'din il-paġna jippermettulek tispeċifika Minn: u Lil: indirizzi għal posta elettronika li hija dejjem jew qatt klassifikata bħala spam. Kull email oħra tkun ipproċessata b'mod normali bir-regoli ta 'SpamAssassin. L-indirizzi tal-email kollha jista 'jkun fihom wildcards, bħal *@foo.com jew *.foo.com biex jaqblu ma' dominji sħaħ.
@@ -111,7 +111,7 @@ report_addtext=Test għall-intestatura
 report_addspam=Spam
 report_addham=Perżut
 report_addall=Kollha
-report_eaddheader=Intestatura addizzjonali nieqsa jew invalida biex iżżid $1 
+report_eaddheader=Intestatura addizzjonali nieqsa jew invalida biex iżżid $1
 
 user_title=Għażliet Mħallsa ta 'Utenti
 user_desc=L-għażliet f'din il-paġna huma l-aktar relatati mal-mogħdijiet u l-issettjar li SpamAssassin juża għall-pakketti ta 'identifikazzjoni tal-ispam esterni Razor, DCC u Pyzor. Tista 'wkoll tgħid lil SpamAssassin jekk tkunx tista' twettaq tfittxija DNS jew le.
@@ -190,7 +190,7 @@ priv_emscore="$1" mhijiex punteġġ validu tal-ogħla frażi
 priv_ephrase="$1" mhix frażi valida ta 'spam b'żewġ kelmiet
 priv_escore=Punteġġ nieqes jew invalidu għall-frażi spam “$1”
 
-usually=Normalment $1 
+usually=Normalment $1
 ecannot=M’intix permess tuża din il-paġna
 setup_title=Twaqqaf Procmail Għal SpamAssassin
 setup_desc_webmin=Din il-formola tista 'tintuża biex tissettja Procmail f' $1 biex tmexxi SpamAssassin fuq il-messaġġi kollha li rċevejt mis-sistema tiegħek. Madankollu, dan ikollu effett biss jekk is-server tal-posta tiegħek ikun ġie kkonfigurat biex juża Procmail għal kunsinna lokali, jew għall-utenti li l-fajls <tt>.forward</tt> tagħhom huma mwaqqfa biex imexxu Procmail.
@@ -244,7 +244,7 @@ mail_razor=Irrapporta bħala Spam & Ħassar
 mail_ham=Irrapporta bħala Ham & Inbox
 mail_delete=Ħassar
 mail_return=lista tal-posta spam
-mail_pos=Messaġġi spam $1 sa $2 ta ' $3 
+mail_pos=Messaġġi spam $1 sa $2 ta ' $3
 mail_none=M'hemm l-ebda messaġġ fil-folder spam tiegħek
 mail_refresh=Aġġorna
 mail_will=Tiffriska awtomatikament f ' $1 minuti
@@ -253,7 +253,7 @@ mail_delall=Ħassar l-ispam kollu
 mail_search3=Fittex għall-punteġġ hawn fuq:
 
 process_eclean=Sar żball meta tneħħi l-intestaturi ta 'SpamAssassin minn dan l-email
-process_ereport=Naqas milli jirrapporta email lil SpamAssassin : $1 
+process_ereport=Naqas milli jirrapporta email lil SpamAssassin : $1
 
 apply_err=Ma rnexxielux japplika tibdil
 apply_none=L-ebda proċess ta 'daemon SpamAssassin ma nstab!
@@ -263,8 +263,8 @@ acl_file=Fajl tal-konfigurazzjoni SpamAssassin biex jeditja
 acl_filedef=Fajl konfigurazzjoni globali
 acl_awl=L-utenti huma permessi għall-editjar tal-lista awtomatika
 acl_awl0=L-utenti kollha
-acl_awl1=Utenti elenkati biss $1 
-acl_awl2=Membri biss tal-gruppi $1 
+acl_awl1=Utenti elenkati biss $1
+acl_awl2=Membri biss tal-gruppi $1
 
 search_escore=Punteġġ tal-ispam nieqes jew invalidu
 search_results5=$1 messaġġi bil-posta bl-ispam ta 'jew aktar minn $2.
@@ -337,20 +337,20 @@ simple_score=Punteġġ li japplika
 simple_describe=Deskrizzjoni
 simple_err=Ma rnexxielux isalva testijiet tal-messaġġ
 
-before_ecmd=Ma rnexxiex qabel il-kmand tal-iffrankar : $1 
-after_ecmd=Il-kmand ta 'wara l-iffrankar falla : $1 
+before_ecmd=Ma rnexxiex qabel il-kmand tal-iffrankar : $1
+after_ecmd=Il-kmand ta 'wara l-iffrankar falla : $1
 
-connect_emysql=Ma rnexxielhiex tgħabbi s-sewwieq tad-database $1 
+connect_emysql=Ma rnexxielhiex tgħabbi s-sewwieq tad-database $1
 connect_elogin=Ma rnexxielux jidħol fid-database $1:$2.
-connect_equery=Id-database $1 ma tinkludix it-tabella tal-preferenzi $2 
+connect_equery=Id-database $1 ma tinkludix it-tabella tal-preferenzi $2
 connect_eldapmod=Il-modulu Perl $1 meħtieġ biex jikkomunika ma 'LDAP ma jiġix installat jew mhux mgħobbi
-connect_eldap=Naqset milli tikkonnettja mas-server LDAP $1 fuq il-port $2 
-connect_eldaplogin=Naqset milli tidħol mas-server LDAP $1 bħala $2 : $3 
-connect_ebase=Il-bażi LDAP DN $1 mhix valida : $2 
+connect_eldap=Naqset milli tikkonnettja mas-server LDAP $1 fuq il-port $2
+connect_eldaplogin=Naqset milli tidħol mas-server LDAP $1 bħala $2 : $3
+connect_ebase=Il-bażi LDAP DN $1 mhix valida : $2
 
-eldap=It-tħaddim LDAP falla : $1 
-esql=SQL fallut : $1 
-ldap_euser=Ma setgħetx issib oġġett ta 'utent LDAP għal $1 
+eldap=It-tħaddim LDAP falla : $1
+esql=SQL fallut : $1
+ldap_euser=Ma setgħetx issib oġġett ta 'utent LDAP għal $1
 
 db_title=Databases ta 'SQL u LDAP
 db_header=Għażliet ta 'database ta' ħażna ta 'konfigurazzjoni

@@ -1,14 +1,14 @@
 index_title=WU-FTPD-bediener
 index_eftpd=Die FTP-bediener $1 kon nie op u stelsel gevind word nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>FTP-bedienermodule-opstelling</a> verkeerd.
 index_eftpaccess=Die FTP-bediener se konfigurasielêer $1 bestaan nie. Miskien is dit nie geïnstalleer nie, of is u <a href='$2'>FTP-bedienermodule-opstelling</a> verkeerd.
-index_eversion=Die FTP-bediener $1 blyk nie WU-FTPd te wees nie. Miskien gebruik u 'n ouer FTPd wat by u bedryfstelsel voorsien word, of is u <a href='$2'>FTP-bedienermodule-opstelling</a> korrek. Die uitset vanaf die FTP-bediener was : $3 
+index_eversion=Die FTP-bediener $1 blyk nie WU-FTPd te wees nie. Miskien gebruik u 'n ouer FTPd wat by u bedryfstelsel voorsien word, of is u <a href='$2'>FTP-bedienermodule-opstelling</a> korrek. Die uitset vanaf die FTP-bediener was : $3
 index_apply=Pas veranderinge toe
 index_applymsg=Klik op hierdie knoppie om die huidige konfigurasie toe te pas. Dit sal alle lopende FTP-bedienerprosesse stop en weer begin en sodoende alle gekoppelde gebruikers ontkoppel.
 index_start=Begin bediener
 index_startmsg=Klik op hierdie knoppie om die FTP-bediener met die huidige konfigurasie te begin. U kan ook die bediener instel om outomaties te begin wanneer dit nodig is met die module <a href='$1'>Internet Services</a>.
 index_startmsg2=Klik op hierdie knoppie om die FTP-bediener met die huidige konfigurasie te begin. U kan ook die bediener instel om outomaties te begin, indien nodig met behulp van inetd of een of ander gelykwaardige program.
 index_return=FTP-bedieneropsies
-index_version=WU-FTPd weergawe $1 
+index_version=WU-FTPd weergawe $1
 
 class_title=Gebruikers en klasse
 class_header=Gebruikersklasse en gebruikersopsies

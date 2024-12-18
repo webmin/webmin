@@ -1,9 +1,9 @@
 index_title=SSH Zerbitzaria
-index_econfig=SSH zerbitzariaren $1 konfigurazio fitxategia ez da aurkitu zure sisteman. Beharbada SSHD ez dago instalatua, edo zure  <a href='$2'> moduluaren konfigurazia </a> ez da zuzena.
-index_esshd=SSH zerbitzariaren $1 programa ez da aurkitu zure sisteman. Beharbada SSHD ez dago instalatua, edo zure  <a href='$2'> moduluaren konfigurazia </a> ez da zuzena.
+index_econfig=SSH zerbitzariaren $1 konfigurazio fitxategia ez da aurkitu zure sisteman. Beharbada SSHD ez dago instalatua, edo zure <a href='$2'> moduluaren konfigurazia </a> ez da zuzena.
+index_esshd=SSH zerbitzariaren $1 programa ez da aurkitu zure sisteman. Beharbada SSHD ez dago instalatua, edo zure <a href='$2'> moduluaren konfigurazia </a> ez da zuzena.
 index_eversion=Ezinezkoa SSH zerbitzariaren $1 programatik bertsio zenbaki bat lortzea. Beharbada zure <a href='$2'>moduluaren konfigurazioa</a> ez da zuzena. $3 komandoaren irteera honakoa izan da : $4
 index_eversion2=SSH zerbitzariaren $1 programaren bertsioa $2 da, baina Webminek soilik SSHren 1 eta 2 bertsioak onartzen ditu.
-index_return=moduluaren  aurkibidea
+index_return=moduluaren aurkibidea
 index_apply=Aplikatu aldaketak
 index_applymsg=Egin klik botoi honetan uneko konfigurazioa aplikatzeko SIGHUP seinale bat bidaliz exekutatzen ari den SSHd prozesuari.
 index_applymsg2=Egin klik botoi honetan uneko konfigurazioa aplikatzeko $1 komandoaren bidez.
@@ -58,7 +58,7 @@ net_port=Entzuteko portua
 net_prots=Onartutako protokoloak
 net_prots_1=SSH v1
 net_prots_2=SSH v2
-net_idle=Aktibitate ezagatiko denbora-muga 
+net_idle=Aktibitate ezagatiko denbora-muga
 net_idle_s=segunduak
 net_idle_m=minutuak
 net_idle_h=orduak
@@ -118,7 +118,7 @@ misc_quiet=Do minimal logging?
 misc_regen=Zerbitzariko gakoaren birsortze tartea
 misc_regen_def=Inoiz ez
 misc_fascist=Do verbose logging?
-misc_separ=Banatutako pribilegiorik gabeko prozesua  erabili?
+misc_separ=Banatutako pribilegiorik gabeko prozesua erabili?
 misc_pid=PID fitxategia
 misc_err=Akatsa aukera anitzak gordetzean
 misc_exoff=X11 pantailaren desplazamendua ez da zuzena edo falta da
@@ -139,13 +139,13 @@ hosts_add=Gehitu aukerak bezero makinarentzat.
 hosts_return=bezero makinen zerrenda
 
 host_create=Gehitu Makinaren Aukerak
-host_edit=Editatu  Makinaren Aukerak
+host_edit=Editatu Makinaren Aukerak
 host_header=SSH makinarentzat bezero aukerak
 host_name=Makinarentzat aukerak
 host_user=Login egin ondorengo erabiltzaile bezala
 host_user_def=Uneko login-a
 host_keep=Deskonektatu zerbitzaria erortzen bada?
-host_hostname=Konektatzeko makinaren izen erreala 
+host_hostname=Konektatzeko makinaren izen erreala
 host_hostname_def=Goiko bera
 host_batch=Eskatu pasahitza beharrezko bada?
 host_port=Konektatzeko portua
@@ -212,7 +212,7 @@ log_manual=$1 konfigurazio fitxategia eskuz editatzen
 sync_title=SSH Gakoaren Konfigurazioa
 sync_desc=Orri honen bidez posible da SSHren konfigurazio automatikoa ipintzea sisteman sortzen diren Unix erabiltzaile berrientzat. Konfiguratzen bada, erabiltzaile berriek ez dute ssh-keygen erabili beharko SSH erabili aurretik.
 sync_create=SSH gakoa konfiguratu Unix erabiltzaile berrientzat?
-sync_auth=Kopiatu <tt>identify.pub</tt>  berria  <tt>authorized_keys</tt> ra?
+sync_auth=Kopiatu <tt>identify.pub</tt> berria <tt>authorized_keys</tt> ra?
 sync_pass=Pasahitza erabili pasa-esaldi bezala?
 sync_gnupg=GNUPG gakoa konfiguratu Unix erabiltzaile berrientzat.
 sync_type=Key type

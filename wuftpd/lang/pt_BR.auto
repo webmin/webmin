@@ -1,14 +1,14 @@
 index_title=Servidor WU-FTPD
 index_eftpd=Não foi possível encontrar o servidor FTP $1 no seu sistema. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo Servidor FTP</a> está incorreta.
 index_eftpaccess=O arquivo de configuração do servidor FTP $1 não existe. Talvez não esteja instalado ou sua <a href='$2'>configuração do módulo Servidor FTP</a> está incorreta.
-index_eversion=O servidor FTP $1 não parece ser WU-FTPd. Talvez você esteja usando um FTPd antigo fornecido com o sistema operacional ou a <a href='$2'>configuração do módulo do servidor FTP</a> esteja correta. A saída do servidor FTP foi : $3 
+index_eversion=O servidor FTP $1 não parece ser WU-FTPd. Talvez você esteja usando um FTPd antigo fornecido com o sistema operacional ou a <a href='$2'>configuração do módulo do servidor FTP</a> esteja correta. A saída do servidor FTP foi : $3
 index_apply=Aplicar mudanças
 index_applymsg=Clique neste botão para aplicar a configuração atual. Isso irá parar e reiniciar todos os processos do servidor FTP em execução, desconectando todos os usuários conectados.
 index_start=Iniciar servidor
 index_startmsg=Clique neste botão para iniciar o servidor FTP com a configuração atual. Você também pode configurar o servidor para ser iniciado automaticamente quando necessário, usando o módulo <a href='$1'>Serviços da Internet</a>.
 index_startmsg2=Clique neste botão para iniciar o servidor FTP com a configuração atual. Você também pode configurar o servidor para ser iniciado automaticamente quando necessário, usando o inetd ou algum programa equivalente.
 index_return=Opções do servidor FTP
-index_version=Versão WU-FTPd $1 
+index_version=Versão WU-FTPd $1
 
 class_title=Usuários e Classes
 class_header=Classes de usuário e opções de usuário

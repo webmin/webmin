@@ -8,7 +8,7 @@ index_delete=Vee geselekteerde uitvoere uit
 index_apply=Pas veranderinge toe
 index_applydesc=Klik op hierdie knoppie om die huidige lêeruitvoerkonfigurasie toe te pas. Dit sal al die bogenoemde kaarte beskikbaar stel met die gespesifiseerde opsies.
 index_return=uitvoere lys
-index_echeck=Die NFS-bediener kan nie op hierdie stelsel gebruik word nie : $1 
+index_echeck=Die NFS-bediener kan nie op hierdie stelsel gebruik word nie : $1
 
 check_ecmd=NFS-bedieneropdrag $1 is nie geïnstalleer nie
 

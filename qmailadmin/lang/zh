@@ -90,7 +90,7 @@ routes_go=查找符合的域路由:
 routes_from=邮件域
 routes_to=通过服务器发送
 routes_direct=直接递送
-routes_defroute=递送所有的外发邮件，通过: 
+routes_defroute=递送所有的外发邮件，通过:
 routes_return=域路由
 
 rform_edit=编辑域路由
@@ -152,7 +152,7 @@ log_virtall_modify=修改其它类型的虚拟域
 log_locals=本地域已经被改变
 log_rcpts=可接受[收]的域已经被改变
 log_bads=拒收地址已经被改变
-log_percents= % 地址域已经被改变
+log_percents=% 地址域已经被改变
 log_route_create=为 $1 新建路由
 log_route_delete=删除 $1 的路由
 log_route_modifed=修改 $1 的路由
@@ -341,7 +341,7 @@ send_eperms2=你没有权限发送文件 $1
 send_epath=Sendmail 执行 $1 不存在.
 
 delete_title=删除邮件
-delete_rusure=你确定要从 $2 中删除来自  $1 选择的邮件? 比较大的邮件文件删除需要花费一些时间. 在完成这些删除操作之前, 将不在执行其它的操作.
+delete_rusure=你确定要从 $2 中删除来自 $1 选择的邮件? 比较大的邮件文件删除需要花费一些时间. 在完成这些删除操作之前, 将不在执行其它的操作.
 delete_rusure2=你确定要删除来自 $1 的邮件吗? 比较大的邮件文件删除需要花费一些时间. 在完成这些删除操作之前, 将不在执行其它的操作.
 delete_ok=现在删除
 delete_ecannot=你没有权限删除这个用户的邮件

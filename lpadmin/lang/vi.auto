@@ -20,7 +20,7 @@ index_restart=Khởi động lại lịch trình
 index_restartmsg=Nhấn vào nút này để khởi động lại quá trình lập lịch in. Điều này sẽ buộc cấu hình in hiện tại được áp dụng.
 index_return=danh sách máy in
 index_esystem=Cài đặt phần mềm cho hệ thống in bạn đã chọn hoặc sử dụng <a href='$1'>cấu hình mô-đun</a> để thay đổi phần mềm.
-index_style=Hệ thống in: $1 
+index_style=Hệ thống in: $1
 index_cluster=Máy chủ cụm
 index_clusterdesc=Nhấp vào nút này để thiết lập các máy chủ Webmin bổ sung mà máy in sẽ được tạo, cập nhật và xóa.
 index_delete=Xóa các máy in đã chọn
@@ -99,12 +99,12 @@ save_eremote=Trình điều khiển không thể được sử dụng với máy
 save_edhost=Máy chủ trực tiếp '$1' không tồn tại
 save_edport=Cổng trực tiếp bị thiếu hoặc không hợp lệ
 save_evalid=Hệ thống in không cho phép máy in này
-save_errslave=Máy in đã tạo OK trên hệ thống này, nhưng đã xảy ra các lỗi sau trên hệ thống cụm : $1 
+save_errslave=Máy in đã tạo OK trên hệ thống này, nhưng đã xảy ra các lỗi sau trên hệ thống cụm : $1
 save_egone=Không tìm thấy máy in có tên '$1'
-save_errdelslave=Máy in đã xóa OK trên hệ thống này, nhưng đã xảy ra các lỗi sau trên hệ thống cụm : $1 
+save_errdelslave=Máy in đã xóa OK trên hệ thống này, nhưng đã xảy ra các lỗi sau trên hệ thống cụm : $1
 
 jobs_title=Công việc in
-jobs_header=In công việc trên $1 
+jobs_header=In công việc trên $1
 jobs_id=ID công việc
 jobs_size=Kích thước
 jobs_by=Gửi bởi
@@ -117,7 +117,7 @@ jobs_all=Hủy tất cả các công việc in
 jobs_bytes=byte
 jobs_test=Trang thử nghiệm in
 jobs_cancelsel=Hủy công việc đã chọn
-jobs_on=Trên máy in $1 
+jobs_on=Trên máy in $1
 jobs_return=danh sách các công việc in ấn
 
 cancel_ecannot=Bạn không được phép hủy công việc in
@@ -197,7 +197,7 @@ suse_yast2=Trình điều khiển YAST2
 suse_edriver=Không có loại máy in được chọn
 suse_eres=Thiếu hoặc giải quyết không hợp lệ
 
-estop=Không thể dừng lpd : $1 
+estop=Không thể dừng lpd : $1
 
 acl_printers=Máy in người dùng này có thể cấu hình
 acl_add=Có thể thêm máy in mới?
@@ -218,20 +218,20 @@ acl_cluster=Có thể quản lý cụm máy in?
 log_stop=Lịch trình in bị dừng
 log_start=Bắt đầu in lịch trình
 log_restart=Khởi động lại lịch trình in
-log_cancel_job=Đã hủy công việc in $2 trên $1 
-log_cancel_all=Đã hủy tất cả các lệnh in trên $1 
-log_cancel_sel=Đã hủy $2 công việc in trên $1 
-log_create=Đã tạo máy in $1 trên $2 
-log_modify=Máy in đã sửa đổi $1 trên $2 
-log_delete=Đã xóa máy in $1 trên $2 
-log_create_l=Đã tạo $3 máy in $1 trên $2 
-log_modify_l=Đã sửa đổi $3 máy in $1 trên $2 
-log_delete_l=Đã xóa $3 máy in $1 trên $2 
+log_cancel_job=Đã hủy công việc in $2 trên $1
+log_cancel_all=Đã hủy tất cả các lệnh in trên $1
+log_cancel_sel=Đã hủy $2 công việc in trên $1
+log_create=Đã tạo máy in $1 trên $2
+log_modify=Máy in đã sửa đổi $1 trên $2
+log_delete=Đã xóa máy in $1 trên $2
+log_create_l=Đã tạo $3 máy in $1 trên $2
+log_modify_l=Đã sửa đổi $3 máy in $1 trên $2
+log_delete_l=Đã xóa $3 máy in $1 trên $2
 
-linux_paralel=Cổng song song $1 
+linux_paralel=Cổng song song $1
 linux_serial=Cổng nối tiếp $1 (COM $1)
 linux_null=Thiết bị Null
-linux_usb=Máy in USB $1 
+linux_usb=Máy in USB $1
 linux_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn, điều này cho biết rằng hệ thống in Linux chưa được cài đặt.
 linux_espool=Thư mục spool $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in Linux chưa được cài đặt.
 
@@ -243,18 +243,18 @@ freebsd_espool=Thư mục spool $1 không tồn tại trên hệ thống của b
 openbsd_paralel=Cổng song song
 openbsd_serial=Cổng nối tiếp $1 (COM $1)
 
-unixware_paralel=Cổng song song $1 
-unixware_serial=Cổng nối tiếp $1 
+unixware_paralel=Cổng song song $1
+unixware_serial=Cổng nối tiếp $1
 unixware_null=Thiết bị Null
 unixware_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn, điều này cho thấy hệ thống in UnixWare chưa được cài đặt.
 
-hpux_paralel=Song song $1 
-hpux_serial=Nối tiếp $1 
+hpux_paralel=Song song $1
+hpux_serial=Nối tiếp $1
 hpux_null=Thiết bị Null
 hpux_ecmd=Không tìm thấy lệnh $1 trên hệ thống của bạn, điều này cho biết rằng hệ thống in HPUX chưa được cài đặt.
 hpux_eiface=Thư mục tập lệnh giao diện $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in HPUX chưa được cài đặt.
 
-lprng_paralel=Cổng song song $1 
+lprng_paralel=Cổng song song $1
 lprng_serial=Cổng nối tiếp $1 (COM $1)
 lprng_null=Thiết bị Null
 lprng_ecmd=Không tìm thấy lệnh $1 trên hệ thống của bạn, điều này cho thấy hệ thống in LPRng chưa được cài đặt.
@@ -262,7 +262,7 @@ lprng_espool=Thư mục spool $1 không tồn tại trên hệ thống của b�
 
 solaris_paralel=Cổng song song
 solaris_uparalel=Cổng song song Ultra 5/10
-solaris_serial=Cổng nối tiếp $1 
+solaris_serial=Cổng nối tiếp $1
 solaris_null=Thiết bị Null
 solaris_ecmd=Lệnh $1 không được tìm thấy trên hệ thống của bạn, điều này cho biết rằng hệ thống in Solaris chưa được cài đặt.
 
@@ -283,13 +283,13 @@ cups_nonemsg=Máy in từ xa hoặc thô
 cups_prog=Chương trình
 cups_driver=Trình điều khiển CUPS
 cups_eprog='$1' không phải là chương trình hợp lệ
-cups_opts=Tùy chọn cho $1 
+cups_opts=Tùy chọn cho $1
 cups_ecmd=Không tìm thấy lệnh $1 trên hệ thống của bạn, điều này cho biết rằng hệ thống in CUPS chưa được cài đặt.
 
 irix_ecmd=Không tìm thấy lệnh $1 trên hệ thống của bạn, điều này cho biết rằng hệ thống in IRIX chưa được cài đặt.
 irix_eiface=Thư mục giao diện tập lệnh $1 không tồn tại trên hệ thống của bạn, điều này cho biết rằng hệ thống in IRIX chưa được cài đặt.
 
-aix_port=Cổng máy in $1 
+aix_port=Cổng máy in $1
 aix_edesc=Mô tả không hợp lệ - chỉ cho phép chữ và số và không có khoảng trắng
 aix_ecmd=Không tìm thấy máy chủ AIX $1. Có thể nó chưa được cài đặt hoặc hệ thống in khác đang được sử dụng.
 

@@ -67,7 +67,7 @@ index_eexpired_conf=Automatické podpisovanie by sa malo znova povoliť na strá
 index_eexpired_mod=Pomocou modulu $1 buď zakázajte DNSSEC pre tieto domény, alebo skontrolujte, prečo zlyháva podpísanie.
 
 master_title=Upraviť hlavnú zónu
-master_inview=$1 v zobrazení $2 
+master_inview=$1 v zobrazení $2
 master_ecannot=Nemáte povolenie upravovať túto zónu
 master_egone=Zóna $1 v žiadnom zobrazení neexistuje
 master_egone2=Zóna $1 neexistuje!

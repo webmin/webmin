@@ -7,7 +7,7 @@ index_memtfc=$1 total / $2 libres / $3 mis en cache
 index_loadname=Moyennes de charge du processeur:
 index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
 index_cpuname=Type de CPU:
-index_inzone=Dans la zone $1 
+index_inzone=Dans la zone $1
 
 stime=Commencé
 sclass=Classe de planification IO
@@ -48,7 +48,7 @@ sysv_stime=Commencé
 sysv_task=ID de tâche
 sysv_zone=Nom de zone
 
-log_renice=Modification de la priorité du processus $2 en $1 
+log_renice=Modification de la priorité du processus $2 en $1
 
 acl_manage_def=Utilisateur Webmin actuel
 acl_only=Ne peut voir que ses propres processus?
@@ -65,10 +65,10 @@ open_type=Type
 open_proto=Protocole
 open_desc=Détails
 open_fd=Descripteur de fichier
-open_listen1=Écoute sur le port $1 
-open_listen2=Écoute sur l'adresse $1 port $2 
-open_recv=Réception le $1:$2 
-open_conn=Connecté de $1 à $2 dans l'état $3 
+open_listen1=Écoute sur le port $1
+open_listen2=Écoute sur l'adresse $1 port $2
+open_recv=Réception le $1:$2
+open_conn=Connecté de $1 à $2 dans l'état $3
 open_cwd=Dir actuel
 open_rtd=Répertoire racine
 open_txt=Code de programme
@@ -83,7 +83,7 @@ open_file=Chemin
 
 trace_title=Processus de suivi
 trace_start=Démarrage de la trace d'appel système pour $1 ..
-trace_doing=Trace d'appel système pour $1  :
+trace_doing=Trace d'appel système pour $1 :
 trace_done=.. le processus est terminé.
 trace_failed=.. le traçage a échoué!
 trace_sorry=Cette page nécessite la prise en charge Java dans votre navigateur. Pour utiliser une trace de processus en texte uniquement, ajustez la configuration du module.
