@@ -92,7 +92,7 @@ log_create_l=Created NFS export $1 to $2
 log_apply=Applied configuration
 log_delete_exports=Deleted $1 NFS exports
 
-alert_no_nfsv4root=No NFSv4 virtual root has been defined!\n You should first define a directory as being the NFSv4 root and then bind some directories under this root.
+alert_no_nfsv4root=No NFSv4 virtual root has been defined!\nYou should first define a directory as being the NFSv4 root and then bind some directories under this root.
 
 hostsec_host=Host selection
 hostsec_flavors=Ordered list of security flavors allowed for this host

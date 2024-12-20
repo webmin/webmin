@@ -286,5 +286,5 @@ email_einterval=Intervalo no válido o sin introducir
 email_epercent=Porcentaje de uso no válido o sin introducir
 email_edomain=Dominio de correo no válido o sin introducir
 email_efrom=De: dirección no válido o sin introducir
-email_msg=El uso de disco del usuario $1 en el sistema de archivos $2 ha alcanzado el $3% de la cuota \npermitida.\n\n$4 del espacio de disco se está usando, de un máximo de $5.
+email_msg=El uso de disco del usuario $1 en el sistema de archivos $2 ha alcanzado el $3% de la cuota\npermitida.\n\n$4 del espacio de disco se está usando, de un máximo de $5.
 email_subject=Cuota de disco excedida

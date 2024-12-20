@@ -251,3 +251,5 @@ check_exec=world executable!
 check_write=world writeable!
 check_read=world readable!
 check_possible=Possible problem
+
+__norefs=1
