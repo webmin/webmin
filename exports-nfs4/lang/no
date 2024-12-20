@@ -1,4 +1,4 @@
-alert_no_nfsv4root=Ingen NFSv4 virtuell rot er definert!\n Du må først definere en katalog dom NFSv4 root og så binde noen kataloger under denne roten.
+alert_no_nfsv4root=Ingen NFSv4 virtuell rot er definert!\nDu må først definere en katalog dom NFSv4 root og så binde noen kataloger under denne roten.
 create_title=Opprett eksport
 edit_active=Aktiv?
 edit_address=Adresse
