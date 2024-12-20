@@ -32,6 +32,7 @@ access_ehost=Fehler beim Finden der IP-Adresse für '$1'
 access_eself=Ihre aktuelle IP-Adresse ($1) würde verweigert werden
 access_always=Hostnamen bei jeder Anfrage auflösen?
 access_trust=Vertraue der von Proxys bereitgestellten Remote-IP-Adresse?
+access_trust_ssl=Vertraue auf von Proxies bereitgestellten SSL-Client-Zertifikate?
 
 bind_title=Ports und Adressen
 bind_desc2=Dieses Formular kann verwendet werden, um die Portnummer zu ändern, auf der Webmin lauscht, oder um Webmin so einzurichten, dass es nur auf eine einzige IP-Adresse auf Ihrem System lauscht. Sie können es auch so konfigurieren, dass Verbindungen an mehreren Ports akzeptiert oder auf mehrere IP-Adressen gehört werden. Hinweis: Ihr Webbrowser kann Sie auffordern, sich nach einer Änderung des Ports oder der Bindungsadresse erneut anzumelden.
