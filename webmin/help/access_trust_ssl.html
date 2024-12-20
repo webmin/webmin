@@ -1,0 +1,9 @@
+<header>Trust SSL client cert provided by proxies?</header>
+
+If enabled, Webmin will use a header provided by a proxy to determine the 
+user's client SSL certificate for authentication purposes, such as 
+<tt>X-SSL-Client-DN</tt>. This should <b>only</b> be enabled when your Webmin
+system is behind a proxy, and there is no direct access from clients. Otherwise
+a fake header could be sent to login as a different user. <p>
+
+<footer>

@@ -1,0 +1,10 @@
+<header>Trust remote IP address provided by proxies?</header>
+
+If enabled, Webmin will use a header provided by a proxy to determine the 
+browser's real IP address for logging and access control purposes, such 
+as <tt>X-Forwarded-For</tt> or <tt>X-Real-IP</tt>. This should <b>only</b> be
+enabled when your Webmin system is behind a proxy, and there is no direct
+access from clients. Otherwise a fake header could be sent to bypass IP
+access control restrictions. <p>
+
+<footer>
