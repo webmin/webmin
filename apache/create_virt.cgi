@@ -131,7 +131,7 @@ close(FILE);
 foreach $a (@addrs) {
 	local $ip = &to_ipaddress($a);
 	if ($in{'listen'} && $ip) {
-		# add Listen if needed
+		# add Listen on the IP if needed
 		local @listen = &find_directive("Listen", $conf);
 		local $lfound;
 		foreach $l (@listen) {
@@ -186,6 +186,22 @@ foreach $a (@addrs) {
 		if (!$found) {
 			&save_directive("NameVirtualHost", [ @nv, $ip ], $conf, $conf);
 			}
+		}
+	}
+
+if ($in{'listen'} && $addr eq "*" && $portnum ne "*") {
+	# Add Listen on the port if needed
+	local @listen = &find_directive("Listen", $conf);
+	local $lfound;
+	foreach $l (@listen) {
+		$lfound++ if ($l eq '*' && $portnum == $defport ||
+			      &check_ipaddress($l) && $portnum == $defport ||
+			      $l =~ /:(\d+)$/ && $portnum == $1 ||
+			      $l =~ /^\d+$/ && $portnum == $l);
+		}
+	if (!$lfound && @listen > 0) {
+		# Apache is not listening on the port for all IPs
+		&save_directive("Listen", [ @listen, $portnum ], $conf, $conf);
 		}
 	}
 
