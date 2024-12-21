@@ -966,10 +966,10 @@ if (!$ENV{'nostart'}) {
 		print "Since Webmin was installed outside the package manager, ensure the\n";
 		print "following recommended Perl modules and packages are present:\n";
 		print " Perl modules:\n";
-		print "  - DateTime, DateTime::Locale, DateTime::TimeZone, Data::Dumper\n";
-		print "  - Digest::MD5, Digest::SHA, Encode::Detect, File::Basename\n";
-		print "  - File::Path, Net::SSLeay, Time::HiRes, Time::Local, Time::Piece\n";
-		print "  - lib, open\n";
+		print "  - DateTime, DateTime::Locale, DateTime::TimeZone, Data::Dumper,\n";
+		print "  - Digest::MD5, Digest::SHA, Encode::Detect, File::Basename,\n";
+		print "  - File::Path, Net::SSLeay, Time::HiRes, Time::Local, Time::Piece,\n";
+		print "  - JSON::XS, lib, open\n";
 		print " Packages:\n";
 		print "  - openssl - Cryptography library with TLS implementation\n";
 		print "  - shared-mime-info - Shared MIME information database\n";

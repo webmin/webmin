@@ -285,5 +285,5 @@ email_einterval=Intervalle manquant ou invalide
 email_epercent=Pourcentage d'utilisation manquant ou invalide
 email_edomain=Domaine de messagerie manquant ou invalide
 email_efrom=Adresse pour le champ De: manquante ou invalide
-email_msg=L'utilisation d'espace disque pour l'utilisateur $1 sur le \n
+email_msg=L'utilisation d'espace disque pour l'utilisateur $1 sur le\n
 email_subject=Quota d'espace disque dépassé
