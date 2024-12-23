@@ -422,6 +422,42 @@ details.ui_hidden_table_start > summary::-webkit-details-marker {
     color: #a1acc0;
 }
 
+details.inline {
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  margin: 0;
+}
+
+details.inline > summary + span {
+  margin: 0 0 0 18px;
+  display: inline-block;
+}
+
+details.inline > summary {
+  list-style: none;
+}
+
+details[open].inline > summary:after,
+details.inline > summary:after {
+  content: '⏴';
+  opacity: 0.72;
+  margin-top: 0;
+  margin-left: 7px;
+  margin-right: 7px;
+  color: #010101;
+  position: absolute;
+}
+
+details[open].inline > summary:after {
+  content: '⏷';
+}
+
+[data-second-print]:has(details) + br:has(+[data-x-br]) {
+  display: none;
+}
+
 .leftmenu .ff {
       font-size: 110%;
     margin-left: -3px;
