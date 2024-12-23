@@ -434,6 +434,7 @@ details.inline > summary + span {
   margin: 0 0 0 18px;
   display: inline-block;
   font-size: 98%;
+  cursor: default;
 }
 
 details.inline > summary + span > tt {
