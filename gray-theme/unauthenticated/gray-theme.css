@@ -433,6 +433,11 @@ details.inline {
 details.inline > summary + span {
   margin: 0 0 0 18px;
   display: inline-block;
+  font-size: 98%;
+}
+
+details.inline > summary + span > tt {
+  font-size: 96%;
 }
 
 details.inline > summary {
