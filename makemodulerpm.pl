@@ -259,13 +259,14 @@ if ($rpmdepends && defined($minfo{'depends'})) {
 			my $curr_dir = $0;
 			($curr_dir) = $curr_dir =~ /^(.+)\/[^\/]+$/;
 			$curr_dir = "." if ($curr_dir !~ /^\//);
-			open(my $fh, '<', "$curr_dir/mod_def_list.txt") || die "Error opening \"mod_def_list.txt\" : $!\n";
+			my $mod_def_file = "$curr_dir/mod_def_list.txt";
+			next if (! -r $mod_def_file);
+			open(my $fh, '<', $mod_def_file) ||
+				die "Error opening \"$mod_def_file\" : $!\n";
 			$mod_def_list = do { local $/; <$fh> };
 			close($fh);
 			@mod_def_list = split(/\s+/, $mod_def_list);
-			if ( grep( /^$dmod$/, @mod_def_list ) ) {
-				  next;
-				}
+			next if (grep( /^$dmod$/, @mod_def_list ));
 			}
 		push(@rdeps, $dwebmin ? ("webmin", ">=", $dwebmin) :
 			     $dver ? ($prefix.$dmod, ">=", $dver) :
