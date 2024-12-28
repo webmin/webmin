@@ -182,7 +182,7 @@ setup_repos() {
         echo "  Setting up Webmin testing repository .."
         cat << EOF > "$rhel_repo_file_testing"
 [webmin-testing-noarch]
-name=Webmin CI Testing
+name=Webmin Testing
 baseurl=$webmin_download_testing
 enabled=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$webmin_key_suffix
