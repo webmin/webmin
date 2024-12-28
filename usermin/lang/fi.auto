@@ -18,7 +18,7 @@ index_restart=Käynnistä Usermin uudelleen
 index_restartmsg=Napsauta tätä painiketta käynnistääksesi Usermin-palvelimen prosessin uudelleen. Tämä voi olla tarpeen, jos olet äskettäin päivittänyt Perlin.
 
 access_title=IP-pääsyn hallinta
-access_desc=Usermin-palvelin voidaan määrittää estämään tai sallimaan pääsy vain tietyiltä IP-osoitteilta tämän lomakkeen avulla. Isäntänimet (kuten foo.bar.com) ja IP-verkot (kuten 10.254.3.0 tai 10.254.1.0/255.255.255.128 tai 10.254.1.0/25 tai 10.254.1.5-10.254.97.127) voidaan myös syöttää. Sinun tulisi rajoittaa palvelimellesi pääsy luotettaviin osoitteisiin, varsinkin jos siihen pääsee Internetistä. Muuten jokaisella, joka arvailee salasanasi, on täydellinen hallinta järjestelmässäsi.
+access_desc=Usermin voidaan määrittää estämään tai sallimaan pääsy vain tietyistä IP-osoitteista tällä lomakkeella. Isäntänimet (kuten foo.bar.com) ja IP-verkot (kuten 10.254.3.0 tai 10.254.1.0/255.255.255.128 tai 10.254.1.0/25 tai 10.254.1.5-10.254.97) voidaan myös syöttää.1. Sinun tulisi rajoittaa Userminin pääsy luotettuihin osoitteisiin, varsinkin jos se on käytettävissä Internetistä. Muuten jokainen, joka arvaa salasanasi, hallitsee järjestelmääsi täysin.
 
 bind_title=Satamat ja osoitteet
 bind_desc2=Tätä lomaketta voidaan käyttää muuttamaan porttinumeroa, jota Usermin kuuntelee, tai saada se kuuntelemaan vain yhtä järjestelmän IP-osoitetta järjestelmässäsi. Voit myös määrittää sen hyväksymään yhteydet useissa porteissa tai kuuntelemaan useita IP-osoitteita. Huomaa - selaimesi saattaa pyytää sinua kirjautumaan uudelleen sisään portin tai sidontaosoitteen vaihtamisen jälkeen.
@@ -250,6 +250,12 @@ ui_hnm1=Isäntänimi URL-osoitteesta
 ui_hnm2=Verkkotunnuksen nimi URL-osoitteesta
 ui_hnm3=Muu nimi ..
 ui_tabs=Luokittele moduulit?
+ui_show=Näyttö kojelaudassa 
+ui_show_host=Järjestelmän isäntänimi
+ui_show_os=Käyttöjärjestelmä
+ui_show_ver=Usermin versio
+ui_show_tver=Teema versio
+ui_show_time=Aika järjestelmässä
 
 upgrade_title=Päivitä Usermin
 upgrade_title2=Asenna Usermin

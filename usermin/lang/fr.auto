@@ -1,5 +1,14 @@
+access_desc=Usermin peut être configuré pour refuser ou autoriser l'accès uniquement à partir de certaines adresses IP à l'aide de ce formulaire. Les noms d'hôtes (comme foo.bar.com) et les réseaux IP (comme 10.254.3.0 ou 10.254.1.0/255.255.255.128 ou 10.254.1.0/25 ou 10.254.1.5-10.254.97.127) peuvent également être saisis. Vous devez limiter l'accès à Usermin aux adresses de confiance, en particulier s'il est accessible depuis Internet. Sinon, toute personne qui devine votre mot de passe aura le contrôle total de votre système.
+
 lang_title=Langue et paramètres régionaux
 lang_title2=Langue et paramètres régionaux Usermin
+
+ui_show=Affichage sur le tableau de bord
+ui_show_host=Nom d'hôte du système
+ui_show_os=Système opérateur
+ui_show_ver=Version utilisateur
+ui_show_tver=Version du thème
+ui_show_time=Temps sur le système
 
 advanced_pass_desc=Rendre le mot de passe disponible pour les programmes Usermin ?
 advanced_pass_help=Ne fonctionne pas lorsque l'authentification de session est activée

@@ -1,7 +1,16 @@
+access_desc=Usermin kan worden geconfigureerd om alleen toegang vanaf bepaalde IP-adressen te weigeren of toe te staan met behulp van dit formulier. Hostnamen (zoals foo.bar.com) en IP-netwerken (zoals 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 of 10.254.1.5-10.254.97.127) kunnen ook worden ingevoerd. U moet de toegang tot Usermin beperken tot vertrouwde adressen, vooral als het toegankelijk is vanaf internet. Anders heeft iedereen die uw wachtwoord raadt volledige controle over uw systeem.
+
 lang_title=Taal en land
 lang_title2=Usermin-taal en locale
 
 session_authmode=Authenticatie methode
+
+ui_show=Weergave op het dashboard
+ui_show_host=Systeemhostnaam
+ui_show_os=Besturingssysteem
+ui_show_ver=Usermin-versie
+ui_show_tver=Thema versie
+ui_show_time=Tijd op systeem
 
 advanced_pass_desc=Wachtwoord beschikbaar maken voor Usermin-programma's?
 advanced_pass_help=Werkt niet als sessieverificatie is ingeschakeld

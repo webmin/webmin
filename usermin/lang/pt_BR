@@ -17,7 +17,6 @@ index_restart=Restart Usermin
 index_restartmsg=Click this button to re-start the Usermin server process. This may be necessary if you have recently upgraded Perl.
 
 access_title=Acesso negado por IP
-access_desc=O servidor Usermin pode ser configurado para negar ou permitir acesso somente alguns IP usando esse formulário. Hostnames (como foo.bar.com) e IP de redes (como 10.254.3.0 ou 10.254.1.0/255.255.255.128) podem também ser informados. Você deve limitar acessos ao seu servidor somente de endereços confiáveis, especialmente se estiver disponível na Internet. Caso contrario, qualquer um que adivinhar sua senha terá acesso completo ao seu sistema.
 
 bind_title=Portas e Endereços
 bind_desc2=Este formulário pode ser usado para mudar o número da porta que Usermin escuta, ou o coloca para escutar somente em um único endereço IP em seu sistema. Você pode também configurará-lo para aceitar conexões em várias portas, ou para escutar em diversos endereços IP. Nota - seu navegador pode alertá-lo para logar outra vez após ter mudado a porta ou o endereço de escuta.

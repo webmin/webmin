@@ -11,7 +11,7 @@ index_refresh=Atnaujinkite modulius
 index_refreshmsg=Dar kartą patikrinkite visus įdiegtus „Webmin“ modulius ir atnaujinkite tuos, kurie pateikiami kategorijoje „Nenaudojami moduliai“.
 
 access_title=IP prieigos kontrolė
-access_desc=„Webmin“ serverį galima sukonfigūruoti taip, kad naudojant šią formą būtų uždrausta arba leidžiama prieiga tik iš tam tikrų IP adresų. Taip pat galima įvesti pagrindinius kompiuterių pavadinimus (pvz., Foo.bar.com) ir IP tinklus (pvz., 10.254.3.0 arba 10.254.1.0/255.255.255.128 arba 10.254.1.0/25 arba 10.254.1.5-10.254.97.127 arba 2001:DB8::A0BC:0001 arba 2001:DB8::/32). Turėtumėte apriboti prieigą prie savo serverio tik patikimais adresais, ypač jei jis pasiekiamas iš interneto. Priešingu atveju visi, atspėję jūsų slaptažodį, turės visišką jūsų sistemos valdymą.
+access_desc=Naudojant šią formą, Webmin galima sukonfigūruoti taip, kad būtų uždrausta arba leidžiama prieiga tik iš tam tikrų IP adresų. Prieglobos pavadinimai (pvz., foo.bar.com) ir IP tinklai (pvz., 10.254.3.0 arba 10.254.1.0/255.255.255.128 arba 10.254.1.0/25 arba 10.254.1.5-10.254.127 arba 97.97. 2001:DB8::A0BC:0001 arba 2001:DB8::/32) taip pat galima įvesti. Turėtumėte apriboti prieigą prie Webmin iki patikimų adresų, ypač jei ji pasiekiama iš interneto. Priešingu atveju kiekvienas, atspėjęs jūsų slaptažodį, galės visiškai valdyti jūsų sistemą.
 access_ip=Leidžiami IP adresai
 access_local=Į sąrašą įtraukite vietinį tinklą
 access_header=Prieigos kontrolės parinktys
@@ -32,6 +32,7 @@ access_ehost=Nepavyko rasti „$1“ IP adreso
 access_eself=Jūsų dabartinis IP adresas ($1) būtų atmestas
 access_always=Išspręsti pagrindinio kompiuterio pavadinimus kiekvienoje užklausoje?
 access_trust=Ar patikimas tarpinis IP adresas?
+access_trust_ssl=Pasitikėti tarpinių serverių teikiamu SSL kliento sertifikatu?
 
 bind_title=Uostai ir adresai
 bind_desc2=Ši forma gali būti naudojama norint pakeisti prievado numerį, kurio „Webmin“ klausosi, arba leisti, kad jis klausytųsi tik vienu jūsų sistemos IP adresu. Taip pat galite sukonfigūruoti jį priimti ryšius keliuose prievaduose arba klausytis keliais IP adresais. Pastaba - pakeitus prievadą ar įrišimo adresą, jūsų interneto naršyklė gali paraginti jus prisijungti dar kartą.

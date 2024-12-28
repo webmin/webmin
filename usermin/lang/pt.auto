@@ -18,7 +18,7 @@ index_restart=Reinicie o Usermin
 index_restartmsg=Clique neste botão para reiniciar o processo do servidor Usermin. Isso pode ser necessário se você atualizou o Perl recentemente.
 
 access_title=Controle de acesso IP
-access_desc=O servidor Usermin pode ser configurado para negar ou permitir acesso apenas a determinados endereços IP usando este formulário. Nomes de host (como foo.bar.com) e redes IP (como 10.254.3.0 ou 10.254.1.0/255.255.255.128 ou 10.254.1.0/25 ou 10.254.1.5-10.254.97.127) também podem ser inseridos. Você deve limitar o acesso ao seu servidor a endereços confiáveis, especialmente se ele estiver acessível na Internet. Caso contrário, quem adivinhar sua senha terá controle total do seu sistema.
+access_desc=O Usermin pode ser configurado para negar ou permitir acesso somente de certos endereços IP usando este formulário. Nomes de host (como foo.bar.com) e redes IP (como 10.254.3.0 ou 10.254.1.0/255.255.255.128 ou 10.254.1.0/25 ou 10.254.1.5-10.254.97.127) também podem ser inseridos. Você deve limitar o acesso ao Usermin a endereços confiáveis, especialmente se ele for acessível pela Internet. Caso contrário, qualquer um que adivinhar sua senha terá controle total do seu sistema.
 
 bind_title=Portas e endereços
 bind_desc2=Este formulário pode ser usado para alterar o número da porta em que o Usermin escuta ou para ouvir apenas um único endereço IP no seu sistema. Você também pode configurá-lo para aceitar conexões em várias portas ou para ouvir em vários endereços IP. Nota - seu navegador da Web pode solicitar que você faça login novamente após alterar a porta ou o endereço de ligação.
@@ -250,6 +250,12 @@ ui_hnm1=Nome do host do URL
 ui_hnm2=Nome de domínio do URL
 ui_hnm3=Outro nome ..
 ui_tabs=Categorizar módulos?
+ui_show=Exibir no painel
+ui_show_host=Nome do host do sistema
+ui_show_os=Sistema operacional
+ui_show_ver=Versão do Usermin
+ui_show_tver=Versão do tema
+ui_show_time=Tempo no sistema
 
 upgrade_title=Atualizar Usermin
 upgrade_title2=Instale Usermin

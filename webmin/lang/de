@@ -11,7 +11,6 @@ index_refresh=Module aktualisieren
 index_refreshmsg=Überprüfen Sie alle Webmin-Module auf installierte Server und aktualisieren Sie diejenigen, die in der Kategorie „Nicht verwendete Module“ erscheinen.
 
 access_title=IP-Zugriffskontrolle
-access_desc=Der Webmin-Server kann so konfiguriert werden, dass er den Zugriff nur von bestimmten IP-Adressen erlaubt oder verweigert. Hostnamen (wie foo.bar.com) und IP-Netzwerke (wie 10.254.3.0 oder 10.254.1.0/255.255.255.128 oder 10.254.1.0/25 oder 10.254.1.5-10.254.97.127 oder 2001:DB8::A0BC:0001 oder 2001:DB8::/32) können ebenfalls eingegeben werden. Sie sollten den Zugriff auf Ihren Server auf vertrauenswürdige Adressen beschränken, insbesondere wenn er vom Internet aus zugänglich ist. Andernfalls hat jeder, der Ihr Passwort errät, die vollständige Kontrolle über Ihr System.
 access_ip=Erlaubte IP-Adressen
 access_local=Lokales Netzwerk in die Liste einbeziehen
 access_header=Zugriffskontrolloptionen

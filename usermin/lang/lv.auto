@@ -18,7 +18,7 @@ index_restart=Restartējiet Usermin
 index_restartmsg=Noklikšķiniet uz šīs pogas, lai atsāktu Usermin servera procesu. Tas var būt nepieciešams, ja nesen esat jauninājis Perl.
 
 access_title=IP piekļuves kontrole
-access_desc=Usermin serveri var konfigurēt, lai liegtu piekļuvi vai atļautu piekļuvi tikai no noteiktām IP adresēm, izmantojot šo veidlapu. Var ievadīt arī resursdatorus (piemēram, foo.bar.com) un IP tīklus (piemēram, 10.254.3.0 vai 10.254.1.0/255.255.255.128 vai 10.254.1.0/25 vai 10.254.1.5-10.254.97.127). Jums vajadzētu ierobežot piekļuvi serverim ar uzticamām adresēm, it īpaši, ja tas ir pieejams no interneta. Pretējā gadījumā ikviens, kurš uzminēs jūsu paroli, pilnībā kontrolēs jūsu sistēmu.
+access_desc=Usermin var konfigurēt, lai liegtu vai atļautu piekļuvi tikai no noteiktām IP adresēm, izmantojot šo veidlapu. Var ievadīt arī resursdatora nosaukumus (piemēram, foo.bar.com) un IP tīklus (piemēram, 10.254.3.0 vai 10.254.1.0/255.255.255.128 vai 10.254.1.0/25 vai 10.254.1.5-10.254.97). Piekļuve Usermin ir jāierobežo ar uzticamām adresēm, it īpaši, ja tā ir pieejama no interneta. Pretējā gadījumā ikviens, kurš uzminēs jūsu paroli, pilnībā kontrolēs jūsu sistēmu.
 
 bind_title=Ostas un adreses
 bind_desc2=Šo veidlapu var izmantot, lai mainītu porta numuru, kuru klausās Usermin, vai liktu to klausīties tikai vienā jūsu sistēmas IP adresē. Varat arī konfigurēt tā, lai tas pieņemtu savienojumus vairākos portos vai klausītos vairākās IP adresēs. Piezīme - pēc porta vai saistošās adreses maiņas jūsu tīmekļa pārlūks var pamudināt jūs atkal pieteikties.
@@ -250,6 +250,12 @@ ui_hnm1=Resursdatora nosaukums no URL
 ui_hnm2=Domēna vārds no URL
 ui_hnm3=Cits vārds ..
 ui_tabs=Kategorizēt moduļus?
+ui_show=Displejs informācijas panelī 
+ui_show_host=Sistēmas saimniekdatora nosaukums
+ui_show_os=Operētājsistēma
+ui_show_ver=Usermin versija
+ui_show_tver=Tēmas versija
+ui_show_time=Laiks sistēmā
 
 upgrade_title=Jaunināt Usermin
 upgrade_title2=Instalējiet Usermin

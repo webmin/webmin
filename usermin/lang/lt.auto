@@ -18,7 +18,7 @@ index_restart=Paleiskite „Usermin“ iš naujo
 index_restartmsg=Spustelėkite šį mygtuką, kad iš naujo paleistumėte „Usermin“ serverio procesą. To gali prireikti, jei neseniai atnaujinote „Perl“.
 
 access_title=IP prieigos kontrolė
-access_desc=„Usermin“ serverį galima sukonfigūruoti taip, kad naudojant šią formą būtų galima uždrausti ar leisti prieigą tik iš tam tikrų IP adresų. Taip pat galima įvesti pagrindinius kompiuterių pavadinimus (pvz., Foo.bar.com) ir IP tinklus (pvz., 10.254.3.0 arba 10.254.1.0/255.255.255.128 arba 10.254.1.0/25 arba 10.254.1.5-10.254.97.127). Turėtumėte apriboti prieigą prie savo serverio tik patikimais adresais, ypač jei jis prieinamas iš interneto. Priešingu atveju visi, atspėję jūsų slaptažodį, turės visišką jūsų sistemos valdymą.
+access_desc=„Usermin“ gali būti sukonfigūruotas taip, kad būtų uždrausta arba leidžiama prieiga tik iš tam tikrų IP adresų naudojant šią formą. Prieglobos pavadinimai (pvz., foo.bar.com) ir IP tinklai (pvz., 10.254.3.0 arba 10.254.1.0/255.255.255.128 arba 10.254.1.0/25 arba 10.254.1.5-10.254.97) taip pat gali būti įvesti.127 Turėtumėte apriboti prieigą prie Usermin iki patikimų adresų, ypač jei jis pasiekiamas iš interneto. Priešingu atveju kiekvienas, atspėjęs jūsų slaptažodį, galės visiškai valdyti jūsų sistemą.
 
 bind_title=Uostai ir adresai
 bind_desc2=Ši forma gali būti naudojama norint pakeisti prievado numerį, kurio „Usermin“ klausosi, arba leisti, kad jis klausytųsi tik vienu jūsų sistemos IP adresu. Taip pat galite sukonfigūruoti jį priimti ryšius keliuose prievaduose arba klausytis keliais IP adresais. Pastaba - pakeitus prievadą ar įrišimo adresą, jūsų interneto naršyklė gali paraginti jus prisijungti dar kartą.
@@ -250,6 +250,12 @@ ui_hnm1=Pagrindinio kompiuterio vardas iš URL
 ui_hnm2=Domeno vardas iš URL
 ui_hnm3=Kitas vardas ..
 ui_tabs=Klasifikuokite modulius?
+ui_show=Rodymas prietaisų skydelyje 
+ui_show_host=Sistemos prieglobos pavadinimas
+ui_show_os=Operacinė sistema
+ui_show_ver=Usermin versija
+ui_show_tver=Temos versija
+ui_show_time=Laikas sistemoje
 
 upgrade_title=Atnaujinkite „Usermin“
 upgrade_title2=Įdiekite „Usermin“

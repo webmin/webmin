@@ -1,5 +1,7 @@
+access_desc=Webmin boleh dikonfigurasikan untuk menafikan atau membenarkan akses hanya dari alamat IP tertentu menggunakan borang ini. Nama hos (seperti foo.bar.com) dan rangkaian IP (seperti 10.254.3.0 atau 10.254.1.0/255.255.255.128 atau 10.254.1.0/25 atau 10.254.1.5-10.254.97.1 2001:DB8::A0BC:0001 atau 2001:DB8::/32) juga boleh dimasukkan. Anda harus mengehadkan akses kepada Webmin kepada alamat yang dipercayai, terutamanya jika ia boleh diakses daripada Internet. Jika tidak, sesiapa yang meneka kata laluan anda akan mempunyai kawalan sepenuhnya ke atas sistem anda.
 access_ecidr8=Saiz rangkaian IPv6 '$1' mesti dibahagikan dengan 8
 access_trust=Percayakan alamat IP jauh yang disediakan oleh proksi?
+access_trust_ssl=Percaya sijil pelanggan SSL yang disediakan oleh proksi?
 
 bind_websocport=Nombor port asas untuk sambungan WebSockets
 bind_websocport_none=Lalai (555)

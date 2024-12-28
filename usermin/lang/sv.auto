@@ -18,7 +18,7 @@ index_restart=Starta om Usermin
 index_restartmsg=Klicka på den här knappen för att starta om Usermin-serverprocessen. Detta kan vara nödvändigt om du nyligen har uppgraderat Perl.
 
 access_title=IP-åtkomstkontroll
-access_desc=Usermin-servern kan konfigureras för att neka eller tillåta åtkomst endast från vissa IP-adresser med hjälp av detta formulär. Värdnamn (som foo.bar.com) och IP-nätverk (som 10.254.3.0 eller 10.254.1.0/255.255.255.128 eller 10.254.1.0/25 eller 10.254.1.5-10.254.97.127) kan också anges. Du bör begränsa åtkomsten till din server till betrodda adresser, särskilt om den är tillgänglig från Internet. Annars har alla som gissar ditt lösenord fullständig kontroll över ditt system.
+access_desc=Usermin kan konfigureras för att neka eller tillåta åtkomst endast från vissa IP-adresser med detta formulär. Värdnamn (som foo.bar.com) och IP-nätverk (som 10.254.3.0 eller 10.254.1.0/255.255.255.128 eller 10.254.1.0/25 eller 10.254.1.5-10.254.97.12) kan också anges. Du bör begränsa åtkomsten till Usermin till betrodda adresser, särskilt om den är tillgänglig från Internet. Annars kommer alla som gissar ditt lösenord att ha fullständig kontroll över ditt system.
 
 bind_title=Hamnar och adresser
 bind_desc2=Det här formuläret kan användas för att ändra portnumret som Usermin lyssnar på eller låta det bara lyssna på en enda IP-adress på ditt system. Du kan också konfigurera den för att acceptera anslutningar på flera portar eller lyssna på flera IP-adresser. Obs - din webbläsare kan uppmana dig att logga in igen efter att ha ändrat port eller bindande adress.
@@ -250,6 +250,12 @@ ui_hnm1=Värdnamn från URL
 ui_hnm2=Domännamn från URL
 ui_hnm3=Annat namn ..
 ui_tabs=Kategorisera moduler?
+ui_show=Display på instrumentbrädan 
+ui_show_host=Systemets värdnamn
+ui_show_os=Operativsystem
+ui_show_ver=Usermin version
+ui_show_tver=Temaversion
+ui_show_time=Tid på systemet
 
 upgrade_title=Uppgradera Usermin
 upgrade_title2=Installera Usermin

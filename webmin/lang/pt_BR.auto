@@ -1,8 +1,10 @@
+access_desc=O Webmin pode ser configurado para negar ou permitir acesso somente de certos endereços IP usando este formulário. Nomes de host (como foo.bar.com) e redes IP (como 10.254.3.0 ou 10.254.1.0/255.255.255.128 ou 10.254.1.0/25 ou 10.254.1.5-10.254.97.127 ou 2001:DB8::A0BC:0001 ou 2001:DB8::/32) também podem ser inseridos. Você deve limitar o acesso ao Webmin a endereços confiáveis, especialmente se ele for acessível pela Internet. Caso contrário, qualquer um que adivinhar sua senha terá controle total do seu sistema.
 access_local=Incluir rede local na lista
 access_eip6='$1' não é um endereço IPv6 ou de rede completo
 access_ecidr6='$1' não é um tamanho de rede IPv6 válido
 access_ecidr8=O tamanho da rede IPv6 '$1' deve ser divisível por 8
 access_trust=Confia no endereço IP remoto fornecido pelos proxies?
+access_trust_ssl=Confiar no certificado de cliente SSL fornecido por proxies?
 
 bind_firewall=Abrir novas portas no firewall?
 bind_websocport=Número da porta base para conexões WebSockets

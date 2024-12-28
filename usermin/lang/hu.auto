@@ -18,7 +18,7 @@ index_restart=Indítsa újra a Usermin alkalmazást
 index_restartmsg=Kattintson erre a gombra a Usermin szerver folyamatának újraindításához. Erre akkor lehet szükség, ha nemrégiben frissítette a Perl szolgáltatást.
 
 access_title=IP hozzáférés-vezérlés
-access_desc=A Usermin szerver úgy konfigurálható, hogy csak bizonyos IP-címektől tagadja meg vagy engedélyezi a hozzáférést ezen az űrlapon. A hostnevek (például a foo.bar.com) és az IP-hálózatok (mint például 10.254.3.0 vagy 10.254.1.0/255.255.255.128 vagy 10.254.1.0/25 vagy 10.254.1.5-10.254.97.127) beírhatók. A kiszolgálóhoz való hozzáférést csak megbízható címekre kell korlátoznia, különösen, ha ez elérhető az internetről. Ellenkező esetben bárki, aki kitalálja a jelszavát, teljes mértékben irányítja a rendszerét.
+access_desc=A Usermin ezen az űrlapon konfigurálható úgy, hogy megtagadja vagy engedélyezze a hozzáférést csak bizonyos IP-címekről. Hostnevek (például foo.bar.com) és IP-hálózatok (például 10.254.3.0 vagy 10.254.1.0/255.255.255.128 vagy 10.254.1.0/25 vagy 10.254.1.5-10.254.97) is megadhatók. A Usermin hozzáférését megbízható címekre kell korlátoznia, különösen, ha az internetről elérhető. Ellenkező esetben bárki, aki kitalálja a jelszavát, teljes mértékben uralhatja rendszerét.
 
 bind_title=Portok és címek
 bind_desc2=Ez az űrlap felhasználható annak a portnak a megváltoztatására, amelyet a Usermin hallgat, vagy a rendszer egyetlen IP-címére hallgathatja. Azt is konfigurálhatja, hogy több porton keresztül fogadja el a kapcsolatokat, vagy több IP-címen hallgassa meg. Megjegyzés: a port vagy a kötési cím megváltoztatása után a böngésző kérheti újbóli bejelentkezését.
@@ -250,6 +250,12 @@ ui_hnm1=Gazdagép neve az URL-ből
 ui_hnm2=Domain név az URL-ből
 ui_hnm3=Másik név ..
 ui_tabs=Kategorizálja a modulokat?
+ui_show=Megjelenítés a műszerfalon 
+ui_show_host=Rendszergazdagépnév
+ui_show_os=Operációs rendszer
+ui_show_ver=Usermin verzió
+ui_show_tver=Téma verzió
+ui_show_time=A rendszeren töltött idő
 
 upgrade_title=Frissítse a Usermin alkalmazást
 upgrade_title2=Telepítse a Usermin alkalmazást

@@ -18,7 +18,6 @@ index_restart=Redémarrer Usermin
 index_restartmsg=Cliquez sur ce bouton pour redémarrer le processus du serveur Usermin. Il se peut que ce soit nécessaire si vous avez récemment procédé à une mise à niveau de Perl.
 
 access_title=Contrôle d'accès IP
-access_desc=Le serveur Usermin peut être configuré pour interdire ou autoriser l'accès uniquement à partir de certaines adresses IP à l'aide de ce formulaire. Il est également posible de saisir des noms d'hôtes (comme titi.toto.com) et des réseaux IP (comme 10.254.3.0 ou 10.254.1.0/255.255.255.128). Vous devriez limiter l'accès à votre serveur aux adresses de confiance, en particulier s'il est accessible depuis Internet. Autrement, quiconque devine votre mot de passe peut avoir un contrôle complet de votre système.
 
 bind_title=Ports et adresses
 bind_desc2=Ce formulaire peut être utilisé pour changer le numéro de port sur lequel Usermin écoute ou ne lui faire écouter qu'une seule adresse IP sur votre système. Vous pouvez également le configurer pour accepter des connexions sur des ports multiples ou pour écouter sur plusieurs adresses IP. Remarque : votre navigateur web peut émettre une invite pour vous connecter à nouveau après avoir changé le port ou lié l'adresse.

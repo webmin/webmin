@@ -17,7 +17,6 @@ index_restart=Restartovat Usermin
 index_restartmsg=Klepnutím na toto tlačítko restartujete Usermin proces na serveru. Doporučujeme tento krok, pokud jste povyšovali Perl.
 
 access_title=Kontrola přístupu IP
-access_desc=Usermin server může být konfigurován pro zakázání nebo povolení přístupu pouze prostřednictvím určitých IP adres při použití tohoto formuláře. Jména hostů (jako foo.bar.com) a IP sítě (jako 10.254.3.0 nebo 10.254.1.0/255.255.255.128) mohou být taktéž vkládána. Můžete omezovat přístup na váš server k důvěrným adresám, především, pokud jsou přístupné z Internetu. Jinak, kdokoliv, kdo uhodne vaše heslo má úplnou kontrolu nad vaším systémem.
 
 bind_title=Porty a adresy
 bind_desc2=Tento formulář můžete využít pro změnu čísla portu, na kterém visí Usermin, případně přesměrovat pouze na jedinečné IP ve vašem systému. Můžete také nastavit příjem pro připojení z více portů nebo naslouchání na více IP adresách. Poznámka - jestliže změníte tyto údaje, může se váš webový prohlížeč znovu zeptat na přihlašovací údaje.

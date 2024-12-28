@@ -18,7 +18,7 @@ index_restart=Genstart Usermin
 index_restartmsg=Klik på denne knap for at genstarte Usermin-serverprocessen. Dette kan være nødvendigt, hvis du for nylig har opgraderet Perl.
 
 access_title=IP-adgangskontrol
-access_desc=Usermin-serveren kan konfigureres til at afvise eller kun give adgang fra bestemte IP-adresser ved hjælp af denne formular. Værtsnavne (som foo.bar.com) og IP-netværk (som 10.254.3.0 eller 10.254.1.0/255.255.255.128 eller 10.254.1.0/25 eller 10.254.1.5-10.254.97.127) kan også indtastes. Du skal begrænse adgangen til din server til betroede adresser, især hvis den er tilgængelig fra Internettet. Ellers har enhver, der gætter din adgangskode, fuldstændig kontrol over dit system.
+access_desc=Usermin kan konfigureres til kun at nægte eller tillade adgang fra visse IP-adresser ved hjælp af denne formular. Værtsnavne (som foo.bar.com) og IP-netværk (som 10.254.3.0 eller 10.254.1.0/255.255.255.128 eller 10.254.1.0/25 eller 10.254.1.5-10.254.97.12) kan også indtastes. Du bør begrænse adgangen til Usermin til betroede adresser, især hvis den er tilgængelig fra internettet. Ellers vil enhver, der gætter din adgangskode, have fuldstændig kontrol over dit system.
 
 bind_title=Porte og adresser
 bind_desc2=Denne formular kan bruges til at ændre det portnummer, som Usermin lytter til, eller hvis det kun skal lytte til en enkelt IP-adresse på dit system. Du kan også konfigurere det til at acceptere forbindelser på flere porte, eller til at lytte på flere IP-adresser. Bemærk - din webbrowser vil muligvis bede dig om at logge ind igen efter at du har ændret port eller bindende adresse.
@@ -250,6 +250,12 @@ ui_hnm1=Værtsnavn fra URL
 ui_hnm2=Domænenavn fra URL
 ui_hnm3=Andet navn ..
 ui_tabs=Kategoriser moduler?
+ui_show=Visning på instrumentbrættet 
+ui_show_host=Systemets værtsnavn
+ui_show_os=Operativsystem
+ui_show_ver=Brugermin version
+ui_show_tver=Tema version
+ui_show_time=Tid på systemet
 
 upgrade_title=Opgrader Usermin
 upgrade_title2=Installer Usermin
