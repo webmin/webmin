@@ -52,6 +52,7 @@ build_prod() {
     # Define root
     local ver=""
     local prod=$1
+    local devel=0
     root_prod="$root/$prod"
     root_apt="$root_prod/deb"
 
@@ -114,6 +115,7 @@ build_prod() {
         ver=$(get_current_repo_tag)
     fi
     if [[ "'$*'" == *"--testing"* ]]; then
+        devel=1
         ver="$ver.$date_version"
         # Set actual product version
         echo "${ver}" >"version"
@@ -146,9 +148,7 @@ build_prod() {
     purge_dir "$root_prod/minimal"
     purge_dir "$root_prod/tarballs"
     if [ "$prod" != "" ]; then
-        # XXXX Need to check for
-        # product name exactly
-        rm -f "$root_repos/$prod-latest"*
+        rm -f "$root_repos/$prod-"*
     fi
     postcmd $?
     echo
@@ -192,11 +192,11 @@ build_prod() {
 
     cd "$root" || exit 1
     echo "Preparing built files for upload .."
-    cmd="cp -f $root_prod/tarballs/${prod}-${ver}*\.tar.gz $root_repos/${prod}-latest.tar.gz $verbosity_level"
+    cmd="cp -f $root_prod/tarballs/${prod}-${ver}*\.tar.gz $root_repos/${prod}-$$ver.tar.gz $verbosity_level"
     eval "$cmd"
     cmd="find $root_apt -name ${prod}_${ver}${relval}*\.deb -exec mv '{}' $root_repos \; $verbosity_level"
     eval "$cmd"
-    cmd="mv -f $root_repos/${prod}_${ver}${relval}*\.deb $root_repos/${prod}-latest.deb $verbosity_level"
+    cmd="mv -f $root_repos/${prod}_${ver}${relval}*\.deb $root_repos/${prod}_${ver}-${rel}_all.deb $verbosity_level"
     eval "$cmd"
     postcmd $?
 }

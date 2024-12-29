@@ -133,7 +133,7 @@ build_module() {
     cmd="find $root_rpms -name wbm-$module*$verorig*\.rpm -exec mv '{}' $root_repos \; $verbosity_level"
     eval "$cmd"
     if [ "$devel" -eq 1 ]; then
-        cmd="mv -f $root_repos/wbm-$module*$verorig*\.rpm $root_repos/${module}-$ver-1.noarch.rpm $verbosity_level"
+        cmd="mv -f $root_repos/wbm-$module*$verorig*\.rpm $root_repos/${module}-$ver-$rel.noarch.rpm $verbosity_level"
         eval "$cmd"
     fi
     postcmd $?

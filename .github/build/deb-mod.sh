@@ -121,7 +121,7 @@ build_module() {
     cmd="find $root_module/tmp -name webmin-${module}*$verorig*\.deb -exec mv '{}' $root_repos \; $verbosity_level"
     eval "$cmd"
     if [ "$devel" -eq 1 ]; then
-        cmd="mv -f $root_repos/*${module}*$verorig*\.deb $root_repos/${module}_${ver}-1_all.deb $verbosity_level"
+        cmd="mv -f $root_repos/*${module}*$verorig*\.deb $root_repos/${module}_${ver}-${rel}_all.deb $verbosity_level"
         eval "$cmd"
     fi
     postcmd $?
