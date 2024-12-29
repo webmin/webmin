@@ -24,7 +24,7 @@ cloud_upload() {
         local err=0
         for d in "${arr_del[@]}"; do
             if [ -n "$d" ]; then
-                local cmd1="ssh $ssh_args $cloud_upload_ssh_user@$cloud_upload_ssh_host \"rm -rf $d\" $verbosity_level"
+                local cmd1="ssh $ssh_args $cloud_upload_ssh_user@$cloud_upload_ssh_host 'cd \"$cloud_upload_ssh_dir\" && rm -rf $d' $verbosity_level"
                 eval "$cmd1"
                 if [ "$?" != "0" ]; then
                     err=1
