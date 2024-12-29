@@ -211,7 +211,7 @@ else
     build_prod webmin $@
     build_prod usermin $@
     cloud_upload_list_upload=("$root_repos/*")
-    cloud_upload_list_delete=(webmin* usermin*)
+    cloud_upload_list_delete=("webmin*" "usermin*")
 fi
 
 cloud_upload cloud_upload_list_upload cloud_upload_list_delete
