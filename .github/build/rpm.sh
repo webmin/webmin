@@ -209,7 +209,7 @@ build_prod() {
     eval "$cmd"
     cmd="find $root_rpms -name $prod-$ver-$rel*\.rpm -exec mv '{}' $root_repos \; $verbosity_level"
     eval "$cmd"
-    cmd="mv -f $root_repos/$prod-$ver-$rel*\.rpm $root_repos/${prod}-$ver-$rel.noarch.rpm $verbosity_level"
+    cmd="mv -f $root_repos/$prod-$ver-$rel*\.rpm $root_repos/ $verbosity_level"
     eval "$cmd"
     postcmd $?
     echo
