@@ -16,7 +16,7 @@
 #
 #   # Pull and build devel versions
 #   # of both Webmin and Usermin
-#      ./rpm.sh --devel
+#      ./rpm.sh --testing
 #
 #   # Pull and build production Webmin version 2.101, forcing
 #   # release version 3, displaying detailed output
@@ -42,7 +42,7 @@ build_prod() {
 
     # Pack with English only in devel builds
     local english_only=0
-    if [[ "'$*'" == *"--devel"* ]]; then
+    if [[ "'$*'" == *"--testing"* ]]; then
         english_only=1
     fi
 
@@ -110,7 +110,7 @@ build_prod() {
     if [ -z "$ver" ]; then
         ver=$(get_current_repo_tag)
     fi
-    if [[ "'$*'" == *"--devel"* ]]; then
+    if [[ "'$*'" == *"--testing"* ]]; then
         ver="$ver.$date_version"
         # Set actual product version
         echo "${ver}" >"version"
@@ -205,8 +205,6 @@ build_prod() {
     cd "$root" || exit 1
     echo "Preparing built files for upload .."
     cmd="cp -f $root_prod/tarballs/$prod-$ver*\.tar.gz $root_repos/${prod}-latest.tar.gz $verbosity_level"
-    eval "$cmd"
-    cmd="echo $ver-$rel \($date\) > $root_repos/$prod-latest.version"
     eval "$cmd"
     cmd="find $root_rpms -name $prod-$ver-$rel*\.rpm -exec mv '{}' $root_repos \; $verbosity_level"
     eval "$cmd"
