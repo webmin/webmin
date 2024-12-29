@@ -140,7 +140,7 @@ build_prod() {
     make_dir "$root_repos/"
 
     # Re-create legacy link
-    rm -rf "$root/webadmin"
+    remove_dir "$root/webadmin"
     ln -s "$root/webmin" "$root/webadmin"
 
     # Purge old files
@@ -154,7 +154,7 @@ build_prod() {
     purge_dir "$root_build/SOURCES"
     purge_dir "$root_build/SPECS"
     purge_dir "$root_build/SRPMS"
-    rm -rf "$root_repos/repodata"
+    remove_dir "$root_repos/repodata"
     if [ "$prod" != "" ]; then
         # XXXX Need to check for
         # product name exactly

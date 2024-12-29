@@ -137,7 +137,7 @@ build_prod() {
     make_dir "$root_prod/tarballs/"
 
     # Re-create legacy link
-    rm -rf "$root/webadmin"
+    remove_dir "$root/webadmin"
     ln -s "$root/webmin" "$root/webadmin"
 
     # Purge old files

@@ -96,6 +96,13 @@ purge_dir() {
     done
 }
 
+# Remove dir
+remove_dir() {
+    if [ -d "$1" ]; then
+        rm -rf "$1"
+    fi
+}
+
 # Get latest tag version
 get_current_repo_tag() {
     cd "$root_prod" || exit 1
