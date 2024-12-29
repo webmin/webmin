@@ -202,19 +202,17 @@ build_prod() {
     postcmd $?
 }
 
+# Main
 if [ -n "$1" ] && [[ "'$1'" != *"--"* ]]; then
     build_prod $@
-    
     cloud_upload_list_upload=("$root_repos/$1*")
-    cloud_upload cloud_upload_list_upload
-    
-    cloud_repo_sign_and_update
+    cloud_upload_list_delete=("$1*")
 else
     build_prod webmin $@
     build_prod usermin $@
-
     cloud_upload_list_upload=("$root_repos/*")
-    cloud_upload cloud_upload_list_upload
-
-    cloud_repo_sign_and_update
+    cloud_upload_list_delete=(webmin* usermin*)
 fi
+
+cloud_upload cloud_upload_list_upload cloud_upload_list_delete
+cloud_repo_sign_and_update
