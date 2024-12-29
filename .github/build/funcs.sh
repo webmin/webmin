@@ -155,7 +155,7 @@ make_prod_repos() {
     # Webmin or Usermin
     if [ ! -d "$1" ]; then
         local repo="webmin/$prod.git"
-        cmd="git clone --depth 1 https://github.com/$repo $verbosity_level"
+        cmd="git clone https://github.com/$repo $verbosity_level"
         eval "$cmd"
         if [ ! -d "webmin" ]; then
             cmd="git clone --depth 1 https://github.com/webmin/webmin $verbosity_level"

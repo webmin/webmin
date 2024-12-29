@@ -26,5 +26,5 @@ jobs:
           ENV_BUILD__CLOUD_UPLOAD_SSH_HOST: ${{ secrets.WEBMIN_DEV__IP_ADDR }}
         working-directory: ./.github/build
         run: |-
-          ./deb.sh webmin --testing
-          ./rpm.sh webmin --testing
+          ./deb.sh webmin --testing --debug
+          ./rpm.sh webmin --testing --debug
