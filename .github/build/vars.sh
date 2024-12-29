@@ -12,6 +12,9 @@ root_repos="${ENV_BUILD__ROOT_REPOS:-$root/repo}"
 root_build="${ENV_BUILD__ROOT_BUILD:-$root/rpmbuild}"
 root_rpms="${ENV_BUILD__ROOT_RPMS:-$root_build/RPMS/noarch}"
 
+# GitHub private repos access token
+github_token="${ENV_BUILD__GITHUB_TOKEN}"
+
 # Cloud upload config
 cloud_upload_ssh_user="${ENV_BUILD__CLOUD_UPLOAD_SSH_USER:-webmin.dev}"
 cloud_upload_ssh_host="${ENV_BUILD__CLOUD_UPLOAD_SSH_HOST:-webmin.dev}"
@@ -25,3 +28,16 @@ verbosity_level_with_input=' >/dev/null 2>&1'
 if [[ "'$*'" == *"--debug"* ]]; then
     unset verbosity_level verbosity_level_to_file verbosity_level_with_input
 fi
+
+# Webmin modules
+webmin_modules=(
+    'ruby-gems'
+    'virtualmin-awstats'
+    'virtualmin-htpasswd'
+    'virtualmin-mailman'
+    'virtualmin-nginx-ssl'
+    'virtualmin-nginx'
+    'virtualmin-registrar'
+    'virtualmin-support'
+    'webmin-jailkit'
+)
