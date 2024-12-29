@@ -149,6 +149,7 @@ build_prod() {
     purge_dir "$root_prod/tarballs"
     if [ "$prod" != "" ]; then
         rm -f "$root_repos/$prod-"*
+        rm -f "$root_repos/${prod}_"*
     fi
     postcmd $?
     echo

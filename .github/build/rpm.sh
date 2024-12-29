@@ -159,6 +159,7 @@ build_prod() {
     remove_dir "$root_repos/repodata"
     if [ "$prod" != "" ]; then
         rm -f "$root_repos/$prod-"*
+        rm -f "$root_repos/${prod}_"*
     fi
     postcmd $?
     make_dir "$root_build/RPMS/noarch"
