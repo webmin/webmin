@@ -192,7 +192,7 @@ build_prod() {
 
     cd "$root" || exit 1
     echo "Preparing built files for upload .."
-    cmd="cp -f $root_prod/tarballs/${prod}-${ver}*\.tar.gz $root_repos/${prod}-$$ver.tar.gz $verbosity_level"
+    cmd="cp -f $root_prod/tarballs/${prod}-${ver}*\.tar.gz $root_repos/${prod}-$ver.tar.gz $verbosity_level"
     eval "$cmd"
     cmd="find $root_apt -name ${prod}_${ver}${relval}*\.deb -exec mv '{}' $root_repos \; $verbosity_level"
     eval "$cmd"
