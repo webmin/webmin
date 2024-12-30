@@ -11,32 +11,25 @@ setup_ssh() {
         return 0
     fi
 
-    # Create and set permissions on SSH directory
-    mkdir -p "$HOME/.ssh"
-    chmod 700 "$HOME/.ssh"
+    # Use SSH command to generate new pair and take care of permissions
+    cmd="ssh-keygen -t rsa -q -f \"$HOME/.ssh/id_rsa\" \
+        -N \"\" <<< \"y\"$VERBOSITY_LEVEL"
+    eval "$cmd"
+    postcmd $?
     
     if [[ -n "${WEBMIN_DEV__SSH_PRV_KEY:-}" ]] && 
        [[ -n "${WEBMIN_DEV__SSH_PUB_KEY:-}" ]]; then
         echo "Setting up development SSH keys .."
-        
-        # Generate new pair with right permissions
-        cmd="ssh-keygen -t rsa -q -f \"$HOME/.ssh/id_rsa\" -N \"\"$VERBOSITY_LEVEL"
-        eval "$cmd"
-        postcmd $?
         echo
-        
+         
         # Import SSH keys from secrets to be able to connect to the remote host
         echo "$WEBMIN_DEV__SSH_PRV_KEY" > "$HOME/.ssh/id_rsa"
         echo "$WEBMIN_DEV__SSH_PUB_KEY" > "$HOME/.ssh/id_rsa.pub"
-        
+        return 0
     elif [[ -n "${WEBMIN_PROD__SSH_PRV_KEY:-}" ]] &&
          [[ -n "${WEBMIN_PROD__SSH_PUB_KEY:-}" ]]; then
         echo "Setting up production SSH keys .."
-        
-        # Generate new pair with right permissions
-        cmd="ssh-keygen -t rsa -q -f \"$HOME/.ssh/id_rsa\" -N \"\"$VERBOSITY_LEVEL"
-        eval "$cmd"
-        postcmd $?
+        echo
         
         # Import SSH keys from secrets to be able to connect to the remote host
         echo "$WEBMIN_PROD__SSH_PRV_KEY" > "$HOME/.ssh/id_rsa"
