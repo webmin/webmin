@@ -354,7 +354,7 @@ spinner() {
     printf "%s " "$msg"
     while kill -0 $pid 2>/dev/null; do
         printf "."
-        sleep 1
+        sleep 2
     done
     printf "\n"
 }
