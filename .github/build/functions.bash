@@ -16,11 +16,12 @@ setup_ssh() {
     cmd="ssh-keygen -t rsa -q -f \"$key_path\" \
         -N \"\" <<< \"y\"$VERBOSITY_LEVEL"
     eval "$cmd"
-    postcmd $?
+    rs=$?
     
     if [[ -n "${WEBMIN_DEV__SSH_PRV_KEY:-}" ]] && 
        [[ -n "${WEBMIN_DEV__SSH_PUB_KEY:-}" ]]; then
         echo "Setting up development SSH keys .."
+        postcmd $rs
         echo
          
         # Import SSH keys from secrets to be able to connect to the remote host
@@ -30,6 +31,7 @@ setup_ssh() {
     elif [[ -n "${WEBMIN_PROD__SSH_PRV_KEY:-}" ]] &&
          [[ -n "${WEBMIN_PROD__SSH_PUB_KEY:-}" ]]; then
         echo "Setting up production SSH keys .."
+        postcmd $rs
         echo
         
         # Import SSH keys from secrets to be able to connect to the remote host
