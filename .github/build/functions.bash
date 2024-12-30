@@ -63,8 +63,8 @@ cloud_upload() {
         local err=0
         for d in "${arr_del[@]}"; do
             if [ -n "$d" ]; then
-                local cmd1="ssh $ssh_args $CLOUD_UPLOAD_SSH_USER@\
-                    $CLOUD_UPLOAD_SSH_HOST \"rm -rf $d\" $VERBOSITY_LEVEL"
+                local cmd1="ssh $ssh_args $CLOUD_UPLOAD_SSH_USER@"
+                cmd1+="$CLOUD_UPLOAD_SSH_HOST \"rm -rf $d\" $VERBOSITY_LEVEL"
                 eval "$cmd1"
                 # shellcheck disable=SC2181
                 if [ "$?" != "0" ]; then
@@ -83,9 +83,8 @@ cloud_upload() {
         local err=0
         for u in "${arr_upl[@]}"; do
             if [ -n "$u" ]; then
-                local cmd2="scp $ssh_args -r $u $CLOUD_UPLOAD_SSH_USER@\
-                    $CLOUD_UPLOAD_SSH_HOST:$CLOUD_UPLOAD_SSH_DIR/ $VERBOSITY_LEVEL"
-                echo "SCP command: $cmd2"
+                local cmd2="scp $ssh_args -r $u $CLOUD_UPLOAD_SSH_USER@"
+                cmd2+="$CLOUD_UPLOAD_SSH_HOST:$CLOUD_UPLOAD_SSH_DIR/ $VERBOSITY_LEVEL"
                 eval "$cmd2"
                 # shellcheck disable=SC2181
                 if [ "$?" != "0" ]; then
@@ -107,8 +106,8 @@ cloud_repo_sign_and_update() {
     local ssh_args="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
     local remote_cmd="cd ~/.scripts && ./update-repo-packages-signature.bash \
         $CLOUD_UPLOAD_GPG_PASSPHRASE"
-    local cmd1="ssh $ssh_args $CLOUD_UPLOAD_SSH_USER@\
-        $CLOUD_UPLOAD_SSH_HOST \"$remote_cmd\" $VERBOSITY_LEVEL"
+    local cmd1="ssh $ssh_args $CLOUD_UPLOAD_SSH_USER@"
+    cmd1+="$CLOUD_UPLOAD_SSH_HOST \"$remote_cmd\" $VERBOSITY_LEVEL"
     eval "$cmd1"
     postcmd $?
     echo
