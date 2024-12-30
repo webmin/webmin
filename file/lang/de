@@ -1,6 +1,6 @@
 index_title=Java-Dateimanager
 index_nojava=Dieses Modul benötigt Java, um zu funktionieren, aber Ihr Browser unterstützt Java nicht.
-index_eremote=Es gibt keine:n Unix-Benutzer:in, der dem Webmin-Login $1 entspricht.
+index_eremote=Es gibt keine:n Unix-Benutzer:in, der/die dem Webmin-Login $1 entspricht.
 index_index=Zurück zum <a href='$1'>Webmin-Index</a>.
 switch_euser=Unix-Benutzer:in existiert nicht!
 
@@ -165,6 +165,7 @@ view_enormal=Nur normale Dateien können angezeigt werden.
 view_enormal2=Nur normale Dateien können heruntergeladen werden.
 view_eaccess=Sie dürfen nicht auf $1 zugreifen.
 view_eopen=Öffnen von $1 fehlgeschlagen: $2
+
 view_edir=Ein Archiv kann nur für ein Verzeichnis erstellt werden.
 view_ecmd=Der Befehl $1, der zum Erstellen eines Archivs erforderlich ist, ist nicht installiert.
 view_ecomp=Erstellen des Archivs fehlgeschlagen: $1
@@ -208,7 +209,6 @@ find_edir=$1 ist kein Verzeichnis in $2.
 cancel=Abbrechen
 close=Schließen
 eopen=Download fehlgeschlagen: $1
-
 chmod_eaccess=Sie dürfen nicht auf '$1' zugreifen.
 chmod_euser=$1: kein:e solche:r Benutzer:in
 chmod_egroup=$1: keine solche Gruppe
