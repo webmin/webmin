@@ -5,14 +5,15 @@
 
 # Set up SSH keys on the build machine
 setup_ssh() {
-    
+    local key_path="$HOME/.ssh/id_rsa"
+
     # If SSH keys are already set up, skip this step
-    if [ -f "$HOME/.ssh/id_rsa" ] && [ -f "$HOME/.ssh/id_rsa.pub" ]; then
+    if [ -f "$key_path" ] && [ -f "$key_path.pub" ]; then
         return 0
     fi
 
     # Use SSH command to generate new pair and take care of permissions
-    cmd="ssh-keygen -t rsa -q -f \"$HOME/.ssh/id_rsa\" \
+    cmd="ssh-keygen -t rsa -q -f \"$key_path\" \
         -N \"\" <<< \"y\"$VERBOSITY_LEVEL"
     eval "$cmd"
     postcmd $?
@@ -23,8 +24,8 @@ setup_ssh() {
         echo
          
         # Import SSH keys from secrets to be able to connect to the remote host
-        echo "$WEBMIN_DEV__SSH_PRV_KEY" > "$HOME/.ssh/id_rsa"
-        echo "$WEBMIN_DEV__SSH_PUB_KEY" > "$HOME/.ssh/id_rsa.pub"
+        echo "$WEBMIN_DEV__SSH_PRV_KEY" > "$key_path"
+        echo "$WEBMIN_DEV__SSH_PUB_KEY" > "$key_path.pub"
         return 0
     elif [[ -n "${WEBMIN_PROD__SSH_PRV_KEY:-}" ]] &&
          [[ -n "${WEBMIN_PROD__SSH_PUB_KEY:-}" ]]; then
@@ -32,8 +33,8 @@ setup_ssh() {
         echo
         
         # Import SSH keys from secrets to be able to connect to the remote host
-        echo "$WEBMIN_PROD__SSH_PRV_KEY" > "$HOME/.ssh/id_rsa"
-        echo "$WEBMIN_PROD__SSH_PUB_KEY" > "$HOME/.ssh/id_rsa.pub"
+        echo "$WEBMIN_PROD__SSH_PRV_KEY" > "$key_path"
+        echo "$WEBMIN_PROD__SSH_PUB_KEY" > "$key_path.pub"
         return 0
     fi
 }
