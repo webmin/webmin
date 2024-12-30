@@ -349,17 +349,12 @@ adjust_module_filename() {
 }
 
 spinner() {
-  local msg=$1
-  local pid=$!
-  local spin='-\|/'
-  local i=0
-  printf "%s " "$msg"
-  while kill -0 $pid 2>/dev/null; do
-    (( i = (i + 1) % 4 ))
-    # No spinner if not an interactive shell
-    if [ -n "$PS1" ]; then
-        printf '%c\b' "${spin:i:1}"
-    fi
-    sleep .1
-  done
+    local msg=$1
+    local pid=$!
+    printf "%s " "$msg"
+    while kill -0 $pid 2>/dev/null; do
+        printf "."
+        sleep 1
+    done
+    printf "\n"
 }
