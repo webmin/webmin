@@ -1,36 +1,31 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2034
+# build-rpm-module.bash
+# Copyright Ilia Ross <ilia@webmin.dev>
 #
-# Automatically builds and updates repo metadata for Webmin modules.
-# Pulls latest changes from GitHub, detects release version based 
-# on what's available in the repo.
-#
-#                    (RPM)
+# Automatically builds DEB Webmin module pulls changes from GitHub, creates
+# testing builds from the latest code with English-only support, production
+# builds from the latest tag, uploads them to the pre-configured repository,
+# updates the repository metadata, and interacts with the environment using
+# bootstrap
 #
 # Usage:
-#   # Build all modules with production versions
-#      ./rpm-mod.sh
 #
-#   # Build all modules with development versions and debug
-#      ./rpm-mod.sh --testing --debug
+#   Build testing module with in verbose mode
+#     ./build-rpm-module.bash virtualmin-nginx --testing --verbose
 #
-#   # Build specific module with version and release
-#      ./rpm-mod.sh virtualmin-nginx 2.36 3
+#   Build specific module with version and release
+#     ./build-rpm-module.bash virtualmin-nginx 2.36 2
 #
 
 # shellcheck disable=SC1091
-# Source build variables
-source ./vars.sh || exit 1
-
-# Source build init
-source ./init.sh || exit 1
-
-# Source general build functions
-source ./funcs.sh || exit 1
+# Bootstrap build environment
+source ./bootstrap.bash || exit 1
 
 # Build module func
 build_module() {
     # Always return back to root directory
-    cd "$root" || exit 1
+    cd "$ROOT_DIR" || exit 1
 
     # Define variables
     local last_commit_date
@@ -40,7 +35,7 @@ build_module() {
     local rel
     local epoch
     local devel=0
-    local root_module="$root/$module"
+    local root_module="$ROOT_DIR/$module"
 
     # Print build actual date
     date=$(get_current_date)
@@ -53,7 +48,7 @@ build_module() {
 
     # Pull or clone module repository
     remove_dir "$root_module"
-    cmd=$(make_module_repo_cmd "$module")
+    cmd=$(make_module_repo_cmd "$module" "$MODULES_REPO_URL")
     eval "$cmd"
     rs=$?
 
@@ -93,23 +88,23 @@ build_module() {
     echo "Pre-clean up .."
     # Make sure directories exist
     make_dir "$root_module/tmp"
-    make_dir "$root/newkey/rpm/"
-    make_dir "$root/umodules/"
-    make_dir "$root/minimal/"
-    make_dir "$root/tarballs/"
-    make_dir "$root_build/BUILD/"
-    make_dir "$root_build/BUILDROOT/"
-    make_dir "$root_build/RPMS/"
-    make_dir "$root_rpms"
-    make_dir "$root_build/SOURCES/"
-    make_dir "$root_build/SPECS/"
-    make_dir "$root_build/SRPMS/"
-    make_dir "$root_repos"
+    make_dir "$ROOT_DIR/newkey/rpm/"
+    make_dir "$ROOT_DIR/umodules/"
+    make_dir "$ROOT_DIR/minimal/"
+    make_dir "$ROOT_DIR/tarballs/"
+    make_dir "$ROOT_BUILD/BUILD/"
+    make_dir "$ROOT_BUILD/BUILDROOT/"
+    make_dir "$ROOT_BUILD/RPMS/"
+    make_dir "$ROOT_RPMS"
+    make_dir "$ROOT_BUILD/SOURCES/"
+    make_dir "$ROOT_BUILD/SPECS/"
+    make_dir "$ROOT_BUILD/SRPMS/"
+    make_dir "$ROOT_REPOS"
 
     # Purge old files
     purge_dir "$root_module/tmp"
     if [ "$module" != "" ]; then
-        rm -f "$root_repos/$module-latest"*
+        rm -f "$ROOT_REPOS/$module-latest"*
     fi
     postcmd $?
     echo
@@ -121,8 +116,10 @@ build_module() {
     echo "Building packages.."
     (
         # XXXX Update actual module testing version dynamically
-        cd "$root" || exit 1
-        cmd="$root/build-deps/makemodulerpm.pl $epoch--release $rel --rpm-depends --licence 'GPLv3' --allow-overwrite --rpm-dir $root_build --target-dir $root_module/tmp $module $verbosity_level"
+        cd "$ROOT_DIR" || exit 1
+        cmd="$ROOT_DIR/build-deps/makemodulerpm.pl $epoch--release \
+            $rel --rpm-depends --licence 'GPLv3' --allow-overwrite --rpm-dir \
+            $ROOT_BUILD --target-dir $root_module/tmp $module $VERBOSITY_LEVEL"
         eval "$cmd"
         postcmd $?
     )
@@ -130,10 +127,12 @@ build_module() {
     echo
     echo "Preparing built files for upload .."
     # Move RPM to repos
-    cmd="find $root_rpms -name wbm-$module*$verorig*\.rpm -exec mv '{}' $root_repos \; $verbosity_level"
+    cmd="find $ROOT_RPMS -name wbm-$module*$verorig*\.rpm -exec mv '{}' \
+        $ROOT_REPOS \; $VERBOSITY_LEVEL"
     eval "$cmd"
     if [ "$devel" -eq 1 ]; then
-        cmd="mv -f $root_repos/wbm-$module*$verorig*\.rpm $root_repos/${module}-$ver-$rel.noarch.rpm $verbosity_level"
+        cmd="mv -f $ROOT_REPOS/wbm-$module*$verorig*\.rpm \
+            $ROOT_REPOS/${module}-$ver-$rel.noarch.rpm $VERBOSITY_LEVEL"
         eval "$cmd"
     fi
     postcmd $?
@@ -141,37 +140,32 @@ build_module() {
 
     # Adjust module filename
     echo "Adjusting module filename .."
-    adjust_module_filename "$root_repos" "rpm"
+    adjust_module_filename "$ROOT_REPOS" "rpm"
     postcmd $?
     echo
 
     echo "Post-clean up .."
     remove_dir "$root_module"
     # Purge old files
-    purge_dir "$root_prod/newkey/rpm"
-    purge_dir "$root_prod/umodules"
-    purge_dir "$root_prod/minimal"
-    purge_dir "$root_prod/tarballs"
-    purge_dir "$root_build/BUILD"
-    purge_dir "$root_build/BUILDROOT"
-    purge_dir "$root_build/RPMS"
-    purge_dir "$root_build/SOURCES"
-    purge_dir "$root_build/SPECS"
-    purge_dir "$root_build/SRPMS"
-    remove_dir "$root_repos/repodata"
+    purge_dir "$ROOT_BUILD/BUILD"
+    purge_dir "$ROOT_BUILD/BUILDROOT"
+    purge_dir "$ROOT_BUILD/RPMS"
+    purge_dir "$ROOT_BUILD/SOURCES"
+    purge_dir "$ROOT_BUILD/SPECS"
+    purge_dir "$ROOT_BUILD/SRPMS"
+    remove_dir "$ROOT_REPOS/repodata"
     postcmd $?
 }
 
 # Main
 if [ -n "$1" ] && [[ "'$1'" != *"--"* ]]; then
-    build_module $@
-    cloud_upload_list_upload=("$root_repos/*$1*")
+    MODULES_REPO_URL="$VIRTUALMIN_ORG_AUTH_URL"
+    build_module "$@"
+    cloud_upload_list_upload=("$ROOT_REPOS/*$1*")
+    cloud_upload cloud_upload_list_upload
+    cloud_repo_sign_and_update
 else
-    for module in "${webmin_modules[@]}"; do
-        build_module $module $@
-    done
-    cloud_upload_list_upload=("$root_repos/*")
+    # Error otherwise
+    echo "Error: No module specified"
+    exit 1
 fi
-
-cloud_upload cloud_upload_list_upload
-cloud_repo_sign_and_update

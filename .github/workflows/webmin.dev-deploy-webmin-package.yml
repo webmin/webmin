@@ -1,4 +1,4 @@
-name: "webmin.dev: Deploy Webmin package"
+name: "webmin.dev: Webmin package"
 
 on:
   push:
@@ -26,5 +26,5 @@ jobs:
           ENV_BUILD__CLOUD_UPLOAD_SSH_HOST: ${{ secrets.WEBMIN_DEV__IP_ADDR }}
         working-directory: ./.github/build
         run: |-
-          ./deb.sh webmin --testing
-          ./rpm.sh webmin --testing
+          ./build-deb-package.bash webmin --testing --verbose
+          ./build-rpm-package.bash webmin --testing --verbose

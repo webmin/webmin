@@ -1,36 +1,31 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2034
+# build-deb-module.bash
+# Copyright Ilia Ross <ilia@webmin.dev>
 #
-# Automatically builds and updates repo metadata for Webmin modules.
-# Pulls latest changes from GitHub, detects release version based 
-# on what's available in the repo.
-#
-#                    (DEB)
+# Automatically builds DEB Webmin module pulls changes from GitHub, creates
+# testing builds from the latest code with English-only support, production
+# builds from the latest tag, uploads them to the pre-configured repository,
+# updates the repository metadata, and interacts with the environment using
+# bootstrap
 #
 # Usage:
-#   # Build all modules with production versions
-#      ./deb-mod.sh
 #
-#   # Build all modules with development versions and debug
-#      ./deb-mod.sh --testing --debug
+#   Build testing module with in verbose mode
+#     ./build-deb-module.bash virtualmin-nginx --testing --verbose
 #
-#   # Build specific module with version and release
-#      ./deb-mod.sh virtualmin-nginx 2.36 2
+#   Build specific module with version and release
+#     ./build-deb-module.bash virtualmin-nginx 2.36 2
 #
 
 # shellcheck disable=SC1091
-# Source build variables
-source ./vars.sh || exit 1
-
-# Source build init
-source ./init.sh || exit 1
-
-# Source general build functions
-source ./funcs.sh || exit 1
+# Bootstrap build environment
+source ./bootstrap.bash || exit 1
 
 # Build module func
 build_module() {
     # Always return back to root directory
-    cd "$root" || exit 1
+    cd "$ROOT_DIR" || exit 1
 
     # Define variables
     local last_commit_date
@@ -38,9 +33,8 @@ build_module() {
     local verorig=""
     local module=$1
     local rel
-    local relval
     local devel=0
-    local root_module="$root/$module"
+    local root_module="$ROOT_DIR/$module"
 
     # Print build actual date
     date=$(get_current_date)
@@ -53,7 +47,7 @@ build_module() {
 
     # Pull or clone module repository
     remove_dir "$root_module"
-    cmd=$(make_module_repo_cmd "$module")
+    cmd=$(make_module_repo_cmd "$module" "$MODULES_REPO_URL")
     eval "$cmd"
     rs=$?
 
@@ -67,10 +61,8 @@ build_module() {
     fi
     if [[ "'$3'" != *"--"* ]] && [[ -n "$3" ]]; then
         rel=$3
-        relval="-$3"
     else
         rel=1
-        relval=""
     fi
     if [ -z "$ver" ]; then
         ver=$(get_module_version)
@@ -92,12 +84,12 @@ build_module() {
     echo "Pre-clean up .."
     # Make sure directories exist
     make_dir "$root_module/tmp"
-    make_dir "$root_repos"
+    make_dir "$ROOT_REPOS"
 
     # Purge old files
     purge_dir "$root_module/tmp"
     if [ "$module" != "" ]; then
-        rm -f "$root_repos/$module-latest"*
+        rm -f "$ROOT_REPOS/$module-latest"*
     fi
     postcmd $?
     echo
@@ -109,8 +101,10 @@ build_module() {
     echo "Building packages .."
     (
         # XXXX Update actual module testing version dynamically
-        cd "$root" || exit 1
-        cmd="$root/build-deps/makemoduledeb.pl --release $rel --deb-depends --licence 'GPLv3' --email 'ilia@virtualmin.dev' --allow-overwrite --target-dir $root_module/tmp $module $verbosity_level"
+        cd "$ROOT_DIR" || exit 1
+        cmd="$ROOT_DIR/build-deps/makemoduledeb.pl --release $rel --deb-depends \
+            --licence 'GPLv3' --email '$BUILDER_MODULE_EMAIL' --allow-overwrite \
+            --target-dir $root_module/tmp $module $VERBOSITY_LEVEL"
         eval "$cmd"
         postcmd $?
     )
@@ -118,10 +112,12 @@ build_module() {
     echo
     echo "Preparing built files for upload .."
     # Move DEB to repos
-    cmd="find $root_module/tmp -name webmin-${module}*$verorig*\.deb -exec mv '{}' $root_repos \; $verbosity_level"
+    cmd="find $root_module/tmp -name webmin-${module}*$verorig*\.deb -exec mv '{}' \
+        $ROOT_REPOS \; $VERBOSITY_LEVEL"
     eval "$cmd"
     if [ "$devel" -eq 1 ]; then
-        cmd="mv -f $root_repos/*${module}*$verorig*\.deb $root_repos/${module}_${ver}-${rel}_all.deb $verbosity_level"
+        cmd="mv -f $ROOT_REPOS/*${module}*$verorig*\.deb \
+            $ROOT_REPOS/${module}_${ver}-${rel}_all.deb $VERBOSITY_LEVEL"
         eval "$cmd"
     fi
     postcmd $?
@@ -129,7 +125,7 @@ build_module() {
     
     # Adjust module filename
     echo "Adjusting module filename .."
-    adjust_module_filename "$root_repos" "deb"
+    adjust_module_filename "$ROOT_REPOS" "deb"
     postcmd $?
     echo
 
@@ -140,14 +136,13 @@ build_module() {
 
 # Main
 if [ -n "$1" ] && [[ "'$1'" != *"--"* ]]; then
-    build_module $@
-    cloud_upload_list_upload=("$root_repos/*$1*")
+    MODULES_REPO_URL="$VIRTUALMIN_ORG_AUTH_URL"
+    build_module "$@"
+    cloud_upload_list_upload=("$ROOT_REPOS/*$1*")
+    cloud_upload cloud_upload_list_upload
+    cloud_repo_sign_and_update
 else
-    for module in "${webmin_modules[@]}"; do
-        build_module $module $@
-    done
-    cloud_upload_list_upload=("$root_repos/*")
+    # Error otherwise
+    echo "Error: No module specified"
+    exit 1
 fi
-
-cloud_upload cloud_upload_list_upload
-cloud_repo_sign_and_update

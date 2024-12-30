@@ -1,31 +1,76 @@
 #!/usr/bin/env bash
-#
-# Copyright @iliajie <ilia@webmin.dev>
-#
-# General build functions
-#
-#
+# functions.bash
+# Copyright Ilia Ross <ilia@webmin.dev>
+# Build functions for the build process
+
+# Set up SSH keys on the build machine
+setup_ssh() {
+    
+    # If SSH keys are already set up, skip this step
+    if [ -f "$HOME/.ssh/id_rsa" ] && [ -f "$HOME/.ssh/id_rsa.pub" ]; then
+        return 0
+    fi
+
+    # Create and set permissions on SSH directory
+    mkdir -p "$HOME/.ssh"
+    chmod 700 "$HOME/.ssh"
+    
+    if [[ -n "${WEBMIN_DEV__SSH_PRV_KEY:-}" ]] && 
+       [[ -n "${WEBMIN_DEV__SSH_PUB_KEY:-}" ]]; then
+        echo "Setting up development SSH keys .."
+        
+        # Generate new pair with right permissions
+        cmd="ssh-keygen -t rsa -q -f \"$HOME/.ssh/id_rsa\" -N \"\"$VERBOSITY_LEVEL"
+        eval "$cmd"
+        postcmd $?
+        echo
+        
+        # Import SSH keys from secrets to be able to connect to the remote host
+        echo "$WEBMIN_DEV__SSH_PRV_KEY" > "$HOME/.ssh/id_rsa"
+        echo "$WEBMIN_DEV__SSH_PUB_KEY" > "$HOME/.ssh/id_rsa.pub"
+        
+    elif [[ -n "${WEBMIN_PROD__SSH_PRV_KEY:-}" ]] &&
+         [[ -n "${WEBMIN_PROD__SSH_PUB_KEY:-}" ]]; then
+        echo "Setting up production SSH keys .."
+        
+        # Generate new pair with right permissions
+        cmd="ssh-keygen -t rsa -q -f \"$HOME/.ssh/id_rsa\" -N \"\"$VERBOSITY_LEVEL"
+        eval "$cmd"
+        postcmd $?
+        
+        # Import SSH keys from secrets to be able to connect to the remote host
+        echo "$WEBMIN_PROD__SSH_PRV_KEY" > "$HOME/.ssh/id_rsa"
+        echo "$WEBMIN_PROD__SSH_PUB_KEY" > "$HOME/.ssh/id_rsa.pub"
+        return 0
+    fi
+}
 
 # Upload to cloud
 # Usage:
-#   cloud_upload_list_delete=("$cloud_upload_ssh_dir/repodata")
-#   cloud_upload_list_upload=("$root_repos/*" "$root_repos/repodata")
+#   cloud_upload_list_delete=("$CLOUD_UPLOAD_SSH_DIR/repodata")
+#   cloud_upload_list_upload=("$ROOT_REPOS/*" "$ROOT_REPOS/repodata")
 #   cloud_upload cloud_upload_list_upload cloud_upload_list_delete
 cloud_upload() {
-    # Print new block only if definded
+    # Print new block only if defined
     local ssh_args="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
     if [ -n "$1" ]; then
         echo
     fi
+
+    # Setup SSH keys on the build machine
+    setup_ssh
+
     # Delete files on remote if needed
     if [ -n "$2" ]; then
-        echo "Deleting given files in $cloud_upload_ssh_host .."
+        echo "Deleting given files in $CLOUD_UPLOAD_SSH_HOST .."
         local -n arr_del=$2
         local err=0
         for d in "${arr_del[@]}"; do
             if [ -n "$d" ]; then
-                local cmd1="ssh $ssh_args $cloud_upload_ssh_user@$cloud_upload_ssh_host \"rm -rf $d\" $verbosity_level"
+                local cmd1="ssh $ssh_args $CLOUD_UPLOAD_SSH_USER@\
+                    $CLOUD_UPLOAD_SSH_HOST \"rm -rf $d\" $VERBOSITY_LEVEL"
                 eval "$cmd1"
+                # shellcheck disable=SC2181
                 if [ "$?" != "0" ]; then
                     err=1
                 fi
@@ -37,13 +82,15 @@ cloud_upload() {
     
     # Upload files to remote
     if [ -n "$1" ]; then
-        echo "Uploading built files to $cloud_upload_ssh_host .."
+        echo "Uploading built files to $CLOUD_UPLOAD_SSH_HOST .."
         local -n arr_upl=$1
         local err=0
         for u in "${arr_upl[@]}"; do
             if [ -n "$u" ]; then
-                local cmd2="scp $ssh_args -r $u $cloud_upload_ssh_user@$cloud_upload_ssh_host:$cloud_upload_ssh_dir/ $verbosity_level"
+                local cmd2="scp $ssh_args -r $u $CLOUD_UPLOAD_SSH_USER@\
+                    $CLOUD_UPLOAD_SSH_HOST:$CLOUD_UPLOAD_SSH_DIR/ $VERBOSITY_LEVEL"
                 eval "$cmd2"
+                # shellcheck disable=SC2181
                 if [ "$?" != "0" ]; then
                     err=1
                 fi
@@ -56,10 +103,15 @@ cloud_upload() {
 
 # Sign and update repos metadata in remote
 cloud_repo_sign_and_update() {
-    echo "Signing and updating repos metadata in $cloud_upload_ssh_host .."
+    # Setup SSH keys on the build machine
+    setup_ssh
+    # Sign and update repos metadata in remote
+    echo "Signing and updating repos metadata in $CLOUD_UPLOAD_SSH_HOST .."
     local ssh_args="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
-    local remote_cmd="cd ~/.scripts && ./update-repo-packages-signature.bash $cloud_upload_gpg_passphrase"
-    local cmd1="ssh $ssh_args $cloud_upload_ssh_user@$cloud_upload_ssh_host \"$remote_cmd\" $verbosity_level"
+    local remote_cmd="cd ~/.scripts && ./update-repo-packages-signature.bash \
+        $CLOUD_UPLOAD_GPG_PASSPHRASE"
+    local cmd1="ssh $ssh_args $CLOUD_UPLOAD_SSH_USER@\
+        $CLOUD_UPLOAD_SSH_HOST \"$remote_cmd\" $VERBOSITY_LEVEL"
     eval "$cmd1"
     postcmd $?
     echo
@@ -77,9 +129,14 @@ postcmd() {
 
 # Get max number from array
 max() {
-    local -n arr_nums=$1
-    IFS=$'\n'
-    echo "${arr_nums[*]}" | sort -nr | head -n1
+    local max="$1"
+    shift
+    for value in "$@"; do
+        if [[ "$value" -gt "$max" ]]; then
+            max="$value"
+        fi
+    done
+    echo "$max"
 }
 
 # Mkdir and children dirs
@@ -105,19 +162,21 @@ remove_dir() {
 
 # Get latest tag version
 get_current_repo_tag() {
-    cd "$root_prod" || exit 1
+    # shellcheck disable=SC2153
+    cd "$ROOT_PROD" || exit 1
     tg=$(git rev-list --tags --max-count=1)
     ds=$(git describe --tags "$tg")
-    echo "$ds" | sed 's/v//'
+    ds="${ds/v/}"
+    echo "$ds"
 }
 
 get_module_version() {
-    local root_prod="$1"
     local version=""
     
     # Check if module.info exists and extract version
     if [ -f "module.info" ]; then
-        version=$(grep -E '^version=[0-9]+(\.[0-9]+)*' module.info | head -n 1 | cut -d'=' -f2)
+        version=$(grep -E '^version=[0-9]+(\.[0-9]+)*' module.info | \
+            head -n 1 | cut -d'=' -f2)
         version=$(echo "$version" | sed -E 's/^([0-9]+\.[0-9]+(\.[0-9]+)?).*/\1/')
     fi
 
@@ -132,7 +191,7 @@ get_module_version() {
 
 # Get latest commit date
 get_current_date() {
-    echo $(date +'%Y-%m-%d %H:%M:%S %z')
+    date +'%Y-%m-%d %H:%M:%S %z'
 }
 
 # Get latest commit date version
@@ -143,31 +202,35 @@ get_latest_commit_date_version() {
     local highest_version
 
     theme_version=$(git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d%H%M')
-    cd "$root_prod" || exit 1
+    cd "$ROOT_PROD" || exit 1
     prod_version=$(git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d%H%M')
     max_prod=("$theme_version" "$prod_version")
-    highest_version=$(max max_prod)
+    highest_version=$(max "${max_prod[@]}")
     echo "$highest_version"
 }
 
 # Pull project repo and theme
 make_prod_repos() {
+    local root_prod="$1"
+    local prod="$2"
+    local cmd;
     # Webmin or Usermin
-    if [ ! -d "$1" ]; then
+    if [ ! -d "$root_prod" ]; then
         local repo="webmin/$prod.git"
-        cmd="git clone https://github.com/$repo $verbosity_level"
+        cmd="git clone $GIT_BASE_URL/$repo $VERBOSITY_LEVEL"
         eval "$cmd"
         if [ ! -d "webmin" ]; then
-            cmd="git clone --depth 1 https://github.com/webmin/webmin $verbosity_level"
+            cmd="git clone --depth 1 $WEBMIN_REPO \
+                $VERBOSITY_LEVEL"
             eval "$cmd"
         fi
     fi
     # Theme
-    theme="authentic-theme"
-    if [ ! -d "$1/$theme" ]; then
-        cd "$1" || exit 1
+    local theme="authentic-theme"
+    if [ ! -d "$root_prod/$theme" ]; then
+        cd "$root_prod" || exit 1
         local repo="webmin/$theme.git"
-        cmd="git clone --depth 1 https://github.com/$repo $verbosity_level"
+        cmd="git clone --depth 1 $GIT_BASE_URL/$repo $VERBOSITY_LEVEL"
         eval "$cmd"
     fi
 }
@@ -175,8 +238,9 @@ make_prod_repos() {
 # Make module repo
 make_module_repo_cmd() {
     local module="$1"
-    printf "git clone --depth 1 https://%s@github.com/virtualmin/%s.git %s" \
-        "$github_token" "$module" "$verbosity_level"
+    local target="$2"
+    printf "git clone --depth 1 $target/%s.git %s" \
+        "$module" "$VERBOSITY_LEVEL"
 }
 
 # Get last commit date from repo
@@ -191,22 +255,24 @@ get_last_commit_date() {
 # Get required build scripts from Webmin repo
 make_module_build_deps() {
     # Create directory for build dependencies if it doesn't exist
-    if [ ! -d "$root/build-deps" ]; then
-        mkdir -p "$root/build-deps"
+    if [ ! -d "$ROOT_DIR/build-deps" ]; then
+        mkdir -p "$ROOT_DIR/build-deps"
     fi
 
     # Download required scripts from Webmin repo if they don't exist
-    if [ ! -f "$root/build-deps/makemoduledeb.pl" ] || \
-       [ ! -f "$root/build-deps/makemodulerpm.pl" ] || \
-       [ ! -f "$root/build-deps/create-module.pl" ]; then
+    if [ ! -f "$ROOT_DIR/build-deps/makemoduledeb.pl" ] || \
+       [ ! -f "$ROOT_DIR/build-deps/makemodulerpm.pl" ] || \
+       [ ! -f "$ROOT_DIR/build-deps/create-module.pl" ]; then
         echo "Downloading build dependencies .."
         
         # Create temporary directory
-        local temp_dir=$(mktemp -d)
+        local temp_dir
+        temp_dir=$(mktemp -d)
         cd "$temp_dir" || exit 1
         
         # Clone Webmin repository (minimal depth)
-        cmd="git clone --depth 1 --filter=blob:none --sparse https://github.com/webmin/webmin.git $verbosity_level"
+        cmd="git clone --depth 1 --filter=blob:none --sparse \
+            $WEBMIN_REPO.git $VERBOSITY_LEVEL"
         eval "$cmd"
         postcmd $?
         echo
@@ -214,13 +280,14 @@ make_module_build_deps() {
         cd webmin || exit 1
         
         # Copy required files to build-deps directory
-        cp makemoduledeb.pl makemodulerpm.pl create-module.pl "$root/build-deps/"
+        cp makemoduledeb.pl makemodulerpm.pl create-module.pl \
+            "$ROOT_DIR/build-deps/"
         
         # Make scripts executable
-        chmod +x "$root/build-deps/"*.pl
+        chmod +x "$ROOT_DIR/build-deps/"*.pl
         
         # Clean up
-        cd "$root" || exit 1
+        cd "$ROOT_DIR" || exit 1
         remove_dir "$temp_dir"
     fi
 }
@@ -230,6 +297,7 @@ adjust_module_filename() {
     local repo_dir="$1"
     local package_type="$2"
     local failed=0
+    local temp_file
 
     # Create a secure temporary file
     temp_file=$(mktemp) || { echo "Failed to create temporary file"; return 1; }
@@ -271,7 +339,8 @@ adjust_module_filename() {
         esac
 
         # Perform rename and check for failure
-        if ! eval "mv \"$file\" \"$dir_name/$new_name\" $verbosity_level_with_input"; then
+        if ! eval "mv \"$file\" \"$dir_name/$new_name\" \
+           $VERBOSITY_LEVEL_WITH_INPUT"; then
             failed=1
         fi
     done < "$temp_file"
@@ -288,7 +357,7 @@ spinner() {
   local pid=$!
   local spin='-\|/'
   local i=0
-  printf "$msg "
+  printf "%s " "$msg"
   while kill -0 $pid 2>/dev/null; do
     (( i = (i + 1) % 4 ))
     # No spinner if not an interactive shell
