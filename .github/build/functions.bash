@@ -81,8 +81,7 @@ cloud_upload() {
         local err=0
         for u in "${arr_upl[@]}"; do
             if [ -n "$u" ]; then
-                local cmd2="scp $ssh_args -r $u $CLOUD_UPLOAD_SSH_USER@\
-                    $CLOUD_UPLOAD_SSH_HOST:$CLOUD_UPLOAD_SSH_DIR/ $VERBOSITY_LEVEL"
+                local cmd2="scp -vvv $ssh_args -r $u $CLOUD_UPLOAD_SSH_USER@$CLOUD_UPLOAD_SSH_HOST:$CLOUD_UPLOAD_SSH_DIR/ $VERBOSITY_LEVEL"
                 eval "$cmd2"
                 # shellcheck disable=SC2181
                 if [ "$?" != "0" ]; then
