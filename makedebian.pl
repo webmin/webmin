@@ -122,7 +122,7 @@ Depends: $deps
 Recommends: $recommends
 Pre-Depends: perl
 Installed-Size: $size
-Maintainer: Jamie Cameron <jcameron\@webmin.com>
+Maintainer: $deb_maintainer
 Provides: $baseproduct
 EOF
 if ($product eq "webmin") {
@@ -479,7 +479,6 @@ foreach my $deb ("deb", "newkey/deb") {
 
 	# Create the .dsc file
 	open(DSC, ">$deb/${product}_$ver$rel.plain");
-	# Check if DEB_MAINTAINER is set and use it otherwise use Jamie Cameron <jcameron\@webmin.com>
 	print DSC <<EOF;
 Format: 1.0
 Source: $product
