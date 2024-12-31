@@ -220,10 +220,12 @@ make_packages_repos() {
     local theme="authentic-theme"
 
     # Clone repo
-    cmd="git clone --depth 1 $GIT_BASE_URL/$repo $VERBOSITY_LEVEL"
-    eval "$cmd"
-    if [ "$?" != "0" ]; then
-        return 1
+    if [ ! -d "$root_prod" ]; then
+        cmd="git clone --depth 1 $GIT_BASE_URL/$repo $VERBOSITY_LEVEL"
+        eval "$cmd"
+        if [ "$?" != "0" ]; then
+            return 1
+        fi
     fi
 
     # Clone required repo
@@ -236,12 +238,14 @@ make_packages_repos() {
     fi
 
     # Clone theme
-    cd "$root_prod" || exit 1
-    repo="$reqrepo/$theme.git"
-    cmd="git clone --depth 1 $GIT_BASE_URL/$repo $VERBOSITY_LEVEL"
-    eval "$cmd"
-    if [ "$?" != "0" ]; then
-        return 1
+    if [ ! -d "$root_prod/$theme" ]; then
+        cd "$root_prod" || exit 1
+        repo="$reqrepo/$theme.git"
+        cmd="git clone --depth 1 $GIT_BASE_URL/$repo $VERBOSITY_LEVEL"
+        eval "$cmd"
+        if [ "$?" != "0" ]; then
+            return 1
+        fi
     fi
 return 0
 }
