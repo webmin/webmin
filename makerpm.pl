@@ -11,6 +11,12 @@ else {
 	$base_dir = "/usr/src/redhat";
 	$< && die "makerpm.pl must be run as root";
 	}
+$rpm_maintainer = $ENV{'RPM_MAINTAINER'} || "Jamie Cameron";
+# print ALL env variables
+print "All env variables:\n";
+foreach $key (keys %ENV) {
+	print "$key = $ENV{$key}\n";
+	}
 $spec_dir = "$base_dir/SPECS";
 $source_dir = "$base_dir/SOURCES";
 $rpms_dir = "$base_dir/RPMS/noarch";
@@ -76,7 +82,6 @@ else {
 
 system("cp tarballs/$tarfile $source_dir");
 open(SPEC, ">$spec_dir/webmin-$ver.spec");
-$rpm_maintainer = $ENV{'RPM_MAINTAINER'} || "Jamie Cameron";
 print SPEC <<EOF;
 %global __perl_provides %{nil}
 %define __spec_install_post %{nil}
