@@ -69,7 +69,7 @@ build_module() {
         epoch="--epoch $4"
     fi
     if [ -z "$ver" ]; then
-        ver=$(get_module_version)
+        ver=$(get_module_version "$root_module")
     fi
     if [[ "'$*'" == *"--testing"* ]]; then
         devel=1

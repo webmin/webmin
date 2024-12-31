@@ -44,8 +44,8 @@ build_prod() {
 
     # Define root
     local prod=$1
-    ROOT_PROD="$ROOT_DIR/$prod"
-    local root_apt="$ROOT_PROD/deb"
+    local root_prod="$ROOT_DIR/$prod"
+    local root_apt="$root_prod/deb"
     local ver=""
     local devel=0
 
@@ -57,47 +57,25 @@ build_prod() {
     echo "        build start date: $date                                         "
     echo "          package format: DEB                                           "
     echo "                 product: $prod                                         "
-    (make_prod_repos "$ROOT_PROD" "$prod") &
-    spinner "  package output version:"
-
-    # Pull main project first to get the latest tag
-    cd "$ROOT_PROD" || exit 1
-    cmd="git pull $VERBOSITY_LEVEL"
-    eval "$cmd"
-    rs1=$?
-    # Clean and try again
-    if [ "$rs1" != "0" ]; then
-        cmd="git checkout \"*\" $VERBOSITY_LEVEL && \
-             git clean -f -d $VERBOSITY_LEVEL && \
-             git pull $VERBOSITY_LEVEL"
-        eval "$cmd"
-        rs1=$?
-    fi
-
-    # Descend to theme dir
-    cd "authentic-theme" || exit 1
-    cmd="git pull $VERBOSITY_LEVEL"
-    eval "$cmd"
-    rs2=$?
-    # Clean and try again
-    if [ "$rs2" != "0" ]; then
-        cmd="git checkout \"*\" $VERBOSITY_LEVEL && \
-             git clean -f -d $VERBOSITY_LEVEL && \
-             git pull $VERBOSITY_LEVEL"
-        eval "$cmd"
-        rs2=$?
-    fi
-    if [ "$rs1" != "0" ] || [ "$rs2" != "0" ]; then
-        rs=1
+    echo -n "    downloading packages: "
+    
+    # Download products from repos
+    make_packages_repos "$root_prod" "$prod"
+    local rs=$? # Store to print success or failure nicely later
+    if [ $rs -eq 0 ]; then
+        echo -e "✔"
     else
-        rs=0
+        echo -e "✘"
     fi
-
-    # Build number
-    date_version=$(get_latest_commit_date_version)
+    
+    # Print package version
+    echo -n "         package version: "
+    
+    # Get latest product version (theme vs product); expects to start in theme
+    # repo and switch to product repo internally
+    date_version=$(get_latest_commit_date_version "$root_prod")
 
     # Handle other params
-    cd "$ROOT_PROD" || exit 1
     if [[ "'$2'" != *"--"* ]]; then
         ver=$2
     fi
@@ -109,7 +87,7 @@ build_prod() {
         relval=""
     fi
     if [ -z "$ver" ]; then
-        ver=$(get_current_repo_tag)
+        ver=$(get_current_repo_tag "$root_prod")
     fi
     if [[ "'$*'" == *"--testing"* ]]; then
         devel=1
@@ -130,20 +108,20 @@ build_prod() {
     # Make sure directories exist
     make_dir "$ROOT_REPOS/"
     make_dir "$root_apt/"
-    make_dir "$ROOT_PROD/newkey/deb/"
-    make_dir "$ROOT_PROD/umodules/"
-    make_dir "$ROOT_PROD/minimal/"
-    make_dir "$ROOT_PROD/tarballs/"
+    make_dir "$root_prod/newkey/deb/"
+    make_dir "$root_prod/umodules/"
+    make_dir "$root_prod/minimal/"
+    make_dir "$root_prod/tarballs/"
 
     # Re-create legacy link
     remove_dir "$ROOT_DIR/webadmin"
     ln -s "$ROOT_DIR/webmin" "$ROOT_DIR/webadmin"
 
     # Purge old files
-    purge_dir "$ROOT_PROD/newkey/deb"
-    purge_dir "$ROOT_PROD/umodules"
-    purge_dir "$ROOT_PROD/minimal"
-    purge_dir "$ROOT_PROD/tarballs"
+    purge_dir "$root_prod/newkey/deb"
+    purge_dir "$root_prod/umodules"
+    purge_dir "$root_prod/minimal"
+    purge_dir "$root_prod/tarballs"
     if [ "$prod" != "" ]; then
         rm -f "$ROOT_REPOS/$prod-"*
         rm -f "$ROOT_REPOS/${prod}_"*
@@ -152,7 +130,7 @@ build_prod() {
     echo
 
     # Descend to project dir
-    cd "$ROOT_PROD" || exit 1
+    cd "$root_prod" || exit 1
 
     if [ "$english_only" = "1" ]; then
         echo "Cleaning languages .."
@@ -191,7 +169,7 @@ build_prod() {
 
     cd "$ROOT_DIR" || exit 1
     echo "Preparing built files for upload .."
-    cmd="cp -f $ROOT_PROD/tarballs/${prod}-${ver}*\.tar.gz \
+    cmd="cp -f $root_prod/tarballs/${prod}-${ver}*\.tar.gz \
         $ROOT_REPOS/${prod}-$ver.tar.gz $VERBOSITY_LEVEL"
     eval "$cmd"
     cmd="find $root_apt -name ${prod}_${ver}${relval}*\.deb -exec mv '{}' \

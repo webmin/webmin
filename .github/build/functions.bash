@@ -159,14 +159,18 @@ remove_dir() {
 # Get latest tag version
 get_current_repo_tag() {
     # shellcheck disable=SC2153
-    cd "$ROOT_PROD" || exit 1
-    tg=$(git rev-list --tags --max-count=1)
-    ds=$(git describe --tags "$tg")
-    ds="${ds/v/}"
-    echo "$ds"
+    local root_prod="$1"
+    (
+        cd "$root_prod" || exit 1
+        ds=$(git ls-remote --tags --refs --sort="v:refname" origin | tail -n1 | \
+             awk '{print $2}' | sed 's|refs/tags/||')
+        ds="${ds/v/}"
+        echo "$ds"
+    )
 }
 
 get_module_version() {
+    local module_root="$1"
     local version=""
     
     # Check if module.info exists and extract version
@@ -178,7 +182,7 @@ get_module_version() {
 
     # Fallback to get_current_repo_tag if no version found
     if [ -z "$version" ]; then
-        version=$(get_current_repo_tag)
+        version=$(get_current_repo_tag "$module_root")
     fi
     
     # Return version (assumes version is always found)
@@ -196,9 +200,10 @@ get_latest_commit_date_version() {
     local prod_version
     local max_prod
     local highest_version
+    local root_prod="$1"
 
     theme_version=$(git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d%H%M')
-    cd "$ROOT_PROD" || exit 1
+    cd "$root_prod" || exit 1
     prod_version=$(git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d%H%M')
     max_prod=("$theme_version" "$prod_version")
     highest_version=$(max "${max_prod[@]}")
@@ -206,29 +211,39 @@ get_latest_commit_date_version() {
 }
 
 # Pull project repo and theme
-make_prod_repos() {
+make_packages_repos() {
     local root_prod="$1"
     local prod="$2"
-    local cmd;
-    # Webmin or Usermin
-    if [ ! -d "$root_prod" ]; then
-        local repo="webmin/$prod.git"
-        cmd="git clone --depth 1 $GIT_BASE_URL/$repo $VERBOSITY_LEVEL"
+    local cmd
+    local reqrepo="webmin"
+    local repo="$reqrepo/$prod.git"
+    local theme="authentic-theme"
+
+    # Clone repo
+    cmd="git clone --depth 1 $GIT_BASE_URL/$repo $VERBOSITY_LEVEL"
+    eval "$cmd"
+    if [ "$?" != "0" ]; then
+        return 1
+    fi
+
+    # Clone required repo
+    if [ ! -d "$reqrepo" ]; then
+        cmd="git clone --depth 1 $WEBMIN_REPO $VERBOSITY_LEVEL"
         eval "$cmd"
-        if [ ! -d "webmin" ]; then
-            cmd="git clone --depth 1 $WEBMIN_REPO \
-                $VERBOSITY_LEVEL"
-            eval "$cmd"
+        if [ "$?" != "0" ]; then
+            return 1
         fi
     fi
-    # Theme
-    local theme="authentic-theme"
-    if [ ! -d "$root_prod/$theme" ]; then
-        cd "$root_prod" || exit 1
-        local repo="webmin/$theme.git"
-        cmd="git clone --depth 1 $GIT_BASE_URL/$repo $VERBOSITY_LEVEL"
-        eval "$cmd"
+
+    # Clone theme
+    cd "$root_prod" || exit 1
+    repo="$reqrepo/$theme.git"
+    cmd="git clone --depth 1 $GIT_BASE_URL/$repo $VERBOSITY_LEVEL"
+    eval "$cmd"
+    if [ "$?" != "0" ]; then
+        return 1
     fi
+return 0
 }
 
 # Make module repo
@@ -348,13 +363,3 @@ adjust_module_filename() {
     return $failed
 }
 
-spinner() {
-    local msg=$1
-    local pid=$!
-    printf "%s " "$msg"
-    while kill -0 $pid 2>/dev/null; do
-        printf "."
-        sleep 2
-    done
-    printf "\n"
-}
