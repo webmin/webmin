@@ -122,6 +122,7 @@ if (!$dir) {
 	print "                        [--rpm-dir directory]\n";
 	print "                        [--rpm-depends]\n";
 	print "                        [--no-prefix]\n";
+	print "	                       [--prefix prefix]\n";
 	print "                        [--vendor name]\n";
 	print "                        [--licence name]\n";
 	print "                        [--url url]\n";
