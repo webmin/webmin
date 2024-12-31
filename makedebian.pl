@@ -477,16 +477,18 @@ foreach my $deb ("deb", "newkey/deb") {
 
 	# Create the .dsc file
 	open(DSC, ">$deb/${product}_$ver$rel.plain");
+	# Check if DEB_MAINTAINER is set and use it otherwise use Jamie Cameron <jcameron\@webmin.com>
+	$deb_maintainer = $ENV{'DEB_MAINTAINER'} || "Jamie Cameron <jcameron\@webmin.com>";
 	print DSC <<EOF;
 Format: 1.0
 Source: $product
 Version: $ver$rel
 Binary: $product
-Maintainer: Jamie Cameron <jcameron\@webmin.com>
 Architecture: all
 Standards-Version: 3.6.1
 Build-Depends-Indep: debhelper (>= 4.1.16), debconf (>= 0.5.00), perl
-Uploaders: Jamie Cameron <jcameron\@webmin.com>
+Maintainer: $deb_maintainer
+Uploaders: $deb_maintainer
 Files:
  $md5 $st[7] ${product}-${ver}.tar.gz
  $diffmd5 $diffst[7] ${product}_${ver}.diff

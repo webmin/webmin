@@ -76,6 +76,7 @@ else {
 
 system("cp tarballs/$tarfile $source_dir");
 open(SPEC, ">$spec_dir/webmin-$ver.spec");
+$rpm_maintainer = $ENV{'RPM_MAINTAINER'} || "Jamie Cameron";
 print SPEC <<EOF;
 %global __perl_provides %{nil}
 %define __spec_install_post %{nil}
@@ -92,7 +93,7 @@ AutoReq: 0
 License: BSD-3-clause
 Group: System/Tools
 Source: http://www.webmin.com/download/$tarfile
-Vendor: Jamie Cameron
+Vendor: $rpm_maintainer
 BuildRoot: /tmp/%{name}-%{version}
 BuildArchitectures: noarch
 %description
