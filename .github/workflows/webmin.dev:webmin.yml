@@ -18,13 +18,16 @@ jobs:
       - uses: szenius/set-timezone@v1.2
         with:
           timezoneLinux: "Europe/Nicosia"
+      - name: Fetch dependencies
+        run: |-
+          curl -O https://raw.githubusercontent.com/webmin/webmin-ci-cd/main/build/bootstrap.bash
       - name: Build and upload packages
         env:
           WEBMIN_DEV__SSH_PRV_KEY: ${{ secrets.WEBMIN_DEV__SSH_PRV_KEY }}
           WEBMIN_DEV__SSH_PUB_KEY: ${{ secrets.WEBMIN_DEV__SSH_PUB_KEY }}
           WEBMIN_DEV__GPG_PH: ${{ secrets.WEBMIN_DEV__GPG_PH }}
           ENV_BUILD__CLOUD_UPLOAD_SSH_HOST: ${{ secrets.WEBMIN_DEV__IP_ADDR }}
-        working-directory: ./.github/build
         run: |-
-          ./build-deb-package.bash webmin --testing
-          ./build-rpm-package.bash webmin --testing
+          bash bootstrap.bash
+          bash build-deb-package.bash webmin --testing
+          bash build-rpm-package.bash webmin --testing
