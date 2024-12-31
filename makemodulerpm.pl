@@ -32,9 +32,9 @@ my $release = 1;
 $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin";
 my $allow_overwrite = 0;
 
-my ($force_theme, $rpmdepends, $no_prefix, $vendor, $provides, $obsoletes, $url,
-    $force_usermin, $final_mod, $sign, $keyname, $epoch, $dir, $ver, @extrareqs,
-    @exclude);
+my ($force_theme, $rpmdepends, $no_prefix, $set_prefix, $vendor, $provides,
+    $obsoletes, $url, $force_usermin, $final_mod, $sign, $keyname, $epoch, $dir,
+    $ver, @extrareqs, @exclude);
 
 # Parse command-line args
 while(@ARGV) {
@@ -54,6 +54,9 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--no-prefix") {
 		$no_prefix = 1;
+		}
+	elsif ($a eq "--prefix") {
+		$set_prefix = &untaint(shift(@ARGV));
 		}
 	elsif ($a eq "--vendor") {
 		$vendor = &untaint(shift(@ARGV));
@@ -197,6 +200,7 @@ else {
 	die "$source_dir does not appear to be a webmin module or theme";
 	}
 $prefix = "" if ($no_prefix);
+$prefix = $set_prefix if ($set_prefix);
 my $ucprog = ucfirst($prog);
 
 # Copy the directory to a temp location for tarring
