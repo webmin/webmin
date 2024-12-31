@@ -32,7 +32,7 @@ my $release = 1;
 $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin";
 my $allow_overwrite = 0;
 
-my ($force_theme, $rpmdepends, $no_prefix, $vendor, $provides, $url,
+my ($force_theme, $rpmdepends, $no_prefix, $vendor, $provides, $obsoletes, $url,
     $force_usermin, $final_mod, $sign, $keyname, $epoch, $dir, $ver, @extrareqs,
     @exclude);
 
@@ -60,6 +60,9 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--provides") {
 		$provides = &untaint(shift(@ARGV));
+		}
+	elsif ($a eq "--obsoletes") {
+		$obsoletes = &untaint(shift(@ARGV));
 		}
 	elsif ($a eq "--url") {
 		$url = shift(@ARGV);
@@ -277,6 +280,7 @@ if ($rpmdepends && defined($minfo{'depends'})) {
 
 # Create the SPEC file
 my $providesheader = $provides ? "Provides: $provides" : "";
+my $obsoletesheader = $obsoletes ? "Obsoletes: $obsoletes" : "";
 my $vendorheader = $vendor ? "Vendor: $vendor" : "";
 my $urlheader = $url ? "URL: $url" : "";
 my $epochheader = $epoch ? "Epoch: $epoch" : "";
@@ -302,6 +306,7 @@ BuildRoot: /tmp/%{name}-%{version}
 BuildArchitectures: noarch
 $epochheader
 $providesheader
+$obsoletesheader
 $vendorheader
 $urlheader
 %description
