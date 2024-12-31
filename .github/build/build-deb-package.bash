@@ -71,8 +71,10 @@ build_prod() {
     # Print package version
     echo -n "         package version: "
     
-    # Get latest product version (theme vs product); expects to start in theme
-    # repo and switch to product repo internally
+    # Switch to product directory explicitly
+    cd "$root_prod" || exit 1
+
+    # Get latest product version (theme vs product)
     date_version=$(get_latest_commit_date_version "$root_prod")
 
     # Handle other params

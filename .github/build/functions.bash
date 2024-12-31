@@ -201,13 +201,16 @@ get_latest_commit_date_version() {
     local max_prod
     local highest_version
     local root_prod="$1"
-
-    theme_version=$(git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d%H%M')
-    cd "$root_prod" || exit 1
-    prod_version=$(git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d%H%M')
-    max_prod=("$theme_version" "$prod_version")
-    highest_version=$(max "${max_prod[@]}")
-    echo "$highest_version"
+    local root_theme="$root_prod/authentic-theme"
+    (
+        cd "$root_theme" || exit 1
+        theme_version=$(git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d%H%M')
+        cd "$root_prod" || exit 1
+        prod_version=$(git log -n1 --pretty='format:%cd' --date=format:'%Y%m%d%H%M')
+        max_prod=("$theme_version" "$prod_version")
+        highest_version=$(max "${max_prod[@]}")
+        echo "$highest_version"
+    )
 }
 
 # Pull project repo and theme
