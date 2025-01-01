@@ -23,10 +23,12 @@ jobs:
           curl -O https://raw.githubusercontent.com/webmin/webmin-ci-cd/main/build/bootstrap.bash
       - name: Build and upload packages
         env:
-          WEBMIN_DEV__SSH_PRV_KEY: ${{ secrets.WEBMIN_DEV__SSH_PRV_KEY }}
-          WEBMIN_DEV__SSH_PUB_KEY: ${{ secrets.WEBMIN_DEV__SSH_PUB_KEY }}
-          WEBMIN_DEV__GPG_PH: ${{ secrets.WEBMIN_DEV__GPG_PH }}
-          ENV_BUILD__CLOUD_UPLOAD_SSH_HOST: ${{ secrets.WEBMIN_DEV__IP_ADDR }}
+          CLOUD__GPG_PH: ${{ secrets.DEV_GPG_PH }}
+          CLOUD__IP_ADDR: ${{ secrets.DEV_IP_ADDR }}
+          CLOUD__UPLOAD_SSH_USER: ${{ secrets.DEV_UPLOAD_SSH_USER }}
+          CLOUD__UPLOAD_SSH_DIR: ${{ secrets.DEV_UPLOAD_SSH_DIR }}
+          CLOUD__SSH_PRV_KEY: ${{ secrets.DEV_SSH_PRV_KEY }}
+          CLOUD__GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |-
           bash bootstrap.bash
           bash build-deb-package.bash webmin --testing
