@@ -18,7 +18,7 @@ index_restart=Herbegin Usermin
 index_restartmsg=Klik op hierdie knoppie om die Usermin-bedienerproses weer te begin. Dit kan nodig wees as u Perl onlangs opgegradeer het.
 
 access_title=IP-toegangsbeheer
-access_desc=Die Usermin-bediener kan gekonfigureer word om slegs toegang tot sekere IP-adresse te weier of toe te laat deur hierdie vorm te gebruik. Gasheername (soos foo.bar.com) en IP-netwerke (soos 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 of 10.254.1.5-10.254.97.127) kan ook ingevoer word. U moet toegang tot u bediener tot betroubare adresse beperk, veral as dit vanaf die internet toeganklik is. Andersins, sal elkeen wat u wagwoord raai volledige beheer oor u stelsel hê.
+access_desc=Usermin kan gekonfigureer word om toegang slegs vanaf sekere IP-adresse te weier of toe te laat deur hierdie vorm te gebruik. Gasheername (soos foo.bar.com) en IP-netwerke (soos 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 of 10.254.1.5-10.254.97.127) kan ook ingevoer word. U moet toegang tot Usermin beperk tot vertroude adresse, veral as dit vanaf die internet toeganklik is. Andersins sal enigiemand wat jou wagwoord raai, volle beheer oor jou stelsel hê.
 
 bind_title=Hawens en adresse
 bind_desc2=Hierdie vorm kan gebruik word om die poortnommer waarop Usermin luister te verander, of dit slegs op 'n enkele IP-adres op u stelsel te laat luister. U kan dit ook opstel om verbindings op verskeie poorte te aanvaar, of om op verskillende IP-adresse te luister. Let wel - u webblaaier sal u moontlik weer vra om aan te meld nadat u die hawe of die binding adres verander het.
@@ -250,6 +250,12 @@ ui_hnm1=Gasheernaam vanaf URL
 ui_hnm2=Domeinnaam vanaf URL
 ui_hnm3=Ander naam ..
 ui_tabs=Kategoriseer modules?
+ui_show=Vertoon op die paneelbord 
+ui_show_host=Stelsel gasheernaam
+ui_show_os=Bedryfstelsel
+ui_show_ver=Gebruikermin weergawe
+ui_show_tver=Tema weergawe
+ui_show_time=Tyd op stelsel
 
 upgrade_title=Opgradeer Usermin
 upgrade_title2=Installeer Usermin

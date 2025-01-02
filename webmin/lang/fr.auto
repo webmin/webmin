@@ -1,3 +1,6 @@
+access_desc=Webmin peut être configuré pour refuser ou autoriser l'accès uniquement à partir de certaines adresses IP à l'aide de ce formulaire. Les noms d'hôtes (comme foo.bar.com) et les réseaux IP (comme 10.254.3.0 ou 10.254.1.0/255.255.255.128 ou 10.254.1.0/25 ou 10.254.1.5-10.254.97.127 ou 2001:DB8::A0BC:0001 ou 2001:DB8::/32) peuvent également être saisis. Vous devez limiter l'accès à Webmin aux adresses de confiance, en particulier s'il est accessible depuis Internet. Sinon, toute personne qui devine votre mot de passe aura le contrôle total de votre système.
+access_trust_ssl=Faire confiance au certificat client SSL fourni par les proxys ?
+
 bind_websocport=Numéro de port de base pour les connexions WebSockets
 bind_websocport_none=Par défaut (555)
 bind_websoc_host=Nom d'hôte pour les connexions WebSocket

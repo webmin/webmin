@@ -18,7 +18,7 @@ index_restart=Usermin'i yeniden başlat
 index_restartmsg=Usermin sunucusu işlemini yeniden başlatmak için bu düğmeyi tıklatın. Yakın zamanda Perl'i yükselttiyseniz bu gerekli olabilir.
 
 access_title=IP Erişim Kontrolü
-access_desc=Usermin sunucusu, bu formu kullanarak yalnızca belirli IP adreslerinden erişime izin vermeyecek veya erişime izin verecek şekilde yapılandırılabilir. Ana bilgisayar adları (foo.bar.com gibi) ve IP ağları (10.254.3.0 veya 10.254.1.0/255.255.255.128 veya 10.254.1.0/25 veya 10.254.1.5-10.254.97.127 gibi) de girilebilir. Sunucunuza erişimi, özellikle de İnternet'ten erişilebiliyorsa, güvenilir adreslerle sınırlamalısınız. Aksi takdirde, şifrenizi tahmin eden herkes sisteminizde tam denetime sahip olacaktır.
+access_desc=Usermin, bu formu kullanarak yalnızca belirli IP adreslerinden erişimi reddedecek veya izin verecek şekilde yapılandırılabilir. Ana bilgisayar adları (foo.bar.com gibi) ve IP ağları (10.254.3.0 veya 10.254.1.0/255.255.255.128 veya 10.254.1.0/25 veya 10.254.1.5-10.254.97.127 gibi) da girilebilir. Usermin'e erişimi, özellikle İnternet'ten erişilebilirse, güvenilir adreslerle sınırlamalısınız. Aksi takdirde, parolanızı tahmin eden herkes sisteminiz üzerinde tam kontrole sahip olacaktır.
 
 bind_title=Bağlantı Noktaları ve Adresler
 bind_desc2=Bu form, Usermin'in dinlediği bağlantı noktası numarasını değiştirmek veya sisteminizdeki tek bir IP adresini dinletmek için kullanılabilir. Ayrıca, birden çok bağlantı noktasındaki bağlantıları kabul edecek veya birkaç IP adresini dinleyecek şekilde yapılandırabilirsiniz. Not - web tarayıcınız, bağlantı noktasını veya bağlantı adresini değiştirdikten sonra tekrar giriş yapmanızı isteyebilir.
@@ -250,6 +250,12 @@ ui_hnm1=URL'den ana bilgisayar adı
 ui_hnm2=URL'den alan adı
 ui_hnm3=Diğer isim ..
 ui_tabs=Modüller kategorize edilsin mi?
+ui_show=Gösterge panelinde görüntüleme
+ui_show_host=Sistem ana bilgisayar adı
+ui_show_os=İşletim sistemi
+ui_show_ver=Usermin sürümü
+ui_show_tver=Tema versiyonu
+ui_show_time=Sistemdeki zaman
 
 upgrade_title=Usermin'i Yükselt
 upgrade_title2=Usermin'i yükle

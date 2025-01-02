@@ -3,6 +3,7 @@ index_apache=因為Webmin當前在Apache下運行，所以您可能不想啟用�
 index_refresh=刷新模塊
 index_refreshmsg=重新檢查所有已安裝服務器的Webmin模塊，並更新“未使用的模塊”類別中顯示的模塊。
 
+access_desc=可以使用此表單將 Webmin 設定為僅拒絕或允許來自某些 IP 位址的存取。主機名稱（如foo.bar.com）和IP 網路（如10.254.3.0 或10.254.1.0/255.255.255.128 或10.254.1.0/25 或10.254.1.5-10.254.901:01:005 2001 :DB8::/32) 也可以輸入。您應該將對 Webmin 的存取權限限制為受信任的位址，尤其是當可以從 Internet 存取時。否則，任何猜到您密碼的人都將完全控制您的系統。
 access_ip=允許的IP地址
 access_local=在列表中包括本地網絡
 access_ecidr='$1'不是有效的CIDR號
@@ -10,6 +11,7 @@ access_eip6='$1'不是完整的IPv6或網絡地址
 access_ecidr6='$1'不是有效的IPv6網絡大小
 access_ecidr8=IPv6網絡大小'$1'必須被8整除
 access_trust=信任代理提供的遠程IP地址嗎？
+access_trust_ssl=信任代理提供的 SSL 用戶端憑證嗎？
 
 bind_desc2=此表單可用於更改Webmin偵聽的端口號，或僅在系統上的單個IP地址上偵聽此端口號。您還可以將其配置為接受多個端口上的連接，或偵聽多個IP地址。注意-更改端口或綁定地址後，您的Web瀏覽器可能會提示您重新登錄。
 bind_firewall=在防火牆上打開新端口？

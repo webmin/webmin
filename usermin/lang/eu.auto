@@ -18,7 +18,7 @@ index_restart=Berrabiarazi Erabiltzailea
 index_restartmsg=Egin klik botoi honetan Usermin zerbitzariaren prozesua berriro hasteko. Hori beharrezkoa izan daiteke Perl berriki berritu baduzu.
 
 access_title=IP Sarbide Kontrola
-access_desc=Erabiltzaile zerbitzaria konfiguratu daiteke formulario hau erabiliz IP helbide jakin batzuetatik sarbidea ukatzeko edo baimentzeko. Ostalari izenak (foo.bar.com bezalakoak) eta IP sareak (10.254.3.0 edo 10.254.1.0/255.255.255.128 edo 10.254.1.0/25 edo 10.254.1.5-10.254.97.127) ere sar daitezke. Zure zerbitzariaren sarbidea konfiantzazko helbideetara mugatu beharko zenuke, batez ere Internetetik eskuragarri badago. Bestela, zure pasahitza asmatzen duen edonork zure sistemaren kontrol osoa izango du.
+access_desc=Usermin inprimaki hau erabiliz IP helbide batzuetatik soilik sarbidea ukatzeko edo baimentzeko konfigura daiteke. Ostalari izenak (foo.bar.com bezalakoak) eta IP sareak (10.254.3.0 edo 10.254.1.0/255.255.255.128 edo 10.254.1.0/25 edo 10.254.1.5-10.254.97.127 bezalakoak) ere sar daitezke. Usermin-erako sarbidea fidagarri diren helbideetara mugatu beharko zenuke, batez ere Internetetik eskuragarri badago. Bestela, zure pasahitza asmatzen duenak zure sistemaren kontrol osoa izango du.
 
 bind_title=Portuak eta helbideak
 bind_desc2=Inprimaki hau Usermin-ek entzuten duen ataka zenbakia aldatzeko erabil daiteke edo zure sisteman IP helbide bakar batetan entzun ahal izateko. Hainbat portutan konexioak onartzeko edo IP helbideetan entzuteko ere konfigura dezakezu. Oharra: zure web-arakatzaileak berriro saioa hasteko eskatu dezake portua edo loteslearen helbidea aldatu ondoren.
@@ -250,6 +250,12 @@ ui_hnm1=Ostalariaren izena URL-tik
 ui_hnm2=Domeinu izena URL batetik
 ui_hnm3=Beste izen bat ..
 ui_tabs=Moduluak sailkatu?
+ui_show=Bistaratu aginte-panelean 
+ui_show_host=Sistemaren ostalari-izena
+ui_show_os=Sistema eragilea
+ui_show_ver=Usermin bertsioa
+ui_show_tver=Gaiaren bertsioa
+ui_show_time=Sisteman denbora
 
 upgrade_title=Erabiltzailearen bertsioa berritu
 upgrade_title2=Instalatu Usermin

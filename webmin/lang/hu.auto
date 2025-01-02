@@ -8,6 +8,7 @@ index_restartmsg=Kattintson erre a gombra a Webmin szerver folyamatának újrain
 index_refresh=Frissítse a modulokat
 index_refreshmsg=Ellenőrizze újra az összes Webmin modult a telepített kiszolgálók számára, és frissítse azokat, amelyek a 'Nem használt modulok' kategóriában jelennek meg.
 
+access_desc=A Webmin ezen az űrlapon konfigurálható úgy, hogy megtagadja vagy engedélyezze a hozzáférést csak bizonyos IP-címekről. Gazdanevek (például foo.bar.com) és IP-hálózatok (például 10.254.3.0 vagy 10.254.1.0/255.255.255.128 vagy 10.254.1.0/25 vagy 10.254.1.5-10.254.127 vagy 97.97. 2001:DB8::A0BC:0001 vagy 2001:DB8::/32) is megadható. A Webmin hozzáférését megbízható címekre kell korlátoznia, különösen, ha az internetről elérhető. Ellenkező esetben bárki, aki kitalálja a jelszavát, teljes mértékben uralhatja rendszerét.
 access_ip=Megengedett IP-címek
 access_local=Helyezze be a helyi hálózatot a listába
 access_libwrap=Ellenőrizze a TCP-wrappers <tt>hosts.allow</tt> és <tt>hosts.deny</tt> fájlokat is?
@@ -17,6 +18,7 @@ access_ecidr6=A '$1' nem érvényes IPv6 hálózati méret
 access_ecidr8=Az '$1' IPv6 hálózat méretének 8-dal el kell osztani
 access_always=Megoldja a hostneveket minden kérésre?
 access_trust=Megbízik-e a proxyk által biztosított távoli IP-cím?
+access_trust_ssl=Megbízik a proxy által biztosított SSL-kliens-tanúsítványt?
 
 bind_desc2=Ez az űrlap felhasználható annak a portnak a megváltoztatására, amelyet a Webmin hallgat, vagy a rendszer egyetlen IP-címén hallgathatja meg. Azt is konfigurálhatja, hogy több porton keresztül fogadja el a kapcsolatokat, vagy több IP-címen hallgassa meg. Megjegyzés: a port vagy a kötési cím megváltoztatása után a böngésző kérheti újbóli bejelentkezését.
 bind_sockets=Hallgassa meg az IP-ket és a portokat

@@ -1,11 +1,13 @@
 index_refresh=Aggiorna i moduli
 index_refreshmsg=Ricontrolla tutti i moduli Webmin per i server installati e aggiorna quelli che appaiono nella categoria "Moduli non utilizzati".
 
+access_desc=Webmin può essere configurato per negare o consentire l'accesso solo da determinati indirizzi IP utilizzando questo modulo. È possibile immettere anche nomi host (come foo.bar.com) e reti IP (come 10.254.3.0 o 10.254.1.0/255.255.255.128 o 10.254.1.0/25 o 10.254.1.5-10.254.97.127 o 2001:DB8::A0BC:0001 o 2001:DB8::/32). Dovresti limitare l'accesso a Webmin a indirizzi attendibili, soprattutto se è accessibile da Internet. Altrimenti, chiunque indovini la tua password avrà il controllo completo del tuo sistema.
 access_local=Includi la rete locale nell'elenco
 access_eip6='$1' non è un IPv6 completo o un indirizzo di rete
 access_ecidr6='$1' non è una dimensione di rete IPv6 valida
 access_ecidr8=La dimensione della rete IPv6 '$1' deve essere divisibile per 8
 access_trust=Ti fidi dell'indirizzo IP remoto fornito dai proxy?
+access_trust_ssl=Ti fidi del certificato client SSL fornito dai proxy?
 
 bind_firewall=Aprire nuove porte sul firewall?
 bind_websocport=Numero di porta di base per le connessioni WebSocket

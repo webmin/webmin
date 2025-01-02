@@ -2323,13 +2323,18 @@ if (!$@ && $] > 5.011) {
 		}
 	my $date_format_short = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_short);
 	if (!ref($only) && $only) {
+		return &theme_ui_make_date($date_format_short, $secs)
+			if (defined(&theme_ui_make_date));
 		return $date_format_short;
 		}
 	else {
 		my $date_format_time = DateTime->from_epoch(locale => $locale_name_loaded, epoch => $secs, time_zone => $tz)->strftime($locale_format_time);
 		$date_format_time = $date_format_time;
 		$date_format_time =~ s/(\d+):(\d+):(\d+)(.*?)/$1:$2$4/;
-		return "$date_format_short $date_format_time";
+		my $date_format_full = "$date_format_short $date_format_time";
+		return &theme_ui_make_date($date_format_full, $secs)
+			if (defined(&theme_ui_make_date));
+		return $date_format_full;
 		}
 	}
 

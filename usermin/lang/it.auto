@@ -1,5 +1,7 @@
 index_eroot=La directory di configurazione Usermin $1 esiste, ma la directory root del programma $2 a cui fa riferimento non esiste! È necessario scaricare e reinstallare manualmente Usermin.
 
+access_desc=Usermin può essere configurato per negare o consentire l'accesso solo da determinati indirizzi IP utilizzando questo modulo. È possibile immettere anche nomi host (come foo.bar.com) e reti IP (come 10.254.3.0 o 10.254.1.0/255.255.255.128 o 10.254.1.0/25 o 10.254.1.5-10.254.97.127). Dovresti limitare l'accesso a Usermin a indirizzi attendibili, soprattutto se è accessibile da Internet. Altrimenti, chiunque indovini la tua password avrà il controllo completo del tuo sistema.
+
 lang_title=Lingua e località
 lang_title2=Usermin Lingua e Locale
 
@@ -13,6 +15,12 @@ ui_hnm0=Nome host reale
 ui_hnm1=Nome host dall'URL
 ui_hnm2=Nome di dominio dall'URL
 ui_hnm3=Altro nome ..
+ui_show=Visualizzazione sul cruscotto
+ui_show_host=Nome host del sistema
+ui_show_os=Sistema operativo
+ui_show_ver=Versione Usermin
+ui_show_tver=Versione tema
+ui_show_time=Tempo sul sistema
 
 log_copycert=Impostazioni SSL copiate da Webmin
 

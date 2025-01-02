@@ -18,7 +18,7 @@ index_restart=Ponovo pokrenite Usermin
 index_restartmsg=Kliknite ovaj gumb da biste ponovno pokrenuli postupak poslužitelja Usermin. Ovo će možda biti potrebno ako ste nedavno nadogradili Perl.
 
 access_title=IP kontrola pristupa
-access_desc=Usermin poslužitelj može se konfigurirati da uskraćuje ili dopušta pristup samo s određene IP adrese pomoću ovog obrasca. Također se mogu unijeti nazivi hosta (poput foo.bar.com) i IP mreže (poput 10.254.3.0 ili 10.254.1.0/255.255.255.128 ili 10.254.1.0/25 ili 10.254.1.5-10.254.97.127). Trebali biste ograničiti pristup vašem poslužitelju na pouzdane adrese, posebno ako je on dostupan s Interneta. Inače će svatko tko pogodi vašu lozinku imati potpunu kontrolu nad vašim sustavom.
+access_desc=Usermin se pomoću ovog obrasca može konfigurirati da zabrani ili dopusti pristup samo s određenih IP adresa. Imena hostova (poput foo.bar.com) i IP mreže (poput 10.254.3.0 ili 10.254.1.0/255.255.255.128 ili 10.254.1.0/25 ili 10.254.1.5-10.254.97.127) također se mogu unijeti. Trebali biste ograničiti pristup Userminu na pouzdane adrese, osobito ako je dostupan s Interneta. U suprotnom, svatko tko pogodi vašu lozinku imat će potpunu kontrolu nad vašim sustavom.
 
 bind_title=Portovi i adrese
 bind_desc2=Ovaj se obrazac može koristiti za promjenu broja porta koji Usermin sluša ili ga slušati na samo jednoj IP adresi u vašem sustavu. Možete ga konfigurirati i za prihvaćanje veza na više portova ili za slušanje na više IP adresa. Napomena - vaš web preglednik može zatražiti da se ponovo prijavite nakon promjene vrata ili adrese vezanja.
@@ -250,6 +250,12 @@ ui_hnm1=Naziv hosta s URL-a
 ui_hnm2=Naziv domene s URL-a
 ui_hnm3=Drugo ime ..
 ui_tabs=Kategorizirati module?
+ui_show=Prikaz na kontrolnoj ploči 
+ui_show_host=Naziv hosta sustava
+ui_show_os=Operativni sustav
+ui_show_ver=Usermin verzija
+ui_show_tver=Verzija teme
+ui_show_time=Vrijeme na sustavu
 
 upgrade_title=Nadogradite Usermin
 upgrade_title2=Instalirajte Usermin

@@ -1,6 +1,7 @@
 index_refresh=Modülleri Yenile
 index_refreshmsg=Yüklü sunucular için tüm Webmin modüllerini yeniden kontrol edin ve 'Kullanılmayan modüller' kategorisinde görünenleri güncelleyin.
 
+access_desc=Webmin, bu formu kullanarak yalnızca belirli IP adreslerinden erişimi reddedecek veya izin verecek şekilde yapılandırılabilir. Ana bilgisayar adları (foo.bar.com gibi) ve IP ağları (10.254.3.0 veya 10.254.1.0/255.255.255.128 veya 10.254.1.0/25 veya 10.254.1.5-10.254.97.127 veya 2001:DB8::A0BC:0001 veya 2001:DB8::/32 gibi) da girilebilir. Webmin'e erişimi, özellikle İnternet'ten erişilebilirse, güvenilir adreslerle sınırlamalısınız. Aksi takdirde, parolanızı tahmin eden herkes sisteminiz üzerinde tam kontrole sahip olacaktır.
 access_ip=İzin verilen IP adresleri
 access_local=Yerel ağı listeye dahil et
 access_ecidr='$1' geçerli bir CIDR numarası değil
@@ -8,6 +9,7 @@ access_eip6='$1' tam bir IPv6 veya ağ adresi değil
 access_ecidr6='$1' geçerli bir IPv6 ağ boyutu değil
 access_ecidr8=IPv6 ağ boyutu '$1' 8 ile bölünebilir olmalıdır
 access_trust=Proxy'ler tarafından sağlanan uzak IP adresine güveniyor musunuz?
+access_trust_ssl=Proxy'lerin sağladığı SSL istemci sertifikasına güvenmeli miyim?
 
 bind_firewall=Güvenlik duvarında yeni bağlantı noktaları açılsın mı?
 bind_websocport=WebSockets bağlantıları için temel port numarası

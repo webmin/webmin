@@ -11,7 +11,7 @@ index_refresh=Verfris modules
 index_refreshmsg=Kontroleer alle Webmin-modules vir geïnstalleerde bedieners en werk die wat in die kategorie 'Ongebruikte modules' verskyn, op.
 
 access_title=IP-toegangsbeheer
-access_desc=Die Webmin-bediener kan gekonfigureer word om slegs toegang tot sekere IP-adresse te weier of toe te laat op hierdie vorm. Gasheername (soos foo.bar.com) en IP-netwerke (soos 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 of 10.254.1.5-10.254.97.127 of 2001:DB8::A0BC:0001 of 2001:DB8::/32) kan ook ingevoer word. U moet toegang tot u bediener tot betroubare adresse beperk, veral as dit vanaf die internet toeganklik is. Andersins, sal elkeen wat u wagwoord raai volledige beheer oor u stelsel hê.
+access_desc=Webmin kan gekonfigureer word om toegang slegs vanaf sekere IP-adresse te weier of toe te laat deur hierdie vorm te gebruik. Gasheername (soos foo.bar.com) en IP-netwerke (soos 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 of 10.254.1.5-10.254.97:017.97:02017:017:017:0017:0017 of 2001:DB8::/32) kan ook ingevoer word. Jy moet toegang tot Webmin beperk tot betroubare adresse, veral as dit vanaf die internet toeganklik is. Andersins sal enigiemand wat jou wagwoord raai, volle beheer oor jou stelsel hê.
 access_ip=Toegestane IP-adresse
 access_local=Sluit plaaslike netwerk in die lys in
 access_header=Opsies vir toegangsbeheer
@@ -32,6 +32,7 @@ access_ehost=Kon nie IP-adres vir '$1' vind nie
 access_eself=U huidige IP-adres ($1) sal geweier word
 access_always=Los gasheername op elke versoek?
 access_trust=Vertrou u IP-adres wat deur gevolmagtigdes verskaf word?
+access_trust_ssl=Vertrou SSL-kliëntsertifikaat wat deur gevolmagtigdes verskaf word?
 
 bind_title=Hawens en adresse
 bind_desc2=Hierdie vorm kan gebruik word om die poortnommer waarop Webmin luister te verander, of dit slegs op 'n enkele IP-adres op u stelsel te laat luister. U kan dit ook opstel om verbindings op verskeie poorte te aanvaar, of om op verskillende IP-adresse te luister. Let wel - u webblaaier sal u moontlik weer vra om aan te meld nadat u die hawe of die binding adres verander het.

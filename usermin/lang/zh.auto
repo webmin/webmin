@@ -18,7 +18,7 @@ index_restart=重新启动Usermin
 index_restartmsg=单击此按钮以重新启动Usermin服务器进程。如果您最近升级了Perl，则可能有必要。
 
 access_title=IP访问控制
-access_desc=使用此表单，可以将Usermin服务器配置为拒绝或仅允许从某些IP地址进行访问。也可以输入主机名（例如foo.bar.com）和IP网络（例如10.254.3.0或10.254.1.0/255.255.255.128或10.254.1.0/25或10.254.1.5-10.254.97.127）。您应该将对服务器的访问限制为受信任的地址，尤其是可以从Internet访问的服务器。否则，任何猜出您的密码的人都将完全控制您的系统。
+access_desc=使用此表单可以将 Usermin 配置为拒绝或仅允许来自某些 IP 地址的访问。还可以输入主机名（如 foo.bar.com）和 IP 网络（如 10.254.3.0 或 10.254.1.0/255.255.255.128 或 10.254.1.0/25 或 10.254.1.5-10.254.97.127）。您应该将 Usermin 的访问限制为受信任的地址，尤其是如果它可以从 Internet 访问。否则，任何猜出您密码的人都将完全控制您的系统。
 
 bind_title=端口和地址
 bind_desc2=此表格可用于更改Usermin侦听的端口号，或仅在系统上的单个IP地址上侦听此端口号。您也可以将其配置为接受多个端口上的连接，或侦听多个IP地址。注意-更改端口或绑定地址后，您的Web浏览器可能会提示您重新登录。
@@ -250,6 +250,12 @@ ui_hnm1=网址中的主机名
 ui_hnm2=网址中的域名
 ui_hnm3=其他名字 ..
 ui_tabs=分类模块？
+ui_show=仪表板上显示
+ui_show_host=系统主机名
+ui_show_os=操作系统
+ui_show_ver=Usermin 版本
+ui_show_tver=主题版本
+ui_show_time=系统时间
 
 upgrade_title=升级Usermin
 upgrade_title2=安装Usermin

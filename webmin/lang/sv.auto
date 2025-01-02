@@ -8,12 +8,14 @@ index_restartmsg=Klicka på den här knappen för att starta om Webmin-serverpro
 index_refresh=Uppdatera moduler
 index_refreshmsg=Kontrollera alla Webmin-moduler för installerade servrar igen och uppdatera dem som visas i kategorin "Oanvända moduler".
 
+access_desc=Webmin kan konfigureras för att neka eller tillåta åtkomst endast från vissa IP-adresser med detta formulär. Värdnamn (som foo.bar.com) och IP-nätverk (som 10.254.3.0 eller 10.254.1.0/255.255.255.128 eller 10.254.1.0/25 eller 10.254.1.5-10.254.97:0107.97:0101BC:01017:0017:0017:0017:0017. eller 2001:DB8::/32) kan också anges. Du bör begränsa åtkomsten till Webmin till betrodda adresser, särskilt om den är tillgänglig från Internet. Annars kommer alla som gissar ditt lösenord att ha fullständig kontroll över ditt system.
 access_libwrap=Kolla också TCP-wrappers <tt>hosts.allow</tt> och <tt>hosts.deny</tt> -filer?
 access_ecidr6='$1' är inte en giltig IPv6-nätverksstorlek
 access_ecidr8=IPv6-nätverksstorlek '$1' måste delas med 8
 access_ehost=Det gick inte att hitta IP-adressen för '$1'
 access_always=Lös värdnamn på varje begäran?
 access_trust=Lita på fjärr-IP-adress från proxyer?
+access_trust_ssl=Lita på SSL-klientcertifikat som tillhandahålls av proxyservrar?
 
 bind_desc2=Det här formuläret kan användas för att ändra portnumret som Webmin lyssnar på, eller låta det bara lyssna på en enda IP-adress på ditt system. Du kan också konfigurera den för att acceptera anslutningar på flera portar eller lyssna på flera IP-adresser. Obs - din webbläsare kan uppmana dig att logga in igen efter att ha ändrat port eller bindande adress.
 bind_sockets=Lyssna på IP och portar

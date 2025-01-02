@@ -11,7 +11,7 @@ index_refresh=Päivitä moduulit
 index_refreshmsg=Tarkista kaikki asennetut palvelimet Webmin-moduuleista ja päivitä 'Ei käytössä moduuleja' -luokassa olevat moduulit.
 
 access_title=IP-pääsyn hallinta
-access_desc=Webmin-palvelin voidaan määrittää estämään tai sallimaan pääsy vain tietyiltä IP-osoitteilta tämän lomakkeen avulla. Isäntänimet (kuten foo.bar.com) ja IP-verkot (kuten 10.254.3.0 tai 10.254.1.0/255.255.255.128 tai 10.254.1.0/25 tai 10.254.1.5-10.254.97.127 tai 2001:DB8::A0BC:0001 tai 2001:DB8::/32) voidaan myös syöttää. Sinun tulisi rajoittaa palvelimellesi pääsy luotettaviin osoitteisiin, varsinkin jos siihen pääsee Internetistä. Muuten jokaisella, joka arvailee salasanasi, on täydellinen hallinta järjestelmässäsi.
+access_desc=Webmin voidaan määrittää estämään tai sallimaan pääsy vain tietyistä IP-osoitteista tällä lomakkeella. Isäntänimet (kuten foo.bar.com) ja IP-verkot (kuten 10.254.3.0 tai 10.254.1.0/255.255.255.128 tai 10.254.1.0/25 tai 10.254.1.5-10.254.127 tai 97.97. 2001:DB8::A0BC:0001 tai 2001:DB8::/32) voidaan myös syöttää. Sinun tulisi rajoittaa Webminin käyttö luotettuihin osoitteisiin, varsinkin jos se on käytettävissä Internetistä. Muuten jokainen, joka arvaa salasanasi, hallitsee järjestelmääsi täysin.
 access_ip=Sallitut IP-osoitteet
 access_local=Lisää paikallinen verkko luetteloon
 access_header=Kulunvalvontavaihtoehdot
@@ -32,6 +32,7 @@ access_ehost='$1' IP-osoitteen löytäminen epäonnistui
 access_eself=Nykyinen IP-osoitteesi ($1) hylätään
 access_always=Ratkaisetko isäntänimet jokaisessa pyynnössä?
 access_trust=Luotatko välityspalvelimien tarjoamaan etä-IP-osoitteeseen?
+access_trust_ssl=Luotetaanko välityspalvelinten tarjoamaan SSL-asiakasvarmenteeseen?
 
 bind_title=Satamat ja osoitteet
 bind_desc2=Tätä lomaketta voidaan käyttää muuttamaan porttinumeroa, jota Webmin kuuntelee, tai saada se kuuntelemaan vain yhtä järjestelmän IP-osoitetta järjestelmässäsi. Voit myös määrittää sen hyväksymään yhteydet useissa porteissa tai kuuntelemaan useita IP-osoitteita. Huomaa - selaimesi saattaa pyytää sinua kirjautumaan uudelleen sisään portin tai sidontaosoitteen vaihtamisen jälkeen.

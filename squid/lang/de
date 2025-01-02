@@ -777,10 +777,12 @@ log_pools_delete=$1 Verzögerungspools gelöscht
 log_delay_create=ACL für Verzögerungspool $1 hinzugefügt
 log_delay_modify=ACL für Verzögerungspool $1 bearbeitet
 log_delay_delete=ACL für Verzögerungspool $1 gelöscht
+
 log_delay_move=ACL für Verzögerungspool $1 verschoben
 log_refresh_create=Aktualisierungsregel für $1 erstellt
 log_refresh_modify=Aktualisierungsregel für $1 bearbeitet
 log_refresh_delete=Aktualisierungsregel für $1 gelöscht
+
 log_refresh_move=Aktualisierungsregel für $1 verschoben
 log_refreshes_delete=$1 Aktualisierungsregeln gelöscht
 log_iptables=Port-Umleitungs-Konfiguration aktualisiert
@@ -824,7 +826,6 @@ delay_ecannot=Sie sind nicht berechtigt, Verzögerungspools zu bearbeiten
 delay_epercent='$1' ist kein gültiger initialer Bucket-Level-Prozentsatz
 delay_return=Verzögerungspool-Liste
 delay_delete=Ausgewählte Verzögerungspools löschen
-
 pool_title1=Verzögerungspool hinzufügen
 pool_title2=Verzögerungspool bearbeiten
 pool_header=Verzögerungspool-Optionen
@@ -945,7 +946,6 @@ refresh_emin=Fehlende oder ungültige minimale Zeit
 refresh_emax=Fehlende oder ungültige maximale Zeit
 refresh_epc=Fehlender oder ungültiger Altersprozentsatz
 refresh_delete=Ausgewählte Aktualisierungsregeln löschen
-
 drefresh_err=Aktualisierungsregeln löschen fehlgeschlagen
 drefesh_enone=Keine Auswahl getroffen
 

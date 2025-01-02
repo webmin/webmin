@@ -1,11 +1,13 @@
 index_refresh=Aktualizujte moduly
 index_refreshmsg=Znovu zkontrolujte všechny nainstalované servery všech modulů Webmin a aktualizujte ty, které se zobrazují v kategorii „Nepoužité moduly“.
 
+access_desc=Webmin lze nakonfigurovat tak, aby zakázal nebo povolil přístup pouze z určitých IP adres pomocí tohoto formuláře. Názvy hostitelů (např. foo.bar.com) a IP sítě (např. 10.254.3.0 nebo 10.254.1.0/255.255.255.128 nebo 10.254.1.0/25 nebo 10.254.1.5-10.254.254.97.127A:0BC:08A:0BC:07 nebo 2001:DB8::/32) lze také zadat. Měli byste omezit přístup k Webminu na důvěryhodné adresy, zejména pokud je přístupný z internetu. Jinak každý, kdo uhodne vaše heslo, bude mít úplnou kontrolu nad vaším systémem.
 access_local=Zahrnout místní síť do seznamu
 access_eip6='$1' není kompletní IPv6 nebo síťová adresa
 access_ecidr6='$1' není platná velikost sítě IPv6
 access_ecidr8=Velikost sítě IPv6 '$1' musí být dělitelná 8
 access_trust=Důvěřujete vzdálené IP adrese poskytované proxy servery?
+access_trust_ssl=Důvěřovat certifikátu klienta SSL poskytovanému servery proxy?
 
 bind_firewall=Otevřít nové porty na firewallu?
 bind_websocport=Číslo základního portu pro připojení WebSockets

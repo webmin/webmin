@@ -11,6 +11,7 @@ else {
 	$base_dir = "/usr/src/redhat";
 	$< && die "makerpm.pl must be run as root";
 	}
+$rpm_maintainer = $ENV{'RPM_MAINTAINER'} || "Jamie Cameron";
 $spec_dir = "$base_dir/SPECS";
 $source_dir = "$base_dir/SOURCES";
 $rpms_dir = "$base_dir/RPMS/noarch";
@@ -92,7 +93,7 @@ AutoReq: 0
 License: BSD-3-clause
 Group: System/Tools
 Source: http://www.webmin.com/download/$tarfile
-Vendor: Jamie Cameron
+Vendor: $rpm_maintainer
 BuildRoot: /tmp/%{name}-%{version}
 BuildArchitectures: noarch
 %description

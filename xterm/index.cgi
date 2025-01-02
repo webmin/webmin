@@ -55,6 +55,7 @@ my $def_cols_n = 80;
 my $def_rows_n = 24;
 my $xmlhr = $ENV{'HTTP_X_REQUESTED_WITH'} eq "XMLHttpRequest";
 my %term_opts;
+my $font_size = $config{'fontsize'} || 15;
 
 # Parse module config
 my ($conf_cols_n, $conf_rows_n) = ($conf_size_str =~ /([\d]+)X([\d]+)/i);
@@ -74,7 +75,9 @@ if ($conf_cols_n && $conf_rows_n && !$xmlhr) {
 
 # Define columns and rows
 my $conf_screen_reader = $config{'screen_reader'} eq 'true' ? 'true' : 'false';
-$termjs_opts{'Options'} = "{ cols: $env_cols, rows: $env_rows, screenReaderMode: $conf_screen_reader }";
+$termjs_opts{'Options'} = "{ cols: $env_cols, rows: $env_rows, ".
+			    "screenReaderMode: $conf_screen_reader, ".
+			    "fontSize: $font_size }";
 
 my $term_size = "
 	min-width: ".($conf_cols_n ? "".($conf_cols_n * 9)."px" : "calc(100vw - 22px)").";

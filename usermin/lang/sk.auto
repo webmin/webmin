@@ -18,7 +18,7 @@ index_restart=Reštartujte Usermin
 index_restartmsg=Kliknutím na toto tlačidlo znova spustíte proces servera Usermin. To môže byť potrebné, ak ste nedávno inovovali Perl.
 
 access_title=Kontrola prístupu IP
-access_desc=Server Usermin môže byť nakonfigurovaný tak, aby zakázal alebo povolil prístup iba z určitých adries IP pomocou tohto formulára. Je možné zadať aj názvy mien (ako foo.bar.com) a siete IP (napríklad 10.254.3.0 alebo 10.254.1.0/255.255.255.128 alebo 10.254.1.0/25 alebo 10.254.1.5-10.254.97.127). Prístup na svoj server by ste mali obmedziť na dôveryhodné adresy, najmä ak je prístupný z internetu. Inak každý, kto uhádne vaše heslo, bude mať úplnú kontrolu nad vaším systémom.
+access_desc=Usermin môže byť nakonfigurovaný na odmietnutie alebo povolenie prístupu iba z určitých IP adries pomocou tohto formulára. Je možné zadať aj názvy hostiteľov (napríklad foo.bar.com) a siete IP (napríklad 10.254.3.0 alebo 10.254.1.0/255.255.255.128 alebo 10.254.1.0/25 alebo 10.254.1.5-10.254.97.127). Prístup k Usermin by ste mali obmedziť na dôveryhodné adresy, najmä ak je prístupný z internetu. V opačnom prípade bude mať každý, kto uhádne vaše heslo, úplnú kontrolu nad vaším systémom.
 
 bind_title=Porty a adresy
 bind_desc2=Tento formulár sa dá použiť na zmenu čísla portu, na ktorom Usermin počúva, alebo na počúvanie iba jednej adresy IP vo vašom systéme. Môžete ho tiež nakonfigurovať tak, aby akceptoval pripojenia na viacerých portoch alebo počúval na niekoľkých IP adresách. Poznámka - váš webový prehliadač vás môže vyzvať na opätovné prihlásenie po zmene portu alebo záväznej adresy.
@@ -250,6 +250,12 @@ ui_hnm1=Názov hostiteľa z adresy URL
 ui_hnm2=Názov domény z adresy URL
 ui_hnm3=Iné meno ..
 ui_tabs=Kategorizovať moduly?
+ui_show=Displej na palubnej doske 
+ui_show_host=Názov hostiteľa systému
+ui_show_os=Operačný systém
+ui_show_ver=Verzia Usermin
+ui_show_tver=Verzia témy
+ui_show_time=Čas v systéme
 
 upgrade_title=Aktualizujte Usermin
 upgrade_title2=Nainštalujte Usermin

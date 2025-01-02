@@ -18,7 +18,6 @@ index_restart=Herstart Usermin
 index_restartmsg=Klik op deze knop om het Usermin server proces te herstarten. Dit kan nodig zijn indien u onlangs Perl heeft ge-upgrade.
 
 access_title=IP Toegang Controle
-access_desc=De Usermin server kan met dit formulier worden geconfigureerd om alleen via bepaalde IP adressen toegang te verlenen of te blokkeren. Hostnamen (zoals foo.bar.com) en IP adressen (zoals 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 or 10.254.1.5-10.254.97.127) kunnen ook gebruikt worden. U moet proberen zoveel mogelijk de toegang tot uw server te beperken met betrouwbare adressen, zeker wanneer er ook toegang is vanaf het internet. Anders kan iedereen die achter uw wachtwoord kan komen complete controle krijgen over uw systeem.
 
 bind_title=Poorten en Adressen
 bind_desc2=Met dit formulier kunt u het poort nummer instellen waar Usermin op luistert, of het alleen laat luisteren naar een enkel IP adres van uw systeem. U kunt het ook zo configureren dat hij verbindingen accepteert van verschillende poorten, of luistert naar verschillen IP adressen. LET OP - Uw browser kan een nieuwe inlog prompt geven als u poorten of bindings verandert heeft.

@@ -17,7 +17,7 @@ index_eroot=Direktori konfigurasi Usermin $1 ada, tetapi direktori akar program 
 index_restart=Restart Usermin
 index_restartmsg=Klik butang ini untuk memulakan semula proses pelayan Usermin. Ini mungkin perlu jika anda baru-baru ini dinaikkan Perl.
 
-access_desc=Pelayan Usermin boleh dikonfigurasikan untuk menafikan atau membenarkan akses hanya dari alamat IP tertentu menggunakan borang ini. Nama hos (seperti foo.bar.com) dan rangkaian IP (seperti 10.254.3.0 atau 10.254.1.0/255.255.255.128 atau 10.254.1.0/25 atau 10.254.1.5-10.254.97.127) juga boleh dimasukkan. Anda harus mengehadkan akses ke pelayan anda ke alamat yang dipercayai, terutamanya jika boleh diakses dari Internet. Jika tidak, sesiapa yang meneka kata laluan anda akan mempunyai kawalan penuh terhadap sistem anda.
+access_desc=Usermin boleh dikonfigurasikan untuk menafikan atau membenarkan akses hanya dari alamat IP tertentu menggunakan borang ini. Nama hos (seperti foo.bar.com) dan rangkaian IP (seperti 10.254.3.0 atau 10.254.1.0/255.255.255.128 atau 10.254.1.0/25 atau 10.254.1.5-10.254.97) juga boleh dimasukkan.1 Anda harus mengehadkan akses kepada Usermin kepada alamat yang dipercayai, terutamanya jika ia boleh diakses dari Internet. Jika tidak, sesiapa yang meneka kata laluan anda akan mempunyai kawalan sepenuhnya ke atas sistem anda.
 
 bind_title=Pelabuhan dan Alamat
 bind_desc2=Borang ini boleh digunakan untuk menukar nombor port yang Usermin mendengarkan, atau dengar hanya satu alamat IP pada sistem anda. Anda juga boleh mengkonfigurasinya untuk menerima sambungan pada beberapa port, atau untuk mendengar beberapa alamat IP. Perhatikan - penyemak imbas web anda boleh meminta anda untuk log masuk semula selepas menukar port atau alamat yang mengikat.
@@ -245,6 +245,12 @@ ui_hnm1=Nama hos dari URL
 ui_hnm2=Nama domain dari URL
 ui_hnm3=Nama lain ..
 ui_tabs=Categorikan modul?
+ui_show=Paparkan pada papan pemuka 
+ui_show_host=Nama hos sistem
+ui_show_os=Sistem pengendalian
+ui_show_ver=Versi penggunamin
+ui_show_tver=Versi tema
+ui_show_time=Masa pada sistem
 
 upgrade_title=Tingkatkan Usermin
 upgrade_title2=Pasang Usermin

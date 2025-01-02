@@ -1,11 +1,13 @@
 index_refresh=Obnovte moduly
 index_refreshmsg=Skontrolujte, či sú nainštalované všetky servery Webmin, a aktualizujte tie, ktoré sa nachádzajú v kategórii „Nepoužité moduly“.
 
+access_desc=Webmin môže byť nakonfigurovaný na odmietnutie alebo povolenie prístupu iba z určitých IP adries pomocou tohto formulára. Názvy hostiteľov (napríklad foo.bar.com) a siete IP (napríklad 10.254.3.0 alebo 10.254.1.0/255.255.255.128 alebo 10.254.1.0/25 alebo 10.254.1.5-10.254.254.0BD:08A:0BC:0127 alebo 2001:DB8::/32). Prístup k Webminu by ste mali obmedziť na dôveryhodné adresy, najmä ak je prístupný z internetu. V opačnom prípade bude mať každý, kto uhádne vaše heslo, úplnú kontrolu nad vaším systémom.
 access_local=Zahrnúť miestnu sieť do zoznamu
 access_eip6=$1 nie je úplná adresa IPv6 alebo sieťová adresa
 access_ecidr6=$1 nie je platná veľkosť siete IPv6
 access_ecidr8=Veľkosť siete IPv6 „$1“ musí byť deliteľná 8
 access_trust=Dôverujete vzdialenej IP adrese poskytovanej servermi proxy?
+access_trust_ssl=Dôverovať certifikátu klienta SSL poskytovanému servermi proxy?
 
 bind_firewall=Otvoriť nové porty na bráne firewall?
 bind_websocport=Číslo základného portu pre pripojenia WebSockets

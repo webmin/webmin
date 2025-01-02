@@ -1,4 +1,6 @@
+access_desc=Webmin można skonfigurować tak, aby odmawiał lub zezwalał na dostęp tylko z określonych adresów IP, używając tego formularza. Można również wprowadzić nazwy hostów (takie jak foo.bar.com) i sieci IP (takie jak 10.254.3.0 lub 10.254.1.0/255.255.255.128 lub 10.254.1.0/25 lub 10.254.1.5-10.254.97.127 lub 2001:DB8::A0BC:0001 lub 2001:DB8::/32). Należy ograniczyć dostęp do Webmin do zaufanych adresów, zwłaszcza jeśli jest on dostępny z Internetu. W przeciwnym razie każdy, kto odgadnie Twoje hasło, będzie miał pełną kontrolę nad Twoim systemem.
 access_ecidr8=Rozmiar sieci IPv6 „$1” musi być podzielny przez 8
+access_trust_ssl=Czy można zaufać certyfikatowi klienta SSL dostarczanemu przez serwery proxy?
 
 bind_websocport=Numer portu bazowego dla połączeń WebSockets
 bind_websocport_none=Domyślne (555)

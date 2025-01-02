@@ -18,7 +18,7 @@ index_restart=Reporniți Usermin
 index_restartmsg=Faceți clic pe acest buton pentru a relansa procesul serverului Usermin. Acest lucru poate fi necesar dacă ați actualizat recent Perl.
 
 access_title=Control acces IP
-access_desc=Serverul Usermin poate fi configurat pentru a refuza sau permite accesul numai de la anumite adrese IP folosind acest formular. Numele de gazdă (cum ar fi foo.bar.com) și rețelele IP (cum ar fi 10.254.3.0 sau 10.254.1.0/255.255.255.128 sau 10.254.1.0/25 sau 10.254.1.5-10.254.97.127) pot fi de asemenea introduse. Ar trebui să vă limitați accesul la serverul dvs. la adrese de încredere, în special dacă este accesibil de pe Internet. În caz contrar, oricine ghicește parola dvs. va avea controlul complet asupra sistemului dvs.
+access_desc=Usermin poate fi configurat să refuze sau să permită accesul numai de la anumite adrese IP folosind acest formular. De asemenea, pot fi introduse nume de gazdă (cum ar fi foo.bar.com) și rețele IP (cum ar fi 10.254.3.0 sau 10.254.1.0/255.255.255.128 sau 10.254.1.0/25 sau 10.254.1.5-10.254.97.127). Ar trebui să limitați accesul la Usermin la adrese de încredere, mai ales dacă este accesibil de pe Internet. În caz contrar, oricine vă ghiceste parola va avea control complet asupra sistemului dumneavoastră.
 
 bind_title=Porturi și adrese
 bind_desc2=Acest formular poate fi utilizat pentru a schimba numărul de port pe care Usermin îl ascultă sau pentru a-l asculta doar pe o singură adresă IP din sistem. Puteți configura, de asemenea, pentru a accepta conexiuni pe mai multe porturi sau pentru a asculta mai multe adrese IP. Notă - browserul dvs. web vă poate solicita să vă conectați din nou după schimbarea portului sau a adresei de legare.
@@ -250,6 +250,12 @@ ui_hnm1=Nume gazdă de la URL
 ui_hnm2=Numele de domeniu de la URL
 ui_hnm3=Alt nume ..
 ui_tabs=Categorizați modulele?
+ui_show=Afișare pe tabloul de bord 
+ui_show_host=Nume gazdă a sistemului
+ui_show_os=Sistem de operare
+ui_show_ver=Versiunea Usermin
+ui_show_tver=Versiune tematică
+ui_show_time=Timp pe sistem
 
 upgrade_title=Actualizați Usermin
 upgrade_title2=Instalați Usermin

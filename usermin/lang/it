@@ -17,7 +17,6 @@ index_restart=Riavvia Usermin
 index_restartmsg=Clicca su questo pulsante per riavviare il processo del server Usermin. Ciò potrebbe essere necessario se hai aggiornato Perl.
 
 access_title=Controllo di accesso IP
-access_desc=Con questo modulo il server Usermin può essere configurato per negare o permettere l'accesso a determinati indirizzi IP. Nomi (es. foo.bar.com) e reti IP (like 10.254.3.0 or 10.254.1.0/255.255.255.128) possono essere inseriti. E' buona regola limitare l'accesso solamente ad indirizzi sicuri, specialmente se il server è esposto a Internet. Altrimenti, chi è venuto in possesso delle password può entrare nel sistema.
 
 bind_title=Porte ed Indirizzi
 bind_desc2=Questa pagina può essere usata per modificare il numero di porta sulla quale Usermin è in ascolto, o consentire l'ascolto solo su un indirizzo IP del tuo sistema. Puoi anche configurare Usermin per accettare connessioni su più porte, o mettersi in ascolto su più indirizzi IP. Nota - Il tuo browser web potrebbe nuovamente chiederti le credenziali di accesso dopo aver cambiato la porta o l'indirizzo.

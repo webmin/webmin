@@ -1,7 +1,16 @@
+access_desc=Usermin można skonfigurować tak, aby odmawiał lub zezwalał na dostęp tylko z określonych adresów IP za pomocą tego formularza. Można również wprowadzić nazwy hostów (takie jak foo.bar.com) i sieci IP (takie jak 10.254.3.0 lub 10.254.1.0/255.255.255.128 lub 10.254.1.0/25 lub 10.254.1.5-10.254.97.127). Należy ograniczyć dostęp do Usermin do zaufanych adresów, zwłaszcza jeśli jest on dostępny z Internetu. W przeciwnym razie każdy, kto odgadnie Twoje hasło, będzie miał pełną kontrolę nad Twoim systemem.
+
 lang_title=Język i lokalizacja
 lang_title2=Język i ustawienia regionalne Usermin
 
 session_authmode=Metoda Uwierzytelnienia
+
+ui_show=Wyświetl na desce rozdzielczej
+ui_show_host=Nazwa hosta systemu
+ui_show_os=System operacyjny
+ui_show_ver=Wersja użytkownika min
+ui_show_tver=Wersja motywu
+ui_show_time=Czas w systemie
 
 advanced_pass_desc=Udostępnić hasło programom Usermin?
 advanced_pass_help=Nie działa, gdy włączone jest uwierzytelnianie sesji

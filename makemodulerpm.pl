@@ -32,9 +32,9 @@ my $release = 1;
 $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin";
 my $allow_overwrite = 0;
 
-my ($force_theme, $rpmdepends, $no_prefix, $vendor, $provides, $url,
-    $force_usermin, $final_mod, $sign, $keyname, $epoch, $dir, $ver, @extrareqs,
-    @exclude);
+my ($force_theme, $rpmdepends, $no_prefix, $set_prefix, $vendor, $provides,
+    $obsoletes, $url, $force_usermin, $final_mod, $sign, $keyname, $epoch, $dir,
+    $ver, @extrareqs, @exclude);
 
 # Parse command-line args
 while(@ARGV) {
@@ -55,11 +55,17 @@ while(@ARGV) {
 	elsif ($a eq "--no-prefix") {
 		$no_prefix = 1;
 		}
+	elsif ($a eq "--prefix") {
+		$set_prefix = &untaint(shift(@ARGV));
+		}
 	elsif ($a eq "--vendor") {
 		$vendor = &untaint(shift(@ARGV));
 		}
 	elsif ($a eq "--provides") {
 		$provides = &untaint(shift(@ARGV));
+		}
+	elsif ($a eq "--obsoletes") {
+		$obsoletes = &untaint(shift(@ARGV));
 		}
 	elsif ($a eq "--url") {
 		$url = shift(@ARGV);
@@ -116,6 +122,7 @@ if (!$dir) {
 	print "                        [--rpm-dir directory]\n";
 	print "                        [--rpm-depends]\n";
 	print "                        [--no-prefix]\n";
+	print "	                       [--prefix prefix]\n";
 	print "                        [--vendor name]\n";
 	print "                        [--licence name]\n";
 	print "                        [--url url]\n";
@@ -194,6 +201,7 @@ else {
 	die "$source_dir does not appear to be a webmin module or theme";
 	}
 $prefix = "" if ($no_prefix);
+$prefix = $set_prefix if ($set_prefix);
 my $ucprog = ucfirst($prog);
 
 # Copy the directory to a temp location for tarring
@@ -259,13 +267,14 @@ if ($rpmdepends && defined($minfo{'depends'})) {
 			my $curr_dir = $0;
 			($curr_dir) = $curr_dir =~ /^(.+)\/[^\/]+$/;
 			$curr_dir = "." if ($curr_dir !~ /^\//);
-			open(my $fh, '<', "$curr_dir/mod_def_list.txt") || die "Error opening \"mod_def_list.txt\" : $!\n";
+			my $mod_def_file = "$curr_dir/mod_def_list.txt";
+			next if (! -r $mod_def_file);
+			open(my $fh, '<', $mod_def_file) ||
+				die "Error opening \"$mod_def_file\" : $!\n";
 			$mod_def_list = do { local $/; <$fh> };
 			close($fh);
 			@mod_def_list = split(/\s+/, $mod_def_list);
-			if ( grep( /^$dmod$/, @mod_def_list ) ) {
-				  next;
-				}
+			next if (grep( /^$dmod$/, @mod_def_list ));
 			}
 		push(@rdeps, $dwebmin ? ("webmin", ">=", $dwebmin) :
 			     $dver ? ($prefix.$dmod, ">=", $dver) :
@@ -276,6 +285,7 @@ if ($rpmdepends && defined($minfo{'depends'})) {
 
 # Create the SPEC file
 my $providesheader = $provides ? "Provides: $provides" : "";
+my $obsoletesheader = $obsoletes ? "Obsoletes: $obsoletes" : "";
 my $vendorheader = $vendor ? "Vendor: $vendor" : "";
 my $urlheader = $url ? "URL: $url" : "";
 my $epochheader = $epoch ? "Epoch: $epoch" : "";
@@ -301,6 +311,7 @@ BuildRoot: /tmp/%{name}-%{version}
 BuildArchitectures: noarch
 $epochheader
 $providesheader
+$obsoletesheader
 $vendorheader
 $urlheader
 %description

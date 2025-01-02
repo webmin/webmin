@@ -18,7 +18,6 @@ index_restart=Omstart Usermin
 index_restartmsg=Klikk på denne knappen for å omstarte Usermin tjenerprosessen. Dette kan være nødvendig dersom du nylig har oppgradert Perl.
 
 access_title=IP tilgangskontroll
-access_desc=Usermin tjeneren kan konfigureres til å nekte eller tillate tilgang bare fra visse IP adresser vha. dette skjemaet. Vertsnavn (som foo.bar.no) og IP nettverk (som 10.254.3.0 eller 10.254.1.0/255.255.255.128) kan også angis. Du bør begrense tilgangen til tjeneren din til betrodde adresser, spesielt dersom den kan nås fra Internet. Ellers vil en hver som gjetter passordet ditt ha full kontroll over systemet ditt.
 
 bind_title=Porter og adresser
 bind_desc2=Dette skjemaet kan brukes til å endre portnummeret som Usermin lytter på, eller til å la Usermin kun lytte på en enkelt IP adresse på systemet ditt. Du kan også konfigurere Usermin til å godta tilkoblinger på flere porter, eller lytte på flere IP adresser. NB! Det kan hende at nettleseren din ber deg logge inn på nytt etter at du har endret port eller IP adresse.
