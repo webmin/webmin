@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    uses: webmin/webmin-ci-cd/build/workflow/testing-master-workflow.yml@master
+    uses: webmin/webmin-ci-cd/.github/workflows/testing-master-workflow.yml@master
     with:
       build-type: package
       project-name: webmin
