@@ -1,4 +1,4 @@
-name: "webmin.dev: Webmin"
+name: "webmin.dev: webmin/webmin"
 
 on:
   push:
@@ -7,29 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.message, '[build]')
-    steps:
-      - uses: actions/checkout@v3
-      - uses: awalsh128/cache-apt-pkgs-action@latest
-        with: 
-          packages: git tar gzip openssl curl openssh-client rpm perl libjson-pp-perl libdigest-sha-perl liblist-moreutils-perl libencode-detect-perl zstd
-          version: 1.0
-      - uses: szenius/set-timezone@v1.2
-        with:
-          timezoneLinux: "Europe/Nicosia"
-      - name: Fetch dependencies
-        run: |-
-          curl -O https://raw.githubusercontent.com/webmin/webmin-ci-cd/main/build/bootstrap.bash
-      - name: Build and upload packages
-        env:
-          CLOUD__GPG_PH: ${{ secrets.DEV_GPG_PH }}
-          CLOUD__IP_ADDR: ${{ secrets.DEV_IP_ADDR }}
-          CLOUD__UPLOAD_SSH_USER: ${{ secrets.DEV_UPLOAD_SSH_USER }}
-          CLOUD__UPLOAD_SSH_DIR: ${{ secrets.DEV_UPLOAD_SSH_DIR }}
-          CLOUD__SSH_PRV_KEY: ${{ secrets.DEV_SSH_PRV_KEY }}
-          CLOUD__GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |-
-          bash bootstrap.bash
-          bash build-deb-package.bash webmin --testing
-          bash build-rpm-package.bash webmin --testing
+    uses: webmin/webmin-ci-cd/.github/workflows/testing-master-workflow.yml@master
+    with:
+      build-type: package
+      project-name: webmin
