@@ -1649,7 +1649,8 @@ my $dropsql = $drop ? "--add-drop-table" : "";
 my $singlesql = $single ? "--single-transaction" : "";
 my $forcesql = $force ? "--force" : "";
 my $quicksql = $quick ? "--quick" : "";
-my $parameterssql = $parameters ? quotemeta($parameters) : "";
+my $parameterssql = $parameters ?
+	join(" ", map { quotemeta($_) } split(/\s+/, $parameters)) : "";
 my $wheresql = $where ? "--where=".quotemeta($in{'where'}) : "";
 my $charsetsql = $charset ?
 	"--default-character-set=".quotemeta($charset) : "";
