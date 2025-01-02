@@ -10,12 +10,6 @@ webmin_download_testing="https://download.webmin.dev"
 webmin_key="developers-key.asc"
 webmin_key_download="$webmin_download/$webmin_key"
 webmin_key_suffix="webmin-developers"
-debian_repo_file="/etc/apt/sources.list.d/webmin.list"
-debian_repo_file_testing="/etc/apt/sources.list.d/webmin-testing.list"
-rhel_repo_file="/etc/yum.repos.d/webmin.repo"
-rhel_repo_file_testing="/etc/yum.repos.d/webmin-testing.repo"
-suse_repo_file="/etc/zypp/repos.d/webmin.repo"
-suse_repo_file_testing="/etc/zypp/repos.d/webmin-testing.repo"
 download_curl="/usr/bin/curl"
 download="$download_curl -f -s -L -O"
 testing_mode=0
@@ -100,6 +94,7 @@ detect_os() {
     update="apt-get update"
   elif [ -n "$osid_rhel_like" ]; then
     package_type=rpm
+    repo_extra_opts=""
     if command -pv dnf 1>/dev/null 2>&1; then
       install_cmd="dnf install"
       install="$install_cmd -y"
@@ -110,14 +105,29 @@ detect_os() {
       clean="yum clean all"
     fi
   elif [ -n "$osid_suse_like" ]; then
-    package_type=rpm-md
+    package_type=rpm
     install_cmd="zypper install"
     install="$install_cmd -y"
-    clean="zypper clean --all"
+    clean="zypper clean"
+    repo_extra_opts="autorefresh=1"
   else
     echo "${RED}Error:${NORMAL} Unknown OS : $osid"
     exit 1
   fi
+}
+
+set_os_variables() {
+  # Debian-based
+  debian_repo_file="/etc/apt/sources.list.d/webmin.list"
+  debian_repo_file_testing="/etc/apt/sources.list.d/webmin-testing.list"
+  
+  # RPM-based
+  rpm_repo_dir="/etc/yum.repos.d"
+  if [ -n "$osid_suse_like" ]; then
+    rpm_repo_dir="/etc/zypp/repos.d"
+  fi
+  rpm_repo_file="$rpm_repo_dir/webmin.repo"
+  rpm_repo_file_testing="$rpm_repo_dir/webmin-testing.repo"
 }
 
 ask_confirmation() {
@@ -180,59 +190,34 @@ download_key() {
 
 setup_repos() {
   case "$package_type" in
-    rpm-md)
-      if [ "$testing_mode" = "1" ]; then
-        echo "  Setting up Webmin testing repository .."
-        cat << EOF > "$suse_repo_file_testing"
-[webmin-testing]
-name=Webmin Testing
-baseurl=$webmin_download_testing
-enabled=1
-autorefresh=1
-type=rpm-md
-gpgkey=$webmin_key_download
-gpgcheck=1
-EOF
-      else
-        echo "  Setting up Webmin repository .."
-        cat << EOF > "$suse_repo_file"
-[webmin]
-name=Webmin Stable
-baseurl=$webmin_download/download/newkey/yum
-enabled=1
-autorefresh=1
-type=rpm-md
-gpgkey=$webmin_key_download
-gpgcheck=1
-EOF
-      fi
-      echo "  .. done"
-      ;;
     rpm)
       echo "  Installing Webmin key .."
       rpm --import "$webmin_key"
+      mkdir -p "/etc/pki/rpm-gpg"
       cp -f "$webmin_key" \
         "/etc/pki/rpm-gpg/RPM-GPG-KEY-$webmin_key_suffix"
       echo "  .. done"
       if [ "$testing_mode" = "1" ]; then
         echo "  Setting up Webmin testing repository .."
-        cat << EOF > "$rhel_repo_file_testing"
+        cat << EOF > "$rpm_repo_file_testing"
 [webmin-testing-noarch]
 name=Webmin Testing
 baseurl=$webmin_download_testing
 enabled=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$webmin_key_suffix
 gpgcheck=1
+$repo_extra_opts
 EOF
       else
         echo "  Setting up Webmin repository .."
-        cat << EOF > "$rhel_repo_file"
+        cat << EOF > "$rpm_repo_file"
 [webmin-noarch]
 name=Webmin Stable
 baseurl=$webmin_download/download/newkey/yum
 enabled=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$webmin_key_suffix
 gpgcheck=1
+$repo_extra_opts
 EOF
       fi
       echo "  .. done"
@@ -289,11 +274,10 @@ process_args "$@"
 check_permission
 prepare_tmp
 detect_os
+set_os_variables
 ask_confirmation
 check_downloader
 check_gpg
-if [ ! $package_type == "rpm-md" ]; then
-    download_key
-fi
+download_key
 setup_repos
 final_msg
