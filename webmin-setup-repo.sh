@@ -14,6 +14,8 @@ debian_repo_file="/etc/apt/sources.list.d/webmin.list"
 debian_repo_file_testing="/etc/apt/sources.list.d/webmin-testing.list"
 rhel_repo_file="/etc/yum.repos.d/webmin.repo"
 rhel_repo_file_testing="/etc/yum.repos.d/webmin-testing.repo"
+suse_repo_file="/etc/zypp/repos.d/webmin.repo"
+suse_repo_file_testing="/etc/zypp/repos.d/webmin-testing.repo"
 download_curl="/usr/bin/curl"
 download="$download_curl -f -s -L -O"
 testing_mode=0
@@ -84,6 +86,7 @@ detect_os() {
 
   osid_debian_like=$(echo "$osid" | grep "debian\|ubuntu")
   osid_rhel_like=$(echo "$osid" | grep "rhel\|fedora\|centos\|openEuler")
+  osid_suse_like=$(echo "$osid" | grep "suse")
   repoid_debian_like=debian
   if [ -n "${ID}" ]; then
     repoid_debian_like="${ID}"
@@ -106,6 +109,11 @@ detect_os() {
       install="$install_cmd -y"
       clean="yum clean all"
     fi
+  elif [ -n "$osid_suse_like" ]; then
+    package_type=rpm-md
+    install_cmd="zypper install"
+    install="$install_cmd -y"
+    clean="zypper clean --all"
   else
     echo "${RED}Error:${NORMAL} Unknown OS : $osid"
     exit 1
@@ -172,6 +180,34 @@ download_key() {
 
 setup_repos() {
   case "$package_type" in
+    rpm-md)
+      if [ "$testing_mode" = "1" ]; then
+        echo "  Setting up Webmin testing repository .."
+        cat << EOF > "$suse_repo_file_testing"
+[webmin-testing]
+name=Webmin Testing
+baseurl=$webmin_download_testing
+enabled=1
+autorefresh=1
+type=rpm-md
+gpgkey=$webmin_key_download
+gpgcheck=1
+EOF
+      else
+        echo "  Setting up Webmin repository .."
+        cat << EOF > "$suse_repo_file"
+[webmin]
+name=Webmin Stable
+baseurl=$webmin_download/download/newkey/yum
+enabled=1
+autorefresh=1
+type=rpm-md
+gpgkey=$webmin_key_download
+gpgcheck=1
+EOF
+      fi
+      echo "  .. done"
+      ;;
     rpm)
       echo "  Installing Webmin key .."
       rpm --import "$webmin_key"
@@ -256,6 +292,8 @@ detect_os
 ask_confirmation
 check_downloader
 check_gpg
-download_key
+if [ ! $package_type == "rpm-md" ]; then
+    download_key
+fi
 setup_repos
 final_msg
