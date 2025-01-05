@@ -91,8 +91,8 @@ $service =~ s/[^A-Za-z0-9\-]//g;
 # Check for file in directory containing all services as xml files
 my @ports;
 my @protos;
-foreach my $services_dir ("/usr/lib/firewalld/services",
-			  "/etc/firewalld/services") {
+foreach my $services_dir ("/etc/firewalld/services",
+			  "/usr/lib/firewalld/services") {
 	my $service_file = "$services_dir/$service.xml";
 	if (-r $service_file) {
 		my $lref = &read_file_lines($service_file, 1);
@@ -104,6 +104,7 @@ foreach my $services_dir ("/usr/lib/firewalld/services",
 				push(@protos, $proto) if ($port && $proto);
 				}
 			}
+		last if (@ports);
 		}
 	}
 @ports = &unique(@ports);
