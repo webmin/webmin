@@ -79,6 +79,21 @@ EOF
   exit 1
 }
 
+post_status() {
+    status="$1"
+    message="$2"
+    if [ "$status" -eq 0 ]; then
+        echo "  .. done"
+    else
+        if [ -n "$message" ]; then
+          echo "  .. failed : $message"
+        else
+          echo "  .. failed"
+        fi
+        exit "$status"
+    fi
+}
+
 process_args() {
   for arg in "$@"; do
     case "$arg" in
@@ -281,13 +296,8 @@ check_downloader() {
       download="/usr/bin/fetch"
     else
       echo "  Installing required ${ITALIC}curl${NORMAL} from OS repos .."
-      $install curl 1>/dev/null 2>&1
-      if [ $? -ne 0 ]; then
-        echo "  .. failed to install 'curl'!"
-        exit 1
-      else
-        echo "  .. done"
-      fi
+      install_output=$($install curl 2>&1)
+      post_status $? "$(echo "$install_output" | tr '\n' ' ')"
     fi
   fi
 }
@@ -295,8 +305,10 @@ check_downloader() {
 check_gpg() {
   if [ -n "$osid_debian_like" ]; then
     if [ ! -x /usr/bin/gpg ]; then
+      echo "  Installing required ${ITALIC}gnupg${NORMAL} from OS repos .."
       $update 1>/dev/null 2>&1
-      $install gnupg 1>/dev/null 2>&1
+      install_output=$($install gnupg 2>&1)
+      post_status $? "$(echo "$install_output" | tr '\n' ' ')"
     fi
   fi
 }
@@ -305,12 +317,7 @@ download_key() {
   rm -f "/tmp/$repo_key"
   echo "  Downloading Webmin developers key .."
   download_out=$($download "$repo_key_download" 2>&1)
-  if [ $? -ne 0 ]; then
-    download_out=$(echo "$download_out" | tr '\n' ' ')
-    echo "  ..failed : $download_out"
-    exit 1
-  fi
-  echo "  .. done"
+  post_status $? "$(echo "$download_out" | tr '\n' ' ')"
 }
 
 setup_repos() {
@@ -349,7 +356,7 @@ EOF
       gpg --import "$repo_key" 1>/dev/null 2>&1
       gpg --dearmor < "$repo_key" \
         > "/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
-      echo "  .. done"
+      post_status $?
       sources_list=$(grep -v "$repo_host" /etc/apt/sources.list)
       echo "$sources_list" > /etc/apt/sources.list
       echo "  Setting up ${repo_desc_formatted} repository .."
@@ -366,8 +373,8 @@ $active_repo_download $repo_dist $repo_component"
       $clean 1>/dev/null 2>&1
       echo "  .. done"
       echo "  Downloading repository metadata .."
-      $update 1>/dev/null 2>&1
-      echo "  .. done"
+      update_output=$($update 2>&1)
+      post_status $? "$update_output"
       ;;
     *)
       echo "${RED}Error:${NORMAL} Cannot set up repositories on this system."
