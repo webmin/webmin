@@ -1,8 +1,8 @@
 #!/bin/sh
 # shellcheck disable=SC1090 disable=SC2059 disable=SC2164 disable=SC2181 disable=SC2317
 # webmin-setup-repo.sh
-# Sets up a stable, prerelease, or unstable repository for Webmin and Usermin
-# packages on Debian-based and RPM-based systems
+# Sets up a stable, prerelease, or unstable repository to provide Webmin and
+# Usermin packages on Debian-based and RPM-based systems
 
 # Default values that can be overridden
 repo_host="download.webmin.com"
@@ -256,26 +256,20 @@ ask_confirmation() {
     prerelease)
       printf \
 "\e[47;1;31;82mPrerelease builds are automated from the latest tagged release\e[0m\n"
-      printf "Setup ${repo_desc_formatted} repository? (y/N) "
       ;;
     unstable)
       printf \
 "\e[47;1;31;82mUnstable builds are automated experimental versions designed for\e[0m\n"
     printf \
 "\e[47;1;31;82mdevelopment, often containing critical bugs and breaking changes\e[0m\n"
-      printf "Setup ${repo_desc_formatted} repository? (y/N) "
-      ;;
-    *)
-      printf "Setup ${repo_desc_formatted} repository? (y/N) "
       ;;
   esac
   if [ "$force_setup" != "1" ]; then
+    printf "Setup ${repo_desc_formatted} repository? (y/N) "
     read -r sslyn
     if [ "$sslyn" != "y" ] && [ "$sslyn" != "Y" ]; then
       exit 0
     fi
-  else
-    echo
   fi
 }
 
