@@ -235,16 +235,19 @@ detect_os() {
       install_cmd="dnf install"
       install="$install_cmd -y"
       clean="dnf clean all"
+      update="dnf makecache"
     else
       install_cmd="yum install"
       install="$install_cmd -y"
       clean="yum clean all"
+      update="yum makecache"
     fi
   elif [ -n "$osid_suse_like" ]; then
     package_type=rpm
     install_cmd="zypper install"
     install="$install_cmd -y"
     clean="zypper clean"
+    update="zypper refresh"
     repo_extra_opts="autorefresh=1"
   else
     echo "${RED}Error:${NORMAL} Unknown OS : $osid"
@@ -347,6 +350,9 @@ gpgcheck=1
 $repo_extra_opts
 EOF
       echo "  .. done"
+      echo "  Downloading repository metadata .."
+      update_output=$($update 2>&1)
+      post_status $? "$update_output"
       ;;
     deb)
       rm -f \
