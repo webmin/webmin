@@ -1,18 +1,35 @@
 #!/bin/sh
 # shellcheck disable=SC1090 disable=SC2059 disable=SC2164 disable=SC2181 disable=SC2317
 # webmin-setup-repo.sh
-# Sets up a production or testing repository for Webmin and Usermin packages
-# on Debian-based and RPM-based systems
+# Sets up a stable, release candidate, or cutting-edge repository for Webmin
+# and Usermin packages on Debian-based and RPM-based systems
 
-webmin_host="download.webmin.com"
-webmin_download="https://$webmin_host"
-webmin_download_testing="https://download.webmin.dev"
-webmin_key="developers-key.asc"
-webmin_key_download="$webmin_download/$webmin_key"
-webmin_key_suffix="webmin-developers"
+# Default values that can be overridden
+repo_host="download.webmin.com"
+repo_download="https://$repo_host"
+repo_download_rc="https://rc.download.webmin.dev"
+repo_download_edge="https://edge.download.webmin.dev"
+repo_key="developers-key.asc"
+repo_key_download="$repo_download/$repo_key"
+repo_key_suffix="webmin-developers"
+repo_name="webmin-stable"
+repo_name_rc="webmin-rc"
+repo_name_edge="webmin-edge"
+repo_component="main"
+repo_dist="stable"
+repo_section="contrib"
+repo_description="Webmin Stable Releases"
+repo_description_rc="Webmin Release Candidate Builds"
+repo_description_edge="Webmin Edge Builds"
+install_check_binary="/usr/bin/webmin"
+install_message="Webmin and Usermin can be installed with:"
+install_packages="webmin usermin"
+
+# Repository mode (stable, rc, edge)
+repo_mode="stable"
+
 download_curl="/usr/bin/curl"
 download="$download_curl -f -s -L -O"
-testing_mode=0
 force_setup=0
 
 # Colors
@@ -23,27 +40,131 @@ BOLD="$(tput bold 2>/dev/null || echo '')"
 ITALIC="$(tput sitm 2>/dev/null || echo '')"
 
 usage() {
-  echo "${RED}Error:${NORMAL} Unknown or invalid argument."
-  echo "Usage: $0 [-t|--testing] [-f|--force] [-h|--help]"
-  exit "$1"
+  if [ -n "${1-}" ]; then
+    echo "${RED}Error:${NORMAL} Unknown or invalid argument: $1"
+  fi
+  echo
+  cat << EOF
+Usage: $(basename "$0") [OPTIONS]
+
+General options:
+  -f, --force                Force setup without confirmation
+  -h, --help                 Display this help message
+
+Repository types:
+  --stable                   Set up the stable repo, built with extra checks
+  --rc                       Set up the release candidate repo from latest tag
+  --edge                     Set up cutting-edge repo from the latest commit
+
+Repository configuration:
+  --host=<host>              Main repository host
+  --rc-host=<host>           Release candidate repository host
+  --edge-host=<host>         Cutting-edge repository host
+  --key=<key>                Repository signing key file
+  --key-suffix=<suffix>      Repository key suffix for file naming
+
+Repository metadata:
+  --name=<name>              Base name for repository (default: webmin)
+  --description=<desc>       Description for repository (default: Webmin)
+  --component=<comp>         Repository component (default: main)
+  --section=<sec>            Repository section (default: contrib)
+  --dist=<dist>              Distribution name (default: stable)
+
+Post-installation options:
+  --check-binary=<path>      Binary to check in post-install
+  --install-message=<msg>    Message to show in post-install if binary not found
+  --install-packages=<pkgs>  Packages to suggest for installation
+
+EOF
+  exit 1
 }
 
 process_args() {
   for arg in "$@"; do
     case "$arg" in
-      -t|--testing) testing_mode=1 ;;
+      --stable) repo_mode="stable" ;;
+      --rc) repo_mode="rc" ;;
+      --edge) repo_mode="edge" ;;
       -f|--force) force_setup=1 ;;
-      -h|--help)
-        echo "Usage: $0 [-t|--testing] [-f|--force] [-h|--help]"
-        exit 0
+      -h|--help) usage ;;
+      --host=*)
+        repo_host="${arg#*=}"
+        repo_download="https://$repo_host"
+        repo_key_download="$repo_download/$repo_key"
+        ;;
+      --rc-host=*)
+        repo_download_rc="https://${arg#*=}"
+        ;;
+      --edge-host=*)
+        repo_download_edge="https://${arg#*=}"
+        ;;
+      --key=*)
+        repo_key="${arg#*=}"
+        repo_key_download="$repo_download/$repo_key"
+        ;;
+      --key-suffix=*)
+        repo_key_suffix="${arg#*=}"
+        ;;
+      --name=*)
+        base_name="${arg#*=}"
+        repo_name="$base_name"
+        repo_name_rc="${base_name}-rc"
+        repo_name_edge="${base_name}-edge"
+        ;;
+      --description=*)
+        base_description="${arg#*=}"
+        repo_description="$base_description Stable Releases"
+        repo_description_rc="${base_description} Release Candidate Builds"
+        repo_description_edge="${base_description} Edge Builds"
+        ;;
+      --component=*)
+        repo_component="${arg#*=}"
+        ;;
+      --section=*)
+        repo_section="${arg#*=}"
+        ;;
+      --dist=*)
+        repo_dist="${arg#*=}"
+        ;;
+      --check-binary=*)
+        install_check_binary="${arg#*=}"
+        ;;
+      --install-message=*)
+        install_message="${arg#*=}"
+        ;;
+      --install-packages=*)
+        install_packages="${arg#*=}"
         ;;
       *)
-        echo "${RED}Error:${NORMAL} Unknown argument: $arg"
-        echo "Usage: $0 [-t|--testing] [-f|--force] [-h|--help]"
-        exit 1
+        usage "$arg"
         ;;
     esac
   done
+
+  # Set active repo variables based on mode
+  case "$repo_mode" in
+    rc)
+      active_repo_name="$repo_name_rc"
+      active_repo_description="$repo_description_rc"
+      active_repo_download="$repo_download_rc"
+      if [ "$repo_dist" = "stable" ]; then
+        repo_dist="webmin"
+      fi
+      ;;
+    edge)
+      active_repo_name="$repo_name_edge"
+      active_repo_description="$repo_description_edge"
+      active_repo_download="$repo_download_edge"
+      if [ "$repo_dist" = "stable" ]; then
+        repo_dist="webmin"
+      fi
+      ;;
+    *)
+      active_repo_name="$repo_name"
+      active_repo_description="$repo_description"
+      active_repo_download="$repo_download"
+      ;;
+  esac
 }
 
 check_permission() {
@@ -118,33 +239,43 @@ detect_os() {
 
 set_os_variables() {
   # Debian-based
-  debian_repo_file="/etc/apt/sources.list.d/webmin.list"
-  debian_repo_file_testing="/etc/apt/sources.list.d/webmin-testing.list"
+  debian_repo_file="/etc/apt/sources.list.d/$active_repo_name.list"
   
   # RPM-based
   rpm_repo_dir="/etc/yum.repos.d"
   if [ -n "$osid_suse_like" ]; then
     rpm_repo_dir="/etc/zypp/repos.d"
   fi
-  rpm_repo_file="$rpm_repo_dir/webmin.repo"
-  rpm_repo_file_testing="$rpm_repo_dir/webmin-testing.repo"
+  rpm_repo_file="$rpm_repo_dir/$active_repo_name.repo"
 }
 
 ask_confirmation() {
+    repo_desc_formatted=$(echo "$active_repo_description" | \
+      sed 's/\([^ ]*\)\(.*\)/\1\L\2/')
+  case "$repo_mode" in
+    rc)
+      printf \
+"\e[47;1;31;82mRelease candidate builds are automated and based on the latest tagged release\e[0m\n"
+      printf "Setup ${repo_desc_formatted} repository? (y/N) "
+      ;;
+    edge)
+      printf \
+"\e[47;1;31;82mCutting-edge builds are automated, experimental, and unstable versions for\e[0m\n"
+    printf \
+"\e[47;1;31;82mdevelopment, potentially containing critical bugs and breaking changes    \e[0m\n"
+      printf "Setup ${repo_desc_formatted} repository? (y/N) "
+      ;;
+    *)
+      printf "Setup ${repo_desc_formatted} repository? (y/N) "
+      ;;
+  esac
   if [ "$force_setup" != "1" ]; then
-    if [ "$testing_mode" = "1" ]; then
-      printf \
-"\e[47;1;31;82mRolling builds are experimental and unstable versions used for testing\e[0m\n"
-      printf \
-"\e[47;1;31;82mand development purposes, may have critical bugs and breaking changes!\e[0m\n"
-      printf "Setup Webmin testing repository? (y/N) "
-    else
-      printf "Setup Webmin repository? (y/N) "
-    fi
     read -r sslyn
     if [ "$sslyn" != "y" ] && [ "$sslyn" != "Y" ]; then
       exit 0
     fi
+  else
+    echo
   fi
 }
 
@@ -158,7 +289,7 @@ check_downloader() {
       echo "  Installing required ${ITALIC}curl${NORMAL} from OS repos .."
       $install curl 1>/dev/null 2>&1
       if [ $? -ne 0 ]; then
-        echo "  .. failed to install 'wget'!"
+        echo "  .. failed to install 'curl'!"
         exit 1
       else
         echo "  .. done"
@@ -177,9 +308,9 @@ check_gpg() {
 }
 
 download_key() {
-  rm -f "/tmp/$webmin_key"
-  echo "  Downloading Webmin key .."
-  download_out=$($download "$webmin_key_download" 2>&1)
+  rm -f "/tmp/$repo_key"
+  echo "  Downloading Webmin developers key .."
+  download_out=$($download "$repo_key_download" 2>&1)
   if [ $? -ne 0 ]; then
     download_out=$(echo "$download_out" | tr '\n' ' ')
     echo "  ..failed : $download_out"
@@ -189,63 +320,53 @@ download_key() {
 }
 
 setup_repos() {
+  repo_desc_formatted=$(echo "$active_repo_description" | \
+      sed 's/\([^ ]*\)\(.*\)/\1\L\2/')
   case "$package_type" in
     rpm)
-      echo "  Installing Webmin key .."
-      rpm --import "$webmin_key"
+      echo "  Installing Webmin developers key .."
+      rpm --import "$repo_key"
       mkdir -p "/etc/pki/rpm-gpg"
-      cp -f "$webmin_key" \
-        "/etc/pki/rpm-gpg/RPM-GPG-KEY-$webmin_key_suffix"
+      cp -f "$repo_key" \
+        "/etc/pki/rpm-gpg/RPM-GPG-KEY-$repo_key_suffix"
       echo "  .. done"
-      if [ "$testing_mode" = "1" ]; then
-        echo "  Setting up Webmin testing repository .."
-        cat << EOF > "$rpm_repo_file_testing"
-[webmin-testing-noarch]
-name=Webmin Testing
-baseurl=$webmin_download_testing
-enabled=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$webmin_key_suffix
-gpgcheck=1
-$repo_extra_opts
-EOF
+      echo "  Setting up ${repo_desc_formatted} repository .."
+      if [ "$repo_mode" = "stable" ]; then
+        repo_url="$active_repo_download/download/newkey/yum"
       else
-        echo "  Setting up Webmin repository .."
-        cat << EOF > "$rpm_repo_file"
-[webmin-noarch]
-name=Webmin Stable
-baseurl=$webmin_download/download/newkey/yum
+        repo_url="$active_repo_download"
+      fi
+      cat << EOF > "$rpm_repo_file"
+[$active_repo_name-noarch]
+name=$active_repo_description
+baseurl=$repo_url
 enabled=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$webmin_key_suffix
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$repo_key_suffix
 gpgcheck=1
 $repo_extra_opts
 EOF
-      fi
       echo "  .. done"
       ;;
     deb)
       rm -f \
-"/usr/share/keyrings/debian-$webmin_key_suffix.gpg" \
-"/usr/share/keyrings/$repoid_debian_like-$webmin_key_suffix.gpg"
-      echo "  Installing Webmin key .."
-      gpg --import "$webmin_key" 1>/dev/null 2>&1
-      gpg --dearmor < "$webmin_key" \
-        > "/usr/share/keyrings/$repoid_debian_like-$webmin_key_suffix.gpg"
+"/usr/share/keyrings/debian-$repo_key_suffix.gpg" \
+"/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
+      echo "  Installing Webmin developers key .."
+      gpg --import "$repo_key" 1>/dev/null 2>&1
+      gpg --dearmor < "$repo_key" \
+        > "/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
       echo "  .. done"
-      sources_list=$(grep -v "$webmin_host" /etc/apt/sources.list)
+      sources_list=$(grep -v "$repo_host" /etc/apt/sources.list)
       echo "$sources_list" > /etc/apt/sources.list
-      if [ "$testing_mode" = "1" ]; then
-        echo "  Setting up Webmin testing repository .."
-        echo \
-"deb [signed-by=/usr/share/keyrings/$repoid_debian_like-$webmin_key_suffix.gpg] \
-$webmin_download_testing webmin main" \
-        > "$debian_repo_file_testing"
+      echo "  Setting up ${repo_desc_formatted} repository .."
+      if [ "$repo_mode" = "stable" ]; then
+        repo_line="deb [signed-by=/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg] \
+$active_repo_download/download/newkey/repository $repo_dist $repo_section"
       else
-        echo "  Setting up Webmin repository .."
-        echo \
-"deb [signed-by=/usr/share/keyrings/$repoid_debian_like-$webmin_key_suffix.gpg] \
-$webmin_download/download/newkey/repository stable contrib" \
-        > "$debian_repo_file"
+        repo_line="deb [signed-by=/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg] \
+$active_repo_download $repo_dist $repo_component"
       fi
+      echo "$repo_line" > "$debian_repo_file"
       echo "  .. done"
       echo "  Cleaning repository metadata .."
       $clean 1>/dev/null 2>&1
@@ -262,10 +383,11 @@ $webmin_download/download/newkey/repository stable contrib" \
 }
 
 final_msg() {
-  if [ ! -x "/usr/bin/webmin" ]; then
-    echo "Webmin and Usermin can be installed with:"
-    echo "  ${GREEN}${BOLD}${ITALIC}$install_cmd webmin usermin${NORMAL}"
+  if [ "$install_check_binary" != "0" ] && [ ! -x "$install_check_binary" ]; then
+    echo "$install_message"
+    echo "  ${GREEN}${BOLD}${ITALIC}$install_cmd $install_packages${NORMAL}"
   fi
+  
   exit 0
 }
 
