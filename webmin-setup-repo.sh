@@ -8,7 +8,7 @@
 repo_host="download.webmin.com"
 repo_download="https://$repo_host"
 repo_download_rc="https://rc.download.webmin.dev"
-repo_download_edge="https://edge.download.webmin.dev"
+repo_download_edge="https://download.webmin.dev"
 repo_key="developers-key.asc"
 repo_key_download="$repo_download/$repo_key"
 repo_key_suffix="webmin-developers"
