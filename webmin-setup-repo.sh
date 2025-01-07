@@ -1,31 +1,31 @@
 #!/bin/sh
 # shellcheck disable=SC1090 disable=SC2059 disable=SC2164 disable=SC2181 disable=SC2317
 # webmin-setup-repo.sh
-# Sets up a stable, release candidate, or cutting-edge repository for Webmin
-# and Usermin packages on Debian-based and RPM-based systems
+# Sets up a stable, prerelease, or unstable repository for Webmin and Usermin
+# packages on Debian-based and RPM-based systems
 
 # Default values that can be overridden
 repo_host="download.webmin.com"
 repo_download="https://$repo_host"
-repo_download_rc="https://rc.download.webmin.dev"
-repo_download_edge="https://download.webmin.dev"
+repo_download_prerelease="https://rc.download.webmin.dev"
+repo_download_unstable="https://download.webmin.dev"
 repo_key="developers-key.asc"
 repo_key_download="$repo_download/$repo_key"
 repo_key_suffix="webmin-developers"
 repo_name="webmin-stable"
-repo_name_rc="webmin-rc"
-repo_name_edge="webmin-edge"
+repo_name_prerelease="webmin-prerelease"
+repo_name_unstable="webmin-unstable"
 repo_component="main"
 repo_dist="stable"
 repo_section="contrib"
-repo_description="Webmin Stable Releases"
-repo_description_rc="Webmin Release Candidate Builds"
-repo_description_edge="Webmin Edge Builds"
+repo_description="Webmin Releases"
+repo_description_prerelease="Webmin Prerelease"
+repo_description_unstable="Webmin Development Builds"
 install_check_binary="/usr/bin/webmin"
 install_message="Webmin and Usermin can be installed with:"
 install_packages="webmin usermin"
 
-# Repository mode (stable, rc, edge)
+# Repository mode (stable, prerelease, unstable)
 repo_mode="stable"
 
 download_curl="/usr/bin/curl"
@@ -52,14 +52,14 @@ General options:
   -h, --help                 Display this help message
 
 Repository types:
-  --stable                   Set up the stable repo, built with extra checks
-  --rc                       Set up the release candidate repo from latest tag
-  --edge                     Set up cutting-edge repo from the latest commit
+  --stable                   Set up the stable repo, built with extra testing
+  --prerelease               Set up the prerelease repo built from latest tag
+  --unstable                 Set up unstable repo built from the latest commit
 
 Repository configuration:
   --host=<host>              Main repository host
-  --rc-host=<host>           Release candidate repository host
-  --edge-host=<host>         Cutting-edge repository host
+  --prerelease-host=<host>   Prerelease repository host
+  --unstable-host=<host>     Unstable repository host
   --key=<key>                Repository signing key file
   --key-suffix=<suffix>      Repository key suffix for file naming
 
@@ -83,8 +83,8 @@ process_args() {
   for arg in "$@"; do
     case "$arg" in
       --stable) repo_mode="stable" ;;
-      --rc) repo_mode="rc" ;;
-      --edge) repo_mode="edge" ;;
+      --prerelease|--rc) repo_mode="prerelease" ;;
+      --unstable|--testing|-t) repo_mode="unstable" ;;
       -f|--force) force_setup=1 ;;
       -h|--help) usage ;;
       --host=*)
@@ -92,11 +92,11 @@ process_args() {
         repo_download="https://$repo_host"
         repo_key_download="$repo_download/$repo_key"
         ;;
-      --rc-host=*)
-        repo_download_rc="https://${arg#*=}"
+      --prerelease-host=*)
+        repo_download_prerelease="https://${arg#*=}"
         ;;
-      --edge-host=*)
-        repo_download_edge="https://${arg#*=}"
+      --unstable-host=*)
+        repo_download_unstable="https://${arg#*=}"
         ;;
       --key=*)
         repo_key="${arg#*=}"
@@ -108,14 +108,14 @@ process_args() {
       --name=*)
         base_name="${arg#*=}"
         repo_name="$base_name"
-        repo_name_rc="${base_name}-rc"
-        repo_name_edge="${base_name}-edge"
+        repo_name_prerelease="${base_name}-prerelease"
+        repo_name_unstable="${base_name}-unstable"
         ;;
       --description=*)
         base_description="${arg#*=}"
-        repo_description="$base_description Stable Releases"
-        repo_description_rc="${base_description} Release Candidate Builds"
-        repo_description_edge="${base_description} Edge Builds"
+        repo_description="$base_description Releases"
+        repo_description_prerelease="${base_description} Prerelease"
+        repo_description_unstable="${base_description} Development Builds"
         ;;
       --component=*)
         repo_component="${arg#*=}"
@@ -143,18 +143,18 @@ process_args() {
 
   # Set active repo variables based on mode
   case "$repo_mode" in
-    rc)
-      active_repo_name="$repo_name_rc"
-      active_repo_description="$repo_description_rc"
-      active_repo_download="$repo_download_rc"
+    prerelease)
+      active_repo_name="$repo_name_prerelease"
+      active_repo_description="$repo_description_prerelease"
+      active_repo_download="$repo_download_prerelease"
       if [ "$repo_dist" = "stable" ]; then
         repo_dist="webmin"
       fi
       ;;
-    edge)
-      active_repo_name="$repo_name_edge"
-      active_repo_description="$repo_description_edge"
-      active_repo_download="$repo_download_edge"
+    unstable)
+      active_repo_name="$repo_name_unstable"
+      active_repo_description="$repo_description_unstable"
+      active_repo_download="$repo_download_unstable"
       if [ "$repo_dist" = "stable" ]; then
         repo_dist="webmin"
       fi
@@ -253,16 +253,16 @@ ask_confirmation() {
     repo_desc_formatted=$(echo "$active_repo_description" | \
       sed 's/\([^ ]*\)\(.*\)/\1\L\2/')
   case "$repo_mode" in
-    rc)
+    prerelease)
       printf \
-"\e[47;1;31;82mRelease candidate builds are automated and based on the latest tagged release\e[0m\n"
+"\e[47;1;31;82mPrerelease builds are automated from the latest tagged release\e[0m\n"
       printf "Setup ${repo_desc_formatted} repository? (y/N) "
       ;;
-    edge)
+    unstable)
       printf \
-"\e[47;1;31;82mCutting-edge builds are automated, experimental, and unstable versions for\e[0m\n"
+"\e[47;1;31;82mUnstable builds are automated experimental versions designed for\e[0m\n"
     printf \
-"\e[47;1;31;82mdevelopment, potentially containing critical bugs and breaking changes    \e[0m\n"
+"\e[47;1;31;82mdevelopment, often containing critical bugs and breaking changes\e[0m\n"
       printf "Setup ${repo_desc_formatted} repository? (y/N) "
       ;;
     *)
