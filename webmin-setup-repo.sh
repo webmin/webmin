@@ -24,6 +24,8 @@ repo_description_unstable="Webmin Development Builds"
 install_check_binary="/usr/bin/webmin"
 install_message="Webmin and Usermin can be installed with:"
 install_packages="webmin usermin"
+repo_auth_user=""
+repo_auth_pass=""
 
 # Repository mode (stable, prerelease, unstable)
 repo_mode="stable"
@@ -62,6 +64,8 @@ Repository configuration:
   --unstable-host=<host>     Unstable repository host
   --key=<key>                Repository signing key file
   --key-suffix=<suffix>      Repository key suffix for file naming
+  --auth-user=<user>         Repository authentication username
+  --auth-pass=<pass>         Repository authentication password
 
 Repository metadata:
   --name=<name>              Base name for repository (default: webmin)
@@ -119,6 +123,12 @@ process_args() {
         ;;
       --key-suffix=*)
         repo_key_suffix="${arg#*=}"
+        ;;
+      --auth-user=*)
+        repo_auth_user="${arg#*=}"
+        ;;
+      --auth-pass=*)
+        repo_auth_pass="${arg#*=}"
         ;;
       --name=*)
         base_name="${arg#*=}"
@@ -326,6 +336,15 @@ download_key() {
 setup_repos() {
   repo_desc_formatted=$(echo "$active_repo_description" | \
       sed 's/\([^ ]*\)\(.*\)/\1\L\2/')
+  
+  # Construct auth URL if credentials provided
+  repo_auth_url="$active_repo_download"
+  if [ -n "$repo_auth_user" ] && [ -n "$repo_auth_pass" ]; then
+      protocol="${repo_auth_url%%://*}"
+      rest="${repo_auth_url#*://}"
+      repo_auth_url="${protocol}://$repo_auth_user:$repo_auth_pass@$rest"
+  fi
+  
   case "$package_type" in
     rpm)
       echo "  Installing Webmin developers key .."
@@ -338,7 +357,7 @@ setup_repos() {
       if [ "$repo_mode" = "stable" ]; then
         repo_url="$active_repo_download/download/newkey/yum"
       else
-        repo_url="$active_repo_download"
+        repo_url="$repo_auth_url"
       fi
       cat << EOF > "$rpm_repo_file"
 [$active_repo_name-noarch]
@@ -374,6 +393,24 @@ $active_repo_download/download/newkey/repository $repo_dist $repo_section"
 $active_repo_download $repo_dist $repo_component"
       fi
       echo "$repo_line" > "$debian_repo_file"
+      
+      # Handle APT authentication if credentials provided
+      if [ -n "$repo_auth_user" ] && [ -n "$repo_auth_pass" ]; then
+        mkdir -p "/etc/apt/auth.conf.d"
+        auth_file="/etc/apt/auth.conf.d/$active_repo_name.conf"
+        auth_domain="${active_repo_download#*://}"
+        auth_domain="${auth_domain%%/*}"
+        
+        # Remove existing entry for this domain if exists
+        if [ -f "$auth_file" ]; then
+          sed -i "/machine $auth_domain/d" "$auth_file"
+        fi
+        
+        # Add new authentication entry
+        echo "machine $auth_domain login $repo_auth_user password $repo_auth_pass" >> "$auth_file"
+        chmod 600 "$auth_file"
+      fi
+      
       echo "  .. done"
       echo "  Cleaning repository metadata .."
       $clean 1>/dev/null 2>&1
