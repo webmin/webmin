@@ -285,8 +285,12 @@ else {
 	my @opts;
 
 	my $webroot = $config{'letsencrypt_webroot'};
-	my $mode = $webroot eq 'dns' ? 3 : $webroot ? 2 : 0;
-	if (&foreign_installed("apache")) {
+	my $hasapache = &foreign_installed("apache");
+	my $mode = $webroot eq 'dns' ? 3 :
+		   $webroot ? 2 :
+		   $hasapacehe ? 0 :
+		   $letsencrypt_cmd ? 4 : 2;
+	if ($hasapache) {
 		&foreign_require("apache");
 		my $conf = &apache::get_config();
 		my @snames;
