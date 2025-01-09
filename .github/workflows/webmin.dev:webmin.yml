@@ -4,18 +4,22 @@ on:
   push:
     branches:
       - master
+    tags:
+      - '*'
 
 jobs:
   build:
-    uses: webmin/webmin-ci-cd/.github/workflows/testing-master-workflow.yml@main
+    uses: webmin/webmin-ci-cd/.github/workflows/master-workflow.yml@main
     with:
       build-type: package
       project-name: webmin
+      tagged-release: ${{ startsWith(github.ref, 'refs/tags/') }}
     secrets:
       DEV_GPG_PH: ${{ secrets.DEV_GPG_PH }}
       DEV_IP_ADDR: ${{ secrets.DEV_IP_ADDR }}
       DEV_IP_KNOWN_HOSTS: ${{ secrets.DEV_IP_KNOWN_HOSTS }}
       DEV_UPLOAD_SSH_USER: ${{ secrets.DEV_UPLOAD_SSH_USER }}
       DEV_UPLOAD_SSH_DIR: ${{ secrets.DEV_UPLOAD_SSH_DIR }}
+      PRERELEASE_UPLOAD_SSH_DIR: ${{ secrets.PRERELEASE_UPLOAD_SSH_DIR }}
       DEV_SSH_PRV_KEY: ${{ secrets.DEV_SSH_PRV_KEY }}
       DEV_SIGN_BUILD_REPOS_CMD: ${{ secrets.DEV_SIGN_BUILD_REPOS_CMD }}
