@@ -4,8 +4,10 @@ on:
   push:
     branches:
       - master
-    tags:
-      - '*'
+  release:
+    types:
+      - published
+      - edited
 
 jobs:
   build:
@@ -13,7 +15,7 @@ jobs:
     with:
       build-type: package
       project-name: webmin
-      tagged-release: ${{ startsWith(github.ref, 'refs/tags/') }}
+      is-release: ${{ github.event_name == 'release' }}
     secrets:
       DEV_GPG_PH: ${{ secrets.DEV_GPG_PH }}
       DEV_IP_ADDR: ${{ secrets.DEV_IP_ADDR }}
