@@ -66,6 +66,7 @@ Repository configuration:
   --key-suffix=<suffix>      Repository key suffix for file naming
   --auth-user=<user>         Repository authentication username
   --auth-pass=<pass>         Repository authentication password
+  --pkg-excl=<dist:pkg|pri*> Package name to exclude
 
 Repository metadata:
   --name=<name>              Base name for repository (default: webmin)
@@ -129,6 +130,9 @@ process_args() {
         ;;
       --auth-pass=*)
         repo_auth_pass="${arg#*=}"
+        ;;
+      --pkg-excl=*)
+        repo_pkg_prio="${arg#*=}"
         ;;
       --name=*)
         base_name="${arg#*=}"
@@ -326,6 +330,28 @@ check_gpg() {
   fi
 }
 
+enforce_package_priority() {
+  repo_pkg_priority=$1
+  target=$2
+
+  # Extract the relevant entry for the target
+  match=$(echo "$repo_pkg_priority" | grep -o "${target}:[^ =]*[^ ]*")
+
+  if [ -n "$match" ]; then
+    # Extract the package name
+    package=$(echo "$match" | sed -e "s/^${target}:\([^=]*\).*/\1/")
+    # Extract the priority and version parameters (if present)
+    priority=$(echo "$match" | sed -n -e "s/^${target}:[^=]*=\([^=]*\)=.*$/\1/p")
+    version=$(echo "$match" | sed -n -e "s/^${target}:[^=]*=[^=]*=\(.*\)$/\1/p")
+
+    # Output package, priority, and version parameters (empty if not present)
+    echo "$package ${priority:-} ${version:-}"
+    return 0
+  fi
+
+  return 1
+}
+
 download_key() {
   rm -f "/tmp/$repo_key"
   echo "  Downloading Webmin developers key .."
@@ -353,6 +379,20 @@ setup_repos() {
       cp -f "$repo_key" \
         "/etc/pki/rpm-gpg/RPM-GPG-KEY-$repo_key_suffix"
       echo "  .. done"
+      # Configure packages priority if provided
+      if [ -n "$repo_pkg_prio" ]; then
+        repo_pkg_prio_rs=$(enforce_package_priority "$repo_pkg_prio" "rpm")
+        if [ $? -eq 0 ]; then
+          echo "  Setting up package exclusion for repository .."
+          package=$(echo "$repo_pkg_prio_rs" | awk '{print $1}')
+          repo_extra_opts="exclude=$package"
+          echo "  .. done"
+        else
+          echo "  Cleaning up package priority configuration .."
+          echo "  .. done"
+        fi
+      fi
+      # Configure the repository
       echo "  Setting up ${repo_desc_formatted} repository .."
       if [ "$repo_mode" = "stable" ]; then
         repo_url="$active_repo_download/download/newkey/yum"
@@ -384,6 +424,28 @@ EOF
       post_status $?
       sources_list=$(grep -v "$repo_host" /etc/apt/sources.list)
       echo "$sources_list" > /etc/apt/sources.list
+      # Configure packages priority if provided
+      debian_repo_prefs="/etc/apt/preferences.d/$repoid_debian_like-$repo_dist-package-priority"
+      if [ -n "$repo_pkg_prio" ]; then
+        repo_pkg_prio_rs=$(enforce_package_priority "$repo_pkg_prio" "deb")
+        if [ $? -eq 0 ]; then
+          echo "  Setting up package priority for repository .."
+          package=$(echo "$repo_pkg_prio_rs" | awk '{print $1}')
+          priority=$(echo "$repo_pkg_prio_rs" | awk '{print $2}')
+          version=$(echo "$repo_pkg_prio_rs" | awk '{print $3}')
+          cat << EOF > "$debian_repo_prefs"
+Package: $package
+Pin: version /$version\$/
+Pin-Priority: $priority
+EOF
+        echo "  .. done"
+        fi
+      else
+        echo "  Cleaning up package priority configuration .."
+        rm -f "$debian_repo_prefs"
+        echo "  .. done"
+      fi
+      # Configure the repository
       echo "  Setting up ${repo_desc_formatted} repository .."
       if [ "$repo_mode" = "stable" ]; then
         repo_line="deb [signed-by=/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg] \
@@ -410,8 +472,8 @@ $active_repo_download $repo_dist $repo_component"
         echo "machine $auth_domain login $repo_auth_user password $repo_auth_pass" >> "$auth_file"
         chmod 600 "$auth_file"
       fi
-      
       echo "  .. done"
+
       echo "  Cleaning repository metadata .."
       $clean 1>/dev/null 2>&1
       echo "  .. done"
