@@ -20,7 +20,7 @@ repo_dist="stable"
 repo_section="contrib"
 repo_description="Webmin Releases"
 repo_description_prerelease="Webmin Prerelease"
-repo_description_unstable="Webmin Development Builds"
+repo_description_unstable="Webmin Unstable"
 install_check_binary="/usr/bin/webmin"
 install_message="Webmin and Usermin can be installed with:"
 install_packages="webmin usermin"
@@ -144,7 +144,7 @@ process_args() {
         base_description="${arg#*=}"
         repo_description="$base_description Releases"
         repo_description_prerelease="${base_description} Prerelease"
-        repo_description_unstable="${base_description} Development Builds"
+        repo_description_unstable="${base_description} Unstable"
         ;;
       --component=*)
         repo_component="${arg#*=}"
