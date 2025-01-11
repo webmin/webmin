@@ -3883,8 +3883,8 @@ foreach my $ip (@$masters) {
 		}
 	else {
 		my $out = &backquote_logged(
-			"$dig IN $sourcearg AXFR ".quotemeta($dom).
-			" \@".quotemeta($ip)." 2>&1");
+		    "$dig IN ".quotemeta($sourcearg)." AXFR ".quotemeta($dom).
+		    " \@".quotemeta($ip)." 2>&1");
 		if ($? || $out =~ /Transfer\s+failed/) {
 			$rv{$ip} = $out;
 			}
