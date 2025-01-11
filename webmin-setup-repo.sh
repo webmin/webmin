@@ -66,7 +66,7 @@ Repository configuration:
   --key-suffix=<suffix>      Repository key suffix for file naming
   --auth-user=<user>         Repository authentication username
   --auth-pass=<pass>         Repository authentication password
-  --pkg-excl=<dist:pkg|pri*> Package name to exclude
+  --pkg-prefs=<dist:pkg|pr*> Package preferences for repository
 
 Repository metadata:
   --name=<name>              Base name for repository (default: webmin)
@@ -131,8 +131,8 @@ process_args() {
       --auth-pass=*)
         repo_auth_pass="${arg#*=}"
         ;;
-      --pkg-excl=*)
-        repo_pkg_prio="${arg#*=}"
+      --pkg-prefs=*)
+        repo_pkg_prefs="${arg#*=}"
         ;;
       --name=*)
         base_name="${arg#*=}"
@@ -331,18 +331,18 @@ check_gpg() {
 }
 
 enforce_package_priority() {
-  repo_pkg_priority=$1
-  target=$2
+  repo_pkg_pref=$1
+  disttarget=$2
 
-  # Extract the relevant entry for the target
-  match=$(echo "$repo_pkg_priority" | grep -o "${target}:[^ =]*[^ ]*")
+  # Extract the relevant entries for the target distribution
+  match=$(echo "$repo_pkg_pref" | grep -o "${disttarget}:[^ =]*[^ ]*")
 
   if [ -n "$match" ]; then
     # Extract the package name
-    package=$(echo "$match" | sed -e "s/^${target}:\([^=]*\).*/\1/")
+    package=$(echo "$match" | sed -e "s/^${disttarget}:\([^=]*\).*/\1/")
     # Extract the priority and version parameters (if present)
-    priority=$(echo "$match" | sed -n -e "s/^${target}:[^=]*=\([^=]*\)=.*$/\1/p")
-    version=$(echo "$match" | sed -n -e "s/^${target}:[^=]*=[^=]*=\(.*\)$/\1/p")
+    priority=$(echo "$match" | sed -n -e "s/^${disttarget}:[^=]*=\([^=]*\)=.*$/\1/p")
+    version=$(echo "$match" | sed -n -e "s/^${disttarget}:[^=]*=[^=]*=\(.*\)$/\1/p")
 
     # Output package, priority, and version parameters (empty if not present)
     echo "$package ${priority:-} ${version:-}"
@@ -380,11 +380,11 @@ setup_repos() {
         "/etc/pki/rpm-gpg/RPM-GPG-KEY-$repo_key_suffix"
       echo "  .. done"
       # Configure packages priority if provided
-      if [ -n "$repo_pkg_prio" ]; then
-        repo_pkg_prio_rs=$(enforce_package_priority "$repo_pkg_prio" "rpm")
+      if [ -n "$repo_pkg_prefs" ]; then
+        repo_pkg_prefs_rs=$(enforce_package_priority "$repo_pkg_prefs" "rpm")
         if [ $? -eq 0 ]; then
           echo "  Setting up package exclusion for repository .."
-          package=$(echo "$repo_pkg_prio_rs" | awk '{print $1}')
+          package=$(echo "$repo_pkg_prefs_rs" | awk '{print $1}')
           repo_extra_opts="exclude=$package"
           echo "  .. done"
         else
@@ -426,13 +426,13 @@ EOF
       echo "$sources_list" > /etc/apt/sources.list
       # Configure packages priority if provided
       debian_repo_prefs="/etc/apt/preferences.d/$repoid_debian_like-$repo_dist-package-priority"
-      if [ -n "$repo_pkg_prio" ]; then
-        repo_pkg_prio_rs=$(enforce_package_priority "$repo_pkg_prio" "deb")
+      if [ -n "$repo_pkg_prefs" ]; then
+        repo_pkg_prefs_rs=$(enforce_package_priority "$repo_pkg_prefs" "deb")
         if [ $? -eq 0 ]; then
           echo "  Setting up package priority for repository .."
-          package=$(echo "$repo_pkg_prio_rs" | awk '{print $1}')
-          priority=$(echo "$repo_pkg_prio_rs" | awk '{print $2}')
-          version=$(echo "$repo_pkg_prio_rs" | awk '{print $3}')
+          package=$(echo "$repo_pkg_prefs_rs" | awk '{print $1}')
+          priority=$(echo "$repo_pkg_prefs_rs" | awk '{print $2}')
+          version=$(echo "$repo_pkg_prefs_rs" | awk '{print $3}')
           cat << EOF > "$debian_repo_prefs"
 Package: $package
 Pin: version /$version\$/
