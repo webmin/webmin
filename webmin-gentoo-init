@@ -1,19 +1,52 @@
-#!/sbin/runscript
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+#!/sbin/openrc-run
+
+# Copyright 2024 webmin & mckaygerhard
 # Distributed under the terms of the GNU General Public License, v2 or later
 
+
+name="webmin"
+# config file must be in sync with setup script, so i will not touch cos process will be the same as webmin-systemd
+# like calling updateboot.pl with a new procedure method defined as openrc and not just assumed sysvinit if not systemd is present
+# and also atboot.pl with new procedure for openrc the alpine linux init system at the moment
+#conf_file="WEBMIN_CONFIG/miniserv.conf"
+conf_file="/etc/webmin/miniserv.conf"
+
+
 depend() { 
-	need net logger 
+    need logger localmount
+    use net
+    after bootmisc
 }
 
 start() {
-	ebegin "Starting webmin"
-	/etc/webmin/start
-	eend $?
+# same problem here.. we need to use WEBMIN_CONFIG variable to find the start script
+#   WEBMIN_CONFIG/start
+    /etc/webmin/start
+    eend $?
 }
 
 stop() {
-	ebegin "Stopping webmin"
-	/etc/webmin/stop
-	eend $?
+# same problem here.. we need to use WEBMIN_CONFIG variable to find the stop script
+#   WEBMIN_CONFIG/stop
+    /etc/webmin/stop
+    eend $?
+}
+
+status() {
+    pidfile=`grep "^pidfile=" "${conf_file}" | sed -e 's/pidfile=//g'`
+    if [ -s $pidfile ]; then
+	pid=`cat $pidfile`
+	kill -0 $pid >/dev/null 2>&1
+	if [ "$?" = "0" ]; then
+	    einfo "webmin (pid $pid) is running"
+	    return 0
+	else
+	    einfo "webmin is stopped"
+	    return 0
+	fi
+    else
+	einfo "webmin is stopped"
+	return 0
+    fi
+
 }

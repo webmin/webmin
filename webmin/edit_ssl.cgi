@@ -288,7 +288,7 @@ else {
 	my $hasapache = &foreign_installed("apache");
 	my $mode = $webroot eq 'dns' ? 3 :
 		   $webroot ? 2 :
-		   $hasapacehe ? 0 :
+		   $hasapache ? 0 :
 		   $letsencrypt_cmd ? 4 : 2;
 	if ($hasapache) {
 		&foreign_require("apache");
