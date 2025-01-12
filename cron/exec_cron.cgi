@@ -39,12 +39,13 @@ foreach $e (&read_envs($job->{'user'})) {
 	}
 
 if (&supports_users()) {
-	# Get command and switch uid/gid
+	# Get command and switch uid/gid and home directory
 	@uinfo = getpwnam($job->{'user'});
 	$ENV{"HOME"} = $uinfo[7];
 	$ENV{"SHELL"} = "/bin/sh";
 	$ENV{"LOGNAME"} = $ENV{"USER"} = $job->{'user'};
 	&switch_to_unix_user(\@uinfo);
+	chdir($uinfo[7]);
 	}
 
 if ($in{'bg'}) {
