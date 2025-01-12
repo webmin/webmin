@@ -69,4 +69,11 @@ else {
 	}
 &unlock_file(&bind8::make_chroot($file));
 
+# Clean up any dynamic record
+use Net::DNS;
+my $update = Net::DNS::Update->new( $dname );
+$update->push( update => rr_del('_acme-challenge.'.$dname.' TXT') );       my $resolver = Net::DNS::Resolver->new();
+$resolver->nameservers('127.0.0.1');
+my $reply = $resolver->send($update);
+
 &webmin_log("letsencryptcleanup", undef, $dname);
