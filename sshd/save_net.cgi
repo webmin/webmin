@@ -88,7 +88,27 @@ if ($version{'type'} eq 'ssh' &&
 		}
 	}
 
-&save_directive("KeepAlive", $conf, $in{'keep'} ? 'yes' : 'no');
+# Determine if the SSH version is 3.8 or higher
+my $sshv38 = $version{'number'} >= 3.8;
+my $keep_alive_key = $sshv38 ? 'TCPKeepAlive' : 'KeepAlive';
+my $keep_curr = &find_value($keep_alive_key, $conf);
+my $keep_now = $in{'keep'} ? 'yes' : 'no';
+# Check if the current keep-alive value differs from the input value
+if ($keep_curr ne $keep_now) {
+    # Update the keep-alive value based on the input
+    &save_directive($keep_alive_key, $conf, $keep_now);
+    # Additional configuration for version 3.8 or higher
+    if ($sshv38) {
+        if ($keep_now eq 'yes') {
+            # Enabled
+            &save_directive('ClientAliveInterval', $conf, 60);
+        } else {
+            # Disabled
+            &save_directive('ClientAliveInterval', $conf);
+        }
+    }
+}
+
 
 if ($in{'grace_def'}) {
 	&save_directive("LoginGraceTime", $conf);

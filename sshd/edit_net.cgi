@@ -94,9 +94,12 @@ if ($version{'type'} eq 'ssh' &&
 	}
 
 # Send keepalive packets?
-$keep = &find_value("KeepAlive", $conf);
+$keep = &find_value($version{'number'} >= 3.8 ? 'TCPKeepAlive' : 'KeepAlive',
+		    $conf);
 print &ui_table_row($text{'net_keep'},
-	&ui_yesno_radio("keep", lc($keep) ne 'no'));
+	&ui_yesno_radio("keep", $version{'number'} >= 3.8 ?
+		# Defaults to 'No'   Defaults to 'Yes'
+		lc($keep) eq 'yes' : lc($keep) ne 'no'));
 
 # Grace time for logins
 $grace = &find_value("LoginGraceTime", $conf);

@@ -50,9 +50,28 @@ else {
 		$in{'user'} =~ /^\S+$/ || &error($text{'host_euser'});
 		&save_directive("User", $conf, $in{'user'});
 		}
-
-	&save_directive("KeepAlive", $conf,
-		$in{'keep'} == 2 ? undef : $in{'keep'} ? 'yes' : 'no');
+	my $keep_now = $in{'keep'} == 2 ? undef : $in{'keep'};
+	if ($version_number >= 3.8) {
+		if (!defined($keep_now)) {
+			# Default
+			&save_directive("ServerAliveInterval", $conf, undef);
+			&save_directive("ServerAliveCountMax", $conf, undef);
+			}
+		elsif ($keep_now == 1) {
+			# Enabled
+			&save_directive("ServerAliveInterval", $conf, 60);
+			&save_directive("ServerAliveCountMax", $conf, 3);
+			}
+		else {
+			# Disabled
+			&save_directive("ServerAliveInterval", $conf, 0);
+			&save_directive("ServerAliveCountMax", $conf, undef);
+			}
+		}
+	else {
+		&save_directive("KeepAlive", $conf,
+			$in{'keep'} == 2 ? undef : $in{'keep'} ? 'yes' : 'no');
+		}
 
 	if ($in{'hostname_def'}) {
 		&save_directive("HostName", $conf);

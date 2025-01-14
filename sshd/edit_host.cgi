@@ -41,7 +41,8 @@ print &ui_table_row($text{'host_user'},
 	&ui_opt_textbox("user", $user, 20, $text{'host_user_def'}));
 
 # Send keep-alive packets?
-$keep = &find_value("KeepAlive", $conf);
+$keep = &find_value($version_number >= 3.8 ? 'ServerAliveInterval' : 'KeepAlive',
+		    $conf);
 print &ui_table_row($text{'host_keep'},
 	&yes_no_default_radio("keep", $keep));
 
