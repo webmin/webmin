@@ -2533,6 +2533,23 @@ else {
 	}
 }
 
+=head2 is_active_systemd()
+
+Check if systemd service or socket is active
+
+=cut
+sub is_active_systemd
+{
+my $unit = shift;
+if ($init_mode eq "systemd") {
+	my $out = &backquote_logged(
+		"systemctl is-active ".quotemeta($unit)." 2>&1 </dev/null");
+	$out = &trim($out);
+	return wantarray ? ($?, $out) : $out eq "active" ? 1 : 0;
+	}
+return wantarray ? (-1, undef) : 0;
+}
+
 =head2 reboot_system
 
 Immediately reboots the system.
