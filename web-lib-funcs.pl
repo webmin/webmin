@@ -10570,7 +10570,9 @@ if (@_ == 1) {
 	if (!defined($main::open_tempfiles{$_[0]})) {
 		$_[0] =~ /^(.*)\/(.*)$/ || return $_[0];
 		my $dir = $1 || "/";
-		my $tmp = "$dir/$2.webmintmp.$$";
+		$main::open_tempfile_count ||= 0;
+		my $tmp = "$dir/$2.webmintmp.$$.".
+			  ($main::open_tempfile_count++);
 		$main::open_tempfiles{$_[0]} = $tmp;
 		push(@main::temporary_files, $tmp);
 		}
