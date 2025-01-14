@@ -58,15 +58,23 @@ print &ui_table_row($text{'net_port'},
 
 if ($version{'type'} eq 'openssh' && $version{'number'} >= 2) {
 	# Protocols
-	$prots = &find_value("Protocol", $conf);
-	@prots = $prots ? split(/,/, $prots) :
-		 $version{'number'} >= 2.9 ? (1, 2) : (2);
-	$cbs = "";
-	foreach $p (1, 2) {
-		$cbs .= &ui_checkbox("prots", $p, $text{"net_prots_$p"},
-				     &indexof($p, @prots) >= 0)." ";
+	my @prots_avail = (1, 2);
+	if ($version{'number'} < 2 || $version{'number'} >= 7.6) {
+		# Since SSH-1 is removed in 7.6, displaying the protocol is
+		# unnecessary because only SSH-2 protocol is available.
+		# Protocol directive is ignored even if set
+		@prots_avail = ();
 		}
-	print &ui_table_row($text{'net_prots'}, $cbs);
+	if (@prots_avail) {
+		my $prots = &find_value("Protocol", $conf);
+		my @prots = $prots ? split(/,/, $prots) : @prots_avail;
+		my $cbs = "";
+		foreach $p (1, 2) {
+			$cbs .= &ui_checkbox("prots", $p, $text{"net_prots_$p"},
+					     &indexof($p, @prots) >= 0)." ";
+			}
+		print &ui_table_row($text{'net_prots'}, $cbs);
+		}
 	}
 
 if ($version{'type'} eq 'ssh' &&

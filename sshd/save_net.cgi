@@ -66,10 +66,14 @@ else {
 	&save_directive("Port", $conf, \@ports, "ListenAddress");
 	}
 
-if ($version{'type'} eq 'openssh' && $version{'number'} >= 2) {
+if ($version{'type'} eq 'openssh' &&
+    $version{'number'} >= 2 && $version{'number'} < 7.6) {
 	@prots = split(/\0/, $in{'prots'});
 	@prots || &error($text{'net_eprots'});
 	&save_directive("Protocol", $conf, join(",", @prots));
+	}
+elsif ($version{'number'} >= 7.6) {
+	&save_directive("Protocol", $conf);
 	}
 
 if ($version{'type'} eq 'ssh' &&
