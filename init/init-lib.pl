@@ -2533,7 +2533,7 @@ else {
 	}
 }
 
-=head2 is_active_systemd()
+=head2 is_active_systemd(unit-name)
 
 Check if systemd service or socket is active
 
