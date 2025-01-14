@@ -114,11 +114,11 @@ local $id = ("\t" x $_[1]->[0]->{'indent'});
 local $i;
 local $before = $_[3] && ref($_[2]) ? &find($_[3], $_[1]) : undef;
 for($i=0; $i<@o || $i<@n; $i++) {
-	if ($o[$i] && $n[$i]) {
+	if (defined($o[$i]) && defined($n[$i])) {
 		# Replacing a line
 		$lref->[$o[$i]->{'line'}] = "$id$_[0] $n[$i]";
 		}
-	elsif ($o[$i]) {
+	elsif (defined($o[$i])) {
 		# Removing a line
 		splice(@$lref, $o[$i]->{'line'}, 1);
 		foreach $c (@{$_[1]}) {
@@ -127,7 +127,7 @@ for($i=0; $i<@o || $i<@n; $i++) {
 				}
 			}
 		}
-	elsif ($n[$i] && !$before) {
+	elsif (defined($n[$i]) && !$before) {
 		# Adding a line at the end, but before the first Match directive
 		local $ll = $_[1]->[@{$_[1]}-1]->{'line'};
 		foreach my $m (&find("Match", $_[1])) {
@@ -136,7 +136,7 @@ for($i=0; $i<@o || $i<@n; $i++) {
 			}
 		splice(@$lref, $ll+1, 0, "$id$_[0] $n[$i]");
 		}
-	elsif ($n[$i] && $before) {
+	elsif (defined($n[$i]) && $before) {
 		# Adding a line before the first instance of some directive
 		splice(@$lref, $before->{'line'}, 0, "$id$_[0] $n[$i]");
 		foreach $c (@{$_[1]}) {
