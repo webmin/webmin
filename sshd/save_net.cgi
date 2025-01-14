@@ -104,7 +104,7 @@ if ($keep_curr ne $keep_now) {
             &save_directive('ClientAliveInterval', $conf, 60);
         } else {
             # Disabled
-            &save_directive('ClientAliveInterval', $conf);
+            &save_directive('ClientAliveInterval', $conf, 0);
         }
     }
 }
