@@ -370,9 +370,9 @@ return ('QUIET', 'FATAL', 'ERROR', 'INFO', 'VERBOSE', 'DEBUG');
 
 sub yes_no_default_radio
 {
-local ($name, $value) = @_;
-return &ui_radio($name, lc($value) eq 'yes' ? 1 :
-			lc($value) eq 'no' ? 0 : 2,
+local ($name, $val) = @_;
+return &ui_radio($name, (lc($val) eq 'yes' || $val =~ /^\d+$/ && $val > 0) ? 1 :
+			(lc($val) eq 'no' || $val =~ /^\d+$/) ? 0 : 2,
 		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ],
 		   [ 2, $text{'default'} ] ]);
 }
