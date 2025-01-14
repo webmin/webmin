@@ -6937,7 +6937,7 @@ if (exists($main::locked_file_data{$realfile})) {
 		# is a file, or has changed type?!
 		my ($diff, $delete_file);
 		my $type = "modify";
-		if (!-r _) {
+		if (!-e $realfile) {
 			open(NEWFILE, ">$realfile");
 			close(NEWFILE);
 			$delete_file++;
