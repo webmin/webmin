@@ -2533,7 +2533,7 @@ else {
 	}
 }
 
-=head2 is_active_systemd()
+=head2 is_active_systemd(unit-name)
 
 Check if systemd service or socket is active
 
@@ -2548,6 +2548,44 @@ if ($init_mode eq "systemd") {
 	return wantarray ? ($?, $out) : $out eq "active" ? 1 : 0;
 	}
 return wantarray ? (-1, undef) : 0;
+}
+
+=head2 cat_systemd(unit)
+
+List given systemd unit file contents
+
+=cut
+
+sub cat_systemd
+{
+my ($unit) = @_;
+my @config;
+my $current_section;
+my $current_file;
+
+# Execute and parse the system command
+&open_execute_command(*CAT, "systemctl cat ".quotemeta($unit), 1, 1);
+while (<CAT>) {
+	s/\r|\n//g;
+	next if /^$/;
+	if (/^#\s+(\/.*)$/) {
+		# File name line, e.g., # /usr/lib/systemd/system/ssh.socket
+		$current_file = $1;
+		push @config, { file => $current_file, sections => {} };
+		}
+	elsif (/^\[(.+?)\]$/) {
+		# Section header, e.g., [Unit]
+		$current_section = $1;
+		$config[-1]{'sections'}{$current_section} ||= {};
+		}
+	elsif (/^([^=]+)=(.*)$/ && $current_section) {
+		# Key-value pair, e.g., ListenStream=0.0.0.0:22
+		my ($key, $value) = ($1, $2);
+		push @{ $config[-1]{'sections'}{$current_section}{$key} }, $value;
+		}
+	}
+close(CAT);
+return \@config;
 }
 
 =head2 reboot_system
