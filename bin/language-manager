@@ -1626,10 +1626,16 @@ sub go
                     }
                     my $file      = $mpath . "/$code";
                     my $file_auto = $mpath . "/$code.$language_suffix";
-                    write_file($file, \%language, undef, undef, $mfile, 1), chmod(0664, $file)
-                      if (%language);
-                    write_file($file_auto, \%language_auto, undef, undef, $mfile, 1), chmod(0664, $file_auto)
-                      if ((%language_auto || !%language_auto) && !$opt->{'only-transcode'});
+                    if (%language) {
+                        write_file($file, \%language);
+                        sort_file_by($file, $mfile);
+                        chmod(0664, $file);
+                    }
+                    if ((%language_auto || !%language_auto) && !$opt->{'only-transcode'}) {
+                        write_file($file_auto, \%language_auto);
+                        sort_file_by($file_auto, $mfile);
+                        chmod(0664, $file_auto);
+                    }
 
                     # Remove empty files
                     unlink($file)      if (-z $file);

@@ -129,7 +129,7 @@ $main::read_file_cache_time{$realfile} = $st[9];
 return $rv;
 }
 
-=head2 write_file(file, &data-hash, [join-char], [sort], [sorted-by], [sorted-by-preserved])
+=head2 write_file(file, &data-hash, [join], [sort])
 
 Write out the contents of a hash as name=value lines. The parameters are :
 
@@ -137,27 +137,18 @@ Write out the contents of a hash as name=value lines. The parameters are :
 
 =item data-hash - A hash reference containing names and values to output
 
-=item join-char - If given, names and values are separated by this instead of =
+=item join - If given, names and values are separated by this instead of =
 
 =item sort - If given, passed hash reference will be sorted by its keys
-
-=item sorted-by - If given, passed as full path to a file, will use its content to sort the keys
-
-=item sorted-by-sectioning-preserved - If sorted-by is used, then preserve the sectioning (line-breaks), and section comment as in hash reference
 
 =cut
 sub write_file
 {
-my ($file, 
-    $data_hash,
-    $join_char,
-    $sort,
-    $sorted_by,
-    $sorted_by_sectioning_preserved) = @_;
+my ($file, $data_hash, $join, $sort) = @_;
 my (%old, @order);
-my $join = defined($join_char) ? $join_char : "=";
+$join //= "=";
 my $realfile = &translate_filename($file);
-&read_file($sorted_by || $file, \%old, \@order);
+&read_file($file, \%old, \@order);
 &open_tempfile(ARFILE, ">$file");
 if ($sort || $gconfig{'sortconfigs'}) {
 	# Always sort by keys
@@ -191,55 +182,73 @@ if (defined($main::read_file_cache{$realfile})) {
 if (defined($main::read_file_missing{$realfile})) {
 	$main::read_file_missing{$realfile} = 0;
 	}
+}
 
-if ($sorted_by && $sorted_by_sectioning_preserved) {
-	my $target = read_file_contents($file);
-	my $model = read_file_contents($sorted_by);
+=head2 sort_file_by(file, sorted-by-file, [join])
 
-	# Extract version related comments for a block, e.g. #1.962
-	my %comments = reverse ($model =~ m/(#\s*[\d\.]+)[\n\s]+(.*?)=/gm);
+Handles sorting of keys in one file based on another preserving
+line-breaks and comments.
 
-	# Build blocks of line's key separated with a new line break
-	my @lines = (($model =~ m/(.*?)$join|(^\s*$)/gm), undef, undef);
-	my @blocks;
-	my @block;
-	for (my $line = 0; $line < scalar(@lines) - 1; $line += 2) {
-		if ($lines[$line] =~ /\S+/) {
-			push(@block, $lines[$line]);
-			}
-		else {
-			push(@blocks, [@block]);
-			@block = ();
-			}
+For example, used for one language file (i.e. en) to sort another language
+file (i.e. de) preserving comments and line-breaks.
+
+=item file - Full path to target file write to
+
+=item sorted-by-file - Full path to a file to use for sorting preserving line-breaks and comments
+
+=item join - If given, names and values are separated by this instead of =
+
+=cut
+sub sort_file_by
+{
+my ($file, $sorted_by_file, $join) = @_;
+$join //= "=";
+my $target_data = read_file_contents($file);
+my $model_data = read_file_contents($sorted_by_file);
+
+# Extract version related comments for a block, e.g. #1.962
+my %comments = reverse ($model_data =~ m/(#\s*[\d\.]+)[\n\s]+(.*?)=/gm);
+
+# Build blocks of line's key separated with a new line break
+my @lines = (($model_data =~ m/(.*?)$join|(^\s*$)/gm), undef, undef);
+my @blocks;
+my @block;
+for (my $line = 0; $line < scalar(@lines) - 1; $line += 2) {
+	if ($lines[$line] =~ /\S+/) {
+		push(@block, $lines[$line]);
 		}
-	for (my $block = 0; $block <= scalar(@blocks) - 1; $block++) {
-		foreach my $line (@{$blocks[$block]}) {
-			# Add a comment to the first block element
-			if ($target =~ /(\Q$line\E)=(.*)/) {
-				foreach my $comment (keys %comments) {
-					if (grep(/^\Q$comment\E$/, @{$blocks[$block]})) {
-						$target =~ s/(\Q$line\E)=(.*)/$comments{$comment}\n$1=$2/;
-						last;
-					}
+	else {
+		push(@blocks, [@block]);
+		@block = ();
+		}
+	}
+for (my $block = 0; $block <= scalar(@blocks) - 1; $block++) {
+	foreach my $line (@{$blocks[$block]}) {
+		# Add a comment to the first block element
+		if ($target_data =~ /(\Q$line\E)=(.*)/) {
+			foreach my $comment (keys %comments) {
+				if (grep(/^\Q$comment\E$/, @{$blocks[$block]})) {
+					$target_data =~ s/(\Q$line\E)=(.*)/$comments{$comment}\n$1=$2/;
+					last;
 				}
+			}
+		last;
+		}
+	}
+	foreach my $line (reverse @{$blocks[$block]}) {
+		if (
+			# Go to another block immediately
+			# if new line already exists
+			$target_data =~ /(\Q$line\E)$join.*?(\r?\n|\r\n?)+$/m ||
+
+			# Add new line to the last element of
+			# the block and go to another block
+			$target_data =~ s/(\Q$line\E)$join(.*)/$1=$2\n/) {
 			last;
 			}
 		}
-		foreach my $line (reverse @{$blocks[$block]}) {
-			if (
-			    # Go to another block immediately
-			    # if new line already exists
-			    $target =~ /(\Q$line\E)$join.*?(\r?\n|\r\n?)+$/m ||
-
-			    # Add new line to the last element of
-			    # the block and go to another block
-			    $target =~ s/(\Q$line\E)$join(.*)/$1=$2\n/) {
-				last;
-				}
-			}
-		}
-		&write_file_contents($file, $target);
 	}
+	&write_file_contents($file, $target_data);
 }
 
 =head2 html_escape(string, [no-double-amp-escape])
