@@ -472,7 +472,7 @@ if (%ouser) {
 
 	# Run the pre-change command
 	&set_user_envs(\%user, 'MODIFY_USER',
-		       $in{'passmode'} == 3 ? $in{'pass'} : "", \@sgids);
+		$in{'passmode'} == 3 ? $in{'pass'} : "", \@sgids, $ouser);
 	$merr = &making_changes();
 	&error(&text('usave_emaking', "<tt>$merr</tt>")) if (defined($merr));
 
