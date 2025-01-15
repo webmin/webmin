@@ -186,11 +186,11 @@ else {
 
 # Update in-memory caches
 if (defined($main::read_file_cache{$realfile})) {
-    %{$main::read_file_cache{$realfile}} = %{$data_hash};
-    }
+	%{$main::read_file_cache{$realfile}} = %{$data_hash};
+	}
 if (defined($main::read_file_missing{$realfile})) {
-    $main::read_file_missing{$realfile} = 0;
-    }
+	$main::read_file_missing{$realfile} = 0;
+	}
 
 if ($sorted_by && $sorted_by_sectioning_preserved) {
 	my $target = read_file_contents($file);
