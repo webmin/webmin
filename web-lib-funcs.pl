@@ -6937,7 +6937,7 @@ if (exists($main::locked_file_data{$realfile})) {
 		# is a file, or has changed type?!
 		my ($diff, $delete_file);
 		my $type = "modify";
-		if (!-r _) {
+		if (!-e $realfile) {
 			open(NEWFILE, ">$realfile");
 			close(NEWFILE);
 			$delete_file++;
@@ -10570,7 +10570,9 @@ if (@_ == 1) {
 	if (!defined($main::open_tempfiles{$_[0]})) {
 		$_[0] =~ /^(.*)\/(.*)$/ || return $_[0];
 		my $dir = $1 || "/";
-		my $tmp = "$dir/$2.webmintmp.$$";
+		$main::open_tempfile_count ||= 0;
+		my $tmp = "$dir/$2.webmintmp.$$.".
+			  ($main::open_tempfile_count++);
 		$main::open_tempfiles{$_[0]} = $tmp;
 		push(@main::temporary_files, $tmp);
 		}
