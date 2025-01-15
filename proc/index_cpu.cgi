@@ -2,7 +2,6 @@
 # index_cpu.cgi
 
 require './proc-lib.pl';
-print "Refresh: $config{'refresh'}\r\n" if ($config{'refresh'});
 &ui_print_header(undef, $text{'index_title'}, "", "cpu", !$no_module_config, 1);
 
 # Show CPU load and type

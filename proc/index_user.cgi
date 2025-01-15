@@ -2,7 +2,6 @@
 # index_user.cgi
 
 require './proc-lib.pl';
-print "Refresh: $config{'refresh'}\r\n" if ($config{'refresh'});
 &ui_print_header(undef, $text{'index_title'}, "", "user", !$no_module_config, 1);
 
 &index_links("user");
