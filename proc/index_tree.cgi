@@ -3,6 +3,7 @@
 # Display a list of all existing processes
 
 require './proc-lib.pl';
+print "Refresh: $config{'refresh'}\r\n" if ($config{'refresh'});
 &ui_print_header(undef, $text{'index_title'}, "", "tree", !$no_module_config, 1);
 
 &index_links("tree");
