@@ -10233,12 +10233,9 @@ file, which defaults to the current module.
 =cut
 sub save_module_config
 {
-my $c = $_[0] || { &get_module_variable('%config') };
-my $m;
-if (defined($_[1])) {
-	$m = $_[1];
-	}
-else {
+my ($c, $m) = @_;
+$c ||= { &get_module_variable('%config') };
+if (!defined($m)) {
 	$m = &get_module_name();
 	$m || &error("could not compute current module in save_module_config");
 	}
