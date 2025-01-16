@@ -2550,14 +2550,15 @@ if ($init_mode eq "systemd") {
 return wantarray ? (-1, undef) : 0;
 }
 
-=head2 cat_systemd(unit)
+=head2 cat_systemd(unit, [regex-filter])
 
-List given systemd unit file contents
+List the contents of a given systemd unit file, alternatively, uses a regex
+filter for specific options
 
 =cut
 sub cat_systemd
 {
-my ($unit) = @_;
+my ($unit, $filter) = @_;
 my @config;
 my $current_section;
 my $current_file;
@@ -2584,6 +2585,26 @@ while (<CAT>) {
 		}
 	}
 close(CAT);
+
+# Filter specific options
+if ($filter) {
+	my $regex = qr/$filter/;
+	$regex = eval "qr/$1/$2" if ($filter =~ m{^/(.+)/([igmsx]*)$});
+	foreach my $conf (@config) {
+		my $filtered_sections = {};
+		foreach my $section_name (keys %{$conf->{'sections'}}) {
+			my $section = $conf->{'sections'}{$section_name};
+			my %matching_params;
+			foreach my $param (keys %$section) {
+				$matching_params{$param} = $section->{$param}
+					if ($param =~ $regex);
+				}
+			$filtered_sections->{$section_name} =
+				\%matching_params if %matching_params;
+			}
+		$conf->{'sections'} = $filtered_sections;
+		}
+	}
 return \@config;
 }
 
