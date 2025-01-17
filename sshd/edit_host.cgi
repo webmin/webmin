@@ -66,6 +66,19 @@ $comp = &find_value("Compression", $conf);
 print &ui_table_row($text{'host_comp'},
 	&yes_no_default_radio("comp", $comp));
 
+# SSH compression level
+if ($version_type ne 'ssh' || $version_number < 3) {
+	if ($version_number < 6) {
+		$clevel = &find_value("CompressionLevel", $conf);
+		print &ui_table_row($text{'host_clevel'},
+			&ui_radio("clevel_def", $clevel ? 0 : 1,
+			[ [ 1, $text{'default'} ],
+				[ 0, &ui_select("clevel", $clevel,
+				[ map { [ $_, $text{"host_clevel_".$_} ] }
+					(1 .. 9) ]) ] ]));
+		}
+	}
+
 # Escape character in session
 $escape = &find_value("EscapeChar", $conf);
 print &ui_table_row($text{'host_escape'},
@@ -77,34 +90,29 @@ print &ui_table_row($text{'host_escape'},
 				$escape eq "none" ? "" : $escape, 4) ] ]));
 
 if ($version_type ne 'ssh' || $version_number < 3) {
-	# SSH compression level
-	$clevel = &find_value("CompressionLevel", $conf);
-	print &ui_table_row($text{'host_clevel'},
-		&ui_radio("clevel_def", $clevel ? 0 : 1,
-		  [ [ 1, $text{'default'} ],
-		    [ 0, &ui_select("clevel", $clevel,
-			   [ map { [ $_, $text{"host_clevel_".$_} ] }
-				 (1 .. 9) ]) ] ]));
-
 	# Number of times to attempt connection
 	$attempts = &find_value("ConnectionAttempts", $conf);
 	print &ui_table_row($text{'host_attempts'},
 		&ui_opt_textbox("attempts", $attempts, 5, $text{'default'}));
 
 	# Use local privileged port?
-	$priv = &find_value("UsePrivilegedPort", $conf);
-	print &ui_table_row($text{'host_priv'},
-		&yes_no_default_radio("priv", $priv));
+	if ($version_number < 7.4) {
+		$priv = &find_value("UsePrivilegedPort", $conf);
+		print &ui_table_row($text{'host_priv'},
+			&yes_no_default_radio("priv", $priv));
+		}
 
-	# Try RSH if SSH fails?
-	$rsh = &find_value("FallBackToRsh", $conf);
-	print &ui_table_row($text{'host_rsh'},
-		 &yes_no_default_radio("rsh", $rsh));
+	if ($version_number < 6) {
+		# Try RSH if SSH fails?
+		$rsh = &find_value("FallBackToRsh", $conf);
+		print &ui_table_row($text{'host_rsh'},
+			&yes_no_default_radio("rsh", $rsh));
+		# Use RSH only?
+		$usersh = &find_value("UseRsh", $conf);
+		print &ui_table_row($text{'host_usersh'},
+			&yes_no_default_radio("usersh", $usersh));
+		}
 
-	# Use RSH only?
-	$usersh = &find_value("UseRsh", $conf);
-	print &ui_table_row($text{'host_usersh'},
-		&yes_no_default_radio("usersh", $usersh));
 	}
 
 # Forward SSH agent?
@@ -133,14 +141,16 @@ if ($version_type eq 'openssh') {
 		&yes_no_default_radio('checkip', $checkip));
 
 	# SSH protocols to try
-	$prots = &find_value("Protocol", $conf);
-	print &ui_table_row($text{'host_prots'},
-		&ui_select("prots", $prots,
-			   [ [ '', $text{'default'} ],
-			     [ 1, $text{'host_prots1'} ],
-			     [ 2, $text{'host_prots2'} ],
-			     [ '1,2', $text{'host_prots12'} ],
-			     [ '2,1', $text{'host_prots21'} ] ], 1, 0, 1));
+	if ($version_number < 7.4) {
+		$prots = &find_value("Protocol", $conf);
+		print &ui_table_row($text{'host_prots'},
+			&ui_select("prots", $prots,
+				[ [ '', $text{'default'} ],
+					[ 1, $text{'host_prots1'} ],
+					[ 2, $text{'host_prots2'} ],
+					[ '1,2', $text{'host_prots12'} ],
+					[ '2,1', $text{'host_prots21'} ] ], 1, 0, 1));
+		}
 	}
 
 print &ui_table_hr();
