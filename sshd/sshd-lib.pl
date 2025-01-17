@@ -156,14 +156,7 @@ return if ($version{'number'} < 6.7);
 return if (!&foreign_available('init'));
 &foreign_require('init');
 my $default_port = 22;
-my @socket_units = ('ssh.socket', 'sshd.socket');
-my $socket_unit;
-foreach (@socket_units) {
-	if (&init::action_status($_) == 2) {
-		$socket_unit = $_;
-		last;
-		}
-	}
+my $socket_unit = &get_ssh_socket();
 return if (!$socket_unit);
 
 # Extend listens with IPs from default socket configuration if set
