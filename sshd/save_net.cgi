@@ -54,6 +54,7 @@ else {
 		}
 	}
 
+# Save ports
 if ($in{'port_def'}) {
 	&save_directive("Port", $conf);
 	}
@@ -65,6 +66,9 @@ else {
 		}
 	&save_directive("Port", $conf, \@ports, "ListenAddress");
 	}
+
+# Sync socket options
+&save_socket(\@ports, \@listens);
 
 if ($version{'type'} eq 'openssh' &&
     $version{'number'} >= 2 && $version{'number'} < 7.6) {
