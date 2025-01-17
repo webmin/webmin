@@ -58,7 +58,8 @@ if ($version{'type'} eq 'openssh') {
 				$loglevel ? 1 : 0) ] ]));
 	}
 
-if ($version{'type'} ne 'ssh' || $version{'number'} < 2) {
+if (($version{'type'} ne 'ssh' && $version{'number'} < 7.6) ||
+    ($version{'type'} eq 'ssh' && $version{'number'} < 2)) {
 	# Bits in key
 	$bits = &find_value("ServerKeyBits", $conf);
 	print &ui_table_row($text{'misc_bits'},
@@ -73,7 +74,8 @@ if ($version{'type'} eq 'ssh') {
 		&ui_yesno_radio("quiet", lc($quiet) ne 'no'));
 	}
 
-if ($version{'type'} ne 'ssh' || $version{'number'} < 2) {
+if (($version{'type'} ne 'ssh' && $version{'number'} < 7.6) ||
+    ($version{'type'} eq 'ssh' && $version{'number'} < 2)) {
 	# Interval between key re-generation
 	$regen = &find_value("KeyRegenerationInterval", $conf);
 	print &ui_table_row($text{'misc_regen'},
