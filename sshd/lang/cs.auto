@@ -1,3 +1,8 @@
+users_root=Povolit přihlášení pomocí <em>rootu</em>?
+users_yes=Ano, klíč i heslo
+users_nopwd=Ano, pouze na základě klíče
+users_fcmd=Ano, pouze pro konkrétní příkazy
+users_no=Ne, úplně zakázat přihlášení root
 users_dsa=Povolit ověřování DSA (SSH 2)?
 users_pkeyauth=Povolit ověřování veřejným klíčem?
 users_authkeys_set=Soubor doma

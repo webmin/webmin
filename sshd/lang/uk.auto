@@ -6,6 +6,11 @@ index_rsa1=RSA (для SSH v1)
 index_rsa=RSA (для SSH v2)
 index_dsa=DSA (для SSH v2)
 
+users_root=Дозволити вхід за допомогою <em>root</em>?
+users_yes=Так, і ключ, і пароль
+users_nopwd=Так, лише на основі ключа
+users_fcmd=Так, лише для певних команд
+users_no=Ні, повністю вимкнути вхід root
 users_dsa=Дозволити аутентифікацію DSA (SSH 2)?
 users_pkeyauth=Дозволити автентифікацію відкритим ключем?
 users_authkeys=Файл ключів, уповноважених користувачем

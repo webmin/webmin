@@ -1,3 +1,8 @@
+users_root=允许 <em>root</em> 登录吗？
+users_yes=是的，密钥和密码均可
+users_nopwd=是的，仅基于密钥
+users_fcmd=是的，仅适用于特定命令
+users_no=否，完全禁用 root 登录
 users_pkeyauth=允许公钥认证？
 
 net_listen2=听地址

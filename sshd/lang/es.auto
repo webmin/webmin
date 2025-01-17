@@ -3,6 +3,11 @@ index_rsa1=RSA (para SSH v1)
 index_rsa=RSA (para SSH v2)
 index_dsa=DSA (para SSH v2)
 
+users_root=¿Permitir el inicio de sesión de <em>root</em>?
+users_yes=Sí, tanto la clave como la contraseña
+users_nopwd=Sí, solo basado en clave
+users_fcmd=Sí, solo para comandos específicos
+users_no=No, deshabilite el inicio de sesión root por completo
 users_dsa=¿Permitir autenticación DSA (SSH 2)?
 users_pkeyauth=¿Permitir autenticación de clave pública?
 users_authkeys_set=Archivo debajo de casa

@@ -1,3 +1,8 @@
+users_root=<em>root</em>로 로그인을 허용하시겠습니까?
+users_yes=네, 키와 비밀번호 둘 다 가능합니다
+users_nopwd=네, 키 기반만 가능합니다
+users_fcmd=예, 특정 명령에만 해당됩니다
+users_no=아니요, 루트 로그인을 완전히 비활성화합니다
 users_dsa=DSA (SSH 2) 인증을 허용 하시겠습니까?
 users_pkeyauth=공개 키 인증을 허용하시겠습니까?
 users_authkeys_set=집에서 신청

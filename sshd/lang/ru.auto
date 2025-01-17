@@ -6,6 +6,11 @@ index_rsa1=RSA (для SSH v1)
 index_rsa=RSA (для SSH v2)
 index_dsa=DSA (для SSH v2)
 
+users_root=Разрешить вход пользователю <em>root</em>?
+users_yes=Да, и ключ, и пароль
+users_nopwd=Да, только на основе ключа
+users_fcmd=Да, только для определенных команд
+users_no=Нет, полностью отключить вход с правами root
 users_dsa=Разрешить аутентификацию DSA (SSH 2)?
 users_pkeyauth=Разрешить аутентификацию с открытым ключом?
 users_authkeys=Файл авторизованных ключей пользователя

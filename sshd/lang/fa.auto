@@ -6,6 +6,11 @@ index_rsa1=RSA (برای SSH v1)
 index_rsa=RSA (برای SSH v2)
 index_dsa=DSA (برای SSH v2)
 
+users_root=ورود از طریق <em>ریشه</em> مجاز است؟
+users_yes=بله، هم کلید و هم پسورد
+users_nopwd=بله، فقط مبتنی بر کلید
+users_fcmd=بله، فقط برای دستورات خاص
+users_no=خیر، ورود root را به طور کامل غیرفعال کنید
 users_dsa=اجازه تأیید هویت DSA (SSH 2) را دارید؟
 users_pkeyauth=احراز هویت کلید عمومی مجاز است؟
 users_authkeys_set=پرونده در خانه

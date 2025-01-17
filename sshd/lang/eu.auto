@@ -1,4 +1,9 @@
 users_expire_def=Inoiz ez
+users_root=<em>root</em> bidez saioa hastea baimendu?
+users_yes=Bai, bai gakoa eta bai pasahitza
+users_nopwd=Bai, gakoetan oinarrituta soilik
+users_fcmd=Bai, komando zehatzetarako soilik
+users_no=Ez, desgaitu root saioa guztiz
 users_pkeyauth=Gako publikoaren autentifikazioa baimendu?
 users_eauthkeys=Falta diren gakoen fitxategia falta edo baliogabea da
 users_maxauthtries=Konexio bakoitzeko gehieneko saiakera saiakera

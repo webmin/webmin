@@ -1,3 +1,8 @@
+users_root=Inloggen via <em>root</em> toestaan?
+users_yes=Ja, zowel sleutel als wachtwoord
+users_nopwd=Ja, alleen op sleutel gebaseerd
+users_fcmd=Ja, alleen voor specifieke opdrachten
+users_no=Nee, root-aanmelding volledig uitschakelen
 users_pkeyauth=Verificatie met openbare sleutel toestaan?
 users_chal=Gebruik uitdaging-respons authenticatie?
 
