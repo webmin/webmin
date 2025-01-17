@@ -141,9 +141,13 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 5) {
 
 if ($version{'type'} eq 'openssh' && $version{'number'} >= 5) {
 	# Challenge-response support
-	$chal = &find_value("ChallengeResponseAuthentication", $conf);
+	my $chall_name = $version{'number'} >= 6.2 ?
+		"KbdInteractiveAuthentication" : "ChallengeResponseAuthentication";
+	$chal = &find_value($chall_name, $conf);
+	my $chall_def = $version{'number'} >= 6.2 ?
+		lc($chal) ne 'no' : lc($chal) eq 'yes';
 	print &ui_table_row($text{'users_chal'},
-		&ui_yesno_radio('chal', lc($chal) eq 'yes'));
+		&ui_yesno_radio('chal', $chall_def));
 	}
 
 if ($version{'type'} eq 'openssh' && $version{'number'} < 3.7 ||
