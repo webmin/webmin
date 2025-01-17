@@ -203,17 +203,37 @@ sub sort_file_by
 {
 my ($file, $sorted_by_file, $join) = @_;
 $join //= "=";
+
+# Sort all the lines in the target file first
+my (%data_target, %data_source, @data_order, %keys_checked);
+my $fh = 'file';
+&read_file($file, \%data_target);
+&read_file($sorted_by_file, \%data_source, \@data_order);
+&open_tempfile($fh, ">$file");
+my $realfile = &translate_filename($file);
+foreach (@data_order) {
+	(print $fh $_,$join,$data_target{$_},"\n") ||
+		&error(&text("efilewrite", $realfile, $!))
+			if (exists($data_target{$_}) && !$keys_checked{$_}++);
+	}
+foreach (keys %data_target) {
+	(print $fh $_,$join,$data_target{$_},"\n") ||
+		&error(&text("efilewrite", $realfile, $!))
+			if (!exists($data_source{$_}) && !$keys_checked{$_}++);
+	}
+&close_tempfile($fh, %data_target ? 1 : 0);
+%{$main::read_file_cache{$realfile}} = %data_target
+	if (defined($main::read_file_cache{$realfile}));
+
+# Preserve comments and line-breaks
 my $target_data = read_file_contents($file);
 my $model_data = read_file_contents($sorted_by_file);
-
-# Extract version related comments for a block, e.g. #1.962
 my %comments = reverse ($model_data =~ m/(#\s*[\d\.]+)[\n\s]+(.*?)=/gm);
-
-# Build blocks of line's key separated with a new line break
 my @lines = (($model_data =~ m/(.*?)$join|(^\s*$)/gm), undef, undef);
 my @blocks;
 my @block;
 for (my $line = 0; $line < scalar(@lines) - 1; $line += 2) {
+	# Build blocks of line's key separated with a new line break
 	if ($lines[$line] =~ /\S+/) {
 		push(@block, $lines[$line]);
 		}
@@ -248,7 +268,7 @@ for (my $block = 0; $block <= scalar(@blocks) - 1; $block++) {
 			}
 		}
 	}
-	&write_file_contents($file, $target_data);
+&write_file_contents($file, $target_data);
 }
 
 =head2 html_escape(string, [no-double-amp-escape])
