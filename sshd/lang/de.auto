@@ -1,5 +1,0 @@
-users_root=Anmeldung durch <em>root</em> zulassen?
-users_yes=Ja, sowohl Schlüssel als auch Passwort
-users_nopwd=Ja, nur schlüsselbasiert
-users_fcmd=Ja, nur für bestimmte Befehle
-users_no=Nein, Root-Login komplett deaktivieren
