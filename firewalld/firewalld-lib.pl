@@ -496,6 +496,26 @@ for my $type (0..1) {
 return undef;
 }
 
+# check_rich_rule(rule, [&zone])
+# Check if a rich rule exists in the given or default zone
+sub check_rich_rule
+{
+my ($rule, $zone) = @_;
+
+# Zone name
+if (!$zone) {
+	($zone) = get_default_zone();
+	$zone = $zone->{'name'};
+	}
+
+# Command to query rules
+my $cmd = "$config{'firewall_cmd'} --zone=".quotemeta($zone)." --list-rich-rules";
+my $out = &backquote_logged($cmd." 2>&1 </dev/null");
+
+# Check for rule existence
+return ($out =~ /\Q$rule\E/);
+}
+
 # remove_rich_rule(rule, [&zone])
 # Remove rich rule in given or default zone using raw rule string
 sub remove_rich_rule
