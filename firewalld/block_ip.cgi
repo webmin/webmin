@@ -26,8 +26,11 @@ $ip =~ s/\Q$mask\E// if ($mask);
 
 # Block the IP
 my $perm = $in{'permanent'} ? 'perm' : '';
-my $err = &block_ip("$ip$mask", $zone->{'name'}, $perm);
-&error($err) if ($err);
+my ($out, $rs) = &rich_rule('add',
+	( 'source address' => "$ip$mask",
+          'zone' => $zone->{'name'}, 'permanent' => $perm ));
+&error($out) if ($rs);
+&apply_firewalld() if ($perm);
 
 &webmin_log("ip", "${perm}block", "$ip$mask");
 &redirect("index.cgi?zone=".&urlize($zone->{'name'}));

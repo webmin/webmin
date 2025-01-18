@@ -385,95 +385,108 @@ my ($zone) = grep { $_->{'default'} } @zones;
 return $zone;
 }
 
-# add_ip_ban(ip, [zone])
-# Ban given IP address in given or default zone
-sub add_ip_ban
+# rich_rule(action, [@opts])
+# Adds or removes a rich firewall rule with specified options
+#
+# Parameters:
+#   action - Required. Must be either 'add' or 'remove'
+#   @opts  - Array of key-value pairs defining the rule properties
+# 
+# Example:
+#   firewalld::rich_rule('add', (
+#       'source address' => '0.0.0.0/0',
+#       'log prefix' => 'BANDWIDTH_IN ',
+#       'level' => 'info',
+#       'action' => 'accept',
+#   ));
+# 
+# Returns:
+#   undef on success, or (error_message, error_code) on failure in list context
+sub rich_rule
 {
-my ($ip, $zone) = @_;
-return create_rich_rule('add', $ip, $zone);
-}
-
-# remove_ip_ban(ip, [zone])
-# Un-ban given IP address in given or default zone 
-sub remove_ip_ban
-{
-my ($ip, $zone) = @_;
-return create_rich_rule('remove', $ip, $zone);
-}
-
-# create_rich_rule(action, ip, [\zone], [opts])
-# Add or remove rich rule for given IP in given or default zone 
-sub create_rich_rule
-{
-my ($action, $ip, $zone, $opts) = @_;
-my $ip_validate = sub {
-	return &check_ipaddress($_[0]) || &check_ip6address($_[0]);
-	};
-
-# Default action for permanent ban is 'drop'
-my $action_type = "drop";
-
-# Override defaults
-if (ref($opts)) {
-	
-	# Override default action
-	$action_type = lc($opts->{'action'})
-		if ($opts->{'action'} &&
-		    $opts->{'action'} =~ /^accept|reject|drop|mark$/);
-}
-
-# Zone name
-if (!$zone) {
-	($zone) = get_default_zone();
-	}
-$zone = $zone->{'name'};
+my ($action, @opts) = @_;
+my %opts = @opts;
 
 # Validate action
 $action eq 'add' || $action eq 'remove' || &error($text{'list_rule_actionerr'});
 
-# Validate IP
-&$ip_validate($ip) || &error($text{'list_rule_iperr'});
+# Action type
+my $action_type = $config{'packet_handling'} eq '1' ? 'reject' : 'drop';
+my $opts_action = delete($opts{'action'});
+if ($opts_action) {
+	$action_type = lc($opts_action)
+		if ($opts_action &&
+		    $opts_action =~ /^accept|reject|drop|mark$/);
+	}
+
+# Zone name
+my $zone = delete($opts{'zone'});
+if (!$zone) {
+	($zone) = get_default_zone();
+	$zone = $zone->{'name'};
+	}
+
+# Permanent rule
+my $permanent = delete($opts{'permanent'});
 
 # Set family
-my $family = $ip =~ /:/ ? 'ipv6' : 'ipv4';
+my $family = delete($opts{'family'}) || 'ipv4';
+
+# Debug mode
+my $debug = delete($opts{'debug'});
+
+# Validate IP address and update family if needed
+my $ip = $opts{'source address'} || $opts{'destination address'};
+if ($ip) {
+	$ip =~ s/\/\d+$//; # Remove CIDR
+	&check_ipaddress($ip) || &check_ip6address($ip) || 
+		&error($text{'list_rule_iperr'});
+	$family = $ip =~ /:/ ? 'ipv6' : 'ipv4';
+	}
+
+# Raw rule passed as string
+my $rule = delete($opts{'raw-rule'});
+if (!$rule) {
+	# Construct rule from given options
+	$rule = "rule family=\"".quotemeta($family)."\"";
+
+	# Extended options handling for dynamic rules
+	foreach my $key (@opts) { # Iterate over all keys in given order
+		next if (!defined($opts{$key}));
+		# Keys cannot be quotemeta'd
+		$key =~ tr/A-Za-z0-9\-\_\/ //cd;
+		# Values can be quotemeta'd
+		my $val = $opts{$key};
+		$val =~ tr/A-Za-z0-9\-\_\=\'\:\.\,\/ //cd;
+		$rule .= " $key=\"$val\"";
+		}
+	$rule .= " ".quotemeta($action_type);
+	}
 
 # Add/remove rich rule
 my $get_cmd = sub {
 	my ($rtype) = @_;
-	my $type;
-	$type = " --permanent" if ($rtype eq 'permanent');
-	return "$config{'firewall_cmd'} --zone=".quotemeta($zone)."$type --".quotemeta($action)."-rich-rule=\"rule family=".quotemeta($family)." source address=".quotemeta($ip)." ".quotemeta($action_type)."\"";
+	my $type = $rtype ? " --permanent" : "";
+	return "$config{'firewall_cmd'} --zone=\"".quotemeta($zone)."\"".
+	       "$type --".quotemeta($action)."-rich-rule='$rule'";
 	};
-my $out = &backquote_logged(&$get_cmd()." 2>&1 </dev/null");
-return $out if ($?);
-$out = &backquote_logged(&$get_cmd('permanent')." 2>&1 </dev/null");
-return $? ? $out : undef;
+
+for my $type (0..1) {
+	next if ($type == 1 && !$permanent);
+	var_dump(&$get_cmd($type), "firewall-rich-rule-$type") if ($debug);
+	my $out = &backquote_logged(&$get_cmd($type)." 2>&1 </dev/null");
+	return wantarray ? ($out, $?) : $out if ($?);
+	}
+return undef;
 }
 
-# remove_rich_rule(rule, [\zone])
-# Remove rich rule in given or default zone 
+# remove_rich_rule(rule, [&zone])
+# Remove rich rule in given or default zone using raw rule string
 sub remove_rich_rule
 {
 my ($rule, $zone) = @_;
-
-# Zone name
-if (!$zone) {
-	($zone) = get_default_zone();
-	}
-$zone = $zone->{'name'};
-
-# Remove rule command
-my $get_cmd = sub {
-	my ($rtype) = @_;
-	my $type;
-	$type = " --permanent" if ($rtype eq 'permanent');
-	return "$config{'firewall_cmd'} --zone=".quotemeta($zone)."$type --remove-rich-rule ".quotemeta(&trim($rule))."";
-	};
-
-my $out = &backquote_logged(&$get_cmd()." 2>&1 </dev/null");
-return $out if ($?);
-$out = &backquote_logged(&$get_cmd('permanent')." 2>&1 </dev/null");
-return $? ? $out : undef;
+return &rich_rule('remove',
+	( 'zone' => $zone->{'name'}, 'permanent' => 1, 'raw-rule' => $rule ));
 }
 
 # remove_direct_rule(rule)
@@ -503,23 +516,6 @@ sub get_config_files
 {
 my $conf_dir = $config{'config_dir'} || '/etc/firewalld';
 return (glob("$conf_dir/*.xml"), glob("$conf_dir/*/*.xml"));
-}
-
-# block_ip(ip, zone, [permanent])
-# Block given IP address temporarily or permanently
-sub block_ip
-{
-my ($ip, $zone, $permanent) = @_;
-my $type = $permanent ? ' --permanent' : "";
-my $family = $ip =~ /:/ ? 'ipv6' : 'ipv4';
-my $handle_action = $config{'packet_handling'} eq '1' ? 'reject' : 'drop';
-my $out = &backquote_logged(
-	"$config{'firewall_cmd'}$type --zone=".quotemeta($zone).
-		 " --add-rich-rule=\"rule family=$family source address=".
-		 	quotemeta($ip)." $handle_action\" 2>&1");
-my $rs = $? ? $out : undef;
-&apply_firewalld() if ($permanent);
-return $rs;
 }
 
 1;
