@@ -163,6 +163,24 @@ if ($key) {
 return $out;
 }
 
+# resolve_current_value(parameter_name)
+# Returns the value of the parameter, with compatibility-level conditionals
+sub resolve_current_value
+{
+my ($parameter_name) = @_;
+
+my $raw_value = &get_current_value($parameter_name);
+my $compatibility_level = &get_current_value("compatibility_level");
+
+if ($raw_value =~ /\{\{\$compatibility_level\}\s*([<>=!]+)\s*\{(\d+)\}\s*\?\s*\{(.*?)\}\s*:\s*\{(.*?)\}\}/) {
+	my ($op, $lvl, $tval, $fval) = ($1, $2, $3, $4);
+	return undef if ($op !~ /^([<>]=?|==|!=)$/);
+	return eval "\$compatibility_level $op $lvl" ? $tval : $fval;
+	}
+
+return $raw_value;
+}
+
 # if_default_value(parameter_name)
 # returns if the value is the default value
 sub if_default_value
