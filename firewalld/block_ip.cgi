@@ -27,8 +27,8 @@ $ip =~ s/\Q$mask\E// if ($mask);
 # Block the IP
 my $perm = $in{'permanent'} ? 'perm' : '';
 my ($out, $rs) = &rich_rule('add',
-	( 'source address' => "$ip$mask",
-          'zone' => $zone->{'name'}, 'permanent' => $perm ));
+	{ 'rule' => &construct_rich_rule('source address' => "$ip$mask"),
+          'zone' => $zone->{'name'}, 'permanent' => $perm });
 &error($out) if ($rs);
 &apply_firewalld() if ($perm);
 
