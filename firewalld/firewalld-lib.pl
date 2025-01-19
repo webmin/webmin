@@ -20,6 +20,50 @@ sub check_firewalld
 return undef;
 }
 
+# check_ip_family()
+# Determines which IP families are enabled and functional on the system
+#
+# Returns:
+#   Hash with 'ipv4' and 'ipv6' keys set to 1 if enabled, 0 if disabled, -1 if unknown
+sub check_ip_family
+{
+my %result = ( ipv4 => 0, ipv6 => 0 );
+
+# Attempt to load IO::Socket::IP at runtime
+eval {
+	require IO::Socket::IP;
+		IO::Socket::IP->import();
+		1;
+	};
+
+# Return on error (must never happen on contemporary systems)
+if ($@) {
+	$result{ipv4} = -1; # unknown
+	$result{ipv6} = -1; # unknown
+	return %result;
+	}
+
+# Check IPv4
+eval {
+	my $sock4 = IO::Socket::IP->new(
+		LocalHost => '127.0.0.1',
+		LocalPort => 0,  # ephemeral port
+		Proto     => 'tcp');
+	$result{ipv4} = 1 if $sock4;
+	};
+
+# Check IPv6
+eval {
+	my $sock6 = IO::Socket::IP->new(
+		LocalHost => '::1',
+		LocalPort => 0,  # ephemeral port
+		Proto     => 'tcp' );
+	$result{ipv6} = 1 if $sock6;
+	};
+
+return %result;
+}
+
 # is_firewalld_running()
 # Returns 1 if the server is running, 0 if not
 sub is_firewalld_running
