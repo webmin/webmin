@@ -352,6 +352,12 @@ sub process_firewalld_line
 return &process_firewall_line(@_);
 }
 
+# get_firewalld_loglevel()
+sub get_firewalld_loglevel
+{
+return ( "kern.=debug" );
+}
+
 ############### functions for IPtables #################
 
 # check_firewall_rules()
