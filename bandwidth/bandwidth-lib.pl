@@ -220,6 +220,138 @@ sub is_server_port
 {
 }
 
+############### functions for FirewallD #################
+
+# get_firewalld_rule(family, chain, direction, iface)
+# Returns the rich rule for logging packets
+sub get_firewalld_rule
+{
+my ($family, $chain, $direction, $iface) = @_;
+
+# Define rule components
+my %switch = (
+	'in'  => 'i',
+	'out' => 'o',
+	);
+
+# Construct and return the rich rule
+my $udirection = uc($direction);
+my $rule =  {
+	'family'   => $family,
+	'table'    => 'filter', 
+	'chain'    => uc($chain),
+	'priority' => 0,
+	'rule'     => "-$switch{$direction} $iface -j LOG \
+		       --log-level 7 --log-prefix BANDWIDTH_$udirection:",
+	};
+return &firewalld::construct_direct_rule($rule);
+}
+
+# check_firewalld_rules(iface)
+# Returns 1 if the FirewallD rules needed are setup, 0 if not
+sub check_firewalld_rules
+{
+my $iface = shift // $config{'iface'};
+&foreign_require("firewalld");  # Load the firewalld module
+my %ip_families = &firewalld::check_ip_family();
+my @directions = ('in', 'out');
+my @chains = ('input', 'output', 'forward');
+my $conflicting = sub {
+	my ($chain, $direction) = @_;
+		return 1 if ($direction eq 'out' && $chain eq 'input');
+		return 1 if ($direction eq 'in' && $chain eq 'output');
+	};
+
+# Check each direction for each available IP family
+for my $chain (@chains) {
+	# If IPv4 is available
+	if ($ip_families{ipv4}) {
+		foreach my $direction (@directions) {
+			next if ($conflicting->($chain, $direction));
+			return 0 if (!&firewalld::check_direct_rule(
+				&get_firewalld_rule('ipv4', $chain, 
+						    $direction, $iface)));
+			}
+		}
+	# If IPv6 is available
+	if ($ip_families{ipv6}) {
+		foreach my $direction (@directions) {
+			next if ($conflicting->($chain, $direction));
+			return 0 if (!&firewalld::check_direct_rule(
+				&get_firewalld_rule('ipv6', $chain,
+						    $direction, $iface)));
+			}
+		}
+	}
+return 1;
+}
+
+# setup_firewalld_rules()
+# If any FirewallD rules are missing, add them
+sub firewalld_rules_control
+{
+my ($action, $iface) = @_;
+&foreign_require("firewalld");
+my %ip_families = &firewalld::check_ip_family();
+my @directions  = ('in', 'out');
+my @chains = ('input', 'output', 'forward');
+my $conflicting = sub {
+	my ($chain, $direction) = @_;
+		return 1 if ($direction eq 'out' && $chain eq 'input');
+		return 1 if ($direction eq 'in' && $chain eq 'output');
+	};
+
+# Add the rules for each direction and IP family
+foreach my $chain (@chains) {
+	if ($ip_families{ipv4}) {
+		foreach my $direction (@directions) {
+			next if ($conflicting->($chain, $direction));
+			my ($out, $rs) = &firewalld::direct_rule($action, {
+				'permanent' => 1,
+				'rule'      => &get_firewalld_rule('ipv4', $chain, 
+					        $direction, $iface),
+				});
+			return $out if ($rs);
+			}
+		}
+	if ($ip_families{ipv6}) {
+		foreach my $direction (@directions) {
+			next if ($conflicting->($chain, $direction));
+			my ($out, $rs) = &firewalld::direct_rule($action, {
+				'permanent' => 1,
+				'rule'      => &get_firewalld_rule('ipv6', $chain,
+						$direction, $iface),
+				});
+			return $out if ($rs);
+			}
+		}
+	}
+return &firewalld::apply_firewalld();
+}
+
+# setup_firewalld_rules(iface)
+# If any FirewallD rules are missing, add them
+sub setup_firewalld_rules
+{
+my $iface = shift // $config{'iface'};
+return &firewalld_rules_control('add', $iface);
+}
+
+# delete_firewalld_rules()
+# Delete firewall rules for bandwidth logging
+sub delete_firewalld_rules
+{
+my $iface = shift // $config{'iface'};
+return &firewalld_rules_control('remove', $iface);
+}
+
+# process_firewalld_line(line, &hours, time-now)
+# Process an IPtables firewall line, and returns 1 if successful
+sub process_firewalld_line
+{
+return &process_firewall_line(@_);
+}
+
 ############### functions for IPtables #################
 
 # check_firewall_rules()
