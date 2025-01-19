@@ -572,6 +572,15 @@ my $out = &backquote_logged($cmd." 2>&1 </dev/null");
 return ($out =~ /\Q$rule\E/);
 }
 
+# add_rich_rule(rule, [&zone])
+# Add rich rule in given or default zone using raw rule string
+sub add_rich_rule
+{
+my ($rule, $zone) = @_;
+return &rich_rule('add',
+	{ 'zone' => $zone->{'name'}, 'permanent' => 1, 'rule' => $rule });
+}
+
 # remove_rich_rule(rule, [&zone])
 # Remove rich rule in given or default zone using raw rule string
 sub remove_rich_rule
