@@ -163,7 +163,7 @@ return &ui_textbox("$_[2]_hour", $_[0], 2).":".
 sub detect_firewall_system
 {
 local $m;
-foreach $m ("shorewall", "firewall", "ipfw", "ipfilter") {
+foreach $m ("shorewall", "firewalld", "firewall", "ipfw", "ipfilter") {
 	return $m if (&check_firewall_system($m));
 	}
 return undef;
