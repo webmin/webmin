@@ -473,7 +473,7 @@ foreach my $ip_key ('source address', 'destination address') {
 			&error("$text{'list_rule_iperr'} : $ip_only");
 
 		# Decide family based on presence of ':' in IP portion
-		my $family = $ip_only =~ /:/ ? 'ipv6' : 'ipv4';
+		$family = $ip_only =~ /:/ ? 'ipv6' : 'ipv4';
 
 		# If you still want to test or store the CIDR, do it here
 		if (defined($cidr)) {
