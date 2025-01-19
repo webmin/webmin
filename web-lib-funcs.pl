@@ -586,34 +586,36 @@ Check if some IPv6 address is properly formatted, and returns 1 if so.
 =cut
 sub check_ip6address
 {
-  my @blocks = split(/:/, $_[0]);
-  return 0 if (@blocks == 0 || @blocks > 8);
+# Special case for unspecified address (analogous to 0.0.0.0 in IPv4)
+return 1 if ($_[0] eq "::");
+my @blocks = split(/:/, $_[0]);
+return 0 if (@blocks == 0 || @blocks > 8);
 
-  # The address/netmask format is accepted. So we're looking for a "/" to isolate a possible netmask.
-  # After that, we delete the netmask to control the address only format, but we verify whether the netmask
-  # value is in [0;128].
-  my $ib = $#blocks;
-  my $where = index($blocks[$ib],"/");
-  my $m = 0;
-  if ($where != -1) {
-    my $b = substr($blocks[$ib],0,$where);
-    $m = substr($blocks[$ib],$where+1,length($blocks[$ib])-($where+1));
-    $blocks[$ib]=$b;
-  }
+# The address/netmask format is accepted. So we're looking for a "/" to isolate a possible netmask.
+# After that, we delete the netmask to control the address only format, but we verify whether the netmask
+# value is in [0;128].
+my $ib = $#blocks;
+my $where = index($blocks[$ib],"/");
+my $m = 0;
+if ($where != -1) {
+my $b = substr($blocks[$ib],0,$where);
+$m = substr($blocks[$ib],$where+1,length($blocks[$ib])-($where+1));
+$blocks[$ib]=$b;
+}
 
-  # The netmask must take its value in [0;128]
-  return 0 if ($m <0 || $m >128);
+# The netmask must take its value in [0;128]
+return 0 if ($m <0 || $m >128);
 
-  # Check the different blocks of the address : 16 bits block in hexa notation.
-  # Possibility of 1 empty block or 2 if the address begins with "::".
-  my $b;
-  my $empty = 0;
-  foreach $b (@blocks) {
-	  return 0 if ($b ne "" && $b !~ /^[0-9a-f]{1,4}$/i);
-	  $empty++ if ($b eq "");
-	  }
-  return 0 if ($empty > 1 && !($_[0] =~ /^::/ && $empty == 2));
-  return 1;
+# Check the different blocks of the address : 16 bits block in hexa notation.
+# Possibility of 1 empty block or 2 if the address begins with "::".
+my $b;
+my $empty = 0;
+foreach $b (@blocks) {
+	return 0 if ($b ne "" && $b !~ /^[0-9a-f]{1,4}$/i);
+	$empty++ if ($b eq "");
+	}
+return 0 if ($empty > 1 && !($_[0] =~ /^::/ && $empty == 2));
+return 1;
 }
 
 
