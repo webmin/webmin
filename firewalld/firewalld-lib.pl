@@ -20,6 +20,14 @@ sub check_firewalld
 return undef;
 }
 
+# get_config_files()
+# Returns a list of all firewalld config files
+sub get_config_files
+{
+my $conf_dir = $config{'config_dir'} || '/etc/firewalld';
+return (glob("$conf_dir/*.xml"), glob("$conf_dir/*/*.xml"));
+}
+
 # check_ip_family()
 # Determines which IP families are enabled and functional on the system
 #
@@ -479,7 +487,7 @@ foreach my $ip_key ('source address', 'destination address') {
 		if (defined($cidr)) {
 			# Make sure CIDR is numeric and within range
 			$cidr =~ /^\d+$/ && $cidr <= ($family eq 'ipv6' ? 128 : 32) ||
-				&error("$text{'list_rule_cidrerr'} : /$cidr");
+				&error("$text{'save_rule_cidrerr'} : /$cidr");
 			}
 		}
 	}
@@ -590,33 +598,174 @@ return &rich_rule('remove',
 	{ 'zone' => $zone->{'name'}, 'permanent' => 1, 'rule' => $rule });
 }
 
-# remove_direct_rule(rule)
-# Remove given direct rule
-sub remove_direct_rule
+# construct_direct_rule(&opts)
+# Constructs a direct Firewalld rule string
+#
+# Opts can include:
+#   'family'   => 'ipv4' | 'ipv6' | 'eb'  (default = 'ipv4')
+#   'table'    => 'filter' | 'nat' | 'mangle' | 'raw' |
+#                 'security' (default = 'filter')
+#   'chain'    => 'INPUT' | 'OUTPUT' | 'FORWARD' |
+#                 'PREROUTING' | 'POSTROUTING' (default = 'INPUT')
+#   'priority' => integer priority (default = 0)
+#   'rule'     => string containing iptables-like match/target
+#
+# Returns:
+#   A string representing the direct rule is returned
+#
+sub construct_direct_rule
+{
+my ($opts) = @_;
+
+# Defaults
+my $family   = $opts->{'family'}   || 'ipv4';
+my $table    = $opts->{'table'}    || 'filter';
+my $chain    = $opts->{'chain'}    || 'INPUT';
+my $priority = $opts->{'priority'} // 0;
+my $rule     = $opts->{'rule'}     || '';
+
+# Basic validation
+$family =~ /^(ipv4|ipv6|eb)$/ ||
+	&error(&text('save_rule_efamily', $family));
+
+$table =~ /^(filter|nat|mangle|raw|security)$/ ||
+	&error(&text('save_rule_etable', $table));
+
+$chain =~ /^(INPUT|OUTPUT|FORWARD|PREROUTING|POSTROUTING)$/ ||
+	&error(&text('save_rule_echain', $chain));
+
+# Priority must be integer
+$priority =~ /^\d+$/ || &error(&text('save_rule_epriority', $priority));
+
+# If still empty after parsing, throw an error
+$rule !~ /^\s*$/ || &error(&text('save_rule_erule'));
+
+# Sanitize rule string by splitting into components and validating each
+my @parts = split(/\s+/, $rule);
+my $sanitized_rule = '';
+for (my $i = 0; $i < @parts; $i++) {
+	my $part = $parts[$i];
+	next if (!defined($part) || $part eq '');
+
+	if ($family =~ /^ipv[46]$/ &&
+	    $part =~ /^(?:--source|--destination)$/) {
+		# Get the IP value (next part)
+		my $ip = $parts[++$i];
+		if (defined($ip)) {
+			# Split IP and CIDR if present
+			my ($ip_only, $cidr) = split(/\//, $ip);
+
+			# Validate the IP portion
+			&check_ipaddress($ip_only) ||
+			&check_ip6address($ip_only) ||
+				&error("$text{'list_rule_iperr'} : $ip_only");
+
+			# Verify IP family matches the rule family
+			my $ip_family = $ip_only =~ /:/ ? 'ipv6' : 'ipv4';
+			$ip_family eq $family ||
+				&error(&text('save_rule_eruleipmismatch'));
+
+			# Validate CIDR if present
+			if (defined($cidr)) {
+				# Make sure CIDR is numeric and within range
+				my $cidr_valid = $family eq 'ipv6' ? 128 : 32;
+				$cidr =~ /^\d+$/ && $cidr <= ($cidr_valid) ||
+					&error("$text{'save_rule_cidrerr'} : /$cidr");
+				}
+			$sanitized_rule .= ' ' . $part . ' ' . $ip;
+			}
+		}
+	elsif ($family eq 'eb' && $part =~ /^(?:--src-mac|--dst-mac)$/) {
+		# Get the MAC value (next part)
+		my $mac = $parts[++$i];
+		if (defined($mac)) {
+			# MAC validation could be added here
+			$sanitized_rule .= ' ' . $part . ' ' . $mac;
+			}
+		}
+	else {
+		if ($part =~ /^-/) {
+			# Options/flags can only contain certain characters
+			$part =~ tr/A-Za-z0-9\-\_//cd;
+			}
+		else {
+			# Values can contain more characters
+			$part =~ tr/A-Za-z0-9\-\_\=\.\:\,\/\"\'//cd;
+			}
+		$sanitized_rule .= ' ' . $part;
+		}
+	}
+
+# Remove extra possible spaces
+$sanitized_rule =~ s/\s+/ /g;
+
+# Return the constructed rule
+return "$family $table $chain $priority $sanitized_rule";
+}
+
+# direct_rule(action, &opts)
+# Add or remove a direct rule
+#
+# Returns:
+#   undef on success, or (error_message, error_code) on failure in list context
+sub direct_rule
+{
+my ($action, $opts) = @_;
+
+# Validate action
+$action eq 'add' || $action eq 'remove' || &error($text{'list_rule_actionerr'});
+
+# Extract permanent flag and construct rule
+my $permanent = delete($opts->{'permanent'});
+
+# Get rule
+my $rule = $opts->{'rule'};
+$rule =~ s/\s+/ /g;
+
+# Add/remove direct rule
+my $get_cmd = sub {
+	my ($perm) = @_;
+	my $type = $perm ? " --permanent" : "";
+	return "$config{'firewall_cmd'}$type --direct --$action-rule $rule";
+	};
+
+for my $type (0..1) {
+	next if ($type == 1 && !$permanent);
+	my $cmd = &$get_cmd($type);
+	my $out = &backquote_logged($cmd." 2>&1 </dev/null");
+	return wantarray ? ($out, $?) : $out if ($?);
+	}
+return undef;
+}
+
+# check_direct_rule(rule)
+# Check if a direct rule exists
+#
+# Returns:
+#   1 if rule exists, 0 if not
+sub check_direct_rule
 {
 my ($rule) = @_;
 
-# Sanitize rule manually (couldn't make it work with quotemeta)
-$rule =~ tr/A-Za-z0-9\-\_\=\"\:\.\,\/ //cd;
+# Construct rule for matching
+my ($family, $table, $chain) = split(/\s+/, $rule);
+my $rrule = $rule;
+$rrule =~ s/^\Q$family\E\s+\Q$table\E\s+\Q$chain\E\s+//;
+$rrule =~ s/\s+/ /g;
 
-# Remove rule command
-my $get_cmd = sub {
-	my ($rtype) = @_;
-	my $type;
-	$type = " --permanent" if ($rtype eq 'permanent');
-	return "$config{'firewall_cmd'}${type} --direct --remove-rule ".&trim($rule)."";
-	};
-
-my $out = &backquote_logged(&$get_cmd()." 2>&1 </dev/null");
-return $out if ($?);
-$out = &backquote_logged(&$get_cmd('permanent')." 2>&1 </dev/null");
-return $? ? $out : undef;
+# Get existing rules
+my $cmd = "$config{'firewall_cmd'} --direct --get-rules $family $table $chain";
+my $out = &backquote_logged($cmd." 2>&1 </dev/null");
+return $? ? 0 : ($out =~ /\Q$rrule\E/);
 }
 
-sub get_config_files
+# remove_direct_rule(rule)
+# Remove given direct rule passed as string
+sub remove_direct_rule
 {
-my $conf_dir = $config{'config_dir'} || '/etc/firewalld';
-return (glob("$conf_dir/*.xml"), glob("$conf_dir/*/*.xml"));
+my ($rule) = @_;
+my ($out, $rs) = &direct_rule('remove', { 'rule' => $rule, 'permanent' => 1 });
+return wantarray ? ($out, $?) : $out if ($?);
 }
 
 1;
