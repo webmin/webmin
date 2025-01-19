@@ -420,11 +420,23 @@ my $family = delete($opts{'family'}) || 'ipv4';
 
 # Validate IP addresses, and update family if needed
 foreach my $ip_key ('source address', 'destination address') {
-	if (my $ip = $opts{$ip_key}) {
-		$ip =~ s/\/\d+$//; # Remove CIDR
-		&check_ipaddress($ip) || &check_ip6address($ip) || 
-			&error("$text{'list_rule_iperr'} ($ip_key: $ip)");
-		$family = $ip =~ /:/ ? 'ipv6' : 'ipv4';
+	if (my $full_ip = $opts{$ip_key}) {
+		# Split IP and CIDR, if present
+		my ($ip_only, $cidr) = split(/\//, $full_ip);
+
+		# Validate the IP portion
+		&check_ipaddress($ip_only) || &check_ip6address($ip_only) ||
+			&error("$text{'list_rule_iperr'} : $ip_only");
+
+		# Decide family based on presence of ':' in IP portion
+		my $family = $ip_only =~ /:/ ? 'ipv6' : 'ipv4';
+
+		# If you still want to test or store the CIDR, do it here
+		if (defined($cidr)) {
+			# Make sure CIDR is numeric and within range
+			$cidr =~ /^\d+$/ && $cidr <= ($family eq 'ipv6' ? 128 : 32) ||
+				&error("$text{'list_rule_cidrerr'} : /$cidr");
+			}
 		}
 	}
 
