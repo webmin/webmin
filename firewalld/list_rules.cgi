@@ -119,7 +119,7 @@ while(<$fh2>) {
 			else {
 				# Extract IPs from the rule,
 				# considering comma separated
-				my @ips = ($_ =~ /-[sd]\s+([0-9\.\:a-f,\/]+)/gi);
+				my @ips = ($_ =~ /(?:-[sd]|--source|--destination)\s+([0-9\.\:a-f,\/]+)/gi);
 				$ips = join("$nbsp$nbsp$br", @ips);
 				$ips =~ s/\s*,\s*/$nbsp$nbsp$br/g;
 				$ips ||= $ndash;
@@ -148,7 +148,7 @@ while(<$fh2>) {
 				}
 
 			# Get action
-			if (/(ACCEPT|REJECT|DROP|MARK|MASQUERADE$)/) {
+			if (/(ACCEPT|REJECT|DROP|MARK|MASQUERADE|LOG)/) {
 				push(@head, $text{'list_rules_action'});
 				push(@body, ucfirst(lc($1)));
 				}
