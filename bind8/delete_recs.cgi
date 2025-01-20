@@ -76,7 +76,6 @@ else {
 		# Delete the actual record
 		&lock_file(&make_chroot($r->{'file'}));
 		&delete_record($r->{'file'}, $r);
-		&webmin_log("delete", "record", $dom, $r);
 		splice(@recs, $d, 1);
 		}
 	&bump_soa_record($zone->{'file'}, \@recs);
@@ -87,3 +86,5 @@ else {
 	&webmin_log("delete", "recs", scalar(@d));
 	&redirect("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=$in{'sort'}");
 	}
+
+
