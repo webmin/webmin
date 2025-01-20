@@ -6,9 +6,9 @@ use Time::Local;
 require './bandwidth-lib.pl';
 
 our (%config, $module_config_file, $module_var_directory, $pid_file,
-     $syslog_module, $syslog_journald);
+     $syslog_module, $syslog_journald, $bandwidth_log);
 
-my ($logfh, $timestamp_file, $bandwidth_log, $lastline);
+my ($logfh, $timestamp_file, $lastline);
 
 # Detect firewall system if needed
 if (!$config{'firewall_system'}) {
