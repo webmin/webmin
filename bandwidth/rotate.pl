@@ -20,17 +20,21 @@ if (!$config{'firewall_system'}) {
 	}
 
 # See if this process is already running
-if ($pid = &check_pid_file($pid_file)) {
+if (my $pid = &check_pid_file($pid_file)) {
 	print STDERR "rotate.pl process $pid is already running\n";
 	exit;
 	}
-open(PID, ">$pid_file");
-print PID $$,"\n";
-close(PID);
+open(my $pid, ">$pid_file");
+print $pid $$,"\n";
+close($pid);
 
+# Get the current time
 $time_now = time();
 @time_now = localtime($time_now);
 @hours = ( );
+
+# Pre-process command
+&pre_process();
 
 # Scan the entries in the log file
 &pre_process();
