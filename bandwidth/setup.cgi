@@ -95,7 +95,7 @@ elsif ($syslog_module eq "syslog-ng") {
 	}
 elsif ($syslog_journald) {
 	# Systemd journal
-	# XXX
+	# No setup needed
 }
 
 # Save the interface

@@ -83,8 +83,7 @@ elsif ($syslog_module eq "syslog-ng") {
 	}
 elsif ($syslog_journald) {
 	# Systemd journal
-	# XXX
-	# $sysconf = 1;
+	$sysconf = 1; # nothing to do
 	}
 
 if (($missingrule || !$sysconf) && $access{'setup'}) {

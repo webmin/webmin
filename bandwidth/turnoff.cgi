@@ -39,7 +39,7 @@ elsif ($syslog_module eq "syslog-ng") {
 	}
 elsif ($syslog_journald) {
 	# Systemd journal
-	# XXX
+	# Nothing to do
 }
 
 # Remove rotation cron job
