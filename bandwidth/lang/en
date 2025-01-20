@@ -85,6 +85,7 @@ syslog_syslog-ng=Syslog-NG
 
 rotate_title=Updating Statistics
 rotate_doing=Processing logged network traffic ..
-rotate_done=.. done.
+rotate_done=.. done
+rotate_failed=.. failed : $1
 
 __norefs=1
