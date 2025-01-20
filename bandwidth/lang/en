@@ -5,7 +5,7 @@ index_elog=The file $1 used for bandwidth logging is actually a directory on you
 index_edir=The directory for storing bandwidth data $1 does not exist, or is not a directory. Adjust the <a href='$2'>module configuration</a> to use a different path.
 index_emod=The Webmin module $1 is not installed on this system or is not supported by your OS. The Bandwidth Monitoring module cannot operate without it.
 index_esyslog=Neither of the System Logs modules are installed on this system and supported by your OS. The Bandwidth Monitoring module cannot operate without one of them.
-index_firesys=Using $1 firewall and $2
+index_firesys=Using $1 with $2
 index_setupcannot=However, you do not have permissions to set it up!
 index_setupdesc=Before this module can report network usage, it needs to be set up to monitor traffic on the chosen network interface.
 index_setupdesc2=This module will log <em>all</em> network traffic sent or received on the selected interface, which can consume a large amount of disk space and CPU time on a fast network connection.
@@ -73,11 +73,13 @@ setup_ecannot=You are not allowed to enable monitoring
 setup_eiface=Missing or invalid interface name
 setup_ezone=Failed to find Shorewall zone for the selected interface
 
+system_firewalld=Firewalld
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
 
+syslog_journal=Journald
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
 
