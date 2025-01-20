@@ -26,9 +26,12 @@ else {
 %access = &get_module_acl();
 
 $bandwidth_log = $config{'bandwidth_log'} || "/var/log/bandwidth";
-$hours_dir = $config{'bandwidth_dir'} || "$module_config_directory/hours";
+$hours_dir = $config{'bandwidth_dir'} ||
+	     (-e "$module_config_directory/hours" ?
+	     		"$module_config_directory/hours" :
+			"$module_var_directory/hours");
 $cron_cmd = "$module_config_directory/rotate.pl";
-$pid_file = "$module_config_directory/rotate.pid";
+$pid_file = "$module_var_directory/rotate.pid";
 
 # list_hours()
 # Returns a list of all hours for which traffic is available
