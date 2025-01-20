@@ -10,7 +10,9 @@ if (!$config{'firewall_system'}) {
 	$sys = &detect_firewall_system();
 	if ($sys) {
 		$config{'firewall_system'} = $sys;
+		&lock_file($module_config_file);
 		&save_module_config();
+		&unlock_file($module_config_file);
 		}
 	else {
 		die "Failed to detect firewall system!";
