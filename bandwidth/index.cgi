@@ -70,7 +70,11 @@ else {
 
 # Make sure the needed firewall rules and syslog entry are in place
 $missingrule = !&check_rules();
-if ($syslog_module eq "syslog") {
+if ($syslog_journald) {
+	# Systemd journal
+	$sysconf = 1; # nothing to do
+	}
+elsif ($syslog_module eq "syslog") {
 	# Normal syslog
 	$conf = &syslog::get_config();
 	$sysconf = &find_sysconf($conf);
@@ -80,10 +84,6 @@ elsif ($syslog_module eq "syslog-ng") {
 	$conf = &syslog_ng::get_config();
 	($ngdest, $ngfilter, $nglog) = &find_sysconf_ng($conf);
 	$sysconf = $ngdest && $ngfilter && $nglog;
-	}
-elsif ($syslog_journald) {
-	# Systemd journal
-	$sysconf = 1; # nothing to do
 	}
 
 if (($missingrule || !$sysconf) && $access{'setup'}) {

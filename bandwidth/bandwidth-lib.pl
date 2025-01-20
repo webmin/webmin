@@ -8,17 +8,17 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
-if (&foreign_installed("syslog-ng", 1) == 2) {
+if (&has_command('journalctl')) {
+	$syslog_module = undef;
+	$syslog_journald = "journald" ;
+	}
+elsif (&foreign_installed("syslog-ng", 1) == 2) {
 	&foreign_require("syslog-ng");
 	$syslog_module = "syslog-ng";
 	}
 elsif (&foreign_installed("syslog")) {
 	&foreign_require("syslog");
 	$syslog_module = "syslog";
-	}
-else {
-	$syslog_module = undef;
-	$syslog_journald = "journald" if (&has_command('journalctl'));
 	}
 &foreign_require("cron", "cron-lib.pl");
 &foreign_require("net", "net-lib.pl");

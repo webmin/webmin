@@ -9,7 +9,11 @@ $access{'setup'} || &error($text{'turnoff_ecannot'});
 $err = &delete_rules();
 &error($err) if ($err);
 
-if ($syslog_module eq "syslog") {
+if ($syslog_journald) {
+	# Systemd journal
+	# Nothing to do
+	}
+elsif ($syslog_module eq "syslog") {
 	# Remove syslog entry
 	$conf = &syslog::get_config();
 	$sysconf = &find_sysconf($conf);
@@ -37,10 +41,6 @@ elsif ($syslog_module eq "syslog-ng") {
 		}
 	&unlock_file($syslog_ng::config{'syslogng_conf'});
 	}
-elsif ($syslog_journald) {
-	# Systemd journal
-	# Nothing to do
-}
 
 # Remove rotation cron job
 $job = &find_cron_job();
