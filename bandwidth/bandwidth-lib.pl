@@ -18,6 +18,7 @@ elsif (&foreign_installed("syslog")) {
 	}
 else {
 	$syslog_module = undef;
+	$syslog_journald = "journald" if (&has_command('journalctl'));
 	}
 &foreign_require("cron", "cron-lib.pl");
 &foreign_require("net", "net-lib.pl");

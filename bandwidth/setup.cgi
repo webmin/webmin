@@ -32,7 +32,7 @@ if ($syslog_module eq "syslog") {
 		&error($err) if ($err);
 		}
 	}
-else {
+elsif ($syslog_module eq "syslog-ng") {
 	# Add syslog-ng entry
 	$conf = &syslog_ng::get_config();
 	($dest, $filter, $log) = &find_sysconf_ng($conf);
@@ -93,6 +93,10 @@ else {
 		}
 	&unlock_file($syslog_ng::config{'syslogng_conf'});
 	}
+elsif ($syslog_journald) {
+	# Systemd journal
+	# XXX
+}
 
 # Save the interface
 &lock_file($module_config_file);

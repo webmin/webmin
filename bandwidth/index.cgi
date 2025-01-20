@@ -34,7 +34,7 @@ foreach $m (split(/\s+/, $module_info{'depends'})) {
 	}
 
 # Make sure one of the syslog modules works
-if (!$syslog_module) {
+if (!$syslog_module && !$syslog_journald) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro",
 			 1, 1);
 	&ui_print_endpage(&text('index_esyslog'));
@@ -66,7 +66,7 @@ else {
 		 1, 1, 0, undef, undef, undef,
 		 &text('index_firesys',
 		       $text{'system_'.$config{'firewall_system'}},
-		       $text{'syslog_'.$syslog_module}));
+		       $text{'syslog_'.($syslog_module || $syslog_journald)}));
 
 # Make sure the needed firewall rules and syslog entry are in place
 $missingrule = !&check_rules();
@@ -75,11 +75,16 @@ if ($syslog_module eq "syslog") {
 	$conf = &syslog::get_config();
 	$sysconf = &find_sysconf($conf);
 	}
-else {
+elsif ($syslog_module eq "syslog-ng") {
 	# Syslog-ng
 	$conf = &syslog_ng::get_config();
 	($ngdest, $ngfilter, $nglog) = &find_sysconf_ng($conf);
 	$sysconf = $ngdest && $ngfilter && $nglog;
+	}
+elsif ($syslog_journald) {
+	# Systemd journal
+	# XXX
+	# $sysconf = 1;
 	}
 
 if (($missingrule || !$sysconf) && $access{'setup'}) {
