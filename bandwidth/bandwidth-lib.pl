@@ -243,7 +243,7 @@ my $rule =  {
 	'chain'    => uc($chain),
 	'priority' => 0,
 	'rule'     => "-$switch{$direction} $iface -j LOG \
-		       --log-level 7 --log-prefix BANDWIDTH_$udirection:",
+		       --log-prefix BANDWIDTH_$udirection:",
 	};
 return &firewalld::construct_direct_rule($rule);
 }
