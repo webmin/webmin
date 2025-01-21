@@ -52,8 +52,7 @@ else {
 	# Validate ports (1234 or 1234:1245 or 1234:1245,1250,http or 1238,http,https)
 	$in{'port'} =~ s/\s+//g if ($in{'port'});
 	!$in{'port'} || $in{'port'} =~
-		/^(?!$)(?:[a-zA-Z0-9]+|\d{1,5})(?::\d{1,5})?
-		(?:,\s*(?:[a-zA-Z0-9]+|\d{1,5})(?::\d{1,5})?)*$/gmix ||
+		/^(?:\d{1,5}(:\d{1,5})?|[a-zA-Z][a-zA-Z0-9-]*)(?:,(?:\d{1,5}(:\d{1,5})?|[a-zA-Z][a-zA-Z0-9-]*))*$/ ||
 			&error($text{'jail_eports'});
 
 	# Parse and validate actions
