@@ -45,7 +45,8 @@ else {
 		}
 
 	# Validate backend
-	!$in{'backend'} || $in{'backend'} =~ /^(auto|systemd|polling|gamin|pyinotify)$/ ||
+	!$in{'backend'} || 
+	$in{'backend'} =~ /^(auto|systemd|polling|gamin|pyinotify|\%\(\w+\)s)$/ ||
 		&error($text{'jail_ebackend'});
 
 	# Validate ports (1234 or 1234:1245 or 1234:1245,1250,http or 1238,http,https)
