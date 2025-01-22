@@ -826,21 +826,21 @@ return $_[0] ? $_[0] : $_[1];
 }
 
 # make_directives(ref, version, module)
+# Return directives suitable for this system and version
 sub make_directives
 {
-local(@rv, $aref);
-$aref = $_[0];
-local $ver = $_[1];
+my ($aref, $ver, $mod) = @_;
+my @rv;
 if ($ver =~ /^(1)\.(3)(\d+)$/) {
 	$ver = sprintf "%d.%d%2.2d", $1, $2, $3;
 	}
-foreach $d (@$aref) {
+foreach my $d (@$aref) {
 	local(%dir);
 	$dir{'name'} = $d->[0];
 	$dir{'multiple'} = $d->[1];
 	$dir{'type'} = int($d->[2]);
 	$dir{'subtype'} = $d->[2] - $dir{'type'};
-	$dir{'module'} = $_[2];
+	$dir{'module'} = $mod;
 	$dir{'version'} = $ver;
 	$dir{'priority'} = $d->[5];
 	foreach $c (split(/\s+/, $d->[3])) { $dir{$c}++; }
