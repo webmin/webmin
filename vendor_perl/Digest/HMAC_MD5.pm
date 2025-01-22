@@ -1,5 +1,5 @@
 package Digest::HMAC_MD5;
-our $VERSION = '1.04'; # VERSION
+our $VERSION = '1.05'; # VERSION
 our $AUTHORITY = 'cpan:ARODLAND'; # AUTHORITY
 
 use strict;
@@ -7,8 +7,7 @@ use Digest::MD5  qw(md5);
 use Digest::HMAC qw(hmac);
 
 # OO interface
-use vars qw(@ISA);
-@ISA=qw(Digest::HMAC);
+our @ISA=qw(Digest::HMAC);
 sub new
 {
     my $class = shift;

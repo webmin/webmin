@@ -8,7 +8,7 @@ use warnings;
 
 BEGIN {
 	$Types::Standard::Dict::AUTHORITY = 'cpan:TOBYINK';
-	$Types::Standard::Dict::VERSION   = '2.000001';
+	$Types::Standard::Dict::VERSION   = '2.006000';
 }
 
 $Types::Standard::Dict::VERSION =~ tr/_//d;
@@ -99,7 +99,7 @@ sub __inline_generator {
 	# i.e. Any, Item, Defined, Ref, or HashRef
 	my $slurpy_is_any = $slurpy && $_hash->is_a_type_of( $slurpy );
 	
-	# Is slurpy a parameterized Map, or expressable as a parameterized Map?
+	# Is slurpy a parameterized Map, or expressible as a parameterized Map?
 	my $slurpy_is_map =
 		$slurpy
 		&& $slurpy->is_parameterized

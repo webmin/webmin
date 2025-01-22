@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$Type::Tiny::ConstrainedObject::AUTHORITY = 'cpan:TOBYINK';
-	$Type::Tiny::ConstrainedObject::VERSION   = '2.000001';
+	$Type::Tiny::ConstrainedObject::VERSION   = '2.006000';
 }
 
 $Type::Tiny::ConstrainedObject::VERSION =~ tr/_//d;
@@ -130,7 +130,7 @@ __END__
 
 =head1 NAME
 
-Type::Tiny::ConstrainedObject - shared behavour for Type::Tiny::Class, etc
+Type::Tiny::ConstrainedObject - shared behaviour for Type::Tiny::Class, etc
 
 =head1 STATUS
 
@@ -234,7 +234,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2019-2022 by Toby Inkster.
+This software is copyright (c) 2019-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

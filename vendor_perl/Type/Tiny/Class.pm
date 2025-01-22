@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$Type::Tiny::Class::AUTHORITY = 'cpan:TOBYINK';
-	$Type::Tiny::Class::VERSION   = '2.000001';
+	$Type::Tiny::Class::VERSION   = '2.006000';
 }
 
 $Type::Tiny::Class::VERSION =~ tr/_//d;
@@ -233,6 +233,87 @@ __END__
 
 Type::Tiny::Class - type constraints based on the "isa" method
 
+=head1 SYNOPSIS
+
+Using via L<Types::Standard>:
+
+  package Local::Horse {
+    use Moo;
+    use Types::Standard qw( Str InstanceOf );
+    
+    has name => (
+      is       => 'ro',
+      isa      => Str,
+    );
+    
+    has owner => (
+      is       => 'ro',
+      isa      => InstanceOf[ 'Local::Person' ],
+      default  => sub { Local::Person->new },
+    );
+  }
+
+Using Type::Tiny::Class's export feature:
+
+  package Local::Horse {
+    use Moo;
+    use Types::Standard qw( Str );
+    use Type::Tiny::Class 'Local::Person';
+    
+    has name => (
+      is       => 'ro',
+      isa      => Str,
+    );
+    
+    has owner => (
+      is       => 'ro',
+      isa      => LocalPerson,
+      default  => sub { LocalPerson->new },
+    );
+  }
+
+Using Type::Tiny::Class's object-oriented interface:
+
+  package Local::Horse {
+    use Moo;
+    use Types::Standard qw( Str );
+    use Type::Tiny::Class;
+    
+    my $Person = Type::Tiny::Class->new( class => 'Local::Person' );
+    
+    has name => (
+      is       => 'ro',
+      isa      => Str,
+    );
+    
+    has owner => (
+      is       => 'ro',
+      isa      => $Person,
+      default  => sub { $Person->new },
+    );
+  }
+
+Using Type::Utils's functional interface:
+
+  package Local::Horse {
+    use Moo;
+    use Types::Standard qw( Str );
+    use Type::Utils;
+    
+    my $Person = class_type 'Local::Person';
+    
+    has name => (
+      is       => 'ro',
+      isa      => Str,
+    );
+    
+    has owner => (
+      is       => 'ro',
+      isa      => $Person,
+      default  => sub { $Person->new },
+    );
+  }
+
 =head1 STATUS
 
 This module is covered by the
@@ -398,7 +479,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2017-2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2017-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

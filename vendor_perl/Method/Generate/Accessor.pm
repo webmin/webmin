@@ -50,23 +50,34 @@ sub generate_method {
     package => 'Method::Generate::Accessor::_Generated',
     %{ $quote_opts||{} },
   };
-  $spec->{allow_overwrite}++ if $name =~ s/^\+//;
-  croak "Must have an is" unless my $is = $spec->{is};
-  if ($is eq 'ro') {
+
+  $spec->{allow_overwrite}++
+    if $name =~ s/^\+//;
+
+  my $is = $spec->{is};
+  if (!$is) {
+    croak "Must have an is";
+  }
+  elsif ($is eq 'ro') {
     $spec->{reader} = $name unless exists $spec->{reader};
-  } elsif ($is eq 'rw') {
+  }
+  elsif ($is eq 'rw') {
     $spec->{accessor} = $name unless exists $spec->{accessor}
       or ( $spec->{reader} and $spec->{writer} );
-  } elsif ($is eq 'lazy') {
+  }
+  elsif ($is eq 'lazy') {
     $spec->{reader} = $name unless exists $spec->{reader};
     $spec->{lazy} = 1;
     $spec->{builder} ||= '_build_'.$name unless exists $spec->{default};
-  } elsif ($is eq 'rwp') {
+  }
+  elsif ($is eq 'rwp') {
     $spec->{reader} = $name unless exists $spec->{reader};
     $spec->{writer} = "_set_${name}" unless exists $spec->{writer};
-  } elsif ($is ne 'bare') {
+  }
+  elsif ($is ne 'bare') {
     croak "Unknown is ${is}";
   }
+
   if (exists $spec->{builder}) {
     if(ref $spec->{builder}) {
       $self->_validate_codulatable('builder', $spec->{builder},
@@ -78,28 +89,35 @@ sub generate_method {
     croak "Invalid builder for $into->$name - not a valid method name"
       if $spec->{builder} !~ _module_name_rx;
   }
+
   if (($spec->{predicate}||0) eq 1) {
     $spec->{predicate} = $name =~ /^_/ ? "_has${name}" : "has_${name}";
   }
+
   if (($spec->{clearer}||0) eq 1) {
     $spec->{clearer} = $name =~ /^_/ ? "_clear${name}" : "clear_${name}";
   }
+
   if (($spec->{trigger}||0) eq 1) {
     $spec->{trigger} = quote_sub('shift->_trigger_'.$name.'(@_)');
   }
+
   if (($spec->{coerce}||0) eq 1) {
     my $isa = $spec->{isa};
     if (blessed $isa and $isa->can('coercion')) {
       $spec->{coerce} = $isa->coercion;
-    } elsif (blessed $isa and $isa->can('coerce')) {
+    }
+    elsif (blessed $isa and $isa->can('coerce')) {
       $spec->{coerce} = sub { $isa->coerce(@_) };
-    } else {
+    }
+    else {
       croak "Invalid coercion for $into->$name - no appropriate type constraint";
     }
   }
 
   foreach my $setting (qw( isa coerce )) {
-    next if !exists $spec->{$setting};
+    next
+      if !exists $spec->{$setting};
     $self->_validate_codulatable($setting, $spec->{$setting}, "$into->$name");
   }
 
@@ -128,7 +146,8 @@ sub generate_method {
       $methods{$reader} = $self->_generate_xs(
         getters => $into, $reader, $name, $spec
       );
-    } else {
+    }
+    else {
       $self->{captures} = {};
       $methods{$reader} =
         quote_sub "${into}::${reader}"
@@ -139,6 +158,7 @@ sub generate_method {
         ;
     }
   }
+
   if (my $accessor = $spec->{accessor}) {
     _die_overwrite($into, $accessor, 'an accessor')
       if !$spec->{allow_overwrite} && defined &{"${into}::${accessor}"};
@@ -150,7 +170,8 @@ sub generate_method {
       $methods{$accessor} = $self->_generate_xs(
         accessors => $into, $accessor, $name, $spec
       );
-    } else {
+    }
+    else {
       $self->{captures} = {};
       $methods{$accessor} =
         quote_sub "${into}::${accessor}"
@@ -160,6 +181,7 @@ sub generate_method {
         ;
     }
   }
+
   if (my $writer = $spec->{writer}) {
     _die_overwrite($into, $writer, 'a writer')
       if !$spec->{allow_overwrite} && defined &{"${into}::${writer}"};
@@ -170,7 +192,8 @@ sub generate_method {
       $methods{$writer} = $self->_generate_xs(
         setters => $into, $writer, $name, $spec
       );
-    } else {
+    }
+    else {
       $self->{captures} = {};
       $methods{$writer} =
         quote_sub "${into}::${writer}"
@@ -187,7 +210,8 @@ sub generate_method {
       $methods{$pred} = $self->_generate_xs(
         exists_predicates => $into, $pred, $name, $spec
       );
-    } else {
+    }
+    else {
       $self->{captures} = {};
       $methods{$pred} =
         quote_sub "${into}::${pred}"
@@ -197,9 +221,11 @@ sub generate_method {
         ;
     }
   }
+
   if (my $builder = delete $spec->{builder_sub}) {
     _install_coderef( "${into}::$spec->{builder}" => $builder );
   }
+
   if (my $cl = $spec->{clearer}) {
     _die_overwrite($into, $cl, 'a clearer')
       if !$spec->{allow_overwrite} && defined &{"${into}::${cl}"};
@@ -211,21 +237,23 @@ sub generate_method {
         => $quote_opts
       ;
   }
+
   if (my $hspec = $spec->{handles}) {
     my $asserter = $spec->{asserter} ||= '_assert_'.$name;
-    my @specs = do {
-      if (ref($hspec) eq 'ARRAY') {
-        map [ $_ => $_ ], @$hspec;
-      } elsif (ref($hspec) eq 'HASH') {
+    my @specs =
+      ref $hspec eq 'ARRAY' ? (
+        map [ $_ => $_ ], @$hspec
+      )
+      : ref $hspec eq 'HASH' ? (
         map [ $_ => ref($hspec->{$_}) ? @{$hspec->{$_}} : $hspec->{$_} ],
-          keys %$hspec;
-      } elsif (!ref($hspec)) {
+          keys %$hspec
+      )
+      : !ref $hspec ? do {
         require Moo::Role;
         map [ $_ => $_ ], Moo::Role->methods_provided_by($hspec)
-      } else {
-        croak "You gave me a handles of ${hspec} and I have no idea why";
       }
-    };
+      : croak "You gave me a handles of ${hspec} and I have no idea why";
+
     foreach my $delegation_spec (@specs) {
       my ($proxy, $target, @args) = @$delegation_spec;
       _die_overwrite($into, $proxy, 'a delegation')
@@ -239,6 +267,7 @@ sub generate_method {
         ;
     }
   }
+
   if (my $asserter = $spec->{asserter}) {
     _die_overwrite($into, $asserter, 'an asserter')
       if !$spec->{allow_overwrite} && defined &{"${into}::${asserter}"};
@@ -250,6 +279,7 @@ sub generate_method {
         => $quote_opts
       ;
   }
+
   \%methods;
 }
 

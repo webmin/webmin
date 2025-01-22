@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$Type::Registry::AUTHORITY = 'cpan:TOBYINK';
-	$Type::Registry::VERSION   = '2.000001';
+	$Type::Registry::VERSION   = '2.006000';
 }
 
 $Type::Registry::VERSION =~ tr/_//d;
@@ -533,7 +533,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2017-2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2017-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

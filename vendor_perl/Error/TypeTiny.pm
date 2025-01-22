@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$Error::TypeTiny::AUTHORITY = 'cpan:TOBYINK';
-	$Error::TypeTiny::VERSION   = '2.000001';
+	$Error::TypeTiny::VERSION   = '2.006000';
 }
 
 $Error::TypeTiny::VERSION =~ tr/_//d;
@@ -21,50 +21,7 @@ require Carp;
 *CarpInternal = \%Carp::CarpInternal;
 
 our %CarpInternal;
-$CarpInternal{$_}++ for qw(
-	Types::Standard::_Stringable
-	Exporter::Tiny
-	Eval::TypeTiny::Sandbox
-	
-	Devel::TypeTiny::Perl56Compat
-	Devel::TypeTiny::Perl58Compat
-	Error::TypeTiny
-	Error::TypeTiny::Assertion
-	Error::TypeTiny::Compilation
-	Error::TypeTiny::WrongNumberOfParameters
-	Eval::TypeTiny
-	Reply::Plugin::TypeTiny
-	Test::TypeTiny
-	Type::Coercion
-	Type::Coercion::FromMoose
-	Type::Coercion::Union
-	Type::Library
-	Type::Params
-	Type::Parser
-	Type::Registry
-	Types::Common::Numeric
-	Types::Common::String
-	Types::Standard
-	Types::Standard::ArrayRef
-	Types::Standard::CycleTuple
-	Types::Standard::Dict
-	Types::Standard::HashRef
-	Types::Standard::Map
-	Types::Standard::ScalarRef
-	Types::Standard::StrMatch
-	Types::Standard::Tied
-	Types::Standard::Tuple
-	Types::TypeTiny
-	Type::Tiny
-	Type::Tiny::Class
-	Type::Tiny::Duck
-	Type::Tiny::Enum
-	Type::Tiny::_HalfOp
-	Type::Tiny::Intersection
-	Type::Tiny::Role
-	Type::Tiny::Union
-	Type::Utils
-);
+$CarpInternal{$_}++ for @Type::Tiny::InternalPackages;
 
 sub new {
 	my $class  = shift;
@@ -99,14 +56,17 @@ sub throw_cb {
 		$level++ if caller( $level ) eq ( $pkg || "" );
 	}
 	
-	# Moo's Method::Generate::Constructor puts an eval in the stack trace,
-	# that is useless for debugging, so show the stack frame one above.
-	$level++
-		if (
-		( caller( $level ) )[1] =~ /^\(eval \d+\)$/
-		and ( caller( $level ) )[3] eq '(eval)'    # (caller())[3] is $subroutine
-		);
-	@ctxt{qw/ package file line /} = caller( $level );
+	{
+		no warnings 'uninitialized';
+		# Moo's Method::Generate::Constructor puts an eval in the stack trace,
+		# that is useless for debugging, so show the stack frame one above.
+		$level++
+			if (
+			( caller( $level ) )[1] =~ /^\(eval \d+\)$/
+			and ( caller( $level ) )[3] eq '(eval)'    # (caller())[3] is $subroutine
+			);
+		@ctxt{qw/ package file line /} = caller( $level );
+	}
 	
 	my $stack = undef;
 	if ( our $StackTrace ) {
@@ -316,7 +276,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2017-2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2017-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -1,12 +1,14 @@
 package Sub::Defer;
 use strict;
 use warnings;
-use Exporter qw(import);
+
+our $VERSION = '2.006008';
+$VERSION =~ tr/_//d;
+
+use Exporter ();
+BEGIN { *import = \&Exporter::import }
 use Scalar::Util qw(weaken);
 use Carp qw(croak);
-
-our $VERSION = '2.006006';
-$VERSION = eval $VERSION;
 
 our @EXPORT = qw(defer_sub undefer_sub undefer_all);
 our @EXPORT_OK = qw(undefer_package defer_info);

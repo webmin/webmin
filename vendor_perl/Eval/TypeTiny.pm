@@ -63,7 +63,7 @@ BEGIN {
 }
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '2.000001';
+our $VERSION   = '2.006000';
 our @EXPORT    = qw( eval_closure );
 our @EXPORT_OK = qw(
 	HAS_LEXICAL_SUBS HAS_LEXICAL_VARS ALIAS_IMPLEMENTATION
@@ -492,7 +492,7 @@ Boolean indicating whether Eval::TypeTiny has support for lexical subs.
 
 Returns a string indicating what implementation of C<< alias => 1 >> is
 being used. Eval::TypeTiny will automatically choose the best implementation.
-This constant can be matched against the C<< IMPLEMENTAION_* >> constants.
+This constant can be matched against the C<< IMPLEMENTATION_* >> constants.
 
 =item C<< IMPLEMENTATION_NATIVE >>
 
@@ -573,7 +573,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2017-2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2017-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

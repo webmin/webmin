@@ -22,8 +22,8 @@ sub register_attribute_specs {
   my $ag = $self->accessor_generator;
   while (my ($name, $new_spec) = splice @new_specs, 0, 2) {
     if ($name =~ s/^\+//) {
-      croak "has '+${name}' given but no ${name} attribute already exists"
-        unless my $old_spec = $specs->{$name};
+      my $old_spec = $specs->{$name}
+        or croak "has '+${name}' given but no ${name} attribute already exists";
       $ag->merge_specs($new_spec, $old_spec);
     }
     if ($new_spec->{required}

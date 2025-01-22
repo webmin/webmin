@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$Type::Params::AUTHORITY = 'cpan:TOBYINK';
-	$Type::Params::VERSION   = '2.000001';
+	$Type::Params::VERSION   = '2.006000';
 }
 
 $Type::Params::VERSION =~ tr/_//d;
@@ -516,7 +516,7 @@ coderef as a list:
 =head4 C<< named >> B<ArrayRef>
 
 This is conceptually a list of pairs of names and type constraints, one
-name+type pair for each positional parameter. For example, a signature for
+name+type pair for each named parameter. For example, a signature for
 a function which accepts two integers:
 
  signature( named => [ foo => Int, bar => Int ] )
@@ -578,7 +578,7 @@ You can think of C<add_numbers> above as a function which takes named
 parameters from the outside, but receives positional parameters on the
 inside.
 
-You can use an arrayref to specify the order the paramaters will be
+You can use an arrayref to specify the order the parameters will be
 returned in. (By default they are returned in the order they were defined
 in.)
 
@@ -679,7 +679,7 @@ Usually the default will be fine.
 
 =head4 C<< package >> B<Str>
 
-The package of the sub whose paramaters we're supposed to be checking.
+The package of the sub whose parameters we're supposed to be checking.
 As well as showing up in stack traces, it's used by C<dwim_type> if you
 provide any type constraints as strings.
 
@@ -689,7 +689,7 @@ provide it.
 
 =head4 C<< subname >> B<Str>
 
-The name of the sub whose paramaters we're supposed to be checking.
+The name of the sub whose parameters we're supposed to be checking.
 
 The default is probably fine, but if you're wrapping C<signature> so that
 you can check signatures on behalf of another package, you may need to
@@ -937,8 +937,8 @@ So C<< signature( multi => [...] ) >> can be used instead of the longer
 C<< signature( multiple => [...] ) >>. Three whole keystrokes saved!
 
 (B<Note:> in older releases of Type::Params, C<< ${^_TYPE_PARAMS_MULTISIG} >>
-was called C<< ${^TYPE_PARAMS_MULTISIG} >>. The latter name is deprecated,
-and support for it will be removed in a future release of Type::Params.)
+was called C<< ${^TYPE_PARAMS_MULTISIG} >>. The latter name is no longer
+supported.)
 
 =head4 C<< message >> B<Str>
 
@@ -1442,7 +1442,9 @@ Or since Perl 5.20:
 The C<signature_for> keyword turns C<signature> inside-out.
 
 The same signature specification options are supported, with the exception
-of C<want_source> and C<want_details> which will not work.
+of C<want_source>, C<want_details>, and C<goto_next> which will not work.
+(If using the C<multiple> option, then C<goto_next> is still supported in
+the I<nested> signatures.)
 
 If you are providing a signature for a sub in another package, then
 C<< signature_for "Some::Package::some_sub" => ( ... ) >> will work,
@@ -1458,12 +1460,11 @@ the consequences and want to override the normal behaviour.
 If the sub being wrapped cannot be found, then C<signature_for> will usually
 throw an error. If you want it to "work" in this situation, use the
 C<fallback> option. C<< fallback => \&alternative_coderef_to_wrap >>
-or C<< fallback => 1 >> will instead wrap a different coderef if the original
-cannot be found. C<< fallback => 1 >> is a shortcut for
-C<< fallback => sub {} >>. An example where this might be useful is if you're
-adding signatures to methods which are inherited from a parent class, but
-you are not 100% confident will exist (perhaps dependent on the version of
-the parent class).
+will instead wrap a different coderef if the original cannot be found.
+C<< fallback => 1 >> is a shortcut for C<< fallback => sub {} >>.
+An example where this might be useful is if you're adding signatures to
+methods which are inherited from a parent class, but you are not 100%
+confident will exist (perhaps dependent on the version of the parent class).
 
  signature_for add_nums => (
    positional => [ Num, Num ],
@@ -1472,6 +1473,10 @@ the parent class).
 
 C<< signature_for( \@functions, %opts ) >> is a useful shortcut if you have
 multiple functions with the same signature.
+
+ signature_for [ 'add_nums', 'subtract_nums' ] => (
+   positional => [ Num, Num ],
+ );
 
 =head1 LEGACY API
 
@@ -1667,7 +1672,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2017-2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2017-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

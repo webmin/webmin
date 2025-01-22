@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$Type::Tiny::Enum::AUTHORITY = 'cpan:TOBYINK';
-	$Type::Tiny::Enum::VERSION   = '2.000001';
+	$Type::Tiny::Enum::VERSION   = '2.006000';
 }
 
 $Type::Tiny::Enum::VERSION =~ tr/_//d;
@@ -83,6 +83,11 @@ sub new {
 	
 	return $proto->SUPER::new( %opts );
 } #/ sub new
+
+sub _lockdown {
+	my ( $self, $callback ) = @_;
+	$callback->( $self->{values}, $self->{unique_values} );
+}
 
 sub new_union {
 	my $proto  = shift;
@@ -458,6 +463,63 @@ __END__
 
 Type::Tiny::Enum - string enum type constraints
 
+=head1 SYNOPSIS
+
+Using via L<Types::Standard>:
+
+  package Horse {
+    use Moo;
+    use Types::Standard qw( Str Enum );
+    
+    has name    => ( is => 'ro', isa => Str );
+    has status  => ( is => 'ro', isa => Enum[ 'alive', 'dead' ] );
+    
+    sub neigh {
+      my ( $self ) = @_;
+      return if $self->status eq 'dead';
+      ...;
+    }
+  }
+
+Using Type::Tiny::Enum's export feature:
+
+  package Horse {
+    use Moo;
+    use Types::Standard qw( Str );
+    use Type::Tiny::Enum Status => [ 'alive', 'dead' ];
+    
+    has name    => ( is => 'ro', isa => Str );
+    has status  => ( is => 'ro', isa => Status, default => STATUS_ALIVE );
+    
+    sub neigh {
+      my ( $self ) = @_;
+      return if $self->status eq STATUS_DEAD;
+      ...;
+    }
+  }
+
+Using Type::Tiny::Enum's object-oriented interface:
+
+  package Horse {
+    use Moo;
+    use Types::Standard qw( Str );
+    use Type::Tiny::Enum;
+    
+    my $Status = Type::Tiny::Enum->new(
+      name   => 'Status',
+      values => [ 'alive', 'dead' ],
+    );
+    
+    has name    => ( is => 'ro', isa => Str );
+    has status  => ( is => 'ro', isa => $Status, default => $Status->[0] );
+    
+    sub neigh {
+      my ( $self ) = @_;
+      return if $self->status eq $Status->[0];
+      ...;
+    }
+  }
+
 =head1 STATUS
 
 This module is covered by the
@@ -641,7 +703,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2017-2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2017-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

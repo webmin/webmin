@@ -7,7 +7,7 @@ use utf8;
 
 BEGIN {
 	$Types::Common::String::AUTHORITY = 'cpan:TOBYINK';
-	$Types::Common::String::VERSION   = '2.000001';
+	$Types::Common::String::VERSION   = '2.006000';
 }
 
 $Types::Common::String::VERSION =~ tr/_//d;
@@ -400,7 +400,7 @@ but C<< "Hello,45" >> will fail.
 The ws parameter allows optional whitespace surrounding the delimiters,
 as well as optional leading and trailing whitespace.
 
-The type, min, max, and ws paramaters are optional.
+The type, min, max, and ws parameters are optional.
 
 Parameterized B<DelimitedStr> type constraints will automatically have a
 coercion from B<< ArrayRef[`type] >> which uses C<< join >> to join by the
@@ -429,7 +429,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2017-2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2017-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

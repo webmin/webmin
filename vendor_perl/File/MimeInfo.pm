@@ -11,7 +11,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(mimetype);
 our @EXPORT_OK = qw(extensions describe globs inodetype mimetype_canon mimetype_isa);
-our $VERSION = '0.33';
+our $VERSION = '0.35';
 our $DEBUG;
 
 our ($_hashed, $_hashed_aliases, $_hashed_subclasses, $_has_mimeinfo_database);

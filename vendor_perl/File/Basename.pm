@@ -6,11 +6,11 @@ File::Basename - Parse file paths into directory, filename and suffix.
 
     use File::Basename;
 
-    ($name,$path,$suffix) = fileparse($fullname,@suffixlist);
-    $name = fileparse($fullname,@suffixlist);
+    my ($name, $path, $suffix) = fileparse($fullname, @suffixlist);
+    my $name = fileparse($fullname, @suffixlist);
 
-    $basename = basename($fullname,@suffixlist);
-    $dirname  = dirname($fullname);
+    my $basename = basename($fullname, @suffixlist);
+    my $dirname  = dirname($fullname);
 
 
 =head1 DESCRIPTION
@@ -54,7 +54,7 @@ our(@ISA, @EXPORT, $VERSION, $Fileparse_fstype, $Fileparse_igncase);
 require Exporter;
 @ISA = qw(Exporter);
 @EXPORT = qw(fileparse fileparse_set_fstype basename dirname);
-$VERSION = "2.85";
+$VERSION = "2.86";
 
 fileparse_set_fstype($^O);
 

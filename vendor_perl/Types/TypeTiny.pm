@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '2.000001';
+our $VERSION   = '2.006000';
 
 $VERSION =~ tr/_//d;
 
@@ -17,7 +17,7 @@ BEGIN {
 		'Type::Tiny::XS'->VERSION( '0.022' );
 		1;
 	}
-		? sub () { !!1 }
+		? eval "sub () { '$Type::Tiny::XS::VERSION' }"
 		: sub () { !!0 };
 }
 
@@ -84,7 +84,11 @@ sub meta {
 }
 
 sub type_names {
-	qw( CodeLike StringLike TypeTiny HashLike ArrayLike _ForeignTypeConstraint );
+	qw(
+		StringLike BoolLike
+		HashLike ArrayLike CodeLike
+		TypeTiny _ForeignTypeConstraint
+	);
 }
 
 sub has_type {
@@ -213,6 +217,13 @@ sub HashLike (;@) {
 		constraint_generator => sub {
 			my $param = TypeTiny()->assert_coerce( shift );
 			my $check = $param->compiled_check;
+			if ( __XS ge '0.025' ) {
+				my $paramname = Type::Tiny::XS::is_known( $check );
+				my $xsub = defined($paramname)
+					? Type::Tiny::XS::get_coderef_for( "HashLike[$paramname]" )
+					: undef;
+				return $xsub if $xsub;
+			}
 			sub {
 				my %hash = %$_;
 				for my $key ( sort keys %hash ) {
@@ -224,8 +235,17 @@ sub HashLike (;@) {
 		inline_generator => sub {
 			my $param = TypeTiny()->assert_coerce( shift );
 			return unless $param->can_be_inlined;
+			my $check = $param->compiled_check;
+			my $xsubname;
+			if ( __XS ge '0.025' ) {
+				my $paramname = Type::Tiny::XS::is_known( $check );
+				$xsubname = defined($paramname)
+					? Type::Tiny::XS::get_subname_for( "HashLike[$paramname]" )
+					: undef;
+			}
 			sub {
 				my $var  = pop;
+				return "$xsubname($var)" if $xsubname && !$Type::Tiny::AvoidCallbacks;
 				my $code = sprintf(
 					'do { my $ok=1; my %%h = %%{%s}; for my $k (sort keys %%h) { ($ok=0,next) unless (%s) }; $ok }',
 					$var,
@@ -295,6 +315,13 @@ sub ArrayLike (;@) {
 		constraint_generator => sub {
 			my $param = TypeTiny()->assert_coerce( shift );
 			my $check = $param->compiled_check;
+			if ( __XS ge '0.025' ) {
+				my $paramname = Type::Tiny::XS::is_known( $check );
+				my $xsub = defined($paramname)
+					? Type::Tiny::XS::get_coderef_for( "ArrayLike[$paramname]" )
+					: undef;
+				return $xsub if $xsub;
+			}
 			sub {
 				my @arr = @$_;
 				for my $val ( @arr ) {
@@ -306,8 +333,17 @@ sub ArrayLike (;@) {
 		inline_generator => sub {
 			my $param = TypeTiny()->assert_coerce( shift );
 			return unless $param->can_be_inlined;
+			my $check = $param->compiled_check;
+			my $xsubname;
+			if ( __XS ge '0.025' ) {
+				my $paramname = Type::Tiny::XS::is_known( $check );
+				$xsubname = defined($paramname)
+					? Type::Tiny::XS::get_subname_for( "ArrayLike[$paramname]" )
+					: undef;
+			}
 			sub {
 				my $var  = pop;
+				return "$xsubname($var)" if $xsubname && !$Type::Tiny::AvoidCallbacks;
 				my $code = sprintf(
 					'do { my $ok=1; for my $v (@{%s}) { ($ok=0,next) unless (%s) }; $ok }',
 					$var,
@@ -400,6 +436,31 @@ sub CodeLike () {
 		$cache{CodeLike} = "Type::Tiny"->new( %common );
 	}
 } #/ sub CodeLike
+
+sub BoolLike () {
+	return $cache{BoolLike} if $cache{BoolLike};
+	require Type::Tiny;
+	$cache{BoolLike} = "Type::Tiny"->new(
+		name       => "BoolLike",
+		constraint => sub {
+			!defined( $_ )
+				or !ref( $_ ) && ( $_ eq '' || $_ eq '0' || $_ eq '1' )
+				or blessed( $_ ) && _check_overload( $_, q[bool] )
+				or blessed( $_ ) && _check_overload( $_, q[0+] ) && do { my $n = sprintf('%d', $_); $n==0 or $n==1 };
+		},
+		inlined => sub {
+			qq/do {
+				local \$_ = $_;
+				!defined()
+					or !ref() && ( \$_ eq '' || \$_ eq '0' || \$_ eq '1' )
+					or Scalar::Util::blessed(\$_) && ${\ +_get_check_overload_sub() }(\$_, q[bool])
+					or Scalar::Util::blessed(\$_) && ${\ +_get_check_overload_sub() }(\$_, q[0+]) && do { my \$n = sprintf('%d', $_); \$n==0 or \$n==1 }
+			}/;
+		},
+		type_default => sub { return !!0 },
+		library => __PACKAGE__,
+	);
+} #/ sub BoolLike
 
 sub TypeTiny () {
 	return $cache{TypeTiny} if defined $cache{TypeTiny};
@@ -773,6 +834,8 @@ Types::TypeTiny - type constraints used internally by Type::Tiny
 This module is covered by the
 L<Type-Tiny stability policy|Type::Tiny::Manual::Policies/"STABILITY">.
 
+The B<BoolLike> type is currently unstable.
+
 =head1 DESCRIPTION
 
 Dogfooding.
@@ -790,6 +853,24 @@ designed for use within Type::Tiny, may be more generally useful.
 B<< StringLike >>
 
 Accepts strings and objects overloading stringification.
+
+=item *
+
+B<< BoolLike >>
+
+Accepts undef, "", 0, 1; accepts any blessed object overloading "bool";
+accepts any blessed object overloading "0+" to return 0 or 1. (Needs to
+actually call the overloaded operation to check that.)
+
+Warning: an object which overloads "0+" without also turning on overload
+fallbacks may actually be useless as a practical boolean. But some common
+objects such as JSON::PP's booleans overload "0+" instead of overloading
+"bool" (thankfully with fallbacks enabled!) so we do need to support this.
+
+The intention of this type is to be a version of B<Bool> which also
+accepts common boolean objects such as L<JSON::PP::Boolean>. It is currently
+unstable and the exact definition of the type may change to better implement
+that intended functionality.
 
 =item *
 
@@ -925,7 +1006,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2017-2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2017-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

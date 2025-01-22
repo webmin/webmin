@@ -10,12 +10,71 @@ BEGIN {
 
 BEGIN {
 	$Type::Tiny::AUTHORITY  = 'cpan:TOBYINK';
-	$Type::Tiny::VERSION    = '2.000001';
+	$Type::Tiny::VERSION    = '2.006000';
 	$Type::Tiny::XS_VERSION = '0.016';
 }
 
 $Type::Tiny::VERSION    =~ tr/_//d;
 $Type::Tiny::XS_VERSION =~ tr/_//d;
+
+our @InternalPackages = qw(
+	Devel::TypeTiny::Perl56Compat
+	Devel::TypeTiny::Perl58Compat
+	Error::TypeTiny
+	Error::TypeTiny::Assertion
+	Error::TypeTiny::Compilation
+	Error::TypeTiny::WrongNumberOfParameters
+	Eval::TypeTiny
+	Eval::TypeTiny::CodeAccumulator
+	Eval::TypeTiny::Sandbox
+	Exporter::Tiny
+	Reply::Plugin::TypeTiny
+	Test::TypeTiny
+	Type::Coercion
+	Type::Coercion::FromMoose
+	Type::Coercion::Union
+	Type::Library
+	Type::Params
+	Type::Params::Alternatives
+	Type::Params::Parameter
+	Type::Params::Signature
+	Type::Parser
+	Type::Parser::AstBuilder
+	Type::Parser::Token
+	Type::Parser::TokenStream
+	Type::Registry
+	Types::Common
+	Types::Common::Numeric
+	Types::Common::String
+	Types::Standard
+	Types::Standard::_Stringable
+	Types::Standard::ArrayRef
+	Types::Standard::CycleTuple
+	Types::Standard::Dict
+	Types::Standard::HashRef
+	Types::Standard::Map
+	Types::Standard::ScalarRef
+	Types::Standard::StrMatch
+	Types::Standard::Tied
+	Types::Standard::Tuple
+	Types::TypeTiny
+	Type::Tie
+	Type::Tie::ARRAY
+	Type::Tie::BASE
+	Type::Tie::HASH
+	Type::Tie::SCALAR
+	Type::Tiny
+	Type::Tiny::_DeclaredType
+	Type::Tiny::_HalfOp
+	Type::Tiny::Class
+	Type::Tiny::ConsrtainedObject
+	Type::Tiny::Duck
+	Type::Tiny::Enum
+	Type::Tiny::Intersection
+	Type::Tiny::Role
+	Type::Tiny::Union
+	Type::Utils
+);
 
 use Scalar::Util qw( blessed );
 use Types::TypeTiny ();
@@ -27,7 +86,7 @@ sub _croak ($;@) { require Error::TypeTiny; goto \&Error::TypeTiny::croak }
 sub _swap { $_[2] ? @_[ 1, 0 ] : @_[ 0, 1 ] }
 
 BEGIN {
-	my $support_smartmatch = 0+ !!( $] >= 5.010001 );
+	my $support_smartmatch = 0+ !!( $] >= 5.010001 && $] <= 5.041002 );
 	eval qq{ sub SUPPORT_SMARTMATCH () { !! $support_smartmatch } };
 	
 	my $fixed_precedence = 0+ !!( $] >= 5.014 );
@@ -244,6 +303,19 @@ sub new {
 		$params{$_} = $params{$_} . '' if defined $params{$_};
 	}
 	
+	my $level = 0;
+	while ( not exists $params{definition_context} and $level < 20 ) {
+		our $_TT_GUTS ||= do {
+			my $g = join '|', map quotemeta, grep !m{^Types::}, @InternalPackages;
+			qr/\A(?:$g)\z/o
+		};
+		my $package = caller $level;
+		if ( $package !~ $_TT_GUTS ) {
+			@{ $params{definition_context} = {} }{ qw/ package file line / } = caller $level;
+		}
+		++$level;
+	}
+	
 	if ( exists $params{parent} ) {
 		$params{parent} =
 			ref( $params{parent} ) =~ /^Type::Tiny\b/
@@ -364,8 +436,19 @@ sub new {
 			) for keys %{ $params{my_methods} };
 	} #/ if ( $params{my_methods...})
 	
+	# In general, mutating a type constraint after it's been created
+	# is a bad idea and will probably not work. However some places are
+	# especially harmful and can lead to confusing errors, so allow
+	# subclasses to lock down particular keys.
+	#
+	$self->_lockdown( sub {
+		&Internals::SvREADONLY( $_, !!1 ) for @_;
+	} );
+	
 	return $self;
 } #/ sub new
+
+sub _lockdown {}
 
 sub DESTROY {
 	my $self = shift;
@@ -451,6 +534,7 @@ sub mouse_type           { $_[0]{mouse_type} ||= $_[0]->_build_mouse_type }
 sub deep_explanation     { $_[0]{deep_explanation} }
 sub my_methods           { $_[0]{my_methods} ||= $_[0]->_build_my_methods }
 sub sorter               { $_[0]{sorter} }
+sub exception_class      { $_[0]{exception_class} ||= $_[0]->_build_exception_class }
 
 sub has_parent               { exists $_[0]{parent} }
 sub has_library              { exists $_[0]{library} }
@@ -552,6 +636,21 @@ sub _build_compiled_check {
 		return !!1;
 	};
 } #/ sub _build_compiled_check
+
+sub _build_exception_class {
+	my $self = shift;
+	return $self->parent->exception_class if $self->has_parent;
+	require Error::TypeTiny::Assertion;
+	return 'Error::TypeTiny::Assertion';
+}
+
+sub definition_context {
+	my $self  = shift;
+	my $found = $self->find_parent(sub {
+		ref $_->{definition_context} and exists $_->{definition_context}{file};
+	});
+	$found ? $found->{definition_context} : {};
+}
 
 sub find_constraining_type {
 	my $self = shift;
@@ -911,6 +1010,8 @@ sub inline_assert {
 	my $self = shift;
 	my ( $varname, $typevarname, %extras ) = @_;
 	
+	$extras{exception_class} ||= $self->exception_class;
+	
 	my $inline_check;
 	if ( $self->can_be_inlined ) {
 		$inline_check = sprintf( '(%s)', $self->inline_check( $varname ) );
@@ -956,13 +1057,11 @@ sub inline_assert {
 } #/ sub inline_assert
 
 sub _failed_check {
-	require Error::TypeTiny::Assertion;
-	
 	my ( $self, $name, $value, %attrs ) = @_;
 	$self = $ALL_TYPES{$self} if defined $self && !ref $self;
 	
-	my $exception_class =
-		delete( $attrs{exception_class} ) || "Error::TypeTiny::Assertion";
+	my $exception_class = delete( $attrs{exception_class} )
+		|| ( ref $self ? $self->exception_class : 'Error::TypeTiny::Assertion' );
 	my $callback = delete( $attrs{on_die} );
 
 	if ( $self ) {
@@ -1837,6 +1936,12 @@ You may pass C<< coercion => 1 >> to the constructor to inherit coercions
 from the constraint's parent. (This requires the parent constraint to have
 a coercion.)
 
+If an arrayref is passed to the constructor (C<< coercion => [ ... ] >>),
+then the coercion object will be lazily built and this array will be fed to
+its C<add_type_coercions> method. If a coderef is passed to the constructor
+(C<< coercion => sub { ... } >>), then the coercion object will be lazily built
+and this code will be used as a coercion from B<Any>.
+
 =item C<< sorter >>
 
 A coderef which can be passed two values conforming to this type constraint
@@ -1892,6 +1997,16 @@ for the reader.
 
 Experimental hashref of additional methods that can be called on the type
 constraint object.
+
+=item C<< exception_class >>
+
+The class used to throw an exception when a value fails its type check.
+Defaults to "Error::TypeTiny::Assertion", which is usually good. This class
+is expected to provide a C<throw_cb> method compatible with the method of
+that name in L<Error::TypeTiny>.
+
+If a parent type constraint has a custom C<exception_class>, then this
+will be "inherited" by its children.
 
 =back
 
@@ -1982,6 +2097,16 @@ default lazily-built return values.
 Coderef to validate a value (C<< $_[0] >>) against the type constraint.
 This coderef is expected to also handle all validation for the parent
 type constraints.
+
+=item C<< definition_context >>
+
+Hashref of information indicating where the type constraint was originally
+defined. Type::Tiny will generate this based on C<caller> if you do not
+supply it. The hashref will ordinarily contain keys C<"package">, C<"file">,
+and C<"line">.
+
+For parameterized types and compound types (e.g. unions and intersections),
+this may not be especially meaningful information.
 
 =item C<< complementary_type >>
 
@@ -2626,7 +2751,7 @@ Thanks to Matt S Trout for advice on L<Moo> integration.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2017-2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2017-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

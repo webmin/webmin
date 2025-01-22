@@ -11,7 +11,7 @@ use Scalar::Util ();
 {
 	package Type::Tie;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '2.000001';
+	our $VERSION   = '2.006000';
 	our @ISA       = qw( Exporter::Tiny );
 	our @EXPORT    = qw( ttie );
 	
@@ -22,16 +22,13 @@ use Scalar::Util ();
 		my ( $ref, $type, @vals ) = @_;
 		
 		if ( 'HASH' eq ref $ref ) {
-			tie %$ref, "Type::Tie::HASH", $type;
-			%$ref = @vals if @vals;
+			tie %$ref, "Type::Tie::HASH", $type, @vals;
 		}
 		elsif ( 'ARRAY' eq ref $ref ) {
-			tie @$ref, "Type::Tie::ARRAY", $type;
-			@$ref = @vals if @vals;
+			tie @$ref, "Type::Tie::ARRAY", $type, @vals;
 		}
 		else {
-			tie $$ref, "Type::Tie::SCALAR", $type;
-			$$ref = $vals[-1] if @vals;
+			tie $$ref, "Type::Tie::SCALAR", $type, @vals;
 		}
 		return $ref;
 	}
@@ -40,7 +37,7 @@ use Scalar::Util ();
 {
 	package Type::Tie::BASE;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '2.000001';
+	our $VERSION   = '2.006000';
 	
 	$VERSION =~ tr/_//d;
 	
@@ -144,17 +141,16 @@ use Scalar::Util ();
 		$tmp_clone_types{$refaddr} ||= [ $type, 0 ];
 		++$tmp_clone_types{$refaddr}[1];
 		
-		return ( pack( 'j', $refaddr ), $o->_REF );
+		return ( $refaddr, $o->_REF );
 	}
 	
 	sub STORABLE_thaw {
-		my ( $o, $cloning, $packedRefaddr, $o2 ) = @_;
+		my ( $o, $cloning, $refaddr, $o2 ) = @_;
 		Carp::croak( "Storable::thaw only supported for dclone-ing" )
 			unless $cloning;
 		
 		$o->_THAW( $o2 ); # implement in child classes
 		
-		my $refaddr = unpack( 'j', $packedRefaddr );
 		my $type = $tmp_clone_types{$refaddr}[0];
 		--$tmp_clone_types{$refaddr}[1]
 			or delete $tmp_clone_types{$refaddr};
@@ -165,15 +161,20 @@ use Scalar::Util ();
 {
 	package Type::Tie::ARRAY;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '2.000001';
+	our $VERSION   = '2.006000';
 	our @ISA       = qw( Type::Tie::BASE );
 	
 	$VERSION =~ tr/_//d;
 	
 	sub TIEARRAY   {
 		my $class = shift;
+		my $type  = shift;
 		my $self  = bless( [ $class->_DEFAULT ], $class );
-		$self->_set_type( $_[0] );
+		$self->_set_type( $type );
+		if ( @_ ) {
+			my $R = $self->_REF;
+			@$R = map { $self->coerce_and_check_value( $_ ) } @_;
+		}
 		$self;
 	}
 	sub _DEFAULT   { [] }
@@ -203,15 +204,24 @@ use Scalar::Util ();
 {
 	package Type::Tie::HASH;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '2.000001';
+	our $VERSION   = '2.006000';
 	our @ISA       = qw( Type::Tie::BASE );
 	
 	$VERSION =~ tr/_//d;
 	
 	sub TIEHASH    {
 		my $class = shift;
+		my $type  = shift;
 		my $self  = bless( [ $class->_DEFAULT ], $class );
-		$self->_set_type( $_[0] );
+		$self->_set_type( $type );
+		if ( @_ ) {
+			my $R = $self->_REF;
+			my %H = @_;
+			%$R = ();
+			while ( my ( $K, $V ) = each %H ) {
+				$R->{$K} = $self->coerce_and_check_value( $V );
+			}
+		}
 		$self;
 	}
 	sub _DEFAULT   { +{} }
@@ -229,15 +239,23 @@ use Scalar::Util ();
 {
 	package Type::Tie::SCALAR;
 	our $AUTHORITY = 'cpan:TOBYINK';
-	our $VERSION   = '2.000001';
+	our $VERSION   = '2.006000';
 	our @ISA       = qw( Type::Tie::BASE );
 	
 	$VERSION =~ tr/_//d;
 	
 	sub TIESCALAR  {
 		my $class = shift;
+		my $type  = shift;
 		my $self  = bless( [ $class->_DEFAULT ], $class );
-		$self->_set_type($_[0]);
+		$self->_set_type($type);
+		if ( @_ ) {
+			Carp::croak( 'Too many initial values provided for SCALAR' ) if @_ > 1;
+			${ $self->_REF } = $self->coerce_and_check_value( $_[0] );
+		}
+		elsif ( $type->can('type_default') and my $d = $type->type_default ) {
+			${ $self->_REF } = $d->();
+		}
 		$self;
 	}
 	sub _DEFAULT   { my $x; \$x }
@@ -382,7 +400,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2018-2019, 2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2018-2019, 2022-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

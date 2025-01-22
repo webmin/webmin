@@ -8,7 +8,7 @@ use warnings;
 
 BEGIN {
 	$Types::Standard::StrMatch::AUTHORITY = 'cpan:TOBYINK';
-	$Types::Standard::StrMatch::VERSION   = '2.000001';
+	$Types::Standard::StrMatch::VERSION   = '2.006000';
 }
 
 $Types::Standard::StrMatch::VERSION =~ tr/_//d;
@@ -67,14 +67,15 @@ sub __constraint_generator {
 	
 	$checker
 		? sub {
-		my $value = shift;
-		return if ref( $value );
-		my @m = ( $value =~ $regexp );
-		$checker->check( \@m );
+			my $value = shift;
+			return if !defined ( $value );
+			return if ref( $value );
+			my @m = ( $value =~ $regexp );
+			$checker->check( \@m );
 		}
 		: sub {
-		my $value = shift;
-		!ref( $value ) and $value =~ $regexp;
+			my $value = shift;
+			defined( $value ) and !ref( $value ) and !!( $value =~ $regexp );
 		};
 } #/ sub __constraint_generator
 
@@ -96,7 +97,7 @@ sub __inline_generator {
 					"Cannot serialize regexp without callbacks; serializing using callbacks" );
 			}
 			sprintf
-				"!ref($v) and do { my \$m = [$v =~ %s]; %s }",
+				"defined($v) and !ref($v) and do { my \$m = [$v =~ %s]; %s }",
 				$serialized_re,
 				$checker->inline_check( '$m' ),
 				;
@@ -106,12 +107,12 @@ sub __inline_generator {
 		my $regexp_string = "$regexp";
 		if ( $regexp_string =~ /\A\(\?\^u?:\\A(\.+)\)\z/ ) {
 			my $length = length $1;
-			return sub { "!ref($_) and length($_)>=$length" };
+			return sub { "defined($_) and !ref($_) and length($_)>=$length" };
 		}
 		
 		if ( $regexp_string =~ /\A\(\?\^u?:\\A(\.+)\\z\)\z/ ) {
 			my $length = length $1;
-			return sub { "!ref($_) and length($_)==$length" };
+			return sub { "defined($_) and !ref($_) and length($_)==$length" };
 		}
 		
 		return sub {
@@ -123,7 +124,7 @@ sub __inline_generator {
 				Carp::carp(
 					"Cannot serialize regexp without callbacks; serializing using callbacks" );
 			}
-			"!ref($v) and $v =~ $serialized_re";
+			"defined($v) and !ref($v) and !!( $v =~ $serialized_re )";
 		};
 	} #/ else [ if ( $checker ) ]
 } #/ sub __inline_generator

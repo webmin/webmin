@@ -26,7 +26,7 @@ BEGIN {
   );
 }
 
-our $VERSION = '2.005004';
+our $VERSION = '2.005005';
 $VERSION =~ tr/_//d;
 
 require Moo::sification;
@@ -378,11 +378,11 @@ time precludes using L<Moose> and L<Mouse>:
 
 =over 2
 
-=item a command line or CGI script where fast startup is essential
+=item * A command line or CGI script where fast startup is essential
 
-=item code designed to be deployed as a single file via L<App::FatPacker>
+=item * code designed to be deployed as a single file via L<App::FatPacker>
 
-=item a CPAN module that may be used by others in the above situations
+=item * A CPAN module that may be used by others in the above situations
 
 =back
 

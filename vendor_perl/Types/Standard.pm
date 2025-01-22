@@ -11,7 +11,7 @@ BEGIN {
 
 BEGIN {
 	$Types::Standard::AUTHORITY = 'cpan:TOBYINK';
-	$Types::Standard::VERSION   = '2.000001';
+	$Types::Standard::VERSION   = '2.006000';
 }
 
 $Types::Standard::VERSION =~ tr/_//d;
@@ -112,6 +112,7 @@ my $add_core_type = sub {
 			# equivalents
 			$name eq 'Str'
 			or $name eq 'Bool'
+			or $name eq 'Int'
 			or $name eq 'ClassName'
 			or $name eq 'RegexpRef'
 			or $name eq 'FileHandle'
@@ -123,7 +124,8 @@ my $add_core_type = sub {
 		};
 	} #/ if ( defined( $xsubname...))
 	
-	$meta->add_type( $typedef );
+	@_ = ( $meta, $typedef );
+	goto \&Type::Library::add_type;
 };
 
 my $maybe_load_modules = sub {
@@ -1096,7 +1098,7 @@ $meta->add_coercion(
 			my ( $self, $target, $re ) = @_;
 			ref( $re ) eq q(Regexp)
 				or _croak(
-				"Parameter to Split[`a] expected to be a regular expresssion; got $re" );
+				"Parameter to Split[`a] expected to be a regular expression; got $re" );
 			my $regexp_string = "$re";
 			$regexp_string =~ s/\\\//\\\\\//g;    # toothpicks
 			return ( Str(), qq{ [split /$regexp_string/, \$_] } );
@@ -1227,6 +1229,8 @@ B<< Bool >>
 
 Values that are reasonable booleans. Accepts 1, 0, the empty string and
 undef.
+
+Other customers also bought: B<< BoolLike >> from L<Types::TypeTiny>.
 
 =item *
 
@@ -1709,7 +1713,7 @@ strings, the 1st, 4th, 7th, etc values are integers, and the 2nd,
 
 =head2 Coercions
 
-Most of the types in this type library have no coercions by default.
+Most of the types in this type library have no coercions.
 The exception is B<Bool> as of Types::Standard 1.003_003, which coerces
 from B<Any> via C<< !!$_ >>.
 
@@ -1787,7 +1791,7 @@ C<looks_like_number>.
 
 =item C<PERL_TYPE_TINY_XS>
 
-If set to false, can be used to suppress the loading of XS implementions of
+If set to false, can be used to suppress the loading of XS implementations of
 some type constraints.
 
 =item C<PERL_ONLY>
@@ -1839,7 +1843,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2017-2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2017-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$Type::Tiny::Union::AUTHORITY = 'cpan:TOBYINK';
-	$Type::Tiny::Union::VERSION   = '2.000001';
+	$Type::Tiny::Union::VERSION   = '2.006000';
 }
 
 $Type::Tiny::Union::VERSION =~ tr/_//d;
@@ -86,6 +86,11 @@ sub new {
 	$self->coercion if grep $_->has_coercion, @$self;
 	return $self;
 } #/ sub new
+
+sub _lockdown {
+	my ( $self, $callback ) = @_;
+	$callback->( $self->{type_constraints} );
+}
 
 sub type_constraints { $_[0]{type_constraints} }
 sub constraint       { $_[0]{constraint} ||= $_[0]->_build_constraint }
@@ -364,6 +369,56 @@ __END__
 
 Type::Tiny::Union - union type constraints
 
+=head1 SYNOPSIS
+
+Using via the C<< | >> operator overload:
+
+  package Local::Stash {
+    use Moo;
+    use Types::Common qw( ArrayRef HashRef );
+    
+    has data => (
+      is   => 'ro',
+      isa  => HashRef | ArrayRef,
+    );
+  }
+  
+  my $x = Local::Stash->new( data => {} );  # ok
+  my $y = Local::Stash->new( data => [] );  # ok
+
+Using Type::Tiny::Union's object-oriented interface:
+
+  package Local::Stash {
+    use Moo;
+    use Types::Common qw( ArrayRef HashRef );
+    use Type::Tiny::Union;
+    
+    my $AnyData = Type::Tiny::Union->new(
+      name             => 'AnyData',
+      type_constraints => [ HashRef, ArrayRef ],
+    );
+    
+    has data => (
+      is   => 'ro',
+      isa  => $AnyData,
+    );
+  }
+
+Using Type::Utils's functional interface:
+
+  package Local::Stash {
+    use Moo;
+    use Types::Common qw( ArrayRef HashRef );
+    use Type::Utils;
+    
+    my $AnyData = union AnyData => [ HashRef, ArrayRef ];
+    
+    has data => (
+      is   => 'ro',
+      isa  => $AnyData,
+    );
+  }
+
 =head1 STATUS
 
 This module is covered by the
@@ -477,7 +532,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2017-2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2017-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

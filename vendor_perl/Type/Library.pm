@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$Type::Library::AUTHORITY = 'cpan:TOBYINK';
-	$Type::Library::VERSION   = '2.000001';
+	$Type::Library::VERSION   = '2.006000';
 }
 
 $Type::Library::VERSION =~ tr/_//d;
@@ -30,7 +30,7 @@ sub _croak ($;@) { require Error::TypeTiny; goto \&Error::TypeTiny::croak }
 sub _exporter_validate_opts {
 	my ( $class, $opts ) = ( shift, @_ );
 	
-	$class->setup_type_library( @{$opts}{qw/ into utils extends /} )
+	$class->setup_type_library( @{$opts}{qw/ into utils extends /}, $opts )
 		if $_[0]{base} || $_[0]{extends};
 	
 	return $class->SUPER::_exporter_validate_opts( @_ );
@@ -42,8 +42,7 @@ sub _exporter_validate_opts {
 # export. We override it to provide some useful features.
 #
 sub _exporter_expand_sub {
-	my $class = shift;
-	my ( $name, $value, $globals ) = @_;
+	my ( $class, $name, $value, $globals ) = ( shift, @_ );
 	
 	# Handle exporting '+Type'.
 	#
@@ -117,8 +116,7 @@ sub _exporter_expand_sub {
 # a couple of useful behaviours.
 #
 sub _exporter_install_sub {
-	my $class = shift;
-	my ( $name, $value, $globals, $sym ) = @_;
+	my ( $class, $name, $value, $globals, $sym ) = ( shift, @_ );
 	
 	my $into = $globals->{into};
 	my $type = $class->meta->{'functions'}{$name}{'type'};
@@ -155,8 +153,7 @@ sub _exporter_install_sub {
 } #/ sub _exporter_install_sub
 
 sub _exporter_fail {
-	my $class = shift;
-	my ( $name, $value, $globals ) = @_;
+	my ( $class, $name, $value, $globals ) = ( shift, @_ );
 	
 	# Passing the `-declare` flag means that if a type isn't found, then
 	# we export a placeholder function instead of failing.
@@ -179,7 +176,7 @@ sub _exporter_fail {
 ####
 
 sub setup_type_library {
-	my ( $class, $type_library, $install_utils, $extends ) = @_;
+	my ( $class, $type_library, $install_utils, $extends, $opts ) = ( shift, @_ );
 	
 	my @extends = ref( $extends ) ? @$extends : $extends ? $extends : ();
 	unshift @extends, $class if $class ne __PACKAGE__;
@@ -193,7 +190,10 @@ sub setup_type_library {
 	
 	if ( $install_utils ) {
 		require Type::Utils;
-		'Type::Utils'->import( { into => $type_library }, '-default' );
+		'Type::Utils'->import(
+			{ %$opts, into => $type_library },
+			'-default',
+		);
 	}
 	
 	if ( @extends and not ref $type_library ) {
@@ -223,7 +223,12 @@ sub add_type {
 		"Type::Tiny"->new( library => $class, @_ );
 	my $name = $type->{name};
 	
-	_croak( 'Type %s already exists in this library', $name )       if $meta->has_type( $name );
+	if ( $meta->has_type( $name ) ) {
+		my $existing = $meta->get_type( $name );
+		return if $type->{uniq} == $existing->{uniq};
+		_croak( 'Type %s already exists in this library', $name );
+	}
+	
 	_croak( 'Type %s conflicts with coercion of same name', $name ) if $meta->has_coercion( $name );
 	_croak( 'Cannot add anonymous type to a library' )              if $type->is_anon;
 	$meta->{types} ||= {};
@@ -236,6 +241,8 @@ sub add_type {
 		my $name = $exportable->{name};
 		my $code = $exportable->{code};
 		my $tags = $exportable->{tags};
+		_croak( 'Function %s is provided by types %s and %s', $name, $meta->{'functions'}{$name}{'type'}->name, $type->name )
+			if $meta->{'functions'}{$name};
 		*{"$class\::$name"} = set_subname( "$class\::$name", $code );
 		push @{"$class\::EXPORT_OK"}, $name;
 		push @{ ${"$class\::EXPORT_TAGS"}{$_} ||= [] }, $name for @$tags;
@@ -248,6 +255,46 @@ sub add_type {
 	
 	return $type;
 } #/ sub add_type
+
+# For Type::TinyX::Facets
+# Only use this if you know what you're doing!
+sub _remove_type {
+	my $meta  = shift->meta;
+	my $type  = $meta->get_type( $_[0] );
+	my $class = ref $meta;
+	
+	_croak( 'Type library is immutable' ) if $meta->{immutable};
+	
+	delete $meta->{types}{$type->name};
+	
+	no strict "refs";
+	no warnings "redefine", "prototype";
+	
+	my @clean;
+	my $_scrub = sub {
+		my ( $arr, $name ) = @_;
+		@$arr = grep $_ ne $name, @$arr;
+	};
+	for my $exportable ( @{ $type->exportables } ) {
+		my $name = $exportable->{name};
+		push @clean, $name;
+		&$_scrub( \@{"$class\::EXPORT_OK"}, $name );
+		for my $t ( @{ $exportable->{tags} } ) {
+			&$_scrub( ${"$class\::EXPORT_TAGS"}{$t} ||= [], $name );
+		}
+		delete $meta->{'functions'}{$name};
+	}
+	eval {
+		require namespace::clean;
+		'namespace::clean'->clean_subroutines( $class, @clean );
+	};
+	
+	delete 'Type::Registry'->for_class( $class )->{$type->name}
+		if $INC{'Type/Registry.pm'};
+	delete $Type::Registry::DELAYED{$class}{$type->name};
+	
+	return $type;
+} #/ sub _remove_type
 
 sub get_type {
 	my $meta = shift->meta;
@@ -399,12 +446,6 @@ object which other methods can get called on. For example:
 
    Types::Mine->meta->add_type($foo);
 
-=begin trustme
-
-=item meta
-
-=end trustme
-
 =over
 
 =item C<< add_type($type) >> or C<< add_type(%opts) >>
@@ -485,6 +526,11 @@ Type::Library-based libraries are exporters.
 Prevents new type constraints and coercions from being added to the
 library, and also calls C<< $type->coercion->freeze >> on every
 type constraint in the library.
+
+(Prior to Type::Library v2, C<make_immutable> would call
+C<< $type->coercion->freeze >> on every constraint in the library,
+but not prevent new type constraints and coercions from being added
+to the library.)
 
 =back
 
@@ -589,7 +635,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2013-2014, 2017-2022 by Toby Inkster.
+This software is copyright (c) 2013-2014, 2017-2024 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
@@ -599,3 +645,9 @@ the same terms as the Perl 5 programming language system itself.
 THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
 WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
 MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+=begin trustme
+
+=item meta
+
+=end trustme

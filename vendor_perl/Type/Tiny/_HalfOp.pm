@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN {
 	$Type::Tiny::_HalfOp::AUTHORITY = 'cpan:TOBYINK';
-	$Type::Tiny::_HalfOp::VERSION   = '2.000001';
+	$Type::Tiny::_HalfOp::VERSION   = '2.006000';
 }
 
 $Type::Tiny::_HalfOp::VERSION =~ tr/_//d;
@@ -81,7 +81,7 @@ Graham Knop E<lt>haarg@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2014, 2017-2022 by Graham Knop.
+This software is copyright (c) 2014, 2017-2024 by Graham Knop.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

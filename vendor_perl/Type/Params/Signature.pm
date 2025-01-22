@@ -12,7 +12,7 @@ BEGIN {
 
 BEGIN {
 	$Type::Params::Signature::AUTHORITY  = 'cpan:TOBYINK';
-	$Type::Params::Signature::VERSION    = '2.000001';
+	$Type::Params::Signature::VERSION    = '2.006000';
 }
 
 $Type::Params::Signature::VERSION =~ tr/_//d;
@@ -159,6 +159,13 @@ sub _rationalize_slurpies {
 		our @CARP_NOT = ( __PACKAGE__, 'Type::Params' );
 		Carp::carp( "Warning: the default for the slurpy parameter will be ignored, continuing anyway" );
 		delete $self->{slurpy}{default};
+	}
+	
+	if ( $self->{slurpy} and $self->{slurpy}->optional ) {
+		require Carp;
+		our @CARP_NOT = ( __PACKAGE__, 'Type::Params' );
+		Carp::carp( "Warning: the optional for the slurpy parameter will be ignored, continuing anyway" );
+		delete $self->{slurpy}{optional};
 	}
 }
 
@@ -406,31 +413,38 @@ sub _coderef_check_count {
 
 	undef $max_args if $self->has_slurpy;
 
+	# Note: code related to $max_args_if_hash is currently commented out
+	# because it handles this badly:
+	#
+	#   my %opts = ( x => 1, y => 1 );
+	#   your_func( %opts, y => 2 ); # override y
+	#
+
 	if ( $is_named ) {
 		my $args_if_hashref  = $headtail + 1;
 		my $hashref_index    = @{ $self->head || [] };
 		my $arity_if_hash    = $headtail % 2;
 		my $min_args_if_hash = $headtail + ( 2 * $min_args );
-		my $max_args_if_hash = defined( $max_args )
-			? ( $headtail + ( 2 * $max_args ) )
-			: undef;
+		#my $max_args_if_hash = defined( $max_args )
+		#	? ( $headtail + ( 2 * $max_args ) )
+		#	: undef;
 
 		require List::Util;
 		$self->{min_args} = List::Util::min( $args_if_hashref, $min_args_if_hash );
-		if ( defined $max_args_if_hash ) {
-			$self->{max_args} = List::Util::max( $args_if_hashref, $max_args_if_hash );
-		}
+		#if ( defined $max_args_if_hash ) {
+		#	$self->{max_args} = List::Util::max( $args_if_hashref, $max_args_if_hash );
+		#}
 
 		my $extra_conditions = '';
-		if ( defined $max_args_if_hash and $min_args_if_hash==$max_args_if_hash ) {
-			$extra_conditions .= " && \@_ == $min_args_if_hash"
-		}
-		else {
+		#if ( defined $max_args_if_hash and $min_args_if_hash==$max_args_if_hash ) {
+		#	$extra_conditions .= " && \@_ == $min_args_if_hash"
+		#}
+		#else {
 			$extra_conditions .= " && \@_ >= $min_args_if_hash"
 				if $min_args_if_hash;
-			$extra_conditions .= " && \@_ <= $max_args_if_hash"
-				if defined $max_args_if_hash;
-		}
+		#	$extra_conditions .= " && \@_ <= $max_args_if_hash"
+		#		if defined $max_args_if_hash;
+		#}
 
 		$coderef->add_line( $strictness_test . sprintf(
 			"\@_ == %d && %s\n\tor \@_ %% 2 == %d%s\n\tor %s;",
@@ -666,12 +680,18 @@ sub _coderef_extra_names {
 
 	return $self if $self->has_strictness && ! $self->strictness;
 
+	require Type::Utils;
+	my $english_list = 'Type::Utils::english_list';
+	if ( $Type::Tiny::AvoidCallbacks ) {
+		$english_list = 'join q{, } => ';
+	}
+
 	$coderef->add_line( '# Unrecognized parameters' );
 	$coderef->add_line( sprintf(
 		'%s if %skeys %%in;',
 		$self->_make_general_fail(
 			coderef   => $coderef,
-			message   => 'sprintf( q{Unrecognized parameter%s: %s}, keys( %in ) > 1 ? q{s} : q{}, join( q{, }, sort keys %in ) )',
+			message   => "sprintf( q{Unrecognized parameter%s: %s}, keys( %in ) > 1 ? q{s} : q{}, $english_list( sort keys %in ) )",
 		),
 		defined( $self->strictness ) && $self->strictness ne 1
 			? sprintf( '%s && ', $self->strictness )

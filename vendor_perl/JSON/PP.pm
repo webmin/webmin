@@ -2,21 +2,22 @@ package JSON::PP;
 
 # JSON-2.0
 
-use 5.005;
+use 5.008;
 use strict;
 
 use Exporter ();
-BEGIN { @JSON::PP::ISA = ('Exporter') }
+BEGIN { our @ISA = ('Exporter') }
 
 use overload ();
 use JSON::PP::Boolean;
 
 use Carp ();
+use Scalar::Util qw(blessed reftype refaddr);
 #use Devel::Peek;
 
-$JSON::PP::VERSION = '4.12';
+our $VERSION = '4.16';
 
-@JSON::PP::EXPORT = qw(encode_json decode_json from_json to_json);
+our @EXPORT = qw(encode_json decode_json from_json to_json);
 
 # instead of hash-access, i tried index-access for speed.
 # but this method is not faster than what i expected. so it will be changed.
@@ -44,7 +45,6 @@ use constant P_AS_NONBLESSED        => 17;
 use constant P_ALLOW_UNKNOWN        => 18;
 use constant P_ALLOW_TAGS           => 19;
 
-use constant OLD_PERL => $] < 5.008 ? 1 : 0;
 use constant USE_B => $ENV{PERL_JSON_PP_USE_B} || 0;
 use constant CORE_BOOL => defined &builtin::is_bool;
 
@@ -75,14 +75,6 @@ BEGIN {
             allow_singlequote allow_bignum loose
             allow_barekey escape_slash as_nonblessed
     );
-
-    # Perl version check, Unicode handling is enabled?
-    # Helper module sets @JSON::PP::_properties.
-    if ( OLD_PERL ) {
-        my $helper = $] >= 5.006 ? 'JSON::PP::Compat5006' : 'JSON::PP::Compat5005';
-        eval qq| require $helper |;
-        if ($@) { Carp::croak $@; }
-    }
 
     for my $name (@xs_compati_bit_properties, @pp_bit_properties) {
         my $property_id = 'P_' . uc($name);
@@ -457,7 +449,6 @@ sub allow_bigint {
         my $del = ($space_before ? ' ' : '') . ':' . ($space_after ? ' ' : '');
 
         for my $k ( _sort( $obj ) ) {
-            if ( OLD_PERL ) { utf8::decode($k) } # key for Perl 5.6 / be optimized
             push @res, $self->string_to_json( $k )
                           .  $del
                           . ( ref $obj->{$k} ? $self->object_to_json( $obj->{$k} ) : $self->value_to_json( $obj->{$k} ) );
@@ -583,11 +574,11 @@ sub allow_bigint {
         $arg =~ s/([^\n\t\c?[:^cntrl:][:^ascii:]])/'\\u00' . unpack('H2', $1)/eg;
 
         if ($ascii) {
-            $arg = JSON_PP_encode_ascii($arg);
+            $arg = _encode_ascii($arg);
         }
 
         if ($latin1) {
-            $arg = JSON_PP_encode_latin1($arg);
+            $arg = _encode_latin1($arg);
         }
 
         if ($utf8) {
@@ -895,7 +886,7 @@ BEGIN {
                                 decode_error("missing high surrogate character in surrogate pair");
                             }
                             $is_utf8 = 1;
-                            $s .= JSON_PP_decode_surrogates($utf16, $u) || next;
+                            $s .= _decode_surrogates($utf16, $u) || next;
                             $utf16 = undef;
                         }
                         else {
@@ -906,7 +897,7 @@ BEGIN {
                             my $hex = hex( $u );
                             if ( chr $u =~ /[[:^ascii:]]/ ) {
                                 $is_utf8 = 1;
-                                $s .= JSON_PP_decode_unicode($u) || next;
+                                $s .= _decode_unicode($u) || next;
                             }
                             else {
                                 $s .= chr $hex;
@@ -1291,7 +1282,7 @@ BEGIN {
     # Compute how many bytes are in the longest legal official Unicode
     # character
     my $max_unicode_length = do {
-      BEGIN { $] >= 5.006 and require warnings and warnings->unimport('utf8') }
+      no warnings 'utf8';
       chr 0x10FFFF;
     };
     utf8::encode($max_unicode_length);
@@ -1346,13 +1337,6 @@ BEGIN {
         my $str    = defined $text ? substr($text, $at) : '';
         my $mess   = '';
         my $type   = 'U*';
-
-        if ( OLD_PERL ) {
-            my $type   =  $] <  5.006           ? 'C*'
-                        : utf8::is_utf8( $str ) ? 'U*' # 5.6
-                        : 'C*'
-                        ;
-        }
 
         for my $c ( unpack( $type, $str ) ) { # emulate pv_uni_display() ?
             my $chr_c = chr($c);
@@ -1441,129 +1425,34 @@ sub _decode_unicode {
     return $un;
 }
 
-#
-# Setup for various Perl versions (the code from JSON::PP58)
-#
+sub incr_parse {
+    local $Carp::CarpLevel = 1;
+    ( $_[0]->{_incr_parser} ||= JSON::PP::IncrParser->new )->incr_parse( @_ );
+}
 
-BEGIN {
 
-    unless ( defined &utf8::is_utf8 ) {
-       require Encode;
-       *utf8::is_utf8 = *Encode::is_utf8;
+sub incr_skip {
+    ( $_[0]->{_incr_parser} ||= JSON::PP::IncrParser->new )->incr_skip;
+}
+
+
+sub incr_reset {
+    ( $_[0]->{_incr_parser} ||= JSON::PP::IncrParser->new )->incr_reset;
+}
+
+sub incr_text : lvalue {
+    $_[0]->{_incr_parser} ||= JSON::PP::IncrParser->new;
+
+    if ( $_[0]->{_incr_parser}->{incr_pos} ) {
+        Carp::croak("incr_text cannot be called when the incremental parser already started parsing");
     }
-
-    if ( !OLD_PERL ) {
-        *JSON::PP::JSON_PP_encode_ascii      = \&_encode_ascii;
-        *JSON::PP::JSON_PP_encode_latin1     = \&_encode_latin1;
-        *JSON::PP::JSON_PP_decode_surrogates = \&_decode_surrogates;
-        *JSON::PP::JSON_PP_decode_unicode    = \&_decode_unicode;
-
-        if ($] < 5.008003) { # join() in 5.8.0 - 5.8.2 is broken.
-            package JSON::PP;
-            require subs;
-            subs->import('join');
-            eval q|
-                sub join {
-                    return '' if (@_ < 2);
-                    my $j   = shift;
-                    my $str = shift;
-                    for (@_) { $str .= $j . $_; }
-                    return $str;
-                }
-            |;
-        }
-    }
-
-
-    sub JSON::PP::incr_parse {
-        local $Carp::CarpLevel = 1;
-        ( $_[0]->{_incr_parser} ||= JSON::PP::IncrParser->new )->incr_parse( @_ );
-    }
-
-
-    sub JSON::PP::incr_skip {
-        ( $_[0]->{_incr_parser} ||= JSON::PP::IncrParser->new )->incr_skip;
-    }
-
-
-    sub JSON::PP::incr_reset {
-        ( $_[0]->{_incr_parser} ||= JSON::PP::IncrParser->new )->incr_reset;
-    }
-
-    eval q{
-        sub JSON::PP::incr_text : lvalue {
-            $_[0]->{_incr_parser} ||= JSON::PP::IncrParser->new;
-
-            if ( $_[0]->{_incr_parser}->{incr_pos} ) {
-                Carp::croak("incr_text cannot be called when the incremental parser already started parsing");
-            }
-            $_[0]->{_incr_parser}->{incr_text};
-        }
-    } if ( $] >= 5.006 );
-
-} # Setup for various Perl versions (the code from JSON::PP58)
+    $_[0]->{_incr_parser}->{incr_text};
+}
 
 
 ###############################
 # Utilities
 #
-
-BEGIN {
-    eval 'require Scalar::Util';
-    unless($@){
-        *JSON::PP::blessed = \&Scalar::Util::blessed;
-        *JSON::PP::reftype = \&Scalar::Util::reftype;
-        *JSON::PP::refaddr = \&Scalar::Util::refaddr;
-    }
-    else{ # This code is from Scalar::Util.
-        # warn $@;
-        eval 'sub UNIVERSAL::a_sub_not_likely_to_be_here { ref($_[0]) }';
-        *JSON::PP::blessed = sub {
-            local($@, $SIG{__DIE__}, $SIG{__WARN__});
-            ref($_[0]) ? eval { $_[0]->a_sub_not_likely_to_be_here } : undef;
-        };
-        require B;
-        my %tmap = qw(
-            B::NULL   SCALAR
-            B::HV     HASH
-            B::AV     ARRAY
-            B::CV     CODE
-            B::IO     IO
-            B::GV     GLOB
-            B::REGEXP REGEXP
-        );
-        *JSON::PP::reftype = sub {
-            my $r = shift;
-
-            return undef unless length(ref($r));
-
-            my $t = ref(B::svref_2object($r));
-
-            return
-                exists $tmap{$t} ? $tmap{$t}
-              : length(ref($$r)) ? 'REF'
-              :                    'SCALAR';
-        };
-        *JSON::PP::refaddr = sub {
-          return undef unless length(ref($_[0]));
-
-          my $addr;
-          if(defined(my $pkg = blessed($_[0]))) {
-            $addr .= bless $_[0], 'Scalar::Util::Fake';
-            bless $_[0], $pkg;
-          }
-          else {
-            $addr .= $_[0]
-          }
-
-          $addr =~ /0x(\w+)/;
-          local $^W;
-          #no warnings 'portable';
-          hex($1);
-        }
-    }
-}
-
 
 # shamelessly copied and modified from JSON::XS code.
 
@@ -1604,7 +1493,7 @@ use constant INCR_M_C1   => 5;
 use constant INCR_M_TFN  => 6;
 use constant INCR_M_NUM  => 7;
 
-$JSON::PP::IncrParser::VERSION = '1.01';
+our $VERSION = '1.01';
 
 sub new {
     my ( $class ) = @_;
