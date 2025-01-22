@@ -51,14 +51,20 @@ print &ui_table_row($text{'jail_filter'},
 
 # Backend
 my $backend = &find_value("backend", $jail);
+my @backend_options = (
+	[ "", "" ],
+	[ "auto", $text{'jail_auto'} ],
+	[ "systemd", $text{'jail_systemd'} ],
+	[ "polling", $text{'jail_polling'} ],
+	[ "gamin", $text{'jail_gamin'} ],
+	[ "pyinotify", $text{'jail_pyinotify'} ],
+);
+if ($backend && $backend =~ /^\%\(\w+\)s$/) { # placeholder for backend
+	splice(@backend_options, 2, 0, [ $backend, $backend ]);
+	}
+
 print &ui_table_row($text{'jail_backend'},
-	&ui_select("backend", $backend || "",
-		[ [ "", "" ],
-		  [ "auto", $text{'jail_auto'} ],
-		  [ "systemd", $text{'jail_systemd'} ],
-		  [ "polling", $text{'jail_polling'} ],
-		  [ "gamin", $text{'jail_gamin'} ],
-		  [ "pyinotify", $text{'jail_pyinotify'} ] ]));
+	&ui_select("backend", $backend || "", \@backend_options));
 
 # Ports to monitor
 my $port = &find_value("port", $jail);

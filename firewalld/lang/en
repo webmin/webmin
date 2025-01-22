@@ -127,6 +127,13 @@ list_rules_origin=Origin
 list_rules_action=Action
 list_rules_rule=Rule
 list_rules_plus_more=+ $1 more
+save_rule_efamily=Invalid family <tt>$1</tt>
+save_rule_etable=Invalid table <tt>$1</tt>
+save_rule_echain=Invalid chain <tt>$1</tt>
+save_rule_epriority=Invalid priority <tt>$1</tt>
+save_rule_erule=Empty rule
+save_rule_eruleipmismatch=IP version doesn't match rule family
+save_rule_cidrerr=Invalid CIDR range
 log_save_rules=Deleted $1 rules
 
 restart_err=Failed to apply configuration

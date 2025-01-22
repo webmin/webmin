@@ -2550,15 +2550,15 @@ if ($init_mode eq "systemd") {
 return wantarray ? (-1, undef) : 0;
 }
 
-=head2 cat_systemd(unit)
+=head2 cat_systemd(unit, [regex-filter])
 
-List given systemd unit file contents
+List the contents of a given systemd unit file, alternatively, uses a regex
+filter for specific options
 
 =cut
-
 sub cat_systemd
 {
-my ($unit) = @_;
+my ($unit, $filter) = @_;
 my @config;
 my $current_section;
 my $current_file;
@@ -2585,7 +2585,124 @@ while (<CAT>) {
 		}
 	}
 close(CAT);
+
+# Filter specific options
+if ($filter) {
+	my $regex = qr/$filter/;
+	$regex = eval "qr/$1/$2" if ($filter =~ m{^/(.+)/([igmsx]*)$});
+	foreach my $conf (@config) {
+		my $filtered_sections = {};
+		foreach my $section_name (keys %{$conf->{'sections'}}) {
+			my $section = $conf->{'sections'}{$section_name};
+			my %matching_params;
+			foreach my $param (keys %$section) {
+				$matching_params{$param} = $section->{$param}
+					if ($param =~ $regex);
+				}
+			$filtered_sections->{$section_name} =
+				\%matching_params if %matching_params;
+			}
+		$conf->{'sections'} = $filtered_sections;
+		}
+	}
 return \@config;
+}
+
+=head2 edit_systemd(unit-name, &new_config, [override_filename], [override_dir])
+
+Edit systemd unit file in override, preserving existing settings
+
+Example:
+
+	edit_systemd('ssh.socket', {
+		'Socket' => {
+			'ListenStream' => [
+				'',
+				'0.0.0.0:2213',
+				'[::]:2213'
+			],
+		},
+		'Install' => {},
+	});
+
+Note that option values must always be an array reference, even if there is only
+one value; if undef is passed, the key will be removed from the section; if a
+section set to empty hash, the section will be removed from the unit file.
+
+=cut
+sub edit_systemd
+{
+my ($unit, $new_config, $override_filename, $override_dir) = @_;
+$override_dir ||= "/etc/systemd/system/$unit.d";
+$override_filename ||= "override.conf";
+my $override_file = "$override_dir/$override_filename";
+
+# Create override directory if it doesn't exist
+if (!-d($override_dir)) {
+	mkdir($override_dir) ||
+		&error("Failed to create directory '$override_dir': $!");
+	}
+
+# Read the existing override.conf if it exists
+my $existing_config = {};
+if (-f($override_file)) {
+	my $content = &read_file_contents($override_file);
+	my $current_section;
+	foreach my $line (split(/\r?\n/, $content)) {
+		next if ($line =~ /^$/ || $line =~ /^#/);
+		if ($line =~ /^\[(.+?)\]$/) {
+			# Section header
+			$current_section = $1;
+			$existing_config->{$current_section} ||= {};
+			}
+		elsif ($line =~ /^([^=]+)=(.*)$/ && $current_section) {
+			# Key-value pair
+			my ($key, $value) = ($1, $2);
+			push(@{ $existing_config->{$current_section}{$key} },
+			     $value);
+			}
+		}
+	}
+
+# Merge new configuration into the existing configuration
+foreach my $section (keys(%{$new_config})) {
+	my $has_values = 0;  # Track if the section has content
+	foreach my $key (keys(%{ $new_config->{$section} })) {
+		my $values = $new_config->{$section}{$key};
+		if (defined($values) && @$values) {
+			# Preserve keys with values, including empty strings
+			$existing_config->{$section}{$key} = $values;
+			$has_values = 1;
+			}
+		else {
+			# Remove keys with undefined values
+			delete($existing_config->{$section}{$key});
+			}
+		}
+	# Remove the section if no content remains
+	delete($existing_config->{$section}) if (!$has_values);
+	}
+
+# Prepare the new override.conf content
+my $override_content = "";
+foreach my $section (sort(keys(%{$existing_config}))) {
+	$override_content .= "[$section]\n";
+	foreach my $key (sort(keys(%{ $existing_config->{$section} }))) {
+		foreach my $value (@{ $existing_config->{$section}{$key} }) {
+			$override_content .= "$key=$value\n";
+			}
+		}
+	$override_content .= "\n"; # Add a blank line between sections
+	}
+
+# Write the merged configuration back to override.conf
+&lock_file($override_file);
+&write_file_contents($override_file, $override_content);
+&unlock_file($override_file);
+
+# Reload systemd to apply the changes
+&system_logged("systemctl daemon-reload") == 0 || 
+	&error("Failed to reload systemd daemon: $!");
 }
 
 =head2 reboot_system

@@ -9,7 +9,6 @@ users_title=Autentifikácia
 users_expire_def=Nikdy
 users_pexpire_def=Nikdy
 users_auth=Povoliť autentifikáciu pomocou hesla?
-users_root=Povoliť prihlásenie root-a?
 users_rsa=Povoliť RSA autentifikáciu?
 users_strict=Skontrolovať práva na súboroch s kľúčmi?
 users_banner_def=Žiadny

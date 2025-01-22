@@ -1,3 +1,8 @@
+users_root=<em>root</em> によるログインを許可しますか?
+users_yes=はい、キーとパスワードの両方
+users_nopwd=はい、キーベースのみ
+users_fcmd=はい、特定のコマンドのみ
+users_no=いいえ、ルートログインを完全に無効にします
 users_dsa=DSA（SSH 2）認証を許可しますか？
 users_pkeyauth=公開鍵認証を許可しますか?
 users_authkeys_set=ホームの下のファイル
