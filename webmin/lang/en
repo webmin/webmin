@@ -1197,7 +1197,6 @@ twofactor_etotpmodule=The Perl module <tt>$1</tt> needed for two-factor authenti
 twofactor_qrcode=Enter the secret code $1 in the TOTP app, or scan the QR code below.
 twofactor_etotpid=Invalid TOTP base32-encoded secret
 twofactor_etotptoken=TOTP token must be a number
-twofactor_etotpmodule2=Missing Perl module $1
 twofactor_etotpmatch=Incorrect OTP code
 twofactor_secret=Personal secret key
 twofactor_secret1=Generated randomly

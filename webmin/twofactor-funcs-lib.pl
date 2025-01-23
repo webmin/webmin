@@ -160,13 +160,6 @@ else {
 # Checks that the needed Perl module for TOTP is installed.
 sub validate_twofactor_apikey_totp
 {
-my ($miniserv, $in) = @_;
-eval "use Authen::OATH";
-if ($@) {
-	return &text('twofactor_etotpmodule', 'Authen::OATH',
-	    "../cpan/download.cgi?source=3&cpan=Authen::OATH&mode=2&".
-	    "return=/$module_name/&returndesc=".&urlize($text{'index_return'}));
-	}
 return undef;
 }
 
@@ -251,23 +244,36 @@ $rv .= "<img src='$url' border=0><p>\n";
 return $rv;
 }
 
-# validate_twofactor_totp(id, token, apikey)
+# validate_twofactor_totp(id, token)
 # Checks the validity of some token with TOPT
 sub validate_twofactor_totp
 {
-my ($id, $token, $apikey) = @_;
+my ($id, $token) = @_;
 $id =~ /^[A-Z0-9=]+$/i || return $text{'twofactor_etotpid'};
+$id = &decode_base32($id);
 $token =~ /^\d+$/ || return $text{'twofactor_etotptoken'};
 eval "use lib (\"$root_directory/vendor_perl\")";
-eval "use Authen::OATH";
-if ($@) {
-	return &text('twofactor_etotpmodule2', 'Authen::OATH');
-	}
-my $secret = &decode_base32($id);
-my $oauth = Authen::OATH->new();
+eval "use Digest::HMAC_SHA1 qw/ hmac_sha1 /;";
 my $now = time();
+my $totp = sub {
+	my ($secret, $time) = @_;
+	
+	# Compute HMAC-SHA1
+	my $data = pack('H*', sprintf("%016x", int($time / 30)));
+	my $packed_key = pack('H*', unpack("H*", $secret));
+	my $hmac = hmac_sha1($data, $packed_key);
+
+	# Convert HMAC to hexadecimal
+	my $hmac_hex = unpack("H*", $hmac);
+
+	# Generate the TOTP
+	my $offset = hex(substr($hmac_hex, -1));
+	my $part1 = hex(substr($hmac_hex, $offset * 2, 8));
+	my $part2 = hex("7fffffff");
+	return substr(($part1 & $part2), -6);
+	};
 foreach my $t ($now - 30, $now, $now + 30) {
-	my $expected = $oauth->totp($secret, $t);
+	my $expected = $totp->($id, $t);
 	return undef if ($expected eq $token);
 	}
 return $text{'twofactor_etotpmatch'};
