@@ -31,7 +31,9 @@ $hours_dir = $config{'bandwidth_dir'} ||
 	     		"$module_config_directory/hours" :
 			"$module_var_directory/hours");
 $cron_cmd = "$module_config_directory/rotate.pl";
-$pid_file = "$module_var_directory/rotate.pid";
+$pid_file = -e "$module_config_directory/rotate.pid" ?
+			"$module_config_directory/rotate.pid" :
+			"$module_var_directory/rotate.pid";
 
 # list_hours()
 # Returns a list of all hours for which traffic is available
