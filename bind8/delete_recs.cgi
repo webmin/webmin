@@ -44,6 +44,7 @@ else {
 	my @recs = &read_zone_file($zone->{'file'}, $dom);
 
 	my %bumpedrev;
+	my @delr;
 	foreach my $d (sort { $b <=> $a } @d) {
 		my ($num, $id) = split(/\//, $d, 2);
 		my $r = &find_record_by_id(\@recs, $id, $num);
@@ -77,13 +78,19 @@ else {
 		&lock_file(&make_chroot($r->{'file'}));
 		&delete_record($r->{'file'}, $r);
 		splice(@recs, $d, 1);
+		push(@delr, $r);
 		}
 	&bump_soa_record($zone->{'file'}, \@recs);
 	&sign_dnssec_zone_if_key($zone, \@recs);
 	&after_editing($zone);
 	&unlock_all_files();
 
-	&webmin_log("delete", "recs", scalar(@d));
+	if (@delr == 1) {
+		&webmin_log('delete', 'record', $dom, $delr[0]);
+		}
+	else {
+		&webmin_log("delete", "recs", scalar(@delr));
+		}
 	&redirect("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=$in{'sort'}");
 	}
 
