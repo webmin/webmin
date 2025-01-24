@@ -458,7 +458,7 @@ foreach my $f ($sources_list_file, glob("$sources_list_dir/*")) {
 	my $lref = &read_file_lines($f, 1);
 	my $lnum = 0;
 	my (%repo, @types);
-	my $repo = sub {
+	my $repo_proc = sub {
 		foreach my $type (@types) {
 			my @suites = @{$repo{'suites'}};
 			foreach my $suite (@suites) {
@@ -525,7 +525,7 @@ foreach my $f ($sources_list_file, glob("$sources_list_dir/*")) {
 				# Process and push the current repo if we
 				# got an empty line or it's the last line
 				if (%repo) {
-					$repo->();
+					$repo_proc->();
 					%repo = ();
 					@types = ();
 					}
