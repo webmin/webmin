@@ -34,7 +34,7 @@ foreach $m (split(/\s+/, $module_info{'depends'})) {
 	}
 
 # Make sure one of the syslog modules works
-if (!$syslog_module) {
+if (!$syslog_module && !$syslog_journald) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro",
 			 1, 1);
 	&ui_print_endpage(&text('index_esyslog'));
@@ -66,16 +66,20 @@ else {
 		 1, 1, 0, undef, undef, undef,
 		 &text('index_firesys',
 		       $text{'system_'.$config{'firewall_system'}},
-		       $text{'syslog_'.$syslog_module}));
+		       $text{'syslog_'.($syslog_module || $syslog_journald)}));
 
 # Make sure the needed firewall rules and syslog entry are in place
 $missingrule = !&check_rules();
-if ($syslog_module eq "syslog") {
+if ($syslog_journald) {
+	# Systemd journal
+	$sysconf = 1; # nothing to do
+	}
+elsif ($syslog_module eq "syslog") {
 	# Normal syslog
 	$conf = &syslog::get_config();
 	$sysconf = &find_sysconf($conf);
 	}
-else {
+elsif ($syslog_module eq "syslog-ng") {
 	# Syslog-ng
 	$conf = &syslog_ng::get_config();
 	($ngdest, $ngfilter, $nglog) = &find_sysconf_ng($conf);
@@ -374,10 +378,13 @@ if (@hours) {
 					push(@cols, $k);
 					}
 				my $bar = sprintf
-					"<img src=images/blue.gif width=%d height=10>",
+					"<span style='display: flex;'>".
+					  "<img src=images/blue.gif width=%d% ".
+					  	"height=10>",
 					$max ? int($width * $icount{$k}/$max)+1 : 1;
 				$bar .= sprintf
-					"<img src=images/red.gif width=%d height=10>",
+					"<img src=images/red.gif width=%d% ".
+						"height=10></span>",
 					$max ? int($width * $ocount{$k}/$max)+1 : 1;
 				push(@cols, $bar);
 				push(@cols, &nice_size($icount{$k}),

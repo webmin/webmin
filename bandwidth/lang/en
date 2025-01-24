@@ -4,14 +4,14 @@ index_efiresys2=The configured $1 firewall system was not found on your system. 
 index_elog=The file $1 used for bandwidth logging is actually a directory on your system. Adjust the <a href='$2'>module configuration</a> to use a different path.
 index_edir=The directory for storing bandwidth data $1 does not exist, or is not a directory. Adjust the <a href='$2'>module configuration</a> to use a different path.
 index_emod=The Webmin module $1 is not installed on this system or is not supported by your OS. The Bandwidth Monitoring module cannot operate without it.
-index_esyslog=Neither of the System Logs modules are installed on this system and supported by your OS. The Bandwidth Monitoring module cannot operate without one of them.
-index_firesys=Using $1 firewall and $2
+index_esyslog=None of the supported system logging systems, such as Journald, Rsyslog, or others, are installed or supported by your OS. This module requires at least one of them to operate correctly.
+index_firesys=Using $1 with $2
 index_setupcannot=However, you do not have permissions to set it up!
 index_setupdesc=Before this module can report network usage, it needs to be set up to monitor traffic on the chosen network interface.
 index_setupdesc2=This module will log <em>all</em> network traffic sent or received on the selected interface, which can consume a large amount of disk space and CPU time on a fast network connection.
-index_missing3=Several firewall rules must be added, and a syslog configuration entry created.
-index_missing2=Several firewall rules must be added.
-index_missing1=A syslog configuration entry must be created.
+index_missing3=Several firewall rules need to be added, along with a configuration entry for the system logging system.
+index_missing2=Several firewall rules need to be added.
+index_missing1=A configuration entry for the system logging system must be created.
 index_iface=Chosen network interface
 index_other=Other..
 index_setup=Setup Now
@@ -55,7 +55,7 @@ index_low=Server ports only?
 index_resolv=Resolve hostnames?
 index_nomatch=No traffic matched the selected criteria.
 index_turnoff=Turn Off Monitoring
-index_turnoffdesc=Click this button to remove the firewall rules, syslog configuration and Cron job used for bandwidth monitoring. All existing collected data will remain untouched.
+index_turnoffdesc=Click this button to remove the firewall rules, related system logging configuration, and Cron job used for bandwidth monitoring. The existing collected data will remain intact.
 index_rotate=Update Statistics
 index_rotatedesc=Click this button to process all logged network traffic up to the current time, making it immediately available for reporting.
 index_eiptables=Warning - Your IPtables configuration has an error : $1. Setting up bandwidth monitoring will clear all firewall rules.
@@ -73,16 +73,19 @@ setup_ecannot=You are not allowed to enable monitoring
 setup_eiface=Missing or invalid interface name
 setup_ezone=Failed to find Shorewall zone for the selected interface
 
+system_firewalld=Firewalld
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
 
+syslog_journald=Journald
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
 
 rotate_title=Updating Statistics
 rotate_doing=Processing logged network traffic ..
-rotate_done=.. done.
+rotate_done=.. done
+rotate_failed=.. failed : $1
 
 __norefs=1

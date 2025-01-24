@@ -2,18 +2,11 @@
 # Run rotate.pl now
 
 require './bandwidth-lib.pl';
-&ui_print_header(undef, $text{'rotate_title'}, "");
-
-print "<b>$text{'rotate_doing'}</b>\n";
-print "<pre>";
-open(OUT, "$cron_cmd 2>&1 |");
-while(<OUT>) {
-	print &html_escape($_);
-	}
-close(OUT);
-print "</pre>\n";
-print "<b>$text{'rotate_done'}</b><p>\n";
-
+&ui_print_unbuffered_header(undef, $text{'rotate_title'}, "");
+print &ui_text_wrap($text{'rotate_doing'});
+my ($out) = &backquote_logged("$cron_cmd 2>&1");
+$out = $out ? &text('rotate_failed', &html_strip($out)) : $text{'rotate_done'};
+print &ui_text_wrap("<br>$out");
 &webmin_log("rotate");
 &ui_print_footer("", $text{'index_return'});
 

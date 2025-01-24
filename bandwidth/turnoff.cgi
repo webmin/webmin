@@ -9,7 +9,11 @@ $access{'setup'} || &error($text{'turnoff_ecannot'});
 $err = &delete_rules();
 &error($err) if ($err);
 
-if ($syslog_module eq "syslog") {
+if ($syslog_journald) {
+	# Systemd journal
+	# Nothing to do
+	}
+elsif ($syslog_module eq "syslog") {
 	# Remove syslog entry
 	$conf = &syslog::get_config();
 	$sysconf = &find_sysconf($conf);
@@ -21,7 +25,7 @@ if ($syslog_module eq "syslog") {
 		&error($err) if ($err);
 		}
 	}
-else {
+elsif ($syslog_module eq "syslog-ng") {
 	# Remove syslog-ng entries
 	$conf = &syslog_ng::get_config();
 	($dest, $filter, $log) = &find_sysconf_ng($conf);

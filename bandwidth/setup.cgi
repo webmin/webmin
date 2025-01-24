@@ -13,7 +13,11 @@ $iface =~ /^\S+$/ || &error($text{'setup_eiface'});
 $err = &setup_rules($iface);
 &error($err) if ($err);
 
-if ($syslog_module eq "syslog") {
+if ($syslog_journald) {
+	# Systemd journal
+	# No setup needed
+	}
+elsif ($syslog_module eq "syslog") {
 	# Add syslog entry
 	$conf = &syslog::get_config();
 	$sysconf = &find_sysconf($conf);
@@ -32,7 +36,7 @@ if ($syslog_module eq "syslog") {
 		&error($err) if ($err);
 		}
 	}
-else {
+elsif ($syslog_module eq "syslog-ng") {
 	# Add syslog-ng entry
 	$conf = &syslog_ng::get_config();
 	($dest, $filter, $log) = &find_sysconf_ng($conf);
