@@ -28,8 +28,9 @@ my $files_file = "$debian_dir/files";
 	die RED, "makemoduledeb.pl must be run on Debian", RESET;
 
 # Parse command-line args
-my ($force_theme, $url, $upstream, $debdepends, $no_prefix, $force_usermin,
-    $release, $allow_overwrite, $final_mod, $dsc_file, $dir, $ver, @exclude);
+my ($force_theme, $url, $upstream, $debdepends, $debrecommends, $no_prefix,
+    $force_usermin, $release, $allow_overwrite, $final_mod, $dsc_file, $dir,
+    $ver, @exclude);
 
 while(@ARGV) {
 	my $a = shift(@ARGV);
@@ -50,6 +51,9 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--deb-depends") {
 		$debdepends = 1;
+		}
+	elsif ($a eq "--deb-recommends") {
+		$debrecommends = 1;
 		}
 	elsif ($a eq "--no-prefix") {
 		$no_prefix = 1;
@@ -254,6 +258,14 @@ if ($debdepends && exists($minfo{'depends'})) {
 	}
 my $rdeps = join(", ", @rdeps);
 
+# Recommends: header
+my @rrecommends = ( );
+if ($debrecommends && exists($minfo{'recommends'})) {
+	foreach my $debrecommend (split(/\s+/, $minfo{'recommends'})) {
+		push(@rrecommends, $debrecommend);
+		}
+	}
+
 # Create the control file
 my $kbsize = int(($size-1) / 1024)+1;
 open(my $CONTROL, ">", "$control_file");
@@ -265,6 +277,9 @@ Priority: optional
 Architecture: all
 Essential: no
 Depends: $rdeps
+EOF
+print $CONTROL "Recommends: ", join(", ", @rrecommends), "\n" if (@rrecommends);
+print $CONTROL <<EOF;
 Pre-Depends: bash, perl
 Installed-Size: $kbsize
 Maintainer: $email
