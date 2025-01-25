@@ -32,9 +32,9 @@ my $release = 1;
 $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin";
 my $allow_overwrite = 0;
 
-my ($force_theme, $rpmdepends, $no_prefix, $set_prefix, $vendor, $provides,
-    $obsoletes, $url, $force_usermin, $final_mod, $sign, $keyname, $epoch, $dir,
-    $ver, @extrareqs, @exclude);
+my ($force_theme, $rpmdepends, $rpmrecommends, $no_prefix, $set_prefix, $vendor,
+    $provides, $obsoletes, $url, $force_usermin, $final_mod, $sign, $keyname,
+    $epoch, $dir, $ver, @extrareqs, @exclude);
 
 # Parse command-line args
 while(@ARGV) {
@@ -51,6 +51,9 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--rpm-depends") {
 		$rpmdepends = 1;
+		}
+	elsif ($a eq "--rpm-recommends") {
+		$rpmrecommends = 1;
 		}
 	elsif ($a eq "--no-prefix") {
 		$no_prefix = 1;
@@ -283,6 +286,14 @@ if ($rpmdepends && defined($minfo{'depends'})) {
 	$rdeps = join(" ", @rdeps, @extrareqs);
 	}
 
+# Build list of recommended packages
+my @rrecommends = ( );
+if ($rpmrecommends && exists($minfo{'recommends'})) {
+	foreach my $rpmrecommend (split(/\s+/, $minfo{'recommends'})) {
+		push(@rrecommends, $rpmrecommend);
+		}
+	}
+
 # Create the SPEC file
 my $providesheader = $provides ? "Provides: $provides" : "";
 my $obsoletesheader = $obsoletes ? "Obsoletes: $obsoletes" : "";
@@ -302,6 +313,9 @@ Name: $prefix$mod
 Version: $ver
 Release: $release
 Requires: /bin/sh /usr/bin/perl /usr/libexec/$prog $rdeps
+EOF
+print $SPEC "Recommends: " . join(" ", @rrecommends) . "\n" if (@rrecommends);
+print $SPEC <<EOF;
 Autoreq: 0
 Autoprov: 0
 License: $licence
