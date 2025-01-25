@@ -457,7 +457,33 @@ my @rv;
 foreach my $f ($sources_list_file, glob("$sources_list_dir/*")) {
 	my $lref = &read_file_lines($f, 1);
 	my $lnum = 0;
+	my (%repo, @types);
+	my $repo_proc = sub {
+		foreach my $type (@types) {
+			my @suites = @{$repo{'suites'}};
+			foreach my $suite (@suites) {
+				my @comps = @{$repo{'comps'}};
+				foreach my $comp (@comps) {
+					my $repo =
+					  {
+					    'cannot' => 1,
+					    'file' => $f,
+					    'url' => $repo{'url'},
+					    'enabled' => !$repo{'disabled'},
+					    'words' => [$comp, $suite],
+					    'name' => join("/", $comp, $suite).
+					      ($type =~ /src/ ? " ($type)" : ""),
+					    'signed_by' => $repo{'signed_by'},
+					  };
+					$repo->{'id'} =
+						$repo->{'url'}.$repo->{'name'};
+					push(@rv, $repo);
+					}
+				}
+			}
+		};
 	foreach my $l (@$lref) {
+		# Debian classic format (using .list files)
 		if ($l =~ /^(#*)\s*deb.*?((http|https)\S+)\s+(\S.*)/) {
 			my $repo = { 'file' => $f,
 				     'line' => $lnum,
@@ -470,6 +496,38 @@ foreach my $f ($sources_list_file, glob("$sources_list_dir/*")) {
 			$repo->{'name'} = join("/", @w).$type;
 			$repo->{'id'} = $repo->{'url'}.$repo->{'name'};
 			push(@rv, $repo);
+			}
+		# New Ubuntu-style repos (using .sources files)
+		elsif ($f =~ /\.sources$/) {
+			if ($l =~ /^([\w\-]+):\s*(.+)$/) {
+				my ($key, $value) = ($1, $2);
+				if ($key eq 'Types') {
+					@types = split(/\s+/, $value);
+					}
+				elsif ($key eq 'URIs') {
+					$repo{'url'} = $value;
+					}
+				elsif ($key eq 'Suites') {
+					$repo{'suites'} = [split(/\s+/, $value)];
+					}
+				elsif ($key eq 'Components') {
+					$repo{'comps'} = [split(/\s+/, $value)];
+					}
+				elsif ($key eq 'Signed-By') {
+					$repo{'signed_by'} = $value;
+					}
+				elsif ($key eq 'Enabled') {
+					$repo{'disabled'} =
+						(lc($value) eq 'no') ? 1 : 0;
+					}
+				}
+			if (($l =~ /^\s*$/ || $lnum == $#{$lref}) && %repo) {
+				# Process and push the current repo if we
+				# got an empty line or it's the last line
+				$repo_proc->();
+				%repo = ();
+				@types = ();
+				}
 			}
 		$lnum++;
 		}

@@ -245,7 +245,7 @@ if ($has_repos) {
 				    "<font color=green>$text{'yes'}</font>" :
 				    "<font color=red>$text{'no'}</font>",
 				$r->{'url'},
-				], "", "d", $r->{'id'});
+				], "", "d", $r->{'id'}, undef, $r->{'cannot'});
 			}
 		print &ui_columns_end();
 		print &ui_form_end([
