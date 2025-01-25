@@ -521,14 +521,12 @@ foreach my $f ($sources_list_file, glob("$sources_list_dir/*")) {
 						(lc($value) eq 'no') ? 1 : 0;
 					}
 				}
-			if ($l =~ /^\s*$/ || $lnum == $#{$lref}) {
+			if (($l =~ /^\s*$/ || $lnum == $#{$lref}) && %repo) {
 				# Process and push the current repo if we
 				# got an empty line or it's the last line
-				if (%repo) {
-					$repo_proc->();
-					%repo = ();
-					@types = ();
-					}
+				$repo_proc->();
+				%repo = ();
+				@types = ();
 				}
 			}
 		$lnum++;
