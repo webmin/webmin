@@ -4,9 +4,6 @@
 require './raid-lib.pl';
 
 # Check if raid is installed
-if (!-r $config{'mdstat'}) {
-	&error_exit(&text('index_emdstat', "<tt>$config{'mdstat'}</tt>"));
-	}
 if (&has_command("mdadm")) {
 	# Using mdadm commands
 	$raid_mode = "mdadm";
