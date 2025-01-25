@@ -33,7 +33,13 @@ if ($type eq 'record') {
 		}
 	}
 elsif ($type eq 'recs') {
-	return &text("log_${action}_recs", $object);
+	if ($p->{'dom'}) {
+		return &text("log_${action}_recs2", $object,
+			     "<tt>".&html_escape($p->{'dom'})."</tt>");
+		}
+	else {
+		return &text("log_${action}_recs", $object);
+		}
 	}
 elsif ($type eq 'zones') {
 	return &text("log_${action}_zones", $object);

@@ -89,7 +89,7 @@ else {
 		&webmin_log('delete', 'record', $dom, $delr[0]);
 		}
 	else {
-		&webmin_log("delete", "recs", scalar(@delr));
+		&webmin_log("delete", "recs", scalar(@delr), { 'dom' => $dom });
 		}
 	&redirect("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&type=$in{'type'}&sort=$in{'sort'}");
 	}

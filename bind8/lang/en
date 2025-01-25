@@ -902,6 +902,7 @@ log_delete_group=Removed $1 slave servers
 log_mass=Created $1 zones from batch file
 log_rndc=Setup RNDC
 log_delete_recs=Deleted $1 records
+log_delete_recs2=Deleted $1 records in zone $2
 log_delete_zones=Deleted $1 zones
 log_update_zones=Updated records in $1 zones
 log_rdelete_zones=Deleted records in $1 zones
