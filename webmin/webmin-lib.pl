@@ -2651,21 +2651,15 @@ if (&foreign_installed("usermin")) {
 	&foreign_require("usermin");
 	my %miniserv;
 	&usermin::get_usermin_miniserv_config(\%miniserv);
-	my @ust = stat("$miniserv{'root'}/os_list.txt");
-	my @wst = stat("$root_directory/os_list.txt");
-	if ($ust[7] == $wst[7]) {
-		# os_list.txt is the same, so we can assume the same OS codes
-		# are supported
-		my %uconfig;
-		&lock_file($usermin::usermin_config);
-		&usermin::get_usermin_config(\%uconfig);
-		$uconfig{'real_os_type'} = $osinfo{'real_os_type'};
-		$uconfig{'real_os_version'} = $osinfo{'real_os_version'};
-		$uconfig{'os_type'} = $osinfo{'os_type'};
-		$uconfig{'os_version'} = $osinfo{'os_version'};
-		&usermin::put_usermin_config(\%uconfig);
-		&unlock_file($usermin::usermin_config);
-		}
+	my %uconfig;
+	&lock_file($usermin::usermin_config);
+	&usermin::get_usermin_config(\%uconfig);
+	$uconfig{'real_os_type'} = $osinfo{'real_os_type'};
+	$uconfig{'real_os_version'} = $osinfo{'real_os_version'};
+	$uconfig{'os_type'} = $osinfo{'os_type'};
+	$uconfig{'os_version'} = $osinfo{'os_version'};
+	&usermin::put_usermin_config(\%uconfig);
+	&unlock_file($usermin::usermin_config);
 	}
 }
 
