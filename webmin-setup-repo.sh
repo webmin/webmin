@@ -67,6 +67,7 @@ Repository configuration:
   --auth-user=<user>         Repository authentication username
   --auth-pass=<pass>         Repository authentication password
   --pkg-prefs=<dist:pkg|pr*> Package preferences for repository
+  --repo-prefs=<dist:opts>   Optional preferences for repository
 
 Repository metadata:
   --name=<name>              Base name for repository (default: webmin)
@@ -133,6 +134,9 @@ process_args() {
         ;;
       --pkg-prefs=*)
         repo_pkg_prefs="${arg#*=}"
+        ;;
+      --repo-prefs=*)
+          repo_prefs="${arg#*=}"
         ;;
       --name=*)
         base_name="${arg#*=}"
@@ -359,6 +363,15 @@ download_key() {
   post_status $? "$(echo "$download_out" | tr '\n' ' ')"
 }
 
+rpm_repo_prefs() {
+  for pref in $repo_prefs; do
+    if echo "$pref" | grep "^rpm:" >/dev/null 2>&1; then
+      val=$(echo "$pref" | sed 's/^rpm://')
+      printf '%s\n' "$val"
+    fi
+  done
+}
+
 setup_repos() {
   repo_desc_formatted=$(echo "$active_repo_description" | \
       sed 's/\([^ ]*\)\(.*\)/\1\L\2/')
@@ -399,6 +412,7 @@ setup_repos() {
       else
         repo_url="$repo_auth_url"
       fi
+      repo_extra_opts_caller=$(rpm_repo_prefs)
       cat << EOF > "$rpm_repo_file"
 [$active_repo_name-noarch]
 name=$active_repo_description
@@ -406,8 +420,12 @@ baseurl=$repo_url
 enabled=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-$repo_key_suffix
 gpgcheck=1
-$repo_extra_opts
 EOF
+      # Append non-empty options if they exist to keep config file clean
+      [ -n "$repo_extra_opts" ] && \
+        printf '%s\n' "$repo_extra_opts" >> "$rpm_repo_file"
+      [ -n "$repo_extra_opts_caller" ] && \
+        printf '%s\n' "$repo_extra_opts_caller" >> "$rpm_repo_file"
       echo "  .. done"
       echo "  Downloading repository metadata .."
       update_output=$($update 2>&1)
