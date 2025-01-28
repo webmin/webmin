@@ -195,11 +195,10 @@ if (&supports_temporary_disable()) {
 	}
 
 # Show password field
-$passmode = $pass eq "" && $random_password eq "" ? 0 :
-	    $pass eq $config{'lock_string'} && $random_password eq "" ? 1 :
-	    $random_password ne "" ? 3 :
-	    $pass && $pass ne $config{'lock_string'} &&
-		$random_password eq "" ? 2 : -1;
+$passmode = $random_password ne "" ? 3 :
+	    $pass eq "" ? 0 :
+	    $pass eq $config{'lock_string'} ? 1 :
+	    $pass && $pass ne $config{'lock_string'} ? 2 : -1;
 $pffunc = $config{'passwd_stars'} ? \&ui_password : \&ui_textbox;
 my @modes;
 if ($passmode eq '0' || $config{'empty_mode'}) {
