@@ -2479,23 +2479,26 @@ foreach my $h (@{$_[0]}) {
 # built from the primary configuration.
 sub list_zone_names
 {
-my @st = stat($zone_names_cache);
-my %znc;
-&read_file_cached_with_stat($zone_names_cache, \%znc);
-
 # Check if any files have changed, or if the master config has changed, or
 # the PID file.
-my %files;
+my (%files, %znc);
 my ($changed, $filecount, %donefile);
-foreach my $k (keys %znc) {
-	if ($k =~ /^file_(.*)$/) {
-		$filecount++;
-		$donefile{$1}++;
-		my @fst = stat($1);
-		if (!@st || !@fst || $fst[9] > $st[9]) {
-			$changed = 1;
+my @st = stat($zone_names_cache);
+if (@st) {
+	&read_file_cached_with_stat($zone_names_cache, \%znc);
+	foreach my $k (keys %znc) {
+		if ($k =~ /^file_(.*)$/) {
+			$filecount++;
+			$donefile{$1}++;
+			my @fst = stat($1);
+			if (!@fst || $fst[9] > $st[9]) {
+				$changed = 1;
+				}
 			}
 		}
+	}
+else {
+	$changed = 1;
 	}
 if ($changed || !$znc{'version'} ||
     $znc{'version'} != $zone_names_version ||
