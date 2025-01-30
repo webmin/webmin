@@ -2491,7 +2491,8 @@ if (@st) {
 			$filecount++;
 			$donefile{$1}++;
 			my @fst = stat($1);
-			if (!@fst || $fst[9] > $st[9]) {
+			if (!@fst || $fst[9] > $st[9] ||
+			    $znc{'size_'.$1} != $fst[7]) {
 				$changed = 1;
 				}
 			}
@@ -2551,6 +2552,7 @@ if ($changed || !$znc{'version'} ||
 		my $realf = &make_chroot(&absolute_path($f));
 		my @st = stat($realf);
 		$znc{"file_".$realf} = $st[9];
+		$znc{"size_".$realf} = $st[7];
 		}
 
 	$znc{'version'} = $zone_names_version;
