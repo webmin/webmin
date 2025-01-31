@@ -135,7 +135,7 @@ $bottom_form = 'data-outside-of-viewport' if ($bottom);
 if ($access{'mode'} != 3 || !$doneheader) {
 	print &ui_form_start("edit_poll.cgi", "get", undef, $bottom_form);
 	print &ui_hidden("view", 1);
-	print &ui_submit($text{'index_ok'});
+	print &ui_submit($text{'index_fadd'});
 	print &unix_user_input("user");
 	print &ui_form_end();
 	}
