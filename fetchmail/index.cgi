@@ -108,7 +108,12 @@ else {
 		print &ui_table_row(undef, &ui_grid_table(\@grid, 4));
 		print &ui_table_end();
 		}
-	&show_button() if (!$toomany);
+	if (!$toomany) {
+		&show_button(1);
+		# Only display the bottom form when there are too many users,
+		# i.e. requiring page scrolling
+		print &ui_hide_outside_of_viewport();
+		}
 
 	if (&foreign_installed("cron") && $access{'cron'}) {
 		# Show button to manage global cron job
@@ -124,8 +129,11 @@ else {
 
 sub show_button
 {
+my $bottom = shift;
+my $bottom_form;
+$bottom_form = 'data-outside-of-viewport' if ($bottom);
 if ($access{'mode'} != 3 || !$doneheader) {
-	print &ui_form_start("edit_poll.cgi");
+	print &ui_form_start("edit_poll.cgi", "get", undef, $bottom_form);
 	print &ui_hidden("view", 1);
 	print &ui_submit($text{'index_ok'});
 	print &unix_user_input("user");
