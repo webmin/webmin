@@ -20,7 +20,7 @@ if ($product) {
 			quotemeta($product).".service 2>&1");
 		$status = &trim($status) if ($status);
 		# Delete all possible service files
-		my $systemd_root = &get_systemd_root();
+		my $systemd_root = &get_systemd_root(undef, 1);
 		foreach my $p (
 			"/etc/systemd/system",
 			"/usr/lib/systemd/system",
