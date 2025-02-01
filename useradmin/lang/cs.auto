@@ -17,6 +17,7 @@ index_loginsuser=Pouze uživatel
 index_loginsdesc=Zobrazit poslední přihlášení některého nebo všech uživatelů Unixu, kteří se připojili přes SSH nebo Usermin.
 index_whodesc=Zobrazit uživatele, kteří jsou aktuálně přihlášeni přes SSH nebo Usermin.
 
+nologin=Zakázat ověřování heslem
 sshkey=Veřejný klíč SSH
 uedit_manual=Adresář
 uedit_allg=Všechny skupiny

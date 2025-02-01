@@ -55,7 +55,6 @@ extra=Extra možnosti
 pass=Heslo
 none1=Dotaz při prvním přihlášení
 none2=Heslo není vyžadováno
-nologin=Není nutné přihlášení
 encrypted=Kryptované heslo
 nochange=Opustit beze změn
 clear=Heslo jako text

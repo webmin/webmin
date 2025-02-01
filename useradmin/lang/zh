@@ -40,7 +40,6 @@ extra=额外选项
 pass=口令
 none1=第一次登录时询问
 none2=无需口令
-nologin=不允许登录
 encrypted=加密口令
 nochange=不做改变
 clear=明文口令

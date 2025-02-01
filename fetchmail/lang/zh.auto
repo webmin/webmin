@@ -1,4 +1,5 @@
 index_active=活性？
+index_fadd=为用户添加 Fetchmail 服务器
 index_cron=预定检查
 index_crondesc=单击此按钮可以创建，更改或删除Cron作业，以使Fetchmail按计划自动运行，以使用上述配置检查和下载电子邮件。
 index_crondesc2=单击此按钮可以创建，更改或删除Cron作业，以使Fetchmail按计划自动运行，以检查和下载所有列出的用户的电子邮件。

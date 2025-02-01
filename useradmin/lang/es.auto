@@ -19,6 +19,7 @@ index_loginsuser=Solo usuario
 index_loginsdesc=Muestra los inicios de sesión recientes de uno o todos los usuarios de Unix que se han conectado a través de SSH o Usermin.
 index_whodesc=Muestra a los usuarios que actualmente están conectados a través de SSH o Usermin.
 
+nologin=Deshabilitar la autenticación de contraseña
 sshkey=Clave pública SSH
 uedit_manual=Directorio
 uedit_allg=Todos los grupos

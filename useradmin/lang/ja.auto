@@ -17,6 +17,7 @@ index_loginsuser=ユーザーのみ
 index_loginsdesc=SSHまたはUsermin経由で接続した一部またはすべてのUnixユーザーの最近のログインを表示します。
 index_whodesc=現在SSHまたはUsermin経由でログインしているユーザーを表示します。
 
+nologin=パスワード認証を無効にする
 sshkey=SSH公開鍵
 uedit_manual=ディレクトリ
 uedit_allg=すべてのグループ

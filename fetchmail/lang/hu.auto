@@ -1,4 +1,5 @@
 index_active=Aktív?
+index_fadd=Fetchmail szerver hozzáadása a felhasználóhoz
 index_cron=Ütemezett ellenőrzés
 index_crondesc=Kattintson erre a gombra egy Cron feladat létrehozásához, módosításához vagy eltávolításához, hogy a Fetchmail automatikusan ütemezett módon működjön, és ellenőrizze, és töltsön le e-maileket a fenti konfiguráció segítségével.
 index_crondesc2=Kattintson erre a gombra egy Cron feladat létrehozásához, megváltoztatásához vagy eltávolításához, hogy a Fetchmail automatikusan ütemezett módon futtassa az összes felsorolt felhasználó e-mailjeinek letöltését és letöltését.

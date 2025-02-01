@@ -33,6 +33,7 @@ search_gfound=Найдено $1 соответствующих групп ..
 
 gid=группа
 gidnum=ID группы
+nologin=Отключить аутентификацию по паролю
 sshkey=Открытый ключ SSH
 uedit_manual=каталог
 lastlogin=Последний Войти

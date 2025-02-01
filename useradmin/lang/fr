@@ -55,7 +55,6 @@ extra=Options supplémentaires
 pass=Mot de passe
 none1=Demander lors de la première connexion
 none2=Aucun mot de passe requis
-nologin=Aucune connexion autorisée
 encrypted=Mot de passe pré-encrypté
 nochange=Laisser inchangé
 clear=Mot de passe normal

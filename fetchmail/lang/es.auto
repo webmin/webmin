@@ -1,4 +1,5 @@
 index_active=¿Activo?
+index_fadd=Agregar servidor Fetchmail para el usuario
 index_cron=Comprobación programada
 index_crondesc=Haga clic en este botón para crear, cambiar o eliminar un trabajo de Cron para que Fetchmail se ejecute automáticamente según lo programado para verificar y descargar el correo electrónico utilizando la configuración anterior.
 index_crondesc2=Haga clic en este botón para crear, cambiar o eliminar un trabajo de Cron para que Fetchmail se ejecute automáticamente según lo programado para verificar y descargar el correo electrónico de todos los usuarios enumerados.

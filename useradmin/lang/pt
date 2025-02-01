@@ -27,7 +27,6 @@ real=Nome real
 pass=Palavra de passe
 none1=Perguntar no primeiro login
 none2=Não necessita de palavra de passe
-nologin=Não é permitido o login
 encrypted=Palavra de passe encriptada
 clear=Palavra de passe em texto limpo
 home=Directório inicial

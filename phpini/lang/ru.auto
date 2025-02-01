@@ -12,5 +12,51 @@ limits_evars=Отсутствует или недействителен макс
 
 misc_charset=Набор символов по умолчанию
 
+disable_title=Отключенные функции
+disable_header=Отключенные функции и возможности PHP
+disable_funcs=Отключенные функции
+disable_exec=exec (Выполнить команду)
+disable_passthru=passthru (Выполнить команду и отобразить вывод)
+disable_shell_exec=shell_exec (Выполнить команду через оболочку)
+disable_system=система (выполнение команды и отображение вывода)
+disable_proc_open=proc_open (Выполнение команды и захват ввода и вывода)
+disable_popen=popen (открыть канал для выполнения команды)
+disable_curl_exec=curl_exec (Выполнить сеанс загрузки URL)
+disable_curl_multi_exec=curl_multi_exec (Выполнение нескольких сеансов загрузки URL)
+disable_parse_ini_file=parse_ini_file (Чтение INI-файла PHP)
+disable_show_source=show_source (Выходной файл с подсветкой синтаксиса PHP)
+disable_mail=почта (Отправить письмо)
+disable_leftover=Другие функции:
+disable_err=Не удалось сохранить отключенные функции
+disable_classes=Отключенные встроенные классы
+
+mods_title=PHP-модули
+mods_edir=Не удалось найти каталог модулей PHP!
+mods_ecannot=Вам не разрешено редактировать включенные модули PHP
+mods_desc=Эту страницу можно использовать для глобального включения и отключения модулей PHP версии $1 для всех пользователей этой системы.
+mods_enabled=Включено?
+mods_name=Имя модуля
+mods_file=Файл конфигурации
+mods_pkg=Упаковка
+mods_idesc=Модули PHP, недоступные в этой системе, можно установить из настроенных репозиториев пакетов программного обеспечения.
+mods_newpkg=Добавить модуль PHP:
+mods_install=Установить сейчас
+mods_err=Не удалось сохранить модули PHP
+mods_egetver=Не удалось определить версию PHP для файла конфигурации $1
+mods_egetbin=Не удалось определить двоичный файл PHP для файла конфигурации $1
+mods_return=PHP-модули
+
+imod_title=Установить PHP-модуль
+imod_err=Не удалось установить модуль PHP
+imod_emod=Модуль PHP не введен
+imod_alldoing=Установка PHP-модуля $1 для PHP версии $2 ..
+imod_alreadygot=Модуль PHP $1 уже установлен
+imod_alldone=.. модуль PHP был успешно установлен из пакета $1 и теперь доступен для использования.
+imod_allfailed=.. не удалось установить ни одного программного пакета для указанного модуля PHP, несмотря на попытки $1
+imod_missing=.. установка завершена, но модуль PHP не обнаружен.
+
+log_mods=Обновлены включенные модули в $1
+log_imod=Установленный PHP-модуль $2 в $1
+
 opt_default=Значение по умолчанию: <tt>$1</tt>
 opt_default_unknown=Неизвестный

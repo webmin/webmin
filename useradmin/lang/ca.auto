@@ -1,3 +1,4 @@
+nologin=Desactiva l'autenticació de contrasenya
 sshkey=Clau pública SSH
 
 usave_eltgt=El nom d'usuari no pot contenir &lt; o &gt; personatges

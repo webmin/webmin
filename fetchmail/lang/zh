@@ -7,7 +7,6 @@ index_run=查看所有的服务器
 index_global=编辑默认的设置
 index_user=Unix用户
 index_conf=Fetchmail配置
-index_ok=新增用户Fetchmail服务器：
 index_file=$1中的Fetchmail配置
 index_return=服务器列表
 index_start=启动Fetchmail守护程序

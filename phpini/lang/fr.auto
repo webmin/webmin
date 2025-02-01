@@ -8,5 +8,51 @@ session_memcache=MemcacheD
 limits_vars=Limite maximale des variables d'entrée
 limits_evars=Limite maximale des variables d'entrée manquante ou invalide
 
+disable_title=Fonctionnalités désactivées
+disable_header=Fonctions et fonctionnalités PHP désactivées
+disable_funcs=Fonctions désactivées
+disable_exec=exec (Exécuter la commande)
+disable_passthru=passthru (Exécuter la commande et afficher la sortie)
+disable_shell_exec=shell_exec (Exécuter la commande via le shell)
+disable_system=système (exécuter la commande et afficher la sortie)
+disable_proc_open=proc_open (Exécuter la commande et capturer l'entrée et la sortie)
+disable_popen=popen (Ouvrir le tube pour exécuter la commande)
+disable_curl_exec=curl_exec (Exécuter une session de téléchargement d'URL)
+disable_curl_multi_exec=curl_multi_exec (Exécuter plusieurs sessions de téléchargement d'URL)
+disable_parse_ini_file=parse_ini_file (Lire le fichier PHP INI)
+disable_show_source=show_source (Fichier de sortie avec coloration syntaxique PHP)
+disable_mail=courrier (Envoyer un e-mail)
+disable_leftover=Autres fonctions :
+disable_err=Impossible d'enregistrer les fonctionnalités désactivées
+disable_classes=Classes intégrées désactivées
+
+mods_title=Modules PHP
+mods_edir=Impossible de trouver le répertoire des modules PHP !
+mods_ecannot=Vous n'êtes pas autorisé à modifier les modules PHP activés
+mods_desc=Cette page peut être utilisée pour activer et désactiver globalement les modules PHP version $1 pour tous les utilisateurs de ce système.
+mods_enabled=Activé?
+mods_name=Nom du module
+mods_file=Fichier de configuration
+mods_pkg=Emballer
+mods_idesc=Les modules PHP non disponibles sur ce système peuvent être installés à partir des référentiels de packages logiciels configurés.
+mods_newpkg=Ajouter un module PHP :
+mods_install=Installer maintenant
+mods_err=Échec de la sauvegarde des modules PHP
+mods_egetver=Impossible de déterminer la version PHP pour le fichier de configuration $1
+mods_egetbin=Impossible de comprendre le binaire PHP pour le fichier de configuration $1
+mods_return=Modules PHP
+
+imod_title=Installer le module PHP
+imod_err=Échec de l'installation du module PHP
+imod_emod=Aucun module PHP saisi
+imod_alldoing=Installation du module PHP $1 pour la version PHP $2 ..
+imod_alreadygot=Le module PHP $1 est déjà installé
+imod_alldone=.. le module PHP a été installé avec succès à partir du package $1 et est maintenant disponible à l'utilisation.
+imod_allfailed=.. aucun package logiciel pour le module PHP spécifié n'a pu être installé, malgré la tentative de $1
+imod_missing=.. installation terminée, mais le module PHP n'a pas été détecté.
+
+log_mods=Modules activés mis à jour dans $1
+log_imod=Module PHP $2 installé dans $1
+
 opt_default=Valeur par défaut : <tt>$1</tt>
 opt_default_unknown=Inconnu

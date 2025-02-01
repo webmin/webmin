@@ -73,7 +73,6 @@ extra=Opcje dodatkowe
 pass=Hasło
 none1=Zapytaj przy pierwszym logowaniu
 none2=Hasło nie wymagane
-nologin=Nie może się logować
 encrypted=Hasło uprzednio zaszyfrowane
 nochange=Pozostaw niezmienione
 clear=Hasło otwartym tekstem

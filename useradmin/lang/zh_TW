@@ -40,7 +40,6 @@ extra=額外選項
 pass=密碼
 none1=在第一次登入時詢問
 none2=不需要密碼
-nologin=不允許登入
 encrypted=已編碼的密碼
 nochange=保持不變
 clear=純文字密碼

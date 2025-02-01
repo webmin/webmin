@@ -64,7 +64,6 @@ extra=Extra opties
 pass=Wachtwoord
 none1=Vragen bij eerste aanmelding
 none2=Geen wachtwoord vereist
-nologin=Inloggen niet toegestaan
 encrypted=Pre-versleuteld wachtwoord
 nochange=Laat onveranderd
 clear=Normaal wachtwoord

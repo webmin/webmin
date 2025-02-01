@@ -8,7 +8,6 @@ index_run=Alle Server überprüfen
 index_global=Standard-Einstellungen bearbeiten.
 index_user=Unix-Benutzer
 index_conf=Fetchmail-Konfiguration
-index_ok=Fetchmail-Server für Benutzer hinzufügen:
 index_file=Fetchmail-Konfiguration in $1
 index_return=Serverliste
 index_start=Fetchmail-Daemon starten

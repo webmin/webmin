@@ -17,5 +17,51 @@ limits_evars=Brakujący lub nieprawidłowy maksymalny limit zmiennych wejściowy
 misc_path=Informacje o ścieżce CGI Fix?
 misc_charset=Domyślny zestaw znaków
 
+disable_title=Wyłączone funkcje
+disable_header=Wyłączone funkcje i cechy PHP
+disable_funcs=Wyłączone funkcje
+disable_exec=exec (Wykonaj polecenie)
+disable_passthru=passthru (Wykonuje polecenie i wyświetla dane wyjściowe)
+disable_shell_exec=shell_exec (Wykonaj polecenie za pomocą powłoki)
+disable_system=system (Wykonaj polecenie i wyświetl wynik)
+disable_proc_open=proc_open (Wykonuje polecenie i przechwytuje dane wejściowe i wyjściowe)
+disable_popen=popen (Otwórz potok dla wykonywanego polecenia)
+disable_curl_exec=curl_exec (Wykonuje sesję pobierania adresu URL)
+disable_curl_multi_exec=curl_multi_exec (Wykonywanie wielu sesji pobierania adresów URL)
+disable_parse_ini_file=parse_ini_file (Przeczytaj plik PHP INI)
+disable_show_source=show_source (Plik wyjściowy z podświetlaniem składni PHP)
+disable_mail=poczta (Wyślij e-mail)
+disable_leftover=Inne funkcje:
+disable_err=Nie udało się zapisać wyłączonych funkcji
+disable_classes=Wyłączono wbudowane klasy
+
+mods_title=Moduły PHP
+mods_edir=Nie można odnaleźć katalogu modułów PHP!
+mods_ecannot=Nie masz uprawnień do edycji włączonych modułów PHP
+mods_desc=Za pomocą tej strony można globalnie włączać i wyłączać moduły PHP w wersji $1 dla wszystkich użytkowników tego systemu.
+mods_enabled=Włączony?
+mods_name=Nazwa modułu
+mods_file=Plik konfiguracyjny
+mods_pkg=Pakiet
+mods_idesc=Moduły PHP niedostępne w tym systemie można zainstalować z skonfigurowanych repozytoriów pakietów oprogramowania.
+mods_newpkg=Dodaj moduł PHP:
+mods_install=Zainstaluj teraz
+mods_err=Nie udało się zapisać modułów PHP
+mods_egetver=Nie udało się ustalić wersji PHP dla pliku konfiguracyjnego $1
+mods_egetbin=Nie można znaleźć pliku binarnego PHP dla pliku konfiguracyjnego $1
+mods_return=Moduły PHP
+
+imod_title=Zainstaluj moduł PHP
+imod_err=Nie udało się zainstalować modułu PHP
+imod_emod=Nie wprowadzono modułu PHP
+imod_alldoing=Instalowanie modułu PHP $1 dla wersji PHP $2 ..
+imod_alreadygot=Moduł PHP $1 jest już zainstalowany
+imod_alldone=.. moduł PHP został pomyślnie zainstalowany z pakietu $1 i jest teraz dostępny do użycia.
+imod_allfailed=.. nie udało się zainstalować żadnego pakietu oprogramowania dla określonego modułu PHP, pomimo próby $1
+imod_missing=.. instalacja ukończona, ale moduł PHP nie został wykryty.
+
+log_mods=Zaktualizowano włączone moduły w $1
+log_imod=Zainstalowano moduł PHP $2 w $1
+
 opt_default=Wartość domyślna: <tt>$1</tt>
 opt_default_unknown=Nieznany

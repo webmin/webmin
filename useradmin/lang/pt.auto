@@ -46,6 +46,7 @@ office=Escritório
 workph=Telefone de Trabalho
 homeph=Telefone residencial
 extra=Opções extras
+nologin=Desativar autenticação de senha
 nochange=Deixar inalterado
 sshkey=Chave pública SSH
 uedit_manual=Diretório

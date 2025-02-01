@@ -33,7 +33,6 @@ real=실제 이름
 pass=암호
 none1=처음 로그인할 때 묻기
 none2=암호 필요 없음
-nologin=허용된 로그인 없음
 encrypted=미리 암호화된 암호
 nochange=변경하지 않은 상태로 유지
 clear=일반 암호

@@ -17,6 +17,52 @@ misc_path=Informace o opravné cestě CGI?
 misc_timezone=Časové pásmo PHP
 misc_charset=Výchozí znaková sada
 
+disable_title=Zakázané funkce
+disable_header=Zakázané funkce a vlastnosti PHP
+disable_funcs=Zakázané funkce
+disable_exec=exec (spustit příkaz)
+disable_passthru=passthru (spustit příkaz a zobrazit výstup)
+disable_shell_exec=shell_exec (Spustit příkaz přes shell)
+disable_system=systém (spustit příkaz a zobrazit výstup)
+disable_proc_open=proc_open (spustit příkaz a zachytit vstup a výstup)
+disable_popen=popen (Otevřít kanál k provedenému příkazu)
+disable_curl_exec=curl_exec (Provedení relace stahování adresy URL)
+disable_curl_multi_exec=curl_multi_exec (Provedení více relací stahování URL)
+disable_parse_ini_file=parse_ini_file (přečíst soubor PHP INI)
+disable_show_source=show_source (Výstupní soubor se zvýrazněním syntaxe PHP)
+disable_mail=mail (odeslat email)
+disable_leftover=Další funkce:
+disable_err=Nepodařilo se uložit zakázané funkce
+disable_classes=Zakázané vestavěné třídy
+
+mods_title=PHP moduly
+mods_edir=Nelze najít adresář modulů PHP!
+mods_ecannot=Nemáte oprávnění upravovat povolené moduly PHP
+mods_desc=Tuto stránku lze použít ke globálnímu povolení a zakázání modulů PHP verze $1 pro všechny uživatele tohoto systému.
+mods_enabled=Povoleno?
+mods_name=Název modulu
+mods_file=Konfigurační soubor
+mods_pkg=Balík
+mods_idesc=PHP moduly, které nejsou v tomto systému dostupné, lze nainstalovat z konfigurovaných úložišť softwarových balíků.
+mods_newpkg=Přidat modul PHP:
+mods_install=Instalovat nyní
+mods_err=Nepodařilo se uložit moduly PHP
+mods_egetver=Nelze zjistit verzi PHP pro konfigurační soubor $1
+mods_egetbin=Nepodařilo se zjistit binární PHP pro konfigurační soubor $1
+mods_return=PHP moduly
+
+imod_title=Nainstalujte modul PHP
+imod_err=Nepodařilo se nainstalovat modul PHP
+imod_emod=Není zadán žádný modul PHP
+imod_alldoing=Instalace modulu PHP $1 pro verzi PHP $2 ..
+imod_alreadygot=Modul PHP $1 je již nainstalován
+imod_alldone=.. modul PHP byl úspěšně nainstalován z balíčku $1 a je nyní k dispozici k použití.
+imod_allfailed=.. nelze nainstalovat žádné softwarové balíčky pro zadaný modul PHP, přestože jste se pokusili $1
+imod_missing=.. instalace dokončena, ale modul PHP nebyl detekován.
+
+log_mods=Aktualizované povolené moduly v $1
+log_imod=Nainstalovaný modul PHP $2 v $1
+
 acl_user=Čtení a zápis souborů jako uživatel
 
 opt_default=Výchozí hodnota: <tt>$1</tt>

@@ -8,5 +8,51 @@ session_memcache=MemcacheD
 limits_vars=Límit màxim de variables d'entrada
 limits_evars=Falta el límit màxim de variables d'entrada o no és vàlid
 
+disable_title=Funcions desactivades
+disable_header=Funcions i característiques de PHP desactivades
+disable_funcs=Funcions inhabilitades
+disable_exec=exec (executa l'ordre)
+disable_passthru=passthru (executa l'ordre i mostra la sortida)
+disable_shell_exec=shell_exec (Executar l'ordre mitjançant shell)
+disable_system=sistema (executa l'ordre i la sortida de visualització)
+disable_proc_open=proc_open (executa l'ordre i captura entrada i sortida)
+disable_popen=popen (Obre la canonada a l'ordre executada)
+disable_curl_exec=curl_exec (Executar una sessió de descàrrega d'URL)
+disable_curl_multi_exec=curl_multi_exec (Executar sessions de baixada d'URL múltiples)
+disable_parse_ini_file=parse_ini_file (Llegeix el fitxer PHP INI)
+disable_show_source=show_source (fitxer de sortida amb ressaltat de sintaxi PHP)
+disable_mail=correu (Envia un correu electrònic)
+disable_leftover=Altres funcions:
+disable_err=No s'han pogut desar les funcions desactivades
+disable_classes=Classes integrades discapacitades
+
+mods_title=Mòduls PHP
+mods_edir=No s'ha pogut trobar el directori de mòduls PHP!
+mods_ecannot=No teniu permís per editar mòduls PHP habilitats
+mods_desc=Aquesta pàgina es pot utilitzar per habilitar i desactivar globalment els mòduls de la versió $1 de PHP per a tots els usuaris d'aquest sistema.
+mods_enabled=Habilitat?
+mods_name=Nom del mòdul
+mods_file=Fitxer de configuració
+mods_pkg=paquet
+mods_idesc=Els mòduls PHP no disponibles en aquest sistema es poden instal·lar des dels repositoris de paquets de programari configurats.
+mods_newpkg=Afegeix un mòdul PHP:
+mods_install=Instal·la ara
+mods_err=No s'han pogut desar els mòduls PHP
+mods_egetver=No s'ha pogut esbrinar la versió de PHP per al fitxer de configuració $1
+mods_egetbin=No s'ha pogut esbrinar el binari PHP per al fitxer de configuració $1
+mods_return=Mòduls PHP
+
+imod_title=Instal·leu el mòdul PHP
+imod_err=No s'ha pogut instal·lar el mòdul PHP
+imod_emod=No s'ha introduït cap mòdul PHP
+imod_alldoing=S'està instal·lant el mòdul PHP $1 per a la versió PHP $2 ..
+imod_alreadygot=El mòdul PHP $1 ja està instal·lat
+imod_alldone=.. el mòdul PHP s'ha instal·lat correctament des del paquet $1 i ara està disponible per utilitzar-lo.
+imod_allfailed=.. no s'ha pogut instal·lar cap paquet de programari per al mòdul PHP especificat, tot i provar $1
+imod_missing=.. instal·lació completada, però no s'ha detectat el mòdul PHP.
+
+log_mods=S'han actualitzat els mòduls activats a $1
+log_imod=S'ha instal·lat el mòdul PHP $2 a $1
+
 opt_default=Valor per defecte: <tt>$1</tt>
 opt_default_unknown=Desconegut
