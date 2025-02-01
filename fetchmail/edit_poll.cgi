@@ -125,8 +125,6 @@ foreach $u (@users) {
 	$i++;
 	}
 
-print &ui_table_end();
-
 if ($in{'new'}) {
 	push(@buts, [ undef, $text{'create'} ]);
 	}
