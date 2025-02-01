@@ -19,11 +19,16 @@ else {
 	&save_directive($conf, "include_path", join(":", @incs));
 	}
 
-$in{'ext_def'} || $in{'ext'} =~ /\S/ || &error($text{'dirs_eext'});
-&save_directive($conf, "extension_dir", $in{'ext_def'} ? undef : $in{'ext'});
+$inidir = &get_php_ini_dir($in{'file'});
+if (!$inidir) {
+	$in{'ext_def'} || $in{'ext'} =~ /\S/ || &error($text{'dirs_eext'});
+	&save_directive($conf, "extension_dir",
+			$in{'ext_def'} ? undef : $in{'ext'});
 
-if (defined($in{'exts'})) {
-	&save_directive($conf, "extension", [ split(/\r?\n/, $in{'exts'}) ]);
+	if (defined($in{'exts'})) {
+		&save_directive($conf, "extension",
+				[ split(/\r?\n/, $in{'exts'}) ]);
+		}
 	}
 
 &save_directive($conf, "file_uploads", $in{'file_uploads'} || undef);
