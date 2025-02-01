@@ -1,5 +1,6 @@
 #!/usr/local/bin/perl
 # Force a zone transfer for a slave domain
+
 use strict;
 use warnings;
 no warnings 'redefine';
