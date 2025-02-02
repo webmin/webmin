@@ -1,6 +1,0 @@
-name=ChangeUser
-desc=Change Language and Theme
-category=webmin
-depends=acl webmin
-longdesc=Allows the current Webmin user to change his language, theme and possibly password.
-readonly=1

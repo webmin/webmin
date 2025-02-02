@@ -1,5 +1,0 @@
-name=Export Manager
-category=net
-os_support=hpux
-desc=NFS Exports
-longdesc=Edit file shares as defined in the HPUX /etc/exports file.

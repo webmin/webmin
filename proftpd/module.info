@@ -1,5 +1,0 @@
-name=ProFTPD
-desc=ProFTPD Server
-category=servers
-longdesc=Configure the powerful ProFTPD FTP server. Supports all options in most of the standard modules.
-os_support=!windows

@@ -1,3 +1,0 @@
-desc_ja=Linux IPv6ファイアウォール
-name_ja=ファイアウォール6
-longdesc_ja=ip6tablesを使用してLinuxファイアウォールを構成します。すべてのテーブル、チェーン、ルール、オプションの編集を許可します。

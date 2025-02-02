@@ -1,3 +1,0 @@
-longdesc_it=Script di installazione da eseguire all'avvio da /etc/init.d o /etc/rc.local.
-desc_it=Avvio e spegnimento
-name_it=Boot Manager

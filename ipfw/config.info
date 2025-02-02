@@ -1,9 +1,0 @@
-line0=Configurable options,11
-view_condition=Display conditions?,1,1-Yes,0-No
-view_comment=Display comments?,1,1-Yes,0-No
-view_counters=Display counters?,1,1-Yes,0-No
-cluster_mode=Update cluster servers,1,0-Whenever a change is made,1-When applying the configuration
-line1=System configuration,11
-save_file=IPFW save file to edit,3,Webmin's default or automatic
-ipfw=Full path to ipfw command,0
-version=IPFW version number,1,0-Detect automatically,1-Version 1,2-Version 2

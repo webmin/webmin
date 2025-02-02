@@ -1,3 +1,0 @@
-desc_ja=クラスターcronジョブ
-desc_de_ja=クラスターcronジョブ
-longdesc_ja=複数のサーバーで同時に実行されるスケジュールされたCronジョブを作成します。

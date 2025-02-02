@@ -1,4 +1,0 @@
-name=SSHD
-desc=SSH Server
-category=servers
-longdesc=Setup the SSH server for remote secure logins.

@@ -1,3 +1,0 @@
-name_ms=Pengurus Boot
-longdesc_ms=Skrip persediaan dijalankan pada masa boot dari /etc/init.d atau /etc/rc.local.
-desc_ms=Bootup dan Shutdown

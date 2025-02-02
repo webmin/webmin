@@ -1,9 +1,0 @@
-users_root=Consentire l'accesso da parte di <em>root</em>?
-users_yes=Sì, sia la chiave che la password
-users_nopwd=Sì, solo basato su chiave
-users_fcmd=Sì, solo per comandi specifici
-users_no=No, disabilita completamente l'accesso root
-users_pkeyauth=Consentire l'autenticazione con chiave pubblica?
-users_chal=Utilizzare l'autenticazione challenge-response?
-
-keys_change=Modifica

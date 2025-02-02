@@ -1,3 +1,0 @@
-name_ja=SGIExports
-longdesc_ja=Irix /etc/exports ファイルで定義されているファイル共有を編集します
-desc_ja=NFSエクスポート

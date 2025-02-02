@@ -1,2 +1,0 @@
-pap_file=Fichier d'usager PAP,0
-encrypt_pass=Encrypter les mots de passe dans le fichier,1,1-Oui,0-Non

@@ -1,5 +1,0 @@
-desc=IPFilter Firewall
-os_support=solaris {&has_command("ipf")}
-category=net
-depends=net
-longdesc=Configure a firewall using the IPFilter package, by creating and editing rules.

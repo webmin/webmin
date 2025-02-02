@@ -1,8 +1,0 @@
-users_root=Vil du tillate pålogging med <em>root</em>?
-users_yes=Ja, både nøkkel og passord
-users_nopwd=Ja, kun nøkkelbasert
-users_fcmd=Ja, kun for spesifikke kommandoer
-users_no=Nei, deaktiver rotpålogging fullstendig
-users_pkeyauth=Vil du tillate offentlig nøkkelautentisering?
-
-keys_change=Endring

@@ -1,1 +1,0 @@
-desc_fr=Tâches Cron

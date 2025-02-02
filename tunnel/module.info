@@ -1,3 +1,0 @@
-name=Tunnel
-desc=HTTP Tunnel
-longdesc=Connect to another HTTP server via a tunnel through the Webmin server.

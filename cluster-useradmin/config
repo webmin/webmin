@@ -1,9 +1,0 @@
-sort_mode=0
-table_mode=0
-conf_add_user=1
-conf_add_group=1
-conf_find_user=1
-conf_find_group=1
-conf_allow_refresh=1
-conf_allow_sync=1
-conf_host_links=1

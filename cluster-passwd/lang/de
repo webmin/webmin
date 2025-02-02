@@ -1,8 +1,0 @@
-index_title=Cluster-Passwörter ändern
-index_noservers=Es wurden keine Server zum Verwalten von Benutzern im Modul <a href=$1>Cluster-Benutzer und -Gruppen</a> definiert.
-index_hosts=Alle Passwortänderungen, die mit diesem Modul durchgeführt werden, werden auf allen $1 Hosts vorgenommen, die vom Modul Cluster-Benutzer und -Gruppen verwaltet werden.
-
-passwd_err=Fehler beim Ändern des Passworts
-passwd_title=Passwortänderung
-passwd_on=Passwort wird auf $1 geändert ..
-passwd_euser=Benutzer existiert nicht!

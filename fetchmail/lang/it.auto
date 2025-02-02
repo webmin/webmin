@@ -1,8 +1,0 @@
-index_fadd=Aggiungi il server Fetchmail per l'utente
-
-poll_folder=Cartella IMAP da controllare
-poll_inbox=Predefinito (POSTA IN ARRIVO)
-poll_efolder=Nome cartella mancante
-poll_foruser=Per l'utente $1
-
-acl_daemon=È possibile configurare il demone Fetchmail?

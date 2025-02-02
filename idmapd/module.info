@@ -1,5 +1,0 @@
-name=Idmapd Daemon
-category=net
-desc=idmapd daemon
-longdesc=Manage the NFS ID mapping daemon.
-os_support=*-linux

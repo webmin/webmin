@@ -1,6 +1,0 @@
----- Changes since 1.130 ----
-A new form has been added for creating and scheduling a Cron job to run Fetchmail, as an alternative to running the daemon
----- Changes since 1.200 ----
-The Scheduled Checking page is now available even when the module is configured to manage Fetchmail for all users on the system, and can setup a Cron job to fetch mail for all users.
----- Changes since 1.400 ----
-Added an access control option to limit access to the Fetchmail daemon.

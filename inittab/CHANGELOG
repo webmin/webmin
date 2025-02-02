@@ -1,5 +1,0 @@
----- Changes since 1.310 ----
-Added checkboxes and a button for deleting multiple processes at once.
----- Changes since 1.390 ----
-Converted all code to use the new Webmin UI library, and remove now-useless code and scripts.
-Changed the module name to the less cryptic 'Initial System Bootup'.

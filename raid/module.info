@@ -1,6 +1,0 @@
-name=RAID
-category=hardware
-os_support=*-linux
-desc=Linux RAID
-depends=fdisk mount
-longdesc=Create RAID 0, 1, 4, 5, 6, 10 and linear devices on a Linux system.

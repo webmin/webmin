@@ -1,6 +1,0 @@
-name=Inittab
-category=system
-os_support=solaris *-linux{-r "/etc/inittab"} hpux unixware openserver aix irix
-desc=Initial System Bootup
-longdesc=Configure low-level services to be run at boot time, and select the initial runlevel.
-readonly=1

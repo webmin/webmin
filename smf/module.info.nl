@@ -1,1 +1,0 @@
-desc_nl=Service Management Faciliteit Configuratie

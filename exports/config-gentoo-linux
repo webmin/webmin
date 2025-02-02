@@ -1,3 +1,0 @@
-restart_command=if (killall -HUP rpc.nfsd && killall -HUP rpc.mountd); then /bin/true; else (/etc/init.d/nfs stop ; /etc/init.d/nfs start) fi
-exports_file=/etc/exports
-apply_cmd=exportfs -r

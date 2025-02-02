@@ -1,7 +1,0 @@
-name=logviewer
-category=system
-os_support=*-linux
-desc=System Logs
-depends=proc
-longdesc=View and search all logs available on system
-readonly=1

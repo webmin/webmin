@@ -1,5 +1,0 @@
-name=AdminUsers
-category=webmin
-desc=Webmin Users
-longdesc=Create Webmin users and configure which modules and features they are allowed to access.
-readonly=1

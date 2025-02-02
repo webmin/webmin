@@ -1,7 +1,0 @@
-name=DFSadmin
-category=net
-os_support=solaris unixware
-desc=NFS Shares
-longdesc=Edit file shares as defined in the /etc/dfs/dfstab file.
-nozone=1
-library=dfs-lib.pl

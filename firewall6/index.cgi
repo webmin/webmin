@@ -1,1 +1,0 @@
-../firewall/index.cgi

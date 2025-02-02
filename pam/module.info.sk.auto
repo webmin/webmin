@@ -1,3 +1,0 @@
-name_sk=PAM
-desc_sk=Autentifikácia pomocou PAM
-longdesc_sk=Nakonfigurujte kroky autentifikácie PAM používané službami ako telnet, POP a FTP.

@@ -1,1 +1,0 @@
-sort_mode=Sorter kopieringskommandoer etter,1,0-Når de ble opprettet,1-Filnavn,2-Mål tjenere

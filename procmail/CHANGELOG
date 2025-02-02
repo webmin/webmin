@@ -1,6 +1,0 @@
----- Changes since 1.270 ----
-Added a button for deleting multiple recipes at once.
----- Changes since 1.390 ----
-Converted all code to use the new Webmin UI library, for a more consistent look.
----- Changes since 1.400 ----
-Improved checking for Procmail support in Sendmail and Postfix.

@@ -1,5 +1,0 @@
-desc=FirewallD
-os_support=*-linux
-depends=net init
-category=net
-longdesc=Configure a Linux firewall using FirewallD, by editing allowed services and ports.

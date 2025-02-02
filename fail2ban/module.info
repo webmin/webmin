@@ -1,5 +1,0 @@
-desc=Fail2Ban Intrusion Detector
-category=net
-longdesc=Fail2ban protects your system from brute force attacks by detecting them and blocking their source IPs.
-depends=init
-syslog=1

@@ -1,5 +1,0 @@
-name=SpamAssassin
-desc=SpamAssassin Mail Filter
-category=servers
-longdesc=Set up and configure SpamAssassin to filter email received by your system.
-os_support=!windows

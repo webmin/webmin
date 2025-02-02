@@ -1,4 +1,0 @@
----- Changes since 1.200 ----
-First version of this module, for creating and managing Zones on a Solaris 10 system.
----- Changes since 1.480 ----
-Added support for zone brands, thanks to a patch from Todd Kennedy.

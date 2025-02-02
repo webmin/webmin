@@ -1,6 +1,0 @@
-view_comment=0
-view_condition=1
-view_counters=0
-ipfw=/sbin/ipfw
-version=2
-cluster_mode=0

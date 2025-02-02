@@ -1,8 +1,0 @@
-name=Partition Manager
-category=hardware
-os_support=*-linux
-desc=Partitions on Local Disks
-depends=mount proc raid
-longdesc=Create and edit partitions on local SCSI, IDE and SATA disks on Linux.
-novserver=1
-noopenvz=1

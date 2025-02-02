@@ -1,8 +1,0 @@
-line2=Sistem yapılandırması,11
-pppoe_conf=PPPOE ADSL yapılandırma dosyası,0
-conf_style=Yapılandırma dosyası biçimi,1,0-Standart RP-PPPoE yapılandırması,1-Redhat ağ dosyası
-pap_file=PPP hesap dosyası,0
-pppoe_cmd=pppoe komutunun tam yolu,0
-start_cmd=ADSL bağlantısı açma komutu,0
-stop_cmd=ADSL bağlantısını kapatma komutu,0
-status_cmd=ADSL bağlantısının durumunu gösterme komutu,0

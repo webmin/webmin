@@ -1,4 +1,0 @@
-desc=Scheduled Webmin Functions
-longdesc=Define Webmin module functions that are called on a regular schedule by the Webmin webserver
-category=webmin
-hidden=1

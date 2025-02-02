@@ -1,3 +1,0 @@
-desc_ja=ハートビートモニター
-name_ja=ハートビート
-longdesc_ja=クラスタ内の自動サーバーフェールオーバー用にHeartbeatパッケージを構成します。

@@ -1,6 +1,0 @@
-virtualmin_spam=/etc/webmin/virtual-server/lookup-domain.pl
-warn_procmail=1
-alias_files=/etc/aliases	/etc/postfix/aliases	/etc/mail/aliases
-virtualmin_config=/etc/webmin/virtual-server
-forward_procmail=0
-reply_force=0

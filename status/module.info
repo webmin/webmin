@@ -1,4 +1,0 @@
-desc=System and Server Status
-name=Status
-depends=servers cron mailboxes
-longdesc=View the status of services on your system and on remote systems.

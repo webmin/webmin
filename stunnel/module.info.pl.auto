@@ -1,3 +1,0 @@
-longdesc_pl=Skonfiguruj tunele SSL do szyfrowania usług takich jak POP3 i IMAP, używając stunnel uruchamianego z inetd.
-name_pl=Tunel
-desc_pl=Tunele SSL

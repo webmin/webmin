@@ -1,4 +1,0 @@
-desc=Perl Modules
-name=CPAN
-longdesc=Install new Perl modules on your system, and view those already installed.
-os_support=!windows

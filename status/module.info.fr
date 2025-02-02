@@ -1,1 +1,0 @@
-desc_fr=État du système et des serveurs

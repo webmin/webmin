@@ -1,3 +1,0 @@
-desc_sk=VPN server PPTP
-longdesc_sk=Nastavte svoj systém ako server PPTP, aby ste sa mohli pripojiť k klientom VPN so systémom Linux alebo Windows.
-name_sk=pptpd

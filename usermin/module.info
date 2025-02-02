@@ -1,8 +1,0 @@
-name=Usermin
-desc=Usermin Configuration
-category=webmin
-longdesc=Configure global options for the Usermin user account management server.
-depends=webmin acl
-readonly=1
-syslog=1
-os_support=!windows

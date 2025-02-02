@@ -1,5 +1,0 @@
-name=Cluster Webmin
-desc=Cluster Webmin Servers
-category=cluster
-depends=webmin servers
-longdesc=Install and manage modules, themes, users, groups and access control settings across multiple Webmin servers.

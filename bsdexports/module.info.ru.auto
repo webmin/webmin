@@ -1,3 +1,0 @@
-name_ru=BSDexports
-desc_ru=Экспорт NFS
-longdesc_ru=Отредактируйте общие папки из файла FreeBSD /etc/exports.

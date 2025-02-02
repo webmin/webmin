@@ -1,4 +1,0 @@
-columns=size,owner_user,permissions,last_mod_time
-per_page=50
-config_portable_module_filemanager_editor_detect_encoding=true
-config_portable_module_filemanager_show_dot_files=true

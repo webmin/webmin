@@ -1,3 +1,0 @@
-desc_cs=Export NFS
-longdesc_cs=Upravit sdílené soubory ze souboru /etc/exports FreeBSD.
-name_cs=BSDexports

@@ -1,1 +1,0 @@
-suse-linux-9.0-lib.pl

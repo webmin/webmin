@@ -1,2 +1,0 @@
-line2=Systemkonfigurasjon,11
-krb5_conf=Filbane til kerberos5 konfigurasjonsfil,0

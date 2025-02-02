@@ -1,9 +1,0 @@
-name=Disk Manager
-category=system
-os_support=*-linux solaris freebsd hpux openbsd netbsd 
-api_os_support=macos
-desc=Disk and Network Filesystems
-depends=proc
-longdesc=Mount filesystems and swap files usually configured in /etc/fstab or /etc/vfstab.
-readonly=1
-novserver=1

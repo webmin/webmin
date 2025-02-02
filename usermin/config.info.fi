@@ -1,4 +1,0 @@
-usermin_dir=Usermin asetushakemisto,0
-cron_mode=Näytä päivitysajat,1,0-Helpotettu käyttöliittymä,1-Cron aika valitsin
-host=Usermin koneen nimi käyttäjien vaihtoa varten,3,Sama kuin Webmin
-port=Usermin portti käyttäjien vaihtoa varten,3,Määritä automaattisesti

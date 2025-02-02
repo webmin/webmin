@@ -1,6 +1,0 @@
-webalizer=/opt/csw/bin/webalizer
-webalizer_conf=/opt/csw/etc/webalizer.conf
-alt_conf=/opt/csw/etc/webalizer.conf.CSWapache
-auto=apache,squid,proftpd,wuftpd
-naked=0
-skip_old=0

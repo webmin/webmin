@@ -1,5 +1,0 @@
-name=BSDexports
-category=net
-os_support=freebsd openbsd macos netbsd openserver
-desc=NFS Exports
-longdesc=Edit file shares from the FreeBSD /etc/exports file.

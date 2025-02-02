@@ -1,8 +1,0 @@
-line1=Opzioni configurabili,11
-lease=Numero di secondi di ritardo tra l'ora di sistema e l'ora hardware considerati accettabili:,0
-timeserver=Time server di default,3,Nessuno
-ntp_only=Usare solo NTP per la sincronizzazione dell'ora?,1,1-Si,0-No
-line2=Configurazione di sistema,11
-seconds=Formato dell'ora di sistema,1,1-MMDDHHMMYYYY.SS,0-MMDDHHMMYY,2-YYYYMMDDHHMM.SS
-zone_style=Metodo di configurazione del fuso orario,4,linux-Linux,freebsd-FreeBSD,solaris-Solaris,-&lt;Non supportato su questo sistema&gt;
-hwclock_flags=Flag a linea di comando per l'orologio hardware,10,-Nessuno,sysconfig-Da /etc/sysconfig/clock

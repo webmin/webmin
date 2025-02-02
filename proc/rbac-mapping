@@ -1,3 +1,0 @@
-# RBAC authorization		# Webmin ACL
-solaris.admin.procmgr.admin	noconfig=1
-solaris.admin.procmgr.user	noconfig=1,uid=-1,only=1

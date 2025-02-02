@@ -1,1 +1,0 @@
-../firewall/save_rule.cgi

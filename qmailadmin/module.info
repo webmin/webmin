@@ -1,6 +1,0 @@
-name=QMail
-desc=QMail Mail Server
-category=servers
-longdesc=Configure the QMail mail server, a simpler alternative to Sendmail.
-os_support=!windows
-library=qmail-lib.pl

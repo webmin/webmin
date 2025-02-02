@@ -1,5 +1,0 @@
-id=samba
-type=samba
-desc=Samba Servers
-depends=samba
-default=1

@@ -1,5 +1,0 @@
-name=Firewall
-desc=Linux Firewall
-os_support=*-linux
-category=net
-longdesc=Configure a Linux firewall using iptables. Allows the editing of all tables, chains, rules and options.

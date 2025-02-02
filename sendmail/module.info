@@ -1,6 +1,0 @@
-name=Sendmail
-category=servers
-os_support=solaris slackware-linux redhat-linux mandrake-linux suse-linux united-linux debian-linux freebsd hpux irix macos open-linux openserver unixware turbo-linux openbsd corel-linux cobalt-linux aix netbsd msc-linux osf1 generic-linux gentoo-linux{-r "/etc/sendmail.cf" || -r "/etc/mail/sendmail.cf"} sol-linux coherent-linux
-desc=Sendmail Mail Server
-longdesc=Manage sendmail aliases, masquerading, address rewriting and other features.
-library=sendmail-lib.pl access-lib.pl aliases-lib.pl boxes-lib.pl domain-lib.pl features-lib.pl generics-lib.pl mailers-lib.pl virtusers-lib.pl

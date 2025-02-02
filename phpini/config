@@ -1,1 +1,0 @@
-php_ini=/etc/php.ini,/etc/*/*/php*/php.ini,/etc/*/*/*php*/php.ini=Configuration for CLI and CGI

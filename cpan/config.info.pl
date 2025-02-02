@@ -1,9 +1,0 @@
-line1=Opcje konfiguracji,11
-refresh_days=Dni przed odświeżeniem listy modułów CPAN,0,5
-save_partial=Pominąć ściąganie modułu jeżeli instalacja nie powiedzie się?,1,1-Tak,0-Nie
-def_args=Domyślne argumenty dla Makefile.PL,0
-incpackages=Dołączyć moduły Perla z pakietów oprogramowania?,1,1-Tak,0-Nie
-incyum=Zainstalować moduły Perla z YUM lub APT jeżeli są dostępne?,1,1-Tak,0-Nie
-line2=Konfiguracja systemu,11
-packages=Lista modułów CPAN Perla,0
-cpan=Podstawowy URL modułów CPAN,0

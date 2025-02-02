@@ -1,4 +1,0 @@
-standard_url=URL til standard modulliste,3,På www.webmin.com
-third_url=URL til liste over tredjeparts moduler,3,På www.webmin.com
-cron_mode=Vis oppdateringstidspunkt som,1,0-Enkelt grensesnitt,1-Cron tidsvelger
-warn_days=Dager før passord utløper at brukere skal gis melding,0,5

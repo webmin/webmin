@@ -1,3 +1,0 @@
-desc_it=Wrapper TCP
-name_it=tcpwrappers
-longdesc_it=Configurare i file di controllo di accesso alla rete dei wrapper TCP

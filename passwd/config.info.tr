@@ -1,4 +1,0 @@
-max_users=Gösterilecek maksimum kullanıcı sayısı,0
-input_type=Kullanıcı seçim tipi,1,1-Liste kutusu,0-Metin alanı
-sort_mode=Kullanıcıları sıralama biçimi,1,0-Dosyadaki sıraya göre,1-Kullanıcıya göre
-passwd_cmd=Parola değiştirme komutu,1,Sistem dosyalarını doğrudan güncelle

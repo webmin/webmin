@@ -1,5 +1,0 @@
-id=postfix
-type=postfix
-desc=Postfix Server
-depends=postfix
-default=1

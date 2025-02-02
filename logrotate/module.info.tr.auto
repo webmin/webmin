@@ -1,3 +1,0 @@
-longdesc_tr=Apache, Squid, Syslog ve diğer günlük dosyalarının otomatik döndürülmesini ayarlayın.
-desc_tr=Günlük Dosyası Döndürme
-name_tr=logrotate

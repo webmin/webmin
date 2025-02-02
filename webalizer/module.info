@@ -1,7 +1,0 @@
-name=Webalizer
-desc=Webalizer Logfile Analysis
-category=servers
-depends=cron
-longdesc=Generate reports from webserver, proxy server and FTP log files
-readonly=1
-os_support=!windows

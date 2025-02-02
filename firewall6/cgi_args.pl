@@ -1,1 +1,0 @@
-../firewall/cgi_args.pl

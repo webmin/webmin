@@ -1,6 +1,0 @@
-name=LVM
-desc=Logical Volume Management
-category=hardware
-os_support=*-linux
-depends=mount fdisk
-longdesc=Configure volume groups, physical volumes and logical volumes for Linux LVM.

@@ -1,3 +1,0 @@
-hosts_file=/etc/hosts
-ipnodes_file=/etc/inet/ipnodes
-def_netmask=255.255.255.0

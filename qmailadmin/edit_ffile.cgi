@@ -1,1 +1,0 @@
-../sendmail/edit_ffile.cgi

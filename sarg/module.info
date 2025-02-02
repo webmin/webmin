@@ -1,5 +1,0 @@
-desc=Squid Report Generator
-depends=cron
-category=servers
-longdesc=Configure and schedule SARG, a tool for generating reports from Squid access logs.
-os_support=!windows

@@ -1,5 +1,0 @@
-desc=Read User Mail
-category=servers
-longdesc=Read email in users' mailboxes.
-readonly=1
-os_support=!windows

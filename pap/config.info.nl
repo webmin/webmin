@@ -1,9 +1,0 @@
-line2=Systeem configuratie,11
-pppd=Pad naar pppd server,0
-pap_file=PPP accounten file,0
-encrypt_pass=Versleutelde wachtwoorden in geheime file,1,1-Ja,0-Nee
-ppp_options=PPP optie file,0
-mgetty=Pad naar mgetty programma,0
-login_config=Mgetty login configuratie file,0
-dialin_config=Mgetty inbel configuratie file,0
-serials=Seriële poorten patroon,0

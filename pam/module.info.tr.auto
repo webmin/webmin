@@ -1,3 +1,0 @@
-name_tr=PAM
-desc_tr=PAM Kimlik Doğrulaması
-longdesc_tr=Telnet, POP ve FTP gibi hizmetler tarafından kullanılan PAM kimlik doğrulama adımlarını yapılandırın.

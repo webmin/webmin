@@ -1,4 +1,0 @@
-line2=Configuration du système
-idmapd_conf=Fichier de configuration d'idmapd
-idmapd_path=Chemin du démon rpc.idmapd
-restart_command=Commande pour redémarrer le démon idmapd

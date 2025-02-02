@@ -1,8 +1,0 @@
-name=BIND
-category=servers
-os_support=*-linux solaris hpux freebsd osf1 irix unixware openserver macos openbsd aix netbsd windows 
-desc=BIND DNS Server
-depends=servers
-longdesc=Create and edit domains, DNS records, BIND options and views.
-readonly=1
-syslog=1

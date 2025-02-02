@@ -1,4 +1,0 @@
-dhcpd_conf=DHCP sunucusu yapılandırma dosyası,0
-dhcpd_path=DHCP sunucusu çalıştırma dosyası,0
-pid_file=DHCP sunucusu pid dosyası yolu,0
-lease_file=DHCP sunucusu istemci kayıtları dosyası,0

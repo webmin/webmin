@@ -1,8 +1,0 @@
-longdesc=Edit NFS file shares defined in /etc/exports.
-name=Export Manager
-category=net
-os_support=*-linux aix 
-desc=NFS Exports
-depends=mount 1.276
-version=1.276
-novserver=1

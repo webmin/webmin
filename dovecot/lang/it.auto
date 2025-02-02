@@ -1,6 +1,0 @@
-net_lmtp=LMTP
-net_ssl_required=Accetta solo SSL
-
-manual_editsel=Modifica il file di configurazione Dovecot
-manual_efile=Il file di configurazione selezionato non è valido
-manual_ok=modificare

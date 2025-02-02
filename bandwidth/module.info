@@ -1,5 +1,0 @@
-desc=Bandwidth Monitoring
-depends=net cron
-category=net
-longdesc=View reports on bandwidth usage by host, port, protocol and time on a Linux system.
-os_support=!windows

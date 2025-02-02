@@ -1,8 +1,0 @@
-slapd=1
-ldif=1
-schema=1
-acl=1
-browser=1
-create=1
-start=1
-apply=1

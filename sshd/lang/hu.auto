@@ -1,9 +1,0 @@
-users_root=Engedélyezi a bejelentkezést <em>root</em> használatával?
-users_yes=Igen, kulcsot és jelszót is
-users_nopwd=Igen, csak kulcs alapú
-users_fcmd=Igen, csak meghatározott parancsokhoz
-users_no=Nem, teljesen tiltsa le a root bejelentkezést
-users_pkeyauth=Engedélyezi a nyilvános kulcsú hitelesítést?
-users_chal=Használ kihívás-válasz hitelesítést?
-
-keys_change=változás

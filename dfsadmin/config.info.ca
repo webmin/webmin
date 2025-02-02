@@ -1,5 +1,0 @@
-line2=Configuració del sistema,11
-dfstab_file=Ubicació del fitxer d'exportacions NFS,0
-fstypes_file=Fitxer de tipus de sistemes de fitxers compartits,3,Cap
-share_all_command=Ordre per iniciar la compartició,0
-unshare_all_command=Ordre per aturar la compartició,0

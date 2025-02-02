@@ -1,5 +1,0 @@
-hosts_file=Fitxer que llista els hosts i les adreces,0
-ipnodes_file=Fitxer que llista els hosts i adreces IPv6,0
-def_netmask=Màscara de subxarxa per defecte,0 
-def_broadcast=Adreça de retransmissió per defecte,0
-def_mtu=MTU per defecte,0

@@ -1,3 +1,0 @@
-name_ru=Logrotate
-longdesc_ru=Настройте автоматический поворот Apache, Squid, Syslog и других файлов журналов.
-desc_ru=Вращение файла журнала

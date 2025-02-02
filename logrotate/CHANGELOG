@@ -1,9 +1,0 @@
----- Changes since 1.200 ----
-Updated the UI to disable non-editable fields.
-Added a button on the Edit Log File page for forcing the immediate rotation of just one log.
----- Changes since 1.240 ----
-Added a Module Config option for specifying a file to add new logrotate sections to.
----- Changes since 1.270 ----
-Added checkboxes and a button for deleting multiple logs at once.
----- Changes since 1.620 ----
-The module config option for the new file to add logrotate sections to can now be a directory, like /etc/logrotate.d

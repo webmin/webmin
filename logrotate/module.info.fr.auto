@@ -1,2 +1,0 @@
-name_fr=Logrotate
-longdesc_fr=Configurez la rotation automatique d'Apache, Squid, Syslog et d'autres fichiers journaux.

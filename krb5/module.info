@@ -1,5 +1,0 @@
-name=Kerberos5 Configuration
-category=net
-desc=Kerberos5
-longdesc=Configure the Kerberos 5 client on your system.
-os_support=*-linux

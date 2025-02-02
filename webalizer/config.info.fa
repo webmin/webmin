@@ -1,6 +1,0 @@
-line1=گزينه‌هاي پيکربندي,11
-auto=پرونده‌هاي ثبت به‌طور خودکار شامل,2,Apache-Apache,Squid-Squid 
-line2=پيکربندي سيستم,11
-webalizer=مسير فرمان webalizer,0
-webalizer_conf=مسير پرونده پيکربندي webalizer,0
-alt_conf=نمونه پرونده پيکربندي webalizer,3,هيچ

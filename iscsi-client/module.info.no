@@ -1,2 +1,0 @@
-desc_no=iSCSI klient 
-longdesc_no=Få tilgang til disk-enheter over nettverket ved hjelp av iSCSI protokollen

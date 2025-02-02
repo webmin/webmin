@@ -1,3 +1,0 @@
-# RBAC authorization		# Webmin ACL
-solaris.admin.logsvc.write	noconfig=1
-solaris.admin.logsvc.read	noedit=1,noconfig=1

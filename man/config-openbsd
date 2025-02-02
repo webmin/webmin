@@ -1,4 +1,0 @@
-search_cmd=man -k PAGE
-man_dir=/usr/share/man
-man_cmd_sect=man SECTION PAGE
-man_cmd=man PAGE

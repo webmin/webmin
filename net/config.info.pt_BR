@@ -1,5 +1,0 @@
-hosts_file=Arquivo com lista de máquinas e endereços,0
-ipnodes_file=Arquivo com lista de máquinas e endereços IPv6,0
-def_netmask=Máscara de rede padrão,0
-def_broadcast=Endereço de broadcast padrão,0
-def_mtu=MTU padrão,0

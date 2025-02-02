@@ -1,4 +1,0 @@
-desc=Cluster Copy Files
-category=cluster
-depends=cron
-longdesc=Schedule the transfer of files from this server to multiple servers in a Webmin cluster.

@@ -1,6 +1,0 @@
-name=Cluster Usermin
-desc=Cluster Usermin Servers
-category=cluster
-depends=usermin servers
-longdesc=Install and manage modules and themes across multiple Usermin servers.
-os_support=!windows

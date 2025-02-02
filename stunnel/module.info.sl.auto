@@ -1,3 +1,0 @@
-name_sl=STunnel
-longdesc_sl=Nastavite tunele SSL za šifriranje storitev, kot sta POP3 in IMAP, z uporabo omamljanja iz inetd.
-desc_sl=SSL predori

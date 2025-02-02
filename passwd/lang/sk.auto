@@ -1,6 +1,0 @@
-index_none=Nemáte prístup k žiadnym používateľom na zmenu hesla.
-
-passwd_repeat=zopakujte heslo
-
-acl_self=Vždy povoliť zmenu vlastného hesla?
-acl_notusers=Okrem používateľov

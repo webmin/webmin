@@ -1,5 +1,0 @@
-name=SGIExports
-desc=NFS Exports
-category=net
-os_support=irix
-longdesc=Edit file shares as defined in the Irix /etc/exports file

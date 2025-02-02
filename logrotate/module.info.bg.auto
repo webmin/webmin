@@ -1,3 +1,0 @@
-desc_bg=Въртене на регистрационния файл
-longdesc_bg=Настройте автоматично завъртане на Apache, Squid, Syslog и други лог файлове.
-name_bg=Logrotate

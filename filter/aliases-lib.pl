@@ -1,1 +1,0 @@
-../sendmail/aliases-lib.pl

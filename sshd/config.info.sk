@@ -1,9 +1,0 @@
-line2=Systémové nastavenia,11
-sshd_path=Plná cesta k sshd programu,0
-sshd_config=Plná cesta k sshd konfiguračnému súboru,0
-client_config=Plná cesta k ssh klientskému konfiguračnému súboru,0
-pid_file=Plná cesta k sshd PID súboru,3,Žiadna
-start_cmd=Príkaz pre spustenie sshd,3,Spustiť server
-restart_cmd=Príkaz na uskutočnenie zmien v sshd konfigurácii,3,Len poslať HUP signál
-stop_cmd=Príkaz na zastavenie sshd,3,Zhodiť proces
-keygen_path=Plná cesta k ssh-keygen programu,0

@@ -1,1 +1,0 @@
-desc_fr=Journal des actions de Webmin

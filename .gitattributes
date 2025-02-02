@@ -1,9 +1,0 @@
-
-# webmin .gitattribues file
-# help git / github to know the encoding of webmin (lang) files
-
-# force module.info to iso-8859-1 even it contains other encodings
-*/module.info        working-tree-encoding=iso8859-1 git-encoding=iso8859-1
-
-# set all .UTF-8 to UTF-8
-*.UTF-8      working-tree-encoding=UTF-8 git-encoding=UTF-8

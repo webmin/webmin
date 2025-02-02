@@ -1,5 +1,0 @@
-desc=Backup Configuration Files
-category=webmin
-longdesc=Perform manual or scheduled backups and restores of configuration files managed by Webmin modules.
-depends=cron mailboxes
-readonly=1

@@ -1,2 +1,0 @@
-restart_command=if (killall -HUP nfsd && killall -HUP rpc.mountd); then /bin/true; else (rmnfs -N ; mknfs -B) fi
-exports_file=/etc/exports

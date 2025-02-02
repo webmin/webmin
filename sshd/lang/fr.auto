@@ -1,8 +1,0 @@
-users_root=Autoriser la connexion par <em>root</em> ?
-users_yes=Oui, la clé et le mot de passe
-users_nopwd=Oui, basé uniquement sur des clés
-users_fcmd=Oui, uniquement pour des commandes spécifiques
-users_no=Non, désactivez complètement la connexion root
-users_pkeyauth=Autoriser l'authentification par clé publique ?
-
-keys_change=Changement

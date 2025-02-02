@@ -1,3 +1,0 @@
-restart_command=systemctl restart nfs-server.service
-exports_file=/etc/exports
-apply_cmd=exportfs -r

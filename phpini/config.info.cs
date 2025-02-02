@@ -1,1 +1,0 @@
-php_ini=Soubory globální PHP konfigurace<br>(V <i>název souboru</i>=<i>popis</i> formátu),9,70,5,\t

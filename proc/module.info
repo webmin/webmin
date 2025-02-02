@@ -1,9 +1,0 @@
-name=Process Manager
-category=system
-os_support=solaris *-linux hpux freebsd osf1 irix unixware openserver macos aix netbsd openbsd windows
-desc=Running Processes
-depends=mount
-longdesc=List, kill and renice running processes on your system.
-readonly=1
-syslog=1
-cpan=1

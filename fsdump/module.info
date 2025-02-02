@@ -1,7 +1,0 @@
-name=Dump
-desc=Filesystem Backup
-category=system
-depends=mount cron proc mailboxes
-os_support=redhat-linux mandrake-linux slackware-linux debian-linux suse-linux united-linux open-linux turbo-linux corel-linux cobalt-linux msc-linux generic-linux solaris freebsd macos gentoo-linux irix trustix-linux coherent-linux pardus-linux
-longdesc=Backup and restore filesystems using the dump and restore family of commands.
-readonly=1

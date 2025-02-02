@@ -1,9 +1,0 @@
-reboot_command=shutdown -r now
-shutdown_command=shutdown -p now
-local_script=/etc/rc.local
-local_down=/etc/rc.shutdown
-status_check=0
-order=0
-sort_mode=0
-rc_dir=/etc/rc.d /usr/local/etc/rc.d
-rc_conf=/etc/defaults/rc.conf /etc/rc.conf.d/* /etc/rc.conf

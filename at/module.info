@@ -1,7 +1,0 @@
-name=At
-desc=Scheduled Commands
-os_support=solaris slackware-linux redhat-linux mandrake-linux debian-linux suse-linux united-linux open-linux turbo-linux corel-linux msc-linux freebsd netbsd openbsd generic-linux openserver macos gentoo-linux irix sol-linux coherent-linux openmamba-linux syno-linux
-category=system
-longdesc=Schedule the execution of one-off commands or scripts.
-depends=proc
-readonly=1

@@ -1,2 +1,0 @@
-desc_ja=iSCSIサーバー
-longdesc_ja=netbsd-iscsiパッケージでiSCSIプロトコルを使用して、ネットワーク全体でディスクデバイスを共有します。

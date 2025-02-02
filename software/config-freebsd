@@ -1,3 +1,0 @@
-package_system=freebsd
-update_system=ports
-apt_mode=0

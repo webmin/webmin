@@ -1,6 +1,0 @@
-line1=Options configurables,11
-resolve=Résoudre les adresses de serveurs trouvées,1,1-Oui,0-Non
-scan_time=Temps à attendre pendant la recherche des serveurs,0,5
-display_mode=Afficher les serveurs sous forme,1,1-De table,0-D'icônes
-sort_mode=Trier les serveurs par,1,4-Adresse IP,1-Nom d'hôte,2-Description,3-OS,5-Groupe,0-Ordre de création
-show_status=Afficher l'état des serveurs,1,1-Oui,0-Non

@@ -1,7 +1,0 @@
-virtualmin_spam=Full path to Virtualmin spam user lookup program,3,Not installed,40
-virtualmin_config=Full path to Virtualmin config directory,3,Not installed
-warn_procmail=Show warning if Procmail is not installed?,1,1-Yes,0-No
-forward_procmail=Create .forward file to run procmail?,1,1-Yes,0-No
-alias_files=Full path to global alias files,9,40,3,\t
-reply_min=Minimum time between autoreply messages,3,No limit,5,,minutes
-reply_force=Force use of minimum autoreply interval?,1,1-Yes,0-No

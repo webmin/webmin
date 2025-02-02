@@ -1,2 +1,0 @@
-desc_ca=Monitor Heartbeat
-longdesc_ca=Configura el paquet Heartbeat per al control automàtic de fallades de servidors en un clúster.

@@ -1,4 +1,0 @@
-at_style=Type de système At,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
-at_dir=Répertoire des tâches At,0
-allow_file=Fichiers des utilisateurs At autorisés,3,Aucun
-deny_file=Fichiers des utilisateurs At interdits,3,Aucun

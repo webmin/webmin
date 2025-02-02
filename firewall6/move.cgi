@@ -1,1 +1,0 @@
-../firewall/move.cgi

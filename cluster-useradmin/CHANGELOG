@@ -1,5 +1,0 @@
----- Changes since 1.190 ----
-User and group refreshes can now be limited to a single host or members of a group.
-Groups can now be selected when synchronizing users and groups.
----- Changes since 1.380 ----
-Added a Module Config option to show managed systems in a table.

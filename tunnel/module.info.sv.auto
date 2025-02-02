@@ -1,3 +1,0 @@
-desc_sv=HTTP-tunnel
-longdesc_sv=Anslut till en annan HTTP-server via en tunnel via Webmin-servern.
-name_sv=Tunnel

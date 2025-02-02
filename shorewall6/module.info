@@ -1,5 +1,0 @@
-desc=Shorewall6 Firewall
-category=net
-os_support=*-linux
-depends=syslog
-longdesc=Lets you edit the most useful tables of the Shorewall6 Firewall

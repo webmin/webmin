@@ -1,8 +1,0 @@
-squid_conf=Squid yapılandırma dosyasının tam yolu,0
-squid_start=Squid'i başlatma komutu,3,Otomatik
-squid_stop=Squid'i durdurma komutu,3,Otomatik
-squid_path=Squid çalıştırılabiliri,0
-pid_file=PID dosyasının tam yeri,0
-cache_dir=Squid cache dizinin tam yeri,0
-cachemgr_path=Squid cachemgr.cgi çalıştırılabilir,0
-log_dir=Squid kayıt dizininin tam yeri,0

@@ -1,6 +1,0 @@
-category=servers
-desc=OpenSLP Server
-name=OpenSLP
-longdesc=Configure the service location protocol server.
-os_support=!windows
-library=slp-lib.pl

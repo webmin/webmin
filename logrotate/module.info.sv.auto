@@ -1,3 +1,0 @@
-desc_sv=Loggfilrotation
-longdesc_sv=Ställ in den automatiska rotationen av Apache, Squid, Syslog och andra loggfiler.
-name_sv=logrotate

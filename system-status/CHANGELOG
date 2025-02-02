@@ -1,6 +1,0 @@
----- Changes since 1.490 ----
-First version of this module, for collecting system information using a background Cron job.
----- Changes since 1.730 ----
-Added module access control options to limit visible information on a per-user basis.
----- Changes since 1.840 ----
-Filesystems that have less than 1% free disk space are now shown on the System Information page.

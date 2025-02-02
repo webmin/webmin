@@ -1,4 +1,0 @@
-line2=System konfigurasjon,11
-exports_file=Fil med eksporterte filsystemer,0
-apply_cmd=Kommando for å ta i bruk konfigurasjon,3,Ingen
-restart_command=Kommando for å omstarte eksport-tjener,0

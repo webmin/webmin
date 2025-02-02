@@ -1,9 +1,0 @@
-left_search=Szukaj
-
-right_virtver=Ta kompozycja wymaga teraz Virtualmin w wersji $1 lub wyższej!
-right_vm2ver=Ta kompozycja wymaga teraz wersji Cloudmin $1 lub wyższej!
-
-index_virtualmintitle=Virtualmin $1
-index_cloudmintitle=Cloudmin $1
-index_webmintitle=Webmin $1
-index_usermintitle=Usermin $1

@@ -1,1 +1,0 @@
-../ldap-client/list_switches.cgi

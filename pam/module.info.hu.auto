@@ -1,2 +1,0 @@
-name_hu=PAM
-longdesc_hu=Konfigurálja a PAM hitelesítési lépéseket, amelyeket a szolgáltatások, például a telnet, a POP és az FTP használnak.

@@ -1,1 +1,0 @@
-../firewall/cluster_delete.cgi

@@ -1,3 +1,0 @@
-package_system=rpm
-update_system=yum
-apt_mode=0

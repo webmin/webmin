@@ -1,4 +1,0 @@
-config_file=/etc/tgt/tgtd.conf
-tgtd=tgtd
-tgtadm=tgtadm
-init_name=tgtd

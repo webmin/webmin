@@ -1,5 +1,0 @@
-longdesc=Edit services under control of Service Manangement Facility SMF(1).
-name=SMF
-category=system
-os_support=solaris/10-*
-desc=Service Management Facility Configuration

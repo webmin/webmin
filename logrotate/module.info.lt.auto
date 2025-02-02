@@ -1,3 +1,0 @@
-desc_lt=Žurnalo failo pasukimas
-name_lt=Logrotatas
-longdesc_lt=Nustatykite automatinį „Apache“, „Squid“, „Syslog“ ir kitų žurnalo failų pasukimą.

@@ -1,8 +1,0 @@
-mode=3
-allow=0
-command=1
-create=1
-delete=1
-move=1
-kill=1
-hourly=0

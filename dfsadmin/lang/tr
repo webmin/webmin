@@ -1,5 +1,0 @@
-log_modify=NFS paylaşımı $1 değiştirildi
-log_rename=NFS paylaşımı $1, $2'ye değiştirildi
-log_create=NFS paylaşımı $1 oluşturuldu
-log_delete=NFS paylaşımı $1 silindi
-log_apply=Değişiklikler uygulandı

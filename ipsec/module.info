@@ -1,6 +1,0 @@
-name=IPsec
-desc=IPsec VPN Configuration
-depends=net syslog proc
-os_support=*-linux
-category=net
-longdesc=Set up a client or server for an IPsec VPN using FreeSWAN.

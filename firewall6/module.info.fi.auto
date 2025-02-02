@@ -1,3 +1,0 @@
-name_fi=Firewall6
-desc_fi=Linux IPv6 -palomuuri
-longdesc_fi=Määritä Linux-palomuuri ip6tableilla. Mahdollistaa kaikkien taulukoiden, ketjujen, sääntöjen ja asetusten muokkaamisen.

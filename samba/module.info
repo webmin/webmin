@@ -1,5 +1,0 @@
-name=Samba Manager
-category=servers
-os_support=solaris *-linux aix hpux freebsd osf1 irix openserver unixware openbsd macos netbsd 
-desc=Samba Windows File Sharing
-longdesc=Create and edit samba file and print shares.

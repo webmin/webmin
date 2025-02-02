@@ -1,5 +1,0 @@
-hosts_file=Fichier répertoriant les hôtes et les adresses,0
-ipnodes_file=Fichier répertoriant les hôtes et adresses IPv6,0
-def_netmask=Masque de réseau par défaut,0
-def_broadcast=Adresse de diffusion par défaut,0
-def_mtu=MTU par défaut,0

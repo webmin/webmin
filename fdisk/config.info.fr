@@ -1,2 +1,0 @@
-mode=Commande de gestion de partition,1,fdisk-Fdisk,parted-Séparée,-Choisissez automatiquement
-format=Format de table de partition par défaut,1,msdos-MSDOS,gpt-GPT

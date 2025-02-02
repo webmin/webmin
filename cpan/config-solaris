@@ -1,7 +1,0 @@
-packages=http://www.cpan.org/modules/02packages.details.txt.gz
-cpan=http://www.cpan.org/authors/id
-refresh_days=30
-save_partial=0
-def_args='OPTIMIZE= ' 'CCFLAGS= ' 'CCCDLFLAGS= '
-incpackages=1
-incyum=1

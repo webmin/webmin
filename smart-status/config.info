@@ -1,5 +1,0 @@
-mode=Display mode,1,1-One drive,0-All drives
-attribs=Show all attributes,1,1-Yes,0-No
-smartctl=Full path to smartctl command,0
-ata=Force ATA query mode?,1,1-Yes,0-No
-extra=Extra command-line parameters to smartctl,3,None

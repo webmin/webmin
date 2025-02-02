@@ -1,3 +1,0 @@
-name_ja=IPsec
-desc_ja=IPsec VPN設定
-longdesc_ja=FreeSWANを使用して、IPsec VPN用のクライアントまたはサーバーをセットアップします。

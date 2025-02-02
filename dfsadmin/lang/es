@@ -1,5 +1,0 @@
-log_modify=Modificada compartición NFS $1
-log_rename=Cambiada compartición NFS $1 por $2
-log_create=Creada compartición NFS $1
-log_delete=Borrada compartición NFS $1
-log_apply=Aplicados los cambios

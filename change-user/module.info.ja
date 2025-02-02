@@ -1,3 +1,0 @@
-name_ja=ChangeUser
-desc_ja=言語とテーマの変更
-longdesc_ja=ログイン中の Webmin ユーザが利用する言語、テーマ、Webmin ログイン用のパスワードを変更します。

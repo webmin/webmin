@@ -1,6 +1,0 @@
----- Changes since 1.140 ----
-Moved code for connecting a PPTP tunnel to a separate function, so it can be called by other modules.
----- Changes since 1.190 ----
-A PPTP tunnel can now be configured to activate at boot time.
----- Changes since 1.390 ----
-When connecting a PPTP tunnel, an optional override password can be entered. This allows you to avoid storing the PPTP password in a configuration file. Thanks to Nicolas Ledoux for this patch.

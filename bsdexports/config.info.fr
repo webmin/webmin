@@ -1,2 +1,0 @@
-exports_file=Fichier de partages,0
-restart_command=Commande pour redémarrer mountd et nfsd,0

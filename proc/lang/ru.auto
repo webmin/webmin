@@ -1,5 +1,0 @@
-index_memreal=Реальная память:
-index_memswap=Место подкачки:
-index_memburst=Взрывная память:
-index_memtf=$1 всего / $2 бесплатно
-index_memtfc=Всего $1 / $2 свободно / $3 в кэше

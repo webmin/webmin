@@ -1,5 +1,0 @@
-config_dir=/etc/shorewall
-shorewall=shorewall
-actions=/etc/shorewall/actions	/usr/share/shorewall/actions.std
-macros=/usr/share/shorewall
-display_zone_descriptions=1

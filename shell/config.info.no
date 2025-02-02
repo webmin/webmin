@@ -1,1 +1,0 @@
-clear_envs=Send Webmin miljøvariabler til skall-kommandoer?,1,0-Ja,1-Nei

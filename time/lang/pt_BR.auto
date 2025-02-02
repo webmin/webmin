@@ -1,5 +1,0 @@
-index_serviceonboot=Sim, e comece na inicialização
-index_boot=Sincronizar quando o Webmin é iniciado?
-index_tabsync2=Execute o serviço <tt>$1</tt> do sistema para sincronização
-
-error_serviceunknown=Serviço desconhecido : $1

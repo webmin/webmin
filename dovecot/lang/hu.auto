@@ -1,2 +1,0 @@
-net_lmtp=LMTP
-net_ssl_required=Csak az SSL-t fogadja el

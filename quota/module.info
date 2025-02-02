@@ -1,7 +1,0 @@
-name=Quota
-category=system
-os_support=solaris *-linux hpux freebsd unixware openbsd irix netbsd macos 
-desc=Disk Quotas
-depends=mount
-longdesc=Setup and edit user or group disk quotas for local filesystems.
-readonly=1

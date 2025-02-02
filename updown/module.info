@@ -1,4 +1,0 @@
-name=UpDown
-desc=Upload and Download
-longdesc=Upload multiple files to the server, and download multiple URLs either immediately or in the background at a scheduled time.
-readonly=1

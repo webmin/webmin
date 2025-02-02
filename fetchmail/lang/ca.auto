@@ -1,5 +1,0 @@
-index_fadd=Afegeix el servidor Fetchmail per a l'usuari
-
-poll_folder=Carpeta IMAP per comprovar
-poll_inbox=Per defecte (BOX D'ENTRADA)
-poll_efolder=Falta el nom de la carpeta

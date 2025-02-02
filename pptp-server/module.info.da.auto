@@ -1,3 +1,0 @@
-desc_da=PPTP VPN-server
-name_da=pptpd
-longdesc_da=Konfigurer dit system som en PPTP-server, så Linux- eller Windows VPN-klienter kan oprette forbindelse.

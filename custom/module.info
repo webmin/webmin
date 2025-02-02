@@ -1,5 +1,0 @@
-name=Custom
-desc=Custom Commands
-depends=proc
-longdesc=Create buttons to execute commonly used commands or edit files on your system.
-readonly=1

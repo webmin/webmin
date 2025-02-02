@@ -1,3 +1,0 @@
-desc_ja=Procmailメールフィルター
-longdesc_ja=グローバルな/etc/procmailrc ファイル内のレシピを編集します。これは、すべての受信メールに適用されます。
-name_ja=Procmail

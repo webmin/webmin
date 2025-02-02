@@ -1,4 +1,0 @@
----- Changes since 1.750 ----
-First version of this module, for configuring allowed ports and services in FirewallD.
----- Changes since 1.840 ----
-Added support for creating and editing port forwards.

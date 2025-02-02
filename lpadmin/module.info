@@ -1,6 +1,0 @@
-name=lpadmin
-category=hardware
-os_support=solaris coherent-linux redhat-linux mandrake-linux slackware-linux suse-linux united-linux debian-linux freebsd hpux unixware macos open-linux turbo-linux openbsd corel-linux irix netbsd msc-linux generic-linux gentoo-linux trustix-linux openmamba-linux aix pardus-linux
-desc=Printer Administration
-longdesc=Create and edit local and remote printers. Supports Windows print servers and Ghostscript print drivers.
-readonly=1

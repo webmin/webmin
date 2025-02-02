@@ -1,4 +1,0 @@
-desc=Minecraft Server
-depends=init proc
-category=servers
-version=1.9

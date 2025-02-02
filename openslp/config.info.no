@@ -1,8 +1,0 @@
-line2=System konfigurasjon,11
-slpd_conf=Stil til OpenSLP konfigurasjonsfil,0
-slpd_reg=Stil til OpenSLP registreringsfil,0
-slpd_log=Stil til OpenSLP loggfil,0
-slpd_pid=Stil til OpenSLP PID fil,0
-slpd=Stil til OpenSLP program,0
-start_cmd=Kommando for å starte OpenSLP,3,Kjør programmet direkte
-stop_cmd=Kommando for å stoppe OpenSLP,3,Stopp prosessen

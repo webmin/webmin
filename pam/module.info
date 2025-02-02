@@ -1,7 +1,0 @@
-category=system
-os_support=*-linux slackware-linux{-d "/etc/pam.d"} macos 
-desc=PAM Authentication
-name=PAM
-longdesc=Configure the PAM authentication steps used by services such as telnet, POP and FTP.
-readonly=1
-cpan=1

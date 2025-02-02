@@ -1,2 +1,0 @@
-name_no=logrotate
-longdesc_no=Sett opp automatisk rotasjon av Apache, blekksprut, Syslog og andre loggfiler.

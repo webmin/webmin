@@ -1,8 +1,0 @@
-line1=基本設定,11
-standard_url=標準モジュールリストに使用する URL,3,www.webmin.com
-third_url=サードパーティ製モジュールリストに使用する URL,3,www.webmin.com
-cron_mode=アップデート時刻の表示方法,1,0-シンプル,1-Cron 選択方式
-warn_days=ユーザのパスワード期限切れの通知(日前),0,5
-line2=Let's Encrypt の設定,11
-letsencrypt_cmd=Let's Encrypt クライアントのパス,3,自動設定
-letsencrypt_dns_wait=Let's Encrypt DNS の更新待機時間(秒),0,5

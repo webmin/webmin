@@ -1,1 +1,0 @@
-../mysql/view-lib.pl

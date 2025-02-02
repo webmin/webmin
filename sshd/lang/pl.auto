@@ -1,8 +1,0 @@
-users_root=Czy zezwolić na logowanie przez użytkownika <em>root</em>?
-users_yes=Tak, zarówno klucz, jak i hasło
-users_nopwd=Tak, tylko na podstawie klucza
-users_fcmd=Tak, tylko dla określonych poleceń
-users_no=Nie, całkowicie wyłącz logowanie roota
-users_pkeyauth=Zezwolić na uwierzytelnianie za pomocą klucza publicznego?
-
-keys_change=Zmiana

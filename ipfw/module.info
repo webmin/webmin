@@ -1,5 +1,0 @@
-desc=BSD Firewall
-os_support=freebsd macos
-depends=net init
-category=net
-longdesc=Configure a BSD firewall using IPFW, by creating and editing rules.
