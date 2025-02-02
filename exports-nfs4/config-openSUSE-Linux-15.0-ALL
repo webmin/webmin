@@ -1,4 +1,0 @@
-restart_command=systemctl restart nfsserver
-exports_file=/etc/exports
-nfs_server=rpc.nfsd
-apply_cmd=exportfs -r

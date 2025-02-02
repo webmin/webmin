@@ -1,6 +1,0 @@
-name=Vgetty
-desc=Voicemail Server
-category=hardware
-depends=inittab
-os_support=*-linux
-longdesc=Set up your system as an answering machine using vgetty

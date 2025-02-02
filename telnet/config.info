@@ -1,9 +1,0 @@
-host=Hostname to connect to,3,Automatic
-port=Port to connect to,3,Default
-proxy=Use proxy to connect to other hosts?,1,1-Yes,0-No
-mode=Connection type,1,0-Telnet,1-Secure Shell (recommended)
-sizemode=Applet size,1,0-80x24 characters (in default font),1-Maximum,2-Custom size
-size=Custom width x height,0
-fontsize=Font size in points,3,Default
-detach=Separate window mode,1,1-Yes,0-No
-no_test=Test telnet or SSH server?,1,0-Yes,1-No

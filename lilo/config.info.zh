@@ -1,2 +1,0 @@
-lilo_conf=LILO 配置文件的全路径,0
-lilo_cmd=使 LILO 配置生效的命令,0

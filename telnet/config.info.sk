@@ -1,8 +1,0 @@
-host=Hostiteľ pre spojenie,3,Automaticky
-port=Port pre spojeni,3,Štandardný
-mode=Typ spojenia,1,0-Telnet,1-Bezpečný Shell (doporučené)
-sizemode=Veľkosť appletu,1,0-80x24 znakov (pri štandardnom písme),1-Maximálna,2-Vlastná veľkosť
-size=Vlastná šírka x výška,0
-fontsize=Veľkosť písma v bodoch,3,Štandardná
-detach=Mód samostatných okien,1,1-Áno,0-Nie
-no_test=Testovať či je telnet alebo SSH server?,1,0-Áno,1-Nie

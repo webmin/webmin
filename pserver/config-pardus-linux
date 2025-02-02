@@ -1,3 +1,0 @@
-cvs=/usr/bin/cvs
-cvsroot=/usr/share/cvs
-view_header=header.html

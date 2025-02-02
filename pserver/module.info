@@ -1,4 +1,0 @@
-name=Pserver
-desc=CVS Server
-category=servers
-os_support=!windows

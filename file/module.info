@@ -1,4 +1,0 @@
-name=FileManager
-desc=Java File Manager
-longdesc=View, edit and change permissions on files and directories on your system with a Windows-like file manager.
-readonly=1
