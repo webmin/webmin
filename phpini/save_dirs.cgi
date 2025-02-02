@@ -20,7 +20,7 @@ else {
 	}
 
 $inidir = &get_php_ini_dir($in{'file'});
-if (!$inidir && &get_config_fmt() eq 'ini') {
+if (!$inidir && &get_config_fmt($in{'file'}) eq 'ini') {
 	$in{'ext_def'} || $in{'ext'} =~ /\S/ || &error($text{'dirs_eext'});
 	&save_directive($conf, "extension_dir",
 			$in{'ext_def'} ? undef : $in{'ext'});
