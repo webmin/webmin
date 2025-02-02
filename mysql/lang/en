@@ -74,6 +74,7 @@ dbase_ecannot=You are not allowed to edit this database
 dbase_name=Name
 dbase_rows=Rows
 dbase_cols=Fields
+dbase_size=Size
 dbase_delete=Drop Selected Tables
 dbase_delete2=Drop Selected Objects
 dbase_showing=Showing tables matching $1 ..

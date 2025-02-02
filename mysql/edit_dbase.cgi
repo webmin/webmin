@@ -105,6 +105,7 @@ elsif (@titles || @indexes) {
 		  );
 	if ($displayconfig{'style'} == 1) {
 		# Show table names, fields and row counts
+		my $tables_size = &get_tables_size($in{'db'});
 		foreach $t (@titles) {
 			local $c = &execute_sql($in{'db'},
 					"show create table ".quotestr($t));
@@ -116,6 +117,8 @@ elsif (@titles || @indexes) {
 			push(@rows, $c->{'data'}->[0]->[0]);
 			local @str = &table_structure($in{'db'}, $t);
 			push(@fields, scalar(@str));
+			my $table_size = &get_table_size($tables_size, $t);
+			push(@sizes, &nice_size($table_size));
 			}
 		my $table_index_stats = &get_table_index_stats($in{'db'});
 		foreach $t (@indexes) {
@@ -133,9 +136,10 @@ elsif (@titles || @indexes) {
 		@dtitles = map { &html_escape($_) }
 			       ( @titles, @indexes, @views );
 		&split_table([ "", $text{'dbase_name'}, $text{'dbase_type'},
-			           $text{'dbase_rows'}, $text{'dbase_cols'} ],
+			           $text{'dbase_rows'}, $text{'dbase_cols'},
+				   $text{'dbase_size'} ],
 			     \@checks, \@links, \@dtitles, \@types,
-			     \@rows, \@fields) if (@titles);
+			     \@rows, \@fields, \@sizes) if (@titles);
 		}
 	elsif ($displayconfig{'style'} == 2) {
 		# Just show table names
@@ -224,3 +228,11 @@ if (!$access{'edonly'}) {
 	}
 }
 
+sub get_table_size
+{
+my ($tables_data, $table_name) = @_;
+foreach my $row (@{$tables_data->{'data'}}) {
+	return $row->[3] if $row->[1] eq $table_name;
+	}
+return undef;
+}
