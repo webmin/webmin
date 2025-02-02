@@ -907,7 +907,7 @@ elsif ($init_mode eq "rc") {
 	else {
 		# Need to create a my rc script, and enable
 		my @dirs = split(/\s+/, $config{'rc_dir'});
-		my $file = $dirs[$#dirs]."/".$action.".sh";
+		my $file = $dirs[$#dirs]."/".$action;
 		my $name = $action;
 		$name =~ s/-/_/g;
 		&open_lock_tempfile(SCRIPT, ">$file");
