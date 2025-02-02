@@ -6,7 +6,7 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 require './backup-config-lib.pl';
-our (%in, %text);
+our (%in, %text, %gconfig);
 &ReadParse();
 
 my $backup;
