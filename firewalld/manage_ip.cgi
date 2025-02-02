@@ -7,8 +7,13 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 require './firewalld-lib.pl';
 our (%in, %text);
-&error_setup($text{'block_err'});
 &ReadParse();
+
+# Setup error messages
+my $allow = $in{'allow'} ? 1 : 0;
+
+# Get the type
+&error_setup($allow ? $text{'allow_err'} : $text{'block_err'});
 
 # Get the zone
 my @zones = &list_firewalld_zones();
@@ -27,8 +32,13 @@ $ip =~ s/\Q$mask\E// if ($mask);
 # Block the IP
 my $perm = $in{'permanent'} ? 'perm' : '';
 my ($out, $rs) = &rich_rule('add',
-	{ 'rule' => &construct_rich_rule('source address' => "$ip$mask"),
-          'zone' => $zone->{'name'}, 'permanent' => $perm });
+	{ 'rule' =>
+		&construct_rich_rule(
+			'source address' => "$ip$mask",
+			'action' => $allow ? 'accept' : undef,
+			'priority' => $allow ? -32767 : -32766,
+		),
+	  'zone' => $zone->{'name'}, 'permanent' => $perm });
 &error($out) if ($rs);
 &apply_firewalld() if ($perm);
 

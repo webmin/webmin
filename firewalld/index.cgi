@@ -148,16 +148,21 @@ if ($ok) {
 		print &ui_form_end();
 		}
 
-	# Block given IP
+	# Allow/block given IP
 	my $blockip_placeholder =
 		&text('index_blockip_placeholder', '1.2.3.4', '2001:db8::1/64');
-	print "<br>".&ui_form_start("block_ip.cgi");
-	print &ui_hidden("zone", $zone->{'name'});
-	print &ui_submit($text{'index_blockip_go'}, "block"),
-	      &ui_textbox("ip", undef, 21, undef, undef,
-	      	"placeholder='$blockip_placeholder'")."&nbsp;".
-	      		&ui_checkbox("permanent", 1,
-				$text{'index_blockip_permanent'}, 1);
+	foreach my $action (['allow', $text{'index_allowip_go'},
+			     $text{'index_allowip_permanent'}],
+			    ['block', $text{'index_blockip_go'},
+			     $text{'index_blockip_permanent'}]) {
+		print "<br>".&ui_form_start("manage_ip.cgi");
+		print &ui_hidden("zone", $zone->{'name'});
+		print &ui_submit($action->[1], $action->[0]),
+			&ui_textbox("ip", undef, 21, undef, undef,
+				"placeholder='$blockip_placeholder'")."&nbsp;".
+			&ui_checkbox("permanent", 1, $action->[2], 1);
+		print &ui_form_end();
+		}
 	print &ui_form_end();
 	print &ui_hr();
 	
