@@ -1,5 +1,6 @@
 index_active=アクティブですか？
 index_global=デフォルト設定を編集します。
+index_fadd=ユーザーのFetchmailサーバーを追加する
 index_start=Fetchmail Daemonを起動します
 index_stop=Fetchmailデーモンを停止する
 index_startmsg=このサーバーでfetchmailデーモンを起動するにはこのボタンをクリックし、 $1秒ごとにメールをチェックします。デーモンはユーザー $2として実行され、上記の構成を使用します。

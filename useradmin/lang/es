@@ -53,7 +53,6 @@ extra=Opciones extra
 pass=Contraseña
 none1=Preguntar en primer login
 none2=No se pide contraseña
-nologin=No está permitido el login
 encrypted=Clave de acceso pre-encriptada
 nochange=Dejar sin cambio
 clear=Contraseña normal

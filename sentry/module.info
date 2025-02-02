@@ -1,6 +1,0 @@
-name=Sentry
-desc=Security Sentries
-category=system
-depends=cron
-readonly=1
-os_support=!windows

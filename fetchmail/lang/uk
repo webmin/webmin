@@ -7,7 +7,6 @@ index_run=Перевірка всіх серверів
 index_global=Редагування настроювань за замовчуванням
 index_user=Користувачі Unix
 index_conf=Настроювання Fetchmail
-index_ok=Додати сервер Fetchmail для користувача:
 index_file=Настроювання Fetchmail у $1
 index_return=список серверів
 index_start=Запуск демона Fetchmail

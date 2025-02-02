@@ -73,7 +73,6 @@ extra=Zusätzliche Optionen
 pass=Passwort
 none1=Beim ersten Login fragen
 none2=Kein Passwort erforderlich
-nologin=Keine Anmeldung erlaubt
 encrypted=Vorverschlüsseltes Passwort
 nochange=Unverändert lassen
 clear=Normales Passwort

@@ -1,3 +1,0 @@
-desc_fi=GRUB Käynnistinkuormaaja
-name_fi=GRUB
-longdesc_fi=Määritä Linux GRUB -käynnistyslataus, jotta voidaan valita erilaisia käyttöjärjestelmiä ja ytimiä käynnistyksen aikana.

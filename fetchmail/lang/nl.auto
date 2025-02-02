@@ -1,3 +1,5 @@
+index_fadd=Fetchmail-server voor gebruiker toevoegen
+
 poll_folder=IMAP-map om te controleren
 poll_inbox=Standaard (INBOX)
 poll_efolder=Mapnaam ontbreekt

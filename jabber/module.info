@@ -1,6 +1,0 @@
-name=Jabber
-desc=Jabber IM Server
-category=servers
-longdesc=Configure the multi-protocol Jabber messaging server.
-cpan=1
-os_support=!windows

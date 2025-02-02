@@ -26,6 +26,7 @@ search_found=Found $1 matching users ..
 search_gfound=Found $1 matching groups ..
 
 gidnum=شناسه گروه
+nologin=غیرفعال کردن احراز هویت رمز عبور
 sshkey=کلید عمومی SSH
 uedit_manual=فهرست راهنما
 uedit_allg=همه گروه ها

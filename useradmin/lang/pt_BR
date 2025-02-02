@@ -64,7 +64,6 @@ extra=Opções extras
 pass=Senha
 none1=Perguntar no primeiro login
 none2=Não necessita de senha
-nologin=Não é permitido o login
 encrypted=senha encriptada
 nochange=Deixe intacta
 clear=senha em claro

@@ -55,7 +55,6 @@ extra=Ekstra seçenekler
 pass=Şifre
 none1=İlk girişte sor
 none2=Parola gerekli değil
-nologin=Giriş izni yok
 encrypted=Şifrelenmiş parola
 nochange=Değiştirmeden bırak
 clear=Düz metin parolası gir

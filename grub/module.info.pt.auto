@@ -1,3 +1,0 @@
-desc_pt=Carregador de Inicialização GRUB
-name_pt=GRUB
-longdesc_pt=Configure o carregador de inicialização do Linux GRUB para permitir a seleção de vários sistemas operacionais e kernels no momento da inicialização.

@@ -1,3 +1,0 @@
-Permissions: sandbox
-Application-Name: Webmin File Manager
-Caller-Allowable-Codebase: *

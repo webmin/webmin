@@ -73,7 +73,6 @@ extra=Ekstra innstillinger
 pass=Passord
 none1=Spør ved første innlogging
 none2=Ingen passord påkrevd
-nologin=Ingen innlogging tillatt
 encrypted=Forhånds-krypterte passord
 nochange=La stå uendret
 clear=Normalt passord

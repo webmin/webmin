@@ -73,7 +73,6 @@ extra=Opcions extres
 pass=Contrasenya
 none1=Demana-la en connectar per primer cop
 none2=No cal contrasenya
-nologin=Connexió no permesa
 encrypted=Contrasenya prexifrada
 nochange=Deixa-ho tal com està
 clear=Contrasenya normal

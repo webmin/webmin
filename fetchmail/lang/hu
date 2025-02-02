@@ -7,7 +7,6 @@ index_run=Az összes kiszolgáló ellenőrzése
 index_global=Az alapértelmezett beállítások módosítása
 index_user=Unix felhasználó
 index_conf=A Fetchmail konfigurációja
-index_ok=Fetchmail kiszolgáló hozzáadása a következő felhasználónak:
 index_file=Fetchmail konfiguráció a $1-ben
 index_return=Kiszolgálólista
 index_start=A Fetchmail Daemon elindítása

@@ -1,6 +1,0 @@
-name=Burner
-desc=CD Burner
-category=hardware
-depends=proc fdisk
-longdesc=Burn data CDs from ISO images or selected directories.
-os_support=!windows

@@ -1349,6 +1349,26 @@ my $rs = &execute_sql_safe($db, $sql_query, $db, @tables);
 return $rs;
 }
 
+# get_tables_size(db)
+# Retrieves the size of all tables in the given database
+sub get_tables_size
+{
+my ($db) = @_;
+my @tables = list_tables($db);
+my $sql_query = "
+    SELECT
+        TABLE_SCHEMA,
+        TABLE_NAME,
+        ENGINE,
+        DATA_LENGTH + INDEX_LENGTH AS total_size_bytes
+    FROM information_schema.TABLES
+    WHERE TABLE_SCHEMA = ?
+      AND TABLE_NAME IN (" . join(", ", ("?") x @tables) . ")
+";
+my $rs = &execute_sql_safe($db, $sql_query, $db, @tables);
+return $rs;
+}
+
 # list_indexes(db)
 # Returns the names of all indexes in some database
 sub list_indexes

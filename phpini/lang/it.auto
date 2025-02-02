@@ -40,9 +40,54 @@ misc_path=Informazioni sul percorso di correzione CGI?
 misc_timezone=Fuso orario PHP
 misc_charset=Set di caratteri predefinito
 
+disable_title=Funzionalità disabilitate
+disable_header=Funzioni e caratteristiche PHP disabilitate
+disable_funcs=Funzioni disabilitate
+disable_exec=exec (Esegui comando)
+disable_passthru=passthru (Esegui comando e visualizza output)
+disable_shell_exec=shell_exec (Esegui comando tramite shell)
+disable_system=sistema (Esegui comando e visualizza output)
+disable_proc_open=proc_open (Esegue il comando e cattura input e output)
+disable_popen=popen (Apre il pipe al comando eseguito)
+disable_curl_exec=curl_exec (Esegue una sessione di download URL)
+disable_curl_multi_exec=curl_multi_exec (Esegue più sessioni di download URL)
+disable_parse_ini_file=parse_ini_file (Leggi il file INI PHP)
+disable_show_source=show_source (file di output con evidenziazione della sintassi PHP)
+disable_mail=posta (Invia email)
+disable_leftover=Altre funzioni:
+disable_err=Impossibile salvare le funzionalità disabilitate
+disable_classes=Classi integrate disabilitate
+
+mods_title=Moduli PHP
+mods_edir=Impossibile trovare la directory dei moduli PHP!
+mods_ecannot=Non ti è consentito modificare i moduli PHP abilitati
+mods_desc=Questa pagina può essere utilizzata per abilitare e disabilitare globalmente i moduli PHP versione $1 per tutti gli utenti di questo sistema.
+mods_enabled=Abilitato?
+mods_name=Nome del modulo
+mods_file=File di configurazione
+mods_pkg=Pacchetto
+mods_idesc=I moduli PHP non disponibili su questo sistema possono essere installati dai repository dei pacchetti software configurati.
+mods_newpkg=Aggiungi modulo PHP:
+mods_install=Installa ora
+mods_err=Impossibile salvare i moduli PHP
+mods_egetver=Impossibile determinare la versione PHP per il file di configurazione $1
+mods_egetbin=Impossibile trovare il binario PHP per il file di configurazione $1
+mods_return=Moduli PHP
+
+imod_title=Installa il modulo PHP
+imod_err=Impossibile installare il modulo PHP
+imod_emod=Nessun modulo PHP inserito
+imod_alldoing=Installazione del modulo PHP $1 per la versione PHP $2 ..
+imod_alreadygot=Il modulo PHP $1 è già installato
+imod_alldone=.. il modulo PHP è stato installato con successo dal pacchetto $1 ed è ora disponibile per l'uso.
+imod_allfailed=.. non è stato possibile installare alcun pacchetto software per il modulo PHP specificato, nonostante il tentativo $1
+imod_missing=.. installazione completata, ma il modulo PHP non è stato rilevato.
+
 log_vars=Variabili PHP modificate in $1
 log_session=Opzioni di sessione modificate in $1
 log_safe=Opzioni della modalità provvisoria modificate in $1
+log_mods=Moduli abilitati aggiornati in $1
+log_imod=Installato modulo PHP $2 in $1
 
 acl_user=Leggi e scrivi i file come utente
 

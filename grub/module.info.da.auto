@@ -1,3 +1,0 @@
-name_da=GRUB
-desc_da=GRUB Boot Loader
-longdesc_da=Konfigurer Linux GRUB boot loader for at tillade valg af forskellige operativsystemer og kerner på starttidspunktet.

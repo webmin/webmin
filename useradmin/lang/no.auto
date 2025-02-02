@@ -1,3 +1,4 @@
+nologin=Deaktiver passordautentisering
 sshkey=SSH offentlig nøkkel
 
 usave_eltgt=Brukernavnet kan ikke inneholde &lt; eller &gt; tegn

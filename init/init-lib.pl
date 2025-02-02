@@ -907,7 +907,7 @@ elsif ($init_mode eq "rc") {
 	else {
 		# Need to create a my rc script, and enable
 		my @dirs = split(/\s+/, $config{'rc_dir'});
-		my $file = $dirs[$#dirs]."/".$action.".sh";
+		my $file = $dirs[$#dirs]."/".$action;
 		my $name = $action;
 		$name =~ s/-/_/g;
 		&open_lock_tempfile(SCRIPT, ">$file");
@@ -2147,7 +2147,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 
 # Also find unit files for units that may be disabled at boot and not running,
 # and so don't show up in systemctl list-units
-my $root = &get_systemd_root();
+my $root = &get_systemd_root(undef, 1);
 opendir(UNITS, $root);
 push(@units, grep { !/\.wants$/ && !/^\./ && !-d "$root/$_" } readdir(UNITS));
 closedir(UNITS);
@@ -2452,14 +2452,14 @@ foreach my $s (&list_systemd_services(1)) {
 return 0;
 }
 
-=head2 get_systemd_root([name])
+=head2 get_systemd_root([name], [packaged])
 
 Returns the base directory for systemd unit config files
 
 =cut
 sub get_systemd_root
 {
-my ($name) = @_;
+my ($name, $packaged) = @_;
 # Default systemd paths 
 my $systemd_local_conf = "/etc/systemd/system";
 my $systemd_unit_dir1 = "/usr/lib/systemd/system";
@@ -2485,6 +2485,9 @@ if ($name) {
 			}
 		}
 	}
+# Always use /etc/systemd/system for locally created units
+return $systemd_local_conf if (!$packaged && -d $systemd_local_conf);
+
 # Debian prefers /lib/systemd/system
 if ($gconfig{'os_type'} eq 'debian-linux' &&
     -d $systemd_unit_dir2) {

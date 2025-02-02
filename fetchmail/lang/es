@@ -7,7 +7,6 @@ index_run=Revisar todos los servidores
 index_global=Editar valores por defecto
 index_user=Usuario Unix
 index_conf=Configuración de Fetchmail
-index_ok=Añadir servidor Fetchmail para usuario:
 index_file=Configuración de Fetchmail en $1
 index_return=lista de servidores
 index_start=Arrancar Demonio Fetchmail

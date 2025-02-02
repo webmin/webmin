@@ -1,9 +1,0 @@
-host=Nome dell'host a cui connettersi:,3,Automatico
-port=Porta alla quale connettersi:,3,Predefinita
-proxy=Usare un proxy per connettersi agli altri host?,1,1-Si,0-No
-mode=Tipo di connessione:,1,0-Telnet,1-Secure Shell (raccomandata)
-sizemode=Dimensione dell'applet:,1,0-80x24 caratteri (con il font predefinito),1-Massimo,2-Dimensione personalizzata
-size=Larghezza X Altezza personalizzate:,0
-fontsize=Dimensione del font in punti:,3,Predefinita
-detach=Modalità con finestra separata,1,1-Si,0-No
-no_test=Testare il server telnet o SSH?,1,0-Si,1-No

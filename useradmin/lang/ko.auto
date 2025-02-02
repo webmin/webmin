@@ -40,6 +40,7 @@ office=사무실
 workph=직장 전화
 homeph=집 전화
 extra=추가 옵션
+nologin=비밀번호 인증 비활성화
 sshkey=SSH 공개 키
 uedit_manual=예배 규칙서
 lastlogin=마지막 로그인

@@ -1,6 +1,0 @@
-Revision history for Perl extension Webmin::API.
-
-1.0  Mon Dec 10 11:09:17 2007
-	- original version; created by h2xs 1.20 with options
-		-AXc -n Webmin::API
-

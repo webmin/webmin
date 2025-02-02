@@ -8,7 +8,6 @@ index_run=Controleer alle servers
 index_global=Bewerk standaard instellingen.
 index_user=Unix gebruiker
 index_conf=Fetchmail configuratie
-index_ok=Fetchmail server toevoegen voor gebruiker :
 index_file=Fetchmail configuratie in $1
 index_return=server lijst
 index_start=Start Fetchmail Daemon

@@ -33,7 +33,6 @@ real=Personens namn
 pass=Lösenord
 none1=Ange vid första inloggning
 none2=Inget lösenord
-nologin=Får ej logga in
 encrypted=Förkrypterat lösenord
 nochange=Ändra inte
 clear=Normalt lösenord

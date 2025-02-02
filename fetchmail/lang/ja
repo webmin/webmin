@@ -6,7 +6,6 @@ index_add=新規サーバを追加
 index_run=リストされたサーバの検査
 index_user=Unix ユーザ
 index_conf=Fetchmail 設定
-index_ok=次のユーザ用の Fetchmail 設定を編集:
 index_file=$1 のFetchmail 設定
 index_return=サーバ リスト
 

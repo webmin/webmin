@@ -55,7 +55,6 @@ extra=Extra options
 pass=パスワード
 none1=最初のログインのときにたずねる
 none2=パスワードは不要
-nologin=ログイン禁止
 encrypted=暗号化済みパスワード
 nochange=変更しない
 clear=通常のパスワード

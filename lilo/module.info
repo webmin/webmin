@@ -1,4 +1,0 @@
-name=LILO
-category=hardware
-os_support=*-linux
-desc=Linux Bootup Configuration

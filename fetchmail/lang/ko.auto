@@ -1,5 +1,6 @@
 index_active=유효한?
 index_global=기본 설정을 편집하십시오.
+index_fadd=사용자에 대한 Fetchmail 서버 추가
 index_start=페치 메일 데몬 시작
 index_stop=페치 메일 데몬 중지
 index_startmsg=이 서버에서 fetchmail 데몬을 시작하고 $1 초마다 메일을 확인하도록하려면이 버튼을 클릭하십시오. 데몬은 사용자 $2 로 실행되며 위의 구성을 사용합니다.

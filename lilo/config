@@ -1,2 +1,0 @@
-lilo_cmd=/sbin/lilo
-lilo_conf=/etc/lilo.conf

@@ -19,6 +19,7 @@ index_loginsuser=Kun bruger
 index_loginsdesc=Vis nylige logins nogle eller alle Unix-brugere, der har oprettet forbindelse via SSH eller Usermin.
 index_whodesc=Vis brugere, der i øjeblikket er logget ind via SSH eller Usermin.
 
+nologin=Deaktiver adgangskodegodkendelse
 sshkey=SSH offentlig nøgle
 uedit_manual=Vejviser
 uedit_allg=Alle grupper

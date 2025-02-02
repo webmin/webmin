@@ -1,4 +1,5 @@
 index_active=Aktivní?
+index_fadd=Přidat server Fetchmail pro uživatele
 index_cron=Plánovaná kontrola
 index_crondesc=Klepnutím na toto tlačítko vytvoříte, změníte nebo odeberete úlohu Cron, aby se Fetchmail automaticky spouštěl podle plánu a zkontroloval a stáhl e-mail pomocí výše uvedené konfigurace.
 index_crondesc2=Klepnutím na toto tlačítko vytvoříte, změníte nebo odeberete úlohu Cron, aby se Fetchmail automaticky spouštěl podle plánu a zkontroloval a stáhl e-mail pro všechny uvedené uživatele.

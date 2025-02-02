@@ -17,6 +17,52 @@ misc_path=CGI 수정 경로 정보?
 misc_timezone=PHP 시간대
 misc_charset=기본 문자 세트
 
+disable_title=장애인 기능
+disable_header=비활성화된 PHP 함수 및 기능
+disable_funcs=비활성화된 기능
+disable_exec=exec (명령어 실행)
+disable_passthru=passthru (명령을 실행하고 출력을 표시)
+disable_shell_exec=shell_exec (셸을 통해 명령 실행)
+disable_system=시스템(명령어 실행 및 출력 표시)
+disable_proc_open=proc_open(명령 실행 및 입력 및 출력 캡처)
+disable_popen=popen (실행된 명령에 대한 파이프 열기)
+disable_curl_exec=curl_exec (URL 다운로드 세션 실행)
+disable_curl_multi_exec=curl_multi_exec (여러 URL 다운로드 세션 실행)
+disable_parse_ini_file=parse_ini_file(PHP INI 파일 읽기)
+disable_show_source=show_source (PHP 구문 강조가 포함된 출력 파일)
+disable_mail=메일(이메일 보내기)
+disable_leftover=다른 기능:
+disable_err=비활성화된 기능을 저장하지 못했습니다
+disable_classes=비활성화된 내장 클래스
+
+mods_title=PHP 모듈
+mods_edir=PHP 모듈 디렉토리를 찾을 수 없습니다!
+mods_ecannot=활성화된 PHP 모듈을 편집할 수 없습니다
+mods_desc=이 페이지는 이 시스템의 모든 사용자에 대해 PHP 버전 $1 모듈을 전역적으로 활성화하거나 비활성화하는 데 사용할 수 있습니다.
+mods_enabled=활성화?
+mods_name=모듈 이름
+mods_file=설정 파일
+mods_pkg=패키지
+mods_idesc=이 시스템에서 사용할 수 없는 PHP 모듈은 구성된 소프트웨어 패키지 저장소에서 설치할 수 있습니다.
+mods_newpkg=PHP 모듈 추가:
+mods_install=지금 설치하기
+mods_err=PHP 모듈을 저장하지 못했습니다
+mods_egetver=구성 파일 $1에 대한 PHP 버전을 알아낼 수 없습니다
+mods_egetbin=구성 파일 $1에 대한 PHP 바이너리를 알아낼 수 없습니다
+mods_return=PHP 모듈
+
+imod_title=PHP 모듈 설치
+imod_err=PHP 모듈 설치에 실패했습니다
+imod_emod=PHP 모듈이 입력되지 않았습니다
+imod_alldoing=PHP 버전 $2에 PHP 모듈 $1을 설치하는 중 ..
+imod_alreadygot=PHP 모듈 $1이 이미 설치되었습니다
+imod_alldone=.. PHP 모듈이 패키지 $1에서 성공적으로 설치되었으며 이제 사용할 수 있습니다.
+imod_allfailed=.. $1을 시도했음에도 불구하고 지정된 PHP 모듈에 대한 소프트웨어 패키지를 설치할 수 없습니다
+imod_missing=.. 설치가 완료되었지만 PHP 모듈이 감지되지 않았습니다.
+
+log_mods=$1에서 활성화된 모듈이 업데이트되었습니다
+log_imod=$1에 PHP 모듈 $2 설치됨
+
 acl_user=사용자로서 파일 읽기 및 쓰기
 
 opt_default=기본값: <tt>$1</tt>

@@ -1,3 +1,0 @@
-name_sv=RÖJA
-desc_sv=GRUB Boot Loader
-longdesc_sv=Konfigurera Linux GRUB-startladdaren så att du kan välja olika operativsystem och kärnor vid starttid.

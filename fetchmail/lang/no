@@ -8,7 +8,6 @@ index_run=Sjekk alle tjenere
 index_global=Rediger standard innstillinger.
 index_user=Unix bruker
 index_conf=Fetchmail konfigurasjon
-index_ok=Legg til Fetchmail tjener for bruker:
 index_file=Fetchmail konfigurasjon i $1
 index_return=tjenerliste
 index_start=Start Fetchmail Daemon

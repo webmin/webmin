@@ -8,7 +8,6 @@ index_run=Comprova tots els servidors
 index_global=Edita els valors per defecte.
 index_user=Usuari Unix
 index_conf=Configuració de Fetchmail
-index_ok=Afegeix servidor Fetchmail per a:
 index_file=Configuració Fetchmail de $1
 index_return=a la llista de servidors
 index_start=Inicia el Dimoni de Fetchmail

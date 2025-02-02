@@ -1,5 +1,0 @@
-frox=Full sti til Frox tjener program,0
-frox_conf=Full sti til Frox konfigurasjonsfil,0
-start_cmd=Kommando for å starte Frox tjener,3,Bare kjør tjener-program
-stop_cmd=Kommando for å stoppe Frox tjener,3,Bare stopp tjener-prosess
-apply_cmd=Kommando for å ta i bruk konfigurasjon,3,Send HUP signal

@@ -6,7 +6,6 @@ index_add=새 서버 추가
 index_run=나열된 서버 검사
 index_user=Unix 사용자
 index_conf=Fetchmail 구성
-index_ok=사용자의 Fetchmail 구성 편집:
 index_file=$1의 Fetchmail 구성
 index_return=서버 목록
 
