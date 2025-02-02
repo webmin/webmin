@@ -105,7 +105,7 @@ elsif (@titles || @indexes) {
 		  );
 	if ($displayconfig{'style'} == 1) {
 		# Show table names, fields and row counts
-		my $tables_size = &get_tables_size($in{'db'});
+		my $all_tables_size = &get_all_tables_size($in{'db'});
 		foreach $t (@titles) {
 			local $c = &execute_sql($in{'db'},
 					"show create table ".quotestr($t));
@@ -117,7 +117,7 @@ elsif (@titles || @indexes) {
 			push(@rows, $c->{'data'}->[0]->[0]);
 			local @str = &table_structure($in{'db'}, $t);
 			push(@fields, scalar(@str));
-			my $table_size = &get_table_size($tables_size, $t);
+			my $table_size = &get_table_size($all_tables_size, $t);
 			push(@sizes, &nice_size($table_size));
 			}
 		my $table_index_stats = &get_table_index_stats($in{'db'});

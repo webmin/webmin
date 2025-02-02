@@ -1349,9 +1349,9 @@ my $rs = &execute_sql_safe($db, $sql_query, $db, @tables);
 return $rs;
 }
 
-# get_tables_size(db)
+# get_all_tables_size(db)
 # Retrieves the size of all tables in the given database
-sub get_tables_size
+sub get_all_tables_size
 {
 my ($db) = @_;
 my @tables = list_tables($db);
