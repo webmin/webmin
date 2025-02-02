@@ -22,7 +22,7 @@ print &ui_table_row(&opt_help($text{'dirs_include'}, 'include'),
 	&file_chooser_button("include", 1, undef, undef, 1));
 
 $inidir = &get_php_ini_dir($in{'file'});
-if (!$inidir) {
+if (!$inidir && &get_config_fmt() eq 'ini') {
 	# Extensions directory
 	print &ui_table_row($text{'dirs_ext'},
 		&ui_opt_textbox("ext", &find_value("extension_dir", $conf),
