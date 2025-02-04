@@ -775,10 +775,10 @@ elsif ($software::update_system eq "ports") {
 else {
 	if ($software::update_system eq "apt") {
 		push(@poss, "php".$ver."-".$m);
-		push(@poss, "php".$nodotphpver."-php-pecl-".$m);
 		}
 	else {
 		push(@poss, "php".$nodotphpver."-".$m);
+		push(@poss, "php".$nodotphpver."-php-pecl-".$m);
 		}
 	if ($software::update_system eq "apt" && $m eq "pdo_mysql") {
 		# On Debian, the pdo_mysql module is in the mysql module
