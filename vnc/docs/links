@@ -1,0 +1,76 @@
+New tight PNG protocol:
+    http://wiki.qemu.org/VNC_Tight_PNG
+    http://xf.iksaif.net/blog/index.php?post/2010/06/14/QEMU:-Tight-PNG-and-some-profiling
+
+RFB protocol and extensions:
+    http://tigervnc.org/cgi-bin/rfbproto
+
+Canvas Browser Compatibility:
+    http://philip.html5.org/tests/canvas/suite/tests/results.html
+
+WebSockets API standard:
+    http://www.whatwg.org/specs/web-apps/current-work/complete.html#websocket
+    http://dev.w3.org/html5/websockets/
+    http://www.ietf.org/id/draft-ietf-hybi-thewebsocketprotocol-00.txt
+
+Browser Keyboard Events detailed:
+    http://unixpapa.com/js/key.html
+
+ActionScript (Flash) WebSocket implementation:
+    http://github.com/gimite/web-socket-js
+
+ActionScript (Flash) crypto/TLS library:
+    http://code.google.com/p/as3crypto
+    http://github.com/lyokato/as3crypto_patched
+
+TLS Protocol:
+    http://en.wikipedia.org/wiki/Transport_Layer_Security
+
+Generate self-signed certificate:
+    http://docs.python.org/dev/library/ssl.html#certificates
+
+Cursor appearance/style (for Cursor pseudo-encoding):
+    http://en.wikipedia.org/wiki/ICO_(file_format)
+    http://www.daubnet.com/en/file-format-cur
+    https://developer.mozilla.org/en/Using_URL_values_for_the_cursor_property
+    http://www.fileformat.info/format/bmp/egff.htm
+
+Icon/Cursor file format:
+    http://msdn.microsoft.com/en-us/library/ms997538
+    http://msdn.microsoft.com/en-us/library/aa921550.aspx
+    http://msdn.microsoft.com/en-us/library/aa930622.aspx
+
+
+RDP Protocol specification:
+    http://msdn.microsoft.com/en-us/library/cc240445(v=PROT.10).aspx
+
+
+Related projects:
+    
+    guacamole: http://guacamole.sourceforge.net/
+
+        - Web client, but Java servlet does pre-processing
+
+    jsvnc: http://code.google.com/p/jsvnc/
+
+        - No releases
+
+    webvnc: http://code.google.com/p/webvnc/
+
+        - Jetty web server gateway, no updates since April 2008.
+
+    RealVNC Java applet: http://www.realvnc.com/support/javavncviewer.html
+
+        - Java applet
+
+    Flashlight-VNC: http://www.wizhelp.com/flashlight-vnc/
+
+        - Adobe Flash implementation
+
+    FVNC: http://osflash.org/fvnc
+
+        - Adbove Flash implementation
+
+    CanVNC: http://canvnc.sourceforge.net/
+
+        - HTML client with REST to VNC python proxy. Mostly vapor.
