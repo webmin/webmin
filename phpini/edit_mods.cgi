@@ -39,16 +39,8 @@ print &ui_columns_start([ $text{'mods_enabled'},
 foreach my $m (@mods) {
 	my $pkg;
 	if ($n && $ver) {
-		my @poss = &php_module_packages($m->{'mod'}, $ver, $filever);
-		($pkg) = grep { $_ } map { $pkgmap{$_} } @poss;
-		if (!$pkg) {
-			# Package is referenced by another name
-			foreach (@poss) {
-				my @pinfo = &software::package_info($_);
-				$pkg = { 'name' => $pinfo[0],
-					 'version' => $pinfo[4] } if @pinfo;
-				}
-			}
+		($pkg) = grep { $_ } map { $pkgmap{$_} }
+			      &php_module_packages($m->{'mod'}, $ver, $filever);
 		}
 	print &ui_columns_row([
 		&ui_checkbox("mod", $m->{'mod'}, "", $m->{'enabled'}),

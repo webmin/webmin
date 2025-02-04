@@ -51,20 +51,8 @@ local $n = $_[1] ? "$_[0]-$_[1]" : $_[0];
 @tmp = <RPM>;
 chop(@tmp);
 local $ex = close(RPM);
-local $whatprovides = "";
-if (!@tmp || $tmp[0] =~ /not\s+installed/) {
-	&open_execute_command(RPM, "rpm -q --whatprovides $n --queryformat \"%{NAME}\\n%{GROUP}\\n%{ARCH}\\n%{VERSION}-%{RELEASE}\\n%{VENDOR}\\n%{INSTALLTIME}\\n\" 2>/dev/null", 1, 1);
-	@tmp = <RPM>;
-	chop(@tmp);
-	close(RPM);
-	if (!@tmp || $tmp[0] =~ /no\s+package\s+provides/) {
-		return () ;
-		}
-	else {
-		$whatprovides = " --whatprovides";
-		}
-	}
-&open_execute_command(RPM, "rpm -q$whatprovides $n --queryformat \"%{DESCRIPTION}\"", 1, 1);
+if (!@tmp || $tmp[0] =~ /not\s+installed/) { return (); }
+&open_execute_command(RPM, "rpm -q $n --queryformat \"%{DESCRIPTION}\"", 1, 1);
 while(<RPM>) { $d .= $_; }
 close(RPM);
 return ($tmp[0], $tmp[1], $d, $tmp[2], $tmp[3], $tmp[4], &make_date($tmp[5]));
