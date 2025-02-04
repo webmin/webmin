@@ -44,7 +44,7 @@ foreach my $m (@mods) {
 		if (!$pkg) {
 			# Package is referenced by another name
 			foreach (@poss) {
-				my @pinfo = &software::package_info($_);
+				my @pinfo = &software::package_info($_, undef, 1);
 				$pkg = { 'name' => $pinfo[0],
 					 'version' => $pinfo[4] } if @pinfo;
 				}

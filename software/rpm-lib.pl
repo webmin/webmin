@@ -40,7 +40,7 @@ return 0 if ($?);	# couldn't find the package
 return $i;
 }
 
-# package_info(package, [version])
+# package_info(package, [version], [check-referenced])
 # Returns an array of package information in the order
 #  name, class, description, arch, version, vendor, installtime
 sub package_info
@@ -53,6 +53,7 @@ chop(@tmp);
 local $ex = close(RPM);
 local $whatprovides = "";
 if (!@tmp || $tmp[0] =~ /not\s+installed/) {
+	return () if (!$_[2]);
 	&open_execute_command(RPM, "rpm -q --whatprovides $n --queryformat \"%{NAME}\\n%{GROUP}\\n%{ARCH}\\n%{VERSION}-%{RELEASE}\\n%{VENDOR}\\n%{INSTALLTIME}\\n\" 2>/dev/null", 1, 1);
 	@tmp = <RPM>;
 	chop(@tmp);
