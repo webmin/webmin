@@ -21,24 +21,6 @@ print &ui_table_row(&opt_help($text{'dirs_include'}, 'include'),
 	&ui_textarea("include", join("\n", split(/:/, $include)), 3, 60)." ".
 	&file_chooser_button("include", 1, undef, undef, 1));
 
-$inidir = &get_php_ini_dir($in{'file'});
-if (!$inidir && &get_config_fmt($in{'file'}) eq 'ini') {
-	# Extensions directory
-	print &ui_table_row($text{'dirs_ext'},
-		&ui_opt_textbox("ext", &find_value("extension_dir", $conf),
-				60, $text{'default'})." ".
-		&file_chooser_button("ext", 1));
-
-	# Enabled extensions
-	my @exts = map { [ $_->{'value'}, $_->{'value'} ] }
-		       &find("extension", $conf);
-	my @avail = &list_available_extensions($conf, $in{'file'});
-	if (@avail) {
-		print &ui_table_row($text{'dirs_exts'},
-			&ui_multi_select("exts", \@exts, \@avail, 10, 1));
-		}
-	}
-
 # Can accept uploads?
 print &ui_table_row(&opt_help($text{'dirs_upload'}, 'file_uploads'),
 	&onoff_radio("file_uploads"));

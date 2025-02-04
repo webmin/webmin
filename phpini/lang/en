@@ -38,14 +38,11 @@ dirs_title=Directory Settings
 dirs_header=PHP script and extension directory settings
 dirs_include=Search directories for includes
 dirs_below=Listed below..
-dirs_ext=Directory for extensions
-dirs_exts=Extensions to load
 dirs_upload=Allow file uploads?
 dirs_utmp=Temporary directory for uploaded files
 dirs_err=Failed to save directory settings
 dirs_eincs=No include search directories entered
 dirs_eutmp=Missing or invalid temporary files directory
-dirs_eext=Missing extensions directory
 
 db_title=Database Settings
 db_header1=MySQL database connection settings
