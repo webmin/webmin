@@ -72,7 +72,7 @@ local $apt_cache_cmd = &has_command("apt-cache");
 if ($pkgmissing && $apt_cache_cmd) {
 	# Check reverse provides as well
 	local $out = &backquote_command("$apt_cache_cmd showpkg $qm 2>&1", 1);
-	if ($out =~ /Reverse Provides:\s*(\S+)\s+([\w\.\-]+)/) {
+	if ($out =~ /Reverse Provides:\s*(\S+\s+\S+)/) {
 		my ($rpkg, $rver) = split(/\s+/, $1, 2);
 		$pkg = $rpkg;
 		$qm = quotemeta($pkg);
