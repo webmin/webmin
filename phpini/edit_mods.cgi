@@ -59,7 +59,7 @@ foreach my $m (@mods) {
 		  ( &ui_link("../software/edit_pack.cgi?package=".
 			     &urlize($pkg->{'name'})."&version=".
 			     &urlize($pkg->{'version'}),
-			     "$pkg->{'name'} $pkg->{'version'}") ),
+			     "$pkg->{'name'}-$pkg->{'version'}") ),
 		]);
 	}
 print &ui_columns_end();
