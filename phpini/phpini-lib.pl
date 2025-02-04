@@ -688,17 +688,48 @@ foreach my $f (readdir(DIR)) {
 	my $ini = { 'file' => $f,
 		    'path' => $path,
 		  };
+	# Check for the extension line
 	my $lref = &read_file_lines($path, 1);
 	foreach my $l (@$lref) {
-		if ($l =~ /^\s*(;?)\s*extension\s*=\s*(\S+(\.so)?)/) {
+		if ($l =~ /^\s*(;?)\s*(zend_)?extension\s*=\s*(\S+(\.so)?)/) {
 			$ini->{'enabled'} = $1 ? 0 : 1;
-			$ini->{'mod'} = $2;
+			$ini->{'mod'} = $3;
 			$ini->{'mod'} =~ s/\.so$//;
 			}
+		}
+	if (-l $path) {
+		# Debian-style, where the link means that the module is enabled
+		$ini->{'link'} = &resolve_links($path);
+		$ini->{'enabled'} = 1;
 		}
 	push(@rv, $ini);
 	}
 closedir(DIR);
+my $availdir = &simplify_path("$dir/../../mods-available");
+if (opendir(DIR, $availdir)) {
+	# On debian, there is another directory of link destinations for all
+	# modules that are available
+	foreach my $f (readdir(DIR)) {
+		next if ($f !~ /\.ini$/);
+		my $path = "$availdir/$f";
+		my ($already) = grep { $_->{'link'} eq $path } @rv;
+		next if ($already);
+		my $ini = { 'file' => $f,
+			    'path' => $path,
+			    'enabled' => 0,
+			    'available' => 1,
+			  };
+		my $lref = &read_file_lines($path, 1);
+		foreach my $l (@$lref) {
+			if ($l =~ /^\s*(;?)\s*(zend_)?extension\s*=\s*(\S+(\.so)?)/) {
+				$ini->{'mod'} = $3;
+				$ini->{'mod'} =~ s/\.so$//;
+				}
+			}
+		push(@rv, $ini);
+		}
+	closedir(DIR);
+	}
 return sort { $a->{'mod'} cmp $b->{'mod'} } @rv;
 }
 
