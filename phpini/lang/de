@@ -38,14 +38,11 @@ dirs_title=Verzeichniseinstellungen
 dirs_header=Einstellungen für PHP-Skript- und Erweiterungsverzeichnisse
 dirs_include=Suchverzeichnisse für Includes
 dirs_below=Nachfolgend aufgelistet..
-dirs_ext=Verzeichnis für Erweiterungen
-dirs_exts=Zu ladende Erweiterungen
 dirs_upload=Datei-Uploads erlauben?
 dirs_utmp=Temporäres Verzeichnis für hochgeladene Dateien
 dirs_err=Fehler beim Speichern der Verzeichniseinstellungen
 dirs_eincs=Keine Include-Suchverzeichnisse eingegeben
 dirs_eutmp=Fehlendes oder ungültiges temporäres Verzeichnis für Dateien
-dirs_eext=Fehlendes Erweiterungsverzeichnis
 
 db_title=Datenbankeinstellungen
 db_header1=MySQL-Datenbank-Verbindungseinstellungen
@@ -169,22 +166,6 @@ disable_mail=mail (E-Mail senden)
 disable_leftover=Andere Funktionen:
 disable_err=Fehler beim Speichern deaktivierter Features
 disable_classes=Deaktivierte eingebaute Klassen
-
-mods_title=PHP-Module
-mods_edir=PHP-Module-Verzeichnis konnte nicht gefunden werden!
-mods_ecannot=Sie sind nicht berechtigt, aktivierte PHP-Module zu bearbeiten
-mods_desc=Diese Seite kann verwendet werden, um PHP-Version $1 Module global für alle Benutzer auf diesem System zu aktivieren und zu deaktivieren.
-mods_enabled=Aktiviert?
-mods_name=Modulname
-mods_file=Konfigurationsdatei
-mods_pkg=Paket
-mods_idesc=PHP-Module, die auf diesem System nicht verfügbar sind, können aus konfigurierten Software-Paket-Repositorys installiert werden.
-mods_newpkg=PHP-Modul hinzufügen:
-mods_install=Jetzt installieren
-mods_err=Fehler beim Speichern der PHP-Module
-mods_egetver=PHP-Version für Konfigurationsdatei $1 konnte nicht ermittelt werden
-mods_egetbin=PHP-Binary für Konfigurationsdatei $1 konnte nicht ermittelt werden
-mods_return=PHP-Module
 
 imod_title=PHP-Modul installieren
 imod_err=Fehler bei der Installation des PHP-Moduls

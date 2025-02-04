@@ -37,13 +37,11 @@ dirs_title=Paramètres du répertoire
 dirs_header=Paramètres du répertoire et du script PHP
 dirs_include=Recherche dans les répertoires des inclusions
 dirs_below=Énumérés ci-dessous ..
-dirs_ext=Répertoire des extensions
 dirs_upload=Autoriser le téléversement de fichier?
 dirs_utmp=Répertoire temporaire pour les fichiers téléchargés
 dirs_err=Échec de l'enregistrement des paramètres du répertoire
 dirs_eincs=Aucun inclure les répertoires de recherche saisis
 dirs_eutmp=Répertoire de fichiers temporaires manquant ou invalide
-dirs_eext=Répertoire d'extensions manquant
 
 db_title=Paramêtres de La Base De Données
 db_header1=Paramètres de connexion à la base de données MySQL

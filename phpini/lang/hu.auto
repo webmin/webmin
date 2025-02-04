@@ -24,13 +24,11 @@ vars_err=A PHP változó beállításainak mentése nem sikerült
 
 dirs_header=PHP szkript és kiterjesztés könyvtár beállításai
 dirs_include=Keresési könyvtárak tartalmazzák
-dirs_exts=A betöltendő bővítmények
 dirs_upload=Engedélyezi a fájlok feltöltését?
 dirs_utmp=Ideiglenes könyvtár a feltöltött fájlokhoz
 dirs_err=A könyvtárbeállítások mentése nem sikerült
 dirs_eincs=Nem tartalmazza a bevitt keresési könyvtárakat
 dirs_eutmp=Hiányzó vagy érvénytelen ideiglenes fájlok könyvtára
-dirs_eext=Hiányzik a bővítmények könyvtára
 
 db_header1=MySQL adatbázis-kapcsolat beállításai
 db_persist=Engedélyezi az állandó adatbázis-kapcsolatokat?
@@ -142,21 +140,21 @@ disable_leftover=Egyéb funkciók:
 disable_err=Nem sikerült menteni a letiltott funkciókat
 disable_classes=Letiltott beépített osztályok
 
-mods_title=PHP modulok
-mods_edir=Nem található a PHP modulok könyvtára!
-mods_ecannot=Nem szerkesztheti az engedélyezett PHP modulokat
-mods_desc=Ezen az oldalon lehet globálisan engedélyezni és letiltani a PHP $1-es verzióját a rendszer összes felhasználója számára.
+mods_title=PHP kiterjesztések
+mods_edir=Nem található a PHP kiterjesztések könyvtára!
+mods_ecannot=Nem szerkesztheti az engedélyezett PHP-bővítményeket
+mods_desc=Ezen az oldalon lehet globálisan engedélyezni és letiltani a PHP $1-es verziójának kiterjesztését a rendszer összes felhasználója számára.
 mods_enabled=Engedélyezve?
-mods_name=Modul neve
+mods_name=Bővítmény neve
 mods_file=Konfig fájl
 mods_pkg=Csomag
-mods_idesc=A rendszeren nem elérhető PHP modulok telepíthetők a beállított szoftvercsomag-tárolókból.
-mods_newpkg=PHP modul hozzáadása:
+mods_idesc=A rendszerre még nem telepített PHP-bővítmények telepíthetők a konfigurált szoftvercsomag-tárolókból.
+mods_newpkg=PHP kiterjesztés hozzáadása
 mods_install=Telepítés most
-mods_err=Nem sikerült menteni a PHP modulokat
+mods_err=Nem sikerült menteni a PHP-bővítményeket
 mods_egetver=Nem sikerült kideríteni a $1 konfigurációs fájl PHP verzióját
 mods_egetbin=Nem sikerült kitalálni a PHP bináris fájlját a $1 konfigurációs fájlhoz
-mods_return=PHP modulok
+mods_return=PHP kiterjesztések
 
 imod_title=PHP modul telepítése
 imod_err=Nem sikerült telepíteni a PHP modult

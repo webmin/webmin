@@ -2,8 +2,6 @@ list_efile=Het te bewerken bestand moet een absoluut pad zijn
 list_format_ini=INI-formaat
 list_format_fpm=FPM-indeling
 
-dirs_exts=Extensies om te laden
-
 session_redis=Redis
 session_memcache=GeheugencacheD
 
@@ -30,21 +28,21 @@ disable_leftover=Andere functies:
 disable_err=Het is niet gelukt om uitgeschakelde functies op te slaan
 disable_classes=Ingebouwde klassen met een handicap
 
-mods_title=PHP-modules
-mods_edir=De map met PHP-modules kon niet worden gevonden!
-mods_ecannot=Het is niet toegestaan om ingeschakelde PHP-modules te bewerken
-mods_desc=Deze pagina kan worden gebruikt om PHP-versie $1-modules globaal in en uit te schakelen voor alle gebruikers op dit systeem.
+mods_title=PHP-extensies
+mods_edir=De PHP-extensiemap kon niet worden gevonden!
+mods_ecannot=Het is niet toegestaan om ingeschakelde PHP-extensies te bewerken
+mods_desc=Deze pagina kan worden gebruikt om PHP-extensies versie $1 globaal in en uit te schakelen voor alle gebruikers op dit systeem.
 mods_enabled=Ingeschakeld?
-mods_name=Modulenaam
+mods_name=Extensienaam
 mods_file=Configuratiebestand
 mods_pkg=Pakket
-mods_idesc=PHP-modules die niet beschikbaar zijn op dit systeem, kunnen worden geïnstalleerd vanuit geconfigureerde softwarepakketrepository's.
-mods_newpkg=PHP-module toevoegen:
+mods_idesc=PHP-extensies die nog niet op dit systeem zijn geïnstalleerd, kunnen worden geïnstalleerd vanuit de geconfigureerde softwarepakketrepository's.
+mods_newpkg=PHP-extensie toevoegen
 mods_install=Nu installeren
-mods_err=PHP-modules konden niet worden opgeslagen
+mods_err=PHP-extensies konden niet worden opgeslagen
 mods_egetver=Kon de PHP-versie voor configuratiebestand $1 niet achterhalen
 mods_egetbin=Kon PHP-binair bestand voor configuratiebestand $1 niet achterhalen
-mods_return=PHP-modules
+mods_return=PHP-extensies
 
 imod_title=PHP-module installeren
 imod_err=PHP-module kan niet worden geïnstalleerd

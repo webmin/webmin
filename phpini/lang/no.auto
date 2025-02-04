@@ -1,7 +1,5 @@
 list_efile=Filen som skal redigeres må være en absolutt bane
 
-dirs_exts=Utvidelser for å laste
-
 session_redis=Redis
 session_memcache=MemcacheD
 
@@ -26,21 +24,21 @@ disable_leftover=Andre funksjoner:
 disable_err=Kunne ikke lagre deaktiverte funksjoner
 disable_classes=Deaktiverte innebygde klasser
 
-mods_title=PHP-moduler
-mods_edir=Kunne ikke finne PHP-modulkatalogen!
-mods_ecannot=Du har ikke lov til å redigere aktiverte PHP-moduler
-mods_desc=Denne siden kan brukes til globalt å aktivere og deaktivere PHP-versjon $1-moduler for alle brukere på dette systemet.
+mods_title=PHP-utvidelser
+mods_edir=Kunne ikke finne PHP-utvidelseskatalogen!
+mods_ecannot=Du har ikke lov til å redigere aktiverte PHP-utvidelser
+mods_desc=Denne siden kan brukes til globalt å aktivere og deaktivere PHP-versjon $1-utvidelser for alle brukere på dette systemet.
 mods_enabled=Aktivert?
-mods_name=Modulnavn
+mods_name=Navn på utvidelse
 mods_file=Konfigurasjonsfil
 mods_pkg=Pakke
-mods_idesc=PHP-moduler som ikke er tilgjengelige på dette systemet, kan installeres fra konfigurerte programvarepakker.
-mods_newpkg=Legg til PHP-modul:
+mods_idesc=PHP-utvidelser som ennå ikke er installert på dette systemet, kan installeres fra de konfigurerte programvarepakkene.
+mods_newpkg=Legg til PHP-utvidelse
 mods_install=Installer nå
-mods_err=Kunne ikke lagre PHP-moduler
+mods_err=Kunne ikke lagre PHP-utvidelser
 mods_egetver=Kunne ikke finne ut PHP-versjonen for konfigurasjonsfilen $1
 mods_egetbin=Kunne ikke finne ut PHP-binær for konfigurasjonsfilen $1
-mods_return=PHP-moduler
+mods_return=PHP-utvidelser
 
 imod_title=Installer PHP-modulen
 imod_err=Kunne ikke installere PHP-modulen

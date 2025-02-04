@@ -6,8 +6,6 @@ vars_header=Opcje tworzenia i cytowania zmiennych PHP
 vars_magic=Cytujesz wszystkie zmienne wejściowe?
 vars_runtime=Cytuje dane generowane w czasie wykonywania?
 
-dirs_exts=Rozszerzenia do załadowania
-
 session_redis=Redis
 session_memcache=MemcacheD
 
@@ -35,21 +33,21 @@ disable_leftover=Inne funkcje:
 disable_err=Nie udało się zapisać wyłączonych funkcji
 disable_classes=Wyłączono wbudowane klasy
 
-mods_title=Moduły PHP
-mods_edir=Nie można odnaleźć katalogu modułów PHP!
-mods_ecannot=Nie masz uprawnień do edycji włączonych modułów PHP
-mods_desc=Za pomocą tej strony można globalnie włączać i wyłączać moduły PHP w wersji $1 dla wszystkich użytkowników tego systemu.
+mods_title=Rozszerzenia PHP
+mods_edir=Nie można odnaleźć katalogu rozszerzeń PHP!
+mods_ecannot=Nie masz uprawnień do edycji włączonych rozszerzeń PHP
+mods_desc=Za pomocą tej strony można globalnie włączać i wyłączać rozszerzenia PHP w wersji $1 dla wszystkich użytkowników tego systemu.
 mods_enabled=Włączony?
-mods_name=Nazwa modułu
+mods_name=Nazwa rozszerzenia
 mods_file=Plik konfiguracyjny
 mods_pkg=Pakiet
-mods_idesc=Moduły PHP niedostępne w tym systemie można zainstalować z skonfigurowanych repozytoriów pakietów oprogramowania.
-mods_newpkg=Dodaj moduł PHP:
+mods_idesc=Rozszerzenia PHP, które nie zostały jeszcze zainstalowane w systemie, można zainstalować z repozytoriów skonfigurowanych pakietów oprogramowania.
+mods_newpkg=Dodaj rozszerzenie PHP
 mods_install=Zainstaluj teraz
-mods_err=Nie udało się zapisać modułów PHP
+mods_err=Nie udało się zapisać rozszerzeń PHP
 mods_egetver=Nie udało się ustalić wersji PHP dla pliku konfiguracyjnego $1
 mods_egetbin=Nie można znaleźć pliku binarnego PHP dla pliku konfiguracyjnego $1
-mods_return=Moduły PHP
+mods_return=Rozszerzenia PHP
 
 imod_title=Zainstaluj moduł PHP
 imod_err=Nie udało się zainstalować modułu PHP

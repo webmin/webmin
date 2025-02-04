@@ -11,7 +11,6 @@ vars_register=Trasforma tutti gli input in variabili globali?
 vars_args=Trasformare i parametri della riga di comando in variabili globali?
 vars_long=Creare matrici vecchio stile come <tt>HTTP_GET_VARS</tt>?
 
-dirs_exts=Estensioni da caricare
 dirs_eincs=Nessuna directory di ricerca inclusa inserita
 
 session_handler=Meccanismo di archiviazione della sessione
@@ -58,21 +57,21 @@ disable_leftover=Altre funzioni:
 disable_err=Impossibile salvare le funzionalità disabilitate
 disable_classes=Classi integrate disabilitate
 
-mods_title=Moduli PHP
-mods_edir=Impossibile trovare la directory dei moduli PHP!
-mods_ecannot=Non ti è consentito modificare i moduli PHP abilitati
-mods_desc=Questa pagina può essere utilizzata per abilitare e disabilitare globalmente i moduli PHP versione $1 per tutti gli utenti di questo sistema.
+mods_title=Estensioni PHP
+mods_edir=Impossibile trovare la directory delle estensioni PHP!
+mods_ecannot=Non ti è consentito modificare le estensioni PHP abilitate
+mods_desc=Questa pagina può essere utilizzata per abilitare e disabilitare globalmente le estensioni PHP versione $1 per tutti gli utenti di questo sistema.
 mods_enabled=Abilitato?
-mods_name=Nome del modulo
+mods_name=Nome estensione
 mods_file=File di configurazione
 mods_pkg=Pacchetto
-mods_idesc=I moduli PHP non disponibili su questo sistema possono essere installati dai repository dei pacchetti software configurati.
-mods_newpkg=Aggiungi modulo PHP:
+mods_idesc=Le estensioni PHP che non sono ancora installate su questo sistema possono essere installate dai repository dei pacchetti software configurati.
+mods_newpkg=Aggiungi estensione PHP
 mods_install=Installa ora
-mods_err=Impossibile salvare i moduli PHP
+mods_err=Impossibile salvare le estensioni PHP
 mods_egetver=Impossibile determinare la versione PHP per il file di configurazione $1
 mods_egetbin=Impossibile trovare il binario PHP per il file di configurazione $1
-mods_return=Moduli PHP
+mods_return=Estensioni PHP
 
 imod_title=Installa il modulo PHP
 imod_err=Impossibile installare il modulo PHP

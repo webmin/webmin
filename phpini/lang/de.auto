@@ -1,0 +1,15 @@
+mods_title=PHP-Erweiterungen
+mods_edir=Das PHP-Erweiterungsverzeichnis konnte nicht gefunden werden!
+mods_ecannot=Sie dürfen aktivierte PHP-Erweiterungen nicht bearbeiten
+mods_desc=Auf dieser Seite können PHP-Erweiterungen der Version $1 für alle Benutzer dieses Systems global aktiviert und deaktiviert werden.
+mods_enabled=Ermöglicht?
+mods_name=Erweiterungsname
+mods_file=Konfigurationsdatei
+mods_pkg=Paket
+mods_idesc=PHP-Erweiterungen, die noch nicht auf diesem System installiert sind, können aus den konfigurierten Softwarepaket-Repositorys installiert werden.
+mods_newpkg=PHP-Erweiterung hinzufügen
+mods_install=Jetzt installieren
+mods_err=PHP-Erweiterungen konnten nicht gespeichert werden
+mods_egetver=Die PHP-Version für die Konfigurationsdatei $1 konnte nicht ermittelt werden
+mods_egetbin=PHP-Binärdatei für Konfigurationsdatei $1 konnte nicht ermittelt werden
+mods_return=PHP-Erweiterungen

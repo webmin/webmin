@@ -34,13 +34,11 @@ dirs_title=Nastavení adresáře
 dirs_header=Nastavení pro adresář PHP skriptu a rozšíření
 dirs_include=Prohledat adresáře obsahující
 dirs_below=Vníže vedeném seznamu ..
-dirs_ext=Adresář pro rozšíření
 dirs_upload=Povolit nahrávání souboru?
 dirs_utmp=Dočasný adresář pro nahrávané soubory?
 dirs_err=Chyba při ukládání nastavení adresáře
 dirs_eincs=Neobsahuje žádné vyhledánání adresářů
 dirs_eutmp=Chybějící nebo neplatný adresář pro dočasné soubory
-dirs_eext=Chybějící adresář pro rozšíření
 
 db_title=Nastavení databáze
 db_header1=Nastavení pro připojení k MySQL databázi
