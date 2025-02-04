@@ -291,8 +291,11 @@ return grep { !$done{$_->[0]}++ } @rv;
 sub get_php_ini_dir
 {
 my ($file) = @_;
-$file =~ s/\/php.ini$/\/php.d/;
-return -d $file ? $file : undef;
+my $file1 = $file;
+my $file2 = $file;
+$file1 =~ s/\/php.ini$/\/php.d/;
+$file2 =~ s/\/php.ini$/\/conf.d/;
+return -d $file1 ? $file1 : -d $file2 ? $file2 : undef;
 }
 
 # get_php_ini_binary(file)
