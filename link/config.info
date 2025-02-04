@@ -1,0 +1,4 @@
+link=URL to link to,0
+desc=Description for URL,3,Automatic
+immediate=Go to URL immediately,1,1-Yes,0-No
+window=Open in separate window?,1,1-Yes,0-No

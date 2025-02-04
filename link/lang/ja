@@ -1,0 +1,6 @@
+index_title=カスタムリンク
+index_econfig=リンク先の URL が登録されていません。<a href='$1'>URL を登録する</a>
+index_evirtualmin=URL には Virtualmin 固有の変数が含まれていますが、現在のユーザに対応するサーバが見つかりませんでした。
+
+acl_link=リダイレクト URL
+acl_elink=リダイレクト先が不明な URL

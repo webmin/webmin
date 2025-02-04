@@ -1,0 +1,6 @@
+index_title=Benutzerdefinierter Link
+index_econfig=Keine URL zum Verlinken wurde konfiguriert. <a href='$1'>Klicken Sie hier</a>, um eine URL anzugeben.
+index_evirtualmin=Die URL enthält Virtualmin-spezifische Variablen, aber es wurde kein Server für den aktuellen Benutzer gefunden.
+
+acl_link=Umleitung zur URL
+acl_elink=Fehlende URL zur Umleitung

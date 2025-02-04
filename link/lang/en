@@ -1,0 +1,7 @@
+index_title=Custom Link
+index_econfig=No URL to link to has been configured. <a href='$1'>Click here</a> to specify a URL.
+index_evirtualmin=The URL contains Virtualmin-specific variables, but no server was found for the current user.
+
+acl_link=Redirect to URL
+acl_elink=Missing URL to redirect to
+__norefs=1
