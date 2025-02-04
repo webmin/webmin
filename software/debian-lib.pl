@@ -49,34 +49,49 @@ return lc($_[0]) =~ /^[a-e]/ ? "A-E" :
        lc($_[0]) =~ /^[u-z]/ ? "U-Z" : "Other";
 }
 
-# package_info(package, [version])
+# package_info(package, [version], [check-referenced])
 # Returns an array of package information in the order
 #  name, class, description, arch, version, vendor, installtime
 sub package_info
 {
-local ($pkg, $ver) = @_;
+local ($pkg, $ver, $chkref) = @_;
 local $qm = quotemeta($pkg);
 
 # First check if it is really installed, and not just known to the package
 # system in some way
 local $out = &backquote_command("dpkg --list $qm 2>&1", 1);
 local @lines = split(/\r?\n/, $out);
+local $pkgmissing;
 if ($lines[$#lines] !~ /^.[ih]/) {
-	return ( );
+	return ( ) if (!$chkref);
+	$pkgmissing = 1;
+	}
+
+# If missing and allowed, check if it is referenced by some other package
+local $apt_cache_cmd = &has_command("apt-cache");
+if ($pkgmissing && $apt_cache_cmd) {
+	# Check reverse provides as well
+	local $out = &backquote_command("$apt_cache_cmd showpkg $qm 2>&1", 1);
+	if ($out =~ /Reverse Provides:\s*(\S+)\s+([\w\.\-]+)/) {
+		my ($rpkg, $rver) = split(/\s+/, $1, 2);
+		$pkg = $rpkg;
+		$qm = quotemeta($pkg);
+		$ver = $rver if ($rver);
+		}
 	}
 
 # Get full status
 local $out;
-if (&has_command("apt-cache")) {
+if ($apt_cache_cmd) {
 	$qm .= "=".quotemeta($ver) if ($ver);
-	$out = &backquote_command("apt-cache show $qm 2>&1", 1);
+	$out = &backquote_command("$apt_cache_cmd show $qm 2>&1", 1);
 	$out =~ s/[\0-\177]*\r?\n\r?\n(Package:)/\\1/;	# remove available ver
 	}
 else {
 	$out = &backquote_command("dpkg --print-avail $qm 2>&1", 1);
 	}
 return () if ($? || $out =~ /Package .* is not available/i);
-local @rv = ( $_[0], &alphabet_name($_[0]) );
+local @rv = ( $pkg, &alphabet_name($pkg) );
 push(@rv, $out =~ /Description(-en)?:\s+((.*\n)(\s+.*\n)*)/i ? $2
 						   : $text{'debian_unknown'});
 push(@rv, $out =~ /Architecture:\s+(\S+)/i ? $1 : $text{'debian_unknown'});
