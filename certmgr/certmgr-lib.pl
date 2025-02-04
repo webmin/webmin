@@ -33,7 +33,8 @@ sub print_cert_form{
     print &ui_table_row($text{'keysize'},
                         &ui_oneradio("keysize", "512", "512", ( $checked[0] ? 1 : undef ) )." ".
                         &ui_oneradio("keysize", "1024", "1024", ( $checked[1] ? 1 : undef ) )." ".
-                        &ui_oneradio("keysize", "2048", "2048", ( $checked[2] ? 1 : undef ) ), undef, $valign_middle);
+                        &ui_oneradio("keysize", "2048", "2048", ( $checked[2] ? 1 : undef ) )." ".
+                        &ui_oneradio("keysize", "4096", "4096", ( $checked[3] ? 1 : undef ) ), undef, $valign_middle);
     if ($form eq "gencert") {
         print &ui_table_row($text{$form.'_days'}, &ui_textbox("days", $in{'days'}, 40), undef, $valign_middle);
     }
