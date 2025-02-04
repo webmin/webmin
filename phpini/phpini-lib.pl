@@ -744,6 +744,7 @@ elsif ($software::update_system eq "ports") {
 else {
 	if ($software::update_system eq "apt") {
 		push(@poss, "php".$ver."-".$m);
+		push(@poss, "php".$nodotphpver."-php-pecl-".$m);
 		}
 	else {
 		push(@poss, "php".$nodotphpver."-".$m);
