@@ -64,7 +64,7 @@ if (&foreign_installed("software") &&
 	print $text{'mods_idesc'},"<p>\n";
 	print &ui_form_start("install_mod.cgi");
 	print &ui_hidden("file", $in{'file'});
-	print "<b>$text{'mods_newpkg'}</b> ",
+	print "$text{'mods_newpkg'}&nbsp; ",
 	      &ui_textbox("mod", undef, 30),"\n";
 	print &ui_form_end([ [ undef, $text{'mods_install'} ] ]);
 	}
