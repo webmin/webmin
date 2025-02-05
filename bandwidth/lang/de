@@ -73,14 +73,17 @@ setup_ecannot=Sie dürfen die Überwachung nicht aktivieren
 setup_eiface=Fehlender oder ungültiger Schnittstellenname
 setup_ezone=Shorewall-Zone für die ausgewählte Schnittstelle konnte nicht gefunden werden
 
+system_firewalld=Firewalld
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shorewall
 
+syslog_journald=Journald
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
 
 rotate_title=Statistiken aktualisieren
 rotate_doing=Protokollierten Netzwerkverkehr verarbeiten ..
 rotate_done=.. erledigt.
+rotate_failed=.. fehlgeschlagen : $1
