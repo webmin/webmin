@@ -71,6 +71,14 @@ push(@rv, $out =~ /INSTDATE:\s+(.*)\n/ ? $1 : $text{'pkgadd_unknown'});
 return @rv;
 }
 
+# virtual_package_info(package)
+# Returns an array of package information for a virtual package, usually called
+# if "package_info" returns nothing.
+sub virtual_package_info
+{
+return ( );
+}
+
 # is_package(file)
 # Tests if some file is a valid package file
 sub is_package

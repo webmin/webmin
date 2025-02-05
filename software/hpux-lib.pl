@@ -92,6 +92,14 @@ close(SW);
 return ($name, $class, $desc, $arch, $version, $vendor, $date);
 }
 
+# virtual_package_info(package)
+# Returns an array of package information for a virtual package, usually called
+# if "package_info" returns nothing.
+sub virtual_package_info
+{
+return ( );
+}
+
 # is_package(file)
 # Check if some file is a package file
 sub is_package
