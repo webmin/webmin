@@ -58,6 +58,29 @@ close(RPM);
 return ($tmp[0], $tmp[1], $d, $tmp[2], $tmp[3], $tmp[4], &make_date($tmp[5]));
 }
 
+# virtual_package_info(package)
+# Returns an array of package information for a virtual package, usually called
+# if "package_info" returns nothing.
+sub virtual_package_info
+{
+my ($vpkg) = @_;
+my $query_format =
+	'%{NAME}\n%{GROUP}\n%{ARCH}\n%{VERSION}-%{RELEASE}\n%{VENDOR}\n'.
+	'%{INSTALLTIME}\n%{DESCRIPTION}';
+
+&open_execute_command(*RPM, "rpm -q --whatprovides $vpkg --queryformat ".
+			    "\"$query_format\" 2>/dev/null", 1, 1);
+my @tmp = <RPM>;
+close(RPM);
+
+return () if (!@tmp || $tmp[0] =~ /no\s+package\s+provides/);
+
+# Extract fields properly
+my @fields = splice(@tmp, 0, 6);
+chomp(@fields);
+return (@fields[0, 1], join('', @tmp), @fields[2, 3, 4], &make_date($fields[5]));
+}
+
 # is_package(file)
 # Check if some file is a package file
 sub is_package

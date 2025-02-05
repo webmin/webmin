@@ -87,6 +87,41 @@ push(@rv, $text{'debian_unknown'});
 return @rv;
 }
 
+# virtual_package_info(package)
+# Returns an array of package information for a virtual package, usually called
+# if "package_info" returns nothing.
+sub virtual_package_info
+{
+my ($pkg) = @_;
+my $qpkg = quotemeta($pkg);
+my $apt_cache_cmd = &has_command("apt-cache");
+return ( ) if (!$apt_cache_cmd);
+my $out = &backquote_command("$apt_cache_cmd showpkg $qpkg 2>&1", 1);
+
+# Get the package that provides this virtual package
+my ($vpkg);
+if ($out =~ /Reverse Provides:\s*(\S+\s+\S+)/) {
+	my ($rpkg, $rver) = split(/\s+/, $1, 2);
+	$vpkg = $rpkg;
+	$qvpkg = quotemeta($vpkg)."=".quotemeta($rver);
+	}
+return ( ) if (!$vpkg);
+
+# Get full status
+$out = &backquote_command("$apt_cache_cmd show $qvpkg 2>&1", 1);
+$out =~ s/[\0-\177]*\r?\n\r?\n(Package:)/\\1/;	# remove available ver
+return () if ($? || $out =~ /Package .* is not available/i);
+local @rv = ( $vpkg, &alphabet_name($vpkg) );
+push(@rv, $out =~ /Description(-en)?:\s+((.*\n)(\s+.*\n)*)/i ? $2
+						   : $text{'debian_unknown'});
+push(@rv, $out =~ /Architecture:\s+(\S+)/i ? $1 : $text{'debian_unknown'});
+push(@rv, $out =~ /Version:\s+(\S+)/i ? $1 : $text{'debian_unknown'});
+push(@rv, $out =~ /Maintainer:\s+(.*)/i ? &html_escape($1)
+					 : $text{'debian_unknown'});
+push(@rv, $text{'debian_unknown'});
+return @rv;
+}
+
 # check_files(package)
 # Fills in the %files array with information about the files belonging
 # to some package. Values in %files are  path type user group mode size error
