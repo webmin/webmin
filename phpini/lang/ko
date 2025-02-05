@@ -34,13 +34,11 @@ dirs_title=디렉토리 설정
 dirs_header=PHP 스크립트/확장 디렉토리 설정
 dirs_include=include 파일을 찾을 디렉토리
 dirs_below=다음 리스트
-dirs_ext=PHP 확장 디렉토리
 dirs_upload=파일 업로드 허가
 dirs_utmp=업로드 파일을 위한 임시 디렉토리
 dirs_err=디렉토리 설정 저장 실패
 dirs_eincs=include 파일을 찾을 디렉토리가 입력되지 않았습니다.
 dirs_eutmp=임시 파일 디렉토리가 설정되지 않았거나 올바르지 않습니다.
-dirs_eext=PHP 확장 디렉토리가 지정되지 않았습니다.
 
 db_title=데이터베이스 설정
 db_header1=MySQL 데이터베이스 연결 설정

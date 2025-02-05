@@ -37,13 +37,11 @@ dirs_title=Katalog innstillinger
 dirs_header=Innstillinger for PHP script og utvidelse
 dirs_include=Søkestier for inkluderinger
 dirs_below=Listet nedenfor..
-dirs_ext=Katalog for utvidelser
 dirs_upload=Tillat opplasting av filer?
 dirs_utmp=Midlertidig katalog for opplastede filer
 dirs_err=Kunne ikke lagre katalog innstillinger
 dirs_eincs=Ingen søkekataloger for inkludering angitt
 dirs_eutmp=Manglende eller ugyldig katalog for midlertidige filer
-dirs_eext=Manglende katalog for utvidelser
 
 db_title=Database innstillinger
 db_header1=Innstillinger for MySQL databasekoblinger

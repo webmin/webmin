@@ -39,8 +39,16 @@ print &ui_columns_start([ $text{'mods_enabled'},
 foreach my $m (@mods) {
 	my $pkg;
 	if ($n && $ver) {
-		($pkg) = grep { $_ } map { $pkgmap{$_} }
-			      &php_module_packages($m->{'mod'}, $ver, $filever);
+		my @poss = &php_module_packages($m->{'mod'}, $ver, $filever);
+		($pkg) = grep { $_ } map { $pkgmap{$_} } @poss;
+		if (!$pkg) {
+			# Package is referenced by another name
+			foreach (@poss) {
+				my @pinfo = &software::virtual_package_info($_);
+				$pkg = { 'name' => $pinfo[0],
+					 'version' => $pinfo[4] } if @pinfo;
+				}
+			}
 		}
 	print &ui_columns_row([
 		&ui_checkbox("mod", $m->{'mod'}, "", $m->{'enabled'}),
@@ -51,7 +59,7 @@ foreach my $m (@mods) {
 		  ( &ui_link("../software/edit_pack.cgi?package=".
 			     &urlize($pkg->{'name'})."&version=".
 			     &urlize($pkg->{'version'}),
-			     "$pkg->{'name'} $pkg->{'version'}") ),
+			     "$pkg->{'name'}-$pkg->{'version'}") ),
 		]);
 	}
 print &ui_columns_end();
@@ -64,7 +72,7 @@ if (&foreign_installed("software") &&
 	print $text{'mods_idesc'},"<p>\n";
 	print &ui_form_start("install_mod.cgi");
 	print &ui_hidden("file", $in{'file'});
-	print "<b>$text{'mods_newpkg'}</b> ",
+	print "$text{'mods_newpkg'}&nbsp; ",
 	      &ui_textbox("mod", undef, 30),"\n";
 	print &ui_form_end([ [ undef, $text{'mods_install'} ] ]);
 	}

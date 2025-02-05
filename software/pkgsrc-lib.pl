@@ -78,6 +78,14 @@ return ($packages{0,'name'}, $packages{0,'class'}, $packages{0,'desc'},
 	$packages{0,'arch'}, $packages{0,'version'}, undef, undef);
 }
 
+# virtual_package_info(package)
+# Returns an array of package information for a virtual package, usually called
+# if "package_info" returns nothing.
+sub virtual_package_info
+{
+return ( );
+}
+
 # is_package(file)
 # Always returns 0, because pkgsrc doesn't support installing from files
 sub is_package

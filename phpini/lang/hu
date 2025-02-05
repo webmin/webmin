@@ -17,7 +17,6 @@ vars_title=PHP változók
 
 dirs_title=Könyvtár beállítások
 dirs_below=Alábbiakban:
-dirs_ext=Könyvtár kiterjesztések
 
 db_title=Adatbázis beállítások
 db_unlimited=Korlátlan

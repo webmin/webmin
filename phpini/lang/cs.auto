@@ -4,8 +4,6 @@ list_efile=Soubor, který chcete upravit, musí být absolutní cesta
 list_format_ini=Formát INI
 list_format_fpm=Formát FPM
 
-dirs_exts=Rozšíření k načtení
-
 session_redis=Redis
 session_memcache=MemcacheD
 
@@ -35,21 +33,21 @@ disable_leftover=Další funkce:
 disable_err=Nepodařilo se uložit zakázané funkce
 disable_classes=Zakázané vestavěné třídy
 
-mods_title=PHP moduly
-mods_edir=Nelze najít adresář modulů PHP!
-mods_ecannot=Nemáte oprávnění upravovat povolené moduly PHP
-mods_desc=Tuto stránku lze použít ke globálnímu povolení a zakázání modulů PHP verze $1 pro všechny uživatele tohoto systému.
+mods_title=Rozšíření PHP
+mods_edir=Nelze najít adresář rozšíření PHP!
+mods_ecannot=Nemáte oprávnění upravovat povolená rozšíření PHP
+mods_desc=Tuto stránku lze použít ke globálnímu povolení a zakázání rozšíření PHP verze $1 pro všechny uživatele tohoto systému.
 mods_enabled=Povoleno?
-mods_name=Název modulu
+mods_name=Název rozšíření
 mods_file=Konfigurační soubor
 mods_pkg=Balík
-mods_idesc=PHP moduly, které nejsou v tomto systému dostupné, lze nainstalovat z konfigurovaných úložišť softwarových balíků.
-mods_newpkg=Přidat modul PHP:
+mods_idesc=Rozšíření PHP, která ještě nejsou na tomto systému nainstalována, lze nainstalovat z konfigurovaných úložišť softwarových balíčků.
+mods_newpkg=Přidejte rozšíření PHP
 mods_install=Instalovat nyní
-mods_err=Nepodařilo se uložit moduly PHP
+mods_err=Rozšíření PHP se nepodařilo uložit
 mods_egetver=Nelze zjistit verzi PHP pro konfigurační soubor $1
 mods_egetbin=Nepodařilo se zjistit binární PHP pro konfigurační soubor $1
-mods_return=PHP moduly
+mods_return=PHP rozšíření
 
 imod_title=Nainstalujte modul PHP
 imod_err=Nepodařilo se nainstalovat modul PHP

@@ -35,13 +35,11 @@ dirs_title=Directory Instellingen
 dirs_header=PHP script en extensie directory instellingen
 dirs_include=Zoek directory's om bij te voegen
 dirs_below=In de lijst hieronder ..
-dirs_ext=Directory voor extensies
 dirs_upload=File uploads toestaan?
 dirs_utmp=Tijdelijke directory voor geuploade files
 dirs_err=Mislukt om directory instellingen op te slaan
 dirs_eincs=Nee inclusief ingevulde zoek directory's
 dirs_eutmp=Ontbrekende of ongeldige tijdelijke files directory
-dirs_eext=Ontbrekende extensie directory
 
 db_title=Database Instellingen
 db_header1=MySQL database verbinding instellingen

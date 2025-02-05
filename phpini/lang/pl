@@ -32,13 +32,11 @@ dirs_title=Ustawienia katalogu
 dirs_header=Ustawienia skryptu PHP i katalogu rozszerzeń
 dirs_include=Przeszukiwane katalogi do dołączenia (include)
 dirs_below=Wybrane poniżej ..
-dirs_ext=Katalog dla rozszerzeń
 dirs_upload=Pozwalać na wysyłanie plików?
 dirs_utmp=Katalog tymczasowy dla wysyłanych plików
 dirs_err=Błąd zapisu ustawień katalogu
 dirs_eincs=Nie wpisano katalogów do przeszukiwania
 dirs_eutmp=Brakujący lub błędny katalog plików tymczasowych
-dirs_eext=Brak katalogu rozszerzeń
 
 db_title=Ustawienia bazy danych
 db_header1=Ustawienia połączenia z bazą danych MySQL
