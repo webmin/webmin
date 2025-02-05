@@ -98,6 +98,14 @@ return ( $packages{0,'name'}, $packages{0,'class'}, $packages{0,'desc'},
 	 $system_arch, $packages{0,'version'}, "Gentoo", &make_date($st[9]) );
 }
 
+# virtual_package_info(package)
+# Returns an array of package information for a virtual package, usually called
+# if "package_info" returns nothing.
+sub virtual_package_info
+{
+return ( );
+}
+
 # is_package(file)
 # Check if some file is a package file
 sub is_package

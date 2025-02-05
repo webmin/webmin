@@ -57,6 +57,8 @@ foreach my $f (glob("$nm_conn_dir/*.nmconnection")) {
 				      'netmask' => $nm });
 			}
 		}
+	my $gateway = &find_nm_config($cfg, "ipv4", "gateway");
+	$iface->{'gateway'} ||= $gateway;
 
 	# IPv6 addresses
 	for(my $i=1; defined(my $addr = &find_nm_config($cfg, "ipv6", "address$i")); $i++) {

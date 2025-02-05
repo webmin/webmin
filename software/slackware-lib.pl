@@ -94,6 +94,14 @@ close(PKG);
 return @rv;
 }
 
+# virtual_package_info(package)
+# Returns an array of package information for a virtual package, usually called
+# if "package_info" returns nothing.
+sub virtual_package_info
+{
+return ( );
+}
+
 # check_files(package)
 # Fills in the %files array with information about the files belonging
 # to some package. Values in %files are  path type user group mode size error

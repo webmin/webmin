@@ -23,6 +23,7 @@ if ($got) {
 	my $already;
 	foreach my $pkg (@poss) {
 		my @pinfo = &software::package_info($pkg);
+		@pinfo = &software::virtual_package_info($pkg) if (!@pinfo);
 		$already++ if (@pinfo);
 		}
 	$already && &error(&text('imod_alreadygot',
@@ -39,10 +40,12 @@ print &text('imod_alldoing', "<tt>".&html_escape($in{'mod'})."</tt>",
 my $ok = 0;
 foreach my $pkg (@poss) {
 	my @pinfo = &software::package_info($pkg);
+	@pinfo = &software::virtual_package_info($pkg) if (!@pinfo);
 	next if (@pinfo);
 	my ($out, $rs) = &capture_function_output(
 		\&software::update_system_install, $pkg);
-	my @pinfo = &software::package_info($pkg);
+	@pinfo = &software::package_info($pkg);
+	@pinfo = &software::virtual_package_info($pkg) if (!@pinfo);
 	if (@pinfo && @$rs) {
 		($got) = grep { $_->{'mod'} eq $in{'mod'} }
 			      &list_php_ini_modules($inidir);
