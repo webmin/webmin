@@ -687,6 +687,7 @@ foreach my $f (readdir(DIR)) {
 	my $path = "$dir/$f";
 	my $ini = { 'file' => $f,
 		    'path' => $path,
+		    'dir' => $dir,
 		  };
 	# Check for the extension line
 	my $lref = &read_file_lines($path, 1);
@@ -716,6 +717,7 @@ if (opendir(DIR, $availdir)) {
 		next if ($already);
 		my $ini = { 'file' => $f,
 			    'path' => $path,
+			    'dir' => $dir,
 			    'enabled' => 0,
 			    'available' => 1,
 			  };
@@ -739,18 +741,33 @@ sub enable_php_ini_module
 {
 my ($ini, $enable) = @_;
 return if ($ini->{'enabled'} == $enable);
-&lock_file($ini->{'path'});
-my $lref = &read_file_lines($ini->{'path'});
-foreach my $l (@$lref) {
-	if ($enable && !$ini->{'enabled'}) {
-		$l =~ s/^\s*;\s*(extension\s*=\s*(\S+)(\.so)?)/$1/;
+if ($ini->{'link'} || $ini->{'available'}) {
+	# Enable is done via a symlink
+	if ($enable && $ini->{'available'}) {
+		# Create the link
+		my $newlink = $ini->{'dir'}."/10-".$ini->{'mod'}.".ini";
+		&symlink_logged($ini->{'path'}, $newlink);
 		}
-	elsif (!$enable && $ini->{'enabled'}) {
-		$l =~ s/^\s*(extension\s*=\s*(\S+)(\.so)?)/;$1/;
+	elsif (!$enable && $ini->{'link'}) {
+		# Remove the link
+		&unlink_logged($ini->{'path'});
 		}
 	}
-&flush_file_lines($ini->{'path'});
-&unlock_file($ini->{'path'});
+else {
+	# Just edit the extension= line and comment in or out
+	&lock_file($ini->{'path'});
+	my $lref = &read_file_lines($ini->{'path'});
+	foreach my $l (@$lref) {
+		if ($enable && !$ini->{'enabled'}) {
+			$l =~ s/^\s*;\s*(extension\s*=\s*(\S+)(\.so)?)/$1/;
+			}
+		elsif (!$enable && $ini->{'enabled'}) {
+			$l =~ s/^\s*(extension\s*=\s*(\S+)(\.so)?)/;$1/;
+			}
+		}
+	&flush_file_lines($ini->{'path'});
+	&unlock_file($ini->{'path'});
+	}
 }
 
 # php_module_packages(mod, version, version-from-filename)
