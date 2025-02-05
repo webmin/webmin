@@ -9,6 +9,7 @@ $access{'gencsr'} || &error($text{'ecannot'});
 
 if ($in{'keysize'}==512){$checked[0]=" checked";}
 elsif ($in{'keysize'}==2048){$checked[2]=" checked";}
+elsif ($in{'keysize'}==4096){$checked[3]=" checked";}
 else {$checked[1]=" checked";}  # Default keysize 1024
 $in{'c'}=~tr/[a-z]/[A-Z]/;
 if ($in{'submitted'} eq "generate") {

@@ -1,0 +1,10 @@
+- Update setup.py and CHANGES.txt and commit
+- Create version tag and tarball from tag
+    WVER=0.1.0
+    git tag v${WVER}
+    git push origin master
+    git push origin v${WVER}
+- Create the source distribution
+    python3 setup.py sdist
+- Upload the source distribution
+    python3 -m twine upload dist/websockify-${WVER}.tar.gz

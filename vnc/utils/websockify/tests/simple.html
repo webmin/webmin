@@ -1,0 +1,65 @@
+<html>
+
+    <head>
+        <title>Websock Simple Client</title>
+    </head>
+
+    <body>
+        WebSocket/websockify URI: <input id='target'>&nbsp;
+        <input id='connectButton' type='button' value='Connect'
+            onclick="connect();">
+        <br> <br>
+        <input id='sendText'>&nbsp;
+        <input id='sendButton' type='button' value='Send' disabled
+            onclick="send();">&nbsp;
+        <br> <br>
+        Log:<br><textarea id="messages" cols=80 rows=25></textarea>
+    </body>
+
+
+    <script>
+        var document.getElementById = function(id) { return document.getElementById(id); },
+            ws = null, msgs = document.getElementById('messages');
+
+        function msg(str) {
+            msgs.innerHTML += str + "\n";
+            msgs.scrollTop = msgs.scrollHeight;
+        }
+
+        function connect() {
+            var uri = document.getElementById('target').value;
+            msg("connecting to: " + uri);
+            ws = new WebSocket(uri);
+            ws.binaryType = 'arraybuffer';
+            ws.addEventListener('open', function () {
+                msg("Connected");
+            });
+            ws.addEventListener('message', function (e) {
+                msg("Received: " + e.data);
+            });
+            ws.addEventListener('close', function () {
+                disconnect();
+                msg("Disconnected");
+            });
+
+            document.getElementById('connectButton').value = "Disconnect";
+            document.getElementById('connectButton').onclick = disconnect;
+            document.getElementById('sendButton').disabled = false;
+        }
+
+        function disconnect() {
+            if (ws) { ws.close(); }
+            ws = null;
+
+            document.getElementById('connectButton').value = "Connect";
+            document.getElementById('connectButton').onclick = connect;
+            document.getElementById('sendButton').disabled = true;
+        }
+
+        function send() {
+            msg("Sending: " + document.getElementById('sendText').value);
+            ws.send_string(document.getElementById('sendText').value);
+        };
+    </script>
+
+</html>
