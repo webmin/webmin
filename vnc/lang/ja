@@ -1,5 +1,5 @@
 index_title=VNC クライアント
 index_warn=警告この VNC セッションは<b>暗号化されていません</b>。
 index_nojava=このモジュールは動作するのに Java を必要としますが、ご使用のブラウザは Java をサポートしていません
-index_credits=VNC クライアント アプレットは AT&T により作成されました。詳細は <a href=http://www.uk.research.att.com/vnc>http://www.uk.research.att.com/vnc</a> をご覧ください。
+index_credits=noVNC の著作権は (C) 2022 noVNC の作者にあります。詳細については、<a href=https://novnc.com/info.html>https://novnc.com/info.html</a> をご覧ください。
 index_esocket=$1 ポート $2 上で実行中の サーバはありません。

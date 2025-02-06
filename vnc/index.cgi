@@ -93,15 +93,14 @@ if ($config{'program'}) {
 	# Proxy server not listening on the specfied address and port
 	# Need to run ./utils/novnc_proxy --vnc $addr:5900 --ssl-only --listen $addr:$port
 	if ($err) {
-		#system("./utils/novnc_proxy --cert /etc/webmin/miniserv.pem --vnc $addr:5900 --ssl-only --listen $addr:$port >/dev/null 2>&1 &");
-		system("./utils/novnc_proxy --cert /etc/webmin/miniserv.pem --vnc 127.0.0.1:5900 --ssl-only --listen $addr:$port >/dev/null 2>&1 &");
+		system("./utils/novnc_proxy --cert /etc/webmin/miniserv.pem --vnc 127.0.0.1:5900 --ssl-only --listen $addr:$port --web empty >/dev/null 2>&1 &");
 	}
 
 print "<center>";
 print "<iframe width=$config{'width'} height=$config{'height'} style=\"height: 100vh; border: none\" frameBorder=0 src='vnc.html?host=$addr&port=$port'>";
 print "</iframe>";
-#print "<br>\n";
-#print "$text{'index_credits'}</center>\n";
+print "<br>\n";
+print "$text{'index_credits'}</center>\n";
 print "</center>\n";
 
 &ui_print_footer("/", $text{'index'});
