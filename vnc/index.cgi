@@ -93,7 +93,7 @@ if ($config{'program'}) {
 	# Proxy server not listening on the specfied address and port
 	# Need to run ./utils/novnc_proxy --vnc $addr:5900 --ssl-only --listen $addr:$port
 	if ($err) {
-		system("./utils/novnc_proxy --cert /etc/webmin/miniserv.pem --vnc 127.0.0.1:5900 --ssl-only --file-only --listen $addr:$port --web empty >/dev/null 2>&1 &");
+		system("./utils/novnc_proxy --cert /etc/webmin/miniserv.pem --vnc 127.0.0.1:5900 --ssl-only --web NONE --listen $addr:$port >/dev/null 2>&1 &");
 	}
 
 print "<center>";
