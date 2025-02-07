@@ -1026,11 +1026,10 @@ sub go
 
             if (scalar(@module_help)) {
                 talk_log(
-                         ("" . GREEN . "   .. Found help files to process" .
-                            RESET . " \n      - @{[join(\"\n      - \", @module_help_info)]}"
-                         ),
-                         $data,
-                         1);
+                    "".GREEN."   .. Found help files to process".RESET."\n" .
+                    "      - " . join("\n      - ", @module_help_info),
+                    $data,
+                    1);
             }
 
             # Store template files
