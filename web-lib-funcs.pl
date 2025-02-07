@@ -3439,7 +3439,8 @@ if (!$connected) {
 		}
 
 	# finish off..
-	&ftp_command("QUIT", 2, $error) || return 0;
+	my $dummy;
+	&ftp_command("QUIT", 2, \$dummy);
 	close(SOCK);
 	}
 
@@ -3562,7 +3563,8 @@ if ($got != $st[7]) {
 
 # finish off..
 &ftp_command("", 2, $_[3]) || return 0;
-&ftp_command("QUIT", 2, $_[3]) || return 0;
+my $dummy;
+&ftp_command("QUIT", 2, \$dummy);
 close(SOCK);
 
 return 1;
