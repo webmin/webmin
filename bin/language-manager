@@ -1535,7 +1535,7 @@ sub go
 
                             # Force to use HTML on certain keys only
                             # It's useful to preserve certain lines intact, like
-                            # "HIGH:!aNULL:!MD5" when in text mode by defaul
+                            # "HIGH:!aNULL:!MD5" when in text mode by default
                             if (any {$_ =~ /^$key$/} @{$keys_force_html}) {
                                 $opt->{'translate-format-html'} = 1;
                             }
