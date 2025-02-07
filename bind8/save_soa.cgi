@@ -56,6 +56,7 @@ if ($config{'updserial_on'}) {
 	}
 else {
 	$in{'serial'} =~ /^\d+$/ || &error($text{'master_eserial'});
+	$in{'serial'} < 2**31 || &error($text{'master_eserial2'});
 	$serial = $in{'serial'};
 	}
 my $vals = "$in{'master'} $in{'email'} (\n".
