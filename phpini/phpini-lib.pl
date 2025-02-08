@@ -749,12 +749,21 @@ if ($ini->{'link'} || $ini->{'available'}) {
 	# Enable is done via a symlink
 	if ($enable && $ini->{'available'}) {
 		# Create the link
-		my $newlink = $ini->{'dir'}."/10-".$ini->{'mod'}.".ini";
-		&symlink_logged($ini->{'path'}, $newlink);
+		my ($dis) = glob($ini->{'dir'}."/*-".$ini->{'mod'}.
+				 ".ini.disabled");
+		if ($dis) {
+			my $newlink = $dis;
+			$newlink =~ s/\.disabled$//;
+			&rename_logged($dis, $newlink);
+			}
+		else {
+			my $newlink = $ini->{'dir'}."/10-".$ini->{'mod'}.".ini";
+			&symlink_logged($ini->{'path'}, $newlink);
+			}
 		}
 	elsif (!$enable && $ini->{'link'}) {
-		# Remove the link
-		&unlink_logged($ini->{'path'});
+		# Rename the link
+		&rename_logged($ini->{'path'}, $ini->{'path'}.".disabled");
 		}
 	}
 else {
