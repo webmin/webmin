@@ -60,6 +60,7 @@ sub main
                'translate-format|tf:s'            => \$opt{'translate-format'},
                'allow-symlinks|as!'               => \$opt{'allow-symlinks'},
                'git-commit|gc!'                   => \$opt{'git-commit'},
+               'stats|st:s'                       => \$opt{'stats'},
                'log|l:s'                          => \$opt{'log'},
                'verbose|v:i'                      => \$opt{'verbose'},
                'yes|y:i'                          => \$opt{'assumeyes'});
@@ -97,6 +98,12 @@ sub main
     # Store path and type
     $data{'path'} = $path;
     $data{'type'} = $type;
+
+    # Stats mode
+    if (defined($opt{'stats'})) {
+        show_stats(\%opt, \%data);
+        exit;
+    }
 
     # Set default format to text
     $opt{'translate-format'} ||= 'text';
@@ -1852,6 +1859,161 @@ sub trim
     return $s;
 }
 
+sub show_stats
+{
+    my ($opt, $data) = @_;
+
+    # Check required module
+    eval "use Term::Table";
+    die "Error: Module ", BRIGHT_RED, "Term::Table", RESET,
+        " is required for this operation\n" if $@;
+
+    # Setup base directory and module handling
+    my $modules = $opt->{'modules'};
+    my $only_missing = $opt->{'stats'} eq 'missing';
+    my $in_module_dir = !$modules && (-f "module.info" || -f "theme.info");
+    my $base_dir = $in_module_dir ? getcwd() : $data->{'path'};
+    die "No path specified.\n" unless ($base_dir);
+
+    # Specific module directory
+    if ($in_module_dir) {
+        $modules = File::Basename::basename($base_dir);
+        $opt->{'current-dir'} = 1;
+    }
+
+    # Get and sort module list
+    my @modules = defined($modules) ? split(/\s*,\s*/, $modules) :
+        do {
+            opendir(my $dh, $base_dir) or die "Error : Cannot open $base_dir: $!";
+            grep {
+                -d "$base_dir/$_" && 
+                !/^\./ && 
+                (-f "$base_dir/$_/module.info" || -f "$base_dir/$_/theme.info")
+            } readdir($dh);
+        };
+
+    # Sort modules
+    @modules = sort(@modules);
+
+    # Sort languages for consistent output
+    my @langs = sort { $a->{'lang'} cmp $b->{'lang'} } list_languages_local($data);
+
+    # Track modules with missing translations
+    my %modules_with_missing;
+
+    # Process each module
+    foreach my $module (@modules) {
+        print "Translation stats for the ",
+            BRIGHT_BLUE , "$module", RESET, " module ..\n";
+
+        my $module_has_missing = 0;
+
+        # Process translation directories
+        foreach my $dir_type (qw(lang ulang)) {
+            my $dir_path = $opt->{'current-dir'} ? 
+                               "$base_dir/$dir_type" : 
+                               "$base_dir/$module/$dir_type";
+            next unless (-d $dir_path);
+
+            # Read English source data
+            my %en_data;
+            my $en_file = "$dir_path/en";
+            unless (-f $en_file && read_file($en_file, \%en_data)) {
+                print "    .. failed : no 'en' file found or failed to read it\n";
+                next;
+            }
+
+            my @en_keys = grep { !/^(__norefs|\#)/ } keys %en_data;
+            my $total_keys = scalar @en_keys;
+
+            print "  Analyzing file ", RED, "$en_file", RESET,
+                " with ", BRIGHT_YELLOW, "$total_keys", RESET, " lines:\n";
+
+            # Process translations for each language
+            my @rows;
+            foreach my $lang (@langs) {
+                next unless (ref($lang) eq 'HASH');
+                my $code = $lang->{'lang'} or next;
+                next if ($code eq 'en');
+
+                my (%human_data, %auto_data);
+                
+                # Read translation files
+                my $human_file = "$dir_path/$code";
+                my $auto_file = "$dir_path/$code.auto";
+                my $has_human = -f $human_file && read_file($human_file, \%human_data);
+                my $has_auto = -f $auto_file && read_file($auto_file, \%auto_data);
+
+                # Count translations
+                my ($human, $auto, $missing) = (0, 0, 0);
+                foreach my $key (@en_keys) {
+                    if ($has_human && exists($human_data{$key}) &&
+                        length($human_data{$key})) {
+                        $human++;
+                    }
+                    elsif ($has_auto && exists($auto_data{$key}) &&
+                           length($auto_data{$key})) {
+                        $auto++;
+                    }
+                    else {
+                        $missing++;
+                    }
+                }
+
+                if ($missing > 0) {
+                    $module_has_missing = 1;
+                }
+
+                # Skip if we're only showing missing and this language has no
+                # missing translations
+                next if ($only_missing && $missing == 0);
+
+                push @rows, [
+                    $lang->{'lang'},
+                    $human,
+                    $auto,
+                    $missing,
+                    sprintf("%.1f%%", ($human + $auto) * 100 / $total_keys)
+                ];
+            }
+
+            # Display results
+            if (@rows) {
+                my $table = Term::Table->new(
+                    header => ['Language', 'Human', 'Machine', 'Missing', 'Coverage'],
+                    rows => \@rows,
+                    style => 'box',
+                );
+                print CYAN, "    $_\n", RESET for $table->render();
+            }
+            else {
+                if ($only_missing) {
+                    print 
+                        GREEN,
+                        "    No missing translations found for this module\n",
+                        RESET;
+                }
+                else {
+                    print BRIGHT_YELLOW,
+                          "    No translations found in this directory\n",
+                          RESET;
+                }
+            }
+            print "  .. done checking file\n";
+        }
+        print ".. done for module\n";
+
+        $modules_with_missing{$module} = 1 if ($module_has_missing);
+    }
+
+    # Print summary if any modules had missing translations
+    if (keys %modules_with_missing) {
+        my $modules_list = join(', ', sort keys %modules_with_missing);
+        print "Modules identified for translation: ",
+              BOLD, MAGENTA, $modules_list, RESET, "\n";
+    }
+}
+
 =pod
 
 =head1 NAME
@@ -1991,6 +2153,10 @@ Create a separate commit to the current repo, after each language was transcoded
 =item --log, -l
 
 Saves complete operation log. By default, log file is saved to "/tmp/language-manager-{timestamp}.txt" file.
+
+=item --stats, -st <all|missing>
+
+Show translation statistics in a table, breaking down human-translated, machine-translated, and untranslated (missing) keys for each module. If set to “missing,” only modules with incomplete translations will be displayed.
 
 =item --verbose, -v
 
