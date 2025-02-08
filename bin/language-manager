@@ -1973,14 +1973,17 @@ sub show_stats
                     $human,
                     $auto,
                     $missing,
-                    sprintf("%.1f%%", ($human + $auto) * 100 / $total_keys)
+                    sprintf("%5.1f%%   /  %5.1f%%", 
+                            $human * 100 / $total_keys,
+                            ($human + $auto) * 100 / $total_keys)
                 ];
             }
 
             # Display results
             if (@rows) {
                 my $table = Term::Table->new(
-                    header => ['Language', 'Human', 'Machine', 'Missing', 'Coverage'],
+                    header => ['Language', 'Human', 'Machine', 'Missing',
+                               'Coverage (Human vs. Total)'],
                     rows => \@rows,
                     style => 'box',
                 );
