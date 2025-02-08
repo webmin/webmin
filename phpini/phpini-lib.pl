@@ -296,7 +296,7 @@ my $file2 = $file;
 my $file3 = $file;
 $file1 =~ s/\/php.ini$/\/php.d/;
 $file2 =~ s/\/php.ini$/\/conf.d/;
-$file3 =~ s/\/php-fpm.conf$/\/php-fpm.d/;
+$file3 =~ s/\/php-fpm.conf$/\/php.d/;
 return -d $file1 ? $file1 :
        -d $file2 ? $file2 :
        -d $file3 ? $file3 : undef;
