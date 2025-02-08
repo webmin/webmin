@@ -506,7 +506,9 @@ if ($file && &get_config_fmt($file) eq "fpm" &&
 		my $conf;
 		if (-r $file) {
 			my @conf;
-			@conf = grep { &is_under_directory($_->{'dir'}, $file) }
+			my $filedir = $file;
+			$filedir =~ s/\/[^\/]+$//;
+			@conf = grep { &is_under_directory($_->{'dir'}, $filedir) }
 				     &virtual_server::list_php_fpm_configs();
 			if (@conf) {
 				$conf = &virtual_server::get_php_fpm_config(
