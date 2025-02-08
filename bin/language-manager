@@ -60,6 +60,7 @@ sub main
                'translate-format|tf:s'            => \$opt{'translate-format'},
                'allow-symlinks|as!'               => \$opt{'allow-symlinks'},
                'git-commit|gc!'                   => \$opt{'git-commit'},
+               'stats|st:s'                       => \$opt{'stats'},
                'log|l:s'                          => \$opt{'log'},
                'verbose|v:i'                      => \$opt{'verbose'},
                'yes|y:i'                          => \$opt{'assumeyes'});
@@ -97,6 +98,12 @@ sub main
     # Store path and type
     $data{'path'} = $path;
     $data{'type'} = $type;
+
+    # Stats mode
+    if (defined($opt{'stats'})) {
+        show_stats(\%opt, \%data);
+        exit;
+    }
 
     # Set default format to text
     $opt{'translate-format'} ||= 'text';
@@ -305,7 +312,7 @@ main();
 # The following is used to get correct language files based on old language table.
 # This function, should not be really needed, unless compiling languages with
 # Webmin version prior to 1.950 (first time), as Webmin 1.950+ is going to
-# use new langauge map and have all related language files in UTF-8 already
+# use new language map and have all related language files in UTF-8 already
 sub language_map
 {
     my ($code) = @_;
@@ -922,7 +929,7 @@ sub translate
     my $ts = $rs->{'success'};
     my $tc = $rs->{'content'};
 
-    # Exctract translation on success
+    # Extract translation on success
     if ($ts) {
         $tr = JSON::PP->new->decode($rs->{'content'});
         $tr = $tr->{'data'}->{'translations'}[0]->{'translatedText'};
@@ -1026,11 +1033,10 @@ sub go
 
             if (scalar(@module_help)) {
                 talk_log(
-                         ("" . GREEN . "   .. Found help files to process" .
-                            RESET . " \n      - @{[join(\"\n      - \", @module_help_info)]}"
-                         ),
-                         $data,
-                         1);
+                    "".GREEN."   .. Found help files to process".RESET."\n" .
+                    "      - " . join("\n      - ", @module_help_info),
+                    $data,
+                    1);
             }
 
             # Store template files
@@ -1067,7 +1073,7 @@ sub go
 
                         $e_lang = "$e_lang.$e_attr" if ($e_attr);
 
-                        # Final file name to be writtten
+                        # Final file name to be written
                         my $help_file_write       = $help_file       =~ s/$e_lang/$code/r;
                         my $help_file_write_short = $help_file_write =~ s/.*\/(.+)$/$1/r;
                         my $help_file_short       = $help_file       =~ s/.*\/(.+)$/$1/r;
@@ -1535,7 +1541,7 @@ sub go
 
                             # Force to use HTML on certain keys only
                             # It's useful to preserve certain lines intact, like
-                            # "HIGH:!aNULL:!MD5" when in text mode by defaul
+                            # "HIGH:!aNULL:!MD5" when in text mode by default
                             if (any {$_ =~ /^$key$/} @{$keys_force_html}) {
                                 $opt->{'translate-format-html'} = 1;
                             }
@@ -1853,6 +1859,164 @@ sub trim
     return $s;
 }
 
+sub show_stats
+{
+    my ($opt, $data) = @_;
+
+    # Check required module
+    eval "use Term::Table";
+    die "Error: Module ", BRIGHT_RED, "Term::Table", RESET,
+        " is required for this operation\n" if $@;
+
+    # Setup base directory and module handling
+    my $modules = $opt->{'modules'};
+    my $only_missing = $opt->{'stats'} eq 'missing';
+    my $in_module_dir = !$modules && (-f "module.info" || -f "theme.info");
+    my $base_dir = $in_module_dir ? getcwd() : $data->{'path'};
+    die "No path specified.\n" unless ($base_dir);
+
+    # Specific module directory
+    if ($in_module_dir) {
+        $modules = File::Basename::basename($base_dir);
+        $opt->{'current-dir'} = 1;
+    }
+
+    # Get and sort module list
+    my @modules = defined($modules) ? split(/\s*,\s*/, $modules) :
+        do {
+            opendir(my $dh, $base_dir) or die "Error : Cannot open $base_dir: $!";
+            grep {
+                -d "$base_dir/$_" && 
+                !/^\./ && 
+                (-f "$base_dir/$_/module.info" || -f "$base_dir/$_/theme.info")
+            } readdir($dh);
+        };
+
+    # Sort modules
+    @modules = sort(@modules);
+
+    # Sort languages for consistent output
+    my @langs = sort { $a->{'lang'} cmp $b->{'lang'} } list_languages_local($data);
+
+    # Track modules with missing translations
+    my %modules_with_missing;
+
+    # Process each module
+    foreach my $module (@modules) {
+        print "Translation stats for the ",
+            BRIGHT_BLUE , "$module", RESET, " module ..\n";
+
+        my $module_has_missing = 0;
+
+        # Process translation directories
+        foreach my $dir_type (qw(lang ulang)) {
+            my $dir_path = $opt->{'current-dir'} ? 
+                               "$base_dir/$dir_type" : 
+                               "$base_dir/$module/$dir_type";
+            next unless (-d $dir_path);
+
+            # Read English source data
+            my %en_data;
+            my $en_file = "$dir_path/en";
+            unless (-f $en_file && read_file($en_file, \%en_data)) {
+                print "    .. failed : no 'en' file found or failed to read it\n";
+                next;
+            }
+
+            my @en_keys = grep { !/^(__norefs|\#)/ } keys %en_data;
+            my $total_keys = scalar @en_keys;
+
+            print "  Analyzing file ", RED, "$en_file", RESET,
+                " with ", BRIGHT_YELLOW, "$total_keys", RESET, " lines:\n";
+
+            # Process translations for each language
+            my @rows;
+            foreach my $lang (@langs) {
+                next unless (ref($lang) eq 'HASH');
+                my $code = $lang->{'lang'} or next;
+                next if ($code eq 'en');
+
+                my (%human_data, %auto_data);
+                
+                # Read translation files
+                my $human_file = "$dir_path/$code";
+                my $auto_file = "$dir_path/$code.auto";
+                my $has_human = -f $human_file && read_file($human_file, \%human_data);
+                my $has_auto = -f $auto_file && read_file($auto_file, \%auto_data);
+
+                # Count translations
+                my ($human, $auto, $missing) = (0, 0, 0);
+                foreach my $key (@en_keys) {
+                    if ($has_human && exists($human_data{$key}) &&
+                        length($human_data{$key})) {
+                        $human++;
+                    }
+                    elsif ($has_auto && exists($auto_data{$key}) &&
+                           length($auto_data{$key})) {
+                        $auto++;
+                    }
+                    else {
+                        $missing++;
+                    }
+                }
+
+                if ($missing > 0) {
+                    $module_has_missing = 1;
+                }
+
+                # Skip if we're only showing missing and this language has no
+                # missing translations
+                next if ($only_missing && $missing == 0);
+
+                push @rows, [
+                    $lang->{'lang'},
+                    $human,
+                    $auto,
+                    $missing,
+                    sprintf("%5.1f%%   /  %5.1f%%", 
+                            $human * 100 / $total_keys,
+                            ($human + $auto) * 100 / $total_keys)
+                ];
+            }
+
+            # Display results
+            if (@rows) {
+                my $table = Term::Table->new(
+                    header => ['Language', 'Human', 'Machine', 'Missing',
+                               'Coverage (Human vs. Total)'],
+                    rows => \@rows,
+                    style => 'box',
+                );
+                print CYAN, "    $_\n", RESET for $table->render();
+            }
+            else {
+                if ($only_missing) {
+                    print 
+                        GREEN,
+                        "    No missing translations found for this module\n",
+                        RESET;
+                }
+                else {
+                    print BRIGHT_YELLOW,
+                          "    No translations found in this directory\n",
+                          RESET;
+                }
+            }
+            print "  .. done checking file\n";
+        }
+        print ".. done for module\n";
+
+        $modules_with_missing{$module} = 1 if ($module_has_missing);
+    }
+
+    # Print summary if any modules had missing translations
+    if (keys %modules_with_missing) {
+        my $modules_list = join(', ', sort keys %modules_with_missing);
+        print "Modules identified for translation: ",
+              BOLD, MAGENTA, $modules_list, RESET, "\n";
+    }
+}
+
 =pod
 
 =head1 NAME
@@ -1901,7 +2065,7 @@ Only transcode language files, using old-time encoding map, from files being in 
 
  - webmin language-manager -x=full -e=map -m=apache -ot
 
-Repare human translated language files, which stored in "utf-8" encoding already but still have HTML entities.
+Repair human translated language files, which stored in "utf-8" encoding already but still have HTML entities.
 
  - webmin language-manager -m=virtual-server -t=no,es -x=transcode
 
@@ -1993,12 +2157,16 @@ Create a separate commit to the current repo, after each language was transcoded
 
 Saves complete operation log. By default, log file is saved to "/tmp/language-manager-{timestamp}.txt" file.
 
+=item --stats, -st <all|missing>
+
+Show translation statistics in a table, breaking down human-translated, machine-translated, and untranslated (missing) keys for each module. If set to “missing,” only modules with incomplete translations will be displayed.
+
 =item --verbose, -v
 
-Verbosely print processed files and provide detailed output. By detault, verbose output is enabled.
+Verbosely print processed files and provide detailed output. By default, verbose output is enabled.
 
 =back
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2020 Ilia Rostovtsev <ilia@virtualmin.com>
+Copyright 2025 Ilia Ross <ilia@virtualmin.dev>
