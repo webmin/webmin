@@ -293,9 +293,13 @@ sub get_php_ini_dir
 my ($file) = @_;
 my $file1 = $file;
 my $file2 = $file;
+my $file3 = $file;
 $file1 =~ s/\/php.ini$/\/php.d/;
 $file2 =~ s/\/php.ini$/\/conf.d/;
-return -d $file1 ? $file1 : -d $file2 ? $file2 : undef;
+$file3 =~ s/\/php-fpm.conf$/\/php-fpm.d/;
+return -d $file1 ? $file1 :
+       -d $file2 ? $file2 :
+       -d $file3 ? $file3 : undef;
 }
 
 # get_php_ini_binary(file)
