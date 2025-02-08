@@ -141,6 +141,7 @@ master_emip=Invalid master IP '$1'
 master_esetup=BIND module is not set up
 master_eview=View $1 was not found
 master_eserial=Serial number must be a string of digits
+master_eserial2=Serial number must be less than 2^31
 master_apply=Apply Changes
 master_applymsg2=Click this button to apply changes for this zone only. This will only work if changes have been applied for the entire server at least once since the zone was created.
 master_defttl=Default time-to-live for records
