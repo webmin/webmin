@@ -312,7 +312,7 @@ main();
 # The following is used to get correct language files based on old language table.
 # This function, should not be really needed, unless compiling languages with
 # Webmin version prior to 1.950 (first time), as Webmin 1.950+ is going to
-# use new langauge map and have all related language files in UTF-8 already
+# use new language map and have all related language files in UTF-8 already
 sub language_map
 {
     my ($code) = @_;
@@ -929,7 +929,7 @@ sub translate
     my $ts = $rs->{'success'};
     my $tc = $rs->{'content'};
 
-    # Exctract translation on success
+    # Extract translation on success
     if ($ts) {
         $tr = JSON::PP->new->decode($rs->{'content'});
         $tr = $tr->{'data'}->{'translations'}[0]->{'translatedText'};
@@ -1073,7 +1073,7 @@ sub go
 
                         $e_lang = "$e_lang.$e_attr" if ($e_attr);
 
-                        # Final file name to be writtten
+                        # Final file name to be written
                         my $help_file_write       = $help_file       =~ s/$e_lang/$code/r;
                         my $help_file_write_short = $help_file_write =~ s/.*\/(.+)$/$1/r;
                         my $help_file_short       = $help_file       =~ s/.*\/(.+)$/$1/r;
@@ -2062,7 +2062,7 @@ Only transcode language files, using old-time encoding map, from files being in 
 
  - webmin language-manager -x=full -e=map -m=apache -ot
 
-Repare human translated language files, which stored in "utf-8" encoding already but still have HTML entities.
+Repair human translated language files, which stored in "utf-8" encoding already but still have HTML entities.
 
  - webmin language-manager -m=virtual-server -t=no,es -x=transcode
 
@@ -2160,7 +2160,7 @@ Show translation statistics in a table, breaking down human-translated, machine-
 
 =item --verbose, -v
 
-Verbosely print processed files and provide detailed output. By detault, verbose output is enabled.
+Verbosely print processed files and provide detailed output. By default, verbose output is enabled.
 
 =back
 
