@@ -127,7 +127,6 @@ desc_conds=Jeżeli $1
 desc_and=i
 desc_always=Zawsze
 
-redhat_einstalled=Akcja startowa <tt>iptables(6)</tt> nie została znaleziona, prawdopodobnie pakiet IPtables nie jest zainstalowany
 redhat_eoutput=Wystąpił błąd podczas pobierania stanu IPtables poleceniem $1. Prawdopodobnie twój system jest skonfigurowany do używania IPchains zamiast IPtables.
 
 gentoo_escript=Skrypt uruchamiający IPtables dla Gentoo $1 nie został znaleziony w systemie

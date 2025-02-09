@@ -17,7 +17,6 @@ index_chain=Grandinė $1
 index_action=Veiksmas
 index_desc=Būklė
 index_comm=Komentuok
-index_no_comment=
 index_move=Judėk
 index_none=Šiai grandinei nėra apibrėžtų taisyklių.
 index_policy=Nustatyti numatytąjį veiksmą į:
@@ -156,7 +155,7 @@ desc_args--match-set=$2 yra IP rinkinyje $1
 desc_src=šaltinis
 desc_dest=Kelionės tikslas
 
-redhat_einstalled=Nebuvo rastas <tt>iptables (6)</tt> įkrovos veiksmas, rodantis, kad IPtable paketas neįdiegtas jūsų sistemoje
+redhat_einstalled2=Nerastas <tt>$1</tt> įkrovos veiksmas, o tai rodo, kad IPtables paketas neįdiegtas jūsų sistemoje
 redhat_eoutput=Gaunant „IPtable“ būseną iš komandos $1 įvyko klaida. Tai tikriausiai rodo, kad jūsų sistema sukonfigūruota naudoti IPchains, o ne IPtable.
 
 gentoo_escript=„Gentoo IPtables“ paleisties scenarijus $1 jūsų sistemoje nerastas.

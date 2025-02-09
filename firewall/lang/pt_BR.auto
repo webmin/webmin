@@ -2,7 +2,6 @@ index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
 index_position=A mostrar as regras $1 a $2 de $3
 index_evalid=ATENÇÃO! Sua configuração atual de tabelas de IP é inválida : $1
-index_no_comment=
 index_crename=Renomear cadeia
 index_cmovesel=Mover selecionado
 index_unapply2=Salvar configuração
@@ -38,7 +37,7 @@ desc_args--match-set=$2 está contido no conjunto de IP $1
 desc_src=fonte
 desc_dest=destino
 
-redhat_einstalled=Nenhuma ação de inicialização <tt>iptables (6)</tt> foi encontrada, indicando que o pacote IPtables não está instalado no seu sistema
+redhat_einstalled2=Nenhuma ação de inicialização <tt>$1</tt> foi encontrada, indicando que o pacote IPtables não está instalado no seu sistema
 
 edit_state_snat=NATd de origem
 edit_state_dnat=NATd de destino

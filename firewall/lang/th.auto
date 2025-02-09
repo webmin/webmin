@@ -17,7 +17,6 @@ index_chain=เชน $1
 index_action=หนังบู๊
 index_desc=เงื่อนไข
 index_comm=คิดเห็น
-index_no_comment=
 index_move=ย้าย
 index_none=ไม่มีกฎที่กำหนดไว้สำหรับห่วงโซ่นี้
 index_policy=ตั้งค่าการกระทำเริ่มต้นเป็น:
@@ -156,7 +155,7 @@ desc_args--match-set=$2 มีอยู่ในชุด IP $1
 desc_src=แหล่ง
 desc_dest=ปลายทาง
 
-redhat_einstalled=ไม่พบการกระทำการบูท <tt>iptables (6)</tt> ซึ่งบ่งชี้ว่าแพ็คเกจ IPtables ไม่ได้ติดตั้งในระบบของคุณ
+redhat_einstalled2=ไม่พบการดำเนินการบูต <tt>$1</tt> ซึ่งบ่งชี้ว่าไม่ได้ติดตั้งแพ็คเกจ IPtables ในระบบของคุณ
 redhat_eoutput=เกิดข้อผิดพลาดในการรับสถานะ IPtables จากคำสั่ง $1 นี่อาจเป็นการระบุว่าระบบของคุณได้รับการกำหนดค่าให้ใช้ IPchains แทน IPtables
 
 gentoo_escript=ไม่พบสคริปต์เริ่มต้นของ Gentoo IPtables ในระบบของคุณ

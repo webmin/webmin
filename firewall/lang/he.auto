@@ -17,7 +17,6 @@ index_chain=שרשרת $1
 index_action=פעולה
 index_desc=מצב
 index_comm=תגובה
-index_no_comment=
 index_move=מהלך \ לזוז \ לעבור
 index_none=אין כללים המוגדרים לשרשרת זו.
 index_policy=הגדר את פעולת ברירת המחדל ל:
@@ -156,7 +155,7 @@ desc_args--match-set=$2 כלול בערכת ה- IP $1
 desc_src=מקור
 desc_dest=יעד
 
-redhat_einstalled=לא נמצאו פעולות <tt>iptables (6)</tt> אתחול, מה שמצביע על כך שחבילת ה- IPtables אינה מותקנת במערכת שלך
+redhat_einstalled2=לא נמצאה פעולת אתחול <tt>$1</tt>, המציינת שחבילת ה-IPtables אינה מותקנת במערכת שלך
 redhat_eoutput=אירעה שגיאה בהשגת סטטוס ה- IPtables מהפקודה $1. זה כנראה מצביע על כך שהמערכת שלך הוגדרה לשימוש ברשתות IP במקום בטבלאות IP.
 
 gentoo_escript=סקריפט ההפעלה של Gentoo IPtables $1 לא נמצא במערכת שלך.

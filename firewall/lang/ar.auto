@@ -17,7 +17,6 @@ index_chain=السلسلة$1
 index_action=عمل
 index_desc=شرط
 index_comm=تعليق
-index_no_comment=
 index_move=نقل
 index_none=لا توجد قواعد محددة لهذه السلسلة.
 index_policy=تعيين الإجراء الافتراضي على:
@@ -156,7 +155,7 @@ desc_args--match-set=$2 موجود في مجموعة IP$1
 desc_src=مصدر
 desc_dest=المكان المقصود
 
-redhat_einstalled=لم يتم العثور على <tt>iptables (6)</tt> إجراء تمهيد ، مما يشير إلى أن حزمة IPtables غير مثبتة على نظامك
+redhat_einstalled2=لم يتم العثور على إجراء تمهيد <tt>$1</tt>، مما يشير إلى أن حزمة IPtables غير مثبتة على نظامك
 redhat_eoutput=حدث خطأ أثناء الحصول على حالة IPtables من الأمر$1. يشير هذا على الأرجح إلى أن نظامك قد تم تكوينه لاستخدام IPchains بدلاً من IPtables.
 
 gentoo_escript=لم يتم العثور على البرنامج النصي لبدء التشغيل Gentoo IPtables $1 على نظامك.

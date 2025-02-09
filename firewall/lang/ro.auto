@@ -17,7 +17,6 @@ index_chain=Lanț $1
 index_action=Acțiune
 index_desc=Condiție
 index_comm=cometariu
-index_no_comment=
 index_move=Mișcare
 index_none=Nu există reguli definite pentru acest lanț.
 index_policy=Setați acțiunea implicită la:
@@ -156,7 +155,7 @@ desc_args--match-set=$2 este conținut în setul IP $1
 desc_src=sursă
 desc_dest=destinaţie
 
-redhat_einstalled=Nu a fost găsită nicio <tt>iptables (6)</tt> acțiune de pornire, care indică faptul că pachetul IPtables nu este instalat pe sistemul dvs.
+redhat_einstalled2=Nu a fost găsită nicio acțiune de pornire a <tt>$1</tt>, ceea ce indică faptul că pachetul IPtables nu este instalat pe sistemul dvs
 redhat_eoutput=A apărut o eroare la obținerea stării IPtables de la comanda $1. Acest lucru indică probabil că sistemul dvs. a fost configurat pentru a utiliza IPchains în loc de tabele IP.
 
 gentoo_escript=Scriptul de pornire Gentoo IPtables $1 nu a fost găsit în sistemul dvs.

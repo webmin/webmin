@@ -17,7 +17,6 @@ index_chain=Ķēde $1
 index_action=Darbība
 index_desc=Stāvoklis
 index_comm=Komentārs
-index_no_comment=
 index_move=Kustēties
 index_none=Šai ķēdei nav definēti noteikumi.
 index_policy=Iestatīt noklusējuma darbību uz:
@@ -156,7 +155,7 @@ desc_args--match-set=$2 ir ietverts IP komplektā $1
 desc_src=avots
 desc_dest=galapunkts
 
-redhat_einstalled=Netika atrasta <tt>iptables (6)</tt> sāknēšanas darbība, norādot, ka jūsu sistēmā nav instalēta pakete IPtables.
+redhat_einstalled2=Netika atrasta neviena <tt>$1</tt> sāknēšanas darbība, kas norāda, ka jūsu sistēmā nav instalēta IPtables pakotne
 redhat_eoutput=Kļūda, iegūstot IPtable statusu no komandas $1, radās. Tas, iespējams, norāda, ka jūsu sistēma ir konfigurēta tā, lai IPtable vietā izmantotu IPchains.
 
 gentoo_escript=Gentoo IPtables starta skripts $1 jūsu sistēmā netika atrasts.

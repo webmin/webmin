@@ -1,10 +1,11 @@
 index_position=Viser reglene $1 til $2 av $3
-index_no_comment=
 
 desc_match-set=$2 samsvarer med IPset $1
 desc_match-set!=$2 samsvarer ikke med IPset $1
 desc_match-set_src=innkommende trafikk
 desc_match-set_dst=utgående trafikk
+
+redhat_einstalled2=Ingen <tt>$1</tt> oppstartshandling ble funnet, noe som indikerer at IPtables-pakken ikke er installert på systemet ditt
 
 edit_matchset=Matchende IPset
 edit_matchsetsrc=på innkommende trafikk

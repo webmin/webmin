@@ -17,7 +17,6 @@ index_chain=زنجیره$1
 index_action=عمل
 index_desc=وضعیت
 index_comm=اظهار نظر
-index_no_comment=
 index_move=حرکت
 index_none=هیچ قانونی برای این زنجیره تعریف نشده است.
 index_policy=عملکرد پیش فرض را تنظیم کنید:
@@ -156,7 +155,7 @@ desc_args--match-set=$2 در مجموعه IP $1 موجود است
 desc_src=منبع
 desc_dest=مقصد
 
-redhat_einstalled=هیچ عملیاتی برای راه انداز <tt>iptables (6)</tt> یافت نشد ، نشان می دهد که بسته IPtables در سیستم شما نصب نشده است
+redhat_einstalled2=ÙÛÚ Ø§ÙØ¯Ø§Ù Ø±Ø§Ù‌Ø§ÙØ¯Ø§Ø²Û <tt>$1</tt> ÛØ§ÙØª ÙØ´Ø¯ Ú©Ù ÙØ´Ø§Ù ÙÛ‌Ø¯ÙØ¯ Ø¨Ø³ØªÙ IPtables Ø±ÙÛ Ø³ÛØ³ØªÙ Ø´ÙØ§ ÙØµØ¨ ÙØ´Ø¯Ù Ø§Ø³Øª
 redhat_eoutput=خطایی در دریافت وضعیت IPtables از دستور$1 رخ داد. احتمالاً این نشان می دهد كه سیستم شما پیكربندی شده است تا از IPchains به جای IPtables استفاده كند.
 
 gentoo_escript=اسکریپت راه اندازی Gentoo IPtables $1 در سیستم شما یافت نشد.
