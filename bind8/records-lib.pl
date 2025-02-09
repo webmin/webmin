@@ -943,7 +943,7 @@ else {
 sub compute_serial
 {
 my ($old) = @_;
-if ($config{'soa_style'} == 1 && $old =~ /^(\d{8})(\d\d)$/) {
+if ($config{'soa_style'} == 1 && $old =~ /^(\d{8})(\d+)$/) {
 	if ($1 >= &date_serial()) {
 		if ($2 >= 99) {
 			# Have to roll over to next day
