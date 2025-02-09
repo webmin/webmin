@@ -123,6 +123,7 @@ my @st = stat($realfile);
 if ($t && $st[9] != $t) {
 	# Changed, invalidate cache
 	delete($main::read_file_cache{$realfile});
+	delete($main::read_file_missing{$realfile});
 	}
 my $rv = &read_file_cached(@_);
 $main::read_file_cache_time{$realfile} = $st[9];
