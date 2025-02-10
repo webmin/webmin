@@ -17,7 +17,6 @@ index_chain=Chuỗi $1
 index_action=Hoạt động
 index_desc=Điều kiện
 index_comm=Bình luận
-index_no_comment=
 index_move=Di chuyển
 index_none=Không có quy tắc được xác định cho chuỗi này.
 index_policy=Đặt hành động mặc định thành:
@@ -156,7 +155,7 @@ desc_args--match-set=$2 được chứa trong IP-set $1
 desc_src=nguồn
 desc_dest=Nơi Đến
 
-redhat_einstalled=Không tìm thấy hành động khởi động <tt>iptables (6)</tt>, chỉ ra rằng gói IPtables không được cài đặt trên hệ thống của bạn
+redhat_einstalled2=Không tìm thấy hành động khởi động <tt>$1</tt>, cho biết gói IPtables chưa được cài đặt trên hệ thống của bạn
 redhat_eoutput=Đã xảy ra lỗi khi nhận trạng thái IPtables từ lệnh $1. Điều này có thể chỉ ra rằng hệ thống của bạn đã được cấu hình để sử dụng IPchains thay vì IPtables.
 
 gentoo_escript=Không tìm thấy tập lệnh khởi động Gentoo IPtables $1 trên hệ thống của bạn.

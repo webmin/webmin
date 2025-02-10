@@ -17,7 +17,6 @@ index_chain=Cadeia $1
 index_action=Açao
 index_desc=Condição
 index_comm=Comente
-index_no_comment=
 index_move=Mover
 index_none=Não há regras definidas para esta cadeia.
 index_policy=Defina a ação padrão como:
@@ -156,7 +155,7 @@ desc_args--match-set=$2 está contido no conjunto de IP $1
 desc_src=fonte
 desc_dest=destino
 
-redhat_einstalled=Nenhuma ação de inicialização <tt>iptables (6)</tt> foi encontrada, indicando que o pacote IPtables não está instalado no seu sistema
+redhat_einstalled2=Nenhuma ação de inicialização <tt>$1</tt> foi encontrada, indicando que o pacote IPtables não está instalado no seu sistema
 redhat_eoutput=Ocorreu um erro ao obter o status de tabelas de IP do comando $1. Provavelmente, isso indica que seu sistema foi configurado para usar IPchains em vez de IPtables.
 
 gentoo_escript=O script de inicialização do Gentoo IPtables $1 não foi encontrado no seu sistema.

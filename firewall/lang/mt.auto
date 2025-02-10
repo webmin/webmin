@@ -17,7 +17,6 @@ index_chain=Katina $1
 index_action=Azzjoni
 index_desc=Kundizzjoni
 index_comm=Kumment
-index_no_comment=
 index_move=Tmexxi
 index_none=M'hemm l-ebda regoli definiti għal din il-katina.
 index_policy=Issettja l-Azzjoni Default Li:
@@ -156,7 +155,7 @@ desc_args--match-set=$2 jinsab fis-sett tal-IP $1
 desc_src=sors
 desc_dest=destinazzjoni
 
-redhat_einstalled=L-ebda <tt>iptables (6)</tt> azzjoni ta 'boot ma nstabet, li tindika li l-pakkett IPtables mhuwiex installat fis-sistema tiegħek
+redhat_einstalled2=Ma nstabet l-ebda azzjoni ta' bootup <tt>$1</tt>, li tindika li l-pakkett IPtables mhuwiex installat fis-sistema tiegħek
 redhat_eoutput=Sar żball li ġab status ta 'IPtables mill-kmand $1. Dan probabbilment jindika li s-sistema tiegħek ġiet ikkonfigurata biex tuża IPchains minflok IPtables.
 
 gentoo_escript=L-iskritt tal-istartjar Gentoo IPtables $1 ma nstabx fis-sistema tiegħek.

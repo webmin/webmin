@@ -17,7 +17,6 @@ index_chain=Rantaian $1
 index_action=Tindakan
 index_desc=Keadaan
 index_comm=Komen
-index_no_comment=
 index_move=Pindah
 index_none=Tiada peraturan yang ditetapkan untuk rangkaian ini.
 index_policy=Tetapkan Tindakan Lalai Ke:
@@ -156,7 +155,7 @@ desc_args--match-set=$2 terkandung dalam IP-set $1
 desc_src=sumber
 desc_dest=destinasi
 
-redhat_einstalled=Tiada <tt>iptables (6)</tt> tindakan bootup dijumpai, menunjukkan bahawa pakej IPtables tidak dipasang pada sistem anda
+redhat_einstalled2=Tiada tindakan but <tt>$1</tt> ditemui, menunjukkan bahawa pakej IPtables tidak dipasang pada sistem anda
 redhat_eoutput=Ralat berlaku untuk mendapatkan status IPtables dari perintah $1. Ini mungkin menunjukkan bahawa sistem anda telah dikonfigurasikan untuk menggunakan IPchains dan bukannya IPTables.
 
 gentoo_escript=Skrip permulaan Gentoo IPtables $1 tidak dijumpai pada sistem anda.

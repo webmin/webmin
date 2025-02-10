@@ -4,7 +4,6 @@ index_position=Mostrando las reglas $1 a $2 de $3
 index_editing=Archivo de reglas $1
 index_evalid=¡ADVERTENCIA! Su configuración actual de IPtables no es válida : $1
 index_comm=Comentario
-index_no_comment=
 index_jump_reject=<font color=#ff4400>Rechazar</font>
 index_jump_log=Paquete de registro
 index_crename=Cambiar nombre de cadena
@@ -55,7 +54,7 @@ desc_args--match-set=$2 está contenido en el conjunto de IP $1
 desc_src=fuente
 desc_dest=destino
 
-redhat_einstalled=No se encontró ninguna acción de arranque <tt>iptables (6)</tt>, lo que indica que el paquete IPtables no está instalado en su sistema
+redhat_einstalled2=No se encontró ninguna acción de arranque <tt>$1</tt>, lo que indica que el paquete IPtables no está instalado en su sistema
 
 edit_cmt=Comentario de regla
 edit_state_untracked=Sin seguimiento

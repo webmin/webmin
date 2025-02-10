@@ -17,7 +17,6 @@ index_chain=Kette $1
 index_action=Aktion
 index_desc=Bedingung
 index_comm=Kommentar
-index_no_comment=
 index_move=Verschieben
 index_none=Es sind keine Regeln für diese Kette definiert.
 index_policy=Standardaktion festlegen auf:

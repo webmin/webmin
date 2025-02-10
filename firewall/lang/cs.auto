@@ -2,7 +2,6 @@ index_title_v=Firewall IPv4
 index_title_v6=Firewall IPv6
 index_position=Zobrazují se pravidla $1 až $2 z $3
 index_evalid=VAROVÁNÍ! Vaše aktuální konfigurace IPtables je neplatná : $1
-index_no_comment=
 index_crename=Přejmenovat řetězec
 index_cmovesel=Přesunout vybrané
 index_unapply2=Uložit konfiguraci
@@ -38,7 +37,7 @@ desc_args--match-set=$2 je obsaženo v sadě IP $1
 desc_src=zdroj
 desc_dest=destinace
 
-redhat_einstalled=Nebyla nalezena žádná spouštěcí akce <tt>iptables (6)</tt>, což naznačuje, že balíček IPtables není na vašem systému nainstalován.
+redhat_einstalled2=Nebyla nalezena žádná spouštěcí akce <tt>$1</tt>, což znamená, že balíček IPtables není ve vašem systému nainstalován
 
 edit_state_untracked=Nesledováno
 edit_state_snat=Zdroj NATd

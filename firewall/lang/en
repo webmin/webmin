@@ -17,7 +17,6 @@ index_chain=Chain $1
 index_action=Action
 index_desc=Condition
 index_comm=Comment
-index_no_comment=
 index_move=Move
 index_none=There are no rules defined for this chain.
 index_policy=Set Default Action To:

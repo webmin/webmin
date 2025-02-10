@@ -2,7 +2,6 @@ index_title_v=IPv4 Firewall
 index_title_v6=IPv6 Firewall
 index_position=Показаны правила от $1 до $2 из $3
 index_evalid=ПРЕДУПРЕЖДЕНИЕ! Ваша текущая конфигурация IPtables недопустима : $1
-index_no_comment=
 index_unapply2=Сохранить конфигурацию
 index_unapply2desc=Нажмите эту кнопку, чтобы сохранить указанную выше конфигурацию в файле конфигурации постоянного брандмауэра.
 index_firewalld=Похоже, что FirewallD используется для создания брандмауэра вашей системы. Возможно, вам следует использовать вместо этого <a href='$1'>модуль FirewallD</a>.
@@ -36,7 +35,7 @@ desc_args--match-set=$2 содержится в наборе IP $1
 desc_src=источник
 desc_dest=место назначения
 
-redhat_einstalled=Не найдено ни одного загрузочного действия <tt>iptables (6)</tt>, указывающего на то, что в вашей системе не установлен пакет IPtables
+redhat_einstalled2=Не обнаружено никаких действий загрузки <tt>$1</tt>, что указывает на то, что пакет IPtables не установлен в вашей системе
 
 edit_state_snat=Исходный NATd
 edit_state_dnat=NATd назначения

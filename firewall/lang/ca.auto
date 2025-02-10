@@ -1,10 +1,11 @@
 index_position=Es mostren les regles $1 a $2 de $3
-index_no_comment=
 
 desc_match-set=$2 coincideix amb l'IPset $1
 desc_match-set!=$2 no coincideix amb l'IPset $1
 desc_match-set_src=trànsit entrant
 desc_match-set_dst=trànsit de sortida
+
+redhat_einstalled2=No s'ha trobat cap acció d'arrencada <tt>$1</tt>, que indica que el paquet IPtables no està instal·lat al vostre sistema
 
 edit_matchset=IPset coincident
 edit_matchsetsrc=sobre el trànsit entrant

@@ -17,7 +17,6 @@ index_chain=連鎖 $1
 index_action=行動
 index_desc=條件
 index_comm=評論
-index_no_comment=
 index_move=移動
 index_none=沒有為此鏈定義任何規則。
 index_policy=將默認操作設置為：
@@ -156,7 +155,7 @@ desc_args--match-set=IP設置 $1中包含 $2
 desc_src=資源
 desc_dest=目的地
 
-redhat_einstalled=找不到<tt>iptables（6）</tt>引導操作，表明您的系統上未安裝IPtables軟件包
+redhat_einstalled2=未找到 <tt>$1</tt> 啟動操作，表示您的系統上未安裝 IPtables 套件
 redhat_eoutput=從命令 $1獲取IPtables狀態時發生錯誤。這可能表明您的系統已配置為使用IP鏈而不是IPtable。
 
 gentoo_escript=在您的系統上找不到Gentoo IPtables啟動腳本 $1。

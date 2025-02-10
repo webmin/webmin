@@ -3,7 +3,6 @@ index_title_v6=IPv6 Güvenlik Duvarı
 index_position=$3'ün $1 ila $2 arasındaki kurallar gösteriliyor
 index_editing=Kural dosyası $1
 index_evalid=UYARI! Mevcut IPtables yapılandırmanız geçersiz : $1
-index_no_comment=
 index_crename=Zinciri Yeniden Adlandır
 index_cmovesel=Seçileni Taşı
 index_unapply2=Yapılandırmayı Kaydet
@@ -40,7 +39,7 @@ desc_args--match-set=$2, IP kümesinde $1 içeriyor
 desc_src=kaynak
 desc_dest=hedef
 
-redhat_einstalled=IPtables paketinin sisteminizde yüklü olmadığını belirten <tt>iptables (6)</tt> önyükleme eylemi bulunamadı
+redhat_einstalled2=<tt>$1</tt> önyükleme eylemi bulunamadı; bu, IPtables paketinin sisteminize yüklenmediğini gösterir
 
 edit_state_untracked=İzlenmedi
 edit_state_snat=Kaynak NATd

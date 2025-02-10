@@ -4,7 +4,6 @@ index_position=Показано правила від $1 до $2 з $3
 index_editing=Файл правил $1
 index_evalid=УВАГА! Ваша поточна конфігурація IPtables недійсна : $1
 index_comm=Прокоментуйте
-index_no_comment=
 index_jump_reject=<font color=#ff4400>Відхилити</font>
 index_jump_log=Журнальний пакет
 index_crename=Перейменуйте ланцюжок
@@ -57,7 +56,7 @@ desc_args--match-set=$2 міститься в IP-наборі $1
 desc_src=джерело
 desc_dest=пункт призначення
 
-redhat_einstalled=Не знайдено <tt>iptables (6)</tt> завантажувальної дії, що вказує на те, що пакет IPtables не встановлений у вашій системі
+redhat_einstalled2=Не знайдено дії завантаження <tt>$1</tt>, що вказує на те, що пакет IPtables не встановлено у вашій системі
 
 edit_state_untracked=Не відслідковується
 edit_state_snat=Джерело NATd

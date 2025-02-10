@@ -1,10 +1,11 @@
 index_position=Показани са правила от $1 до $2 от $3
-index_no_comment=
 
 desc_match-set=$2 съответства на IPset $1
 desc_match-set!=$2 не съответства на IPset $1
 desc_match-set_src=входящ трафик
 desc_match-set_dst=изходящ трафик
+
+redhat_einstalled2=Не е намерено действие при зареждане на <tt>$1</tt>, което показва, че пакетът IPtables не е инсталиран на вашата система
 
 edit_matchset=Съвпадение на IPset
 edit_matchsetsrc=върху входящия трафик
