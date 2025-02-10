@@ -505,7 +505,7 @@ if ($file && -r $file && &foreign_check("virtual-server")) {
 		my $conf;
 		my $filedir = $file;
 		$filedir =~ s/\/[^\/]+$//;
-		my @conf = grep { &is_under_directory($_->{'dir'}, $filedir) }
+		my @conf = grep { &is_under_directory($filedir, $_->{'dir'}) }
 			     &virtual_server::list_php_fpm_configs();
 		if (@conf) {
 			$conf = &virtual_server::get_php_fpm_config(
