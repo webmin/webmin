@@ -498,22 +498,18 @@ if (&foreign_installed("apache")) {
 		&reset_environment();
 		}
 	}
-if ($file && &get_config_fmt($file) eq "fpm" &&
-    &foreign_check("virtual-server")) {
+if ($file && -r $file && &foreign_check("virtual-server")) {
 	# Looks like FPM format ... maybe a pool restart is needed
 	&foreign_require("virtual-server");
 	if (defined(&virtual_server::restart_php_fpm_server)) {
 		my $conf;
-		if (-r $file) {
-			my @conf;
-			my $filedir = $file;
-			$filedir =~ s/\/[^\/]+$//;
-			@conf = grep { &is_under_directory($_->{'dir'}, $filedir) }
-				     &virtual_server::list_php_fpm_configs();
-			if (@conf) {
-				$conf = &virtual_server::get_php_fpm_config(
-						$conf[0]->{'shortversion'});
-				}
+		my $filedir = $file;
+		$filedir =~ s/\/[^\/]+$//;
+		my @conf = grep { &is_under_directory($_->{'dir'}, $filedir) }
+			     &virtual_server::list_php_fpm_configs();
+		if (@conf) {
+			$conf = &virtual_server::get_php_fpm_config(
+					$conf[0]->{'shortversion'});
 			}
 		&virtual_server::push_all_print();
 		&virtual_server::set_all_null_print();
