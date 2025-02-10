@@ -50,6 +50,10 @@ foreach my $m (@mods) {
 				}
 			}
 		}
+	my $pkg_version_simple = $pkg->{'version'};
+	$pkg_version_simple =~ s/\+.*//;         # deb
+	$pkg_version_simple =~ s/\.[a-zA-Z].*//; # rpm
+	
 	print &ui_columns_row([
 		&ui_checkbox("mod", $m->{'mod'}, "", $m->{'enabled'}),
 		$m->{'mod'},
@@ -59,7 +63,7 @@ foreach my $m (@mods) {
 		  ( &ui_link("../software/edit_pack.cgi?package=".
 			     &urlize($pkg->{'name'})."&version=".
 			     &urlize($pkg->{'version'}),
-			     "$pkg->{'name'}-$pkg->{'version'}") ),
+			     "$pkg->{'name'}-$pkg_version_simple") ),
 		]);
 	}
 print &ui_columns_end();
