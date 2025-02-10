@@ -1,3 +1,5 @@
+index_anyfile=Upravte další konfigurační soubor PHP
+
 file_eread=Nepodařilo se přečíst $1 : $2
 
 list_efile=Soubor, který chcete upravit, musí být absolutní cesta

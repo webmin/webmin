@@ -7,7 +7,7 @@ index_desc=doel
 index_actions=aksies
 index_edit=bestuur
 index_manual=Wysig handmatig
-index_anyfile=Wysig ander PHP-opstellinglêers:
+index_anyfile=Wysig ander PHP-konfigurasielêer
 index_return=konfigurasie lêers
 
 file_global=Globale PHP-konfigurasie

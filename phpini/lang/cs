@@ -7,7 +7,6 @@ index_desc=Účel
 index_actions=Akce
 index_edit=Spravovat
 index_manual=Upravit ručně
-index_anyfile=Upravit jiný PHP konfigurační soubor:
 index_return=konfigurační soubory
 
 file_global=Globální PHP konfigurace

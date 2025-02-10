@@ -7,7 +7,7 @@ index_desc=Tikslas
 index_actions=Veiksmai
 index_edit=Tvarkykite
 index_manual=Redaguoti rankiniu būdu
-index_anyfile=Redaguoti kitą PHP konfigūracijos failą:
+index_anyfile=Redaguoti kitą PHP konfigūracijos failą
 index_return=konfigūracijos failai
 
 file_global=Visuotinė PHP konfigūracija

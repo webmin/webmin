@@ -7,7 +7,6 @@ index_desc=Propòsit
 index_actions=Accions
 index_edit=Gestiona
 index_manual=Edita Manualment
-index_anyfile=Edita un altre fitxer de configuració de PHP:
 index_return=als fitxers de configuració
 
 file_global=Configuració global de PHP

@@ -7,7 +7,6 @@ index_desc=사용처
 index_actions=작동
 index_edit=관리
 index_manual=수동 편집
-index_anyfile=다른 PHP 설정 파일 수정:
 index_return=설정 파일
 
 file_global=주 PHP 설정

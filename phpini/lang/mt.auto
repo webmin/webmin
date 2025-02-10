@@ -7,7 +7,7 @@ index_desc=Għan
 index_actions=Azzjonijiet
 index_edit=Immaniġġja
 index_manual=Editja Manwalment
-index_anyfile=Editja fajl ta 'konfigurazzjoni PHP ieħor:
+index_anyfile=Editja fajl ieħor ta' konfigurazzjoni PHP
 index_return=Fajls ta 'konfigurazzjoni
 
 file_global=Konfigurazzjoni PHP Globali

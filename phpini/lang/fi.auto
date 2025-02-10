@@ -7,7 +7,7 @@ index_desc=Tarkoitus
 index_actions=Toiminnot
 index_edit=hoitaa
 index_manual=Muokkaa manuaalisesti
-index_anyfile=Muokkaa muuta PHP-asetustiedostoa:
+index_anyfile=Muokkaa muuta PHP-asetustiedostoa
 index_return=kokoonpanotiedostot
 
 file_global=Globaali PHP-kokoonpano

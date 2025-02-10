@@ -7,7 +7,7 @@ index_desc=Mērķis
 index_actions=Darbības
 index_edit=Pārvaldīt
 index_manual=Rediģēt manuāli
-index_anyfile=Rediģēt citu PHP konfigurācijas failu:
+index_anyfile=Rediģējiet citu PHP konfigurācijas failu
 index_return=konfigurācijas faili
 
 file_global=Globālā PHP konfigurācija

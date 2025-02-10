@@ -7,7 +7,7 @@ index_desc=helburua
 index_actions=Ekintzak
 index_edit=kudeatu
 index_manual=Editatu eskuz
-index_anyfile=Editatu beste PHP konfigurazio fitxategia:
+index_anyfile=Editatu beste PHP konfigurazio fitxategia
 index_return=konfigurazio fitxategiak
 
 file_global=PHP konfigurazio globala

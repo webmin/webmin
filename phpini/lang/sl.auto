@@ -7,7 +7,7 @@ index_desc=Namen
 index_actions=Dejanja
 index_edit=Upravljajte
 index_manual=Ročno uredite
-index_anyfile=Uredi drugo konfiguracijsko datoteko PHP:
+index_anyfile=Uredite drugo konfiguracijsko datoteko PHP
 index_return=konfiguracijske datoteke
 
 file_global=Globalna konfiguracija PHP

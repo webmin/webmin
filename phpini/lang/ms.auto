@@ -7,7 +7,7 @@ index_desc=Tujuan
 index_actions=Tindakan
 index_edit=Mengurus
 index_manual=Edit secara manual
-index_anyfile=Edit fail konfigurasi PHP yang lain:
+index_anyfile=Edit fail konfigurasi PHP lain
 index_return=fail konfigurasi
 
 file_global=Konfigurasi PHP Global

@@ -7,7 +7,7 @@ index_desc=Scop
 index_actions=acţiuni
 index_edit=Administra
 index_manual=Editează manual
-index_anyfile=Editați alt fișier de configurare PHP:
+index_anyfile=Editați alt fișier de configurare PHP
 index_return=fișiere de configurare
 
 file_global=Configurația PHP globală

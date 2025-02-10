@@ -7,7 +7,7 @@ index_desc=Svrha
 index_actions=akcije
 index_edit=Upravljati
 index_manual=Ručno uređivanje
-index_anyfile=Uredi drugu konfiguracijsku datoteku PHP-a:
+index_anyfile=Uredite drugu PHP konfiguracijsku datoteku
 index_return=konfiguracijske datoteke
 
 file_global=Global PHP konfiguracija

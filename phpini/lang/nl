@@ -7,7 +7,6 @@ index_desc=Doel
 index_actions=Acties
 index_edit=Beheer
 index_manual=Bewerk Handmatig
-index_anyfile=Bewerk andere PHP configuratie file :
 index_return=configuratie files
 
 file_global=Globale PHP configuratie

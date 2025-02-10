@@ -7,7 +7,7 @@ index_desc=วัตถุประสงค์
 index_actions=การปฏิบัติ
 index_edit=จัดการ
 index_manual=แก้ไขด้วยตนเอง
-index_anyfile=แก้ไขไฟล์กำหนดค่า PHP อื่น ๆ :
+index_anyfile=แก้ไขไฟล์กำหนดค่า PHP อื่น ๆ
 index_return=ไฟล์การกำหนดค่า
 
 file_global=การกำหนดค่า PHP ทั่วโลก

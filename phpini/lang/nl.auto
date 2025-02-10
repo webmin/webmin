@@ -1,3 +1,5 @@
+index_anyfile=Bewerk ander PHP-configuratiebestand
+
 list_efile=Het te bewerken bestand moet een absoluut pad zijn
 list_format_ini=INI-formaat
 list_format_fpm=FPM-indeling

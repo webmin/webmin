@@ -7,7 +7,7 @@ index_desc=Mục đích
 index_actions=Hành động
 index_edit=Quản lý
 index_manual=Chỉnh sửa thủ công
-index_anyfile=Chỉnh sửa tập tin cấu hình PHP khác:
+index_anyfile=Chỉnh sửa tệp cấu hình PHP khác
 index_return=tập tin cấu hình
 
 file_global=Cấu hình PHP toàn cầu

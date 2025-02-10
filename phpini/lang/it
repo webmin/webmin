@@ -7,7 +7,6 @@ index_desc=Tipologia
 index_actions=Azioni
 index_edit=Modifica
 index_manual=Modifica manualmente
-index_anyfile=Modifica gli altri file di configurazione di PHP:
 index_return=file di configurazione
 
 file_global=Configurazione globale di PHP

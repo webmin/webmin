@@ -7,7 +7,7 @@ index_desc=Ändamål
 index_actions=Handlingar
 index_edit=Klara av
 index_manual=Redigera manuellt
-index_anyfile=Redigera annan PHP-konfigurationsfil:
+index_anyfile=Redigera annan PHP-konfigurationsfil
 index_return=konfigurationsfiler
 
 file_global=Global PHP-konfiguration
