@@ -54,7 +54,7 @@ else {
 	if ($access{'anyfile'}) {
 		print "<p>\n";
 		print &ui_form_start("list_ini.cgi");
-		print "<b>$text{'index_anyfile'}</b>\n";
+		print "$text{'index_anyfile'}&nbsp; \n";
 		print &ui_textbox("file", undef, 40)." ".
 		      &file_chooser_button("file")." ".
 		      &ui_submit($text{'index_edit'})."\n";
