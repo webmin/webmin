@@ -415,6 +415,8 @@ sub get_php_ini_bootup
 my ($file) = @_;
 return undef if (!&foreign_installed("init"));
 &foreign_require("init");
+# Versioned PHP-FPM config, e.g. /etc/php/8.3/fpm/php.ini on Debian
+# or /etc/opt/remi/php83/php-fpm.conf on EL systems
 if ($file =~ /php(\d{1,2})/ || $file =~ /php\/(\d\.\d)/) {
 	my $shortver = $1;
 	my $nodot = $shortver;
@@ -427,6 +429,14 @@ if ($file =~ /php(\d{1,2})/ || $file =~ /php\/(\d\.\d)/) {
 		if ($st) {
 			return $init;
 			}
+		}
+	}
+# Default /etc/php-fpm.conf config primarily on EL systems
+elsif ($file =~ /\/(php-fpm)\.conf/) {
+	my $init = $1;
+	my $st = &init::action_status($init);
+	if ($st) {
+		return $init;
 		}
 	}
 return undef;
