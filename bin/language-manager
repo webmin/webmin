@@ -99,27 +99,12 @@ sub main
     $data{'path'} = $path;
     $data{'type'} = $type;
 
-    # Stats mode
-    if (defined($opt{'stats'})) {
-        show_stats(\%opt, \%data);
-        exit;
-    }
-
     # Set default format to text
     $opt{'translate-format'} ||= 'text';
 
     # Force HTML format for "module" type translates
     if (defined($opt{'type'}) && $opt{'type'} =~ /module|help/) {
         $opt{'translate-format'} = 'html';
-    }
-
-    # Check if we can get Google Translate API token
-    $data{'token'} = get_google_translate_token();
-    if (!$data{'token'}) {
-        $opt{'only-diff'}      = 1;
-        $opt{'only-diff-auto'} = 1;
-        say YELLOW .
-          "Translation will not be done as Google Translate API key is missing. Falling back to `only-diff` mode.." . RESET;
     }
 
     # Get list of languages from `lang_list.txt` file
@@ -241,6 +226,21 @@ sub main
 
     # Build a list of value to check based on source file, and replace with, in all other languages
     $opt{'values-fix'} = [$opt{'values-fix'} ? split(',', $opt{'values-fix'}) : ()];
+
+    # Stats mode
+    if (defined($opt{'stats'})) {
+        show_stats(\%opt, \%data);
+        exit;
+    }
+
+    # Check if we can get Google Translate API token
+    $data{'token'} = get_google_translate_token();
+    if (!$data{'token'}) {
+        $opt{'only-diff'}      = 1;
+        $opt{'only-diff-auto'} = 1;
+        say YELLOW .
+          "Translation will not be done as Google Translate API key is missing. Falling back to `only-diff` mode.." . RESET;
+    }
 
     # Just run tests, and exit, without writing anything
     if (@{ $opt{'keys-test'} }) {
@@ -1868,11 +1868,16 @@ sub show_stats
     die "Error: Module ", BRIGHT_RED, "Term::Table", RESET,
         " is required for this operation\n" if $@;
 
+    my $aggregate_mode = $opt->{'stats'} eq 'aggregate';
+    my $only_missing   = $opt->{'stats'} eq 'missing';
+
+    # Prepare aggregator storage
+    my %aggregate_stats;
+
     # Setup base directory and module handling
-    my $modules = $opt->{'modules'};
-    my $only_missing = $opt->{'stats'} eq 'missing';
+    my $modules       = $opt->{'modules'};
     my $in_module_dir = !$modules && (-f "module.info" || -f "theme.info");
-    my $base_dir = $in_module_dir ? getcwd() : $data->{'path'};
+    my $base_dir      = $in_module_dir ? getcwd() : $data->{'path'};
     die "No path specified.\n" unless ($base_dir);
 
     # Specific module directory
@@ -1881,78 +1886,95 @@ sub show_stats
         $opt->{'current-dir'} = 1;
     }
 
-    # Get and sort module list
-    my @modules = defined($modules) ? split(/\s*,\s*/, $modules) :
-        do {
+    # Determine module list
+    my @modules = defined($modules)
+        ? split(/\s*,\s*/, $modules)
+        : do {
             opendir(my $dh, $base_dir) or die "Error : Cannot open $base_dir: $!";
             grep {
-                -d "$base_dir/$_" && 
-                !/^\./ && 
-                (-f "$base_dir/$_/module.info" || -f "$base_dir/$_/theme.info")
+                -d "$base_dir/$_"
+                && !/^\./
+                && (-f "$base_dir/$_/module.info" || -f "$base_dir/$_/theme.info")
             } readdir($dh);
         };
-
-    # Sort modules
     @modules = sort(@modules);
 
-    # Sort languages for consistent output
-    my @langs = sort { $a->{'lang'} cmp $b->{'lang'} } list_languages_local($data);
+    # Determine language set
+    my @langs;
+    if ($opt->{'language-target'}
+        && ref($opt->{'language-target'}) eq 'ARRAY'
+        && @{$opt->{'language-target'}}) {
+        @langs = map { { 'lang' => $_ } } sort @{$opt->{'language-target'}};
+    }
+    else {
+        @langs = sort { $a->{'lang'} cmp $b->{'lang'} } list_languages_local($data);
+    }
 
-    # Track modules with missing translations
     my %modules_with_missing;
 
-    # Process each module
+    # Process modules
     foreach my $module (@modules) {
-        print "Translation stats for the ",
-            BRIGHT_BLUE , "$module", RESET, " module ..\n";
+        # Check if module directory/info actually exists
+        if (
+            (!$opt->{'current-dir'} && !-d "$base_dir/$module")
+            || (
+                !$opt->{'current-dir'}
+                && !(-f "$base_dir/$module/module.info" || -f "$base_dir/$module/theme.info")
+            )
+        ) {
+            # Print module not found message
+            print "Module ", BRIGHT_RED, "$module", RESET, " not found\n";
+            next;
+        }
+
+        print "Translation stats for the ", BRIGHT_BLUE, "$module", RESET, " module ..\n"
+            unless $aggregate_mode;
 
         my $module_has_missing = 0;
 
-        # Process translation directories
+        # Process each translations directory: lang/ and ulang/
         foreach my $dir_type (qw(lang ulang)) {
-            my $dir_path = $opt->{'current-dir'} ? 
-                               "$base_dir/$dir_type" : 
-                               "$base_dir/$module/$dir_type";
-            next unless (-d $dir_path);
+            my $dir_path = $opt->{'current-dir'} ? "$base_dir/$dir_type"
+                                                 : "$base_dir/$module/$dir_type";
+            next unless -d $dir_path;
 
             # Read English source data
             my %en_data;
             my $en_file = "$dir_path/en";
             unless (-f $en_file && read_file($en_file, \%en_data)) {
-                print "    .. failed : no 'en' file found or failed to read it\n";
+                print "    .. failed : no 'en' file found or failed to read it\n"
+                    unless $aggregate_mode;
                 next;
             }
 
-            my @en_keys = grep { !/^(__norefs|\#)/ } keys %en_data;
+            my @en_keys    = grep { !/^(__norefs|\#)/ } keys %en_data;
             my $total_keys = scalar @en_keys;
 
-            print "  Analyzing file ", RED, "$en_file", RESET,
-                " with ", BRIGHT_YELLOW, "$total_keys", RESET, " lines:\n";
+            unless ($aggregate_mode) {
+                print "  Analyzing file ", RED, "$en_file", RESET,
+                      " with ", BRIGHT_YELLOW, "$total_keys", RESET, " lines:\n";
+            }
 
-            # Process translations for each language
             my @rows;
+            # Calculate stats for each language
             foreach my $lang (@langs) {
                 next unless (ref($lang) eq 'HASH');
                 my $code = $lang->{'lang'} or next;
                 next if ($code eq 'en');
 
                 my (%human_data, %auto_data);
-                
-                # Read translation files
                 my $human_file = "$dir_path/$code";
-                my $auto_file = "$dir_path/$code.auto";
-                my $has_human = -f $human_file && read_file($human_file, \%human_data);
-                my $has_auto = -f $auto_file && read_file($auto_file, \%auto_data);
+                my $auto_file  = "$dir_path/$code.auto";
 
-                # Count translations
+                my $has_human = -f $human_file && read_file($human_file, \%human_data);
+                my $has_auto  = -f $auto_file  && read_file($auto_file,  \%auto_data);
+
                 my ($human, $auto, $missing) = (0, 0, 0);
                 foreach my $key (@en_keys) {
-                    if ($has_human && exists($human_data{$key}) &&
-                        length($human_data{$key})) {
+                    if ($has_human && exists $human_data{$key} && length $human_data{$key}) {
                         $human++;
                     }
-                    elsif ($has_auto && exists($auto_data{$key}) &&
-                           length($auto_data{$key})) {
+                    elsif ($has_auto && exists $auto_data{$key} && length $auto_data{$key}) {
                         $auto++;
                     }
                     else {
@@ -1960,58 +1982,128 @@ sub show_stats
                     }
                 }
 
-                if ($missing > 0) {
-                    $module_has_missing = 1;
-                }
+                $module_has_missing = 1 if ($missing > 0);
 
-                # Skip if we're only showing missing and this language has no
-                # missing translations
+                # Skip if --stats=missing and none are missing
                 next if ($only_missing && $missing == 0);
 
+                # If in aggregate mode, accumulate in aggregator
+                if ($aggregate_mode) {
+                    $aggregate_stats{$code}{human}      += $human;
+                    $aggregate_stats{$code}{auto}       += $auto;
+                    $aggregate_stats{$code}{missing}    += $missing;
+                    $aggregate_stats{$code}{total_keys} += $total_keys;
+                    next;
+                }
+
+                # Otherwise build a row for this module
                 push @rows, [
-                    $lang->{'lang'},
+                    $code,
                     $human,
                     $auto,
                     $missing,
-                    sprintf("%5.1f%%   /  %5.1f%%", 
-                            $human * 100 / $total_keys,
-                            ($human + $auto) * 100 / $total_keys)
+                    sprintf("%5.1f%%   /  %5.1f%%",
+                        $human * 100 / $total_keys,
+                        ($human + $auto) * 100 / $total_keys)
                 ];
             }
 
-            # Display results
-            if (@rows) {
-                my $table = Term::Table->new(
-                    header => ['Language', 'Human', 'Machine', 'Missing',
-                               'Coverage (Human vs. Total)'],
-                    rows => \@rows,
-                    style => 'box',
-                );
-                print CYAN, "    $_\n", RESET for $table->render();
-            }
-            else {
-                if ($only_missing) {
-                    print 
-                        GREEN,
-                        "    No missing translations found for this module\n",
-                        RESET;
+            unless ($aggregate_mode) {
+                if (@rows) {
+                    my $table = Term::Table->new(
+                        header => [
+                            'Language', 'Human', 'Machine', 'Missing',
+                            'Coverage (Human / Total)'
+                        ],
+                        rows  => \@rows,
+                        style => 'box',
+                    );
+                    print CYAN, "    $_\n", RESET for $table->render();
                 }
                 else {
-                    print BRIGHT_YELLOW,
-                          "    No translations found in this directory\n",
-                          RESET;
+                    if ($only_missing) {
+                        print GREEN,
+                              "    No missing translations found for this module\n",
+                              RESET;
+                    }
+                    else {
+                        print BRIGHT_YELLOW,
+                              "    No translations found in this directory\n",
+                              RESET;
+                    }
                 }
+                print "  .. done checking file\n";
             }
-            print "  .. done checking file\n";
         }
-        print ".. done for module\n";
 
-        $modules_with_missing{$module} = 1 if ($module_has_missing);
+        print ".. done for module\n" unless $aggregate_mode;
+        $modules_with_missing{$module} = 1 if $module_has_missing;
     }
 
-    # Print summary if any modules had missing translations
-    if (keys %modules_with_missing) {
-        my $modules_list = join(', ', sort keys %modules_with_missing);
+    # Print final aggregator table in aggregate mode
+    if ($aggregate_mode) {
+        if (!$opt->{'current-dir'}) {
+            if (defined $opt->{'modules'} && length $opt->{'modules'}) {
+                print "Aggregate translation stats for modules: ",
+                      BRIGHT_MAGENTA, join(' ', @modules), RESET, " ..\n";
+            }
+            else {
+                print "Aggregate translation stats for all found modules in ",
+                    RED, $base_dir, RESET, " directory ..\n";
+            }
+        } else {
+            print "Aggregate translation stats for module in ", RED, $base_dir,
+                RESET, " directory ..\n";
+        }
+
+        # Sort languages by descending human coverage
+        my @sorted_codes = sort {
+            my $bd = $aggregate_stats{$b}{total_keys} || 0;
+            my $ad = $aggregate_stats{$a}{total_keys} || 0;
+            ($bd ? ($aggregate_stats{$b}{human} / $bd) : 0)
+            <=>
+            ($ad ? ($aggregate_stats{$a}{human} / $ad) : 0)
+        } keys %aggregate_stats;
+
+        my @agg_rows;
+        foreach my $code (@sorted_codes) {
+            my $h = $aggregate_stats{$code}{human}      || 0;
+            my $a = $aggregate_stats{$code}{auto}       || 0;
+            my $m = $aggregate_stats{$code}{missing}    || 0;
+            my $t = $aggregate_stats{$code}{total_keys} || 0;
+            next unless $t;  # skip if total_keys=0
+
+            push @agg_rows, [
+                $code,
+                $h,
+                $a,
+                $m,
+                sprintf("%5.1f%%   /  %5.1f%%",
+                        $h * 100 / $t,
+                        ($h + $a) * 100 / $t)
+            ];
+        }
+
+        if (@agg_rows) {
+            my $table = Term::Table->new(
+                header => [
+                    'Language', 'Human', 'Machine', 'Missing',
+                    'Coverage (Human / Total)'
+                ],
+                rows  => \@agg_rows,
+                style => 'box',
+            );
+            print CYAN, "    $_\n", RESET for $table->render();
+            print ".. done with aggregate stats\n";
+        }
+        else {
+            print ".. failed : no matching translations found to aggregate\n";
+        }
+    }
+
+    # Print summary if any modules had missing translations (only if not aggregate)
+    if (keys %modules_with_missing && !$aggregate_mode) {
+        my $modules_list = join(' ', sort keys %modules_with_missing);
         print "Modules identified for translation: ",
               BOLD, MAGENTA, $modules_list, RESET, "\n";
     }
