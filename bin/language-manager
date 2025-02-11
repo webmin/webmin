@@ -2249,9 +2249,9 @@ Create a separate commit to the current repo, after each language was transcoded
 
 Saves complete operation log. By default, log file is saved to "/tmp/language-manager-{timestamp}.txt" file.
 
-=item --stats, -st <all|missing>
+=item --stats, -st <all|missing|aggregate>
 
-Show translation statistics in a table, breaking down human-translated, machine-translated, and untranslated (missing) keys for each module. If set to “missing,” only modules with incomplete translations will be displayed.
+Show translation statistics in a table, breaking down human-translated, machine-translated, and untranslated (missing) keys for each module. If set to “missing,” only modules with incomplete translations will be displayed. If set to “aggregate,” a summary table will be displayed to summarize translation coverage across all or given modules.
 
 =item --verbose, -v
 
