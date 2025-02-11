@@ -14,6 +14,7 @@ index_memb=$1 удзельнікаў
 index_hst=Гаспадары і групы гаспадароў
 index_nohst=Ні хасты, ні групы не былі вызначаны.
 index_hostgroup=Гаспадар/група
+index_comment=Апісанне
 index_parent=Бацькоўскі
 index_hardware=Адрас абсталявання
 index_group=Група:

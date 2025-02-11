@@ -1,0 +1,19 @@
+index_title=Trợ giúp Webmin
+index_terms=Tìm kiếm trợ giúp cho
+index_mods=Các mô-đun để tìm kiếm
+index_all=Tất cả
+index_sel=Các mô-đun đã chọn ..
+index_search=Tìm kiếm
+index_header=Tìm kiếm trợ giúp Global Webmin
+index_return=mẫu tìm kiếm
+
+search_err=Tìm kiếm không thành công
+search_eterms=Các thuật ngữ tìm kiếm bị thiếu
+search_emods=Không có mô-đun nào được chọn
+search_title=Kết quả tìm kiếm
+search_einclude=Không bao gồm được $1
+search_none=Không có tập tin trợ giúp nào khớp với tìm kiếm của bạn
+search_mod=Mô-đun
+search_page=Trang trợ giúp
+search_line=Trận đấu trên
+search_results=Các trang trợ giúp Webmin khớp với $1

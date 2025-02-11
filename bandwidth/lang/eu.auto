@@ -73,14 +73,17 @@ setup_ecannot=Ezin duzu jarraipena gaitu
 setup_eiface=Interfazearen izen falta edo baliogabea
 setup_ezone=Huts egin du Shorewall hautatutako interfazerako gunea aurkitzeko
 
+system_firewalld=Firewalld
 system_firewall=iptables
 system_ipfw=IPFW
 system_ipfilter=IP iragazki
 system_shorewall=shorewall
 
+syslog_journald=Aldizkaria
 syslog_syslog=syslog
 syslog_syslog-ng=Syslog-NG
 
 rotate_title=Estatistikak eguneratzea
 rotate_doing=Registratutako sare trafikoa prozesatzen ..
 rotate_done=.. egin.
+rotate_failed=.. huts egin du : $1

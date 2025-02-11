@@ -1,0 +1,59 @@
+index_stopany=Arrêter l'autre serveur Minecraft
+index_stopanydesc=Cliquez sur ce bouton pour arrêter l'exécution du serveur Minecraft utilisant la version $1. Tous les clients seront immédiatement déconnectés.
+index_startwarn=ATTENTION ! Une version différente de Minecraft peut être configurée pour démarrer au démarrage.
+index_portwarn=ATTENTION ! Un autre processus avec le PID $1 utilise le port du serveur Minecraft. Il peut s'agir d'une autre version du serveur Minecraft.
+
+conf_type_amplified=Amplifié
+conf_ticks=Temps maximum entre les ticks
+conf_ticksecs=secondes
+conf_eticks=Le temps maximal entre les ticks doit être un nombre
+
+world_src3=Utiliser le fichier ZIP sur le serveur
+world_efile=Aucun nom de fichier de données mondiales n'a été saisi
+world_efile2=Le fichier de données mondial n'existe pas
+
+chooser_num=Numéro d'article
+
+backup_ezip=La commande ZIP n'est pas installée !
+backup_now=Enregistrer et sauvegarder maintenant
+backup_doing=Sauvegarde des mondes sélectionnés ..
+backup_failed=.. la sauvegarde a échoué !
+backup_done=.. sauvegarde terminée
+
+log_changeversion=Serveur modifié vers la version $1
+log_addversion=Version du serveur $1 ajoutée
+
+playtime_total=Durée totale
+playtime_date=Afficher le temps de lecture sur  :
+playtime_ok=Montrer
+playtime_today=&lt;Aujourd'hui&gt;
+playtime_alldays=&lt;Tous les jours combinés&gt;
+
+versions_title=Versions de Minecraft
+versions_file=Nom de fichier
+versions_desc=Description
+versions_size=Taille du pot
+versions_run=En cours d'exécution?
+versions_save=Changer de version
+versions_restart=Changer de version et redémarrer
+versions_save2=Changer la version et redémarrer le serveur
+versions_none=Aucune version de Minecraft trouvée !
+versions_header=Ajouter la version Minecraft
+versions_src=Source du fichier JAR
+versions_src0=Télécharger depuis l'URL
+versions_src1=Télécharger le fichier
+versions_src2=Dernière version $1 de $2
+versions_newver=Version du serveur
+versions_newsame=Travailler à partir du nom de fichier
+versions_all=Version d'installation
+versions_echange=La version sélectionnée n'existe pas
+versions_err=Impossible d'ajouter une nouvelle version
+versions_eurl=URL manquante pour télécharger à partir de
+versions_eurl2=L'URL n'est pas valide
+versions_ejar=Aucun fichier JAR téléchargé
+versions_ejar2=Le fichier JAR n'a pas de nom de fichier
+versions_ever=Impossible de déterminer la version à partir du nom de fichier JAR
+versions_enewver=La version doit être numérique
+versions_eclash=Un serveur avec le même nom de fichier existe déjà !
+versions_efmt=Le fichier n'est pas un JAR
+versions_elatesturl=Impossible de récupérer l'URL de téléchargement depuis $1

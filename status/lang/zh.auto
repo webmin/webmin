@@ -1,0 +1,10 @@
+index_madd=添加类型监视器
+
+type_reboot=需要重新启动
+
+mon_notmpl=无（使用 Webmin 默认值）
+
+sched_email_def=系统默认值 ($1)
+sched_eemailserver=您的邮件服务器尚未安装：$1
+
+reboot_pkgs=软件包更新需要重新启动

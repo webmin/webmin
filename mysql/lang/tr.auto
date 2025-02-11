@@ -25,6 +25,7 @@ dbase_header=Veritabanı tabloları, dizinler ve görünümler
 dbase_empty=Boş Veritabanı
 dbase_none2=Aramanızla eşleşen tablo yok.
 dbase_name=ad
+dbase_size=Boyut
 dbase_delete=Seçili Tabloları Bırak
 dbase_delete2=Seçili Nesneleri Bırak
 dbase_showing=$1 ile eşleşen tablolar gösteriliyor.

@@ -74,6 +74,7 @@ dbase_ecannot=Você não tem permissão para editar este banco de dados
 dbase_name=Nome
 dbase_rows=Linhas
 dbase_cols=Campos
+dbase_size=Tamanho
 dbase_delete=Soltar tabelas selecionadas
 dbase_delete2=Soltar objetos selecionados
 dbase_showing=Mostrando tabelas correspondentes a $1 ..

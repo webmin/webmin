@@ -64,6 +64,7 @@ edit_pre=旋轉前要運行的命令
 edit_default=默認值（$1）
 edit_sharedscripts=所有文件只運行一次腳本？
 edit_now=現在旋轉
+edit_clone=複製
 
 global_title=全局選項
 global_header=所有日誌文件的默認選項

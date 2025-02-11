@@ -33,6 +33,7 @@ dbase_header=데이터베이스 테이블, 인덱스 및 뷰
 dbase_empty=빈 데이터베이스
 dbase_none2=일치하는 테이블이 없습니다.
 dbase_name=이름
+dbase_size=크기
 dbase_delete=선택된 테이블 삭제
 dbase_delete2=선택된 객체 놓기
 dbase_showing=$1 과 일치하는 테이블 표시

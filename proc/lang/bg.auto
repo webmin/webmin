@@ -17,6 +17,8 @@ index_loadname=Средно за зареждане на процесора:
 index_loadnums=$1 (1 минути), $2 (5 минути), $3 (15 минути)
 index_cpuname=Тип на процесора:
 index_inzone=В зона $1
+index_core=$1 ядро
+index_cores=$1 ядра
 
 pid=документ за самоличност
 owner=собственик

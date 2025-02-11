@@ -74,6 +74,7 @@ dbase_ecannot=Ezin duzu datu basea editatu
 dbase_name=izena
 dbase_rows=Ilarak
 dbase_cols=eremuak
+dbase_size=Tamaina
 dbase_delete=Hartu hautatutako taulak
 dbase_delete2=Hartu hautatutako objektuak
 dbase_showing=$1 datozen taulak erakusten dira.

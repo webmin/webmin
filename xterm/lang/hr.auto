@@ -5,6 +5,8 @@ index_suse=Nedostaje Perl paket <tt>perl-IO-Tty</tt> i treba ga prvo ručno inst
 index_euser=Pogreška: Korisnik $1 ne može pokrenuti ljusku jer ona ne postoji!
 index_connecting=Povezivanje ..
 index_missing=Nedostaje Perl modul <tt>$1</tt>. Morate kontaktirati svog administratora kako biste riješili ovaj problem.
+index_eproxy=Modul Terminal se ne može koristiti kada se Webminu pristupa preko drugog Webmin poslužitelja
 
 acl_user=Pokrenite shell kao Unix korisnik
 acl_sameuser=Isto kao prijava na Webmin
+acl_sudoenforce=Nametnite privilegije samo <em>sudo</em>

@@ -73,14 +73,17 @@ setup_ecannot=אינך רשאי להפעיל ניטור
 setup_eiface=שם ממשק חסר או לא חוקי
 setup_ezone=לא מצא את אזור Shorewall עבור הממשק שנבחר
 
+system_firewalld=חומת אש
 system_firewall=טבלאות IP
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=קיר החוף
 
+syslog_journald=יומן
 syslog_syslog=סיסלוג
 syslog_syslog-ng=Syslog-NG
 
 rotate_title=עדכון סטטיסטיקות
 rotate_doing=מעבד תנועה ברשת רשומה ..
 rotate_done=.. בוצע.
+rotate_failed=.. נכשל  : $1

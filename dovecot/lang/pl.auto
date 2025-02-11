@@ -1,1 +1,7 @@
 net_ssl_required=Akceptuj tylko SSL
+
+login_otp=Jednorazowe hasło
+login_skey=Klucz bezpieczeństwa
+login_oauthbearer=Uwierzytelnianie nośnika OAuth2
+login_xoauth2=Uwierzytelnianie nośnika Google OAuth2
+login_external=Zewnętrzne uwierzytelnianie SASL

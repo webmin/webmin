@@ -13,6 +13,7 @@ index_mysqlstatus=Spouštěcí skript MySQL
 dbase_header=Databázové tabulky, indexy a pohledy
 dbase_empty=Prázdná databáze
 dbase_name=název
+dbase_size=Velikost
 dbase_vjump=Upravit zobrazení:
 dbase_ijump=Upravit index:
 dbase_type=Typ

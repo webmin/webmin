@@ -64,6 +64,7 @@ edit_pre=旋转前要运行的命令
 edit_default=默认值（$1）
 edit_sharedscripts=所有文件只运行一次脚本？
 edit_now=现在旋转
+edit_clone=克隆
 
 global_title=全局选项
 global_header=所有日志文件的默认选项

@@ -14,8 +14,6 @@ index_nolog=<b>Nota</b> - <a href='$1'>Log no Webmin</a> não está habilitado n
 index_nologfiles=<b>Nota</b> - <a href='$1'>Log de mudanças em arquivos</a> não está habilitado no momento, portanto é provável que os detalhes de ações logadas não incluam arquivos modificados ou comandos executados.
 
 search_title=Resultados da Busca
-search_date=Data
-search_time=Hora
 search_user=Usuário
 search_host=Endereço do cliente
 search_module=Módulo

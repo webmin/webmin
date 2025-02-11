@@ -51,7 +51,6 @@ edit_def2=Por gateway ..
 edit_deldef=Remover rota padrão antiga?
 edit_routes=Rotas para acrescentar após a conexão
 edit_type=Tipo
-edit_type0=
 edit_type1=Rede
 edit_type2=Host único
 edit_net=Rede ou host

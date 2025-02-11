@@ -1,9 +1,43 @@
+jail_ports=Ports per bloquejar
+jail_ebackend=Nom del backend no vàlid
+jail_eports=Nom, número o interval de port no vàlids; utilitzeu un sol nom de port, número o rang en el format <tt>start:end</tt> ; per especificar diversos ports, separeu-los amb comes
 jail_systemd=systemd
 jail_pyinotify=piinotificar
 
 log_update_filter=Filtre modificat $1
 log_update_action=Acció modificada $1
 log_update_jail=Presó modificada $1
+
+config_dbpurgeage=Edat en què les prohibicions s'han d'eliminar de la base de dades
+config_dbpurgeage_15m=15 minuts
+config_dbpurgeage_30m=30 minuts
+config_dbpurgeage_1h=1 hora
+config_dbpurgeage_6h=6 hores
+config_dbpurgeage_12h=12 hores
+config_dbpurgeage_1d=1 dia
+config_dbpurgeage_3d=3 dies
+config_dbpurgeage_1w=1 setmana
+config_dbpurgeage_2w=2 setmanes
+config_dbpurgeage_1mo=1 mes
+config_ewrongunit=La unitat <tt>$1</tt> no és vàlida per a l'edat de purga de la base de dades
+config_ewrongtime=Hora no vàlida per a l'edat de purga de la base de dades. El temps de purga de la base de dades ha de ser un nombre superior a zero
+config_dbpurgeagedef=Per defecte
+config_dbpurgeagesel=Seleccionat
+config_dbpurgeagecus=Personalitzat
+config_dbpurgeagecussec=segon
+config_dbpurgeagecussecs=segons
+config_dbpurgeagecusmin=minut
+config_dbpurgeagecusmins=minuts
+config_dbpurgeagecushr=hora
+config_dbpurgeagecushrs=hores
+config_dbpurgeagecusday=dia
+config_dbpurgeagecusdays=dies
+config_dbpurgeagecuswk=setmana
+config_dbpurgeagecuswks=setmanes
+config_dbpurgeagecusmo=mes
+config_dbpurgeagecusmos=mesos
+config_dbpurgeagecusyr=any
+config_dbpurgeagecusyrs=anys
 
 status_title=Estat i accions de les presons
 status_title3=Blocs de la presó

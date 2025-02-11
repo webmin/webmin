@@ -20,7 +20,6 @@ client_ehosts='$1' finns inte i hosts-filen
 switch_title=Klienttjänster
 switch_service=Tjänst
 
-order_=
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS

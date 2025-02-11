@@ -127,9 +127,13 @@ smtpd_nomap2=Ingen karta för begränsningar för avsändaradresser har ännu la
 smtpd_map=Tillåtna adresser för vidarebefordran
 smtpd_map2=Begränsningar i avsändarens adresser
 
-opts_smtp_use_tls=Använd TLS för SMTP-anslutningar
 opts_smtp_sasl_security_options=SASL-säkerhetsalternativ
 opts_smtp_tls_security_level=SMTP TLS klient säkerhetsnivå
+opts_inet_protocols=Internetprotokoll för att aktivera
+opts_inet_protocols_all=Alla tillgängliga
+opts_smtp_address_preference=Föredraget SMTP-klientprotokoll
+opts_smtp_address_preference_any=Antingen
+opts_smtp_balance_inet_protocols=Validera SMTP-klientprotokoll
 
 debug_version=Postfix-modul för Webmin - version $1
 opts_edebug=Saknad eller ogiltig verbos loggningsnivå - måste vara ett nummer större än noll
@@ -215,6 +219,8 @@ acl_postfinger=Kan kontrollera postfixkonfiguration?
 acl_manual=Kan redigera konfigurationsfilen?
 acl_dir=Tillåten katalog för kartfiler
 acl_bcc=Kan redigera BCC-kartläggning?
+acl_body=Kan redigera kroppskontroller?
+acl_dependent=Kan redigera avsändarberoende transportkartor?
 
 boxes_title=Användarbrevlådor
 boxes_user=Användare
@@ -264,6 +270,15 @@ mail_forward=Framåt
 mail_rfc=Från rad
 mail_move=Flytta till:
 mail_eexists=Meddelandet finns inte längre!
+mail_qfile=Mailköfil
+mail_qlast=Försökte senast igen kl
+mail_qdir=E-postköstatus
+mail_qdir_active=Aktiv
+mail_qdir_incoming=Inkommande
+mail_qdir_deferred=Uppskjuten
+mail_qdir_corrupt=Korrupt
+mail_qdir_hold=På is
+mail_qdir_maildrop=Brevinkast
 
 view_title=Läs e-post
 view_desc=Meddelande $1 i $2
@@ -374,9 +389,11 @@ mailq_active=Aktiva
 mailq_deferred=uppskjuten
 mailq_hold=Håll vald
 mailq_unhold=Ta bort valt
+mailq_dir=Kötillstånd
 
 flushq_title=Spolningskö
 flushq_desc=Tvingar försökt leverans av e-post med kommandot $1 ..
+flushq_desc2=.. kolla e-postloggen för resultat
 
 qview_title=Meddelande i kö
 qview_desc=Från fil $1
@@ -584,6 +601,10 @@ opts_broken_sasl_auth_clients=Hanterar du icke-kompatibla SMTP-klienter?
 sasl_opts=SMTP-säkerhetsalternativ
 sasl_noanonymous=Avvisa anonyma inloggningar
 sasl_noplaintext=Avvisa vanliga textinloggningar
+sasl_noactive=Avvisa Tillåt inte föremål för aktiv (icke-ordbok) attack
+sasl_nodictionary=Avvisa metoder som är föremål för passiv (ordbok) attack
+sasl_forward_secrecy=Tillåt endast metoder som stöder sekretess
+sasl_mutual_auth=Tillåt endast metoder som ger ömsesidig autentisering
 opts_smtpd_delay_reject=Försena klienter med misslyckade inloggningar?
 sasl_recip=SMTP-mottagarbegränsningar
 sasl_relay=SMTP-reläbegränsningar

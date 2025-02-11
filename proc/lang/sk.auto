@@ -17,6 +17,8 @@ index_loadname=Priemer zaťaženia procesora:
 index_loadnums=$1 (1 min.), $2 (5 min.), $3 (15 min.)
 index_cpuname=Typ CPU:
 index_inzone=V zóne $1
+index_core=$1 jadra
+index_cores=$1 jadier
 
 pid=ID
 owner=vlastník

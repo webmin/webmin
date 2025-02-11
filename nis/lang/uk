@@ -20,7 +20,6 @@ client_ehosts='$1' відсутній у файлі вузлів
 switch_title=Служби клієнта
 switch_service=Служба
 
-order_=
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS

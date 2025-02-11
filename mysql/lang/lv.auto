@@ -74,6 +74,7 @@ dbase_ecannot=Jums nav atļauts rediģēt šo datu bāzi
 dbase_name=Vārds
 dbase_rows=Rindas
 dbase_cols=Lauki
+dbase_size=Izmērs
 dbase_delete=Paņemt atlasītās tabulas
 dbase_delete2=Nometiet atlasītos objektus
 dbase_showing=Rāda tabulas, kas atbilst $1.

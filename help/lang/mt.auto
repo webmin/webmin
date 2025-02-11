@@ -1,0 +1,19 @@
+index_title=Għajnuna Webmin
+index_terms=Fittex għajnuna għal
+index_mods=Moduli biex tfittex
+index_all=Kollha
+index_sel=Moduli magħżula ..
+index_search=Fittex
+index_header=Webmin Globali jgħin fit-tfittxija
+index_return=formola ta' tfittxija
+
+search_err=It-tfittxija falliet
+search_eterms=Termini ta' tfittxija nieqsa
+search_emods=Ebda moduli magħżula
+search_title=Riżultati tat-Tiftix
+search_einclude=Naqas milli jinkludi $1 
+search_none=L-ebda fajl ta' għajnuna ma qabbel mat-tfittxija tiegħek
+search_mod=Modulu
+search_page=Paġna ta’ għajnuna
+search_line=Taqbila fuq
+search_results=Paġni ta' għajnuna ta' Webmin li jaqblu ma' $1

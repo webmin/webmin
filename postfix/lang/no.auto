@@ -3,9 +3,37 @@ opts_resolve_dequoted_address=Forhindre bruk av @ i postboksnavn?
 opts_smtpd_discard_ehlo_keywords=SMTP EHLO nøkkelord å ikke sende
 
 opts_smtp_tls_security_level=SMTP TLS klient sikkerhetsnivå
+opts_inet_protocols=Internett-protokoller for å aktivere
+opts_inet_protocols_all=Alle tilgjengelige
+opts_smtp_address_preference=Foretrukket SMTP-klientprotokoll
+opts_smtp_address_preference_any=Enten
+opts_smtp_balance_inet_protocols=Valider SMTP-klientprotokoller
+
+acl_body=Kan du redigere kroppssjekker?
+acl_dependent=Kan du redigere avsenderavhengige transportkart?
+
+mail_qfile=Postkøfil
+mail_qlast=Sist forsøkt på nytt kl
+mail_qdir=Status for postkø
+mail_qdir_active=Aktiv
+mail_qdir_incoming=Innkommende
+mail_qdir_deferred=Utsatt
+mail_qdir_corrupt=Korrupt
+mail_qdir_hold=På vent
+mail_qdir_maildrop=Sende post
 
 view_aname=Vedlegg
 
+mailq_dir=Køtilstand
+
+flushq_desc2=.. sjekk e-postloggen for resultater
+
 opts_mime_header_checks=MIME-overskriftskontrolltabeller
 opts_header_checks_no_map=(Ingen overskriftskontrollkart er for øyeblikket definert. Definer et kart først, så kan du redigere det)
+
 opts_mime_header_checks_no_map=(Ingen MIME-overskriftskontrollkart er for øyeblikket definert. Definer et kart først, så kan du redigere det)
+
+sasl_noactive=Avvis Ikke tillat gjenstand for aktivt (ikke-ordbok) angrep
+sasl_nodictionary=Avvis metoder som er utsatt for passivt (ordbok)angrep
+sasl_forward_secrecy=Tillat bare metoder som støtter fremadrettet hemmelighold
+sasl_mutual_auth=Tillat bare metoder som gir gjensidig autentisering

@@ -1,5 +1,6 @@
 index_key=TSIG 키 편집 (DNS 서버에 대한 업데이트 인증에 사용)
 index_dhcpdver2=DHCP 서버 <tt>$1</tt>이 (가) 올바른 버전으로 보이지 않습니다. Webmin은 ISC DHCPD 버전 $2 ~ $3 만 지원합니다.
+index_comment=설명
 index_desc=기술
 index_buttekey=TSIG 키 편집
 index_stop=서버 중지

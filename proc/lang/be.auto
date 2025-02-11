@@ -17,6 +17,8 @@ index_loadname=Сярэдняя нагрузка на працэсар:
 index_loadnums=$1 (1 мін), $2 (5 хвілін), $3 (15 хвілін)
 index_cpuname=Тып працэсара:
 index_inzone=У зоне $1
+index_core=$1 ядро
+index_cores=$1 ядраў
 
 pid=Пасведчанне асобы
 owner=Уладальнік

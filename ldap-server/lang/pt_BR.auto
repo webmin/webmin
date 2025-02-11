@@ -1,9 +1,25 @@
+slapd_root4=SSHA criptografado <tt>$1</tt>
+
+schema_pagedesc2=O esquema LDAP determina quais classes de objetos e atributos podem ser armazenados no seu banco de dados LDAP. Arquivos de esquemas devem ser importados antes que seus tipos possam ser usados para criar objetos.
+schema_import=Importar
+
 acl_order=Ordem
 
 oadd_err=Falha ao criar novo objeto
+
+stop_egone2=Em execução, mas PID desconhecido!
 
 gencert_epath=Os arquivos de certificado e chave na configuração do servidor LDAP devem ser caminhos absolutos
 
 eacl_what2=Objetos sem DN
 eacl_order=Ordem das regras
 eacl_noorder=Nenhuma definida
+
+import_err=Falha ao importar o esquema
+import_eldapadd=Não foi possível encontrar o comando $1
+import_euser=Não foi possível descobrir o login do servidor LDAP
+import_eldif=O arquivo LDIF $1 não existe
+import_title=Esquema de importação
+import_doing=Importando arquivo de esquema LDIF $1 ..
+import_failed=.. importação falhou!
+import_ok=.. importação concluída com sucesso

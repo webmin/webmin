@@ -1,4 +1,5 @@
 index_serviceonboot=Tak i zacznij od rozruchu
 index_tabsync2=Uruchom usługę systemową <tt>$1</tt> w celu synchronizacji
+index_ctrl=Uwaga: Aby zaznaczyć lub odznaczyć minuty, godziny, dni i miesiące, naciśnij klawisz Ctrl i kliknij (lub Command na komputerach Mac).
 
 error_serviceunknown=Nieznana usługa : $1

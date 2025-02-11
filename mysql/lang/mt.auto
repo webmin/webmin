@@ -74,6 +74,7 @@ dbase_ecannot=M’intix permess li teditja din id-database
 dbase_name=Isem
 dbase_rows=Rings
 dbase_cols=Oqsma
+dbase_size=Daqs
 dbase_delete=Tabelli Magħżula Drop
 dbase_delete2=Oġġetti magħżula minn qatra
 dbase_showing=Li juru tabelli li jaqblu $1 ..

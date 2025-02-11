@@ -14,6 +14,7 @@ index_memb=$1 membri
 index_hst=Ospitanti u Gruppi Ospitanti
 index_nohst=Ma ġew definiti l-ebda ospiti jew gruppi.
 index_hostgroup=Ospitanti/Grupp
+index_comment=Deskrizzjoni
 index_parent=Ġenitur
 index_hardware=Indirizz tal-Ħardwer
 index_group=Grupp:

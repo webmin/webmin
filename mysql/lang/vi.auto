@@ -74,6 +74,7 @@ dbase_ecannot=Bạn không được phép chỉnh sửa cơ sở dữ liệu nà
 dbase_name=Tên
 dbase_rows=Hàng
 dbase_cols=Lĩnh vực
+dbase_size=Kích cỡ
 dbase_delete=Bỏ bảng đã chọn
 dbase_delete2=Thả các đối tượng được chọn
 dbase_showing=Hiển thị bảng khớp với $1 ..

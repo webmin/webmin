@@ -12,6 +12,11 @@ ssl_eca=Archivo de certificado de CA de cliente faltante o inexistente
 ssl_epass=No se ingresó la contraseña del archivo de clave SSL
 
 login_apop=UN ESTALLIDO
+login_otp=Contraseña de un solo uso
+login_skey=Clave de seguridad
+login_oauthbearer=Autenticación de portador OAuth2
+login_xoauth2=Autenticación de portador OAuth2 de Google
+login_external=Autenticación SASL externa
 login_sql=Base de datos SQL, usando el archivo de configuración $1
 login_session=Abrir y cerrar sesiones PAM
 login_pam2=Servicio PAM $1 <br>$2<br> Use la clave de caché $3

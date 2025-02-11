@@ -14,6 +14,7 @@ index_memb=$1 kide
 index_hst=Ostalariak eta Ostalari taldeak
 index_nohst=Ez da ostalaririk edo talderik zehaztu.
 index_hostgroup=Ostalaria/Taldea
+index_comment=Deskribapena
 index_parent=Guraso
 index_hardware=Hardwarearen helbidea
 index_group=taldea:

@@ -1,3 +1,4 @@
+index_madd=Türünün monitörünü ekle
 index_delete=Silme seçildi
 index_refsel=Seçilenleri Yenile
 index_group=$1 üyeleri
@@ -20,10 +21,14 @@ type_alive=Canlı Sistem
 type_rssh=Uzak SSH
 type_slapd=LDAP Sunucusu
 type_ldap=LDAP Bağlantısı
+type_smtp=SMTP Bağlantısı
+type_imap=IMAP Bağlantısı
+type_firewalld=FirewallD Sunucusu
+type_reboot=Yeniden Başlatma Gerekli
 
 mon_virtualmin=Uyarı! Bu monitör $1 Virtualmin etki alanıyla ilişkilidir ve bu nedenle burada düzenlenmemeli veya silinmemelidir.
 mon_header2=Çalıştırılacak komutlar
-mon_header3=İzlenen hizmet seçenekleri
+mon_header5=Bildirim seçenekleri
 mon_remotes2=Ana bilgisayarlarda ve gruplarda çalıştır
 mon_ontimeout=Monitör zaman aşımına uğrarsa, komutu çalıştırın
 mon_eremote2=$1 Webmin sunucusuyla bağlantı kurulamadı : $2
@@ -55,6 +60,7 @@ mon_changes1=Yalnızca değişiklikleri göster
 mon_all=Tüm geçmiş olayları göster
 mon_nochanges=Son $1 geçmiş etkinlikte durum değişikliği olmadı.
 
+sched_email_def=Sistem varsayılanı ($1)
 sched_pnone=Sayfa gönderme
 sched_offset=ofset ile
 sched_warn3=Servis açık olduğu sürece
@@ -349,3 +355,38 @@ ldap_pass=LDAP sunucusu şifresi
 info_desc=Sistem monitörü
 info_last=Şu anki durum
 info_title=Sistem ve Sunucu Durumu
+
+smtp_host=SMTP sunucu ana bilgisayarı
+smtp_port=SMTP sunucu portu
+smtp_ssl=SSL bağlantısı kullanılsın mı?
+smtp_ssl0=Sadece düz metin
+smtp_ssl1=Her zaman SSL
+smtp_ssl2=STARTTLS ile SSL'ye geçin
+smtp_from=SMTP göndericisini test edin
+smtp_none=Hiçbiri
+smtp_addr=Adresi kullan
+smtp_to=SMTP alıcısını test et
+smtp_ehost=Eksik veya çözülemeyen SMTP sunucusu ana bilgisayarı
+smtp_eport=Eksik veya sayısal olmayan SMTP sunucu bağlantı noktası
+smtp_efrom=Gönderen adresi user@domain.com gibi olmalıdır
+smtp_eto=Alıcı adresi user@domain.com gibi olmalıdır
+smtp_ok1=HELO komutu kabul edildi
+smtp_ok2=Gönderen adresi kabul edildi
+smtp_ok3=Alıcı adresi kabul edildi
+smtp_ok4=SMTP girişi kabul edildi
+smtp_user=SMTP kimlik doğrulaması
+smtp_user1=Giriş yapmayın
+smtp_user0=Kullanıcı olarak giriş yap
+smtp_pass=şifre ile
+smtp_euser=SMTP girişi eksik
+
+imap_host=IMAP sunucusu ana bilgisayarı
+imap_port=IMAP sunucu portu
+imap_ssl=SSL bağlantısı kullanılsın mı?
+imap_user=IMAP girişi
+imap_pass=IMAP şifresi
+imap_ehost=Eksik veya çözülemeyen IMAP sunucusu ana bilgisayarı
+imap_eport=Eksik veya sayısal olmayan IMAP sunucu bağlantı noktası
+imap_euser=IMAP girişi eksik
+
+reboot_pkgs=Paket güncellemeleri yeniden başlatmayı gerektirir

@@ -73,14 +73,17 @@ setup_ecannot=監視を有効にすることはできません
 setup_eiface=インターフェース名が欠落しているか無効です
 setup_ezone=選択したインターフェイスのショアウォールゾーンが見つかりませんでした
 
+system_firewalld=ファイアウォール
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=ショアウォール
 
+syslog_journald=ジャーナル
 syslog_syslog=syslog
 syslog_syslog-ng=Syslog-NG
 
 rotate_title=統計の更新
 rotate_doing=記録されたネットワークトラフィックの処理 ..
 rotate_done=..完了。
+rotate_failed=.. 失敗 : $1

@@ -1,0 +1,19 @@
+index_title=Pomoč Webmin
+index_terms=Išči pomoč za
+index_mods=Moduli za iskanje
+index_all=Vse
+index_sel=Izbrani moduli ..
+index_search=Iskanje
+index_header=Globalno iskanje pomoči Webmin
+index_return=iskalni obrazec
+
+search_err=Iskanje ni uspelo
+search_eterms=Manjkajoči iskalni izrazi
+search_emods=Ni izbranih modulov
+search_title=Rezultati iskanja
+search_einclude=$1 ni bilo mogoče vključiti
+search_none=Z vašim iskanjem se ne ujema nobena datoteka pomoči
+search_mod=Modul
+search_page=Stran s pomočjo
+search_line=Tekma naprej
+search_results=Strani s pomočjo Webmin se ujemajo z $1

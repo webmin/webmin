@@ -5,6 +5,8 @@ index_suse=Il pacchetto Perl <tt>perl-IO-Tty</tt> è mancante e dovrebbe essere 
 index_euser=Errore: l'utente $1 non può eseguire la shell perché non esiste!
 index_connecting=Collegamento ..
 index_missing=Manca il modulo Perl <tt>$1</tt>. Devi contattare il tuo amministratore per risolvere questo problema.
+index_eproxy=Il modulo Terminale non può essere utilizzato quando si accede a Webmin tramite un altro server Webmin
 
 acl_user=Esegui shell come utente Unix
 acl_sameuser=Come per l'accesso Webmin
+acl_sudoenforce=Applica privilegi <em>sudo</em>-only

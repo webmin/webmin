@@ -124,9 +124,13 @@ smtpd_nomap2=Nenhum mapa para restrições nos endereços de remetente foi inser
 smtpd_map=Endereços permitidos para retransmissão
 smtpd_map2=Restrições nos endereços dos remetentes
 
-opts_smtp_use_tls=Use TLS para conexões SMTP
 opts_smtp_sasl_security_options=Opções de segurança SASL
 opts_smtp_tls_security_level=Nível de segurança do cliente SMTP TLS
+opts_inet_protocols=Protocolos de Internet para permitir
+opts_inet_protocols_all=Tudo disponível
+opts_smtp_address_preference=Protocolo de cliente SMTP preferido
+opts_smtp_address_preference_any=Qualquer
+opts_smtp_balance_inet_protocols=Validar protocolos de cliente SMTP
 
 opts_edebug=Nível de registro detalhado ausente ou inválido - deve ser um número maior que zero
 
@@ -174,8 +178,19 @@ acl_postfinger=Pode verificar a configuração do postfix?
 acl_manual=Pode editar o arquivo de configuração?
 acl_dir=Diretório permitido para arquivos de mapa
 acl_bcc=Pode editar o mapeamento BCC?
+acl_body=É possível editar verificações corporais?
+acl_dependent=É possível editar mapas de transporte dependentes do remetente?
 
 mail_eexists=A mensagem não existe mais!
+mail_qfile=Arquivo de fila de e-mail
+mail_qlast=Última tentativa em
+mail_qdir=Status da fila de e-mail
+mail_qdir_active=Ativo
+mail_qdir_incoming=Entrada
+mail_qdir_deferred=Diferido
+mail_qdir_corrupt=Corrupt
+mail_qdir_hold=Em espera
+mail_qdir_maildrop=Entrega de correspondência
 
 view_flush=Rubor
 view_body=Mensagem de texto
@@ -203,9 +218,11 @@ mailq_active=Ativo
 mailq_deferred=Diferido
 mailq_hold=Reter selecionado
 mailq_unhold=Retirar a seleção selecionada
+mailq_dir=Estado da fila
 
 flushq_title=Fila de descarga
 flushq_desc=Forçando a tentativa de entrega de correio com o comando $1 ..
+flushq_desc2=.. verifique o log de e-mail para obter resultados
 
 after_err=Erro de configuração do Postfix : $1
 
@@ -408,6 +425,10 @@ opts_broken_sasl_auth_clients=Lidar com clientes SMTP não compatíveis?
 sasl_opts=Opções de segurança SMTP
 sasl_noanonymous=Rejeitar logons anônimos
 sasl_noplaintext=Rejeitar logins em texto sem formatação
+sasl_noactive=Rejeitar Não permitir sujeito a ataque ativo (não dicionário)
+sasl_nodictionary=Rejeitar métodos sujeitos a ataque passivo (dicionário)
+sasl_forward_secrecy=Permitir apenas métodos que suportem sigilo de encaminhamento
+sasl_mutual_auth=Permitir apenas métodos que forneçam autenticação mútua
 opts_smtpd_delay_reject=Atrasar clientes com logins com falha?
 sasl_recip=Restrições de destinatário SMTP
 sasl_relay=Restrições de retransmissão SMTP

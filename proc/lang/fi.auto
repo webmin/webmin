@@ -17,6 +17,8 @@ index_loadname=Prosessorin kuorman keskiarvot:
 index_loadnums=$1 (1 minuutti), $2 (5 minuuttia), $3 (15 minuuttia)
 index_cpuname=Prosessorin tyyppi:
 index_inzone=Alueella $1
+index_core=$1 ydin
+index_cores=$1 ydintä
 
 pid=ID
 owner=Omistaja

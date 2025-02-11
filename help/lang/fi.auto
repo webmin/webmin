@@ -1,0 +1,19 @@
+index_title=Webmin-ohje
+index_terms=Hae apua
+index_mods=Moduulit hakuun
+index_all=Kaikki
+index_sel=Valitut moduulit ..
+index_search=Haku
+index_header=Globaali Webmin-ohjehaku
+index_return=hakulomake
+
+search_err=Haku epäonnistui
+search_eterms=Puuttuvat hakutermit
+search_emods=Ei valittuja moduuleja
+search_title=Hakutulokset
+search_einclude=$1:n sisällyttäminen epäonnistui
+search_none=Yksikään ohjetiedosto ei vastannut hakuasi
+search_mod=Moduuli
+search_page=Ohje-sivu
+search_line=Ottelu päälle
+search_results=Webminin ohjesivut, jotka vastaavat $1

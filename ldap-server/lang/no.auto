@@ -1,0 +1,15 @@
+slapd_root4=SSHA-kryptert <tt>$1</tt>
+
+schema_pagedesc2=LDAP-skjemaet bestemmer hvilke objektklasser og attributter som kan lagres i LDAP-databasen. Skjemafiler må importeres før typene deres kan brukes til å lage objekter.
+schema_import=Import
+
+stop_egone2=Kjører men PID er ukjent!
+
+import_err=Kunne ikke importere skjemaet
+import_eldapadd=Kunne ikke finne kommandoen $1
+import_euser=Kunne ikke løse LDAP-serverpålogging
+import_eldif=LDIF-filen $1 eksisterer ikke
+import_title=Importskjema
+import_doing=Importerer LDIF-skjemafil $1 ..
+import_failed=.. import mislyktes!
+import_ok=.. importen er fullført

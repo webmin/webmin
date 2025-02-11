@@ -1,0 +1,19 @@
+index_title=Βοήθεια Webmin
+index_terms=Αναζήτηση βοήθειας για
+index_mods=Ενότητες για αναζήτηση
+index_all=Ολοι
+index_sel=Επιλεγμένες ενότητες ..
+index_search=Ερευνα
+index_header=Παγκόσμια αναζήτηση βοήθειας Webmin
+index_return=φόρμα αναζήτησης
+
+search_err=Η αναζήτηση απέτυχε
+search_eterms=Λείπουν όροι αναζήτησης
+search_emods=Δεν επιλέχθηκαν ενότητες
+search_title=Αποτελέσματα αναζήτησης
+search_einclude=Αποτυχία συμπερίληψης $1
+search_none=Κανένα αρχείο βοήθειας δεν ταιριάζει με την αναζήτησή σας
+search_mod=Μονάδα μέτρησης
+search_page=Σελίδα βοήθειας
+search_line=Ταίριασμα σε
+search_results=Σελίδες βοήθειας Webmin που αντιστοιχούν στο $1

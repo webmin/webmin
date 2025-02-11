@@ -6,6 +6,7 @@ index_sel=선택한 모듈..
 index_search=검색
 index_header=Webmin 전체 도움말 검색
 index_return=검색 양식
+
 search_err=검색하지 못했습니다
 search_eterms=검색 용어가 없습니다
 search_emods=선택한 모듈이 없습니다

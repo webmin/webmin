@@ -129,9 +129,13 @@ smtpd_nomap2=Dosud nebyla zadána žádná mapa pro omezení adres odesílatele.
 smtpd_map=Povolené adresy pro předávání
 smtpd_map2=Omezení adres odesílatele
 
-opts_smtp_use_tls=Pro připojení SMTP použijte TLS
 opts_smtp_sasl_security_options=Možnosti zabezpečení SASL
 opts_smtp_tls_security_level=Úroveň zabezpečení klienta SMTP TLS
+opts_inet_protocols=Povolit internetové protokoly
+opts_inet_protocols_all=Vše k dispozici
+opts_smtp_address_preference=Preferovaný klientský protokol SMTP
+opts_smtp_address_preference_any=Buď
+opts_smtp_balance_inet_protocols=Ověřte protokoly klienta SMTP
 
 opts_edebug=Chybějící nebo neplatná úroveň podrobného protokolování - musí být číslo větší než nula
 
@@ -184,9 +188,20 @@ acl_postfinger=Lze zkontrolovat konfiguraci postfixu?
 acl_manual=Lze upravit konfigurační soubor?
 acl_dir=Povolený adresář pro soubory mapy
 acl_bcc=Lze upravit mapování BCC?
+acl_body=Lze upravovat tělesné kontroly?
+acl_dependent=Lze upravovat dopravní mapy závislé na odesílateli?
 
 mail_move=Přesunout do:
 mail_eexists=Zpráva již neexistuje!
+mail_qfile=Soubor fronty pošty
+mail_qlast=Naposledy opakován v
+mail_qdir=Stav fronty pošty
+mail_qdir_active=Aktivní
+mail_qdir_incoming=Přicházející
+mail_qdir_deferred=Odložený
+mail_qdir_corrupt=Zkorumpovaný
+mail_qdir_hold=Podrženo
+mail_qdir_maildrop=Pošta
 
 view_flush=Vyplachování
 view_body=Text zprávy
@@ -229,9 +244,11 @@ mailq_active=Aktivní
 mailq_deferred=Odložený
 mailq_hold=Vybrat
 mailq_unhold=Un-Hold Selected
+mailq_dir=Stav fronty
 
 flushq_title=Flush Queue
 flushq_desc=Vynucení pokusu o doručení pošty příkazem $1 ..
+flushq_desc2=.. zkontrolujte výsledky v protokolu pošty
 
 qview_title=Zpráva ve frontě
 qview_desc=Ze souboru $1
@@ -439,6 +456,10 @@ opts_broken_sasl_auth_clients=Manipulace s klienty SMTP, kteří nejsou v soulad
 sasl_opts=Možnosti zabezpečení SMTP
 sasl_noanonymous=Odmítnout anonymní přihlášení
 sasl_noplaintext=Odmítnout přihlašování prostého textu
+sasl_noactive=Odmítnout Zakázat s výhradou aktivního (neslovníkového) útoku
+sasl_nodictionary=Metody odmítnutí podléhající pasivnímu (slovníkovému) útoku
+sasl_forward_secrecy=Povolte pouze metody, které podporují dopředné utajení
+sasl_mutual_auth=Povolte pouze metody, které poskytují vzájemné ověření
 opts_smtpd_delay_reject=Zpoždění klientů při neúspěšných přihlášeních?
 sasl_recip=Omezení příjemce SMTP
 sasl_relay=Omezení relé SMTP

@@ -64,6 +64,7 @@ edit_pre=گردش سے پہلے چلانے کے احکامات
 edit_default=پہلے سے طے شدہ ($1)
 edit_sharedscripts=صرف تمام فائلوں کے لئے ایک بار اسکرپٹ چلائیں؟
 edit_now=اب گھمائیں
+edit_clone=کلون
 
 global_title=عالمی اختیارات
 global_header=تمام لاگ فائلوں کیلئے پہلے سے طے شدہ اختیارات

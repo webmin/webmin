@@ -74,6 +74,7 @@ dbase_ecannot=Δεν επιτρέπεται η επεξεργασία αυτής
 dbase_name=Ονομα
 dbase_rows=Γραμμές
 dbase_cols=Πεδία
+dbase_size=Μέγεθος
 dbase_delete=Καταργήστε τους επιλεγμένους πίνακες
 dbase_delete2=Πίνακας επιλεγμένων αντικειμένων
 dbase_showing=Εμφάνιση πινάκων που ταιριάζουν με $1 ..

@@ -1,0 +1,19 @@
+index_title=راهنمای وبمین
+index_terms=جستجوی کمک برای
+index_mods=ماژول هایی برای جستجو
+index_all=همه
+index_sel=ماژول های منتخب ..
+index_search=جستجو کنید
+index_header=جستجوی راهنمای جهانی وبمین
+index_return=فرم جستجو
+
+search_err=جستجو ناموفق بود
+search_eterms=Ø¹Ø¨Ø§Ø±Øª‌ÙØ§Û Ø¬Ø³ØªØ¬Ù ÙØ¬ÙØ¯ ÙØ¯Ø§Ø±Ø¯
+search_emods=هیچ ماژولی انتخاب نشده است
+search_title=نتایج جستجو
+search_einclude=شامل $1 نشد
+search_none=هیچ فایل کمکی با جستجوی شما مطابقت نداشت
+search_mod=ماژول
+search_page=صفحه راهنما
+search_line=مطابقت در
+search_results=صفحات راهنمای وبمین مطابق $1 

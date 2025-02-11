@@ -1,4 +1,5 @@
 index_title=وضعیت سیستم و سرور
+index_madd=اضافه کردن مانیتور از نوع
 index_delete=انتخاب شده را پاک کن
 index_refsel=تازه کردن انتخاب شده است
 index_group=اعضای$1
@@ -19,10 +20,14 @@ type_alive=سیستم زنده
 type_rssh=SSH از راه دور
 type_slapd=سرور LDAP
 type_ldap=اتصال LDAP
+type_smtp=اتصال SMTP
+type_imap=اتصال IMAP
+type_firewalld=سرور فایروال دی
+type_reboot=راه اندازی مجدد مورد نیاز است
 
 mon_virtualmin=هشدار این نمایشگر با دامنه Virtualmin $1 مرتبط است و بنابراین نباید در اینجا ویرایش یا حذف شود.
 mon_header2=دستورات اجرا
-mon_header3=گزینه های خدمات نظارت شده
+mon_header5=گزینه های اطلاع رسانی
 mon_remotes2=روی میزبان ها و گروه ها اجرا کنید
 mon_ontimeout=اگر مرتباً مانیتور شوید ، دستور را اجرا کنید
 mon_eremote2=با سرور وبمین$1 قابل تماس نیست :$2
@@ -54,6 +59,7 @@ mon_changes1=فقط تغییرات را نمایش دهید
 mon_all=نمایش تمام وقایع تاریخی
 mon_nochanges=هیچ تغییری در وضعیت گذشته در$1 رویدادهای تاریخی رخ نداد.
 
+sched_email_def=Ù¾ÛØ´‌ÙØ±Ø¶ Ø³ÛØ³ØªÙ ($1)
 sched_pnone=صفحه ارسال نکنید
 sched_warn3=تا زمانی که سرویس تمام شود
 sched_eemailserver=سرور نامه شما نصب نشده است :$1
@@ -320,3 +326,38 @@ ldap_pass=رمز عبور سرور LDAP
 info_desc=مانیتور سیستم
 info_last=وضعیت فعلی
 info_title=وضعیت سیستم و سرور
+
+smtp_host=میزبان سرور SMTP
+smtp_port=پورت سرور SMTP
+smtp_ssl=از اتصال SSL استفاده کنید؟
+smtp_ssl0=فقط متن ساده
+smtp_ssl1=همیشه SSL
+smtp_ssl2=با STARTTLS به SSL بروید
+smtp_from=فرستنده SMTP را آزمایش کنید
+smtp_none=هیچ کدام
+smtp_addr=از آدرس استفاده کنید
+smtp_to=گیرنده SMTP را آزمایش کنید
+smtp_ehost=میزبان سرور SMTP موجود نیست یا غیرقابل حل است
+smtp_eport=پورت سرور SMTP وجود ندارد یا غیرعددی
+smtp_efrom=آدرس فرستنده باید مانند user@domain.com باشد
+smtp_eto=آدرس گیرنده باید مانند user@domain.com باشد
+smtp_ok1=فرمان HELO پذیرفته شد
+smtp_ok2=آدرس فرستنده پذیرفته شد
+smtp_ok3=آدرس گیرنده پذیرفته شد
+smtp_ok4=ورود به سیستم SMTP پذیرفته شد
+smtp_user=احراز هویت SMTP
+smtp_user1=وارد نشوید
+smtp_user0=به عنوان کاربر وارد شوید
+smtp_pass=با رمز عبور
+smtp_euser=ورود به سیستم SMTP وجود ندارد
+
+imap_host=میزبان سرور IMAP
+imap_port=پورت سرور IMAP
+imap_ssl=از اتصال SSL استفاده کنید؟
+imap_user=ورود به سیستم IMAP
+imap_pass=رمز عبور IMAP
+imap_ehost=میزبان سرور IMAP گم شده یا غیرقابل حل است
+imap_eport=پورت سرور IMAP وجود ندارد یا غیرعددی
+imap_euser=ورود به سیستم IMAP وجود ندارد
+
+reboot_pkgs=به روز رسانی بسته نیاز به راه اندازی مجدد دارد

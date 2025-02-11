@@ -42,7 +42,9 @@ index_emailto=Vâng, đến địa chỉ
 index_email2=Gửi email khi tải lên xong?
 
 upload_title=Tải lên tập tin
+upload_direct=Ghi tập tin trực tiếp vào đĩa?
 upload_err=Không thể tải lên tập tin
+upload_emove=Không thể di chuyển tệp đã tải lên từ $1 đến $2
 upload_edir=Thiếu thư mục để tải lên
 upload_euser=Tên người dùng bị thiếu hoặc không hợp lệ
 upload_egroup=Tên nhóm bị thiếu hoặc không hợp lệ

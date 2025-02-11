@@ -14,6 +14,7 @@ index_memb=$1 jäsentä
 index_hst=Isännät ja isäntäryhmät
 index_nohst=Ei isäntiä tai ryhmiä ole määritelty.
 index_hostgroup=Isäntä/Ryhmä
+index_comment=Kuvaus
 index_parent=vanhempi
 index_hardware=Laitteiston osoite
 index_group=Ryhmä:

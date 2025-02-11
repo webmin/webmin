@@ -1,2 +1,8 @@
 net_lmtp=LMTP
 net_ssl_required=Csak az SSL-t fogadja el
+
+login_otp=Egyszeri jelszó
+login_skey=Biztonsági kulcs
+login_oauthbearer=OAuth2 hordozó hitelesítés
+login_xoauth2=Google OAuth2 vivő hitelesítés
+login_external=Külső SASL hitelesítés

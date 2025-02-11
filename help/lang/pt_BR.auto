@@ -1,0 +1,19 @@
+index_title=Ajuda do Webmin
+index_terms=Ajuda para pesquisa
+index_mods=Módulos para pesquisar
+index_all=Todos
+index_sel=Módulos selecionados ..
+index_search=Procurar
+index_header=Ajuda de pesquisa do Global Webmin
+index_return=formulário de busca
+
+search_err=A pesquisa falhou
+search_eterms=Termos de pesquisa ausentes
+search_emods=Nenhum módulo escolhido
+search_title=Resultados da pesquisa
+search_einclude=Falha ao incluir $1
+search_none=Nenhum arquivo de ajuda correspondeu à sua pesquisa
+search_mod=Módulo
+search_page=Página de ajuda
+search_line=Combinar em
+search_results=Páginas de ajuda do Webmin que correspondem a $1

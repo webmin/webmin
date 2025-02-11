@@ -17,6 +17,8 @@ index_loadname=اوسطا CPU:
 index_loadnums=$1 (1 منٹ) ،$2 (5 منٹ) ،$3 (15 منٹ)
 index_cpuname=سی پی یو کی قسم:
 index_inzone=زون$1 میں
+index_core=$1 کور
+index_cores=$1 کور
 
 pid=ID
 owner=مالک

@@ -20,7 +20,6 @@ client_ehosts='$1'不在主机文件中
 switch_title=客户端服务
 switch_service=服务
 
-order_=
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS

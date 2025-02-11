@@ -1,6 +1,22 @@
+slapd_root4=SSHA gecodeerde <tt>$1</tt>
+
+schema_pagedesc2=Het LDAP-schema bepaalt welke objectklassen en attributen kunnen worden opgeslagen in uw LDAP-database. Schemabestanden moeten worden geïmporteerd voordat hun typen kunnen worden gebruikt om objecten te maken.
+schema_import=Importeren
+
 acl_order=Bestellen
+
+stop_egone2=Draait, maar PID is onbekend!
 
 gencert_epath=Certificaat- en sleutelbestanden in de LDAP-serverconfiguratie moeten absolute paden zijn
 
 eacl_order=Regel volgorde
 eacl_noorder=Geen ingesteld
+
+import_err=Schema importeren mislukt
+import_eldapadd=Kon de $1 opdracht niet vinden
+import_euser=Kon LDAP-server-aanmelding niet verwerken
+import_eldif=LDIF-bestand $1 bestaat niet
+import_title=Schema importeren
+import_doing=LDIF-schemabestand $1 importeren ..
+import_failed=..import mislukt!
+import_ok=.. import succesvol voltooid

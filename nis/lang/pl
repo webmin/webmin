@@ -24,7 +24,6 @@ switch_service=Usługa
 switch_srcs=Źródła danych
 switch_return=usług klienckich
 
-order_=
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS

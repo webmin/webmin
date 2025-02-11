@@ -42,7 +42,9 @@ index_emailto=Da, na naslov
 index_email2=Pošljite e-pošto, ko je prenos naložen?
 
 upload_title=Naloži datoteke
+upload_direct=Zapisati datoteke neposredno na disk?
 upload_err=Ni bilo mogoče naložiti datotek
+upload_emove=Naložene datoteke ni bilo mogoče premakniti iz $1 v $2
 upload_edir=Manjkajoči imenik za nalaganje
 upload_euser=Manjkajoče ali neveljavno uporabniško ime
 upload_egroup=Manjkajoče ali neveljavno ime skupine

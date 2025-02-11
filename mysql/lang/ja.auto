@@ -26,6 +26,7 @@ dbase_header=データベーステーブル、インデックス、ビュー
 dbase_empty=空のデータベース
 dbase_none2=検索に一致するテーブルはありません。
 dbase_name=名前
+dbase_size=サイズ
 dbase_delete=選択したテーブルを削除する
 dbase_showing=$1に一致するテーブルを表示しています。
 dbase_toomany=テーブルが多すぎて表示できません。一致するテーブルを検索します。

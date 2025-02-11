@@ -73,14 +73,17 @@ setup_ecannot=คุณไม่ได้รับอนุญาตให้เ
 setup_eiface=ชื่ออินเตอร์เฟสขาดหายไปหรือไม่ถูกต้อง
 setup_ezone=ไม่พบโซน Shorewall สำหรับอินเทอร์เฟซที่เลือก
 
+system_firewalld=ไฟร์วอลล์
 system_firewall=ตารางไอพี
 system_ipfw=IPFW
 system_ipfilter=ipfilter
 system_shorewall=Shorewall
 
+syslog_journald=เจอร์นัลด์
 syslog_syslog=syslog
 syslog_syslog-ng=Syslog-NG
 
 rotate_title=กำลังอัปเดตสถิติ
 rotate_doing=กำลังประมวลผลปริมาณการใช้เครือข่ายที่บันทึกไว้ ..
 rotate_done=.. เสร็จแล้ว
+rotate_failed=.. ล้มเหลว  : $1

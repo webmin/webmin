@@ -17,6 +17,7 @@ index_toomany=Ci sono troppi database da visualizzare. Trova database corrispond
 dbase_header=Tabelle, indici e viste del database
 dbase_empty=Database vuoto
 dbase_name=Nome
+dbase_size=Misurare
 dbase_toomany=Ci sono troppe tabelle da visualizzare. Trova le tabelle corrispondenti:
 dbase_vjump=Modifica vista:
 dbase_ijump=Modifica indice:

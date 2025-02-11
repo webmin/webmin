@@ -11,6 +11,7 @@ master_inview=$1 na visualização $2
 master_egone=A zona $1 não existe em nenhuma visualização
 master_egone2=A zona $1 não existe!
 master_egone3=A zona $1 na exibição $2 não existe!
+master_eserial2=O número de série deve ser menor que 2^31
 master_vmin=Esta zona é gerenciada pelo Virtualmin. Os registros devem ser editados usando a IU do Virtualmin, para garantir que sejam consistentes com outras configurações do servidor virtual.
 master_vminalias=Esta zona é um alias de um domínio Virtualmin, que é mantido em sincronia com seu destino. Os registros nunca devem ser editados aqui, pois quaisquer alterações serão substituídas!
 
@@ -86,6 +87,7 @@ value_NSEC3PARAM1=Algoritmo de hash
 value_NSEC3PARAM2=Sinalizadores NSEC3
 value_NSEC3PARAM3=Número de iterações de hash
 value_NSEC3PARAM4=Corda de sal
+value_NSEC3PARAM4_none=Nenhum
 value_delegated=Zona delegada
 value_notdelegated=Outra zona
 value_spfip6s=Endereços IPv6 / redes adicionais do remetente permitido
@@ -163,6 +165,7 @@ net_eaddr6='$1' não é um endereço IPv6 válido
 zonedef_dnssec_dt=Automatizar todas as operações DNSSEC (ignorar outras configurações abaixo)?
 zonedef_dne=Negação de existência autenticada usando
 
+log_delete_recs2=Registros $1 excluídos na zona $2
 log_rdelete_zones=Registros excluídos nas zonas $1
 
 convert_efilesize=O arquivo de registros $1 não existe ou está vazio
@@ -265,6 +268,10 @@ zonekey_publicfile=Arquivo de chave pública : $1
 zonekey_privatefile=Arquivo de chave privada : $1
 zonekey_algorithm=Algoritmo DNSSEC : $1
 zonekey_ds=Registro do DS para a zona pai :
+zonekey_ds_keytag=Etiqueta de chave
+zonekey_ds_alg=Algoritmo
+zonekey_ds_type=Tipo de resumo
+zonekey_ds_digest=Cadeia de caracteres de resumo
 zonekey_eprivate=A chave privada associada a esta zona não pôde ser lida : $1
 zonekey_keep=Manter a chave existente se o DNSSEC for reativado?
 

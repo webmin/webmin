@@ -5,6 +5,8 @@ index_suse=Perl 패키지 <tt>perl-IO-Tty</tt>가 없습니다. 먼저 <a href='
 index_euser=오류: 사용자 $1은(는) 쉘이 존재하지 않으므로 실행할 수 없습니다!
 index_connecting=연결 중 ..
 index_missing=Perl 모듈 <tt>$1</tt>이(가) 없습니다. 이 문제를 해결하려면 관리자에게 문의해야 합니다.
+index_eproxy=다른 Webmin 서버를 통해 Webmin에 접속하는 경우 Terminal 모듈을 사용할 수 없습니다
 
 acl_user=Unix 사용자로 쉘 실행
 acl_sameuser=Webmin 로그인과 동일
+acl_sudoenforce=<em>sudo</em> 전용 권한 적용

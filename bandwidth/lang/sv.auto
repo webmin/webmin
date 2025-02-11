@@ -5,3 +5,9 @@ index_out=Ladda upp
 index_total=Total
 
 setup_eiface=Saknas eller ogiltigt gränssnittsnamn
+
+system_firewalld=Brandvägg
+
+syslog_journald=Journalförd
+
+rotate_failed=.. misslyckades : $1

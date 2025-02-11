@@ -1,6 +1,7 @@
 index_serviceonboot=Ano a začněte při startu
 index_boot=Synchronizovat při spuštění Webmin?
 index_tabsync2=Spusťte systémovou službu <tt>$1</tt> pro synchronizaci
+index_ctrl=Poznámka: Klepněte se stisknutou klávesou Ctrl (nebo na počítačích Mac klepněte se stisknutou klávesou Command) pro výběr a zrušení výběru minut, hodin, dnů a měsíců.
 
 minute=Minuta
 second=Druhý

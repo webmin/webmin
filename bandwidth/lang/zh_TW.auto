@@ -73,14 +73,17 @@ setup_ecannot=您無權啟用監控
 setup_eiface=接口名稱缺失或無效
 setup_ezone=無法找到所選接口的Shorewall區域
 
+system_firewalld=防火牆
 system_firewall=IP表
 system_ipfw=IPFW
 system_ipfilter=IP過濾器
 system_shorewall=岸牆
 
+syslog_journald=紀錄
 syslog_syslog=系統日誌
 syslog_syslog-ng=系統日誌
 
 rotate_title=更新統計
 rotate_doing=處理記錄的網絡流量 ..
 rotate_done=..完成。
+rotate_failed=.. 失敗：$1

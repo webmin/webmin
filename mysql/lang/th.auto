@@ -74,6 +74,7 @@ dbase_ecannot=คุณไม่ได้รับอนุญาตให้แ
 dbase_name=ชื่อ
 dbase_rows=แถว
 dbase_cols=ทุ่ง
+dbase_size=ขนาด
 dbase_delete=วางตารางที่เลือก
 dbase_delete2=วางวัตถุที่เลือก
 dbase_showing=แสดงตารางที่ตรงกับ $1 ..

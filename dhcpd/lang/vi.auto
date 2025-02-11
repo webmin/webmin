@@ -14,6 +14,7 @@ index_memb=$1 thành viên
 index_hst=Máy chủ và nhóm máy chủ
 index_nohst=Không có máy chủ hoặc nhóm đã được xác định.
 index_hostgroup=Máy chủ/Nhóm
+index_comment=Sự miêu tả
 index_parent=Cha mẹ
 index_hardware=Địa chỉ phần cứng
 index_group=Nhóm:

@@ -1,0 +1,19 @@
+index_title=Webmin palīdzība
+index_terms=Meklējiet palīdzību par
+index_mods=Moduļi meklēšanai
+index_all=Visi
+index_sel=Atlasītie moduļi ..
+index_search=Meklēt
+index_header=Globālā Webmin palīdzības meklēšana
+index_return=meklēšanas forma
+
+search_err=Meklēšana neizdevās
+search_eterms=Trūkst meklēšanas vienumu
+search_emods=Nav izvēlēts neviens modulis
+search_title=Meklēšanas rezultāti
+search_einclude=Neizdevās iekļaut $1
+search_none=Jūsu meklēšanas vaicājumam neatbilst neviens palīdzības fails
+search_mod=Modulis
+search_page=Palīdzības lapa
+search_line=Saskaņot
+search_results=Webmin palīdzības lapas, kas atbilst $1

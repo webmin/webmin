@@ -1,3 +1,4 @@
+index_madd=모니터 유형 추가
 index_refsel=선택한 새로 고침
 
 type_sslcert=SSL 인증서
@@ -7,8 +8,13 @@ type_dovecot=도브 코트 IMAP/POP3 서버
 type_init=부팅 동작
 type_slapd=LDAP 서버
 type_ldap=LDAP 연결
+type_smtp=SMTP 연결
+type_imap=IMAP 연결
+type_firewalld=방화벽D 서버
+type_reboot=재부팅이 필요합니다
 
 mon_virtualmin=경고! 이 모니터는 Virtualmin 도메인 $1 에 연결되어 있으므로 여기에서 편집하거나 삭제하면 안됩니다.
+mon_header5=알림 옵션
 mon_ontimeout=모니터 시간이 초과되면 명령을 실행하십시오.
 mon_eremote2=Webmin 서버 $1 에 접속할 수 없습니다 : $2
 mon_etype=잘못된 모니터 유형 이름
@@ -24,6 +30,7 @@ mon_changes1=변경 사항 만 표시
 mon_all=모든 역사적 사건 표시
 mon_nochanges=마지막 $1 기록 이벤트에서 상태 변경이 발생하지 않았습니다.
 
+sched_email_def=시스템 기본값 ($1)
 sched_warn3=서비스가 작동하는 한
 sched_esmsname=누락되거나 잘못된 SMS 번호
 sched_subject=SMS 메시지 제목
@@ -143,3 +150,38 @@ ldap_pass=LDAP 서버 비밀번호
 info_desc=시스템 모니터
 info_last=현재 상태
 info_title=시스템 및 서버 상태
+
+smtp_host=SMTP 서버 호스트
+smtp_port=SMTP 서버 포트
+smtp_ssl=SSL 연결을 사용하시겠습니까?
+smtp_ssl0=평문만
+smtp_ssl1=항상 SSL
+smtp_ssl2=STARTTLS로 SSL로 전환
+smtp_from=SMTP 발신자 테스트
+smtp_none=없음
+smtp_addr=주소 사용
+smtp_to=SMTP 수신자 테스트
+smtp_ehost=SMTP 서버 호스트가 없거나 확인할 수 없음
+smtp_eport=SMTP 서버 포트가 누락되었거나 숫자가 아닙니다
+smtp_efrom=발신자 주소는 user@domain.com과 같아야 합니다
+smtp_eto=수신자 주소는 user@domain.com과 같아야 합니다
+smtp_ok1=HELO 명령이 수락되었습니다
+smtp_ok2=발신자 주소가 수락되었습니다
+smtp_ok3=수신자 주소가 수락되었습니다
+smtp_ok4=SMTP 로그인이 허용되었습니다
+smtp_user=SMTP 인증
+smtp_user1=로그인하지 마세요
+smtp_user0=사용자로 로그인
+smtp_pass=비밀번호로
+smtp_euser=SMTP 로그인이 없습니다
+
+imap_host=IMAP 서버 호스트
+imap_port=IMAP 서버 포트
+imap_ssl=SSL 연결을 사용하시겠습니까?
+imap_user=IMAP 로그인
+imap_pass=IMAP 비밀번호
+imap_ehost=IMAP 서버 호스트가 없거나 확인할 수 없음
+imap_eport=IMAP 서버 포트가 누락되었거나 숫자가 아닙니다
+imap_euser=IMAP 로그인이 없습니다
+
+reboot_pkgs=패키지 업데이트에는 재부팅이 필요합니다

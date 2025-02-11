@@ -74,6 +74,7 @@ dbase_ecannot=Te baze ne smete urejati
 dbase_name=Ime
 dbase_rows=Vrstice
 dbase_cols=Polja
+dbase_size=Velikost
 dbase_delete=Izpusti izbrane tabele
 dbase_delete2=Izpustite izbrane predmete
 dbase_showing=Prikaz tabel, ki ustrezajo $1 ..

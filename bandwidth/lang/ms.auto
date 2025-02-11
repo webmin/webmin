@@ -1,3 +1,9 @@
 index_in=Muat turun
 index_out=Muat naik
 index_total=Jumlah
+
+system_firewalld=Firewalld
+
+syslog_journald=Jurnal
+
+rotate_failed=.. gagal  : $1 

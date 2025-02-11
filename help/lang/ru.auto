@@ -1,0 +1,19 @@
+index_title=Помощь Webmin
+index_terms=Поиск справки для
+index_mods=Модули для поиска
+index_all=Все
+index_sel=Выбранные модули ..
+index_search=Поиск
+index_header=Глобальный поиск справки Webmin
+index_return=форма поиска
+
+search_err=Поиск не удался
+search_eterms=Отсутствуют поисковые термины
+search_emods=Модули не выбраны
+search_title=Результаты поиска
+search_einclude=Не удалось включить $1
+search_none=Нет файлов справки, соответствующих вашему поиску
+search_mod=Модуль
+search_page=Страница помощи
+search_line=Матч на
+search_results=Страницы справки Webmin, соответствующие $1

@@ -3,6 +3,8 @@ index_restartmsg=Klikk på denne knappen for å starte MySQL-databaseserveren p�
 index_indexes=Indekser
 index_views=Visninger
 
+dbase_size=Størrelse
+
 user_plugin=Autentiseringstype
 user_hashpass=Gjeldende hashet passord
 

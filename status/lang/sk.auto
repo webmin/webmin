@@ -1,3 +1,4 @@
+index_madd=Pridajte monitor typu
 index_scheddesc=Zapnite alebo vypnite plánovanú kontrolu monitorov a nastavte adresu, na ktorú sa automaticky zasielajú zlyhania.
 index_refresh=Obnoviť stav
 index_refreshdesc=Namiesto čakania na ďalšiu naplánovanú aktualizáciu vykonajte okamžité obnovenie všetkých stavov monitora.
@@ -23,10 +24,14 @@ type_alive=Živý systém
 type_rssh=Vzdialené SSH
 type_slapd=LDAP Server
 type_ldap=Pripojenie LDAP
+type_smtp=Pripojenie SMTP
+type_imap=Pripojenie IMAP
+type_firewalld=Server brány firewall
+type_reboot=Vyžaduje sa reštart
 
 mon_virtualmin=Výstraha! Tento monitor je priradený k doméne Virtualmin $1, a preto by sa tu nemal upravovať ani mazať.
 mon_header2=Príkazy na spustenie
-mon_header3=Sledované možnosti služby
+mon_header5=Možnosti upozornení
 mon_remotes2=Beží na hostiteľoch a skupinách
 mon_ontimeout=Ak monitor vyprší, spustite príkaz
 mon_eremote2=Webmin server $1 nebolo možné kontaktovať : $2
@@ -58,6 +63,7 @@ mon_changes1=Zobraziť iba zmeny
 mon_all=Zobraziť všetky historické udalosti
 mon_nochanges=V posledných historických udalostiach $1 nedošlo k žiadnym zmenám stavu.
 
+sched_email_def=Predvolené nastavenie systému ($1)
 sched_pnone=Neodosielať stránky
 sched_warn3=Pokiaľ bude služba v prevádzke
 sched_eemailserver=Váš poštový server nie je nainštalovaný : $1
@@ -358,3 +364,38 @@ ldap_pass=Heslo servera LDAP
 info_desc=Monitorovanie systému
 info_last=Súčasný stav
 info_title=Stav systému a servera
+
+smtp_host=Hostiteľ servera SMTP
+smtp_port=Port servera SMTP
+smtp_ssl=Chcete použiť pripojenie SSL?
+smtp_ssl0=Iba obyčajný text
+smtp_ssl1=Vždy SSL
+smtp_ssl2=Prepnite na SSL pomocou STARTTLS
+smtp_from=Otestujte odosielateľa SMTP
+smtp_none=žiadne
+smtp_addr=Použite adresu
+smtp_to=Otestovať príjemcu SMTP
+smtp_ehost=Chýbajúci alebo neriešiteľný hostiteľ servera SMTP
+smtp_eport=Chýbajúci alebo nenumerický port servera SMTP
+smtp_efrom=Adresa odosielateľa musí byť vo formáte user@domain.com
+smtp_eto=Adresa príjemcu musí byť vo formáte user@domain.com
+smtp_ok1=Príkaz HELO bol prijatý
+smtp_ok2=Adresa odosielateľa akceptovaná
+smtp_ok3=Adresa príjemcu akceptovaná
+smtp_ok4=Prihlásenie SMTP akceptované
+smtp_user=Overenie SMTP
+smtp_user1=Neprihlasujte sa
+smtp_user0=Prihláste sa ako používateľ
+smtp_pass=s heslom
+smtp_euser=Chýba prihlásenie SMTP
+
+imap_host=Hostiteľ servera IMAP
+imap_port=Port servera IMAP
+imap_ssl=Chcete použiť pripojenie SSL?
+imap_user=IMAP prihlásenie
+imap_pass=heslo IMAP
+imap_ehost=Chýbajúci alebo neriešiteľný hostiteľ servera IMAP
+imap_eport=Chýbajúci alebo nenumerický port servera IMAP
+imap_euser=Chýba prihlásenie IMAP
+
+reboot_pkgs=Aktualizácie balíka vyžadujú reštart

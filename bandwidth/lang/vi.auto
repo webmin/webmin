@@ -73,14 +73,17 @@ setup_ecannot=Bạn không được phép kích hoạt giám sát
 setup_eiface=Tên giao diện bị thiếu hoặc không hợp lệ
 setup_ezone=Không thể tìm thấy vùng Shorewall cho giao diện đã chọn
 
+system_firewalld=Tường lửa
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=Bộ lọc IP
 system_shorewall=Bờ biển
 
+syslog_journald=Nhật ký
 syslog_syslog=Nhật ký hệ thống
 syslog_syslog-ng=Syslog-NG
 
 rotate_title=Cập nhật số liệu thống kê
 rotate_doing=Xử lý lưu lượng mạng đã đăng nhập ..
 rotate_done=.. làm xong.
+rotate_failed=.. thất bại  : $1

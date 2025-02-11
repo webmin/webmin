@@ -1,4 +1,5 @@
 index_serviceonboot=Sí, i comença des de l'arrencada
 index_tabsync2=Executeu el servei <tt>$1</tt> del sistema per a la sincronització
+index_ctrl=Nota: Feu clic amb la tecla Ctrl (o feu clic amb comandament al Mac) per seleccionar i deseleccionar minuts, hores, dies i mesos.
 
 error_serviceunknown=Servei desconegut : $1

@@ -42,7 +42,9 @@ index_emailto=Taip, kreiptis
 index_email2=Siųsti el. Laišką, kai įkelta?
 
 upload_title=Įkelti failus
+upload_direct=Rašyti failus tiesiai į diską?
 upload_err=Nepavyko įkelti failų
+upload_emove=Nepavyko perkelti įkelto failo iš $1 į $2
 upload_edir=Trūksta katalogo, į kurį būtų galima įkelti
 upload_euser=Trūksta arba netinkamas vartotojo vardas
 upload_egroup=Trūksta arba netinkamas grupės pavadinimas

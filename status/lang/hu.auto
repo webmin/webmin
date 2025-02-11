@@ -1,9 +1,16 @@
+index_madd=Adjon hozzá megfelelő típusú monitort
+
 type_fail2ban=Fail2Ban Server
 type_init=Indítóművelet
 type_slapd=LDAP szerver
 type_ldap=LDAP kapcsolat
+type_smtp=SMTP kapcsolat
+type_imap=IMAP kapcsolat
+type_firewalld=FirewallD szerver
+type_reboot=Újraindítás szükséges
 
 mon_virtualmin=Figyelem! Ez a monitor a $1 Virtualmin tartományhoz van társítva, ezért nem szabad itt szerkeszteni vagy törölni.
+mon_header5=Értesítési lehetőségek
 mon_etype=Érvénytelen monitor típusnév
 mon_notifywebhook=Webhook
 mon_header4=Állapot előzményei
@@ -16,6 +23,7 @@ mon_changes1=Csak a változások megjelenítése
 mon_all=Az összes történelmi esemény megjelenítése
 mon_nochanges=Az utóbbi $1 történelmi eseményekben nem történt állapotváltozás.
 
+sched_email_def=Rendszer alapértelmezett ($1)
 sched_warn3=Amíg a szolgáltatás fennáll
 sched_subject=Tárgy sor az SMS-ekhez
 sched_subject0=Nincs (riasztás van a testben)
@@ -74,3 +82,38 @@ ldap_pass=LDAP szerver jelszava
 info_desc=Rendszermonitor
 info_last=Jelenlegi állapot
 info_title=Rendszer és szerver állapota
+
+smtp_host=SMTP szerver gazdagép
+smtp_port=SMTP szerver port
+smtp_ssl=SSL kapcsolatot használ?
+smtp_ssl0=Csak egyszerű szöveg
+smtp_ssl1=Mindig SSL
+smtp_ssl2=Váltson SSL-re a STARTTLS segítségével
+smtp_from=Tesztelje az SMTP küldőt
+smtp_none=Egyik sem
+smtp_addr=Használja a címet
+smtp_to=SMTP-címzett tesztelése
+smtp_ehost=Hiányzó vagy feloldhatatlan SMTP-kiszolgáló gazdagép
+smtp_eport=Hiányzó vagy nem numerikus SMTP-kiszolgáló port
+smtp_efrom=A feladó címének ilyennek kell lennie: user@domain.com
+smtp_eto=A címzett címének ilyennek kell lennie: user@domain.com
+smtp_ok1=A HELO parancs elfogadva
+smtp_ok2=A feladó címe elfogadva
+smtp_ok3=A címzett címe elfogadva
+smtp_ok4=SMTP bejelentkezés elfogadva
+smtp_user=SMTP hitelesítés
+smtp_user1=Ne jelentkezzen be
+smtp_user0=Bejelentkezés felhasználóként
+smtp_pass=jelszóval
+smtp_euser=Hiányzik az SMTP bejelentkezés
+
+imap_host=IMAP szerver gazdagép
+imap_port=IMAP szerver port
+imap_ssl=SSL kapcsolatot használ?
+imap_user=IMAP bejelentkezés
+imap_pass=IMAP jelszó
+imap_ehost=Hiányzó vagy feloldhatatlan IMAP-kiszolgáló gazdagép
+imap_eport=Hiányzó vagy nem numerikus IMAP-kiszolgálóport
+imap_euser=Hiányzó IMAP bejelentkezés
+
+reboot_pkgs=A csomagfrissítések újraindítást igényelnek

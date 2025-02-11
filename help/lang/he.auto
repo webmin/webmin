@@ -1,0 +1,19 @@
+index_title=עזרה של Webmin
+index_terms=חפש עזרה עבור
+index_mods=מודולים לחיפוש
+index_all=כֹּל
+index_sel=מודולים נבחרים ..
+index_search=לְחַפֵּשׂ
+index_header=Global Webmin עזרה בחיפוש
+index_return=טופס חיפוש
+
+search_err=החיפוש נכשל
+search_eterms=חסרים מונחי חיפוש
+search_emods=לא נבחרו מודולים
+search_title=תוצאות חיפוש
+search_einclude=הכללת $1 נכשלה
+search_none=אין קבצי עזרה שתואמים לחיפוש שלך
+search_mod=מודול
+search_page=דף עזרה
+search_line=התאם
+search_results=דפי עזרה של Webmin תואמים $1

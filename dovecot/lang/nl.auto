@@ -1,1 +1,7 @@
 net_ssl_required=Accepteer alleen SSL
+
+login_otp=Eenmalig wachtwoord
+login_skey=Beveiligingssleutel
+login_oauthbearer=OAuth2-dragerauthenticatie
+login_xoauth2=Google OAuth2-dragerverificatie
+login_external=Externe SASL-authenticatie

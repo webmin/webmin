@@ -74,6 +74,7 @@ dbase_ecannot=Jums neleidžiama redaguoti šios duomenų bazės
 dbase_name=vardas
 dbase_rows=Eilutės
 dbase_cols=Laukai
+dbase_size=Dydis
 dbase_delete=Išmeskite pasirinktas lenteles
 dbase_delete2=Atmeskite pažymėtus objektus
 dbase_showing=Rodomos lentelės, atitinkančios $1.

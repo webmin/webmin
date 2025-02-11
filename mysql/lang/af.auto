@@ -74,6 +74,7 @@ dbase_ecannot=U mag nie die databasis wysig nie
 dbase_name=naam
 dbase_rows=rye
 dbase_cols=Velde
+dbase_size=Grootte
 dbase_delete=Drop geselekteerde tabelle
 dbase_delete2=Laat geselekteerde voorwerpe val
 dbase_showing=Wys tabelle wat by $1 ooreenstem.

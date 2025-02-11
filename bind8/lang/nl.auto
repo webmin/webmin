@@ -9,6 +9,7 @@ master_inview=$1 in zicht $2
 master_egone=Zone $1 bestaat in geen enkele weergave
 master_egone2=Zone $1 bestaat niet!
 master_egone3=Zone $1 in zicht $2 bestaat niet!
+master_eserial2=Serienummer moet kleiner zijn dan 2^31
 master_vmin=Deze zone wordt beheerd door Virtualmin. Records moeten worden bewerkt met behulp van de gebruikersinterface van Virtualmin, om ervoor te zorgen dat ze consistent zijn met andere virtuele serverinstellingen.
 master_vminalias=Deze zone is een alias van een Virtualmin-domein, dat synchroon wordt gehouden met zijn doel. Records mogen hier nooit worden bewerkt, omdat eventuele wijzigingen worden overschreven!
 
@@ -77,6 +78,7 @@ value_NSEC3PARAM1=Hash-algoritme
 value_NSEC3PARAM2=NSEC3-vlaggen
 value_NSEC3PARAM3=Aantal hash-iteraties
 value_NSEC3PARAM4=Zout string
+value_NSEC3PARAM4_none=Geen
 value_delegated=Gedelegeerde zone
 value_notdelegated=Andere zone
 value_dmarcnone=Geen actie ondernemen
@@ -144,6 +146,8 @@ net_tport6=Bron IPv6-poort voor overdrachten
 net_eaddr='$1' is geen geldig IPv4-adres
 net_eaddr6='$1' is geen geldig IPv6-adres
 
+log_delete_recs2=$1 records verwijderd in zone $2
+
 convert_efilesize=Recordsbestand $1 bestaat niet of is leeg
 convert_ebinary=De opdracht die nodig is om van een binaire slavezone naar een master voor tekstindeling te converteren, is niet geïnstalleerd
 convert_ecompile=Conversie van binair naar tekstformaat is mislukt : $1
@@ -159,6 +163,10 @@ zonekey_publicfile=Bestand met openbare sleutel : $1
 zonekey_privatefile=Privésleutelbestand : $1
 zonekey_algorithm=DNSSEC-algoritme : $1
 zonekey_ds=DS record voor bovenliggende zone :
+zonekey_ds_keytag=Sleutelhanger
+zonekey_ds_alg=Algoritme
+zonekey_ds_type=Digest-type
+zonekey_ds_digest=Digest-reeks
 zonekey_eprivate=De privésleutel die aan deze zone is gekoppeld, kon niet worden gelezen : $1
 zonekey_keep=Bestaande sleutel behouden als DNSSEC opnieuw wordt ingeschakeld?
 

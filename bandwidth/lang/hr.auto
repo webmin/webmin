@@ -4,3 +4,9 @@ index_out=Učitaj
 index_total=Ukupno
 
 setup_eiface=Nedostaje ili nevaljano ime sučelja
+
+system_firewalld=Vatrozid
+
+syslog_journald=Dnevnik
+
+rotate_failed=.. neuspješno : $1

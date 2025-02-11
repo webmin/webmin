@@ -1,4 +1,5 @@
 index_serviceonboot=Ja, og start ved oppstart
 index_tabsync2=Kjør systemtjenesten <tt>$1</tt> for synkronisering
+index_ctrl=Merk: Ctrl-klikk (eller kommando-klikk på Mac) for å velge og fjerne valget av minutter, timer, dager og måneder.
 
 error_serviceunknown=Ukjent tjeneste : $1

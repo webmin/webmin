@@ -1,0 +1,19 @@
+index_title=مساعدة Webmin
+index_terms=مساعدة في البحث عن
+index_mods=وحدات للبحث
+index_all=الجميع
+index_sel=الوحدات المختارة ..
+index_search=يبحث
+index_header=مساعدة البحث في Webmin العالمية
+index_return=نموذج البحث
+
+search_err=فشل البحث
+search_eterms=مصطلحات البحث المفقودة
+search_emods=لم يتم اختيار أي وحدات
+search_title=نتائج البحث
+search_einclude=فشل في تضمين $1
+search_none=لا توجد ملفات مساعدة تطابق بحثك
+search_mod=الوحدة
+search_page=صفحة المساعدة
+search_line=مباراة على
+search_results=صفحات مساعدة Webmin المطابقة لـ $1
