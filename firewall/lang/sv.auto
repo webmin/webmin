@@ -160,8 +160,8 @@ redhat_eoutput=Ett fel inträffade med att få IPtables-status från kommandot $
 
 gentoo_escript=Gentoo IPtables-startskriptet $1 hittades inte på ditt system.
 
-eiptables=Okända IPtables sparar filrad : $1
-eip6tables=Okända ip6-tabeller sparar filrad : $1
+eiptables2=Okända IP-tabeller sparar filposten på rad $2 : $1 
+eip6tables2=Okänd IP6-tabell sparar filposten på rad $2 : $1 
 
 edit_title1=Lägg till regel
 edit_title2=Redigera regel

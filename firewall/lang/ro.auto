@@ -160,8 +160,8 @@ redhat_eoutput=A apărut o eroare la obținerea stării IPtables de la comanda $
 
 gentoo_escript=Scriptul de pornire Gentoo IPtables $1 nu a fost găsit în sistemul dvs.
 
-eiptables=Tabele IP necunoscute salvează linia fișierului : $1
-eip6tables=Mesaje necunoscute pentru a salva linia fișierului : $1
+eiptables2=IPtables necunoscute salvează intrarea fișierului la linia $2 : $1 
+eip6tables2=Tabelele IP6 necunoscute salvează intrarea fișierului la linia $2 : $1 
 
 edit_title1=Adăugați regula
 edit_title2=Editează regula

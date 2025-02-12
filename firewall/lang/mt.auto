@@ -160,8 +160,8 @@ redhat_eoutput=Sar żball li ġab status ta 'IPtables mill-kmand $1. Dan probabb
 
 gentoo_escript=L-iskritt tal-istartjar Gentoo IPtables $1 ma nstabx fis-sistema tiegħek.
 
-eiptables=IPtables mhux magħrufa jiffrankaw linja ta 'fajl : $1
-eip6tables=Mhux magħrufa ip6tables jiffrankaw linja ta 'fajl : $1
+eiptables2=IPtables mhux magħrufa jsalvaw id-dħul tal-fajl fil-linja $2 : $1 
+eip6tables2=IP6tables mhux magħrufa jsalvaw id-dħul tal-fajl fil-linja $2 : $1 
 
 edit_title1=Żid ir-Regola
 edit_title2=Editja r-Regola

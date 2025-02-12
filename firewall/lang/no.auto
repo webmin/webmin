@@ -7,6 +7,9 @@ desc_match-set_dst=utgående trafikk
 
 redhat_einstalled2=Ingen <tt>$1</tt> oppstartshandling ble funnet, noe som indikerer at IPtables-pakken ikke er installert på systemet ditt
 
+eiptables2=Ukjente IP-tabeller lagrer filoppføringen på linje $2 : $1 
+eip6tables2=Ukjente IP6-tabeller lagrer filoppføringen på linje $2 : $1 
+
 edit_matchset=Matchende IPset
 edit_matchsetsrc=på innkommende trafikk
 edit_matchsetdst=på utgående trafikk

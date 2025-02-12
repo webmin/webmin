@@ -39,6 +39,9 @@ desc_dest=destinácia
 
 redhat_einstalled2=Nenašla sa žiadna spúšťacia akcia <tt>$1</tt>, čo naznačuje, že balík IPtables nie je nainštalovaný vo vašom systéme
 
+eiptables2=Neznáme IPtables uloží položku súboru na riadok $2 : $1 
+eip6tables2=Neznáme tabuľky IP6 ukladajú záznam súboru na riadok $2 : $1 
+
 edit_state_snat=Zdroj NATd
 edit_state_dnat=Cieľový NATd
 edit_physdevin=Prichádzajúce fyzické rozhranie

@@ -33,6 +33,9 @@ desc_dest=bestemming
 
 redhat_einstalled2=Er is geen <tt>$1</tt> opstartactie gevonden, wat aangeeft dat het IPtables-pakket niet op uw systeem is geïnstalleerd
 
+eiptables2=Onbekende IPtables slaan bestandsinvoer op op regel $2 : $1 
+eip6tables2=Onbekende IP6tables bewaart bestandsinvoer op regel $2 : $1 
+
 edit_state_snat=Bron NATd
 edit_state_dnat=Bestemming NATd
 edit_matchset=Overeenkomende IP-set

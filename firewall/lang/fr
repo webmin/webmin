@@ -152,9 +152,6 @@ redhat_eoutput=Une erreur est survenue en tentant d'obtenir le status d'IPtables
 
 gentoo_escript=Le script de démarrage $1 de Gentoo n'a pas été trouvé sur votre système.
 
-eiptables=Ligne inconnue dans le fichier IPtables : $1
-eip6tables=Ligne de fichier de sauvegarde Ip6tables inconnue : $1
-
 edit_title1=Ajouter la règle
 edit_title2=Editer la règle
 edit_title3=Cloner la règle

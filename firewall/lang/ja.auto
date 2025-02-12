@@ -49,6 +49,9 @@ desc_dest=先
 
 redhat_einstalled2=<tt>$1</tt> ブートアップアクションが見つかりませんでした。これは、IPtables パッケージがシステムにインストールされていないことを示しています。
 
+eiptables2=行 $2 に不明な IPtables 保存ファイル エントリがあります : $1
+eip6tables2=行 $2 に不明な IP6tables 保存ファイル エントリがあります : $1
+
 edit_state_untracked=追跡されない
 edit_state_snat=ソースNATd
 edit_state_dnat=宛先NATd

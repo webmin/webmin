@@ -160,8 +160,8 @@ redhat_eoutput=从命令 $1获取IPtables状态时发生错误。这可能表明
 
 gentoo_escript=在您的系统上找不到Gentoo IPtables启动脚本 $1。
 
-eiptables=未知的IPtables保存文件行： $1
-eip6tables=未知的ip6tables保存文件行： $1
+eiptables2=未知的 IPtables 保存文件条目位于第 $2 行：$1
+eip6tables2=未知的 IP6tables 保存文件条目位于第 $2 行：$1
 
 edit_title1=添加规则
 edit_title2=编辑规则

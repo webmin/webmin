@@ -1,0 +1,2 @@
+eiptables2=Unbekannter IPtables-Dateieintrag in Zeile $2 speichern : $1
+eip6tables2=Unbekannter IP6tables-Dateieintrag in Zeile $2 speichern : $1

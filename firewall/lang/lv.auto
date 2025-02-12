@@ -160,8 +160,8 @@ redhat_eoutput=Kļūda, iegūstot IPtable statusu no komandas $1, radās. Tas, i
 
 gentoo_escript=Gentoo IPtables starta skripts $1 jūsu sistēmā netika atrasts.
 
-eiptables=Nezināma IPtable saglabā faila līniju : $1
-eip6tables=Nezināma ip6table saglabā faila līniju : $1
+eiptables2=Nezināmas IP tabulas saglabā faila ierakstu rindā $2 : $1 
+eip6tables2=Nezināmas IP6 tabulas saglabā faila ierakstu rindā $2 : $1 
 
 edit_title1=Pievienojiet noteikumu
 edit_title2=Rediģēt kārtulu

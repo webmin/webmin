@@ -105,9 +105,6 @@ redhat_eoutput=Si è verificato un errore caricando la configurazione di IPtable
 
 gentoo_escript=Lo script iniziale $1 delle IPtables di Gentoo non è stato trovato sul tuo sistema.
 
-eiptables=Riga sconosciuta salvata nel file di IPtables: $1
-eip6tables=Riga sconosciuta salvata nel file di ip6tables: $1
-
 edit_title1=Aggiungi regola
 edit_title2=Modifica regola
 edit_title3=Dublica regola

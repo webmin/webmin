@@ -160,8 +160,8 @@ redhat_eoutput=Kon nie IPtables status kry van die opdrag $1 nie. Dit dui waarsk
 
 gentoo_escript=Die Gentoo IPtables-opstartskrif $1 is nie op u stelsel gevind nie.
 
-eiptables=Onbekende IPtables stoor lêerlyn : $1
-eip6tables=Onbekende ip6-tafels stoor lêerlyn : $1
+eiptables2=Onbekende IP-tabelle stoor lêerinskrywing by reël $2 : $1 
+eip6tables2=Onbekende IP6-tabelle stoor lêerinskrywing by reël $2 : $1 
 
 edit_title1=Voeg reël by
 edit_title2=Wysig reël

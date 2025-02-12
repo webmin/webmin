@@ -105,9 +105,6 @@ redhat_eoutput=Ocurrio un error al tratar de recuperar el estado del firewall co
 
 gentoo_escript=El script de firewall $1 no se encontro en su sistema.
 
-eiptables=Fichero de firewall desconocido linea: $1
-eip6tables=Fichero de firewall desconocido linea: $1
-
 edit_title1=Añadir regla
 edit_title2=Editar regla
 edit_title3=Clonar regla

@@ -160,8 +160,8 @@ redhat_eoutput=Đã xảy ra lỗi khi nhận trạng thái IPtables từ lệnh
 
 gentoo_escript=Không tìm thấy tập lệnh khởi động Gentoo IPtables $1 trên hệ thống của bạn.
 
-eiptables=IPtables không xác định lưu dòng tệp : $1
-eip6tables=IP6tables không thể lưu dòng tệp : $1
+eiptables2=Mục nhập tệp lưu IPtables không xác định ở dòng $2 : $1 
+eip6tables2=Mục nhập tệp lưu IP6tables không xác định ở dòng $2 : $1 
 
 edit_title1=Thêm quy tắc
 edit_title2=Chỉnh sửa quy tắc

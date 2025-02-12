@@ -160,8 +160,8 @@ redhat_eoutput=Pri pridobivanju statusa IPtables iz ukaza $1 se je pojavila napa
 
 gentoo_escript=Začetnega skripta Gentoo IPtables $1 v vašem sistemu ni bilo mogoče najti.
 
-eiptables=Neznani IPtables shranijo vrstico datoteke : $1
-eip6tables=Neznani ip6tables shrani vrstico datoteke : $1
+eiptables2=Neznane IPtables shranijo vnos datoteke v vrstico $2 : $1 
+eip6tables2=Neznane tabele IP6 shranijo vnos datoteke v vrstico $2 : $1 
 
 edit_title1=Dodajte pravilo
 edit_title2=Uredi pravilo

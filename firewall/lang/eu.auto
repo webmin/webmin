@@ -160,8 +160,8 @@ redhat_eoutput=Errore bat gertatu da IPtables egoera $1 komandoan lortzean. Horr
 
 gentoo_escript=Gentoo IPtables hasierako script $1 ez da zure sisteman aurkitu.
 
-eiptables=IPtable ezezagunak fitxategiaren lerroa gordetzeko : $1
-eip6tables=IP6tables ezezagunak fitxategiaren lerroa gordetzeko : $1
+eiptables2=IPtables ezezagunek fitxategiaren sarrera $2 lerroan gordetzen dute : $1
+eip6tables2=IP6tables ezezagunek fitxategi-sarrera $2 lerroan gordetzen dute : $1
 
 edit_title1=Gehitu araua
 edit_title2=Editatu araua

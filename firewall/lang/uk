@@ -103,9 +103,6 @@ redhat_eoutput=При одержанні стану IPtables за допомог
 
 gentoo_escript=Сценарій Gentoo для запуску IPtables $1 у вашій системі не виявлений.
 
-eiptables=Невідомий рядок у файлі збереженої конфігурації IPtables : $1
-eip6tables=Невідомий рядок у файлі збереженої конфігурації ip6tables : $1
-
 edit_title1=Додавання правила
 edit_title2=Зміна правила
 edit_title3=Копіювання правила

@@ -160,8 +160,8 @@ redhat_eoutput=Памылка атрымання статусу IPtables з ка
 
 gentoo_escript=Скрыпт запуску Gentoo IPtables $1 у вашай сістэме не знойдзены.
 
-eiptables=Невядомыя IPtables захаваць радок файла : $1
-eip6tables=Невядомыя ip6tables захаваць радок файла : $1
+eiptables2=Невядомыя IPtables захоўваюць запіс файла ў радку $2 : $1 
+eip6tables2=Невядомыя табліцы IP6 захоўваюць запіс файла ў радку $2 : $1 
 
 edit_title1=Дадайце правіла
 edit_title2=Рэдагаваць правіла

@@ -160,8 +160,8 @@ redhat_eoutput=Gaunant „IPtable“ būseną iš komandos $1 įvyko klaida. Tai
 
 gentoo_escript=„Gentoo IPtables“ paleisties scenarijus $1 jūsų sistemoje nerastas.
 
-eiptables=Nežinoma IP lentelės įrašo failo eilutė : $1
-eip6tables=Nežinoma „ip6tables“ išsaugo failo eilutę : $1
+eiptables2=Nežinomos IP lentelės įrašo failo įrašą eilutėje $2 : $1 
+eip6tables2=Nežinomos IP6 lentelės įrašo failo įrašą eilutėje $2 : $1 
 
 edit_title1=Pridėti taisyklę
 edit_title2=Redaguoti taisyklę

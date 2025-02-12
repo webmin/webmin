@@ -58,6 +58,9 @@ desc_dest=пункт призначення
 
 redhat_einstalled2=Не знайдено дії завантаження <tt>$1</tt>, що вказує на те, що пакет IPtables не встановлено у вашій системі
 
+eiptables2=Невідомі IPtables зберігають запис файлу в рядку $2 : $1 
+eip6tables2=Невідомі таблиці IP6 зберігають запис файлу в рядку $2 : $1 
+
 edit_state_untracked=Не відслідковується
 edit_state_snat=Джерело NATd
 edit_state_dnat=Призначення NATd
