@@ -1,5 +1,5 @@
 desc=VNC Client
 name=VNCviewer
-version=2.0
+version=2.1
 webmin=1
 usermin=1

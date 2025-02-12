@@ -3,7 +3,7 @@ address=$1
 shift
 if [ -d /etc/xinetd.d ]
 then
-	grep '^service webminVNC' /etc/xinetd.d/vnc || cat >>/etc/xinetd.d/vnc <<@EOF@
+	grep '^service webminVNC' /etc/xinetd.d/vnc >/dev/null 2>&1 || cat >>/etc/xinetd.d/vnc <<@EOF@
 # default: on
 # description: This serves out a VNC connection which starts at a KDM login \
 #	prompt. This VNC connection has a resolution of 16bit depth.
@@ -56,16 +56,20 @@ StandardInput=socket
 fi
 if [ -f /etc/gdm/custom.conf ]
 then
-	grep -Pzo '\n\[xdmcp\]\nEnable=true' /etc/gdm/custom.conf  >/dev/null 2>&1 || (
-		grep -v '\[xdmcp\]' /etc/gdm/custom.conf >/tmp/gdm$$
-		echo '[xdmcp]' >>/tmp/gdm$$
-		echo 'Enable=true' >>/tmp/gdm$$
-		if [ ! -e /etc/gdm/custom.conf.bak ]
-		then
-			mv /etc/gdm/custom.conf /etc/gdm/custom.conf.bak
-		fi
-		cp /tmp/gdm$$ /etc/gdm/custom.conf
+	grep -Pzo '\n\[xdmcp\]\nEnable *= *true' /etc/gdm/custom.conf  >/dev/null 2>&1 || (
+		cp /etc/gdm/custom.conf /etc/gdm/custom.conf.bak
+		./enable_gdm_xdmcp.pl
 		systemctl is-active --quiet gdm && systemctl restart gdm
 
+	)
+fi
+if [ -f /etc/sysconfig/displaymanager ]
+then
+	grep '^DISPLAYMANAGER_REMOTE_ACCESS *= *"*yes"*' /etc/sysconfig/displaymanager >/dev/null 2>&1 || (
+		cp /etc/sysconfig/displaymanager /etc/sysconfig/displaymanager.bak
+		./enable_display_manager_xdmcp.pl
+		systemctl is-active --quiet gdm && systemctl restart gdm
+		systemctl is-active --quiet kdm && systemctl restart kdm
+		systemctl is-active --quiet xdm && systemctl restart xdm
 	)
 fi
