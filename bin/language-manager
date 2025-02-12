@@ -62,6 +62,7 @@ sub main
                'git-commit|gc!'                   => \$opt{'git-commit'},
                'stats|st:s'                       => \$opt{'stats'},
                'log|l:s'                          => \$opt{'log'},
+               'lib-path|lp:s'                    => \$opt{'lib-path'},
                'verbose|v:i'                      => \$opt{'verbose'},
                'yes|y:i'                          => \$opt{'assumeyes'});
 
@@ -82,22 +83,24 @@ sub main
     my $path = cwd;
 
     # Load Webmin lib
-    my $lib = "web-lib-funcs.pl";
-    if (!-r "$path/$lib") {
-        $path = dirname(dirname($0));
-        if (!-r "$path/$lib") {
-            $path = $path = Cwd::realpath('..');
+    my $libpath = $opt{'lib-path'} || $path;
+    my $libfile = "web-lib-funcs.pl";
+    if (!-r "$libpath/$libfile") {
+        $libpath = dirname(dirname($0));
+        if (!-r "$libpath/$libfile") {
+            $libpath = $path = Cwd::realpath('..');
         }
     }
-    require("$path/$lib");
+    require("$libpath/$libfile");
 
     # Enforce user specific target: language directory, config.info or module.info file {lang|ulang|config|uconfig|module}
     my $type = -d "$path/ulang" ? 'ulang' : 'lang';
     $opt{'type'} && ($type = $opt{'type'});
 
     # Store path and type
-    $data{'path'} = $path;
-    $data{'type'} = $type;
+    $data{'path'}     = $path;
+    $data{'lib-path'} = $libpath;
+    $data{'type'}     = $type;
 
     # Set default format to text
     $opt{'translate-format'} ||= 'text';
@@ -236,12 +239,14 @@ sub main
     }
 
     # Check if we can get Google Translate API token
-    $data{'token'} = get_google_translate_token();
-    if (!$data{'token'}) {
-        $opt{'only-diff'}      = 1;
-        $opt{'only-diff-auto'} = 1;
-        say YELLOW .
-          "Translation will not be done as Google Translate API key is missing. Falling back to `only-diff` mode.." . RESET;
+    if ($opt{'mode'} !~ /^clean/) {
+        $data{'token'} = get_google_translate_token();
+        if (!$data{'token'}) {
+            $opt{'only-diff'}      = 1;
+            $opt{'only-diff-auto'} = 1;
+            say YELLOW .
+                "Translation will not be done as Google Translate API key is missing. Falling back to `only-diff` mode.." . RESET;
+        }
     }
 
     # Just run tests, and exit, without writing anything
@@ -626,8 +631,8 @@ sub list_languages_local
 {
     my ($data, $removed_list) = @_;
     my ($key, $value, $options, $language, @languages);
-    my $lang_list = "$data->{'path'}/lang_list.txt";
-    $lang_list = "$data->{'path'}/lang_list_removed.txt" if ($removed_list);
+    my $lang_list = "$data->{'lib-path'}/lang_list.txt";
+    $lang_list = "$data->{'lib-path'}/lang_list_removed.txt" if ($removed_list);
     open(my $LANG, $lang_list) or
         die("Error: Cannot open " . RED, $lang_list, RESET . " file\n");
     while (<$LANG>) {
