@@ -19,6 +19,7 @@ index_tabsync2=Begin stelsel <tt>$1</tt> diens vir sinchronisasie
 index_desctime=Hierdie vorm is bedoel om die huidige tyd van die stelsel te verander, wat deur alle prosesse gebruik word. Op bedryfstelsels met 'n aparte hardewareklok kan dit ook gebruik word om dit in te stel.
 index_desczone=Met hierdie vorm kan u die standaardtydsone van die stelsel instel, wat gebruik word om die stelseltyd te omskep in 'n leesbare formaat en verreken.
 index_descsync=Hierdie vorm is bedoel om die stelsel op te stel om die tyd outomaties met 'n eksterne bediener te sinchroniseer. Synchronisasie sal met behulp van die Unix <tt>time</tt> protokol of NTP geskied, afhangend van watter opdragte geïnstalleer is en wat die afstandstelsel ondersteun.
+index_ctrl=Let wel: Ctrl-klik (of opdrag-kliek op die Mac) om minute, ure, dae en maande te kies en te ontkies.
 
 action_save=Save
 action_apply=aansoek doen

@@ -125,9 +125,13 @@ smtpd_nomap2=Aún no se ha ingresado un mapa de restricciones en las direcciones
 smtpd_map=Direcciones permitidas para retransmitir
 smtpd_map2=Restricciones en las direcciones del remitente
 
-opts_smtp_use_tls=Use TLS para conexiones SMTP
 opts_smtp_sasl_security_options=Opciones de seguridad de SASL
 opts_smtp_tls_security_level=Nivel de seguridad del cliente SMTP TLS
+opts_inet_protocols=Protocolos de Internet para habilitar
+opts_inet_protocols_all=Todo disponible
+opts_smtp_address_preference=Protocolo de cliente SMTP preferido
+opts_smtp_address_preference_any=Cualquiera
+opts_smtp_balance_inet_protocols=Validar protocolos de cliente SMTP
 
 opts_edebug=Nivel de registro detallado faltante o no válido: debe ser un número mayor que cero
 
@@ -181,6 +185,8 @@ acl_postfinger=¿Puede verificar la configuración de postfix?
 acl_manual=¿Se puede editar el archivo de configuración?
 acl_dir=Directorio permitido para archivos de mapas
 acl_bcc=¿Se puede editar el mapeo BCC?
+acl_body=¿Puedo editar los controles corporales?
+acl_dependent=¿Puedo editar mapas de transporte dependientes del remitente?
 
 boxes_title=Buzones de usuario
 boxes_user=Usuario
@@ -230,6 +236,15 @@ mail_forward=Adelante
 mail_rfc=De la línea
 mail_move=Mover a:
 mail_eexists=¡El mensaje ya no existe!
+mail_qfile=Archivo de cola de correo
+mail_qlast=Último reintento a las
+mail_qdir=Estado de la cola de correo
+mail_qdir_active=Activo
+mail_qdir_incoming=Entrante
+mail_qdir_deferred=Diferido
+mail_qdir_corrupt=Corrupto
+mail_qdir_hold=En espera
+mail_qdir_maildrop=Buzón de correo
 
 view_title=Leer el correo electrónico
 view_desc=Mensaje $1 en $2
@@ -340,9 +355,11 @@ mailq_active=Activo
 mailq_deferred=Diferido
 mailq_hold=Mantener seleccionado
 mailq_unhold=Anular retención seleccionado
+mailq_dir=Estado de la cola
 
 flushq_title=Cola de descarga
 flushq_desc=Forzar el intento de entrega de correo con el comando $1 ..
+flushq_desc2=.. revise el registro de correo para ver los resultados
 
 qview_title=Mensaje en cola
 qview_desc=Del archivo $1
@@ -551,6 +568,10 @@ opts_broken_sasl_auth_clients=¿Manejar clientes SMTP no conformes?
 sasl_opts=Opciones de seguridad SMTP
 sasl_noanonymous=Rechazar inicios de sesión anónimos
 sasl_noplaintext=Rechazar inicios de sesión de texto sin formato
+sasl_noactive=Rechazar No permitir sujeto a ataque activo (no de diccionario)
+sasl_nodictionary=Rechazar métodos sujetos a ataques pasivos (diccionario)
+sasl_forward_secrecy=Permitir únicamente métodos que admitan secreto hacia adelante
+sasl_mutual_auth=Permitir únicamente métodos que proporcionen autenticación mutua
 opts_smtpd_delay_reject=¿Retrasar clientes con inicios de sesión fallidos?
 sasl_recip=Restricciones de destinatario SMTP
 sasl_relay=Restricciones de retransmisión SMTP

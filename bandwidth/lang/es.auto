@@ -8,5 +8,10 @@ index_total=Total
 
 setup_eiface=Nombre de interfaz faltante o no válido
 
+system_firewalld=Cortafuegos
+
+syslog_journald=Diario
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
+
+rotate_failed=.. falló : $1

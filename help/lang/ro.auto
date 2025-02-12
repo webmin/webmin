@@ -1,0 +1,19 @@
+index_title=Ajutor Webmin
+index_terms=Căutați ajutor pentru
+index_mods=Module de căutat
+index_all=Toate
+index_sel=Modulele selectate ..
+index_search=Căutare
+index_header=Global Webmin ajută la căutarea
+index_return=formular de căutare
+
+search_err=Căutarea a eșuat
+search_eterms=Lipsesc termeni de căutare
+search_emods=Nu au fost alese module
+search_title=Rezultatele căutării
+search_einclude=Nu s-a putut include $1
+search_none=Niciun fișier de ajutor nu corespunde căutării dvs
+search_mod=Modul
+search_page=Pagina de ajutor
+search_line=Se potrivește
+search_results=Pagini de ajutor Webmin care se potrivesc cu $1

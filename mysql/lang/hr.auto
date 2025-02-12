@@ -74,6 +74,7 @@ dbase_ecannot=Nije vam dopušteno uređivanje ove baze podataka
 dbase_name=Ime
 dbase_rows=redovi
 dbase_cols=polja
+dbase_size=Veličina
 dbase_delete=Ispusti odabrane tablice
 dbase_delete2=Ispusti odabrane objekte
 dbase_showing=Prikazivanje tablica koje odgovaraju $1 ..

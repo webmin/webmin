@@ -42,7 +42,9 @@ index_emailto=Ja, om aan te spreek
 index_email2=Stuur e-pos as die oplaai gedoen is?
 
 upload_title=Laai lêers op
+upload_direct=Skryf lêers direk na skyf?
 upload_err=Kon nie lêers oplaai nie
+upload_emove=Kon nie opgelaaide lêer van $1 na $2 skuif nie
 upload_edir=Gids ontbreek om na op te laai
 upload_euser=Gebruikernaam ontbreek of ongeldig
 upload_egroup=Groepnaam ontbreek of ongeldig

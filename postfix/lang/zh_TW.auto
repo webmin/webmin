@@ -125,9 +125,13 @@ smtpd_nomap2=尚未輸入限制發件人地址的地圖。
 smtpd_map=允許中繼的地址
 smtpd_map2=發件人地址限制
 
-opts_smtp_use_tls=使用TLS進行SMTP連接
 opts_smtp_sasl_security_options=SASL安全選項
 opts_smtp_tls_security_level=SMTP TLS 客戶端安全級別
+opts_inet_protocols=網際網路協定
+opts_inet_protocols_all=全部可用
+opts_smtp_address_preference=首選 SMTP 用戶端協定
+opts_smtp_address_preference_any=任何一個
+opts_smtp_balance_inet_protocols=驗證 SMTP 用戶端協定
 
 opts_edebug=詳細記錄級別缺失或無效-必須是大於零的數字
 
@@ -180,9 +184,20 @@ acl_postfinger=可以檢查後綴配置嗎？
 acl_manual=可以編輯配置文件嗎？
 acl_dir=地圖文件的允許目錄
 acl_bcc=可以編輯密件抄送映射嗎？
+acl_body=可以編輯身體檢查嗎？
+acl_dependent=可以編輯發送方相關傳輸圖嗎？
 
 mail_move=搬去：
 mail_eexists=訊息已不存在！
+mail_qfile=郵件佇列文件
+mail_qlast=上次重試時間
+mail_qdir=郵件佇列狀態
+mail_qdir_active=積極的
+mail_qdir_incoming=傳入
+mail_qdir_deferred=延期
+mail_qdir_corrupt=腐敗
+mail_qdir_hold=等候接聽
+mail_qdir_maildrop=郵件投遞
 
 view_flush=沖洗
 view_body=訊息文字
@@ -225,9 +240,11 @@ mailq_active=活性
 mailq_deferred=遞延
 mailq_hold=保留選定
 mailq_unhold=取消選擇
+mailq_dir=佇列狀態
 
 flushq_title=沖洗隊列
 flushq_desc=使用命令$1強制嘗試發送郵件。
+flushq_desc2=.. 檢查郵件日誌以了解結果
 
 qview_title=排隊的消息
 qview_desc=來自文件$1
@@ -435,6 +452,10 @@ opts_broken_sasl_auth_clients=處理不兼容的SMTP客戶端？
 sasl_opts=SMTP安全選項
 sasl_noanonymous=拒絕匿名登錄
 sasl_noplaintext=拒絕純文本登錄
+sasl_noactive=拒絕 不允許 受到主動（非字典）攻擊
+sasl_nodictionary=拒絕受到被動（字典）攻擊的方法
+sasl_forward_secrecy=僅允許支持前向保密的方法
+sasl_mutual_auth=僅允許提供相互身份驗證的方法
 opts_smtpd_delay_reject=延遲客戶端登錄失敗？
 sasl_recip=SMTP收件人限制
 sasl_relay=SMTP中繼限制

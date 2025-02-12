@@ -32,8 +32,6 @@ index_long=Mostra les descripcions llargues de les accions
 index_global=&lt;A cap mòdul&gt;
 
 search_title=Resultats de la Recerca
-search_date=Data
-search_time=Hora
 search_user=Usuari
 search_host=Adreça del Client
 search_webmin=Servidor Webmin

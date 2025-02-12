@@ -101,9 +101,13 @@ smtpd_nomap2=Aucune carte pour les restrictions sur les adresses des expéditeur
 smtpd_map=Adresses autorisées pour le relais
 smtpd_map2=Restrictions sur les adresses des expéditeurs
 
-opts_smtp_use_tls=Utiliser TLS pour les connexions SMTP
 opts_smtp_sasl_security_options=Options de sécurité SASL
 opts_smtp_tls_security_level=Niveau de sécurité du client SMTP TLS
+opts_inet_protocols=Protocoles Internet pour permettre
+opts_inet_protocols_all=Tous disponibles
+opts_smtp_address_preference=Protocole client SMTP préféré
+opts_smtp_address_preference_any=Soit
+opts_smtp_balance_inet_protocols=Valider les protocoles clients SMTP
 
 opts_edebug=Niveau de journalisation détaillé manquant ou non valide - doit être un nombre supérieur à zéro
 
@@ -151,6 +155,8 @@ acl_mailq=Peut gérer la file d'attente de messagerie?
 acl_boxes=Peut lire les courriels des utilisateurs?
 acl_dir=Répertoire autorisé pour les fichiers de carte
 acl_bcc=Peut modifier le mappage BCC?
+acl_body=Peut-on modifier les contrôles corporels ?
+acl_dependent=Peut-on modifier les cartes de transport dépendantes de l'expéditeur ?
 
 boxes_user=Utilisateur
 boxes_size=Taille de la boîte aux lettres
@@ -199,6 +205,15 @@ mail_forward=Vers l'avant
 mail_rfc=De la ligne
 mail_move=Déménager à:
 mail_eexists=Le message n'existe plus!
+mail_qfile=Fichier de file d'attente de courrier
+mail_qlast=Dernière tentative à
+mail_qdir=État de la file d'attente du courrier
+mail_qdir_active=Actif
+mail_qdir_incoming=Entrant
+mail_qdir_deferred=Différé
+mail_qdir_corrupt=Corrompu
+mail_qdir_hold=En attente
+mail_qdir_maildrop=Dépôt de courrier
 
 view_sent=Message $1 dans la liste de diffusion envoyée
 view_qdesc=Message en file d'attente $1
@@ -288,9 +303,11 @@ mailq_active=actif
 mailq_deferred=Différé
 mailq_hold=Conserver la sélection
 mailq_unhold=Retenir la sélection
+mailq_dir=État de la file d'attente
 
 flushq_title=Queue de vidage
 flushq_desc=Forcer la tentative de remise du courrier avec la commande $1 ..
+flushq_desc2=.. vérifiez le journal de messagerie pour les résultats
 
 qview_title=Message en file d'attente
 qview_desc=À partir du fichier $1
@@ -496,6 +513,10 @@ opts_broken_sasl_auth_clients=Gérer les clients SMTP non conformes?
 sasl_opts=Options de sécurité SMTP
 sasl_noanonymous=Refuser les connexions anonymes
 sasl_noplaintext=Refuser les connexions en texte brut
+sasl_noactive=Rejeter Interdire l'objet d'une attaque active (hors dictionnaire)
+sasl_nodictionary=Rejeter les méthodes soumises à une attaque passive (dictionnaire)
+sasl_forward_secrecy=Autoriser uniquement les méthodes qui prennent en charge la confidentialité avancée
+sasl_mutual_auth=Autoriser uniquement les méthodes qui fournissent une authentification mutuelle
 opts_smtpd_delay_reject=Retarder les clients dont les connexions ont échoué?
 sasl_recip=Restrictions du destinataire SMTP
 sasl_relay=Restrictions de relais SMTP

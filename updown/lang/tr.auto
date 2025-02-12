@@ -12,6 +12,8 @@ index_email=İndirme işlemi tamamlandığında e-posta gönderilsin mi?
 index_emailto=Evet, adreslemek
 index_email2=Yüklemeler tamamlandığında e-posta gönderilsin mi?
 
+upload_direct=Dosyaları doğrudan diske yazmak?
+upload_emove=Yüklenen dosya $1'den $2'ye taşınamadı
 upload_eemail=Bildirilecek e-posta adresi eksik
 upload_saving=$1 dosyası kaydediliyor ..
 upload_saved=.. $1 yazdı

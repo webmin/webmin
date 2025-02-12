@@ -1,0 +1,19 @@
+index_title=Webmin-hulp
+index_terms=Zoekhulp voor
+index_mods=Modules om te zoeken
+index_all=Alle
+index_sel=Geselecteerde modules ..
+index_search=Zoekopdracht
+index_header=Wereldwijde Webmin-hulpzoekopdracht
+index_return=zoekformulier
+
+search_err=Zoeken mislukt
+search_eterms=Ontbrekende zoektermen
+search_emods=Geen modules gekozen
+search_title=Zoekresultaten
+search_einclude=$1 kon niet worden opgenomen
+search_none=Er zijn geen helpbestanden gevonden die aan uw zoekopdracht voldoen
+search_mod=Module
+search_page=Helppagina
+search_line=Wedstrijd op
+search_results=Webmin-helppagina's die overeenkomen met $1

@@ -74,6 +74,7 @@ dbase_ecannot=Nu aveți voie să editați această bază de date
 dbase_name=Nume
 dbase_rows=rânduri
 dbase_cols=Câmpuri
+dbase_size=Dimensiune
 dbase_delete=Tabelele selectate
 dbase_delete2=Renunțați la obiecte selectate
 dbase_showing=Se afișează tabele care corespund $1 ..

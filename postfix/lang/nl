@@ -242,7 +242,6 @@ opts_mydomain_default=Standaard (verstrekt door het systeem)
 opts_myhostname=Internet hostnaam van dit mail systeem
 opts_myhostname_default=Standaard (verstrekt door het systeem)
 opts_mynetworks=Locale netwerken
-opts_mynetworks_default=Standaard (alle toegevoegde netwerken)
 opts_mynetworks_style=Automatische locale netwerken
 opts_mynetworks_subnet=Zelfde IP subnet
 opts_mynetworks_class=Zelfde netwerk class

@@ -1,4 +1,5 @@
 index_last=Ostatnie sprawdzenie
+index_madd=Dodaj monitor typu
 index_none=Obecnie nie są zdefiniowane żadne monitory.
 index_oldtime=Status od ostatniej zaplanowanej kontroli w $1
 index_esnmp=Moduł jest skonfigurowany do wysyłania pułapek SNMP na stronie <a href='$3'>Konfiguracja modułu</a>, ale moduł $1 Perl nie jest zainstalowany. <a href='$2'>Kliknij tutaj</a>, aby pobrać i zainstalować teraz.
@@ -11,9 +12,13 @@ type_fail2ban=Serwer Fail2Ban
 type_init=Działanie rozruchowe
 type_dns=Wyszukiwanie DNS
 type_query=Zapytanie SQL
+type_smtp=Połączenie SMTP
+type_imap=Połączenie IMAP
+type_firewalld=Serwer FirewallD
+type_reboot=Wymagane ponowne uruchomienie
 
 mon_virtualmin=Ostrzeżenie! Ten monitor jest powiązany z domeną Virtualmin $1, dlatego nie należy go tutaj edytować ani usuwać.
-mon_header3=Monitorowane opcje usług
+mon_header5=Opcje powiadomień
 mon_eremote2=Nie można się skontaktować z serwerem Webmin $1 : $2
 mon_etype=Niepoprawna nazwa typu monitora
 mon_efails=Brakująca lub niepoprawna liczba awarii
@@ -26,6 +31,7 @@ mon_changes1=Pokaż tylko zmiany
 mon_all=Pokaż wszystkie wydarzenia historyczne
 mon_nochanges=Nie nastąpiły żadne zmiany statusu w ostatnich $1 wydarzeniach historycznych.
 
+sched_email_def=Domyślna wartość systemowa ($1)
 sched_pager=Raport o stanie strony na numer
 sched_pnone=Nie wysyłaj stron
 sched_warn3=Tak długo, jak usługa jest dostępna
@@ -261,3 +267,38 @@ du_under=Rozmiar to tylko $1
 info_desc=Monitor systemu
 info_last=Aktualny stan
 info_title=Status systemu i serwera
+
+smtp_host=Serwer hosta SMTP
+smtp_port=Port serwera SMTP
+smtp_ssl=Czy użyć połączenia SSL?
+smtp_ssl0=Tylko tekst jawny
+smtp_ssl1=Zawsze SSL
+smtp_ssl2=Przełącz na SSL z STARTTLS
+smtp_from=Test nadawcy SMTP
+smtp_none=Nic
+smtp_addr=Użyj adresu
+smtp_to=Test odbiorcy SMTP
+smtp_ehost=Brak lub nierozwiązywalny host serwera SMTP
+smtp_eport=Brak portu serwera SMTP lub port niebędący numerem
+smtp_efrom=Adres nadawcy musi wyglądać następująco: użytkownik@domena.com
+smtp_eto=Adres odbiorcy musi wyglądać następująco: użytkownik@domena.com
+smtp_ok1=Komenda HELO przyjęta
+smtp_ok2=Adres nadawcy został zaakceptowany
+smtp_ok3=Adres odbiorcy zaakceptowany
+smtp_ok4=Zaakceptowano logowanie SMTP
+smtp_user=Uwierzytelnianie SMTP
+smtp_user1=Nie loguj się
+smtp_user0=Zaloguj się jako użytkownik
+smtp_pass=z hasłem
+smtp_euser=Brak logowania SMTP
+
+imap_host=Serwer hosta IMAP
+imap_port=Port serwera IMAP
+imap_ssl=Czy użyć połączenia SSL?
+imap_user=Logowanie IMAP
+imap_pass=Hasło IMAP
+imap_ehost=Brak lub nierozwiązywalny serwer hosta IMAP
+imap_eport=Brak portu serwera IMAP lub port niebędący numerem
+imap_euser=Brak logowania IMAP
+
+reboot_pkgs=Aktualizacje pakietów wymagają ponownego uruchomienia

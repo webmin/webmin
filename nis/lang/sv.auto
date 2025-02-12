@@ -5,6 +5,8 @@ client_enis=Din maskin verkar inte ha NIS-klientstöd installerat.
 switch_srcs=Datakällor
 switch_return=klienttjänster
 
+order_=&nbsp;
+
 server_epwdir=Ogiltig katalog för lösenordskällfiler
 
 tables_find=Hitta $1 där $2 matchar $3

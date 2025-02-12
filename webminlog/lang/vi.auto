@@ -37,6 +37,7 @@ index_notify=Gửi email cho các hành động Webmin?
 index_notify_mods=Đối với các hành động trong mô-đun
 index_notify_users=Đối với các hành động của người dùng
 index_notify_email=Gửi email đến
+index_notify_email_def=Địa chỉ thông báo mặc định
 index_notify_usub=Bao gồm tên người dùng trong chủ đề email?
 index_notify_msub=Bao gồm hành động trong chủ đề email?
 index_searchtab=Tìm kiếm nhật ký
@@ -45,8 +46,7 @@ index_searchdesc=Biểu mẫu này có thể được sử dụng để tìm ki�
 index_notifydesc=Sử dụng biểu mẫu này để định cấu hình thông báo qua email khi các hành động Webmin được thực hiện bởi những người dùng được chọn hoặc trong các mô-đun đã chọn.
 
 search_title=kết quả tìm kiếm
-search_date=Ngày
-search_time=Thời gian
+search_datetime=Ngày và giờ
 search_user=Người sử dụng
 search_host=Địa chỉ khách hàng
 search_webmin=Máy chủ Webmin

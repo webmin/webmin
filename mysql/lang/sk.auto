@@ -74,6 +74,7 @@ dbase_ecannot=Nemáte oprávnenie upravovať túto databázu
 dbase_name=názov
 dbase_rows=riadky
 dbase_cols=Fields
+dbase_size=Veľkosť
 dbase_delete=Zrušte vybrané tabuľky
 dbase_delete2=Zrušte vybrané objekty
 dbase_showing=Zobrazujú sa tabuľky zodpovedajúce $1 ..

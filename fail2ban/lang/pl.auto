@@ -1,7 +1,41 @@
 index_ver=Wersja 1
 
+jail_ports=Porty do zablokowania
+jail_ebackend=Nieprawidłowa nazwa zaplecza
+jail_eports=Nieprawidłowa nazwa portu, numer lub zakres; użyj pojedynczej nazwy portu, numeru lub zakresu w formacie <tt>start:end</tt> ; aby określić wiele portów, rozdziel je przecinkami
 jail_systemd=systemowy
 jail_pyinotify=pyinotify
+
+config_dbpurgeage=Wiek, w którym bany powinny zostać usunięte z bazy danych
+config_dbpurgeage_15m=15 minut
+config_dbpurgeage_30m=30 minut
+config_dbpurgeage_1h=1 godzina
+config_dbpurgeage_6h=6 godzin
+config_dbpurgeage_12h=12 godzin
+config_dbpurgeage_1d=1 dzień
+config_dbpurgeage_3d=3 dni
+config_dbpurgeage_1w=1 tydzień
+config_dbpurgeage_2w=2 tygodnie
+config_dbpurgeage_1mo=1 miesiąc
+config_ewrongunit=Nieprawidłowa jednostka <tt>$1</tt> dla wieku czyszczenia bazy danych
+config_ewrongtime=Nieprawidłowy czas dla wieku czyszczenia bazy danych. Czas dla wieku czyszczenia bazy danych musi być liczbą większą od zera
+config_dbpurgeagedef=Domyślny
+config_dbpurgeagesel=Wybrany
+config_dbpurgeagecus=Zwyczaj
+config_dbpurgeagecussec=drugi
+config_dbpurgeagecussecs=towary drugiej jakości
+config_dbpurgeagecusmin=chwila
+config_dbpurgeagecusmins=protokół
+config_dbpurgeagecushr=godzina
+config_dbpurgeagecushrs=godziny
+config_dbpurgeagecusday=dzień
+config_dbpurgeagecusdays=dni
+config_dbpurgeagecuswk=tydzień
+config_dbpurgeagecuswks=tygodnie
+config_dbpurgeagecusmo=miesiąc
+config_dbpurgeagecusmos=miesiące
+config_dbpurgeagecusyr=rok
+config_dbpurgeagecusyrs=lat
 
 status_title=Status i działania w więzieniach
 status_title3=Bloki więzienne

@@ -244,7 +244,6 @@ opts_mydomain_default=Standard (angitt av systemet)
 opts_myhostname=Internet vertsnavn for dette e-post systemet
 opts_myhostname_default=Standard (angitt av systemet)
 opts_mynetworks=Lokale nettverk
-opts_mynetworks_default=Standard (alle tilknyttede nettverk)
 opts_mynetworks_style=Automatiske lokale nettverk
 opts_mynetworks_subnet=Samme IP subnett
 opts_mynetworks_class=Samme nettverksklasse
@@ -313,7 +312,6 @@ opts_smtp_data_init_timeout=Tidsavbrudd for venting på svar på DATA
 opts_smtp_data_xfer_timeout=Tidsavbrudd ved venting på svar på overføring av meldingsinnhold
 opts_smtp_data_done_timeout=Tidsavbrudd ved venting på svar på avsluttende "."
 opts_smtp_quit_timeout=Tidsavbrudd for venting på svar på QUIT
-opts_smtp_use_tls=Bruk TLS for SMTP forbindelser
 opts_smtp_sasl_security_options=SASL sikkerhetsinnstillinger
 
 rate_title=Leveringsinnstillinger

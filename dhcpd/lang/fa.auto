@@ -1,3 +1,4 @@
+index_comment=توضیحات
 index_stop=توقف سرور
 index_stopdesc=روی این دکمه کلیک کنید تا سرور DHCP در حال اجرا روی سیستم شما متوقف شود. هنگامی که متوقف شد ، مشتریان DHCP قادر به درخواست آدرس IP نخواهند بود.
 index_dhcpd=ISC DHCPd

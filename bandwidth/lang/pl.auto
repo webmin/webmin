@@ -1,3 +1,9 @@
 index_in=Pobierać
 index_out=Wgrywać
 index_total=Całkowity
+
+system_firewalld=Zapora sieciowa
+
+syslog_journald=Dziennik
+
+rotate_failed=.. nie powiodło się : $1

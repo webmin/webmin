@@ -5,6 +5,8 @@ index_suse=Balík Perl <tt>perl-IO-Tty</tt> chýba a mal by byť najprv manuáln
 index_euser=Chyba: Používateľ $1 nemôže spustiť shell, pretože neexistuje!
 index_connecting=Pripája sa ..
 index_missing=Chýba modul Perl <tt>$1</tt>. Ak chcete tento problém vyriešiť, musíte sa obrátiť na správcu.
+index_eproxy=Modul Terminál nie je možné použiť pri prístupe k Webmin cez iný Webmin server
 
 acl_user=Spustite shell ako používateľ Unixu
 acl_sameuser=Rovnaké ako prihlásenie Webmin
+acl_sudoenforce=Vynútiť iba oprávnenia <em>sudo</em>

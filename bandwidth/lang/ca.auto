@@ -1,3 +1,9 @@
 index_in=descarregar
 index_out=Carrega
 index_total=Total
+
+system_firewalld=Tallafoc
+
+syslog_journald=Journald
+
+rotate_failed=.. ha fallat : $1

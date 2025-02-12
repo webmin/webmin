@@ -73,14 +73,17 @@ setup_ecannot=Jums neleidžiama įjungti stebėjimo
 setup_eiface=Trūksta arba netinkamas sąsajos pavadinimas
 setup_ezone=Nepavyko rasti pasirinktos sąsajos „Shorewall“ zonos
 
+system_firewalld=Ugniasienė
 system_firewall=IP lentelės
 system_ipfw=IPFW
 system_ipfilter=„IPFilter“
 system_shorewall=Shorewall
 
+syslog_journald=Žurnalas
 syslog_syslog=„Syslog“
 syslog_syslog-ng=„Syslog-NG“
 
 rotate_title=Statistikos atnaujinimas
 rotate_doing=Apdorojamas prisijungęs tinklo srautas.
 rotate_done=.. padaryta.
+rotate_failed=.. nepavyko : $1

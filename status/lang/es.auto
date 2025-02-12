@@ -1,3 +1,4 @@
+index_madd=Agregar monitor de tipo
 index_refsel=Actualizar seleccionado
 index_group=Miembros de $1
 index_tmpls=Editar plantillas de correo electrónico
@@ -15,10 +16,14 @@ type_alive=Sistema vivo
 type_rssh=SSH remoto
 type_slapd=Servidor LDAP
 type_ldap=Conexión LDAP
+type_smtp=Conexión SMTP
+type_imap=Conexión IMAP
+type_firewalld=Servidor FirewallD
+type_reboot=Es necesario reiniciar
 
 mon_virtualmin=¡Advertencia! Este monitor está asociado con el dominio de Virtualmin $1, por lo que no debe editarse ni eliminarse aquí.
 mon_header2=Comandos para ejecutar
-mon_header3=Opciones de servicio monitoreadas
+mon_header5=Opciones de notificación
 mon_remotes2=Ejecutar en hosts y grupos
 mon_ontimeout=Si el monitor agota el tiempo de espera, ejecute el comando
 mon_eremote2=No se pudo contactar al servidor Webmin $1 : $2
@@ -41,6 +46,7 @@ mon_changes1=Mostrar solo cambios
 mon_all=Mostrar todos los eventos históricos
 mon_nochanges=No se produjeron cambios de estado en los últimos $1 eventos históricos.
 
+sched_email_def=Valor predeterminado del sistema ($1)
 sched_pnone=No envíes paginas
 sched_warn3=Mientras el servicio esté activo
 sched_eemailserver=Su servidor de correo no está instalado : $1
@@ -265,3 +271,38 @@ ldap_pass=Contraseña del servidor LDAP
 info_desc=Monitor del sistema
 info_last=Estado actual
 info_title=Sistema y estado del servidor
+
+smtp_host=Servidor host SMTP
+smtp_port=Puerto del servidor SMTP
+smtp_ssl=¿Utilizar conexión SSL?
+smtp_ssl0=Sólo texto sin formato
+smtp_ssl1=Siempre SSL
+smtp_ssl2=Cambiar a SSL con STARTTLS
+smtp_from=Probar el remitente SMTP
+smtp_none=Ninguno
+smtp_addr=Utilizar dirección
+smtp_to=Probar destinatario SMTP
+smtp_ehost=Servidor SMTP faltante o irresoluble
+smtp_eport=Puerto de servidor SMTP faltante o no numérico
+smtp_efrom=La dirección del remitente debe ser del tipo usuario@dominio.com
+smtp_eto=La dirección del destinatario debe ser del tipo usuario@dominio.com
+smtp_ok1=Comando HELO aceptado
+smtp_ok2=Dirección de remitente aceptada
+smtp_ok3=Dirección del destinatario aceptada
+smtp_ok4=Se acepta inicio de sesión SMTP
+smtp_user=Autenticación SMTP
+smtp_user1=No iniciar sesión
+smtp_user0=Iniciar sesión como usuario
+smtp_pass=con contraseña
+smtp_euser=Falta inicio de sesión SMTP
+
+imap_host=Host del servidor IMAP
+imap_port=Puerto del servidor IMAP
+imap_ssl=¿Utilizar conexión SSL?
+imap_user=Inicio de sesión IMAP
+imap_pass=Contraseña IMAP
+imap_ehost=Host de servidor IMAP faltante o irresoluble
+imap_eport=Puerto de servidor IMAP faltante o no numérico
+imap_euser=Falta inicio de sesión IMAP
+
+reboot_pkgs=Las actualizaciones de paquetes requieren reiniciar

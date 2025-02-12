@@ -1,1 +1,7 @@
 net_ssl_required=Només accepta SSL
+
+login_otp=Contrasenya única
+login_skey=Clau de seguretat
+login_oauthbearer=Autenticació del portador OAuth2
+login_xoauth2=Autenticació del portador OAuth2 de Google
+login_external=Autenticació SASL externa

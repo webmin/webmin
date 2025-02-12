@@ -1,0 +1,19 @@
+index_title=ویبمن مدد
+index_terms=مدد تلاش کریں۔
+index_mods=تلاش کرنے کے لیے ماڈیولز
+index_all=تمام
+index_sel=منتخب ماڈیولز ..
+index_search=تلاش کریں۔
+index_header=گلوبل ویب مین مدد تلاش کریں۔
+index_return=تلاش فارم
+
+search_err=تلاش ناکام ہوگئی
+search_eterms=تلاش کی اصطلاحات غائب ہیں۔
+search_emods=کوئی ماڈیول منتخب نہیں کیا گیا۔
+search_title=تلاش کے نتائج
+search_einclude=$1 کو شامل کرنے میں ناکام
+search_none=کوئی مدد فائل آپ کی تلاش سے مماثل نہیں ہے۔
+search_mod=ماڈیول
+search_page=مدد کا صفحہ
+search_line=میچ آن
+search_results=ویبمن مدد کے صفحات $1 سے مماثل ہیں۔

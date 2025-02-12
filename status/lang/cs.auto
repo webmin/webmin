@@ -1,3 +1,4 @@
+index_madd=Přidat typ monitoru
 index_refsel=Obnovit vybrané
 index_tmpls=Upravit e-mailové šablony
 index_tmplsdesc=Zobrazení a úpravy šablon používaných k vytváření e-mailových zpráv odeslaných, když sledované služby klesnou.
@@ -9,8 +10,13 @@ type_dovecot=Server Dovecot IMAP/POP3
 type_init=Bootup Action
 type_slapd=LDAP Server
 type_ldap=Připojení LDAP
+type_smtp=Připojení SMTP
+type_imap=Připojení IMAP
+type_firewalld=Server FirewallD
+type_reboot=Je vyžadován restart
 
 mon_virtualmin=Varování! Tento monitor je přidružen k doméně Virtualmin $1, a proto by zde neměl být upravován ani mazán.
+mon_header5=Možnosti oznámení
 mon_remotes2=Běží na hostitelích a skupinách
 mon_ontimeout=Pokud monitor vyprší, spusťte příkaz
 mon_eremote2=Webmin server $1 nelze kontaktovat : $2
@@ -28,6 +34,7 @@ mon_changes1=Zobrazit pouze změny
 mon_all=Zobrazit všechny historické události
 mon_nochanges=V posledních historických událostech $1 nedošlo k žádným změnám stavu.
 
+sched_email_def=Výchozí nastavení systému ($1)
 sched_warn3=Dokud je služba v provozu
 sched_esmsname=Chybějící nebo neplatně vypadající číslo SMS
 sched_subject=Řádek předmětu pro zprávy SMS
@@ -188,3 +195,38 @@ ldap_pass=Heslo serveru LDAP
 info_desc=Sledování systému
 info_last=Aktuální stav
 info_title=Stav systému a serveru
+
+smtp_host=Hostitel serveru SMTP
+smtp_port=Port serveru SMTP
+smtp_ssl=Použít připojení SSL?
+smtp_ssl0=Pouze prostý text
+smtp_ssl1=Vždy SSL
+smtp_ssl2=Přepněte na SSL pomocí STARTTLS
+smtp_from=Otestujte odesílatele SMTP
+smtp_none=Žádný
+smtp_addr=Použijte adresu
+smtp_to=Testovat příjemce SMTP
+smtp_ehost=Chybějící nebo neřešitelný hostitel serveru SMTP
+smtp_eport=Chybějící nebo nenumerický port serveru SMTP
+smtp_efrom=Adresa odesílatele musí být ve tvaru uzivatel@domena.com
+smtp_eto=Adresa příjemce musí být ve tvaru uzivatel@domena.com
+smtp_ok1=Příkaz HELO přijat
+smtp_ok2=Adresa odesílatele přijata
+smtp_ok3=Adresa příjemce přijata
+smtp_ok4=Přihlášení SMTP přijato
+smtp_user=SMTP ověřování
+smtp_user1=Nepřihlašovat se
+smtp_user0=Přihlaste se jako uživatel
+smtp_pass=s heslem
+smtp_euser=Chybí přihlášení SMTP
+
+imap_host=Hostitel serveru IMAP
+imap_port=Port serveru IMAP
+imap_ssl=Použít připojení SSL?
+imap_user=přihlášení IMAP
+imap_pass=heslo IMAP
+imap_ehost=Chybějící nebo neřešitelný hostitel serveru IMAP
+imap_eport=Chybějící nebo nenumerický port serveru IMAP
+imap_euser=Chybí přihlášení IMAP
+
+reboot_pkgs=Aktualizace balíčků vyžadují restart

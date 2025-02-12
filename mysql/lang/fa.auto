@@ -74,6 +74,7 @@ dbase_ecannot=شما مجاز به ویرایش این بانک اطلاعاتی
 dbase_name=نام
 dbase_rows=ردیف ها
 dbase_cols=زمینه های
+dbase_size=اندازه
 dbase_delete=جداول انتخاب شده را رها کنید
 dbase_delete2=اشیاء انتخاب شده را رها کنید
 dbase_showing=نمایش جداول$1.

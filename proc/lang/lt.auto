@@ -17,6 +17,8 @@ index_loadname=CPU apkrovos vidurkiai:
 index_loadnums=$1 (1 min.), $2 (5 min.), $3 (15 min.)
 index_cpuname=CPU tipas:
 index_inzone=$1 zonoje
+index_core=$1 branduolys
+index_cores=$1 branduolys
 
 pid=ID
 owner=Savininkas

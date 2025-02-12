@@ -1,0 +1,15 @@
+slapd_root4=SSHA xifrat <tt>$1</tt>
+
+schema_pagedesc2=L'esquema LDAP determina quines classes d'objectes i atributs es poden emmagatzemar a la vostra base de dades LDAP. Els fitxers d'esquemes s'han d'importar abans que els seus tipus es puguin utilitzar per crear objectes.
+schema_import=Importar
+
+stop_egone2=S'està corrent, però es desconeix el PID!
+
+import_err=No s'ha pogut importar l'esquema
+import_eldapadd=No s'ha pogut trobar l'ordre $1
+import_euser=No s'ha pogut resoldre l'inici de sessió del servidor LDAP
+import_eldif=El fitxer LDIF $1 no existeix
+import_title=Esquema d'importació
+import_doing=S'està important el fitxer d'esquema LDIF $1 ..
+import_failed=.. la importació ha fallat!
+import_ok=.. importació completada correctament

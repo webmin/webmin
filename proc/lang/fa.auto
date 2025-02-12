@@ -6,6 +6,8 @@ index_memtfc=$1 کل / $2 رایگان / $3 حافظه پنهان
 index_loadname=میانگین بار CPU:
 index_loadnums=$1 (1 دقیقه) ،$2 (5 دقیقه) ،$3 (15 دقیقه)
 index_cpuname=نوع CPU:
+index_core=هسته $1 
+index_cores=$1 هسته
 
 sclass=کلاس برنامه ریزی IO
 sprio=اولویت IO

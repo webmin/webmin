@@ -42,7 +42,9 @@ index_emailto=כן, לכתובת
 index_email2=לשלוח דוא"ל בסיום ההעלאה?
 
 upload_title=העלה קבצים
+upload_direct=לכתוב קבצים ישירות לדיסק?
 upload_err=העלאת קבצים נכשלה
+upload_emove=העברת הקובץ שהועלה מ- $1 ל- $2 נכשלה
 upload_edir=מדריך חסר לטעינה אליו
 upload_euser=שם משתמש חסר או לא חוקי
 upload_egroup=שם קבוצה חסר או לא חוקי

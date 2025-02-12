@@ -14,6 +14,7 @@ index_memb=$1 μέλη
 index_hst=Υποδοχές και ομάδες υποδοχής
 index_nohst=Δεν έχουν καθοριστεί οικοδεσπότες ή ομάδες.
 index_hostgroup=Υποδοχή/Ομάδα
+index_comment=Περιγραφή
 index_parent=Μητρική εταιρεία
 index_hardware=Διεύθυνση υλικού
 index_group=Ομάδα:

@@ -1,4 +1,5 @@
 index_dhcpdver2=DHCP服務器<tt>$1</tt>似乎不是正確的版本。 Webmin僅支持ISC DHCPD版本 $2到 $3。
+index_comment=描述
 
 listl_mode=顯示模式 ：
 listl_mode_0=DHCP租約

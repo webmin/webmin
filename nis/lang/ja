@@ -20,7 +20,6 @@ client_ehosts='$1' はホスト ファイルにありません
 switch_title=クライアント サービス
 switch_service=サービス
 
-order_=
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS

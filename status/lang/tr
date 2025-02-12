@@ -5,7 +5,6 @@ index_desc=İzlenen Servis
 index_up=Durum
 index_last=Son kontrol
 index_local=Yerel
-index_add=Bu tipte izleyici ekle:
 index_sched=Zamanlandırılmış İzleme
 index_scheddesc=Zamanlandırılmış izleyici kontrolünü açıp kapatabilir ve sorun olduğunda otomatik olarak hangi adrese e-posta gönderileceğini belirleyiniz.
 index_return=servis listesi

@@ -64,6 +64,7 @@ edit_pre=أوامر للتشغيل قبل التدوير
 edit_default=افتراضي ($1)
 edit_sharedscripts=تشغيل البرامج النصية مرة واحدة فقط لكافة الملفات؟
 edit_now=استدر الآن
+edit_clone=استنساخ
 
 global_title=الخيارات العالمية
 global_header=الخيارات الافتراضية لجميع ملفات السجل

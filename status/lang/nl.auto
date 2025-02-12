@@ -1,12 +1,20 @@
+index_madd=Monitor van het type toevoegen
+
 type_fail2ban=Fail2Ban-server
 type_init=Opstartactie
 type_slapd=LDAP-server
 type_ldap=LDAP-verbinding
+type_smtp=SMTP-verbinding
+type_imap=IMAP-verbinding
+type_firewalld=FirewallD-server
+type_reboot=Opnieuw opstarten vereist
 
 mon_virtualmin=Waarschuwing! Deze monitor is gekoppeld aan het Virtualmin-domein $1 en mag hier dus niet worden bewerkt of verwijderd.
+mon_header5=Meldingsopties
 mon_etype=Ongeldige naam voor monitortype
 mon_notifywebhook=Webhook
 
+sched_email_def=Systeemstandaard ($1)
 sched_warn3=Zolang de service is afgelopen
 sched_subject=Onderwerpregel voor sms-berichten
 sched_subject0=Geen (waarschuwing zit in het lichaam)
@@ -63,3 +71,38 @@ ldap_pass=LDAP-serverwachtwoord
 info_desc=Systeemmonitor
 info_last=Huidige status
 info_title=Systeem- en serverstatus
+
+smtp_host=SMTP-serverhost
+smtp_port=SMTP-serverpoort
+smtp_ssl=SSL-verbinding gebruiken?
+smtp_ssl0=Alleen platte tekst
+smtp_ssl1=Altijd SSL
+smtp_ssl2=Schakel over naar SSL met STARTTLS
+smtp_from=Test SMTP-afzender
+smtp_none=Geen
+smtp_addr=Gebruik adres
+smtp_to=Test SMTP-ontvanger
+smtp_ehost=Ontbrekende of onoplosbare SMTP-serverhost
+smtp_eport=Ontbrekende of niet-numerieke SMTP-serverpoort
+smtp_efrom=Het afzenderadres moet zijn: gebruiker@domein.com
+smtp_eto=Het adres van de ontvanger moet zijn: gebruiker@domein.com
+smtp_ok1=HELO-opdracht geaccepteerd
+smtp_ok2=Afzenderadres geaccepteerd
+smtp_ok3=Ontvangeradres geaccepteerd
+smtp_ok4=SMTP-login geaccepteerd
+smtp_user=SMTP-authenticatie
+smtp_user1=Niet inloggen
+smtp_user0=Inloggen als gebruiker
+smtp_pass=met wachtwoord
+smtp_euser=SMTP-aanmelding ontbreekt
+
+imap_host=IMAP-serverhost
+imap_port=IMAP-serverpoort
+imap_ssl=SSL-verbinding gebruiken?
+imap_user=IMAP-inlog
+imap_pass=IMAP-wachtwoord
+imap_ehost=Ontbrekende of onoplosbare IMAP-serverhost
+imap_eport=Ontbrekende of niet-numerieke IMAP-serverpoort
+imap_euser=Ontbrekende IMAP-inlog
+
+reboot_pkgs=Pakketupdates vereisen een herstart

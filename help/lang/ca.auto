@@ -1,0 +1,19 @@
+index_title=Ajuda de Webmin
+index_terms=Cerca ajuda
+index_mods=Mòduls per buscar
+index_all=Tots
+index_sel=Mòduls seleccionats ..
+index_search=Cerca
+index_header=Ajuda de cerca global de Webmin
+index_return=formulari de cerca
+
+search_err=La cerca ha fallat
+search_eterms=Falten termes de cerca
+search_emods=No s'ha seleccionat cap mòdul
+search_title=Resultats de la cerca
+search_einclude=No s'ha pogut incloure $1
+search_none=No hi ha cap fitxer d'ajuda que coincideixi amb la vostra cerca
+search_mod=Mòdul
+search_page=Pàgina d'ajuda
+search_line=Partit activat
+search_results=Pàgines d'ajuda de Webmin que coincideixen amb $1

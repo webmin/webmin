@@ -73,14 +73,17 @@ setup_ecannot=U mag nie monitering inskakel nie
 setup_eiface=Ontbrekende of ongeldige koppelvlaknaam
 setup_ezone=Kon nie Shorewall-sone vir die geselekteerde koppelvlak vind nie
 
+system_firewalld=Firewalld
 system_firewall=iptables
 system_ipfw=IPFW
 system_ipfilter=IPFilter
 system_shorewall=Shore Wall
 
+syslog_journald=Geboekstaaf
 syslog_syslog=syslog
 syslog_syslog-ng=Syslog-ng
 
 rotate_title=Opdatering van statistieke
 rotate_doing=Verwerk aangetekende netwerkverkeer ..
 rotate_done=.. klaar.
+rotate_failed=.. misluk : $1

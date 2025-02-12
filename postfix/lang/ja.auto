@@ -16,9 +16,13 @@ smtpd_nomap2=送信者アドレスの制限のマップはまだ入力されて�
 smtpd_map=中継に許可されたアドレス
 smtpd_map2=送信者アドレスの制限
 
-opts_smtp_use_tls=SMTP接続にTLSを使用する
 opts_smtp_sasl_security_options=SASLセキュリティオプション
 opts_smtp_tls_security_level=SMTPTLSクライアントのセキュリティレベル
+opts_inet_protocols=インターネットプロトコルを有効にする
+opts_inet_protocols_all=すべて利用可能
+opts_smtp_address_preference=優先SMTPクライアントプロトコル
+opts_smtp_address_preference_any=どちらか
+opts_smtp_balance_inet_protocols=SMTPクライアントプロトコルを検証する
 
 opts_edebug=詳細ログレベルが欠落しているか無効です-ゼロより大きい数値である必要があります
 
@@ -37,6 +41,18 @@ sni_certs=証明書ファイル
 
 acl_sni=証明書を編集できますか？
 acl_client=SMTPクライアントの制限を編集できますか？
+acl_body=ボディチェックを編集できますか?
+acl_dependent=送信者依存のトランスポート マップを編集できますか?
+
+mail_qfile=メールキューファイル
+mail_qlast=最終再試行日時
+mail_qdir=メールキューのステータス
+mail_qdir_active=アクティブ
+mail_qdir_incoming=着信
+mail_qdir_deferred=延期
+mail_qdir_corrupt=腐敗した
+mail_qdir_hold=保留中
+mail_qdir_maildrop=メールドロップ
 
 view_body=メッセージ本文
 view_afile=添付ファイル名
@@ -48,6 +64,9 @@ mailq_refresh=メールキューを更新
 mailq_refreshdesc=このページをリロードして、メールキューの現在の状態を表示します。
 mailq_deleteall=メールキューをクリア
 mailq_deletealldesc=メールキュー内のすべてのメッセージを削除するには、このボタンをクリックします。
+mailq_dir=キューの状態
+
+flushq_desc2=.. メールログで結果を確認してください
 
 opts_mime_header_checks=MIMEヘッダーチェックテーブル
 opts_header_checks_no_map=(現在、ヘッダー チェック マップが定義されていません。最初にマップを定義してから編集できます)
@@ -82,6 +101,10 @@ log_manual_sender_dependent_default_transport_mapss=$1の送信者依存アド�
 
 opts_smtp_sasl_auth_enable=SASL SMTP認証を使用しますか？
 opts_smtpd_tls_auth_only=安全でない接続でのSASL認証を禁止しますか？
+sasl_noactive=拒否 アクティブ（非辞書）攻撃の対象を許可しない
+sasl_nodictionary=受動的（辞書）攻撃を受けるメソッドを拒否する
+sasl_forward_secrecy=前方秘匿性をサポートする方法のみを許可する
+sasl_mutual_auth=相互認証を提供する方法のみを許可する
 sasl_relay=SMTPリレーの制限
 sasl_permit_tls_all_clientcerts=すべての証明書でTLSクライアントを許可する
 sasl_reject_unauth_pipelining=初期のSMTPコマンドを拒否する

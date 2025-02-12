@@ -1,3 +1,9 @@
 index_in=Downloaden
 index_out=Uploaden
 index_total=Totaal
+
+system_firewalld=Firewall
+
+syslog_journald=dagboek
+
+rotate_failed=.. mislukt : $1

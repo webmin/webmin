@@ -18,8 +18,6 @@ index_wall=Bármelyik Webmin szerver
 index_whost=Adott szerverről
 
 search_title=A keresés eredménye
-search_date=Dátum
-search_time=Idő
 search_user=Felhasználó
 search_host=Kliens címe
 search_webmin=Webmin Szerver

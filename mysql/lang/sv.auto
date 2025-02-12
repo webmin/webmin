@@ -33,6 +33,7 @@ dbase_header=Databastabeller, index och vyer
 dbase_empty=Tom databas
 dbase_none2=Inga tabeller matchade din sökning.
 dbase_name=namn
+dbase_size=Storlek
 dbase_delete=Släpp valda tabeller
 dbase_delete2=Släpp valda objekt
 dbase_showing=Visar tabeller som matchar $1 ..

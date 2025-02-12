@@ -74,6 +74,7 @@ dbase_ecannot=אינך רשאי לערוך בסיס נתונים זה
 dbase_name=שם
 dbase_rows=שורות
 dbase_cols=שדות
+dbase_size=גוֹדֶל
 dbase_delete=זרוק טבלאות נבחרות
 dbase_delete2=זרוק חפצים שנבחרו
 dbase_showing=מציג טבלאות התואמות $1 ..

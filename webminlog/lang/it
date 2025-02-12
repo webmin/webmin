@@ -14,8 +14,6 @@ index_nolog=<b>Note</b> - <a href='$1'>Logging in Webmin</a> is not currently en
 
 index_nologfiles=<b>Note</b> - <a href='$1'>Logging of file changes</a> is not currently enabled, so the details of logged actions will not include changed files or commands executed.
 search_title=Risultati della ricerca
-search_date=Data
-search_time=Ora
 search_user=Utente
 search_host=Indirizzo IP
 search_module=Modulo

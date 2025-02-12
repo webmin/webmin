@@ -42,7 +42,9 @@ index_emailto=Da, să mă adresez
 index_email2=Trimiteți e-mail atunci când încărcările sunt terminate?
 
 upload_title=Încărca fișiere
+upload_direct=Scrieți fișiere direct pe disc?
 upload_err=Nu a putut încărca fișierele
+upload_emove=Nu s-a putut muta fișierul încărcat de la $1 la $2
 upload_edir=Lipsește directorul pentru încărcare
 upload_euser=Nume de utilizator lipsă sau nevalid
 upload_egroup=Numele grupului lipsă sau nevalid

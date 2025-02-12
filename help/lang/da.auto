@@ -1,0 +1,19 @@
+index_title=Webmin Hjælp
+index_terms=Søg hjælp til
+index_mods=Moduler til at søge
+index_all=Alle
+index_sel=Udvalgte moduler ..
+index_search=Søge
+index_header=Global Webmin hjælper med at søge
+index_return=søgeformular
+
+search_err=Søgning mislykkedes
+search_eterms=Manglende søgeord
+search_emods=Ingen moduler valgt
+search_title=Søgeresultater
+search_einclude=Kunne ikke inkludere $1
+search_none=Ingen hjælpefiler matchede din søgning
+search_mod=modul
+search_page=Hjælp side
+search_line=Match på
+search_results=Webmin hjælpesider matcher $1

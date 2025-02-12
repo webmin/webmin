@@ -6,6 +6,7 @@ index_sel=Valda moduler ...
 index_search=Sök
 index_header=Sök globalt i Hjälp till Webmin
 index_return=sökformulär
+
 search_err=Sökningen misslyckades
 search_eterms=Någon sökterm saknades
 search_emods=Du har inte valt någon modul

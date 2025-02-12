@@ -73,14 +73,17 @@ setup_ecannot=Du har ikke tilladelse til at aktivere overvågning
 setup_eiface=Manglende eller ugyldigt interfacenavn
 setup_ezone=Kunne ikke finde Shorewall-zone til den valgte grænseflade
 
+system_firewalld=Firewalld
 system_firewall=IPtables
 system_ipfw=IPFW
 system_ipfilter=ipfilter
 system_shorewall=shorewall
 
+syslog_journald=Journaliseret
 syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
 
 rotate_title=Opdatering af statistik
 rotate_doing=Behandler logget netværkstrafik ..
 rotate_done=.. Færdig.
+rotate_failed=.. mislykkedes : $1

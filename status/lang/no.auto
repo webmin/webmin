@@ -1,5 +1,14 @@
+index_madd=Legg til monitor av typen
+
+type_smtp=SMTP-tilkobling
+type_imap=IMAP-tilkobling
+type_firewalld=FirewallD Server
+type_reboot=Restart nødvendig
+
+mon_header5=Varslingsalternativer
 mon_notifywebhook=Webhook
 
+sched_email_def=Systemstandard ($1)
 sched_warn3=Så lenge tjenesten er oppe
 sched_webhook=Send status til webhook
 sched_webhookno=Ikke send
@@ -18,3 +27,38 @@ monitor_sub_isup=$1 opp på $2
 monitor_pager_isup=$1 : "$2" er opp $3
 monitor_snmp_isup=$1:$2
 monitor_email_isup=Monitor på $1 for '$2' har oppdaget at tjenesten er oppe på $3
+
+smtp_host=SMTP-serververt
+smtp_port=SMTP-serverport
+smtp_ssl=Bruker du SSL-tilkobling?
+smtp_ssl0=Kun klartekst
+smtp_ssl1=Alltid SSL
+smtp_ssl2=Bytt til SSL med STARTTLS
+smtp_from=Test SMTP-sender
+smtp_none=Ingen
+smtp_addr=Bruk adresse
+smtp_to=Test SMTP-mottaker
+smtp_ehost=Manglende eller uløselig SMTP-serververt
+smtp_eport=Manglende eller ikke-numerisk SMTP-serverport
+smtp_efrom=Avsenderadressen må være som bruker@domene.com
+smtp_eto=Mottakeradressen må være som bruker@domene.com
+smtp_ok1=HELO-kommando akseptert
+smtp_ok2=Avsenderadresse godtatt
+smtp_ok3=Mottakeradresse godtatt
+smtp_ok4=SMTP-pålogging akseptert
+smtp_user=SMTP-autentisering
+smtp_user1=Ikke logg inn
+smtp_user0=Logg inn som bruker
+smtp_pass=med passord
+smtp_euser=Mangler SMTP-pålogging
+
+imap_host=IMAP-serververt
+imap_port=IMAP-serverport
+imap_ssl=Bruker du SSL-tilkobling?
+imap_user=IMAP pålogging
+imap_pass=IMAP passord
+imap_ehost=Manglende eller uløselig IMAP-serververt
+imap_eport=Manglende eller ikke-numerisk IMAP-serverport
+imap_euser=Mangler IMAP-pålogging
+
+reboot_pkgs=Pakkeoppdateringer krever omstart

@@ -5,12 +5,15 @@ index_notify=Vols enviar un correu electrònic per a accions de Webmin?
 index_notify_mods=Per a accions en mòduls
 index_notify_users=Per a accions dels usuaris
 index_notify_email=Enviar correu electrònic a
+index_notify_email_def=Adreça de notificació per defecte
 index_notify_usub=Inclou el nom d'usuari a l'assumpte del correu electrònic?
 index_notify_msub=Inclou l'acció a l'assumpte del correu electrònic?
 index_searchtab=Cerca registres
 index_notifytab=Notificació per correu electrònic
 index_searchdesc=Aquest formulari es pot utilitzar per cercar accions de Webmin per usuari, mòdul, interval de dates i fitxers realitzats.
 index_notifydesc=Utilitzeu aquest formulari per configurar les notificacions per correu electrònic quan les accions de Webmin les realitzin usuaris seleccionats o en mòduls escollits.
+
+search_datetime=Data i hora
 
 acl_self=Només jo
 acl_notify=Es poden configurar les notificacions per correu electrònic?

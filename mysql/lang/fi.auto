@@ -74,6 +74,7 @@ dbase_ecannot=Sinulla ei ole oikeutta muokata tätä tietokantaa
 dbase_name=Nimi
 dbase_rows=riviä
 dbase_cols=Fields
+dbase_size=Koko
 dbase_delete=Pudota valitut taulukot
 dbase_delete2=Pudota valitut objektit
 dbase_showing=Näytetään taulukot, jotka vastaavat $1 ..

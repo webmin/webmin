@@ -1,0 +1,19 @@
+index_title=Pomocník Webmin
+index_terms=Vyhľadajte pomoc
+index_mods=Moduly na vyhľadávanie
+index_all=Všetky
+index_sel=Vybrané moduly ..
+index_search=Hľadať
+index_header=Global Webmin pomáha pri vyhľadávaní
+index_return=vyhľadávací formulár
+
+search_err=Vyhľadávanie zlyhalo
+search_eterms=Chýbajúce hľadané výrazy
+search_emods=Nevybrali ste žiadne moduly
+search_title=Výsledky vyhľadávania
+search_einclude=Nepodarilo sa zahrnúť $1
+search_none=Vášmu vyhľadávaniu nezodpovedajú žiadne súbory pomocníka
+search_mod=modul
+search_page=Stránka pomocníka
+search_line=Zápas na
+search_results=Stránky pomocníka Webmin zodpovedajúce $1

@@ -3,6 +3,8 @@ index_restartmsg=Feu clic a aquest botó per reiniciar el servidor de bases de d
 index_indexes=Índexs
 index_views=Vistes
 
+dbase_size=Mida
+
 table_delete=Suprimeix els camps seleccionats
 
 view_refresh=Actualització

@@ -64,6 +64,7 @@ edit_pre=Comenzile de executat înainte de rotație
 edit_default=Implicit ($1)
 edit_sharedscripts=Rulează scripturi doar o dată pentru toate fișierele?
 edit_now=Rotiți acum
+edit_clone=Clonează
 
 global_title=Opțiuni globale
 global_header=Opțiuni implicite pentru toate fișierele jurnal

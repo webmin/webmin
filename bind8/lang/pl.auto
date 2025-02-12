@@ -3,6 +3,7 @@ index_eexpired_conf=Automatyczne podpisywanie powinno zostać ponownie włączon
 index_eexpired_mod=Użyj modułu $1, aby wyłączyć DNSSEC dla tych domen lub sprawdzić, dlaczego podpisywanie kończy się niepowodzeniem.
 
 master_inview=$1 w widoku $2
+master_eserial2=Numer seryjny musi być mniejszy niż 2^31
 master_vmin=Tą strefą zarządza Virtualmin. Rekordy należy edytować za pomocą interfejsu użytkownika Virtualmin, aby zapewnić ich spójność z innymi ustawieniami serwera wirtualnego.
 master_vminalias=Ta strefa jest aliasem domeny Virtualmin, która jest synchronizowana z celem. Rekordów nigdy nie należy tutaj edytować, ponieważ wszelkie zmiany zostaną nadpisane!
 
@@ -50,6 +51,7 @@ value_TLSA4=Dane certyfikatu
 value_SSHFP1=Algorytm klucza publicznego
 value_SSHFP2=Odcisk palca klucza publicznego
 value_SSHFP3=Dane klucza publicznego
+value_NSEC3PARAM4_none=Nic
 value_dmarcruf=Wyślij informacje sądowe do
 value_dmarcfo=Tryb zgłaszania awarii
 value_dmarcfo0=Zgłoś, jeśli DKIM i SPF zawiodły
@@ -100,6 +102,8 @@ net_tport6=Źródłowy port IPv6 do przesyłania danych
 net_eaddr=„$1” nie jest prawidłowym adresem IPv4
 net_eaddr6=„$1” nie jest prawidłowym adresem IPv6
 
+log_delete_recs2=Usunięto $1 rekordów w strefie $2
+
 massdelete_vwarn=Niektóre strefy są powiązane z domeną Virtualmin $1, dlatego nie należy ich tutaj usuwać!
 massdelete_vwarn2=Niektóre strefy są powiązane z domeną Virtualmin $1 i $2 innymi, dlatego nie należy ich tutaj usuwać!
 
@@ -109,6 +113,10 @@ dt_zone_zskrolldesc=Wymuś najazd klucza podpisującego strefę
 dt_zone_kskrolldesc=Wymuś najazd klucza podpisującego klucz strefy
 
 zonekey_algorithm=Algorytm DNSSEC : $1
+zonekey_ds_keytag=Etykieta kluczowa
+zonekey_ds_alg=Algorytm
+zonekey_ds_type=Typ skrótu
+zonekey_ds_digest=Ciąg skrótu
 zonekey_eprivate=Nie można odczytać klucza prywatnego powiązanego z tą strefą : $1
 zonekey_keep=Zachować istniejący klucz, jeśli DNSSEC zostanie ponownie włączony?
 

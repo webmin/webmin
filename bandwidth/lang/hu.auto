@@ -5,3 +5,9 @@ index_out=Feltöltés
 index_total=Teljes
 
 setup_eiface=Hiányzó vagy érvénytelen felület neve
+
+system_firewalld=Tűzfal
+
+syslog_journald=Journald
+
+rotate_failed=.. sikertelen  : $1

@@ -14,6 +14,7 @@ index_memb=$1 lede
 index_hst=Gasheer en gasheer groepe
 index_nohst=Geen gashere of groepe is gedefinieër nie.
 index_hostgroup=Gasheer/Group
+index_comment=Beskrywing
 index_parent=ouer
 index_hardware=Hardeware-adres
 index_group=groep:

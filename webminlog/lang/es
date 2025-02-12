@@ -18,8 +18,6 @@ index_wall=De cualquier servidor Webmin
 index_whost=Del servidor
 
 search_title=Resultados de la Búsqueda
-search_date=Fecha
-search_time=Hora
 search_user=Usuario
 search_host=Dirección de Cliente
 search_webmin=Servidor Webmin

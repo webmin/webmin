@@ -20,7 +20,6 @@ client_ehosts='$1' no está en el archivo de máquinas
 switch_title=Servicios de Cliente
 switch_service=Servicio
 
-order_=
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS

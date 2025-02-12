@@ -64,6 +64,7 @@ edit_pre=Biraketa aurretik exekutatzeko komandoak
 edit_default=Lehenespenez ($1)
 edit_sharedscripts=Gidoiak bakarrik exekutatu fitxategi guztientzako?
 edit_now=Biratu Orain
+edit_clone=Klonatu
 
 global_title=Aukera Globala
 global_header=Lehenetsitako erregistro-fitxategi guztien aukera

@@ -3,3 +3,5 @@ index_memswap=Trocar espaço:
 index_memburst=Memória expansível:
 index_memtf=$1 total / $2 grátis
 index_memtfc=$1 total / $2 livres / $3 em cache
+index_core=$1 núcleo
+index_cores=$1 núcleos

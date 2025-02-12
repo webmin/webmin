@@ -1,6 +1,12 @@
 net_lmtp=LMTP
 net_ssl_required=Accetta solo SSL
 
+login_otp=Password monouso
+login_skey=Chiave di sicurezza
+login_oauthbearer=Autenticazione del portatore OAuth2
+login_xoauth2=Autenticazione del portatore Google OAuth2
+login_external=Autenticazione SASL esterna
+
 manual_editsel=Modifica il file di configurazione Dovecot
 manual_efile=Il file di configurazione selezionato non è valido
 manual_ok=modificare

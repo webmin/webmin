@@ -5,6 +5,11 @@ opts_delay_warning_time_default2=Per defecte del correfoc
 opts_smtpd_discard_ehlo_keywords=Paraules clau SMTP EHLO per no enviar
 
 opts_smtp_tls_security_level=Nivell de seguretat del client SMTP TLS
+opts_inet_protocols=Protocols d'Internet per habilitar
+opts_inet_protocols_all=Tot disponible
+opts_smtp_address_preference=Protocol de client SMTP preferit
+opts_smtp_address_preference_any=Tampoc
+opts_smtp_balance_inet_protocols=Validar els protocols de client SMTP
 
 mapping_toomany=Hi ha $1 entrades de mapa, que es troba per sobre del límit de visualització de $2.
 mapping_find=Mostra els mapatges que coincideixen:
@@ -19,8 +24,24 @@ sni_dom=Nom de l'amfitrió
 sni_certs=Fitxers de certificats
 
 acl_sni=Es poden editar certificats?
+acl_body=Es poden editar les comprovacions del cos?
+acl_dependent=Es poden editar mapes de transport dependents del remitent?
+
+mail_qfile=Fitxer de cua de correu
+mail_qlast=Últim intent a les
+mail_qdir=Estat de la cua de correu
+mail_qdir_active=Actius
+mail_qdir_incoming=Entrant
+mail_qdir_deferred=Ajornat
+mail_qdir_corrupt=Corrupte
+mail_qdir_hold=En espera
+mail_qdir_maildrop=Caiguda de correu
 
 view_aname=Adjunt
+
+mailq_dir=Estat de la cua
+
+flushq_desc2=.. comproveu el registre de correu per obtenir resultats
 
 after_err=Error de configuració de correcció posterior : $1
 
@@ -30,5 +51,10 @@ opts_header_checks_no_map=(Actualment no s'ha definit cap mapa de comprovació d
 opts_mime_header_checks_no_map=(Actualment no s'ha definit cap mapa de comprovació de la capçalera MIME. Defineix primer un mapa i després pots editar-lo)
 
 log_sni=Canvieu les opcions de mapatge de certificats
+
+sasl_noactive=Rebutja No permet subjecte a un atac actiu (no diccionari)
+sasl_nodictionary=Rebutja els mètodes subjectes a atac passiu (diccionari)
+sasl_forward_secrecy=Permet només mètodes que admetin el secret directe
+sasl_mutual_auth=Només permeteu mètodes que proporcionen autenticació mútua
 
 mysql_ecfile2=No s'ha pogut trobar la taula al fitxer de configuració de MySQL $1

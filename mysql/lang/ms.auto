@@ -74,6 +74,7 @@ dbase_ecannot=Anda tidak dibenarkan mengedit pangkalan data ini
 dbase_name=Nama
 dbase_rows=Baris
 dbase_cols=Medan
+dbase_size=Saiz
 dbase_delete=Drop Jadual Terpilih
 dbase_delete2=Letakkan Objek Terpilih
 dbase_showing=Menunjukkan jadual padanan $1 ..

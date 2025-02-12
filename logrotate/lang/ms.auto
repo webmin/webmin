@@ -64,6 +64,7 @@ edit_pre=Perintah untuk dijalankan sebelum putaran
 edit_default=Lalai ($1)
 edit_sharedscripts=Hanya jalankan skrip sekali untuk semua fail?
 edit_now=Putar Sekarang
+edit_clone=Klon
 
 global_title=Pilihan Global
 global_header=Pilihan lalai untuk semua fail log

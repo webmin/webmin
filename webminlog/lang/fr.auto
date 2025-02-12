@@ -19,6 +19,7 @@ index_notify=Envoyer un e-mail pour les actions Webmin ?
 index_notify_mods=Pour les actions dans les modules
 index_notify_users=Pour les actions des utilisateurs
 index_notify_email=Envoyer un e-mail à
+index_notify_email_def=Adresse de notification par défaut
 index_notify_usub=Inclure le nom d'utilisateur dans l'objet de l'e-mail ?
 index_notify_msub=Inclure l'action dans l'objet de l'e-mail ?
 index_searchtab=Journaux de recherche
@@ -26,6 +27,7 @@ index_notifytab=Notification par e-mail
 index_searchdesc=Ce formulaire peut être utilisé pour rechercher des actions Webmin par utilisateur, module, plage de dates et fichiers effectués.
 index_notifydesc=Utilisez ce formulaire pour configurer les notifications par e-mail lorsque des actions Webmin sont effectuées par des utilisateurs sélectionnés ou dans des modules choisis.
 
+search_datetime=Date et heure
 search_none2=Aucune action ne correspond à votre recherche d'actions
 search_critd=où la description contient <tt>$1</tt>
 search_global=Aucun

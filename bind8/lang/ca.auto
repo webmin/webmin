@@ -1,4 +1,5 @@
 master_inview=$1 a la vista $2
+master_eserial2=El número de sèrie ha de ser inferior a 2^31
 master_vmin=Aquesta zona està gestionada per Virtualmin. Els registres s'han d'editar mitjançant la interfície d'usuari de Virtualmin, per assegurar-se que són coherents amb altres configuracions del servidor virtual.
 master_vminalias=Aquesta zona és un àlies d'un domini Virtualmin, que es manté sincronitzat amb el seu objectiu. Els registres no s'han d'editar mai aquí, ja que qualsevol canvi es sobreescriurà!
 
@@ -29,6 +30,7 @@ edit_NAPTR=Nom del punter d'autoritat
 recs_CAA=Autoritat de Certificació
 recs_NAPTR=Nom Autoritat
 
+value_NSEC3PARAM4_none=Cap
 value_dmarcfo=Mode d'informes d'errors
 value_dmarcfo0=Informeu si DKIM i SPF han fallat
 value_dmarcfo1=Informeu si DKIM o SPF han fallat
@@ -56,10 +58,16 @@ value_NAPTR3_A=A continuació, cerqueu el registre A o AAAA
 value_NAPTR3_U=Feu servir la sortida de l'expressió regular a continuació
 value_NAPTR3_P=Acció específica del protocol
 
+log_delete_recs2=S'han suprimit $1 registres a la zona $2
+
 massdelete_vwarn=Algunes zones estan associades al domini Virtualmin $1, per tant, no hauríem de suprimir-les aquí.
 massdelete_vwarn2=Algunes zones estan associades al domini Virtualmin $1 i $2, per tant, no hauríem de suprimir-les.
 
 zonekey_algorithm=Algorisme DNSSEC : $1
+zonekey_ds_keytag=Etiqueta clau
+zonekey_ds_alg=Algorisme
+zonekey_ds_type=Tipus de digest
+zonekey_ds_digest=Digest string
 zonekey_keep=Mantenir la clau existent si es torna a activar DNSSEC?
 
 trusted_warning=Avís! La configuració del client de BIND DNSSEC conté claus obsoletes que deixaran de funcionar a l'octubre de 2017. O bé, utilitzeu la <a href='$1'>pàgina de verificació BIND DNSSEC</a> per ajustar la configuració o feu clic al botó següent.

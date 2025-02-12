@@ -1,6 +1,8 @@
 index_restart=Ponowne uruchomienie serwera MySQL
 index_restartmsg=Kliknij ten przycisk, aby ponownie uruchomić serwer bazy danych MySQL w swoim systemie. Wszyscy klienci zostaną rozłączeni, a wszystkie pliki konfiguracyjne zostaną ponownie załadowane.
 
+dbase_size=Rozmiar
+
 user_plugin=Typ uwierzytelniania
 user_hashpass=Aktualne zaszyfrowane hasło
 

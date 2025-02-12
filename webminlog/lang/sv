@@ -13,8 +13,6 @@ index_nolog=<b>Obs</b> - <a href='$1'>Loggning i Webmin</a> är för tillfället
 index_nologfiles=<b>Obs</b> - <a href='$1'>Loggning av filändringar</a> är för tillfället inte aktiverat, så ändrade filer och utförda kommandon kommer inte att komma med bland de loggade händelserna.
 
 search_title=Sökresultat
-search_date=Datum
-search_time=Tid
 search_user=Användare
 search_host=Klientadress
 search_module=Modul

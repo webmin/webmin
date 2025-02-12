@@ -1,8 +1,16 @@
+index_madd=Afegeix un monitor de tipus
+
 type_init=Acció d'arrencada
+type_smtp=Connexió SMTP
+type_imap=Connexió IMAP
+type_firewalld=Servidor FirewallD
+type_reboot=Cal reiniciar
 
 mon_virtualmin=Atenció! Aquest monitor està associat amb el domini Virtualmin $1 i, per tant, no s'hauria d'editar ni suprimir aquí.
+mon_header5=Opcions de notificació
 mon_notifywebhook=Webhook
 
+sched_email_def=Predeterminat del sistema ($1)
 sched_warn3=Sempre que el servei estigui activat
 sched_webhook=Envia l'estat al webhook
 sched_webhookno=No envieu
@@ -24,3 +32,38 @@ monitor_sub_isup=$1 més a $2
 monitor_pager_isup=$1 : "$2" ha pujat $3
 monitor_snmp_isup=$1:$2
 monitor_email_isup=El monitor de $1 de "$2" ha detectat que el servei ha augmentat a $3
+
+smtp_host=Amfitrió del servidor SMTP
+smtp_port=Port del servidor SMTP
+smtp_ssl=Utilitzeu la connexió SSL?
+smtp_ssl0=Només text pla
+smtp_ssl1=Sempre SSL
+smtp_ssl2=Canvia a SSL amb STARTTLS
+smtp_from=Prova l'emissor SMTP
+smtp_none=Cap
+smtp_addr=Utilitza l'adreça
+smtp_to=Prova el destinatari SMTP
+smtp_ehost=Falta l'amfitrió del servidor SMTP o no es pot resoldre
+smtp_eport=Falta el port del servidor SMTP o no és numèric
+smtp_efrom=L'adreça del remitent ha de ser com usuari@domini.com
+smtp_eto=L'adreça del destinatari ha de ser com usuari@domini.com
+smtp_ok1=S'ha acceptat l'ordre HELO
+smtp_ok2=Adreça del remitent acceptada
+smtp_ok3=Adreça del destinatari acceptada
+smtp_ok4=S'ha acceptat l'inici de sessió SMTP
+smtp_user=Autenticació SMTP
+smtp_user1=No inicieu sessió
+smtp_user0=Inicieu sessió com a usuari
+smtp_pass=amb contrasenya
+smtp_euser=Falta l'inici de sessió SMTP
+
+imap_host=Amfitrió del servidor IMAP
+imap_port=Port del servidor IMAP
+imap_ssl=Utilitzeu la connexió SSL?
+imap_user=Inici de sessió IMAP
+imap_pass=Contrasenya IMAP
+imap_ehost=Falta l'amfitrió del servidor IMAP o no es pot resoldre
+imap_eport=Falta el port del servidor IMAP o no és numèric
+imap_euser=Falta l'inici de sessió IMAP
+
+reboot_pkgs=Les actualitzacions de paquets requereixen un reinici

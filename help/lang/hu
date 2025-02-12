@@ -6,6 +6,7 @@ index_sel=Kiválasztott modulok...
 index_search=Keresés
 index_header=Általános keresés a Webmin súgójában
 index_return=a kereső űrlapra
+
 search_err=Sikertelen keresés
 search_eterms=A keresett szöveg megadása nem történt meg.
 search_emods=Nem lett modul kiválasztva
