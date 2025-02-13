@@ -62,6 +62,7 @@ sub main
                'git-commit|gc!'                   => \$opt{'git-commit'},
                'stats|st:s'                       => \$opt{'stats'},
                'log|l:s'                          => \$opt{'log'},
+               'lib-path|lp:s'                    => \$opt{'lib-path'},
                'verbose|v:i'                      => \$opt{'verbose'},
                'yes|y:i'                          => \$opt{'assumeyes'});
 
@@ -82,22 +83,24 @@ sub main
     my $path = cwd;
 
     # Load Webmin lib
-    my $lib = "web-lib-funcs.pl";
-    if (!-r "$path/$lib") {
-        $path = dirname(dirname($0));
-        if (!-r "$path/$lib") {
-            $path = $path = Cwd::realpath('..');
+    my $libpath = $opt{'lib-path'} || $path;
+    my $libfile = "web-lib-funcs.pl";
+    if (!-r "$libpath/$libfile") {
+        $libpath = dirname(dirname($0));
+        if (!-r "$libpath/$libfile") {
+            $libpath = $path = Cwd::realpath('..');
         }
     }
-    require("$path/$lib");
+    require("$libpath/$libfile");
 
     # Enforce user specific target: language directory, config.info or module.info file {lang|ulang|config|uconfig|module}
     my $type = -d "$path/ulang" ? 'ulang' : 'lang';
     $opt{'type'} && ($type = $opt{'type'});
 
     # Store path and type
-    $data{'path'} = $path;
-    $data{'type'} = $type;
+    $data{'path'}     = $path;
+    $data{'lib-path'} = $libpath;
+    $data{'type'}     = $type;
 
     # Set default format to text
     $opt{'translate-format'} ||= 'text';
@@ -107,18 +110,23 @@ sub main
         $opt{'translate-format'} = 'html';
     }
 
+    # Define the mode
+    $opt{'mode'} ||= 'sync';
+
     # Get list of languages from `lang_list.txt` file
-    $data{'languages_source_list'}       = list_languages_local(\%data);
+    $data{'languages_source_list'}       = list_languages_local(\%data, $opt{'mode'} eq 'clean-removed');
     $data{'languages_source_list_codes'} = [map {$_->{'lang'}} @{ $data{'languages_source_list'} }];
 
     # Define base language. Default is set English
     $opt{'language-source'} ||= 'en';
     my $language_source = $opt{'language-source'};
 
-    # Check, if source language exists
-    if (!any {$_ =~ /^$language_source/} @{ $data{'languages_source_list_codes'} }) {
-        errors('language-source', $language_source);
-        exit;
+    # Check, if source language exists unless we are in clean mode
+    if ($opt{'mode'} !~ /^clean/) {
+        if (!any {$_ =~ /^$language_source/} @{ $data{'languages_source_list_codes'} }) {
+            errors('language-source', $language_source);
+            exit;
+        }
     }
 
     # What language encoding do we expect on human translated files
@@ -145,9 +153,6 @@ sub main
             $data{'languages_source_list_codes'} = [@languages_allowed];
         }
     }
-
-    # Define the mode
-    $opt{'mode'} ||= 'sync';
 
     # Allow symlinks
     my $allow_symlinks = $opt{'allow-symlinks'};
@@ -234,12 +239,14 @@ sub main
     }
 
     # Check if we can get Google Translate API token
-    $data{'token'} = get_google_translate_token();
-    if (!$data{'token'}) {
-        $opt{'only-diff'}      = 1;
-        $opt{'only-diff-auto'} = 1;
-        say YELLOW .
-          "Translation will not be done as Google Translate API key is missing. Falling back to `only-diff` mode.." . RESET;
+    if ($opt{'mode'} !~ /^clean/) {
+        $data{'token'} = get_google_translate_token();
+        if (!$data{'token'}) {
+            $opt{'only-diff'}      = 1;
+            $opt{'only-diff-auto'} = 1;
+            say YELLOW .
+                "Translation will not be done as Google Translate API key is missing. Falling back to `only-diff` mode.." . RESET;
+        }
     }
 
     # Just run tests, and exit, without writing anything
@@ -258,7 +265,7 @@ sub main
         talk('affected', \%opt, \%data);
 
         # Run in overwrite mode
-        if ($opt{'mode'} eq 'clean') {
+        if ($opt{'mode'} =~ /^clean/) {
             # # Execute clean
             talk('clean-pre', \%opt, \%data);
             if (prompt('next', \%opt)) {
@@ -622,10 +629,12 @@ sub source_data
 # taken from Webmin's lang_list.txt file.
 sub list_languages_local
 {
-    my ($data) = @_;
+    my ($data, $removed_list) = @_;
     my ($key, $value, $options, $language, @languages);
-
-    open(my $LANG, "$data->{'path'}/lang_list.txt");
+    my $lang_list = "$data->{'lib-path'}/lang_list.txt";
+    $lang_list = "$data->{'lib-path'}/lang_list_removed.txt" if ($removed_list);
+    open(my $LANG, $lang_list) or
+        die("Error: Cannot open " . RED, $lang_list, RESET . " file\n");
     while (<$LANG>) {
         if (/^(.*=\w+)\s+(.*)/) {
             $language = { 'desc' => $2 };
@@ -971,7 +980,7 @@ sub go
     my $verbose                     = $opt->{'verbose'} || @{$keys_test};
     my $mode_sync                   = $opt->{'mode'} ne 'full';
     my $mode_transcode              = $opt->{'mode'} eq 'transcode';
-    my $mode_clean                  = $opt->{'mode'} eq 'clean';
+    my $mode_clean                  = $opt->{'mode'} =~ /^clean/;
     my $allow_symlinks              = $opt->{'allow-symlinks'};
     my $verbose_silent_mode         = $mode_sync && $verbose != 2;
 
@@ -2169,9 +2178,9 @@ Clean build directory by removing all kind of language files except English.
 
  - webmin language-manager --mode=clean
 
-=item --mode, -x <sync|full|transcode>
+=item --mode, -x <sync|full|transcode|clean|clean-removed>
 
-Mode can be either <sync> or <full> or <transcode> or <clean>. Default is set to "sync" and will only keep the keys found on template language file, while missing keys in target languages (translations), will be deleted, and newly added keys to template language file, will be translated. Mode "full" is meant to perform full translation, keeping human translated strings and overwriting all machine translations done in the past (not recommended to run). Mode "transcode" is useful to fix human translated language files, which stored in "utf-8" encoding already, while still having "&#195;&#173;" or "&#195;&#169;" HTML entities. Mode "clean" is useful to clean build package by removing all kind of language files except source language.
+Mode can be either <sync> or <full> or <transcode> or <clean> or <clean-removed>. Default is set to "sync" and will only keep the keys found on template language file, while missing keys in target languages (translations), will be deleted, and newly added keys to template language file, will be translated. Mode "full" is meant to perform full translation, keeping human translated strings and overwriting all machine translations done in the past (not recommended to run). Mode "transcode" is useful to fix human translated language files, which stored in "utf-8" encoding already, while still having "&#195;&#173;" or "&#195;&#169;" HTML entities. Mode "clean" is useful to clean package by removing all kind of language files except source language. Mode "clean-removed" is useful to clean removed languages from package defined in removed language list file.
 
 =item --type, -w <lang|ulang|help|config|uconfig|module>
 

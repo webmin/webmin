@@ -7,6 +7,9 @@ desc_match-set_dst=trànsit de sortida
 
 redhat_einstalled2=No s'ha trobat cap acció d'arrencada <tt>$1</tt>, que indica que el paquet IPtables no està instal·lat al vostre sistema
 
+eiptables2=Les IPtables desconegudes desen l'entrada del fitxer a la línia $2 : $1 
+eip6tables2=Les taules IP6 desconegudes desen l'entrada del fitxer a la línia $2 : $1 
+
 edit_matchset=IPset coincident
 edit_matchsetsrc=sobre el trànsit entrant
 edit_matchsetdst=al trànsit de sortida

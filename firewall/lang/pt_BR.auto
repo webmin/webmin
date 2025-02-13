@@ -39,6 +39,9 @@ desc_dest=destino
 
 redhat_einstalled2=Nenhuma ação de inicialização <tt>$1</tt> foi encontrada, indicando que o pacote IPtables não está instalado no seu sistema
 
+eiptables2=Entrada de arquivo de salvamento de IPtables desconhecida na linha $2 : $1 
+eip6tables2=Entrada de arquivo de salvamento IP6tables desconhecida na linha $2 : $1 
+
 edit_state_snat=NATd de origem
 edit_state_dnat=NATd de destino
 edit_physdevin=Interface física de entrada

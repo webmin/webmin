@@ -128,9 +128,6 @@ redhat_eoutput=Er ontstond een fout bij het opvragen van de IPtabellen status me
 
 gentoo_escript=De Gentoo IPtables opstart script $1 is niet gevonden op uw systeem.
 
-eiptables=Onbekende IPtables file om op te slaan op regel: $1
-eip6tables=Onbekende ip6tables file om op te slaan op regel: $1
-
 edit_title1=Toevoegen Regel
 edit_title2=Bewerk Regel
 edit_title3=Kloon Regel

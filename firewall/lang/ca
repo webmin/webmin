@@ -154,9 +154,6 @@ redhat_eoutput=S'ha produït un error en buscar l'estat d'IPtables amb l'ordre $
 
 gentoo_escript=No s'ha trobat al sistema el script $1 d'inici d'IPtables Gentoo.
 
-eiptables=Línia del fitxer d'IPtables desconeguda: $1
-eip6tables=Línia del fitxer de desat d'ip6tables desconeguda: $1
-
 edit_title1=Addició de Regla
 edit_title2=Edició de Regla
 edit_title3=Clonació de Regla

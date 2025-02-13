@@ -131,9 +131,6 @@ redhat_eoutput=Wystąpił błąd podczas pobierania stanu IPtables poleceniem $1
 
 gentoo_escript=Skrypt uruchamiający IPtables dla Gentoo $1 nie został znaleziony w systemie
 
-eiptables=Nieznana linia zapisana w pliku IPtables : $1
-eip6tables=Nieznana linia zapisana w pliku ip6tables : $1
-
 edit_title1=Dodawanie reguły
 edit_title2=Edycja reguły
 edit_title3=Klonowanie reguły

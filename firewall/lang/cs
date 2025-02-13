@@ -122,9 +122,6 @@ redhat_eoutput=Chyba zapříčiněná hláškou o stavu IP tabulek z příkazu $
 
 gentoo_escript=Gentoo startovecí skript IP tabulek $1 nebyl ve vašem systému nalezen.
 
-eiptables=Neznámý řádek v úložném souboru IP tabulek : $1
-eip6tables=Neznámý řádek v úložném souboru IP tabulek : $1
-
 edit_title1=Přidat pravidlo
 edit_title2=Editovat pravidlo
 edit_title3=Klonovat pravidlo

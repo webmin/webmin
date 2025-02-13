@@ -9,6 +9,9 @@ desc_match-set_dst=trafic sortant
 
 redhat_einstalled2=Aucune action de démarrage <tt>$1</tt> n'a été trouvée, ce qui indique que le package IPtables n'est pas installé sur votre système
 
+eiptables2=Entrée de fichier de sauvegarde IPtables inconnue à la ligne $2  : $1
+eip6tables2=Entrée de fichier de sauvegarde IP6tables inconnue à la ligne $2  : $1
+
 edit_matchset=Ensemble d'adresses IP correspondant
 edit_matchsetsrc=sur le trafic entrant
 edit_matchsetdst=sur le trafic sortant

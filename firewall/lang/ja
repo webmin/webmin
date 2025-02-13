@@ -112,9 +112,6 @@ redhat_eoutput=コマンド $1 で IPtablesのステータスを取得する際�
 
 gentoo_escript=Gentoo IPtables 起動スクリプト $1 がみつかりませんでした
 
-eiptables=不明なIPtables保存ファイル 行番号: $1
-eip6tables=不明なip6tables保存ファイル 行番号: $1
-
 edit_title1=ルールの追加
 edit_title2=ルールの編集
 edit_title3=ルールの複製

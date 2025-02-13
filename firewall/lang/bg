@@ -154,9 +154,6 @@ redhat_eoutput=При определянето на IPtables статус чре
 
 gentoo_escript=Стартиращият IPtables скрипт на Gentoo не беше открит в системата ви.
 
-eiptables=Неразпознат ред във файл, записан от iptables : $1
-eip6tables=Неразпознат ред във файл, записан от ip6tables : $1
-
 edit_title1=Добавяне на правило
 edit_title2=Редактиране на правило
 edit_title3=Копиране на правило

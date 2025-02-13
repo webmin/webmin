@@ -1,3 +1,0 @@
-name_th=SGIExports
-desc_th=การส่งออก NFS
-longdesc_th=แก้ไขการแชร์ไฟล์ตามที่กำหนดไว้ในไฟล์ Irix /etc/exports 

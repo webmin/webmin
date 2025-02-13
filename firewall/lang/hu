@@ -128,9 +128,6 @@ redhat_eoutput=An error occured getting IPtables status from the command $1. Thi
 
 gentoo_escript=The Gentoo IPtables startup script $1 was not found on your system.
 
-eiptables=Unknown IPtables save file line : $1
-eip6tables=Unknown ip6tables save file line : $1
-
 edit_title1=Add Rule
 edit_title2=Edit Rule
 edit_title3=Clone Rule

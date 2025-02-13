@@ -1,6 +1,4 @@
-lang=af,           charset=utf-8,  titles=1,  auto=1                    Afrikaans
 lang=ar,           charset=utf-8,  titles=0,  rtl=1                     العربية
-lang=be,           charset=utf-8,  titles=0                             беларуская
 lang=bg,           charset=utf-8,  titles=1                             български
 lang=ca,           charset=utf-8,  titles=1,  auto=1                    català
 lang=cs,           charset=utf-8,  titles=0                             čeština
@@ -13,30 +11,21 @@ lang=eu,           charset=utf-8,  titles=1                             euskara
 lang=fa,           charset=utf-8,  titles=0,  dir=rtl,  rtl=1           فارسی
 lang=fi,           charset=utf-8,  titles=1,  auto=1                    suomi
 lang=fr,           charset=utf-8,  titles=1,  auto=1                    français
-lang=he,           charset=utf-8,  titles=0,  dir=rtl,  rtl=1           עברית
 lang=hr,           charset=utf-8,  titles=0                             hrvatski
 lang=hu,           charset=utf-8,  titles=1                             magyar
 lang=it,           charset=utf-8,  titles=1,  auto=1                    italiano
 lang=ja,           charset=utf-8,  titles=0,  auto=1                    日本語
 lang=ko,           charset=utf-8,  titles=0,  auto=1                    한국어
-lang=lt,           charset=utf-8,  titles=1                             lietuvių
-lang=lv,           charset=utf-8,  titles=1                             latviešu
 lang=ms,           charset=utf-8,  titles=1,  auto=1                    Melayu
-lang=mt,           charset=utf-8,  titles=0                             Malti
 lang=nl,           charset=utf-8,  titles=1,  auto=1                    Nederlands
 lang=no,           charset=utf-8,  titles=1,  auto=1                    norsk
 lang=pl,           charset=utf-8,  titles=1,  auto=1                    polski
 lang=pt,           charset=utf-8,  titles=1,  auto=1                    português
 lang=pt_BR,        charset=utf-8,  titles=1,  fallback=pt,  auto=1      português (Brasil)
-lang=ro,           charset=utf-8,  titles=1                             română
 lang=ru,           charset=utf-8,  titles=0,  auto=1                    русский
 lang=sk,           charset=utf-8,  titles=1                             slovenčina
-lang=sl,           charset=utf-8,  titles=0                             slovenščina
 lang=sv,           charset=utf-8,  titles=1                             svenska
-lang=th,           charset=utf-8,  titles=0,  auto=1                    ไทย
 lang=tr,           charset=utf-8,  titles=1                             Türkçe
 lang=uk,           charset=utf-8,  titles=0                             українська
-lang=ur,           charset=utf-8,  titles=0,  rtl=1                     اردو
-lang=vi,           charset=utf-8,  titles=0                             Tiếng Việt
 lang=zh,           charset=utf-8,  titles=0,  auto=1                    中文 (简体)
 lang=zh_TW,        charset=utf-8,  titles=0,  auto=1                    中文 (繁體)

@@ -41,6 +41,9 @@ desc_dest=hedef
 
 redhat_einstalled2=<tt>$1</tt> önyükleme eylemi bulunamadı; bu, IPtables paketinin sisteminize yüklenmediğini gösterir
 
+eiptables2=Bilinmeyen IPtables dosya girişini $2 : $1 satırına kaydeder
+eip6tables2=Bilinmeyen IP6tables dosya girişini $2 satırına kaydeder : $1
+
 edit_state_untracked=İzlenmedi
 edit_state_snat=Kaynak NATd
 edit_state_dnat=Hedef NATd

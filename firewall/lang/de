@@ -160,9 +160,6 @@ redhat_eoutput=Ein Fehler ist aufgetreten, als der IPtables-Status mit dem Befeh
 
 gentoo_escript=Das Gentoo-IPtables-Startskript $1 wurde auf Ihrem System nicht gefunden.
 
-eiptables=Unbekannte IPtables-Speicherdateizeile: $1
-eip6tables=Unbekannte IP6tables-Speicherdateizeile: $1
-
 edit_title1=Regel hinzufügen
 edit_title2=Regel bearbeiten
 edit_title3=Regel duplizieren

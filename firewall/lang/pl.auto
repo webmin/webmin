@@ -30,6 +30,9 @@ desc_dest=Miejsce docelowe
 
 redhat_einstalled2=Nie znaleziono akcji rozruchowej <tt>$1</tt>, co oznacza, że pakiet IPtables nie jest zainstalowany w systemie
 
+eiptables2=Nieznany wpis IPtables zapisuje plik w linii $2 : $1 
+eip6tables2=Nieznany wpis pliku IP6tables zapisuje się w linii $2 : $1 
+
 edit_state_snat=Źródło NATd
 edit_state_dnat=Miejsce docelowe NATd
 edit_matchset=Pasujące IPset

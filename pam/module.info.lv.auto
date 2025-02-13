@@ -1,3 +1,0 @@
-name_lv=PAM
-longdesc_lv=Konfigurējiet PAM autentifikācijas darbības, kuras izmanto tādi pakalpojumi kā telnet, POP un FTP.
-desc_lv=PAM autentifikācija

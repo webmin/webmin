@@ -56,6 +56,9 @@ desc_dest=destinazione
 
 redhat_einstalled2=Non è stata trovata alcuna azione di avvio <tt>$1</tt>, il che indica che il pacchetto IPtables non è installato sul sistema
 
+eiptables2=Voce del file di salvataggio delle tabelle IP sconosciute alla riga $2 : $1 
+eip6tables2=Voce del file di salvataggio IP6tables sconosciuta alla riga $2 : $1 
+
 edit_state_untracked=Non tracciato
 edit_state_snat=Fonte NATd
 edit_state_dnat=Destinazione NATd
