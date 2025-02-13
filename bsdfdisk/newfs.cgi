@@ -16,15 +16,15 @@ my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error($text{'disk_egone'});
 my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}};
 $slice || &error($text{'slice_egone'});
-my ($object, $part);
+my $object = $slice;
+
+# Handle partitions if specified
+my $part;
 if ($in{'part'} ne '') {
 	($part) = grep { $_->{'letter'} eq $in{'part'} }
 		       @{$slice->{'parts'}};
 	$part || &error($text{'part_egone'});
 	$object = $part;
-	}
-else {
-	$object = $slice;
 	}
 
 # Validate inputs
@@ -39,7 +39,7 @@ $newfs->{'label'} = $in{'label_def'} ? undef : $in{'label'};
 
 &ui_print_unbuffered_header($object->{'desc'}, $text{'newfs_title'}, "");
 
-# Do the creation
+# Create the filesystem
 print &text('newfs_creating', "<tt>$object->{'device'}</tt>"),"<br>\n";
 print "<pre>\n";
 my $cmd = &get_create_filesystem_command($disk, $slice, $part, $newfs);

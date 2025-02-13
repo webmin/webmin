@@ -9,7 +9,8 @@ require './bsdfdisk-lib.pl';
 our (%in, %text, %config, $module_name);
 
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
-		 &help_search_link("fdisk", "man"));
+		&has_command('gpart') ? &help_search_link("gpart", "man") : 
+					&help_search_link("fdisk", "man"));
 
 my $err = &check_fdisk();
 if ($err) {
@@ -30,6 +31,7 @@ if (@disks) {
 			&nice_size($d->{'size'}),
 			$d->{'model'},
 			scalar(@{$d->{'slices'}}),
+			uc($d->{'type'}),
 			]);
 		}
 	print &ui_columns_end();

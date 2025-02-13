@@ -26,15 +26,17 @@ $slice->{'number'} = $in{'number'};
 $in{'start'} =~ /^\d+$/ || &error($text{'nslice_estart'});
 $in{'end'} =~ /^\d+$/ || &error($text{'nslice_eend'});
 $in{'start'} < $in{'end'} || &error($text{'nslice_erange'});
-$slice->{'startblock'} = $in{'start'};
+$slice->{'startblock'} = int($in{'start'}/2048)*2048;  # Align to 1MB
 $slice->{'blocks'} = $in{'end'} - $in{'start'};
 
 # Slice type
 $slice->{'type'} = $in{'type'};
+$slice->{'label'} = $in{'label'} if ($in{'label'} =~ /^[a-zA-Z0-9._-]+$/);
 
 # Do the creation
 &ui_print_header($disk->{'desc'}, $text{'nslice_title'}, "");
 
+# Create the slice
 print &text('nslice_creating', $in{'number'}, $disk->{'desc'}),"<p>\n";
 my $err = &create_slice($disk, $slice);
 if ($err) {

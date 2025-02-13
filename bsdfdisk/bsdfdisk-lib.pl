@@ -13,7 +13,7 @@ our (%text);
 
 sub check_fdisk
 {
-foreach my $cmd ("fdisk", "disklabel") {
+foreach my $cmd ("fdisk", "disklabel", "gpart") {
 	if (!&has_command($cmd)) {
 		return &text('index_ecmd', "<tt>$cmd</tt>");
 		}
@@ -30,6 +30,9 @@ my @rv;
 # Iterate over disk devices
 foreach my $dev (glob("/dev/ada[0-9]"), glob("/dev/ada[0-9][0-9]"),
 		 glob("/dev/ad[0-9]"), glob("/dev/ad[0-9][0-9]"),
+		 glob("/dev/nvd[0-9]"), glob("/dev/nvd[0-9][0-9]"),
+		 glob("/dev/vtbd[0-9]"), glob("/dev/vtbd[0-9][0-9]"),
+		 glob("/dev/md[0-9]"), glob("/dev/md[0-9][0-9]"),
 		 glob("/dev/da[0-9]"), glob("/dev/da[0-9][0-9]")) {
 	next if (!-r $dev || -l $dev);
 	my $disk = { 'device' => $dev,
@@ -48,7 +51,19 @@ foreach my $dev (glob("/dev/ada[0-9]"), glob("/dev/ada[0-9][0-9]"),
 	push(@rv, $disk);
 
 	# Get size and slices
-	my $out = &backquote_command("fdisk ".quotemeta($dev));
+	my $out;
+	my $sdev = 's';
+	if (&has_command('gpart')) {
+		# Get size and slices with GPT support
+		$out = &backquote_command("gpart show -p ".quotemeta($dev));
+		$sdev = 'p';
+		}
+	else {
+		$out = &backquote_command("fdisk ".quotemeta($dev));
+		}
+	if ($out =~ /Scheme:\s*GPT/i) {
+		$disk->{'type'} = 'gpt';
+		}
 	my @lines = split(/\r?\n/, $out);
 	my $slice;
 	for(my $i=0; $i<@lines; $i++) {
@@ -69,9 +84,9 @@ foreach my $dev (glob("/dev/ada[0-9]"), glob("/dev/ada[0-9][0-9]"),
 		       $lines[$i] =~ /data\s+for\s+partition\s+(\d+)/) {
 			# Start of a slice
 			$slice = { 'number' => $1,
-				   'device' => $dev."s".$1,
+				   'device' => $dev."$sdev".$1,
 				   'index' => scalar(@{$disk->{'slices'}}) };
-			if ($slice->{'device'} =~ /^\/dev\/([a-z]+)(\d+)s(\d+)/){
+			if ($slice->{'device'} =~ /^\/dev\/([a-z]+)(\d+)[ps](\d+)/) {
 				$slice->{'desc'} = &text('select_slice',
 					uc($disk->{'type'}), "$2", "$3");
 				}
@@ -116,15 +131,22 @@ foreach my $dev (glob("/dev/ada[0-9]"), glob("/dev/ada[0-9][0-9]"),
 	foreach my $slice (@{$disk->{'slices'}}) {
 		$slice->{'parts'} = [ ];
 		next if (!-e $slice->{'device'});
-		my $out = &backquote_command("disklabel ".$slice->{'device'});
+		my $out;
+		if (&has_command('gpart')) {
+			$out = &backquote_command("gpart show -p ".$slice->{'device'});
+			}
+		else {
+			$out = &backquote_command("disklabel ".$slice->{'device'});
+			}
 		my @lines = split(/\r?\n/, $out);
 		foreach my $l (@lines) {
-			if ($l =~ /^\s*([a-z]):\s+(\d+)\s+(\d+)\s+(\S+)/) {
+			if ($l =~ /^\s*([a-z]):\s+(\d+)\s+(\d+)\s+(\S+)(\s+(\S+))?/) {
 				my $part = { 'letter' => $1,
 					     'blocks' => $2,
 					     'startblock' => $3,
 					     'type' => $4,
 					     'device' =>$slice->{'device'}.$1 };
+				$part->{'label'} = $6 if ($6);
 				$part->{'size'} = $part->{'blocks'} *
 						  $disk->{'blocksize'};
 				$part->{'desc'} = &text('select_part',
@@ -210,12 +232,12 @@ if ($dev =~ /^\/dev\/([a-z]+)(\d+)$/) {
 	return &text('select_device',
 		$1 eq 'da' ? 'SCSI' : 'IDE', "$2");
 	}
-elsif ($dev =~ /^\/dev\/([a-z]+)(\d+)s(\d+)$/) {
+elsif ($dev =~ /^\/dev\/([a-z]+)(\d+)[ps](\d+)$/) {
 	# A slice within a disk
 	return &text('select_slice',
 		$1 eq 'da' ? 'SCSI' : 'IDE', "$2", "$3");
 	}
-elsif ($dev =~ /^\/dev\/([a-z]+)(\d+)s(\d+)([a-z])$/) {
+elsif ($dev =~ /^\/dev\/([a-z]+)(\d+)[ps](\d+)([a-z])$/) {
 	# A partition within a slice
 	return &text('select_part',
 		$1 eq 'da' ? 'SCSI' : 'IDE', "$2", "$3", uc($4));
@@ -249,6 +271,10 @@ return $ex ? $out : undef;
 sub delete_slice
 {
 my ($disk, $slice) = @_;
+if ($disk->{'type'} eq 'gpt') {
+	return &backquote_logged("gpart delete -i $slice->{'number'} ".
+				 "$disk->{'device'} 2>&1");
+	}
 return &execute_fdisk_commands($disk,
 	[ "p $slice->{'number'} 0 0 0" ]);
 }
@@ -258,6 +284,17 @@ return &execute_fdisk_commands($disk,
 sub create_slice
 {
 my ($disk, $slice) = @_;
+if ($disk->{'type'} eq 'gpt') {
+	my $cmd = "gpart add -t $slice->{'type'} -b $slice->{'startblock'} -s ".
+		  "$slice->{'blocks'}";
+	$cmd .= " -l $slice->{'label'}" if $slice->{'label'};
+	$cmd .= " $disk->{'device'}";
+	my $err = &backquote_logged("$cmd 2>&1");
+	if (!$err) {
+		$slice->{'device'} = $disk->{'device'}."p".$slice->{'number'};
+		}
+	return $err;
+	}
 my $type = hex($slice->{'type'});
 my $start = int($slice->{'startblock'} * $disk->{'blocksize'} / 1024);
 my $length = int($slice->{'blocks'} * $disk->{'blocksize'} / 1024);
@@ -274,6 +311,15 @@ return $err;
 sub modify_slice
 {
 my ($disk, $oldslice, $slice) = @_;
+if ($disk->{'type'} eq 'gpt') {
+	if ($oldslice->{'type'} ne $slice->{'type'}) {
+		my $cmd = "gpart modify -i $slice->{'number'} -t $slice->{'type'}";
+		$cmd .= " -l $slice->{'label'}" if $slice->{'label'};
+		$cmd .= " $disk->{'device'}";
+		return &backquote_logged("$cmd 2>&1");
+		}
+	return undef;
+	}
 if ($oldslice->{'type'} ne $slice->{'type'}) {
 	# Change the type
 	my $type = hex($slice->{'type'});
@@ -298,13 +344,18 @@ return undef;
 sub initialize_slice
 {
 my ($disk, $slice) = @_;
+if ($disk->{'type'} eq 'gpt') {
+	return &backquote_logged("gpart create -s GPT $slice->{'device'} 2>&1");
+	}
 my $err = &backquote_logged("bsdlabel -w $slice->{'device'}");
 return $? ? $err : undef;
 }
 
 sub list_partition_types
 {
-return ( '4.2BSD', 'swap', 'unused', 'vinum' );
+return ( '4.2BSD', 'swap', 'unused', 'vinum',
+	 'freebsd-ufs', 'freebsd-swap', 'freebsd-zfs',
+	 'freebsd-boot', 'freebsd-raid', 'freebsd-label' );
 }
 
 # save_partition(&disk, &slice, &part)
@@ -312,6 +363,20 @@ return ( '4.2BSD', 'swap', 'unused', 'vinum' );
 sub save_partition
 {
 my ($disk, $slice, $part) = @_;
+if ($disk->{'type'} eq 'gpt') {
+	my $cmd = "gpart add -t $part->{'type'}";
+	$cmd .= " -b $part->{'startblock'}" if $part->{'startblock'};
+	$cmd .= " -s $part->{'blocks'}" if $part->{'blocks'};
+	$cmd .= " -l $part->{'label'}" if $part->{'label'};
+	$cmd .= " " . $slice->{'device'};
+	my $err = &backquote_logged("$cmd 2>&1");
+	if (!$err) {
+		$part->{'device'} = $slice->{'device'}.$part->{'letter'};
+		}
+	return $err;
+	}
+
+# Edit or add a line in the existing label
 my $out = &backquote_command("bsdlabel $slice->{'device'}");
 if ($? && $out =~ /no\s+valid\s+label/) {
 	# No label at all yet .. initialize
@@ -322,6 +387,8 @@ if ($? && $out =~ /no\s+valid\s+label/) {
 # Edit or add a line in the existing label
 my $wantline = "  ".$part->{'letter'}.": ".$part->{'blocks'}." ".
 	       $part->{'startblock'}." ".$part->{'type'};
+$wantline .= " " . $part->{'label'} if ($part->{'label'});
+
 my @lines = split(/\r?\n/, $out);
 my $found = 0;
 for(my $i=0; $i<@lines; $i++) {
@@ -348,6 +415,9 @@ sub delete_partition
 my ($disk, $slice, $part) = @_;
 
 # Fix up the line for the part being deleted
+if ($disk->{'type'} eq 'gpt') {
+	return &backquote_logged("gpart delete -i $part->{'letter'} $slice->{'device'} 2>&1");
+	}
 my $out = &backquote_command("bsdlabel $slice->{'device'}");
 my @lines = split(/\r?\n/, $out);
 my $found = 0;
