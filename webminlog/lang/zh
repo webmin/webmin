@@ -45,8 +45,6 @@ index_searchdesc=此表单可用于按用户、模块、日期范围和受影响
 index_notifydesc=使用此表单配置当 Webmin 操作由选定用户或在选定模块中执行时的电子邮件通知。
 
 search_title=搜索结果
-search_date=日期
-search_time=时间
 search_user=用户
 search_host=客户端地址
 search_webmin=Webmin 服务器

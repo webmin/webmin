@@ -122,9 +122,6 @@ redhat_eoutput=Um erro ocorreu obtendo o status do Iptables a partir do comando 
 
 gentoo_escript=O Script Iptables do Gentoo $1 não foi encontrado em seu sistema.
 
-eiptables=Linha do arquivo Iptables desconhecido : $1
-eip6tables=Linha do arquivo ip6tables desconhecido : $1
-
 edit_title1=Adiciona Regra
 edit_title2=Editar Regra
 edit_title3=Clonar Regra

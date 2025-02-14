@@ -1,3 +1,5 @@
+index_anyfile=Modifier un autre fichier de configuration PHP
+
 list_efile=Le fichier à modifier doit être un chemin absolu
 
 session_redis=Redis

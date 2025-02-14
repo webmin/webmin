@@ -14,8 +14,6 @@ index_nolog=<b>注意</b> - <a href='$1'>紀錄Webmin</a> 目前沒有啟用，�
 index_nologfiles=<b>注意</b> - <a href='$1'>紀錄檔案變更</a>目前沒有啟用，所以詳細紀錄動作將不會包含檔案變更和執行命令
 
 search_title=搜尋結果
-search_date=日期
-search_time=時間
 search_user=使用者
 search_host=使用者地址
 search_module=模組

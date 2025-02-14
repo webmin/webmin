@@ -64,6 +64,7 @@ edit_pre=Komennot ajaa ennen kiertoa
 edit_default=Oletus ($1)
 edit_sharedscripts=Suoritako kaikkien tiedostojen skriptit vain kerran?
 edit_now=Kierrä nyt
+edit_clone=Klooni
 
 global_title=Globaalit vaihtoehdot
 global_header=Kaikkien lokitiedostojen oletusasetukset

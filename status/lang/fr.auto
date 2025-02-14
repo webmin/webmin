@@ -1,5 +1,14 @@
+index_madd=Ajouter un moniteur de type
+
+type_smtp=Connexion SMTP
+type_imap=Connexion IMAP
+type_firewalld=Serveur FirewallD
+type_reboot=Redémarrage requis
+
+mon_header5=Options de notification
 mon_notifywebhook=Webhook
 
+sched_email_def=Valeur par défaut du système ($1)
 sched_webhook=Envoyer le statut au webhook
 sched_webhookno=N'envoyez pas
 sched_webhookyes=URL HTTP ou HTTPS
@@ -17,3 +26,38 @@ monitor_sub_isup=$1 sur $2
 monitor_pager_isup=$1 : "$2" est en hausse $3
 monitor_snmp_isup=$1:$2
 monitor_email_isup=Le moniteur sur $1 pour «$2» a détecté que le service est actif à $3
+
+smtp_host=Hôte du serveur SMTP
+smtp_port=Port du serveur SMTP
+smtp_ssl=Utiliser une connexion SSL ?
+smtp_ssl0=Texte brut uniquement
+smtp_ssl1=Toujours SSL
+smtp_ssl2=Passer à SSL avec STARTTLS
+smtp_from=Tester l'expéditeur SMTP
+smtp_none=Aucun
+smtp_addr=Utiliser l'adresse
+smtp_to=Tester le destinataire SMTP
+smtp_ehost=Hôte du serveur SMTP manquant ou non résoluble
+smtp_eport=Port du serveur SMTP manquant ou non numérique
+smtp_efrom=L'adresse de l'expéditeur doit être du type utilisateur@domaine.com
+smtp_eto=L'adresse du destinataire doit être du type utilisateur@domaine.com
+smtp_ok1=Commande HELO acceptée
+smtp_ok2=Adresse de l'expéditeur acceptée
+smtp_ok3=Adresse du destinataire acceptée
+smtp_ok4=Connexion SMTP acceptée
+smtp_user=Authentification SMTP
+smtp_user1=Ne vous connectez pas
+smtp_user0=Se connecter en tant qu'utilisateur
+smtp_pass=avec mot de passe
+smtp_euser=Connexion SMTP manquante
+
+imap_host=Hôte du serveur IMAP
+imap_port=Port du serveur IMAP
+imap_ssl=Utiliser une connexion SSL ?
+imap_user=Connexion IMAP
+imap_pass=Mot de passe IMAP
+imap_ehost=Hôte de serveur IMAP manquant ou non résoluble
+imap_eport=Port du serveur IMAP manquant ou non numérique
+imap_euser=Connexion IMAP manquante
+
+reboot_pkgs=Les mises à jour du package nécessitent un redémarrage

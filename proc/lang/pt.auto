@@ -8,6 +8,8 @@ index_loadname=Médias de carga da CPU:
 index_loadnums=$1 (1 minutos), $2 (5 minutos), $3 (15 minutos)
 index_cpuname=Tipo de CPU:
 index_inzone=Na zona $1
+index_core=$1 núcleo
+index_cores=$1 núcleos
 
 stime=Começado
 sclass=Classe de agendamento de E / S

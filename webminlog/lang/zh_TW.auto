@@ -23,6 +23,7 @@ index_notify=為 Webmin 操作發送電子郵件？
 index_notify_mods=對於模塊中的操作
 index_notify_users=對於用戶的操作
 index_notify_email=發送電子郵件至
+index_notify_email_def=預設通知地址
 index_notify_usub=在電子郵件主題中包含用戶名？
 index_notify_msub=在電子郵件主題中包含操作？
 index_searchtab=搜索日誌
@@ -30,6 +31,7 @@ index_notifytab=電子郵件通知
 index_searchdesc=此表單可用於按用戶、模塊、日期範圍和受影響的文件搜索 Webmin 操作。
 index_notifydesc=當選定用戶或選定模塊執行 Webmin 操作時，使用此表單配置電子郵件通知。
 
+search_datetime=日期和時間
 search_webmin=Webmin服務器
 search_none2=沒有動作符合您對動作的搜索
 search_critd=描述包含<tt>$1</tt>

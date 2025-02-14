@@ -3,6 +3,8 @@ index_memswap=スワップスペース:
 index_memburst=バースト可能なメモリ:
 index_memtf=合計 $1 / $2 空き
 index_memtfc=合計 $1 / $2 空き / $3 キャッシュ
+index_core=$1 コア
+index_cores=$1 コア
 
 sclass=IOスケジューリングクラス
 sprio=IO優先度

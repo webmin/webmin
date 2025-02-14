@@ -56,6 +56,9 @@ desc_dest=destino
 
 redhat_einstalled2=No se encontró ninguna acción de arranque <tt>$1</tt>, lo que indica que el paquete IPtables no está instalado en su sistema
 
+eiptables2=Entrada de archivo guardado de IPtables desconocida en la línea $2 : $1 
+eip6tables2=Entrada de archivo guardado de IP6tables desconocida en la línea $2 : $1 
+
 edit_cmt=Comentario de regla
 edit_state_untracked=Sin seguimiento
 edit_state_snat=Fuente NATd

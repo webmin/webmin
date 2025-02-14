@@ -5,6 +5,8 @@ index_suse=Brakuje pakietu Perl <tt>perl-IO-Tty</tt> i należy go najpierw ręcz
 index_euser=Błąd: Użytkownik $1 nie może uruchomić powłoki, ponieważ ona nie istnieje!
 index_connecting=Podłączanie ..
 index_missing=Brak modułu Perla <tt>$1</tt>. Aby rozwiązać ten problem, musisz skontaktować się z administratorem.
+index_eproxy=Modułu terminala nie można używać podczas uzyskiwania dostępu do Webmin za pośrednictwem innego serwera Webmin
 
 acl_user=Uruchom powłokę jako użytkownik Unix
 acl_sameuser=Tak samo jak logowanie do Webmina
+acl_sudoenforce=Wymuś uprawnienia tylko <em>sudo</em>

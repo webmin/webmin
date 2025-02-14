@@ -160,8 +160,8 @@ redhat_eoutput=Ocorreu um erro ao obter o status de tabelas de IP do comando $1.
 
 gentoo_escript=O script de inicialização do Gentoo IPtables $1 não foi encontrado no seu sistema.
 
-eiptables=Tabelas IP desconhecidas salvam a linha do arquivo : $1
-eip6tables=As tabelas ip6 desconhecidas salvam a linha do arquivo : $1
+eiptables2=Entrada de arquivo de salvamento de IPtables desconhecida na linha $2 : $1 
+eip6tables2=Entrada de arquivo de salvamento IP6tables desconhecida na linha $2 : $1 
 
 edit_title1=Adicionar regra
 edit_title2=Editar regra

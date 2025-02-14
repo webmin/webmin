@@ -5,6 +5,8 @@ client_enis=Parece que su máquina no tiene instalado el soporte de cliente NIS.
 switch_srcs=Fuentes de datos
 switch_return=servicios al cliente
 
+order_=&nbsp;
+
 server_epwdir=Directorio de archivos fuente de contraseña inválida
 
 desc_auto.home=Inicio del montador automático

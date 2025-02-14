@@ -7,7 +7,6 @@ index_desc=Verwendungszweck
 index_actions=Aktionen
 index_edit=Verwalten
 index_manual=Manuell bearbeiten
-index_anyfile=Andere PHP-Konfigurationsdatei bearbeiten:
 index_return=Konfigurationsdateien
 
 file_global=Globale PHP-Konfiguration

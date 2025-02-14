@@ -7,7 +7,7 @@ index_desc=amaç
 index_actions=Hareketler
 index_edit=yönetme
 index_manual=Manuel Olarak Düzenle
-index_anyfile=Diğer PHP yapılandırma dosyasını düzenleyin:
+index_anyfile=Diğer PHP yapılandırma dosyasını düzenle
 index_return=yapılandırma dosyaları
 
 file_global=Global PHP yapılandırması

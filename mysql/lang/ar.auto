@@ -74,6 +74,7 @@ dbase_ecannot=لا يسمح لك بتحرير قاعدة البيانات هذه
 dbase_name=اسم
 dbase_rows=الصفوف
 dbase_cols=مجالات
+dbase_size=مقاس
 dbase_delete=إسقاط الجداول المحددة
 dbase_delete2=إسقاط الكائنات المحددة
 dbase_showing=عرض الجداول المطابقة لـ$1 ..

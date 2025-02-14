@@ -5,6 +5,8 @@ index_suse=Het Perl-pakket <tt>perl-IO-Tty</tt> ontbreekt en moet eerst handmati
 index_euser=Fout: Gebruiker $1 kan de shell niet uitvoeren omdat deze niet bestaat!
 index_connecting=Verbinden ..
 index_missing=De Perl-module <tt>$1</tt> ontbreekt. U moet contact opnemen met uw beheerder om dit probleem op te lossen.
+index_eproxy=De Terminal-module kan niet worden gebruikt bij toegang tot Webmin via een andere Webmin-server
 
 acl_user=Voer shell uit als Unix-gebruiker
 acl_sameuser=Hetzelfde als inloggen bij Webmin
+acl_sudoenforce=<em>sudo</em>-only privileges afdwingen

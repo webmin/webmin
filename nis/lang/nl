@@ -24,7 +24,6 @@ switch_service=Service
 switch_srcs=Data bronnen
 switch_return=client services
 
-order_=
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS

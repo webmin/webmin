@@ -5,6 +5,8 @@ client_enis=お使いのマシンには、NISクライアントサポートが�
 switch_srcs=データソース
 switch_return=クライアントサービス
 
+order_=&nbsp;
+
 server_epwdir=無効なパスワードソースファイルディレクトリ
 
 tables_find=$2が $3と一致する $1を見つける

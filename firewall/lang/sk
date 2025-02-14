@@ -122,9 +122,6 @@ redhat_eoutput=Nastala chyba pri získavaní stavu IP tabuliek príkazom $1. Tot
 
 gentoo_escript=Gentoovský štartovací script IP tabuliek $1 nebol vo Vašom systéme nájdený.
 
-eiptables=Neznáme IP tabuľky uložené v súbore na riadku : $1
-eip6tables=Neznáme IP tabuľky uložené v súbore na riadku : $1
-
 edit_title1=Pridanie pravidla
 edit_title2=Úprava pravidla
 edit_title3=Naklonovať pravidlo

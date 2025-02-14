@@ -160,8 +160,8 @@ redhat_eoutput=Ralat berlaku untuk mendapatkan status IPtables dari perintah $1.
 
 gentoo_escript=Skrip permulaan Gentoo IPtables $1 tidak dijumpai pada sistem anda.
 
-eiptables=IPTables yang tidak diketahui menyimpan fail fail : $1
-eip6tables=IP6tables yang tidak diketahui menyimpan fail fail : $1
+eiptables2=Jadual IP tidak diketahui menyimpan entri fail pada baris $2 : $1 
+eip6tables2=Jadual IP6 tidak diketahui menyimpan kemasukan fail pada baris $2 : $1 
 
 edit_title1=Tambah Aturan
 edit_title2=Edit Peraturan

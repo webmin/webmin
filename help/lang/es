@@ -6,6 +6,7 @@ index_sel=Módulos seleccionados...
 index_search=Buscar
 index_header=Búsqueda Global de ayuda de Webmin
 index_return=formulario de búsqueda
+
 search_err=Falló la búsqueda
 search_eterms=No se han puesto criterios de búsqueda
 search_emods=No se han seleccionado módulos

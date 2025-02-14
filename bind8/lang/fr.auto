@@ -1,3 +1,4 @@
+master_eserial2=Le numéro de série doit être inférieur à 2^31
 master_vmin=Cette zone est gérée par Virtualmin. Les enregistrements doivent être modifiés à l'aide de l'interface utilisateur Virtualmin, pour s'assurer qu'ils sont cohérents avec les autres paramètres du serveur virtuel.
 master_vminalias=Cette zone est un alias d'un domaine Virtualmin, qui est synchronisé avec sa cible. Les enregistrements ne doivent jamais être modifiés ici, car toute modification sera écrasée !
 
@@ -16,6 +17,7 @@ edit_NAPTR=Pointeur d'autorité de nom
 
 recs_NAPTR=Nom Autorité
 
+value_NSEC3PARAM4_none=Aucun
 value_dmarcfo=Mode de rapport d'échec
 value_dmarcfo0=Signaler si DKIM et SPF ont échoué
 value_dmarcfo1=Signaler si DKIM ou SPF a échoué
@@ -24,9 +26,9 @@ value_dmarcfos=Signaler si l'évaluation SPF a échoué
 value_CAA1=Exiger l'exécution?
 value_CAA2=Type d'autorisation
 value_CAA3=nom de domaine CA
-+value_dmarcri=Intervalle de rapport
-+value_dmarcrf=Format de rapport
-+value_dmarcafrf=Format de rapport d'échec d'authentification
+value_dmarcri=Intervalle de rapport
+value_dmarcrf=Format du rapport
+value_dmarcafrf=Format de rapport d'échec d'authentification
 value_NAPTR1=Commande
 value_NAPTR2=Préférence
 value_NAPTR3=Drapeaux
@@ -40,5 +42,11 @@ value_NAPTR3_A=Rechercher un enregistrement A ou AAAA suivant
 value_NAPTR3_U=Utiliser la sortie regexp ensuite
 value_NAPTR3_P=Action spécifique au protocole
 
+log_delete_recs2=$1 enregistrements supprimés dans la zone $2
+
 zonekey_algorithm=Algorithme DNSSEC  : $1
+zonekey_ds_keytag=Porte-clés
+zonekey_ds_alg=Algorithme
+zonekey_ds_type=Type de digestion
+zonekey_ds_digest=Chaîne de synthèse
 zonekey_keep=Conserver la clé existante si DNSSEC est réactivé ?

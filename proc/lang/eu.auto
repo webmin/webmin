@@ -17,6 +17,8 @@ index_loadname=PUZaren kargaren batez bestekoak:
 index_loadnums=$1 (1 min), $2 (5 min), $3 (15 min)
 index_cpuname=CPU mota:
 index_inzone=$1 zonaldean
+index_core=$1 nukleoa
+index_cores=$1 nukleoak
 
 pid=NAN
 owner=Jabea

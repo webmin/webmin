@@ -144,7 +144,7 @@ while(<FILE>) {
 		$table->{'eline'} = $lnum;
 		}
 	elsif (/\S/) {
-		&error(&text('eiptables', "<tt>$_</tt>"));
+		&error(&text('eiptables2', "<tt>$_</tt>", $lnum+1));
 		}
 	$lnum++;
 	if (! defined($read_comment)) { $cmt=undef; }

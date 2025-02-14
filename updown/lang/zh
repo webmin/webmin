@@ -134,4 +134,3 @@ email_upsize=上传大小: $1
 email_upextract=提取状态: $1
 email_subjectu=上传完成
 email_upmsg=以下上传已完成 :
-__norefs=1

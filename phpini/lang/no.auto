@@ -1,3 +1,5 @@
+index_anyfile=Rediger annen PHP-konfigurasjonsfil
+
 list_efile=Filen som skal redigeres må være en absolutt bane
 
 session_redis=Redis

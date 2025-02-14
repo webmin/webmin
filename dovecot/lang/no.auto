@@ -1,1 +1,7 @@
 net_ssl_required=Godta kun SSL
+
+login_otp=Engangspassord
+login_skey=Sikkerhetsnøkkel
+login_oauthbearer=OAuth2-bærerautentisering
+login_xoauth2=Google OAuth2-bærerautentisering
+login_external=Ekstern SASL-autentisering

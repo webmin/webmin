@@ -1,3 +1,5 @@
+index_anyfile=Editeu un altre fitxer de configuració PHP
+
 list_efile=El fitxer que cal editar ha de ser un camí d'accés absolut
 
 session_redis=Redis

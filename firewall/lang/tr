@@ -120,9 +120,6 @@ redhat_eoutput=$1 komutuyla IP tablo statüsüne erişimde bir hata meydana geld
 
 gentoo_escript=Gentoo IPtabloları başlatma betiği $1 sisteminizde bulunamadı.
 
-eiptables=Bilinmeyen IP tabloları $1 satırında saklanır
-eip6tables=Bilinmeyen IP tabloları $1 satırında saklanır
-
 edit_title1=Kural Ekle
 edit_title2=Kuralı Düzenle
 edit_title3=Klonlama Kuralı

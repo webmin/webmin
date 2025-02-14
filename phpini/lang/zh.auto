@@ -7,7 +7,7 @@ index_desc=目的
 index_actions=动作
 index_edit=管理
 index_manual=手动编辑
-index_anyfile=编辑其他PHP配置文件：
+index_anyfile=编辑其他 PHP 配置文件
 index_return=配置文件
 
 file_global=全局PHP配置

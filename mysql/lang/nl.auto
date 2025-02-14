@@ -10,6 +10,7 @@ index_mysqlstatus=MySQL-opstartscript
 
 dbase_empty=Lege database
 dbase_name=Naam
+dbase_size=Maat
 dbase_type=Type
 dbase_typetable=Tafel 1)
 dbase_typeindex=Inhoudsopgave

@@ -6,6 +6,7 @@ index_sel=Vybrané moduly ..
 index_search=Hledat
 index_header=Globální Webmin hledání
 index_return=formulář hledání
+
 search_err=Chyba při hledání
 search_eterms=Chybí podmínka hledání
 search_emods=Nejsou vybrány žádné moduly

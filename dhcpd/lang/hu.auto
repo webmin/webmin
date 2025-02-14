@@ -14,6 +14,7 @@ index_memb=$1 tag
 index_hst=Házigazdák és fogadó csoportok
 index_nohst=Nincs meghatározva gazdagép vagy csoport.
 index_hostgroup=Host/Group
+index_comment=Leírás
 index_parent=Szülő
 index_hardware=Hardver címe
 index_group=Csoport:

@@ -27,6 +27,7 @@ dbase_header=數據庫表，索引和視圖
 dbase_empty=空數據庫
 dbase_none2=沒有表與您的搜索匹配。
 dbase_name=名稱
+dbase_size=尺寸
 dbase_delete=刪除選定的表
 dbase_delete2=刪除選定的對象
 dbase_showing=顯示與 $1..相匹配的表

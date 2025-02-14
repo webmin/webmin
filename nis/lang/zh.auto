@@ -5,6 +5,8 @@ client_enis=您的计算机似乎未安装NIS客户端支持。
 switch_srcs=数据源
 switch_return=客户服务
 
+order_=&nbsp;
+
 desc_auto.home=自动挂载机首页
 desc_auto.master=自动挂载器贴图
 desc_auto.local=本地自动挂载器

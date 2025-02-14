@@ -10,9 +10,13 @@ smtpd_nomap2=A feladó címeinek korlátozására még nem került sor.
 smtpd_map=Megengedett címek a továbbításhoz
 smtpd_map2=A feladó címeire vonatkozó korlátozások
 
-opts_smtp_use_tls=Használja a TLS-t az SMTP-kapcsolatokhoz
 opts_smtp_sasl_security_options=SASL biztonsági lehetőségek
 opts_smtp_tls_security_level=SMTP TLS kliens biztonsági szint
+opts_inet_protocols=Internet protokollok engedélyezése
+opts_inet_protocols_all=Minden elérhető
+opts_smtp_address_preference=Preferált SMTP kliens protokoll
+opts_smtp_address_preference_any=Bármelyik
+opts_smtp_balance_inet_protocols=Érvényesítse az SMTP kliens protokollokat
 
 mapping_toomany=Vannak $1 térképbejegyzések, ami meghaladja a $2 megjelenítési korlátot.
 mapping_find=Megfelelő leképezések megjelenítése:
@@ -27,11 +31,26 @@ sni_dom=Gazdanév
 sni_certs=Tanúsítványfájlok
 
 acl_sni=Szerkesztheti a tanúsítványokat?
+acl_body=Lehet szerkeszteni a testellenőrzéseket?
+acl_dependent=Szerkeszthetőek a feladótól függő szállítási térképek?
+
+mail_qfile=Levelezési sor fájl
+mail_qlast=Utolsó próbálkozás:
+mail_qdir=Levelezési sor állapota
+mail_qdir_active=Aktív
+mail_qdir_incoming=Bejövő
+mail_qdir_deferred=Halasztott
+mail_qdir_corrupt=Korrupt
+mail_qdir_hold=Várakozás
+mail_qdir_maildrop=Leadás
 
 view_aname=Melléklet
 
 mailq_deleteall=Törölje a levél sorát
 mailq_deletealldesc=Kattintson erre a gombra az összes üzenet törléséhez a levél sorban.
+mailq_dir=Sor állapota
+
+flushq_desc2=.. ellenőrizze a levelezőnaplót az eredményekért
 
 opts_mime_header_checks=MIME fejléc-ellenőrző táblázatok
 opts_header_checks_no_map=(Jelenleg nincs meghatározva fejléc-ellenőrző térkép. Először határozzon meg egy térképet, majd szerkesztheti)
@@ -54,6 +73,10 @@ log_manual_sender_dependent_default_transport_mapss=A feladótól függő címek
 
 opts_smtp_sasl_auth_enable=Használ SASL SMTP hitelesítést?
 opts_smtpd_tls_auth_only=Tilos a SASL hitelesítés nem biztonságos kapcsolatok esetén?
+sasl_noactive=Elutasítás Megtiltás aktív (nem szótári) támadásnak
+sasl_nodictionary=Passzív (szótári) támadásnak kitett módszerek elutasítása
+sasl_forward_secrecy=Csak olyan módszereket engedélyezzen, amelyek támogatják a továbbítási titkosítást
+sasl_mutual_auth=Csak a kölcsönös hitelesítést biztosító módszereket engedélyezze
 sasl_relay=SMTP továbbítási korlátozások
 opts_smtp_enforce_tls=TLS titkosítást igényel?
 sasl_level_dane=Opportunista DANE TLS

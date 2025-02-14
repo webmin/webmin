@@ -7,6 +7,12 @@ ssl_prompt=Není potřeba
 ssl_eca=Chybějící nebo neexistující soubor certifikátů CA klienta
 ssl_epass=Nebylo zadáno žádné heslo souboru klíče SSL
 
+login_otp=Jednorázové heslo
+login_skey=Bezpečnostní klíč
+login_oauthbearer=Ověření nosiče OAuth2
+login_xoauth2=Ověření nosiče Google OAuth2
+login_external=Externí autentizace SASL
+
 mail_index=Umístění souborů indexu
 mail_index0=Výchozí (v adresáři Maildir)
 mail_index1=Pouze v paměti

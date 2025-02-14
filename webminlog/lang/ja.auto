@@ -5,12 +5,15 @@ index_notify=Webminアクションの電子メールを送信しますか？
 index_notify_mods=モジュール内のアクションの場合
 index_notify_users=ユーザーによるアクションの場合
 index_notify_email=にメールを送信
+index_notify_email_def=デフォルトの通知アドレス
 index_notify_usub=メールの件名にユーザー名を含めますか？
 index_notify_msub=メールの件名にアクションを含めますか？
 index_searchtab=検索ログ
 index_notifytab=電子メール通知
 index_searchdesc=このフォームを使用して、ユーザー、モジュール、日付範囲、および影響を受けるファイルごとにWebminアクションを検索できます。
 index_notifydesc=このフォームを使用して、選択したユーザーまたは選択したモジュールでWebminアクションが実行されたときの電子メール通知を構成します。
+
+search_datetime=日時
 
 acl_notify=電子メール通知を構成できますか？
 

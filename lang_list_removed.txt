@@ -1,0 +1,11 @@
+lang=af,           charset=utf-8,  titles=1,  auto=1                    Afrikaans
+lang=be,           charset=utf-8,  titles=0                             беларуская
+lang=he,           charset=utf-8,  titles=0,  dir=rtl,  rtl=1           עברית
+lang=lt,           charset=utf-8,  titles=1                             lietuvių
+lang=lv,           charset=utf-8,  titles=1                             latviešu
+lang=mt,           charset=utf-8,  titles=0                             Malti
+lang=ro,           charset=utf-8,  titles=1                             română
+lang=sl,           charset=utf-8,  titles=0                             slovenščina
+lang=th,           charset=utf-8,  titles=0,  auto=1                    ไทย
+lang=ur,           charset=utf-8,  titles=0,  rtl=1                     اردو
+lang=vi,           charset=utf-8,  titles=0                             Tiếng Việt

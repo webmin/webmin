@@ -1,3 +1,5 @@
+index_anyfile=Modifica altri file di configurazione PHP
+
 file_eread=Impossibile leggere $1 : $2
 
 list_efile=Il file da modificare deve essere un percorso assoluto

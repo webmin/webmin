@@ -1,3 +1,0 @@
-name_vi=BSDexports
-desc_vi=Xuất khẩu NFS
-longdesc_vi=Chỉnh sửa chia sẻ tệp từ tệp /etc/exports FreeBSD.

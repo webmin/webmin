@@ -74,6 +74,7 @@ dbase_ecannot=Du har ikke tilladelse til at redigere denne database
 dbase_name=Navn
 dbase_rows=rækker
 dbase_cols=Felter
+dbase_size=Størrelse
 dbase_delete=Slip valgte tabeller
 dbase_delete2=Slip valgte objekter
 dbase_showing=Viser tabeller, der matcher $1 ..

@@ -19,6 +19,7 @@ index_tabsync2=Suorita järjestelmän <tt>$1</tt> -palvelu synkronointia varten
 index_desctime=Tämä muoto on tarkoitettu järjestelmän nykyisen ajan muuttamiseen, jota kaikki käynnissä olevat prosessit käyttävät. Käyttöjärjestelmissä, joissa on erillinen laitteistokello, sitä voidaan käyttää myös tämän asettamiseen.
 index_desczone=Tämän lomakkeen avulla voit asettaa järjestelmän oletusaikavyöhykkeen, jota käytetään muuntamaan järjestelmän aika ihmisen luettavaan muotoon ja siirtymään.
 index_descsync=Tämä lomake on tarkoitettu järjestelmän määrittämiseen synkronoimaan aika automaattisesti etäpalvelimen kanssa. Synkronointi tapahtuu käyttämällä Unix <tt>time</tt> -protokollaa tai NTP-protokollaa riippuen asennetuista komennoista ja siitä, mitä etäjärjestelmä tukee.
+index_ctrl=Huomautus: Valitse minuutit, tunnit, päivät ja kuukaudet ja poista valinnat Ctrl-napsauttamalla (tai Macissa komento-napsauttamalla).
 
 action_save=Tallentaa
 action_apply=Käytä

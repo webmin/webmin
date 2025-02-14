@@ -7,7 +7,7 @@ index_desc=Propósito
 index_actions=Comportamiento
 index_edit=Gestionar
 index_manual=Editar manualmente
-index_anyfile=Edite otro archivo de configuración de PHP:
+index_anyfile=Editar otro archivo de configuración de PHP
 index_return=Archivos de configuración
 
 file_global=Configuración global de PHP

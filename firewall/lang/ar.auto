@@ -160,8 +160,8 @@ redhat_eoutput=حدث خطأ أثناء الحصول على حالة IPtables م
 
 gentoo_escript=لم يتم العثور على البرنامج النصي لبدء التشغيل Gentoo IPtables $1 على نظامك.
 
-eiptables=حفظ IPtables غير معروف سطر الملف :$1
-eip6tables=توفر جداول ip6 غير المعروفة خط الملف :$1
+eiptables2=حفظ إدخال ملف IPtables غير المعروف في السطر $2 : $1 
+eip6tables2=حفظ إدخال ملف IP6tables غير المعروف في السطر $2 : $1 
 
 edit_title1=أضف قاعدة
 edit_title2=تحرير القاعدة

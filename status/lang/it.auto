@@ -5,7 +5,7 @@ index_desc=Monitoraggio
 index_up=Stato
 index_last=Ultimo controllo
 index_local=Locale
-index_add=Aggiungi monitor di tipo:
+index_madd=Aggiungi monitor di tipo
 index_sched=Monitoraggio programmato
 index_return=lista dei servizi
 index_none=Nessun monitor è attualmente definito.
@@ -13,10 +13,16 @@ index_refresh=Aggiorna stato
 index_delete=Elimina selezionato
 index_group=Membri di $1
 
+type_smtp=Connessione SMTP
+type_imap=Connessione IMAP
+type_firewalld=Server FirewallD
+type_reboot=Riavvio richiesto
+
 mon_create=Crea Monitoraggio
 mon_edit=Modifica Monitor
 mon_header=Monitorare i dettagli
 mon_header2=Comandi da eseguire
+mon_header5=Opzioni di notifica
 mon_desc=Descrizione
 mon_remote=Esegui su host
 mon_local=Locale
@@ -43,6 +49,7 @@ mon_empty=Nessun membro
 mon_onemem=Un membro
 mon_members=$1 membri
 
+sched_email_def=Predefinito del sistema ($1)
 sched_webhook=Invia lo stato al webhook
 sched_webhookno=Non inviare
 sched_webhookyes=URL HTTP o HTTPS
@@ -142,3 +149,38 @@ consume_rate=Tasso di consumo massimo (al secondo)
 consume_high=Il tasso di consumo è $1/secondo
 
 alive_up=Su per $1
+
+smtp_host=Host del server SMTP
+smtp_port=Porta del server SMTP
+smtp_ssl=Utilizzi la connessione SSL?
+smtp_ssl0=Solo testo normale
+smtp_ssl1=Sempre SSL
+smtp_ssl2=Passa a SSL con STARTTLS
+smtp_from=Prova mittente SMTP
+smtp_none=Nessuno
+smtp_addr=Usa l'indirizzo
+smtp_to=Test del destinatario SMTP
+smtp_ehost=Host del server SMTP mancante o non risolvibile
+smtp_eport=Porta del server SMTP mancante o non numerica
+smtp_efrom=L'indirizzo del mittente deve essere simile a utente@dominio.com
+smtp_eto=L'indirizzo del destinatario deve essere simile a utente@dominio.com
+smtp_ok1=Comando HELO accettato
+smtp_ok2=Indirizzo del mittente accettato
+smtp_ok3=Indirizzo del destinatario accettato
+smtp_ok4=Accesso SMTP accettato
+smtp_user=Autenticazione SMTP
+smtp_user1=Non effettuare l'accesso
+smtp_user0=Accedi come utente
+smtp_pass=con password
+smtp_euser=Accesso SMTP mancante
+
+imap_host=Host del server IMAP
+imap_port=Porta del server IMAP
+imap_ssl=Utilizzi la connessione SSL?
+imap_user=Accesso IMAP
+imap_pass=Password IMAP
+imap_ehost=Host del server IMAP mancante o non risolvibile
+imap_eport=Porta del server IMAP mancante o non numerica
+imap_euser=Accesso IMAP mancante
+
+reboot_pkgs=Gli aggiornamenti del pacchetto richiedono un riavvio

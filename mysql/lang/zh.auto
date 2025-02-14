@@ -27,6 +27,7 @@ dbase_header=数据库表、索引和视图
 dbase_empty=清空数据库
 dbase_none2=没有符合您搜索条件的桌子。
 dbase_name=姓名
+dbase_size=尺寸
 dbase_delete=删除选定的表
 dbase_delete2=放下选定的对象
 dbase_showing=显示与 $1 匹配的表 ..

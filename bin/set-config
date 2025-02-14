@@ -26,9 +26,9 @@ sub main {
 
     $opt{'config'} ||= "/etc/webmin";
 
-    set_config( \%opt );
-    
-    return 0;
+    my $rs = set_config( \%opt );
+
+    return !$rs ? 1 : 0;
 }
 exit main( \@ARGV ) if !caller(0);
 
@@ -53,9 +53,9 @@ sub set_config {
     chomp(@config_lines = <$fh>);
     # Change'em
     my $found = 0;
-    my $exit_code = 0;
+    my $force = $optref->{'force'};
     # Validate it against the config.info if this is a module and
-    if ($optref->{'module'} && !($optref->{'force'})) {
+    if ($optref->{'module'} && !$force) {
         validate_config_option($optref);
     }
     for (@config_lines) {
@@ -66,7 +66,6 @@ sub set_config {
     }
     unless ($found > 0) {
         push(@config_lines, "$key=$value");
-        $exit_code++;
     }
     # Write'em
     seek($fh, 0, 0);
@@ -78,7 +77,7 @@ sub set_config {
         say "Restarting Webmin to apply miniserv.conf changes...";
         system("$optref->{'config'}/restart");
     }
-    exit $exit_code;
+    return $force ? ($found > 0 ? $found : -1) : $found;
 }
 
 sub validate_config_option {

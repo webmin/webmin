@@ -4,6 +4,7 @@ edit_minsize=Taille minimale à faire pivoter
 edit_nominsize=Toujours
 edit_dateext=Utiliser l'extension de date pour les fichiers pivotés
 edit_default=Par défaut ($1)
+edit_clone=Cloner
 
 save_eminsize=Taille minimale manquante ou invalide
 save_enofiles=Aucun fichier à faire pivoter entré

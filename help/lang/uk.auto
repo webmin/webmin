@@ -1,0 +1,19 @@
+index_title=Довідка Webmin
+index_terms=Пошук довідки для
+index_mods=Модулі для пошуку
+index_all=все
+index_sel=Вибрані модулі ..
+index_search=Пошук
+index_header=Глобальний пошук довідки Webmin
+index_return=форма пошуку
+
+search_err=Пошук не вдалося
+search_eterms=Відсутні терміни пошуку
+search_emods=Модулі не вибрано
+search_title=Результати пошуку
+search_einclude=Не вдалося включити $1
+search_none=Жоден файл довідки не відповідає вашому запиту
+search_mod=Модуль
+search_page=Сторінка довідки
+search_line=Матч увімкнено
+search_results=Сторінки довідки Webmin, які відповідають $1

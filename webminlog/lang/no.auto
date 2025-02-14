@@ -5,12 +5,15 @@ index_notify=Vil du sende e-post for Webmin-handlinger?
 index_notify_mods=For handlinger i moduler
 index_notify_users=For handlinger fra brukere
 index_notify_email=Send e-post til
+index_notify_email_def=Standard varslingsadresse
 index_notify_usub=Vil du inkludere brukernavn i e-postemnet?
 index_notify_msub=Vil du inkludere handling i e-postemnet?
 index_searchtab=Søk i logger
 index_notifytab=E-postvarsel
 index_searchdesc=Dette skjemaet kan brukes til å søke etter Webmin-handlinger etter bruker, modul, datoperiode og utførte filer.
 index_notifydesc=Bruk dette skjemaet til å konfigurere e-postvarsler når Webmin-handlinger utføres av valgte brukere eller i valgte moduler.
+
+search_datetime=Dato og tid
 
 acl_notify=Kan konfigurere e-postvarsler?
 

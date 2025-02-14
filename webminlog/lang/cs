@@ -28,8 +28,6 @@ index_stimes=Akce v období
 index_shost=Server, obsahující Webmin
 
 search_title=Výsledky hledání
-search_date=Datum
-search_time=Čas
 search_user=Uživatel
 search_host=Adresa klienta
 search_webmin=Webmin server

@@ -7,7 +7,7 @@ index_desc=هدف
 index_actions=أجراءات
 index_edit=يدير
 index_manual=تحرير يدوي
-index_anyfile=تحرير ملف تكوين PHP الآخر:
+index_anyfile=تعديل ملف تكوين PHP الآخر
 index_return=ملفات التكوين
 
 file_global=تكوين PHP العالمي

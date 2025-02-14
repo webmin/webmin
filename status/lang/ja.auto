@@ -1,3 +1,4 @@
+index_madd=モニタータイプを追加
 index_refsel=選択を更新
 
 type_sslcert=SSL証明書
@@ -7,8 +8,13 @@ type_dovecot=Dovecot IMAP/POP3サーバー
 type_init=起動アクション
 type_slapd=LDAPサーバー
 type_ldap=LDAP接続
+type_smtp=SMTP接続
+type_imap=IMAP 接続
+type_firewalld=ファイアウォールDサーバー
+type_reboot=再起動が必要です
 
 mon_virtualmin=警告！このモニターはVirtualminドメイン $1に関連付けられているため、ここで編集または削除しないでください。
+mon_header5=通知オプション
 mon_ontimeout=モニターがタイムアウトした場合、コマンドを実行します
 mon_eremote2=Webminサーバー $1に接続できませんでした： $2
 mon_etype=無効なモニタータイプ名
@@ -23,6 +29,7 @@ mon_changes1=変更のみを表示
 mon_all=すべての履歴イベントを表示
 mon_nochanges=最後の $1履歴イベントでステータスの変更は発生しませんでした。
 
+sched_email_def=システムのデフォルト ($1)
 sched_warn3=サービスが稼働している限り
 sched_esmsname=SMS番号が見つからないか無効です
 sched_subject=SMSメッセージの件名行
@@ -141,3 +148,38 @@ ldap_pass=LDAPサーバーのパスワード
 info_desc=システムモニター
 info_last=現在の状態
 info_title=システムとサーバーのステータス
+
+smtp_host=SMTP サーバーホスト
+smtp_port=SMTP サーバー ポート
+smtp_ssl=SSL接続を使用しますか?
+smtp_ssl0=プレーンテキストのみ
+smtp_ssl1=常にSSL
+smtp_ssl2=STARTTLSでSSLに切り替える
+smtp_from=SMTP送信者のテスト
+smtp_none=なし
+smtp_addr=住所を使用する
+smtp_to=SMTP受信者のテスト
+smtp_ehost=SMTP サーバー ホストが見つからないか解決できません
+smtp_eport=SMTP サーバー ポートが見つからないか、数値ではありません
+smtp_efrom=送信者アドレスはuser@domain.comのようにする必要があります
+smtp_eto=受信者のアドレスはuser@domain.comのようにする必要があります
+smtp_ok1=HELOコマンドが受け入れられました
+smtp_ok2=送信者アドレスが承認されました
+smtp_ok3=受信者のアドレスが承認されました
+smtp_ok4=SMTPログインが承認されました
+smtp_user=SMTP認証
+smtp_user1=ログインしないでください
+smtp_user0=ユーザーとしてログイン
+smtp_pass=パスワード付き
+smtp_euser=SMTP ログインがありません
+
+imap_host=IMAP サーバーホスト
+imap_port=IMAP サーバー ポート
+imap_ssl=SSL接続を使用しますか?
+imap_user=IMAPログイン
+imap_pass=IMAPパスワード
+imap_ehost=IMAP サーバー ホストが見つからないか解決できません
+imap_eport=IMAP サーバー ポートが見つからないか、数値ではありません
+imap_euser=IMAP ログインがありません
+
+reboot_pkgs=パッケージの更新には再起動が必要です

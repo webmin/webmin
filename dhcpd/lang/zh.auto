@@ -1,5 +1,6 @@
 index_key=编辑TSIG密钥（用于验证DNS服务器的更新）
 index_dhcpdver2=DHCP服务器<tt>$1</tt>似乎不是正确的版本。 Webmin仅支持ISC DHCPD版本 $2到 $3。
+index_comment=描述
 index_desc=描述
 index_buttekey=编辑TSIG密钥
 index_stop=停止服务器

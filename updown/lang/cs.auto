@@ -42,7 +42,9 @@ index_emailto=Ano, na adresu
 index_email2=Po odeslání odeslat e-mail?
 
 upload_title=Nahrát soubory
+upload_direct=Zapisovat soubory přímo na disk?
 upload_err=Nahrání souborů se nezdařilo
+upload_emove=Nepodařilo se přesunout nahraný soubor z $1 do $2
 upload_edir=Chybí adresář, do kterého se má nahrát
 upload_euser=Chybějící nebo neplatné uživatelské jméno
 upload_egroup=Chybějící nebo neplatný název skupiny

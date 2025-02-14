@@ -1,3 +1,9 @@
 index_in=Télécharger
 index_out=Télécharger
 index_total=Total
+
+system_firewalld=Pare-feu
+
+syslog_journald=Journald
+
+rotate_failed=.. échoué  : $1

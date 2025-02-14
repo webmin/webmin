@@ -127,9 +127,13 @@ smtpd_nomap2=尚未输入限制发件人地址的地图。
 smtpd_map=允许中继的地址
 smtpd_map2=发件人地址限制
 
-opts_smtp_use_tls=使用TLS进行SMTP连接
 opts_smtp_sasl_security_options=SASL安全选项
 opts_smtp_tls_security_level=SMTP TLS 客户端安全级别
+opts_inet_protocols=互联网协议
+opts_inet_protocols_all=全部可用
+opts_smtp_address_preference=首选 SMTP 客户端协议
+opts_smtp_address_preference_any=任何一个
+opts_smtp_balance_inet_protocols=验证 SMTP 客户端协议
 
 debug_version=Webmin的Postfix模块-版本$1
 opts_edebug=详细记录级别缺失或无效-必须是大于零的数字
@@ -215,6 +219,8 @@ acl_postfinger=可以检查后缀配置吗？
 acl_manual=可以编辑配置文件吗？
 acl_dir=地图文件的允许目录
 acl_bcc=可以编辑密件抄送映射吗？
+acl_body=可以编辑身体检查吗？
+acl_dependent=可以编辑发送方相关传输图吗？
 
 boxes_title=用户邮箱
 boxes_user=用户
@@ -264,6 +270,15 @@ mail_forward=向前
 mail_rfc=从线
 mail_move=搬去：
 mail_eexists=讯息已不存在！
+mail_qfile=邮件队列文件
+mail_qlast=上次重试时间
+mail_qdir=邮件队列状态
+mail_qdir_active=积极的
+mail_qdir_incoming=传入
+mail_qdir_deferred=延期
+mail_qdir_corrupt=腐败
+mail_qdir_hold=等候接听
+mail_qdir_maildrop=邮件投递
 
 view_title=阅读电邮
 view_desc=$2中的消息$1
@@ -374,9 +389,11 @@ mailq_active=活性
 mailq_deferred=递延
 mailq_hold=保留选定
 mailq_unhold=取消选择
+mailq_dir=队列状态
 
 flushq_title=冲洗队列
 flushq_desc=使用命令$1强制尝试发送邮件。
+flushq_desc2=.. 检查邮件日志以了解结果
 
 qview_title=排队的消息
 qview_desc=来自文件$1
@@ -584,6 +601,10 @@ opts_broken_sasl_auth_clients=处理不兼容的SMTP客户端？
 sasl_opts=SMTP安全选项
 sasl_noanonymous=拒绝匿名登录
 sasl_noplaintext=拒绝纯文本登录
+sasl_noactive=拒绝 不允许 受到主动（非字典）攻击
+sasl_nodictionary=拒绝受到被动（字典）攻击的方法
+sasl_forward_secrecy=仅允许支持前向保密的方法
+sasl_mutual_auth=仅允许提供相互身份验证的方法
 opts_smtpd_delay_reject=延迟客户端登录失败？
 sasl_recip=SMTP收件人限制
 sasl_relay=SMTP中继限制

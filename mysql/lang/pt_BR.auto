@@ -11,6 +11,7 @@ index_mysqlstatus=Script de inicialização do MySQL
 
 dbase_empty=Banco de dados vazio
 dbase_name=Nome
+dbase_size=Tamanho
 dbase_type=Tipo
 dbase_typetable=Tabela 1)
 dbase_typeindex=Índice

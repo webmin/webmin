@@ -37,6 +37,7 @@ index_notify=برای اقدامات وبمین ایمیل ارسال شود؟
 index_notify_mods=برای اقدامات در ماژول ها
 index_notify_users=برای اقدامات کاربران
 index_notify_email=ارسال ایمیل به
+index_notify_email_def=آدرس اعلان پیش فرض
 index_notify_usub=نام کاربری در موضوع ایمیل لحاظ شود؟
 index_notify_msub=اقدام در موضوع ایمیل لحاظ شود؟
 index_searchtab=جستجوی سیاهههای مربوط
@@ -45,8 +46,7 @@ index_searchdesc=از این فرم می توان برای جستجوی اقدا
 index_notifydesc=از این فرم برای پیکربندی اعلان های ایمیل زمانی که اقدامات وب مین توسط کاربران منتخب یا در ماژول های انتخابی انجام می شود، استفاده کنید.
 
 search_title=نتایج جستجو
-search_date=تاریخ
-search_time=زمان
+search_datetime=تاریخ و زمان
 search_user=کاربر
 search_host=آدرس مشتری
 search_webmin=وب سرور

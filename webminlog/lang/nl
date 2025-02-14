@@ -32,8 +32,6 @@ index_long=Toon de volledige actie omschrijvingen?
 index_global=&lt;In geen enkele module&gt;
 
 search_title=Zoek Resultaten
-search_date=Datum
-search_time=Tijd
 search_user=Gebruiker
 search_host=Cliënt Adres
 search_webmin=Webmin Server

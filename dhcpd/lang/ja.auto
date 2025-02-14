@@ -1,4 +1,5 @@
 index_key=TSIGキーの編集（DNSサーバーへの更新の認証に使用）
+index_comment=説明
 index_desc=説明
 index_buttekey=TSIGキーの編集
 index_stop=サーバーを停止

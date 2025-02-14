@@ -27,6 +27,7 @@ dbase_header=Tablas de bases de datos, índices y vistas
 dbase_empty=Base de datos vacía
 dbase_none2=No hay tablas que coincidan con su búsqueda.
 dbase_name=Nombre
+dbase_size=Tamaño
 dbase_delete=Soltar tablas seleccionadas
 dbase_delete2=Soltar objetos seleccionados
 dbase_showing=Mostrando tablas que coinciden con $1 ..

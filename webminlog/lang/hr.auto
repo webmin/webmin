@@ -18,6 +18,7 @@ index_notify=Poslati e-poštu za radnje Webmina?
 index_notify_mods=Za radnje u modulima
 index_notify_users=Za radnje korisnika
 index_notify_email=Pošaljite email na
+index_notify_email_def=Zadana adresa za obavijesti
 index_notify_usub=Uključiti korisničko ime u predmet e-pošte?
 index_notify_msub=Uključiti radnju u predmet e-pošte?
 index_searchtab=Dnevnici pretraživanja
@@ -25,6 +26,7 @@ index_notifytab=Obavijest putem e-pošte
 index_searchdesc=Ovaj obrazac se može koristiti za traženje radnji Webmina prema korisniku, modulu, rasponu datuma i izvršenim datotekama.
 index_notifydesc=Koristite ovaj obrazac za konfiguriranje obavijesti e-poštom kada odabrani korisnici ili u odabranim modulima izvode radnje Webmina.
 
+search_datetime=Datum i vrijeme
 search_none2=Nijedna radnja ne odgovara vašoj potrazi za radnjama
 search_critd=gdje opis sadrži <tt>$1</tt>
 search_global=nijedan

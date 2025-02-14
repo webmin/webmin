@@ -28,8 +28,6 @@ index_stimes=동작 기간
 index_shost=Webmin 서버 소스
 
 search_title=검색 결과
-search_date=날짜
-search_time=시간
 search_user=사용자
 search_host=클라이언트 주소
 search_webmin=Webmin 서버

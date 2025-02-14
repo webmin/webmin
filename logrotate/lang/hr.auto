@@ -64,6 +64,7 @@ edit_pre=Naredbe za pokretanje prije rotacije
 edit_default=Zadano ($1)
 edit_sharedscripts=Samo skripte pokrenuti samo jednom za sve datoteke?
 edit_now=Zakreni odmah
+edit_clone=Klon
 
 global_title=Opcije
 global_header=Zadane opcije za sve datoteke dnevnika

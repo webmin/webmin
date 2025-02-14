@@ -27,11 +27,13 @@ print &ui_table_row($text{'access_ip'},
 print &ui_table_row($text{'access_always'},
 	&ui_yesno_radio("alwaysresolve", int($miniserv{'alwaysresolve'})));
 
-print &ui_table_row(&hlink($text{'access_trust'}, "access_trust"),
-	&ui_yesno_radio("trust", int($miniserv{'trust_real_ip'})));
-
-print &ui_table_row(&hlink($text{'access_trust_ssl'}, "access_trust_ssl"),
-	&ui_yesno_radio("trust_ssl", !$miniserv{'no_trust_ssl'}));
+$mode = $miniserv{'trust_real_ip'} && !$miniserv{'no_trust_ssl'} ? 2 :
+	$miniserv{'trust_real_ip'} ? 1 : 0;
+print &ui_table_row(&hlink($text{'access_trust_lvl'}, "access_trust_lvl"),
+	&ui_radio("trust", $mode,
+		  [ [ 0, $text{'access_trust_lvl0'} ],
+		    [ 1, $text{'access_trust_lvl1'} ],
+		    [ 2, $text{'access_trust_lvl2'} ] ]));
 
 eval "use Authen::Libwrap qw(hosts_ctl STRING_UNKNOWN)";
 if (!$@) {

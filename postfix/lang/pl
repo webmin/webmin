@@ -181,7 +181,6 @@ opts_mydomain_default=Domyślna (podawana przez system)
 opts_myhostname=Internetowa nazwa hosta tego systemu poczty
 opts_myhostname_default=Domyślna (podawana przez system)
 opts_mynetworks=Sieci lokalne
-opts_mynetworks_default=Domyślne (wszystkie przyłączone sieci)
 opts_mynetworks_style=Automatyczne sieci lokalne
 opts_bounce_notice_recipient=Wysyłać powiadomienia od postmastera o odrzuceniu do...
 opts_2bounce_notice_recipient=Wysyłać powiadomienia od postmastera o 2-gim odrzuceniu do...

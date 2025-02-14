@@ -3,6 +3,8 @@ index_restartmsg=Cliquez sur ce bouton pour redémarrer le serveur de base de do
 index_indexes=Index
 index_views=Vues
 
+dbase_size=Taille
+
 user_plugin=Type d'authentification
 user_hashpass=Mot de passe haché actuel
 

@@ -1,3 +1,4 @@
+master_eserial2=Serienummeret må være mindre enn 2^31
 master_vmin=Denne sonen administreres av Virtualmin. Oppføringer bør redigeres ved hjelp av Virtualmin-grensesnittet for å sikre at de stemmer overens med andre virtuelle serverinnstillinger.
 master_vminalias=Denne sonen er et alias for et Virtualmin-domene, som holdes synkronisert med målet. Poster bør aldri redigeres her, da eventuelle endringer vil bli overskrevet!
 
@@ -16,6 +17,7 @@ edit_NAPTR=Navneautoritetspeker
 
 recs_NAPTR=Navnemyndighet
 
+value_NSEC3PARAM4_none=Ingen
 value_dmarcfo=Feilrapporteringsmodus
 value_dmarcfo0=Rapporter om DKIM og SPF mislyktes
 value_dmarcfo1=Rapporter om enten DKIM eller SPF mislyktes
@@ -24,9 +26,9 @@ value_dmarcfos=Rapporter om SPF-evaluering mislyktes
 value_CAA1=Krever håndheving?
 value_CAA2=Autorisasjonstype
 value_CAA3=CA-domenenavn
-+value_dmarcri=Rapporteringsintervall
-+value_dmarcrf=Rapportformat
-+value_dmarcafrf=Rapporteringsformat for autentiseringsfeil
+value_dmarcri=Rapporteringsintervall
+value_dmarcrf=Rapportformat
+value_dmarcafrf=Rapporteringsformat for autentiseringsfeil
 value_NAPTR1=Rekkefølge
 value_NAPTR2=Preferanse
 value_NAPTR3=Flagg
@@ -40,5 +42,11 @@ value_NAPTR3_A=Slå opp A eller AAAA post neste
 value_NAPTR3_U=Bruk regexp-utdata neste
 value_NAPTR3_P=Protokollspesifikk handling
 
+log_delete_recs2=Slettet $1 poster i sone $2
+
 zonekey_algorithm=DNSSEC-algoritme : $1
+zonekey_ds_keytag=Nøkkelbrikke
+zonekey_ds_alg=Algoritme
+zonekey_ds_type=Digest type
+zonekey_ds_digest=Digest streng
 zonekey_keep=Behold eksisterende nøkkel hvis DNSSEC er aktivert på nytt?

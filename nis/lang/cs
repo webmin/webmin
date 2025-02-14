@@ -19,7 +19,6 @@ client_ehosts='$1' není v souboru hostů
 switch_title=Klientské služby
 switch_service=Služba
 
-order_=
 order_nisplus=NIS+
 order_nis=NIS
 order_dns=DNS

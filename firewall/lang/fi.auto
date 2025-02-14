@@ -160,8 +160,8 @@ redhat_eoutput=IPtable-tilan saamisessa komennosta $1 tapahtui virhe. Tämä luu
 
 gentoo_escript=Gentoo IPtables -aloitusohjelmaa $1 ei löydy järjestelmästäsi.
 
-eiptables=Tuntemattomat IP-taulukot tallentavat tiedostojonon : $1
-eip6tables=Tuntemattomat ip6table-tiedostot tallentavat tiedostojonon : $1
+eiptables2=Tuntematon IP-taulukko tallentaa tiedostomerkinnän riville $2 : $1 
+eip6tables2=Tuntematon IP6-taulukko tallentaa tiedostomerkinnän riville $2 : $1 
 
 edit_title1=Lisää sääntö
 edit_title2=Muokkaa sääntöä

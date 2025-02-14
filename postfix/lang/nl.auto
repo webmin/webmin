@@ -8,9 +8,13 @@ smtpd_nomap2=Er is nog geen kaart met beperkingen voor afzenderadressen ingevoer
 smtpd_map=Toegestane adressen voor doorsturen
 smtpd_map2=Beperkingen op afzenderadressen
 
-opts_smtp_use_tls=Gebruik TLS voor SMTP-verbindingen
 opts_smtp_sasl_security_options=SASL beveiligingsopties
 opts_smtp_tls_security_level=Beveiligingsniveau SMTP TLS-client
+opts_inet_protocols=Internetprotocollen om
+opts_inet_protocols_all=Alles beschikbaar
+opts_smtp_address_preference=Voorkeurs-SMTP-clientprotocol
+opts_smtp_address_preference_any=Of
+opts_smtp_balance_inet_protocols=SMTP-clientprotocollen valideren
 
 mapping_toomany=Er zijn $1 kaartvermeldingen, die boven de weergavelimiet van $2 liggen.
 mapping_find=Overeenkomende toewijzingen weergeven:
@@ -25,11 +29,26 @@ sni_dom=Hostnaam
 sni_certs=Certificaatbestanden
 
 acl_sni=Kan certificaten bewerken?
+acl_body=Kan ik bodychecks bewerken?
+acl_dependent=Kan ik afzenderafhankelijke transportkaarten bewerken?
+
+mail_qfile=Mailwachtrijbestand
+mail_qlast=Laatst opnieuw geprobeerd op
+mail_qdir=Status van e-mailwachtrij
+mail_qdir_active=Actief
+mail_qdir_incoming=Binnenkomend
+mail_qdir_deferred=Verschoven
+mail_qdir_corrupt=Corrupt
+mail_qdir_hold=In de wacht
+mail_qdir_maildrop=Post droppen
 
 view_aname=Bijlage
 
 mailq_deleteall=E-mailwachtrij wissen
 mailq_deletealldesc=Klik op deze knop om alle berichten in de e-mailwachtrij te verwijderen.
+mailq_dir=Wachtrijstatus
+
+flushq_desc2=.. controleer het e-maillogboek voor resultaten
 
 opts_mime_header_checks=MIME-koptekstcontroletabellen
 opts_header_checks_no_map=(Er is momenteel geen kaart voor kopcontrole gedefinieerd. Definieer eerst een kaart, daarna kunt u deze bewerken)
@@ -52,6 +71,10 @@ log_manual_sender_dependent_default_transport_mapss=Handmatig bewerkte afzendera
 
 opts_smtp_sasl_auth_enable=SASL SMTP-authenticatie gebruiken?
 opts_smtpd_tls_auth_only=SASL-authenticatie over onveilige verbindingen niet toestaan?
+sasl_noactive=Afwijzen Niet toestaan onder voorbehoud van actieve (niet-woordenboek) aanval
+sasl_nodictionary=Weiger methoden die onderhevig zijn aan passieve (woordenboek)aanvallen
+sasl_forward_secrecy=Sta alleen methoden toe die forward secrecy ondersteunen
+sasl_mutual_auth=Sta alleen methoden toe die wederzijdse authenticatie bieden
 sasl_relay=SMTP-relaisbeperkingen
 opts_smtp_enforce_tls=TLS-codering vereist?
 sasl_level_dane=Opportunistische DANE TLS

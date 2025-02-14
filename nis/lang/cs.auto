@@ -6,6 +6,8 @@ client_enis=Zdá se, že váš počítač nemá nainstalovanou podporu klientů 
 switch_srcs=Zdroje dat
 switch_return=klientské služby
 
+order_=&nbsp;
+
 security_domain=Doména NIS
 
 eswitch_title=Upravit službu

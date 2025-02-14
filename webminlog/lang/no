@@ -32,8 +32,6 @@ index_long=Vis fulle beskrivelser for handlinger?
 index_global=&lt;Ikke i noen modul&gt;
 
 search_title=Søke resultat
-search_date=Dato
-search_time=Tid
 search_user=Bruker
 search_host=Klient adresse
 search_webmin=Webmin tjener

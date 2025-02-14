@@ -6,6 +6,7 @@ index_sel=Wybrane ..
 index_search=Szukaj
 index_header=Globalne przeszukiwanie pomocy Webmina
 index_return=formularza pomocy
+
 search_err=Poszukiwanie nieudane
 search_eterms=Nie podano szukanych haseł
 search_emods=Nie wybrano modułów

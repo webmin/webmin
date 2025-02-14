@@ -10,6 +10,7 @@ master_inview=$1 a $2 nézetben
 master_egone=A $1 zóna egyetlen nézetben sem létezik
 master_egone2=A $1 zóna nem létezik!
 master_egone3=A $1 zóna a $2 nézetben nem létezik!
+master_eserial2=A sorozatszámnak kisebbnek kell lennie, mint 2^31
 master_vmin=Ezt a zónát a Virtualmin kezeli. A rekordokat a Virtualmin UI használatával kell szerkeszteni, hogy konzisztensek legyenek a többi virtuális szerver beállításával.
 master_vminalias=Ez a zóna egy Virtualmin tartomány álneve, amely szinkronban van a céljával. A rekordokat soha nem szabad itt szerkeszteni, mert az esetleges változtatások felülíródnak!
 
@@ -80,6 +81,7 @@ value_NSEC3PARAM1=Hasító algoritmus
 value_NSEC3PARAM2=NSEC3 zászlók
 value_NSEC3PARAM3=A hash iterációk száma
 value_NSEC3PARAM4=Sós húr
+value_NSEC3PARAM4_none=Egyik sem
 value_delegated=Delegált zóna
 value_notdelegated=Egyéb zóna
 value_dmarcnone=Nem tesz intézkedéseket
@@ -105,9 +107,9 @@ value_CAA3=CA domain név
 value_caa_issue=Egy domain tanúsítvány
 value_caa_issuewild=Helyettesítő karakter
 value_caa_iodef=Az irányelv megsértésének URL-je
-+value_dmarcri=Jelentési intervallum
-+value_dmarcrf=Jelentés formátuma
-+value_dmarcafrf=Hitelesítési hiba jelentési formátuma
+value_dmarcri=Jelentési intervallum
+value_dmarcrf=Jelentés formátuma
+value_dmarcafrf=Hitelesítési hiba jelentési formátuma
 value_NAPTR1=Rendelés
 value_NAPTR2=Preferencia
 value_NAPTR3=Zászlók
@@ -153,6 +155,8 @@ net_eaddr6=A '$1' nem érvényes IPv6 cím
 
 zonedef_dnssec_dt=Automatizálja az összes DNSSEC műveletet (figyelmen kívül hagyja az alábbi beállításokat)?
 zonedef_dne=Hitelesített létezés tagadás a
+
+log_delete_recs2=$1 rekord törölve a $2 zónában
 
 convert_efilesize=A $1 fájl nem létezik, vagy üres
 convert_ebinary=A bináris szolga zónából szöveges formátumra való átalakításhoz szükséges parancs nincs telepítve
@@ -234,6 +238,10 @@ zonekey_publicfile=Nyilvános kulcsfájl : $1
 zonekey_privatefile=Privát kulcsfájl : $1
 zonekey_algorithm=DNSSEC algoritmus : $1
 zonekey_ds=A szülői zóna DS rekordja :
+zonekey_ds_keytag=Kulcscímke
+zonekey_ds_alg=Algoritmus
+zonekey_ds_type=Emésztési típus
+zonekey_ds_digest=Digest string
 zonekey_eprivate=A zónához társított privát kulcs nem olvasható : $1
 zonekey_keep=Megtartja a meglévő kulcsot, ha a DNSSEC újra engedélyezve van?
 

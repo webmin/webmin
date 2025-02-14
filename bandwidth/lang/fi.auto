@@ -73,14 +73,17 @@ setup_ecannot=Et voi ottaa valvontaa käyttöön
 setup_eiface=Puuttuva tai virheellinen käyttöliittymän nimi
 setup_ezone=Shorewall-vyöhykettä ei löytynyt valitulle käyttöliittymälle
 
+system_firewalld=Palomuuri
 system_firewall=iptables
 system_ipfw=IPFW
 system_ipfilter=ipfilter
 system_shorewall=Shorewallia
 
+syslog_journald=Journald
 syslog_syslog=syslog
 syslog_syslog-ng=Syslog-NG
 
 rotate_title=Päivitetään tilastoja
 rotate_doing=Lokitun verkkoliikenteen käsittely.
 rotate_done=.. valmis.
+rotate_failed=.. epäonnistui : $1

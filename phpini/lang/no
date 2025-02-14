@@ -7,7 +7,6 @@ index_desc=Hensikt
 index_actions=Handlinger
 index_edit=Vedlikehold
 index_manual=Rediger manuelt
-index_anyfile=Rediger annen PHP konfigurasjonsfil:
 index_return=konfigurasjonsfiler
 
 file_global=Global PHP konfigurasjon

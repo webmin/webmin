@@ -1,3 +1,5 @@
+index_anyfile=Редактировать другой файл конфигурации PHP
+
 list_efile=Файл для редактирования должен иметь абсолютный путь
 list_format_ini=Формат INI
 list_format_fpm=Формат FPM

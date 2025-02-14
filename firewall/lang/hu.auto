@@ -33,6 +33,9 @@ desc_dest=cél
 
 redhat_einstalled2=Nem található <tt>$1</tt> rendszerindítási művelet, ami azt jelzi, hogy az IPtables csomag nincs telepítve a rendszerére
 
+eiptables2=Ismeretlen IP-táblák mentési fájlbejegyzése a következő sorban: $2 : $1 
+eip6tables2=Ismeretlen IP6-táblák mentési fájlbejegyzése a következő sorban: $2 : $1 
+
 edit_state_snat=Forrás NATd
 edit_state_dnat=NATd rendeltetési hely
 edit_matchset=Egyező IPset

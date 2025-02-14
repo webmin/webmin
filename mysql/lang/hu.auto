@@ -19,6 +19,7 @@ dbase_header=Adatbázis-táblázatok, indexek és nézetek
 dbase_empty=Üres adatbázis
 dbase_none2=Egyik táblázat sem felel meg a keresésnek.
 dbase_name=Név
+dbase_size=Méret
 dbase_delete2=A kijelölt objektumok eldobása
 dbase_index=Index
 dbase_view=Kilátás

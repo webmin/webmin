@@ -1,0 +1,19 @@
+index_title=Webmin Laguntza
+index_terms=Bilatu laguntza
+index_mods=Bilatzeko moduluak
+index_all=Denak
+index_sel=Hautatutako moduluak ..
+index_search=Bilatu
+index_header=Webmin globalak bilatzen laguntzen du
+index_return=bilaketa formularioa
+
+search_err=Bilatu huts egin du
+search_eterms=Bilaketa-terminoak falta dira
+search_emods=Ez da modulurik aukeratu
+search_title=Bilaketa-emaitzak
+search_einclude=Ezin izan da $1 sartu
+search_none=Ez dago zure bilaketarekin bat datorren laguntza-fitxategirik
+search_mod=Modulua
+search_page=Laguntza orria
+search_line=Partidua martxan
+search_results=Webmin laguntza-orriak $1 bat datozenak

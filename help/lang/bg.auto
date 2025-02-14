@@ -1,0 +1,19 @@
+index_title=Помощ за Webmin
+index_terms=Потърсете помощ за
+index_mods=Модули за търсене
+index_all=Всички
+index_sel=Избрани модули ..
+index_search=Търсене
+index_header=Глобално търсене на помощ за Webmin
+index_return=форма за търсене
+
+search_err=Търсенето е неуспешно
+search_eterms=Липсващи думи за търсене
+search_emods=Няма избрани модули
+search_title=Резултати от търсенето
+search_einclude=Неуспешно включване на $1
+search_none=Няма помощни файлове, съответстващи на вашето търсене
+search_mod=Модул
+search_page=Помощна страница
+search_line=Съвпадение на
+search_results=Помощни страници на Webmin, съответстващи на $1

@@ -1,0 +1,393 @@
+index_title=سرور Minecraft
+index_cerr=خطایی با سرور Minecraft شما شناسایی شد: $1. ممکن است لازم باشد <a href='$2'>پیکربندی ماژول</a> را تنظیم کنید. نصب خودکار امکان پذیر نیست زیرا به نظر می رسد سرور از قبل در حال اجرا است.
+index_cerr2=به نظر نمی رسد سرور Minecraft روی سیستم شما نصب باشد. اگر از قبل در حال اجرا است، باید <a href='$1'>پیکربندی ماژول</a> را برای استفاده از مسیرهای صحیح تنظیم کنید.
+index_rooterr=دایرکتوری ریشه Minecraft در صفحه <a href='$1'>پیکربندی ماژول</a> روی <tt>$2</tt> تنظیم شده است، اما این همان فهرست راهنمای ماژول Webmin است!
+index_nojava=همچنین، دستور جاوا <tt>$1</tt> مورد نیاز برای اجرای Minecraft یافت نشد.
+index_offer=یا وبمین می تواند به طور خودکار سرور Minecraft را برای شما دانلود و نصب کند.
+index_dir=در دایرکتوری نصب کنید
+index_user=به عنوان کاربر یونیکس اجرا شود
+index_install=دانلود و نصب کنید
+index_stop=سرور Minecraft را متوقف کنید
+index_stopdesc=روی این دکمه کلیک کنید تا سرور Minecraft در حال اجرا متوقف شود. همه مشتریان بلافاصله قطع می شوند.
+index_stopany=سایر سرورهای Minecraft را متوقف کنید
+index_stopanydesc=روی این دکمه کلیک کنید تا سرور Minecraft در حال اجرا با استفاده از نسخه $1 متوقف شود. همه مشتریان بلافاصله قطع می شوند.
+index_start=سرور Minecraft را راه اندازی کنید
+index_startdesc=برای راه اندازی سرور Minecraft روی این دکمه کلیک کنید تا مشتریان بتوانند متصل شوند.
+index_restart=سرور Minecraft را مجددا راه اندازی کنید
+index_restartdesc=روی این دکمه کلیک کنید تا با راه اندازی مجدد سرور Minecraft، پیکربندی فعلی اعمال شود.
+index_atboot=از بوت شروع کنم؟
+index_atbootdesc=این گزینه را تغییر دهید تا کنترل کنید آیا سرور Minecraft در زمان بوت شروع می شود یا خیر. اگر در حال حاضر هنگام بوت شروع نشده باشد و Yes انتخاب شده باشد، یک اسکریپت init جدید ایجاد خواهد شد.
+index_return=شاخص ماژول
+index_download=دانلود سرور
+index_downloaddesc=برای دانلود و نصب آخرین نسخه فایل JAR سرور Minecraft روی این دکمه کلیک کنید.
+index_upgradedesc=نسخه جدید سرور Minecraft اکنون برای دانلود در دسترس است.
+index_upgrade=اکنون ارتقا دهید
+index_startwarn=ÙØ´Ø¯Ø§Ø±! ÙÙÚ©Ù Ø§Ø³Øª ÙØ³Ø®Ù Ø¯ÛÚ¯Ø±Û Ø§Ø² Minecraft Ø¨Ø±Ø§Û Ø´Ø±ÙØ¹ Ø¯Ø± Ø²ÙØ§Ù Ø±Ø§Ù‌Ø§ÙØ¯Ø§Ø²Û Ù¾ÛÚ©Ø±Ø¨ÙØ¯Û Ø´ÙØ¯.
+index_portwarn=هشدار! فرآیند دیگر با PID $1 استفاده از پورت سرور Minecraft است. این ممکن است نسخه دیگری از سرور Minecraft باشد.
+
+check_edir=دایرکتوری پایه $1 وجود ندارد
+check_ejar=فایل JAR سرور $1 وجود ندارد
+check_ejava=فایل اجرایی جاوا $1 یافت نشد
+
+conf_title=پیکربندی سرور
+conf_desc=این تنظیمات تا زمانی که سرور Minecraft راه اندازی مجدد نشود فعال نمی شوند.
+conf_header=تنظیمات پیکربندی سرور جهانی
+conf_seed=بذر برای دنیاهای جدید
+conf_random=به صورت تصادفی انتخاب کنید
+conf_type=برای دنیاهای جدید تایپ کنید
+conf_type_default=پیش فرض
+conf_type_flat=زمین مسطح
+conf_type_amplified=تقویت شده است
+conf_type_largebiomes=بیوم های بزرگ
+conf_structs=دهکده های NPC تولید کنید؟
+conf_nether=اجازه دسترسی به Nether را بدهید؟
+conf_err=پیکربندی سرور ذخیره نشد
+conf_eseen=بذر گم شده یا نامعتبر است
+conf_flight=پرواز در حالت بقا مجاز است؟
+conf_difficulty=سختی پیش فرض
+conf_gamemode=حالت بازی پیش فرض
+conf_hardcore=حالت هاردکور (مرگ دائمی)؟
+conf_players=حداکثر بازیکنان همزمان
+conf_ticks=حداکثر زمان بین کنه ها
+conf_ticksecs=ثانیه
+conf_eticks=حداکثر زمان بین تیک ها باید یک عدد باشد
+conf_motd=پیام سرور
+conf_motdmsg=پیام سفارشی
+conf_online=اعتبار اکانت های Minecraft را تایید کنید؟
+conf_pvp=اجازه دهید بازیکنان یکدیگر را بکشند؟
+conf_build=حداکثر ارتفاع ساخت
+conf_eplayers=حداکثر تعداد بازیکنان همزمان باید یک عدد مثبت باشد
+conf_ebuild=حداکثر ارتفاع ساخت باید یک عدد مثبت باشد
+conf_animals=حیوانات تخم ریزی شده؟
+conf_monsters=هیولا تخم ریزی؟
+conf_npcs=NPC های تخم ریزی؟
+conf_protect=شعاع حفاظت از تخم ریزی
+conf_command=بلوک فرمان مجاز است؟
+conf_ip=به آدرس IP گوش دهید
+conf_port=در پورت گوش کنید
+conf_allip=هر آدرسی
+conf_query=پروتکل پرس و جو فعال شود؟
+conf_rcon=کنسول راه دور فعال شود؟
+conf_eprotect=شعاع حفاظت از تخم ریزی باید یک عدد باشد
+conf_eip=آدرس IP موجود نیست یا نامعتبر است
+conf_eport=شماره پورت غیر عددی وجود ندارد
+conf_args=پرچم های خط فرمان جاوا
+
+users_title=کاربران و اپراتورها
+users_tabwhite=کاربران مجاز
+users_tabop=اپراتورها
+users_tabip=آی پی های ممنوعه
+users_apply=ذخیره و اعمال کنید
+users_whitedesc=وقتی فعال باشد، فقط کاربرانی که در اینجا فهرست شده اند مجاز به اتصال به این سرور Minecraft هستند.
+users_opdesc=فقط کاربران لیست شده در اینجا مجاز به اجرای دستورات مدیریت در این سرور Minecraft هستند.
+users_ipdesc=آدرس های IP فهرست شده در اینجا مجاز به اتصال به این سرور Minecraft نیستند.
+users_enabled=اجرای لیست سفید فعال شده است؟
+
+conns_title=بازیکنان متصل
+conns_desc=بازیکنان زیر در حال حاضر به سرور شما متصل هستند. روی نام بازیکن کلیک کنید تا اقدامات روی آن انجام شود.
+conns_edown=Ù¾Ø®Ø´‌Ú©ÙÙØ¯Ù‌ÙØ§Û ÙØªØµÙ Ø±Ø§ ÙÙÛ‌ØªÙØ§Ù ÙØ¯ÛØ±ÛØª Ú©Ø±Ø¯ ÙÚ¯Ø± Ø§ÛÙÚ©Ù Ø³Ø±ÙØ± Ø¯Ø± Ø­Ø§Ù Ø§Ø¬Ø±Ø§ Ø¨Ø§Ø´Ø¯
+conns_none=در حال حاضر هیچ بازیکنی به سرور متصل نیست.
+conns_disc=قطع ارتباط انتخاب شد
+conns_enter=مدیریت بازیکن به نام:
+conns_ok=باشه
+conns_return=لیست بازیکن
+
+logs_title=جستجوی فایل گزارش
+logs_lines=نمایش آخرین
+logs_matching=تطبیق خطوط
+logs_ok=جستجو کنید
+
+console_title=کنسول سرور
+console_run=دستور را وارد کنید
+console_ok=باشه
+console_old=یا قبلی را انتخاب کنید
+console_edit=ویرایش قبلی
+console_edown=کنسول سرور Minecraft را نمی توان استفاده کرد مگر اینکه سرور در حال اجرا باشد
+
+conn_title=پخش کننده را مدیریت کنید
+conn_header=جزئیات و اقدامات بازیکن
+conn_name=نام بازیکن
+conn_uuid=UUID بازیکن
+conn_state=وضعیت فعلی
+conn_yes=متصل شد
+conn_no=قطع شده است
+conn_lastin=وارد شده از
+conn_lastin2=آخرین ورود از
+conn_lastout=از سیستم خارج شده است
+conn_at=$1 در $2 
+conn_msg=ارسال دایرکت پیام
+conn_pos=موقعیت در هنگام ورود
+conn_msgb=ارسال کنید
+conn_kill=پخش کننده را خاتمه دهید
+conn_killb=حالا بکش
+conn_ename=نام بازیکن موجود نیست یا نامعتبر است
+conn_give=اعطای کالا با شناسه
+conn_count=شمارش
+conn_giveb=بده
+conn_xp=XP را اعطا کنید
+conn_xp0=گوی ها
+conn_xp1=سطح
+conn_xpb=بده
+conn_never=این پخش کننده اخیراً وارد سرور نشده است و حتی ممکن است وجود نداشته باشد.
+conn_err=اقدام بازیکن ناموفق بود
+conn_etext=متن پیام موجود نیست
+conn_msgdone=برای پخش پیام ارسال شد
+conn_killdone=بازیکن کشته شده
+conn_eid=شناسه مورد وجود ندارد یا نامعتبر است
+conn_ecount=تعداد موارد گم شده یا غیرعددی
+conn_givedone=$2 از مورد $1 را به بازیکن داد
+conn_xpdone=$1 گوی XP را به بازیکن داد
+conn_exp=تعداد XP برای اعطا وجود ندارد
+conn_explevel=سطح برای محاسبه گوی ها بسیار بالا است
+conn_spawn=تغییر نقطه تخم ریزی
+conn_spawnb=تنظیم کنید
+conn_tp=انتقال به نقطه
+conn_tpb=حرکت کنید
+conn_tpp=Teleport به بازیکن
+conn_banlist=وضعیت لیست ممنوعیت
+conn_banned=ممنوع!
+conn_pardoned=مجاز است
+conn_pardonb=عفو بازیکن
+conn_banb=بازیکن ممنوع
+conn_oplist=وضعیت اپراتور
+conn_opb=اپراتور گرنت
+conn_deopb=ابطال اپراتور
+conn_ex=موقعیت X باید یک عدد صحیح باشد
+conn_ey=موقعیت Y باید یک عدد صحیح باشد
+conn_ez=موقعیت Z باید یک عدد صحیح باشد
+conn_spawndone=نقطه تخمگذاری به $1 ، $2 ، $3 منتقل شد
+conn_tpdone=پخش کننده از راه دور به $1 ، $2 ، $3 منتقل شد
+conn_tppdone=پخش کننده از راه دور به محل $1 منتقل شد
+conn_bandone=بازیکن ممنوع $1
+conn_pardondone=بازیکن بخشوده شده $1 
+conn_reason=به دلیل
+conn_opdone=وضعیت اپراتور اعطا شده است
+conn_deopdone=وضعیت اپراتور لغو شد
+conn_ebutton=هیچ دکمه ای کلیک نشد!
+conn_kick=پخش کننده را قطع کنید
+conn_kickb=اکنون ضربه بزنید
+conn_kickdone=پخش کننده قطع شده
+conn_edate=تاریخ و زمان
+conn_emsg=پیام رویداد
+conn_events=رویدادهای اخیر
+conn_noperl=ماژول پرل $1 که برای خواندن آمار لازم است نصب نشده است!
+conn_ejson=فایل آمار پخش کننده خوانده نشد : $1 
+conn_stats=آمار بازیکنان
+conn_stat=آمار
+conn_statv=ارزش
+conn_nostats=هنوز آماری ثبت نشده است
+
+worlds_title=دنیاها را مدیریت کنید
+worlds_def=فعال؟
+worlds_name=نام جهانی
+worlds_size=اندازه داده ها
+worlds_seed=دانه جهانی
+worlds_players=همه بازیکنان
+worlds_change=دنیای فعال را تغییر دهید
+worlds_change2=تغییر جهان و راه اندازی مجدد سرور
+worlds_new=دنیای جدیدی بسازید.
+worlds_none=هنوز هیچ جهانی ساخته نشده است!
+worlds_return=لیست دنیاها
+worlds_err=در تغییر جهان شکست خورد
+worlds_esel=هیچ جهانی انتخاب نشده است!
+
+world_edit=ویرایش جهان
+world_create=ایجاد جهان
+world_header=جزئیات دنیای Minecraft
+world_name=نام دایرکتوری
+world_src=منبع دنیای جدید
+world_src0=دنیای خالی بسازید
+world_src1=شبیه سازی دنیای موجود
+world_src2=از فایل ZIP آپلود شده استفاده کنید
+world_src3=از فایل ZIP در سرور استفاده کنید
+world_delete=برای همیشه جهان را حذف کنید
+world_players=بازیکنانی که متصل شده اند
+world_err1=در ایجاد جهان ناموفق بود
+world_err2=جهان حذف نشد
+world_state=وضعیت فعلی
+world_state0=سرور اجرا نمی شود
+world_state1=دنیای فعال
+world_state2=دنیای غیر فعال
+world_rusure=آیا مطمئنید که می خواهید دنیای Minecraft $1 را حذف کنید؟ تمام اطلاعات نقشه، بازیکن و آیتم برای همیشه از دست خواهند رفت!
+world_confirm=بله، این جهان را حذف کنید
+world_einuse=دنیای فعال کنونی قابل حذف نیست.
+world_eupload=هیچ داده جهانی برای آپلود انتخاب نشده است
+world_efile=هیچ نام فایل داده جهانی وارد نشده است
+world_efile2=فایل داده جهانی وجود ندارد
+world_ezip=به نظر نمی رسد که داده های جهانی آپلود شده در قالب ZIP باشند
+world_eunzip=داده های جهان از حالت فشرده خارج نشد : $1 
+world_edat=فایل ZIP حاوی فایل level.dat نیست
+world_download=دانلود فایل ZIP
+
+chooser_title=مورد را انتخاب کنید
+chooser_id=شناسه مورد
+chooser_num=شماره مورد
+chooser_name=نام مورد
+chooser_none=هیچ موردی با جستجوی شما مطابقت نداشت
+chooser_search=نمایش موارد مطابقت
+chooser_ok=جستجو کنید
+
+cmds_title=فرماندهی جهانی
+cmds_header=عملیات در سطح جهانی
+cmds_gamemode=حالت پیش فرض بازی را تغییر دهید
+cmds_survival=بقا
+cmds_creative=خلاق
+cmds_adventure=ماجراجویی
+cmds_gamemodeb=تغییر حالت
+cmds_difficulty=تغییر سطح دشواری
+cmds_peaceful=صلح آمیز
+cmds_easy=آسان
+cmds_normal=عادی
+cmds_hard=سخت
+cmds_difficultyb=سوئیچ سطح
+cmds_time=زمان بازی را تغییر دهید
+cmds_day=به وقت روز
+cmds_night=وقت شب
+cmds_set=روی زمان تنظیم کنید
+cmds_add=زمان اضافه کنید
+cmds_timeb=تغییر زمان
+cmds_downfall=باران یا برف را تحریک کند
+cmds_downfallb=شروع بارش
+cmds_weather=تغییر آب و هوا
+cmds_clear=آسمان صاف
+cmds_rain=باران
+cmds_thunder=رعد و برق
+cmds_for=برای زمان
+cmds_weatherb=تغییر دهید
+cmds_err=فرماندهی جهانی شکست خورد
+cmds_downfalldone=باران یا برف شروع شد
+cmds_esecs=زمان تغییر آب و هوا باید چند ثانیه مثبت باشد
+cmds_weatherdone=آب و هوا را برای $2 ثانیه به $1 تغییر داد
+cmds_etimeset=زمان تنظیم باید عددی بین 0 تا 24000 باشد
+cmds_etimeadd=زمان اضافه کردن باید عددی بین 0 تا 24000 باشد
+cmds_timedone=زمان بازی تغییر کرد
+cmds_gamemodedone=حالت بازی پیش فرض را به $1 تغییر داد
+cmds_difficultydone=تغییر سختی بازی
+cmds_say=پیام پخش
+cmds_sayb=ارسال کنید
+cmds_msgdone=برای همه بازیکنان پیام ارسال شد
+
+manual_title=ویرایش فایل پیکربندی
+manual_desc=این صفحه به شما اجازه می دهد تا فایل پیکربندی سرور Minecraft را به صورت دستی <tt>$1</tt> ویرایش کنید. مراقب باشید، زیرا هیچ اعتبارسنجی روی ورودی شما انجام نخواهد شد. هیچ تغییری تا زمانی که سرور راه اندازی مجدد نشود فعال نخواهد شد.
+manual_err=فایل پیکربندی ذخیره نشد
+manual_econf=چیزی وارد نشد!
+
+download_title=دانلود سرور Minecraft
+download_already=سیستم شما در حال حاضر آخرین نسخه سرور Minecraft را اجرا می کند.
+download_done=سیستم شما به آخرین نسخه سرور Minecraft ارتقا یافته است.
+download_done2=آخرین نسخه سرور Minecraft در سیستم شما دانلود شده است.
+download_restart=نسخه جدید تنها زمانی استفاده خواهد شد که سرور مجددا راه اندازی شود.
+download_start=سرور قبل از استفاده باید راه اندازی شود.
+download_mkdir=ایجاد دایرکتوری پایه $1 ..
+download_emkdir=ایجاد دایرکتوری انجام نشد!
+download_err=سرور Minecraft راه اندازی نشد
+download_edir=فهرست راهنمای نصب وجود ندارد یا غیرمطلق است
+download_euser=کاربر برای اجرا به عنوان وجود ندارد
+download_eurl=URL دانلود سرور دریافت نشد
+
+backup_title=پشتیبان گیری برنامه ریزی شده
+backup_header=گزینه هایی برای پشتیبان گیری جهانی برنامه ریزی شده
+backup_sched=برنامه پشتیبان گیری
+backup_enabled=پشتیبان گیری فعال است؟
+backup_dir=پشتیبان گیری در دایرکتوری
+backup_worlds=دنیاهایی که باید گنجانده شوند
+backup_worlds1=همه دنیاها
+backup_worlds0=فقط انتخاب شده ..
+backup_err=Ù¾Ø´ØªÛØ¨Ø§Ù‌Ú¯ÛØ±Û Ø¨Ø±ÙØ§ÙÙ‌Ø±ÛØ²Û‌Ø´Ø¯Ù Ø°Ø®ÛØ±Ù ÙØ´Ø¯
+backup_edir=فهرست مقصد گم شده یا غیرمطلق
+backup_eworlds=هیچ جهانی انتخاب نشده است
+backup_desc=Ø§ÛÙ ØµÙØ­Ù Ø¨Ù Ø´ÙØ§ Ø§ÙÚ©Ø§Ù ÙÛ Ø¯ÙØ¯ ØªØ§ Ø§Ø² Ø¯ÙÛØ§Û Ø³Ø±ÙØ± Minecraft Ø®ÙØ¯ Ø¨Ú© Ø¢Ù¾ ÙØ§Û Ø¨Ø±ÙØ§ÙÙ Ø±ÛØ²Û Ø´Ø¯Ù Ø®ÙØ¯Ú©Ø§Ø± ØªÙØ¸ÛÙ Ú©ÙÛØ¯. ÙÙØ±Ø³Øª ÙÙØµØ¯ ÙÛ‌ØªÙØ§ÙØ¯ Ø­Ø§ÙÛ Ú©Ø¯ÙØ§Û ØªØ§Ø±ÛØ® Ø¨Ù Ø³Ø¨Ú© strftime ÙØ§ÙÙØ¯ %dØ %m Ù %Y Ø¨Ø§Ø´Ø¯ ØªØ§ Ù¾Ø´ØªÛØ¨Ø§Ù‌ÙØ§Û Ø±ÙØ²Ø§ÙÙ Ø¬Ø¯Ø§Ú¯Ø§ÙÙ Ø°Ø®ÛØ±Ù Ø´ÙØ¯.
+backup_email=ایمیل گزارش پشتیبان به
+backup_noemail=هیچ کس
+backup_email_err=فقط در صورت شکست ایمیل ارسال کنید
+backup_emailto=آدرس
+backup_ezip=دستور ZIP نصب نیست!
+backup_now=اکنون ذخیره و پشتیبان گیری کنید
+backup_doing=پشتیبان گیری از جهان های انتخاب شده ..
+backup_failed=.. پشتیبان گیری انجام نشد!
+backup_done=.. پشتیبان گیری کامل شد
+
+log_conf=پیکربندی سرور تغییر کرد
+log_stop=سرور Minecraft متوقف شد
+log_start=سرور Minecraft را راه اندازی کرد
+log_restart=سرور Minecraft دوباره راه اندازی شد
+log_white=کاربران مجاز به روز شد
+log_op=کاربران اپراتور به روز شده
+log_ip=آی پی های ممنوعه آپدیت شد
+log_manual=فایل پیکربندی ویرایش شده به صورت دستی
+log_atboot=سرور در زمان بوت فعال شد
+log_delboot=سرور در زمان بوت غیرفعال شد
+log_enable_backup=Ù¾Ø´ØªÛØ¨Ø§Ù‌Ú¯ÛØ±Û Ø¨Ø±ÙØ§ÙÙ‌Ø±ÛØ²Û‌Ø´Ø¯Ù Ø±Ø§ Ø¯Ø± $1 ÙØ¹Ø§Ù Ú©Ø±Ø¯
+log_disable_backup=Ù¾Ø´ØªÛØ¨Ø§Ù‌Ú¯ÛØ±Û Ø¨Ø±ÙØ§ÙÙ‌Ø±ÛØ²Û‌Ø´Ø¯Ù Ø±Ø§ ØºÛØ±ÙØ¹Ø§Ù Ú©Ø±Ø¯
+log_playtime=محدودیت های زمانی بازی تغییر کرد
+log_changeversion=سرور به نسخه $1 تغییر کرد
+log_addversion=نسخه سرور $1 اضافه شد
+
+monitor_up=Minecraft Server Alive
+monitor_latest=سرور Minecraft به روز شده است
+monitor_down=فرآیند سرور از کار افتاده است
+monitor_noreply=سرور پاسخ نمی دهد
+monitor_notype=نوع مانیتور نامشخص!
+monitor_newversion=نسخه جدید موجود است
+monitor_nojar=فایل JAR $1 وجود ندارد
+monitor_checklog=پاسخ سرور به دستورات را بررسی کنید؟
+
+playtime_title=زمان پخش روزانه
+playtime_user=نام کاربری
+playtime_time=زمان آنلاین
+playtime_ltime=زمان اجباری
+playtime_now=وضعیت
+playtime_none=هیچ بازیکنی برای این روز وصل نشد.
+playtime_on=آنلاین
+playtime_off=آفلاین
+playtime_header=تنظیمات محدودیت پخش روزانه
+playtime_enabled=محدودیت ها فعال است؟
+playtime_max=حداکثر زمان در روز
+playtime_unlimited=نامحدود
+playtime_mins=دقیقه
+playtime_days=روزهایی که باید اجرا شود
+playtime_users=برای کاربران اعمال شود
+playtime_sel=فهرست شده است
+playtime_all=همه کاربران
+playtime_ips=برای اتصالات از
+playtime_sel2=IP ها و شبکه های فهرست شده
+playtime_all2=همه آدرس ها
+playtime_err=ÙØ­Ø¯ÙØ¯ÛØª‌ÙØ§Û Ø²ÙØ§ÙÛ Ø¨Ø§Ø²Û Ø°Ø®ÛØ±Ù ÙØ´Ø¯
+playtime_emax=حداکثر زمان باید یک عدد باشد
+playtime_eusers=هیچ کاربری برای محدود کردن وارد نشده است
+playtime_edays=هیچ روزی از هفته انتخاب نشده است
+playtime_eips=هیچ آدرس IP وارد نشده است
+playtime_total=کل زمان
+playtime_date=نمایش زمان پخش در :
+playtime_ok=نمایش دهید
+playtime_today=&lt;امروز&gt;
+playtime_alldays=&lt;همه روزها با هم&gt;
+
+versions_title=نسخه های Minecraft
+versions_file=نام فایل
+versions_desc=توضیحات
+versions_size=اندازه JAR
+versions_run=دویدن؟
+versions_save=تغییر نسخه
+versions_restart=تغییر نسخه و راه اندازی مجدد
+versions_save2=تغییر نسخه و راه اندازی مجدد سرور
+versions_none=هیچ نسخه Minecraft پیدا نشد!
+versions_header=اضافه کردن نسخه Minecraft
+versions_src=منبع فایل JAR
+versions_src0=دانلود از URL
+versions_src1=آپلود فایل
+versions_src2=آخرین نسخه $1 از $2 
+versions_newver=نسخه سرور
+versions_newsame=از روی نام فایل کار کنید
+versions_all=نسخه را نصب کنید
+versions_echange=نسخه انتخاب شده وجود ندارد
+versions_err=افزودن نسخه جدید انجام نشد
+versions_eurl=URL برای دانلود وجود ندارد
+versions_eurl2=URL معتبر نیست
+versions_ejar=هیچ فایل JAR آپلود نشده است
+versions_ejar2=فایل JAR نام فایل ندارد
+versions_ever=نسخه از نام فایل JAR انجام نشد
+versions_enewver=نسخه باید عددی باشد
+versions_eclash=سروری با همان نام فایل از قبل وجود دارد!
+versions_efmt=فایل JAR نیست
+versions_elatesturl=نتوانست URL دانلود را از $1 واکشی کند
