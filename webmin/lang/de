@@ -31,8 +31,10 @@ access_ecidr8=Die IPv6-Netzwerkgröße '$1' muss durch 8 teilbar sein
 access_ehost=IP-Adresse für '$1' konnte nicht gefunden werden
 access_eself=Ihre aktuelle IP-Adresse ($1) würde abgelehnt werden
 access_always=Hostnamen bei jeder Anfrage auflösen?
-access_trust=Den von Proxys übermittelten Remote-IP-Adressen vertrauen?
-access_trust_ssl=Den von Proxys bereitgestellten SSL-Client-Zertifikaten vertrauen?
+access_trust_lvl=Vertrauensstufe für Proxy-Header
+access_trust_lvl0=Nein, keine Header von Proxys vertrauen
+access_trust_lvl1=Ja, der von Proxys bereitgestellten Remote-IP-Adresse vertrauen
+access_trust_lvl2=Ja, sowohl der Remote-IP-Adresse als auch dem von Proxys bereitgestellten SSL-Zertifikat vertrauen
 
 bind_title=Ports und Adressen
 bind_desc2=Mit diesem Formular können Sie die Portnummer ändern, an der Webmin horcht, oder festlegen, dass es nur an einer einzelnen IP-Adresse auf Ihrem System horcht. Sie können es zudem so konfigurieren, dass es Verbindungen über mehrere Ports akzeptiert oder an mehreren IP-Adressen horcht. Hinweis: Ihr Webbrowser könnte Sie nach der Änderung des Ports oder der Bindungsadresse zur erneuten Anmeldung auffordern.
