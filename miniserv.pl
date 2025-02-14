@@ -1704,7 +1704,7 @@ if ($header{'user-agent'} =~ /webmin/i ||
 	}
 
 # Check for SSL authentication
-my $trust_ssl = $config{'trust_real_ip'} == 2;
+my $trust_ssl = $config{'trust_real_ip'} && !$config{'no_trust_ssl'};
 if ($use_ssl && $verified_client ||
     $trust_ssl && $header{'x-ssl-client-dn'}) {
 	if ($use_ssl && $verified_client) {

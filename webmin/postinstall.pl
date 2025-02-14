@@ -46,8 +46,8 @@ if (!-r $first_install_file || $miniserv{'login_script'} eq $record_login_cmd) {
 	}
 
 # Disable trusting SSL certs unless already enabled
-if ($miniserv{'trust_real_ip'} == 1 && &get_webmin_version() <= 2.300) {
-	$miniserv{'trust_real_ip'} = 2;
+if (!$miniserv{'trust_real_ip'} && !defined($miniserv{'no_trust_ssl'})) {
+	$miniserv{'no_trust_ssl'} = 1;
 	}
 
 &put_miniserv_config(\%miniserv);
