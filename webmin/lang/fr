@@ -30,7 +30,6 @@ access_ecidr8=La taille du réseau IPv6 '$1' doit être divisible par 8
 access_ehost=Impossible de trouver l'adresse IP pour '$1'
 access_eself=Votre adresse IP actuelle ($1) serait refusée
 access_always=Résoudre les noms d'hôte à chaque demande?
-access_trust=Faire confiance à l'adresse IP distante fournie par les proxys?
 
 bind_title=Ports et adresses
 bind_desc2=Ce formulaire peut être utilisé pour modifier le numéro de port sur lequel Webmin écoute ou pour qu'il n'écoute que sur une seule adresse IP de votre système. Vous pouvez également le configurer pour accepter les connexions sur plusieurs ports ou pour écouter sur plusieurs adresses IP. Remarque - votre navigateur Web peut vous inviter à vous reconnecter après avoir modifié le port ou l'adresse de liaison.
@@ -1082,7 +1081,6 @@ twofactor_enrolllink=Vous pouvez désormais vous inscrire à l'authentification 
 twofactor_url=Pour en savoir plus sur $1, consultez son site Web à l'adresse <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Le module Perl <tt>$1</tt> nécessaire pour l'authentification à deux facteurs n'est pas installé. Utilisez la page <a href='$2'>Modules Perl</a> de Webmin pour l'installer.
 twofactor_etotpid=Secret TOTP codé en base32 non valide
-twofactor_etotpmodule2=Module Perl manquant $1
 twofactor_etotpmatch=Code OTP incorrect
 twofactor_secret=Clé secrète personnelle
 twofactor_secret1=Généré aléatoirement

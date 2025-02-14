@@ -30,7 +30,6 @@ access_ecidr8=La mida '$1' de la xarxa IPv6 ha de ser divisible per 8
 access_ehost=No s'ha pogut trobar cap adreça per a '$1'
 access_eself=La teva adreça IP actual ($1) serà rebutjada
 access_always=Resol els noms de host a cada petició
-access_trust=Confia en les adreces IP remotes proporcionades per les proxys
 
 bind_title=Ports i Adreces
 bind_desc2=Aquest formulari es pot utilitzar per canviar el número de port que escolta Webmin, o fer que escolti només una adreça IP del sistema. També pots configurar-lo per acceptar connexions a múltiples ports, o escoltar diverses adreces IP. Nota - pot ser que el navegador t'obligui a registrar-te cada vegada que canviïs el port o l'adreça.
@@ -1071,7 +1070,6 @@ twofactor_enrolllink=Ara pots assignar l'autenticació de dos factors al mòdul 
 twofactor_url=Per saber més sobre $1, visita el lloc web a <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=El mòdul Perl <tt>$1</tt> necessari per a l'autenticació de dos factors no està instal·lat. Utilitza la pàgina de <a href='$2'>Mòduls Perl</a> de Webmin per instal·lar-lo.
 twofactor_etotpid=La clau secreta codificada amb base 32 TOTP és invàlida
-twofactor_etotpmodule2=Hi falta el mòdul Perl $1
 twofactor_etotpmatch=El codi OTP és incorrecte
 twofactor_secret=Clau secreta personal
 twofactor_secret1=Generada aleatòriament

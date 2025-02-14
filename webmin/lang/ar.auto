@@ -1,5 +1,8 @@
 access_desc=يمكن تكوين Webmin لرفض أو السماح بالوصول فقط من عناوين IP معينة باستخدام هذا النموذج. يمكن أيضًا إدخال أسماء المضيفين (مثل foo.bar.com) وشبكات IP (مثل 10.254.3.0 أو 10.254.1.0/255.255.255.128 أو 10.254.1.0/25 أو 10.254.1.5-10.254.97.127 أو 2001:DB8::A0BC:0001 أو 2001:DB8::/32). يجب عليك تقييد الوصول إلى Webmin على العناوين الموثوقة، خاصةً إذا كان من الممكن الوصول إليه من الإنترنت. وإلا، فإن أي شخص يخمن كلمة مرورك سيكون لديه سيطرة كاملة على نظامك.
-access_trust_ssl=هل تثق بشهادة عميل SSL المقدمة من الوكلاء؟
+access_trust_lvl=مستوى الثقة لرؤوس الوكيل
+access_trust_lvl0=لا، لا تثق بأي رؤوس من الوكيل
+access_trust_lvl1=نعم، ثق في عنوان IP البعيد الذي توفره الوكلاء
+access_trust_lvl2=نعم، ثق في كل من عنوان IP البعيد وشهادة SSL المقدمة بواسطة الوكلاء
 
 bind_websocport=رقم المنفذ الأساسي لاتصالات WebSockets
 bind_websocport_none=افتراضي (555)
@@ -1080,7 +1083,6 @@ twofactor_etotpmodule=The Perl module <tt>$1</tt> needed for two-factor authenti
 twofactor_qrcode=أدخل الرمز السري $1 في تطبيق TOTP، أو قم بمسح رمز الاستجابة السريعة QR أدناه.
 twofactor_etotpid=سر TOP32 ترميز base32 غير صالح
 twofactor_etotptoken=يجب أن يكون رمز TOTP رقمًا
-twofactor_etotpmodule2=Missing Perl module $1
 twofactor_etotpmatch=رمز OTP غير صحيح
 twofactor_secret=المفتاح السري الشخصي
 twofactor_secret1=ولدت بشكل عشوائي

@@ -1,5 +1,8 @@
 access_desc=Webmin kan konfigureres til å nekte eller tillate tilgang kun fra visse IP-adresser ved å bruke dette skjemaet. Vertsnavn (som foo.bar.com) og IP-nettverk (som 10.254.3.0 eller 10.254.1.0/255.255.255.128 eller 10.254.1.0/25 eller 10.254.1.5-10.254.97:0207:020BC:0201BC eller 2001:DB8::/32) kan også legges inn. Du bør begrense tilgangen til Webmin til klarerte adresser, spesielt hvis den er tilgjengelig fra Internett. Ellers vil alle som gjetter passordet ditt ha full kontroll over systemet ditt.
-access_trust_ssl=Stol på SSL-klientsertifikat levert av proxyer?
+access_trust_lvl=Tillitsnivå for proxy-overskrifter
+access_trust_lvl0=Nei, ikke stol på noen overskrifter fra proxyen
+access_trust_lvl1=Ja, stol på den eksterne IP-adressen fra proxyer
+access_trust_lvl2=Ja, stol på både den eksterne IP- og SSL-sertifikatet levert av proxyer
 
 bind_websocport=Basisportnummer for WebSockets-tilkoblinger
 bind_websocport_none=Standard (555)

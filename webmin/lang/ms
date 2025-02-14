@@ -1016,7 +1016,6 @@ twofactor_enrolllink=Anda kini boleh mendaftar untuk pengesahan dua-faktor dalam
 twofactor_url=Untuk mengetahui lebih lanjut tentang $1, sila ke laman web <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Modul Perl <tt>$1</tt> diperlukan untuk pengesahan dua-faktor, tidak dipasang. Gunakan <a href='$2'>Modul Perl</a> dalam halaman Webmin untuk memasangnya.
 twofactor_etotpid=TOTP base32-encoded rahsia tidak sah
-twofactor_etotpmodule2=Modul Perl $1 hilang
 twofactor_etotpmatch=Kod OTP tidak betul
 twofactor_secret=Kunci rahsia persendirian
 twofactor_secret1=Dijana secara rawak

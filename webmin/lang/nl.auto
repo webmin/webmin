@@ -1,8 +1,10 @@
 access_desc=Webmin kan worden geconfigureerd om alleen toegang vanaf bepaalde IP-adressen te weigeren of toe te staan met behulp van dit formulier. Hostnamen (zoals foo.bar.com) en IP-netwerken (zoals 10.254.3.0 of 10.254.1.0/255.255.255.128 of 10.254.1.0/25 of 10.254.1.5-10.254.97.127 of 2001:DB8::A0BC:0001 of 2001:DB8::/32) kunnen ook worden ingevoerd. U moet de toegang tot Webmin beperken tot vertrouwde adressen, vooral als het toegankelijk is vanaf internet. Anders heeft iedereen die uw wachtwoord raadt volledige controle over uw systeem.
 access_ecidr6='$1' is geen geldige IPv6-netwerkgrootte
 access_ecidr8=IPv6-netwerkgrootte '$1' moet deelbaar zijn door 8
-access_trust=Vertrouwen op afstand IP-adres verstrekt door proxy's?
-access_trust_ssl=Vertrouwt u op SSL-clientcertificaten van proxyservers?
+access_trust_lvl=Vertrouwensniveau voor proxyheaders
+access_trust_lvl0=Nee, vertrouw geen enkele header van de proxy
+access_trust_lvl1=Ja, vertrouw het externe IP-adres dat door proxyservers wordt verstrekt
+access_trust_lvl2=Ja, vertrouw zowel het externe IP-adres als het SSL-certificaat dat door proxyservers wordt verstrekt
 
 bind_websocport=Basispoortnummer voor WebSockets-verbindingen
 bind_websocport_none=Standaard (555)
@@ -289,7 +291,6 @@ twofactor_etotpmodule=De Perl-module <tt>$1</tt> die nodig is voor tweefactoraut
 twofactor_qrcode=Voer de geheime code $1 in de TOTP-app in of scan de onderstaande QR-code.
 twofactor_etotpid=Ongeldig TOTP base32-gecodeerd geheim
 twofactor_etotptoken=TOTP-token moet een nummer zijn
-twofactor_etotpmodule2=Ontbrekende Perl-module $1
 twofactor_etotpmatch=Onjuiste OTP-code
 twofactor_secret=Persoonlijke geheime sleutel
 twofactor_secret1=Willekeurig gegenereerd

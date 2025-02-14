@@ -4,6 +4,7 @@ Use this setting to determine whether Webmin should trust headers from a proxy
 to identify the user’s IP address and SSL certificate:
 <ul>
         <li>No, do not trust any headers from the proxy.</li>
+
         <li>Yes, trust the remote IP address provided by proxies. If enabled,
         Webmin will use a header provided by a proxy to determine the browser's
         real IP address for logging and access control purposes, such as
@@ -11,6 +12,7 @@ to identify the user’s IP address and SSL certificate:
         <em>only</em> be enabled when your Webmin system is behind a proxy, and
         there is no direct access from clients; otherwise, a fake header could
         be sent to bypass IP access control restrictions.</li>
+
         <li>Yes, trust both the remote IP and SSL certificate provided by
         proxies. If enabled, Webmin will use a header provided by a proxy to
         determine the user's client SSL certificate for authentication purposes,

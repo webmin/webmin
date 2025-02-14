@@ -1,5 +1,8 @@
 access_desc=使用此表单可以将 Webmin 配置为拒绝或仅允许来自某些 IP 地址的访问。还可以输入主机名（如 foo.bar.com）和 IP 网络（如 10.254.3.0 或 10.254.1.0/255.255.255.128 或 10.254.1.0/25 或 10.254.1.5-10.254.97.127 或 2001:DB8::A0BC:0001 或 2001:DB8::/32）。您应该将 Webmin 的访问限制为受信任的地址，尤其是当它可从 Internet 访问时。否则，任何猜出您密码的人都将完全控制您的系统。
-access_trust_ssl=信任代理提供的 SSL 客户端证书吗？
+access_trust_lvl=代理标头的信任级别
+access_trust_lvl0=不，不要相信来自代理的任何标头
+access_trust_lvl1=是的，信任代理提供的远程 IP 地址
+access_trust_lvl2=是的，信任代理提供的远程 IP 和 SSL 证书
 
 log_trust=在代理之后记录客户端 IP 地址吗？
 

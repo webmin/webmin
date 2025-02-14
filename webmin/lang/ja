@@ -30,7 +30,6 @@ access_ecidr8=IPv6 ネットワークサイズ '$1' は 8 で割り切れる必�
 access_ehost='$1' の IP アドレスが見つかりませんでした。
 access_eself=現在アクセスしている IP アドレス ( $1 ) が拒否されてしまいます。
 access_always=全てのリクエストに対して名前解決を行う
-access_trust=プロキシが提供するリモート IP アドレスを信頼する
 
 bind_title=ポートとアドレス
 bind_desc2=このフォームでは、Webmin が使用するポート番号、IP アドレスを変更することができます。また、使用するポート番号や IP アドレスを追加することもできます。注意 : 設定変更後、再ログインが必要になる場合があります。
@@ -1101,7 +1100,6 @@ twofactor_enrolllink=<a href='$1'>Webmin ユーザ モジュール</a> で 2 フ
 twofactor_url=$1 の詳細については、Webサイト <a href='$2' rel="noopener noreferrer" target="_blank">$2</a> をご覧ください。
 twofactor_etotpmodule=2 ファクタ認証に必要なPerlモジュール <tt>$1</tt> がインストールされていません。Webmin の <a href='$2'>Perl モジュール を使用してインストール</a>できます。
 twofactor_etotpid=無効な TOTP base32 エンコード シークレット
-twofactor_etotpmodule2=Perl モジュール $1 が見つかりませんでした
 twofactor_etotpmatch=OTP コードが正しくありません
 twofactor_secret=個人秘密鍵
 twofactor_secret1=乱数で生成

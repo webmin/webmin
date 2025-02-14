@@ -1,5 +1,8 @@
 access_desc=Webmin es pot configurar per denegar o permetre l'accés només des de determinades adreces IP mitjançant aquest formulari. Noms d'amfitrió (com foo.bar.com) i xarxes IP (com 10.254.3.0 o 10.254.1.0/255.255.255.128 o 10.254.1.0/25 o 10.254.1.5-10.254.97:021:02:0201 o 2001:DB8::/32) també es pot introduir. Heu de limitar l'accés a Webmin a adreces de confiança, especialment si és accessible des d'Internet. En cas contrari, qualsevol persona que endevini la vostra contrasenya tindrà un control complet del vostre sistema.
-access_trust_ssl=Confieu en el certificat de client SSL proporcionat pels servidors intermediaris?
+access_trust_lvl=Nivell de confiança per a les capçaleres de proxy
+access_trust_lvl0=No, no confieu en cap capçalera del servidor intermediari
+access_trust_lvl1=Sí, confieu en l'adreça IP remota proporcionada pels servidors intermediaris
+access_trust_lvl2=Sí, confieu tant en la IP remota com en el certificat SSL proporcionat pels servidors intermediaris
 
 bind_websocport=Número de port base per a connexions WebSockets
 bind_websocport_none=Per defecte (555)

@@ -30,7 +30,6 @@ access_ecidr8=IPv6 nettverksstørrelse '$1' må være delelig med 8
 access_ehost=Finner ikke IP adresse for '$1'
 access_eself=Din gjeldende IP adresse ($1) ville blitt nektet
 access_always=Finne vertsnavn på vær forespørsel
-access_trust=Stol på ekstern IP-adresse angitt av proxyer?
 
 bind_title=Port og IP adresse
 bind_desc2=Dette skjemaet kan benyttes for å endre porten Webmin lytter på, eller be Webmin om kun å lytte på en enkelt IP adresse på systemet ditt. Du kan også konfigurere Webmin til å lytte på flere porter eller IP adresser. Merk - nettleseren din kan be deg om å logge inn på nytt etter at du har endret port eller adresse som Webmin lytter på.
@@ -1082,7 +1081,6 @@ twofactor_enrolllink=Du kan nå ta i bruk to-faktor autentisering i modulen <a h
 twofactor_url=For å lære mer om $1 sjekk denne nettsted på <a href='$2' target=_blank>$2</a>.
 twofactor_etotpmodule=Perl-modulen <tt>$1</tt>, som er påkrevd for to-faktor autentisering, er ikke installert. Bruk modulen <a href='$2'>Perl moduler</a> i Webmin for å installere den.
 twofactor_etotpid=Ugyldig TOTP base32-kodet hemmelighet
-twofactor_etotpmodule2=Mangler Perl modulen $1
 twofactor_etotpmatch=Ugyldig kode for engangspassord
 twofactor_secret=Personlig hemmelig nøkkel
 twofactor_secret1=Tilfeldig generert
