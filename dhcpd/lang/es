@@ -86,6 +86,7 @@ esub_groups=Grupos diréctamente en esta Subred
 esub_pools=Paquetes de direcciones para Subred
 esub_pool=Paquete $1
 esub_poolnone=No se ha definido paquetes de direcciones
+
 esub_pooladd=Añadir un paquetes de direcciones
 esub_none=Ninguno
 esub_return=lista de subred
@@ -139,7 +140,6 @@ egroup_desc=Descripción del grupo
 default=Por defecto
 secs=segs
 none=Ninguno
-
 listl_header=Arrendamientos DHCP
 listl_network=En la red $1/$2
 listl_lfnotexist=No existe el archivo de arrendamientos de DHCPd <tt>$1</tt>.
@@ -390,8 +390,8 @@ eacl_pdl=borrar arrendamientos
 eacl_psl=ver arrendamientos
 eacl_pglob=editar opcione globales
 eacl_papply=rearrancar este servicio
+
 acl_apply=¿Puede aplicar los cambios?
-							
 acl_r_leases=¿Puede ver arrendamientos?
 acl_w_leases=¿Puede quitar arrendamientos?
 acl_zones=¿Puede editar zonas DNS dinámicas?
@@ -479,5 +479,3 @@ hdelete_rusure1=¿Estás seguro de que deseas eliminar las $1 máquinas seleccio
 hdelete_rusure2=¿Estás seguro de que deseas eliminar las $1 máquinas seleccionados?
 hdelete_rusure3=¿Estás seguro de que deseas eliminar los $2 grupos seleccionados? Cualquier máquina dentro de los grupos también se perderá.
 hdelete_ok=Eliminar Ahora
-
-__norefs=1
