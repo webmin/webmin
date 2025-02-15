@@ -46,6 +46,7 @@
 * Fix not binding to an IP, add a `Listen` directive for a custom port if needed in Apache module #2341
 * Fix Usermin manual installation using setup script
 * Fix to enhance display support for Fetchmail module
+* Fix WebSocket connections for _sudo_-capable users
 * Rename Google Authenticator to just TOTP Authenticator
 * Improve sorting for date-based columns in data tables  
 * Drop `lynx` package from the recommended list
