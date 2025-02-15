@@ -13747,12 +13747,12 @@ my $dir = $var_directory."/locks/".$$;
 return $dir;
 }
 
-# allocate_miniserv_websocket([module])
+# allocate_miniserv_websocket([module], [base-remote-user])
 # Allocate a new websocket and
 # stores it miniserv.conf file
 sub allocate_miniserv_websocket
 {
-my ($module) = @_;
+my ($module, $buser) = @_;
 $module ||= $module_name;
 # Find ports already in use
 &lock_file(&get_miniserv_config_file());
@@ -13777,7 +13777,10 @@ while(1) {
     }
 my $wspath = "/$module/ws-".$port;
 my $now = time();
-$miniserv{'websockets_'.$wspath} = "host=127.0.0.1 port=$port wspath=/ user=$remote_user time=$now";
+my $opt_buser = "";
+$opt_buser = " buser=$buser" if (defined($buser) && $buser eq $base_remote_user);
+$miniserv{"websockets_$wspath"} = "host=127.0.0.1 port=$port wspath=/ ".
+	  "user=$remote_user$opt_buser time=$now";
 &put_miniserv_config(\%miniserv);
 &unlock_file(&get_miniserv_config_file());
 &reload_miniserv();
