@@ -5,7 +5,7 @@
 require './proftpd-lib.pl';
 
 # Check if proftpd is installed
-if (&has_command($config{'proftpd_path'})) {
+if (!&has_command($config{'proftpd_path'})) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("proftpd", "man", "doc", "google"));
 	print &text('index_eproftpd', "<tt>$config{'proftpd_path'}</tt>",
