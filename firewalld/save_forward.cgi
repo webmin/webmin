@@ -36,6 +36,7 @@ else {
 	my $dstaddr;
 	if (!$in{'dstaddr_def'}) {
 		&check_ipaddress($in{'dstaddr'}) ||
+		    &check_ip6address($in{'dstaddr'}) ||
 			&error($text{'forward_edstaddr'});
 		$dstaddr = $in{'dstaddr'};
 		}
