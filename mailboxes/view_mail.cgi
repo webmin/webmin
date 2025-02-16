@@ -140,8 +140,8 @@ else {
 			&address_link($mail->{'header'}->{'cc'}));
 		}
 	print &ui_table_row($text{'mail_date'},
-		&eucconv_and_escape(
-                        &simplify_date($mail->{'header'}->{'date'})));
+		&eucconv(
+                        &simplify_date(&html_escape($mail->{'header'}->{'date'}))));
 	print &ui_table_row($text{'mail_subject'},
 		&convert_header_for_display($mail->{'header'}->{'subject'}));
 	}

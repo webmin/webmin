@@ -1,5 +1,10 @@
 ## Changelog
 
+#### 2.301 (February 16, 2025)
+* Fix to check correctly if ProFTPD is installed #2410
+* Fix to properly escape HTML in date fields
+* Fix the line height of plain-text email body
+
 #### 2.300 (February 14, 2025)
 * Add multiple improvements to SSH Server module to support contemporary systems
 * Add support to configure SSH socket activation in SSH Server module in contemporary systems #2356
