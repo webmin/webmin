@@ -16,7 +16,7 @@ my $force = !$_[2];
 # Build and show command to run
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 my $cmd = "pkg install ".$update;
-print "<b>",&text('pkg_install', "<tt>$cmd</tt>"),"</b><p>\n";
+print &text('pkg_install', "<tt>$cmd</tt>"),"<p>\n";
 print "<pre>";
 &additional_log('exec', undef, $cmd);
 
@@ -36,8 +36,8 @@ while(<CMD>) {
 close(CMD);
 
 print "</pre>\n";
-if ($?) { print "<b>$text{'pkg_failed'}</b><p>\n"; }
-else { print "<b>$text{'pkg_ok'}</b><p>\n"; }
+if ($?) { print "$text{'pkg_failed'}<p>\n"; }
+else { print "$text{'pkg_ok'}<p>\n"; }
 return @rv;
 }
 
