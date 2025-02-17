@@ -1,0 +1,81 @@
+<header>Strftime-Ersetzung der Backup-Ziele?</header>Wenn diese Option auf <b>Ja</b> gesetzt ist, können Codes wie %d, %m, %Y und %u im Dateinamen des Backup-Ziels verwendet werden. Diese werden beim Ausführen des Backups durch den Tag, Monat, Jahr und Wochentag ersetzt. Dies ist nützlich, wenn Sie täglich ein anderes Backup speichern möchten, sodass Sie ein System auf ein vorheriges Datum zurücksetzen können.<p>Einige der anderen verwendbaren Codes sind :<br><pre><font size=-1> %a     Der abgekürzte Wochentagname gemäß der aktuellen lokalen Einstellung.
+
+ %A     Der vollständige Wochentagname gemäß der aktuellen lokalen Einstellung.
+
+ %b     Der abgekürzte Monatsname gemäß der aktuellen lokalen Einstellung.
+
+ %B     Der vollständige Monatsname gemäß der aktuellen lokalen Einstellung.
+
+ %c     Die bevorzugte Datums- und Zeitdarstellung für die aktuelle lokale Einstellung.
+
+ %C     Die Jahrhundertzahl (Jahr/100) als zweiziffrige Ganzzahl.
+
+ %d     Der Tag des Monats als Dezimalzahl (Bereich 01 bis 31).
+
+ %e     Wie %d, der Tag des Monats als Dezimalzahl, aber eine führende Null wird durch ein Leerzeichen ersetzt.
+
+ %E     Modifizierer: verwendet alternative Formatierung, siehe unten.
+
+ %G     Das ISO 8601 Jahr mit Jahrhundert als Dezimalzahl. Das 4-stellige Jahr, das der ISO-Wochenzahl entspricht (siehe %V). Dies hat das gleiche Format und den gleichen Wert wie %y, außer dass, wenn die ISO-Wochenzahl zum vorherigen oder nächsten Jahr gehört, dieses Jahr stattdessen verwendet wird.
+
+ %g     Wie %G, aber ohne Jahrhundert, d.h. mit einer 2-stelligen Jahreszahl (00-99).
+
+ %h     Entspricht %b.
+
+ %H     Die Stunde als Dezimalzahl im 24-Stunden-Format (Bereich 00 bis 23).
+
+ %I     Die Stunde als Dezimalzahl im 12-Stunden-Format (Bereich 01 bis 12).
+
+ %j     Der Tag des Jahres als Dezimalzahl (Bereich 001 bis 366).
+
+ %k     Die Stunde (24-Stunden-Format) als Dezimalzahl (Bereich 0 bis 23); einstellig wird durch ein Leerzeichen vorangestellt. (Siehe auch %H.)
+
+ %l     Die Stunde (12-Stunden-Format) als Dezimalzahl (Bereich 1 bis 12); einstellig wird durch ein Leerzeichen vorangestellt. (Siehe auch %I.)
+
+ %m     Der Monat als Dezimalzahl (Bereich 01 bis 12).
+
+ %M     Die Minute als Dezimalzahl (Bereich 00 bis 59).
+
+ %n     Ein Zeilenumbruchzeichen.
+
+ %O     Modifizierer: verwendet alternative Formatierung, siehe unten.
+
+ %p     Entweder `AM' oder `PM' entsprechend dem angegebenen Zeitwert oder den entsprechenden Zeichenketten für die aktuelle lokale Einstellung.   Mittag wird als `pm' und Mitternacht als `am' behandelt.
+
+ %P     Wie %p, aber in Kleinbuchstaben: `am' oder `pm' oder eine entsprechende Zeichenkette für die aktuelle lokale Einstellung.
+
+ %r     Die Zeit im a.m. oder p.m.-Format. Im POSIX Locale entspricht dies `%I:%M:%S %p'.
+
+ %R     Die Zeit im 24-Stunden-Format (%H:%M). Für eine Version mit Sekunden siehe %T unten.
+
+ %s     Die Anzahl der Sekunden seit der Epoche, d.h. seit 1970-01-01 00:00:00 UTC.
+
+ %S     Die Sekunde als Dezimalzahl (Bereich 00 bis 61).
+
+ %t     Ein Tabulatorzeichen.
+
+ %T     Die Zeit im 24-Stunden-Format (%H:%M:%S).
+
+ %u     Der Wochentag als Dezimalzahl, Bereich 1 bis 7, Montag ist 1. Siehe auch %w.
+
+ %U     Die Wochenzahl des aktuellen Jahres als Dezimalzahl, Bereich 00 bis 53, beginnend mit dem ersten Sonntag als erster Tag der Woche 01. Siehe auch %V und %W.
+
+ %V     Die ISO 8601:1988-Wochenzahl des aktuellen Jahres als Dezimalzahl, Bereich 01 bis 53, wobei Woche 1 die erste Woche ist, die mindestens 4 Tage im aktuellen Jahr hat, und Montag der erste Wochentag ist. Siehe auch %U und %W.
+
+ %w     Der Wochentag als Dezimalzahl, Bereich 0 bis 6, Sonntag ist 0. Siehe auch %u.
+
+ %W     Die Wochenzahl des aktuellen Jahres als Dezimalzahl, Bereich 00 bis 53, beginnend mit dem ersten Montag als erster Tag der Woche 01.
+
+ %x     Die bevorzugte Datumsdarstellung für die aktuelle lokale Einstellung ohne Zeitangabe.
+
+ %X     Die bevorzugte Zeitdarstellung für die aktuelle lokale Einstellung ohne Datum.
+
+ %y     Das Jahr als Dezimalzahl ohne Jahrhundert (Bereich 00 bis 99).
+
+ %Y     Das Jahr als Dezimalzahl einschließlich Jahrhundert.
+
+ %z     Die Zeitzone als Stundenoffset von GMT. Erforderlich, um RFC822-konforme Daten (mit "%a, %d  %b  %Y %H:%M:%S %z") auszugeben.
+
+ %Z     Die Zeitzone oder der Name oder die Abkürzung.
+
+ %%     Ein literales `%'-Zeichen.</font></pre><footer>
