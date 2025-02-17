@@ -1221,7 +1221,7 @@ foreach my $mail (@mail) {
 		}
 
 	# Date and size columns
-	push(@cols, &eucconv(&simplify_date(&html_escape($mail->{'header'}->{'date'}))));
+	push(@cols, &simplify_date($mail->{'header'}->{'date'}));
 	push(@cols, &nice_size($mail->{'size'}, 1024));
 	$rowtds[$#cols] .= " data-sort=".&parse_mail_date($mail->{'header'}->{'date'});
 

@@ -1471,7 +1471,8 @@ return $data;
 }
 
 # simplify_date(datestring, [format])
-# Given a date from an email header, convert to the user's preferred format
+# Given a date from an email header, convert to the user's preferred format and
+# return it as an HTML string
 sub simplify_date
 {
 local ($date, $fmt) = @_;
@@ -1494,12 +1495,12 @@ if ($u) {
 		}
 	}
 elsif ($date =~ /^(\S+),\s+0*(\d+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+)/) {
-	return "$2/$3/$4 $5:$6";
+	return &html_escape("$2/$3/$4 $5:$6");
 	}
 elsif ($date =~ /^0*(\d+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+)/) {
-	return "$1/$2/$3 $4:$5";
+	return &html_escape("$1/$2/$3 $4:$5");
 	}
-return $date;
+return &html_escape($date);
 }
 
 # simplify_from(from)
