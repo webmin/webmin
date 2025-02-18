@@ -1,0 +1,82 @@
+<header>strftime-Ersatz in Backup-Zielen durchführen?</header>Wenn diese Option auf <b>Ja</b> gesetzt ist, können Codes wie %d, %m, %Y und %u im Dateinamen des Backup-Ziels verwendet werden. Diese werden beim Erstellen des Backups durch den jeweiligen Tag, Monat, das Jahr und den Wochentag ersetzt. Dies ist besonders nützlich, wenn tägliche Backups gespeichert werden sollen, um ein System auf ein vorheriges Datum zurücksetzen zu können.<p>Weitere verwendbare Codes sind:<br><pre><font size=-1>
+ %a     Abgekürzter Wochentagsname gemäß der aktuellen Locale.
+
+ %A     Vollständiger Wochentagsname gemäß der aktuellen Locale.
+
+ %b     Abgekürzter Monatsname gemäß der aktuellen Locale.
+
+ %B     Vollständiger Monatsname gemäß der aktuellen Locale.
+
+ %c     Bevorzugte Datums- und Zeitdarstellung gemäß der aktuellen Locale.
+
+ %C     Jahrhundertzahl (Jahr/100) als zweistellige Zahl.
+
+ %d     Tag des Monats als Dezimalzahl (01 bis 31).
+
+ %e     Wie %d, jedoch wird eine führende Null durch ein Leerzeichen ersetzt.
+
+ %E     Modifikator: Alternative Formatierung verwenden (siehe unten).
+
+ %G     ISO-8601-Jahr mit Jahrhundert als Dezimalzahl. Das vierstellige Jahr, das der ISO-Wochennummer entspricht (siehe %V). Dies hat dasselbe Format wie %y, außer dass, falls die ISO-Wochennummer zum vorherigen oder nächsten Jahr gehört, dieses Jahr verwendet wird.
+
+ %g     Wie %G, jedoch ohne Jahrhundert, also als zweistellige Jahreszahl (00-99).
+
+ %h     Entspricht %b.
+
+ %H     Stunde im 24-Stunden-Format als Dezimalzahl (00 bis 23).
+
+ %I     Stunde im 12-Stunden-Format als Dezimalzahl (01 bis 12).
+
+ %j     Tag des Jahres als Dezimalzahl (001 bis 366).
+
+ %k     Stunde (24-Stunden-Format) als Dezimalzahl (0 bis 23); einstellige Zahlen werden mit einem Leerzeichen aufgefüllt.
+
+ %l     Stunde (12-Stunden-Format) als Dezimalzahl (1 bis 12); einstellige Zahlen werden mit einem Leerzeichen aufgefüllt.
+
+ %m     Monat als Dezimalzahl (01 bis 12).
+
+ %M     Minute als Dezimalzahl (00 bis 59).
+
+ %n     Neue Zeile.
+
+ %O     Modifikator: Alternative Formatierung verwenden (siehe unten).
+
+ %p     Entweder "AM" oder "PM" entsprechend der gegebenen Zeit, oder die entsprechende Zeichenkette gemäß der aktuellen Locale. Mittag wird als "PM" und Mitternacht als "AM" behandelt.
+
+ %P     Wie %p, jedoch in Kleinbuchstaben: "am" oder "pm".
+
+ %r     Zeitangabe im AM-/PM-Format. In der POSIX-Locale entspricht dies "%I:%M:%S %p".
+
+ %R     Zeitangabe im 24-Stunden-Format (%H:%M). Eine Version mit Sekunden ist unter %T verfügbar.
+
+ %s     Anzahl der Sekunden seit der Unix-Epoche (1970-01-01 00:00:00 UTC).
+
+ %S     Sekunde als Dezimalzahl (00 bis 61).
+
+ %t     Tabulatorzeichen.
+
+ %T     Zeitangabe im 24-Stunden-Format (%H:%M:%S).
+
+ %u     Wochentag als Dezimalzahl (1 bis 7), Montag = 1.
+
+ %U     Wochennummer des aktuellen Jahres als Dezimalzahl (00 bis 53), wobei die erste Woche mit dem ersten Sonntag als Woche 01 beginnt. Siehe auch %V und %W.
+
+ %V     ISO-8601-Wochennummer des aktuellen Jahres als Dezimalzahl (01 bis 53), wobei Woche 1 die erste Woche mit mindestens vier Tagen im aktuellen Jahr ist. Montag ist der erste Tag der Woche. Siehe auch %U und %W.
+
+ %w     Wochentag als Dezimalzahl (0 bis 6), Sonntag = 0.
+
+ %W     Wochennummer des aktuellen Jahres als Dezimalzahl (00 bis 53), wobei die erste Woche mit dem ersten Montag als Woche 01 beginnt.
+
+ %x     Bevorzugte Datumsausgabe gemäß der aktuellen Locale ohne Uhrzeit.
+
+ %X     Bevorzugte Zeitausgabe gemäß der aktuellen Locale ohne Datum.
+
+ %y     Jahr als zweistellige Dezimalzahl (00 bis 99).
+
+ %Y     Jahr als vierstellige Dezimalzahl inklusive Jahrhundert.
+
+ %z     Zeitzone als Stundenversatz zu GMT. Wird für RFC822-konforme Datumsangaben benötigt ("%a, %d %b %Y %H:%M:%S %z").
+
+ %Z     Zeitzone als Name oder Abkürzung.
+
+ %%     Ein Prozentzeichen ("%").</font></pre><footer>
