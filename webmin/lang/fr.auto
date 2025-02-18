@@ -23,6 +23,7 @@ log_trust=Enregistrer l'adresse IP du client derrière un proxy ?
 
 os_incorrect=Le système d'exploitation $1 a été mis à niveau vers la version $2
 os_release_notes=Notes de version
+os_fix=Confirmer les modifications détectées
 
 lang_title=Langue et paramètres régionaux
 lang_title2=Langue et paramètres régionaux de Webmin

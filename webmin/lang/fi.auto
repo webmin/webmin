@@ -314,7 +314,7 @@ os_eversion=Puuttuu käyttöjärjestelmäversio
 os_eiversion=Puuttuu sisäinen käyttöjärjestelmäversio
 os_incorrect=Käyttöjärjestelmä $1 on päivitetty versioon $2
 os_release_notes=Julkaisutiedot
-os_fix=Päivitä havaittu käyttöjärjestelmä
+os_fix=Vahvista havaitut muutokset
 os_usermin=Päivitä myös Usermin OS
 
 lang_title=Kieli ja alue

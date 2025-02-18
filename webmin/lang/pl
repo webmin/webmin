@@ -284,7 +284,6 @@ os_name=Nazwa zmiennej
 os_value=Wartość
 os_eversion=Brakująca wersja systemu operacyjnego
 os_eiversion=Brakująca wersja wewnętrznego systemu operacyjnego
-os_fix=Aktualizuj wykryty system operacyjny
 os_usermin=Aktualizuj także OS Usermina
 
 lang_intro=Ta strona umożliwia Ci wybór języka w którym Webmin będzie wypisywał komunikaty

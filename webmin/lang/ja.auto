@@ -16,6 +16,7 @@ bind_emaxlifetime=最大プロセス寿命は60秒を超える数値である必
 log_trust=プロキシの背後にあるときにクライアントの IP アドレスをログに記録しますか?
 
 os_release_notes=リリースノート
+os_fix=検出された変更を確認する
 
 lang_title=言語とロケール
 lang_title2=Webmin の言語とロケール

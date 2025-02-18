@@ -33,6 +33,7 @@ mods_checksig=Sprawdź plik podpisu dla pobranych modułów?
 
 os_incorrect=System operacyjny $1 został zaktualizowany do wersji $2
 os_release_notes=Informacje o wydaniu
+os_fix=Potwierdź wykryte zmiany
 
 lang_title=Język i lokalizacja
 lang_title2=Język i ustawienia regionalne Webmina

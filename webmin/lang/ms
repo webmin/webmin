@@ -284,7 +284,6 @@ os_name=Nama pembolehubah
 os_value=Nilai
 os_eversion=Hilang sistem operasi
 os_eiversion=Hilang versi dalaman sistem operasi
-os_fix=Kemaskini Sistem Operasi Dikesan
 os_usermin=Juga kemaskini OS Usermin
 
 lang_intro=Halaman ini membenarkan anda untuk memilih bahasa bagi Webmin yang digunakan untuk memaparkan tajuk, pertanyaan dan mesej

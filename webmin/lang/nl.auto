@@ -36,6 +36,7 @@ mods_checksig=Controleer het handtekeningbestand voor gedownloade modules?
 
 os_incorrect=Besturingssysteem $1 is geüpgraded naar versie $2
 os_release_notes=Release-opmerkingen
+os_fix=Bevestig gedetecteerde wijzigingen
 os_usermin=Update ook Usermin OS
 
 lang_title=Taal en land
