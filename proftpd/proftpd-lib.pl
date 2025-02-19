@@ -26,7 +26,7 @@ if ($oldsite{'size'} != $st[7] ||
 
 		# Get the list of modules
 		my @mods;
-		open(MODS, "$config{'proftpd_path'} -vv |");
+		open(MODS, "$config{'proftpd_path'} -vv 2>/dev/null |");
 		while(<MODS>) {
 			s/\r|\n//g;
 			if (/^\s*(?<mod_built_in>\S+)\.c$|\s*(?<mod_loaded>mod_[a-zA-Z0-9_]+)\//) {
