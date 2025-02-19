@@ -72,7 +72,7 @@ foreach my $u (@updates) {
 		}
 	}
 
-print "<b>",&text('yum_install', "<tt>".&html_escape($uicmd)."</tt>"),"</b><p>\n";
+print &text('yum_install', "<tt>".&html_escape($uicmd)."</tt>"),"<p>\n";
 print "<pre>";
 &additional_log('exec', undef, $fullcmd);
 $SIG{'TERM'} = 'ignore';	# Installing webmin itself may kill this script
@@ -129,11 +129,11 @@ while(<CMD>) {
 close(CMD);
 print "</pre>\n";
 if ($? || $nopackage) {
-	print "<b>$text{'yum_failed'}</b><p>\n";
+	print "$text{'yum_failed'}<p>\n";
 	return ( );
 	}
 else {
-	print "<b>$text{'yum_ok'}</b><p>\n";
+	print "$text{'yum_ok'}<p>\n";
 	return &unique(@rv);
 	}
 }

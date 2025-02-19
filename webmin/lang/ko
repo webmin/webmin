@@ -269,7 +269,6 @@ os_name=변수 이름
 os_value=값
 os_eversion=운영체제 버전을 알 수 없음
 os_eiversion=내부 운영체제 버전을 알 수 없음
-os_fix=감지된 운영체제 업데이트
 
 lang_intro=이 페이지에서는 Webmin이 제목, 프롬프트 및 메시지를 표시하는 데 사용할 언어를 선택할 수 있습니다
 lang_ok=언어 변경

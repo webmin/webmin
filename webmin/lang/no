@@ -292,7 +292,6 @@ os_name=Variabel navn
 os_value=Verdi
 os_eversion=Manglende operativsystem versjon
 os_eiversion=Manglende intern operativsystem versjon
-os_fix=Oppdater oppdaget operativsystem
 os_usermin=Oppdater også Usermin OS
 
 lang_intro=Her kan du velge hvilket språk Webmin skal bruke for å vise deg meldinger, oversikter osv.

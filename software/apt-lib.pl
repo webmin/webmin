@@ -25,7 +25,7 @@ $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 local $uicmd = "$apt_get_command -y ".($force ? " -f" : "")." install $update";
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 local $cmd = "$apt_get_command -y ".($force ? " -f" : "")." install $update";
-print "<b>",&text('apt_install', "<tt>".&html_escape($uicmd)."</tt>"),"</b><p>\n";
+print &text('apt_install', "<tt>".&html_escape($uicmd)."</tt>"),"<p>\n";
 print "<pre>";
 &additional_log('exec', undef, $cmd);
 
@@ -65,8 +65,8 @@ if (!@rv && $config{'package_system'} ne 'debian' && !$?) {
 	@rv = @newpacks;
 	}
 print "</pre>\n";
-if ($?) { print "<b>$text{'apt_failed'}</b><p>\n"; }
-else { print "<b>$text{'apt_ok'}</b><p>\n"; }
+if ($?) { print "$text{'apt_failed'}<p>\n"; }
+else { print "$text{'apt_ok'}<p>\n"; }
 return @rv;
 }
 

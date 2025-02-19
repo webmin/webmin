@@ -77,7 +77,7 @@ os_syspath=Zahrnúť vlastnú vyhľadávaciu cestu systému?
 os_perllib=Ďalšie cesty knižnice Perl
 os_incorrect=Operačný systém $1 bol aktualizovaný na verziu $2
 os_release_notes=Poznámky k vydaniu
-os_fix=Aktualizácia zisteného operačného systému
+os_fix=Potvrďte zistené zmeny
 os_usermin=Aktualizujte tiež Usermin OS
 
 lang_title=Jazyk a miestne nastavenie

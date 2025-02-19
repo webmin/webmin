@@ -23,6 +23,7 @@ log_trust=Logge klientens IP-adresse når du er bak proxy?
 
 os_incorrect=Operativsystemet $1 er oppgradert til versjon $2
 os_release_notes=Utgivelsesnotater
+os_fix=Bekreft oppdagede endringer
 
 lang_title=Språk og lokalitet
 lang_title2=Webmin språk og lokalitet

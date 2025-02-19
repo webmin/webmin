@@ -314,7 +314,7 @@ os_eversion=Sistema eragilearen bertsioa falta da
 os_eiversion=Barne sistema eragilearen bertsioa falta da
 os_incorrect=$1 sistema eragilea $2 bertsiora eguneratu da
 os_release_notes=Argitalpen oharrak
-os_fix=Eguneratu detektatutako sistema eragilea
+os_fix=Berretsi hautemandako aldaketak
 os_usermin=Era berean, eguneratu Usermin OS
 
 lang_title=Hizkuntza eta Tokia

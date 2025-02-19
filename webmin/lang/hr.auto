@@ -314,7 +314,7 @@ os_eversion=Nedostaje verzija operativnog sustava
 os_eiversion=Nedostaje inačica interne operativnog sustava
 os_incorrect=Operacijski sustav $1 nadograđen je na verziju $2
 os_release_notes=Bilješke o izdanju
-os_fix=Ažurirajte otkriveni operativni sustav
+os_fix=Potvrdite otkrivene promjene
 os_usermin=Ažurirajte i Usermin OS
 
 lang_title=Jezik i mjesto
