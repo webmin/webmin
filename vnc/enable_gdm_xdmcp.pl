@@ -2,6 +2,7 @@
 BEGIN {
 	push(@INC, "..");
 	push(@INC, "../vendor_perl");
+	push(@INC, "vendor_perl");
 	push(@INC, "/usr/libexec/webmin/vendor_perl");
 };
 use Config::IniFiles;
