@@ -15,7 +15,7 @@ sub update_system_install
 {
 local $update = $_[0] || $in{'update'};
 local @rv;
-print "<b>",&text('rhn_install', "<tt>up2date $update</tt>"),"</b><p>\n";
+print &text('rhn_install', "<tt>up2date $update</tt>"),"<p>\n";
 print "<pre>";
 &additional_log('exec', undef, "up2date \"$update\"");
 local $qm = quotemeta($update);
@@ -32,11 +32,11 @@ while(<CMD>) {
 close(CMD);
 print "</pre>\n";
 if ($got_error) {
-	print "<b>$text{'rhn_failed'}</b><p>\n";
+	print "$text{'rhn_failed'}<p>\n";
 	@rv = ( );
 	}
 else {
-	print "<b>$text{'rhn_ok'}</b><p>\n";
+	print "$text{'rhn_ok'}<p>\n";
 	}
 return @rv;
 }

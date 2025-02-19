@@ -31,8 +31,8 @@ do {
 		last;
 		}
 	local $flag = $pkg_get =~ /pkgutil$/ ? "-y" : "-f";
-	print "<b>",&text('csw_install',
-			"<tt>$pkg_get -i $flag $update</tt>"),"</b><p>\n";
+	print &text('csw_install',
+			"<tt>$pkg_get -i $flag $update</tt>"),"<p>\n";
 	$failed = 0;
 	$retry = 0;
 	print "<pre>";
@@ -64,7 +64,7 @@ do {
 	print "</pre>";
 
 	if ($retry) {
-		print "<b>$text{'csw_retry'}</b><p>\n";
+		print "$text{'csw_retry'}<p>\n";
 		}
 	} while ($retry);
 
@@ -72,15 +72,15 @@ do {
 &copy_source_dest("/var/pkg-get/admin-old", "/var/pkg-get/admin");
 
 if ($failed == 1) {
-	print "<b>$text{'csw_failed'}</b><p>\n";
+	print "$text{'csw_failed'}<p>\n";
 	return ( );
 	}
 elsif ($failed == 2) {
-	print "<b>$text{'csw_already'}</b><p>\n";
+	print "$text{'csw_already'}<p>\n";
 	return ( );
 	}
 else {
-	print "<b>$text{'csw_ok'}</b><p>\n";
+	print "$text{'csw_ok'}<p>\n";
 	if (!@rv) {
 		# If nothing failed, assume that everything worked
 		@rv = split(/\s+/, $update);

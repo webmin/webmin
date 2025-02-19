@@ -106,7 +106,7 @@ os_eversion=Falta la versión del sistema operativo
 os_eiversion=Falta la versión interna del sistema operativo
 os_incorrect=El sistema operativo $1 se ha actualizado a la versión $2
 os_release_notes=Notas de lanzamiento
-os_fix=Actualizar sistema operativo detectado
+os_fix=Confirmar cambios detectados
 os_usermin=También actualice Usermin OS
 
 lang_title=Idioma y configuración regional

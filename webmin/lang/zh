@@ -308,7 +308,6 @@ os_eversion=未设定操作系统版本
 os_eiversion=未设定内部操作系统版本
 os_incorrect=操作系统 $1 已升级到版本 $2
 os_release_notes=发行说明
-os_fix=更新检测到的操作系统
 os_usermin=同时更新 Usermin 操作系统
 
 lang_title=区域语言

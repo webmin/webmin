@@ -49,6 +49,7 @@ mods_checksig=Controlla il file della firma per i moduli scaricati?
 os_perllib=Percorsi di libreria Perl extra
 os_incorrect=Il sistema operativo $1èstato aggiornato alla versione $2
 os_release_notes=Note di rilascio
+os_fix=Conferma le modifiche rilevate
 os_usermin=Aggiorna anche il sistema operativo Usermin
 
 lang_title=Lingua e località

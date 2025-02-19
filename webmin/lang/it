@@ -269,7 +269,6 @@ os_name=Nome variabile
 os_value=Valore
 os_eversion=Versione del sistema operativo mancante
 os_eiversion=Versione del sistema operativo mancante
-os_fix=Aggiorna il Sistema Operativo individuato
 
 lang_intro=Questa pagina permette di scegliere quale linguaggio verrà utilizzato da Webmin per visualizzare titoli, richieste e messaggi.
 lang_ok=Modifica Lingua

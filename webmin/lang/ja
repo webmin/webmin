@@ -299,7 +299,6 @@ os_value=値
 os_eversion=OS のバージョンが入力されていません
 os_eiversion=内部 OS のバージョンが入力されていません
 os_incorrect=OS $1 は バージョン $2 にアップグレードされました。
-os_fix=検出された OS の情報を更新
 os_usermin=Usermin の OS 情報も更新
 
 lang_intro=Webmin のタイトルやプロンプト、メッセージの表示に使用する言語を選択できます。

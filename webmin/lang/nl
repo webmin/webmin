@@ -281,7 +281,6 @@ os_name=Variabele naam
 os_value=Waarde
 os_eversion=Ontbrekende besturingssysteem versie
 os_eiversion=Ontbrekende interne besturingssysteem versie
-os_fix=Update Gedetecteerde Besturings Systeem
 
 lang_intro=Op deze pagina kunt u de taal wijzigen die Webmin zal gebruiken voor het weergeven van titels, vragen en berichten.
 lang_ok=Wijzig de Taal

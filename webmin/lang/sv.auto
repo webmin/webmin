@@ -204,7 +204,7 @@ os_eversion=Saknas operativsystemversion
 os_eiversion=Saknas intern version av operativsystemet
 os_incorrect=Operativsystemet $1 har uppgraderats till version $2
 os_release_notes=Release notes
-os_fix=Uppdatera upptäckt operativsystem
+os_fix=Bekräfta upptäckta ändringar
 os_usermin=Uppdatera också Usermin OS
 
 lang_title=Språk och lokal

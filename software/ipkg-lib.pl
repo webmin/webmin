@@ -232,7 +232,7 @@ sub update_system_install
 local $update = $_[0] || $in{'update'};
 local (@rv, @newpacks);
 local $cmd = "$ipkg install";
-print "<b>",&text('IPKG_install', "<tt>$cmd</tt>"),"</b><p>\n";
+print &text('IPKG_install', "<tt>$cmd</tt>"),"<p>\n";
 print "<pre>";
 &additional_log('exec', undef, "$cmd $update");
 local $qm = join(" ", map { quotemeta($_) } split(/\s+/, $update));
@@ -250,11 +250,11 @@ while(<CMD>) {
 close(CMD);
 print "</pre>\n";
 if ($?) {
-	print "<b>$text{'IPKG_failed'}</b><p>\n";
+	print "$text{'IPKG_failed'}<p>\n";
 	return ( );
 	}
 else {
-	print "<b>$text{'IPKG_ok'}</b><p>\n";
+	print "$text{'IPKG_ok'}<p>\n";
 	return &unique(@rv);
 	}
 }

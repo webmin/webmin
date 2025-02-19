@@ -27,6 +27,7 @@ delete_rusure=Esteu segur que voleu suprimir el mòdul (s) $2? $1 kB de fitxers 
 
 os_incorrect=El sistema operatiu $1 s'ha actualitzat a la versió $2
 os_release_notes=Notes de publicació
+os_fix=Confirmeu els canvis detectats
 
 lang_title=Idioma i entorn local
 lang_title2=Idioma i configuració regional de Webmin
