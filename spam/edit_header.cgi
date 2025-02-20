@@ -30,6 +30,14 @@ print &ui_table_row($text{'header_test'},
 	      $text{'header_pat'}, $text{'header_default'} ],
 	    [ map { [ &split_header($_->{'value'}) ] } @header ], [ ], \&header_conv, 2));
 
+# MIME header tests
+@mimeheader = &find("mimeheader", $conf);
+print &ui_table_row($text{'header_mimetest'},
+	&edit_table("mimeheader",
+	    [ $text{'header_tname'}, $text{'header_name'}, $text{'header_op'},
+	      $text{'header_pat'}, $text{'header_default'} ],
+	    [ map { [ &split_header($_->{'value'}) ] } @mimeheader ], [ ], \&header_conv, 2));
+
 print &ui_table_hr();
 
 push(@body, map { [ &split_body($_->{'value'}), 0 ] } &find("body", $conf));

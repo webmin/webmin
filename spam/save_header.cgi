@@ -18,6 +18,9 @@ if (!$module_info{'usermin'}) {
 @header = &parse_table("header", \&header_parser);
 &save_directives($conf, "header", \@header, 1);
 
+@mimeheader = &parse_table("mimeheader", \&header_parser);
+&save_directives($conf, "mimeheader", \@mimeheader, 1);
+
 @oldbody = ( &find("body", $conf),
 	     &find("rawbody", $conf),
 	     &find("fullbody", $conf),

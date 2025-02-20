@@ -141,6 +141,7 @@ header_switch=Switch to simple mode ..
 header_header=Additional header and body tests
 header_allow=Allow users to define tests?
 header_test=Header tests
+header_mimetest=MIME header tests
 header_tname=Test name
 header_name=For header
 header_op=Check if
