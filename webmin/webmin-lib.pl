@@ -1193,11 +1193,13 @@ if ($cache) {
 	}
 my $temp = &transname();
 my $perl = &get_perl_path();
-system("$root_directory/oschooser.pl $file $temp 1");
+system("$perl $root_directory/oschooser.pl ".
+       quotemeta($file)." ".quotemeta($temp)." 1");
 my %rv;
 &read_env_file($temp, \%rv);
 $rv{'time'} = time();
 &write_file($detect_operating_system_cache, \%rv);
+&unlink_file($temp);
 return %rv;
 }
 
@@ -1245,6 +1247,15 @@ if (&foreign_available("webmin")) {
 		}
 	else {
 		&read_file($realos_cache_file, \%realos);
+		}
+	if ($realos{'os_version'} eq $gconfig{'os_version'} &&
+	    $realos{'os_type'} eq $gconfig{'os_type'} &&
+	    $realos{'real_os_version'} ne $gconfig{'real_os_version'}) {
+		# Only the minor OS version has changed, just silently update it
+		&lock_file("$config_directory/config");
+		$gconfig{'real_os_version'} = $realos{'real_os_version'};
+		&write_file("$config_directory/config", \%gconfig);
+		&unlock_file("$config_directory/config");
 		}
 	if (($realos{'os_version'} ne $gconfig{'os_version'} ||
 	     $realos{'real_os_version'} ne $gconfig{'real_os_version'} ||
