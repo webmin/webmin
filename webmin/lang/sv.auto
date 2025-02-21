@@ -542,7 +542,8 @@ themes_tabdelete=Ta bort teman
 themes_tabexport=Exportera teman
 
 themes_line=$1 i $2 ($3 kB)
-themes_ok2=Temaöverlägg ändras framgångsrikt.. omdirigering till Webmin indexsida.
+themes_ok=Temat har ändrats och omdirigeras nu ..
+themes_ok2=Temaöverlagring har ändrats och omdirigeras nu ..
 themes_delete=Det här formuläret kan användas för att ta bort ett av de teman som är installerade på ditt system som för närvarande inte används.
 themes_delok=Tema att radera :
 themes_return=temalista

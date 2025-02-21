@@ -12,6 +12,9 @@ lang_chardef=由语言决定
 
 startpage_title=索引页选项
 
+themes_ok=主题更改已成功重定向现在 ..
+themes_ok2=主题覆盖已成功更改，现在重定向 ..
+
 sendmail_toaddr=通知的默认目标地址
 sendmail_to_def=未设置
 sendmail_etoaddr=目的地地址缺失或格式不正确

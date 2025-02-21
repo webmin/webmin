@@ -549,7 +549,6 @@ themes_egzip=Súbor is skomprimovaný programom gzip, ale $1 príkaz nebol nájd
 themes_egzip2=Nebolo možné rozbaliť súbor : $1
 themes_erpm=Nesprávny súbor RPM vzhľadu Webminu
 themes_eirpm=Inštalácia zo súboru RPM zlyhala : $1
-themes_ok=Vzhľad bol úspešne zmenený...otváram úvodnú stránku Webminu.
 themes_delete=Tento formulár slúži na odstránenie niektorého vzhľadu nainštalovaného vo Vašom systéme, ktorý nie je používaný.
 themes_delok=Vzhľad na vymazanie :
 themes_return=zoznam motívov vzhľadu

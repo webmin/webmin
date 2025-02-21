@@ -593,7 +593,6 @@ themes_egzip=Il file è compresso con gzip, ma il comando $1 non è stato trovat
 themes_egzip2=Decompressione del file con gunzip non riuscita: $1
 themes_erpm=Non è un tema di Webmin in RPM
 themes_eirpm=Installazione RPM non riuscita: $1
-themes_ok=Tema modificato con successo... è in corso il ridirezionamento alla pagina principale di Webmin.
 themes_delete=Questa pagina può essere usata per eliminare uno dei temi installati. Il tema da eliminare non deve essere attualmente in uso.
 themes_delok=Tema da eliminare:
 themes_return=lista dei temi

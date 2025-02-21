@@ -74,6 +74,9 @@ session_passurl=Quan està activat, les contrasenyes d'usuari es poden canviar m
 
 log_fixrepo=S'ha solucionat el repositori Webmin
 
+themes_ok=El tema s'ha canviat correctament redirigint-se ara. ..
+themes_ok2=La superposició del tema s'ha canviat correctament, redirigint-se ara. ..
+
 lock_mode=Fitxers per bloquejar Webmin
 lock_s=segons
 lock_m=minuts

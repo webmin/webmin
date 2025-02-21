@@ -200,7 +200,8 @@ themes_tabinstall=Installa tema
 themes_tabdelete=Elimina temi
 themes_tabexport=Esporta temi
 
-themes_ok2=L'overlay del tema è stato modificato correttamente. Reindirizzamento alla pagina dell'indice Webmin.
+themes_ok=Il tema è stato modificato con successo e ora viene reindirizzato ..
+themes_ok2=La sovrapposizione del tema è stata modificata correttamente e ora reindirizza ..
 themes_err4=Impossibile cambiare il tema della sovrapposizione
 themes_eoverlay=L'overlay selezionato non è compatibile con l'attuale tema globale
 

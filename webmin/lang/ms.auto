@@ -117,6 +117,9 @@ log_letsencrypt=Meminta sijil SSL baru dari Let's Encrypt
 log_letsencryptdns=Diciptakan Letakkan rekod DNS untuk $1
 log_letsencryptcleanup=Dikeluarkan Sambungkan rekod DNS untuk $1
 
+themes_ok=Tema berjaya diubah hala sekarang ..
+themes_ok2=Tindanan tema berjaya diubah hala sekarang ..
+
 referers_none2=AMARAN: Ini membuka sistem anda sehingga serangan XSS!
 
 lock_mode=Fail untuk dikunci Webmin

@@ -306,7 +306,8 @@ themes_tabinstall=Instalar el tema
 themes_tabdelete=Eliminar temas
 themes_tabexport=Exportar temas
 
-themes_ok2=La superposición de temas cambió con éxito... redirigiendo a la página de índice de Webmin.
+themes_ok=El tema cambió exitosamente, redireccionando ahora ..
+themes_ok2=La superposición del tema se modificó correctamente y ahora se redirecciona ..
 themes_err4=Error al cambiar el tema de superposición
 themes_eoverlay=La superposición seleccionada no es compatible con el tema global actual
 

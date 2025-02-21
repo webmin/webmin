@@ -488,7 +488,6 @@ themes_egzip=El archivo está comprimido con gzip, pero el comando $1 no se encu
 themes_egzip2=No pude hacer gunzip del archivo: $1
 themes_erpm=No es un tema RPM de Webmin
 themes_eirpm=Falló la instalación RPM: $1
-themes_ok=Tema cambiado con éxito... redireccionando a la página de índice de Webmin.
 themes_delete=Este formulario puede usarse para borrar uno de los temas instalados en su sistema que no esté actuálmente en uso.
 themes_delok=Tema a borrar:
 themes_return=lista de temas
