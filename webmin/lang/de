@@ -314,6 +314,7 @@ os_eversion=Betriebssystemversion fehlt
 os_eiversion=Interne Betriebssystemversion fehlt
 os_incorrect=Betriebssystem $1 wurde auf Version $2 aktualisiert
 os_release_notes=Versionshinweise
+os_fix=Erkannte Änderungen bestätigen
 os_usermin=Auch das Betriebssystem von Usermin aktualisieren
 
 lang_title=Sprache und Gebietsschema
