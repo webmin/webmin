@@ -7,8 +7,8 @@ use WebminCore;
 
 &init_config();
 &ReadParse();
+&PrintHeader();
 my $err = sub {
-    &PrintHeader();
     print("<tt>Cannot change theme : $_[0]</tt>\n");
     exit(1);
     };
@@ -40,5 +40,5 @@ $user->{'theme'} = $theme;
 &acl::modify_user($user->{'name'}, $user);
 &load_theme_library();
 &theme_post_change_theme() if (defined(&theme_post_change_theme));
-&restart_miniserv();
-&redirect(&get_webprefix() . "/");
+&reload_miniserv();
+print &js_redirect("/", "top");
