@@ -2803,23 +2803,28 @@ foreach $f (@{$_[2]}) {
 return $_[3] ? "$_[3]='$rv'" : $rv;
 }
 
-=head2 js_redirect(url, [window-object])
+=head2 js_redirect(url, [window-object], [timeout])
 
 Returns HTML to trigger a redirect to some URL.
 
 =cut
 sub js_redirect
 {
-my ($url, $window) = @_;
+my ($url, $window, $timeout) = @_;
 if (defined(&theme_js_redirect)) {
 	return &theme_js_redirect(@_);
 	}
 $window ||= "window";
+$timeout ||= 0;
 if ($url =~ /^\//) {
 	# If the URL is like /foo , add webprefix
 	$url = &get_webprefix().$url;
 	}
-return "<script type='text/javascript'>${window}.location = '".&quote_escape($url)."';</script>\n";
+return "<script type='text/javascript'>
+		setTimeout(function(){
+			${window}.location = '".&quote_escape($url)."';
+		}, $timeout);
+	</script>";
 }
 
 =head2 ui_webmin_link(module, page)
