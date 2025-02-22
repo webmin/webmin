@@ -66,6 +66,9 @@ session_passurl=Når den er aktivert, kan brukerpassord endres via en POST -fore
 
 log_fixrepo=Fikset Webmin-depot
 
+themes_ok=Tema endret vellykket omdirigering nå ..
+themes_ok2=Temaoverlegg endret og omdirigerer nå ..
+
 lock_mode=Filer for Webmin å låse
 lock_s=sekunder
 lock_m=minutter

@@ -252,7 +252,6 @@ themes_egzip=Filen är gzippad, men kommandot $1 finns inte i systemet
 themes_egzip2=Det gick inte att gunzippa filen: $1
 themes_erpm=Det är inte en Webmin-tema-RPM
 themes_eirpm=Det gick inte att installera denna RPM: $1
-themes_ok=Temat har ändrats ... du skickas nu till Webmins indexsida.
 
 referers_title=Pålitliga webbsidor
 referers_desc=På denna sida kan du ställa in Webmins stöd för webbsidekontroll, som används för att hindra att ondsinta länkar från andra sajter lurar din webbläsare att göra farliga saker med Webmin. Om du har länkar till Webmin från dina egna sidor och inte vill bli varnad när du använder dessa, måste du skriva in dem i listan nedan.

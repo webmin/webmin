@@ -354,7 +354,8 @@ themes_tabdelete=Temaları sil
 themes_tabexport=Temaları dışa aktarma
 
 themes_line=$2 içindeki $1 ($3 kB)
-themes_ok2=Tema yer paylaşımı başarıyla değişti.. Webmin dizin sayfasına yönlendiriliyor.
+themes_ok=Tema başarıyla değiştirildi, şimdi yönlendiriliyorsunuz ..
+themes_ok2=Tema yerleşimi başarıyla değiştirildi, şimdi yönlendiriliyorsunuz ..
 themes_err4=Yer paylaşımı teması değiştirilemedi
 themes_eoverlay=Seçilen yer paylaşımı geçerli genel temayla uyumlu değil
 

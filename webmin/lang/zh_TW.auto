@@ -386,7 +386,8 @@ themes_tabinstall=安裝主題
 themes_tabdelete=刪除主題
 themes_tabexport=導出主題
 
-themes_ok2=主題疊加成功更改..重定向到Webmin索引頁面。
+themes_ok=主題變更已成功重定向現在 ..
+themes_ok2=主題覆蓋已成功更改，現在重定向 ..
 themes_err4=更改疊加主題失敗
 themes_eoverlay=所選的疊加層與當前的全局主題不兼容
 

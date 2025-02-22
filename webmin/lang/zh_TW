@@ -409,7 +409,6 @@ themes_egzip=檔案是gzip型態的，但是在您的系統上找不到指令 $1
 themes_egzip2=gunzip檔案失敗 : $1
 themes_erpm=不是一個Webmin佈景主題的RPM
 themes_eirpm=安裝RPM失敗 : $1
-themes_ok=佈景主題變更成功.. 重新導向Webmin首頁
 themes_delete=此表單來可以用來刪除一個安裝在您的系統上的目前沒有使用佈景主題。
 themes_delok=刪除佈景主題 :
 themes_return=佈景主題清單

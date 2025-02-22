@@ -103,6 +103,9 @@ log_letsencrypt=Zażądałem nowego certyfikatu SSL od Let's Encrypt
 log_letsencryptdns=Utworzono Let's Encrypt DNS record dla $1
 log_letsencryptcleanup=Usunięto Let's Encrypt DNS record dla $1
 
+themes_ok=Motyw został pomyślnie zmieniony, przekierowanie zostało zakończone pomyślnie ..
+themes_ok2=Nakładka motywu została pomyślnie zmieniona, przekierowanie zostało zakończone pomyślnie ..
+
 lock_mode=Pliki do zablokowania przez Webmin
 lock_s=sekundy
 lock_m=minuty

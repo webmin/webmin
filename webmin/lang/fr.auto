@@ -66,6 +66,9 @@ session_passurl=Lorsqu'il est activé, les mots de passe utilisateur peuvent êt
 
 log_fixrepo=Référentiel Webmin fixe
 
+themes_ok=Le thème a été modifié avec succès et la redirection est maintenant terminée ..
+themes_ok2=La superposition de thème a été modifiée avec succès, la redirection est désormais effectuée ..
+
 lock_mode=Fichiers à verrouiller par Webmin
 lock_s=secondes
 lock_m=minutes

@@ -55,6 +55,9 @@ session_eyescrypt=Perl $1 モジュールがインストールされていない
 
 log_fixrepo=Webmin リポジトリを修正
 
+themes_ok=テーマが正常に変更され、リダイレクト中です。
+themes_ok2=テーマオーバーレイが正常に変更され、リダイレクト中です。
+
 lock_mode=Webmin がロックするファイル
 lock_s=秒
 lock_m=分

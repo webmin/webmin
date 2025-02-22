@@ -47,7 +47,7 @@ if ($in{'theme'} ne $gtheme) {
 		}
 	}
 
-print &js_redirect("/", "top");
+print &js_redirect("/", "top", 1500);
 
 &webmin_log('theme', undef, undef, \%in);
 &ui_print_footer("", $text{'index_return'});

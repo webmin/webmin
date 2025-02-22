@@ -199,7 +199,8 @@ themes_tabinstall=테마 설치
 themes_tabdelete=테마 삭제
 themes_tabexport=테마 내보내기
 
-themes_ok2=테마 오버레이가 성공적으로 변경되었습니다. Webmin 색인 페이지로 경로 재 지정.
+themes_ok=테마가 성공적으로 변경되어 현재 리디렉션 중입니다 ..
+themes_ok2=테마 오버레이가 변경되어 현재 리디렉션 중입니다 ..
 themes_err4=오버레이 테마를 변경하지 못했습니다.
 themes_eoverlay=선택한 오버레이가 현재 글로벌 테마와 호환되지 않습니다
 

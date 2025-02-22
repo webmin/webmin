@@ -40,6 +40,6 @@ else {
 &webmin_log('theme', undef, undef, \%in);
 &ui_print_header(undef, $text{'themes_title'}, "");
 print "$text{'themes_ok2'}<p>\n";
-print &js_redirect("/", "top");
+print &js_redirect("/", "top", 1500);
 &ui_print_footer("", $text{'index_return'});
 

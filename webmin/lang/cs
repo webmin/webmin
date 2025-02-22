@@ -593,7 +593,6 @@ themes_egzip=Soubor je gzipován, ale $1 příkaz nebyl ve vašem systému nalez
 themes_egzip2=Chyba při odgzipování souboru : $1
 themes_erpm=Nejedná se o RPM s Webmin motivem
 themes_eirpm=Chyba při RPM instalaci : $1
-themes_ok=Motiv byl úspěšně změněn .. přejděte na úvodní stránku Webminu.
 themes_delete=Tento formulář může být použit ke smazání nainstalovaného motivu, pokud není právě používán.
 themes_delok=Motiv ke smazání :
 themes_return=seznam motivů

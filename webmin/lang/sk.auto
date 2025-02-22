@@ -245,7 +245,8 @@ themes_tabinstall=Inštalovať motív
 themes_tabdelete=Odstrániť témy
 themes_tabexport=Export tém
 
-themes_ok2=Prekrytie témy sa úspešne zmenilo.. presmerovanie na indexovú stránku Webmin.
+themes_ok=Téma sa úspešne zmenila, presmerovanie sa teraz podarilo ..
+themes_ok2=Prekrytie motívu sa teraz úspešne zmenilo a presmerovalo sa ..
 themes_err4=Nepodarilo sa zmeniť tému prekrytia
 themes_eoverlay=Vybraté prekrytie nie je kompatibilné s aktuálnou globálnou témou
 

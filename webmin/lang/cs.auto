@@ -200,7 +200,8 @@ themes_tabinstall=Nainstalovat motiv
 themes_tabdelete=Mazat témata
 themes_tabexport=Exportovat témata
 
-themes_ok2=Překryvný motiv se úspěšně změnil.. přesměrování na indexovou stránku Webmin.
+themes_ok=Téma se nyní úspěšně přesměrovalo ..
+themes_ok2=Překryvná vrstva motivu se nyní úspěšně přesměrovala ..
 themes_err4=Téma překrytí se nepodařilo změnit
 themes_eoverlay=Vybrané překrytí není kompatibilní s aktuálním globálním tématem
 

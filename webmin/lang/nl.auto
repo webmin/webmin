@@ -136,6 +136,9 @@ log_letsencrypt=Gevraagd nieuw SSL-certificaat van Let's Encrypt
 log_letsencryptdns=Gemaakt Laten we DNS-record coderen voor $1
 log_letsencryptcleanup=Verwijderd Laten we DNS-record coderen voor $1
 
+themes_ok=Thema is succesvol gewijzigd, omleiden is nu ..
+themes_ok2=Thema-overlay is succesvol gewijzigd. Omleiden is nu mogelijk ..
+
 referers_none2=WAARSCHUWING: Dit stelt uw systeem open voor XSS-aanvallen!
 
 lock_mode=Bestanden die Webmin kan vergrendelen

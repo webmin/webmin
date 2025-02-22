@@ -594,7 +594,6 @@ themes_egzip=파일이 gzip으로 압축되어 있지만, 시스템에 $1 명령
 themes_egzip2=파일을 gunzip 하지 못했습니다: $1
 themes_erpm=Webmin 테마 RPM이 아닙니다
 themes_eirpm=RPM을 설치하지 못했습니다: $1
-themes_ok=테마가 성공적으로 변경되었으며 Webmin 인덱스 페이지로 리디렉션 중입니다.
 themes_delete=이 폼은 시스템에 설치되어 있는 현재 사용하지 않는 테마를 삭제할 수 있습니다.
 themes_delok=삭제할 테마 :
 themes_return=테마 리스트

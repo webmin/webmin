@@ -441,7 +441,6 @@ themes_egzip=Dosya gzip ile sıkıştırılmış, ama $1 komutu sisteminizde bul
 themes_egzip2=Dosyanın gunzip ile açılmasında hata oluştu : $1
 themes_erpm=Dosya, Webmin teması RPM dosyası değil
 themes_eirpm=RPM kurulumda hata oluştu : $1
-themes_ok=Tema başarı ile değiştirildi .. Webmin ana sayfasına yönlendiriliyor.
 themes_delete=Bu form ile sisteminizdeki kullanılmayan temalardan birini silebilirsiniz.
 themes_delok=Silinecek tema :
 themes_return=tema listesi
