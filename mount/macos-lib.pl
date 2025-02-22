@@ -18,7 +18,7 @@ sub list_mounted
 local(@rv, $_);
 local $arch = &backquote_command("uname -m");
 local $cmd;
-if ($arch =~ /arm64/) {
+if ($arch =~ /arm64|x86_64/) {
 	my $expand_flags = sub {
 		my ($flags_str) = @_;
 		my @flags;
