@@ -1768,22 +1768,13 @@ for(my $i=0; my @stack_ = caller($i); $i++) {
 	push(@stack, \@stack_);
 	}
 my $err_caller;
-my $err_last_eval = $gconfig{'error_stack'} ? $main::error_last_eval : "";
-$err_last_eval =~ s/\n$// if ($err_last_eval);
 $err_caller = "$stack[0]->[1] (line $stack[0]->[2])"
 	if ($stack[0]->[1] && $stack[0]->[2]);
 if ($err_caller) {
 	$err_caller =~ s/$root_directory\///;
-	my $err_caller_msg_esc  =
-        &quote_escape(($err_last_eval ? "$err_last_eval : $err_caller" : $err_caller), '"');
+	my $err_caller_msg_esc = &quote_escape($err_caller, '"');
 	my $err_caller_msg;
-	if ($err_last_eval && defined(&ui_details)) {
-		$err_caller_msg = &ui_details({
-			'title' => $text{'main_error_details'},
-			'content' => $err_caller_msg_esc,
-			'class' =>'error'}, 1);
-		}
-	elsif (defined(&ui_help)) {
+	if (defined(&ui_help)) {
 		$err_caller_msg = &ui_help($err_caller_msg_esc);
 		}
 	else {

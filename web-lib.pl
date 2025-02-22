@@ -34,12 +34,5 @@ if (!$done_web_lib_funcs) {
 $remote_error_handler ||= \&error;
 $main::remote_error_handler ||= \&error;
 
-# Die handler that stores the error from
-# eval message in a global variable
-$SIG{__DIE__} = sub {
-	# Don't meddle with the natural functioning of eval.
-	$main::error_last_eval = $_[0] if (!$^S);
-};
-
 1;
 
