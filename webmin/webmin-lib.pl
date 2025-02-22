@@ -1248,12 +1248,17 @@ if (&foreign_available("webmin")) {
 	else {
 		&read_file($realos_cache_file, \%realos);
 		}
-	if ($realos{'os_version'} eq $gconfig{'os_version'} &&
-	    $realos{'os_type'} eq $gconfig{'os_type'} &&
+	my $new_real = $realos{'real_os_version'};
+	my $old_real = $gconfig{'real_os_version'};
+	$new_real =~ s/\.\d+$//;
+	$old_real =~ s/\.\d+$//;
+	if ($realos{'real_os_type'} eq $gconfig{'real_os_type'} &&
+	    $new_real eq $old_real &&
 	    $realos{'real_os_version'} ne $gconfig{'real_os_version'}) {
 		# Only the minor OS version has changed, just silently update it
 		&lock_file("$config_directory/config");
 		$gconfig{'real_os_version'} = $realos{'real_os_version'};
+		$gconfig{'os_version'} = $realos{'os_version'};
 		&write_file("$config_directory/config", \%gconfig);
 		&unlock_file("$config_directory/config");
 		}
