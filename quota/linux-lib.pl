@@ -1012,6 +1012,7 @@ Set XFS quotas for some user and FS
 sub set_user_quota
 {
 my ($user, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
+$user =~ s/^#//;
 my $out = &backquote_logged(
 	"xfs_quota -x -c ".
 	quotemeta("limit -u bsoft=${sblocks}k bhard=${hblocks}k ".
@@ -1033,6 +1034,7 @@ Set XFS quotas for some group and FS
 sub set_group_quota
 {
 my ($group, $fs, $sblocks, $hblocks, $sfiles, $hfiles) = @_;
+$group =~ s/^#//;
 my $out = &backquote_logged(
 	"xfs_quota -x -c ".
 	quotemeta("limit -g bsoft=${sblocks}k bhard=${hblocks}k ".
