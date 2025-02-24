@@ -24,6 +24,9 @@ elsif ($action eq 'dns') {
 elsif ($action eq 'routes') {
 	return $text{'log_routes'};
 	}
+elsif ($action eq 'apply') {
+	return $text{'log_apply'};
+	}
 elsif ($type eq 'aifc' || $type eq 'bifc') {
 	return &text("log_${action}_${type}", "<tt>$object</tt>",
 		     $p->{'dhcp'} || $p->{'bootp'} ? $text{'log_dyn'} :
