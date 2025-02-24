@@ -142,6 +142,7 @@ header_switch=Wechseln Sie in den einfachen Modus ..
 header_header=Zusätzliche Header- und Body-Tests
 header_allow=Benutzern erlauben, Tests zu definieren?
 header_test=Header-Tests
+header_mimetest=MIME-Header-Tests
 header_tname=Testname
 header_name=Für Header
 header_op=Überprüfen, ob
