@@ -404,7 +404,8 @@ foreach my $c (sort { $b cmp $a } @cats) {
 			}
 		elsif ($mcan{$md}) {
 			my $label;
-			if ($access{'acl'} && $in{'user'} && !$safe) {
+			if ($access{'acl'} && $in{'user'} && !$safe &&
+			    &can_module_acl($m)) {
 				# Show link for editing ACL
 				$label = ui_link("edit_acl.cgi?" .
 				     "mod=" . urlize($m->{'dir'}) .
