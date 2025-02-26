@@ -392,6 +392,7 @@ foreach my $c (sort { $b cmp $a } @cats) {
 	my @grid = ( );
 	my $sw = 0;
 	foreach my $m (@cmlist) {
+		next if ($m->{'noacl'});
 		my $md = $m->{'dir'};
 		my $fromgroup = $memg &&
 				&indexof($md, @{$memg->{'modules'}}) >= 0;
