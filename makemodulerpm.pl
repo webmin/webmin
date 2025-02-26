@@ -294,6 +294,10 @@ if ($rpmrecommends && exists($minfo{'recommends'})) {
 		}
 	}
 
+# If module has 'provides', consider it too
+$provides .= ($provides ? " " : "") . $minfo{'provides'}
+	if (exists($minfo{'provides'}));
+
 # Create the SPEC file
 my $providesheader = $provides ? "Provides: $provides" : "";
 my $obsoletesheader = $obsoletes ? "Obsoletes: $obsoletes" : "";
