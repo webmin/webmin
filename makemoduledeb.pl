@@ -28,9 +28,9 @@ my $files_file = "$debian_dir/files";
 	die RED, "makemoduledeb.pl must be run on Debian", RESET;
 
 # Parse command-line args
-my ($force_theme, $url, $upstream, $debdepends, $debrecommends, $no_prefix,
-    $force_usermin, $release, $allow_overwrite, $final_mod, $dsc_file, $dir,
-    $ver, @exclude);
+my ($force_theme, $url, $upstream, $provides, $debdepends, $debrecommends,
+    $no_prefix, $force_usermin, $release, $allow_overwrite, $final_mod,
+    $dsc_file, $dir, $ver, @exclude);
 
 while(@ARGV) {
 	my $a = shift(@ARGV);
@@ -48,6 +48,9 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--upstream") {
 		$upstream = shift(@ARGV);
+		}
+	elsif ($a eq "--provides") {
+		$provides = shift(@ARGV);
 		}
 	elsif ($a eq "--deb-depends") {
 		$debdepends = 1;
@@ -102,7 +105,7 @@ if (!$dir) {
 	print "                        [--licence name]\n";
 	print "                        [--email 'name <address>']\n";
 	print "                        [--upstream 'name <address>']\n";
-	print "                        [--provides provides]\n";
+	print "                        [--provides 'name1 name2']\n";
 	print "                        [--usermin]\n";
 	print "                        [--target-dir directory]\n";
 	print "                        [--dir directory-in-package]\n";
@@ -266,6 +269,13 @@ if ($debrecommends && exists($minfo{'recommends'})) {
 		}
 	}
 
+# If module has 'provides', consider it too
+$provides .= ($provides ? " " : "") . "$prefix$mod";
+$provides .= ($provides ? " " : "") . $minfo{'provides'}
+	if (exists($minfo{'provides'}));
+my @provides = split(/\s+/, $provides);
+$provides = join(", ", @provides);
+
 # Create the control file
 my $kbsize = int(($size-1) / 1024)+1;
 open(my $CONTROL, ">", "$control_file");
@@ -283,7 +293,7 @@ print $CONTROL <<EOF;
 Pre-Depends: bash, perl
 Installed-Size: $kbsize
 Maintainer: $email
-Provides: $prefix$mod
+Provides: $provides
 Description: $desc
 EOF
 close($CONTROL);
