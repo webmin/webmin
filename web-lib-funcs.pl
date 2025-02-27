@@ -6711,7 +6711,7 @@ if ($language_map{$code}) {
 return $code;
 }
 
-=head2 read_env_file(file, &hash, [include-commented])
+=head2 read_env_file(file, &hash, [include-commented], [&line-numbers-hash])
 
 Similar to Webmin's read_file function, but handles files containing shell
 environment variables formatted like :
@@ -6725,9 +6725,10 @@ ref to read names and values into.
 =cut
 sub read_env_file
 {
-my ($file, $hash, $cmt) = @_;
+my ($file, $hash, $cmt, $lnums) = @_;
 local $_;
 &open_readfile(FILE, $file) || return 0;
+my $lnum = 0;
 while(<FILE>) {
 	if ($cmt) {
 		# Remove start of line comments
@@ -6738,7 +6739,9 @@ while(<FILE>) {
 	    /^\s*(export\s*)?([A-Za-z0-9_\.]+)\s*=\s*'(.*)'/i ||
 	    /^\s*(export\s*)?([A-Za-z0-9_\.]+)\s*=\s*(.*)/i) {
 		$hash->{$2} = $3;
+		$lnums->{$2} = $lnum if ($lnums);
 		}
+	$lnum++;
 	}
 close(FILE);
 return 1;
@@ -6760,19 +6763,29 @@ sub write_env_file
 {
 my ($file, $hash, $emode) = @_;
 my $exp = $emode ? "export " : "";
-&open_tempfile(FILE, ">$file");
-foreach my $k (keys %$hash) {
+my (%oldhash, %lnums);
+&read_env_file($file, \%oldhash, 0, \%lnums);
+my $lref = &read_file_lines($file);
+foreach my $k (grep { defined($hash->{$_}) } keys %$hash) {
 	my $v = $hash->{$k};
-	if (defined($v)) {
-		if ($v =~ /^\S+$/) {
-			&print_tempfile(FILE, "$exp$k=$v\n");
-			}
-		else {
-			&print_tempfile(FILE, "$exp$k=\"$v\"\n");
-			}
+	my $newline = $v =~ /^\S+$/ ? "$exp$k=$v"
+				    : "$exp$k=\"$v\"";
+	if (defined($lnums{$k})) {
+		# Replacing an existing line
+		$lref->[$lnums{$k}] = $newline;
+		}
+	else {
+		# Adding a line
+		push(@$lref, $newline);
 		}
 	}
-&close_tempfile(FILE);
+foreach my $k (grep { !defined($hash->{$_}) } keys %oldhash) {
+	if (defined($lnums{$k})) {
+		# Value is no longer there, so remove it
+		splice(@$lref, $lnums{$k}, 1);
+		}
+	}
+&flush_file_lines($file);
 }
 
 =head2 lock_file(filename, [readonly], [forcefile], [nodiff])
