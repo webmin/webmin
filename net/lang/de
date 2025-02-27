@@ -1,7 +1,6 @@
 index_title=Netzwerkkonfiguration
 index_return=Netzwerkkonfiguration
 index_apply=Konfiguration anwenden
-index_applydesc=Klicken Sie auf diese Schaltfläche, um die aktuellen Bootzeit-Interface- und Routing-Einstellungen zu aktivieren, wie sie normalerweise nach einem Neustart wären. <b>Warnung</b> - Dies könnte Ihr System über das Netzwerk unzugänglich machen und den Zugriff auf Webmin unterbrechen.
 index_delete1=Ausgewählte Interfaces deaktivieren
 index_delete2=Ausgewählte Interfaces löschen
 index_delete3=Ausgewählte Interfaces löschen und anwenden

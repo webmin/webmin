@@ -1,7 +1,6 @@
 index_title=Netwerk Configuratie
 index_return=netwerk configuratie
 index_apply=Configuratie Toevoegen
-index_applydesc=Klik op deze knop om de huidige boot-time interface en routing instellingen te activeren, zoals zij normaal zouden doen bij een systeem reboot. <b>Waarschuwing</b> - tijdens deze actie heeft u geen toegang tot uw systeem via het netwerk, en ook geen toegang meer tot Webmin.
 index_delete1=De-activeer Geselecteerde Interfaces
 index_delete2=Verwijder Geselecteerde Interfaces
 index_delete3=Verwijderen en Toevoegen Geselecteerde Interfaces

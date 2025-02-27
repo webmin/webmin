@@ -1,7 +1,7 @@
 index_title=Sarearen konfigurazioa
 index_return=sarearen konfigurazioa
 index_apply=Aplikatu konfigurazioa
-index_applydesc=Egin klik botoi honetan uneko abiadura-interfazea eta bideratze-ezarpenak aktibatzeko, berrabiaraztearen ondoren normalean gertatzen ziren bezala. <b>Abisua</b> - honek zure sistema sarbide eskuraezina bihurtu dezake eta Webminerako sarbidea moztu dezake.
+index_applydesc=Egin klik abiarazteko garaiko interfazea eta bideratze-ezarpenak sistema berrabiaraziko balu bezala aplikatzeko. Okerreko konfigurazioak zure sistema sarean eskuraezin bihur dezake eta Webmin sarbidea moztu. Ostalari-izena eta DNS ezarpenak editatzeak ez du urrats hau behar.
 index_delete1=Hautatu hautatutako interfazeak
 index_delete2=Ezabatu hautatutako interfazeak
 index_delete3=Ezabatu eta aplikatu hautatutako interfazeak
@@ -279,6 +279,7 @@ log_create_defroute=Bide lehenetsi aktiboa sortu da
 log_delete_routes=$1 ibilbide aktibo ezabatu dira
 log_delete_aifcs=$1 interfazeak desaktibatu dira
 log_delete_bifcs=$1 interfazeak ezabatu dira
+log_apply=Sarearen abioko konfigurazioa aplikatu da
 
 acl_ifcs=Sareko interfazeak editatu al ditzake?
 acl_routes=Editatu al ditzakezu bideratzeak eta atebideak?

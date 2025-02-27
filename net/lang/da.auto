@@ -1,7 +1,7 @@
 index_title=Netværkskonfiguration
 index_return=netværkskonfiguration
 index_apply=Anvend konfiguration
-index_applydesc=Klik på denne knap for at aktivere den aktuelle boot-time interface og routingindstillinger, som de normalt ville være efter en genstart. <b>Advarsel</b> - dette kan gøre dit system utilgængeligt via netværket og afbryde adgangen til Webmin.
+index_applydesc=Klik for at anvende opstartsgrænsefladen og routingindstillingerne, som om systemet blev genstartet. Fejlkonfiguration kan gøre dit system utilgængeligt over netværket og afskære Webmin-adgang. Redigering af værtsnavn og DNS-indstillinger kræver ikke dette trin.
 index_delete1=Deaktiver valgte grænseflader
 index_delete2=Slet valgte grænseflader
 index_delete3=Slet og anvend valgte grænseflader
@@ -279,6 +279,7 @@ log_create_defroute=Oprettet aktiv standardrute
 log_delete_routes=Slet $1 aktive ruter
 log_delete_aifcs=Deaktiverede $1-grænseflader
 log_delete_bifcs=Slettede $1-grænseflader
+log_apply=Anvendt netværkskonfiguration til opstartstid
 
 acl_ifcs=Kan redigere netværksgrænseflader?
 acl_routes=Kan redigere routing og gateways?

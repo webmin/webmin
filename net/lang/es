@@ -1,7 +1,6 @@
 index_title=Configuración de Red
 index_return=configuración de red
 index_apply=Aplicar Configuración
-index_applydesc=Presione este botón para activar la interfase de tiempo de arranque y la configuración de ruteo actual, tal como serían después de un reinicio. <b>Advertencia</b> - esto podría dejar a su sistema inaccesible desde la red, y cortar el acceso a Webmin.
 
 ifcs_title=Interfaces de Red
 ifcs_now=Interfaces Activas Ahora

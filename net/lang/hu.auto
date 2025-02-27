@@ -1,3 +1,4 @@
+index_applydesc=Kattintson ide a rendszerindítási interfész és az útválasztási beállítások alkalmazásához, mintha a rendszer újraindulna. A helytelen konfiguráció miatt a rendszer elérhetetlenné válhat a hálózaton keresztül, és megszakíthatja a Webmin hozzáférést. A gazdagépnév és a DNS-beállítások szerkesztéséhez nincs szükség erre a lépésre.
 index_mode=Hálózati konfiguráció típusa: $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
@@ -25,5 +26,6 @@ hosts_active=Engedélyezve van?
 
 log_delete_aifcs=$1 interfész deaktiválva
 log_delete_bifcs=$1 interfész törölve
+log_apply=Alkalmazott rendszerindítási idejű hálózati konfiguráció
 
 acl_sysinfo=Mutassa a rendelkezésre álló hálózati interfészeket az irányítópulton

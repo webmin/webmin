@@ -1,5 +1,5 @@
 index_apply=Aplicar configuração
-index_applydesc=Clique neste botão para ativar a interface atual do tempo de inicialização e as configurações de roteamento, como normalmente ocorreriam após uma reinicialização. <b>Aviso</b> - isso pode tornar seu sistema inacessível pela rede e interromper o acesso ao Webmin.
+index_applydesc=Clique para aplicar as configurações de interface e roteamento de inicialização como se o sistema tivesse sido reinicializado. A configuração incorreta pode tornar seu sistema inacessível pela rede e cortar o acesso do Webmin. Editar as configurações de nome de host e DNS não requer esta etapa.
 index_delete1=Desativar interfaces selecionadas
 index_delete2=Excluir interfaces selecionadas
 index_delete3=Excluir e aplicar interfaces selecionadas
@@ -185,6 +185,7 @@ log_create_defroute=Rota padrão ativa criada
 log_delete_routes=$1 rotas ativas excluídas
 log_delete_aifcs=$1 interfaces desativadas
 log_delete_bifcs=$1 interfaces deletadas
+log_apply=Configuração de rede aplicada no momento da inicialização
 
 acl_ifcs=Pode editar interfaces de rede?
 acl_routes=Pode editar roteamento e gateways?

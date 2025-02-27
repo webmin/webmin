@@ -1,3 +1,4 @@
+index_applydesc=Klik om de boot-time interface en routinginstellingen toe te passen alsof het systeem opnieuw is opgestart. Een verkeerde configuratie kan ervoor zorgen dat uw systeem onbereikbaar is via het netwerk en dat Webmin-toegang wordt afgesloten. Het bewerken van hostname- en DNS-instellingen vereist deze stap niet.
 index_mode=Netwerkconfiguratietype: $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
@@ -25,5 +26,6 @@ hosts_active=Ingeschakeld?
 
 log_delete_aifcs=Gedeactiveerde $1-interfaces
 log_delete_bifcs=$1 interfaces verwijderd
+log_apply=Toegepaste boot-time netwerkconfiguratie
 
 acl_sysinfo=Toon beschikbare netwerkinterfaces op Dashboard

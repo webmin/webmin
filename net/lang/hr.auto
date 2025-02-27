@@ -1,7 +1,7 @@
 index_title=Konfiguracija mreže
 index_return=mrežna konfiguracija
 index_apply=Primijeni konfiguraciju
-index_applydesc=Kliknite ovaj gumb kako biste aktivirali trenutno sučelje za pokretanje i postavke usmjeravanja, kao što bi obično bili nakon ponovnog pokretanja. <b>Upozorenje</b> - to može vašem sustavu učiniti nedostupnim putem mreže i smanjiti pristup Webminu.
+index_applydesc=Kliknite za primjenu sučelja za vrijeme pokretanja i postavki usmjeravanja kao da je sustav ponovno pokrenut. Pogrešna konfiguracija može učiniti vaš sustav nedostupnim putem mreže i prekinuti pristup Webminu. Uređivanje naziva hosta i DNS postavki ne zahtijeva ovaj korak.
 index_delete1=Deaktivacija odabranih sučelja
 index_delete2=Brisanje odabranih sučelja
 index_delete3=Izbrišite i primijenite odabrana sučelja
@@ -279,6 +279,7 @@ log_create_defroute=Stvorena aktivna zadana ruta
 log_delete_routes=Izbrisani su $1 aktivne rute
 log_delete_aifcs=Deaktivirano sučelje $1
 log_delete_bifcs=Izbrisana $1 sučelja
+log_apply=Primijenjena konfiguracija mreže za vrijeme pokretanja sustava
 
 acl_ifcs=Mogu li uređivati mrežna sučelja?
 acl_routes=Mogu li uređivati usmjeravanje i pristupnike?

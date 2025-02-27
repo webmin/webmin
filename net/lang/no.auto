@@ -1,3 +1,4 @@
+index_applydesc=Klikk for å bruke oppstartstidsgrensesnittet og rutinginnstillingene som om systemet ble startet på nytt. Feilkonfigurering kan gjøre systemet ditt utilgjengelig over nettverket og kutte Webmin-tilgangen. Redigering av vertsnavn og DNS-innstillinger krever ikke dette trinnet.
 index_mode=Nettverkskonfigurasjonstype: $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
@@ -11,3 +12,4 @@ index_mode_nm=Nettverksleder
 
 log_delete_aifcs=Deaktiverte $1-grensesnitt
 log_delete_bifcs=Slettet $1-grensesnitt
+log_apply=Brukt nettverkskonfigurasjon for oppstartstid

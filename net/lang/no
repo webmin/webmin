@@ -1,7 +1,6 @@
 index_title=Nettverkskonfigurasjon
 index_return=nettverkskonfigurasjon
 index_apply=Bruk konfigurasjon
-index_applydesc=Klikk på denne knappen for å aktivere innstillinger for gjeldende oppstartsgrensesnitt og ruting, slik de vanligvis ville være etter en oppstart. <b>Advarsel</b> - dette kan gjøre systemet ditt utilgjengelig via nettverket, og bryte all tilgang til Webmin.
 index_delete1=Deaktiver valgte grensesnitt
 index_delete2=Slett valgte grensesnitt
 index_delete3=Slett og bruk valgte grensesnitt

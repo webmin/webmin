@@ -1,7 +1,6 @@
 index_title=Konfigurace sítě
 index_return=síťová konfigurace
 index_apply=Použít konfiguraci
-index_applydesc=Kliknutím na tlačítko aktivujete současné rozhraní a routery k bootování, změna se projevý po restartu. <b>POZOR</b> - toto může způsobit nedostupnost systému přes síť a nemožnost přístupu do Webminu.
 index_delete1=Deaktivace vybraných rozhraní
 index_delete2=Vymazat vybrané rozhraní
 index_delete3=Vymazat vybrané rozhraní a použít tuto konfiguraci
