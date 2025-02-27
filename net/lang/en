@@ -1,7 +1,7 @@
 index_title=Network Configuration
 index_return=network configuration
 index_apply=Apply Configuration
-index_applydesc=Click this button to activate the current boot-time interface and routing settings, as they normally would be after a reboot. <b>Warning</b> - this may make your system inaccessible via the network, and cut off access to Webmin.
+index_applydesc=Click to apply the boot-time interface and routing settings as if the system were rebooted. ⚠ Misconfiguration may make your system unreachable over the network and cut off Webmin access. Editing hostname and DNS settings doesn’t require this step.
 index_delete1=De-Activate Selected Interfaces
 index_delete2=Delete Selected Interfaces
 index_delete3=Delete and Apply Selected Interfaces
