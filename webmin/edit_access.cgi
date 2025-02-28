@@ -25,9 +25,7 @@ print &ui_table_row($text{'access_ip'},
 	 	    [ 1, $text{'access_allow'} ],
 	 	    [ 2, $text{'access_deny'} ] ])."<br>\n".
 	&ui_textarea("ip", join("\n", @list), 6, 30)."<br>\n".
-	&ui_checkbox("local", 1, $text{'access_local'}, $idx >= 0).
-	($miniserv{"known_ips"} ? 
-		&ui_checkbox("noknown", 1, $text{'access_known'}, 0) : ""));
+	&ui_checkbox("local", 1, $text{'access_local'}, $idx >= 0));
 
 print &ui_table_row($text{'access_always'},
 	&ui_yesno_radio("alwaysresolve", int($miniserv{'alwaysresolve'})));
