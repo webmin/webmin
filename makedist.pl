@@ -46,7 +46,7 @@ $vers || usage();
 	  "config-openbsd",
 	  "config-macos", "LICENCE",
 	  "session_login.cgi", "acl_security.pl",
-	  "defaultacl", "rpc.cgi", "date_chooser.cgi", "switch_skill.cgi",
+	  "defaultacl", "rpc.cgi", "date_chooser.cgi",
 	  "safeacl", "install-module.pl", "LICENCE.ja", 
 	  "favicon.ico", "config-netbsd", "fastrpc.cgi",
 	  "defaulttheme", "feedback.cgi", "feedback_form.cgi",
