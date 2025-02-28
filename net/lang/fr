@@ -1,7 +1,6 @@
 index_title=Configuration Réseau
 index_return=configuration réseau
 index_apply=Appliquer la Configuration
-index_applydesc=Cliquez sur ce bouton pour activer les configurations actuelles comme si vous aviez redemarre la machine.<br><b>ATTENTION:</b> Cela peut rendre votre systeme inaccessible par le reseau et couper l'acces a Webmin.
 index_delete1=Désactiver les interfaces sélectionnées
 index_delete2=Supprimer les interfaces sélectionnées
 index_delete3=Supprimer et appliquer les interfaces sélectionnées

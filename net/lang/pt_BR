@@ -1,7 +1,6 @@
 index_title=Configuração de rede
 index_return=configuração de rede
 index_apply=Aplicar configuração
-index_applydesc=Clique neste botão para ativar as interfaces inicializáveis no boot e as configurações de roteamento, de forma semelhante à que deveriam estar após uma reinicialização do sistema. <b>Atenção</b> - isso pode deixar seu sistema inacessível através da rede e interromper o acesso ao Webmin.
 index_delete1=Desativar interfaces selecionadas
 index_delete2=Remover interfaces selecionadas
 index_delete3=Remover interfaces selecionadas e aplicar

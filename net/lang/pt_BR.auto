@@ -1,3 +1,4 @@
+index_applydesc=Clique para aplicar as configurações de interface e roteamento de inicialização como se o sistema tivesse sido reinicializado. A configuração incorreta pode tornar seu sistema inacessível pela rede e cortar o acesso do Webmin. Editar as configurações de nome de host e DNS não requer esta etapa.
 index_mode=Tipo de configuração de rede: $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
@@ -61,5 +62,6 @@ hosts_active=Ativado?
 
 log_delete_aifcs=$1 interfaces desativadas
 log_delete_bifcs=$1 interfaces deletadas
+log_apply=Configuração de rede aplicada no momento da inicialização
 
 acl_sysinfo=Mostrar interfaces de rede disponíveis no painel

@@ -15,6 +15,8 @@ delete($miniserv{"allow"});
 delete($miniserv{"deny"});
 if ($in{"access"} == 1) { $miniserv{"allow"} = join(' ', @hosts); }
 elsif ($in{"access"} == 2) { $miniserv{"deny"} = join(' ', @hosts); }
+$miniserv{"known_ips"} = $miniserv{"allow"} || $miniserv{"deny"} ||
+        (!@hosts && $in{"access"} == 0 ? "" : $miniserv{"known_ips"});
 $miniserv{'libwrap'} = $in{'libwrap'};
 $miniserv{'alwaysresolve'} = $in{'alwaysresolve'};
 &put_usermin_miniserv_config(\%miniserv);

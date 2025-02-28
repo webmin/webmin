@@ -1,7 +1,7 @@
 index_title=Verkon kokoonpano
 index_return=verkon kokoonpano
 index_apply=Käytä määritystä
-index_applydesc=Napsauta tätä painiketta aktivoidaksesi nykyiset käynnistysaikarajapinnat ja reititysasetukset, kuten ne normaalisti olisivat uudelleenkäynnistyksen jälkeen. <b>Varoitus</b> - tämä voi tehdä järjestelmästä esteettömän verkon kautta ja estää pääsyn Webminiin.
+index_applydesc=Napsauta ottaaksesi käynnistysajan käyttöliittymän ja reititysasetukset käyttöön ikään kuin järjestelmä käynnistettäisiin uudelleen. Virheellinen määritys saattaa tehdä järjestelmääsi tavoittamattoman verkon kautta ja katkaista Webminin käytön. Isäntänimen ja DNS-asetusten muokkaaminen ei vaadi tätä vaihetta.
 index_delete1=Poista valittujen rajapintojen aktivointi käytöstä
 index_delete2=Poista valitut rajapinnat
 index_delete3=Poista ja käytä valittuja käyttöliittymiä
@@ -279,6 +279,7 @@ log_create_defroute=Luotu aktiivinen oletusreitti
 log_delete_routes=Poistettu $1 aktiivista reittiä
 log_delete_aifcs=$1 liitännät poistettu käytöstä
 log_delete_bifcs=Poistettu $1 liitännät
+log_apply=Käynnistysajan verkkomääritys
 
 acl_ifcs=Voiko verkkoliittymiä muokata?
 acl_routes=Voiko muokata reititystä ja yhdyskäytäviä?

@@ -1,3 +1,4 @@
+index_applydesc=Sistem yeniden başlatılmış gibi önyükleme zamanı arayüzünü ve yönlendirme ayarlarını uygulamak için tıklayın. Yanlış yapılandırma sisteminizin ağ üzerinden erişilemez olmasına ve Webmin erişiminin kesilmesine neden olabilir. Ana bilgisayar adını ve DNS ayarlarını düzenlemek bu adımı gerektirmez.
 index_delete1=Seçili Arayüzleri Devre Dışı Bırak
 index_delete2=Seçili Arayüzleri Sil
 index_delete3=Seçili Arayüzleri Sil ve Uygula
@@ -130,6 +131,7 @@ log_create_defroute=Aktif varsayılan rota oluşturuldu
 log_delete_routes=$1 etkin rota silindi
 log_delete_aifcs=$1 arayüzü devre dışı bırakıldı
 log_delete_bifcs=$1 arayüz silindi
+log_apply=Uygulanan önyükleme zamanı ağ yapılandırması
 
 acl_hide=Düzenlenemeyen arayüzler gizlensin mi?
 acl_sysinfo=Gösterge Tablosunda kullanılabilir ağ arayüzlerini göster

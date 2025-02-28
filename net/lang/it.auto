@@ -1,5 +1,5 @@
 index_apply=Applica configurazione
-index_applydesc=Fare clic su questo pulsante per attivare l'interfaccia di avvio corrente e le impostazioni di routing, come sarebbero normalmente dopo un riavvio. <b>Avviso</b>: ciò potrebbe rendere il sistema inaccessibile tramite la rete e interrompere l'accesso a Webmin.
+index_applydesc=Fai clic per applicare l'interfaccia di avvio e le impostazioni di routing come se il sistema fosse stato riavviato. Una configurazione errata potrebbe rendere il sistema irraggiungibile sulla rete e interrompere l'accesso a Webmin. La modifica delle impostazioni hostname e DNS non richiede questo passaggio.
 index_delete1=Disattiva le interfacce selezionate
 index_delete2=Elimina le interfacce selezionate
 index_delete3=Elimina e applica le interfacce selezionate
@@ -155,6 +155,7 @@ log_create_defroute=Percorso predefinito attivo creato
 log_delete_routes=$1 percorsi attivi eliminati
 log_delete_aifcs=Interfacce $1 disattivate
 log_delete_bifcs=Interfacce $1 eliminate
+log_apply=Configurazione di rete applicata all'avvio
 
 acl_ifcs_ex=Interfacce tranne
 acl_apply=È possibile applicare la configurazione?

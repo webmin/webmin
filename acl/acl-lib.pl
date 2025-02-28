@@ -1299,6 +1299,19 @@ foreach my $u (split(/\s+/, $access{'users'})) {
 return 0;
 }
 
+=head2 can_module_acl(&mod)
+
+Returns 1 if the given module has ability to manage its own ACLs.
+
+=cut
+sub can_module_acl
+{
+my ($mod) = @_;
+my $mdir = &module_root_directory($mod);
+return 1 if (-f "$mdir/acl_security.pl" || -f "$mdir/config.info");
+return 0;
+}
+
 =head2 open_session_db(\%miniserv)
 
 Opens the session database, and ties it to the sessiondb hash. Parameters are :

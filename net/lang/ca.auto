@@ -1,3 +1,4 @@
+index_applydesc=Feu clic per aplicar la interfície d'arrencada i la configuració d'encaminament com si el sistema s'hagués reiniciat. Una configuració incorrecta pot fer que el vostre sistema no sigui accessible a través de la xarxa i tallar l'accés a Webmin. L'edició del nom d'amfitrió i la configuració del DNS no requereix aquest pas.
 index_mode=Tipus de configuració de xarxa: $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
@@ -15,5 +16,6 @@ hosts_active=Està activat?
 
 log_delete_aifcs=Interfícies $1 desactivades
 log_delete_bifcs=S'han suprimit $1 interfícies
+log_apply=Configuració de xarxa en temps d'arrencada aplicada
 
 acl_sysinfo=Mostra les interfícies de xarxa disponibles al Tauler de control

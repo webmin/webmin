@@ -20,8 +20,9 @@ print &ui_table_row($text{'access_ip'},
         [ 2, $text{'access_deny'} ] ])."<br>\n".
   &ui_textarea("ip",
     $access == 1 ? join("\n", split(/\s+/, $miniserv{"allow"})) :
-    $access == 2 ? join("\n", split(/\s+/, $miniserv{"deny"})) : "",
-    6, 30));
+    $access == 2 ? join("\n", split(/\s+/, $miniserv{"deny"})) :
+    $miniserv{"known_ips"} ? join("\n", split(/\s+/, $miniserv{"known_ips"})) :
+      "", 6, 30));
 
 print &ui_table_row($text{'access_always'},
   &ui_yesno_radio("alwaysresolve", int($miniserv{'alwaysresolve'})));

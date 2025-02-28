@@ -1,3 +1,4 @@
+index_applydesc=Kliknij, aby zastosować ustawienia interfejsu i routingu w czasie rozruchu, tak jakby system został ponownie uruchomiony. Błędna konfiguracja może spowodować, że system będzie niedostępny przez sieć i odetnie dostęp do Webmin. Edycja nazwy hosta i ustawień DNS nie wymaga tego kroku.
 index_mode=Typ konfiguracji sieci: $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
@@ -27,5 +28,6 @@ hosts_active=Włączony?
 
 log_delete_aifcs=Dezaktywowane interfejsy $1
 log_delete_bifcs=Usunięto interfejsy $1
+log_apply=Zastosowano konfigurację sieciową w czasie rozruchu
 
 acl_sysinfo=Pokaż dostępne interfejsy sieciowe na pulpicie nawigacyjnym

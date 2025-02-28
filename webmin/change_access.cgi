@@ -7,8 +7,8 @@ require './webmin-lib.pl';
 &error_setup($text{'access_err'});
 
 $raddr = $ENV{'REMOTE_ADDR'};
+@hosts = split(/\s+/, $in{"ip"});
 if ($in{"access"}) {
-	@hosts = split(/\s+/, $in{"ip"});
 	push(@hosts, "LOCAL") if ($in{'local'});
 	if (!@hosts) { &error($text{'access_enone'}); }
 	foreach $h (@hosts) {
@@ -36,6 +36,8 @@ delete($miniserv{"allow"});
 delete($miniserv{"deny"});
 if ($in{"access"} == 1) { $miniserv{"allow"} = join(' ', @hosts); }
 elsif ($in{"access"} == 2) { $miniserv{"deny"} = join(' ', @hosts); }
+$miniserv{"known_ips"} = $miniserv{"allow"} || $miniserv{"deny"} ||
+        (!@hosts && $in{"access"} == 0 ? "" : $miniserv{"known_ips"});
 $miniserv{'libwrap'} = $in{'libwrap'};
 $miniserv{'alwaysresolve'} = $in{'alwaysresolve'};
 if ($in{'trust'} == 2) {

@@ -1,3 +1,4 @@
+index_applydesc=點擊即可應用啟動時介面和路由設置，就像系統重新啟動一樣。 配置錯誤可能會導致您的系統無法透過網路存取，並切斷 Webmin 存取。編輯主機名稱和 DNS 設定不需要此步驟。
 index_delete1=停用選定的接口
 index_delete2=刪除所選接口
 index_delete3=刪除和應用所選接口
@@ -136,6 +137,7 @@ log_create_defroute=創建的活動默認路由
 log_delete_routes=已刪除 $1個活動路線
 log_delete_aifcs=已停用 $1 接口
 log_delete_bifcs=已刪除 $1 個接口
+log_apply=應用程式啟動時網路配置
 
 acl_ifcs_ex=接口除外
 acl_bootonly=可以編輯活動界面嗎？

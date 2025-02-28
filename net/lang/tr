@@ -1,7 +1,6 @@
 index_title=Ağ Yapılandırması
 index_return=ağ yapılandırması
 index_apply=Yapılandırmayı Uygula
-index_applydesc=Bu butonu tıklayarak normalde sistemin yeniden başlatılmasından sonra uygulanacak olan IP ve yönlendirme ayarlarını aktive edebilirsiniz. <b>Uyarı</b> - bu işlem sisteme ağ üzerinde ulaşılmasını ve Webmin'e erişiminizi engelleyebilir.
 
 ifcs_title=Ağ Arayüzleri
 ifcs_now=Aktif Arayüzler

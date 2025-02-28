@@ -1,3 +1,4 @@
+index_applydesc=Kliknutím na toto tlačítko použijete rozhraní doby spouštění a nastavení směrování, jako by byl systém restartován. Špatná konfigurace může způsobit, že váš systém bude nedostupný přes síť a přeruší přístup Webmin. Úprava názvu hostitele a nastavení DNS tento krok nevyžaduje.
 index_vmin=Virtualmin
 index_mode=Typ konfigurace sítě: $1
 index_mode_netplan=Netplan
@@ -74,6 +75,7 @@ ipnodes_delete=Odstranění vybraných adres hostitele IPv6
 log_delete_ipnodes=Byly odstraněny adresy hostitele IPv6 $1
 log_delete_aifcs=Deaktivováno $1 rozhraní
 log_delete_bifcs=Smazáno $1 rozhraní
+log_apply=Použitá konfigurace sítě při spuštění
 
 acl_sysinfo=Zobrazit dostupná síťová rozhraní na hlavním panelu
 

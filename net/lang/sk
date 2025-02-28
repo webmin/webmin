@@ -1,7 +1,6 @@
 index_title=Nastavenie siete
 index_return=nastavenia siete
 index_apply=Aplikovať konfiguráciu
-index_applydesc=Kliknite na toto tlačítko, ak chcete súčasné nastavenie rozhrania a smerovania aktivovať pri zavádzaní systému. <b>Varovanie</b> - môže to spôsobiť, že váš systém nebude dostupný cez sieť a nebude sa dať do neho dostať ani cez Webmin.
 index_delete1=Deaktivovať označené rozhrania
 index_delete2=Odstrániť označené rozhrania
 index_delete3=Odstrániť a použiť označené rozhrania

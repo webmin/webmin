@@ -1,7 +1,6 @@
 index_title=網路組態
 index_return=網路組態
 index_apply=套用組態
-index_applydesc=按此按鈕來啟動目前開機狀態的網路介面與路由設定，通常會再重新開機後生效。<b>警告</b>這樣讓您的系統無法由網路進入和中斷與Webmin的連線
 
 ifcs_title=網路介面
 ifcs_now=目前運作中的網路介面

@@ -1,7 +1,6 @@
 index_title=Konfiguracja sieci
 index_return=konfiguracji sieci
 index_apply=Zastosuj konfigurację
-index_applydesc=Kliknij na ten przycisk, aby aktywować aktualne ustawienia interfejsów i routingu. <b>Uwaga</b> - może uniemożliwić dostęp do twojego systemu przez sieć i odciąć dostęp do Webmina.
 index_delete1=Dezaktywuj wybrane interfejsy
 index_delete2=Usuń wybrane interfejsy
 index_delete3=Usuń i zastosuj wybrane interfejsy

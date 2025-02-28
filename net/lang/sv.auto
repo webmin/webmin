@@ -1,5 +1,5 @@
 index_apply=Använd konfigurering
-index_applydesc=Klicka på den här knappen för att aktivera det aktuella gränssnittet för starttid och routing, som de normalt skulle vara efter en omstart. <b>Varning</b> - detta kan göra ditt system oåtkomligt via nätverket och avbryta åtkomsten till Webmin.
+index_applydesc=Klicka för att tillämpa starttidsgränssnittet och routinginställningarna som om systemet startades om. Felkonfiguration kan göra att ditt system inte går att nå över nätverket och att Webmin-åtkomsten avbryts. Redigera värdnamn och DNS-inställningar kräver inte detta steg.
 index_delete1=Avaktivera valda gränssnitt
 index_delete2=Radera valda gränssnitt
 index_delete3=Radera och tillämpa valda gränssnitt
@@ -170,6 +170,7 @@ log_create_defroute=Skapade aktiv standardväg
 log_delete_routes=$1 aktiva rutter raderade
 log_delete_aifcs=Inaktiverade $1-gränssnitt
 log_delete_bifcs=Borttaget $1-gränssnitt
+log_apply=Tillämpad nätverkskonfiguration för starttid
 
 acl_ifcs=Kan redigera nätverksgränssnitt?
 acl_routes=Kan redigera routing och gateways?

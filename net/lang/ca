@@ -1,7 +1,6 @@
 index_title=Configuració de Xarxa
 index_return=a la configuració de xarxa
 index_apply=Aplica la Configuració
-index_applydesc=Fes clic sobre aquest botó per activar la interfície actual i els valors d'encaminament, tal com ho farien després de reengegar el sistema. <b>Atenció</b> - això pot fer el sistema inaccessible a través de xarxa i tallar l'accés a Webmin.
 index_delete1=Desactiva les Interfícies Seleccionades
 index_delete2=Suprimeix les Interfícies Seleccionades
 index_delete3=Suprimeix i Aplica les Interfícies Seleccionades

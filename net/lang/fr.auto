@@ -1,3 +1,4 @@
+index_applydesc=Cliquez pour appliquer l'interface de démarrage et les paramètres de routage comme si le système avait été redémarré. Une mauvaise configuration peut rendre votre système inaccessible sur le réseau et couper l'accès à Webmin. La modification du nom d'hôte et des paramètres DNS ne nécessite pas cette étape.
 index_mode=Type de configuration réseau : $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
@@ -11,3 +12,4 @@ index_mode_nm=Gestionnaire de réseau
 
 log_delete_aifcs=Interfaces $1 désactivées
 log_delete_bifcs=Interface $1 supprimée
+log_apply=Configuration réseau appliquée au démarrage

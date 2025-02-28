@@ -1,3 +1,4 @@
+index_applydesc=Kliknite, ak chcete použiť rozhranie času spustenia a nastavenia smerovania, ako keby bol systém reštartovaný. Nesprávna konfigurácia môže spôsobiť, že váš systém bude nedostupný cez sieť a preruší prístup Webmin. Úprava názvu hostiteľa a nastavení DNS nevyžaduje tento krok.
 index_mode=Typ sieťovej konfigurácie: $1
 index_mode_netplan=Netplan
 index_mode_cygwin=Cygwin
@@ -61,5 +62,6 @@ hosts_active=Povolené?
 
 log_delete_aifcs=Deaktivované rozhrania $1
 log_delete_bifcs=Odstránené $1 rozhraní
+log_apply=Použitá konfigurácia siete pri spustení
 
 acl_sysinfo=Zobraziť dostupné sieťové rozhrania na informačnom paneli

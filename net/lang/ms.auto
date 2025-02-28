@@ -1,7 +1,7 @@
 index_title=Konfigurasi Rangkaian
 index_return=konfigurasi rangkaian
 index_apply=Terapkan Konfigurasi
-index_applydesc=Klik butang ini untuk mengaktifkan antara muka boot masa dan tetapan laluan semasa, kerana biasanya akan selepas reboot. <b>Amaran</b> - ini boleh menjadikan sistem anda tidak dapat diakses melalui rangkaian, dan memotong akses ke Webmin.
+index_applydesc=Klik untuk menggunakan antara muka masa but dan tetapan penghalaan seolah-olah sistem telah but semula. Salah konfigurasi boleh menyebabkan sistem anda tidak dapat dicapai melalui rangkaian dan memutuskan akses Webmin. Mengedit tetapan nama hos dan DNS tidak memerlukan langkah ini.
 index_delete1=De-Aktifkan Antaramuka Terpilih
 index_delete2=Padam Interface yang Dipilih
 index_delete3=Padam dan Guna Antaramuka Terpilih
@@ -279,6 +279,7 @@ log_create_defroute=Membuat laluan lalai aktif
 log_delete_routes=Dihapus $1 laluan aktif
 log_delete_aifcs=$1 antara muka dinyahaktifkan
 log_delete_bifcs=$1 antara muka dipadamkan
+log_apply=Konfigurasi rangkaian masa but digunakan
 
 acl_ifcs=Bolehkah mengedit antara muka rangkaian?
 acl_routes=Bolehkah mengedit routing dan gateway?

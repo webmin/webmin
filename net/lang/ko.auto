@@ -1,5 +1,5 @@
 index_apply=구성 적용
-index_applydesc=일반적으로 재부팅 후와 같이 현재 부팅 시간 인터페이스 및 라우팅 설정을 활성화하려면이 버튼을 클릭하십시오. <b>경고</b>-네트워크를 통해 시스템에 액세스 할 수 없게되고 Webmin에 대한 액세스가 차단 될 수 있습니다.
+index_applydesc=시스템이 재부팅된 것처럼 부팅 시간 인터페이스와 라우팅 설정을 적용하려면 클릭합니다. 구성이 잘못되면 네트워크를 통해 시스템에 접근할 수 없게 되고 Webmin 액세스가 차단될 수 있습니다. 호스트 이름과 DNS 설정을 편집하는 데는 이 단계가 필요하지 않습니다.
 index_delete1=선택된 인터페이스 비활성화
 index_delete2=선택된 인터페이스 삭제
 index_delete3=선택된 인터페이스 삭제 및 적용
@@ -170,6 +170,7 @@ log_create_defroute=활성 기본 경로 생성
 log_delete_routes=활성 경로 $1 개 삭제
 log_delete_aifcs=비활성화된 $1 인터페이스
 log_delete_bifcs=삭제된 $1 인터페이스
+log_apply=부팅 시 네트워크 구성 적용
 
 acl_ifcs=네트워크 인터페이스를 편집 할 수 있습니까?
 acl_routes=라우팅 및 게이트웨이를 편집 할 수 있습니까?
