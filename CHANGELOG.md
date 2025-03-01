@@ -1,5 +1,11 @@
 ## Changelog
 
+#### 2.302 (March 1, 2025)
+* Add ability to preserve allow/deny IPs in Webmin Configuration module #2427
+* Fix to improve wording when applying network in Network Configuration module
+* Fix to clean up old code
+* Update German translations
+
 #### 2.301 (February 16, 2025)
 * Fix to check correctly if ProFTPD is installed #2410
 * Fix to properly escape HTML in date fields
