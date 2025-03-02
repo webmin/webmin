@@ -10673,18 +10673,18 @@ else {
 		my @oldst = stat($file);
 		my $directopen = 0;
 		my $tmp = &open_tempfile($file);
-		my $ex = open($fh, ">$tmp");
-		if (!$ex && $! =~ /permission/i && $< != 0) {
+		my $ok = open($fh, ">$tmp");
+		if (!$ok && $! =~ /permission/i && $< != 0) {
 			# Could not open temp file .. try opening actual file
 			# instead directly
-			$ex = open($fh, ">$file");
+			$ok = open($fh, ">$file");
 			delete($main::open_tempfiles{$file});
 			$directopen = 1;
 			}
-		else {
+		elsif ($ok) {
 			$main::open_temphandles{$fh} = $file;
 			}
-		if (!$ex && !$noerror) {
+		if (!$ok && !$noerror) {
 			&error(&text("efileopen", html_escape($file), $!));
 			}
 		binmode($fh);
@@ -10692,7 +10692,7 @@ else {
 			# Use same permissions as the file being overwritten
 			chmod($oldst[2], $tmp);
 			}
-		return $ex;
+		return $ok;
 		}
 	elsif ($file =~ /^>\s*(([a-zA-Z]:)?\/.*)$/ && $notemp) {
 		# Just writing direct to a file
