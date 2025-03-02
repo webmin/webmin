@@ -15,6 +15,7 @@ Example code:
 ##use warnings;
 use Socket;
 use POSIX;
+use IO::Handle;
 use feature 'state';
 eval "use Socket6";
 $ipv6_module_error = $@;
@@ -10790,9 +10791,21 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 		if ($noerror) { return 0; }
 		else { &error("Temporary file @{[html_escape($main::open_tempfiles{$_[0]})]} is empty!"); }
 		}
+	# Flush and sync the temp file before renaming
+	if (open(my $sync_fh, ">>", $main::open_tempfiles{$_[0]})) {
+		$sync_fh->flush();
+		$sync_fh->sync();
+		close($sync_fh);
+		}
 	if (!rename($main::open_tempfiles{$_[0]}, $_[0])) {
 		if ($noerror) { return 0; }
 		else { &error("Failed to replace @{[html_escape($_[0])]} with @{[html_escape($main::open_tempfiles{$_[0]})]} : $!"); }
+		}
+	# Flush and sync the new file after renaming
+	if (open(my $sync_fh, ">>", $_[0])) {
+		$sync_fh->flush();
+		$sync_fh->sync();
+		close($sync_fh);
 		}
 	if (@st) {
 		# Set original permissions and ownership
