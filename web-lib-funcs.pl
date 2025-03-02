@@ -154,7 +154,8 @@ my $realfile = &translate_filename($file);
 if ($sort || $gconfig{'sortconfigs'}) {
 	# Always sort by keys
 	foreach my $k (sort keys %{$data_hash}) {
-		(print ARFILE $k,$join,$data_hash->{$k},"\n") ||
+		my $v = &write_file_cleanup($data_hash->{$k});
+		(print ARFILE $k,$join,$v,"\n") ||
 			&error(&text("efilewrite", $realfile, $!));
 		}
 	}
@@ -163,13 +164,15 @@ else {
 	my %done;
 	foreach my $k (@order) {
 		if (exists($data_hash->{$k}) && !$done{$k}++) {
-			(print ARFILE $k,$join,$data_hash->{$k},"\n") ||
+			my $v = &write_file_cleanup($data_hash->{$k});
+			(print ARFILE $k,$join,$v,"\n") ||
 				&error(&text("efilewrite", $realfile, $!));
 			}
 		}
 	foreach my $k (keys %{$data_hash}) {
 		if (!exists($old{$k}) && !$done{$k}++) {
-			(print ARFILE $k,$join,$data_hash->{$k},"\n") ||
+			my $v = &write_file_cleanup($data_hash->{$k});
+			(print ARFILE $k,$join,$v,"\n") ||
 				&error(&text("efilewrite", $realfile, $!));
 			}
 		}
@@ -183,6 +186,19 @@ if (defined($main::read_file_cache{$realfile})) {
 if (defined($main::read_file_missing{$realfile})) {
 	$main::read_file_missing{$realfile} = 0;
 	}
+}
+
+=head2 write_file_cleanup(value)
+
+Removes newline and any characters after it from a value to be written to
+a data file by write_file.
+
+=cut
+sub write_file_cleanup
+{
+my ($v) = @_;
+$v =~ s/\n[\000-\377]*$//;
+return $v;
 }
 
 =head2 sort_file_by(file, sorted-by-file, [join])
