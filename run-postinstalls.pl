@@ -7,6 +7,7 @@ BEGIN { push(@INC, "."); };
 $no_acl_check++;
 use WebminCore;
 &init_config();
+$current_theme = $WebminCore::current_theme = undef;
 
 if (@ARGV > 0) {
 	# Running for specified modules
