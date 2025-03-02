@@ -153,7 +153,7 @@ my $realfile = &translate_filename($file);
 &open_tempfile(ARFILE, ">$file");
 if ($sort || $gconfig{'sortconfigs'}) {
 	# Always sort by keys
-	foreach $k (sort keys %{$data_hash}) {
+	foreach my $k (sort keys %{$data_hash}) {
 		(print ARFILE $k,$join,$data_hash->{$k},"\n") ||
 			&error(&text("efilewrite", $realfile, $!));
 		}
@@ -161,13 +161,13 @@ if ($sort || $gconfig{'sortconfigs'}) {
 else {
 	# Where possible, write out in the original order
 	my %done;
-	foreach $k (@order) {
+	foreach my $k (@order) {
 		if (exists($data_hash->{$k}) && !$done{$k}++) {
 			(print ARFILE $k,$join,$data_hash->{$k},"\n") ||
 				&error(&text("efilewrite", $realfile, $!));
 			}
 		}
-	foreach $k (keys %{$data_hash}) {
+	foreach my $k (keys %{$data_hash}) {
 		if (!exists($old{$k}) && !$done{$k}++) {
 			(print ARFILE $k,$join,$data_hash->{$k},"\n") ||
 				&error(&text("efilewrite", $realfile, $!));
