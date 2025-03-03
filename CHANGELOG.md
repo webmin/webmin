@@ -1,7 +1,8 @@
 ## Changelog
 
-#### 2.302 (March 1, 2025)
+#### 2.302 (March 3, 2025)
 * Add ability to preserve allow/deny IPs in Webmin Configuration module #2427
+* Add enhancements to module config saving to ensure reliability under all conditions
 * Fix to improve wording when applying network in Network Configuration module
 * Fix to clean up old code
 * Update German translations
