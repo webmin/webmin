@@ -15,6 +15,7 @@ Example code:
 ##use warnings;
 use Socket;
 use POSIX;
+use IO::Handle;
 use feature 'state';
 eval "use Socket6";
 $ipv6_module_error = $@;
@@ -10757,6 +10758,11 @@ my $notempty = $_[1];
 if (defined($file = $main::open_temphandles{$fh})) {
 	# Closing a handle
 	my $noerror = $main::open_tempfiles_noerror{$file};
+	# Flush and sync before closing the handle
+	if (defined($fh)) {
+		$fh->flush();
+		$fh->sync();
+		}
 	if (!close($fh)) {
 		if ($noerror) { return 0; }
 		else { &error(&text("efileclose", $file, $!)); }
