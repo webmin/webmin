@@ -1,6 +1,7 @@
 index_title=Netzwerkkonfiguration
 index_return=Netzwerkkonfiguration
 index_apply=Konfiguration anwenden
+index_applydesc=Klicken Sie, um die Schnittstellen- und Routing-Einstellungen für den Systemstart anzuwenden, als würde das System neu gestartet. ⚠ Eine Fehlkonfiguration kann dazu führen, dass Ihr System über das Netzwerk nicht mehr erreichbar ist und der Zugriff auf Webmin unterbrochen wird. Das Bearbeiten der Hostnamen- und DNS-Einstellungen erfordert diesen Schritt nicht.
 index_delete1=Ausgewählte Interfaces deaktivieren
 index_delete2=Ausgewählte Interfaces löschen
 index_delete3=Ausgewählte Interfaces löschen und anwenden
