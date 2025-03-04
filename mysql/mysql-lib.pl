@@ -1766,10 +1766,11 @@ return undef if (!ref($rv) || !@{$rv->{'data'}});
 return $rv->{'data'}->[0]->[1];
 }
 
-# perms_column_to_privilege_map()
+# perms_column_to_privilege_map(col)
 # Returns a privilege name based on given column for MySQL 8+ and MariaDB 10.4
 sub perms_column_to_privilege_map
 {
+my ($column) = @_;
 my %priv = (
 	'Alter_priv', 'alter',
 	'Alter_routine_priv', 'alter routine',
@@ -1800,9 +1801,15 @@ my %priv = (
 	'Super_priv', 'super',
 	'Trigger_priv', 'trigger',
 	'Update_priv', 'update',
+
 	'Delete_history_priv', 'delete history',
+
+	# 'Create_role_priv', 'create role',
+	# 'Drop_role_priv', 'drop role',
+	# 'proxies_priv', 'proxy',
+
 	);
-return \%priv;
+return defined($column) ? $priv{$column} : \%priv;
 }
 
 # update_privileges(\%sconfig)
@@ -1821,8 +1828,8 @@ my ($ver, $variant) = &get_remote_mysql_variant();
 if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
 	# Assign permissions
 	my $col_to_priv_map = &perms_column_to_privilege_map();
-	foreach my $grant (keys %$perms) {
-		my $grant_priv = $perms->{$grant};
+	foreach my $grant (keys %{ $perms }) {
+		my $grant_priv = &perms_column_to_privilege_map($grant);
 		&execute_sql_logged($mysql::master_db, "grant $grant_priv on *.* to '$user'\@'$host'");
 		delete $col_to_priv_map->{$grant};
 		}
