@@ -4,6 +4,7 @@
 * Add ability to preserve allow/deny IPs in Webmin Configuration module #2427
 * Add enhancements to module config saving to ensure reliability under all conditions
 * Fix to improve wording when applying network in Network Configuration module
+* Fix regression in MySQL/MariaDB database user permission assignment
 * Fix to clean up old code
 * Update German translations
 
