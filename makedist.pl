@@ -259,12 +259,13 @@ if ($min && !$release) {
 # Fill an associative array with name=value pairs from a file
 sub read_file
 {
-open(ARFILE, $_[0]) || return 0;
+my ($file, $data_hash, $order) = @_;
+open(ARFILE, $file) || return 0;
 while(<ARFILE>) {
         chop;
         if (!/^#/ && /^([^=]+)=(.*)$/) {
-		$_[1]->{$1} = $2;
-		push(@{$_[2]}, $1);
+		$data_hash->{$1} = $2;
+		push(@$order, $1) if ($order);
         	}
         }
 close(ARFILE);
@@ -275,11 +276,20 @@ return 1;
 # Write out the contents of an associative array as name=value lines
 sub write_file
 {
-local($arr);
-$arr = $_[1];
-open(ARFILE, "> $_[0]");
-foreach $k (keys %$arr) {
-        print ARFILE "$k=$$arr{$k}\n";
+my ($file, $data_hash) = @_;
+my (%old, @order);
+&read_file($file, \%old, \@order);
+open(ARFILE, ">$file");
+my %done;
+foreach my $k (@order) {
+	if (exists($data_hash->{$k}) && !$done{$k}++) {
+		print ARFILE $k,"=",$data_hash->{$k},"\n";
+		}
+	}
+foreach $k (keys %$data_hash) {
+	if (!exists($old{$k}) && !$done{$k}++) {
+		print ARFILE $k,"=",$data_hash->{$k},"\n";
+		}
         }
 close(ARFILE);
 }
