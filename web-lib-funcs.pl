@@ -7505,7 +7505,7 @@ if ($gconfig{'debug_modules'}) {
 	my @dmods = split(/\s+/, $gconfig{'debug_modules'});
 	return 0 if (&indexof($main::initial_module_name, @dmods) < 0);
 	}
-my $now;
+my ($now, $ms);
 eval 'use Time::HiRes qw(gettimeofday); ($now, $ms) = gettimeofday';
 $now ||= time();
 my @tm = localtime($now);
