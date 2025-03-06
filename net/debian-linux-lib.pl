@@ -254,7 +254,12 @@ if(($cfg->{'vlan'} == 1) && ($gconfig{'os_version'} < 5)) {
 		}
 	}
 if(($cfg->{'vlan'} == 1) && ($cfg->{'mtu'})) {
-	push(@options, ['pre-up', '/sbin/ifconfig '.$cfg->{'physical'}.' mtu '.$cfg->{'mtu'}]);
+	if (&has_command("ip")) {
+		push(@options, ['pre-up', 'ip link set mtu '.$cfg->{'mtu'}.' dev '.$cfg->{'physical'}]);
+		}
+	else {
+		push(@options, ['pre-up', '/sbin/ifconfig '.$cfg->{'physical'}.' mtu '.$cfg->{'mtu'}]);
+		}
 	}
 
 # Find the existing interface section
@@ -338,7 +343,12 @@ if (@address6) {
 while(@address6) {
 	my $a = shift(@address6);
 	my $n = shift(@netmask6);
-	push(@options6, [ "up","ifconfig $cfg->{'fullname'} inet6 add $a/$n" ]);
+	if (&has_command("ip")) {
+		push(@options6, [ "up", "ip addr add add $a/$n dev $cfg->{'fullname'}" ]);
+		}
+	else {
+		push(@options6, [ "up", "ifconfig $cfg->{'fullname'} inet6 add $a/$n" ]);
+		}
 	}
 if ($cfg->{'gateway6'}) {
 	push(@options6, [ "gateway", $cfg->{'gateway6'} ]);
