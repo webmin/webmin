@@ -344,7 +344,7 @@ while(@address6) {
 	my $a = shift(@address6);
 	my $n = shift(@netmask6);
 	if (&has_command("ip")) {
-		push(@options6, [ "up", "ip addr add add $a/$n dev $cfg->{'fullname'}" ]);
+		push(@options6, [ "up", "ip addr add $a/$n dev $cfg->{'fullname'}" ]);
 		}
 	else {
 		push(@options6, [ "up", "ifconfig $cfg->{'fullname'} inet6 add $a/$n" ]);
