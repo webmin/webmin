@@ -333,9 +333,6 @@ else {
 my @options6;
 my @address6 = @{$cfg->{'address6'}};
 my @netmask6 = @{$cfg->{'netmask6'}};
-if (@address6 || $cfg->{'auto6'}) {
-	push(@options6, ['pre-up', '/sbin/modprobe -q ipv6 ; /bin/true']);
-	}
 if (@address6) {
 	push(@options6, [ "address", shift(@address6) ]);
 	push(@options6, [ "netmask", shift(@netmask6) ]);
