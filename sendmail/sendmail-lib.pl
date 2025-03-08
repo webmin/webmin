@@ -226,11 +226,11 @@ sub find_textfile
 local($conf, $dbm) = @_;
 if ($conf) { return $conf; }
 elsif (!$dbm) { return undef; }
-elsif ($dbm =~ /^(.*)\.(db|dbm|pag|dir|hash)$/i && -r $1) {
+elsif ($dbm =~ /^(.*)\.(db|dbm|pag|dir|hash|cdb)$/i && -r $1) {
 	# Database is like /etc/virtusertable.db, text is /etc/virtusertable
 	return $1;
 	}
-elsif ($dbm =~ /^(.*)\.(db|dbm|pag|dir|hash)$/i && -r "$1.txt") {
+elsif ($dbm =~ /^(.*)\.(db|dbm|pag|dir|hash|cdb)$/i && -r "$1.txt") {
 	# Database is like /etc/virtusertable.db, text is /etc/virtusertable.txt
 	return "$1.txt";
 	}
@@ -238,7 +238,7 @@ elsif (-r "$dbm.txt") {
 	# Database is like /etc/virtusertable, text is /etc/virtusertable.txt
 	return "$dbm.txt";
 	}
-elsif ($dbm =~ /^(.*)\.(db|dbm|pag|dir|hash)$/i) {
+elsif ($dbm =~ /^(.*)\.(db|dbm|pag|dir|hash|cdb)$/i) {
 	# Database is like /etc/virtusertable.db, text is /etc/virtusertable,
 	# but doesn't exist yet.
 	return $1;
