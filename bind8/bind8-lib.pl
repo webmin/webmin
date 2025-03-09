@@ -3174,6 +3174,36 @@ my $out = &backquote_command(
 return $? ? split(/\r?\n/, $out) : ( );
 }
 
+# check_zone_warnings(&zone-name|&zone)
+# Returns a list of warnings from checking some zone file, if any
+sub check_zone_warnings
+{
+my ($zone) = @_;
+my ($zonename, $zonefile);
+if ($zone->{'values'}) {
+	# Zone object
+	$zonename = $zone->{'values'}->[0];
+	my $f = &find("file", $zone->{'members'});
+	$zonefile = $f->{'values'}->[0];
+	}
+else {
+	# Zone name object
+	$zonename = $zone->{'name'};
+	$zonefile = $zone->{'file'};
+	}
+my $absfile = &make_chroot(&absolute_path($zonefile));
+my $out = &backquote_command(
+	$config{'checkzone'}." ".quotemeta($zonename)." ".
+	quotemeta($absfile)." 2>&1 </dev/null");
+my @rv;
+foreach my $l (split(/\r?\n/, $out)) {
+	if ($l =~ /^\Q$absfile\E:\d+:\s*(.*)/) {
+		push(@rv, $1);
+		}
+	}
+return @rv;
+}
+
 # supports_check_conf()
 # Returns 1 if BIND configuration checking is supported, 0 if not
 sub supports_check_conf

@@ -1173,6 +1173,7 @@ rmass_clash=Create even if record already exists?
 check_title=Check Records
 check_ecannot=You are not allowed to check records
 check_errs=The following errors were found in the records file $1 ..
+check_warns=The following warnings were found in the records file $1 ..
 check_allok=No errors were found in the records file $1.
 
 ncheck_title=Check BIND Config
