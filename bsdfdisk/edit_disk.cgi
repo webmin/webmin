@@ -23,9 +23,9 @@ push(@info, &text('disk_dsize', &nice_size($disk->{'size'})));
 if ($disk->{'model'}) {
         push(@info, &text('disk_model', $disk->{'model'}));
         }
-push(@info, &text('disk_cylinders', $disk->{'cylinders'}));
 push(@info, &text('disk_blocks', $disk->{'blocks'}));
 push(@info, &text('disk_device', "<tt>$disk->{'device'}</tt>"));
+push(@info, &text('disk_scheme', uc($disk->{'type'} || "MBR")));
 print &ui_links_row(\@info),"<p>\n";
 
 # Show partitions table
@@ -41,6 +41,7 @@ if (@{$disk->{'slices'}}) {
 		$text{'disk_start'},
 		$text{'disk_end'},
 		$text{'disk_use'},
+		$text{'disk_label'},
 		]);
 	foreach my $p (@{$disk->{'slices'}}) {
 		# Create images for the extent
@@ -75,6 +76,7 @@ if (@{$disk->{'slices'}}) {
 			$p->{'startblock'} + $p->{'blocks'} - 1,
 			$use ? $use :
 			  $n ? &text('disk_scount', $n) : "",
+			$p->{'label'},
 			]);
 		}
 	print &ui_columns_end();
