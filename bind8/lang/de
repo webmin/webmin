@@ -1173,6 +1173,7 @@ rmass_clash=Erstellen, auch wenn Eintrag bereits existiert?
 check_title=Einträge prüfen
 check_ecannot=Sie sind nicht berechtigt, Einträge zu überprüfen.
 check_errs=Die folgenden Fehler wurden in der Eintragsdatei $1 gefunden ..
+check_warns=Die folgenden Warnungen wurden in der Eintragsdatei $1 gefunden ..
 check_allok=Keine Fehler in der Eintragsdatei $1 gefunden.
 
 ncheck_title=BIND-Konfiguration prüfen
