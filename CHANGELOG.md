@@ -1,6 +1,6 @@
 ## Changelog
 
-#### 2.303 (March 15, 2025)
+#### 2.303 (March 14, 2025)
 * Fix permissions error when attempting to open a temp file for writing
 * Fix Network Configuration module to use `ip` command instead of `ifconfig` on Debian systems
 * Fix to correctly save IPv6 nameservers in Network Configuration module
