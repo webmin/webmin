@@ -230,8 +230,10 @@ my $method6 = $iface->{'auto6'} ? "auto" :
 
 # Update nameservers
 my @ns = $iface->{'nameserver'} ? @{$iface->{'nameserver'}} : ();
-&save_nm_config($cfg, "ipv4", "dns",
-		@ns ? join(" ", @ns) : undef);
+my @ns4 = grep { &check_ipaddress($_) } @ns;
+my @ns6 = grep { &check_ip6address($ns6) } @ns;
+&save_nm_config($cfg, "ipv4", "dns", @ns4 ? join(" ", @ns4) : undef) if (@ns4);
+&save_nm_config($cfg, "ipv6", "dns", @ns6 ? join(" ", @ns6) : undef) if (@ns6);
 my @sr = $iface->{'search'} ? @{$iface->{'search'}} : ();
 &save_nm_config($cfg, "ipv4", "dns-search",
 		@sr ? join(" ", @sr) : undef);

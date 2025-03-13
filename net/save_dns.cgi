@@ -21,9 +21,12 @@ for($i=0; defined($ns = $in{"nameserver_$i"}); $i++) {
 	$ns = $in{"nameserver_$i"};
 	$ns =~ s/^\s+//; $ns =~ s/\s+$//;
 	if ($ns) {
-		&check_ipaddress_any($ns) ||
+		my $nns = $ns;
+		# Just remove scope identifier (%interface) for simplicity
+		$nns =~ s/\%.*$//;
+		&check_ipaddress_any($nns) ||
 			&error(&text('dns_ens', &html_escape($ns)));
-		push(@{$dns->{'nameserver'}}, $ns);
+		push(@{$dns->{'nameserver'}}, $nns);
 		}
 	}
 if ($in{'name0'}) {
