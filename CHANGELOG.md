@@ -1,5 +1,13 @@
 ## Changelog
 
+#### 2.303 (March 15, 2025)
+* Fix permissions error when attempting to open a temp file for writing
+* Fix Network Configuration module to use `ip` command instead of `ifconfig` on Debian systems
+* Fix to correctly save IPv6 nameservers in Network Configuration module
+* Fix to run `man` as `nobody` to prevent section param misuse in System Documentation module
+* Add support for Sendmail hash files ending with `.cdb`
+* Update German translations
+
 #### 2.302 (March 3, 2025)
 * Add ability to preserve allow/deny IPs in Webmin Configuration module #2427
 * Add enhancements to module config saving to ensure reliability under all conditions
