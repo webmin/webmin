@@ -26,7 +26,7 @@ if (@errs) {
 	print "<b>",&text('check_errs', "<tt>$file</tt>"),"</b><p>\n";
 	print "<ul>\n";
 	foreach my $e (@errs) {
-		print "<li>".&html_escape($e)."\n";
+		print "<li>".&html_escape($e)."</li>\n";
 		}
 	print "</ul>\n";
 	}
@@ -35,7 +35,7 @@ elsif (@warns) {
 	print "<b>",&text('check_warns', "<tt>$file</tt>"),"</b><p>\n";
 	print "<ul>\n";
 	foreach my $e (@warns) {
-		print "<li>".&html_escape($e)."\n";
+		print "<li>".&html_escape($e)."</li>\n";
 		}
 	print "</ul>\n";
 	}
