@@ -21,7 +21,7 @@ if (@errs) {
 	print "<b>",&text('ncheck_errs', "<tt>$file</tt>"),"</b><p>\n";
 	print "<ul>\n";
 	foreach my $e (@errs) {
-		print "<li>".&html_escape($e)."\n";
+		print "<li>".&html_escape($e)."</li>\n";
 		}
 	print "</ul>\n";
 	}
