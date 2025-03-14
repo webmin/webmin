@@ -10675,7 +10675,7 @@ else {
 		my $directopen = 0;
 		my $tmp = &open_tempfile($file);
 		my $ok = open($fh, ">$tmp");
-		if (!$ok && $! =~ /permission/i && $< != 0) {
+		if (!$ok && $! =~ /permission/i && $> != 0) {
 			# Could not open temp file .. try opening actual file
 			# instead directly
 			$ok = open($fh, ">$file");
