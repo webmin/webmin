@@ -9,7 +9,7 @@ no warnings 'uninitialized';
 our (%text, %in, %access, $squid_version, %config, $module_name);
 require './squid-lib.pl';
 if ($config{'crypt_conf'} == 1) {
-	eval "use MD5";
+	eval "use Digest::MD5";
 	if ($@) {
         	&error(&text('eauth_nomd5', $module_name));
 		}

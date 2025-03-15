@@ -13,7 +13,7 @@ sub useradmin_create_user
 my ($uinfo) = @_;
 return if (!$config{'sync_create'});
 if ($config{'crypt_conf'} == 1) {
-        eval "use MD5";
+        eval "use Digest::MD5";
 	return if ($@);
         }
 return if ($uinfo->{'passmode'} != 3);
@@ -78,7 +78,7 @@ sub useradmin_modify_user
 my ($uinfo) = @_;
 return if (!$config{'sync_modify'});
 if ($config{'crypt_conf'} == 1) {
-        eval "use MD5";
+        eval "use Digest::MD5";
 	return if ($@);
         }
 my $conf = &get_config();
