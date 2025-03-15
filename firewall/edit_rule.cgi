@@ -141,6 +141,12 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') &&
 			$dpfrom = $2;
 			$dpto = $4;
 			}
+		elsif (&check_ipvx_ipaddress($rule->{'to-destination'}->[1])) {
+			$dipfrom = $rule->{'to-destination'}->[1];
+			$dipto = "";
+			$dpfrom = "";
+			$dpto = "";
+			}
 		}
 	print &ui_table_row($text{'edit_dnat'},
 		&ui_radio("dnatdef", $dipfrom eq "" ? 1 : 0,
