@@ -44,6 +44,8 @@ value_NAPTR3_P=Action spécifique au protocole
 
 log_delete_recs2=$1 enregistrements supprimés dans la zone $2
 
+check_warns=Les avertissements suivants ont été trouvés dans le fichier d'enregistrements $1 ..
+
 zonekey_algorithm=Algorithme DNSSEC  : $1
 zonekey_ds_keytag=Porte-clés
 zonekey_ds_alg=Algorithme

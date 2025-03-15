@@ -335,6 +335,7 @@ rmass_clash=Kayıt zaten mevcut olsa bile oluşturulsun mu?
 check_title=Kayıtları Kontrol Et
 check_ecannot=Kayıtları kontrol etme izniniz yok
 check_errs=$1 kayıt dosyasında aşağıdaki hatalar bulundu.
+check_warns=$1 kayıt dosyasında aşağıdaki uyarılar bulundu ..
 check_allok=$1 kayıt dosyasında hata bulunamadı.
 
 ncheck_title=BIND Config'i kontrol edin

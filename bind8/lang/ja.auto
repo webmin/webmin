@@ -221,6 +221,7 @@ rmass_name2=（ドメイン名に<tt>@</tt>を入力します）
 rmass_esign=..完了しましたが、署名に失敗しました：$1
 rmass_eclash2=..同じ名前と同じ値を持つレコード$1はすでに存在します。
 
+check_warns=レコード ファイル $1 に次の警告が見つかりました。
 ncheck_title=BIND Configを確認してください
 ncheck_ecannot=BIND構成を確認することはできません
 ncheck_errs=BIND構成ファイル$1または参照ゾーンファイルで次のエラーが見つかりました。

@@ -839,6 +839,7 @@ rmass_clash=Criar mesmo se o registro já existir?
 check_title=Verificar registros
 check_ecannot=Você não tem permissão para verificar registros
 check_errs=Os seguintes erros foram encontrados no arquivo de registros $1 ..
+check_warns=Os seguintes avisos foram encontrados no arquivo de registros $1 ..
 check_allok=Nenhum erro foi encontrado no arquivo de registros $1.
 
 ncheck_title=Verifique a configuração do BIND

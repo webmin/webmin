@@ -44,6 +44,8 @@ value_NAPTR3_P=Protokollspesifikk handling
 
 log_delete_recs2=Slettet $1 poster i sone $2
 
+check_warns=Følgende advarsler ble funnet i postfilen $1 ..
+
 zonekey_algorithm=DNSSEC-algoritme : $1
 zonekey_ds_keytag=Nøkkelbrikke
 zonekey_ds_alg=Algoritme

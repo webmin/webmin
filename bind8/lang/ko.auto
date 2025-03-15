@@ -747,6 +747,7 @@ rmass_clash=레코드가 이미 존재하더라도 작성 하시겠습니까?
 check_title=기록 확인
 check_ecannot=기록을 확인할 수 없습니다
 check_errs=레코드 파일 $1에서 다음 오류가 발견되었습니다.
+check_warns=다음 경고가 $1 레코드 파일에서 발견되었습니다 ..
 check_allok=레코드 파일 $1에서 오류가 발견되지 않았습니다.
 
 ncheck_title=BIND 구성 확인

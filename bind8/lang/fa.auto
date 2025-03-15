@@ -429,6 +429,7 @@ rmass_clash=حتی اگر سابقه قبلاً وجود داشته باشد ا�
 check_title=سوابق را بررسی کنید
 check_ecannot=شما مجاز به بررسی سوابق نیستید
 check_errs=The following errors were found in the records file $1 ..
+check_warns=اخطارهای زیر در فایل سوابق $1 یافت شد ..
 check_allok=No errors were found in the records file $1.
 
 ncheck_title=پیکربندی BIND را بررسی کنید

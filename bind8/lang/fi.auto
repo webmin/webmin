@@ -1173,6 +1173,7 @@ rmass_clash=Luo vaikka tietue on jo olemassa?
 check_title=Tarkista tietueet
 check_ecannot=Et voi tarkistaa tietueita
 check_errs=Seuraavat virheet löytyivät tietuetiedostosta $1 ..
+check_warns=Tietuetiedostosta $1.. löytyi seuraavat varoitukset ..
 check_allok=Tietuetiedostossa $1 ei löytynyt virheitä.
 
 ncheck_title=Tarkista BIND-kokoonpano

@@ -564,6 +564,7 @@ rmass_clash=即使记录已经存在也创建吗？
 check_title=检查记录
 check_ecannot=您无权检查记录
 check_errs=在记录文件$1中发现以下错误。
+check_warns=在记录文件 $1 中发现下列警告。
 check_allok=在记录文件$1中未找到错误。
 
 ncheck_title=检查BIND配置

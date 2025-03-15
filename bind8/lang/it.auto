@@ -562,6 +562,7 @@ rmass_clash=Crea anche se il record esiste già?
 check_title=Controlla i record
 check_ecannot=Non è consentito controllare i record
 check_errs=I seguenti errori sono stati trovati nel file dei record $1 ..
+check_warns=Sono stati trovati i seguenti avvisi nel file di record $1 ..
 check_allok=Nessun errore trovato nel file dei record $1.
 
 ncheck_title=Controlla la configurazione BIND

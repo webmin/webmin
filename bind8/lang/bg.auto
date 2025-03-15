@@ -59,6 +59,8 @@ log_delete_recs2=Изтрити $1 записи в зона $2
 massdelete_vwarn=Някои зони са свързани с домейна Virtualmin $1 и затова не трябва да се изтриват тук!
 massdelete_vwarn2=Някои зони са свързани с домейна Virtualmin $1 и $2 други и затова не трябва да се изтриват тук!
 
+check_warns=Следните предупреждения бяха намерени във файла със записи $1 ..
+
 zonekey_algorithm=DNSSEC алгоритъм : $1
 zonekey_ds_keytag=Ключов етикет
 zonekey_ds_alg=Алгоритъм

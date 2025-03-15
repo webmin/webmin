@@ -1173,6 +1173,7 @@ rmass_clash=Kreirajte čak i ako zapis već postoji?
 check_title=Provjerite zapise
 check_ecannot=Nije vam dopušteno provjeravati zapise
 check_errs=Sljedeće pogreške pronađene su u datoteci zapisa $1.
+check_warns=Sljedeća upozorenja pronađena su u datoteci zapisa $1 ..
 check_allok=U datoteci zapisa $1 nisu pronađene pogreške.
 
 ncheck_title=Označite BIND Config

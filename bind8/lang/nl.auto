@@ -157,6 +157,8 @@ massdelete_vwarn2=Sommige zones zijn geassocieerd met het Virtualmin-domein $1 e
 
 rmass_esign=.. klaar, maar ondertekenen mislukt : $1
 
+check_warns=De volgende waarschuwingen zijn gevonden in het recordbestand $1 ..
+
 dnssec_secs=seconden
 
 zonekey_publicfile=Bestand met openbare sleutel : $1

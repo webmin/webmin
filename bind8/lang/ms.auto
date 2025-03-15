@@ -1171,6 +1171,7 @@ rmass_clash=Buat walaupun rekod sudah wujud?
 check_title=Semak Rekod
 check_ecannot=Anda tidak dibenarkan menyemak rekod
 check_errs=Kesalahan berikut telah dijumpai dalam fail rekod $1 ..
+check_warns=Amaran berikut ditemui dalam fail rekod $1 ..
 check_allok=Tiada ralat ditemui dalam fail rekod $1.
 
 ncheck_title=Semak BIND Config

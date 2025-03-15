@@ -314,6 +314,7 @@ rmass_clash=Skapa även om posten redan finns?
 check_title=Kontrollera poster
 check_ecannot=Du får inte kontrollera poster
 check_errs=Följande fel hittades i registerfilen $1 ..
+check_warns=Följande varningar hittades i postfilen $1 ..
 check_allok=Inga fel hittades i registerfilen $1.
 
 ncheck_title=Kontrollera BIND Config

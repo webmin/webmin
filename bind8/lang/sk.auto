@@ -1173,6 +1173,7 @@ rmass_clash=Vytvoriť, aj keď už záznam existuje?
 check_title=Skontrolujte záznamy
 check_ecannot=Nemáte oprávnenie kontrolovať záznamy
 check_errs=V súbore záznamov $1 sa našli nasledujúce chyby.
+check_warns=V súbore záznamov $1 sa našli nasledujúce upozornenia ..
 check_allok=V súbore záznamov $1 sa nenašli žiadne chyby.
 
 ncheck_title=Skontrolujte BIND Config

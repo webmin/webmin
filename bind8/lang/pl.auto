@@ -107,6 +107,8 @@ log_delete_recs2=Usunięto $1 rekordów w strefie $2
 massdelete_vwarn=Niektóre strefy są powiązane z domeną Virtualmin $1, dlatego nie należy ich tutaj usuwać!
 massdelete_vwarn2=Niektóre strefy są powiązane z domeną Virtualmin $1 i $2 innymi, dlatego nie należy ich tutaj usuwać!
 
+check_warns=Znaleziono następujące ostrzeżenia w pliku rekordów $1 ..
+
 dnssec_secs=sekundy
 
 dt_zone_zskrolldesc=Wymuś najazd klucza podpisującego strefę

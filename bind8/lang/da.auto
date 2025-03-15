@@ -1173,6 +1173,7 @@ rmass_clash=Opret, selvom der allerede findes en post?
 check_title=Tjek poster
 check_ecannot=Du har ikke tilladelse til at kontrollere poster
 check_errs=Følgende fejl blev fundet i posteringsfilen $1 ..
+check_warns=Følgende advarsler blev fundet i postfilen $1 ..
 check_allok=Der blev ikke fundet nogen fejl i postfilen $1.
 
 ncheck_title=Kontroller BIND Config

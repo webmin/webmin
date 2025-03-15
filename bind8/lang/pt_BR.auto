@@ -197,6 +197,8 @@ rmass_name2=(Digite <tt>@</tt> para o nome do domínio)
 rmass_esign=.. feito, mas a assinatura falhou : $1
 rmass_eclash2=.. um registro com o mesmo nome e o mesmo valor $1 já existe.
 
+check_warns=Os seguintes avisos foram encontrados no arquivo de registros $1 ..
+
 dnssec_secs=segundos
 
 dnssectools_title=Automação de Ferramentas DNSSEC

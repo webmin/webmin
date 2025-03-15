@@ -289,6 +289,7 @@ rmass_eclash2=.. záznam se stejným názvem a stejnou hodnotou $1 již existuje
 check_title=Zkontrolujte záznamy
 check_ecannot=Není dovoleno kontrolovat záznamy
 check_errs=V souboru záznamů $1 byly nalezeny následující chyby.
+check_warns=V souboru záznamů $1 byla nalezena následující varování ..
 check_allok=V souboru záznamů $1 nebyly nalezeny žádné chyby.
 
 ncheck_title=Zkontrolujte BIND Config

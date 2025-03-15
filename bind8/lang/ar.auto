@@ -1173,6 +1173,7 @@ rmass_clash=إنشاء حتى لو كان السجل موجود بالفعل؟
 check_title=تحقق السجلات
 check_ecannot=غير مسموح لك بالتحقق من السجلات
 check_errs=The following errors were found in the records file $1 ..
+check_warns=تم العثور على التحذيرات التالية في ملف السجلات $1 ..
 check_allok=No errors were found in the records file $1.
 
 ncheck_title=تحقق BIND التكوين

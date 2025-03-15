@@ -167,6 +167,8 @@ massdelete_vwarn2=Egyes zónák a (z) $1 és a (z) $2 Virtualmin domainhez vanna
 
 rmass_esign=.. kész, de az aláírás sikertelen : $1
 
+check_warns=A következő figyelmeztetések találhatók a(z) $1.. rekordfájlban ..
+
 dnssec_secs=másodperc
 
 dnssectools_title=DNSSEC-Tools automatizálás

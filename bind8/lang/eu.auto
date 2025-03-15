@@ -1173,6 +1173,7 @@ rmass_clash=Sortu erregistroa dagoeneko badago?
 check_title=Egiaztatu Erregistroak
 check_ecannot=Ezin duzu erregistroak egiaztatu
 check_errs=Ondorengo akatsak aurkitu dira $1 erregistroko fitxategian.
+check_warns=Honako abisu hauek $1 erregistro fitxategian aurkitu dira ..
 check_allok=Ez da akatsik aurkitu $1 erregistroko fitxategian.
 
 ncheck_title=Begiratu BIND Config
