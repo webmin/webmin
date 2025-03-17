@@ -33,8 +33,10 @@ SECT: foreach $sec (@sects) {
 		$cmd = $ocmd;
 		$cmd =~ s/PAGE/$qpage/;
 		$cmd =~ s/SECTION/$qsec/;
-		$out = &backquote_command(
-			&command_as_user("nobody", 0, $cmd)." 2>&1", 1);
+		if ($< == 0) {
+			$cmd = &command_as_user("nobody", 0, $cmd);
+			}
+		$out = &backquote_command($cmd." 2>&1", 1);
 		if ($out !~ /^.*no manual entry/i && $out !~ /^.*no entry/i &&
 		    $out !~ /^.*nothing appropriate/i) {
 			# Found it
