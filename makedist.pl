@@ -247,7 +247,6 @@ if (-d "/home/jcameron/webmin.com" && (!$release || $release == 1)) {
 		# this is a new full version, so round down to the previous full version
 		$lastvers = sprintf("%.2f0", $vers-0.006);
 		}
-	system("./showchangelog.pl --html $lastvers >/home/jcameron/webmin.com/changes-$vers.html");
 	}
 
 if ($min && !$release) {
