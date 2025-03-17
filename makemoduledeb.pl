@@ -24,9 +24,6 @@ my $copyright_file = "$debian_dir/copyright";
 my $changelog_file = "$debian_dir/changelog";
 my $files_file = "$debian_dir/files";
 
--r "/etc/debian_version" ||
-	die RED, "makemoduledeb.pl must be run on Debian", RESET;
-
 # Parse command-line args
 my ($force_theme, $url, $upstream, $provides, $debdepends, $debrecommends,
     $no_prefix, $force_usermin, $release, $allow_overwrite, $final_mod,
