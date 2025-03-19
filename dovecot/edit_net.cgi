@@ -39,7 +39,13 @@ foreach $l (@listens) {
 	$listen = &find_value($l, $conf);
 	$mode = !$listen ? 0 :
 		# All interfaces, put in any order, e.g. "[::], *" or "*, ::"
-	        $listen =~ /^(\*|::|\[::\]),\s*(\*|::|\[::\])$/ ? 1 :
+	        $listen =~ /^
+		    (?!(\*,\s*\*)        # Disallow *, *
+		    | (\[::\],\s*::)     # Disallow [::], ::
+		    | (::,\s*\[::\]))    # Disallow ::, [::]                    
+		    (\*|::|\[::\]),\s*   # Match *, ::, or [::]
+		    (\*|::|\[::\])$      # Followed by another *, ::, or [::]
+		/x ? 1 :
 		# IPv6 only, e.g. "[::]" or "::"
 	        $listen eq '::' || $listen eq '[::]' ? 4 :
 		# IPv4 only, e.g. "*"
