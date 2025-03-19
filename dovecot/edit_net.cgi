@@ -41,7 +41,7 @@ foreach $l (@listens) {
 		# All interfaces, put in any order, e.g. "[::], *" or "*, ::"
 	        $listen =~ /^(\*|::|\[::\]),\s*(\*|::|\[::\])$/ ? 1 :
 		# IPv6 only, e.g. "[::]" or "::"
-	        $listen =~ /^(?:\:\:|\[\:\:\])$/ ? 4 :
+	        $listen eq '::' || $listen eq '[::]' ? 4 :
 		# IPv4 only, e.g. "*"
 	        $listen eq "*" ? 2 : 3,
 	print &ui_table_row($text{'net_'.$l},
