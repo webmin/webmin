@@ -342,7 +342,8 @@ if (&foreign_check("virtual-server")) {
 #   RHEL and derivatives   Debian/Ubuntu
 if ($file =~ /php(\d+)/ || $file =~ /php\/([\d\.]+)/) {
 	$ver = $1;
-	my $binary = &has_command("php$ver");
+	my $binary = &has_command("php$ver") ||
+		     &has_command("php$ver-cgi");
 	return $binary if ($binary);
 	}
 
@@ -352,7 +353,9 @@ if ($file =~ /^php.*?([\d\.]+)$/) {
 	my $nodot = $ver;
 	$nodot =~ s/\.//g;
 	my $binary = &has_command("php$ver") ||
-	             &has_command("php$nodot");
+	             &has_command("php$nodot") ||
+		     &has_command("php$ver-cgi") ||
+                     &has_command("php$nodot-cgi");
 	return $binary if ($binary);
 	}
 
