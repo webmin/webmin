@@ -13,7 +13,13 @@ if (@files == 1 && !$access{'anyfile'} && $access{'noconfig'}) {
 	}
 $inidir = &get_php_ini_dir($in{'file'});
 
-&ui_print_header("<tt>".&html_escape($in{'file'})."</tt>",
+my $bin = &get_php_ini_binary($in{'file'});
+my $ver = &get_php_binary_version($in{'file'});
+my $vmsg = "";
+if ($bin && $ver) {
+	$vmsg = "<br>".&text('list_bin', "<tt>$bin</tt>", $ver);
+	}
+&ui_print_header("<tt>".&html_escape($in{'file'})."</tt>".$vmsg,
 		 $text{'list_title'}, "", undef, 0, $onefile);
 
 @pages = ( "vars", "dirs", "db", "session", "limits",

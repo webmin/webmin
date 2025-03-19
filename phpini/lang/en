@@ -24,6 +24,7 @@ list_efile=File to edit must be an absolute path
 list_return=PHP configuration
 list_format_ini=INI format
 list_format_fpm=FPM format
+list_bin=PHP version $2 at $1
 
 vars_title=PHP Variables
 vars_header=PHP variable creation and quoting options
