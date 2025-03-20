@@ -2508,6 +2508,11 @@ if ($changed || !$znc{'version'} ||
 	# Yes .. need to rebuild
 	%znc = ( );
 	my $conf = &get_config();
+	my $gau;
+	my $opts = &find("options", $conf);
+	if ($opts && &find("update", $opts->{'members'})) {
+		$gau = 1;
+		}
 	my @views = &find("view", $conf);
 	my $n = 0;
 	foreach my $v (@views) {
@@ -2535,7 +2540,7 @@ if ($changed || !$znc{'version'} ||
 		$file ||= "";	# slaves and other types with no file
 		my $up = &find("update-policy", $z->{'members'});
 		my $au = &find("allow-update", $z->{'members'});
-		my $dynamic = $up || $au ? 1 : 0;
+		my $dynamic = $up || $au || $gau ? 1 : 0;
 		$znc{"zone_".($n++)} = join("\t", $z->{'value'},
 			$z->{'index'}, $type, "*", $dynamic, $file);
 		$files{$z->{'file'}}++;
