@@ -4058,7 +4058,7 @@ return "<input name='$_[0]' size=13 value=\"$_[1]\"> ".
        &group_chooser_button($_[0], 0, $_[2] || 0)."\n";
 }
 
-=head2 hlink(text, page, [module], [width], [height])
+=head2 hlink(text, page, [module], [width], [height], [replacement])
 
 Returns HTML for a link that when clicked on pops up a window for a Webmin
 help page. The parameters are :
@@ -4073,6 +4073,8 @@ help page. The parameters are :
 
 =item height - Height of the help popup window. Defaults to 400 pixels.
 
+=item replace - Given array ref of hash refs of replacements for the help page
+
 The actual help pages are in each module's help sub-directory, in files with
 .html extensions.
 
@@ -4085,7 +4087,9 @@ if (defined(&theme_hlink)) {
 my $mod = $_[2] ? $_[2] : &get_module_name();
 my $width = $_[3] || $tconfig{'help_width'} || $gconfig{'help_width'} || 600;
 my $height = $_[4] || $tconfig{'help_height'} || $gconfig{'help_height'} || 400;
-return "<a onClick='window.open(\"@{[&get_webprefix()]}/help.cgi/$mod/$_[1]\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"@{[&get_webprefix()]}/help.cgi/$mod/$_[1]\">$_[0]</a>";
+my $repl = $_[5] ? "?".join("&", map { my ($k, $v) = each %$_; "replace_what=".
+        urlize($k)."&replace_with=".urlize($v) } @{$_[5]}) : "";
+return "<a onClick='window.open(\"@{[&get_webprefix()]}/help.cgi/$mod/$_[1]$repl\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"@{[&get_webprefix()]}/help.cgi/$mod/$_[1]$repl\">$_[0]</a>";
 }
 
 =head2 user_chooser_button(field, multiple, [form])

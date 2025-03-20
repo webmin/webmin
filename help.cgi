@@ -11,6 +11,12 @@ $ENV{'PATH_INFO'} !~ /[\\\&\;\`\'\"\|\*\?\~\<\>\^\(\)\[\]\{\}\$\n\r]/ ||
 	&error($text{'help_epath'});
 $ENV{'PATH_INFO'} =~ /^\/(\S+)\/(\S+)$/ || &error($text{'help_epath'});
 $module = $1; $file = $2;
+for (split(/&/, $ENV{'QUERY_STRING'})) {
+	my ($k, $v) = map { &html_strip(&un_urlize($_)) } split(/=/, $_, 2);
+	if ($k eq "replace_what") { $what = $v }
+	elsif ($k eq "replace_with" && defined $what) {
+		push(@help_replacements, { $what => $v }); undef($what); }
+	}
 
 # if it ends with .gif assume it is a direct URL
 if ($file =~ /\.(gif|jpg|jpeg|png)$/i) {
@@ -18,7 +24,7 @@ if ($file =~ /\.(gif|jpg|jpeg|png)$/i) {
 	exit;
 }
 
-# read the help file
+# Read the help file
 $help = &read_help_file($module, $file);
 $help || &helperror(&text('help_efile3',
 		&html_escape($file), &html_escape($module)));
@@ -28,6 +34,13 @@ if (&foreign_exists($module) &&
     &foreign_require($module) &&
     &foreign_defined($module, 'help_pre_load')) {
 	$help = &foreign_call($module, "help_pre_load", $help);
+	}
+
+# Modify help based on replacements when "help_pre_load" cannot be used
+foreach my $r (@help_replacements) {
+	foreach $k (keys %$r) {
+		$help =~ s/\Q$k\E/$r->{$k}/g;
+		}
 	}
 
 # find and replace the <header> section
