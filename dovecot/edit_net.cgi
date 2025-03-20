@@ -32,21 +32,27 @@ print &ui_table_row($text{'net_ssl_disable'},
 		      [ @opts,
 			[ "", &getdef($sslopt, \@opts) ] ]));
 
-@listens = &find("imap_listen", $conf, 2) ?
+my @listens = &find("imap_listen", $conf, 2) ?
 		("imap_listen", "pop3_listen", "imaps_listen", "pop3s_listen") :
-		("listen", "ssl_listen");
+		("listen");
+my $mode;
 foreach $l (@listens) {
-	$listen = &find_value($l, $conf);
-	$mode = !$listen ? 0 :
-	        $listen eq "[::]" ? 1 :
-	        $listen eq "*" ? 2 : 3,
+	my $v = &find_value($l, $conf);
+	$mode = !$v ? 0 :
+		# All interfaces, put in any order, e.g. "[::], *" or "*, ::"
+		$v =~ /^\*,\s*(::|\[::\])$/ || $v =~ /^(::|\[::\]),\s*\*$/ ? 1 :
+		# IPv6 only, e.g. "[::]" or "::"
+		$v eq '::' || $v eq '[::]' ? 4 :
+		# IPv4 only, e.g. "*"
+		$v eq "*" ? 2 : 3,
 	print &ui_table_row($text{'net_'.$l},
 		&ui_radio($l."_mode", $mode,
 			  [ [ 0, $text{'net_listen0'} ],
 			    [ 1, $text{'net_listen1'} ],
 			    [ 2, $text{'net_listen2'} ],
+			    [ 4, $text{'net_listen4'} ],
 			    [ 3, $text{'net_listen3'} ] ])."\n".
-		&ui_textbox($l, $mode == 3 ? $listen : "", 20), 3);
+		&ui_textbox($l, $mode == 3 ? $v : "", 40), 3);
 	}
 
 print &ui_table_end();

@@ -31,19 +31,15 @@ net_imap_listen=Interfaces for IMAP connections
 net_pop3_listen=Interfaces for POP3 connections
 net_imaps_listen=Interfaces for IMAP SSL connections
 net_pop3s_listen=Interfaces for POP3 SSL connections
-net_listen=Interfaces for non-SSL connections
-net_ssl_listen=Interfaces for SSL connections
+net_listen=Listen on
 net_listen0=Default
 net_listen1=All IPv4 and IPv6
 net_listen2=All IPv4
+net_listen4=All IPv6
 net_listen3=IP address
 net_err=Failed to save networking options
-net_eimap_listen=Invalid IP address for IMAP connections
-net_epop3_listen=Invalid IP address for POP3 connections
-net_eimaps_listen=Invalid IP address for IMAP SSL connections
-net_epop3s_listen=Invalid IP address for POP3 SSL connections
-net_elisten=Invalid IP address for non-SSL connections
-net_essl_listen=Invalid IP address for SSL connections
+net_ealisten=Invalid IP address to listen on : <tt>$1</tt>
+net_ealisten_invalid_mix=Cannot use an individual IP address <tt>$1</tt> together with the <tt>$2</tt> wildcard. Specify either specific IP addresses or use the wildcard, not both
 
 imap_title=IMAP Options
 
