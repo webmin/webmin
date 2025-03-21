@@ -4088,8 +4088,8 @@ if (defined(&theme_hlink)) {
 	}
 $width ||= $tconfig{'help_width'} || $gconfig{'help_width'} || 600;
 $height ||= $tconfig{'help_height'} || $gconfig{'help_height'} || 400;
-my $params = $tmpl ? join("&", map { "tmpl_".&urlize($_)."=".&urlize($tmpl->{$_}) } keys %$tmpl) : "";
-return "<a onClick='window.open(\"@{[&get_webprefix()]}/help.cgi/$mod/$page?$params\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"@{[&get_webprefix()]}/help.cgi/$mod/$page?$params\">$txt</a>";
+my $params = $tmpl ? "?".join("&", map { "tmpl_".&urlize($_)."=".&urlize($tmpl->{$_}) } keys %$tmpl) : "";
+return "<a onClick='window.open(\"@{[&get_webprefix()]}/help.cgi/$mod/$page$params\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"@{[&get_webprefix()]}/help.cgi/$mod/$page$params\">$txt</a>";
 }
 
 =head2 user_chooser_button(field, multiple, [form])
