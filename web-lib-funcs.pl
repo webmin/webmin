@@ -4079,13 +4079,15 @@ The actual help pages are in each module's help sub-directory, in files with
 =cut
 sub hlink
 {
+my ($txt, $page, $mod, $width, $height, $tmpl) = @_;
+$mod ||= &get_module_name();
 if (defined(&theme_hlink)) {
 	return &theme_hlink(@_);
 	}
-my $mod = $_[2] ? $_[2] : &get_module_name();
-my $width = $_[3] || $tconfig{'help_width'} || $gconfig{'help_width'} || 600;
-my $height = $_[4] || $tconfig{'help_height'} || $gconfig{'help_height'} || 400;
-return "<a onClick='window.open(\"@{[&get_webprefix()]}/help.cgi/$mod/$_[1]\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"@{[&get_webprefix()]}/help.cgi/$mod/$_[1]\">$_[0]</a>";
+$width ||= $tconfig{'help_width'} || $gconfig{'help_width'} || 600;
+$height ||= $tconfig{'help_height'} || $gconfig{'help_height'} || 400;
+my $params = $tmpl ? join("&", map { "tmpl_".&urlize($_)."=".&urlize($tmpl->{$_}) } keys %$tmpl) : "";
+return "<a onClick='window.open(\"@{[&get_webprefix()]}/help.cgi/$mod/$page?$params\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"@{[&get_webprefix()]}/help.cgi/$mod/$page?$params\">$txt</a>";
 }
 
 =head2 user_chooser_button(field, multiple, [form])

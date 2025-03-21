@@ -1721,8 +1721,6 @@ of the subtext parameter :
 
 =item below - HTML to be displayed below the title. Typically this is used for application or server version information.
 
-
-
 =cut
 sub ui_print_header
 {
