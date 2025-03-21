@@ -4058,7 +4058,7 @@ return "<input name='$_[0]' size=13 value=\"$_[1]\"> ".
        &group_chooser_button($_[0], 0, $_[2] || 0)."\n";
 }
 
-=head2 hlink(text, page, [module], [width], [height])
+=head2 hlink(text, page, [module], [width], [height], [tmpl])
 
 Returns HTML for a link that when clicked on pops up a window for a Webmin
 help page. The parameters are :
@@ -4072,6 +4072,8 @@ help page. The parameters are :
 =item width - Width of the help popup window. Defaults to 600 pixels.
 
 =item height - Height of the help popup window. Defaults to 400 pixels.
+
+=item tmpl - Hash ref of template variables to substitute in the help page.
 
 The actual help pages are in each module's help sub-directory, in files with
 .html extensions.
