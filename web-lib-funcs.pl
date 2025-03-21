@@ -12970,47 +12970,60 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 return 0;
 }
 
-=head2 convert_to_json(data, [pretty])
+=head2 convert_to_json(data, [pretty], [raw-utf8])
 
 Converts the given Perl data structure to encoded binary string
 
 =item data parameter is a hash/array reference
 =item if the output should be prettified
+=item raw-utf8 parameter, if set to 1, encodes data using UTF-8
 
 =cut
 sub convert_to_json
 {
-eval "use JSON::PP";
-if (!$@) {
-	my ($data, $pretty) = @_;
-	my $json = JSON::PP->new;
-	$pretty = 0 if (!$pretty);
-	$json = $json->pretty($pretty);
-	$data ||= {};
-	return $json->latin1->encode($data);
+my ($data, $pretty, $raw_utf8) = @_;
+my $json;
+
+if (eval { require JSON::XS }) {
+	$json = JSON::XS->new;
+	}
+elsif (eval { require JSON::PP }) {
+	$json = JSON::PP->new;
 	}
 else {
-	error("The JSON::PP Perl module is not available on your system : $@");
+	error("Neither JSON::XS nor JSON::PP Perl module is available on your system");
 	}
+$json->pretty(!!$pretty);
+$data ||= {};
+return $raw_utf8 ? $json->utf8->encode($data) : $json->latin1->encode($data);
 }
 
-=head2 convert_from_json(data)
+=head2 convert_from_json(data, [raw-utf8])
 
 Parses given JSON string
 
 =item data parameter is encoded JSON string
 
+=item raw-utf8 parameter, if set, treats the input as raw UTF-8
+
 =cut
 sub convert_from_json
 {
-eval "use JSON::PP";
-if (!$@) {
-	my ($json_text) = @_;
-	return JSON::PP->new->utf8->decode($json_text);
+my ($json_text, $raw_utf8) = @_;
+
+my $json;
+if (eval { require JSON::XS }) {
+	$json = JSON::XS->new;
+	}
+elsif (eval { require JSON::PP }) {
+	$json = JSON::PP->new;
 	}
 else {
-	error("The JSON::PP Perl module is not available on your system : $@");
+	error("Neither JSON::XS nor JSON::PP Perl module is available on your system");
 	}
+
+$json = $json->utf8 if (!$raw_utf8);
+return $json->decode($json_text);
 }
 
 =head2 print_json(data)
