@@ -271,8 +271,18 @@ else {
 		my $lref = &read_file_lines($old->{'file'});
 		splice(@$lref, $old->{'line'},
 		       $old->{'eline'} - $old->{'line'} + 1, @lines);
+		my $diff = scalar(@lines) - ($old->{'eline'} - $old->{'line'} + 1);
+		$iface->{'line'} = $old->{'line'};
+		$iface->{'eline'} = $iface->{'line'} + scalar(@lines) - 1;
 		&flush_file_lines($old->{'file'});
 		&unlock_file($old->{'file'});
+		if ($diff) {
+			# May need to renumber other interface lines
+			foreach my $b (@$boot) {
+				$b->{'line'} += $diff if ($b->{'line'} > $iface->{'eline'});
+				$b->{'eline'} += $diff if ($b->{'eline'} > $iface->{'eline'});
+				}
+			}
 		}
 	else {
 		# Adding a new one (possibly to it's own file)
@@ -295,6 +305,8 @@ else {
 			splice(@$lref, $nline+1, 0, "    ".$sect.":");
 			}
 		splice(@$lref, $eline+1, 0, @lines);
+		$iface->{'line'} = $eline + 1;
+		$iface->{'eline'} = $iface->{'line'} + scalar(@lines) - 1;
 		&flush_file_lines($iface->{'file'});
 		&unlock_file($iface->{'file'});
 		}
@@ -558,7 +570,7 @@ $sysctl{'net.ipv4.ip_forward'} = $in{'forward'};
 &unlock_file($sysctl_config);
 
 # Save static routes
-my @boot =  &boot_interfaces();
+my @boot = &boot_interfaces();
 foreach my $b (grep { $_->{'virtual'} eq '' } @boot) {
 	my @r;
 	if ($b->{'routes'}) {
@@ -627,7 +639,8 @@ return ( );
 sub set_default_gateway
 {
 my ($gw, $dev) = @_;
-foreach my $iface (&boot_interfaces()) {
+my @boot = &boot_interfaces();
+foreach my $iface (@boot) {
 	# What is this interface's current default and how is it set?
 	my $oldgw = $iface->{'gateway'};
 	my $oldr;
@@ -670,7 +683,7 @@ foreach my $iface (&boot_interfaces()) {
 		}
 
 	if ($save) {
-		&save_interface($iface);
+		&save_interface($iface, \@boot);
 		}
 	}
 }
@@ -694,16 +707,17 @@ return ( );
 sub set_default_ipv6_gateway
 {
 my ($gw, $dev) = @_;
-foreach my $iface (&boot_interfaces()) {
+my @boot = &boot_interfaces();
+foreach my $iface (@boot) {
 	if ($iface->{'fullname'} eq $dev && $iface->{'gateway6'} ne $gw) {
 		# Need to add to this interface
 		$iface->{'gateway6'} = $gw;
-		&save_interface($iface);
+		&save_interface($iface, \@boot);
 		}
 	elsif ($iface->{'fullname'} ne $dev && $iface->{'gateway6'}) {
 		# Need to remove from this interface
 		delete($iface->{'gateway6'});
-		&save_interface($iface);
+		&save_interface($iface, \@boot);
 		}
 	}
 }
