@@ -4058,7 +4058,7 @@ return "<input name='$_[0]' size=13 value=\"$_[1]\"> ".
        &group_chooser_button($_[0], 0, $_[2] || 0)."\n";
 }
 
-=head2 hlink(text, page, [module], [width], [height])
+=head2 hlink(text, page, [module], [width], [height], [tmpl])
 
 Returns HTML for a link that when clicked on pops up a window for a Webmin
 help page. The parameters are :
@@ -4073,6 +4073,8 @@ help page. The parameters are :
 
 =item height - Height of the help popup window. Defaults to 400 pixels.
 
+=item tmpl - Hash ref of template variables to substitute in the help page.
+
 The actual help pages are in each module's help sub-directory, in files with
 .html extensions.
 
@@ -4086,8 +4088,8 @@ if (defined(&theme_hlink)) {
 	}
 $width ||= $tconfig{'help_width'} || $gconfig{'help_width'} || 600;
 $height ||= $tconfig{'help_height'} || $gconfig{'help_height'} || 400;
-my $params = $tmpl ? join("&", map { "tmpl_".&urlize($_)."=".&urlize($tmpl->{$_}) } keys %$tmpl) : "";
-return "<a onClick='window.open(\"@{[&get_webprefix()]}/help.cgi/$mod/$page?$params\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"@{[&get_webprefix()]}/help.cgi/$mod/$page?$params\">$txt</a>";
+my $params = $tmpl ? "?".join("&", map { "tmpl_".&urlize($_)."=".&urlize($tmpl->{$_}) } keys %$tmpl) : "";
+return "<a onClick='window.open(\"@{[&get_webprefix()]}/help.cgi/$mod/$page$params\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"@{[&get_webprefix()]}/help.cgi/$mod/$page$params\">$txt</a>";
 }
 
 =head2 user_chooser_button(field, multiple, [form])
@@ -12968,47 +12970,60 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 return 0;
 }
 
-=head2 convert_to_json(data, [pretty])
+=head2 convert_to_json(data, [pretty], [raw-utf8])
 
 Converts the given Perl data structure to encoded binary string
 
 =item data parameter is a hash/array reference
 =item if the output should be prettified
+=item raw-utf8 parameter, if set to 1, encodes data using UTF-8
 
 =cut
 sub convert_to_json
 {
-eval "use JSON::PP";
-if (!$@) {
-	my ($data, $pretty) = @_;
-	my $json = JSON::PP->new;
-	$pretty = 0 if (!$pretty);
-	$json = $json->pretty($pretty);
-	$data ||= {};
-	return $json->latin1->encode($data);
+my ($data, $pretty, $raw_utf8) = @_;
+my $json;
+
+if (eval { require JSON::XS }) {
+	$json = JSON::XS->new;
+	}
+elsif (eval { require JSON::PP }) {
+	$json = JSON::PP->new;
 	}
 else {
-	error("The JSON::PP Perl module is not available on your system : $@");
+	error("Neither JSON::XS nor JSON::PP Perl module is available on your system");
 	}
+$json->pretty(!!$pretty);
+$data ||= {};
+return $raw_utf8 ? $json->utf8->encode($data) : $json->latin1->encode($data);
 }
 
-=head2 convert_from_json(data)
+=head2 convert_from_json(data, [raw-utf8])
 
 Parses given JSON string
 
 =item data parameter is encoded JSON string
 
+=item raw-utf8 parameter, if set, treats the input as raw UTF-8
+
 =cut
 sub convert_from_json
 {
-eval "use JSON::PP";
-if (!$@) {
-	my ($json_text) = @_;
-	return JSON::PP->new->utf8->decode($json_text);
+my ($json_text, $raw_utf8) = @_;
+
+my $json;
+if (eval { require JSON::XS }) {
+	$json = JSON::XS->new;
+	}
+elsif (eval { require JSON::PP }) {
+	$json = JSON::PP->new;
 	}
 else {
-	error("The JSON::PP Perl module is not available on your system : $@");
+	error("Neither JSON::XS nor JSON::PP Perl module is available on your system");
 	}
+
+$json = $json->utf8 if (!$raw_utf8);
+return $json->decode($json_text);
 }
 
 =head2 print_json(data)

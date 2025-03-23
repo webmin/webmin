@@ -64,10 +64,9 @@ foreach my $os (@eol_oses) {
         push(@eol_oses_data, @$fdata_json);
         }
 my $eol_oses_data = &convert_to_json(\@eol_oses_data);
-&backquote_command("echo -n '$eol_oses_data' > $eol_cache_file 2>&1 </dev/null");
-if ($?) {
-        die("Could not write OS EOL data file : $?");
-        }
+open(my $fh, '>', $eol_cache_file) or die("Could not open OS EOL data file for writing: $!");
+print $fh $eol_oses_data;
+close($fh) or die("Could not close OS EOL data file: $!");
 }
 
 # eol_get_os_data()
