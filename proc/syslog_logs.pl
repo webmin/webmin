@@ -7,7 +7,7 @@ require 'proc-lib.pl';
 sub syslog_getlogs
 {
 if ($gconfig{'os_type'} =~ /-linux$/) {
-	return ( { 'cmd' => "dmesg",
+	return ( { 'cmd' => "dmesg -T",
 		   'desc' => $text{'syslog_dmesg'},
 		   'active' => 1, } );
 	}
