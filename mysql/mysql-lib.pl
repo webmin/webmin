@@ -1730,23 +1730,53 @@ my $conf = &get_mysql_config();
 return &unique(map { $_->{'file'} } @$conf);
 }
 
-# get_change_pass_sql(unescaped_plaintext_password, user, host)
+# get_plugin_sql(version, variant, plainpass, plugin)
+# Get the right query for setting user password with plugin
+sub get_plugin_sql
+{
+my ($ver, $variant, $plainpass, $plugin) = @_;
+my $pass = &escapestr($plainpass);
+# Has account locking support?
+my $suplock = $variant eq "mysql" && &compare_version_numbers($ver, "8.0") >= 0 ||
+	      $variant eq "mariadb" && &compare_version_numbers($ver, "10.4.2") >= 0;
+my $lockcurr;
+if ($suplock) {
+	$lockcurr = !defined($plainpass);
+	if ($lockcurr) {
+		$pass = sprintf("%x", rand 16) for 1..30;
+		}
+	}
+my $is_plugin_socket = $plugin eq "unix_socket";
+my $by = "";
+$by = " by '$pass'" if (!$is_plugin_socket);
+my $sp = "identified with $plugin$by";
+if ($variant eq "mariadb") {
+	$by = " using $password_func('$pass')" if (!$is_plugin_socket);
+	$sp = "identified via $plugin$by";
+	}
+if ($suplock) {
+	$sp = $lockcurr ? "account lock" : "$sp account unlock";
+	}
+return $sp;
+}
+
+# get_change_pass_sql(unescaped_plaintext_password, user, host, plugin)
 # Get the right query for changing user password
 sub get_change_pass_sql
 {
-my ($unescaped_plainpass, $user, $host) = @_;
-my $plugin = &get_mysql_plugin();
-$plugin = $plugin ? "with $plugin" : "";
-my $escaped_pass = &escapestr($unescaped_plainpass);
+my ($unescaped_plainpass, $user, $host, $plugin) = @_;
+$plugin ||= &get_mysql_plugin();
 my $sql;
 my ($ver, $variant) = &get_remote_mysql_variant();
-my $mysql_mariadb_with_auth_string = 
+my $supauth = 
    $variant eq "mariadb" && &compare_version_numbers($ver, "10.2") >= 0 ||
    $variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0;
-if ($mysql_mariadb_with_auth_string && $unescaped_plainpass) {
-	$sql = "alter user '$user'\@'$host' identified $plugin by '$escaped_pass'";
+if ($plugin && $supauth) {
+	my $sp = &get_plugin_sql($ver, $variant, $unescaped_plainpass, $plugin);
+	$sql = "alter user '$user'\@'$host' $sp";
 	}
 else {
+	my $escaped_pass = &escapestr($unescaped_plainpass);
 	$sql = "set password for '".$user."'\@'".$host."' = ".
 	       "$password_func('$escaped_pass')";
 	}
@@ -1937,34 +1967,12 @@ else {
 sub change_user_password
 {
 my ($plainpass, $user, $host, $plugin) = @_;
-
-my ($ver, $variant) = &get_remote_mysql_variant();
 $plugin ||= &get_mysql_plugin();
-$plugin = $plugin ? "with $plugin" : "";
-my $lock_supported = $variant eq "mysql" && &compare_version_numbers($ver, "8.0.19");
-my $mysql_mariadb_with_auth_string = 
-	$variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0 ||
-	$variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0;
-
+$plugin ||= "";
 my $sql;
-my $pass = &escapestr($plainpass);
 $host ||= '%';
-my $lock = !defined($plainpass);
-if ($lock) {
-	$pass = sprintf("%x", rand 16) for 1..30;
-	}
-if ($mysql_mariadb_with_auth_string) {
-	my $sp = "identified $plugin by '".$pass."'";
-	if ($lock_supported) {
-		$sp = $lock ? "account lock" : "$sp account unlock";
-		}
-	$sql = "alter user '$user'\@'$host' $sp";
-	&execute_sql_logged($master_db, $sql);
-	}
-else {
-	$sql = &get_change_pass_sql($plainpass, $user, $host);
-	&execute_sql_logged($master_db, $sql);
-	}
+$sql = &get_change_pass_sql($plainpass, $user, $host, $plugin);
+&execute_sql_logged($master_db, $sql);
 
 # Update module password when needed
 &update_config_credentials({
@@ -2058,7 +2066,7 @@ if (!$pid || !kill(0, $pid)) {
 	}
 
 # Update password by running command directly
-my $cmd = $config{'mysql'} || 'mysql';
+$cmd = $config{'mysql'} || 'mysql';
 my $sql = &get_change_pass_sql($pass, $user, 'localhost');
 my $out = &backquote_command("$cmd -D $master_db -e ".
 		quotemeta("flush privileges; $sql")." 2>&1 </dev/null");
