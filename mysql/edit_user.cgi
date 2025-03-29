@@ -64,9 +64,14 @@ my $unixsocket = $plugin && $u->[$plugin] eq 'unix_socket';
 my $nopass = ((!defined($epassfield1) || !$u->[$epassfield1]) &&
 	      (!defined($epassfield2) || !$u->[$epassfield2]));
 my $hashpass = $u->[$epassfield1] || $u->[$epassfield2];
-my $lock_supported = exists($fieldmap{'account_locked'}) && 
-		     defined($u->[$fieldmap{'account_locked'}]);
+my $lock_supported = &get_account_lock_support();
+# Old way for checking account locking
 my $locked = $u->[$fieldmap{'account_locked'}] eq 'Y';
+# New account locking check
+if (!exists($fieldmap{'account_locked'}) ||
+    !defined($u->[$fieldmap{'account_locked'}])) {
+	$locked = &get_account_lock_status($u->[1], $u->[0]);
+	}
 print &ui_table_row($text{'user_pass'},
 	&ui_radio("mysqlpass_mode", $in{'new'} ? 0 :
 		       $lock_supported && $locked ? 4 : 

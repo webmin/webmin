@@ -1730,6 +1730,27 @@ my $conf = &get_mysql_config();
 return &unique(map { $_->{'file'} } @$conf);
 }
 
+# get_account_lock_status(user, host)
+# Returns the account lock status of a user
+sub get_account_lock_status
+{
+my ($user, $host) = @_;
+my $sql = "show create user '".$user."'\@'".$host."'";
+my $rv = &execute_sql($master_db, $sql);
+return undef if (!ref($rv) || !@{$rv->{'data'}});
+return $rv->{'data'}->[0][0] =~ /account\s+lock/i ? 1 : 0;
+}
+
+# get_account_lock_support()
+# Returns 1 if the MySQL/MariaDB server supports account locking
+sub get_account_lock_support
+{
+my ($ver, $variant) = &get_remote_mysql_variant();
+return 
+   $variant eq "mariadb" && &compare_version_numbers($ver, "10.4.2") >= 0 ||
+   $variant eq "mysql" && &compare_version_numbers($ver, "8.0") >= 0;
+}
+
 # get_plugin_sql(version, variant, plainpass, plugin)
 # Get the right query for setting user password with plugin
 sub get_plugin_sql
@@ -1737,8 +1758,7 @@ sub get_plugin_sql
 my ($ver, $variant, $plainpass, $plugin) = @_;
 my $pass = &escapestr($plainpass);
 # Has account locking support?
-my $suplock = $variant eq "mysql" && &compare_version_numbers($ver, "8.0") >= 0 ||
-	      $variant eq "mariadb" && &compare_version_numbers($ver, "10.4.2") >= 0;
+my $suplock = &get_account_lock_support();
 my $lockcurr;
 if ($suplock) {
 	$lockcurr = !defined($plainpass);
