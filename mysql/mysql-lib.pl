@@ -1735,8 +1735,7 @@ return &unique(map { $_->{'file'} } @$conf);
 sub get_account_lock_status
 {
 my ($user, $host) = @_;
-my $sql = "show create user '".$user."'\@'".$host."'";
-my $rv = &execute_sql($master_db, $sql);
+my $rv = &execute_sql_safe($master_db, 'show create user ?@?', $user, $host);
 return undef if (!ref($rv) || !@{$rv->{'data'}});
 return $rv->{'data'}->[0][0] =~ /account\s+lock/i ? 1 : 0;
 }
