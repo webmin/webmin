@@ -2181,13 +2181,16 @@ return $rv->{'data'}->[0]->[0] =~ /unix_socket/i ? 'socket' : 'password';
 }
 
 # list_authentication_plugins()
-# Returns a list of supported authentication plugins for setting passwords
+# Returns a list ref of supported authentication plugins for setting passwords
 sub list_authentication_plugins
 {
 my ($ver, $variant) = &get_remote_mysql_variant();
 if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0 ||
     $variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0) {
-	return ('mysql_native_password', 'caching_sha2_password', 'unix_socket');
+	my $rv = &execute_sql($master_db, "show plugins");
+	my @plugins = map { $_->[0] } grep { $_->[1] eq 'ACTIVE' &&
+		$_->[2] eq 'AUTHENTICATION' } @{ $rv->{data} };
+	return @plugins ? \@plugins : ['mysql_native_password'];
 	}
 return ();
 }
