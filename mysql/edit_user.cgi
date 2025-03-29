@@ -63,7 +63,7 @@ my $plugin = $fieldmap{'plugin'};
 my $unixsocket = $plugin && $u->[$plugin] eq 'unix_socket';
 my $nopass = ((!defined($epassfield1) || !$u->[$epassfield1]) &&
 	      (!defined($epassfield2) || !$u->[$epassfield2]));
-my $hashpass = $u->[$epassfield1] || $u->[$epassfield2];
+my $hashpass = $u->[$epassfield2] || $u->[$epassfield1];
 my $lock_supported = &get_account_lock_support();
 # Old way for checking account locking
 my $locked = $u->[$fieldmap{'account_locked'}] eq 'Y';
@@ -84,6 +84,8 @@ print &ui_table_row($text{'user_pass'},
 
 # Current hashed password
 if (!$in{'new'} && $hashpass) {
+	$hashpass =~ s/[^[:print:]\n]//g;   # keep printable and newline
+	$hashpass =~ s/\n/\\n/g;            # display newline as literal '\n'
 	print &ui_table_row($text{'user_hashpass'},
 		"<tt>".&html_escape($hashpass)."</tt>");
 	}
