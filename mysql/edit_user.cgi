@@ -91,12 +91,12 @@ if (!$in{'new'} && $hashpass) {
 	}
 
 # Plugin for setting password
-my @plugins = &list_authentication_plugins();
-if (@plugins) {
+my $plugins = &list_authentication_plugins();
+if ($plugins) {
 	print &ui_table_row($text{'user_plugin'},
 		&ui_select("plugin", $plugin && $u->[$plugin], 
 			   [ [ '', $text{'default'} ],
-			     @plugins ]));
+			     @{$plugins} ]));
 	}
 
 # Allowed host / network
