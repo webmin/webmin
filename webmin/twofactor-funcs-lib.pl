@@ -235,8 +235,8 @@ if (&can_generate_qr()) {
 		}
 	}
 else {
-	$url = "https://chart.googleapis.com/chart".
-	       "?chs=200x200&cht=qr&chl=".&urlize($str);
+	$url = "https://api.qrserver.com/v1/create-qr-code/?".
+	       "size=200x200&data=".&urlize($str);
 	}
 my $rv;
 $rv .= &text('twofactor_qrcode', "<tt>$user->{'twofactor_id'}</tt>")."<p>\n";
