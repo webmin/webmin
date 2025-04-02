@@ -9,7 +9,7 @@ use WebminCore;
 
 &init_config();
 &ReadParse();
-&switch_to_remote_user();
+&webmin_user_is_admin() or &switch_to_remote_user();
 
 do "./xhr-lib.pl";
 xhr();

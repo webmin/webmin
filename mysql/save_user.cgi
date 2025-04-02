@@ -77,6 +77,11 @@ else {
 			&change_user_password(undef, $olduser, $oldhost,
 					      $in{'plugin'});
 			}
+		elsif ($in{'mysqlpass_mode'} == 1 &&
+		       $in{'plugin'} eq "unix_socket") {
+			&change_user_password('', $olduser, $oldhost,
+					      $in{'plugin'});
+			}
 		elsif ($in{'mysqlpass_mode'} != 1) {
 			($in{'mysqlpass_mode'} eq '0' && !$in{'mysqlpass'}) && &error($text{'root_epass1'});
 			my $pass = $in{'mysqlpass'} || '';
