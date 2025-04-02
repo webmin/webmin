@@ -866,5 +866,46 @@ else {
 return @poss;
 }
 
+# list_php_base_packages()
+# Returns a list of hash refs, one per PHP version installed, with the following keys
+# name - Package name
+# system - Package system
+# ver - Package version
+# phpver - PHP version
+sub list_php_base_packages
+{
+&foreign_require("software");
+my $n = &software::list_packages();
+my @rv;
+for(my $i=0; $i<$n; $i++) {
+	my $name = $software::packages{$i,'name'};
+	next if ($name !~ /^php(\d*)$/);
+	my $suffix = $1;
+	my $phpver = $software::packages{$i,'version'};
+	$phpver =~ s/\-.*$//;
+	my $bin;
+	foreach my $b ($name, $name."-cgi", "php-".$phpver) {
+		if ($bin = &has_command($b)) {
+			last;
+			}
+		}
+	if ($bin) {
+		my $out = &backquote_command("$bin -v 2>&1");
+		if ($out =~ /(^|\n)PHP\s+([\d\.]+)/) {
+			$phpver = $2;
+			}
+		}
+	my $shortver = $phpver;
+	$shortver =~ s/^(\d+\.\d+).*$/$1/;
+	push(@rv, { 'name' => $software::packages{$i,'name'},
+		    'system' => $software::packages{$i,'system'},
+		    'ver' => $software::packages{$i,'version'},
+		    'shortver' => $shortver,
+		    'phpver' => $phpver,
+		    'binary' => $bin, });
+	}
+return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
+}
+
 1;
 

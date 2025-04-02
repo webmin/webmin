@@ -9,6 +9,8 @@ index_edit=Manage
 index_manual=Edit Manually
 index_anyfile=Edit other PHP configuration file
 index_return=configuration files
+index_pkgs=Manage PHP Packages
+index_pkgsdesc=Install and remove PHP versions from your system's software package repository, so that they can be configured here any used in Virtualmin.
 
 file_global=Global PHP configuration
 file_eread=Failed to read $1 : $2
@@ -213,5 +215,17 @@ acl_user=Read and write files as user
 
 opt_default=Default Value: <tt>$1</tt>
 opt_default_unknown=Unknown
+
+pkgs_title=PHP Packages
+pkgs_name=Package name
+pkgs_ver=Package version
+pkgs_phpver=PHP version
+pkgs_users=Used by
+pkgs_delete=Delete Selected Packages
+pkgs_none=No PHP packages were found on your system!
+pkgs_ecannot=You are not allowed to manage PHP packages!
+pkgs_ecannot2=Software packages cannot be managed on this system
+pkgs_nousers=No domains
+pkgs_ucount=$1 domains
 
 __norefs=1

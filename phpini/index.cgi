@@ -61,6 +61,16 @@ else {
 		print &ui_form_end();
 		}
 
+	# Show button to install PHP versions
+	if ($access{'global'} && &foreign_available("software")) {
+		print &ui_hr();
+		print &ui_buttons_start();
+		print &ui_buttons_row("list_pkgs.cgi",
+			$text{'index_pkgs'},
+			$text{'index_pkgsdesc'});
+		print &ui_buttons_end();
+		}
+
 	&ui_print_footer("/", $text{'index'});
 	}
 
