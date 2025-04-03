@@ -88,7 +88,8 @@ else {
 
 if ($in{'save'}) {
 	# Just update renewal
-	&save_renewal_only(\@doms, $webroot, $mode, $size, $in{'subset'});
+	&save_renewal_only(\@doms, $webroot, $mode, $size,
+			   $in{'subset'}, $in{'use'});
 	&redirect("edit_ssl.cgi");
 	}
 else {
@@ -110,8 +111,12 @@ else {
 		# Worked, now copy to Webmin
 		print $text{'letsencrypt_done'},"<p>\n";
 
+		# Save the renewal schedule
+		&save_renewal_only(\@doms, $webroot, $mode,
+				   $size, $in{'subset'}, $in{'use'});
+
+		# Copy cert, key and chain to Webmin
 		if ($in{'use'}) {
-			# Copy cert, key and chain to Webmin
 			print $text{'letsencrypt_webmin'},"<br>\n";
 			&lock_file($ENV{'MINISERV_CONFIG'});
 			&get_miniserv_config(\%miniserv);
@@ -141,38 +146,33 @@ else {
 			&put_miniserv_config(\%miniserv);
 			&unlock_file($ENV{'MINISERV_CONFIG'});
 
-			&save_renewal_only(\@doms, $webroot, $mode,
-					   $size, $in{'subset'});
-
 			&webmin_log("letsencrypt");
 			&restart_miniserv(1);
 			print $text{'letsencrypt_wdone'},"<p>\n";
 			}
-		else {
-			# Just tell the user
-			print $text{'letsencrypt_show'},"<p>\n";
-			my @grid = ( $text{'letsencrypt_cert'}, $cert,
-				     $text{'letsencrypt_key'}, $key );
-			if ($chain) {
-				push(@grid, $text{'letsencrypt_chain'}, $chain);
-				}
-			print &ui_grid_table(\@grid, 2);
-			}
+
+		# Tell the user what was done
+		print $text{'letsencrypt_show'},"<p>\n";
+		my @grid = ( $text{'letsencrypt_cert'}, $cert,
+			     $text{'letsencrypt_key'}, $key );
+		push(@grid, $text{'letsencrypt_chain'}, $chain) if ($chain);
+		print &ui_grid_table(\@grid, 2);
 		}
 
 	&ui_print_footer("", $text{'index_return'});
 	}
 
-# save_renewal_only(&doms, webroot, mode, size, subset-mode)
+# save_renewal_only(&doms, webroot, mode, size, subset-mode, used-by-webmin)
 # Save for future renewals
 sub save_renewal_only
 {
-my ($doms, $webroot, $mode, $size, $subset) = @_;
+my ($doms, $webroot, $mode, $size, $subset, $usewebmin) = @_;
 $config{'letsencrypt_doms'} = join(" ", @$doms);
 $config{'letsencrypt_webroot'} = $webroot;
 $config{'letsencrypt_mode'} = $mode;
 $config{'letsencrypt_size'} = $size;
 $config{'letsencrypt_subset'} = $subset;
+$config{'letsencrypt_use'} = $usewebmin;
 &save_module_config();
 if (&foreign_check("webmincron")) {
 	my $job = &find_letsencrypt_cron_job();
