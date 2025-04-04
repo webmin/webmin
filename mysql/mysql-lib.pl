@@ -1687,7 +1687,8 @@ eval {
 	local $main::error_must_die = 1;
 	my $d = &execute_sql($master_db, "show variables like 'gtid_mode'");
 	if (@{$d->{'data'}} && uc($d->{'data'}->[0]->[1]) eq 'ON' &&
-	    &compare_version_numbers($mysql_version, "5.6") >= 0) {
+	    &compare_version_numbers($mysql_version, "5.6") >= 0 &&
+	    $config{'mysqldump'} !~ /--set-gtid-purged/) {
 		# Add flag to support GTIDs
 		$gtidsql = "--set-gtid-purged=OFF";
 		}
