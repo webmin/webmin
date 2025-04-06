@@ -867,7 +867,8 @@ return @poss;
 }
 
 # list_php_base_packages()
-# Returns a list of hash refs, one per PHP version installed, with the following keys
+# Returns a list of hash refs, one per PHP version installed, with the
+# following keys :
 # name - Package name
 # system - Package system
 # ver - Package version
@@ -906,6 +907,33 @@ for(my $i=0; $i<$n; $i++) {
 		    'shortver' => $shortver,
 		    'phpver' => $phpver,
 		    'binary' => $bin, });
+	}
+return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
+}
+
+# list_available_php_packages()
+# Returns a list of hash refs, one per PHP version available, with the
+# following keys :
+sub list_available_php_packages
+{
+&foreign_require("package-updates");
+my @rv;
+foreach my $pkg (&package_updates::list_available()) {
+	my $name = $pkg->{'name'};
+	next if ($name !~ /^php(\d*)$/);
+	my $suffix = $1;
+        my $phpver = $pkg->{'version'};
+        $phpver =~ s/\-.*$//;
+	my $shortver = $phpver;
+	$shortver =~ s/^(\d+\.\d+).*$/$1/;
+	if ($shortver =~ /^5\./) {
+		$shortver = "5";
+		}
+	push(@rv, { 'name' => $pkg->{'name'},
+		    'version' => $pkg->{'version'},
+		    'shortver' => $shortver,
+                    'phpver' => $phpver,
+		  });
 	}
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 }

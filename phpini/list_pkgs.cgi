@@ -8,6 +8,7 @@ $access{'global'} || &error($text{'pkgs_ecannot'});
 &ui_print_header(undef, $text{'pkgs_title'}, "");
 
 my @pkgs = &list_php_base_packages();
+my %got;
 if (@pkgs) {
 	my %vmap;
 	my $hasusers = 0;
@@ -44,12 +45,30 @@ if (@pkgs) {
 			$pkg->{'phpver'},
 			$hasusers ? ( $pkg->{'shortver'}, $users ) : ( ),
 			], \@tds, "d", $pkg->{'name'});
+		$got{$pkg->{'name'}}++;
 		}
 	print &ui_columns_end();
 	print &ui_form_end([ [ undef, $text{'pkgs_delete'} ] ]);
 	}
 else {
 	print "<b>$text{'pkgs_none'}</b> <p>\n";
+	}
+
+if (&foreign_installed("package-updates")) {
+	# Show form to install a new version
+	@newpkgs = grep { !$got{$_->{'name'}} } &list_available_php_packages();
+	print &ui_hr();
+	print &ui_form_start(
+		&get_webprefix()."/package-updates/update.cgi", "post");
+	print "<b>$text{'pkgs_newver'}</b>\n";
+	print &ui_select("u", undef,
+		[ map { [ $_->{'name'},
+			  $_->{'name'}." (".$_->{'version'}.")" ] } @newpkgs ]);
+	print &ui_hidden(
+		"redir", &get_webprefix()."/$module_name/list_pkgs.cgi");
+	print &ui_hidden("redirdesc", $text{'pkgs_title'});
+	print &ui_hidden("mode", "new");
+	print &ui_form_end([ [ undef, $text{'pkgs_install'} ] ]);
 	}
 
 &ui_print_footer("", $text{'index_return'});
