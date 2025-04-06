@@ -10,6 +10,7 @@ $access{'global'} || &error($text{'pkgs_ecannot'});
 my @pkgs = &list_php_base_packages();
 if (@pkgs) {
 	my %vmap;
+	my $hasusers = 0;
 	if (&foreign_check("virtual-server")) {
 		# Get the domain to PHP version map
 		&foreign_require("virtual-server");
@@ -20,6 +21,7 @@ if (@pkgs) {
 				$vmap{$v} ||= [ ];
 				push(@{$vmap{$v}}, $d);
 				}
+			$hasusers = 1;
 			}
 		}
 	my @tds = ( "width=5" );
@@ -27,7 +29,8 @@ if (@pkgs) {
 	print &ui_columns_start([ "", $text{'pkgs_name'},
 				      $text{'pkgs_ver'},
 				      $text{'pkgs_phpver'},
-				      $text{'pkgs_users'} ], \@tds);
+				      $hasusers ? ( $text{'pkgs_users'} ) : ( ),
+			        ], \@tds);
 	foreach my $pkg (@pkgs) {
 		my $ulist = $vmap{$pkg->{'shortver'}};
 		my $users = !$ulist || !@$ulist ? $text{'pkgs_nousers'} :
@@ -37,7 +40,7 @@ if (@pkgs) {
 			$pkg->{'name'},
 			$pkg->{'ver'},
 			$pkg->{'phpver'},
-			$users,
+			$hasusers ? ( $users ) : ( ),
 			], \@tds, "d", $pkg->{'name'});
 		}
 	print &ui_columns_end();
