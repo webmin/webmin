@@ -29,7 +29,9 @@ if (@pkgs) {
 	print &ui_columns_start([ "", $text{'pkgs_name'},
 				      $text{'pkgs_ver'},
 				      $text{'pkgs_phpver'},
-				      $hasusers ? ( $text{'pkgs_users'} ) : ( ),
+				      $hasusers ? (
+					$text{'pkgs_shortver'},
+					$text{'pkgs_users'} ) : ( ),
 			        ], \@tds);
 	foreach my $pkg (@pkgs) {
 		my $ulist = $vmap{$pkg->{'shortver'}};
@@ -40,7 +42,7 @@ if (@pkgs) {
 			$pkg->{'name'},
 			$pkg->{'ver'},
 			$pkg->{'phpver'},
-			$hasusers ? ( $users ) : ( ),
+			$hasusers ? ( $pkg->{'shortver'}, $users ) : ( ),
 			], \@tds, "d", $pkg->{'name'});
 		}
 	print &ui_columns_end();

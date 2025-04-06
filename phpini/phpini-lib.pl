@@ -897,6 +897,9 @@ for(my $i=0; $i<$n; $i++) {
 		}
 	my $shortver = $phpver;
 	$shortver =~ s/^(\d+\.\d+).*$/$1/;
+	if ($shortver =~ /^5\./) {
+		$shortver = "5";
+		}
 	push(@rv, { 'name' => $software::packages{$i,'name'},
 		    'system' => $software::packages{$i,'system'},
 		    'ver' => $software::packages{$i,'version'},
