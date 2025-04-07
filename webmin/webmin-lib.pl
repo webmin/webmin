@@ -2697,7 +2697,7 @@ my @doms = split(/\s+/, $config{'letsencrypt_doms'});
 my $webroot = $config{'letsencrypt_webroot'};
 my $mode = $config{'letsencrypt_mode'} || "web";
 my $size = $config{'letsencrypt_size'};
-my $usewebmin = !!($config{'letsencrypt_use'} // 1);
+my $usewebmin = !$config{'letsencrypt_nouse'};
 if (!@doms) {
 	print "No domains saved to renew cert for!\n";
 	return;

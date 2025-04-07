@@ -172,7 +172,7 @@ $config{'letsencrypt_webroot'} = $webroot;
 $config{'letsencrypt_mode'} = $mode;
 $config{'letsencrypt_size'} = $size;
 $config{'letsencrypt_subset'} = $subset;
-$config{'letsencrypt_use'} = $usewebmin;
+$config{'letsencrypt_nouse'} = !$usewebmin ? 1 : 0;
 &save_module_config();
 if (&foreign_check("webmincron")) {
 	my $job = &find_letsencrypt_cron_job();

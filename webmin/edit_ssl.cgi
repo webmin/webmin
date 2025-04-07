@@ -326,7 +326,7 @@ else {
 
 	# Install in Webmin now?
 	print &ui_table_row($text{'ssl_usewebmin'},
-		&ui_yesno_radio("use", !!($config{'letsencrypt_use'} // 1)));
+		&ui_yesno_radio("use", !$config{'letsencrypt_nouse'}));
 
 	# SSL key size
 	print &ui_table_row($text{'ssl_size'},
