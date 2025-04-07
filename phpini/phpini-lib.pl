@@ -938,5 +938,24 @@ foreach my $pkg (&package_updates::list_available()) {
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 }
 
+# get_virtualmin_php_map()
+# Return a hash mapping PHP versions like 5 or 7.2 to a list of domains, or
+# undef if Virtualmin isn't installed
+sub get_virtualmin_php_map
+{
+my %vmap;
+&foreign_check("virtual-server") || return undef;
+&foreign_require("virtual-server");
+foreach my $d (&virtual_server::list_domains()) {
+	my $v = $d->{'php_fpm_version'} ||
+		$d->{'php_version'};
+	if ($v) {
+		$vmap{$v} ||= [ ];
+		push(@{$vmap{$v}}, $d);
+		}
+	}
+return \%vmap;
+}
+
 1;
 

@@ -10,40 +10,31 @@ $access{'global'} || &error($text{'pkgs_ecannot'});
 my @pkgs = &list_php_base_packages();
 my %got;
 if (@pkgs) {
-	my %vmap;
-	my $hasusers = 0;
-	if (&foreign_check("virtual-server")) {
-		# Get the domain to PHP version map
-		&foreign_require("virtual-server");
-		foreach my $d (&virtual_server::list_domains()) {
-			my $v = $d->{'php_fpm_version'} ||
-				$d->{'php_version'};
-			if ($v) {
-				$vmap{$v} ||= [ ];
-				push(@{$vmap{$v}}, $d);
-				}
-			$hasusers = 1;
-			}
-		}
+	my $vmap = &get_virtualmin_php_map();
 	my @tds = ( "width=5" );
 	print &ui_form_start("delete_pkgs.cgi", "post");
 	print &ui_columns_start([ "", $text{'pkgs_name'},
 				      $text{'pkgs_ver'},
 				      $text{'pkgs_phpver'},
-				      $hasusers ? (
+				      $vmap ? (
 					$text{'pkgs_shortver'},
 					$text{'pkgs_users'} ) : ( ),
 			        ], \@tds);
 	foreach my $pkg (@pkgs) {
-		my $ulist = $vmap{$pkg->{'shortver'}};
-		my $users = !$ulist || !@$ulist ? $text{'pkgs_nousers'} :
-			    @$ulist > 5 ? &text('pkgs_ucount',scalar(@$ulist)) :
-				join(", ", map { "<tt>$_->{'dom'}</tt>" } @$ulist);
+		my $users;
+		if ($vmap) {
+			my $ulist = $vmap->{$pkg->{'shortver'}};
+			$users = !$ulist || !@$ulist ? $text{'pkgs_nousers'} :
+				 @$ulist > 5 ? &text('pkgs_ucount',
+						     scalar(@$ulist)) :
+				    join(", ", map { "<tt>$_->{'dom'}</tt>" }
+						   @$ulist);
+			}
 		print &ui_checked_columns_row([
 			$pkg->{'name'},
 			$pkg->{'ver'},
 			$pkg->{'phpver'},
-			$hasusers ? ( $pkg->{'shortver'}, $users ) : ( ),
+			$vmap ? ( $pkg->{'shortver'}, $users ) : ( ),
 			], \@tds, "d", $pkg->{'name'});
 		$got{$pkg->{'name'}}++;
 		}
