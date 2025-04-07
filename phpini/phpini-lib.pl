@@ -878,9 +878,10 @@ sub list_php_base_packages
 &foreign_require("software");
 my $n = &software::list_packages();
 my @rv;
+my %done;
 for(my $i=0; $i<$n; $i++) {
 	my $name = $software::packages{$i,'name'};
-	next if ($name !~ /^php(\d*)$/);
+	next if ($name !~ /^php(\d*)(-php)?$/);
 	my $suffix = $1;
 	my $phpver = $software::packages{$i,'version'};
 	$phpver =~ s/\-.*$//;
@@ -901,6 +902,7 @@ for(my $i=0; $i<$n; $i++) {
 	if ($shortver =~ /^5\./) {
 		$shortver = "5";
 		}
+	next if ($done{$phpver}++);
 	push(@rv, { 'name' => $software::packages{$i,'name'},
 		    'system' => $software::packages{$i,'system'},
 		    'ver' => $software::packages{$i,'version'},
@@ -930,7 +932,7 @@ foreach my $pkg (&package_updates::list_available()) {
 		$shortver = "5";
 		}
 	push(@rv, { 'name' => $pkg->{'name'},
-		    'version' => $pkg->{'version'},
+		    'ver' => $pkg->{'version'},
 		    'shortver' => $shortver,
                     'phpver' => $phpver,
 		  });
@@ -947,14 +949,27 @@ my %vmap;
 &foreign_check("virtual-server") || return undef;
 &foreign_require("virtual-server");
 foreach my $d (&virtual_server::list_domains()) {
-	my $v = $d->{'php_fpm_version'} ||
-		$d->{'php_version'};
+	my $v = $d->{'php_mode'} eq 'fpm' ? $d->{'php_fpm_version'}
+					  : $d->{'php_version'};
 	if ($v) {
 		$vmap{$v} ||= [ ];
 		push(@{$vmap{$v}}, $d);
 		}
 	}
 return \%vmap;
+}
+
+# delete_php_base_package(&package)
+# Delete a PHP package, and return undef on success or an error on failure
+sub delete_php_base_package
+{
+my ($pkg) = @_;
+&foreign_require("software");
+my $err = &software::delete_package($pkg->{'name'}, { }, $pkg->{'ver'});
+if ($err) {
+	$err = &html_strip($err);
+	}
+return $err;
 }
 
 1;

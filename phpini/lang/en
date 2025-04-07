@@ -230,5 +230,15 @@ pkgs_nousers=No domains
 pkgs_ucount=$1 domains
 pkgs_newver=PHP package to install:
 pkgs_install=Install Now
+pkgs_return=PHP packages
+
+dpkgs_err=Failed to delete PHP packages
+dpkgs_title=Deleting PHP Packages
+dpkgs_doing=Uninstalling package $1 for PHP version $2 ..
+dpkgs_failed=.. failed : $1
+dpkgs_done=.. uninstalled successfully
+dpkgs_enone=No packages selected
+dpkgs_eexists=Package does not exist!
+dpkg_eusers=Package for PHP version $1 cannot be uninstalled, as it is still being used by $2 domains
 
 __norefs=1

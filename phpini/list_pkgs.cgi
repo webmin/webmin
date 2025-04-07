@@ -54,7 +54,7 @@ if (&foreign_installed("package-updates")) {
 	print "<b>$text{'pkgs_newver'}</b>\n";
 	print &ui_select("u", undef,
 		[ map { [ $_->{'name'},
-			  $_->{'name'}." (".$_->{'version'}.")" ] } @newpkgs ]);
+			  $_->{'name'}." (".$_->{'ver'}.")" ] } @newpkgs ]);
 	print &ui_hidden(
 		"redir", &get_webprefix()."/$module_name/list_pkgs.cgi");
 	print &ui_hidden("redirdesc", $text{'pkgs_title'});
