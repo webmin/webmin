@@ -27,18 +27,34 @@ foreach my $name (@d) {
 	push(@delpkgs, $pkg);
 	}
 
-# Actually do the deletion
 &ui_print_unbuffered_header(undef, $text{'dpkgs_title'}, "");
 
-foreach my $pkg (@delpkgs) {
-	print &text('dpkgs_doing', "<tt>$pkg->{'name'}</tt>",
-				   $pkg->{'phpver'}),"<br>\n";
-	$err = &delete_php_base_package($pkg);
-	if ($err) {
-		print &text('dpkgs_failed', $err),"<p>\n";
+if (!$in{'confirm'}) {
+	# Find the packages first
+	print &ui_form_start("delete_pkgs.cgi");
+	foreach my $d (@d) {
+		print &ui_hidden("d", $d);
 		}
-	else {
-		print $text{'dpkgs_done'},"<p>\n";
+	my @alldel;
+	foreach my $pkg (@delpkgs) {
+		push(@alldel, &list_all_php_version_packages($pkg));
+		}
+	print &text('dpkgs_rusure',
+		join(" ", map { "<tt>$_</tt>" } @alldel)),"<p>\n";
+	print &ui_form_end([ [ 'confirm', $text{'pkgs_delete'} ] ]);
+	}
+else {
+	# Actually do the deletion
+	foreach my $pkg (@delpkgs) {
+		print &text('dpkgs_doing', "<tt>$pkg->{'name'}</tt>",
+					   $pkg->{'phpver'}),"<br>\n";
+		$err = &delete_php_base_package($pkg);
+		if ($err) {
+			print &text('dpkgs_failed', $err),"<p>\n";
+			}
+		else {
+			print $text{'dpkgs_done'},"<p>\n";
+			}
 		}
 	}
 

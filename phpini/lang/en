@@ -234,11 +234,12 @@ pkgs_return=PHP packages
 
 dpkgs_err=Failed to delete PHP packages
 dpkgs_title=Deleting PHP Packages
-dpkgs_doing=Uninstalling package $1 for PHP version $2 ..
+dpkgs_doing=Uninstalling package $1 and modules for PHP version $2 ..
 dpkgs_failed=.. failed : $1
 dpkgs_done=.. uninstalled successfully
 dpkgs_enone=No packages selected
 dpkgs_eexists=Package does not exist!
 dpkg_eusers=Package for PHP version $1 cannot be uninstalled, as it is still being used by $2 domains
+dpkgs_rusure=Are you sure you want to remove the selected PHP packages : $1
 
 __norefs=1

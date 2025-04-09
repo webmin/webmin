@@ -913,6 +913,26 @@ for(my $i=0; $i<$n; $i++) {
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 }
 
+# list_all_php_module_packages(base-package)
+# Returns all install packages for PHP extensions of a given base package
+sub list_all_php_module_packages
+{
+my ($base) = @_;
+$base =~ s/(-php|-runtime)$//;
+my @rv;
+&foreign_require("software");
+my $n = &software::list_packages();
+for(my $i=0; $i<$n; $i++) {
+	my $name = $software::packages{$i,'name'};
+	next if ($name !~ /^\Q$base\E-/);
+	push(@rv, { 'name' => $software::packages{$i,'name'},
+		    'system' => $software::packages{$i,'system'},
+		    'ver' => $software::packages{$i,'version'},
+		  });
+	}
+return @rv;
+}
+
 # list_available_php_packages()
 # Returns a list of hash refs, one per PHP version available, with the
 # following keys :
@@ -959,17 +979,40 @@ foreach my $d (&virtual_server::list_domains()) {
 return \%vmap;
 }
 
+# list_all_php_version_packages(&base-pkg)
+# Returns all package names for installed packages related to one PHP package,
+# such as those for extensions
+sub list_all_php_version_packages
+{
+my ($pkg) = @_;
+&foreign_require("software");
+my @rv = map { $_->{'name'} }
+	     &list_all_php_module_packages($pkg->{'name'});
+my $base = $pkg->{'name'};
+$base =~ s/-php$//;
+my @poss = ( @modpkgs, $base."-php", $base."-runtime", $base );
+foreach my $p (@poss) {
+	my @info = &software::package_info($p, $pkg->{'ver'});
+	next if (!@info);
+	push(@rv, $p);
+	}
+return @rv;
+}
+
 # delete_php_base_package(&package)
 # Delete a PHP package, and return undef on success or an error on failure
 sub delete_php_base_package
 {
 my ($pkg) = @_;
-&foreign_require("software");
-my $err = &software::delete_package($pkg->{'name'}, { }, $pkg->{'ver'});
-if ($err) {
-	$err = &html_strip($err);
+foreach my $p (&list_all_php_version_packages($pkg)) {
+	my @info = &software::package_info($p);
+	next if (!@info);
+	my $err = &software::delete_package($p, { 'nodeps' => 1 });
+	if ($err) {
+		return &html_strip($err);
+		}
 	}
-return $err;
+return undef;
 }
 
 1;
