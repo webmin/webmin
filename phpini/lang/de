@@ -235,7 +235,7 @@ pkgs_return=PHP-Pakete
 
 dpkgs_err=Fehler beim Löschen der PHP-Pakete
 dpkgs_title=PHP-Pakete werden gelöscht
-dpkgs_doing=Deinstalliere Paket $1 und Module für PHP-Version $2 ...
+dpkgs_doing=Deinstalliere Paket $1 und Module für PHP-Version $2 ..
 dpkgs_failed=.. fehlgeschlagen : $1
 dpkgs_done=.. erfolgreich deinstalliert
 dpkgs_enone=Keine Pakete ausgewählt
