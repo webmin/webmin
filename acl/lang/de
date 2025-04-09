@@ -36,6 +36,7 @@ edit_rights=Zugriffsrechte für Webmin-Benutzer
 edit_user=Benutzername
 edit_cloneof=Webmin-Benutzer klonen
 edit_real=Echter Name
+edit_email=E-Mail-Adresse
 edit_group=Mitglied der Gruppe
 edit_pass=Passwort
 edit_same=Gleich wie Unix
@@ -148,6 +149,7 @@ save_edays=Keine Tage ausgewählt
 save_ehours=Fehlende oder ungültige Zeiten
 save_ehours2=Startzeit muss vor Endzeit liegen
 save_etemp=Die Option, das Passwort beim nächsten Login zu ändern, kann nur verwendet werden, wenn <a href='$1'>Benutzer aufgefordert werden, neue Passwörter einzugeben</a> aktiviert ist
+save_eemail=Die E-Mail-Adresse darf das Zeichen ":" nicht enthalten
 
 delete_err=Fehler beim Löschen des Benutzers
 delete_eself=Sie können sich nicht selbst löschen
