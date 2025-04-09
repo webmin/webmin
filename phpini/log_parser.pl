@@ -12,6 +12,11 @@ if ($action eq "imod") {
 	return &text('log_'.$action, "<tt>".&html_escape($object)."</tt>",
 		     "<tt>".&html_escape($p->{'mod'})."</tt>");
 	}
-return &text('log_'.$action, "<tt>".&html_escape($object)."</tt>");
+elsif ($type eq "pkgs") {
+	return &text('log_'.$action.'_pkgs', $object);
+	}
+else {
+	return &text('log_'.$action, "<tt>".&html_escape($object)."</tt>");
+	}
 }
 

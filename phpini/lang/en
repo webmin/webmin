@@ -206,6 +206,7 @@ log_errors=Changed error logging in $1
 log_misc=Changed other settings in $1
 log_mods=Updated enabled modules in $1
 log_imod=Installed PHP module $2 in $1
+log_delete_dpkgs=Uninstalled $1 PHP packages
 
 acl_global=Can edit global PHP configuration?
 acl_anyfile=Can edit any file as a PHP configuration?

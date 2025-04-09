@@ -56,6 +56,7 @@ else {
 			print $text{'dpkgs_done'},"<p>\n";
 			}
 		}
+	&webmin_log("delete", "pkgs", scalar(@delpkgs));
 	}
 
 &ui_print_footer("list_pkgs.cgi", $text{'pkgs_return'});
