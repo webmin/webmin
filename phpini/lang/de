@@ -9,6 +9,8 @@ index_edit=Verwalten
 index_manual=Manuell bearbeiten
 index_anyfile=Andere PHP-Konfigurationsdatei bearbeiten
 index_return=Konfigurationsdateien
+index_pkgs=PHP-Pakete verwalten
+index_pkgsdesc=Installieren und entfernen Sie PHP-Versionen aus dem Softwarepaket-Repository Ihres Systems, sodass sie hier konfiguriert und in Virtualmin verwendet werden können.
 
 file_global=Globale PHP-Konfiguration
 file_eread=Lesen von $1 fehlgeschlagen: $2
@@ -213,3 +215,27 @@ acl_user=Dateien im Kontext von Benutzer:innen lesen und schreiben
 
 opt_default=Standardwert: <tt>$1</tt>
 opt_default_unknown=Unbekannt
+
+pkgs_title=PHP-Pakete
+pkgs_name=Paketname
+pkgs_ver=Paketversion
+pkgs_phpver=PHP-Version
+pkgs_users=Verwendet von
+pkgs_delete=Ausgewählte Pakete löschen
+pkgs_none=Auf Ihrem System wurden keine PHP-Pakete gefunden!
+pkgs_ecannot=Sie haben keine Berechtigung, PHP-Pakete zu verwalten!
+pkgs_ecannot2=Softwarepakete können auf diesem System nicht verwaltet werden
+pkgs_nousers=Keine Domains
+pkgs_ucount=$1 Domains
+pkgs_newver=Zu installierendes PHP-Paket:
+pkgs_install=Jetzt installieren
+pkgs_return=PHP-Pakete
+
+dpkgs_err=Fehler beim Löschen der PHP-Pakete
+dpkgs_title=PHP-Pakete werden gelöscht
+dpkgs_doing=Deinstallation des Pakets $1 für PHP-Version $2 wird durchgeführt ..
+dpkgs_failed=.. fehlgeschlagen : $1
+dpkgs_done=.. erfolgreich deinstalliert
+dpkgs_enone=Keine Pakete ausgewählt
+dpkgs_eexists=Das Paket existiert nicht!
+dpkg_eusers=Das Paket für PHP-Version $1 kann nicht deinstalliert werden, da es noch von $2 Domain(s) verwendet wird
