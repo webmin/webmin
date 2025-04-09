@@ -225,6 +225,8 @@ $user{'nochange'} = !$access{'nochange'} || !defined($in{'nochange'}) ?
 $user{'lastchange'} = $old->{'lastchange'};
 $user{'olds'} = $old->{'olds'};
 $user{'real'} = $in{'real'} =~ /\S/ ? $in{'real'} : undef;
+$in{'email'} =~ /:/ && &error($text{'save_eemail'});
+$user{'email'} = $in{'email'};
 my $raddr = $ENV{'REMOTE_ADDR'};
 my @ips;
 if ($access{'ips'}) {

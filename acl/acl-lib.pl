@@ -104,6 +104,7 @@ while(my $l = <$fh>) {
 			[ split(/\s+/, $gconfig{"ownmods_$user[0]"} || "") ];
 		$user{'logouttime'} = $logout{$user[0]};
 		$user{'real'} = $gconfig{"realname_$user[0]"};
+		$user{'email'} = $user[14];
 		push(@rv, \%user);
 		}
 	}
@@ -482,7 +483,8 @@ else {
 		($user->{'temppass'} || ""),":",
 		($user->{'twofactor_provider'} || ""),":",
 		($user->{'twofactor_id'} || ""),":",
-		($user->{'twofactor_apikey'} || ""),
+		($user->{'twofactor_apikey'} || ""),":",
+		($user->{'email'} || ""),
 		"\n");
 	&close_tempfile($fh);
 	&unlock_file($miniserv{'userfile'});
@@ -672,7 +674,8 @@ else {
 				$user->{'temppass'},":",
 				$user->{'twofactor_provider'},":",
 				$user->{'twofactor_id'},":",
-				$user->{'twofactor_apikey'},
+				$user->{'twofactor_apikey'},":",
+				$user->{'email'},
 				"\n");
 			}
 		else {

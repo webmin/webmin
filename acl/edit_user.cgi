@@ -159,6 +159,10 @@ print &ui_table_row($text{'edit_pass'},
 print &ui_table_row($text{'edit_real'},
 	&ui_textbox("real", $user{'real'}, 60));
 
+# Contact email for recovery
+print &ui_table_row($text{'edit_email'},
+	&ui_textbox("email", $user{'email'}, 60));
+
 # Storage type
 if ($in{'user'}) {
 	print &ui_table_row($text{'edit_proto'},
