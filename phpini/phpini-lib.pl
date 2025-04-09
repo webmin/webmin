@@ -866,5 +866,111 @@ else {
 return @poss;
 }
 
+# list_php_base_packages()
+# Returns a list of hash refs, one per PHP version installed, with the
+# following keys :
+# name - Package name
+# system - Package system
+# ver - Package version
+# phpver - PHP version
+sub list_php_base_packages
+{
+&foreign_require("software");
+my $n = &software::list_packages();
+my @rv;
+my %done;
+for(my $i=0; $i<$n; $i++) {
+	my $name = $software::packages{$i,'name'};
+	next if ($name !~ /^php(\d*)(-php)?$/);
+	my $suffix = $1;
+	my $phpver = $software::packages{$i,'version'};
+	$phpver =~ s/\-.*$//;
+	my $bin;
+	foreach my $b ($name, $name."-cgi", "php-".$phpver) {
+		if ($bin = &has_command($b)) {
+			last;
+			}
+		}
+	if ($bin) {
+		my $out = &backquote_command("$bin -v 2>&1");
+		if ($out =~ /(^|\n)PHP\s+([\d\.]+)/) {
+			$phpver = $2;
+			}
+		}
+	my $shortver = $phpver;
+	$shortver =~ s/^(\d+\.\d+).*$/$1/;
+	if ($shortver =~ /^5\./) {
+		$shortver = "5";
+		}
+	next if ($done{$phpver}++);
+	push(@rv, { 'name' => $software::packages{$i,'name'},
+		    'system' => $software::packages{$i,'system'},
+		    'ver' => $software::packages{$i,'version'},
+		    'shortver' => $shortver,
+		    'phpver' => $phpver,
+		    'binary' => $bin, });
+	}
+return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
+}
+
+# list_available_php_packages()
+# Returns a list of hash refs, one per PHP version available, with the
+# following keys :
+sub list_available_php_packages
+{
+&foreign_require("package-updates");
+my @rv;
+foreach my $pkg (&package_updates::list_available()) {
+	my $name = $pkg->{'name'};
+	next if ($name !~ /^php(\d*)$/);
+	my $suffix = $1;
+        my $phpver = $pkg->{'version'};
+        $phpver =~ s/\-.*$//;
+	my $shortver = $phpver;
+	$shortver =~ s/^(\d+\.\d+).*$/$1/;
+	if ($shortver =~ /^5\./) {
+		$shortver = "5";
+		}
+	push(@rv, { 'name' => $pkg->{'name'},
+		    'ver' => $pkg->{'version'},
+		    'shortver' => $shortver,
+                    'phpver' => $phpver,
+		  });
+	}
+return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
+}
+
+# get_virtualmin_php_map()
+# Return a hash mapping PHP versions like 5 or 7.2 to a list of domains, or
+# undef if Virtualmin isn't installed
+sub get_virtualmin_php_map
+{
+my %vmap;
+&foreign_check("virtual-server") || return undef;
+&foreign_require("virtual-server");
+foreach my $d (&virtual_server::list_domains()) {
+	my $v = $d->{'php_mode'} eq 'fpm' ? $d->{'php_fpm_version'}
+					  : $d->{'php_version'};
+	if ($v) {
+		$vmap{$v} ||= [ ];
+		push(@{$vmap{$v}}, $d);
+		}
+	}
+return \%vmap;
+}
+
+# delete_php_base_package(&package)
+# Delete a PHP package, and return undef on success or an error on failure
+sub delete_php_base_package
+{
+my ($pkg) = @_;
+&foreign_require("software");
+my $err = &software::delete_package($pkg->{'name'}, { }, $pkg->{'ver'});
+if ($err) {
+	$err = &html_strip($err);
+	}
+return $err;
+}
+
 1;
 

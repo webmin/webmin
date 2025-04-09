@@ -650,13 +650,14 @@ return $rv;
 
 sub quote_table
 {
-return &quotestr($_[0]);
+my ($rv) = @_;
+return &quotestr($rv);
 }
 
 # quotestr(string)
 sub quotestr
 {
-local $rv = $_[0];
+my ($rv) = @_;
 if (&supports_quoting()) {
 	return "`$rv`";
 	}
@@ -677,18 +678,19 @@ return $db;
 
 # unquote_mysql_database(name)
 # Returns a MySQL database name with \% and \_ characters unescaped
-sub unquote_mysql_database {
-    my ($db) = @_;
-    $db =~ s/\\%/%/g;
-    $db =~ s/\\_/_/g;
-    return $db;
+sub unquote_mysql_database
+{
+my ($db) = @_;
+$db =~ s/\\%/%/g;
+$db =~ s/\\_/_/g;
+return $db;
 }
 
 # escapestr(string)
 # Returns a string with quotes escaped, for use in SQL
 sub escapestr
 {
-local $rv = $_[0];
+my ($rv) = @_;
 $rv =~ s/'/''/g;
 return $rv;
 }
@@ -697,8 +699,8 @@ return $rv;
 # Escapes backslashes, but only inside quoted strings
 sub escape_backslashes_in_quotes
 {
-local ($str) = @_;
-local $rv;
+my ($str) = @_;
+my $rv;
 while($str =~ /^([^"]*)"([^"]*)"(.*)$/) {
 	local ($before, $quoted, $after) = ($1, $2, $3);
 	$quoted =~ s/\\/\\\\/g;
@@ -1685,7 +1687,8 @@ eval {
 	local $main::error_must_die = 1;
 	my $d = &execute_sql($master_db, "show variables like 'gtid_mode'");
 	if (@{$d->{'data'}} && uc($d->{'data'}->[0]->[1]) eq 'ON' &&
-	    &compare_version_numbers($mysql_version, "5.6") >= 0) {
+	    &compare_version_numbers($mysql_version, "5.6") >= 0 &&
+	    $config{'mysqldump'} !~ /--set-gtid-purged/) {
 		# Add flag to support GTIDs
 		$gtidsql = "--set-gtid-purged=OFF";
 		}
