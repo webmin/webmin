@@ -206,6 +206,7 @@ log_errors=Fehlerprotokollierung in $1 geändert
 log_misc=Weitere Einstellungen in $1 geändert
 log_mods=Aktivierte Module in $1 aktualisiert
 log_imod=PHP-Modul $2 in $1 installiert
+log_delete_dpkgs=Deinstallation von $1 PHP-Paketen abgeschlossen
 
 acl_global=Globale PHP-Konfiguration bearbeiten dürfen?
 acl_anyfile=Beliebige Datei als PHP-Konfiguration bearbeiten dürfen?
@@ -220,6 +221,7 @@ pkgs_title=PHP-Pakete
 pkgs_name=Paketname
 pkgs_ver=Paketversion
 pkgs_phpver=PHP-Version
+pkgs_shortver=Kurze Version
 pkgs_users=Verwendet von
 pkgs_delete=Ausgewählte Pakete löschen
 pkgs_none=Auf Ihrem System wurden keine PHP-Pakete gefunden!
@@ -233,9 +235,10 @@ pkgs_return=PHP-Pakete
 
 dpkgs_err=Fehler beim Löschen der PHP-Pakete
 dpkgs_title=PHP-Pakete werden gelöscht
-dpkgs_doing=Deinstallation des Pakets $1 für PHP-Version $2 wird durchgeführt ..
+dpkgs_doing=Deinstalliere Paket $1 und Module für PHP-Version $2 ..
 dpkgs_failed=.. fehlgeschlagen : $1
 dpkgs_done=.. erfolgreich deinstalliert
 dpkgs_enone=Keine Pakete ausgewählt
 dpkgs_eexists=Das Paket existiert nicht!
 dpkg_eusers=Das Paket für PHP-Version $1 kann nicht deinstalliert werden, da es noch von $2 Domain(s) verwendet wird
+dpkgs_rusure=Möchten Sie die ausgewählten PHP-Pakete wirklich entfernen: $1
