@@ -642,7 +642,11 @@ else {
 			   "<tt>$mdir</tt>", $size);
 	if ($type eq 'rpm') {
 		# This module was installed from an RPM .. rpm -e it
-		&system_logged("rpm -e wbm-$m");
+		&system_logged("rpm -e ".quotemeta("wbm-$m"));
+		}
+	elsif ($type eq 'deb') {
+		# Installed from a Debian package
+		&system_logged("dpkg --remove ".quotemeta("webmin-$m"));
 		}
 	else {
 		# Module was installed from a .wbm file .. just rm it
