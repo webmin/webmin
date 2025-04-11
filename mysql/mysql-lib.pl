@@ -726,6 +726,14 @@ sub supports_mysqldump_events
 return &compare_version_numbers($mysql_version, "5.1.8") >= 0;
 }
 
+# supports_mysqldump_setgtid()
+# Returns 1 if mysqldump supports --set-gtid-purged flag
+sub supports_mysqldump_setgtid
+{
+my $out = &backquote_command("$config{'mysqldump'} --help 2>&1 </dev/null");
+return $out =~ /--set-gtid-purged/ ? 1 : 0;
+}
+
 # supports_routines()
 # Returns 1 if mysqldump supports routines
 sub supports_routines
@@ -1684,10 +1692,12 @@ my $tablessql = join(" ", map { quotemeta($_) } @$tables);
 my $eventssql = &supports_mysqldump_events() ? "--events" : "";
 my $gtidsql = "";
 eval {
+    	return unless &supports_mysqldump_setgtid();
 	local $main::error_must_die = 1;
 	my $d = &execute_sql($master_db, "show variables like 'gtid_mode'");
+	my ($ver, $variant) = &get_remote_mysql_variant();
 	if (@{$d->{'data'}} && uc($d->{'data'}->[0]->[1]) eq 'ON' &&
-	    &compare_version_numbers($mysql_version, "5.6") >= 0 &&
+	    $variant eq 'mysql' && &compare_version_numbers($ver, "5.6") >= 0 &&
 	    $config{'mysqldump'} !~ /--set-gtid-purged/) {
 		# Add flag to support GTIDs
 		$gtidsql = "--set-gtid-purged=OFF";

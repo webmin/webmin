@@ -2701,6 +2701,7 @@ my @doms = split(/\s+/, $config{'letsencrypt_doms'});
 my $webroot = $config{'letsencrypt_webroot'};
 my $mode = $config{'letsencrypt_mode'} || "web";
 my $size = $config{'letsencrypt_size'};
+my $usewebmin = !$config{'letsencrypt_nouse'};
 if (!@doms) {
 	print "No domains saved to renew cert for!\n";
 	return;
@@ -2719,6 +2720,9 @@ if (!$ok) {
 	print "Failed to renew certificate : $cert\n";
 	return;
 	}
+
+# If we don't want to update the Webmin SSL certificate, then just return
+return if (!$usewebmin);
 
 # Copy into place
 my %miniserv;
