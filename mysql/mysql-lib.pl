@@ -1691,18 +1691,21 @@ my $routinessql = &supports_routines() ? "--routines" : "";
 my $tablessql = join(" ", map { quotemeta($_) } @$tables);
 my $eventssql = &supports_mysqldump_events() ? "--events" : "";
 my $gtidsql = "";
-eval {
-    	return unless &supports_mysqldump_setgtid();
-	local $main::error_must_die = 1;
-	my $d = &execute_sql($master_db, "show variables like 'gtid_mode'");
-	my ($ver, $variant) = &get_remote_mysql_variant();
-	if (@{$d->{'data'}} && uc($d->{'data'}->[0]->[1]) eq 'ON' &&
-	    $variant eq 'mysql' && &compare_version_numbers($ver, "5.6") >= 0 &&
-	    $config{'mysqldump'} !~ /--set-gtid-purged/) {
-		# Add flag to support GTIDs
-		$gtidsql = "--set-gtid-purged=OFF";
-		}
-	};
+if (&supports_mysqldump_setgtid() &&
+    $config{'mysqldump'} !~ /--set-gtid-purged/) {
+	eval {
+		local $main::error_must_die = 1;
+		my $d = &execute_sql($master_db,
+			"show variables like 'gtid_mode'");
+		my ($ver, $variant) = &get_remote_mysql_variant();
+		if (@{$d->{'data'}} && uc($d->{'data'}->[0]->[1]) eq 'ON' &&
+		    $variant eq 'mysql' &&
+		    &compare_version_numbers($ver, "5.6") >= 0) {
+			# Add flag to support GTIDs
+			$gtidsql = "--set-gtid-purged=OFF";
+			}
+		};
+	}
 if ($user && $user ne "root") {
 	# Actual writing of output is done as another user
 	$writer = &command_as_user($user, 0, $writer);
