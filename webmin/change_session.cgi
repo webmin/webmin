@@ -152,7 +152,16 @@ elsif ($in{'md5pass'} == 3) {
 	$need = &acl::check_yescrypt();
 	$need && &error(&text('session_eyescrypt', "<tt>$need</tt>"));
 	}
+
 $gconfig{'md5pass'} = $in{'md5pass'};
+
+# Save forgotten password mode
+if ($in{'forgot'} && &foreign_installed("virtualmin-password-recovery") &&
+    $text{'session_postfix'} =~ /virtualmin-password-recovery/) {
+	&error(&text('session_eforgot', 'edit_mods.cgi?tab=delete'));
+	}
+$gconfig{'forgot_pass'} = $in{'forgot'};
+
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");
 

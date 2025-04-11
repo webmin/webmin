@@ -150,6 +150,10 @@ print &ui_table_row($text{'session_passapi'},
 		    [ 1, $text{'session_passapi1'} . "&nbsp;" .
 		         &ui_help(&text('session_passurl', "<tt>$url</tt>")) ] ]));
 
+# Enable forgotten password recovery
+print &ui_table_row($text{'session_forgot'},
+	&ui_yesno_radio("forgot", $gconfig{'forgot_pass'}));
+
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);
 
