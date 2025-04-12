@@ -5255,8 +5255,11 @@ $config_file = "$config_directory/config";
 %gconfig = ( );
 &read_file_cached($config_file, \%gconfig);
 $gconfig{'webprefix'} = '' if (!exists($gconfig{'webprefix'}));
-if (!$gconfig{'webprefix'} && $gconfig{'webprefix_remote'}) {
+if (!$gconfig{'webprefix'} && $gconfig{'webprefix_remote'} &&
+    defined($ENV{'HTTP_X_WEBMIN_WEBPREFIX'})) {
 	$gconfig{'webprefix'} = $ENV{'HTTP_X_WEBMIN_WEBPREFIX'};
+	# Filter out potentially dangerous characters
+	$gconfig{'webprefix'} =~ s/[^a-zA-Z0-9\.\-_\/]//g;
 	}
 $null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
 $path_separator = $gconfig{'os_type'} eq 'windows' ? ';' : ':';
