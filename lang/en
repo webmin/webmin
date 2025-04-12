@@ -144,6 +144,13 @@ session_twofailed=Two-factor authentication failed : $1
 session_logout=Logout successful. Use the form below to login again.
 session_timed_out=Session timed out after $1 minutes of inactivity.
 session_save=Remember login permanently?
+session_forgot=Forgot Password?
+
+forgot_title=Reset Forgotten Password
+forgot_user=Webmin username:
+forgot_desc=If your Webmin login has a recovery email address associated with it, you can use this page to send a link that can be used to reset the password.
+forgot_ok=Send Password Reset Link
+forgot_ecannot=Forgotten password recovery is not enabled!
 
 pam_header=Login to Webmin
 pam_mesg=You must respond to the question below to login to Webmin server on $1.

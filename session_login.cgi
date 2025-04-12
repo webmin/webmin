@@ -111,8 +111,15 @@ print &ui_table_end(),"\n";
 print &ui_submit($text{'session_login'});
 print &ui_reset($text{'session_clear'});
 print &ui_form_end();
-print "</center>\n";
 
+if ($in{'failed'} && $gconfig{'forgot_pass'}) {
+	# Show forgotten password link
+	print &ui_form_start("forgot_form.cgi", "post");
+	print &ui_hidden("failed", $in{'failed'});
+	print &ui_form_end([ [ undef, $text{'session_forgot'} ] ]);
+	}
+
+print "</center>\n";
 print "$text{'session_postfix'}\n";
 
 # Output frame-detection Javascript, if theme uses frames

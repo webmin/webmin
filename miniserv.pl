@@ -2052,13 +2052,16 @@ if (!$validated) {
 
 if (!$validated) {
 	# Check if this path allows unauthenticated access
-	local ($u, $unauth);
-	foreach $u (@unauth) {
-		$unauth++ if ($simple =~ /$u/);
+	my $unauth;
+	foreach my $u (@unauth) {
+		$unauth = 4 if ($simple =~ /$u/);
+		}
+	foreach my $u (@unauthcgi) {
+		$unauth = 3 if ($simple =~ /$u/);
 		}
 	if (!$bogus && $unauth) {
 		# Unauthenticated directory or file request - approve it
-		$validated = 4;
+		$validated = $unauth;
 		$baseauthuser = $authuser = undef;
 		}
 	}
@@ -4914,7 +4917,8 @@ my %vital = ("port", 80,
 	  "listen_delay", 5,
 	  "pam", "webmin",
 	  "sidname", "sid",
-	  "unauth", "^/unauthenticated/ ^/robots.txt\$ ^[A-Za-z0-9\\-/_]+\\.jar\$ ^[A-Za-z0-9\\-/_]+\\.class\$ ^[A-Za-z0-9\\-/_]+\\.gif\$ ^[A-Za-z0-9\\-/_]+\\.png\$ ^[A-Za-z0-9\\-/_]+\\.conf\$ ^[A-Za-z0-9\\-/_]+\\.ico\$ ^/robots.txt\$ ^/service-worker.js\$ ^/forgot_form.cgi\$ ^/forgot.cgi\$",
+	  "unauth", "^/unauthenticated/ ^/robots.txt\$ ^[A-Za-z0-9\\-/_]+\\.jar\$ ^[A-Za-z0-9\\-/_]+\\.class\$ ^[A-Za-z0-9\\-/_]+\\.gif\$ ^[A-Za-z0-9\\-/_]+\\.png\$ ^[A-Za-z0-9\\-/_]+\\.conf\$ ^[A-Za-z0-9\\-/_]+\\.ico\$ ^/robots.txt\$ ^/service-worker.js\$",
+	  "unauthcgi", "^/forgot_form.cgi\$ ^/forgot.cgi\$",
 	  "max_post", 10000,
 	  "expires", 7*24*60*60,
 	  "pam_test_user", "root",
@@ -5400,6 +5404,7 @@ foreach my $a (split(/\s+/, $config{'ipaccess'})) {
 
 # build unauthenticated URLs list
 @unauth = split(/\s+/, $config{'unauth'});
+@unauthcgi = split(/\s+/, $config{'unauthcgi'});
 
 # build redirect mapping
 undef(%redirect);
