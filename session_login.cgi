@@ -27,7 +27,7 @@ if ($gconfig{'loginbanner'} && $ENV{'HTTP_COOKIE'} !~ /banner=1/ &&
 $sec = uc($ENV{'HTTPS'}) eq 'ON' ? "; secure" : "";
 if (!$miniserv{'no_httponly'}) {
 	$sec .= "; httpOnly";
-}
+	}
 $sidname = $miniserv{'sidname'} || "sid";
 print "Set-Cookie: banner=0; path=/$sec\r\n" if ($gconfig{'loginbanner'});
 print "Set-Cookie: $sidname=x; path=/$sec\r\n" if ($in{'logout'});
@@ -48,8 +48,9 @@ if ($tconfig{'inframe'}) {
 
 print "<center>\n";
 if (&miniserv_using_default_cert()) {
-    print "<h3>",&text('defcert_error',
-    	ucfirst(&get_product_name()), ($ENV{'MINISERV_KEYFILE'} || $miniserv{'keyfile'})),"</h3><p></p>\n";
+	print &ui_alert_box(&text('defcert_error',
+		ucfirst(&get_product_name()),
+		($ENV{'MINISERV_KEYFILE'} || $miniserv{'keyfile'})), 'warn');
 	}
 if (defined($in{'failed'})) {
 	if ($in{'twofactor_msg'}) {
