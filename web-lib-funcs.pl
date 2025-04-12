@@ -1789,24 +1789,14 @@ $err_caller = "$stack[0]->[1] (line $stack[0]->[2])"
 	if ($stack[0]->[1] && $stack[0]->[2]);
 if ($err_caller) {
 	$err_caller =~ s/$root_directory\///;
-	my $err_caller_msg_esc = &quote_escape($err_caller, '"');
-	my $err_caller_msg;
-	if (defined(&ui_help)) {
-		$err_caller_msg = &ui_help($err_caller_msg_esc);
-		}
-	else {
-		$err_caller_msg = $err_caller_msg_esc;
-		}
-	my $err_caller_ =
-		$main::webmin_script_type =~ /^(cmd|cron)$/ ?
-			$err_caller : $err_caller_msg;
-	$msg = $msg ? "$msg $err_caller_" : $err_caller_;
-	push(@msg, $err_caller_);
+	$err_caller = $msg ? "$msg $err_caller" : $err_caller;
+	push(@msg, $err_caller);
 	}
 my $error_details = (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) ? "" : "\n");
 my $error_output_right = sub {
 	my ($err_msg) = @_;
-	return $main::webmin_script_type eq 'cmd' ? entities_to_ascii($err_msg) : $err_msg;
+	return $main::webmin_script_type ne 'web' ?
+		&html_strip(&entities_to_ascii($err_msg)) : $err_msg;
 	};
 if (!$main::error_must_die) {
 	&error_stderr(&$error_output_right($msg));
@@ -1924,7 +1914,7 @@ $make_datestr =
       $tm[2], $tm[1], $tm[0], $timezone);
 $remote_host = $ENV{"REMOTE_HOST"};
 $page = $ENV{"REQUEST_URI"};
-$err = &html_strip($err);
+$err = &html_strip(&entities_to_ascii($err));
 $err =~ s/[\n\r]+/ /g;
 $err =~ s/\s\?$//g;
 $err =
