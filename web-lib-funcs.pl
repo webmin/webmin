@@ -1914,7 +1914,7 @@ $make_datestr =
       $tm[2], $tm[1], $tm[0], $timezone);
 $remote_host = $ENV{"REMOTE_HOST"};
 $page = $ENV{"REQUEST_URI"};
-$err = &html_strip($err);
+$err = &html_strip(&entities_to_ascii($err));
 $err =~ s/[\n\r]+/ /g;
 $err =~ s/\s\?$//g;
 $err =
