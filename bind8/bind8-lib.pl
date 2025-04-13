@@ -2510,7 +2510,7 @@ if ($changed || !$znc{'version'} ||
 	my $conf = &get_config();
 	my $gau;
 	my $opts = &find("options", $conf);
-	if ($opts && &find("update", $opts->{'members'})) {
+	if ($opts && &find("allow-update", $opts->{'members'})) {
 		$gau = 1;
 		}
 	my @views = &find("view", $conf);
@@ -2524,7 +2524,7 @@ if ($changed || !$znc{'version'} ||
 			my $file = &find_value("file", $z->{'members'});
 			my $up = &find("update-policy", $z->{'members'});
 			my $au = &find("allow-update", $z->{'members'});
-			my $dynamic = $up || $au ? 1 : 0;
+			my $dynamic = $up || $au || $gau ? 1 : 0;
 			$znc{"zone_".($n++)} = join("\t", $z->{'value'},
 			  $z->{'index'}, $type, $v->{'value'}, $dynamic, $file);
 			$files{$z->{'file'}}++;
