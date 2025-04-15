@@ -12,7 +12,7 @@ $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
 
 print "<center>\n";
 print $text{'forgot_desc'},"<p>\n";
-print &ui_form_start("forgot.cgi", "post");
+print &ui_form_start("forgot_send.cgi", "post");
 print "<b>$text{'forgot_user'}</b>\n",
       &ui_textbox("forgot", $in{'failed'}, 40),"<br>\n";
 print &ui_form_end([ [ undef, $text{'forgot_ok'} ] ]);
