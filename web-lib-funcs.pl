@@ -1830,7 +1830,7 @@ elsif ($ENV{'REQUEST_URI'} =~ /json-error=1/) {
 	print_json(\%jerror);
 	}
 else {
-	&header($text{'error'}, "");
+	&header($text{'error'}, "", undef, 0, $module_name ? 0 : 1);
 	my $hh = $miniserv::page_capture ? " captured" : "";
 	my $err_style = &read_file_contents("$root_directory/unauthenticated/errors.css");
 	if ($err_style) {
