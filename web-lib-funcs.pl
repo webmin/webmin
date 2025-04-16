@@ -1790,7 +1790,6 @@ $err_caller = "$stack[0]->[1] (line $stack[0]->[2])"
 if ($err_caller) {
 	$err_caller =~ s/$root_directory\///;
 	$err_caller = $msg ? "$msg $err_caller" : $err_caller;
-	push(@msg, $err_caller);
 	}
 my $error_details = (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) ? "" : "\n");
 my $error_output_right = sub {
