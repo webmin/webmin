@@ -17,11 +17,13 @@ $wuser && $wuser->{'email'} || &error($text{'forgot_euser'});
 $wuser->{'pass'} eq '*LK*' && &error($text{'forgot_elock'});
 my $email = $wuser->{'email'};
 
+# XXX rate limiting!
+
 # Generate a random ID for this password reset
 my %link = ( 'id' => &generate_random_id(),
 	     'remote' => $ENV{'REMOTE_ADDR'},
 	     'time' => time(),
-	     'user' => $wuser->{'user'} );
+	     'user' => $wuser->{'name'} );
 $link{'id'} || &error($text{'forgot_erandom'});
 &make_dir($forgot_password_link_dir, 0700);
 &write_file("$forgot_password_link_dir/$link{'id'}", \%link);

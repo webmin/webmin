@@ -167,6 +167,9 @@ forgot_elock=The password for this user is locked
 forgot_err=Failed to change password
 forgot_enewpass=No new password entered!
 forgot_equality=Password requirements were not met : $1
+forgot_wdoing=Changing password for Webmin user $1 ..
+forgot_done=.. password change complete.
+forgot_retry=You can now <a href='$1'>login to Webmin</a> using your new password.
 
 pam_header=Login to Webmin
 pam_mesg=You must respond to the question below to login to Webmin server on $1.

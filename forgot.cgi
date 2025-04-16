@@ -4,6 +4,7 @@
 BEGIN { push(@INC, "."); };
 use WebminCore;
 $no_acl_check++;
+$trust_unknown_referers = 1;
 &init_config();
 &ReadParse();
 $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
@@ -14,7 +15,7 @@ my $forgot_timeout = 10;
 # Check that the random ID is valid
 $in{'id'} =~ /^[a-f0-9]+$/i || &error($text{'forgot_eid'});
 my %link;
-&read_file("$forgot_password_link_dir/$link{'id'}", \%link) ||
+&read_file("$forgot_password_link_dir/$in{'id'}", \%link) ||
 	&error($text{'forgot_eid2'});
 time() - $link{'time'} > 60*$forgot_timeout &&
 	&error(&text('forgot_etime', $forgot_timeout));
@@ -27,7 +28,6 @@ $wuser || &error(&text('forgot_euser2',
 
 &ui_print_header(undef, $text{'forgot_title'}, "", undef, undef, 1, 1);
 
-print "<center>\n";
 if (defined($in{'newpass'})) {
 	# Validate the password
 	$in{'newpass'} =~ /\S/ || &error($text{'forgot_enewpass'});
@@ -50,20 +50,27 @@ if (defined($in{'newpass'})) {
 		}
 	else {
 		# Update in Webmin
-		$wuser->{'pass'} = &encrypt_password($in{'newpass'});
-		&modify_user($wuser->{'name'}, $wuser);
+		print &text('forgot_wdoing',
+			"<tt>".&html_escape($link{'user'})."</tt>"),"<br>\n";
+		$wuser->{'pass'} = &acl::encrypt_password($in{'newpass'});
+		&acl::modify_user($wuser->{'name'}, $wuser);
 		&reload_miniserv();
+		print $text{'forgot_done'},"<p>\n";
 		}
+	print &text('forgot_retry', '/'),"<p>\n";
+
+	&unlink_file("$forgot_password_link_dir/$in{'id'}");
 	}
 else {
 	# Show password selection form
+	print "<center>\n";
 	print &ui_form_start("forgot.cgi", "post");
 	print &ui_hidden("id", $in{'id'});
 	print "<b>",&text('forgot_newpass',
 			  "<tt>".&html_escape($link{'user'})."</tt>"),"</b>\n",
 	      &ui_textbox("newpass", undef, 30),"<p>\n";
 	print &ui_form_end([ [ undef, $text{'forgot_passok'} ] ]);
+	print "</center>\n";
 	}
-print "</center>\n";
 
 &ui_print_footer();
