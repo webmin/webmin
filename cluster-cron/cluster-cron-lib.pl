@@ -78,17 +78,17 @@ return \%rv;
 # or error message
 sub run_cluster_job
 {
-local @rv;
-local $func = $_[1];
+my ($job, $func) = @_;
+my @rv;
 
 # Work out which servers to run on
 local @servers = &servers::list_servers_sorted();
 local @groups = &servers::list_all_groups(\@servers);
 local @run;
-foreach $s (split(/\s+/, $_[0]->{'cluster_server'})) {
+foreach my $s (split(/\s+/, $job->{'cluster_server'})) {
 	if ($s =~ /^group_(.*)$/) {
 		# All members of a group
-		($group) = grep { $_->{'name'} eq $1 } @groups;
+		my ($group) = grep { $_->{'name'} eq $1 } @groups;
 		foreach $m (@{$group->{'members'}}) {
 			push(@run, grep { $_->{'host'} eq $m && $_->{'user'} }
 					@servers);
@@ -96,7 +96,7 @@ foreach $s (split(/\s+/, $_[0]->{'cluster_server'})) {
 		}
 	elsif ($s eq '*') {
 		# This server
-		push(@run, ( { 'desc' => $text{'edit_this'} } ));
+		push(@run, ( { 'id' => 0, 'desc' => $text{'edit_this'} } ));
 		}
 	elsif ($s eq 'ALL') {
 		# All servers with users
@@ -107,7 +107,10 @@ foreach $s (split(/\s+/, $_[0]->{'cluster_server'})) {
 		push(@run, grep { $_->{'host'} eq $s } @servers);
 		}
 	}
-@run = &unique(@run);
+
+# Run once per host
+my %done;
+@run = grep { !$done{$_->{'id'}}++ } @run;
 
 # Setup error handler for down hosts
 sub inst_error
@@ -119,7 +122,7 @@ $inst_error_msg = join("", @_);
 # Create a local temp file containing input
 local $ltemp = &transname();
 open(TEMP, ">$ltemp");
-local $inp = $_[0]->{'cluster_input'};
+local $inp = $job->{'cluster_input'};
 $inp =~ s/\\%/\0/g;
 @lines = split(/%/, $inp);
 foreach $l (@lines) {
@@ -129,8 +132,8 @@ foreach $l (@lines) {
 close(TEMP);
 
 # Run one each one in parallel and display the output
-$p = 0;
-foreach $s (@run) {
+my $p = 0;
+foreach my $s (@run) {
 	local ($rh = "READ$p", $wh = "WRITE$p");
 	pipe($rh, $wh);
 	select($wh); $| = 1; select(STDOUT);
@@ -150,16 +153,16 @@ foreach $s (@run) {
 		local $rtemp = &remote_write($s->{'host'}, $ltemp);
 
 		# Run the command and capture output
-		local $q = quotemeta($_[0]->{'cluster_command'});
+		local $q = quotemeta($job->{'cluster_command'});
 		local $rv;
-		if ($_[0]->{'cluster_user'} eq 'root') {
+		if ($job->{'cluster_user'} eq 'root') {
 			$rv = &remote_eval($s->{'host'}, "webmin",
-			    "\$x=&backquote_command('($_[0]->{'cluster_command'}) <$rtemp 2>&1')");
+			    "\$x=&backquote_command('($job->{'cluster_command'}) <$rtemp 2>&1')");
 			}
 		else {
 			$q = quotemeta($q);
 			$rv = &remote_eval($s->{'host'}, "webmin",
-			    "\$x=&backquote_command(&command_as_user('$_[0]->{'cluster_user'}', 0, '$_[0]->{'cluster_command'}').' <$rtemp 2>&1')");
+			    "\$x=&backquote_command(&command_as_user('$job->{'cluster_user'}', 0, '$job->{'cluster_command'}').' <$rtemp 2>&1')");
 			}
 		&remote_eval($s->{'host'}, "webmin", "unlink('$rtemp')");
 
@@ -177,12 +180,11 @@ foreach $s (@run) {
 	local $rh = "READ$p";
 	local $line = <$rh>;
 	close($rh);
-	local $rv = &unserialise_variable($line);
-
 	if (!$line) {
 		&$func(0, $s, "Unknown reason");
 		}
 	else {
+		my $rv = &unserialise_variable($line);
 		&$func($rv->[0], $s, $rv->[1]);
 		}
 	$p++;
