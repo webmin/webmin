@@ -23,20 +23,22 @@ $job->{'run'} = [ map { $_->{'host'} } @run ];	# for logging
 &ui_print_footer("edit.cgi?id=$in{'id'}", $cron::text{'edit_return'},
 	"", $text{'index_return'});
 
-# callback(error, &server, message)
+# callback(ok, &server, message)
+# Called back to print results for each host the job is run on
 sub callback
 {
-local $d = ($_[1]->{'host'} || &get_system_hostname()).
-	   ($_[1]->{'desc'} ? " ($_[1]->{'desc'})" : "");
-if (!$_[0]) {
+my ($ok, $s, $msg) = @_;
+my $d = ($s->{'host'} || &get_system_hostname()).
+	($s->{'desc'} ? " ($s->{'desc'})" : "");
+if (!$ok) {
 	# Failed - show error
-	print "<b>",&text('exec_failed', $d, $_[2]),"</b><p>\n";
+	print "<b>",&text('exec_failed', $d, &html_escape($msg)),"</b><p>\n";
 	}
 else {
 	# Show output if any
 	print "<b>",&text('exec_success', $d),"</b>\n";
-	if ($_[2]) {
-		print "<ul><pre>$_[2]</pre></ul><p>\n";
+	if ($ok) {
+		print "<ul><pre>",&html_escape($msg),"</pre></ul><p>\n";
 		}
 	else {
 		print "<br><ul><i>$cron::text{'exec_none'}</i></ul><p>\n";
