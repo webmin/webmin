@@ -144,6 +144,32 @@ session_twofailed=Zwei-Faktor-Authentifizierung fehlgeschlagen: $1
 session_logout=Abmeldung erfolgreich. Verwenden Sie das untenstehende Formular, um sich erneut anzumelden.
 session_timed_out=Sitzung nach $1 Minuten Inaktivität abgelaufen.
 session_save=Login dauerhaft speichern?
+session_forgot=Passwort vergessen?
+
+forgot_title=Zurücksetzen eines vergessenen Passworts
+forgot_user=Webmin-Benutzer:innenname:
+forgot_desc=Wenn Ihr Webmin-Login mit einer Wiederherstellungs-E-Mail-Adresse verknüpft ist, können Sie auf dieser Seite einen Link anfordern, um das Passwort zurückzusetzen.
+forgot_ok=Link zum Zurücksetzen des Passworts senden
+forgot_ecannot=Die Wiederherstellung vergessener Passwörter ist nicht aktiviert!
+forgot_euser=Der Benutzer:innenname existiert entweder nicht oder es ist keine Wiederherstellungs-E-Mail-Adresse konfiguriert.
+forgot_msg=Sie erhalten diese E-Mail aufgrund einer Anfrage zur Passwortwiederherstellung im Webmin-System auf $4 von $3 für den Login $1.\n\nWenn Sie das Passwort zurücksetzen möchten, folgen Sie diesem Link:\n$2
+forgot_subject=Webmin Passwort-Zurücksetzung
+forgot_sent=Ein Link zum Zurücksetzen des Webmin-Passworts für den Login $2 wurde an die Wiederherstellungs-E-Mail-Adresse $1 gesendet.
+forgot_erandom=Zufällige ID konnte nicht generiert werden!
+forgot_eid=Fehlende oder ungültig aussehende Zurücksetz-ID!
+forgot_eid2=Die Zurücksetz-ID ist ungültig!
+forgot_etime=Die E-Mail zur Passwort-Zurücksetzung ist älter als $1 Minuten.
+forgot_newpass=Geben Sie ein neues Passwort für Webmin-Benutzer:in $1 ein:
+forgot_passok=Passwort ändern
+forgot_euser2=Webmin-Benutzer:in $1 existiert nicht!
+forgot_esync=Das Passwort kann für diese:n Benutzer:in nicht geändert werden
+forgot_elock=Das Passwort für diese:n Benutzer:in ist gesperrt
+forgot_err=Passwortänderung fehlgeschlagen
+forgot_enewpass=Kein neues Passwort eingegeben!
+forgot_equality=Die Passwortanforderungen wurden nicht erfüllt: $1
+forgot_wdoing=Ändere Passwort für Webmin-Benutzer:in $1 ..
+forgot_done=.. Passwortänderung abgeschlossen.
+forgot_retry=Sie können sich nun mit Ihrem neuen Passwort <a href='$1'>bei Webmin anmelden</a>.
 
 pam_header=Bei Webmin anmelden
 pam_mesg=Sie müssen die untenstehende Frage beantworten, um sich beim Webmin-Server auf $1 anzumelden.
@@ -267,7 +293,7 @@ progress_size2=Herunterladen von $1 ($2) ..
 progress_nosize=Herunterladen von $1 ..
 progress_datan=Empfangen von $1 ($2 %)
 progress_data2n=Empfangen von $1
-progress_done=.. Download abgeschlossen.
+progress_done=.. Download abgeschlossen
 progress_incache=Gefunden $1 im Cache ..
 
 readparse_cdheader=Fehlender Content-Disposition Header
