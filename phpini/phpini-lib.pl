@@ -881,8 +881,8 @@ my @rv;
 my %done;
 for(my $i=0; $i<$n; $i++) {
 	my $name = $software::packages{$i,'name'};
-	next if ($name !~ /^php(\d*)(-php)?$/);
-	my $suffix = $1;
+	next if ($name !~ /^(php\d*)(-php|-runtime)?$/);
+	$name = $1;
 	my $phpver = $software::packages{$i,'version'};
 	$phpver =~ s/\-.*$//;
 	my $bin;
@@ -902,7 +902,6 @@ for(my $i=0; $i<$n; $i++) {
 	if ($shortver =~ /^5\./) {
 		$shortver = "5";
 		}
-	next if ($done{$phpver}++);
 	push(@rv, { 'name' => $software::packages{$i,'name'},
 		    'system' => $software::packages{$i,'system'},
 		    'ver' => $software::packages{$i,'version'},
@@ -910,6 +909,8 @@ for(my $i=0; $i<$n; $i++) {
 		    'phpver' => $phpver,
 		    'binary' => $bin, });
 	}
+@rv = sort { $a->{'name'} cmp $b->{'name'} } @rv;
+@rv = grep { !$done{$_->{'shortver'}}++ } @rv;
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 }
 
@@ -936,6 +937,9 @@ return @rv;
 # list_available_php_packages()
 # Returns a list of hash refs, one per PHP version available, with the
 # following keys :
+# name - Package name
+# ver - Package version
+# phpver - PHP version
 sub list_available_php_packages
 {
 &foreign_require("package-updates");
@@ -943,7 +947,6 @@ my @rv;
 foreach my $pkg (&package_updates::list_available()) {
 	my $name = $pkg->{'name'};
 	next if ($name !~ /^php(\d*)$/);
-	my $suffix = $1;
         my $phpver = $pkg->{'version'};
         $phpver =~ s/\-.*$//;
 	my $shortver = $phpver;

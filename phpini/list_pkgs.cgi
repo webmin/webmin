@@ -16,6 +16,7 @@ if (@pkgs) {
 	print &ui_columns_start([ "", $text{'pkgs_name'},
 				      $text{'pkgs_ver'},
 				      $text{'pkgs_phpver'},
+				      $text{'pkgs_bin'},
 				      $vmap ? (
 					$text{'pkgs_shortver'},
 					$text{'pkgs_users'} ) : ( ),
@@ -34,6 +35,7 @@ if (@pkgs) {
 			$pkg->{'name'},
 			$pkg->{'ver'},
 			$pkg->{'phpver'},
+			$pkg->{'binary'},
 			$vmap ? ( $pkg->{'shortver'}, $users ) : ( ),
 			], \@tds, "d", $pkg->{'name'});
 		$got{$pkg->{'name'}}++;
