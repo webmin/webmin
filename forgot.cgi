@@ -41,9 +41,39 @@ if (defined($in{'newpass'})) {
 		&foreign_require("virtual-server");
 		$d = &virtual_server::get_domain_by("user", $link{'user'},
 						    "parent", "");
+		$d->{'disabled'} && &error($text{'forgot_edisabled'});
 		}
 	if ($d) {
 		# Update in Virtualmin
+		print &text('forgot_vdoing',
+			&virtual_server::show_domain_name($d)),"<br>\n";
+		foreach my $d (&virtual_server::get_domain_by("user", $link{'user'})) {
+			&virtual_server::lock_domain($d);
+			my $oldd = { %$d };
+			$d->{'pass'} = $in{'newpass'};
+			$d->{'pass_set'} = 1;
+			&virtual_server::generate_domain_password_hashes($d, 0);
+
+			# Update all features
+			foreach my $f (&virtual_server::domain_features($d)) {
+				if ($virtual_server::config{$f} && $d->{$f}) {
+					my $mfunc = "virtual_server::modify_".$f;
+					&$mfunc($d, $oldd);
+					}
+				}
+
+			# Update all plugins
+			foreach my $f (&virtual_server::list_feature_plugins()) {
+				if ($d->{$f}) {
+					&virtual_server::plugin_call(
+					    $f, "feature_modify", $d, $oldd);
+					}
+				}
+
+			&virtual_server::save_domain($d);
+			&virtual_server::unlock_domain($d);
+			}
+		print $text{'forgot_done'},"<p>\n";
 		}
 	elsif ($wuser->{'pass'} eq 'x') {
 		# Update in Users and Groups
