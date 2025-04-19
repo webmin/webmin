@@ -77,6 +77,21 @@ if (defined($in{'newpass'})) {
 		}
 	elsif ($wuser->{'pass'} eq 'x') {
 		# Update in Users and Groups
+		print &text('forgot_udoing',
+			"<tt>".&html_escape($link{'user'})."</tt>"),"<br>\n";
+		&foreign_require("useradmin");
+		my ($uinfo) = grep { $_->{'user'} eq $link{'user'} }
+				   &useradmin::list_users();
+		$uinfo || &error($text{'forgot_eunix'});
+		$uinfo->{'pass'} eq $useradmin::config{'lock_string'} &&
+			&error($text{'forgot_eunixlock'});
+		my $olduser = { %$user };
+		$user->{'passmode'} = 3;
+		$user->{'plainpass'} = $in{'newpass'};
+		$user->{'pass'} = &useradmin::encrypt_password($in{'newpass'});
+		&useradmin::modify_user($olduser, $user);
+		&useradmin::other_modules("useradmin_modify_user", $user, $olduser);
+		print $text{'forgot_done'},"<p>\n";
 		}
 	else {
 		# Update in Webmin
