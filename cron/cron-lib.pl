@@ -1573,36 +1573,38 @@ if ($gconfig{'tempdir'} && !$gconfig{'tempdirdelete'}) {
 	print STDERR "Temp file clearing is not done for the custom directory $gconfig{'tempdir'}\n";
 	}
 else {
-	local $tempdir = &transname();
+	my $tempdir = &transname();
 	$tempdir =~ s/\/([^\/]+)$//;
 	if (!$tempdir || $tempdir eq "/") {
 		$tempdir = "/tmp/.webmin";
 		}
 
-	local $cutoff = time() - $gconfig{'tempdelete_days'}*24*60*60;
-	opendir(DIR, $tempdir);
-	foreach my $f (readdir(DIR)) {
-		next if ($f eq "." || $f eq "..");
-		local @st = lstat("$tempdir/$f");
-		if ($st[9] < $cutoff) {
-			&unlink_file("$tempdir/$f");
+	my $cutoff = time() - $gconfig{'tempdelete_days'}*24*60*60;
+	if (opendir(DIR, $tempdir)) {
+		foreach my $f (readdir(DIR)) {
+			next if ($f eq "." || $f eq "..");
+			my @st = lstat("$tempdir/$f");
+			if ($st[9] < $cutoff) {
+				&unlink_file("$tempdir/$f");
+				}
 			}
+		closedir(DIR);
 		}
-	closedir(DIR);
 	}
 
 # Delete stale lock files
 my $lockdir = $var_directory."/locks";
-opendir(DIR, $lockdir);
-foreach my $f (readdir(DIR)) {
-	next if ($f eq "." || $f eq "..");
-	next if ($f !~ /^\d+$/);
-	if (!kill(0, $f)) {
-		# Process is gone, but never cleaned up!
-		&unlink_file("$lockdir/$f");
+if (opendir(DIR, $lockdir)) {
+	foreach my $f (readdir(DIR)) {
+		next if ($f eq "." || $f eq "..");
+		next if ($f !~ /^\d+$/);
+		if (!kill(0, $f)) {
+			# Process is gone, but never cleaned up!
+			&unlink_file("$lockdir/$f");
+			}
 		}
+	closedir(DIR);
 	}
-closedir(DIR);
 
 # Cleanup old websockets
 foreach (&get_miniserv_websockets_modules()) {
