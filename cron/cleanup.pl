@@ -1,5 +1,5 @@
-#!/usr/local/bin/perl
-# Clean up leftover Webmin temp files and locks, if configured
+#!/usr/bin/perl
+# Manually run the temp files cleanup function
 
 require './cron-lib.pl';
 &cleanup_temp_files();

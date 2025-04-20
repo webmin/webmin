@@ -1608,6 +1608,20 @@ closedir(DIR);
 foreach (&get_miniserv_websockets_modules()) {
 	&cleanup_miniserv_websockets(undef, $_);
 	}
+
+# Delete forgot-password files older than 1 day
+if (opendir(DIR, $main::forgot_password_link_dir)) {
+	my $cutoff = time() - 24*60*60;
+	foreach my $f (readdir(DIR)) {
+		next if ($f eq "." || $f eq "..");
+		my $path = $main::forgot_password_link_dir."/".$f;
+		my @st = stat($path);
+		if ($st[9] < $cutoff) {
+			&unlink_file($path);
+			}
+		}
+	closedir(DIR);
+	}
 }
 
 =head2 list_cron_files()

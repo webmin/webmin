@@ -11,6 +11,8 @@ eval {
 		        'func' => 'cleanup_temp_files',
 			'interval' => 3600 };
 	&webmincron::create_webmin_cron($cron, $temp_delete_cmd);
+	&create_wrapper($module_config_directory."/cleanup.pl",
+			$module_name, "cleanup.pl");
 	};
 if ($@) {
 	print STDERR "Failed to setup /tmp cleanup cron job : $@\n";
