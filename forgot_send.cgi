@@ -79,7 +79,7 @@ my $msg = &text('forgot_msg', $wuser->{'name'}, $url, $ENV{'REMOTE_HOST'},
 			      $baseurl);
 $msg =~ s/\\n/\n/g;
 $msg = join("\n", &mailboxes::wrap_lines($msg, 75))."\n";
-my $subject = $text{'forgot_subject'};
+my $subject = &text('forgot_subject', $wuser->{'name'});
 &mailboxes::send_text_mail(&mailboxes::get_from_address(),
 			   $email,
 			   undef,
