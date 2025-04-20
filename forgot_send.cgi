@@ -44,7 +44,19 @@ foreach my $key ($ENV{'REMOTE_ADDR'}, $wuser->{'name'}, $wuser->{'email'}) {
 		last;
 		}
 	}
-# XXX clean up old keys
+
+# Clean up old ratelimit entries
+my $cutoff = $now - 24*60*60;
+my @cleanup;
+foreach my $k (keys %ratelimit) {
+	if ($k =~ /^(.*)_last$/ && $ratelimit{$k} < $cutoff) {
+		push(@cleanup, $k);
+		push(@cleanup, $1);
+		}
+	}
+foreach my $k (@cleanup) {
+	delete($ratelimit{$k});
+	}
 &write_file($ratelimit_file, \%ratelimit);
 &unlock_file($ratelimit_file);
 &error($rlerr) if ($rlerr);
