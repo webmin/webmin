@@ -10,6 +10,7 @@ $trust_unknown_referers = 1;
 $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
 my $forgot_timeout = 10;
 &error_setup($text{'forgot_err'});
+$remote_user && &error($text{'forgot_elogin'});
 
 # Check that the random ID is valid
 $in{'id'} =~ /^[a-f0-9]+$/i || &error($text{'forgot_eid'});

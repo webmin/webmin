@@ -6,7 +6,10 @@ use WebminCore;
 $no_acl_check++;
 &init_config();
 &ReadParse();
+
+&error_setup($text{'forgot_err'});
 $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
+$remote_user && &error($text{'forgot_elogin'});
 
 # Lookup the Webmin user
 &foreign_require("acl");
