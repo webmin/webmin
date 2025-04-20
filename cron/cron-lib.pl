@@ -1616,6 +1616,7 @@ if (opendir(DIR, $main::forgot_password_link_dir)) {
 	my $cutoff = time() - 24*60*60;
 	foreach my $f (readdir(DIR)) {
 		next if ($f eq "." || $f eq "..");
+		next if ($f eq "ratelimit");
 		my $path = $main::forgot_password_link_dir."/".$f;
 		my @st = stat($path);
 		if ($st[9] < $cutoff) {

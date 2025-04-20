@@ -19,15 +19,42 @@ $wuser && $wuser->{'email'} || &error($text{'forgot_euser'});
 $wuser->{'pass'} eq '*LK*' && &error($text{'forgot_elock'});
 my $email = $wuser->{'email'};
 
-# XXX rate limiting!
+# Check if the IP or Webmin user is over it's rate limit
+&make_dir($main::forgot_password_link_dir, 0700);
+my $ratelimit_file = $main::forgot_password_link_dir."/ratelimit";
+&lock_file($ratelimit_file);
+my %ratelimit;
+&read_file($ratelimit_file, \%ratelimit);
+my $now = time();
+my $rlerr;
+foreach my $key ($ENV{'REMOTE_ADDR'}, $wuser->{'name'}, $wuser->{'email'}) {
+	if (!$ratelimit{$key."_last"} ||
+	    $ratelimit{$key."_last"} < $now-5*60) {
+		# More than 5 mins since the last try, so reset counter
+		$ratelimit{$key} = 1;
+		}
+	else {
+		$ratelimit{$key}++;
+		}
+	$ratelimit{$key."_last"} = $now;
+	if ($ratelimit{$key} > 10) {
+		# More than 10 attempts in the last 5 minutes!
+		$rlerr = &text('forgot_erate',
+			       "<tt>".&html_escape($key)."</tt>");
+		last;
+		}
+	}
+# XXX clean up old keys
+&write_file($ratelimit_file, \%ratelimit);
+&unlock_file($ratelimit_file);
+&error($rlerr) if ($rlerr);
 
 # Generate a random ID for this password reset
 my %link = ( 'id' => &generate_random_id(),
 	     'remote' => $ENV{'REMOTE_ADDR'},
-	     'time' => time(),
+	     'time' => $now,
 	     'user' => $wuser->{'name'} );
 $link{'id'} || &error($text{'forgot_erandom'});
-&make_dir($main::forgot_password_link_dir, 0700);
 &write_file("$main::forgot_password_link_dir/$link{'id'}", \%link);
 my $baseurl = &get_webmin_email_url();
 my $url = $baseurl.'/forgot.cgi?id='.&urlize($link{'id'});
