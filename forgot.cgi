@@ -8,14 +8,13 @@ $trust_unknown_referers = 1;
 &init_config();
 &ReadParse();
 $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
-my $forgot_password_link_dir = "$config_directory/forgot-password";
 my $forgot_timeout = 10;
 &error_setup($text{'forgot_err'});
 
 # Check that the random ID is valid
 $in{'id'} =~ /^[a-f0-9]+$/i || &error($text{'forgot_eid'});
 my %link;
-&read_file("$forgot_password_link_dir/$in{'id'}", \%link) ||
+&read_file("$main::forgot_password_link_dir/$in{'id'}", \%link) ||
 	&error($text{'forgot_eid2'});
 time() - $link{'time'} > 60*$forgot_timeout &&
 	&error(&text('forgot_etime', $forgot_timeout));
@@ -104,7 +103,7 @@ if (defined($in{'newpass'})) {
 		}
 	print &text('forgot_retry', '/'),"<p>\n";
 
-	&unlink_file("$forgot_password_link_dir/$in{'id'}");
+	&unlink_file("$main::forgot_password_link_dir/$in{'id'}");
 	}
 else {
 	# Show password selection form

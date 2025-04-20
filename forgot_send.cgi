@@ -7,7 +7,6 @@ $no_acl_check++;
 &init_config();
 &ReadParse();
 $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
-$forgot_password_link_dir = "$config_directory/forgot-password";
 
 # Lookup the Webmin user
 &foreign_require("acl");
@@ -25,8 +24,8 @@ my %link = ( 'id' => &generate_random_id(),
 	     'time' => time(),
 	     'user' => $wuser->{'name'} );
 $link{'id'} || &error($text{'forgot_erandom'});
-&make_dir($forgot_password_link_dir, 0700);
-&write_file("$forgot_password_link_dir/$link{'id'}", \%link);
+&make_dir($main::forgot_password_link_dir, 0700);
+&write_file("$main::forgot_password_link_dir/$link{'id'}", \%link);
 my $baseurl = &get_webmin_email_url();
 my $url = $baseurl.'/forgot.cgi?id='.&urlize($link{'id'});
 

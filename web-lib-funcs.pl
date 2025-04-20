@@ -5218,6 +5218,7 @@ else {
 	}
 $main::http_cache_directory = $ENV{'WEBMIN_VAR'}."/cache";
 $main::default_debug_log_file = $ENV{'WEBMIN_VAR'}."/webmin.debug";
+$main::forgot_password_link_dir = $ENV{'WEBMIN_VAR'}."/forgot-password";
 
 if ($ENV{'SESSION_ID'}) {
 	# Hide this variable from called programs, but keep it for internal use
