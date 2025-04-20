@@ -5216,9 +5216,9 @@ if (!defined($ENV{'WEBMIN_VAR'})) {
 else {
 	$var_directory = $ENV{'WEBMIN_VAR'};
 	}
-$main::http_cache_directory = $ENV{'WEBMIN_VAR'}."/cache";
-$main::default_debug_log_file = $ENV{'WEBMIN_VAR'}."/webmin.debug";
-$main::forgot_password_link_dir = $ENV{'WEBMIN_VAR'}."/forgot-password";
+$main::http_cache_directory = $var_directory."/cache";
+$main::default_debug_log_file = $var_directory."/webmin.debug";
+$main::forgot_password_link_dir = $var_directory."/forgot-password";
 
 if ($ENV{'SESSION_ID'}) {
 	# Hide this variable from called programs, but keep it for internal use
@@ -13740,8 +13740,8 @@ while(<CONF>) {
 close(CONF);
 \$root || die "No root= line found in $config_directory/miniserv.conf";
 \$ENV{'PERLLIB'} = "\$root";
-\$ENV{'WEBMIN_CONFIG'} = "$ENV{'WEBMIN_CONFIG'}";
-\$ENV{'WEBMIN_VAR'} = "$ENV{'WEBMIN_VAR'}";
+\$ENV{'WEBMIN_CONFIG'} = "$config_directory";
+\$ENV{'WEBMIN_VAR'} = "$var_directory";
 delete(\$ENV{'MINISERV_CONFIG'});
 EOF
     );
