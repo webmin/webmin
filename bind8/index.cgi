@@ -122,12 +122,12 @@ if ($access{'defaults'}) {
 		"conf_servers.cgi", "conf_logging.cgi", "conf_acls.cgi",
 		"conf_files.cgi", "conf_forwarding.cgi", "conf_net.cgi",
 		"conf_misc.cgi", "conf_controls.cgi", "conf_keys.cgi",
-		"conf_zonedef.cgi", "list_slaves.cgi",
-		$bind_version >= 9 ? ( "conf_rndc.cgi" ) : ( ),
+		"conf_zonedef.cgi", "list_slaves.cgi", "conf_rndc.cgi",
 		&supports_dnssec_client() ? ( "conf_trusted.cgi" ) : ( ),
 		&supports_dnssec() && &have_dnssec_tools_support() ?
 			( "conf_dnssectools.cgi" ) : ( ),
 		&supports_dnssec() ? ( "conf_dnssec.cgi" ) : ( ),
+		&supports_tls() ? ( "list_tls.cgi" ) : ( ),
 		&supports_check_conf() ? ( "conf_ncheck.cgi" ) : ( ),
 		"conf_manual.cgi",
 		);
@@ -456,7 +456,7 @@ else {
 	print &ui_links_row(\@crlinks);
 	}
 
-if ($access{'views'} && $bind_version >= 9) {
+if ($access{'views'}) {
 	# Display list of views
 	print &ui_hr();
 	print &ui_subheading($text{'index_views'});
