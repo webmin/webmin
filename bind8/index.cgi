@@ -118,16 +118,19 @@ if ($access{'defaults'}) {
 if ($access{'defaults'}) {
 	# display global options
 	print &ui_subheading($text{'index_opts'});
-	my @olinks = ("conf_servers.cgi", "conf_logging.cgi", "conf_acls.cgi",
-		   "conf_files.cgi", "conf_forwarding.cgi", "conf_net.cgi",
-		   "conf_misc.cgi", "conf_controls.cgi", "conf_keys.cgi",
-		   "conf_zonedef.cgi", "list_slaves.cgi",
-		   $bind_version >= 9 ? ( "conf_rndc.cgi" ) : ( ),
-		   &supports_dnssec_client() ? ( "conf_trusted.cgi" ) : ( ),
-				   ((&supports_dnssec()) && (&have_dnssec_tools_support())) ? ( "conf_dnssectools.cgi" ) : ( ),
-		   &supports_dnssec() ? ( "conf_dnssec.cgi" ) : ( ),
-		   &supports_check_conf() ? ( "conf_ncheck.cgi" ) : ( ),
-		   "conf_manual.cgi" );
+	my @olinks = (
+		"conf_servers.cgi", "conf_logging.cgi", "conf_acls.cgi",
+		"conf_files.cgi", "conf_forwarding.cgi", "conf_net.cgi",
+		"conf_misc.cgi", "conf_controls.cgi", "conf_keys.cgi",
+		"conf_zonedef.cgi", "list_slaves.cgi",
+		$bind_version >= 9 ? ( "conf_rndc.cgi" ) : ( ),
+		&supports_dnssec_client() ? ( "conf_trusted.cgi" ) : ( ),
+		&supports_dnssec() && &have_dnssec_tools_support() ?
+			( "conf_dnssectools.cgi" ) : ( ),
+		&supports_dnssec() ? ( "conf_dnssec.cgi" ) : ( ),
+		&supports_check_conf() ? ( "conf_ncheck.cgi" ) : ( ),
+		"conf_manual.cgi",
+		);
 	my @otitles = map { /(conf|list)_(\S+).cgi/; $text{$2."_title"} } @olinks;
 	my @oicons = map { /^(conf|list)_(\S+).cgi/; "images/$2.gif"; } @olinks;
 	&icons_table(\@olinks, \@otitles, \@oicons, 6);
