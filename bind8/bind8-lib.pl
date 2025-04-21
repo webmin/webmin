@@ -3156,6 +3156,13 @@ sub supports_check_zone
 return $config{'checkzone'} && &has_command($config{'checkzone'});
 }
 
+# supports_tls()
+# Returns 1 if DNS over TLS is supported
+sub supports_tls
+{
+return &compare_version_numbers($bind_version, 9.17) >= 0 ? 1 : 0;
+}
+
 # check_zone_records(&zone-name|&zone)
 # Returns a list of errors from checking some zone file, if any
 sub check_zone_records
@@ -3372,10 +3379,8 @@ return &has_command($config{'signzone'}) &&
 # dnssec-validation directive is not supported, 0 otherwise
 sub supports_dnssec_client
 {
-my ($bind_major, $bind_minor) = split(/\./, $bind_version);
-
-return $bind_major > 9 ? 2 :
-       $bind_major == 9 ? ($bind_minor >= 4 ? 2 : 1) : 0;
+return &compare_version_numbers($bind_version, 9.4) >= 0 ? 2 :
+       &compare_version_numbers($bind_version, 9) >= 0 ? 1 : 0;
 }
 
 # dnssec_size_range(algorithm)
