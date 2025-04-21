@@ -1,4 +1,4 @@
-deffast=2
+deffast=1
 max_servers=100
 resolve=1
 deflink=0
