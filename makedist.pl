@@ -60,7 +60,8 @@ $vers || usage();
 	  "webmin-search-lib.pl", "WebminCore.pm",
 	  "record-login.pl", "record-logout.pl", "record-failed.pl",
 	  "robots.txt", "unauthenticated", "bin", "html-editor-lib.pl",
-	  "switch_theme.cgi", "os_eol.json",
+	  "switch_theme.cgi", "os_eol.json", "forgot_form.cgi",
+	  "forgot_send.cgi", "forgot.cgi",
 	 );
 if ($min) {
 	# Only those required by others
