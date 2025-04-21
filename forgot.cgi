@@ -47,6 +47,8 @@ if (defined($in{'newpass'})) {
 		# Update in Virtualmin
 		print &text('forgot_vdoing',
 			&virtual_server::show_domain_name($d)),"<br>\n";
+		&virtual_server::push_all_print();
+		&virtual_server::set_all_null_print();
 		foreach my $d (&virtual_server::get_domain_by("user", $link{'user'})) {
 			&virtual_server::lock_domain($d);
 			my $oldd = { %$d };
@@ -73,6 +75,8 @@ if (defined($in{'newpass'})) {
 			&virtual_server::save_domain($d);
 			&virtual_server::unlock_domain($d);
 			}
+		&virtual_server::run_post_actions();
+		&virtual_server::pop_all_print();
 		print $text{'forgot_done'},"<p>\n";
 		}
 	elsif ($wuser->{'pass'} eq 'x') {
