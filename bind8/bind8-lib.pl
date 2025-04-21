@@ -63,16 +63,21 @@ if ($bind_version && $bind_version =~ /^(\d+\.\d+)\./) {
 our $dnssec_dlv_zone = "dlv.isc.org.";
 our @dnssec_dlv_key = ( 257, 3, 5, '"BEAAAAPHMu/5onzrEE7z1egmhg/WPO0+juoZrW3euWEn4MxDCE1+lLy2brhQv5rN32RKtMzX6Mj70jdzeND4XknW58dnJNPCxn8+jAGl2FZLK8t+1uq4W+nnA3qO2+DL+k6BD4mewMLbIYFwe0PG73Te9fZ2kJb56dhgMde5ymX4BI/oQ+cAK50/xvJv00Frf8kw6ucMTwFlgPe+jnGxPPEmHAte/URkY62ZfkLoBAADLHQ9IrS2tryAe7mbBZVcOwIeU/Rw/mRx/vwwMCTgNboMQKtUdvNXDrYJDSHZws3xiRXF1Rf+al9UmZfSav/4NWLKjHzpT59k/VStTDN0YUuWrBNh"' );
 
-my $rand_flag;
+# get_rand_flag()
+# Return a flag to read from a randomness source
+sub get_rand_flag
+{
 if ($gconfig{'os_type'} =~ /-linux$/ &&
     $config{'force_random'} eq '0' &&
     -r "/dev/urandom" &&
-    $bind_version =~ /^9\./ &&
-    &compare_version_numbers($bind_version, '<', '9.14.2')) {
+    &compare_version_numbers($bind_version, 9) >= 0 &&
+    &compare_version_numbers($bind_version, '9.14.2') < 0) {
 	# Version: 9.14.2 deprecated the use of -r option
 	# in favor of using /dev/random [bugs:#5370]
-	$rand_flag = "-r /dev/urandom";
+	return "-r /dev/urandom";
 	}
+return "";
+}
 
 # have_dnssec_tools_support()
 # Returns 1 if dnssec-tools support is available and we meet minimum version
@@ -3446,7 +3451,7 @@ closedir(ZONEDIR);
 
 # Fork a background job to do lots of IO, to generate entropy
 my $pid;
-if (!$rand_flag) {
+if (!&get_rand_flag()) {
 	$pid = fork();
 	if (!$pid) {
 		exec("find / -type f >/dev/null 2>&1");
@@ -3495,7 +3500,7 @@ else {
 		"cd ".quotemeta($fn)." && ".
 		"$config{'keygen'} -a ".quotemeta($alg).
 		" -b ".quotemeta($zonesize).
-		" -n ZONE $rand_flag $dom 2>&1");
+		" -n ZONE ".&get_rand_flag()." $dom 2>&1");
 	if ($?) {
 		kill('KILL', $pid) if ($pid);
 		return $out;
@@ -3507,7 +3512,7 @@ else {
 			"cd ".quotemeta($fn)." && ".
 			"$config{'keygen'} -a ".quotemeta($alg).
 			" -b ".quotemeta($size).
-			" -n ZONE -f KSK $rand_flag $dom 2>&1");
+			" -n ZONE -f KSK ".&get_rand_flag()." $dom 2>&1");
 		kill('KILL', $pid) if ($pid);
 		if ($?) {
 			return $out;
@@ -3577,7 +3582,7 @@ $zonekey || return "Could not find DNSSEC zone key";
 
 # Fork a background job to do lots of IO, to generate entropy
 my $pid;
-if (!$rand_flag) {
+if (!&get_rand_flag()) {
 	$pid = fork();
 	if (!$pid) {
 		exec("find / -type f >/dev/null 2>&1");
@@ -3594,7 +3599,7 @@ my $alg = $zonekey->{'algorithm'};
 my $out = &backquote_logged(
 	"cd ".quotemeta($dir)." && ".
 	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($zonesize).
-	" -n ZONE $rand_flag $dom 2>&1");
+	" -n ZONE ".&get_rand_flag()." $dom 2>&1");
 kill('KILL', $pid) if ($pid);
 if ($?) {
 	return "Failed to generate new zone key : $out";
