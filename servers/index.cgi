@@ -155,13 +155,14 @@ if ($access{'find'} || $access{'auto'}) {
 		print &ui_buttons_row("find.cgi", $text{'index_broad'},
 						  $text{'index_findmsg'});
 		my $t = &ui_buttons_row("find.cgi", $text{'index_scan'},
-		      &text('index_scanmsg', &ui_textbox("scan", $myscan, 15)).
+		      &text('index_scanmsg', "&nbsp;".
+		              &ui_textbox("scan", $myscan, 15)."&nbsp;").
 		      "<br><table>\n".
-		      "<tr><td valign=middle><b>$text{'index_defuser'}</b></td>\n".
+		      "<tr><td valign=middle>$text{'index_defuser'}&nbsp;</td>\n".
 		      "<td valign=middle>".&ui_textbox("defuser", undef, 20)."</td> </tr>".
-		      "<tr> <td><b>$text{'index_defpass'}</b></td>\n".
+		      "<tr> <td>$text{'index_defpass'}&nbsp;</td>\n".
 		      "<td valign=middle>".&ui_password("defpass", undef, 20)."</td> </tr>".
-		      "<tr> <td><b>$text{'index_defport'}</b></td>\n".
+		      "<tr> <td>$text{'index_defport'}&nbsp;</td>\n".
 		      "<td valign=middle>".&ui_textbox("port", $port, 20)."</td> </tr>".
 		      "</table>\n"
 		      );

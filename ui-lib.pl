@@ -3337,5 +3337,18 @@ if ($head) {
 	}
 }
 
+=head2 ui_note(text)
+
+Returns a note as a small font size text
+
+=cut
+sub ui_note
+{
+return &theme_ui_note(@_) if (defined(&theme_ui_note));
+my ($text) = @_;
+return "<font style='font-size:92%;opacity:0.66'>&nbsp;&nbsp;ⓘ&nbsp;&nbsp;".
+	"$text</font>";
+}
+
 1;
 
