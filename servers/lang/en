@@ -154,7 +154,6 @@ auto_esmtp=Missing or invalid SMTP server
 auto_findself=Register this system too?
 
 config_deftype=Default system type
-config_typeauto=Automatic
 
 email_regsubject=System $1 registered
 email_reg=The system $1 has been automatically registered.
