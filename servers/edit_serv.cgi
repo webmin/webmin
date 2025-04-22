@@ -124,14 +124,14 @@ if ($access{'forcefast'}) {
 					    : $s->{'fast'});
 	}
 else {
-	if ($in{'new'} || $s->{'fast'} == 2) {
+	if (($in{'new'} && $config{'deffast'} != 1) || $s->{'fast'} == 2) {
 		print &ui_table_row($text{'edit_fast'},
 			&ui_radio("fast", $config{'deffast'},
 				[ [ 1, $text{'yes'} ],
 				  [ 2, $text{'edit_auto'} ],
 				  [ 0, $text{'no'} ] ]));
 		}
-	else {
+	elsif (!$in{'new'} && $s->{'fast'} != 1) {
 		print &ui_table_row($text{'edit_fast'},
 			&ui_radio("fast", int($s->{'fast'}),
 				[ [ 1, $text{'yes'} ],

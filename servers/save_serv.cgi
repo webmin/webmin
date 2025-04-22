@@ -98,7 +98,7 @@ else {
 	$serv->{'checkssl'} = $in{'checkssl'};
 	$serv->{'desc'} = $in{'desc_def'} ? undef : $in{'desc'};
 	$serv->{'group'} = join("\t", @groups);
-	$serv->{'fast'} = $in{'fast'};
+	$serv->{'fast'} = $in{'fast'} // 1;
 	delete($serv->{'user'});
 	delete($serv->{'pass'});
 	delete($serv->{'autouser'});
