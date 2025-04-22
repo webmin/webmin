@@ -88,8 +88,9 @@ my $subject = &text('forgot_subject', $wuser->{'name'});
 
 # Tell the user
 print "<center>\n";
-print &text('forgot_sent', "<tt>".&html_escape($email)."</tt>",
-		   "<tt>".&html_escape($wuser->{'name'})."</tt>"),"<p>\n";
+print &text('forgot_sent',
+	    "<tt>".&html_escape(&obsfucate_email($email))."</tt>",
+	    "<tt>".&html_escape($wuser->{'name'})."</tt>"),"<p>\n";
 print "</center>\n";
 
 &ui_print_footer();
@@ -110,3 +111,16 @@ if (open(my $RANDOM, "</dev/urandom")) {
 return undef;
 }
 
+# obsfucate_email(email)
+# Convert an email like foo@bar.com to f**@b**.com
+sub obsfucate_email
+{
+my ($email) = @_;
+my ($mailbox, $dom) = split(/\@/, $email);
+$mailbox = substr($mailbox, 0, 1) . ("*" x (length($mailbox)-1));
+my @doms;
+foreach my $d (split(/\./, $dom)) {
+	push(@doms, substr($d, 0, 1) . ("*" x (length($d)-1)));
+	}
+return $mailbox."\@".join(".", @doms);
+}
