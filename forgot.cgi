@@ -31,6 +31,8 @@ $wuser || &error(&text('forgot_euser2',
 if (defined($in{'newpass'})) {
 	# Validate the password
 	$in{'newpass'} =~ /\S/ || &error($text{'forgot_enewpass'});
+	$in{'newpass'} eq $in{'newpass2'} ||
+		&error($text{'forgot_enewpass2'});
 	my $perr = &acl::check_password_restrictions(
 			$wuser->{'name'}, $in{'newpass'});
 	$perr && &error(&text('forgot_equality', $perr));
@@ -115,9 +117,15 @@ else {
 	print "<center>\n";
 	print &ui_form_start("forgot.cgi", "post");
 	print &ui_hidden("id", $in{'id'});
-	print "<b>",&text('forgot_newpass',
-			  "<tt>".&html_escape($link{'user'})."</tt>"),"</b>\n",
-	      &ui_textbox("newpass", undef, 30),"<p>\n";
+	print &ui_table_start(undef, undef, 2);
+	print &ui_table_row(
+		&text('forgot_newpass',
+		      "<tt>".&html_escape($link{'user'})."</tt>"),
+		&ui_password("newpass", undef, 30));
+	print &ui_table_row(
+		$text{'forgot_newpass2'},
+		&ui_password("newpass2", undef, 30));
+	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'forgot_passok'} ] ]);
 	print "</center>\n";
 	}
