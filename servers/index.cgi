@@ -52,12 +52,12 @@ if (@servers && $config{'display_mode'}) {
 		$text{'index_os'} ], 100);
 	foreach my $s (@servers) {
 		my @cols;
-		my $table = "<table cellpadding=0 cellspacing=0 width=100%><tr>\n";
+		my $table = "";
 		if (!$access{'links'} || !$s->{'port'}) {
-			$table .= "<td>\n";
+			$table .= "<span>\n";
 			$table .= &html_escape($s->{'realhost'} ||$s->{'host'});
 			$table .= ":$s->{'port'}" if ($s->{'port'});
-			$table .= "</td>\n";
+			$table .= "</span>\n";
 			}
 		else {
 			my $link = "";
@@ -67,13 +67,13 @@ if (@servers && $config{'display_mode'}) {
 			else {
 				$link = &make_url($s);
 				}
-		    	$table .= "<td>\n";
+		    	$table .= "<span>\n";
 			$table .= &ui_link($link,
 				&html_escape($s->{'realhost'} || $s->{'host'} ).
 				":".$s->{'port'}, undef, "target=_top");
-			$table .= "</td>\n";
+			$table .= "</span>\n";
 			}
-		$table .= "<td align=right>";
+		$table .= "<span style=\"float: right;\">";
 		if ($s->{'autouser'} && &logged_in($s)) {
 			$table .= &ui_link("logout.cgi?id=".$s->{'id'},
 					   "(".$text{'index_logout'}.")");
@@ -82,7 +82,7 @@ if (@servers && $config{'display_mode'}) {
 			$table .= &ui_link("edit_serv.cgi?id=".$s->{'id'},
 					   "(".$text{'index_edit'}.")");
 			}
-		$table .= "</td></tr></table>\n";
+		$table .= "</span>\n";
 		push(@cols, $table);
 		push(@cols, &html_escape($s->{'desc'}));
 		push(@cols, &html_escape($s->{'group'}) || $text{'index_none'});
