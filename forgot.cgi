@@ -46,7 +46,7 @@ if (defined($in{'newpass'})) {
 						    "parent", "");
 		$d->{'disabled'} && &error($text{'forgot_edisabled'});
 		}
-	if ($d) {
+	if (keys %{$d}) {
 		# Update in Virtualmin
 		print &text('forgot_vdoing',
 			&virtual_server::show_domain_name($d)),"<br>\n";
