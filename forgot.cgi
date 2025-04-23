@@ -38,6 +38,7 @@ if (defined($in{'newpass'})) {
 	$perr && &error(&text('forgot_equality', $perr));
 
 	# Actually update the password
+	my $d;
 	if (&foreign_check("virtual-server")) {
 		# Is this a Virtualmin domain owner?
 		&foreign_require("virtual-server");
