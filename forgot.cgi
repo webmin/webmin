@@ -92,19 +92,26 @@ if (defined($in{'newpass'})) {
 		$uinfo || &error($text{'forgot_eunix'});
 		$uinfo->{'pass'} eq $useradmin::config{'lock_string'} &&
 			&error($text{'forgot_eunixlock'});
-		my $olduser = { %$user };
+		my $olduser = { %$uinfo };
+		my $user = { %$uinfo };
+		$user->{'name'} = $link{'user'};
 		$user->{'passmode'} = 3;
 		$user->{'plainpass'} = $in{'newpass'};
-		$user->{'pass'} = &useradmin::encrypt_password($in{'newpass'});
+		$user->{'pass'} = &useradmin::encrypt_password($in{'newpass'},
+							       undef, 1);
 		&useradmin::modify_user($olduser, $user);
-		&useradmin::other_modules("useradmin_modify_user", $user, $olduser);
+		&useradmin::other_modules("useradmin_modify_user", $user,
+					  $olduser);
+		&reload_miniserv();
 		print $text{'forgot_done'},"<p>\n";
 		}
 	else {
 		# Update in Webmin
 		print &text('forgot_wdoing',
 			"<tt>".&html_escape($link{'user'})."</tt>"),"<br>\n";
-		$wuser->{'pass'} = &acl::encrypt_password($in{'newpass'});
+		&foreign_require("useradmin");
+		$wuser->{'pass'} = &useradmin::encrypt_password(
+			$in{'newpass'}, undef, 1);
 		&acl::modify_user($wuser->{'name'}, $wuser);
 		&reload_miniserv();
 		print $text{'forgot_done'},"<p>\n";
