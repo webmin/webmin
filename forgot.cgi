@@ -87,13 +87,12 @@ if (defined($in{'newpass'})) {
 		print &text('forgot_udoing',
 			"<tt>".&html_escape($link{'user'})."</tt>"),"<br>\n";
 		&foreign_require("useradmin");
-		my ($uinfo) = grep { $_->{'user'} eq $link{'user'} }
-				   &useradmin::list_users();
-		$uinfo || &error($text{'forgot_eunix'});
-		$uinfo->{'pass'} eq $useradmin::config{'lock_string'} &&
+		my ($user) = grep { $_->{'user'} eq $link{'user'} }
+				  &useradmin::list_users();
+		$user || &error($text{'forgot_eunix'});
+		$user->{'pass'} eq $useradmin::config{'lock_string'} &&
 			&error($text{'forgot_eunixlock'});
-		my $olduser = { %$uinfo };
-		my $user = { %$uinfo };
+		my $olduser = { %$user };
 		$user->{'name'} = $link{'user'};
 		$user->{'passmode'} = 3;
 		$user->{'plainpass'} = $in{'newpass'};
