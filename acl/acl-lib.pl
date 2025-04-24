@@ -1717,7 +1717,7 @@ elsif ($mode == 2) {
 	}
 else {
 	# Try detecting system default first
-	if (&foreign_available('useradmin')) {
+	if (&foreign_installed('useradmin')) {
 		&foreign_require('useradmin');
 		return &useradmin::encrypt_password($pass, $salt, 1);
 		}
