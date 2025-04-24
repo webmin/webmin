@@ -11,6 +11,10 @@ $no_acl_check++;
 $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
 $remote_user && &error($text{'forgot_elogin'});
 
+# Slow down the rate of password reset requests (plus needs better check by IP
+# to limit the number of requests per IP in a given time period)
+sleep(3);
+
 # Lookup the Webmin user
 &foreign_require("acl");
 my ($wuser) = grep { lc($_->{'name'}) eq lc($in{'forgot'}) } &acl::list_users();
