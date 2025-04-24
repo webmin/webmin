@@ -44,9 +44,9 @@ if (defined($in{'newpass'})) {
 		&foreign_require("virtual-server");
 		$d = &virtual_server::get_domain_by("user", $link{'user'},
 						    "parent", "");
-		$d->{'disabled'} && &error($text{'forgot_edisabled'});
+		$d && $d->{'disabled'} && &error($text{'forgot_edisabled'});
 		}
-	if (keys %{$d}) {
+	if ($d) {
 		# Update in Virtualmin
 		print &text('forgot_vdoing',
 			&virtual_server::show_domain_name($d)),"<br>\n";
