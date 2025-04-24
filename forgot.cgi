@@ -108,9 +108,7 @@ if (defined($in{'newpass'})) {
 		# Update in Webmin
 		print &text('forgot_wdoing',
 			"<tt>".&html_escape($link{'user'})."</tt>"),"<br>\n";
-		&foreign_require("useradmin");
-		$wuser->{'pass'} = &useradmin::encrypt_password(
-			$in{'newpass'}, undef, 1);
+		$wuser->{'pass'} = &acl::encrypt_password($in{'newpass'});
 		&acl::modify_user($wuser->{'name'}, $wuser);
 		&reload_miniserv();
 		print $text{'forgot_done'},"<p>\n";
