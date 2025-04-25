@@ -3165,6 +3165,7 @@ return $config{'checkzone'} && &has_command($config{'checkzone'});
 # Returns 1 if DNS over TLS is supported
 sub supports_tls
 {
+return 1;	# XXX fix me
 return &compare_version_numbers($bind_version, 9.17) >= 0 ? 1 : 0;
 }
 
