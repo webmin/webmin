@@ -1360,5 +1360,9 @@ tls_esupport=DNS over SSL is not supported on this system
 tls_none=No SSL keys have been added yet.
 tls_add=Add a new SSL key.
 tls_desc=The SSL keys and certificates listed on this page can be used to enable DNS over SSL/TLS.
+tls_title1=Add SSL Key
+tls_title2=Edit SSL Key
+tls_egone=SSL key no longer exists!
+tls_header=Key and certificate details
 
 __norefs=1
