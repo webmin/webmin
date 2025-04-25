@@ -6,10 +6,15 @@ use WebminCore;
 $no_acl_check++;
 &init_config();
 &ReadParse();
+&load_theme_library();
 
 &error_setup($text{'forgot_err'});
 $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
 $remote_user && &error($text{'forgot_elogin'});
+
+# Slow down the rate of password reset requests (plus needs better check by IP
+# to limit the number of requests per IP in a given time period)
+sleep(3);
 
 # Lookup the Webmin user
 &foreign_require("acl");
@@ -70,6 +75,7 @@ $link{'id'} || &error($text{'forgot_erandom'});
 &write_file("$main::forgot_password_link_dir/$link{'id'}", \%link);
 my $baseurl = &get_webmin_email_url();
 my $url = $baseurl.'/forgot.cgi?id='.&urlize($link{'id'});
+$url = &theme_forgot_url($baseurl, $link{'id'}) if (defined(&theme_forgot_url));
 
 &ui_print_header(undef, $text{'forgot_title'}, "", undef, undef, 1, 1);
 
