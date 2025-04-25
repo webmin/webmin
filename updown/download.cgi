@@ -118,20 +118,17 @@ if ($in{'bg'} && $can_background) {
 	else {
 		# Create an At job to do the download
 		&foreign_require("at", "at-lib.pl");
-			{
-			local %ENV;
-			delete($ENV{'FOREIGN_MODULE_NAME'});
-			delete($ENV{'FOREIGN_ROOT_DIRECTORY'});
-			&clean_environment();
-			$ENV{'REMOTE_USER'} = $remote_user;	# For usermin
-			$ENV{'BASE_REMOTE_USER'} = $base_remote_user;
-			&at::create_atjob(
-				$module_info{'usermin'} ? $remote_user : "root",
-				$download{'time'},
-				"$atjob_cmd $download{'id'}",
-				"/");
-			&reset_environment();
-			}
+		&clean_environment();
+		delete($ENV{'FOREIGN_MODULE_NAME'});
+		delete($ENV{'FOREIGN_ROOT_DIRECTORY'});
+		$ENV{'REMOTE_USER'} = $remote_user;	# For usermin
+		$ENV{'BASE_REMOTE_USER'} = $base_remote_user;
+		&at::create_atjob(
+			$module_info{'usermin'} ? $remote_user : "root",
+			$download{'time'},
+			"$atjob_cmd $download{'id'}",
+			"/");
+		&reset_environment();
 		}
 
 	&redirect("index.cgi?mode=download");
