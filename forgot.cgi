@@ -7,9 +7,12 @@ $no_acl_check++;
 $trust_unknown_referers = 1;
 &init_config();
 &ReadParse();
-$gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
-my $forgot_timeout = 10;
+&load_theme_library();
+
 &error_setup($text{'forgot_err'});
+$gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
+&theme_forgot_handler($0) if (defined(&theme_forgot_handler));
+my $forgot_timeout = 10;
 $remote_user && &error($text{'forgot_elogin'});
 
 # Check that the random ID is valid
