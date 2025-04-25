@@ -14,7 +14,7 @@ $remote_user && &error($text{'forgot_elogin'});
 
 # Slow down the rate of password reset requests (plus needs better check by IP
 # to limit the number of requests per IP in a given time period)
-sleep(3);
+sleep(1);
 
 # Lookup the Webmin user
 &foreign_require("acl");
