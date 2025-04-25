@@ -103,15 +103,17 @@ if ($access{'forcelink'}) {
 	}
 else {
 	# Login mode
+	my $qulbl = &quote_escape($text{'edit_user'}, '"');
+	my $qplbl = &quote_escape($text{'edit_pass'}, '"');
 	my $linksel = &ui_radio("mode", $mode,
 		[ [ 0, "$text{'edit_mode0'}<br>" ],
 		  [ 1, &text('edit_mode12',
-		       &ui_textbox("wuser", $mode == 1 ? $s->{'user'} : "", 8,
-		           undef, undef, " aria-label=\"$text{'edit_user'}\" ".
-			   	"placeholder=\"$text{'edit_user'}\""),
-		       &ui_password("wpass", $s->{'pass'}, 8, undef,
-		           undef, " aria-label=\"$text{'edit_pass'}\" ".
-			   	"placeholder=\"$text{'edit_pass'}\""))."<br>" ],
+			&ui_textbox("wuser", $mode == 1 ? $s->{'user'} : "", 8,
+			    undef, undef,
+			    " aria-label=\"$qulbl\" placeholder=\"$qulbl\""),
+			&ui_password("wpass", $s->{'pass'}, 8, undef, undef,
+			    " aria-label=\"$qplbl\" placeholder=\"$qplbl\"")).
+			"<br>" ],
 		  [ 2, "$text{'edit_mode2'}<br>" ],
 		  ($access{'pass'} && !$main::session_id || $mode == 3 ?
 		    ( [ 3, "$text{'edit_mode3'}<br>".
