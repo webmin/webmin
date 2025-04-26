@@ -98,7 +98,7 @@ my $subject = &text('forgot_subject', $wuser->{'name'});
 print "<center>\n";
 print &text('forgot_sent',
 	    "<tt>".&html_escape(&obsfucate_email($email))."</tt>",
-	    "<tt>".&html_escape($wuser->{'name'})."</tt>"),"<p>\n";
+	    "<tt>".&html_escape($wuser->{'name'})."</tt>"),"\n";
 print "</center>\n";
 
 &webmin_log("forgot", "send", undef,
