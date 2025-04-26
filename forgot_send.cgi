@@ -16,10 +16,7 @@ $remote_user && &error($text{'forgot_elogin'});
 # Lookup the Webmin user
 &foreign_require("acl");
 my ($wuser) = grep { lc($_->{'name'}) eq lc($in{'forgot'}) } &acl::list_users();
-$wuser && $wuser->{'email'} || &error($text{'forgot_euser'});
-($wuser->{'sync'} || $wuser->{'pass'} eq 'e') && &error($text{'forgot_esync'});
-$wuser->{'pass'} eq '*LK*' && &error($text{'forgot_elock'});
-my $email = $wuser->{'email'};
+my $email = $wuser ? $wuser->{'email'} : undef;
 
 # Check if the IP or Webmin user is over it's rate limit
 &make_dir($main::forgot_password_link_dir, 0700);
@@ -30,7 +27,9 @@ my %ratelimit;
 my $now = time();
 my $rlerr;
 my $maxtries = 0;
-foreach my $key ($ENV{'REMOTE_ADDR'}, $wuser->{'name'}, $wuser->{'email'}) {
+foreach my $key ($ENV{'REMOTE_ADDR'},
+		 $wuser ? ( $wuser->{'name'} ) : ( ),
+		 $email ? ( $email ) : ( )) {
 	if (!$ratelimit{$key."_last"} ||
 	    $ratelimit{$key."_last"} < $now-5*60) {
 		# More than 5 mins since the last try, so reset counter
@@ -65,6 +64,11 @@ foreach my $k (@cleanup) {
 &unlock_file($ratelimit_file);
 sleep($maxtries);
 &error($rlerr) if ($rlerr);
+
+# Make sure the Webmin user exists and is eligible for a reset
+$wuser && $wuser->{'email'} || &error($text{'forgot_euser'});
+($wuser->{'sync'} || $wuser->{'pass'} eq 'e') && &error($text{'forgot_esync'});
+$wuser->{'pass'} eq '*LK*' && &error($text{'forgot_elock'});
 
 # Generate a random ID for this password reset
 my %link = ( 'id' => &generate_random_id(),
