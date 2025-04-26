@@ -2487,14 +2487,13 @@ sub list_zone_names
 # Check if any files have changed, or if the master config has changed, or
 # the PID file.
 my (%files, %znc);
-my ($changed, $filecount, %donefile);
+my ($changed, %donefile);
 my @st = stat($zone_names_cache);
 if (@st) {
 	&read_file_cached_with_stat($zone_names_cache, \%znc);
 	my $filecount = 0;
 	foreach my $k (keys %znc) {
 		if ($k =~ /^file_(.*)$/) {
-			$filecount++;
 			$donefile{$1}++;
 			my @fst = stat($1);
 			if (!@fst || $fst[9] > $st[9] ||
