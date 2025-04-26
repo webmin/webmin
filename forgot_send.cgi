@@ -13,10 +13,6 @@ $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
 &theme_forgot_handler($0) if (defined(&theme_forgot_handler));
 $remote_user && &error($text{'forgot_elogin'});
 
-# Slow down the rate of password reset requests (plus needs better check by IP
-# to limit the number of requests per IP in a given time period)
-sleep(1);
-
 # Lookup the Webmin user
 &foreign_require("acl");
 my ($wuser) = grep { lc($_->{'name'}) eq lc($in{'forgot'}) } &acl::list_users();
@@ -33,6 +29,7 @@ my %ratelimit;
 &read_file($ratelimit_file, \%ratelimit);
 my $now = time();
 my $rlerr;
+my $maxtries = 0;
 foreach my $key ($ENV{'REMOTE_ADDR'}, $wuser->{'name'}, $wuser->{'email'}) {
 	if (!$ratelimit{$key."_last"} ||
 	    $ratelimit{$key."_last"} < $now-5*60) {
@@ -42,6 +39,7 @@ foreach my $key ($ENV{'REMOTE_ADDR'}, $wuser->{'name'}, $wuser->{'email'}) {
 	else {
 		$ratelimit{$key}++;
 		}
+	$maxtries = $ratelimit{$key} if ($ratelimit{$key} > $maxtries);
 	$ratelimit{$key."_last"} = $now;
 	if ($ratelimit{$key} > 10) {
 		# More than 10 attempts in the last 5 minutes!
@@ -65,6 +63,7 @@ foreach my $k (@cleanup) {
 	}
 &write_file($ratelimit_file, \%ratelimit);
 &unlock_file($ratelimit_file);
+sleep($maxtries);
 &error($rlerr) if ($rlerr);
 
 # Generate a random ID for this password reset
