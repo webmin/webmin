@@ -2491,6 +2491,7 @@ my ($changed, $filecount, %donefile);
 my @st = stat($zone_names_cache);
 if (@st) {
 	&read_file_cached_with_stat($zone_names_cache, \%znc);
+	my $filecount = 0;
 	foreach my $k (keys %znc) {
 		if ($k =~ /^file_(.*)$/) {
 			$filecount++;
@@ -2500,8 +2501,10 @@ if (@st) {
 			    $znc{'size_'.$1} != $fst[7]) {
 				$changed = 1;
 				}
+			$filecount++;
 			}
 		}
+	$changed = 1 if (!$filecount);
 	}
 else {
 	$changed = 1;
