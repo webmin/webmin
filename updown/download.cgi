@@ -64,7 +64,7 @@ else {
 		$download{'gid'} = $uinfo[3];
 		}
 	}
-if ($in{'bg'} && $can_schedule) {
+if ($in{'bg'} == 1 && $can_schedule) {
 	# Validate time
 	$in{'hour'} =~ /^\d+$/ && $in{'min'} =~ /^\d+$/ &&
 		$in{'day'} =~ /^\d+$/ && $in{'year'} =~ /^\d+$/ ||
@@ -111,7 +111,7 @@ if ($in{'bg'} && $can_background) {
 	&unlock_file($atjob_cmd);
 	&save_download(\%download);
 
-	if (!$can_schedule) {
+	if (!$can_schedule || $in{'bg'} == 2) {
 		# Just run this script right now
 		&execute_command("$atjob_cmd $download{'id'} &");
 		}

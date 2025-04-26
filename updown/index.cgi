@@ -56,8 +56,10 @@ if ($can_download) {
 		# Download time can be selected, for scheduling with At
 		@now = localtime(time());
 		print &ui_table_row($text{'index_bg'},
-			&ui_radio("bg", 0, [ [ 0, $text{'index_bg0'}."<br>" ],
-					     [ 1, $text{'index_bg1'} ] ])." ".
+			&ui_radio("bg", 0,
+				  [ [ 0, $text{'index_bg0'}."<br>" ],
+				    [ 2, $text{'index_bg1u'}."<br>" ],
+				    [ 1, $text{'index_bg1'} ] ])." ".
 			&ui_textbox("day", $now[3], 2)."/".
 			&ui_select("month", $now[4],
 			  [ map { [ $_, $text{"smonth_".($_+1)} ] }
@@ -72,7 +74,7 @@ if ($can_download) {
 		# Download must be immediate, but can be backgrounded
 		print &ui_table_row($text{'index_bg'},
 			&ui_radio("bg", 0, [ [ 0, $text{'index_bg0'} ],
-					     [ 1, $text{'index_bg1u'} ] ]));
+					     [ 2, $text{'index_bg1u'} ] ]));
 		}
 	else {
 		# Download is always right now
