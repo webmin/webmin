@@ -62,6 +62,10 @@ elsif ($action eq 'switch') {
 elsif ($action eq 'twofactor') {
 	return &text('log_twofactor', $object, $p->{'provider'}, $p->{'id'});
 	}
+elsif ($action eq 'forgot') {
+	return &text('log_forgot_'.$type, &html_escape($p->{'user'}),
+					  &html_escape($p->{'email'}));
+	}
 else {
 	return $text{'log_'.$action};
 	}

@@ -249,6 +249,8 @@ log_sync=Changed unix user synchronization
 log_sql=Changed user and group database
 log_twofactor=Enrolled user $1 with two-factor provider $2
 log_onefactor=Dis-enrolled user $1 for two-factor authentication
+log_forgot_send=Sent password rest email for $1 to $2
+log_forgot_reset=Reset password for $1 with email $2
 
 gedit_ecannot=You are not allowed to edit groups
 gedit_title=Edit Webmin Group

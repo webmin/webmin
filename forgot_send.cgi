@@ -101,6 +101,9 @@ print &text('forgot_sent',
 	    "<tt>".&html_escape($wuser->{'name'})."</tt>"),"<p>\n";
 print "</center>\n";
 
+&webmin_log("forgot", "send", undef,
+	    { 'user' => $wuser->{'name'},
+	      'email' => $email }, "acl");
 &ui_print_footer();
 
 # generate_random_id()

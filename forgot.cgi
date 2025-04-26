@@ -118,6 +118,10 @@ if (defined($in{'newpass'})) {
 		}
 	print &text('forgot_retry', '/'),"<p>\n";
 
+	&webmin_log("forgot", "reset", undef,
+		    { 'user' => $wuser->{'name'},
+		      'email' => $link{'email'} }, "acl");
+
 	&unlink_file("$main::forgot_password_link_dir/$in{'id'}");
 	}
 else {
