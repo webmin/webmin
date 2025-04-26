@@ -120,7 +120,7 @@ if (defined($in{'newpass'})) {
 
 	&webmin_log("forgot", "reset", undef,
 		    { 'user' => $wuser->{'name'},
-		      'email' => $link{'email'} }, "acl");
+		      'email' => $wuser->{'email'} }, "acl");
 
 	&unlink_file("$main::forgot_password_link_dir/$in{'id'}");
 	}
