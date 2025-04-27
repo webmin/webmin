@@ -1842,13 +1842,16 @@ if ($config{'session'} && !$deny_authentication &&
 			&http_error(500, "Invalid password",
 			    "Password contains invalid characters");
 			}
-
+		
+		local $twofactor_probe = 0;
 		local ($vu, $expired, $nonexist, $wvu) =
 			&validate_user_caseless($in{'user'}, $in{'pass'}, $host,
 					        $acptip, $port);
 		if ($vu && $wvu) {
 			my $uinfo = &get_user_details($wvu, $vu);
-			if ($uinfo && $uinfo->{'twofactor_provider'}) {
+			my $can2fa = $uinfo && $uinfo->{'twofactor_provider'};
+			$twofactor_probe = 1 if ($in{'twofprobe'} && $can2fa);
+			if ($can2fa && !$twofactor_probe) {
 				# Check two-factor token ID
 				$err = &validate_twofactor(
 					$wvu, $in{'twofactor'}, $vu);
@@ -1857,7 +1860,8 @@ if ($config{'session'} && !$deny_authentication &&
 						$vu, 'twofactor',
 						$loghost, $localip);
 					$twofactor_msg = $err;
-					$twofactor_nolog = 'nolog' if (!$in{'twofactor'});
+					$twofactor_nolog = 'nolog'
+						if (!$in{'twofactor'});
 					$vu = undef;
 					}
 				}
@@ -1865,7 +1869,8 @@ if ($config{'session'} && !$deny_authentication &&
 		local $hrv = &handle_login(
 				$vu || $in{'user'}, $vu ? 1 : 0,
 				$expired, $nonexist, $in{'pass'},
-				$in{'notestingcookie'}, $twofactor_nolog);
+				$in{'notestingcookie'}, $twofactor_nolog,
+				$twofactor_probe);
 		return $hrv if (defined($hrv));
 		}
 	}
@@ -4239,11 +4244,12 @@ if (!$sid && !$force_urandom) {
 return $sid;
 }
 
-# handle_login(username, ok, expired, not-exists, password, [no-test-cookie], [no-log])
+# handle_login(username, ok, expired, not-exists, password,
+#              [no-test-cookie], [no-log], [twofactor-probe])
 # Called from handle_session to either mark a user as logged in, or not
 sub handle_login
 {
-local ($vu, $ok, $expired, $nonexist, $pass, $notest, $nolog) = @_;
+local ($vu, $ok, $expired, $nonexist, $pass, $notest, $nolog, $twof_probe) = @_;
 $authuser = $vu if ($ok);
 
 # check if the test cookie is set
@@ -4267,6 +4273,17 @@ if ($config{'passdelay'} && $vu) {
 
 if ($ok && (!$expired ||
 	    $config{'passwd_mode'} == 1)) {
+	# Log in creds were OK but two-factor auth is still pending
+	if ($twof_probe) {
+		# Two-factor auth is required
+		$validated=$already_session_id=$authuser=$baseauthuser = undef;
+		$querystring=$method=$page=$request_uri=$logged_code = undef;
+		$queryargs = "";
+		# Write response
+		&http_error(401, "Two-factor authentication is required");
+		return undef;
+		}
+
 	# Logged in OK! Tell the main process about
 	# the new SID
 	local $sid = &generate_random_id();
