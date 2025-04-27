@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Show a form to edit or create a TLS key
+# Show a form to edit or create a TLS key and cert
 
 use strict;
 use warnings;
@@ -7,7 +7,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%access, %text, %in);
 
-require './bind8-lib.pl';        
+require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'tls_ecannot'});
 &supports_tls() || &error($text{'tls_esupport'});
 &ReadParse();
@@ -45,6 +45,13 @@ print &ui_table_row($text{'tls_key'},
 # Cert file
 print &ui_table_row($text{'tls_cert'},
 	&ui_filebox("cert", &find_value("cert-file", $mems), 60));
+
+# CA cert file
+my $ca = &find_value("ca-file", $mems);
+print &ui_table_row($text{'tls_ca'},
+	&ui_radio("ca_def", $ca ? 0 : 1,
+		  [ [ 1, $text{'tls_ca_def'} ],
+		    [ 0, &ui_filebox("ca", $ca, 60) ] ]));
 
 print &ui_table_end();
 print &ui_form_end(
