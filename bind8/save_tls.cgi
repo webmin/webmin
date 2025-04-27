@@ -27,7 +27,8 @@ if (!$in{'new'}) {
 &lock_file(&make_chroot($config{'named_conf'}));
 if ($in{'delete'}) {
 	# Just remove this one TLS key, if unused
-	# XXX
+	my @users = &find_tls_users($conf, $tls->{'values'}->[0]);
+	@users && &error($text{'tls_eusers'});
 	&save_directive($parent, [ $tls ], [ ]);
 	}
 else {

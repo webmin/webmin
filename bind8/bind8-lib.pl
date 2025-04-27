@@ -4538,4 +4538,23 @@ if ($zone) {
 return $r;
 }
 
+# find_tls_users(&conf, name)
+# Find all listen-on or other directives that use a given TLS key name
+sub find_tls_users
+{
+my ($conf, $name) = @_;
+my @rv;
+my $opts = &find("optons", $conf);
+if ($opts) {
+	my @listen = &find("listen-on", $opts->{'members'});
+	foreach my $l (@listen) {
+		my $idx = &indexof("tls", @{$l->{'values'}});
+		if ($idx >= 0 && $l->{'values'}->[$idx+1] eq $name) {
+			push(@rv, $l);
+			}
+		}
+	}
+return @rv;
+}
+
 1;
