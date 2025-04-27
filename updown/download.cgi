@@ -72,6 +72,15 @@ if ($in{'bg'} == 1 && $can_schedule) {
 	eval { $download{'time'} = timelocal(0, $in{'min'}, $in{'hour'},
 			 $in{'day'}, $in{'month'}, $in{'year'}-1900) };
 	$@ && &error($text{'download_edate2'});
+
+	# Validate that atd is running, if needed
+	if (&foreign_installed("at") && !$module_info{'usermin'}) {
+		&foreign_require("at");
+		my ($init, $r, $atboot) = &at::get_init_status();
+		if ($init && $r == 0) {
+			&error(&text('download_eatd', &get_webprefix().'/at/'));
+			}
+		}
 	}
 if (defined($in{'email_def'}) && !$in{'email_def'}) {
 	# Validate email

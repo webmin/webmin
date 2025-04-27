@@ -78,6 +78,7 @@ download_failed=Download failed : $1
 download_eaccess=You are not allowed to download files to $1
 download_eucannot=You are not allowed to download files as user $1
 download_egcannot=The selected group does not contain the selected user
+download_eatd=Scheduled downloads are not possible unless the At daemon is running. It can be started in the <a href='$1'>scheduled commands</a> module.
 
 cancel_err=Failed to cancel downloads
 cancel_enone=None selected
