@@ -1161,12 +1161,12 @@ my $key = &read_file_contents($keyfile);
 $key =~ /BEGIN (RSA |EC )?PRIVATE KEY/i ||  
 	&error(&text('ssl_ekey2', $keyfile));
 if (!$certfile) {
-	$key =~ /BEGIN CERTIFICATE/ || &error(&text('ssl_ecert2', $keyfile));
+	$key =~ /BEGIN (CERTIFICATE|PUBLIC KEY)/ || &error(&text('ssl_ecert2', $keyfile));
 	}
 else {
 	-r $certfile || return &error(&text('ssl_ecert', $certfile));
 	my $cert = &read_file_contents($certfile);
-	$cert =~ /BEGIN CERTIFICATE/ || &error(&text('ssl_ecert2', $certfile));
+	$cert =~ /BEGIN (CERTIFICATE|PUBLIC KEY)/ || &error(&text('ssl_ecert2', $certfile));
 	}
 }
 
