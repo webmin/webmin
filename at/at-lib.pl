@@ -153,5 +153,18 @@ else {
 	}
 }
 
+# get_init_status()
+# If the init module is installed and there is an atd bootup action, return
+# its name, current running status and boot status
+sub get_init_status
+{
+return () if (!&foreign_available("init"));
+my $init = defined(&get_init_name) ? &get_init_name() : undef;
+return () if (!$init);
+my $r = &init::status_action($init);
+my $atboot = &init::action_status($init);
+return ($init, $r, $atboot);
+}
+
 1;
 
