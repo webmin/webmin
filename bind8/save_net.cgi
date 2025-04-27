@@ -17,25 +17,34 @@ my $conf = &get_config();
 my $options = &find("options", $conf);
 my %used;
 my @listen;
+my @listen6;
 if (!$in{'listen_def'}) {
 	my $addr;
 	for(my $i=0; defined($addr = $in{"addrs_$i"}); $i++) {
-		next if (!$addr);
-		my $l = { 'name' => 'listen-on',
-			     'type' => 1 };
+		next if (!$in{"proto_$i"});
+		my $l = { 'name' => $in{"proto_$i"} eq 'v6' ?
+				'listen-on-v6' : 'listen-on',
+			  'type' => 1 };
 		if (!$in{"pdef_$i"}) {
 			$in{"port_$i"} =~ /^\d+$/ ||
 				&error(&text('net_eport', $in{"port_$i"}));
 			$l->{'values'} = [ 'port', $in{"port_$i"} ];
 			}
 		my $port = $in{"pdef_$i"} ? 53 : $in{"port_$i"};
-		$used{$port}++ && &error(&text('net_eusedport', $port));
+		$used{$port,$l->{'name'}}++ &&
+			&error(&text('net_eusedport', $port));
 		$l->{'members'} =
 			[ map { { 'name' => $_ } } split(/\s+/, $addr) ];
-		push(@listen, $l);
+		if ($l->{'name'} eq 'listen-on') {
+			push(@listen, $l);
+			}
+		else {
+			push(@listen6, $l);
+			}
 		}
 	}
 &save_directive($options, 'listen-on', \@listen, 1);
+&save_directive($options, 'listen-on-v6', \@listen6, 1);
 
 # Save query source address and port
 my @qvals;

@@ -4546,7 +4546,8 @@ my ($conf, $name) = @_;
 my @rv;
 my $opts = &find("optons", $conf);
 if ($opts) {
-	my @listen = &find("listen-on", $opts->{'members'});
+	my @listen = ( &find("listen-on", $opts->{'members'}),
+		       &find("listen-on-v6", $opts->{'members'}) );
 	foreach my $l (@listen) {
 		my $idx = &indexof("tls", @{$l->{'values'}});
 		if ($idx >= 0 && $l->{'values'}->[$idx+1] eq $name) {
