@@ -3,8 +3,7 @@
 # Sets up a production or testing repository for Webmin and Usermin packages
 # on Debian-based and RPM-based systems
 
-NEW_SCRIPT_URL="https://raw.githubusercontent.com/webmin/webmin/master/\
-webmin-setup-repo.sh"
+NEW_SCRIPT_URL="https://raw.githubusercontent.com/webmin/webmin/master/webmin-setup-repo.sh"
 
 for downloader in "curl -fsSL" "wget -qO-"; do
 	if command -v "${downloader%% *}" >/dev/null 2>&1; then
