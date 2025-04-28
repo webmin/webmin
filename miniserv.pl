@@ -4276,8 +4276,10 @@ if ($ok && (!$expired ||
 	# Log in creds were OK but two-factor auth is still pending
 	if ($twof_probe) {
 		# Two-factor auth is required
-		$validated=$already_session_id=$authuser=$baseauthuser = undef;
-		$querystring=$method=$page=$request_uri=$logged_code = undef;
+		$validated = $already_session_id = undef;
+		$authuser = $baseauthuser = undef;
+		$querystring = $method = $page = $request_uri = undef;
+		$logged_code = undef;
 		$queryargs = "";
 		# Write response
 		&http_error(401, "Two-factor authentication is required");
