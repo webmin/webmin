@@ -4544,7 +4544,7 @@ sub find_tls_users
 {
 my ($conf, $name) = @_;
 my @rv;
-my $opts = &find("optons", $conf);
+my $opts = &find("options", $conf);
 if ($opts) {
 	my @listen = ( &find("listen-on", $opts->{'members'}),
 		       &find("listen-on-v6", $opts->{'members'}) );

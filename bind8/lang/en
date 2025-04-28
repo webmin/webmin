@@ -1376,6 +1376,7 @@ tls_ename=SSL key name can only contain letters, numbers, underscore and dash
 tls_ekey=Missing or non-existent SSL key file
 tls_ecert=Missing or non-existent SSL certificate file
 tls_eca=Missing or non-existent SSL CA certificate file
-tls_eusers=SSL certificate is still in use by BIND
+tls_eusers=Still in use by a port or address to listen on
+tls_return=SSL keys and certificates
 
 __norefs=1
