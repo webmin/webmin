@@ -30,10 +30,19 @@ my $ltable = &ui_radio("listen_def", @listen ? 0 : 1,
 
 my @table = ( );
 push(@listen, { });
+my @tls = map { $_->{'values'}->[0] } &find("tls", $conf);
 for(my $i=0; $i<@listen; $i++) {
 	my $l = $listen[$i];
-	my $port = $l->{'value'} eq 'port' ?
-                        $l->{'values'}->[1] : undef;
+	my $v = $l->{'values'} || [];
+	my ($port, $tls);
+	for(my $j=0; $j<@$v; $j++) {
+		if ($v->[$j] eq "port") {
+			$port = $v->[++$j];
+			}
+		if ($v->[$j] eq "tls") {
+			$tls = $v->[++$j];
+			}
+		}
 	my @vals = map { $_->{'name'} } @{$l->{'members'}};
 	push(@table, [
 		&ui_select("proto_$i",
@@ -45,11 +54,15 @@ for(my $i=0; $i<@listen; $i++) {
 		&ui_radio("pdef_$i", $port ? 0 : 1,
 		  [ [ 1, $text{'default'} ],
 		    [ 0, &ui_textbox("port_$i", $port, 5) ] ]),
+		@tls ? ( &ui_select("tls_$i", $tls, [ '', @tls ]) ) : ( ),
 		&ui_textbox("addrs_$i", join(" ", @vals), 50),
 		]);
 	}
 $ltable .= &ui_columns_table(
-	[ $text{'net_proto'}, $text{'net_port'}, $text{'net_addrs'} ],
+	[ $text{'net_proto'},
+	  $text{'net_port'},
+	  @tls ? ( $text{'net_tls'} ) : ( ),
+	  $text{'net_addrs'} ],
 	undef,
 	\@table,
 	undef,

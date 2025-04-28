@@ -24,11 +24,15 @@ if (!$in{'listen_def'}) {
 		next if (!$in{"proto_$i"});
 		my $l = { 'name' => $in{"proto_$i"} eq 'v6' ?
 				'listen-on-v6' : 'listen-on',
+			  'values' => [ ],
 			  'type' => 1 };
 		if (!$in{"pdef_$i"}) {
 			$in{"port_$i"} =~ /^\d+$/ ||
 				&error(&text('net_eport', $in{"port_$i"}));
-			$l->{'values'} = [ 'port', $in{"port_$i"} ];
+			push(@{$l->{'values'}}, 'port', $in{"port_$i"});
+			}
+		if ($in{"tls_$i"}) {
+			push(@{$l->{'values'}}, 'tls', $in{"tls_$i"});
 			}
 		my $port = $in{"pdef_$i"} ? 53 : $in{"port_$i"};
 		$used{$port,$l->{'name'}}++ &&
