@@ -7201,7 +7201,7 @@ my $line = sprintf "%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d] %s %s %s %s %s \"%s\" 
     $param_client_ip || $ENV{'REMOTE_HOST'} || '-',
     $m,
     $param_host ? $param_host.':'.$param_script_on_host :
-	scriptname ? $scriptname : '-',
+	$scriptname ? $scriptname : '-',
     $param_action, $param_type ne '' ? $param_type : '-', $param_object ne '' ? $param_object : '-';
 my %param;
 $params_hash ||= {};
