@@ -9,10 +9,18 @@ $pragma_no_cache = 1;
 #$ENV{'MINISERV_INTERNAL'} || die "Can only be called by miniserv.pl";
 &init_config();
 &ReadParse(undef, undef, undef, 2);
+
+# If accessed via HTTPS, make this an SSL-only cookie
+&get_miniserv_config(\%miniserv);
+$sec = uc($ENV{'HTTPS'}) eq 'ON' ? "; secure" : "";
+if (!$miniserv{'no_httponly'}) {
+	$sec .= "; httpOnly";
+	}
+
 if ($gconfig{'loginbanner'} && $ENV{'HTTP_COOKIE'} !~ /banner=1/ &&
     !$in{'logout'} && !$in{'failed'} && !$in{'timed_out'}) {
 	# Show pre-login HTML page
-	print "Set-Cookie: banner=1; path=/\r\n";
+	print "Set-Cookie: banner=1; path=/".$sec."\r\n";
 	&PrintHeader();
 	$url = $in{'page'};
 	open(BANNER, "<$gconfig{'loginbanner'}");
@@ -23,15 +31,10 @@ if ($gconfig{'loginbanner'} && $ENV{'HTTP_COOKIE'} !~ /banner=1/ &&
 	close(BANNER);
 	return;
 	}
-&get_miniserv_config(\%miniserv);
-$sec = uc($ENV{'HTTPS'}) eq 'ON' ? "; secure" : "";
-if (!$miniserv{'no_httponly'}) {
-	$sec .= "; httpOnly";
-	}
 $sidname = $miniserv{'sidname'} || "sid";
-print "Set-Cookie: banner=0; path=/$sec\r\n" if ($gconfig{'loginbanner'});
-print "Set-Cookie: $sidname=x; path=/$sec\r\n" if ($in{'logout'});
-print "Set-Cookie: testing=1; path=/$sec\r\n";
+print "Set-Cookie: banner=0; path=/".$sec."\r\n" if ($gconfig{'loginbanner'});
+print "Set-Cookie: $sidname=x; path=/".$sec."\r\n" if ($in{'logout'});
+print "Set-Cookie: testing=1; path=/".$sec."\r\n";
 $title = $text{'session_header'};
 if ($gconfig{'showhost'}) {
         $title = &get_display_hostname()." : ".$title;
