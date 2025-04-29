@@ -5172,7 +5172,7 @@ of the variables set include :
 
 =item %gconfig - Global configuration.
 
-=item $scriptname - Base name of the current perl script.
+=item $scriptname - Base name of the current perl script, like save_user.cgi
 
 =item $module_name - The name of the current module.
 
@@ -5291,9 +5291,8 @@ if (($ENV{'WEBMIN_DEBUG'} || $gconfig{'debug_enabled'}) &&
 	$main::opened_debug_log = 1;
 
 	if ($gconfig{'debug_what_start'}) {
-		my $script_name = $0 =~ /([^\/]+)$/ ? $1 : '-';
 		$main::debug_log_start_time = time();
-		&webmin_debug_log("START", "script=$script_name");
+		&webmin_debug_log("START", "script=".($scriptname || "-"));
 		}
 	}
 
@@ -5377,6 +5376,14 @@ else {
 			}
 		}
 	&error("Script was not run with full path (failed to find $0 under $root_directory)") if (!$rok);
+	}
+
+# Work out the base script name
+if ($0 =~ /([^\/]+)$/) {
+	$scriptname = $1;
+	}
+else {
+	$scriptname = undef;
 	}
 
 # Set the umask based on config
@@ -5537,8 +5544,6 @@ if ($tconfig{'oofunctions'} && !$main::loaded_theme_oo_library++) {
 	do "$theme_root_directory/$tconfig{'oofunctions'}";
 	}
 
-$0 =~ /([^\/]+)$/;
-$scriptname = $1;
 $webmin_logfile = $gconfig{'webmin_log'} ? $gconfig{'webmin_log'}
 					 : "$var_directory/webmin.log";
 
@@ -7165,7 +7170,7 @@ if ($gconfig{'action_script_dir'}) {
             $ENV{'ACTION_ACTION'} = $param_action;
             $ENV{'ACTION_TYPE'} = $param_type;
             $ENV{'ACTION_OBJECT'} = $param_object;
-            $ENV{'ACTION_SCRIPT'} = $script_name;
+            $ENV{'ACTION_SCRIPT'} = $scriptname;
             foreach my $p (keys %param) {
                 $ENV{'ACTION_PARAM_'.uc($p)} = $param{$p};
                 }
@@ -7185,7 +7190,6 @@ return if ($gconfig{'logmodules'} && &indexof($m,
 # log the action
 my $now = time();
 my @tm = localtime($now);
-my $script_name = $0 =~ /([^\/]+)$/ ? $1 : '-';
 my $id = sprintf "%d.%d.%d", $now, $$, $main::action_id_count;
 my $idprefix = substr($now, 0, 5);
 $main::action_id_count++;
@@ -7195,7 +7199,9 @@ my $line = sprintf "%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d] %s %s %s %s %s \"%s\" 
     $remote_user || '-',
     $main::session_id || '-',
     $param_client_ip || $ENV{'REMOTE_HOST'} || '-',
-    $m, $param_host ? "$param_host:$param_script_on_host" : $script_name,
+    $m,
+    $param_host ? $param_host.':'.$param_script_on_host :
+	scriptname ? $scriptname : '-',
     $param_action, $param_type ne '' ? $param_type : '-', $param_object ne '' ? $param_object : '-';
 my %param;
 $params_hash ||= {};
@@ -7367,7 +7373,7 @@ if ($logemail) {
     $body .= &text('log_email_system', &get_display_hostname())."\n";
     $body .= &text('log_email_user', $remote_user)."\n";
     $body .= &text('log_email_remote', $param_client_ip || $ENV{'REMOTE_HOST'})."\n";
-    $body .= &text('log_email_script', $script_name)."\n";
+    $body .= &text('log_email_script', $scriptname)."\n";
     if ($main::session_id) {
         $body .= &text('log_email_session', $main::session_id)."\n";
         }
