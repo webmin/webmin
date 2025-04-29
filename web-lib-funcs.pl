@@ -7193,6 +7193,7 @@ my @tm = localtime($now);
 my $id = sprintf "%d.%d.%d", $now, $$, $main::action_id_count;
 my $idprefix = substr($now, 0, 5);
 $main::action_id_count++;
+my $scriptpath = (&get_module_name() ? &get_module_name().'/' : '').$scriptname;
 my $line = sprintf "%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d] %s %s %s %s %s \"%s\" \"%s\" \"%s\"",
     $id, $tm[3], ucfirst($number_to_month_map{$tm[4]}), $tm[5]+1900,
     $tm[2], $tm[1], $tm[0],
@@ -7201,7 +7202,7 @@ my $line = sprintf "%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d] %s %s %s %s %s \"%s\" 
     $param_client_ip || $ENV{'REMOTE_HOST'} || '-',
     $m,
     $param_host ? $param_host.':'.$param_script_on_host :
-	$scriptname ? $scriptname : '-',
+	$scriptname ? $scriptpath : '-',
     $param_action, $param_type ne '' ? $param_type : '-', $param_object ne '' ? $param_object : '-';
 my %param;
 $params_hash ||= {};

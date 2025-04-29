@@ -38,7 +38,9 @@ print &ui_table_row($text{'view_module'},
 
 if ($act->{'module'} ne 'global') {
 	print &ui_table_row($text{'view_script'},
-			    "<tt>$act->{'module'}/$act->{'script'}</tt>");
+			    $act->{'script'} =~ /\// ?
+				"<tt>$act->{'script'}</tt>" :
+				"<tt>$act->{'module'}/$act->{'script'}</tt>");
 	}
 else {
 	print &ui_table_row($text{'view_script'}, "<tt>$act->{'script'}</tt>");
