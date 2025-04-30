@@ -19,9 +19,10 @@ print &ui_form_start("save_config.cgi", "post");
 print &ui_table_start($text{'config_header'}, undef, 2);
 
 # Logging level
-my $loglevel = &find_value("loglevel", $def) || 3;
+my $logsymbsupp = &compare_version_numbers(&get_fail2ban_version(), "0.9") >= 0;
+my $loglevel = &find_value("loglevel", $def) || ($logsymbsupp ? "INFO" : 3);
 my @loglevels;
-if (&compare_version_numbers(&get_fail2ban_version(), "0.9") >= 0) {
+if ($logsymbsupp) {
 	@loglevels = ( "CRITICAL", "ERROR", "WARNING",
 		       "NOTICE", "INFO", "DEBUG" );
 	}

@@ -552,7 +552,7 @@ foreach my $f (reverse(@all_files_for_lock)) {
 sub get_fail2ban_version
 {
 my $out = &backquote_command("$config{'client_cmd'} -V 2>/dev/null </dev/null");
-return !$? && $out =~ /v([0-9\.]+)/ ? $1 : undef;
+return !$? && $out =~ /v?([0-9\.]+)/ ? $1 : undef;
 }
 
 # Unblock given IP in given jail
