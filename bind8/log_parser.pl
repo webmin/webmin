@@ -44,7 +44,7 @@ elsif ($type eq 'recs') {
 elsif ($type eq 'zones') {
 	return &text("log_${action}_zones", $object);
 	}
-elsif ($type eq "host" || $type eq "group") {
+elsif ($type eq "host" || $type eq "group" || $type eq "tls") {
 	return &text("log_${action}_${type}", "<tt>$object</tt>");
 	}
 elsif ($action eq 'create') {

@@ -918,6 +918,9 @@ log_sign=Updated DNSSEC signatures for zone $1
 log_resign=Re-signed DNSSEC key for zone $1
 log_trusted=Changed DNSSEC verification
 log_dnssec=Change DNSSEC key re-signing
+log_create_tls=Created SSL key $1
+log_delete_tls=Deleted SSL key $1
+log_modify_tls=Updated SSL key $1
 
 convert_err=Failed to convert zone
 convert_efile=A records file must be specified before a slave zone can be converted to a master.
