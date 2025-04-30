@@ -11,7 +11,6 @@ our (%in, %text);
 my $conf = &get_config();
 my ($def) = grep { $_->{'name'} eq 'Definition' } @$conf;
 $def || &error($text{'config_edef'});
-my ($DEF) = grep { $_->{'name'} eq 'DEFAULT' } @$conf;
 
 &ui_print_header(undef, $text{'config_title'}, "");
 
@@ -54,8 +53,9 @@ print &ui_table_row($text{'config_socket'},
 	&ui_opt_textbox("socket", $socket, 40, $text{'default'}));
 
 # DB Purge Age
-if ($DEF) {
-	my $dbpurgeage = &find_value("dbpurgeage", $DEF);
+if ($def) {
+	my $dbpurgeage = &find_value("dbpurgeage", $def);
+	$dbpurgeage ||= 86400;
 	my @dbpurgeages = (
 			[ '', '' ],
 			[ '900', $text{'config_dbpurgeage_15m'} ],
@@ -73,12 +73,15 @@ if ($DEF) {
 	my $time_in_seconds = &time_to_seconds($dbpurgeage);
 	my $dbpurgestd = grep { $_->[0] eq $time_in_seconds } @dbpurgeages;
 	my $dbpurge_def = $time_in_seconds == 86400 ? 1 : $dbpurgestd ? 0 : 2;
-	my $depurgeagelabeled = $dbpurge_def == 2 ? &seconds_to_time($dbpurgeage) : undef;
+	my $depurgeagelabeled = $dbpurge_def == 2
+		? &seconds_to_time($dbpurgeage) 
+		: undef;
 	print &ui_table_row($text{'config_dbpurgeage'},
 		&ui_radio_row('dbpurgeage', $dbpurge_def,
 		[ [ 1, [ $text{'config_dbpurgeagedef'} ] ],
 		  [ 0, [ $text{'config_dbpurgeagesel'},
-		  	 &ui_select("dbpurgeagesel", $time_in_seconds, \@dbpurgeages) ] ],
+		  	 &ui_select("dbpurgeagesel",
+			 	$time_in_seconds, \@dbpurgeages) ] ],
 		  [ 2, [ $text{'config_dbpurgeagecus'},
 		  	&ui_textbox("dbpurgeagecus", $depurgeagelabeled, 15) ] ]
 		]));
