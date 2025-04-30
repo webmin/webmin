@@ -38,7 +38,7 @@ foreach my $j (@jails) {
 		&ui_link("edit_jail.cgi?name=".&urlize($j->{'name'}),
 			 $j->{'name'}),
 		$enabled =~ /true|yes|1/i ? $text{'yes'} : $text{'no'},
-		&html_escape($filter),
+		&html_escape($filter) || $text{'config_dbpurgeagedef'},
 		$action,
 		], \@tds, "d", $j->{'name'});
 	}
