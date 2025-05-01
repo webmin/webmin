@@ -83,16 +83,16 @@ if (-r $jfile) {
 	push(@rv, &parse_config_file($jfile));
 	}
 
+my @lrv;
 # Read separate config files under jail.d
 my $jdir = "$config{'config_dir'}/jail.d";
 if (-d $jdir) {
 	foreach my $f (glob("$jdir/*.conf")) {
-		push(@rv, &parse_config_file($f));
+		push(@lrv, &parse_config_file($f));
 		}
 	}
 
 # Read the main local file, and separate files under jail.d
-my @lrv;
 my $jlfile = &make_local_file($jfile);
 if (-r $jlfile) {
 	push(@lrv, &parse_config_file($jlfile));
@@ -552,7 +552,7 @@ foreach my $f (reverse(@all_files_for_lock)) {
 sub get_fail2ban_version
 {
 my $out = &backquote_command("$config{'client_cmd'} -V 2>/dev/null </dev/null");
-return !$? && $out =~ /v([0-9\.]+)/ ? $1 : undef;
+return !$? && $out =~ /v?([0-9\.]+)/ ? $1 : undef;
 }
 
 # Unblock given IP in given jail

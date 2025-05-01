@@ -13,7 +13,6 @@ our (%in, %text, %config);
 my $conf = &get_config();
 my ($def) = grep { $_->{'name'} eq 'Definition' } @$conf;
 $def || &error($text{'config_edef'});
-my ($DEF) = grep { $_->{'name'} eq 'DEFAULT' } @$conf;
 
 # Validate inputs
 if ($in{'logtarget_def'} eq 'file') {
@@ -32,13 +31,13 @@ if (!$in{'socket_def'}) {
 	$in{'logtarget_def'} eq 'file' ? $in{'logtarget'} :
 					 $in{'logtarget_def'}, $def);
 &save_directive("socket", $in{'socket_def'} ? undef : $in{'socket'}, $def);
-if ($DEF) {
+if ($def) {
 	my $time = $in{'dbpurgeage'} == 1 ? 86400 :
 			$in{'dbpurgeage'} == 2 ?
 				$in{'dbpurgeagecus'} : $in{'dbpurgeagesel'};
 	my $conf_time_error = &time_to_seconds_error($time);
 	&error($conf_time_error) if ($conf_time_error);
-	&save_directive("dbpurgeage", $time, $DEF);
+	&save_directive("dbpurgeage", $time, $def);
 	}
 
 &unlock_all_config_files();
