@@ -11,7 +11,7 @@ use WebminCore;
 sub get_syslog_ng_version
 {
 local $out = &backquote_command("$config{'syslogng_cmd'} -V 2>&1 </dev/null",1);
-return $out =~ /syslog-ng\s+([0-9\.]+)/ ? $1 : undef;
+return $out =~ /(syslog-ng|axosyslog)\s+([0-9\.]+)/ ? $2 : undef;
 }
 
 sub supports_sun_streams
