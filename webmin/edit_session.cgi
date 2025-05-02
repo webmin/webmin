@@ -154,6 +154,16 @@ print &ui_table_row($text{'session_passapi'},
 print &ui_table_row($text{'session_forgot'},
 	&ui_yesno_radio("forgot", $gconfig{'forgot_pass'}));
 
+# Block bad password requests
+$gconfig{'passreset_failures'} //= 3;
+$gconfig{'passreset_time'} //= 60;
+print &ui_table_row($text{'session_passresetdesc'},
+    &ui_checkbox("blockpass_on", 1, 
+	text('session_passreset',
+	  &ui_textbox("passreset_failures", $gconfig{'passreset_failures'}, 4),
+	  &ui_textbox("passreset_time", $gconfig{'passreset_time'}, 4)),
+	$gconfig{'passreset_failures'} ? 1 : 0));
+
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);
 

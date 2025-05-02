@@ -678,6 +678,9 @@ session_passapi1=API enabled for Unix users
 session_passurl=When enabled, user passwords can be changed via a POST request to $1
 session_forgot=Allow forgotten password recovery?
 session_eforgot=Forgotten password recovery cannot be enabled unless the <b>Virtualmin Password Recovery</b> plugin module is first removed. This can be done on the <a href='$1'>Webmin Modules</a> page.
+session_passresetdesc=Password recovery throttling
+session_passreset=Block clients with more than $1 requests for $2 minutes
+session_epassreset_failures=Missing or invalid blocking requests
 
 assignment_title=Reassign Modules
 assignment_header=Module category assignments

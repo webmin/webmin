@@ -162,6 +162,19 @@ if ($in{'forgot'} && &foreign_installed("virtualmin-password-recovery") &&
 	}
 $gconfig{'forgot_pass'} = $in{'forgot'};
 
+# Save bad password requests
+if ($in{'blockpass_on'}) {
+	$in{'passreset_time'} =~ /^\d+$/ && $in{'passreset_time'} > 0 ||
+		&error($text{'session_eblockhost_time'});
+	$in{'passreset_failures'} =~ /^\d+$/ && $in{'passreset_failures'} > 0 ||
+		&error($text{'session_epassreset_failures'});
+	$gconfig{'passreset_time'} = $in{'passreset_time'};
+	$gconfig{'passreset_failures'} = $in{'passreset_failures'};
+	}
+else {
+	$gconfig{'passreset_time'} = $gconfig{'passreset_failures'} = undef;
+	}
+
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");
 
