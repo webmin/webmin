@@ -12,7 +12,7 @@ $trust_unknown_referers = 1;
 &error_setup($text{'forgot_err'});
 $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
 &theme_forgot_handler($0) if (defined(&theme_forgot_handler));
-my $forgot_timeout = 10;
+$gconfig{'passreset_timeout'} ||= 15;
 $remote_user && &error($text{'forgot_elogin'});
 
 # Check that the random ID is valid
@@ -20,8 +20,8 @@ $in{'id'} =~ /^[a-f0-9]+$/i || &error($text{'forgot_eid'});
 my %link;
 &read_file("$main::forgot_password_link_dir/$in{'id'}", \%link) ||
 	&error($text{'forgot_eid2'});
-time() - $link{'time'} > 60*$forgot_timeout &&
-	&error(&text('forgot_etime', $forgot_timeout));
+time() - $link{'time'} > 60*$gconfig{'passreset_timeout'} &&
+	&error(&text('forgot_etime', $gconfig{'passreset_timeout'}));
 
 # Get the Webmin user
 &foreign_require("acl");

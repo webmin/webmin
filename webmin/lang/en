@@ -681,6 +681,8 @@ session_eforgot=Forgotten password recovery cannot be enabled unless the <b>Virt
 session_passresetdesc=Password recovery throttling
 session_passreset=Block clients with more than $1 requests for $2 minutes
 session_epassreset_failures=Missing or invalid blocking requests
+session_passtimeout=Password reset link expires in $1 minutes
+session_epassreset_timeout=Missing or invalid password reset timeout
 
 assignment_title=Reassign Modules
 assignment_header=Module category assignments

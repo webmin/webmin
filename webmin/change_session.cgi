@@ -175,6 +175,11 @@ else {
 	$gconfig{'passreset_time'} = $gconfig{'passreset_failures'} = undef;
 	}
 
+# Password expiry
+$in{'passreset_timeout'} =~ /^\d+$/ && $in{'passreset_timeout'} > 0 ||
+		&error($text{'session_epassreset_timeout'});
+$gconfig{'passreset_timeout'} = $in{'passreset_timeout'};
+
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");
 
