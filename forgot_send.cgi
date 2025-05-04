@@ -24,7 +24,7 @@ if (!$wuser) {
 			&useradmin::list_users();
 	if ($uuser && &useradmin::can_user_sudo_root($uuser->{'user'}) == 1) {
 		# Use the Webmin root user's email for recovery
-		($wuser) = grep { $_->{'user'} eq 'root' } &acl::list_users();
+		($wuser) = grep { $_->{'name'} eq 'root' } &acl::list_users();
 		}
 	}
 my $email = $wuser ? $wuser->{'email'} : undef;
@@ -108,7 +108,8 @@ my $msg = &text('forgot_msg', $wuser->{'name'}, $url, $ENV{'REMOTE_HOST'},
 			      $baseurl);
 $msg =~ s/\\n/\n/g;
 $msg = join("\n", &mailboxes::wrap_lines($msg, 75))."\n";
-my $subject = &text('forgot_subject', $wuser->{'name'});
+my $username = $uuser ? $uuser->{'user'} : $wuser->{'name'};
+my $subject = &text('forgot_subject', $username);
 &mailboxes::send_text_mail(&mailboxes::get_from_address(),
 			   $email,
 			   undef,
@@ -119,11 +120,12 @@ my $subject = &text('forgot_subject', $wuser->{'name'});
 print "<center>\n";
 print &text('forgot_sent',
 	    "<tt>".&html_escape(&obsfucate_email($email))."</tt>",
-	    "<tt>".&html_escape($wuser->{'name'})."</tt>"),"\n";
+	    "<tt>".&html_escape($username)."</tt>"),"\n";
 print "</center>\n";
 
 &webmin_log("forgot", "send", undef,
-	    { 'user' => $wuser->{'name'},
+	    { 'user' => $username,
+	      'unix' => $uuser ? 1 : 0,
 	      'email' => $email }, "acl");
 &ui_print_footer();
 

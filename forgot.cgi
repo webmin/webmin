@@ -28,6 +28,7 @@ time() - $link{'time'} > 60*$timeout &&
 my ($wuser) = grep { $_->{'name'} eq $link{'user'} } &acl::list_users();
 $wuser || &error(&text('forgot_euser2',
 		"<tt>".&html_escape($link{'user'})."</tt>"));
+my $username = $link{'uuser'} || $link{'user'};
 
 &ui_print_header(undef, $text{'forgot_title'}, "", undef, undef, 1, 1);
 
@@ -87,11 +88,10 @@ if (defined($in{'newpass'})) {
 		}
 	elsif ($link{'uuser'} || $wuser->{'pass'} eq 'x') {
 		# Update in Users and Groups
-		my $unixname = $link{'uuser'} || $link{'user'};
 		print &text('forgot_udoing',
-			"<tt>".&html_escape($unixname)."</tt>"),"<br>\n";
+			"<tt>".&html_escape($username)."</tt>"),"<br>\n";
 		&foreign_require("useradmin");
-		my ($user) = grep { $_->{'user'} eq $unixname }
+		my ($user) = grep { $_->{'user'} eq $username }
 				  &useradmin::list_users();
 		$user || &error($text{'forgot_eunix'});
 		$user->{'pass'} eq $useradmin::config{'lock_string'} &&
@@ -119,7 +119,8 @@ if (defined($in{'newpass'})) {
 	print &text('forgot_retry', '/'),"<p>\n";
 
 	&webmin_log("forgot", "reset", undef,
-		    { 'user' => $link{'uuser'} || $link{'user'},
+		    { 'user' => $username,
+		      'unix' => $link{'uuser'} ? 1 : 0,
 		      'email' => $wuser->{'email'} }, "acl");
 
 	&unlink_file("$main::forgot_password_link_dir/$in{'id'}");
@@ -132,7 +133,7 @@ else {
 	print &ui_table_start(undef, undef, 2);
 	print &ui_table_row(
 		&text('forgot_newpass',
-		      "<tt>".&html_escape($link{'user'})."</tt>"),
+		      "<tt>".&html_escape($username)."</tt>"),
 		&ui_password("newpass", undef, 30));
 	print &ui_table_row(
 		$text{'forgot_newpass2'},
