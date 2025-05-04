@@ -460,6 +460,9 @@ if ($in{'user'}) {
 	if ($access{'switch'} && $main::session_id && $in{'user'} ne $remote_user) {
 		push(@buts, [ "but_switch", $text{'edit_switch'} ]);
 		}
+	if ($user{'email'} && $gconfig{'forgot_pass'}) {
+		push(@buts, [ "but_forgot", $text{'edit_forgot'} ]);
+		}
 	if ($access{'delete'}) {
 		push(@buts, [ "but_delete", $text{'delete'} ]);
 		}

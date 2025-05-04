@@ -91,6 +91,7 @@ edit_selall=Select all
 edit_invert=Invert selection
 edit_hide=Hide Unused
 edit_switch=Switch to User
+edit_forgot=Send Password Reset Link
 edit_return=Webmin user
 edit_return2=Webmin group
 edit_rbacdeny=RBAC access mode
@@ -513,5 +514,16 @@ twofactor_failed=.. enrollment failed : $1
 twofactor_done=.. complete. Your ID with this provider is <tt>$1</tt>.
 twofactor_setup=Two-factor authentication has not been enabled on this system yet, but can be turned on using the <a href='$1'>Webmin Configuration</a> module.
 twofactor_ebutton=No button clicked!
+
+forgot_title=Send Password Reset Link
+forgot_err=Failed to send password reset link
+forgot_header=Password reset link details
+forgot_user=Reset password for Webmin user
+forgot_email=Send link to email address
+forgot_unix=Sudo-capable Unix user to reset
+forgot_unix_def=Just reset Webmin password
+forgot_send=Send Link
+forgot_desc=This page allows you to send a link that can be used to select a new password for a Webmin user to any email address. Be careful which address you send this link to, as it will effectively grant full access to the Webmin login!
+forgot_adminmsg=You are receiving this email from the administrator of the Webmin system at $3, for the login $1.\n\nIf you would like to proceed with resetting the password, follow this link :\n$2
 
 __norefs=1

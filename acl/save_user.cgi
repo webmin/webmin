@@ -14,24 +14,28 @@ our (%in, %text, %config, %access, $config_directory, $base_remote_user);
 # Check for special button clicks, and redirect
 if ($in{'but_clone'}) {
 	&redirect("edit_user.cgi?clone=".&urlize($in{'old'}));
-	exit;
+	return;
 	}
 elsif ($in{'but_log'}) {
 	&redirect("../webminlog/search.cgi?uall=0&mall=1&tall=1&user=".
 		  &urlize($in{'old'}));
-	exit;
+	return;
 	}
 elsif ($in{'but_switch'}) {
 	&redirect("switch.cgi?user=".&urlize($in{'old'}));
-	exit;
+	return;
 	}
 elsif ($in{'but_delete'}) {
 	&redirect("delete_user.cgi?user=".&urlize($in{'old'}));
-	exit;
+	return;
 	}
 elsif ($in{'twofactor'}) {
 	&redirect("twofactor_form.cgi?user=".&urlize($in{'old'}));
-	exit;
+	return;
+	}
+elsif ($in{'but_forgot'}) {
+	&redirect("forgot_form.cgi?user=".&urlize($in{'old'}));
+	return;
 	}
 
 # Get the user object
