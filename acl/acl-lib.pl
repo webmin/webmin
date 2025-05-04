@@ -2328,5 +2328,35 @@ if (!$sid) {
 return $sid eq 'bad' ? undef : $sid;
 }
 
+# generate_random_id()
+# Generate an ID string that can be used for a password reset link
+sub generate_random_id
+{
+if (open(my $RANDOM, "</dev/urandom")) {
+	my $sid;
+	my $tmpsid;
+	if (read($RANDOM, $tmpsid, 16) == 16) {
+		$sid = lc(unpack('h*',$tmpsid));
+		}
+	close($RANDOM);
+	return $sid;
+	}
+return undef;
+}
+
+# obsfucate_email(email)
+# Convert an email like foo@bar.com to f**@b**.com
+sub obsfucate_email
+{
+my ($email) = @_;
+my ($mailbox, $dom) = split(/\@/, $email);
+$mailbox = substr($mailbox, 0, 1) . ("*" x (length($mailbox)-1));
+my @doms;
+foreach my $d (split(/\./, $dom)) {
+	push(@doms, substr($d, 0, 1) . ("*" x (length($d)-1)));
+	}
+return $mailbox."\@".join(".", @doms);
+}
+
 1;
 

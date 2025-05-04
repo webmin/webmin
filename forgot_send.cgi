@@ -88,7 +88,7 @@ $wuser && $wuser->{'email'} || &error($text{'forgot_euser'});
 $wuser->{'pass'} eq '*LK*' && &error($text{'forgot_elock'});
 
 # Generate a random ID for this password reset
-my %link = ( 'id' => &generate_random_id(),
+my %link = ( 'id' => &acl::generate_random_id(),
 	     'remote' => $ENV{'REMOTE_ADDR'},
 	     'time' => $now,
 	     'user' => $wuser->{'name'},
@@ -119,7 +119,7 @@ my $subject = &text('forgot_subject', $username);
 # Tell the user
 print "<center>\n";
 print &text('forgot_sent',
-	    "<tt>".&html_escape(&obsfucate_email($email))."</tt>",
+	    "<tt>".&html_escape(&acl::obsfucate_email($email))."</tt>",
 	    "<tt>".&html_escape($username)."</tt>"),"\n";
 print "</center>\n";
 
@@ -128,33 +128,3 @@ print "</center>\n";
 	      'unix' => $uuser ? 1 : 0,
 	      'email' => $email }, "acl");
 &ui_print_footer();
-
-# generate_random_id()
-# Generate an ID string that can be used for a password reset link
-sub generate_random_id
-{
-if (open(my $RANDOM, "</dev/urandom")) {
-	my $sid;
-	my $tmpsid;
-	if (read($RANDOM, $tmpsid, 16) == 16) {
-		$sid = lc(unpack('h*',$tmpsid));
-		}
-	close($RANDOM);
-	return $sid;
-	}
-return undef;
-}
-
-# obsfucate_email(email)
-# Convert an email like foo@bar.com to f**@b**.com
-sub obsfucate_email
-{
-my ($email) = @_;
-my ($mailbox, $dom) = split(/\@/, $email);
-$mailbox = substr($mailbox, 0, 1) . ("*" x (length($mailbox)-1));
-my @doms;
-foreach my $d (split(/\./, $dom)) {
-	push(@doms, substr($d, 0, 1) . ("*" x (length($d)-1)));
-	}
-return $mailbox."\@".join(".", @doms);
-}
