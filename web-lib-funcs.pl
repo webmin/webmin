@@ -1066,7 +1066,7 @@ else {
 	}
 }
 
-=head2 PrintHeader(charset, [mime-type])
+=head2 PrintHeader([charset], [mime-type], [headers])
 
 Outputs the HTTP headers for an HTML page. The optional charset parameter
 can be used to set a character set. Normally this function is not called
@@ -1075,7 +1075,7 @@ directly, but is rather called by ui_print_header or header.
 =cut
 sub PrintHeader
 {
-my ($cs, $mt) = @_;
+my ($cs, $mt, $headers) = @_;
 $mt ||= "text/html";
 if ($ENV{'SSL_HSTS'} == 1 && uc($ENV{'HTTPS'}) eq "ON") {
 	print "Strict-Transport-Security: max-age=31536000;\n";
@@ -1093,6 +1093,12 @@ if ($gconfig{'extra_headers'}) {
 	foreach my $l (split(/\t+/, $gconfig{'extra_headers'})) {
 		print $l."\n";
 		}
+	}
+if ($headers) {
+	foreach my $h (@{$headers}) {
+		my ($name, $value) = @{$h};
+		print "$name: $value\n";
+	    }
 	}
 if (!$gconfig{'no_frame_options'}) {
 	print "X-Frame-Options: SAMEORIGIN\n";
