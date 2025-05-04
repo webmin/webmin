@@ -87,7 +87,7 @@ $wuser && $wuser->{'email'} || &error($text{'forgot_euser'});
 ($wuser->{'sync'} || $wuser->{'pass'} eq 'e') && &error($text{'forgot_esync'});
 $wuser->{'pass'} eq '*LK*' && &error($text{'forgot_elock'});
 
-# Generate a random ID for this password reset
+# Generate a random ID and tracking file for this password reset
 my %link = ( 'id' => &acl::generate_random_id(),
 	     'remote' => $ENV{'REMOTE_ADDR'},
 	     'time' => $now,
