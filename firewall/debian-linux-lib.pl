@@ -46,7 +46,7 @@ if (!&init::action_status($debian_init_script)) {
 # Applies the current iptables configuration from the save file
 sub apply_iptables
 {
-if ($debian_init_script) {
+if ($debian_init_script && &init::action_status($debian_init_script)) {
 	my ($ok, $err) = &init::restart_action($debian_init_script);
 	return $ok ? undef : &html_escape($err);
 	}
