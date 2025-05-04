@@ -27,15 +27,16 @@ my %ratelimit;
 my $now = time();
 my $rlerr;
 my $maxtries = 0;
-$gconfig{'passreset_failures'} //= 3;
-$gconfig{'passreset_time'} //= 60;
+my $pfailures = $gconfig{'passreset_failures'} // 3;
+my $ptime = $gconfig{'passreset_time'} // 60;
 foreach my $key ($ENV{'REMOTE_ADDR'},
 		 $wuser ? ( $wuser->{'name'} ) : ( ),
 		 $email ? ( $email ) : ( )) {
 	# Don't block if disabled
-	next if (!$gconfig{'passreset_failures'} || !$gconfig{'passreset_time'});
+	next if (!$failures || !$ptime);
+
 	if (!$ratelimit{$key."_last"} ||
-	    $ratelimit{$key."_last"} < $now-($gconfig{'passreset_time'}*60)) {
+	    $ratelimit{$key."_last"} < $now-$ptime*60) {
 		# More than 60 mins since the last try, so reset counter
 		$ratelimit{$key} = 1;
 		}
@@ -44,7 +45,7 @@ foreach my $key ($ENV{'REMOTE_ADDR'},
 		}
 	$maxtries = $ratelimit{$key} if ($ratelimit{$key} > $maxtries);
 	$ratelimit{$key."_last"} = $now;
-	if ($ratelimit{$key} > $gconfig{'passreset_failures'}) {
+	if ($ratelimit{$key} > $pfailures) {
 		# More than 3 attempts in the last 60 minutes!
 		$rlerr = &text('forgot_erate',
 			       "<tt>".&html_escape($key)."</tt>");
