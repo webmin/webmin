@@ -16,6 +16,17 @@ $remote_user && &error($text{'forgot_elogin'});
 # Lookup the Webmin user
 &foreign_require("acl");
 my ($wuser) = grep { lc($_->{'name'}) eq lc($in{'forgot'}) } &acl::list_users();
+my $uuser;
+if (!$wuser) {
+	# Webmin user doesn't exist, but maybe this Unix user can sudo?
+	&foreign_require("useradmin");
+	($uuser) = grep { lc($_->{'user'}) eq lc($in{'forgot'}) }
+			&useradmin::list_users();
+	if ($uuser && &useradmin::can_user_sudo_root($uuser->{'user'}) == 1) {
+		# Use the Webmin root user's email for recovery
+		($wuser) = grep { $_->{'user'} eq 'root' } &acl::list_users();
+		}
+	}
 my $email = $wuser ? $wuser->{'email'} : undef;
 
 # Check if the IP or Webmin user is over it's rate limit
@@ -31,6 +42,7 @@ my $pfailures = $gconfig{'passreset_failures'} // 3;
 my $ptime = $gconfig{'passreset_time'} // 60;
 foreach my $key ($ENV{'REMOTE_ADDR'},
 		 $wuser ? ( $wuser->{'name'} ) : ( ),
+		 $uuser ? ( $uuser->{'user'} ) : ( ),
 		 $email ? ( $email ) : ( )) {
 	# Don't block if disabled
 	next if (!$failures || !$ptime);
@@ -79,7 +91,8 @@ $wuser->{'pass'} eq '*LK*' && &error($text{'forgot_elock'});
 my %link = ( 'id' => &generate_random_id(),
 	     'remote' => $ENV{'REMOTE_ADDR'},
 	     'time' => $now,
-	     'user' => $wuser->{'name'} );
+	     'user' => $wuser->{'name'},
+	     'uuser' => $uuser ? $uuser->{'user'} : undef, );
 $link{'id'} || &error($text{'forgot_erandom'});
 &write_file("$main::forgot_password_link_dir/$link{'id'}", \%link);
 my $baseurl = &get_webmin_email_url();

@@ -2780,4 +2780,18 @@ foreach (1 .. 15) {
 return $rv;
 }
 
+# can_user_sudo_root(user)
+# Returns 1 if some user can run all commands via sudo, 0 if not, or -1 if
+# sudo is not installed
+sub can_user_sudo_root
+{
+my ($user) = @_;
+my $sudo = &has_command("sudo");
+return -1 if (!$sudo);
+my $out = &backquote_command(
+	"$sudo -l -S -U ".quotemeta($user)." 2>&1 </dev/null");
+return -1 if ($?);
+return $out =~ /\(ALL\)\s+ALL|\(ALL\)\s+NOPASSWD:\s+ALL|\(ALL\s*:\s*ALL\)\s+ALL|\(ALL\s*:\s*ALL\)\s+NOPASSWD:\s+ALL/ ? 1 : 0;
+}
+
 1;

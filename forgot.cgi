@@ -85,18 +85,18 @@ if (defined($in{'newpass'})) {
 		&virtual_server::pop_all_print();
 		print $text{'forgot_done'},"<p>\n";
 		}
-	elsif ($wuser->{'pass'} eq 'x') {
+	elsif ($link{'uuser'} || $wuser->{'pass'} eq 'x') {
 		# Update in Users and Groups
+		my $unixname = $link{'uuser'} || $link{'user'};
 		print &text('forgot_udoing',
-			"<tt>".&html_escape($link{'user'})."</tt>"),"<br>\n";
+			"<tt>".&html_escape($unixname)."</tt>"),"<br>\n";
 		&foreign_require("useradmin");
-		my ($user) = grep { $_->{'user'} eq $link{'user'} }
+		my ($user) = grep { $_->{'user'} eq $unixname }
 				  &useradmin::list_users();
 		$user || &error($text{'forgot_eunix'});
 		$user->{'pass'} eq $useradmin::config{'lock_string'} &&
 			&error($text{'forgot_eunixlock'});
 		my $olduser = { %$user };
-		$user->{'name'} = $link{'user'};
 		$user->{'passmode'} = 3;
 		$user->{'plainpass'} = $in{'newpass'};
 		$user->{'pass'} = &useradmin::encrypt_password($in{'newpass'},
@@ -119,7 +119,7 @@ if (defined($in{'newpass'})) {
 	print &text('forgot_retry', '/'),"<p>\n";
 
 	&webmin_log("forgot", "reset", undef,
-		    { 'user' => $wuser->{'name'},
+		    { 'user' => $link{'uuser'} || $link{'user'},
 		      'email' => $wuser->{'email'} }, "acl");
 
 	&unlink_file("$main::forgot_password_link_dir/$in{'id'}");
