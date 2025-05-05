@@ -535,12 +535,10 @@ if ($dir->{'type'} && $dir->{'type'} == 1 && $dir->{'members'}) {
 }
 
 # directives that need their value to be quoted
-my %need_quote;
 my @need_quote = ( "file", "zone", "view", "pid-file", "statistics-file",
-	        "dump-file", "named-xfer", "secret" );
-foreach my $need (@need_quote) {
-	$need_quote{$need}++;
-	}
+	           "dump-file", "named-xfer", "secret", "cert-file", "key-file",
+		   "ca-file" );
+my %need_quote = map { $_, 1 } @need_quote;
 
 # directive_lines(&directive, tabs)
 # Renders some directive into a number of lines of text
