@@ -403,10 +403,11 @@ return defined($dir->{'value'}) ? $dir->{'value'} :
 # Returns the base directory for named files
 sub base_directory
 {
-if ($_[1] || !-r $zone_names_cache) {
+my ($conf, $nocache) = @_;
+if ($nocache || !-r $zone_names_cache) {
 	# Actually work out base
-	my ($opts, $dir, $conf);
-	$conf = $_[0] ? $_[0] : &get_config();
+	my ($opts, $dir);
+	$conf ||= &get_config();
 	if (($opts = &find("options", $conf)) &&
 	    ($dir = &find("directory", $opts->{'members'}))) {
 		return $dir->{'value'};
@@ -420,7 +421,7 @@ else {
 	# Use cache
 	my %znc;
 	&read_file_cached($zone_names_cache, \%znc);
-	return $znc{'base'} || &base_directory($_[0], 1);
+	return $znc{'base'} || &base_directory($conf, 1);
 	}
 }
 
