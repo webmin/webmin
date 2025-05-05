@@ -166,8 +166,10 @@ print &ui_table_row($text{'session_passresetdesc'},
 
 # Password reset link expiry
 $gconfig{'passreset_timeout'} ||= 15;
-print &ui_table_row(&text('session_passtimeout',
-	&ui_textbox("passreset_timeout", $gconfig{'passreset_timeout'}, 4)));
+print &ui_table_row($text{'session_passtimeoutdesc'},
+	&text('session_passtimeout',
+		&ui_textbox("passreset_timeout",
+			$gconfig{'passreset_timeout'}, 4)));
 
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);
