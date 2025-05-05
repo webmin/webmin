@@ -23,16 +23,16 @@ print &ui_table_row(&hlink($text{'session_ptimeout'}, 'ptimeout'),
 print &ui_table_row($text{'session_pblock'},
     &ui_checkbox("blockhost_on", 1, 
 	text('session_blockhost',
-	  ui_textbox("blockhost_failures", $miniserv{'blockhost_failures'}, 4),
-	  ui_textbox("blockhost_time", $miniserv{'blockhost_time'}, 4)),
+	  ui_textbox("blockhost_failures", $miniserv{'blockhost_failures'}, 2),
+	  ui_textbox("blockhost_time", $miniserv{'blockhost_time'}, 2)),
 	$miniserv{'blockhost_failures'} ? 1 : 0));
 
 # Block bad users
 print &ui_table_row("",
     &ui_checkbox("blockuser_on", 1, 
 	text('session_blockuser',
-	  ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 4),
-	  ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 4)),
+	  ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 2),
+	  ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 2)),
 	$miniserv{'blockuser_failures'} ? 1 : 0));
 
 # Lock Webmin users who failed login too many times
@@ -160,8 +160,8 @@ $gconfig{'passreset_time'} //= 60;
 print &ui_table_row($text{'session_passresetdesc'},
     &ui_checkbox("blockpass_on", 1, 
 	text('session_passreset',
-	  &ui_textbox("passreset_failures", $gconfig{'passreset_failures'}, 4),
-	  &ui_textbox("passreset_time", $gconfig{'passreset_time'}, 4)),
+	  &ui_textbox("passreset_failures", $gconfig{'passreset_failures'}, 2),
+	  &ui_textbox("passreset_time", $gconfig{'passreset_time'}, 2)),
 	$gconfig{'passreset_failures'} ? 1 : 0));
 
 # Password reset link expiry
@@ -169,7 +169,7 @@ $gconfig{'passreset_timeout'} ||= 15;
 print &ui_table_row($text{'session_passtimeoutdesc'},
 	&text('session_passtimeout',
 		&ui_textbox("passreset_timeout",
-			$gconfig{'passreset_timeout'}, 4)));
+			$gconfig{'passreset_timeout'}, 2)));
 
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);
