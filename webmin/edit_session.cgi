@@ -62,7 +62,7 @@ if (!$miniserv{'session'}) {
 print &ui_table_row($text{'session_sopts'},
 	&ui_checkbox("logouttime_on", 1, 
 		&text('session_logouttime',
-			&ui_textbox("logouttime", $miniserv{'logouttime'}, 10)),
+			&ui_textbox("logouttime", $miniserv{'logouttime'}, 3)),
 		 $miniserv{'logouttime'} ? 1 : 0).
 	"<br>\n".
 	&ui_checkbox("remember", 1, $text{'session_remember'},
@@ -106,7 +106,7 @@ print &ui_table_row($text{'session_popts'},
 		     $miniserv{'pam_end'}).
 	"<br>\n".
 	&text('session_pfile',
-	      &ui_textbox("passwd_file", $miniserv{'passwd_file'}, 20),
+	      &ui_textbox("passwd_file", $miniserv{'passwd_file'}, 12),
 	      &ui_textbox("passwd_uindex", $miniserv{'passwd_uindex'}, 2),
 	      &ui_textbox("passwd_pindex", $miniserv{'passwd_pindex'}, 2)));
 

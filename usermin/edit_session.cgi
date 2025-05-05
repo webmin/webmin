@@ -26,16 +26,16 @@ print &ui_table_row($text{'session_ptimeout'},
 print &ui_table_row($text{'session_pblock'},
     &ui_checkbox("blockhost_on", 1,
         text('session_blockhost',
-          ui_textbox("blockhost_failures", $miniserv{'blockhost_failures'}, 4),
-          ui_textbox("blockhost_time", $miniserv{'blockhost_time'}, 4)),
+          ui_textbox("blockhost_failures", $miniserv{'blockhost_failures'}, 2),
+          ui_textbox("blockhost_time", $miniserv{'blockhost_time'}, 2)),
         $miniserv{'blockhost_failures'} ? 1 : 0));
 
 # Block users
 print &ui_table_row("",
     &ui_checkbox("blockuser_on", 1,
         text('session_blockuser',
-          ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 4),
-          ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 4)),
+          ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 2),
+          ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 2)),
         $miniserv{'blockuser_failures'} ? 1 : 0));
 
 # Log to syslog
@@ -96,7 +96,7 @@ print &ui_table_row($text{'session_authmode'},
 		  [ [ 0, $text{'session_authmode0'}."<br>" ],
 		    [ 1, &text('session_authmode1',
 			      &ui_textbox("passwd_file",
-					  $miniserv{'passwd_file'}, 20),
+					  $miniserv{'passwd_file'}, 12),
 			      &ui_textbox("passwd_uindex",
 					  $miniserv{'passwd_uindex'}, 2),
 			      &ui_textbox("passwd_pindex",
@@ -147,7 +147,7 @@ print &ui_table_row($text{'session_domain'},
 		     $miniserv{'user_mapping'})." ".
 	&ui_filebox("user_mapping", $miniserv{'user_mapping'}, 30).
 	"<br>\n".
-	"<b>".$text{'session_userfmt'}."</b> ".
+	"$text{'session_userfmt'} ".
 	&ui_radio("user_mapping_reverse",
 		  int($miniserv{'user_mapping_reverse'}),
 		  [ [ 0, $text{'session_userfmt0'} ],
