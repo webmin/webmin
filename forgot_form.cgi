@@ -20,7 +20,7 @@ print $text{'forgot_desc'},"<p>\n";
 print &ui_form_start("forgot_send.cgi", "post");
 print "<b>$text{'forgot_user'}</b>\n",
       &ui_textbox("forgot", $in{'failed'}, 40),"<br>\n";
-print &ui_form_end([ [ undef, $text{'forgot_ok'} ] ]);
+print &ui_form_end([ [ undef, $text{'forgot_go'} ] ]);
 print "</center>\n";
 
 &ui_print_footer();
