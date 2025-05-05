@@ -33,6 +33,7 @@ $link{'id'} || &error($text{'forgot_erandom'});
 &write_file("$main::forgot_password_link_dir/$link{'id'}", \%link);
 my $baseurl = &get_webmin_email_url();
 my $url = $baseurl.'/forgot.cgi?id='.&urlize($link{'id'});
+&load_theme_library();
 $url = &theme_forgot_url($baseurl, $link{'id'}, $link{'user'})
 	if (defined(&theme_forgot_url));
 
