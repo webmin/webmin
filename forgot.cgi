@@ -18,8 +18,8 @@ $remote_user && &error($text{'forgot_elogin'});
 # Check that the random ID is valid
 $in{'id'} =~ /^[a-f0-9]+$/i || &error($text{'forgot_eid'});
 my %link;
-&read_file("$main::forgot_password_link_dir/$in{'id'}", \%link) ||
-	&error($text{'forgot_eid2'});
+my $linkfile = $main::forgot_password_link_dir."/".$in{'id'};
+&read_file($linkfile, \%link) || &error($text{'forgot_eid2'});
 time() - $link{'time'} > 60*$timeout &&
 	&error(&text('forgot_etime', $timeout));
 
@@ -123,7 +123,7 @@ if (defined($in{'newpass'})) {
 		      'unix' => $link{'uuser'} ? 1 : 0,
 		      'email' => $wuser->{'email'} }, "acl");
 
-	&unlink_file("$main::forgot_password_link_dir/$in{'id'}");
+	&unlink_logged($linkfile);
 	}
 else {
 	# Show password selection form
