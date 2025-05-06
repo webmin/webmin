@@ -30,6 +30,7 @@ my %link = ( 'id' => &generate_random_id(),
 	     'user' => $wuser->{'name'},
 	     'uuser' => $unixuser, );
 $link{'id'} || &error($text{'forgot_erandom'});
+&make_dir($main::forgot_password_link_dir, 0700);
 &write_file("$main::forgot_password_link_dir/$link{'id'}", \%link);
 my $baseurl = &get_webmin_email_url();
 my $url = $baseurl.'/forgot.cgi?id='.&urlize($link{'id'});
