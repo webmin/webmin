@@ -6,7 +6,7 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 require './acl-lib.pl';
-our (%in, %text);
+our (%in, %text, %gconfig);
 &foreign_require("webmin");
 &error_setup($text{'forgot_err'});
 &ReadParse();
@@ -15,7 +15,8 @@ my $wuser = &get_user($in{'user'});
 $wuser || &error($text{'edit_egone'});
 
 # Validate inputs
-$in{'email'} =~ /^\S+\@\S+$/ || &error($text{'forgot_eemail'});
+$in{'email_def'} || $in{'email'} =~ /^\S+\@\S+$/ ||
+	&error($text{'forgot_eemail'});
 my $unixuser;
 if (defined($in{'unix_def'}) && !$in{'unix_def'}) {
 	getpwnam($in{'unix'}) || &error($text{'forgot_eunix'});
@@ -31,29 +32,50 @@ my %link = ( 'id' => &generate_random_id(),
 	     'uuser' => $unixuser, );
 $link{'id'} || &error($text{'forgot_erandom'});
 &make_dir($main::forgot_password_link_dir, 0700);
-&write_file("$main::forgot_password_link_dir/$link{'id'}", \%link);
+my $linkfile = $main::forgot_password_link_dir."/".$link{'id'};
+&lock_file($linkfile);
+&write_file($linkfile, \%link);
+&unlock_file($linkfile);
 my $baseurl = &get_webmin_email_url();
 my $url = $baseurl.'/forgot.cgi?id='.&urlize($link{'id'});
 &load_theme_library();
 $url = &theme_forgot_url($baseurl, $link{'id'}, $link{'user'})
 	if (defined(&theme_forgot_url));
 
-# Construct and send the email
-&foreign_require("mailboxes");
-my $msg = &text('forgot_adminmsg', $wuser->{'name'}, $url, $baseurl);
-$msg =~ s/\\n/\n/g;
-$msg = join("\n", &mailboxes::wrap_lines($msg, 75))."\n";
-my $username = $unixuser || $wuser->{'name'};
-my $subject = &text('forgot_subject', $username);
-&mailboxes::send_text_mail(&mailboxes::get_from_address(),
-			   $in{'email'},
-			   undef,
-			   $subject,
-			   $msg);
+&ui_print_header(undef, $text{'forgot_title'}, "");
 
-&webmin_log("forgot", "admin", undef,
-	    { 'user' => $unixuser || $wuser->{'name'},
-	      'unix' => $unixuser ? 1 : 0,
-	      'email' => $in{'email'} });
-&redirect("");
+my $username = $unixuser || $wuser->{'name'};
+if ($in{'email_def'}) {
+	# Just show the link
+	my $timeout = $gconfig{'passreset_timeout'} || 15;
+	print "<p>",&text('forgot_link', $username, $timeout),"</p>\n";
+
+	print "<p><tt>".$url."</tt></p>\n";
+	&webmin_log("forgot", "link", undef,
+		    { 'user' => $username,
+		      'unix' => $unixuser ? 1 : 0 });
+	}
+else {
+	# Construct and send the email
+	&foreign_require("mailboxes");
+	my $msg = &text('forgot_adminmsg', $wuser->{'name'}, $url, $baseurl);
+	$msg =~ s/\\n/\n/g;
+	$msg = join("\n", &mailboxes::wrap_lines($msg, 75))."\n";
+	my $subject = &text('forgot_subject', $username);
+	print &text('forgot_sending',
+		    &html_escape($in{'email'}), $username),"<br>\n";
+	&mailboxes::send_text_mail(&mailboxes::get_from_address(),
+				   $in{'email'},
+				   undef,
+				   $subject,
+				   $msg);
+	print $text{'forgot_sent'},"<p>\n";
+
+	&webmin_log("forgot", "admin", undef,
+		    { 'user' => $username,
+		      'unix' => $unixuser ? 1 : 0,
+		      'email' => $in{'email'} });
+	}
+
+&ui_print_footer("", $text{'index_return'});
 

@@ -252,6 +252,7 @@ log_twofactor=Enrolled user $1 with two-factor provider $2
 log_onefactor=Dis-enrolled user $1 for two-factor authentication
 log_forgot_send=Sent password reset email for user $1 to $2
 log_forgot_reset=Reset password for user $1 with email $2
+log_forgot_admin=Admin sent password reset email for user $1 to $2
 
 gedit_ecannot=You are not allowed to edit groups
 gedit_title=Edit Webmin Group
@@ -519,11 +520,16 @@ forgot_title=Send Password Reset Link
 forgot_err=Failed to send password reset link
 forgot_header=Password reset link details
 forgot_user=Reset password for Webmin user
-forgot_email=Send link to email address
+forgot_email=Link delivery method
+forgot_email_def=Display link in Webmin
+forgot_email_sel=Send link via email to
 forgot_unix=Sudo-capable Unix user to reset
 forgot_unix_def=Just reset Webmin password
 forgot_send=Send Link
-forgot_desc=This page allows you to send a link that can be used to select a new password for a Webmin user to any email address. Be careful which address you send this link to, as it will effectively grant full access to the Webmin login!
+forgot_desc=This page allows you to generate or send a link that can be used to select a new password for a Webmin user to any email address. Be careful which address you send this link to, as it will effectively grant full access to the Webmin login!
 forgot_adminmsg=You are receiving this email from the administrator of the Webmin system at $3, for the login $1.\n\nIf you would like to proceed with resetting the password, follow this link :\n$2
+forgot_sending=Sending password reset email for $2 to $1 ..
+forgot_sent=.. sent!
+forgot_link=The link below can be used to reset the Webmin password for $1 for the next $2 minutes :
 
 __norefs=1

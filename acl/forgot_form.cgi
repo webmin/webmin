@@ -25,7 +25,9 @@ print &ui_table_start($text{'forgot_header'}, undef, 2);
 print &ui_table_row($text{'forgot_user'}, "<tt>$u->{'name'}</tt>");
 
 print &ui_table_row($text{'forgot_email'},
-	&ui_textbox("email", $u->{'email'}, 60));
+	&ui_opt_textbox("email", $u->{'email'}, 60,
+			$text{'forgot_email_def'}."<br>\n",
+			$text{'forgot_email_sel'}));
 
 if ($u->{'name'} eq 'root') {
 	print &ui_table_row($text{'forgot_unix'},
