@@ -45,7 +45,7 @@ foreach my $key ($ENV{'REMOTE_ADDR'},
 		 $uuser ? ( $uuser->{'user'} ) : ( ),
 		 $email ? ( $email ) : ( )) {
 	# Don't block if disabled
-	next if (!$failures || !$ptime);
+	next if (!$pfailures || !$ptime);
 
 	if (!$ratelimit{$key."_last"} ||
 	    $ratelimit{$key."_last"} < $now-$ptime*60) {
