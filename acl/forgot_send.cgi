@@ -19,7 +19,11 @@ $in{'email_def'} || $in{'email'} =~ /^\S+\@\S+$/ ||
 	&error($text{'forgot_eemail'});
 my $unixuser;
 if (defined($in{'unix_def'}) && !$in{'unix_def'}) {
+	&foreign_require("useradmin");
 	getpwnam($in{'unix'}) || &error($text{'forgot_eunix'});
+	my $sudo = &useradmin::can_user_sudo_root($in{'user'});
+	&error($text{'forgot_enosudo'}) if ($sudo < 0);
+	&error($text{'forgot_ecansudo'}) if (!$sudo);
 	$unixuser = $in{'unix'};
 	}
 

@@ -531,5 +531,8 @@ forgot_adminmsg=You are receiving this email from the administrator of the Webmi
 forgot_sending=Sending password reset email for $2 to $1 ..
 forgot_sent=.. sent!
 forgot_link=The link below can be used to reset the Webmin password for $1 for the next $2 minutes :
+forgot_enosudo=Sudo is not available on this system!
+forgot_ecansudo=The user entered does not have sudo permissions
+forgot_eunix=The sudo-capable user entered does not exist!
 
 __norefs=1
