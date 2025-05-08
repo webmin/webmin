@@ -11,7 +11,8 @@ $m = $in{'module'};
 &error_setup($text{'config_err'});
 %module_info = &get_module_info($m);
 %module_info || &error($text{'config_emodule'});
-&foreign_available($m) || &error($text{'config_eaccess'});
+&foreign_available($m) || $module_info{'noacl'} ||
+	&error($text{'config_eaccess'});
 %access = &get_module_acl(undef, $m);
 $access{'noconfig'} && &error($text{'config_ecannot'});
 
