@@ -7,10 +7,7 @@ require './config-lib.pl';
 &ReadParse();
 $m = $in{'module'};
 &error_setup($text{'config_err'});
-%module_info = &get_module_info($m);
-%module_info || &error($text{'config_emodule'});
-&foreign_available($m) || $module_info{'noacl'} ||
-	&error($text{'config_eaccess'});
+&foreign_available($m) || &error($text{'config_eaccess'});
 &switch_to_remote_user();
 &create_user_config_dirs();
 
