@@ -20,8 +20,10 @@ $in{'email_def'} || $in{'email'} =~ /^\S+\@\S+$/ ||
 my $unixuser;
 if (defined($in{'unix_def'}) && !$in{'unix_def'}) {
 	&foreign_require("useradmin");
-	getpwnam($in{'unix'}) || &error($text{'forgot_eunix'});
-	my $sudo = &useradmin::can_user_sudo_root($in{'user'});
+	my ($uinfo) = grep { $_->{'user'} eq $in{'unix'} }
+			   &useradmin::list_users();
+	$uinfo || &error($text{'forgot_eunix'});
+	my $sudo = &useradmin::can_user_sudo_root($in{'unix'});
 	&error($text{'forgot_enosudo'}) if ($sudo < 0);
 	&error($text{'forgot_ecansudo'}) if (!$sudo);
 	$unixuser = $in{'unix'};
