@@ -654,6 +654,7 @@ if ($newdir) {
 	if ($isrc) {
 		&recursive_set_indent($newdir, $isrc->{'indent'});
 		}
+	$newdir{'words'} = &wsplit($newdir{'value'});
 	@newlines = &directive_lines($newdir);
 	}
 if ($olddir && $newdir) {
@@ -664,6 +665,7 @@ if ($olddir && $newdir) {
 		$lref->[$olddir->{'eline'}] = $newlines[$#newlines];
 		$olddir->{'name'} = $newdir->{'name'};
 		$olddir->{'value'} = $newdir->{'value'};
+		$olddir->{'words'} = $newdir->{'words'};
 		}
 	else {
 		# Re-writing whole block
@@ -1466,10 +1468,11 @@ foreach $f (@main::locked_apache_files) {
 }
 
 # directive_lines(directive, ...)
+# Convery a list of Apache directives into a list of lines
 sub directive_lines
 {
-local @rv;
-foreach $d (@_) {
+my @rv;
+foreach my $d (@_) {
 	next if ($d->{'name'} eq 'dummy');
 	my $indent = (" " x $d->{'indent'});
 	if ($d->{'type'}) {
