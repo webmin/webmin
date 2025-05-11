@@ -780,17 +780,17 @@ unlink($file);
 # beyond the given line.
 sub renumber
 {
-local($d);
-if (!$_[3]) { return; }
-foreach $d (@{$_[0]}) {
-	if ($d->{'file'} eq $_[2] && $d->{'line'} >= $_[1]) {
-		$d->{'line'} += $_[3];
+my ($conf, $line, $file, $offset) = @_;
+return if (!$offset);
+foreach my $d (@$conf) {
+	if ($d->{'file'} eq $file && $d->{'line'} >= $_[1]) {
+		$d->{'line'} += $offset;
 		}
-	if ($d->{'file'} eq $_[2] && $d->{'eline'} >= $_[1]) {
-		$d->{'eline'} += $_[3];
+	if ($d->{'file'} eq $file && $d->{'eline'} >= $_[1]) {
+		$d->{'eline'} += $offset;
 		}
 	if ($d->{'type'}) {
-		&renumber($d->{'members'}, $_[1], $_[2], $_[3]);
+		&renumber($d->{'members'}, $line, $file, $offset);
 		}
 	}
 }
