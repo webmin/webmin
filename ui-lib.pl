@@ -3350,5 +3350,16 @@ return "<font style='font-size:92%;opacity:0.66'>&nbsp;&nbsp;ⓘ&nbsp;&nbsp;".
 	"$text</font>";
 }
 
+=head2 ui_brh()
+
+Returns a break line with ability to style height
+
+=cut
+sub ui_brh
+{
+return &theme_ui_brh() if (defined(&theme_ui_brh));
+return "<br data-x-br>\n";
+}
+
 1;
 
