@@ -454,7 +454,7 @@ details.inline > summary:after {
   margin-left: 7px;
   margin-right: 7px;
   color: #010101;
-  position: absolute;
+  position: relative;
 }
 
 details[open].inline > summary:after {
