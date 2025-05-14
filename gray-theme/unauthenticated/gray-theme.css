@@ -277,7 +277,7 @@ td:not(:hover) .ui_link_help {
     color: white;
     background: black;
     padding: 4px 8px;
-    border-radius: 50px;
+    border-radius: 2px;
     opacity: 0;
     visibility: none;
     text-align: center;
