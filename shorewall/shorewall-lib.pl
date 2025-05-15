@@ -17,13 +17,13 @@ $shorewall_version = &get_shorewall_version(0);
 %access = &get_module_acl();
 
 @shorewall_files = ( 'zones', 'interfaces', 'policy', 'rules', 'tos',
-	   	     'masq', 'nat', 'proxyarp', 'routestopped',
+	   	     'snat', 'nat', 'proxyarp', 'routestopped',
 	   	     'tunnels', 'hosts', 'blacklist',
 		     ( &version_atleast(2, 3) ? ( 'providers', 'route_rules' )
 					      : ( ) ),
 	   	     'params', 'shorewall.conf',
 		   );
-@comment_tables = ( 'masq', 'nat', 'rules', 'tcrules' );
+@comment_tables = ( 'snat', 'nat', 'rules', 'tcrules' );
 
 sub debug_message
 {
