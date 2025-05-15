@@ -54,9 +54,11 @@ my $fselect = shift;
 my $lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'}) || 1000;
 my $journalctl_cmd = &has_command('journalctl');
 return () if (!$journalctl_cmd);
-my $reverse = "";
-$reverse = " -r" if ($config{'reverse'});
-$journalctl_cmd = "journalctl$reverse";
+my $eflags = "";
+$eflags = " -r" if ($config{'reverse'});
+my $jver = &get_journalctl_version();
+$eflags .= " --no-hostname" if (!$config{'showhost'} && $jver && $jver >= 239);
+$journalctl_cmd = "journalctl$eflags";
 my @rs = (
 	{ 'cmd' => "$journalctl_cmd -n $lines",
 	  'desc' => $text{'journal_journalctl'},
@@ -276,6 +278,18 @@ elsif ($l =~ /\.xz$/i) {
 else {
 	return "cat $q";
 	}
+}
+
+# get_journalctl_version()
+# Returns the version of journalctl
+sub get_journalctl_version
+{
+my $bin = &has_command('journalctl');
+my $out = &backquote_command("\"$bin\" --version 2>&1");
+if ($out =~ /systemd\s+([0-9]+(?:\.[0-9A-Za-z\-\+]+)*)/) {
+	return $1;
+	}
+return undef;
 }
 
 1;
