@@ -9,8 +9,14 @@ require './logviewer-lib.pl';
 # Send headers
 print "Content-Type: text/plain\n\n";
 
+# Follow and reverse are mutually exclusive
+my @systemctl_cmds;
+{
+	local $config{'reverse'} = 0;
+	@systemctl_cmds = &get_systemctl_cmds(1);
+}
+
 # System log to follow
-my @systemctl_cmds = &get_systemctl_cmds(1);
 my ($log) = grep { $_->{'id'} eq $in{'idx'} } @systemctl_cmds;
 if (!&can_edit_log($log) ||
     !$log->{'cmd'} ||
