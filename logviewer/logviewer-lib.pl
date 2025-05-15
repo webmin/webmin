@@ -54,26 +54,29 @@ my $fselect = shift;
 my $lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'}) || 1000;
 my $journalctl_cmd = &has_command('journalctl');
 return () if (!$journalctl_cmd);
+my $reverse = "";
+$reverse = " -r" if ($config{'reverse'});
+$journalctl_cmd = "journalctl$reverse";
 my @rs = (
-	{ 'cmd' => "journalctl -n $lines",
+	{ 'cmd' => "$journalctl_cmd -n $lines",
 	  'desc' => $text{'journal_journalctl'},
 	  'id' => "journal-1", },
-	{ 'cmd' => "journalctl -n $lines -x ",
+	{ 'cmd' => "$journalctl_cmd -n $lines -x ",
 	  'desc' => $text{'journal_expla_journalctl'},
 	  'id' => "journal-2", },
-	{ 'cmd' => "journalctl -n $lines -p alert..emerg",
+	{ 'cmd' => "$journalctl_cmd -n $lines -p alert..emerg",
 	  'desc' => $text{'journal_journalctl_alert_emerg'},
 	  'id' => "journal-3", },
-	{ 'cmd' => "journalctl -n $lines -p err..crit",
+	{ 'cmd' => "$journalctl_cmd -n $lines -p err..crit",
 	  'desc' => $text{'journal_journalctl_err_crit'},
 	  'id' => "journal-4", },
-	{ 'cmd' => "journalctl -n $lines -p notice..warning",
+	{ 'cmd' => "$journalctl_cmd -n $lines -p notice..warning",
 	  'desc' => $text{'journal_journalctl_notice_warning'},
 	  'id' => "journal-5", },
-	{ 'cmd' => "journalctl -n $lines -p debug..info",
+	{ 'cmd' => "$journalctl_cmd -n $lines -p debug..info",
 	  'desc' => $text{'journal_journalctl_debug_info'},
 	  'id' => "journal-6", },
-	{ 'cmd' => "journalctl -n $lines -k ",
+	{ 'cmd' => "$journalctl_cmd -n $lines -k ",
 	  'desc' => $text{'journal_journalctl_dmesg'},
 	  'id' => "journal-7", } );
 
@@ -98,7 +101,7 @@ if ($fselect) {
 	foreach my $u (sort keys %units) {
 		my $uname = $u;
 		$uname =~ s/\\x([0-9A-Fa-f]{2})/pack('H2', $1)/eg;
-		push(@rs, { 'cmd' => "journalctl -n ".
+		push(@rs, { 'cmd' => "$journalctl_cmd -n ".
 				"$lines -u $u",
 				'desc' => $uname,
 				'id' => "journal-a-$u", });
@@ -108,7 +111,7 @@ if ($fselect) {
 # element for the index page
 else {
 	push(@rs, 
-		{ 'cmd' => "journalctl -n $lines -u",
+		{ 'cmd' => "$journalctl_cmd -n $lines -u",
 		  'desc' => $text{'journal_journalctl_unit'},
 		  'id' => "journal-u" });
 	}
