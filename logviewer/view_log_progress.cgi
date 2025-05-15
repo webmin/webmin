@@ -19,11 +19,11 @@ my @systemctl_cmds;
 # System log to follow
 my ($log) = grep { $_->{'id'} eq $in{'idx'} } @systemctl_cmds;
 if (!&can_edit_log($log) ||
-    !$log->{'cmd'} ||
-    $log->{'cmd'} !~ /^journalctl/) {
-    print $text{'save_ecannot3'};
-    exit;
-    }
+	!$log->{'cmd'} ||
+	$log->{'cmd'} !~ /^journalctl/) {
+	print $text{'save_ecannot3'};
+	exit;
+	}
 
 # Disable output buffering
 $| = 1;
@@ -37,17 +37,17 @@ $log->{'cmd'} .= " -f";
 # Add filter to the command if present
 my $filter = $in{'filter'} ? quotemeta($in{'filter'}) : "";
 if ($filter) {
-    $log->{'cmd'} .= " -g $filter";
-    }
+	$log->{'cmd'} .= " -g $filter";
+	}
 
 # Open a pipe to the journalctl command
 my $pid = open(my $fh, '-|', $log->{'cmd'}) ||
-    print &text('save_ecannot4', $log->{'cmd'}).": $!";
+	print &text('save_ecannot4', $log->{'cmd'}).": $!";
 
 # Read and output the log
 while (my $line = <$fh>) {
-    print $line;
-    }
+	print $line;
+	}
 
 # Clean up when done
 close($fh);
