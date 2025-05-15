@@ -29,15 +29,15 @@ if (!&can_edit_log($log) ||
 $| = 1;
 
 # No lines for real time logs
-$log->{'cmd'} =~ s/\s+\-n\s+\d+//;
+$log->{'cmd'} =~ s/\s+\-\-lines\s+\d+//;
 
 # Show real time logs
-$log->{'cmd'} .= " -f";
+$log->{'cmd'} .= " --follow";
 
 # Add filter to the command if present
 my $filter = $in{'filter'} ? quotemeta($in{'filter'}) : "";
 if ($filter) {
-	$log->{'cmd'} .= " -g $filter";
+	$log->{'cmd'} .= " --grep $filter";
 	}
 
 # Open a pipe to the journalctl command

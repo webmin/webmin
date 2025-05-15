@@ -33,16 +33,16 @@ sub get_journal_since
 {
 return [
         { "" => $text{'journal_since0'} },
-        { "-f" => $text{'journal_since1'} },
-        { "-b" => $text{'journal_since2'} },
-        { "-S '7 days ago'" => $text{'journal_since3'} },
-        { "-S '24 hours ago'" => $text{'journal_since4'} },
-        { "-S '8 hours ago'" => $text{'journal_since5'} },
-        { "-S '1 hour ago'" => $text{'journal_since6'} },
-        { "-S '30 minutes ago'" => $text{'journal_since7'} },
-        { "-S '10 minutes ago'" => $text{'journal_since8'} },
-        { "-S '3 minutes ago'" => $text{'journal_since9'} },
-        { "-S '1 minute ago'" => $text{'journal_since10'} },
+        { "--follow" => $text{'journal_since1'} },
+        { "--boot" => $text{'journal_since2'} },
+        { "--since '7 days ago'" => $text{'journal_since3'} },
+        { "--since '24 hours ago'" => $text{'journal_since4'} },
+        { "--since '8 hours ago'" => $text{'journal_since5'} },
+        { "--since '1 hour ago'" => $text{'journal_since6'} },
+        { "--since '30 minutes ago'" => $text{'journal_since7'} },
+        { "--since '10 minutes ago'" => $text{'journal_since8'} },
+        { "--since '3 minutes ago'" => $text{'journal_since9'} },
+        { "--since '1 minute ago'" => $text{'journal_since10'} },
     ];
 }
 
@@ -55,30 +55,30 @@ my $lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'}) || 1000;
 my $journalctl_cmd = &has_command('journalctl');
 return () if (!$journalctl_cmd);
 my $eflags = "";
-$eflags = " -r" if ($config{'reverse'});
+$eflags = " --reverse" if ($config{'reverse'});
 my $jver = &get_journalctl_version();
 $eflags .= " --no-hostname" if (!$config{'showhost'} && $jver && $jver >= 239);
 $journalctl_cmd = "journalctl$eflags";
 my @rs = (
-	{ 'cmd' => "$journalctl_cmd -n $lines",
+	{ 'cmd' => "$journalctl_cmd --lines $lines",
 	  'desc' => $text{'journal_journalctl'},
 	  'id' => "journal-1", },
-	{ 'cmd' => "$journalctl_cmd -n $lines -x ",
+	{ 'cmd' => "$journalctl_cmd --lines $lines --catalog ",
 	  'desc' => $text{'journal_expla_journalctl'},
 	  'id' => "journal-2", },
-	{ 'cmd' => "$journalctl_cmd -n $lines -p alert..emerg",
+	{ 'cmd' => "$journalctl_cmd --lines $lines --priority alert..emerg",
 	  'desc' => $text{'journal_journalctl_alert_emerg'},
 	  'id' => "journal-3", },
-	{ 'cmd' => "$journalctl_cmd -n $lines -p err..crit",
+	{ 'cmd' => "$journalctl_cmd --lines $lines --priority err..crit",
 	  'desc' => $text{'journal_journalctl_err_crit'},
 	  'id' => "journal-4", },
-	{ 'cmd' => "$journalctl_cmd -n $lines -p notice..warning",
+	{ 'cmd' => "$journalctl_cmd --lines $lines --priority notice..warning",
 	  'desc' => $text{'journal_journalctl_notice_warning'},
 	  'id' => "journal-5", },
-	{ 'cmd' => "$journalctl_cmd -n $lines -p debug..info",
+	{ 'cmd' => "$journalctl_cmd --lines $lines --priority debug..info",
 	  'desc' => $text{'journal_journalctl_debug_info'},
 	  'id' => "journal-6", },
-	{ 'cmd' => "$journalctl_cmd -n $lines -k ",
+	{ 'cmd' => "$journalctl_cmd --lines $lines --dmesg ",
 	  'desc' => $text{'journal_journalctl_dmesg'},
 	  'id' => "journal-7", } );
 
@@ -103,17 +103,17 @@ if ($fselect) {
 	foreach my $u (sort keys %units) {
 		my $uname = $u;
 		$uname =~ s/\\x([0-9A-Fa-f]{2})/pack('H2', $1)/eg;
-		push(@rs, { 'cmd' => "$journalctl_cmd -n ".
-				"$lines -u $u",
-				'desc' => $uname,
-				'id' => "journal-a-$u", });
+		push(@rs, { 'cmd' => "$journalctl_cmd --lines ".
+			    "$lines --unit $u",
+			    'desc' => $uname,
+			    'id' => "journal-a-$u", });
 		}
 	}
 # Otherwise, return only the pointer
 # element for the index page
 else {
 	push(@rs, 
-		{ 'cmd' => "$journalctl_cmd -n $lines -u",
+		{ 'cmd' => "$journalctl_cmd --lines $lines --unit",
 		  'desc' => $text{'journal_journalctl_unit'},
 		  'id' => "journal-u" });
 	}

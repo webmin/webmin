@@ -28,7 +28,7 @@ if ($in{'idx'} ne '') {
 		my @systemctl_cmds = &get_systemctl_cmds(1);
 		my ($log);
 		if ($in{'idx'} eq 'journal-u') {
-			($log) = grep { $_->{'cmd'} =~ /-u\s+\w+/ }
+			($log) = grep { $_->{'cmd'} =~ /--unit\s+\w+/ }
 					@systemctl_cmds;
 			$in{'idx'} = $log->{'id'};
 			}
@@ -38,7 +38,7 @@ if ($in{'idx'} ne '') {
 			}
 		# If reverse is set, add it to the command
 		if ($reverse) {
-			$log->{'cmd'} .= " -r";
+			$log->{'cmd'} .= " --reverse";
 			}
 		# If since is set and allowed, add it to the command
 		if ($in{'since'} &&
@@ -118,7 +118,7 @@ my $lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'});
 my $jfilter = $in{'filter'} ? $in{'filter'} : "";
 my $filter = $jfilter ? quotemeta($jfilter) : "";
 my $reverse = $config{'reverse'} ? 1 : 0;
-my $follow = $in{'since'} eq '-f' ? 1 : 0;
+my $follow = $in{'since'} eq '--follow' ? 1 : 0;
 my $no_navlinks = $in{'nonavlinks'} == 1 ? 1 : undef;
 my $skip_index = $config{'skip_index'} == 1 ? 1 : undef;
 my $help_link = (!$no_navlinks && $skip_index) ?
@@ -126,9 +126,9 @@ my $help_link = (!$no_navlinks && $skip_index) ?
 my $no_links = $no_navlinks || $skip_index;
 my $cmd_unpacked = $cmd;
 $cmd_unpacked =~ s/\\x([0-9A-Fa-f]{2})/pack('H2', $1)/eg;
-$cmd_unpacked =~ s/\s+\-r// if ($follow);
-$cmd_unpacked =~ s/\s+\-n\s+\d+// if ($follow);
-$cmd_unpacked .= " -g \"@{[&html_escape($jfilter)]}\"" if ($filter);
+$cmd_unpacked =~ s/\s+\-\-reverse// if ($follow);
+$cmd_unpacked =~ s/\s+\-\-lines\s+\d+// if ($follow);
+$cmd_unpacked .= " --grep \"@{[&html_escape($jfilter)]}\"" if ($filter);
 my $view_title = $in{'idx'} =~ /^journal/ ?
 	$text{'view_titlejournal'} : $text{'view_title'};
 &ui_print_header("<tt>".&html_escape($file || $cmd_unpacked)."</tt>",
@@ -173,7 +173,7 @@ if (!$follow) {
 		if (@cats) {
 			my $fcmd;
 			if ($cmd =~ /journalctl/) {
-				$fcmd = "$cmd -g $filter";
+				$fcmd = "$cmd --grep $filter";
 				}
 			else {
 				$fcmd = "$cat | grep -i -a $eflag $dashflag $filter ".
