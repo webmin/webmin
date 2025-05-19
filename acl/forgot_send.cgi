@@ -45,7 +45,7 @@ my $linkfile = $main::forgot_password_link_dir."/".$link{'id'};
 my $baseurl = &get_webmin_email_url();
 my $url = $baseurl.'/forgot.cgi?id='.&urlize($link{'id'});
 &load_theme_library();
-$url = &theme_forgot_url($baseurl, $link{'id'}, $link{'user'})
+$url = &theme_forgot_url($baseurl, $link{'id'}, $unixuser || $link{'user'})
 	if (defined(&theme_forgot_url));
 
 &ui_print_header(undef, $text{'forgot_title'}, "");
