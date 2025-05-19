@@ -13,7 +13,6 @@ our (%in, %text);
 &can_edit_user($in{'user'}) || &error($text{'edit_euser'});
 my $u = &get_user($in{'user'});
 $u || &error($text{'edit_egone'});
-my $is_admin = $u->{'name'} =~ /^(?:root|admin|sysadm)$/;
 &ui_print_header(undef, $text{'forgot_title'}, "");
 
 print $text{'forgot_desc'},"<p>\n";
@@ -23,7 +22,7 @@ print &ui_hidden("user_acc", $u->{'name'});
 print &ui_table_start($text{'forgot_header'}, undef, 2);
 
 print &ui_table_row($text{'forgot_user'},
-	$is_admin
+	$u->{'name'} eq "root"
 	  ? &ui_textbox("user", $u->{'name'}, 12)
 	  : "<tt>".$u->{'name'}."</tt>");
 
