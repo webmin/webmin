@@ -10,23 +10,23 @@ our (%in, %text, %gconfig);
 &foreign_require("webmin");
 &error_setup($text{'forgot_err'});
 &ReadParse();
-&can_edit_user($in{'user'}) || &error($text{'edit_euser'});
-my $wuser = &get_user($in{'user'});
+&can_edit_user($in{'user_acc'}) || &error($text{'edit_euser'});
+my $wuser = &get_user($in{'user_acc'});
 $wuser || &error($text{'edit_egone'});
 
 # Validate inputs
 $in{'email_def'} || $in{'email'} =~ /^\S+\@\S+$/ ||
 	&error($text{'forgot_eemail'});
 my $unixuser;
-if (defined($in{'unix_def'}) && !$in{'unix_def'}) {
+if ($in{'user'} ne $in{'user_acc'}) {
 	&foreign_require("useradmin");
-	my ($uinfo) = grep { $_->{'user'} eq $in{'unix'} }
+	my ($uinfo) = grep { $_->{'user'} eq $in{'user'} }
 			   &useradmin::list_users();
 	$uinfo || &error($text{'forgot_eunix'});
-	my $sudo = &useradmin::can_user_sudo_root($in{'unix'});
+	my $sudo = &useradmin::can_user_sudo_root($in{'user'});
 	&error($text{'forgot_enosudo'}) if ($sudo < 0);
 	&error($text{'forgot_ecansudo'}) if (!$sudo);
-	$unixuser = $in{'unix'};
+	$unixuser = $in{'user'};
 	}
 
 # Generate a random ID and tracking file for this password reset
