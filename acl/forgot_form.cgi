@@ -13,26 +13,24 @@ our (%in, %text);
 &can_edit_user($in{'user'}) || &error($text{'edit_euser'});
 my $u = &get_user($in{'user'});
 $u || &error($text{'edit_egone'});
-
+my $is_admin = $u->{'name'} =~ /^(?:root|admin|sysadm)$/;
 &ui_print_header(undef, $text{'forgot_title'}, "");
 
 print $text{'forgot_desc'},"<p>\n";
 
 print &ui_form_start("forgot_send.cgi", "post");
-print &ui_hidden("user", $in{'user'});
+print &ui_hidden("user_acc", $u->{'name'});
 print &ui_table_start($text{'forgot_header'}, undef, 2);
 
-print &ui_table_row($text{'forgot_user'}, "<tt>$u->{'name'}</tt>");
+print &ui_table_row($text{'forgot_user'},
+	$is_admin
+	  ? &ui_textbox("user", $u->{'name'}, 12)
+	  : "<tt>".$u->{'name'}."</tt>");
 
 print &ui_table_row($text{'forgot_email'},
 	&ui_opt_textbox("email", $u->{'email'}, 60,
 			$text{'forgot_email_def'}."<br>\n",
 			$text{'forgot_email_sel'}));
-
-if ($u->{'name'} eq 'root') {
-	print &ui_table_row($text{'forgot_unix'},
-		&ui_opt_textbox("unix", undef, 20, $text{'forgot_unix_def'}));
-	}
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'forgot_send'} ] ]);
