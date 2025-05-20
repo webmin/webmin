@@ -1411,20 +1411,20 @@ foreach my $s (keys %sessiondb) {
 dbmclose(%sessiondb);
 }
 
-=head2 create_session_user(\%miniserv, user)
+=head2 create_session_user(\%miniserv, user, [lifetime])
 
 Creates a new session ID that's already logged in as the given user
 
 =cut
 sub create_session_user
 {
-my ($miniserv, $username) = @_;
+my ($miniserv, $username, $lifetime) = @_;
 return undef if (&is_readonly_mode());
 &open_session_db($miniserv);
 my $sid = &generate_random_session_id();
 return undef if (!$sid);
 my $t = time();
-$sessiondb{$sid} = "$username $t 127.0.0.1";
+$sessiondb{$sid} = "$username $t 127.0.0.1".($lifetime ? " ".$lifetime : "");
 dbmclose(%sessiondb);
 return $sid;
 }
