@@ -1101,15 +1101,21 @@ while(1) {
 					print $outfd "0 0\n";
 					}
 				else {
-					local ($user, $ltime, $ip) =
+					local ($user, $ltime, $ip, $lifetime) =
 					  split(/\s+/, $sessiondb{$skey});
 					local $lot = &get_logout_time($user, $session_id);
 					if ($lot &&
 					    $time_now - $ltime > $lot*60 &&
 					    !$notimeout) {
-						# Session has timed out
+						# Session has timed out due to
+						# idle time being hit
 						print $outfd "1 ",($time_now - $ltime),"\n";
 						#delete($sessiondb{$skey});
+						}
+					elsif ($lifetime && $time_now - $ltime > $lifetime) {
+						# Session has timed out due to
+						# lifetime exceeded
+						print $outfd "1 ",($time_now - $ltime),"\n";
 						}
 					elsif ($ip && $vip && $ip ne $vip &&
 					       $config{'session_ip'}) {
