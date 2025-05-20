@@ -619,6 +619,7 @@ foreach my $iface (@fix) {
 sub read_nm_config
 {
 my ($f) = @_;
+&unflush_file_lines($f);	# NM may have modified this file
 my $lref = &read_file_lines($f, 1);
 my @rv;
 my $sect;
