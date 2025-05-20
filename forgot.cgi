@@ -66,7 +66,7 @@ if (defined($in{'newpass'})) {
 			# Update all features
 			foreach my $f (&virtual_server::domain_features($d)) {
 				if ($virtual_server::config{$f} && $d->{$f}) {
-					my $mfunc = "virtual_server::modify_".$f;
+					my $mfunc = "virtual_server::modify_$f";
 					&$mfunc($d, $oldd);
 					}
 				}
