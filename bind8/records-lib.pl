@@ -724,10 +724,11 @@ our $uscore = $config{'allow_underscore'} ? "_" : "";
 our $star = $config{'allow_wild'} ? "\\*" : "";
 
 # valdnsname(name, wild, origin)
+# Returns 1 if a DNS record has a valid name
 sub valdnsname
 {
-my($fqdn);
-$fqdn = $_[0] !~ /\.$/ ? "$_[0].$_[2]." : $_[0];
+my ($name, $wild, $origin) = @_;
+my $fqdn = $name !~ /\.$/ ? "$name.$origin." : $name;
 if (length($fqdn) > 255) {
 	&error(&text('edit_efqdn', $fqdn));
 	}
@@ -735,19 +736,19 @@ if ($_[0] =~ /[^\.]{64}/) {
 	# no label longer than 63 chars
 	&error(&text('edit_elabel', $_[0]));
 	}
-return ((($_[1] && $config{'allow_wild'})
-	 ? (($_[0] =~ /^[\*A-Za-z0-9\-\.$uscore]+$/)
-	   && ($_[0] !~ /.\*/ || $bind_version >= 9) # "*" can be only the first
+return ((($wild && $config{'allow_wild'})
+	 ? (($name =~ /^[\*A-Za-z0-9\-\.$uscore]+$/)
+	   && ($name !~ /.\*/ || $bind_version >= 9) # "*" can be only the first
 						    # char, for bind 8
-	   && ($_[0] !~ /\*[^\.]/))	# a "." must always follow "*"
-	 : ($_[0] =~ /^[\A-Za-z0-9\-\.$uscore]+$/))
-	&& ($_[0] !~ /\.\./)		# no ".." inside
-	&& ($_[0] !~ /^\../)		# no "." at the beginning
-	&& ($_[0] !~ /^\-/)		# no "-" at the beginning
-	&& ($_[0] !~ /\-$/)		# no "-" at the end
-	&& ($_[0] !~ /\.\-/)		# no ".-" inside
-	&& ($_[0] !~ /\-\./)		# no "-." inside
-	&& ($_[0] !~ /\.[0-9]+\.$/));	# last label in FQDN may not be
+	   && ($name !~ /\*[^\.]/))	# a "." must always follow "*"
+	 : ($name =~ /^[\A-Za-z0-9\-\.$uscore]+$/))
+	&& ($name !~ /\.\./)		# no ".." inside
+	&& ($name !~ /^\../)		# no "." at the beginning
+	&& ($name !~ /^\-/)		# no "-" at the beginning
+	&& ($name !~ /\-$/)		# no "-" at the end
+	&& ($name !~ /\.\-/)		# no ".-" inside
+	&& ($name !~ /\-\./)		# no "-." inside
+	&& ($name !~ /\.[0-9]+\.$/));	# last label in FQDN may not be
 					# purely numeric
 }
 
