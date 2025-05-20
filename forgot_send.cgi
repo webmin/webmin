@@ -100,6 +100,7 @@ my $linkfile = $main::forgot_password_link_dir."/".$link{'id'};
 &unlock_file($linkfile);
 my $baseurl = &get_webmin_email_url();
 my $url = $baseurl.'/forgot.cgi?id='.&urlize($link{'id'});
+my $username = $uuser ? $uuser->{'user'} : $wuser->{'name'};
 $url = &theme_forgot_url($baseurl, $link{'id'}, $link{'user'})
 	if (defined(&theme_forgot_url));
 
@@ -107,11 +108,10 @@ $url = &theme_forgot_url($baseurl, $link{'id'}, $link{'user'})
 
 # Send email with a link to generate the reset form
 &foreign_require("mailboxes");
-my $msg = &text('forgot_msg', $wuser->{'name'}, $url, $ENV{'REMOTE_HOST'},
+my $msg = &text('forgot_msg', $username, $url, $ENV{'REMOTE_HOST'},
 			      $baseurl);
 $msg =~ s/\\n/\n/g;
 $msg = join("\n", &mailboxes::wrap_lines($msg, 75))."\n";
-my $username = $uuser ? $uuser->{'user'} : $wuser->{'name'};
 my $subject = &text('forgot_subject', $username);
 &mailboxes::send_text_mail(&mailboxes::get_from_address(),
 			   $email,
