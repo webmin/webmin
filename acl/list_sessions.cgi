@@ -37,6 +37,7 @@ foreach my $k (sort { my @a = split(/\s+/, $sessiondb{$a});
 	next if ($k =~ /^1111111/);
 	my ($user, $ltime, $lip) = split(/\s+/, $sessiondb{$k});
 	next if ($user =~ /^\!/ && !$in{'logouts'});
+	next if ($user =~ /^-/);
 	next if ($miniserv{'logouttime'} &&
 		 $time_now - $ltime > $miniserv{'logouttime'}*60);
 	my @cols;

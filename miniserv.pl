@@ -1108,7 +1108,7 @@ while(1) {
 					    $time_now - $ltime > $lot*60 &&
 					    !$notimeout) {
 						# Session has timed out
-						print $outfd "1 ",$time_now - $ltime,"\n";
+						print $outfd "1 ",($time_now - $ltime),"\n";
 						#delete($sessiondb{$skey});
 						}
 					elsif ($ip && $vip && $ip ne $vip &&
@@ -1806,19 +1806,28 @@ if ($config{'session'} && !$deny_authentication &&
 			}
 		}
 	elsif ($in{'session'}) {
-		# Session ID given .. put it in the cookie if valid
+		# Session ID given, perhaps from a single-use login link.
 		local $sid = $in{'session'};
 		if ($sid =~ /\r|\n|\s/) {
 			&http_error(500, "Invalid session",
 			    "Session ID contains invalid characters");
 			}
 		print $PASSINw "verify $sid 0 $acptip\n";
-		<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
+		<$PASSOUTr> =~ /^(\d+)\s+(\S+)/;
 		if ($1 != 2) {
 			&http_error(500, "Invalid session",
 			    "Session ID is not valid");
 			}
+
+		# If this was a one-time session ID link, the username will
+		# have a - prefix to prevent it from being used as a regular
+		# session.
 		local $vu = $2;
+		$vu =~ s/^-//;
+
+		# Clear this one-time session, and issue a new one
+		print $PASSINw "delete $sid\n";
+		local $louser = <$PASSOUTr>;
 		local $hrv = &handle_login(
 				$vu, $vu ? 1 : 0,
 				0, 0, undef, 1, 0);
