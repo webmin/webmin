@@ -10,6 +10,15 @@ $pragma_no_cache = 1;
 &init_config();
 &ReadParse(undef, undef, undef, 2);
 
+# Redirect to the forgot page that this theme supports if generate in SPA theme
+if ($gconfig{'forgot_pass'} && $ENV{'REQUEST_URI'}) {
+	my ($forgot_id) = $ENV{'REQUEST_URI'} =~ /[?&]forgot=([0-9a-fA-F]{32})/;
+	if ($forgot_id) {
+		&redirect("@{[&get_webprefix()]}/forgot.cgi?id=$forgot_id");
+		return;
+		}
+	}
+
 # If accessed via HTTPS, make this an SSL-only cookie
 &get_miniserv_config(\%miniserv);
 $sec = uc($ENV{'HTTPS'}) eq 'ON' ? "; secure" : "";
@@ -17,6 +26,7 @@ if (!$miniserv{'no_httponly'}) {
 	$sec .= "; httpOnly";
 	}
 
+# Login banner
 if ($gconfig{'loginbanner'} && $ENV{'HTTP_COOKIE'} !~ /banner=1/ &&
     !$in{'logout'} && !$in{'failed'} && !$in{'timed_out'}) {
 	# Show pre-login HTML page
