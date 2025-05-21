@@ -8,9 +8,9 @@ $no_acl_check++;
 &ReadParse();
 &load_theme_library();
 
+&theme_forgot_handler($0) if (defined(&theme_forgot_handler));
 &error_setup($text{'forgot_err'});
 $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
-&theme_forgot_handler($0) if (defined(&theme_forgot_handler));
 $remote_user && &error($text{'forgot_elogin'});
 
 &ui_print_header(undef, $text{'forgot_title'}, "", undef, undef, 1, 1);
