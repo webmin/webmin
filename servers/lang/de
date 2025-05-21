@@ -36,6 +36,7 @@ edit_checkssl=Remote-SSL-Zertifikat überprüfen?
 edit_link=Link-Typ
 edit_mode0=Normaler Link zum Server
 edit_mode1=Anmeldung über Webmin mit
+edit_mode12=Anmeldung über Webmin mit $1 und $2
 edit_mode2=Anmeldung bei Klick auf das Symbol
 edit_mode3=Anmeldung mit Benutzername und Passwort von diesem Server
 edit_user=Benutzername
@@ -154,7 +155,6 @@ auto_esmtp=Fehlender oder ungültiger SMTP-Server
 auto_findself=Dieses System ebenfalls registrieren?
 
 config_deftype=Standard-Systemtyp
-config_typeauto=Automatisch
 
 email_regsubject=System $1 registriert
 email_reg=Das System $1 wurde automatisch registriert.
