@@ -8,6 +8,17 @@ $pragma_no_cache = 1;
 #$ENV{'MINISERV_INTERNAL'} || die "Can only be called by miniserv.pl";
 &init_config();
 &ReadParse(undef, undef, undef, 2);
+
+# Redirect to the forgot page that this theme supports if generate in SPA theme
+if ($gconfig{'forgot_pass'} && $ENV{'REQUEST_URI'}) {
+	my ($forgot_id) = $ENV{'REQUEST_URI'} =~ /[?&]forgot=([0-9a-fA-F]{32})/;
+	if ($forgot_id) {
+		&redirect("@{[&get_webprefix()]}/forgot.cgi?id=$forgot_id");
+		return;
+		}
+	}
+
+# Login banner
 if ($gconfig{'loginbanner'} && $ENV{'HTTP_COOKIE'} !~ /banner=1/ &&
     !$in{'logout'} && $in{'initial'}) {
 	# Show pre-login HTML page
