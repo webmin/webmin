@@ -221,6 +221,7 @@ pkgs_title=PHP-Pakete
 pkgs_name=Paketname
 pkgs_ver=Paketversion
 pkgs_phpver=PHP-Version
+pkgs_bin=Ausführbare Datei
 pkgs_shortver=Kurze Version
 pkgs_users=Verwendet von
 pkgs_delete=Ausgewählte Pakete löschen
