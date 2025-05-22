@@ -101,8 +101,15 @@ if (!$in{'initial'}) {
 	print &ui_submit($text{'pam_restart'}, 'restart');
 	}
 print &ui_form_end();
-print "</center>\n";
 
+if ($in{'failed'} && $gconfig{'forgot_pass'}) {
+	# Show forgotten password link
+	print &ui_form_start("forgot_form.cgi", "post");
+	print &ui_hidden("failed", $in{'failed'});
+	print &ui_form_end([ [ undef, $text{'session_forgot'} ] ]);
+	}
+
+print "</center>\n";
 print "$text{'pam_postfix'}\n";
 
 # Output frame-detection Javascript, if theme uses frames
