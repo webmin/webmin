@@ -1,5 +1,11 @@
 ## Changelog
 
+#### 2.400 (May 24, 2025)
+* Added built-in support for forgotten password recovery
+* Fixed bugs with IPv6 interface creation on systems using Network Manager
+* Improved security of single-use login links
+* Added support for SSL certificates and DNS over TLS in the BIND module
+
 #### 2.303 (March 14, 2025)
 * Fix permissions error when attempting to open a temp file for writing
 * Fix Network Configuration module to use `ip` command instead of `ifconfig` on Debian systems
