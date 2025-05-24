@@ -81,7 +81,7 @@ bind_emaxlifetime=Maximale Lebensdauer muss größer als 60 Sekunden sein
 
 log_title=Protokollierung
 log_desc=Webmin kann so konfiguriert werden, dass ein Protokoll über Webserver-Zugriffe im Standard-CLF-Protokollformat geschrieben wird. Wenn die Protokollierung aktiviert ist, können Sie wählen, ob IP-Adressen oder Hostnamen gespeichert werden und wie häufig die Logdatei gelöscht wird. Die Protokolle werden bei Aktivierung in die Datei $1 geschrieben.
-log_desc2=Wenn die Protokollierung aktiviert ist, schreibt Webmin außerdem ein detailliertes Protokoll über Benutzeraktionen in die Datei $1. Dieses Log kann mit dem Modul „Webmin-Aktionsprotokoll“ eingesehen und analysiert werden, um genau nachzuvollziehen, was jede:r Webmin-Benutzer getan hat.
+log_desc2=Wenn die Protokollierung aktiviert ist, schreibt Webmin außerdem ein detailliertes Protokoll über Benutzeraktionen in die Datei $1. Dieses Log kann mit dem Modul „Webmin-Aktionsprotokoll“ eingesehen und analysiert werden, um genau nachzuvollziehen, was jeder Webmin-Benutzer getan hat.
 log_header=Optionen zur Webserver-Protokollierung
 log_status=Protokollierung aktiv?
 log_disable=Protokollierung deaktivieren
@@ -567,7 +567,7 @@ update_apply=Speichern und anwenden
 update_sched2=Module um $1:$2 Uhr alle $3 Tage aktualisieren
 update_none=Keine Webmin-Updates für diese Version verfügbar.
 update_failed=Installation des Moduls fehlgeschlagen : $1
-update_desc2=Mit diesem Formular können Sie die automatische Aktualisierung von Webmin-Modulen planen, die Fehler oder Sicherheitslücken enthalten, basierend auf der Seite <a href=http://www.webmin.com/updates.html>Webmin-Updates</a> oder aus einer anderen Quelle. Dieser Dienst ist nützlich, sollte jedoch mit Vorsicht verwendet werden, da bei einer Kompromittierung des Update-Servers potenziell Angreifer:innen Zugriff auf Ihr System erlangen könnten.
+update_desc2=Mit diesem Formular können Sie die automatische Aktualisierung von Webmin-Modulen planen, die Fehler oder Sicherheitslücken enthalten, basierend auf der Seite <a href=http://www.webmin.com/updates.html>Webmin-Updates</a> oder aus einer anderen Quelle. Dieser Dienst ist nützlich, sollte jedoch mit Vorsicht verwendet werden, da bei einer Kompromittierung des Update-Servers potenziell Angreifer Zugriff auf Ihr System erlangen könnten.
 update_enosig=Signaturdatei für Updates konnte nicht heruntergeladen werden : $1
 update_ebadsig=Signaturprüfung der Updates fehlgeschlagen : $1
 update_enomodsig=Signaturdatei für Modul konnte nicht heruntergeladen werden : $1
@@ -608,7 +608,7 @@ ca_essleay=Der SSL-Administrationsbefehl $1 wurde auf Ihrem System nicht gefunde
 ca_essl=SSL-Zertifizierung kann nur eingerichtet werden, wenn der Webserver im SSL-Modus läuft.
 
 session_title=Authentifizierung
-session_desc1=Wenn aktiviert, schützen Passwort-Timeouts Ihren Webmin-Server vor Brute-Force-Angriffen, indem sie die Verzögerung zwischen fehlgeschlagenen Anmeldeversuchen für dieselbe:n Benutzer kontinuierlich erhöhen.
+session_desc1=Wenn aktiviert, schützen Passwort-Timeouts Ihren Webmin-Server vor Brute-Force-Angriffen, indem sie die Verzögerung zwischen fehlgeschlagenen Anmeldeversuchen für denselben Benutzer kontinuierlich erhöhen.
 session_header=Authentifizierungs- und Sitzungsoptionen
 session_ptimeout=Passwort-Timeouts
 session_pdisable=Passwort-Timeouts deaktivieren
@@ -827,13 +827,13 @@ update_subject=Update-Bericht für Webmin-Module
 update_version=Eine neue Webmin-Version (Version $1) ist jetzt zum Download verfügbar. Zukünftige Updates werden nur für die neueste Version bereitgestellt.
 
 anon_title=Anonymer Modulzugriff
-anon_desc=Auf dieser Seite können Sie ausgewählten Webmin-Modulen und Pfaden Zugriff gewähren, ohne dass sich Clients anmelden müssen. Für jeden unten eingegebenen Modulpfad (z. B. <tt>/custom</tt> oder <tt>/passwd</tt>) müssen Sie auch eine:n Webmin-Benutzer angeben, dessen/deren Berechtigungen für den Zugriff verwendet werden.
-anon_desc2=Seien Sie beim Aktivieren des anonymen Zugriffs SEHR vorsichtig, da unzureichende IP-Zugriffskontrollen oder die Freigabe des falschen Moduls Angreifer:innen ermöglichen könnten, Ihr System zu übernehmen.
+anon_desc=Auf dieser Seite können Sie ausgewählten Webmin-Modulen und Pfaden Zugriff gewähren, ohne dass sich Clients anmelden müssen. Für jeden unten eingegebenen Modulpfad (z. B. <tt>/custom</tt> oder <tt>/passwd</tt>) müssen Sie auch einen Webmin-Benutzer angeben, dessen Berechtigungen für den Zugriff verwendet werden.
+anon_desc2=Seien Sie beim Aktivieren des anonymen Zugriffs SEHR vorsichtig, da unzureichende IP-Zugriffskontrollen oder die Freigabe des falschen Moduls Angreifer ermöglichen könnten, Ihr System zu übernehmen.
 anon_url=URL-Pfad
 anon_user=Webmin-Benutzer
 anon_err=Speichern des anonymen Zugriffs fehlgeschlagen
 anon_eurl='$1' ist kein gültiger URL-Pfad
-anon_euser=Fehlende oder ungültige:r Webmin-Benutzer für URL-Pfad '$1'
+anon_euser=Fehlende oder ungültiger Webmin-Benutzer für URL-Pfad '$1'
 
 enogpg=GnuPG ist nicht installiert
 

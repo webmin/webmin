@@ -22,12 +22,12 @@ secs=Sekunden
 
 users_title=Authentifizierung
 users_header=Anmelde- und Authentifizierungsoptionen
-users_expire=Tage vor Ablauf des Kontos, an denen der/die Benutzer gewarnt wird
+users_expire=Tage vor Ablauf des Kontos, an denen der Benutzer gewarnt wird
 users_expire_def=Niemals
 users_mail=Benutzer über neue E-Mails benachrichtigen?
 users_empty=Neues Passwort anfordern, wenn leer?
 users_passwd=Neues Passwort anfordern, wenn abgelaufen?
-users_pexpire=Tage vor Ablauf des Passworts, an denen der/die Benutzer gewarnt wird
+users_pexpire=Tage vor Ablauf des Passworts, an denen der Benutzer gewarnt wird
 users_pexpire_def=Niemals
 users_auth=Authentifizierung per Passwort zulassen?
 users_pempty=Anmeldung mit leerem Passwort erlauben?
