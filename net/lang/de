@@ -305,7 +305,7 @@ interfaces_sel=Ausgewählte Interfaces
 interfaces_ok=OK
 interfaces_cancel=Abbrechen
 interfaces_clear=Löschen
-interfaces_title2=Benutzer:in auswählen...
+interfaces_title2=Benutzer auswählen...
 
 apply_ecannot=Sie sind nicht berechtigt, die Konfiguration anzuwenden
 

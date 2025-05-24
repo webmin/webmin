@@ -173,7 +173,7 @@ disable_classes=Deaktivierte integrierte Klassen
 mods_title=PHP-Erweiterungen
 mods_edir=Verzeichnis für PHP-Erweiterungen konnte nicht gefunden werden!
 mods_ecannot=Sie dürfen aktivierte PHP-Erweiterungen nicht bearbeiten
-mods_desc=Auf dieser Seite können global PHP-Erweiterungen für Version $1 für alle Benutzer:innen auf diesem System aktiviert oder deaktiviert werden.
+mods_desc=Auf dieser Seite können global PHP-Erweiterungen für Version $1 für alle Benutzer auf diesem System aktiviert oder deaktiviert werden.
 mods_enabled=Aktiviert?
 mods_name=Erweiterungsname
 mods_file=Konfigurationsdatei
@@ -212,7 +212,7 @@ acl_global=Globale PHP-Konfiguration bearbeiten dürfen?
 acl_anyfile=Beliebige Datei als PHP-Konfiguration bearbeiten dürfen?
 acl_manual=Konfigurationsdateien manuell bearbeiten dürfen?
 acl_inis=Zusätzliche Konfigurationsdateien<br>(im Format <i>Dateiname</i>=<i>Beschreibung</i>)
-acl_user=Dateien im Kontext von Benutzer:innen lesen und schreiben
+acl_user=Dateien im Kontext von Benutzer lesen und schreiben
 
 opt_default=Standardwert: <tt>$1</tt>
 opt_default_unknown=Unbekannt
