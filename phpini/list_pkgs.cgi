@@ -18,7 +18,6 @@ if (@pkgs) {
 				      $text{'pkgs_phpver'},
 				      $text{'pkgs_bin'},
 				      $vmap ? (
-					$text{'pkgs_shortver'},
 					$text{'pkgs_users'} ) : ( ),
 			        ], \@tds);
 	foreach my $pkg (@pkgs) {
@@ -40,7 +39,7 @@ if (@pkgs) {
 			$pkg->{'ver'},
 			$pkg->{'phpver'},
 			$pkg->{'binary'},
-			$vmap ? ( $pkg->{'shortver'}, $users ) : ( ),
+			$vmap ? ( $users ) : ( ),
 			], \@tds, "d", $pkg->{'name'});
 		$got{$pkg->{'phpver'}}++;
 		}
