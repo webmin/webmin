@@ -15,11 +15,13 @@ if (!@files) {
 if (!@files) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	if ($access{'noconfig'}) {
-		&ui_print_endpage($text{'index_efiles'});
+		&ui_print_endpage("$text{'index_efiles'}<br>".
+				  &show_php_install_button());
 		}
 	else {
 		&ui_print_endpage(&text('index_efiles2',
-					"../config.cgi?$module_name"));
+					"../config.cgi?$module_name")."<br>".
+				  &show_php_install_button());
 		}
 	}
 
