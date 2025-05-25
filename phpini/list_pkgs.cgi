@@ -49,24 +49,27 @@ if (@pkgs) {
 else {
 	print "<b>$text{'pkgs_none'}</b> <p>\n";
 	}
-my @newpkgs = grep { !$got{$_->{'phpver'}} } &list_best_available_php_packages();
-if (@newpkgs && &foreign_installed("package-updates")) {
+if (&foreign_installed("package-updates")) {
+	my @newpkgs = grep { !$got{$_->{'phpver'}} }
+		&list_best_available_php_packages();
 	# Show form to install a new version
-	print &ui_hr();
-	print &ui_form_start(
-		&get_webprefix()."/package-updates/update.cgi", "post");
-	print "$text{'pkgs_newver'}&nbsp;\n";
-	&extend_installable_php_packages(\@newpkgs);
-	# Largest version on top
-	@newpkgs = sort { $b->{'phpver'} cmp $a->{'phpver'} } @newpkgs;
-	print &ui_select("u", undef,
-		[ map { [ $_->{'name'},
-			  "PHP $_->{'shortver'}" ] } @newpkgs ]);
-	print &ui_hidden(
-		"redir", &get_webprefix()."/$module_name/list_pkgs.cgi");
-	print &ui_hidden("redirdesc", $text{'pkgs_title'});
-	print &ui_hidden("mode", "new");
-	print &ui_form_end([ [ undef, $text{'pkgs_install'} ] ]);
+	if (@newpkgs) {
+		print &ui_hr();
+		print &ui_form_start(
+			&get_webprefix()."/package-updates/update.cgi", "post");
+		print "$text{'pkgs_newver'}&nbsp;\n";
+		&extend_installable_php_packages(\@newpkgs);
+		# Largest version on top
+		@newpkgs = sort { $b->{'phpver'} cmp $a->{'phpver'} } @newpkgs;
+		print &ui_select("u", undef,
+			[ map { [ $_->{'name'},
+				"PHP $_->{'shortver'}" ] } @newpkgs ]);
+		print &ui_hidden(
+			"redir", &get_webprefix()."/$module_name/list_pkgs.cgi");
+		print &ui_hidden("redirdesc", $text{'pkgs_title'});
+		print &ui_hidden("mode", "new");
+		print &ui_form_end([ [ undef, $text{'pkgs_install'} ] ]);
+		}
 	}
 
 &ui_print_footer("", $text{'index_return'});
