@@ -1037,19 +1037,20 @@ foreach my $pkg (@$pkgs) {
 	}
 }
 
-# delete_php_base_package(&package)
+# delete_php_base_package(&package, &installed)
 # Delete a PHP package, and return undef on success or an error on failure
 sub delete_php_base_package
 {
-my ($pkg) = @_;
-foreach my $p (&list_all_php_version_packages($pkg)) {
+my ($pkg, $installed) = @_;
+my @targets = &list_all_php_version_packages($pkg);
+my $deb_want_deps = (grep { $_ eq 'php-common' } @targets) && @{$installed} > 1;
+foreach my $p (@targets) {
 	my @info = &software::package_info($p);
 	next if (!@info);
 	my $err = &software::delete_package($p,
-		{ 'nodeps' => 1, 'depstoo' => 1 });
-	if ($err) {
-		return &html_strip($err);
-		}
+		{ nodeps => 1,
+		  ( !$deb_want_deps ? ( depstoo => 1 ) : () ) });
+	return &html_strip($err) if ($err);
 	}
 return undef;
 }

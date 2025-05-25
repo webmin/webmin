@@ -50,7 +50,7 @@ else {
 	foreach my $pkg (@delpkgs) {
 		print &text('dpkgs_doing', "<tt>$pkg->{'name'}</tt>",
 					   $pkg->{'phpver'}),"<br>\n";
-		$err = &delete_php_base_package($pkg);
+		$err = &delete_php_base_package($pkg, \@pkgs);
 		if ($err) {
 			print &text('dpkgs_failed', $err),"<p>\n";
 			}
