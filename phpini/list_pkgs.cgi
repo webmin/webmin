@@ -25,11 +25,15 @@ if (@pkgs) {
 		my $users;
 		if ($vmap) {
 			my $ulist = $vmap->{$pkg->{'shortver'}};
+			my $details = 
+				&ui_details({
+				class => 'inline',
+				html => 1,
+				title => &text('pkgs_ucount', scalar(@$ulist)),
+				content => join("<br>",
+				    map { "<tt>$_->{'dom'}</tt>" } @$ulist)});
 			$users = !$ulist || !@$ulist ? $text{'pkgs_nousers'} :
-				 @$ulist > 5 ? &text('pkgs_ucount',
-						     scalar(@$ulist)) :
-				    join(", ", map { "<tt>$_->{'dom'}</tt>" }
-						   @$ulist);
+				 $details;
 			}
 		print &ui_checked_columns_row([
 			$pkg->{'name'},
