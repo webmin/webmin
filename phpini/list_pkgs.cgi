@@ -42,7 +42,7 @@ if (@pkgs) {
 			$pkg->{'binary'},
 			$vmap ? ( $pkg->{'shortver'}, $users ) : ( ),
 			], \@tds, "d", $pkg->{'name'});
-		$got{$pkg->{'name'}}++;
+		$got{$pkg->{'phpver'}}++;
 		}
 	print &ui_columns_end();
 	print &ui_form_end([ [ undef, $text{'pkgs_delete'} ] ]);
@@ -50,7 +50,7 @@ if (@pkgs) {
 else {
 	print "<b>$text{'pkgs_none'}</b> <p>\n";
 	}
-my @newpkgs = grep { !$got{$_->{'name'}} } &list_best_available_php_packages();
+my @newpkgs = grep { !$got{$_->{'phpver'}} } &list_best_available_php_packages();
 if (@newpkgs && &foreign_installed("package-updates")) {
 	# Show form to install a new version
 	print &ui_hr();
