@@ -56,14 +56,7 @@ if (@newpkgs && &foreign_installed("package-updates")) {
 	print &ui_form_start(
 		&get_webprefix()."/package-updates/update.cgi", "post");
 	print "$text{'pkgs_newver'}&nbsp;\n";
-	# Always install -cli package, along with the common package
-	foreach my $pkg (@newpkgs) {
-		if ($pkg->{'name'} =~ /-common$/) {
-			my $pkg_cli = $pkg->{'name'};
-			$pkg_cli =~ s/-common$/-cli/;
-			$pkg->{'name'} .= " $pkg_cli";
-			}
-		}
+	&extend_installable_php_packages(\@newpkgs);
 	print &ui_select("u", undef,
 		[ map { [ $_->{'name'},
 			  "PHP $_->{'shortver'}" ] } @newpkgs ]);

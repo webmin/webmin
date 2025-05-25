@@ -1022,6 +1022,21 @@ foreach my $p (@poss) {
 return @rv;
 }
 
+# extend_installable_php_packages(&packages)
+# Given a list of PHP packages to install, extends them to include packages
+# that are also has to be installed, such as -cli or -fpm
+sub extend_installable_php_packages
+{
+my ($pkgs) = @_;
+my @extra = ('cli', 'fpm');
+foreach my $pkg (@$pkgs) {
+	if ($pkg->{'name'} =~ /-common$/) {
+		$pkg->{'name'} .= ' ' . join(' ',
+		    map {(my $n = $pkg->{'name'}) =~ s/-common$/-$_/r } @extra);
+		}
+	}
+}
+
 # delete_php_base_package(&package)
 # Delete a PHP package, and return undef on success or an error on failure
 sub delete_php_base_package
