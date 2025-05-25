@@ -8,7 +8,8 @@ require './phpini-lib.pl';
 if (!@files) {
 	# User doesn't have access to any
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
-	&ui_print_endpage($text{'index_eaccess'});
+	&ui_print_endpage("$text{'index_eaccess'}<br>".
+			  &show_php_install_button());
 	}
 @files = grep { -r $_->[0] } @files;
 if (!@files) {
@@ -62,15 +63,23 @@ else {
 		}
 
 	# Show button to install PHP versions
-	if ($access{'global'} && &foreign_available("software")) {
-		print &ui_hr();
-		print &ui_buttons_start();
-		print &ui_buttons_row("list_pkgs.cgi",
-			$text{'index_pkgs'},
-			$text{'index_pkgsdesc'});
-		print &ui_buttons_end();
-		}
+	print &show_php_install_button();
 
 	&ui_print_footer("/", $text{'index'});
 	}
 
+# Print PHP install button if available
+# Returns a button to install new PHP versions
+sub show_php_install_button
+{
+my $rv = '';
+if ($access{'global'} && &foreign_available("software")) {
+	$rv = &ui_hr();
+	$rv .= &ui_buttons_start();
+	$rv .= &ui_buttons_row("list_pkgs.cgi",
+		$text{'index_pkgs'},
+		$text{'index_pkgsdesc'});
+	$rv .= &ui_buttons_end();
+	}
+return $rv;
+}
