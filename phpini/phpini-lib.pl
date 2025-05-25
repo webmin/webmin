@@ -302,6 +302,32 @@ return -d $file1 ? $file1 :
        -d $file3 ? $file3 : undef;
 }
 
+# get_php_info(name, version)
+# Returns PHP version and short version, and the binary path
+sub get_php_info
+{
+my ($name, $version) = @_;
+$version =~ s/\-.*$//;
+my $bin;
+foreach my $b ($name, $name."-cgi", $name."-fpm", "php-".$version) {
+	if ($bin = &has_command($b)) {
+		last;
+		}
+	}
+if ($bin) {
+	my $out = &backquote_command("$bin -v 2>&1");
+	if ($out =~ /(^|\n)PHP\s+([\d\.]+)/) {
+		$version = $2;
+		}
+	}
+my $shortver = $version;
+$shortver =~ s/^(\d+\.\d+).*$/$1/;
+if ($shortver =~ /^5\./) {
+	$shortver = "5";
+	}
+return ($version, $shortver, $bin);
+}
+
 # get_php_ini_binary(file)
 # Given a php.ini path, try to guess the PHP command for it
 # Examples: 
@@ -883,25 +909,8 @@ for(my $i=0; $i<$n; $i++) {
 	my $name = $software::packages{$i,'name'};
 	next unless ($name =~ /^((?:rh-)?(php(?:\d[\d.]*)??)(?:-php)?-common|php\d*[\d.]*)$/);
 	$name = $2 || $1;
-	my $phpver = $software::packages{$i,'version'};
-	$phpver =~ s/\-.*$//;
-	my $bin;
-	foreach my $b ($name, $name."-cgi", "php-".$phpver) {
-		if ($bin = &has_command($b)) {
-			last;
-			}
-		}
-	if ($bin) {
-		my $out = &backquote_command("$bin -v 2>&1");
-		if ($out =~ /(^|\n)PHP\s+([\d\.]+)/) {
-			$phpver = $2;
-			}
-		}
-	my $shortver = $phpver;
-	$shortver =~ s/^(\d+\.\d+).*$/$1/;
-	if ($shortver =~ /^5\./) {
-		$shortver = "5";
-		}
+	my ($phpver, $shortver, $bin) =
+		&get_php_info($name, $software::packages{$i,'version'});
 	push(@rv, { 'name' => $software::packages{$i,'name'},
 		    'system' => $software::packages{$i,'system'},
 		    'ver' => $software::packages{$i,'version'},
