@@ -1049,7 +1049,7 @@ foreach my $p (@targets) {
 	next if (!@info);
 	my $err = &software::delete_package($p,
 		{ nodeps => 1,
-		  ( !$deb_want_deps ? ( depstoo => 1 ) : () ) });
+		  ( !$deb_want_deps ? ( depstoo => 1, purge => 1 ) : () ) });
 	return &html_strip($err) if ($err);
 	}
 return undef;
