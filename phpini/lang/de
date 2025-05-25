@@ -230,7 +230,7 @@ pkgs_ecannot=Sie haben keine Berechtigung, PHP-Pakete zu verwalten!
 pkgs_ecannot2=Softwarepakete können auf diesem System nicht verwaltet werden
 pkgs_nousers=Keine Domains
 pkgs_ucount=$1 Domains
-pkgs_newver=Zu installierendes PHP-Paket:
+pkgs_newver=Zu installierendes PHP-Paket
 pkgs_install=Jetzt installieren
 pkgs_return=PHP-Pakete
 

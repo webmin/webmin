@@ -53,7 +53,7 @@ if (&foreign_installed("package-updates")) {
 	print &ui_hr();
 	print &ui_form_start(
 		&get_webprefix()."/package-updates/update.cgi", "post");
-	print "<b>$text{'pkgs_newver'}</b>\n";
+	print "$text{'pkgs_newver'}&nbsp;\n";
 	print &ui_select("u", undef,
 		[ map { [ $_->{'name'},
 			  $_->{'name'}." (".$_->{'ver'}.")" ] } @newpkgs ]);

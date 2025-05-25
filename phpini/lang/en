@@ -230,7 +230,7 @@ pkgs_ecannot=You are not allowed to manage PHP packages!
 pkgs_ecannot2=Software packages cannot be managed on this system
 pkgs_nousers=No domains
 pkgs_ucount=$1 domains
-pkgs_newver=PHP package to install:
+pkgs_newver=PHP package to install
 pkgs_install=Install Now
 pkgs_return=PHP packages
 
