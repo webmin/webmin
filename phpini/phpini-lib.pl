@@ -943,34 +943,22 @@ for(my $i=0; $i<$n; $i++) {
 return @rv;
 }
 
-# list_available_php_packages([common])
+# list_available_php_packages()
 # Returns a list of hash refs, one per PHP version available, with the
 # following keys :
 # name - Package name
 # ver - Package version
+# shortver - Short PHP version
 # phpver - PHP version
 sub list_available_php_packages
 {
-my ($common) = @_;
 &foreign_require("package-updates");
 my @rv;
 foreach my $pkg (&package_updates::list_available()) {
 	my $name = $pkg->{'name'};
-	if ($common) {
-		next if ($name !~ /^(php(?:\d+(?:\.\d+)?)?(?:-php)?-common)$/);
-		}
-	else {
-		next if ($name !~ /^php(\d*)$/);
-		}
-        my $phpver = $pkg->{'version'};
-        $phpver =~ s/\-.*$//;
-	my $shortver = $phpver;
-	$shortver =~ s/^(\d+\.\d+).*$/$1/;
-	# Avoid overwriting system PHP provided by default repositories
-	next if (grep { $_->{'shortver'} eq $shortver } @rv);
-	if ($shortver =~ /^5\./) {
-		$shortver = "5";
-		}
+	next unless ($name =~ /^((?:rh-)?(php(?:\d[\d.]*)??)(?:-php)?-common|php\d*[\d.]*)$/);
+	$name = $2 || $1;
+	my ($phpver, $shortver, $bin) = &get_php_info($name, $pkg->{'version'});
 	push(@rv, { 'name' => $pkg->{'name'},
 		    'ver' => $pkg->{'version'},
 		    'shortver' => $shortver,
@@ -980,17 +968,18 @@ foreach my $pkg (&package_updates::list_available()) {
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 }
 
-# list_any_available_php_packages()
-# Returns a list of all available PHP packages, either common or standard,
-# sorted by version number. If no common packages are available, the
-# full PHP packages are used instead, mainly for non-Linux systems
-sub list_any_available_php_packages
+# list_best_available_php_packages()
+# Returns the best available PHP package for the system prioritizing common
+# packages on Linux distributions and normal PHP package name on FreeBSD
+sub list_best_available_php_packages
 {
-my @rv = &list_available_php_packages(1);
-if (!@rv) {
-	# If no common packages, then use the full PHP packages
-	@rv = &list_available_php_packages();
+my @rv = &list_available_php_packages();
+my %best;
+foreach my $pkg (@rv) {
+	$best{$pkg->{'shortver'}} //= $pkg;
+	$best{$pkg->{'shortver'}} = $pkg if ($pkg->{'name'} =~ /-common$/);
 	}
+@rv = values(%best) if (%best);
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 }
 

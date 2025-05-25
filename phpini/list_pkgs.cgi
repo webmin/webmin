@@ -50,8 +50,7 @@ if (@pkgs) {
 else {
 	print "<b>$text{'pkgs_none'}</b> <p>\n";
 	}
-
-my @newpkgs = grep { !$got{$_->{'name'}} } &list_any_available_php_packages();
+my @newpkgs = grep { !$got{$_->{'name'}} } &list_best_available_php_packages();
 if (@newpkgs && &foreign_installed("package-updates")) {
 	# Show form to install a new version
 	print &ui_hr();
