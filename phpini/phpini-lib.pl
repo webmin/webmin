@@ -1012,10 +1012,11 @@ my ($pkg) = @_;
 my @rv = map { $_->{'name'} }
 	     &list_all_php_module_packages($pkg->{'name'});
 my $base = $pkg->{'name'};
+$base =~ s/-php-common$//;
 $base =~ s/-common$//;
 my @poss = ( $base."-runtime", $base );
 foreach my $p (@poss) {
-	my @info = &software::package_info($p, $pkg->{'ver'});
+	my @info = &software::package_info($p);
 	next if (!@info);
 	push(@rv, $p);
 	}
