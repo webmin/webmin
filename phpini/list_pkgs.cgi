@@ -57,6 +57,8 @@ if (@newpkgs && &foreign_installed("package-updates")) {
 		&get_webprefix()."/package-updates/update.cgi", "post");
 	print "$text{'pkgs_newver'}&nbsp;\n";
 	&extend_installable_php_packages(\@newpkgs);
+	# Largest version on top
+	@newpkgs = sort { $b->{'phpver'} cmp $a->{'phpver'} } @newpkgs;
 	print &ui_select("u", undef,
 		[ map { [ $_->{'name'},
 			  "PHP $_->{'shortver'}" ] } @newpkgs ]);
