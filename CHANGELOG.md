@@ -1,10 +1,18 @@
 ## Changelog
 
-#### 2.400 (May 24, 2025)
-* Added built-in support for forgotten password recovery
-* Fixed bugs with IPv6 interface creation on systems using Network Manager
-* Improved security of single-use login links
-* Added support for SSL certificates and DNS over TLS in the BIND module
+#### 2.400 (May 25, 2025)
+* Add built-in support for forgotten password recovery
+* Add support for SSL certificates and DNS over TLS in the BIND module
+* Add support to configure listen for any type of address in Dovecot module
+* Add display of the PHP binary and its version in the PHP Configuration module
+* Add TOML as editable format in the File Manager module
+* Add support for template variables in help pages
+* Improve security of single-use login links
+* Fix Linux systems to show human-readable timestamps in the System Logs module
+* Fix to prefer JSON::XS over JSON::PP if available for better performance
+* Fix bugs with IPv6 interface creation on systems using Network Manager
+* Fix to address the security issue in the System Documentation module
+
 
 #### 2.303 (March 14, 2025)
 * Fix permissions error when attempting to open a temp file for writing
