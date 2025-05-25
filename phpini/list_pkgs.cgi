@@ -7,7 +7,7 @@ $access{'global'} || &error($text{'pkgs_ecannot'});
 
 &ui_print_header(undef, $text{'pkgs_title'}, "");
 
-my @pkgs = &list_php_base_packages();
+my @pkgs = &list_any_php_base_packages();
 my %got;
 if (@pkgs) {
 	my $vmap = &get_virtualmin_php_map();
@@ -51,13 +51,21 @@ else {
 	print "<b>$text{'pkgs_none'}</b> <p>\n";
 	}
 
-if (&foreign_installed("package-updates")) {
+my @newpkgs = grep { !$got{$_->{'name'}} } &list_any_available_php_packages();
+if (@newpkgs && &foreign_installed("package-updates")) {
 	# Show form to install a new version
-	@newpkgs = grep { !$got{$_->{'name'}} } &list_available_php_packages();
 	print &ui_hr();
 	print &ui_form_start(
 		&get_webprefix()."/package-updates/update.cgi", "post");
 	print "$text{'pkgs_newver'}&nbsp;\n";
+	# Always install -cli package, along with the common package
+	foreach my $pkg (@newpkgs) {
+		if ($pkg->{'name'} =~ /-common$/) {
+			my $pkg_cli = $pkg->{'name'};
+			$pkg_cli =~ s/-common$/-cli/;
+			$pkg->{'name'} .= " $pkg_cli";
+			}
+		}
 	print &ui_select("u", undef,
 		[ map { [ $_->{'name'},
 			  "PHP $_->{'shortver'}" ] } @newpkgs ]);

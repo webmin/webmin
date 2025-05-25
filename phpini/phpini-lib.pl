@@ -866,7 +866,7 @@ else {
 return @poss;
 }
 
-# list_php_base_packages()
+# list_php_base_packages([common])
 # Returns a list of hash refs, one per PHP version installed, with the
 # following keys :
 # name - Package name
@@ -875,13 +875,19 @@ return @poss;
 # phpver - PHP version
 sub list_php_base_packages
 {
+my ($common) = @_;
 &foreign_require("software");
 my $n = &software::list_packages();
 my @rv;
 my %done;
 for(my $i=0; $i<$n; $i++) {
 	my $name = $software::packages{$i,'name'};
-	next if ($name !~ /^(php\d*)(-php|-runtime)?$/);
+	if ($common) {
+		next if ($name !~ /^(php(?:\d+(?:\.\d+)?)?(?:-php)?-common)$/);
+		}
+	else {
+		next if ($name !~ /^php(\d*)$/);
+		}
 	$name = $1;
 	my $phpver = $software::packages{$i,'version'};
 	$phpver =~ s/\-.*$//;
@@ -914,19 +920,33 @@ for(my $i=0; $i<$n; $i++) {
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 }
 
+# list_any_php_base_packages()
+# Returns a list of all PHP base packages, either common or full,
+# sorted by version number. If no common packages are available, the
+# full PHP packages are used instead, mainly for non-Linux systems
+sub list_any_php_base_packages
+{
+my @rv = &list_php_base_packages(1);
+if (!@rv) {
+	# If no common packages, then use the full PHP packages
+	@rv = &list_php_base_packages();
+	}
+return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
+}
+
 # list_all_php_module_packages(base-package)
 # Returns all install packages for PHP extensions of a given base package
 sub list_all_php_module_packages
 {
 my ($base) = @_;
-$base =~ s/(-php|-runtime)$//;
+$base =~ s/-common$//;
 my @rv;
 &foreign_require("software");
 my $n = &software::list_packages();
 for(my $i=0; $i<$n; $i++) {
 	my $name = $software::packages{$i,'name'};
 	next if ($name !~ /^\Q$base\E-/);
-	push(@rv, { 'name' => $software::packages{$i,'name'},
+	push(@rv, { 'name' => $name,
 		    'system' => $software::packages{$i,'system'},
 		    'ver' => $software::packages{$i,'version'},
 		  });
@@ -934,7 +954,7 @@ for(my $i=0; $i<$n; $i++) {
 return @rv;
 }
 
-# list_available_php_packages()
+# list_available_php_packages([common])
 # Returns a list of hash refs, one per PHP version available, with the
 # following keys :
 # name - Package name
@@ -942,15 +962,23 @@ return @rv;
 # phpver - PHP version
 sub list_available_php_packages
 {
+my ($common) = @_;
 &foreign_require("package-updates");
 my @rv;
 foreach my $pkg (&package_updates::list_available()) {
 	my $name = $pkg->{'name'};
-	next if ($name !~ /^php(\d*)$/);
+	if ($common) {
+		next if ($name !~ /^(php(?:\d+(?:\.\d+)?)?(?:-php)?-common)$/);
+		}
+	else {
+		next if ($name !~ /^php(\d*)$/);
+		}
         my $phpver = $pkg->{'version'};
         $phpver =~ s/\-.*$//;
 	my $shortver = $phpver;
 	$shortver =~ s/^(\d+\.\d+).*$/$1/;
+	# Avoid overwriting system PHP provided by default repositories
+	next if (grep { $_->{'shortver'} eq $shortver } @rv);
 	if ($shortver =~ /^5\./) {
 		$shortver = "5";
 		}
@@ -959,6 +987,20 @@ foreach my $pkg (&package_updates::list_available()) {
 		    'shortver' => $shortver,
                     'phpver' => $phpver,
 		  });
+	}
+return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
+}
+
+# list_any_available_php_packages()
+# Returns a list of all available PHP packages, either common or standard,
+# sorted by version number. If no common packages are available, the
+# full PHP packages are used instead, mainly for non-Linux systems
+sub list_any_available_php_packages
+{
+my @rv = &list_available_php_packages(1);
+if (!@rv) {
+	# If no common packages, then use the full PHP packages
+	@rv = &list_available_php_packages();
 	}
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 }
@@ -992,8 +1034,8 @@ my ($pkg) = @_;
 my @rv = map { $_->{'name'} }
 	     &list_all_php_module_packages($pkg->{'name'});
 my $base = $pkg->{'name'};
-$base =~ s/-php$//;
-my @poss = ( @modpkgs, $base."-php", $base."-runtime", $base );
+$base =~ s/-common$//;
+my @poss = ( $base."-runtime", $base );
 foreach my $p (@poss) {
 	my @info = &software::package_info($p, $pkg->{'ver'});
 	next if (!@info);
