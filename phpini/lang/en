@@ -226,6 +226,7 @@ pkgs_shortver=Short version
 pkgs_users=Used by
 pkgs_delete=Delete Selected Packages
 pkgs_none=No PHP packages were found on your system!
+pkgs_none2=No PHP versions were found on your system. Click the button below to install one, if available in your software package repository.
 pkgs_ecannot=You are not allowed to manage PHP packages!
 pkgs_ecannot2=Software packages cannot be managed on this system
 pkgs_nousers=No domains

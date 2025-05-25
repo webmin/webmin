@@ -3,25 +3,35 @@
 
 require './phpini-lib.pl';
 
+# Get install button
+my $install_button = &show_php_install_button();
+
+# Do we have PHP installed?
+my @pkgs = &list_php_base_packages();
+if (!@pkgs && $install_button) {
+	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+	&ui_print_endpage($text{'pkgs_none2'}."<br>".$install_button);
+	}
+
 # Get editable files
 @files = &list_php_configs();
 if (!@files) {
 	# User doesn't have access to any
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
-	&ui_print_endpage("$text{'index_eaccess'}<br>".
-			  &show_php_install_button());
+	&ui_print_endpage($text{'index_eaccess'}."<br>".
+			  $install_button);
 	}
 @files = grep { -r $_->[0] } @files;
 if (!@files) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	if ($access{'noconfig'}) {
-		&ui_print_endpage("$text{'index_efiles'}<br>".
-				  &show_php_install_button());
+		&ui_print_endpage($text{'index_efiles'}."<br>".
+				  $install_button);
 		}
 	else {
 		&ui_print_endpage(&text('index_efiles2',
 					"../config.cgi?$module_name")."<br>".
-				  &show_php_install_button());
+				  $install_button);
 		}
 	}
 
@@ -74,9 +84,10 @@ else {
 # Returns a button to install new PHP versions
 sub show_php_install_button
 {
+&load_theme_library();
 my $rv = '';
 if ($access{'global'} && &foreign_available("software")) {
-	$rv = &ui_hr();
+	$rv .= &ui_hr();
 	$rv .= &ui_buttons_start();
 	$rv .= &ui_buttons_row("list_pkgs.cgi",
 		$text{'index_pkgs'},
