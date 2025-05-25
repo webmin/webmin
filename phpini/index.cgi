@@ -37,7 +37,7 @@ else {
 				100, 0, \@tds);
 	foreach $f (@files) {
 		local @acts = ( "<a href='list_ini.cgi?file=".
-				&urlize($f->[0])."'>$text{'index_edit'}</a>" );
+				&urlize($f->[0])."'>$text{'index_medit'}</a>" );
 		if ($access{'manual'}) {
 			push(@acts, "<a href='edit_manual.cgi?file=".
 			    &urlize($f->[0])."'>$text{'index_manual'}</a>");
@@ -57,7 +57,7 @@ else {
 		print "$text{'index_anyfile'}&nbsp; \n";
 		print &ui_textbox("file", undef, 40)." ".
 		      &file_chooser_button("file")." ".
-		      &ui_submit($text{'index_edit'})."\n";
+		      &ui_submit($text{'index_medit'})."\n";
 		print &ui_form_end();
 		}
 

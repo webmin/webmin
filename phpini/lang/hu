@@ -2,7 +2,7 @@ index_title=PHP konfiguráció
 index_file=Konfigurációs fájl
 index_desc=Cél
 index_actions=Művelet
-index_edit=Beállítás
+index_medit=Beállítás
 index_manual=Kézi szerkesztés
 index_return=Konfigurációs fájlok
 

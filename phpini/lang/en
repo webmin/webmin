@@ -5,7 +5,7 @@ index_efiles2=No PHP configuration files were found. Adjust the <a href='$1'>mod
 index_file=Configuration file
 index_desc=Purpose
 index_actions=Actions
-index_edit=Manage
+index_medit=Manage
 index_manual=Edit Manually
 index_anyfile=Edit other PHP configuration file
 index_return=configuration files

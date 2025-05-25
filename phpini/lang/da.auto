@@ -5,7 +5,7 @@ index_efiles2=Ingen PHP-konfigurationsfiler blev fundet. Juster <a href='$1'>mod
 index_file=Konfigurationsfil
 index_desc=Formål
 index_actions=Handlinger
-index_edit=Styre
+index_medit=Styre
 index_manual=Rediger manuelt
 index_anyfile=Rediger anden PHP-konfigurationsfil
 index_return=konfigurationsfiler

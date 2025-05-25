@@ -5,7 +5,7 @@ index_efiles2=Tiada fail konfigurasi PHP ditemui. Laraskan <a href='$1'>konfigur
 index_file=Fail konfigurasi
 index_desc=Tujuan
 index_actions=Tindakan
-index_edit=Mengurus
+index_medit=Mengurus
 index_manual=Edit secara manual
 index_anyfile=Edit fail konfigurasi PHP lain
 index_return=fail konfigurasi

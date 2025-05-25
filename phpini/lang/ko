@@ -5,7 +5,7 @@ index_efiles2=PHP 설정 파일을 찾을 수 없습니다. <a href='$1'>모듈 
 index_file=설정 파일
 index_desc=사용처
 index_actions=작동
-index_edit=관리
+index_medit=관리
 index_manual=수동 편집
 index_return=설정 파일
 

@@ -5,7 +5,7 @@ index_efiles2=Inga PHP-konfigurationsfiler hittades. Justera <a href='$1'>modulk
 index_file=Konfigurationsfil
 index_desc=Ändamål
 index_actions=Handlingar
-index_edit=Klara av
+index_medit=Klara av
 index_manual=Redigera manuellt
 index_anyfile=Redigera annan PHP-konfigurationsfil
 index_return=konfigurationsfiler

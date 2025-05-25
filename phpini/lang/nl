@@ -5,7 +5,7 @@ index_efiles2=Geen PHP configuratie files zijn gevonden. Verander de <a href='$1
 index_file=Configuratie file
 index_desc=Doel
 index_actions=Acties
-index_edit=Beheer
+index_medit=Beheer
 index_manual=Bewerk Handmatig
 index_return=configuratie files
 

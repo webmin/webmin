@@ -5,7 +5,7 @@ index_efiles2=找不到PHP配置文件。調整<a href='$1'>模塊配置</a>，�
 index_file=配置文件
 index_desc=目的
 index_actions=動作
-index_edit=管理
+index_medit=管理
 index_manual=手動編輯
 index_anyfile=編輯其他 PHP 設定檔
 index_return=配置文件

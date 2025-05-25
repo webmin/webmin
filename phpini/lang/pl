@@ -5,7 +5,7 @@ index_efiles2=Nie znaleziono plików konfiguracji PHP. Ustaw poprawne ścieżki 
 index_file=Plik konfiguracyjny
 index_desc=Przeznaczenie
 index_actions=Działania
-index_edit=Zarządzaj
+index_medit=Zarządzaj
 index_manual=Edytuj ręcznie
 index_return=plików konfiguracyjnych
 
