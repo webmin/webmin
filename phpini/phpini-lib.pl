@@ -1034,21 +1034,27 @@ return @rv;
 }
 
 # extend_installable_php_packages(&packages)
-# Given a list of PHP packages to install, extends them to include packages
-# that are also has to be installed, such as -cli or -fpm
+# Given a list of PHP packages to install, create a new list with the version
+# and name to include packages that also need to be installed, such as -cli or
+# -fpm.
 sub extend_installable_php_packages
 {
 my ($pkgs) = @_;
+my @pkgs;
 my @extra = ('cli', 'fpm');
-foreach my $pkg (@$pkgs) {
-	if ($pkg->{'name'} =~ /-common$/) {
-		$pkg->{'name'} .= ' ' . join(' ',
+foreach my $pkg (@{$pkgs}) {
+	my $p = { 'name' => $pkg->{'name'},
+		  'ver'  => $pkg->{'shortver'} };
+	if ($p->{'name'} =~ /-common$/) {
+		$p->{'name'} .= ' ' . join(' ',
 		    map {
-			my $n = $pkg->{'name'};
-			$n =~ s/-common$/-$_/;
-			$n } @extra);
+		    	my $n = $p->{'name'};
+		    	$n =~ s/-common$/-$_/;
+		    	$n } @extra);
 		}
+	push(@pkgs, $p);
 	}
+return @pkgs;
 }
 
 # delete_php_base_package(&package, &installed)
