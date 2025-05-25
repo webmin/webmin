@@ -918,7 +918,7 @@ for(my $i=0; $i<$n; $i++) {
 		    'phpver' => $phpver,
 		    'binary' => $bin, });
 	}
-@rv = sort { $a->{'name'} cmp $b->{'name'} } @rv;
+@rv = sort { $b->{'name'} cmp $a->{'name'} } @rv;
 @rv = grep { !$done{$_->{'shortver'}}++ } @rv;
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 }
