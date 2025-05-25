@@ -866,7 +866,7 @@ else {
 return @poss;
 }
 
-# list_php_base_packages([common])
+# list_php_base_packages()
 # Returns a list of hash refs, one per PHP version installed, with the
 # following keys :
 # name - Package name
@@ -875,19 +875,13 @@ return @poss;
 # phpver - PHP version
 sub list_php_base_packages
 {
-my ($common) = @_;
 &foreign_require("software");
 my $n = &software::list_packages();
 my @rv;
 my %done;
 for(my $i=0; $i<$n; $i++) {
 	my $name = $software::packages{$i,'name'};
-	if ($common) {
-		next if ($name !~ /^(php(?:\d+(?:\.\d+)?)?(?:-php)?-common)$/);
-		}
-	else {
-		next if ($name !~ /^php(\d*)$/);
-		}
+	next unless ($name =~ /^((?:rh-)?php(?:\d[\d.]*)?(?:-php)?-common|php\d*[\d.]*)$/);
 	$name = $1;
 	my $phpver = $software::packages{$i,'version'};
 	$phpver =~ s/\-.*$//;
@@ -917,20 +911,6 @@ for(my $i=0; $i<$n; $i++) {
 	}
 @rv = sort { $a->{'name'} cmp $b->{'name'} } @rv;
 @rv = grep { !$done{$_->{'shortver'}}++ } @rv;
-return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
-}
-
-# list_any_php_base_packages()
-# Returns a list of all PHP base packages, either common or full,
-# sorted by version number. If no common packages are available, the
-# full PHP packages are used instead, mainly for non-Linux systems
-sub list_any_php_base_packages
-{
-my @rv = &list_php_base_packages(1);
-if (!@rv) {
-	# If no common packages, then use the full PHP packages
-	@rv = &list_php_base_packages();
-	}
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 }
 

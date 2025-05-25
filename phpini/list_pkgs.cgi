@@ -7,7 +7,7 @@ $access{'global'} || &error($text{'pkgs_ecannot'});
 
 &ui_print_header(undef, $text{'pkgs_title'}, "");
 
-my @pkgs = &list_any_php_base_packages();
+my @pkgs = &list_php_base_packages();
 my %got;
 if (@pkgs) {
 	my $vmap = &get_virtualmin_php_map();

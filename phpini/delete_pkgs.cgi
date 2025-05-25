@@ -12,7 +12,7 @@ my @d = split(/\0/, $in{'d'});
 my $vmap = &get_virtualmin_php_map();
 
 # Find all packages and check that they can be safely removed
-my @pkgs = &list_any_php_base_packages();
+my @pkgs = &list_php_base_packages();
 my @delpkgs;
 foreach my $name (@d) {
 	($pkg) = grep { $_->{'name'} eq $name } @pkgs;
