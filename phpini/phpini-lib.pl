@@ -918,6 +918,14 @@ for(my $i=0; $i<$n; $i++) {
 		    'phpver' => $phpver,
 		    'binary' => $bin, });
 	}
+# Fill in missing binary path for the default version that is later discarded
+# from the view
+my %bin;
+foreach my $pkg (@rv) {
+	$pkg->{'binary'} ||= $bin{$pkg->{'shortver'}};
+	$bin{$pkg->{'shortver'}} ||= $pkg->{'binary'};
+	}
+# Sort and remove duplicates
 @rv = sort { $b->{'name'} cmp $a->{'name'} } @rv;
 @rv = grep { !$done{$_->{'shortver'}}++ } @rv;
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
