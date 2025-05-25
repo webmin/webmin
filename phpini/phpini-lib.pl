@@ -1035,7 +1035,10 @@ my @extra = ('cli', 'fpm');
 foreach my $pkg (@$pkgs) {
 	if ($pkg->{'name'} =~ /-common$/) {
 		$pkg->{'name'} .= ' ' . join(' ',
-		    map {(my $n = $pkg->{'name'}) =~ s/-common$/-$_/r } @extra);
+		    map {
+			my $n = $pkg->{'name'};
+			$n =~ s/-common$/-$_/;
+			$n } @extra);
 		}
 	}
 }
