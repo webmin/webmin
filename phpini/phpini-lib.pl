@@ -881,8 +881,8 @@ my @rv;
 my %done;
 for(my $i=0; $i<$n; $i++) {
 	my $name = $software::packages{$i,'name'};
-	next unless ($name =~ /^((?:rh-)?php(?:\d[\d.]*)?(?:-php)?-common|php\d*[\d.]*)$/);
-	$name = $1;
+	next unless ($name =~ /^((?:rh-)?(php(?:\d[\d.]*)??)(?:-php)?-common|php\d*[\d.]*)$/);
+	$name = $2 || $1;
 	my $phpver = $software::packages{$i,'version'};
 	$phpver =~ s/\-.*$//;
 	my $bin;
