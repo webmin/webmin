@@ -1010,7 +1010,8 @@ my ($pkg) = @_;
 foreach my $p (&list_all_php_version_packages($pkg)) {
 	my @info = &software::package_info($p);
 	next if (!@info);
-	my $err = &software::delete_package($p, { 'nodeps' => 1 });
+	my $err = &software::delete_package($p,
+		{ 'nodeps' => 1, 'depstoo' => 1 });
 	if ($err) {
 		return &html_strip($err);
 		}
