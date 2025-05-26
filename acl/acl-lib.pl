@@ -88,6 +88,7 @@ while(my $l = <$fh>) {
 		$user{'modules'} = $acl{$user[0]};
 		$user{'lang'} = $gconfig{"lang_$user[0]"};
 		$user{'langauto'} = $gconfig{"langauto_$user[0]"};
+		$user{'langneutral'} = $gconfig{"langneutral_$user[0]"};
 		$user{'locale'} = $gconfig{"locale_$user[0]"};
 		$user{'dateformat'} = $gconfig{"dateformat_$user[0]"};
 		$user{'notabs'} = $gconfig{"notabs_$user[0]"};
@@ -707,6 +708,8 @@ else {
 	$gconfig{"lang_".$user->{'name'}} = $user->{'lang'} if ($user->{'lang'});
 	delete($gconfig{"langauto_".$username});
 	$gconfig{"langauto_".$user->{'name'}} = $user->{'langauto'} if (defined($user->{'langauto'}));
+	delete($gconfig{"langneutral_".$username});
+	$gconfig{"langneutral_".$user->{'name'}} = $user->{'langneutral'} if (defined($user->{'langneutral'}));
 	delete($gconfig{"locale_".$username});
 	$gconfig{"locale_".$user->{'name'}} = $user->{'locale'} if (defined($user->{'locale'}));
 	delete($gconfig{"dateformat_".$username});

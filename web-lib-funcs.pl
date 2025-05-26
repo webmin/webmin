@@ -5828,6 +5828,17 @@ if (!defined($auto)) {
 return $auto;
 }
 
+=head2 load_language_neutral()
+
+Returns 1 or 0, if *.neutral files should be used based on user preference
+
+=cut
+sub load_language_neutral
+{
+my $neutral = $gconfig{"langneutral_$remote_user"};
+return $neutral;
+}
+
 =head2 load_language([module], [directory])
 
 Returns a hashtable mapping text codes to strings in the appropriate language,
@@ -5848,6 +5859,7 @@ my %text;
 my $root = $root_directory;
 my $ol = $gconfig{'overlang'};
 my $auto = load_language_auto();
+my $neutral = load_language_neutral();
 my ($dir) = ($_[1] || "lang");
 
 # Read global lang files
@@ -5856,13 +5868,18 @@ foreach my $o (@lang_order_list) {
 	my $ok_auto;
 	$ok_auto = &read_file_cached_with_stat("$root/$dir/$o.auto", \%text) 
 		if ($auto && -r "$root/$dir/$o.auto");
-	return () if (!$ok && !$ok_auto && $o eq $default_lang);
+	my $ok_neutral;
+	$ok_neutral = &read_file_cached_with_stat("$root/$dir/$o.neutral", \%text) 
+		if ($neutral && -r "$root/$dir/$o.neutral");
+	return () if (!$ok && !$ok_auto && !$ok_neutral && $o eq $default_lang);
 	}
 if ($ol) {
 	foreach my $o (@lang_order_list) {
 		&read_file_cached("$root/$ol/$o", \%text);
 		&read_file_cached("$root/$ol/$o.auto", \%text) 
 			if ($auto && -r "$root/$ol/$o.auto");
+		&read_file_cached("$root/$ol/$o.neutral", \%text)
+			if ($neutral && -r "$root/$ol/$o.neutral");
 		}
 	}
 &read_file_cached("$config_directory/custom-lang", \%text);
@@ -5880,12 +5897,16 @@ if ($_[0]) {
 		&read_file_cached_with_stat("$mdir/$dir/$o", \%text);
 		&read_file_cached_with_stat("$mdir/$dir/$o.auto", \%text)
 			if($auto && -r "$mdir/$dir/$o.auto");
+		&read_file_cached_with_stat("$mdir/$dir/$o.neutral", \%text)
+			if($neutral && -r "$mdir/$dir/$o.neutral");
 		}
 	if ($ol) {
 		foreach my $o (@lang_order_list) {
 			&read_file_cached("$mdir/$ol/$o", \%text);
 			&read_file_cached("$mdir/$ol/$o.auto", \%text)
 				if ($auto && -r "$mdir/$ol/$o.auto");
+			&read_file_cached("$mdir/$ol/$o.neutral", \%text)
+				if ($neutral && -r "$mdir/$ol/$o.neutral");
 			}
 		}
 	&read_file_cached("$config_directory/$_[0]/custom-lang", \%text);
@@ -6070,6 +6091,7 @@ return () if ($mod =~ /^\./);
 my (%rv, $clone, $o);
 my $mdir = &module_root_directory($mod);
 my $auto = load_language_auto();
+my $neutral = load_language_neutral();
 &read_file_cached("$mdir/module.info", \%rv) || return ();
 if (-l $mdir) {
 	# A clone is a module that links to another directory under the root
@@ -6088,6 +6110,8 @@ foreach $o (@lang_order_list) {
 	&read_file_cached("$mdir/module.info.$o", \%rv);
 	&read_file_cached("$mdir/module.info.$o.auto", \%rv)
 		if ($auto && -r "$mdir/module.info.$o.auto");
+	&read_file_cached("$mdir/module.info.$o.neutral", \%rv)
+		if ($neutral && -r "$mdir/module.info.$o.neutral");
 	}
 
 # Apply desc_$LANG overrides
@@ -8976,9 +9000,14 @@ sub help_file
 my ($mod, $file, $forcedir) = @_;
 my $dir = $forcedir || &module_root_directory($mod)."/help";
 my $auto = load_language_auto();
+my $neutral = load_language_neutral();
 foreach my $o (@lang_order_list) {
 	my $lang = "$dir/$file.$o.html";
+	my $lang_neutral = "$dir/$file.$o.neutral.html";
 	my $lang_auto = "$dir/$file.$o.auto.html";
+	if ($neutral && -r $lang_neutral) {
+		return $lang_neutral;
+		}
 	if ($auto && !-r $lang && -r $lang_auto) {
 		return $lang_auto;
 		}
@@ -9011,6 +9040,7 @@ if (-r $zip) {
 	my @files;
 	foreach my $o (@lang_order_list) {
 		next if ($o eq "en");
+		push(@files, $file.".".$o.".neutral.html");
 		push(@files, $file.".".$o.".auto.html");
 		push(@files, $file.".".$o.".html");
 		}

@@ -36,6 +36,7 @@ my ($configref, $file, $module, $canconfig, $cbox, $section) = @_;
 my %config = %$configref;
 
 my $auto = $gconfig{"langauto_$remote_user"};
+my $neutral = $gconfig{"langneutral_$remote_user"};
 if (!defined($auto)) {
 my $glangauto = $gconfig{'langauto'};
 if (defined($glangauto)) {
@@ -55,6 +56,8 @@ foreach $o (@lang_order_list) {
 	&read_file("$file.$o", \%info, \@info_order);
 	&read_file("$file.$o.auto", \%info, \@info_order)
 		if ($auto && -r "$file.$o.auto");
+	&read_file("$file.$o.neutral", \%info, \@info_order)
+		if ($neutral && -r "$file.$o.neutral");
 	}
 
 # Call any config pre-load function

@@ -35,10 +35,12 @@ if ($access{'lang'}) {
 	if ($in{'lang_def'}) {
 		$user->{'lang'} = undef;
 		$user->{'langauto'} = undef;
+		$user->{'langneutral'} = undef;
 		}
 	else {
 		$user->{'lang'} = $in{'lang'};
 		$user->{'langauto'} = $in{'langauto'} ? 1 : 0;
+		$user->{'langneutral'} = $in{'langneutral'} ? 1 : 0;
 		}
 	}
 

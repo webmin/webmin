@@ -421,6 +421,7 @@ paginator_showing_start=Showing $1 to $2 of $3 items on page
 paginator_showing_end=of $1 pages
 paginator_nosearchrs=There are no results matching <tt>$1</tt> query
 
+langneutral_include=Include neutral translations
 langauto_include=Include machine translations
 
 file_truncated_message=fetched $1 of data, truncated $2 out of $3

@@ -36,14 +36,19 @@ if ($access{'lang'}) {
 		}
 	my $ulangused = ($ulang && $ulang ne $glang);
 	my $ulangauto = $user->{'langauto'};
+	my $ulangneutral = $user->{'langneutral'};
 	if (!defined($user->{'langauto'})) {
 		if ($ulangused) {
 			$ulangauto = $ulinfo->{'auto'};
-		} else {
+			}
+		else {
 			$ulangauto = defined($gconfig{"langauto"}) ? 
 				$gconfig{"langauto"} : $linfo->{'auto'};
+			}
 		}
-	}
+	if (!defined($user->{'langneutral'}) && $ulangused) {
+		$ulangneutral = $ulinfo->{'neutral'};
+		}
 	print &ui_table_row($text{'index_lang'},
 		&ui_radio("lang_def", $ulang ? 0 : 1,
 			  [ [ 1, &text('index_langglobal2', $linfo->{'desc'},
@@ -53,7 +58,8 @@ if ($access{'lang'}) {
 			   [ map { [ $_->{'lang'},
 				     $_->{'desc'} ] }
 			         &list_languages() ]) ." ". 
-		&ui_checkbox("langauto", 1, $text{'langauto_include'}, $ulangauto), 
+		&ui_checkbox("langneutral", 1, $text{'langneutral_include'}, $ulangneutral).
+		&ui_checkbox("langauto", 1, $text{'langauto_include'}, $ulangauto),
 		undef, [ "valign=top","valign=top" ]);
 	}
 
