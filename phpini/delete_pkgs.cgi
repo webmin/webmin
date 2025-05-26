@@ -31,6 +31,7 @@ foreach my $name (@d) {
 
 if (!$in{'confirm'}) {
 	# Find the packages first
+	print "<center>\n";
 	print &ui_form_start("delete_pkgs.cgi");
 	foreach my $d (@d) {
 		print &ui_hidden("d", $d);
@@ -42,6 +43,7 @@ if (!$in{'confirm'}) {
 	print &text('dpkgs_rusure',
 		join(" ", map { "<tt>$_</tt>" } @alldel)),"<p>\n";
 	print &ui_form_end([ [ 'confirm', $text{'pkgs_delete'} ] ]);
+	print "</center>\n";
 	}
 else {
 	# Actually do the deletion

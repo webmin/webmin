@@ -5,7 +5,7 @@ index_efiles2=No s'ha trobat cap fitxer de configuració de PHP. Ajusta la <a hr
 index_file=Fitxer de configuració
 index_desc=Propòsit
 index_actions=Accions
-index_edit=Gestiona
+index_medit=Gestiona
 index_manual=Edita Manualment
 index_return=als fitxers de configuració
 

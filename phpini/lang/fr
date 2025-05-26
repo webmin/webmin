@@ -5,7 +5,7 @@ index_efiles2=Aucun fichier de configuration PHP n'a été trouvé. Ajustez la <
 index_file=Fichier de configuration
 index_desc=Objectif
 index_actions=Actions
-index_edit=Gérer
+index_medit=Gérer
 index_manual=Modifier manuellement
 index_return=fichiers de configuration
 

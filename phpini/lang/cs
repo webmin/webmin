@@ -5,7 +5,7 @@ index_efiles2=Nebyly nalezeny žádné PHP konfigurační soubory. Opravte <a hr
 index_file=Konfigurační soubor
 index_desc=Účel
 index_actions=Akce
-index_edit=Spravovat
+index_medit=Spravovat
 index_manual=Upravit ručně
 index_return=konfigurační soubory
 

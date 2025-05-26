@@ -25,11 +25,15 @@ if (@pkgs) {
 		my $users;
 		if ($vmap) {
 			my $ulist = $vmap->{$pkg->{'shortver'}};
+			my $details = 
+				&ui_details({
+				class => 'inline',
+				html => 1,
+				title => &text('pkgs_ucount', scalar(@$ulist)),
+				content => join("<br>",
+				    map { "<tt>$_->{'dom'}</tt>" } @$ulist)});
 			$users = !$ulist || !@$ulist ? $text{'pkgs_nousers'} :
-				 @$ulist > 5 ? &text('pkgs_ucount',
-						     scalar(@$ulist)) :
-				    join(", ", map { "<tt>$_->{'dom'}</tt>" }
-						   @$ulist);
+				 $details;
 			}
 		print &ui_checked_columns_row([
 			$pkg->{'name'},
@@ -53,10 +57,10 @@ if (&foreign_installed("package-updates")) {
 	print &ui_hr();
 	print &ui_form_start(
 		&get_webprefix()."/package-updates/update.cgi", "post");
-	print "<b>$text{'pkgs_newver'}</b>\n";
+	print "$text{'pkgs_newver'}&nbsp;\n";
 	print &ui_select("u", undef,
 		[ map { [ $_->{'name'},
-			  $_->{'name'}." (".$_->{'ver'}.")" ] } @newpkgs ]);
+			  "PHP $_->{'shortver'}" ] } @newpkgs ]);
 	print &ui_hidden(
 		"redir", &get_webprefix()."/$module_name/list_pkgs.cgi");
 	print &ui_hidden("redirdesc", $text{'pkgs_title'});

@@ -5,7 +5,7 @@ index_efiles2=Es wurden keine PHP-Konfigurationsdateien gefunden. Passen Sie die
 index_file=Konfigurationsdatei
 index_desc=Verwendungszweck
 index_actions=Aktionen
-index_edit=Verwalten
+index_medit=Verwalten
 index_manual=Manuell bearbeiten
 index_anyfile=Andere PHP-Konfigurationsdatei bearbeiten
 index_return=Konfigurationsdateien
@@ -230,7 +230,7 @@ pkgs_ecannot=Sie haben keine Berechtigung, PHP-Pakete zu verwalten!
 pkgs_ecannot2=Softwarepakete können auf diesem System nicht verwaltet werden
 pkgs_nousers=Keine Domains
 pkgs_ucount=$1 Domains
-pkgs_newver=Zu installierendes PHP-Paket:
+pkgs_newver=Zu installierendes PHP-Paket
 pkgs_install=Jetzt installieren
 pkgs_return=PHP-Pakete
 

@@ -5,7 +5,7 @@ index_efiles2=Fant ingen PHP konfigurasjonsfiler. Juster <a href='$1'>modulkonfi
 index_file=Konfigurasjonsfil
 index_desc=Hensikt
 index_actions=Handlinger
-index_edit=Vedlikehold
+index_medit=Vedlikehold
 index_manual=Rediger manuelt
 index_return=konfigurasjonsfiler
 

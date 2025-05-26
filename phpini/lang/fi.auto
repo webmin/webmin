@@ -5,7 +5,7 @@ index_efiles2=PHP-määritystiedostoja ei löytynyt. Säädä <a href='$1'>moduu
 index_file=Asetustiedosto
 index_desc=Tarkoitus
 index_actions=Toiminnot
-index_edit=hoitaa
+index_medit=hoitaa
 index_manual=Muokkaa manuaalisesti
 index_anyfile=Muokkaa muuta PHP-asetustiedostoa
 index_return=kokoonpanotiedostot

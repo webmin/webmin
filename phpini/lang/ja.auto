@@ -5,7 +5,7 @@ index_efiles2=PHP構成ファイルが見つかりませんでした。 <a href=
 index_file=構成ファイル
 index_desc=目的
 index_actions=行動
-index_edit=管理する
+index_medit=管理する
 index_manual=手動で編集
 index_anyfile=他のPHP設定ファイルを編集する
 index_return=構成ファイル

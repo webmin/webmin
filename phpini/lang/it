@@ -5,7 +5,7 @@ index_efiles2=Non è stato trovato alcun file di configurazione di PHP. Modifica
 index_file=File di configurazione
 index_desc=Tipologia
 index_actions=Azioni
-index_edit=Modifica
+index_medit=Modifica
 index_manual=Modifica manualmente
 index_return=file di configurazione
 
