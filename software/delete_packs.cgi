@@ -21,17 +21,17 @@ foreach $d (split(/\0/, $in{'del'})) {
 
 if ($in{'sure'}) {
 	# do the deletion
-	print "<p>\n";
+	print "\n";
 	if (defined(&delete_packages)) {
 		# Can just use one function
 		print &text('deletes_desc', "<tt>".join(" ", @packs)."</tt>"),
-		      "<p>\n";
+		      "\n";
 		$error = &delete_packages(\@packs, \%in, \@vers);
 		if ($error) {
-			print "<b>",&text('deletes_failed2', $error),"</b><p>\n";
+			print &text('deletes_failed2', $error),"\n";
 			}
 		else {
-			print "$text{'deletes_success2'}<p>\n";
+			print "$text{'deletes_success2'}\n";
 			}
 		}
 	else {
@@ -39,7 +39,7 @@ if ($in{'sure'}) {
 		for($i=0; $i<@packs; $i++) {
 			$error = &delete_package($packs[$i], \%in, $vers[$i]);
 			if ($error) {
-				print "<b>",&text('deletes_failed1', "<tt>$packs[$i]</tt>", $error),"</b><br>\n";
+				print &text('deletes_failed1', "<tt>$packs[$i]</tt>", $error),"<br>\n";
 				}
 			else {
 				print &text('deletes_success1', "<tt>$packs[$i]</tt>"),"<br>\n";

@@ -14,7 +14,12 @@ if ($in{'sure'}) {
 	# do the deletion
 	&list_packages($p);
 	if ($error = &delete_package($p, \%in, $v)) {
-		&error($error);
+		&ui_print_header(undef, $text{'delete_title'}, "", "delete");
+		print &text('delete_err', "<tt>$p</tt> :<br>$error"),"\n";
+		&ui_print_footer(
+		    "edit_pack.cgi?search=$in{'search'}&package=".&urlize($p).
+		    "&version=".&urlize($v), $text{'edit_return'});
+		return;
 		}
 	&webmin_log("delete", "package", $p, { 'desc' => $packages{0,'desc'} });
 	if ($in{'search'}) {
