@@ -18,7 +18,6 @@ if (@pkgs) {
 				      $text{'pkgs_phpver'},
 				      $text{'pkgs_bin'},
 				      $vmap ? (
-					$text{'pkgs_shortver'},
 					$text{'pkgs_users'} ) : ( ),
 			        ], \@tds);
 	foreach my $pkg (@pkgs) {
@@ -40,9 +39,9 @@ if (@pkgs) {
 			$pkg->{'ver'},
 			$pkg->{'phpver'},
 			$pkg->{'binary'},
-			$vmap ? ( $pkg->{'shortver'}, $users ) : ( ),
+			$vmap ? ( $users ) : ( ),
 			], \@tds, "d", $pkg->{'name'});
-		$got{$pkg->{'name'}}++;
+		$got{$pkg->{'phpver'}}++;
 		}
 	print &ui_columns_end();
 	print &ui_form_end([ [ undef, $text{'pkgs_delete'} ] ]);
@@ -50,22 +49,26 @@ if (@pkgs) {
 else {
 	print "<b>$text{'pkgs_none'}</b> <p>\n";
 	}
-
 if (&foreign_installed("package-updates")) {
+	my @newpkgs = grep { !$got{$_->{'phpver'}} }
+		&list_best_available_php_packages();
 	# Show form to install a new version
-	@newpkgs = grep { !$got{$_->{'name'}} } &list_available_php_packages();
-	print &ui_hr();
-	print &ui_form_start(
-		&get_webprefix()."/package-updates/update.cgi", "post");
-	print "$text{'pkgs_newver'}&nbsp;\n";
-	print &ui_select("u", undef,
-		[ map { [ $_->{'name'},
-			  "PHP $_->{'shortver'}" ] } @newpkgs ]);
-	print &ui_hidden(
-		"redir", &get_webprefix()."/$module_name/list_pkgs.cgi");
-	print &ui_hidden("redirdesc", $text{'pkgs_title'});
-	print &ui_hidden("mode", "new");
-	print &ui_form_end([ [ undef, $text{'pkgs_install'} ] ]);
+	if (@newpkgs) {
+		print &ui_hr();
+		print &ui_form_start(
+			&get_webprefix()."/package-updates/update.cgi", "post");
+		print "$text{'pkgs_newver'}&nbsp;\n";
+		my @allpkgs = &extend_installable_php_packages(\@newpkgs);
+		@allpkgs = sort { $b->{'ver'} cmp $a->{'ver'} } @allpkgs;
+		print &ui_select("u", undef,
+			[ map { [ $_->{'name'},
+				"PHP $_->{'ver'}" ] } @allpkgs ]);
+		print &ui_hidden(
+			"redir", &get_webprefix()."/$module_name/list_pkgs.cgi");
+		print &ui_hidden("redirdesc", $text{'pkgs_title'});
+		print &ui_hidden("mode", "new");
+		print &ui_form_end([ [ undef, $text{'pkgs_install'} ] ]);
+		}
 	}
 
 &ui_print_footer("", $text{'index_return'});

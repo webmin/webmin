@@ -302,6 +302,32 @@ return -d $file1 ? $file1 :
        -d $file3 ? $file3 : undef;
 }
 
+# get_php_info(name, version)
+# Returns PHP version and short version, and the binary path
+sub get_php_info
+{
+my ($name, $version) = @_;
+$version =~ s/\-.*$//;
+my $bin;
+foreach my $b ($name, $name."-cgi", $name."-fpm", "php-".$version) {
+	if ($bin = &has_command($b)) {
+		last;
+		}
+	}
+if ($bin) {
+	my $out = &backquote_command("$bin -v 2>&1");
+	if ($out =~ /(^|\n)PHP\s+([\d\.]+)/) {
+		$version = $2;
+		}
+	}
+my $shortver = $version;
+$shortver =~ s/^(\d+\.\d+).*$/$1/;
+if ($shortver =~ /^5\./) {
+	$shortver = "5";
+	}
+return ($version, $shortver, $bin);
+}
+
 # get_php_ini_binary(file)
 # Given a php.ini path, try to guess the PHP command for it
 # Examples: 
@@ -881,27 +907,10 @@ my @rv;
 my %done;
 for(my $i=0; $i<$n; $i++) {
 	my $name = $software::packages{$i,'name'};
-	next if ($name !~ /^(php\d*)(-php|-runtime)?$/);
-	$name = $1;
-	my $phpver = $software::packages{$i,'version'};
-	$phpver =~ s/\-.*$//;
-	my $bin;
-	foreach my $b ($name, $name."-cgi", "php-".$phpver) {
-		if ($bin = &has_command($b)) {
-			last;
-			}
-		}
-	if ($bin) {
-		my $out = &backquote_command("$bin -v 2>&1");
-		if ($out =~ /(^|\n)PHP\s+([\d\.]+)/) {
-			$phpver = $2;
-			}
-		}
-	my $shortver = $phpver;
-	$shortver =~ s/^(\d+\.\d+).*$/$1/;
-	if ($shortver =~ /^5\./) {
-		$shortver = "5";
-		}
+	next unless ($name =~ /^((?:rh-)?(php(?:\d[\d.]*)??)(?:-php)?-common|php\d*[\d.]*)$/);
+	$name = $2 || $1;
+	my ($phpver, $shortver, $bin) =
+		&get_php_info($name, $software::packages{$i,'version'});
 	push(@rv, { 'name' => $software::packages{$i,'name'},
 		    'system' => $software::packages{$i,'system'},
 		    'ver' => $software::packages{$i,'version'},
@@ -909,7 +918,15 @@ for(my $i=0; $i<$n; $i++) {
 		    'phpver' => $phpver,
 		    'binary' => $bin, });
 	}
-@rv = sort { $a->{'name'} cmp $b->{'name'} } @rv;
+# Fill in missing binary path for the default version that is later discarded
+# from the view
+my %bin;
+foreach my $pkg (@rv) {
+	$pkg->{'binary'} ||= $bin{$pkg->{'shortver'}};
+	$bin{$pkg->{'shortver'}} ||= $pkg->{'binary'};
+	}
+# Sort and remove duplicates
+@rv = sort { $b->{'name'} cmp $a->{'name'} } @rv;
 @rv = grep { !$done{$_->{'shortver'}}++ } @rv;
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 }
@@ -919,14 +936,14 @@ return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 sub list_all_php_module_packages
 {
 my ($base) = @_;
-$base =~ s/(-php|-runtime)$//;
+$base =~ s/-common$//;
 my @rv;
 &foreign_require("software");
 my $n = &software::list_packages();
 for(my $i=0; $i<$n; $i++) {
 	my $name = $software::packages{$i,'name'};
 	next if ($name !~ /^\Q$base\E-/);
-	push(@rv, { 'name' => $software::packages{$i,'name'},
+	push(@rv, { 'name' => $name,
 		    'system' => $software::packages{$i,'system'},
 		    'ver' => $software::packages{$i,'version'},
 		  });
@@ -939,6 +956,7 @@ return @rv;
 # following keys :
 # name - Package name
 # ver - Package version
+# shortver - Short PHP version
 # phpver - PHP version
 sub list_available_php_packages
 {
@@ -946,20 +964,32 @@ sub list_available_php_packages
 my @rv;
 foreach my $pkg (&package_updates::list_available()) {
 	my $name = $pkg->{'name'};
-	next if ($name !~ /^php(\d*)$/);
-        my $phpver = $pkg->{'version'};
-        $phpver =~ s/\-.*$//;
-	my $shortver = $phpver;
-	$shortver =~ s/^(\d+\.\d+).*$/$1/;
-	if ($shortver =~ /^5\./) {
-		$shortver = "5";
-		}
+	next unless ($name =~ /^((?:rh-)?(php(?:\d[\d.]*)??)(?:-php)?-common|php\d*[\d.]*)$/);
+	$name = $2 || $1;
+	# Skip meta packages on Debian and Ubuntu
+	next if ($pkg->{'version'} =~ /^([\d]+)/ && $1 > 40);
+	my ($phpver, $shortver, $bin) = &get_php_info($name, $pkg->{'version'});
 	push(@rv, { 'name' => $pkg->{'name'},
 		    'ver' => $pkg->{'version'},
 		    'shortver' => $shortver,
                     'phpver' => $phpver,
 		  });
 	}
+return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
+}
+
+# list_best_available_php_packages()
+# Returns the best available PHP package for the system prioritizing common
+# packages on Linux distributions and normal PHP package name on FreeBSD
+sub list_best_available_php_packages
+{
+my @rv = &list_available_php_packages();
+my %best;
+foreach my $pkg (@rv) {
+	$best{$pkg->{'shortver'}} //= $pkg;
+	$best{$pkg->{'shortver'}} = $pkg if ($pkg->{'name'} =~ /-common$/);
+	}
+@rv = values(%best) if (%best);
 return sort { &compare_version_numbers($a->{'ver'}, $b->{'ver'}) } @rv;
 }
 
@@ -992,29 +1022,51 @@ my ($pkg) = @_;
 my @rv = map { $_->{'name'} }
 	     &list_all_php_module_packages($pkg->{'name'});
 my $base = $pkg->{'name'};
-$base =~ s/-php$//;
-my @poss = ( @modpkgs, $base."-php", $base."-runtime", $base );
+$base =~ s/-php-common$//;
+$base =~ s/-common$//;
+my @poss = ( $base."-runtime", $base );
 foreach my $p (@poss) {
-	my @info = &software::package_info($p, $pkg->{'ver'});
+	my @info = &software::package_info($p);
 	next if (!@info);
 	push(@rv, $p);
 	}
 return @rv;
 }
 
-# delete_php_base_package(&package)
+# extend_installable_php_packages(&packages)
+# Given a list of PHP packages to install, create a new list with the version
+# and name to include packages that also need to be installed, such as -cli or
+# -fpm.
+sub extend_installable_php_packages
+{
+my ($pkgs) = @_;
+my @pkgs;
+my @extra = ('cli', 'fpm');
+foreach my $pkg (@{$pkgs}) {
+	my $p = { 'name' => $pkg->{'name'},
+		  'ver'  => $pkg->{'shortver'} };
+	$p->{'name'} .= ' '.join(' ', map { "$1-$_" } @extra)
+		if ($p->{'name'} =~ /^(.*)-common$/);
+	push(@pkgs, $p);
+	}
+return @pkgs;
+}
+
+# delete_php_base_package(&package, &installed)
 # Delete a PHP package, and return undef on success or an error on failure
 sub delete_php_base_package
 {
-my ($pkg) = @_;
-foreach my $p (&list_all_php_version_packages($pkg)) {
+my ($pkg, $installed) = @_;
+my @targets = &list_all_php_version_packages($pkg);
+my $deb_want_deps = (grep { $_ eq 'php-common' } @targets) && @{$installed} > 1;
+foreach my $p (@targets) {
 	my @info = &software::package_info($p);
 	next if (!@info);
 	my $err = &software::delete_package($p,
-		{ 'nodeps' => 1, 'depstoo' => 1 });
-	if ($err) {
-		return &html_strip($err);
-		}
+		{ nodeps => 1,
+		  purge => 1,
+		  ( !$deb_want_deps ? ( depstoo => 1 ) : () ) });
+	return &html_strip($err) if ($err);
 	}
 return undef;
 }
