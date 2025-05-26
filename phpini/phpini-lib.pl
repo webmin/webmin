@@ -1045,13 +1045,8 @@ my @extra = ('cli', 'fpm');
 foreach my $pkg (@{$pkgs}) {
 	my $p = { 'name' => $pkg->{'name'},
 		  'ver'  => $pkg->{'shortver'} };
-	if ($p->{'name'} =~ /-common$/) {
-		$p->{'name'} .= ' ' . join(' ',
-		    map {
-		    	my $n = $p->{'name'};
-		    	$n =~ s/-common$/-$_/;
-		    	$n } @extra);
-		}
+	$p->{'name'} .= ' '.join(' ', map { "$1-$_" } @extra)
+		if ($p->{'name'} =~ /^(.*)-common$/);
 	push(@pkgs, $p);
 	}
 return @pkgs;
