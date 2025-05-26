@@ -57,7 +57,7 @@ if ($access{'lang'}) {
 		&ui_select("lang", $ulang,
 			   [ map { [ $_->{'lang'},
 				     $_->{'desc'} ] }
-			         &list_languages() ]) ." ". 
+			         &list_languages() ]) ."<br> &nbsp;&nbsp;". 
 		&ui_checkbox("langneutral", 1, $text{'langneutral_include'}, $ulangneutral).
 		&ui_checkbox("langauto", 1, $text{'langauto_include'}, $ulangauto),
 		undef, [ "valign=top","valign=top" ]);
