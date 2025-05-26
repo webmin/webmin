@@ -67,7 +67,8 @@ if (&foreign_installed("package-updates")) {
 			"redir", &get_webprefix()."/$module_name/list_pkgs.cgi");
 		print &ui_hidden("redirdesc", $text{'pkgs_title'});
 		print &ui_hidden("mode", "new");
-		print &ui_form_end([ [ undef, $text{'pkgs_install'} ] ]);
+		print &ui_submit($text{'pkgs_install'});
+		print &ui_form_end();
 		}
 	}
 
