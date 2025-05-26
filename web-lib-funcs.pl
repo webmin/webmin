@@ -5865,22 +5865,17 @@ my ($dir) = ($_[1] || "lang");
 # Read global lang files
 foreach my $o (@lang_order_list) {
 	my $ok = &read_file_cached_with_stat("$root/$dir/$o", \%text);
-	my $ok_auto;
-	$ok_auto = &read_file_cached_with_stat("$root/$dir/$o.auto", \%text) 
-		if ($auto && -r "$root/$dir/$o.auto");
-	my $ok_neutral;
-	$ok_neutral =
-		&read_file_cached_with_stat("$root/$dir/$o.neutral", \%text) 
-			if ($neutral && -r "$root/$dir/$o.neutral");
+	my $ok_auto = $auto ?
+	    &read_file_cached_with_stat("$root/$dir/$o.auto", \%text) : 0;
+	my $ok_neutral = $neutral ?
+	    &read_file_cached_with_stat("$root/$dir/$o.neutral", \%text) : 0;
 	return () if (!$ok && !$ok_auto && !$ok_neutral && $o eq $default_lang);
 	}
 if ($ol) {
 	foreach my $o (@lang_order_list) {
 		&read_file_cached("$root/$ol/$o", \%text);
-		&read_file_cached("$root/$ol/$o.auto", \%text) 
-			if ($auto && -r "$root/$ol/$o.auto");
-		&read_file_cached("$root/$ol/$o.neutral", \%text)
-			if ($neutral && -r "$root/$ol/$o.neutral");
+		&read_file_cached("$root/$ol/$o.auto", \%text) if ($auto);
+		&read_file_cached("$root/$ol/$o.neutral", \%text) if ($neutral);
 		}
 	}
 &read_file_cached("$config_directory/custom-lang", \%text);
@@ -5897,17 +5892,17 @@ if ($_[0]) {
 	foreach my $o (@lang_order_list) {
 		&read_file_cached_with_stat("$mdir/$dir/$o", \%text);
 		&read_file_cached_with_stat("$mdir/$dir/$o.auto", \%text)
-			if($auto && -r "$mdir/$dir/$o.auto");
+			if ($auto);
 		&read_file_cached_with_stat("$mdir/$dir/$o.neutral", \%text)
-			if($neutral && -r "$mdir/$dir/$o.neutral");
+			if ($neutral);
 		}
 	if ($ol) {
 		foreach my $o (@lang_order_list) {
 			&read_file_cached("$mdir/$ol/$o", \%text);
 			&read_file_cached("$mdir/$ol/$o.auto", \%text)
-				if ($auto && -r "$mdir/$ol/$o.auto");
+				if ($auto);
 			&read_file_cached("$mdir/$ol/$o.neutral", \%text)
-				if ($neutral && -r "$mdir/$ol/$o.neutral");
+				if ($neutral);
 			}
 		}
 	&read_file_cached("$config_directory/$_[0]/custom-lang", \%text);
@@ -6109,10 +6104,8 @@ if (-l $mdir) {
 foreach $o (@lang_order_list) {
 	next if ($o eq "en");
 	&read_file_cached("$mdir/module.info.$o", \%rv);
-	&read_file_cached("$mdir/module.info.$o.auto", \%rv)
-		if ($auto && -r "$mdir/module.info.$o.auto");
-	&read_file_cached("$mdir/module.info.$o.neutral", \%rv)
-		if ($neutral && -r "$mdir/module.info.$o.neutral");
+	&read_file_cached("$mdir/module.info.$o.auto", \%rv) if ($auto);
+	&read_file_cached("$mdir/module.info.$o.neutral", \%rv) if ($neutral);
 	}
 
 # Apply desc_$LANG overrides
