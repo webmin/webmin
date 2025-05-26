@@ -1,0 +1,2 @@
+mods_desc=Auf dieser Seite können global PHP-Erweiterungen für Version $1 für alle Benutzer:innen auf diesem System aktiviert oder deaktiviert werden.
+acl_user=Dateien im Kontext von Benutzer:innen lesen und schreiben

@@ -1,0 +1,3 @@
+index_stopdesc=Beendet den laufenden Dovecot IMAP/POP3-Serverprozess. Dadurch wird verhindert, dass Benutzer:innen ihre E-Mails herunterladen können.
+index_startdesc=Startet den Dovecot IMAP/POP3-Serverprozess, damit Benutzer:innen ihre E-Mails herunterladen können.
+login_userdb=Datenquelle für Benutzer:innen, Home-Verzeichnisse und IDs

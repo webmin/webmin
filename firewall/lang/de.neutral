@@ -1,0 +1,4 @@
+desc_uid-owner=Absender ist Benutzer:in $1
+desc_uid-owner!=Absender ist nicht Benutzer:in $1
+edit_uidowner=Absendender UNIX-Benutzer:in
+save_euidowner=Fehlender oder ungültiger absendender UNIX-Benutzer:in

@@ -1,0 +1,17 @@
+index_startmsg=Klicken Sie auf diese Schaltfläche, um den SSH-Server zu starten. Bis er gestartet ist, können sich keine Benutzer:innen über SSH anmelden.
+index_stopmsg=Klicken Sie auf diese Schaltfläche, um den laufenden SSH-Server zu stoppen. Nach dem Stoppen können sich keine Benutzer:innen mehr über SSH anmelden, aber bestehende Verbindungen bleiben aktiv.
+users_expire=Tage vor Ablauf des Kontos, an denen der/die Benutzer:in gewarnt wird
+users_mail=Benutzer:in über neue E-Mails benachrichtigen?
+users_pexpire=Tage vor Ablauf des Passworts, an denen der/die Benutzer:in gewarnt wird
+users_rrhosts=<tt>.rhosts</tt>-Dateien für Root-Benutzer:in ignorieren?
+users_rrdef=Gleiche Einstellung wie für andere Benutzer:innen
+users_known=<tt>known_hosts</tt>-Dateien der Benutzer:innen ignorieren?
+access_allowu=Nur folgende Benutzer:innen zulassen
+access_denyu=Folgende Benutzer:innen sperren
+access_eallowu=Keine zulässigen Benutzer:innen eingegeben
+access_edenyu=Keine zu sperrenden Benutzer:innen eingegeben
+host_user=Anmeldung als Benutzer:in
+host_ask=Benutzer:in fragen
+sync_desc=Auf dieser Seite können Sie die automatische SSH-Einrichtung für neue Unix-Benutzer:innen auf Ihrem System konfigurieren. Wenn diese Option aktiviert ist, müssen neue Benutzer:innen <tt>ssh-keygen</tt> nicht ausführen, bevor sie SSH verwenden.
+sync_create=SSH-Schlüssel für neue Unix-Benutzer:innen einrichten?
+sync_gnupg=GNUPG-Schlüssel für neue Unix-Benutzer:innen einrichten.

@@ -1,0 +1,15 @@
+index_user=Eigentümer:in (Benutzer:in)
+index_group=Eigentümer:in (Gruppe)
+index_asuser=Als Benutzer:in
+upload_euser=Fehlender oder ungültiger Benutzer:innenname
+upload_eucannot=Sie dürfen keine Dateien als Benutzer:in $1 hochladen
+upload_egcannot=Die gewählte Gruppe enthält den gewählten Benutzer:in nicht
+download_eucannot=Sie dürfen keine Dateien als Benutzer:in $1 herunterladen
+download_egcannot=Die gewählte Gruppe enthält den gewählten Benutzer:in nicht
+cancel_ecannot=Sie dürfen keine Downloads für Benutzer:in $1 abbrechen
+acl_users=Darf Dateien als Benutzer:in hoch- und herunterladen
+acl_all=Alle Benutzer:innen
+acl_this=Aktuelle:r Webmin-Benutzer:in
+acl_only=Nur Benutzer:innen
+acl_except=Alle außer Benutzer:innen
+acl_home=Home-Verzeichnis des aktuellen Webmin-Benutzer:in einschließen

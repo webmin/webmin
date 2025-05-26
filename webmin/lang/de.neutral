@@ -1,0 +1,46 @@
+log_desc2=Wenn die Protokollierung aktiviert ist, schreibt Webmin außerdem ein detailliertes Protokoll über Benutzeraktionen in die Datei $1. Dieses Log kann mit dem Modul „Webmin-Aktionsprotokoll“ eingesehen und analysiert werden, um genau nachzuvollziehen, was jede:r Webmin-Benutzer:in getan hat.
+log_forusers=Benutzer:innen, deren Webmin-Aktionen protokolliert werden
+log_uall=Aktionen aller Benutzer:innen protokollieren
+ui_feedbackconfig=Allen Benutzer:innen erlauben,<br>Konfiguration im Feedback beizufügen?
+ui_sizeuser=Größe der Benutzer:in-Auswahl
+ui_sizeusers=Größe der Mehrfachbenutzer:in-Auswahl
+mods_grant2=Zugriff nur Benutzer:innen und Gruppen gewähren
+mods_grant1=Zugriff allen Webmin-Benutzer:innen gewähren
+mods_desc2=Wenn Sie mehrere Kopien desselben Moduls mit unterschiedlichen Konfigurationen verwenden möchten, können Sie mit dem Formular rechts ein bestehendes Modul klonen. Der Klon erhält einen neuen Namen, eine neue Konfiguration, neue Zugriffskontrolle und kann verschiedenen Benutzer:innen zugewiesen werden.
+delete_acls=Zugriffssteuerung für Benutzer:innen zurücksetzen?
+newkey_ecmd=Der SSL-Befehl $1 wurde auf Ihrem System nicht gefunden. Entweder ist er nicht installiert, oder die <a href='$2'>Konfiguration des Webmin-Benutzer:innen-Moduls</a> ist falsch.
+startpage_gotoone=Direkt zum Modul springen, wenn Benutzer:in nur ein Modul hat?
+upgrade_disc=Alle anderen Benutzer:innen trennen?
+newmod_desc=Wenn Webmin aktualisiert wird, werden neue Module in der neuen Version einem oder mehreren Benutzer:innen zugewiesen. Mit diesem Formular können Sie festlegen, welche Benutzer:innen neue Module erhalten. Diese Einstellung gilt sowohl beim Upgrade über die Befehlszeile als auch bei Verwendung des obigen Formulars.
+update_desc2=Mit diesem Formular können Sie die automatische Aktualisierung von Webmin-Modulen planen, die Fehler oder Sicherheitslücken enthalten, basierend auf der Seite <a href=http://www.webmin.com/updates.html>Webmin-Updates</a> oder aus einer anderen Quelle. Dieser Dienst ist nützlich, sollte jedoch mit Vorsicht verwendet werden, da bei einer Kompromittierung des Update-Servers potenziell Angreifer:innen Zugriff auf Ihr System erlangen könnten.
+ca_newmsg1=Ihr Webmin-Server ist bereits als Zertifizierungsstelle eingerichtet. Sie können dieses Formular erneut verwenden, aber alle bereits ausgestellten Zertifikate für Benutzer:innen werden danach nicht mehr funktionieren.
+ca_newmsg2=Dieses Formular dient dazu, Ihren Webmin-Server als Zertifizierungsstelle (CA) einzurichten, sodass Benutzer:innen Zertifikate über das Modul „Webmin-Benutzer:innen“ anfordern können, um sich ohne Login am Server zu authentifizieren.
+ca_oldmsg2=Wenn Sie bereits auf einem anderen Webmin-Server eine CA eingerichtet haben, können Sie dessen Zertifikat unten einfügen, anstatt eine neue CA einzurichten. So können Benutzer:innen des anderen Servers auch auf diesem erkannt werden.
+ca_setupok=Ihre Zertifizierungsstelle wurde erfolgreich eingerichtet. Benutzer:innen können jetzt über das Modul „Webmin-Benutzer:innen“ eigene Zertifikate anfordern.
+ca_stopmsg=Klicken Sie auf diese Schaltfläche, um zu verhindern, dass Webmin bestehende Zertifikate akzeptiert oder neue ausstellt. Benutzer:innen müssen sich dann wieder mit Benutzername und Passwort anmelden.
+ca_essleay=Der SSL-Administrationsbefehl $1 wurde auf Ihrem System nicht gefunden. Möglicherweise müssen Sie den Pfad in der Konfiguration des Moduls „Webmin-Benutzer:innen“ anpassen.
+session_desc1=Wenn aktiviert, schützen Passwort-Timeouts Ihren Webmin-Server vor Brute-Force-Angriffen, indem sie die Verzögerung zwischen fehlgeschlagenen Anmeldeversuchen für dieselbe:n Benutzer:in kontinuierlich erhöhen.
+session_blockuser=Benutzer:innen nach mehr als $1 fehlgeschlagenen Anmeldungen für $2 Sekunden blockieren
+session_localon=Login ohne Passwort erlauben für passende Benutzer:innen von localhost
+session_eblockuser_time=Fehlende oder ungültige Blockierungsdauer für Benutzer:in
+session_eblockuser_failures=Fehlende oder ungültige Anzahl fehlgeschlagener Anmeldungen für Benutzer:in
+session_pfile=Wenn PAM nicht verfügbar oder deaktiviert ist, Benutzer:innen und Passwörter aus Datei $1, Spalten $2 und $3 lesen
+session_epasswd_file=Ungültige UNIX-Benutzer:innendatei
+session_pmode0=Benutzer:innen mit abgelaufenem Passwort immer ablehnen
+session_pmode1=Benutzer:innen mit abgelaufenem Passwort immer erlauben
+session_pmode2=Benutzer:innen mit abgelaufenem Passwort zur Änderung auffordern
+session_blocklock=Auch Benutzer:innen mit fehlgeschlagenen Anmeldungen sperren
+session_passapi1=API für UNIX-Benutzer:innen aktiviert
+session_passurl=Wenn aktiviert, können Benutzer:innen-Passwörter über eine POST-Anfrage an $1 geändert werden
+anon_desc=Auf dieser Seite können Sie ausgewählten Webmin-Modulen und Pfaden Zugriff gewähren, ohne dass sich Clients anmelden müssen. Für jeden unten eingegebenen Modulpfad (z. B. <tt>/custom</tt> oder <tt>/passwd</tt>) müssen Sie auch eine:n Webmin-Benutzer:in angeben, dessen/deren Berechtigungen für den Zugriff verwendet werden.
+anon_desc2=Seien Sie beim Aktivieren des anonymen Zugriffs SEHR vorsichtig, da unzureichende IP-Zugriffskontrollen oder die Freigabe des falschen Moduls Angreifer:innen ermöglichen könnten, Ihr System zu übernehmen.
+anon_user=Webmin-Benutzer:in
+anon_euser=Fehlende oder ungültige:r Webmin-Benutzer:in für URL-Pfad '$1'
+mobile_themeglob=&lt;Benutzer:innenwahl oder globale Konfiguration&gt;
+blocked_title=Gesperrte Hosts und Benutzer:innen
+blocked_none=Es sind derzeit keine Hosts oder Benutzer:innen durch Webmin gesperrt.
+blocked_user=Webmin-Benutzer:in
+blocked_cleardesc=Klicken Sie auf diese Schaltfläche, um alle aktuellen Sperren für Hosts und Benutzer:innen aufzuheben, indem der Webmin-Serverprozess neu gestartet wird.
+twofactor_desc=Die Zwei-Faktor-Authentifizierung ermöglicht es Webmin-Benutzer:innen, beim Login ein zusätzliches Authentifizierungsgerät wie einen Einmalcode-Generator zu verwenden. Benutzer:innen müssen sich nach Aktivierung auf dieser Seite individuell beim gewählten Anbieter registrieren.
+twofactor_eusers=Zwei-Faktor-Authentifizierung kann nicht deaktiviert werden, da die folgenden Benutzer:innen derzeit registriert sind: $1
+twofactor_enrolllink=Sie können sich jetzt im Modul <a href='$1'>Webmin-Benutzer:innen</a> für die Zwei-Faktor-Authentifizierung registrieren.
