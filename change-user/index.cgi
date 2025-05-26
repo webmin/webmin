@@ -26,7 +26,8 @@ print &ui_table_start(undef, undef, 2);
 
 if ($access{'lang'}) {
 	# Show personal language
-	my $glang = $locale_auto || safe_language($gconfig{"lang"}) || $default_lang;
+	my $glang = $locale_auto ||
+		    safe_language($gconfig{"lang"}) || $default_lang;
 	my $ulang = safe_language($user->{'lang'});
 	my @langs = &list_languages();
 	my ($linfo) = grep { $_->{'lang'} eq $glang } @langs;
@@ -74,22 +75,29 @@ if ($access{'locale'}) {
 	if (!$@ && $] > 5.011) {
         my $locales = &list_locales();
         my %localesrev = reverse %{$locales};
-        my $locale = $locale_auto || $gconfig{'locale'} || &get_default_system_locale();
+        my $locale = $locale_auto || $gconfig{'locale'} ||
+		&get_default_system_locale();
         print &ui_table_row($text{'index_locale'},
         	&ui_radio("locale_def", defined($user->{'locale'}) ? 0 : 1,
-        		  [ [ 1, &text('index_localeglobal2', $locales->{$locale}, $locale)."<br>" ],
+        		  [ [ 1, &text('index_localeglobal2',
+			  	$locales->{$locale}, $locale)."<br>" ],
         		    [ 0, $text{'index_localeset'} ] ])." ".
         	&ui_select("locale", $user->{'locale'},
-        		[ map { [ $localesrev{$_}, $_ ] } sort values %{$locales} ] ), 
+        		[ map { [ $localesrev{$_}, $_ ] }
+				sort values %{$locales} ] ), 
         	undef, [ "valign=top","valign=top" ]);
         }
 	else {
 		my %wtext = &load_language('webmin');
 		print &ui_table_row($text{'index_locale2'},
-			&ui_radio("dateformat_def", defined($user->{'dateformat'}) ? 0 : 1,
-				  [ [ 1, &text('index_dateformatglobal2', $gconfig{'dateformat'} || "dd/mon/yyyy")."<br>" ],
+			&ui_radio("dateformat_def",
+				defined($user->{'dateformat'}) ? 0 : 1,
+				  [ [ 1, &text('index_dateformatglobal2',
+				  	$gconfig{'dateformat'} ||
+					"dd/mon/yyyy")."<br>" ],
 				    [ 0, $text{'index_dateformatset'} ] ])." ".
-			&ui_select("dateformat", $user->{'dateformat'} || "dd/mon/yyyy",
+			&ui_select("dateformat", $user->{'dateformat'} ||
+				   "dd/mon/yyyy",
 				[ map { [ $_, $wtext{'lang_dateformat_'.$_} ] }
                            @webmin::webmin_date_formats ] ), 
 			undef, [ "valign=top","valign=top" ]);
@@ -117,7 +125,9 @@ if ($access{'theme'}) {
 			  [ [ 1, &text('index_themeglobal', $tname)."<br>" ],
 			    [ 0, $text{'index_themeset'} ] ])." ".
 		&ui_select("theme", $user->{'theme'},
-			[ !$user->{'theme'} ? [ '', $text{'index_themedef'} ] : (),
+			[ !$user->{'theme'}
+				? [ '', $text{'index_themedef'} ]
+				: (),
 			  map { [ $_->{'dir'}, $_->{'desc'} ] }
 			      @themes ]), undef, [ "valign=top","valign=top" ]);
 
@@ -127,7 +137,8 @@ if ($access{'theme'}) {
 			&ui_select("overlay", $user->{'overlay'},
 				[ [ '', $text{'index_overlaydef'} ],
 				  map { [ $_->{'dir'}, $_->{'desc'} ] }
-				      @overlays ]), undef, [ "valign=middle","valign=middle" ]);
+				      @overlays ]),
+			undef, [ "valign=middle","valign=middle" ]);
 		}
 	}
 
@@ -139,7 +150,8 @@ if ($access{'pass'} && &can_change_pass($user)) {
 			    [ 0, $text{'index_passset'} ] ])." ".
 		&ui_password("pass", undef, 20)." ".
 		$text{'index_passagain'}." ".
-		&ui_password("pass2", undef, 20), undef, [ "valign=top","valign=middle" ]);
+		&ui_password("pass2", undef, 20), undef,
+			[ "valign=top","valign=middle" ]);
 	}
 
 print &ui_table_end();

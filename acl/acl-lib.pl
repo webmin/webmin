@@ -628,7 +628,8 @@ else {
 	delete($miniserv{"preroot_".$username});
 	if ($user->{'theme'}) {
 		$miniserv{"preroot_".$user->{'name'}} =
-		  $user->{'theme'}.($user->{'overlay'} ? " ".$user->{'overlay'} : "");
+		  $user->{'theme'}.($user->{'overlay'} ?
+		  	" ".$user->{'overlay'} : "");
 		}
 	elsif (defined($user->{'theme'})) {
 		$miniserv{"preroot_".$user->{'name'}} = "";
@@ -707,13 +708,17 @@ else {
 	delete($gconfig{"lang_".$username});
 	$gconfig{"lang_".$user->{'name'}} = $user->{'lang'} if ($user->{'lang'});
 	delete($gconfig{"langauto_".$username});
-	$gconfig{"langauto_".$user->{'name'}} = $user->{'langauto'} if (defined($user->{'langauto'}));
+	$gconfig{"langauto_".$user->{'name'}} = $user->{'langauto'}
+		if (defined($user->{'langauto'}));
 	delete($gconfig{"langneutral_".$username});
-	$gconfig{"langneutral_".$user->{'name'}} = $user->{'langneutral'} if (defined($user->{'langneutral'}));
+	$gconfig{"langneutral_".$user->{'name'}} = $user->{'langneutral'}
+		if (defined($user->{'langneutral'}));
 	delete($gconfig{"locale_".$username});
-	$gconfig{"locale_".$user->{'name'}} = $user->{'locale'} if (defined($user->{'locale'}));
+	$gconfig{"locale_".$user->{'name'}} = $user->{'locale'}
+		if (defined($user->{'locale'}));
 	delete($gconfig{"dateformat_".$username});
-	$gconfig{"dateformat_".$user->{'name'}} = $user->{'dateformat'} if (defined($user->{'dateformat'}));
+	$gconfig{"dateformat_".$user->{'name'}} = $user->{'dateformat'}
+		if (defined($user->{'dateformat'}));
 	delete($gconfig{"notabs_".$username});
 	$gconfig{"notabs_".$user->{'name'}} = $user->{'notabs'}
 		if ($user->{'notabs'});
@@ -726,7 +731,8 @@ else {
 	delete($gconfig{"theme_".$username});
 	if ($user->{'theme'}) {
 		$gconfig{"theme_".$user->{'name'}} =
-		  $user->{'theme'}.($user->{'overlay'} ? " ".$user->{'overlay'} : "");
+		  $user->{'theme'}.($user->{'overlay'} ?
+		  	" ".$user->{'overlay'} : "");
 		}
 	elsif (defined($user->{'theme'})) {
 		$gconfig{"theme_".$user->{'name'}} = '';

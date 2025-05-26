@@ -5869,8 +5869,9 @@ foreach my $o (@lang_order_list) {
 	$ok_auto = &read_file_cached_with_stat("$root/$dir/$o.auto", \%text) 
 		if ($auto && -r "$root/$dir/$o.auto");
 	my $ok_neutral;
-	$ok_neutral = &read_file_cached_with_stat("$root/$dir/$o.neutral", \%text) 
-		if ($neutral && -r "$root/$dir/$o.neutral");
+	$ok_neutral =
+		&read_file_cached_with_stat("$root/$dir/$o.neutral", \%text) 
+			if ($neutral && -r "$root/$dir/$o.neutral");
 	return () if (!$ok && !$ok_auto && !$ok_neutral && $o eq $default_lang);
 	}
 if ($ol) {
