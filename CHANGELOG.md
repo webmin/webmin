@@ -4,15 +4,25 @@
 * Add built-in support for forgotten password recovery
 * Add support for SSL certificates and DNS over TLS in the BIND module
 * Add support to configure listen for any type of address in Dovecot module
+* Add ability to manage available PHP packages directly from PHP Configuration module
+* Add ability to configure and show proper branding logo on the login page
 * Add display of the PHP binary and its version in the PHP Configuration module
+* Add improvements to MySQL/MariaDB module when editing users and privileges
+* Add support for AxoSyslog in System Logs NG module
 * Add TOML as editable format in the File Manager module
 * Add support for template variables in help pages
 * Improve security of single-use login links
-* Fix Linux systems to show human-readable timestamps in the System Logs module
+* Fix to check if local version of `mysqldump` supports `--set-gtid-purged` flag
+* Fix to respect option to copy new key and certificate to Webmin in the SSL Encryption module
+* Fix to use new API for auxiliary remote QR code generation
+* Fix to show human-readable timestamps for kernel log in the System Logs module
+* Fix to respect reverse order flag in the System Logs module
 * Fix to prefer JSON::XS over JSON::PP if available for better performance
 * Fix bugs with IPv6 interface creation on systems using Network Manager
 * Fix to address the security issue in the System Documentation module
-
+* Fix to use fast PRC mode by default in the Webmin Servers Index module
+* Fix Fail2Ban version detection
+* Fix to follow German translation rules that most people already accept
 
 #### 2.303 (March 14, 2025)
 * Fix permissions error when attempting to open a temp file for writing
