@@ -32,7 +32,7 @@ do {
 		}
 	local $flag = $pkg_get =~ /pkgutil$/ ? "-y" : "-f";
 	print &text('csw_install',
-			"<tt>$pkg_get -i $flag $update</tt>"),"<p>\n";
+			"<tt>$pkg_get -i $flag $update</tt>"),"\n";
 	$failed = 0;
 	$retry = 0;
 	print "<pre>";

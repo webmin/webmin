@@ -13,7 +13,7 @@ sub update_system_install
 local $update = $_[0] || $in{'update'};
 local (@rv, @newpacks);
 local $cmd = "urpmi --force --auto";
-print &text('urpmi_install', "<tt>$cmd $update</tt>"),"<p>\n";
+print &text('urpmi_install', "<tt>$cmd $update</tt>"),"\n";
 print "<pre>";
 &additional_log('exec', undef, "$cmd $update");
 local $qm = join(" ", map { quotemeta($_) } split(/\s+/, $update));

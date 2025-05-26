@@ -25,7 +25,7 @@ $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 local $uicmd = "$apt_get_command -y ".($force ? " -f" : "")." install $update";
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 local $cmd = "$apt_get_command -y ".($force ? " -f" : "")." install $update";
-print &text('apt_install', "<tt>".&html_escape($uicmd)."</tt>"),"<p>\n";
+print &text('apt_install', "<tt>".&html_escape($uicmd)."</tt>"),"\n";
 print "<pre>";
 &additional_log('exec', undef, $cmd);
 

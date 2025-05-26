@@ -72,7 +72,7 @@ foreach my $u (@updates) {
 		}
 	}
 
-print &text('yum_install', "<tt>".&html_escape($uicmd)."</tt>"),"<p>\n";
+print &text('yum_install', "<tt>".&html_escape($uicmd)."</tt>"),"\n";
 print "<pre>";
 &additional_log('exec', undef, $fullcmd);
 $SIG{'TERM'} = 'ignore';	# Installing webmin itself may kill this script
