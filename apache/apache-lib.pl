@@ -549,7 +549,7 @@ local($i, @old, $lref, $change, $len, $v);
 @old = &find_directive_struct($_[0], $_[2]);
 local @files;
 for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
-	$v = ${$_[1]}[$i];
+	$v = $i<@{$_[1]} ? $_[1]->[$i] : undef;
 	if ($i >= @old) {
 		# a new directive is being added. If other directives of this
 		# type exist, add it after them. Otherwise, put it at the end of
@@ -580,7 +580,8 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 			# in this section
 			local($f, %v, $j);
 			$f = $_[2]->[0]->{'file'};
-			for($j=0; $_[2]->[$j]->{'file'} eq $f; $j++) { }
+			for($j=0; $j < @{$_[2]} &&
+				  $_[2]->[$j]->{'file'} eq $f; $j++) { }
 			$lref = &read_file_lines($f);
 			if ($_[2] eq $_[3]) {
 				# Top-level, so add to the end of the file
