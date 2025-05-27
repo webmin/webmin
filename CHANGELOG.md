@@ -11,6 +11,7 @@
 * Add support for AxoSyslog in System Logs NG module
 * Add TOML as editable format in the File Manager module
 * Add support for template variables in help pages
+* Add support for enabling gender-neutral translations if supported by the language
 * Improve security of single-use login links
 * Fix to check if local version of `mysqldump` supports `--set-gtid-purged` flag
 * Fix to respect option to copy new key and certificate to Webmin in the SSL Encryption module
