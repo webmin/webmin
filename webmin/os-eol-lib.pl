@@ -84,7 +84,7 @@ if (!-r $eol_file) {
         }
 my $eol_data = &read_file_contents($eol_file);
 my $eol_json;
-eval { $eol_json = &convert_from_json($eol_data); };
+eval { $eol_json = &convert_from_json($eol_data, 1); };
 if ($@) {
         &error_stderr("Could not parse OS EOL data: $@");
         return undef;
