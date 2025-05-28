@@ -3,7 +3,7 @@ lang=bg,           charset=utf-8,  titles=1                             бълг
 lang=ca,           charset=utf-8,  titles=1,  auto=1                    català
 lang=cs,           charset=utf-8,  titles=0                             čeština
 lang=da,           charset=utf-8,  titles=1,  auto=1                    dansk
-lang=de,           charset=utf-8,  titles=1,  auto=1                    Deutsch
+lang=de,           charset=utf-8,  titles=1,  auto=1,   neutral=1       Deutsch
 lang=el,           charset=utf-8,  titles=0,  auto=1                    Ελληνικά
 lang=en,           charset=utf-8,  titles=1                             English
 lang=es,           charset=utf-8,  titles=1,  auto=1                    español

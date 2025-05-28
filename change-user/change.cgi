@@ -130,6 +130,6 @@ if ($access{'theme'} &&
 	print &js_redirect("/", "top");
 	print "$text{'change_done'}<p>\n";
 	}
-
-&ui_print_footer("/", $text{'index'});
-
+else {
+	&ui_print_footer("", $text{'index'});
+	}
