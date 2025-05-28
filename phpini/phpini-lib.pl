@@ -966,8 +966,11 @@ foreach my $pkg (&package_updates::list_available()) {
 	my $name = $pkg->{'name'};
 	next unless ($name =~ /^((?:rh-)?(php(?:\d[\d.]*)??)(?:-php)?-common|php\d*[\d.]*)$/);
 	$name = $2 || $1;
-	# Skip meta packages on Debian and Ubuntu
-	next if ($pkg->{'version'} =~ /^([\d]+)/ && $1 > 40);
+	# Skip the standard php-common meta package on Debian and Ubuntu, which
+	# never have a dash
+	next if ($pkg->{'system'} eq 'apt' &&
+		 $pkg->{'name'}   eq 'php-common' &&
+		 $pkg->{'version'} !~ /-/);
 	my ($phpver, $shortver, $bin) = &get_php_info($name, $pkg->{'version'});
 	push(@rv, { 'name' => $pkg->{'name'},
 		    'ver' => $pkg->{'version'},
