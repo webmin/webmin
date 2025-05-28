@@ -660,6 +660,7 @@ if ($newdir) {
 	}
 if ($olddir && $newdir) {
 	# Update in place
+	$newdir->{'words'} = &wsplit($newdir->{'value'});
 	if ($first) {
 		# Just changing first and last line, like virtualhost IP
 		$lref->[$olddir->{'line'}] = $newlines[0];
@@ -710,6 +711,7 @@ elsif (!$olddir && $newdir) {
 		$addpos--;
 		$addline = $pconf->[$addpos]->{'eline'}+1;
 		}
+	$newdir->{'words'} = &wsplit($newdir->{'value'});
 	$newdir->{'file'} = $file;
 	$newdir->{'line'} = $addline;
 	$newdir->{'eline'} = $addline + scalar(@newlines) - 1;
