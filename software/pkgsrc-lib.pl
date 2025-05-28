@@ -222,7 +222,7 @@ my @rv;
 # Build and show command to run
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 my $cmd = "pkgin -y install ".$update;
-print &text('pkgsrc_install', "<tt>$cmd</tt>"),"<p>\n";
+print &text('pkgsrc_install', "<tt>$cmd</tt>"),"\n";
 print "<pre>";
 &additional_log('exec', undef, $cmd);
 

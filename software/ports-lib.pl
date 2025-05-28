@@ -8,7 +8,7 @@ my ($update, $in) = @_;
 $update ||= $in{'update'};
 my (@rv, @newpacks);
 my @want = split(/\s+/, $update);
-print &text('ports_install', "<tt>$update</tt>"),"<p>\n";
+print &text('ports_install', "<tt>$update</tt>"),"\n";
 print "<pre>";
 my $err = 0;
 foreach my $w (@want) {

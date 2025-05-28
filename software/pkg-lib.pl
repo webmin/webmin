@@ -16,7 +16,7 @@ my $force = !$_[2];
 # Build and show command to run
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 my $cmd = "pkg install ".$update;
-print &text('pkg_install', "<tt>$cmd</tt>"),"<p>\n";
+print &text('pkg_install', "<tt>$cmd</tt>"),"\n";
 print "<pre>";
 &additional_log('exec', undef, $cmd);
 

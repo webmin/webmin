@@ -300,7 +300,7 @@ sub update_system_install
 local $update = $_[0] || $in{'update'};
 local $cmd = "emerge ".quotemeta($update);
 local @rv;
-print &text('emerge_install', "<tt>$cmd</tt>"),"<p>\n";
+print &text('emerge_install', "<tt>$cmd</tt>"),"\n";
 print "<pre>\n";
 &additional_log('exec', undef, $cmd);
 &open_execute_command(CMD, "$cmd 2>&1 </dev/null", 1);
