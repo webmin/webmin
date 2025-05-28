@@ -24,6 +24,7 @@
 * Fix to use fast PRC mode by default in the Webmin Servers Index module
 * Fix Fail2Ban version detection
 * Fix to follow German translation rules that most people already accept
+* Fix to correctly read EOL cache data
 
 #### 2.303 (March 14, 2025)
 * Fix permissions error when attempting to open a temp file for writing
