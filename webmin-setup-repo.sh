@@ -338,10 +338,21 @@ enforce_package_priority() {
   repo_pkg_pref=$1
   disttarget=$2
 
+  # Save and set IFS to newline only
+  old_ifs=$IFS
+  IFS='
+'
+  
   # Extract all entries for the target distribution
   for entry in $repo_pkg_pref; do
     case "$entry" in
       ${disttarget}:*)
+        # Extract the action and the rest of the entry
+        action=${entry#"$disttarget:"}
+        action=${action%%:*}
+        entry=${entry#"$disttarget:$action:"}
+        entry=$disttarget:$entry
+
         # Remove the prefix
         spec="${entry#"${disttarget}":}"
         
@@ -351,16 +362,19 @@ enforce_package_priority() {
         
         # Check if remainder is empty or just a package name
         if [ "$remainder" = "$spec" ]; then
-          echo "$package"
+          printf "%s\t%s %s %s\n" "${action:-}" "$package" "" ""
         else
           priority="${remainder%%=*}"
           version="${remainder#*=}"
           [ "$version" = "$remainder" ] && version=""
-          echo "$package ${priority:-} ${version:-}"
+          printf "%s\t%s %s %s\n" "${action:-}" "$package" "${priority:-}" "${version:-}"
         fi
         ;;
     esac
   done
+
+  # Restore IFS
+  IFS=$old_ifs
 }
 
 download_key() {
@@ -399,16 +413,29 @@ setup_repos() {
       cp -f "$repo_key" \
         "/etc/pki/rpm-gpg/RPM-GPG-KEY-$repo_key_suffix"
       echo "  .. done"
-      # Configure packages priority if provided
+      # Configure packages extra preferences if given
       if [ -n "$repo_pkg_prefs" ]; then
         repo_pkg_prefs_rs=$(enforce_package_priority "$repo_pkg_prefs" "rpm")
-        if [ $? -eq 0 ]; then
+        repo_extra_opts=$(printf '%s\n' "$repo_pkg_prefs_rs" | awk -F'\t' '
+          function trim(s) {
+            sub(/^[ \t]+/, "", s)
+            sub(/[ \t]+$/, "", s)
+            return s
+          }
+          {
+            key = trim($1)
+            val = trim($2)
+            if (key in opts)
+              opts[key] = opts[key] " " val
+            else
+              opts[key] = val
+          }
+          END {
+            for (k in opts)
+              printf "%s=%s\n", k, trim(opts[k])
+          }')
+        if [ -n "$repo_pkg_prefs_rs" ]; then
           echo "  Setting up package exclusion for repository .."
-          package=$(echo "$repo_pkg_prefs_rs" | awk '{print $1}')
-          repo_extra_opts="exclude=$package"
-          echo "  .. done"
-        else
-          echo "  Cleaning up package priority configuration .."
           echo "  .. done"
         fi
       fi
@@ -456,34 +483,37 @@ EOF
         : > "$debian_repo_prefs"
         
         # Process all matching packages
-        package_output=$(enforce_package_priority "$repo_pkg_prefs" "deb")
-        
-        if [ -n "$package_output" ]; then
-          echo "  Setting up package priority for repository .."
-          
-          # Process the output
-          echo "$package_output" | while read -r package priority version; do
-            if [ -n "$package" ]; then
-              # Build the pin type
+        pkg_lines=$(enforce_package_priority "$repo_pkg_prefs" "deb")
+        tab=$(printf '\t')
+        while IFS="$tab" read -r action rest || [ -n "$action" ]; do
+          [ -n "$action" ] || continue
+          # shellcheck disable=SC2086
+          IFS=' ' set -- $rest
+          package=$1
+          priority=$2
+          version=$3
+          [ -n "$package" ] || continue
+          # Process the action
+          case $action in
+            # Set package priority
+            pin)
               if [ -n "$version" ]; then
-                pin_line="Pin: version /$version\$/"
+                  pin_line="Pin: version /$version\$/"
               else
-                pin_line="Pin: release *"
+                  pin_line="Pin: release *"
               fi
-              
-              # Write the block to the preferences file
-              cat >> "$debian_repo_prefs" << EOF
+              cat >> "$debian_repo_prefs" <<EOF
 Package: $package
 $pin_line
 Pin-Priority: ${priority:-500}
 
 EOF
-            fi
-          done
-          
-          echo "  .. done"
-        fi
-      else
+            ;;
+          esac
+      done <<EOF
+$pkg_lines
+EOF
+      elif [ -f "$debian_repo_prefs" ]; then
         echo "  Cleaning up package priority configuration .."
         rm -f "$debian_repo_prefs"
         echo "  .. done"
