@@ -338,22 +338,29 @@ enforce_package_priority() {
   repo_pkg_pref=$1
   disttarget=$2
 
-  # Extract the relevant entries for the target distribution
-  match=$(echo "$repo_pkg_pref" | grep -o "${disttarget}:[^ =]*[^ ]*")
-
-  if [ -n "$match" ]; then
-    # Extract the package name
-    package=$(echo "$match" | sed -e "s/^${disttarget}:\([^=]*\).*/\1/")
-    # Extract the priority and version parameters (if present)
-    priority=$(echo "$match" | sed -n -e "s/^${disttarget}:[^=]*=\([^=]*\)=.*$/\1/p")
-    version=$(echo "$match" | sed -n -e "s/^${disttarget}:[^=]*=[^=]*=\(.*\)$/\1/p")
-
-    # Output package, priority, and version parameters (empty if not present)
-    echo "$package ${priority:-} ${version:-}"
-    return 0
-  fi
-
-  return 1
+  # Extract all entries for the target distribution
+  for entry in $repo_pkg_pref; do
+    case "$entry" in
+      ${disttarget}:*)
+        # Remove the prefix
+        spec="${entry#"${disttarget}":}"
+        
+        # Parse package=priority=version format
+        package="${spec%%=*}"
+        remainder="${spec#*=}"
+        
+        # Check if remainder is empty or just a package name
+        if [ "$remainder" = "$spec" ]; then
+          echo "$package"
+        else
+          priority="${remainder%%=*}"
+          version="${remainder#*=}"
+          [ "$version" = "$remainder" ] && version=""
+          echo "$package ${priority:-} ${version:-}"
+        fi
+        ;;
+    esac
+  done
 }
 
 download_key() {
@@ -445,18 +452,36 @@ EOF
       # Configure packages priority if provided
       debian_repo_prefs="/etc/apt/preferences.d/$repoid_debian_like-$repo_dist-package-priority"
       if [ -n "$repo_pkg_prefs" ]; then
-        repo_pkg_prefs_rs=$(enforce_package_priority "$repo_pkg_prefs" "deb")
-        if [ $? -eq 0 ]; then
+        # Clear the file first
+        : > "$debian_repo_prefs"
+        
+        # Process all matching packages
+        package_output=$(enforce_package_priority "$repo_pkg_prefs" "deb")
+        
+        if [ -n "$package_output" ]; then
           echo "  Setting up package priority for repository .."
-          package=$(echo "$repo_pkg_prefs_rs" | awk '{print $1}')
-          priority=$(echo "$repo_pkg_prefs_rs" | awk '{print $2}')
-          version=$(echo "$repo_pkg_prefs_rs" | awk '{print $3}')
-          cat << EOF > "$debian_repo_prefs"
+          
+          # Process the output
+          echo "$package_output" | while read -r package priority version; do
+            if [ -n "$package" ]; then
+              # Build the pin type
+              if [ -n "$version" ]; then
+                pin_line="Pin: version /$version\$/"
+              else
+                pin_line="Pin: release *"
+              fi
+              
+              # Write the block to the preferences file
+              cat >> "$debian_repo_prefs" << EOF
 Package: $package
-Pin: version /$version\$/
-Pin-Priority: $priority
+$pin_line
+Pin-Priority: ${priority:-500}
+
 EOF
-        echo "  .. done"
+            fi
+          done
+          
+          echo "  .. done"
         fi
       else
         echo "  Cleaning up package priority configuration .."
