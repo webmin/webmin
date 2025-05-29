@@ -68,8 +68,9 @@ my $lock_supported = &get_account_lock_support();
 # Old way for checking account locking
 my $locked = $u->[$fieldmap{'account_locked'}] eq 'Y';
 # New account locking check
-if (!exists($fieldmap{'account_locked'}) ||
-    !defined($u->[$fieldmap{'account_locked'}])) {
+if (!$in{'new'} &&
+    (!exists($fieldmap{'account_locked'}) ||
+     !defined($u->[$fieldmap{'account_locked'}]))) {
 	$locked = &get_account_lock_status($u->[1], $u->[0]);
 	}
 print &ui_table_row($text{'user_pass'},
