@@ -367,7 +367,7 @@ mapping_delete=انتخاب شده را پاک کن
 mapping_cmt=شرح
 mapping_ecannot=You are only allowed to edit maps under $1
 new_mapping=یک نقشه برداری جدید اضافه کنید.
-new_mappingmsg=Ø¨Ø±Ø§Û Ø§ÛØ¬Ø§Ø¯ ÙÙØ´Ù‌Ø¨Ø±Ø¯Ø§Ø±Û Ø¬Ø¯ÛØ¯ Ø±ÙÛ Ø§ÛÙ Ø¯Ú©ÙÙ Ú©ÙÛÚ© Ú©ÙÛØ¯
+new_mappingmsg=برای ایجاد یک نگاشت جدید، روی این دکمه کلیک کنید
 new_manual=نقشه را به صورت دستی ویرایش کنید
 new_manualmsg=برای ویرایش دستی پرونده هایی که از این نقشه ساخته شده است ، روی این دکمه کلیک کنید.
 map_save=نقشه برداری را ذخیره کنید
@@ -383,7 +383,7 @@ help_map_format=از چه فرمی باید استفاده کنم؟
 map_noname=نام نقشه ناموجود یا نامعتبر است
 map_cannot=This map cannot be edited : $1
 map_unknown=Webmin does not support the map type $1
-mapping_none=ÙÙÙØ² ÙÙØ´Ù‌Ø§Û Ø§Ø² Ø§ÛÙ ÙÙØ¹ ØªØ¹Ø±ÛÙ ÙØ´Ø¯Ù Ø§Ø³Øª.
+mapping_none=هنوز هیچ نگاشتی از این نوع تعریف نشده است.
 mapping_toomany=There are $1 map entries, which is above the display limit of $2.
 mapping_find=نمایش تطبیق نگاشت ها:
 mapping_search=جستجو کردن
@@ -678,7 +678,7 @@ body_return=چک های بدن
 dependent_title=نقشه برداری حمل و نقل وابسته به فرستنده
 dependent_ecannot=شما مجاز به ویرایش نقشه های حمل و نقل وابسته به فرستنده نیستید
 dependent_eregexp=The sender dependent transports map must be in the format <tt>regexp:</tt><i>filename</i>
-dependent_return=ÙÙØ´Ù‌ÙØ§Û Ø­ÙÙ Ù ÙÙÙ ÙØ§Ø¨Ø³ØªÙ Ø¨Ù ÙØ±Ø³ØªÙØ¯Ù
+dependent_return=نگاشت‌های انتقال وابسته به فرستنده
 
 manual_title=پرونده نقشه را ویرایش کنید
 manual_file=یک فایل نقشه را برای ویرایش انتخاب کنید:

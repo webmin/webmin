@@ -8,7 +8,7 @@ index_header=جستجوی راهنمای جهانی وبمین
 index_return=فرم جستجو
 
 search_err=جستجو ناموفق بود
-search_eterms=Ø¹Ø¨Ø§Ø±Øª‌ÙØ§Û Ø¬Ø³ØªØ¬Ù ÙØ¬ÙØ¯ ÙØ¯Ø§Ø±Ø¯
+search_eterms=عبارات جستجوی گم‌شده
 search_emods=هیچ ماژولی انتخاب نشده است
 search_title=نتایج جستجو
 search_einclude=شامل $1 نشد

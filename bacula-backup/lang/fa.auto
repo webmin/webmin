@@ -254,7 +254,7 @@ storage_title1=Daemon Storage را ایجاد کنید
 storage_title2=ویرایش ذخیره سازی Daemon
 storage_header=جزئیات شبح ذخیره سازی از راه دور
 storage_egone=Daemon ذخیره سازی دیگر وجود ندارد!
-storage_name=ÙØ§Ù ÙÙÙÙÙ‌Û Ø°Ø®ÛØ±Ù Ø³Ø§Ø²Û
+storage_name=نام دیمن ذخیره‌سازی
 storage_address=نام میزبان یا آدرس IP
 storage_port=پورت SD Bacula
 storage_pass=رمز عبور Bacula SD
@@ -482,7 +482,7 @@ log_delete_fdirector=مدیر مدیر Daemon پرونده$1 حذف شد
 log_delete_fdirectors=$1 کارگردانان Daemon پرونده حذف شد
 log_create_sdirector=مدیر Daemon ذخیره سازی$1 ایجاد شد
 log_modify_sdirector=مدیر Daemon ذخیره سازی اصلاح شده$1
-log_delete_sdirector=ÙØ¯ÛØ± Daemon ÙØ¶Ø§Û Ø°Ø®ÛØ±Ù‌Ø³Ø§Ø²Û$1 Ø­Ø°Ù Ø´Ø¯
+log_delete_sdirector=مدیر دیمن ذخیره‌سازی $1 حذف شد
 log_delete_sdirectors=مدیر$1 شبنم ذخیره سازی حذف شد
 log_stop=daemons Bacula متوقف شد
 log_start=Daemons Bacula را شروع کرد
