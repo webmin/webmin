@@ -40,33 +40,21 @@ my ($force_theme, $rpmdepends, $rpmrecommends, $no_prefix, $set_prefix, $vendor,
 while(@ARGV) {
 	# XXX Untainting isn't needed when running as non-root?
 	my $a = &untaint(shift(@ARGV));
-	if ($a eq "--force-theme") {
-		$force_theme = 1;
-		}
-	elsif ($a eq "--rpm-dir") {
-		$basedir = &untaint(shift(@ARGV));
-		}
-	elsif ($a eq "--licence" || $a eq "--license") {
-		$licence = &untaint(shift(@ARGV));
-		}
-	elsif ($a eq "--rpm-depends") {
+	if ($a eq "--rpm-depends") {
 		$rpmdepends = 1;
 		}
 	elsif ($a eq "--rpm-recommends") {
 		$rpmrecommends = 1;
 		}
-	elsif ($a eq "--no-prefix") {
-		$no_prefix = 1;
-		}
-	elsif ($a eq "--prefix") {
-		$set_prefix = &untaint(shift(@ARGV));
-		}
-	elsif ($a eq "--vendor") {
-		$vendor = &untaint(shift(@ARGV));
-		}
 	# --recommends, --suggests, --conflicts, --provides and --obsoletes are
 	# not for Webmin modules, and not meant to have prefix, and populated
 	# from module.info automatically
+	elsif ($a eq "--no-prefix") {
+		$no_prefix = 1;
+		}
+	elsif ($a eq "--licence" || $a eq "--license") {
+		$licence = &untaint(shift(@ARGV));
+		}
 	elsif ($a eq "--url") {
 		$url = shift(@ARGV);
 		}
@@ -84,6 +72,18 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--allow-overwrite") {
 		$allow_overwrite = 1;
+		}
+	elsif ($a eq "--force-theme") {
+		$force_theme = 1;
+		}
+	elsif ($a eq "--rpm-dir") {
+		$basedir = &untaint(shift(@ARGV));
+		}
+	elsif ($a eq "--prefix") {
+		$set_prefix = &untaint(shift(@ARGV));
+		}
+	elsif ($a eq "--vendor") {
+		$vendor = &untaint(shift(@ARGV));
 		}
 	elsif ($a eq "--sign") {
 		$sign = 1;
@@ -114,13 +114,13 @@ while(@ARGV) {
 # Validate args
 if (!$dir) {
 	print "usage: ";
-	print CYAN, "makemodulerpm.pl ";
-	print YELLOW, "[--force-theme]\n";
-	print "                        [--rpm-dir directory]\n";
+	print CYAN, "makemodulerpm.pl <module> [version]", RESET;
+	print YELLOW, "\n";
 	print "                        [--rpm-depends]\n";
 	print "                        [--rpm-recommends]\n";
+	print "                        [--rpm-dir directory]\n";
 	print "                        [--no-prefix]\n";
-	print "	                       [--prefix prefix]\n";
+	print "                        [--prefix prefix]\n";
 	print "                        [--vendor name]\n";
 	print "                        [--licence name]\n";
 	print "                        [--url url]\n";
@@ -130,8 +130,11 @@ if (!$dir) {
 	print "                        [--target-dir directory]\n";
 	print "                        [--dir directory-in-package]\n";
 	print "                        [--allow-overwrite]\n";
-	print CYAN, "                        <module> ";
-	print YELLOW, "[version]\n", RESET;
+	print "                        [--force-theme]\n";
+	print "                        [--sign]\n";
+	print "                        [--key keyname]\n";
+	print "                        [--exclude file]\n";
+	print RESET, "\n";
 	exit(1);
 	}
 my $par;
