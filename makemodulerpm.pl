@@ -34,7 +34,7 @@ my $allow_overwrite = 0;
 
 my ($force_theme, $rpmdepends, $rpmrecommends, $no_prefix, $set_prefix, $vendor,
     $url, $force_usermin, $final_mod, $sign, $keyname,
-    $epoch, $dir, $ver, @extrareqs, @exclude);
+    $epoch, $dir, $ver, @exclude);
 
 # Parse command-line args
 while(@ARGV) {
@@ -81,9 +81,6 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--dir") {
 		$final_mod = &untaint(shift(@ARGV));
-		}
-	elsif ($a eq "--requires") {
-		push(@extrareqs, shift(@ARGV));
 		}
 	elsif ($a eq "--allow-overwrite") {
 		$allow_overwrite = 1;
@@ -280,7 +277,7 @@ if ($rpmdepends && defined($minfo{'depends'})) {
 			     $dver ? ($prefix.$dmod, ">=", $dver) :
 				     ($prefix.$dmod));
 		}
-	$rdeps = join(" ", @rdeps, @extrareqs);
+	$rdeps = join(" ", @rdeps);
 	}
 
 # Build list of recommended packages on other RPMs, for inclusion as an RPM
