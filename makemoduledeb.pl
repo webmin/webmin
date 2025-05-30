@@ -315,11 +315,20 @@ if (exists($minfo{'deb_replaces'})) {
 		}
 	}
 
+# Build (standalone) list of breaks (not Webmin modules)
+my @rbreaks = ( );
+if (exists($minfo{'deb_breaks'})) {
+	foreach my $debbreak (split(/\s+/, $minfo{'deb_breaks'})) {
+		push(@rbreaks, $debbreak);
+		}
+	}
+
 # Build (standalone) list of obsoletes (replaces+conflicts) (not Webmin modules)
 if (exists($minfo{'deb_obsoletes'})) {
 	foreach my $debobsolete (split(/\s+/, $minfo{'deb_obsoletes'})) {
 		push(@rconflicts, $debobsolete);
 		push(@rreplaces, $debobsolete);
+		push(@rbreaks, $debobsolete);
 		}
 	}
 
@@ -347,6 +356,7 @@ print $CONTROL "Recommends: $rrecom\n" if ($rrecom);
 print $CONTROL "Suggests: ", join(", ", @rsuggests), "\n" if (@rsuggests);
 print $CONTROL "Conflicts: ", join(", ", @rconflicts), "\n" if (@rconflicts);
 print $CONTROL "Replaces: ", join(", ", @rreplaces), "\n" if (@rreplaces);
+print $CONTROL "Breaks: ", join(", ", @rbreaks), "\n" if (@rbreaks);
 print $CONTROL "Provides: ", join(", ", @rprovides), "\n" if (@rprovides);
 print $CONTROL <<EOF;
 Pre-Depends: bash, perl
