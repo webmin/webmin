@@ -328,7 +328,6 @@ if (exists($minfo{'deb_obsoletes'})) {
 	foreach my $debobsolete (split(/\s+/, $minfo{'deb_obsoletes'})) {
 		push(@rconflicts, $debobsolete);
 		push(@rreplaces, $debobsolete);
-		push(@rbreaks, $debobsolete);
 		}
 	}
 
