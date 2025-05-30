@@ -25,14 +25,23 @@ my $changelog_file = "$debian_dir/changelog";
 my $files_file = "$debian_dir/files";
 
 # Parse command-line args
-my ($force_theme, $url, $upstream, $provides, $debdepends, $debrecommends,
+my ($force_theme, $url, $upstream, $debdepends, $debrecommends,
     $no_prefix, $force_usermin, $release, $allow_overwrite, $final_mod,
     $dsc_file, $dir, $ver, @exclude);
 
 while(@ARGV) {
 	my $a = shift(@ARGV);
-	if ($a eq "--force-theme") {
-		$force_theme = 1;
+	if ($a eq "--deb-depends") {
+		$debdepends = 1;
+		}
+	elsif ($a eq "--deb-recommends") {
+		$debrecommends = 1;
+		}
+	# --recommends, --suggests, --conflicts, --provides and --obsoletes are
+	# not for Webmin modules, and not meant to have prefix, and populated
+	# from module.info automatically
+	elsif ($a eq "--no-prefix") {
+		$no_prefix = 1;
 		}
 	elsif ($a eq "--licence" || $a eq "--license") {
 		$licence = shift(@ARGV);
@@ -46,17 +55,8 @@ while(@ARGV) {
 	elsif ($a eq "--upstream") {
 		$upstream = shift(@ARGV);
 		}
-	elsif ($a eq "--provides") {
-		$provides = shift(@ARGV);
-		}
-	elsif ($a eq "--deb-depends") {
-		$debdepends = 1;
-		}
-	elsif ($a eq "--deb-recommends") {
-		$debrecommends = 1;
-		}
-	elsif ($a eq "--no-prefix") {
-		$no_prefix = 1;
+	elsif ($a eq "--release") {
+		$release = shift(@ARGV);
 		}
 	elsif ($a eq "--usermin") {
 		$force_usermin = 1;
@@ -67,14 +67,14 @@ while(@ARGV) {
 	elsif ($a eq "--dir") {
 		$final_mod = shift(@ARGV);
 		}
-	elsif ($a eq "--release") {
-		$release = shift(@ARGV);
-		}
 	elsif ($a eq "--allow-overwrite") {
 		$allow_overwrite = 1;
 		}
 	elsif ($a eq "--dsc-file") {
 		$dsc_file = shift(@ARGV);
+		}
+	elsif ($a eq "--force-theme") {
+		$force_theme = 1;
 		}
 	elsif ($a eq "--exclude") {
 		push(@exclude, shift(@ARGV));
@@ -96,20 +96,24 @@ while(@ARGV) {
 # Validate args
 if (!$dir) {
 	print "usage: ", CYAN, "makemoduledeb.pl ";
-	print YELLOW, "[--force-theme]\n";
+	print CYAN, "<module> [version]";
+	print YELLOW, "\n";
 	print "                        [--deb-depends]\n";
+	print "                        [--deb-recommends]\n";
 	print "                        [--no-prefix]\n";
 	print "                        [--licence name]\n";
 	print "                        [--email 'name <address>']\n";
+	print "                        [--url url]\n";
 	print "                        [--upstream 'name <address>']\n";
-	print "                        [--provides 'name1 name2']\n";
+	print "                        [--release version]\n";
 	print "                        [--usermin]\n";
 	print "                        [--target-dir directory]\n";
 	print "                        [--dir directory-in-package]\n";
 	print "                        [--allow-overwrite]\n";
 	print "                        [--dsc-file file.dsc]\n";
-	print CYAN, "                        <module> ";
-	print YELLOW, "[version]\n", RESET;
+	print "                        [--force-theme]\n";
+	print "                        [--exclude file-or-dir]\n";
+	print RESET, "\n";
 	exit(1);
 	}
 chop(my $par = `dirname $dir`);
@@ -258,20 +262,74 @@ if ($debdepends && exists($minfo{'depends'})) {
 	}
 my $rdeps = join(", ", @rdeps);
 
-# Recommends: header
+# Build list of recommended packages on other DEBs, for inclusion as an DEB
+# Recommends: header (Webmin module with prefixes)
+my $rrecom = "";
+if ($debrecommends && defined($minfo{'recommends'})) {
+	my @rrecom;
+	foreach my $d (split(/\s+/, $minfo{'recommends'})) {
+		push(@rrecom, $prefix.$d);
+		}
+	$rrecom = join(", ", @rrecom);
+	}
+
+# Build (append) list of required packages (not Webmin modules)
+my @rrequires = ( );
+if (exists($minfo{'deb_requires'})) {
+	foreach my $debrequire (split(/\s+/, $minfo{'deb_requires'})) {
+		push(@rrequires, $debrequire);
+		}
+	$rdeps .= ", " . join(", ", @rrequires) if (@rrequires);
+	}
+
+# Build (append) list of recommended packages (not Webmin modules)
 my @rrecommends = ( );
-if ($debrecommends && exists($minfo{'recommends'})) {
-	foreach my $debrecommend (split(/\s+/, $minfo{'recommends'})) {
+if (exists($minfo{'deb_recommends'})) {
+	foreach my $debrecommend (split(/\s+/, $minfo{'deb_recommends'})) {
 		push(@rrecommends, $debrecommend);
+		}
+	$rrecom .= ", " . join(", ", @rrecommends) if (@rrecommends);
+	}
+
+# Build (standalone) list of suggested packages (not Webmin modules)
+my @rsuggests = ( );
+if (exists($minfo{'deb_suggests'})) {
+	foreach my $debsuggest (split(/\s+/, $minfo{'deb_suggests'})) {
+		push(@rsuggests, $debsuggest);
 		}
 	}
 
-# If module has 'provides', consider it too
-$provides .= ($provides ? " " : "") . "$prefix$mod";
-$provides .= ($provides ? " " : "") . $minfo{'provides'}
-	if (exists($minfo{'provides'}));
-my @provides = split(/\s+/, $provides);
-$provides = join(", ", @provides);
+# Build (standalone) list of conflicts (not Webmin modules)
+my @rconflicts = ( );
+if (exists($minfo{'deb_conflicts'})) {
+	foreach my $debconflict (split(/\s+/, $minfo{'deb_conflicts'})) {
+		push(@rconflicts, $debconflict);
+		}
+	}
+
+# Build (standalone) list of replaces (not Webmin modules)
+my @rreplaces = ( );
+if (exists($minfo{'deb_replaces'})) {
+	foreach my $debreplace (split(/\s+/, $minfo{'deb_replaces'})) {
+		push(@rreplaces, $debreplace);
+		}
+	}
+
+# Build (standalone) list of obsoletes (replaces+conflicts) (not Webmin modules)
+if (exists($minfo{'deb_obsoletes'})) {
+	foreach my $debobsolete (split(/\s+/, $minfo{'deb_obsoletes'})) {
+		push(@rconflicts, $debobsolete);
+		push(@rreplaces, $debobsolete);
+		}
+	}
+
+# Build (standalone) list of provides (not Webmin modules)
+my @rprovides = ( );
+if (exists($minfo{'deb_provides'})) {
+	foreach my $debprovide (split(/\s+/, $minfo{'deb_provides'})) {
+		push(@rprovides, $debprovide);
+		}
+	}
 
 # Create the control file
 my $kbsize = int(($size-1) / 1024)+1;
@@ -285,12 +343,15 @@ Architecture: all
 Essential: no
 Depends: $rdeps
 EOF
-print $CONTROL "Recommends: ", join(", ", @rrecommends), "\n" if (@rrecommends);
+print $CONTROL "Recommends: $rrecom\n" if ($rrecom);
+print $CONTROL "Suggests: ", join(", ", @rsuggests), "\n" if (@rsuggests);
+print $CONTROL "Conflicts: ", join(", ", @rconflicts), "\n" if (@rconflicts);
+print $CONTROL "Replaces: ", join(", ", @rreplaces), "\n" if (@rreplaces);
+print $CONTROL "Provides: ", join(", ", @rprovides), "\n" if (@rprovides);
 print $CONTROL <<EOF;
 Pre-Depends: bash, perl
 Installed-Size: $kbsize
 Maintainer: $email
-Provides: $provides
 Description: $desc
 EOF
 close($CONTROL);

@@ -33,42 +33,27 @@ $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin";
 my $allow_overwrite = 0;
 
 my ($force_theme, $rpmdepends, $rpmrecommends, $no_prefix, $set_prefix, $vendor,
-    $provides, $obsoletes, $url, $force_usermin, $final_mod, $sign, $keyname,
-    $epoch, $dir, $ver, @extrareqs, @exclude);
+    $url, $force_usermin, $final_mod, $sign, $keyname,
+    $epoch, $dir, $ver, @exclude);
 
 # Parse command-line args
 while(@ARGV) {
 	# XXX Untainting isn't needed when running as non-root?
 	my $a = &untaint(shift(@ARGV));
-	if ($a eq "--force-theme") {
-		$force_theme = 1;
-		}
-	elsif ($a eq "--rpm-dir") {
-		$basedir = &untaint(shift(@ARGV));
-		}
-	elsif ($a eq "--licence" || $a eq "--license") {
-		$licence = &untaint(shift(@ARGV));
-		}
-	elsif ($a eq "--rpm-depends") {
+	if ($a eq "--rpm-depends") {
 		$rpmdepends = 1;
 		}
 	elsif ($a eq "--rpm-recommends") {
 		$rpmrecommends = 1;
 		}
+	# --recommends, --suggests, --conflicts, --provides and --obsoletes are
+	# not for Webmin modules, and not meant to have prefix, and populated
+	# from module.info automatically
 	elsif ($a eq "--no-prefix") {
 		$no_prefix = 1;
 		}
-	elsif ($a eq "--prefix") {
-		$set_prefix = &untaint(shift(@ARGV));
-		}
-	elsif ($a eq "--vendor") {
-		$vendor = &untaint(shift(@ARGV));
-		}
-	elsif ($a eq "--provides") {
-		$provides = &untaint(shift(@ARGV));
-		}
-	elsif ($a eq "--obsoletes") {
-		$obsoletes = &untaint(shift(@ARGV));
+	elsif ($a eq "--licence" || $a eq "--license") {
+		$licence = &untaint(shift(@ARGV));
 		}
 	elsif ($a eq "--url") {
 		$url = shift(@ARGV);
@@ -85,11 +70,20 @@ while(@ARGV) {
 	elsif ($a eq "--dir") {
 		$final_mod = &untaint(shift(@ARGV));
 		}
-	elsif ($a eq "--requires") {
-		push(@extrareqs, shift(@ARGV));
-		}
 	elsif ($a eq "--allow-overwrite") {
 		$allow_overwrite = 1;
+		}
+	elsif ($a eq "--force-theme") {
+		$force_theme = 1;
+		}
+	elsif ($a eq "--rpm-dir") {
+		$basedir = &untaint(shift(@ARGV));
+		}
+	elsif ($a eq "--prefix") {
+		$set_prefix = &untaint(shift(@ARGV));
+		}
+	elsif ($a eq "--vendor") {
+		$vendor = &untaint(shift(@ARGV));
 		}
 	elsif ($a eq "--sign") {
 		$sign = 1;
@@ -120,24 +114,27 @@ while(@ARGV) {
 # Validate args
 if (!$dir) {
 	print "usage: ";
-	print CYAN, "makemodulerpm.pl ";
-	print YELLOW, "[--force-theme]\n";
-	print "                        [--rpm-dir directory]\n";
+	print CYAN, "makemodulerpm.pl <module> [version]", RESET;
+	print YELLOW, "\n";
 	print "                        [--rpm-depends]\n";
+	print "                        [--rpm-recommends]\n";
+	print "                        [--rpm-dir directory]\n";
 	print "                        [--no-prefix]\n";
-	print "	                       [--prefix prefix]\n";
+	print "                        [--prefix prefix]\n";
 	print "                        [--vendor name]\n";
 	print "                        [--licence name]\n";
 	print "                        [--url url]\n";
-	print "                        [--provides provides]\n";
 	print "                        [--usermin]\n";
 	print "                        [--release number]\n";
 	print "                        [--epoch number]\n";
 	print "                        [--target-dir directory]\n";
 	print "                        [--dir directory-in-package]\n";
 	print "                        [--allow-overwrite]\n";
-	print CYAN, "                        <module> ";
-	print YELLOW, "[version]\n", RESET;
+	print "                        [--force-theme]\n";
+	print "                        [--sign]\n";
+	print "                        [--key keyname]\n";
+	print "                        [--exclude file]\n";
+	print RESET, "\n";
 	exit(1);
 	}
 my $par;
@@ -244,7 +241,7 @@ system("/bin/rm -rf /tmp/makemodulerpm");
 
 # Build list of dependencies on other RPMs, for inclusion as an RPM
 # Requires: header
-my $rdeps;
+my $rdeps = "";
 if ($rpmdepends && defined($minfo{'depends'})) {
 	my @rdeps;
 	foreach my $d (split(/\s+/, $minfo{'depends'})) {
@@ -283,24 +280,71 @@ if ($rpmdepends && defined($minfo{'depends'})) {
 			     $dver ? ($prefix.$dmod, ">=", $dver) :
 				     ($prefix.$dmod));
 		}
-	$rdeps = join(" ", @rdeps, @extrareqs);
+	$rdeps = join(" ", @rdeps);
 	}
 
-# Build list of recommended packages
+# Build list of recommended packages on other RPMs, for inclusion as an RPM
+# Recommends: header (Webmin module with prefixes)
+my $rrecom = "";
+if ($rpmrecommends && defined($minfo{'recommends'})) {
+	my @rrecom;
+	foreach my $d (split(/\s+/, $minfo{'recommends'})) {
+		push(@rrecom, $prefix.$d);
+		}
+	$rrecom = join(" ", @rrecom);
+	}
+
+# Build (append) list of required packages (not Webmin modules)
+my @rrequires = ( );
+if (exists($minfo{'rpm_requires'})) {
+	foreach my $rpmrequire (split(/\s+/, $minfo{'rpm_requires'})) {
+		push(@rrequires, $rpmrequire);
+		}
+	$rdeps .= " " . join(" ", @rrequires) if (@rrequires);
+	}
+
+# Build (append) list of recommended packages (not Webmin modules)
 my @rrecommends = ( );
-if ($rpmrecommends && exists($minfo{'recommends'})) {
-	foreach my $rpmrecommend (split(/\s+/, $minfo{'recommends'})) {
+if (exists($minfo{'rpm_recommends'})) {
+	foreach my $rpmrecommend (split(/\s+/, $minfo{'rpm_recommends'})) {
 		push(@rrecommends, $rpmrecommend);
+		}
+	$rrecom .= " " . join(" ", @rrecommends) if (@rrecommends);
+	}
+
+# Build (standalone) list of suggested packages (not Webmin modules)
+my @rsuggests = ( );
+if (exists($minfo{'rpm_suggests'})) {
+	foreach my $rpmsuggest (split(/\s+/, $minfo{'rpm_suggests'})) {
+		push(@rsuggests, $rpmsuggest);
 		}
 	}
 
-# If module has 'provides', consider it too
-$provides .= ($provides ? " " : "") . $minfo{'provides'}
-	if (exists($minfo{'provides'}));
+# Build (standalone) list of conflicts (not Webmin modules)
+my @rconflicts = ( );
+if (exists($minfo{'rpm_conflicts'})) {
+	foreach my $rpmconflict (split(/\s+/, $minfo{'rpm_conflicts'})) {
+		push(@rconflicts, $rpmconflict);
+		}
+	}
+
+# Build (standalone) list of provides (not Webmin modules)
+my @rprovides = ( );
+if (exists($minfo{'rpm_provides'})) {
+	foreach my $rpmprovide (split(/\s+/, $minfo{'rpm_provides'})) {
+		push(@rprovides, $rpmprovide);
+		}
+	}
+
+# Build (standalone) list of obsoletes (not Webmin modules)
+my @robsoletes = ( );
+if (exists($minfo{'rpm_obsoletes'})) {
+	foreach my $rpmobsolete (split(/\s+/, $minfo{'rpm_obsoletes'})) {
+		push(@robsoletes, $rpmobsolete);
+		}
+	}
 
 # Create the SPEC file
-my $providesheader = $provides ? "Provides: $provides" : "";
-my $obsoletesheader = $obsoletes ? "Obsoletes: $obsoletes" : "";
 my $vendorheader = $vendor ? "Vendor: $vendor" : "";
 my $urlheader = $url ? "URL: $url" : "";
 my $epochheader = $epoch ? "Epoch: $epoch" : "";
@@ -318,7 +362,11 @@ Version: $ver
 Release: $release
 Requires: /bin/sh /usr/bin/perl /usr/libexec/$prog $rdeps
 EOF
-print $SPEC "Recommends: " . join(" ", @rrecommends) . "\n" if (@rrecommends);
+print $SPEC "Recommends: $rrecom\n" if ($rrecom);
+print $SPEC "Suggests: " . join(" ", @rsuggests) . "\n" if (@rsuggests);
+print $SPEC "Conflicts: " . join(" ", @rconflicts) . "\n" if (@rconflicts);
+print $SPEC "Provides: " . join(" ", @rprovides) . "\n" if (@rprovides);
+print $SPEC "Obsoletes: " . join(" ", @robsoletes) . "\n" if (@robsoletes);
 print $SPEC <<EOF;
 Autoreq: 0
 Autoprov: 0
@@ -328,8 +376,6 @@ Source: $mod.tar.gz
 BuildRoot: /tmp/%{name}-%{version}
 BuildArchitectures: noarch
 $epochheader
-$providesheader
-$obsoletesheader
 $vendorheader
 $urlheader
 %description
