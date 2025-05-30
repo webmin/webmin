@@ -6,10 +6,11 @@ use warnings;
 
 use 5.014;
 
+no warnings 'utf8';
 use File::Spec;
 use File::Basename;
 use File::Find;
-use JSON::PP;
+use JSON::XS;
 use HTTP::Tiny;
 eval "use HTML::Entities";
 use List::MoreUtils qw(any uniq);
@@ -940,7 +941,11 @@ sub translate
 
     # Extract translation on success
     if ($ts) {
-        $tr = JSON::PP->new->decode($rs->{'content'});
+        # Fix Farsi
+        if ($target eq 'fa') {
+            $rs->{'content'} = decode('utf-8', $rs->{'content'});
+        }
+        $tr = JSON::XS->new->decode($rs->{'content'});
         $tr = $tr->{'data'}->{'translations'}[0]->{'translatedText'};
         return $tr;
     }
@@ -1641,6 +1646,10 @@ sub go
                     }
                     my $file      = $mpath . "/$code";
                     my $file_auto = $mpath . "/$code.$language_suffix";
+                    local $SIG{__WARN__} = sub {
+                        my $warning = shift;
+                        warn $warning unless $warning =~ /Wide character/;
+                    };
                     if (%language) {
                         write_file($file, \%language);
                         sort_file_by($file, $mfile);
