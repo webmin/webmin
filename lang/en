@@ -407,7 +407,6 @@ log_email_time=Action performed at: $1
 log_email_system=Performed on system: $1
 log_email_user=Performed by user: $1
 log_email_script=Webmin script: $1
-log_email_session=Session ID: $1
 log_email_remote=Client address: $1
 
 nice_size_PB=PB

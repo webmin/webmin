@@ -7399,9 +7399,6 @@ if ($logemail) {
     $body .= &text('log_email_user', $remote_user)."\n";
     $body .= &text('log_email_remote', $param_client_ip || $ENV{'REMOTE_HOST'})."\n";
     $body .= &text('log_email_script', $scriptname)."\n";
-    if ($main::session_id) {
-        $body .= &text('log_email_session', $main::session_id)."\n";
-        }
     $body .= "\n";
     $body .= $msg."\n";
     my $subj = $mdesc ? &text('log_email_subject', $mdesc)
