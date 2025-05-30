@@ -8,6 +8,7 @@ require './cron-lib.pl';
 
 if (!$in{'new'}) {
 	$job = $jobs[$in{'idx'}];
+	$job || &error($text{'edit_egone'});
 	&can_edit_user(\%access, $job->{'user'}) ||
 		&error($text{'edit_ecannot'});
 	&ui_print_header(undef, $text{'edit_title'}, "");
@@ -17,6 +18,9 @@ else {
 	if (defined($in{'clone'})) {
 		# Default to clone source
 		$clone = $jobs[$in{'clone'}];
+		$clone || &error($text{'edit_egone'});
+		&can_edit_user(\%access, $clone->{'user'}) ||
+			&error($text{'edit_ecannot'});
 		$job = { %$clone };
 		}
 	elsif ($config{'vixie_cron'}) {

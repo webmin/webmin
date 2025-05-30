@@ -41,6 +41,7 @@ index_bootdesc=Change this setting to enable or disable starting the scheduled c
 edit_title=Edit Cron Job
 create_title=Create Cron Job
 edit_ecannot=You are not allowed to edit cron jobs for this user
+edit_egone=Job does not exist
 edit_details=Job Details
 edit_user=Execute cron job as
 edit_active=Active?
