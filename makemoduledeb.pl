@@ -279,7 +279,7 @@ if (exists($minfo{'deb_requires'})) {
 	foreach my $debrequire (split(/\s+/, $minfo{'deb_requires'})) {
 		push(@rrequires, $debrequire);
 		}
-	$rdeps .= " " . join(", ", @rrequires) if (@rrequires);
+	$rdeps .= ", " . join(", ", @rrequires) if (@rrequires);
 	}
 
 # Build (append) list of recommended packages (not Webmin modules)
@@ -288,7 +288,7 @@ if (exists($minfo{'deb_recommends'})) {
 	foreach my $debrecommend (split(/\s+/, $minfo{'deb_recommends'})) {
 		push(@rrecommends, $debrecommend);
 		}
-	$rrecom .= " " . join(", ", @rrecommends) if (@rrecommends);
+	$rrecom .= ", " . join(", ", @rrecommends) if (@rrecommends);
 	}
 
 # Build (standalone) list of suggested packages (not Webmin modules)
