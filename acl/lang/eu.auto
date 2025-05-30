@@ -6,6 +6,7 @@ index_eulist=Ezin izan da erabiltzaileak zerrendatu: $1
 index_eglist=Huts egin du taldeen zerrendak: $1
 
 edit_title3=Sortu Webmin erabiltzaile segurua
+edit_email=Harremanetarako helbide elektronikoa
 edit_twofactor=Bi faktoreen autentikazio mota
 edit_twofactorprov=Hornitzailea $1 erabiliz $2
 edit_twofactorcancel=Kendu bi faktoreen autentikazio baldintza
@@ -14,6 +15,7 @@ edit_twofactoradd=Gaitu erabiltzailearentzako bi faktore
 edit_locale=Tokikoa
 edit_egone=Aukeratutako erabiltzailea ez da existitzen!
 edit_overlay=Gai pertsonalen gainjartzea
+edit_forgot=Pasahitza berrezartzeko esteka bidali
 edit_proto=Biltegiratze mota
 edit_proto_mysql=MySQL datu-basea
 edit_proto_postgresql=PostgreSQL datu-basea
@@ -26,6 +28,7 @@ edit_unsafe=Berrezarri mugarik gabekoetara
 
 save_eunixname='$1' erabiltzailea ez da Unix erabiltzailea eta, beraz, ezin da modu seguruan erabili
 save_etemp=Pasahitz aldaketa hurrengo behartzeko aukera ezin da erabili <a href='$1'>erabiltzaileek pasahitz berriak sartzeko eskatuko duten</a> gaituta ez badago
+save_eemail=Helbide elektronikoak ezin du izan: karakterea
 
 delete_eanonuser=Erabiltzaile hau modulu anonimoetarako sarbidea erabiltzen ari da
 
@@ -39,6 +42,9 @@ log_joingroup=Gehitu dira $1 Webmin erabiltzaileak $2
 log_sql=Erabiltzaileen eta taldeen datu baseak aldatu dira
 log_twofactor=Matrikulatutako erabiltzailea $1 bi faktore hornitzaile $2
 log_onefactor=Bi erabiltzaileak bi faktoreen autentikaziorako matrikulatutako erabiltzailea $1
+log_forgot_send=$1etik $2ra bitarteko erabiltzailearentzako pasahitza berrezartzeko mezu elektronikoa bidali da
+log_forgot_reset=Berrezarri $1 erabiltzailearen pasahitza, $2 helbide elektronikoarekin
+log_forgot_admin=Administratzaileak $1 erabiltzailearentzako pasahitza berrezartzeko mezu elektronikoa bidali du $2 erabiltzaileari
 
 gedit_desc=Taldearen deskribapena
 gedit_egone=Hautatutako taldea ez dago jada!
@@ -156,3 +162,20 @@ twofactor_failed=.. matrikulazioak huts egin du: $1
 twofactor_done=.. osatu. Hornitzaile honen IDa <tt>$1</tt> da.
 twofactor_setup=Bi faktoreen autentikazioa ez da gaituta oraindik sistema honetan, baina <a href='$1'>Webmin Konfigurazioa</a> modulua erabilita aktibatu daiteke.
 twofactor_ebutton=Ez da botoia sakatu!
+
+forgot_title=Pasahitza berrezartzeko esteka bidali
+forgot_err=Pasahitza berrezartzeko esteka bidaltzea huts egin da
+forgot_header=Pasahitza berrezartzeko estekaren xehetasunak
+forgot_user=Erabiltzailearen pasahitza berrezarri
+forgot_email=Esteka bidaltzeko metodoa
+forgot_email_def=Erakutsi esteka Webminen
+forgot_email_sel=Bidali esteka posta elektronikoz helbide honetara:
+forgot_send=Bidali esteka
+forgot_desc=Orrialde honek Webmin erabiltzaile baten pasahitz berri bat edozein helbide elektronikotara hautatzeko erabil daitekeen esteka bat sortu edo bidaltzeko aukera ematen dizu. Kontuz ibili esteka hau zein helbidetara bidaltzen duzun, Webmin saioa hasteko sarbide osoa emango dizulako!
+forgot_adminmsg=$3 helbideko Webmin sistemaren administratzailearengandik jaso duzu mezu elektroniko hau, $1 saioa hasteko.\n\nPasahitza berrezarri nahi baduzu, jarraitu esteka honi:\n$2
+forgot_sending=$2-ren pasahitza berrezartzeko mezu elektronikoa $1-era bidaltzen. ..
+forgot_sent=... bidalita
+forgot_link=Beheko esteka erabil daiteke $1-en Webmin pasahitza hurrengo $2 minutuetarako berrezartzeko :
+forgot_enosudo=Sudo ez dago eskuragarri sistema honetan!
+forgot_ecansudo=Sartutako erabiltzaileak ez du sudo baimenik
+forgot_eunix=Sartutako sudo gaitasuna duen erabiltzailea ez da existitzen!

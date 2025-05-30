@@ -1,0 +1,25 @@
+edit_email=Adres e-mail kontaktowy
+edit_forgot=Wyślij link do resetowania hasła
+
+save_eemail=Adres e-mail nie może zawierać znaku :
+
+log_forgot_send=Wysłano e-mail z resetem hasła dla użytkownika $1 do $2
+log_forgot_reset=Zresetuj hasło dla użytkownika $1 za pomocą adresu e-mail $2
+log_forgot_admin=Administrator wysłał e-mail z resetem hasła dla użytkownika $1 do $2
+
+forgot_title=Wyślij link do resetowania hasła
+forgot_err=Nie udało się wysłać linku do resetowania hasła
+forgot_header=Szczegóły łącza do resetowania hasła
+forgot_user=Zresetuj hasło dla użytkownika
+forgot_email=Metoda dostarczania linków
+forgot_email_def=Wyświetl link w Webmin
+forgot_email_sel=Wyślij link e-mailem na adres
+forgot_send=Wyślij link
+forgot_desc=Ta strona umożliwia wygenerowanie lub wysłanie linku, który może zostać użyty do wybrania nowego hasła dla użytkownika Webmin na dowolny adres e-mail. Uważaj, na jaki adres wysyłasz ten link, ponieważ skutecznie przyzna on pełny dostęp do logowania Webmin!
+forgot_adminmsg=Otrzymujesz tę wiadomość e-mail od administratora systemu Webmin w $3, dla loginu $1.\n\nJeśli chcesz kontynuować resetowanie hasła, kliknij ten link:\n$2
+forgot_sending=Wysyłanie wiadomości e-mail z prośbą o zresetowanie hasła dla $2 do $1 ..
+forgot_sent=.. wysłano
+forgot_link=Poniższy link może zostać użyty do zresetowania hasła Webmin dla $1 na następne $2 minuty :
+forgot_enosudo=Sudo nie jest dostępne w tym systemie!
+forgot_ecansudo=Wprowadzony użytkownik nie ma uprawnień sudo
+forgot_eunix=Podany użytkownik obsługujący sudo nie istnieje!

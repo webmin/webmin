@@ -9,6 +9,8 @@ index_medit=hoitaa
 index_manual=Muokkaa manuaalisesti
 index_anyfile=Muokkaa muuta PHP-asetustiedostoa
 index_return=kokoonpanotiedostot
+index_pkgs=Hallitse PHP-paketteja
+index_pkgsdesc=Asenna ja poista PHP-versioita järjestelmäsi ohjelmistopakettien arkistosta, jotta ne voidaan määrittää täällä Virtualminissa käytettäviksi.
 
 file_global=Globaali PHP-kokoonpano
 file_eread=$1:$2 : n lukeminen epäonnistui
@@ -24,6 +26,7 @@ list_efile=Muokattavan tiedoston on oltava absoluuttinen polku
 list_return=PHP-määritykset
 list_format_ini=INI-muoto
 list_format_fpm=FPM-muoto
+list_bin=PHP-versio $2 osoitteessa $1
 
 vars_title=PHP-muuttujat
 vars_header=PHP-muuttujien luonti- ja lainausvaihtoehdot
@@ -203,6 +206,7 @@ log_errors=Muutos virheilmoituksessa $1 : ssä
 log_misc=Muutti $1 : n muita asetuksia
 log_mods=Päivitetty käytössä olevat moduulit kohteessa $1
 log_imod=PHP-moduuli $2 asennettiin kohteeseen $1
+log_delete_dpkgs=Poistettu $1 PHP-pakettia
 
 acl_global=Voiko muokata PHP: n globaalia kokoonpanoa?
 acl_anyfile=Voiko mitä tahansa tiedostoa muokata PHP-kokoonpanona?
@@ -212,3 +216,31 @@ acl_user=Lue ja kirjoita tiedostoja käyttäjänä
 
 opt_default=Oletusarvo: <tt>$1</tt>
 opt_default_unknown=Tuntematon
+
+pkgs_title=PHP-paketit
+pkgs_name=Paketin nimi
+pkgs_ver=Paketin versio
+pkgs_phpver=PHP-versio
+pkgs_bin=Suoritettava
+pkgs_shortver=Lyhyt versio
+pkgs_users=Käyttämä
+pkgs_delete=Poista valitut paketit
+pkgs_none=Järjestelmästäsi ei löytynyt PHP-paketteja!
+pkgs_none2=Järjestelmästäsi ei löytynyt PHP-versioita. Asenna versio napsauttamalla alla olevaa painiketta, jos sellainen on saatavilla ohjelmistopakettivarastossasi.
+pkgs_ecannot=Sinulla ei ole oikeutta hallita PHP-paketteja!
+pkgs_ecannot2=Ohjelmistopaketteja ei voida hallita tässä järjestelmässä
+pkgs_nousers=Ei verkkotunnuksia
+pkgs_ucount=$1 verkkotunnusta
+pkgs_newver=Asennettava PHP-paketti
+pkgs_install=Asenna nyt
+pkgs_return=PHP-paketit
+
+dpkgs_err=PHP-pakettien poistaminen epäonnistui
+dpkgs_title=PHP-pakettien poistaminen
+dpkgs_doing=Poistetaan pakettia $1 ja moduuleja PHP-versiosta $2 ..
+dpkgs_failed=.. epäonnistui : $1
+dpkgs_done=.. poistettu onnistuneesti
+dpkgs_enone=Ei valittuja paketteja
+dpkgs_eexists=Pakettia ei ole olemassa!
+dpkg_eusers=PHP-version $1 pakettia ei voida poistaa, koska $2 verkkotunnusta käyttää sitä edelleen
+dpkgs_rusure=Haluatko varmasti poistaa valitut PHP-paketit : $1

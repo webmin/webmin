@@ -171,6 +171,14 @@ session_passapi=Включить API удаленной смены пароля?
 session_passapi0=API отключен
 session_passapi1=API включен для пользователей Unix
 session_passurl=Если этот параметр включен, пароли пользователей могут быть изменены с помощью запроса POST на $1
+session_forgot=Разрешить восстановление забытого пароля?
+session_eforgot=Восстановление забытого пароля не может быть включено, если сначала не удален модуль плагина <b>Virtualmin Password Recovery</b>. Это можно сделать на странице <a href='$1'>Webmin Modules</a>.
+session_passresetdesc=Регулирование восстановления пароля
+session_passreset=Блокировать клиентов с более чем $1 запросами на $2 минут
+session_epassreset_failures=Отсутствующие или недействительные запросы на блокировку
+session_passtimeoutdesc=Истечение срока действия ссылки для сброса пароля
+session_passtimeout=Срок действия ссылки для сброса пароля истекает через $1 минут
+session_epassreset_timeout=Отсутствует или недействителен тайм-аут сброса пароля
 
 categories_custom=изготовленный на заказ
 

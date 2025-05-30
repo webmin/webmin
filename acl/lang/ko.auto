@@ -5,6 +5,7 @@ index_eulist=사용자를 나열하지 못했습니다 : $1
 index_eglist=그룹을 나열하지 못했습니다 : $1
 
 edit_title3=안전한 Webmin 사용자 생성
+edit_email=연락처 이메일
 edit_twofactor=이중 인증 유형
 edit_twofactorprov=ID가 $2 인 제공자 $1 사용
 edit_twofactorcancel=이중 인증 요구 사항 제거
@@ -14,6 +15,7 @@ edit_locale=장소
 edit_egone=선택된 사용자가 더 이상 존재하지 않습니다!
 edit_overlay=개인 테마 오버레이
 edit_overlayglobal=없음-테마 기본값 사용
+edit_forgot=비밀번호 재설정 링크 보내기
 edit_global=모든 모듈에 대한 권한
 edit_proto=저장 유형
 edit_proto_mysql=MySQL 데이터베이스
@@ -28,6 +30,7 @@ edit_unsafe=무제한으로 재설정
 save_eunixname=사용자 이름 '$1'은 (는) Unix 사용자가 아니므로 안전 모드에서 사용할 수 없습니다
 save_eoverlay=테마가 아닌 경우 테마 오버레이를 선택할 수 없습니다
 save_etemp=<a href='$1'>사용자에게 새 비밀번호를 입력하도록 프롬프트</a>하지 않으면 다음 로그인시 비밀번호를 강제로 변경하는 옵션을 사용할 수 없습니다.
+save_eemail=이메일 주소에는 : 문자를 포함할 수 없습니다
 
 delete_eanonuser=이 사용자는 익명 모듈 액세스에 사용되고 있습니다
 
@@ -41,6 +44,9 @@ log_joingroup=$1 Webmin 사용자를 $2 그룹에 추가했습니다.
 log_sql=변경된 사용자 및 그룹 데이터베이스
 log_twofactor=2 단계 공급자 $2 에 등록 된 사용자 $1
 log_onefactor=이중 인증을위한 등록 해제 된 사용자 $1
+log_forgot_send=사용자 $1의 비밀번호 재설정 이메일을 $2에게 보냈습니다
+log_forgot_reset=이메일 주소 $2를 사용하여 사용자 $1의 비밀번호를 재설정합니다
+log_forgot_admin=관리자가 사용자 $1에 대한 비밀번호 재설정 이메일을 $2에게 보냈습니다
 
 gedit_desc=그룹 설명
 gedit_egone=선택된 그룹이 더 이상 존재하지 않습니다!
@@ -158,3 +164,20 @@ twofactor_failed=.. 등록 실패 : $1
 twofactor_done=.. 완료 이 제공자의 귀하의 ID는 <tt>$1</tt>입니다.
 twofactor_setup=이 시스템에서 2 단계 인증이 아직 활성화되지 않았지만 <a href='$1'>Webmin 구성</a> 모듈을 사용하여 켤 수 있습니다.
 twofactor_ebutton=버튼을 클릭하지 않았습니다!
+
+forgot_title=비밀번호 재설정 링크 보내기
+forgot_err=비밀번호 재설정 링크를 보내지 못했습니다
+forgot_header=비밀번호 재설정 링크 세부 정보
+forgot_user=사용자 비밀번호 재설정
+forgot_email=링크 전달 방식
+forgot_email_def=Webmin에서 링크 표시
+forgot_email_sel=이메일로 링크 보내기
+forgot_send=링크 보내기
+forgot_desc=이 페이지에서는 Webmin 사용자의 새 비밀번호를 선택하는 데 사용할 수 있는 링크를 생성하거나 모든 이메일 주소로 전송할 수 있습니다. 이 링크를 어떤 이메일 주소로 보낼지 신중하게 선택해야 합니다. Webmin 로그인에 대한 모든 권한이 부여되기 때문입니다!
+forgot_adminmsg=$3의 Webmin 시스템 관리자로부터 $1 로그인에 대한 이메일을 받았습니다.\n\n비밀번호 재설정을 진행하려면 이 링크를 따르세요:\n$2
+forgot_sending=$2에 대한 비밀번호 재설정 이메일을 $1(으)로 보내는 중 ..
+forgot_sent=.. 전송된
+forgot_link=아래 링크를 사용하면 $1의 Webmin 비밀번호를 다음 $2분 동안 재설정할 수 있습니다
+forgot_enosudo=이 시스템에서는 sudo를 사용할 수 없습니다!
+forgot_ecansudo=입력된 사용자에게 sudo 권한이 없습니다
+forgot_eunix=sudo 권한이 있는 사용자가 존재하지 않습니다!

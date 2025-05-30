@@ -63,6 +63,15 @@ session_passapi=Vil du aktivere eksternt passordendrings -API?
 session_passapi0=API deaktivert
 session_passapi1=API aktivert for Unix -brukere
 session_passurl=Når den er aktivert, kan brukerpassord endres via en POST -forespørsel til $1
+session_forgot=Tillate gjenoppretting av glemt passord?
+session_eforgot=Gjenoppretting av glemt passord kan ikke aktiveres med mindre plugin-modulen <b>Virtualmin Password Recovery</b> først fjernes. Dette kan gjøres på siden <a href='$1'>Webmin-moduler</a>.
+
+session_passresetdesc=Begrensning av passordgjenoppretting
+session_passreset=Blokker klienter med mer enn $1 forespørsler i $2 minutter
+session_epassreset_failures=Manglende eller ugyldige blokkeringsforespørsler
+session_passtimeoutdesc=Utløpsdato for lenke til tilbakestilling av passord
+session_passtimeout=Koblingen for tilbakestilling av passord utløper om $1 minutter
+session_epassreset_timeout=Manglende eller ugyldig tidsavbrudd for tilbakestilling av passord
 
 log_fixrepo=Fikset Webmin-depot
 

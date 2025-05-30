@@ -97,6 +97,14 @@ session_passapi=Włączyć interfejs API zdalnej zmiany hasła?
 session_passapi0=API wyłączone
 session_passapi1=API włączone dla użytkowników Uniksa
 session_passurl=Po włączeniu hasła użytkowników można zmienić za pomocą żądania POST do $1
+session_forgot=Czy zezwolić na odzyskiwanie zapomnianego hasła?
+session_eforgot=Odzyskiwanie zapomnianego hasła nie może zostać włączone, chyba że najpierw zostanie usunięty moduł wtyczki <b>Virtualmin Password Recovery</b>. Można to zrobić na stronie <a href='$1'>Webmin Modules</a>.
+session_passresetdesc=Ograniczanie odzyskiwania hasła
+session_passreset=Zablokuj klientów z liczbą żądań większą niż $1 przez $2 minuty
+session_epassreset_failures=Brakujące lub nieprawidłowe żądania blokowania
+session_passtimeoutdesc=Wygaśnięcie łącza resetowania hasła
+session_passtimeout=Link do resetowania hasła wygasa za $1 minut
+session_epassreset_timeout=Brak lub nieprawidłowy limit czasu resetowania hasła
 
 log_fixrepo=Naprawiono repozytorium Webmina
 log_letsencrypt=Zażądałem nowego certyfikatu SSL od Let's Encrypt

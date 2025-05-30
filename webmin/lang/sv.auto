@@ -493,6 +493,14 @@ session_passapi=Aktivera fjärranslutet lösenordsbyte -API?
 session_passapi0=API inaktiverat
 session_passapi1=API aktiverat för Unix -användare
 session_passurl=När det är aktiverat kan användarlösenord ändras via en POST -begäran till $1
+session_forgot=Tillåt återställning av glömt lösenord?
+session_eforgot=Återställning av glömt lösenord kan inte aktiveras om inte plugin-modulen <b>Virtualmin Password Recovery</b> först tas bort. Detta kan göras på sidan <a href='$1'>Webmin-moduler</a>.
+session_passresetdesc=Begränsning av lösenordsåterställning
+session_passreset=Blockera klienter med fler än $1 förfrågningar i $2 minuter
+session_epassreset_failures=Saknade eller ogiltiga blockeringsförfrågningar
+session_passtimeoutdesc=Utgångsdatum för länk för återställning av lösenord
+session_passtimeout=Länken för återställning av lösenord upphör om $1 minuter
+session_epassreset_timeout=Saknad eller ogiltig tidsgräns för återställning av lösenord
 
 assignment_ok=Byt kategorier
 assignment_desc=Detta formulär låter dig konfigurera vilken kategori varje modul visas under på Webmin indexsida.

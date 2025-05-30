@@ -3,18 +3,21 @@ index_twofactor=Twee-factor authenticatie
 index_joingroup=Aan groep toevoegen:
 
 edit_title3=Maak een veilige webmingebruiker aan
+edit_email=Contact e-mailadres
 edit_twofactor=Twee-factor authenticatietype
 edit_twofactorprov=Gebruik provider $1 met ID $2
 edit_twofactorcancel=Verwijder twee-factor authenticatie vereiste
 edit_twofactornone=Nog geen configuratie
 edit_twofactoradd=Twee-factor voor gebruiker inschakelen
 edit_locale=Lokaal
+edit_forgot=Stuur wachtwoordherstellink
 edit_safe=Privilege niveau
 edit_safe0=onbeperkt
 edit_safe1=Alleen veilige modules
 edit_unsafe=Reset naar onbeperkt
 
 save_eunixname=De gebruikersnaam '$1' is geen Unix-gebruiker en kan dus niet in de veilige modus worden gebruikt
+save_eemail=E-mailadres mag het teken : niet bevatten
 
 delete_eanonuser=Deze gebruiker wordt gebruikt voor anonieme moduletoegang
 
@@ -25,6 +28,9 @@ acl_locale=Kan de locatie worden gewijzigd?
 log_joingroup=$1 Webmin-gebruikers toegevoegd aan $2
 log_twofactor=Ingeschreven gebruiker $1 bij two-factor provider $2
 log_onefactor=Uitgeschreven gebruiker $1 voor tweefactorauthenticatie
+log_forgot_send=Verzonden e-mail voor wachtwoordherstel voor gebruiker $1 naar $2
+log_forgot_reset=Wachtwoord opnieuw instellen voor gebruiker $1 met e-mailadres $2
+log_forgot_admin=Beheerder heeft wachtwoordherstel-e-mail verzonden voor gebruiker $1 naar $2
 
 convert_sync2=Wachtwoord synchroniseren met Unix-gebruiker in de toekomst?
 convert_user=Unix-gebruiker
@@ -74,3 +80,20 @@ twofactor_failed=.. inschrijving mislukt: $1
 twofactor_done=.. compleet. Uw ID bij deze provider is <tt>$1</tt>.
 twofactor_setup=Tweefactorauthenticatie is nog niet ingeschakeld op dit systeem, maar kan worden ingeschakeld met de module <a href='$1'>Webmin-configuratie</a>.
 twofactor_ebutton=Er is niet op een knop geklikt!
+
+forgot_title=Stuur wachtwoordherstellink
+forgot_err=Het is niet gelukt om de link voor het opnieuw instellen van het wachtwoord te versturen
+forgot_header=Details voor wachtwoordherstellink
+forgot_user=Wachtwoord voor gebruiker opnieuw instellen
+forgot_email=Linkleveringsmethode
+forgot_email_def=Link weergeven in Webmin
+forgot_email_sel=Link via e-mail verzenden naar
+forgot_send=Link verzenden
+forgot_desc=Met deze pagina kunt u een link genereren of versturen naar elk e-mailadres waarmee u een nieuw wachtwoord voor een Webmin-gebruiker kunt kiezen. Let op naar welk adres u deze link stuurt, want hiermee krijgt u in feite volledige toegang tot de Webmin-login!
+forgot_adminmsg=U ontvangt deze e-mail van de beheerder van het Webmin-systeem op $3, voor de login $1.\n\nAls u wilt doorgaan met het opnieuw instellen van het wachtwoord, volgt u deze link:\n$2
+forgot_sending=Verzenden van e-mail voor wachtwoordherstel van $2 naar $1 ..
+forgot_sent=.. verstuurd
+forgot_link=U kunt de onderstaande link gebruiken om het Webmin-wachtwoord voor $1 opnieuw in te stellen voor de komende $2 minuten :
+forgot_enosudo=Sudo is niet beschikbaar op dit systeem!
+forgot_ecansudo=De ingevoerde gebruiker heeft geen sudo-rechten
+forgot_eunix=De ingevoerde sudo-compatibele gebruiker bestaat niet!

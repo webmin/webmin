@@ -9,6 +9,8 @@ index_medit=yönetme
 index_manual=Manuel Olarak Düzenle
 index_anyfile=Diğer PHP yapılandırma dosyasını düzenle
 index_return=yapılandırma dosyaları
+index_pkgs=PHP Paketlerini Yönet
+index_pkgsdesc=Sisteminizin yazılım paketi deposundan PHP sürümlerini kurun veya kaldırın, böylece bunlar Virtualmin'de kullanılan herhangi bir sürümde yapılandırılabilir.
 
 file_global=Global PHP yapılandırması
 file_eread=$1 : $2 okunamadı
@@ -24,6 +26,7 @@ list_efile=Düzenlenecek dosya mutlak bir yol olmalıdır
 list_return=PHP yapılandırması
 list_format_ini=INI biçimi
 list_format_fpm=FPM biçimi
+list_bin=PHP sürümü $2, $1'de
 
 vars_title=PHP Değişkenleri
 vars_header=PHP değişken oluşturma ve alıntılama seçenekleri
@@ -203,6 +206,7 @@ log_errors=$1 uygulamasında hata günlüğü değiştirildi
 log_misc=$1 içindeki diğer ayarlar değişti
 log_mods=$1'deki etkin modüller güncellendi
 log_imod=$1'de $2 PHP modülü kuruldu
+log_delete_dpkgs=$1 PHP paketi kaldırıldı
 
 acl_global=Genel PHP yapılandırmasını düzenleyebilir mi?
 acl_anyfile=Herhangi bir dosyayı PHP yapılandırması olarak düzenleyebilir mi?
@@ -212,3 +216,31 @@ acl_user=Dosyaları kullanıcı olarak okuma ve yazma
 
 opt_default=Varsayılan Değer: <tt>$1</tt>
 opt_default_unknown=Bilinmeyen
+
+pkgs_title=PHP Paketleri
+pkgs_name=Paket adı
+pkgs_ver=Paket sürümü
+pkgs_phpver=PHP sürümü
+pkgs_bin=Yürütülebilir
+pkgs_shortver=Kısa versiyon
+pkgs_users=Tarafından kullanıldı
+pkgs_delete=Seçili Paketleri Sil
+pkgs_none=Sisteminizde PHP paketi bulunamadı!
+pkgs_none2=Sisteminizde hiçbir PHP sürümü bulunamadı. Yazılım paketi deponuzda mevcutsa, birini yüklemek için aşağıdaki düğmeye tıklayın.
+pkgs_ecannot=PHP paketlerini yönetmenize izin verilmiyor!
+pkgs_ecannot2=Yazılım paketleri bu sistemde yönetilemez
+pkgs_nousers=Alan adı yok
+pkgs_ucount=$1 etki alanı
+pkgs_newver=Kurulacak PHP paketi
+pkgs_install=Şimdi Yükle
+pkgs_return=PHP paketleri
+
+dpkgs_err=PHP paketleri silinemedi
+dpkgs_title=PHP Paketlerini Silme
+dpkgs_doing=$1 paketi ve PHP sürümü $2 için modüller kaldırılıyor ..
+dpkgs_failed=.. başarısız oldu  : $1
+dpkgs_done=.. başarıyla kaldırıldı
+dpkgs_enone=Hiçbir paket seçilmedi
+dpkgs_eexists=Paket bulunamadı!
+dpkg_eusers=PHP sürümü $1 için paket kaldırılamıyor, çünkü hala $2 etki alanı tarafından kullanılıyor
+dpkgs_rusure=Seçili PHP paketlerini kaldırmak istediğinizden emin misiniz : $1

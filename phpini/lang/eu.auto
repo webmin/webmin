@@ -9,6 +9,8 @@ index_medit=kudeatu
 index_manual=Editatu eskuz
 index_anyfile=Editatu beste PHP konfigurazio fitxategia
 index_return=konfigurazio fitxategiak
+index_pkgs=PHP paketeak kudeatu
+index_pkgsdesc=Instalatu eta kendu PHP bertsioak zure sistemaren software paketeen biltegitik, hemen konfiguratu eta Virtualminen erabili ahal izateko.
 
 file_global=PHP konfigurazio globala
 file_eread=Ezin izan da irakurri $1 : $2
@@ -24,6 +26,7 @@ list_efile=Editatzeko fitxategiak bide absolutua izan behar du
 list_return=PHP konfigurazioa
 list_format_ini=INI formatua
 list_format_fpm=FPM formatua
+list_bin=PHP $2 bertsioa $1ean
 
 vars_title=PHP aldagaiak
 vars_header=PHP aldagaien sorrera eta aurrekontu aukerak
@@ -203,6 +206,7 @@ log_errors=Aldatu egin da errorea $1 erregistratzean
 log_misc=Beste ezarpen batzuk aldatu dira $1 ean
 log_mods=Gaitutako moduluak eguneratu dira $1-n
 log_imod=$2 PHP modulua $1 n instalatu da
+log_delete_dpkgs=$1 PHP pakete desinstalatu dira
 
 acl_global=PHP konfigurazio globala editatu al dezakezu?
 acl_anyfile=PHP konfigurazio gisa edita daiteke edozein fitxategi?
@@ -212,3 +216,31 @@ acl_user=Irakurri eta idatzi fitxategiak erabiltzaile gisa
 
 opt_default=Balio lehenetsia: <tt>$1</tt>
 opt_default_unknown=Ezezaguna
+
+pkgs_title=PHP paketeak
+pkgs_name=Paketearen izena
+pkgs_ver=Paketearen bertsioa
+pkgs_phpver=PHP bertsioa
+pkgs_bin=Exekutagarria
+pkgs_shortver=Bertsio laburra
+pkgs_users=Erabilia
+pkgs_delete=Hautatutako paketeak ezabatu
+pkgs_none=Ez da PHP paketerik aurkitu zure sisteman!
+pkgs_none2=Ez da PHP bertsiorik aurkitu zure sisteman. Egin klik beheko botoian bat instalatzeko, zure software paketeen biltegian eskuragarri badago.
+pkgs_ecannot=Ez duzu PHP paketeak kudeatzeko baimenik!
+pkgs_ecannot2=Software paketeak ezin dira sistema honetan kudeatu
+pkgs_nousers=Domeinurik ez
+pkgs_ucount=$1 domeinu
+pkgs_newver=PHP paketea instalatzeko
+pkgs_install=Instalatu orain
+pkgs_return=PHP paketeak
+
+dpkgs_err=PHP paketeak ezabatzean huts egin da
+dpkgs_title=PHP paketeak ezabatzea
+dpkgs_doing=$1 paketea eta $2 PHP bertsioko moduluak desinstalatzen. ..
+dpkgs_failed=.. huts egin du  : $1
+dpkgs_done=.. behar bezala desinstalatu da
+dpkgs_enone=Ez da paketerik hautatu
+dpkgs_eexists=Paketea ez da existitzen!
+dpkg_eusers=Ezin da $1 bertsioko PHP paketea desinstalatu, oraindik $2 domeinuek erabiltzen ari direlako
+dpkgs_rusure=Ziur zaude hautatutako PHP paketeak kendu nahi dituzula : $1

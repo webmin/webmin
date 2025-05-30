@@ -5,6 +5,7 @@ index_eulist=Det gick inte att lista användare: $1
 index_eglist=Det gick inte att lista grupper: $1
 
 edit_title3=Skapa säker Webmin-användare
+edit_email=Kontakt-e-postadress
 edit_twofactor=Tvåfaktors autentiseringstyp
 edit_twofactorprov=Använda leverantör $1 med ID $2
 edit_twofactorcancel=Ta bort tvåfaktors autentiseringskrav
@@ -12,6 +13,7 @@ edit_twofactornone=Ingen installation ännu
 edit_twofactoradd=Aktivera tvåfaktorer för användare
 edit_locale=Plats
 edit_egone=Den valda användaren finns inte längre!
+edit_forgot=Skicka länk för återställning av lösenord
 edit_proto=Lagringstyp
 edit_proto_mysql=MySQL-databas
 edit_proto_postgresql=PostgreSQL-databas
@@ -26,6 +28,7 @@ save_eunixname=Användarnamnet '$1' är inte en Unix-användare och kan därför
 save_eoverlay=Ett temaöverlägg kan inte väljas om inte ett tema är det
 save_eminsize=Saknad eller icke-numerisk minsta lösenordslängd
 save_etemp=Alternativet att tvinga lösenordsändring vid nästa inloggning kan inte användas om <a href='$1'>uppmanar användare att ange nya lösenord</a> är aktiverat
+save_eemail=E-postadressen får inte innehålla tecknet :
 
 delete_eanonuser=Den här användaren används för anonym modulåtkomst
 
@@ -41,6 +44,9 @@ log_sync=Ändrad unix användarsynkronisering
 log_sql=Ändrad användare och gruppdatabas
 log_twofactor=Registrerad användare $1 med tvåfaktureleverantör $2
 log_onefactor=Inskrivna användare $1 för tvåfaktorautentisering
+log_forgot_send=Skickade e-postmeddelande för återställning av lösenord för användare $1 till $2
+log_forgot_reset=Återställ lösenord för användare $1 med e-postadress $2
+log_forgot_admin=Administratören skickade ett e-postmeddelande med lösenordsåterställning för användaren $1 till $2
 
 gedit_desc=Gruppbeskrivning
 gedit_egone=Den valda gruppen finns inte längre!
@@ -162,3 +168,20 @@ twofactor_failed=.. anmälan misslyckades: $1
 twofactor_done=.. komplett. Ditt ID med denna leverantör är <tt>$1</tt>.
 twofactor_setup=Tvåfaktorsautentisering har inte aktiverats i det här systemet ännu, men kan aktiveras med <a href='$1'>Webmin Configuration</a> -modulen.
 twofactor_ebutton=Ingen knapp klickade!
+
+forgot_title=Skicka länk för återställning av lösenord
+forgot_err=Misslyckades med att skicka länken för återställning av lösenord
+forgot_header=Detaljer om länken för återställning av lösenord
+forgot_user=Återställ lösenord för användaren
+forgot_email=Länkleveransmetod
+forgot_email_def=Visa länk i Webmin
+forgot_email_sel=Skicka länk via e-post till
+forgot_send=Skicka länk
+forgot_desc=Den här sidan låter dig generera eller skicka en länk som kan användas för att välja ett nytt lösenord för en Webmin-användare till vilken e-postadress som helst. Var försiktig med vilken adress du skickar den här länken till, eftersom den i praktiken ger fullständig åtkomst till Webmin-inloggningen!
+forgot_adminmsg=Du får detta e-postmeddelande från administratören för Webmin-systemet på $3, för inloggningen $1.\n\nOm du vill fortsätta med att återställa lösenordet, följ den här länken:\n$2
+forgot_sending=Skickar e-post för återställning av lösenord för $2 till $1 ..
+forgot_sent=.. skickat
+forgot_link=Länken nedan kan användas för att återställa Webmin-lösenordet för $1 under de kommande $2 minuterna :
+forgot_enosudo=Sudo är inte tillgängligt på det här systemet!
+forgot_ecansudo=Den angivna användaren har inte sudo-behörigheter
+forgot_eunix=Den angivna sudo-kapabla användaren finns inte!

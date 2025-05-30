@@ -6,6 +6,7 @@ index_eglist=A csoportok felsorolása nem sikerült: $1
 
 edit_title3=Hozzon létre biztonságos Webmin felhasználót
 edit_cloneof=A Webmin felhasználó klónozása
+edit_email=Kapcsolatfelvételi e-mail cím
 edit_passlocked=A jelszó nem változott $1 napig - a fiók zárolva van!
 edit_passmax=A jelszó nem változott $1 napig - a következő bejelentkezéskor meg kell változtatni
 edit_passold=A jelszó utoljára megváltozott $1 nappal ezelőtt
@@ -22,6 +23,7 @@ edit_nochange=Végrehajtja a jelszócsere napjait?
 edit_egone=A kiválasztott felhasználó már nem létezik!
 edit_overlay=Személyes téma overlay
 edit_overlayglobal=Nincs - használja a téma alapértelmezéseit
+edit_forgot=Jelszó-visszaállítási link küldése
 edit_global=Minden modul engedélyei
 edit_temppass=A változtatás kényszerítése a következő bejelentkezéskor
 edit_days=A hét megengedett napjai
@@ -48,6 +50,7 @@ save_edays=Nincs nap kiválasztva
 save_ehours=Hiányzó vagy érvénytelen idő megengedhető
 save_ehours2=A megengedett kezdési időnek vége előtt kell lennie
 save_etemp=A jelszó megváltoztatásának kényszerítését a következő bejelentkezéskor csak akkor lehet használni, ha a <a href='$1'>felszólítja a felhasználókat új jelszavak megadására</a>.
+save_eemail=Az e-mail cím nem tartalmazhatja a : karaktert
 
 delete_eanonuser=Ezt a felhasználót anonim modul-hozzáféréshez használják
 
@@ -65,6 +68,9 @@ log_sync=Megváltozott az unix felhasználói szinkronizálás
 log_sql=Megváltozott felhasználói és csoport adatbázis
 log_twofactor=Regisztrált felhasználó $2
 log_onefactor=Nem regisztrált felhasználó $1 két tényezős hitelesítéshez
+log_forgot_send=Jelszó-visszaállító e-mail elküldve a(z) $1 felhasználó jelszavának visszaállítására vonatkozó e-mailben a következő címre: $2
+log_forgot_reset=Jelszó visszaállítása a(z) $1 felhasználóhoz, amelynek e-mail címe $2
+log_forgot_admin=Az adminisztrátor jelszó-visszaállító e-mailt küldött a(z) $1 felhasználónak a következő címre: $2
 
 gedit_desc=Csoport leírás
 gedit_egone=A kiválasztott csoport már nem létezik!
@@ -212,3 +218,20 @@ twofactor_failed=.. a regisztráció sikertelen: $1
 twofactor_done=.. teljes. Az Ön azonosítója ezzel a szolgáltatóval <tt>$1</tt>.
 twofactor_setup=A kétfaktoros hitelesítés még nem engedélyezve van ebben a rendszeren, de bekapcsolható a <a href='$1'>Webmin konfigurálása</a> modul segítségével.
 twofactor_ebutton=Nincs gombra kattintva!
+
+forgot_title=Jelszó-visszaállítási link küldése
+forgot_err=Nem sikerült elküldeni a jelszó-visszaállító linket
+forgot_header=Jelszó-visszaállítási link részletei
+forgot_user=Jelszó visszaállítása a felhasználóhoz
+forgot_email=Link kézbesítési módja
+forgot_email_def=Link megjelenítése a Webminben
+forgot_email_sel=Link küldése e-mailben ide:
+forgot_send=Link küldése
+forgot_desc=Ez az oldal lehetővé teszi egy link létrehozását vagy elküldését, amellyel új jelszót választhat egy Webmin felhasználó számára bármely e-mail címre. Ügyeljen arra, hogy melyik címre küldi ezt a linket, mivel az gyakorlatilag teljes hozzáférést biztosít a Webmin bejelentkezéshez!
+forgot_adminmsg=Ezt az e-mailt a(z) $3 címen található Webmin rendszer adminisztrátorától kapja a(z) $1 bejelentkezési névhez.\n\nHa folytatni szeretné a jelszó visszaállítását, kövesse ezt a linket:\n$2
+forgot_sending=Jelszó-visszaállító e-mail küldése a(z) $2 címhez $1 címre ..
+forgot_sent=.. elküldve
+forgot_link=Az alábbi linkre kattintva visszaállíthatja a(z) $1 Webmin jelszavát a következő $2 percre :
+forgot_enosudo=A Sudo nem érhető el ezen a rendszeren!
+forgot_ecansudo=A megadott felhasználónak nincsenek sudo jogosultságai
+forgot_eunix=A megadott sudo-képes felhasználó nem létezik!

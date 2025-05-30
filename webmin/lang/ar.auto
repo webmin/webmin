@@ -583,6 +583,14 @@ session_passapi=تمكين API تغيير كلمة المرور عن بعد؟
 session_passapi0=API تعطيل
 session_passapi1=تم تمكين API لمستخدمي Unix
 session_passurl=عند التمكين ، يمكن تغيير كلمات مرور المستخدم عبر طلب POST إلى$1
+session_forgot=هل تريد السماح باستعادة كلمة المرور المنسية؟
+session_eforgot=لا يمكن تفعيل استعادة كلمة المرور المنسية إلا بعد إزالة وحدة <b>Virtualmin Password Recovery</b>. يمكنك القيام بذلك من صفحة <a href='$1'>وحدات Webmin</a>.
+session_passresetdesc=خنق استعادة كلمة المرور
+session_passreset=حظر العملاء الذين لديهم أكثر من $1 طلب لمدة $2 دقيقة
+session_epassreset_failures=طلبات الحظر المفقودة أو غير الصالحة
+session_passtimeoutdesc=انتهاء صلاحية رابط إعادة تعيين كلمة المرور
+session_passtimeout=ينتهي رابط إعادة تعيين كلمة المرور في غضون $1 دقيقة
+session_epassreset_timeout=مهلة إعادة تعيين كلمة المرور المفقودة أو غير الصالحة
 
 assignment_title=إعادة تعيين الوحدات النمطية
 assignment_header=تعيينات فئة الوحدة النمطية

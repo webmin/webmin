@@ -5,6 +5,7 @@ index_eulist=ユーザーのリストに失敗しました： $1
 index_eglist=グループのリストに失敗しました： $1
 
 edit_title3=安全なWebminユーザーを作成する
+edit_email=連絡先メールアドレス
 edit_twofactor=二要素認証タイプ
 edit_twofactorprov=ID $2 のプロバイダー $1 を使用する
 edit_twofactorcancel=二要素認証要件を削除する
@@ -14,6 +15,7 @@ edit_locale=ロケール
 edit_egone=選択したユーザーは存在しません！
 edit_overlay=個人テーマのオーバーレイ
 edit_overlayglobal=なし-テーマのデフォルトを使用
+edit_forgot=パスワードリセットリンクを送信
 edit_global=すべてのモジュールの権限
 edit_proto=保管タイプ
 edit_proto_mysql=MySQLデータベース
@@ -28,6 +30,7 @@ edit_unsafe=無制限にリセット
 save_eunixname=ユーザー名「$1」はUnixユーザーではないため、セーフモードでは使用できません
 save_eoverlay=テーマオーバーレイを選択できないのは、テーマが
 save_etemp=<a href='$1'>ユーザーに新しいパスワードの入力を促す</a>が有効になっていない限り、次回ログイン時にパスワードの変更を強制するオプションは使用できません
+save_eemail=メールアドレスには「:」文字を含めることはできません
 
 delete_eanonuser=このユーザーは匿名モジュールアクセスに使用されています
 
@@ -41,6 +44,9 @@ log_joingroup=$1 Webminユーザーをグループ $2 に追加しました
 log_sql=変更されたユーザーおよびグループデータベース
 log_twofactor=登録済みユーザー $1 と2要素プロバイダー $2
 log_onefactor=二要素認証の登録解除ユーザー $1
+log_forgot_send=ユーザー $1 のパスワード リセット メールを $2 に送信しました
+log_forgot_reset=メール $2 を使用してユーザー $1 のパスワードをリセットします
+log_forgot_admin=管理者がユーザー $1 のパスワード リセット メールを $2 に送信しました
 
 gedit_desc=グループの説明
 gedit_egone=選択したグループはもう存在しません！
@@ -158,3 +164,20 @@ twofactor_failed=..登録に失敗しました： $1
 twofactor_done=..完了。このプロバイダーのIDは<tt>$1</tt>です。
 twofactor_setup=このシステムでは2要素認証はまだ有効になっていませんが、<a href='$1'>Webmin Configuration</a>モジュールを使用して有効にすることができます。
 twofactor_ebutton=ボタンがクリックされていません！
+
+forgot_title=パスワードリセットリンクを送信
+forgot_err=パスワードリセットリンクの送信に失敗しました
+forgot_header=パスワードリセットリンクの詳細
+forgot_user=ユーザーのパスワードをリセットする
+forgot_email=リンク配信方法
+forgot_email_def=Webminでリンクを表示する
+forgot_email_sel=リンクをメールで送信
+forgot_send=リンクを送信
+forgot_desc=このページでは、Webminユーザーの新しいパスワードを設定するためのリンクを生成または任意のメールアドレスに送信できます。このリンクを送信するアドレスにはご注意ください。送信先はWebminログインへのフルアクセスを許可することになりますのでご注意ください。
+forgot_adminmsg=このメールは、$3 の Webmin システムの管理者から、ログイン $1 に対して送信されました。\n\nパスワードのリセットを続行する場合は、次のリンクをクリックしてください :\n$2
+forgot_sending=$2 のパスワード リセット メールを $1 に送信しています。
+forgot_sent=.. 送信済み
+forgot_link=以下のリンクを使用すると、今後 $2 分間、$1 の Webmin パスワードをリセットできます。
+forgot_enosudo=このシステムでは Sudo は使用できません。
+forgot_ecansudo=入力されたユーザーにはsudo権限がありません
+forgot_eunix=入力された sudo 対応ユーザーは存在しません。

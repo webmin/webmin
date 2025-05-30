@@ -9,6 +9,8 @@ index_medit=Upravljati
 index_manual=Ručno uređivanje
 index_anyfile=Uredite drugu PHP konfiguracijsku datoteku
 index_return=konfiguracijske datoteke
+index_pkgs=Upravljanje PHP paketima
+index_pkgsdesc=Instalirajte i uklonite PHP verzije iz repozitorija softverskih paketa vašeg sustava kako bi se mogle konfigurirati ovdje ili koristiti u Virtualminu.
 
 file_global=Global PHP konfiguracija
 file_eread=Pročitavanje $1 : $2 nije uspjelo
@@ -24,6 +26,7 @@ list_efile=Datoteka za uređivanje mora biti apsolutni put
 list_return=PHP konfiguracija
 list_format_ini=INI format
 list_format_fpm=FPM format
+list_bin=PHP verzija $2 na $1
 
 vars_title=PHP varijable
 vars_header=Opcije stvaranja i citiranja varijabli PHP
@@ -203,6 +206,7 @@ log_errors=Izmijenjena prijava pogreške u $1
 log_misc=Izmijenjene su druge postavke u $1
 log_mods=Ažurirani omogućeni moduli u $1
 log_imod=Instaliran PHP modul $2 u $1
+log_delete_dpkgs=Deinstalirano $1 PHP paketa
 
 acl_global=Može li se urediti globalna PHP konfiguracija?
 acl_anyfile=Možete li urediti bilo koju datoteku kao PHP konfiguraciju?
@@ -212,3 +216,31 @@ acl_user=Čitati i pisati datoteke kao korisnik
 
 opt_default=Zadana vrijednost: <tt>$1</tt>
 opt_default_unknown=Nepoznato
+
+pkgs_title=PHP paketi
+pkgs_name=Naziv paketa
+pkgs_ver=Verzija paketa
+pkgs_phpver=PHP verzija
+pkgs_bin=Izvršna datoteka
+pkgs_shortver=Kratka verzija
+pkgs_users=Koristi
+pkgs_delete=Izbriši odabrane pakete
+pkgs_none=Na vašem sustavu nisu pronađeni PHP paketi!
+pkgs_none2=Na vašem sustavu nisu pronađene verzije PHP-a. Kliknite donji gumb da biste instalirali jednu, ako je dostupna u vašem repozitoriju softverskih paketa.
+pkgs_ecannot=Nije vam dopušteno upravljanje PHP paketima!
+pkgs_ecannot2=Softverski paketi se ne mogu upravljati na ovom sustavu
+pkgs_nousers=Nema domena
+pkgs_ucount=$1 domena
+pkgs_newver=PHP paket za instalaciju
+pkgs_install=Instaliraj odmah
+pkgs_return=PHP paketi
+
+dpkgs_err=Brisanje PHP paketa nije uspjelo
+dpkgs_title=Brisanje PHP paketa
+dpkgs_doing=Deinstalacija paketa $1 i modula za PHP verziju $2 ..
+dpkgs_failed=.. nije uspjelo  : $1
+dpkgs_done=.. uspješno deinstalirano
+dpkgs_enone=Nije odabran nijedan paket
+dpkgs_eexists=Paket ne postoji!
+dpkg_eusers=Paket za PHP verziju $1 ne može se deinstalirati jer ga još uvijek koristi $2 domene
+dpkgs_rusure=Jeste li sigurni da želite ukloniti odabrane PHP pakete : $1

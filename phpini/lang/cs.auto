@@ -1,10 +1,13 @@
 index_anyfile=Upravte další konfigurační soubor PHP
+index_pkgs=Správa PHP balíčků
+index_pkgsdesc=Nainstalujte a odeberte verze PHP z repozitáře softwarových balíčků vašeho systému, aby je bylo možné konfigurovat zde nebo používat ve Virtualminu.
 
 file_eread=Nepodařilo se přečíst $1 : $2
 
 list_efile=Soubor, který chcete upravit, musí být absolutní cesta
 list_format_ini=Formát INI
 list_format_fpm=Formát FPM
+list_bin=Verze PHP $2 na adrese $1
 
 session_redis=Redis
 session_memcache=MemcacheD
@@ -62,8 +65,37 @@ imod_missing=.. instalace dokončena, ale modul PHP nebyl detekován.
 
 log_mods=Aktualizované povolené moduly v $1
 log_imod=Nainstalovaný modul PHP $2 v $1
+log_delete_dpkgs=Odinstalováno $1 PHP balíčků
 
 acl_user=Čtení a zápis souborů jako uživatel
 
 opt_default=Výchozí hodnota: <tt>$1</tt>
 opt_default_unknown=Neznámý
+
+pkgs_title=PHP balíčky
+pkgs_name=Název balíčku
+pkgs_ver=Verze balíčku
+pkgs_phpver=Verze PHP
+pkgs_bin=Spustitelný soubor
+pkgs_shortver=Krátká verze
+pkgs_users=Používá
+pkgs_delete=Smazat vybrané balíčky
+pkgs_none=Ve vašem systému nebyly nalezeny žádné PHP balíčky!
+pkgs_none2=Ve vašem systému nebyly nalezeny žádné verze PHP. Klikněte na tlačítko níže a nainstalujte ji, pokud je k dispozici ve vašem repozitáři softwarových balíčků.
+pkgs_ecannot=Nemáte oprávnění spravovat PHP balíčky!
+pkgs_ecannot2=Softwarové balíčky nelze v tomto systému spravovat
+pkgs_nousers=Žádné domény
+pkgs_ucount=$1 domén
+pkgs_newver=PHP balíček k instalaci
+pkgs_install=Nainstalovat nyní
+pkgs_return=PHP balíčky
+
+dpkgs_err=Nepodařilo se smazat balíčky PHP
+dpkgs_title=Mazání PHP balíčků
+dpkgs_doing=Odinstalace balíčku $1 a modulů pro PHP verze $2 ..
+dpkgs_failed=.. selhalo  : $1
+dpkgs_done=.. úspěšně odinstalováno
+dpkgs_enone=Žádné balíčky nebyly vybrány
+dpkgs_eexists=Balíček neexistuje!
+dpkg_eusers=Balíček pro PHP verze $1 nelze odinstalovat, protože je stále používán doménami $2
+dpkgs_rusure=Opravdu chcete odstranit vybrané balíčky PHP : $1

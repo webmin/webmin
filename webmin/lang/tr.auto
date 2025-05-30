@@ -316,6 +316,14 @@ session_passapi=Uzaktan şifre değiştirme API'si etkinleştirilsin mi?
 session_passapi0=API devre dışı
 session_passapi1=Unix kullanıcıları için API etkinleştirildi
 session_passurl=Etkinleştirildiğinde, kullanıcı parolaları bir POST isteği aracılığıyla $1 olarak değiştirilebilir
+session_forgot=Unutulan şifrenin kurtarılmasına izin verilsin mi?
+session_eforgot=Unutulan şifre kurtarma, <b>Virtualmin Password Recovery</b> eklenti modülü ilk önce kaldırılmadığı sürece etkinleştirilemez. Bu, <a href='$1'>Webmin Modülleri</a> sayfasında yapılabilir.
+session_passresetdesc=Şifre kurtarma kısıtlaması
+session_passreset=$1'den fazla isteği olan istemcileri $2 dakika boyunca engelle
+session_epassreset_failures=Eksik veya geçersiz engelleme istekleri
+session_passtimeoutdesc=Şifre sıfırlama bağlantısının süresi doldu
+session_passtimeout=Şifre sıfırlama bağlantısı $1 dakika içinde sona eriyor
+session_epassreset_timeout=Eksik veya geçersiz parola sıfırlama zaman aşımı
 
 categories_lang=Kategorileri dilde düzenle:
 categories_langok=Değişiklik

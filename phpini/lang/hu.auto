@@ -2,6 +2,8 @@ index_eaccess=Nincs hozzáférése PHP-konfigurációs fájlokhoz.
 index_efiles=A hozzáférhető PHP-fájlok egyike sem létezik.
 index_efiles2=Nem található PHP konfigurációs fájl. Állítsa be a <a href='$1'>modulkonfigurációt</a> a globális PHP konfigurációs fájl helyes elérési útjának beállításához.
 index_anyfile=Más PHP konfigurációs fájl szerkesztése
+index_pkgs=PHP csomagok kezelése
+index_pkgsdesc=Telepítse és távolítsa el a PHP verziókat a rendszer szoftvercsomag-tárházából, hogy azok itt konfigurálhatók legyenek a Virtualminban használtak szerint.
 
 file_eread=A (z) $1 olvasása nem sikerült : $2
 
@@ -13,6 +15,7 @@ list_ecannot=A PHP konfigurációs fájl kezelése nem engedélyezett
 list_efile=A szerkesztendő fájlnak abszolút elérési útnak kell lennie
 list_format_ini=INI formátum
 list_format_fpm=FPM formátum
+list_bin=PHP verzió $2, $1 helyen
 
 vars_header=PHP változó létrehozási és idézési lehetőségek
 vars_magic=Idézzen minden bemeneti változót?
@@ -176,6 +179,7 @@ log_errors=Megváltozott a hibás naplózás $1 -ben
 log_misc=Megváltoztatta a $1 egyéb beállításait
 log_mods=Az engedélyezett modulok frissítve itt: $1
 log_imod=A(z) $2 PHP modul telepítve itt: $1
+log_delete_dpkgs=$1 PHP csomag eltávolítva
 
 acl_manual=Kézzel lehet szerkeszteni a konfigurációs fájlokat?
 acl_inis=További konfigurációs fájlok <br>(<i> fájlnév </i>=<i> leírás </i> formátumban)
@@ -183,3 +187,31 @@ acl_user=Fájlok olvasása és írása felhasználóként
 
 opt_default=Alapértelmezett érték: <tt>$1</tt>
 opt_default_unknown=Ismeretlen
+
+pkgs_title=PHP csomagok
+pkgs_name=Csomag neve
+pkgs_ver=Csomag verziója
+pkgs_phpver=PHP verzió
+pkgs_bin=Végrehajtható
+pkgs_shortver=Rövid változat
+pkgs_users=Használta
+pkgs_delete=Kijelölt csomagok törlése
+pkgs_none=Nem találhatók PHP csomagok a rendszereden!
+pkgs_none2=Nem található PHP verzió a rendszeren. Kattintson az alábbi gombra a telepítéshez, ha van ilyen a szoftvercsomag-tárházában.
+pkgs_ecannot=Nem jogosult PHP csomagok kezelésére!
+pkgs_ecannot2=A szoftvercsomagok nem kezelhetők ezen a rendszeren
+pkgs_nousers=Nincsenek domainek
+pkgs_ucount=$1 domain
+pkgs_newver=Telepítendő PHP csomag
+pkgs_install=Telepítés most
+pkgs_return=PHP csomagok
+
+dpkgs_err=Nem sikerült törölni a PHP csomagokat
+dpkgs_title=PHP csomagok törlése
+dpkgs_doing=A(z) $1 csomag és a(z) $2 PHP verzió moduljainak eltávolítása folyamatban ..
+dpkgs_failed=.. sikertelen  : $1
+dpkgs_done=.. sikeresen eltávolítva
+dpkgs_enone=Nincsenek kiválasztott csomagok
+dpkgs_eexists=A csomag nem létezik!
+dpkg_eusers=A(z) $1 PHP verzióhoz tartozó csomag nem távolítható el, mivel még $2 domain használja
+dpkgs_rusure=Biztosan eltávolítja a kiválasztott PHP csomagokat? $1

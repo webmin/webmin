@@ -9,6 +9,8 @@ index_medit=Spravovať
 index_manual=Upraviť ručne
 index_anyfile=Upravte iný konfiguračný súbor PHP
 index_return=konfiguračné súbory
+index_pkgs=Správa PHP balíkov
+index_pkgsdesc=Nainštalujte a odstráňte verzie PHP z repozitára softvérových balíkov vášho systému, aby sa dali nakonfigurovať tu alebo použiť vo Virtualmine.
 
 file_global=Globálna konfigurácia PHP
 file_eread=Nepodarilo sa prečítať $1 : $2
@@ -24,6 +26,7 @@ list_efile=Súbor, ktorý chcete upraviť, musí byť absolútna cesta
 list_return=PHP konfigurácia
 list_format_ini=Formát INI
 list_format_fpm=Formát FPM
+list_bin=Verzia PHP $2 na adrese $1
 
 vars_title=Premenné PHP
 vars_header=Možnosti vytvárania a citovania PHP premenných
@@ -203,6 +206,7 @@ log_errors=Zmenené protokolovanie chýb v $1
 log_misc=Ostatné nastavenia boli zmenené v $1
 log_mods=Aktualizované povolené moduly v $1
 log_imod=Nainštalovaný modul PHP $2 v $1
+log_delete_dpkgs=Odinštalovaných $1 PHP balíkov
 
 acl_global=Môžete upraviť globálnu konfiguráciu PHP?
 acl_anyfile=Môžete upravovať ľubovoľný súbor ako konfiguráciu PHP?
@@ -212,3 +216,31 @@ acl_user=Čítanie a zápis súborov ako užívateľ
 
 opt_default=Predvolená hodnota: <tt>$1</tt>
 opt_default_unknown=Neznámy
+
+pkgs_title=PHP balíky
+pkgs_name=Názov balíka
+pkgs_ver=Verzia balíka
+pkgs_phpver=Verzia PHP
+pkgs_bin=Spustiteľný súbor
+pkgs_shortver=Krátka verzia
+pkgs_users=Používané používateľom
+pkgs_delete=Odstrániť vybrané balíky
+pkgs_none=Vo vašom systéme sa nenašli žiadne PHP balíky!
+pkgs_none2=Vo vašom systéme sa nenašli žiadne verzie PHP. Kliknite na tlačidlo nižšie a nainštalujte si jednu, ak je k dispozícii vo vašom repozitári softvérových balíkov.
+pkgs_ecannot=Nemáte povolenie spravovať PHP balíčky!
+pkgs_ecannot2=Softvérové balíky nie je možné spravovať v tomto systéme
+pkgs_nousers=Žiadne domény
+pkgs_ucount=$1 domén
+pkgs_newver=PHP balík na inštaláciu
+pkgs_install=Inštalovať teraz
+pkgs_return=PHP balíky
+
+dpkgs_err=Nepodarilo sa odstrániť PHP balíky
+dpkgs_title=Odstránenie PHP balíkov
+dpkgs_doing=Odinštalovanie balíka $1 a modulov pre PHP verziu $2 ..
+dpkgs_failed=.. zlyhalo  : $1
+dpkgs_done=.. úspešne odinštalované
+dpkgs_enone=Žiadne vybrané balíky
+dpkgs_eexists=Balík neexistuje!
+dpkg_eusers=Balík pre PHP verziu $1 nie je možné odinštalovať, pretože ho stále používajú $2 domény
+dpkgs_rusure=Naozaj chcete odstrániť vybraté PHP balíky : $1

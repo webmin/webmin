@@ -1,15 +1,22 @@
 index_screate=Creeu un nou usuari segur.
 
 edit_title3=Creeu un usuari Webmin segur
+edit_email=Correu electrònic de contacte
 edit_locale=Localització
+edit_forgot=Enviar enllaç de restabliment de contrasenya
 edit_safe=Nivell de privilegi
 edit_safe0=Sense restriccions
 edit_safe1=Només mòduls segurs
 edit_unsafe=Restableix-lo a sense restriccions
 
 save_eunixname=El nom d'usuari '$1' no és un usuari Unix, per la qual cosa no es pot utilitzar en mode segur
+save_eemail=L'adreça de correu electrònic no pot contenir el caràcter :
 
 acl_locale=Es pot canviar la configuració regional?
+
+log_forgot_send=S'ha enviat un correu electrònic de restabliment de contrasenya per a l'usuari $1 a $2
+log_forgot_reset=Restableix la contrasenya per a l'usuari $1 amb el correu electrònic $2
+log_forgot_admin=L'administrador ha enviat un correu electrònic de restabliment de contrasenya per a l'usuari $1 a $2
 
 sync_modify=Canvieu el nom de l'usuari Webmin coincident quan es canvia el nom d'un usuari Unix.
 
@@ -22,3 +29,20 @@ sql_timeout_def=Utilitza el temps d'espera de connexió predeterminat (60 segons
 sql_timeout_for=Tanqueu les connexions a la memòria cau després
 sql_timeout_secs=segons
 sql_etimeout=El temps d'espera de la connexió a la memòria cau ha de ser un número
+
+forgot_title=Enviar enllaç de restabliment de contrasenya
+forgot_err=No s'ha pogut enviar l'enllaç de restabliment de la contrasenya
+forgot_header=Detalls de l'enllaç de restabliment de contrasenya
+forgot_user=Restablir la contrasenya de l'usuari
+forgot_email=Mètode de lliurament d'enllaços
+forgot_email_def=Mostra l'enllaç a Webmin
+forgot_email_sel=Enviar enllaç per correu electrònic a
+forgot_send=Enviar enllaç
+forgot_desc=Aquesta pàgina us permet generar o enviar un enllaç que es pot utilitzar per seleccionar una nova contrasenya per a un usuari de Webmin a qualsevol adreça de correu electrònic. Aneu amb compte a quina adreça envieu aquest enllaç, ja que us atorgarà accés complet a l'inici de sessió de Webmin!
+forgot_adminmsg=Heu rebut aquest correu electrònic de l'administrador del sistema Webmin a $3, per a l'inici de sessió $1.\n\nSi voleu continuar amb el restabliment de la contrasenya, seguiu aquest enllaç:\n$2
+forgot_sending=Enviant un correu electrònic de restabliment de contrasenya de $2 a $1. ..
+forgot_sent=.. enviat
+forgot_link=L'enllaç següent es pot utilitzar per restablir la contrasenya de Webmin per a $1 durant els propers $2 minuts :
+forgot_enosudo=El Sudo no està disponible en aquest sistema!
+forgot_ecansudo=L'usuari introduït no té permisos de sudo
+forgot_eunix=L'usuari amb capacitat per a sudo introduït no existeix!

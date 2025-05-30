@@ -217,6 +217,14 @@ session_passapi=Povoliť API na vzdialenú zmenu hesla?
 session_passapi0=API zakázané
 session_passapi1=API povolené pre používateľov Unixu
 session_passurl=Ak je táto možnosť povolená, používateľské heslá je možné zmeniť pomocou požiadavky POST na $1
+session_forgot=Povoliť obnovenie zabudnutého hesla?
+session_eforgot=Obnovenie zabudnutého hesla nie je možné povoliť, pokiaľ sa najprv neodstráni modul doplnku <b>Virtualmin Password Recovery</b>. Toto je možné vykonať na stránke <a href='$1'>Moduly Webmin</a>.
+session_passresetdesc=Obmedzenie obnovenia hesla
+session_passreset=Blokovať klientov s viac ako $1 požiadavkami na $2 minúty
+session_epassreset_failures=Chýbajúce alebo neplatné žiadosti o blokovanie
+session_passtimeoutdesc=Platnosť odkazu na obnovenie hesla
+session_passtimeout=Odkaz na obnovenie hesla vyprší o $1 minút
+session_epassreset_timeout=Časový limit pre obnovenie hesla chýba alebo je neplatný
 
 categories_custom=zvyk
 

@@ -10,6 +10,7 @@ edit_title3=Güvenli Webmin Kullanıcısı Oluşturun
 edit_readonly=Bu Webmin kullanıcısı $1 modülü tarafından yönetildiği için düzenlenmemelidir. Bu uyarıyı atlamak ve kullanıcıyı yine de düzenlemek için <a href='$2'>burayı tıklayın</a> - ancak manuel değişikliklerin üzerine yazılabileceğini unutmayın!
 edit_cloneof=Webmin kullanıcısını kopyalama
 edit_real=Gerçek ad
+edit_email=İletişim e-postası
 edit_passlocked=$1 gün boyunca şifre değiştirilmedi - hesap kilitlendi!
 edit_passmax=$1 gün boyunca şifre değiştirilmedi - bir sonraki girişte değiştirilmelidir
 edit_passold=Şifre en son değiştirildi $1 gün önce
@@ -28,6 +29,7 @@ edit_nochange=Şifre değiştirme günleri uygulansın mı?
 edit_egone=Seçilen kullanıcı artık mevcut değil!
 edit_overlay=Kişisel tema kaplaması
 edit_overlayglobal=Yok - tema varsayılanlarını kullan
+edit_forgot=Şifre Sıfırlama Bağlantısını Gönder
 edit_rbacdeny=RBAC erişim modu
 edit_rbacdeny0=RBAC yalnızca seçilen modül ACL'lerini kontrol eder
 edit_rbacdeny1=RBAC tüm modülleri ve ACL'leri kontrol eder
@@ -63,6 +65,7 @@ save_edays=Seçime izin verilecek gün yok
 save_ehours=İzin vermek için eksik veya geçersiz zamanlar
 save_ehours2=İzin vermek için başlangıç zamanı bitmeden olmalıdır
 save_etemp=<a href='$1'>kullanıcılardan yeni şifreler girmelerini istemediklerinde</a> bir sonraki girişte şifre değişikliğini zorlama seçeneği kullanılamaz
+save_eemail=E-posta adresi : karakterini içeremez
 
 delete_eanonuser=Bu kullanıcı anonim modül erişimi için kullanılıyor
 
@@ -85,6 +88,9 @@ log_sync=Unix kullanıcı senkronizasyonu değiştirildi
 log_sql=Değişen kullanıcı ve grup veritabanı
 log_twofactor=İki faktörlü $2 ile kayıtlı $1 kullanıcısı
 log_onefactor=İki faktörlü kimlik doğrulama için kaydı iptal edilen $1 kullanıcısı
+log_forgot_send=$1 kullanıcısı için $2'ye şifre sıfırlama e-postası gönderildi
+log_forgot_reset=$2 e-posta adresine sahip $1 kullanıcısı için şifreyi sıfırla
+log_forgot_admin=Yönetici $1 - $2 kullanıcısı için parola sıfırlama e-postası gönderdi
 
 gedit_members=Üye kullanıcılar ve gruplar
 gedit_desc=Grup açıklaması
@@ -268,3 +274,20 @@ twofactor_failed=.. kayıt başarısız oldu: $1
 twofactor_done=.. tamamlayınız. Bu sağlayıcıdaki kimliğiniz <tt>$1</tt>.
 twofactor_setup=İki faktörlü kimlik doğrulama henüz bu sistemde etkinleştirilmedi, ancak <a href='$1'>Webmin Yapılandırması</a> modülü kullanılarak açılabilir.
 twofactor_ebutton=Hiçbir düğme tıklanmadı!
+
+forgot_title=Şifre Sıfırlama Bağlantısını Gönder
+forgot_err=Şifre sıfırlama bağlantısı gönderilemedi
+forgot_header=Şifre sıfırlama bağlantısı ayrıntıları
+forgot_user=Kullanıcı için şifreyi sıfırla
+forgot_email=Bağlantı teslim yöntemi
+forgot_email_def=Bağlantıyı Webmin'de görüntüle
+forgot_email_sel=Bağlantıyı e-posta ile gönder
+forgot_send=Bağlantıyı Gönder
+forgot_desc=Bu sayfa, bir Webmin kullanıcısı için yeni bir parola seçmek için kullanılabilecek bir bağlantı oluşturmanıza veya herhangi bir e-posta adresine göndermenize olanak tanır. Bu bağlantıyı hangi adrese gönderdiğinize dikkat edin, çünkü bu, Webmin oturum açma işlemine tam erişim sağlayacaktır!
+forgot_adminmsg=Bu e-postayı, $3 adresindeki Webmin sisteminin yöneticisinden, $1 girişi için alıyorsunuz.\n\nŞifreyi sıfırlamaya devam etmek istiyorsanız, şu bağlantıyı izleyin:\n$2
+forgot_sending=$2 için şifre sıfırlama e-postası $1 adresine gönderiliyor ..
+forgot_sent=.. gönderilmiş
+forgot_link=Aşağıdaki bağlantı $1 için Webmin şifresini önümüzdeki $2 dakika boyunca sıfırlamak için kullanılabilir :
+forgot_enosudo=Bu sistemde Sudo mevcut değil!
+forgot_ecansudo=Girilen kullanıcı sudo izinlerine sahip değil
+forgot_eunix=Girilen sudo-capable kullanıcı bulunamadı!

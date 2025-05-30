@@ -1,8 +1,11 @@
 index_anyfile=Bewerk ander PHP-configuratiebestand
+index_pkgs=PHP-pakketten beheren
+index_pkgsdesc=Installeer en verwijder PHP-versies uit de softwarepakketrepository van uw systeem, zodat ze hier kunnen worden geconfigureerd en gebruikt in Virtualmin.
 
 list_efile=Het te bewerken bestand moet een absoluut pad zijn
 list_format_ini=INI-formaat
 list_format_fpm=FPM-indeling
+list_bin=PHP-versie $2 op $1
 
 session_redis=Redis
 session_memcache=GeheugencacheD
@@ -57,6 +60,35 @@ imod_missing=.. installatie voltooid, maar de PHP-module werd niet gedetecteerd.
 
 log_mods=Bijgewerkte ingeschakelde modules in $1
 log_imod=PHP-module $2 geïnstalleerd in $1
+log_delete_dpkgs=Verwijderde $1 PHP-pakketten
 
 opt_default=Standaardwaarde: <tt>$1</tt>
 opt_default_unknown=Onbekend
+
+pkgs_title=PHP-pakketten
+pkgs_name=Pakketnaam
+pkgs_ver=Pakketversie
+pkgs_phpver=PHP-versie
+pkgs_bin=Uitvoerbaar
+pkgs_shortver=Korte versie
+pkgs_users=Gebruikt door
+pkgs_delete=Geselecteerde pakketten verwijderen
+pkgs_none=Er zijn geen PHP-pakketten op uw systeem gevonden!
+pkgs_none2=Er zijn geen PHP-versies op uw systeem gevonden. Klik op de onderstaande knop om er een te installeren, indien beschikbaar in uw softwarepakketrepository.
+pkgs_ecannot=Het is niet toegestaan om PHP-pakketten te beheren!
+pkgs_ecannot2=Softwarepakketten kunnen niet op dit systeem worden beheerd
+pkgs_nousers=Geen domeinen
+pkgs_ucount=$1 domeinen
+pkgs_newver=PHP-pakket om te installeren
+pkgs_install=Nu installeren
+pkgs_return=PHP-pakketten
+
+dpkgs_err=Het verwijderen van PHP-pakketten is mislukt
+dpkgs_title=PHP-pakketten verwijderen
+dpkgs_doing=Pakket $1 en modules voor PHP-versie $2 verwijderen ..
+dpkgs_failed=.. mislukt : $1
+dpkgs_done=.. succesvol verwijderd
+dpkgs_enone=Geen pakketten geselecteerd
+dpkgs_eexists=Pakket bestaat niet!
+dpkg_eusers=Pakket voor PHP-versie $1 kan niet worden verwijderd, omdat het nog steeds wordt gebruikt door $2-domeinen
+dpkgs_rusure=Weet u zeker dat u de geselecteerde PHP-pakketten wilt verwijderen : $1

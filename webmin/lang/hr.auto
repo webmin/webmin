@@ -676,6 +676,14 @@ session_passapi=Omogućiti API za daljinsku promjenu lozinke?
 session_passapi0=API onemogućen
 session_passapi1=API omogućen za korisnike Unixa
 session_passurl=Kad je omogućeno, lozinke korisnika mogu se promijeniti putem POST zahtjeva na $1
+session_forgot=Dopustiti oporavak zaboravljene lozinke?
+session_eforgot=Oporavak zaboravljene lozinke ne može se omogućiti osim ako se prvo ne ukloni modul dodatka <b>Virtualmin Password Recovery</b>. To se može učiniti na stranici <a href='$1'>Webmin moduli</a>.
+session_passresetdesc=Ograničavanje oporavka lozinke
+session_passreset=Blokiraj klijente s više od $1 zahtjeva tijekom $2 minuta
+session_epassreset_failures=Nedostajući ili nevažeći zahtjevi za blokiranje
+session_passtimeoutdesc=Istek veze za resetiranje lozinke
+session_passtimeout=Veza za resetiranje lozinke istječe za $1 minutu
+session_epassreset_timeout=Vrijeme isteka za resetiranje lozinke koje nedostaje ili je nevažeće
 
 assignment_title=Ponovno dodijelite module
 assignment_header=Zadaci kategorije modula

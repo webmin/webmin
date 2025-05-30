@@ -5,6 +5,7 @@ index_eulist=Seznam uživatelů se nepodařilo uvést: $1
 index_eglist=Seznam se nezdařil: $1
 
 edit_title3=Vytvořte bezpečného webmin uživatele
+edit_email=Kontaktní e-mail
 edit_twofactor=Typ dvoufaktorové autentizace
 edit_twofactorprov=Použití poskytovatele $1 s ID $2
 edit_twofactorcancel=Odstraňte požadavek na dvoufaktorovou autentizaci
@@ -15,6 +16,7 @@ edit_nochange=Vynutit dny změny hesla?
 edit_egone=Vybraný uživatel již neexistuje!
 edit_overlay=Překrytí osobního motivu
 edit_overlayglobal=Žádné - použijte výchozí nastavení motivu
+edit_forgot=Odeslat odkaz pro obnovení hesla
 edit_global=Oprávnění pro všechny moduly
 edit_temppass=Vynutit změnu při příštím přihlášení
 edit_proto=Typ úložiště
@@ -30,6 +32,7 @@ edit_unsafe=Obnovit na neomezené
 save_eunixname=Uživatelské jméno '$1' není uživatel Unixu, a proto jej nelze použít v nouzovém režimu
 save_eoverlay=Překrytí motivu nelze vybrat, pokud není motivem
 save_etemp=Možnost vynutit změnu hesla při příštím přihlášení nelze použít, pokud není povoleno <a href='$1'>vyzývající uživatele k zadání nových hesel</a>
+save_eemail=E-mailová adresa nesmí obsahovat znak :
 
 delete_eanonuser=Tento uživatel je používán pro anonymní přístup k modulu
 
@@ -43,6 +46,9 @@ log_joingroup=Přidáno $1 Webmin users do skupiny $2
 log_sql=Změněna databáze uživatelů a skupin
 log_twofactor=Registrovaný uživatel $1 s dvoufaktorovým poskytovatelem $2
 log_onefactor=Registrovaný uživatel $1 pro dvoufaktorové ověření
+log_forgot_send=E-mail pro resetování hesla odeslán uživateli $1 uživateli $2
+log_forgot_reset=Obnovení hesla pro uživatele $1 s e-mailem $2
+log_forgot_admin=Administrátor odeslal e-mail s resetováním hesla pro uživatele $1 uživateli $2
 
 gedit_desc=Popis skupiny
 gedit_egone=Vybraná skupina již neexistuje!
@@ -161,3 +167,20 @@ twofactor_failed=.. zápis se nezdařil: $1
 twofactor_done=.. kompletní. Vaše ID u tohoto poskytovatele je <tt>$1</tt>.
 twofactor_setup=V tomto systému zatím není aktivována dvoufaktorová autentizace, ale lze ji zapnout pomocí modulu <a href='$1'>Webmin Configuration</a>.
 twofactor_ebutton=Nebylo kliknuto žádné tlačítko!
+
+forgot_title=Odeslat odkaz pro obnovení hesla
+forgot_err=Odeslání odkazu pro obnovení hesla se nezdařilo
+forgot_header=Podrobnosti o odkazu pro resetování hesla
+forgot_user=Obnovit heslo pro uživatele
+forgot_email=Způsob doručení odkazu
+forgot_email_def=Zobrazit odkaz ve Webminu
+forgot_email_sel=Odeslat odkaz e-mailem na
+forgot_send=Odeslat odkaz
+forgot_desc=Tato stránka vám umožňuje vygenerovat nebo odeslat odkaz, který lze použít k výběru nového hesla pro uživatele Webminu, na libovolnou e-mailovou adresu. Buďte opatrní, na kterou adresu tento odkaz odesíláte, protože vám v podstatě poskytne plný přístup k přihlášení do Webminu!
+forgot_adminmsg=Tento e-mail vám byl zaslán od administrátora systému Webmin na adrese $3 pro přihlášení $1.\n\nPokud chcete pokračovat v resetování hesla, klikněte na tento odkaz:\n$2
+forgot_sending=Odesílání e-mailu pro resetování hesla pro $2 na $1 ..
+forgot_sent=.. odesláno
+forgot_link=Níže uvedený odkaz lze použít k resetování hesla Webmin pro $1 na následujících $2 minut :
+forgot_enosudo=Sudo není na tomto systému k dispozici!
+forgot_ecansudo=Zadaný uživatel nemá oprávnění sudo
+forgot_eunix=Zadaný uživatel s podporou sudo neexistuje!

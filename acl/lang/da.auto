@@ -1,15 +1,22 @@
 index_screate=Opret en ny sikker bruger.
 
 edit_title3=Opret sikker webmin-bruger
+edit_email=Kontakt e-mail
 edit_locale=Lokalitet
+edit_forgot=Send link til nulstilling af adgangskode
 edit_safe=Privilegieniveau
 edit_safe0=Ubegrænset
 edit_safe1=Kun sikre moduler
 edit_unsafe=Nulstil til ubegrænset
 
 save_eunixname=Brugernavnet '$1' er ikke en Unix-bruger, og kan derfor ikke bruges i sikker tilstand
+save_eemail=E-mailadressen må ikke indeholde tegnet:
 
 acl_locale=Kan du ændre lokalitet?
+
+log_forgot_send=Sendte e-mail om nulstilling af adgangskode for bruger $1 til $2
+log_forgot_reset=Nulstil adgangskode for bruger $1 med e-mail $2
+log_forgot_admin=Admin sendte en e-mail med nulstilling af adgangskode for bruger $1 til $2
 
 sync_modify=Omdøb den matchende Webmin-bruger, når en Unix-bruger omdøbes.
 
@@ -22,3 +29,20 @@ sql_timeout_def=Brug standardforbindelse timeout (60 sekunder)
 sql_timeout_for=Luk cachelagrede forbindelser efter
 sql_timeout_secs=sekunder
 sql_etimeout=Timeout for cachelagret forbindelse skal være et tal
+
+forgot_title=Send link til nulstilling af adgangskode
+forgot_err=Kunne ikke sende link til nulstilling af adgangskode
+forgot_header=Detaljer om link til nulstilling af adgangskode
+forgot_user=Nulstil adgangskode for bruger
+forgot_email=Linkleveringsmetode
+forgot_email_def=Vis link i Webmin
+forgot_email_sel=Send link via e-mail til
+forgot_send=Send link
+forgot_desc=Denne side giver dig mulighed for at generere eller sende et link, der kan bruges til at vælge en ny adgangskode til en Webmin-bruger, til en hvilken som helst e-mailadresse. Vær forsigtig med, hvilken adresse du sender dette link til, da det effektivt vil give fuld adgang til Webmin-login!
+forgot_adminmsg=Du modtager denne e-mail fra administratoren af Webmin-systemet på $3, for login $1.\n\nHvis du vil fortsætte med at nulstille adgangskoden, skal du følge dette link:\n$2
+forgot_sending=Sender e-mail om nulstilling af adgangskode for $2 til $1 ..
+forgot_sent=.. sendt
+forgot_link=Linket nedenfor kan bruges til at nulstille Webmin-adgangskoden for $1 i de næste $2 minutter :
+forgot_enosudo=Sudo er ikke tilgængelig på dette system!
+forgot_ecansudo=Den indtastede bruger har ikke sudo-tilladelser
+forgot_eunix=Den indtastede sudo-kompatible bruger findes ikke!

@@ -157,6 +157,14 @@ session_passapi=Ativar API de alteração de senha remota?
 session_passapi0=API desativada
 session_passapi1=API habilitada para usuários Unix
 session_passurl=Quando habilitado, as senhas do usuário podem ser alteradas por meio de uma solicitação POST para $1
+session_forgot=Permitir recuperação de senha esquecida?
+session_eforgot=A recuperação de senha esquecida não pode ser ativada a menos que o módulo do plugin <b>Recuperação de Senha do Virtualmin</b> seja removido primeiro. Isso pode ser feito na página <a href='$1'>Módulos do Webmin</a>.
+session_passresetdesc=Limitação de recuperação de senha
+session_passreset=Bloquear clientes com mais de $1 solicitações por $2 minutos
+session_epassreset_failures=Solicitações de bloqueio ausentes ou inválidas
+session_passtimeoutdesc=Expiração do link de redefinição de senha
+session_passtimeout=O link para redefinição de senha expira em $1 minutos
+session_epassreset_timeout=Tempo limite de redefinição de senha ausente ou inválido
 
 categories_custom=personalizadas
 

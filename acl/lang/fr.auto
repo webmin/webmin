@@ -5,6 +5,7 @@ index_eulist=Échec de la liste des utilisateurs: $1
 index_eglist=Échec de la liste des groupes: $1
 
 edit_title3=Créer un utilisateur Webmin sécurisé
+edit_email=Courriel de contact
 edit_passold=Le dernier mot de passe a été modifié il y a $1 jours
 edit_passtoday=Le mot de passe a été modifié il y a moins d'un jour
 edit_twofactor=Type d'authentification à deux facteurs
@@ -15,6 +16,7 @@ edit_twofactoradd=Activer deux facteurs pour l'utilisateur
 edit_locale=Lieu
 edit_nochange=Appliquer les jours de changement de mot de passe?
 edit_overlay=Superposition de thème personnel
+edit_forgot=Envoyer le lien de réinitialisation du mot de passe
 edit_temppass=Forcer le changement à la prochaine connexion
 edit_security=Options de sécurité et de limites
 edit_proto=Type de stockage
@@ -28,6 +30,7 @@ save_eunixname=Le nom d'utilisateur '$1' n'est pas un utilisateur Unix et ne peu
 save_eoverlay=Une superposition de thème ne peut être sélectionnée que si un thème est
 save_eminsize=Longueur minimale du mot de passe manquante ou non numérique
 save_etemp=L'option pour forcer un changement de mot de passe à la prochaine connexion ne peut être utilisée que si <a href='$1'>invitant les utilisateurs à entrer de nouveaux mots de passe</a> est activée
+save_eemail=L'adresse e-mail ne peut pas contenir le caractère :
 
 delete_eanonuser=Cet utilisateur est utilisé pour l'accès au module anonyme
 
@@ -42,6 +45,9 @@ log_sync=Changement de la synchronisation des utilisateurs Unix
 log_sql=Base de données d'utilisateurs et de groupes modifiée
 log_twofactor=Utilisateur inscrit $1 avec un fournisseur à deux facteurs $2
 log_onefactor=Utilisateur désinscrit $1 pour l'authentification à deux facteurs
+log_forgot_send=Envoi d'un e-mail de réinitialisation du mot de passe pour l'utilisateur $1 à $2
+log_forgot_reset=Réinitialiser le mot de passe de l'utilisateur $1 avec l'e-mail $2
+log_forgot_admin=L'administrateur a envoyé un e-mail de réinitialisation du mot de passe pour l'utilisateur $1 à $2
 
 convert_sync2=Synchroniser le mot de passe avec l'utilisateur Unix à l'avenir?
 convert_user=Utilisateur Unix
@@ -147,3 +153,20 @@ twofactor_failed=.. l'inscription a échoué: $1
 twofactor_done=.. Achevée. Votre ID auprès de ce fournisseur est <tt>$1</tt>.
 twofactor_setup=L'authentification à deux facteurs n'a pas encore été activée sur ce système, mais peut être activée à l'aide du module <a href='$1'>Configuration Webmin</a>.
 twofactor_ebutton=Aucun bouton cliqué!
+
+forgot_title=Envoyer le lien de réinitialisation du mot de passe
+forgot_err=Échec de l'envoi du lien de réinitialisation du mot de passe
+forgot_header=Détails du lien de réinitialisation du mot de passe
+forgot_user=Réinitialiser le mot de passe de l'utilisateur
+forgot_email=Méthode de livraison du lien
+forgot_email_def=Afficher le lien dans Webmin
+forgot_email_sel=Envoyer le lien par e-mail à
+forgot_send=Envoyer le lien
+forgot_desc=Cette page vous permet de générer ou d'envoyer un lien permettant de choisir un nouveau mot de passe pour un utilisateur Webmin, à n'importe quelle adresse e-mail. Soyez vigilant quant à l'adresse à laquelle vous envoyez ce lien, car il vous accordera un accès complet à la connexion Webmin !
+forgot_adminmsg=Vous recevez cet e-mail de l'administrateur du système Webmin à $3, pour la connexion $1.\n\nSi vous souhaitez procéder à la réinitialisation du mot de passe, suivez ce lien :\n$2
+forgot_sending=Envoi d'un e-mail de réinitialisation du mot de passe pour $2 à $1 ..
+forgot_sent=.. envoyé
+forgot_link=Le lien ci-dessous peut être utilisé pour réinitialiser le mot de passe Webmin pour $1 pour les $2 prochaines minutes  :
+forgot_enosudo=Sudo n'est pas disponible sur ce système !
+forgot_ecansudo=L'utilisateur saisi n'a pas les autorisations sudo
+forgot_eunix=L'utilisateur compatible sudo saisi n'existe pas !

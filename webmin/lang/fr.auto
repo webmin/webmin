@@ -63,6 +63,15 @@ session_passapi=Activer l'API de changement de mot de passe à distance ?
 session_passapi0=API désactivée
 session_passapi1=API activée pour les utilisateurs Unix
 session_passurl=Lorsqu'il est activé, les mots de passe utilisateur peuvent être modifiés via une requête POST à $1
+session_forgot=Autoriser la récupération du mot de passe oublié ?
+session_eforgot=La récupération de mot de passe oublié ne peut être activée que si le module d'extension <b>Récupération de mot de passe Virtualmin</b> est préalablement supprimé. Cette opération est possible sur la page <a href='$1'>Modules Webmin</a>.
+
+session_passresetdesc=Limitation de la récupération du mot de passe
+session_passreset=Bloquer les clients avec plus de $1 requêtes pendant $2 minutes
+session_epassreset_failures=Demandes de blocage manquantes ou invalides
+session_passtimeoutdesc=Expiration du lien de réinitialisation du mot de passe
+session_passtimeout=Le lien de réinitialisation du mot de passe expire dans $1 minutes
+session_epassreset_timeout=Délai de réinitialisation du mot de passe manquant ou non valide
 
 log_fixrepo=Référentiel Webmin fixe
 

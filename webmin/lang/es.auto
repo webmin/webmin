@@ -272,6 +272,14 @@ session_passapi=¿Habilitar API de cambio de contraseña remota?
 session_passapi0=API deshabilitada
 session_passapi1=API habilitada para usuarios de Unix
 session_passurl=Cuando está habilitado, las contraseñas de usuario se pueden cambiar mediante una solicitud POST a $1
+session_forgot=¿Permitir la recuperación de contraseña olvidada?
+session_eforgot=La recuperación de contraseña olvidada no se puede habilitar a menos que se desinstale primero el módulo de recuperación de contraseña de Virtualmin. Esto se puede hacer en la página <a href='$1'>Módulos de Webmin</a>.
+session_passresetdesc=Limitación de la recuperación de contraseña
+session_passreset=Bloquear clientes con más de $1 solicitudes durante $2 minutos
+session_epassreset_failures=Solicitudes de bloqueo faltantes o no válidas
+session_passtimeoutdesc=Caducidad del enlace de restablecimiento de contraseña
+session_passtimeout=El enlace de restablecimiento de contraseña caduca en $1 minutos
+session_epassreset_timeout=Tiempo de espera para restablecer contraseña faltante o no válido
 
 categories_lang=Editar categorías en el idioma:
 categories_langok=Cambio

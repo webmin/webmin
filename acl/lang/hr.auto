@@ -6,6 +6,7 @@ index_eglist=Nije uspjelo popis grupa: $1
 
 edit_title3=Stvorite sigurnog korisnika Webmin-a
 edit_cloneof=Kloniranje korisnika Webmin-a
+edit_email=Kontaktna e-pošta
 edit_twofactor=Dvofaktorska vrsta autentifikacije
 edit_twofactorprov=Korištenje davatelja $1 s ID-om $2
 edit_twofactorcancel=Uklonite dvofaktorni zahtjev za provjeru autentičnosti
@@ -16,6 +17,7 @@ edit_nochange=Da li provodite dane za promjenu zaporke?
 edit_egone=Odabrani korisnik više ne postoji!
 edit_overlay=Prekrivanje osobne teme
 edit_overlayglobal=Nema - koristite zadane postavke teme
+edit_forgot=Pošalji poveznicu za resetiranje lozinke
 edit_global=Dozvole za sve module
 edit_temppass=Prisilite promjenu pri sljedećoj prijavi
 edit_proto=Vrsta skladištenja
@@ -31,6 +33,7 @@ edit_unsafe=Ponovno postavite na neograničeno
 save_eunixname=Korisničko ime '$1' nije Unix korisnik i zato ga nije moguće koristiti u sigurnom načinu rada
 save_eoverlay=Prekrivanje teme ne može se odabrati ako nije tema
 save_etemp=Opcija prisiljavanja promjene lozinke pri sljedećoj prijavi ne može se koristiti ako nije omogućen <a href='$1'>pozivanje korisnika da unose nove lozinke</a>
+save_eemail=Adresa e-pošte ne smije sadržavati znak :
 
 delete_eanonuser=Ovaj korisnik se koristi za anonimni pristup modulu
 
@@ -44,6 +47,9 @@ log_joingroup=Dodana $1 korisnici webminova u grupu $2
 log_sql=Izmijenjena korisnička i grupna baza podataka
 log_twofactor=Registrirani korisnik $1 s davateljem s dva faktora $2
 log_onefactor=Zabranjen korisnik $1 za dvofaktorsku provjeru autentičnosti
+log_forgot_send=Poslana je e-pošta za poništavanje lozinke za korisnika $1 na $2
+log_forgot_reset=Poništi lozinku za korisnika $1 s e-poštom $2
+log_forgot_admin=Administrator je poslao e-poruku za resetiranje lozinke za korisnika $1 na $2
 
 gedit_desc=Opis grupe
 gedit_egone=Odabrana skupina više ne postoji!
@@ -162,3 +168,20 @@ twofactor_failed=.. registracija nije uspjela: $1
 twofactor_done=.. kompletna. Vaš ID kod ovog davatelja usluga je <tt>$1</tt>.
 twofactor_setup=Dvofaktorna provjera identiteta još nije omogućena na ovom sustavu, ali se može uključiti pomoću modula <a href='$1'>Konfiguracija Webmin</a>.
 twofactor_ebutton=Nijedan gumb nije kliknut!
+
+forgot_title=Pošalji poveznicu za resetiranje lozinke
+forgot_err=Slanje poveznice za resetiranje lozinke nije uspjelo
+forgot_header=Detalji poveznice za resetiranje lozinke
+forgot_user=Poništi lozinku za korisnika
+forgot_email=Način isporuke poveznice
+forgot_email_def=Prikaži poveznicu u Webminu
+forgot_email_sel=Pošalji poveznicu putem e-pošte na
+forgot_send=Pošalji poveznicu
+forgot_desc=Ova stranica vam omogućuje generiranje ili slanje poveznice koja se može koristiti za odabir nove lozinke za Webmin korisnika na bilo koju adresu e-pošte. Budite oprezni na koju adresu šaljete ovu poveznicu jer će ona zapravo omogućiti puni pristup Webmin prijavi!
+forgot_adminmsg=Ovu e-poruku primate od administratora Webmin sustava na $3, za prijavu $1.\n\nAko želite nastaviti s resetiranjem lozinke, slijedite ovu poveznicu:\n$2
+forgot_sending=Slanje e-pošte za resetiranje lozinke za $2 na $1 ..
+forgot_sent=poslano
+forgot_link=Donja poveznica može se koristiti za resetiranje Webmin lozinke za $1 za sljedećih $2 minuta :
+forgot_enosudo=Sudo nije dostupan na ovom sustavu!
+forgot_ecansudo=Uneseni korisnik nema sudo dozvole
+forgot_eunix=Uneseni korisnik koji podržava sudo ne postoji!

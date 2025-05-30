@@ -1,10 +1,13 @@
 index_anyfile=다른 PHP 설정 파일 편집
+index_pkgs=PHP 패키지 관리
+index_pkgsdesc=Virtualmin에서 사용할 수 있도록 시스템의 소프트웨어 패키지 저장소에서 PHP 버전을 설치하고 제거합니다.
 
 file_eread=$1 을 (를) 읽지 못했습니다 : $2
 
 list_efile=편집 할 파일은 절대 경로 여야합니다.
 list_format_ini=INI 형식
 list_format_fpm=FPM 형식
+list_bin=PHP 버전 $2 ($1)
 
 session_redis=레디스
 session_memcache=멤캐시D
@@ -62,8 +65,37 @@ imod_missing=.. 설치가 완료되었지만 PHP 모듈이 감지되지 않았�
 
 log_mods=$1에서 활성화된 모듈이 업데이트되었습니다
 log_imod=$1에 PHP 모듈 $2 설치됨
+log_delete_dpkgs=$1 PHP 패키지가 제거되었습니다
 
 acl_user=사용자로서 파일 읽기 및 쓰기
 
 opt_default=기본값: <tt>$1</tt>
 opt_default_unknown=알려지지 않은
+
+pkgs_title=PHP 패키지
+pkgs_name=패키지 이름
+pkgs_ver=패키지 버전
+pkgs_phpver=PHP 버전
+pkgs_bin=실행 가능
+pkgs_shortver=짧은 버전
+pkgs_users=에 의해 사용됨
+pkgs_delete=선택한 패키지 삭제
+pkgs_none=시스템에서 PHP 패키지를 찾을 수 없습니다!
+pkgs_none2=시스템에서 PHP 버전을 찾을 수 없습니다. 소프트웨어 패키지 저장소에 PHP 버전이 있다면 아래 버튼을 클릭하여 설치하세요.
+pkgs_ecannot=PHP 패키지를 관리할 수 없습니다!
+pkgs_ecannot2=이 시스템에서는 소프트웨어 패키지를 관리할 수 없습니다
+pkgs_nousers=도메인 없음
+pkgs_ucount=$1 도메인
+pkgs_newver=설치할 PHP 패키지
+pkgs_install=지금 설치하세요
+pkgs_return=PHP 패키지
+
+dpkgs_err=PHP 패키지를 삭제하지 못했습니다
+dpkgs_title=PHP 패키지 삭제
+dpkgs_doing=패키지 $1과 PHP 버전 $2에 대한 모듈을 제거합니다 ..
+dpkgs_failed=.. 실패  : $1
+dpkgs_done=.. 성공적으로 제거되었습니다
+dpkgs_enone=선택된 패키지가 없습니다
+dpkgs_eexists=패키지가 존재하지 않습니다!
+dpkg_eusers=PHP 버전 $1에 대한 패키지는 $2 도메인에서 여전히 사용 중이므로 제거할 수 없습니다
+dpkgs_rusure=선택한 PHP 패키지를 제거하시겠습니까? $1

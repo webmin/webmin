@@ -36,6 +36,7 @@ edit_rights=Webmin-käyttäjän käyttöoikeudet
 edit_user=Käyttäjätunnus
 edit_cloneof=Kloonaa Webmin-käyttäjä
 edit_real=Oikea nimi
+edit_email=Yhteystiedot
 edit_group=Ryhmän jäsen
 edit_pass=Salasana
 edit_same=Sama kuin Unix
@@ -90,6 +91,7 @@ edit_selall=Valitse kaikki
 edit_invert=Käänteinen valinta
 edit_hide=Piilota käyttämätön
 edit_switch=Vaihda käyttäjälle
+edit_forgot=Lähetä salasanan palautuslinkki
 edit_return=Webmin-käyttäjä
 edit_return2=Webmin-ryhmä
 edit_rbacdeny=RBAC-käyttötila
@@ -148,6 +150,7 @@ save_edays=Ei valittuja päiviä
 save_ehours=Puuttuvat tai virheelliset ajat sallia
 save_ehours2=Aloitusajan on oltava ennen loppua
 save_etemp=Vaihtoehtoa pakottaa salasananvaihto seuraavan kirjautumisen yhteydessä ei voida käyttää, ellei <a href='$1'>kehoteta käyttäjiä syöttämään uusia salasanoja</a> on käytössä
+save_eemail=Sähköpostiosoite ei voi sisältää merkkiä :
 
 delete_err=Käyttäjän poistaminen epäonnistui
 delete_eself=Et voi poistaa itseäsi
@@ -247,6 +250,9 @@ log_sync=Vaihdettu unix-käyttäjän synkronointi
 log_sql=Muutettu käyttäjän ja ryhmän tietokanta
 log_twofactor=Rekisteröity käyttäjä $1 kaksikerroisen palveluntarjoajan kanssa $2
 log_onefactor=Rekisteröitynyt käyttäjä $1 kaksikerroiseen todennukseen
+log_forgot_send=Salasanan palautusviesti käyttäjälle $1 lähetetty käyttäjälle $2
+log_forgot_reset=Käyttäjän $1 salasanan vaihtaminen sähköpostiosoitteella $2
+log_forgot_admin=Ylläpitäjä lähetti salasanan palautusviestin käyttäjälle $1 käyttäjälle $2
 
 gedit_ecannot=Et voi muokata ryhmiä
 gedit_title=Muokkaa Webmin-ryhmää
@@ -509,3 +515,20 @@ twofactor_failed=.. ilmoittautuminen epäonnistui: $1
 twofactor_done=.. saattaa loppuun. Tunnuksesi tämän palveluntarjoajan kanssa on <tt>$1</tt>.
 twofactor_setup=Kaksifaktorista todennusta ei ole vielä otettu käyttöön tässä järjestelmässä, mutta se voidaan ottaa käyttöön <a href='$1'>Webmin-määritys</a> -moduulilla.
 twofactor_ebutton=Yhtään painiketta ei napsautettu!
+
+forgot_title=Lähetä salasanan palautuslinkki
+forgot_err=Salasanan palautuslinkin lähettäminen epäonnistui
+forgot_header=Salasanan palautuslinkin tiedot
+forgot_user=Käyttäjän salasanan vaihtaminen
+forgot_email=Linkin toimitustapa
+forgot_email_def=Näytä linkki Webminissä
+forgot_email_sel=Lähetä linkki sähköpostitse osoitteeseen
+forgot_send=Lähetä linkki
+forgot_desc=Tämän sivun avulla voit luoda tai lähettää linkin, jota voidaan käyttää uuden salasanan valitsemiseen Webmin-käyttäjälle mihin tahansa sähköpostiosoitteeseen. Ole varovainen, mihin osoitteeseen lähetät tämän linkin, sillä se antaa käytännössä täyden pääsyn Webmin-kirjautumiseen!
+forgot_adminmsg=Saat tämän sähköpostin Webmin-järjestelmän ylläpitäjältä osoitteessa $3, kirjautumistunnukselle $1.\n\nJos haluat jatkaa salasanan vaihtamista, seuraa tätä linkkiä:\n$2
+forgot_sending=Lähetetään salasanan palautusviesti osoitteelle $2 käyttäjälle $1 ..
+forgot_sent=.. lähetetty
+forgot_link=Alla olevaa linkkiä voidaan käyttää Webmin-salasanan nollaamiseen käyttäjälle $1 seuraavien $2 minuutin ajaksi :
+forgot_enosudo=Sudo ei ole käytettävissä tässä järjestelmässä!
+forgot_ecansudo=Annetulla käyttäjällä ei ole sudo-oikeuksia
+forgot_eunix=Annettua sudo-kykyistä käyttäjää ei ole olemassa!

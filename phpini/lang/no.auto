@@ -1,6 +1,9 @@
 index_anyfile=Rediger annen PHP-konfigurasjonsfil
+index_pkgs=Administrer PHP-pakker
+index_pkgsdesc=Installer og fjern PHP-versjoner fra systemets programvarepakkelager, slik at de kan konfigureres her når de brukes i Virtualmin.
 
 list_efile=Filen som skal redigeres må være en absolutt bane
+list_bin=PHP-versjon $2 på $1
 
 session_redis=Redis
 session_memcache=MemcacheD
@@ -53,6 +56,35 @@ imod_missing=.. installasjon fullført, men PHP-modulen ble ikke oppdaget.
 
 log_mods=Oppdaterte aktiverte moduler i $1
 log_imod=Installert PHP-modul $2 i $1
+log_delete_dpkgs=Avinstallerte $1 PHP-pakker
 
 opt_default=Standardverdi: <tt>$1</tt>
 opt_default_unknown=Ukjent
+
+pkgs_title=PHP-pakker
+pkgs_name=Pakkenavn
+pkgs_ver=Pakkens versjon
+pkgs_phpver=PHP-versjon
+pkgs_bin=Kjørbar fil
+pkgs_shortver=Kortversjon
+pkgs_users=Brukt av
+pkgs_delete=Slett valgte pakker
+pkgs_none=Ingen PHP-pakker ble funnet på systemet ditt!
+pkgs_none2=Ingen PHP-versjoner ble funnet på systemet ditt. Klikk på knappen nedenfor for å installere en, hvis tilgjengelig i programvarepakkens repository.
+pkgs_ecannot=Du har ikke tillatelse til å administrere PHP-pakker!
+pkgs_ecannot2=Programvarepakker kan ikke administreres på dette systemet
+pkgs_nousers=Ingen domener
+pkgs_ucount=$1 domener
+pkgs_newver=PHP-pakke som skal installeres
+pkgs_install=Installer nå
+pkgs_return=PHP-pakker
+
+dpkgs_err=Kunne ikke slette PHP-pakker
+dpkgs_title=Slette PHP-pakker
+dpkgs_doing=Avinstallerer pakke $1 og moduler for PHP versjon $2 ..
+dpkgs_failed=.. mislyktes : $1
+dpkgs_done=.. avinstallert
+dpkgs_enone=Ingen pakker valgt
+dpkgs_eexists=Pakken finnes ikke!
+dpkg_eusers=Pakken for PHP-versjon $1 kan ikke avinstalleres, siden den fortsatt brukes av $2 domener
+dpkgs_rusure=Er du sikker på at du vil fjerne de valgte PHP-pakkene : $1

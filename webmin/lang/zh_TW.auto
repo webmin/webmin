@@ -349,6 +349,14 @@ session_passapi=啟用遠程密碼更改 API？
 session_passapi0=API 已禁用
 session_passapi1=為 Unix 用戶啟用 API
 session_passurl=啟用後，可以通過對 $1 的 POST 請求更改用戶密碼
+session_forgot=允許恢復忘記的密碼嗎？
+session_eforgot=除非先刪除<b>Virtualmin 密碼恢復</b>插件模組，否則無法啟用忘記密碼復原。這可以在 <a href='$1'>Webmin 模組</a> 頁面上完成。
+session_passresetdesc=密碼恢復限制
+session_passreset=阻止請求數超過 $1 的客戶端 $2 分鐘
+session_epassreset_failures=攔截請求缺失或無效
+session_passtimeoutdesc=密碼重設連結已過期
+session_passtimeout=密碼重設連結將在 $1 分鐘後過期
+session_epassreset_timeout=密碼重置逾時缺失或無效
 
 categories_lang=編輯語言類別：
 categories_langok=更改

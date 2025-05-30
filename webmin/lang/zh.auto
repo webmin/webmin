@@ -12,6 +12,16 @@ lang_chardef=由语言决定
 
 startpage_title=索引页选项
 
+session_forgot=允许恢复忘记的密码吗？
+session_eforgot=除非先删除 <b>Virtualmin 密码恢复</b> 插件模块，否则无法启用忘记密码恢复功能。您可以在 <a href='$1'>Webmin 模块</a> 页面上完成此操作。
+
+session_passresetdesc=密码恢复限制
+session_passreset=阻止请求数超过 $1 的客户端 $2 分钟
+session_epassreset_failures=拦截请求缺失或无效
+session_passtimeoutdesc=密码重置链接已过期
+session_passtimeout=密码重置链接将在 $1 分钟后过期
+session_epassreset_timeout=密码重置超时缺失或无效
+
 themes_ok=主题更改已成功重定向现在 ..
 themes_ok2=主题覆盖已成功更改，现在重定向 ..
 

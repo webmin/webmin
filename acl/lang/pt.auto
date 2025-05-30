@@ -27,6 +27,7 @@ edit_title3=Criar usuário Webmin seguro
 edit_readonly=Esse usuário do Webmin não deve ser editado, pois é gerenciado pelo módulo $1. <a href='$2'>Clique aqui</a> para ignorar este aviso e editar o usuário de qualquer maneira - mas lembre-se de que qualquer alteração manual pode ser sobrescrita!
 edit_cloneof=Clonando usuário Webmin
 edit_real=Nome real
+edit_email=E-mail de contato
 edit_group=Membro do grupo
 edit_lock=Nenhuma senha aceita
 edit_pam=Autenticação PAM
@@ -75,6 +76,7 @@ edit_selall=Selecionar tudo
 edit_invert=Seleção invertida
 edit_hide=Ocultar não utilizado
 edit_switch=Mudar para usuário
+edit_forgot=Enviar link para redefinição de senha
 edit_return=Usuário Webmin
 edit_return2=Grupo Webmin
 edit_rbacdeny=Modo de acesso RBAC
@@ -128,6 +130,7 @@ save_edays=Não há dias para permitir selecionados
 save_ehours=Tempos ausentes ou inválidos para permitir
 save_ehours2=A hora de início permitida deve ser antes do final
 save_etemp=A opção de forçar uma alteração de senha no próximo login não pode ser usada, a menos que <a href='$1'>solicite aos usuários que insiram novas senhas</a> esteja ativado
+save_eemail=O endereço de e-mail não pode conter o caractere :
 
 delete_err=Falha ao excluir usuário
 delete_eself=Você não pode se excluir
@@ -223,6 +226,9 @@ log_sync=Sincronização de usuário unix alterada
 log_sql=Banco de dados de usuário e grupo alterado
 log_twofactor=Usuário registrado $1 com o provedor de dois fatores $2
 log_onefactor=Usuário desinscrito $1 para autenticação de dois fatores
+log_forgot_send=Enviou e-mail de redefinição de senha para o usuário $1 para $2
+log_forgot_reset=Redefinir senha para usuário $1 com e-mail $2
+log_forgot_admin=O administrador enviou um e-mail de redefinição de senha para o usuário $1 para $2
 
 gedit_ecannot=Você não tem permissão para editar grupos
 gedit_title=Editar grupo Webmin
@@ -485,3 +491,20 @@ twofactor_failed=.. inscrição falhou: $1
 twofactor_done=.. completo. Seu ID com este provedor é <tt>$1</tt>.
 twofactor_setup=A autenticação de dois fatores ainda não foi ativada neste sistema, mas pode ser ativada usando o módulo <a href='$1'>Webmin Configuration</a>.
 twofactor_ebutton=Nenhum botão clicou!
+
+forgot_title=Enviar link para redefinição de senha
+forgot_err=Falha ao enviar link para redefinição de senha
+forgot_header=Detalhes do link para redefinição de senha
+forgot_user=Redefinir senha do usuário
+forgot_email=Método de entrega de links
+forgot_email_def=Exibir link no Webmin
+forgot_email_sel=Enviar link por e-mail para
+forgot_send=Enviar link
+forgot_desc=Esta página permite que você gere ou envie um link que pode ser usado para selecionar uma nova senha para um usuário do Webmin para qualquer endereço de e-mail. Tenha cuidado com o endereço para o qual você envia este link, pois ele efetivamente concederá acesso total ao login do Webmin!
+forgot_adminmsg=Você está recebendo este e-mail do administrador do sistema Webmin em $3, para o login $1.\n\nSe desejar prosseguir com a redefinição da senha, siga este link:\n$2
+forgot_sending=Enviando e-mail de redefinição de senha de $2 para $1 ..
+forgot_sent=.. enviado
+forgot_link=O link abaixo pode ser usado para redefinir a senha do Webmin para $1 pelos próximos $2 minutos :
+forgot_enosudo=Sudo não está disponível neste sistema!
+forgot_ecansudo=O usuário inserido não possui permissões sudo
+forgot_eunix=O usuário habilitado para sudo inserido não existe!

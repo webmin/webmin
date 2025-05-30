@@ -1,6 +1,9 @@
 index_anyfile=Editeu un altre fitxer de configuració PHP
+index_pkgs=Gestiona paquets PHP
+index_pkgsdesc=Instal·leu i elimineu versions de PHP del repositori de paquets de programari del vostre sistema, de manera que es puguin configurar aquí i que es puguin utilitzar a Virtualmin.
 
 list_efile=El fitxer que cal editar ha de ser un camí d'accés absolut
+list_bin=Versió de PHP $2 a les $1
 
 session_redis=Redis
 session_memcache=MemcacheD
@@ -53,6 +56,35 @@ imod_missing=.. instal·lació completada, però no s'ha detectat el mòdul PHP.
 
 log_mods=S'han actualitzat els mòduls activats a $1
 log_imod=S'ha instal·lat el mòdul PHP $2 a $1
+log_delete_dpkgs=Paquets PHP $1 desinstal·lats
 
 opt_default=Valor per defecte: <tt>$1</tt>
 opt_default_unknown=Desconegut
+
+pkgs_title=Paquets PHP
+pkgs_name=Nom del paquet
+pkgs_ver=Versió del paquet
+pkgs_phpver=Versió de PHP
+pkgs_bin=Executable
+pkgs_shortver=Versió curta
+pkgs_users=Utilitzat per
+pkgs_delete=Suprimeix els paquets seleccionats
+pkgs_none=No s'han trobat paquets PHP al vostre sistema!
+pkgs_none2=No s'han trobat versions de PHP al vostre sistema. Feu clic al botó següent per instal·lar-ne una, si està disponible al repositori del paquet de programari.
+pkgs_ecannot=No tens permís per gestionar paquets PHP!
+pkgs_ecannot2=No es poden gestionar els paquets de programari en aquest sistema
+pkgs_nousers=Sense dominis
+pkgs_ucount=$1 dominis
+pkgs_newver=Paquet PHP per instal·lar
+pkgs_install=Instal·la ara
+pkgs_return=Paquets PHP
+
+dpkgs_err=No s'han pogut suprimir els paquets PHP
+dpkgs_title=Eliminació de paquets PHP
+dpkgs_doing=Desinstal·lant el paquet $1 i els mòduls per a la versió $2 de PHP ..
+dpkgs_failed=.. ha fallat : $1
+dpkgs_done=.. s'ha desinstal·lat correctament
+dpkgs_enone=No s'han seleccionat paquets
+dpkgs_eexists=El paquet no existeix!
+dpkg_eusers=El paquet per a la versió $1 de PHP no es pot desinstal·lar, ja que encara l'estan utilitzant els dominis $2
+dpkgs_rusure=Esteu segur que voleu eliminar els paquets PHP seleccionats : $1

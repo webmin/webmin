@@ -123,6 +123,14 @@ session_passapi=API voor wachtwoordwijziging op afstand inschakelen?
 session_passapi0=API uitgeschakeld
 session_passapi1=API ingeschakeld voor Unix-gebruikers
 session_passurl=Indien ingeschakeld, kunnen gebruikerswachtwoorden worden gewijzigd via een POST-verzoek in $1
+session_forgot=Wachtwoord vergeten herstellen toestaan?
+session_eforgot=Herstel van vergeten wachtwoorden kan pas worden ingeschakeld nadat de plug-inmodule <b>Virtualmin Password Recovery</b> eerst is verwijderd. Dit kan op de pagina <a href='$1'>Webmin Modules</a>.
+session_passresetdesc=Beperking van wachtwoordherstel
+session_passreset=Blokkeer clients met meer dan $1 verzoeken gedurende $2 minuten
+session_epassreset_failures=Ontbrekende of ongeldige blokkeringsverzoeken
+session_passtimeoutdesc=Vervaldatum wachtwoordherstellink
+session_passtimeout=De wachtwoordherstellink verloopt over $1 minuten
+session_epassreset_timeout=Time-out bij het opnieuw instellen van een ontbrekend of ongeldig wachtwoord
 
 categories_custom=Op maat
 

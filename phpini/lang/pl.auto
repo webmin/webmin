@@ -1,8 +1,11 @@
 index_anyfile=Edytuj inny plik konfiguracji PHP
+index_pkgs=Zarządzaj pakietami PHP
+index_pkgsdesc=Zainstaluj i usuń wersje PHP z repozytorium pakietów oprogramowania swojego systemu, tak aby można je było skonfigurować tutaj i używać w Virtualmin.
 
 list_efile=Plik do edycji musi być ścieżką bezwzględną
 list_format_ini=Format INI
 list_format_fpm=Format FPM
+list_bin=Wersja PHP $2 w $1
 
 vars_header=Opcje tworzenia i cytowania zmiennych PHP
 vars_magic=Cytujesz wszystkie zmienne wejściowe?
@@ -62,6 +65,35 @@ imod_missing=.. instalacja ukończona, ale moduł PHP nie został wykryty.
 
 log_mods=Zaktualizowano włączone moduły w $1
 log_imod=Zainstalowano moduł PHP $2 w $1
+log_delete_dpkgs=Odinstalowano $1 pakietów PHP
 
 opt_default=Wartość domyślna: <tt>$1</tt>
 opt_default_unknown=Nieznany
+
+pkgs_title=Pakiety PHP
+pkgs_name=Nazwa pakietu
+pkgs_ver=Wersja pakietu
+pkgs_phpver=Wersja PHP
+pkgs_bin=Wykonywalny
+pkgs_shortver=Wersja krótka
+pkgs_users=Używany przez
+pkgs_delete=Usuń wybrane pakiety
+pkgs_none=Nie znaleziono żadnych pakietów PHP w Twoim systemie!
+pkgs_none2=Nie znaleziono wersji PHP w Twoim systemie. Kliknij poniższy przycisk, aby zainstalować jedną, jeśli jest dostępna w repozytorium pakietów oprogramowania.
+pkgs_ecannot=Nie masz uprawnień do zarządzania pakietami PHP!
+pkgs_ecannot2=Pakiety oprogramowania nie mogą być zarządzane w tym systemie
+pkgs_nousers=Brak domen
+pkgs_ucount=$1 domen
+pkgs_newver=Pakiet PHP do zainstalowania
+pkgs_install=Zainstaluj teraz
+pkgs_return=Pakiety PHP
+
+dpkgs_err=Nie udało się usunąć pakietów PHP
+dpkgs_title=Usuwanie pakietów PHP
+dpkgs_doing=Odinstalowywanie pakietu $1 i modułów dla wersji PHP $2 ..
+dpkgs_failed=.. nie powiodło się : $1
+dpkgs_done=.. odinstalowano pomyślnie
+dpkgs_enone=Nie wybrano żadnych pakietów
+dpkgs_eexists=Pakiet nie istnieje!
+dpkg_eusers=Pakietu dla wersji PHP $1 nie można odinstalować, ponieważ jest on nadal używany przez domeny $2
+dpkgs_rusure=Czy na pewno chcesz usunąć wybrane pakiety PHP : $1

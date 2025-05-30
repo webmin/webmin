@@ -1,17 +1,24 @@
 index_screate=Crea un nuevo usuario seguro.
 
 edit_title3=Crear usuario seguro de Webmin
+edit_email=Correo electrónico de contacto
 edit_locale=Lugar
+edit_forgot=Enviar enlace de restablecimiento de contraseña
 edit_safe=Nivel de privilegio
 edit_safe0=Irrestricto
 edit_safe1=Solo módulos seguros
 edit_unsafe=Restablecer a sin restricciones
 
 save_eunixname=El nombre de usuario '$1' no es un usuario de Unix, por lo que no se puede usar en modo seguro
+save_eemail=La dirección de correo electrónico no puede contener el carácter :
 
 delete_eanonuser=Este usuario se está utilizando para acceder al módulo anónimo
 
 acl_locale=¿Se puede cambiar de ubicación?
+
+log_forgot_send=Se envió un correo electrónico de restablecimiento de contraseña para el usuario $1 a $2
+log_forgot_reset=Restablecer la contraseña del usuario $1 con el correo electrónico $2
+log_forgot_admin=El administrador envió un correo electrónico de restablecimiento de contraseña para el usuario $1 a $2
 
 sync_modify=Cambie el nombre del usuario de Webmin coincidente cuando se cambie el nombre de un usuario de Unix.
 
@@ -35,3 +42,20 @@ sql_timeout_def=Usar tiempo de espera de conexión predeterminado (60 segundos)
 sql_timeout_for=Cerrar las conexiones en caché después
 sql_timeout_secs=segundos
 sql_etimeout=El tiempo de espera de la conexión en caché debe ser un número
+
+forgot_title=Enviar enlace de restablecimiento de contraseña
+forgot_err=No se pudo enviar el enlace de restablecimiento de contraseña
+forgot_header=Detalles del enlace de restablecimiento de contraseña
+forgot_user=Restablecer contraseña para el usuario
+forgot_email=Método de entrega del enlace
+forgot_email_def=Mostrar enlace en Webmin
+forgot_email_sel=Enviar enlace por correo electrónico a
+forgot_send=Enviar enlace
+forgot_desc=Esta página le permite generar o enviar un enlace a cualquier dirección de correo electrónico para seleccionar una nueva contraseña para un usuario de Webmin. Tenga cuidado con la dirección a la que envía este enlace, ya que otorgará acceso completo al inicio de sesión de Webmin
+forgot_adminmsg=Estás recibiendo este correo electrónico del administrador del sistema Webmin en $3, para el inicio de sesión $1.\n\nSi deseas continuar con el restablecimiento de la contraseña, sigue este enlace:\n$2
+forgot_sending=Enviando correo electrónico de restablecimiento de contraseña de $2 a $1 ..
+forgot_sent=.. enviado
+forgot_link=El siguiente enlace se puede utilizar para restablecer la contraseña de Webmin para $1 durante los próximos $2 minutos :
+forgot_enosudo=¡Sudo no está disponible en este sistema!
+forgot_ecansudo=El usuario ingresado no tiene permisos de sudo
+forgot_eunix=¡El usuario con capacidad sudo ingresado no existe!

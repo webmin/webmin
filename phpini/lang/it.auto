@@ -1,10 +1,13 @@
 index_anyfile=Modifica altri file di configurazione PHP
+index_pkgs=Gestire i pacchetti PHP
+index_pkgsdesc=Installa e rimuovi le versioni PHP dal repository dei pacchetti software del tuo sistema, in modo che possano essere configurate qui e utilizzate in Virtualmin.
 
 file_eread=Impossibile leggere $1 : $2
 
 list_efile=Il file da modificare deve essere un percorso assoluto
 list_format_ini=Formato INI
 list_format_fpm=Formato FPM
+list_bin=Versione PHP $2 a $1
 
 vars_header=Creazione di variabili PHP e opzioni di quotazione
 vars_magic=Citare tutte le variabili di input?
@@ -89,8 +92,37 @@ log_session=Opzioni di sessione modificate in $1
 log_safe=Opzioni della modalità provvisoria modificate in $1
 log_mods=Moduli abilitati aggiornati in $1
 log_imod=Installato modulo PHP $2 in $1
+log_delete_dpkgs=Pacchetti PHP $1 disinstallati
 
 acl_user=Leggi e scrivi i file come utente
 
 opt_default=Valore predefinito: <tt>$1</tt>
 opt_default_unknown=Sconosciuto
+
+pkgs_title=Pacchetti PHP
+pkgs_name=Nome del pacchetto
+pkgs_ver=Versione del pacchetto
+pkgs_phpver=Versione PHP
+pkgs_bin=Eseguibile
+pkgs_shortver=Versione breve
+pkgs_users=Utilizzato da
+pkgs_delete=Elimina i pacchetti selezionati
+pkgs_none=Nessun pacchetto PHP trovato sul tuo sistema!
+pkgs_none2=Nessuna versione di PHP trovata sul tuo sistema. Clicca sul pulsante qui sotto per installarne una, se disponibile nel tuo repository di pacchetti software.
+pkgs_ecannot=Non ti è consentito gestire pacchetti PHP!
+pkgs_ecannot2=I pacchetti software non possono essere gestiti su questo sistema
+pkgs_nousers=Nessun dominio
+pkgs_ucount=$1 domini
+pkgs_newver=Pacchetto PHP da installare
+pkgs_install=Installa ora
+pkgs_return=Pacchetti PHP
+
+dpkgs_err=Impossibile eliminare i pacchetti PHP
+dpkgs_title=Eliminazione dei pacchetti PHP
+dpkgs_doing=Disinstallazione del pacchetto $1 e dei moduli per la versione PHP $2 ..
+dpkgs_failed=.. fallito : $1
+dpkgs_done=.. disinstallato correttamente
+dpkgs_enone=Nessun pacchetto selezionato
+dpkgs_eexists=Il pacchetto non esiste!
+dpkg_eusers=Il pacchetto per la versione PHP $1 non può essere disinstallato, poiché è ancora utilizzato da $2 domini
+dpkgs_rusure=Sei sicuro di voler rimuovere i pacchetti PHP selezionati : $1

@@ -9,6 +9,8 @@ index_medit=Gestionar
 index_manual=Editar manualmente
 index_anyfile=Editar otro archivo de configuración de PHP
 index_return=Archivos de configuración
+index_pkgs=Administrar paquetes PHP
+index_pkgsdesc=Instale y elimine versiones de PHP del repositorio de paquetes de software de su sistema, para que puedan configurarse aquí y usarse en Virtualmin.
 
 file_global=Configuración global de PHP
 file_eread=Error al leer $1 : $2
@@ -24,6 +26,7 @@ list_efile=El archivo para editar debe ser una ruta absoluta
 list_return=Configuración PHP
 list_format_ini=Formato INI
 list_format_fpm=Formato FPM
+list_bin=Versión de PHP $2 a las $1
 
 vars_title=Variables PHP
 vars_header=Opciones de creación y cotización de variables PHP
@@ -203,6 +206,7 @@ log_errors=Se modificó el registro de errores en $1
 log_misc=Cambió otras configuraciones en $1
 log_mods=Módulos habilitados actualizados en $1
 log_imod=Módulo PHP $2 instalado en $1
+log_delete_dpkgs=Se desinstalaron $1 paquetes PHP
 
 acl_global=¿Se puede editar la configuración global de PHP?
 acl_anyfile=¿Se puede editar cualquier archivo como una configuración PHP?
@@ -212,3 +216,31 @@ acl_user=Leer y escribir archivos como usuario
 
 opt_default=Valor predeterminado: <tt>$1</tt>
 opt_default_unknown=Desconocido
+
+pkgs_title=Paquetes PHP
+pkgs_name=Nombre del paquete
+pkgs_ver=Versión del paquete
+pkgs_phpver=Versión de PHP
+pkgs_bin=Ejecutable
+pkgs_shortver=Versión corta
+pkgs_users=Utilizado por
+pkgs_delete=Eliminar paquetes seleccionados
+pkgs_none=¡No se encontraron paquetes PHP en su sistema!
+pkgs_none2=No se encontraron versiones de PHP en su sistema. Haga clic en el botón de abajo para instalar una, si está disponible en su repositorio de paquetes de software.
+pkgs_ecannot=¡No tienes permiso para administrar paquetes PHP!
+pkgs_ecannot2=No se pueden administrar paquetes de software en este sistema
+pkgs_nousers=Sin dominios
+pkgs_ucount=$1 dominios
+pkgs_newver=Paquete PHP para instalar
+pkgs_install=Instalar ahora
+pkgs_return=Paquetes PHP
+
+dpkgs_err=No se pudieron eliminar los paquetes PHP
+dpkgs_title=Eliminar paquetes PHP
+dpkgs_doing=Desinstalando el paquete $1 y los módulos para la versión PHP $2 ..
+dpkgs_failed=.. falló : $1
+dpkgs_done=.. desinstalado exitosamente
+dpkgs_enone=No hay paquetes seleccionados
+dpkgs_eexists=¡El paquete no existe!
+dpkg_eusers=El paquete para la versión PHP $1 no se puede desinstalar, ya que todavía lo utilizan $2 dominios
+dpkgs_rusure=¿Está seguro de que desea eliminar los paquetes PHP seleccionados : $1?

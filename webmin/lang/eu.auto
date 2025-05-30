@@ -676,6 +676,14 @@ session_passapi=Urruneko pasahitza aldatzeko APIa gaitu nahi duzu?
 session_passapi0=APIa desgaituta dago
 session_passapi1=API gaituta dago Unix erabiltzaileentzat
 session_passurl=Gaituta dagoenean, erabiltzaileen pasahitzak POST eskaera baten bidez alda daitezke $1
+session_forgot=Ahaztutako pasahitza berreskuratzea baimendu?
+session_eforgot=Ahaztutako pasahitza berreskuratzeko aukera ezin da gaitu <b>Virtualmin Password Recovery</b> plugin modulua kendu arte. Hori <a href='$1'>Webmin Moduluak</a> orrialdean egin daiteke.
+session_passresetdesc=Pasahitza berreskuratzeko mugatzea
+session_passreset=Blokeatu $1 eskaera baino gehiago dituzten bezeroak $2 minutuz
+session_epassreset_failures=Blokeatzeko eskaerak falta dira edo baliogabeak dira
+session_passtimeoutdesc=Pasahitza berrezartzeko estekaren iraungipena
+session_passtimeout=Pasahitza berrezartzeko esteka $1 minutu barru iraungitzen da
+session_epassreset_timeout=Pasahitza berrezartzeko denbora-muga falta da edo baliogabea da
 
 assignment_title=Moduluak berriro esleitu
 assignment_header=Moduluen kategoriako esleipenak

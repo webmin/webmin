@@ -1,5 +1,30 @@
+edit_email=联系邮箱
 edit_egone=选定的用户不再存在！
+edit_forgot=发送密码重置链接
+
+save_eemail=电子邮件地址不能包含：字符
 
 cert_ebrowser=Webmin 不知道如何为您的浏览器颁发客户端证书 ($1)
 
+log_forgot_send=已将用户 $1 的密码重置电子邮件发送至 $2
+log_forgot_reset=为电子邮件为 $2 的用户 $1 重置密码
+log_forgot_admin=管理员已将用户 $1 的密码重置电子邮件发送给 $2
+
 gsave_edesc=无效描述 - 不允许使用 : 字符
+
+forgot_title=发送密码重置链接
+forgot_err=无法发送密码重置链接
+forgot_header=密码重置链接详情
+forgot_user=重置用户密码
+forgot_email=链接传递方式
+forgot_email_def=在 Webmin 中显示链接
+forgot_email_sel=通过电子邮件发送链接至
+forgot_send=发送链接
+forgot_desc=此页面允许您生成或发送一个链接，该链接可用于为 Webmin 用户选择新密码，并发送到任何电子邮件地址。请谨慎选择发送此链接的地址，因为它实际上会授予 Webmin 登录的完全访问权限！
+forgot_adminmsg=您将收到来自 $3 的 Webmin 系统管理员的这封电子邮件，登录名为 $1。\n\n如果您想继续重置密码，请点击此链接:\n$2
+forgot_sending=正在将 $2 的密码重置电子邮件发送至 $1 ..
+forgot_sent=.. 发送
+forgot_link=下面的链接可用于重置 $1 在接下来的 $2 分钟内的 Webmin 密码：
+forgot_enosudo=Sudo 在本系统上不可用！
+forgot_ecansudo=输入的用户没有 sudo 权限
+forgot_eunix=输入的具有 sudo 权限的用户不存在！

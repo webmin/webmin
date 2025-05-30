@@ -9,6 +9,8 @@ index_medit=Mengurus
 index_manual=Edit secara manual
 index_anyfile=Edit fail konfigurasi PHP lain
 index_return=fail konfigurasi
+index_pkgs=Urus Pakej PHP
+index_pkgsdesc=Pasang dan alih keluar versi PHP daripada repositori pakej perisian sistem anda, supaya ia boleh dikonfigurasikan di sini mana-mana yang digunakan dalam Virtualmin.
 
 file_global=Konfigurasi PHP Global
 file_eread=Gagal membaca $1 : $2
@@ -24,6 +26,7 @@ list_efile=Fail untuk diedit mestilah jalan mutlak
 list_return=Konfigurasi PHP
 list_format_ini=Format INI
 list_format_fpm=Format FPM
+list_bin=Versi PHP $2 pada $1 
 
 vars_title=Pembolehubah PHP
 vars_header=Pembolehubah pembolehubah PHP dan pilihan petikan
@@ -203,6 +206,7 @@ log_errors=Pembalakan ralat berubah dalam $1
 log_misc=Menukar tetapan lain dalam $1
 log_mods=Mengemas kini modul yang didayakan dalam $1 
 log_imod=Modul PHP dipasang $2 dalam $1 
+log_delete_dpkgs=$1 pakej PHP dinyahpasang
 
 acl_global=Boleh mengedit konfigurasi PHP global?
 acl_anyfile=Bolehkah mengedit sebarang fail sebagai konfigurasi PHP?
@@ -212,3 +216,31 @@ acl_user=Baca dan tulis fail sebagai pengguna
 
 opt_default=Nilai Lalai: <tt>$1</tt>
 opt_default_unknown=Tidak diketahui
+
+pkgs_title=Pakej PHP
+pkgs_name=Nama pakej
+pkgs_ver=Versi pakej
+pkgs_phpver=versi PHP
+pkgs_bin=Boleh dilaksanakan
+pkgs_shortver=Versi pendek
+pkgs_users=Digunakan oleh
+pkgs_delete=Padamkan Pakej Terpilih
+pkgs_none=Tiada pakej PHP ditemui pada sistem anda!
+pkgs_none2=Tiada versi PHP ditemui pada sistem anda. Klik butang di bawah untuk memasang satu, jika tersedia dalam repositori pakej perisian anda.
+pkgs_ecannot=Anda tidak dibenarkan menguruskan pakej PHP!
+pkgs_ecannot2=Pakej perisian tidak boleh diurus pada sistem ini
+pkgs_nousers=Tiada domain
+pkgs_ucount=$1 domain
+pkgs_newver=Pakej PHP untuk dipasang
+pkgs_install=Pasang Sekarang
+pkgs_return=Pakej PHP
+
+dpkgs_err=Gagal memadamkan pakej PHP
+dpkgs_title=Memadam Pakej PHP
+dpkgs_doing=Menyahpasang pakej $1 dan modul untuk versi PHP $2 ..
+dpkgs_failed=.. gagal  : $1 
+dpkgs_done=.. berjaya dinyahpasang
+dpkgs_enone=Tiada pakej dipilih
+dpkgs_eexists=Pakej tidak wujud!
+dpkg_eusers=Pakej untuk PHP versi $1 tidak boleh dinyahpasang, kerana ia masih digunakan oleh $2 domain
+dpkgs_rusure=Adakah anda pasti mahu mengalih keluar pakej PHP yang dipilih  : $1

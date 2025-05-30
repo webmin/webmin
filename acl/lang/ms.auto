@@ -1,17 +1,24 @@
 index_screate=Buat pengguna selamat yang baru.
 
 edit_title3=Buat Pengguna Webmin Selamat
+edit_email=E-mel hubungan
 edit_locale=Tempatan
+edit_forgot=Hantar Pautan Tetapan Semula Kata Laluan
 edit_safe=Tahap keistimewaan
 edit_safe0=Tidak terkawal
 edit_safe1=Modul selamat sahaja
 edit_unsafe=Tetapkan semula kepada tanpa had
 
 save_eunixname=Nama pengguna '$1' bukan pengguna Unix, dan oleh itu tidak boleh digunakan dalam mod selamat
+save_eemail=Alamat e-mel tidak boleh mengandungi : aksara
 
 delete_eanonuser=Pengguna ini sedang digunakan untuk akses modul tanpa nama
 
 acl_locale=Boleh tukar tempat?
+
+log_forgot_send=Menghantar e-mel tetapan semula kata laluan untuk pengguna $1 hingga $2 
+log_forgot_reset=Tetapkan semula kata laluan untuk pengguna $1 dengan e-mel $2 
+log_forgot_admin=Pentadbir menghantar e-mel tetapan semula kata laluan untuk pengguna $1 hingga $2 
 
 sync_modify=Ganti nama pengguna Webmin yang sepadan apabila pengguna Unix dinamakan semula.
 
@@ -37,3 +44,20 @@ sql_timeout_secs=saat
 sql_etimeout=Tamat masa sambungan cache mestilah nombor
 
 twofactor_ebutton=Tiada butang diklik!
+
+forgot_title=Hantar Pautan Tetapan Semula Kata Laluan
+forgot_err=Gagal menghantar pautan tetapan semula kata laluan
+forgot_header=Butiran pautan tetapan semula kata laluan
+forgot_user=Tetapkan semula kata laluan untuk pengguna
+forgot_email=Kaedah penghantaran pautan
+forgot_email_def=Paparkan pautan dalam Webmin
+forgot_email_sel=Hantar pautan melalui e-mel ke
+forgot_send=Hantar Pautan
+forgot_desc=Halaman ini membolehkan anda menjana atau menghantar pautan yang boleh digunakan untuk memilih kata laluan baharu untuk pengguna Webmin ke mana-mana alamat e-mel. Berhati-hati ke alamat mana anda menghantar pautan ini, kerana ia akan memberikan akses penuh kepada log masuk Webmin dengan berkesan!
+forgot_adminmsg=Anda menerima e-mel ini daripada pentadbir sistem Webmin di $3, untuk log masuk $1.\n\nJika anda ingin meneruskan penetapan semula kata laluan, ikuti pautan ini :\n$2
+forgot_sending=Menghantar e-mel tetapan semula kata laluan untuk $2 hingga $1 ..
+forgot_sent=.. dihantar
+forgot_link=Pautan di bawah boleh digunakan untuk menetapkan semula kata laluan Webmin untuk $1 untuk $2 minit seterusnya  :
+forgot_enosudo=Sudo tidak tersedia pada sistem ini!
+forgot_ecansudo=Pengguna yang dimasukkan tidak mempunyai kebenaran sudo
+forgot_eunix=Pengguna berkemampuan sudo yang dimasukkan tidak wujud!

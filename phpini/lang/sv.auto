@@ -9,6 +9,8 @@ index_medit=Klara av
 index_manual=Redigera manuellt
 index_anyfile=Redigera annan PHP-konfigurationsfil
 index_return=konfigurationsfiler
+index_pkgs=Hantera PHP-paket
+index_pkgsdesc=Installera och ta bort PHP-versioner från ditt systems programvarupakets arkiv, så att de kan konfigureras här och användas i Virtualmin.
 
 file_global=Global PHP-konfiguration
 file_eread=Det gick inte att läsa $1 : $2
@@ -24,6 +26,7 @@ list_efile=Filen som ska redigeras måste vara en absolut sökväg
 list_return=PHP-konfiguration
 list_format_ini=INI-format
 list_format_fpm=FPM-format
+list_bin=PHP-version $2 vid $1
 
 vars_title=PHP-variabler
 vars_header=PHP-variabel skapande och citatalternativ
@@ -203,6 +206,7 @@ log_errors=Ändrad felinloggning i $1
 log_misc=Ändrade andra inställningar i $1
 log_mods=Uppdaterade aktiverade moduler i $1
 log_imod=Installerade PHP-modulen $2 i $1
+log_delete_dpkgs=Avinstallerade $1 PHP-paket
 
 acl_global=Kan redigera global PHP-konfiguration?
 acl_anyfile=Kan redigera vilken fil som helst som en PHP-konfiguration?
@@ -212,3 +216,31 @@ acl_user=Läs och skriv filer som användare
 
 opt_default=Standardvärde: <tt>$1</tt>
 opt_default_unknown=Okänd
+
+pkgs_title=PHP-paket
+pkgs_name=Paketnamn
+pkgs_ver=Paketversion
+pkgs_phpver=PHP-version
+pkgs_bin=Körbar fil
+pkgs_shortver=Kortversion
+pkgs_users=Används av
+pkgs_delete=Ta bort valda paket
+pkgs_none=Inga PHP-paket hittades på ditt system!
+pkgs_none2=Inga PHP-versioner hittades på ditt system. Klicka på knappen nedan för att installera en, om den finns tillgänglig i ditt programvarupakets arkiv.
+pkgs_ecannot=Du har inte behörighet att hantera PHP-paket!
+pkgs_ecannot2=Programvarupaket kan inte hanteras på det här systemet
+pkgs_nousers=Inga domäner
+pkgs_ucount=$1 domäner
+pkgs_newver=PHP-paket att installera
+pkgs_install=Installera nu
+pkgs_return=PHP-paket
+
+dpkgs_err=Misslyckades med att ta bort PHP-paket
+dpkgs_title=Ta bort PHP-paket
+dpkgs_doing=Avinstallerar paketet $1 och modulerna för PHP version $2 ..
+dpkgs_failed=.. misslyckades : $1
+dpkgs_done=.. avinstallerad framgångsrikt
+dpkgs_enone=Inga paket valda
+dpkgs_eexists=Paketet finns inte!
+dpkg_eusers=Paketet för PHP version $1 kan inte avinstalleras, eftersom det fortfarande används av $2 domäner
+dpkgs_rusure=Är du säker på att du vill ta bort de valda PHP-paketen : $1

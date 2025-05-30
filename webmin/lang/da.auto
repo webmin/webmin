@@ -676,6 +676,14 @@ session_passapi=Vil du aktivere fjernadgangskode til ændring af adgangskode?
 session_passapi0=API deaktiveret
 session_passapi1=API aktiveret for Unix -brugere
 session_passurl=Når den er aktiveret, kan brugeradgangskoder ændres via en POST -anmodning til $1
+session_forgot=Tillad gendannelse af glemt adgangskode?
+session_eforgot=Gendannelse af glemt adgangskode kan ikke aktiveres, medmindre plugin-modulet <b>Virtualmin Password Recovery</b> først fjernes. Dette kan gøres på siden <a href='$1'>Webmin-moduler</a>.
+session_passresetdesc=Begrænsning af adgangskodegendannelse
+session_passreset=Bloker klienter med mere end $1 anmodninger i $2 minutter
+session_epassreset_failures=Manglende eller ugyldige blokeringsanmodninger
+session_passtimeoutdesc=Udløb af link til nulstilling af adgangskode
+session_passtimeout=Linket til nulstilling af adgangskode udløber om $1 minutter
+session_epassreset_timeout=Manglende eller ugyldig timeout for nulstilling af adgangskode
 
 assignment_title=Tildel moduler igen
 assignment_header=Modulkategoriopgaver

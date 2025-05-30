@@ -8,6 +8,7 @@ edit_title3=Vytvorte bezpečného používateľa Webmin
 edit_readonly=Tento užívateľ Webmin by nemal byť upravovaný, pretože je spravovaný modulom $1. <a href='$2'>Kliknite tu</a>, aby ste toto upozornenie obišli a upravili používateľa - buďte si však vedomí, že akékoľvek manuálne zmeny môžu byť prepísané!
 edit_cloneof=Klonovanie užívateľa Webmin
 edit_real=Skutočné meno
+edit_email=Kontaktný e-mail
 edit_passlocked=Heslo sa nezmenilo už do $1 dní - účet je zablokovaný!
 edit_passmax=Heslo sa nezmenilo do $1 dní - pri nasledujúcom prihlásení sa musí zmeniť
 edit_passold=Heslo bolo naposledy zmenené pred $1 dňami
@@ -25,6 +26,7 @@ edit_nochange=Vynútiť dni na zmenu hesla?
 edit_egone=Vybraný používateľ už neexistuje!
 edit_overlay=Prekrytie osobnej témy
 edit_overlayglobal=Žiadne - použite predvolené motívy
+edit_forgot=Odoslať odkaz na obnovenie hesla
 edit_rbacdeny0=RBAC riadi iba vybrané ACL modulov
 edit_rbacdeny1=RBAC riadi všetky moduly a ACL
 edit_global=Povolenia pre všetky moduly
@@ -53,6 +55,7 @@ save_edays=Vybraté nie sú žiadne dni na povolenie
 save_ehours=Chýbajúce alebo neplatné časy na povolenie
 save_ehours2=Čas začiatku, ktorý sa má povoliť, musí byť pred koncom
 save_etemp=Možnosť vynútiť zmenu hesla pri ďalšom prihlásení nie je možné použiť, pokiaľ nie je povolená možnosť <a href='$1'>vyzývajúca používateľov na zadanie nových hesiel</a>.
+save_eemail=E-mailová adresa nemôže obsahovať znak :
 
 delete_eanonuser=Tento užívateľ sa používa na anonymný prístup k modulu
 
@@ -73,6 +76,9 @@ log_sync=Zmenená synchronizácia unixového používateľa
 log_sql=Zmenená databáza používateľov a skupín
 log_twofactor=Registrovaný používateľ $1 s dvojfaktorovým poskytovateľom $2
 log_onefactor=Registrovaný používateľ $1 na dvojfaktorové overenie
+log_forgot_send=E-mail na obnovenie hesla odoslaný pre používateľa $1 používateľovi $2
+log_forgot_reset=Obnoviť heslo pre používateľa $1 s e-mailom $2
+log_forgot_admin=Správca odoslal e-mail na obnovenie hesla pre používateľa $1 používateľovi $2
 
 gedit_members=Používatelia a skupiny členov
 gedit_desc=Popis skupiny
@@ -247,3 +253,20 @@ twofactor_failed=.. zápis zlyhal: $1
 twofactor_done=.. dokončené. Vaše ID u tohto poskytovateľa je <tt>$1</tt>.
 twofactor_setup=V tomto systéme zatiaľ nie je povolená dvojfaktorová autentifikácia, ale dá sa zapnúť pomocou modulu <a href='$1'>Webmin Configuration</a>.
 twofactor_ebutton=Klikli na žiadne tlačidlo!
+
+forgot_title=Odoslať odkaz na obnovenie hesla
+forgot_err=Odoslanie odkazu na obnovenie hesla zlyhalo
+forgot_header=Podrobnosti o odkaze na obnovenie hesla
+forgot_user=Obnoviť heslo pre používateľa
+forgot_email=Spôsob doručenia odkazu
+forgot_email_def=Zobraziť odkaz vo Webmine
+forgot_email_sel=Poslať odkaz e-mailom na
+forgot_send=Odoslať odkaz
+forgot_desc=Táto stránka vám umožňuje vygenerovať alebo odoslať odkaz, ktorý možno použiť na výber nového hesla pre používateľa Webminu na ľubovoľnú e-mailovú adresu. Buďte opatrní, na ktorú adresu tento odkaz odosielate, pretože vám v podstate poskytne plný prístup k prihláseniu do Webminu!
+forgot_adminmsg=Tento e-mail ste dostali od administrátora systému Webmin na adrese $3 pre prihlasovacie údaje $1.\n\nAk chcete pokračovať v obnovení hesla, kliknite na tento odkaz:\n$2
+forgot_sending=Odosielanie e-mailu na obnovenie hesla pre $2 na $1 ..
+forgot_sent=.. odoslané
+forgot_link=Nižšie uvedený odkaz možno použiť na obnovenie hesla Webmin pre $1 na nasledujúcich $2 minút :
+forgot_enosudo=Sudo nie je na tomto systéme k dispozícii!
+forgot_ecansudo=Zadaný používateľ nemá oprávnenia sudo
+forgot_eunix=Zadaný používateľ s podporou sudo neexistuje!

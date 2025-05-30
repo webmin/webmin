@@ -583,6 +583,14 @@ session_passapi=Engedélyezi a távoli jelszó -módosító API -t?
 session_passapi0=Az API letiltva
 session_passapi1=Az API engedélyezett a Unix felhasználók számára
 session_passurl=Ha engedélyezve van, a felhasználói jelszavak POST kéréssel $1 -re módosíthatók
+session_forgot=Engedélyezi az elfelejtett jelszó helyreállítását?
+session_eforgot=Az elfelejtett jelszó helyreállítása nem engedélyezhető, hacsak előbb el nem távolítjuk a <b>Virtualmin Password Recovery</b> bővítmény modult. Ez a <a href='$1'>Webmin modulok</a> oldalon tehető meg.
+session_passresetdesc=Jelszó-helyreállítási korlátozás
+session_passreset=$1-nél több kérést tartalmazó kliensek blokkolása $2 percig
+session_epassreset_failures=Hiányzó vagy érvénytelen blokkolási kérelmek
+session_passtimeoutdesc=Jelszó-visszaállító link lejárata
+session_passtimeout=A jelszó-visszaállító link $1 perc múlva lejár
+session_epassreset_timeout=Hiányzó vagy érvénytelen jelszó-visszaállítási időtúllépés
 
 assignment_title=A modulok újbóli hozzárendelése
 assignment_header=Modulkategória-hozzárendelések

@@ -9,6 +9,8 @@ index_medit=管理
 index_manual=手動編輯
 index_anyfile=編輯其他 PHP 設定檔
 index_return=配置文件
+index_pkgs=管理 PHP 套件
+index_pkgsdesc=從系統的軟體包儲存庫中安裝和刪除 PHP 版本，以便可以在這裡配置它們並在 Virtualmin 中使用。
 
 file_global=全局PHP配置
 file_eread=無法讀取 $1 : $2
@@ -24,6 +26,7 @@ list_efile=要編輯的文件必須是絕對路徑
 list_return=PHP配置
 list_format_ini=INI格式
 list_format_fpm=FPM格式
+list_bin=PHP 版本 $2，位於 $1
 
 vars_title=PHP變量
 vars_header=PHP變量創建和引用選項
@@ -203,6 +206,7 @@ log_errors=已更改 $1中的錯誤記錄
 log_misc=更改了 $1中的其他設置
 log_mods=已更新 $1 中啟用的模組
 log_imod=已在 $1 中安裝 PHP 模組 $2
+log_delete_dpkgs=已卸載 $1 個 PHP 套件
 
 acl_global=可以編輯全局PHP配置嗎？
 acl_anyfile=可以將任何文件作為PHP配置進行編輯嗎？
@@ -212,3 +216,31 @@ acl_user=以用戶身份讀寫文件
 
 opt_default=默認值：<tt>$1</tt>
 opt_default_unknown=未知
+
+pkgs_title=PHP 套件
+pkgs_name=包裹名字
+pkgs_ver=軟體包版本
+pkgs_phpver=PHP 版本
+pkgs_bin=執行檔
+pkgs_shortver=簡短版本
+pkgs_users=使用者
+pkgs_delete=刪除選定的包
+pkgs_none=您的系統上未找到任何 PHP 套件！
+pkgs_none2=您的系統上未找到 PHP 版本。如果您的軟體包儲存庫中存在該按鈕，請點擊下面的按鈕進行安裝。
+pkgs_ecannot=您無權管理 PHP 套件！
+pkgs_ecannot2=該系統無法管理軟體包
+pkgs_nousers=沒有域名
+pkgs_ucount=$1 個域
+pkgs_newver=要安裝的 PHP 套件
+pkgs_install=立即安裝
+pkgs_return=PHP 套件
+
+dpkgs_err=無法刪除 PHP 套件
+dpkgs_title=刪除 PHP 套件
+dpkgs_doing=正在卸載軟體包 $1 和 PHP 版本 $2 的模組 ..
+dpkgs_failed=.. 失敗  : $1
+dpkgs_done=..卸載成功
+dpkgs_enone=未選擇任何套餐
+dpkgs_eexists=包裹不存在！
+dpkg_eusers=無法解除安裝 PHP 版本 $1 的軟體包，因為它仍在被 $2 個網域使用
+dpkgs_rusure=您確定要刪除選定的 PHP 套件嗎：$1

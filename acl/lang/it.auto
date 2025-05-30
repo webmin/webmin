@@ -3,18 +3,21 @@ index_twofactor=Autenticazione a due fattori
 index_joingroup=Aggiungi al gruppo:
 
 edit_title3=Crea un utente Webmin sicuro
+edit_email=Email di contatto
 edit_twofactor=Tipo di autenticazione a due fattori
 edit_twofactorprov=Utilizzo del provider $1 con ID $2
 edit_twofactorcancel=Rimuovere i requisiti di autenticazione a due fattori
 edit_twofactornone=Nessuna configurazione ancora
 edit_twofactoradd=Abilita due fattori per l'utente
 edit_locale=Locale
+edit_forgot=Invia collegamento per reimpostare la password
 edit_safe=Livello di privilegio
 edit_safe0=illimitato
 edit_safe1=Solo moduli sicuri
 edit_unsafe=Ripristina su senza restrizioni
 
 save_eunixname=Il nome utente '$1' non è un utente Unix, quindi non può essere utilizzato in modalità provvisoria
+save_eemail=L'indirizzo email non può contenere il carattere :
 
 delete_eanonuser=Questo utente viene utilizzato per l'accesso al modulo anonimo
 
@@ -25,6 +28,9 @@ acl_locale=È possibile modificare le impostazioni locali?
 log_joingroup=Aggiunti $1 utenti Webmin al gruppo $2
 log_twofactor=Utente registrato $1 con provider a due fattori $2
 log_onefactor=Utente non registrato $1 per l'autenticazione a due fattori
+log_forgot_send=Inviata email di reimpostazione password per l'utente $1 a $2
+log_forgot_reset=Reimposta la password per l'utente $1 con e-mail $2
+log_forgot_admin=L'amministratore ha inviato un'e-mail per la reimpostazione della password per l'utente $1 a $2
 
 convert_sync2=Sincronizzare la password con l'utente Unix in futuro?
 convert_user=Utente Unix
@@ -75,3 +81,20 @@ twofactor_failed=.. registrazione non riuscita: $1
 twofactor_done=.. completare. Il tuo ID con questo provider è <tt>$1</tt>.
 twofactor_setup=L'autenticazione a due fattori non è stata ancora abilitata su questo sistema, ma può essere attivata utilizzando il modulo <a href='$1'>Configurazione Webmin</a>.
 twofactor_ebutton=Nessun pulsante cliccato!
+
+forgot_title=Invia collegamento per reimpostare la password
+forgot_err=Impossibile inviare il link per la reimpostazione della password
+forgot_header=Dettagli del collegamento per la reimpostazione della password
+forgot_user=Reimposta la password per l'utente
+forgot_email=Metodo di consegna del collegamento
+forgot_email_def=Visualizza collegamento in Webmin
+forgot_email_sel=Invia il collegamento via email a
+forgot_send=Invia collegamento
+forgot_desc=Questa pagina consente di generare o inviare a qualsiasi indirizzo email un link che può essere utilizzato per selezionare una nuova password per un utente Webmin. Fai attenzione all'indirizzo a cui invii questo link, poiché di fatto garantirà l'accesso completo al login di Webmin!
+forgot_adminmsg=Stai ricevendo questa e-mail dall'amministratore del sistema Webmin all'indirizzo $3, per l'accesso $1.\n\nSe desideri procedere con la reimpostazione della password, segui questo collegamento:\n$2
+forgot_sending=Invio dell'e-mail di reimpostazione della password per $2 a $1 ..
+forgot_sent=.. inviato
+forgot_link=Il collegamento sottostante può essere utilizzato per reimpostare la password Webmin per $1 per i prossimi $2 minuti :
+forgot_enosudo=Sudo non è disponibile su questo sistema!
+forgot_ecansudo=L'utente inserito non ha i permessi sudo
+forgot_eunix=L'utente abilitato a sudo immesso non esiste!

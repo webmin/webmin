@@ -111,6 +111,14 @@ session_passapi=Dayakan API pertukaran kata laluan jauh?
 session_passapi0=API dilumpuhkan
 session_passapi1=API diaktifkan untuk pengguna Unix
 session_passurl=Apabila diaktifkan, kata laluan pengguna dapat diubah melalui permintaan POST menjadi $1
+session_forgot=Benarkan pemulihan kata laluan terlupa?
+session_eforgot=Pemulihan kata laluan yang terlupa tidak boleh didayakan melainkan modul pemalam <b>Pemulihan Kata Laluan Virtualmin</b> dialih keluar terlebih dahulu. Ini boleh dilakukan pada halaman <a href='$1'>Modul Webmin</a>.
+session_passresetdesc=Pendikitan pemulihan kata laluan
+session_passreset=Sekat pelanggan dengan lebih daripada $1 permintaan selama $2 minit
+session_epassreset_failures=Permintaan sekatan yang tiada atau tidak sah
+session_passtimeoutdesc=Pautan tetapan semula kata laluan tamat tempoh
+session_passtimeout=Pautan tetapan semula kata laluan tamat tempoh dalam $1 minit
+session_epassreset_timeout=Tamat masa tetapan semula kata laluan tiada atau tidak sah
 
 log_fixrepo=Repositori Webmin tetap
 log_letsencrypt=Meminta sijil SSL baru dari Let's Encrypt

@@ -676,6 +676,14 @@ session_passapi=Otetaanko salasanan etäkäyttöliittymä käyttöön?
 session_passapi0=API poistettu käytöstä
 session_passapi1=API on käytössä Unix -käyttäjille
 session_passurl=Kun tämä on käytössä, käyttäjän salasanat voidaan vaihtaa POST -pyynnön kautta tilaan $1
+session_forgot=Sallitaanko unohtuneen salasanan palautus?
+session_eforgot=Unohtuneen salasanan palautusta ei voida ottaa käyttöön, ellei <b>Virtualmin Password Recovery</b> -laajennusmoduulia ole ensin poistettu. Tämä voidaan tehdä <a href='$1'>Webmin-moduulit</a>-sivulla.
+session_passresetdesc=Salasanan palautuksen rajoittaminen
+session_passreset=Estä asiakkaita, joilla on yli $1 pyyntöä, $2 minuutiksi
+session_epassreset_failures=Puuttuvat tai virheelliset estopyynnöt
+session_passtimeoutdesc=Salasanan palautuslinkin vanheneminen
+session_passtimeout=Salasanan palautuslinkki vanhenee $1 minuutin kuluttua
+session_epassreset_timeout=Puuttuvan tai virheellisen salasanan palautuksen aikakatkaisu
 
 assignment_title=Määritä moduulit uudelleen
 assignment_header=Moduuliluokka

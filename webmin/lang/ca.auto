@@ -71,6 +71,15 @@ session_passapi=Voleu activar l'API de canvi de contrasenya remota?
 session_passapi0=API desactivada
 session_passapi1=API habilitada per als usuaris d'Unix
 session_passurl=Quan està activat, les contrasenyes d'usuari es poden canviar mitjançant una sol·licitud POST a $1
+session_forgot=Permetre la recuperació de la contrasenya oblidada?
+session_eforgot=La recuperació de contrasenyes oblidades no es pot activar si no s'elimina primer el mòdul del complement <b>Virtualmin Password Recovery</b>. Això es pot fer a la pàgina <a href='$1'>Mòduls Webmin</a>.
+
+session_passresetdesc=Limitació de recuperació de contrasenya
+session_passreset=Bloqueja els clients amb més de $1 sol·licituds durant $2 minuts
+session_epassreset_failures=Sol·licituds de bloqueig perdudes o no vàlides
+session_passtimeoutdesc=Caducitat de l'enllaç de restabliment de contrasenya
+session_passtimeout=L'enllaç de restabliment de contrasenya caduca en $1 minuts
+session_epassreset_timeout=Temps d'espera per restablir la contrasenya no vàlida o que falta
 
 log_fixrepo=S'ha solucionat el repositori Webmin
 

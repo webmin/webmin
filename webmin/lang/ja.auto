@@ -52,6 +52,15 @@ session_yescrypt=<tt>yescrypt</tt> ハッシュ形式を使用する
 session_emd5mod=Perl $1 モジュールがインストールされていないため、MD5 ハッシュ形式は使用できません
 session_esha512mod=Perl $1 モジュールがインストールされていないため、SHA512 ハッシュ形式は使用できません
 session_eyescrypt=Perl $1 モジュールがインストールされていないため、yescrypt ハッシュ形式は使用できません
+session_forgot=忘れたパスワードの回復を許可しますか?
+session_eforgot=パスワードを忘れた場合の回復機能は、<b>Virtualmin Password Recovery</b> プラグインモジュールを削除しないと有効になりません。これは <a href='$1'>Webmin モジュール</a> ページで実行できます。
+
+session_passresetdesc=パスワード回復のスロットリング
+session_passreset=$1 件を超えるリクエストを持つクライアントを $2 分間ブロックします
+session_epassreset_failures=ブロック要求が見つからないか無効です
+session_passtimeoutdesc=パスワードリセットリンクの有効期限
+session_passtimeout=パスワードリセットリンクは$1分後に期限切れになります
+session_epassreset_timeout=パスワードリセットのタイムアウトが見つからないか無効です
 
 log_fixrepo=Webmin リポジトリを修正
 

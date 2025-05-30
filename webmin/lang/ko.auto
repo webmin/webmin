@@ -173,6 +173,14 @@ session_passapi=원격 비밀번호 변경 API를 사용하시겠습니까?
 session_passapi0=API 사용 중지됨
 session_passapi1=Unix 사용자를 위해 활성화된 API
 session_passurl=활성화되면 $1에 대한 POST 요청을 통해 사용자 암호를 변경할 수 있습니다
+session_forgot=잊어버린 비밀번호 복구를 허용하시겠습니까?
+session_eforgot=<b>Virtualmin 비밀번호 복구</b> 플러그인 모듈을 먼저 제거하지 않으면 잊어버린 비밀번호 복구 기능을 활성화할 수 없습니다. 이 작업은 <a href='$1'>Webmin 모듈</a> 페이지에서 수행할 수 있습니다.
+session_passresetdesc=비밀번호 복구 제한
+session_passreset=$2분 동안 $1개 이상의 요청이 있는 클라이언트를 차단합니다
+session_epassreset_failures=차단 요청이 누락되었거나 잘못되었습니다
+session_passtimeoutdesc=비밀번호 재설정 링크 만료
+session_passtimeout=비밀번호 재설정 링크가 $1분 후에 만료됩니다
+session_epassreset_timeout=비밀번호 재설정 시간 초과가 없거나 잘못되었습니다
 
 categories_custom=커스텀
 

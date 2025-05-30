@@ -1,6 +1,9 @@
 index_anyfile=Modifier un autre fichier de configuration PHP
+index_pkgs=Gérer les packages PHP
+index_pkgsdesc=Installez et supprimez les versions PHP du référentiel de packages logiciels de votre système, afin qu'elles puissent être configurées ici et utilisées dans Virtualmin.
 
 list_efile=Le fichier à modifier doit être un chemin absolu
+list_bin=Version PHP $2 à $1
 
 session_redis=Redis
 session_memcache=MemcacheD
@@ -53,6 +56,35 @@ imod_missing=.. installation terminée, mais le module PHP n'a pas été détect
 
 log_mods=Modules activés mis à jour dans $1
 log_imod=Module PHP $2 installé dans $1
+log_delete_dpkgs=Paquets PHP $1 désinstallés
 
 opt_default=Valeur par défaut : <tt>$1</tt>
 opt_default_unknown=Inconnu
+
+pkgs_title=Paquets PHP
+pkgs_name=Nom du package
+pkgs_ver=Version du package
+pkgs_phpver=Version PHP
+pkgs_bin=Exécutable
+pkgs_shortver=Version courte
+pkgs_users=Utilisé par
+pkgs_delete=Supprimer les packages sélectionnés
+pkgs_none=Aucun package PHP n'a été trouvé sur votre système !
+pkgs_none2=Aucune version PHP n'a été trouvée sur votre système. Cliquez sur le bouton ci-dessous pour en installer une, si elle est disponible dans votre dépôt de logiciels.
+pkgs_ecannot=Vous n'êtes pas autorisé à gérer les packages PHP !
+pkgs_ecannot2=Les packages logiciels ne peuvent pas être gérés sur ce système
+pkgs_nousers=Aucun domaine
+pkgs_ucount=$1 domaines
+pkgs_newver=Paquet PHP à installer
+pkgs_install=Installer maintenant
+pkgs_return=Paquets PHP
+
+dpkgs_err=Échec de la suppression des packages PHP
+dpkgs_title=Suppression des packages PHP
+dpkgs_doing=Désinstallation du package $1 et des modules pour la version PHP $2 ..
+dpkgs_failed=.. échoué  : $1
+dpkgs_done=.. désinstallé avec succès
+dpkgs_enone=Aucun package sélectionné
+dpkgs_eexists=Le package n'existe pas !
+dpkg_eusers=Le package pour la version PHP $1 ne peut pas être désinstallé, car il est toujours utilisé par les domaines $2
+dpkgs_rusure=Êtes-vous sûr de vouloir supprimer les packages PHP sélectionnés  : $1

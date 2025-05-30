@@ -10,6 +10,7 @@ edit_title3=創建安全的Webmin用戶
 edit_readonly=該Webmin用戶不能編輯，因為它是由 $1 模塊管理的。 <a href='$2'>單擊此處</a>以繞過此警告並仍然編輯用戶-但請注意，任何手動更改都可能被覆蓋！
 edit_cloneof=克隆Webmin用戶
 edit_real=真正的名字
+edit_email=聯絡信箱
 edit_passlocked=$1 天未更改密碼-帳戶已鎖定！
 edit_passmax=$1 天未更改密碼-下次登錄時必須更改
 edit_passold=密碼最後一次更改是 $1 天前
@@ -30,6 +31,7 @@ edit_overlay=個人主題疊加
 edit_overlayglobal=無-使用主題默認值
 edit_hide=隱藏未使用
 edit_switch=切換到用戶
+edit_forgot=發送密碼重設連結
 edit_return=Webmin用戶
 edit_return2=Webmin組
 edit_rbacdeny=RBAC訪問模式
@@ -67,6 +69,7 @@ save_edays=沒有天數可供選擇
 save_ehours=缺少時間或無效時間
 save_ehours2=允許的開始時間必須在結束之前
 save_etemp=除非啟用了<a href='$1'>提示用戶輸入新密碼</a>的選項，否則不能使用在下次登錄時強制更改密碼的選項。
+save_eemail=電子郵件地址不能包含：字符
 
 delete_eanonuser=該用戶正用於匿名模塊訪問
 
@@ -93,6 +96,9 @@ log_sync=更改了Unix用戶同步
 log_sql=更改的用戶和組數據庫
 log_twofactor=使用兩因素提供程序 $2 的已註冊用戶 $1
 log_onefactor=取消註冊用戶 $1 進行雙重身份驗證
+log_forgot_send=已將使用者 $1 的密碼重設電子郵件傳送至 $2
+log_forgot_reset=為電子郵件為 $2 的使用者 $1 重設密碼
+log_forgot_admin=管理員已將使用者 $1 的密碼重設電子郵件傳送給 $2
 
 gedit_members=會員用戶和組
 gedit_desc=團體簡介
@@ -296,3 +302,20 @@ twofactor_failed=..註冊失敗： $1
 twofactor_done=..完成。您在此提供程序處的ID是<tt>$1</tt>。
 twofactor_setup=此系統上尚未啟用兩因素身份驗證，但可以使用<a href='$1'>Webmin Configuration</a>模塊將其打開。
 twofactor_ebutton=沒有點擊按鈕！
+
+forgot_title=發送密碼重設連結
+forgot_err=無法發送密碼重設鏈接
+forgot_header=密碼重置連結詳情
+forgot_user=重置用戶密碼
+forgot_email=連結傳遞方式
+forgot_email_def=在 Webmin 中顯示鏈接
+forgot_email_sel=透過電子郵件發送連結至
+forgot_send=發送連結
+forgot_desc=此頁面可讓您產生或傳送可用於為 Webmin 使用者選擇新密碼的連結至任何電子郵件地址。請小心將此連結傳送到哪個位址，因為它將有效授予對 Webmin 登入的完全存取權！
+forgot_adminmsg=您將收到來自 $3 的 Webmin 系統管理員的這封電子郵件，登入名為 $1。 \n\n如果您想繼續重設密碼，請點擊此連結:\n$2
+forgot_sending=正在將 $2 的密碼重設電子郵件發送至 $1 ..
+forgot_sent=.. 發送
+forgot_link=下面的連結可用於重設 $1 在接下來的 $2 分鐘內的 Webmin 密碼：
+forgot_enosudo=Sudo 在本系統上不可用！
+forgot_ecansudo=輸入的使用者沒有 sudo 權限
+forgot_eunix=輸入的具有 sudo 權限的使用者不存在！

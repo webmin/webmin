@@ -9,6 +9,8 @@ index_medit=管理する
 index_manual=手動で編集
 index_anyfile=他のPHP設定ファイルを編集する
 index_return=構成ファイル
+index_pkgs=PHPパッケージの管理
+index_pkgsdesc=システムのソフトウェア パッケージ リポジトリから PHP バージョンをインストールおよび削除し、ここで構成して Virtualmin で使用できるようにします。
 
 file_global=グローバルPHP設定
 file_eread=$1の読み取りに失敗しました： $2
@@ -24,6 +26,7 @@ list_efile=編集するファイルは絶対パスである必要があります
 list_return=PHPの構成
 list_format_ini=INI形式
 list_format_fpm=FPMフォーマット
+list_bin=PHP バージョン $2 ($1)
 
 vars_title=PHP変数
 vars_header=PHP変数の作成と引用オプション
@@ -203,6 +206,7 @@ log_errors=$1のエラーログを変更しました
 log_misc=$1の他の設定を変更しました
 log_mods=$1 の有効なモジュールを更新しました
 log_imod=PHP モジュール $2 を $1 にインストールしました
+log_delete_dpkgs=$1 個の PHP パッケージをアンインストールしました
 
 acl_global=グローバルなPHP構成を編集できますか？
 acl_anyfile=PHP構成として任意のファイルを編集できますか？
@@ -212,3 +216,31 @@ acl_user=ユーザーとしてファイルを読み書きする
 
 opt_default=デフォルト値: <tt>$1</tt>
 opt_default_unknown=知らない
+
+pkgs_title=PHPパッケージ
+pkgs_name=パッケージ名
+pkgs_ver=パッケージバージョン
+pkgs_phpver=PHPバージョン
+pkgs_bin=実行可能
+pkgs_shortver=短縮版
+pkgs_users=使用者
+pkgs_delete=選択したパッケージを削除
+pkgs_none=システム上に PHP パッケージが見つかりません。
+pkgs_none2=システムにPHPのバージョンが見つかりません。ソフトウェアパッケージリポジトリにPHPのバージョンがある場合は、下のボタンをクリックしてインストールしてください。
+pkgs_ecannot=PHP パッケージを管理することはできません。
+pkgs_ecannot2=このシステムではソフトウェア パッケージを管理できません
+pkgs_nousers=ドメインなし
+pkgs_ucount=$1 ドメイン
+pkgs_newver=インストールするPHPパッケージ
+pkgs_install=今すぐインストール
+pkgs_return=PHPパッケージ
+
+dpkgs_err=PHP パッケージの削除に失敗しました
+dpkgs_title=PHPパッケージの削除
+dpkgs_doing=パッケージ $1 と PHP バージョン $2 のモジュールをアンインストールしています。
+dpkgs_failed=.. 失敗しました : $1
+dpkgs_done=.. アンインストールに成功しました
+dpkgs_enone=パッケージが選択されていません
+dpkgs_eexists=パッケージが存在しません。
+dpkg_eusers=PHP バージョン $1 のパッケージは、$2 のドメインでまだ使用されているためアンインストールできません。
+dpkgs_rusure=選択した PHP パッケージを削除してもよろしいですか : $1
