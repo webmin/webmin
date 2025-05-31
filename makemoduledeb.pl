@@ -535,7 +535,7 @@ if [ "$istheme" = "1" -a "\$1" != "upgrade" ]; then
 	fi
 fi
 # Run the pre-uninstall script, if we are not upgrading
-if [ "$product" = "webmin" -a "\$1" = "0" -a -r "/usr/share/$product/$mod/uninstall.pl" ]; then
+if [ "$product" = "webmin" -a "\$1" != "upgrade" -a -r "/usr/share/$product/$mod/uninstall.pl" ]; then
 	cd /usr/share/$product
 	WEBMIN_CONFIG=/etc/$product WEBMIN_VAR=/var/$product /usr/share/$product/run-uninstalls.pl $mod
 fi
