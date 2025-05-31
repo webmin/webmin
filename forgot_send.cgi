@@ -27,7 +27,22 @@ if (!$wuser) {
 		($wuser) = grep { $_->{'name'} eq 'root' } &acl::list_users();
 		}
 	}
-my $email = $wuser ? $wuser->{'email'} : undef;
+
+# If no Webmin user, then try to get mail user from Virtualmin
+my $muser;
+if (!$wuser && &foreign_check("virtual-server")) {
+	# Probably in Virtualmin, so try to find the user
+	&foreign_require("virtual-server");
+	foreach my $d (&virtual_server::list_domains()) {
+		my @users =
+			&virtual_server::list_domain_users($d, 0, 0, 0, 0, 1);
+		($muser) = grep { $_->{'user'} eq lc($in{'forgot'}) } @users;
+		last if ($muser);
+		}
+	}
+
+my $email = $wuser ? $wuser->{'email'} : 
+	    $muser ? $muser->{'recovery'} || $muser->{'email'} : undef;
 
 # Check if the IP or Webmin user is over it's rate limit
 &make_dir($main::forgot_password_link_dir, 0700);
@@ -43,6 +58,7 @@ my $ptime = $gconfig{'passreset_time'} // 60;
 foreach my $key ($ENV{'REMOTE_ADDR'},
 		 $wuser ? ( $wuser->{'name'} ) : ( ),
 		 $uuser ? ( $uuser->{'user'} ) : ( ),
+		 $muser ? ( $muser->{'user'} ) : ( ),
 		 $email ? ( $email ) : ( )) {
 	# Don't block if disabled
 	next if (!$pfailures || !$ptime);
@@ -83,7 +99,7 @@ sleep($maxtries);
 &error($rlerr) if ($rlerr);
 
 # Make sure the Webmin user exists and is eligible for a reset
-$wuser && $wuser->{'email'} || &error($text{'forgot_euser'});
+(($wuser && $email) || ($muser && $email)) || &error($text{'forgot_euser'});
 ($wuser->{'sync'} || $wuser->{'pass'} eq 'e') && &error($text{'forgot_esync'});
 $wuser->{'pass'} eq '*LK*' && &error($text{'forgot_elock'});
 
@@ -92,7 +108,8 @@ my %link = ( 'id' => &acl::generate_random_id(),
 	     'remote' => $ENV{'REMOTE_ADDR'},
 	     'time' => $now,
 	     'user' => $wuser->{'name'},
-	     'uuser' => $uuser ? $uuser->{'user'} : undef, );
+	     'uuser' => $uuser ? $uuser->{'user'} : undef,
+	     'muser' => $muser ? $muser->{'user'} : undef, );
 $link{'id'} || &error($text{'forgot_erandom'});
 my $linkfile = $main::forgot_password_link_dir."/".$link{'id'};
 &lock_file($linkfile);
@@ -100,8 +117,9 @@ my $linkfile = $main::forgot_password_link_dir."/".$link{'id'};
 &unlock_file($linkfile);
 my $baseurl = &get_webmin_email_url();
 my $url = $baseurl.'/forgot.cgi?id='.&urlize($link{'id'});
-my $username = $uuser ? $uuser->{'user'} : $wuser->{'name'};
-$url = &theme_forgot_url($baseurl, $link{'id'}, $link{'user'})
+my $username = $muser ? $muser->{'user'} :
+	       $uuser ? $uuser->{'user'} : $wuser->{'name'};
+$url = &theme_forgot_url($baseurl, $link{'id'}, $username)
 	if (defined(&theme_forgot_url));
 
 &ui_print_header(undef, $text{'forgot_title'}, "", undef, undef, 1, 1);
@@ -128,6 +146,6 @@ print "</center>\n";
 
 &webmin_log("forgot", "send", undef,
 	    { 'user' => $username,
-	      'unix' => $uuser ? 1 : 0,
+	      'unix' => $muser || $uuser ? 1 : 0,
 	      'email' => $email }, "acl");
 &ui_print_footer();

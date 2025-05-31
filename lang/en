@@ -163,6 +163,7 @@ forgot_newpass=New password for Webmin user $1
 forgot_newpass2=New password again
 forgot_passok=Change Password
 forgot_euser2=Webmin user $1 does not exist!
+forgot_euser3=Mail user $1 does not exist!
 forgot_esync=The password cannot be changed for this user
 forgot_elock=The password for this user is locked
 forgot_err=Failed to reset password
