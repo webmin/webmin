@@ -151,7 +151,15 @@ if (defined($in{'newpass'})) {
 		&reload_miniserv();
 		print $text{'forgot_done'},"<p>\n";
 		}
-	print &text('forgot_retry', '/'),"<p>\n";
+	
+	# Print link to login for Webmin user
+	if (!$muser) {
+		print &text('forgot_retry', &get_webprefix()."/",
+			    "<tt>".$username."</tt>"),"<p>\n";
+		}
+	else {
+		print &text('forgot_retry2', "<tt>".$username."</tt>"),"<p>\n";
+		}
 
 	&webmin_log("forgot", "reset", undef,
 		    { 'user' => $username,

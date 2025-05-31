@@ -163,7 +163,7 @@ forgot_newpass=New password for user $1
 forgot_newpass2=New password again
 forgot_passok=Change Password
 forgot_euser2=Webmin user $1 does not exist!
-forgot_euser3=Mail user $1 does not exist!
+forgot_euser3=Mailbox user $1 does not exist!
 forgot_esync=The password cannot be changed for this user
 forgot_elock=The password for this user is locked
 forgot_err=Failed to reset password
@@ -172,7 +172,8 @@ forgot_enewpass2=New passwords do not match!
 forgot_equality=Password requirements were not met : $1
 forgot_wdoing=Changing password for user $1 ..
 forgot_done=.. password change complete.
-forgot_retry=You can now <a href='$1'>login to Webmin</a> using your new password.
+forgot_retry=The password for Webmin user $2 was reset successfully. You can now <a href='$1'>log in</a> using your new password.
+forgot_retry2=The password for mailbox user $1 was reset successfully.
 forgot_edisabled=The password for a disabled Virtualmin domain cannot be reset
 forgot_vdoing=Changing password for Virtualmin domain $1 ..
 forgot_udoing=Changing password for Unix user $1 ..
