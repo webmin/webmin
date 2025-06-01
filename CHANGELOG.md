@@ -1,5 +1,11 @@
 ## Changelog
 
+#### 2.401 (June 2, 2025)
+* Add forgotten password recovery support for Virtualmin mailbox users
+* Fix account lock status check in MySQL/MariaDB module that was blocking new database user creation #2484
+* Fix to prevent safe users from sending emails
+* Fix to always show password recovery link if enabled
+
 #### 2.400 (May 25, 2025)
 * Add built-in support for forgotten password recovery
 * Add support for SSL certificates and DNS over TLS in the BIND module
