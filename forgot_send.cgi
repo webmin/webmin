@@ -33,11 +33,10 @@ my $muser;
 if (!$wuser && &foreign_check("virtual-server")) {
 	# Probably in Virtualmin, so try to find the user
 	&foreign_require("virtual-server");
-	foreach my $d (&virtual_server::list_domains()) {
-		my @users =
-			&virtual_server::list_domain_users($d, 0, 0, 0, 0, 1);
-		($muser) = grep { $_->{'user'} eq lc($in{'forgot'}) } @users;
-		last if ($muser);
+	my $d = &virtual_server::get_user_domain(lc($in{'forgot'}));
+	if ($d) {
+		my @u = &virtual_server::list_domain_users($d, 0, 0, 1, 1, 0);
+		($muser) = grep { $_->{'user'} eq lc($in{'forgot'}) } @u;
 		}
 	}
 

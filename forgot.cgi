@@ -32,14 +32,10 @@ my ($muser, $muserdom);
 if (!$wuser && $link{'muser'}) {
 	# Probably Virtualmin mail user, so try to find it
 	&foreign_require("virtual-server");
-	foreach my $d (&virtual_server::list_domains()) {
-		my @users =
-			&virtual_server::list_domain_users($d, 0, 0, 0, 0, 1);
-		($muser) = grep { $_->{'user'} eq lc($link{'muser'}) } @users;
-		if ($muser) {
-			$muserdom = $d;
-			last;
-			}
+	my $d = &virtual_server::get_user_domain(lc($link{'muser'}));
+	if ($d) {
+		my @u = &virtual_server::list_domain_users($d, 0, 0, 1, 1, 0);
+		($muser) = grep { $_->{'user'} eq lc($link{'muser'}) } @u;
 		}
 	}
 
