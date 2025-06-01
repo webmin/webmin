@@ -26,9 +26,33 @@ time() - $link{'time'} > 60*$timeout &&
 # Get the Webmin user
 &foreign_require("acl");
 my ($wuser) = grep { $_->{'name'} eq $link{'user'} } &acl::list_users();
-$wuser || &error(&text('forgot_euser2',
+
+# Get the Virtualmin mail Unix user if Webmin user is not found
+my ($muser, $muserdom);
+if (!$wuser && $link{'muser'}) {
+	# Probably Virtualmin mail user, so try to find it
+	&foreign_require("virtual-server");
+	foreach my $d (&virtual_server::list_domains()) {
+		my @users =
+			&virtual_server::list_domain_users($d, 0, 0, 0, 0, 1);
+		($muser) = grep { $_->{'user'} eq lc($link{'muser'}) } @users;
+		if ($muser) {
+			$muserdom = $d;
+			last;
+			}
+		}
+	}
+
+# Show an error if neither user was found
+!$muser && $link{'muser'} && &error(&text('forgot_euser3',
+		"<tt>".&html_escape($link{'muser'})."</tt>"));
+$wuser || $muser || &error(&text('forgot_euser2',
 		"<tt>".&html_escape($link{'user'})."</tt>"));
-my $username = $link{'uuser'} || $link{'user'};
+
+# Set the username whichever is available
+my $username = $link{'muser'} || $link{'uuser'} || $link{'user'};
+my $email = $wuser ? $wuser->{'email'} : 
+	    $muser ? $muser->{'recovery'} || $muser->{'email'} : undef;
 
 &ui_print_header(undef, $text{'forgot_title'}, "", undef, undef, 1, 1);
 
@@ -86,6 +110,17 @@ if (defined($in{'newpass'})) {
 		&virtual_server::pop_all_print();
 		print $text{'forgot_done'},"<p>\n";
 		}
+	elsif ($muser) {
+		# Update in Virtualmin if this is a mail user
+		my %oldmuser = %$muser;
+		$muser->{'plainpass'} = $in{'newpass'};
+		$muser->{'pass'} =
+			&virtual_server::encrypt_user_password(
+				$muser, $muser->{'plainpass'});
+		$muser->{'passmode'} = 3;
+		&virtual_server::set_pass_change($muser);
+		&virtual_server::modify_user($muser, \%oldmuser, $muserdom);
+		}
 	elsif ($link{'uuser'} || $wuser->{'pass'} eq 'x') {
 		# Update in Users and Groups
 		print &text('forgot_udoing',
@@ -116,12 +151,20 @@ if (defined($in{'newpass'})) {
 		&reload_miniserv();
 		print $text{'forgot_done'},"<p>\n";
 		}
-	print &text('forgot_retry', '/'),"<p>\n";
+	
+	# Print link to login for Webmin user
+	if (!$muser) {
+		print &text('forgot_retry', &get_webprefix()."/",
+			    "<tt>".$username."</tt>"),"<p>\n";
+		}
+	else {
+		print &text('forgot_retry2', "<tt>".$username."</tt>"),"<p>\n";
+		}
 
 	&webmin_log("forgot", "reset", undef,
 		    { 'user' => $username,
 		      'unix' => $link{'uuser'} ? 1 : 0,
-		      'email' => $wuser->{'email'} }, "acl");
+		      'email' => $email }, "acl");
 
 	&unlink_logged($linkfile);
 	}
