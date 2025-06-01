@@ -125,7 +125,7 @@ print &ui_submit($text{'session_login'});
 print &ui_reset($text{'session_clear'});
 print &ui_form_end();
 
-if ($in{'failed'} && $gconfig{'forgot_pass'}) {
+if ($gconfig{'forgot_pass'}) {
 	# Show forgotten password link
 	print &ui_form_start("forgot_form.cgi", "post");
 	print &ui_hidden("failed", $in{'failed'});
