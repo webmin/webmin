@@ -145,9 +145,14 @@ if ($gconfig{'forgot_pass'}) {
 		    $wconfig{'forgot_pass'}) {
 			my ($whost) = split(/:/, $ENV{'HTTP_HOST'});
 			my $wurl = ($wminiserv{'ssl'} ? 'https' : 'http').'://'.
-				   $whost.':'.
-				   $wminiserv{'port'};
-			$wurl .= $wminiserv{'webprefix'} if ($wminiserv{'webprefix'});
+				   $whost;
+			if ($wminiserv{'port'} &&
+			    $wminiserv{'port'} != 80 &&
+			    $wminiserv{'port'} != 443) {
+				$wurl .= ":$wminiserv{'port'}";
+				}
+			$wurl .= $wminiserv{'webprefix'}
+				if ($wminiserv{'webprefix'});
 			print &ui_form_start("$wurl/forgot_form.cgi", "post");
 			print &ui_hidden("failed", $in{'failed'});
 			print &ui_form_end([ [ undef, $text{'session_forgot'} ] ]);
