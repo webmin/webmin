@@ -57,8 +57,8 @@ lang_title2=Usermin Language and Locale
 lang_intro=This page allows you to choose which language Usermin will use for displaying titles, prompts and messages
 
 session_title=Authentication
+session_header=Authentication and session options
 session_desc1=When enabled, password timeouts protect your Usermin server from brute-force password cracking attacks by adding a continuously expanding delay between each failed login attempt for the same user.
-session_desc2=When session authentication is enabled, each logged in users' session will be tracked by Usermin, making it possible for idle users to be automatically logged out. Be aware that enabling or disabling session authentication may force all users to re-login.
 session_remember=Offer to remember login permanently?
 session_hostname=Show hostname on login screen?
 session_realname=Show real hostname instead of name from URL?
