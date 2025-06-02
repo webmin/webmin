@@ -127,37 +127,10 @@ print &ui_form_end();
 
 if ($gconfig{'forgot_pass'}) {
 	# Show forgotten password link
-	if (&get_product_name() eq 'webmin') {
-		# Webmin has password changes built in
-		print &ui_form_start("forgot_form.cgi", "post");
-		print &ui_hidden("failed", $in{'failed'});
-		print &ui_form_end([ [ undef, $text{'session_forgot'} ] ]);
-		}
-	elsif (&get_product_name() eq 'usermin') {
-		# Usermin depends on Webmin
-		my $wdir = $config_directory;
-		$wdir =~ s/\/usermin$/\/webmin/;
-		my $wconfig = "$wdir/config";
-		my $wminiserv = "$wdir/miniserv.conf";
-		my (%wconfig, %wminiserv);
-		if (&read_env_file($wconfig, \%wconfig) &&
-		    &read_env_file($wminiserv, \%wminiserv) &&
-		    $wconfig{'forgot_pass'}) {
-			my ($whost) = split(/:/, $ENV{'HTTP_HOST'});
-			my $wurl = ($wminiserv{'ssl'} ? 'https' : 'http').'://'.
-				   $whost;
-			if ($wminiserv{'port'} &&
-			    $wminiserv{'port'} != 80 &&
-			    $wminiserv{'port'} != 443) {
-				$wurl .= ":$wminiserv{'port'}";
-				}
-			$wurl .= $wminiserv{'webprefix'}
-				if ($wminiserv{'webprefix'});
-			print &ui_form_start("$wurl/forgot_form.cgi", "post");
-			print &ui_hidden("failed", $in{'failed'});
-			print &ui_form_end([ [ undef, $text{'session_forgot'} ] ]);
-			}
-		}
+	my $link = &get_webmin_login_link();
+	print &ui_form_start("${link}forgot_form.cgi", "post");
+	print &ui_hidden("failed", $in{'failed'});
+	print &ui_form_end([ [ undef, $text{'session_forgot'} ] ]);
 	}
 
 print "</center>\n";

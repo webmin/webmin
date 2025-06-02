@@ -13962,6 +13962,32 @@ foreach my $i (&get_all_module_infos(), &list_themes()) {
 return @rv;
 }
 
+# get_webmin_login_link()
+# Returns a link to the Webmin login page
+sub get_webmin_login_link
+{
+return '' if (&get_product_name() eq 'webmin');
+my $wdir = $config_directory;
+$wdir =~ s/\/usermin$/\/webmin/;
+my $wconfig = "$wdir/config";
+my $wminiserv = "$wdir/miniserv.conf";
+my (%wconfig, %wminiserv);
+if (&read_env_file($wconfig, \%wconfig) &&
+    &read_env_file($wminiserv, \%wminiserv) && $wconfig{'forgot_pass'}) {
+	my ($whost) = split(/:/, $ENV{'HTTP_HOST'});
+	my $wurl = ($wminiserv{'ssl'} ? 'https' : 'http').'://'.$whost;
+	if ($wminiserv{'port'} &&
+		$wminiserv{'port'} != 80 &&
+		$wminiserv{'port'} != 443) {
+		$wurl .= ":$wminiserv{'port'}";
+		}
+	$wurl .= $wminiserv{'webprefix'} if ($wminiserv{'webprefix'});
+	$wurl .= "/";
+	return $wurl;
+	}
+return '';
+}
+
 $done_web_lib_funcs = 1;
 
 1;
