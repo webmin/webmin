@@ -40,6 +40,36 @@ print &ui_table_row("",
     ui_checkbox("blocklock", 1, $text{'session_blocklock'},
 		$miniserv{'blocklock'}));
 
+# Enable forgotten password recovery
+print &ui_table_row($text{'session_forgot'},
+	&ui_yesno_radio("forgot", $gconfig{'forgot_pass'}));
+
+# Block bad password requests
+$gconfig{'passreset_failures'} //= 3;
+$gconfig{'passreset_time'} //= 60;
+print &ui_table_row($text{'session_passresetdesc'},
+    &ui_checkbox("blockpass_on", 1, 
+	text('session_passreset',
+	  &ui_textbox("passreset_failures", $gconfig{'passreset_failures'}, 2),
+	  &ui_textbox("passreset_time", $gconfig{'passreset_time'}, 2)),
+	$gconfig{'passreset_failures'} ? 1 : 0));
+
+# Password reset link expiry
+$gconfig{'passreset_timeout'} ||= 15;
+print &ui_table_row($text{'session_passtimeoutdesc'},
+	&text('session_passtimeout',
+		&ui_textbox("passreset_timeout",
+			$gconfig{'passreset_timeout'}, 2)));
+
+# Enable password change API?
+$url = &get_webmin_browser_url("passwd", "change_passwd.cgi");
+(undef, $found) = &acl::get_anonymous_access($password_change_path, \%miniserv);
+print &ui_table_row($text{'session_passapi'},
+	&ui_radio("passapi", $found >= 0 ? 1 : 0,
+		  [ [ 0, $text{'session_passapi0'}."<br>" ],
+		    [ 1, $text{'session_passapi1'} . "&nbsp;" .
+		         &ui_help(&text('session_passurl', "<tt>$url</tt>")) ] ]));
+
 # Log to syslog
 eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 if (!$@) {
@@ -140,36 +170,6 @@ print &ui_table_row($text{'session_md5'},
 		    [ 1, $text{'session_md5on'}."<br>" ],
 		    [ 2, $text{'session_sha512'}."<br>" ],
 		    [ 3, $text{'session_yescrypt'} ] ]));
-
-# Enable password change API?
-$url = &get_webmin_browser_url("passwd", "change_passwd.cgi");
-(undef, $found) = &acl::get_anonymous_access($password_change_path, \%miniserv);
-print &ui_table_row($text{'session_passapi'},
-	&ui_radio("passapi", $found >= 0 ? 1 : 0,
-		  [ [ 0, $text{'session_passapi0'}."<br>" ],
-		    [ 1, $text{'session_passapi1'} . "&nbsp;" .
-		         &ui_help(&text('session_passurl', "<tt>$url</tt>")) ] ]));
-
-# Enable forgotten password recovery
-print &ui_table_row($text{'session_forgot'},
-	&ui_yesno_radio("forgot", $gconfig{'forgot_pass'}));
-
-# Block bad password requests
-$gconfig{'passreset_failures'} //= 3;
-$gconfig{'passreset_time'} //= 60;
-print &ui_table_row($text{'session_passresetdesc'},
-    &ui_checkbox("blockpass_on", 1, 
-	text('session_passreset',
-	  &ui_textbox("passreset_failures", $gconfig{'passreset_failures'}, 2),
-	  &ui_textbox("passreset_time", $gconfig{'passreset_time'}, 2)),
-	$gconfig{'passreset_failures'} ? 1 : 0));
-
-# Password reset link expiry
-$gconfig{'passreset_timeout'} ||= 15;
-print &ui_table_row($text{'session_passtimeoutdesc'},
-	&text('session_passtimeout',
-		&ui_textbox("passreset_timeout",
-			$gconfig{'passreset_timeout'}, 2)));
 
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);
