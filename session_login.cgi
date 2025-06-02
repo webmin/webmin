@@ -147,6 +147,7 @@ if ($gconfig{'forgot_pass'}) {
 			my $wurl = ($wminiserv{'ssl'} ? 'https' : 'http').'://'.
 				   $whost.':'.
 				   $wminiserv{'port'};
+			$wurl .= $wminiserv{'webprefix'} if ($wminiserv{'webprefix'});
 			print &ui_form_start("$wurl/forgot_form.cgi", "post");
 			print &ui_hidden("failed", $in{'failed'});
 			print &ui_form_end([ [ undef, $text{'session_forgot'} ] ]);
