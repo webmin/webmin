@@ -181,6 +181,7 @@ forgot_eunix=Unix user does not exist!
 forgot_eunixlock=User user's password is locked!
 forgot_elogin=Forgotten password pages cannot be used when you are already logged in to Webmin!
 forgot_erate=Too many password reset attempts for $1! Please try again later.
+forgot_eremote=Webmin server on this system is not running or is not configured to allow forgotten password recovery.
 
 pam_header=Login to Webmin
 pam_mesg=You must respond to the question below to login to Webmin server on $1.
