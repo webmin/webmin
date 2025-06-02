@@ -38,6 +38,10 @@ print &ui_table_row("",
           ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 2)),
         $miniserv{'blockuser_failures'} ? 1 : 0));
 
+# Enable forgotten password recovery
+print &ui_table_row($text{'session_forgot'},
+	&ui_yesno_radio("forgot", $uconfig{'forgot_pass'}));
+
 # Log to syslog
 eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 if (!$@) {

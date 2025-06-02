@@ -79,6 +79,7 @@ session_blank=Prompt users with empty password to choose one at first login?
 session_homedir=Create missing home directories after login?
 session_homedir_perms=Permissions for new directory
 session_ehomedir_perms=Missing or invalid octal home directory permissions
+session_forgot=Allow forgotten password recovery?
 
 themes_title=Usermin Themes
 themes_desc=Themes control the appearance of the Usermin user interface, including icons, colours, backgrounds and possibly the layout of pages. The selection box below can be used to choose one of the themes installed on your system that will be the default for Usermin users.

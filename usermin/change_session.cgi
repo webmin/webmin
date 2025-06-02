@@ -140,6 +140,7 @@ $miniserv{'utmp'} = $in{'utmp'};
 #$uconfig{'locking'} = $in{'locking'};
 $uconfig{'noremember'} = !$in{'remember'};
 $uconfig{'realname'} = $in{'realname'};
+$uconfig{'forgot_pass'} = $in{'forgot'};
 if ($in{'passwd_file'}) {
 	$uconfig{'passwd_file'} = $in{'passwd_file'};
 	$uconfig{'passwd_uindex'} = $in{'passwd_uindex'};

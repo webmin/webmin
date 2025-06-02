@@ -4,6 +4,7 @@
 BEGIN { push(@INC, "."); };
 use WebminCore;
 $no_acl_check++;
+$trust_unknown_referers = 1;
 &init_config();
 &ReadParse();
 &load_theme_library();
