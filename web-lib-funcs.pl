@@ -13962,9 +13962,9 @@ foreach my $i (&get_all_module_infos(), &list_themes()) {
 return @rv;
 }
 
-# get_webmin_login_link()
-# Returns a link to the Webmin login page
-sub get_webmin_login_link
+# get_webmin_base_url()
+# Returns a link to the Webmin login page for use from Usermin
+sub get_webmin_base_url
 {
 return '' if (&get_product_name() eq 'webmin');
 my $wdir = $config_directory;

@@ -127,7 +127,7 @@ print &ui_form_end();
 
 if ($gconfig{'forgot_pass'}) {
 	# Show forgotten password link
-	my $link = &get_webmin_login_link();
+	my $link = &get_webmin_base_url();
 	print &ui_form_start("${link}forgot_form.cgi", "post");
 	print &ui_hidden("failed", $in{'failed'});
 	print &ui_form_end([ [ undef, $text{'session_forgot'} ] ]);
