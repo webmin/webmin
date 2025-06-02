@@ -14,7 +14,7 @@ print "$text{'session_desc1'}<p>\n";
 print "$text{'session_desc2'}<p>\n";
 
 print ui_form_start("change_session.cgi", "post");
-print ui_table_start($text{'session_header'}, undef, 2);
+print ui_table_start($text{'session_uheader'}, undef, 2);
 
 # Bad password delay
 print &ui_table_row($text{'session_ptimeout'},

@@ -132,6 +132,7 @@ referer_fix3u=Make sure your browser is configured to send referrer information 
 referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.</li><li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.</li><li>Save the file.</li></ul><p></p>WARNING - this has the side effect of opening your system up to reflected XSS attacks and so is not recommended!
 
 session_header=Login to Webmin
+session_uheader=Login to Usermin
 session_mesg=You must enter a username and password to login to the Webmin server on $1.
 session_mesg2=You must enter a username and password to login.
 session_user=Username
