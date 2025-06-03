@@ -2,6 +2,7 @@
 
 #### 2.401 (June 2, 2025)
 * Add forgotten password recovery support for Virtualmin mailbox users
+* Add support for password reset functionality in Usermin
 * Fix account lock status check in MySQL/MariaDB module that was blocking new database user creation #2484
 * Fix to prevent safe users from sending emails
 * Fix to always show password recovery link if enabled
