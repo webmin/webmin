@@ -111,7 +111,16 @@ print &ui_form_end();
 
 if ($gconfig{'forgot_pass'}) {
 	# Show forgotten password link
-	print &ui_form_start("forgot_form.cgi", "post");
+	my $link = &get_webmin_base_url();
+	my $param = '';
+	if ($link) {
+		my $src_link = ($ENV{'HTTPS'} eq 'ON'
+			? 'https'
+			: 'http').'://'.$ENV{'HTTP_HOST'};
+		$src_link .= ($gconfig{'webprefix'} || '')."/";
+		$param = "?return=".&urlize($src_link);
+		}
+	print &ui_form_start($link."forgot_form.cgi".$param, "post");
 	print &ui_hidden("failed", $in{'failed'});
 	print &ui_form_end([ [ undef, $text{'session_forgot'} ] ]);
 	}
