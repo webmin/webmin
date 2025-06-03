@@ -3572,7 +3572,7 @@ if ($use_icon || $use_title) {
 	}
 
 # Add main content
-$rv .= ui_tag_content($content);
+$rv .= ui_tag_content(ui_tag('span', $content));
 
 # Close alert container
 $rv .= ui_tag_end('div');
