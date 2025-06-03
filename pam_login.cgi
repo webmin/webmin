@@ -18,6 +18,13 @@ if ($gconfig{'forgot_pass'} && $ENV{'REQUEST_URI'}) {
 		}
 	}
 
+# Redirect to forgot form if return param is set from SPA theme
+if ($gconfig{'forgot_pass'} && $ENV{'REQUEST_URI'} &&
+    $ENV{'REQUEST_URI'} =~ /[?&]return=(http?\S+)/) {
+	&redirect("@{[&get_webprefix()]}/forgot_form.cgi");
+	return;
+	}
+
 # Login banner
 if ($gconfig{'loginbanner'} && $ENV{'HTTP_COOKIE'} !~ /banner=1/ &&
     !$in{'logout'} && $in{'initial'}) {

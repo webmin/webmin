@@ -19,6 +19,13 @@ if ($gconfig{'forgot_pass'} && $ENV{'REQUEST_URI'}) {
 		}
 	}
 
+# Redirect to forgot form if return param is set from SPA theme
+if ($gconfig{'forgot_pass'} && $ENV{'REQUEST_URI'} &&
+    $ENV{'REQUEST_URI'} =~ /[?&]return=(http?\S+)/) {
+	&redirect("@{[&get_webprefix()]}/forgot_form.cgi");
+	return;
+	}
+
 # If accessed via HTTPS, make this an SSL-only cookie
 &get_miniserv_config(\%miniserv);
 $sec = uc($ENV{'HTTPS'}) eq 'ON' ? "; secure" : "";
@@ -128,7 +135,15 @@ print &ui_form_end();
 if ($gconfig{'forgot_pass'}) {
 	# Show forgotten password link
 	my $link = &get_webmin_base_url();
-	print &ui_form_start("${link}forgot_form.cgi", "post");
+	my $param = '';
+	if ($link) {
+		my $src_link = ($ENV{'HTTPS'} eq 'ON'
+			? 'https'
+			: 'http').'://'.$ENV{'HTTP_HOST'};
+		$src_link .= ($gconfig{'webprefix'} || '')."/";
+		$param = "?return=".&urlize($src_link);
+		}
+	print &ui_form_start($link."forgot_form.cgi".$param, "post");
 	print &ui_hidden("failed", $in{'failed'});
 	print &ui_form_end([ [ undef, $text{'session_forgot'} ] ]);
 	}
