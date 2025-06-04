@@ -1,34 +1,28 @@
 #!/usr/local/bin/perl
 # Builds a tar.gz package of a specified Webmin version
 
-if ($0 =~ /^(.*)\//) {
-	chdir($1);
-	}
-@ARGV == 1 || @ARGV == 2 || @ARGV == 3 || usage();
-if ($ARGV[0] eq "-minimal" || $ARGV[0] eq "--minimal") {
-	$min++;
-	shift(@ARGV);
-	}
-if ($ARGV[0] =~ /^--exclude-modules/) {
-	$exclude_modules = $ARGV[0];
-	shift(@ARGV);
-	}
-if ($ARGV[0] =~ /^--product-type/) {
-	$product_type = $ARGV[0];
-	$product_type =~ s/--product-type=//;
-	if ($product_type =~ /^(minimal|essential)$/) {
-		$product_suff = "-$product_type";
-		$product_pref = "$product_type-";
+# Parse command line options
+$mod_list  = 'def';
+@ARGV = map { /^--\S+\s+/ ? split(/\s+/, $_) : $_ } @ARGV;
+while (@ARGV && $ARGV[0] =~ /^--?/) {
+	my $opt = shift(@ARGV);
+	if ($opt eq '--minimal' || $opt eq '-minimal') {
+		$min = 1;
+		next;
 		}
-	shift(@ARGV);
+	if ($opt eq '--mod-list') {
+		$mod_list = shift(@ARGV) // usage();
+		next;
+		}
+	usage();
 	}
+@ARGV == 1 || usage();
 $fullvers = $ARGV[0];
-$fullvers =~ /^([0-9\.]+)(\-(\d+))?$/ || usage();
-$vers = $1;
-$release = $3;
-$tardir = $min ? "minimal" : "tarballs";
-$vfile = $product_pref ? "$product_pref$fullvers" : $min ? "$fullvers-minimal" : $fullvers;
-$zipdir = "zips";
+$fullvers =~ /^([0-9\.]+)(?:-(\d+))?$/ || usage();
+($vers, $release) = ($1, $2);
+$tardir = $min ? 'minimal' : 'tarballs';
+$vfile  = $min ? "$fullvers-minimal" : $fullvers;
+$zipdir = 'zips';
 $vers || usage();
 
 @files = ("config.cgi", "config-*-linux",
@@ -70,20 +64,15 @@ if ($min) {
 	}
 else {
 	# All the modules
-	my $mod_def_list;
+	my $mods_list;
 	my $curr_dir = $0;
 	($curr_dir) = $curr_dir =~ /^(.+)\/[^\/]+$/;
 	$curr_dir = "." if ($curr_dir !~ /^\//);
-	open(my $fh, '<', "$curr_dir/mod_def_list.txt") || die "Error opening \"mod_def_list.txt\" : $!\n";
-	$mod_def_list = do { local $/; <$fh> };
+	open(my $fh, '<', "$curr_dir/mod_${mod_list}_list.txt") ||
+		die "Error opening \"mod_${mod_list}_list.txt\" : $!\n";
+	$mods_list = do { local $/; <$fh> };
 	close($fh);
-	@mlist = split(/\s+/, $mod_def_list);
-	if ($exclude_modules) {
-		$exclude_modules =~ s/--exclude-modules=//;
-		my @mlist_excluded =
-		    grep { my $f = $_; ! grep $_ eq $f, split(',', $exclude_modules) } @mlist;
-		@mlist = @mlist_excluded;
-		}
+	@mlist = split(/\s+/, $mods_list);
 	}
 
 # Build EOL data
@@ -296,6 +285,6 @@ close(ARFILE);
 
 sub usage
 {
-die "usage: makedist.pl [-minimal] [--exclude-modules] <version>";
+    die "Usage: $0 [--minimal] [--mod-list file] <version>\n";
 }
 
