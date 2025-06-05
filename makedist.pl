@@ -2,7 +2,7 @@
 # Builds a tar.gz package of a specified Webmin version
 
 # Parse command line options
-$mod_list  = 'def';
+$mod_list  = 'full';
 @ARGV = map { /^--\S+\s+/ ? split(/\s+/, $_) : $_ } @ARGV;
 while (@ARGV && $ARGV[0] =~ /^--?/) {
 	my $opt = shift(@ARGV);
@@ -285,6 +285,6 @@ close(ARFILE);
 
 sub usage
 {
-    die "Usage: $0 [--minimal] [--mod-list file] <version>\n";
+    die "Usage: $0 [--minimal] [--mod-list type] <version>\n";
 }
 

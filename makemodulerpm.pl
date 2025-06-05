@@ -267,7 +267,7 @@ if ($rpmdepends && defined($minfo{'depends'})) {
 			my $curr_dir = $0;
 			($curr_dir) = $curr_dir =~ /^(.+)\/[^\/]+$/;
 			$curr_dir = "." if ($curr_dir !~ /^\//);
-			my $mod_def_file = "$curr_dir/mod_def_list.txt";
+			my $mod_def_file = "$curr_dir/mod_full_list.txt";
 			next if (! -r $mod_def_file);
 			open(my $fh, '<', $mod_def_file) ||
 				die "Error opening \"$mod_def_file\" : $!\n";
