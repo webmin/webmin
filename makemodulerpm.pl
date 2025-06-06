@@ -36,6 +36,8 @@ my ($force_theme, $rpmdepends, $rpmrecommends, $no_prefix, $set_prefix, $vendor,
     $url, $force_usermin, $final_mod, $sign, $keyname,
     $epoch, $dir, $ver, @exclude);
 
+my $mod_list  = 'full';
+
 # Parse command-line args
 while(@ARGV) {
 	# XXX Untainting isn't needed when running as non-root?
@@ -97,6 +99,9 @@ while(@ARGV) {
 	elsif ($a eq "--exclude") {
 		push(@exclude, shift(@ARGV));
 		}
+	elsif ($a eq "--mod-list") {
+		$mod_list = shift(@ARGV);
+		}
 	elsif ($a =~ /^\-\-/) {
 		print STDERR "Unknown option $a\n";
 		exit(1);
@@ -134,6 +139,7 @@ if (!$dir) {
 	print "                        [--sign]\n";
 	print "                        [--key keyname]\n";
 	print "                        [--exclude file]\n";
+	print "                        [--mod-list full|core|minimal]\n";
 	print RESET, "\n";
 	exit(1);
 	}
@@ -267,7 +273,7 @@ if ($rpmdepends && defined($minfo{'depends'})) {
 			my $curr_dir = $0;
 			($curr_dir) = $curr_dir =~ /^(.+)\/[^\/]+$/;
 			$curr_dir = "." if ($curr_dir !~ /^\//);
-			my $mod_def_file = "$curr_dir/mod_full_list.txt";
+			my $mod_def_file = "$curr_dir/mod_${mod_list}_list.txt";
 			next if (! -r $mod_def_file);
 			open(my $fh, '<', $mod_def_file) ||
 				die "Error opening \"$mod_def_file\" : $!\n";
