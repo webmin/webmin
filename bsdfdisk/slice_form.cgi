@@ -34,8 +34,8 @@ print &ui_table_row($text{'nslice_diskblocks'},
 	$disk->{'blocks'});
 
 # Start and end blocks (defaults to last slice+1)
-my ($start, $end) = (63, $disk->{'blocks'});
-foreach my $s (sort { $a->{'startblock'} cmp $b->{'startblock'} }
+my ($start, $end) = (2048, $disk->{'blocks'});
+foreach my $s (sort { $a->{'startblock'} <=> $b->{'startblock'} }
 		    @{$disk->{'slices'}}) {
 	$start = $s->{'startblock'} + $s->{'blocks'} + 1;
 	}
@@ -44,14 +44,16 @@ print &ui_table_row($text{'nslice_start'},
 print &ui_table_row($text{'nslice_end'},
 	&ui_textbox("end", $end, 10));
 
-# Slice type
+# GPT partition type
 print &ui_table_row($text{'nslice_type'},
-	&ui_select("type", 'a5',
-	   [ sort { $a->[1] cmp $b->[1] }
-		  map { [ $_, &fdisk::tag_name($_) ] }
-		      &fdisk::list_tags() ]));
+	&ui_select("type", 'freebsd-ufs',
+			   [ &list_partition_types() ]));
 
-# Also create partition?
+# Partition label
+print &ui_table_row($text{'nslice_label'},
+	&ui_textbox("label", "", 20));
+
+# Create filesystem option
 print &ui_table_row($text{'nslice_makepart'},
 	&ui_yesno_radio("makepart", 1));
 
