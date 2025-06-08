@@ -90,7 +90,7 @@ Requires(pre): /usr/bin/perl
 Requires: /bin/sh /usr/bin/perl perl(lib) perl(open) perl(Net::SSLeay) perl(Time::Local) perl(Data::Dumper) perl(File::Path) perl(File::Basename) perl(Digest::SHA) perl(Digest::MD5) openssl unzip tar gzip
 Recommends: perl(DateTime) perl(DateTime::TimeZone) perl(DateTime::Locale) perl(Time::Piece) perl(Encode::Detect) perl(Time::HiRes) perl(Socket6) html2text shared-mime-info perl-File-Basename perl-File-Path perl-JSON-XS qrencode perl(DBI) perl(DBD::mysql)
 AutoReq: 0
-License: BSD-3-clause
+License: BSD-3-Clause
 Group: System/Tools
 Source: http://www.webmin.com/download/$tarfile
 Vendor: $rpm_maintainer
