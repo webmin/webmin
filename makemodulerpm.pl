@@ -32,8 +32,8 @@ my $release = 1;
 $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin";
 my $allow_overwrite = 0;
 
-my ($force_theme, $rpmdepends, $rpmrecommends, $no_prefix, $set_prefix, $vendor,
-    $url, $force_usermin, $final_mod, $sign, $keyname,
+my ($force_theme, $rpmdepends, $rpmrecommends, $no_prefix, $set_prefix,
+    $obsolete_wbm, $vendor, $url, $force_usermin, $final_mod, $sign, $keyname,
     $epoch, $dir, $ver, @exclude);
 
 my $mod_list  = 'full';
@@ -53,6 +53,12 @@ while(@ARGV) {
 	# from module.info automatically
 	elsif ($a eq "--no-prefix") {
 		$no_prefix = 1;
+		}
+	elsif ($a eq "--prefix") {
+		$set_prefix = &untaint(shift(@ARGV));
+		}
+	elsif ($a eq "--obsolete-wbm") {
+		$obsolete_wbm = 1;
 		}
 	elsif ($a eq "--licence" || $a eq "--license") {
 		$licence = &untaint(shift(@ARGV));
@@ -80,9 +86,6 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--rpm-dir") {
 		$basedir = &untaint(shift(@ARGV));
-		}
-	elsif ($a eq "--prefix") {
-		$set_prefix = &untaint(shift(@ARGV));
 		}
 	elsif ($a eq "--vendor") {
 		$vendor = &untaint(shift(@ARGV));
@@ -126,6 +129,7 @@ if (!$dir) {
 	print "                        [--rpm-dir directory]\n";
 	print "                        [--no-prefix]\n";
 	print "                        [--prefix prefix]\n";
+	print "                        [--no-wbm-prefix]\n";
 	print "                        [--vendor name]\n";
 	print "                        [--licence name]\n";
 	print "                        [--url url]\n";
@@ -170,7 +174,8 @@ if (!-d $spec_dir || !-d $rpm_source_dir || !-d $rpm_dir) {
 
 # Is this actually a module or theme directory?
 -d $source_dir || die "$dir is not a directory";
-my ($depends, $prefix, $desc, $prog, $iver, $istheme, $post_config);
+my ($depends, $prefix, $prefix_auto, $desc, $prog, $iver,
+    $istheme, $post_config);
 if ($minfo{'desc'}) {
 	$depends = join(" ", map { s/\/[0-9\.]+//; $_ }
 				grep { !/^[0-9\.]+$/ }
@@ -206,6 +211,7 @@ elsif ($tinfo{'desc'}) {
 else {
 	die "$source_dir does not appear to be a webmin module or theme";
 	}
+$prefix_auto = $prefix;
 $prefix = "" if ($no_prefix);
 $prefix = $set_prefix if ($set_prefix);
 my $ucprog = ucfirst($prog);
@@ -348,6 +354,12 @@ if (exists($minfo{'rpm_obsoletes'})) {
 	foreach my $rpmobsolete (split(/\s+/, $minfo{'rpm_obsoletes'})) {
 		push(@robsoletes, $rpmobsolete);
 		}
+	}
+
+# Fix support for old module name prefixes
+if ($obsolete_wbm) {
+	push(@rprovides, "$prefix_auto$mod");
+	push(@robsoletes, "$prefix_auto$mod");
 	}
 
 # Create the SPEC file
