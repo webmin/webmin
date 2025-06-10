@@ -1,6 +1,6 @@
 #!/bin/sh
 # setup.sh
-# This script should be run after the webmin archive is unpacked, in order
+# This script should be run after the Devmin archive is unpacked, in order
 # to setup the various config files
 
 # Find install directory
@@ -23,7 +23,7 @@ srcdir=$wadir
 ver=`cat "$wadir/version"`
 
 if [ $? != "0" ]; then
-	echo "ERROR: Cannot find the Webmin install directory";
+	echo "ERROR: Cannot find the Devmin install directory";
 	echo "";
 	exit 1;
 fi
@@ -34,9 +34,9 @@ if [ "$tempdir" = "" ]; then
 fi
 
 echo "****************************************************************************"
-echo "           Welcome to the Webmin setup script, version $ver"
+echo "           Welcome to the Devmin setup script, version $ver"
 echo "****************************************************************************"
-echo "Webmin is a web-based interface that allows Unix-like operating"
+echo "Devmin is a web-based interface that allows Unix-like operating"
 echo "systems and common Unix services to be easily administered."
 echo ""
 
@@ -45,7 +45,7 @@ id | grep -i "uid=0(" >/dev/null
 if [ $? != "0" ]; then
 	uname -a | grep -i CYGWIN >/dev/null
 	if [ $? != "0" ]; then
-		echo "ERROR: The Webmin install script must be run as root";
+		echo "ERROR: The Devmin install script must be run as root";
 		echo "";
 		exit 1;
 	fi
@@ -54,7 +54,7 @@ fi
 # Use the supplied destination directory, if any
 if [ "$1" != "" ]; then
 	wadir=$1
-	echo "Installing Webmin from $srcdir to $wadir"
+	echo "Installing Devmin from $srcdir to $wadir"
 	if [ ! -d "$wadir" ]; then
 		mkdir "$wadir"
 		if [ "$?" != "0" ]; then
@@ -72,7 +72,7 @@ if [ "$1" != "" ]; then
 		fi
 	fi
 else
-	echo "Installing Webmin in $wadir"
+	echo "Installing Devmin in $wadir"
 fi
 cd "$wadir"
 
@@ -107,8 +107,8 @@ fi
 
 # Ask for webmin config directory
 echo "****************************************************************************"
-echo "Webmin uses separate directories for configuration files and log files."
-echo "Unless you want to run multiple versions of Webmin at the same time"
+echo "Devmin uses separate directories for configuration files and log files."
+echo "Unless you want to run multiple versions of Devmin at the same time"
 echo "you can just accept the defaults."
 echo ""
 envetcdir="$config_dir"
@@ -277,7 +277,7 @@ else
 
 	# Ask where perl is installed
 	echo "****************************************************************************"
-	echo "Webmin is written entirely in Perl. Please enter the full path to the"
+	echo "Devmin is written entirely in Perl. Please enter the full path to the"
 	echo "Perl 5 interpreter on your system."
 	echo ""
 	if [ -x /usr/bin/perl ]; then
@@ -322,7 +322,7 @@ else
 	fi
 	$perl -e 'exit ($] < 5.008 ? 1 : 0)'
 	if [ $? = "1" ]; then
-		echo "ERROR: Detected old perl version. Webmin requires"
+		echo "ERROR: Detected old perl version. Devmin requires"
 		echo "perl 5.8 or better to run"
 		echo ""
 		exit 7
@@ -374,14 +374,14 @@ else
 
 	# Ask for web server port, name and password
 	echo "****************************************************************************"
-	echo "Webmin uses its own password protected web server to provide access"
+	echo "Devmin uses its own password protected web server to provide access"
 	echo "to the administration programs. The setup script needs to know :"
 	echo " - What port to run the web server on. There must not be another"
 	echo "   web server already using this port."
 	echo " - The login name required to access the web server."
 	echo " - The password required to access the web server."
 	echo " - If the web server should use SSL (if your system supports it)."
-	echo " - Whether to start webmin at boot time."
+	echo " - Whether to start Devmin at boot time."
 	echo ""
 	printf "Web server port (default 10000): "
 	if [ "$port" = "" ]; then
@@ -491,14 +491,14 @@ else
 		initsupp=`grep "^os_support=" "$srcdir/init/module.info" | sed -e 's/os_support=//g' | grep $grep_os_type`
 		atboot=0
 		if [ "$initsupp" != "" ]; then
-			printf "Start Webmin at boot time (y/n): "
+			printf "Start Devmin at boot time (y/n): "
 			read atbootyn
 			if [ "$atbootyn" = "y" -o "$atbootyn" = "Y" ]; then
 				atboot=1
 				makeboot=1
 			fi
 		else
-			echo "Webmin does not support being started at boot time on your system."
+			echo "Devmin does not support being started at boot time on your system."
 		fi
 	fi
 
@@ -522,7 +522,7 @@ else
 	echo "root=$wadir" >> $cfile
 	echo "mimetypes=$wadir/mime.types" >> $cfile
 	echo "addtype_cgi=internal/cgi" >> $cfile
-	echo "realm=Webmin Server" >> $cfile
+	echo "realm=Devmin Server" >> $cfile
 	echo "logfile=$var_dir/miniserv.log" >> $cfile
 	echo "errorlog=$var_dir/miniserv.error" >> $cfile
 	echo "pidfile=$var_dir/miniserv.pid" >> $cfile
@@ -674,7 +674,7 @@ fi
 echo "Creating start and stop scripts .."
 # Start main
 echo "#!/bin/sh" >$config_dir/.start-init
-echo "echo Starting Webmin server in $wadir" >>$config_dir/.start-init
+echo "echo Starting Devmin server in $wadir" >>$config_dir/.start-init
 echo "trap '' 1" >>$config_dir/.start-init
 echo "LANG=" >>$config_dir/.start-init
 echo "export LANG" >>$config_dir/.start-init
@@ -691,9 +691,9 @@ fi
 # Stop main
 echo "#!/bin/sh" >$config_dir/.stop-init
 echo "if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/.stop-init
-echo "  echo Force stopping Webmin server in $wadir" >>$config_dir/.stop-init
+echo "  echo Force stopping Devmin server in $wadir" >>$config_dir/.stop-init
 echo "else" >>$config_dir/.stop-init
-echo "  echo Stopping Webmin server in $wadir" >>$config_dir/.stop-init
+echo "  echo Stopping Devmin server in $wadir" >>$config_dir/.stop-init
 echo "fi" >>$config_dir/.stop-init
 echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/.stop-init
 echo "pid=\`cat \$pidfile 2>/dev/null\`" >>$config_dir/.stop-init
@@ -720,8 +720,7 @@ echo "$config_dir/.stop-init --kill" >>$config_dir/.restart-by-force-kill-init
 echo "$config_dir/.start-init" >>$config_dir/.restart-by-force-kill-init
 # Reload main
 echo "#!/bin/sh" >$config_dir/.reload-init
-echo "echo Reloading Webmin server in $wadir" >>$config_dir/.reload-init
-echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/.reload-init
+echo "echo Reloading Devmin=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/.reload-init
 echo "kill -USR1 \`cat \$pidfile\`" >>$config_dir/.reload-init
 # Switch to systemd from init (intermediate)
 if [ "$killmodenonesh" = "1" ] && [ -x "$systemctlcmd" ]; then
@@ -893,12 +892,12 @@ fi
 # Set the product field in the global config
 grep product= $config_dir/config >/dev/null
 if [ "$?" != "0" ]; then
-	echo product=webmin >> $config_dir/config
+	echo product=Devmin >> $config_dir/config
 fi
 
 # Add boot script if needed
 if [ "$makeboot" = "1" ]; then
-	echo "Configuring Webmin to start at boot time .."
+	echo "Configuring Devmin to start at boot time .."
 	(cd "$wadir/init" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir "$wadir/init/atboot.pl" $bootscript)
 	echo ".. done"
 	echo ""
@@ -917,7 +916,7 @@ if [ "$nouninstall" = "" ]; then
 	echo "Creating uninstall script $config_dir/uninstall.sh .."
 	cat >$config_dir/uninstall.sh <<EOF
 #!/bin/sh
-printf "Are you sure you want to uninstall Webmin? (y/n) : "
+printf "Are you sure you want to uninstall Devmin? (y/n) : "
 read answer
 printf "\n"
 if [ "\$answer" = "y" ]; then
@@ -1012,7 +1011,7 @@ if [ "$nostart" = "" ]; then
 		if [ "$upgrading" = "1" ]; then
 			action="restart"
 		fi
-		echo "Attempting to $action Webmin web server .."
+		echo "Attempting to $action Devmin web server .."
 		# If upgrading, restart
 		if [ "$upgrading" = "1" ]; then
 			if [ "$killmodenonesh" != "1" ]; then
@@ -1040,10 +1039,10 @@ if [ "$nostart" = "" ]; then
 		postactionmsg2="restarted"
 	fi
 	echo "****************************************************************************"
-	echo "Webmin has been $postactionmsg and $postactionmsg2 successfully."
+	echo "Devmin has been $postactionmsg and $postactionmsg2 successfully."
 	echo ""
 	if [ "$nodepsmsg" = "" -a "$upgrading" != 1 ]; then
-		echo "Since Webmin was installed outside the package manager, ensure the"
+		echo "Since Devmin was installed outside the package manager, ensure the"
 		echo "following recommended Perl modules and packages are present:"
 		echo " Perl modules:"
 		echo "  - DateTime, DateTime::Locale, DateTime::TimeZone, Data::Dumper,"
@@ -1066,9 +1065,9 @@ if [ "$nostart" = "" ]; then
 	fi
 	echo ""
 	if [ "$ssl" = "1" ]; then
-		echo "Because Webmin uses SSL for encryption only, the certificate"
+		echo "Because Devmin uses SSL for encryption only, the certificate"
 		echo "it uses is not signed by one of the recognized CAs such as"
-		echo "Verisign. When you first connect to the Webmin server, your"
+		echo "Verisign. When you first connect to the Devmin server, your"
 		echo "browser will ask you if you want to accept the certificate"
 		echo "presented, as it does not recognize the CA. Say yes."
 		echo ""
@@ -1076,12 +1075,13 @@ if [ "$nostart" = "" ]; then
 fi
 
 if [ "$oldwadir" != "$wadir" -a "$upgrading" = 1 -a "$deletedold" != 1 ]; then
-	echo "The directory from the previous version of Webmin"
+	echo "The directory from the previous version of Devmin"
 	echo "   $oldwadir"
 	echo "Can now be safely deleted to free up disk space, assuming"
 	echo "that all third-party modules have been copied to the new"
 	echo "version."
 	echo ""
 fi
+
 
 
