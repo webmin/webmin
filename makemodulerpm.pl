@@ -378,7 +378,7 @@ Summary: $desc
 Name: $prefix$mod
 Version: $ver
 Release: $release
-Requires: /bin/sh /usr/bin/perl /usr/libexec/$prog $rdeps
+Requires: /bin/sh /usr/bin/perl $prog $rdeps
 EOF
 print $SPEC "Recommends: $rrecom\n" if ($rrecom);
 print $SPEC "Suggests: " . join(" ", @rsuggests) . "\n" if (@rsuggests);
