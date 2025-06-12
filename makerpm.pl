@@ -85,7 +85,7 @@ Summary: A web-based administration interface for Unix systems.
 Name: webmin
 Version: $ver
 Release: $rel
-Provides: %{name}-%{version} perl(WebminCore) /usr/libexec/webmin
+Provides: %{name}-%{version} perl(WebminCore)
 Requires(pre): /usr/bin/perl
 Requires: /bin/sh /usr/bin/perl perl(lib) perl(open) perl(Net::SSLeay) perl(Time::Local) perl(Data::Dumper) perl(File::Path) perl(File::Basename) perl(Digest::SHA) perl(Digest::MD5) openssl unzip tar gzip
 Recommends: perl(DateTime) perl(DateTime::TimeZone) perl(DateTime::Locale) perl(Time::Piece) perl(Encode::Detect) perl(Time::HiRes) perl(Socket6) html2text shared-mime-info perl-File-Basename perl-File-Path perl-JSON-XS qrencode perl(DBI) perl(DBD::mysql)

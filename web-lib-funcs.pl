@@ -2126,7 +2126,7 @@ if ($_[0] =~ /^\// || $_[0] =~ /^[a-z]:[\\\/]/i) {
 else {
 	# Check each directory in the path
 	my %donedir;
-	foreach my $d (split($path_separator, $ENV{'PATH'})) {
+	foreach my $d (split($path_separator || ":", $ENV{'PATH'})) {
 		next if ($donedir{$d}++);
 		$d =~ s/$slash$// if ($d ne $slash);
 		my $t = &translate_filename("$d/$_[0]");
