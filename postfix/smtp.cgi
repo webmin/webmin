@@ -100,6 +100,11 @@ if (&compare_version_numbers($postfix_version, 3.3) >= 0) {
 	&option_yesno("smtp_balance_inet_protocols");
 	}
 
+# SMTPUTF8 support
+if (&compare_version_numbers($postfix_version, 3.0) >= 0) {
+	&option_yesno("smtputf8_enable");
+	}
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
