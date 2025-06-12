@@ -1,5 +1,8 @@
 ## Changelog
 
+#### 2.402 (June 9, 2025)
+* Update the Authentic theme to the latest version with various fixes and improvements
+
 #### 2.401 (June 2, 2025)
 * Add forgotten password recovery support for Virtualmin mailbox users
 * Add forgotten password recovery support in Usermin

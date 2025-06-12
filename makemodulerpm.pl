@@ -32,9 +32,11 @@ my $release = 1;
 $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin";
 my $allow_overwrite = 0;
 
-my ($force_theme, $rpmdepends, $rpmrecommends, $no_prefix, $set_prefix, $vendor,
-    $url, $force_usermin, $final_mod, $sign, $keyname,
+my ($force_theme, $rpmdepends, $rpmrecommends, $no_prefix, $set_prefix,
+    $obsolete_wbm, $vendor, $url, $force_usermin, $final_mod, $sign, $keyname,
     $epoch, $dir, $ver, @exclude);
+
+my $mod_list  = 'full';
 
 # Parse command-line args
 while(@ARGV) {
@@ -51,6 +53,12 @@ while(@ARGV) {
 	# from module.info automatically
 	elsif ($a eq "--no-prefix") {
 		$no_prefix = 1;
+		}
+	elsif ($a eq "--prefix") {
+		$set_prefix = &untaint(shift(@ARGV));
+		}
+	elsif ($a eq "--obsolete-wbm") {
+		$obsolete_wbm = 1;
 		}
 	elsif ($a eq "--licence" || $a eq "--license") {
 		$licence = &untaint(shift(@ARGV));
@@ -79,9 +87,6 @@ while(@ARGV) {
 	elsif ($a eq "--rpm-dir") {
 		$basedir = &untaint(shift(@ARGV));
 		}
-	elsif ($a eq "--prefix") {
-		$set_prefix = &untaint(shift(@ARGV));
-		}
 	elsif ($a eq "--vendor") {
 		$vendor = &untaint(shift(@ARGV));
 		}
@@ -96,6 +101,9 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--exclude") {
 		push(@exclude, shift(@ARGV));
+		}
+	elsif ($a eq "--mod-list") {
+		$mod_list = shift(@ARGV);
 		}
 	elsif ($a =~ /^\-\-/) {
 		print STDERR "Unknown option $a\n";
@@ -121,6 +129,7 @@ if (!$dir) {
 	print "                        [--rpm-dir directory]\n";
 	print "                        [--no-prefix]\n";
 	print "                        [--prefix prefix]\n";
+	print "                        [--no-wbm-prefix]\n";
 	print "                        [--vendor name]\n";
 	print "                        [--licence name]\n";
 	print "                        [--url url]\n";
@@ -134,6 +143,7 @@ if (!$dir) {
 	print "                        [--sign]\n";
 	print "                        [--key keyname]\n";
 	print "                        [--exclude file]\n";
+	print "                        [--mod-list full|core|minimal]\n";
 	print RESET, "\n";
 	exit(1);
 	}
@@ -164,7 +174,8 @@ if (!-d $spec_dir || !-d $rpm_source_dir || !-d $rpm_dir) {
 
 # Is this actually a module or theme directory?
 -d $source_dir || die "$dir is not a directory";
-my ($depends, $prefix, $desc, $prog, $iver, $istheme, $post_config);
+my ($depends, $prefix, $prefix_auto, $desc, $prog, $iver,
+    $istheme, $post_config);
 if ($minfo{'desc'}) {
 	$depends = join(" ", map { s/\/[0-9\.]+//; $_ }
 				grep { !/^[0-9\.]+$/ }
@@ -200,6 +211,7 @@ elsif ($tinfo{'desc'}) {
 else {
 	die "$source_dir does not appear to be a webmin module or theme";
 	}
+$prefix_auto = $prefix;
 $prefix = "" if ($no_prefix);
 $prefix = $set_prefix if ($set_prefix);
 my $ucprog = ucfirst($prog);
@@ -267,7 +279,7 @@ if ($rpmdepends && defined($minfo{'depends'})) {
 			my $curr_dir = $0;
 			($curr_dir) = $curr_dir =~ /^(.+)\/[^\/]+$/;
 			$curr_dir = "." if ($curr_dir !~ /^\//);
-			my $mod_def_file = "$curr_dir/mod_def_list.txt";
+			my $mod_def_file = "$curr_dir/mod_${mod_list}_list.txt";
 			next if (! -r $mod_def_file);
 			open(my $fh, '<', $mod_def_file) ||
 				die "Error opening \"$mod_def_file\" : $!\n";
@@ -344,6 +356,12 @@ if (exists($minfo{'rpm_obsoletes'})) {
 		}
 	}
 
+# Fix support for old module name prefixes
+if ($obsolete_wbm) {
+	push(@rprovides, "$prefix_auto$mod");
+	push(@robsoletes, "$prefix_auto$mod");
+	}
+
 # Create the SPEC file
 my $vendorheader = $vendor ? "Vendor: $vendor" : "";
 my $urlheader = $url ? "URL: $url" : "";
@@ -360,7 +378,7 @@ Summary: $desc
 Name: $prefix$mod
 Version: $ver
 Release: $release
-Requires: /bin/sh /usr/bin/perl /usr/libexec/$prog $rdeps
+Requires: /bin/sh /usr/bin/perl $prog $rdeps
 EOF
 print $SPEC "Recommends: $rrecom\n" if ($rrecom);
 print $SPEC "Suggests: " . join(" ", @rsuggests) . "\n" if (@rsuggests);

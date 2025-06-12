@@ -64,7 +64,7 @@ sub run
     };
     root($o->{'config'}, \&$conf_check);
     my $service = ($o->{'config'} =~ /usermin/ ? 'usermin' : 'webmin');
-    my $systemctlcmd = `which systemctl`;
+    my $systemctlcmd = &has_command('systemctl');
     $systemctlcmd =~ s/\s+$//;
     if ($o->{'cmd'} =~ /^(start|stop|restart|reload)$/) {
         my $rs = system("$o->{'config'}/$o->{'cmd'} $service");

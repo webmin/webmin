@@ -29,6 +29,8 @@ my ($force_theme, $url, $upstream, $debdepends, $debrecommends,
     $no_prefix, $force_usermin, $release, $allow_overwrite, $final_mod,
     $dsc_file, $dir, $ver, @exclude);
 
+my $mod_list  = 'full';
+
 while(@ARGV) {
 	my $a = shift(@ARGV);
 	if ($a eq "--deb-depends") {
@@ -79,6 +81,9 @@ while(@ARGV) {
 	elsif ($a eq "--exclude") {
 		push(@exclude, shift(@ARGV));
 		}
+	elsif ($a eq "--mod-list") {
+		$mod_list = shift(@ARGV);
+		}
 	elsif ($a =~ /^\-\-/) {
 		print STDERR "Unknown option $a\n";
 		exit(1);
@@ -113,6 +118,7 @@ if (!$dir) {
 	print "                        [--dsc-file file.dsc]\n";
 	print "                        [--force-theme]\n";
 	print "                        [--exclude file-or-dir]\n";
+	print "                        [--mod-list full|core|minimal]\n";
 	print RESET, "\n";
 	exit(1);
 	}
@@ -246,7 +252,7 @@ if ($debdepends && exists($minfo{'depends'})) {
 			my $curr_dir = $0;
 			($curr_dir) = $curr_dir =~ /^(.+)\/[^\/]+$/;
 			$curr_dir = "." if ($curr_dir !~ /^\//);
-			my $mod_def_file = "$curr_dir/mod_def_list.txt";
+			my $mod_def_file = "$curr_dir/mod_${mod_list}_list.txt";
 			next if (! -r $mod_def_file);
 			open(my $fh, '<', $mod_def_file) ||
 				die "Error opening \"$mod_def_file\" : $!\n";
