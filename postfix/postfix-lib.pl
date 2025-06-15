@@ -436,7 +436,7 @@ sub option_freefield
 sub option_yesno
 {
     my $name = $_[0];
-    my $v = &get_current_value($name);
+    my $v = &resolve_current_value($name);
     my $key = 'opts_'.$name;
 
     print &ui_table_row(defined($_[1]) ? &hlink($text{$key}, "opt_".$name)
