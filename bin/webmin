@@ -95,8 +95,10 @@ sub main {
                               undef, 1, undef, undef, 5);
                 if ($latest_known_versions_remote &&
                     !$latest_known_versions_remote_error) {
-                    %versions_remote = map{split /=/, $_}
-                                          (split(/\n/, $latest_known_versions_remote));
+                        %versions_remote = map {
+                            my ($k, $v) = split(/=/, $_, 2);
+                            defined($v) ? ($k => $v) : ();
+                        } split(/\n/, $latest_known_versions_remote);
                 } elsif ($latest_known_versions_remote_error) {
                     say BRIGHT_YELLOW, "Warning: ", RESET, "Cannot fetch remote packages versions list - $latest_known_versions_remote_error";
                 }
