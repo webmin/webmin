@@ -23,7 +23,7 @@ foreach $m (@mods) {
 	}
 
 # Force re-detection of modules
-unlink($site_file);
+&clear_apache_modules_cache();
 
 # Force restart Apache
 if ($changed && &is_apache_running()) {

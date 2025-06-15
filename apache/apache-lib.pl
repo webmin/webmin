@@ -26,81 +26,93 @@ $last_restart_time_flag = $module_var_directory."/restart-flag";
 # if the Apache binary changes, when Webmin is upgraded, or once every five
 # minutes if automatic rebuilding is enabled.
 if ($module_name ne 'htaccess') {
-	local %oldsite;
-	local $httpd = &find_httpd();
-	local @st = stat($httpd);
-	&read_file($site_file, \%oldsite);
-	local @sst = stat($site_file);
-	if ($oldsite{'path'} ne $httpd ||
-	    $oldsite{'size'} != $st[7] ||
-	    $oldsite{'webmin'} != &get_webmin_version() ||
-	    $config{'auto_mods'} && $sst[9] < time()-5*60) {
-		# Need to build list of supported modules
-		local ($ver, $mods, $fullver) = &httpd_info($httpd);
-		if ($ver) {
-			my @allmods = &available_modules();
-			local @mods = map { "$_/$ver" }
-				          &configurable_modules(\@allmods);
-			foreach my $m (@mods) {
-				if ($m =~ /(\S+)\/(\S+)/) {
-					$httpd_modules{$1} = $2;
-					}
-				}
-			# Call again now that known modules have been set, as
-			# sometimes there are dependencies due to LoadModule
-			# statements in an IfModule block
-			undef(@get_config_cache);
-			@allmods = &available_modules();
-			@mods = map { "$_/$ver" }
-				    &configurable_modules(\@allmods);
-			local %site = ( 'size' => $st[7],
-					'path' => $httpd,
-					'modules' => join(' ', @mods),
-					'allmodules' => join(' ', @allmods),
-					'version' => $ver,
-					'fullversion' => $fullver,
-					'webmin' => &get_webmin_version() );
-			&lock_file($site_file);
-			&write_file($site_file, \%site);
-			chmod(0644, $site_file);
-			&unlock_file($site_file);
-			}
-		}
+	&create_site_file();
 	}
-
-# Read the site-specific setup file, then require in all the module-specific
-# .pl files
-if (&read_file($site_file, \%site)) {
-	local($m, $f, $d);
-	$httpd_size = $site{'size'};
-	foreach $m (split(/\s+/, $site{'modules'})) {
-		if ($m =~ /(\S+)\/(\S+)/) {
-			$httpd_modules{$1} = $2;
-			}
-		}
-	foreach $m (split(/\s+/, $site{'allmodules'})) {
-		$all_httpd_modules{$m} = $site{'version'};
-		}
-	foreach $m (keys %httpd_modules) {
-		if (!-r "$module_root_directory/$m.pl") {
-			delete($httpd_modules{$m});
-			}
-		}
-	foreach $f (split(/\s+/, $site{'htaccess'})) {
-		if (-r $f) { push(@htaccess_files, $f); }
-		}
-	foreach $m (keys %httpd_modules) {
-		do "$m.pl";
-		}
-	foreach $d (split(/\s+/, $site{'defines'})) {
-		$httpd_defines{$d}++;
-		}
-	}
+&read_site_file();
 
 $apache_docbase = $config{'apache_docbase'} ? $config{'apache_docbase'} :
 		  $httpd_modules{'core'} >= 2.0 ?
 			"http://httpd.apache.org/docs-2.0/mod/" :
 			"http://httpd.apache.org/docs/mod/";
+
+# create_site_file()
+# If the Apache binary or Webmin version has changed, create the site
+# file containing all known Apache modules
+sub create_site_file
+{
+my %oldsite;
+my $httpd = &find_httpd();
+my @st = stat($httpd);
+&read_file($site_file, \%oldsite);
+my @sst = stat($site_file);
+if ($oldsite{'path'} ne $httpd ||
+    $oldsite{'size'} != $st[7] ||
+    $oldsite{'webmin'} != &get_webmin_version() ||
+    $config{'auto_mods'} && $sst[9] < time()-5*60) {
+	# Need to build list of supported modules
+	my ($ver, $mods, $fullver) = &httpd_info($httpd);
+	if ($ver) {
+		my @allmods = &available_modules();
+		my @mods = map { "$_/$ver" }
+			       &configurable_modules(\@allmods);
+		foreach my $m (@mods) {
+			if ($m =~ /(\S+)\/(\S+)/) {
+				$httpd_modules{$1} = $2;
+				}
+			}
+		# Call again now that known modules have been set, as
+		# sometimes there are dependencies due to LoadModule
+		# statements in an IfModule block
+		undef(@get_config_cache);
+		@allmods = &available_modules();
+		@mods = map { "$_/$ver" }
+			    &configurable_modules(\@allmods);
+		my %site = ( 'size' => $st[7],
+			     'path' => $httpd,
+			     'modules' => join(' ', @mods),
+			     'allmodules' => join(' ', @allmods),
+			     'version' => $ver,
+			     'fullversion' => $fullver,
+			     'webmin' => &get_webmin_version() );
+		&lock_file($site_file);
+		&write_file($site_file, \%site);
+		chmod(0644, $site_file);
+		&unlock_file($site_file);
+		}
+	}
+}
+
+# read_site_file()
+# Read the site-specific setup file, then require in all the module-specific
+# .pl files
+sub read_site_file
+{
+if (&read_file($site_file, \%site)) {
+	foreach my $m (split(/\s+/, $site{'modules'})) {
+		if ($m =~ /(\S+)\/(\S+)/) {
+			$httpd_modules{$1} = $2;
+			}
+		}
+	foreach my $m (split(/\s+/, $site{'allmodules'})) {
+		$all_httpd_modules{$m} = $site{'version'};
+		}
+	foreach my $m (keys %httpd_modules) {
+		if (!-r "$module_root_directory/$m.pl") {
+			delete($httpd_modules{$m});
+			}
+		}
+	foreach my $f (split(/\s+/, $site{'htaccess'})) {
+		if (-r $f) { push(@htaccess_files, $f); }
+		}
+	foreach my $m (keys %httpd_modules) {
+		do "$m.pl";
+		}
+	foreach my $d (split(/\s+/, $site{'defines'})) {
+		$httpd_defines{$d}++;
+		}
+	}
+
+}
 
 # parse_config_file(handle, lines, file, [recursive])
 # Parses lines of text from some config file into a data structure. The
@@ -2272,6 +2284,16 @@ if($saved_conf_files) {
 sub format_config_allowed
 {
 return $config{'format_config'};
+}
+
+# clear_apache_modules_cache()
+# If new Apache modules were enabled, force re-gen of the site file
+# that contains the modules cache
+sub clear_apache_modules_cache
+{
+&unlink_file($site_file);
+&create_site_file();
+&read_site_file();
 }
 
 1;
