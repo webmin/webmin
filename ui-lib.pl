@@ -3760,5 +3760,56 @@ my ($content, $attrs) = @_;
 return ui_tag('p', $content, $attrs);
 }
 
+=head2 ui_text_mask(text, [tag], [extra_class])
+
+Returns an HTML string with the given text hidden inside a tag that only shows
+on hover. If a second parameter is given, it is used as the outer tag that
+triggers the hover (default is "td"). If a third parameter is provided,
+it is added as an extra class to both the tag and its style.
+
+=cut
+sub ui_text_mask
+{
+return &theme_ui_text_mask(@_) if (defined(&theme_ui_text_mask));
+my ($text, $tag, $extra_class) = @_;
+my $class = 'hover-mask';
+my $classcss = ".$class";
+if ($extra_class) {
+	$class .= " $extra_class";
+	$classcss .= ".$extra_class";
+	}
+$tag ||= 'td';
+my $style_content = <<"CSS";
+x-ui-text-mask${classcss} {
+	position: relative;
+	display: inline-block;
+	color: transparent;
+	transition:color .25s ease;
+}
+x-ui-text-mask${classcss}::after{
+	content: attr(data-mask);
+	position: absolute;
+	inset: 0;
+	color: var(--ui-password-mask-color, #000);
+	pointer-events: none;
+	transition: opacity .25s ease;
+}
+$tag:has(>*>x-ui-text-mask${classcss}):hover x-ui-text-mask${classcss},
+$tag:has(>x-ui-text-mask${classcss}):hover x-ui-text-mask${classcss}{
+	color: inherit;
+}
+$tag:has(>*>x-ui-text-mask${classcss}):hover x-ui-text-mask${classcss}::after,
+$tag:has(>x-ui-text-mask${classcss}):hover x-ui-text-mask${classcss}::after{
+	opacity: 0;
+}
+CSS
+my $rv = '';
+$rv .= &ui_tag('style', $style_content, { type => 'text/css' })
+	if (!$main::ui_text_mask_donecss->{"$tag$class"}++);
+$rv .= &ui_tag('x-ui-text-mask', $text,
+	{ 'class' => $class, 'data-mask' => '••••••••' });
+return $rv;
+}
+
 1;
 
