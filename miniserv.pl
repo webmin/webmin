@@ -1520,7 +1520,8 @@ if (defined($header{'host'})) {
 	else {
 		$host = $header{'host'};
 		}
-	if ($config{'musthost'} && $host ne $config{'musthost'}) {
+	if ($config{'musthost'} && $host ne $config{'musthost'} &&
+	    !$config{'musthost_redirect'}) {
 		# Disallowed hostname used
 		&http_error(400, "Invalid HTTP hostname");
 		}
@@ -1542,6 +1543,21 @@ if ($config{'redirect_prefix'}) {
 	$hostport .= $config{'redirect_prefix'}
 	}
 $prot = $ssl ? "https" : "http";
+
+# Disallowed hostname used by redirecting to musthost
+if ($config{'musthost'} && $host ne $config{'musthost'} &&
+    $config{'musthost_redirect'}) {
+	&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
+	&write_data("Date: $datestr\r\n");
+	&write_data("Server: @{[&server_info()]}\r\n");
+	&write_data("Location: $prot://$config{'musthost'}:$redirport\r\n");
+	&write_keep_alive(0);
+	&write_data("\r\n");
+	&log_request($loghost, $authuser, $reqline, 302, 0) if $reqline;
+	shutdown(SOCK, 1);
+	close(SOCK);
+	return;
+	}
 
 undef(%in);
 if ($page =~ /^([^\?]+)\?(.*)$/) {
