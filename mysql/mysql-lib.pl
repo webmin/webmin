@@ -88,20 +88,13 @@ if ($mysql_version =~ /mariadb/i) {
 }
 &fix_mysql_text(\%text);
 
-if (&compare_version_numbers($mysql_version, "5.5") >= 0) {
-	@mysql_set_variables = ( "key_buffer_size", "sort_buffer_size",
-				 "net_buffer_length" );
-	}
-else {
-	@mysql_set_variables = ( "key_buffer", "sort_buffer",
-				 "net_buffer_length" );
-	}
 if (&compare_version_numbers($mysql_version, "5.6") >= 0) {
 	@mysql_number_variables = ( "table_open_cache", "max_connections" );
 	}
 else {
 	@mysql_number_variables = ( "table_cache", "max_connections" );
 	}
+
 @mysql_byte_variables = ( "max_allowed_packet" );
 my $mysql8_optout = &compare_version_numbers($mysql_version, "8.0") >= 0 && $mysql_version !~ /maria/i;
 if (!$mysql8_optout) {
@@ -113,6 +106,15 @@ if (&compare_version_numbers($mysql_version, "5") >= 0) {
 	}
 else {
 	push(@mysql_set_variables, "myisam_sort_buffer_size");
+	}
+
+if (&compare_version_numbers($mysql_version, "5.5") >= 0) {
+	push(@mysql_byte_variables, "key_buffer_size", "sort_buffer_size",
+				    "net_buffer_length");
+	}
+else {
+	@mysql_set_variables = ( "key_buffer", "sort_buffer",
+				 "net_buffer_length" );
 	}
 
 # make_authstr([login], [pass], [host], [port], [sock], [unix-user], [ssl])
