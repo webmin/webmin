@@ -63,7 +63,6 @@ type_raid=RAID Device Status
 type_iface=Network Interface Status
 type_init=Bootup Action
 type_sensors=LM Sensor Status
-type_nut=NUT UPS Value
 type_mailq=Mail Queue Size
 type_dns=DNS Lookup
 type_query=SQL Query
@@ -381,17 +380,6 @@ sensors_none=No sensors were detected on your system. You may need to run the <t
 sensors_cur=$1 (currently $2 $3)
 sensors_emin=Missing or invalid minimum value
 sensors_emax=Missing or invalid maximum value
-
-nut_ups=NUT UPS to check
-nut_name=Attribute to check
-nut_value=Failed when
-nut_value1=Value is below $1
-nut_value2=Value is above $1
-nut_cmd=The command <tt>upsc</tt> is not installed on your system. This monitor requires the NUT package be installed and configured to operate.
-nut_eups=No USP to check entered
-nut_cur=$1 (currently $2)
-nut_emin=Missing or invalid minimum value
-nut_emax=Missing or invalid maximum value
 
 mailq_system=Mail server
 mailq_qmailadmin=Qmail
