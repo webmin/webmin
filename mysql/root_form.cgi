@@ -18,7 +18,7 @@ else {
 		$mysql_login ? "<tt>$mysql_login</tt>"
 			     : "<label>$text{'root_auto'}</label>");
 	print &ui_table_row($text{'root_pass'},
-		$mysql_pass ? "<tt>$mysql_pass</tt>"
+		$mysql_pass ? "<tt>".&ui_text_mask($mysql_pass)."</tt>"
 			    : &ui_text_color($text{'root_none'}, 'danger'));
 	print &ui_table_row($text{'root_newpass1'},
 		&ui_password("newpass1", undef, 20));
