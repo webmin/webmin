@@ -54,7 +54,6 @@ type_usermin=Usermin Webserver
 type_portsentry=Portsentry Daemon
 type_hostsentry=Hostsentry Daemon
 type_webmin=Webmin Webserver
-type_cfengine=Configuration Engine Daemon
 type_memory=Free Memory
 type_proftpd=ProFTPD Server
 type_dovecot=Dovecot IMAP/POP3 Server
