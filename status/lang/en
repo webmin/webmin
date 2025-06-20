@@ -25,7 +25,6 @@ type_inetd=Internet and RPC Server
 type_xinetd=Extended Internet Server
 type_squid=Squid Proxy Server
 type_bind8=BIND DNS Server
-type_dnsadmin=BIND 4 DNS Server
 type_dhcpd=DHCP Server
 type_tcp=TCP Connection
 type_http=HTTP Request
