@@ -1544,7 +1544,8 @@ if ($config{'redirect_prefix'}) {
 	}
 $prot = $ssl ? "https" : "http";
 
-# Disallowed hostname used by redirecting to musthost
+# Redirect to the configured "musthost", if "musthost_redirect" is set, rather
+# than showing an error
 if ($config{'musthost'} && $host ne $config{'musthost'} &&
     $config{'musthost_redirect'}) {
 	&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
