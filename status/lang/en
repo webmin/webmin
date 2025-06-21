@@ -369,7 +369,7 @@ init_eaction=No action selected
 refresh_title=Refresh Status
 refresh_doing=Refreshing the status of all monitors ..
 refresh_doing2=Refreshing the status of $1 selected monitors ..
-refresh_done=.. done.
+refresh_done=.. done
 
 sensors_name=Sensor to check
 sensors_value=Failed when
@@ -606,10 +606,10 @@ imap_euser=Missing IMAP login
 
 reboot_pkgs=Package updates require a reboot
 
-phpini_file=PHP FPM version
-phpini_nofile=PHP FPM configuration file not found!
-phpini_efile=No PHP FPM version selected!
-phpini_noinit=No bootup action found for PHP FPM version
+phpini_file=PHP-FPM version
+phpini_nofile=PHP-FPM configuration file not found!
+phpini_efile=No PHP-FPM version selected!
+phpini_noinit=No bootup action found for PHP-FPM version
 phpini_noinit2=Bootup action $1 does not exist!
 phpini_downinit=Bootup action $1 is down
 
