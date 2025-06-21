@@ -33,7 +33,5 @@ else {
 	&reset_environment();
 	&webmin_log("refresh");
 	print $text{'refresh_done'},"<p>\n";
-	print &js_redirect("index.cgi");
-
 	&ui_print_footer("", $text{'index_return'});
 	}
