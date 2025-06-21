@@ -74,6 +74,7 @@ type_smtp=SMTP Connection
 type_imap=IMAP Connection
 type_firewalld=FirewallD Server
 type_reboot=Reboot Required
+type_phpini=PHP-FPM Server
 
 mon_create=Create Monitor
 mon_edit=Edit Monitor
@@ -604,5 +605,12 @@ imap_eport=Missing or non-numeric IMAP server port
 imap_euser=Missing IMAP login
 
 reboot_pkgs=Package updates require a reboot
+
+phpini_file=PHP FPM version
+phpini_nofile=PHP FPM configuration file not found!
+phpini_efile=No PHP FPM version selected!
+phpini_noinit=No bootup action found for PHP FPM version
+phpini_noinit2=Bootup action $1 does not exist!
+phpini_downinit=Bootup action $1 is down
 
 __norefs=1
