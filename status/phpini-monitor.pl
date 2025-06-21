@@ -36,6 +36,8 @@ my ($serv) = @_;
 my @files = grep { $_->[1] }
 		 map { [ $_->[0], &phpini::get_php_ini_version($_->[0]) ] }
 		     &phpini::list_php_configs();
+my %donever;
+@files = grep { !$donever{$_->[1]}++ } @files;
 print &ui_table_row($text{'phpini_file'},
 	&ui_select("inifile", $serv->{'inifile'}, \@files));
 }
