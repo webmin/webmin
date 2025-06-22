@@ -119,7 +119,7 @@ while(<CMD>) {
 		$pkg =~ s/\-\d.*$//;	# Strip version number from end
 		push(@rv, $pkg);
 		}
-	elsif (/^\s+(Upgrading|Installing)\s+(\S+)/) {
+	elsif (/\]\s+(Upgrading|Installing)\s+(\S+)/) {
 		# Line like :
 		# [3/8] Upgrading libcurl-0:8.11.1-5.fc42 100% ...
 		local $pkg = $2;
