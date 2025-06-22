@@ -53,11 +53,8 @@ else {
 &save_directive($conf, $mysqld, "default-storage-engine",
 		$in{'stor'} ? [ $in{'stor'} ] : [ ]);
 
-$fpt = &find_value("innodb_file_per_table", $mems);
-if ($fpt || $in{'fpt'}) {
-	&save_directive($conf, $mysqld, "innodb_file_per_table",
-			[ $in{'fpt'} ]);
-	}
+&save_directive($conf, $mysqld, "innodb_file_per_table",
+	[ $in{'fpt'} ? undef : 0 ]);
 
 if ($in{'ilt_def'}) {
 	&save_directive($conf, $mysqld, "innodb_lock_wait_timeout", [ ]);

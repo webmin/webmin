@@ -1,5 +1,12 @@
 ## Changelog
 
+#### 2.403 (June 30, 2025)
+* Add status monitor for PHP FPM #2499
+* Add support for redirecting to the enforced domain when the `musthost_redirect` directive is set
+* Add a UI API to mask sensitive text—like displayed passwords, unless hovered over container
+* Fix MySQL/MariaDB to remove obsolete `set-variable` options that break modern config files #2497
+
+
 #### 2.402 (June 16, 2025)
 * Update the Authentic theme to the latest version with various fixes and improvements
 * Fix support for EL10-based systems

@@ -52,7 +52,7 @@ print &ui_table_row($text{'cnf_stor'},
 
 $fpt = &find_value("innodb_file_per_table", $mems);
 print &ui_table_row($text{'cnf_fpt'},
-		    &ui_yesno_radio("fpt", $fpt));
+		    &ui_yesno_radio("fpt", $fpt // 1));
 
 $ilt = &find_value("innodb_lock_wait_timeout", $mems);
 print &ui_table_row($text{'cnf_ilt'},
