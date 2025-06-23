@@ -654,6 +654,7 @@ opts_header_checks=Header checking tables
 opts_mime_header_checks=MIME header checking tables
 opts_header_checks_no_map=(No header checking map is currently defined. Define a map first, then you can edit it)
 opts_mime_header_checks_no_map=(No MIME header checking map is currently defined. Define a map first, then you can edit it)
+opts_mime_header_checks_same_map=(MIME header checks are the same as regular header checks. Define a different map first, then you can edit it)
 header_name=Regular expression
 header_value=Action for matches
 header_discard=Discard (with log message..)
