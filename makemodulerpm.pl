@@ -312,7 +312,7 @@ if (exists($minfo{'rpm_requires'})) {
 	foreach my $rpmrequire (split(/\s+/, $minfo{'rpm_requires'})) {
 		push(@rrequires, $rpmrequire);
 		}
-	$rdeps .= " " . join(" ", @rrequires) if (@rrequires);
+	$rdeps .= ($rdeps ? ' ' : '') . join(" ", @rrequires) if (@rrequires);
 	}
 
 # Build (append) list of recommended packages (not Webmin modules)
@@ -321,7 +321,8 @@ if (exists($minfo{'rpm_recommends'})) {
 	foreach my $rpmrecommend (split(/\s+/, $minfo{'rpm_recommends'})) {
 		push(@rrecommends, $rpmrecommend);
 		}
-	$rrecom .= " " . join(" ", @rrecommends) if (@rrecommends);
+	$rrecom .= ($rrecom ? ' ' : '') . join(" ", @rrecommends)
+		if (@rrecommends);
 	}
 
 # Build (standalone) list of suggested packages (not Webmin modules)
