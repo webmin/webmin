@@ -918,11 +918,27 @@ while(1) {
 
 				# Initialize SSL for this connection
 				if ($use_ssl) {
-					($ssl_con, $ssl_certfile,
-					 $ssl_keyfile) = &ssl_connection_for_ip(
-							   SOCK, $ipv6fhs{$s});
-					print DEBUG "ssl_con returned $ssl_con\n";
-					$ssl_con || exit;
+					my $byte = '';
+					# Look at the first byte of the socket
+					# buffer but don't consume it
+					recv(SOCK, $byte, 1, MSG_PEEK);
+					if (length($byte) &&
+					    # Check if the first byte is a TLS
+					    (ord($byte) == 0x16 ||
+					    # Check if the first byte is SSL
+					    (ord($byte) & 0x80))) {
+						($ssl_con,
+						 $ssl_certfile,
+						 $ssl_keyfile) =
+							&ssl_connection_for_ip(
+							    SOCK, $ipv6fhs{$s});
+						print DEBUG "ssl_con returned ".
+							"$ssl_con\n";
+						$ssl_con || exit;
+						}
+					else {
+						$plain_http = 1;
+						}
 					}
 
 				print DEBUG
@@ -3241,7 +3257,14 @@ while(($idx = index($main::read_buffer, "\n")) < 0) {
 	# need to read more..
 	&wait_for_data_error() if (!$nowait);
 	if ($use_ssl) {
-		$more = Net::SSLeay::read($ssl_con);
+		if (!$plain_http) {
+			$more = Net::SSLeay::read($ssl_con);
+			}
+		else {
+			# Expected output from Net::SSLeay::read is empty string
+			# before version 1.93, which now hangs indefinitely
+			$more = '';
+			}
 		}
 	else {
 		my $bufsize = $config{'bufsize'} || 32768;
