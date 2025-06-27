@@ -3262,7 +3262,8 @@ while(($idx = index($main::read_buffer, "\n")) < 0) {
 			}
 		else {
 			# Expected output from Net::SSLeay::read is empty string
-			# before version 1.93, which now hangs indefinitely
+			# in non-SSL mode before version 1.93, which now just
+			# hangs indefinitely
 			$more = '';
 			}
 		}
