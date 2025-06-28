@@ -937,7 +937,7 @@ while(1) {
 						$ssl_con || exit;
 						}
 					else {
-						$plain_http = 1;
+						$use_ssl = 0;
 						}
 					}
 
@@ -3257,15 +3257,7 @@ while(($idx = index($main::read_buffer, "\n")) < 0) {
 	# need to read more..
 	&wait_for_data_error() if (!$nowait);
 	if ($use_ssl) {
-		if (!$plain_http) {
-			$more = Net::SSLeay::read($ssl_con);
-			}
-		else {
-			# Expected output from Net::SSLeay::read is empty string
-			# in non-SSL mode before version 1.93, which now just
-			# hangs indefinitely
-			$more = '';
-			}
+		$more = Net::SSLeay::read($ssl_con);
 		}
 	else {
 		my $bufsize = $config{'bufsize'} || 32768;
