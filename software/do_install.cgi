@@ -97,7 +97,6 @@ if ($in{'need_unlink'}) {
 		"delete_file.cgi?file=".
 		&urlize($in{'file'})),"<p>\n";
 	}
-print &ui_hr();
 &ui_print_footer("", $text{'index_return'});
 exit;
 }
