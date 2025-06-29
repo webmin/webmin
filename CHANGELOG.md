@@ -1,6 +1,7 @@
 ## Changelog
 
 #### 2.403 (June 30, 2025)
+* Add support for the Webmin webserver to work in both HTTP and HTTPS modes at the same time
 * Add status monitor for PHP FPM #2499
 * Add support for redirecting to the enforced domain when the `musthost_redirect` directive is set
 * Add a UI API to mask sensitive text—like displayed passwords, unless hovered over container
