@@ -818,3 +818,8 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
 [data-pro-disabled$="-elem"] a:hover {
   filter: grayscale(1) contrast(1);
 }
+.not-secure {
+  color: #f00a38;
+  float: right;
+  cursor: help;
+}

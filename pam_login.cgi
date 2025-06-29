@@ -72,7 +72,13 @@ print "$text{'pam_prefix'}\n";
 print &ui_form_start("@{[&get_webprefix()]}/pam_login.cgi", "post");
 print &ui_hidden("cid", $in{'cid'});
 
-print &ui_table_start($text{'pam_header'},
+my $not_secure;
+if ($ENV{'HTTPS'} ne 'ON') {
+	$not_secure = ui_tag('span', "&#9888; $text{'login_notsecure'}",
+		{ class => 'not-secure', title => $text{'login_notsecure_desc'} });
+	}
+
+print &ui_table_start($text{'pam_header'} . $not_secure,
 		      "width=40% class='loginform'", 2);
 
 if ($gconfig{'realname'}) {
