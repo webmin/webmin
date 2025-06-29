@@ -53,8 +53,9 @@ else {
 &save_directive($conf, $mysqld, "default-storage-engine",
 		$in{'stor'} ? [ $in{'stor'} ] : [ ]);
 
+my $ifpt_def_off = &get_innodb_file_per_table_default();
 &save_directive($conf, $mysqld, "innodb_file_per_table",
-	[ $in{'fpt'} ? undef : 0 ]);
+	[ $in{'fpt'} ? ($ifpt_def_off ? 1 : undef) : 0 ]);
 
 if ($in{'ilt_def'}) {
 	&save_directive($conf, $mysqld, "innodb_lock_wait_timeout", [ ]);

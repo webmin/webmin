@@ -50,9 +50,10 @@ print &ui_table_row($text{'cnf_stor'},
 				 'NDB', 'ARCHIVE', 'CSV',
 				 'BLACKHOLE' ], 1, 0, 1));
 
+my $ifpt_def_off = &get_innodb_file_per_table_default() ? 0 : 1;
 $fpt = &find_value("innodb_file_per_table", $mems);
 print &ui_table_row($text{'cnf_fpt'},
-		    &ui_yesno_radio("fpt", $fpt // 1));
+		    &ui_yesno_radio("fpt", $fpt // $ifpt_def_off));
 
 $ilt = &find_value("innodb_lock_wait_timeout", $mems);
 print &ui_table_row($text{'cnf_ilt'},

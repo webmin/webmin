@@ -1768,6 +1768,18 @@ return
    $variant eq "mysql" && &compare_version_numbers($ver, "8.0") >= 0;
 }
 
+# get_innodb_file_per_table_default()
+# Returns 1 if the InnoDB file-per-table option is disabled by default
+sub get_innodb_file_per_table_default
+{
+my ($ver, $variant) = &get_remote_mysql_variant();
+return
+      ($variant eq 'mariadb' && &compare_version_numbers($ver, '10.1.0') < 0) ||
+      ($variant eq 'mysql' && &compare_version_numbers($ver, '5.6.6') < 0)
+      	? 1
+	: 0;
+}
+
 # get_plugin_sql(version, variant, plainpass, plugin)
 # Get the right query for setting user password with plugin
 sub get_plugin_sql
