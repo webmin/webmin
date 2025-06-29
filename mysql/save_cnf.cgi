@@ -13,6 +13,7 @@ foreach my $l (&get_all_mysqld_files()) {
 $conf = &get_mysql_config();
 ($mysqld) = grep { $_->{'name'} eq 'mysqld' } @$conf;
 $mysqld || &error($text{'cnf_emysqld'});
+$mems = $mysqld->{'members'};
 
 # Parse mysql server inputs
 if ($in{'port_def'}) {
