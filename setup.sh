@@ -818,6 +818,9 @@ if [ "$upgrading" != 1 ]; then
 	if [ "$licence_module" != "" ]; then
 		echo licence_module=$licence_module >>$config_dir/config
 	fi
+	
+	# Enable HSTS by default
+	echo "ssl_hsts=1" >> $config_dir/miniserv.conf
 
 	# Disallow unknown referers by default
 	echo "referers_none=1" >>$config_dir/config
@@ -828,6 +831,12 @@ else
 		grep log= $config_dir/miniserv.conf >> $config_dir/config
 		grep logtime= $config_dir/miniserv.conf >> $config_dir/config
 		grep logclear= $config_dir/miniserv.conf >> $config_dir/config
+	fi
+
+	# Enable HSTS by default if not set
+	grep ssl_hsts= $config_dir/miniserv.conf >/dev/null
+	if [ "$?" != "0" ]; then
+		echo "ssl_hsts=1" >> $config_dir/miniserv.conf
 	fi
 
 	# Disallow unknown referers if not set
