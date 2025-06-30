@@ -1077,11 +1077,13 @@ sub PrintHeader
 {
 my ($cs, $mt, $headers) = @_;
 $mt ||= "text/html";
-if ($ENV{'SSL_HSTS'} == 1 && uc($ENV{'HTTPS'}) eq "ON") {
-	print "Strict-Transport-Security: max-age=31536000;\n";
-	}
-elsif (uc($ENV{'HTTPS'}) ne "ON") {
-	print "Strict-Transport-Security: max-age=0;\n";
+if (uc($ENV{'HTTPS'}) eq "ON") {
+	if ($ENV{'SSL_HSTS'}) {
+		print "Strict-Transport-Security: max-age=31536000;\n";
+		}
+	else {
+		print "Strict-Transport-Security: max-age=0;\n";
+		}
 	}
 if ($pragma_no_cache || $gconfig{'pragma_no_cache'}) {
 	print "pragma: no-cache\n";
