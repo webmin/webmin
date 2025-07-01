@@ -28,7 +28,7 @@ print &ui_table_row($text{'debug_file'},
 print &ui_table_row($text{'debug_size'},
 	&ui_radio("debug_size_def", $gconfig{'debug_size'} ? 0 : 1,
 		  [ [ 1, $text{'default'}.
-			 " (".&nice_size($main::default_debug_log_size).")" ],
+			 " (".&html_strip(&nice_size($main::default_debug_log_size)).")" ],
 		    [ 0, &ui_bytesbox("debug_size", $gconfig{'debug_size'}) ] ]
 		 ), undef, [ "valign=middle","valign=middle" ]);
 
