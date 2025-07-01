@@ -818,6 +818,10 @@ if [ "$upgrading" != 1 ]; then
 	if [ "$licence_module" != "" ]; then
 		echo licence_module=$licence_module >>$config_dir/config
 	fi
+
+	# Enable log rotation by default
+	echo "logclear=1" >> $config_dir/miniserv.conf
+	echo "logclear=1" >> $config_dir/config
 	
 	# Enable HSTS by default
 	echo "ssl_hsts=1" >> $config_dir/miniserv.conf
@@ -825,12 +829,11 @@ if [ "$upgrading" != 1 ]; then
 	# Disallow unknown referers by default
 	echo "referers_none=1" >>$config_dir/config
 else
-	# one-off hack to set log variable in config from miniserv.conf
-	grep log= $config_dir/config >/dev/null
-	if [ "$?" = "1" ]; then
-		grep log= $config_dir/miniserv.conf >> $config_dir/config
-		grep logtime= $config_dir/miniserv.conf >> $config_dir/config
-		grep logclear= $config_dir/miniserv.conf >> $config_dir/config
+	# Enable log rotation if not set
+	grep logclear= $config_dir/miniserv.conf >/dev/null
+	if [ "$?" != "0" ]; then
+		echo "logclear=1" >> $config_dir/miniserv.conf
+		echo "logclear=1" >> $config_dir/config
 	fi
 
 	# Enable HSTS by default if not set
