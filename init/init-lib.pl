@@ -207,7 +207,7 @@ unless full unit name is passed
 sub action_unit
 {
 my ($unit) = @_;
-my $units_piped = &get_systemd_unit_types('|');
+my $units_piped = join('|', &get_systemd_unit_types());
 $unit .= ".service"
 	if ($unit !~ /\.($units_piped)$/);
 return $unit;
@@ -2128,7 +2128,7 @@ if (@list_systemd_services_cache && !$noinit) {
 	return @list_systemd_services_cache;
 	}
 
-my $units_piped = &get_systemd_unit_types('|');
+my $units_piped = join('|', &get_systemd_unit_types());
 
 # Get all systemd unit names
 my $out = &backquote_command("systemctl list-units --full --all -t service --no-legend");
@@ -2415,7 +2415,7 @@ my ($name) = @_;
 &restart_systemd();
 }
 
-=head2 get_systemd_unit_types([return-as-string-separated])
+=head2 get_systemd_unit_types()
 
 Returns a list of all systemd unit types. Returns a string
 instead if separator param is set.
@@ -2428,9 +2428,7 @@ my @systemd_types = ('target', 'service', 'socket', 'device',
                      'mount', 'automount', 'swap', 'path',
                      'timer', 'snapshot', 'slice', 'scope',
                      'busname');
-return $str_separator ?
-	join($str_separator, @systemd_types) :
-	@systemd_types;
+return @systemd_types;
 }
 
 =head2 is_systemd_service(name)
@@ -2441,7 +2439,7 @@ Returns 1 if some service is managed by systemd
 sub is_systemd_service
 {
 my ($name) = @_;
-my $units_piped = &get_systemd_unit_types('|');
+my $units_piped = join('|', &get_systemd_unit_types());
 foreach my $s (&list_systemd_services(1)) {
 	if (($s->{'name'} eq $name ||
 	     $s->{'name'} =~
