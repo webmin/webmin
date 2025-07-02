@@ -6,7 +6,6 @@ package miniserv;
 use Socket;
 use POSIX;
 use Time::Local;
-use Fcntl qw(:DEFAULT :flock);
 eval "use Time::HiRes;";
 
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
@@ -621,42 +620,41 @@ sub session_state
 {
 my ($sid, $set) = @_;
 return 1 if (!$sid);
-my %sess;
-# Read the session state file, or create it if it does not exist
-sysopen(my $fh, $config{'sessionstate'}, O_RDWR|O_CREAT, 0600)
-	or warn "Cannot open $config{'sessionstate'}: $!";
-# Lock the file to prevent concurrent access
-flock($fh, LOCK_EX) or warn "Cannot lock $config{'sessionstate'}: $!";
-# Read the session state file into a hash
-&read_file($config{'sessionstate'}, \%sess);
-# If the session ID is not in the hash, add it with a default value
-$sess{$sid} //= 1;
-# If a set value is provided, update the session state
-if (defined($set)) {
-	$sess{$sid} = $set ? 1 : 0;
-	# Find all existing sessions
-	my %sessiondb;
-	dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
-	if ($@) {
-		dbmclose(%sessiondb);
-		eval "use NDBM_File";
-		dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
-		}
-	seek($fh, 0, 0);
-	truncate($fh, 0);
-	foreach my $k (keys %sess) {
-		my $hashed_k = &hash_session_id($k);
-		# Only save sessions that are still known
-		print $fh "$k=$sess{$k}\n" if (exists($sessiondb{$hashed_k}));
-		}
+
+# Check session database
+my %sessiondb;
+dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
+if ($@) {
 	dbmclose(%sessiondb);
-	print DEBUG "websocket updated status for $sid to $sess{$sid}\n";
+	eval "use NDBM_File";
+	dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
 	}
-flock($fh, LOCK_UN);
-close($fh);
-print DEBUG "websocket current status for $sid is $sess{$sid}\n"
-	if (defined($set));
-return $sess{$sid};
+
+# Get current record
+my $skey = &hash_session_id($sid);
+my ($user, $ltime, $ip, $lifetime, $active);
+if (exists($sessiondb{$skey})) {
+	($user, $ltime, $ip, $lifetime, $active) =
+		split(/\s+/, $sessiondb{$skey});
+	$lifetime //= 0;     # preserve or default to 0
+	$active   //= 1;     # default to 'alive'
+	}
+
+# Update flag if caller supplied a value
+if ($user && $ltime && $ip && defined($set)) {
+	$active = $set ? 1 : 0;
+	$sessiondb{$skey} = join(' ', $user, $ltime, $ip, $lifetime, $active);
+	print DEBUG "websocket updated status for $sid to $active\n";
+	}
+else {
+	print DEBUG "websocket current status for $sid is $active\n";
+	}
+
+# Save the record back to the database
+dbmclose(%sessiondb);
+
+# Return the active state
+return $active;
 }
 
 # Setup the logout time dbm if needed
@@ -1166,8 +1164,10 @@ while(1) {
 					print $outfd "0 0\n";
 					}
 				else {
-					local ($user, $ltime, $ip, $lifetime) =
+					local ($user, $ltime, $ip, $lifetime, $state) =
 					  split(/\s+/, $sessiondb{$skey});
+					$lifetime //= 0;
+					$state   //= 1;
 					local $lot = &get_logout_time($user, $session_id);
 					if ($lot &&
 					    $time_now - $ltime > $lot*60 &&
@@ -1196,7 +1196,7 @@ while(1) {
 						# Session is OK, update last time
 						# and remote IP
 						print $outfd "2 $user\n";
-						$sessiondb{$skey} = "$user $time_now $vip";
+						$sessiondb{$skey} = "$user $time_now $vip $lifetime $state";
 						}
 					}
 				}
@@ -5049,9 +5049,6 @@ my $var_dir = $1;
 if (!$config{'sessiondb'}) {
 	$config{'sessiondb'} = "$var_dir/sessiondb";
 	}
-if (!$config{'sessionstate'}) {
-	$config{'sessionstate'} = "$var_dir/sessionstate";
-	}
 if (!$config{'errorlog'}) {
 	$config{'logfile'} =~ /^(.*)\/[^\/]+$/;
 	$config{'errorlog'} = "$1/miniserv.error";
@@ -5984,8 +5981,8 @@ while(1) {
 		syswrite($fh, $buf, length($buf)) || last;
 		}
 	my $now = time();
-	if (&session_state($session_id) == 1 &&
-	    $now - $last_session_check_time > 10) {
+	if ($now - $last_session_check_time > 10 &&
+	    &session_state($session_id) == 1) {
 		# Re-validate the browser session every 10 seconds
 		print DEBUG "verifying websockets session $session_id\n";
 		print $PASSINw "verify $session_id 0 $acptip\n";
