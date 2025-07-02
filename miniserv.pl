@@ -6,6 +6,7 @@ package miniserv;
 use Socket;
 use POSIX;
 use Time::Local;
+use Fcntl qw(:DEFAULT :flock);
 eval "use Time::HiRes;";
 
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
@@ -609,6 +610,54 @@ if ($config{'logclear'}) {
 		}
 	push(@childpids, $logclearer);
 	}
+
+# session_state(session-id, set-state)
+# Sets or gets the active state of the client, which is used to determine
+# whether the client is away or not. This is used to allow for the session to
+# expire after a period of inactivity in case a client has opened connections or
+# makes HTTP requests in the background. Returns 1 if the client is currently
+# not away (ie. active), or 0 if it is away.
+sub session_state
+{
+my ($sid, $set) = @_;
+return 1 if (!$sid);
+my %sess;
+# Read the session state file, or create it if it does not exist
+sysopen(my $fh, $config{'sessionstate'}, O_RDWR|O_CREAT, 0600)
+	or warn "Cannot open $config{'sessionstate'}: $!";
+# Lock the file to prevent concurrent access
+flock($fh, LOCK_EX) or warn "Cannot lock $config{'sessionstate'}: $!";
+# Read the session state file into a hash
+&read_file($config{'sessionstate'}, \%sess);
+# If the session ID is not in the hash, add it with a default value
+$sess{$sid} //= 1;
+# If a set value is provided, update the session state
+if (defined($set)) {
+	$sess{$sid} = $set ? 1 : 0;
+	# Find all existing sessions
+	my %sessiondb;
+	dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
+	if ($@) {
+		dbmclose(%sessiondb);
+		eval "use NDBM_File";
+		dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
+		}
+	seek($fh, 0, 0);
+	truncate($fh, 0);
+	foreach my $k (keys %sess) {
+		my $hashed_k = &hash_session_id($k);
+		# Only save sessions that are still known
+		print $fh "$k=$sess{$k}\n" if (exists($sessiondb{$hashed_k}));
+		}
+	dbmclose(%sessiondb);
+	print DEBUG "websocket updated status for $sid to $sess{$sid}\n";
+	}
+flock($fh, LOCK_UN);
+close($fh);
+print DEBUG "websocket current status for $sid is $sess{$sid}\n"
+	if (defined($set));
+return $sess{$sid};
+}
 
 # Setup the logout time dbm if needed
 if ($config{'session'}) {
@@ -5000,6 +5049,9 @@ my $var_dir = $1;
 if (!$config{'sessiondb'}) {
 	$config{'sessiondb'} = "$var_dir/sessiondb";
 	}
+if (!$config{'sessionstate'}) {
+	$config{'sessionstate'} = "$var_dir/sessionstate";
+	}
 if (!$config{'errorlog'}) {
 	$config{'logfile'} =~ /^(.*)\/[^\/]+$/;
 	$config{'errorlog'} = "$1/miniserv.error";
@@ -5932,7 +5984,8 @@ while(1) {
 		syswrite($fh, $buf, length($buf)) || last;
 		}
 	my $now = time();
-	if ($now - $last_session_check_time > 10) {
+	if (&session_state($session_id) == 1 &&
+	    $now - $last_session_check_time > 10) {
 		# Re-validate the browser session every 10 seconds
 		print DEBUG "verifying websockets session $session_id\n";
 		print $PASSINw "verify $session_id 0 $acptip\n";
