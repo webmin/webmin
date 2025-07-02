@@ -819,7 +819,20 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
   filter: grayscale(1) contrast(1);
 }
 .not-secure {
-  color: #f00a38;
+  color: #c40000;
   float: right;
-  cursor: help;
+}
+.inherit-color::after,
+.inherit-color::before,
+.inherit-color:focus::after,
+.inherit-color:focus::before,
+.inherit-color:active::after,
+.inherit-color:active::before,
+.inherit-color:hover::after,
+.inherit-color:hover::before,
+.inherit-color:focus,
+.inherit-color:active,
+.inherit-color:hover,
+.inherit-color {
+    color: inherit !important;
 }
