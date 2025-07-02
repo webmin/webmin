@@ -2022,8 +2022,7 @@ if ($config{'session'} && !$validated) {
 		local $cookie = $header{'cookie'};
 		while($cookie =~ s/(^|\s|;)$sidname=([a-f0-9]+)//) {
 			$session_id = $2;
-			local $notimeout =
-				$in{'webmin_notimeout'} ? 1 : 0;
+			local $notimeout = 0;
 			print $PASSINw "verify $session_id $notimeout $acptip\n";
 			<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
 			if ($1 == 2) {
