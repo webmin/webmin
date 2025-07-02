@@ -347,11 +347,13 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 		else {
 			$l = "edit_systemd.cgi?name=".&urlize($u->{'name'});
 			}
+		my $sname = $u->{'name'};
+		$sname =~ s/\.service$//;
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef),
 			$u->{'boot'} == -1 ?
-			    &html_escape($u->{'name'}) :
-			    &ui_link($l, &html_escape($u->{'name'})),
+			    &html_escape($sname) :
+			    &ui_link($l, &html_escape($sname)),
 			&html_escape($u->{'desc'}),
 			$u->{'fullstatus'} || "<i>$text{'index_unknown'}</i>",
 			$u->{'boot'} == 1 ?
