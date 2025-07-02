@@ -1104,11 +1104,10 @@ while(1) {
 					}
 				$userlast{$1} = $time_now;
 				}
-			elsif ($inline =~ /^verify\s+(\S+)\s+(\S+)\s+(\S+)/) {
+			elsif ($inline =~ /^verify\s+(\S+)\s+(\S+)/) {
 				# Verifying a session ID
 				local $session_id = $1;
-				local $notimeout = $2;
-				local $vip = $3;
+				local $vip = $2;
 				local $skey = $sessiondb{$session_id} ?
 						$session_id : 
 						&hash_session_id($session_id);
@@ -1121,8 +1120,7 @@ while(1) {
 					  split(/\s+/, $sessiondb{$skey});
 					local $lot = &get_logout_time($user, $session_id);
 					if ($lot &&
-					    $time_now - $ltime > $lot*60 &&
-					    !$notimeout) {
+					    $time_now - $ltime > $lot*60) {
 						# Session has timed out due to
 						# idle time being hit
 						print $outfd "1 ",($time_now - $ltime),"\n";
@@ -1851,7 +1849,7 @@ if ($config{'session'} && !$deny_authentication &&
 			&http_error(500, "Invalid session",
 			    "Session ID contains invalid characters");
 			}
-		print $PASSINw "verify $sid 0 $acptip\n";
+		print $PASSINw "verify $sid $acptip\n";
 		<$PASSOUTr> =~ /^(\d+)\s+(\S+)/;
 		if ($1 != 2) {
 			&http_error(500, "Invalid session",
@@ -2022,8 +2020,7 @@ if ($config{'session'} && !$validated) {
 		local $cookie = $header{'cookie'};
 		while($cookie =~ s/(^|\s|;)$sidname=([a-f0-9]+)//) {
 			$session_id = $2;
-			local $notimeout = 0;
-			print $PASSINw "verify $session_id $notimeout $acptip\n";
+			print $PASSINw "verify $session_id $acptip\n";
 			<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
 			if ($1 == 2) {
 				# Valid session continuation
@@ -5934,7 +5931,7 @@ while(1) {
 	if ($now - $last_session_check_time > 10) {
 		# Re-validate the browser session every 10 seconds
 		print DEBUG "verifying websockets session $session_id\n";
-		print $PASSINw "verify $session_id 0 $acptip\n";
+		print $PASSINw "verify $session_id $acptip\n";
 		<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
 		if ($1 != 2) {
 			print DEBUG "session $session_id has expired!\n";
