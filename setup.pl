@@ -406,6 +406,7 @@ else {
 			'errorlog' => "$var_dir/miniserv.error",
 			'pidfile' => "$var_dir/miniserv.pid",
 			'logtime' => 168,
+			'logclear' => 1,
 			'ppath' => $ppath,
 			'ssl' => $ssl,
 			'no_ssl2' => 1,
@@ -778,12 +779,13 @@ else {
 	}
 system("$perl ".&quote_path("$wadir/copyconfig.pl")." ".&quote_path("$os_type/$real_os_type")." ".&quote_path("$os_version/$real_os_version")." ".&quote_path($wadir)." ".$config_directory." \"\" ".$allmods . " >/dev/null 2>&1");
 if (!$upgrading) {
-	# Store the OS and version
+	# Store the OS and version, and enable log and log clearing
 	&read_file("$config_directory/config", \%gconfig);
 	$gconfig{'os_type'} = $os_type;
 	$gconfig{'os_version'} = $os_version;
 	$gconfig{'real_os_type'} = $real_os_type;
 	$gconfig{'real_os_version'} = $real_os_version;
+	$gconfig{'logclear'} = 1;
 	$gconfig{'log'} = 1;
 	&write_file("$config_directory/config", \%gconfig);
 	}
