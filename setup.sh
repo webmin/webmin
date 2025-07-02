@@ -829,14 +829,6 @@ if [ "$upgrading" != 1 ]; then
 	# Disallow unknown referers by default
 	echo "referers_none=1" >>$config_dir/config
 else
-	# one-off hack to set log variable in config from miniserv.conf
-	grep log= $config_dir/config >/dev/null
-	if [ "$?" = "1" ]; then
-		grep log= $config_dir/miniserv.conf >> $config_dir/config
-		grep logtime= $config_dir/miniserv.conf >> $config_dir/config
-		grep logclear= $config_dir/miniserv.conf >> $config_dir/config
-	fi
-
 	# Enable HSTS by default if not set
 	grep ssl_hsts= $config_dir/miniserv.conf >/dev/null
 	if [ "$?" != "0" ]; then
