@@ -2423,12 +2423,8 @@ instead if separator param is set.
 =cut
 sub get_systemd_unit_types
 {
-my ($str_separator) = @_;
-my @systemd_types = ('target', 'service', 'socket', 'device',
-                     'mount', 'automount', 'swap', 'path',
-                     'timer', 'snapshot', 'slice', 'scope',
-                     'busname');
-return @systemd_types;
+return ('target', 'service', 'socket', 'device', 'mount', 'automount',
+	'swap', 'path', 'timer', 'snapshot', 'slice', 'scope', 'busname');
 }
 
 =head2 is_systemd_service(name)
@@ -2465,22 +2461,10 @@ my $systemd_unit_dir2 = "/lib/systemd/system";
 if ($name) {
 	foreach my $p ($systemd_local_conf, $systemd_unit_dir1,
 		       $systemd_unit_dir2) {
-		if (-r "$p/$name.service"   ||
-		    -r "$p/$name"           ||
-		    -r "$p/$name.target"    ||
-		    -r "$p/$name.socket"    ||
-		    -r "$p/$name.device"    ||
-		    -r "$p/$name.mount"     ||
-		    -r "$p/$name.automount" ||
-		    -r "$p/$name.swap"      ||
-		    -r "$p/$name.path"      ||
-		    -r "$p/$name.timer"     ||
-		    -r "$p/$name.snapshot"  ||
-		    -r "$p/$name.slice"     ||
-		    -r "$p/$name.scope"     ||
-		    -r "$p/$name.busname") {
-			return $p;
+		foreach my $t (&get_systemd_unit_types()) {
+			return $p if (-r "$p/$name.$t");
 			}
+		return $p if (-r "$p/$name");
 		}
 	}
 # Always use /etc/systemd/system for locally created units
