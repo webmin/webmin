@@ -348,7 +348,6 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 			$l = "edit_systemd.cgi?name=".&urlize($u->{'name'});
 			}
 		my $sname = $u->{'name'};
-		$sname =~ s/\.service$//;
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef),
 			$u->{'boot'} == -1 ?
