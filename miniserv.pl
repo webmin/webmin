@@ -612,6 +612,53 @@ if ($config{'logclear'}) {
 	push(@childpids, $logclearer);
 	}
 
+# session_state(session-id, set-state)
+# Sets or gets the active state of the client, which is used to determine
+# whether the client is away or not. This is used to allow for the session to
+# expire after a period of inactivity in case a client has opened connections or
+# makes HTTP requests in the background. Returns 1 if the client is currently
+# not away (ie. active), or 0 if it is away.
+sub session_state
+{
+my ($sid, $set) = @_;
+return 1 if (!$sid);
+
+# Check session database
+my %sessiondb;
+dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
+if ($@) {
+	dbmclose(%sessiondb);
+	eval "use NDBM_File";
+	dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
+	}
+
+# Get current record
+my $skey = &hash_session_id($sid);
+my ($user, $ltime, $ip, $lifetime, $active);
+if (exists($sessiondb{$skey})) {
+	($user, $ltime, $ip, $lifetime, $active) =
+		split(/\s+/, $sessiondb{$skey});
+	$lifetime //= 0;     # preserve or default to 0
+	$active   //= 1;     # default to 'alive'
+	}
+
+# Update flag if caller supplied a value
+if ($user && $ltime && $ip && defined($set)) {
+	$active = $set ? 1 : 0;
+	$sessiondb{$skey} = join(' ', $user, $ltime, $ip, $lifetime, $active);
+	print DEBUG "websocket updated status for $sid to $active\n";
+	}
+else {
+	print DEBUG "websocket current status for $sid is $active\n";
+	}
+
+# Save the record back to the database
+dbmclose(%sessiondb);
+
+# Return the active state
+return $active;
+}
+
 # Setup the logout time dbm if needed
 if ($config{'session'}) {
 	eval "use SDBM_File";
@@ -1128,8 +1175,10 @@ while(1) {
 					print $outfd "0 0\n";
 					}
 				else {
-					local ($user, $ltime, $ip, $lifetime) =
+					local ($user, $ltime, $ip, $lifetime, $state) =
 					  split(/\s+/, $sessiondb{$skey});
+					$lifetime //= 0;
+					$state   //= 1;
 					local $lot = &get_logout_time($user, $session_id);
 					if ($lot &&
 					    $time_now - $ltime > $lot*60) {
@@ -1157,7 +1206,7 @@ while(1) {
 						# Session is OK, update last time
 						# and remote IP
 						print $outfd "2 $user\n";
-						$sessiondb{$skey} = "$user $time_now $vip";
+						$sessiondb{$skey} = "$user $time_now $vip $lifetime $state";
 						}
 					}
 				}
@@ -5933,7 +5982,8 @@ while(1) {
 		syswrite($fh, $buf, length($buf)) || last;
 		}
 	my $now = time();
-	if ($now - $last_session_check_time > 10) {
+	if ($now - $last_session_check_time > 10 &&
+	    &session_state($session_id) == 1) {
 		# Re-validate the browser session every 10 seconds
 		print DEBUG "verifying websockets session $session_id\n";
 		print $PASSINw "verify $session_id $acptip\n";
