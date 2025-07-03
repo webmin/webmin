@@ -383,12 +383,7 @@ foreach $mod (split(/\s+/, $config{'preuse'})) {
 	}
 
 # Open debug log if set
-if ($config{'debuglog'}) {
-	open(DEBUG, ">>$config{'debuglog'}");
-	chmod(0700, $config{'debuglog'});
-	select(DEBUG); $| = 1; select(STDOUT);
-	print DEBUG "miniserv.pl starting ..\n";
-	}
+&open_debug_to_log("miniserv.pl starting ..\n");
 
 # Write out (empty) blocked hosts file
 &write_blocked_file();
@@ -595,9 +590,16 @@ if ($config{'logclear'}) {
 					# need to clear log
 					$write_logtime = 1;
 					unlink($config{'logfile'});
+					unlink($config{'errorlog'})
+						if ($config{'errorlog'} &&
+						    $config{'errorlog'} ne '-');
+					unlink($config{'debuglog'})
+						if ($config{'debuglog'});
 					}
 				}
-			else { $write_logtime = 1; }
+			else {
+				$write_logtime = 1;
+				}
 			if ($write_logtime) {
 				open(LOGTIME, ">$config{'logfile'}.time");
 				print LOGTIME time(),"\n";
@@ -634,6 +636,16 @@ local $remove_session_count = 0;
 $need_pipes = $config{'passdelay'} || $config{'session'};
 $cron_runs = 0;
 while(1) {
+	# Periodically re-open error and debug logs if deleted via regular
+	# log clearing
+	if ($config{'errorlog'} && $config{'errorlog'} ne '-' &&
+	    !-e $config{'errorlog'}) {
+		&redirect_stderr_to_log();
+		}
+	if ($config{'debuglog'} && !-e $config{'debuglog'}) {
+		&open_debug_to_log();
+		}
+
 	# Check if any webmin cron jobs are ready to run
 	&execute_ready_webmin_crons($cron_runs++);
 
@@ -5537,14 +5549,7 @@ foreach my $pe (split(/\t+/, $config{'expires_paths'})) {
 	}
 
 # Re-open debug log
-close(DEBUG);
-if ($config{'debuglog'}) {
-	open(DEBUG, ">>$config{'debuglog'}");
-	select(DEBUG); $| = 1; select(STDOUT);
-	}
-else {
-	open(DEBUG, ">/dev/null");
-	}
+&open_debug_to_log();
 
 # Reset cache of sudo checks
 undef(%sudocache);
@@ -6693,6 +6698,7 @@ else {
 sub redirect_stderr_to_log
 {
 if ($config{'errorlog'} ne '-') {
+	close(STDERR);
 	open(STDERR, ">>$config{'errorlog'}") ||
 		die "failed to open $config{'errorlog'} : $!";
 	if ($config{'logperms'}) {
@@ -6700,6 +6706,23 @@ if ($config{'errorlog'} ne '-') {
 		}
 	}
 select(STDERR); $| = 1; select(STDOUT);
+}
+
+# open_debug_to_log([msg])
+# Direct the DEBUG file handle somewhere
+sub open_debug_to_log
+{
+my ($msg) = @_;
+close(DEBUG);
+if ($config{'debuglog'}) {
+	open(DEBUG, ">>$config{'debuglog'}");
+	chmod(0700, $config{'debuglog'});
+	select(DEBUG); $| = 1; select(STDOUT);
+	print DEBUG $msg if ($msg);
+	}
+else {
+	open(DEBUG, ">/dev/null");
+	}
 }
 
 # should_gzip_file(filename)
