@@ -19,7 +19,7 @@ $slice || &error($text{'slice_egone'});
 
 # Validate inputs, starting with slice number
 my $part = { };
-$in{'letter'} =~ /^[a-d]$/i || &error($text{'npart_eletter'});
+$in{'letter'} =~ /^[a-z]$/i || &error($text{'npart_eletter'});
 $in{'letter'} = lc($in{'letter'});
 my ($clash) = grep { $_->{'letter'} eq $in{'letter'} } @{$slice->{'parts'}};
 $clash && &error(&text('npart_eclash', $in{'letter'}));
@@ -29,15 +29,18 @@ $part->{'letter'} = $in{'letter'};
 $in{'start'} =~ /^\d+$/ || &error($text{'nslice_estart'});
 $in{'end'} =~ /^\d+$/ || &error($text{'nslice_eend'});
 $in{'start'} < $in{'end'} || &error($text{'npart_erange'});
-$part->{'startblock'} = $in{'start'};
+$part->{'startblock'} = int($in{'start'}/2048)*2048;  # 1MB alignment
 $part->{'blocks'} = $in{'end'} - $in{'start'};
 
 # Slice type
 $part->{'type'} = $in{'type'};
+# Set partition properties
+$part->{'label'} = $in{'label'} if ($in{'label'} =~ /^[a-zA-Z0-9._-]+$/);
 
 # Do the creation
 &ui_print_header($slice->{'desc'}, $text{'npart_title'}, "");
 
+# Create the partition
 print &text('npart_creating', $in{'letter'}, $slice->{'desc'}),"<p>\n";
 my $err = &save_partition($disk, $slice, $part);
 if ($err) {
