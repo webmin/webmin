@@ -359,7 +359,7 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 		my $title = ($u->{'boot'} == -1 ?
 			    &html_escape($sname) :
 			    &ui_link($l, &html_escape($sname)));
-		my $desc = &html_escape($u->{'desc'});
+		my $desc = $config{'desc'} ? &html_escape($u->{'desc'}) : '';
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef),
 			!$desc ? $title : &ui_details({
