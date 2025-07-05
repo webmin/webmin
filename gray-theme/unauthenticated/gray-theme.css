@@ -422,7 +422,7 @@ details.ui_hidden_table_start > summary::-webkit-details-marker {
     color: #a1acc0;
 }
 
-details.on-hover:not(:hover) summary::after {
+details:not([open]).on-hover:not(:hover) summary::after {
   visibility: hidden !important;
 }
 
