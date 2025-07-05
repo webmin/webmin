@@ -227,6 +227,7 @@ systemd_egone=Unit no longer exists!
 systemd_elegacy=Not a systemd unit!
 systemd_header=Systemd unit details
 systemd_name=Unit name
+systemd_type=Unit type
 systemd_file=Configuration file
 systemd_desc=Unit description
 systemd_start=Commands to run on startup
