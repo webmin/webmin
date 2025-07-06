@@ -1395,13 +1395,13 @@ if (!$use_ssl && $config{'ssl'} && $config{'ssl_enforce'}) {
 	&write_data("Location: $url\r\n");
 	&write_keep_alive(0);
 	&write_data("\r\n");
-	log_error("Redirecting HTTP request to HTTPS for $acptip");
+	&log_error("Redirecting HTTP request to HTTPS for $acptip");
 	&log_request($loghost, $authuser, $reqline, 302, 0);
 	return 0;
 	}
 elsif (!$reqline && $checked_timeout > 1) {
 	# An empty request .. just close the connection
-	print STDERR "handle_request: rejecting empty request\n";
+	print DEBUG "handle_request: rejecting empty request\n";
 	return 0;
 	}
 elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
