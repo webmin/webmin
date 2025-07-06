@@ -38,7 +38,7 @@ foreach my $s (@sockets, [ undef, "*" ]) {
 	$i++;
 	}
 $stable .= &ui_columns_end();
-if (&foreign_check("firewall")) {
+if (&foreign_check("firewall") || &foreign_check("firewalld")) {
 	$stable .= &ui_checkbox("firewall", 1, $text{'bind_firewall'}, 1);
 	}
 print &ui_table_row($text{'bind_sockets'}, $stable);
