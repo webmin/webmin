@@ -1375,91 +1375,38 @@ local $origreqline = &read_line();
 $method = $page = $request_uri = undef;
 print DEBUG "handle_request reqline=$reqline\n";
 alarm(0);
-if (!$reqline && (!$use_ssl || $checked_timeout > 1)) {
+if (!$use_ssl && $config{'ssl'} && $config{'ssl_enforce'}) {
+	# This is an http request when https must be enforced
+	local $urlhost = $config{'musthost'} || $host;
+	$urlhost = "[".$urlhost."]" if (&check_ip6address($urlhost));
+	local $wantport = $port;
+	if ($wantport == 80 &&
+	    &indexof(443, @listening_on_ports) >= 0) {
+		# Connection was to port 80, but since we are also
+		# accepting on port 443, redirect to that
+		$wantport = 443;
+		}
+	local $url = $wantport == 443
+		? "https://$urlhost/"
+		: "https://$urlhost:$wantport/";
+	&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
+	&write_data("Date: $datestr\r\n");
+	&write_data("Server: @{[&server_info()]}\r\n");
+	&write_data("Location: $url\r\n");
+	&write_keep_alive(0);
+	&write_data("\r\n");
+	log_error("Redirecting HTTP request to HTTPS for $acptip");
+	&log_request($loghost, $authuser, $reqline, 302, 0);
+	return 0;
+	}
+elsif (!$reqline && $checked_timeout > 1) {
 	# An empty request .. just close the connection
-	print DEBUG "handle_request: rejecting empty request\n";
+	print STDERR "handle_request: rejecting empty request\n";
 	return 0;
 	}
 elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
-	print DEBUG "handle_request: invalid reqline=$reqline\n";
-	if ($use_ssl) {
-		# This could be an http request when it should be https
-		$use_ssl = 0;
-		local $urlhost = $config{'musthost'} || $host;
-		$urlhost = "[".$urlhost."]" if (&check_ip6address($urlhost));
-		local $wantport = $port;
-		if ($wantport == 80 &&
-		    &indexof(443, @listening_on_ports) >= 0) {
-			# Connection was to port 80, but since we are also
-			# accepting on port 443, redirect to that
-			$wantport = 443;
-			}
-		local $url = $wantport == 443 ? "https://$urlhost/"
-					      : "https://$urlhost:$wantport/";
-		local $jsurl = $config{'musthost'} ?
-				                   $url :
-				                   "https://'+location.host+'";
-		local $jsredir = $config{'musthost'} ?
-				                   "location.href='$url'" :
-				                   "location.protocol='https:'";
-		$reqline = "GET / HTTP/1.1";	# Fake it for the log
-		&http_error(200, "Document follows",
-			"This web server is running in SSL mode. ".
-			"Trying to redirect to <a href='$url'>$url</a> instead ...".
-			"<script>".
-			"if (location.protocol != 'https:') {".
-			"  document.querySelector('a').href='".$jsurl."';document.querySelector('a').innerText='".$jsurl."';".
-			"".$jsredir."".
-			"}".
-			"</script>",
-			0, 1);
-		}
-	elsif (ord(substr($reqline, 0, 1)) == 128 && !$use_ssl) {
-		# This could be an https request when it should be http ..
-		# need to fake a HTTP response
-		eval <<'EOF';
-			use Net::SSLeay;
-			eval "Net::SSLeay::SSLeay_add_ssl_algorithms()";
-			eval "Net::SSLeay::load_error_strings()";
-			$ssl_ctx = Net::SSLeay::CTX_new();
-			Net::SSLeay::CTX_use_RSAPrivateKey_file(
-				$ssl_ctx, $config{'keyfile'},
-				&Net::SSLeay::FILETYPE_PEM);
-			Net::SSLeay::CTX_use_certificate_file(
-				$ssl_ctx,
-				$config{'certfile'} || $config{'keyfile'},
-				&Net::SSLeay::FILETYPE_PEM);
-			$ssl_con = Net::SSLeay::new($ssl_ctx);
-			pipe(SSLr, SSLw);
-			if (!fork()) {
-				close(SSLr);
-				select(SSLw); $| = 1; select(STDOUT);
-				print SSLw $origreqline;
-				local $buf;
-				while(sysread(SOCK, $buf, 1) > 0) {
-					print SSLw $buf;
-					}
-				close(SOCK);
-				exit;
-				}
-			close(SSLw);
-			Net::SSLeay::set_wfd($ssl_con, fileno(SOCK));
-			Net::SSLeay::set_rfd($ssl_con, fileno(SSLr));
-			Net::SSLeay::accept($ssl_con) || die "accept() failed";
-			$use_ssl = 1;
-			local $url = $config{'musthost'} ?
-					"https://$config{'musthost'}:$port/" :
-					"https://$host:$port/";
-			$reqline = "GET / HTTP/1.1";	# Fake it for the log
-			&http_error(200, "Bad Request", "This web server is not running in SSL mode. Try the URL <a href='$url'>$url</a> instead.", 0, 1);
-EOF
-		if ($@) {
-			&http_error(400, "Bad Request");
-			}
-		}
-	else {
-		&http_error(400, "Bad Request");
-		}
+	&http_error(400, "Bad Request");
+	return 0;
 	}
 $method = $1;
 $request_uri = $page = $2;
