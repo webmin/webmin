@@ -56,8 +56,11 @@ print ui_table_start($text{'ssl_header'}, undef, 2);
 print ui_table_row($text{'ssl_on'},
 	ui_yesno_radio("ssl", $miniserv{'ssl'}));
 
-print ui_table_row($text{'ssl_hsts'},
-	ui_yesno_radio("ssl_hsts", $miniserv{'ssl_hsts'}));
+print ui_table_row($text{'ssl_enforce'},
+	ui_radio("ssl_enforce", $miniserv{'ssl_enforce'} // 1,
+		[ [ 2, $text{'ssl_hsts'} ],
+		  [ 1, $text{'yes'} ],
+		  [ 0, $text{'no'} ] ]));
 
 print ui_table_row($text{'ssl_key'},
 	ui_textbox("key", $miniserv{'keyfile'}, 40)." ".
