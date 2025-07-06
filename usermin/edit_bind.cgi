@@ -42,7 +42,6 @@ foreach $s (@sockets, [ undef, "*" ]) {
 	}
 $stable .= &ui_columns_end();
 if (&foreign_check("firewall")) {
-        print &ui_hidden("oldports", join(" ", @ports));
         $stable .= &ui_checkbox("firewall", 1, $text{'bind_firewall'}, 1);
         }
 print &ui_table_row($text{'bind_sockets'}, $stable);
@@ -74,6 +73,7 @@ print &ui_table_row($text{'bind_hostname'},
       [ 0, &ui_textbox("hostname", $miniserv{"host"}, 25) ] ]));
 
 print &ui_table_end();
+print &ui_hidden("oldports", join(" ", @ports));
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
