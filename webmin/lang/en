@@ -339,8 +339,7 @@ ssl_title=SSL Encryption
 ssl_essl=The Net::SSLeay perl module does not appear to be installed on your system. To install the OpenSSL library and Net::SSLeay, follow <a href='$1'>these instructions</a> from the Webmin website.
 ssl_cpan=Alternately, you can have Webmin <a href='$1'>download and install</a> the required Net::SSLeay Perl module for you.
 ssl_emessage=The error message from Perl was : $1
-ssl_desc1=The host on which Webmin is running appears to have the SSLeay Perl module installed. Using this, Webmin supports SSL encrypted communication between your browser and the server. If you are accessing your Webmin server over the Internet, then you should definitely consider using SSL to prevent an attacker capturing your Webmin password.
-ssl_desc2=Warning - only turn on SSL support if you have a browser that supports SSL, and there is no firewall blocking <b>https</b> requests between your browser and the Webmin host.
+ssl_desc1=Webmin can use SSL to encrypt the connection between your browser and the server. If you connect to Webmin over the internet, always use SSL to protect your password and prevent man-in-the-middle attacks.
 ssl_header=SSL support
 ssl_on=Enable SSL?
 ssl_key=Private key file
@@ -351,7 +350,8 @@ ssl_deny=SSL protocol versions to reject
 ssl_compression=Allow compressed SSL connections?
 ssl_honorcipherorder=Force use of server-defined cipher order?
 ssl_extracas=Additional certificate files<br>for chained certificates
-ssl_hsts=Enforce SSL with HSTS header
+ssl_enforce=Enforce SSL
+ssl_hsts=Yes, with HSTS header
 ssl_redirect=Redirecting after protocol change ..
 ssl_extracasdef=Same as global SSL settings
 ssl_extracasnone=None for this IP address
