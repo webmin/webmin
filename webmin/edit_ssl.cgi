@@ -48,7 +48,6 @@ print ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
 # Basic SSL settings
 print ui_tabs_start_tab("mode", "ssl");
 print $text{'ssl_desc1'},"<p>\n";
-print $text{'ssl_desc2'},"<p>\n";
 
 print ui_form_start("change_ssl.cgi", "post");
 print ui_table_start($text{'ssl_header'}, undef, 2);
