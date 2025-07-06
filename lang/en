@@ -190,7 +190,7 @@ pam_login=Continue
 pam_restart=Restart
 
 login_notsecure=Not Secure
-login_notsecure_desc=This connection is not secure and could let a man-in-the-middle attack intercept your password or session cookie. Click this badge to switch to an HTTPS connection, unless you are on a trusted local network or behind a secure reverse proxy.
+login_notsecure_desc=This connection is not secure and could let a man-in-the-middle attack intercept your password or session cookie. Click here to switch to an HTTPS connection, unless you are on a trusted local network or behind a secure reverse proxy.
 
 acl_root=Root directory for file chooser
 acl_otherdirs=Other visible directories in file chooser
