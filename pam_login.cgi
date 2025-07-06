@@ -73,8 +73,8 @@ print &ui_form_start("@{[&get_webprefix()]}/pam_login.cgi", "post");
 print &ui_hidden("cid", $in{'cid'});
 
 my $not_secure;
-if ($ENV{'HTTPS'} ne 'ON') {
-	my $link = ui_tag('a', "&#9888; $text{'login_notsecure'}", 
+if ($ENV{'HTTPS'} ne 'ON' && $miniserv{'ssl'}) {
+	my $link = ui_tag('a', "&#9888; $text{'login_notsecure'}",
 		{ 'href' => "javascript:void(0);",
 		  'class' => 'inherit-color',
 		  'onclick' => "window.location.href = ".
