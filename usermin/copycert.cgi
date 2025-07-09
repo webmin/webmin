@@ -35,7 +35,6 @@ else {
 
 # Copy other settings
 $miniserv{'ssl'} = $wminiserv{'ssl'};
-$miniserv{'ssl_redirect'} = $wminiserv{'ssl_redirect'};
 $miniserv{'ssl_version'} = $wminiserv{'ssl_version'};
 $miniserv{'ssl_cipher_list'} = $wminiserv{'ssl_cipher_list'};
 $miniserv{'extracas'} = $wminiserv{'extracas'};
