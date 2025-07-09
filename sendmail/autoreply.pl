@@ -154,6 +154,9 @@ if ($header{'x-original-to'} && $rheader{'No-Forward-Reply'}) {
 # Open the replies tracking DBM, if one was set
 my $rtfile = $rheader{'Reply-Tracking'};
 if ($rtfile) {
+	if ($rtfile !~ /^\//) {
+		$rtfile = $ENV{'HOME'}.'/'.$rtfile;
+		}
 	$track_replies = dbmopen(%replies, $rtfile, 0700);
 	eval { $replies{"test\@example.com"} = 1; };
 	if ($@) {
