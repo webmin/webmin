@@ -154,6 +154,9 @@ if ($header{'x-original-to'} && $rheader{'No-Forward-Reply'}) {
 # Open the replies tracking DBM, if one was set
 my $rtfile = $rheader{'Reply-Tracking'};
 if ($rtfile) {
+	if ($rtfile =~ /^~/) {
+		$rtfile =~ s/^~/$ENV{'HOME'}/;
+		}
 	if ($rtfile !~ /^\//) {
 		$rtfile = $ENV{'HOME'}.'/'.$rtfile;
 		}

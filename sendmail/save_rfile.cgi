@@ -10,6 +10,7 @@ if (substr($in{'file'}, 0, length($access{'apath'})) ne $access{'apath'}) {
 	&error(&text('rfile_efile', $in{'file'}));
 	}
 $in{'replies_def'} || $in{'replies'} =~ /^\/\S+/ ||
+    $in{'replies'} =~ /^~\/\S+/ ||
 	&error($text{'rfile_ereplies'});
 $in{'period_def'} || $in{'period'} =~ /^\d+$/ ||
 	&error($text{'rfile_eperiod'});
