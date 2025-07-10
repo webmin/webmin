@@ -1116,10 +1116,11 @@ while(1) {
 					}
 				$userlast{$1} = $time_now;
 				}
-			elsif ($inline =~ /^verify\s+(\S+)\s+(\S+)/) {
+			elsif ($inline =~ /^verify\s+(\S+)\s+(\S+)\s+(\S+)/) {
 				# Verifying a session ID
 				local $session_id = $1;
 				local $vip = $2;
+				local $uptime = $3;
 				local $skey = $sessiondb{$session_id} ?
 						$session_id : 
 						&hash_session_id($session_id);
@@ -1157,7 +1158,9 @@ while(1) {
 						# Session is OK, update last time
 						# and remote IP
 						print $outfd "2 $user\n";
-						$sessiondb{$skey} = "$user $time_now $vip";
+						if ($uptime) {
+							$sessiondb{$skey} = "$user $time_now $vip";
+							}
 						}
 					}
 				}
@@ -1808,7 +1811,7 @@ if ($config{'session'} && !$deny_authentication &&
 			&http_error(500, "Invalid session",
 			    "Session ID contains invalid characters");
 			}
-		print $PASSINw "verify $sid $acptip\n";
+		print $PASSINw "verify $sid $acptip 1\n";
 		<$PASSOUTr> =~ /^(\d+)\s+(\S+)/;
 		if ($1 != 2) {
 			&http_error(500, "Invalid session",
@@ -1979,7 +1982,7 @@ if ($config{'session'} && !$validated) {
 		local $cookie = $header{'cookie'};
 		while($cookie =~ s/(^|\s|;)$sidname=([a-f0-9]+)//) {
 			$session_id = $2;
-			print $PASSINw "verify $session_id $acptip\n";
+			print $PASSINw "verify $session_id $acptip 1\n";
 			<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
 			if ($1 == 2) {
 				# Valid session continuation
@@ -5871,23 +5874,26 @@ while(1) {
 	vec($rmask, fileno(SOCK), 1) = 1;
 	my $sel = select($rmask, undef, undef, 10);
 	my ($buf, $ok);
+	my $uptime = 0;
 	if (vec($rmask, fileno($fh), 1)) {
 		# Got something from the websockets backend
 		$ok = sysread($fh, $buf, 1024);
 		last if ($ok <= 0);	# Backend has closed
 		&write_data($buf);
+		$uptime = 1;
 		}
 	if (vec($rmask, fileno(SOCK), 1)) {
 		# Got something from the browser
 		$buf = &read_data(1024);
 		last if (!defined($buf) || length($buf) == 0);
 		syswrite($fh, $buf, length($buf)) || last;
+		$uptime = 1;
 		}
 	my $now = time();
 	if ($now - $last_session_check_time > 10) {
 		# Re-validate the browser session every 10 seconds
 		print DEBUG "verifying websockets session $session_id\n";
-		print $PASSINw "verify $session_id $acptip\n";
+		print $PASSINw "verify $session_id $acptip $uptime\n";
 		<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
 		if ($1 != 2) {
 			print DEBUG "session $session_id has expired!\n";
