@@ -336,6 +336,7 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 		   &ui_link("edit_systemd.cgi?new=1", $text{'index_sadd'}) );
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "", $text{'systemd_name'},
+				  $config{'desc'} ? $text{'systemd_desc'} : (),
 				  $text{'systemd_type'},
 				  $text{'systemd_status'},
 				  $text{'systemd_boot'},
@@ -359,14 +360,11 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 		my $title = ($u->{'boot'} == -1 ?
 			    &html_escape($sname) :
 			    &ui_link($l, &html_escape($sname)));
-		my $desc = $config{'desc'} ? &html_escape($u->{'desc'}) : '';
+		my $desc = $config{'desc'} ? &html_escape($u->{'desc'}) : undef;
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef),
-			!$desc ? $title : &ui_details({
-					class => 'inline on-hover',
-					html => 1,
-					title => $title,
-					content => $desc}),
+			$title,
+			$desc // (),
 			$type,
 			$u->{'fullstatus'} || "<i>$text{'index_unknown'}</i>",
 			$u->{'boot'} == 1 ?
