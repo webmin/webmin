@@ -107,8 +107,10 @@ $rheader{'Message-Id'} = "<".time().".".$$."\@".$host.">";
 $rheader{'Auto-Submitted'} = 'auto-replied';
 
 # read the autoreply file (or alternate)
-if (open(AUTO, "<".$ARGV[0]) ||
-    $ARGV[2] && open(AUTO, "<".$ARGV[2])) {
+$arfile = &home_file($ARGV[0]);
+$arfile2 = $ARGV[2] ? &home_file($ARGV[2]) : undef;
+if (open(AUTO, "<".$arfile) ||
+    $arfile2 && open(AUTO, "<".$arfile2)) {
 	while(<AUTO>) {
 		s/\$SUBJECT/$header{'subject'}/g;
 		s/\$FROM/$header{'from'}/g;
@@ -154,12 +156,7 @@ if ($header{'x-original-to'} && $rheader{'No-Forward-Reply'}) {
 # Open the replies tracking DBM, if one was set
 my $rtfile = $rheader{'Reply-Tracking'};
 if ($rtfile) {
-	if ($rtfile =~ /^~/) {
-		$rtfile =~ s/^~/$ENV{'HOME'}/;
-		}
-	if ($rtfile !~ /^\//) {
-		$rtfile = $ENV{'HOME'}.'/'.$rtfile;
-		}
+	$rtfile = &home_file($rtfile);
 	$track_replies = dbmopen(%replies, $rtfile, 0700);
 	eval { $replies{"test\@example.com"} = 1; };
 	if ($@) {
@@ -486,4 +483,18 @@ else {
 		}
 	return undef;
 	}
+}
+
+# home_file(file)
+# If a filename is not absolute, find it relative to the home dir
+sub home_file
+{
+my ($rtfile) = @_;
+if ($rtfile =~ /^~/) {
+	$rtfile =~ s/^~/$ENV{'HOME'}/;
+	}
+if ($rtfile !~ /^\//) {
+	$rtfile = $ENV{'HOME'}.'/'.$rtfile;
+	}
+return $rtfile;
 }
