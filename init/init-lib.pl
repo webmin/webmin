@@ -2901,4 +2901,12 @@ my ($name) = @_;
 return $name =~ /\./ ? $name : "com.webmin.".$name;
 }
 
+# config_pre_load(mod-info, [mod-order])
+# Check if some config options are conditional
+sub config_pre_load
+{
+my ($modconf_info, $modconf_order) = @_;
+$modconf_info->{'desc'} =~ s/2-[^,]+,// if ($init_mode eq "systemd");
+}
+
 1;
