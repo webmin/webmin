@@ -1407,7 +1407,7 @@ elsif (!$reqline && $checked_timeout > 1) {
 	print DEBUG "handle_request: rejecting empty request\n";
 	return 0;
 	}
-elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
+elsif ($reqline && $reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 	&http_error(400, "Bad Request");
 	return 0;
 	}
