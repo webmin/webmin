@@ -228,8 +228,16 @@ br[data-x-br] {
     opacity: .8;
 }
 
-.ui_text_wrap {
-  float: right;
+tr:has(.ui_help) td:not(:hover) .ui_help {
+    visibility: hidden;
+}
+
+tr:has(.ui_help) td.ui_form_label .ui_help {
+  visibility: visible;
+}
+
+td:not(:hover) .ui_link_help {
+  visibility: hidden;
 }
 
 .ui_link_help {
@@ -238,8 +246,8 @@ br[data-x-br] {
   margin-right: 4px;
 }
 
-td:not(:hover) .ui_link_help {
-  visibility: hidden;
+.ui_text_wrap {
+  float: right;
 }
 
 [data-tooltip][aria-label] {
