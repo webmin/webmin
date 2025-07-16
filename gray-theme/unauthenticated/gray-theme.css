@@ -244,6 +244,7 @@ td:not(:hover) .ui_link_help {
 
 [data-tooltip][aria-label] {
     position: relative;
+    vertical-align: top;
 }
 
 [data-tooltip][aria-label]::after {
