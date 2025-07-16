@@ -15,6 +15,9 @@ table.formsection, table.ui_table, table.loginform {
 table.ui_table .ui_table {
   border: none;
 }
+table.shrinkwrapper .ui_table {
+  table-layout: fixed;
+}
 img, a img { border:0; }
 tr.row0 {background-color:#e8e8ea;}
 tr.row1 {background-color:#f8f8fa;}
@@ -140,10 +143,15 @@ div.wrapper {
   background-color:#D9D9D9;
 }
 .goArrow { margin-bottom: -4px; }
-
+.ui_checked_columns .ui_checked_checkbox {
+  min-width: 20px;
+}
 .ui_form_label{
   text-align:right;
   vertical-align:top;
+}
+.ui_form_pair .ui_form_value {
+  padding-left: 8px;
 }
 .ui_form_pair td {padding:4px;}
 .ui_form_pair td table.ui_radio_table tr td {padding:2px;}
@@ -839,4 +847,11 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
 .inherit-color:hover,
 .inherit-color {
     color: inherit !important;
+}
+.table-simple {
+    width: auto !important;
+    max-width: 100%;
+}
+.table-simple tr td {
+    padding: 0 4px !important;
 }
