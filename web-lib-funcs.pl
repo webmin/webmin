@@ -13127,7 +13127,7 @@ else {
 	&get_miniserv_config(\%miniserv);
 	my $proto = $miniserv{'ssl'} ? 'https' : 'http';
 	my $port = $miniserv{'port'};
-	my $host = $forcehost || &get_system_hostname();
+	my $host = $forcehost || $miniserv{'musthost'} || &get_system_hostname();
 	my $defport = $proto eq 'https' ? 443 : 80;
 	$url = $proto."://".$host.($port == $defport ? "" : ":".$port);
 	$url .= $gconfig{'webprefix'} if ($gconfig{'webprefix'});
