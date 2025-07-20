@@ -482,6 +482,10 @@ details[open].inline > summary:after {
   content: '⏷';
 }
 
+details.inline.fit > summary + span {
+  width: min-content;
+}
+
 [data-second-print]:has(details) + br:has(+[data-x-br]) {
   display: none;
 }
