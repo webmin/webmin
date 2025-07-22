@@ -19,7 +19,7 @@ $limitsql = &get_search_limit(\%in);
 ($sortsql, $sorthids, $sortargs) = &get_search_sort(\%in);
 
 $d = &execute_sql($in{'db'},
-	"select * from ".&quote_table($in{'table'})." $search $limitsql $sortsql");
+	"select * from ".&quote_table($in{'table'})." $search $sortsql $limitsql");
 
 # Work out the MIME type based on the data
 $data = $d->{'data'}->[$in{'row'}]->[$in{'col'}];
