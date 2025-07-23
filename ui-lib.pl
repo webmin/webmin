@@ -3410,7 +3410,7 @@ sub ui_tag_content
 return theme_ui_tag_content(@_) if (defined(&theme_ui_tag_content));
 my ($content) = @_;
 my $rv;
-$rv = $content."\n" if (defined($content));
+$rv = $content if (defined($content));
 return $rv;
 }
 
