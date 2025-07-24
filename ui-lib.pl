@@ -1602,7 +1602,7 @@ return &theme_ui_buttons_end(@_) if (defined(&theme_ui_buttons_end));
 return "</table>\n";
 }
 
-=head2 ui_buttons_row(script, button-label, description, [hiddens], [after-submit], [before-submit])
+=head2 ui_buttons_row(script, button-label, description, [hiddens], [after-submit], [before-submit], [postmethod])
 
 Returns HTML for a button with a description next to it, and perhaps other
 inputs. The parameters are :
@@ -1619,15 +1619,18 @@ inputs. The parameters are :
 
 =item before-submit - HTML for text or inputs to appear before the submit button.
 
+=item postmethod - Defines the method used to submit the form. Defaults to 'post'.
+
 =cut
 sub ui_buttons_row
 {
 return &theme_ui_buttons_row(@_) if (defined(&theme_ui_buttons_row));
-my ($script, $label, $desc, $hiddens, $after, $before) = @_;
+my ($script, $label, $desc, $hiddens, $after, $before, $postmethod) = @_;
+$postmethod ||= 'post';
 if (ref($hiddens)) {
 	$hiddens = join("\n", map { &ui_hidden(@$_) } @$hiddens);
 	}
-return "<form action='$script' class='ui_buttons_form' method='post'>\n".
+return "<form action='$script' class='ui_buttons_form' method='$postmethod'>\n".
        $hiddens.
        "<tr class='ui_buttons_row'> ".
        "<td nowrap width='20%' valign='top' class='ui_buttons_label'>".
