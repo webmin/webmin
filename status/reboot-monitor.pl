@@ -9,7 +9,8 @@ if (&package_updates::check_reboot_required()) {
 	         'desc' => $text{'reboot_pkgs'} };
 	}
 else {
-	return { 'up' => 1 };
+	return { 'up' => 1,
+		 'desc' => $text{'reboot_no'} };
 	}
 }
 

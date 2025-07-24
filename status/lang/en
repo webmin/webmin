@@ -605,6 +605,7 @@ imap_eport=Missing or non-numeric IMAP server port
 imap_euser=Missing IMAP login
 
 reboot_pkgs=Package updates require a reboot
+reboot_no=No reboot required
 
 phpini_file=PHP-FPM version
 phpini_nofile=PHP-FPM configuration file not found!
