@@ -6,7 +6,7 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 require './firewalld-lib.pl';
-our (%in, %text);
+our (%in, %text, %config);
 &ReadParse();
 
 # Setup error messages
@@ -31,6 +31,7 @@ $ip =~ s/\Q$mask\E// if ($mask);
 
 # Block the IP
 my $perm = $in{'permanent'} ? 'perm' : '';
+my $timeout = $config{'timeout'} unless ($perm && $config{'timeout'});
 my ($out, $rs) = &rich_rule('add',
 	{ 'rule' =>
 		&construct_rich_rule(
@@ -38,7 +39,8 @@ my ($out, $rs) = &rich_rule('add',
 			'action' => $allow ? 'accept' : undef,
 			'priority' => $allow ? -32767 : -32766,
 		),
-	  'zone' => $zone->{'name'}, 'permanent' => $perm });
+	  'zone' => $zone->{'name'}, 'permanent' => $perm,
+	  'timeout' => $timeout });
 &error($out) if ($rs);
 &apply_firewalld() if ($perm);
 
