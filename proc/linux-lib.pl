@@ -513,7 +513,12 @@ if (&has_command("sensors")) {
 
         # CPU full output must have either voltage or fan data
         my ($cpu_volt) = $_ =~ /(?|in[\d+]\s*:\s+([\+\-0-9\.]+)\s+V|cpu\s+core\s+voltage\s*:\s+([0-9\.]+)\s+V)/i;
-        my ($cpu_fan_num, $cpu_fan_rpm) = $_ =~ /(?|fan([\d+])\s*:\s*([0-9]+)\s*rpm|cpu(\s)fan\s*:\s*([0-9]+)\s*rpm|cpu\s+fan\s*:\s*([0-9]+)\s*rpm)/i;
+	# CPU fans should be always labeled as 'cpu fan' or 'cpu_fan' or 'cpufan'
+	# and/or 'cpu fan 1', 'cpu_fan1', 'cpufan1', 'cpu_fan 2', 'cpu_fan2',
+	# 'cpufan2' etc.
+        my ($cpu_fan_num, $cpu_fan_rpm) =
+		$_ =~ /(?|^\s*cpu[_ ]?fan(?:[_ ]?(\d+))?\s*:\s*(\d+)\s*rpm)/i;
+	$cpu_fan_num //= 1 if (defined($cpu_fan_rpm));
         $cpu++ if ($cpu_volt || $cpu_fan_num);
 
         # First just store fan data for any device if any
