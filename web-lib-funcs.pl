@@ -14004,6 +14004,82 @@ if (&read_env_file($wconfig, \%wconfig) &&
 return '';
 }
 
+# encrypt_phrase(plain, passphrase)
+# Encrypts a phrase using OpenSSL and a passphrase
+sub encrypt_phrase
+{
+my ($plain, $passphrase) = @_;
+my $openssl = &has_command('openssl');
+# Check if parameters are defined
+unless ($plain && $passphrase) {
+	return wantarray ? (undef, 'Missing parameters') : undef;
+	}
+# Check if OpenSSL is available
+unless ($openssl) {
+	return wantarray ? (undef, 'OpenSSL command not found') : undef;
+	}
+# Temp file for plaintext
+my $src = &transname();
+&write_file_contents($src, $plain);
+# Shell-escape single quotes in the passphrase
+$passphrase =~ s/'/'\\''/g;
+# Encrypt
+my $cmd = "$openssl enc -aes-256-cbc -a -A -salt -pbkdf2 -iter 100000 ".
+	  "-pass pass:'$passphrase' <$src 2>&1";
+my $out = &backquote_logged($cmd);
+# Return if error
+return wantarray ? (undef, $out) : undef if ($?);
+# Remove newlines
+$out =~ s/\s+\z//;
+# Check if result is valid
+if (!&is_encrypt_phrase($out)) {
+	# Encryption failed
+	return wantarray 
+		? (undef, "Encryption failed with invalid cipher result : $out")
+		: undef;
+	}
+# Return successfully created ciphertext
+return wantarray ? ($out, undef) : $out;
+}
+
+# decrypt_phrase(ciphertext, passphrase)
+# Decrypts a ciphertext using OpenSSL and a passphrase
+sub decrypt_phrase
+{
+my ($cipher, $passphrase) = @_;
+my $openssl = &has_command('openssl');
+# Check if OpenSSL is available
+if (!$openssl) {
+	return wantarray ? (undef, 'OpenSSL command not found') : undef;
+	}
+# Tempfile for ciphertext
+my $src = &transname();
+&write_file_contents($src, $cipher);
+# Shell-escape single quotes in the passphrase
+$passphrase =~ s/'/'\\''/g;
+# Decrypt
+my $cmd = "$openssl enc -d -aes-256-cbc -a -A -pbkdf2 -iter 100000 ".
+	  "-pass pass:'$passphrase' <$src 2>&1";
+my $out = &backquote_logged($cmd);
+# Return if error
+return wantarray ? (undef, $out) : undef if ($?);
+# Return result
+return wantarray ? ($out, undef) : $out;
+}
+
+# is_encrypt_phrase(ciphertext)
+# Checks if a ciphertext is encrypted correctly
+sub is_encrypt_phrase
+{
+my ($ct) = @_;
+unless (defined($ct) && $ct =~ /^[A-Za-z0-9+\/]+=*$/ && length($ct) % 4 == 0) {
+	# Invalid ciphertext format
+	return 0;
+	}
+# Check if is OpenSSL salt header
+return &decode_base64($ct) =~ /^Salted__/ ? 1 : 0;
+}
+
 $done_web_lib_funcs = 1;
 
 1;
