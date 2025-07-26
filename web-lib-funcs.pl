@@ -14004,11 +14004,11 @@ if (&read_env_file($wconfig, \%wconfig) &&
 return '';
 }
 
-# encrypt_phrase(plain, passphrase)
+# encrypt_phrase(plain, passphrase, [run-as-user])
 # Encrypts a phrase using OpenSSL and a passphrase
 sub encrypt_phrase
 {
-my ($plain, $passphrase) = @_;
+my ($plain, $passphrase, $run_as) = @_;
 my $openssl = &has_command('openssl');
 # Check if parameters are defined
 unless ($plain && $passphrase) {
@@ -14023,8 +14023,13 @@ my $src = &transname();
 &write_file_contents($src, $plain);
 # Encrypt
 $passphrase = quotemeta($passphrase);
-my $cmd = "$openssl enc -aes-256-cbc -a -A -salt -pbkdf2 -iter 100000 ".
-	  "-pass pass:'$passphrase' <$src 2>&1";
+my @args = (
+	$openssl, 'enc', '-aes-256-cbc', '-a', '-A', '-salt',
+	'-pbkdf2', '-iter', '100000',
+	'-pass', "pass:$passphrase",
+	'-in',   $src,
+);
+my $cmd = &command_as_user($run_as || 'nobody', 0, @args) . ' 2>&1';
 my $out = &backquote_logged($cmd);
 # Return if error
 return wantarray ? (undef, $out) : undef if ($?);
@@ -14041,11 +14046,11 @@ if (!&is_encrypt_phrase($out)) {
 return wantarray ? ($out, undef) : $out;
 }
 
-# decrypt_phrase(ciphertext, passphrase)
+# decrypt_phrase(ciphertext, passphrase, [run-as-user])
 # Decrypts a ciphertext using OpenSSL and a passphrase
 sub decrypt_phrase
 {
-my ($cipher, $passphrase) = @_;
+my ($cipher, $passphrase, $run_as) = @_;
 my $openssl = &has_command('openssl');
 # Check if OpenSSL is available
 if (!$openssl) {
@@ -14056,8 +14061,13 @@ my $src = &transname();
 &write_file_contents($src, $cipher);
 # Decrypt
 $passphrase = quotemeta($passphrase);
-my $cmd = "$openssl enc -d -aes-256-cbc -a -A -pbkdf2 -iter 100000 ".
-	  "-pass pass:'$passphrase' <$src 2>&1";
+my @args = (
+	$openssl, 'enc', '-d', '-aes-256-cbc', '-a', '-A',
+	'-pbkdf2', '-iter', '100000',
+	'-pass', "pass:$passphrase",
+	'-in',   $src,
+);
+my $cmd = &command_as_user($run_as || 'nobody', 0, @args) . ' 2>&1';
 my $out = &backquote_logged($cmd);
 # Return if error
 return wantarray ? (undef, $out) : undef if ($?);
