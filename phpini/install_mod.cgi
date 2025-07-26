@@ -31,7 +31,7 @@ if ($got) {
 	}
 
 # Try to install them
-&ui_print_header("<tt>".&html_escape($in{'file'})."</tt>",
+&ui_print_unbuffered_header("<tt>".&html_escape($in{'file'})."</tt>",
 		 $text{'imod_title'}, "");
 
 print &text('imod_alldoing', "<tt>".&html_escape($in{'mod'})."</tt>",
