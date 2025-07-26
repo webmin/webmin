@@ -14021,9 +14021,8 @@ unless ($openssl) {
 # Temp file for plaintext
 my $src = &transname();
 &write_file_contents($src, $plain);
-# Shell-escape single quotes in the passphrase
-$passphrase =~ s/'/'\\''/g;
 # Encrypt
+$passphrase = quotemeta($passphrase);
 my $cmd = "$openssl enc -aes-256-cbc -a -A -salt -pbkdf2 -iter 100000 ".
 	  "-pass pass:'$passphrase' <$src 2>&1";
 my $out = &backquote_logged($cmd);
@@ -14055,9 +14054,8 @@ if (!$openssl) {
 # Tempfile for ciphertext
 my $src = &transname();
 &write_file_contents($src, $cipher);
-# Shell-escape single quotes in the passphrase
-$passphrase =~ s/'/'\\''/g;
 # Decrypt
+$passphrase = quotemeta($passphrase);
 my $cmd = "$openssl enc -d -aes-256-cbc -a -A -pbkdf2 -iter 100000 ".
 	  "-pass pass:'$passphrase' <$src 2>&1";
 my $out = &backquote_logged($cmd);
