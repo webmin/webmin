@@ -3,6 +3,7 @@
 
 use lib ("$ENV{'PERLLIB'}/vendor_perl");
 use Net::WebSocket::Server;
+use IO::Socket::INET;
 use utf8;
 
 require './xterm-lib.pl';
@@ -105,8 +106,16 @@ $SIG{'ALRM'} = sub {
 alarm(60);
 &error_stderr("Listening on port $port");
 my ($wsconn, $shellbuf);
+my $server_socket = IO::Socket::INET->new(
+    Listen    => 5,
+    LocalAddr => '127.0.0.1',
+    LocalPort => $port,
+    Proto     => 'tcp',
+    ReuseAddr => 1,
+);
+$server_socket || die "failed to listen on port $port";
 Net::WebSocket::Server->new(
-	listen     => $port,
+	listen     => $server_socket,
 	on_connect => sub {
 		my ($serv, $conn) = @_;
 		&error_stderr("WebSocket connection established");
