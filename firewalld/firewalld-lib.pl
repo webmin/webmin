@@ -540,6 +540,14 @@ if (!$zone) {
 	$zone = $zone->{'name'};
 	}
 
+# Timeout
+my $timeout = $opts->{'timeout'};
+if ($timeout) {
+	# Validate timeout format
+	&error(&text('config_timeout_err', $timeout))
+		if ($timeout !~ /^(\d+)([smhd]?)$/);
+	}
+
 # Permanent rule
 my $permanent = $opts->{'permanent'};
 
@@ -548,7 +556,8 @@ my $get_cmd = sub {
 	my ($rtype) = @_;
 	my $type = $rtype ? " --permanent" : "";
 	return "$config{'firewall_cmd'} --zone=\"".quotemeta($zone)."\"".
-	       "$type --".quotemeta($action)."-rich-rule='$opts->{'rule'}'";
+	       "$type --".quotemeta($action)."-rich-rule='$opts->{'rule'}'".
+	       ($timeout ? " --timeout=".quotemeta($timeout) : "");
 	};
 
 for my $type (0..1) {

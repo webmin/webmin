@@ -50,6 +50,21 @@ index_dependent=Failed to restart $1 dependent service
 index_manual=Edit Config Files.
 index_downrules=FirewallD rules cannot be created or edited and are not enforced unless the server is running.
 
+config_timeout_none=None
+config_timeout_1m=1 minute
+config_timeout_5m=5 minutes
+config_timeout_15m=15 minutes
+config_timeout_30m=30 minutes
+config_timeout_1h=1 hour
+config_timeout_3h=3 hours
+config_timeout_6h=6 hours
+config_timeout_12h=12 hours
+config_timeout_1d=1 day
+config_timeout_3d=3 days
+config_timeout_7d=7 days
+config_timeout_30d=30 days
+config_timeout_err=Invalid timeout value <tt>$1</tt>
+
 manual_title=Edit Config Files
 manual_editsel=Edit FirewallD configuration file
 manual_err=Failed to save config file

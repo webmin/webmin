@@ -31,11 +31,11 @@ if ($got) {
 	}
 
 # Try to install them
-&ui_print_header("<tt>".&html_escape($in{'file'})."</tt>",
+&ui_print_unbuffered_header("<tt>".&html_escape($in{'file'})."</tt>",
 		 $text{'imod_title'}, "");
 
 print &text('imod_alldoing', "<tt>".&html_escape($in{'mod'})."</tt>",
-	    $ver),"<p>\n";
+	    $ver),"<br>\n";
 
 my $ok = 0;
 foreach my $pkg (@poss) {
@@ -57,13 +57,13 @@ foreach my $pkg (@poss) {
 	}
 if ($ok) {
 	print &text('imod_alldone',
-		"<tt>".&html_escape($ok)."</tt>"),"<p>\n";
+		"<tt>".&html_escape($ok)."</tt>");
 	&graceful_apache_restart($in{'file'});
 	&webmin_log("imod", undef, $in{'file'}, { 'mod' => $in{'mod'} });
 	}
 else {
 	print &text('imod_allfailed',
-		"<tt>".&html_escape(join(" ", @poss))."</tt>"),"<p>\n";
+		"<tt>".&html_escape(join(" ", @poss))."</tt>");
 	}
 
 &ui_print_footer("edit_mods.cgi?file=".&urlize($in{'file'}),

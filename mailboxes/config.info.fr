@@ -31,7 +31,7 @@ show_count=Afficher le nombre de messages dans la boîte de réception?,1,1-Oui,
 sort_mode=Trier les boîtes aux lettres par,1,2-Taille,1-Nom d'utilisateur,0-Commander dans le fichier de mot de passe
 show_mail=Afficher uniquement les utilisateurs qui ont du courrier?,1,1-Oui,0-Non
 size_mode=Inclure tous les dossiers dans la taille?,1,1-Oui,0-Non (premier dossier uniquement)
-ignore_users=Ignorer ces noms d'utilisateur (ne pas afficher),15,Liste des utilisateurs ignorés
+ignore_users=Ignorer ces noms d'utilisateur (ne pas afficher),15,userIgnoreList
 ignore_users_enabled=Ignorer l'état de la liste,1,1-Activé,0-Désactivé
 
 line0.5=Options de dossier,11
