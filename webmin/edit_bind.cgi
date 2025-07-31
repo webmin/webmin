@@ -43,6 +43,14 @@ if (&foreign_check("firewall") || &foreign_check("firewalld")) {
 	}
 print &ui_table_row($text{'bind_sockets'}, $stable);
 
+# WebSocket default bind address
+print &ui_table_row($text{'bind_websocaddr'},
+    &ui_radio("websocket_bind_def",
+    	$miniserv{"websocket_bind"} ? 0 : 1,
+	[ [ 1, $text{'bind_websocaddr_localhost'} ],
+	  [ 0, &ui_textbox("websocket_bind",
+	  	$miniserv{"websocket_bind"}, 15) ] ]));
+
 # WebSocket based port
 print &ui_table_row($text{'bind_websocport'},
     &ui_radio("websocket_base_port_def",

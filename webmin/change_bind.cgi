@@ -84,6 +84,14 @@ else {
 	$miniserv{'bind'} = $first->[0];
 	}
 $miniserv{'sockets'} = join(" ", map { "$_->[0]:$_->[1]" } @sockets);
+# WebSocket bind address
+if ($in{'websocket_bind_def'}) {
+	delete($miniserv{'websocket_bind'});
+	}
+else {
+	$miniserv{'websocket_bind'} = $in{'websocket_bind'};
+	}
+# Websocket base port
 if ($in{'websocket_base_port_def'}) {
 	delete($miniserv{'websocket_base_port'});
 	}
