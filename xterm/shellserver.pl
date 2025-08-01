@@ -104,19 +104,16 @@ $SIG{'ALRM'} = sub {
 	die "timeout waiting for connection";
 	};
 alarm(60);
-my %miniserv;
-&get_miniserv_config(\%miniserv);
-my $host = $miniserv{'websocket_bind'} || '127.0.0.1';
-&error_stderr("Listening on port $host:$port");
+&error_stderr("Listening on port $port");
 my ($wsconn, $shellbuf);
 my $server_socket = IO::Socket::INET->new(
     Listen    => 5,
-    LocalAddr => $host,
+    LocalAddr => '127.0.0.1',
     LocalPort => $port,
     Proto     => 'tcp',
     ReuseAddr => 1,
 );
-$server_socket || die "Failed to listen on port $host:$port";
+$server_socket || die "failed to listen on port $port";
 Net::WebSocket::Server->new(
 	listen     => $server_socket,
 	on_connect => sub {
