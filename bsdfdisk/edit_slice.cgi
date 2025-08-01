@@ -41,16 +41,19 @@ print &ui_table_row($text{'slice_sstart'},
 print &ui_table_row($text{'slice_send'},
 	$slice->{'startblock'} + $slice->{'blocks'} - 1);
 
+# GPT type selection
 print &ui_table_row($text{'slice_stype'},
 	&ui_select("type", $slice->{'type'},
-		   [ sort { $a->[1] cmp $b->[1] }
-			  map { [ $_, &fdisk::tag_name($_) ] }
-			      &fdisk::list_tags() ]));
+		   [ &list_partition_types() ]));
 
 print &ui_table_row($text{'slice_sactive'},
 	$slice->{'active'} ? $text{'yes'} :
 		&ui_yesno_radio("active", $slice->{'active'}));
+# Label field
+print &ui_table_row($text{'slice_label'},
+	  &ui_textbox("label", $slice->{'label'}, 20));
 
+# Usage status
 print &ui_table_row($text{'slice_suse'},
 	!@st ? $text{'part_nouse'} :
 	$st[2] ? &text('part_inuse', $use) :
@@ -74,6 +77,7 @@ if (@{$slice->{'parts'}}) {
 		$text{'slice_start'},
 		$text{'slice_end'},
 		$text{'slice_use'},
+		$text{'slice_label'},
 		]);
 	foreach my $p (@{$slice->{'parts'}}) {
 		# Create images for the extent
@@ -104,6 +108,7 @@ if (@{$slice->{'parts'}}) {
 			$p->{'startblock'},
 			$p->{'startblock'} + $p->{'blocks'} - 1,
 			$use,
+			$p->{'label'},
 			]);
 		}
 	print &ui_columns_end();
