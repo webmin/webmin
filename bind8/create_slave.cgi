@@ -57,6 +57,7 @@ foreach my $z (&find("zone", $vconf)) {
 		}
 	}
 my $masterport = $in{'port_def'} ? undef : $in{'port'};
+my $masterkey = $in{'key_def'} ? undef : $in{'key'};
 my @masters = split(/\s+/, $in{'masters'});
 foreach my $m (@masters) {
 	&check_ipaddress($m) || &check_ip6address($m) ||
@@ -105,6 +106,9 @@ my $masters = { 'name' => 'masters',
 	     'members' => \@mdirs };
 if (defined($masterport)) {
 	$masters->{'values'} = [ 'port', $masterport ];
+	}
+if ($masterkey) {
+	$masters->{'values'} = [ 'key', $masterkey ];
 	}
 my $dir = { 'name' => 'zone',
 	 'values' => [ $in{'zone'} ],

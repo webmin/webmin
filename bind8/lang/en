@@ -184,6 +184,7 @@ slave_ecannot=You are not allowed to edit this zone
 slave_opts=Zone Options
 slave_masters=Master servers
 slave_masterport=Server port
+slave_masterkey=Server key
 slave_max=Maximum transfer time
 slave_file=Records file
 slave_check=Check names?
