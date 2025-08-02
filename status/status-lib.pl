@@ -673,7 +673,13 @@ return &get_webprefix().
 
 sub status_to_string
 {
-my ($up) = @_;
+my ($up, $serv) = @_;
+if ($serv) {
+	do $serv->{'type'}."-monitor.pl" if (!$done_monitor{$serv->{'type'}}++);
+	my $f = "get_".$serv->{'type'}."_upmsg";
+	my $msg = defined(&$f) ? &$f($up) : undef;
+	return $msg if (defined($msg));
+	}
 return $up == 1 ? $text{'mon_up'} :
        $up == -1 ? $text{'mon_not'} :
        $up == -2 ? $text{'mon_webmin'} :

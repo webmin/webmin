@@ -83,7 +83,7 @@ if (!$in{'type'}) {
 		      ($stat->{'desc'} && $stat->{'up'} == 0 ?
 			 "<font color=#ff0000>$stat->{'desc'}</font>" :
 		       $stat->{'desc'} ? $stat->{'desc'}
-				       : &status_to_string($stat->{'up'})).
+				       : &status_to_string($stat->{'up'}, $serv)).
 			"</td>\n";
 		$stable .= "</tr>\n";
 		}

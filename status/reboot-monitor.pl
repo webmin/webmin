@@ -19,5 +19,12 @@ sub parse_reboot_dialog
 return undef;
 }
 
+sub get_reboot_upmsg
+{
+my ($up) = @_;
+return $up == 0 ? $text{'yes'} :
+       $up == 1 ? $text{'no'} : undef;
+}
+
 1;
 
