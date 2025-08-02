@@ -682,39 +682,5 @@ return $up == 1 ? $text{'mon_up'} :
                    "<font color=#ff0000>$text{'mon_down'}</font>";
 }
 
-sub get_services_current_status
-{
-my (@serv) = @_;
-my %monitors;
-foreach my $s (@serv) {
-    my $title = &html_escape($s->{'desc'});
-    my %monitor;
-    $monitor{'title'} = $title;
-    my @stats = &service_status($s, 1);
-    if ($s->{'depend'}) {
-        my $ds = &get_service($s->{'depend'});
-        if ($ds) {
-            my @dstats = &service_status($ds, 1);
-            if ($dstats[0]->{'up'} != 1) {
-                @stats = map {{ 'up' => -4 }} @stats;
-                }
-            }
-        }
-    my @ups     = map {$_->{'up'}} @stats;
-    my @remotes = map {$_->{'remote'}} @stats;
-    for (my $i = 0; $i < @ups; $i++) {
-        my $up = $ups[$i];
-        my $h  = $remotes[$i];
-        $h  = $text{'index_local'} if ($h eq '*');
-        $monitor{'status'} = $up;
-        $monitor{'status_text'}  = &status_to_string($h);
-        $monitor{'icon'} = &get_status_icon($up);
-        $monitor{'icon_title'}  = &html_escape($h);
-        }
-    $monitors{$s->{'id'}} = \%monitor;
-    }
-return %monitors;
-}
-
 1;
 
