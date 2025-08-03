@@ -2041,11 +2041,10 @@ return @rv;
 # Properly closes all open POP3 and IMAP sessions
 sub pop3_logout_all
 {
-local $f;
-foreach $f (keys %pop3_login_handle) {
+foreach my $f (keys %pop3_login_handle) {
 	&pop3_logout($pop3_login_handle{$f}, 1);
 	}
-foreach $f (keys %imap_login_handle) {
+foreach my $f (keys %imap_login_handle) {
 	&imap_logout($imap_login_handle{$f}, 1);
 	}
 }
@@ -2057,21 +2056,45 @@ foreach $f (keys %imap_login_handle) {
 # unread, and the number special.
 sub imap_login
 {
-local ($folder) = @_;
-local $defport = $folder->{'ssl'} ? 993 : 143;
-local $port = $folder->{'port'} || $defport;
-local $key = join("/", $folder->{'server'}, $port, $folder->{'user'});
-local $h = $imap_login_handle{$key};
-local @rv;
-if (!$h) {
+my ($folder) = @_;
+my $defport = $folder->{'ssl'} ? 993 : 143;
+my $port = $folder->{'port'} || $defport;
+my $key = join("/", $folder->{'server'}, $port, $folder->{'user'});
+my $h = $imap_login_handle{$key};
+my @rv;
+if (!$h && $folder->{'server'} eq '*') {
+	# Try running the Dovecot imap command
+	my $imapcmd;
+	foreach my $c ("/usr/libexec/dovecot/imap") {
+		if (&has_command($c)) {
+			$imapcmd = $c;
+			last;
+			}
+		}
+	$imapcmd || return (0, "Dovecot imap command not found");
+	$imapcmd .= " -u ".($folder->{'user'} eq "*" ? $remote_user : $folder->{'user'});
+	print DEBUG "Running IMAP server $imapcmd\n";
+	#&foreign_require("proc");
+	#my ($h, $pid) = &proc::pty_process_exec($imapcmd);
+	use IPC::Open3;
+	my ($writefh, $readfh, $errorfh);
+	my $pid = open3($writefh, $readfh, $errorfh, $imapcmd);
+	print DEBUG "pid=$pid\n";
+	$pid || return (0, "Failed to run $imapcmd");
+	my $l = <$readfh>;	# Skip PREAUTH line
+	$h = [ $writefh, $readfh, $pid ];
+	$imap_login_handle{$key} = $h;
+	$imap_login_ssl{$h} = 0;
+	}
+elsif (!$h && $folder->{'server'} ne '*') {
 	# Need to open socket
 	$h = ($folder->{'ssl'} ? "SSL" : "")."IMAP".time().++$imap_login_count;
-	local $error;
+	my $error;
 	print DEBUG "Connecting to IMAP server $folder->{'server'}:$port\n";
 	&open_socket($folder->{'server'}, $port, $h, \$error);
 	print DEBUG "IMAP error=$error\n" if ($error);
 	return (0, $error) if ($error);
-	local $os = select($h); $| = 1; select($os);
+	my $os = select($h); $| = 1; select($os);
 	if ($folder->{'ssl'}) {
 		# Switch to SSL mode
                 eval "use Net::SSLeay";
@@ -2091,9 +2114,9 @@ if (!$h) {
 	# Login normally
 	@rv = &imap_command($h);
 	return (0, $rv[3] || "No response") if (!$rv[0]);
-	local $user = $folder->{'user'} eq '*' ? $remote_user
+	my $user = $folder->{'user'} eq '*' ? $remote_user
 					       : $folder->{'user'};
-	local $pass = $folder->{'pass'};
+	my $pass = $folder->{'pass'};
 	$pass =~ s/\\/\\\\/g;
 	$pass =~ s/"/\\"/g;
 	@rv = &imap_command($h,"login \"$user\" \"$pass\"");
@@ -2105,8 +2128,8 @@ if (!$h) {
 # Select the right folder (if one was given)
 @rv = &imap_command($h, "select \"".($folder->{'mailbox'} || "INBOX")."\"");
 return (3, $rv[3]) if (!$rv[0]);
-local $count = $rv[2] =~ /\*\s+(\d+)\s+EXISTS/i ? $1 : undef;
-local $uidnext = $rv[2] =~ /UIDNEXT\s+(\d+)/ ? $1 : undef;
+my $count = $rv[2] =~ /\*\s+(\d+)\s+EXISTS/i ? $1 : undef;
+my $uidnext = $rv[2] =~ /UIDNEXT\s+(\d+)/ ? $1 : undef;
 return (1, $h, $count, $uidnext);
 }
 
@@ -2124,6 +2147,15 @@ if (!$h) {
 my $ssl_con = $imap_login_ssl{$h};
 my @rv;
 
+# Get file handles for writing and reading
+my ($writefh, $readfh);
+if (ref($h)) {
+	($writefh, $readfh) = @$h;
+	}
+else {
+	$writefh = $readfh = $h;
+	}
+
 # Send the command, and read lines until a non-* one is found
 my $id = $$."-".$imap_command_count++;
 my ($first, $rest) = split(/\r?\n/, $c, 2);
@@ -2136,8 +2168,8 @@ if ($rest) {
 		$l = Net::SSLeay::ssl_read_until($ssl_con);
 		}
 	else {
-		print $h "$id $first\r\n";
-		$l = <$h>;
+		print $writefh "$id $first\r\n";
+		$l = <$readfh>;
 		}
 	print DEBUG "imap line $l";
 	if ($l =~ /^\+/) {
@@ -2145,7 +2177,7 @@ if ($rest) {
 			Net::SSLeay::write($ssl_con, $rest."\r\n");
 			}
 		else {
-			print $h $rest."\r\n";
+			print $writefh $rest."\r\n";
 			}
 		}
 	else {
@@ -2159,7 +2191,7 @@ elsif ($c) {
 		Net::SSLeay::write($ssl_con, "$id $c\r\n");
 		}
 	else {
-		print $h "$id $c\r\n";
+		print $writefh "$id $c\r\n";
 		}
 	print DEBUG "imap command $id $c\n";
 	}
@@ -2169,7 +2201,7 @@ while(1) {
 		$l = Net::SSLeay::ssl_read_until($ssl_con);
 		}
 	else {
-		$l = <$h>;
+		$l = <$readfh>;
 		}
 	print DEBUG "imap line $l";
 	last if (!$l);
@@ -2191,7 +2223,7 @@ while(1) {
 					$r = length($buf);
 					}
 				else {
-					$r = read($h, $buf, $size-$got);
+					$r = read($readfh, $buf, $size-$got);
 					}
 				return (0, [ $err ], $err, $err) if ($r <= 0);
 				$rv[$#rv] .= $buf;
@@ -2229,12 +2261,19 @@ else {
 # imap_logout(handle, doquit)
 sub imap_logout
 {
-local @rv = $_[1] ? &imap_command($_[0], "close") : (1, undef);
-local $f;
-foreach $f (keys %imap_login_handle) {
-	delete($imap_login_handle{$f}) if ($imap_login_handle{$f} eq $_[0]);
+my ($h, $quit) = @_;
+my @rv = $quite ? &imap_command($h, "close") : (1, undef);
+foreach my $f (keys %imap_login_handle) {
+	delete($imap_login_handle{$f}) if ($imap_login_handle{$f} eq $h);
 	}
-close($_[0]);
+if (ref($h)) {
+	close($h->[0]);
+	close($h->[1]);
+	waitpid($h->[2], 0);
+	}
+else {
+	close($h);
+	}
 return @rv;
 }
 
