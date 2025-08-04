@@ -464,6 +464,18 @@ details.inline.inlined {
     display: inline !important;
 }
 
+details > span .ui_alert_box {
+    margin-top: 5px;
+}
+
+details > span .ui_alert_box:not(:has(+p)) {
+    margin-bottom: 5px;
+}
+
+details.inline.inlined > span {
+    margin-top: 10px;
+}
+
 details.inline > summary + span > tt {
   font-size: 96%;
 }
