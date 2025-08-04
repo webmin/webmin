@@ -459,6 +459,11 @@ details.inline > summary + span {
   line-height: 1.33;
 }
 
+details.inline.inlined > summary,
+details.inline.inlined {
+    display: inline !important;
+}
+
 details.inline > summary + span > tt {
   font-size: 96%;
 }
