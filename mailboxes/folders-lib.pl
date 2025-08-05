@@ -2065,7 +2065,8 @@ my @rv;
 if (!$h && $folder->{'server'} eq '*') {
 	# Try running the Dovecot imap command
 	my $imapcmd;
-	foreach my $c ("/usr/libexec/dovecot/imap") {
+	foreach my $c ("/usr/libexec/dovecot/imap",
+		       "/usr/lib/dovecot/imap") {
 		if (&has_command($c)) {
 			$imapcmd = $c;
 			last;
