@@ -15,7 +15,7 @@ table.formsection, table.ui_table, table.loginform {
 table.ui_table .ui_table {
   border: none;
 }
-table.shrinkwrapper .ui_table {
+table.shrinkwrapper > tbody > tr > td > .ui_table {
   table-layout: fixed;
 }
 img, a img { border:0; }
