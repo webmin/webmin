@@ -672,8 +672,12 @@ if (@$data) {
 $rv .= &ui_columns_table($heads, $width, $data, $types, $nosort, $title,
 			 $emptymsg);
 
+# Add the bottom links unless excluded
+if ($selectall && $selectall != 2) {
+	$rv .= $links;
+	}
+
 # Add form end
-$rv .= $links;
 if (@$data) {
 	$rv .= &ui_form_end($buttons);
 	}
