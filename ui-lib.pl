@@ -795,7 +795,7 @@ if ( !$nojs ) {
 return $rv;
 }
 
-=head2 ui_textbox(name, value, size, [disabled?], [maxlength], [tags])
+=head2 ui_textbox(name, value, size, [disabled?], [maxlength], [tags], [class])
 
 Returns HTML for a text input box. The parameters are :
 
@@ -815,9 +815,11 @@ Returns HTML for a text input box. The parameters are :
 sub ui_textbox
 {
 return &theme_ui_textbox(@_) if (defined(&theme_ui_textbox));
-my ($name, $value, $size, $dis, $max, $tags) = @_;
+my ($name, $value, $size, $dis, $max, $tags, $cls) = @_;
+$cls ||= "";
+$cls = " $cls" if ($cls);
 $size = &ui_max_text_width($size);
-return "<input class='ui_textbox' type='text' ".
+return "<input class='ui_textbox$cls' type='text' ".
        "name=\"".&html_escape($name)."\" ".
        "id=\"".&html_escape($name)."\" ".
        "value=\"".&html_escape($value)."\" ".
