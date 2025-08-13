@@ -1753,6 +1753,11 @@ return &unique(map { $_->{'file'} } @$conf);
 sub get_account_lock_status
 {
 my ($user, $host) = @_;
+my ($ver, $variant) = &get_remote_mysql_variant();
+if (($variant eq "mariadb" && &compare_version_numbers($ver, "<", "10.2.0")) ||
+    ($variant eq "mysql" && &compare_version_numbers($ver, "<", "5.7"))) {
+	return undef;
+	}
 my $rv = &execute_sql_safe($master_db, 'show create user ?@?', $user, $host);
 return undef if (!ref($rv) || !@{$rv->{'data'}});
 return $rv->{'data'}->[0][0] =~ /account\s+lock/i ? 1 : 0;
