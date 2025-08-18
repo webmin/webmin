@@ -2906,11 +2906,12 @@ if ($@) {
 return $rv;
 }
 
-# send_text_mail(from, to, cc, subject, body, [smtp-server])
+# send_text_mail(from, to, cc, subject, body, [smtp-server],
+# 		 [smtp-user, smtp-pass])
 # A convenience function for sending a email with just a text body
 sub send_text_mail
 {
-local ($from, $to, $cc, $subject, $body, $smtp) = @_;
+local ($from, $to, $cc, $subject, $body, $smtp, $user, $pass) = @_;
 local $cs = &get_charset();
 local $attach = 
 	{ 'headers' => [ [ 'Content-Type', 'text/plain; charset='.$cs ],
@@ -2922,7 +2923,7 @@ local $mail = { 'headers' =>
 		  [ 'Cc', $cc ],
 		  [ 'Subject', &encode_mimewords($subject) ] ],
 		'attach' => [ $attach ] };
-return &send_mail($mail, undef, 1, 0, $smtp);
+return &send_mail($mail, undef, 1, 0, $smtp, $user, $pass);
 }
 
 # make_from_line(address, [time])
