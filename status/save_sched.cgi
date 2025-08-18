@@ -60,6 +60,14 @@ else {
 			&error($text{'sched_esmtp'});
 		}
 	$config{'sched_smtp'} = $in{'smtp'};
+	if ($in{'login_def'}) {
+		delete($config{'smtp_user'});
+		delete($config{'smtp_pass'});
+		}
+	else {
+		$config{'smtp_user'} = $in{'smtp_user'};
+		$config{'smtp_pass'} = $in{'smtp_pass'};
+		}
 	}
 if ($in{'webhook_def'}) {
 	delete($config{'sched_webhook'});

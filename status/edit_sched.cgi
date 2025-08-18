@@ -69,6 +69,17 @@ print &ui_table_row($text{'sched_smtp'},
 			$text{'sched_smtp_prog'},
 			$text{'sched_smtp_server'}), 3);
 
+# SMTP authentication
+$user = $config{'smtp_user'};
+$pass = $config{'smtp_pass'};
+print &ui_table_row($text{'sched_login'},
+	&ui_radio("login_def", $user ? 0 : 1,
+		  [ [ 1, $text{'sched_login1'}."<br>" ],
+		    [ 0, $text{'sched_login0'} ] ])." ".
+	&ui_textbox("smtp_user", $user, 20)." ".
+	$text{'sched_pass'}." ".
+	&ui_textbox("smtp_pass", $pass, 20));
+
 if ($config{'pager_cmd'}) {
 	# Pager number
 	print &ui_table_row($text{'sched_pager'},

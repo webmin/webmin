@@ -368,7 +368,10 @@ local $from = $config{'sched_from'} ? $config{'sched_from'}
 eval {
 	local $main::error_must_die = 1;
 	&mailboxes::send_text_mail($from, $to, undef, $subject, $text,
-				   $config{'sched_smtp'});
+		$config{'sched_smtp'},
+		$config{'sched_smtp'} ?
+			( $config{'smtp_user'}, $config{'smtp_pass'} ) :
+			( undef, undef ));
 	};
 return $@;
 }
