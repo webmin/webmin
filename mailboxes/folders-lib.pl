@@ -2075,9 +2075,10 @@ if (!$h && $folder->{'server'} eq '*') {
 	$imapcmd || return (0, "Dovecot imap command not found");
 	$imapcmd .= " -u ".($folder->{'user'} eq "*" ? $remote_user : $folder->{'user'});
 	print DEBUG "Running IMAP server $imapcmd\n";
-	#&foreign_require("proc");
-	#my ($h, $pid) = &proc::pty_process_exec($imapcmd);
-	use IPC::Open3;
+	eval "use IPC::Open3";
+	if ($@) {
+		return (0, "Missing IPC::Open3 Perl module");
+		}
 	my ($writefh, $readfh, $errorfh);
 	my $pid = open3($writefh, $readfh, $errorfh, $imapcmd);
 	print DEBUG "pid=$pid\n";
