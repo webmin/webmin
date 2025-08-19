@@ -26,7 +26,7 @@ local $uicmd = "$apt_get_command -y ".($force ? " -f" : "")." install $update";
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 local $cmd = "$apt_get_command -y ".($force ? " -f" : "")." install $update";
 print &text('apt_install', "<tt>".&html_escape($uicmd)."</tt>"),"\n";
-print "<pre>";
+print "<pre data-installer>";
 &additional_log('exec', undef, $cmd);
 
 # Run dpkg --configure -a to clear any un-configured packages

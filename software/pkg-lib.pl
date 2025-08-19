@@ -17,7 +17,7 @@ my $force = !$_[2];
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 my $cmd = "pkg install ".$update;
 print &text('pkg_install', "<tt>$cmd</tt>"),"\n";
-print "<pre>";
+print "<pre data-installer>";
 &additional_log('exec', undef, $cmd);
 
 # Run it
