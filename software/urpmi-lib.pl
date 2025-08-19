@@ -14,7 +14,7 @@ local $update = $_[0] || $in{'update'};
 local (@rv, @newpacks);
 local $cmd = "urpmi --force --auto";
 print &text('urpmi_install', "<tt>$cmd $update</tt>"),"\n";
-print "<pre>";
+print "<pre data-installer>";
 &additional_log('exec', undef, "$cmd $update");
 local $qm = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 &open_execute_command(CMD, "$cmd $qm </dev/null", 2);

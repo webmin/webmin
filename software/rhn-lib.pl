@@ -16,7 +16,7 @@ sub update_system_install
 local $update = $_[0] || $in{'update'};
 local @rv;
 print &text('rhn_install', "<tt>up2date $update</tt>"),"\n";
-print "<pre>";
+print "<pre data-installer>";
 &additional_log('exec', undef, "up2date \"$update\"");
 local $qm = quotemeta($update);
 &open_execute_command(CMD, "up2date $qm", 2);

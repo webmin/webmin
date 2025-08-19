@@ -233,7 +233,7 @@ local $update = $_[0] || $in{'update'};
 local (@rv, @newpacks);
 local $cmd = "$ipkg install";
 print &text('IPKG_install', "<tt>$cmd</tt>"),"\n";
-print "<pre>";
+print "<pre data-installer>";
 &additional_log('exec', undef, "$cmd $update");
 local $qm = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 &open_execute_command(CMD, "$cmd $qm", 2);

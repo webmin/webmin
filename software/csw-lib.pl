@@ -35,7 +35,7 @@ do {
 			"<tt>$pkg_get -i $flag $update</tt>"),"\n";
 	$failed = 0;
 	$retry = 0;
-	print "<pre>";
+	print "<pre data-installer>";
 	&open_execute_command(PKGGET,
 		"$pkg_get -i $flag ".quotemeta($update), 2);
 	while(<PKGGET>) {

@@ -223,7 +223,7 @@ my @rv;
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 my $cmd = "pkgin -y install ".$update;
 print &text('pkgsrc_install', "<tt>$cmd</tt>"),"\n";
-print "<pre>";
+print "<pre data-installer>";
 &additional_log('exec', undef, $cmd);
 
 # Run it
