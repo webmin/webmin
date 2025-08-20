@@ -11,6 +11,11 @@ use WebminCore;
 @mail_envs = ( undef, "maildir:~/Maildir", "mbox:~/mail/:INBOX=/var/mail/%u",
 	       "maildir:~/Maildir:mbox:~/mail/" );
 
+# Dovecot version specific mapping if any
+our $base_version = &get_dovecot_based_version();
+require "$module_root_directory/dovecot$base_version-lib.pl"
+	if (-r "$module_root_directory/dovecot$base_version-lib.pl");
+
 # get_config_file()
 # Returns the full path to the first valid config file
 sub get_config_file
@@ -158,6 +163,7 @@ return @rv;
 sub find
 {
 local ($name, $conf, $mode, $sname, $svalue, $first) = @_;
+$name = &map_find($name) if (defined &map_find);
 local @rv = grep { !$_->{'section'} &&
 		   $_->{'name'} eq $name &&
 		   ($mode == 0 && $_->{'enabled'} ||
@@ -166,6 +172,12 @@ if (defined($sname)) {
 	# If a section was requested, limit to it
 	@rv = grep { $_->{'sectionname'} eq $sname &&
 		     $_->{'sectionvalue'} eq $svalue } @rv;
+	}
+if (@rv && defined &map_value) {
+	foreach my $rv (@rv) {
+		my (undef, $v) = &map_value($_[0], $rv->{'value'});
+		$rv->{'value'} = $v;
+		}
 	}
 if (wantarray) {
 	return @rv;
@@ -219,6 +231,16 @@ return wantarray ? @rv : $rv[0];
 sub save_directive
 {
 local ($conf, $name, $value, $sname, $svalue) = @_;
+if (defined &map_value) {
+	if (ref($name)) {
+		my ($nn, $vv) = &map_value($name->{'name'}, $value);
+		$name->{'name'} = $nn;
+		$value = $vv;
+		}
+	else {
+		($name, $value) = &map_value($name, $value);
+		}
+	}
 $newconf = [ grep { $_->{'file'} !~ /^\/usr\/share\/dovecot/ &&
                     $_->{'file'} !~ /^\/opt/ } @$conf ];
 if (@$newconf) {
@@ -319,6 +341,9 @@ elsif (!$dir && defined($value)) {
 sub save_section
 {
 local ($conf, $section) = @_;
+if (defined &map_members) {
+	$section->{'members'} = &map_members($section->{'members'});
+	}
 local $lref = &read_file_lines($section->{'file'});
 local $indent = "  " x $section->{'indent'};
 local @newlines;
@@ -347,6 +372,9 @@ foreach my $m (@{$section->{'members'}}) {
 sub create_section
 {
 local ($conf, $section, $parent, $before) = @_;
+if (defined &map_members) {
+	$section->{'members'} = &map_members($section->{'members'});
+	}
 local $indent = "  " x $section->{'indent'};
 local @newlines;
 push(@newlines, $indent.$section->{'name'}." ".$section->{'value'}." {");
@@ -543,6 +571,15 @@ sub get_dovecot_version
 {
 local $out = &backquote_command("$config{'dovecot'} --version 2>&1");
 return $out =~ /([0-9\.]+)/ ? $1 : undef;
+}
+
+# get_dovecot_based_version()
+# Returns the dovecot version number without the patch level and without dots
+sub get_dovecot_based_version
+{
+my $base_version = &get_dovecot_version();
+$base_version = $base_version =~ /^(\d)\.(\d)/ ? $1.$2 : '';
+return $base_version;
 }
 
 # version_atleast(ver)
