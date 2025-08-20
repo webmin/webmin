@@ -2073,7 +2073,8 @@ if (!$h && $folder->{'server'} eq '*') {
 			}
 		}
 	$imapcmd || return (0, "Dovecot imap command not found");
-	$imapcmd .= " -u ".($folder->{'user'} eq "*" ? $remote_user : $folder->{'user'});
+	$imapcmd .= " -u ".($folder->{'user'} eq "*" ||
+			    !$folder->{'user'} ? $remote_user : $folder->{'user'});
 	print DEBUG "Running IMAP server $imapcmd\n";
 	eval "use IPC::Open3";
 	if ($@) {
