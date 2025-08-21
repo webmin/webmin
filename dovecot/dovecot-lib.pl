@@ -13,8 +13,8 @@ use WebminCore;
 
 # Dovecot version specific mapping if any
 our $base_version = &get_dovecot_based_version();
-require "$module_root_directory/dovecot$base_version-lib.pl"
-	if (-r "$module_root_directory/dovecot$base_version-lib.pl");
+require "$module_root_directory/$module_name$base_version-lib.pl"
+	if (-r "$module_root_directory/$module_name$base_version-lib.pl");
 
 # get_config_file()
 # Returns the full path to the first valid config file
