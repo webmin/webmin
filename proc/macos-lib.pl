@@ -200,11 +200,9 @@ if (!$?) {
 	my @lines = split(/\r?\n/, $out);
 	my @last_line = split(/\s+/, $lines[$#lines]);
 	shift(@last_line) if ($last_line[0] eq '');
-	if (@last_line >= 6) {
-		$user_time = $last_line[3];    # us
-		$system_time = $last_line[4];  # sy
-		$idle_time = $last_line[5];    # id
-		}
+	$user_time = $last_line[-6];    # us
+	$system_time = $last_line[-5];  # sy
+	$idle_time = $last_line[-4];    # id
 	}
 # Get disk I/O
 my ($bi, $bo) = (0, 0);
