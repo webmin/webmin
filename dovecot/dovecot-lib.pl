@@ -12,9 +12,9 @@ use WebminCore;
 	       "maildir:~/Maildir:mbox:~/mail/" );
 
 # Dovecot version specific mapping if any
-our $base_version = &get_dovecot_based_version();
-require "$module_root_directory/$module_name$base_version-lib.pl"
-	if (-r "$module_root_directory/$module_name$base_version-lib.pl");
+our $version = &get_dovecot_based_version();
+require "$module_root_directory/$module_name$version-lib.pl"
+	if (-r "$module_root_directory/$module_name$version-lib.pl");
 
 # get_config_file()
 # Returns the full path to the first valid config file
