@@ -12,6 +12,7 @@ use WebminCore;
 	       "maildir:~/Maildir:mbox:~/mail/" );
 
 # Dovecot version specific mapping if any
+our %dovecot;
 our $version = &get_dovecot_based_version();
 require "$module_root_directory/$module_name$version-lib.pl"
 	if (-r "$module_root_directory/$module_name$version-lib.pl");
@@ -162,6 +163,7 @@ return @rv;
 # Mode 0=enabled, 1=disabled, 2=both
 sub find
 {
+return &dovecot((caller 0)[3], @_) if defined &dovecot && !$dovecot{main};
 local ($name, $conf, $mode, $sname, $svalue, $first) = @_;
 local @rv = grep { !$_->{'section'} &&
 		   $_->{'name'} eq $name &&
@@ -223,6 +225,7 @@ return wantarray ? @rv : $rv[0];
 # Updates one directive in the config file
 sub save_directive
 {
+return &dovecot((caller 0)[3], @_) if defined &dovecot && !$dovecot{main};
 local ($conf, $name, $value, $sname, $svalue) = @_;
 $newconf = [ grep { $_->{'file'} !~ /^\/usr\/share\/dovecot/ &&
                     $_->{'file'} !~ /^\/opt/ } @$conf ];
@@ -323,6 +326,7 @@ elsif (!$dir && defined($value)) {
 # Updates one section in the config file
 sub save_section
 {
+return &dovecot((caller 0)[3], @_) if defined &dovecot && !$dovecot{main};
 local ($conf, $section) = @_;
 local $lref = &read_file_lines($section->{'file'});
 local $indent = "  " x $section->{'indent'};
@@ -351,6 +355,7 @@ foreach my $m (@{$section->{'members'}}) {
 # Adds a section to the config file
 sub create_section
 {
+return &dovecot((caller 0)[3], @_) if defined &dovecot && !$dovecot{main};
 local ($conf, $section, $parent, $before) = @_;
 local $indent = "  " x $section->{'indent'};
 local @newlines;
