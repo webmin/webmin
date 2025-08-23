@@ -1356,7 +1356,7 @@ xfer_done=.. from $1 : Completed OK
 xfer_count=Test transfer successfully fetched $1 records from at least one nameserver. Actual transfers by BIND should also succeed.
 xfer_none=Test transfer appeared to succeed, but didn't actually fetch any records!
 
-tls_title=SSL Keys And Certificates
+tls_title=SSL Keys and Certificates
 tls_ecannot=You are not allowed to edit SSL keys and certificates
 tls_esupport=SSL keys and certificates are not supported on this system
 tls_name=Key name
