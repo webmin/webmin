@@ -34,9 +34,6 @@ my %map = (
 	auth_default_realm     => 'auth_default_domain',
 	disable_plaintext_auth => 'auth_allow_cleartext',
 
-	# Mail
-	mail_location          => 'mail_path',
-
 	# SSL
 	ssl_ca                 => 'ssl_server_ca_file',
 	ssl_ca_file            => 'ssl_client_ca_file',

@@ -10,38 +10,38 @@ $conf = &get_config();
 # Save SSL cert and key
 $in{'cert_def'} || -r $in{'cert'} || $in{'cert'} =~ /^[<>\|]/ ||
 	&error($text{'ssl_ecert'});
-if (&find_value("ssl_cert", $conf, 2) || &version_atleast("2.2")) {
+if (&find_value_mapped("ssl_cert", $conf, 2) || &version_atleast("2.2")) {
 	$in{'cert'} = "<".$in{'cert'} if ($in{'cert'} =~ /^\//);
-	&save_directive($conf, "ssl_cert",
+	&save_directive_mapped($conf, "ssl_cert",
 		        $in{'cert_def'} ? undef : $in{'cert'}, "");
 	}
 else {
-	&save_directive($conf, "ssl_cert_file",
+	&save_directive_mapped($conf, "ssl_cert_file",
 		        $in{'cert_def'} ? undef : $in{'cert'});
 	}
 
 $in{'key_def'} || -r $in{'key'} || $in{'key'} =~ /^[<>\|]/ ||
 	&error($text{'ssl_ekey'});
-if (&find_value("ssl_key", $conf, 2) || &version_atleast("2.2")) {
+if (&find_value_mapped("ssl_key", $conf, 2) || &version_atleast("2.2")) {
 	$in{'key'} = "<".$in{'key'} if ($in{'key'} =~ /^\//);
-	&save_directive($conf, "ssl_key",
+	&save_directive_mapped($conf, "ssl_key",
 		        $in{'key_def'} ? undef : $in{'key'}, "");
 	}
 else {
-	&save_directive($conf, "ssl_key_file",
+	&save_directive_mapped($conf, "ssl_key_file",
 		        $in{'key_def'} ? undef : $in{'key'});
 	}
 
 # Save SSL CA cert
 $in{'ca_def'} || -r $in{'ca'} || $in{'ca'} =~ /^[<>\|]/ ||
 	&error($text{'ssl_eca'});
-if (&find_value("ssl_ca", $conf, 2) || &version_atleast("2.2")) {
+if (&find_value_mapped("ssl_ca", $conf, 2) || &version_atleast("2.2")) {
 	$in{'ca'} = "<".$in{'ca'} if ($in{'ca'} =~ /^\//);
-	&save_directive($conf, "ssl_ca",
+	&save_directive_mapped($conf, "ssl_ca",
 		        $in{'ca_def'} ? undef : $in{'ca'}, "");
 	}
 else {
-	&save_directive($conf, "ssl_ca_file",
+	&save_directive_mapped($conf, "ssl_ca_file",
 		        $in{'ca_def'} ? undef : $in{'ca'});
 	}
 
@@ -54,7 +54,7 @@ $in{'regen_def'} || $in{'regen'} =~ /^\d+$/ || &error($text{'ssl_eregen'});
 &save_directive($conf, "ssl_parameters_regenerate",
 		$in{'regen_def'} ? undef : $in{'regen'});
 
-&save_directive($conf, "disable_plaintext_auth",
+&save_directive_mapped($conf, "disable_plaintext_auth",
 		$in{'plain'} ? $in{'plain'} : undef);
 
 &flush_file_lines();

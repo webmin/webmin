@@ -163,7 +163,6 @@ return @rv;
 # Mode 0=enabled, 1=disabled, 2=both
 sub find
 {
-return &dovecot((caller 0)[3], @_) if defined &dovecot && !$dovecot{main};
 local ($name, $conf, $mode, $sname, $svalue, $first) = @_;
 local @rv = grep { !$_->{'section'} &&
 		   $_->{'name'} eq $name &&
@@ -225,7 +224,6 @@ return wantarray ? @rv : $rv[0];
 # Updates one directive in the config file
 sub save_directive
 {
-return &dovecot((caller 0)[3], @_) if defined &dovecot && !$dovecot{main};
 local ($conf, $name, $value, $sname, $svalue) = @_;
 $newconf = [ grep { $_->{'file'} !~ /^\/usr\/share\/dovecot/ &&
                     $_->{'file'} !~ /^\/opt/ } @$conf ];
@@ -326,7 +324,6 @@ elsif (!$dir && defined($value)) {
 # Updates one section in the config file
 sub save_section
 {
-return &dovecot((caller 0)[3], @_) if defined &dovecot && !$dovecot{main};
 local ($conf, $section) = @_;
 local $lref = &read_file_lines($section->{'file'});
 local $indent = "  " x $section->{'indent'};
@@ -355,7 +352,6 @@ foreach my $m (@{$section->{'members'}}) {
 # Adds a section to the config file
 sub create_section
 {
-return &dovecot((caller 0)[3], @_) if defined &dovecot && !$dovecot{main};
 local ($conf, $section, $parent, $before) = @_;
 local $indent = "  " x $section->{'indent'};
 local @newlines;
@@ -531,7 +527,7 @@ else {
 # Returns 'Default (value)' for some config
 sub getdef
 {
-local $def = &find_value($_[0], &get_config(), 1);
+local $def = &find_value_mapped($_[0], &get_config(), 1);
 if (defined($def)) {
 	local $map;
 	if ($_[1]) {
@@ -612,6 +608,64 @@ if (&get_dovecot_version() >= 2) {
 else {
 	return ( "imap", "pop3", "imaps", "pop3s" );
 	}
+}
+
+# find_mapped(name, &conf, [mode], [sectionname], [sectionvalue], [first])
+# Version aware read
+sub find_mapped
+{
+return &dovecot('find', @_) if defined &dovecot && !$dovecot{main};
+return &find(@_);
+}
+
+# find_value_mapped(name, &config, [disabled-mode], [sectionname], [sectionvalue])
+# Version aware value reader
+sub find_value_mapped
+{
+my ($name, $conf, $mode, $sname, $svalue) = @_;
+my @rv;
+if (defined &dovecot && !$dovecot{main}) {
+	@rv = &dovecot('find', $name, $conf, $mode, $sname, $svalue, undef);
+	}
+else {
+	@rv = &find($name, $conf, $mode, $sname, $svalue, undef);
+	}
+if (wantarray) {
+	return map { $_->{'value'} } @rv;
+	}
+elsif (!@rv) {
+	return undef;
+	}
+else {
+	# Prefer the last one that isn't self-referential
+	my @unself = grep { $_->{'value'} !~ /\$\Q$name\E/ } @rv;
+	@rv = @unself if (@unself);
+	return $rv[$#rv]->{'value'};
+	}
+}
+
+# save_directive_mapped(&conf, name|&dir, value, [sectionname], [sectionvalue])
+# Version aware write
+sub save_directive_mapped
+{
+return &dovecot('save_directive', @_) if defined &dovecot && !$dovecot{main};
+return &save_directive(@_);
+}
+
+# save_section_mapped(&conf, &section)
+# Version aware section update
+sub save_section_mapped
+{
+return &dovecot('save_section', @_) if defined &dovecot && !$dovecot{main};
+return &save_section(@_);
+}
+
+# create_section_mapped(&conf, &section, [&parent], [&before])
+# Version aware section create
+sub create_section_mapped
+{
+return dovecot('create_section', @_) if defined &dovecot && !$dovecot{main};
+return &create_section(@_);
 }
 
 1;

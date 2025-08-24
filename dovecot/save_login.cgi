@@ -10,7 +10,7 @@ $conf = &get_config();
 # Allowed and default realm
 &save_directive($conf, "auth_realms",
 		$in{'realms_def'} ? undef : $in{'realms'});
-&save_directive($conf, "auth_default_realm",
+&save_directive_mapped($conf, "auth_default_realm",
 		$in{'realm_def'} ? undef : $in{'realm'});
 
 # Authentication mechanisms
