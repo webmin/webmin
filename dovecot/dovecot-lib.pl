@@ -614,7 +614,8 @@ else {
 # Version aware read
 sub find_mapped
 {
-return &dovecot('find', @_) if defined &dovecot && !$dovecot{main};
+return &dovecot_shim('find', @_)
+	if defined &dovecot_shim && !$dovecot_shims{main};
 return &find(@_);
 }
 
@@ -624,8 +625,8 @@ sub find_value_mapped
 {
 my ($name, $conf, $mode, $sname, $svalue) = @_;
 my @rv;
-if (defined &dovecot && !$dovecot{main}) {
-	@rv = &dovecot('find', $name, $conf, $mode, $sname, $svalue, undef);
+if (defined &dovecot_shim && !$dovecot_shims{main}) {
+	@rv = &dovecot_shim('find', $name, $conf, $mode, $sname, $svalue, undef);
 	}
 else {
 	@rv = &find($name, $conf, $mode, $sname, $svalue, undef);
@@ -648,7 +649,8 @@ else {
 # Version aware write
 sub save_directive_mapped
 {
-return &dovecot('save_directive', @_) if defined &dovecot && !$dovecot{main};
+return &dovecot_shim('save_directive', @_)
+	if defined &dovecot_shim && !$dovecot_shims{main};
 return &save_directive(@_);
 }
 
@@ -656,7 +658,8 @@ return &save_directive(@_);
 # Version aware section update
 sub save_section_mapped
 {
-return &dovecot('save_section', @_) if defined &dovecot && !$dovecot{main};
+return &dovecot_shim('save_section', @_)
+	if defined &dovecot_shim && !$dovecot_shims{main};
 return &save_section(@_);
 }
 
@@ -664,7 +667,8 @@ return &save_section(@_);
 # Version aware section create
 sub create_section_mapped
 {
-return dovecot('create_section', @_) if defined &dovecot && !$dovecot{main};
+return &dovecot_shim('create_section', @_)
+	if defined &dovecot_shim && !$dovecot_shims{main};
 return &create_section(@_);
 }
 

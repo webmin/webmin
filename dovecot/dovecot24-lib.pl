@@ -1,26 +1,26 @@
 # Dovecot 2.4 compatibility shims
 
-# %dovecot
+# %dovecot_shims
 # Dispatch table of 2.4 overrides keyed by sub name
-our %dovecot = (
+our %dovecot_shims = (
 	find            => \&find_24,
 	save_directive  => \&save_directive_24,
 	save_section    => \&save_section_24,
 	create_section  => \&create_section_24,
 );
 
-# dovecot(caller-sub, @args)
+# dovecot_shim(caller-sub, @args)
 # Single entrypoint that routes a call to a version-specific override
-sub dovecot
+sub dovecot_shim
 {
 my ($sub, @args) = @_;
-return if $dovecot{main};
+return if $dovecot_shims{main};
 (my $subname = $sub) =~ s/^.*:://;
-if (my $thissub = $dovecot{$subname}) {
+if (my $thissub = $dovecot_shims{$subname}) {
 	return $thissub->(@args);
 	}
 my $mainsub = \&{$sub};
-local $dovecot{main} = 1;
+local $dovecot_shims{main} = 1;
 return $mainsub->(@args);
 }
 
@@ -96,7 +96,7 @@ local ($name, $conf, $mode, $sname, $svalue, $first) = @_;
 my $req = $name;
 $name = &map_find($name);
 
-local $dovecot{main} = 1;
+local $dovecot_shims{main} = 1;
 my @rv = &find($name, $conf, $mode, $sname, $svalue, undef);
 
 foreach my $rv (@rv) {
@@ -117,12 +117,12 @@ local ($conf, $name, $value, $sname, $svalue) = @_;
 if (ref $name) {
 	my ($nn, $vv) = &map_value($name->{name}, $value);
 	$name->{name} = $nn; $value = $vv;
-	local $dovecot{main} = 1;
+	local $dovecot_shims{main} = 1;
 	return &save_directive($conf, $name, $value, $sname, $svalue);
 	}
 else {
 	my ($nn, $vv) = &map_value($name, $value);
-	local $dovecot{main} = 1;
+	local $dovecot_shims{main} = 1;
 	return &save_directive($conf, $nn, $vv, $sname, $svalue);
 	}
 }
@@ -133,7 +133,7 @@ sub save_section_24
 {
 local ($conf, $section) = @_;
 $section->{members} = &map_members($section->{members});
-local $dovecot{main} = 1;
+local $dovecot_shims{main} = 1;
 return &save_section($conf, $section);
 }
 
@@ -143,7 +143,7 @@ sub create_section_24
 {
 local ($conf, $section, $parent, $before) = @_;
 $section->{members} = &map_members($section->{members});
-local $dovecot{main} = 1;
+local $dovecot_shims{main} = 1;
 return &create_section($conf, $section, $parent, $before);
 }
 
