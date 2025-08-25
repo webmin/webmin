@@ -47,7 +47,7 @@ else {
 
 # Save SSL key password
 $in{'pass_def'} || $in{'pass'} =~ /\S/ || &error($text{'ssl_epass'});
-&save_directive($conf, "ssl_key_password",
+&save_directive_mapped($conf, "ssl_key_password",
 		$in{'pass_def'} ? undef : $in{'pass'});
 
 $in{'regen_def'} || $in{'regen'} =~ /^\d+$/ || &error($text{'ssl_eregen'});
