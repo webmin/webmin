@@ -14,7 +14,7 @@ print &ui_table_row($text{'login_realms'},
 	    &ui_opt_textbox("realms", $realms, 40, $text{'login_none'}), 3);
 
 # Default authentication realm
-$realm = &find_value("auth_default_realm", $conf);
+$realm = &find_value_mapped("auth_default_realm", $conf);
 print &ui_table_row($text{'login_realm'},
 	    &ui_opt_textbox("realm", $realm, 10, $text{'default'}));
 

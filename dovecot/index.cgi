@@ -33,6 +33,7 @@ if (!&get_config_file()) {
 
 # Show icons for option categories
 @pages = ( "net", "login", "mail", "ssl", "manual" );
+@pages = grep { $_ ne 'login' && $_ ne 'mail' } @pages unless $version < 24;
 @titles = map { $text{$_."_title"} } @pages;
 @icons = map { "images/".$_.".gif" } @pages;
 @links = map { "edit_".$_.".cgi" } @pages;
