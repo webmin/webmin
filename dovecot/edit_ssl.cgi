@@ -51,11 +51,13 @@ print &ui_table_row($text{'ssl_ca'},
 	    [ undef, "nowrap" ]);
 
 # Parameter regen time
-$regen = &find_value("ssl_parameters_regenerate", $conf);
-print &ui_table_row($text{'ssl_regen'},
-		    &ui_opt_textbox("regen", $regen, 5,
-				    &getdef("ssl_parameters_regenerate")).
-				    " ".$text{'ssl_hours'}, 3);
+if ($version < 23) {
+	$regen = &find_value("ssl_parameters_regenerate", $conf);
+	print &ui_table_row($text{'ssl_regen'},
+			&ui_opt_textbox("regen", $regen, 5,
+					&getdef("ssl_parameters_regenerate")).
+					" ".$text{'ssl_hours'}, 3);
+	}
 
 # Disable plaintext passwords when not SSL
 @opts = ( [ 'yes', $text{'yes'} ], [ 'no', $text{'no'} ] );
