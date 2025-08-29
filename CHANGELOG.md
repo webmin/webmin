@@ -131,7 +131,7 @@
 * Update the Authentic theme to the latest version with various fixes and improvements
 
 #### 2.201 (July 24, 2024)
-* Fix real-time monitoring not updating graphs in the Dashboard [#2222](https://github.com/webmin/webmin/issues/2222)
+* Fix real-time monitoring not updating graphs in the dashboard [#2222](https://github.com/webmin/webmin/issues/2222)
 * Fix Terminal module to work correctly with _sudo_-capable users [#2223](https://github.com/webmin/webmin/issues/2223)
 
 #### 2.200 (July 21, 2024)
@@ -244,7 +244,7 @@
 * Add support for editing ACLs in File Manager
 * Add support to configure SSL connection for MySQL/MariaDB module
 * Add support for compressed backups in PostgreSQL module
-* Add support for displaying inodes too in Disk Usage in the Dashboard
+* Add support for displaying inodes too in Disk Usage in the dashboard
 * Add better support for CloudLinux
 * Fix to always default to RSA key type in Let's Encrypt requests
 * Fix setup repository script for Oracle
@@ -252,7 +252,7 @@
 * Fix support for SpamAssassin 4
 * Fix to use system default hashing format for `htpasswd` file
 * Fix FastRPC issues
-* Update the Authentic theme to the latest version, with sped-up Dashboard performance
+* Update the Authentic theme to the latest version, with sped-up dashboard performance
 
 #### 2.013 (January 19, 2023)
 * Fix Authentic theme issue with error handling
