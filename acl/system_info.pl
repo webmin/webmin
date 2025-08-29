@@ -20,7 +20,12 @@ foreach my $k (keys %sessiondb) {
 	next if ($k =~ /^1111111/);
 	next if (!$sessiondb{$k});
 	my ($user, $ltime, $lip) = split(/\s+/, $sessiondb{$k});
-	next if ($user ne $remote_user && $user ne "!".$remote_user);
+	next if (&webmin_user_is_admin()
+		? ($user eq "!" ||
+		   ($user ne $remote_user &&
+		    # Show all logins for past 3 days for admin
+		    $ltime && $ltime < time() - 3*24*60*60))
+		: ($user ne $remote_user && $user ne "!".$remote_user));
 	push(@logins, [ $user, $ltime, $lip, $k ]);
 	}
 if (@logins) {
@@ -29,7 +34,8 @@ if (@logins) {
 		@logins = @logins[0..4];
 		}
 	my $html = &ui_columns_start([ $text{'sessions_host'},
-				       $text{'sessions_login'},
+				       $text{'sessions_user'},
+				       $text{'sessions_login_ago'},
 				       $text{'sessions_state'},
 				       $text{'sessions_action'} ]);
 	my $open = 0;
@@ -62,9 +68,13 @@ if (@logins) {
 		         &ui_link("@{[&get_webprefix()]}/acl/delete_session.cgi?id=$l->[3]&redirect_ref=1",
 		         $text{'sessions_kill'}))
 			}
+		my $user = $l->[0];
+		$user =~ s/^\!//;
 		$html .= &ui_columns_row([
 		          $l->[2],
-		          &make_date($l->[1]),
+		          $user,
+		          &make_date_relative($l->[1]).
+			  	"&nbsp;".&ui_help(&make_date($l->[1])),
 		          $state,
 			  &ui_links_row(\@links) ]);
 		}

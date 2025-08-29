@@ -35,6 +35,7 @@ return [
         { "" => $text{'journal_since0'} },
         { "--follow" => $text{'journal_since1'} },
         { "--boot" => $text{'journal_since2'} },
+        { "--boot -1" => $text{'journal_since2-1'} },
         { "--since '7 days ago'" => $text{'journal_since3'} },
         { "--since '24 hours ago'" => $text{'journal_since4'} },
         { "--since '8 hours ago'" => $text{'journal_since5'} },

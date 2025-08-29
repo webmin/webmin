@@ -355,6 +355,7 @@ unix_utable=Allowed Unix users
 sessions_title=Current Login Sessions
 sessions_id=Session ID
 sessions_user=Webmin user
+sessions_login_ago=Last active ago
 sessions_login=Last active at
 sessions_host=IP address
 sessions_lview=View logs..

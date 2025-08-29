@@ -28,7 +28,7 @@ print &ui_columns_start([ $text{'sessions_id'},
 			  $text{'sessions_state'},
 			  $text{'sessions_user'},
 			  $text{'sessions_host'},
-			  $text{'sessions_login'},
+			  $text{'sessions_login_ago'},
 			  $text{'sessions_actions'},
 			], 100);
 foreach my $k (sort { my @a = split(/\s+/, $sessiondb{$a});
@@ -68,7 +68,8 @@ foreach my $k (sort { my @a = split(/\s+/, $sessiondb{$a});
 		push(@cols, $user);
 		}
 	push(@cols, $lip);
-	push(@cols, &make_date($ltime));
+	push(@cols, &make_date_relative($ltime).
+			"&nbsp;".&ui_help(&make_date($ltime)));
 	my @links;
 	if ($haslog) {
 		push(@links, ui_link("../webminlog/search.cgi?uall=1&mall=1&tall=1&wall=1&fall=1&sid=$k", $text{'sessions_lview'}));

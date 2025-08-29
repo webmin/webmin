@@ -1,12 +1,43 @@
 ## Changelog
 
-#### 2.403 (June 30, 2025)
+#### 2.500 (September, 2025)
 * Add support for the Webmin webserver to work in both HTTP and HTTPS modes at the same time
+* Add distinct warning to the login page if the connection is not secure
+* Add support for timeouts in temporary rules in FirewallD module
+* Add support for the new Dovecot version 2.4
+* Add support for MariaDB version 12 #2522
+* Add support for IMAP through a local command for Usermin
+* Add latest SSLeay support for redirects to SSL work
+* Add improvements to "Bootup and Shutdown" module for _systemd_ systems
+* Add field for secondary server key in BIND module
+* Add reversible encryption helpers API
+* Add API to display relative dates
+* Add API to mask sensitive text, like displayed passwords, unless hovered over
 * Add status monitor for PHP FPM #2499
+* Add support for DNF5 format in the "Software Packages" module
 * Add support for redirecting to the enforced domain when the `musthost_redirect` directive is set
-* Add a UI API to mask sensitive text—like displayed passwords, unless hovered over container
+* Add option to customize the SMTP login for scheduled background monitoring in the "System and Server Status" module
+* Change to show relative dates in "Webmin Users: Current Login Sessions" and "Webmin Actions Log: Search Results" pages
+* Change "Last Logins" on the dashboard to show usernames, relative dates, and all users from the past 3 days
+* Change to always enable HSTS by default
 * Fix MySQL/MariaDB to remove obsolete `set-variable` options that break modern config files #2497
-
+* Fix download link in table rows in MySQL/MariaDB module
+* Fix module not to fail on old MySQL 5.5
+* Update the Authentic theme to the latest version with various improvements and fixes:
+  - Add support to automatically set the color palette based on OS or browser preferences
+  - Add improvements to tooltips in dark palette
+  - Change the default shortcut key for toggling the light/dark palette
+  - Change the default shortcut key for toggling right slider
+  - Change wording to use "shortcut" instead of "hotkey"
+  - Change the default maximum column width
+  - Fix navigation menu load in proxy mode #2502
+  - Fix navigation menu to always stay in sync with the product switch
+  - Fix sporadic issue where the navigation menu disappeared and the content page was shifted
+  - Fix info alert text color and button color in the dark palette
+  - Fix styling of checkboxes and radios for backup and restore pages in Virtualmin
+  - Fix styling for extra backup destinations in Virtualmin
+  - Fix advanced schedule display in the cron chooser in Virtualmin
+    [More details...](https://github.com/webmin/authentic-theme/releases/tag/25.00)
 
 #### 2.402 (June 16, 2025)
 * Update the Authentic theme to the latest version with various fixes and improvements
@@ -131,7 +162,7 @@
 * Update the Authentic theme to the latest version with various fixes and improvements
 
 #### 2.201 (July 24, 2024)
-* Fix real-time monitoring not updating graphs in the Dashboard [#2222](https://github.com/webmin/webmin/issues/2222)
+* Fix real-time monitoring not updating graphs in the dashboard [#2222](https://github.com/webmin/webmin/issues/2222)
 * Fix Terminal module to work correctly with _sudo_-capable users [#2223](https://github.com/webmin/webmin/issues/2223)
 
 #### 2.200 (July 21, 2024)
@@ -244,7 +275,7 @@
 * Add support for editing ACLs in File Manager
 * Add support to configure SSL connection for MySQL/MariaDB module
 * Add support for compressed backups in PostgreSQL module
-* Add support for displaying inodes too in Disk Usage in the Dashboard
+* Add support for displaying inodes too in Disk Usage in the dashboard
 * Add better support for CloudLinux
 * Fix to always default to RSA key type in Let's Encrypt requests
 * Fix setup repository script for Oracle
@@ -252,7 +283,7 @@
 * Fix support for SpamAssassin 4
 * Fix to use system default hashing format for `htpasswd` file
 * Fix FastRPC issues
-* Update the Authentic theme to the latest version, with sped-up Dashboard performance
+* Update the Authentic theme to the latest version, with sped-up dashboard performance
 
 #### 2.013 (January 19, 2023)
 * Fix Authentic theme issue with error handling

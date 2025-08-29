@@ -2409,6 +2409,47 @@ if (ref($only) || !$only) {
 return $date;
 }
 
+# make_date_relative(timestamp)
+# Return localized relative time from now or to the future
+# for a given timestamp, or undef if not a valid timestamp
+sub make_date_relative
+{
+my $ts = shift;
+return undef unless(defined($ts) && $ts =~ /^-?\d+(?:\.\d+)?$/);
+$ts = 0 + $ts;
+my $last_login;
+my $now = time();
+my $diff = $ts - $now; # >0 future, <0 past
+my $abs = abs($diff);
+return $text{'time_now'} if ($abs < 10); # within ±10 seconds is now
+my @units = (
+    [ 31536000, 'year',  'years'  ],
+    [ 2592000,  'month', 'months' ],
+    [ 604800,   'week',  'weeks'  ],
+    [ 86400,    'day',   'days'   ],
+    [ 3600,     'hour',  'hours'  ],
+    [ 60,       'min',   'mins'   ],
+    [ 1,        'sec',   'secs'   ],
+);
+my ($val, $sing, $plur);
+foreach my $unit (@units) {
+	my ($secs, $s, $p) = @$unit;
+	next if ($abs < $secs);
+	$val = int($abs / $secs);
+	($sing, $plur) = ($s, $p);
+	last;
+	}
+if (defined($val) && $val > 0) {
+	my $key = ($diff > 0 ? 'time_in_' : 'time_ago_').
+		  ($val == 1 ? $sing : $plur);
+	$last_login = &text($key, $val);
+	}
+else {
+	$last_login = $text{'time_now'};
+	}
+return $last_login;
+}
+
 =head2 file_chooser_button(input, type, [form], [chroot], [addmode])
 
 Return HTML for a button that pops up a file chooser when clicked, and places

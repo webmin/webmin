@@ -20,6 +20,7 @@ journal_journalctl_unit=Messages for specific unit
 journal_since0=Latest available
 journal_since1=Real-time follow
 journal_since2=Current boot
+journal_since2-1=Last boot
 journal_since3=7 days ago
 journal_since4=24 hours ago
 journal_since5=8 hours ago

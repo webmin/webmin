@@ -59,7 +59,8 @@ if ($act->{'sid'} ne '-') {
         &urlize($in{'returndesc'}), $act->{'sid'}) );
 	}
 
-print &ui_table_row($text{'view_time'}, &make_date($act->{'time'}));
+print &ui_table_row($text{'view_time'}, &make_date($act->{'time'}).
+	" (".&make_date_relative($act->{'time'}).")");
 
 if ($act->{'webmin'}) {
 	print &ui_table_row($text{'view_host'},
