@@ -35,7 +35,7 @@ if (@logins) {
 		}
 	my $html = &ui_columns_start([ $text{'sessions_host'},
 				       $text{'sessions_user'},
-				       $text{'sessions_login'},
+				       $text{'sessions_login_ago'},
 				       $text{'sessions_state'},
 				       $text{'sessions_action'} ]);
 	my $open = 0;
@@ -73,7 +73,8 @@ if (@logins) {
 		$html .= &ui_columns_row([
 		          $l->[2],
 		          $user,
-		          &make_date($l->[1]),
+		          &make_date_relative($l->[1]).
+			  	"&nbsp;".&ui_help(&make_date($l->[1])),
 		          $state,
 			  &ui_links_row(\@links) ]);
 		}

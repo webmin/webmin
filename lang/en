@@ -438,6 +438,7 @@ file_truncated_message=fetched $1 of data, truncated $2 out of $3
 file_truncated_message_head=fetched beginning $1 of data, truncated $2 out of $3
 file_truncated_message_tail=fetched ending $1 of data, truncated $2 out of $3
 
+time_ago_col=Time ago
 time_ago_year=$1 year ago
 time_ago_years=$1 years ago
 time_ago_month=$1 month ago
