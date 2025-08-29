@@ -438,6 +438,36 @@ file_truncated_message=fetched $1 of data, truncated $2 out of $3
 file_truncated_message_head=fetched beginning $1 of data, truncated $2 out of $3
 file_truncated_message_tail=fetched ending $1 of data, truncated $2 out of $3
 
+time_ago_year=$1 year ago
+time_ago_years=$1 years ago
+time_ago_month=$1 month ago
+time_ago_months=$1 months ago
+time_ago_week=$1 week ago
+time_ago_weeks=$1 weeks ago
+time_ago_day=$1 day ago
+time_ago_days=$1 days ago
+time_ago_hour=$1 hour ago
+time_ago_hours=$1 hours ago
+time_ago_min=$1 minute ago
+time_ago_mins=$1 minutes ago
+time_ago_sec=$1 second ago
+time_ago_secs=$1 seconds ago
+time_in_year=In $1 year
+time_in_years=In $1 years
+time_in_month=In $1 month
+time_in_months=In $1 months
+time_in_week=In $1 week
+time_in_weeks=In $1 weeks
+time_in_day=In $1 day
+time_in_days=In $1 days
+time_in_hour=In $1 hour
+time_in_hours=In $1 hours
+time_in_min=In $1 minute
+time_in_mins=In $1 minutes
+time_in_sec=In $1 second
+time_in_secs=In $1 seconds
+time_now=Just now
+
 defcert_error=Default $1 bundled SSL certificate is being used. It is highly advised to update default <tt>$2</tt> certificate before proceeding with login.
 
 main_error_details=Error details
