@@ -13,6 +13,9 @@ $envmode = 4;
 if (&find("default_mail_env", $conf, 2)) {
 	$env = &find_value("default_mail_env", $conf);
 	}
+elsif (&find("mail_path", $conf, 2)) {
+	$env = &find_value("mail_path", $conf);
+	}
 else {
 	$env = &find_value("mail_location", $conf);
 	}

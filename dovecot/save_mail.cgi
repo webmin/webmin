@@ -34,6 +34,9 @@ if ($in{'controlmode'}) {
 if (&find("default_mail_env", $conf, 2)) {
 	&save_directive($conf, "default_mail_env", $env eq "" ? undef : $env);
 	}
+elsif (&find("mail_path", $conf, 2)) {
+	&save_directive($conf, "mail_path", $env eq "" ? undef : $env);
+	}
 else {
 	&save_directive($conf, "mail_location", $env eq "" ? undef : $env);
 	}
