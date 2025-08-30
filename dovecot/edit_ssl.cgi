@@ -58,12 +58,22 @@ print &ui_table_row($text{'ssl_regen'},
 				    " ".$text{'ssl_hours'}, 3);
 
 # Disable plaintext passwords when not SSL
-@opts = ( [ 'yes', $text{'yes'} ], [ 'no', $text{'no'} ] );
-$plain = &find_value("disable_plaintext_auth", $conf);
-print &ui_table_row($text{'ssl_plain'},
-    &ui_radio("plain", $plain,
-	      [ @opts,
-		[ '', &getdef("disable_plaintext_auth", \@opts) ] ]), 3);
+if (&find_value("auth_allow_cleartext", $conf, 2)) {
+	@opts = ( [ 'yes', $text{'yes'} ], [ 'no', $text{'no'} ] );
+	$plain = &find_value("auth_allow_cleartext", $conf);
+	print &ui_table_row($text{'ssl_plain2'},
+	    &ui_radio("plain", $plain,
+		      [ @opts,
+			[ '', &getdef("auth_allow_cleartext", \@opts) ] ]), 3);
+	}
+else {
+	@opts = ( [ 'yes', $text{'yes'} ], [ 'no', $text{'no'} ] );
+	$plain = &find_value("disable_plaintext_auth", $conf);
+	print &ui_table_row($text{'ssl_plain'},
+	    &ui_radio("plain", $plain,
+		      [ @opts,
+			[ '', &getdef("disable_plaintext_auth", \@opts) ] ]), 3);
+	}
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);

@@ -56,6 +56,7 @@ ssl_regen=Interval between SSL parameter regeneration
 ssl_hours=hours
 ssl_none=None
 ssl_plain=Disallow plaintext authentication in non-SSL mode?
+ssl_plain2=Allow plaintext authentication in non-SSL mode?
 ssl_err=Failed to save SSL configuration
 ssl_ekey=Missing or non-existent private key file
 ssl_ecert=Missing or non-existent certificate file

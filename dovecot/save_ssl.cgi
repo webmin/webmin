@@ -54,8 +54,14 @@ $in{'regen_def'} || $in{'regen'} =~ /^\d+$/ || &error($text{'ssl_eregen'});
 &save_directive($conf, "ssl_parameters_regenerate",
 		$in{'regen_def'} ? undef : $in{'regen'});
 
-&save_directive($conf, "disable_plaintext_auth",
-		$in{'plain'} ? $in{'plain'} : undef);
+if (&find_value("auth_allow_cleartext", $conf, 2)) {
+	&save_directive($conf, "auth_allow_cleartext",
+			$in{'plain'} ? $in{'plain'} : undef);
+	}
+else {
+	&save_directive($conf, "disable_plaintext_auth",
+			$in{'plain'} ? $in{'plain'} : undef);
+	}
 
 &flush_file_lines();
 &unlock_dovecot_files($conf);
