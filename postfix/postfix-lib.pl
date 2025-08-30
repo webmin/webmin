@@ -76,19 +76,19 @@ sub postfix_module_version
 }
 
 # is_postfix_running()
-# returns 1 if running, 0 if stopped, calls error() if problem
+# returns 1 if running, 0 if stopped
 sub is_postfix_running
 {
+my $pid = 0;
 eval {
 	local $main::error_must_die = 1;
 	my $queuedir = get_current_value("queue_directory");
 	my $processid = get_current_value("process_id_directory");
 
 	my $pid_file = $queuedir."/".$processid."/master.pid";
-	my $pid = &check_pid_file($pid_file);
-	return $pid ? 1 : 0;
+	$pid = &check_pid_file($pid_file) ? 1 : 0;
 	};
-return 0;
+return $pid;
 }
 
 
