@@ -9,7 +9,11 @@ print &ui_form_start("save_ssl.cgi", "post");
 print &ui_table_start($text{'ssl_header'}, "width=100%", 4);
 
 # SSL cert and key files
-if (&find_value("ssl_cert", $conf, 2) || &version_atleast("2.2")) {
+if (&version_atleast("2.4")) {
+	$cert = &find_value('ssl_server_cert_file', $conf, 0, "");
+	$cert =~ s/^<//;
+	}
+elsif (&find_value("ssl_cert", $conf, 2) || &version_atleast("2.2")) {
 	$cert = &find_value("ssl_cert", $conf, 0, "");
 	$cert =~ s/^<//;
 	}
@@ -20,7 +24,11 @@ print &ui_table_row($text{'ssl_cert'},
 	    &ui_opt_textbox("cert", $cert, 40, &getdef("ssl_cert_file")), 3,
 	    [ undef, "nowrap" ]);
 
-if (&find_value("ssl_key", $conf, 2) || &version_atleast("2.2")) {
+if (&version_atleast("2.4")) {
+	$key = &find_value('ssl_server_key_file', $conf, 0, "");
+	$key =~ s/^<//;
+	}
+elsif (&find_value("ssl_key", $conf, 2) || &version_atleast("2.2")) {
 	$key = &find_value("ssl_key", $conf, 0, "");
 	$key =~ s/^<//;
 	}
@@ -31,14 +39,12 @@ print &ui_table_row($text{'ssl_key'},
 	    &ui_opt_textbox("key", $key, 40, &getdef("ssl_key_file")), 3,
 	    [ undef, "nowrap" ]);
 
-# SSL key password
-$pass = &find_value("ssl_key_password", $conf);
-print &ui_table_row($text{'ssl_pass'},
-	    &ui_opt_textbox("pass", $pass, 20, $text{'ssl_prompt'}), 3,
-	    [ undef, "nowrap" ]);
-
 # SSL CA file
-if (&find_value("ssl_ca", $conf, 2) || &version_atleast("2.2")) {
+if (&version_atleast("2.4")) {
+	$ca = &find_value('ssl_server_ca_file', $conf, 0, "");
+	$ca =~ s/^<//;
+	}
+elsif (&find_value("ssl_ca", $conf, 2) || &version_atleast("2.2")) {
 	$ca = &find_value("ssl_ca", $conf, 0, "");
 	$ca =~ s/^<//;
 	}
@@ -50,12 +56,23 @@ print &ui_table_row($text{'ssl_ca'},
 		&getdef("ssl_ca_file", [ [ "", $text{'ssl_none'} ] ])), 3,
 	    [ undef, "nowrap" ]);
 
+# SSL key password
+my $passdir = &version_atleast("2.4")
+	? "ssl_server_key_password"
+	: "ssl_key_password";
+$pass = &find_value($passdir, $conf);
+print &ui_table_row($text{'ssl_pass'},
+	    &ui_opt_textbox("pass", $pass, 20, $text{'ssl_prompt'}), 3,
+	    [ undef, "nowrap" ]);
+
 # Parameter regen time
-$regen = &find_value("ssl_parameters_regenerate", $conf);
-print &ui_table_row($text{'ssl_regen'},
-		    &ui_opt_textbox("regen", $regen, 5,
-				    &getdef("ssl_parameters_regenerate")).
-				    " ".$text{'ssl_hours'}, 3);
+if (&version_atmost("2.4")) {
+	$regen = &find_value("ssl_parameters_regenerate", $conf);
+	print &ui_table_row($text{'ssl_regen'},
+			&ui_opt_textbox("regen", $regen, 5,
+					&getdef("ssl_parameters_regenerate")).
+					" ".$text{'ssl_hours'}, 3);
+	}
 
 # Disable plaintext passwords when not SSL
 if (&find_value("auth_allow_cleartext", $conf, 2)) {
@@ -64,7 +81,7 @@ if (&find_value("auth_allow_cleartext", $conf, 2)) {
 	print &ui_table_row($text{'ssl_plain2'},
 	    &ui_radio("plain", $plain,
 		      [ @opts,
-			[ '', &getdef("auth_allow_cleartext", \@opts) ] ]), 3);
+			[ '', "$text{'default'} (No)" ] ]), 3);
 	}
 else {
 	@opts = ( [ 'yes', $text{'yes'} ], [ 'no', $text{'no'} ] );
