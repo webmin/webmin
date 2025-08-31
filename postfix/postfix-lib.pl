@@ -766,7 +766,7 @@ sub regenerate_dependent_table
 sub regenerate_any_table
 {
     my ($name, $force, $after, $base64) = @_;
-    $base64 = 0 if ($postfix_version < 3.4);
+    $base64 = 0 if (&compare_version_numbers($postfix_version, 3.4) < 0);
     my @files;
     if ($force) {
 	@files = map { [ "hash", $_ ] } @$force;
@@ -1608,7 +1608,7 @@ sub get_real_value
 {
 my ($name) = @_;
 my $v = &get_current_value($name);
-if ($postfix_version >= 2.1 && $v =~ /\$/) {
+if (&compare_version_numbers($postfix_version, 2.1) >= 0 && $v =~ /\$/) {
 	# Try to use the built-in command to expand the param
 	my $out = &backquote_command("$config{'postfix_config_command'} -c $config_dir -x -h ".
 				     quotemeta($name)." 2>/dev/null", 1);
