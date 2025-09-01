@@ -66,10 +66,13 @@ else {
 			$in{'change'} ? $in{'change'} : undef);
 	}
 
-# Umask
-$in{'umask_def'} || $in{'umask'} =~ /^[0-7]{4}$/ ||&error($text{'mail_eumask'});
-&save_directive($conf, "umask",
-		$in{'umask_def'} ? undef : $in{'umask'});
+if (&version_atmost("2")) {
+	# Umask
+	$in{'umask_def'} || $in{'umask'} =~ /^[0-7]{4}$/ ||
+		&error($text{'mail_eumask'});
+	&save_directive($conf, "umask",
+			$in{'umask_def'} ? undef : $in{'umask'});
+	}
 
 # LAST command
 &save_directive($conf, "pop3_enable_last",

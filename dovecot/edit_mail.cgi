@@ -30,7 +30,8 @@ for($i=0; $i<@mail_envs; $i++) {
 	}
 print &ui_table_row($text{'mail_env'},
 	&ui_radio("envmode", $envmode,
-		[ ( map { [ $_, $text{'mail_env'.$_}."<br>" ] } (0.. 3) ),
+		[ ( map { [ $_, $text{'mail_env'.$_}."<br>" ] } (
+			&version_atleast("2.4") ? (0) : (0 .. 3)) ),
 		  [ 4, &text('mail_env4',
 			&ui_textbox("other", $envmode == 4 ? $env : undef, 40)) ] ],
 		), 3);
@@ -106,9 +107,11 @@ print &ui_table_row($text{'mail_change'},
 	    [ "", &getdef($dirty, \@opts) ] ]), 3);
 
 # Permissions on files
-$umask = &find_value("umask", $conf);
-print &ui_table_row($text{'mail_umask'},
-	&ui_opt_textbox("umask", $umask, 5, &getdef("umask")), 3);
+if (&version_atmost("2")) {
+	$umask = &find_value("umask", $conf);
+	print &ui_table_row($text{'mail_umask'},
+		&ui_opt_textbox("umask", $umask, 5, &getdef("umask")), 3);
+	}
 
 # Allow POP3 last command
 if (&find("pop3_enable_last", $conf, 2)) {
