@@ -28,8 +28,8 @@ elsif (&find("mail_index_path", $conf, 2)) {
 if ($env =~ s/:CONTROL=([^:]+)//) {
 	$control = $1;
 	}
-elsif (&find("mail_cache_path", $conf, 2)) {
-	$control = &find_value("mail_cache_path", $conf);
+elsif (&find("mail_control_path", $conf, 2)) {
+	$control = &find_value("mail_control_path", $conf);
 	}
 for($i=0; $i<@mail_envs; $i++) {
 	$envmode = $i if ($mail_envs[$i] eq $env);

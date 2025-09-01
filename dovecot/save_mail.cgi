@@ -47,10 +47,10 @@ else {
 			&error($text{'mail_econtrol'});
 		$control = $in{'control'};
 		}
-	# Directly save dedicated mail_cache_path and mail_index_path
+	# Directly save dedicated mail_index_path and mail_control_path
 	&save_directive($conf, "mail_index_path",
 		$index eq "" ? undef : $index);
-	&save_directive($conf, "mail_cache_path",
+	&save_directive($conf, "mail_control_path",
 		$control eq "" ? undef : $control);
 	}
 
