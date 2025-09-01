@@ -65,14 +65,6 @@ $in{'umask_def'} || $in{'umask'} =~ /^[0-7]{4}$/ ||&error($text{'mail_eumask'});
 &save_directive($conf, "umask",
 		$in{'umask_def'} ? undef : $in{'umask'});
 
-# UIDL format
-if (&find("pop3_uidl_format", $conf, 2)) {
-	$uidl = $in{'pop3_uidl_format'} eq '*' ?
-			$in{'pop3_uidl_format_other'} : $in{'pop3_uidl_format'};
-	$uidl =~ /^\S+$/ || &error($text{'mail_euidl'});
-	&save_directive($conf, "pop3_uidl_format", $uidl);
-	}
-
 # LAST command
 &save_directive($conf, "pop3_enable_last",
 		$in{'last'} ? $in{'last'} : undef);

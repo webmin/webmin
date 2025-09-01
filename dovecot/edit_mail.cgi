@@ -96,24 +96,6 @@ $umask = &find_value("umask", $conf);
 print &ui_table_row($text{'mail_umask'},
 	&ui_opt_textbox("umask", $umask, 5, &getdef("umask")), 3);
 
-# UIDL format
-if (&find("pop3_uidl_format", $conf, 2)) {
-	$uidl = &find_value("pop3_uidl_format", $conf);
-	@opts = ( $uidl ? ( ) : ( [ "", $text{'mail_uidl_none'} ] ),
-		  [ "%v.%u", $text{'mail_uidl_dovecot'} ],
-		  [ "%08Xv%08Xu", $text{'mail_uidl_uw'} ],
-		  [ "%f", $text{'mail_uidl_courier0'} ],
-		  [ "%u", $text{'mail_uidl_courier1'} ],
-		  [ "%v-%u", $text{'mail_uidl_courier2'} ],
-		  [ "%Mf", $text{'mail_uidl_tpop3d'} ] );
-	($got) = grep { $_->[0] eq $uidl } @opts;
-	print &ui_table_row($text{'mail_uidl'},
-		&ui_select("pop3_uidl_format", $got ? $uidl : "*",
-			   [ @opts, [ "*", $text{'mail_uidl_other'} ] ])."\n".
-		&ui_textbox("pop3_uidl_format_other", $got ? "" : $uidl, 10),
-		3);
-	}
-
 # Allow POP3 last command
 if (&find("pop3_enable_last", $conf, 2)) {
 	$last = &find_value("pop3_enable_last", $conf);
