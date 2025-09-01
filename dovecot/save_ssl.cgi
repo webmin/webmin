@@ -67,7 +67,7 @@ $in{'pass_def'} || $in{'pass'} =~ /\S/ || &error($text{'ssl_epass'});
 	$in{'pass_def'} ? undef : $in{'pass'});
 
 # Save SSL parameter regeneration time
-if (&version_atmost("2.4")) {
+if (&version_below("2.4")) {
 	$in{'regen_def'} || $in{'regen'} =~ /^\d+$/ ||
 		&error($text{'ssl_eregen'});
 	&save_directive($conf, "ssl_parameters_regenerate",

@@ -107,7 +107,7 @@ print &ui_table_row($text{'mail_change'},
 	    [ "", &getdef($dirty, \@opts) ] ]), 3);
 
 # Permissions on files
-if (&version_atmost("2")) {
+if (&version_below("2")) {
 	$umask = &find_value("umask", $conf);
 	print &ui_table_row($text{'mail_umask'},
 		&ui_opt_textbox("umask", $umask, 5, &getdef("umask")), 3);

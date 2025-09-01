@@ -28,7 +28,7 @@ else {
 			join(" ", split(/\0/, $in{'mechs'})), "auth","default");
 	}
 
-if (&version_atmost("2.4")) {
+if (&version_below("2.4")) {
 	# User database
 	$userdb = $in{'usermode'};
 	if ($in{'usermode'} eq 'passwd-file') {

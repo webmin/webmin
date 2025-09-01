@@ -555,9 +555,9 @@ return 0 if (!$ver);
 return &compare_version_numbers($ver, $wantver) >= 0;
 }
 
-# version_atmost(ver)
-# Returns 1 if running at most some version or below
-sub version_atmost
+# version_below(ver)
+# Returns 1 if running below some version
+sub version_below
 {
 local ($wantver) = @_;
 local $ver = &get_dovecot_version();

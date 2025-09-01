@@ -66,7 +66,7 @@ else {
 			$in{'change'} ? $in{'change'} : undef);
 	}
 
-if (&version_atmost("2")) {
+if (&version_below("2")) {
 	# Umask
 	$in{'umask_def'} || $in{'umask'} =~ /^[0-7]{4}$/ ||
 		&error($text{'mail_eumask'});

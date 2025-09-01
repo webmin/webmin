@@ -91,7 +91,7 @@ elsif ($userdb =~ /^sql\s+(.*)/) {
 else {
 	$other = $userdb;
 	}
-if (&version_atmost("2.4")) {
+if (&version_below("2.4")) {
 	print &ui_table_row($text{'login_userdb'},
 	&ui_radio("usermode", $usermode,
 		[ [ "passwd", $text{'login_passwd'}."<br>" ],
@@ -181,7 +181,7 @@ else {
 	$pother = $passdb;
 	}
 
-if (&version_atmost("2.4")) {
+if (&version_below("2.4")) {
 	print &ui_table_row($text{'login_passdb'},
 	&ui_radio("passmode", $passmode,
 		[ [ "passwd", $text{'login_passwd2'}."<br>" ],

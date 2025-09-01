@@ -66,7 +66,7 @@ print &ui_table_row($text{'ssl_pass'},
 	    [ undef, "nowrap" ]);
 
 # Parameter regen time
-if (&version_atmost("2.4")) {
+if (&version_below("2.4")) {
 	$regen = &find_value("ssl_parameters_regenerate", $conf);
 	print &ui_table_row($text{'ssl_regen'},
 			&ui_opt_textbox("regen", $regen, 5,
