@@ -35,6 +35,20 @@ print &ui_table_row($text{'mail_env'},
 			&ui_textbox("other", $envmode == 4 ? $env : undef, 40)) ] ],
 		), 3);
 
+# Mail file format
+if (&version_atleast("2.4")) {
+	$driver = &find_value("mail_driver", $conf);
+	print &ui_table_row($text{'mail_driver'},
+		&ui_radio("driver", $driver,
+			   [ [ "", $text{'mail_driver_def'} ],
+			     [ "auto", $text{'mail_driver_auto'} ],
+			     [ "mbox", $text{'mail_driver_mbox'} ],
+			     [ "maildir", $text{'mail_driver_maildir'} ],
+			     [ "dbox", $text{'mail_driver_dbox'} ],
+			     [ "imapc", $text{'mail_driver_imapc'} ],
+			     [ "pop3c", $text{'mail_driver_auto'} ] ]));
+	}
+
 # Index files location
 $indexmode = $index eq 'MEMORY' ? 1 :
 	     $index ? 2 : 0;

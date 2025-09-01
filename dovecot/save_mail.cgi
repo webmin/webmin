@@ -41,6 +41,12 @@ else {
 	&save_directive($conf, "mail_location", $env eq "" ? undef : $env);
 	}
 
+# Mail file format
+if (&version_atleast("2.4")) {
+	my $driver = $in{'driver'};
+	&save_directive($conf, "mail_driver", $driver eq "" ? undef : $driver);
+	}
+
 # Idle intervals
 $in{'idle'} != 2 || $in{'idlei'} =~ /^\d+$/ || &error($text{'mail_eidle'});
 &save_directive($conf, "mailbox_idle_check_interval",
