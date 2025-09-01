@@ -14,7 +14,11 @@ print &ui_table_row($text{'login_realms'},
 	    &ui_opt_textbox("realms", $realms, 40, $text{'login_none'}), 3);
 
 # Default authentication realm
-$realm = &find_value("auth_default_realm", $conf);
+$realm = &find_value(
+	&version_atleast("2.4")
+		? "auth_default_domain"
+		: "auth_default_realm",
+	$conf);
 print &ui_table_row($text{'login_realm'},
 	    &ui_opt_textbox("realm", $realm, 10, $text{'default'}));
 
@@ -87,25 +91,27 @@ elsif ($userdb =~ /^sql\s+(.*)/) {
 else {
 	$other = $userdb;
 	}
-print &ui_table_row($text{'login_userdb'},
-   &ui_radio("usermode", $usermode,
-	[ [ "passwd", $text{'login_passwd'}."<br>" ],
-	  [ "passwd-file", &text('login_passwdfile',
-		&ui_textbox("passwdfile", $passwdfile, 30))."<br>" ],
-	  [ "static", &text('login_static',
-		&ui_textbox("uid", $uid, 6),
-		&ui_textbox("gid", $gid, 6),
-		&ui_textbox("home", $home, 20))."<br>" ],
-	  [ "vpopmail", $text{'login_vpopmail'}."<br>" ],
-	  [ "ldap", &text('login_ldap',
-		&ui_textbox("ldap", $ldap, 30))."<br>" ],
-	  [ "pgsql", &text('login_pgsql',
-		&ui_textbox("pgsql", $pgsql, 30))."<br>" ],
-	  [ "sql", &text('login_sql',
-		&ui_textbox("sql", $sql, 30))."<br>" ],
-	  [ "", &text('login_other',
-		&ui_textbox("other", $other, 30))."<br>" ],
-	 ]), 3);
+if (&version_atmost("2.4")) {
+	print &ui_table_row($text{'login_userdb'},
+	&ui_radio("usermode", $usermode,
+		[ [ "passwd", $text{'login_passwd'}."<br>" ],
+		[ "passwd-file", &text('login_passwdfile',
+			&ui_textbox("passwdfile", $passwdfile, 30))."<br>" ],
+		[ "static", &text('login_static',
+			&ui_textbox("uid", $uid, 6),
+			&ui_textbox("gid", $gid, 6),
+			&ui_textbox("home", $home, 20))."<br>" ],
+		[ "vpopmail", $text{'login_vpopmail'}."<br>" ],
+		[ "ldap", &text('login_ldap',
+			&ui_textbox("ldap", $ldap, 30))."<br>" ],
+		[ "pgsql", &text('login_pgsql',
+			&ui_textbox("pgsql", $pgsql, 30))."<br>" ],
+		[ "sql", &text('login_sql',
+			&ui_textbox("sql", $sql, 30))."<br>" ],
+		[ "", &text('login_other',
+			&ui_textbox("other", $other, 30))."<br>" ],
+		]), 3);
+	}
 
 # Password authentication system
 if (&find("auth_passdb", $conf, 2)) {
@@ -174,46 +180,49 @@ elsif ($passdb =~ /^checkpassword\s+(.*)$/) {
 else {
 	$pother = $passdb;
 	}
-print &ui_table_row($text{'login_passdb'},
-   &ui_radio("passmode", $passmode,
-	[ [ "passwd", $text{'login_passwd2'}."<br>" ],
-	  [ "shadow", $text{'login_shadow'}."<br>" ],
-	  [ "dpam", &text('login_dpam')."<br>" ],
-	  $alpha_opts ?
-	    ( [ "pam", &text('login_pam2',
-		  &ui_textbox("ppam", $ppam, 10),
-		  &ui_checkbox("ppam_session", 1,
-			       $text{'login_session'}, $psession),
-		  &ui_opt_textbox("ppam_ckey", $pckey, 10,
-				  $text{'login_none'}))."<br>" ]
- 	    ) :
-	    ( [ "pam", &text('login_pam',
-		  &ui_textbox("ppam", $ppam, 10))."<br>" ]
-	    ),
-	  [ "passwd-file", &text('login_passwdfile',
-		&ui_textbox("ppasswdfile", $ppasswdfile, 30))."<br>" ],
-	  [ "vpopmail", $text{'login_vpopmail'}."<br>" ],
-	  [ "ldap", &text('login_ldap',
-		&ui_textbox("pldap", $pldap, 30))."<br>" ],
-	  [ "pgsql", &text('login_pgsql',
-		&ui_textbox("ppgsql", $ppgsql, 30))."<br>" ],
-	  [ "sql", &text('login_sql',
-		&ui_textbox("psql", $psql, 30))."<br>" ],
-	  $alpha_opts ?
-	    ( [ "bsdauth",
-	        &text('login_bsdauth',
-		      &ui_opt_textbox("bsdauth_ckey", $pbckey, 10,
-				      $text{'login_none'}))."<br>" ],
-	      [ "checkpassword",
-	        &text('login_checkpassword',
-		 &ui_textbox("checkpassword", $checkpassword, 40))."<br>" ],
-	    ) :
-	    ( ),
-	  [ "", &text('login_other',
-		&ui_textbox("pother", $pother, 30))."<br>" ],
-	 ]), 3);
 
-print &ui_table_hr();
+if (&version_atmost("2.4")) {
+	print &ui_table_row($text{'login_passdb'},
+	&ui_radio("passmode", $passmode,
+		[ [ "passwd", $text{'login_passwd2'}."<br>" ],
+		[ "shadow", $text{'login_shadow'}."<br>" ],
+		[ "dpam", &text('login_dpam')."<br>" ],
+		$alpha_opts ?
+		( [ "pam", &text('login_pam2',
+			&ui_textbox("ppam", $ppam, 10),
+			&ui_checkbox("ppam_session", 1,
+				$text{'login_session'}, $psession),
+			&ui_opt_textbox("ppam_ckey", $pckey, 10,
+					$text{'login_none'}))."<br>" ]
+		) :
+		( [ "pam", &text('login_pam',
+			&ui_textbox("ppam", $ppam, 10))."<br>" ]
+		),
+		[ "passwd-file", &text('login_passwdfile',
+			&ui_textbox("ppasswdfile", $ppasswdfile, 30))."<br>" ],
+		[ "vpopmail", $text{'login_vpopmail'}."<br>" ],
+		[ "ldap", &text('login_ldap',
+			&ui_textbox("pldap", $pldap, 30))."<br>" ],
+		[ "pgsql", &text('login_pgsql',
+			&ui_textbox("ppgsql", $ppgsql, 30))."<br>" ],
+		[ "sql", &text('login_sql',
+			&ui_textbox("psql", $psql, 30))."<br>" ],
+		$alpha_opts ?
+		( [ "bsdauth",
+			&text('login_bsdauth',
+			&ui_opt_textbox("bsdauth_ckey", $pbckey, 10,
+					$text{'login_none'}))."<br>" ],
+		[ "checkpassword",
+			&text('login_checkpassword',
+			&ui_textbox("checkpassword", $checkpassword, 40))."<br>" ],
+		) :
+		( ),
+		[ "", &text('login_other',
+			&ui_textbox("pother", $pother, 30))."<br>" ],
+		]), 3);
+
+	print &ui_table_hr();
+	}
 
 $fuid = &find_value("first_valid_uid", $conf);
 print &ui_table_row($text{'login_fuid'},
@@ -232,7 +241,11 @@ $lgid = &find_value("last_valid_gid", $conf);
 print &ui_table_row($text{'login_lgid'},
     &ui_opt_textbox("lgid", $lgid, 6, &getdef("last_valid_gid", \@mmap)));
 
-$extra = &find_value("mail_extra_groups", $conf);
+$extra = &find_value(&version_atleast("2")
+			? "mail_access_groups"
+			: "mail_extra_groups",
+		     $conf);
+
 print &ui_table_row($text{'login_extra'},
 	    &ui_opt_textbox("extra", $extra, 50, $text{'login_none'})."\n".
 	    &group_chooser_button("extra", 1), 3);
