@@ -17,18 +17,41 @@ else {
 	}
 
 # Add index file location
-$env || !$in{'indexmode'} || &error($text{'mail_eindexmode'});
-$env || !$in{'controlmode'} || &error($text{'mail_econtrolmode'});
-if ($in{'indexmode'} == 1) {
-	$env .= ":INDEX=MEMORY";
+if (&version_below("2.4")) {
+	$env || !$in{'indexmode'} || &error($text{'mail_eindexmode'});
+	$env || !$in{'controlmode'} || &error($text{'mail_econtrolmode'});
+	if ($in{'indexmode'} == 1) {
+		$env .= ":INDEX=MEMORY";
+		}
+	elsif ($in{'indexmode'} == 2) {
+		$in{'index'} =~ /^\/\S+$/ || &error($text{'mail_eindex'});
+		$env .= ":INDEX=".$in{'index'};
+		}
+	if ($in{'controlmode'}) {
+		$in{'control'} =~ /^\/\S+$/ || &error($text{'mail_econtrol'});
+		$env .= ":CONTROL=".$in{'control'};
+		}
 	}
-elsif ($in{'indexmode'} == 2) {
-	$in{'index'} =~ /^\/\S+$/ || &error($text{'mail_eindex'});
-	$env .= ":INDEX=".$in{'index'};
-	}
-if ($in{'controlmode'}) {
-	$in{'control'} =~ /^\/\S+$/ || &error($text{'mail_econtrol'});
-	$env .= ":CONTROL=".$in{'control'};
+else {
+	# Parse index and control first
+	if ($in{'indexmode'} == 1) {
+		$index = "MEMORY";
+		}
+	elsif ($in{'indexmode'} == 2) {
+		$in{'index'} =~ /^\/\S+$/ || $in{'index'} =~ /^~\S+$/ ||
+			&error($text{'mail_eindex'});
+		$index = $in{'index'};
+		}
+	if ($in{'controlmode'}) {
+		$in{'control'} =~ /^\/\S+$/ || $in{'control'} =~ /^~\S+$/ ||
+			&error($text{'mail_econtrol'});
+		$control = $in{'control'};
+		}
+	# Directly save dedicated mail_cache_path and mail_index_path
+	&save_directive($conf, "mail_index_path",
+		$index eq "" ? undef : $index);
+	&save_directive($conf, "mail_cache_path",
+		$control eq "" ? undef : $control);
 	}
 
 if (&find("default_mail_env", $conf, 2)) {
