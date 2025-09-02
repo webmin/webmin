@@ -381,7 +381,7 @@ Version: $ver
 Release: $release
 Requires: /bin/sh /usr/bin/perl $prog $rdeps
 EOF
-print $SPEC "Recommends: $rrecom\n" if ($rrecom);
+print $SPEC "Recommends: $rrecom\n" if ($rrecom && $rpmrecommends);
 print $SPEC "Suggests: " . join(" ", @rsuggests) . "\n" if (@rsuggests);
 print $SPEC "Conflicts: " . join(" ", @rconflicts) . "\n" if (@rconflicts);
 print $SPEC "Provides: " . join(" ", @rprovides) . "\n" if (@rprovides);
