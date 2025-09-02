@@ -473,6 +473,9 @@ EOF
       gpg --import "$repo_key" 1>/dev/null 2>&1
       gpg --dearmor < "$repo_key" \
         > "/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
+      chmod 644 \
+"/usr/share/keyrings/debian-$repo_key_suffix.gpg" \
+"/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg" 1>/dev/null 2>&1
       post_status $?
       sources_list=$(grep -v "$repo_host" /etc/apt/sources.list)
       echo "$sources_list" > /etc/apt/sources.list
