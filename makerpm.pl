@@ -229,6 +229,11 @@ if [ "\$tempdir" = "" ]; then
 fi
 export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot makeboot nostop nodepsmsg
 ./setup.sh >\$tempdir/webmin-setup.out 2>&1
+grep sudo= /etc/webmin/miniserv.conf >/dev/null 2>&1
+if [ "\$?" = 1 ]; then
+	# Allow sudo-based logins
+	echo sudo=1 >>/etc/webmin/miniserv.conf
+fi
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
 cd /usr/libexec/webmin
