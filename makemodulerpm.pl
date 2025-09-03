@@ -46,13 +46,13 @@ my $mod_list  = 'full';
 while(@ARGV) {
 	# XXX Untainting isn't needed when running as non-root?
 	my $a = &untaint(shift(@ARGV));
-	if ($a eq "--rpm-depends") {
+	if ($a eq "--rpm-depends" || $a eq "--mod-depends") {
 		$rpmdepends = 1;
 		}
 	elsif ($a eq "--no-mod-depends") {
 		$norpmdepends = 1;
 		}
-	elsif ($a eq "--rpm-recommends") {
+	elsif ($a eq "--rpm-recommends" || $a eq "--mod-recommends") {
 		$rpmrecommends = 1;
 		}
 	elsif ($a eq "--no-mod-recommends") {
@@ -159,8 +159,8 @@ if (!$dir) {
 	print "usage: ";
 	print CYAN, "makemodulerpm.pl <module> [version]", RESET;
 	print YELLOW, "\n";
-	print "                        [--rpm-depends] [--no-mod-depends]\n";
-	print "                        [--rpm-recommends] [--no-mod-recommends]\n";
+	print "                        [--mod-depends] [--no-mod-depends]\n";
+	print "                        [--mod-recommends] [--no-mod-recommends]\n";
 	print "			       [--no-requires]\n";
 	print "			       [--no-suggests]\n";
 	print "			       [--no-conflicts]\n";

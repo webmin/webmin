@@ -37,13 +37,13 @@ my $mod_list  = 'full';
 
 while(@ARGV) {
 	my $a = shift(@ARGV);
-	if ($a eq "--deb-depends") {
+	if ($a eq "--deb-depends" || $a eq "--mod-depends") {
 		$debdepends = 1;
 		}
 	elsif ($a eq "--no-mod-depends") {
 		$nodebdepends = 1;
 		}
-	elsif ($a eq "--deb-recommends") {
+	elsif ($a eq "--deb-recommends" || $a eq "--mod-recommends") {
 		$debrecommends = 1;
 		}
 	elsif ($a eq "--no-mod-recommends") {
@@ -145,8 +145,8 @@ if (!$dir) {
 	print "usage: ", CYAN, "makemoduledeb.pl ";
 	print CYAN, "<module> [version]";
 	print YELLOW, "\n";
-	print "                        [--deb-depends] [--no-mod-depends]\n";
-	print "                        [--deb-recommends] [--no-mod-recommends]\n";
+	print "                        [--mod-depends] [--no-mod-depends]\n";
+	print "                        [--mod-recommends] [--no-mod-recommends]\n";
 	print "                        [--no-requires]\n";
 	print "                        [--no-suggests]\n";
 	print "                        [--no-conflicts]\n";
