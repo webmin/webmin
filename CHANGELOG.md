@@ -1,6 +1,6 @@
 ## Changelog
 
-#### 2.500 (September, 2025)
+#### 2.500 (September 4, 2025)
 * Add support for the Webmin webserver to work in both HTTP and HTTPS modes at the same time
 * Add distinct warning to the login page if the connection is not secure
 * Add support for timeouts in temporary rules in FirewallD module
