@@ -27,7 +27,10 @@ my $files_file = "$debian_dir/files";
 # Parse command-line args
 my ($force_theme, $url, $upstream, $debdepends, $debrecommends,
     $no_prefix, $force_usermin, $release, $allow_overwrite, $final_mod,
-    $dsc_file, $dir, $ver, @exclude);
+    $dsc_file, $dir, $ver, @exclude,
+    
+    $no_requires, $no_recommends, $no_suggests, $no_conflicts, $no_replaces,
+    $no_breaks, $no_provides, $no_obsoletes);
 
 my $mod_list  = 'full';
 
@@ -42,6 +45,34 @@ while(@ARGV) {
 	# --recommends, --suggests, --conflicts, --provides and --obsoletes are
 	# not for Webmin modules, and not meant to have prefix, and populated
 	# from module.info automatically
+	# --no-requires, --no-recommends, --no-suggests,
+	# --no-conflicts, --no-replaces, --no-breaks, --no-provides,
+	# --no-obsoletes can be used to disable the automatic population of
+	# these fields from module.info
+	elsif ($a eq "--no-requires") {
+		$no_requires = 1;
+		}
+	elsif ($a eq "--no-recommends") {
+		$no_recommends = 1;
+		}
+	elsif ($a eq "--no-suggests") {
+		$no_suggests = 1;
+		}
+	elsif ($a eq "--no-conflicts") {
+		$no_conflicts = 1;
+		}
+	elsif ($a eq "--no-replaces") {
+		$no_replaces = 1;
+		}
+	elsif ($a eq "--no-breaks") {
+		$no_breaks = 1;
+		}
+	elsif ($a eq "--no-provides") {
+		$no_provides = 1;
+		}
+	elsif ($a eq "--no-obsoletes") {
+		$no_obsoletes = 1;
+		}
 	elsif ($a eq "--no-prefix") {
 		$no_prefix = 1;
 		}
@@ -281,7 +312,7 @@ if ($debrecommends && defined($minfo{'recommends'})) {
 
 # Build (append) list of required packages (not Webmin modules)
 my @rrequires = ( );
-if (exists($minfo{'deb_requires'})) {
+if (!$no_requires && exists($minfo{'deb_requires'})) {
 	foreach my $debrequire (split(/\s+/, $minfo{'deb_requires'})) {
 		push(@rrequires, $debrequire);
 		}
@@ -290,7 +321,7 @@ if (exists($minfo{'deb_requires'})) {
 
 # Build (append) list of recommended packages (not Webmin modules)
 my @rrecommends = ( );
-if (exists($minfo{'deb_recommends'})) {
+if (!$no_recommends && exists($minfo{'deb_recommends'})) {
 	foreach my $debrecommend (split(/\s+/, $minfo{'deb_recommends'})) {
 		push(@rrecommends, $debrecommend);
 		}
@@ -300,7 +331,7 @@ if (exists($minfo{'deb_recommends'})) {
 
 # Build (standalone) list of suggested packages (not Webmin modules)
 my @rsuggests = ( );
-if (exists($minfo{'deb_suggests'})) {
+if (!$no_suggests && exists($minfo{'deb_suggests'})) {
 	foreach my $debsuggest (split(/\s+/, $minfo{'deb_suggests'})) {
 		push(@rsuggests, $debsuggest);
 		}
@@ -308,7 +339,7 @@ if (exists($minfo{'deb_suggests'})) {
 
 # Build (standalone) list of conflicts (not Webmin modules)
 my @rconflicts = ( );
-if (exists($minfo{'deb_conflicts'})) {
+if (!$no_conflicts && exists($minfo{'deb_conflicts'})) {
 	foreach my $debconflict (split(/\s+/, $minfo{'deb_conflicts'})) {
 		push(@rconflicts, $debconflict);
 		}
@@ -316,7 +347,7 @@ if (exists($minfo{'deb_conflicts'})) {
 
 # Build (standalone) list of replaces (not Webmin modules)
 my @rreplaces = ( );
-if (exists($minfo{'deb_replaces'})) {
+if (!$no_replaces && exists($minfo{'deb_replaces'})) {
 	foreach my $debreplace (split(/\s+/, $minfo{'deb_replaces'})) {
 		push(@rreplaces, $debreplace);
 		}
@@ -324,14 +355,14 @@ if (exists($minfo{'deb_replaces'})) {
 
 # Build (standalone) list of breaks (not Webmin modules)
 my @rbreaks = ( );
-if (exists($minfo{'deb_breaks'})) {
+if (!$no_breaks && exists($minfo{'deb_breaks'})) {
 	foreach my $debbreak (split(/\s+/, $minfo{'deb_breaks'})) {
 		push(@rbreaks, $debbreak);
 		}
 	}
 
 # Build (standalone) list of obsoletes (replaces+conflicts) (not Webmin modules)
-if (exists($minfo{'deb_obsoletes'})) {
+if (!$no_obsoletes && exists($minfo{'deb_obsoletes'})) {
 	foreach my $debobsolete (split(/\s+/, $minfo{'deb_obsoletes'})) {
 		push(@rconflicts, $debobsolete);
 		push(@rreplaces, $debobsolete);
@@ -340,7 +371,7 @@ if (exists($minfo{'deb_obsoletes'})) {
 
 # Build (standalone) list of provides (not Webmin modules)
 my @rprovides = ( );
-if (exists($minfo{'deb_provides'})) {
+if (!$no_provides && exists($minfo{'deb_provides'})) {
 	foreach my $debprovide (split(/\s+/, $minfo{'deb_provides'})) {
 		push(@rprovides, $debprovide);
 		}

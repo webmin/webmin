@@ -34,7 +34,10 @@ my $allow_overwrite = 0;
 
 my ($force_theme, $rpmdepends, $rpmrecommends, $no_prefix, $set_prefix,
     $obsolete_wbm, $vendor, $url, $force_usermin, $final_mod, $sign, $keyname,
-    $epoch, $dir, $ver, @exclude);
+    $epoch, $dir, $ver, @exclude,
+
+    $no_requires, $no_recommends, $no_suggests, $no_conflicts, $no_provides,
+    $no_obsoletes);
 
 my $mod_list  = 'full';
 
@@ -48,9 +51,30 @@ while(@ARGV) {
 	elsif ($a eq "--rpm-recommends") {
 		$rpmrecommends = 1;
 		}
-	# --recommends, --suggests, --conflicts, --provides and --obsoletes are
-	# not for Webmin modules, and not meant to have prefix, and populated
-	# from module.info automatically
+	# --requires, --recommends, --suggests, --conflicts, --provides and
+	# --obsoletes are not for Webmin modules, and not meant to have prefix,
+	# and populated from module.info automatically
+	# --no-requires, --no-recommends, --no-suggests,
+	# --no-conflicts, --no-provides, --no-obsoletes can be used
+	# to disable the automatic population of these fields from module.info
+	elsif ($a eq "--no-requires") {
+		$no_requires = 1;
+		}
+	elsif ($a eq "--no-recommends") {
+		$no_recommends = 1;
+		}
+	elsif ($a eq "--no-suggests") {
+		$no_suggests = 1;
+		}
+	elsif ($a eq "--no-conflicts") {
+		$no_conflicts = 1;
+		}
+	elsif ($a eq "--no-provides") {
+		$no_provides = 1;
+		}
+	elsif ($a eq "--no-obsoletes") {
+		$no_obsoletes = 1;
+		}
 	elsif ($a eq "--no-prefix") {
 		$no_prefix = 1;
 		}
@@ -308,7 +332,7 @@ if ($rpmrecommends && defined($minfo{'recommends'})) {
 
 # Build (append) list of required packages (not Webmin modules)
 my @rrequires = ( );
-if (exists($minfo{'rpm_requires'})) {
+if (!$no_requires && exists($minfo{'rpm_requires'})) {
 	foreach my $rpmrequire (split(/\s+/, $minfo{'rpm_requires'})) {
 		push(@rrequires, $rpmrequire);
 		}
@@ -317,7 +341,7 @@ if (exists($minfo{'rpm_requires'})) {
 
 # Build (append) list of recommended packages (not Webmin modules)
 my @rrecommends = ( );
-if (exists($minfo{'rpm_recommends'})) {
+if (!$no_recommends && exists($minfo{'rpm_recommends'})) {
 	foreach my $rpmrecommend (split(/\s+/, $minfo{'rpm_recommends'})) {
 		push(@rrecommends, $rpmrecommend);
 		}
@@ -327,7 +351,7 @@ if (exists($minfo{'rpm_recommends'})) {
 
 # Build (standalone) list of suggested packages (not Webmin modules)
 my @rsuggests = ( );
-if (exists($minfo{'rpm_suggests'})) {
+if (!$no_suggests && exists($minfo{'rpm_suggests'})) {
 	foreach my $rpmsuggest (split(/\s+/, $minfo{'rpm_suggests'})) {
 		push(@rsuggests, $rpmsuggest);
 		}
@@ -335,7 +359,7 @@ if (exists($minfo{'rpm_suggests'})) {
 
 # Build (standalone) list of conflicts (not Webmin modules)
 my @rconflicts = ( );
-if (exists($minfo{'rpm_conflicts'})) {
+if (!$no_conflicts && exists($minfo{'rpm_conflicts'})) {
 	foreach my $rpmconflict (split(/\s+/, $minfo{'rpm_conflicts'})) {
 		push(@rconflicts, $rpmconflict);
 		}
@@ -343,7 +367,7 @@ if (exists($minfo{'rpm_conflicts'})) {
 
 # Build (standalone) list of provides (not Webmin modules)
 my @rprovides = ( );
-if (exists($minfo{'rpm_provides'})) {
+if (!$no_provides && exists($minfo{'rpm_provides'})) {
 	foreach my $rpmprovide (split(/\s+/, $minfo{'rpm_provides'})) {
 		push(@rprovides, $rpmprovide);
 		}
@@ -351,7 +375,7 @@ if (exists($minfo{'rpm_provides'})) {
 
 # Build (standalone) list of obsoletes (not Webmin modules)
 my @robsoletes = ( );
-if (exists($minfo{'rpm_obsoletes'})) {
+if (!$no_obsoletes && exists($minfo{'rpm_obsoletes'})) {
 	foreach my $rpmobsolete (split(/\s+/, $minfo{'rpm_obsoletes'})) {
 		push(@robsoletes, $rpmobsolete);
 		}
