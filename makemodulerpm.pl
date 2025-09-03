@@ -32,10 +32,11 @@ my $release = 1;
 $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin";
 my $allow_overwrite = 0;
 
-my ($force_theme, $rpmdepends, $rpmrecommends, $no_prefix, $set_prefix,
+my ($force_theme, $no_prefix, $set_prefix,
     $obsolete_wbm, $vendor, $url, $force_usermin, $final_mod, $sign, $keyname,
     $epoch, $dir, $ver, @exclude,
 
+    $rpmdepends, $norpmdepends, $rpmrecommends, $norpmrecommends,
     $no_requires, $no_recommends, $no_suggests, $no_conflicts, $no_provides,
     $no_obsoletes);
 
@@ -48,8 +49,14 @@ while(@ARGV) {
 	if ($a eq "--rpm-depends") {
 		$rpmdepends = 1;
 		}
+	elsif ($a eq "--no-mod-depends") {
+		$norpmdepends = 1;
+		}
 	elsif ($a eq "--rpm-recommends") {
 		$rpmrecommends = 1;
+		}
+	elsif ($a eq "--no-mod-recommends") {
+		$norpmrecommends = 1;
 		}
 	# --requires, --recommends, --suggests, --conflicts, --provides and
 	# --obsoletes are not for Webmin modules, and not meant to have prefix,
@@ -143,13 +150,22 @@ while(@ARGV) {
 		}
 	}
 
+# Disable module's depends and recommends if set in extra flags
+$rpmdepends = 0 if ($norpmdepends);
+$rpmrecommends = 0 if ($norpmrecommends);
+
 # Validate args
 if (!$dir) {
 	print "usage: ";
 	print CYAN, "makemodulerpm.pl <module> [version]", RESET;
 	print YELLOW, "\n";
-	print "                        [--rpm-depends]\n";
-	print "                        [--rpm-recommends]\n";
+	print "                        [--rpm-depends] [--no-mod-depends]\n";
+	print "                        [--rpm-recommends] [--no-mod-recommends]\n";
+	print "			       [--no-requires]\n";
+	print "			       [--no-suggests]\n";
+	print "			       [--no-conflicts]\n";
+	print "			       [--no-provides]\n";
+	print "			       [--no-obsoletes]\n";
 	print "                        [--rpm-dir directory]\n";
 	print "                        [--no-prefix]\n";
 	print "                        [--prefix prefix]\n";

@@ -25,10 +25,11 @@ my $changelog_file = "$debian_dir/changelog";
 my $files_file = "$debian_dir/files";
 
 # Parse command-line args
-my ($force_theme, $url, $upstream, $debdepends, $debrecommends,
+my ($force_theme, $url, $upstream,
     $no_prefix, $force_usermin, $release, $allow_overwrite, $final_mod,
     $dsc_file, $dir, $ver, @exclude,
     
+    $debdepends, $nodebdepends, $debrecommends, $nodebrecommends,
     $no_requires, $no_recommends, $no_suggests, $no_conflicts, $no_replaces,
     $no_breaks, $no_provides, $no_obsoletes);
 
@@ -39,8 +40,14 @@ while(@ARGV) {
 	if ($a eq "--deb-depends") {
 		$debdepends = 1;
 		}
+	elsif ($a eq "--no-mod-depends") {
+		$nodebdepends = 1;
+		}
 	elsif ($a eq "--deb-recommends") {
 		$debrecommends = 1;
+		}
+	elsif ($a eq "--no-mod-recommends") {
+		$nodebrecommends = 1;
 		}
 	# --recommends, --suggests, --conflicts, --provides and --obsoletes are
 	# not for Webmin modules, and not meant to have prefix, and populated
@@ -129,13 +136,24 @@ while(@ARGV) {
 		}
 	}
 
+# Disable module's depends and recommends if set in extra flags
+$debdepends = 0 if ($nodebdepends);
+$debrecommends = 0 if ($nodebrecommends);
+
 # Validate args
 if (!$dir) {
 	print "usage: ", CYAN, "makemoduledeb.pl ";
 	print CYAN, "<module> [version]";
 	print YELLOW, "\n";
-	print "                        [--deb-depends]\n";
-	print "                        [--deb-recommends]\n";
+	print "                        [--deb-depends] [--no-mod-depends]\n";
+	print "                        [--deb-recommends] [--no-mod-recommends]\n";
+	print "                        [--no-requires]\n";
+	print "                        [--no-suggests]\n";
+	print "                        [--no-conflicts]\n";
+	print "                        [--no-replaces]\n";
+	print "                        [--no-breaks]\n";
+	print "                        [--no-provides]\n";
+	print "                        [--no-obsoletes]\n";
 	print "                        [--no-prefix]\n";
 	print "                        [--licence name]\n";
 	print "                        [--email 'name <address>']\n";
