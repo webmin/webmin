@@ -1,15 +1,20 @@
 ## Changelog
 
+#### 2.501 (September 10, 2025)
+* Add support for Raspberry Pi sensors #2539 #2517
+* Update the Authentic theme to the latest version with the following fixes:
+  - Fix broken editor in "Bootup and Shutdown" module
+
 #### 2.500 (September 4, 2025)
 * Add support for the Webmin webserver to work in both HTTP and HTTPS modes at the same time
 * Add distinct warning to the login page if the connection is not secure
-* Add support for timeouts in temporary rules in FirewallD module
+* Add support for timeouts in temporary rules in "FirewallD" module
 * Add support for the new Dovecot version 2.4
 * Add support for MariaDB version 12 #2522
 * Add support for IMAP through a local command for Usermin
 * Add latest SSLeay support for redirects to SSL work
 * Add improvements to "Bootup and Shutdown" module for _systemd_ systems
-* Add field for secondary server key in BIND module
+* Add field for secondary server key in "BIND DNS Server" module
 * Add reversible encryption helpers API
 * Add API to display relative dates
 * Add API to mask sensitive text, like displayed passwords, unless hovered over
@@ -21,7 +26,7 @@
 * Change "Last Logins" on the dashboard to show usernames, relative dates, and all users from the past 3 days
 * Change to always enable HSTS by default
 * Fix MySQL/MariaDB to remove obsolete `set-variable` options that break modern config files #2497
-* Fix download link in table rows in MySQL/MariaDB module
+* Fix download link in table rows in "MySQL/MariaDB Database Server" module
 * Fix module not to fail on old MySQL 5.5
 * Update the Authentic theme to the latest version with various improvements and fixes:
   - Add support to automatically set the color palette based on OS or browser preferences
