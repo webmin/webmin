@@ -552,7 +552,7 @@ if (&has_command("sensors")) {
             # Common CPU multi
             if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
 
-                # Prioritise package core temperature
+                # Prioritize package core temperature
                 # data over motherboard but keep fans
                 @cpu = (), $cpu_aux++
                     if ($cpu_aux & 1 && grep { $_->{'core'} eq $1 } @cpu);
