@@ -242,7 +242,8 @@ print ui_table_row($text{'ssl_privcert'},
 			  [ 0, $text{'ssl_below'} ] ])."<br>\n".
 		    ui_textarea("cert", undef, 7, 70)."<br>\n".
 		    "<b>$text{'ssl_upload'}</b>\n".
-		    ui_upload("certfile"));
+		    ui_upload("certfile", undef, undef,
+			      "onChange='form.cert_def.value = 0'"));
 
 print ui_table_row($text{'ssl_privchain'},
 		    ui_radio("chain_def", 1,
@@ -251,7 +252,8 @@ print ui_table_row($text{'ssl_privchain'},
 			  [ 0, $text{'ssl_below'} ] ])."<br>\n".
 		    ui_textarea("chain", undef, 7, 70)."<br>\n".
 		    "<b>$text{'ssl_upload'}</b>\n".
-		    ui_upload("chainfile"));
+		    ui_upload("chainfile", undef, undef,
+			      "onChange='form.chain_def.value = 0'"));
 
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);
