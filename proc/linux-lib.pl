@@ -747,7 +747,7 @@ if (@cpu || !@fans) {
 	push(@cpu, { 'core' => 1, 'temp' => $ceil->($cpu_temp) })
 		if (!@cpu && defined $cpu_temp && $isa_volt >= 2);
 	push(@fans, { 'fan' => 1, 'rpm' => $fan_rpm })
-		if (!@fans && defined $fan_rpm && $fan_rpm > 0);
+		if (!@fans && defined $fan_rpm);
 	}
 
 return (\@cpu, \@fans);
