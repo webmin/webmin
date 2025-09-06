@@ -216,6 +216,13 @@ else {
 			$vals .= ".";
 			}
 		}
+	elsif ($in{'type'} eq "ALIAS") {
+		&valname($vals) ||
+			&error(&text('edit_ecname', $vals));
+		if ($vals =~ /\.\Q$in{'origin'}\E$/) {
+			$vals .= ".";
+			}
+		}
 	elsif ($in{'type'} eq "MX") {
 		&valname($in{'value1'}) ||
 			&error(&text('edit_emx', $in{'value1'}));

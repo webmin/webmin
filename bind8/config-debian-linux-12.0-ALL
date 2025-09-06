@@ -48,3 +48,4 @@ start_cmd=systemctl start named.service
 stop_cmd=systemctl stop named.service
 restart_cmd=systemctl reload named.service
 dnssec_period=21
+allow_alias=0

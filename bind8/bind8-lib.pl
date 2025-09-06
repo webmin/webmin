@@ -1135,6 +1135,10 @@ elsif ($type eq "CNAME") {
 	print &ui_table_row($text{'value_CNAME1'},
 	    &ui_textbox("value0", $v[0], 30)." ($text{'edit_cnamemsg'})", 3);
 	}
+elsif ($type eq "ALIAS") {
+	print &ui_table_row($text{'value_ALIAS1'},
+	    &ui_textbox("value0", $v[0], 30)." ($text{'edit_cnamemsg'})", 3);
+	}
 elsif ($type eq "MX") {
 	print &ui_table_row($text{'value_MX2'},
 	    &ui_textbox("value1", $v[1], 30));
@@ -3117,7 +3121,11 @@ $slave_error = $_[0];
 
 sub get_forward_record_types
 {
-return ("A", "NS", "CNAME", "MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC", "SRV", "KEY", "TLSA", "SSHFP", "CAA", "NAPTR", "NSEC3PARAM", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
+return ("A", "NS", "CNAME",
+	$config{'allow_alias'} ? ( "ALIAS" ) : ( ),
+	"MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC",
+	"SRV", "KEY", "TLSA", "SSHFP", "CAA", "NAPTR", "NSEC3PARAM",
+	$config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
 }
 
 sub get_reverse_record_types

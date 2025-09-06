@@ -19,6 +19,7 @@ support_aaaa=Support DNS for IPv6 addresses,1,1-Yes,0-No
 allow_comments=Allow comments for records,1,1-Yes,0-No
 allow_wild=Allow wildcards?,1,1-Yes,0-No
 allow_underscore=Allow underscores in record names?,1,1-Yes,0-No
+allow_alias=Allow ALIAS records?,1,1-Yes,0-No
 short_names=Convert record names to canonical form?,1,0-Yes,1-No
 extra_forward=Extra record types for forward zones,0
 extra_reverse=Extra record types for reverse zones,0

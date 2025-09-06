@@ -48,3 +48,4 @@ start_cmd=systemctl start bind9.service
 stop_cmd=systemctl stop bind9.service
 restart_cmd=systemctl reload bind9.service
 dnssec_period=21
+allow_alias=0

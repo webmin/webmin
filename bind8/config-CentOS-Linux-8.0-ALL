@@ -52,3 +52,4 @@ stop_cmd=systemctl stop named
 restart_cmd=systemctl reload named
 chroot=
 auto_chroot=
+allow_alias=0

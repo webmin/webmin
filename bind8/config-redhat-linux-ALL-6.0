@@ -52,3 +52,4 @@ spf_record=0
 dnssec_info=1
 chroot=
 auto_chroot=
+allow_alias=0
