@@ -501,6 +501,13 @@ my @fans;
 my @fans_all;
 my @cpu_thermisters;
 my $cpu_broadcoms;
+my @sensors;
+my $ceil = sub {
+	my $x = shift;
+	$x //= 0;
+	my $i = int($x);
+	return $i + ($x > $i);
+	};
 if (&has_command("sensors")) {
     my ($cpu, $cpu_aux, $cpu_unnamed, $cpu_package, $cpu_broadcom, $cpu_amd);
     my $fh = "SENSORS";
@@ -510,9 +517,10 @@ if (&has_command("sensors")) {
     &open_execute_command($fh, "sensors </dev/null 2>/dev/null", 1);
 
     while (<$fh>) {
-
+	# Buffer output for later use
+	push(@sensors, $_);
         # CPU full output must have either voltage or fan data
-        my ($cpu_volt) = $_ =~ /(?|in[\d+]\s*:\s+([\+\-0-9\.]+)\s+V|cpu\s+core\s+voltage\s*:\s+([0-9\.]+)\s+V)/i;
+        my ($cpu_volt) = $_ =~ /(?|in\d+\s*:\s+([\+\-0-9\.]+)\s+V|cpu\s+core\s+voltage\s*:\s+([0-9\.]+)\s+V)/i;
 	# CPU fans should be always labeled as 'cpu fan' or 'cpu_fan' or 'cpufan'
 	# and/or 'cpu fan 1', 'cpu_fan1', 'cpufan1', 'cpu_fan 2', 'cpu_fan2',
 	# 'cpufan2' etc.
@@ -535,7 +543,7 @@ if (&has_command("sensors")) {
 
         # AMD CPU Thermisters #1714
         if ($cpu && /thermistor\s+[\d]+:\s+[+-]([\d]+)/i) {
-            my $temp = int($1);
+            my $temp = $ceil->($1);
             push(@cpu_thermisters,
                  {  'core' => scalar(@cpu_thermisters) + 1,
                     'temp' => $temp
@@ -552,13 +560,13 @@ if (&has_command("sensors")) {
             # Common CPU multi
             if (/Core\s+(\d+):\s+([\+\-][0-9\.]+)/) {
 
-                # Prioritise package core temperature
+                # Prioritize package core temperature
                 # data over motherboard but keep fans
                 @cpu = (), $cpu_aux++
                     if ($cpu_aux & 1 && grep { $_->{'core'} eq $1 } @cpu);
                 push(@cpu,
                      {  'core' => $1,
-                        'temp' => int($2)
+                        'temp' => $ceil->($2)
                      });
                 }
 
@@ -566,7 +574,7 @@ if (&has_command("sensors")) {
             elsif (/CPU:\s+([\+\-][0-9\.]+)/) {
                 push(@cpu,
                      {  'core' => 0,
-                        'temp' => int($1)
+                        'temp' => $ceil->($1)
                      });
                 }
             }
@@ -588,7 +596,7 @@ if (&has_command("sensors")) {
                 if (/temp(\d+):\s+([\+][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/) {
                     push(@cpu,
                          {  'core' => (int($1) - 1),
-                            'temp' => int($2)
+                            'temp' => $ceil->($2)
                          });
                     }
 
@@ -597,7 +605,7 @@ if (&has_command("sensors")) {
                        /(cpu\s+temperature)\s*:\s+([\+][0-9\.]+).*?[Cc]/i) {
                     push(@cpu,
                          {  'core' => 0,
-                            'temp' => int($2)
+                            'temp' => $ceil->($2)
                          });
                     }
                 }
@@ -606,8 +614,8 @@ if (&has_command("sensors")) {
             elsif ($cpu_broadcom) {
                 if (/temp(\d+):\s+([\+\-][0-9\.]+)/) {
                     push(@cpu,
-                         {  'core' => $1,
-                            'temp' => int($2)
+                         {  'core' => int($1),
+                            'temp' => $ceil->($2)
                          });
                     $cpu_broadcoms++;
                     }
@@ -615,7 +623,7 @@ if (&has_command("sensors")) {
                     $cpu_unnamed++;
                     push(@cpu,
                          {  'core' => $cpu_unnamed,
-                            'temp' => int($2)
+                            'temp' => $ceil->($2)
                          });
                     $cpu_broadcoms++;
                     }
@@ -628,15 +636,15 @@ if (&has_command("sensors")) {
                 if (/Tdie:\s+([\+\-][0-9\.]+)/) {
                     push(@cpu,
                          {  'core' => 0,
-                            'temp' => int($1),
+                            'temp' => $ceil->($1),
                          });
                     }
 
                 # Like in #1481 #1484
                 elsif (/temp(\d+):\s+([\+\-][0-9\.]+).*?[Cc]\s+.*?[=+].*?\)/) {
                     push(@cpu,
-                         {  'core' => (int($1) - 1),
-                            'temp' => int($2),
+                         {  'core' => ($ceil->($1) - 1),
+                            'temp' => $ceil->($2),
                          });
                     }
 		
@@ -644,7 +652,7 @@ if (&has_command("sensors")) {
                 elsif (/Tctl:\s*([\+\-][0-9\.]+)/) {
                     push(@cpu,
                          {  'core' => 0,
-                            'temp' => int($1),
+                            'temp' => $ceil->($1),
                          });
                     }
                 }
@@ -690,6 +698,58 @@ if (!@fans && @cpu && @fans_all &&
 			}
 		}
 	}
+
+# Fall back logic for CPU temperature and fans spread over multiple
+# devices like Raspberry Pi #2517 and #2539
+if (@cpu || !@fans) {
+	# - Look for least two ISA voltage rails anywhere
+	# - See a CPU temp under cpu_thermal
+	# - Optionally grab a fan RPM under pwmfan-isa-*
+	my $can_fallback =
+		(!@cpu && (grep { /^\s*cpu_thermal/i } @sensors)) ||
+		(@cpu && !@fans && (grep { /^\s*pwmfan-isa-/i } @sensors));
+	return (\@cpu, \@fans) if (!$can_fallback);
+	my ($chip, $bus); 	# isa|pci|platform|virtual
+	my $isa_volt;
+	my ($cpu_temp, $fan_rpm);
+	for (@sensors) {
+		# Chip header
+		if (/^([A-Za-z0-9_+\-]+)-(isa|pci|platform|virtual)-[\w:]+\s*$/) {
+			$chip = lc $1;
+			$bus  = lc $2;
+			next;
+			}
+
+		# Count real voltage rails
+		if (defined $bus && $bus eq 'isa' &&
+		    /\bin\d+\s*:\s*([+\-]?[0-9]+(?:\.[0-9]+)?)\s*V\b/i) {
+			$isa_volt++;
+			next;
+			}
+
+		# CPU temperature
+		if (defined $chip && $chip =~ /^cpu_thermal/i &&
+		    /\b(?:CPU(?:\s*Temp)?|temp\d+)\s*:\s*([+\-]?[0-9]+(?:\.[0-9]+)?)\s*°?C\b/i) {
+			$cpu_temp //= $1;
+			next;
+			}
+
+		# Fan RPM
+		if (defined $chip && $chip =~ /^pwmfan/i &&
+		    /\b(?:cpu[_ ]?fan(?:\s*\d+)?|fan\d+)\s*:\s*(\d+)\s*rpm\b/i) {
+			my $rpm = $1 + 0;
+			$fan_rpm = $rpm if (!$fan_rpm || $rpm > $fan_rpm);
+			next;
+			}
+		}
+
+	# Update only what's missing
+	push(@cpu, { 'core' => 1, 'temp' => $ceil->($cpu_temp) })
+		if (!@cpu && defined $cpu_temp && $isa_volt >= 2);
+	push(@fans, { 'fan' => 1, 'rpm' => $fan_rpm })
+		if (!@fans && defined $fan_rpm);
+	}
+
 return (\@cpu, \@fans);
 }
 

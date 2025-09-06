@@ -48,13 +48,13 @@ For detailed installation instructions check our guide on [webmin.com/download](
 * [Jamie Cameron](https://www.webmin.com/about.html) [![](https://github.com/webmin-devel/webmin/blob/master/media/linkedin-15x15.png?raw=true)](https://www.linkedin.com/in/jamiecameron2)
 
 ### Developers
-* [Ilia Rostovtsev](https://github.com/iliajie)
+* [Ilia Rostovtsev](https://github.com/iliaross)
 * [Joe Cooper](https://github.com/swelljoe)
 
 ### Contributors
 * [Kay Marquardt](https://github.com/gnadelwartz)
 * [Nawawi Jamili](https://github.com/nawawi)
-* [unknown10777](https://github.com/unknown10777) + [90 more..](https://github.com/webmin/webmin/graphs/contributors)
+* [unknown10777](https://github.com/unknown10777) + [90 more...](https://github.com/webmin/webmin/graphs/contributors)
 
 ## License
 

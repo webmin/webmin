@@ -474,6 +474,8 @@ EOF
       gpg --dearmor < "$repo_key" \
         > "/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
       post_status $?
+      # Set correct permissions on the repo key in case the system uses a restrictive umask
+      chmod 644 "/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
       sources_list=$(grep -v "$repo_host" /etc/apt/sources.list)
       echo "$sources_list" > /etc/apt/sources.list
       # Configure packages priority if provided
