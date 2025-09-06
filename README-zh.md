@@ -44,7 +44,7 @@ Webmin 可以两种方法安装：
 ### 贡献者
 
 * [Joe Cooper](https://github.com/swelljoe)
-* [Ilia Rostovtsev](https://github.com/iliajie)
+* [Ilia Rostovtsev](https://github.com/iliaross)
 * [Kay Marquardt](https://github.com/gnadelwartz)
 * [Nawawi Jamili](https://github.com/nawawi) + [其他无偿奉献的开发者](https://github.com/webmin/webmin/graphs/contributors)
 
