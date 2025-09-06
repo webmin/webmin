@@ -2,6 +2,7 @@
 
 #### 2.501 (September 10, 2025)
 * Add support for Raspberry Pi sensors #2539 #2517
+* Add Squid 7 support
 * Update the Authentic theme to the latest version with the following fixes:
   - Fix broken editor in "Bootup and Shutdown" module
 
