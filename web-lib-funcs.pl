@@ -3090,7 +3090,7 @@ local ($line, %header, @headers, $s);
 $timeout = 60 if (!defined($timeout));
 alarm($timeout) if ($timeout);
 ($line = &read_http_connection($h)) =~ tr/\r\n//d;
-if ($line !~ /^HTTP\/1\..\s+(200|30[0-9]|400)(\s+|$)/) {
+if ($line !~ /^HTTP\/1\..\s+(20[0-9]|30[0-9]|400)(\s+|$)/) {
 	$line ||= "Failed to read HTTP response line";
 	alarm(0) if ($timeout);
 	&close_http_connection($h);
