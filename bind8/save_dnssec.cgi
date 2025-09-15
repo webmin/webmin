@@ -16,6 +16,7 @@ require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'dnssec_ecannot'});
 
 $in{'period'} =~ /^[1-9]\d*$/ || &error($text{'dnssec_eperiod'});
+$in{'period'} < 30 || &error($text{'dnssec_eperiod30'});
 
 # Create or delete the cron job
 my $job = &get_dnssec_cron_job();

@@ -1207,6 +1207,7 @@ dnssec_secs=seconds
 dnssec_desc=Zones signed with DNSSEC typically have two keys - a zone key which must be re-generated and signed regularly, and a key signing key which remains constant. This page allows you to configure Webmin to perform this re-signing automatically.
 dnssec_err=Failed to save DNSSEC key re-signing
 dnssec_eperiod=Missing or invalid number of days between re-signs
+dnssec_eperiod30=Number of days between re-signs must be less than 30
 
 dnssectools_title=DNSSEC-Tools Automation
 dt_conf_title=DNSSEC-Tools Automation

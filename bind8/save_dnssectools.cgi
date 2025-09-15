@@ -48,8 +48,10 @@ $in{'dt_zsklife'} =~ /(\b[0-9]+\b)/  ||
 	&error($text{'dt_conf_ezsklife'});
 $nv{'zsklife'} = $1;
 
-&save_dnssectools_directive($conf, \%nv);
+$in{'period'} =~ /^[1-9]\d*$/ || &error($text{'dnssec_eperiod'});
+$in{'period'} < 30 || &error($text{'dnssec_eperiod30'});
 
+&save_dnssectools_directive($conf, \%nv);
 
 &lock_file($module_config_file);
 $config{'dnssec_period'} = $in{'period'};
