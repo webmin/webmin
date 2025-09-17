@@ -1,5 +1,8 @@
 ## Changelog
 
+#### 2.511 (September, 2025)
+* Fix the printing of the bottom button row in the form column table
+
 #### 2.510 (September 16, 2025)
 * Fix to ensure DNSSEC re-signing period is less than 30 days in the BIND DNS module
 * Fix to treat 201 as a valid response code in the internal download function

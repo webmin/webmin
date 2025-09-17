@@ -673,7 +673,7 @@ $rv .= &ui_columns_table($heads, $width, $data, $types, $nosort, $title,
 			 $emptymsg);
 
 # Add the bottom links unless excluded
-if ($selectall && $selectall != 2) {
+if ($selectall != 2) {
 	$rv .= $links;
 	}
 
