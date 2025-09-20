@@ -891,3 +891,15 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
   field-sizing: content !important;
   min-width: 40px !important;
 }
+.text-danger {
+  color: #bc0303;
+}
+.text-success {
+  color: #3c763d;
+}
+.text-warning {
+  color: #b58900;
+}
+.text-info {
+  color: #108eda;
+}
