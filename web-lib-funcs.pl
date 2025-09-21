@@ -13107,6 +13107,30 @@ print "Content-type: application/json;\n\n";
 print convert_to_json(@_);
 }
 
+=head2 check_well_known_hosts()
+
+Returns 1 if the given HTTP_HOST is in the list of well-known hosts previously
+connected to this Webmin system using SSL certificates.
+
+=cut
+sub check_well_known_hosts
+{
+my ($host_port) = @_;
+return 0 unless $host_port;
+
+my ($host) = split(/:/, $host_port, 2);
+return 0 unless $host;
+
+my $path = $miniserv::config{'wellknown'};
+return 0 unless $path && -r $path;
+
+my $raw = &read_file_contents($path);
+return 0 unless defined $raw;
+
+my %wellknown = map { lc($_) => 1 } grep { length } split(/\s+/, $raw);
+return exists $wellknown{lc($host)} ? 1 : 0;
+}
+
 =head2 get_referer_relative()
 
 Returns relative URL based on referer omitting origin part. 
@@ -13150,7 +13174,7 @@ if (!$def && $gconfig{'webmin_email_url'}) {
 	# From a config option
 	$url = $gconfig{'webmin_email_url'};
 	}
-elsif ($ENV{'HTTP_HOST'}) {
+elsif (&check_well_known_hosts($ENV{'HTTP_HOST'})) {
 	# From this HTTP request
 	my $host = $ENV{'HTTP_HOST'};
 	my $port = $ENV{'SERVER_PORT'} || 80;

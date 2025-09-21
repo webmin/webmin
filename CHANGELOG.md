@@ -2,6 +2,7 @@
 
 #### 2.511 (September, 2025)
 * Fix the printing of the bottom button row in the form column table
+* Fix to make sure the mail URL uses a well-known host name
 
 #### 2.510 (September 16, 2025)
 * Fix to ensure DNSSEC re-signing period is less than 30 days in the BIND DNS module
