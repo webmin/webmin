@@ -6,7 +6,7 @@ package miniserv;
 use Socket;
 use POSIX;
 use Time::Local;
-use Fcntl qw(:flock);
+use Fcntl qw(LOCK_EX LOCK_UN);
 eval "use Time::HiRes;";
 
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
@@ -6193,17 +6193,17 @@ chmod(0700, $config{'blockedfile'});
 }
 
 # update_wellknown_file(hostname)
-# Writes out a text file of well-known hosts. Returns 1 on success, 0 on failure
+# Writes out a text file of well-known hosts
 sub update_wellknown_file
 {
 my ($h) = @_;
-return 0 if !$h;
+return if !$h;
 
 my $path = $config{'wellknown'};
 
 my $lock = "$path.lock";
-open(my $lk, '>>', $lock) or return 0;
-flock($lk, LOCK_EX);
+open(my $lk, ">>", $lock) or return;
+flock($lk, 2);
 
 # Read current set
 my %set;
@@ -6217,45 +6217,32 @@ if (-r $path && open(my $in, "<", $path)) {
 
 # If already known, nothing to do
 if ($set{$h}) {
-	flock($lk, LOCK_UN);
+	flock($lk, 8);
 	close($lk);
-	return 1;
+	return;
 	}
 
-# Add
+# Add and write out
 $set{$h} = 1;
-
-# Write out
 my $tmp = "$path.$$." . int(rand(1_000_000)) . ".tmp";
-my $out;
-unless (open($out, '>', $tmp)) {
-        flock($lk, LOCK_UN);
-	close($lk); 
-        return 0;
-	}
-my $wok = print {$out} join(" ", sort keys %set);
-my $cok = close $out;
-my $ok  = $wok && $cok;
-
-if ($ok) {
-	$ok = rename $tmp, $path;
-    	$ok && chmod 0600, $path;
+if (open(my $out, ">", $tmp)) {
+	print $out join(" ", sort keys %set), "\n";
+	close $out;
+	chmod 0700, $tmp;
+	rename $tmp, $path or unlink $tmp;
 	}
 
-unlink $tmp if !$ok && -e $tmp;
-flock($lk, LOCK_UN);
+flock($lk, 8);
 close($lk);
-    
-return $ok ? 1 : 0;
 }
 
-# cleanup_wellknown()
-# Removes the well-known file and any temporary files
 sub cleanup_wellknown
 {
 my $path = $config{'wellknown'};
-return unless $path && !-d $path;
-return unlink $path, "$path.lock", glob("$path.*.tmp");
+for my $f ($path, "$path.lock") {
+	next unless -e $f;
+	unlink $f;
+	}
 }
 
 sub write_pid_file
