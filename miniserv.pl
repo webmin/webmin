@@ -6,7 +6,6 @@ package miniserv;
 use Socket;
 use POSIX;
 use Time::Local;
-use Fcntl qw(LOCK_EX LOCK_UN);
 eval "use Time::HiRes;";
 
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
@@ -401,9 +400,6 @@ foreach $mod (split(/\s+/, $config{'preuse'})) {
 unlink($config{'restartflag'}) if ($config{'restartflag'});
 unlink($config{'reloadflag'}) if ($config{'reloadflag'});
 unlink($config{'stopflag'}) if ($config{'stopflag'});
-
-# Cleanup well known hosts
-&cleanup_wellknown();
 
 # Build list of sockets to listen on
 @listening_on_ports = ();
@@ -4827,7 +4823,6 @@ if (defined(&Net::SSLeay::get_servername)) {
 			$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
 		if ($c) {
 			$ssl_ctx = $c;
-			&update_wellknown_file($h);
 			}
 		}
 	}
@@ -4994,7 +4989,6 @@ if (!$config{'twofactor_wrapper'}) {
 $config{'restartflag'} ||= $var_dir."/restart-flag";
 $config{'reloadflag'} ||= $var_dir."/reload-flag";
 $config{'stopflag'} ||= $var_dir."/stop-flag";
-$config{'wellknown'} ||= $var_dir."/well-known";
 }
 
 # read_users_file()
@@ -6190,59 +6184,6 @@ foreach my $d (grep { $userfail{$_} } @denyusers) {
 	}
 close(BLOCKED);
 chmod(0700, $config{'blockedfile'});
-}
-
-# update_wellknown_file(hostname)
-# Writes out a text file of well-known hosts
-sub update_wellknown_file
-{
-my ($h) = @_;
-return if !$h;
-
-my $path = $config{'wellknown'};
-
-my $lock = "$path.lock";
-open(my $lk, ">>", $lock) or return;
-flock($lk, 2);
-
-# Read current set
-my %set;
-if (-r $path && open(my $in, "<", $path)) {
-	local $/ = undef;
-	my $raw = <$in>;
-	close $in;
-	$raw //= '';
-	$set{ $_ } = 1 for grep { length } split(/\s+/, $raw);
-	}
-
-# If already known, nothing to do
-if ($set{$h}) {
-	flock($lk, 8);
-	close($lk);
-	return;
-	}
-
-# Add and write out
-$set{$h} = 1;
-my $tmp = "$path.$$." . int(rand(1_000_000)) . ".tmp";
-if (open(my $out, ">", $tmp)) {
-	print $out join(" ", sort keys %set), "\n";
-	close $out;
-	chmod 0700, $tmp;
-	rename $tmp, $path or unlink $tmp;
-	}
-
-flock($lk, 8);
-close($lk);
-}
-
-sub cleanup_wellknown
-{
-my $path = $config{'wellknown'};
-for my $f ($path, "$path.lock") {
-	next unless -e $f;
-	unlink $f;
-	}
 }
 
 sub write_pid_file
