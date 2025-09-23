@@ -15,9 +15,6 @@ $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
 my $timeout = $gconfig{'passreset_timeout'} || 15;
 $remote_user && &error($text{'forgot_elogin'});
 $ENV{'HTTPS'} eq 'ON' || &error($text{'forgot_essl'});
-$ENV{'SSL_HOST_CERT'} == 1 ||
-	&error(&text('forgot_esslhost',
- 		     &html_escape($ENV{'SSL_HOST'} || $ENV{'HTTP_HOST'})));
 
 # Check that the random ID is valid
 $in{'id'} =~ /^[a-f0-9]+$/i || &error($text{'forgot_eid'});

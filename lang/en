@@ -184,7 +184,6 @@ forgot_elogin=Forgotten password pages cannot be used when you are already logge
 forgot_erate=Too many password reset attempts for $1! Please try again later.
 forgot_eremote=Webmin server on this system is not running or is not configured to allow forgotten password recovery.
 forgot_essl=Forgotten password recovery can only be used over an SSL connection
-forgot_esslhost=Forgotten password recovery cannot be used with invalid SSL hostname $1
 
 pam_header=Login to Webmin
 pam_mesg=You must respond to the question below to login to Webmin server on $1.
