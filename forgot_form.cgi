@@ -17,7 +17,8 @@ $ENV{'HTTPS'} eq 'ON' || $gconfig{'forgot_pass'} == 2 ||
         &error($text{'forgot_essl'});
 
 &ui_print_header(undef, $text{'forgot_title'}, "", undef, undef, 1, 1);
-
+print &ui_alert_box("<b> ⚠ ".$text{'forgot_nossl_warn'}, 'warn')
+        if ($gconfig{'forgot_pass'} == 2 && $ENV{'HTTPS'} ne 'ON');
 print "<center>\n";
 print $text{'forgot_desc'},"<p>\n";
 print &ui_form_start("forgot_send.cgi", "post");
