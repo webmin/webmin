@@ -12,6 +12,10 @@ $no_acl_check++;
 &error_setup($text{'forgot_err'});
 $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
 $remote_user && &error($text{'forgot_elogin'});
+$ENV{'HTTPS'} eq 'ON' || &error($text{'forgot_essl'});
+$ENV{'SSL_HOST_CERT'} == 1 ||
+	&error(&text('forgot_esslhost',
+ 		     &html_escape($ENV{'SSL_HOST'} || $ENV{'HTTP_HOST'})));
 
 # Lookup the Webmin user
 &foreign_require("acl");
