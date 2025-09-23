@@ -941,7 +941,9 @@ while(1) {
 					    (ord($byte) & 0x80))) {
 						($ssl_con,
 						 $ssl_certfile,
-						 $ssl_keyfile) =
+						 $ssl_keyfile,
+						 $ssl_host,
+						 $ssl_cert_hosts) =
 							&ssl_connection_for_ip(
 							    SOCK, $ipv6fhs{$s});
 						print DEBUG "ssl_con returned ".
@@ -2500,6 +2502,11 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"MINISERV_CONFIG"} = $config_file;
 	$ENV{"HTTPS"} = $use_ssl ? "ON" : "";
 	$ENV{"SSL_HSTS"} = $config{"ssl_hsts"};
+	if ($use_ssl) {
+		$ENV{"SSL_HOST"} = $ssl_host;
+		$ENV{"SSL_HOST_CERT"} =
+			&ssl_hostname_match($ssl_host, $ssl_cert_hosts);
+		}
 	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 	if ($use_ssl) {
 		$ENV{"MINISERV_CERTFILE"} = $ssl_certfile;
@@ -4776,11 +4783,18 @@ if ($config{'ssl_honorcipherorder'}) {
 eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
         &Net::SSLeay::OP_NO_RENEGOTIATION)';
 
+# Get the hostnames each cert is valid for
+my $info = &cert_file_info($certfile);
+my @hosts;
+push(@hosts, $info->{'cn'}) if ($info->{'cn'});
+push(@hosts, @{$info->{'alt'}}) if ($info->{'alt'});
+
 return { 'keyfile' => $keyfile,
 	 'keytime' => $kst[9],
 	 'certfile' => $certfile,
 	 'certtime' => $cst[9],
 	 'extracas' => $extracas,
+	 'hosts' => \@hosts,
 	 'ctx' => $ssl_ctx };
 }
 
@@ -4816,8 +4830,9 @@ alarm(0);
 return undef if (!$ok);
 
 # Check for a per-hostname SSL context and use that instead
+my $h;
 if (defined(&Net::SSLeay::get_servername)) {
-	my $h = Net::SSLeay::get_servername($ssl_con);
+	$h = Net::SSLeay::get_servername($ssl_con);
 	if ($h) {
 		my $c = $ssl_contexts{$h} ||
 			$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
@@ -4826,7 +4841,8 @@ if (defined(&Net::SSLeay::get_servername)) {
 			}
 		}
 	}
-return ($ssl_con, $ssl_ctx->{'certfile'}, $ssl_ctx->{'keyfile'});
+return ($ssl_con, $ssl_ctx->{'certfile'}, $ssl_ctx->{'keyfile'}, $h,
+	$ssl_ctx->{'hosts'});
 }
 
 # parse_websockets_config()
@@ -6994,4 +7010,135 @@ if (!$sig) {
 			$config{'server'} : "MiniServ";
 	}
 return $sig;
+}
+
+# cert_file_info(file)
+# Returns a hash of details of a cert in some file
+sub cert_file_info
+{
+local ($file) = @_;
+return undef if (!-r $file);
+my %rv;
+my $cmd = "openssl x509 -in ".quotemeta($file)." -issuer -subject -enddate -startdate -text";
+open(OUT, $cmd." 2>/dev/null |");
+local $_;
+while(<OUT>) {
+	s/\r|\n//g;
+	s/http:\/\//http:\|\|/g;	# So we can parse with regexp
+	if (/subject=.*C\s*=\s*([^\/,]+)/) {
+		$rv{'c'} = $1;
+		}
+	if (/subject=.*ST\s*=\s*([^\/,]+)/) {
+		$rv{'st'} = $1;
+		}
+	if (/subject=.*L\s*=\s*([^\/,]+)/) {
+		$rv{'l'} = $1;
+		}
+	if (/subject=.*O\s*=\s*"(.*?)"/ || /subject=.*O\s*=\s*([^\/,]+)/) {
+		$rv{'o'} = $1;
+		}
+	if (/subject=.*OU\s*=\s*([^\/,]+)/) {
+		$rv{'ou'} = $1;
+		}
+	if (/subject=.*CN\s*=\s*([^\/,]+)/) {
+		$rv{'cn'} = $1;
+		}
+	if (/subject=.*emailAddress\s*=\s*([^\/,]+)/) {
+		$rv{'email'} = $1;
+		}
+
+	if (/issuer=.*C\s*=\s*([^\/,]+)/) {
+		$rv{'issuer_c'} = $1;
+		}
+	if (/issuer=.*ST\s*=\s*([^\/,]+)/) {
+		$rv{'issuer_st'} = $1;
+		}
+	if (/issuer=.*L\s*=\s*([^\/,]+)/) {
+		$rv{'issuer_l'} = $1;
+		}
+	if (/issuer=.*O\s*=\s*"(.*?)"/ || /issuer=.*O\s*=\s*([^\/,]+)/) {
+		$rv{'issuer_o'} = $1;
+		}
+	if (/issuer=.*OU\s*=\s*([^\/,]+)/) {
+		$rv{'issuer_ou'} = $1;
+		}
+	if (/issuer=.*CN\s*=\s*([^\/,]+)/) {
+		$rv{'issuer_cn'} = $1;
+		}
+	if (/issuer=.*emailAddress\s*=\s*([^\/,]+)/) {
+		$rv{'issuer_email'} = $1;
+		}
+	if (/notAfter\s*=\s*(.*)/) {
+		$rv{'notafter'} = $1;
+		}
+	if (/notBefore\s*=\s*(.*)/) {
+		$rv{'notbefore'} = $1;
+		}
+	if (/Subject\s+Alternative\s+Name/i) {
+		my $alts = <OUT>;
+		$alts =~ s/^\s+//;
+		foreach my $a (split(/[, ]+/, $alts)) {
+			if ($a =~ /^DNS:(\S+)/) {
+				push(@{$rv{'alt'}}, $1);
+				}
+			}
+		}
+	# Try to detect key algorithm
+	if (/Key\s+Algorithm:.*?(rsa|ec)[EP]/) {
+		$rv{'algo'} = $1;
+		}
+	if (/RSA\s+Public\s+Key:\s+\((\d+)\s*bit/) {
+		$rv{'size'} = $1;
+		}
+	elsif (/EC\s+Public\s+Key:\s+\((\d+)\s*bit/) {
+		$rv{'size'} = $1;
+		}
+	elsif (/Public-Key:\s+\((\d+)\s*bit/) {
+		$rv{'size'} = $1;
+		}
+	if (/Modulus\s*\(.*\):/ || /Modulus:/) {
+		$inmodulus = 1;
+		# RSA algo
+		$rv{'algo'} = "rsa" if (!$rv{'algo'});
+		}
+	elsif (/pub:/) {
+		$inmodulus = 1;
+		# ECC algo
+		$rv{'algo'} = 'ec' if (!$rv{'algo'});
+		}
+	if (/^\s+([0-9a-f:]+)\s*$/ && $inmodulus) {
+		$rv{'modulus'} .= $1;
+		}
+	# RSA exponent
+	if (/Exponent:\s*(\d+)/) {
+		$rv{'exponent'} = $1;
+		$inmodulus = 0;
+		}
+	# ECC properties
+	elsif (/(ASN1\s+OID):\s*(\S+)/ || /(NIST\s+CURVE):\s*(\S+)/) {
+		$inmodulus = 0;
+		my $comma = $rv{'exponent'} ? ", " : "";
+		$rv{'exponent'} .= "$comma$1: $2";
+		}
+	}
+close(OUT);
+foreach my $k (keys %rv) {
+	$rv{$k} =~ s/http:\|\|/http:\/\//g;
+	}
+$rv{'self'} = $rv{'o'} eq $rv{'issuer_o'} ? 1 : 0;
+return \%rv;
+}
+
+# ssl_hostname_match(hostname, &hosts-list)
+# Does a hostname match a list of hostnames for an SSL cert?
+sub ssl_hostname_match
+{
+my ($h, $hosts) = @_;
+foreach my $p (@$hosts) {
+	return 1 if (lc($p) eq lc($h));
+	return 1 if ($p =~ /^\*\.(\S+)$/ &&
+		     (lc($h) eq lc($1) || $h =~ /^([^\.]+)\.\Q$1\E$/i));
+	return 2 if ($p eq "*");
+	}
+return 0;
 }
