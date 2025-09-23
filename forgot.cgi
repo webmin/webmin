@@ -23,6 +23,12 @@ my $linkfile = $main::forgot_password_link_dir."/".$in{'id'};
 time() - $link{'time'} > 60*$timeout &&
 	&error(&text('forgot_etime', $timeout));
 
+# Check that the hostname in the original email matches the current hostname
+my ($basehost) = &parse_http_url(&get_webmin_email_url());
+if ($basehost ne $link{'host'}) {
+	&error($text{'forgot_ehost'});
+	}
+
 # Get the Webmin user
 &foreign_require("acl");
 my ($wuser) = grep { $_->{'name'} eq $link{'user'} } &acl::list_users();

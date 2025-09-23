@@ -103,8 +103,11 @@ sleep($maxtries);
 $wuser->{'pass'} eq '*LK*' && &error($text{'forgot_elock'});
 
 # Generate a random ID and tracking file for this password reset
+my $baseurl = &get_webmin_email_url();
+my ($basehost) = &parse_http_url($baseurl);
 my %link = ( 'id' => &acl::generate_random_id(),
 	     'remote' => $ENV{'REMOTE_ADDR'},
+	     'host' => $basehost,
 	     'time' => $now,
 	     'user' => $wuser->{'name'},
 	     'uuser' => $uuser ? $uuser->{'user'} : undef,
@@ -114,7 +117,6 @@ my $linkfile = $main::forgot_password_link_dir."/".$link{'id'};
 &lock_file($linkfile);
 &write_file($linkfile, \%link);
 &unlock_file($linkfile);
-my $baseurl = &get_webmin_email_url();
 my $url = $baseurl.'/forgot.cgi?id='.&urlize($link{'id'});
 my $username = $muser ? $muser->{'user'} :
 	       $uuser ? $uuser->{'user'} : $wuser->{'name'};

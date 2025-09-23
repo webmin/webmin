@@ -159,6 +159,7 @@ forgot_erandom=Failed to generate random ID!
 forgot_eid=Missing or invalid-looking reset ID!
 forgot_eid2=Reset ID is not valid!
 forgot_etime=Password reset email is more than $1 minutes old.
+forgot_ehost=Hostname mismatch in reset email
 forgot_newpass=New password for user $1
 forgot_newpass2=New password again
 forgot_passok=Change Password
