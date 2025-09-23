@@ -2504,6 +2504,8 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"SSL_HSTS"} = $config{"ssl_hsts"};
 	if ($use_ssl) {
 		$ENV{"SSL_HOST"} = $ssl_host;
+		$ENV{"SSL_HOST"} .= ":".$port
+			if ($port && $port !~ /^(80|443)$/);
 		$ENV{"SSL_HOST_CERT"} =
 			&ssl_hostname_match($ssl_host, $ssl_cert_hosts);
 		}
