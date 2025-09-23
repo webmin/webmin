@@ -13,7 +13,8 @@ $trust_unknown_referers = 1;
 &error_setup($text{'forgot_err'});
 $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
 $remote_user && &error($text{'forgot_elogin'});
-$ENV{'HTTPS'} eq 'ON' || &error($text{'forgot_essl'});
+$ENV{'HTTPS'} eq 'ON' || $gconfig{'forgot_pass'} == 2 ||
+        &error($text{'forgot_essl'});
 
 &ui_print_header(undef, $text{'forgot_title'}, "", undef, undef, 1, 1);
 
