@@ -7477,84 +7477,195 @@ if ($gconfig{'logfiles'} && !&get_module_variable('$no_log_file_changes')) {
 	}
 }
 
-=head2 var_dump(objref, [filename|no-html], [pid-to-filename])
+=head2 var_dump(@data)
 
-Prints to UI or dumps to a file content of array/hash
-ref or variable. For internal debug use only.
+Dump any Perl values to a log file and, when running in a
+Webmin web context, also print them to the UI.
 
- Examples to print output to UI:
-   var_dump(\@array_ref, 0); # No HTML, standard output
-   var_dump(\%hash_ref);     # HTML output (newlines and spaces replaced with <br> and &nbsp;)
+=item * Call with one or more arguments.
 
- Examples to dump content to a file (under Webmin tempdir):
-   var_dump(\@array_ref, 'array_ref_name', 'add-process-pid-to-filename');
-   var_dump(\%hash_ref, 'hash_ref_name');
+Use a reference for composites to avoid list flattening.
+
+  var_dump(\@array);
+  var_dump(\%hash);
+  var_dump($hashref);
+  var_dump($scalar);
+  var_dump($scalar, \%hash, \@array);
+
+=item * Log file
+
+Prints by appending to the "/var/webmin/webmin.dump" file.
+
+=item * Header
+
+Each entry starts with:
+  ===== @ Tue Sep 21 12:00:00.123 2025 pid 1234 =====
+
+Millisecond precision is used when Time::HiRes is available.
+
+=item * UI (web context)
+
+If the dump is also printed to the browser, it is HTML-escaped with preserved
+formatting. A single header is sent once per process if a header hasn't already
+been sent.
+
+Long output is collapsed after the first 5 lines, with the rest shown inside an
+expandable/collapsible accordion toggle.
+
+=item * Return
+
+Returns 0 on success, or an "Error: ..." string. If Data::Dumper is missing,
+the error is written to the log and shown in the UI on the web.
+
+=back
 
 =cut
 sub var_dump
 {
-my ($objref, $filename, $pidtofilename) = @_;
-my $pid;
-$pid = "-" . $$ if ($pidtofilename);
-my $filename_ = "$pid";
+my @args = @_;
 
-if ($filename && $filename_) {
-	$filename  =~ tr/A-Za-z0-9\_\-//cd;
-	$filename = "$filename--";
+# Output target
+my $dir = $main::var_dir || $main::var_directory || '/var/webmin';
+my $file = "$dir/webmin.dump";
+
+# Create directory if missing
+mkdir $dir, 0750 if (!-d $dir);
+
+# Timestamp with milliseconds if possible
+my ($sec, $usec);
+{
+	eval 'use Time::HiRes qw(gettimeofday)';
+	if ($@) { $sec = time; $usec = 0; }
+	else { ($sec, $usec) = Time::HiRes::gettimeofday(); }
+}
+my $ts = scalar localtime($sec);
+my $ms = int($usec / 1000);
+$ts =~ s/(\d{2}:\d{2}:\d{2})/$1 . sprintf(".%03d", $ms)/e;
+
+# Open log file ealier to log open errors too
+my $fh;
+my $opened = open($fh, '>>', $file);
+if ($opened) {
+	eval { flock($fh, 2); };
+	print {$fh} "===== @ $ts pid $$ =====\n";
 	}
-state $check_header;
-my $check_headers = sub {
-	if (!$check_header++ && !$main::done_webmin_header) {
-		print "Content-type: text/html\n\n";
-		}
-	};
 
+# Load Data::Dumper dynamically
+my $dumper_err;
 eval 'use Data::Dumper';
-if (!$@) {
-	$Data::Dumper::Indent = 1;
-	$Data::Dumper::Terse = 1;
-	$Data::Dumper::Deepcopy = 1;
-	$Data::Dumper::Sortkeys = 1;
+if ($@) {
+	$dumper_err = "Error: The Data::Dumper Perl module is not available ".
+		      "on your system";
+	print {$fh} "$dumper_err\n" if $opened;
+	}
 
-	# Write file
-	if ($filename) {
-		my ($seconds, $microseconds);
-			eval 'use Time::Piece';
-			if (!$@) {
-				eval 'use Time::HiRes';
-				if (!$@) {
-				($seconds, $microseconds) = Time::HiRes::gettimeofday;
-				$microseconds = "$seconds$microseconds-";
+# Build dump or error text
+my $dump_txt = $dumper_err || '';
+if (!$dumper_err) {
+	local $Data::Dumper::Indent    = 2;
+	local $Data::Dumper::Terse     = 1;
+	local $Data::Dumper::Sortkeys  = 1;
+	local $Data::Dumper::Quotekeys = 0;
+	local $Data::Dumper::Useqq     = 0;
+	for (my $i = 0; $i < @args; $i++) {
+		$dump_txt .= "----- param #".($i+1)." -----\n";
+		$dump_txt .= Data::Dumper::Dumper($args[$i]);
+		}
+	}
+
+# Write to file or show error if can't open
+$dump_txt = "Error: open($file) failed: $!\n" . ($dump_txt // '') if (!$opened);
+if ($opened) {
+	print {$fh} $dump_txt, "\n\n";
+	eval { flock($fh, 8); };
+	close $fh or return "Error: close($file): $!";
+	}
+
+# Optionally print to UI (web scripts only)
+if ($main::webmin_script_type eq 'web') {
+	# Print HTTP header once per process
+	our $var_dump__hdr_sent ||= 0;
+	if (!$var_dump__hdr_sent && !$main::done_webmin_header) {
+		print "Content-type: text/html; charset=UTF-8\n\n";
+		$var_dump__hdr_sent = 1;
+		}
+	# Limit long dumps by wrapping parameter chunks between accordion lines
+	my $out = $dump_txt;
+	# Add header
+	$out = "===== @ $ts pid $$ =====\n" . $out;
+	# Split into chunks
+	my @chunks;
+	{
+		my $param_re = qr/^-{3,}\s*param\s*#\d+\s*-{3,}\s*$/i;
+		my @lines = split /\n/, $out, -1;
+		my ($cur_header, @cur_lines);
+		my $push_chunk = sub {
+			push @chunks, {
+				header => $cur_header,
+				lines  => [ @cur_lines ] }
+					if defined($cur_header) || @cur_lines;
+			($cur_header, @cur_lines) = (undef);
+			};
+
+		for my $ln (@lines) {
+			if ($ln =~ $param_re) {
+				$push_chunk->();
+				$cur_header = $ln;
+				}
+			else {
+				push @cur_lines, $ln;
 				}
 			}
-		write_file_contents(tempname("${microseconds}${filename}${filename_}"), Dumper($objref));
-		}
-	# Print on screen
-	else {
-		my $dumped_data = Dumper($objref);
-		# If print to UI, escape HTML and
-		# replace new lines and spaces
-		if ($main::webmin_script_type eq 'web') {
-			$dumped_data = &html_escape($dumped_data);
-			$dumped_data =~ s/\n/<br>/g;
-			$dumped_data =~ s/\s/&nbsp;/g;
+		$push_chunk->();
+	}
+	# Render each chunk and wrap only param chunks that have more than the
+	# limit lines
+	my $limit = 5;
+	my $esc = sub {
+		my ($s) = @_;
+		$s =~ s/&/&amp;/g;
+		$s =~ s/</&lt;/g;
+		$s =~ s/>/&gt;/g;
+		$s =~ s/"/&quot;/g;
+		$s =~ s/'/&apos;/g;
+		$s =~ s/ /&nbsp;/g;
+		return $s;
+	};
+	my @rendered;
+	my $first = 1;
+	for my $c (@chunks) {
+		my $piece = '';
+		$piece .= "<br>\n" unless $first;
+		$first = 0;
+
+		my $hdr = defined $c->{header} ? $esc->($c->{header}) : undef;
+		my @elines = map { $esc->($_) } @{$c->{lines}};
+
+		$piece .= "$hdr<br>\n" if defined $hdr;
+
+		if (defined($hdr) && @elines > $limit) {
+			# Param chunk with wrapping
+			my $head = join '<br>', @elines[0 .. $limit-1];
+			my $tail = join '<br>', @elines[$limit .. $#elines];
+			$piece  .= $head
+				.  "<br>\n"
+				.  "<details class=\"inline\">"
+				.  "<summary>&nbsp;&nbsp;...</summary>\n"
+				.  $tail . "\n</details>\n";
 			}
-		&$check_headers();
-		$objref && print $dumped_data;
+		else {
+			# Non-param chunk or short param with no wrapping
+			$piece .= join '<br>', @elines;
+			}
+		push @rendered, $piece;
 		}
+	$out = join('', @rendered);
+	$out .= "<br>\n";
+	print "<tt>$out</tt>";
 	}
-else {
-	my $dumpererr = "Error: The Data::Dumper Perl module is not available on your system";
-	# Write file
-	if ($filename) {
-		write_file_contents(tempname("${filename_}_error"), $dumpererr);
-		}
-	# Print on screen
-	else {
-		&$check_headers();
-		$objref && print Dumper($dumpererr);
-		}
-	}
+
+# Return result
+return $dumper_err || 0;
 }
 
 =head2 webmin_debug_log(type, message)
