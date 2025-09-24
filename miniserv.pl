@@ -2505,7 +2505,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	if ($use_ssl) {
 		$ENV{"SSL_HOST"} = $ssl_host;
 		$ENV{"SSL_HOST_CERT"} =
-			&ssl_hostname_match($ssl_host, $ssl_cert_hosts);
+			&ssl_hostname_match($header{'host'}, $ssl_cert_hosts);
 		}
 	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 	if ($use_ssl) {
@@ -7134,6 +7134,7 @@ return \%rv;
 sub ssl_hostname_match
 {
 my ($h, $hosts) = @_;
+$h =~ s/:\d+$//;
 foreach my $p (@$hosts) {
 	return 1 if (lc($p) eq lc($h));
 	return 1 if ($p =~ /^\*\.(\S+)$/ &&
