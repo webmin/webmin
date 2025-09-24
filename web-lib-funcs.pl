@@ -13257,19 +13257,18 @@ my ($mod, $cgi, $def, $forcehost) = @_;
 
 # Work out the base URL
 my $url;
-my $proto = lc($ENV{'HTTPS'}) eq 'on' ? 'https' : 'http';
-my $remote_host = $proto eq 'https' ? $ENV{'SSL_HOST'} : $ENV{'HTTP_HOST'};
 if (!$def && $gconfig{'webmin_email_url'}) {
 	# From a config option
 	$url = $gconfig{'webmin_email_url'};
 	}
-elsif ($remote_host) {
+elsif ($ENV{'HTTP_HOST'}) {
 	# From this HTTP request
-	my $host = $remote_host;
+	my $host = $ENV{'HTTP_HOST'};
 	my $port = $ENV{'SERVER_PORT'} || 80;
 	if ($host =~ s/:(\d+)$//) {
 		$port = $1;        
 		}
+	my $proto = lc($ENV{'HTTPS'}) eq 'on' ? 'https' : 'http';
 	my $defport = $proto eq 'https' ? 443 : 80;
 	$url = $proto."://".$host.($port == $defport ? "" : ":".$port);
 	$url .= $gconfig{'webprefix'} if ($gconfig{'webprefix'});
