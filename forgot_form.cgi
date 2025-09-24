@@ -15,6 +15,10 @@ $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
 $remote_user && &error($text{'forgot_elogin'});
 $ENV{'HTTPS'} eq 'ON' || $gconfig{'forgot_pass'} == 2 ||
         &error($text{'forgot_essl'});
+$ENV{'SSL_HOST_CERT'} == 1 ||
+	&error(&text('forgot_esslhost',
+ 		     &html_escape($ENV{'HTTP_HOST'} || $ENV{'SSL_HOST'})))
+		     	if ($ENV{'HTTPS'} eq 'ON');
 
 &ui_print_header(undef, $text{'forgot_title'}, "", undef, undef, 1, 1);
 print &ui_alert_box("<b> ⚠ ".$text{'forgot_nossl_warn'}, 'warn')
