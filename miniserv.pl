@@ -4889,8 +4889,7 @@ print DEBUG "in reload_config_file\n";
 &build_config_mappings();
 &read_webmin_crons();
 &precache_files();
-&setup_ssl_contexts()
-	if ($use_ssl);
+&setup_ssl_contexts() if ($use_ssl);
 &parse_websockets_config();
 if ($config{'session'}) {
 	dbmclose(%sessiondb);
@@ -5523,6 +5522,9 @@ foreach my $pe (split(/\t+/, $config{'expires_paths'})) {
 
 # Reset cache of sudo checks
 undef(%sudocache);
+
+# Reset cache of cert files
+undef(%cert_file_info_cache);
 }
 
 # is_group_member(&uinfo, groupname)
@@ -7017,6 +7019,7 @@ return $sig;
 sub cert_file_info
 {
 local ($file) = @_;
+return $cert_file_info_cache{$file} if ($cert_file_info_cache{$file});
 return undef if (!-r $file);
 my %rv;
 my $cmd = "openssl x509 -in ".quotemeta($file)." -issuer -subject -enddate -startdate -text";
@@ -7126,6 +7129,7 @@ foreach my $k (keys %rv) {
 	$rv{$k} =~ s/http:\|\|/http:\/\//g;
 	}
 $rv{'self'} = $rv{'o'} eq $rv{'issuer_o'} ? 1 : 0;
+$cert_file_info_cache{$file} = \%rv;
 return \%rv;
 }
 
