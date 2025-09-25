@@ -942,8 +942,8 @@ while(1) {
 						($ssl_con,
 						 $ssl_certfile,
 						 $ssl_keyfile,
-						 $ssl_host,
-						 $ssl_cert_hosts) =
+						 $ssl_cn,
+						 $ssl_alts) =
 							&ssl_connection_for_ip(
 							    SOCK, $ipv6fhs{$s});
 						print DEBUG "ssl_con returned ".
@@ -2503,9 +2503,9 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"HTTPS"} = $use_ssl ? "ON" : "";
 	$ENV{"SSL_HSTS"} = $config{"ssl_hsts"};
 	if ($use_ssl) {
-		$ENV{"SSL_HOST"} = $ssl_host;
-		$ENV{"SSL_HOST_CERT"} =
-			&ssl_hostname_match($header{'host'}, $ssl_cert_hosts);
+		$ENV{"SSL_CN"} = $ssl_cn;
+		$ENV{"SSL_CN_CERT"} =
+			&ssl_hostname_match($header{'host'}, $ssl_alts);
 		}
 	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 	if ($use_ssl) {
