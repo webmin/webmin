@@ -42,7 +42,10 @@ print &ui_table_row("",
 
 # Enable forgotten password recovery
 print &ui_table_row($text{'session_forgot'},
-	&ui_yesno_radio("forgot", $gconfig{'forgot_pass'}));
+	&ui_radio("forgot", $gconfig{'forgot_pass'},
+			  [ [ 0, $text{'no'}."<br>" ],
+			    [ 1, $text{'yes'}."<br>" ],
+			    [ 2, $text{'forgot_nossl'} ] ]));
 
 # Block bad password requests
 $gconfig{'passreset_failures'} //= 3;

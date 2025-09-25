@@ -13261,10 +13261,12 @@ if (!$def && $gconfig{'webmin_email_url'}) {
 	# From a config option
 	$url = $gconfig{'webmin_email_url'};
 	}
-elsif ($ENV{'HTTP_HOST'}) {
+elsif ($ENV{'HTTP_HOST'} || $ENV{'SSL_HOST'}) {
 	# From this HTTP request
-	my $host = $ENV{'HTTP_HOST'};
 	my $port = $ENV{'SERVER_PORT'} || 80;
+	my $host = $ENV{'SSL_HOST'}
+		? "$ENV{'SSL_HOST'}:$port"
+		:  $ENV{'HTTP_HOST'};
 	if ($host =~ s/:(\d+)$//) {
 		$port = $1;        
 		}
