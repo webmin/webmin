@@ -197,9 +197,14 @@ foreach $r (&expand_remotes($serv)) {
 			# Just include and use the local monitor library
 			do "${t}-monitor.pl" if (!$done_monitor{$t}++);
 			my $func = "get_${t}_status";
-			$rv = &$func($serv,
+			if (defined(&$func)) {
+				$rv = &$func($serv,
 				     $serv->{'clone'} ? $serv->{'clone'} : $t,
 				     $fromcgi);
+				}
+			else {
+				$rv = { 'up' => -1 };
+				}
 			}
 		alarm(0);
 		};
