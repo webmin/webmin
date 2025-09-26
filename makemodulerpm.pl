@@ -34,7 +34,7 @@ my $allow_overwrite = 0;
 
 my ($force_theme, $no_prefix, $set_prefix,
     $obsolete_wbm, $vendor, $url, $force_usermin, $final_mod, $sign, $keyname,
-    $epoch, $dir, $ver, @exclude,
+    $epoch, $dir, $ver, @exclude, $copy_tar,
 
     $rpmdepends, $norpmdepends, $rpmrecommends, $norpmrecommends,
     $no_requires, $no_recommends, $no_suggests, $no_conflicts, $no_provides,
@@ -135,6 +135,9 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--mod-list") {
 		$mod_list = shift(@ARGV);
+		}
+	elsif ($a eq "--copy-tar") {
+		$copy_tar = 1;
 		}
 	elsif ($a =~ /^\-\-/) {
 		print STDERR "Unknown option $a\n";
@@ -556,6 +559,14 @@ fi
 EOF
 close($SPEC);
 
+# Put the tar in /tmp too if tar package is requested
+my $tar_release_file;
+if ($copy_tar) {
+	my $tar_release = $release =~ tr/0-9//dr;
+	$tar_release_file = "$mod-$ver$tar_release.tar.gz";
+	system("cp $rpm_source_dir/$mod.tar.gz /tmp/$tar_release_file");
+	}
+
 # Build the actual RPM
 my $cmd = -x "/usr/bin/rpmbuild" ? "/usr/bin/rpmbuild" : "/bin/rpm";
 system("$cmd -ba $spec_dir/$prefix$mod.spec") && exit;
@@ -570,10 +581,20 @@ if ($sign) {
 if ($target_dir =~ /:/) {
 	# scp to dest
 	system("scp $rpm_dir/$prefix$mod-$ver-$release.noarch.rpm $target_dir/$prefix$mod-$ver-$release.noarch.rpm");
+	# scp the tar too if requested
+	if ($copy_tar) {
+		system("scp /tmp/$tar_release_file $target_dir/$tar_release_file");
+		unlink("/tmp/$tar_release_file");
+		}
 	}
 elsif ($rpm_dir ne $target_dir) {
 	# Just copy
 	system("/bin/cp $rpm_dir/$prefix$mod-$ver-$release.noarch.rpm $target_dir/$prefix$mod-$ver-$release.noarch.rpm");
+	# Copy the tar too if requested
+	if ($copy_tar) {
+		system("/bin/cp /tmp/$tar_release_file $target_dir/$tar_release_file");
+		unlink("/tmp/$tar_release_file");
+		}
 	}
 
 # read_file(file, &assoc, [&order], [lowercase])
