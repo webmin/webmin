@@ -7581,14 +7581,8 @@ if ($opened) {
 	close $fh or return "Error: close($file): $!";
 	}
 
-# Optionally print to UI (web scripts only)
-if ($main::webmin_script_type eq 'web') {
-	# Print HTTP header once per process
-	our $var_dump__hdr_sent ||= 0;
-	if (!$var_dump__hdr_sent && !$main::done_webmin_header) {
-		print "Content-type: text/html; charset=UTF-8\n\n";
-		$var_dump__hdr_sent = 1;
-		}
+# Optionally print to UI (web scripts only) only if header already sent
+if ($main::done_webmin_header && $main::webmin_script_type eq 'web') {
 	# Limit long dumps by wrapping parameter chunks between accordion lines
 	my $out = $dump_txt;
 	# Add header
