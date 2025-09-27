@@ -562,7 +562,7 @@ close($SPEC);
 # Put the tar in /tmp too if tar package is requested
 my $tar_release_file;
 if ($copy_tar) {
-	$tar_release_file = "$mod-$ver-$release.tar.gz";
+	$tar_release_file = "$prefix$mod-$ver-$release.tar.gz";
 	system("cp $rpm_source_dir/$mod.tar.gz /tmp/$tar_release_file");
 	}
 
