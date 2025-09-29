@@ -14,9 +14,9 @@ $gconfig{'forgot_pass'} || &error($text{'forgot_ecannot'});
 $remote_user && &error($text{'forgot_elogin'});
 $ENV{'HTTPS'} eq 'ON' || $gconfig{'forgot_pass'} == 2 ||
         &error($text{'forgot_essl'});
-$ENV{'SSL_HOST_CERT'} == 1 ||
+$ENV{'SSL_CN_CERT'} == 1 ||
 	&error(&text('forgot_esslhost',
- 		     &html_escape($ENV{'HTTP_HOST'} || $ENV{'SSL_HOST'})))
+ 		     &html_escape($ENV{'HTTP_HOST'} || $ENV{'SSL_CN'})))
 		     	if ($ENV{'HTTPS'} eq 'ON');
 
 # Lookup the Webmin user

@@ -971,7 +971,7 @@ if (!$ENV{'nostart'}) {
 		print "  - DateTime, DateTime::Locale, DateTime::TimeZone, Data::Dumper,\n";
 		print "  - Digest::MD5, Digest::SHA, Encode::Detect, File::Basename,\n";
 		print "  - File::Path, Net::SSLeay, Time::HiRes, Time::Local, Time::Piece,\n";
-		print "  - JSON::XS, lib, open\n";
+		print "  - Sys::Syslog, JSON::XS, lib, open\n";
 		print " Packages:\n";
 		print "  - openssl - Cryptography library with TLS implementation\n";
 		print "  - shared-mime-info - Shared MIME information database\n";

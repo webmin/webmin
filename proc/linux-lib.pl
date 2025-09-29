@@ -700,14 +700,14 @@ if (!@fans && @cpu && @fans_all &&
 	}
 
 # Fall back logic for CPU temperature and fans spread over multiple
-# devices like Raspberry Pi #2517 and #2539
+# devices like Raspberry Pi #2517 and #2539 #2545
 if (@cpu || !@fans) {
 	# - Look for least two ISA voltage rails anywhere
 	# - See a CPU temp under cpu_thermal
-	# - Optionally grab a fan RPM under pwmfan-isa-*
+	# - Optionally grab a fan RPM under *fan-isa-*
 	my $can_fallback =
 		(!@cpu && (grep { /^\s*cpu_thermal/i } @sensors)) ||
-		(@cpu && !@fans && (grep { /^\s*pwmfan-isa-/i } @sensors));
+		(@cpu && !@fans && (grep { /fan-isa-\d+/i } @sensors));
 	return (\@cpu, \@fans) if (!$can_fallback);
 	my ($chip, $bus); 	# isa|pci|platform|virtual
 	my $isa_volt;
@@ -735,7 +735,7 @@ if (@cpu || !@fans) {
 			}
 
 		# Fan RPM
-		if (defined $chip && $chip =~ /^pwmfan/i &&
+		if (defined $chip && $chip =~ /fan$/i &&
 		    /\b(?:cpu[_ ]?fan(?:\s*\d+)?|fan\d+)\s*:\s*(\d+)\s*rpm\b/i) {
 			my $rpm = $1 + 0;
 			$fan_rpm = $rpm if (!$fan_rpm || $rpm > $fan_rpm);

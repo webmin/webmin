@@ -942,8 +942,8 @@ while(1) {
 						($ssl_con,
 						 $ssl_certfile,
 						 $ssl_keyfile,
-						 $ssl_host,
-						 $ssl_cert_hosts) =
+						 $ssl_cn,
+						 $ssl_alts) =
 							&ssl_connection_for_ip(
 							    SOCK, $ipv6fhs{$s});
 						print DEBUG "ssl_con returned ".
@@ -2503,9 +2503,9 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"HTTPS"} = $use_ssl ? "ON" : "";
 	$ENV{"SSL_HSTS"} = $config{"ssl_hsts"};
 	if ($use_ssl) {
-		$ENV{"SSL_HOST"} = $ssl_host;
-		$ENV{"SSL_HOST_CERT"} =
-			&ssl_hostname_match($header{'host'}, $ssl_cert_hosts);
+		$ENV{"SSL_CN"} = $ssl_cn;
+		$ENV{"SSL_CN_CERT"} =
+			&ssl_hostname_match($header{'host'}, $ssl_alts);
 		}
 	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 	if ($use_ssl) {
@@ -4784,7 +4784,7 @@ eval 'Net::SSLeay::CTX_set_options($ssl_ctx,
         &Net::SSLeay::OP_NO_RENEGOTIATION)';
 
 # Get the hostnames each cert is valid for
-my $info = &cert_file_info($certfile);
+my $info = &cert_names($certfile);
 my @hosts;
 push(@hosts, $info->{'cn'}) if ($info->{'cn'});
 push(@hosts, @{$info->{'alt'}}) if ($info->{'alt'});
@@ -5524,7 +5524,7 @@ foreach my $pe (split(/\t+/, $config{'expires_paths'})) {
 undef(%sudocache);
 
 # Reset cache of cert files
-undef(%cert_file_info_cache);
+undef(%cert_names_cache);
 }
 
 # is_group_member(&uinfo, groupname)
@@ -7014,122 +7014,60 @@ if (!$sig) {
 return $sig;
 }
 
-# cert_file_info(file)
-# Returns a hash of details of a cert in some file
-sub cert_file_info
-{
-local ($file) = @_;
-return $cert_file_info_cache{$file} if ($cert_file_info_cache{$file});
-return undef if (!-r $file);
-my %rv;
-my $cmd = "openssl x509 -in ".quotemeta($file)." -issuer -subject -enddate -startdate -text";
-open(OUT, $cmd." 2>/dev/null |");
-local $_;
-while(<OUT>) {
-	s/\r|\n//g;
-	s/http:\/\//http:\|\|/g;	# So we can parse with regexp
-	if (/subject=.*C\s*=\s*([^\/,]+)/) {
-		$rv{'c'} = $1;
-		}
-	if (/subject=.*ST\s*=\s*([^\/,]+)/) {
-		$rv{'st'} = $1;
-		}
-	if (/subject=.*L\s*=\s*([^\/,]+)/) {
-		$rv{'l'} = $1;
-		}
-	if (/subject=.*O\s*=\s*"(.*?)"/ || /subject=.*O\s*=\s*([^\/,]+)/) {
-		$rv{'o'} = $1;
-		}
-	if (/subject=.*OU\s*=\s*([^\/,]+)/) {
-		$rv{'ou'} = $1;
-		}
-	if (/subject=.*CN\s*=\s*([^\/,]+)/) {
-		$rv{'cn'} = $1;
-		}
-	if (/subject=.*emailAddress\s*=\s*([^\/,]+)/) {
-		$rv{'email'} = $1;
-		}
+=head2 cert_names($file)
 
-	if (/issuer=.*C\s*=\s*([^\/,]+)/) {
-		$rv{'issuer_c'} = $1;
-		}
-	if (/issuer=.*ST\s*=\s*([^\/,]+)/) {
-		$rv{'issuer_st'} = $1;
-		}
-	if (/issuer=.*L\s*=\s*([^\/,]+)/) {
-		$rv{'issuer_l'} = $1;
-		}
-	if (/issuer=.*O\s*=\s*"(.*?)"/ || /issuer=.*O\s*=\s*([^\/,]+)/) {
-		$rv{'issuer_o'} = $1;
-		}
-	if (/issuer=.*OU\s*=\s*([^\/,]+)/) {
-		$rv{'issuer_ou'} = $1;
-		}
-	if (/issuer=.*CN\s*=\s*([^\/,]+)/) {
-		$rv{'issuer_cn'} = $1;
-		}
-	if (/issuer=.*emailAddress\s*=\s*([^\/,]+)/) {
-		$rv{'issuer_email'} = $1;
-		}
-	if (/notAfter\s*=\s*(.*)/) {
-		$rv{'notafter'} = $1;
-		}
-	if (/notBefore\s*=\s*(.*)/) {
-		$rv{'notbefore'} = $1;
-		}
-	if (/Subject\s+Alternative\s+Name/i) {
-		my $alts = <OUT>;
-		$alts =~ s/^\s+//;
-		foreach my $a (split(/[, ]+/, $alts)) {
-			if ($a =~ /^DNS:(\S+)/) {
-				push(@{$rv{'alt'}}, $1);
-				}
-			}
-		}
-	# Try to detect key algorithm
-	if (/Key\s+Algorithm:.*?(rsa|ec)[EP]/) {
-		$rv{'algo'} = $1;
-		}
-	if (/RSA\s+Public\s+Key:\s+\((\d+)\s*bit/) {
-		$rv{'size'} = $1;
-		}
-	elsif (/EC\s+Public\s+Key:\s+\((\d+)\s*bit/) {
-		$rv{'size'} = $1;
-		}
-	elsif (/Public-Key:\s+\((\d+)\s*bit/) {
-		$rv{'size'} = $1;
-		}
-	if (/Modulus\s*\(.*\):/ || /Modulus:/) {
-		$inmodulus = 1;
-		# RSA algo
-		$rv{'algo'} = "rsa" if (!$rv{'algo'});
-		}
-	elsif (/pub:/) {
-		$inmodulus = 1;
-		# ECC algo
-		$rv{'algo'} = 'ec' if (!$rv{'algo'});
-		}
-	if (/^\s+([0-9a-f:]+)\s*$/ && $inmodulus) {
-		$rv{'modulus'} .= $1;
-		}
-	# RSA exponent
-	if (/Exponent:\s*(\d+)/) {
-		$rv{'exponent'} = $1;
-		$inmodulus = 0;
-		}
-	# ECC properties
-	elsif (/(ASN1\s+OID):\s*(\S+)/ || /(NIST\s+CURVE):\s*(\S+)/) {
-		$inmodulus = 0;
-		my $comma = $rv{'exponent'} ? ", " : "";
-		$rv{'exponent'} .= "$comma$1: $2";
+Extract Common Name and Subject Alternative Names from an X.509 certificate
+file. Supports both PEM and DER certificates. Returns undef if file cannot be
+read or parsed. Cache results for speed.
+
+=cut
+sub cert_names
+{
+my ($file) = @_;
+return $cert_names_cache{$file} if ($cert_names_cache{$file});
+return undef if (!$file || !-r $file);
+my %rv;
+my $cert;
+
+# Try PEM first
+my $bio = Net::SSLeay::BIO_new_file($file, 'r');
+if ($bio) {
+	$cert = Net::SSLeay::PEM_read_bio_X509($bio);
+	Net::SSLeay::BIO_free($bio);
+	}
+
+# Try DER if PEM failed
+if (!$cert) {
+	my $bio = Net::SSLeay::BIO_new_file($file, 'rb');
+	if ($bio) {
+		$cert = Net::SSLeay::d2i_X509_bio($bio);
+		Net::SSLeay::BIO_free($bio);
 		}
 	}
-close(OUT);
-foreach my $k (keys %rv) {
-	$rv{$k} =~ s/http:\|\|/http:\/\//g;
+
+# Certificate not found
+return undef if !$cert;
+
+# Subject
+my $subject = Net::SSLeay::X509_get_subject_name($cert);
+if ($subject) {
+	# commonName
+	my $cn = Net::SSLeay::X509_NAME_get_text_by_NID($subject, 13);
+	$rv{cn} = $cn if defined $cn && $cn ne '' && $cn ne '-1';
 	}
-$rv{'self'} = $rv{'o'} eq $rv{'issuer_o'} ? 1 : 0;
-$cert_file_info_cache{$file} = \%rv;
+
+# subjectAltName
+my @alts = Net::SSLeay::X509_get_subjectAltNames($cert);
+if (@alts) {
+	my @dns;
+	while (my ($type, $val) = splice(@alts, 0, 2)) {
+		push @dns, $val if $type == 2;
+		}
+	$rv{alt} = \@dns if @dns;
+	}
+
+Net::SSLeay::X509_free($cert);
+$cert_names_cache{$file} = \%rv;
 return \%rv;
 }
 
