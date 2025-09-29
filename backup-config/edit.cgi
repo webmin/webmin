@@ -15,6 +15,8 @@ if ($in{'new'}) {
 	$backup = { 'emode' => 0,
 		    'email' => $gconfig{'webmin_email_to'},
 		    'sched' => 1,
+		    'configfile' => 1,
+		    'nofiles' => 0,
 		    'mins' => 0,
 		    'hours' => 0,
 		    'days' => '*',
