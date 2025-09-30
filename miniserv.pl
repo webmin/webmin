@@ -1382,7 +1382,12 @@ print DEBUG "handle_request reqline=$reqline\n";
 alarm(0);
 if (!$use_ssl && $config{'ssl'} && $config{'ssl_enforce'}) {
 	# This is an http request when https must be enforced
-	local $urlhost = $config{'musthost'} || $host;
+	local $hostname = $host;
+	if ($hostname !~ /\./) {
+		my $system_hostname = &get_system_hostname();
+		$hostname = $system_hostname if ($system_hostname =~ /\./);
+		}
+	local $urlhost = $config{'musthost'} || $hostname;
 	$urlhost = "[".$urlhost."]" if (&check_ip6address($urlhost));
 	local $wantport = $port;
 	if ($wantport == 80 &&
@@ -1400,7 +1405,7 @@ if (!$use_ssl && $config{'ssl'} && $config{'ssl_enforce'}) {
 	&write_data("Location: $url\r\n");
 	&write_keep_alive(0);
 	&write_data("\r\n");
-	&log_error("Redirecting HTTP request to HTTPS for $acptip");
+	&log_error("Redirecting HTTP request to HTTPS using $urlhost host");
 	&log_request($loghost, $authuser, $reqline, 302, 0);
 	return 0;
 	}
