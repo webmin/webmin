@@ -1,7 +1,17 @@
 ## Changelog
 
-#### 2.511 (September, 2025)
+#### 2.520 (September 30, 2025)
+* Fix to make sure the mail URL uses a well-known host name [security]
+* Fix support for other Raspberry Pi sensors #2545
 * Fix the printing of the bottom button row in the form column table
+* Fix to recommend Perl `Sys::Syslog` module #2557
+* Add a complete overhaul of `var_dump` subroutine, which is now fully portable
+* Update the Authentic theme to the latest version with various fixes:
+  - Fix the text color when reading email in the Read User Mail module [webmin#2555](https://github.com/webmin/webmin/issues/2555)
+  - Fix to ensure the selected color palette is correctly stored when changed manually [webmin#2552](https://github.com/webmin/webmin/issues/2552)
+  - Fix a bug when the Webmin version label was missing when copying to clipboard system information from the dashboard
+  - Fix spinner color in toast messages for dark palette
+  - Fix other bugs and add various small improvements
 
 #### 2.510 (September 16, 2025)
 * Fix to ensure DNSSEC re-signing period is less than 30 days in the BIND DNS module
