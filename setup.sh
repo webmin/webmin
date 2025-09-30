@@ -1063,7 +1063,7 @@ if [ "$nostart" = "" ]; then
 		echo "  - DateTime, DateTime::Locale, DateTime::TimeZone, Data::Dumper,"
 		echo "  - Digest::MD5, Digest::SHA, Encode::Detect, File::Basename,"
 		echo "  - File::Path, Net::SSLeay, Time::HiRes, Time::Local, Time::Piece,"
-		echo "  - Sys::Syslog, JSON::XS, lib, open"
+		echo "  - Sys::Syslog, JSON::XS, lib, open, IO::Socket::INET6"
 		echo " Packages:"
 		echo "  - openssl - Cryptography library with TLS implementation"
 		echo "  - shared-mime-info - Shared MIME information database"
