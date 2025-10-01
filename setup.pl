@@ -616,6 +616,13 @@ else {
 	print STOP "else\n";
 	print STOP "  echo Stopping Webmin server in $wadir\n";
 	print STOP "fi\n";
+	print STOP "pids=\`ps axww -o pid= -o command= | awk -v wd=\"$wadir/\" '\$0 ~ wd && \$0 !~ /miniserv\\.pl/ {print \$1}'\`\n";
+	print STOP "[ -n \"\$pids\" ] && kill \$pids 2>/dev/null || true\n";
+	print STOP "if [ \"\$1\" = \"--kill\" ]; then\n";
+	print STOP "  sleep 1\n";
+	print STOP "  pids=\`ps axww -o pid= -o command= | awk -v wd=\"$wadir/\" '\$0 ~ wd && \$0 !~ /miniserv\\.pl/ {print \$1}'\`\n";
+	print STOP "  [ -n \"\$pids\" ] && kill -KILL \$pids 2>/dev/null || true\n";
+	print STOP "fi\n";
 	print STOP "pidfile=\`grep \"^pidfile=\" $config_directory/miniserv.conf | sed -e 's/pidfile=//g'\`\n";
 	print STOP "pid=\`cat \$pidfile 2>/dev/null\`\n";
 	print STOP "if [ \"\$pid\" != \"\" ]; then\n";

@@ -695,6 +695,13 @@ echo "  echo Force stopping Webmin server in $wadir" >>$config_dir/.stop-init
 echo "else" >>$config_dir/.stop-init
 echo "  echo Stopping Webmin server in $wadir" >>$config_dir/.stop-init
 echo "fi" >>$config_dir/.stop-init
+echo "pids=\`ps axww -o pid= -o command= | awk -v wd=\"$wadir/\" '\$0 ~ wd && \$0 !~ /miniserv\\.pl/ {print \$1}'\`" >>$config_dir/.stop-init
+echo "[ -n \"\$pids\" ] && kill \$pids 2>/dev/null || true" >>$config_dir/.stop-init
+echo "if [ \"\$1\" = \"--kill\" ]; then" >>$config_dir/.stop-init
+echo "  sleep 1" >>$config_dir/.stop-init
+echo "  pids=\`ps axww -o pid= -o command= | awk -v wd=\"$wadir/\" '\$0 ~ wd && \$0 !~ /miniserv\\.pl/ {print \$1}'\`" >>$config_dir/.stop-init
+echo "  [ -n \"\$pids\" ] && kill -KILL \$pids 2>/dev/null || true" >>$config_dir/.stop-init
+echo "fi" >>$config_dir/.stop-init
 echo "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`" >>$config_dir/.stop-init
 echo "pid=\`cat \$pidfile 2>/dev/null\`" >>$config_dir/.stop-init
 echo "if [ \"\$pid\" != \"\" ]; then" >>$config_dir/.stop-init
