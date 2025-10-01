@@ -754,31 +754,65 @@ return (\@cpu, \@fans);
 }
 
 # get_cpu_io_usage()
-# Returns a list containing CPU user, kernel, idle, io and VM time, and IO
-# blocks in and out
+# Returns a list of "us", "sy", "id", "wa", "st", "bi", "bo" that match `vmstat`
+# output by using /proc with much lower overhead
 sub get_cpu_io_usage
 {
-my ($nodelay) = @_;
-my $interval;
-$interval = " 1 2"
-	if (!$nodelay);
-my ($out, @lines, @w);
-if (&has_command("vmstat")) {
-        $out = &backquote_command("vmstat$interval 2>/dev/null");
-        @lines = split(/\r?\n/, $out);
-        @w = split(/\s+/, $lines[$#lines]);
-        shift(@w) if ($w[0] eq '');
-        if ($w[8] =~ /^\d+$/ && $w[9] =~ /^\d+$/) {
-            return ( @w[12..16], $w[8], $w[9] );
-        }
-    } elsif (&has_command("dstat")) {
-        $out = &backquote_command("dstat 1 1 2>/dev/null");
-        @lines = split(/\r?\n/, $out);
-        @w = split(/[\s|]+/, $lines[$#lines]);
-        shift(@w) if ($w[0] eq '');
-        return( @w[0..4], @w[6..7]);
-    }
-    return undef;
+# Read CPU counters from /proc/stat, the first "cpu" line
+my $read_cpu = sub {
+	open(my $fh, '<', '/proc/stat') or return;
+	my $line = <$fh>;
+	close($fh);
+	return unless defined $line && $line =~ /^cpu\s+/;
+	my @v = split /\s+/, $line; shift @v;
+	push @v, (0) x (8-@v) if @v < 8;
+	return @v[0..7];
+};
+
+# Read pgpgin/pgpgout from /proc/vmstat (in KB). Note, that all modern kernels,
+# /proc/vmstat pgpgin/pgpgout are KiB (scale=1); not as *pages*, so no need to
+# convert deltas
+my $read_io = sub {
+	open(my $fh, '<', '/proc/vmstat') or return (undef, undef);
+	my ($in, $out);
+	while (my $l = <$fh>) {
+		$in  = $1 if !defined $in  && $l =~ /^pgpgin\s+(\d+)/;
+		$out = $1 if !defined $out && $l =~ /^pgpgout\s+(\d+)/;
+		last if defined $in && defined $out;
+		}
+	close($fh);
+	return ($in, $out);   	   # KB on kernels 2.6.18+; no conversion needed
+};
+
+# Sample A
+my @cb = $read_cpu->() or return;
+my ($pgin_b, $pgout_b) = $read_io->();
+
+# Sleep half a second
+select(undef, undef, undef, 0.5);
+
+# Sample B
+my @ca = $read_cpu->() or return;
+my ($pgin_a, $pgout_a) = $read_io->();
+
+# CPU percentages as in vmstat
+my @d = map { $ca[$_] - $cb[$_] } 0..7;
+for (@d) { $_ = 0 if $_ < 0 }
+my $tot = 0; $tot += $_ for @d[0..7];
+return if !$tot;
+
+# Calculate percentages
+my $us = int( (($d[0] + $d[1]) / $tot) * 100 );          # user+nice
+my $sy = int( (($d[2] + $d[5] + $d[6]) / $tot) * 100 );  # system+irq+softirq
+my $id = int( ( $d[3] / $tot ) * 100 );                  # idle
+my $wa = int( ( $d[4] / $tot ) * 100 );                  # iowait
+my $st = int( ( $d[7] / $tot ) * 100 );                  # steal
+
+# Calculate bi/bo in KiB/s over half a second
+my ($bi, $bo) = (0, 0);
+$bi = int( (($pgin_a  // 0) - ($pgin_b  // 0)) / 0.5 );
+$bo = int( (($pgout_a // 0) - ($pgout_b // 0)) / 0.5 );
+return ($us, $sy, $id, $wa, $st, $bi, $bo);
 }
 
 # has_disk_stats()
