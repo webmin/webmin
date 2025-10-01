@@ -6,6 +6,7 @@
 * Fix the printing of the bottom button row in the form column table
 * Fix to recommend Perl `Sys::Syslog` module #2557
 * Fix to avoid using short hostname in HTTPS redirects when an FQDN is available
+* Fix to query specific fields in FreeBSD memory stats collection, cutting CPU use by 80%
 * Add a complete overhaul of `var_dump` subroutine, which is now fully portable
 * Update the Authentic theme to the latest version with various fixes:
   - Fix the text color when reading email in the Read User Mail module [webmin#2555](https://github.com/webmin/webmin/issues/2555)

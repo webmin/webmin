@@ -101,7 +101,16 @@ ioctl($ttyfh, 536900705, 0);
 sub get_memory_info
 {
 my $sysctl = {};
-my $sysctl_output = &backquote_command("/sbin/sysctl -a 2>/dev/null");
+# Get only the specific values we need not all with -a
+my @needed = qw(
+	hw.physmem
+	hw.pagesize
+	vm.stats.vm.v_inactive_count
+	vm.stats.vm.v_cache_count
+	vm.stats.vm.v_free_count
+	);
+my $sysctl_output = &backquote_command("/sbin/sysctl " .
+	join(" ", @needed) . " 2>/dev/null");
 return ( ) if ($?);
 foreach my $line (split(/\n/, $sysctl_output)) {
 	if ($line =~ m/^([^:]+):\s+(.+)\s*$/s) {
