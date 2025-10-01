@@ -1,6 +1,6 @@
 ## Changelog
 
-#### 2.520 (September 30, 2025)
+#### 2.520 (October 2, 2025)
 * Fix to make sure the mail URL uses a well-known host name [security]
 * Fix support for other Raspberry Pi sensors #2545
 * Fix the printing of the bottom button row in the form column table
