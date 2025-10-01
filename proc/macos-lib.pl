@@ -108,7 +108,7 @@ if ($out =~ /Primary\s+memory\s+available:\s+([0-9\.]+)\s+g/i) {
 	$rv[0] = $1 * 1024 * 1024;
 	}
 else {
-	my $out = &backquote_command("sysctl -a hw.physmem 2>/dev/null");
+	my $out = &backquote_command("sysctl hw.physmem 2>/dev/null");
 	if ($out =~ /:\s*(\d+)/) {
 		$rv[0] = $1 / 1024;
 		}
@@ -129,7 +129,7 @@ if ($usage > $rv[0]) {
 $rv[1] = $rv[0] - $usage;
 
 # Get swap usage
-$out = &backquote_command("sysctl -a vm.swapusage 2>/dev/null");
+$out = &backquote_command("sysctl vm.swapusage 2>/dev/null");
 if ($out =~ /total\s*=\s*([0-9\.]+)([KMGT]).*free\s*=\s*([0-9\.]+)([KMGT])/) {
 	$rv[2] = $1*($2 eq "K" ? 1 :
 		     $2 eq "M" ? 1024 :
@@ -155,7 +155,7 @@ my $out = &backquote_command("uptime 2>&1");
 my @rv = $out =~ /average(s)?:\s+([0-9\.]+),?\s+([0-9\.]+),?\s+([0-9\.]+)/i ?
 	 ( $2, $3, $4 ) : ( undef, undef, undef );
 
-$out = &backquote_command("sysctl -a machdep.cpu.brand_string");
+$out = &backquote_command("sysctl machdep.cpu.brand_string");
 if ($out =~ /:\s*(\S.*)/) {
 	$rv[4] = $1;
 	if ($rv[4] =~ s/\s*\@\s*([0-9\.]+)(GHz|MHz)//i) {
@@ -169,7 +169,7 @@ if (!$?) {
 	$rv[5] = $out;
 	}
 else {
-	$out = &backquote_command("sysctl -a machdep.cpu.vendor");
+	$out = &backquote_command("sysctl machdep.cpu.vendor");
 	if ($out =~ /:\s*(\S.*)/) {
 		$rv[5] = $1;
 		}
@@ -180,7 +180,7 @@ if ($out =~ /:\s*(\d+)/) {
 	$rv[6] = $1 * 1024;
 	}
 
-$out = &backquote_command("sysctl -a machdep.cpu.core_count");
+$out = &backquote_command("sysctl machdep.cpu.core_count");
 if ($out =~ /:\s*(\d+)/) {
 	$rv[7] = $1;
 	}
