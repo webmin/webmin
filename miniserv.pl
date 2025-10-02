@@ -1381,33 +1381,8 @@ $method = $page = $request_uri = undef;
 print DEBUG "handle_request reqline=$reqline\n";
 alarm(0);
 if (!$use_ssl && $config{'ssl'} && $config{'ssl_enforce'}) {
-	# This is an http request when https must be enforced
-	local $hostname = $host;
-	if ($hostname !~ /\./) {
-		my $system_hostname = &get_system_hostname();
-		$hostname = $system_hostname if ($system_hostname =~ /\./);
-		}
-	local $urlhost = $config{'musthost'} || $hostname;
-	$urlhost = "[".$urlhost."]" if (&check_ip6address($urlhost));
-	local $wantport = $port;
-	if ($wantport == 80 &&
-	    &indexof(443, @listening_on_ports) >= 0) {
-		# Connection was to port 80, but since we are also
-		# accepting on port 443, redirect to that
-		$wantport = 443;
-		}
-	local $url = $wantport == 443
-		? "https://$urlhost/"
-		: "https://$urlhost:$wantport/";
-	&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
-	&write_data("Date: $datestr\r\n");
-	&write_data("Server: @{[&server_info()]}\r\n");
-	&write_data("Location: $url\r\n");
-	&write_keep_alive(0);
-	&write_data("\r\n");
-	&log_error("Redirecting HTTP request to HTTPS using $urlhost host");
-	&log_request($loghost, $authuser, $reqline, 302, 0);
-	return 0;
+	# This is an http request when https must be enforced later when 
+	# we know the requested host
 	}
 elsif (!$reqline && $checked_timeout > 1) {
 	# An empty request .. just close the connection
@@ -1508,6 +1483,31 @@ if (defined($header{'host'})) {
 		# Disallowed hostname used
 		&http_error(400, "Invalid HTTP hostname");
 		}
+	}
+
+# This is an http request when https must be enforced
+if (!$use_ssl && $config{'ssl'} && $config{'ssl_enforce'}) {
+	local $urlhost = $config{'musthost'} || $host;
+	$urlhost = "[".$urlhost."]" if (&check_ip6address($urlhost));
+	local $wantport = $port;
+	if ($wantport == 80 &&
+	    &indexof(443, @listening_on_ports) >= 0) {
+		# Connection was to port 80, but since we are also
+		# accepting on port 443, redirect to that
+		$wantport = 443;
+		}
+	local $url = $wantport == 443
+		? "https://$urlhost/"
+		: "https://$urlhost:$wantport/";
+	&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
+	&write_data("Date: $datestr\r\n");
+	&write_data("Server: @{[&server_info()]}\r\n");
+	&write_data("Location: $url\r\n");
+	&write_keep_alive(0);
+	&write_data("\r\n");
+	&log_error("Redirecting HTTP request to HTTPS using $urlhost host");
+	&log_request($loghost, $authuser, $reqline, 302, 0);
+	return 0;
 	}
 
 # Create strings for use in redirects
