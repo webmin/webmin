@@ -1108,9 +1108,8 @@ if (dir == 1 && opts_idx >= 0) {
 	for(var i=0; i<opts.options.length; i++) {
 		var o = opts.options[i];
 		if (o.selected) {
-			vals.options[vals.options.length] =
-				new Option(o.text, o.value);
-			opts.remove(i);
+			o.selected = false;
+			vals.add(o, 0);
 			i--;
 			}
 		}
@@ -1120,9 +1119,8 @@ else if (dir == 0 && vals_idx >= 0) {
 	for(var i=0; i<vals.options.length; i++) {
 		var o = vals.options[i];
 		if (o.selected) {
-			opts.options[opts.options.length] =
-				new Option(o.text, o.value);
-			vals.remove(i);
+			o.selected = false;
+			opts.add(o, 0);
 			i--;
 			}
 		}
