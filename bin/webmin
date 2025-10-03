@@ -9,6 +9,13 @@ use Getopt::Long qw(:config permute pass_through);
 use Term::ANSIColor qw(:constants);
 use Pod::Usage;
 
+# Check if root
+if ($> != 0) {
+    die BRIGHT_RED, "Error: ", RESET, BRIGHT_YELLOW,"webmin", RESET, 
+        " command must be run as root\n";
+    exit 1;
+    }
+
 my $a0 = $ARGV[0];
 
 sub main {
