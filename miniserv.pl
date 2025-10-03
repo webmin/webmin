@@ -1381,31 +1381,48 @@ $method = $page = $request_uri = undef;
 print DEBUG "handle_request reqline=$reqline\n";
 alarm(0);
 if (!$use_ssl && $config{'ssl'} && $config{'ssl_enforce'}) {
-	# This is an http request when https must be enforced
-	local $hostname = $host;
-	if ($hostname !~ /\./) {
-		my $system_hostname = &get_system_hostname();
-		$hostname = $system_hostname if ($system_hostname =~ /\./);
+	# This is an HTTP request when HTTPS should be enforced
+	my $musthost = $config{'musthost'};
+	my $hostheader;
+	if (!$musthost) {
+		# Read host HTTP header because we want one earlier
+		alarm(10);
+		local $SIG{'ALRM'} = sub { die "timeout" };
+		while (defined(my $line = &read_line())) {
+			$line =~ s/\r|\n//g;
+			last if $line eq '';
+			if ($line =~ /^host:\s*(.*)$/i) {
+				$hostheader = "https://$1";
+				last;
+				}
+			}
+		alarm(0);
 		}
-	local $urlhost = $config{'musthost'} || $hostname;
-	$urlhost = "[".$urlhost."]" if (&check_ip6address($urlhost));
-	local $wantport = $port;
-	if ($wantport == 80 &&
-	    &indexof(443, @listening_on_ports) >= 0) {
-		# Connection was to port 80, but since we are also
-		# accepting on port 443, redirect to that
-		$wantport = 443;
+	# Host header must already contain full URL
+	my $url = $hostheader;
+	if (!$url) {
+		# No host header
+		local $urlhost = $musthost || $host;
+		$urlhost = "[".$urlhost."]" if (&check_ip6address($urlhost));
+		local $wantport = $port;
+		if ($wantport == 80 &&
+		&indexof(443, @listening_on_ports) >= 0) {
+			# Connection was to port 80, but since we are also
+			# accepting on port 443, redirect to that
+			$wantport = 443;
+			}
+		$url = $wantport == 443
+			? "https://$urlhost/"
+			: "https://$urlhost:$wantport/";
 		}
-	local $url = $wantport == 443
-		? "https://$urlhost/"
-		: "https://$urlhost:$wantport/";
+	# Enforce HTTPS
 	&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
 	&write_data("Date: $datestr\r\n");
 	&write_data("Server: @{[&server_info()]}\r\n");
 	&write_data("Location: $url\r\n");
 	&write_keep_alive(0);
 	&write_data("\r\n");
-	&log_error("Redirecting HTTP request to HTTPS using $urlhost host");
+	&log_error("Redirecting HTTP request to $url");
 	&log_request($loghost, $authuser, $reqline, 302, 0);
 	return 0;
 	}
