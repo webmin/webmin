@@ -50,7 +50,7 @@ if ($action ne '-b' && $action ne '-k') {
         $types .= " ".join(' ', @extra) ;
         }
     }
-my $args = quotemeta($action)." ".$types." ".quotemeta($recursive);
+my $args = quotemeta($action)." ".$types." ".$recursive;
 $args =~ s/\s+/ /g;
 $args = &trim($args);
 foreach my $file (@files) {
