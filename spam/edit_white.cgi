@@ -28,13 +28,13 @@ print &ui_table_start(undef, undef, 2);
 
 # Addresses to always whitelist
 @from = &find("whitelist_from", $conf);
-print &ui_table_row($text{'white_from'},
+print &ui_table_row(&hlink($text{'white_from'}, 'white_from'),
 	&edit_textbox("whitelist_from",
 		      [ map { @{$_->{'words'}} } @from ], 60, 10));
 
 # Exceptions to whitelist
 @un = &find("unwhitelist_from", $conf);
-print &ui_table_row($text{'white_unfrom'},
+print &ui_table_row(&hlink($text{'white_unfrom'}, 'white_unfrom'),
 	&edit_textbox("unwhitelist_from",
 		      [ map { @{$_->{'words'}} } @un ], 60, 5));
 
@@ -54,7 +54,7 @@ if ($config{'show_global'}) {
 
 # Whitelist by received header
 @rcvd = &find("whitelist_from_rcvd", $conf);
-print &ui_table_row($text{'white_rcvd2'},
+print &ui_table_row(&hlink($text{'white_rcvd2'}, 'white_rcvd2'),
 	&edit_table("whitelist_from_rcvd",
 		[ $text{'white_addr'}, $text{'white_rcvdhost'} ],
 		[ map { $_->{'words'} } @rcvd ], [ 40, 30 ], undef, 3));
