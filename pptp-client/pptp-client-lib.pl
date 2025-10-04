@@ -258,7 +258,7 @@ return 0;
 # get_pppd_version(&out)
 sub get_pppd_version
 {
-local $out = `pppd --help 2>&1`;
+local $out = `pppd --version 2>&1`;
 ${$_[0]} = $out;
 return $out =~ /version\s+(\S+)/i ? $1 : undef;
 }
