@@ -22,7 +22,7 @@ if (!&has_command($config{'pptp'})) {
 	}
 elsif (!$vers) {
 	# The PPP daemon is not installed
-	print "<p>",&text('index_epppd', "<tt>pppd</tt>"),"<p>\n";
+	print "<p>",&text('index_eppp', "<tt>pppd</tt>"),"<p>\n";
 	}
 else {
 	# Show icons
