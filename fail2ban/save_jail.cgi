@@ -85,7 +85,11 @@ else {
 		if ($in{"protocol_$i"}) {
 			push(@opts, "protocol=".$in{"protocol_$i"});
 			}
-		push(@opts, split(/\s+/, $in{"others_$i"}));
+		foreach my $oo (split(/\s+/, $in{"others_$i"})) {
+			my ($n, $v) = split(/=/, $oo, 2);
+			$v = "\"$v\"" if ($v =~ /\s|,|=/);
+			push(@opts, "$n=$v");
+			}
 		push(@actions, $in{"action_$i"}."[".join(", ", @opts)."]");
 		}
 
