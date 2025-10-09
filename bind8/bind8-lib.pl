@@ -3121,11 +3121,11 @@ $slave_error = $_[0];
 
 sub get_forward_record_types
 {
-return ("A", "NS", "CNAME",
+return ("A", $config{'support_aaaa'} ? ( "AAAA" ) : ( ), "NS", "CNAME",
 	$config{'allow_alias'} ? ( "ALIAS" ) : ( ),
 	"MX", "HINFO", "TXT", "SPF", "DMARC", "WKS", "RP", "PTR", "LOC",
 	"SRV", "KEY", "TLSA", "SSHFP", "CAA", "NAPTR", "NSEC3PARAM",
-	$config{'support_aaaa'} ? ( "AAAA" ) : ( ), @extra_forward);
+	 @extra_forward);
 }
 
 sub get_reverse_record_types

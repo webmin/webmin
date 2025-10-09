@@ -16,7 +16,6 @@ jobs:
       project-name: webmin
       is-release: ${{ github.event_name == 'release' }}
     secrets:
-      DEV_GPG_PH: ${{ secrets.DEV_GPG_PH }}
       DEV_IP_ADDR: ${{ secrets.DEV_IP_ADDR }}
       DEV_IP_KNOWN_HOSTS: ${{ secrets.DEV_IP_KNOWN_HOSTS }}
       DEV_UPLOAD_SSH_USER: ${{ secrets.DEV_UPLOAD_SSH_USER }}

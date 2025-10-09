@@ -103,11 +103,19 @@ if (ref($eol_json) eq 'ARRAY' && @$eol_json) {
         return undef if (!$eol_json_this_os);
         $eol_json_this_os->{'_os_name'} = $gconfig{'real_os_type'};
         $eol_json_this_os->{'_os_version'} = $os_version;
+        # If the OS is still in development and EOL date is not set
+        if (!$eol_json_this_os->{'eol'} ||
+            $eol_json_this_os->{'eol'} eq '0000-00-00' ||
+            $eol_json_this_os->{'eol'} !~ /\d{4}-\d{2}-\d{2}/) {
+                return undef;
+                }
         # Convert EOL date to a timestamp
         my ($year, $month, $day) = split('-', $eol_json_this_os->{'eol'});
         $eol_json_this_os->{'_eol_timestamp'} = timelocal(0, 0, 0, $day, $month - 1, $year);
-        # Convert EOL extendend date to a timestamp
-        if ($eol_json_this_os->{'extendedSupport'}) {
+        # Convert EOL extended date to a timestamp
+        if ($eol_json_this_os->{'extendedSupport'} &&
+            $eol_json_this_os->{'extendedSupport'} ne '0000-00-00' &&
+            $eol_json_this_os->{'extendedSupport'} =~ /\d{4}-\d{2}-\d{2}/) {
                 my ($year, $month, $day) = split('-', $eol_json_this_os->{'extendedSupport'});
                 $eol_json_this_os->{'_ext_eol_timestamp'} =
                         timelocal(0, 0, 0, $day, $month - 1, $year);
@@ -123,6 +131,7 @@ return undef;
 sub eol_populate_dates
 {
 my ($eol_data) = @_;
+return undef unless ref $eol_data;
 if (!$eol_data->{'_eol_timestamp'}) {
         &error_stderr("The provided data is not a valid EOL data hash reference");
         return undef;
