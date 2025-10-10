@@ -54,9 +54,17 @@ print &ui_table_row($text{'sched_warn'},
 $defmsg = $gconfig{'webmin_email_to'} ?
 	&text('sched_email_def', "<tt>$gconfig{'webmin_email_to'}</tt>") :
 	$text{'sched_none'};
+my @opts = ( [ 1, $text{'sched_none'} ],
+	     [ 0, &ui_textbox("email", $config{'sched_email'}, 30) ] );
+if ($gconfig{'webmin_email_to'}) {
+	splice(@opts, 1, 0, [ 2, &text('sched_email_def',
+				   "<tt>$gconfig{'webmin_email_to'}</tt>") ]);
+	}
 print &ui_table_row($text{'sched_email'},
-	&ui_opt_textbox("email", $config{'sched_email'}, 30,
-			$defmsg, $text{'sched_email'}), 3);
+	&ui_radio("email_def",
+		  !$config{'sched_email'} ? 1 : 
+		  $config{'sched_email'} eq $gconfig{'webmin_email_to'} ? 2 : 0,
+		  \@opts));
 
 # From: address
 print &ui_table_row($text{'sched_from'},

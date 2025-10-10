@@ -259,14 +259,12 @@ foreach $serv (@services) {
 		if ($config{'sched_single'} && $email) {
 			# Force the sending of one email and page per report
 			print DEBUG "  Sending email to ",
-				($config{'sched_email'} ||
-				 $gconfig{'webmin_email_to'}),"\n";
+				$config{'sched_email'},"\n";
 			my $err = &send_status_email(
 				$email,
 				$config{'subject_mode'} ? $subj :
 				  &text('monitor_sub', $subj),
-				$config{'sched_email'} ||
-				  $gconfig{'webmin_email_to'});
+				$config{'sched_email'});
 			print DEBUG $err ? "  Email failed : $err\n"
 					 : "  Done\n";
 			undef($email);
@@ -330,13 +328,13 @@ foreach $serv (@services) {
 # Send the email and page with all messages, if necessary
 if ($ecount && !$config{'sched_single'}) {
 	print DEBUG "Sending email to ",
-		($config{'sched_email'} || $gconfig{'webmin_email_to'}),"\n";
+		$config{'sched_email'},"\n";
 	my $err = &send_status_email(
 		$email,
 		$config{'subject_mode'} ? $text{'monitor_sub2'} :
 		$ecount == 1 ? &text('monitor_sub', $subj) :
 			       &text('monitor_sub3', $ecount),
-		$config{'sched_email'} || $gconfig{'webmin_email_to'});
+		$config{'sched_email'});
 	print DEBUG $err ? "Email failed : $err\n" : "Done\n";
 	}
 if ($pager_msg && !$config{'sched_single'}) {

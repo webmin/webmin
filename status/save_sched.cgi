@@ -8,8 +8,12 @@ $access{'sched'} || &error($text{'sched_ecannot'});
 &error_setup($text{'sched_err'});
 
 # Parse and save inputs
-$in{'email_def'} || $in{'email'} =~ /\S/ || &error($text{'sched_eemail'});
-$config{'sched_email'} = $in{'email_def'} ? '' : $in{'email'};
+if ($in{'email_def'} == 1) {
+	$in{'email'} =~ /\S/ || &error($text{'sched_eemail'});
+	}
+$config{'sched_email'} = $in{'email_def'} == 1 ? '' :
+			 $in{'email_def'} == 2 ? $gconfig{'webmin_email_to'} :
+						 $in{'email'};
 if ($config{'pager_cmd'}) {
 	$config{'sched_pager'} = $in{'pager_def'} ? '' : $in{'pager'};
 	}
