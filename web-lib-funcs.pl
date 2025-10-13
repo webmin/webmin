@@ -7494,7 +7494,7 @@ Use a reference for composites to avoid list flattening.
 
 =item * Log file
 
-Prints by appending to the "/var/webmin/webmin.dump" file.
+Prints by appending to the "/tmp/webmin.dump" file.
 
 =item * Header
 
@@ -7525,8 +7525,9 @@ sub var_dump
 my @args = @_;
 
 # Output target
-my $dir = $main::var_dir || $main::var_directory || '/var/webmin';
-my $file = "$dir/webmin.dump";
+my $dir = $main::var_dump_dir || $config{'var_dump_dir'} || '/tmp';
+my $filename = $> == 0 ? "webmin.dump" : "webmin-$remote_user.dump";
+my $file = "$dir/$filename";
 
 # Create directory if missing
 mkdir $dir, 0750 if (!-d $dir);
