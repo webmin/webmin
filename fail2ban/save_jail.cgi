@@ -87,7 +87,7 @@ else {
 			}
 		foreach my $oo (split(/\s+/, $in{"others_$i"})) {
 			my ($n, $v) = split(/=/, $oo, 2);
-			$v = "\"$v\"" if ($v =~ /\s|,|=/);
+			$v = "\"$v\"" if ($v =~ /\s|,|=/ && $v !~ /['"]/);
 			push(@opts, "$n=$v");
 			}
 		push(@actions, $in{"action_$i"}."[".join(", ", @opts)."]");
