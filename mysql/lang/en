@@ -765,6 +765,14 @@ cnf_ilt=InnoDB lock timeout (in seconds)
 cnf_eilt=InnoDB lock timeout must be an integer
 cnf_sqlm=SQL mode options
 cnf_esqlm=SQL mode options must be a comma-separate list of flags
+cnf_slow=Enable slow query log?
+cnf_slow_file=Slow query log file
+cnf_slow_file_def=Default path
+cnf_eslow_file=Missing slow query log file path
+cnf_long=Time for query to be considered slow
+cnf_long_def=Default (10 seconds)
+cnf_long_secs=seconds
+cnf_elong=Slow query time must be a number of seconds
 
 manual_title=Edit Config Files
 manual_file=Edit config file:

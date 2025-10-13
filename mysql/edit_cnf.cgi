@@ -63,6 +63,21 @@ $sql_mode = &find_value("sql_mode", $mems);
 print &ui_table_row($text{'cnf_sqlm'},
 	&ui_opt_textbox("sqlm", $sql_mode, 60, $text{'default'}), 3);
 
+# Slow query log options
+$slow_query_log = &find_value("slow_query_log", $mems);
+print &ui_table_row($text{'cnf_slow'},
+	&ui_yesno_radio("slow", $slow_query_log));
+
+$long_query_time = &find_value("long_query_time", $mems);
+print &ui_table_row($text{'cnf_long'},
+	&ui_opt_textbox("long", $long_query_time, 8,
+			$text{'cnf_long_def'})." ".$text{'cnf_long_secs'});
+
+$slow_query_log_file = &find_value("slow_query_log_file", $mems);
+print &ui_table_row($text{'cnf_slow_file'},
+	&ui_opt_textbox("slow_file", $slow_query_log_file, 40,
+			$text{'cnf_slow_file_def'}), 3);
+
 # Show set variables
 print &ui_table_hr();
 

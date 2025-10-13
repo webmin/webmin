@@ -78,6 +78,18 @@ else {
 &save_directive($conf, $mysqld, "big-tables",
 		$in{'big-tables'} ? [ "" ] : [ ]);
 
+# Save slow query log options
+&save_directive($conf, $mysqld, "slow_query_log",
+		[ $in{'slow'} ]);
+$in{'slow_file_def'} || $in{'slow_file'} =~ /^\S+$/ ||
+	&error($text{'cnf_eslow_file'});
+&save_directive($conf, $mysqld, "slow_query_log_file",
+		$in{'slow_file_def'} ? [ ] : [ $in{'slow_file'} ]);
+$in{'long_def'} || $in{'long'} =~ /^\d+$/ ||
+	&error($text{'cnf_elong'});
+&save_directive($conf, $mysqld, "long_query_time",
+		$in{'long_def'} ? [ ] : [ $in{'long'} ]);
+
 # Save set variables
 %vars = &parse_set_variables(&find_value("set-variable", $mems));
 foreach $w (@mysql_set_variables) {
