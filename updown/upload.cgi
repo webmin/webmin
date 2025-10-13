@@ -8,7 +8,15 @@ require './updown-lib.pl';
 $upid = $getin{'id'};
 $direct_upload = $getin{'direct'};
 my $tmp;
-$tmp = $config{'tmp_upload_dir'} || &tempname_dir() if ($direct_upload);
+# $ENV{'WEBMIN_VAR'} is trully horrible choice to store temporary files
+# but it's only used here for current compatibility with
+# "read_parse_mime_callback". We should fix it right away, on the next commit!!
+$tmp = $ENV{'WEBMIN_VAR'} if ($direct_upload);
+if ($can_mode == 3 && &supports_users()) {
+	# User is fixed
+	@uinfo = getpwnam($remote_user);
+	$tmp = "$uinfo[7]/.tmp" if ($direct_upload);
+	}
 &ReadParseMime($upload_max, \&read_parse_mime_callback, [ $upid ], 1, $tmp);
 foreach my $k (keys %in) {
         $in{$k} = $in{$k}->[0] if ($k !~ /^upload\d+/);
@@ -31,12 +39,6 @@ if ($can_mode != 3) {
 		&error($text{'upload_egroup'});
 	$can_mode == 0 || $in{'group_def'} || &in_group(\@uinfo, \@ginfo) ||
 		&error($text{'upload_egcannot'});
-	}
-else {
-	# User is fixed
-	if (&supports_users()) {
-		@uinfo = getpwnam($remote_user);
-		}
 	}
 for($i=0; defined($in{"upload$i"}); $i++) {
 	for(my $j=0; $j<@{$in{"upload$i"}}; $j++) {
@@ -80,17 +82,21 @@ for($i=0; defined($in{"upload$i"}); $i++) {
 		# Move file we already have it in disk
 		if ($mpath) {
 			if (-w $in{'dir'}) {
+				# Switch back to chown the file
 				&switch_uid_back();
+				chown($uinfo[2], scalar(@ginfo)
+					? $ginfo[2]
+					: $uinfo[3],
+				      $mpath);
+				# Alway move the file as effective user
+				&switch_uid_to($uinfo[2], scalar(@ginfo)
+					? $ginfo[2]
+					: $uinfo[3]);
 				if (!rename($mpath, $path)) {
 					&error(&text('upload_emove',
 						"<tt>$mpath</tt>",
 						"<tt>$path</tt>", $!));
 					}
-				chown($uinfo[2], scalar(@ginfo) ?
-						$ginfo[2] : $uinfo[3], $path);
-				&switch_uid_to($uinfo[2], scalar(@ginfo) ?
-					$ginfo[2] : $uinfo[3]);
-
 				}
 			}
 		else {
