@@ -855,10 +855,11 @@ while(1) {
 	my $data = "";
 	my $dfile;
 	my $fh;
-	if ($direct_dir && $file) {
+	if ($direct_dir) {
 		# Save directly to disk
 		$file =~ /([^\\\/]+)$/;
 		my $filename = $1;
+		$filename || &error($text{'readparse_nofile'});
 		my $uppath = "$direct_dir/$filename";
 		open($fh, ">", $uppath) || next;
 		# Return file name, no data
