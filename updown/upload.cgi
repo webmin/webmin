@@ -13,10 +13,6 @@ if ($getin{'direct'}) {
 	&make_dir($direct_dir, 0711);
 	}
 
-if ($can_mode == 3 && &supports_users()) {
-	# User to upload as is set in the ACL
-	@uinfo = getpwnam($remote_user);
-	}
 &ReadParseMime($upload_max, \&read_parse_mime_callback, [ $upid ], 1,
 	       $direct_dir);
 foreach my $k (keys %in) {
@@ -40,6 +36,10 @@ if ($can_mode != 3) {
 		&error($text{'upload_egroup'});
 	$can_mode == 0 || $in{'group_def'} || &in_group(\@uinfo, \@ginfo) ||
 		&error($text{'upload_egcannot'});
+	}
+elsif (&supports_users()) {
+	# User to upload as is set in the ACL
+	@uinfo = getpwnam($remote_user);
 	}
 for($i=0; defined($in{"upload$i"}); $i++) {
 	for(my $j=0; $j<@{$in{"upload$i"}}; $j++) {
