@@ -1012,7 +1012,7 @@ if ($<) {
 	$vardir = "$uinfo[7]/.tmp";
 	}
 else {
-	$vardir = $ENV{'WEBMIN_VAR'};
+	$vardir = &tempname_dir();
 	}
 if (!-d $vardir) {
 	&make_dir($vardir, 0755);
