@@ -764,12 +764,12 @@ and store it in the global %in hash. The optional parameters are :
 
 =item array-mode - If set to 1, values in %in are arrays. If set to 0, multiple values are joined with \0. If set to 2, only the first value is used.
 
-=item direct-write - If allowed write file directly to disk temp given directory
+=item direct-dir - If given write file directly to disk temp given directory
 
 =cut
 sub ReadParseMime
 {
-my ($max, $cbfunc, $cbargs, $arrays, $tmp) = @_;
+my ($max, $cbfunc, $cbargs, $arrays, $direct_dir) = @_;
 my ($boundary, $line, $name, $got, $file, $count_lines, $max_lines);
 my $err = &text('readparse_max', $max);
 $ENV{'CONTENT_TYPE'} =~ /boundary=(.*)$/ || &error($text{'readparse_enc'});
@@ -803,7 +803,7 @@ while(1) {
 		}
 
 	# Parse out filename and type
-	my $file;
+	$file = undef;
 	if ($header{'content-disposition'} =~ /^form-data(.*)/) {
 		$rest = $1;
 		while ($rest =~ /([a-zA-Z]*)=\"([^\"]*)\"(.*)/) {
@@ -855,12 +855,14 @@ while(1) {
 	my $data = "";
 	my $dfile;
 	my $fh;
-	if ($tmp && $file) {
+	if ($direct_dir && $file) {
 		# Save directly to disk
-		my $uppath = "$tmp/$file";
+		$file =~ /([^\\\/]+)$/;
+		my $filename = $1;
+		my $uppath = "$direct_dir/$filename";
 		open($fh, ">", $uppath) || next;
 		# Return file name, no data
-		$dfile = $file;
+		$dfile = $filename;
 		}
 	while (1) {
 		$line = <STDIN>;
@@ -882,7 +884,7 @@ while(1) {
 			close($fh) if ($fh);
 			return;
 			}
-		if (index($line, $boundary) != -1) { last; }
+		last if (index($line, $boundary) != -1);
 		if ($fh) {
 			print($fh $line);  # Write directly to file
 			}
@@ -890,6 +892,8 @@ while(1) {
 			$data .= $line; # Store in memory
 			}
 		}
+
+	# Last two bytes are newlines
 	if ($fh) {
 		seek($fh, -2, 2);
 		truncate($fh, tell($fh));
@@ -898,6 +902,8 @@ while(1) {
 	else {
 		chop($data); chop($data);
 		}
+
+	# Add value to return hash
 	if ($arrays == 1) {
 		$in{$name} ||= [];
 		push(@{$in{$name}}, $dfile || $data);
