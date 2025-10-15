@@ -280,7 +280,7 @@ return $? ? $out : undef;
 sub parse_firewalld_forward
 {
 my ($str) = @_;
-my %w = map { split(/=/, $_) } split(/:/, $str);
+my %w = map { split(/=/, $_, 2) } split(/:/, $str);
 return ($w{'port'}, $w{'proto'}, $w{'toport'}, $w{'toaddr'});
 }
 

@@ -30,9 +30,12 @@ if (!$in{'new'}) {
 		$dstmode = 1;
 		($dstportlow, $dstporthigh) = ($1, $2);
 		}
-	else {
+	elsif ($dstports) {
 		$dstmode = 0;
 		$dstport = $dstports;
+		}
+	else {
+		$dstmode = 2;
 		}
 	}
 else {
