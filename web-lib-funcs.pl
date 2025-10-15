@@ -770,6 +770,7 @@ and store it in the global %in hash. The optional parameters are :
 sub ReadParseMime
 {
 my ($max, $cbfunc, $cbargs, $arrays, $direct_dir) = @_;
+$cbargs ||= [ ];
 my ($boundary, $line, $name, $got, $file, $count_lines, $max_lines);
 my $err = &text('readparse_max', $max);
 $ENV{'CONTENT_TYPE'} =~ /boundary=(.*)$/ || &error($text{'readparse_enc'});
@@ -777,6 +778,7 @@ if ($ENV{'CONTENT_LENGTH'} && $max && $ENV{'CONTENT_LENGTH'} > $max) {
 	&error($err);
 	}
 &$cbfunc(0, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs) if ($cbfunc);
+$got = 0;
 $boundary = $1;
 $count_lines = 0;
 $max_lines = 1000;
@@ -785,10 +787,12 @@ while(1) {
 	$name = "";
 	# Read section headers
 	my $lastheader;
+	my %header;
 	while(1) {
 		$line = <STDIN>;
 		$got += length($line);
-		&$cbfunc($got, $ENV{'CONTENT_LENGTH'}, @$cbargs) if ($cbfunc);
+		&$cbfunc($got, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs)
+			if ($cbfunc);
 		if ($max && $got > $max) {
 			&error($err)
 			}
@@ -797,15 +801,16 @@ while(1) {
 		if ($line =~ /^(\S+):\s*(.*)$/) {
 			$header{$lastheader = lc($1)} = $2;
 			}
-		elsif ($line =~ /^\s+(.*)$/) {
-			$header{$lastheader} .= $line;
+		elsif ($lastheader && $line =~ /^\s+(.*)$/) {
+			$header{$lastheader} .= $1;
 			}
 		}
 
 	# Parse out filename and type
 	$file = undef;
-	if ($header{'content-disposition'} =~ /^form-data(.*)/) {
-		$rest = $1;
+	if ($header{'content-disposition'} &&
+	    $header{'content-disposition'} =~ /^form-data(.*)/) {
+		my $rest = $1;
 		while ($rest =~ /([a-zA-Z]*)=\"([^\"]*)\"(.*)/) {
 			if ($1 eq 'name') {
 				$name = $2;
@@ -836,7 +841,8 @@ while(1) {
 		}
 
 	# Save content type separately
-	if ($header{'content-type'} =~ /^([^\s;]+)/) {
+	if ($header{'content-type'} &&
+	    $header{'content-type'} =~ /^([^\s;]+)/) {
 		my $foo = $name."_content_type";
 		if ($arrays == 1) {
 			$in{$foo} ||= [];
@@ -855,15 +861,15 @@ while(1) {
 	my $data = "";
 	my $dfile;
 	my $fh;
-	if ($direct_dir) {
+	if ($direct_dir && $file) {
 		# Save directly to disk
-		$file =~ /([^\\\/]+)$/;
-		my $filename = $1;
-		$filename || &error($text{'readparse_nofile'});
-		my $uppath = "$direct_dir/$filename";
-		open($fh, ">", $uppath) || next;
+		$file =~ s/.*[\\\/]//;
+		$file || &error($text{'readparse_nofile'});
+		my $uppath = "$direct_dir/$file";
+		open($fh, ">", $uppath) ||
+			&error(&text('readparse_cannotdir', $uppath, $!));
 		# Return file name, no data
-		$dfile = $filename;
+		$dfile = $file;
 		}
 	while (1) {
 		$line = <STDIN>;
