@@ -2594,6 +2594,7 @@ close(MAIL);
 local @st = stat($file);
 $mail->{'size'} = $st[7];
 $mail->{'time'} = $st[9];
+$mail->{'ctime'} = $st[10];
 
 # Set read flags based on the name
 if ($_[0] =~ /:2,([A-Za-z]*)$/) {
