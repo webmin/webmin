@@ -18,6 +18,7 @@ index_schedh=hour
 index_schedd=day
 index_schedw=week
 index_email=Email updates report to
+index_email_def=Webmin default ($1)
 index_action=Action when update needed
 index_action-1=Just notify for security updates
 index_action0=Just notify for any updates

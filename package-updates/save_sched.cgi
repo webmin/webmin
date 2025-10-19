@@ -5,7 +5,7 @@ require './package-updates-lib.pl';
 &ReadParse();
 
 &lock_file($module_config_file);
-$config{'sched_email'} = $in{'email'};
+$config{'sched_email'} = $in{'email_def'} ? '*' : $in{'email'};
 $config{'sched_action'} = $in{'action'};
 &save_module_config();
 &unlock_file($module_config_file);

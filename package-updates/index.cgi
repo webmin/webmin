@@ -209,9 +209,16 @@ print &ui_table_row($text{'index_sched'},
 			         [ 'w', $text{'index_schedw'} ] ]));
 
 # Send email to
-print &ui_table_row($text{'index_email'},
-	    &ui_textbox("email", $config{'sched_email'} ||
-				 $gconfig{'webmin_email_to'}, 40));
+if ($gconfig{'webmin_email_to'}) {
+	$efield = &ui_opt_textbox("email",
+		$config{'sched_email'} eq '*' ? undef : $config{'sched_email'},
+		40, &text('index_email_def',
+			  "<tt>$gconfig{'webmin_email_to'}</tt>"));
+	}
+else {
+	$efield = &ui_textbox("email", $config{'sched_email'}, 40);
+	}
+print &ui_table_row($text{'index_email'}, $efield);
 
 # Install or just notify?
 print &ui_table_row($text{'index_action'},

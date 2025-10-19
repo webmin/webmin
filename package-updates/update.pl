@@ -56,7 +56,8 @@ if ($tellcount) {
 	}
 
 # Email the admin
-$emailto = $config{'sched_email'} || $gconfig{'webmin_email_to'};
+$emailto = $config{'sched_email'} eq '*' ? $gconfig{'webmin_email_to'}
+					 : $config{'sched_email'};
 if ($emailto && $body) {
 	&foreign_require("mailboxes", "mailboxes-lib.pl");
 	my $from = &mailboxes::get_from_address();
