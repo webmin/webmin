@@ -180,7 +180,7 @@ mods_file=Config file
 mods_pkg=Package
 mods_idesc=PHP extensions that are not yet installed on this system can be installed from the configured software package repositories.
 mods_newpkg=Add PHP extension
-mods_install=Install Now
+mods_setup=Install Now
 mods_err=Failed to save PHP extensions
 mods_egetver=Could not figure out PHP version for config file $1
 mods_egetbin=Could not figure out PHP binary for config file $1
@@ -232,7 +232,7 @@ pkgs_ecannot2=Software packages cannot be managed on this system
 pkgs_nousers=No domains
 pkgs_ucount=$1 domains
 pkgs_newver=PHP package to install
-pkgs_install=Install Now
+pkgs_setup=Install Now
 pkgs_return=PHP packages
 
 dpkgs_err=Failed to delete PHP packages
