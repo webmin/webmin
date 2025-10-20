@@ -76,21 +76,42 @@ else {
 	$out = &backquote_command("dpkg --print-avail $qm 2>&1", 1);
 	}
 return () if ($? || $out =~ /Package .* is not available/i);
+
+# Set name and class
 local @rv = ( $_[0], &alphabet_name($_[0]) );
-push(@rv, $out =~ /Description(-en)?:\s+((.*\n)(\s+.*\n)*)/i ? $2
-						   : $text{'debian_unknown'});
-push(@rv, $out =~ /Architecture:\s+(\S+)/i ? $1 : $text{'debian_unknown'});
+
+# Get description
+push(@rv, $out =~ /Description(-en)?:\s+((.*\n)(\s+.*\n)*)/i
+	? $2
+	: $text{'debian_unknown'});
+
+# Get architecture
+push(@rv, $out =~ /Architecture:\s+(\S+)/i
+	? $1
+	: $text{'debian_unknown'});
 my $arch = $1;
-push(@rv, $out =~ /Version:\s+(\S+)/i ? $1 : $text{'debian_unknown'});
-push(@rv, $out =~ /Maintainer:\s+(.*)/i ? &html_escape($1)
-					 : $text{'debian_unknown'});
+
+# Get version
+push(@rv, $out =~ /Version:\s+(\S+)/i
+	? $1
+	: $text{'debian_unknown'});
+
+# Get maintainer
+push(@rv, $out =~ /Maintainer:\s+(.*)/i
+	? &html_escape($1)
+	: $text{'debian_unknown'});
+
 # Get install time from the package info file
 my ($path) = grep { -e $_ } $arch
 	? ("/var/lib/dpkg/info/$pkg:$arch.list", "/var/lib/dpkg/info/$pkg.list")
 	: ("/var/lib/dpkg/info/$pkg.list");   # prefer multi-arch
 my $inst_epoch = $path ? (stat($path))[9] : undef;
 push(@rv, $inst_epoch ? &make_date($inst_epoch) : undef);
+
+# Get homepage
 push(@rv, $out =~ /Homepage:\s+(.*)/i ? $1 : undef);
+
+# Return info
 return @rv;
 }
 
