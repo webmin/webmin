@@ -198,10 +198,13 @@ if (@deps) {
 		$dtable .= &ui_columns_row(\@row);
 		}
 	$dtable .= &ui_columns_end();
-	print &ui_hidden_table_start($text{'edit_deps'}, "width=100%", 2,
-				     "deps", 0);
-	print &ui_table_row(undef, $dtable, 2);
-	print &ui_hidden_table_end();
+
+	# Print proper details box
+	print &ui_details({
+		title   => $text{edit_deps},
+		class   => 'default default-lg',
+		content => $dtable,
+		html    => 1 });
 	}
 
 return @pinfo;
