@@ -68,7 +68,7 @@ if ($lines[$#lines] !~ /^.[ih]/) {
 # Get full status
 local $out;
 if (&has_command("apt-cache")) {
-	$qm .= "=".quotemeta($ver) if ($ver);
+	$qm .= "=*".quotemeta($ver) if ($ver);
 	$out = &backquote_command("apt-cache show $qm 2>&1", 1);
 	$out =~ s/[\0-\177]*\r?\n\r?\n(Package:)/\\1/;	# remove available ver
 	}
