@@ -121,6 +121,7 @@ print &ui_table_start($text{'edit_details'}, "width=100%", 4,
 # Package description
 if ($pinfo[2]) {
 	$desc = &html_escape(&entities_to_ascii($pinfo[2]));
+	$desc =~ s/^\s*\.\s*$//gm;
 	$desc =~ s/\r?\n/&nbsp;<br>/g;
 	print &ui_table_row($text{'edit_desc'}, "<tt>$desc</tt>", 3);
 	}
