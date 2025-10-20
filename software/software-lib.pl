@@ -151,6 +151,13 @@ if ($pinfo[6]) {
 	print &ui_table_row($text{'edit_inst'}, $pinfo[6]);
 	}
 
+if ($pinfo[7]) {
+	# URL
+	print &ui_table_row($text{'edit_url'},
+		&ui_link(&quote_escape($pinfo[7], "'"), &html_escape($pinfo[7]),
+			 undef, " target='_blank'"));
+	}
+
 print &ui_table_end();
 
 # Dependencies, if we can get them

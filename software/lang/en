@@ -52,6 +52,7 @@ edit_ver=Version
 edit_vend=Vendor
 edit_arch=Architecture
 edit_inst=Installed
+edit_url=URL
 edit_deps=Dependencies
 edit_dname=Depends on
 edit_dtype=Dependency type

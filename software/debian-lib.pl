@@ -84,6 +84,7 @@ push(@rv, $out =~ /Version:\s+(\S+)/i ? $1 : $text{'debian_unknown'});
 push(@rv, $out =~ /Maintainer:\s+(.*)/i ? &html_escape($1)
 					 : $text{'debian_unknown'});
 push(@rv, $text{'debian_unknown'});
+push(@rv, $out =~ /Homepage:\s+(.*)/i ? $1 : undef);
 return @rv;
 }
 
