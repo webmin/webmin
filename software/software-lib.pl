@@ -121,6 +121,7 @@ print &ui_table_start($text{'edit_details'}, "width=100%", 4,
 # Package description
 if ($pinfo[2]) {
 	$desc = &html_escape(&entities_to_ascii($pinfo[2]));
+	$desc =~ s/^\s*\.\s*$//gm;
 	$desc =~ s/\r?\n/&nbsp;<br>/g;
 	print &ui_table_row($text{'edit_desc'}, "<tt>$desc</tt>", 3);
 	}
@@ -149,6 +150,13 @@ print &ui_table_row($text{'edit_arch'},
 if ($pinfo[6]) {
 	# Install date
 	print &ui_table_row($text{'edit_inst'}, $pinfo[6]);
+	}
+
+if ($pinfo[7]) {
+	# URL
+	print &ui_table_row($text{'edit_url'},
+		&ui_link(&quote_escape($pinfo[7], "'"), &html_escape($pinfo[7]),
+			 undef, " target='_blank'"));
 	}
 
 print &ui_table_end();
@@ -190,10 +198,13 @@ if (@deps) {
 		$dtable .= &ui_columns_row(\@row);
 		}
 	$dtable .= &ui_columns_end();
-	print &ui_hidden_table_start($text{'edit_deps'}, "width=100%", 2,
-				     "deps", 0);
-	print &ui_table_row(undef, $dtable, 2);
-	print &ui_hidden_table_end();
+
+	# Print proper details box
+	print &ui_details({
+		title   => $text{edit_deps},
+		class   => 'default default-lg',
+		content => $dtable,
+		html    => 1 });
 	}
 
 return @pinfo;

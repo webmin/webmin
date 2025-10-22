@@ -78,7 +78,7 @@ if (&foreign_installed("software") &&
 	print &ui_hidden("file", $in{'file'});
 	print "$text{'mods_newpkg'}&nbsp; ",
 	      &ui_textbox("mod", undef, 30),"\n";
-	print &ui_form_end([ [ undef, $text{'mods_install'} ] ]);
+	print &ui_form_end([ [ undef, $text{'mods_setup'} ] ]);
 	}
 
 &ui_print_footer("list_ini.cgi?file=".&urlize($in{'file'}),
