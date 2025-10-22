@@ -12,7 +12,7 @@ if( $in{ 'action' } eq $text{ 'hdparm_apply' } )
 	local $key;
 	foreach $key ( 'a', 'd', 'r', 'k', 'u', 'm', 'c', 'A', 'K', 'P', 'X', 'W', 'S' )
 	{
-		$command .= "-".$key." ".$in{ $key }." " if( $in{ $key } ne "" );
+		$command .= "-".$key." ".quotemeta($in{$key})." " if ($in{$key} ne "");
 	}
 	$command .= $in{ 'drive' }."\n";
 
