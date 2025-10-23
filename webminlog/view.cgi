@@ -134,7 +134,7 @@ foreach my $d (&list_diffs($act)) {
 		      &text("view_type_".$d->{'type'},
 			    "<tt>$d->{'object'}</tt>",
 			    "<tt>".&html_escape($d->{'diff'})."</tt>"),
-		      "width=100%", 2, "diff$i", $open);
+		      "width=100% data-nodata=1", 2, "diff$i", 0);
 		}
 	else {
 		# Show multi-line diff
