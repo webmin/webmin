@@ -118,8 +118,11 @@ trace_sorry=Esta página requer suporte Java no seu navegador. Para usar um rast
 trace_syscalls=Rastrear chamadas do sistema:
 trace_all=Todos
 trace_sel=Listado ..
-trace_change=mudança
 
 windows_threads=Threads em processo
 
 syslog_dmesg=Mensagens do kernel
+
+proc_kill=Enviar sinal
+proc_submit=Definir
+proc_filter=Filtro

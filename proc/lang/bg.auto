@@ -40,7 +40,6 @@ search_fs=Използване на файлова система
 search_files=Използване на файл
 search_submit=Търсене
 search_none=Не са намерени съвпадения процеси
-search_kill=Изпрати сигнал
 search_ignore=Игнорирайте резултатите от търсенето в резултат
 search_return=форма за търсене
 search_sigterm=Прекратяване на процесите
@@ -68,8 +67,6 @@ edit_gone=Този процес вече не протича
 edit_sub=подпроцеси
 edit_subid=документ за самоличност
 edit_subcmd=Команда подпроцес
-edit_kill=Изпрати сигнал
-edit_change=промяна
 edit_prilow=Нисък приоритет
 edit_prihigh=Висок приоритет
 edit_pridef=По подразбиране
@@ -84,7 +81,6 @@ edit_trace=Процес на проследяване
 edit_return=подробности за процеса
 
 kill_err=Неуспешно изпращане на сигнал $1 за обработка на $2
-kill_title=Изпрати сигнал
 kill_sent=изпратени
 kill_ecannot=Не ви е позволено да убивате процеси
 
@@ -201,8 +197,11 @@ trace_sorry=Тази страница изисква поддръжка на Jav
 trace_syscalls=Система за следи за обаждания:
 trace_all=всичко
 trace_sel=Изброени ..
-trace_change=промяна
 
 windows_threads=Теми в процес
 
 syslog_dmesg=Съобщения на ядрото
+
+proc_kill=Изпрати сигнал
+proc_submit=Комплект
+proc_filter=Филтър

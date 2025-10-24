@@ -60,8 +60,11 @@ trace_sorry=Ця сторінка вимагає підтримки Java у ва
 trace_syscalls=Система простеження викликів:
 trace_all=Усі
 trace_sel=Перелічено ..
-trace_change=Зміна
 
 windows_threads=Нитки в процесі
 
 syslog_dmesg=Повідомлення ядра
+
+proc_kill=Надіслати сигнал
+proc_submit=Набір
+proc_filter=Фільтр

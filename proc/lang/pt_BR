@@ -33,7 +33,6 @@ search_fs=Usando sistema de arquivos
 search_files=Usando o arquivo
 search_submit=Busca
 search_none=Nenhum processo com o termo de busca inserido foi encontrado.
-search_kill=Enviar Sinal
 search_ignore=Ignorar processos de busca no resultado
 search_return=formulário de busca
 search_sigterm=Interromper Processo
@@ -61,8 +60,6 @@ edit_gone=Este processo está inativo
 edit_sub=Subprocessos
 edit_subid=ID
 edit_subcmd=Comando de subprocesso
-edit_kill=Enviar Sinal
-edit_change=Mudar
 edit_prilow=Baixa prioridade
 edit_prihigh=Alta prioridade
 edit_pridef=Padrão
@@ -77,7 +74,6 @@ edit_trace=Rastrear Processo
 edit_return=detalhes do processo
 
 kill_err=erro ao enviar o sinal $1 para o processo $2
-kill_title=Enviar Sinal
 kill_sent=enviado
 kill_ecannot=Você não tem permissão para matar processos
 
@@ -194,7 +190,6 @@ trace_sorry=Esta página requer suporte Java no seu navegador. Para usar um acom
 trace_syscalls=Acompanhar chamadas do sistema:
 trace_all=Todas
 trace_sel=Listadas..
-trace_change=Alterar
 
 windows_threads=Linhas de execução no processo
 

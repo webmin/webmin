@@ -12,3 +12,7 @@ sprio=IO優先度
 linux_real=リアルタイム
 linux_be=最大限の努力
 linux_idle=アイドル状態
+
+proc_kill=信号を送信
+proc_submit=セット
+proc_filter=フィルター

@@ -5,3 +5,7 @@ index_memtf=$1 totalt / $2 gratis
 index_memtfc=$1 totalt / $2 ledig / $3 bufret
 index_core=$1 kjerne
 index_cores=$1 kjerner
+
+proc_kill=Send signal
+proc_submit=Sett
+proc_filter=Filter

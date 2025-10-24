@@ -24,3 +24,7 @@ linux_idle=Tétlen
 log_renice=A $2 folyamat prioritása megváltozott és $1 lett
 
 syslog_dmesg=Kernel üzenetek
+
+proc_kill=Küldési jel
+proc_submit=Készlet
+proc_filter=Szűrő

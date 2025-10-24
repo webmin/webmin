@@ -85,8 +85,11 @@ trace_sorry=此页面需要浏览器中的Java支持。要使用纯文本过程�
 trace_syscalls=跟踪系统调用：
 trace_all=所有
 trace_sel=上市 ..
-trace_change=更改
 
 windows_threads=处理中的线程
 
 syslog_dmesg=内核消息
+
+proc_kill=发送信号
+proc_submit=放
+proc_filter=筛选

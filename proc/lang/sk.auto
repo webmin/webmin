@@ -40,7 +40,6 @@ search_fs=Používanie súborového systému
 search_files=Pomocou súboru
 search_submit=Vyhľadávanie
 search_none=Nenašli sa žiadne zodpovedajúce procesy.
-search_kill=Poslať signál
 search_ignore=Vo výsledku ignorujte procesy vyhľadávania
 search_return=vyhľadávací formulár
 search_sigterm=Ukončiť procesy
@@ -68,8 +67,6 @@ edit_gone=Tento proces už nie je spustený
 edit_sub=vlákna
 edit_subid=ID
 edit_subcmd=Príkaz na čiastkový proces
-edit_kill=Poslať signál
-edit_change=zmena
 edit_prilow=Nízka priorita
 edit_prihigh=Vysoká priorita
 edit_pridef=štandardné
@@ -84,7 +81,6 @@ edit_trace=Stopový proces
 edit_return=podrobnosti procesu
 
 kill_err=Nepodarilo sa odoslať signál $1 na spracovanie $2
-kill_title=Poslať signál
 kill_sent=zaslaná
 kill_ecannot=Nemáte povolené zabíjať procesy
 
@@ -201,8 +197,11 @@ trace_sorry=Táto stránka vyžaduje podporu Java vo vašom prehliadači. Ak chc
 trace_syscalls=Sledovanie systémových volaní:
 trace_all=všetko
 trace_sel=Uvedený ..
-trace_change=zmena
 
 windows_threads=Vlákna sa spracovávajú
 
 syslog_dmesg=Správy jadra
+
+proc_kill=Odoslať signál
+proc_submit=Sada
+proc_filter=Filter

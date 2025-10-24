@@ -100,8 +100,11 @@ trace_sorry=Denna sida kräver Java-stöd i din webbläsare. Justera modulkonfig
 trace_syscalls=Spårningssystem samtal:
 trace_all=Allt
 trace_sel=Noterade ..
-trace_change=Förändra
 
 windows_threads=Trådar i process
 
 syslog_dmesg=Kärnmeddelanden
+
+proc_kill=Skicka signal
+proc_submit=Uppsättning
+proc_filter=Filtrera

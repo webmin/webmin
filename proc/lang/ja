@@ -31,7 +31,6 @@ search_fs=使用中のファイル システム
 search_files=使用中のファイル
 search_submit=検索
 search_none=一致したプロセスがありませんでした。
-search_kill=シグナルの送信
 search_ignore=検索プロセスを無視
 search_return=検索形式
 search_sigterm=Terminate Processes
@@ -59,8 +58,6 @@ edit_gone=このプロセスはもう実行されていません
 edit_sub=サブ プロセス
 edit_subid=ID
 edit_subcmd=サブプロセスコマンド
-edit_kill=シグナルの送信
-edit_change=変更
 edit_prilow=優先度 低
 edit_prihigh=優先度 高
 edit_pridef=デフォルト
@@ -75,7 +72,6 @@ edit_trace=Trace Process
 edit_return=process details
 
 kill_err=シグナル $1 をプロセス $2 に送信できませんでした
-kill_title=シグナルの送信
 kill_sent=送信済み
 kill_ecannot=You are not allowed to kill processes
 
@@ -188,7 +184,6 @@ trace_sorry=This page requires Java support in your browser. To use a text-only 
 trace_syscalls=Trace system calls:
 trace_all=All
 trace_sel=Listed..
-trace_change=Change
 
 windows_threads=Threads in process
 

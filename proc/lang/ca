@@ -32,7 +32,6 @@ search_fs=que utilitza el sistema de fitxers
 search_files=que utilitza el fitxer
 search_submit=Busca
 search_none=No s'ha trobat cap procés que coincideixi.
-search_kill=Envia el Senyal
 search_ignore=Ignora els processos de recerca en el resultat
 search_return=al formulari de recerca
 search_sigterm=Acaba els Processos
@@ -60,8 +59,6 @@ edit_gone=Aquest procés ja no està en execució
 edit_sub=Subprocessos
 edit_subid=ID
 edit_subcmd=Ordre del subprocés
-edit_kill=Envia el Senyal
-edit_change=Canvia
 edit_prilow=Prioritat baixa
 edit_prihigh=Prioritat alta
 edit_pridef=Defecte
@@ -76,7 +73,6 @@ edit_trace=Rastreja el Procés
 edit_return=als detalls del procés
 
 kill_err=No s'ha pogut enviar el senyal $1 al procés $2
-kill_title=Envia el Senyal
 kill_sent=s'ha enviat
 kill_ecannot=No tens permís per matar processos
 
@@ -192,7 +188,6 @@ trace_sorry=Aquesta pàgina necessita que el navegador tingui suport de Java. Pe
 trace_syscalls=Rastreja les crides del sistema:
 trace_all=Totes
 trace_sel=Les llistades...
-trace_change=Canvia
 
 windows_threads=Fils del procés
 

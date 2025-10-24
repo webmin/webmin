@@ -40,7 +40,6 @@ search_fs=Verwendet Dateisystem
 search_files=Verwendet Datei
 search_submit=Suche
 search_none=Keine übereinstimmenden Prozesse gefunden.
-search_kill=Signal senden
 search_ignore=Sucheprozesse in den Ergebnissen ignorieren
 search_return=Suchformular
 search_sigterm=Prozesse beenden
@@ -68,8 +67,6 @@ edit_gone=Dieser Prozess läuft nicht mehr
 edit_sub=Unterprozesse
 edit_subid=ID
 edit_subcmd=Unterprozess-Befehl
-edit_kill=Signal senden
-edit_change=Ändern
 edit_prilow=Niedrige Priorität
 edit_prihigh=Hohe Priorität
 edit_pridef=Standard
@@ -84,7 +81,6 @@ edit_trace=Prozess verfolgen
 edit_return=Prozessdetails
 
 kill_err=Fehler beim Senden des Signals $1 an Prozess $2
-kill_title=Signal senden
 kill_sent=Gesendet
 kill_ecannot=Sie dürfen keine Prozesse beenden
 
@@ -201,7 +197,6 @@ trace_sorry=Diese Seite erfordert Java-Unterstützung in Ihrem Browser. Um eine 
 trace_syscalls=Systemaufrufe nachverfolgen:
 trace_all=Alle
 trace_sel=Aufgelistet..
-trace_change=Ändern
 
 windows_threads=Threads im Prozess
 

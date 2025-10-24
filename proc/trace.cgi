@@ -20,7 +20,7 @@ $syscalls = &ui_form_start("trace.cgi", "post")."\n".
 		      [ [ 1, $text{'trace_all'} ],
 			[ 0, $text{'trace_sel'} ] ])."\n".
 	    &ui_textbox("syscalls", $in{'syscalls'}, 40)."\n".
-	    &ui_submit($text{'trace_change'})."\n".
+	    &ui_submit($text{'proc_filter'})."\n".
 	    &ui_form_end()."\n";
 
 @syscalls = $in{'all'} ? ( ) : split(/\s+/, $in{'syscalls'});

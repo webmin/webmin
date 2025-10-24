@@ -40,7 +40,6 @@ search_fs=Tiedostojärjestelmän käyttäminen
 search_files=Tiedoston käyttäminen
 search_submit=Hae
 search_none=Vastaavia prosesseja ei löytynyt.
-search_kill=Lähetä signaali
 search_ignore=Ohita tulosprosessit
 search_return=hakulomake
 search_sigterm=Lopeta prosessit
@@ -68,8 +67,6 @@ edit_gone=Tämä prosessi ei ole enää käynnissä
 edit_sub=osaprosessit
 edit_subid=ID
 edit_subcmd=Aliprosessin komento
-edit_kill=Lähetä signaali
-edit_change=Muuttaa
 edit_prilow=Matala tärkeys
 edit_prihigh=Korkea prioriteetti
 edit_pridef=oletusarvo
@@ -84,7 +81,6 @@ edit_trace=Jäljitysprosessi
 edit_return=prosessin yksityiskohdat
 
 kill_err=Signaalin $1 lähettäminen epäonnistui prosessoimaan $2
-kill_title=Lähetä signaali
 kill_sent=lähetetty
 kill_ecannot=Sinulla ei ole oikeutta tappaa prosesseja
 
@@ -201,8 +197,11 @@ trace_sorry=Tämä sivu vaatii Java-tuen selaimessasi. Säädä moduulin kokoonp
 trace_syscalls=Jäljitysjärjestelmän puhelut:
 trace_all=Kaikki
 trace_sel=Listattu ..
-trace_change=Muuttaa
 
 windows_threads=Langat prosessissa
 
 syslog_dmesg=Ydinviestit
+
+proc_kill=Lähetä signaali
+proc_submit=Sarja
+proc_filter=Suodattaa

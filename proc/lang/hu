@@ -27,7 +27,6 @@ search_fs=Adott fájlrendszer
 search_files=Keresett fájl
 search_submit=Keresés
 search_none=Egyező processz találata nem sikerült.
-search_kill=Jelzés küldése
 search_ignore=Szűrje a kereső processzeket az eredményben
 search_return=a kereső űrlaphoz
 search_sigterm=Processzek megszakítása
@@ -53,8 +52,6 @@ run_euser2=Önnek nincs joga futtatni parancsokat mint a kiválasztott felhaszn�
 edit_title=Processz Információ
 edit_gone=Ez a processz nem fut tovább
 edit_sub=Alprocessessz
-edit_kill=Jelzés küldése
-edit_change=Változtat
 edit_prilow=Alacsony prioritású
 edit_prihigh=Magas prioritású
 edit_pridef=Alapértelmezett
@@ -69,7 +66,6 @@ edit_trace=Processz követése
 edit_return=processz adatai
 
 kill_err=A(z) $1 jelzés küldése a(z) $2 processznek nem sikerült.
-kill_title=Jelzés küldése
 kill_sent=elküldve
 kill_ecannot=Önnek nincs engedélyezve a processzek kilövése
 
@@ -181,6 +177,5 @@ trace_sorry=Ehhez az oldalhoz Java kompatibilis böngésző kell. Ha a csak szö
 trace_syscalls=Rendszerhívás nyomozása:
 trace_all=Mind
 trace_sel=Listából..
-trace_change=Módosít
 
 windows_threads=A processz szálai

@@ -60,8 +60,11 @@ trace_sorry=Esta página requiere soporte de Java en su navegador. Para usar una
 trace_syscalls=Sistema de rastreo de llamadas:
 trace_all=Todos
 trace_sel=Listado ..
-trace_change=Cambio
 
 windows_threads=Hilos en proceso
 
 syslog_dmesg=Mensajes del núcleo
+
+proc_kill=Enviar señal
+proc_submit=Colocar
+proc_filter=Filtrar

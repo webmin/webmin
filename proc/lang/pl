@@ -33,7 +33,6 @@ search_fs=Korzystający z systemu plików
 search_files=Korzystający z pliku
 search_submit=Szukaj
 search_none=Nie znaleziono odpowiednich procesów.
-search_kill=Wyślij sygnał
 search_ignore=Pominąć procesy przeszukujące
 search_return=formularza szukania
 search_sigterm=Zakończ procesy
@@ -61,8 +60,6 @@ edit_gone=Ten proces już nie działa
 edit_sub=Podprocesy
 edit_subid=ID
 edit_subcmd=polecenie pod procesu
-edit_kill=Wyślij sygnał
-edit_change=Zmień
 edit_prilow=Niski priorytet
 edit_prihigh=Wysoki priorytet
 edit_pridef=Domyślne
@@ -77,7 +74,6 @@ edit_trace=Śledzenie procesu
 edit_return=szczegółów procesów
 
 kill_err=Nie udało się wysłać sygnału $1 do procesu $2
-kill_title=Wyślij sygnał
 kill_sent=wyślij
 kill_ecannot=Nie masz uprawnień do zabijania procesów
 
@@ -194,7 +190,6 @@ trace_sorry=Ta strona wymaga obsługi Java przez twoją przeglądarkę. Aby uży
 trace_syscalls=System śledzenia połączeń:
 trace_all=Wszystkie
 trace_sel=Wymienione ..
-trace_change=Zmień
 
 windows_threads=Wątki w procesie
 

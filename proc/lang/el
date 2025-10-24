@@ -33,7 +33,6 @@ search_fs=Χρησιμοποιεί το σύστημα αρχείων
 search_files=Χρησιμοποιεί το αρχείο
 search_submit=Αναζήτηση
 search_none=Δεν βρέθηκαν ταιριαστές διεργασίες
-search_kill=Αποστολή Σινιάλου
 search_ignore=Αγνόηση διεργασιών αναζήτησης στο αποτέλεσμα
 search_return=φόρμα αναζήτησης
 search_sigterm=Διακοπή Διεργασιών
@@ -61,8 +60,6 @@ edit_gone=Αυτή η διεργασία δεν εκτελείται πλέον
 edit_sub=Υποδιεργασίες
 edit_subid=ID
 edit_subcmd=Εντολή Υπο-διεργασίας
-edit_kill=Αποστολή Σινιάλου
-edit_change=Αλλαγή
 edit_prilow=Χαμηλή προτεραιότητα
 edit_prihigh=Υψηλή προτεραιότητα
 edit_pridef=Προεπιλογή
@@ -77,7 +74,6 @@ edit_trace=Ανίχνευση Διεργασίας
 edit_return=λεπτομέρειες διεργασίας
 
 kill_err=Αποτυχία αποστολής σινιάλου $1 στην διεργασία $2
-kill_title=Αποστολή Σινιάλου
 kill_sent=απεστάλη
 kill_ecannot=Δεν σας επιτρέπεται να σκοτώσετε διεργασίες
 
@@ -194,7 +190,6 @@ trace_sorry=Αυτή η σελίδα απαιτεί υποστήριξη Java σ
 trace_syscalls=Ανίχνευση κλήσεων συστήματς:
 trace_all=Όλες
 trace_sel=Από τη λίστα..
-trace_change=Αλλαγή
 
 windows_threads=Νήματα σε εξέλιξη
 

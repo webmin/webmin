@@ -23,7 +23,6 @@ search_fs=Utilizando o sistema de ficheiros
 search_files=Utilizando o ficheiro
 search_submit=Procurar
 search_none=Não foram encontrados processos correspondentes.
-search_kill=Enviar Sinal
 search_return=formulário de procura
 
 run_command=Comando para executar
@@ -39,11 +38,8 @@ run_none=Não foi gerada nenhuma saída de resultados
 edit_title=Informação do Processo
 edit_gone=Este processo já não se encontra em execução
 edit_sub=Sub-processos
-edit_kill=Enviar Sinal
-edit_change=Alterar
 
 kill_err=Erro ao enviar o sinal $1 para o processo $2
-kill_title=Enviar Sinal
 kill_sent=enviado
 
 renice_err=Erro no renice do processo $1

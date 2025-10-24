@@ -8,3 +8,7 @@ index_core=$1 nucli
 index_cores=$1 nuclis
 
 freebsd_stime=Va començar
+
+proc_kill=Enviar senyal
+proc_submit=Conjunt
+proc_filter=Filtre

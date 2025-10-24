@@ -5,3 +5,7 @@ index_memtf=$1 łącznie / $2 za darmo
 index_memtfc=Łącznie $1 / $2 wolne / $3 w pamięci podręcznej
 index_core=$1 rdzeń
 index_cores=$1 rdzeni
+
+proc_kill=Wyślij sygnał
+proc_submit=Ustawić
+proc_filter=Filtr

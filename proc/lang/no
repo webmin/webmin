@@ -33,7 +33,6 @@ search_fs=Bruker filsystem
 search_files=Bruker fil
 search_submit=Søk
 search_none=Ingen matchende prosesser funnet.
-search_kill=Send signal
 search_ignore=Ignorer søkeprosesser i resultat
 search_return=søkeskjema
 search_sigterm=Terminer prosesser
@@ -61,8 +60,6 @@ edit_gone=Denne prosessen kjører ikke lenger
 edit_sub=Underprosesser
 edit_subid=ID
 edit_subcmd=Under-prosess kommando
-edit_kill=Send Signal
-edit_change=Endre
 edit_prilow=Lav prioritet
 edit_prihigh=Høy prioritet
 edit_pridef=Standard
@@ -77,7 +74,6 @@ edit_trace=Spor prosess
 edit_return=prosessdetaljer
 
 kill_err=Kunne ikke sende signal $1 til prosessen $2
-kill_title=Send signal
 kill_sent=sendt
 kill_ecannot=Du har ikke tilgang til å kille prosesser
 
@@ -194,7 +190,6 @@ trace_sorry=Denne siden krever Java støtte i nettleseren din. For å bruke en t
 trace_syscalls=Spor systemkall:
 trace_all=Alle
 trace_sel=Listet..
-trace_change=Endre
 
 windows_threads=Tråder i prosess
 

@@ -23,7 +23,6 @@ search_fs=使用檔案系統
 search_files=使用檔案
 search_submit=搜尋
 search_none=找不到符合條件的程序
-search_kill=送出控制信號
 search_return=搜尋表單
 
 run_command=要執行的命令
@@ -39,11 +38,8 @@ run_none=沒有產生輸出
 edit_title=程序資訊
 edit_gone=這個程序已經不再執行了
 edit_sub=子程序
-edit_kill=送出控制訊號
-edit_change=變更
 
 kill_err=無法送出控制訊號 $1 給程序 $2
-kill_title=送出控制訊號
 kill_sent=送出
 
 renice_err=無法變更程序 $1 的優先值

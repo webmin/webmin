@@ -40,7 +40,6 @@ search_fs=Brug af filsystem
 search_files=Brug af fil
 search_submit=Søg
 search_none=Der blev ikke fundet nogen matchende processer.
-search_kill=Send signal
 search_ignore=Ignorer søgeprocesser i resultatet
 search_return=søgeform
 search_sigterm=Afslut processer
@@ -68,8 +67,6 @@ edit_gone=Denne proces kører ikke længere
 edit_sub=delprocesser
 edit_subid=ID
 edit_subcmd=Underproces-kommando
-edit_kill=Send signal
-edit_change=Lave om
 edit_prilow=Lav prioritet
 edit_prihigh=Høj prioritet
 edit_pridef=Standard
@@ -84,7 +81,6 @@ edit_trace=Sporeproces
 edit_return=process detaljer
 
 kill_err=Kunne ikke sende signal $1 til proces $2
-kill_title=Send signal
 kill_sent=sendt
 kill_ecannot=Du må ikke dræbe processer
 
@@ -201,8 +197,11 @@ trace_sorry=Denne side kræver Java-understøttelse i din browser. For at bruge 
 trace_syscalls=Sporingssystemopkald:
 trace_all=Alle
 trace_sel=Børsnoterede ..
-trace_change=Lave om
 
 windows_threads=Tråde i gang
 
 syslog_dmesg=Kernemeddelelser
+
+proc_kill=Send signal
+proc_submit=Sæt
+proc_filter=Filter
