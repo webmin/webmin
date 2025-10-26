@@ -24,7 +24,6 @@ search_fs=Använder filsystem
 search_files=Använder fil
 search_submit=Sök
 search_none=Det fanns ingen sådan process.
-search_kill=Skicka signal
 search_ignore=Strunta i sökprocesserna
 search_return=sökformulär
 
@@ -41,15 +40,12 @@ run_none=Det kom ingen utmatning
 edit_title=Processinformation
 edit_gone=Denna process kör inte längre
 edit_sub=Delprocesses
-edit_kill=Skicka signal
-edit_change=Ändra
 edit_prilow=Låg prioritet
 edit_prihigh=Hög prioritet
 edit_pridef=Standard
 edit_none=Ingen
 
 kill_err=Det gick inte att skicka signal $1 till process $2
-kill_title=Skicka signal
 kill_sent=skickat
 
 renice_err=Det gick inte att ge process $1 ett nytt nice-värde

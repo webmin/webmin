@@ -24,7 +24,6 @@ search_fs=파일 시스템 사용
 search_files=파일 사용
 search_submit=검색
 search_none=일치하는 프로세스가 없습니다.
-search_kill=신호 보냄
 search_ignore=검색 프로세스 무시
 search_return=검색 양식
 
@@ -41,15 +40,12 @@ run_none=생성된 결과가 없습니다
 edit_title=프로세스 정보
 edit_gone=이 프로세스는 더 이상 실행되고 있지 않습니다
 edit_sub=하위 프로세스
-edit_kill=신호 보냄
-edit_change=변경
 edit_prilow=낮은 순위
 edit_prihigh=높은 순위
 edit_pridef=기본 순위
 edit_none=없음
 
 kill_err=프로세스 $2에 신호 $1을(를) 보내지 못했습니다
-kill_title=신호 보냄
 kill_sent=전송 완료
 
 renice_err=프로세스 $1을(를) renice하지 못했습니다

@@ -22,7 +22,7 @@ sub main
     # If username passed as regular param
     my $cmd = scalar(@ARGV) == 1 && $ARGV[0];
     $cmd = $opt{'command'} if ($opt{'command'});
-    if ($cmd !~ /^(status|start|stop|restart|reload|force-restart|kill)$/) {
+    if ($cmd !~ /^(stats|status|start|stop|restart|reload|force-restart|kill)$/) {
         $cmd = undef;
     }
 
@@ -89,6 +89,395 @@ sub run
             $rs = system("$systemctlcmd status $service");
         } else {
             $rs = system("service $service status");
+        }
+        exit $rs;
+    }
+    if ($o->{'cmd'} =~ /^(stats)$/) {
+        my $rs = 0;
+        if (-x $systemctlcmd) {
+            my $format_bytes = sub {
+                my $bytes = shift;
+                return "0" unless defined $bytes && $bytes =~ /^\d+$/;
+                
+                my $mb = $bytes / 1048576;
+                my $gb = $mb / 1024;
+                
+                if ($gb >= 1) {
+                    return sprintf("%.2f GB", $gb);
+                } elsif ($mb >= 1) {
+                    return sprintf("%.2f MB", $mb);
+                } else {
+                    return sprintf("%.2f KB", $bytes / 1024);
+                }
+            };
+            
+            # Check if service is running first
+            my $is_active_cmd = qq{systemctl is-active "$service" 2>/dev/null};
+            my $is_active = `$is_active_cmd`;
+            $rs = $? >> 8;
+            chomp($is_active);
+            
+            if ($rs != 0 || $is_active ne 'active') {
+                print "Service '$service' is not running (status: $is_active)\n";
+                return 2;
+            }
+            
+            # Get main pid
+            my $main_pid_cmd = qq{systemctl show -p MainPID --value "$service"};
+            my $main_pid = `$main_pid_cmd`;
+            $rs = $? >> 8;
+            return $rs if $rs != 0;
+            chomp($main_pid);
+            
+            if (!$main_pid || $main_pid eq '0') {
+                print "Service '$service' has no main PID\n";
+                return;
+            }
+            
+            # Get process list
+            my $cmd = qq{
+                CG=\$(systemctl show -p ControlGroup --value "$service"); 
+                P=\$({ cat /sys/fs/cgroup"\$CG"/cgroup.procs; systemctl show -p MainPID --value "$service"; } | sort -u); 
+                COLUMNS=10000 ps --cols 10000 -ww --no-headers -o pid=,ppid=,rss=,pmem=,pcpu=,args= --sort=-rss -p \$P |
+                awk 'function h(k){m=k/1024;g=m/1024;return g>=1?sprintf("%.2fG",g):sprintf("%.1fM",m)} BEGIN{printf "%6s %6s %9s %6s %6s  %-s\\n","PID","PPID","RSS_KiB","%MEM","%CPU","CMD (RSS_human)"} {cmd=substr(\$0,index(\$0,\$6)); printf "%6s %6s %9s %6s %6s  %s (%s)\\n",\$1,\$2,\$3,\$4,\$5,cmd,h(\$3)}'
+            };
+            my $out = `$cmd`;
+            $rs = $? >> 8;
+            return $rs if $rs != 0;
+            
+            # Extract pids from the output
+            my @all_pids;
+            foreach my $line (split(/\n/, $out)) {
+                if ($line =~ /^\s*(\d+)\s+/) {
+                    push @all_pids, $1;
+                }
+            }
+            
+            if (!@all_pids) {
+                print "No processes found for service '$service'\n";
+                return 3;
+            }
+            
+            # Reorder with main pid first, then rest sorted by size
+            my @pids;
+            if ($main_pid && $main_pid ne '' && grep { $_ eq $main_pid } @all_pids) {
+                push @pids, $main_pid;
+                push @pids, grep { $_ ne $main_pid } @all_pids;
+            } else {
+                @pids = @all_pids;
+            }
+            
+            # Print the table with main pid marked
+            foreach my $line (split(/\n/, $out)) {
+                if ($line =~ /^\s*$main_pid\s+/ && $main_pid) {
+                    chomp($line);
+                    print "$line [MAIN]\n";
+                } else {
+                    print "$line\n";
+                }
+            }
+            
+            # Check if lsof is available
+            my $has_lsof = has_command('lsof');
+            
+            # Get detailed info for each pid
+            foreach my $pid (@pids) {
+                my $is_main = ($pid eq $main_pid) ? " [MAIN PROCESS]" : "";
+                
+                # Check if process still exists
+                unless (-d "/proc/$pid") {
+                    print "\n\nProcess $pid no longer exists, skipping...\n";
+                    next;
+                }
+                
+                print "\n";
+                print "╔" . "═"x78 . "╗\n";
+                print "║" . sprintf("%-78s", " DETAILED ANALYSIS FOR PID $pid$is_main") . "║\n";
+                print "╚" . "═"x78 . "╝\n";
+                
+                # Working directory and binary
+                print "\n┌─ WORKING DIRECTORY & BINARY " . "─"x49 . "\n";
+                my $cwd = `readlink /proc/$pid/cwd 2>/dev/null`;
+                chomp($cwd);
+                print "CWD:  $cwd\n" if $cwd;
+                
+                my $exe = `readlink /proc/$pid/exe 2>/dev/null`;
+                chomp($exe);
+                print "EXE:  $exe\n" if $exe;
+                
+                my $root = `readlink /proc/$pid/root 2>/dev/null`;
+                chomp($root);
+                print "ROOT: $root\n" if $root && $root ne '/';
+
+                # Environment variables
+                print "\n┌─ ENVIRONMENT VARIABLES " . "─"x54 . "\n";
+                my $env = `cat /proc/$pid/environ 2>/dev/null | tr '\\0' '\\n' | grep -E '^(PATH|HOME|USER|LANG|TZ|LD_|PYTHON|JAVA|NODE|PORT|HOST|DB_|API_)' | sort`;
+                if ($env) {
+                    print $env;
+                } else {
+                    print "Unable to read environment\n";
+                }
+                
+                # Basic process info
+                print "\n┌─ PROCESS INFO " . "─"x63 . "\n";
+                my $ps_info = `ps -p $pid -o user=,pid=,ppid=,pri=,ni=,vsz=,rss=,stat=,start=,time=,cmd= 2>/dev/null`;
+                if ($ps_info) {
+                    print "USER       PID  PPID PRI  NI    VSZ   RSS STAT  START   TIME CMD\n";
+                    print $ps_info;
+                } else {
+                    print "Process no longer exists\n";
+                    next;
+                }
+
+                # Process tree
+                print "\n┌─ PROCESS TREE " . "─"x63 . "\n";
+                my $pstree = `pstree -p -a $pid 2>/dev/null`;
+                if ($pstree) {
+                    print $pstree;
+                } else {
+                    print "pstree not available\n";
+                }
+                
+                # Memory and status
+                print "\n┌─ MEMORY & STATUS " . "─"x60 . "\n";
+                my $status = `grep -E 'VmPeak|VmSize|VmRSS|VmSwap|RssAnon|RssFile|Threads|voluntary_ctxt|nonvoluntary_ctxt' /proc/$pid/status 2>/dev/null`;
+                print $status || "N/A\n";
+                
+                # Open file descriptors
+                print "\n┌─ FILE DESCRIPTORS " . "─"x59 . "\n";
+                my $fd_count = `ls -1 /proc/$pid/fd 2>/dev/null | wc -l`;
+                chomp($fd_count);
+                print "Total Open FDs: $fd_count\n";
+                
+                if ($has_lsof) {
+                    print "\nFile Descriptor Types:\n";
+                    my $fd_types = `lsof +c 0 -p $pid 2>/dev/null | awk 'NR>1 {print \$5}' | sort | uniq -c | sort -rn`;
+                    print $fd_types || "Unable to get FD types\n";
+                    
+                    print "\nDetailed File Descriptors:\n";
+                    my $all_fds = `lsof +c 0 -p $pid 2>/dev/null`;
+                    $all_fds =~ s/^/     /mg;
+                    print $all_fds || "No files open\n";
+                } else {
+                    print "\n(Install lsof for detailed file descriptor analysis)\n";
+                    print "\nOpen FD Sample:\n";
+                    my $fd_sample = `ls -la /proc/$pid/fd 2>/dev/null | head -15`;
+                    print $fd_sample;
+                }
+                
+                # Network Connections
+                print "\n┌─ NETWORK CONNECTIONS " . "─"x56 . "\n";
+                
+                # tcp connections with details
+                my $tcp_detailed = `ss -tnp -o 2>/dev/null | grep 'pid=$pid'`;
+                my $tcp_count = `echo "$tcp_detailed" | grep -c 'pid=$pid'` || 0;
+                chomp($tcp_count);
+                print "Active TCP Connections: $tcp_count\n";
+                
+                if ($tcp_count > 0) {
+                    print "\nTCP Connections (with timers and queues):\n";
+                    print $tcp_detailed;
+                    
+                    print "\nConnection State Summary:\n";
+                    my $state_summary = `ss -tnp 2>/dev/null | grep 'pid=$pid' | awk '{print \$1}' | sort | uniq -c | sort -rn`;
+                    print $state_summary;
+                    
+                    print "\nLocal Ports in Use:\n";
+                    my $local_ports = `ss -tnp 2>/dev/null | grep 'pid=$pid' | awk '{split(\$4,a,":"); print a[length(a)]}' | sort -n | uniq -c`;
+                    print $local_ports || "None\n";
+                    
+                    print "\nRemote Endpoints:\n";
+                    my $remote_ips = `ss -tnp 2>/dev/null | grep 'pid=$pid' | awk '{print \$5}' | cut -d: -f1 | sort | uniq -c | sort -rn`;
+                    print $remote_ips || "None\n";
+                }
+                
+                # tcp listening
+                my $tcp_listen = `ss -tlnp 2>/dev/null | grep 'pid=$pid'`;
+                if ($tcp_listen) {
+                    print "\nTCP Listening Sockets:\n";
+                    print $tcp_listen;
+                }
+                
+                # udp connections
+                my $udp_count = `ss -unp 2>/dev/null | grep -c 'pid=$pid'`;
+                chomp($udp_count);
+                if ($udp_count > 0) {
+                    print "\nUDP Connections: $udp_count\n";
+                    my $udp_conns = `ss -unp 2>/dev/null | grep 'pid=$pid'`;
+                    print $udp_conns;
+                }
+                
+                # udp listening
+                my $udp_listen = `ss -ulnp 2>/dev/null | grep 'pid=$pid'`;
+                if ($udp_listen) {
+                    print "\nUDP Listening Sockets:\n";
+                    print $udp_listen;
+                }
+                
+                # unix sockets
+                my $unix_sockets = `ss -xp 2>/dev/null | grep 'pid=$pid' | wc -l`;
+                chomp($unix_sockets);
+                if ($unix_sockets > 0) {
+                    print "\nUnix Domain Sockets: $unix_sockets\n";
+                }
+                
+                # I/O Statistics
+                print "\n┌─ I/O STATISTICS " . "─"x61 . "\n";
+                my $io = `cat /proc/$pid/io 2>/dev/null`;
+                if ($io) {
+                    print $io;
+                    # Parse and show human-readable
+                    my ($read_bytes, $write_bytes);
+                    if ($io =~ /read_bytes:\s*(\d+)/) {
+                        $read_bytes = $1;
+                    }
+                    if ($io =~ /write_bytes:\s*(\d+)/) {
+                        $write_bytes = $1;
+                    }
+                    if (defined $read_bytes && defined $write_bytes) {
+                        print "\nRead: " . $format_bytes->($read_bytes) . 
+                              ", Write: " . $format_bytes->($write_bytes) . "\n";
+                    }
+                } else {
+                    print "N/A\n";
+                }
+                
+                # Resource Limits
+                print "\n┌─ RESOURCE LIMITS " . "─"x60 . "\n";
+                my $limits = `grep -E 'Max open files|Max processes|Max locked memory|Max address space|Max cpu time' /proc/$pid/limits 2>/dev/null`;
+                print $limits || "N/A\n";
+
+                # Cgroup limits
+                my $cg_path = `cat /proc/$pid/cgroup 2>/dev/null | grep '^0::' | cut -d: -f3`;
+                chomp($cg_path);
+                my $cgroup_output = "";
+                if ($cg_path) {
+                    my $mem_limit = `cat /sys/fs/cgroup$cg_path/memory.max 2>/dev/null`;
+                    my $mem_current = `cat /sys/fs/cgroup$cg_path/memory.current 2>/dev/null`;
+                    my $cpu_max = `cat /sys/fs/cgroup$cg_path/cpu.max 2>/dev/null`;
+                    
+                    chomp($mem_limit, $mem_current, $cpu_max);
+                    
+                    if ($mem_limit && $mem_limit ne 'max') {
+                        $cgroup_output .= "Memory Limit:   " . $format_bytes->(int($mem_limit)) . "\n";
+                        $cgroup_output .= "Memory Current: " . $format_bytes->(int($mem_current)) . "\n" if $mem_current;
+                        if ($mem_current) {
+                            my $pct = sprintf("%.1f", ($mem_current / $mem_limit) * 100);
+                            $cgroup_output .= "Memory Usage:   $pct%\n";
+                        }
+                    }
+                    if ($cpu_max && $cpu_max ne 'max') {
+                        $cgroup_output .= "CPU Quota:      $cpu_max\n";
+                    }
+                }
+                if ($cgroup_output) {
+                    print "\n┌─ CGROUP LIMITS " . "─"x62 . "\n";
+                    print $cgroup_output;
+                }
+                
+                # CPU & Scheduling
+                print "\n┌─ CPU & SCHEDULING " . "─"x59 . "\n";
+                my $sched = `grep -E 'se.sum_exec_runtime|nr_switches|nr_voluntary_switches|nr_involuntary_switches' /proc/$pid/sched 2>/dev/null | head -4`;
+                if ($sched) {
+                    print $sched;
+                }
+                my $cpuset = `cat /proc/$pid/cpuset 2>/dev/null`;
+                chomp($cpuset);
+                print "CPUset: $cpuset\n" if $cpuset;
+
+                # Signal handlers
+                print "\n┌─ SIGNAL HANDLERS " . "─"x60 . "\n";
+                my $signals = `cat /proc/$pid/status 2>/dev/null | grep -E '^Sig(Cgt|Ign|Blk):'`;
+                if ($signals) {
+                    print $signals;
+                    
+                    # Decode signal masks
+                    my %signal_names = (
+                        1 => 'SIGHUP',      2 => 'SIGINT',      3 => 'SIGQUIT',
+                        4 => 'SIGILL',      5 => 'SIGTRAP',     6 => 'SIGABRT',
+                        7 => 'SIGBUS',      8 => 'SIGFPE',      9 => 'SIGKILL',
+                        10 => 'SIGUSR1',    11 => 'SIGSEGV',    12 => 'SIGUSR2',
+                        13 => 'SIGPIPE',    14 => 'SIGALRM',    15 => 'SIGTERM',
+                        16 => 'SIGSTKFLT',  17 => 'SIGCHLD',    18 => 'SIGCONT',
+                        19 => 'SIGSTOP',    20 => 'SIGTSTP',    21 => 'SIGTTIN',
+                        22 => 'SIGTTOU',    23 => 'SIGURG',     24 => 'SIGXCPU',
+                        25 => 'SIGXFSZ',    26 => 'SIGVTALRM',  27 => 'SIGPROF',
+                        28 => 'SIGWINCH',   29 => 'SIGIO',      30 => 'SIGPWR',
+                        31 => 'SIGSYS'
+                    );
+                    
+                    my $decode_sigmask = sub {
+                        my ($hex_mask, $names_ref) = @_;
+                        return "none" if $hex_mask eq '0000000000000000';
+                        
+                        # Convert hex to decimal
+                        my $mask = hex($hex_mask);
+                        my @signals;
+                        
+                        # Check each bit
+                        for (my $i = 1; $i <= 31; $i++) {
+                            if ($mask & (1 << ($i - 1))) {
+                                push @signals, "$names_ref->{$i}($i)";
+                            }
+                        }
+                        
+                        return @signals ? join(", ", @signals) : "none";
+                    };
+                    
+                    print "\nDecoded:\n";
+                    if ($signals =~ /SigBlk:\s*([0-9a-f]+)/i) {
+                        print "  Blocked: " .
+                            $decode_sigmask->($1, \%signal_names) . "\n";
+                    }
+                    if ($signals =~ /SigIgn:\s*([0-9a-f]+)/i) {
+                        print "  Ignored: " .
+                            $decode_sigmask->($1, \%signal_names) . "\n";
+                    }
+                    if ($signals =~ /SigCgt:\s*([0-9a-f]+)/i) {
+                        print "  Caught:  " .
+                            $decode_sigmask->($1, \%signal_names) . "\n";
+                    }
+                } else {
+                    print "N/A\n";
+                }
+                
+                # Memory maps sum
+                print "\n┌─ MEMORY MAPS (top 20 by size) " . "─"x47 . "\n";
+                my $maps = `awk '
+                    /^[0-9a-f]+-[0-9a-f]+/ {hdr=\$0}
+                    /^Size:/ {size=\$2}
+                    /^Rss:/  {rss=\$2}
+                    /^VmFlags:/ { if (rss>0) {print rss"\\t"size"\\t"hdr} rss=0; size=0 }
+                ' /proc/$pid/smaps 2>/dev/null | sort -rn | head -20`;
+                
+                if ($maps) {
+                    print "RSS(MB)\tSize(MB)\tMapping\n";
+                    foreach my $map_line (split(/\n/, $maps)) {
+                        if ($map_line =~ /^(\d+)\s+(\d+)\s+(.+)$/) {
+                            my $rss_mb = sprintf("%.2f", $1 / 1024);
+                            my $size_mb = sprintf("%.2f", $2 / 1024);
+                            print "$rss_mb\t$size_mb\t\t$3\n";
+                        }
+                    }
+                } else {
+                    print "Unable to read memory maps\n";
+                }
+
+                # Recent logs
+                print "\n┌─ RECENT LOGS (last 20 lines) " . "─"x48 . "\n";
+                my $logs = `journalctl _PID=$pid -b -n 20 --no-pager -o short-precise 2>/dev/null`;
+                if ($logs && $logs !~ /^-- No entries --/) {
+                    print $logs;
+                } else {
+                    print "No recent logs found for this PID in current boot\n";
+                }
+                
+                print "\n" . "─"x79 . "\n";
+            }
+
+        } else {
+            print "Stats command is only available on systemd based systems.\n";
+            $rs = 1;
         }
         exit $rs;
     }

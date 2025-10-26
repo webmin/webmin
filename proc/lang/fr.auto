@@ -92,8 +92,11 @@ trace_sorry=Cette page nécessite la prise en charge Java dans votre navigateur.
 trace_syscalls=Suivi des appels système:
 trace_all=Tout
 trace_sel=Listé ..
-trace_change=Changement
 
 windows_threads=Fils en cours
 
 syslog_dmesg=Messages du noyau
+
+proc_kill=Envoyer un signal
+proc_submit=Ensemble
+proc_filter=Filtre

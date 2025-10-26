@@ -5,3 +5,7 @@ index_memtf=$1 totale / $2 gratis
 index_memtfc=$1 totale / $2 libero / $3 memorizzato nella cache
 index_core=$1 nucleo
 index_cores=$1 core
+
+proc_kill=Invia segnale
+proc_submit=Impostato
+proc_filter=Filtro

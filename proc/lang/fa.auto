@@ -37,3 +37,7 @@ kill_stop=متوقف کردن
 windows_threads=مراحل در حال پردازش است
 
 syslog_dmesg=پیام های هسته
+
+proc_kill=ارسال سیگنال
+proc_submit=تنظیم
+proc_filter=فیلتر

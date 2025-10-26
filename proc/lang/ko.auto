@@ -100,8 +100,11 @@ trace_sorry=이 페이지는 브라우저에서 Java를 지원해야합니다. �
 trace_syscalls=시스템 호출 추적 :
 trace_all=모두
 trace_sel=상장 ..
-trace_change=변화
 
 windows_threads=처리중인 스레드
 
 syslog_dmesg=커널 메시지
+
+proc_kill=신호 보내기
+proc_submit=세트
+proc_filter=필터

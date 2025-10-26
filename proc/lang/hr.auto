@@ -40,7 +40,6 @@ search_fs=Korištenje datotečnog sustava
 search_files=Korištenje datoteke
 search_submit=traži
 search_none=Nisu pronađeni procesi podudaranja.
-search_kill=Pošalji signal
 search_ignore=Zanemarite procese pretraživanja kao rezultat
 search_return=obrazac za pretraživanje
 search_sigterm=Zaustaviti procese
@@ -68,8 +67,6 @@ edit_gone=Taj se postupak više ne pokreće
 edit_sub=Podprocesi
 edit_subid=iskaznica
 edit_subcmd=Naredba podprocesa
-edit_kill=Pošalji signal
-edit_change=Promijeniti
 edit_prilow=Nizak prioritet
 edit_prihigh=Visoki prioritet
 edit_pridef=Zadano
@@ -84,7 +81,6 @@ edit_trace=Proces tragova
 edit_return=detalji procesa
 
 kill_err=Slanje signala $1 nije uspjelo za obradu $2
-kill_title=Pošalji signal
 kill_sent=poslana
 kill_ecannot=Ne smijete ubijati procese
 
@@ -201,8 +197,11 @@ trace_sorry=Ova stranica zahtijeva podršku Java u vašem pregledniku. Za koriš
 trace_syscalls=Sustavi tragova pozivi:
 trace_all=svi
 trace_sel=Navedene ..
-trace_change=Promijeniti
 
 windows_threads=Niti u procesu
 
 syslog_dmesg=Kernel poruke
+
+proc_kill=Pošalji signal
+proc_submit=Postavi
+proc_filter=Filter

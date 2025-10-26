@@ -5,3 +5,7 @@ index_memtf=$1 σύνολο / $2 δωρεάν
 index_memtfc=$1 σύνολο / $2 δωρεάν / $3 αποθηκευμένη στην κρυφή μνήμη
 index_core=$1 πυρήνας
 index_cores=$1 πυρήνες
+
+proc_kill=Αποστολή σήματος
+proc_submit=Σειρά
+proc_filter=Φίλτρο

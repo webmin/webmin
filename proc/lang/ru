@@ -33,7 +33,6 @@ search_fs=Использует файловую систему
 search_files=Использует файл
 search_submit=Найти
 search_none=Процессов, соответствующих критерию поиска, не найдено.
-search_kill=Послать сигнал
 search_ignore=Игнорировать процесс выполняющий этот поиск
 search_return=к поиску
 search_sigterm=Завершить процесс
@@ -61,8 +60,6 @@ edit_gone=Процесс более не выполняется
 edit_sub=Дочерние процессы
 edit_subid=ID
 edit_subcmd=Команды дочерних процессов
-edit_kill=Послать сигнал
-edit_change=Изменить
 edit_prilow=Низкий приоритет
 edit_prihigh=Высокий приоритет
 edit_pridef=По умолчанию
@@ -77,7 +74,6 @@ edit_trace=Трассировка процесса
 edit_return=информации о процессе
 
 kill_err=Не удалось послать сигнал $1 процессу $2
-kill_title=Посылка сигнал
 kill_sent=послан
 kill_ecannot=У вас недостаточно прав для снятия процесса
 
@@ -194,7 +190,6 @@ trace_sorry=Для этой страницы требуется поддержк
 trace_syscalls=Трассировка системных вызовов:
 trace_all=Все
 trace_sel=Перечисленных..
-trace_change=Изменить
 
 windows_threads=Потоков в процессе
 

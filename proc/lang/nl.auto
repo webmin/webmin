@@ -5,3 +5,7 @@ index_memtf=$1 totaal / $2 gratis
 index_memtfc=$1 totaal / $2 vrij / $3 in cache
 index_core=$1 kern
 index_cores=$1 kernen
+
+proc_kill=Stuur signaal
+proc_submit=Set
+proc_filter=Filter

@@ -40,7 +40,6 @@ search_fs=Fitxategi sistema erabiliz
 search_files=Fitxategia erabiliz
 search_submit=Search
 search_none=Ez da bat datorren prozesurik aurkitu.
-search_kill=Bidali seinalea
 search_ignore=Ezikusi bilaketa prozesuak emaitza
 search_return=bilaketa orria
 search_sigterm=Prozesuak amaitu
@@ -68,8 +67,6 @@ edit_gone=Prozesu hau ez da exekutatzen
 edit_sub=Subprocesses
 edit_subid=NAN
 edit_subcmd=Azpiprozesuaren agindua
-edit_kill=Bidali seinalea
-edit_change=Aldaketa
 edit_prilow=Lehentasun txikia
 edit_prihigh=Lehentasun handia
 edit_pridef=Default
@@ -84,7 +81,6 @@ edit_trace=Arrasto prozesua
 edit_return=prozesuaren xehetasunak
 
 kill_err=Huts egin du $1 seinalea bidaltzean $2 prozesatzeko
-kill_title=Bidali seinalea
 kill_sent=bidalitako
 kill_ecannot=Ez duzu prozesuak hiltzen uzten
 
@@ -201,8 +197,11 @@ trace_sorry=Orrialde honek Java laguntza behar du zure arakatzailean. Testu baka
 trace_syscalls=Arrastatze sistemaren deiak:
 trace_all=guztiak
 trace_sel=Zerrendatutako ..
-trace_change=Aldaketa
 
 windows_threads=Hariak prozesuan
 
 syslog_dmesg=Kernel mezuak
+
+proc_kill=Bidali seinalea
+proc_submit=Ezarri
+proc_filter=Iragazkia

@@ -9,7 +9,7 @@ foreach $s ('KILL', 'TERM', 'HUP', 'STOP', 'CONT') {
 	$in{'signal'} = $s if ($in{$s});
 	}
 
-&ui_print_unbuffered_header(undef, $text{'kill_title'}, "");
+&ui_print_unbuffered_header(undef, $text{'proc_kill'}, "");
 @pidlist = split(/\s+/, $in{pidlist});
 @pinfo = &list_processes(@pidlist);
 for($i=0; $i<@pidlist; $i++) {

@@ -158,7 +158,7 @@ $rv .= "<table id='show_backup_destination' cellpadding=1 cellspacing=0>";
 
 # Local file field
 $rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 0, undef, $mode == 0)."</td>\n";
-$rv .= "<td>$text{'backup_mode0'}&nbsp;</td><td colspan='3'>".
+$rv .= "<td>".&ui_tag('strong', $text{'backup_mode0'})."&nbsp;</td><td colspan='3'>".
 	&ui_textbox("$_[0]_file", $mode == 0 ? $path : "", 60, undef, undef,
 	    ($_[2] != 1 && $config{'date_subs'}) ?
 	        'placeholder="/backups/configs-%y-%m-%d-%H-%M-%S.tar.gz"' : undef).
@@ -166,7 +166,7 @@ $rv .= "<td>$text{'backup_mode0'}&nbsp;</td><td colspan='3'>".
 
 # FTP file fields
 $rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 1, undef, $mode == 1)."</td>\n";
-$rv .= "<td>$text{'backup_mode1'}&nbsp;</td><td>".
+$rv .= "<td>".&ui_tag('strong', $text{'backup_mode1'})."&nbsp;</td><td>".
 	&ui_textbox("$_[0]_server", $mode == 1 ? $server : undef, 20).
 	"</td>\n";
 $rv .= "<td>&nbsp;$text{'backup_path'}&nbsp;</td><td> ".
@@ -186,7 +186,7 @@ $rv .= "<td colspan='4'>$text{'backup_port'} ".
 
 # SCP file fields
 $rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 2, undef, $mode == 2)."</td>\n";
-$rv .= "<td>$text{'backup_mode2'}&nbsp;</td><td>".
+$rv .= "<td>".&ui_tag('strong', $text{'backup_mode2'})."&nbsp;</td><td>".
 	&ui_textbox("$_[0]_sserver", $mode == 2 ? $server : undef, 20).
 	"</td>\n";
 $rv .= "<td>&nbsp;$text{'backup_path'}&nbsp;</td><td> ".
@@ -208,7 +208,7 @@ if ($_[2] == 1) {
 	# Uploaded file field
 	$rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 3, undef, $mode == 3).
 		"</td>\n";
-	$rv .= "<td colspan=4>$text{'backup_mode3'} ".
+	$rv .= "<td colspan=4>".&ui_tag('strong', $text{'backup_mode3'})." ".
 		&ui_upload("$_[0]_upload", 40).
 		"</td> </tr>\n";
 	}
@@ -216,7 +216,8 @@ elsif ($_[2] == 2) {
 	# Output to browser option
 	$rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 4, undef, $mode == 4).
 		"</td>\n";
-	$rv .= "<td colspan=4>$text{'backup_mode4'}</td> </tr>\n";
+	$rv .= "<td colspan=4>".&ui_tag('strong', $text{'backup_mode4'}).
+		"</td> </tr>\n";
 	}
 
 $rv .= "</table>\n";

@@ -118,8 +118,11 @@ trace_sorry=此頁面需要瀏覽器中的Java支持。要使用純文本過程�
 trace_syscalls=跟踪系統調用：
 trace_all=所有
 trace_sel=上市 ..
-trace_change=更改
 
 windows_threads=處理中的線程
 
 syslog_dmesg=內核消息
+
+proc_kill=發送訊號
+proc_submit=放
+proc_filter=篩選

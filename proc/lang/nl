@@ -33,7 +33,6 @@ search_fs=Gebruik filesysteem
 search_files=Gebruik file
 search_submit=Zoek
 search_none=Geen overeenkomende processen gevonden
-search_kill=Verstuur Signaal
 search_ignore=Negeer zoek processen in resultaten
 search_return=Zoek formulier
 search_sigterm=Uitschakelen Processen
@@ -61,8 +60,6 @@ edit_gone=Dit proces werkt niet langer
 edit_sub=Subprocessen
 edit_subid=ID
 edit_subcmd=Sub-proces opdracht
-edit_kill=Stuur Signaal
-edit_change=Wijzig
 edit_prilow=Lage prioriteit
 edit_prihigh=Hoge prioriteit
 edit_pridef=Standaard
@@ -77,7 +74,6 @@ edit_trace=Traceer Proces
 edit_return=proces details
 
 kill_err=Mislukt om signaal $1 naar proces $2 te sturen
-kill_title=Verstuur Signaal
 kill_sent=verstuur
 kill_ecannot=U bent niet bevoegd om processen te killen
 
@@ -194,7 +190,6 @@ trace_sorry=Deze pagina heeft Java ondersteuning nodig in uw browser. Om een all
 trace_syscalls=Traceer systeem verzoeken
 trace_all=Alles
 trace_sel=In Lijst..
-trace_change=Verander
 
 windows_threads=Afhandelingen in proces
 

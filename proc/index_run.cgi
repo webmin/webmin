@@ -16,7 +16,7 @@ print &ui_table_start(undef, undef, 2);
 
 # Command to run
 print &ui_table_row(&hlink($text{'run_command'}, "cmd"),
-	&ui_textbox("cmd", undef, 60)." ".
+	&ui_textbox("cmd", undef, 40)." ".
 	&ui_submit($text{'run_submit'}));
 
 # Foreground mode

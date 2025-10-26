@@ -45,3 +45,7 @@ trace_doing=$1 için sistem çağrısı izleme :
 windows_threads=İşlemdeki konular
 
 syslog_dmesg=Çekirdek mesajları
+
+proc_kill=Sinyal Gönder
+proc_submit=Ayarlamak
+proc_filter=Filtre

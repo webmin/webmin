@@ -33,7 +33,6 @@ search_fs=Che usa il filesystem:
 search_files=Che usa il file:
 search_submit=Cerca
 search_none=Non è stato trovato alcun processo corrispondente.
-search_kill=Invia Segnale
 search_ignore=Ignora i processi di ricerca nel risultato
 search_return=modulo di ricerca
 search_sigterm=Termina i Processi
@@ -61,8 +60,6 @@ edit_gone=Questo processo non è più in esecuzione
 edit_sub=Sottoprocessi
 edit_subid=ID
 edit_subcmd=Comando sub-processo
-edit_kill=Invia Segnale
-edit_change=Cambia
 edit_prilow=Bassa priorità
 edit_prihigh=Alta priorità
 edit_pridef=Predefinito
@@ -77,7 +74,6 @@ edit_trace=Controlla Processo
 edit_return=Dettagli del processo
 
 kill_err=Impossibile inviare il segnale $1 al processo $2
-kill_title=Invia Segnale
 kill_sent=inviato
 kill_ecannot=Non hai i permessi per inviare il segnale di kill ai processi
 
@@ -194,7 +190,6 @@ trace_sorry=Questa pagina richiede il supporto Java nel tuo browser. Per usare i
 trace_syscalls=Chiamate di sistema per la tracciatura:
 trace_all=Tutti
 trace_sel=Elencato:
-trace_change=Cambia
 
 windows_threads=Thread in corso
 

@@ -40,7 +40,6 @@ search_fs=Using filesystem
 search_files=Using file
 search_submit=Search
 search_none=No matching processes found.
-search_kill=Send Signal
 search_ignore=Ignore search processes in result
 search_return=search form
 search_sigterm=Terminate Processes
@@ -68,8 +67,6 @@ edit_gone=This process is no longer running
 edit_sub=Subprocesses
 edit_subid=ID
 edit_subcmd=Sub-process command
-edit_kill=Send Signal
-edit_change=Change
 edit_prilow=Low priority
 edit_prihigh=High priority
 edit_pridef=Default
@@ -84,7 +81,6 @@ edit_trace=Trace Process
 edit_return=process details
 
 kill_err=Failed to send signal $1 to process $2
-kill_title=Send Signal
 kill_sent=sent
 kill_ecannot=You are not allowed to kill processes
 
@@ -201,9 +197,13 @@ trace_sorry=This page requires Java support in your browser. To use a text-only 
 trace_syscalls=Trace system calls:
 trace_all=All
 trace_sel=Listed..
-trace_change=Change
 
 windows_threads=Threads in process
 
 syslog_dmesg=Kernel messages
+
+proc_kill=Send Signal
+proc_submit=Set
+proc_filter=Filter
+
 __norefs=1

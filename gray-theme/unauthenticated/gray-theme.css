@@ -505,6 +505,10 @@ details.inline.fit > summary + span {
     display: inline-block;
 }
 
+details summary {
+  cursor: pointer;
+}
+
 [data-second-print]:has(details) + br:has(+[data-x-br]) {
   display: none;
 }

@@ -5,3 +5,7 @@ index_memtf=$1 всего / $2 бесплатно
 index_memtfc=Всего $1 / $2 свободно / $3 в кэше
 index_core=$1 ядро
 index_cores=$1 ядер
+
+proc_kill=Отправить сигнал
+proc_submit=Набор
+proc_filter=Фильтр

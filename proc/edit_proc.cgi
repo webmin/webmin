@@ -54,7 +54,7 @@ print &ui_hidden("pid", $ARGV[0]);
 print &ui_table_row(&hlink($text{'nice'},"nice"),
 	&indexof($pinfo{nice}, @nice_range) < 0 ? $pinfo{nice} :
 		&nice_selector("nice", $pinfo{nice}).
-		&ui_submit($text{'edit_change'}), 3);
+		&ui_submit($text{'proc_submit'}), 3);
 
 # IO scheduling class, if support
 if (defined(&os_list_scheduling_classes) &&
@@ -99,7 +99,7 @@ else {
 	print &ui_form_start("kill_proc.cgi");
 	print &ui_hidden("pid", $pinfo{pid});
 	print "<td nowrap>\n";
-	print &ui_submit($text{'edit_kill'});
+	print &ui_submit($text{'proc_kill'});
 	print &ui_select("signal", "HUP", [ &supported_signals() ]);
 
 	print "&nbsp;" x 4;

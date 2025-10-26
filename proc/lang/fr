@@ -24,7 +24,6 @@ search_fs=Utilise le système de fichier
 search_files=Utilise le fichier
 search_submit=Rechercher
 search_none=Aucun processus correspondant
-search_kill=Envoyer le signal
 search_ignore=Ignorer les processus de recherche
 search_return=page de recherche
 
@@ -42,8 +41,6 @@ run_ecannot=Vous n'êtes pas autorisé à lancer des commandes
 edit_title=Information du processus
 edit_gone=Ce processus n'est plus exécuté
 edit_sub=Sous-processus
-edit_kill=Envoyer le signal
-edit_change=Changer
 edit_prilow=Priorité basse
 edit_prihigh=Priorité haute
 edit_pridef=Par défaut
@@ -51,7 +48,6 @@ edit_none=Aucun
 edit_ecannot=Vous n'êtes pas autorisé à éditer les processus
 
 kill_err=Impossible d'envoyer le signal $1 au processus $2
-kill_title=Envoyer le signal
 kill_sent=envoyé
 kill_ecannot=Vous n'êtes pas autorisé à tuer les processus
 

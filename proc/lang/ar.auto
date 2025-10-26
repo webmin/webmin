@@ -40,7 +40,6 @@ search_fs=باستخدام نظام الملفات
 search_files=باستخدام الملف
 search_submit=بحث
 search_none=لم يتم العثور على عمليات مطابقة.
-search_kill=أرسل إشارة
 search_ignore=تجاهل عمليات البحث في النتيجة
 search_return=نموذج بحث
 search_sigterm=إنهاء العمليات
@@ -68,8 +67,6 @@ edit_gone=لم تعد هذه العملية قيد التشغيل
 edit_sub=العمليات الفرعية
 edit_subid=هوية شخصية
 edit_subcmd=أمر العملية الفرعية
-edit_kill=أرسل إشارة
-edit_change=يتغيرون
 edit_prilow=أولوية منخفضة
 edit_prihigh=ذا أهيمة عليا
 edit_pridef=إفتراضي
@@ -84,7 +81,6 @@ edit_trace=عملية التتبع
 edit_return=تفاصيل العملية
 
 kill_err=فشل إرسال الإشارة$1 لمعالجة$2
-kill_title=أرسل إشارة
 kill_sent=أرسلت
 kill_ecannot=لا يسمح لك بقتل العمليات
 
@@ -201,8 +197,11 @@ trace_sorry=تتطلب هذه الصفحة دعم جافا في متصفحك. ل
 trace_syscalls=استدعاءات نظام التتبع:
 trace_all=الكل
 trace_sel=مدرج ..
-trace_change=يتغيرون
 
 windows_threads=خيوط قيد المعالجة
 
 syslog_dmesg=رسائل نواة
+
+proc_kill=إرسال الإشارة
+proc_submit=تعيين
+proc_filter=فلتر

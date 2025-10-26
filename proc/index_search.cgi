@@ -12,14 +12,20 @@ $deffield = ("user", "match", "cpu", "sfs", "files", "port", "sip")
 		 "onLoad='document.forms[0].$deffield.focus()'");
 &index_links("search");
 
-# Javascript to select radio
+# Javascript to select radio (scoped to the triggering element's form)
 print <<EOF;
 <script>
-function select_mode(m)
+function select_mode(\$this, m)
 {
-for(i=0; i<document.forms[0].mode.length; i++) {
-	document.forms[0].mode[i].checked = document.forms[0].mode[i].value == m;
-	}
+  var f = \$this.form;
+  if (!f || !f.mode) return;
+
+  // handle one or many radios named "mode"
+  var modes = (f.mode.length != null) ? f.mode : [f.mode];
+
+  for (var i = 0; i < modes.length; i++) {
+    modes[i].checked = (modes[i].value == m);
+  }
 }
 </script>
 EOF
@@ -29,40 +35,43 @@ print &ui_form_start("index_search.cgi");
 print &ui_table_start(undef, undef, 4);
 
 # By user
-print &ui_table_row(&ui_oneradio("mode", 0, &hlink($text{'search_user'}, "suser"),
-			      $in{'mode'} == 0),
-		    &ui_user_textbox("user", $in{'user'}, 0, 0,
-				     &mode_selector(0)));
+print &ui_table_row(" ",
+	&ui_oneradio("mode", 0, &hlink($text{'search_user'}, "suser"),
+		     $in{'mode'} == 0)."&nbsp;&nbsp;".
+	&ui_user_textbox("user", $in{'user'}, 0, 0, &mode_selector(0)), 2);
 
 # By process name
-print &ui_table_row(&ui_oneradio("mode", 1, &hlink($text{'search_match'},"smatch"),
-			      $in{'mode'} == 1),
-		    &ui_textbox("match", $in{'match'}, 30, 0, undef,
-				&mode_selector(1)));
+print &ui_table_row(" ",
+	&ui_oneradio("mode", 1, &hlink($text{'search_match'},"smatch"),
+		     $in{'mode'} == 1)."&nbsp;&nbsp;".
+	&ui_textbox("match", $in{'match'}, 30, 0, undef, &mode_selector(1)), 2);
 
 if ($has_lsof_command) {
 	# TCP port
-	print &ui_table_row(&ui_oneradio("mode", 5,
-		&hlink($text{'search_port'}, "ssocket"), $in{'mode'} == 5),
+	print &ui_table_row(" ",
+		&ui_oneradio("mode", 5, &hlink($text{'search_port'}, "ssocket"),
+			     $in{'mode'} == 5)."&nbsp;&nbsp;".
 		&ui_textbox("port", $in{'port'}, 6, 0, undef,
-			    &mode_selector(5))." ".
-		$text{'search_protocol'}." ".
+			    &mode_selector(5))."&nbsp;".
+		$text{'search_protocol'}."&nbsp;".
 		&ui_select("protocol", $in{'protocol'},
 			   [ [ 'tcp', 'TCP' ], [ 'udp', 'UDP' ] ], 1, 0, 0,
-			   0, &mode_selector(5, "onChange")));
+			   0, &mode_selector(5, "onChange")), 2);
 
 	# Using IP address
-	print &ui_table_row(&ui_oneradio("mode", 6,
-		&hlink($text{'search_ip'}, "sip"), $in{'mode'} == 6),
+	print &ui_table_row(" ",
+		&ui_oneradio("mode", 6, &hlink($text{'search_ip'}, "sip"),
+			     $in{'mode'} == 6)."&nbsp;&nbsp;".
 		&ui_textbox("ip", $in{'ip'}, 20, 0, undef,
-			    &mode_selector(6)));
+			    &mode_selector(6)), 2);
 	}
 
 # By CPU used
-print &ui_table_row(&ui_oneradio("mode", 2,
-		&hlink($text{'search_cpupc2'}, "scpu"), $in{'mode'} == 2),
-		&ui_textbox("cpu", $in{'cpu'}, 4, 0, undef,
-			    &mode_selector(2))."%");
+print &ui_table_row(" ",
+	&ui_oneradio("mode", 2, &hlink($text{'search_cpupc2'}, "scpu"),
+		     $in{'mode'} == 2)."&nbsp;&nbsp;".
+	&ui_textbox("cpu", $in{'cpu'}, 4, 0, undef,
+		    &mode_selector(2))."&nbsp;%", 2);
 
 if ($has_fuser_command) {
 	# Using filesystem
@@ -80,23 +89,24 @@ if ($has_fuser_command) {
 		$fschooser = &ui_textbox("fs", $in{'fs'}, 30, 0, undef,
 					 &mode_selector(3));
 		}
-	print &ui_table_row(&ui_oneradio("mode", 3,
-		&hlink($text{'search_fs'}, "sfs"), $in{'mode'} == 3),
-		$fschooser, 3);
+	print &ui_table_row(" ",
+		&ui_oneradio("mode", 3, &hlink($text{'search_fs'}, "sfs"),
+			     $in{'mode'} == 3)."&nbsp;&nbsp;".$fschooser, 2);
 
 	# Using file
-	print &ui_table_row(&ui_oneradio("mode", 4,
-		&hlink($text{'search_files'}, "sfiles"), $in{'mode'} == 4),
+	print &ui_table_row(" ",
+		&ui_oneradio("mode", 4, &hlink($text{'search_files'}, "sfiles"),
+			     $in{'mode'} == 4)."&nbsp;&nbsp;".
 		&ui_textbox("files", $in{'files'}, 50, 0, undef,
 			    &mode_selector(4))." ".
-		&file_chooser_button("files", 0), 3);
+		&file_chooser_button("files", 0), 2);
 	}
 
 # Exclude own processes
-print &ui_table_row(undef,
-	&ui_checkbox("ignore", 1,
-		&hlink("<b>$text{'search_ignore'}</b>","signore"),
-		$in{'ignore'} || !defined($in{'mode'})));
+print &ui_table_hr();
+print &ui_table_row(" ",
+	&ui_checkbox("ignore", 1, &hlink($text{'search_ignore'}, "signore"),
+	$in{'ignore'} || !defined($in{'mode'})), 2);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'search_submit'} ] ]);
@@ -174,7 +184,8 @@ if (%in) {
 		print &ui_columns_end(),"<p>\n";
 		}
 	else {
-		print "<p><b>$text{'search_none'}</b><p>\n";
+		print "<hr>".&ui_alert_box($text{'search_none'}, "info",
+				    undef, undef, "") if ($in{'match'} ne '');
 		}
 
 	if (@pidlist && $access{'simple'} && $access{'edit'}) {
@@ -193,7 +204,7 @@ if (%in) {
 	elsif (@pidlist && $access{'edit'}) {
 		# display form for mass killing with any signal
 		print "<form action=kill_proc_list.cgi>\n";
-		print "<input type=submit value=\"$text{'search_kill'}\">\n";
+		print "<input type=submit value=\"$text{'proc_kill'}\">\n";
 		print "<input type=hidden name=args value=\"$in\">\n";
 		printf "<input type=hidden name=pidlist value=\"%s\">\n",
 			join(" ", @pidlist);
@@ -220,6 +231,6 @@ sub mode_selector
 {
 local ($m, $action) = @_;
 $action ||= "onFocus";
-return "$action='select_mode($m)'";
+return "$action='select_mode(this, $m)'";
 }
 

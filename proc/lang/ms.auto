@@ -40,7 +40,6 @@ search_fs=Menggunakan sistem fail
 search_files=Menggunakan fail
 search_submit=Carian
 search_none=Tiada proses sepadan yang dijumpai.
-search_kill=Hantar Isyarat
 search_ignore=Abaikan proses carian dalam hasil
 search_return=borang carian
 search_sigterm=Tamatkan Proses
@@ -68,8 +67,6 @@ edit_gone=Proses ini tidak lagi berjalan
 edit_sub=Subprocesses
 edit_subid=ID
 edit_subcmd=Perintah sub-proses
-edit_kill=Hantar Isyarat
-edit_change=Ubah
 edit_prilow=Keutamaan rendah
 edit_prihigh=Keutamaan yang tinggi
 edit_pridef=Lalai
@@ -84,7 +81,6 @@ edit_trace=Melacak Proses
 edit_return=butiran proses
 
 kill_err=Gagal menghantar isyarat $1 untuk memproses $2
-kill_title=Hantar Isyarat
 kill_sent=dihantar
 kill_ecannot=Anda tidak dibenarkan membunuh proses
 
@@ -201,8 +197,11 @@ trace_sorry=Halaman ini memerlukan sokongan Java dalam penyemak imbas anda. Untu
 trace_syscalls=Panggilan sistem jejak:
 trace_all=Semua
 trace_sel=Disenaraikan ..
-trace_change=Ubah
 
 windows_threads=Thread dalam proses
 
 syslog_dmesg=Mesej kernel
+
+proc_kill=Hantar Isyarat
+proc_submit=Tetapkan
+proc_filter=Penapis

@@ -82,7 +82,7 @@ print &ui_table_row($text{'unix_restrict2'},
 print &ui_table_row("",
 	&ui_checkbox("shells_deny", 1, $text{'unix_shells'},
 		     $miniserv{'shells_deny'} ? 1 : 0)." ".
-	&ui_filebox("shells", $miniserv{'shells_deny'} || "/etc/shells", 40));
+	&ui_filebox("shells", $miniserv{'shells_deny'} || "/etc/shells", 25));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);

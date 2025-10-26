@@ -24,7 +24,6 @@ search_fs=Usando sistema de archivos
 search_files=Usando archivo
 search_submit=Buscar
 search_none=No se han encontrado procesos que coincidan.
-search_kill=Enviar Señal
 search_ignore=Ignorar procesos de búsqueda
 search_return=formulario de búsqueda
 search_sigterm=Terminar Procesos
@@ -46,8 +45,6 @@ run_ecannot=No estás autorizado a ejecutar comandos
 edit_title=Información de Proceso
 edit_gone=Este proceso ya no se está ejecutando
 edit_sub=Subprocesos
-edit_kill=Enviar Señal
-edit_change=Cambiar
 edit_prilow=Prioridad baja
 edit_prihigh=Prioridad alta
 edit_pridef=Por defecto
@@ -58,7 +55,6 @@ edit_sigkill=Matar Proceso
 edit_open=Archivos y Conexiones
 
 kill_err=Error al enviar señal $1 al proceso $2
-kill_title=Enviar Señal
 kill_sent=enviada
 kill_ecannot=No estás autorizado a matar procesos
 

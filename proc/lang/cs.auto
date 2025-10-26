@@ -12,3 +12,7 @@ sprio=IO priorita
 linux_real=Reálný čas
 linux_be=Nejlepší úsilí
 linux_idle=Líný
+
+proc_kill=Odeslat signál
+proc_submit=Soubor
+proc_filter=Filtr
