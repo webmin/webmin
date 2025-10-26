@@ -30,7 +30,7 @@ my $using_strftime = 0;
 if (@backups) {
 	# Show all scheduled backups
 	print &ui_link("edit.cgi?new=1", $text{'index_add'});
-    print "<br>\n";
+	print "<br>\n";
 	print &ui_columns_start([ $text{'index_dest'},
 			    	  $text{'index_mods'},
 			    	  $text{'index_sched'} ], 100);
