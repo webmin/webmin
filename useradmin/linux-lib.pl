@@ -21,9 +21,14 @@ return &password_file($config{'gshadow_file'}) ? 2 : 0;
 sub open_last_command
 {
 my ($fh, $user, $max) = @_;
-my $quser = quotemeta($user);
-$max = " -n $max" if ($max);
-open($fh, "(last -F -w$max $quser || last -w$max $quser) |");
+if (&has_command("last")) {
+	my $quser = quotemeta($user);
+	$max = " -n $max" if ($max);
+	open($fh, "(last -F -w$max $quser || last -w$max $quser) |");
+	}
+else {
+	open($fh, "</dev/null");
+	}
 }
 
 # read_last_line(handle)
