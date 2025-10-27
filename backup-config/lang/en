@@ -27,6 +27,7 @@ edit_header=Scheduled backup options
 edit_header2=Pre and post backup commands
 edit_header3=Backup schedule
 edit_email=Email result to address
+edit_email_def=Webmin default ($1)
 edit_emode=When to send email
 edit_emode0=Always
 edit_emode1=Only when an error occurs

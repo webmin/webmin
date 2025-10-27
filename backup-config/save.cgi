@@ -36,7 +36,7 @@ else {
 	$backup->{'dest'} = &parse_backup_destination("dest", \%in);
 	&cron::parse_times_input($backup, \%in);
 	$backup->{'emode'} = $in{'emode'};
-	$backup->{'email'} = $in{'email'};
+	$backup->{'email'} = $in{'email_def'} ? '*' : $in{'email'};
 	$backup->{'pre'} = $in{'pre'};
 	$backup->{'post'} = $in{'post'};
 	$backup->{'sched'} = $in{'sched'};

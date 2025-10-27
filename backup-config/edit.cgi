@@ -10,10 +10,11 @@ our (%in, %text, %gconfig);
 &ReadParse();
 
 my $backup;
+my $wet = $gconfig{'webmin_email_to'};
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'edit_title1'}, "");
 	$backup = { 'emode' => 0,
-		    'email' => $gconfig{'webmin_email_to'},
+		    'email' => $wet ? '*' : undef,
 		    'sched' => 1,
 		    'configfile' => 1,
 		    'nofiles' => 0,
@@ -74,7 +75,10 @@ print &ui_hidden_table_start($text{'edit_header3'}, "width=100%", 2,
 
 # Show email address
 print &ui_table_row($text{'edit_email'},
-		    &ui_textbox("email", $backup->{'email'}, 40));
+	$wet ? &ui_opt_textbox("email",
+			$backup->{'email'} eq '*' ? undef : $backup->{'email'},
+			40, &text('edit_email_def', "<tt>$wet</tt>"))
+	     : &ui_textbox("email", $backup->{'email'}, 40));
 
 # Show email mode
 print &ui_table_row($text{'edit_emode'},
