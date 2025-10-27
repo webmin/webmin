@@ -6,6 +6,7 @@ require './fsdump-lib.pl';
 &foreign_require("cron", "cron-lib.pl");
 &ReadParse();
 
+$wet = $gconfig{'webmin_email_to'};
 if (!$in{'id'}) {
 	# Adding a new backup of some type
 	$access{'edit'} || &error($text{'dump_ecannot1'});
@@ -32,7 +33,7 @@ if (!$in{'id'}) {
 	$dump = { 'dir' => $in{'dir'},
 		  'fs' => $fs,
 		  'rsh' => &has_command("ssh"),
-		  'email' => $gconfig{'webmin_email_to'},
+		  'email' => $wet ? '*' : undef,
 		   $config{'simple_sched'} ?
 			( 'special' => 'daily' ) :
 			( 'mins' => '0',
@@ -144,7 +145,10 @@ print &ui_table_row(&hlink($text{'edit_enabled'}, "enabled"),
 
 # Email address to send output to
 print &ui_table_row(&hlink($text{'edit_email'}, "email"),
-		    &ui_textbox("email", $dump->{'email'}, 30), 3, \@tds);
+	$wet ? &ui_opt_textbox("email",
+			$dump->{'email'} eq '*' ? undef : $dump->{'email'},
+			40, &text('edit_email_def', "<tt>$wet</tt>"))
+	     : &ui_textbox("email", $dump->{'email'}, 40));
 
 # Subject line for email message
 print &ui_table_row(&hlink($text{'edit_subject'}, "subject"),

@@ -118,12 +118,14 @@ if ($out && $dump->{'email'} && &foreign_check("mailboxes")) {
 	# Send the email
 	if (!$ok || !$config{'error_email'}) {
 		# Only send email upon failure, or it requested always
-		&mailboxes::send_text_mail(&mailboxes::get_from_address(),
-					   $dump->{'email'},
-					   undef,
-					   $subject,
-					   $data,
-					   $config{'smtp_server'});
+		&mailboxes::send_text_mail(
+			&mailboxes::get_from_address(),
+			$dump->{'email'} eq '*' ? $gconfig{'webmin_email_to'}
+						: $dump->{'email'},
+			undef,
+			$subject,
+			$data,
+			$config{'smtp_server'});
 		}
 	}
 

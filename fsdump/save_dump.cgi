@@ -72,7 +72,7 @@ else {
 		}
 	$dump->{'dir'} = $in{'dir'};
 	$dump->{'fs'} = $in{'fs'};
-	$dump->{'email'} = $in{'email'};
+	$dump->{'email'} = $in{'email_def'} ? '*' : $in{'email'};
 	$dump->{'subject'} = $in{'subject_def'} ? undef : $in{'subject'};
 	if ($access{'extra'}) {
 		$dump->{'extra'} = $in{'extra'};

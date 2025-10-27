@@ -128,6 +128,7 @@ edit_savenow=Save and Backup Now
 edit_createnow=Create and Backup Now
 edit_return=backup
 edit_email=Email scheduled output to
+edit_email_def=Webmin default ($1)
 edit_subject=Email message subject
 edit_restore=Restore ..
 edit_to=$1 to $2
