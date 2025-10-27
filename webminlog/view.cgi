@@ -131,10 +131,14 @@ foreach my $d (&list_diffs($act)) {
 	if ($t =~ /\$2/ || !$d->{'diff'}) {
 		# Diff is just a single line message
 		$fhtml .= &ui_hidden_table_start($cbox.
-		      &text("view_type_".$d->{'type'},
-			    "<tt>$d->{'object'}</tt>",
-			    "<tt>".&html_escape($d->{'diff'})."</tt>"),
-		      "width=100% data-nodata=1", 2, "diff$i", 0);
+		      $text{"view_type_".$d->{'type'}."desc"},
+		      "width=100%", 2, "diff$i", 1);
+		$fhtml .= &ui_table_row(undef,
+			&ui_tag('pre',
+				&text("view_type_".$d->{'type'},
+				      "<tt>$d->{'object'}</tt>",
+				      "<tt>".&html_escape($d->{'diff'})."</tt>")
+			, {'data-text' => 1}), 2);
 		}
 	else {
 		# Show multi-line diff
