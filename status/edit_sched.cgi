@@ -51,16 +51,16 @@ print &ui_table_row($text{'sched_warn'},
 		    [ 2, $text{'sched_warn2'} ] ]), 3);
 
 # Send email to
+my $e = $config{'sched_email'};
 my @opts = ( [ 1, $text{'sched_none'} ],
-	     [ 0, &ui_textbox("email", $config{'sched_email'}, 30) ] );
+	     [ 0, &ui_textbox("email", $e eq '*' ? undef : $e, 30) ] );
 if ($gconfig{'webmin_email_to'}) {
 	splice(@opts, 1, 0, [ 2, &text('sched_email_def',
 				   "<tt>$gconfig{'webmin_email_to'}</tt>") ]);
 	}
 print &ui_table_row($text{'sched_email'},
 	&ui_radio("email_def",
-		  !$config{'sched_email'} ? 1 : 
-		  $config{'sched_email'} eq $gconfig{'webmin_email_to'} ? 2 : 0,
+		  !$e ? 1 : $e eq '*' ? 2 : 0,
 		  \@opts));
 
 # From: address
