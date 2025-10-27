@@ -51,9 +51,6 @@ print &ui_table_row($text{'sched_warn'},
 		    [ 2, $text{'sched_warn2'} ] ]), 3);
 
 # Send email to
-$defmsg = $gconfig{'webmin_email_to'} ?
-	&text('sched_email_def', "<tt>$gconfig{'webmin_email_to'}</tt>") :
-	$text{'sched_none'};
 my @opts = ( [ 1, $text{'sched_none'} ],
 	     [ 0, &ui_textbox("email", $config{'sched_email'}, 30) ] );
 if ($gconfig{'webmin_email_to'}) {
