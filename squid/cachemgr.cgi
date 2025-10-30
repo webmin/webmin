@@ -14,6 +14,7 @@ my ($mgr) = glob($config{'cachemgr_path'});
 if (&has_command($mgr)) {
 	$| = 1;
 	my $temp;
+	my $args = join(" ", map { quotemeta($_) } @ARGV);
 	if ($ENV{'REQUEST_METHOD'} eq 'POST') {
 		# Deal with POST data
 		my $post;
@@ -23,10 +24,10 @@ if (&has_command($mgr)) {
 		&open_tempfile($fh, ">$temp", 0, 1);
 		&print_tempfile($fh, $post);
 		&close_tempfile($fh);
-		open(MGR, "$mgr ".join(" ", @ARGV)." <$temp |");
+		open(MGR, "$mgr $args <$temp |");
 		}
 	else {
-		open(MGR, "$mgr ".join(" ", @ARGV)." |");
+		open(MGR, "$mgr $args |");
 		}
 	while(<MGR>) {
 		print;
