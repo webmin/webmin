@@ -499,6 +499,7 @@ my ($wellknown_new, $challenge_new) = @_;
 sub get_bind_zone_for_domain
 {
 my ($d) = @_;
+return undef if (!&foreign_installed("bind8"));
 &foreign_require("bind8");
 my $bd = $d;
 while ($bd =~ /\./) {
