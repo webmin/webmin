@@ -142,7 +142,8 @@ elsif ($mode eq "dns") {
 		}
 	}
 elsif ($mode eq "certbot") {
-	# XXX what to cehck?
+	# Nothing to check here, since verification is done by the standalone
+	# certbot server
 	}
 else {
 	return (0, "Unknown mode $mode");
