@@ -1,4 +1,3 @@
-line1=Configurable options,11
 resolve=Resolve found server addresses,1,1-Yes,0-No
 scan_time=Time to wait for scan responses,0,5
 listen=Scan for servers on UDP port,3,Same as this system
