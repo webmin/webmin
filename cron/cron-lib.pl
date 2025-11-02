@@ -833,7 +833,7 @@ if ($config{'vixie_cron'} && (!$nospecial || $job->{'special'})) {
 			1, 0, 0, 0, "onChange='change_special_mode(form, 1)'");
 	$rv .= &ui_table_row($msg,
 		&ui_radio("special_def", $job->{'special'} ? 1 : 0,
-			  [ [ 1, $text{'edit_special1'}." ".$specialsel ],
+			  [ [ 1, $text{'edit_special1'}."&nbsp;&nbsp;".$specialsel ],
 			    [ 0, $text{'edit_special0'} ] ]),
 			  $msg ? $width-1 : $width);
 	}

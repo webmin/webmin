@@ -204,7 +204,7 @@ if ($special || $job->{'special'}) {
 	# Allow selection of special @ times
 	$rv .= "<tr $cb> <td colspan=6>\n";
 	$rv .= &ui_radio("special_def", $job->{'special'} ? 1 : 0,
-		[ [ 1, $text{'edit_special1'}." ".
+		[ [ 1, $text{'edit_special1'}."&nbsp;&nbsp;".
 		       &ui_select("special", $job->{'special'},
 				  [ map { [ $_, $text{'edit_special_'.$_} ] }
 					@special_modes ]) ],
