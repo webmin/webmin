@@ -181,7 +181,7 @@ if (%in) {
 			push(@cols, &html_escape(cut_string($d->{args})));
 			print &ui_columns_row(\@cols);
 			}
-		print &ui_columns_end(),"<p>\n";
+		print &ui_columns_end(),"\n";
 		}
 	else {
 		print "<hr>".&ui_alert_box($text{'search_none'}, "info",
