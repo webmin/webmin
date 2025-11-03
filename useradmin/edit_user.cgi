@@ -554,7 +554,7 @@ if ($n ne "") {
 				}
 			}
 
-		print &ui_table_end(),"<p>\n";
+		print &ui_table_end(),"\n";
 		}
 	}
 else {
