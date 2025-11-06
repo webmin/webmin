@@ -126,10 +126,11 @@ if ($access{'locale'}) {
 
 if ($access{'theme'}) {
 	# Show personal theme
+	my %tinfo = ();
 	my $tname;
 	if ($gconfig{'theme'}) {
 		my ($gtheme, $goverlay) = split(/\s+/, $gconfig{'theme'});
-		my %tinfo = &webmin::get_theme_info($gtheme);
+		%tinfo = &webmin::get_theme_info($gtheme);
 		$tname = $tinfo{'desc'};
 		}
 	else {
@@ -140,6 +141,16 @@ if ($access{'theme'}) {
 	my @overlays = grep { $_->{'overlay'} } @all;
 
 	# Main theme
+	my $tconf_link;
+	if ($user->{'theme'} && $user->{'theme'} eq $tinfo{'dir'} &&
+	    $tinfo{'config_link'}) {
+		$tconf_link = &ui_tag('span', &ui_link(
+			"@{[&get_webprefix()]}/$tinfo{'config_link'}",
+			&ui_tag('span', '⚙', 
+				{ class => 'theme-config-char',
+				  title => $text{'themes_configure'} }),
+			'text-link'), { style => 'position: relative;' });
+		}
 	print &ui_table_row($text{'index_theme'},
 		&ui_radio("theme_def", defined($user->{'theme'}) ? 0 : 1,
 			  [ [ 1, &text('index_themeglobal', $tname)."<br>" ],
@@ -149,7 +160,8 @@ if ($access{'theme'}) {
 				? [ '', $text{'index_themedef'} ]
 				: (),
 			  map { [ $_->{'dir'}, $_->{'desc'} ] }
-			      @themes ]), undef, [ "valign=top","valign=top" ]);
+			      @themes ]).$tconf_link,
+		undef, [ "valign=top","valign=top" ]);
 
 	# Overlay, if any
 	if (@overlays) {

@@ -238,6 +238,18 @@ my @themes = grep { !$_->{'overlay'} } @all;
 my @overlays = grep { $_->{'overlay'} } @all;
 
 if ($access{'theme'}) {
+	my $tconf_link;
+	my %tinfo = &webmin::get_theme_info($user{'theme'});
+	if ($user{'theme'} && $user{'theme'} eq $tinfo{'dir'} &&
+	    $user{'name'} eq $remote_user &&
+	    $tinfo{'config_link'}) {
+		$tconf_link = &ui_tag('span', &ui_link(
+			"@{[&get_webprefix()]}/$tinfo{'config_link'}",
+			&ui_tag('span', '⚙', 
+				{ class => 'theme-config-char',
+				  title => $text{'themes_configure'} }),
+			'text-link'), { style => 'position: relative;' });
+		}
 	# Current theme
 	my @topts = ( );
 	push(@topts, !$user{'theme'} ? [ '', $text{'edit_themedef'} ] : ());
@@ -247,7 +259,8 @@ if ($access{'theme'}) {
 	print &ui_table_row($text{'edit_theme'},
 		&ui_radio("theme_def", defined($user{'theme'}) ? 0 : 1,
 		  [ [ 1, $text{'edit_themeglobal'} ],
-		    [ 0, &ui_select("theme", $user{'theme'}, \@topts) ] ]));
+		    [ 0, &ui_select("theme", $user{'theme'}, \@topts).
+		    	 $tconf_link ] ]));
 	}
 
 if ($access{'theme'} && @overlays) {

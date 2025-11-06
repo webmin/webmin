@@ -11,6 +11,10 @@ $access{'themes'} || &error($text{'acl_ecannot'});
 @themes = &list_visible_themes($uconfig{'theme'});
 $prog = "edit_themes.cgi?mode=";
 
+($gtheme) = split(/\s+/, $gconfig{'theme'});
+$curr_theme_selected = $gconfig{"theme_$base_remote_user"} || $gtheme;
+($curr_theme) = grep { $_->{'dir'} eq $curr_theme_selected } @themes;
+
 # Start tabs
 if (@themes) {
         @tabs = ( [ "change", $text{'themes_tabchange'}, $prog."change" ] );
@@ -28,11 +32,19 @@ if (@themes) {
         print &ui_tabs_start_tab("mode", "change");
         print "$text{'themes_desc'}<p>\n";
         print &ui_form_start("change_theme.cgi");
-        print "<b>$text{'themes_sel'}</b>\n";
+        print "<b>$text{'themes_sel'}</b>&nbsp;&nbsp;\n";
         print &ui_select("theme", $uconfig{'theme'},
                 [ !$uconfig{'theme'} ? [ '', $text{'themes_default'} ] : (),
-                map { [ $_->{'dir'}, &html_escape($_->{'desc'}) ] }
-		    @themes ]),"<p>\n";
+                map { [ $_->{'dir'}, &html_escape($_->{'desc'}) ] } @themes ]);
+	if ($curr_theme->{'config_link'} &&
+	    $uconfig{'theme'} eq $curr_theme->{'dir'}) {
+		print &ui_link(
+			"@{[&get_webprefix()]}/$curr_theme->{'config_link'}",
+			&ui_tag('span', '⚙', 
+				{ class => 'theme-config-char',
+				  title => $text{'themes_configure'} }),
+			'text-link');
+		}
         print &ui_form_end([ [ undef, $text{'themes_change'} ] ]);
         print &ui_tabs_end_tab("mode", "change");
 	}
@@ -62,7 +74,7 @@ if (@delthemes) {
         print &ui_tabs_start_tab("mode", "delete");
         print "$text{'themes_delete'}<p>\n";
         print &ui_form_start("delete_mod.cgi");
-        print "<b>$text{'themes_delok'}</b>\n";
+        print "<b>$text{'themes_delok'}</b>&nbsp;&nbsp;\n";
         print &ui_select("mod", undef,
                 [ map { [ $_->{'dir'}, &html_escape($_->{'desc'}) ] }
 		      @delthemes ]),"<br>\n";
