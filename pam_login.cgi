@@ -32,6 +32,7 @@ if ($gconfig{'loginbanner'} && $ENV{'HTTP_COOKIE'} !~ /banner=1/ &&
 	print "Set-Cookie: banner=1; path=/\r\n";
 	&PrintHeader();
 	$url = $in{'page'};
+	$url = &filter_javascript($url);
 	open(BANNER, "<$gconfig{'loginbanner'}");
 	while(<BANNER>) {
 		s/LOGINURL/$url/g;
