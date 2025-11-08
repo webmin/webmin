@@ -230,7 +230,7 @@ if ($in{'search'}) {
 
 # Show search form
 print &ui_form_start("index.cgi");
-print "$text{'index_search'}:&nbsp;\n";
+print "$text{'index_search'} &nbsp;\n";
 print &ui_textbox("search", $in{'search'}, 20);
 print &ui_submit($text{'ui_searchok'});
 print &ui_form_end();
