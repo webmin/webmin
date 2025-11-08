@@ -19,7 +19,7 @@ index_tabsync2=Run system <tt>$1</tt> service for synchronization
 index_desctime=This form is for changing the system's current time, which is used by all running processes. On operating systems that have a separate hardware clock, it can be used to set that too.
 index_desczone=This form allows you to set the system's default time zone, which is used to convert the system time to a human-readable format and offset.
 index_descsync=This form is for configuring the system to automatically synchronize the time with a remote server. Synchronization will be done using the Unix <tt>time</tt> protocol or NTP, depending on which commands are installed and what the remote system supports.
-index_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.
+index_ctrl=Tip: Use Ctrl-click (or ⌘-click on Mac) to select or deselect multiple items, or Shift-click to select a range
 
 action_save=Save
 action_apply=Apply
