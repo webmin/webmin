@@ -66,7 +66,7 @@ else {
 
 # Save to address
 if ($in{'to_def'}) {
-	delete($mconfig{'webmin_to'});
+	delete($gconfig{'webmin_email_to'});
 	}
 else {
 	$in{'to'} =~ /^\S+$/ || &error($text{'sendmail_etoaddr'});
