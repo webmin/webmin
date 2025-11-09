@@ -1,42 +1,92 @@
 index_title=Partitions on Local Disks
-index_ecmd=The required command $1 is missing
-index_problem=This module cannot be used : $1
-index_none=No disks were found on this system!
+index_ecmd=Missing required command $1
+index_problem=Cannot use this module : $1
+index_none=No disks found on this system!
 index_dname=Disk name
 index_dsize=Total size
 index_dmodel=Make and model
 index_dparts=Slices
 index_return=list of disks
+index_format=Format
+index_efdisk=You must have $1 or $2 installed to use this module
+disk_edevice=Invalid device parameter
+nslice_etype=Invalid slice type
 
+# Disk overview
 disk_title=Edit Disk
 disk_egone=Disk no longer exists!
-disk_no=Slice
 disk_type=Type
 disk_extent=Extent
 disk_start=Start block
 disk_end=End block
-disk_use=Used by
-disk_scount=$1 partitions
 disk_parts=Partitions
 disk_free=Free space
-disk_vm=Virtual memory
-disk_iscsi=iSCSI shared device $1
 disk_none=This disk has no slices yet.
-disk_size=Size
-disk_dsize=<b>Disk size:</b> $1
-disk_model=<b>Make and model:</b> $1
-disk_cylinders=<b>Cylinders:</b> $1
-disk_blocks=<b>Blocks:</b> $1
-disk_device=<b>Device file:</b> $1
+disk_dsize=Disk size
+disk_model=Make and model
+disk_cylinders=Cylinders
+disk_blocks=Blocks
+disk_device=Device file
 disk_return=disk details and list of slices
 disk_add=Create a new slice.
 disk_smart=Show SMART Status
 disk_smartdesc=Show the current status of this drive as detected by SMART, and check it for disk errors.
+disk_no=No.
+disk_partno=Part. No.
+disk_partname=Part. Name
+disk_partlabel=Part. Label
+disk_subpart=Sub-part.
+disk_size=Size
+disk_free_space=Free Space
+disk_available=Available
+disk_format=Format
+disk_use=Used by
+disk_role=Role Type
 
-select_device=$1 device $2
-select_slice=$1 device $2 slice $3
-select_part=$1 device $2 slice $3 partition $4
+# Debug and scheme
+disk_show_debug=Show raw debug information
+disk_hide_debug=Hide debug information
+disk_scheme=Partition Scheme
+disk_unknown=Unknown
+disk_sectorsize=Sector Size
+disk_bytes=bytes
 
+# GEOM information
+disk_geom_header=GEOM Information
+disk_geom_details=GEOM Disk Details
+disk_mediasize=Media Size
+disk_stripesize=Stripe Size
+disk_stripeoffset=Stripe Offset
+disk_mode=Mode
+disk_rotationrate=Rotation Rate
+disk_ident=Identifier
+disk_lunid=LUN ID
+disk_descr=Description
+disk_rpm=RPM
+disk_ssd=SSD (Solid State Drive)
+
+# Debug panels
+disk_debug_gpart=GPART Output
+disk_debug_structure=Parsed Disk Structure
+disk_debug_geom=GEOM Disk List
+disk_debug_zfs=ZFS Status
+disk_debug_zfs_cache=ZFS Devices Cache
+
+# Roles and usage
+disk_inzfs=In ZFS pool
+disk_zfs_log=ZFS Log Device
+disk_zfs_cache=ZFS Cache Device
+disk_zfs_spare=ZFS Spare Device
+disk_zfs_mirror=ZFS Mirror
+disk_zfs_stripe=ZFS Stripe
+disk_zfs_single=ZFS Single Device
+disk_zfs_data=ZFS Data Device
+disk_boot=Boot Partition
+disk_boot_role=System Boot
+disk_swap=Swap
+disk_swap_role=Virtual Memory
+
+# Slice pages
 slice_title=Edit Slice
 slice_egone=Selected slice does not exist!
 slice_ssize=Slice size
@@ -56,55 +106,69 @@ slice_use=Used by
 slice_none=This slice has no partitions yet.
 slice_none2=This slice has no partitions, and none can be created as it is in use as a filesystem.
 slice_delete=Delete Slice
-slice_deletedesc=Delete this slice and all partitions and filesystems within it. Any data on those filesystem will be almost certainly unrecoverable.
+slice_deletedesc=Delete this slice and all partitions and filesystems within it. Any data on that filesystem will be almost certainly unrecoverable.
 slice_return=slice details and list of partitions
 slice_err=Failed to modify slice
 slice_header=Slice details
 slice_suse=Directly used by
+slice_adddesc=Create a new partition within this slice.
+slice_cannotedit=This slice cannot be modified as it is currently in use.
+slice_eboot=Cannot delete this slice as it contains boot partitions
+slice_bootdesc=This slice contains bootloader code or kernel files needed to start the system
+slice_role=Role
 
+# Delete slice dialogs
 dslice_title=Delete Slice
-dslice_rusure=Are you sure you want to delete the slice $1? Any partitions and filesystems within it will also be deleted.
+dslice_rusure=Are you sure you want to delete the slice $1 ? Any partitions and filesystems within it will also be deleted.
 dslice_warn=Warning - this slice is currently used by : $1
 dslice_confirm=Delete Now
 dslice_deleting=Deleting slice $1 ..
 dslice_failed=.. deletion failed : $1
 dslice_done=.. done
 
+# Create slice
 nslice_title=Create Slice
 nslice_header=New slice details
 nslice_number=Slice number
+nslice_autonext=Will auto-select next index
 nslice_diskblocks=Disk size in blocks
 nslice_start=Starting block
 nslice_end=Ending block
-nslice_type=New slice type
-nslice_makepart=Create default partition?
 nslice_err=Failed to create slice
-nslice_enumber=Missing or non-numeric slice number
+nslice_enumber=Slice number must be a number
 nslice_eclash=A slice with number $1 already exists
 nslice_estart=Starting block must be a number
 nslice_eend=Ending block must be a number
-nslice_erange=Starting block must be lower than the ending block
-nslice_emax=Ending block cannot be larger than the disk size of $1 blocks
+nslice_erange=Starting block must be before ending block
+nslice_emax=Ending block cannot be larger than disk size of $1 blocks
 nslice_creating=Creating slice $1 on $2 ..
-nslice_failed=.. slice creation failed : $1
+nslice_failed=.. creation failed : $1
 nslice_done=.. slice added
-nslice_parting=Create default partitions in slice $1 on $2 ..
 nslice_pfailed=.. partition creation failed : $1
 nslice_pdone=.. partition added
+nslice_existing_header=Existing slices on this disk
+nslice_existing_parts=Existing partitions on this disk
+epart_existing=Existing partitions on this slice
 
+# Create partition
 npart_title=Create Partition
 npart_header=New partition details
 npart_letter=Partition letter
 npart_diskblocks=Slice size in blocks
+npart_slicerel=(slice-relative)
+npart_creserved=partition 'c' is reserved
 npart_type=Partition type
 npart_err=Failed to create partition
-npart_eletter=Partition number must be a letter from A to D
+npart_eletter=Partition letter must be a-h (excluding c)
+npart_ereserved=Partition 'c' is reserved for the whole slice in BSD disklabels
 npart_eclash=A partition with letter $1 already exists
-npart_emax=Ending block cannot be larger than the slice size of $1 blocks
+npart_emax=Ending block cannot be larger than slice size of $1 blocks
+npart_erange=Start block must be less than end block
 npart_creating=Creating partition $1 on $2 ..
 npart_failed=.. partition creation failed : $1
 npart_done=.. partition added
 
+# Edit partition
 part_title=Edit Partition
 part_egone=Partition no longer exists!
 part_header=Partition details
@@ -128,18 +192,29 @@ part_err=Failed to save partition
 part_esave=Currently in use by $1
 part_newmount=Mount Partition On:
 part_newmount2=Mount Partition
-part_mountmsg=Mount this device on new directory on your system, so that it can be used to store files. A filesystem must have been already created on the device.
-part_mountmsg2=Mount this device as virtual memory on your system, to increase the amount of memory available.
+part_mountmsg=Mount this device on a new directory on your system, so that it can be used to store files. A filesystem must already be created on the device.
+part_mountmsg2=Mount this device as virtual memory on your system to increase the amount of available memory.
 part_cannotedit=This partition cannot be modified as it is currently in use.
+part_boot=Boot Partition
+part_eboot=Cannot delete boot partitions as this may render the system unbootable
+part_bootdesc=This partition contains bootloader code or kernel files needed to start the system
+part_zfslog=ZFS Log Device
+part_zfsdata=ZFS Data Device
+part_mounted=Mounted on $1
+part_unused=Not in use
+part_bootcannotedit=This partition cannot be modified as it is a boot partition. Changing it could render the system unbootable.
+part_role=Role
 
+# Delete partition dialogs
 dpart_title=Delete Partition
-dpart_rusure=Are you sure you want to delete the partition $1? Any filesystems within it will also be deleted.
+dpart_rusure=Are you sure you want to delete the partition $1 ? Any filesystems in it will also be deleted.
 dpart_warn=Warning - this partition is currently used by $1
 dpart_confirm=Delete Now
 dpart_deleting=Deleting partition $1 ..
 dpart_failed=.. deletion failed : $1
 dpart_done=.. done
 
+# New filesystem
 newfs_title=Create Filesystem
 newfs_header=New filesystem details
 newfs_free=Space to reserve for root
@@ -147,27 +222,36 @@ newfs_deffree=Default (8%)
 newfs_trim=Enable TRIM mode for SSDs
 newfs_label=Filesystem label
 newfs_none=None
-newfs_create=Create Now
 newfs_err=Failed to create filesystem
-newfs_efree=Space to reserve for root must be a percentage
-newfs_elabel=Missing or invalid label
+newfs_efree=Missing or invalid percentage of free space
+newfs_elabel=Missing or invalid filesystem label
 newfs_creating=Creating filesystem on $1 ..
-newfs_failed=.. creation failed!
-newfs_done=.. created successfully
+newfs_failed=.. creation failed : $1
+newfs_done=.. filesystem created
 
+# FS check
 fsck_title=Check Filesystem
+fsck_header=Filesystem check options
+fsck_repair=Repair mode
+fsck_fix=Only fix safe errors
+fsck_fix2=Try to fix all errors
 fsck_err=Failed to check filesystem
-fsck_checking=Checking filesystem on $1 ..
+fsck_exec=Executing command $1 ..
 fsck_failed=.. check failed!
-fsck_done=.. check completed with no errors found
+fsck_done=.. check complete
+fsck_checking=Checking filesystem on $1 ..
 
-log_create_slice=Created slice $1
-log_delete_slice=Deleted slice $1
-log_modify_slice=Modified slice $1
-log_create_part=Created partition $1
-log_delete_part=Deleted partition $1
-log_modify_part=Modified partition $1
-log_newfs_part=Created filesystem on partition $1
-log_fsck_part=Checked filesystem on partition $1
+# Logging
+action_create_slice=Created slice $1
+action_delete_slice=Deleted slice $1
+action_modify_slice=Modified slice $1
+action_create_part=Created partition $1
+action_delete_part=Deleted partition $1
+action_modify_part=Modified partition $1
+action_create_fs=Created filesystem on $1
+action_check_fs=Checked filesystem on $1
 
-__norefs=1
+# Generic
+save=Save
+yes=Yes
+no=No
