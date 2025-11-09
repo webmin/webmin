@@ -1235,6 +1235,9 @@ sub restart_button
 local $args = "redir=".&urlize(&this_url());
 local @rv;
 if (&is_apache_running()) {
+	if ($access{'stop'}) {
+		push(@rv, &ui_link("stop.cgi?$args", $text{'apache_stop'}) );
+		}
 	if ($access{'apply'}) {
 		my $n = &needs_config_restart();
 		if ($n) {
@@ -1244,9 +1247,6 @@ if (&is_apache_running()) {
 		else {
 			push(@rv, &ui_link("restart.cgi?$args", $text{'apache_apply'}) );
 			}
-		}
-	if ($access{'stop'}) {
-		push(@rv, &ui_link("stop.cgi?$args", $text{'apache_stop'}) );
 		}
 	}
 elsif ($access{'stop'}) {

@@ -234,7 +234,7 @@ if ( ( !$access{ 'sysdate' } && &has_command( "date" ) || !$access{ 'hwdate' } &
 		&webmincron::show_times_input($job), 2);
 
 	# Show ctrl help
-	print &ui_table_row(undef, $text{'index_ctrl'}, 2);
+	print &ui_table_row(undef, &ui_note($text{'index_ctrl'}, 0), 2);
 
 	print &ui_table_end();
 	print &ui_form_end([ [ "action", $text{'index_sync'} ] ]);

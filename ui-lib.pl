@@ -3344,7 +3344,7 @@ if ($head) {
 	}
 }
 
-=head2 ui_note(text)
+=head2 ui_note(text, [whitespace-count])
 
 Returns a note as a small font size text
 
@@ -3352,8 +3352,10 @@ Returns a note as a small font size text
 sub ui_note
 {
 return &theme_ui_note(@_) if (defined(&theme_ui_note));
-my ($text) = @_;
-return "<font style='font-size:92%;opacity:0.66'>&nbsp;&nbsp;ⓘ&nbsp;&nbsp;".
+my ($text, $whitespace) = @_;
+$whitespace //= 2;
+my $whitespace_str = "&nbsp;" x $whitespace;
+return "<font style='font-size:92%;opacity:0.66'>${whitespace_str}ⓘ&nbsp;&nbsp;".
 	"$text</font>";
 }
 

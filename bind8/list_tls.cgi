@@ -37,7 +37,7 @@ if (@tls) {
 	print &ui_columns_end();
 	}
 else {
-	print "<b>$text{'tls_none'}</b> <p>\n";
+	print &ui_alert_box($text{'tls_none'}, 'info', undef, undef, "");
 	}
 print &ui_links_row(\@links);
 

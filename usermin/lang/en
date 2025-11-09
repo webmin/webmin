@@ -83,7 +83,7 @@ session_forgot=Allow forgotten password recovery?
 
 themes_title=Usermin Themes
 themes_desc=Themes control the appearance of the Usermin user interface, including icons, colours, backgrounds and possibly the layout of pages. The selection box below can be used to choose one of the themes installed on your system that will be the default for Usermin users.
-themes_sel=Current theme :
+themes_sel=Current theme
 themes_default=Legacy Theme
 themes_change=Change
 themes_installdesc=Use the form below to install a new Usermin theme on your system. Themes are typically distributed in <tt>.wbt</tt> files, but can also be installed from RPM files if supported by your operating system.
@@ -108,7 +108,7 @@ themes_erpm=Not a Usermin theme RPM
 themes_eirpm=RPM install failed : $1
 themes_ok=Theme changed successfully .. redirecting to the Webmin index page.
 themes_delete=This form can be used to delete one of the themes installed on your system that is not currently in use.
-themes_delok=Theme to delete :
+themes_delok=Theme to delete
 
 themes_desc4=Installed themes can be exported as a wbt.gz file using the form below. A theme file can then be installed onto another system running Usermin.
 

@@ -924,7 +924,7 @@ foreach my $arr ("mins", "hours", "days", "months", "weekdays") {
 $table .= &ui_columns_row(\@cols, [ "valign=top", "valign=top", "valign=top",
 				    "valign=top", "valign=top" ]);
 $table .= &ui_columns_end();
-$table .= $text{'edit_ctrl'};
+$table .= &ui_note($text{'edit_ctrl'}, 0);
 $rv .= &ui_table_row(undef, $table, $width, undef, ['data-schedule-tr']);
 return $rv;
 }
@@ -1056,7 +1056,8 @@ foreach $arr ("mins", "hours", "days", "months", "weekdays") {
 		}
 	print "</tr></table></td>\n";
 	}
-print "</tr> <tr $cb> <td colspan=5>$text{'edit_ctrl'}</td> </tr>\n";
+my $ctlnote = &ui_note($text{'edit_ctrl'}, 0);
+print "</tr> <tr $cb> <td colspan=5>$ctlnote</td> </tr>\n";
 }
 
 =head2 parse_times_input(&job, &in)
