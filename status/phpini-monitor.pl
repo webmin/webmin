@@ -34,7 +34,8 @@ sub show_phpini_dialog
 my ($serv) = @_;
 &foreign_require("phpini");
 my @files = grep { $_->[1] }
-		 map { [ $_->[0], &phpini::get_php_ini_version($_->[0]) ] }
+		 map { [ $_->[0], &phpini::get_php_ini_version($_->[0]) ||
+				  &phpini::get_php_binary_version($_->[0]) ] }
 		     &phpini::list_php_configs();
 my %donever;
 @files = grep { !$donever{$_->[1]}++ } @files;
