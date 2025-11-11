@@ -7052,19 +7052,23 @@ my %rv;
 my $cert;
 
 # Try PEM first
-my $bio = Net::SSLeay::BIO_new_file($file, 'r');
-if ($bio) {
-	$cert = Net::SSLeay::PEM_read_bio_X509($bio);
-	Net::SSLeay::BIO_free($bio);
-	}
+eval {
+	my $bio = Net::SSLeay::BIO_new_file($file, 'r');
+	if ($bio) {
+		$cert = Net::SSLeay::PEM_read_bio_X509($bio);
+		Net::SSLeay::BIO_free($bio);
+		}
+	};
 
 # Try DER if PEM failed
 if (!$cert) {
-	my $bio = Net::SSLeay::BIO_new_file($file, 'rb');
-	if ($bio) {
-		$cert = Net::SSLeay::d2i_X509_bio($bio);
-		Net::SSLeay::BIO_free($bio);
-		}
+	eval {
+		my $bio = Net::SSLeay::BIO_new_file($file, 'rb');
+		if ($bio) {
+			$cert = Net::SSLeay::d2i_X509_bio($bio);
+			Net::SSLeay::BIO_free($bio);
+			}
+		};
 	}
 
 # Certificate not found
