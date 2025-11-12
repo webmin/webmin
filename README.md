@@ -20,10 +20,10 @@
 
 <p align="center">
   <a href="https://webmin.com/screenshots/#gh-light-mode-only" target="_blank">
-    <img width="1440" alt="Dashboard screenshot" src="https://user-images.githubusercontent.com/4426533/218264253-c08fb45a-8d75-44bf-93b3-37a2ecae3d20.png">
+    <img width="1440" alt="Dashboard screenshot" src="https://github.com/user-attachments/assets/a01d0a78-4130-4665-9284-814955ae1c97">
   </a>
   <a href="https://webmin.com/screenshots/#gh-dark-mode-only" target="_blank">
-    <img width="1440" alt="Dashboard screenshot" src="https://user-images.githubusercontent.com/4426533/218265232-31140aa6-ada1-4019-bd75-04240aeabc83.png">
+    <img width="1440" alt="Dashboard screenshot" src="https://github.com/user-attachments/assets/da4b90a0-c002-4e10-8b34-5acb251bbec9">
   </a>
 </p>
 
