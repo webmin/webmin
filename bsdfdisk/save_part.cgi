@@ -26,19 +26,9 @@ if (@st && $st[2]) {
 	&error(&text('part_esave', $use));
 	}
 
-# Update partition properties
+# Make the change
 $part->{'type'} = $in{'type'};
-my $err;
-if (defined($in{'label'})) {
-	my $oldpart = { %$part };
-	$part->{'label'} = $in{'label'} if defined($in{'label'});
-	# Apply changes using gpart
-	$err = &modify_partition($disk, $slice, $oldpart, $part);
-	}
-else {
-	$err = &save_partition($disk, $slice, $part);
-	}
-
+my $err = &save_partition($disk, $slice, $part);
 &error($err) if ($err);
 
 &webmin_log("modify", "part", $part->{'device'}, $part);
