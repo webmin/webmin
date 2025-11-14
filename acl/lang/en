@@ -6,6 +6,7 @@ index_screate=Create a new safe user.
 index_convert=Convert Unix To Webmin Users
 index_cert=Request an SSL Certificate
 index_twofactor=Two-Factor Authentication
+index_twofactor_enabled=Two-factor authentication is enabled for this user
 index_certmsg=Click this button to request an SSL certificate that will allow you to securely login to Webmin without having to enter a username and password.
 index_return=user list
 index_none=None

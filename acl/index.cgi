@@ -291,7 +291,13 @@ return &ui_checkbox("d", $user->{'name'}, "", 0).
        ($ro ? "<b>" : "").
        &ui_link("$cgi?$param=".&urlize($user->{'name'}),
 	        $user->{'name'}).
-       ($user->{'twofactor_id'} ? "*" : "").
+       ($user->{'twofactor_id'}
+       	? &ui_tag('sup', '⚷', 
+            { title => $text{'index_twofactor_enabled'},
+	      class => 'twofactor-enabled-icon',
+	      style => 'font-size: 11px; margin-left: 5px; cursor: default;'.
+                       'display: inline-block; transform: rotate(90deg);' } )
+	: "").
        ($ro ? "</b>" : "").
        ($lck ? "</i>" : "");
 }
