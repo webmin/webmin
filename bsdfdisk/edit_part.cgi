@@ -49,10 +49,14 @@ if ($canedit) {
 	print &ui_table_row($text{'part_type'},
 		&ui_select("type", $part->{'type'},
 			   [ &list_partition_types() ], 1, 0, 1));
+	print &ui_table_row($text{'part_label'},
+		&ui_textbox("label", $part->{'label'}, 20));
 	}
 else {
 	print &ui_table_row($text{'part_type'},
 		$part->{'type'});
+	print &ui_table_row($text{'part_label'},
+		$part->{'label'});
 	}
 
 print &ui_table_row($text{'part_use'},
