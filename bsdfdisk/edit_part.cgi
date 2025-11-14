@@ -1,7 +1,6 @@
 #!/usr/local/bin/perl
 use strict;
 use warnings;
-use List::Util qw(first);
 # Load required libraries
 require "./bsdfdisk-lib.pl";
 our ( %in, %text, $module_name );
@@ -10,13 +9,31 @@ ReadParse();
 my $device     = $in{'device'};
 my $slice_num  = $in{'slice'};
 my $part_letter = $in{'part'};
+
 # Get the disk and slice using first() to stop at the first matching element
 my @disks = list_disks_partitions();
-my $disk = first { $_->{'device'} eq $device } @disks;
+$in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or error($text{'disk_edevice'});
+$in{'device'} !~ /\.\./ or error($text{'disk_edevice'});
+my $disk;
+foreach my $d (@disks) {
+    if ($d->{'device'} eq $device) {
+        $disk = $d;
+        last;
+    }
+}
 $disk or error($text{'disk_egone'});
-my $slice = first { $_->{'number'} eq $slice_num } @{ $disk->{'slices'} };
+my $slice;
+foreach my $s (@{$disk->{'slices'}}) {
+    if ($s->{'number'} eq $slice_num) {
+        $slice = $s;
+        last;
+    }
+}
 $slice or error($text{'slice_egone'});
-my $part = first { $_->{'letter'} eq $part_letter } @{ $slice->{'parts'} };
+my $part;
+foreach my $p (@{$slice->{'parts'}}) {
+    if ($p->{'letter'} eq $part_letter) { $part = $p; last; }
+}
 $part or error($text{'part_egone'});
 ui_print_header($part->{'desc'}, $text{'part_title'}, "");
 # Check if this is a boot partition

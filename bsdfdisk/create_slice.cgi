@@ -2,18 +2,20 @@
 use strict;
 use warnings;
 no warnings 'redefine';
-no warnings 'uninitialized';
-use List::Util qw(first);
 require './bsdfdisk-lib.pl';
 our (%in, %text, $module_name);
 ReadParse();
 error_setup($text{'nslice_err'});
 # Get the disk using first() for an early exit on match
 my @disks = list_disks_partitions();
+my $disk;
+foreach my $d (@disks) {
+    if ($d->{'device'} eq $in{'device'}) {
+        $disk = $d;
+        last;
+    }
+}
 # Validate device parameter to prevent path traversal and command injection
-$in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or error($text{'disk_edevice'});
-$in{'device'} !~ /\.\./ or error($text{'disk_edevice'});
-my $disk = first { $_->{'device'} eq $in{'device'} } @disks;
 $disk or error($text{'disk_egone'});
 # Prefer GPART total blocks for bounds
 (my $base_dev = $in{'device'}) =~ s{^/dev/}{};
@@ -23,8 +25,13 @@ my $disk_blocks = ($ds && $ds->{'total_blocks'}) ? $ds->{'total_blocks'} : ($dis
 my $slice = {};
 $in{'number'} =~ /^\d+$/ or error($text{'nslice_enumber'});
 # Check for clash using first() with a loop exiting on first match
-my $clash = first { $_->{'number'} == $in{'number'} } @{$disk->{'slices'}};
-$clash and error(text('nslice_eclash', $in{'number'}));
+my $clash;
+foreach my $s (@{$disk->{'slices'}}) {
+    if ($s->{'number'} == $in{'number'}) {
+        $clash = $s;
+        last;
+    }
+}
 $slice->{'number'} = $in{'number'};
 # Start and end blocks
 $in{'start'} =~ /^\d+$/ or error($text{'nslice_estart'});
