@@ -6,7 +6,7 @@ require './xterm-lib.pl';
 $ENV{'HTTP_WEBMIN_PATH'} && &error($text{'index_eproxy'});
 
 # Check for needed modules
-my @modnames = ("Digest::SHA", "Digest::MD5", "IO::Pty",
+my @modnames = ("Digest::SHA", "Digest::MD5",
                 "IO::Select", "Time::HiRes",
                 "Net::WebSocket::Server");
 foreach my $modname (@modnames) {

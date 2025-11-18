@@ -249,6 +249,53 @@ do {    local $oldexit = $?;
 	} while($xp > 0);
 }
 
+
+# linux_openpty()
+# Linux-only, pure-Perl openpty(3)-style helper.
+# Returns master fh, slave fh, slave path, and ioctl value on success
+sub linux_openpty
+{
+return if $^O ne 'linux';
+
+require Fcntl; Fcntl->import(qw(O_RDWR));
+require POSIX; POSIX->import(qw(setsid));
+
+# Linux ioctl values
+my $TIOCGPTN   = 0x80045430;	# get pty number
+my $TIOCSPTLCK = 0x40045431;	# unlock slave
+my $TIOCSCTTY  = 0x540E;	# set controlling tty
+
+my ($ptmx, $ttyfh);
+
+# Open PTY master
+sysopen($ptmx, "/dev/ptmx", O_RDWR) || return;
+
+# Unlock the slave
+my $lock = pack("i", 0);
+ioctl($ptmx, $TIOCSPTLCK, $lock) || do {
+	close($ptmx);
+	return;
+	};
+
+# Get slave number
+my $buf = pack("i", 0);
+ioctl($ptmx, $TIOCGPTN, $buf) || do {
+	close($ptmx);
+	return;
+	};
+my $n = unpack("i", $buf);
+
+# Open PTY slave
+my $tty = "/dev/pts/$n";
+open($ttyfh, "+<", $tty) || do {
+	close($ptmx);
+	return;
+	};
+
+# Return master fh, slave fh, slave path, ioctl value
+return ($ptmx, $ttyfh, $tty, $TIOCSCTTY);
+}
+
 # pty_process_exec(command, [uid, gid], [force-binary-name])
 # Starts the given command in a new pty and returns the pty filehandle and PID
 sub pty_process_exec
@@ -264,7 +311,7 @@ if (&is_readonly_mode()) {
 eval "use IO::Pty";
 if (!$@) {
 	# Use the IO::Pty perl module if installed
-	local $ptyfh = new IO::Pty;
+	my $ptyfh = new IO::Pty;
 	if (!$ptyfh) {
 		&error("Failed to create new PTY with IO::Pty");
 		}
@@ -311,9 +358,56 @@ if (!$@) {
 	$ptyfh->close_slave();
 	return ($ptyfh, $pid);
 	}
+elsif (my ($ptyfh, $ttyfh, $tty, $TIOCSCTTY) = &linux_openpty()) {
+	# Use pure-Perl Linux fallback
+	my $pid = fork();
+	if (!$pid) {
+		if (defined(&close_controlling_pty)) {
+			&close_controlling_pty();
+			}
+		setsid();                            # create new session group
+		my $ctty_arg = 0;                    # must be writable scalar
+		ioctl($ttyfh, $TIOCSCTTY, $ctty_arg) # controlling tty
+			or &error("TIOCSCTTY failed: $!");
+		# Child must not hold the master end
+		close($ptyfh);
+
+		# Turn off echoing, if we can
+		eval "use IO::Stty";
+		if (!$@) {
+			IO::Stty::stty($ttyfh, 'raw', '-echo');
+			}
+
+		close(STDIN); close(STDOUT); close(STDERR);
+		untie(*STDIN); untie(*STDOUT); untie(*STDERR);
+		if ($uid) {
+			my $username = getpwuid($uid);
+			&switch_to_unix_user([ $username, undef, $uid, $gid ]);
+		}
+
+		open(STDIN, "<&".fileno($ttyfh));
+		open(STDOUT, ">&".fileno($ttyfh));
+		open(STDERR, ">&".fileno($ttyfh));
+		close($ttyfh);
+
+		if ($binary) {
+			my @args = &split_quoted_string($cmd);
+			my $args0 = $args[0];
+			$args[0] = $binary;
+			exec { $args0 } @args;
+			}
+		else {
+			exec($cmd);
+			}
+		print STDERR "Exec failed : $!\n";
+		exit 1;
+		}
+	close($ttyfh);
+	return ($ptyfh, $pid);
+	}
 else {
 	# Need to create a PTY using built-in Webmin code
-	local ($ptyfh, $ttyfh, $pty, $tty) = &get_new_pty();
+	my ($ptyfh, $ttyfh, $pty, $tty) = &get_new_pty();
 	$tty || &error("Failed to create new PTY - try installing the IO::Tty Perl module");
 	local $pid = fork();
 	if (!$pid) {
