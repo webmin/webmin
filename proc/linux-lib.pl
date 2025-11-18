@@ -158,6 +158,51 @@ $out =~ s/^\s+//g; $out =~ s/\s+$//g;
 return split(/\s+/, $out);
 }
 
+# linux_openpty()
+# Linux-only, pure-Perl openpty(3)-style helper.
+# Returns master fh, slave fh, slave path, and ioctl value on success
+sub linux_openpty
+{
+
+require Fcntl; Fcntl->import(qw(O_RDWR));
+require POSIX; POSIX->import(qw(setsid));
+
+# Linux ioctl values
+my $TIOCGPTN   = 0x80045430;	# get pty number
+my $TIOCSPTLCK = 0x40045431;	# unlock slave
+my $TIOCSCTTY  = 0x540E;	# set controlling tty
+
+my ($ptmx, $ttyfh);
+
+# Open PTY master
+sysopen($ptmx, "/dev/ptmx", O_RDWR) || return;
+
+# Unlock the slave
+my $lock = pack("i", 0);
+ioctl($ptmx, $TIOCSPTLCK, $lock) || do {
+	close($ptmx);
+	return;
+	};
+
+# Get slave number
+my $buf = pack("i", 0);
+ioctl($ptmx, $TIOCGPTN, $buf) || do {
+	close($ptmx);
+	return;
+	};
+my $n = unpack("i", $buf);
+
+# Open PTY slave
+my $tty = "/dev/pts/$n";
+open($ttyfh, "+<", $tty) || do {
+	close($ptmx);
+	return;
+	};
+
+# Return master fh, slave fh, slave path, ioctl value
+return ($ptmx, $ttyfh, $tty, $TIOCSCTTY);
+}
+
 # get_new_pty()
 # Returns the filehandles and names for a pty and tty
 sub get_new_pty

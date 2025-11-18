@@ -261,17 +261,19 @@ if (&is_readonly_mode()) {
 &webmin_debug_log('CMD', "cmd=$cmd uid=$uid gid=$gid")
 	if ($gconfig{'debug_what_cmd'});
 
+my ($ptyfh, $ttyfh, $pty, $tty, $TIOCSCTTY);
+
 eval "use IO::Pty";
 if (!$@) {
 	# Use the IO::Pty perl module if installed
-	local $ptyfh = new IO::Pty;
+	$ptyfh = new IO::Pty;
 	if (!$ptyfh) {
 		&error("Failed to create new PTY with IO::Pty");
 		}
 	local $pid = fork();
 	if (!$pid) {
-		local $ttyfh = $ptyfh->slave();
-		local $tty = $ptyfh->ttyname();
+		$ttyfh = $ptyfh->slave();
+		$tty = $ptyfh->ttyname();
 		if (defined(&close_controlling_pty)) {
 			&close_controlling_pty();
 			}
@@ -311,9 +313,57 @@ if (!$@) {
 	$ptyfh->close_slave();
 	return ($ptyfh, $pid);
 	}
+elsif (defined &linux_openpty &&
+       do { ($ptyfh, $ttyfh, $tty, $TIOCSCTTY) = linux_openpty(); $ptyfh }) {
+	# Use pure-Perl Linux fallback
+	my $pid = fork();
+	if (!$pid) {
+		if (defined(&close_controlling_pty)) {
+			&close_controlling_pty();
+			}
+		setsid();                            # create new session group
+		my $ctty_arg = 0;                    # must be writable scalar
+		ioctl($ttyfh, $TIOCSCTTY, $ctty_arg) # controlling tty
+			or &error("TIOCSCTTY failed: $!");
+		# Child must not hold the master end
+		close($ptyfh);
+
+		# Turn off echoing, if we can
+		eval "use IO::Stty";
+		if (!$@) {
+			IO::Stty::stty($ttyfh, 'raw', '-echo');
+			}
+
+		close(STDIN); close(STDOUT); close(STDERR);
+		untie(*STDIN); untie(*STDOUT); untie(*STDERR);
+		if ($uid) {
+			my $username = getpwuid($uid);
+			&switch_to_unix_user([ $username, undef, $uid, $gid ]);
+		}
+
+		open(STDIN, "<&".fileno($ttyfh));
+		open(STDOUT, ">&".fileno($ttyfh));
+		open(STDERR, ">&".fileno($ttyfh));
+		close($ttyfh);
+
+		if ($binary) {
+			my @args = &split_quoted_string($cmd);
+			my $args0 = $args[0];
+			$args[0] = $binary;
+			exec { $args0 } @args;
+			}
+		else {
+			exec($cmd);
+			}
+		print STDERR "Exec failed : $!\n";
+		exit 1;
+		}
+	close($ttyfh);
+	return ($ptyfh, $pid);
+	}
 else {
 	# Need to create a PTY using built-in Webmin code
-	local ($ptyfh, $ttyfh, $pty, $tty) = &get_new_pty();
+	($ptyfh, $ttyfh, $pty, $tty) = &get_new_pty();
 	$tty || &error("Failed to create new PTY - try installing the IO::Tty Perl module");
 	local $pid = fork();
 	if (!$pid) {
