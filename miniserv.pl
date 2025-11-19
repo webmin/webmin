@@ -227,15 +227,7 @@ if ($rand1 eq $rand2) {
 
 # Check if we can call sudo
 if ($config{'sudo'} && &has_command("sudo")) {
-	eval "use IO::Pty";
-	if (!$@) {
-		$use_sudo = 1;
-		}
-	else {
-		push(@startup_msg,
-		     "Perl module IO::Pty needed for calling sudo is not ".
-		     "installed : $@");
-		}
+	$use_sudo = 1;
 	}
 
 # init days and months for http_date
@@ -6042,7 +6034,7 @@ sub check_sudo_permissions
 {
 local ($user, $pass) = @_;
 
-# First try the pipes
+# First try the cache stored by the main process
 if ($PASSINw) {
 	print DEBUG "check_sudo_permissions: querying cache for $user\n";
 	print $PASSINw "readsudo $user\n";
@@ -6054,27 +6046,18 @@ if ($PASSINw) {
 		}
 	}
 
-local $ptyfh = new IO::Pty;
-print DEBUG "check_sudo_permissions: ptyfh=$ptyfh\n";
-if (!$ptyfh) {
-	&log_error("Failed to create new PTY with IO::Pty");
-	return 0;
-	}
-local @uinfo = getpwnam($user);
+# Setup pipes for communication with the sudo sub-process
+pipe(SUDOINr, SUDOINw);
+pipe(SUDOOUTr, SUDOOUTw);
+print DEBUG "check_sudo_permissions\n";
+
+my @uinfo = getpwnam($user);
 if (!@uinfo) {
 	&log_error("Unix user $user does not exist for sudo");
 	return 0;
 	}
 
-# Execute sudo in a sub-process, via a pty
-local $ttyfh = $ptyfh->slave();
-print DEBUG "check_sudo_permissions: ttyfh=$ttyfh\n";
-local $tty = $ptyfh->ttyname();
-print DEBUG "check_sudo_permissions: tty=$tty\n";
-chown($uinfo[2], $uinfo[3], $tty);
-pipe(SUDOr, SUDOw);
-print DEBUG "check_sudo_permissions: about to fork..\n";
-local $pid = fork();
+my $pid = fork();
 print DEBUG "check_sudo_permissions: fork=$pid pid=$$\n";
 if ($pid < 0) {
 	&log_error("fork for sudo failed : $!");
@@ -6089,40 +6072,37 @@ if (!$pid) {
 	$ENV{'USER'} = $ENV{'LOGNAME'} = $user;
 	$ENV{'HOME'} = $uinfo[7];
 
-	$ptyfh->make_slave_controlling_terminal();
 	close(STDIN); close(STDOUT); close(STDERR);
 	untie(*STDIN); untie(*STDOUT); untie(*STDERR);
-	close($PASSINw); close($PASSOUTr);
-	close(SUDOw);
+	close(SUDOINw); close(SUDOOUTr);
 	close(SOCK);
 	close(MAIN);
-	open(STDIN, "<&SUDOr");
-	open(STDOUT, ">$tty");
+	open(STDIN, "<&SUDOINr");
+	open(STDOUT, ">&SUDOOUTw");
 	open(STDERR, ">&STDOUT");
-	close($ptyfh);
 	exec("sudo -l -S");
 	print "Exec failed : $!\n";
 	exit 1;
 	}
 print DEBUG "check_sudo_permissions: pid=$pid\n";
-close(SUDOr);
-$ptyfh->close_slave();
+close(SUDOINr);
+close(SUDOOUTw);
 
 # Send password, and get back response
-local $oldfh = select(SUDOw);
+my $oldfh = select(SUDOINw);
 $| = 1;
 select($oldfh);
 print DEBUG "check_sudo_permissions: about to send pass\n";
 local $SIG{'PIPE'} = 'ignore';	# Sometimes sudo doesn't ask for a password
-print SUDOw $pass,"\n";
+print SUDOINw $pass,"\n";
 print DEBUG "check_sudo_permissions: sent pass=$pass\n";
-close(SUDOw);
-local $out;
-while(<$ptyfh>) {
+close(SUDOINw);
+my $out;
+while(<SUDOOUTr>) {
 	print DEBUG "check_sudo_permissions: got $_";
 	$out .= $_;
 	}
-close($ptyfh);
+close(SUDOOUTr);
 kill('KILL', $pid);
 waitpid($pid, 0);
 local ($ok) = ($out =~ /\(ALL\)\s+ALL|\(ALL\)\s+NOPASSWD:\s+ALL|\(ALL\s*:\s*ALL\)\s+ALL|\(ALL\s*:\s*ALL\)\s+NOPASSWD:\s+ALL/ ? 1 : 0);
