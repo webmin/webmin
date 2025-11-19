@@ -40,8 +40,8 @@ else {
 	# All reasonable modules
 	@mods = &get_available_module_infos();
 	}
-@mods = grep { !$_->{'clone'} && !$_->{'hidden'} }
-	  grep { !$_->{'noui'} && !$_->{$pn.'_noui'} } @mods;
+@mods = grep { !($_->{clone} || $_->{noui} || ($pn && $_->{"${pn}_noui"})) &&
+	       (($_->{hidden} // 0) != 1) } @mods;
 @mods = sort { $b->{'longdesc'} cmp $a->{'longdesc'} } @mods;
 foreach my $m (@mods) {
 	if ($m->{'desc'} =~ /\Q$re\E/i) {
