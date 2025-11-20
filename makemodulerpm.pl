@@ -263,6 +263,7 @@ my $ucprog = ucfirst($prog);
 system("/bin/mkdir -p /tmp/makemodulerpm");
 system("cd $par && /bin/cp -rpL $source_mod /tmp/makemodulerpm/$mod");
 system("/usr/bin/find /tmp/makemodulerpm -name .git | xargs rm -rf");
+system("/usr/bin/find /tmp/makemodulerpm -name .github | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name RELEASE | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name RELEASE.sh | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name t | xargs rm -rf");

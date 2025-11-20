@@ -241,6 +241,7 @@ if ($< == 0) {
         system("cd $usr_dir && chown -R root:bin .");
         }
 system("find $usr_dir -name .git | xargs rm -rf");
+system("find $usr_dir -name .github | xargs rm -rf");
 system("find $usr_dir -name RELEASE | xargs rm -rf");
 system("find $usr_dir -name RELEASE.sh | xargs rm -rf");
 if (-r "$usr_dir/$mod/EXCLUDE") {
