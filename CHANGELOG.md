@@ -12,6 +12,7 @@
   - Fix color of selected items in the multiselect dropdown
   - Fix to improve the visibility of disabled checkboxes
   - Fix to send saved params in the post body when saving theme configuration
+    [More details...](https://github.com/webmin/authentic-theme/releases/tag/26.20)
 
 #### 2.600 (November 9, 2025)
 * Add an options to enable the slow query log in the MySQL/MariaDB module [#2560](https://github.com/webmin/webmin/issues/2560)
