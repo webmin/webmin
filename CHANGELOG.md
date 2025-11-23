@@ -1,5 +1,18 @@
 ## Changelog
 
+#### 2.610 (November 23, 2025)
+* Fix to drop dependency on `IO::Pty` Perl module
+* Fix `virtual-server` module server-side search to work correctly
+* Update the Authentic theme to the latest version with various improvements and fixes:
+  - Add a range slider to adjust content page margins more precisely
+  - Add an option to enable rounded corners for content page
+  - Add more customization options for pie charts
+  - Fix to increase clickable area for checkboxes in File Manager
+  - Fix to correct rotation of pin and unpin button for right side slider
+  - Fix color of selected items in the multiselect dropdown
+  - Fix to improve the visibility of disabled checkboxes
+  - Fix to send saved params in the post body when saving theme configuration
+
 #### 2.600 (November 9, 2025)
 * Add an options to enable the slow query log in the MySQL/MariaDB module [#2560](https://github.com/webmin/webmin/issues/2560)
 * Add ability to install multiple PHP extensions at once in the PHP Configuration module
