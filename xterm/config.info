@@ -1,6 +1,6 @@
 xterm=Set <tt>TERM</tt> environmental variable to,4,xterm+256color-xterm&#45;256color,xterm+16color-xterm&#45;16color,xterm-xterm,vt102-vt102,vt100-vt100,vt52-vt52,rxvt-rxvt,nsterm-nsterm,dtterm-dtterm,ansi-ansi
 size=Terminal width and height in characters,3,Automatic,5,,,Static (80x24)
-fontsize=Adjust font size,4,0-Auto,12-Small,15-Normal,18-Large,21-Huge
+fontsize=Adjust font size,4,0-Auto,12-Small,14-Normal,16-Large,18-Huge
 locale=Set shell character encoding,10,0-Shell default,1-<tt>en_US.UTF&#45;8</tt>,Custom
 rcfile=Execute initialization commands from file,10,0-Shell default,1-Module default,Custom
 screen_reader=Enable screen reader mode,1,true-Yes,false-No

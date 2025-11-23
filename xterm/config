@@ -1,5 +1,5 @@
 xterm=xterm-256color
-fontsize=15
+fontsize=14
 base_port=555
 rcfile=0
 locale=0

@@ -55,7 +55,7 @@ my $def_cols_n = 80;
 my $def_rows_n = 24;
 my $xmlhr = $ENV{'HTTP_X_REQUESTED_WITH'} eq "XMLHttpRequest";
 my %term_opts;
-my $font_size = $config{'fontsize'} || 15;
+my $font_size = $config{'fontsize'} || 14;
 
 # Parse module config
 my ($conf_cols_n, $conf_rows_n) = ($conf_size_str =~ /([\d]+)X([\d]+)/i);
