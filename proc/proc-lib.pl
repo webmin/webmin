@@ -321,12 +321,25 @@ elsif (defined &linux_openpty &&
 		if (defined(&close_controlling_pty)) {
 			&close_controlling_pty();
 			}
-		setsid();                            # create new session group
-		my $ctty_arg = 0;                    # must be writable scalar
-		ioctl($ttyfh, $TIOCSCTTY, $ctty_arg) # controlling tty
-			or &error("TIOCSCTTY failed: $!");
-		# Child must not hold the master end
-		close($ptyfh);
+		my $need_ctty = $ENV{'TERM'} ? 1 : 0;
+		setsid()                            # create new session group
+			or do {
+				# don't fail, just log it if we have a terminal
+				&error_stderr("setsid failed: $!")
+					if ($need_ctty);
+				};
+		close($ptyfh);                      # child must not hold master
+		my $ctty_arg = 0;                   # try normal attach
+		ioctl($ttyfh, $TIOCSCTTY, $ctty_arg) or do {
+			$ctty_arg = 1;              # try force attach
+			ioctl($ttyfh, $TIOCSCTTY, $ctty_arg)
+				or do {
+					# don't fail, just log it if we have a
+					# terminal
+					&error_stderr("TIOCSCTTY failed: $!")
+						if ($need_ctty);
+					}
+			};
 
 		# Turn off echoing, if we can
 		eval "use IO::Stty";
