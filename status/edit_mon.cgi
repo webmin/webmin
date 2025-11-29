@@ -167,7 +167,7 @@ foreach $n (keys %notify) {
 	# Don't clear set but un-usable modes
 	print &ui_hidden("notify", $n);
 	}
-print &ui_table_row($text{'mon_notify'}, $notify,
+print &ui_table_row(&hlink($text{'mon_notify'}, "notify"), $notify,
 		    undef, \@tds);
 
 # Show extra address to email
