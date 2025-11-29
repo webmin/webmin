@@ -12626,8 +12626,7 @@ my @rv;
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 if (!$miniserv{'userdb_nocache'} && $main::connect_userdb_cache{$str}) {
-	my $timeout = defined($miniserv{'userdb_cache_timeout'}) ?
-				$miniserv{'userdb_cache_timeout'} : 60;
+	my $timeout = $miniserv{'userdb_cache_timeout'} // 60;
 	@rv = @{$main::connect_userdb_cache{$str}};
 	if (time() - $main::connect_userdb_cache_time{$str} > $timeout) {
 		# Yes, but it's already timed out. Force close it, and make a new
