@@ -1234,7 +1234,7 @@ if (&supports_pgpass()) {
 		push(@main::temporary_files, $pgpass);
 		$cmd = "HOME=$temphome $cmd";
 		}
-	$ENV{'PGPASSFILE'} = $pgpass;
+	$cmd = "PGPASSFILE=$pgpass $cmd";
 	open(PGPASS, ">$pgpass");
 	print PGPASS "*:*:*:$user:$pass\n";
 	close(PGPASS);
