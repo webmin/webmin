@@ -21,6 +21,24 @@ my $base_device = $disk->{'device'}; $base_device =~ s{^/dev/}{};
 my $disk_structure = get_disk_structure($base_device);
 my $is_gpt = (is_using_gpart() && $disk_structure && ($disk_structure->{'scheme'}||'') =~ /GPT/i);
  
+ # Check if there is any free space on the device
+my $has_free_space = 0;
+if ($disk_structure && $disk_structure->{'entries'}) {
+    foreach my $entry (@{$disk_structure->{'entries'}}) {
+        if ($entry->{'type'} eq 'free' && $entry->{'size'} > 0) {
+            $has_free_space = 1;
+            last;
+        }
+    }
+}
+
+# If no free space, show error and return
+if (!$has_free_space) {
+    print "<p><b>$text{'nslice_enospace'}</b></p>\n";
+    &ui_print_footer("edit_disk.cgi?device=$in{'device'}", $text{'disk_return'});
+    exit;
+}
+ 
 print &ui_form_start("create_slice.cgi", "post");
 print &ui_hidden("device", $in{'device'});
 print &ui_table_start($text{'nslice_header'}, undef, 2);

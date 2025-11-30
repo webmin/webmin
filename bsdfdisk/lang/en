@@ -148,6 +148,7 @@ nslice_pfailed=.. partition creation failed : $1
 nslice_pdone=.. partition added
 nslice_existing_header=Existing slices on this disk
 nslice_existing_parts=Existing partitions on this disk
+nslice_enospace=No space on device left to create a slice!
 epart_existing=Existing partitions on this slice
 
 # Create partition
