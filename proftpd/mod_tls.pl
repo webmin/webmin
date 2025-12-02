@@ -40,14 +40,14 @@ return &parse_choice("TLSRequired", "");
 
 sub edit_TLSRSACertificateFile
 {
-my $n = $_[0]->{'name'};
+my $n = $_[1]->{'name'};
 return (2, $text{'mod_tls_file'},
 	&ui_opt_textbox($n, $_[0]->{'value'}, 60, $text{'mod_tls_none'})." ".
 	&file_chooser_button($n));
 }
 sub save_TLSRSACertificateFile
 {
-my $n = $_[0]->{'name'};
+my $n = $_[1]->{'name'};
 if ($in{$n."_def"}) {
 	return ( [ ] );
 	}
@@ -59,14 +59,14 @@ else {
 
 sub edit_TLSRSACertificateKeyFile
 {
-my $n = $_[0]->{'name'};
+my $n = $_[1]->{'name'};
 return (2, $text{'mod_tls_key'},
 	&ui_opt_textbox($n, $_[0]->{'value'}, 60, $text{'mod_tls_none'})." ".
 	&file_chooser_button($n));
 }
 sub save_TLSRSACertificateKeyFile
 {
-my $n = $_[0]->{'name'};
+my $n = $_[1]->{'name'};
 if ($in{$n."_def"}) {
 	return ( [ ] );
 	}
@@ -78,14 +78,14 @@ else {
 
 sub edit_TLSCACertificateFile
 {
-my $n = $_[0]->{'name'};
+my $n = $_[1]->{'name'};
 return (2, $text{'mod_tls_ca'},
 	&ui_opt_textbox($n, $_[0]->{'value'}, 60, $text{'mod_tls_none'})." ".
 	&file_chooser_button($n));
 }
 sub save_TLSCACertificateFile
 {
-my $n = $_[0]->{'name'};
+my $n = $_[1]->{'name'};
 if ($in{$n."_def"}) {
 	return ( [ ] );
 	}
