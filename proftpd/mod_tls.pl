@@ -13,9 +13,8 @@ return &make_directives($rv, $_[0], "mod_tls");
 
 sub edit_TLSEngine
 {
-my ($p) = grep { defined $_} @_;
 return (2, $text{'mod_tls_engine'},
-	&choice_input($p->{'value'}, "TLSEngine", "",
+	&choice_input($_[0]->{'value'}, "TLSEngine", "",
 		      "$text{'yes'},on", "$text{'no'},off",
 		      "$text{'default'},"));
 }
@@ -26,9 +25,8 @@ return &parse_choice("TLSEngine", "");
 
 sub edit_TLSRequired
 {
-my ($p) = grep { defined $_} @_;
 return (2, $text{'mod_tls_required'},
-	&select_input($p->{'value'}, "TLSRequired", "",
+	&select_input($_[0]->{'value'}, "TLSRequired", "",
 		      "$text{'yes'},on", "$text{'no'},off",
 		      "$text{'mod_tls_ctrl'},ctrl",
 		      "$text{'mod_tls_auth'},auth",
@@ -42,16 +40,14 @@ return &parse_choice("TLSRequired", "");
 
 sub edit_TLSRSACertificateFile
 {
-my ($p) = grep { defined $_} @_;
-my $n = $p->{'name'};
+my $n = $_[0]->{'name'};
 return (2, $text{'mod_tls_file'},
-	&ui_opt_textbox($n, $p->{'value'}, 60, $text{'mod_tls_none'})." ".
+	&ui_opt_textbox($n, $_[0]->{'value'}, 60, $text{'mod_tls_none'})." ".
 	&file_chooser_button($n));
 }
 sub save_TLSRSACertificateFile
 {
-my ($p) = grep { defined $_} @_;
-my $n = $p->{'name'};
+my $n = $_[0]->{'name'};
 if ($in{$n."_def"}) {
 	return ( [ ] );
 	}
@@ -63,16 +59,14 @@ else {
 
 sub edit_TLSRSACertificateKeyFile
 {
-my ($p) = grep { defined $_} @_;
-my $n = $p->{'name'};
+my $n = $_[0]->{'name'};
 return (2, $text{'mod_tls_key'},
-	&ui_opt_textbox($n, $p->{'value'}, 60, $text{'mod_tls_none'})." ".
+	&ui_opt_textbox($n, $_[0]->{'value'}, 60, $text{'mod_tls_none'})." ".
 	&file_chooser_button($n));
 }
 sub save_TLSRSACertificateKeyFile
 {
-my ($p) = grep { defined $_} @_;
-my $n = $p->{'name'};
+my $n = $_[0]->{'name'};
 if ($in{$n."_def"}) {
 	return ( [ ] );
 	}
@@ -84,16 +78,14 @@ else {
 
 sub edit_TLSCACertificateFile
 {
-my ($p) = grep { defined $_} @_;
-my $n = $p->{'name'};
+my $n = $_[0]->{'name'};
 return (2, $text{'mod_tls_ca'},
-	&ui_opt_textbox($n, $p->{'value'}, 60, $text{'mod_tls_none'})." ".
+	&ui_opt_textbox($n, $_[0]->{'value'}, 60, $text{'mod_tls_none'})." ".
 	&file_chooser_button($n));
 }
 sub save_TLSCACertificateFile
 {
-my ($p) = grep { defined $_} @_;
-my $n = $p->{'name'};
+my $n = $_[0]->{'name'};
 if ($in{$n."_def"}) {
 	return ( [ ] );
 	}
