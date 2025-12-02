@@ -39,12 +39,14 @@ if (@st_obj && $st_obj[2]) {
 
 # Validate inputs
 my $newfs = { };
-$in{'free_def'} || ($in{'free'} =~ /^\d+$/ && $in{'free'} >= 0 && $in{'free'} <= 100) ||
-&error($text{'newfs_efree'});
+$in{'free_def'} ||
+	($in{'free'} =~ /^\d+$/ && $in{'free'} >= 0 && $in{'free'} <= 100) ||
+	&error($text{'newfs_efree'});
 $newfs->{'free'} = $in{'free_def'} ? undef : $in{'free'};
 $newfs->{'trim'} = $in{'trim'};
-$in{'label_def'} || length($in{'label'}) > 0 ||
-&error($text{'newfs_elabel'});
+$in{'label_def'} ||
+	length($in{'label'}) > 0 ||
+	&error($text{'newfs_elabel'});
 $newfs->{'label'} = $in{'label_def'} ? undef : $in{'label'};
 
 &ui_print_unbuffered_header($object->{'desc'}, $text{'newfs_title'}, "");
@@ -72,15 +74,15 @@ else {
 		    $object->{'device'}, $object);
 	# If a label was provided, set the partition label (GPT slice or BSD sub-partition)
 	if (!$in{'label_def'} && defined $in{'label'} && length $in{'label'}) {
-	my $errlbl = set_partition_label(
-	disk  => $disk,
-	slice => $slice,
-	part  => ($in{'part'} ne '' ? $part : undef),
-	label => $in{'label'}
-	);
-	if ($errlbl) {
-	print "Warning: failed to set partition label: \n" . &html_escape($errlbl) . "\n";
-	}
+		my $errlbl = set_partition_label(
+			disk  => $disk,
+			slice => $slice,
+			part  => ($in{'part'} ne '' ? $part : undef),
+			label => $in{'label'}
+		);
+		if ($errlbl) {
+			print "Warning: failed to set partition label: \n" . &html_escape($errlbl) . "\n";
+		}
 	}
 	}
 
