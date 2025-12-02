@@ -16,6 +16,8 @@ repo_key_name="Webmin Developers"
 repo_name="webmin-stable"
 repo_name_prerelease="webmin-prerelease"
 repo_name_unstable="webmin-unstable"
+repo_rpm_pathname="/download/newkey/yum"
+repo_deb_pathname="/download/newkey/repository"
 repo_component="main"
 repo_dist="stable"
 repo_section="contrib"
@@ -61,6 +63,8 @@ Repository types:
 
 Repository configuration:
   --host=<host>              Main repository host
+  --repo-rpm-path=<path>     Repository path for RPM-based systems
+  --repo-deb-path=<path>     Repository path for DEB-based systems
   --prerelease-host=<host>   Prerelease repository host
   --unstable-host=<host>     Unstable repository host
   --key=<key>                Repository signing key file
@@ -114,6 +118,16 @@ process_args() {
         repo_host="${arg#*=}"
         repo_download="https://$repo_host"
         repo_key_download="$repo_download/$repo_key"
+        ;;
+      --repo-rpm-path=*)
+        repo_rpm_pathname="${arg#*=}"
+        [ "$repo_rpm_pathname" = "/" ] && repo_rpm_pathname=""
+        repo_rpm_pathname_set=1
+        ;;
+      --repo-deb-path=*)
+        repo_deb_pathname="${arg#*=}"
+        [ "$repo_deb_pathname" = "/" ] && repo_deb_pathname=""
+        repo_deb_pathname_set=1
         ;;
       --prerelease-host=*)
         repo_download_prerelease="https://${arg#*=}"
@@ -407,6 +421,20 @@ setup_repos() {
   # lowercased
   repo_desc_formatted=$(echo "$active_repo_description" | \
       sed 's/\([^ ]*\)\(.*\)/\1\L\2/')
+
+  # Defaults for unstable and prerelease repos when no custom paths are set
+  case "$repo_mode" in
+    prerelease|unstable)
+      if [ -z "$repo_rpm_pathname_set" ]; then
+        repo_rpm_pathname=""
+        repo_rpm_pathname_set=1
+      fi
+      if [ -z "$repo_deb_pathname_set" ]; then
+        repo_deb_pathname=""
+        repo_deb_pathname_set=1
+      fi
+      ;;
+  esac
   
   # Construct auth URL if credentials provided
   repo_auth_url="$active_repo_download"
@@ -452,10 +480,10 @@ setup_repos() {
       fi
       # Configure the repository
       echo "  Setting up ${repo_desc_formatted} repository .."
-      if [ "$repo_mode" = "stable" ]; then
-        repo_url="$active_repo_download/download/newkey/yum"
+      if [ -z "$repo_rpm_pathname_set" ]; then
+        repo_url="$active_repo_download$repo_rpm_pathname"
       else
-        repo_url="$repo_auth_url"
+        repo_url="$repo_auth_url$repo_rpm_pathname"
       fi
       repo_extra_opts_caller=$(rpm_repo_prefs)
       cat << EOF > "$rpm_repo_file"
@@ -533,12 +561,12 @@ EOF
       fi
       # Configure the repository
       echo "  Setting up ${repo_desc_formatted} repository .."
-      if [ "$repo_mode" = "stable" ]; then
+      if [ -z "$repo_deb_pathname_set" ]; then
         repo_line="deb [signed-by=/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg] \
-$active_repo_download/download/newkey/repository $repo_dist $repo_section"
+$active_repo_download$repo_deb_pathname $repo_dist $repo_section"
       else
         repo_line="deb [signed-by=/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg] \
-$active_repo_download $repo_dist $repo_component"
+$active_repo_download$repo_deb_pathname $repo_dist $repo_component"
       fi
       echo "$repo_line" > "$debian_repo_file"
       
