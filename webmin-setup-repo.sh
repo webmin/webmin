@@ -145,7 +145,7 @@ process_args() {
         ;;
       --name=*)
         base_name="${arg#*=}"
-        repo_name="$base_name"
+        repo_name="${base_name}-stable"
         repo_name_prerelease="${base_name}-prerelease"
         repo_name_unstable="${base_name}-unstable"
         ;;
