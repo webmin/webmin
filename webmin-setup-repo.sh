@@ -314,13 +314,13 @@ ask_confirmation() {
   case "$repo_mode" in
     prerelease)
       printf \
-"\e[47;1;31;82mPrerelease builds are automated from the latest tagged release\e[0m\n"
+"\e[48;5;236;38;5;208;1mPrerelease builds are automated from the latest tagged release\e[0m\n"
       ;;
     unstable)
       printf \
-"\e[47;1;31;82mUnstable builds are automated experimental versions designed for\e[0m\n"
-    printf \
-"\e[47;1;31;82mdevelopment, often containing critical bugs and breaking changes\e[0m\n"
+"\e[48;5;236;38;5;160;1mUnstable builds are automated experimental versions designed for\e[0m\n"
+      printf \
+"\e[48;5;236;38;5;160;1mdevelopment, often containing critical bugs and breaking changes\e[0m\n"
       ;;
   esac
   if [ "$force_setup" != "1" ]; then
