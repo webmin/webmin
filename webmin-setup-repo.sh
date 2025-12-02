@@ -12,6 +12,7 @@ repo_download_unstable="https://download.webmin.dev"
 repo_key="developers-key.asc"
 repo_key_download="$repo_download/$repo_key"
 repo_key_suffix="webmin-developers"
+repo_key_name="Webmin Developers"
 repo_name="webmin-stable"
 repo_name_prerelease="webmin-prerelease"
 repo_name_unstable="webmin-unstable"
@@ -63,6 +64,7 @@ Repository configuration:
   --prerelease-host=<host>   Prerelease repository host
   --unstable-host=<host>     Unstable repository host
   --key=<key>                Repository signing key file
+  --key-name=<name>          Repository key name for display
   --key-suffix=<suffix>      Repository key suffix for file naming
   --auth-user=<user>         Repository authentication username
   --auth-pass=<pass>         Repository authentication password
@@ -122,6 +124,9 @@ process_args() {
       --key=*)
         repo_key="${arg#*=}"
         repo_key_download="$repo_download/$repo_key"
+        ;;
+      --key-name=*)
+        repo_key_name="${arg#*=}"
         ;;
       --key-suffix=*)
         repo_key_suffix="${arg#*=}"
@@ -379,7 +384,7 @@ enforce_package_priority() {
 
 download_key() {
   rm -f "/tmp/$repo_key"
-  echo "  Downloading Webmin developers key .."
+  echo "  Downloading $repo_key_name key .."
   download_out=$($download "$repo_key_download" 2>&1)
   post_status $? "$(echo "$download_out" | tr '\n' ' ')"
 }
@@ -407,7 +412,7 @@ setup_repos() {
   
   case "$package_type" in
     rpm)
-      echo "  Installing Webmin developers key .."
+      echo "  Installing $repo_key_name key .."
       rpm --import "$repo_key"
       mkdir -p "/etc/pki/rpm-gpg"
       cp -f "$repo_key" \
@@ -469,7 +474,7 @@ EOF
       rm -f \
 "/usr/share/keyrings/debian-$repo_key_suffix.gpg" \
 "/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
-      echo "  Installing Webmin developers key .."
+      echo "  Installing $repo_key_name key .."
       gpg --import "$repo_key" 1>/dev/null 2>&1
       gpg --dearmor < "$repo_key" \
         > "/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
