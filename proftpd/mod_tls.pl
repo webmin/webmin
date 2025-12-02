@@ -47,7 +47,7 @@ return (2, $text{'mod_tls_file'},
 }
 sub save_TLSRSACertificateFile
 {
-my $n = $_[1]->{'name'};
+my $n = $_[0]->{'name'};
 if ($in{$n."_def"}) {
 	return ( [ ] );
 	}
@@ -66,7 +66,7 @@ return (2, $text{'mod_tls_key'},
 }
 sub save_TLSRSACertificateKeyFile
 {
-my $n = $_[1]->{'name'};
+my $n = $_[0]->{'name'};
 if ($in{$n."_def"}) {
 	return ( [ ] );
 	}
@@ -85,7 +85,7 @@ return (2, $text{'mod_tls_ca'},
 }
 sub save_TLSCACertificateFile
 {
-my $n = $_[1]->{'name'};
+my $n = $_[0]->{'name'};
 if ($in{$n."_def"}) {
 	return ( [ ] );
 	}
