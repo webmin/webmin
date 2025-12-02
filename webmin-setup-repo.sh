@@ -291,8 +291,12 @@ set_os_variables() {
 }
 
 ask_confirmation() {
-    repo_desc_formatted=$(echo "$active_repo_description" | \
-      sed 's/\([^ ]*\)\(.*\)/\1\L\2/')
+  # Format description so only the first word keeps its case and the rest is
+  # lowercased
+  repo_desc_formatted=$(echo "$active_repo_description" | \
+    sed 's/\([^ ]*\)\(.*\)/\1\L\2/')
+
+  # Show special messages for prerelease and unstable repos
   case "$repo_mode" in
     prerelease)
       printf \
@@ -399,6 +403,8 @@ rpm_repo_prefs() {
 }
 
 setup_repos() {
+  # Format description so only the first word keeps its case and the rest is
+  # lowercased
   repo_desc_formatted=$(echo "$active_repo_description" | \
       sed 's/\([^ ]*\)\(.*\)/\1\L\2/')
   
