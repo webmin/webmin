@@ -460,7 +460,14 @@ setup_repos() {
       echo "  Installing $repo_key_name key .."
       mkdir -p "/etc/pki/rpm-gpg"
       combined_key="/etc/pki/rpm-gpg/RPM-GPG-KEY-$repo_key_suffix"
-      cat $repo_key > "$combined_key"
+      # Build a single keyring file from all the key files, making sure each key
+      # ends with a newline so armor blocks stay separated
+      {
+        for key in $repo_key; do
+          cat "$key"
+          printf '\n'
+        done
+      } > "$combined_key"
       rpm --import "$combined_key"
       echo "  .. done"
       # Configure packages extra preferences if given
@@ -521,8 +528,14 @@ EOF
 "/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
       echo "  Installing $repo_key_name key .."
       combined_keyring="/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
-      # shellcheck disable=SC2086
-      cat $repo_key | gpg --dearmor > "$combined_keyring"
+      # Build a single keyring file from all the key files, making sure each key
+      # ends with a newline so armor blocks stay separated
+      {
+        for key in $repo_key; do
+          cat "$key"
+          printf '\n'
+        done
+      } | gpg --dearmor > "$combined_keyring"
       post_status $?
       # Set correct permissions on the repo key in case the system uses a restrictive umask
       chmod 644 "/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
