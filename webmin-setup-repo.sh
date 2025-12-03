@@ -68,6 +68,7 @@ Repository configuration:
   --prerelease-host=<host>   Prerelease repository host
   --unstable-host=<host>     Unstable repository host
   --key=<key>                Repository signing key file
+  --key-server=<url>         Repository signing key download server
   --key-name=<name>          Repository key name for display
   --key-suffix=<suffix>      Repository key suffix for file naming
   --auth-user=<user>         Repository authentication username
@@ -138,6 +139,11 @@ process_args() {
       --key=*)
         repo_key="${arg#*=}"
         repo_key_download="$repo_download/$repo_key"
+        ;;
+      --key-server=*)
+        key_server="${arg#*=}"
+        key_server="${key_server%/}"
+        repo_key_download="$key_server/$repo_key"
         ;;
       --key-name=*)
         repo_key_name="${arg#*=}"
