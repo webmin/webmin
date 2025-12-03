@@ -10,7 +10,7 @@ repo_download="https://$repo_host"
 repo_download_prerelease="https://rc.download.webmin.dev"
 repo_download_unstable="https://download.webmin.dev"
 repo_key="developers-key.asc"
-repo_key_download="$repo_download/$repo_key"
+repo_key_server="$repo_download"
 repo_key_suffix="webmin-developers"
 repo_key_name="Webmin Developers"
 repo_name="webmin-stable"
@@ -118,7 +118,7 @@ process_args() {
       --host=*)
         repo_host="${arg#*=}"
         repo_download="https://$repo_host"
-        repo_key_download="$repo_download/$repo_key"
+        repo_key_server="$repo_download"
         ;;
       --repo-rpm-path=*)
         repo_rpm_pathname="${arg#*=}"
@@ -138,12 +138,11 @@ process_args() {
         ;;
       --key=*)
         repo_key="${arg#*=}"
-        repo_key_download="$repo_download/$repo_key"
         ;;
       --key-server=*)
         key_server="${arg#*=}"
         key_server="${key_server%/}"
-        repo_key_download="$key_server/$repo_key"
+        repo_key_server="$key_server"
         ;;
       --key-name=*)
         repo_key_name="${arg#*=}"
@@ -407,10 +406,16 @@ enforce_package_priority() {
 }
 
 download_key() {
-  rm -f "/tmp/$repo_key"
   echo "  Downloading $repo_key_name key .."
-  download_out=$($download "$repo_key_download" 2>&1)
-  post_status $? "$(echo "$download_out" | tr '\n' ' ')"
+  for key in $repo_key; do
+    rm -f "/tmp/$key"
+    download_out=$($download "$repo_key_server/$key" 2>&1)
+    if [ $? -ne 0 ]; then
+      post_status 1 "$(echo "$download_out" | tr '\n' ' ')"
+    fi
+  done
+
+  post_status 0 ""
 }
 
 rpm_repo_prefs() {
@@ -453,10 +458,10 @@ setup_repos() {
   case "$package_type" in
     rpm)
       echo "  Installing $repo_key_name key .."
-      rpm --import "$repo_key"
       mkdir -p "/etc/pki/rpm-gpg"
-      cp -f "$repo_key" \
-        "/etc/pki/rpm-gpg/RPM-GPG-KEY-$repo_key_suffix"
+      combined_key="/etc/pki/rpm-gpg/RPM-GPG-KEY-$repo_key_suffix"
+      cat $repo_key > "$combined_key"
+      rpm --import "$combined_key"
       echo "  .. done"
       # Configure packages extra preferences if given
       if [ -n "$repo_pkg_prefs" ]; then
@@ -515,9 +520,9 @@ EOF
 "/usr/share/keyrings/debian-$repo_key_suffix.gpg" \
 "/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
       echo "  Installing $repo_key_name key .."
-      gpg --import "$repo_key" 1>/dev/null 2>&1
-      gpg --dearmor < "$repo_key" \
-        > "/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
+      combined_keyring="/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
+      # shellcheck disable=SC2086
+      cat $repo_key | gpg --dearmor > "$combined_keyring"
       post_status $?
       # Set correct permissions on the repo key in case the system uses a restrictive umask
       chmod 644 "/usr/share/keyrings/$repoid_debian_like-$repo_key_suffix.gpg"
