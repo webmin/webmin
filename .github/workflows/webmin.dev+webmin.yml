@@ -6,15 +6,17 @@ on:
       - master
   release:
     types:
-      - published
+      - prereleased
+      - released
 
 jobs:
   build:
     uses: webmin/webmin-ci-cd/.github/workflows/master-workflow.yml@main
     with:
       build-type: package
-      project-name: webmin
+      project-name: ${{ github.event.repository.name }}
       is-release: ${{ github.event_name == 'release' }}
+      is-prerelease: ${{ github.event.release.prerelease || false }}
     secrets:
       DEV_IP_ADDR: ${{ secrets.DEV_IP_ADDR }}
       DEV_IP_KNOWN_HOSTS: ${{ secrets.DEV_IP_KNOWN_HOSTS }}
