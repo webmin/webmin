@@ -505,7 +505,7 @@ setup_repos() {
       fi
       repo_extra_opts_caller=$(rpm_repo_prefs)
       cat << EOF > "$rpm_repo_file"
-[$active_repo_name-noarch]
+[$active_repo_name]
 name=$active_repo_description
 baseurl=$repo_url
 enabled=1
