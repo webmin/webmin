@@ -336,7 +336,7 @@ if ($driver_handle && !$config{'nodbi'}) {
 			}
 		}
 	local $dbh = $driver_handle->connect($cstr, $mysql_login, $mysql_pass,
-					     { mysql_auto_reconnect => 0 });
+					     { });
 	$dbh || &error("DBI connect failed : ",$driver_handle->errstr);
 	if ($sql_charset) {
 		# Switch to correct character set
