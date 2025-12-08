@@ -21,7 +21,7 @@ repo_deb_pathname="/download/newkey/repository"
 repo_component="main"
 repo_dist="stable"
 repo_section="contrib"
-repo_description="Webmin Release"
+repo_description="Webmin Stable"
 repo_description_prerelease="Webmin Prerelease"
 repo_description_unstable="Webmin Unstable"
 install_check_binary="/usr/bin/webmin"
@@ -170,7 +170,7 @@ process_args() {
         ;;
       --description=*)
         base_description="${arg#*=}"
-        repo_description="$base_description Release"
+        repo_description="$base_description Stable"
         repo_description_prerelease="${base_description} Prerelease"
         repo_description_unstable="${base_description} Unstable"
         ;;
