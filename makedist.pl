@@ -287,4 +287,3 @@ sub usage
 {
     die "Usage: $0 [--minimal] [--mod-list type] <version>\n";
 }
-
