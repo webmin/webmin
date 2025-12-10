@@ -254,15 +254,24 @@ sub missing_install_link
 local ($name, $desc, $return, $returndesc) = @_;
 return undef if (!defined(&update_system_resolve));
 return undef if (!&foreign_check($module_name));
-local ($pkg, $flags) = &update_system_resolve($name);
-return undef if (!$pkg);
+my @packages = split(/\s+/, $name);
+my (@pkgs, @flags);
+foreach my $p (@packages) {
+	my ($pkg, $flags) = &update_system_resolve($p);
+	push(@pkgs, $pkg);
+	push(@flags, $flags);
+	}
+return undef if (!@pkgs);
+@pkgs = &unique(@pkgs);
+my $hidden_update = join("", map { &ui_hidden("update", $_) } @pkgs);
+@flags = &unique(@flags);
 local ($cpkg) = caller();
 local $caller = eval '$'.$cpkg.'::module_name';
 return &ui_form_start("@{[&get_webprefix()]}/$module_name/install_pack.cgi", "get").
        &text('missing_msg', $desc, $text{$update_system."_name"})."\n".
        &ui_hidden("source", 3).
-       &ui_hidden("update", $pkg).
-       &ui_hidden("flags", $flags).
+       $hidden_update.
+       &ui_hidden("flags", join(" ", @flags)).
        &ui_hidden("return", $return).
        &ui_hidden("returndesc", $returndesc).
        &ui_hidden("caller", $caller).

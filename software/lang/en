@@ -397,7 +397,7 @@ csw_form=Upgrade Packages
 csw_upgrade=Upgrade All Installed Packages
 csw_updatedesc=Upgrading all installed packages with command $1 ..
 
-missing_msg=The $1 package can be automatically installed by Webmin using $2.
+missing_msg=The $1 can be automatically installed using package manager.
 missing_now=Install Now
 
 find_title=Search For Package
