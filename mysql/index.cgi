@@ -319,9 +319,21 @@ else {
 	# Check if the optional perl modules are installed
 	my @needs;
 	my %pkgmap = (
-		'DBI'          => [ 'perl-DBI',         'libdbi-perl' ],
-		'DBD::mysql'   => [ 'perl-DBD-MySQL',   'libdbd-mysql-perl' ],
-		'DBD::MariaDB' => [ 'perl-DBD-MariaDB', 'libdbd-mariadb-perl' ],
+		'DBI' => [
+			'perl-DBI',             # EL
+			'libdbi-perl',          # Debian/Ubuntu
+			'p5-DBI',               # FreeBSD
+		],
+		'DBD::mysql' => [
+			'perl-DBD-MySQL',
+			'libdbd-mysql-perl',
+			'p5-DBD-mysql',
+		],
+		'DBD::MariaDB' => [
+			'perl-DBD-MariaDB',
+			'libdbd-mariadb-perl',
+			'p5-DBD-MariaDB',
+		],
 	);
 	my ($mysql_ver, $mysql_variant) = &get_remote_mysql_variant();
 	my $want_driver = $mysql_variant eq 'mariadb'
