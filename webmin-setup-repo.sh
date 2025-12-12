@@ -22,7 +22,7 @@ repo_component="main"
 repo_dist="stable"
 repo_section="contrib"
 repo_description="Webmin Stable"
-repo_description_prerelease="Webmin Prerelease"
+repo_description_prerelease="Webmin Pre-release"
 repo_description_unstable="Webmin Unstable"
 install_check_binary="/usr/bin/webmin"
 install_message="Webmin and Usermin can be installed with:"
@@ -58,14 +58,14 @@ General options:
 
 Repository types:
   --stable                   Set up the stable repo, built with extra testing
-  --prerelease               Set up the prerelease repo built from latest tag
+  --prerelease               Set up the pre-release repo built from latest tag
   --unstable                 Set up unstable repo built from the latest commit
 
 Repository configuration:
   --host=<host>              Main repository host
   --repo-rpm-path=<path>     Repository path for RPM-based systems
   --repo-deb-path=<path>     Repository path for DEB-based systems
-  --prerelease-host=<host>   Prerelease repository host
+  --prerelease-host=<host>   Pre-release repository host
   --unstable-host=<host>     Unstable repository host
   --key=<key>                Repository signing key file
   --key-server=<url>         Repository signing key download server
@@ -111,7 +111,7 @@ process_args() {
   for arg in "$@"; do
     case "$arg" in
       --stable) repo_mode="stable" ;;
-      --prerelease|--rc) repo_mode="prerelease" ;;
+      --prerelease|--pre-release|--rc) repo_mode="prerelease" ;;
       --unstable|--testing|-t) repo_mode="unstable" ;;
       -f|--force) force_setup=1 ;;
       -h|--help) usage ;;
@@ -171,7 +171,7 @@ process_args() {
       --description=*)
         base_description="${arg#*=}"
         repo_description="$base_description Stable"
-        repo_description_prerelease="${base_description} Prerelease"
+        repo_description_prerelease="${base_description} Pre-release"
         repo_description_unstable="${base_description} Unstable"
         ;;
       --component=*)
@@ -319,7 +319,7 @@ ask_confirmation() {
   case "$repo_mode" in
     prerelease)
       printf \
-"\e[48;5;236;38;5;208;1mPrerelease builds are automated from the latest tagged release\e[0m\n"
+"\e[48;5;236;38;5;208;1mPre-release builds are automated from the latest tagged release\e[0m\n"
       ;;
     unstable)
       printf \
