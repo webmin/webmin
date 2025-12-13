@@ -600,16 +600,21 @@ return &ui_link("list_mail.cgi?user=$_[0]&folder=$_[1]->{'index'}",$text{'mail_r
 # Returns the address to use when sending email from a script
 sub get_from_address
 {
-local $host = &get_from_domain();
+my $host = &get_from_domain();
+my $rv;
 if ($config{'webmin_from'} =~ /\@/) {
-	return $config{'webmin_from'};
+	$rv = $config{'webmin_from'};
 	}
 elsif (!$config{'webmin_from'}) {
-	return "webmin-noreply\@$host";
+	$rv = "webmin-noreply\@$host";
 	}
 else {
-	return "$config{'webmin_from'}\@$host";
+	$rv = "$config{'webmin_from'}\@$host";
 	}
+if ($config{'webmin_from_name'}) {
+	$rv = "\"$config{'webmin_from_name'}\" <$rv>";
+	}
+return $rv;
 }
 
 # get_from_domain()

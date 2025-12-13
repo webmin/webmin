@@ -51,6 +51,7 @@ spam_report=Report spam using,1,sa_learn-<tt>sa&#45;learn --spam</tt>,spamassass
 line3.5=From address options,11
 from_addr=<tt>From:</tt> address to use when sending email manually,3,From mailbox username
 webmin_from=<tt>From:</tt> address to use when Webmin sends email,3,Default (<tt>webmin-noreply@<i>yourhost</i></tt>)
+webmin_from_name=Real name to use in From: address,3,None
 from_virtualmin=Get <tt>From:</tt> address from Virtualmin?,1,1-Yes,0-No
 from_dom=Domain to use in <tt>From:</tt> address,3,System hostname
 no_orig_ip=Include browser IP in <tt>X-Originating</tt>-IP header?,1,0-Yes,1-No
