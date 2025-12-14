@@ -64,7 +64,9 @@ $fromdef = "webmin-noreply\@".&mailboxes::get_from_domain();
 print &ui_table_row($text{'sendmail_from'},
 	&ui_opt_textbox("from", $from, 40,
 			&text('sendmail_fromdef', $fromdef)."<br>",
-			$text{'sendmail_fromaddr'}));
+			$text{'sendmail_fromaddr'})." ".
+	$text{'sendmail_name'}." ".
+	&ui_textbox("from_name", $mconfig{'webmin_from_name'}, 30), 3);
 
 # Default to address for notifications
 $to = $gconfig{'webmin_email_to'};

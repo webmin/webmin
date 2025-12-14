@@ -63,6 +63,7 @@ else {
 	$in{'from'} =~ /^\S+$/ || &error($text{'sendmail_efrom'});
 	$mconfig{'webmin_from'} = $in{'from'};
 	}
+$mconfig{'webmin_from_name'} = $in{'from_name'};
 
 # Save to address
 if ($in{'to_def'}) {

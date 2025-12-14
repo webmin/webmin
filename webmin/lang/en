@@ -1105,6 +1105,7 @@ sendmail_authdef=Default (currently Cram-MD5)
 sendmail_from=From address for email from Webmin
 sendmail_fromdef=Default ($1)
 sendmail_fromaddr=Address
+sendmail_name=Display name
 sendmail_toaddr=Default destination address for notifications
 sendmail_to_def=None set
 sendmail_etoaddr=Missing or incorrectly formatted destination address
