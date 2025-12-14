@@ -109,7 +109,7 @@ if ($product eq "webmin") {
 $size = int(`du -sk $tmp_dir`);
 @deps = ( "perl", "libnet-ssleay-perl", "openssl", "libauthen-pam-perl", "libpam-runtime", "libio-pty-perl", "unzip", "shared-mime-info", "tar", "libdigest-sha-perl", "libdigest-md5-perl", "gzip" );
 $deps = join(", ", @deps);
-@recommends = ( "libdatetime-perl", "libdatetime-timezone-perl", "libdatetime-locale-perl", "libtime-piece-perl", "libencode-detect-perl", "libtime-hires-perl", "libsocket6-perl", "html2text", "qrencode", "libdbi-perl", "libdbd-mysql-perl", "libjson-xs-perl", "libsys-syslog-perl" );
+@recommends = ( "libdatetime-perl", "libdatetime-timezone-perl", "libdatetime-locale-perl", "libtime-piece-perl", "libencode-detect-perl", "libtime-hires-perl", "libsocket6-perl", "html2text", "qrencode", "libdbi-perl", "libdbd-mysql-perl", "libdbd-mariadb-perl", "libjson-xs-perl", "libsys-syslog-perl" );
 $recommends = join(", ", @recommends);
 open(CONTROL, ">$control_file");
 print CONTROL <<EOF;
