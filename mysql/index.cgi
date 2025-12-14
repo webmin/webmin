@@ -317,70 +317,17 @@ else {
 	print &ui_buttons_end() if ($started_buttons_row);
 
 	# Check if the optional perl modules are installed
-	my @needs;
-	my %pkgmap = (
-		'DBI'          => [ 'perl-DBI',         'libdbi-perl' ],
-		'DBD::mysql'   => [ 'perl-DBD-MySQL',   'libdbd-mysql-perl' ],
-		'DBD::MariaDB' => [ 'perl-DBD-MariaDB', 'libdbd-mariadb-perl' ],
-	);
-	my ($mysql_ver, $mysql_variant) = &get_remote_mysql_variant();
-	my $want_driver = $mysql_variant eq 'mariadb'
-			? 'DBD::MariaDB'
-			: 'DBD::mysql';
-	my @mods_to_check = ('DBI', $want_driver);
-	for my $mod (@mods_to_check) {
-		next if (!exists $pkgmap{$mod});
-		eval "require $mod; 1" or push @needs, $mod;
-		}
-	if (@needs) {
-		my $return = "../$module_name/";
-		my $returndesc = $text{'index_return'};
-		
-		# If CPAN module is available, use it
-		if (&foreign_available("cpan")) {
-			my $needs_q = &urlize(join(" ", @needs));
-			print &ui_alert_box(
-				&text(@needs == 2
-				        ? 'index_nomods'
-				        : 'index_nomod',
-				      @needs,
-				        "../cpan/download.cgi?source=3&cpan=".
-				        "$needs_q&mode=2&return=/$module_name/".
-				        "&returndesc=".
-				        &urlize($returndesc)),
-				'warn');
-			}
-		
-		# If no CPAN, try system packages via software module
-		elsif (foreign_available("software")) {
-			&foreign_require("software");
-			my $return = "../$module_name/";
-			my $returndesc = $text{'index_title'};
-			
-			# Resolve one package per missing module, for this OS
-			my @want_pkgs;
-			for my $mod (@needs) {
-				for my $cand (@{ $pkgmap{$mod} }) {
-					my ($pkg, $flags) =
-					    &software::update_system_resolve(
-						$cand);
-					if ($pkg) {
-						push @want_pkgs, $cand;
-						last;
-						}
-					}
-				}
-			if (@want_pkgs) {
-				my $desc = &text(@want_pkgs > 1
-					? 'index_nomods2'
-					: 'index_nomod2', @needs);
-				my $link = &software::missing_install_link(
-					join(' ', @want_pkgs),
-					$desc,
-					$return,
-					$returndesc);
-				print &ui_alert_box($link, 'warn');
-				}
+	if (foreign_available("cpan")) {
+		eval "use DBI";
+		push(@needs, "DBI") if ($@);
+		$nodbi++ if ($@);
+		eval "use DBD::mysql";
+		push(@needs, "DBD::mysql") if ($@);
+		if (@needs) {
+			$needs = &urlize(join(" ", @needs));
+			print &ui_alert_box(&text(@needs == 2 ? 'index_nomods' : 'index_nomod', @needs,
+				"../cpan/download.cgi?source=3&cpan=$needs&mode=2&return=/$module_name/&returndesc=".
+				  &urlize($text{'index_return'})), 'warn');
 			}
 		}
 	}
