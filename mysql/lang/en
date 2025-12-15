@@ -30,8 +30,6 @@ index_version=$2 version $1
 index_version2=$3 version $1 on $2
 index_nomod=The Perl module <tt>$1</tt> is not installed on your system, so Webmin will not be able to reliably access your MySQL database. <a href='$2'>Click here</a> to install it now.
 index_nomods=The Perl modules <tt>$1</tt> and <tt>$2</tt> are not installed on your system, so Webmin will not be able to reliably access your MySQL database. <a href='$3'>Click here</a> to install them now.
-index_nomod2=module <tt>$1</tt> is not available on your system for Webmin to reliably access your MySQL database but
-index_nomods2=modules <tt>$1</tt> and <tt>$2</tt> are not available on your system for Webmin to reliably access your MySQL database but
 index_mysqlver=The command <tt>$1</tt> returned :
 index_eenvpass=The MySQL client program $1 does not accept passwords passed using the <tt>MYSQL_PWD</tt> environment variable. To ensure that Webmin is able to fully communicate with MySQL, this option should be turned off on the <a href='$2'>module configuration</a> page. Alternately, you can remove any password set in the <tt>root</tt> user's <tt>.my.cnf</tt> file.
 index_ecnf=The MySQL config file $1 was not found on your system. Use the <a href='$2'>module configuration</a> page to set the correct path.
