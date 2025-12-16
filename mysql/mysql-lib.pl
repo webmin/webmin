@@ -67,13 +67,44 @@ $password_func = $config{'passwd_mode'} ? "old_password" : "password";
 	    'enum', 'set');
 
 @priv_cols = ('Host', 'User', 'Password', 'Select_priv', 'Insert_priv', 'Update_priv', 'Delete_priv', 'Create_priv', 'Drop_priv', 'Reload_priv', 'Shutdown_priv', 'Process_priv', 'File_priv', 'Grant_priv', 'References_priv', 'Index_priv', 'Alter_priv', 'Show_db_priv', 'Super_priv', 'Create_tmp_table_priv', 'Lock_tables_priv', 'Execute_priv', 'Repl_slave_priv', 'Repl_client_priv', 'Create_view_priv', 'Show_view_priv', 'Create_routine_priv', 'Alter_routine_priv', 'Create_user_priv');
-
+$driver_info = &dbi_driver_info();
 if (!$config{'nodbi'}) {
-	# Check if we have DBI::mysql
-	eval <<EOF;
-use DBI;
-\$driver_handle = DBI->install_driver("mysql");
-EOF
+	# Check if we have DBI::mysql or DBI::MariaDB
+	eval { require DBI;
+	       $driver_handle = DBI->install_driver($driver_info->{drv}); };
+	}
+
+# dbi_driver_info()
+# Based on the current database variant, returns info about the DBI driver.
+# Falls back to MySQL if the preferred driver is not available.
+sub dbi_driver_info
+{
+my %dbmap = (
+      'mysql'   => { drv => 'mysql',   opt => 'mysql',   mod => 'DBD::mysql' },
+      'mariadb' => { drv => 'MariaDB', opt => 'mariadb', mod => 'DBD::MariaDB' }
+);
+my $want = ($mysql_version && $mysql_version =~ /mariadb/i)
+	? 'mariadb'
+	: 'mysql';
+
+# Try preferred driver
+my $m = $dbmap{$want}->{'mod'};
+my $ok = eval "require $m; 1;";
+$dbmap{$want}->{'avail'}  = $ok ? 1 : 0;
+$dbmap{$want}->{'prefer'} = $dbmap{$want}->{'mod'};
+return $dbmap{$want} if $ok;
+
+# If MariaDB preferred but unavailable, fallback to MySQL
+if ($want eq 'mariadb') {
+	$m = $dbmap{'mysql'}->{'mod'};
+	$ok = eval "require $m; 1;";
+	$dbmap{'mysql'}->{'avail'}  = $ok ? 1 : 0;
+	$dbmap{'mysql'}->{'prefer'} = $dbmap{$want}->{'mod'};
+	return $dbmap{'mysql'};
+	}
+
+# Preferred driver unavailable, no fallback
+return $dbmap{$want};
 }
 
 # Fix text if we're running MariaDB
@@ -324,15 +355,16 @@ $sql = &escape_backslashes_in_quotes($sql);
 if ($driver_handle && !$config{'nodbi'}) {
 	# Use the DBI interface
 	local $cstr = "database=$_[0]";
+	local $drv = $driver_info->{opt};
 	$cstr .= ";host=$config{'host'}" if ($config{'host'});
 	$cstr .= ";port=$config{'port'}" if ($config{'port'});
-	$cstr .= ";mysql_socket=$config{'sock'}" if ($config{'sock'});
-	$cstr .= ";mysql_read_default_file=$config{'my_cnf'}"
+	$cstr .= ";${drv}_socket=$config{'sock'}" if ($config{'sock'});
+	$cstr .= ";${drv}_read_default_file=$config{'my_cnf'}"
 		if (-r $config{'my_cnf'});
 	if ($config{'ssl'}) {
-		$cstr .= ";mysql_ssl=1";
+		$cstr .= ";${drv}_ssl=1";
 		if ($DBD::mysql::VERSION >= 4.043) {
-			$cstr .= ";mysql_ssl_optional=1";
+			$cstr .= ";${drv}_ssl_optional=1";
 			}
 		}
 	local $dbh = $driver_handle->connect($cstr, $mysql_login, $mysql_pass,

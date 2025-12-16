@@ -320,19 +320,26 @@ else {
 	if (foreign_available("cpan")) {
 		eval "use DBI";
 		push(@needs, "DBI") if ($@);
-		eval "use DBD::mysql";
-		if ($@) {
-			eval "use DBD::MariaDB";
-			if ($@) {
-				push(@needs, $mysql_version =~ /mariadb/ ? "DBD::MariaDB"
-									 : "DBD::mysql");
-				}
-			}
+		push(@needs, $driver_info->{prefer}) if (!$driver_info->{avail});
 		if (@needs) {
 			$needs = &urlize(join(" ", @needs));
 			print &ui_alert_box(&text(@needs == 2 ? 'index_nomods' : 'index_nomod', @needs,
 				"../cpan/download.cgi?source=3&cpan=$needs&mode=2&return=/$module_name/&returndesc=".
-				  &urlize($text{'index_return'})), 'warn');
+				  &urlize($text{'index_return'})), 'warn',
+				  undef, undef, "");
+			}
+		}
+	# No CPAN module, just check for the driver
+	else {
+		eval "use DBI";
+		push(@needs, "DBI") if ($@);
+		push(@needs, $driver_info->{prefer}) if (!$driver_info->{avail});
+		if (@needs) {
+			print &ui_alert_box(
+				&text(@needs == 2
+					? 'index_nomods_manual'
+					: 'index_nomod_manual', @needs), 'warn',
+					undef, undef, "");
 			}
 		}
 	}
