@@ -320,9 +320,14 @@ else {
 	if (foreign_available("cpan")) {
 		eval "use DBI";
 		push(@needs, "DBI") if ($@);
-		$nodbi++ if ($@);
 		eval "use DBD::mysql";
-		push(@needs, "DBD::mysql") if ($@);
+		if ($@) {
+			eval "use DBD::MariaDB";
+			if ($@) {
+				push(@needs, $mysql_version =~ /mariadb/ ? "DBD::MariaDB"
+									 : "DBD::mysql");
+				}
+			}
 		if (@needs) {
 			$needs = &urlize(join(" ", @needs));
 			print &ui_alert_box(&text(@needs == 2 ? 'index_nomods' : 'index_nomod', @needs,
