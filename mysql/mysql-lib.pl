@@ -70,8 +70,8 @@ $password_func = $config{'passwd_mode'} ? "old_password" : "password";
 $driver_info = &dbi_driver_info();
 if (!$config{'nodbi'}) {
 	# Check if we have DBI::mysql or DBI::MariaDB
-	eval { require DBI;
-	       $driver_handle = DBI->install_driver($driver_info->{drv}); };
+	eval "require DBI;
+	     \$driver_handle = DBI->install_driver(\$driver_info->{'drv'});";
 	}
 
 # dbi_driver_info()
