@@ -70,12 +70,18 @@ sub get_rand_flag
 if ($gconfig{'os_type'} =~ /-linux$/ &&
     $config{'force_random'} eq '0' &&
     -r "/dev/urandom" &&
-    &compare_version_numbers($bind_version, 9) >= 0 &&
-    &compare_version_numbers($bind_version, '9.14.2') < 0) {
-	# Version: 9.14.2 deprecated the use of -r option
-	# in favor of using /dev/random [bugs:#5370]
-	return "-r /dev/urandom";
+    &compare_version_numbers($bind_version, 9) >= 0) {
+	if (&compare_version_numbers($bind_version, '9.14.2') < 0) {
+		return "-r /dev/urandom";
+		}
+	else {
+		# Version: 9.14.2 deprecated the use of -r option
+		# in favor of using /dev/random [bugs:#5370]. So no
+		# entropy generation is needed.
+		return undef;
+		}
 	}
+# No random flag, and entropy is needed
 return "";
 }
 
@@ -3458,7 +3464,8 @@ closedir(ZONEDIR);
 
 # Fork a background job to do lots of IO, to generate entropy
 my $pid;
-if (!&get_rand_flag()) {
+my $flag = &get_rand_flag();
+if (defined($flag) && !$flag) {
 	$pid = fork();
 	if (!$pid) {
 		exec("find / -type f >/dev/null 2>&1");
@@ -3507,7 +3514,7 @@ else {
 		"cd ".quotemeta($fn)." && ".
 		"$config{'keygen'} -a ".quotemeta($alg).
 		" -b ".quotemeta($zonesize).
-		" -n ZONE ".&get_rand_flag()." $dom 2>&1");
+		" -n ZONE ".($flag || "")." $dom 2>&1");
 	if ($?) {
 		kill('KILL', $pid) if ($pid);
 		return $out;
@@ -3519,7 +3526,7 @@ else {
 			"cd ".quotemeta($fn)." && ".
 			"$config{'keygen'} -a ".quotemeta($alg).
 			" -b ".quotemeta($size).
-			" -n ZONE -f KSK ".&get_rand_flag()." $dom 2>&1");
+			" -n ZONE -f KSK ".($flag || "")." $dom 2>&1");
 		kill('KILL', $pid) if ($pid);
 		if ($?) {
 			return $out;
@@ -3589,7 +3596,8 @@ $zonekey || return "Could not find DNSSEC zone key";
 
 # Fork a background job to do lots of IO, to generate entropy
 my $pid;
-if (!&get_rand_flag()) {
+my $flag = &get_rand_flag();
+if (defined($flag) && !$flag) {
 	$pid = fork();
 	if (!$pid) {
 		exec("find / -type f >/dev/null 2>&1");
@@ -3606,7 +3614,7 @@ my $alg = $zonekey->{'algorithm'};
 my $out = &backquote_logged(
 	"cd ".quotemeta($dir)." && ".
 	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($zonesize).
-	" -n ZONE ".&get_rand_flag()." $dom 2>&1");
+	" -n ZONE ".($flag || "")." $dom 2>&1");
 kill('KILL', $pid) if ($pid);
 if ($?) {
 	return "Failed to generate new zone key : $out";
