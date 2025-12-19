@@ -20,8 +20,8 @@ $disk || &error($text{'disk_egone'});
 my $base_device = $disk->{'device'}; $base_device =~ s{^/dev/}{};
 my $disk_structure = get_disk_structure($base_device);
 my $is_gpt = (is_using_gpart() && $disk_structure && ($disk_structure->{'scheme'}||'') =~ /GPT/i);
- 
- # Check if there is any free space on the device
+
+# Check if there is any free space on the device
 my $has_free_space = 0;
 if ($disk_structure && $disk_structure->{'entries'}) {
     foreach my $entry (@{$disk_structure->{'entries'}}) {
@@ -59,7 +59,7 @@ my $disk_blocks = ($disk_structure && $disk_structure->{'total_blocks'}) ? $disk
 print &ui_table_row($text{'nslice_diskblocks'}, $disk_blocks);
  
 # Start and end blocks (defaults to last slice+1). Allow prefill from query.
-my ($start, $end) = (2048, $disk_blocks);
+my ($start, $end) = (2048, $disk_blocks > 0 ? $disk_blocks - 1 : 0);
 foreach my $s (sort { $a->{'startblock'} <=> $b->{'startblock'} }
 		    @{$disk->{'slices'}}) {
 $start = $s->{'startblock'} + $s->{'blocks'}; # leave 1 block (512B) gap
