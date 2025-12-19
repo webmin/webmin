@@ -23,41 +23,65 @@ print &ui_hidden("device", $in{'device'});
 print &ui_hidden("slice", $in{'slice'});
 print &ui_table_start($text{'npart_header'}, undef, 2);
 
-# Partition number (first free)
+# Partition number (first free, skipping 'c' which is reserved for the whole slice)
 my %used = map { $_->{'letter'}, $_ } @{$slice->{'parts'}};
+$used{'c'} = 1;  # Reserve 'c' for the whole slice (BSD convention)
 my $l = 'a';
 while($used{$l}) {
 	$l++;
 	}
 print &ui_table_row($text{'npart_letter'},
-	&ui_textbox("letter", $l, 4));
+	&ui_textbox("letter", $l, 4) . " <i>(" . $text{'npart_creserved'} . ")</i>");
 
-# Available space in blocks
+# Slice size in blocks
 print &ui_table_row($text{'npart_diskblocks'},
 	$slice->{'blocks'});
 
-# Start and end blocks calculation
-my ($start, $end) = (0, $slice->{'blocks'});
-foreach my $p (sort { $a->{'startblock'} cmp $b->{'startblock'} }
-		    @{$slice->{'parts'}}) {
-	$start = $p->{'startblock'} + $p->{'blocks'} + 1;
-	}
-print &ui_table_row($text{'nslice_start'},
-	&ui_textbox("start", $start, 10));
-print &ui_table_row($text{'nslice_end'},
-	&ui_textbox("end", $end, 10));
-
-# Partition type selection
+# Start and end blocks for BSD partitions are SLICE-RELATIVE (not disk-absolute)
+# Start at 0 (or after last partition), end at slice size - 1
+my ($start, $end) = (0, $slice->{'blocks'} - 1);
+foreach my $p (sort { $a->{'startblock'} <=> $b->{'startblock'} }
+      @{$slice->{'parts'}}) {
+   # Partitions are already stored as slice-relative
+   $start = $p->{'startblock'} + $p->{'blocks'};
+}
+if (defined $in{'start'} && $in{'start'} =~ /^\d+$/) { $start = $in{'start'}; }
+if (defined $in{'end'} && $in{'end'} =~ /^\d+$/) { $end = $in{'end'}; }
+print &ui_table_row($text{'nslice_start'} . " " . $text{'npart_slicerel'},
+   &ui_textbox("start", $start, 10));
+print &ui_table_row($text{'nslice_end'} . " " . $text{'npart_slicerel'},
+    &ui_textbox("end", $end, 10));
+ 
+# Partition type
+# For BSD-on-MBR inner label partitions, offer FreeBSD partition types
+my $scheme = 'BSD';
+my $default_ptype = 'freebsd-ufs';
 print &ui_table_row($text{'npart_type'},
-	&ui_select("type", 'freebsd-ufs',
-		   [ &list_partition_types() ]));
-
-# Partition label (optional)
-print &ui_table_row($text{'npart_label'},
-	&ui_textbox("label", "", 20));
-
+   &ui_select("type", $default_ptype,
+               [ list_partition_types($scheme) ]));
+ 
 print &ui_table_end();
-print &ui_form_end([ [ undef, $text{'create'} ] ]);
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
+# Existing partitions summary
+if (@{$slice->{'parts'}||[]}) {
+    my $zfs = get_all_zfs_info();
+    print &ui_hr();
+    print &ui_columns_start([
+        $text{'slice_letter'}, $text{'slice_type'}, $text{'slice_start'}, $text{'slice_end'}, $text{'slice_size'}, $text{'slice_use'}, $text{'slice_role'}
+    ], $text{'epart_existing'});
+    foreach my $p (sort { $a->{'startblock'} <=> $b->{'startblock'} } @{$slice->{'parts'}}) {
+        my $ptype = get_type_description($p->{'type'}) || $p->{'type'};
+        my @stp = fdisk::device_status($p->{'device'});
+        my $usep = $zfs->{$p->{'device'}} || fdisk::device_status_link(@stp) || $text{'part_nouse'};
+        my $rolep = get_partition_role($p);
+        my $pb = bytes_from_blocks($p->{'device'}, $p->{'blocks'});
+        print &ui_columns_row([
+            uc($p->{'letter'}), $ptype, $p->{'startblock'}, $p->{'startblock'} + $p->{'blocks'} - 1, ($pb ? safe_nice_size($pb) : '-'), $usep, $rolep
+        ]);
+    }
+    print &ui_columns_end();
+}
+ 
 &ui_print_footer("edit_slice.cgi?device=$in{'device'}&slice=$in{'slice'}",
-		 $text{'slice_return'});
+         $text{'slice_return'});
