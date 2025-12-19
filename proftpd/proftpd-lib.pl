@@ -34,8 +34,10 @@ if ($oldsite{'size'} != $st[7] ||
 				}
 			}
 		close(MODS);
-		$site{'modules'} = join(" ", @mods);
-		&write_file("$module_config_directory/site", \%site);
+		if (!$? || !-r "$module_config_directory/site") {
+			$site{'modules'} = join(" ", @mods);
+			&write_file("$module_config_directory/site", \%site);
+			}
 		}
 	}
 
