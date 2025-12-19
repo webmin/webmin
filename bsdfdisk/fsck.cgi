@@ -16,20 +16,20 @@ my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error($text{'disk_egone'});
 my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}};
 $slice || &error($text{'slice_egone'});
-my ($object, $part);
+my $object = $slice;
+
+# Handle partitions if specified
+my $part;
 if ($in{'part'} ne '') {
 	($part) = grep { $_->{'letter'} eq $in{'part'} }
 		       @{$slice->{'parts'}};
 	$part || &error($text{'part_egone'});
 	$object = $part;
 	}
-else {
-	$object = $slice;
-	}
 
 &ui_print_unbuffered_header($object->{'desc'}, $text{'fsck_title'}, "");
 
-# Do the creation
+# Run filesystem check
 print &text('fsck_checking', "<tt>$object->{'device'}</tt>"),"<br>\n";
 print "<pre>\n";
 my $cmd = &get_check_filesystem_command($disk, $slice, $part);

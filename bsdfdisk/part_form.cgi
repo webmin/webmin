@@ -32,11 +32,11 @@ while($used{$l}) {
 print &ui_table_row($text{'npart_letter'},
 	&ui_textbox("letter", $l, 4));
 
-# Slice size in blocks
+# Available space in blocks
 print &ui_table_row($text{'npart_diskblocks'},
 	$slice->{'blocks'});
 
-# Start and end blocks (defaults to last part)
+# Start and end blocks calculation
 my ($start, $end) = (0, $slice->{'blocks'});
 foreach my $p (sort { $a->{'startblock'} cmp $b->{'startblock'} }
 		    @{$slice->{'parts'}}) {
@@ -47,10 +47,14 @@ print &ui_table_row($text{'nslice_start'},
 print &ui_table_row($text{'nslice_end'},
 	&ui_textbox("end", $end, 10));
 
-# Partition type
+# Partition type selection
 print &ui_table_row($text{'npart_type'},
-	&ui_select("type", '4.2BSD',
+	&ui_select("type", 'freebsd-ufs',
 		   [ &list_partition_types() ]));
+
+# Partition label (optional)
+print &ui_table_row($text{'npart_label'},
+	&ui_textbox("label", "", 20));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'create'} ] ]);
