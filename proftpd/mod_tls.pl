@@ -2,11 +2,11 @@
 sub mod_tls_directives
 {
 local $rv = [
-	[ 'TLSEngine', 0, 7, 'virtual global', 1.27, 10 ],
-	[ 'TLSRequired', 0, 7, 'virtual global', 1.27, 1 ],
-	[ 'TLSRSACertificateFile', 0, 7, 'virtual global', 1.27, 8 ],
-	[ 'TLSRSACertificateKeyFile', 0, 7, 'virtual global', 1.27, 7 ],
-	[ 'TLSCACertificateFile', 0, 7, 'virtual global', 1.27, 6 ],
+	[ 'TLSEngine', 0, 7, 'virtual root', 1.27, 10 ],
+	[ 'TLSRequired', 0, 7, 'virtual root', 1.27, 1 ],
+	[ 'TLSRSACertificateFile', 0, 7, 'virtual root', 1.27, 8 ],
+	[ 'TLSRSACertificateKeyFile', 0, 7, 'virtual root', 1.27, 7 ],
+	[ 'TLSCACertificateFile', 0, 7, 'virtual root', 1.27, 6 ],
 	];
 return &make_directives($rv, $_[0], "mod_tls");
 }
