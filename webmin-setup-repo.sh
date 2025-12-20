@@ -34,7 +34,7 @@ repo_auth_pass=""
 repo_mode="stable"
 
 download_curl="/usr/bin/curl"
-download="$download_curl -f -s -L -O"
+download="$download_curl -q -f -sS -L -O"
 force_setup=0
 
 # Colors
@@ -411,7 +411,7 @@ download_key() {
     rm -f "/tmp/$key"
     download_out=$($download "$repo_key_server/$key" 2>&1)
     if [ $? -ne 0 ]; then
-      post_status 1 "$(echo "$download_out" | tr '\n' ' ')"
+      post_status 1 "$(printf '%s : %s' "$repo_key_server/$key" "$download_out" | tr '\n' ' ')"
     fi
   done
 
