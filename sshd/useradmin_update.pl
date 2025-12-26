@@ -26,6 +26,9 @@ if ($config{'sync_create'} && &has_command($config{'keygen_path'}) &&
 		if (-r "$uinfo->{'home'}/.ssh/identity.pub") {
 			&copy_source_dest("$uinfo->{'home'}/.ssh/identity.pub", $akeys);
 			}
+		elsif (-r "$uinfo->{'home'}/.ssh/id_ed25519.pub") {
+			&copy_source_dest("$uinfo->{'home'}/.ssh/id_ed25519.pub", $akeys);
+			}
 		elsif (-r "$uinfo->{'home'}/.ssh/id_rsa.pub") {
 			&copy_source_dest("$uinfo->{'home'}/.ssh/id_rsa.pub", $akeys);
 			}
