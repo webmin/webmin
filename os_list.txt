@@ -128,6 +128,7 @@ Ubuntu Linux			$1	debian-linux	11.0	$os_release =~ /Ubuntu\s+(20\.[0-9\.]+)/ || 
 Ubuntu Linux			$1	debian-linux	12.0	$os_release =~ /Ubuntu\s+(21\.[0-9\.]+)/ || $etc_issue =~ /Ubuntu.*\s(21\.[0-9\.]+)\s/i || $etc_issue =~ /Ubuntu\s+(hirsute|impish)/i
 Ubuntu Linux			$1	debian-linux	13.0	$os_release =~ /Ubuntu\s+(22\.[0-9\.]+)/ || $etc_issue =~ /Ubuntu.*\s(22\.[0-9\.]+)\s/i || $etc_issue =~ /Ubuntu\s+jammy/i
 Ubuntu Linux			$1	debian-linux	14.0	$os_release =~ /Ubuntu\s+(24\.[0-9\.]+)/ || $etc_issue =~ /Ubuntu.*\s(24\.[0-9\.]+)\s/i || $etc_issue =~ /Ubuntu\s+noble/i
+Ubuntu Linux			$1	debian-linux	15.0	$os_release =~ /Ubuntu\s+(26\.[0-9\.]+)/ || $etc_issue =~ /Ubuntu.*\s(26\.[0-9\.]+)\s/i || $etc_issue =~ /Ubuntu\s+resolute/i
 Ubuntu Linux			$1	debian-linux	3.1	$etc_issue =~ /Ubuntu.*\s([0-9\.]+)\s/i
 Mepis Linux				$1	debian-linux	$1	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
 Mepis Linux				$1	debian-linux	4.0	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /(stable)/
