@@ -161,6 +161,7 @@ manual_efile=Invalid Apache config file
 manual_etest=Configuration file error detected : $1
 manual_editfile=Edit config file:
 manual_switch=Edit
+manual_evirt=Virtual host could not be found after manual changes - maybe the ServerName was changed?
 
 dir_title=Per-Directory Options
 dir_proxyall=All proxy requests

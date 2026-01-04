@@ -73,6 +73,14 @@ if ($config{'test_manual'}) {
 		&error(&text('manual_etest',
 			     "<pre>".&html_escape($err)."</pre>"));
 		}
+	if (defined($in{'virt'}) && !defined($in{'idx'})) {
+		undef(@get_config_cache);
+		($conf, $v) = &get_virtual_config($in{'virt'});
+		if (!$v) {
+			&copy_source_dest($temp, $file);
+			&error($text{'manual_evirt'});
+			}
+		}
 	}
 unlink($temp);
 &unlock_file($file);
