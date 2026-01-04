@@ -551,6 +551,9 @@ if [ "$istheme" = "1" -a "\$1" = "0" ]; then
 fi
 # Run the pre-uninstall script, if we are not upgrading
 if [ "$prog" = "webmin" -a "\$1" = "0" -a -r "/usr/libexec/$prog/$mod/uninstall.pl" ]; then
+	# Skip if replaced by a different package (wbm-foo - webmin-foo)
+	owner=\$(rpm -qf --qf '%%{NAME}\\n' "/usr/libexec/$prog/$mod/uninstall.pl" 2>/dev/null || true)
+	[ -n "\$owner" -a "\$owner" != "%{name}" ] && exit 0
 	cd /usr/libexec/$prog
 	WEBMIN_CONFIG=/etc/$prog WEBMIN_VAR=/var/$prog /usr/libexec/$prog/run-uninstalls.pl $mod
 fi

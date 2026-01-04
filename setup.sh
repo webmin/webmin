@@ -839,8 +839,8 @@ if [ "$upgrading" != 1 ]; then
 	# Enable HSTS by default
 	echo "ssl_hsts=1" >> $config_dir/miniserv.conf
 
-	# Enable force redirect to SSL by default
-	echo "ssl_enforce=1" >> $config_dir/miniserv.conf
+	# Enable force redirect to SSL with HSTS by default
+	echo "ssl_enforce=2" >> $config_dir/miniserv.conf
 
 	# Disallow unknown referers by default
 	echo "referers_none=1" >>$config_dir/config
@@ -851,10 +851,10 @@ else
 		echo "ssl_hsts=1" >> $config_dir/miniserv.conf
 	fi
 
-	# Enable force redirect to SSL if not set
+	# Enable force redirect to SSL with HSTS if not set
 	grep ssl_enforce= $config_dir/miniserv.conf >/dev/null
 	if [ "$?" != "0" ]; then
-		echo "ssl_enforce=1" >> $config_dir/miniserv.conf
+		echo "ssl_enforce=2" >> $config_dir/miniserv.conf
 	fi
 
 	# Disallow unknown referers if not set

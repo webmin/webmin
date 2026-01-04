@@ -1124,7 +1124,7 @@ else {
 	@v = ( );
 	}
 if ($type eq "A" || $type eq "AAAA") {
-	print &ui_table_row($text{'value_A1'},
+	print &ui_table_row($text{"value_${type}1"},
 	    &ui_textbox("value0", $v[0], 20)." ".
 	    (!defined($_[5]) && $type eq "A" ?
 	     &free_address_button("value0") : ""), 3);
