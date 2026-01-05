@@ -7214,8 +7214,9 @@ if ($gconfig{'logclear'}) {
     # check if it is time to clear the log
     my @st = stat("$webmin_logfile.time");
     my $write_logtime = 0;
+    my $log_time = $gconfig{'logtime'} || 168;
     if (@st) {
-        if ($st[9]+$gconfig{'logtime'}*60*60 < time()) {
+        if ($st[9]+$log_time*60*60 < time()) {
             # clear logfile and all diff files
             &unlink_file("$ENV{'WEBMIN_VAR'}/diffs");
             &unlink_file("$ENV{'WEBMIN_VAR'}/files");
