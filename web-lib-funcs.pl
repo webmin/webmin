@@ -8606,13 +8606,13 @@ foreach my $sn (keys %remote_session) {
 	my $server = $remote_session_server{$sn};
 	&remote_rpc_call($server, { 'action' => 'quit',
 			            'session' => $remote_session{$sn} } );
-	delete($remote_session{$sn});
-	delete($remote_session_server{$sn});
 	}
+%remote_session = ( );
+%remote_session_server = ( );
 foreach my $fh (keys %fast_fh_cache) {
 	close($fh);
-	delete($fast_fh_cache{$fh});
 	}
+%fast_fh_cache = ( );
 }
 
 =head2 remote_error_setup(&function)
