@@ -62,7 +62,7 @@ vec($rmask, fileno(MAIN), 1) = 1;
 if ($use_ipv6) {
 	vec($rmask, fileno(MAIN6), 1) = 1;
 	}
-$sel = select($rmask, undef, undef, 60);
+$sel = select($rmask, undef, undef, $gconfig{'rpc_timeout'} || 60);
 if ($sel <= 0) {
 	print STDERR "fastrpc: accept timed out\n"
 		if ($gconfig{'rpcdebug'});
@@ -87,7 +87,9 @@ while(1) {
 	# Wait for the request. Wait longer if this isn't the first one
 	my $rmask;
 	vec($rmask, fileno(SOCK), 1) = 1;
-	my $sel = select($rmask, undef, undef, $rcount ? 360 : 60);
+	my $timeout = $gconfig{'rpc_timeout'} ? $gconfig{'rpc_timeout'} :
+		      $rcount ? 360 : 60;
+	my $sel = select($rmask, undef, undef, $timeout);
 	if ($sel <= 0) {
 		print STDERR "fastrpc: session timed out\n"
 			if ($gconfig{'rpcdebug'});
