@@ -7779,6 +7779,7 @@ my $pid = &open_execute_command(OUT, "($realcmd) <".quotemeta($null_file), 1, $_
 my $start = time();
 my $timed_out = 0;
 my $linecount = 0;
+my $bufsize = $_[3] ? 80 : &get_buffer_size();
 while(1) {
 	my $elapsed = time() - $start;
 	last if ($elapsed > $_[1]);
@@ -7787,7 +7788,7 @@ while(1) {
 	my $sel = select($rmask, undef, undef, $_[1] - $elapsed);
 	last if (!$sel || $sel < 0);
 	my $line;
-	my $got = read(OUT, $line, 1);
+	my $got = read(OUT, $line, $bufsize);
 	last if (!$got);
 	$out .= $line;
 	$linecount += scalar(() = $out =~ /\n/g);
