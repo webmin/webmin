@@ -406,18 +406,25 @@ if ($config{'attribs'}) {
 			push(@attribs, [ $2, $7 ]);
 			}
 		elsif (/^\s*(\d+)\s+(\S+)\s+(0x\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)/) {
-			# A new-style vendor attribute
+			# A new-style vendor attribute, like :
+			#   1 Raw_Read_Error_Rate     0x000f   130   130   039    Pre-fail  Always       -       4294967295
 			$doneknown = 1;
 			push(@attribs, [ $2, $10, undef, $4 ]);
 			$attribs[$#attribs]->[0] =~ s/_/ /g;
 			}
-		elsif (/^((\w+.*):\s+([0-9]+(,[0-9]+)+)|(\w+.*):\s+(\d+x\d+)|(\w+.*):\s+(\d+%)|^(\w+.*):\s+(\d+))/) {
-			# NVME style
+		elsif (/^((\w+.*):\s+([0-9]+(,[0-9]+)+)|(\w+.*):\s+(\d+x\d+)|(\w+.*):\s+(\d+%)|^(\w+.*):\s+(\d+))$/) {
+			# NVME style (what is this like??)
 			$doneknown = 1;
 			push(@attribs, [ $5 || $7 || $9 || $2, $6 || $8 || $10 || $3, undef, undef ]);
 			}
+		elsif (/^([A-Z][^:]+):\s+(\S.*)$/) {
+			# Some other attribute like :
+			# Form Factor:      2.5 inches
+			push(@attribs, [ $1, $2 ]);
+			}
 		elsif (/^(\S.*\S):\s+\(\s*(\S+)\)\s*(.*)/ && !$doneknown) {
-			# A known attribute
+			# A known attribute, like :
+			# Offline data collection status:  (0x02)	Offline data collection activity
 			local $attrib = [ $1, $2, $3 ];
 			if ($lastline =~ /^\S/ && $lastline !~ /:/) {
 				$attrib->[0] = $lastline." ".$attrib->[0];
@@ -425,7 +432,8 @@ if ($config{'attribs'}) {
 			push(@attribs, $attrib);
 			}
 		elsif (/^\s+(\S.*)/ && @attribs && !$doneknown) {
-			# Continuation of a known attribute description
+			# Continuation of a known attribute description, like :
+			# 			was completed without error.
 			local $cont = $1;
 			local $ls = $attribs[$#attribs];
 			if ($ls->[2] =~ /\.\s*$/) {
