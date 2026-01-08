@@ -8707,7 +8707,9 @@ if ($serv->{'fast'} || !$sn) {
 		my $line = &read_http_connection($con);
 		$line =~ tr/\r\n//d;
 		if ($line =~ /^HTTP\/1\..\s+40[13]\s+/) {
-			return &$main::remote_error_handler("Login to RPC server as $user rejected");
+			my $username = $user;
+			$username ||= 'unknown';
+			return &$main::remote_error_handler("Login to RPC server as user \"$username\" rejected");
 			}
 		$line || return &$main::remote_error_handler("HTTP error : No status line");
 		$line =~ /^HTTP\/1\..\s+200\s+/ ||
