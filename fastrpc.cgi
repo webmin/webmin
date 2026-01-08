@@ -78,22 +78,30 @@ else {
 	die "No connection on any socket!";
 	}
 die "accept failed : $!" if (!$acptaddr);
-$oldsel = select(SOCK);
+my $oldsel = select(SOCK);
 $| = 1;
 select($oldsel);
 
-$rcount = 0;
-@childpids = ( );
+my $rcount = 0;
+my %xfer_kids;
 while(1) {
+	foreach my $p (keys %xfer_kids) {
+		my $waited_pid = waitpid($p, POSIX::WNOHANG());
+		delete($xfer_kids{$p}) if ($waited_pid > 0 || $waited_pid == -1);
+		}
 	# Wait for the request. Wait longer if this isn't the first one
 	my $rmask;
 	vec($rmask, fileno(SOCK), 1) = 1;
-	@childpids = grep { kill(0, $_) } @childpids;
-	my $timeout = @childpids ? undef :
-		      $gconfig{'rpc_timeout'} ? $gconfig{'rpc_timeout'} :
-		      $rcount ? 360 : 60;
+	my $timeout = $gconfig{'rpc_timeout'}
+		? $gconfig{'rpc_timeout'}
+		: $rcount
+			? 360
+			: 60;
 	my $sel = select($rmask, undef, undef, $timeout);
 	if ($sel <= 0) {
+		# Don't kill the control session while a tcpwrite/tcpread is
+		# running
+		next if (keys %xfer_kids);
 		print STDERR "fastrpc: session timed out\n"
 			if ($gconfig{'rpcdebug'});
 		last;
@@ -116,7 +124,6 @@ while(1) {
 
 	# Process it
 	my $rv;
-	my $tcppid;
 	if ($arg->{'action'} eq 'ping') {
 		# Just respond with an OK
 		print STDERR "fastrpc: ping\n" if ($gconfig{'rpcdebug'});
@@ -157,10 +164,17 @@ while(1) {
 		my $tsock6 = $use_ipv6 ? time().$$."v6" : undef;
 		my $tport = $port + 1;
 		&allocate_socket($tsock, $tsock6, \$tport);
-		$tcppid = fork();
-		if (!$tcppid) {
+		my $cpid = fork();
+		if (!defined($cpid)) {
+			$rv = { 'status' => 0, 'rv' => "fork() failed : $!" };
+			}
+		elsif ($cpid == 0) {
+			close(SOCK);
+			close(MAIN);
+			close(MAIN6) if ($use_ipv6);
 			# Accept connection in separate process
-			print STDERR "fastrpc: tcpwrite $file port $tport\n" if ($gconfig{'rpcdebug'});
+			print STDERR "fastrpc: tcpwrite $file port $tport\n"
+				if ($gconfig{'rpcdebug'});
 			my $rmask;
 			vec($rmask, fileno($tsock), 1) = 1;
 			if ($use_ipv6) {
@@ -199,10 +213,14 @@ while(1) {
 			close(TRANS);
 			exit;
 			}
+		else {
+			$xfer_kids{$cpid} = 1;
+			print STDERR "fastrpc: tcpwrite $file started\n"
+				if ($gconfig{'rpcdebug'});
+			$rv = { 'status' => 1, 'rv' => [ $file, $tport ] };
+			}
 		close($tsock);
-		close($tsock6);
-		print STDERR "fastrpc: tcpwrite $file done\n" if ($gconfig{'rpcdebug'});
-		$rv = { 'status' => 1, 'rv' => [ $file, $tport ] };
+		close($tsock6) if ($use_ipv6);
 		}
 	elsif ($arg->{'action'} eq 'read') {
 		# Transfer data from a file
@@ -232,8 +250,14 @@ while(1) {
 			my $tsock6 = $use_ipv6 ? time().$$."v6" : undef;
 			my $tport = $port + 1;
 			&allocate_socket($tsock, $tsock6, \$tport);
-			$tcppid = fork();
-			if (!$tcppid) {
+			my $cpid = fork();
+			if (!defined($cpid)) {
+				$rv = { 'status' => 0, 'rv' => "fork() failed : $!" };
+				}
+			elsif ($cpid == 0) {
+				close(SOCK);
+				close(MAIN);
+				close(MAIN6) if ($use_ipv6);
 				# Accept connection in separate process
 				my $rmask;
 				vec($rmask, fileno($tsock), 1) = 1;
@@ -256,11 +280,17 @@ while(1) {
 				close(TRANS);
 				exit;
 				}
+			else {
+				$xfer_kids{$cpid} = 1;
+				print STDERR "fastrpc: tcpread $arg->{'file'} ".
+					     "started\n"
+					     	if ($gconfig{'rpcdebug'});
+				$rv = { 'status' => 1,
+					'rv' => [ $arg->{'file'}, $tport ] };
+				}
 			close(FILE);
 			close($tsock);
-			close($tsock6);
-			print STDERR "fastrpc: tcpread $arg->{'file'} done\n" if ($gconfig{'rpcdebug'});
-			$rv = { 'status' => 1, 'rv' => [ $arg->{'file'}, $tport ] };
+			close($tsock6) if ($use_ipv6);
 			}
 		}
 	elsif ($arg->{'action'} eq 'require') {
@@ -335,17 +365,6 @@ while(1) {
 	# Send back to the client
 	print SOCK length($rawrv),"\n";
 	print SOCK $rawrv;
-
-	# If a process was forked for a file transfer, wait for it if requested
-	if ($tcppid) {
-		if ($arg->{'wait'}) {
-			waitpid($tcppid, 0);
-			}
-		else {
-			push(@childpids, $tcppid);
-			}
-		}
-
 	last if ($arg->{'action'} eq 'quit');
 	$rcount++;
 	}
