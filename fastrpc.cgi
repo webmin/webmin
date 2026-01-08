@@ -10,6 +10,10 @@ use POSIX;
 use Socket;
 $force_lang = $default_lang;
 &init_config();
+
+use constant DEFAULT_RPC_TIMEOUT     => 60;
+use constant DEFAULT_RPC_IDLE_FACTOR => 6;
+
 print "Content-type: text/plain\n\n";
 
 # Can this user make remote calls?
@@ -45,6 +49,16 @@ else {
 $version = &get_webmin_version();
 print "1 $port $sid $version\n";
 
+# Timeout
+my $rpc_idle_factor = $gconfig{'rpc_idle_factor'} || DEFAULT_RPC_IDLE_FACTOR;
+if ($rpc_idle_factor !~ /^\d+$/ || $rpc_idle_factor < 1) {
+	$rpc_idle_factor = DEFAULT_RPC_IDLE_FACTOR;
+	}
+my $config_rpc_timeout = $gconfig{'rpc_timeout'} || DEFAULT_RPC_TIMEOUT;
+if ($config_rpc_timeout !~ /^\d+$/ || $config_rpc_timeout < 1) {
+	$config_rpc_timeout = DEFAULT_RPC_TIMEOUT;
+	}
+
 # Fork and listen for calls ..
 $pid = fork();
 if ($pid < 0) {
@@ -62,7 +76,7 @@ vec($rmask, fileno(MAIN), 1) = 1;
 if ($use_ipv6) {
 	vec($rmask, fileno(MAIN6), 1) = 1;
 	}
-$sel = select($rmask, undef, undef, $gconfig{'rpc_timeout'} || 60);
+$sel = select($rmask, undef, undef, $config_rpc_timeout);
 if ($sel <= 0) {
 	print STDERR "fastrpc: accept timed out\n"
 		if ($gconfig{'rpcdebug'});
@@ -92,11 +106,9 @@ while(1) {
 	# Wait for the request. Wait longer if this isn't the first one
 	my $rmask;
 	vec($rmask, fileno(SOCK), 1) = 1;
-	my $timeout = $gconfig{'rpc_timeout'}
-		? $gconfig{'rpc_timeout'}
-		: $rcount
-			? 360
-			: 60;
+	my $timeout = $rcount
+			? $config_rpc_timeout * $rpc_idle_factor
+			: $config_rpc_timeout;
 	my $sel = select($rmask, undef, undef, $timeout);
 	if ($sel <= 0) {
 		# Don't kill the control session while a tcpwrite/tcpread is
