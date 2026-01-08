@@ -8812,7 +8812,7 @@ if ($serv->{'fast'} || !$sn) {
 	my $rstr = <$fh>;
 	if ($rstr eq '') {
 		return &$main::remote_error_handler(
-			"Error reading response length from fastrpc.cgi : $!")
+			"Error reading response length from fastrpc.cgi : $!");
 		}
 	my $rlen = int($rstr);
 	my ($fromstr, $got);
