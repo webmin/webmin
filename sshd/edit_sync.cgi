@@ -25,7 +25,7 @@ print &ui_table_row($text{'sync_pass'},
 print &ui_table_row($text{'sync_type'},
       &ui_select("type", $config{'sync_type'},
 		 [ [ "", $text{'sync_auto'} ],
-		   [ "rsa" ], [ "dsa" ], [ "rsa1" ], [ "ed25519" ] ]));
+		   [ "ed25519" ], [ "rsa" ], [ "dsa" ], [ "rsa1" ] ]));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);

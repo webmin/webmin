@@ -174,6 +174,11 @@ print &ui_table_row($text{'session_md5'},
 		    [ 2, $text{'session_sha512'}."<br>" ],
 		    [ 3, $text{'session_yescrypt'} ] ]));
 
+# RPC timeout
+print &ui_table_row(&hlink($text{'session_rpc_timeout'}, 'rpc_timeout'),
+	&ui_textbox("rpc_timeout", $gconfig{'rpc_timeout'} || 60, 3).
+	" ".$text{'time_seconds'});
+
 print ui_table_end();
 print ui_form_end([ [ "save", $text{'save'} ] ]);
 

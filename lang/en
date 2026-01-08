@@ -475,6 +475,14 @@ time_in_mins=In $1 minutes
 time_in_sec=In $1 second
 time_in_secs=In $1 seconds
 time_now=Just now
+time_second=second
+time_seconds=seconds
+time_minute=minute
+time_minutes=minutes
+time_hour=hour
+time_hours=hours
+time_day=day
+time_days=days
 
 defcert_error=Default $1 bundled SSL certificate is being used. It is highly advised to update default <tt>$2</tt> certificate before proceeding with login.
 

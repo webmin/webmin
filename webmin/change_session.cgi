@@ -180,6 +180,12 @@ $in{'passreset_timeout'} =~ /^\d+$/ && $in{'passreset_timeout'} > 0 ||
 		&error($text{'session_epassreset_timeout'});
 $gconfig{'passreset_timeout'} = $in{'passreset_timeout'};
 
+# RPC timeout
+my $rpc_timeout = $in{'rpc_timeout'};
+$rpc_timeout =~ /^\d+$/ && $rpc_timeout > 0 ||
+	&error($text{'session_erpc_timeout'});
+$gconfig{'rpc_timeout'} = $rpc_timeout;
+
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");
 
