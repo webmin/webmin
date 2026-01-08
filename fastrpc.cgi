@@ -11,8 +11,8 @@ use Socket;
 $force_lang = $default_lang;
 &init_config();
 
-use constant DEFAULT_RPC_TIMEOUT     => 60;
-use constant DEFAULT_RPC_IDLE_FACTOR => 6;
+my $DEFAULT_RPC_TIMEOUT = 60;
+my $DEFAULT_RPC_IDLE_FACTOR = 6;
 
 print "Content-type: text/plain\n\n";
 
@@ -50,13 +50,13 @@ $version = &get_webmin_version();
 print "1 $port $sid $version\n";
 
 # Timeout
-my $rpc_idle_factor = $gconfig{'rpc_idle_factor'} || DEFAULT_RPC_IDLE_FACTOR;
+my $rpc_idle_factor = $gconfig{'rpc_idle_factor'} || $DEFAULT_RPC_IDLE_FACTOR;
 if ($rpc_idle_factor !~ /^\d+$/ || $rpc_idle_factor < 1) {
-	$rpc_idle_factor = DEFAULT_RPC_IDLE_FACTOR;
+	$rpc_idle_factor = $DEFAULT_RPC_IDLE_FACTOR;
 	}
-my $config_rpc_timeout = $gconfig{'rpc_timeout'} || DEFAULT_RPC_TIMEOUT;
+my $config_rpc_timeout = $gconfig{'rpc_timeout'} || $DEFAULT_RPC_TIMEOUT;
 if ($config_rpc_timeout !~ /^\d+$/ || $config_rpc_timeout < 1) {
-	$config_rpc_timeout = DEFAULT_RPC_TIMEOUT;
+	$config_rpc_timeout = $DEFAULT_RPC_TIMEOUT;
 	}
 
 # Fork and listen for calls ..
@@ -99,10 +99,12 @@ select($oldsel);
 my $rcount = 0;
 my %xfer_kids;
 while(1) {
+	# Clean up the list of waiting sub-processes
 	foreach my $p (keys %xfer_kids) {
 		my $waited_pid = waitpid($p, POSIX::WNOHANG());
 		delete($xfer_kids{$p}) if ($waited_pid > 0 || $waited_pid == -1);
 		}
+
 	# Wait for the request. Wait longer if this isn't the first one
 	my $rmask;
 	vec($rmask, fileno(SOCK), 1) = 1;
