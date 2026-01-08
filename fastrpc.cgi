@@ -47,7 +47,7 @@ print "1 $port $sid $version\n";
 
 # Fork and listen for calls ..
 $pid = fork();
-if ($pid < 0) {
+if (!defined($pid) || $pid < 0) {
 	die "fork() failed : $!";
 	}
 elsif ($pid) {
@@ -158,6 +158,7 @@ while(1) {
 		my $tport = $port + 1;
 		&allocate_socket($tsock, $tsock6, \$tport);
 		$tcppid = fork();
+		die "fork() failed : $!" if (!defined($tcppid) || $tcppid < 0);
 		if (!$tcppid) {
 			# Accept connection in separate process
 			print STDERR "fastrpc: tcpwrite $file port $tport\n" if ($gconfig{'rpcdebug'});
@@ -233,6 +234,7 @@ while(1) {
 			my $tport = $port + 1;
 			&allocate_socket($tsock, $tsock6, \$tport);
 			$tcppid = fork();
+			die "fork() failed : $!" if (!defined($tcppid) || $tcppid < 0);
 			if (!$tcppid) {
 				# Accept connection in separate process
 				my $rmask;
