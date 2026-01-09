@@ -287,7 +287,7 @@
 * Fix to using the `qrencode` command to generate QR codes locally instead of the remote Google Chart API
 * Fix a number of various other issues
 
-#### 2.105 (November 09, 2023)
+#### 2.105 (November 9, 2023)
 * Fix param to read only headers [sourceforge.net/usermin-bugs#501](https://sourceforge.net/p/webadmin/usermin-bugs/501/)
 * Fix not to set `reuse` flag on initial Let's Encrypt request
 * Fix to correctly escape mail file names upon deletion
@@ -302,7 +302,7 @@
 * Fix the absent init script for legacy systems after the initial installation
 * Update the Authentic theme to the latest version with various fixes and improvements
 
-#### 2.103 (October 08, 2023)
+#### 2.103 (October 8, 2023)
 * Add support for hostname detection using `hostnamectl` command
 * Add support for other ACME services
 * Add ability to hide dotfiles in File Manager [#1578](https://github.com/webmin/authentic-theme/issues/1578)
@@ -351,7 +351,7 @@
 * Fix clearing packages caches before checking for updates in status collection #1863
 * Update the Authentic theme to the latest version
 
-#### 2.020 (March 08, 2023)
+#### 2.020 (March 8, 2023)
 * Add full locale support
 * Add slave zone file format option in BIND DNS module
 * Add support for editing ACLs in File Manager
@@ -521,10 +521,10 @@ This release updates the built-in Let's Encrypt client, adds support for creatin
 #### Version 1.930 (August 18, 2019)
 These updates fix a [security vulnerability](http://webmin.com/security.html) and should be installed IMMEDIATELY by all users. Although it is not exploitable in a Webmin install with the default configuration, upgrading is strongly recommended.
 
-#### Version 1.920 (July 04, 2019)
+#### Version 1.920 (July 4, 2019)
 This update includes the latest theme version, translation updates, the ability to disable hosts file entries, easier monitoring of bootup actions, and a bunch of bugfixes.
 
-#### Version 1.910 (May 09, 2019)
+#### Version 1.910 (May 9, 2019)
 This release includes theme and translation updates, a page for editing package repositories, cron and status module improvements, and a bunch of other bugfixes and small improvements.
 
 #### Version 1.900 (November 19, 2018)
@@ -536,7 +536,7 @@ This version includes Ubuntu 18 network config support, translation updates, mul
 #### Version 1.880 (March 16, 2018)
 This version includes German, Catalan and Bulgarian translation updates, a new version of the Authentic theme, support for directly editing the MySQL and PostgreSQL config files, Let's Encrypt bugfixes, more control over system status email notifications, and more.
 
-#### Version 1.870 (December 08, 2018)
+#### Version 1.870 (December 8, 2018)
 This release includes many translation updates, fixes for Let's Encrypt support, UI cleanups, and most importantly a new major version of the Authentic theme.
 
 #### Version 1.860 (October 10, 2017)
@@ -545,7 +545,7 @@ This release includes Let's Encrypt DNS fixes, Majordomo module improvements, XS
 #### Version 1.850 (June 28, 2017)
 This release includes Let's Encrypt fixes, Majordomo module improvements, FirewallD forwarding support, translation updates, an update to the Authentic theme, and a bunch of other bugfixes.
 
-#### Version 1.840 (May 08, 2017)
+#### Version 1.840 (May 8, 2017)
 This major release includes a large theme update, XSS security fixes, per-domain SSL cert support, thin-provisioned LVM support, Let's Encrypt improvements, translation updates, and the usual gang of bugfixes. Also available is Usermin 1.710, which contains many of the same updates.
 
 #### Version 1.830 (December 29, 2016)
