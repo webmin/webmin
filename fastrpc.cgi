@@ -78,7 +78,7 @@ if ($use_ipv6) {
 	}
 $sel = select($rmask, undef, undef, $config_rpc_timeout);
 if ($sel <= 0) {
-	print STDERR "fastrpc: accept timed out\n"
+	print STDERR "fastrpc[$$]: accept timed out\n"
 		if ($gconfig{'rpcdebug'});
 	exit;
 	}
@@ -115,8 +115,15 @@ while(1) {
 	if ($sel <= 0) {
 		# Don't kill the control session while a tcpwrite/tcpread is
 		# running
-		next if (keys %xfer_kids);
-		print STDERR "fastrpc: session timed out\n"
+		my $nk = scalar(keys %xfer_kids);
+		if ($nk) {
+			print STDERR "fastrpc[$$]: idle timeout, but $nk ".
+				     "transfer(s) active: ".
+				     join(",", sort keys %xfer_kids)."\n"
+				if ($gconfig{'rpcdebug'});
+			next;
+			}
+		print STDERR "fastrpc[$$]: session timed out\n"
 			if ($gconfig{'rpcdebug'});
 		last;
 		}
@@ -132,7 +139,7 @@ while(1) {
 		exit if ($rv <= 0);
 		$rawarg .= $got;
 		}
-	print STDERR "fastrpc: raw $rawarg\n" if ($gconfig{'rpcdebug'});
+	print STDERR "fastrpc[$$]: raw $rawarg\n" if ($gconfig{'rpcdebug'});
 	my $dumper = substr($rawarg, 0, 5) eq '$VAR1' ? 1 : 0;
 	my $arg = &unserialise_variable($rawarg);
 
@@ -140,19 +147,19 @@ while(1) {
 	my $rv;
 	if ($arg->{'action'} eq 'ping') {
 		# Just respond with an OK
-		print STDERR "fastrpc: ping\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: ping\n" if ($gconfig{'rpcdebug'});
 		$rv = { 'status' => 1 };
 		}
 	elsif ($arg->{'action'} eq 'check') {
 		# Check if some module is supported
-		print STDERR "fastrpc: check $arg->{'module'}\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: check $arg->{'module'}\n" if ($gconfig{'rpcdebug'});
 		$rv = { 'status' => 1,
 			'rv' => &foreign_check($arg->{'module'}, undef, undef,
 					       $arg->{'api'}) };
 		}
 	elsif ($arg->{'action'} eq 'config') {
 		# Get the config for some module
-		print STDERR "fastrpc: config $arg->{'module'}\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: config $arg->{'module'}\n" if ($gconfig{'rpcdebug'});
 		my %config = &foreign_config($arg->{'module'});
 		$rv = { 'status' => 1, 'rv' => \%config };
 		}
@@ -161,7 +168,7 @@ while(1) {
 		my $file = $arg->{'file'} ? $arg->{'file'} :
 			      $arg->{'name'} ? &tempname($arg->{'name'}) :
 					       &tempname();
-		print STDERR "fastrpc: write $file\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: write $file\n" if ($gconfig{'rpcdebug'});
 		open(FILE, ">$file");
 		binmode(FILE);
 		print FILE $arg->{'data'};
@@ -173,7 +180,7 @@ while(1) {
 		my $file = $arg->{'file'} ? $arg->{'file'} :
 			      $arg->{'name'} ? &tempname($arg->{'name'}) :
 					       &tempname();
-		print STDERR "fastrpc: tcpwrite $file\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: tcpwrite $file\n" if ($gconfig{'rpcdebug'});
 		my $tsock = time().$$;
 		my $tsock6 = $use_ipv6 ? time().$$."v6" : undef;
 		my $tport = $port + 1;
@@ -187,7 +194,7 @@ while(1) {
 			close(MAIN);
 			close(MAIN6) if ($use_ipv6);
 			# Accept connection in separate process
-			print STDERR "fastrpc: tcpwrite $file port $tport\n"
+			print STDERR "fastrpc[$$]: tcpwrite $file port $tport\n"
 				if ($gconfig{'rpcdebug'});
 			my $rmask;
 			vec($rmask, fileno($tsock), 1) = 1;
@@ -202,12 +209,12 @@ while(1) {
 			elsif ($use_ipv6 && vec($rmask, fileno($tsock6), 1)) {
 				accept(TRANS, $tsock6) || exit;
 				}
-			print STDERR "fastrpc: tcpwrite $file accepted\n" if ($gconfig{'rpcdebug'});
+			print STDERR "fastrpc[$$]: tcpwrite $file accepted\n" if ($gconfig{'rpcdebug'});
 			my $buf;
 			my $err;
 			if (open(FILE, ">$file")) {
 				binmode(FILE);
-				print STDERR "fastrpc: tcpwrite $file writing\n" if ($gconfig{'rpcdebug'});
+				print STDERR "fastrpc[$$]: tcpwrite $file writing\n" if ($gconfig{'rpcdebug'});
 				my $bs = &get_buffer_size();
 				while(read(TRANS, $buf, $bs) > 0) {
 					my $ok = (print FILE $buf);
@@ -217,10 +224,10 @@ while(1) {
 						}
 					}
 				close(FILE);
-				print STDERR "fastrpc: tcpwrite $file written\n" if ($gconfig{'rpcdebug'});
+				print STDERR "fastrpc[$$]: tcpwrite $file written\n" if ($gconfig{'rpcdebug'});
 				}
 			else {
-				print STDERR "fastrpc: tcpwrite $file open failed $!\n" if ($gconfig{'rpcdebug'});
+				print STDERR "fastrpc[$$]: tcpwrite $file open failed $!\n" if ($gconfig{'rpcdebug'});
 				$err = "Failed to open $file : $!";
 				}
 			print TRANS $err ? "$err\n" : "OK\n";
@@ -229,7 +236,7 @@ while(1) {
 			}
 		else {
 			$xfer_kids{$cpid} = 1;
-			print STDERR "fastrpc: tcpwrite $file started\n"
+			print STDERR "fastrpc[$$]: tcpwrite $file started\n"
 				if ($gconfig{'rpcdebug'});
 			$rv = { 'status' => 1, 'rv' => [ $file, $tport ] };
 			}
@@ -238,7 +245,7 @@ while(1) {
 		}
 	elsif ($arg->{'action'} eq 'read') {
 		# Transfer data from a file
-		print STDERR "fastrpc: read $arg->{'file'}\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: read $arg->{'file'}\n" if ($gconfig{'rpcdebug'});
 		my ($data, $got);
 		open(FILE, "<$arg->{'file'}");
 		binmode(FILE);
@@ -251,7 +258,7 @@ while(1) {
 		}
 	elsif ($arg->{'action'} eq 'tcpread') {
 		# Transfer data from a file over TCP connection
-		print STDERR "fastrpc: tcpread $arg->{'file'}\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: tcpread $arg->{'file'}\n" if ($gconfig{'rpcdebug'});
 		if (-d $arg->{'file'}) {
 			$rv = { 'status' => 1, 'rv' => [ undef, "$arg->{'file'} is a directory" ] };
 			}
@@ -296,7 +303,7 @@ while(1) {
 				}
 			else {
 				$xfer_kids{$cpid} = 1;
-				print STDERR "fastrpc: tcpread $arg->{'file'} ".
+				print STDERR "fastrpc[$$]: tcpread $arg->{'file'} ".
 					     "started\n"
 					     	if ($gconfig{'rpcdebug'});
 				$rv = { 'status' => 1,
@@ -309,23 +316,23 @@ while(1) {
 		}
 	elsif ($arg->{'action'} eq 'require') {
 		# require a library
-		print STDERR "fastrpc: require $arg->{'module'}/$arg->{'file'}\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: require $arg->{'module'}/$arg->{'file'}\n" if ($gconfig{'rpcdebug'});
 		eval {
 			&foreign_require($arg->{'module'},
 					 $arg->{'file'});
 			};
 		if ($@) {
-			print STDERR "fastrpc: require error $@\n" if ($gconfig{'rpcdebug'});
+			print STDERR "fastrpc[$$]: require error $@\n" if ($gconfig{'rpcdebug'});
 			$rv = { 'status' => 0, 'rv' => $@ };
 			}
 		else {
-			print STDERR "fastrpc: require done\n" if ($gconfig{'rpcdebug'});
+			print STDERR "fastrpc[$$]: require done\n" if ($gconfig{'rpcdebug'});
 			$rv = { 'status' => 1 };
 			}
 		}
 	elsif ($arg->{'action'} eq 'call') {
 		# execute a function
-		print STDERR "fastrpc: call $arg->{'module'}::$arg->{'func'}(",join(",", @{$arg->{'args'}}),")\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: call $arg->{'module'}::$arg->{'func'}(",join(",", @{$arg->{'args'}}),")\n" if ($gconfig{'rpcdebug'});
 		my @rv;
 		eval {
 			local $main::error_must_die = 1;
@@ -334,7 +341,7 @@ while(1) {
 					    @{$arg->{'args'}});
 			};
 		if ($@) {
-			print STDERR "fastrpc: call error $@\n" if ($gconfig{'rpcdebug'});
+			print STDERR "fastrpc[$$]: call error $@\n" if ($gconfig{'rpcdebug'});
 			$rv = { 'status' => 0, 'rv' => $@ };
 			}
 		elsif (@rv == 1) {
@@ -343,11 +350,11 @@ while(1) {
 		else {
 			$rv = { 'status' => 1, 'arv' => \@rv };
 			}
-		print STDERR "fastrpc: call $arg->{'module'}::$arg->{'func'} done = ",join(",", @rv),"\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: call $arg->{'module'}::$arg->{'func'} done = ",join(",", @rv),"\n" if ($gconfig{'rpcdebug'});
 		}
 	elsif ($arg->{'action'} eq 'eval') {
 		# eval some perl code
-		print STDERR "fastrpc: eval $arg->{'module'} $arg->{'code'}\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: eval $arg->{'module'} $arg->{'code'}\n" if ($gconfig{'rpcdebug'});
 		my $erv;
 		if ($arg->{'module'}) {
 			my $pkg = $arg->{'module'};
@@ -358,7 +365,7 @@ while(1) {
 		else {
 			$erv = eval $arg->{'code'};
 			}
-		print STDERR "fastrpc: eval $arg->{'module'} $arg->{'code'} done = $rv error = $@\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: eval $arg->{'module'} $arg->{'code'} done = $rv error = $@\n" if ($gconfig{'rpcdebug'});
 		if ($@) {
 			$rv = { 'status' => 0, 'rv' => $@ };
 			}
@@ -367,11 +374,11 @@ while(1) {
 			}
 		}
 	elsif ($arg->{'action'} eq 'quit') {
-		print STDERR "fastrpc: quit\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: quit\n" if ($gconfig{'rpcdebug'});
 		$rv = { 'status' => 1 };
 		}
 	else {
-		print STDERR "fastrpc: unknown $arg->{'action'}\n" if ($gconfig{'rpcdebug'});
+		print STDERR "fastrpc[$$]: unknown $arg->{'action'}\n" if ($gconfig{'rpcdebug'});
 		$rv = { 'status' => 0 };
 		}
 	$rawrv = &serialise_variable($rv, $dumper);
