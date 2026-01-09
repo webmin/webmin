@@ -8542,8 +8542,19 @@ else {
 	open(FILE, "<".$localfile) ||
 		return &$main::remote_error_handler("Failed to open $localfile : $!");
 	my $bs = &get_buffer_size();
+	my $last_ping = time();
+	my $ping_every = int(($gconfig{'rpc_timeout'} || 60) / 2);
+	$ping_every = 30 if ($ping_every < 30);
 	while(read(FILE, $got, $bs) > 0) {
 		print TWRITE $got;
+		if (time() - $last_ping >= $ping_every) {
+			eval {
+				local $main::remote_error_handler =
+					sub { return undef; };
+				&remote_rpc_call($host, { 'action' => 'ping' });
+				};
+			$last_ping = time();
+			}
 		}
 	close(FILE);
 	shutdown(TWRITE, 1);
@@ -8587,8 +8598,19 @@ else {
 	open(FILE, ">$localfile") ||
 		return &$main::remote_error_handler("Failed to open $localfile : $!");
 	my $bs = &get_buffer_size();
+	my $last_ping = time();
+	my $ping_every = int(($gconfig{'rpc_timeout'} || 60) / 2);
+	$ping_every = 30 if ($ping_every < 30);
 	while(read(TREAD, $got, $bs) > 0) {
 		print FILE $got;
+		if (time() - $last_ping >= $ping_every) {
+			eval {
+				local $main::remote_error_handler =
+					sub { return undef; };
+				&remote_rpc_call($host, { 'action' => 'ping' });
+				};
+			$last_ping = time();
+			}
 		}
 	close(FILE);
 	close(TREAD);
