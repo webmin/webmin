@@ -1,5 +1,22 @@
 ## Changelog
 
+#### 2.620 (January 9, 2026)
+* Add ability to use correct driver depending on the database in MySQL/MariaDB module
+* Add improvements to BIND DNS module for better key management
+* Add support for Ubuntu 26.04 development preview
+* Add a config option to increase the RPC timeout
+* Add support for EC SSL certificate and key in the ProFTPd module
+* Add support for using `gpart` in FreeBSD disk management module
+* Add support for Ed25519 public key in User and Groups module
+* Fix RPC session timeout during large file transfers
+* Fix selection and configuration of TLS certificate and key in the ProFTPd module
+* Update Authentic theme to the latest version with various improvements and fixes:
+  * Add support for multiple scrollable tabs in the File Manager
+  * Fix displaying of the right-side toolbar in File Manager when using Safari
+  * Fix to print menu separator when no virtual servers are added yet in Virtualmin
+  * Fix bugs in white palette
+  * Fix exported file name in data tables
+
 #### 2.610 (November 23, 2025)
 * Fix to drop dependency on `IO::Pty` Perl module
 * Fix `virtual-server` module server-side search to work correctly
