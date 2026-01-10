@@ -2,6 +2,7 @@
 
 #### 2.621 (January 10, 2026)
 * Fix to prevent NAT from dropping idle RPC sessions during long transfers
+* Fix MySQL/MariaDB module to correctly check the version when plugins became available
 
 #### 2.620 (January 9, 2026)
 * Add ability to use correct driver depending on the database in MySQL/MariaDB module
