@@ -885,7 +885,7 @@ root_epass1=No new password entered
 root_epass2=Passwords do not match
 root_none=No password!
 root_auto=Automatic (typically <tt>root</tt>)
-root_socket=The MySQL <tt>$1</tt> user is using Unix socket authentication, so no password is needed and the password cannot be changed.
+root_socket=The MySQL <tt>$1</tt> user uses Unix socket authentication, so no password is needed. However, you can switch to password authentication on the <a href='list_users.cgi'>User Permissions</a> page.
 
 mysqlpass_err=MySQL safe mode
 mysqlpass_esafecmd=The command $1 needed to start MySQL with authentication disabled was not found
