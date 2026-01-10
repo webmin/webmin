@@ -2248,7 +2248,7 @@ return $rv->{'data'}->[0]->[0] =~ /unix_socket/i ? 'socket' : 'password';
 sub list_authentication_plugins
 {
 my ($ver, $variant) = &get_remote_mysql_variant();
-if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0 ||
+if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.3") >= 0 ||
     $variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0) {
 	my $rv = &execute_sql($master_db, "show plugins");
 	my @plugins = map { $_->[0] } grep { $_->[1] eq 'ACTIVE' &&
