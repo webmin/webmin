@@ -344,7 +344,7 @@ foreach $c (@$conf) {
 	}
 print TEMP map { "$_\n" } &directive_lines($_[0]);
 close(TEMP);
-&set_ownership_permissions(undef, undef, 0700, $temp);
+&set_ownership_permissions(undef, undef, 0644, $temp);
 local $out = &backquote_logged("$config{'logrotate'} -f $temp 2>&1");
 return ($?, $out);
 }
