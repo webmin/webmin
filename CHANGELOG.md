@@ -1,6 +1,6 @@
 ## Changelog
 
-#### 2.621 (January 10, 2026)
+#### 2.621 (January 25, 2026)
 * Fix to prevent NAT from dropping idle RPC sessions during long transfers
 * Fix MySQL/MariaDB module to correctly check the version when plugins became available
 
