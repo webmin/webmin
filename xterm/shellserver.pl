@@ -114,6 +114,7 @@ my $server_socket = IO::Socket::INET->new(
     ReuseAddr => 1,
 );
 $server_socket || die "failed to listen on port $port";
+our $connected = 0;
 Net::WebSocket::Server->new(
 	listen     => $server_socket,
 	on_connect => sub {
@@ -129,6 +130,7 @@ Net::WebSocket::Server->new(
 		$conn->on(
 			handshake => sub {
 				# Is the key valid for this Webmin session?
+				&error_stderr("WebSocket handshake received");
 				my ($conn, $handshake) = @_;
 				my $key   = $handshake->req->fields->{'sec-websocket-key'};
 				my $dsess = &encode_base64($main::session_id);
@@ -138,13 +140,18 @@ Net::WebSocket::Server->new(
 					&error_stderr("Key $key does not match session ID $dsess");
 					$conn->disconnect();
 					}
+				else {
+					$connected = 1;
+					}
 				},
 			ready => sub {
 				my ($conn) = @_;
+				$connected || die "Not connected yet in ready";
 				$conn->send_binary($shellbuf) if ($shellbuf);
 				},
 			utf8 => sub {
 				my ($conn, $msg) = @_;
+				$connected || die "Not connected yet in utf8";
 				utf8::encode($msg) if (utf8::is_utf8($msg));
 				# Check for resize escape sequence explicitly
 				if ($msg =~ /^\\033\[8;\((\d+)\);\((\d+)\)t$/) {
@@ -168,6 +175,7 @@ Net::WebSocket::Server->new(
 					}
 				},
 			disconnect => sub {
+				$connected = 0;
 				&error_stderr("WebSocket connection closed");
 				&remove_miniserv_websocket($port, $module_name);
 				kill('KILL', $pid) if ($pid);
