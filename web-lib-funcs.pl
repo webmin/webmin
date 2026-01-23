@@ -14060,8 +14060,7 @@ return $dir;
 }
 
 # allocate_miniserv_websocket([module], [base-remote-user])
-# Allocate a new websocket and
-# stores it miniserv.conf file
+# Allocate a new websocket and stores it miniserv.conf file
 sub allocate_miniserv_websocket
 {
 my ($module, $buser) = @_;
