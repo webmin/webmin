@@ -388,6 +388,58 @@ $str =~ s/["'<>&\\]/sprintf('\x%02x', ord $&)/ge;
 return $str;
 }
 
+=head2 tempname_dir_sys()
+
+Returns a shared base directory for system-wide temporary files. This directory
+does not depend on the current user. The directory is chosen once per process
+and verified by creating a temporary probe file.
+
+The result is cached for the lifetime of the current Perl process.
+
+=cut
+sub tempname_dir_sys
+{
+# Cache per module
+state %base;
+my @can_dirs;
+
+# Return cached value if already determined
+my $mod = &get_module_name() || '';
+return $base{$mod} if (defined $base{$mod});
+
+# Check configured system temp dirs (module override first)
+my $modk = $mod ? "tempdir_sys_$mod" : undef;
+push(@can_dirs, $gconfig{$modk}) if ($modk && $gconfig{$modk});
+push(@can_dirs, $gconfig{'tempdir_sys'}) if ($gconfig{'tempdir_sys'});
+
+# Common fallbacks
+push(@can_dirs, "/dev/shm", "/tmp", "/var/tmp", "/usr/tmp");
+
+# Remove empty and duplicate entries, which can happen when both configured
+# dirs are set to the same path, or when a configured path matches one of
+# the built-in defaults
+@can_dirs = &unique(grep { $_ } @can_dirs);
+
+# Test each candidate in turn
+for my $dir (@can_dirs) {
+	next if (!-d $dir);
+	next if (!-w $dir);
+
+	# Confirm we can actually create a file
+	my $tmp = "$dir/.webmin_${$}_".int(rand(1e16));
+	if (open(my $fh, ">", $tmp)) {
+		close($fh);
+		unlink($tmp);
+		$base{$mod} = $dir;	# Success, cache and return
+		return $base{$mod};
+		}
+	}
+
+my $keys = ($modk && $gconfig{$modk}) ? "$modk or tempdir_sys" : "tempdir_sys";
+&error("No usable system temp directory found. Set $keys to a writable ".
+       "directory in $config_directory/config and try again.");
+}
+
 =head2 tempname_dir()
 
 Returns the base directory under which temp files can be created.
@@ -10869,7 +10921,7 @@ else {
 		&webmin_debug_log($1 eq ">" ? "WRITE" :
 			  $1 eq ">>" ? "APPEND" : "READ", "nul") if ($db);
 		}
-	elsif ($file =~ /^(>|>>)(\/dev\/.*)/ || lc($file) eq "nul") {
+	elsif ($file =~ /^(>|>>)(\/dev\/(?!shm\/).*)/ || lc($file) eq "nul") {
 		# Writes to /dev/null or TTYs don't need to be handled
 		&webmin_debug_log($1 eq ">" ? "WRITE" : "APPEND", $2) if ($db);
 		return open($fh, "<".$file);
