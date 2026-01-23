@@ -2,7 +2,9 @@
 
 #### 2.621 (January 25, 2026)
 * Fix to prevent NAT from dropping idle RPC sessions during long transfers
-* Fix MySQL/MariaDB module to correctly check the version when plugins became available
+* Fix to improve the message when socket authentication is used in the MySQL/MariaDB module
+* Fix to make upload tracking work correctly in all situations and on all systems
+* Fix to correctly display the PHP version in the PHP Configuration module when managing packages
 
 #### 2.620 (January 9, 2026)
 * Add ability to use correct driver depending on the database in MySQL/MariaDB module
