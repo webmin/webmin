@@ -1063,19 +1063,8 @@ my ($size, $totalsize, $filename, $id) = @_;
 return if ($gconfig{'no_upload_tracker'});
 return if (!$id);
 
-# Create the upload tracking directory - if running as non-root, this has to
-# be under the user's home
-my $vardir;
-if ($<) {
-	my @uinfo = @remote_user_info ? @remote_user_info : getpwuid($<);
-	$vardir = "$uinfo[7]/.tmp";
-	}
-else {
-	$vardir = &tempname_dir();
-	}
-if (!-d $vardir) {
-	&make_dir($vardir, 0755);
-	}
+# Universal upload tracking directory
+my $vardir = &tempname_dir_sys();
 
 # Remove any upload.* files more than 1 hour old
 if (!$main::read_parse_mime_callback_flushed) {

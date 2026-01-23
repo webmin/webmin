@@ -28,13 +28,7 @@ print "</table></center>\n";
 print "</form>\n";
 
 # Find the location of the user's upload progress file
-if ($in{'uid'}) {
-	@uinfo = getpwuid($in{'uid'});
-	$upfile = "$uinfo[7]/.tmp/upload.$id";
-	}
-else {
-	$upfile = &tempname_dir()."/upload.$id";
-	}
+my $upfile = &tempname_dir_sys()."/upload.$id";
 
 # Read the tracker file in a loop until done, or until 1 minute has passed
 # with no progress
