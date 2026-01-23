@@ -27,13 +27,25 @@ else {
 	$object = $slice;
 	}
 
+# Safety checks: do not run newfs on boot partitions or in-use devices
+if (is_boot_partition($object)) {
+    &error($in{'part'} ne '' ? $text{'part_eboot'} : $text{'slice_eboot'});
+}
+my @st_obj = &fdisk::device_status($object->{'device'});
+my $use_obj = &fdisk::device_status_link(@st_obj);
+if (@st_obj && $st_obj[2]) {
+    &error(&text('part_esave', $use_obj));
+}
+
 # Validate inputs
 my $newfs = { };
-$in{'free_def'} || $in{'free'} =~ /^\d+$/ && $in{'free'} <= 100 ||
+$in{'free_def'} ||
+	($in{'free'} =~ /^\d+$/ && $in{'free'} >= 0 && $in{'free'} <= 100) ||
 	&error($text{'newfs_efree'});
 $newfs->{'free'} = $in{'free_def'} ? undef : $in{'free'};
 $newfs->{'trim'} = $in{'trim'};
-$in{'label_def'} || $in{'label'} =~ /^\S+$/ ||
+$in{'label_def'} ||
+	length($in{'label'}) > 0 ||
 	&error($text{'newfs_elabel'});
 $newfs->{'label'} = $in{'label_def'} ? undef : $in{'label'};
 
@@ -44,12 +56,14 @@ print &text('newfs_creating', "<tt>$object->{'device'}</tt>"),"<br>\n";
 print "<pre>\n";
 my $cmd = &get_create_filesystem_command($disk, $slice, $part, $newfs);
 &additional_log('exec', undef, $cmd);
-my $fh = "CMD";
+my $fh;
 &open_execute_command($fh, $cmd, 2);
-while(<$fh>) {
-	print &html_escape($_);
-	}
-close($fh);
+if ($fh) {
+    while(<$fh>) {
+        print &html_escape($_);
+    }
+    close($fh);
+}
 print "</pre>";
 if ($?) {
 	print $text{'newfs_failed'},"<p>\n";
@@ -58,6 +72,18 @@ else {
 	print $text{'newfs_done'},"<p>\n";
 	&webmin_log("newfs", $in{'part'} ne '' ? "part" : "object",
 		    $object->{'device'}, $object);
+	# If a label was provided, set the partition label (GPT slice or BSD sub-partition)
+	if (!$in{'label_def'} && defined $in{'label'} && length $in{'label'}) {
+		my $errlbl = set_partition_label(
+			disk  => $disk,
+			slice => $slice,
+			part  => ($in{'part'} ne '' ? $part : undef),
+			label => $in{'label'}
+		);
+		if ($errlbl) {
+			print "Warning: failed to set partition label: \n" . &html_escape($errlbl) . "\n";
+		}
+	}
 	}
 
 if ($in{'part'} ne '') {

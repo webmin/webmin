@@ -10,21 +10,27 @@ our (%in, %text, $module_name);
 &ReadParse();
 
 # Get the disk and slice
-my @disks = &list_disks_partitions();
-my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
-$disk || &error($text{'disk_egone'});
-my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}};
-$slice || &error($text{'slice_egone'});
-my $object;
-if ($in{'part'} ne '') {
-	my ($part) = grep { $_->{'letter'} eq $in{'part'} }
-			  @{$slice->{'parts'}};
-	$part || &error($text{'part_egone'});
-	$object = $part;
-	}
-else {
-	$object = $slice;
-	}
+ # Validate input parameters to prevent command injection
+ $in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or &error("Invalid device name");
+ $in{'device'} !~ /\.\./ or &error("Invalid device name");
+ $in{'slice'} =~ /^\d+$/ or &error("Invalid slice number") if $in{'slice'};
+ $in{'part'} =~ /^[a-z]$/ or &error("Invalid partition letter") if $in{'part'};
+ my @disks = &list_disks_partitions();
+ my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
+ $disk || &error($text{'disk_egone'});
+ my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}};
+ $slice || &error($text{'slice_egone'});
+ my $object;
+ if ($in{'part'} ne '') {
+	$in{'part'} =~ /^[a-z]$/ or &error("Invalid partition letter");
+ 	my ($part) = grep { $_->{'letter'} eq $in{'part'} }
+ 			  @{$slice->{'parts'}};
+ 	$part || &error($text{'part_egone'});
+ 	$object = $part;
+ 	}
+ else {
+ 	$object = $slice;
+ 	}
 
 &ui_print_header($object->{'desc'}, $text{'newfs_title'}, "");
 
@@ -38,24 +44,24 @@ print &ui_table_row($text{'part_device'},
 	"<tt>$object->{'device'}</tt>");
 
 print &ui_table_row($text{'newfs_free'},
-	&ui_opt_textbox("free", undef, 4, $text{'newfs_deffree'})."%");
+   &ui_opt_textbox("free", undef, 4, $text{'newfs_deffree'}) . "%");
 
 print &ui_table_row($text{'newfs_trim'},
-	&ui_yesno_radio("trim", 0));
+   &ui_yesno_radio("trim", 0));
 
 print &ui_table_row($text{'newfs_label'},
-	&ui_opt_textbox("label", undef, 20, $text{'newfs_none'}));
+   &ui_opt_textbox("label", undef, 20, $text{'newfs_none'}));
 
 print &ui_table_end();
-print &ui_form_end([ [ undef, $text{'newfs_create'} ] ]);
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 if ($in{'part'} ne '') {
-	&ui_print_footer("edit_part.cgi?device=$in{'device'}&".
-			   "slice=$in{'slice'}&part=$in{'part'}",
-			 $text{'part_return'});
-	}
+   &ui_print_footer("edit_part.cgi?device=$in{'device'}&" .
+               "slice=$in{'slice'}&part=$in{'part'}",
+                 $text{'part_return'});
+   }
 else {
-	&ui_print_footer("edit_slice.cgi?device=$in{'device'}&".
-			   "slice=$in{'slice'}",
-			 $text{'slice_return'});
-	}
+   &ui_print_footer("edit_slice.cgi?device=$in{'device'}&" .
+               "slice=$in{'slice'}",
+                 $text{'slice_return'});
+   }

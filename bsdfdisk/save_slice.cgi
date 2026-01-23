@@ -20,9 +20,22 @@ $slice || &error($text{'slice_egone'});
 # Apply changes
 my $oldslice = { %$slice };
 $slice->{'type'} = $in{'type'};
-if (!$slice->{'active'}) {
-	$slice->{'active'} = $in{'active'};
-	}
+$slice->{'active'} = $in{'active'} if (defined $in{'active'});
+
+# Apply active flag for MBR disks via gpart set/unset when it changed
+my $base = $disk->{'device'}; $base =~ s{^/dev/}{};
+my $ds = get_disk_structure($base);
+if (is_using_gpart() && $ds && $ds->{'scheme'} && $ds->{'scheme'} !~ /GPT/i) {
+    my $idx = slice_number($slice);
+    if (defined $oldslice->{'active'} && defined $slice->{'active'} && $oldslice->{'active'} != $slice->{'active'}) {
+        my $cmd = $slice->{'active'} ? "gpart set -a active -i $idx $base" : "gpart unset -a active -i $idx $base";
+        my $out = `$cmd 2>&1`;
+        if ($? != 0) {
+            &error("Failed to change active flag: $out");
+        }
+    }
+}
+
 my $err = &modify_slice($disk, $oldslice, $slice);
 &error($err) if ($err);
 
