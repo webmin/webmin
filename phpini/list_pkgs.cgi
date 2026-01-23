@@ -62,7 +62,8 @@ if (&foreign_installed("package-updates")) {
 		@allpkgs = sort { $b->{'ver'} cmp $a->{'ver'} } @allpkgs;
 		print &ui_select("u", undef,
 			[ map { [ $_->{'name'},
-				"PHP $_->{'ver'}" ] } @allpkgs ]);
+				"PHP ". ($_->{'ver'} == 5 ? '5.6' : $_->{'ver'})
+				] } @allpkgs ]);
 		print &ui_hidden(
 			"redir", &get_webprefix()."/$module_name/list_pkgs.cgi");
 		print &ui_hidden("redirdesc", $text{'pkgs_title'});
