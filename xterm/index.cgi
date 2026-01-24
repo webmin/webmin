@@ -46,7 +46,6 @@ my $termlinks =
 	  'js'  => ["xterm.js?$wver",
 	            "xterm-addon-attach.js?$wver",
 	            "xterm-addon-fit.js?$wver",
-	            "xterm-addon-canvas.js?$wver",
 	            "xterm-addon-webgl.js?$wver"] };
 
 # Pre-process options
@@ -77,6 +76,7 @@ if ($conf_cols_n && $conf_rows_n && !$xmlhr) {
 my $conf_screen_reader = $config{'screen_reader'} eq 'true' ? 'true' : 'false';
 $termjs_opts{'Options'} = "{ cols: $env_cols, rows: $env_rows, ".
 			    "screenReaderMode: $conf_screen_reader, ".
+			    "overviewRuler: { width: 9 }, ".
 			    "fontSize: $font_size }";
 
 my $term_size = "
@@ -212,8 +212,7 @@ $ENV{'SESSION_ID'} = $main::session_id;
 
 # Open the terminal
 my $url = &get_miniserv_websocket_url($port, $config{'host'}, $module_name);
-my $canvasAddon = $termlinks->{'js'}[3];
-my $webGLAddon = $termlinks->{'js'}[4];
+my $webGLAddon = $termlinks->{'js'}[3];
 my $term_script = <<EOF;
 
 (function() {
@@ -222,11 +221,10 @@ my $term_script = <<EOF;
 	      err_conn_cannot = 'Cannot connect to the socket $url',
 	      err_conn_lost = 'Connection to the socket $url lost',
 	      webGLAddonLink = '$webGLAddon',
-	      canvasAddonLink = '$canvasAddon',
 	      detectWebGLContext = (function() {
 	          const canvas = document.createElement("canvas"),
-	          gl = canvas.getContext("webgl") ||
-	               canvas.getContext("experimental-webgl");
+	                gl = canvas.getContext("webgl") ||
+	                     canvas.getContext("experimental-webgl");
 	          return gl instanceof WebGLRenderingContext ? true : false;
 	      })();
 	socket.onopen = function() {
@@ -234,27 +232,31 @@ my $term_script = <<EOF;
 		      attachAddon = new AttachAddon.AttachAddon(this),
 		      fitAddon = new FitAddon.FitAddon(),
 		      renderScript = document.createElement('script');
-	  renderScript.src = detectWebGLContext ? webGLAddonLink : canvasAddonLink;
+
+	  renderScript.src = webGLAddonLink;
 	  renderScript.async = false;
 	  document.body.appendChild(renderScript);
 
 	  // Wait to load requested render addon
 	  renderScript.addEventListener('load', function() {
-	      const rendererAddon = detectWebGLContext ?
-	              new WebglAddon.WebglAddon() :
-	              new CanvasAddon.CanvasAddon();
+	      let rendererAddon;
+
+	      if (detectWebGLContext && typeof WebglAddon === 'object') {
+	          rendererAddon = new WebglAddon.WebglAddon();
+	          term.loadAddon(rendererAddon);
+
+	          // Handle case of dropping WebGL context
+	          if (rendererAddon.onContextLoss) {
+	              rendererAddon.onContextLoss(function() {
+	                  rendererAddon.dispose();
+	              });
+	          }
+	      }
+
 	      term.loadAddon(attachAddon);
 	      term.loadAddon(fitAddon);
-	      term.loadAddon(rendererAddon);
 	      term.open(termcont);
-		  setTimeout(function() {term.focus()}, 6e2);
-
-	      // Handle case of dropping WebGL context
-	      if (typeof WebglAddon === 'object') {
-	        rendererAddon.onContextLoss(function() {
-	          rendererAddon.dispose();
-	        });
-	      }
+	      setTimeout(function() { term.focus() }, 6e2);
 
 	      // On resize event triggered by fit()
 	      term.onResize(function(e) {
