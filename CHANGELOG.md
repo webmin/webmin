@@ -6,6 +6,12 @@
 * Fix to make upload tracking work correctly in all situations and on all systems
 * Fix to correctly display the PHP version in the PHP Configuration module when managing packages
 * Update Xterm.js to the latest version with lots of improvements and fixes
+* Update Authentic theme to the latest version with various improvements and fixes:
+  * Fix the support for the cloned Terminal module
+  * Fix error handling for file uploads when the user is out of quota or the system is out of disk space in the File Manager module
+  * Fix to stop loading full file into memory for upload check to prevent memory leak on large uploads in the File Manager module
+  * Fix to permanently save the state of the navigation menu and right-side slider when toggled
+
 
 #### 2.620 (January 9, 2026)
 * Add ability to use correct driver depending on the database in MySQL/MariaDB module
