@@ -27,28 +27,54 @@ else {
 	$object = $slice;
 	}
 
+# Safety checks: do not run fsck on boot partitions or in-use devices
+if (is_boot_partition($object)) {
+    &error($in{'part'} ne '' ? $text{'part_eboot'} : $text{'slice_eboot'});
+}
+my @st_obj = &fdisk::device_status($object->{'device'});
+my $use_obj = &fdisk::device_status_link(@st_obj);
+if (@st_obj && $st_obj[2]) {
+    &error(&text('part_esave', $use_obj));
+}
+
 &ui_print_unbuffered_header($object->{'desc'}, $text{'fsck_title'}, "");
 
-# Do the creation
-print &text('fsck_checking', "<tt>$object->{'device'}</tt>"),"<br>\n";
-print "<pre>\n";
-my $cmd = &get_check_filesystem_command($disk, $slice, $part);
-&additional_log('exec', undef, $cmd);
-my $fh = "CMD";
-&open_execute_command($fh, $cmd, 2);
-while(<$fh>) {
-	print &html_escape($_);
-	}
-close($fh);
-print "</pre>";
-if ($?) {
-	print $text{'fsck_failed'},"<p>\n";
-	}
-else {
-	print $text{'fsck_done'},"<p>\n";
-	}
+# If device is ZFS, do not run fsck; show zpool status instead
+my $zmap = get_all_zfs_info();
+if ($zmap->{$object->{'device'}}) {
+    my $pool = $zmap->{$object->{'device'}}; $pool =~ s/^.*?\b([A-Za-z0-9_\-]+)\b.*$/$1/;
+    print &text('fsck_checking', "<tt>$object->{'device'}</tt>"),"<br>\n";
+    print "<pre>\n";
+    my $cmd = "zpool status 2>&1";
+    &additional_log('exec', undef, $cmd);
+    print &html_escape(&backquote_command($cmd));
+    print "</pre>";
+    print $text{'fsck_done'},"<p>\n";
+} else {
+    # Do the creation
+    print &text('fsck_checking', "<tt>$object->{'device'}</tt>"),"<br>\n";
+    print "<pre>\n";
+    my $cmd = &get_check_filesystem_command($disk, $slice, $part);
+    &additional_log('exec', undef, $cmd);
+    my $fh;
+    &open_execute_command($fh, $cmd, 2);
+    if ($fh) {
+        while (my $line = <$fh>) {
+            $line =~ s/[^\x09\x0A\x0D\x20-\x7E]//g;
+            print &html_escape($line);
+        }
+        close($fh);
+    }
+    print "</pre>";
+    if ($?) {
+        print $text{'fsck_failed'},"<p>\n";
+    }
+    else {
+        print $text{'fsck_done'},"<p>\n";
+    }
+}
 &webmin_log("fsck", $in{'part'} ne '' ? "part" : "object",
-	    $object->{'device'}, $object);
+        $object->{'device'}, $object);
 
 if ($in{'part'} ne '') {
 	&ui_print_footer("edit_part.cgi?device=$in{'device'}&".
