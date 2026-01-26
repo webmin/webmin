@@ -415,10 +415,10 @@ push(@can_dirs, $gconfig{'tempdir_sys'}) if ($gconfig{'tempdir_sys'});
 # Common fallbacks
 push(@can_dirs, "/dev/shm", "/tmp", "/var/tmp", "/usr/tmp");
 
-# Remove empty and duplicate entries, which can happen when both configured
+# Remove duplicate entries, which can happen when both configured
 # dirs are set to the same path, or when a configured path matches one of
 # the built-in defaults
-@can_dirs = &unique(grep { $_ } @can_dirs);
+@can_dirs = &unique(@can_dirs);
 
 # Test each candidate in turn
 for my $dir (@can_dirs) {
