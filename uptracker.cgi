@@ -33,7 +33,7 @@ if ($in{'uid'}) {
 	$upfile = "$uinfo[7]/.tmp/upload.$id";
 	}
 else {
-	$upfile = &tempname_dir()."/upload.$id";
+	$upfile = "$ENV{'WEBMIN_VAR'}/uploads/upload.$id";
 	}
 
 # Read the tracker file in a loop until done, or until 1 minute has passed

@@ -1071,10 +1071,10 @@ if ($<) {
 	$vardir = "$uinfo[7]/.tmp";
 	}
 else {
-	$vardir = &tempname_dir();
+	$vardir = "$ENV{'WEBMIN_VAR'}/uploads";
 	}
 if (!-d $vardir) {
-	&make_dir($vardir, 0755);
+	&make_dir($vardir, 0750);
 	}
 
 # Remove any upload.* files more than 1 hour old
