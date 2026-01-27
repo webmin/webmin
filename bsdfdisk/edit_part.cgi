@@ -112,8 +112,8 @@ if ($canedit) {
     print ui_buttons_row("delete_part.cgi", $text{'part_delete'}, $text{'part_deletedesc'}, $hiddens);
     print ui_buttons_end();
 } else {
-    print ($is_boot) ? "<b>$text{'part_bootcannotedit'}</b><p>\n"
-                     : "<b>$text{'part_cannotedit'}</b><p>\n";
+    print $is_boot ? "<b>$text{'part_bootcannotedit'}</b><p>\n"
+                   : "<b>$text{'part_cannotedit'}</b><p>\n";
 }
 # SMART button (physical device)
 if (&has_command("smartctl")) {
