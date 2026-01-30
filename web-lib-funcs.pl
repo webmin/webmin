@@ -415,9 +415,9 @@ push(@can_dirs, $gconfig{'tempdir_sys'}) if ($gconfig{'tempdir_sys'});
 # Common fallbacks
 push(@can_dirs, "/dev/shm", "/tmp", "/var/tmp", "/usr/tmp");
 
-# Remove duplicate entries, which can happen when both configured
-# dirs are set to the same path, or when a configured path matches one of
-# the built-in defaults
+# Remove duplicate entries, which can happen when both configured dirs are set
+# to the same path, or when a configured path matches one of the built-in
+# defaults
 @can_dirs = &unique(@can_dirs);
 
 # Test each candidate in turn
