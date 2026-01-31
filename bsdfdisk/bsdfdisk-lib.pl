@@ -829,8 +829,9 @@ sub detect_filesystem_type {
 sub acl_inherit_flags_cmd {
     my ($dataset) = @_;
     return undef if (!$dataset);
-    my $cmd = 'acltype=$(zfs get -H -o value acltype "' . $dataset . '" 2>/dev/null); '.
-              'mp=$(zfs get -H -o value mountpoint "' . $dataset . '" 2>/dev/null); '.
+    my $ds = quote_path($dataset);
+    my $cmd = 'acltype=$(zfs get -H -o value acltype ' . $ds . ' 2>/dev/null); '.
+              'mp=$(zfs get -H -o value mountpoint ' . $ds . ' 2>/dev/null); '.
               'if [ "$acltype" = "nfsv4" ] && [ -n "$mp" ] && '.
               '[ "$mp" != "-" ] && [ "$mp" != "none" ]; then ';
     if ($^O eq 'freebsd') {
