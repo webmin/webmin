@@ -24,6 +24,8 @@ my $hiddens = ui_hidden("device", $in{'device'}) . "\n" . ui_hidden("slice", $in
 # Derive disk scheme for classifier
 my $base_device = $disk->{'device'}; $base_device =~ s{^/dev/}{};
 my $disk_structure = get_disk_structure($base_device);
+# Device label (GPT label or glabel)
+my $slice_label = get_device_label_name(disk => $disk, slice => $slice, disk_structure => $disk_structure);
 # Check if this is a boot slice
 my $is_boot = is_boot_partition($slice);
 print ui_alert_box($text{'slice_bootdesc'}, 'info') if $is_boot;
@@ -31,6 +33,7 @@ print ui_form_start("save_slice.cgi");
 print $hiddens;
 print ui_table_start($text{'slice_header'}, undef, 2);
 print ui_table_row($text{'part_device'}, "<tt>$slice->{'device'}</tt>");
+print ui_table_row($text{'slice_label'}, $slice_label ? "<tt>$slice_label</tt>" : "-");
 my $slice_bytes = bytes_from_blocks($slice->{'device'}, $slice->{'blocks'});
 print ui_table_row($text{'slice_ssize'}, $slice_bytes ? safe_nice_size($slice_bytes) : '-');
 print ui_table_row($text{'slice_sstart'}, $slice->{'startblock'});
@@ -156,8 +159,15 @@ if ($canedit && !$is_boot) {  # Do not allow editing boot slices
     print ui_hr();
     print ui_buttons_start();
     if (!@{$slice->{'parts'}}) {
-        show_filesystem_buttons($hiddens, \@slice_status, $slice);
+        my $mount_return = "edit_slice.cgi?device=$in{'device'}&slice=$in{'slice'}";
+        show_filesystem_buttons($hiddens, \@slice_status, $slice, $mount_return);
     }
+    print ui_buttons_row(
+        'change_slice_label.cgi',
+        $text{'slice_chglabel'},
+        $text{'slice_chglabeldesc'},
+        ui_hidden("device", $in{'device'}) . "\n" . ui_hidden("slice", $in{'slice'})
+    );
     print ui_buttons_row(
         'delete_slice.cgi',
         $text{'slice_delete'},

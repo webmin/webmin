@@ -717,6 +717,56 @@ sub remove_partition_label {
     return undef;
 }
 
+# Get the current label for a slice/partition device (GPT label or glabel)
+sub get_device_label_name {
+    my (%args) = @_;
+    my $disk  = $args{'disk'};
+    my $slice = $args{'slice'};
+    my $device = $args{'device'} || ($slice ? $slice->{'device'} : undef);
+    return undef unless $device;
+
+    my $label;
+    # Prefer GPT labels when applicable
+    my $base = $disk ? $disk->{'device'} : base_disk_device($device);
+    if ($base) {
+        $base =~ s{^/dev/}{};
+        my $ds = $args{'disk_structure'} || get_disk_structure($base);
+        if ($ds && $ds->{'scheme'} && $ds->{'scheme'} =~ /GPT/i) {
+            my $idx = $slice ? slice_number($slice) : undef;
+            if ($idx && $ds->{'partitions'} && $ds->{'partitions'}->{$idx}) {
+                my $pl = $ds->{'partitions'}->{$idx}->{'label'};
+                $label = $pl if ($pl && $pl ne '(null)');
+            }
+            if (!$label && $idx && $ds->{'entries'}) {
+                foreach my $e (@{$ds->{'entries'}}) {
+                    next unless ($e->{'type'} && $e->{'type'} eq 'partition');
+                    next unless (defined $e->{'index'} && $e->{'index'} == $idx);
+                    if ($e->{'label'} && $e->{'label'} ne '(null)') {
+                        $label = $e->{'label'};
+                        last;
+                    }
+                }
+            }
+        }
+    }
+
+    # Fallback: GEOM label (glabel)
+    if (!$label && has_command('glabel')) {
+        my $glabel_out = backquote_command("glabel status 2>/dev/null");
+        foreach my $line (split(/\n/, $glabel_out)) {
+            if ($line =~ /^\s*(\S+)\s+\S+\s+(\S+)/) {
+                my ($lab, $prov) = ($1, $2);
+                $prov = "/dev/$prov" if ($prov !~ m{^/dev/});
+                if ($prov eq $device) {
+                    $label = $lab;
+                    last;
+                }
+            }
+        }
+    }
+    return $label;
+}
+
 sub preferred_device_path {
     my ($device) = @_;
     return $device unless $device;
@@ -762,12 +812,92 @@ sub detect_filesystem_type {
     $t ||= $hint || '';
     $t = lc($t);
     # Normalize common variants
+    if ($t =~ /ufs/) { return 'ufs'; }
+    if ($t =~ /msdos|fat/) { return 'msdosfs'; }
+    if ($t =~ /ext[234]|ext2fs/) { return 'ext2fs'; }
+    if ($t =~ /zfs/) { return 'zfs'; }
+    if ($t =~ /swap/) { return 'swap'; }
     if ($t =~ /^(ufs|ffs)$/) { return 'ufs'; }
     if ($t =~ /^(msdos|msdosfs|fat|fat32)$/) { return 'msdosfs'; }
     if ($t =~ /^(ext2|ext2fs)$/) { return 'ext2fs'; }
     if ($t =~ /^zfs$/) { return 'zfs'; }
     if ($t =~ /^swap/) { return 'swap'; }
     return $t || undef;
+}
+
+# Apply recommended ACL inherit flags for NFSv4 datasets (best-effort)
+sub acl_inherit_flags_cmd {
+    my ($dataset) = @_;
+    return undef if (!$dataset);
+    my $cmd = 'acltype=$(zfs get -H -o value acltype "' . $dataset . '" 2>/dev/null); '.
+              'mp=$(zfs get -H -o value mountpoint "' . $dataset . '" 2>/dev/null); '.
+              'if [ "$acltype" = "nfsv4" ] && [ -n "$mp" ] && '.
+              '[ "$mp" != "-" ] && [ "$mp" != "none" ]; then ';
+    if ($^O eq 'freebsd') {
+        $cmd .= 'if command -v getfacl >/dev/null 2>&1 && command -v setfacl >/dev/null 2>&1; then '.
+                'po=$(getfacl "$mp" 2>/dev/null | awk -F: "/^[[:space:]]*owner@/{print \\$2; exit}"); '.
+                'pg=$(getfacl "$mp" 2>/dev/null | awk -F: "/^[[:space:]]*group@/{print \\$2; exit}"); '.
+                'pe=$(getfacl "$mp" 2>/dev/null | awk -F: "/^[[:space:]]*everyone@/{print \\$2; exit}"); '.
+                'if [ -n "$po" ] && [ -n "$pg" ] && [ -n "$pe" ]; then '.
+                'setfacl -m "owner@:$po:fd-----:allow" -m "group@:$pg:fd-----:allow" -m "everyone@:$pe:fd-----:allow" "$mp"; '.
+                'fi; '.
+                'fi; ';
+    } else {
+        $cmd .= 'if command -v nfs4_getfacl >/dev/null 2>&1 && command -v nfs4_setfacl >/dev/null 2>&1; then '.
+                'po=$(nfs4_getfacl "$mp" 2>/dev/null | awk -F: "/OWNER@/{print \\$4; exit}"); '.
+                'pg=$(nfs4_getfacl "$mp" 2>/dev/null | awk -F: "/GROUP@/{print \\$4; exit}"); '.
+                'pe=$(nfs4_getfacl "$mp" 2>/dev/null | awk -F: "/EVERYONE@/{print \\$4; exit}"); '.
+                'if [ -n "$po" ] && [ -n "$pg" ] && [ -n "$pe" ]; then '.
+                'nfs4_setfacl -a "A::OWNER@:$po:fd-----:allow" -a "A::GROUP@:$pg:fd-----:allow" -a "A::EVERYONE@:$pe:fd-----:allow" "$mp"; '.
+                'fi; '.
+                'fi; ';
+    }
+    $cmd .= "fi";
+    return $cmd;
+}
+
+sub get_zfs_device_info {
+    my ($object) = @_;
+    return undef unless ($object && $object->{'device'});
+    my ($pools, $zfs_devices) = build_zfs_devices_cache();
+    my $device = $object->{'device'};
+    my @ids = ($device);
+    (my $short = $device) =~ s{^/dev/}{};
+    push(@ids, $short, lc($device), lc($short));
+    # If this is a top-level partition, include GPT label aliases if present
+    if ($device =~ m{^/dev/([a-z]+[0-9]+)([ps])(\d+)$}i) {
+        my ($base, $sep, $num) = ($1, $2, $3);
+        my $ds = get_disk_structure($base);
+        my $part_label;
+        if ($ds && $ds->{'partitions'} && $ds->{'partitions'}->{$num}) {
+            my $pl = $ds->{'partitions'}->{$num}->{'label'};
+            $part_label = $pl if ($pl && $pl ne '(null)');
+        }
+        if (!$part_label && $ds && $ds->{'entries'}) {
+            foreach my $e (@{$ds->{'entries'}}) {
+                next unless ($e->{'type'} && $e->{'type'} eq 'partition');
+                next unless (defined $e->{'index'} && $e->{'index'} == $num);
+                if ($e->{'label'} && $e->{'label'} ne '(null)') {
+                    $part_label = $e->{'label'};
+                    last;
+                }
+            }
+        }
+        my $part_name = $base . $sep . $num;
+        my $scheme = ($sep eq 'p') ? 'GPT' : '';
+        push(@ids, _possible_partition_ids($base, $scheme, $num, $part_name, $part_label));
+    }
+    return _find_in_zfs($zfs_devices, @ids);
+}
+
+sub is_zfs_device {
+    my ($object) = @_;
+    return 0 unless ($object && $object->{'device'});
+    # Trust explicit type hints first
+    if (defined $object->{'type'} && $object->{'type'} =~ /zfs/i) {
+        return 1;
+    }
+    return get_zfs_device_info($object) ? 1 : 0;
 }
 
 sub get_check_filesystem_command {
@@ -796,25 +926,33 @@ sub get_check_filesystem_command {
 }
 
 sub show_filesystem_buttons {
-    my ($hiddens, $st, $object) = @_;
+    my ($hiddens, $st, $object, $return_url) = @_;
+    if ($return_url && $return_url !~ m{^/}) {
+        $return_url = "/$module_name/$return_url";
+    }
     # Use preferred device path (label-based if available)
     my $preferred_dev = preferred_device_path($object->{'device'});
     print ui_buttons_row("newfs_form.cgi", $text{'part_newfs'}, $text{'part_newfsdesc'}, $hiddens);
     # Do not offer fsck for swap or ZFS devices
-    my $zmap = get_all_zfs_info();
     my $is_swap = (@$st && $st->[1] eq 'swap') || ($object->{'type'} && $object->{'type'} =~ /freebsd-swap|^82$/i);
-    my $is_zfs  = $zmap->{$object->{'device'}} ? 1 : 0;
+    my $is_zfs  = is_zfs_device($object);
     if ((!@$st || !$is_swap) && !$is_zfs) {
         print ui_buttons_row("fsck.cgi", $text{'part_fsck'}, $text{'part_fsckdesc'}, $hiddens);
     }
     if (!@$st) {
         if ($object->{'type'} eq 'swap' or $object->{'type'} eq '82' or $object->{'type'} eq 'freebsd-swap') {
-            print ui_buttons_row("../mount/edit_mount.cgi", $text{'part_newmount2'}, $text{'part_mountmsg2'},
-                ui_hidden("newdev", $preferred_dev) . ui_hidden("type", "swap"));
+            my $mount_h = ui_hidden("newdev", $preferred_dev) . ui_hidden("type", "swap");
+            $mount_h .= ui_hidden("return", $return_url) if ($return_url);
+            print ui_buttons_row("../mount/edit_mount.cgi", $text{'part_newmount2'}, $text{'part_mountmsg2'}, $mount_h);
         }
         else {
-            print ui_buttons_row("../mount/edit_mount.cgi", $text{'part_newmount'}, $text{'part_mountmsg'},
-                ui_hidden("newdev", $preferred_dev) . ui_hidden("type", "ufs") . ui_textbox("newdir", undef, 20));
+            my $fstype = detect_filesystem_type($object->{'device'}, $object->{'type'});
+            my $can_mount = ($fstype && $fstype ne 'zfs' && $fstype ne 'swap') ? 1 : 0;
+            if ($can_mount) {
+                my $mount_h = ui_hidden("newdev", $preferred_dev) . ui_hidden("type", $fstype);
+                $mount_h .= ui_hidden("return", $return_url) if ($return_url);
+                print ui_buttons_row("../mount/edit_mount.cgi", $text{'part_newmount'}, $text{'part_mountmsg'}, $mount_h);
+            }
         }
     }
 }
@@ -1118,6 +1256,27 @@ sub get_format_type {
 }
 
 # Build possible ids for a partition given base device, scheme and metadata
+sub _label_conflicts_with_device {
+    my ($label, $base_device, $scheme, $part_num, $part_name) = @_;
+    return 0 unless defined $label && $label ne '-' && $label ne '(null)';
+    my $sep = ($scheme && $scheme eq 'GPT') ? 'p' : 's';
+    my $expected = (defined $base_device && defined $part_num && length($base_device))
+        ? "$base_device$sep$part_num"
+        : undef;
+    if (defined $expected && lc($label) eq lc($expected)) {
+        return 0;
+    }
+    if (defined $part_name && $part_name ne '-' && lc($label) eq lc($part_name)) {
+        return 0;
+    }
+    # If a label looks like a real disk partition but doesn't match this partition,
+    # do not use it for ZFS membership detection (avoids cross-disk misidentification).
+    if ($label =~ m{^(ada|ad|da|amrd|nvd|vtbd)\d+(?:p|s)\d+$}i) {
+        return 1;
+    }
+    return 0;
+}
+
 sub _possible_partition_ids {
     my ($base_device, $scheme, $part_num, $part_name, $part_label) = @_;
     my @ids;
@@ -1132,8 +1291,15 @@ sub _possible_partition_ids {
         push(@ids, $part_name, "/dev/$part_name");
     }
     if (defined $part_label && $part_label ne '-' && $part_label ne '(null)') {
-        push(@ids, $part_label, "gpt/$part_label", "/dev/gpt/$part_label",
-              lc($part_label), "gpt/".lc($part_label), "/dev/gpt/".lc($part_label));
+        my $label_conflict = _label_conflicts_with_device($part_label, $base_device, $scheme, $part_num, $part_name);
+        if ($label_conflict) {
+            # Allow only GPT label aliases to avoid false matches to device-like labels
+            push(@ids, "gpt/$part_label", "/dev/gpt/$part_label",
+                  "gpt/".lc($part_label), "/dev/gpt/".lc($part_label));
+        } else {
+            push(@ids, $part_label, "gpt/$part_label", "/dev/gpt/$part_label",
+                  lc($part_label), "gpt/".lc($part_label), "/dev/gpt/".lc($part_label));
+        }
         if ($part_label =~ /^(sLOG\w+)$/) {
             push(@ids, $1, "gpt/$1", "/dev/gpt/$1");
         }
