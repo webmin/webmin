@@ -12,6 +12,10 @@ our (%in, %text, $module_name);
 
 # Get the disk and slice
 my @disks = &list_disks_partitions();
+$in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or &error($text{'disk_edevice'} || 'Invalid device');
+$in{'device'} !~ /\.\./ or &error($text{'disk_edevice'} || 'Invalid device');
+$in{'slice'} =~ /^\d+$/ or &error($text{'slice_egone'});
+$in{'part'} =~ /^[a-z]$/ or &error($text{'part_egone'}) if $in{'part'};
 my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error($text{'disk_egone'});
 my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}};
@@ -34,7 +38,7 @@ if (is_boot_partition($object)) {
 my @st_obj = &fdisk::device_status($object->{'device'});
 my $use_obj = &fdisk::device_status_link(@st_obj);
 if (@st_obj && $st_obj[2]) {
-    &error(&text('part_esave', $use_obj));
+    &error(&text('part_esave', &html_escape($use_obj)));
 }
 
 &ui_print_unbuffered_header($object->{'desc'}, $text{'fsck_title'}, "");
@@ -43,7 +47,7 @@ if (@st_obj && $st_obj[2]) {
 my $zmap = get_all_zfs_info();
 if ($zmap->{$object->{'device'}}) {
     my $pool = $zmap->{$object->{'device'}}; $pool =~ s/^.*?\b([A-Za-z0-9_\-]+)\b.*$/$1/;
-    print &text('fsck_checking', "<tt>$object->{'device'}</tt>"),"<br>\n";
+    print &text('fsck_checking', "<tt>".&html_escape($object->{'device'})."</tt>"),"<br>\n";
     print "<pre>\n";
     my $cmd = "zpool status 2>&1";
     &additional_log('exec', undef, $cmd);
@@ -52,25 +56,30 @@ if ($zmap->{$object->{'device'}}) {
     print $text{'fsck_done'},"<p>\n";
 } else {
     # Do the creation
-    print &text('fsck_checking', "<tt>$object->{'device'}</tt>"),"<br>\n";
+    print &text('fsck_checking', "<tt>".&html_escape($object->{'device'})."</tt>"),"<br>\n";
     print "<pre>\n";
     my $cmd = &get_check_filesystem_command($disk, $slice, $part);
     &additional_log('exec', undef, $cmd);
-    my $fh;
-    &open_execute_command($fh, $cmd, 2);
-    if ($fh) {
-        while (my $line = <$fh>) {
-            $line =~ s/[^\x09\x0A\x0D\x20-\x7E]//g;
-            print &html_escape($line);
-        }
-        close($fh);
+    my $out = &backquote_command($cmd . " 2>&1");
+    foreach my $line (split(/\n/, $out)) {
+        $line =~ s/[^\x09\x0A\x0D\x20-\x7E]//g;
+        print &html_escape($line) . "\n";
     }
     print "</pre>";
-    if ($?) {
-        print $text{'fsck_failed'},"<p>\n";
+    my $rc = $? >> 8;
+    if ($rc == 0) {
+        print $text{'fsck_done'},"<p>\n";
+    }
+    elsif ($rc == 1) {
+        print $text{'fsck_done'},"<p>\n";
+        print $text{'fsck_fixed'},"<p>\n" if ($text{'fsck_fixed'});
+    }
+    elsif ($rc == 2) {
+        print $text{'fsck_done'},"<p>\n";
+        print $text{'fsck_reboot'},"<p>\n" if ($text{'fsck_reboot'});
     }
     else {
-        print $text{'fsck_done'},"<p>\n";
+        print $text{'fsck_failed'},"<p>\n";
     }
 }
 &webmin_log("fsck", $in{'part'} ne '' ? "part" : "object",

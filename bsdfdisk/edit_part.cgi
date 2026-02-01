@@ -14,6 +14,8 @@ my $part_letter = $in{'part'};
 my @disks = list_disks_partitions();
 $in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or error($text{'disk_edevice'});
 $in{'device'} !~ /\.\./ or error($text{'disk_edevice'});
+$in{'slice'} =~ /^\d+$/ or error($text{'slice_egone'});
+$in{'part'} =~ /^[a-z]$/ or error($text{'part_egone'});
 my $disk;
 foreach my $d (@disks) {
     if ($d->{'device'} eq $device) {
@@ -56,7 +58,7 @@ if ($canedit) {
     print ui_form_start("save_part.cgi", "post"), $hiddens;
 }
 print ui_table_start($text{'part_header'}, undef, 2);
-print ui_table_row($text{'part_device'}, "<tt>$part->{'device'}</tt>");
+print ui_table_row($text{'part_device'}, "<tt>".html_escape($part->{'device'})."</tt>");
 my $part_bytes = bytes_from_blocks($part->{'device'}, $part->{'blocks'});
 print ui_table_row($text{'part_size'},   $part_bytes ? safe_nice_size($part_bytes) : '-');
 print ui_table_row($text{'part_start'},  $part->{'startblock'});
@@ -74,8 +76,8 @@ if ($canedit) {
 my $use_text = ((!@st && !$zfs_info->{ $part->{'device'} })
     ? $text{'part_nouse'}
     : (($st[2] || $zfs_info->{ $part->{'device'} })
-        ? text('part_inuse', $use)
-        : text('part_foruse', $use)));
+        ? text('part_inuse', &html_escape($use))
+        : text('part_foruse', &html_escape($use))));
 print ui_table_row($text{'part_use'}, $use_text);
 # Add a row for the partition role
 print ui_table_row($text{'part_role'}, get_partition_role($part));
@@ -98,7 +100,7 @@ if (@{ $slice->{'parts'} || [] }) {
         my $rolep = get_partition_role($p);
         my $pb2 = bytes_from_blocks($p->{'device'}, $p->{'blocks'});
         print ui_columns_row([
-            uc($p->{'letter'}), $ptype, $p->{'startblock'}, $p->{'startblock'} + $p->{'blocks'} - 1, ($pb2 ? safe_nice_size($pb2) : '-'), $usep, $rolep
+            uc($p->{'letter'}), &html_escape($ptype), $p->{'startblock'}, $p->{'startblock'} + $p->{'blocks'} - 1, ($pb2 ? safe_nice_size($pb2) : '-'), &html_escape($usep), &html_escape($rolep)
         ]);
     }
     print ui_columns_end();

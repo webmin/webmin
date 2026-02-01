@@ -9,6 +9,10 @@ ReadParse();
 my $extwidth = 300;
 # Get the disk and slice
 my @disks = list_disks_partitions();
+# Validate input parameters to prevent command injection
+$in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or error($text{'disk_edevice'});
+$in{'device'} !~ /\.\./ or error($text{'disk_edevice'});
+$in{'slice'} =~ /^\d+$/ or error($text{'slice_egone'});
 my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks or error($text{'disk_egone'});
 my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}} or error($text{'slice_egone'});
 ui_print_header($slice->{'desc'}, $text{'slice_title'}, "");
@@ -29,11 +33,16 @@ my $slice_label = get_device_label_name(disk => $disk, slice => $slice, disk_str
 # Check if this is a boot slice
 my $is_boot = is_boot_partition($slice);
 print ui_alert_box($text{'slice_bootdesc'}, 'info') if $is_boot;
-print ui_form_start("save_slice.cgi");
+my $confirm_msg = $text{'confirm_overwrite'} || 'You will destroy/overwrite existing data structures. Continue?';
+my $confirm_js = $confirm_msg;
+$confirm_js =~ s/\\/\\\\/g;
+$confirm_js =~ s/'/\\'/g;
+$confirm_js =~ s/\r?\n/\\n/g;
+print ui_form_start("save_slice.cgi", "post", undef, "onsubmit=\"return confirm('$confirm_js')\"");
 print $hiddens;
 print ui_table_start($text{'slice_header'}, undef, 2);
-print ui_table_row($text{'part_device'}, "<tt>$slice->{'device'}</tt>");
-print ui_table_row($text{'slice_label'}, $slice_label ? "<tt>$slice_label</tt>" : "-");
+print ui_table_row($text{'part_device'}, "<tt>".html_escape($slice->{'device'})."</tt>");
+print ui_table_row($text{'slice_label'}, $slice_label ? "<tt>".html_escape($slice_label)."</tt>" : "-");
 my $slice_bytes = bytes_from_blocks($slice->{'device'}, $slice->{'blocks'});
 print ui_table_row($text{'slice_ssize'}, $slice_bytes ? safe_nice_size($slice_bytes) : '-');
 print ui_table_row($text{'slice_sstart'}, $slice->{'startblock'});
@@ -65,7 +74,7 @@ if (!$is_gpt && ($slice->{'type'} !~ /^(?:efi|freebsd-boot)$/i)) {
 print ui_table_row($text{'slice_suse'},
     (!$slice_use || $slice_use eq $text{'part_nouse'})
         ? $text{'part_nouse'}
-        : ($slice_status[2] ? text('part_inuse', $slice_use) : text('part_foruse', $slice_use)));
+        : ($slice_status[2] ? text('part_inuse', html_escape($slice_use)) : text('part_foruse', html_escape($slice_use))));
 # Add a row for the slice role
 print ui_table_row($text{'slice_role'}, get_partition_role($slice));
 print ui_table_end();
@@ -130,14 +139,14 @@ if (@{$slice->{'parts'}}) {
         my $psz_b = bytes_from_blocks($p->{'device'}, $p->{'blocks'});
         print ui_columns_row([
             "<a href='$url'>" . uc($p->{'letter'}) . "</a>",
-            "<a href='$url'>" . ($fmt || get_format_type($p)) . "</a>",
+            "<a href='$url'>" . html_escape($fmt || get_format_type($p)) . "</a>",
             $ext,
             ($psz_b ? safe_nice_size($psz_b) : '-'),
             $p->{'startblock'},
             $p->{'startblock'} + $p->{'blocks'} - 1,
             $stripesize,
-            $use_txt,
-            $role_txt,
+            html_escape($use_txt),
+            html_escape($role_txt),
         ]);
     }
     print ui_columns_end();

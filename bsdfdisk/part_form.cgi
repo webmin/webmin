@@ -11,6 +11,9 @@ our (%in, %text, $module_name);
 
 # Get the disk and slice
 my @disks = &list_disks_partitions();
+$in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or &error($text{'disk_edevice'} || 'Invalid device');
+$in{'device'} !~ /\.\./ or &error($text{'disk_edevice'} || 'Invalid device');
+$in{'slice'} =~ /^\d+$/ or &error($text{'slice_egone'});
 my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error($text{'disk_egone'});
 my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}};
@@ -77,7 +80,7 @@ if (@{$slice->{'parts'}||[]}) {
         my $rolep = get_partition_role($p);
         my $pb = bytes_from_blocks($p->{'device'}, $p->{'blocks'});
         print &ui_columns_row([
-            uc($p->{'letter'}), $ptype, $p->{'startblock'}, $p->{'startblock'} + $p->{'blocks'} - 1, ($pb ? safe_nice_size($pb) : '-'), $usep, $rolep
+            uc($p->{'letter'}), &html_escape($ptype), $p->{'startblock'}, $p->{'startblock'} + $p->{'blocks'} - 1, ($pb ? safe_nice_size($pb) : '-'), &html_escape($usep), &html_escape($rolep)
         ]);
     }
     print &ui_columns_end();

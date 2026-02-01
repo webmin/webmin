@@ -39,7 +39,8 @@ if ($zdev) {
 
 	# Parent pool summary (best effort)
 	my $parent = $zdev->{'pool'};
-	my $zlist = `zfs list -H -o name,used,avail,refer,mountpoint $parent 2>/dev/null`;
+	my $parent_q = quote_path($parent);
+	my $zlist = &backquote_command("zfs list -H -o name,used,avail,refer,mountpoint $parent_q 2>/dev/null");
 	if ($zlist) {
 		chomp($zlist);
 		my @cols = split(/\t/, $zlist);
@@ -52,14 +53,14 @@ if ($zdev) {
 				$text{'newfs_zfs_refer'},
 				$text{'newfs_zfs_mount'}
 			]);
-			print ui_columns_row([ @cols[0..4] ]);
+			print ui_columns_row([ map { html_escape($_) } @cols[0..4] ]);
 			print ui_columns_end();
 			print "<br/>\n";
 		}
 	}
 
 	# Existing filesystems under this pool
-	my $zlist_fs = `zfs list -H -r -t filesystem -o name,used,avail,refer,mountpoint $parent 2>/dev/null`;
+	my $zlist_fs = &backquote_command("zfs list -H -r -t filesystem -o name,used,avail,refer,mountpoint $parent_q 2>/dev/null");
 	if ($zlist_fs) {
 		my @lines = split(/\n/, $zlist_fs);
 		if (@lines && $lines[0] =~ /^\Q$parent\E(\t|$)/) {
@@ -77,7 +78,7 @@ if ($zdev) {
 			foreach my $ln (@lines) {
 				my @cols = split(/\t/, $ln);
 				next unless @cols >= 5;
-				print ui_columns_row([ @cols[0..4] ]);
+				print ui_columns_row([ map { html_escape($_) } @cols[0..4] ]);
 			}
 			print ui_columns_end();
 			print "<br/>\n";
@@ -85,7 +86,7 @@ if ($zdev) {
 	}
 
 	# Existing volumes under this pool
-	my $zlist_vol = `zfs list -H -r -t volume -o name,used,avail,refer,volsize $parent 2>/dev/null`;
+	my $zlist_vol = &backquote_command("zfs list -H -r -t volume -o name,used,avail,refer,volsize $parent_q 2>/dev/null");
 	if ($zlist_vol) {
 		my @lines = split(/\n/, $zlist_vol);
 		if (@lines && $lines[0] =~ /^\Q$parent\E(\t|$)/) {
@@ -103,7 +104,7 @@ if ($zdev) {
 			foreach my $ln (@lines) {
 				my @cols = split(/\t/, $ln);
 				next unless @cols >= 5;
-				print ui_columns_row([ @cols[0..4] ]);
+				print ui_columns_row([ map { html_escape($_) } @cols[0..4] ]);
 			}
 			print ui_columns_end();
 			print "<br/>\n";
@@ -193,7 +194,7 @@ if ($zdev) {
 
 	print &ui_table_start($text{'newfs_zfs_header'}, 'width=100%', 2);
 	print &ui_table_row($text{'newfs_zfs_name'},
-		"$parent/".&ui_textbox("zfs", undef, 24));
+		html_escape($parent)."/".&ui_textbox("zfs", undef, 24));
 	print &ui_table_row($text{'newfs_zfs_mountpoint'},
 		&ui_filebox('mountpoint', '', 25, undef, undef, 1)." (".$text{'newfs_zfs_mount_blank'}.")");
 	print &ui_table_end();
@@ -269,7 +270,7 @@ if ($zdev) {
 	print &ui_hidden("parent", $parent);
 	print &ui_table_start($text{'newfs_zvol_header'}, 'width=100%', 2);
 	print &ui_table_row($text{'newfs_zvol_name'},
-		"$parent/".&ui_textbox("zvol", undef, 24));
+		html_escape($parent)."/".&ui_textbox("zvol", undef, 24));
 	print &ui_table_row($text{'newfs_zvol_size'},
 		&ui_textbox('size', undef, 20, undef, undef, "oninput='updateRefres()'"));
 	print &ui_table_end();
@@ -409,7 +410,12 @@ EOF
 # Default: UFS newfs form
 &ui_print_header($object->{'desc'}, $text{'newfs_title'}, "");
 
-print &ui_form_start("newfs.cgi", "post");
+my $confirm_msg = $text{'confirm_overwrite'} || 'You will destroy/overwrite existing data structures. Continue?';
+my $confirm_js = $confirm_msg;
+$confirm_js =~ s/\\/\\\\/g;
+$confirm_js =~ s/'/\\'/g;
+$confirm_js =~ s/\r?\n/\\n/g;
+print &ui_form_start("newfs.cgi", "post", undef, "onsubmit=\"return confirm('$confirm_js')\"");
 print &ui_hidden("device", $in{'device'});
 print &ui_hidden("slice", $in{'slice'});
 print &ui_hidden("part", $in{'part'});

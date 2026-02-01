@@ -14,7 +14,7 @@ sub get_all_mount_points_cached {
     foreach my $m (@mount_list) {
         $mount_info{$m->[0]} = $m->[1];
     }
-    my $swapinfo = `swapinfo -k 2>/dev/null`;
+    my $swapinfo = backquote_command("swapinfo -k 2>/dev/null");
     foreach my $line (split(/\n/, $swapinfo)) {
         if ($line =~ /^(\/dev\/\S+)\s+\d+\s+\d+\s+\d+/) {
             $mount_info{$1} = "swap";
@@ -22,7 +22,7 @@ sub get_all_mount_points_cached {
     }
     # ZFS, GEOM, glabel, geli – remain the same as the original.
     if (has_command("zpool")) {
-        my $zpool_out = `zpool status 2>/dev/null`;
+        my $zpool_out = backquote_command("zpool status 2>/dev/null");
         my $current_pool = "";
         foreach my $line (split(/\n/, $zpool_out)) {
             if ($line =~ /^\s*pool:\s+(\S+)/) {
@@ -36,7 +36,7 @@ sub get_all_mount_points_cached {
     }
     if (has_command("geom")) {
         # gmirror
-        my $gmirror_out = `gmirror status 2>/dev/null`;
+        my $gmirror_out = backquote_command("gmirror status 2>/dev/null");
         my $current_mirror = "";
         foreach my $line (split(/\n/, $gmirror_out)) {
             if ($line =~ /^(\S+):/) {
@@ -48,7 +48,7 @@ sub get_all_mount_points_cached {
             }
         }
         # gstripe
-        my $gstripe_out = `gstripe status 2>/dev/null`;
+        my $gstripe_out = backquote_command("gstripe status 2>/dev/null");
         my $current_stripe = "";
         foreach my $line (split(/\n/, $gstripe_out)) {
             if ($line =~ /^(\S+):/) {
@@ -60,7 +60,7 @@ sub get_all_mount_points_cached {
             }
         }
         # graid
-        my $graid_out = `graid status 2>/dev/null`;
+        my $graid_out = backquote_command("graid status 2>/dev/null");
         my $current_raid = "";
         foreach my $line (split(/\n/, $graid_out)) {
             if ($line =~ /^(\S+):/) {
@@ -73,7 +73,7 @@ sub get_all_mount_points_cached {
         }
     }
     if (has_command("glabel")) {
-        my $glabel_out = `glabel status 2>/dev/null`;
+        my $glabel_out = backquote_command("glabel status 2>/dev/null");
         foreach my $line (split(/\n/, $glabel_out)) {
             if ($line =~ /^\s*(\S+)\s+(\S+)\s+(\S+)/) {
                 my $label = $1;
@@ -85,7 +85,7 @@ sub get_all_mount_points_cached {
         }
     }
     if (has_command("geli")) {
-        my $geli_out = `geli status 2>/dev/null`;
+        my $geli_out = backquote_command("geli status 2>/dev/null");
         foreach my $line (split(/\n/, $geli_out)) {
             if ($line =~ /^(\/dev\/\S+)\s+/) {
                 my $dev = $1;
@@ -156,7 +156,7 @@ sub list_disks_partitions {
     }
     # Fallback: sysctl
     if (!@disk_devices) {
-        my $sysctl_out = `sysctl -n kern.disks 2>/dev/null`;
+        my $sysctl_out = backquote_command("sysctl -n kern.disks 2>/dev/null");
         if ($sysctl_out) {
             chomp($sysctl_out);
             @disk_devices = split(/\s+/, $sysctl_out);
@@ -164,7 +164,7 @@ sub list_disks_partitions {
     }
     # Fallback: dmesg
     if (!@disk_devices) {
-        my $dmesg_out = `dmesg | grep -E '(ada|ad|da|amrd|nvd|vtbd)[0-9]+:' 2>/dev/null`;
+        my $dmesg_out = backquote_command("dmesg | grep -E '(ada|ad|da|amrd|nvd|vtbd)[0-9]+:' 2>/dev/null");
         while ($dmesg_out =~ /\b(ada|ad|da|amrd|nvd|vtbd)(\d+):/g) {
             my $disk = "$1$2";
             push(@disk_devices, $disk) if (-e "/dev/$disk");
@@ -172,7 +172,7 @@ sub list_disks_partitions {
     }
     # Fallback: geom
     if (!@disk_devices) {
-        my $geom_out = `geom disk list 2>/dev/null`;
+        my $geom_out = backquote_command("geom disk list 2>/dev/null");
         while ($geom_out =~ /Name:\s+(\S+)/g) {
             my $disk = $1;
             push(@disk_devices, $disk) if (-e "/dev/$disk");
@@ -199,7 +199,7 @@ sub list_disks_partitions {
             $diskinfo->{'size'} = $size;
             $diskinfo->{'blocks'} = int($size / $sectorsz);
         } else {
-            my $diskinfo_out = `diskinfo $disk 2>/dev/null`;
+            my $diskinfo_out = backquote_command("diskinfo " . quote_path($disk) . " 2>/dev/null");
             if ($diskinfo_out =~ /^(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(.*)/) {
                 $diskinfo->{'size'} = $1;
                 $diskinfo->{'blocks'} = int($1 / $sectorsz);
@@ -211,7 +211,7 @@ sub list_disks_partitions {
                 }
             }
             if (!$diskinfo->{'size'}) {
-                my $diskinfo_v_out = `diskinfo -v $disk 2>/dev/null`;
+                my $diskinfo_v_out = backquote_command("diskinfo -v " . quote_path($disk) . " 2>/dev/null");
                 if ($diskinfo_v_out =~ /sectorsize:\s*(\d+)/i) {
                     $sectorsz = $1;
                     $diskinfo->{'sectorsize'} = $sectorsz;
@@ -225,7 +225,7 @@ sub list_disks_partitions {
                 }
             }
             if (!$diskinfo->{'model'}) {
-                my $cam_id_out = `camcontrol identify $disk 2>/dev/null`;
+                my $cam_id_out = backquote_command("camcontrol identify " . quote_path($disk) . " 2>/dev/null");
                 if ($cam_id_out =~ /model\s+(.*)/i) {
                     my $m = $1;
                     $m =~ s/^\s+|\s+$//g;
@@ -233,7 +233,7 @@ sub list_disks_partitions {
                 }
             }
             if (!$diskinfo->{'model'}) {
-                my $inq_out = `camcontrol inquiry $disk 2>/dev/null`;
+                my $inq_out = backquote_command("camcontrol inquiry " . quote_path($disk) . " 2>/dev/null");
                 if ($inq_out =~ /<([^>]+)>/) {
                     $diskinfo->{'model'} = $1;
                 } else {
@@ -277,7 +277,7 @@ sub list_disks_partitions {
         # Process slices and partitions
         $diskinfo->{'slices'} = [];
         if (has_command("gpart")) {
-            my $gpart_out = `gpart show $disk 2>/dev/null`;
+            my $gpart_out = backquote_command("gpart show " . quote_path($disk) . " 2>/dev/null");
             my @lines = split(/\n/, $gpart_out);
             my $in_disk = 0;
             my $disk_scheme = undef;  # GPT, MBR, etc.
@@ -325,7 +325,7 @@ sub list_disks_partitions {
                     $slice->{'used'} = $mount_info{$slice_device};
 
                     # Get partitions for this slice once, using the correct provider name
-                    my $gpart_slice_out = `gpart show $slice_devname 2>/dev/null`;
+                    my $gpart_slice_out = backquote_command("gpart show " . quote_path($slice_devname) . " 2>/dev/null");
                     my @slice_lines = split(/\n/, $gpart_slice_out);
                     my $in_slice = 0;
                     my $slice_scheme;
@@ -369,7 +369,7 @@ sub list_disks_partitions {
         else {
             # If no slices found with gpart, use fdisk if available (similar caching ideas apply)
             if (has_command("fdisk")) {
-                my $fdisk_out = `fdisk /dev/$disk 2>/dev/null`;
+                my $fdisk_out = backquote_command("fdisk " . quote_path("/dev/$disk") . " 2>/dev/null");
                 foreach my $line (split(/\n/, $fdisk_out)) {
                     if ($line =~ /^\s*(\d+):\s+(\d+)\s+(\d+)\s+(\d+)\s+(\S+)/) {
                         my $slice_device = "/dev/${disk}s$1";
@@ -383,7 +383,7 @@ sub list_disks_partitions {
                             'parts'       => []
                         };
                         $slice->{'used'} = $mount_info{$slice_device};
-                        my $disklabel_out = `disklabel -r $slice_device 2>/dev/null`;
+                        my $disklabel_out = backquote_command("disklabel -r " . quote_path($slice_device) . " 2>/dev/null");
                         foreach my $label_line (split(/\n/, $disklabel_out)) {
                             if ($label_line =~ /^(\s*)([a-h]):\s+(\d+)\s+(\d+)\s+(\S+)/) {
                                 my $part_device = "${slice_device}$2";
@@ -482,8 +482,8 @@ sub create_slice {
             } else {
                 $scheme = 'GPT';
             }
-            my $init = "gpart create -s $scheme $base";
-            my $init_out = `$init 2>&1`;
+            my $init = "gpart create -s $scheme " . quote_path($base);
+            my $init_out = backquote_command("$init 2>&1");
             if ($? != 0 && $init_out !~ /File exists|already exists/i) {
                 return $init_out;
             }
@@ -495,8 +495,8 @@ sub create_slice {
         $cmd = "gpart add -t " . $slice->{'type'};
         $cmd .= " -b $slice->{'startblock'}" if ($slice->{'startblock'});
         $cmd .= " -s $slice->{'blocks'}"   if ($slice->{'blocks'});
-        $cmd .= " " . $base;
-        my $out = `$cmd 2>&1`;
+        $cmd .= " " . quote_path($base);
+        my $out = backquote_command("$cmd 2>&1");
         if ($?) {
             return $out;
         }
@@ -511,8 +511,8 @@ sub create_slice {
         $cmd .= " -s $slice->{'number'}"    if ($slice->{'number'});
         $cmd .= " -b $slice->{'startblock'}"  if ($slice->{'startblock'});
         $cmd .= " -s $slice->{'blocks'}"      if ($slice->{'blocks'});
-        $cmd .= " -t $slice->{'type'} "       . $disk->{'device'};
-        my $out = `$cmd 2>&1`;
+        $cmd .= " -t $slice->{'type'} "       . quote_path($disk->{'device'});
+        my $out = backquote_command("$cmd 2>&1");
         if ($?) {
             return $out;
         }
@@ -531,12 +531,12 @@ sub delete_slice {
     }
     my $cmd;
     if (is_using_gpart()) {
-        $cmd = "gpart delete -i " . slice_number($slice) . " " . disk_name($disk->{'device'});
-        my $out = `$cmd 2>&1`;
+        $cmd = "gpart delete -i " . slice_number($slice) . " " . quote_path(disk_name($disk->{'device'}));
+        my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     } else {
-        $cmd = "fdisk -d " . $slice->{'number'} . " " . $disk->{'device'};
-        my $out = `$cmd 2>&1`;
+        $cmd = "fdisk -d " . $slice->{'number'} . " " . quote_path($disk->{'device'});
+        my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     }
 }
@@ -548,12 +548,12 @@ sub delete_partition {
     if (is_using_gpart()) {
         # BSD disklabel uses 1-based indexing: 'a' = 1, 'b' = 2, etc.
         my $idx = (ord($part->{'letter'}) - ord('a')) + 1;
-        $cmd = "gpart delete -i $idx " . slice_name($slice);
-        my $out = `$cmd 2>&1`;
+        $cmd = "gpart delete -i $idx " . quote_path(slice_name($slice));
+        my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     } else {
-        $cmd = "disklabel -r -w -d $part->{'letter'} " . $slice->{'device'};
-        my $out = `$cmd 2>&1`;
+        $cmd = "disklabel -r -w -d $part->{'letter'} " . quote_path($slice->{'device'});
+        my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     }
 }
@@ -566,12 +566,12 @@ sub modify_slice {
     }
     my $cmd;
     if (is_using_gpart()) {
-        $cmd = "gpart modify -i " . slice_number($slice) . " -t " . $slice->{'type'} . " " . disk_name($disk->{'device'});
-        my $out = `$cmd 2>&1`;
+        $cmd = "gpart modify -i " . slice_number($slice) . " -t " . $slice->{'type'} . " " . quote_path(disk_name($disk->{'device'}));
+        my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     } else {
-        $cmd = "fdisk -a -s " . $slice->{'number'} . " -t " . $slice->{'type'} . " " . $disk->{'device'};
-        my $out = `$cmd 2>&1`;
+        $cmd = "fdisk -a -s " . $slice->{'number'} . " -t " . $slice->{'type'} . " " . quote_path($disk->{'device'});
+        my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     }
 }
@@ -582,20 +582,20 @@ sub save_partition {
     if (is_using_gpart()) {
         my $provider = slice_name($slice);
         # Detect if this provider is a BSD label (sub-partitions) or GPT/MBR
-        my $show = backquote_command("gpart show $provider 2>&1");
+        my $show = backquote_command("gpart show " . quote_path($provider) . " 2>&1");
         if ($show =~ /\bBSD\b/) {
             # Inner BSD label: index is 1-based a->1, b->2, etc. Only FreeBSD partition types are valid here.
             my $idx = (ord($part->{'letter'}) - ord('a')) + 1;
-            $cmd = "gpart modify -i $idx -t " . $part->{'type'} . " $provider";
+            $cmd = "gpart modify -i $idx -t " . $part->{'type'} . " " . quote_path($provider);
         } else {
             # Not a BSD label; modifying a top-level partition by letter is invalid. Return an error with guidance.
             return "Invalid operation: attempting to modify non-BSD sub-partition by letter. Use slice editing for top-level partitions.";
         }
-        my $out = `$cmd 2>&1`;
+        my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     } else {
-        $cmd = "disklabel -r -w -p " . $part->{'letter'} . " -t " . $part->{'type'} . " " . $slice->{'device'};
-        my $out = `$cmd 2>&1`;
+        $cmd = "disklabel -r -w -p " . $part->{'letter'} . " -t " . $part->{'type'} . " " . quote_path($slice->{'device'});
+        my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     }
 }
@@ -609,12 +609,12 @@ sub create_partition {
     }
     my $prov = slice_name($slice);
     # Ensure BSD label exists on the slice
-    my $show = backquote_command("gpart show $prov 2>&1");
+    my $show = backquote_command("gpart show " . quote_path($prov) . " 2>&1");
     if ($show !~ /\bBSD\b/) {
         my $init_err = initialize_slice($disk, $slice);
         return $init_err if ($init_err);
         # Refresh the show output after initialization
-        $show = backquote_command("gpart show $prov 2>&1");
+        $show = backquote_command("gpart show " . quote_path($prov) . " 2>&1");
     }
     # Compute 1-based index
     my $idx = (ord($part->{'letter'}) - ord('a')) + 1;
@@ -625,8 +625,8 @@ sub create_partition {
     my $cmd = "gpart add -i $idx -t $part->{'type'}";
     $cmd .= " -b $start_rel" if (defined $start_rel && $start_rel > 0);
     $cmd .= " -s $blocks"     if (defined $blocks     && $blocks > 0);
-    $cmd .= " $prov";
-    my $out = `$cmd 2>&1`;
+    $cmd .= " " . quote_path($prov);
+    my $out = backquote_command("$cmd 2>&1");
     if ($?) {
         return $out;
     }
@@ -664,8 +664,8 @@ sub set_partition_label {
     if ($ds && $ds->{'scheme'} && $ds->{'scheme'} =~ /GPT/i) {
         my $idx = $part ? undef : $slice->{'number'}; # slice is a GPT partition
         if ($idx) {
-            my $cmd = "gpart modify -i $idx -l " . quote_path($label) . " $base";
-            my $out = `$cmd 2>&1`;
+            my $cmd = "gpart modify -i $idx -l " . quote_path($label) . " " . quote_path($base);
+            my $out = backquote_command("$cmd 2>&1");
             return ($? ? $out : undef);
         }
         return undef;
@@ -677,10 +677,10 @@ sub set_partition_label {
         my $existing = backquote_command("glabel status 2>/dev/null | grep " . quote_path($device));
         if ($existing =~ /^(\S+)\s+/) {
             my $old_label = $1;
-            my $destroy_out = `glabel destroy $old_label 2>&1`;
+            my $destroy_out = backquote_command("glabel destroy " . quote_path($old_label) . " 2>&1");
         }
         my $cmd = "glabel label " . quote_path($label) . " " . quote_path($device);
-        my $out = `$cmd 2>&1`;
+        my $out = backquote_command("$cmd 2>&1");
         return ($? ? $out : undef);
     }
     return undef;
@@ -697,8 +697,8 @@ sub remove_partition_label {
     if ($ds && $ds->{'scheme'} && $ds->{'scheme'} =~ /GPT/i) {
         my $idx = $part ? undef : $slice->{'number'};
         if ($idx) {
-            my $cmd = "gpart modify -i $idx -l \"\" $base";
-            my $out = `$cmd 2>&1`;
+            my $cmd = "gpart modify -i $idx -l \"\" " . quote_path($base);
+            my $out = backquote_command("$cmd 2>&1");
             return ($? ? $out : undef);
         }
         return undef;
@@ -710,7 +710,7 @@ sub remove_partition_label {
         if ($existing =~ /^(\S+)\s+/) {
             my $label = $1;
             my $cmd = "glabel destroy $label";
-            my $out = `$cmd 2>&1`;
+            my $out = backquote_command("$cmd 2>&1");
             return ($? ? $out : undef);
         }
     }
@@ -793,7 +793,7 @@ sub preferred_device_path {
         }
     }
     # Check for UFS label
-    my $ufs_label = backquote_command("tunefs -p $device 2>/dev/null | grep 'volume label'");
+    my $ufs_label = backquote_command("tunefs -p " . quote_path($device) . " 2>/dev/null | grep 'volume label'");
     if ($ufs_label =~ /volume label.*\[([^\]]+)\]/ && $1 ne '') {
         my $label_path = "/dev/ufs/$1";
         return $label_path if (-e $label_path);
@@ -906,15 +906,16 @@ sub get_check_filesystem_command {
     my $device = $part ? $part->{'device'} : $slice->{'device'};
     my $hint   = $part ? $part->{'type'}   : $slice->{'type'};
     my $fstype = detect_filesystem_type($device, $hint);
+    my $qdev   = quote_path($device);
     # Map to specific fsck tools when available; else use fsck -t
     if ($fstype && $fstype eq 'ufs') {
-        return has_command('fsck_ufs') ? "fsck_ufs -y $device" : "fsck -t ufs -y $device";
+        return has_command('fsck_ufs') ? "fsck_ufs -y $qdev" : "fsck -t ufs -y $qdev";
     }
     if ($fstype && $fstype eq 'msdosfs') {
-        return has_command('fsck_msdosfs') ? "fsck_msdosfs -y $device" : "fsck -t msdosfs -y $device";
+        return has_command('fsck_msdosfs') ? "fsck_msdosfs -y $qdev" : "fsck -t msdosfs -y $qdev";
     }
     if ($fstype && $fstype eq 'ext2fs') {
-        return has_command('fsck_ext2fs') ? "fsck_ext2fs -y $device" : "fsck -t ext2fs -y $device";
+        return has_command('fsck_ext2fs') ? "fsck_ext2fs -y $qdev" : "fsck -t ext2fs -y $qdev";
     }
     if ($fstype && $fstype eq 'zfs') {
         return "zpool status 2>&1"; # caller should avoid fsck for ZFS, but safe fallback
@@ -923,7 +924,7 @@ sub get_check_filesystem_command {
         return "echo 'swap device - fsck not applicable'";
     }
     # Generic fallback
-    return "fsck -y $device";
+    return "fsck -y $qdev";
 }
 
 sub show_filesystem_buttons {
@@ -934,10 +935,20 @@ sub show_filesystem_buttons {
     # Use preferred device path (label-based if available)
     my $preferred_dev = preferred_device_path($object->{'device'});
     print ui_buttons_row("newfs_form.cgi", $text{'part_newfs'}, $text{'part_newfsdesc'}, $hiddens);
-    # Do not offer fsck for swap or ZFS devices
+    # Offer fsck only when a filesystem is detectable and supported
     my $is_swap = (@$st && $st->[1] eq 'swap') || ($object->{'type'} && $object->{'type'} =~ /freebsd-swap|^82$/i);
     my $is_zfs  = is_zfs_device($object);
-    if ((!@$st || !$is_swap) && !$is_zfs) {
+    my $fsck_type;
+    if (has_command('fstyp')) {
+        $fsck_type = detect_filesystem_type($object->{'device'}, undef);
+        if (!$fsck_type) {
+            $fsck_type = detect_filesystem_type($object->{'device'}, $object->{'type'});
+        }
+    }
+    else {
+        $fsck_type = detect_filesystem_type($object->{'device'}, $object->{'type'});
+    }
+    if ($fsck_type && $fsck_type ne 'swap' && $fsck_type ne 'zfs' && !$is_swap && !$is_zfs) {
         print ui_buttons_row("fsck.cgi", $text{'part_fsck'}, $text{'part_fsckdesc'}, $hiddens);
     }
     if (!@$st) {
@@ -984,7 +995,7 @@ sub get_type_description {
         'freebsd-boot'    => 'FreeBSD Boot',
         'efi'             => 'EFI System',
         'bios-boot'       => 'BIOS Boot',
-        'ms-basic-data'   => 'Microsoft Basic Data',
+        'ms-basic-data'   => 'Microsoft Basic Data (FAT/NTFS/exFAT)',
         'ms-reserved'     => 'Microsoft Reserved',
         'ms-recovery'     => 'Microsoft Recovery',
         'apple-ufs'       => 'Apple UFS',
@@ -992,7 +1003,7 @@ sub get_type_description {
         'apple-boot'      => 'Apple Boot',
         'apple-raid'      => 'Apple RAID',
         'apple-label'     => 'Apple Label',
-        'linux-data'      => 'Linux Data',
+        'linux-data'      => 'Linux Data (ext2/3/4, xfs, btrfs, etc.)',
         'linux-swap'      => 'Linux Swap',
         'linux-lvm'       => 'Linux LVM',
         'linux-raid'      => 'Linux RAID',
@@ -1003,7 +1014,7 @@ sub get_type_description {
 sub get_disk_structure {
     my ($device) = @_;
     my $result = { 'entries' => [], 'partitions' => {} };
-    my $cmd = "gpart show -l $device 2>&1";
+    my $cmd = "gpart show -l " . quote_path($device) . " 2>&1";
     my $out = backquote_command($cmd);
     if ($out =~ /=>\s+(\d+)\s+(\d+)\s+(\S+)\s+(\S+)\s+\(([^)]+)\)/) {
         my $start_block = $1;                     # starting block
@@ -1038,7 +1049,7 @@ sub get_disk_structure {
         }
     }
     # Merge additional info from 'gpart list' directly, keyed by Name -> index
-    my $list_out = backquote_command("gpart list $device 2>&1");
+    my $list_out = backquote_command("gpart list " . quote_path($device) . " 2>&1");
     my (%parts, $current_idx);
     foreach my $line (split(/\n/, $list_out)) {
         if ($line =~ /^\s*(?:\d+\.\s*)?Name:\s*(\S+)/i) {
@@ -1101,12 +1112,12 @@ sub get_disk_sectorsize {
     # Normalize device for diskinfo (expects provider name like da0)
     my $dev = $device; $dev =~ s{^/dev/}{};
     # Prefer verbose output which explicitly lists sectorsize
-    my $outv = backquote_command("diskinfo -v $dev 2>/dev/null");
+    my $outv = backquote_command("diskinfo -v " . quote_path($dev) . " 2>/dev/null");
     if ($outv =~ /sectorsize:\s*(\d+)/i) {
         return int($1);
     }
     # Fallback to non-verbose; actual format: name sectorsize mediasize ...
-    my $out = backquote_command("diskinfo $dev 2>/dev/null");
+    my $out = backquote_command("diskinfo " . quote_path($dev) . " 2>/dev/null");
     if ($out =~ /^\S+\s+(\d+)\s+\d+/) {
         return int($1); # second field is sectorsize
     }
@@ -1475,7 +1486,7 @@ sub list_partition_types {
             );
             return @mbr_types;
         }
-        # Default GPT types
+        # Default GPT types (common, practical choices)
         my @gpt_types = (
             [ 'efi',            get_type_description('efi')            ],
             [ 'bios-boot',      get_type_description('bios-boot')      ],
@@ -1534,7 +1545,7 @@ sub get_detailed_disk_info {
     my ($device) = @_;
     my $info = {};
     (my $dev_name = $device) =~ s/^\/dev\///;
-    my $out = backquote_command("geom disk list $dev_name 2>/dev/null");
+    my $out = backquote_command("geom disk list " . quote_path($dev_name) . " 2>/dev/null");
     return undef if ($?);
     foreach my $line (split(/\n/, $out)) {
         if ($line =~ /^\s+Mediasize:\s+(\d+)\s+\(([^)]+)\)/) {
@@ -1581,10 +1592,10 @@ sub initialize_slice {
     }
     # For MBR: initialize BSD disklabel on the slice only if not already present
     my $prov = slice_name($slice);
-    my $show = backquote_command("gpart show $prov 2>&1");
+    my $show = backquote_command("gpart show " . quote_path($prov) . " 2>&1");
     return undef if ($show =~ /\bBSD\b/);
-    my $cmd = "gpart create -s BSD $prov 2>&1";
-    my $out = `$cmd`;
+    my $cmd = "gpart create -s BSD " . quote_path($prov) . " 2>&1";
+    my $out = backquote_command($cmd);
     if ($? != 0) {
         return "Failed to initialize slice: $out";
     }

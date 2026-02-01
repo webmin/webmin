@@ -144,6 +144,7 @@ nslice_autonext=Will auto-select next index
 nslice_diskblocks=Disk size in blocks
 nslice_start=Starting block
 nslice_end=Ending block
+nslice_type=Slice type
 nslice_err=Failed to create slice
 nslice_enumber=Slice number must be a number
 nslice_eclash=A slice with number $1 already exists
@@ -158,6 +159,8 @@ nslice_pfailed=.. partition creation failed : $1
 nslice_pdone=.. partition added
 nslice_existing_header=Existing slices on this disk
 nslice_existing_parts=Existing partitions on this disk
+nslice_existing_slices_label=Existing slices
+nslice_existing_parts_label=Existing partitions
 nslice_enospace=No space on device left to create a slice!
 epart_existing=Existing partitions on this slice
 
@@ -298,7 +301,10 @@ fsck_err=Failed to check filesystem
 fsck_exec=Executing command $1 ..
 fsck_failed=.. check failed!
 fsck_done=.. check complete
+fsck_fixed=.. file system was modified and fixed.
+fsck_reboot=.. file system modified; a reboot may be required.
 fsck_checking=Checking filesystem on $1 ..
+confirm_overwrite=You will destroy/overwrite existing data structures. Continue?
 
 # Logging
 action_create_slice=Created slice $1

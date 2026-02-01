@@ -71,7 +71,7 @@ if (defined $in{'mountpoint'} && $in{'mountpoint'} ne '') {
 
 &ui_print_unbuffered_header($object->{'desc'}, $text{'newfs_zfs_title'}, "");
 
-print &text('newfs_zfs_creating', "<tt>$dataset</tt>"),"<br>\n";
+print &text('newfs_zfs_creating', "<tt>".&html_escape($dataset)."</tt>"),"<br>\n";
 print "<pre>\n";
 my $cmd = "zfs create " . join(" ", @opts) . " " . &quote_path($dataset);
 &additional_log('exec', undef, $cmd);

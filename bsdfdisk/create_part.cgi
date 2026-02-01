@@ -12,6 +12,10 @@ our (%in, %text, $module_name);
 
 # Get the disk
 my @disks = &list_disks_partitions();
+# Validate input parameters
+$in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or &error($text{'disk_edevice'} || 'Invalid device');
+$in{'device'} !~ /\.\./ or &error($text{'disk_edevice'} || 'Invalid device');
+$in{'slice'} =~ /^\d+$/ or &error($text{'slice_egone'});
 my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error($text{'disk_egone'});
 my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}};
@@ -35,12 +39,13 @@ $part->{'startblock'} = $in{'start'};
 $part->{'blocks'} = $in{'end'} - $in{'start'} + 1;
 
 # Slice type
+$in{'type'} =~ /^[a-zA-Z0-9._-]+$/ or &error($text{'npart_etype'} || 'Invalid partition type');
 $part->{'type'} = $in{'type'};
 
 # Do the creation
 &ui_print_header($slice->{'desc'}, $text{'npart_title'}, "");
 
-print &text('npart_creating', $in{'letter'}, $slice->{'desc'}),"<p>\n";
+print &text('npart_creating', $in{'letter'}, &html_escape($slice->{'desc'})),"<p>\n";
 # Actually create the partition inside the slice (initialize BSD label if needed)
 my $err = &create_partition($disk, $slice, $part);
 if ($err) {

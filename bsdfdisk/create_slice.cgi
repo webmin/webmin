@@ -8,6 +8,9 @@ ReadParse();
 error_setup($text{'nslice_err'});
 # Get the disk using first() for an early exit on match
 my @disks = list_disks_partitions();
+# Validate input parameters
+$in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or error($text{'disk_edevice'} || 'Invalid device');
+$in{'device'} !~ /\.\./ or error($text{'disk_edevice'} || 'Invalid device');
 my $disk;
 foreach my $d (@disks) {
     if ($d->{'device'} eq $in{'device'}) {
@@ -57,10 +60,10 @@ length($in{'type'}) <= 20 or error($text{'nslice_etype'});
 $slice->{'type'} = $in{'type'};
 # Do the creation
 ui_print_header($disk->{'desc'}, $text{'nslice_title'}, "");
-print text('nslice_creating', $in{'number'}, $disk->{'desc'}), "<p>\n";
+print text('nslice_creating', $in{'number'}, &html_escape($disk->{'desc'})), "<p>\n";
 my $err = create_slice($disk, $slice);
 if ($err) {
-    print text('nslice_failed', $err), "<p>\n";
+    print text('nslice_failed', &html_escape($err)), "<p>\n";
 } else {
     print text('nslice_done'), "<p>\n";
     # Auto-label the new partition provider with its name if scheme is GPT or BSD
@@ -72,8 +75,8 @@ if ($err) {
         if ($ds->{'scheme'} =~ /GPT/i) {
             my $idx = $slice->{'number'};
             if ($idx) {
-                my $cmd2 = "gpart modify -i $idx -l " . quote_path($label_text) . " $base";
-                my $out2 = `$cmd2 2>&1`;
+                my $cmd2 = "gpart modify -i $idx -l " . quote_path($label_text) . " " . quote_path($base);
+                my $out2 = backquote_command("$cmd2 2>&1");
                 # If it fails, ignore silently
             }
         } else {
@@ -99,8 +102,8 @@ if (!$err) {
         $slice_devname =~ s{^/dev/}{};  # e.g., da8p2
         my $idx = $slice->{'number'};
         if ($idx && $slice_devname) {
-            my $label_cmd = "gpart modify -i $idx -l " . quote_path($slice_devname) . " $base 2>&1";
-            my $label_out = `$label_cmd`;
+            my $label_cmd = "gpart modify -i $idx -l " . quote_path($slice_devname) . " " . quote_path($base) . " 2>&1";
+            my $label_out = backquote_command($label_cmd);
             # Ignore errors - labeling is optional
         }
     }

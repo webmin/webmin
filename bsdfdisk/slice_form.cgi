@@ -11,6 +11,8 @@ our (%in, %text, $module_name);
 
 # Get the disk
 my @disks = &list_disks_partitions();
+$in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or &error($text{'disk_edevice'} || 'Invalid device');
+$in{'device'} !~ /\.\./ or &error($text{'disk_edevice'} || 'Invalid device');
 my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error($text{'disk_egone'});
 
@@ -98,6 +100,7 @@ print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 # Existing slices summary
 print &ui_hr();
+print &ui_subheading($text{'nslice_existing_slices_label'});
 print &ui_columns_start([$text{'disk_no'}, $text{'disk_type'}, $text{'disk_start'}, $text{'disk_end'}, $text{'disk_size'}], $text{'nslice_existing_header'});
 foreach my $s (sort { $a->{'number'} <=> $b->{'number'} } @{$disk->{'slices'}}) {
     my $stype = get_type_description($s->{'type'}) || $s->{'type'};
@@ -105,7 +108,7 @@ foreach my $s (sort { $a->{'number'} <=> $b->{'number'} } @{$disk->{'slices'}}) 
     my $sz    = defined $szb ? safe_nice_size($szb) : '-';
     print &ui_columns_row([
         $s->{'number'},
-        $stype,
+        &html_escape($stype),
         $s->{'startblock'},
         $s->{'startblock'} + $s->{'blocks'} - 1,
         $sz,
@@ -121,10 +124,11 @@ foreach my $s (sort { $a->{'number'} <=> $b->{'number'} } @{$disk->{'slices'}}) 
         my $ptype = get_type_description($p->{'type'}) || $p->{'type'};
         my $pb    = bytes_from_blocks($p->{'device'}, $p->{'blocks'});
         my $psz   = defined $pb ? safe_nice_size($pb) : '-';
-        push @parts_rows, [ $s->{'number'}, uc($p->{'letter'}), $ptype, $p->{'startblock'}, $p->{'startblock'} + $p->{'blocks'} - 1, $psz ];
+        push @parts_rows, [ $s->{'number'}, uc($p->{'letter'}), &html_escape($ptype), $p->{'startblock'}, $p->{'startblock'} + $p->{'blocks'} - 1, $psz ];
     }
 }
 if (@parts_rows) {
+    print &ui_subheading($text{'nslice_existing_parts_label'});
     print &ui_columns_start(['Slice', $text{'slice_letter'}, $text{'slice_type'}, $text{'slice_start'}, $text{'slice_end'}, $text{'slice_size'}], $text{'nslice_existing_parts'});
     foreach my $row (@parts_rows) { print &ui_columns_row($row); }
     print &ui_columns_end();

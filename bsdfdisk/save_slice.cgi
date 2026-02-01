@@ -12,6 +12,9 @@ our (%in, %text, $module_name);
 
 # Get the disk and slice
 my @disks = &list_disks_partitions();
+$in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or &error($text{'disk_edevice'} || 'Invalid device');
+$in{'device'} !~ /\.\./ or &error($text{'disk_edevice'} || 'Invalid device');
+$in{'slice'} =~ /^\d+$/ or &error($text{'slice_egone'});
 my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error($text{'disk_egone'});
 my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}};
@@ -19,6 +22,7 @@ $slice || &error($text{'slice_egone'});
 
 # Apply changes
 my $oldslice = { %$slice };
+$in{'type'} =~ /^[a-zA-Z0-9._-]+$/ or &error($text{'nslice_etype'} || 'Invalid slice type');
 $slice->{'type'} = $in{'type'};
 $slice->{'active'} = $in{'active'} if (defined $in{'active'});
 
@@ -29,7 +33,7 @@ if (is_using_gpart() && $ds && $ds->{'scheme'} && $ds->{'scheme'} !~ /GPT/i) {
     my $idx = slice_number($slice);
     if (defined $oldslice->{'active'} && defined $slice->{'active'} && $oldslice->{'active'} != $slice->{'active'}) {
         my $cmd = $slice->{'active'} ? "gpart set -a active -i $idx $base" : "gpart unset -a active -i $idx $base";
-        my $out = `$cmd 2>&1`;
+        my $out = backquote_command("$cmd 2>&1");
         if ($? != 0) {
             &error("Failed to change active flag: $out");
         }

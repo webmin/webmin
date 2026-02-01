@@ -12,6 +12,10 @@ our (%in, %text, $module_name);
 
 # Get the disk and slice
 my @disks = &list_disks_partitions();
+$in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or &error($text{'disk_edevice'} || 'Invalid device');
+$in{'device'} !~ /\.\./ or &error($text{'disk_edevice'} || 'Invalid device');
+$in{'slice'} =~ /^\d+$/ or &error($text{'slice_egone'});
+$in{'part'} =~ /^[a-z]$/ or &error($text{'part_egone'});
 my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error($text{'disk_egone'});
 my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{$disk->{'slices'}};
@@ -23,10 +27,11 @@ $part || &error($text{'part_egone'});
 my @st = &fdisk::device_status($part->{'device'});
 my $use = &fdisk::device_status_link(@st);
 if (@st && $st[2]) {
-	&error(&text('part_esave', $use));
+	&error(&text('part_esave', &html_escape($use)));
 	}
 
 # Make the change
+$in{'type'} =~ /^[a-zA-Z0-9._-]+$/ or &error($text{'part_etype'} || 'Invalid partition type');
 $part->{'type'} = $in{'type'};
 my $err = &save_partition($disk, $slice, $part);
 &error($err) if ($err);

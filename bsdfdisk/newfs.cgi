@@ -11,6 +11,10 @@ our (%in, %text, $module_name);
 &error_setup($text{'newfs_err'});
 
 # Get the disk and slice
+ $in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or &error($text{'disk_edevice'} || 'Invalid device');
+ $in{'device'} !~ /\.\./ or &error($text{'disk_edevice'} || 'Invalid device');
+ $in{'slice'} =~ /^\d+$/ or &error($text{'slice_egone'});
+ $in{'part'} =~ /^[a-z]$/ or &error($text{'part_egone'}) if $in{'part'};
 my @disks = &list_disks_partitions();
 my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error($text{'disk_egone'});
@@ -34,7 +38,7 @@ if (is_boot_partition($object)) {
 my @st_obj = &fdisk::device_status($object->{'device'});
 my $use_obj = &fdisk::device_status_link(@st_obj);
 if (@st_obj && $st_obj[2]) {
-    &error(&text('part_esave', $use_obj));
+    &error(&text('part_esave', &html_escape($use_obj)));
 }
 
 # Validate inputs
@@ -52,26 +56,37 @@ $newfs->{'label'} = $in{'label_def'} ? undef : $in{'label'};
 &ui_print_unbuffered_header($object->{'desc'}, $text{'newfs_title'}, "");
 
 # Do the creation
-print &text('newfs_creating', "<tt>$object->{'device'}</tt>"),"<br>\n";
+print &text('newfs_creating', "<tt>".&html_escape($object->{'device'})."</tt>"),"<br>\n";
 print "<pre>\n";
 my $cmd = &get_create_filesystem_command($disk, $slice, $part, $newfs);
 &additional_log('exec', undef, $cmd);
-my $fh;
-&open_execute_command($fh, $cmd, 2);
-if ($fh) {
-    while(<$fh>) {
-        print &html_escape($_);
-    }
-    close($fh);
+my $out = &backquote_command($cmd . " 2>&1");
+foreach my $line (split(/\n/, $out)) {
+    $line =~ s/[^\x09\x0A\x0D\x20-\x7E]//g;
+    print &html_escape($line) . "\n";
 }
 print "</pre>";
-if ($?) {
+my $rc = $? >> 8;
+if ($rc) {
 	print $text{'newfs_failed'},"<p>\n";
 	}
 else {
 	print $text{'newfs_done'},"<p>\n";
 	&webmin_log("newfs", $in{'part'} ne '' ? "part" : "object",
 		    $object->{'device'}, $object);
+	# Verify filesystem signature if possible
+	if (has_command('fstyp')) {
+		my $fstyp_out = &backquote_command("fstyp " . quote_path($object->{'device'}) . " 2>&1");
+		$fstyp_out =~ s/[\r\n]+$//;
+		if ($fstyp_out) {
+			print "<pre>\n";
+			print &html_escape($fstyp_out) . "\n";
+			print "</pre>\n";
+		}
+		else {
+			print "<b>Warning:</b> fstyp did not detect a filesystem on this device.<p>\n";
+		}
+	}
 	# If a label was provided, set the partition label (GPT slice or BSD sub-partition)
 	if (!$in{'label_def'} && defined $in{'label'} && length $in{'label'}) {
 		my $errlbl = set_partition_label(

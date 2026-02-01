@@ -32,8 +32,8 @@ print &ui_form_start("save_slice_label.cgi", "post");
 print &ui_hidden("device", $in{'device'});
 print &ui_hidden("slice", $in{'slice'});
 print &ui_table_start($text{'slice_label_header'}, undef, 2);
-print &ui_table_row($text{'part_device'}, "<tt>$slice->{'device'}</tt>");
-print &ui_table_row($text{'slice_label_current'}, $current_label ? "<tt>$current_label</tt>" : "-");
+print &ui_table_row($text{'part_device'}, "<tt>".html_escape($slice->{'device'})."</tt>");
+print &ui_table_row($text{'slice_label_current'}, $current_label ? "<tt>".html_escape($current_label)."</tt>" : "-");
 print &ui_table_row($text{'slice_label_new'},
     &ui_textbox("label", $suggested_label, 20));
 print &ui_table_end();

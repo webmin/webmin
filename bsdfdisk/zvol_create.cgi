@@ -76,7 +76,7 @@ if (defined $refres) {
 
 &ui_print_unbuffered_header($object->{'desc'}, $text{'newfs_zvol_title'}, "");
 
-print &text('newfs_zvol_creating', "<tt>$dataset</tt>"),"<br>\n";
+print &text('newfs_zvol_creating', "<tt>".&html_escape($dataset)."</tt>"),"<br>\n";
 print "<pre>\n";
 my $cmd = "zfs create " . ($sparse ? "-s " : "") . "-V " . &quote_path($size) . " " .
           join(" ", @opts) . " " . &quote_path($dataset);

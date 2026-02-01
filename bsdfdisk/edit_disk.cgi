@@ -10,6 +10,9 @@ our (%in, %text, $module_name);
 my $extwidth = 100;
 # Get the disk
 my @disks = &list_disks_partitions();
+# Validate input parameters
+$in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ or &error($text{'disk_edevice'});
+$in{'device'} !~ /\.\./ or &error($text{'disk_edevice'});
 my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error($text{'disk_egone'});
 # Cache commonly used values
@@ -39,11 +42,11 @@ print &ui_table_start($text{'disk_details'}, "width=100%", 2);
 my $disk_bytes = ($disk_structure && $disk_structure->{'mediasize'}) ? $disk_structure->{'mediasize'} : $disk->{'size'};
 print &ui_table_row($text{'disk_dsize'}, &safe_nice_size($disk_bytes));
 if ($disk->{'model'}) {
-    print &ui_table_row($text{'disk_model'}, $disk->{'model'});
+    print &ui_table_row($text{'disk_model'}, &html_escape($disk->{'model'}));
 }
-print &ui_table_row($text{'disk_device'}, "<tt>$disk->{'device'}</tt>");
+print &ui_table_row($text{'disk_device'}, "<tt>".&html_escape($disk->{'device'})."</tt>");
 # Get disk scheme
-print &ui_table_row($text{'disk_scheme'}, $disk_structure ? $disk_structure->{'scheme'} : $text{'disk_unknown'});
+print &ui_table_row($text{'disk_scheme'}, $disk_structure ? &html_escape($disk_structure->{'scheme'}) : $text{'disk_unknown'});
 # GEOM details
 if ($geom_info) {
     print &ui_table_hr();
@@ -61,7 +64,7 @@ if ($geom_info) {
         print &ui_table_row($text{'disk_stripeoffset'}, $geom_info->{'stripeoffset'} . " " . $text{'disk_bytes'});
     }
     if ($geom_info->{'mode'}) {
-        print &ui_table_row($text{'disk_mode'}, $geom_info->{'mode'});
+        print &ui_table_row($text{'disk_mode'}, &html_escape($geom_info->{'mode'}));
     }
     if ($geom_info->{'rotationrate'}) {
         if ($geom_info->{'rotationrate'} eq "0") {
@@ -71,13 +74,13 @@ if ($geom_info) {
         }
     }
     if ($geom_info->{'ident'}) {
-        print &ui_table_row($text{'disk_ident'}, $geom_info->{'ident'});
+        print &ui_table_row($text{'disk_ident'}, &html_escape($geom_info->{'ident'}));
     }
     if ($geom_info->{'lunid'}) {
-        print &ui_table_row($text{'disk_lunid'}, $geom_info->{'lunid'});
+        print &ui_table_row($text{'disk_lunid'}, &html_escape($geom_info->{'lunid'}));
     }
     if ($geom_info->{'descr'}) {
-        print &ui_table_row($text{'disk_descr'}, $geom_info->{'descr'});
+        print &ui_table_row($text{'disk_descr'}, &html_escape($geom_info->{'descr'}));
     }
 }
 # Advanced information (cylinders, blocks)
@@ -92,12 +95,12 @@ print &ui_table_end();
 if ($in{'debug'}) {
     print "<div class='debug-section'>";
     # Debug: gpart show output
-    my $cmd = "gpart show -l $base_device 2>&1";
+    my $cmd = "gpart show -l " . &quote_path($base_device) . " 2>&1";
     my $out = &backquote_command($cmd);
     print "<div class='panel panel-default'>";
     print "<div class='panel-heading'><h3 class='panel-title'>$text{'disk_debug_gpart'}</h3></div>";
     print "<div class='panel-body'>";
-    print "<pre>Command: $cmd\nOutput:\n$out\n</pre>";
+    print "<pre>Command: ".&html_escape($cmd)."\nOutput:\n".&html_escape($out)."\n</pre>";
     print "</div></div>";
     
     # Debug: disk structure
@@ -111,13 +114,13 @@ if ($in{'debug'}) {
             foreach my $entry (@{$disk_structure->{'entries'}}) {
                 print "  {\n";
                 foreach my $k (sort keys %$entry) {
-                    print "    $k: $entry->{$k}\n";
+                    print "    $k: ".&html_escape($entry->{$k})."\n";
                 }
                 print "  },\n";
             }
             print "]\n";
         } else {
-            print "$key: $disk_structure->{$key}\n";
+            print "$key: ".&html_escape($disk_structure->{$key})."\n";
         }
     }
     print "</pre>";
@@ -162,7 +165,7 @@ if ($in{'debug'}) {
     print "<pre>";
     my $cmd = "zpool status 2>&1";
     my $out = &backquote_command($cmd);
-    print "Command: $cmd\nOutput:\n$out\n";
+    print "Command: ".&html_escape($cmd)."\nOutput:\n".&html_escape($out)."\n";
     print "</pre>";
     print "</div></div>";
     print "</div>";
@@ -178,7 +181,7 @@ if ($in{'debug'}) {
     foreach my $pnum (sort { $a <=> $b } keys %part_details) {
         print "  $pnum: {\n";
         foreach my $k (sort keys %{$part_details{$pnum}}) {
-            print "    $k: $part_details{$pnum}->{$k}\n";
+            print "    $k: ".&html_escape($part_details{$pnum}->{$k})."\n";
         }
         print "  },\n";
     }
@@ -241,15 +244,15 @@ if (@$entries) {
             
             my $part_info = $part_details{$part_num};
             my $part_name = $part_info ? $part_info->{'name'} : "-";
-            push(@cols, $part_name);
+            push(@cols, &html_escape($part_name));
             my $part_label = $part_info ? $part_info->{'label'} : ($entry->{'label'} eq "(null)" ? "-" : $entry->{'label'});
-            push(@cols, $part_label);
+            push(@cols, &html_escape($part_label));
             
             # Find sub-partitions if available
             my ($slice) = grep { $_->{'number'} eq $part_num } @{$disk->{'slices'} || []};
             my $sub_part_info = ($slice && scalar(@{$slice->{'parts'}||[]}) > 0) ?
                                 join(", ", map { $_->{'letter'} } @{$slice->{'parts'}}) : "-";
-            push(@cols, $sub_part_info);
+            push(@cols, &html_escape($sub_part_info));
             
             push(@cols, $ext);
             push(@cols, $entry->{'start'});
@@ -269,9 +272,9 @@ if (@$entries) {
                 size_blocks     => $entry->{'size'},
                 zfs_devices     => $zfs_devices,
             );
-            push(@cols, $format_type || '-');
-            push(@cols, $usage || $text{'part_nouse'});
-            push(@cols, $role || '-');
+            push(@cols, &html_escape($format_type || '-'));
+            push(@cols, &html_escape($usage || $text{'part_nouse'}));
+            push(@cols, &html_escape($role || '-'));
         }
         print &ui_columns_row(\@cols);
     }
@@ -301,7 +304,7 @@ if (@$entries) {
             push(@cols, $s->{'startblock'} + $s->{'blocks'} - 1);
             my @st = &fdisk::device_status($s->{'device'});
             my $use = &fdisk::device_status_link(@st);
-            push(@cols, $use || $text{'part_nouse'});
+            push(@cols, &html_escape($use || $text{'part_nouse'}));
             print &ui_columns_row(\@cols);
         }
         print &ui_columns_end();
