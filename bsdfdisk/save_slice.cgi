@@ -33,15 +33,16 @@ my $base = $disk->{'device'};
 $base =~ s{^/dev/}{};
 my $ds = get_disk_structure($base);
 if ( is_using_gpart() && $ds && $ds->{'scheme'} && $ds->{'scheme'} !~ /GPT/i ) {
-    my $idx = slice_number($slice);
+    my $idx = _safe_uint( slice_number($slice) );
+    &error( $text{'slice_egone'} ) unless defined $idx;
     if (   defined $oldslice->{'active'}
         && defined $slice->{'active'}
         && $oldslice->{'active'} != $slice->{'active'} )
     {
         my $cmd =
           $slice->{'active'}
-          ? "gpart set -a active -i $idx $base"
-          : "gpart unset -a active -i $idx $base";
+          ? "gpart set -a active -i $idx " . quote_path($base)
+          : "gpart unset -a active -i $idx " . quote_path($base);
         my $out = backquote_command("$cmd 2>&1");
         if ( $? != 0 ) {
             &error("Failed to change active flag: $out");

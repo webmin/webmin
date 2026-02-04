@@ -21,7 +21,7 @@ sub get_all_mount_points_cached {
         }
     }
 
-    # ZFS, GEOM, glabel, geli – remain the same as the original.
+    # ZFS, GEOM, glabel, geli  remain the same as the original.
     if ( has_command("zpool") ) {
         my $zpool_out    = backquote_command("zpool status 2>/dev/null");
         my $current_pool = "";
@@ -117,7 +117,8 @@ sub get_dev_stat {
 
 #---------------------------------------------------------------------
 # is_boot_partition()
-# Accepts a partition hash and an optional mount list to avoid re-calling mount::list_mounted()
+# Accepts a partition hash and an optional mount list to avoid
+# re-calling mount::list_mounted()
 sub is_boot_partition {
     my ( $part, $mount_list_ref ) = @_;
     return 1
@@ -430,7 +431,8 @@ sub list_disks_partitions {
             }
         }
         else {
-# If no slices found with gpart, use fdisk if available (similar caching ideas apply)
+# If no slices found with gpart, use fdisk if available
+# (similar caching ideas apply)
             if ( has_command("fdisk") ) {
                 my $fdisk_out = backquote_command(
                     "fdisk " . quote_path("/dev/$disk") . " 2>/dev/null" );
@@ -497,7 +499,7 @@ sub list_disks_partitions {
     return @results;
 }
 
-# check_fdisk() – unchanged
+# check_fdisk()  unchanged
 sub check_fdisk {
     if ( !has_command("fdisk") and !has_command("gpart") ) {
         return text( 'index_efdisk', "<tt>fdisk</tt>", "<tt>gpart</tt>" );
@@ -510,7 +512,7 @@ sub is_using_gpart {
     return has_command("gpart") ? 1 : 0;
 }
 
-# disk_name(device) – extracts name from /dev/device
+# disk_name(device) extracts name from /dev/device
 sub disk_name {
     my ($device) = @_;
     $device =~ s/^\/dev\///;
@@ -538,6 +540,20 @@ sub slice_number {
     return $slice->{'number'};
 }
 
+sub _safe_uint {
+    my ($v) = @_;
+    return undef unless defined $v;
+    return undef unless $v =~ /^\d+$/;
+    return int($v);
+}
+
+sub _safe_letter {
+    my ($v) = @_;
+    return undef unless defined $v;
+    return undef unless $v =~ /^[a-z]$/i;
+    return lc($v);
+}
+
 #---------------------------------------------------------------------
 # Filesystem command generation and slice/partition modification functions
 sub create_slice {
@@ -545,7 +561,8 @@ sub create_slice {
     my $cmd;
     if ( is_using_gpart() ) {
 
-# Ensure a partitioning scheme exists (default to MBR for non-GPT, GPT if new) before adding
+        # Ensure a partitioning scheme exists (default to MBR for non-GPT,
+        # GPT if new) before adding
         my $base = disk_name( $disk->{'device'} );
         my $ds   = get_disk_structure($base);
         my $scheme =
@@ -571,9 +588,22 @@ sub create_slice {
         else {
             $scheme = $ds->{'scheme'};
         }
+
+        # Defense-in-depth: validate type against allowed list for scheme
+        my %allowed =
+          map { $_->[0] => 1 } list_partition_types($scheme);
+        return $text{'nslice_etype'}
+          unless ( defined $slice->{'type'} && $allowed{ $slice->{'type'} } );
+
         $cmd = "gpart add -t " . $slice->{'type'};
-        $cmd .= " -b $slice->{'startblock'}" if ( $slice->{'startblock'} );
-        $cmd .= " -s $slice->{'blocks'}"     if ( $slice->{'blocks'} );
+        if ( defined $slice->{'startblock'}
+            && $slice->{'startblock'} =~ /^\d+$/ )
+        {
+            $cmd .= " -b " . int( $slice->{'startblock'} );
+        }
+        if ( defined $slice->{'blocks'} && $slice->{'blocks'} =~ /^\d+$/ ) {
+            $cmd .= " -s " . int( $slice->{'blocks'} );
+        }
         $cmd .= " " . quote_path($base);
         my $out = backquote_command("$cmd 2>&1");
         if ($?) {
@@ -588,12 +618,19 @@ sub create_slice {
         return undef;
     }
     else {
+        my %allowed = map { $_ => 1 } fdisk::list_tags();
+        return $text{'nslice_etype'}
+          unless ( defined $slice->{'type'} && $allowed{ $slice->{'type'} } );
         $cmd = "fdisk -a";
-        $cmd .= " -s $slice->{'number'}"     if ( $slice->{'number'} );
-        $cmd .= " -b $slice->{'startblock'}" if ( $slice->{'startblock'} );
-        $cmd .= " -s $slice->{'blocks'}"     if ( $slice->{'blocks'} );
+        my $sn = _safe_uint( $slice->{'number'} );
+        my $sb = _safe_uint( $slice->{'startblock'} );
+        my $bl = _safe_uint( $slice->{'blocks'} );
+        $cmd .= " -s $sn" if defined $sn;
+        $cmd .= " -b $sb" if defined $sb;
+        $cmd .= " -s $bl" if defined $bl;
         $cmd .= " -t $slice->{'type'} " . quote_path( $disk->{'device'} );
         my $out = backquote_command("$cmd 2>&1");
+
         if ($?) {
             return $out;
         }
@@ -613,18 +650,19 @@ sub delete_slice {
     }
     my $cmd;
     if ( is_using_gpart() ) {
+        my $idx = _safe_uint( slice_number($slice) );
+        return $text{'slice_egone'} unless defined $idx;
         $cmd =
             "gpart delete -i "
-          . slice_number($slice) . " "
+          . $idx . " "
           . quote_path( disk_name( $disk->{'device'} ) );
         my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     }
     else {
-        $cmd =
-            "fdisk -d "
-          . $slice->{'number'} . " "
-          . quote_path( $disk->{'device'} );
+        my $sn = _safe_uint( $slice->{'number'} );
+        return $text{'slice_egone'} unless defined $sn;
+        $cmd = "fdisk -d " . $sn . " " . quote_path( $disk->{'device'} );
         my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     }
@@ -637,14 +675,18 @@ sub delete_partition {
     if ( is_using_gpart() ) {
 
         # BSD disklabel uses 1-based indexing: 'a' = 1, 'b' = 2, etc.
-        my $idx = ( ord( $part->{'letter'} ) - ord('a') ) + 1;
+        my $pl = _safe_letter( $part->{'letter'} );
+        return $text{'part_egone'} unless defined $pl;
+        my $idx = ( ord($pl) - ord('a') ) + 1;
         $cmd = "gpart delete -i $idx " . quote_path( slice_name($slice) );
         my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     }
     else {
-        $cmd = "disklabel -r -w -d $part->{'letter'} "
-          . quote_path( $slice->{'device'} );
+        my $pl = _safe_letter( $part->{'letter'} );
+        return $text{'part_egone'} unless defined $pl;
+        $cmd =
+          "disklabel -r -w -d " . $pl . " " . quote_path( $slice->{'device'} );
         my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     }
@@ -658,18 +700,33 @@ sub modify_slice {
     }
     my $cmd;
     if ( is_using_gpart() ) {
+        my $base   = disk_name( $disk->{'device'} );
+        my $ds     = get_disk_structure($base);
+        my $scheme = ( $ds && $ds->{'scheme'} ) ? $ds->{'scheme'} : 'GPT';
+        my %allowed =
+          map { $_->[0] => 1 } list_partition_types($scheme);
+        return $text{'nslice_etype'}
+          unless ( defined $slice->{'type'} && $allowed{ $slice->{'type'} } );
+
+        my $idx = _safe_uint( slice_number($slice) );
+        return $text{'slice_egone'} unless defined $idx;
         $cmd =
             "gpart modify -i "
-          . slice_number($slice) . " -t "
+          . $idx . " -t "
           . $slice->{'type'} . " "
-          . quote_path( disk_name( $disk->{'device'} ) );
+          . quote_path($base);
         my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     }
     else {
+        my $sn = _safe_uint( $slice->{'number'} );
+        return $text{'slice_egone'} unless defined $sn;
+        my %allowed = map { $_ => 1 } fdisk::list_tags();
+        return $text{'nslice_etype'}
+          unless ( defined $slice->{'type'} && $allowed{ $slice->{'type'} } );
         $cmd =
             "fdisk -a -s "
-          . $slice->{'number'} . " -t "
+          . $sn . " -t "
           . $slice->{'type'} . " "
           . quote_path( $disk->{'device'} );
         my $out = backquote_command("$cmd 2>&1");
@@ -688,25 +745,39 @@ sub save_partition {
           backquote_command( "gpart show " . quote_path($provider) . " 2>&1" );
         if ( $show =~ /\bBSD\b/ ) {
 
-# Inner BSD label: index is 1-based a->1, b->2, etc. Only FreeBSD partition types are valid here.
-            my $idx = ( ord( $part->{'letter'} ) - ord('a') ) + 1;
+        # Inner BSD label: index is 1-based a->1, b->2, etc. Only
+        # FreeBSD partition types are valid here.
+            my $pl = _safe_letter( $part->{'letter'} );
+            return $text{'part_egone'} unless defined $pl;
+            my $idx = ( ord($pl) - ord('a') ) + 1;
+            my %allowed =
+              map { $_->[0] => 1 } list_partition_types('BSD');
+            return $text{'part_etype'}
+              unless ( defined $part->{'type'} && $allowed{ $part->{'type'} } );
             $cmd =
                 "gpart modify -i $idx -t "
               . $part->{'type'} . " "
               . quote_path($provider);
         }
         else {
-# Not a BSD label; modifying a top-level partition by letter is invalid. Return an error with guidance.
+        # Not a BSD label; modifying a top-level partition by letter is
+        # invalid. Return an error with guidance.
             return
-"Invalid operation: attempting to modify non-BSD sub-partition by letter. Use slice editing for top-level partitions.";
+          "Invalid operation: attempting to modify non-BSD sub-partition "
+          . "by letter. Use slice editing for top-level partitions.";
         }
         my $out = backquote_command("$cmd 2>&1");
         return ($?) ? $out : undef;
     }
     else {
+        my $pl = _safe_letter( $part->{'letter'} );
+        return $text{'part_egone'} unless defined $pl;
+        my %allowed = map { $_->[0] => 1 } list_partition_types('BSD');
+        return $text{'part_etype'}
+          unless ( defined $part->{'type'} && $allowed{ $part->{'type'} } );
         $cmd =
             "disklabel -r -w -p "
-          . $part->{'letter'} . " -t "
+          . $pl . " -t "
           . $part->{'type'} . " "
           . quote_path( $slice->{'device'} );
         my $out = backquote_command("$cmd 2>&1");
@@ -736,12 +807,18 @@ sub create_partition {
     }
 
     # Compute 1-based index
-    my $idx = ( ord( $part->{'letter'} ) - ord('a') ) + 1;
+    my $pl = _safe_letter( $part->{'letter'} );
+    return $text{'part_egone'} unless defined $pl;
+    my $idx = ( ord($pl) - ord('a') ) + 1;
+
+    my %allowed = map { $_->[0] => 1 } list_partition_types('BSD');
+    return $text{'part_etype'}
+      unless ( defined $part->{'type'} && $allowed{ $part->{'type'} } );
 
     # For BSD disklabel, start blocks are ALWAYS slice-relative
     # BSD partitions use 0-based addressing within the slice
-    my $start_rel = $part->{'startblock'};
-    my $blocks    = $part->{'blocks'};
+    my $start_rel = _safe_uint( $part->{'startblock'} );
+    my $blocks    = _safe_uint( $part->{'blocks'} );
     my $cmd       = "gpart add -i $idx -t $part->{'type'}";
     $cmd .= " -b $start_rel" if ( defined $start_rel && $start_rel > 0 );
     $cmd .= " -s $blocks"    if ( defined $blocks    && $blocks > 0 );
@@ -991,23 +1068,35 @@ sub acl_inherit_flags_cmd {
       . '[ "$mp" != "-" ] && [ "$mp" != "none" ]; then ';
     if ( $^O eq 'freebsd' ) {
         $cmd .=
-'if command -v getfacl >/dev/null 2>&1 && command -v setfacl >/dev/null 2>&1; then '
-          . 'po=$(getfacl "$mp" 2>/dev/null | awk -F: "/^[[:space:]]*owner@/{print \\$2; exit}"); '
-          . 'pg=$(getfacl "$mp" 2>/dev/null | awk -F: "/^[[:space:]]*group@/{print \\$2; exit}"); '
-          . 'pe=$(getfacl "$mp" 2>/dev/null | awk -F: "/^[[:space:]]*everyone@/{print \\$2; exit}"); '
+        'if command -v getfacl >/dev/null 2>&1 && '
+      . 'command -v setfacl >/dev/null 2>&1; then '
+          . 'po=$(getfacl "$mp" 2>/dev/null | awk -F: '
+          . '"/^[[:space:]]*owner@/{print \\$2; exit}"); '
+          . 'pg=$(getfacl "$mp" 2>/dev/null | awk -F: '
+          . '"/^[[:space:]]*group@/{print \\$2; exit}"); '
+          . 'pe=$(getfacl "$mp" 2>/dev/null | awk -F: '
+          . '"/^[[:space:]]*everyone@/{print \\$2; exit}"); '
           . 'if [ -n "$po" ] && [ -n "$pg" ] && [ -n "$pe" ]; then '
-          . 'setfacl -m "owner@:$po:fd-----:allow" -m "group@:$pg:fd-----:allow" -m "everyone@:$pe:fd-----:allow" "$mp"; '
+          . 'setfacl -m "owner@:$po:fd-----:allow" '
+          . '-m "group@:$pg:fd-----:allow" '
+          . '-m "everyone@:$pe:fd-----:allow" "$mp"; '
           . 'fi; '
           . 'fi; ';
     }
     else {
         $cmd .=
-'if command -v nfs4_getfacl >/dev/null 2>&1 && command -v nfs4_setfacl >/dev/null 2>&1; then '
-          . 'po=$(nfs4_getfacl "$mp" 2>/dev/null | awk -F: "/OWNER@/{print \\$4; exit}"); '
-          . 'pg=$(nfs4_getfacl "$mp" 2>/dev/null | awk -F: "/GROUP@/{print \\$4; exit}"); '
-          . 'pe=$(nfs4_getfacl "$mp" 2>/dev/null | awk -F: "/EVERYONE@/{print \\$4; exit}"); '
+        'if command -v nfs4_getfacl >/dev/null 2>&1 && '
+      . 'command -v nfs4_setfacl >/dev/null 2>&1; then '
+          . 'po=$(nfs4_getfacl "$mp" 2>/dev/null | awk -F: '
+          . '"/OWNER@/{print \\$4; exit}"); '
+          . 'pg=$(nfs4_getfacl "$mp" 2>/dev/null | awk -F: '
+          . '"/GROUP@/{print \\$4; exit}"); '
+          . 'pe=$(nfs4_getfacl "$mp" 2>/dev/null | awk -F: '
+          . '"/EVERYONE@/{print \\$4; exit}"); '
           . 'if [ -n "$po" ] && [ -n "$pg" ] && [ -n "$pe" ]; then '
-          . 'nfs4_setfacl -a "A::OWNER@:$po:fd-----:allow" -a "A::GROUP@:$pg:fd-----:allow" -a "A::EVERYONE@:$pe:fd-----:allow" "$mp"; '
+          . 'nfs4_setfacl -a "A::OWNER@:$po:fd-----:allow" '
+          . '-a "A::GROUP@:$pg:fd-----:allow" '
+          . '-a "A::EVERYONE@:$pe:fd-----:allow" "$mp"; '
           . 'fi; '
           . 'fi; ';
     }
@@ -1239,8 +1328,10 @@ sub get_disk_structure {
             next;
         }
 
-# Partition rows from `gpart show -l` have: start size index label [flags] (size_human)
-# Some systems include optional tokens like "[active]" after the label. Accept them.
+# Partition rows from `gpart show -l` have: start size index label
+# [flags] (size_human)
+# Some systems include optional tokens like "[active]" after the label.
+# Accept them.
         if ( $line =~
             /^\s+(\d+)\s+(\d+)\s+(\d+)\s+(\S+)(?:\s+\[[^\]]+\])?\s+\(([^)]+)\)/
           )
@@ -1525,7 +1616,8 @@ sub _label_conflicts_with_device {
     }
 
 # If a label looks like a real disk partition but doesn't match this partition,
-# do not use it for ZFS membership detection (avoids cross-disk misidentification).
+# Do not use it for ZFS membership detection (avoids cross-disk
+# misidentification).
     if ( $label =~ m{^(ada|ad|da|amrd|nvd|vtbd)\d+(?:p|s)\d+$}i ) {
         return 1;
     }
@@ -1599,8 +1691,10 @@ sub classify_partition_row {
         # leave undef
     }
 
-# Avoid clearing real types (like 'efi' or 'freebsd-boot') when label text matches by case.
-# Only drop if the "type" clearly looks like a provider/label path that mirrors the label.
+# Avoid clearing real types (like 'efi' or 'freebsd-boot') when label
+# text matches by case.
+# Only drop if the "type" clearly looks like a provider/label path that
+# mirrors the label.
     if ( defined $type_desc && defined $args{'part_label'} ) {
         my $pl = $args{'part_label'};
         if ( $type_desc =~ m{^(?:/dev/)?gpt(?:id)?/\Q$pl\E$}i ) {
@@ -1610,7 +1704,8 @@ sub classify_partition_row {
 
     my ( $format, $usage, $role ) = ( '-', $text{'part_nouse'}, '-' );
 
-# Explicit boot detection based on GPT GUIDs and MBR hex codes or human-readable type
+# Explicit boot detection based on GPT GUIDs and MBR hex codes or
+# human-readable type
     my $raw       = lc( $args{'entry_rawtype'} || '' );
     my $t         = lc( $type_desc             || '' );
     my %boot_guid = map { $_ => 1 } qw(
@@ -1704,7 +1799,8 @@ sub classify_partition_row {
         return ( $format, $usage, $role );
     }
 
-# Not in ZFS: infer by type_desc, rawtype and size heuristic (this shouldn't be reached for boot, but keep as fallback)
+# Not in ZFS: infer by type_desc, rawtype and size heuristic (this
+# shouldn't be reached for boot, but keep as fallback)
     if ( defined $type_desc && $type_desc =~ /(?:freebsd|linux)-swap/i ) {
         $format = 'Swap';
         $usage  = $text{'disk_swap'};
@@ -1783,7 +1879,8 @@ sub list_partition_types {
             );
         }
 
-# If outer scheme is not GPT (e.g. MBR), present MBR partition types for top-level slices
+# If outer scheme is not GPT (e.g. MBR), present MBR partition types for
+# top-level slices
         if ( defined $scheme && $scheme !~ /GPT/i ) {
             my @mbr_types = (
                 [ 'freebsd',    get_type_description('freebsd') ],
