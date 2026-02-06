@@ -25,8 +25,8 @@ my $dev_html = &html_escape($device);
 &ui_print_header( $dev_html, $text{'disk_smart'} || 'SMART Status', "" );
 
 print "<div class='panel panel-default'>\n";
-print
-"<div class='panel-heading'><h3 class='panel-title'>SMART status for <tt>$dev_html</tt></h3></div>\n";
+print "<div class='panel-heading'><h3 class='panel-title'>SMART status for "
+  . "<tt>$dev_html</tt></h3></div>\n";
 print "<div class='panel-body'>\n";
 
 sub _smartctl_needs_type {
@@ -49,10 +49,13 @@ my $out      = &backquote_command($cmd);
 my $used_cmd = $cmd;
 my $note;
 
-# If smartctl requests a device type or indicates SMART unsupported, try common USB bridge options
+# If smartctl requests a device type or indicates SMART unsupported,
+# try common USB bridge options.
 if ( _smartctl_needs_type($out) || _smartctl_no_smart($out) ) {
-    my @types =
-      qw(sat,auto sat scsi auto usbjmicron usbprolific usbcypress usbsunplus);
+    my @types = (
+        'sat,auto',    'sat',        'scsi',       'auto',
+        'usbjmicron',  'usbprolific', 'usbcypress', 'usbsunplus',
+    );
     my $best_out = $out;
     my $best_cmd = $cmd;
     foreach my $t (@types) {

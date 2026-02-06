@@ -155,7 +155,7 @@ sub list_disks_partitions {
         my @all_devs = readdir($dh);
         closedir($dh);
         foreach my $dev (@all_devs) {
-            if ( $dev =~ /^(ada|ad|da|amrd|nvd|vtbd)(\d+)$/ ) {
+            if ( $dev =~ /^(ada|ad|da|amrd|nvd|vtbd|nda)(\d+)$/ ) {
                 push( @disk_devices, $dev );
             }
         }
@@ -173,8 +173,9 @@ sub list_disks_partitions {
     # Fallback: dmesg
     if ( !@disk_devices ) {
         my $dmesg_out = backquote_command(
-            "dmesg | grep -E '(ada|ad|da|amrd|nvd|vtbd)[0-9]+:' 2>/dev/null");
-        while ( $dmesg_out =~ /\b(ada|ad|da|amrd|nvd|vtbd)(\d+):/g ) {
+            "dmesg | grep -E '(ada|ad|da|amrd|nvd|vtbd|nda)[0-9]+:' 2>/dev/null"
+        );
+        while ( $dmesg_out =~ /\b(ada|ad|da|amrd|nvd|vtbd|nda)(\d+):/g ) {
             my $disk = "$1$2";
             push( @disk_devices, $disk ) if ( -e "/dev/$disk" );
         }
@@ -300,9 +301,9 @@ sub list_disks_partitions {
         elsif ( $disk =~ /^amrd/ ) {
             $diskinfo->{'type'} = 'memdisk';
         }
-        elsif ( $disk =~ /^nvd/ ) {
-            $diskinfo->{'type'} = 'nvme';
-        }
+          elsif ( $disk =~ /^(?:nvd|nda)/ ) {
+              $diskinfo->{'type'} = 'nvme';
+          }
         elsif ( $disk =~ /^vtbd/ ) {
             $diskinfo->{'type'} = 'virtio';
         }
@@ -863,8 +864,9 @@ sub set_partition_label {
 
     # GPT: label at disk level via gpart modify
     if ( $ds && $ds->{'scheme'} && $ds->{'scheme'} =~ /GPT/i ) {
-        my $idx = $part ? undef : $slice->{'number'}; # slice is a GPT partition
-        if ($idx) {
+        my $idx =
+          $part ? undef : _safe_uint( $slice->{'number'} ); # GPT partition
+        if ( defined $idx ) {
             my $cmd =
                 "gpart modify -i $idx -l "
               . quote_path($label) . " "
@@ -906,8 +908,8 @@ sub remove_partition_label {
 
     # GPT: remove label via gpart modify -l ""
     if ( $ds && $ds->{'scheme'} && $ds->{'scheme'} =~ /GPT/i ) {
-        my $idx = $part ? undef : $slice->{'number'};
-        if ($idx) {
+        my $idx = $part ? undef : _safe_uint( $slice->{'number'} );
+        if ( defined $idx ) {
             my $cmd = "gpart modify -i $idx -l \"\" " . quote_path($base);
             my $out = backquote_command("$cmd 2>&1");
             return ( $? ? $out : undef );
@@ -922,7 +924,7 @@ sub remove_partition_label {
             "glabel status 2>/dev/null | grep " . quote_path($device) );
         if ( $existing =~ /^(\S+)\s+/ ) {
             my $label = $1;
-            my $cmd   = "glabel destroy $label";
+            my $cmd   = "glabel destroy " . quote_path($label);
             my $out   = backquote_command("$cmd 2>&1");
             return ( $? ? $out : undef );
         }
@@ -1618,7 +1620,7 @@ sub _label_conflicts_with_device {
 # If a label looks like a real disk partition but doesn't match this partition,
 # Do not use it for ZFS membership detection (avoids cross-disk
 # misidentification).
-    if ( $label =~ m{^(ada|ad|da|amrd|nvd|vtbd)\d+(?:p|s)\d+$}i ) {
+    if ( $label =~ m{^(ada|ad|da|amrd|nvd|vtbd|nda)\d+(?:p|s)\d+$}i ) {
         return 1;
     }
     return 0;
