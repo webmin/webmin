@@ -115,7 +115,7 @@ if ( !$err && $in{'makepart'} ) {
     # Also create a partition (initialize slice label)
     my $part_err = initialize_slice( $disk, $slice );
     if ($part_err) {
-        print text( 'nslice_pfailed', $part_err ), "<p>\n";
+        print text( 'nslice_pfailed', &html_escape($part_err) ), "<p>\n";
     }
     else {
         print text('nslice_pdone'), "<p>\n";
@@ -143,4 +143,5 @@ if ( !$err ) {
     }
     webmin_log( "create", "slice", $slice->{'device'}, $slice );
 }
-ui_print_footer( "edit_disk.cgi?device=$in{'device'}", $text{'disk_return'} );
+my $url_device = &urlize( $in{'device'} );
+ui_print_footer( "edit_disk.cgi?device=$url_device", $text{'disk_return'} );

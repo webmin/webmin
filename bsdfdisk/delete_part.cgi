@@ -59,5 +59,7 @@ else {
     );
 }
 
-&ui_print_footer( "edit_slice.cgi?device=$in{'device'}&slice=$in{'slice'}",
+my $url_device = &urlize( $in{'device'} );
+my $url_slice  = &urlize( $in{'slice'} );
+&ui_print_footer( "edit_slice.cgi?device=$url_device&slice=$url_slice",
     $text{'slice_return'} );

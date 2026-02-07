@@ -95,14 +95,18 @@ else {
     $object->{'device'}, $object );
 
 if ( $in{'part'} ne '' ) {
+    my $url_device = &urlize( $in{'device'} );
+    my $url_slice  = &urlize( $in{'slice'} );
+    my $url_part   = &urlize( $in{'part'} );
     &ui_print_footer(
-        "edit_part.cgi?device=$in{'device'}&"
-          . "slice=$in{'slice'}&part=$in{'part'}",
+        "edit_part.cgi?device=$url_device&slice=$url_slice&part=$url_part",
         $text{'part_return'}
     );
 }
 else {
+    my $url_device = &urlize( $in{'device'} );
+    my $url_slice  = &urlize( $in{'slice'} );
     &ui_print_footer(
-        "edit_slice.cgi?device=$in{'device'}&" . "slice=$in{'slice'}",
+        "edit_slice.cgi?device=$url_device&slice=$url_slice",
         $text{'slice_return'} );
 }

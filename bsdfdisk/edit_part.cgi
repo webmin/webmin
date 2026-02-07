@@ -11,6 +11,9 @@ ReadParse();
 my $device      = $in{'device'};
 my $slice_num   = $in{'slice'};
 my $part_letter = $in{'part'};
+my $url_device  = &urlize($device);
+my $url_slice   = &urlize($slice_num);
+my $url_part    = &urlize($part_letter);
 
 # Get the disk and slice using first() to stop at the first matching element
 my @disks = list_disks_partitions();
@@ -154,14 +157,14 @@ if ($canedit) {
     print ui_hr();
     print ui_buttons_start();
     my $mount_return =
-      "edit_part.cgi?device=$device&slice=$slice_num&part=$part_letter";
+      "edit_part.cgi?device=$url_device&slice=$url_slice&part=$url_part";
     show_filesystem_buttons( $hiddens, \@st, $part, $mount_return );
     print ui_buttons_row( "delete_part.cgi", $text{'part_delete'},
         $text{'part_deletedesc'}, $hiddens );
     print ui_buttons_end();
 }
 else {
-    print($is_boot)
+    print $is_boot
       ? "<b>$text{'part_bootcannotedit'}</b><p>\n"
       : "<b>$text{'part_cannotedit'}</b><p>\n";
 }
@@ -174,5 +177,5 @@ if ( &has_command("smartctl") ) {
         $text{'disk_smartdesc'}, ui_hidden( "device", $disk->{'device'} ) );
     print ui_buttons_end();
 }
-ui_print_footer( "edit_slice.cgi?device=$device&slice=$slice_num",
+ui_print_footer( "edit_slice.cgi?device=$url_device&slice=$url_slice",
     $text{'slice_return'} );

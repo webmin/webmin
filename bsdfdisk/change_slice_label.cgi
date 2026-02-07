@@ -47,5 +47,7 @@ print &ui_table_row( $text{'slice_label_new'},
 print &ui_table_end();
 print &ui_form_end( [ [ undef, $text{'save'} ] ] );
 
-&ui_print_footer( "edit_slice.cgi?device=$in{'device'}&slice=$in{'slice'}",
+my $url_device = &urlize( $in{'device'} );
+my $url_slice  = &urlize( $in{'slice'} );
+&ui_print_footer( "edit_slice.cgi?device=$url_device&slice=$url_slice",
     $text{'slice_return'} );

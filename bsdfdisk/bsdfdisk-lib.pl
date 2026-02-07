@@ -451,10 +451,13 @@ sub list_disks_partitions {
                             'parts'      => []
                         };
                         $slice->{'used'} = $mount_info{$slice_device};
+                        my $dlcmd = _disklabel_cmd();
                         my $disklabel_out =
-                          backquote_command( "disklabel -r "
+                          $dlcmd
+                          ? backquote_command( "$dlcmd "
                               . quote_path($slice_device)
-                              . " 2>/dev/null" );
+                              . " 2>/dev/null" )
+                          : "";
                         foreach my $label_line ( split( /\n/, $disklabel_out ) )
                         {
                             if ( $label_line =~
@@ -555,6 +558,129 @@ sub _safe_letter {
     return lc($v);
 }
 
+sub _fdisk_type_code {
+    my ($t) = @_;
+    return undef unless defined $t;
+    $t =~ s/^\s+|\s+$//g;
+    return undef if $t eq '';
+
+    # Some callers pass decimal type codes, others pass 1-2 digit hex tags
+    return int($t) if ( $t =~ /^\d+$/ );
+    my $hex = lc($t);
+    $hex =~ s/^0x//;
+    return undef unless $hex =~ /^[0-9a-f]+$/;
+    return hex($hex);
+}
+
+sub _fdisk_apply_config {
+    my ( $disk_device, $config_text ) = @_;
+    return "Missing disk device" unless defined $disk_device;
+    return "Missing fdisk config" unless defined $config_text;
+
+    my $tmp = &tempname();
+    if ( !open( my $fh, ">", $tmp ) ) {
+        return "Failed to write fdisk config file: $!";
+    }
+    print $fh $config_text;
+    close($fh);
+
+    my $cmd =
+      "fdisk -f " . quote_path($tmp) . " -v " . quote_path($disk_device);
+    my $out = backquote_command("$cmd 2>&1");
+    unlink($tmp);
+    return ($?) ? $out : undef;
+}
+
+sub _disklabel_cmd {
+    return "bsdlabel"  if has_command("bsdlabel");
+    return "disklabel" if has_command("disklabel");
+    return undef;
+}
+
+sub _disklabel_read {
+    my ($device) = @_;
+    return ( undef, "Missing device" ) unless defined $device;
+    my $cmd = _disklabel_cmd();
+    return ( undef, "Missing bsdlabel/disklabel command" ) unless $cmd;
+    my $out = backquote_command( "$cmd " . quote_path($device) . " 2>&1" );
+    return ( $? ? ( undef, $out ) : ( $out, undef ) );
+}
+
+sub _disklabel_write_default {
+    my ($device) = @_;
+    return "Missing device" unless defined $device;
+    my $cmd = _disklabel_cmd();
+    return "Missing bsdlabel/disklabel command" unless $cmd;
+    my $out = backquote_command( "$cmd -w " . quote_path($device) . " 2>&1" );
+    return ($?) ? $out : undef;
+}
+
+sub _disklabel_restore {
+    my ( $device, $label_text ) = @_;
+    return "Missing device" unless defined $device;
+    return "Missing label text" unless defined $label_text;
+    my $cmd = _disklabel_cmd();
+    return "Missing bsdlabel/disklabel command" unless $cmd;
+
+    my $tmp = &tempname();
+    if ( !open( my $fh, ">", $tmp ) ) {
+        return "Failed to write disklabel file: $!";
+    }
+    print $fh $label_text;
+    close($fh);
+
+    my $out = backquote_command(
+        "$cmd -R " . quote_path($device) . " " . quote_path($tmp) . " 2>&1"
+    );
+    unlink($tmp);
+    return ($?) ? $out : undef;
+}
+
+sub _disklabel_update_partition_line {
+    my (%args) = @_;
+    my $label_text = $args{'label_text'};
+    my $letter     = _safe_letter( $args{'letter'} );
+    my $size       = $args{'size'};
+    my $offset     = $args{'offset'};
+    my $fstype     = $args{'fstype'};
+
+    return undef unless defined $label_text;
+    return undef unless defined $letter;
+    return undef unless defined $size;
+    return undef unless defined $offset;
+    return undef unless defined $fstype;
+
+    my @lines = split( /\n/, $label_text, -1 );
+    my $found = 0;
+    my $insert_at;
+    for ( my $i = 0 ; $i < @lines ; $i++ ) {
+        if ( !defined $insert_at
+            && $lines[$i] =~ /^\s*#\s*size\s+offset\s+fstype\b/i )
+        {
+            $insert_at = $i + 1;
+        }
+        if ( $lines[$i] =~ /^(\s*)([a-h]):\s+(\S+)\s+(\S+)\s+(\S+)/i ) {
+            my $indent = $1 // '';
+            my $l      = lc($2);
+            if ( $l eq $letter ) {
+                $lines[$i] = $indent . $letter . ": $size $offset $fstype";
+                $found = 1;
+                last;
+            }
+        }
+    }
+    if ( !$found ) {
+        my $newline = "  $letter: $size $offset $fstype";
+        if ( defined $insert_at ) {
+            splice( @lines, $insert_at, 0, $newline );
+        }
+        else {
+            push( @lines, $newline );
+        }
+    }
+    return join( "\n", @lines );
+}
+
 #---------------------------------------------------------------------
 # Filesystem command generation and slice/partition modification functions
 sub create_slice {
@@ -622,21 +748,24 @@ sub create_slice {
         my %allowed = map { $_ => 1 } fdisk::list_tags();
         return $text{'nslice_etype'}
           unless ( defined $slice->{'type'} && $allowed{ $slice->{'type'} } );
-        $cmd = "fdisk -a";
+
         my $sn = _safe_uint( $slice->{'number'} );
+        return $text{'nslice_enumber'} unless defined $sn;
+        return $text{'nslice_enumber'} if ( $sn < 1 || $sn > 4 );
+
         my $sb = _safe_uint( $slice->{'startblock'} );
         my $bl = _safe_uint( $slice->{'blocks'} );
-        $cmd .= " -s $sn" if defined $sn;
-        $cmd .= " -b $sb" if defined $sb;
-        $cmd .= " -s $bl" if defined $bl;
-        $cmd .= " -t $slice->{'type'} " . quote_path( $disk->{'device'} );
-        my $out = backquote_command("$cmd 2>&1");
+        return $text{'nslice_estart'} unless defined $sb;
+        return $text{'nslice_eend'}   unless ( defined $bl && $bl > 0 );
 
-        if ($?) {
-            return $out;
-        }
+        my $tc = _fdisk_type_code( $slice->{'type'} );
+        return $text{'nslice_etype'} unless defined $tc;
 
-        # Populate device field
+        my $cfg = "# Created by bsdfdisk (Webmin)\n";
+        $cfg .= "p $sn $tc $sb $bl\n";
+        my $err = _fdisk_apply_config( $disk->{'device'}, $cfg );
+        return $err if $err;
+
         my $base = disk_name( $disk->{'device'} );
         $slice->{'device'} = "/dev/${base}s" . $slice->{'number'};
         return undef;
@@ -663,9 +792,13 @@ sub delete_slice {
     else {
         my $sn = _safe_uint( $slice->{'number'} );
         return $text{'slice_egone'} unless defined $sn;
-        $cmd = "fdisk -d " . $sn . " " . quote_path( $disk->{'device'} );
-        my $out = backquote_command("$cmd 2>&1");
-        return ($?) ? $out : undef;
+        return $text{'slice_egone'} if ( $sn < 1 || $sn > 4 );
+
+        my $cfg = "# Created by bsdfdisk (Webmin)\n";
+        $cfg .= "p $sn 0 0 0\n";
+        my $err = _fdisk_apply_config( $disk->{'device'}, $cfg );
+        return $err if $err;
+        return undef;
     }
 }
 
@@ -686,16 +819,25 @@ sub delete_partition {
     else {
         my $pl = _safe_letter( $part->{'letter'} );
         return $text{'part_egone'} unless defined $pl;
-        $cmd =
-          "disklabel -r -w -d " . $pl . " " . quote_path( $slice->{'device'} );
-        my $out = backquote_command("$cmd 2>&1");
-        return ($?) ? $out : undef;
+        my ( $label, $lerr ) = _disklabel_read( $slice->{'device'} );
+        return $lerr if $lerr;
+        my $new_label = _disklabel_update_partition_line(
+            label_text => $label,
+            letter     => $pl,
+            size       => 0,
+            offset     => 0,
+            fstype     => 'unused',
+        );
+        return "Failed to update disklabel" unless defined $new_label;
+        my $err = _disklabel_restore( $slice->{'device'}, $new_label );
+        return $err if $err;
+        return undef;
     }
 }
 
 sub modify_slice {
     my ( $disk, $oldslice, $slice, $part ) = @_;
-    if ( is_boot_partition($part) ) { return $text{'part_eboot'}; }
+    if ( is_boot_partition($slice) ) { return $text{'slice_eboot'}; }
     foreach my $p ( @{ $slice->{'parts'} } ) {
         if ( is_boot_partition($p) ) { return $text{'slice_eboot'}; }
     }
@@ -720,18 +862,29 @@ sub modify_slice {
         return ($?) ? $out : undef;
     }
     else {
-        my $sn = _safe_uint( $slice->{'number'} );
-        return $text{'slice_egone'} unless defined $sn;
         my %allowed = map { $_ => 1 } fdisk::list_tags();
         return $text{'nslice_etype'}
           unless ( defined $slice->{'type'} && $allowed{ $slice->{'type'} } );
-        $cmd =
-            "fdisk -a -s "
-          . $sn . " -t "
-          . $slice->{'type'} . " "
-          . quote_path( $disk->{'device'} );
-        my $out = backquote_command("$cmd 2>&1");
-        return ($?) ? $out : undef;
+
+        my $sn = _safe_uint( $oldslice->{'number'} );
+        return $text{'slice_egone'} unless defined $sn;
+        return $text{'slice_egone'} if ( $sn < 1 || $sn > 4 );
+
+        my $sb = _safe_uint( $oldslice->{'startblock'} );
+        my $bl = _safe_uint( $oldslice->{'blocks'} );
+        return $text{'slice_egone'} unless defined $sb && defined $bl;
+
+        my $tc = _fdisk_type_code( $slice->{'type'} );
+        return $text{'nslice_etype'} unless defined $tc;
+
+        my $cfg = "# Created by bsdfdisk (Webmin)\n";
+        $cfg .= "p $sn $tc $sb $bl\n";
+        if ( defined $slice->{'active'} && $slice->{'active'} ) {
+            $cfg .= "a $sn\n";
+        }
+        my $err = _fdisk_apply_config( $disk->{'device'}, $cfg );
+        return $err if $err;
+        return undef;
     }
 }
 
@@ -776,62 +929,112 @@ sub save_partition {
         my %allowed = map { $_->[0] => 1 } list_partition_types('BSD');
         return $text{'part_etype'}
           unless ( defined $part->{'type'} && $allowed{ $part->{'type'} } );
-        $cmd =
-            "disklabel -r -w -p "
-          . $pl . " -t "
-          . $part->{'type'} . " "
-          . quote_path( $slice->{'device'} );
-        my $out = backquote_command("$cmd 2>&1");
-        return ($?) ? $out : undef;
+        my $sb = _safe_uint( $part->{'startblock'} );
+        my $bl = _safe_uint( $part->{'blocks'} );
+        return $text{'part_egone'} unless defined $sb && defined $bl;
+
+        my ( $label, $lerr ) = _disklabel_read( $slice->{'device'} );
+        return $lerr if $lerr;
+        my $new_label = _disklabel_update_partition_line(
+            label_text => $label,
+            letter     => $pl,
+            size       => $bl,
+            offset     => $sb,
+            fstype     => $part->{'type'},
+        );
+        return "Failed to update disklabel" unless defined $new_label;
+        my $err = _disklabel_restore( $slice->{'device'}, $new_label );
+        return $err if $err;
+        return undef;
     }
 }
 
 # Create a new BSD partition inside an MBR slice (gpart BSD label)
 sub create_partition {
     my ( $disk, $slice, $part ) = @_;
-    if ( !is_using_gpart() ) {
 
-        # Legacy path would use disklabel; not implemented here
-        return "Legacy disklabel creation not supported";
-    }
-    my $prov = slice_name($slice);
+    # gpart BSD label path (preferred)
+    if ( is_using_gpart() ) {
+        my $prov = slice_name($slice);
 
-    # Ensure BSD label exists on the slice
-    my $show = backquote_command( "gpart show " . quote_path($prov) . " 2>&1" );
-    if ( $show !~ /\bBSD\b/ ) {
-        my $init_err = initialize_slice( $disk, $slice );
-        return $init_err if ($init_err);
-
-        # Refresh the show output after initialization
-        $show =
+        # Ensure BSD label exists on the slice
+        my $show =
           backquote_command( "gpart show " . quote_path($prov) . " 2>&1" );
+        if ( $show !~ /\bBSD\b/ ) {
+            my $init_err = initialize_slice( $disk, $slice );
+            return $init_err if ($init_err);
+
+            # Refresh the show output after initialization
+            $show =
+              backquote_command( "gpart show " . quote_path($prov) . " 2>&1" );
+        }
+
+        # Compute 1-based index
+        my $pl = _safe_letter( $part->{'letter'} );
+        return $text{'part_egone'} unless defined $pl;
+        my $idx = ( ord($pl) - ord('a') ) + 1;
+
+        my %allowed = map { $_->[0] => 1 } list_partition_types('BSD');
+        return $text{'part_etype'}
+          unless ( defined $part->{'type'} && $allowed{ $part->{'type'} } );
+
+        # For BSD disklabel, start blocks are ALWAYS slice-relative
+        # BSD partitions use 0-based addressing within the slice
+        my $start_rel = _safe_uint( $part->{'startblock'} );
+        my $blocks    = _safe_uint( $part->{'blocks'} );
+        my $cmd       = "gpart add -i $idx -t $part->{'type'}";
+        $cmd .= " -b $start_rel" if ( defined $start_rel && $start_rel > 0 );
+        $cmd .= " -s $blocks"    if ( defined $blocks    && $blocks > 0 );
+        $cmd .= " " . quote_path($prov);
+        my $out = backquote_command("$cmd 2>&1");
+
+        if ($?) {
+            return $out;
+        }
+
+        # Populate the device field for the partition
+        $part->{'device'} = $slice->{'device'} . $part->{'letter'};
+        return undef;
     }
 
-    # Compute 1-based index
+    # Legacy disklabel path (no gpart)
     my $pl = _safe_letter( $part->{'letter'} );
     return $text{'part_egone'} unless defined $pl;
-    my $idx = ( ord($pl) - ord('a') ) + 1;
 
     my %allowed = map { $_->[0] => 1 } list_partition_types('BSD');
     return $text{'part_etype'}
       unless ( defined $part->{'type'} && $allowed{ $part->{'type'} } );
 
-    # For BSD disklabel, start blocks are ALWAYS slice-relative
-    # BSD partitions use 0-based addressing within the slice
     my $start_rel = _safe_uint( $part->{'startblock'} );
     my $blocks    = _safe_uint( $part->{'blocks'} );
-    my $cmd       = "gpart add -i $idx -t $part->{'type'}";
-    $cmd .= " -b $start_rel" if ( defined $start_rel && $start_rel > 0 );
-    $cmd .= " -s $blocks"    if ( defined $blocks    && $blocks > 0 );
-    $cmd .= " " . quote_path($prov);
-    my $out = backquote_command("$cmd 2>&1");
+    return $text{'nslice_estart'} unless defined $start_rel;
+    return $text{'nslice_eend'} unless ( defined $blocks && $blocks > 0 );
 
-    if ($?) {
-        return $out;
+    my ( $label, $lerr ) = _disklabel_read( $slice->{'device'} );
+    if ($lerr) {
+        my $init_err = initialize_slice( $disk, $slice );
+        return $init_err if $init_err;
+        ( $label, $lerr ) = _disklabel_read( $slice->{'device'} );
+        return $lerr if $lerr;
     }
 
+    # If start is 0, let disklabel compute a safe offset (similar to gpart
+    # default placement) using the '*' offset syntax.
+    my $offset = ( $start_rel > 0 ) ? $start_rel : '*';
+    my $new_label = _disklabel_update_partition_line(
+        label_text => $label,
+        letter     => $pl,
+        size       => $blocks,
+        offset     => $offset,
+        fstype     => $part->{'type'},
+    );
+    return "Failed to update disklabel" unless defined $new_label;
+
+    my $err = _disklabel_restore( $slice->{'device'}, $new_label );
+    return $err if $err;
+
     # Populate the device field for the partition
-    $part->{'device'} = $slice->{'device'} . $part->{'letter'};
+    $part->{'device'} = $slice->{'device'} . $pl;
     return undef;
 }
 
@@ -2008,14 +2211,40 @@ sub initialize_slice {
     }
 
     # For MBR: initialize BSD disklabel on the slice only if not already present
-    my $prov = slice_name($slice);
-    my $show = backquote_command( "gpart show " . quote_path($prov) . " 2>&1" );
-    return undef if ( $show =~ /\bBSD\b/ );
-    my $cmd = "gpart create -s BSD " . quote_path($prov) . " 2>&1";
-    my $out = backquote_command($cmd);
-    if ( $? != 0 ) {
-        return "Failed to initialize slice: $out";
+    if ( is_using_gpart() ) {
+        my $prov =
+          slice_name($slice);    # provider name (e.g. ada0s1 / ada0p2)
+        my $show =
+          backquote_command( "gpart show " . quote_path($prov) . " 2>&1" );
+        return undef if ( $show =~ /\bBSD\b/ );
+        my $cmd = "gpart create -s BSD " . quote_path($prov) . " 2>&1";
+        my $out = backquote_command($cmd);
+        if ( $? != 0 ) {
+            return "Failed to initialize slice: $out";
+        }
+        return undef;
     }
+
+    # Legacy disklabel (no gpart): create a default BSD label on the slice
+    # device (e.g. /dev/da0s1) if missing.
+    my $dev = $slice->{'device'};
+    return "Missing slice device" unless $dev;
+
+    # Safety: only initialize on FreeBSD MBR slices (0xA5 / 'freebsd')
+    my $is_freebsd = 0;
+    if ( defined $slice->{'type'} ) {
+        $is_freebsd = 1 if ( $slice->{'type'} =~ /freebsd/i );
+        my $tc = _fdisk_type_code( $slice->{'type'} );
+        $is_freebsd = 1 if ( defined $tc && $tc == 0xA5 );
+    }
+    return "Refusing to initialize disklabel on non-FreeBSD slice"
+      unless $is_freebsd;
+
+    my ( $label, $lerr ) = _disklabel_read($dev);
+    return undef if !$lerr;    # already has a label
+
+    my $werr = _disklabel_write_default($dev);
+    return "Failed to initialize slice: $werr" if $werr;
     return undef;
 }
 

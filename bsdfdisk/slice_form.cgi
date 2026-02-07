@@ -17,6 +17,8 @@ $in{'device'} !~ /\.\./ or &error( $text{'disk_edevice'} || 'Invalid device' );
 my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error( $text{'disk_egone'} );
 
+my $url_device = &urlize( $in{'device'} );
+
 &ui_print_header( $disk->{'desc'}, $text{'nslice_title'}, "" );
 
 # Determine scheme for read-only behavior and note
@@ -42,8 +44,7 @@ if ( $disk_structure && $disk_structure->{'entries'} ) {
 # If no free space, show error and return
 if ( !$has_free_space ) {
     print "<p><b>$text{'nslice_enospace'}</b></p>\n";
-    &ui_print_footer( "edit_disk.cgi?device=$in{'device'}",
-        $text{'disk_return'} );
+    &ui_print_footer( "edit_disk.cgi?device=$url_device", $text{'disk_return'} );
     exit;
 }
 
@@ -178,4 +179,4 @@ if (@parts_rows) {
     print &ui_columns_end();
 }
 
-&ui_print_footer( "edit_disk.cgi?device=$in{'device'}", $text{'disk_return'} );
+&ui_print_footer( "edit_disk.cgi?device=$url_device", $text{'disk_return'} );

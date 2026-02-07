@@ -41,7 +41,9 @@ my $err = set_partition_label(
     slice => $slice,
     label => $label,
 );
-&error($err) if ($err);
+&error( &html_escape($err) ) if ($err);
 
 &webmin_log( "label", "slice", $slice->{'device'}, { 'label' => $label } );
-&redirect("edit_slice.cgi?device=$in{'device'}&slice=$in{'slice'}");
+my $url_device = &urlize( $in{'device'} );
+my $url_slice  = &urlize( $in{'slice'} );
+&redirect("edit_slice.cgi?device=$url_device&slice=$url_slice");

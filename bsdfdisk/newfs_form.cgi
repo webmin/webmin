@@ -21,6 +21,9 @@ $disk || &error( $text{'disk_egone'} );
 my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{ $disk->{'slices'} };
 $slice || &error( $text{'slice_egone'} );
 my $object;
+my $url_device = &urlize( $in{'device'} );
+my $url_slice  = &urlize( $in{'slice'} );
+my $url_part   = &urlize( $in{'part'} );
 
 if ( $in{'part'} ne '' ) {
     $in{'part'} =~ /^[a-z]$/ or &error("Invalid partition letter");
@@ -193,9 +196,9 @@ if ($zdev) {
 
     my $base_url =
         "newfs_form.cgi?device="
-      . urlize( $in{'device'} )
-      . "&slice=$in{'slice'}";
-    $base_url .= "&part=$in{'part'}" if ( $in{'part'} ne '' );
+      . $url_device
+      . "&slice=$url_slice";
+    $base_url .= "&part=$url_part" if ( $in{'part'} ne '' );
     my @tabs = (
         [ "zfs",  $text{'newfs_zfs_tab_fs'},  $base_url . "&mode=zfs" ],
         [ "zvol", $text{'newfs_zfs_tab_vol'}, $base_url . "&mode=zvol" ],
@@ -440,14 +443,13 @@ EOF
 
     if ( $in{'part'} ne '' ) {
         &ui_print_footer(
-            "edit_part.cgi?device=$in{'device'}&"
-              . "slice=$in{'slice'}&part=$in{'part'}",
+            "edit_part.cgi?device=$url_device&slice=$url_slice&part=$url_part",
             $text{'part_return'}
         );
     }
     else {
         &ui_print_footer(
-            "edit_slice.cgi?device=$in{'device'}&" . "slice=$in{'slice'}",
+            "edit_slice.cgi?device=$url_device&slice=$url_slice",
             $text{'slice_return'} );
     }
     exit;
@@ -484,13 +486,12 @@ print &ui_form_end( [ [ undef, $text{'save'} ] ] );
 
 if ( $in{'part'} ne '' ) {
     &ui_print_footer(
-        "edit_part.cgi?device=$in{'device'}&"
-          . "slice=$in{'slice'}&part=$in{'part'}",
+        "edit_part.cgi?device=$url_device&slice=$url_slice&part=$url_part",
         $text{'part_return'}
     );
 }
 else {
     &ui_print_footer(
-        "edit_slice.cgi?device=$in{'device'}&" . "slice=$in{'slice'}",
+        "edit_slice.cgi?device=$url_device&slice=$url_slice",
         $text{'slice_return'} );
 }

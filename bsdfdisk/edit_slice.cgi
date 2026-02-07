@@ -19,6 +19,9 @@ my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks
   or error( $text{'disk_egone'} );
 my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{ $disk->{'slices'} }
   or error( $text{'slice_egone'} );
+
+my $url_device = &urlize( $in{'device'} );
+my $url_slice  = &urlize( $in{'slice'} );
 ui_print_header( $slice->{'desc'}, $text{'slice_title'}, "" );
 
 # Show slice details
@@ -140,8 +143,8 @@ elsif ($disk_structure
 my @links =
   $can_have_parts
   ? ( "<a href='part_form.cgi?device="
-      . urlize( $disk->{'device'} )
-      . "&slice=$in{'slice'}'>"
+      . $url_device
+      . "&slice=$url_slice'>"
       . $text{'slice_add'}
       . "</a>" )
   : ();
@@ -204,11 +207,11 @@ if ( @{ $slice->{'parts'} } ) {
         # Build edit URL
         my $url =
             "edit_part.cgi?device="
-          . urlize( $disk->{'device'} )
+          . $url_device
           . "&slice="
-          . $slice->{'number'}
+          . $url_slice
           . "&part="
-          . $p->{'letter'};
+          . &urlize( $p->{'letter'} );
         my $psz_b = bytes_from_blocks( $p->{'device'}, $p->{'blocks'} );
         print ui_columns_row(
             [
@@ -249,7 +252,7 @@ if ( $canedit && !$is_boot ) {    # Do not allow editing boot slices
     print ui_buttons_start();
     if ( !@{ $slice->{'parts'} } ) {
         my $mount_return =
-          "edit_slice.cgi?device=$in{'device'}&slice=$in{'slice'}";
+          "edit_slice.cgi?device=$url_device&slice=$url_slice";
         show_filesystem_buttons( $hiddens, \@slice_status, $slice,
             $mount_return );
     }
@@ -279,4 +282,4 @@ if ( &has_command("smartctl") ) {
     print ui_buttons_end();
 }
 
-ui_print_footer( "edit_disk.cgi?device=$in{'device'}", $text{'disk_return'} );
+ui_print_footer( "edit_disk.cgi?device=$url_device", $text{'disk_return'} );

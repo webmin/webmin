@@ -63,4 +63,5 @@ else {
     );
 }
 
-&ui_print_footer( "edit_disk.cgi?device=$in{'device'}", $text{'disk_return'} );
+my $url_device = &urlize( $in{'device'} );
+&ui_print_footer( "edit_disk.cgi?device=$url_device", $text{'disk_return'} );

@@ -45,13 +45,14 @@ if ( is_using_gpart() && $ds && $ds->{'scheme'} && $ds->{'scheme'} !~ /GPT/i ) {
           : "gpart unset -a active -i $idx " . quote_path($base);
         my $out = backquote_command("$cmd 2>&1");
         if ( $? != 0 ) {
-            &error("Failed to change active flag: $out");
+            &error( "Failed to change active flag: " . &html_escape($out) );
         }
     }
 }
 
 my $err = &modify_slice( $disk, $oldslice, $slice );
-&error($err) if ($err);
+&error( &html_escape($err) ) if ($err);
 
 &webmin_log( "modify", "slice", $slice->{'device'}, $slice );
-&redirect("edit_disk.cgi?device=$in{'device'}");
+my $url_device = &urlize( $in{'device'} );
+&redirect("edit_disk.cgi?device=$url_device");

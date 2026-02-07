@@ -55,12 +55,14 @@ print &text( 'npart_creating', $in{'letter'},
 # Actually create the partition inside the slice (initialize BSD label if needed)
 my $err = &create_partition( $disk, $slice, $part );
 if ($err) {
-    print &text( 'npart_failed', $err ), "<p>\n";
+    print &text( 'npart_failed', &html_escape($err) ), "<p>\n";
 }
 else {
     print &text('npart_done'), "<p>\n";
     &webmin_log( "create", "part", $part->{'device'}, $part );
 }
 
-&ui_print_footer( "edit_slice.cgi?device=$in{'device'}&slice=$in{'slice'}",
+my $url_device = &urlize( $in{'device'} );
+my $url_slice  = &urlize( $in{'slice'} );
+&ui_print_footer( "edit_slice.cgi?device=$url_device&slice=$url_slice",
     $text{'slice_return'} );

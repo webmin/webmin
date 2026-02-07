@@ -36,7 +36,9 @@ $in{'type'} =~ /^[a-zA-Z0-9._-]+$/
   or &error( $text{'part_etype'} || 'Invalid partition type' );
 $part->{'type'} = $in{'type'};
 my $err = &save_partition( $disk, $slice, $part );
-&error($err) if ($err);
+&error( &html_escape($err) ) if ($err);
 
 &webmin_log( "modify", "part", $part->{'device'}, $part );
-&redirect("edit_slice.cgi?device=$in{'device'}&slice=$in{'slice'}");
+my $url_device = &urlize( $in{'device'} );
+my $url_slice  = &urlize( $in{'slice'} );
+&redirect("edit_slice.cgi?device=$url_device&slice=$url_slice");
