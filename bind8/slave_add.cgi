@@ -1,5 +1,6 @@
 #!/usr/local/bin/perl
 # Add or update a server or group from the webmin servers module
+
 use strict;
 use warnings;
 no warnings 'redefine';
@@ -94,12 +95,17 @@ foreach my $s (@add) {
 		next;
 		}
 	if (!$in{'name_def'} && &check_ipaddress($in{'name'})) {
-	print &text('add_eipaddr', $s->{'host'}),"<p>\n";
+		print &text('add_eipaddr', $s->{'host'}),"<p>\n";
 		next;
 		}
 
-	my @rzones = grep { $_->{'type'} ne 'view' }
-		       &remote_foreign_call($s, "bind8", "list_zone_names");
+	my @zn = &remote_foreign_call($s, "bind8", "list_zone_names");
+	if ($add_error_msg) {
+		print "$add_error_msg<p>\n";
+                next;
+		}
+	my @rzones = grep { $_->{'type'} ne 'view' } @zn;
+
 	print &text('add_ok', $s->{'host'}, scalar(@rzones)),"<p>\n";
 	$s->{'sec'} = $in{'sec'};
 	$s->{'nsname'} = $in{'name_def'} ? undef : $in{'name'};
