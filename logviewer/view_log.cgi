@@ -173,9 +173,8 @@ if (!$follow) {
 		if ($reverse) {
 			$tailcmd .= " | tac" if ($cmd !~ /journalctl/);
 			}
-		$eflag = $gconfig{'os_type'} =~ /-linux/ ? "-E" : "";
-		$dashflag = $gconfig{'os_type'} =~ /-linux/ ? "--" : "";
-		my $grep_mode = $use_regex ? $eflag : "-F";
+		$dashflag = "--";
+		my $grep_mode = $use_regex ? "-E" : "-F";
 		if (@cats) {
 			my $fcmd;
 			my $context_opts = $has_context ? " -C $context_lines" : "";
@@ -457,4 +456,3 @@ if ($context_lines > 0 && !$follow) {
 	}
 print &ui_form_end(),"<br>\n";
 }
-
