@@ -11,14 +11,15 @@ our ( %in, %text, $module_name );
 
 # Get the disk and slice
 my @disks = &list_disks_partitions();
-$in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/
+# Validate inputs
+($in{'device'} =~ /^[a-zA-Z0-9_\/.-]+$/ && $in{'device'} !~ /\.\./)
   or &error( $text{'disk_edevice'} || 'Invalid device' );
-$in{'device'} !~ /\.\./  or &error( $text{'disk_edevice'} || 'Invalid device' );
 $in{'slice'}  =~ /^\d+$/ or &error( $text{'slice_egone'} );
 $in{'part'}   =~ /^[a-z]$/ or &error( $text{'part_egone'} );
 my ($disk) = grep { $_->{'device'} eq $in{'device'} } @disks;
 $disk || &error( $text{'disk_egone'} );
-my ($slice) = grep { $_->{'number'} eq $in{'slice'} } @{ $disk->{'slices'} };
+my $in_slice_num = int($in{'slice'});
+my ($slice) = grep { int($_->{'number'}) == $in_slice_num } @{ $disk->{'slices'} };
 $slice || &error( $text{'slice_egone'} );
 my ($part) = grep { $_->{'letter'} eq $in{'part'} } @{ $slice->{'parts'} };
 $part || &error( $text{'part_egone'} );
@@ -41,7 +42,7 @@ if ( $in{'confirm'} ) {
 else {
     # Ask first
     my @st  = &fdisk::device_status( $part->{'device'} );
-    my $use = &fdisk::device_status_link(@st);
+    my $use = &fdisk::device_status_link(@st); # returns safe HTML link(s); ensure upstream sanitization
     print &ui_confirmation_form(
         "delete_part.cgi",
         &text(
@@ -53,9 +54,10 @@ else {
             [ "slice",  $in{'slice'} ],
             [ "part",   $in{'part'} ]
         ],
-        [ [ "confirm", $text{'dslice_confirm'} ] ],
+        # Use partition-specific confirmation text key if available
+        [ [ "confirm", $text{'dpart_confirm'} || $text{'dslice_confirm'} ] ],
         undef,
-        $use ? &text( 'dpart_warn', &html_escape($use) ) : undef
+        $use ? &text( 'dpart_warn', $use ) : undef
     );
 }
 

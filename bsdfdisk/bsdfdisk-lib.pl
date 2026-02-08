@@ -1242,18 +1242,22 @@ sub detect_filesystem_type {
     }
     $t ||= $hint || '';
     $t = lc($t);
+    $t =~ s/^\s+|\s+$//g;
 
-    # Normalize common variants
-    if ( $t =~ /ufs/ )                         { return 'ufs'; }
-    if ( $t =~ /msdos|fat/ )                   { return 'msdosfs'; }
-    if ( $t =~ /ext[234]|ext2fs/ )             { return 'ext2fs'; }
-    if ( $t =~ /zfs/ )                         { return 'zfs'; }
-    if ( $t =~ /swap/ )                        { return 'swap'; }
-    if ( $t =~ /^(ufs|ffs)$/ )                 { return 'ufs'; }
-    if ( $t =~ /^(msdos|msdosfs|fat|fat32)$/ ) { return 'msdosfs'; }
-    if ( $t =~ /^(ext2|ext2fs)$/ )             { return 'ext2fs'; }
-    if ( $t =~ /^zfs$/ )                       { return 'zfs'; }
-    if ( $t =~ /^swap/ )                       { return 'swap'; }
+    # Prefer exact matches first
+    return 'ufs'     if ( $t =~ /^(ufs|ffs)$/ );
+    return 'msdosfs' if ( $t =~ /^(msdos|msdosfs|fat|fat32)$/ );
+    return 'ext2fs'  if ( $t =~ /^(ext2|ext2fs|ext3|ext4)$/ );
+    return 'zfs'     if ( $t eq 'zfs' );
+    return 'swap'    if ( $t eq 'swap' );
+
+    # Then allow bounded substring matches to avoid false positives
+    return 'ufs'     if ( $t =~ /\b(ufs|ffs)\b/ );
+    return 'msdosfs' if ( $t =~ /\b(msdos|msdosfs|fat|fat32|vfat|exfat)\b/ );
+    return 'ext2fs'  if ( $t =~ /\b(ext2|ext3|ext4|ext2fs)\b/ );
+    return 'zfs'     if ( $t =~ /\bzfs\b/ );
+    return 'swap'    if ( $t =~ /\bswap\b/ );
+
     return $t || undef;
 }
 

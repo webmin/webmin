@@ -101,8 +101,8 @@ my $use_text = (
     ( !@st && !$zfs_info->{ $part->{'device'} } ) ? $text{'part_nouse'}
     : (
         ( $st[2] || $zfs_info->{ $part->{'device'} } )
-        ? text( 'part_inuse',  &html_escape($use) )
-        : text( 'part_foruse', &html_escape($use) )
+        ? text( 'part_inuse',  $use )
+        : text( 'part_foruse', $use )
     )
 );
 print ui_table_row( $text{'part_use'}, $use_text );
@@ -144,7 +144,7 @@ if ( @{ $slice->{'parts'} || [] } ) {
                 $p->{'startblock'},
                 $p->{'startblock'} + $p->{'blocks'} - 1,
                 ( $pb2 ? safe_nice_size($pb2) : '-' ),
-                &html_escape($usep),
+                $usep,
                 &html_escape($rolep)
             ]
         );

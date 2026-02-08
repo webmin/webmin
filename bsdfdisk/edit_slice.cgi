@@ -116,8 +116,8 @@ else {
 print ui_table_row(
     $text{'slice_suse'},
     ( !$slice_use || $slice_use eq $text{'part_nouse'} ) ? $text{'part_nouse'}
-    : ( $slice_status[2] ? text( 'part_inuse', html_escape($slice_use) )
-        : text( 'part_foruse', html_escape($slice_use) ) )
+    : ( $slice_status[2] ? text( 'part_inuse', $slice_use )
+        : text( 'part_foruse', $slice_use ) )
 );
 
 # Add a row for the slice role
@@ -223,7 +223,7 @@ if ( @{ $slice->{'parts'} } ) {
                 $p->{'startblock'},
                 $p->{'startblock'} + $p->{'blocks'} - 1,
                 $stripesize,
-                html_escape($use_txt),
+                $use_txt,
                 html_escape($role_txt),
             ]
         );

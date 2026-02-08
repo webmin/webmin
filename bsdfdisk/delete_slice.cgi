@@ -58,7 +58,7 @@ else {
         [ [ "confirm", $text{'dslice_confirm'} ] ],
         undef,
         @warn
-        ? &text( 'dslice_warn', &html_escape( join( " ", @warn ) ) )
+        ? &text( 'dslice_warn', join( " ", @warn ) )
         : undef
     );
 }
