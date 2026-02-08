@@ -117,6 +117,10 @@ print "Refresh: $config{'refresh'}\r\n"
 my $lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'});
 my $jfilter = $in{'filter'} ? $in{'filter'} : "";
 my $filter = $jfilter ? quotemeta($jfilter) : "";
+my $include_surrounding = $in{'surrounding'} ? 1 : 0;
+my $context_lines = $config{'include_context'} =~ /^\d+$/
+	? int($config{'include_context'}) : 0;
+my $has_context = $include_surrounding && $context_lines > 0;
 my $reverse = $config{'reverse'} ? 1 : 0;
 my $follow = $in{'since'} eq '--follow' ? 1 : 0;
 my $no_navlinks = $in{'nonavlinks'} == 1 ? 1 : undef;
@@ -172,11 +176,19 @@ if (!$follow) {
 		$dashflag = $gconfig{'os_type'} =~ /-linux/ ? "--" : "";
 		if (@cats) {
 			my $fcmd;
+			my $context_opts = $has_context ? " -C $context_lines" : "";
 			if ($cmd =~ /journalctl/) {
-				$fcmd = "$cmd --grep $filter";
+				if ($has_context) {
+					$fcmd = "$cmd | grep -a $eflag$context_opts ".
+						"$dashflag $filter";
+					}
+				else {
+					$fcmd = "$cmd --grep $filter";
+					}
 				}
 			else {
-				$fcmd = "$cat | grep -i -a $eflag $dashflag $filter ".
+				$fcmd = "$cat | grep -i -a $eflag$context_opts ".
+					"$dashflag $filter ".
 					"| $tailcmd";
 				}
 			open(my $output_fh, '>', \$safe_proc_out);
@@ -254,10 +266,14 @@ else {
 	}
 	// Update log viewer with new data from the server
 	(async function () {
+		const progressUrl =
+			"view_log_progress.cgi?idx=$in{'idx'}&filter=" +
+			"@{[&urlize($jfilter)]}";
 		const logviewer_progress_abort = new AbortController();
 		const logDataElement = document.getElementById("logdata"),
-			response = await fetch("view_log_progress.cgi?idx=$in{'idx'}&filter=$jfilter",
-					       { signal: logviewer_progress_abort.signal }),
+			response = await fetch(
+				progressUrl,
+				{ signal: logviewer_progress_abort.signal }),
 			reader = response.body.getReader(),
 			decoder = new TextDecoder("utf-8"),
 			processText = async function () {
@@ -417,13 +433,25 @@ if ($follow) {
 	print &text('view_header3', "&nbsp;$sel"),"\n";
 	}
 else {
-	print &text($text_view_header, "&nbsp;" . &ui_textbox("lines", $lines, 3), "&nbsp;$sel"),"\n";
+	print &text(
+		$text_view_header,
+		"&nbsp;" . &ui_textbox("lines", $lines, 3),
+		"&nbsp;$sel"),"\n";
 	}
 print "&nbsp;&nbsp;&nbsp;&nbsp;\n";
-print &text('view_filter', "&nbsp;" . &ui_textbox("filter", $in{'filter'}, 12)),"\n";
-
+print &text(
+	'view_filter',
+	"&nbsp;" . &ui_textbox("filter", $in{'filter'}, 15)),"\n";
 print "&nbsp;&nbsp;\n";
 print &ui_submit($text{'view_filter_btn'});
+if ($context_lines > 0 && !$follow) {
+	print "&nbsp;\n";
+	print &ui_tag(
+		'span',
+		&ui_checkbox("surrounding", 1,
+			$text{'view_filter_surround'}, $include_surrounding),
+		{ style => "vertical-align: middle; margin-left: 2px;" });
+	}
 print &ui_form_end(),"<br>\n";
 }
 
