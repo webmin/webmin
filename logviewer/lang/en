@@ -42,6 +42,7 @@ view_empty=Log file is empty
 view_loading=Log file is being watched .. No new lines yet.
 view_filter=Filter lines with text $1
 view_filter_surround=With context
+view_filter_regex=Use regex
 view_filter_btn=Filter
 
 save_efile='$1' is not a valid filename : $2

@@ -121,6 +121,7 @@ my $include_surrounding = $in{'surrounding'} ? 1 : 0;
 my $context_lines = $config{'include_context'} =~ /^\d+$/
 	? int($config{'include_context'}) : 0;
 my $has_context = $include_surrounding && $context_lines > 0;
+my $use_regex = $in{'regex'} ? 1 : 0;
 my $reverse = $config{'reverse'} ? 1 : 0;
 my $follow = $in{'since'} eq '--follow' ? 1 : 0;
 my $no_navlinks = $in{'nonavlinks'} == 1 ? 1 : undef;
@@ -174,20 +175,21 @@ if (!$follow) {
 			}
 		$eflag = $gconfig{'os_type'} =~ /-linux/ ? "-E" : "";
 		$dashflag = $gconfig{'os_type'} =~ /-linux/ ? "--" : "";
+		my $grep_mode = $use_regex ? $eflag : "-F";
 		if (@cats) {
 			my $fcmd;
 			my $context_opts = $has_context ? " -C $context_lines" : "";
 			if ($cmd =~ /journalctl/) {
-				if ($has_context) {
-					$fcmd = "$cmd | grep -a $eflag$context_opts ".
-						"$dashflag $filter";
+				if ($use_regex && !$has_context) {
+					$fcmd = "$cmd --grep $filter";
 					}
 				else {
-					$fcmd = "$cmd --grep $filter";
+					$fcmd = "$cmd | grep -a $grep_mode$context_opts ".
+						"$dashflag $filter";
 					}
 				}
 			else {
-				$fcmd = "$cat | grep -i -a $eflag$context_opts ".
+				$fcmd = "$cat | grep -i -a $grep_mode$context_opts ".
 					"$dashflag $filter ".
 					"| $tailcmd";
 				}
@@ -268,7 +270,7 @@ else {
 	(async function () {
 		const progressUrl =
 			"view_log_progress.cgi?idx=$in{'idx'}&filter=" +
-			"@{[&urlize($jfilter)]}";
+			"@{[&urlize($jfilter)]}&regex=$use_regex";
 		const logviewer_progress_abort = new AbortController();
 		const logDataElement = document.getElementById("logdata"),
 			response = await fetch(
@@ -444,13 +446,19 @@ print &text(
 	"&nbsp;" . &ui_textbox("filter", $in{'filter'}, 15)),"\n";
 print "&nbsp;&nbsp;\n";
 print &ui_submit($text{'view_filter_btn'});
+print "&nbsp;\n";
+print &ui_tag(
+	'span',
+	&ui_checkbox("regex", 1,
+		$text{'view_filter_regex'}, $use_regex),
+	{ style => "vertical-align: middle; margin-left: 2px;" });
 if ($context_lines > 0 && !$follow) {
 	print "&nbsp;\n";
 	print &ui_tag(
 		'span',
 		&ui_checkbox("surrounding", 1,
 			$text{'view_filter_surround'}, $include_surrounding),
-		{ style => "vertical-align: middle; margin-left: 2px;" });
+		{ style => "vertical-align: middle;" });
 	}
 print &ui_form_end(),"<br>\n";
 }
