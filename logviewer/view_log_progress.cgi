@@ -39,12 +39,8 @@ my $filter = $in{'filter'} ? quotemeta($in{'filter'}) : "";
 my $use_regex = $in{'regex'} ? 1 : 0;
 my $readcmd = $log->{'cmd'};
 if ($filter) {
-	if ($use_regex) {
-		$readcmd .= " --grep $filter";
-		}
-	else {
-		$readcmd .= " | grep --line-buffered -F -a -- $filter";
-		}
+	my $grep_flag = $use_regex ? "-E" : "-F";
+	$readcmd .= " | grep --line-buffered -a $grep_flag -- $filter";
 	}
 
 # Open a pipe to the journalctl command

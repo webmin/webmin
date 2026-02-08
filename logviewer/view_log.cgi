@@ -180,13 +180,8 @@ if (!$follow) {
 			my $fcmd;
 			my $context_opts = $has_context ? " -C $context_lines" : "";
 			if ($cmd =~ /journalctl/) {
-				if ($use_regex && !$has_context) {
-					$fcmd = "$cmd --grep $filter";
-					}
-				else {
-					$fcmd = "$cmd | grep -a $grep_mode$context_opts ".
-						"$dashflag $filter";
-					}
+				$fcmd = "$cmd | grep -a $grep_mode$context_opts ".
+					"$dashflag $filter";
 				}
 			else {
 				$fcmd = "$cat | grep -i -a $grep_mode$context_opts ".
