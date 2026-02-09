@@ -1,5 +1,6 @@
 skip_index=1
 lines=100
+include_context=0
 others=1
 reverse=1
 log_any=0

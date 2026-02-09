@@ -1,5 +1,6 @@
 skip_index=Open log view on module load?,1,1-Yes,0-No
 lines=Default number of lines to display,0,6
+include_context=Context lines around each match,3,None
 compressed=Include compressed logs in searches?,1,1-Yes,0-No
 refresh=Seconds between log view refreshes,3,Never
 others=Show logs from other modules?,1,1-Yes,0-No
