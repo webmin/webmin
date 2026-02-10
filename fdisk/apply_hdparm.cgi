@@ -14,7 +14,7 @@ if( $in{ 'action' } eq $text{ 'hdparm_apply' } )
 	{
 		$command .= "-".$key." ".quotemeta($in{$key})." " if ($in{$key} ne "");
 	}
-	$command .= $in{ 'drive' }."\n";
+	$command .= quotemeta($in{ 'drive' })."\n";
 
 	local $out = "<p>". $text{ 'hdparm_performing' }. " : <b>". $command. "</b><i>". &backquote_logged($command). "</i><p>";
 	$out =~ s/\n/<br>/g;
@@ -24,7 +24,8 @@ if( $in{ 'action' } eq $text{ 'hdparm_apply' } )
 } else {
 	&ui_print_header(undef,  $text{'hdparm_speed'}, "");
 
-	local ( $_, $_, $buffered, $buffer_cache ) = split( /\n/, `hdparm -t -T $in{ 'drive' }` );
+	local $qdrive = quotemeta($in{ 'drive' });
+	local ( $_, $_, $buffered, $buffer_cache ) = split( /\n/, `hdparm -t -T $qdrive` );
 	( $_, $buffered ) = split( /=/, $buffered );
 	( $_, $buffer_cache ) = split( /=/, $buffer_cache );
 

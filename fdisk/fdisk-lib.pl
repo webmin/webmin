@@ -241,14 +241,15 @@ foreach my $id (readdir(IDS)) {
 closedir(IDS);
 
 # Call fdisk to get partition and geometry information
-local $devs = join(" ", @devs);
+local $qdevs = join(" ", map { quotemeta($_) } @devs);
 local ($disk, $m2);
 if ($has_parted) {
 	open(FDISK, join(" ; ",
-		map { "parted $_ unit cyl print 2>/dev/null" } @devs)." |");
+		map { "parted ".quotemeta($_)." unit cyl print 2>/dev/null" }
+		    @devs)." |");
 	}
 else {
-	open(FDISK, "fdisk -l -u=cylinders $devs 2>/dev/null || fdisk -l $devs 2>/dev/null |");
+	open(FDISK, "fdisk -l -u=cylinders $qdevs 2>/dev/null || fdisk -l $qdevs 2>/dev/null |");
 	}
 while(<FDISK>) {
 	if (($m4 = ($_ =~ /Disk\s+([^ :]+):\s+([\d\.]+)\s+(\S+),\s+(\d+)\s+bytes,\s+(\d+)\s+sectors/)) ||
@@ -736,7 +737,7 @@ sub delete_partition
 my ($disk, $part) = @_;
 if ($has_parted) {
 	# Using parted
-	my $cmd = "parted -s ".$disk." rm ".$part;
+	my $cmd = "parted -s ".quotemeta($disk)." rm ".quotemeta($part);
 	my $out = &backquote_logged("$cmd </dev/null 2>&1");
 	if ($?) {
 		&error("$cmd failed : $out");
@@ -765,19 +766,23 @@ my ($disk, $part, $start, $end, $type) = @_;
 if ($has_parted) {
 	# Using parted
 	my $pe = $part > 4 ? "logical" : "primary";
+	my $qdisk = quotemeta($disk);
+	my $qpart = quotemeta($part);
+	my $qstart = quotemeta($start-1);
+	my $qend = quotemeta($end);
 	my $cmd;
 	if ($type eq "raid") {
-		$cmd = "parted -s ".$disk." unit cyl mkpart ".$pe." ".
-		       "ext2 ".($start-1)." ".$end;
-		$cmd .= " ; parted -s ".$disk." set $part raid on";
+		$cmd = "parted -s ".$qdisk." unit cyl mkpart ".$pe." ".
+		       "ext2 ".$qstart." ".$qend;
+		$cmd .= " ; parted -s ".$qdisk." set $qpart raid on";
 		}
 	elsif ($type && $type ne 'ext2') {
-		$cmd = "parted -s ".$disk." unit cyl mkpart ".$pe." ".
-		       $type." ".($start-1)." ".$end;
+		$cmd = "parted -s ".$qdisk." unit cyl mkpart ".$pe." ".
+		       quotemeta($type)." ".$qstart." ".$qend;
 		}
 	else {
-		$cmd = "parted -s ".$disk." unit cyl mkpart ".$pe." ".
-		       ($start-1)." ".$end;
+		$cmd = "parted -s ".$qdisk." unit cyl mkpart ".$pe." ".
+		       $qstart." ".$qend;
 		}
 	my $out = &backquote_logged("$cmd </dev/null 2>&1");
 	if ($?) {
@@ -830,8 +835,8 @@ sub create_extended
 my ($disk, $part, $start, $end) = @_;
 if ($has_parted) {
 	# Create using parted
-	my $cmd = "parted -s ".$disk." unit cyl mkpart extended ".
-		  ($start-1)." ".$end;
+	my $cmd = "parted -s ".quotemeta($disk)." unit cyl mkpart ".
+		  "extended ".quotemeta($start-1)." ".quotemeta($end);
 	my $out = &backquote_logged("$cmd </dev/null 2>&1");
 	if ($?) {
 		&error("$cmd failed : $out");
@@ -1027,7 +1032,8 @@ elsif ($_[0] eq "btrfs") {
 # given device. Options are taken from %in.
 sub mkfs_parse
 {
-local($cmd);
+local($cmd, $qdev);
+$qdev = quotemeta($_[1]);
 if ($_[0] eq "msdos" || $_[0] eq "vfat") {
 	$cmd = "mkfs -t $_[0]";
 	$cmd .= &opt_check("msdos_ff", '[1-2]', "-f");
@@ -1035,17 +1041,17 @@ if ($_[0] eq "msdos" || $_[0] eq "vfat") {
 		$in{'msdos_F_other'} =~ /^\d+$/ ||
 			&error(&text('opt_error', $in{'msdos_F_other'},
 						  $text{'msdos_F'}));
-		$cmd .= " -F ".$in{'msdos_F_other'};
+		$cmd .= " -F ".quotemeta($in{'msdos_F_other'});
 		}
 	elsif ($in{'msdos_F'}) {
-		$cmd .= " -F ".$in{'msdos_F'};
+		$cmd .= " -F ".quotemeta($in{'msdos_F'});
 		}
 	$cmd .= &opt_check("msdos_i", '[0-9a-f]{8}', "-i");
 	$cmd .= &opt_check("msdos_n", '\S{1,11}', "-n");
 	$cmd .= &opt_check("msdos_r", '\d+', "-r");
 	$cmd .= &opt_check("msdos_s", '\d+', "-s");
 	$cmd .= $in{'msdos_c'} ? " -c" : "";
-	$cmd .= " $_[1]";
+	$cmd .= " $qdev";
 	}
 elsif ($_[0] eq "minix") {
 	local(@plist, $disk, $part, $i, @pinfo);
@@ -1054,13 +1060,13 @@ elsif ($_[0] eq "minix") {
 	$cmd .= &opt_check("minix_i", '\d+', "-i ");
 	$cmd .= $in{'minix_c'} ? " -c" : "";
 	$cmd .= &opt_check("minix_b", '\d+', " ");
-	$cmd .= " $_[1]";
+	$cmd .= " $qdev";
 	}
 elsif ($_[0] eq "reiserfs") {
 	$cmd = "yes | mkreiserfs";
 	$cmd .= " -f" if ($in{'reiserfs_f'});
-	$cmd .= " -h $in{'reiserfs_h'}" if ($in{'reiserfs_h'});
-	$cmd .= " $_[1]";
+	$cmd .= " -h ".quotemeta($in{'reiserfs_h'}) if ($in{'reiserfs_h'});
+	$cmd .= " $qdev";
 	}
 elsif ($_[0] =~ /^ext\d+$/) {
 	if (&has_command("mkfs.$_[0]")) {
@@ -1081,7 +1087,7 @@ elsif ($_[0] =~ /^ext\d+$/) {
 			$in{'ext3_j'} =~ /^\d+$/ ||
 				&error(&text('opt_error', $in{'ext3_j'},
 					     $text{'ext3_j'}));
-			$cmd .= " -J size=$in{'ext3_j'}";
+			$cmd .= " -J size=".quotemeta($in{'ext3_j'});
 			}
 		}
 	$cmd .= &opt_check("ext2_b", '\d+', "-b");
@@ -1090,29 +1096,29 @@ elsif ($_[0] =~ /^ext\d+$/) {
 	$cmd .= &opt_check("ext2_m", '\d+', "-m");
 	$cmd .= $in{'ext2_c'} ? " -c" : "";
 	$cmd .= " -q";
-	$cmd .= " $_[1]";
+	$cmd .= " $qdev";
 	}
 elsif ($_[0] eq "xfs") {
 	$cmd = "mkfs -t $_[0]";
 	$cmd .= " -f" if ($in{'xfs_f'});
-	$cmd .= " -b size=$in{'xfs_b'}" if (!$in{'xfs_b_def'});
-	$cmd .= " $_[1]";
+	$cmd .= " -b size=".quotemeta($in{'xfs_b'}) if (!$in{'xfs_b_def'});
+	$cmd .= " $qdev";
 	}
 elsif ($_[0] eq "jfs") {
 	$cmd = "mkfs -t $_[0] -q";
 	$cmd .= &opt_check("jfs_s", '\d+', "-s");
 	$cmd .= " -c" if ($in{'jfs_c'});
-	$cmd .= " $_[1]";
+	$cmd .= " $qdev";
 	}
 elsif ($_[0] eq "fatx") {
-	$cmd = "mkfs -t $_[0] $_[1]";
+	$cmd = "mkfs -t $_[0] $qdev";
 	}
 elsif ($_[0] eq "btrfs") {
 	$cmd = "mkfs -t $_[0]";
-	$cmd .= " -l $in{'btrfs_l'}" if (!$in{'btrfs_l_def'});
-	$cmd .= " -n $in{'btrfs_n'}" if (!$in{'btrfs_n_def'});
-	$cmd .= " -s $in{'btrfs_s'}" if (!$in{'btrfs_s_def'});
-	$cmd .= " $_[1]";
+	$cmd .= " -l ".quotemeta($in{'btrfs_l'}) if (!$in{'btrfs_l_def'});
+	$cmd .= " -n ".quotemeta($in{'btrfs_n'}) if (!$in{'btrfs_n_def'});
+	$cmd .= " -s ".quotemeta($in{'btrfs_s'}) if (!$in{'btrfs_s_def'});
+	$cmd .= " $qdev";
 	}
 if (&has_command("partprobe")) {
 	$cmd = "partprobe ; $cmd";
@@ -1170,16 +1176,17 @@ if ($_[0] =~ /^ext\d+$/) {
 # Returns the tuning command based on user inputs
 sub tunefs_parse
 {
+local $qdev = quotemeta($_[1]);
 if ($_[0] =~ /^ext\d+$/) {
 	$cmd = "tune2fs";
 	$cmd .= &opt_check("tunefs_c", '\d+', "-c");
-	$cmd .= $in{'tunefs_e_def'} ? "" : " -e$in{'tunefs_e'}";
-	$cmd .= $in{'tunefs_u_def'} ? "" : " -u".getpwnam($in{'tunefs_u'});
-	$cmd .= $in{'tunefs_g_def'} ? "" : " -g".getgrnam($in{'tunefs_g'});
+	$cmd .= $in{'tunefs_e_def'} ? "" : " -e".quotemeta($in{'tunefs_e'});
+	$cmd .= $in{'tunefs_u_def'} ? "" : " -u".quotemeta(getpwnam($in{'tunefs_u'}));
+	$cmd .= $in{'tunefs_g_def'} ? "" : " -g".quotemeta(getgrnam($in{'tunefs_g'}));
 	$cmd .= &opt_check("tunefs_m",'\d+',"-m");
 	$cmd .= &opt_check("tunefs_i", '\d+', "-i").
-		($in{'tunefs_i_def'} ? "" : $in{'tunefs_i_unit'});
-	$cmd .= " $_[1]";
+		($in{'tunefs_i_def'} ? "" : quotemeta($in{'tunefs_i_unit'}));
+	$cmd .= " $qdev";
 	}
 return $cmd;
 }
@@ -1316,11 +1323,12 @@ return ($_[0] =~ /^ext\d+$/ && &has_command("fsck.$_[0]") ||
 # Returns the fsck command to unconditionally check a filesystem
 sub fsck_command
 {
+local $qdev = quotemeta($_[1]);
 if ($_[0] =~ /^ext\d+$/) {
-	return "fsck -t $_[0] -p $_[1]";
+	return "fsck -t $_[0] -p $qdev";
 	}
 elsif ($_[0] eq "minix") {
-	return "fsck -t minix -a $_[1]";
+	return "fsck -t minix -a $qdev";
 	}
 }
 
@@ -1436,21 +1444,27 @@ else {
 sub open_fdisk
 {
 local $fpath = &check_fdisk();
+local $qfpath = quotemeta($fpath);
 my $cylarg;
 if ($fpath =~ /\/fdisk/) {
-	my $out = &backquote_command("$fpath -h 2>&1 </dev/null");
+	my $out = &backquote_command("$qfpath -h 2>&1 </dev/null");
 	if ($out =~ /-u\s+<size>/) {
 		$cylarg = "-u=cylinders";
 		}
 	}
+local @qargs = map { quotemeta($_) } grep { defined($_) && $_ ne "" }
+	       ($fpath, $cylarg, @_);
 ($fh, $fpid) = &foreign_call("proc", "pty_process_exec",
-			     join(" ", $fpath, $cylarg, @_));
+			     join(" ", @qargs));
 }
 
 sub open_sfdisk
 {
 local $sfpath = &has_command("sfdisk");
-($fh, $fpid) = &foreign_call("proc", "pty_process_exec", join(" ",$sfpath, @_));
+local @qargs = map { quotemeta($_) } grep { defined($_) && $_ ne "" }
+	       ($sfpath, @_);
+($fh, $fpid) = &foreign_call("proc", "pty_process_exec",
+			     join(" ", @qargs));
 }
 
 sub check_fdisk
@@ -1482,7 +1496,7 @@ if ($in{"$_[0]_def"}) { return ""; }
 elsif ($in{$_[0]} !~ /^$_[1]$/) {
 	&error(&text('opt_error', $in{$_[0]}, $text{$_[0]}));
 	}
-else { return " $_[2] $in{$_[0]}"; }
+else { return " $_[2] ".quotemeta($in{$_[0]}); }
 }
 
 %tags = ('0', 'Empty',
@@ -1611,7 +1625,8 @@ return 0;
 sub disk_space
 {
 local $w = $_[1] || $_[0];
-local $out = `df -k '$w'`;
+local $qw = quotemeta($w);
+local $out = `df -k $qw`;
 if ($out =~ /Mounted on\s*\n\s*\S+\s+(\S+)\s+\S+\s+(\S+)/i) {
 	return ($1, $2);
 	}
@@ -1649,19 +1664,21 @@ return @fstypes;
 sub get_label
 {
 local $label;
+local $qdev = quotemeta($_[0]);
 if ($has_e2label) {
-	$label = `e2label $_[0] 2>&1`;
+	$label = `e2label $qdev 2>&1`;
 	chop($label);
 	}
 if (($? || $label !~ /\S/) && $has_xfs_db) {
 	$label = undef;
-	local $out = &backquote_with_timeout("xfs_db -x -p xfs_admin -c label -r $_[0] 2>&1", 5);
+	local $out = &backquote_with_timeout(
+		"xfs_db -x -p xfs_admin -c label -r $qdev 2>&1", 5);
 	$label = $1 if ($out =~ /label\s*=\s*"(.*)"/ &&
 			$1 ne '(null)');
 	}
 if (($? || $label !~ /\S/) && $has_reiserfstune) {
 	$label = undef;
-	local $out = &backquote_command("reiserfstune $_[0]");
+	local $out = &backquote_command("reiserfstune $qdev");
 	if ($out =~ /LABEL:\s*(\S+)/) {
 		$label = $1;
 		}
@@ -1703,12 +1720,15 @@ return $uuid;
 # Tries to set the label for some device's filesystem
 sub set_label
 {
+local $qdev = quotemeta($_[0]);
+local $qlabel = quotemeta($_[1]);
 if ($has_e2label && ($_[2] =~ /^ext[23]$/ || !$_[2])) {
-	&system_logged("e2label '$_[0]' '$_[1]' >/dev/null 2>&1");
+	&system_logged("e2label $qdev $qlabel >/dev/null 2>&1");
 	return 1 if (!$?);
 	}
 if ($has_xfs_db && ($_[2] eq "xfs" || !$_[2])) {
-	&system_logged("xfs_db -x -p xfs_admin -c \"label $_[1]\" $_[0] >/dev/null 2>&1");
+	&system_logged(
+		"xfs_db -x -p xfs_admin -c \"label $qlabel\" $qdev >/dev/null 2>&1");
 	return 1 if (!$?);
 	}
 return 0;
@@ -1719,7 +1739,8 @@ return 0;
 sub set_name
 {
 my ($dinfo, $pinfo, $name) = @_;
-my $cmd = "parted -s ".$dinfo->{'device'}." name ".$pinfo->{'number'}." ";
+my $cmd = "parted -s ".quotemeta($dinfo->{'device'})." name ".
+	  quotemeta($pinfo->{'number'})." ";
 if ($name) {
 	$cmd .= quotemeta($name);
 	}
@@ -1737,7 +1758,7 @@ if ($?) {
 sub set_partition_table
 {
 my ($disk, $table) = @_;
-my $cmd = "parted -s ".$disk." mktable ".$table;
+my $cmd = "parted -s ".quotemeta($disk)." mktable ".quotemeta($table);
 my $out = &backquote_logged("$cmd </dev/null 2>&1");
 if ($?) {
 	&error("$cmd failed : $out");

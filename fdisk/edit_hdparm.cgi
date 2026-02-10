@@ -18,10 +18,12 @@ if ( ! &has_command( "hdparm" ) ) {
 
 %hdparm = ( 'A', "1", 'K', "0", 'P', "0", 'X', "0", 'W', "0", 'S', "0" );
 @yesno = ( "1", $text{ 'hdparm_on' }, "0", $text{ 'hdparm_off' } );
+local $qdevice = quotemeta($d->{'device'});
 
 foreach $argument ( 'a', 'd', 'r', 'k', 'u', 'm', 'c' )
 {
-    $out = `hdparm -$argument $d->{'device'}`;
+    local $qargument = quotemeta($argument);
+    $out = `hdparm -$qargument $qdevice`;
     if ($out =~ /\s+=\s+(\S+)/) {
 	$hdparm{ $argument } = $1;
 	}
