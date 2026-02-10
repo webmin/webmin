@@ -3526,8 +3526,8 @@ else {
 			"cd ".quotemeta($fn)." && ".
 			"$config{'keygen'} -a ".quotemeta($alg).
 			" -b ".quotemeta($size).
-			" -n ZONE -f KSK ".($flag || "")."
-				".quotemeta($dom)." 2>&1");
+			" -n ZONE -f KSK ".($flag || "")." ".
+				quotemeta($dom)." 2>&1");
 		kill('KILL', $pid) if ($pid);
 		if ($?) {
 			return $out;
