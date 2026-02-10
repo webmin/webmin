@@ -25,7 +25,8 @@ return 1;
 sub free_space
 {
 local(@out, @rv);
-`df -i '$_[0]'` =~ /Mounted\n\S+\s+\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/;
+&backquote_command("df -i ".quotemeta($_[0])) =~
+	/Mounted\n\S+\s+\S+\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/;
 return ($1, $3, $5+$6, $6);
 }
 
@@ -113,7 +114,8 @@ return $n;
 sub filesystem_users
 {
 local($rep, @rep, $n = 0, $r);
-$rep = `$config{'user_repquota_command'} $_[0] 2>&1`;
+$rep = &backquote_command("$config{'user_repquota_command'} ".
+			  quotemeta($_[0])." 2>&1");
 if ($?) { return -1; }
 @rep = split(/\n/, $rep);
 foreach $r (@rep) {
@@ -150,7 +152,8 @@ return $rv;
 # Runs quotacheck on some filesystem
 sub quotacheck
 {
-$out = &backquote_logged("$config{'quotacheck_command'} $_[0] 2>&1");
+$out = &backquote_logged("$config{'quotacheck_command'} ".quotemeta($_[0]).
+			 " 2>&1");
 if ($?) { return $out; }
 return undef;
 }
@@ -181,7 +184,8 @@ sub get_user_grace
 {
 local(@rv, %mtab, @m);
 $ENV{'EDITOR'} = $ENV{'VISUAL'} = "cat";
-open(GRACE, "$config{'user_grace_command'} $_[0] 2>/dev/null |");
+open(GRACE, "$config{'user_grace_command'} ".quotemeta($_[0]).
+	    " 2>/dev/null |");
 while(<GRACE>) {
 	if (/^fs\s+(\S+)\s+kbytes\s+time\s+limit\s+=\s+(\S+)\s+(\S+),\s+files\s+time\s+limit\s+=\s+(\S+)\s+(\S+)/) {
 		@rv = ($2, $name_to_unit{$3}, $4, $name_to_unit{$5});

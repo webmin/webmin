@@ -19,7 +19,7 @@ return 1;
 sub free_space
 {
 local($out);
-$out = `df -t $_[0]`;
+$out = &backquote_command("df -t ".quotemeta($_[0]));
 $out =~ /(\d+) blocks\s+(\d+) files\n.*\s+(\d+) blocks\s+(\d+) files/;
 return ($3, $1, $4, $2);
 }
@@ -52,7 +52,8 @@ return $_[0]->[3] =~ /,quota/ || $_[0]->[3] =~ /^quota/ ? 1 : 0;
 sub filesystem_users
 {
 local($rep, @rep, $n, $newfmt);
-$rep = `$config{'user_repquota_command'} $_[0] 2>&1`;
+$rep = &backquote_command("$config{'user_repquota_command'} ".
+			  quotemeta($_[0])." 2>&1");
 if ($?) { return -1; }
 @rep = split(/\n/, $rep); @rep = @rep[3..$#rep];
 `uname -r` =~ /(\d+)\.(\d+)/;
@@ -99,7 +100,8 @@ if (!(-r $qf)) {
 	&close_tempfile(QUOTAFILE);
 	&set_ownership_permissions(undef, undef, 0600, $qf);
 	}
-$out = &backquote_logged("$config{'user_quotaon_command'} $_[0] 2>&1");
+$out = &backquote_logged("$config{'user_quotaon_command'} ".
+			 quotemeta($_[0])." 2>&1");
 if ($?) { return $out; }
 return undef;
 }
@@ -110,7 +112,8 @@ sub quotaoff
 {
 return if (&is_readonly_mode());
 local($out);
-$out = &backquote_logged("$config{'user_quotaoff_command'} $_[0] 2>&1");
+$out = &backquote_logged("$config{'user_quotaoff_command'} ".
+			 quotemeta($_[0])." 2>&1");
 if ($?) { return $out; }
 return undef;
 }
@@ -119,7 +122,8 @@ return undef;
 # Runs quotacheck on some filesystem
 sub quotacheck
 {
-$out = &backquote_logged("$config{'quotacheck_command'} $_[0] 2>&1");
+$out = &backquote_logged("$config{'quotacheck_command'} ".quotemeta($_[0]).
+			 " 2>&1");
 if ($?) { return $out; }
 return undef;
 }

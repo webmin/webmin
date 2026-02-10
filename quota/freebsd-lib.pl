@@ -66,9 +66,11 @@ if ($_[1]%2 == 1) {
 		&open_tempfile(QUOTAFILE, ">$qf", 0, 1);
 		&close_tempfile(QUOTAFILE);
 		&set_ownership_permissions(undef, undef, 0600, $qf);
-		&system_logged("$config{'quotacheck_command'} $_[0]");
+		&system_logged("$config{'quotacheck_command'} ".
+			       quotemeta($_[0]));
 		}
-	$out = &backquote_logged("$config{'user_quotaon_command'} $_[0] 2>&1");
+	$out = &backquote_logged("$config{'user_quotaon_command'} ".
+				 quotemeta($_[0])." 2>&1");
 	if ($?) { return $out; }
 	}
 if ($_[1] > 1) {
@@ -78,9 +80,11 @@ if ($_[1] > 1) {
 		&open_tempfile(QUOTAFILE, ">$qf", 0, 1);
 		&close_tempfile(QUOTAFILE);
 		&set_ownership_permissions(undef, undef, 0600, $qf);
-		&system_logged("$config{'quotacheck_command'} $_[0]");
+		&system_logged("$config{'quotacheck_command'} ".
+			       quotemeta($_[0]));
 		}
-	$out = &backquote_logged("$config{'group_quotaon_command'} $_[0] 2>&1");
+	$out = &backquote_logged("$config{'group_quotaon_command'} ".
+				 quotemeta($_[0])." 2>&1");
 	if ($?) { return $out; }
 	}
 return undef;
@@ -93,11 +97,13 @@ sub quotaoff
 return if (&is_readonly_mode());
 local($out);
 if ($_[1]%2 == 1) {
-	$out = &backquote_logged("$config{'user_quotaoff_command'} $_[0] 2>&1");
+	$out = &backquote_logged("$config{'user_quotaoff_command'} ".
+				 quotemeta($_[0])." 2>&1");
 	if ($?) { return $out; }
 	}
 if ($_[1] > 1) {
-	$out = &backquote_logged("$config{'group_quotaoff_command'} $_[0] 2>&1");
+	$out = &backquote_logged("$config{'group_quotaoff_command'} ".
+				 quotemeta($_[0])." 2>&1");
 	if ($?) { return $out; }
 	}
 return undef;
@@ -191,7 +197,8 @@ return $n;
 sub filesystem_users
 {
 local($rep, @rep, $n, $what);
-$rep = `$config{'user_repquota_command'} $_[0] 2>&1`;
+$rep = &backquote_command("$config{'user_repquota_command'} ".
+			  quotemeta($_[0])." 2>&1");
 if ($?) { return -1; }
 @rep = split(/\n/, $rep);
 @rep = grep { !/^root\s/ } @rep[3..$#rep];
@@ -219,7 +226,8 @@ return $n;
 sub filesystem_groups
 {
 local($rep, @rep, $n, $what);
-$rep = `$config{'group_repquota_command'} $_[0] 2>&1`;
+$rep = &backquote_command("$config{'group_repquota_command'} ".
+			  quotemeta($_[0])." 2>&1");
 if ($?) { return -1; }
 @rep = split(/\n/, $rep);
 @rep = @rep[3..$#rep];
@@ -268,7 +276,8 @@ return $rv;
 # Runs quotacheck on some filesystem
 sub quotacheck
 {
-$out = &backquote_logged("$config{'quotacheck_command'} $_[0] 2>&1");
+$out = &backquote_logged("$config{'quotacheck_command'} ".quotemeta($_[0]).
+			 " 2>&1");
 if ($?) { return $out; }
 return undef;
 }
@@ -311,7 +320,7 @@ sub get_user_grace
 {
 local(@rv, %mtab, @m);
 $ENV{'EDITOR'} = $ENV{'VISUAL'} = "cat";
-open(GRACE, "$config{'user_grace_command'} $_[0] |");
+open(GRACE, "$config{'user_grace_command'} ".quotemeta($_[0])." |");
 while(<GRACE>) {
 	if (/^(\S+): block grace period: (\d+) (\S+), file grace period: (\d+) (\S+)/ && $1 eq $_[0]) {
 		@rv = ($2, $name_to_unit{$3}, $4, $name_to_unit{$5});
@@ -328,7 +337,7 @@ sub get_group_grace
 {
 local(@rv, %mtab, @m);
 $ENV{'EDITOR'} = $ENV{'VISUAL'} = "cat";
-open(GRACE, "$config{'group_grace_command'} $_[0] |");
+open(GRACE, "$config{'group_grace_command'} ".quotemeta($_[0])." |");
 while(<GRACE>) {
 	if (/^(\S+): block grace period: (\d+) (\S+), file grace period: (\d+) (\S+)/ && $1 eq $_[0]) {
 		@rv = ($2, $name_to_unit{$3}, $4, $name_to_unit{$5});
@@ -385,4 +394,3 @@ foreach $k (keys %name_to_unit) {
 	}
 
 1;
-

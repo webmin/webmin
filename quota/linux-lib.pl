@@ -50,7 +50,7 @@ sub free_space
 {
 local(@out, @rv);
 &clean_language();
-$out = &backquote_command("df -k $_[0]");
+$out = &backquote_command("df -k ".quotemeta($_[0]));
 $out =~ /Mounted on\n\S+\s+(\d+)\s+\d+\s+(\d+)/;
 if ($_[1]) {
 	push(@rv, int($1*1024/$_[1]), int($2*1024/$_[1]));
@@ -58,7 +58,7 @@ if ($_[1]) {
 else {
 	push(@rv, $1, $2);
 	}
-$out = &backquote_command("df -i $_[0]");
+$out = &backquote_command("df -i ".quotemeta($_[0]));
 $out =~ /Mounted on\n\S+\s+(\d+)\s+\d+\s+(\d+)/;
 push(@rv, $1, $2);
 &reset_environment();
@@ -140,7 +140,7 @@ if ($_[0]->[4]%2 == 1) {
 			# Fall back to testing by running quotaon
 			&clean_language();
 			$out = &backquote_command(
-				"$config{'user_quotaon_command'} $dir 2>&1");
+				"$config{'user_quotaon_command'} ".quotemeta($dir)." 2>&1");
 			&reset_environment();
 			if ($out =~ /Device or resource busy/i) {
 				# already on..
@@ -153,7 +153,7 @@ if ($_[0]->[4]%2 == 1) {
 			else {
 				# was off.. need to turn on again
 				&execute_command(
-				  "$config{'user_quotaoff_command'} $dir 2>&1");
+				  "$config{'user_quotaoff_command'} ".quotemeta($dir)." 2>&1");
 				}
 			}
 		}
@@ -173,7 +173,7 @@ if ($_[0]->[4] > 1) {
 			# Fall back to testing by running quotaon
 			&clean_language();
 			$out = &backquote_command(
-				"$config{'group_quotaon_command'} $dir 2>&1");
+				"$config{'group_quotaon_command'} ".quotemeta($dir)." 2>&1");
 			&reset_environment();
 			if ($out =~ /Device or resource busy/i) {
 				# already on..
@@ -186,7 +186,7 @@ if ($_[0]->[4] > 1) {
 			else {
 				# was off.. need to turn on again
 				&execute_command(
-				 "$config{'group_quotaoff_command'} $dir 2>&1");
+				 "$config{'group_quotaoff_command'} ".quotemeta($dir)." 2>&1");
 				}
 			}
 		}
@@ -249,7 +249,7 @@ sub supports_status
 if (!defined($supports_status_cache{$_[0],$_[1]})) {
 	&clean_language();
 	local $stout = &backquote_command(
-		"$config{$_[1].'_quotaon_command'} -p $_[0] 2>&1");
+		"$config{$_[1].'_quotaon_command'} -p ".quotemeta($_[0])." 2>&1");
 	&reset_environment();
 	$supports_status_cache{$_[0],$_[1]} =
 		$stout =~ /is\s+(on|off|enabled|disabled)/ ? $stout : 0;
@@ -296,7 +296,7 @@ if ($_[1]%2 == 1) {
 			&close_tempfile(QUOTAFILE);
 			&set_ownership_permissions(undef, undef, 0600,
 						   "$_[0]/quota.user");
-			&system_logged("convertquota -u $_[0] 2>&1");
+			&system_logged("convertquota -u ".quotemeta($_[0])." 2>&1");
 			$ok = 1 if (!$?);
 			&unlink_file("$_[0]/quota.user");
 			}
@@ -315,7 +315,8 @@ if ($_[1]%2 == 1) {
 				&run_quotacheck($_[0], "-u -f -m -c -F $fmt");
 			}
 		}
-	$out = &backquote_logged("$config{'user_quotaon_command'} $_[0] 2>&1");
+	$out = &backquote_logged(
+			"$config{'user_quotaon_command'} ".quotemeta($_[0])." 2>&1");
 	if ($?) { return $out; }
 	}
 if ($_[1] > 1) {
@@ -330,7 +331,7 @@ if ($_[1] > 1) {
 			&close_tempfile(QUOTAFILE);
 			&set_ownership_permissions(undef, undef, 0600,
 						   "$_[0]/quota.group");
-			&system_logged("convertquota -g $_[0] 2>&1");
+			&system_logged("convertquota -g ".quotemeta($_[0])." 2>&1");
 			$ok = 1 if (!$?);
 			&unlink_file("$_[0]/quota.group");
 			}
@@ -349,7 +350,8 @@ if ($_[1] > 1) {
 				&run_quotacheck($_[0], "-g -f -m -c -F $fmt");
 			}
 		}
-	$out = &backquote_logged("$config{'group_quotaon_command'} $_[0] 2>&1");
+	$out = &backquote_logged(
+			"$config{'group_quotaon_command'} ".quotemeta($_[0])." 2>&1");
 	if ($?) { return $out; }
 	}
 return undef;
@@ -364,8 +366,8 @@ Runs the quotacheck command on some filesystem, and returns 1 on success or
 sub run_quotacheck
 {
 &clean_language();
-local $out =&backquote_logged(
-	"$config{'quotacheck_command'} $_[1] $_[0] 2>&1");
+local $out = &backquote_logged(
+	"$config{'quotacheck_command'} $_[1] ".quotemeta($_[0])." 2>&1");
 &reset_environment();
 return $? || $out =~ /cannot guess|cannot remount|cannot find|please stop/i ? 0 : 1;
 }
@@ -381,11 +383,13 @@ sub quotaoff
 return if (&is_readonly_mode());
 local($out);
 if ($_[1]%2 == 1) {
-	$out = &backquote_logged("$config{'user_quotaoff_command'} $_[0] 2>&1");
+	$out = &backquote_logged(
+		"$config{'user_quotaoff_command'} ".quotemeta($_[0])." 2>&1");
 	if ($?) { return $out; }
 	}
 if ($_[1] > 1) {
-	$out = &backquote_logged("$config{'group_quotaoff_command'} $_[0] 2>&1");
+	$out = &backquote_logged(
+		"$config{'group_quotaoff_command'} ".quotemeta($_[0])." 2>&1");
 	if ($?) { return $out; }
 	}
 return undef;
@@ -591,7 +595,7 @@ sub parse_repquota_output
 local ($cmd, $what, $mode, $dir) = @_;
 local($rep, @rep, $n, $u, @uinfo);
 %$what = ( );
-$rep = &backquote_command("$cmd $dir 2>&1");
+$rep = &backquote_command("$cmd ".quotemeta($dir)." 2>&1");
 if ($?) { return -1; }
 local $st = &supports_status($dir, $mode);
 if (!$st) {
@@ -660,7 +664,7 @@ sub parse_xfs_report_output
 {
 my ($cmd, $what, $mode, $fs) = @_;
 %$what = ( );
-my $rep = &backquote_command("$cmd $fs 2>&1");
+my $rep = &backquote_command("$cmd ".quotemeta($fs)." 2>&1");
 if ($?) { return -1; }
 my @rep = split(/\r?\n/, $rep);
 my $nn = 0;
@@ -754,13 +758,15 @@ if ($_[1] == 0 || $_[1] == 2) {
 local $cmd = $config{'quotacheck_command'};
 $cmd =~ s/\s+-[ug]//g;
 local $flag = $_[1] == 1 ? "-u" : $_[1] == 2 ? "-g" : "-u -g";
-$out = &backquote_logged("$cmd $flag $_[0] 2>&1");
+$out = &backquote_logged("$cmd $flag ".quotemeta($_[0])." 2>&1");
 if ($?) {
 	# Try with the -f and -m options
-	$out = &backquote_logged("$cmd $flag -f -m $_[0] 2>&1");
+	$out = &backquote_logged(
+		"$cmd $flag -f -m ".quotemeta($_[0])." 2>&1");
 	if ($?) {
 		# Try with the -F option
-		$out = &backquote_logged("$config{'quotacheck_command'} $flag -F $_[0] 2>&1");
+		$out = &backquote_logged(
+			"$config{'quotacheck_command'} $flag -F ".quotemeta($_[0])." 2>&1");
 		}
 	return $out if ($?);
 	}
@@ -1055,4 +1061,3 @@ return !&is_xfs_fs($fs);
 }
 
 1;
-
