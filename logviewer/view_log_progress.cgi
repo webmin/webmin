@@ -44,8 +44,11 @@ if ($filter) {
 	}
 
 # Open a pipe to the journalctl command
-my $pid = open(my $fh, '-|', $readcmd) ||
+my $pid = open(my $fh, '-|', $readcmd);
+if (!defined($pid)) {
 	print &text('save_ecannot4', $readcmd).": $!";
+	exit;
+	}
 
 # Read and output the log
 while (my $line = <$fh>) {

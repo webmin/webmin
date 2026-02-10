@@ -56,6 +56,7 @@ my $fselect = shift;
 my $lines = $in{'lines'} ? int($in{'lines'}) : int($config{'lines'}) || 1000;
 my $journalctl_cmd = &has_command('journalctl');
 return () if (!$journalctl_cmd);
+my $systemctl_cmd = &has_command('systemctl') || 'systemctl';
 my $eflags = "";
 $eflags = " --reverse" if ($config{'reverse'});
 my $jver = &get_journalctl_version();
@@ -89,8 +90,8 @@ my (%ucache, %uread);
 my $units_cache = "$module_config_directory/units.cache";
 &read_file($units_cache, \%ucache);
 if (!%ucache) {
-	my $out = &backquote_command("systemctl list-units --all --no-legend ".
-			"--no-pager");
+	my $out = &backquote_command(quotemeta($systemctl_cmd).
+				     " list-units --all --no-legend --no-pager");
 	foreach my $line (split(/\r?\n/, $out)) {
 		$line =~ s/^[^a-z0-9\-\_\.]+//i;
 		my ($unit, $desc) = (split(/\s+/, $line, 5))[0, 4];
@@ -104,9 +105,10 @@ if ($fselect) {
 	my %units = %uread ? %uread : %ucache;
 	foreach my $u (sort keys %units) {
 		my $uname = $u;
+		my $qu = quotemeta($u);
 		$uname =~ s/\\x([0-9A-Fa-f]{2})/pack('H2', $1)/eg;
 		push(@rs, { 'cmd' => "$journalctl_cmd --lines ".
-			    "$lines --unit $u",
+			    "$lines --unit $qu",
 			    'desc' => $uname,
 			    'id' => "journal-a-$u", });
 		}
@@ -287,7 +289,8 @@ else {
 sub get_journalctl_version
 {
 my $bin = &has_command('journalctl');
-my $out = &backquote_command("\"$bin\" --version 2>&1");
+return undef if (!$bin);
+my $out = &backquote_command(quotemeta($bin)." --version 2>&1");
 if ($out =~ /systemd\s+([0-9]+(?:\.[0-9A-Za-z\-\+]+)*)/) {
 	return $1;
 	}

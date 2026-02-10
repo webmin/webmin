@@ -28,7 +28,7 @@ if ($in{'idx'} ne '') {
 		my @systemctl_cmds = &get_systemctl_cmds(1);
 		my ($log);
 		if ($in{'idx'} eq 'journal-u') {
-			($log) = grep { $_->{'cmd'} =~ /--unit\s+\w+/ }
+			($log) = grep { $_->{'cmd'} =~ /--unit\s+\S+/ }
 					@systemctl_cmds;
 			$in{'idx'} = $log->{'id'};
 			}
