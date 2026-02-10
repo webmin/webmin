@@ -35,10 +35,13 @@ my $rootfile = $_[4] ? $file : &make_chroot($file);
 my $FILE;
 if (&is_raw_format_records($rootfile)) {
 	# Convert from raw format first
-	&has_command("named-compilezone") ||
+	my $compilezone = &has_command("named-compilezone");
+	$compilezone ||
 		&error("Zone file $rootfile is in raw format, but the ".
 		       "named-compilezone command is not installed");
-	open($FILE, "named-compilezone -f raw -F text -o - $origin $rootfile |");
+	open($FILE, "-|", $compilezone,
+	     "-f", "raw", "-F", "text", "-o", "-",
+	     $origin, $rootfile);
 	}
 else {
 	# Can read text format records directly

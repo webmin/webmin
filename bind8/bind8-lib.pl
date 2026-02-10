@@ -3514,7 +3514,7 @@ else {
 		"cd ".quotemeta($fn)." && ".
 		"$config{'keygen'} -a ".quotemeta($alg).
 		" -b ".quotemeta($zonesize).
-		" -n ZONE ".($flag || "")." $dom 2>&1");
+		" -n ZONE ".($flag || "")." ".quotemeta($dom)." 2>&1");
 	if ($?) {
 		kill('KILL', $pid) if ($pid);
 		return $out;
@@ -3526,7 +3526,8 @@ else {
 			"cd ".quotemeta($fn)." && ".
 			"$config{'keygen'} -a ".quotemeta($alg).
 			" -b ".quotemeta($size).
-			" -n ZONE -f KSK ".($flag || "")." $dom 2>&1");
+			" -n ZONE -f KSK ".($flag || "")."
+				".quotemeta($dom)." 2>&1");
 		kill('KILL', $pid) if ($pid);
 		if ($?) {
 			return $out;
@@ -3614,7 +3615,7 @@ my $alg = $zonekey->{'algorithm'};
 my $out = &backquote_logged(
 	"cd ".quotemeta($dir)." && ".
 	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($zonesize).
-	" -n ZONE ".($flag || "")." $dom 2>&1");
+	" -n ZONE ".($flag || "")." ".quotemeta($dom)." 2>&1");
 kill('KILL', $pid) if ($pid);
 if ($?) {
 	return "Failed to generate new zone key : $out";

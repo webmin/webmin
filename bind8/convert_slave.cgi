@@ -44,7 +44,9 @@ if (&is_raw_format_records($file)) {
 	my $temp = &transname();
 	&copy_source_dest($file, $temp);
 	my $out = &backquote_logged("named-compilezone -f raw -F text ".
-				 "-o $file $zone->{'name'} $temp 2>&1");
+				 "-o ".quotemeta($file)." ".
+				 quotemeta($zone->{'name'})." ".
+				 quotemeta($temp)." 2>&1");
 	&error(&text('convert_ecompile', "<tt>".&html_escape($out)."</tt>"))
 		if ($?);
 	&unlink_file($temp);
