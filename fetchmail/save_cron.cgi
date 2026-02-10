@@ -36,7 +36,7 @@ if ($in{'errors'}) {
 	}
 if ($cron_user eq "root" && $fetchmail_config) {
 	defined(getpwnam($in{'user'})) || &error($text{'cron_euser'});
-	$cmd .= " --user $in{'user'}";
+	$cmd .= " --user ".quotemeta($in{'user'});
 	}
 
 if ($job && $in{'enabled'}) {

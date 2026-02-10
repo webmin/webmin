@@ -16,7 +16,8 @@ elsif ($< == 0) {
 		$out = &backquote_logged("$config{'fetchmail_path'} -q 2>&1");
 		}
 	else {
-		$out = &backquote_logged("su - '$config{'daemon_user'}' -c '$config{'fetchmail_path'} -q' 2>&1");
+		my $qdaemon_user = quotemeta($config{'daemon_user'});
+		$out = &backquote_logged("su - $qdaemon_user -c ".quotemeta("$config{'fetchmail_path'} -q")." 2>&1");
 		}
 	}
 else {

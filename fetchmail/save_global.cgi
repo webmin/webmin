@@ -51,9 +51,9 @@ if ($found) {
 else {
 	&create_poll($poll, $file);
 	if ($in{'user'} && $< == 0) {
-		&system_logged("chown $in{'user'} $file");
+		&system_logged("chown ".quotemeta($in{'user'})." ".quotemeta($file));
 		}
-	&system_logged("chmod 700 $file");
+	&system_logged("chmod 700 ".quotemeta($file));
 	}
 &unlock_file($file);
 &webmin_log("global", undef, $config{'config_file'} ? $file : $in{'user'},

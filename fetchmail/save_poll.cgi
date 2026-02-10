@@ -101,9 +101,9 @@ else {
 		&create_poll($poll, $file);
 		if ($in{'user'} && $< == 0) {
 			local @uinfo = getpwnam($in{'user'});
-			&system_logged("chown $uinfo[2]:$uinfo[3] $file");
+			&system_logged("chown $uinfo[2]:$uinfo[3] ".quotemeta($file));
 			}
-		&system_logged("chmod 700 $file");
+		&system_logged("chmod 700 ".quotemeta($file));
 		}
 	else {
 		&modify_poll($poll, $file);

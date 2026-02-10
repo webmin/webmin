@@ -17,14 +17,14 @@ else {
 
 &ui_print_unbuffered_header($uheader, $text{'check_title'}, "");
 
-$cmd = "$config{'fetchmail_path'} -v -f '$file'";
+$cmd = "$config{'fetchmail_path'} -v -f ".quotemeta($file);
 if ($config{'mda_command'}) {
-	$cmd .= " -m '$config{'mda_command'}'";
+	$cmd .= " -m ".quotemeta($config{'mda_command'});
 	}
 if (defined($in{'idx'})) {
 	@conf = &parse_config_file($file);
 	$poll = $conf[$in{'idx'}];
-	$cmd .= " $poll->{'poll'}";
+	$cmd .= " ".quotemeta($poll->{'poll'});
 	}
 
 print &text('check_exec', "<tt>$cmd</tt>"),"<p>\n";

@@ -13,17 +13,21 @@ if ($config{'start_cmd'}) {
 	}
 else {
 	$in{'interval'} =~ /^\d+$/ || &error($text{'start_einterval'});
-	$mda = " -m '$config{'mda_command'}'" if ($config{'mda_command'});
+	$mda = " -m ".quotemeta($config{'mda_command'}) if ($config{'mda_command'});
+	my $qinterval = quotemeta($in{'interval'});
+	my $qconfig_file = quotemeta($config{'config_file'});
 	if ($< == 0) {
 		if ($config{'daemon_user'} eq 'root') {
-			$out = &backquote_logged("$config{'fetchmail_path'} -d $in{'interval'} -f $config{'config_file'} $mda 2>&1");
+			$out = &backquote_logged("$config{'fetchmail_path'} -d $qinterval -f $qconfig_file $mda 2>&1");
 			}
 		else {
-			$out = &backquote_logged("su - '$config{'daemon_user'}' -c '$config{'fetchmail_path'} -d $in{'interval'} -f $config{'config_file'} $mda' 2>&1");
+			my $qdaemon_user = quotemeta($config{'daemon_user'});
+			my $daemon_cmd = "$config{'fetchmail_path'} -d $qinterval -f $qconfig_file $mda";
+			$out = &backquote_logged("su - $qdaemon_user -c ".quotemeta($daemon_cmd)." 2>&1");
 			}
 		}
 	else {
-		$out = &backquote_logged("$config{'fetchmail_path'} -d $in{'interval'} $mda 2>&1");
+		$out = &backquote_logged("$config{'fetchmail_path'} -d $qinterval $mda 2>&1");
 		}
 	}
 if ($?) {

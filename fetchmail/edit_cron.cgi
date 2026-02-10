@@ -19,10 +19,10 @@ print &ui_table_start($text{'cron_header'}, "width=100%", 2);
 
 if ($job) {
 	if ($job->{'command'} =~ /--mail\s+(\S+)/) {
-		$mail = `echo $1`;
+		($mail = $1) =~ s/\\(.)/$1/g;
 		}
 	elsif ($job->{'command'} =~ /--file\s+(\S+)/) {
-		$file = `echo $1`;
+		($file = $1) =~ s/\\(.)/$1/g;
 		}
 	elsif ($job->{'command'} =~ /--output/) {
 		$output = 1;
@@ -31,7 +31,7 @@ if ($job) {
 		$owner = 1;
 		}
 	if ($job->{'command'} =~ /--user\s+(\S+)/) {
-		$user = $1;
+		($user = $1) =~ s/\\(.)/$1/g;
 		}
 	if ($job->{'command'} =~ /--errors/) {
 		$errors = 1;
