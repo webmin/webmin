@@ -12,7 +12,7 @@ $conf = &get_config();
 &indexof($in{'file'}, @files) >= 0 || &error($text{'manual_efile'});
 
 $temp = &transname();
-&execute_command("cp ".quotemeta($in{'file'})." $temp");
+&execute_command("cp ".quotemeta($in{'file'})." ".quotemeta($temp));
 $in{'data'} =~ s/\r//g;
 &lock_file($in{'file'});
 &open_tempfile(FILE, ">$in{'file'}");
@@ -22,7 +22,7 @@ $in{'data'} =~ s/\r//g;
 if ($config{'test_manual'}) {
 	$err = &test_config();
 	if ($err) {
-		&execute_command("mv $temp '$in{'file'}'");
+		&execute_command("mv ".quotemeta($temp)." ".quotemeta($in{'file'}));
 		&error(&text('manual_etest', "<pre>$err</pre>"));
 		}
 	}
@@ -30,4 +30,3 @@ unlink($temp);
 &format_config_file($in{'file'});
 &webmin_log("manual", undef, undef, { 'file' => $in{'file'} });
 &redirect("index.cgi?mode=global");
-

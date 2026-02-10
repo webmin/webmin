@@ -35,10 +35,9 @@ if (!$running) {
 		}
 	else {
 		$errorlog = &server_root($errorlog, $conf);
-		$out = `tail -5 $errorlog`;
+		$out = &backquote_command("tail -5 ".quotemeta($errorlog));
 		&error("<pre>$out</pre>");
 		}
 	}
 &webmin_log("apply");
 &redirect($in{'redir'});
-

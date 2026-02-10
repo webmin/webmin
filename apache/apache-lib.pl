@@ -1804,7 +1804,7 @@ if (!&is_apache_running()) {
 		}
 	else {
 		$errorlog = &server_root($errorlog, $conf);
-		$out = `tail -5 $errorlog`;
+		$out = &backquote_command("tail -5 ".quotemeta($errorlog));
 		return "$text{'start_eafter'} : <pre>$out</pre>";
 		}
 	}
@@ -2297,4 +2297,3 @@ sub clear_apache_modules_cache
 }
 
 1;
-
