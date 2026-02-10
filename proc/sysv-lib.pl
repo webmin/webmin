@@ -9,7 +9,9 @@ $has_zone = $gconfig{'os_type'} eq 'solaris' && $gconfig{'os_version'} >= 10;
 sub list_processes
 {
 local($line, $dummy, @w, $i, $_, $pcmd, @plist);
-foreach (@_) { $pcmd .= " -p $_"; }
+local @want = grep { /^\d+$/ } @_;
+return ( ) if (@_ && !@want);
+foreach (@want) { $pcmd .= " -p ".quotemeta($_); }
 if (!$pcmd) { $pcmd = " -e"; }
 $ENV{'COLUMNS'} = 10000;	# needed on AIX
 local @cols = ( "user","ruser","group","rgroup","pid","ppid","pgid","pcpu","vsz",
@@ -68,7 +70,7 @@ return @plist;
 sub find_mount_processes
 {
 local($out);
-$out = `fuser -c $_[0] 2>/dev/null`;
+$out = &backquote_command("fuser -c ".quotemeta($_[0])." 2>/dev/null");
 $out =~ s/^\s+//g; $out =~ s/\s+$//g;
 return split(/\s+/, $out);
 }
@@ -88,7 +90,8 @@ return split(/\s+/, $out);
 sub renice_proc
 {
 return undef if (&is_readonly_mode());
-local $out = &backquote_logged("renice $_[1] -p $_[0] 2>&1");
+local $out = &backquote_logged("renice ".quotemeta($_[1])." -p ".
+			       quotemeta($_[0])." 2>&1");
 if ($?) { return $out; }
 return undef;
 }
@@ -129,9 +132,10 @@ sub open_process_trace
 local $fh = time().$$;
 local $sc;
 if (@{$_[1]}) {
-	$sc = "-t ".join(",", @{$_[1]});
+	$sc = "-t ".join(",", map { quotemeta($_) } grep { $_ ne "" }
+			  @{$_[1]});
 	}
-local $tpid = open($fh, "truss $sc -i -p $_[0] 2>&1 |");
+local $tpid = open($fh, "truss $sc -i -p ".quotemeta($_[0])." 2>&1 |");
 $line = <$fh>;
 return { 'pid' => $_[0],
 	 'tpid' => $tpid,

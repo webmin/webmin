@@ -6,7 +6,13 @@ use IO::Handle;
 sub list_processes
 {
 local($pcmd, $line, $i, %pidmap, @plist);
-$pcmd = @_ ? "-p $_[0]" : "";
+if (@_) {
+	$_[0] =~ /^\d+$/ || return ( );
+	$pcmd = "-p ".quotemeta($_[0]);
+	}
+else {
+	$pcmd = "";
+	}
 open(PS, "ps -axwwww -o pid,ppid,user,vsz,%cpu,time,nice,tty,ruser,rgid,pgid,lstart,lim,command $pcmd |");
 for($i=0; $line=<PS>; $i++) {
 	chop($line);
@@ -37,7 +43,8 @@ return @plist;
 sub renice_proc
 {
 return undef if (&is_readonly_mode());
-local $out = &backquote_logged("renice $_[1] -p $_[0] 2>&1");
+local $out = &backquote_logged("renice ".quotemeta($_[1])." -p ".
+			       quotemeta($_[0])." 2>&1");
 if ($?) { return $out; }
 return undef;
 }

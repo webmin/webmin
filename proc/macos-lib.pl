@@ -5,7 +5,9 @@ sub list_processes
 {
 local($pcmd, $line, $i, %pidmap, @plist);
 if (@_) {
-	open(PS, "ps xlwwwwp $_[0] |");
+	$_[0] =~ /^\d+$/ || return ( );
+	my $pid = quotemeta($_[0]);
+	open(PS, "ps xlwwwwp $pid |");
 	}
 else {
 	open(PS, "ps axlwwww |");
@@ -46,7 +48,7 @@ for($i=0; $line=<PS>; $i++) {
 		}
 	}
 close(PS);
-open(PS, "ps auxwwww $_[0] |");
+open(PS, "ps auxwwww ".(@_ ? quotemeta($_[0]) : "")." |");
 while($line = <PS>) {
 	chop($line);
 	$line =~ /^(\S+)\s+(\d+)\s+(\S+)\s+(\S+)/ || next;
@@ -63,7 +65,8 @@ return @plist;
 sub renice_proc
 {
 return undef if (&is_readonly_mode());
-local $out = &backquote_logged("renice $_[1] -p $_[0] 2>&1");
+local $out = &backquote_logged("renice ".quotemeta($_[1])." -p ".
+			       quotemeta($_[0])." 2>&1");
 if ($?) { return $out; }
 return undef;
 }

@@ -4,8 +4,10 @@
 sub list_processes
 {
 local($line, $i, $pcmd, $_, $tty, @plist);
+local @want = grep { /^\d+$/ } @_;
+return ( ) if (@_ && !@want);
 
-foreach (@_) { $pcmd .= "-p $_"; }
+foreach (@want) { $pcmd .= "-p ".quotemeta($_)." "; }
 if (!$pcmd) { $pcmd = "-e"; }
 
 open(PS, "ps -fl $pcmd |");
@@ -45,7 +47,8 @@ sub renice_proc
 return undef if (&is_readonly_mode());
 local($out, $nice);
 $nice = $_[1] - 20;
-local $out = &backquote_logged("renice -n $nice -p $_[0] 2>&1");
+local $out = &backquote_logged("renice -n ".quotemeta($nice)." -p ".
+			       quotemeta($_[0])." 2>&1");
 if ($?) { return $out; }
 return undef;
 }
@@ -55,7 +58,7 @@ return undef;
 sub find_mount_processes
 {
 local($out);
-$out = `fuser -c $_[0]`;
+$out = &backquote_command("fuser -c ".quotemeta($_[0]));
 $out =~ s/[^0-9 ]//g;
 $out =~ s/^\s+//g; $out =~ s/\s+$//g;
 return split(/\s+/, $out);

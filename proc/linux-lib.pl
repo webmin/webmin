@@ -18,10 +18,12 @@ return $get_ps_version_cache;
 sub list_processes
 {
 local($pcmd, $line, $i, %pidmap, @plist, $dummy, @w, $_);
+local @want = grep { /^\d+$/ } @_;
+return ( ) if (@_ && !@want);
 local $ver = &get_ps_version();
 if ($ver && $ver < 2) {
 	# Old version of ps
-	$pcmd = join(' ' , @_);
+	$pcmd = join(' ' , @want);
 	open(PS, "ps aulxhwwww $pcmd 2>/dev/nul |");
 	for($i=0; $line=<PS>; $i++) {
 		chop($line);
@@ -82,7 +84,7 @@ else {
 			# Skip process ID 0 or ps command
 			$i--; next;
 			}
-		if (@_ && &indexof($w[4], @_) < 0) {
+		if (@want && &indexof($w[4], @want) < 0) {
 			# Not interested in this PID
 			$i--; next;
 			}
@@ -128,7 +130,8 @@ return @plist;
 sub renice_proc
 {
 return undef if (&is_readonly_mode());
-local $out = &backquote_logged("renice $_[1] -p $_[0] 2>&1");
+local $out = &backquote_logged("renice ".quotemeta($_[1])." -p ".
+			       quotemeta($_[0])." 2>&1");
 if ($?) { return $out; }
 return undef;
 }
@@ -402,9 +405,10 @@ sub open_process_trace
 local $fh = time().$$;
 local $sc;
 if (@{$_[1]}) {
-	$sc = "-e trace=".join(",", @{$_[1]});
+	$sc = "-e trace=".join(",", map { quotemeta($_) } grep { $_ ne "" }
+				 @{$_[1]});
 	}
-local $tpid = open($fh, "strace -t -p $_[0] $sc 2>&1 |");
+local $tpid = open($fh, "strace -t -p ".quotemeta($_[0])." $sc 2>&1 |");
 $line = <$fh>;
 return { 'pid' => $_[0],
 	 'tpid' => $tpid,

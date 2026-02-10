@@ -5,7 +5,9 @@
 sub list_processes
 {
 local($line, $dummy, @w, $i, $_, $pcmd, @plist);
-foreach (@_) { $pcmd .= " -p $_"; }
+local @want = grep { /^\d+$/ } @_;
+return ( ) if (@_ && !@want);
+foreach (@want) { $pcmd .= " -p ".quotemeta($_); }
 if (!$pcmd) { $pcmd = " -e"; }
 open(PS, "ps -o user,ruser,group,rgroup,pid,ppid,pgid,pcpu,vsz,nice,etime,time,tty,args $pcmd |");
 $dummy = <PS>;
@@ -44,7 +46,7 @@ return @plist;
 sub find_mount_processes
 {
 local($out);
-$out = `fuser -c $_[0] 2>/dev/null`;
+$out = &backquote_command("fuser -c ".quotemeta($_[0])." 2>/dev/null");
 $out =~ s/^\s+//g; $out =~ s/\s+$//g;
 return split(/\s+/, $out);
 }
@@ -64,7 +66,8 @@ return split(/\s+/, $out);
 sub renice_proc
 {
 return undef if (&is_readonly_mode());
-local $out = &backquote_logged("renice $_[1] -p $_[0] 2>&1");
+local $out = &backquote_logged("renice ".quotemeta($_[1])." -p ".
+			       quotemeta($_[0])." 2>&1");
 if ($?) { return $out; }
 return undef;
 }
