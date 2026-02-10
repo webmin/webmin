@@ -159,7 +159,8 @@ sub installed_file
 local (%packages, $file, $i, @pkgin);
 local $n = &list_packages();
 for($i=0; $i<$n; $i++) {
-	&open_execute_command(PKGINFO, "$ipkg files $packages{$i,'name'}", 1,1);
+	local $qm = quotemeta($packages{$i,'name'});
+	&open_execute_command(PKGINFO, "$ipkg files $qm", 1,1);
 	while($file = <PKGINFO>) {
 		next if ($file =~ /^Package /);
 		$file =~ s/\r|\n//g;
@@ -194,7 +195,8 @@ else {
 # Installs the package in the given file, with options from %in
 sub install_package
 {
-local $out = &backquote_logged("$ipkg install $_[1] 2>&1");
+local $qm = quotemeta($_[1]);
+local $out = &backquote_logged("$ipkg install $qm 2>&1");
 if ($?) {
 	return "<pre>$out</pre>";
 	}
@@ -205,7 +207,8 @@ return undef;
 # Totally remove some package
 sub delete_package
 {
-local $out = &backquote_logged("$ipkg remove $_[0] 2>&1");
+local $qm = quotemeta($_[0]);
+local $out = &backquote_logged("$ipkg remove $qm 2>&1");
 if ($?) { return "<pre>$out</pre>"; }
 return undef;
 }

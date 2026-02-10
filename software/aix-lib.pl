@@ -12,7 +12,7 @@ sub list_packages
 {
 	local($_, $list, $i, $file, %fileset);
 	$i = 0;
-	$list = join(' ', @_);
+	$list = join(' ', map { quotemeta($_) } @_);
 	%packages = ( );
 	&open_execute_command(LSLPP, "lslpp -L -c $list 2>&1 | grep -v '#'", 1, 1);
 	while($file = <LSLPP>) {
@@ -314,6 +314,7 @@ sub install_options
 sub install_package
 {
 	local(@token, $command, $directory, $out);
+	local($qdir, $qset, $qargs);
 	@token = split(/\//, $_[0]);
 	$i = @token;
 	for ( $j = 1; $j < $i - 1; $j++) {
@@ -333,7 +334,10 @@ sub install_package
 	              ($in{"accept"}    ? "Y"  : "")   .
 	              ($in{"license"}   ? "E"  : "");
 
-	$command = "geninstall -I \"-a$args\" -d '$directory' '$fileset{fileset_name}' 2>&1";
+	$qargs = quotemeta("-a$args");
+	$qdir = quotemeta($directory);
+	$qset = quotemeta($fileset{fileset_name});
+	$command = "geninstall -I $qargs -d $qdir $qset 2>&1";
 	if ($in{"clean"}) {
 		$args = "-C";
 		$command = "installp $args 2>&1";
@@ -470,8 +474,9 @@ sub delete_package
 	$file = &backquote_command("lslpp -L -c $qm 2>&1 | grep -v '#'", 1);
 	%fileset = &fileset_info($file);
 
-	$rv = &system_logged("geninstall -u $_[0] >$temp 2>&1");
-	local $out = &backquote_command("cat $temp");
+	$rv = &system_logged("geninstall -u ".quotemeta($_[0])." >".
+			     quotemeta($temp)." 2>&1");
+	local $out = &backquote_command("cat ".quotemeta($temp));
 	&unlink_file($temp);
 	
 	if ($rv) { return "<pre>$out</pre>"; }

@@ -80,7 +80,9 @@ if ($two eq "\037\235") {
 		}
 	local $temp = $_[0] =~ /\/([^\/]+)\.Z/i ? &tempname("$1")
 						: &tempname();
-	local $out = `uncompress -c $_[0] 2>&1 >$temp`;
+	local $qfile = quotemeta($_[0]);
+	local $qtemp = quotemeta($temp);
+	local $out = &backquote_command("uncompress -c $qfile >$qtemp 2>&1");
 	unlink($_[0]) if ($_[1]);
 	if ($?) {
 		unlink($temp);
@@ -95,7 +97,9 @@ elsif ($two eq "\037\213") {
 		}
 	local $temp = $_[0] =~ /\/([^\/]+)\.gz/i ? &tempname("$1")
 						 : &tempname();
-	local $out = `gunzip -c $_[0] 2>&1 >$temp`;
+	local $qfile = quotemeta($_[0]);
+	local $qtemp = quotemeta($temp);
+	local $out = &backquote_command("gunzip -c $qfile >$qtemp 2>&1");
 	unlink($_[0]) if ($_[1]);
 	if ($?) {
 		unlink($temp);

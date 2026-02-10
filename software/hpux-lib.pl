@@ -58,12 +58,14 @@ return $i;
 sub package_info
 {
 local(@name, $level, $name, $class, $desc, $arch, $version, $vendor, $date);
+local $qm;
 
 $name = $_[0];
 @name = split(/\./, $name);
 $class = $name[0];
+$qm = quotemeta($name);
 
-open(SW, "swlist -l product -v -a vendor.title -a title -a revision -a architecture -a date $name | ");
+open(SW, "swlist -l product -v -a vendor.title -a title -a revision -a architecture -a date $qm | ");
 while(<SW>) {
 	s/#.*$//g;
 	if (/^date\s+(.*)/ &&
@@ -105,7 +107,7 @@ return ( );
 sub is_package
 {
 local($out);
-$out = `swlist -s $_[0] 2>&1`;
+$out = &backquote_command("swlist -s ".quotemeta($_[0])." 2>&1");
 return $out !~ /ERROR:   /;
 }
 
@@ -115,7 +117,8 @@ return $out !~ /ERROR:   /;
 sub file_packages
 {
 local(@list);
-open(SW, "swlist -s $_[0] |");
+local $qm = quotemeta($_[0]);
+open(SW, "swlist -s $qm |");
 while(<SW>) {
 	s/#.*$//g;
 	if (/^  (\S*)\s+(\S*)/) {
@@ -204,9 +207,11 @@ if ($in->{'root'} =~ /^\/.+/) {
 	if (!(-d $in->{'root'})) {
 		return "Root directory '$in->{'root'}' does not exist";
 		}
-	$opts .= " -r $in->{'root'}";
+	$opts .= " -r ".quotemeta($in->{'root'});
 	}
-$out = &backquote_logged("swinstall -s $_[0] $opts $_[1] 2>&1");
+local $qfile = quotemeta($_[0]);
+local $qpack = quotemeta($_[1]);
+$out = &backquote_logged("swinstall -s $qfile $opts $qpack 2>&1");
 if ($?) { return "<pre>$out</pre>"; }
 return undef;
 }
@@ -217,7 +222,8 @@ return undef;
 sub check_files
 {
 local($i, $path); $i = -1;
-open(SW, "swlist -l file -v -a path -a owner -a group -a type -a link_source -a size $_[0] | ");
+local $qm = quotemeta($_[0]);
+open(SW, "swlist -l file -v -a path -a owner -a group -a type -a link_source -a size $qm | ");
 while(<SW>) {
 	s/#.*$//g;
 	if (/^path\s+(.*)/) {
@@ -324,7 +330,8 @@ else { undef(%file); return 0; }
 # Attempt to remove some package
 sub delete_package
 {
-$out = &backquote_logged("swremove $_[0] 2>&1");
+local $qm = quotemeta($_[0]);
+$out = &backquote_logged("swremove $qm 2>&1");
 if ($out) { return "<pre>$out</pre>"; }
 return undef;
 }

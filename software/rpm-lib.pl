@@ -198,7 +198,7 @@ if ($in->{'root'} =~ /^\/.+/) {
 	if (!(-d $in{'root'})) {
 		return &text('rpm_eroot', $in->{'root'});
 		}
-	$opts .= " --root $in->{'root'}";
+	$opts .= " --root ".quotemeta($in->{'root'});
 	}
 if (-d $real) {
 	# Find the package in the directory
@@ -206,7 +206,8 @@ if (-d $real) {
 	opendir(DIR, $real);
 	while($f = readdir(DIR)) {
 		next if ($f !~ /\.rpm$/);
-		$out = &backquote_command("rpm -q -p $file/$f --queryformat \"%{NAME}\\n\" 2>&1", 1);
+		my $qf = quotemeta("$file/$f");
+		$out = &backquote_command("rpm -q -p $qf --queryformat \"%{NAME}\\n\" 2>&1", 1);
 		$out =~ s/warning:.*\n//;
 		$out =~ s/\n//;
 		if ($out eq $_[1]) {
@@ -222,7 +223,8 @@ elsif ($file =~ /\*|\?/) {
 	# XXX won't work when translation is in effect
 	local ($f, $out);
 	foreach $f (glob($real)) {
-		$out = &backquote_command("rpm -q -p $f --queryformat \"%{NAME}\\n\" 2>&1", 1);
+		my $qf = quotemeta($f);
+		$out = &backquote_command("rpm -q -p $qf --queryformat \"%{NAME}\\n\" 2>&1", 1);
 		$out =~ s/warning:.*\n//;
 		$out =~ s/\n//;
 		if ($out eq $_[1]) {
@@ -258,7 +260,7 @@ if ($in->{'root'} =~ /^\/.+/) {
 	if (!(-d $in{'root'})) {
 		return &text('rpm_eroot', $in->{'root'});
 		}
-	$opts .= " --root $in->{'root'}";
+	$opts .= " --root ".quotemeta($in->{'root'});
 	}
 if (-d &translate_filename($file)) {
 	# Install everything in a directory
@@ -268,8 +270,10 @@ else {
 	# Install packages matching a glob (no need for any special action)
 	}
 local $temp = &transname();
-local $rv = &system_logged("rpm -i $opts $file >$temp 2>&1");
-local $out = &backquote_command("cat $temp");
+local $qm = quotemeta($file);
+$qm =~ s/\\([*?])/$1/g if ($file =~ /[\*\?]/);
+local $rv = &system_logged("rpm -i $opts $qm >".quotemeta($temp)." 2>&1");
+local $out = &backquote_command("cat ".quotemeta($temp));
 $out =~ s/warning:.*\n//;
 unlink($temp);
 if ($rv) {

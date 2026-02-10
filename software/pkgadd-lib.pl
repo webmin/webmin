@@ -225,8 +225,10 @@ elsif ($real =~ /\?|\*/) {
 	}
 else {
 	# Install just one package
+	local $qfile = quotemeta($_[0]);
+	local $qpkg = quotemeta($_[1]);
 	local ($ph, $ppid) = &foreign_call("proc", "pty_process_exec_logged",
-			   "pkgadd -d $_[0] ".join(" ",@opts)." $_[1]");
+			   "pkgadd -d $qfile ".join(" ",@opts)." $qpkg");
 
 	while(1) {
 		$wf = &wait_for($ph, '(.*) \[\S+\]',
@@ -269,9 +271,9 @@ else {
 	if ($has_postinstall) {
 		# Handle case where pkg has scripts that cause pkgadd to open
 		# /dev/tty
-		my $ret = system_logged("pkgadd -n -a pkgadd-no-ask -d $_[0] ".
-					join(" ",@opts).
-					" $_[1] 2>&1 > /dev/null")/256;
+		my $ret = system_logged("pkgadd -n -a pkgadd-no-ask -d $qfile ".
+					join(" ",@opts)." $qpkg ".
+					"2>&1 > /dev/null")/256;
 		#only exit values of 1 & 3 are errors (see pkgadd(1M))
 		$rv = ($ret == 1 || $ret == 3)? "pkgadd returned $ret" : undef;
 		}
@@ -339,8 +341,9 @@ else { return 0; }
 sub delete_package
 {
 local($ph, $pth, $ppid, $wf, %seen, $old_input);
+local $qm = quotemeta($_[0]);
 local ($ph, $ppid) = &foreign_call("proc", "pty_process_exec_logged",
-				   "pkgrm $_[0]");
+				   "pkgrm $qm");
 if (&wait_for($ph, 'remove this package', 'ERROR')) {
 	return "package does not exist";
 	}
