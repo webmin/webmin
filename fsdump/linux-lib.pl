@@ -360,7 +360,7 @@ local @dirs = $_[0]->{'tabs'} ? split(/\t+/, $_[0]->{'dir'})
 if ($_[0]->{'fs'} eq 'tar') {
 	# tar format backup
 	$cmd = "tar ".($_[0]->{'update'} ? "-u" : "-c")." ".$flag;
-	$cmd .= " -V '$_[0]->{'label'}'" if ($_[0]->{'label'});
+	$cmd .= " -V ".quotemeta($_[0]->{'label'}) if ($_[0]->{'label'});
 	$cmd .= " -L $_[0]->{'blocks'}" if ($_[0]->{'blocks'});
 	$cmd .= " -z" if ($_[0]->{'gzip'} == 1);
 	$cmd .= " --bzip" if ($_[0]->{'gzip'} == 2);
@@ -368,7 +368,7 @@ if ($_[0]->{'fs'} eq 'tar') {
 	$cmd .= " -M" if ($_[0]->{'multi'});
 	$cmd .= " -h" if ($_[0]->{'links'});
 	$cmd .= " --one-file-system" if ($_[0]->{'xdev'});
-	$cmd .= " -F \"$tapecmd $_[0]->{'id'}\""
+	$cmd .= " -F ".quotemeta("$tapecmd $_[0]->{'id'}")
 		if (!$_[0]->{'gzip'} && $tapecmd);
 	$cmd .= " --rsh-command=".quotemeta($_[0]->{'rsh'})
 		if ($_[0]->{'rsh'} && $_[0]->{'host'});
@@ -382,15 +382,15 @@ if ($_[0]->{'fs'} eq 'tar') {
 			}
 		}
 	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
-	$cmd .= " ".join(" ", map { "'$_'" } @dirs);
+	$cmd .= " ".join(" ", map { quotemeta($_) } @dirs);
 	}
 elsif ($_[0]->{'fs'} eq 'xfs') {
 	# xfs backup
 	$cmd = "xfsdump -l $_[0]->{'level'}";
 	$cmd .= $flag;
-	$cmd .= " -L '$_[0]->{'label'}'" if ($_[0]->{'label'});
-	$cmd .= " -M '$_[0]->{'label'}'" if ($_[0]->{'label'});
-	$cmd .= " -z '$_[0]->{'max'}'" if ($_[0]->{'max'});
+	$cmd .= " -L ".quotemeta($_[0]->{'label'}) if ($_[0]->{'label'});
+	$cmd .= " -M ".quotemeta($_[0]->{'label'}) if ($_[0]->{'label'});
+	$cmd .= " -z ".quotemeta($_[0]->{'max'}) if ($_[0]->{'max'});
 	$cmd .= " -A" if ($_[0]->{'noattribs'});
 	$cmd .= " -F" if ($_[0]->{'over'});
 	$cmd .= " -J" if ($_[0]->{'noinvent'});
@@ -398,7 +398,7 @@ elsif ($_[0]->{'fs'} eq 'xfs') {
 	$cmd .= " -E -F" if ($_[0]->{'erase'});
 	$cmd .= " -b $_[0]->{'bsize'}" if ($_[0]->{'bsize'});
 	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
-	$cmd .= " ".join(" ", map { "'$_'" } @dirs);
+	$cmd .= " ".join(" ", map { quotemeta($_) } @dirs);
 	}
 else {
 	# ext2/3 backup
@@ -406,19 +406,20 @@ else {
 	$cmd .= $flag;
 	$cmd .= " -u" if ($_[0]->{'update'});
 	$cmd .= " -M" if ($_[0]->{'multi'});
-	$cmd .= " -L '$_[0]->{'label'}'" if ($_[0]->{'label'});
+	$cmd .= " -L ".quotemeta($_[0]->{'label'}) if ($_[0]->{'label'});
 	$cmd .= " -B $_[0]->{'blocks'}" if ($_[0]->{'blocks'});
 	$cmd .= " -b $_[0]->{'bsize'}" if ($_[0]->{'bsize'});
 	$cmd .= " -h0" if ($_[0]->{'honour'});
 	$cmd .= " -j$_[0]->{'comp'}" if ($_[0]->{'comp'});
-	$cmd .= " -F \"$tapecmd $_[0]->{'id'}\"" if ($tapecmd);
+	$cmd .= " -F ".quotemeta("$tapecmd $_[0]->{'id'}") if ($tapecmd);
 	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
-	$cmd .= " '$_[0]->{'dir'}'";
+	$cmd .= " ".quotemeta($_[0]->{'dir'});
 	if ($_[0]->{'rsh'}) {
-		$cmd = "RSH=\"$_[0]->{'rsh'}\" RMT=\"touch '$hfile'; /etc/rmt\" $cmd";
+		$cmd = "RSH=".quotemeta($_[0]->{'rsh'})." ".
+		       "RMT=\"touch ".quotemeta($hfile)."; /etc/rmt\" $cmd";
 		}
 	else {
-		$cmd = "RMT=\"touch '$hfile'; /etc/rmt\" $cmd";
+		$cmd = "RMT=\"touch ".quotemeta($hfile)."; /etc/rmt\" $cmd";
 		}
 	}
 
@@ -444,7 +445,8 @@ $ENV{'DUMP_PASSWORD'} = $_[0]->{'pass'};
 local $got = &run_ssh_command($cmd, $fh, $_[2], $_[0]->{'pass'});
 if ($_[0]->{'multi'} && $_[0]->{'fs'} eq 'tar') {
 	# Run multi-file switch command one last time
-	&execute_command("$multi_cmd $_[0]->{'id'} >/dev/null 2>&1");
+	&execute_command("$multi_cmd ".quotemeta($_[0]->{'id'}).
+			 " >/dev/null 2>&1");
 	}
 
 # Remount with atime option
@@ -467,14 +469,14 @@ sub dump_flag
 local ($flag, $hfile);
 if ($_[0]->{'huser'}) {
 	$hfile = &date_subs($_[0]->{'hfile'}, $_[1]);
-	$flag = " -f '$_[0]->{'huser'}\@$_[0]->{'host'}:$hfile'";
+	$flag = " -f ".quotemeta("$_[0]->{'huser'}\@$_[0]->{'host'}:$hfile");
 	}
 elsif ($_[0]->{'host'}) {
 	$hfile = &date_subs($_[0]->{'hfile'}, $_[1]);
-	$flag = " -f '$_[0]->{'host'}:$hfile'";
+	$flag = " -f ".quotemeta("$_[0]->{'host'}:$hfile");
 	}
 else {
-	$flag = " -f '".&date_subs($_[0]->{'file'}, $_[1])."'";
+	$flag = " -f ".quotemeta(&date_subs($_[0]->{'file'}, $_[1]));
 	}
 return ($flag, $hfile);
 }
@@ -503,15 +505,16 @@ else {
 	}
 $vcmd .= $flag;
 if ($_[0]->{'fs'} eq "tar") {
-	$vcmd .= " --rsh-command=$_[0]->{'rsh'}"
+	$vcmd .= " --rsh-command=".quotemeta($_[0]->{'rsh'})
 		if ($_[0]->{'rsh'} && $_[0]->{'host'});
 	}
 elsif ($_[0]->{'fs'} ne "xfs") {
 	if ($_[0]->{'rsh'}) {
-		$vcmd = "RSH=\"$_[0]->{'rsh'}\" RMT=\"touch '$hfile'; /etc/rmt\" $vcmd";
+		$vcmd = "RSH=".quotemeta($_[0]->{'rsh'})." ".
+			"RMT=\"touch ".quotemeta($hfile)."; /etc/rmt\" $vcmd";
 		}
 	else {
-		$vcmd = "RMT=\"touch '$hfile'; /etc/rmt\" $vcmd";
+		$vcmd = "RMT=\"touch ".quotemeta($hfile)."; /etc/rmt\" $vcmd";
 		}
 	}
 
@@ -680,7 +683,7 @@ else {
 	}
 if ($in{'mode'} == 0) {
 	$in{'file'} || &error($text{'restore_efile'});
-	$cmd .= " -f '$in{'file'}'";
+	$cmd .= " -f ".quotemeta($in{'file'});
 	}
 else {
 	&to_ipaddress($in{'host'}) ||
@@ -689,10 +692,10 @@ else {
 	$in{'huser'} =~ /^\S*$/ || &error($text{'restore_ehuser'});
 	$in{'hfile'} || &error($text{'restore_ehfile'});
 	if ($in{'huser'}) {
-		$cmd .= " -f '$in{'huser'}\@$in{'host'}:$in{'hfile'}'";
+		$cmd .= " -f ".quotemeta("$in{'huser'}\@$in{'host'}:$in{'hfile'}");
 		}
 	else {
-		$cmd .= " -f '$in{'host'}:$in{'hfile'}'";
+		$cmd .= " -f ".quotemeta("$in{'host'}:$in{'hfile'}");
 		}
 	}
 if ($_[0] eq 'tar') {
@@ -706,7 +709,7 @@ if ($_[0] eq 'tar') {
 		!-c $in{'file'} && !-b $in{'file'} ||
 			&error($text{'restore_emulti'});
 		$in{'mode'} == 0 || &error($text{'restore_emulti2'});
-		$cmd .= " -M -F \"$rmulti_cmd $in{'file'}\"";
+		$cmd .= " -M -F ".quotemeta("$rmulti_cmd $in{'file'}");
 		}
 	local $rsh = &rsh_command_parse("rsh_def", "rsh");
 	if ($rsh) {
@@ -722,9 +725,9 @@ if ($_[0] eq 'tar') {
 		$cmd .= " $in{'files'}";
 		}
 	-d $in{'dir'} || &error($text{'restore_edir'});
-	$cmd = "cd '$in{'dir'}' && $cmd";
+	$cmd = "cd ".quotemeta($in{'dir'})." && $cmd";
 	if ($in{'multi'}) {
-		$cmd = "$rmulti_cmd $in{'file'} 1 && $cmd";
+		$cmd = "$rmulti_cmd ".quotemeta($in{'file'})." 1 && $cmd";
 		}
 	}
 elsif ($_[0] eq 'xfs') {
@@ -732,19 +735,19 @@ elsif ($_[0] eq 'xfs') {
 	$cmd .= " -E" if ($in{'over'} == 1);
 	$cmd .= " -e" if ($in{'over'} == 2);
 	$cmd .= " -A" if ($in{'noattribs'});
-	$cmd .= " -L '$in{'label'}'" if ($in{'label'});
+	$cmd .= " -L ".quotemeta($in{'label'}) if ($in{'label'});
 	$cmd .= " -F";
 	$cmd .= " $in{'extra'}" if ($in{'extra'});
 	if (!$in{'test'}) {
 		-d $in{'dir'} || &error($text{'restore_edir'});
-		$cmd .= " '$in{'dir'}'";
+		$cmd .= " ".quotemeta($in{'dir'});
 		}
 	}
 else {
 	# parse ext2/3 options
 	local $rsh = &rsh_command_parse("rsh_def", "rsh");
 	if ($rsh) {
-		$cmd = "RSH=\"$rsh\" $cmd";
+		$cmd = "RSH=".quotemeta($rsh)." $cmd";
 		}
 
 	if ($in{'multi'}) {
@@ -782,7 +785,8 @@ if ($_[0] eq 'xfs') {
 else {
 	# Need to supply prompts
 	&foreign_require("proc", "proc-lib.pl");
-	local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", "cd '$in{'dir'}' ; $_[1]");
+	local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec",
+		"cd ".quotemeta($in{'dir'})." ; $_[1]");
 	local $donevolume;
 	while(1) {
 		local $rv = &wait_for($fh, "(.*next volume #)", "(.*set owner.mode for.*\\[yn\\])", "((.*)\\[yn\\])", "(.*enter volume name)", "password:", "yes\\/no", "(.*\\n)");

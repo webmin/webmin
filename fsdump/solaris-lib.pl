@@ -92,20 +92,21 @@ $cmd .= "u" if ($_[0]->{'update'});
 $cmd .= "v" if ($_[0]->{'verify'});
 $cmd .= "o" if ($_[0]->{'offline'});
 if ($_[0]->{'huser'}) {
-	$cmd .= "f '$_[0]->{'huser'}\@$_[0]->{'host'}:".
-		&date_subs($_[0]->{'hfile'}, $_[4])."'";
+	$cmd .= "f ".quotemeta("$_[0]->{'huser'}\@$_[0]->{'host'}:".
+			       &date_subs($_[0]->{'hfile'}, $_[4]));
 	}
 elsif ($_[0]->{'host'}) {
-	$cmd .= "f '$_[0]->{'host'}:".&date_subs($_[0]->{'hfile'}, $_[4])."'";
+	$cmd .= "f ".quotemeta("$_[0]->{'host'}:".
+			       &date_subs($_[0]->{'hfile'}, $_[4]));
 	}
 else {
-	$cmd .= "f '".&date_subs($_[0]->{'file'}, $_[4])."'";
+	$cmd .= "f ".quotemeta(&date_subs($_[0]->{'file'}, $_[4]));
 	}
 $cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
 local @dirs = $_[0]->{'tabs'} ? split(/\t+/, $_[0]->{'dir'})
 			      : split(/\s+/, $_[0]->{'dir'});
 @dirs = map { &date_subs($_) } @dirs;
-$cmd .= " ".join(" ", map { "'$_'" } @dirs);
+$cmd .= " ".join(" ", map { quotemeta($_) } @dirs);
 
 &system_logged("sync");
 sleep(1);
@@ -182,7 +183,7 @@ $cmd = "ufsrestore";
 $cmd .= ($in{'test'} ? " t" : " x");
 if ($in{'mode'} == 0) {
 	$in{'file'} || &error($text{'restore_efile'});
-	$cmd .= "f '$in{'file'}'";
+	$cmd .= "f ".quotemeta($in{'file'});
 	}
 else {
 	&to_ipaddress($in{'host'}) ||
@@ -191,10 +192,10 @@ else {
 	$in{'huser'} =~ /^\S*$/ || &error($text{'restore_ehuser'});
 	$in{'hfile'} || &error($text{'restore_ehfile'});
 	if ($in{'huser'}) {
-		$cmd .= "f '$in{'huser'}\@$in{'host'}:$in{'hfile'}'";
+		$cmd .= "f ".quotemeta("$in{'huser'}\@$in{'host'}:$in{'hfile'}");
 		}
 	else {
-		$cmd .= "f '$in{'host'}:$in{'hfile'}'";
+		$cmd .= "f ".quotemeta("$in{'host'}:$in{'hfile'}");
 		}
 	}
 
@@ -215,7 +216,8 @@ sub restore_backup
 &additional_log('exec', undef, $_[1]);
 
 &foreign_require("proc", "proc-lib.pl");
-local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", "cd '$in{'dir'}' ; $_[1]");
+local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec",
+	"cd ".quotemeta($in{'dir'})." ; $_[1]");
 local $donevolume;
 while(1) {
 	local $rv = &wait_for($fh, "(next volume #)", "(set owner.mode for.*\\[yn\\])", "(Directories already exist, set modes anyway. \\[yn\\])", "((.*)\\[yn\\])", "(.*\\n)");

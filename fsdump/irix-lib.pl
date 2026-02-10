@@ -121,28 +121,29 @@ sub execute_dump
 local $fh = $_[1];
 local ($cmd, $flag);
 if ($_[0]->{'huser'}) {
-	$flag = " -f '$_[0]->{'huser'}\@$_[0]->{'host'}:".
-		&date_subs($_[0]->{'hfile'}, $_[4])."'";
+	$flag = " -f ".quotemeta("$_[0]->{'huser'}\@$_[0]->{'host'}:".
+				 &date_subs($_[0]->{'hfile'}, $_[4]));
 	}
 elsif ($_[0]->{'host'}) {
-	$flag = " -f '$_[0]->{'host'}:".&date_subs($_[0]->{'hfile'}, $_[4])."'";
+	$flag = " -f ".quotemeta("$_[0]->{'host'}:".
+				 &date_subs($_[0]->{'hfile'}, $_[4]));
 	}
 else {
-	$flag = " -f '".&date_subs($_[0]->{'file'}, $_[4])."'";
+	$flag = " -f ".quotemeta(&date_subs($_[0]->{'file'}, $_[4]));
 	}
 $cmd = "xfsdump -l $_[0]->{'level'}";
 $cmd .= $flag;
-$cmd .= " -L '$_[0]->{'label'}'" if ($_[0]->{'label'});
-$cmd .= " -M '$_[0]->{'label'}'" if ($_[0]->{'label'});
-$cmd .= " -z '$_[0]->{'max'}'" if ($_[0]->{'max'});
+$cmd .= " -L ".quotemeta($_[0]->{'label'}) if ($_[0]->{'label'});
+$cmd .= " -M ".quotemeta($_[0]->{'label'}) if ($_[0]->{'label'});
+$cmd .= " -z ".quotemeta($_[0]->{'max'}) if ($_[0]->{'max'});
 $cmd .= " -A" if ($_[0]->{'noattribs'});
 $cmd .= " -F" if ($_[0]->{'over'});
 $cmd .= " -J" if ($_[0]->{'noinvent'});
 $cmd .= " -o" if ($_[0]->{'overwrite'});
-$cmd .= " -c \"$_[3] $_[0]->{'id'}\"" if ($_[3]);
+$cmd .= " -c ".quotemeta("$_[3] $_[0]->{'id'}") if ($_[3]);
 $cmd .= " -E -F" if ($_[0]->{'erase'});
 $cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
-$cmd .= " '".&date_subs($_[0]->{'dir'})."'";
+$cmd .= " ".quotemeta(&date_subs($_[0]->{'dir'}));
 
 &system_logged("sync");
 sleep(1);
@@ -229,7 +230,7 @@ local $cmd = "xfsrestore";
 $cmd .= " -t" if ($in{'test'});
 if ($in{'mode'} == 0) {
 	$in{'file'} || &error($text{'restore_efile'});
-	$cmd .= " -f '$in{'file'}'";
+	$cmd .= " -f ".quotemeta($in{'file'});
 	}
 else {
 	&to_ipaddress($in{'host'}) ||
@@ -238,21 +239,21 @@ else {
 	$in{'huser'} =~ /^\S*$/ || &error($text{'restore_ehuser'});
 	$in{'hfile'} || &error($text{'restore_ehfile'});
 	if ($in{'huser'}) {
-		$cmd .= " -f '$in{'huser'}\@$in{'host'}:$in{'hfile'}'";
+		$cmd .= " -f ".quotemeta("$in{'huser'}\@$in{'host'}:$in{'hfile'}");
 		}
 	else {
-		$cmd .= " -f '$in{'host'}:$in{'hfile'}'";
+		$cmd .= " -f ".quotemeta("$in{'host'}:$in{'hfile'}");
 		}
 	}
 $cmd .= " -E" if ($in{'over'} == 1);
 $cmd .= " -e" if ($in{'over'} == 2);
 $cmd .= " -A" if ($in{'noattribs'});
-$cmd .= " -L '$in{'label'}'" if ($in{'label'});
+$cmd .= " -L ".quotemeta($in{'label'}) if ($in{'label'});
 $cmd .= " -F";
 $cmd .= " $in{'extra'}" if ($in{'extra'});
 if (!$in{'test'}) {
 	-d $in{'dir'} || &error($text{'restore_edir'});
-	$cmd .= " '$in{'dir'}'";
+	$cmd .= " ".quotemeta($in{'dir'});
 	}
 return $cmd;
 }
@@ -274,7 +275,8 @@ if ($_[0] eq 'xfs') {
 else {
 	# Need to supply prompts
 	&foreign_require("proc", "proc-lib.pl");
-	local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", "cd '$in{'dir'}' ; $_[1]");
+	local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec",
+		"cd ".quotemeta($in{'dir'})." ; $_[1]");
 	local $donevolume;
 	while(1) {
 		local $rv = &wait_for($fh, "(next volume #)", "(set owner.mode for.*\\[yn\\])", "((.*)\\[yn\\])", "(.*\\n)");

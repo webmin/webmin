@@ -177,14 +177,15 @@ local $fh = $_[1];
 local ($cmd, $flags);
 
 if ($_[0]->{'huser'}) {
-	$flags = "-f '$_[0]->{'huser'}\@$_[0]->{'host'}:".
-		&date_subs($_[0]->{'hfile'}, $_[4])."'";
+	$flags = "-f ".quotemeta("$_[0]->{'huser'}\@$_[0]->{'host'}:".
+				 &date_subs($_[0]->{'hfile'}, $_[4]));
 	}
 elsif ($_[0]->{'host'}) {
-	$flags = "-f '$_[0]->{'host'}:".&date_subs($_[0]->{'hfile'}, $_[4])."'";
+	$flags = "-f ".quotemeta("$_[0]->{'host'}:".
+				 &date_subs($_[0]->{'hfile'}, $_[4]));
 	}
 else {
-	$flags = "-f '".&date_subs($_[0]->{'file'}, $_[4])."'";
+	$flags = "-f ".quotemeta(&date_subs($_[0]->{'file'}, $_[4]));
 	}
 local $tapecmd = $_[0]->{'multi'} && $_[0]->{'fs'} eq 'tar' ? $multi_cmd :
 		 $_[0]->{'multi'} ? undef :
@@ -192,16 +193,16 @@ local $tapecmd = $_[0]->{'multi'} && $_[0]->{'fs'} eq 'tar' ? $multi_cmd :
 if ($_[0]->{'fs'} eq 'tar') {
 	# Construct tar command
 	$cmd = "$tar_command -c $flags";
-	$cmd .= " -V '$_[0]->{'label'}'" if ($_[0]->{'label'});
+	$cmd .= " -V ".quotemeta($_[0]->{'label'}) if ($_[0]->{'label'});
 	$cmd .= " -L $_[0]->{'blocks'}" if ($_[0]->{'blocks'});
 	$cmd .= " -z" if ($_[0]->{'gzip'});
 	$cmd .= " -M" if ($_[0]->{'multi'});
 	$cmd .= " -h" if ($_[0]->{'links'});
 	$cmd .= " -l" if ($_[0]->{'xdev'});
-	$cmd .= " -F \"$tapecmd $_[0]->{'id'}\""
+	$cmd .= " -F ".quotemeta("$tapecmd $_[0]->{'id'}")
 		if (!$_[0]->{'gzip'} && ($_[0]->{'file'} =~ /^\/dev/ ||
 					 $_[0]->{'hfile'} =~ /^\/dev/));
-	$cmd .= " --rsh-command=$_[0]->{'rsh'}"
+	$cmd .= " --rsh-command=".quotemeta($_[0]->{'rsh'})
 		if ($_[0]->{'rsh'} && $_[0]->{'host'});
 	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
 	$cmd .= " ".quotemeta(&date_subs($_[0]->{'dir'}));
@@ -227,7 +228,8 @@ $ENV{'DUMP_PASSWORD'} = $_[0]->{'pass'};
 local $got = &run_ssh_command($cmd, $fh, $_[2], $_[0]->{'pass'});
 if ($_[0]->{'multi'} && $_[0]->{'fs'} eq 'tar') {
 	# Run multi-file switch command one last time
-	&execute_command("$multi_cmd $_[0]->{'id'} >/dev/null 2>&1");
+	&execute_command("$multi_cmd ".quotemeta($_[0]->{'id'}).
+			 " >/dev/null 2>&1");
 	}
 return $got ? 0 : 1;
 }
@@ -347,7 +349,7 @@ else {
 	}
 if ($in{'mode'} == 0) {
 	$in{'file'} || &error($text{'restore_efile'});
-	$cmd .= " -f '$in{'file'}'";
+	$cmd .= " -f ".quotemeta($in{'file'});
 	}
 else {
 	&to_ipaddress($in{'host'}) ||
@@ -356,10 +358,10 @@ else {
 	$in{'huser'} =~ /^\S*$/ || &error($text{'restore_ehuser'});
 	$in{'hfile'} || &error($text{'restore_ehfile'});
 	if ($in{'huser'}) {
-		$cmd .= " -f '$in{'huser'}\@$in{'host'}:$in{'hfile'}'";
+		$cmd .= " -f ".quotemeta("$in{'huser'}\@$in{'host'}:$in{'hfile'}");
 		}
 	else {
-		$cmd .= " -f '$in{'host'}:$in{'hfile'}'";
+		$cmd .= " -f ".quotemeta("$in{'host'}:$in{'hfile'}");
 		}
 	}
 
@@ -372,7 +374,7 @@ if ($_[0] eq 'tar') {
 		!-c $in{'file'} && !-b $in{'file'} ||
 			&error($text{'restore_emulti'});
 		$in{'mode'} == 0 || &error($text{'restore_emulti2'});
-		$cmd .= " -M -F \"$rmulti_cmd $in{'file'}\"";
+		$cmd .= " -M -F ".quotemeta("$rmulti_cmd $in{'file'}");
 		}
 	local $rsh = &rsh_command_parse("rsh_def", "rsh");
 	if ($rsh) {
@@ -384,9 +386,9 @@ if ($_[0] eq 'tar') {
 		$cmd .= " $in{'files'}";
 		}
 	-d $in{'dir'} || &error($text{'restore_edir'});
-	$cmd = "cd '$in{'dir'}' && $cmd";
+	$cmd = "cd ".quotemeta($in{'dir'})." && $cmd";
 	if ($in{'multi'}) {
-		$cmd = "$rmulti_cmd $in{'file'} 1 && $cmd";
+		$cmd = "$rmulti_cmd ".quotemeta($in{'file'})." 1 && $cmd";
 		}
 	}
 else {
@@ -412,7 +414,8 @@ $ENV{'DUMP_PASSWORD'} = $in{'pass'};
 
 # Need to supply prompts
 &foreign_require("proc", "proc-lib.pl");
-local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", "cd '$in{'dir'}' ; $_[1]");
+local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec",
+	"cd ".quotemeta($in{'dir'})." ; $_[1]");
 local $donevolume;
 while(1) {
 	local $rv = &wait_for($fh, "(next volume #)", "(set owner.mode for.*\\[yn\\])", "((.*)\\[yn\\])", "password:", "yes\\/no", "(.*\\n)");
