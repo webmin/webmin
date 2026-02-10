@@ -420,6 +420,7 @@ if (&is_readonly_mode()) {
 open(MFILE, "<".$file);
 read(MFILE, $two, 2);
 close(MFILE);
+local $qfile = quotemeta($file);
 if ($two eq "\037\235") {
 	if (!&has_command("uncompress")) {
 		unlink($file) if ($need_unlink);
@@ -427,13 +428,15 @@ if ($two eq "\037\235") {
 		}
 	local $temp = $file =~ /\/([^\/]+)\.Z/i ? &transname("$1")
 						: &transname();
-	local $out = `uncompress -c "$file" 2>&1 >$temp`;
+	local $qtemp = quotemeta($temp);
+	local $out = `uncompress -c $qfile 2>&1 >$qtemp`;
 	unlink($file) if ($need_unlink);
 	if ($?) {
 		unlink($temp);
 		return &text('install_ecomp2', $out);
 		}
 	$file = $temp;
+	$qfile = quotemeta($file);
 	$need_unlink = 1;
 	}
 elsif ($two eq "\037\213") {
@@ -443,13 +446,15 @@ elsif ($two eq "\037\213") {
 		}
 	local $temp = $file =~ /\/([^\/]+)\.gz/i ? &transname("$1")
 						 : &transname();
-	local $out = `gunzip -c "$file" 2>&1 >$temp`;
+	local $qtemp = quotemeta($temp);
+	local $out = `gunzip -c $qfile 2>&1 >$qtemp`;
 	unlink($file) if ($need_unlink);
 	if ($?) {
 		unlink($temp);
 		return &text('install_egzip2', $out);
 		}
 	$file = $temp;
+	$qfile = quotemeta($file);
 	$need_unlink = 1;
 	}
 
@@ -462,7 +467,7 @@ open(TYPE, "<../install-type");
 chop($type = <TYPE>);
 close(TYPE);
 if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
-    ($out = `rpm -qp $file 2>/dev/null`)) {
+    ($out = `rpm -qp $qfile 2>/dev/null`)) {
 	# Looks like an RPM of some kind, hopefully an RPM usermin module
 	# or theme
 	local ($out, %minfo, %tinfo);
@@ -471,7 +476,7 @@ if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
 		return $text{'install_erpm'};
 		}
 	$redirect_to = $name = $2;
-	$out = &backquote_logged("rpm -Uv \"$file\" 2>&1");
+	$out = &backquote_logged("rpm -Uv $qfile 2>&1");
 	if ($?) {
 		unlink($file) if ($need_unlink);
 		return &text('install_eirpm', "<tt>$out</tt>");
@@ -515,7 +520,7 @@ else {
 	# Check if this is a valid module (a tar file of multiple module or
 	# theme directories)
 	local (%mods, %hasfile);
-	local $tar = `tar tf "$file" 2>&1`;
+	local $tar = `tar tf $qfile 2>&1`;
 	if ($?) {
 		unlink($file) if ($need_unlink);
 		return &text('install_etar', $tar);
@@ -548,7 +553,7 @@ else {
 		next if (!$hasfile{$m,"module.info"});
 		push(@realmods, $m);
 		local %minfo;
-		system("cd $tmpdir ; tar xf \"$file\" $m/module.info ./$m/module.info >/dev/null 2>&1");
+		system("cd $tmpdir ; tar xf $qfile $m/module.info ./$m/module.info >/dev/null 2>&1");
 		if (!&read_file("$tmpdir/$m/module.info", \%minfo)) {
 			$err = &text('install_einfo', "<tt>$m</tt>");
 			}
@@ -600,7 +605,7 @@ else {
 		}
 
 	# Extract all the modules and update perl path and ownership
-	local $out = `cd $miniserv{'root'} ; tar xf "$file" 2>&1 >/dev/null`;
+	local $out = `cd $miniserv{'root'} ; tar xf $qfile 2>&1 >/dev/null`;
 	if ($?) {
 		unlink($file) if ($need_unlink);
 		return &text('install_eextract', $out);
@@ -800,6 +805,7 @@ sub delete_usermin_module
 {
 local $m = $_[0];
 return undef if (!$m);
+local $qm = quotemeta($m);
 local %minfo = &get_usermin_module_info($m);
 %minfo = &get_usermin_theme_info($m) if (!%minfo);
 return undef if (!%minfo);
@@ -832,7 +838,7 @@ else {
 		@lst = stat("$miniserv{'root'}/$l");
 		if (-l "$miniserv{'root'}/$l" && $lst[1] == $mst[1]) {
 			&unlink_logged("$miniserv{'root'}/$l");
-			&system_logged("rm -rf $config{'usermin_dir'}/$l");
+			&system_logged("rm -rf ".quotemeta("$config{'usermin_dir'}/$l"));
 			push(@clones, $l);
 			}
 		}
@@ -848,7 +854,7 @@ else {
 			   "<tt>$mdir</tt>", $size);
 	if ($type eq 'rpm') {
 		# This module was installed from an RPM .. rpm -e it
-		&system_logged("rpm -e ubm-$m");
+		&system_logged("rpm -e ubm-$qm");
 		}
 	else {
 		# Module was installed from a .wbm file .. just rm it
@@ -1071,4 +1077,3 @@ chmod(0755, $wrapper);
 }
 
 1;
-

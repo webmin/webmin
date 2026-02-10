@@ -46,7 +46,8 @@ if ($in{'ipv6'}) {
 @newports = &unique(grep { &indexof($_, @oldports) < 0 } @ports);
 if (&has_command("lsof")) {
         foreach my $p (@newports) {
-                $out = &backquote_command("lsof -t -i tcp:$p 2>/dev/null");
+                my $qp = quotemeta($p);
+                $out = &backquote_command("lsof -t -i tcp:$qp 2>/dev/null");
                 if ($out =~ /\d+/) {
                         &error(&text('bind_elsof', $p));
                         }
@@ -111,7 +112,7 @@ foreach my $mod ("firewall", "firewalld") {
 			$ENV{'WEBMIN_CONFIG'} = $config_directory;
 			&system_logged(
 				&module_root_directory($mod)."/open-ports.pl ".
-			        join(" ", map { $_.":".($_+10) } @newports).
+			        join(" ", map { quotemeta($_).":".quotemeta($_+10) } @newports).
 			        " >/dev/null 2>&1");
 			&reset_environment();
 			}
@@ -121,4 +122,3 @@ foreach my $mod ("firewall", "firewalld") {
 &webmin_log("bind", undef, undef, \%in);
 
 &redirect("");
-

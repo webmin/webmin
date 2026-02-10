@@ -124,6 +124,7 @@ elsif ($in{'source'} == 5) {
 	$error && &inst_error($error);
 	}
 $qfile = quotemeta($file);
+$qindir = quotemeta($indir) if (defined($indir));
 
 # gunzip the file if needed
 open(FILE, "<$file");
@@ -134,7 +135,8 @@ if ($two eq "\037\213") {
 		&inst_error($text{'upgrade_egunzip'});
 		}
 	$newfile = &transname();
-	$out = `gunzip -c $file 2>&1 >$newfile`;
+	$qnewfile = quotemeta($newfile);
+	$out = `gunzip -c $qfile 2>&1 >$qnewfile`;
 	if ($?) {
 		unlink($newfile);
 		&inst_error(&text('upgrade_egzip', "<tt>$out</tt>"));
@@ -199,7 +201,7 @@ elsif ($in{'mode'} eq 'deb') {
 	}
 else {
 	# Check if it is a usermin tarfile
-	open(TAR, "tar tf $file 2>&1 |");
+	open(TAR, "tar tf $qfile 2>&1 |");
 	while(<TAR>) {
 		if (/^usermin-([0-9\.]+)\//) {
 			$version = $1;
@@ -235,7 +237,8 @@ else {
 		# Installing .. extract it in /usr/local and run setup.sh
 		local $root = "/usr/local";
 		mkdir($root, 0755);
-		$out = `cd $root ; tar xf $file 2>&1 >/dev/null`;
+		$qroot = quotemeta($root);
+		$out = `cd $qroot ; tar xf $qfile 2>&1 >/dev/null`;
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
 			}
@@ -268,7 +271,8 @@ else {
 			}
 
 		# Extract it next to the current directory and run setup.sh
-		$out = `cd $extract ; tar xf $file 2>&1 >/dev/null`;
+		$qextract = quotemeta($extract);
+		$out = `cd $qextract ; tar xf $qfile 2>&1 >/dev/null`;
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
 			}
@@ -276,7 +280,7 @@ else {
 		$ENV{'config_dir'} = $config{'usermin_dir'};
 		$ENV{'webmin_upgrade'} = 1;
 		$ENV{'autothird'} = 1;
-		$setup = $indir ? "./setup.sh '$indir'" : "./setup.sh";
+		$setup = $indir ? "./setup.sh $qindir" : "./setup.sh";
 		if ($in{'delete'}) {
 			$ENV{'deletedold'} = 1;
 			$cmd = "(cd $extract/usermin-$version && $setup && rm -rf \"$miniserv{'root'}\")";
@@ -340,4 +344,3 @@ unlink($file) if ($need_unlink);
 &error($_[0]);
 exit;
 }
-

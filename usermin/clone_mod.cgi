@@ -24,7 +24,9 @@ do {
 
 # Copy the config directory
 mkdir("$config{'usermin_dir'}/$dst", 0755);
-$out = &backquote_logged("( (cd $config{'usermin_dir'}/$src ; tar cf - .) | (cd $config{'usermin_dir'}/$dst ; tar xpf -) ) 2>&1");
+$qsrc = quotemeta($src);
+$qdst = quotemeta($dst);
+$out = &backquote_logged("( (cd $config{'usermin_dir'}/$qsrc ; tar cf - .) | (cd $config{'usermin_dir'}/$qdst ; tar xpf -) ) 2>&1");
 if ($?) {
 	&error(&text('clone_ecopy', $out));
 	}
@@ -51,4 +53,3 @@ if ($in{'cat'} ne '*') {
 					  'dst' => $dst,
 					  'dstdesc' => $in{'desc'} });
 &redirect("");
-

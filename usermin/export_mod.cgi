@@ -19,7 +19,7 @@ local %miniserv;
 chdir($miniserv{'root'});
 $cmd = "tar chf -";
 foreach $m (@mods) {
-	$cmd .= " $m";
+	$cmd .= " ".quotemeta($m);
 	}
 $cmd .= " | gzip -c >".quotemeta($temp);
 $out = &backquote_logged("($cmd) 2>&1 </dev/null");
@@ -46,5 +46,4 @@ else {
 	&ui_print_footer("/$module_name/edit_mods.cgi", $text{'mods_return'},
 			 "", $text{'index_return'});
 	}
-
 

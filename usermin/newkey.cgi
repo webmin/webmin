@@ -32,7 +32,8 @@ $ctemp = &transname();
 $ktemp = &transname();
 $outtemp = &transname();
 $size = $in{'size_def'} ? $default_key_size : $in{'size'};
-&open_execute_command(CA, "$cmd req -newkey rsa:$size -x509 -nodes -out ".quotemeta($ctemp)." -keyout ".quotemeta($ktemp)." -days $in{'days'} >".quotemeta($outtemp)." 2>&1", 0);
+$qdays = quotemeta($in{'days'});
+&open_execute_command(CA, "$cmd req -newkey rsa:$size -x509 -nodes -out ".quotemeta($ctemp)." -keyout ".quotemeta($ktemp)." -days $qdays >".quotemeta($outtemp)." 2>&1", 0);
 print CA ($in{'countryName'} || "."),"\n";
 print CA ($in{'stateOrProvinceName'} || "."),"\n";
 print CA ($in{'cityName'} || "."),"\n";
@@ -51,8 +52,9 @@ if (!-r $ctemp || !-r $ktemp || $?) {
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}
+$qnewfile = quotemeta($in{'newfile'});
 &lock_file($in{'newfile'});
-&execute_command("cat ".quotemeta($ctemp)." ".quotemeta($ktemp)." 2>&1 >'$in{'newfile'}'", undef, \$catout);
+&execute_command("cat ".quotemeta($ctemp)." ".quotemeta($ktemp)." 2>&1 >$qnewfile", undef, \$catout);
 &unlink_file($ctemp);
 &unlink_file($ktemp);
 if ($catout || $?) {
@@ -65,7 +67,7 @@ if ($catout || $?) {
 &unlock_file($in{'newfile'});
 
 print "<p>$text{'newkey_ok'}<br>\n";
-$key = `cat '$in{'newfile'}'`;
+$key = `cat $qnewfile`;
 print "<pre>$key</pre>";
 &ui_print_footer("", $text{'index_return'});
 
@@ -80,4 +82,3 @@ if ($in{'usenew'}) {
 	&restart_usermin_miniserv();
 	&webmin_log("newkey", undef, undef, \%in);
 	}
-
