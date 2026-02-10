@@ -6,13 +6,22 @@ require './apache-lib.pl';
 &ReadParse();
 $access{'global'}==1 || &error($text{'mime_ecannot'});
 
+# Validate that the file parameter matches the actual MIME types file
+$conf = &get_config();
+$mfile = &find_directive("TypesConfig", $conf);
+if (!$mfile) { $mfile = $config{'mime_types'}; }
+if (!$mfile) { $mfile = &server_root("etc/mime.types", $conf); }
+if (!-r $mfile) { $mfile = &server_root("conf/mime.types", $conf); }
+$mfile = &server_root($mfile);
+$in{'file'} eq $mfile || &error($text{'mime_ecannot'});
+
 &error_setup($text{'mime_err'});
 if ($in{'type'} !~ /^(\S+)\/(\S+)$/) {
 	&error(&text('mime_etype', $in{'type'}));
 	}
 
 &lock_file($in{'file'});
-open(MIME, "<$in{'file'}");
+open(MIME, "<", $in{'file'});
 @mime = <MIME>;
 close(MIME);
 $line = "$in{'type'} ".join(" ", split(/\s+/, $in{'exts'}))."\n";

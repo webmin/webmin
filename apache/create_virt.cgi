@@ -119,8 +119,10 @@ elsif ($in{'fmode'} == 1) {
 else {
 	# Use a user-specified file
 	$f = $in{'file'};
+	&allowed_auth_file($f) ||
+		&error(&text('cvirt_efile', &html_escape($f), $!));
 	}
--r $f || open(FILE, ">>$f") || &error(&text('cvirt_efile', &html_escape($f), $!));
+-r $f || open(FILE, ">>", $f) || &error(&text('cvirt_efile', &html_escape($f), $!));
 close(FILE);
 
 &lock_apache_files();
