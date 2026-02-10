@@ -22,7 +22,7 @@ sub list_mailcap
 {
 if (!scalar(@list_mailcap_cache)) {
   @list_mailcap_cache = ( );
-  open(CAP, "<".$mailcap_file);
+  open(CAP, "<", $mailcap_file);
   local $lnum = 0;
   while(<CAP>) {
 	  local ($slnum, $elnum) = ($lnum, $lnum);
