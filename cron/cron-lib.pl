@@ -309,7 +309,8 @@ elsif ($fcron) {
 			 undef, $cron_temp_file, undef);
 	}
 else {
-	system("cp ".&translate_filename("$config{'cron_dir'}/$_[0]->{'user'}").
+	system("cp ".quotemeta(
+			&translate_filename("$config{'cron_dir'}/$_[0]->{'user'}")).
 	       " ".quotemeta($cron_temp_file)." 2>/dev/null");
 	}
 }
@@ -513,7 +514,7 @@ if (&read_file_contents($cron_temp_file) =~ /\S/) {
 		$ENV{"VISUAL"} = $ENV{"EDITOR"} =
 			"$module_root_directory/cron_editor.pl";
 		$ENV{"CRON_EDITOR_COPY"} = $cron_temp_file;
-		system("chown $_[0] $cron_temp_file");
+		system("chown ".quotemeta($_[0])." ".quotemeta($cron_temp_file));
 		local $oldpwd = &get_current_dir();
 		chdir("/");
 		if ($single_user) {
@@ -600,7 +601,7 @@ sub user_sub
 {
 local($tmp);
 $tmp = $_[0];
-$tmp =~ s/USER/$_[1]/g;
+$tmp =~ s/USER/quotemeta($_[1])/ge;
 return $tmp;
 }
 

@@ -57,7 +57,7 @@ if ($in{'bg'}) {
 		&open_tempfile(TEMP, ">$temp");
 		&print_tempfile(TEMP, $input);
 		&close_tempfile(TEMP);
-		&execute_command("(($lines[0]) ; rm -f $temp) &", $temp,
+		&execute_command("(($lines[0]) ; rm -f ".quotemeta($temp).") &", $temp,
 				 undef, undef);
 		}
 	else {

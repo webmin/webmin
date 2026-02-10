@@ -43,7 +43,9 @@ if (!$fcron) {
 	local $user;
 	opendir(DIR, $config{'cron_dir'});
 	while($user = readdir(DIR)) {
-		system("cp $config{'cron_dir'}/$user $cron_temp_file");
+		next if ($user =~ /^\./);
+		system("cp ".quotemeta("$config{'cron_dir'}/$user").
+		       " ".quotemeta($cron_temp_file));
 		&copy_crontab($user);
 		}
 	closedir(DIR);
