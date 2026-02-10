@@ -634,7 +634,8 @@ return $uuid;
 # or an error string if failed
 sub mount_dir
 {
-local($out, $opts, $shar, %options, %smbopts);
+local($out, $opts, $shar, %options, %smbopts, $qdir);
+$qdir = quotemeta($_[0]);
 local @opts = $_[3] eq "-" || $_[3] eq "" ? ( ) :
 		grep { $_ ne "noauto" } split(/,/, $_[3]);
 if ($_[2] eq "bind") {
@@ -669,7 +670,8 @@ if ($_[2] eq "swap") {
 	}
 elsif ($_[2] eq "auto") {
 	# Old automounter filesystem
-	$out = &backquote_logged("amd $_[0] $_[1] >/dev/null 2>/dev/null");
+	$out = &backquote_logged(
+		"amd $qdir ".quotemeta($_[1])." >/dev/null 2>/dev/null");
 	if ($?) { return $text{'linux_eamd'}; }
 	}
 elsif ($_[2] eq "autofs") {
@@ -677,7 +679,8 @@ elsif ($_[2] eq "autofs") {
 	$opts = &autofs_args($_[3]);
 	$type = $_[1] !~ /^\// ? "yp" :
 		(-x $_[1]) ? "program" : "file";
-	$out = &backquote_logged("automount $opts $_[0] $type $_[1] 2>&1");
+	local $qmap = quotemeta($_[1]);
+	$out = &backquote_logged("automount $opts $qdir $type $qmap 2>&1");
 	if ($?) { return &text('linux_eauto', "<pre>$out</pre>"); }
 	}
 elsif ($_[2] eq $smbfs_fs || $_[2] eq "cifs") {
@@ -689,29 +692,30 @@ elsif ($_[2] eq $smbfs_fs || $_[2] eq "cifs") {
 	if ($support >= 3) {
 		# SMB filesystem mounted with mount command
 		local $temp = &transname();
-		local $ex = &system_logged("mount -t $_[2] $opts $qshar $_[0] >$temp 2>&1 </dev/null");
+		local $qtype = quotemeta($_[2]);
+		local $ex = &system_logged("mount -t $qtype $opts $qshar $qdir >$temp 2>&1 </dev/null");
 		local $out = &read_file_contents($temp);
 		unlink($temp);
 		if ($ex || $out =~ /failed|error/i) {
-			&system_logged("umount $_[0] >/dev/null 2>&1");
+			&system_logged("umount $qdir >/dev/null 2>&1");
 			return "<pre>$out</pre>";
 			}
 		}
 	elsif ($support == 2) {
 		# SMB filesystem mounted with version 2.x smbmount
 		$opts =
-		    ($options{'user'} ? "-U $options{'user'} " : "").
+		    ($options{'user'} ? "-U ".quotemeta($options{'user'})." " : "").
 		    ($options{'passwd'} ? "" : "-N ").
-		    ($options{'workgroup'} ? "-W $options{'workgroup'} " : "").
-		    ($options{'clientname'} ? "-n $options{'clientname'} " : "").
-		    ($options{'machinename'} ? "-I $options{'machinename'} " : "");
+		    ($options{'workgroup'} ? "-W ".quotemeta($options{'workgroup'})." " : "").
+		    ($options{'clientname'} ? "-n ".quotemeta($options{'clientname'})." " : "").
+		    ($options{'machinename'} ? "-I ".quotemeta($options{'machinename'})." " : "");
 		&foreign_require("proc");
 		local ($fh, $fpid) = &proc::pty_process_exec_logged(
-			"sh -c 'smbmount $shar $_[0] -d 0 $opts'");
+			"sh -c 'smbmount $qshar $qdir -d 0 $opts'");
 		if ($options{'passwd'}) {
 			local $w = &wait_for($fh, "word:");
 			if ($w < 0) {
-				&system_logged("umount $_[0] >/dev/null 2>&1");
+				&system_logged("umount $qdir >/dev/null 2>&1");
 				return $text{'linux_esmbconn'};
 				}
 			local $p = "$options{'passwd'}\n";
@@ -722,7 +726,7 @@ elsif ($_[2] eq $smbfs_fs || $_[2] eq "cifs") {
 			$got .= $_;
 			}
 		if ($got =~ /failed/) {
-			&system_logged("umount $_[0] >/dev/null 2>&1");
+			&system_logged("umount $qdir >/dev/null 2>&1");
 			return "<pre>$got</pre>\n";
 			}
 		close($fh);
@@ -732,19 +736,28 @@ elsif ($_[2] eq $smbfs_fs || $_[2] eq "cifs") {
 		$shortname = &get_system_hostname();
 		if ($shortname =~ /^([^\.]+)\.(.+)$/) { $shortname = $1; }
 		$opts =
-		   ($options{servername} ? "-s $options{servername} " : "").
-		   ($options{clientname} ? "-c $options{clientname} "
-					 : "-c $shortname ").
-		   ($options{machinename} ? "-I $options{machinename} " : "").
-		   ($options{user} ? "-U $options{user} " : "").
-		   ($options{passwd} ? "-P $options{passwd} " : "-n ").
-		   ($options{uid} ? "-u $options{uid} " : "").
-		   ($options{gid} ? "-g $options{gid} " : "").
-		   ($options{fmode} ? "-f $options{fmode} " : "").
-		   ($options{dmode} ? "-d $options{dmode} " : "");
-		$out = &backquote_logged("smbmount $shar $_[0] $opts 2>&1 </dev/null");
+		   ($options{servername}
+		   	? "-s ".quotemeta($options{servername})." " : "").
+		   ($options{clientname}
+		   	? "-c ".quotemeta($options{clientname})." "
+			: "-c ".quotemeta($shortname)." ").
+		   ($options{machinename}
+		   	? "-I ".quotemeta($options{machinename})." " : "").
+		   ($options{user}
+		   	? "-U ".quotemeta($options{user})." " : "").
+		   ($options{passwd}
+		   	? "-P ".quotemeta($options{passwd})." " : "-n ").
+		   ($options{uid}
+		   	? "-u ".quotemeta($options{uid})." " : "").
+		   ($options{gid}
+		   	? "-g ".quotemeta($options{gid})." " : "").
+		   ($options{fmode}
+		   	? "-f ".quotemeta($options{fmode})." " : "").
+		   ($options{dmode}
+		   	? "-d ".quotemeta($options{dmode})." " : "");
+		$out = &backquote_logged("smbmount $qshar $qdir $opts 2>&1 </dev/null");
 		if ($out) {
-			&system_logged("umount $_[0] >/dev/null 2>&1");
+			&system_logged("umount $qdir >/dev/null 2>&1");
 			return "<pre>$out</pre>";
 			}
 		}
@@ -755,7 +768,8 @@ elsif ($_[2] eq $smbfs_fs || $_[2] eq "cifs") {
 else {
 	# some filesystem supported by mount
 	local $fs = $_[2] eq "*" ? "auto" : $_[2];
-	$cmd = "mount -t $fs $opts $devargs ".quotemeta($_[0]);
+	local $qfs = quotemeta($fs);
+	$cmd = "mount -t $qfs $opts $devargs $qdir";
 	$out = &backquote_logged("$cmd 2>&1 </dev/null");
 	if ($?) { return "<pre>$out</pre>"; }
 	}
@@ -781,14 +795,19 @@ else {
 	push(@opts, "remount");
 	local $opts = @opts ? "-o ".quotemeta(join(",", @opts)) : "";
 	local $fs = $_[2] eq "*" ? "auto" : $_[2];
+	local $qfs = quotemeta($fs);
+	local $qdir = quotemeta($_[0]);
+	local $qdev = quotemeta($_[1]);
 	if ($_[1] =~ /LABEL=(.*)/) {
-		$cmd = "mount -t $fs -L $1 $opts $_[0]";
+		local $qlabel = quotemeta($1);
+		$cmd = "mount -t $qfs -L $qlabel $opts $qdir";
 		}
 	elsif ($_[1] =~ /UUID=(\S+)/) {
-		$cmd = "mount -t $fs -U $1 $opts $_[0]";
+		local $quuid = quotemeta($1);
+		$cmd = "mount -t $qfs -U $quuid $opts $qdir";
 		}
 	else {
-		$cmd = "mount -t $fs $opts $_[1] $_[0]";
+		$cmd = "mount -t $qfs $opts $qdev $qdir";
 		}
 	$out = &backquote_logged("$cmd 2>&1 </dev/null");
 	if ($?) { return "<pre>$out</pre>"; }
@@ -802,10 +821,12 @@ else {
 # or an error string if failed
 sub unmount_dir
 {
-local($out, %smbopts, $dir);
+local($out, %smbopts, $dir, $qdir, $qdev);
+$qdir = quotemeta($_[0]);
+$qdev = quotemeta($_[1]);
 if ($_[2] eq "swap") {
 	# Use swapoff to remove the swap space..
-	$out = &backquote_logged("swapoff $_[1]");
+	$out = &backquote_logged("swapoff $qdev");
 	if ($?) { return "<pre>$out</pre>"; }
 	}
 elsif ($_[2] eq "auto") {
@@ -825,7 +846,7 @@ elsif ($_[2] eq "autofs") {
 	}
 else {
 	local $fflag = $_[4] ? "-l" : "";
-	$out = &backquote_logged("umount $fflag $_[0] 2>&1");
+	$out = &backquote_logged("umount $fflag $qdir 2>&1");
 	if ($?) { return "<pre>$out</pre>"; }
 	if ($_[2] eq $smbfs_fs || $_[2] eq "cifs") {
 		# remove options from list
@@ -2046,7 +2067,9 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 			# No hostname found for the server.. try to guess
 			local($out, $sname);
 			$sname = $in{'smbfs_server'};
-			$out = &backquote_command("$config{'nmblookup_path'} -d 0 $sname 2>&1");
+			local $qsname = quotemeta($sname);
+			$out = &backquote_command(
+				"$config{'nmblookup_path'} -d 0 $qsname 2>&1");
 			if (!$? && $out =~ /^([0-9\.]+)\s+$sname\n/) {
 				$options{machinename} = $1;
 				}
@@ -2273,13 +2296,14 @@ foreach (keys %smbopts) {
 # Calls dd and mkswap to setup a swap file
 sub create_swap
 {
-local($out, $bl);
+local($out, $bl, $qfile);
+$qfile = quotemeta($_[0]);
 $bl = $_[1] * ($_[2] eq "t" ? 1024*1024*1024 :
 	       $_[2] eq "g" ? 1024*1024 :
 	       $_[2] eq "m" ? 1024 : 1);
-$out = &backquote_logged("dd if=/dev/zero of=$_[0] bs=1024 count=$bl 2>&1");
+$out = &backquote_logged("dd if=/dev/zero of=$qfile bs=1024 count=$bl 2>&1");
 if ($?) { return "dd failed : $out"; }
-$out = &backquote_logged("mkswap $_[0] $bl 2>&1");
+$out = &backquote_logged("mkswap $qfile $bl 2>&1");
 if ($?) { return "mkswap failed : $out"; }
 &system_logged("sync >/dev/null 2>&1");
 return 0;

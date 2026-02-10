@@ -1098,7 +1098,8 @@ if ($_[0] eq "xmemfs") {
 sub check_location
 {
 if ($_[0] eq "nfs") {
-	local($out, $temp, $mout, $dirlist);
+	local($out, $temp, $mout, $dirlist, $qnfs_host, $qnfs_dir, $qtemp);
+	$qnfs_host = quotemeta($in{nfs_host});
 
 	if ($in{'nfs_serv'} == 1) {
 		# multiple servers listed.. assume the user has a brain
@@ -1116,7 +1117,7 @@ if ($_[0] eq "nfs") {
 	if ($in{nfs_host} !~ /^\S+$/) {
 		&error(&text('solaris_ehost', $in{'nfs_host'}));
 		}
-	$out = &backquote_command("dfshares '$in{nfs_host}' 2>&1");
+	$out = &backquote_command("dfshares $qnfs_host 2>&1");
 	if ($out =~ /Unknown host/) {
 		&error(&text('solaris_ehost2', $in{'nfs_host'}));
 		}
@@ -1137,7 +1138,9 @@ if ($_[0] eq "nfs") {
 		}
 	$temp = &transname();
 	&make_dir($temp, 0755);
-	$mout = &backquote_command("mount $in{nfs_host}:$in{nfs_dir} $temp 2>&1");
+	$qnfs_dir = quotemeta($in{nfs_dir});
+	$qtemp = quotemeta($temp);
+	$mout = &backquote_command("mount $qnfs_host:$qnfs_dir $qtemp 2>&1");
 	if ($mout =~ /No such file or directory/) {
 		rmdir($temp);
 		&error(&text('solaris_enfsdir', $in{'nfs_dir'},
@@ -1645,8 +1648,10 @@ return @rv ? join(',' , @rv) : "-";
 # Attempt to create a swap file 
 sub create_swap
 {
-local($out);
-$out = &backquote_logged("mkfile $_[1]$_[2] $_[0] 2>&1");
+local($out, $qsize, $qfile);
+$qsize = quotemeta($_[1].$_[2]);
+$qfile = quotemeta($_[0]);
+$out = &backquote_logged("mkfile $qsize $qfile 2>&1");
 if ($?) {
 	&unlink_file($_[0]);
 	return "mkfile failed : $out";

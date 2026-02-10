@@ -381,8 +381,10 @@ else {
 # Attempt to create a swap file 
 sub create_swap
 {
-local($out);
-$out = &backquote_logged("mkfile $_[1]$_[2] $_[0] 2>&1");
+local($out, $qsize, $qfile);
+$qsize = quotemeta($_[1].$_[2]);
+$qfile = quotemeta($_[0]);
+$out = &backquote_logged("mkfile $qsize $qfile 2>&1");
 if ($?) {
 	&unlink_file($_[0]);
 	return "mkfile failed : $out";

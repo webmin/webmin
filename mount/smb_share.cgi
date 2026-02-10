@@ -15,7 +15,8 @@ window.close();
 </script>
 EOF
 
-&execute_command("$config{'smbclient_path'} -d 0 -L $in{'server'} -N",
+my $qserver = quotemeta($in{'server'});
+&execute_command("$config{'smbclient_path'} -d 0 -L $qserver -N",
 		 undef, \$out, \$out);
 if ($?) {
 	print "<b>",&text('smb_elist2', $in{'server'}),"</b>\n";

@@ -674,21 +674,22 @@ if ($_[0] eq "autofs") {
 sub check_location
 {
 if ($_[0] eq "nfs") {
-	local($out, $temp, $mout, $dirlist);
+	local($out, $temp, $mout, $dirlist, $qnfs_host, $qnfs_dir, $qtemp);
+	$qnfs_host = quotemeta($in{nfs_host});
 
 	if ($config{'nfs_check'}) {
 		# Use ping and showmount to see if the host exists and is up
 		if ($in{nfs_host} !~ /^\S+$/) {
 			&error("'$in{nfs_host}' is not a valid hostname");
 			}
-		&execute_command("ping -c 1 '$in{nfs_host}'", undef, \$out, \$out);
+		&execute_command("ping -c 1 $qnfs_host", undef, \$out, \$out);
 		if ($out =~ /unknown host/i) {
 			&error("The host '$in{nfs_host}' does not exist");
 			}
 		elsif ($out =~ /100\% packet loss/) {
 			&error("The host '$in{nfs_host}' is down");
 			}
-		&execute_command("showmount -e '$in{nfs_host}'", undef, \$out, \$out);
+		&execute_command("showmount -e $qnfs_host", undef, \$out, \$out);
 		if ($out =~ /Unable to receive/) {
 			&error("The host '$in{nfs_host}' does not support NFS");
 			}
@@ -710,7 +711,9 @@ if ($_[0] eq "nfs") {
 	# Try a test mount to see if filesystem is available
 	$temp = &transname();
 	&make_dir($temp, 0755);
-	&execute_command("mount $in{nfs_host}:$in{nfs_dir} $temp",
+	$qnfs_dir = quotemeta($in{nfs_dir});
+	$qtemp = quotemeta($temp);
+	&execute_command("mount $qnfs_host:$qnfs_dir $qtemp",
 			 undef, \$mout, \$mout);
 	if ($mout =~ /No such file or directory/) {
 		&error("The directory '$in{nfs_dir}' does not exist on the ".
@@ -1141,8 +1144,10 @@ return @rv ? join(',' , @rv) : "-";
 # Attempt to create a swap file 
 sub create_swap
 {
-local($out);
-$out = &backquote_logged("mkfile $_[1]$_[2] $_[0] 2>&1");
+local($out, $qsize, $qfile);
+$qsize = quotemeta($_[1].$_[2]);
+$qfile = quotemeta($_[0]);
+$out = &backquote_logged("mkfile $qsize $qfile 2>&1");
 if ($?) {
 	&unlink_file($_[0]);
 	return "mkfile failed : $out";

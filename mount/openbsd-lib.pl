@@ -522,21 +522,22 @@ elsif ($_[0] eq "swap") {
 sub check_location
 {
 if ($_[0] eq "nfs") {
-	local($out, $temp, $mout, $dirlist);
+	local($out, $temp, $mout, $dirlist, $qnfs_host, $qnfs_dir, $qtemp);
+	$qnfs_host = quotemeta($in{nfs_host});
 
 	if ($config{'nfs_check'}) {
 		# Use ping and showmount to see if the host exists and is up
 		if ($in{nfs_host} !~ /^\S+$/) {
 			&error("'$in{nfs_host}' is not a valid hostname");
 			}
-		$out = &backquote_command("ping -c 1 '$in{nfs_host}' 2>&1");
+		$out = &backquote_command("ping -c 1 $qnfs_host 2>&1");
 		if ($out =~ /unknown host/i) {
 			&error("The host '$in{nfs_host}' does not exist");
 			}
 		elsif ($out =~ /100\% packet loss/) {
 			&error("The host '$in{nfs_host}' is down");
 			}
-		$out = &backquote_command("showmount -e '$in{nfs_host}' 2>&1");
+		$out = &backquote_command("showmount -e $qnfs_host 2>&1");
 		if ($out =~ /Unable to receive/) {
 			&error("The host '$in{nfs_host}' does not support NFS");
 			}
@@ -558,7 +559,9 @@ if ($_[0] eq "nfs") {
 	# Try a test mount to see if filesystem is available
 	$temp = &transname();
 	&make_dir($temp, 0755);
-	$mout = &backquote_command("mount $in{nfs_host}:$in{nfs_dir} $temp 2>&1");
+	$qnfs_dir = quotemeta($in{nfs_dir});
+	$qtemp = quotemeta($temp);
+	$mout = &backquote_command("mount $qnfs_host:$qnfs_dir $qtemp 2>&1");
 	if ($mout =~ /No such file or directory/) {
 		&error("The directory '$in{nfs_dir}' does not exist on the ".
 		       "host $in{nfs_host}. The available directories are:".
@@ -726,13 +729,14 @@ return @rv ? join(',' , @rv) : "-";
 # Calls dd and mkswap to setup a swap file
 sub create_swap
 {
-local($out, $bl);
+local($out, $bl, $qfile);
+$qfile = quotemeta($_[0]);
 $bl = $_[1] * ($_[2] eq "t" ? 1024*1024*1024 :
 	       $_[2] eq "g" ? 1024*1024 :
 	       $_[2] eq "m" ? 1024 : 1);
-$out = &backquote_logged("dd if=/dev/zero of=$_[0] bs=1024 count=$bl 2>&1");
+$out = &backquote_logged("dd if=/dev/zero of=$qfile bs=1024 count=$bl 2>&1");
 if ($?) { return "dd failed : $out"; }
-$out = &backquote_logged("mkswap $_[0] $bl 2>&1");
+$out = &backquote_logged("mkswap $qfile $bl 2>&1");
 if ($?) { return "mkswap failed : $out"; }
 &system_logged("sync >/dev/null 2>&1");
 return 0;
