@@ -410,6 +410,12 @@ SCO OpenServer			5	openserver	5	$uname =~ /SCO_SV.*\s5\./i
 SCO OpenServer			6	openserver	6	$uname =~ /SCO_SV.*\s6\./i
 
 # Apple's OS X versions
+macOS Tahoe				26		macos		25.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+26/i
+macOS Sequoia			15		macos		24.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+15/i
+macOS Sonoma			14		macos		23.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+14/i
+macOS Ventura			13		macos		22.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+13/i
+macOS Monterey			12		macos		21.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+12/i
+macOS BigSur			11		macos		20.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+11/i
 macOS Catalina			10.15	macos		19.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.15/i
 macOS Mojave			10.14	macos		18.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.14/i
 macOS High Sierra		10.13	macos		17.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.13/i
