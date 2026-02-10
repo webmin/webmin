@@ -34,13 +34,8 @@ if (!$running) {
 		&error($text{'restart_eunknown'});
 		}
 	else {
-<<<<<<< HEAD
-		$errorlog = &server_root($errorlog, $conf);
-		$out = &backquote_command("tail -5 ".quotemeta($errorlog));
-=======
 		$errorlog = &server_root($errorlog);
-		$out = `tail -5 $errorlog`;
->>>>>>> The server_root function doesn't need the global config as a parameter
+		$out = &backquote_command("tail -5 ".quotemeta($errorlog));
 		&error("<pre>$out</pre>");
 		}
 	}
