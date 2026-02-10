@@ -812,9 +812,16 @@ foreach my $d (@$conf) {
 # Convert a relative path to being under the server root
 sub server_root
 {
-if (!$_[0]) { return undef; }
-elsif ($_[0] =~ /^\//) { return $_[0]; }
-else { return "$config{'httpd_dir'}/$_[0]"; }
+my ($path) = @_;
+if (!$path) {
+	return undef;
+	}
+elsif ($path =~ /^\//) {
+	return $path;
+	}
+else {
+	return "$config{'httpd_dir'}/$path";
+	}
 }
 
 sub dump_config
@@ -1432,7 +1439,7 @@ sub allowed_auth_file
 local $_;
 return 1 if ($access{'dir'} eq '/');
 return 0 if ($_[0] =~ /\.\./);
-local $f = &server_root($_[0], &get_config());
+local $f = &server_root($_[0]);
 return 0 if (-l $f && !&allowed_auth_file(readlink($f)));
 local $l = length($access{'dir'});
 return length($f) >= $l && substr($f, 0, $l) eq $access{'dir'};
@@ -1442,7 +1449,7 @@ return length($f) >= $l && substr($f, 0, $l) eq $access{'dir'};
 # Returns 1 if the directory in some path exists
 sub directory_exists
 {
-local $path = &server_root($_[0], &get_config());
+local $path = &server_root($_[0]);
 if ($path =~ /^(\S*\/)([^\/]+)$/) {
 	return -d $1;
 	}
@@ -1618,7 +1625,7 @@ local $conf = &get_config();
 local $pidfilestr = &find_directive_struct("PidFile", $conf);
 local $pidfile = $pidfilestr ? $pidfilestr->{'words'}->[0]
 		       	     : "logs/httpd.pid";
-return &server_root($pidfile, $conf);
+return &server_root($pidfile);
 }
 
 # restart_apache()
@@ -1803,7 +1810,7 @@ if (!&is_apache_running()) {
 		return $text{'start_eunknown'};
 		}
 	else {
-		$errorlog = &server_root($errorlog, $conf);
+		$errorlog = &server_root($errorlog);
 		$out = &backquote_command("tail -5 ".quotemeta($errorlog));
 		return "$text{'start_eafter'} : <pre>$out</pre>";
 		}
@@ -1820,7 +1827,7 @@ local $conf = &get_config();
 local $errorlogstr = &find_directive_struct("ErrorLog", $conf);
 local $errorlog = $errorlogstr ? $errorlogstr->{'words'}->[0]
 			       : "logs/error_log";
-$errorlog = &server_root($errorlog, $conf);
+$errorlog = &server_root($errorlog);
 return $errorlog;
 }
 

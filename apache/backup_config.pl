@@ -14,23 +14,23 @@ push(@rv, map { $_->{'file'} } @$conf);
 # Add mime types file
 local $mfile = &find_directive("TypesConfig", $conf);
 if (!$mfile) { $mfile = $config{'mime_types'}; }
-if (!$mfile) { $mfile = &server_root("etc/mime.types", $conf); }
-if (!-r $mfile) { $mfile = &server_root("conf/mime.types", $conf); }
+if (!$mfile) { $mfile = &server_root("etc/mime.types"); }
+if (!-r $mfile) { $mfile = &server_root("conf/mime.types"); }
 if ($mfile) {
-	push(@rv, &server_root($mfile, $conf));
+	push(@rv, &server_root($mfile));
 	}
 
 # Add mime magic file
 local $magic = &find_directive("MimeMagicFile", $conf);
 if ($magic) {
-	push(@rv, &server_root($magic, $conf));
+	push(@rv, &server_root($magic));
 	}
 
 # Add all auth files
 local $auth;
 foreach $auth (&find_all_directives($conf, "AuthUserFile"),
 	       &find_all_directives($conf, "AuthGroupFile")) {
-	push(@rv, &server_root($auth, $conf));
+	push(@rv, &server_root($auth));
 	}
 
 return &unique(@rv);

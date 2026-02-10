@@ -22,9 +22,9 @@ print &ui_form_end([ [ "", $text{'save'} ] ]);
 if ($in{'type'} == 6) {
 	$mfile = &find_directive("TypesConfig", $conf);
 	if (!$mfile) { $mfile = $config{'mime_types'}; }
-	if (!$mfile) { $mfile = &server_root("etc/mime.types", $conf); }
-	if (!-r $mfile) { $mfile = &server_root("conf/mime.types", $conf); }
-	$mfile = &server_root($mfile, $conf);
+	if (!$mfile) { $mfile = &server_root("etc/mime.types"); }
+	if (!-r $mfile) { $mfile = &server_root("conf/mime.types"); }
+	$mfile = &server_root($mfile);
 	print &ui_hr();
 	print &ui_subheading($text{'global_mime'});
 	print "$text{'global_mimedesc'}<p>\n";

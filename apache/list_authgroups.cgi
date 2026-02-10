@@ -11,7 +11,7 @@ $conf = &get_config();
 	&error(&text('authg_ecannot', $in{'file'}));
 $desc = &text('authg_header', "<tt>$in{'file'}</tt>");
 &ui_print_header($desc, $text{'authg_title'}, "");
-$f = &server_root($in{'file'}, $conf);
+$f = &server_root($in{'file'});
 
 @groups = sort { $a->{'name'} cmp $b->{'name'} } &list_authgroups($in{'file'});
 if (@groups) {

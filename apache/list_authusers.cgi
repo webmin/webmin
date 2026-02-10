@@ -11,7 +11,7 @@ $conf = &get_config();
 	&error(&text('authu_ecannot', $in{'file'}));
 $desc = &text('authu_header', "<tt>$in{'file'}</tt>");
 &ui_print_header($desc, $text{'authu_title'}, "");
-$f = &server_root($in{'file'}, $conf);
+$f = &server_root($in{'file'});
 
 @users = sort { $a cmp $b } &list_authusers($f);
 if (@users) {
