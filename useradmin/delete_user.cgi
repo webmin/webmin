@@ -145,7 +145,7 @@ else {
 
 		# check for files owned by other users
 		@others = &backquote_command("find ".quotemeta($user->{'home'}).
-			" ! -user $user->{'uid'} 2>/dev/null", 1);
+			" ! -user ".quotemeta($user->{'uid'})." 2>/dev/null", 1);
 		}
 	else {
 		# No home directory

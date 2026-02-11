@@ -252,7 +252,8 @@ else {
 				$size += &disk_usage_kb($user->{'home'});
 				@uothers = &backquote_command(
 				    "find ".quotemeta($user->{'home'}).
-				    " ! -user $user->{'uid'} 2>/dev/null", 1);
+				    " ! -user ".quotemeta($user->{'uid'}).
+				    " 2>/dev/null", 1);
 				push(@others, @uothers);
 				}
 			}

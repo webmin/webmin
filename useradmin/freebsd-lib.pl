@@ -22,7 +22,7 @@ sub open_last_command
 {
 my ($fh, $user, $max) = @_;
 my $quser = quotemeta($user);
-$max = " -n $max" if ($max);
+$max = " -n ".quotemeta($max) if ($max);
 open($fh, "(last -w$max $quser || last$max $quser) |");
 }
 

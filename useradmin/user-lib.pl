@@ -133,7 +133,8 @@ if ($pft == 1) {
 	}
 elsif ($pft == 6) {
 	# Read netinfo dump
-	&open_execute_command(PASSWD, "nidump passwd '$netinfo_domain'", 1);
+	&open_execute_command(PASSWD,
+		"nidump passwd ".quotemeta($netinfo_domain), 1);
 	while(<PASSWD>) {
 		s/\r|\n//g;
 		if (/\S/ && !/^[#\+\-]/) {
@@ -151,7 +152,7 @@ elsif ($pft == 6) {
 elsif ($pft == 7) {
 	# Read directory services dump of users
 	&open_execute_command(PASSWD,
-		"dscl '$netinfo_domain' readall /Users", 1);
+		"dscl ".quotemeta($netinfo_domain)." readall /Users", 1);
 	local $user;
 	local $ls = $config{'lock_string'};
 	while(<PASSWD>) {
@@ -323,15 +324,22 @@ if ($pft == 1) {
 	}
 elsif ($pft == 3) {
 	# Just invoke the useradd command
-	&system_logged("useradd -u $_[0]->{'uid'} -g $_[0]->{'gid'} -c \"$_[0]->{'real'}\" -d $_[0]->{'home'} -s $_[0]->{'shell'} $_[0]->{'user'}");
+	&system_logged("useradd -u ".quotemeta($_[0]->{'uid'}).
+		" -g ".quotemeta($_[0]->{'gid'}).
+		" -c ".quotemeta($_[0]->{'real'}).
+		" -d ".quotemeta($_[0]->{'home'}).
+		" -s ".quotemeta($_[0]->{'shell'}).
+		" ".quotemeta($_[0]->{'user'}));
 	# And set the password
 	&system_logged("echo ".quotemeta($_[0]->{'pass'}).
 		       " | /usr/lib/scoadmin/account/password.tcl ".
-		       "$_[0]->{'user'} >/dev/null 2>&1");
+		       quotemeta($_[0]->{'user'})." >/dev/null 2>&1");
 	}
 elsif ($pft == 6) {
 	# Use the niutil command
-	&system_logged("niutil -create '$netinfo_domain' '/users/$_[0]->{'user'}'");
+	&system_logged("niutil -create ".
+		quotemeta($netinfo_domain)." ".
+		quotemeta("/users/$_[0]->{'user'}"));
 	&set_netinfo($_[0]);
 	}
 elsif ($pft == 7) {
@@ -438,15 +446,26 @@ if ($pft == 1) {
 	}
 elsif ($pft == 3) {
 	# Just use the usermod command
-	&system_logged("usermod -u $_[1]->{'uid'} -g $_[1]->{'gid'} -c \"$_[1]->{'real'}\" -d $_[1]->{'home'} -s $_[1]->{'shell'} $_[1]->{'user'}");
-	&system_logged("echo ".quotemeta($_[1]->{'pass'})." | /usr/lib/scoadmin/account/password.tcl $_[1]->{'user'}");
+	&system_logged("usermod -u ".quotemeta($_[1]->{'uid'}).
+		" -g ".quotemeta($_[1]->{'gid'}).
+		" -c ".quotemeta($_[1]->{'real'}).
+		" -d ".quotemeta($_[1]->{'home'}).
+		" -s ".quotemeta($_[1]->{'shell'}).
+		" ".quotemeta($_[1]->{'user'}));
+	&system_logged("echo ".quotemeta($_[1]->{'pass'}).
+		" | /usr/lib/scoadmin/account/password.tcl ".
+		quotemeta($_[1]->{'user'}));
 	}
 elsif ($pft == 6) {
 	# Just use the niutil command to update
 	if ($_[0]->{'user'} && $_[0]->{'user'} ne $_[1]->{'user'}) {
 		# Need to delete and re-create!
-		&system_logged("niutil -destroy '$netinfo_domain' '/users/$_[0]->{'user'}'");
-		&system_logged("niutil -create '$netinfo_domain' '/users/$_[1]->{'user'}'");
+		&system_logged("niutil -destroy ".
+			quotemeta($netinfo_domain)." ".
+			quotemeta("/users/$_[0]->{'user'}"));
+		&system_logged("niutil -create ".
+			quotemeta($netinfo_domain)." ".
+			quotemeta("/users/$_[1]->{'user'}"));
 		}
 	&set_netinfo($_[1]);
 	}
@@ -508,7 +527,12 @@ else {
 		# update AIX security user file as well..
 		# use chuser command because it's easier than working
 		# with the complexity issues of the file.
-		&system_logged("chuser expires=$_[1]->{'expire'} minage=$_[1]->{'min'} maxage=$_[1]->{'max'} pwdwarntime=$_[1]->{'warn'} $_[1]->{'user'}");
+		&system_logged("chuser expires=".
+			quotemeta($_[1]->{'expire'}).
+			" minage=".quotemeta($_[1]->{'min'}).
+			" maxage=".quotemeta($_[1]->{'max'}).
+			" pwdwarntime=".quotemeta($_[1]->{'warn'}).
+			" ".quotemeta($_[1]->{'user'}));
 		}
 	}
 if ($_[0] ne $_[1] && &indexof($_[0], @list_users_cache) != -1) {
@@ -546,15 +570,17 @@ if ($pft == 1) {
 	}
 elsif ($pft == 3) {
 	# Just invoke the userdel command
-	&system_logged("userdel -n0 $_[0]->{'user'}");
+	&system_logged("userdel -n0 ".quotemeta($_[0]->{'user'}));
 	}
 elsif ($pft == 4) {
 	# Just invoke the rmuser command
-	&system_logged("rmuser -p $_[0]->{'user'}");
+	&system_logged("rmuser -p ".quotemeta($_[0]->{'user'}));
 	}
 elsif ($pft == 6) {
 	# Just delete with the niutil command
-	&system_logged("niutil -destroy '$netinfo_domain' '/users/$_[0]->{'user'}'");
+	&system_logged("niutil -destroy ".
+		quotemeta($netinfo_domain)." ".
+		quotemeta("/users/$_[0]->{'user'}"));
 	}
 elsif ($pft == 7) {
 	# Delete from directory services
@@ -608,7 +634,8 @@ $lnum = 0;
 local $gft = &groupfiles_type();
 if ($gft == 5) {
 	# Get groups from netinfo
-	&open_execute_command(GROUP, "nidump group '$netinfo_domain'", 1);
+	&open_execute_command(GROUP,
+		"nidump group ".quotemeta($netinfo_domain), 1);
 	while(<GROUP>) {
 		s/\r|\n//g;
 		if (/\S/ && !/^[#\+\-]/) {
@@ -624,7 +651,7 @@ if ($gft == 5) {
 elsif ($gft == 7) {
 	# Read directory services dump of groups
 	&open_execute_command(PASSWD,
-		"dscl '$netinfo_domain' readall /Groups", 1);
+		"dscl ".quotemeta($netinfo_domain)." readall /Groups", 1);
 	local $group;
 	while(<PASSWD>) {
 		s/\r|\n//g;
@@ -737,7 +764,9 @@ sub create_group
 local $gft = &groupfiles_type();
 if ($gft == 5) {
 	# Use niutil command
-	&system_logged("niutil -create '$netinfo_domain' '/groups/$_[0]->{'group'}'");
+	&system_logged("niutil -create ".
+		quotemeta($netinfo_domain)." ".
+		quotemeta("/groups/$_[0]->{'group'}"));
 	&set_group_netinfo($_[0]);
 	}
 elsif ($gft == 7) {
@@ -795,8 +824,12 @@ if ($gft == 5) {
 	# Call niutil to update the group
 	if ($_[0]->{'group'} && $_[0]->{'group'} ne $_[1]->{'group'}) {
 		# Need to delete and re-create!
-		&system_logged("niutil -destroy '$netinfo_domain' '/groups/$_[0]->{'group'}'");
-		&system_logged("niutil -create '$netinfo_domain' '/groups/$_[1]->{'group'}'");
+		&system_logged("niutil -destroy ".
+			quotemeta($netinfo_domain)." ".
+			quotemeta("/groups/$_[0]->{'group'}"));
+		&system_logged("niutil -create ".
+			quotemeta($netinfo_domain)." ".
+			quotemeta("/groups/$_[1]->{'group'}"));
 		}
 	&set_group_netinfo($_[1]);
 	}
@@ -846,7 +879,9 @@ $_[0] || &error("Missing parameter to delete_group");
 local $gft = &groupfiles_type();
 if ($gft == 5) {
 	# Call niutil to delete
-	&system_logged("niutil -destroy '$netinfo_domain' '/groups/$_[0]->{'group'}'");
+	&system_logged("niutil -destroy ".
+		quotemeta($netinfo_domain)." ".
+		quotemeta("/groups/$_[0]->{'group'}"));
 	}
 elsif ($gft == 7) {
 	# Delete from directory services
@@ -1134,7 +1169,8 @@ else {
 	&set_ownership_permissions($_[2], $_[3], $st[2], "$_[1]/$base");
 	$nochown++;
 	}
-&system_logged("chown $opts -R $_[2]:$_[3] ".quotemeta("$_[1]/$base").
+&system_logged("chown $opts -R ".quotemeta($_[2]).":".
+	       quotemeta($_[3])." ".quotemeta("$_[1]/$base").
 	       " >/dev/null 2>/dev/null") if (!$nochown);
 return @rv;
 }
@@ -1446,15 +1482,26 @@ Update a NetInfo user based on a Webmin user hash. Mainly for internal use.
 sub set_netinfo
 {
 local %u = %{$_[0]};
-&system_logged("niutil -createprop '$netinfo_domain' '/users/$u{'user'}' passwd '$u{'pass'}'");
-&system_logged("niutil -createprop '$netinfo_domain' '/users/$u{'user'}' uid '$u{'uid'}'");
-&system_logged("niutil -createprop '$netinfo_domain' '/users/$u{'user'}' gid '$u{'gid'}'");
-&system_logged("niutil -createprop '$netinfo_domain' '/users/$u{'user'}' class '$u{'class'}'");
-&system_logged("niutil -createprop '$netinfo_domain' '/users/$u{'user'}' change '$u{'change'}'");
-&system_logged("niutil -createprop '$netinfo_domain' '/users/$u{'user'}' expire '$u{'expire'}'");
-&system_logged("niutil -createprop '$netinfo_domain' '/users/$u{'user'}' realname '$u{'real'}'");
-&system_logged("niutil -createprop '$netinfo_domain' '/users/$u{'user'}' home '$u{'home'}'");
-&system_logged("niutil -createprop '$netinfo_domain' '/users/$u{'user'}' shell '$u{'shell'}'");
+local $domain = quotemeta($netinfo_domain);
+local $upath = quotemeta("/users/$u{'user'}");
+&system_logged("niutil -createprop $domain $upath passwd ".
+	quotemeta($u{'pass'}));
+&system_logged("niutil -createprop $domain $upath uid ".
+	quotemeta($u{'uid'}));
+&system_logged("niutil -createprop $domain $upath gid ".
+	quotemeta($u{'gid'}));
+&system_logged("niutil -createprop $domain $upath class ".
+	quotemeta($u{'class'}));
+&system_logged("niutil -createprop $domain $upath change ".
+	quotemeta($u{'change'}));
+&system_logged("niutil -createprop $domain $upath expire ".
+	quotemeta($u{'expire'}));
+&system_logged("niutil -createprop $domain $upath realname ".
+	quotemeta($u{'real'}));
+&system_logged("niutil -createprop $domain $upath home ".
+	quotemeta($u{'home'}));
+&system_logged("niutil -createprop $domain $upath shell ".
+	quotemeta($u{'shell'}));
 }
 
 =head2 set_group_netinfo(&group)
@@ -1465,10 +1512,14 @@ Update a NetInfo group based on a Webmin group hash. Mainly for internal use.
 sub set_group_netinfo
 {
 local %g = %{$_[0]};
-local $mems = join(" ", map { "'$_'" } split(/,/, $g{'members'}));
-&system_logged("niutil -createprop '$netinfo_domain' '/groups/$g{'group'}' gid '$g{'gid'}'");
-&system_logged("niutil -createprop '$netinfo_domain' '/groups/$g{'group'}' passwd '$g{'pass'}'");
-&system_logged("niutil -createprop '$netinfo_domain' '/groups/$g{'group'}' users $mems");
+local $domain = quotemeta($netinfo_domain);
+local $gpath = quotemeta("/groups/$g{'group'}");
+local $mems = join(" ", map { quotemeta($_) } split(/,/, $g{'members'}));
+&system_logged("niutil -createprop $domain $gpath gid ".
+	quotemeta($g{'gid'}));
+&system_logged("niutil -createprop $domain $gpath passwd ".
+	quotemeta($g{'pass'}));
+&system_logged("niutil -createprop $domain $gpath users $mems");
 }
 
 =head2 set_user_dirinfo(&user)
@@ -1567,7 +1618,9 @@ if ($config{'passwd_prog'}) {
 		&print_tempfile(TEMP, $username,"\n");
 		&print_tempfile(TEMP, $pass,"\n");
 		&close_tempfile(TEMP);
-		$out = &backquote_command("$config{'passwd_prog'} <$temp 2>&1");
+		$out = &backquote_command(
+			"$config{'passwd_prog'} <".quotemeta($temp).
+			" 2>&1");
 		}
 	if ($?) {
 		return $out || $text{'usave_epasswd_cmd'};
@@ -1798,7 +1851,8 @@ if (!$nosha1 && $gconfig{'os_type'} eq 'macos' && &passfiles_type() == 7) {
 	elsif (&has_command("openssl")) {
 		# Use openssl command
 		local $temp = &transname();
-		&open_execute_command(OPENSSL, "openssl dgst -sha1 >$temp", 0);
+		&open_execute_command(OPENSSL,
+			"openssl dgst -sha1 >".quotemeta($temp), 0);
 		print OPENSSL $salt,$pass;
 		close(OPENSSL);
 		local $rv = &read_file_contents($temp);
@@ -2725,8 +2779,12 @@ if ($user->{'home'} && -d $user->{'home'}) {
 	local $realhome = &resolve_links($user->{'home'});
 	local $qhome = quotemeta($realhome);
 	if ($config{'delete_only'}) {
-		&system_logged("find $qhome ! -type d -user $user->{'uid'} | xargs rm -f >/dev/null 2>&1");
-		&system_logged("find $qhome -type d -user $user->{'uid'} | xargs rmdir >/dev/null 2>&1");
+		&system_logged("find $qhome ! -type d -user ".
+			quotemeta($user->{'uid'}).
+			" | xargs rm -f >/dev/null 2>&1");
+		&system_logged("find $qhome -type d -user ".
+			quotemeta($user->{'uid'}).
+			" | xargs rmdir >/dev/null 2>&1");
 		&unlink_file($realhome);
 		}
 	else {

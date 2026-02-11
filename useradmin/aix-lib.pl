@@ -24,7 +24,8 @@ return 4;
 sub open_last_command
 {
 local ($fh, $user) = @_;
-open($fh, "last $user |");
+local $quser = defined($user) && length($user) ? " ".quotemeta($user) : "";
+open($fh, "last$quser |");
 }
 
 # read_last_line(handle)
