@@ -1,6 +1,6 @@
 # Pardus Linux
 Pardus Linux			1.0			pardus-linux	1.0	`cat /etc/pardus-release 2>/dev/null` =~ /Pardus\s+1.0\s+/i
-Pardus Linux			2007                   	pardus-linux	2007	`cat /etc/pardus-release 2>/dev/null` =~ /Pardus\s+2007\s+/i
+Pardus Linux			2007			pardus-linux	2007	`cat /etc/pardus-release 2>/dev/null` =~ /Pardus\s+2007\s+/i
 Pardus Linux			2007.1 Felis chaus	pardus-linux	2007.1	`cat /etc/pardus-release 2>/dev/null` =~ /Pardus\s+2007.1\s+/i
 Pardus Linux			2007.2 Caracac caracal	pardus-linux	2007.2	`cat /etc/pardus-release 2>/dev/null` =~ /Pardus\s+2007.2\s+/i
 Pardus Linux			2007.3 Lynx lynx	pardus-linux	2007.3	`cat /etc/pardus-release 2>/dev/null` =~ /Pardus\s+2007.3\s+/i
@@ -52,7 +52,7 @@ Oracle Enterprise Linux		$1	redhat-linux	$1+8.0	`cat /etc/enterprise-release 2>/
 Oracle Linux			$1	redhat-linux	$1+8.0	`cat /etc/oracle-release 2>/dev/null` =~ /Oracle\s+Linux\s+Server\s+.*?([0-9\.]+)/i
 Oracle VM			$1	redhat-linux	$1+8.0	`cat /etc/ovs-release 2>/dev/null` =~ /Oracle.*VM\s+server\s+release\s+(\d+)/i
 XenServer Linux			$1	redhat-linux	13.0	`cat /etc/redhat-release 2>/dev/null` =~ /XenServer\s+release\s+5\./
-XCP-ng Linux				$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /XCP-ng\s+release\s+([\d\.]+)/
+XCP-ng Linux			$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /XCP-ng\s+release\s+([\d\.]+)/
 MostlyLinux			$1	redhat-linux	$2+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /MostlyLinux\s+Linux\s+release\s+(\d+)/
 Cloudrouter Linux		$1	redhat-linux	15	`cat /etc/cloudrouter-release 2>/dev/null` =~ /CloudRouter\s+release\s+(\d+)\s+/
 Sangoma Linux			$1	redhat-linux	$2+8.0	`cat /etc/sangoma-release 2>/dev/null` =~ /Sangoma\s+Linux\s+(\S+)/
@@ -60,26 +60,26 @@ Virtuozzo Linux			$1	redhat-linux	$2+8.0	`cat /etc/vzlinux-release 2>/dev/null` 
 Citrix Hypervisor		$1	redhat-linux	$2+8.0	`cat /etc/os-release 2>/dev/null` =~ /Citrix\s+Hypervisor\s+(\S+)/
 
 # Redhat enterprise versions
-Redhat Enterprise Linux			2.1AS	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /(Advanced\s+Server.*2\.1)|(AS.*2\.1)/i
-Redhat Enterprise Linux			2.1ES	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /ES.*2\.1/
-Redhat Enterprise Linux			2.1WS	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /WS.*2\.1/
-Redhat Enterprise Linux			3.0AS	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /(3\.0AS)|(2\.9\.5AS)|(AS\s+release\s+3)/i
-Redhat Enterprise Linux			"$2$1"	redhat-linux	$2 >= 4 ? $2+8.0 : 10.0	`cat /etc/redhat-release 2>/dev/null` =~ /(ES|AS|WS)\s+release\s+(\S+)/
-Redhat Enterprise Linux			$3	redhat-linux	$3+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /Red.*Hat\s+Enterprise\s+Linux(\s+(Server|Client|Workstation|Everything))?\s+release\s+([0-9\.]+)/i
+Redhat Enterprise Linux		2.1AS	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /(Advanced\s+Server.*2\.1)|(AS.*2\.1)/i
+Redhat Enterprise Linux		2.1ES	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /ES.*2\.1/
+Redhat Enterprise Linux		2.1WS	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /WS.*2\.1/
+Redhat Enterprise Linux		3.0AS	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /(3\.0AS)|(2\.9\.5AS)|(AS\s+release\s+3)/i
+Redhat Enterprise Linux		"$2$1"	redhat-linux	$2 >= 4 ? $2+8.0 : 10.0	`cat /etc/redhat-release 2>/dev/null` =~ /(ES|AS|WS)\s+release\s+(\S+)/
+Redhat Enterprise Linux		$3	redhat-linux	$3+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /Red.*Hat\s+Enterprise\s+Linux(\s+(Server|Client|Workstation|Everything))?\s+release\s+([0-9\.]+)/i
 
 # Redhat enterprise desktop
-Redhat Linux Desktop			$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /Desktop\s+release\s+(\S+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /ES\s+release\s+(\S+)/i
+Redhat Linux Desktop		$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /Desktop\s+release\s+(\S+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /ES\s+release\s+(\S+)/i
 
 # Redhat clones
-AlmaLinux				$1	redhat-linux	$1+8.0	`cat /etc/almalinux-release 2>/dev/null` =~ /AlmaLinux.*?([\d\.]+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /AlmaLinux.*?([\d\.]+)/i
-CloudLinux				$1	redhat-linux	$1+8.0	`cat /etc/cloudlinux-release 2>/dev/null` =~ /CloudLinux.*?([\d\.]+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /CloudLinux.*?([\d\.]+)/i
-Rocky Linux				$1	redhat-linux	$1+8.0	`cat /etc/rocky-release 2>/dev/null` =~ /Rocky.*?([\d\.]+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /Rocky.*?([\d\.]+)/i
-openEuler LTS				$1	redhat-linux	sprintf("%d", $1+16.0)	`cat /etc/os-release 2>/dev/null` =~ /openEuler.*?([\d\.]+).*?LTS/i
-openEuler Innovation			$1	redhat-linux	sprintf("%d", $1+16.0)	`cat /etc/os-release 2>/dev/null` =~ /openEuler\s+(?:\d+(?:\.\d+)?)["']?$/i
+AlmaLinux			$1	redhat-linux	$1+8.0	`cat /etc/almalinux-release 2>/dev/null` =~ /AlmaLinux.*?([\d\.]+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /AlmaLinux.*?([\d\.]+)/i
+CloudLinux			$1	redhat-linux	$1+8.0	`cat /etc/cloudlinux-release 2>/dev/null` =~ /CloudLinux.*?([\d\.]+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /CloudLinux.*?([\d\.]+)/i
+Rocky Linux			$1	redhat-linux	$1+8.0	`cat /etc/rocky-release 2>/dev/null` =~ /Rocky.*?([\d\.]+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /Rocky.*?([\d\.]+)/i
+openEuler LTS			$1	redhat-linux	sprintf("%d", $1+16.0)	`cat /etc/os-release 2>/dev/null` =~ /openEuler.*?([\d\.]+).*?LTS/i
+openEuler Innovation		$1	redhat-linux	sprintf("%d", $1+16.0)	`cat /etc/os-release 2>/dev/null` =~ /openEuler\s+(?:\d+(?:\.\d+)?)["']?$/i
 AlphaCore Linux			$1	redhat-linux	11.0	`cat /etc/alphacore-release 2>/dev/null` =~ /Alpha\s*Core\s+release\s+(\S+)\s/i
-X/OS Linux				$1	redhat-linux	sprintf("%.1f", 9.0+$1)		`cat /etc/redhat-release /etc/fedora-release 2>/dev/null` =~ /X\/OS.*release\s(\S+)\s/i
+X/OS Linux			$1	redhat-linux	sprintf("%.1f", 9.0+$1)		`cat /etc/redhat-release /etc/fedora-release 2>/dev/null` =~ /X\/OS.*release\s(\S+)\s/i
 Haansoft Linux			$1	redhat-linux	10.0	`cat /etc/Haansoft-release 2>/dev/null` =~ /Haansoft\s+Linux\s+OS\s+release\s+(\S+)/i
-cAos Linux				$1	redhat-linux	sprintf("%.1f", 10.0+$1)	`cat /etc/caos-release 2>/dev/null` =~ /release\s+(\S+)/i
+cAos Linux			$1	redhat-linux	sprintf("%.1f", 10.0+$1)	`cat /etc/caos-release 2>/dev/null` =~ /release\s+(\S+)/i
 Wind River Linux		3.0	redhat-linux	18.0	`cat /etc/wrs-release 2>/dev/null` =~ /Wind\s+River\s+Linux\s+3\.0/
 Wind River Linux		2.0	redhat-linux	16.0	`cat /etc/wrs-release 2>/dev/null` =~ /Wind\s+River\s+Linux\s+2\.0/
 
@@ -130,8 +130,8 @@ Ubuntu Linux			$1	debian-linux	13.0	$os_release =~ /Ubuntu\s+(22\.[0-9\.]+)/ || 
 Ubuntu Linux			$1	debian-linux	14.0	$os_release =~ /Ubuntu\s+(24\.[0-9\.]+)/ || $etc_issue =~ /Ubuntu.*\s(24\.[0-9\.]+)\s/i || $etc_issue =~ /Ubuntu\s+noble/i
 Ubuntu Linux			$1	debian-linux	15.0	$os_release =~ /Ubuntu\s+(26\.[0-9\.]+)/ || $etc_issue =~ /Ubuntu.*\s(26\.[0-9\.]+)\s/i || $etc_issue =~ /Ubuntu\s+resolute/i
 Ubuntu Linux			$1	debian-linux	3.1	$etc_issue =~ /Ubuntu.*\s([0-9\.]+)\s/i
-Mepis Linux				$1	debian-linux	$1	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
-Mepis Linux				$1	debian-linux	4.0	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /(stable)/
+Mepis Linux			$1	debian-linux	$1	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
+Mepis Linux			$1	debian-linux	4.0	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /(stable)/
 Devuan Linux			$1	debian-linux	8.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(jessie)/i
 Devuan Linux			$1	debian-linux	9.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(ascii)/i
 Devuan Linux			$1	debian-linux	10.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(beowulf)/i
@@ -140,9 +140,9 @@ Devuan Linux			$1	debian-linux	11.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_v
 Devuan Linux			$1	debian-linux	12.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(daedalus)/i
 Devuan Linux			$1	debian-linux	13.0	$etc_issue =~ /Devuan/ && `cat /etc/devuan_version 2>/dev/null` =~ /^(excalibur)/i
 Raspbian Linux			$1	debian-linux	$1	`cat /etc/os-release 2>/dev/null` =~ /Raspbian\s+GNU\/Linux\s+(\S+)/
-Kali GNU/Linux Rolling	$1	debian-linux	$1+5.0	$etc_issue =~ /Kali/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION=\"([0-9\.]+)\"/
-Parrot OS				$1	debian-linux	$1+5.0	$etc_issue =~ /Parrot/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION=\"([0-9\.]+).*\"/
-Linux Lite				$1	debian-linux	$1+16.0	$etc_issue =~ /Linux\s+Lite\s+([0-9\.]+)/
+Kali GNU/Linux Rolling		$1	debian-linux	$1+5.0	$etc_issue =~ /Kali/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION=\"([0-9\.]+)\"/
+Parrot OS			$1	debian-linux	$1+5.0	$etc_issue =~ /Parrot/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION=\"([0-9\.]+).*\"/
+Linux Lite			$1	debian-linux	$1+16.0	$etc_issue =~ /Linux\s+Lite\s+([0-9\.]+)/
 
 # Linux Mint (Mint should be before Debian to avoid false-positive)
 Linux Mint			6	debian-linux	5.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 6 Felicia"/
@@ -162,7 +162,7 @@ Linux Mint			17.2	debian-linux	8.0	`cat /etc/lsb-release 2>/dev/null | grep DIST
 Linux Mint			17.3	debian-linux	8.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 17.3 Rosa"/
 Linux Mint			18	debian-linux	8.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 18 Sarah"/
 Linux Mint			18.1	debian-linux	8.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint 18.1 Serena"/
-Linux Mint			$1		debian-linux	11.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint ([0-9\.]+)\s+\w+/
+Linux Mint			$1	debian-linux	11.0	`cat /etc/lsb-release 2>/dev/null | grep DISTRIB_DESCRIPTION` =~ /^DISTRIB_DESCRIPTION="Linux Mint ([0-9\.]+)\s+\w+/
 
 # Debian Linux versions with numbers
 Debian Linux			$1	debian-linux	$1	$etc_issue =~ /Debian.*\s([0-9\.]+)\s/i || `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
@@ -177,7 +177,6 @@ Debian Linux			6.0	debian-linux	6.0	`cat /etc/debian_version 2>/dev/null` =~ /^(
 Debian Linux			7.0	debian-linux	7.0	`cat /etc/debian_version 2>/dev/null` =~ /^(wheezy)/i
 Debian Linux			8.0	debian-linux	8.0	`cat /etc/debian_version 2>/dev/null` =~ /^(jessie)/i
 Debian Linux			9.0	debian-linux	9.0	`cat /etc/debian_version 2>/dev/null` =~ /^(stretch)/i
-# These change sometimes...
 Debian Linux			9.0	debian-linux	9.0	`cat /etc/debian_version 2>/dev/null` =~ /^(stable)/i
 # These don't have a version number yet, so we use the one from "stable"
 Debian Linux			10.0	debian-linux	10.0	`cat /etc/debian_version 2>/dev/null` =~ /^(testing)/i
@@ -193,13 +192,13 @@ SuSE OpenExchange Linux		$1	suse-linux	8.2	`cat /etc/SLOX-release 2>/dev/null` =
 SuSE SLES Linux			$1	suse-linux	sprintf("%.1f", $1)	$etc_issue =~ /SuSE\s+SLES-(\S+)/i
 
 # openSUSE Linux (in 2006 with version 10.2, the SUSE Linux distribution was officially renamed to openSUSE)
-openSUSE Linux					$1	suse-linux	$1	`cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Leap\s+(1[\d\.]+)/ 
+openSUSE Linux			$1	suse-linux	$1	`cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Leap\s+(1[\d\.]+)/ 
 
 # openSUSE Linux Tumbleweed
-openSUSE Linux					$1	suse-linux	15	`cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Tumbleweed/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION_ID\s*=.*?(\d+)/
+openSUSE Linux			$1	suse-linux	15	`cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Tumbleweed/ && `cat /etc/os-release 2>/dev/null` =~ /VERSION_ID\s*=.*?(\d+)/
 
 # SuSE Linux
-SuSE Linux					$1	suse-linux	$1	`cat /etc/SuSE-release 2>/dev/null` =~ /([0-9\.]+)/ || `cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Leap\s+([\d\.]+)/ || $etc_issue =~ /SuSE\s+Linux\s+(\S+)\s/i || `cat /etc/SUSE-brand 2>/dev/null` =~ /VERSION\s*=\s(\S+)/
+SuSE Linux			$1	suse-linux	$1	`cat /etc/SuSE-release 2>/dev/null` =~ /([0-9\.]+)/ || `cat /etc/os-release 2>/dev/null` =~ /openSUSE\s+Leap\s+([\d\.]+)/ || $etc_issue =~ /SuSE\s+Linux\s+(\S+)\s/i || `cat /etc/SUSE-brand 2>/dev/null` =~ /VERSION\s*=\s(\S+)/
 
 # United Linux only ever had version 1.0 I think
 United Linux			$1	united-linux	$1	`cat /etc/UnitedLinux-release 2>/dev/null` =~ /([0-9\.]+)/
@@ -241,7 +240,7 @@ Mandriva Linux			$2	mandrake-linux	10.5	$etc_issue =~ /(Mandrakelinux|Mandriva).
 Mandriva Linux			$2	mandrake-linux	$2	$etc_issue =~ /(Mandriva).*(20\d\d\.\d+)/i || `cat /etc/mandriva-release 2>/dev/null` =~ /(Mandriva).*(20\d\d\.\d+)/i
 
 # Mandriva Corporate
-Mandrake Linux Corporate Server		$i	mandrake-linux	$i	$etc_issue =~ /Mandrake\s+Linux\s+Corporate\s+Server\s+release\s+([0-9\.]+)/i
+Mandrake Linux Corporate Server	$i	mandrake-linux	$i	$etc_issue =~ /Mandrake\s+Linux\s+Corporate\s+Server\s+release\s+([0-9\.]+)/i
 Mandriva Linux Enterprise Server	5.0	mandrake-linux	2009	$etc_issue =~ /Mandriva\s+Linux\s+Enterprise\s+Server\s+release\s+5\.0\s+\(Official\)\s+for\s+(i586|x86_64)/i
 
 # Conectiva Linux (now subsumed into Mandrake?)
@@ -410,28 +409,28 @@ SCO OpenServer			5	openserver	5	$uname =~ /SCO_SV.*\s5\./i
 SCO OpenServer			6	openserver	6	$uname =~ /SCO_SV.*\s6\./i
 
 # Apple's OS X versions
-macOS Tahoe				26		macos		25.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+26/i
-macOS Sequoia			15		macos		24.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+15/i
-macOS Sonoma			14		macos		23.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+14/i
-macOS Ventura			13		macos		22.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+13/i
-macOS Monterey			12		macos		21.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+12/i
-macOS BigSur			11		macos		20.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+11/i
+macOS Tahoe			26	macos		25.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+26/i
+macOS Sequoia			15	macos		24.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+15/i
+macOS Sonoma			14	macos		23.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+14/i
+macOS Ventura			13	macos		22.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+13/i
+macOS Monterey			12	macos		21.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+12/i
+macOS BigSur			11	macos		20.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+11/i
 macOS Catalina			10.15	macos		19.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.15/i
 macOS Mojave			10.14	macos		18.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.14/i
 macOS High Sierra		10.13	macos		17.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.13/i
 macOS Sierra			10.12	macos		16.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.12/i
-OS X					10.11	macos		15.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.11/i
-OS X					10.10	macos		14.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.10/i
-OS X					10.9	macos		13.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.9/i
-OS X					10.8	macos		12.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.8/i
-Mac OS X				10.7	macos		11.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.7/i
-Mac OS X				10.6	macos		10.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.6/i
-Mac OS X				10.5	macos		9.2		`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.5/i
-Mac OS X				10.4	macos		8.1		`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.4/i
-Mac OS X				10.3	macos		7.0		`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.3/i
-Mac OS X				10.2	macos		6.0		`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.2/i
-Mac OS X				10.1	macos		1.4		`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.1/i
-Mac OS X				10.0	macos		1.3		`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.0/i
+OS X				10.11	macos		15.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.11/i
+OS X				10.10	macos		14.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.10/i
+OS X				10.9	macos		13.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.9/i
+OS X				10.8	macos		12.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.8/i
+Mac OS X			10.7	macos		11.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.7/i
+Mac OS X			10.6	macos		10.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.6/i
+Mac OS X			10.5	macos		9.2	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.5/i
+Mac OS X			10.4	macos		8.1	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.4/i
+Mac OS X			10.3	macos		7.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.3/i
+Mac OS X			10.2	macos		6.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.2/i
+Mac OS X			10.1	macos		1.4	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.1/i
+Mac OS X			10.0	macos		1.3	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.0/i
 
 # Darwin, the open source version of OS X
 Darwin				$1	macos		$1	$uname =~ /Darwin.*\s([0-9\.]+)/
@@ -448,7 +447,7 @@ Sun Java Desktop System		3.0 (Linux)	suse-linux	9.2	`cat /etc/SuSE-release 2>/de
 Sun Java Desktop System		2.0 (Solaris)	solaris		9	$uname =~ /SunOS.*\s5\.9\s/i && `cat /etc/sun-release 2>/dev/null` =~ /Sun\s+Java\s+Desktop/
 
 # Synology NAS, Syno Linux - DSM Version 6.x+
-Synology DSM		$1	syno-linux	$1	`cat /etc.defaults/VERSION 2>/dev/null` =~ /productversion="([0-9]+\.[0-9]+(\.[0-9]+)?)/
+Synology DSM			$1		syno-linux	$1	`cat /etc.defaults/VERSION 2>/dev/null` =~ /productversion="([0-9]+\.[0-9]+(\.[0-9]+)?)/
 
 # All other Linux variants, identified by kernel version
 Generic Linux			$1	generic-linux	$1	`uname -r` =~ /^([0-9]+\.[0-9+])\./
