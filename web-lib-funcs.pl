@@ -4175,23 +4175,20 @@ help page. The parameters are :
 
 =item height - Height of the help popup window. Defaults to 400 pixels.
 
-=item tmpl - Hash ref of template variables to substitute in the help page.
-
 The actual help pages are in each module's help sub-directory, in files with
 .html extensions.
 
 =cut
 sub hlink
 {
-my ($txt, $page, $mod, $width, $height, $tmpl) = @_;
+my ($txt, $page, $mod, $width, $height) = @_;
 $mod ||= &get_module_name();
 if (defined(&theme_hlink)) {
 	return &theme_hlink(@_);
 	}
 $width ||= $tconfig{'help_width'} || $gconfig{'help_width'} || 600;
 $height ||= $tconfig{'help_height'} || $gconfig{'help_height'} || 400;
-my $params = $tmpl ? "?".join("&", map { "tmpl_".&urlize($_)."=".&urlize($tmpl->{$_}) } keys %$tmpl) : "";
-return "<a onClick='window.open(\"@{[&get_webprefix()]}/help.cgi/$mod/$page$params\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"@{[&get_webprefix()]}/help.cgi/$mod/$page$params\">$txt</a>";
+return "<a onClick='window.open(\"@{[&get_webprefix()]}/help.cgi/$mod/$page\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"@{[&get_webprefix()]}/help.cgi/$mod/$page\">$txt</a>";
 }
 
 =head2 user_chooser_button(field, multiple, [form])

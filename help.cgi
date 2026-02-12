@@ -37,16 +37,6 @@ if (&foreign_exists($module) &&
 		}
 	}
 
-# if any template variables were given as URL params, substitute them into the file
-foreach my $k (keys %in) {
-	if ($k =~ /^tmpl_(\S+)$/i) {
-		$hash{$1} = $in{$k};
-		}
-	}
-if (%hash) {
-	$help = &substitute_template($help, \%hash);
-	}
-
 # find and replace the <header> section
 if ($help =~ s/<header>([^<]+)<\/header>//i) {
 	&popup_header($1);
