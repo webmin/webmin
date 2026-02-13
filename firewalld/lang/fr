@@ -1,0 +1,116 @@
+index_title=Pare-feuD
+index_atboot=Activer le pare-feu au démarrage?
+index_bootup=Activer au démarrage
+index_bootupdesc=Modifiez cette option pour contrôler si votre pare-feu est activé au démarrage ou non.
+index_apply=Appliquer la configuration
+index_applydesc=Cliquez sur ce bouton pour activer la configuration du pare-feu répertoriée ci-dessus. Toutes les règles de pare-feu actuellement en vigueur seront vidées et remplacées
+index_restart=Appliquer la configuration
+index_restartdesc=Activez tous les services et ports autorisés répertoriés ci-dessus, dans toutes les zones. Toutes les règles actives qui n'ont pas été créées de manière permanente seront remplacées.
+index_start=Démarrez FirewallD
+index_startdesc=Démarrez le serveur FirewallD et appliquez les règles répertoriées ci-dessus.
+index_stop=Arrêter le pare-feuD
+index_stopdesc=Arrêtez le serveur FirewallD et supprimez toutes les règles répertoriées ci-dessus.
+index_cerr=Le module FirewallD ne peut pas être utilisé : $1 
+index_zone=Afficher les règles dans la zone :
+index_zoneok=Changement
+index_zoneadd=Ajouter une zone ...
+index_zonedel=Supprimer la zone
+index_zonedef=Faire défaut
+index_type=Type de règle
+index_port=Port ou service
+index_proto=Protocole
+index_tservice=Un service
+index_tport=Port
+index_tforward=Vers l'avant
+index_padd=Ajoutez le port autorisé.
+index_sadd=Ajoutez le service autorisé.
+index_fadd=Ajoutez le port en avant.
+index_delete=Supprimer les règles sélectionnées
+index_return=liste des zones
+index_ezones=Aucune zone FirewallD trouvée!
+index_none=Cette zone n'a pas encore de ports ou de services autorisés.
+index_ifaces=Appliquer des règles aux interfaces :
+
+port_edit=Modifier le port
+port_create=Ajouter un port
+port_header=Options de port autorisées
+port_zone=Autorisé dans la zone
+port_port=Port à autoriser
+port_mode0=Port unique
+port_mode1=Plage de ports
+port_mode2=Identique au port d'origine
+port_proto=Protocole réseau
+port_ezone=La zone n'existe pas!
+port_err=Impossible d'enregistrer le port
+port_eport=Numéro ou nom de port manquant ou invalide
+port_eportlow=Le port bas doit être un nombre
+port_eporthigh=Le port haut doit être un nombre
+port_eportrange=Le port bas doit être en dessous du port haut
+
+serv_edit=Modifier le service
+serv_create=Ajouter un service
+serv_header=Options de service autorisées
+serv_name=Service à permettre
+serv_err=Impossible d'enregistrer le service
+
+forward_edit=Modifier vers l'avant
+forward_create=Créer un renvoi
+forward_header=Options de redirection de port
+forward_zone=Transférer pour la zone
+forward_err=Échec de l'enregistrement avant
+forward_port=Port source
+forward_dstport=Port de destination
+forward_dstaddr=Adresse de destination
+forward_dstlocal=Ce système
+forward_edstaddr=Adresse de destination IPv4 non valide
+forward_eneither=Une adresse de destination ou un port ou les deux doivent être saisis
+
+check_ecmd=La commande de contrôle FirewallD $1 est introuvable sur votre système
+
+delete_err=Impossible de supprimer les règles
+delete_enone=Aucune sélection!
+delete_edel=Échec de la suppression de $1 : $2
+
+zone_title=Créer une zone
+zone_header=Nouvelles options de zone
+zone_name=Nom de zone
+zone_mode=Ports et services autorisés
+zone_mode0=Aucun (tout le trafic sera bloqué)
+zone_mode1=Copier depuis la zone
+zone_mode2=SSH, IDENT et Webmin uniquement
+zone_mode3=SSH, IDENT, Webmin et ports hauts
+zone_mode4=Ports utilisés pour l'hébergement virtuel
+zone_err=Impossible de créer la zone
+zone_ename=Nom de zone manquant ou invalide
+zone_eclash=Une zone du même nom existe déjà
+
+delzone_title=Supprimer la zone
+delzone_err=Impossible de supprimer la zone
+delzone_edefault=La zone par défaut ne peut pas être supprimée
+delzone_rusure=Voulez-vous vraiment supprimer la zone $1, qui contient $2 ports et $3 services?
+
+defzone_err=Impossible de définir la zone par défaut
+
+restart_err=Impossible d'appliquer la configuration
+stop_err=Impossible d'arrêter FirewallD
+start_err=Impossible de démarrer FirewallD
+
+log_stop=Pare-feu arrêtéD
+log_start=FirewallD démarré
+log_restart=Configuration FirewallD appliquée
+log_bootup=FirewallD activé au démarrage
+log_bootdown=FirewallD désactivé au démarrage
+log_create_port=Ajout du port autorisé $1 
+log_delete_port=Port autorisé supprimé $1 
+log_update_port=Port autorisé $1 mis à jour
+log_create_serv=Service autorisé ajouté $1 
+log_delete_serv=Service autorisé supprimé $1 
+log_update_serv=Service autorisé mis à jour $1 
+log_create_forward=Ajouté en avant $1 
+log_delete_forward=Supprimé vers l'avant $1 
+log_update_forward=Mise à jour vers l'avant $1 
+log_delete_rules=Suppression de $1 ports autorisés
+log_ifaces_zone=Interfaces mises à jour pour la zone $1 
+log_create_zone=Zone créée $1 
+log_delete_zone=Zone supprimée $1 
+log_default_zone=A fait de la zone $1 la valeur par défaut
