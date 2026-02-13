@@ -56,6 +56,27 @@ if ($product) {
 				quotemeta($product).".service >/dev/null 2>&1");
 			}
 		}
+	elsif ($init_mode eq "launchd") {
+		# Update or create launchd agent to use start init wrapper
+		my $name = &launchd_name($product);
+		my %miniserv;
+		&get_miniserv_config(\%miniserv);
+		my $want_boot = $miniserv{'atboot'} ? 1 : 0;
+		my @agents = &list_launchd_agents();
+		my ($agent) = grep { $_->{'name'} eq $name } @agents;
+		if ($agent) {
+			my $boot = $agent->{'boot'} ? 1 : 0;
+			&delete_launchd_agent($name);
+			&create_launchd_agent($name,
+				"$config_directory/.start-init --nofork",
+				$boot);
+			}
+		elsif ($want_boot) {
+			&create_launchd_agent($name,
+				"$config_directory/.start-init --nofork",
+				1);
+			}
+		}
 	elsif (-d "/etc/init.d") {
 		copy_source_dest("$root_directory/webmin-init", "/etc/init.d/$product");
 		system("chkconfig --add $product >/dev/null 2>&1");
