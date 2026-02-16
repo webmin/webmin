@@ -69,12 +69,12 @@ if ($product) {
 			&delete_launchd_agent($name);
 			&create_launchd_agent($name,
 				"$config_directory/.start-init --nofork",
-				$boot);
+				$boot, 0);
 			}
 		elsif ($want_boot) {
 			&create_launchd_agent($name,
 				"$config_directory/.start-init --nofork",
-				1);
+				1, 0);
 			}
 		}
 	elsif (-d "/etc/init.d") {

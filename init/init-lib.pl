@@ -2816,14 +2816,15 @@ foreach my $a (@rv) {
 return @rv;
 }
 
-=head2 create_launchd_agent(name, start-script, boot-flag)
+=head2 create_launchd_agent(name, start-script, boot-flag, [load-now])
 
 Creates a new my launchd agent
 
 =cut
 sub create_launchd_agent
 {
-my ($name, $start, $boot) = @_;
+my ($name, $start, $boot, $load) = @_;
+$load = 1 if (!defined($load));
 my $file = "/Library/LaunchDaemons/".$name.".plist";
 my $plist = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n".
 	    "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n".
@@ -2846,8 +2847,10 @@ $plist .= "</plist>\n";
 &open_lock_tempfile(PLIST, ">$file");
 &print_tempfile(PLIST, $plist);
 &close_tempfile(PLIST);
-my $out = &backquote_logged("launchctl load ".quotemeta($file)." 2>&1");
-&error("Failed to load plist : $out") if ($?);
+if ($load) {
+	my $out = &backquote_logged("launchctl load ".quotemeta($file)." 2>&1");
+	&error("Failed to load plist : $out") if ($?);
+	}
 }
 
 =head2 delete_launchd_agent(name)
