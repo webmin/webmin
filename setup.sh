@@ -548,6 +548,7 @@ else
 	fi
 	echo "denyfile=\\.pl\$" >> $cfile
 	echo "log=1" >> $cfile
+	echo "nolistdir=1" >> $cfile
 	echo "blockhost_failures=5" >> $cfile
 	echo "blockhost_time=60" >> $cfile
 	echo "syslog=1" >> $cfile

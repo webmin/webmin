@@ -420,6 +420,7 @@ else {
 			'listen' => 10000,
 			'denyfile' => "\\.pl\$",
 			'log' => 1,
+			'nolistdir' => 1,
 			'blockhost_failures' => 5,
 			'blockhost_time' => 60,
 			'syslog' => $os_type eq 'windows' ? 0 : 1,
