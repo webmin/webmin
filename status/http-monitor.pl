@@ -12,10 +12,11 @@ local ($o) = @_;
 local $up = 0;
 local $st = time();
 local $desc;
+my $timeout = $o->{'alarm'} || 20;
 eval {
 	# Connect to the server
 	local $SIG{ALRM} = sub { die "alarm\n" }; # NB: \n required
-	alarm($o->{'alarm'} ? $o->{'alarm'} : 10);
+	alarm($timeout);
 
 	local $re = $o->{'regexp'};
 	local $method = $o->{'method'} || "HEAD";
@@ -24,7 +25,7 @@ eval {
 			$o->{'ssl'}, $method, $o->{'page'});
 	if (!ref($con)) {
 		$up = 0;
-		$desc = $con;
+		$desc = $con || "Unknown error";
 		return;
 		}
 	&write_http_connection($con, "Host: $o->{'host'}\r\n");
@@ -60,15 +61,17 @@ eval {
 		while(defined($buf = &read_http_connection($con))) {
 			$data .= $buf;
 			}
+		# Check for regexp match
 		eval {
-			# Check for regexp match
-			eval {
-				if ($data !~ /$re/i) {
-					$up = 0;
-					$desc = "No match on : $re";
-					}
-				};
+			if ($data !~ /$re/i) {
+				$up = 0;
+				$desc = "No match on : $re";
+				}
 			};
+		if ($@) {
+			$up = 0;
+			$desc = "Error evaluating regexp : $@";
+			}
 		}
 
 	&close_http_connection($con);
@@ -78,7 +81,7 @@ eval {
 if ($@) {
 	die unless $@ eq "alarm\n";   # propagate unexpected errors
 	return { 'up' => 0,
-		 'desc' => $desc };
+		 'desc' => $desc || "Timeout after $timeout seconds" };
 	}
 else { 
 	return { 'up' => $up,
