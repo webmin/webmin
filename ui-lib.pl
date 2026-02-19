@@ -823,7 +823,7 @@ return "<input class='ui_textbox$cls' type='text' ".
        "name=\"".&html_escape($name)."\" ".
        "id=\"".&html_escape($name)."\" ".
        "value=\"".&html_escape($value)."\" ".
-       "size=$size".($dis ? " disabled='true'" : "").
+       "size='$size'".($dis ? " disabled='true'" : "").
        ($max ? " maxlength='$max'" : "").
        ($tags ? " ".$tags : "").">";
 }
