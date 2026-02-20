@@ -1558,7 +1558,7 @@ if ($err) {
 
 =head2 cleanup_temp_files
 
-Called from cron to delete old files in the Webmin /tmp directory, and also
+Called from cron to delete old files in the Webmin temp directory, and also
 old lock links directories.
 
 =cut
@@ -1570,7 +1570,7 @@ if (!$gconfig{'tempdelete_days'}) {
 	return;
 	}
 
-# Cleanup files in /tmp/.webmin
+# Cleanup files in the default Webmin temp directory
 if ($gconfig{'tempdir'} && !$gconfig{'tempdirdelete'}) {
 	print STDERR "Temp file clearing is not done for the custom directory $gconfig{'tempdir'}\n";
 	}
@@ -1578,7 +1578,7 @@ else {
 	my $tempdir = &transname();
 	$tempdir =~ s/\/([^\/]+)$//;
 	if (!$tempdir || $tempdir eq "/") {
-		$tempdir = "/tmp/.webmin";
+		$tempdir = &default_webmin_temp_dir();
 		}
 
 	my $cutoff = time() - $gconfig{'tempdelete_days'}*24*60*60;

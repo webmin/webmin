@@ -440,6 +440,17 @@ my $keys = ($modk && $gconfig{$modk}) ? "$modk or tempdir_sys" : "tempdir_sys";
        "directory in $config_directory/config and try again.");
 }
 
+=head2 default_webmin_temp_dir()
+
+Returns the built-in Webmin temporary directory path used when no tempdir
+configuration or environment override is set.
+
+=cut
+sub default_webmin_temp_dir
+{
+return -d "c:/temp" ? "c:/temp" : "/tmp/.webmin";
+}
+
 =head2 tempname_dir()
 
 Returns the base directory under which temp files can be created.
@@ -452,7 +463,7 @@ my $tmp_base = $gconfig{'tempdir_'.&get_module_name()} ?
 		  $gconfig{'tempdir'} ? $gconfig{'tempdir'} :
 		  $ENV{'TEMP'} && $ENV{'TEMP'} ne "/tmp" ? $ENV{'TEMP'} :
 		  $ENV{'TMP'} && $ENV{'TMP'} ne "/tmp" ? $ENV{'TMP'} :
-		  -d "c:/temp" ? "c:/temp" : "/tmp/.webmin";
+		  &default_webmin_temp_dir();
 my $tmp_dir;
 if (@remote_user_info && -d $remote_user_info[7] &&
     -w $remote_user_info[7] && !$gconfig{'nohometemp'}) {
@@ -478,9 +489,9 @@ return $tmp_dir;
 
 =head2 tempname([filename])
 
-Returns a mostly random temporary file name, typically under the /tmp/.webmin
-directory. If filename is given, this will be the base name used. Otherwise
-a unique name is selected randomly.
+Returns a mostly random temporary file name, typically under Webmin's default
+temp directory. If filename is given, this will be the base name used.
+Otherwise a unique name is selected randomly.
 
 =cut
 sub tempname

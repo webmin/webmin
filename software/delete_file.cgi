@@ -4,7 +4,8 @@
 
 require './software-lib.pl';
 &ReadParse();
-$in{'file'} =~ /^\/tmp\/.webmin\// || &error($text{'delete_efile'});
+my $tmp_base = $gconfig{'tempdir'} || &default_webmin_temp_dir();
+$in{'file'} =~ /^\Q$tmp_base\E\// || &error($text{'delete_efile'});
 unlink($in{'file'});
 &redirect("");
 

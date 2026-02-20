@@ -10,8 +10,9 @@ print &ui_table_start($text{'advanced_header'}, undef, 2);
 
 # Global temp directory
 print &ui_table_row($text{'advanced_temp'},
-		    &ui_opt_textbox("tempdir", $gconfig{'tempdir'},
-				    30, $text{'advanced_tempdef'})."<br>".
+		    &ui_opt_textbox("tempdir", $gconfig{'tempdir'}, 30,
+			&text('advanced_tempdef', &default_webmin_temp_dir())).
+		    "<br>".
 		    &ui_checkbox("tempdirdelete", 1, $text{'advanced_tdd'},
 				 $gconfig{'tempdirdelete'}));
 

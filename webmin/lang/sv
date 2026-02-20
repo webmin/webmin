@@ -261,7 +261,7 @@ referers_referer=Ska webbsidekontrollen vara påslagen?
 
 advanced_header=Avancerade och experimentella alternativ
 advanced_temp=Tillfälliga filer-mapp
-advanced_tempdef=Standard (<tt>/tmp/.webmin</tt>)
+advanced_tempdef=Standard (<tt>$1</tt>)
 advanced_tempdelete=Högsta ålder av temporära filer
 advanced_nodelete=Obegränsad
 advanced_days=dagar

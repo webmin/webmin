@@ -423,7 +423,8 @@ foreach $h (@hosts) {
 				 \$ENV{'config_dir'} = \$config_directory;
 				 \$ENV{'webmin_upgrade'} = 1;
 				 \$ENV{'autothird'} = 1;
-				 \$out = `(cd $extract/webmin-$version && $setup) </dev/null 2>&1 | tee /tmp/.webmin/webmin-setup.out`;
+				 \$tmp = &tempname_dir();
+				 \$out = `(cd $extract/webmin-$version && $setup) </dev/null 2>&1 | tee \$tmp/webmin-setup.out`;
 				 (\$out, \$?)");
 			if ($ex || $out !~ /success|^0$/i) {
 				print $wh &serialise_variable(

@@ -817,7 +817,7 @@ export_done=Successfully exported the selected modules to $1.
 export_title=وحدات التصدير
 
 advanced_temp=دليل الملفات المؤقتة
-advanced_tempdef=Default (<tt>/tmp/.webmin</tt>)
+advanced_tempdef=Default (<tt>$1</tt>)
 advanced_tdd=مسح الملفات المؤقتة في الدليل غير القياسي؟
 advanced_tempdelete=الحد الأقصى لسن الملفات المؤقتة
 advanced_preload=قبل تحميل مكتبة وظائف Webmin؟
