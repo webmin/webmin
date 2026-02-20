@@ -450,11 +450,9 @@ sub default_webmin_temp_dir
 {
 return -d "c:/temp"
 	? "c:/temp"
-	: -d "/var/cache"
-		? "/var/cache/webmin"
-		: -d "/var/tmp"
-			? "/var/tmp/webmin"
-			: "/tmp/.webmin";
+	: -d "/var/tmp"
+		? "/var/tmp/.webmin"
+		: "/tmp/.webmin";
 }
 
 =head2 tempname_dir()
