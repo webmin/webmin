@@ -2989,7 +2989,10 @@ if ($needhn && !defined($hn = $ip_match_cache{$_[0]})) {
 	# Reverse-lookup hostname if any rules match based on it
 	$hn = &to_hostname($_[0]);
 	if (&check_ip6address($_[0])) {
-		$hn = "" if (&to_ip6address($hn) ne $_[0]);
+		local $ip6 = &to_ip6address($hn);
+		$hn = "" if (!$ip6 ||
+			     &canonicalize_ip6($ip6) ne
+			     	&canonicalize_ip6($_[0]));
 		}
 	else {
 		$hn = "" if (&to_ipaddress($hn) ne $_[0]);
@@ -3084,7 +3087,15 @@ for($i=2; $i<@_; $i++) {
 		}
 	elsif ($_[$i] !~ /^[0-9\.]+$/) {
 		# Compare with hostname
-		$mismatch = 1 if ($_[0] ne &to_ipaddress($_[$i]));
+		if (&check_ip6address($_[0])) {
+			local $ip6 = &to_ip6address($_[$i]);
+			$mismatch = 1 if (!$ip6 ||
+					  &canonicalize_ip6($ip6) ne
+					  	&canonicalize_ip6($_[0]));
+			}
+		else {
+			$mismatch = 1 if ($_[0] ne &to_ipaddress($_[$i]));
+			}
 		}
 	return 1 if (!$mismatch);
 	}
@@ -3195,7 +3206,7 @@ foreach $i (@_) {
 			(undef, undef, undef, $inaddr) =
 			    getaddrinfo($i, undef, AF_INET6(), SOCK_STREAM);
 			};
-		if ($inaddr) {
+		if (!$inaddr) {
 			push(@rv, undef);
 			}
 		else {
