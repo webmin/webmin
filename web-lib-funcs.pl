@@ -448,11 +448,7 @@ configuration or environment override is set.
 =cut
 sub default_webmin_temp_dir
 {
-return -d "c:/temp"
-	? "c:/temp"
-	: -d "/var/tmp"
-		? "/var/tmp/.webmin"
-		: "/tmp/.webmin";
+return -d "c:/temp" ? "c:/temp" : "/tmp/.webmin";
 }
 
 =head2 tempname_dir()
