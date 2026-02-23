@@ -633,16 +633,16 @@ else {
 	}
 }
 
-# read_file_lines_as_user(file, ...)
+# read_file_lines_as_user(file, [read-only])
 sub read_file_lines_as_user
 {
-local @args = @_;
+local ($file, $ro) = @_;
 if (&should_switch_user($file)) {
 	return &eval_as_unix_user(
-		$access{'user'}, sub { &read_file_lines(@args) });
+		$access{'user'}, sub { &read_file_lines($file, $ro) });
 	}
 else {
-	return &read_file_lines(@args);
+	return &read_file_lines($file, $ro);
 	}
 }
 
