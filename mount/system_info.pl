@@ -85,7 +85,7 @@ my @rv = ({ 'type' => 'html',
 
 # Check if the filesystem the Webmin temp dir is on is too small
 my $tmp = $gconfig{'tempdir'} || &default_webmin_temp_dir();
-my $small = 10*1024*1024*102;	# 10 MB
+my $small = $gconfig{'tempdir_min_size'} || 10*1024*1024*1024;	# 10 GB
 foreach my $disk (sort { length($b->{'dir'}) <=> length($a->{'dir'}) } @$disks) {
 	if (&is_under_directory($disk->{'dir'}, $tmp)) {
 		if ($disk->{'total'} <= $small && &foreign_available("webmin")) {
