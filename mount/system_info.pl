@@ -76,12 +76,34 @@ foreach my $disk (@$disks) {
 		$dev_id]);
 	}
 $html .= &ui_columns_end();
-return ({ 'type' => 'html',
-          'desc' => $desc,
-          'open' => $open,
-          'id'   => $module_name . '_disks_info',
-          'html' => $html
-       });
+my @rv = ({ 'type' => 'html',
+            'desc' => $desc,
+            'open' => $open,
+            'id'   => $module_name . '_disks_info',
+            'html' => $html
+          });
+
+# Check if the filesystem the Webmin temp dir is on is too small
+my $tmp = $gconfig{'tempdir'} || &default_webmin_temp_dir();
+my $small = 10*1024*1024*102;	# 10 MB
+foreach my $disk (sort { length($b->{'dir'}) <=> length($a->{'dir'}) } @$disks) {
+	if (&is_under_directory($disk->{'dir'}, $tmp)) {
+		if ($disk->{'total'} <= $small && &foreign_available("webmin")) {
+			push(@rv, { 'type' => 'warning',
+				    'level' => 'info',
+				    'warning' => &text('sysinfo_smalltmp',
+						       "<tt>$tmp</tt>",
+						       "<tt>$disk->{'dir'}</tt>",
+						       &nice_size($small),
+						       &nice_size($disk->{'total'}),
+						       &get_webprefix()."/webmin/edit_advanced.cgi"),
+				  });
+			}
+		last;
+		}
+	}
+
+return @rv;
 }
 
 sub ucwords
