@@ -10400,22 +10400,29 @@ $dir =~ s/\/*$/\//;
 return substr($file, 0, length($dir)) eq $dir;
 }
 
-=head2 parse_http_url(url, [basehost, baseport, basepage, basessl])
+=head2 parse_http_url(url, [basehost], [baseport], [basepage],
+                     [basessl], [baseuser], [basepass], [no-default-port])
 
 Given an absolute URL, returns the host, port, page and ssl flag components.
 If a username and password are given before the hostname, return those too.
 Relative URLs can also be parsed, if the base information is provided.
+If C<no-default-port> is set, omitted ports in absolute URLs are returned as
+undef instead of being normalized to 80/443/21.
 SSL mode 0 = HTTP, 1 = HTTPS, 2 = FTP.
 
 =cut
 sub parse_http_url
 {
-if ($_[0] =~ /^(http|https|ftp):\/\/([^\@\/]+\@)?\[([^\]]+)\](:(\d+))?(\/\S*)?$/ ||
-    $_[0] =~ /^(http|https|ftp):\/\/([^\@\/]+\@)?([^:\/]+)(:(\d+))?(\/\S*)?$/) {
+my ($url, $basehost, $baseport, $basepage, $basessl, $baseuser, $basepass,
+    $no_default_port) = @_;
+if ($url =~ /^(http|https|ftp):\/\/([^\@\/]+\@)?\[([^\]]+)\](:(\d+))?(\/\S*)?$/ ||
+    $url =~ /^(http|https|ftp):\/\/([^\@\/]+\@)?([^:\/]+)(:(\d+))?(\/\S*)?$/) {
 	# An absolute URL
 	my $ssl = $1 eq 'https' ? 1 : $1 eq 'ftp' ? 2 : 0;
+	my $port = $4 ? $5 : $no_default_port ? undef :
+		   $ssl == 1 ? 443 : $ssl == 2 ? 21 : 80;
 	my @rv = ($3,
-		  $4 ? $5 : $ssl == 1 ? 443 : $ssl == 2 ? 21 : 80,
+		  $port,
 		  $6 || "/",
 		  $ssl,
 		 );
@@ -10424,19 +10431,20 @@ if ($_[0] =~ /^(http|https|ftp):\/\/([^\@\/]+\@)?\[([^\]]+)\](:(\d+))?(\/\S*)?$/
 		}
 	return @rv;
 	}
-elsif (!$_[1]) {
+elsif (!$basehost) {
 	# Could not parse
 	return undef;
 	}
-elsif ($_[0] =~ /^\/\S*$/) {
+elsif ($url =~ /^\/\S*$/) {
 	# A relative to the server URL
-	return ($_[1], $_[2], $_[0], $_[4], $_[5], $_[6]);
+	return ($basehost, $baseport, $url, $basessl, $baseuser, $basepass);
 	}
 else {
 	# A relative to the directory URL
-	my $page = $_[3];
+	my $page = $basepage;
 	$page =~ s/[^\/]+$//;
-	return ($_[1], $_[2], $page.$_[0], $_[4], $_[5], $_[6]);
+	return ($basehost, $baseport, $page.$url, $basessl,
+		$baseuser, $basepass);
 	}
 }
 
