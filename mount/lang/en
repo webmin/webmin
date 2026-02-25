@@ -504,7 +504,11 @@ acl_sysinfo=Show available disk data on Dashboard?
 
 sysinfo_total=Total
 sysinfo_dev=Device ID
+<<<<<<< HEAD
 sysinfo_smalltmp=Warning! The filesystem $2 which contains the Webmin temp files directory $1 has a size of only $4, which is less than the recommended minimum of $3 for temporary and backup files. Consider switching the temp files location to a different directory in the <a href='$5'>Webmin Configuration</a> module.
 sysinfo_ramtmp=Warning! The filesystem $2 which contains the Webmin temp files directory $1 is mounted from a <tt>tmpfs</tt> RAM disk, which may be too small for temporary and backup files. Consider switching the temp files location to a different directory in the <a href='$3'>Webmin Configuration</a> module.
+=======
+sysinfo_smalltmp=The filesystem $2 which contains the Webmin temp files directory $1 has a size of only $4, which is less than the recommended minimum of $3 for temporary and backup files. Consider switching the temp files location to a different directory in the <a href='$5'>Webmin Configuration</a> module.
+>>>>>>> 3354a0cc2fa31610b76563f3baa444766d86b7e3
 
 __norefs=1
