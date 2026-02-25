@@ -84,22 +84,39 @@ my @rv = ({ 'type' => 'html',
           });
 
 # Check if the filesystem the Webmin temp dir is on is too small
-my $tmp = $gconfig{'tempdir'} || &default_webmin_temp_dir();
-my $small = 10*1024*1024*102;	# 10 MB
-foreach my $disk (sort { length($b->{'dir'}) <=> length($a->{'dir'}) } @$disks) {
-	if (&is_under_directory($disk->{'dir'}, $tmp)) {
-		if ($disk->{'total'} <= $small && &foreign_available("webmin")) {
-			push(@rv, { 'type' => 'warning',
-				    'level' => 'info',
-				    'warning' => &text('sysinfo_smalltmp',
-						       "<tt>$tmp</tt>",
-						       "<tt>$disk->{'dir'}</tt>",
-						       &nice_size($small),
-						       &nice_size($disk->{'total'}),
-						       &get_webprefix()."/webmin/edit_advanced.cgi"),
-				  });
+if (&foreign_available("webmin")) {
+	my $tmp = $gconfig{'tempdir'} || &default_webmin_temp_dir();
+	my $small = 10*1024*1024*102;	# 10 MB
+	my $url = &get_webprefix()."/webmin/edit_advanced.cgi";
+	foreach my $disk (sort { length($b->{'dir'}) <=>
+				 length($a->{'dir'}) } @$disks) {
+		if (&is_under_directory($disk->{'dir'}, $tmp)) {
+			if ($disk->{'total'} <= $small) {
+				# Too small
+				push(@rv, { 'type' => 'warning',
+					    'level' => 'info',
+					    'warning' => &text(
+						'sysinfo_smalltmp',
+						"<tt>$tmp</tt>",
+						"<tt>$disk->{'dir'}</tt>",
+						&nice_size($small),
+						&nice_size($disk->{'total'}),
+						$url),
+					  });
+				}
+			elsif ($disk->{'type'} eq 'tmpfs') {
+				# Mounted from a RAM disk
+				push(@rv, { 'type' => 'warning',
+					    'level' => 'info',
+					    'warning' => &text(
+						'sysinfo_ramtmp',
+						"<tt>$tmp</tt>",
+						"<tt>$disk->{'dir'}</tt>",
+						$url),
+					  });
+				}
+			last;
 			}
-		last;
 		}
 	}
 
