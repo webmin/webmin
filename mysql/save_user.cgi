@@ -19,7 +19,7 @@ else {
 		&error($text{'user_euser'});
 	$in{'host_def'} || $in{'host'} =~ /^\S+$/ ||
 		&error($text{'user_ehost'});
-	if ($in{'mysqlpass_mode'} eq '0' && $in{'mysqlpas'} =~ /\\/) {
+	if ($in{'mysqlpass_mode'} eq '0' && $in{'mysqlpass'} =~ /\\/) {
 		&error($text{'user_eslash'});
 		}
 
