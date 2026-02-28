@@ -82,6 +82,10 @@ for(my $i=0; $i<@wlinks; $i++) {
 		$i--;
 		}
 	}
+
+print &ui_alert_box(&filter_javascript($in{'message'}), 'success', undef, 1,
+		    &html_escape($in{'title'})) if ($in{'message'});
+
 &icons_table(\@wlinks, \@wtitles, \@wicons);
 
 print &ui_hr();

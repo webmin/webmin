@@ -1954,12 +1954,14 @@ Output a page with header and footer about Webmin needing to restart.
 =cut
 sub show_restart_page
 {
+my ($title, $msg) = @_;
 if (!$gconfig{'restart_async'}) {
 	&restart_miniserv();
-	&redirect("");
+	my $msg_redir = "";
+	$msg_redir = "?title=".&urlize($title)."&message=".&urlize($msg) if $msg;
+	&redirect($msg_redir);
 	return;
 	}
-my ($title, $msg) = @_;
 $title ||= $text{'restart_title'};
 $msg ||= $text{'restart_done'};
 &ui_print_header(undef, $title, "");
