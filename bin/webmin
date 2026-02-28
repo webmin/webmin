@@ -1,399 +1,435 @@
 #!/usr/bin/env perl
 # Webmin CLI - Allows performing a variety of common Webmin-related
 # functions on the command line.
+
 use strict;
 use warnings;
 BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
-use 5.010; # Version in CentOS 6
+use 5.010;
 use Getopt::Long qw(:config no_ignore_case permute pass_through);
 use Term::ANSIColor qw(:constants);
 use Pod::Usage;
 
 # Check if root
 if ($> != 0) {
-    die BRIGHT_RED, "Error: ", RESET, BRIGHT_YELLOW,"webmin", RESET, 
-        " command must be run as root\n";
-    exit 1;
-    }
+	die BRIGHT_RED,
+		"Error: ", RESET, BRIGHT_YELLOW,"webmin", RESET, 
+		" command must be run as root\n";
+	exit 1;
+	}
 
 my $a0 = $ARGV[0];
 
-sub main {
-    my ( %opt, $subcmd );
-    GetOptions(
-        'help|h' => \$opt{'help'},
-        'config|c=s' => \$opt{'config'},
-        'list-commands|l' => \$opt{'list'},
-        'describe|d' => \$opt{'describe'},
-        'man|m' => \$opt{'man'},
-        'version|v' => \$opt{'version'},
-        'versions|V' => \$opt{'versions'},
-        '<>' => sub {
-            # Handle unrecognized options, inc. subcommands.
-            my($arg) = @_;
-            if ($arg =~ m{^-}) {
-                say "Usage error: Unknown option $arg.";
-                pod2usage(0);
-            } else {
-                # It must be a subcommand.
-                $subcmd = $arg;
-                die "!FINISH";
-            }
-        }
-    );
+sub main
+{
+my ( %opt, $subcmd );
+GetOptions(
+	'help|h' => \$opt{'help'},
+	'config|c=s' => \$opt{'config'},
+	'list-commands|l' => \$opt{'list'},
+	'describe|d' => \$opt{'describe'},
+	'man|m' => \$opt{'man'},
+	'version|v' => \$opt{'version'},
+	'versions|V' => \$opt{'versions'},
+	'<>' => sub {
+		# Handle unrecognized options, inc. subcommands.
+		my($arg) = @_;
+		if ($arg =~ m{^-}) {
+			say "Usage error: Unknown option $arg.";
+			pod2usage(0);
+			}
+		else {
+			# It must be a subcommand.
+			$subcmd = $arg;
+			die "!FINISH";
+			}
+	}
+);
 
-    # Set defaults
-    $opt{'config'} ||= "/etc/webmin";
-    $opt{'commands'} = $a0;
-    
-    # Load libs
-    loadlibs(\%opt);
+# Set defaults
+$opt{'config'} ||= "/etc/webmin";
+$opt{'commands'} = $a0;
 
-    my @remain = @ARGV;
-    # List commands?
-    if ($opt{'list'}) {
-        list_commands(\%opt);
-        exit 0;
-    } elsif ($opt{'version'} || $opt{'versions'}) {
-        # Load libs
-        my $print_mod_vers = sub {
-            my ($module_type, $modules_list, $prod_root, $prod_ver) = @_;
-            return if (!ref($modules_list));
-            # Gather module info
-            my @mods;
-            foreach my $mod (@{$modules_list}) {
-                my %mi;
-                read_file($mod, \%mi);
-                my $ver = $mi{'version_actual'} || $mi{'version'};
-                my ($dir) = $mod =~ m/$prod_root\/(.*?)\//;
-                next if (!$ver || !$mi{'desc'} || !$dir);
-                next if ($prod_ver =~ /^\Q$ver\E/);
-                push(@mods, { desc => $mi{'desc'}, ver => $ver, dir => $dir });
-            }
-            # Print sorted by description
-            my $head;
-            foreach my $m (sort { $a->{'desc'} cmp $b->{'desc'} } @mods) {
-                my $mod_ver = $m->{'ver'};
-                if (-r "$prod_root/$m->{'dir'}/module.info") {
-                    eval { no warnings 'once';
-                           local $main::error_must_die = 1;
-                           &foreign_require($m->{'dir'}) };
-                    # Get module edition if available
-                    my $ed;
-                    $ed = eval {
-                        &foreign_call($m->{'dir'}, "get_module_edition") }
-                            if (&foreign_defined($m->{'dir'},
-                                                 "get_module_edition"));
-                    $mod_ver .= " $ed" if ($ed);
-                }
-                say CYAN, "  $module_type: ", RESET if (!$head++);
-                say "    $m->{'desc'}: ", GREEN, $mod_ver, RESET,
-                                          DARK " [$m->{'dir'}]", RESET;
-            }
-        };
+# Load libs
+loadlibs(\%opt);
 
-        my $root = root($opt{'config'});
-        if ($root && -d $root) {
-            $ENV{'WEBMIN_CONFIG'} = $opt{'config'};
-            no warnings 'once';
-            @main::root_directories = ($root);
-            $main::root_directory = $root;
-            *unique = sub { my %seen; grep { !$seen{$_}++ } @_ } if (!defined(&unique));
-            use warnings;
-            require("$root/web-lib-funcs.pl");
-            
-            # Get Webmin version installed
-            my $ver1 = "$root/version";
-            my $ver2 = "$opt{'config'}/version";
-            my $ver = read_file_contents($ver1) || read_file_contents($ver2);
-            my $verrel_file = "$root/release";
-            my $verrel = -r $verrel_file ? read_file_contents($verrel_file) : "";
-            if ($verrel) {
-                $verrel = ":@{[trim($verrel)]}";
-            }
-            $ver = trim($ver);
-            if ($ver) {
-                if ($opt{'version'}) {
-                    say "$ver$verrel";
-                    exit 0;
-                } else {
-                    say CYAN, "Webmin: ", RESET, GREEN, "$ver$verrel", RESET, DARK " [$root]", RESET;
-                }
-            } else {
-                say RED, "Error: ", RESET, "Cannot determine Webmin version";
-                exit 1;
-            }
-            
-            # Get other Webmin themes/modules versions if available
-            my ($dir, @themes, @mods);
-            if (opendir($dir, $root)) {
-                while (my $file = readdir($dir)) {
-                    my $theme_info_file = "$root/$file/theme.info";
-                    push(@themes, $theme_info_file)
-                        if (-r $theme_info_file);
+my @remain = @ARGV;
+# List commands?
+if ($opt{'list'}) {
+	list_commands(\%opt);
+	exit 0;
+	}
+elsif ($opt{'version'} || $opt{'versions'}) {
+	# Load libs
+	my $print_mod_vers = sub {
+		my ($module_type, $modules_list, $prod_root, $prod_ver) = @_;
+		return if (!ref($modules_list));
+		# Gather module info
+		my @mods;
+		foreach my $mod (@{$modules_list}) {
+			my %mi;
+			read_file($mod, \%mi);
+			my $ver = $mi{'version'};
+			my ($dir) = $mod =~ m/$prod_root\/(.*?)\//;
+			next if (!$ver || !$mi{'desc'} || !$dir);
+			next if ($prod_ver =~ /^\Q$ver\E/);
+			push(@mods, { desc => $mi{'desc'}, ver => $ver,
+				      dir => $dir });
+			}
+		# Print sorted by description
+		my $head;
+		foreach my $m (sort { $a->{'desc'} cmp $b->{'desc'} } @mods) {
+			my $mod_ver = $m->{'ver'};
+			if (-r "$prod_root/$m->{'dir'}/module.info") {
+				eval { no warnings 'once';
+					local $main::error_must_die = 1;
+					&foreign_require($m->{'dir'}) };
+				# Get module edition if available
+				my $ed;
+				$ed = eval { &foreign_call(
+						$m->{'dir'},
+						"get_module_edition")
+				      } if (&foreign_defined($m->{'dir'},
+						"get_module_edition"));
+				$mod_ver .= " $ed" if ($ed);
+				}
+			say CYAN, "  $module_type: ", RESET if (!$head++);
+			say "    $m->{'desc'}: ", GREEN, $mod_ver, RESET,
+						  DARK " [$m->{'dir'}]", RESET;
+		}
+	};
 
-                    my $mod_info_file = "$root/$file/module.info";
-                    push(@mods, $mod_info_file)
-                        if (-r $mod_info_file);
-                }
-            }
-            closedir($dir);
-            &$print_mod_vers('Themes', \@themes, $root, $ver);
-            &$print_mod_vers('Modules', \@mods, $root, $ver);
+	my $root = root($opt{'config'});
+	if ($root && -d $root) {
+		$ENV{'WEBMIN_CONFIG'} = $opt{'config'};
+		no warnings 'once';
+		@main::root_directories = ($root);
+		$main::root_directory = $root;
+		*unique = sub { my %seen; grep { !$seen{$_}++ } @_ }
+			if (!defined(&unique));
+		use warnings;
+		require("$root/web-lib-funcs.pl");
+		
+		# Get Webmin version installed
+		my $ver1 = "$root/version";
+		my $ver2 = "$opt{'config'}/version";
+		my $ver = read_file_contents($ver1) ||
+				read_file_contents($ver2);
+		my $verrel_file = "$root/release";
+		my $verrel = -r $verrel_file
+			? read_file_contents($verrel_file) : "";
+		if ($verrel) {
+			$verrel = ":@{[trim($verrel)]}";
+			}
+		$ver = trim($ver);
+		if ($ver) {
+			if ($opt{'version'}) {
+				say "$ver$verrel";
+				exit 0;
+				}
+			else {
+				say CYAN, "Webmin: ", RESET, GREEN,
+					"$ver$verrel", RESET,
+					DARK " [$root]", RESET;
+				}
+			}
+		else {
+			say RED, "Error: ", RESET,
+					"Cannot determine Webmin version";
+			exit 1;
+			}
+		
+		# Get other Webmin themes/modules versions if available
+		my ($dir, @themes, @mods);
+		if (opendir($dir, $root)) {
+			while (my $file = readdir($dir)) {
+				my $theme_info_file =
+					"$root/$file/theme.info";
+				push(@themes, $theme_info_file)
+					if (-r $theme_info_file);
+				my $mod_info_file = "$root/$file/module.info";
+				push(@mods, $mod_info_file)
+					if (-r $mod_info_file);
+				}
+			}
+		closedir($dir);
+		&$print_mod_vers('Themes', \@themes, $root, $ver);
+		&$print_mod_vers('Modules', \@mods, $root, $ver);
 
-        # Check for Usermin
-        my $wmumconfig = "$opt{'config'}/usermin/config";
-            if (-r $wmumconfig) {
-                my %wmumconfig;
-                read_file($wmumconfig, \%wmumconfig);
+		# Check for Usermin
+		my $wmumconfig = "$opt{'config'}/usermin/config";
+		if (-r $wmumconfig) {
+			my %wmumconfig;
+			read_file($wmumconfig, \%wmumconfig);
 
-                # Usermin config dir
-                $wmumconfig = $wmumconfig{'usermin_dir'};
-                if ($wmumconfig) {
-                    my %uminiserv;
-                    read_file("$wmumconfig/miniserv.conf", \%uminiserv);
-                    my $uroot = $uminiserv{'root'};
+			# Usermin config dir
+			$wmumconfig = $wmumconfig{'usermin_dir'};
+			if ($wmumconfig) {
+				my %uminiserv;
+				read_file("$wmumconfig/miniserv.conf",
+						\%uminiserv);
+				my $uroot = $uminiserv{'root'};
 
-                    # Get Usermin version installed
-                    if ($uroot && -d $uroot) {
-                        my $uver1 = "$uroot/version";
-                        my $uver2 = "$wmumconfig/version";
-                        my $uver = read_file_contents($uver1) || read_file_contents($uver2);
-                        my $uverrel_file = "$uroot/release";
-                        my $uverrel      = -r $uverrel_file ? read_file_contents($uverrel_file) : "";
-                        if ($uverrel) {
-                            $uverrel = ":@{[trim($uverrel)]}";
-                        }
-                        $uver = trim($uver) . $uverrel;
-                        if ($uver) {
-                            say CYAN, "Usermin: ", RESET, GREEN, $uver, RESET, DARK " [$uroot]", RESET;
-                            my ($udir, @uthemes, @umods);
-                            if (opendir($udir, "$uroot")) {
-                                while (my $file = readdir($udir)) {
-                                    my $theme_info_file = "$uroot/$file/theme.info";
-                                    push(@uthemes, $theme_info_file)
-                                        if (-r $theme_info_file);
+				# Get Usermin version installed
+				if ($uroot && -d $uroot) {
+					my $uver1 = "$uroot/version";
+					my $uver2 = "$wmumconfig/version";
+					my $uver = read_file_contents($uver1) ||
+						read_file_contents($uver2);
+					my $uverrel_file = "$uroot/release";
+					my $uverrel      = -r $uverrel_file
+						? read_file_contents($uverrel_file) : "";
+					$uverrel = ":@{[trim($uverrel)]}" if ($uverrel);
+					$uver = trim($uver) . $uverrel;
+					if ($uver) {
+						say CYAN, "Usermin: ", RESET, GREEN, $uver, RESET, DARK " [$uroot]", RESET;
+						my ($udir, @uthemes, @umods);
+						if (opendir($udir, "$uroot")) {
+							while (my $file = readdir($udir)) {
+								my $theme_info_file = "$uroot/$file/theme.info";
+								push(@uthemes, $theme_info_file)
+									if (-r $theme_info_file);
 
-                                    my $mod_info_file = "$uroot/$file/module.info";
-                                    push(@umods, $mod_info_file)
-                                        if (-r $mod_info_file);
+								my $mod_info_file = "$uroot/$file/module.info";
+								push(@umods, $mod_info_file)
+									if (-r $mod_info_file);
 
-                                }
-                            }
-                            closedir($udir);
-                            &$print_mod_vers('Themes', \@uthemes, $uroot, $uver);
-                            &$print_mod_vers('Modules', \@umods, $uroot, $uver);
-                        }
-                    }
-                }
-            }
-        }
+								}
+							}
+						closedir($udir);
+						&$print_mod_vers('Themes', \@uthemes, $uroot, $uver);
+						&$print_mod_vers('Modules', \@umods, $uroot, $uver);
+						}
+					}
+				}
+			}
+		}
+	exit 0;
+	}
+elsif ($opt{'man'} || $opt{'help'} || !defined($remain[0])) {
+	# Show the full manual page
+	man_command(\%opt, $subcmd);
+	exit 0;
+	}
+elsif ($subcmd) {
+	run_command( \%opt, $subcmd, \@remain );
+	}
 
-        exit 0;
-    } elsif ($opt{'man'} || $opt{'help'} || !defined($remain[0])) {
-        # Show the full manual page
-        man_command(\%opt, $subcmd);
-        exit 0;
-    } elsif ($subcmd) {
-        run_command( \%opt, $subcmd, \@remain );
-    }
-    
-    exit 0;
+exit 0;
 }
 exit main( \@ARGV ) if !caller(0);
 
 # run_command - Run a subcommand 
 # $optref is a reference to an options object passed down from global options
 # like --help or a --config path.
-sub run_command {
-    my ( $optref, $subcmd, $remainref ) = @_;
+sub run_command
+{
+my ( $optref, $subcmd, $remainref ) = @_;
 
-    # Load libs
-    loadlibs($optref);
+# Load libs
+loadlibs($optref);
 
-    # Figure out the Webmin root directory
-    my $root = root($optref->{'config'});
+# Figure out the Webmin root directory
+my $root = root($optref->{'config'});
 
-    my (@commands) = list_commands($optref);
-    if (! grep( /^$subcmd$/, @commands ) ) {
-        say RED, "Error: ", RESET, "Command \`$subcmd\` doesn't exist", RESET;
-        exit 1;
-    }
+my (@commands) = list_commands($optref);
+if (! grep( /^$subcmd$/, @commands ) ) {
+	say RED, "Error: ", RESET, "Command \`$subcmd\` doesn't exist", RESET;
+	exit 1;
+	}
 
-    my $command_path = get_command_path($root, $subcmd, $optref);
-    
-    # Merge the options
-    # Only handling config, right now...
-    # XXX Should we do this with libraries instead of commands?
-    # Maybe detect .pm for that possibility.
-    my @allopts = ("--config", "$optref->{'config'}", @$remainref);
-    # Run that binch 
-    system($command_path, @allopts);
-    # Try to exit with the passed through exit code (rarely used, but 
-    # why not?)
-    if ($? == -1) {
-        say RED, "Error: ", RESET, "Failed to execute \`$command_path\`: $!";
-        exit 1;
-    } else {
-        exit $? >> 8;
-    }
+my $command_path = get_command_path($root, $subcmd, $optref);
+
+# Merge the options
+my @allopts = ("--config", "$optref->{'config'}", @$remainref);
+# Run 
+system($command_path, @allopts);
+# Try to exit with the passed through exit code (rarely used, but why not?)
+if ($? == -1) {
+	say RED, "Error: ", RESET, "Failed to execute \`$command_path\`: $!";
+	exit 1;
+	}
+else {
+	exit $? >> 8;
+	}
 }
 
-sub get_command_path {
-    my ($root, $subcmd, $optref) = @_;
+sub get_command_path
+{
+my ($root, $subcmd, $optref) = @_;
 
-    # Load libs
-    loadlibs($optref);
+# Load libs
+loadlibs($optref);
 
-    # Check for a root-level command (in "$root/bin")
-    my $command_path;
-    if ($subcmd) {
-        $command_path = File::Spec->catfile($root, 'bin', $subcmd);
-    } else {
-        $command_path = File::Spec->catfile($root, 'bin', 'webmin');
-    }
-    my $module_name;
-    my $command;
-    if ( -x $command_path) {
-        $command = $command_path;
-    } else {
-        # Try to extract a module name from the command
-        # Get list of directories
-        opendir (my $DIR, $root);
-        my @module_dirs = grep { -d "$root/$_" } readdir($DIR);
-        # See if any of them are a substring of $subcmd
-        for my $dir (@module_dirs) {
-            if (index($subcmd, $dir) == 0) {
-                $module_name = $dir;
-                my $barecmd = substr($subcmd, -(length($subcmd)-length($module_name)-1));
-                $command = File::Spec->catfile($root, $dir, 'bin', $barecmd);
-                # Could be .pl or no extension
-                if ( -x $command ) {
-                    last;
-                } elsif ( -x $command . ".pl" ) {
-                    $command = $command . ".pl";
-                    last;
-                }
-            }
-        }
-    }
-    if ($optref->{'commands'} && 
-        $optref->{'commands'} =~ /^(stats|status|start|stop|restart|reload|force-restart|force-reload|kill)$/) {
-        exit system("$0 server $optref->{'commands'}");
-    } elsif ($command) {
-        return $command;
-    } else {
-        die RED, "Unrecognized subcommand: $subcmd", RESET , "\n";
-    }
+# Check for a root-level command (in "$root/bin")
+my $command_path;
+if ($subcmd) {
+	$command_path = File::Spec->catfile($root, 'bin', $subcmd);
+	}
+else {
+	$command_path = File::Spec->catfile($root, 'bin', 'webmin');
+	}
+
+my $module_name;
+my $command;
+if ( -x $command_path) {
+	$command = $command_path;
+	}
+else {
+	# Try to extract a module name from the command
+	# Get list of directories
+	opendir (my $DIR, $root);
+	my @module_dirs = grep { -d "$root/$_" } readdir($DIR);
+	closedir($DIR);
+	# See if any of them are a substring of $subcmd
+	for my $dir (@module_dirs) {
+		if (index($subcmd, $dir) == 0) {
+			$module_name = $dir;
+			my $barecmd = substr($subcmd, -(length($subcmd)-length($module_name)-1));
+			$command = File::Spec->catfile($root, $dir, 'bin', $barecmd);
+			# Could be .pl or no extension
+			if ( -x $command ) {
+				last;
+				}
+			elsif ( -x $command . ".pl" ) {
+				$command = $command . ".pl";
+				last;
+				}
+			}
+		}
+	}
+if ($optref->{'commands'} && 
+    $optref->{'commands'} =~ /^(stats|status|start|stop|restart|reload|force-restart|force-reload|kill)$/) {
+	exit system("$0 server $optref->{'commands'}");
+	}
+elsif ($command) {
+	return $command;
+	}
+else {
+	die RED, "Unrecognized subcommand: $subcmd", RESET , "\n";
+	}
 }
 
-sub list_commands {
-    my ($optref) = @_;
+sub list_commands
+{
+my ($optref) = @_;
 
-    my $root = root($optref->{'config'});
-    my @commands;
+my $root = root($optref->{'config'});
+my @commands;
 
-    # Find and list global commands
-    for my $command (glob ("$root/bin/*")) {
-        my ($bin, $path) = fileparse($command);
-        if ($bin =~ "webmin") {
-            next;
-        }
-        if ($optref->{'describe'}) {
-            # Display name and description
-            say YELLOW, "$bin", RESET;
-            pod2usage( -verbose => 99,
-                       -sections => [ qw(DESCRIPTION) ],
-                       -input => $command,
-                       -exitval => "NOEXIT");
-        } else {
-            if (wantarray) {
-                push(@commands, $bin);
-            } else {
-                # Just list the names
-                say "$bin";
-            }
-        }
-    }
+# Find and list global commands
+for my $command (glob ("$root/bin/*")) {
+	my ($bin, $path) = fileparse($command);
+	if ($bin =~ "webmin") {
+		next;
+		}
+	if ($optref->{'describe'}) {
+		# Display name and description
+		say YELLOW, "$bin", RESET;
+		pod2usage( -verbose => 99,
+				-sections => [ qw(DESCRIPTION) ],
+				-input => $command,
+				-exitval => "NOEXIT");
+		}
+	else {
+		if (wantarray) {
+			push(@commands, $bin);
+			}
+		else {
+			# Just list the names
+			say "$bin";
+			}
+		}
+	}
 
-    my @modules;
-    # Find all module directories with something in bin
-    for my $command (glob ("$root/*/bin/*")) {
-        my ($bin, $path) = fileparse($command);
-        my $module = (split /\//, $path)[-2];
-        if ($optref->{'describe'}) {
-            # Display name and description
-            say YELLOW, "$module-$bin", RESET;
-            pod2usage( -verbose => 99,
-                       -sections => [ qw(DESCRIPTION) ],
-                       -input => $command,
-                       -exitval => "NOEXIT");
-        } else {
-            if (wantarray) {
-                push(@modules, "$module-$bin");
-            } else {
-                # Just list the names
-                say "$module-$bin";
-            }
-        }
-    }
+my @modules;
+# Find all module directories with something in bin
+for my $command (glob ("$root/*/bin/*")) {
+	my ($bin, $path) = fileparse($command);
+	my $module = (split /\//, $path)[-2];
+	if ($optref->{'describe'}) {
+		# Display name and description
+		say YELLOW, "$module-$bin", RESET;
+		pod2usage( -verbose => 99,
+					-sections => [ qw(DESCRIPTION) ],
+					-input => $command,
+					-exitval => "NOEXIT");
+		}
+	else {
+		if (wantarray) {
+			push(@modules, "$module-$bin");
+			}
+		else {
+			# Just list the names
+			say "$module-$bin";
+			}
+		}
+	}
 
-    if (wantarray) {
-        return (@commands, @modules);
-    }
+if (wantarray) {
+	return (@commands, @modules);
+	}
 }
 
 # Display either a short usage message (--help) or a full manual (--man)
-sub man_command {
-    my ($optref, $subcmd) = @_;
+sub man_command
+{
+my ($optref, $subcmd) = @_;
 
-    my $root = root($optref->{'config'});
-    my $command_path = get_command_path($root, $subcmd, $optref);
+my $root = root($optref->{'config'});
+my $command_path = get_command_path($root, $subcmd, $optref);
 
-    $ENV{'PAGER'} ||= "more";
-    open(my $PAGER, "|-", "$ENV{'PAGER'}");
-    if ($optref->{'help'}) {
-        pod2usage( -input => $command_path );
-    } else {
-        pod2usage( -verbose => 99,
-                   -input => $command_path,
-                   -output => $PAGER);
-    }
+$ENV{'PAGER'} ||= "more";
+open(my $PAGER, "|-", "$ENV{'PAGER'}");
+if ($optref->{'help'}) {
+	pod2usage( -input => $command_path );
+	}
+else {
+	pod2usage( -verbose => 99,
+		   -input => $command_path,
+		   -output => $PAGER);
+	}
+close($PAGER);
 }
 
-sub root {
-    my ($config) = @_;
-    open(my $CONF, "<", "$config/miniserv.conf") || die RED,
-        "Failed to open $config/miniserv.conf", RESET , "\n";
-    my $root;
-    while (<$CONF>) {
-        if (/^root=(.*)/) {
-            $root = $1;
-        }
-    }
-    close($CONF);
-    # Does the Webmin root exist?
-    if ( $root ) {
-        die "$root is not a directory. Is --config correct?\n" unless (-d $root);
-    } else {
-        die "Unable to determine Webmin installation directory from $ENV{'WEBMIN_CONFIG'}\n";
-    }
+sub root
+{
+my ($config) = @_;
+open(my $CONF, "<", "$config/miniserv.conf") ||
+	die RED, "Failed to open $config/miniserv.conf", RESET , "\n";
+my $root;
+while (<$CONF>) {
+	if (/^root=(.*)/) {
+		$root = $1;
+		}
+	}
+close($CONF);
 
-    return $root;
+# Does the Webmin root exist?
+if ( $root ) {
+	die "$root is not a directory. Is --config correct?\n" unless (-d $root);
+	}
+else {
+	die "Unable to determine Webmin installation directory ".
+	    "from $ENV{'WEBMIN_CONFIG'}\n";
+	}
+
+return $root;
 }
 
 # loadlibs - Load libraries from the Webmin vendor dir
 # as those may not be installed as dependency, because
 # Webmin already provides them from package manager
 # perspective.
-sub loadlibs {
-    my ($optref) = @_;
-    $optref->{'config'} ||= "/etc/webmin";
-    my $root = root($optref->{'config'});
-    my $libroot = "$root/vendor_perl";
-    eval "use lib '$libroot'";
-    eval "use File::Basename";
-    eval "use File::Spec";
+sub loadlibs
+{
+my ($optref) = @_;
+$optref->{'config'} ||= "/etc/webmin";
+my $root = root($optref->{'config'});
+my $libroot = "$root/vendor_perl";
+eval "use lib '$libroot'";
+eval "use File::Basename";
+eval "use File::Spec";
 }
 
 1;
@@ -453,7 +489,7 @@ Returns Webmin and other modules and themes versions installed (only those for w
 
 =head1 LICENSE AND COPYRIGHT
 
- Copyright 2018 Jamie Cameron <jcameron@webmin.com>
-                Joe Cooper <joe@virtualmin.com>
-                Ilia Ross <ilia@virtualmin.com>
+ Copyright 2018 Jamie Cameron <jamie@webmin.com>
+		Joe Cooper <joe@virtualmin.com>
+		Ilia Ross <ilia@virtualmin.com>
 
