@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $Pod::Usage::Formatter = 'Pod::Text::Color'; }
 use 5.010; # Version in CentOS 6
-use Getopt::Long qw(:config permute pass_through);
+use Getopt::Long qw(:config no_ignore_case permute pass_through);
 use Term::ANSIColor qw(:constants);
 use Pod::Usage;
 
@@ -27,7 +27,7 @@ sub main {
         'describe|d' => \$opt{'describe'},
         'man|m' => \$opt{'man'},
         'version|v' => \$opt{'version'},
-        'versions' => \$opt{'versions'},
+        'versions|V' => \$opt{'versions'},
         '<>' => sub {
             # Handle unrecognized options, inc. subcommands.
             my($arg) = @_;
@@ -56,60 +56,51 @@ sub main {
         exit 0;
     } elsif ($opt{'version'} || $opt{'versions'}) {
         # Load libs
-        my $ver_checked = sub {
-            my ($ver_remote, $ver_curr) = @_;
-            if ($ver_remote && $ver_curr &&
-                compare_version_numbers($ver_remote, $ver_curr) > 0 ) {
-                return (BRIGHT_RED, $ver_curr, RESET, DARK, " (" . RESET, BRIGHT_GREEN, $ver_remote, RESET, DARK . " is available)", RESET);
-            } else {
-                return GREEN, $ver_curr, RESET;
-            }
-        };
         my $print_mod_vers = sub {
-            my ($module_type, $modules_list, $prod_root, $prod_ver, $versions_remote_local) = @_;
-            my @minfo;
-            if (ref($modules_list)) {
-                my $head;
-                my @modules_list = sort(@{$modules_list});
-                foreach my $mod (@modules_list) {
-                    my %mod_info;
-                    read_file($mod, \%mod_info);
-                    my $mod_ver = $mod_info{'version_actual'} || $mod_info{'version'};
-                    my $mod_desc = $mod_info{'desc'};
-                    if ($mod_ver && $prod_ver && $mod_desc && $prod_ver !~ /^$mod_ver/) {
-                        say  CYAN, "  $module_type: ", RESET if (!$head++);
-                        my ($mod_dir) = $mod =~ m/$prod_root\/(.*?)\//;
-                        push(@minfo, {'desc' => $mod_desc, 'ver' => $mod_ver, 'dir' => $mod_dir});
-                    }
+            my ($module_type, $modules_list, $prod_root, $prod_ver) = @_;
+            return if (!ref($modules_list));
+            # Gather module info
+            my @mods;
+            foreach my $mod (@{$modules_list}) {
+                my %mi;
+                read_file($mod, \%mi);
+                my $ver = $mi{'version_actual'} || $mi{'version'};
+                my ($dir) = $mod =~ m/$prod_root\/(.*?)\//;
+                next if (!$ver || !$mi{'desc'} || !$dir);
+                next if ($prod_ver =~ /^\Q$ver\E/);
+                push(@mods, { desc => $mi{'desc'}, ver => $ver, dir => $dir });
+            }
+            # Print sorted by description
+            my $head;
+            foreach my $m (sort { $a->{'desc'} cmp $b->{'desc'} } @mods) {
+                my $mod_ver = $m->{'ver'};
+                if (-r "$prod_root/$m->{'dir'}/module.info") {
+                    eval { no warnings 'once';
+                           local $main::error_must_die = 1;
+                           &foreign_require($m->{'dir'}) };
+                    # Get module edition if available
+                    my $ed;
+                    $ed = eval {
+                        &foreign_call($m->{'dir'}, "get_module_edition") }
+                            if (&foreign_defined($m->{'dir'},
+                                                 "get_module_edition"));
+                    $mod_ver .= " $ed" if ($ed);
                 }
-                @minfo =  sort { $a->{'desc'} cmp $b->{'desc'} } @minfo;
-                foreach my $mod (@minfo) {
-                    say "    $mod->{'desc'}: " , &$ver_checked($versions_remote_local->{$mod->{'dir'}}, $mod->{'ver'}), DARK " [$mod->{'dir'}]", RESET;
-                }
+                say CYAN, "  $module_type: ", RESET if (!$head++);
+                say "    $m->{'desc'}: ", GREEN, $mod_ver, RESET,
+                                          DARK " [$m->{'dir'}]", RESET;
             }
         };
 
         my $root = root($opt{'config'});
         if ($root && -d $root) {
+            $ENV{'WEBMIN_CONFIG'} = $opt{'config'};
+            no warnings 'once';
+            @main::root_directories = ($root);
+            $main::root_directory = $root;
+            *unique = sub { my %seen; grep { !$seen{$_}++ } @_ } if (!defined(&unique));
+            use warnings;
             require("$root/web-lib-funcs.pl");
-            
-            # Try to get remote versions first
-            my %versions_remote;
-            if ($opt{'versions'}) {
-                my ($latest_known_versions_remote, $latest_known_versions_remote_error);
-                http_download("virtualmin.com", 443, '/software-latest',
-                              \$latest_known_versions_remote, \$latest_known_versions_remote_error,
-                              undef, 1, undef, undef, 5);
-                if ($latest_known_versions_remote &&
-                    !$latest_known_versions_remote_error) {
-                        %versions_remote = map {
-                            my ($k, $v) = split(/=/, $_, 2);
-                            defined($v) ? ($k => $v) : ();
-                        } split(/\n/, $latest_known_versions_remote);
-                } elsif ($latest_known_versions_remote_error) {
-                    say BRIGHT_YELLOW, "Warning: ", RESET, "Cannot fetch remote packages versions list - $latest_known_versions_remote_error";
-                }
-            }
             
             # Get Webmin version installed
             my $ver1 = "$root/version";
@@ -126,7 +117,7 @@ sub main {
                     say "$ver$verrel";
                     exit 0;
                 } else {
-                    say CYAN, "Webmin: ", RESET, &$ver_checked($versions_remote{'webmin'}, "$ver$verrel"), DARK " [$root]", RESET;
+                    say CYAN, "Webmin: ", RESET, GREEN, "$ver$verrel", RESET, DARK " [$root]", RESET;
                 }
             } else {
                 say RED, "Error: ", RESET, "Cannot determine Webmin version";
@@ -147,8 +138,8 @@ sub main {
                 }
             }
             closedir($dir);
-            &$print_mod_vers('Themes', \@themes, $root, $ver, \%versions_remote);
-            &$print_mod_vers('Modules', \@mods, $root, $ver, \%versions_remote);
+            &$print_mod_vers('Themes', \@themes, $root, $ver);
+            &$print_mod_vers('Modules', \@mods, $root, $ver);
 
         # Check for Usermin
         my $wmumconfig = "$opt{'config'}/usermin/config";
@@ -175,7 +166,7 @@ sub main {
                         }
                         $uver = trim($uver) . $uverrel;
                         if ($uver) {
-                            say CYAN, "Usermin: ", RESET, &$ver_checked($versions_remote{'usermin'}, $uver), DARK " [$uroot]", RESET;
+                            say CYAN, "Usermin: ", RESET, GREEN, $uver, RESET, DARK " [$uroot]", RESET;
                             my ($udir, @uthemes, @umods);
                             if (opendir($udir, "$uroot")) {
                                 while (my $file = readdir($udir)) {
@@ -190,8 +181,8 @@ sub main {
                                 }
                             }
                             closedir($udir);
-                            &$print_mod_vers('Themes', \@uthemes, $uroot, $uver, \%versions_remote);
-                            &$print_mod_vers('Modules', \@umods, $uroot, $uver, \%versions_remote);
+                            &$print_mod_vers('Themes', \@uthemes, $uroot, $uver);
+                            &$print_mod_vers('Modules', \@umods, $uroot, $uver);
                         }
                     }
                 }
