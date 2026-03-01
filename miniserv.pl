@@ -4369,7 +4369,7 @@ if ($ok && (!$expired ||
 			&write_data("Set-Cookie: $sidname=$sid; path=$cpath".
 				    "$sec\r\n");
 			}
-		&write_data("Location: $prot://$hostport$in{'page'}\r\n");
+		&write_data("Location: $prot://$host$config{'cookiepath'}$in{'page'}\r\n");
 		&write_keep_alive(0);
 		&write_data("\r\n");
 		&log_request($loghost, $authuser, $reqline, 302, 0);
