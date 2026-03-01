@@ -312,7 +312,7 @@ if ($str{'name'} eq 'inet') {
 				my $substr = &parse_struct(
 						$_[0], $_[1], \$i, $j++, $_[4]);
 				if ($substr) {
-					$substr->{'parent'} = \%str;
+					$substr->{'parent'} = {%str};
 					push(@{$str{'members'}->{$t}}, $substr);
 					}
 				}
@@ -346,7 +346,7 @@ else {
 			my $substr = &parse_struct(
 				$_[0], $_[1], \$i, $j++, $_[4]);
 			if ($substr) {
-				$substr->{'parent'} = \%str;
+				$substr->{'parent'} = {%str};
 				push(@mems, $substr);
 				}
 			}
