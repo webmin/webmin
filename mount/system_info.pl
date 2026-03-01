@@ -84,8 +84,8 @@ my @rv = ({ 'type' => 'html',
           });
 
 # Check if the filesystem the Webmin temp dir is on is too small
-if (&foreign_available("webmin")) {
-	my $tmp = $gconfig{'tempdir'} || &default_webmin_temp_dir();
+if (!$gconfig{'tempdir'} && &foreign_available("webmin")) {
+	my $tmp = &default_webmin_temp_dir();
 	my $small = 10*1024*1024;	# 10 MB
 	my $url = &get_webprefix()."/webmin/edit_advanced.cgi";
 	foreach my $disk (sort { length($b->{'dir'}) <=>
