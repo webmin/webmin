@@ -318,11 +318,12 @@ if (&has_command("zpool")) {
 
 # Add up all local filesystems
 foreach my $m (@mounted) {
+	my $tmp_is_tmpfs = $m->[0] eq "/tmp" && $m->[2] eq "tmpfs";
 	if ($m->[2] =~ /^ext/ ||
 	    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" || $m->[2] eq "f2fs" ||
 	    $m->[2] eq "zfs" || $m->[2] eq "simfs" || $m->[2] eq "vzfs" ||
 	    $m->[2] eq "xfs" || $m->[2] eq "jfs" || $m->[2] eq "btrfs" ||
-	    $m->[2] eq "apfs" || $m->[2] eq "fuseblk" ||
+	    $m->[2] eq "apfs" || $m->[2] eq "fuseblk" || $tmp_is_tmpfs ||
 	    $m->[1] =~ /^\/dev\// ||
 	    &indexof($m->[1], @$always) >= 0) {
 		my $zp;
@@ -333,13 +334,13 @@ foreach my $m (@mounted) {
 			$zp = $zpools{$1};
 			}
 		if ($donedevice{$m->[0]}++ ||
-		    $donedevice{$m->[1]}++) {
+		    !$tmp_is_tmpfs && $donedevice{$m->[1]}++) {
 			# Don't double-count mounts from the same device, or
 			# on the same directory.
 			next;
 			}
 		my @st = stat($m->[0]);
-		if (@st && $donedevno{$st[0]}++) {
+		if (!$tmp_is_tmpfs && @st && $donedevno{$st[0]}++) {
 			# Don't double-count same filesystem by device number
 			next;
 			}
