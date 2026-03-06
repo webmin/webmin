@@ -1439,33 +1439,34 @@ parent dirs. The parameters are :
 =cut
 sub auto_home_dir
 {
-local $pfx = $_[0] eq "/" ? "/" : $_[0]."/";
+my ($base, $user, $group) = @_;
+my $pfx = $base eq "/" ? "/" : $base."/";
 if ($config{'home_style'} == 0) {
-	return $pfx.$_[1];
+	return $pfx.$user;
 	}
 elsif ($config{'home_style'} == 1) {
-	&mkdir_if_needed($pfx.substr($_[1], 0, 1));
-	return $pfx.substr($_[1], 0, 1)."/".$_[1];
+	&mkdir_if_needed($pfx.substr($user, 0, 1));
+	return $pfx.substr($user, 0, 1)."/".$user;
 	}
 elsif ($config{'home_style'} == 2) {
-	&mkdir_if_needed($pfx.substr($_[1], 0, 1));
-	&mkdir_if_needed($pfx.substr($_[1], 0, 1)."/".
-			 substr($_[1], 0, 2));
-	return $pfx.substr($_[1], 0, 1)."/".
-	       substr($_[1], 0, 2)."/".$_[1];
+	&mkdir_if_needed($pfx.substr($user, 0, 1));
+	&mkdir_if_needed($pfx.substr($user, 0, 1)."/".
+			 substr($user, 0, 2));
+	return $pfx.substr($user, 0, 1)."/".
+	       substr($user, 0, 2)."/".$user;
 	}
 elsif ($config{'home_style'} == 3) {
-	&mkdir_if_needed($pfx.substr($_[1], 0, 1));
-	&mkdir_if_needed($pfx.substr($_[1], 0, 1)."/".
-			 substr($_[1], 1, 1));
-	return $pfx.substr($_[1], 0, 1)."/".
-	       substr($_[1], 1, 1)."/".$_[1];
+	&mkdir_if_needed($pfx.substr($user, 0, 1));
+	&mkdir_if_needed($pfx.substr($user, 0, 1)."/".
+			 substr($user, 1, 1));
+	return $pfx.substr($user, 0, 1)."/".
+	       substr($user, 1, 1)."/".$user;
 	}
 elsif ($config{'home_style'} == 4) {
-	return $_[0];
+	return $base;
 	}
 elsif ($config{'home_style'} == 5) {
-	return $pfx.$_[2]."/".$_[1];
+	return $pfx.$group."/".$user;
 	}
 }
 
