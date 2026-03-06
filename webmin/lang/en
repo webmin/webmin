@@ -994,7 +994,7 @@ cache_enone=None selected
 cache_efile=Invalid filename
 
 restart_title=Restarting Webmin
-restart_done=The Webmin server process is now restarting - please wait for a few seconds before continuing.
+restart_done=The Webmin server process is restarting. Please wait a few seconds before continuing.
 
 mobile_title=Mobile Device Options
 mobile_header=Options for mobile browsers
@@ -1015,7 +1015,7 @@ blocked_user=Webmin user
 blocked_host=Client host
 blocked_clear=Clear All Blocks
 blocked_cleardesc=Click this button to clear all current host and user blocks, by restarting the Webmin server process.
-blocked_restarting=The Webmin server process is now restarting to clear blocked hosts and users - please wait for a few seconds before continuing.
+blocked_restarting=The Webmin server process is restarting to clear blocked hosts and users. Please wait a few seconds before continuing.
 
 refreshmods_title=Refresh Modules
 refreshmods_installed=Checking for usable Webmin modules ..

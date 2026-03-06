@@ -32,7 +32,8 @@ $miniserv{'twofactor_provider'} = $in{'twofactor_provider'};
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 
-$msg = $text{'restart_done'}."<p>\n";
+$msg = "";
+$msg .= $text{'restart_done'}."<p>\n" if ($gconfig{'restart_async'});
 if ($in{'twofactor_provider'}) {
 	$msg .= &text('twofactor_enrolllink',
 		      "../acl/twofactor_form.cgi")."<p>\n";

@@ -3,6 +3,9 @@
 
 require './webmin-lib.pl';
 
-&show_restart_page($text{'blocked_title'}, $text{'blocked_restarting'});
+&show_restart_page($text{'blocked_title'},
+        $gconfig{'restart_async'}
+                ? $text{'blocked_restarting'}
+                : undef);
 
 
