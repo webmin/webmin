@@ -12,6 +12,13 @@ foreach $fs (&list_filesystems()) {
 		}
 	}
 
+# Load Virtualmin if available
+my $has_virt = 0;
+if (&foreign_check("virtual-server")) {
+	&foreign_require("virtual-server");
+	$has_virt = 1;
+	}
+
 # Look for filesystems with warning enabled
 $now = time();
 foreach $k (keys %config) {
@@ -47,10 +54,7 @@ foreach $k (keys %config) {
 			# Work out the domain, perhaps from Virtualmin
 			$email = $user{$i,'user'}."\@".
 				 $config{'email_domain_'.$f};
-			if ($config{'email_virtualmin_'.$f} &&
-			    &foreign_check("virtual-server")) {
-				&foreign_require("virtual-server",
-						 "virtual-server-lib.pl");
+			if ($config{'email_virtualmin_'.$f} && $has_virt) {
 				local $d = &virtual_server::get_user_domain(
 						$user{$i,'user'});
 				if ($d) {
@@ -129,8 +133,6 @@ foreach $k (keys %config) {
 				}
 			else {
 				# From Virtualmin
-				&foreign_require("virtual-server",
-						 "virtual-server-lib.pl");
 				local $d = &virtual_server::get_domain_by(
 					"group", $group{$i,'group'},
 					"parent", undef);
