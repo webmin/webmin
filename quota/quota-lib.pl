@@ -508,25 +508,31 @@ returned by this function before display to users.
 =cut
 sub block_size
 {
+my ($dir, $forfs) = @_;
+$forfs ||= 0;
 return undef if (!$config{'block_mode'});
 return undef if (!defined(&quota_block_size) &&
 		 !defined(&fs_block_size));
-local @mounts = &mount::list_mounted();
-local ($mount) = grep { $_->[0] eq $_[0] } @mounts;
-if ($mount) {
-	if ($_[1]) {
-		return &fs_block_size(@$mount);
-		}
-	else {
-		if (defined(&quota_block_size)) {
-			return &quota_block_size(@$mount);
+if (!exists($block_size_cache{$dir,$forfs})) {
+	my @mounts = &mount::list_mounted();
+	my ($mount) = grep { $_->[0] eq $dir } @mounts;
+	my $rv = undef;
+	if ($mount) {
+		if ($forfs) {
+			$rv = &fs_block_size(@$mount);
 			}
 		else {
-			return &fs_block_size(@$mount);
+			if (defined(&quota_block_size)) {
+				$rv = &quota_block_size(@$mount);
+				}
+			else {
+				$rv = &fs_block_size(@$mount);
+				}
 			}
 		}
+	$block_size_cache{$dir,$forfs} = $rv;
 	}
-return undef;
+return $block_size_cache{$dir,$forfs};
 }
 
 =head2 nice_limit(amount, bsize, no-blocks)
