@@ -27,8 +27,8 @@ foreach $k (keys %config) {
 		$f = $1;
 		%user = ( );
 		$n = &filesystem_users($f);
-		local %emailtimes;
-		local $qf = $f;
+		my %emailtimes;
+		my $qf = $f;
 		$qf =~ s/\//_/g;
 		&read_file("$module_config_directory/emailtimes.$qf",
 			   \%emailtimes);
@@ -55,11 +55,11 @@ foreach $k (keys %config) {
 			$email = $user{$i,'user'}."\@".
 				 $config{'email_domain_'.$f};
 			if ($config{'email_virtualmin_'.$f} && $has_virt) {
-				local $d = &virtual_server::get_user_domain(
+				my $d = &virtual_server::get_user_domain(
 						$user{$i,'user'});
 				if ($d) {
-					local @users = &virtual_server::list_domain_users($d, 0, 0, 1, 1);
-					local ($uinfo) = grep { $_->{'user'} eq $user{$i,'user'} } @users;
+					my @users = &virtual_server::list_domain_users($d, 0, 0, 1, 1);
+					my ($uinfo) = grep { $_->{'user'} eq $user{$i,'user'} } @users;
 					if ($uinfo && $uinfo->{'domainowner'}) {
 						# Domain owner, with own email
 						$email = $d->{'emailto'};
@@ -97,8 +97,8 @@ foreach $k (keys %config) {
 		# Found a filesystem to check groups on
 		$f = $1;
 		$n = &filesystem_groups($f);
-		local %emailtimes;
-		local $qf = $f;
+		my %emailtimes;
+		my $qf = $f;
 		$qf =~ s/\//_/g;
 		&read_file("$module_config_directory/gemailtimes.$qf",
 			   \%emailtimes);
@@ -122,7 +122,7 @@ foreach $k (keys %config) {
 				 $now - $interval);
 
 			# Work out the destination
-			local $to;
+			my $to;
 			if ($config{'gemail_tomode_'.$f} == 0) {
 				# Same name as group
 				$to = $group{$i,'group'};
@@ -133,7 +133,7 @@ foreach $k (keys %config) {
 				}
 			else {
 				# From Virtualmin
-				local $d = &virtual_server::get_domain_by(
+				my $d = &virtual_server::get_domain_by(
 					"group", $group{$i,'group'},
 					"parent", undef);
 				if ($d) {
@@ -141,7 +141,7 @@ foreach $k (keys %config) {
 					}
 				}
 
-			local $cc = $config{'gemail_cc_'.$f};
+			my $cc = $config{'gemail_cc_'.$f};
 			if (!$to && $cc) {
 				# No to address, such as when a virtualmin
 				# domain was not found. So still send to the 
@@ -152,9 +152,8 @@ foreach $k (keys %config) {
 			if ($to) {
 				# Email the responsible person
 				if ($to !~ /\@/) {
-					local $dom =
-					    $config{'email_domain_'.$f} ||
-					    &get_system_hostname();
+					my $dom = $config{'email_domain_'.$f} ||
+						  &get_system_hostname();
 					$to .= "\@$dom";
 					}
 				&send_quota_mail(
@@ -182,9 +181,9 @@ foreach $k (keys %config) {
 
 sub send_quota_mail
 {
-local ($user, $addr, $limit, $used, $fs, $percent, $from, $grace, $suffix,
+my ($user, $addr, $limit, $used, $fs, $percent, $from, $grace, $suffix,
        $ccaddr) = @_;
-local $bsize = &block_size($fs);
+my $bsize = &block_size($fs);
 if ($bsize) {
 	$used = &nice_size($used*$bsize);
 	$limit = &nice_size($limit*$bsize);
@@ -193,13 +192,13 @@ else {
 	$used = "$used blocks";
 	$limit = "$limit blocks";
 	}
-local $body;
-local %hash = ( 'USER' => $user,
-		'FS' => $fs,
-		'PERCENT' => int($percent),
-		'USED' => $used,
-		'QUOTA' => $limit,
-		'GRACE' => $grace, );
+my $body;
+my %hash = ( 'USER' => $user,
+	     'FS' => $fs,
+	     'PERCENT' => int($percent),
+	     'USED' => $used,
+	     'QUOTA' => $limit,
+	     'GRACE' => $grace, );
 if ($config{$suffix.'_msg'}) {
 	# Use configured template
 	$body = &substitute_template($config{$suffix.'_msg'}, \%hash);
@@ -210,7 +209,7 @@ else {
 	$body = &text($suffix.'_msg', $user, $fs, int($percent), $used,$limit);
 	$body =~ s/\\n/\n/g;
 	}
-local $subject;
+my $subject;
 if ($config{$suffix.'_subject'}) {
 	# Use configured subject
 	$subject = &substitute_template($config{$suffix.'_subject'}, \%hash);
