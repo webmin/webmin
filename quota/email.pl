@@ -21,6 +21,7 @@ if (&foreign_check("virtual-server")) {
 
 # Look for filesystems with warning enabled
 $now = time();
+%domain_users_cache = ( );
 foreach $k (keys %config) {
 	if ($k =~ /^email_(\S+)$/ && $fslist{$1}) {
 		# Found a filesystem to check users on
@@ -58,8 +59,14 @@ foreach $k (keys %config) {
 				my $d = &virtual_server::get_user_domain(
 						$user{$i,'user'});
 				if ($d) {
-					my @users = &virtual_server::list_domain_users($d, 0, 0, 1, 1);
-					my ($uinfo) = grep { $_->{'user'} eq $user{$i,'user'} } @users;
+					# User belongs to a Virtualmin domain, so work
+					# out their email
+					my $users = $domain_users_cache{$d->{'id'}};
+					if (!$users) {
+						$domain_users_cache{$d->{'id'}} = $users =
+						  [ &virtual_server::list_domain_users($d, 0, 0, 1, 1) ];
+						}
+					my ($uinfo) = grep { $_->{'user'} eq $user{$i,'user'} } @$users;
 					if ($uinfo && $uinfo->{'domainowner'}) {
 						# Domain owner, with own email
 						$email = $d->{'emailto'};
