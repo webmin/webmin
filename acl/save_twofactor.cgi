@@ -66,14 +66,17 @@ if ($in{'enable'}) {
 			    { 'provider' => $user->{'twofactor_provider'},
 			      'id' => $user->{'twofactor_id'} });
 
-		# Show a test form, so the user can validate
-		print &ui_form_start("test_twofactor.cgi");
-		print $text{'twofactor_testdesc'},"<p>\n";
-		print "$text{'twofactor_testfield'}&nbsp;\n",
-		      &ui_textbox("test", undef, 12),"\n";
-		print &ui_hidden("user", $in{'user'}) if ($in{'user'});
-		print "<p>\n";
-		print &ui_form_end([ [ undef, $text{'twofactor_test'} ] ]);
+		# Show a test form only when enrolling for yourself
+		if ($user->{'name'} eq $base_remote_user) {
+			print &ui_form_start("test_twofactor.cgi");
+			print $text{'twofactor_testdesc'},"<p>\n";
+			print "$text{'twofactor_testfield'}&nbsp;\n",
+				&ui_textbox("test", undef, 12),"\n";
+			print &ui_hidden("user", $in{'user'}) if ($in{'user'});
+			print "<p>\n";
+			print &ui_form_end([ [ undef,
+				$text{'twofactor_test'} ] ]);
+			}
 		}
 
 	&ui_print_footer("", $text{'index_return'});
