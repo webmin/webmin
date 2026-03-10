@@ -9,8 +9,8 @@ $access{'perms'} == 1 || &error($text{'perms_ecannot'});
 if ($in{'delete'}) {
 	# Delete some user
 	&execute_sql_logged($master_db,
-		     "delete from user where user = '$in{'olduser'}' ".
-		     "and host = '$in{'oldhost'}'");
+		     "delete from user where user = ? and host = ?",
+		     $in{'olduser'}, $in{'oldhost'});
 	}
 else {
 	# Validate inputs

@@ -11,8 +11,8 @@ if ($in{'delete'}) {
 	$access{'perms'} == 1 || &can_edit_db($in{'olddb'}) ||
 		&error($text{'perms_edb'});
 	&execute_sql_logged($master_db,
-		"delete from db where user = '$in{'olduser'}' ".
-		"and host = '$in{'oldhost'}' and db = '$in{'olddb'}'");
+		"delete from db where user = ? and host = ? and db = ?",
+		$in{'olduser'}, $in{'oldhost'}, $in{'olddb'});
 	}
 else {
 	# Validate inputs

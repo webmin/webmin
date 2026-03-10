@@ -11,10 +11,10 @@ if ($in{'delete'}) {
 	$access{'perms'} == 1 || &can_edit_db($in{'olddb'}) ||
 		&error($text{'perms_edb'});
 	&execute_sql_logged($master_db,
-		"delete from columns_priv where user = '$in{'olduser'}' ".
-		"and host = '$in{'oldhost'}' and db = '$in{'olddb'}' ".
-		"and table_name = '$in{'oldtable'}' ".
-		"and column_name = '$in{'oldfield'}'");
+		"delete from columns_priv where user = ? and host = ? ".
+		"and db = ? and table_name = ? and column_name = ?",
+		$in{'olduser'}, $in{'oldhost'}, $in{'olddb'},
+		$in{'oldtable'}, $in{'oldfield'});
 	}
 else {
 	# Validate inputs

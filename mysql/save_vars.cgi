@@ -10,9 +10,10 @@ if ($in{'save'} || !@d) {
 	# Update edited
 	$count = 0;
 	foreach $v (keys %in) {
-		if ($v =~ /^value_(\S+)$/) {
+		if ($v =~ /^value_([A-Za-z0-9_]+)$/) {
 			&execute_sql_logged($master_db,
-					    "set global $1 = '$in{$v}'");
+					    "set global $1 = ?",
+					    $in{$v});
 			$first ||= $1;
 			$count++;
 			}
