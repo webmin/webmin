@@ -55,7 +55,7 @@ if ($in{'enable'}) {
 		my $mfunc = "webmin::message_twofactor_".
 			    $miniserv{'twofactor_provider'};
 		if (defined(&{\&{$mfunc}})) {
-			print &{\&{$mfunc}}($user);
+			print "<p></p>".&{\&{$mfunc}}($user);
 			}
 
 		# Save user
@@ -65,6 +65,15 @@ if ($in{'enable'}) {
 		&webmin_log("twofactor", "user", $user->{'name'},
 			    { 'provider' => $user->{'twofactor_provider'},
 			      'id' => $user->{'twofactor_id'} });
+
+		# Show a test form, so the user can validate
+		print &ui_form_start("test_twofactor.cgi");
+		print $text{'twofactor_testdesc'},"<p>\n";
+		print "$text{'twofactor_testfield'}&nbsp;\n",
+		      &ui_textbox("test", undef, 12),"\n";
+		print &ui_hidden("user", $in{'user'}) if ($in{'user'});
+		print "<p>\n";
+		print &ui_form_end([ [ undef, $text{'twofactor_test'} ] ]);
 		}
 
 	&ui_print_footer("", $text{'index_return'});
