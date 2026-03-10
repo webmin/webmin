@@ -12,6 +12,9 @@ foreach $p (@packages) {
 	push(@names, $n); push(@descs, $d);
 	}
 -r $in{'file'} || &error($text{'do_edeleted'});
+if ($in{'source'} == 2 && $in{'down'}) {
+	&validate_remote_download_target();
+	}
 &ui_print_header(undef, $text{'do_title'}, "");
 print "<b>",&text('do_header', join(" ", @names)),"</b><p>\n";
 
@@ -78,7 +81,10 @@ foreach $h (@hosts) {
 				}
 			}
 		}
-	&remote_eval($s->{'host'}, "software", "unlink('$rfile')") if ($need_unlink);
+	if ($need_unlink) {
+		local $qfile = &quote_literal_escape($rfile);
+		&remote_eval($s->{'host'}, "software", "unlink('$qfile')");
+		}
 	}
 unlink($in{'file'}) if ($in{'need_unlink'});
 print "<p><b>$text{'do_done'}</b><p>\n";

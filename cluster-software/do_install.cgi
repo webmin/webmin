@@ -24,6 +24,9 @@ else {
 	}
 
 $in{'source'} == 3 || -r $in{'file'} || &error($text{'do_edeleted'});
+if ($in{'source'} == 2 && $in{'down'}) {
+	&validate_remote_download_target();
+	}
 &ui_print_header(undef, $text{'do_title'}, "");
 
 # Setup error handler for down hosts
@@ -75,8 +78,9 @@ foreach $h (@hosts) {
 		elsif ($in{'source'} == 0) {
 			# Is the file the same on remote (like if we have NFS)
 			local @st = stat($in{'file'});
+			local $qfile = &quote_literal_escape($in{'file'});
 			local $rst = &remote_eval($s->{'host'}, "software",
-						  "[ stat('$in{'file'}') ]");
+						  "[ stat('$qfile') ]");
 			local @rst = @$rst;
 			if (@st && @rst && $st[7] == $rst[7] &&
 			    $st[9] == $rst[9]) {
@@ -170,8 +174,11 @@ foreach $h (@hosts) {
 					}
 				}
 			}
-		&remote_eval($s->{'host'}, "software", "unlink('$rfile')")
-			if ($need_unlink);
+		if ($need_unlink) {
+			local $qfile = &quote_literal_escape($rfile);
+			&remote_eval($s->{'host'}, "software",
+				     "unlink('$qfile')");
+			}
 
 		print $wh &serialise_variable(\@rv);
 		close($wh);

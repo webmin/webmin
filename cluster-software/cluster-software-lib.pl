@@ -10,6 +10,24 @@ use WebminCore;
 $parallel_max = 20;
 %access = &get_module_acl();
 
+# validate_remote_download_target()
+# Validates URL-derived download target fields in %in
+sub validate_remote_download_target
+{
+$in{'host'} =~ /^\S+$/ || &error("Invalid download host");
+my @ips = &to_ipaddress($in{'host'});
+push(@ips, &to_ip6address($in{'host'}));
+@ips || &error("Invalid download host");
+if ($in{'ftpfile'}) {
+	$in{'ftpfile'} =~ /^\/\S+$/ || &error("Invalid FTP path");
+	}
+else {
+	$in{'port'} =~ /^\d+$/ && $in{'port'} >= 1 && $in{'port'} <= 65535 ||
+		&error("Invalid HTTP port");
+	$in{'page'} =~ /^\/\S*$/ || &error("Invalid HTTP path");
+	}
+}
+
 # list_software_hosts()
 # Returns a list of all hosts whose software is being managed by this module
 sub list_software_hosts
