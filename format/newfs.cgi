@@ -16,13 +16,15 @@ $cmd .= &opt_check("ufs_f", '\d+', "-f");
 $cmd .= &opt_check("ufs_i", '\d+', "-i");
 $cmd .= &opt_check("ufs_m", '\d+', "-m");
 $cmd .= &opt_check("ufs_n", '\d+', "-n");
+$in{ufs_o} =~ /^(space|time)$/ || !$in{ufs_o} ||
+	&error($text{'newfs_ecannot'});
 $cmd .= $in{ufs_o} ? " -o $in{ufs_o}" : "";
 $cmd .= &opt_check("ufs_r", '\d+', "-r");
 $cmd .= &opt_check("ufs_s", '\d+', "-s");
 $cmd .= &opt_check("ufs_t", '\d+', "-t");
 $cmd .= &opt_check("ufs_cb", '\d+', "-C");
 $in{dev} =~ s/dsk/rdsk/g;
-$cmd .= " $in{dev}";
+$cmd .= " ".quotemeta($in{dev});
 
 &ui_print_header(undef, $text{'newfs_title'}, "");
 

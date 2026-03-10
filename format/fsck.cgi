@@ -7,8 +7,9 @@ $access{'view'} && &error($text{'ecannot'});
 &ReadParse();
 &can_edit_disk($in{'dev'}) || &error($text{'fsck_ecannot'});
 &ui_print_header(undef, $text{'fsck_title'}, "");
+$in{'mode'} =~ /^-(m|n|y)$/ || &error($text{'fsck_ecannot'});
 $in{dev} =~ s/dsk/rdsk/g;
-$cmd = "fsck -F ufs $in{mode} $in{dev}";
+$cmd = "fsck -F ufs $in{mode} ".quotemeta($in{dev});
 
 print &text('fsck_exec', "<tt>$cmd</tt>"),"<p>\n";
 print "<pre>\n";

@@ -13,9 +13,11 @@ $cmd .= &opt_check("tunefs_a", '\d+', "-a");
 $cmd .= &opt_check("tunefs_d", '\d+', "-d");
 $cmd .= &opt_check("tunefs_e", '\d+', "-e");
 $cmd .= &opt_check("tunefs_m", '\d+', "-m");
+$in{tunefs_o} =~ /^(space|time)$/ || !$in{tunefs_o} ||
+	&error($text{'tunefs_ecannot'});
 $cmd .= $in{tunefs_o} ? " -o $in{tunefs_o}" : "";
 $in{dev} =~ s/dsk/rdsk/g;
-$cmd .= " $in{dev}";
+$cmd .= " ".quotemeta($in{dev});
 
 &ui_print_header(undef, $text{'tunefs_title'}, "");
 
