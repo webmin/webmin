@@ -5,10 +5,12 @@
 require './init-lib.pl';
 &ReadParse();
 $access{'bootup'} == 1 || &error($text{'change_ecannot'});
+my %ok_levels = map { $_, 1 } (&list_runlevels(), "S", "s");
+$ok_levels{$in{'level'}} || &error($text{'change_ecannot'});
 
 &ui_print_header(undef, $text{'change_title'}, "");
 
-$cmd = "telinit '$in{'level'}'";
+$cmd = "telinit ".quotemeta($in{'level'});
 print "<p>",&text('change_cmd', $in{'level'}, "<tt>$cmd</tt>"),"<p>\n";
 &system_logged("$cmd </dev/null >/dev/null 2>&1 &");
 &webmin_log("telinit", $in{'level'});
