@@ -17,7 +17,25 @@ foreach $a ('start', 'restart', 'condrestart', 'reload', 'status', 'stop') {
 	}
 $action ||= 'stop';
 &ui_print_header(undef, $text{'ss_'.$action}, "");
-$cmd = $in{'file'}." ".$action;
+
+# Only allow known init action files
+my %ok_files;
+foreach my $a (&list_actions()) {
+	my ($name) = split(/\s+/, $a);
+	my $file = $name =~ /^\// ? $name : "$config{'init_dir'}/$name";
+	$ok_files{$file} = 1;
+	}
+foreach my $rl (&list_runlevels()) {
+	foreach my $w ("S", "K") {
+		foreach my $a (&runlevel_actions($rl, $w)) {
+			my ($order, $name) = split(/\s+/, $a);
+			my $file = "$config{'init_base'}/rc$rl.d/$w$order$name";
+			$ok_files{$file} = 1 if (-r $file);
+			}
+		}
+	}
+$ok_files{$in{'file'}} || &error($text{'ss_ecannot'});
+$cmd = quotemeta($in{'file'})." ".quotemeta($action);
 
 # In case the action was Webmin
 $SIG{'TERM'} = 'ignore';
