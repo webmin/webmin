@@ -726,7 +726,35 @@ return 0 if ($empty > 1 && !($_[0] =~ /^::/ && $empty == 2));
 return 1;
 }
 
+=head2 is_non_public_ipaddress(ip)
 
+Returns 1 if an IP is non-public (private, local, link-local, reserved,
+multicast), otherwise 0.
+
+=cut
+sub is_non_public_ipaddress
+{
+my ($ip) = @_;
+if (&check_ipaddress($ip)) {
+	my @o = split(/\./, $ip);
+	return 1 if ($o[0] == 0 || $o[0] == 10 || $o[0] == 127);
+	return 1 if ($o[0] == 169 && $o[1] == 254);
+	return 1 if ($o[0] == 172 && $o[1] >= 16 && $o[1] <= 31);
+	return 1 if ($o[0] == 192 && $o[1] == 168);
+	return 1 if ($o[0] == 100 && $o[1] >= 64 && $o[1] <= 127);
+	return 1 if ($o[0] >= 224);
+	}
+elsif (&check_ip6address($ip)) {
+	my $l = lc($ip);
+	return 1 if ($l eq "::1" || $l eq "::");
+	return 1 if ($l =~ /^fe[89ab]/);
+	return 1 if ($l =~ /^f[cd]/);
+	if ($l =~ /^::ffff:(\d+\.\d+\.\d+\.\d+)$/) {
+		return &is_non_public_ipaddress($1);
+		}
+	}
+return 0;
+}
 
 =head2 generate_icon(image, title, link, [href], [width], [height], [before-title], [after-title])
 
