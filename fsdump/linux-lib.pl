@@ -343,6 +343,19 @@ else {
 $_[0]->{'remount'} = $in{'remount'};
 }
 
+# split_shell_words(string)
+# Splits command-line text to shell words while rejecting line breaks
+sub split_shell_words
+{
+my ($str) = @_;
+return () if (!defined($str) || $str !~ /\S/);
+my @words = &split_quoted_string($str);
+foreach my $w (@words) {
+	$w =~ /[\r\n\0]/ && &error("Invalid command-line parameter");
+	}
+return @words;
+}
+
 # execute_dump(&dump, filehandle, escape, background-mode, [time])
 # Executes a dump and displays the output
 sub execute_dump
@@ -381,7 +394,8 @@ if ($_[0]->{'fs'} eq 'tar') {
 			$cmd .= " --exclude ".quotemeta($e);
 			}
 		}
-	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
+	my @extra = &split_shell_words($_[0]->{'extra'});
+	$cmd .= " ".join(" ", map { quotemeta($_) } @extra) if (@extra);
 	$cmd .= " ".join(" ", map { quotemeta($_) } @dirs);
 	}
 elsif ($_[0]->{'fs'} eq 'xfs') {
@@ -397,7 +411,8 @@ elsif ($_[0]->{'fs'} eq 'xfs') {
 	$cmd .= " -o" if ($_[0]->{'overwrite'});
 	$cmd .= " -E -F" if ($_[0]->{'erase'});
 	$cmd .= " -b $_[0]->{'bsize'}" if ($_[0]->{'bsize'});
-	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
+	my @extra = &split_shell_words($_[0]->{'extra'});
+	$cmd .= " ".join(" ", map { quotemeta($_) } @extra) if (@extra);
 	$cmd .= " ".join(" ", map { quotemeta($_) } @dirs);
 	}
 else {
@@ -412,11 +427,12 @@ else {
 	$cmd .= " -h0" if ($_[0]->{'honour'});
 	$cmd .= " -j$_[0]->{'comp'}" if ($_[0]->{'comp'});
 	$cmd .= " -F ".quotemeta("$tapecmd $_[0]->{'id'}") if ($tapecmd);
-	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
+	my @extra = &split_shell_words($_[0]->{'extra'});
+	$cmd .= " ".join(" ", map { quotemeta($_) } @extra) if (@extra);
 	$cmd .= " ".quotemeta($_[0]->{'dir'});
 	if ($_[0]->{'rsh'}) {
 		$cmd = "RSH=".quotemeta($_[0]->{'rsh'})." ".
-		       "RMT=\"touch ".quotemeta($hfile)."; /etc/rmt\" $cmd";
+		"RMT=\"touch ".quotemeta($hfile)."; /etc/rmt\" $cmd";
 		}
 	else {
 		$cmd = "RMT=\"touch ".quotemeta($hfile)."; /etc/rmt\" $cmd";
@@ -719,10 +735,16 @@ if ($_[0] eq 'tar') {
 		$in{'rmt'} =~ /^\S+$/ || &error($text{'dump_ermt'});
 		$cmd .= " --rmt-command=".quotemeta($in{'rmt'});
 		}
-	$cmd .= " $in{'extra'}" if ($in{'extra'});
+	if ($in{'extra'} && !$access{'extra'}) {
+		&error($text{'restore_ecannot'});
+		}
+	my @extra = &split_shell_words($in{'extra'});
+	$cmd .= " ".join(" ", map { quotemeta($_) } @extra) if (@extra);
 	if (!$in{'files_def'}) {
 		$in{'files'} || &error($text{'restore_efiles'});
-		$cmd .= " $in{'files'}";
+		my @files = &split_shell_words($in{'files'});
+		@files || &error($text{'restore_efiles'});
+		$cmd .= " ".join(" ", map { quotemeta($_) } @files);
 		}
 	-d $in{'dir'} || &error($text{'restore_edir'});
 	$cmd = "cd ".quotemeta($in{'dir'})." && $cmd";
@@ -737,7 +759,11 @@ elsif ($_[0] eq 'xfs') {
 	$cmd .= " -A" if ($in{'noattribs'});
 	$cmd .= " -L ".quotemeta($in{'label'}) if ($in{'label'});
 	$cmd .= " -F";
-	$cmd .= " $in{'extra'}" if ($in{'extra'});
+	if ($in{'extra'} && !$access{'extra'}) {
+		&error($text{'restore_ecannot'});
+		}
+	my @extra = &split_shell_words($in{'extra'});
+	$cmd .= " ".join(" ", map { quotemeta($_) } @extra) if (@extra);
 	if (!$in{'test'}) {
 		-d $in{'dir'} || &error($text{'restore_edir'});
 		$cmd .= " ".quotemeta($in{'dir'});
@@ -757,10 +783,16 @@ else {
 			}
 		}
 	$cmd .= " -u";		# force overwrite
-	$cmd .= " $in{'extra'}" if ($in{'extra'});
+	if ($in{'extra'} && !$access{'extra'}) {
+		&error($text{'restore_ecannot'});
+		}
+	my @extra = &split_shell_words($in{'extra'});
+	$cmd .= " ".join(" ", map { quotemeta($_) } @extra) if (@extra);
 	if (!$in{'files_def'}) {
 		$in{'files'} || &error($text{'restore_efiles'});
-		$cmd .= " $in{'files'}";
+		my @files = &split_shell_words($in{'files'});
+		@files || &error($text{'restore_efiles'});
+		$cmd .= " ".join(" ", map { quotemeta($_) } @files);
 		}
 	-d $in{'dir'} || &error($text{'restore_edir'});
 	}
