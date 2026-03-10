@@ -112,6 +112,20 @@ if (!defined($gconfig{'noselfwebminup'})) {
 	&has_repos();
 	}
 
+=head2 no_log
+
+Returns request regexes that should be excluded from miniserv request logging.
+
+=cut
+sub no_log
+{
+my $prefix = $gconfig{'webprefixnoredir'} ? "" :
+	     ($gconfig{'webprefix'} || "");
+$prefix =~ s/\/+$//;
+$prefix = quotemeta($prefix);
+return ( $prefix."/webmin/qr\\.cgi.*" );
+}
+
 =head2 has_repos
 
 Checks if package manager repositories are

@@ -3351,6 +3351,16 @@ sub reset_byte_count { $write_data_count = 0; }
 # byte_count()
 sub byte_count { return $write_data_count; }
 
+# get_module()
+# Returns module name from SCRIPT_NAME
+sub get_module
+{
+my $sn = $ENV{'SCRIPT_NAME'} || "";
+$sn =~ s/^\Q$config{'webprefix'}\E\//\//
+	if (!$config{'webprefixnoredir'} && $config{'webprefix'});
+return $sn =~ /^\/([^\/]+)\// ? ( $1 ) : ();
+}
+
 # log_request(hostname, user, request, code, bytes)
 # Write an HTTP request to the log file
 sub log_request
@@ -3365,6 +3375,16 @@ if ($request =~ /^(POST|GET)\s+/) {
 	}
 if ($config{'nolog'}) {
 	foreach my $nolog (split(/\s+/, $config{'nolog'})) {
+		return if ($request_nolog =~ /^$nolog$/);
+		}
+	}
+my $mod = &get_module();
+if ($mod) {
+	my $pkg = $mod;
+	$pkg =~ s/[^A-Za-z0-9]/_/g;
+	my $func = $pkg."::no_log";
+	my @patterns = defined(&{$func}) ? eval { &{$func}() } : ();
+	foreach my $nolog (@patterns) {
 		return if ($request_nolog =~ /^$nolog$/);
 		}
 	}
