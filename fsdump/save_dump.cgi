@@ -75,6 +75,10 @@ else {
 	$dump->{'email'} = $in{'email_def'} ? '*' : $in{'email'};
 	$dump->{'subject'} = $in{'subject_def'} ? undef : $in{'subject'};
 	if ($access{'extra'}) {
+		if (defined($in{'extra'}) &&
+			$in{'extra'} =~ /[;&|`\$<>\r\n\0]/) {
+			&error("Invalid extra command-line parameters");
+			}
 		$dump->{'extra'} = $in{'extra'};
 		}
 	if ($access{'cmds'}) {
