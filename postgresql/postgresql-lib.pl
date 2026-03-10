@@ -776,15 +776,37 @@ if (!-d $dir) {
 	}
 }
 
+# quote_table(table)
+# Quotes a table name, including any schema
 sub quote_table
 {
 local @tn = split(/\./, $_[0]);
-return join(".", map { "\"$_\"" } @tn);
+return join(".", map { &pg_quote_ident($_) } @tn);
 }
 
+# quotestr(string)
+# Quotes a string for use in SQL statements
 sub quotestr
 {
-return "\"$_[0]\"";
+return &pg_quote_ident($_[0]);
+}
+
+# pg_quote_ident(name)
+# Quotes an identifier for use in SQL statements
+sub pg_quote_ident
+{
+my ($name) = @_;
+$name =~ s/"/""/g;
+return "\"$name\"";
+}
+
+# pg_quote_lit(string)
+# Quotes a literal for use in SQL statements
+sub pg_quote_lit
+{
+my ($value) = @_;
+$value =~ s/'/''/g;
+return "'$value'";
 }
 
 # execute_sql_file(database, file, [user, pass], [unix-user])
