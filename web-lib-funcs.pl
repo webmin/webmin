@@ -376,6 +376,33 @@ $tmp =~ s/\'/&#39;/g if (!$only || $only eq "'");
 return $tmp;
 }
 
+=head2 quote_literal_escape(string, [quote-char])
+
+Escapes a string for safe inclusion in a Perl string literal. By default,
+escapes for single-quoted strings. If quote-char is C<">, escapes for
+double-quoted strings too.
+
+=cut
+sub quote_literal_escape
+{
+my ($str, $quote) = @_;
+return '' if (!defined($str));
+$quote ||= "'";
+
+# Backslashes are escape leaders in both literal types
+$str =~ s/\\/\\\\/g;
+if ($quote eq '"') {
+	# Double-quoted Perl strings also interpolate sigils
+	$str =~ s/"/\\"/g;
+	$str =~ s/\$/\\\$/g;
+	$str =~ s/\@/\\\@/g;
+	}
+else {
+	$str =~ s/'/\\'/g;
+	}
+return $str;
+}
+
 =head2 quote_javascript(string)
 
 Quote all characters that are unsafe for inclusion in javascript strings in HTML
