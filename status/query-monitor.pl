@@ -1,8 +1,16 @@
 # query-monitor.pl
 # Try an SQL query on a MySQL or PostgreSQL server
 
+my %allowed_query_drivers = map { $_, 1 } ("mysql", "Pg", "Oracle");
+
 sub get_query_status
 {
+if (!$allowed_query_drivers{$_[0]->{'driver'}}) {
+	return { 'up' => -1,
+		 'desc' => &text('query_edriver',
+				 "<tt>DBD::$_[0]->{'driver'}</tt>") };
+	}
+
 # Load the driver
 local $drh;
 eval <<EOF;
@@ -75,7 +83,12 @@ print &ui_table_row($text{'query_result'},
 
 sub parse_query_dialog
 {
-eval "use DBD::$in{'driver'}";
+$allowed_query_drivers{$in{'driver'}} ||
+	&error(&text('query_edriver', "<tt>DBD::$in{'driver'}</tt>"));
+eval {
+	require DBI;
+	DBI->install_driver($in{'driver'});
+	};
 &error(&text('query_edriver', "<tt>DBD::$in{'driver'}</tt>")) if ($@);
 $_[0]->{'driver'} = $in{'driver'};
 
