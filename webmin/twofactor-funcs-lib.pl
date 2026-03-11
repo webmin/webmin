@@ -227,8 +227,13 @@ my $str = "otpauth://totp/".$name."?secret=".$user->{'twofactor_id'};
 my $qrcode = &ui_tag('p',
 	&text('twofactor_qrcode', "<tt>$user->{'twofactor_id'}</tt>"));
 if (&can_generate_qr()) {
-	my $url = "$gconfig{'webprefix'}/webmin/qr.cgi?size=6";
-	$url = "qr.cgi?size=6" if (&get_product_name() eq 'usermin');
+	my $url;
+	if (&get_product_name() eq 'usermin') {
+		$url = "qr.cgi?size=6";
+		}
+	else {
+		$url = "$gconfig{'webprefix'}/webmin/qr.cgi?size=6";
+		}
 	my $id = "twofactor_qr_".int(time())."_".int(rand(1000000));
 	my $img = &ui_tag('img', undef,
 		{ 'id' => $id, 'border' => 0,
