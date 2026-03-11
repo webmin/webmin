@@ -224,24 +224,52 @@ sub message_twofactor_totp
 my ($user) = @_;
 my $name = &get_display_hostname()." (".$user->{'name'}.")";
 my $str = "otpauth://totp/".$name."?secret=".$user->{'twofactor_id'};
-my $url;
+my $qrcode = &ui_tag('p',
+	&text('twofactor_qrcode', "<tt>$user->{'twofactor_id'}</tt>"));
 if (&can_generate_qr()) {
-	if (&get_product_name() eq 'usermin') {
-		$url = "qr.cgi?size=6&str=".&urlize($str);
-		}
-	else {
-		$url = "$gconfig{'webprefix'}/webmin/qr.cgi?".
-		       "size=6&str=".&urlize($str);
-		}
+	my $url = "$gconfig{'webprefix'}/webmin/qr.cgi?size=6";
+	$url = "qr.cgi?size=6" if (&get_product_name() eq 'usermin');
+	my $id = "twofactor_qr_".int(time())."_".int(rand(1000000));
+	my $img = &ui_tag('img', undef,
+		{ 'id' => $id, 'border' => 0,
+		  'style' => 'width:210px; height:210px; '.
+		  	     'border:1px solid #444;',
+		  'alt' => 'QR code' });
+	my $id_js = &quote_javascript($id);
+	my $url_js = &quote_javascript($url);
+	my $str_js = &quote_javascript($str);
+	return <<EOF;
+	$qrcode$img
+<script>
+(function() {
+const img = document.getElementById("$id_js"),
+      body = "str=" + encodeURIComponent("$str_js");
+fetch("$url_js", {
+	method: "POST",
+	body: body
+	}).then(function(response) {
+		if (!response.ok) { return null; }
+		return response.blob();
+	}).then(function(blob) {
+		if (!blob) { return; }
+		const reader = new FileReader();
+		reader.onloadend = function() { img.src = reader.result; };
+		reader.readAsDataURL(blob);
+	}).catch(function() { });
+})();
+</script>
+<p>
+EOF
 	}
 else {
-	$url = "https://api.qrserver.com/v1/create-qr-code/?".
-	       "size=200x200&data=".&urlize($str);
+	my $url = "https://api.qrserver.com/v1/create-qr-code/?".
+		  "size=200x200&data=".&urlize($str);
+	my $img = &ui_tag('img', undef,
+		{ 'src' => $url, 'border' => 0, 'alt' => 'QR code' });
+	return <<EOF;
+	$qrcode$img<p>
+EOF
 	}
-my $rv;
-$rv .= &text('twofactor_qrcode', "<tt>$user->{'twofactor_id'}</tt>")."<p>\n";
-$rv .= "<img src='$url' border=0><p>\n";
-return $rv;
 }
 
 # validate_twofactor_totp(id, token)
