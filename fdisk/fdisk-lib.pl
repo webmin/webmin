@@ -918,7 +918,7 @@ if ($has_parted) {
 	elsif ($tag eq "linux-swap") {
 		@rv = ( "swap" );
 		}
-	elsif ($tag eq "NTFS") {
+	elsif ($tag eq "NTFS" || $tag eq "ntfs") {
 		@rv = ( "ntfs" );
 		}
 	elsif ($tag eq "reiserfs") {
