@@ -9,7 +9,7 @@ index_medit=Manage
 index_manual=Edit Manually
 index_anyfile=Edit other PHP configuration file
 index_return=configuration files
-index_pkgs=Manage PHP Packages
+index_pkgs=Manage PHP Versions
 index_pkgsdesc=Install and remove PHP versions from your system's software package repository, so that they can be configured here any used in Virtualmin.
 
 file_global=Global PHP configuration
