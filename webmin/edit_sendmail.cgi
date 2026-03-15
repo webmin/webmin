@@ -62,11 +62,12 @@ print &ui_table_row($text{'sendmail_auth'},
 $from = $mconfig{'webmin_from'};
 $fromdef = "webmin-noreply\@".&mailboxes::get_from_domain();
 print &ui_table_row($text{'sendmail_from'},
-	&ui_opt_textbox("from", $from, 40,
-			&text('sendmail_fromdef', $fromdef)."<br>",
-			$text{'sendmail_fromaddr'})." ".
-	$text{'sendmail_name'}." ".
-	&ui_textbox("from_name", $mconfig{'webmin_from_name'}, 30), 3);
+	&ui_radio_table("from_def", $from ? 0 : 1,
+			[ [ 1, "", &text('sendmail_fromdef', $fromdef) ],
+			  [ 0, "", $text{'sendmail_fromaddr'}." ".
+				   &ui_textbox("from", $from, 40)."<br>\n".
+				   $text{'sendmail_name'}." ".
+				   &ui_textbox("from_name", $mconfig{'webmin_from_name'}, 30) ] ]), 3);
 
 # Default to address for notifications
 $to = $gconfig{'webmin_email_to'};
