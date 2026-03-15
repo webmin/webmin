@@ -649,7 +649,7 @@ if (!$main::WRAPPER_OPEN) { # If we're not already inside of a wrapper, wrap it
 	}
 $main::WRAPPER_OPEN++;
 my $colspan = 1;
-$rv .= "<details class='ui_hidden_table_start'$opened>";
+$rv .= "<details data-name='$name' class='ui_hidden_table_start'$opened $tabletags>";
 $rv .= "<summary>$header $rheader</summary>\n";
 $rv .= "<table width=100%>\n";
 $main::ui_table_cols = $cols || 4;
