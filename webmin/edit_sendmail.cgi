@@ -47,9 +47,9 @@ print &ui_table_row($text{'sendmail_login'},
 	&ui_radio("login_def", $user ? 0 : 1,
 		  [ [ 1, $text{'sendmail_login1'}."<br>" ],
 		    [ 0, $text{'sendmail_login0'} ] ])." ".
-	&ui_textbox("login_user", $user, 20)." ".
-	$text{'sendmail_pass'}." ".
-	&ui_textbox("login_pass", $pass, 20));
+	&ui_textbox("login_user", $user, 12)."&nbsp;".
+	$text{'sendmail_pass'}."&nbsp;&nbsp;".
+	&ui_textbox("login_pass", $pass, 12));
 
 # Authentication method
 $auth = $mconfig{'smtp_auth'};
