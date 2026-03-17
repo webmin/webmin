@@ -1175,6 +1175,47 @@ elsif ($init_mode eq "launchd") {
 	}
 }
 
+=head2 activate_action(name)
+
+Unmasks some action, enables it at boot time, and starts it if not running.
+Returns 1 if the action exists, 0 if not.
+
+=cut
+sub activate_action
+{
+my ($name) = @_;
+my $st = &action_status($name);
+return 0 if (!$st);
+&unmask_action($name);
+&enable_at_boot($name);
+my $running = &status_action($name);
+if ($running != 1) {  # unknown or stopped
+	&start_action($name);
+	}
+return 1;
+}
+
+=head2 deactivate_action(name, [mask])
+
+Stops some action if currently running, disables it at boot time, and masks it
+on systemd systems. The optional mask flag can be set to 0 to skip masking.
+Returns 1 if the action exists, 0 if not.
+
+=cut
+sub deactivate_action
+{
+my ($name, $mask) = @_;
+my $st = &action_status($name);
+return 0 if (!$st);
+my $running = &status_action($name);
+if ($running != 0) {  # unknown or running
+	&stop_action($name);
+	}
+&disable_at_boot($name);
+&mask_action($name) if (!defined($mask) || $mask);
+return 1;
+}
+
 =head2 delete_at_boot(name)
 
 Delete the init script, RC script or whatever with some name
