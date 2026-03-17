@@ -222,11 +222,12 @@ print &ui_table_row($text{'index_email'}, $efield);
 
 # Install or just notify?
 print &ui_table_row($text{'index_action'},
-		    &ui_radio("action", int($config{'sched_action'}),
+		    &ui_select("action", int($config{'sched_action'}),
 			       [ [ -1, $text{'index_action-1'} ],
 			         [ 0, $text{'index_action0'} ],
 			         [ 1, $text{'index_action1'} ],
-			         [ 2, $text{'index_action2'} ] ]));
+			         [ 2, $text{'index_action2'} ] ])."<br>\n".
+		    &ui_note($text{'index_action_note'}, 0));
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
