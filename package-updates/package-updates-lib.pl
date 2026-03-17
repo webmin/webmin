@@ -8,6 +8,16 @@ eval "use WebminCore;";
 &foreign_require("cron", "cron-lib.pl");
 &foreign_require("webmin", "webmin-lib.pl");
 
+# Known OS package auto-update services that can overlap with Webmin's
+# scheduled package updates.
+@auto_update_services = (
+	"unattended-upgrades",
+	"dnf-automatic.timer",
+	"dnf-automatic-install.timer",
+	"dnf-automatic-download.timer",
+	"dnf-automatic-notifyonly.timer",
+);
+
 $available_cache_file = &cache_file_path("available.cache");
 $current_cache_file = &cache_file_path("current.cache");
 $updates_cache_file = &cache_file_path("updates.cache");
@@ -18,6 +28,36 @@ $apt_cache_file = &cache_file_path("aptcache");
 $yum_changelog_cache_dir = &cache_file_path("yumchangelog");
 
 $update_progress_dir = "$module_var_directory/progress";
+
+# list_enabled_auto_update_services()
+# Returns known OS-level auto-update services that are currently enabled.
+sub list_enabled_auto_update_services
+{
+return ( ) if (!&foreign_check("init"));
+&foreign_require("init");
+my @rv;
+foreach my $service (@auto_update_services) {
+	next if (&init::action_status($service) != 2); # not enabled
+	my $service_name = $service;
+	$service_name =~ s/\.[^\.]+$//; # nice name
+	push(@rv, { 'service' => $service, 'name' => $service_name });
+	}
+return @rv;
+}
+
+# disable_enabled_auto_update_services()
+# Stops, disables and masks known auto-update services that are enabled.
+sub disable_enabled_auto_update_services
+{
+return ( ) if (!&foreign_check("init"));
+&foreign_require("init");
+my @services = map { $_->{'service'} } &list_enabled_auto_update_services();
+my @rv;
+foreach my $service (@services) {
+	push(@rv, $service) if (&init::deactivate_action($service, 0));
+	}
+return @rv;
+}
 
 # cache_file_path(name)
 # Returns a path in the /var directory unless the file already exists under

@@ -221,13 +221,23 @@ else {
 print &ui_table_row($text{'index_email'}, $efield);
 
 # Install or just notify?
-print &ui_table_row($text{'index_action'},
-		    &ui_select("action", int($config{'sched_action'}),
-			       [ [ -1, $text{'index_action-1'} ],
-			         [ 0, $text{'index_action0'} ],
-			         [ 1, $text{'index_action1'} ],
-			         [ 2, $text{'index_action2'} ] ])."<br>\n".
-		    &ui_note($text{'index_action_note'}, 0));
+$action_ui = &ui_select("action", int($config{'sched_action'}),
+			[ [ -1, $text{'index_action-1'} ],
+			  [ 0, $text{'index_action0'} ],
+			  [ 1, $text{'index_action1'} ],
+			  [ 2, $text{'index_action2'} ] ]);
+if (my @auto_updates = &list_enabled_auto_update_services()) {
+	# If any auto-update services are enabled, show option to disable them
+	$auto_update_names = join(", ", map { $_->{'name'} } @auto_updates);
+	$action_ui .= " ".
+		&ui_checkbox("disable_auto_updates", 1,
+			     &text('index_action_disable',
+				   $auto_update_names), 0);
+	$action_ui .= "<br>\n".
+		&ui_note(&text('index_action_note',
+				&ui_tag('tt', $auto_update_names)));
+	}
+print &ui_table_row($text{'index_action'}, $action_ui);
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
