@@ -3439,7 +3439,7 @@ sub ui_tag
 {
 return theme_ui_tag(@_) if (defined(&theme_ui_tag));
 my ($tag, $content, $attrs) = @_;
-my $rv = ui_tag_start($tag, $attrs, 1);
+my $rv = ui_tag_start($tag, $attrs, !defined($content));
 $rv .= ui_tag_content($content) if (defined($content));
 my %void_tags = map { $_ => 1 }
 	qw(
