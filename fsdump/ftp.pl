@@ -4,6 +4,13 @@
 $no_acl_check++;
 require './fsdump-lib.pl';
 
+eval { require IO::Socket::SSL; };
+if ($@) {
+print STDERR "E1\nIO::Socket::SSL missing. Install with: apt-get install libio-socket-ssl-perl\n";
+exit(1);
+}
+IO::Socket::SSL->import();
+
 # Parse args, and get password
 select(STDERR); $| = 1; select(STDOUT);
 $host = $ARGV[0];
@@ -36,14 +43,23 @@ while(1) {
 		&error_exit("FTP connection failed : $err") if ($err);
 		&ftp_command("", 2, \$err) ||
 			&error_exit("FTP prompt failed : $err");
+		$ssl_enabled = 0;
+		if (&ftp_command("AUTH TLS", 2, \$err)) {
+		    if (IO::Socket::SSL->start_SSL(\*SOCK, SSL_verify_mode => 0)) {
+		        $ssl_enabled = 1;
+		    }
+		}
 
 		# Login to server
-		@urv = &ftp_command("USER $user", [ 2, 3 ], \$err);
-		@urv || &error_exit("FTP login failed : $err");
-		if (int($urv[1]/100) == 3) {
-			&ftp_command("PASS $pass", 2, \$err) ||
-				&error_exit("FTP login failed : $err");
-			}
+		&ftp_command("USER $user", [ 2, 3 ], \$err) || &error_exit("FTP login failed : $err");
+		if ($pass ne "") {
+		&ftp_command("PASS $pass", [ 2, 3 ], \$err) || &error_exit("FTP login failed : $err");
+		}
+
+		if ($ssl_enabled) {
+		    &ftp_command("PBSZ 0", 2, \$err);
+		    &ftp_command("PROT P", 2, \$err);
+		}
 		&ftp_command("TYPE I", 2, \$err) ||
 			&error_exit("FTP file type failed : $err");
 
@@ -171,8 +187,8 @@ elsif ($mode == 2) {
 		&error_exit("FTP write failed : $err");
 	$opened = 1;
 	}
-else {
-	$opened = 0;
+if ($opened && $ssl_enabled) {
+	IO::Socket::SSL->start_SSL(\*CON, SSL_verify_mode => 0) || &error_exit("SSL data connect failed: $!");
 	}
 }
 
