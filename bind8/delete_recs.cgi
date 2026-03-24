@@ -45,7 +45,7 @@ else {
 
 	my %bumpedrev;
 	my @delr;
-	foreach my $d (sort { $b <=> $a } @d) {
+	foreach my $d (sort { ($b =~ /^(\d+)/)[0] <=> ($a =~ /^(\d+)/)[0] } @d) {
 		my ($num, $id) = split(/\//, $d, 2);
 		my $r = &find_record_by_id(\@recs, $id, $num);
 		next if (!$r);
@@ -77,7 +77,7 @@ else {
 		# Delete the actual record
 		&lock_file(&make_chroot($r->{'file'}));
 		&delete_record($r->{'file'}, $r);
-		splice(@recs, $d, 1);
+		splice(@recs, $num, 1);
 		push(@delr, $r);
 		}
 	&bump_soa_record($zone->{'file'}, \@recs);

@@ -172,6 +172,7 @@ for(my $i=0; $i<@_; $i++) {
 	else {
 		$name = $r->{'name'};
 		}
+	$name //= "";
 	my @cols;
 	$name = &html_escape($name);
 	my $id = &record_id($r);
