@@ -488,6 +488,7 @@ else {
 		}
 	else {
 		# For other record types, just save the lines
+		$in{'values'} //= "";
 		$in{'values'} =~ s/\r//g;
 		my @vlines = split(/\n/, $in{'values'});
 		$vals = join(" ",map { $_ =~ /\s|;/ ? "\"$_\"" : $_ } @vlines);

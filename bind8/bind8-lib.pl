@@ -700,7 +700,7 @@ if ($v && $v->{'members'}) {
 		push(@av, join(" ", $av->{'name'}, @{$av->{'values'}}));
 		}
 	}
-if ($_[3] == 0) {
+if (!$_[3]) {
 	# text area
 	return &ui_table_row($_[0],
 		&ui_textarea($_[1], join("\n", @av), 3, 50));
@@ -805,14 +805,14 @@ my $v = &find($_[1], $_[2]);
 my $n;
 ($n = $_[1]) =~ s/[^A-Za-z0-9_]/_/g;
 return &ui_table_row($_[0],
-	&ui_opt_textbox($n, $v ? $v->{'value'} : "", $_[4], $_[3])." ".$_[5],
+	&ui_opt_textbox($n, $v ? $v->{'value'} : "", $_[4], $_[3])." ".($_[5] // ""),
 	$_[4] > 30 ? 3 : 1);
 }
 
 sub save_opt
 {
 my ($dir, $n, $err);
-($n = $_[0]) =~ s/[^A-Za-z0-9_]/_/g;
+($n = ($_[0] // "")) =~ s/[^A-Za-z0-9_]/_/g;
 if ($in{"${n}_def"}) { &save_directive($_[2], $_[0], [ ], $_[3]); }
 elsif ($err = &{$_[1]}($in{$n})) {
 	&error($err);
@@ -906,7 +906,7 @@ my ($fwdconf, $fwdfile, $fwdrec, $ipv6);
 # find forward domain
 my $host = $_[0]; $host =~ s/\.$//;
 my @zl = grep { $_->{'type'} ne 'view' } &list_zone_names();
-if ($_[1] ne '' && $_[1] ne 'any') {
+if ($_[1] && $_[1] ne 'any') {
 	@zl = grep { $_->{'view'} && $_->{'viewindex'} == $_[1] } @zl;
 	}
 else {
@@ -968,6 +968,7 @@ else {
 # Returns 1 if some zone can be edited
 sub can_edit_zone
 {
+$access{'zones'} //= '*';
 my %zcan;
 my ($zn, $vn, $file);
 if ($_[0]->{'members'}) {
@@ -2405,7 +2406,7 @@ return undef;
 sub is_bind_running
 {
 my $pidfile = &get_pid_file();
-my $rv = &check_pid_file(&make_chroot($pidfile, 1));
+my $rv = &check_pid_file(&make_chroot($pidfile, 1)) || 0;
 if (!$rv && $gconfig{'os_type'} eq 'windows') {
 	# Fall back to checking for process
 	$rv = &find_byname("named");
@@ -2536,6 +2537,7 @@ if ($changed || !$znc{'version'} ||
 			next if (!$type);
 			$type = lc($type);
 			my $file = &find_value("file", $z->{'members'});
+			$file //= "";
 			my $up = &find("update-policy", $z->{'members'});
 			my $au = &find("allow-update", $z->{'members'});
 			my $dynamic = $up || $au || $gau ? 1 : 0;
@@ -3198,6 +3200,7 @@ else {
 	$zonename = $zone->{'name'};
 	$zonefile = $zone->{'file'};
 	}
+return () if (!$zonename || !$zonefile);
 my $out = &backquote_command(
 	$config{'checkzone'}." ".quotemeta($zonename)." ".
 	quotemeta(&make_chroot(&absolute_path($zonefile)))." 2>&1 </dev/null");
@@ -3221,6 +3224,7 @@ else {
 	$zonename = $zone->{'name'};
 	$zonefile = $zone->{'file'};
 	}
+return () if (!$zonename || !$zonefile);
 my $absfile = &make_chroot(&absolute_path($zonefile));
 my $out = &backquote_command(
 	$config{'checkzone'}." ".quotemeta($zonename)." ".
@@ -3934,7 +3938,7 @@ if (&find_byname("nscd")) {
 sub transfer_slave_records
 {
 my ($dom, $masters, $file, $source, $sourceport) = @_;
-my $sourcearg;
+my $sourcearg = "";
 if ($source && $source ne "*") {
 	$sourcearg = "-t ".$source;
 	if ($sourceport) {
