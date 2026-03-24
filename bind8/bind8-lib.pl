@@ -3367,7 +3367,7 @@ if (!$access{'ro'} && $access{'apply'}) {
 		if ($zone && ($access{'apply'} == 1 || $access{'apply'} == 2)) {
 			# Apply this zone
 		        my $link = "restart_zone.cgi?return=$r&".
-				   "view=$zone->{'viewindex'}&".
+				   "view=".($zone->{'viewindex'} // "")."&".
 				   "zone=$zone->{'name'}";
 			push(@rv, &ui_link($link, $text{'links_apply'}) );
 			}
