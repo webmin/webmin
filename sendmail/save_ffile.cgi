@@ -7,7 +7,7 @@ require (-r 'sendmail-lib.pl' ? './sendmail-lib.pl' :
 			     './postfix-lib.pl');
 &ReadParseMime();
 &error_setup($text{'ffile_err'});
-if (substr($in{'file'}, 0, length($access{'apath'})) ne $access{'apath'}) {
+if (!&is_under_directory($access{'apath'}, $in{'file'})) {
 	&error(&text('ffile_efile', $in{'file'}));
 	}
 
