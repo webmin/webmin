@@ -1,5 +1,15 @@
 ## Changelog
 
+#### 2.630 (March 24, 2026)
+* Add improvements to user input validation across all modules
+* Update Authentic theme to the latest version with various improvements and fixes:
+  - Add a new airy button style to the light palette to match the dark one  
+  - Fix to optimize stats server to reduce WebSocket memory usage  
+  - Fix the real-time follow indicator when viewing the journal  
+  - Fix regex-based match highlighting when viewing the journal  
+  - Fix mail compose panel sizing in HTML mode on low-DPR screens  
+  - Fix display of the 2FA QR code in the dark palette
+
 #### 2.621 (January 25, 2026)
 * Fix to prevent NAT from dropping idle RPC sessions during long transfers
 * Fix to improve the message when socket authentication is used in the MySQL/MariaDB module
