@@ -206,7 +206,8 @@ if ($key) {
 	$pflag = "--batch --passphrase-file ".
 		 quotemeta(&get_passphrase_file($key));
 	}
-my $cmd = "$gpgpath $pflag --output ".quotemeta($dstfile).
+my $cmd = "$gpgpath --pinentry-mode loopback $pflag".
+	  " --output ".quotemeta($dstfile).
 	  " --decrypt ".quotemeta($srcfile);
 my ($fh, $fpid) = &proc::pty_process_exec($cmd);
 my ($error, $seen_pass, $keyid);
