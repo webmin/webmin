@@ -284,7 +284,8 @@ if (!defined($pass)) {
 	return $text{'gnupg_esignpass'}.". ".
 	    &text('gnupg_canset', "/gnupg/edit_key.cgi?key=$key->{'key'}").".";
 	}
-my $pflag = "--batch --passphrase-file ".quotemeta(&get_passphrase_file($key));
+my $pflag = "--batch --pinentry-mode loopback --passphrase-file ".
+	    quotemeta(&get_passphrase_file($key));
 my $cmd;
 if ($mode == 0) {
 	$cmd = "$gpgpath $pflag --output ".quotemeta($dstfile)." --default-key $key->{'key'} --sign ".quotemeta($srcfile);
