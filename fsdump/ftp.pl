@@ -1,15 +1,10 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # Pass data from stdin to an FTP server
 
 $no_acl_check++;
 require './fsdump-lib.pl';
 
-eval { require IO::Socket::SSL; };
-if ($@) {
-print STDERR "E1\nIO::Socket::SSL missing. Install with: apt-get install libio-socket-ssl-perl\n";
-exit(1);
-}
-IO::Socket::SSL->import();
+$has_ssl_module = eval { require IO::Socket::SSL; IO::Socket::SSL->import(); 1; };
 
 # Parse args, and get password
 select(STDERR); $| = 1; select(STDOUT);
@@ -45,13 +40,25 @@ while(1) {
 			&error_exit("FTP prompt failed : $err");
 		$ssl_enabled = 0;
 		if (&ftp_command("AUTH TLS", 2, \$err)) {
-		    if (IO::Socket::SSL->start_SSL(\*SOCK, SSL_verify_mode => 0)) {
-		        $ssl_enabled = 1;
+		    if ($has_ssl_module) {
+		        if (IO::Socket::SSL->start_SSL(\*SOCK, SSL_verify_mode => 0)) {
+		            $ssl_enabled = 1;
+		        }
+		    } else {
+		        # Sadece bilgi amaçlı loga yazdırılır, işlemi kesmez
+		        print STDERR "Uyari: Sunucu SSL destekliyor ancak IO::Socket::SSL modulu eksik. Sifresiz baglanti deneniyor...\n";
 		    }
 		}
 
 		# Login to server
-		&ftp_command("USER $user", [ 2, 3 ], \$err) || &error_exit("FTP login failed : $err");
+		if (!&ftp_command("USER $user", [ 2, 3 ], \$err)) {
+		    # Sunucu SSL'i ZORUNLU kılıyorsa ve bizde modül yoksa net bir hata fırlat
+		    if ($err =~ /Policy requires SSL/i && !$has_ssl_module) {
+		        &error_exit("KRITIK HATA: Sunucu guvenli baglanti (SSL) zorunlu kiliyor, ancak sunucuda IO::Socket::SSL Perl modulu eksik! Kurulum icin: apt-get install libio-socket-ssl-perl");
+		    } else {
+		        &error_exit("FTP login failed : $err");
+		    }
+		}
 		if ($pass ne "") {
 		&ftp_command("PASS $pass", [ 2, 3 ], \$err) || &error_exit("FTP login failed : $err");
 		}
