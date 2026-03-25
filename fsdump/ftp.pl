@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # Pass data from stdin to an FTP server
 
 $no_acl_check++;
