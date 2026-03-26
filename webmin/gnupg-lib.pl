@@ -206,47 +206,67 @@ if ($key) {
 	$pflag = "--batch --passphrase-file ".
 		 quotemeta(&get_passphrase_file($key));
 	}
-my $cmd = "$gpgpath --pinentry-mode loopback $pflag".
-	  " --output ".quotemeta($dstfile).
-	  " --decrypt ".quotemeta($srcfile);
-my ($fh, $fpid) = &proc::pty_process_exec($cmd);
 my ($error, $seen_pass, $keyid);
-$wait_for_debug = 1;
+my $retry = 0;
 while(1) {
-	my $rv = &wait_for($fh, "passphrase:", "key,\\s+ID\\s+(\\S+),", "failed.*\\n", "error.*\\n", "invalid.*\\n", "signal caught.*\\n");
-	if ($rv == 0) {
-		# Only needed if caller didn't supply a key with passphrase
-		last if ($seen_pass++);
-		sleep(1);
-		syswrite($fh, "$pass\n", length("$pass\n"));
-		}
-	elsif ($rv == 1) {
-		# Only needed if caller didn't supply a key
-		$keyid = $matches[1];
-		my $rkey;
-		($rkey) = grep { &indexof($matches[1], @{$_->{'key2'}}) >= 0 ||
-				$_->{'key'} eq $matches[1] }
-			      &list_secret_keys();
-		if ($rkey && $key) {
-			# Does discovered key match?
-			return &text('gnupg_ecryptkey2', "<tt>$keyid</tt>")
-				if ($rkey->{'key'} ne $key->{'key'});
+	unlink($dstfile);
+	my $cmd = "$gpgpath --pinentry-mode loopback $pflag".
+		  " --output ".quotemeta($dstfile).
+		  " --decrypt ".quotemeta($srcfile);
+	my ($fh, $fpid) = &proc::pty_process_exec($cmd);
+	my $rerun = 0;
+	$error = $seen_pass = $keyid = undef;
+	while(1) {
+		my $rv = &wait_for($fh, "passphrase:", "key,\\s+ID\\s+(\\S+),", "failed.*\\n", "error.*\\n", "invalid.*\\n", "signal caught.*\\n");
+		if ($rv == 0) {
+			# Only needed if caller didn't supply a key with passphrase
+			last if ($seen_pass++);
+			sleep(1);
+			syswrite($fh, "$pass\n", length("$pass\n"));
 			}
-		elsif ($rkey && !$key) {
-			# Discovered the key to use
-			$pass = &get_passphrase($rkey);
-			$key = $rkey;
+		elsif ($rv == 1) {
+			# Only needed if caller didn't supply a key
+			$keyid = $matches[1];
+			my $rkey;
+			($rkey) = grep { &indexof($matches[1], @{$_->{'key2'}}) >= 0 ||
+					$_->{'key'} eq $matches[1] }
+				      &list_secret_keys();
+			if ($rkey && $key) {
+				# Does discovered key match?
+				return &text('gnupg_ecryptkey2', "<tt>$keyid</tt>")
+					if ($rkey->{'key'} ne $key->{'key'});
+				}
+			elsif ($rkey && !$key) {
+				# Discovered the key to use. Retry with a stored
+				# passphrase file for newer GnuPG versions
+				$pass = &get_passphrase($rkey);
+				$key = $rkey;
+				if (defined($pass) && !$retry++) {
+					$pflag = "--batch --passphrase-file ".
+						 quotemeta(
+							&get_passphrase_file(
+								$key));
+					$rerun++;
+					last;
+					}
+				}
+			}
+		elsif ($rv > 1) {
+			$error++;
+			last;
+			}
+		elsif ($rv < 0) {
+			last;
 			}
 		}
-	elsif ($rv > 1) {
-		$error++;
-		last;
+	if ($rerun) {
+		kill('TERM', $fpid);
+		close($fh);
+		next;
 		}
-	elsif ($rv < 0) {
-		last;
-		}
+	close($fh);
+	last;
 	}
-close($fh);
 &reset_environment();
 unlink($srcfile);
 my $dst = &read_file_contents($dstfile);
