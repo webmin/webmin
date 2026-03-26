@@ -4,6 +4,16 @@
 $no_acl_check++;
 require './fsdump-lib.pl';
 
+sub start_tls
+{
+my ($fh, $what) = @_;
+eval { require IO::Socket::SSL; IO::Socket::SSL->import(); 1; } ||
+	&error_exit("FTP server requires TLS, but IO::Socket::SSL is not installed");
+IO::Socket::SSL->start_SSL($fh, SSL_verify_mode => 0) ||
+	&error_exit("FTP $what TLS handshake failed : ".
+		    IO::Socket::SSL::errstr());
+}
+
 # Parse args, and get password
 select(STDERR); $| = 1; select(STDOUT);
 $host = $ARGV[0];
@@ -36,6 +46,15 @@ while(1) {
 		&error_exit("FTP connection failed : $err") if ($err);
 		&ftp_command("", 2, \$err) ||
 			&error_exit("FTP prompt failed : $err");
+		$ssl_enabled = 0;
+		if (&ftp_command("AUTH TLS", 2, \$err)) {
+			&start_tls(\*SOCK, "control");
+			&ftp_command("PBSZ 0", 2, \$err) ||
+				&error_exit("FTP TLS setup failed : $err");
+			&ftp_command("PROT P", 2, \$err) ||
+				&error_exit("FTP TLS setup failed : $err");
+			$ssl_enabled = 1;
+			}
 
 		# Login to server
 		@urv = &ftp_command("USER $user", [ 2, 3 ], \$err);
@@ -173,6 +192,9 @@ elsif ($mode == 2) {
 	}
 else {
 	$opened = 0;
+	}
+if ($opened && $ssl_enabled) {
+	&start_tls(\*CON, "data");
 	}
 }
 
