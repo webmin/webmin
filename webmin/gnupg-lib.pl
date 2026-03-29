@@ -93,6 +93,19 @@ sub list_secret_keys
 return grep { $_->{'secret'} } &list_keys();
 }
 
+# key_matches_id(id, &key)
+# Returns 1 if some GnuPG key ID or fingerprint refers to the given key
+sub key_matches_id
+{
+my ($id, $key) = @_;
+$id = lc($id);
+return 1 if (lc($key->{'key'}) eq $id || lc($key->{'key'}) =~ /\Q$id\E$/);
+foreach my $key2 (@{$key->{'key2'}}) {
+	return 1 if (lc($key2) eq $id || lc($key2) =~ /\Q$id\E$/);
+	}
+return 0;
+}
+
 # key_fingerprint(&key)
 sub key_fingerprint
 {
@@ -228,13 +241,12 @@ while(1) {
 			# Only needed if caller didn't supply a key
 			$keyid = $matches[1];
 			my $rkey;
-			($rkey) = grep { &indexof($matches[1], @{$_->{'key2'}}) >= 0 ||
-					$_->{'key'} eq $matches[1] }
+			($rkey) = grep { &key_matches_id($matches[1], $_) }
 				      &list_secret_keys();
 			if ($rkey && $key) {
 				# Does discovered key match?
 				return &text('gnupg_ecryptkey2', "<tt>$keyid</tt>")
-					if ($rkey->{'key'} ne $key->{'key'});
+					if (!&key_matches_id($keyid, $key));
 				}
 			elsif ($rkey && !$key) {
 				# Discovered the key to use. Retry with a stored
