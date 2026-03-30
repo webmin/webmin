@@ -1602,6 +1602,7 @@ else { return " $_[2] ".quotemeta($in{$_[0]}); }
 	'HFS', 'MacOS HFS',
 	'linux-swap', 'Linux Swap',
 	'NTFS', 'Windows NTFS',
+	'ntfs', 'Windows NTFS',
 	'reiserfs', 'ReiserFS',
 	'ufs', 'FreeBSD UFS',
 	);
