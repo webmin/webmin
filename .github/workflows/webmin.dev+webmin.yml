@@ -1,5 +1,7 @@
 name: "webmin.dev: webmin/webmin"
 
+if: github.repository == 'webmin/webmin'
+
 on:
   push:
     branches:
