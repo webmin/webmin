@@ -122,41 +122,50 @@ if ($rangeable) {
 	}
 
 if (!$in{'new'}) {
-	# Save button
+	# Button row: save on left, actions on right
+	print "<div style='display:flex;justify-content:space-between;".
+		"align-items:center;flex-wrap:wrap;'>\n";
+	
+	# Left: Save buttons (submit main form)
+	print "<div class='btn-group'>\n";
 	print &ui_submit($text{'save'});
 	print &ui_submit($text{'edit_saverun'}, 'saverun');
+	print "</div>\n";
+
+	# Right: Run, Clone, Delete (linked to external forms)
+	print "<div class='btn-group'>\n";
+	if (!$rpd) {
+		print &ui_submit($text{'edit_run'}, undef, undef,
+			"form='run_form'");
+		}
+	print &ui_submit($text{'edit_clone'}, undef, undef,
+		"form='clone_form'");
+	if ($access{'delete'}) {
+		print &ui_submit($text{'delete'}, undef, undef,
+			"form='delete_form'");
+		}
+	print "</div>\n";
+	print "</div>\n";
 	print &ui_form_end();
 
-	# Run button
-	print "<table class='ui_table_end_submit_right'><tr>\n";
+	# External forms for secondary actions
 	if (!$rpd) {
-		print "<td>";
-		print &ui_form_start("exec_cron.cgi");
+		print &ui_form_start("exec_cron.cgi", "post",
+			undef, "id='run_form'");
 		print &ui_hidden("idx", $in{'idx'});
-		print &ui_submit($text{'edit_run'});
 		print &ui_form_end();
-		print "</td>\n";
 		}
-
-	# Clone button
-	print "<td>";
-	print &ui_form_start("edit_cron.cgi");
+	print &ui_form_start("edit_cron.cgi", "post",
+		undef, "id='clone_form'");
 	print &ui_hidden("clone", $in{'idx'});
 	print &ui_hidden("new", 1);
-	print &ui_submit($text{'edit_clone'});
 	print &ui_form_end();
-	print "</td>";
-
-	# Delete button
 	if ($access{'delete'}) {
-		print "<td>";
-		print &ui_form_start("delete_cron.cgi");
+		print &ui_form_start("delete_cron.cgi", "post",
+			undef, "id='delete_form'");
 		print &ui_hidden("idx", $in{'idx'});
-		print &ui_submit($text{'delete'});
 		print &ui_form_end();
-		print "</td>\n";
 		}
-	print "</tr></table>\n";
 	}
 else {
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
@@ -164,4 +173,3 @@ else {
 
 &ui_print_footer("index.cgi?search=".&urlize($in{'search'}),
 		 $text{'index_return'});
-
