@@ -15,3 +15,4 @@ display_max=100
 desc_name=0
 interfaces_type=debian
 lease_vendor=0
+list_listen_interfaces=0

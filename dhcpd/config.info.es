@@ -6,3 +6,4 @@ dhcpd_conf=Archivo de configuración del servidor DHCP,0
 dhcpd_path=Ejecutable del servidor DHCP,0
 pid_file=Trayectoria a archivo PID del servidor DHCP,0
 lease_file=Archivo de arriendo del servidor DHCP,0
+list_listen_interfaces=Lista de Interfaces Listen,1,0-Solo los Interfaces Activos,1-Todos los Interfaces
