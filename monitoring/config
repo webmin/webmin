@@ -1,0 +1,3 @@
+history_file=/var/webmin/monitoring/history.csv
+history_lines=1000
+refresh_interval=10

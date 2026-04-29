@@ -1,0 +1,16 @@
+[history_file]
+label=Performance History File
+default=/var/webmin/monitoring/history.csv
+type=file
+
+[history_lines]
+label=Maximum History Lines
+default=1000
+type=number
+size=6
+
+[refresh_interval]
+label=Refresh Interval (seconds)
+default=10
+type=number
+size=5

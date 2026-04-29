@@ -1,0 +1,14 @@
+[scripts_dir]
+label=Scripts Directory
+default=/var/webmin/automation/scripts
+type=dir
+
+[configs_dir]
+label=Configs Directory
+default=/var/webmin/automation/configs
+type=dir
+
+[deployments_dir]
+label=Deployments Directory
+default=/var/webmin/automation/deployments
+type=dir

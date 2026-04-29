@@ -1,0 +1,3 @@
+kubectl_cmd=/usr/bin/kubectl
+kubeconfig_path=
+default_namespace=default

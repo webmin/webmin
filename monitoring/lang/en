@@ -1,0 +1,53 @@
+index_title=System Monitoring
+index_desc=System monitoring and performance analysis
+
+index_sysinfo=Hostname: %s<br>Distribution: %s<br>Kernel: %s<br>CPU: %s
+
+index_overview=System Overview
+index_uptime=Uptime
+index_users=users
+index_load=Load Average
+index_cpu=CPU Usage
+index_cpu_breakdown=CPU Breakdown
+index_cpu_user=User
+index_cpu_system=System
+index_cpu_idle=Idle
+index_memory=Memory Usage
+index_memory_details=Memory Details
+index_mem_free=Free
+index_mem_buffers=Buffers
+index_mem_cached=Cached
+
+index_tabdisks=Disk Usage
+index_tabnetwork=Network
+index_tabservices=Services
+index_tabprocesses=Processes
+index_tablogs=Logs
+
+index_fs=Filesystem
+index_size=Size
+index_used=Used
+index_available=Available
+index_usage=Usage
+index_mounted=Mounted
+index_interface=Interface
+index_rx=Received
+index_tx=Transmitted
+index_service=Service
+index_status=Status
+index_pid=PID
+index_user=User
+index_vsz=VSZ
+index_rss=RSS
+index_command=Command
+index_totalprocesses=Total Processes
+index_recentlogs=Recent Logs
+
+index_nodisks=No disk information available
+index_nonetwork=No network information available
+index_noservices=No service information available
+index_noprocesses=No processes found
+index_nologs=No logs available
+
+action_kill=Kill
+action_kill9=Force Kill

@@ -1,0 +1,3 @@
+scripts_dir=/var/webmin/automation/scripts
+configs_dir=/var/webmin/automation/configs
+deployments_dir=/var/webmin/automation/deployments

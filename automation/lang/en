@@ -1,0 +1,43 @@
+index_title=Automation Management
+index_desc=Automated operations and configuration management
+
+index_tabscripts=Scripts
+index_tabconfigs=Configs
+index_tabcron=Cron Jobs
+index_tabdeployments=Deployments
+
+index_name=Name
+index_size=Size
+index_mtime=Modified
+index_executable=Executable
+index_app=Application
+index_env=Environment
+index_status=Status
+index_minute=Minute
+index_hour=Hour
+index_day=Day
+index_month=Month
+index_dow=Day of Week
+index_command=Command
+
+index_noscripts=No scripts found
+index_noconfigs=No configs found
+index_nodeployments=No deployments found
+index_nocron=No cron jobs found
+
+index_newscript=Create New Script
+index_newscriptdesc=Create a new automation script
+index_newconfig=Create New Config
+index_newconfigdesc=Create a new configuration file
+index_newdeployment=Create New Deployment
+index_newdeploymentdesc=Create a new deployment configuration
+index_newcron=Add Cron Job
+index_newcrondesc=Add a new scheduled cron job
+
+action_run=Run
+action_edit=Edit
+action_delete=Delete
+action_execute=Execute
+
+yes=Yes
+no=No

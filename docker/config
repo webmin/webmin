@@ -1,0 +1,5 @@
+docker_cmd=/usr/bin/docker
+docker_compose_cmd=/usr/bin/docker-compose
+show_all=1
+refresh_interval=5
+max_log_lines=1000

@@ -1,0 +1,26 @@
+[docker_cmd]
+label=Docker Command
+default=/usr/bin/docker
+type=file
+
+[docker_compose_cmd]
+label=Docker Compose Command
+default=/usr/bin/docker-compose
+type=file
+
+[show_all]
+label=Show All Containers
+default=1
+type=yesno
+
+[refresh_interval]
+label=Refresh Interval (seconds)
+default=5
+type=number
+size=5
+
+[max_log_lines]
+label=Maximum Log Lines
+default=1000
+type=number
+size=10

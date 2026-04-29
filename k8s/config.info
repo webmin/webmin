@@ -1,0 +1,15 @@
+[kubectl_cmd]
+label=Kubectl Command
+default=/usr/bin/kubectl
+type=file
+
+[kubeconfig_path]
+label=Kubeconfig Path
+default=
+type=file
+
+[default_namespace]
+label=Default Namespace
+default=default
+type=text
+size=30

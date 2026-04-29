@@ -1,0 +1,51 @@
+index_title=Kubernetes Management
+index_desc=Manage Kubernetes clusters and resources
+
+index_ecmd=Kubernetes management requires the <tt>%s</tt> command. Either install it, or correct its path on the <a href='%s'>module config</a> page.
+index_version=Kubernetes version: %s
+index_context=Current context: %s
+index_namespace=Namespace
+
+index_tabpods=Pods
+index_tabservices=Services
+index_tabdeployments=Deployments
+index_tabnodes=Nodes
+index_tabnamespaces=Namespaces
+index_tabconfigmaps=ConfigMaps
+index_tabsecrets=Secrets
+index_tabcontexts=Contexts
+
+index_name=Name
+index_status=Status
+index_node=Node
+index_restarts=Restarts
+index_image=Image
+index_age=Age
+index_type=Type
+index_clusterip=Cluster IP
+index_ports=Ports
+index_replicas=Replicas
+index_available=Available
+index_ready=Ready
+index_roles=Roles
+index_version=Version
+index_os=OS
+index_kernel=Kernel
+index_cluster=Cluster
+index_user=User
+index_current=Current
+index_datakeys=Data Keys
+
+index_nopods=No pods found
+index_noservices=No services found
+index_nodeployments=No deployments found
+index_nonodes=No nodes found
+index_nonamespaces=No namespaces found
+index_noconfigmaps=No ConfigMaps found
+index_nosecrets=No secrets found
+index_nocontexts=No contexts found
+
+action_logs=View Logs
+action_delete=Delete
+action_scale=Scale
+action_use=Use
