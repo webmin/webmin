@@ -1,0 +1,5 @@
+direct=0
+perpage=50
+view_condition=1
+view_comment=1
+nft_cmd=/usr/sbin/nft
