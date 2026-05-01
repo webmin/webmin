@@ -16,6 +16,13 @@ my $cmd = $config{'nft_cmd'} || "nft";
 return has_command($cmd);
 }
 
+# check_nftables()
+# Returns an error message if nftables is not installed, undef if all is OK
+sub check_nftables
+{
+return undef if (get_nft_command());
+return text('index_ecommand', "<tt>nft</tt>");
+}
 
 # get_nftables_save([file])
 # Returns a list of tables and their chains/rules
@@ -25,6 +32,7 @@ my ($file) = @_;
 my $cmd = get_nft_command();
 if (!$file) {
     if ($config{'direct'}) {
+        return ( ) if (!$cmd);
         $file = "$cmd list ruleset |";
     } else {
         $file = $config{'save_file'} || "$module_config_directory/nftables.conf";
