@@ -13,7 +13,7 @@ if (!$partial) {
 }
 
 # Check for nft command
-my $cmd = $config{'nft_cmd'} || has_command("nft");
+my $cmd = get_nft_command();
 if (!$cmd) {
     print text('index_ecommand', "<tt>nft</tt>");
     if (!$partial) {

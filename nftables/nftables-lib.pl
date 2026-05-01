@@ -8,12 +8,21 @@ use warnings;
 our (%config, $module_config_directory);
 init_config();
 
+# get_nft_command()
+# Returns the configured nft command path, or finds it in PATH
+sub get_nft_command
+{
+my $cmd = $config{'nft_cmd'} || "nft";
+return has_command($cmd);
+}
+
+
 # get_nftables_save([file])
 # Returns a list of tables and their chains/rules
 sub get_nftables_save
 {
 my ($file) = @_;
-my $cmd = $config{'nft_cmd'} || has_command("nft");
+my $cmd = get_nft_command();
 if (!$file) {
     if ($config{'direct'}) {
         $file = "$cmd list ruleset |";
@@ -1017,7 +1026,8 @@ sub apply_restore
 {
 my ($file) = @_;
 $file ||= $config{'save_file'} || "$module_config_directory/nftables.conf";
-my $cmd = $config{'nft_cmd'} || has_command("nft");
+my $cmd = get_nft_command();
+return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
 my $out = backquote_logged("$cmd -f $file 2>&1");
 if ($?) {
     return "<pre>$out</pre>";

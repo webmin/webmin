@@ -161,7 +161,7 @@ if ($in{'delete'}) {
     }
 
     if ($in{'edit_direct'}) {
-        my $cmd = $config{'nft_cmd'} || has_command("nft");
+        my $cmd = get_nft_command();
         if ($cmd) {
             my $tmp = tempname();
             open_tempfile(my $fh, ">$tmp");
