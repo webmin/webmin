@@ -153,7 +153,7 @@ for(my $i=0; $i<@lines; $i++) {
             $table->{'chains'}->{$chain} = { };
             
             # Look at next line for chain definition
-            if ($lines[$i+1] =~ /^\s*type\s+(\S+)\s+hook\s+(\S+)\s+priority\s+([a-zA-Z0-9_-]+);\s+policy\s+(\S+);/) {
+            if ($lines[$i+1] =~ /^\s*type\s+(\S+)\s+hook\s+(\S+)\s+priority\s+(.+?);\s+policy\s+(\S+);/) {
                 $table->{'chains'}->{$chain}->{'type'} = $1;
                 $table->{'chains'}->{$chain}->{'hook'} = $2;
                 $table->{'chains'}->{$chain}->{'priority'} = $3;

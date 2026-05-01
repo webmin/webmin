@@ -1,0 +1,8 @@
+table inet firewalld {
+    flags owner,persist
+
+    chain filter_INPUT {
+        type filter hook input priority filter + 10; policy accept;
+        ct state { established, related } accept
+    }
+}

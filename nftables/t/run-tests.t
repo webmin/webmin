@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use Test::More;
+use Cwd qw(abs_path);
 use File::Temp qw(tempdir);
 
 sub script_dir
@@ -21,6 +22,7 @@ sub script_dir
 }
 
 my $bindir = script_dir();
+my $rootdir = abs_path("$bindir/../..") or die "rootdir: $!";
 
 my $confdir = tempdir(CLEANUP => 1);
 my $vardir = tempdir(CLEANUP => 1);
@@ -33,7 +35,7 @@ close($vfh);
 $ENV{'WEBMIN_CONFIG'} = $confdir;
 $ENV{'WEBMIN_VAR'} = $vardir;
 $ENV{'FOREIGN_MODULE_NAME'} = 'nftables';
-$ENV{'FOREIGN_ROOT_DIRECTORY'} = '/usr/libexec/webmin';
+$ENV{'FOREIGN_ROOT_DIRECTORY'} = $rootdir;
 
 chdir("$bindir/..") or die "chdir: $!";
 
@@ -122,6 +124,18 @@ is($chain->{type}, 'filter', 'chain type');
 is($chain->{hook}, 'input', 'chain hook');
 is($chain->{priority}, '0', 'chain priority');
 is($chain->{policy}, 'drop', 'chain policy');
+
+my $ruleset_prio = "$bindir/rulesets/firewalld-priority.nft";
+my @tables_prio = get_nftables_save($ruleset_prio);
+ok(@tables_prio == 1, 'firewalld priority table count');
+my $fw_chain = $tables_prio[0]->{chains}->{filter_INPUT};
+ok($fw_chain, 'firewalld priority chain present');
+is($fw_chain->{type}, 'filter', 'firewalld priority chain type');
+is($fw_chain->{hook}, 'input', 'firewalld priority chain hook');
+is($fw_chain->{priority}, 'filter + 10', 'firewalld priority chain priority');
+is($fw_chain->{policy}, 'accept', 'firewalld priority chain policy');
+is(scalar @{$tables_prio[0]->{rules}}, 1,
+   'firewalld priority chain definition is not parsed as a rule');
 
 my @rules = @{$t->{rules}};
 check_fields('ruleset r1', $rules[0], { iif => 'lo', action => 'accept' });
