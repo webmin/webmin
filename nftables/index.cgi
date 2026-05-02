@@ -263,6 +263,7 @@ if (@tables) {
     print ui_buttons_start();
     print ui_buttons_row("apply.cgi", $text{'index_apply'}, $text{'index_applydesc'});
     print ui_buttons_row("active.cgi", $text{'index_active'}, $text{'index_activedesc'});
+    print ui_buttons_row("setup.cgi", $text{'index_setup'}, $text{'index_setupdesc'});
     print ui_buttons_end();
 }
 

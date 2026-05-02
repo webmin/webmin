@@ -1389,4 +1389,19 @@ if (get_miniserv_config(\%miniserv) && $miniserv{'port'} =~ /^\d+$/) {
 return 10000;
 }
 
+# get_usermin_port()
+# Returns the configured Usermin port, or 20000 if unknown
+sub get_usermin_port
+{
+my %miniserv;
+if (foreign_installed("usermin")) {
+	foreign_require("usermin", "usermin-lib.pl");
+	usermin::get_usermin_miniserv_config(\%miniserv);
+	if ($miniserv{'port'} =~ /^\d+$/) {
+		return $miniserv{'port'};
+		}
+	}
+return 20000;
+}
+
 1;
