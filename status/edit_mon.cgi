@@ -236,6 +236,12 @@ print &ui_table_row($text{'mon_ontimeout'},
 		    &ui_textbox("ontimeout", $serv->{'ontimeout'}, 60),
 		    undef, \@tds);
 
+# When to run commands?
+print &ui_table_row($text{'mon_cmdmode'},
+		    &ui_radio("cmdmode", $serv->{'cmdmode'} || 0,
+			      [ [ 0, text{'mon_cmdmode0'} ],
+				[ 1, text{'mon_cmdmode1'} ] ]));
+
 print &ui_table_row(" ", "<font size=-1>$text{'mon_oninfo'}</font>",
 		    undef, \@tds);
 

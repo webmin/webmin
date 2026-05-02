@@ -538,12 +538,14 @@ return $err;
 }
 
 # run_on_command(&serv, command, remote-host)
+# Run some up or down command, if defined and enabled
 sub run_on_command
 {
-local ($serv, $cmd, $r) = @_;
+my ($serv, $cmd, $r) = @_;
+return undef if ($serv->{'cmdmode'} == 1);
 $r = undef if ($r eq "*");
 return undef if (!$cmd);
-local $out;
+my $out;
 if ($serv->{'runon'} && $r) {
 	# Run on the remote host
 	$remote_error_msg = undef;

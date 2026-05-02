@@ -75,6 +75,7 @@ else {
 	$serv->{'ondown'} = $in{'ondown'};
 	$serv->{'onup'} = $in{'onup'};
 	$serv->{'ontimeout'} = $in{'ontimeout'};
+	$serv->{'cmdmode'} = $in{'cmdmode'};
 	$serv->{'runon'} = $in{'runon'};
 	$serv->{'clone'} = $in{'clone'};
 	$in{'fails'} =~ /^\d+$/ || &error($text{'mon_efails'});
