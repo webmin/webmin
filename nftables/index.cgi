@@ -22,17 +22,6 @@ if (!$cmd) {
     exit;
 }
 
-# Check if kernel supports it (basic check)
-my $out = backquote_command("$cmd list ruleset 2>&1");
-if ($? && $out !~ /no ruleset/i) {
-    # If it fails and not just empty
-    print text('index_ekernel', "<pre>$out</pre>");
-    if (!$partial) {
-        ui_print_footer("/", $text{'index'});
-    }
-    exit;
-}
-
 # Load tables
 my @tables = get_nftables_save();
 my $rules_html = "";
@@ -43,6 +32,8 @@ if (!@tables) {
     $rules_html .= ui_buttons_row("setup.cgi", $text{'index_setup'}, $text{'index_setupdesc'});
     $rules_html .= ui_buttons_row("create_table.cgi", $text{'index_table_create'},
                                    $text{'index_table_createdesc'});
+    $rules_html .= ui_buttons_row("active.cgi", $text{'index_active'},
+                                   $text{'index_activedesc'});
     $rules_html .= ui_buttons_end();
 } else {
     # Select table
@@ -71,7 +62,7 @@ if (!@tables) {
     if (!$partial) {
         print ui_form_start("index.cgi");
         print "<div class='nftables_table_select'>\n";
-        print text('index_change')," ";
+        print text('index_change'),"&nbsp;&nbsp;";
         print ui_select("table", $in{'table'}, \@table_opts, 1, 0, 1, 0,
                          "onchange='this.form.querySelector(\"[name=nft_submit]\").click()'");
         print ui_submit("", "nft_submit", 0, "style='display:none'");
@@ -267,10 +258,11 @@ if ($partial) {
 
 print $rules_html;
 
-if (@tables && !$config{'direct'}) {
+if (@tables) {
     print ui_hr();
     print ui_buttons_start();
     print ui_buttons_row("apply.cgi", $text{'index_apply'}, $text{'index_applydesc'});
+    print ui_buttons_row("active.cgi", $text{'index_active'}, $text{'index_activedesc'});
     print ui_buttons_end();
 }
 

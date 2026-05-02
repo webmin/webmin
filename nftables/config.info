@@ -9,4 +9,3 @@ after_apply_cmd=Command to run after applying configuration,3,None
 line2=NFTables configuration,11
 nft_cmd=Full path to nft command,0
 save_file=File to save/edit NFTables rules,3,Use operating system or Webmin default
-direct=Directly edit firewall rules instead of save file?,1,1-Yes,0-No

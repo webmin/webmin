@@ -29,16 +29,11 @@ return text('index_ecommand', "<tt>nft</tt>");
 sub get_nftables_save
 {
 my ($file) = @_;
-my $cmd = get_nft_command();
 if (!$file) {
-    if ($config{'direct'}) {
-        return ( ) if (!$cmd);
-        $file = "$cmd list ruleset |";
-    } else {
-        $file = $config{'save_file'} || "$module_config_directory/nftables.conf";
-    }
+    $file = $config{'save_file'} || "$module_config_directory/rules.conf";
 }
 return ( ) if (!$file);
+return ( ) if ($file !~ /\|\s*$/ && !-r $file);
 
 my @rv;
 my $table;
@@ -129,6 +124,9 @@ for(my $i=0; $i<@lines; $i++) {
         push(@rv, $table);
         $chain = undef;
     }
+    elsif ($line =~ /^\s*flags\s+(.+?)\s*;?$/ && $table && !$chain) {
+        $table->{'flags'} = $1;
+    }
     elsif ($line =~ /^\s*set\s+(\S+)\s+\{/) {
         # Start of a set
         if ($table) {
@@ -184,6 +182,25 @@ for(my $i=0; $i<@lines; $i++) {
 }
 
 return @rv;
+}
+
+# get_active_nftables_save()
+# Returns an array ref of tables from the active ruleset, and an optional error
+sub get_active_nftables_save
+{
+my $cmd = get_nft_command();
+return (undef, text('index_ecommand', "<tt>nft</tt>")) if (!$cmd);
+
+my $out = backquote_command("$cmd list ruleset 2>&1");
+return (undef, "<pre>$out</pre>") if ($?);
+
+my $tmp = tempname();
+open_tempfile(my $fh, ">$tmp");
+print_tempfile($fh, $out);
+close_tempfile($fh);
+my @tables = get_nftables_save($tmp);
+unlink_file($tmp);
+return (\@tables, undef);
 }
 
 sub tokenize_nft_rule
@@ -1003,11 +1020,12 @@ sub write_configuration
 {
 my (@tables) = @_;
 my $out = dump_nftables_save(@tables);
-my $file = $config{'save_file'} || "$module_config_directory/nftables.conf";
+my $file = $config{'save_file'} || "$module_config_directory/rules.conf";
 
 open_tempfile(my $fh, ">$file");
 print_tempfile($fh, $out);
 close_tempfile($fh);
+sync_managed_metadata(@tables);
 return;
 }
 
@@ -1024,69 +1042,81 @@ my ($table) = @_;
 }
 
 # save_configuration(@tables)
-# Writes the configuration to the save file. If direct mode is on, applies it
-# without creating a persistent save file.
+# Writes the configuration to the save file
 sub save_configuration
 {
 my (@tables) = @_;
-if ($config{'direct'}) {
-    my $tmp = tempname();
-    open_tempfile(my $fh, ">$tmp");
-    print_tempfile($fh, dump_nftables_save(@tables));
-    close_tempfile($fh);
-    my $err = apply_restore($tmp);
-    unlink_file($tmp);
-    return $err;
-}
 write_configuration(@tables);
 return;
 }
 
 # create_table_configuration(&table, @tables)
-# Writes the full configuration, but in direct mode creates only the selected table
+# Writes the full configuration after creating a table
 sub create_table_configuration
 {
 my ($table, @tables) = @_;
-if ($config{'direct'}) {
-    return apply_table_restore($table, 0);
-}
 write_configuration(@tables);
 return;
 }
 
 # save_table_configuration(&table, @tables)
-# Writes the full configuration, but in direct mode replaces only the selected table
+# Writes the full configuration after changing a table
 sub save_table_configuration
 {
 my ($table, @tables) = @_;
-if ($config{'direct'}) {
-    return apply_table_restore($table, 1);
-}
 write_configuration(@tables);
 return;
 }
 
 # delete_table_configuration(&table, @tables)
-# Writes the full configuration, but in direct mode deletes only the selected table
+# Writes the full configuration after deleting a table
 sub delete_table_configuration
 {
 my ($table, @tables) = @_;
-if ($config{'direct'}) {
-    return apply_table_delete($table);
-}
 write_configuration(@tables);
 return;
 }
 
 # apply_restore([file])
-# Applies the configuration from the save file
+# Applies Webmin-managed tables from the save file
 sub apply_restore
 {
 my ($file) = @_;
-$file ||= $config{'save_file'} || "$module_config_directory/nftables.conf";
+$file ||= $config{'save_file'} || "$module_config_directory/rules.conf";
 my $cmd = get_nft_command();
 return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
-my $out = backquote_logged("$cmd -f $file 2>&1");
+
+my @tables = get_nftables_save($file);
+return text('apply_enone') if (!@tables);
+
+my ($active, $active_err) = get_active_nftables_save();
+return $active_err if ($active_err);
+
+my %active;
+foreach my $t (@$active) {
+    $active{table_key($t)} = $t;
+}
+foreach my $t (@tables) {
+    my $active_table = $active{table_key($t)};
+    if ($active_table && table_is_externally_managed($active_table)) {
+        return text('apply_eexternal', nft_table_spec($t));
+    }
+}
+
+my $tmp = tempname();
+open_tempfile(my $fh, ">$tmp");
+foreach my $t (@tables) {
+    print_tempfile($fh, "delete table ".nft_table_spec($t)."\n")
+        if ($active{table_key($t)});
+}
+print_tempfile($fh, dump_nftables_save(@tables));
+close_tempfile($fh);
+
+my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
+if (!$?) {
+    $out = backquote_logged("$cmd -f $tmp 2>&1");
+}
+unlink_file($tmp);
 if ($?) {
     return "<pre>$out</pre>";
 }
@@ -1102,54 +1132,148 @@ return $table->{'family'} ? "$table->{'family'} $table->{'name'}" :
                             $table->{'name'};
 }
 
-# apply_table_restore(&table, [replace-existing])
-# Applies a single table without touching unrelated tables
-sub apply_table_restore
+# table_key(&table)
+# Returns a stable key for a table
+sub table_key
 {
-my ($table, $replace) = @_;
-my $cmd = get_nft_command();
-return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
-
-my $spec = nft_table_spec($table);
-my $tmp = tempname();
-open_tempfile(my $fh, ">$tmp");
-print_tempfile($fh, "delete table $spec\n") if ($replace);
-print_tempfile($fh, dump_nftables_save($table));
-close_tempfile($fh);
-
-my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
-if (!$?) {
-    $out = backquote_logged("$cmd -f $tmp 2>&1");
+my ($table) = @_;
+return ($table->{'family'} || '')."\0".($table->{'name'} || '');
 }
-unlink_file($tmp);
-if ($?) {
-    return "<pre>$out</pre>";
+
+# table_is_externally_managed(&table)
+# Returns true if an active table is marked as owned by another program
+sub table_is_externally_managed
+{
+my ($table) = @_;
+return 0 if (!$table || !$table->{'flags'});
+my %flags = map { $_ => 1 } grep { $_ ne '' } split(/[,\s]+/, $table->{'flags'});
+return $flags{'owner'} || $flags{'persist'};
 }
+
+# table_is_webmin_managed(&table, [&saved_tables])
+# Returns true if an active table is present in Webmin's saved config
+sub table_is_webmin_managed
+{
+my ($table, $saved_tables) = @_;
+if (!$saved_tables) {
+	my @tables = get_nftables_save();
+	$saved_tables = \@tables;
+	}
+foreach my $t (@$saved_tables) {
+	return 1 if (table_key($t) eq table_key($table));
+	}
+return 0;
+}
+
+# active_table_status(&table, [&saved_tables])
+# Returns webmin, external or unclaimed for an active table
+sub active_table_status
+{
+my ($table, $saved_tables) = @_;
+return "external" if (table_is_externally_managed($table));
+return "webmin" if (table_is_webmin_managed($table, $saved_tables));
+return "unclaimed";
+}
+
+# managed_metadata_file()
+# Returns the path to Webmin's nftables metadata file
+sub managed_metadata_file
+{
+return "$module_config_directory/managed.json";
+}
+
+# managed_table_key(&table)
+# Returns the key used for managed table metadata
+sub managed_table_key
+{
+my ($table) = @_;
+return nft_table_spec($table);
+}
+
+# read_managed_metadata()
+# Returns metadata about tables managed by this module
+sub read_managed_metadata
+{
+my $file = managed_metadata_file();
+return { 'tables' => { } } if (!-r $file);
+my $json = read_file_contents($file);
+my $meta = eval { convert_from_json($json) };
+if (!$meta || ref($meta) ne 'HASH') {
+	$meta = { };
+	}
+if (!$meta->{'tables'} || ref($meta->{'tables'}) ne 'HASH') {
+	$meta->{'tables'} = { };
+	}
+return $meta;
+}
+
+# write_managed_metadata(&metadata)
+# Writes metadata about tables managed by this module
+sub write_managed_metadata
+{
+my ($meta) = @_;
+$meta ||= { };
+$meta->{'tables'} = { } if (ref($meta->{'tables'}) ne 'HASH');
+my $file = managed_metadata_file();
+lock_file($file);
+write_file_contents($file, convert_to_json($meta, 1));
+unlock_file($file);
 return;
 }
 
-# apply_table_delete(&table)
-# Deletes a single active table without touching unrelated tables
-sub apply_table_delete
+# sync_managed_metadata(@tables)
+# Keeps managed metadata aligned with the saved Webmin config
+sub sync_managed_metadata
+{
+my (@tables) = @_;
+my $meta = read_managed_metadata();
+my %old = %{$meta->{'tables'}};
+my %new;
+foreach my $t (@tables) {
+	my $key = managed_table_key($t);
+	my %entry = $old{$key} && ref($old{$key}) eq 'HASH' ?
+		%{$old{$key}} : ( );
+	$entry{'family'} = $t->{'family'};
+	$entry{'name'} = $t->{'name'};
+	$entry{'source'} ||= 'webmin';
+	$entry{'managed_at'} ||= time();
+	$new{$key} = \%entry;
+	}
+$meta->{'tables'} = \%new;
+write_managed_metadata($meta);
+return;
+}
+
+# register_managed_table(&table, %info)
+# Adds or updates metadata for a Webmin-managed table
+sub register_managed_table
+{
+my ($table, %info) = @_;
+my $meta = read_managed_metadata();
+my $key = managed_table_key($table);
+my %entry = $meta->{'tables'}->{$key} &&
+	    ref($meta->{'tables'}->{$key}) eq 'HASH' ?
+		%{$meta->{'tables'}->{$key}} : ( );
+foreach my $k (keys %info) {
+	$entry{$k} = $info{$k};
+	}
+$entry{'family'} = $table->{'family'};
+$entry{'name'} = $table->{'name'};
+$entry{'source'} ||= 'webmin';
+$entry{'managed_at'} ||= time();
+$meta->{'tables'}->{$key} = \%entry;
+write_managed_metadata($meta);
+return;
+}
+
+# unregister_managed_table(&table)
+# Removes metadata for a table no longer managed by this module
+sub unregister_managed_table
 {
 my ($table) = @_;
-my $cmd = get_nft_command();
-return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
-
-my $spec = nft_table_spec($table);
-my $tmp = tempname();
-open_tempfile(my $fh, ">$tmp");
-print_tempfile($fh, "delete table $spec\n");
-close_tempfile($fh);
-
-my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
-if (!$?) {
-    $out = backquote_logged("$cmd -f $tmp 2>&1");
-}
-unlink_file($tmp);
-if ($?) {
-    return "<pre>$out</pre>";
-}
+my $meta = read_managed_metadata();
+delete($meta->{'tables'}->{managed_table_key($table)});
+write_managed_metadata($meta);
 return;
 }
 

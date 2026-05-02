@@ -5,7 +5,7 @@
 require './nftables-lib.pl'; ## no critic
 use strict;
 use warnings;
-our (%in, %text, %config);
+our (%in, %text);
 ReadParse();
 if ($in{'action'} eq 'create') {
     my $type = $in{'type'};
@@ -27,11 +27,9 @@ if ($in{'action'} eq 'create') {
     if ($error) {
         error(text('setup_failed', $error));
     }
-    if (!$config{'direct'}) {
-        $error = apply_restore();
-        if ($error) {
-            error(text('setup_failed', $error));
-        }
+    $error = apply_restore();
+    if ($error) {
+        error(text('setup_failed', $error));
     }
     webmin_log("setup", "create", $type);
     redirect("index.cgi");

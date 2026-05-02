@@ -128,6 +128,14 @@ is($chain->{policy}, 'drop', 'chain policy');
 my $ruleset_prio = "$bindir/rulesets/firewalld-priority.nft";
 my @tables_prio = get_nftables_save($ruleset_prio);
 ok(@tables_prio == 1, 'firewalld priority table count');
+is($tables_prio[0]->{flags}, 'owner,persist', 'firewalld table flags');
+ok(table_is_externally_managed($tables_prio[0]), 'firewalld table is externally managed');
+is(active_table_status($tables_prio[0], []), 'external',
+   'external active table status');
+is(active_table_status({ family => 'inet', name => 'filter' }, [ $t ]), 'webmin',
+   'saved active table status');
+is(active_table_status({ family => 'inet', name => 'loose' }, []), 'unclaimed',
+   'unclaimed active table status');
 my $fw_chain = $tables_prio[0]->{chains}->{filter_INPUT};
 ok($fw_chain, 'firewalld priority chain present');
 is($fw_chain->{type}, 'filter', 'firewalld priority chain type');

@@ -5,7 +5,7 @@
 require './nftables-lib.pl'; ## no critic
 use strict;
 use warnings;
-our (%in, %text, %config);
+our (%in, %text);
 ReadParse();
 error_setup($text{'save_err'});
 my @tables = get_nftables_save();
@@ -165,8 +165,7 @@ if ($in{'delete'}) {
         if ($cmd) {
             my $tmp = tempname();
             open_tempfile(my $fh, ">$tmp");
-            print_tempfile($fh, dump_nftables_save(
-                $config{'direct'} ? ($table) : @tables));
+            print_tempfile($fh, dump_nftables_save(@tables));
             close_tempfile($fh);
             my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
             unlink_file($tmp);

@@ -25,6 +25,15 @@ if ($in{'create'}) {
             error($text{'create_edup'});
         }
     }
+    my ($active, $active_err) = get_active_nftables_save();
+    if (!$active_err) {
+        foreach my $t (@$active) {
+            if ($t->{'name'} eq $name && $t->{'family'} eq $family &&
+                table_is_externally_managed($t)) {
+                error(text('create_eexternal', nft_table_spec($t)));
+            }
+        }
+    }
 
     my $table = { 'name' => $name,
                   'family' => $family,
