@@ -36,11 +36,17 @@ else {
 		my $is_saved = table_is_webmin_managed($t, \@saved_tables);
 		my $table_url = "active_table.cgi?family=".urlize($t->{'family'}).
 			"&name=".urlize($t->{'name'});
-		my $actions = $is_saved ? "-" :
-			ui_link(
+		my @actions;
+		push(@actions, ui_link(
 				"import_table.cgi?family=".urlize($t->{'family'}).
 				"&name=".urlize($t->{'name'}),
-				$text{'active_import'});
+				$text{'active_import'})) if (!$is_saved);
+		push(@actions, ui_link(
+				"clear_table.cgi?family=".urlize($t->{'family'}).
+				"&name=".urlize($t->{'name'}),
+				$text{'active_clear'}))
+			if (!table_is_externally_managed($t));
+		my $actions = @actions ? join(" ", @actions) : "-";
 		print ui_columns_row([
 			ui_link($table_url, html_escape(nft_table_spec($t))),
 			html_escape($flags),

@@ -213,9 +213,9 @@ if (!@tables) {
 
             my $actions_html =
                 ui_link("edit_chain.cgi?table=$in{'table'}&chain=".
-                         urlize($c), $text{'index_cedit'})."<br>".
+                         urlize($c), $text{'index_cedit'})." | ".
                 ui_link("rename_chain.cgi?table=$in{'table'}&chain=".
-                         urlize($c), $text{'index_crename'})."<br>".
+                         urlize($c), $text{'index_crename'})." | ".
                 ui_link("edit_rule.cgi?table=$in{'table'}&chain=".
                          urlize($c)."&new=1", $text{'index_radd'});
             $chains_html .= ui_checked_columns_row([
