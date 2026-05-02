@@ -958,6 +958,39 @@ foreach my $r (@{$table->{'rules'}}) {
 return $count;
 }
 
+# validate_set_references(&table)
+# Returns an error if any structured rule uses a set in an incompatible field
+sub validate_set_references
+{
+my ($table) = @_;
+return if (!$table || ref($table) ne 'HASH');
+return if (!$table->{'sets'} || ref($table->{'sets'}) ne 'HASH');
+return if (!$table->{'rules'} || ref($table->{'rules'}) ne 'ARRAY');
+foreach my $r (@{$table->{'rules'}}) {
+	next if (!$r || ref($r) ne 'HASH');
+	foreach my $check (
+		[ 'saddr', 'addr', text('edit_saddr') ],
+		[ 'daddr', 'addr', text('edit_daddr') ],
+		[ 'sport', 'port', text('edit_sport') ],
+		[ 'dport', 'port', text('edit_dport') ],
+		) {
+		my ($field, $want, $label) = @$check;
+		my $setname = set_name_from_value($r->{$field});
+		next if (!$setname);
+		my $set = $table->{'sets'}->{$setname};
+		next if (!$set);
+		my $kind = set_type_kind($set->{'type'});
+		if (!$kind || $kind ne $want) {
+			my $type = $set->{'type'} || text('set_type_select');
+			return text('apply_esettype', $setname,
+				    nft_table_spec($table), $type,
+				    $r->{'chain'} || "-", $label);
+			}
+		}
+	}
+return;
+}
+
 
 # dump_nftables_save(@tables)
 # Returns a string representation of the firewall rules
@@ -1097,6 +1130,8 @@ foreach my $t (@$active) {
     $active{table_key($t)} = $t;
 }
 foreach my $t (@tables) {
+    my $set_err = validate_set_references($t);
+    return $set_err if ($set_err);
     my $active_table = $active{table_key($t)};
     if ($active_table && table_is_externally_managed($active_table)) {
         return text('apply_eexternal', nft_table_spec($t));

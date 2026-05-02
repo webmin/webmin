@@ -54,6 +54,9 @@ $set->{'raw_lines'} ||= [ ];
 
 $table->{'sets'}->{$name} = $set;
 
+my $set_err = validate_set_references($table);
+error($set_err) if ($set_err);
+
 my $err = save_table_configuration($table, @tables);
 error(text('set_failed', $err)) if ($err);
 

@@ -17,6 +17,21 @@ foreach my $sfield (qw(saddr_set daddr_set sport_set dport_set)) {
             error(text('save_set_missing', $in{$sfield}));
     }
 }
+foreach my $check (
+    [ 'saddr_set', 'addr', $text{'edit_saddr'} ],
+    [ 'daddr_set', 'addr', $text{'edit_daddr'} ],
+    [ 'sport_set', 'port', $text{'edit_sport'} ],
+    [ 'dport_set', 'port', $text{'edit_dport'} ],
+    ) {
+    my ($sfield, $want, $label) = @$check;
+    next if (!$in{$sfield});
+    my $set = $table->{'sets'}->{$in{$sfield}};
+    my $kind = set_type_kind($set->{'type'});
+    if (!$kind || $kind ne $want) {
+        my $type = $set->{'type'} || $text{'set_type_select'};
+        error(text('save_set_type', $in{$sfield}, $type, $label));
+    }
+}
 
 sub join_multi_value
 {

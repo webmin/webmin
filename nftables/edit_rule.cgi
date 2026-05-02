@@ -104,11 +104,11 @@ if ($table && $table->{'sets'} && ref($table->{'sets'}) eq 'HASH') {
         my $label = $s;
         $label .= " ($set->{'type'})" if ($set->{'type'});
         my $kind = set_type_kind($set->{'type'});
-        if (!$kind || $kind eq 'addr') {
+        if ($kind && $kind eq 'addr') {
             push(@addr_set_opts, [ $s, $label ]);
             $addr_set_seen{$s} = 1;
         }
-        if (!$kind || $kind eq 'port') {
+        if ($kind && $kind eq 'port') {
             push(@port_set_opts, [ $s, $label ]);
             $port_set_seen{$s} = 1;
         }
@@ -234,6 +234,7 @@ if (@port_set_opts > 1) {
                                ui_select("dport_set", $dport_set, \@port_set_opts, 1, 0, 1));
 }
 print ui_table_row(hlink($text{'edit_dport'}, "dport"), $dport_row);
+print ui_table_row(undef, ui_note($text{'edit_ports_note'}, 0), 2);
 
 print ui_table_end();
 
