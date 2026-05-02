@@ -76,9 +76,10 @@ print ui_table_row(hlink($text{'set_flags'}, "set_flags"),
     ui_select("set_flags", $flags_sel, \@flag_opts, 5, 1, 1));
 
 my $elem_field = ui_textarea("set_elements", $elements_text, 6, 60);
-$elem_field .= "<br><small>$text{'set_elements_desc'}</small>";
+$elem_field .= "<br>".ui_note($text{'set_elements_desc'}, 0);
+print ui_table_hr();
 print ui_table_row(hlink($text{'set_elements'}, "set_elements"),
-    $elem_field);
+    $elem_field, undef, undef, undef, 1);
 
 print ui_table_end();
 
