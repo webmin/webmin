@@ -155,7 +155,11 @@ if (!@tables) {
             my $rules_html_row;
             if (@rules) {
                 my $ri = 0;
-                my @rule_rows;
+                $rules_html_row = ui_tag_start('table',
+                    { 'class' => 'nftables_rules_table',
+                      'width' => '100%',
+                      'cellspacing' => 0,
+                      'cellpadding' => 0 });
                 foreach my $r (@rules) {
                     my $desc = describe_rule($r);
                     my $rule_url = "edit_rule.cgi?table=$in{'table'}&chain=".
@@ -189,24 +193,21 @@ if (!@tables) {
                         ui_tag('img', undef,
                             { 'class' => 'ui_up_down_arrows_gap',
                               'src' => "$imgdir/movegap.gif" });
-                    push(@rule_rows, ui_tag('div',
-                        ui_tag('div', $rule_link,
-                            { 'class' => 'nftables_rule_text' }).
-                        ui_tag('div', $down_move,
-                            { 'class' => 'nftables_rule_move_down',
-                              'style' => 'white-space: nowrap; text-align: center;' }).
-                        ui_tag('div', $up_move,
-                            { 'class' => 'nftables_rule_move_up',
-                              'style' => 'white-space: nowrap; text-align: center;' }),
-                        { 'class' => 'nftables_rule_row',
-                          'style' => 'display: grid; grid-template-columns: '.
-                                      'minmax(0, 1fr) auto auto; align-items: '.
-                                      'center; column-gap: 0.5em;' }));
+                    $rules_html_row .= ui_tag_start('tr');
+                    $rules_html_row .= ui_tag('td', $rule_link,
+                        { 'class' => 'nftables_rule_text' });
+                    $rules_html_row .= ui_tag('td', $down_move,
+                        { 'class' => 'nftables_rule_move_down',
+                          'width' => 10,
+                          'style' => 'white-space: nowrap; text-align: center;' });
+                    $rules_html_row .= ui_tag('td', $up_move,
+                        { 'class' => 'nftables_rule_move_up',
+                          'width' => 10,
+                          'style' => 'white-space: nowrap; text-align: center;' });
+                    $rules_html_row .= ui_tag_end('tr');
                     $ri++;
                 }
-                $rules_html_row = ui_tag('div', join("", @rule_rows),
-                    { 'class' => 'nftables_rules_list',
-                      'style' => 'display: grid; row-gap: 0.25em;' });
+                $rules_html_row .= ui_tag_end('table');
             } else {
                 $rules_html_row = ui_tag('i', $text{'index_rules_none'});
             }
