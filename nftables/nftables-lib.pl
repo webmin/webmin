@@ -1158,6 +1158,45 @@ if ($?) {
 return;
 }
 
+# delete_active_table(&table)
+# Deletes one table from the active ruleset if it exists
+sub delete_active_table
+{
+my ($table) = @_;
+my $cmd = get_nft_command();
+return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
+
+my ($active, $active_err) = get_active_nftables_save();
+return $active_err if ($active_err);
+
+my $active_table;
+foreach my $t (@$active) {
+	if (table_key($t) eq table_key($table)) {
+		$active_table = $t;
+		last;
+		}
+	}
+return if (!$active_table);
+if (table_is_externally_managed($active_table)) {
+	return text('apply_eexternal', nft_table_spec($table));
+	}
+
+my $tmp = tempname();
+open_tempfile(my $fh, ">$tmp");
+print_tempfile($fh, "delete table ".nft_table_spec($table)."\n");
+close_tempfile($fh);
+
+my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
+if (!$?) {
+	$out = backquote_logged("$cmd -f $tmp 2>&1");
+	}
+unlink_file($tmp);
+if ($?) {
+	return "<pre>$out</pre>";
+	}
+return;
+}
+
 # nft_table_spec(&table)
 # Returns a table spec for nft commands
 sub nft_table_spec

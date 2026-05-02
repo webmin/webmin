@@ -32,6 +32,8 @@ if ($in{'confirm'}) {
     splice(@tables, $table_idx, 1);
     my $err = delete_table_configuration($table, @tables);
     error(text('delete_failed', $err)) if ($err);
+    $err = delete_active_table($table);
+    error(text('delete_failed', $err)) if ($err);
     webmin_log("delete", "table", $table->{'name'},
                 { 'family' => $table->{'family'} });
     redirect("index.cgi");
