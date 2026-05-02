@@ -200,6 +200,7 @@ if (@tables) {
     print ui_buttons_row("create_table.cgi", $text{'index_table_create'},
                           $text{'index_table_createdesc'});
     print ui_buttons_row("apply.cgi", $text{'index_apply'}, $text{'index_applydesc'});
+    print ui_buttons_row("flush.cgi", $text{'index_flush'}, $text{'index_flushdesc'});
     print ui_buttons_end();
 }
 

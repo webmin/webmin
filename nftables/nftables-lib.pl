@@ -1043,6 +1043,19 @@ if ($?) {
 return;
 }
 
+# flush_ruleset()
+# Flushes all active nftables tables, chains, sets and rules
+sub flush_ruleset
+{
+my $cmd = get_nft_command();
+return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
+my $out = backquote_logged("$cmd flush ruleset 2>&1");
+if ($?) {
+    return "<pre>$out</pre>";
+}
+return;
+}
+
 # describe_rule(&rule)
 sub describe_rule
 {
