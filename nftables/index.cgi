@@ -27,7 +27,6 @@ my @tables = get_nftables_save();
 my $rules_html = "";
 
 if (!@tables) {
-    $rules_html .= "<b>$text{'index_none'}</b><p>\n";
     $rules_html .= ui_buttons_start();
     $rules_html .= ui_buttons_row("setup.cgi", $text{'index_setup'}, $text{'index_setupdesc'});
     $rules_html .= ui_buttons_row("create_table.cgi", $text{'index_table_create'},

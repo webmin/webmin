@@ -16,7 +16,6 @@ index_desc=Condition
 index_comm=Comment
 index_move=Move
 index_add=Add
-index_none=No rules defined for this chain.
 index_policy=Set default action:
 index_policy_accept=Accept
 index_policy_drop=Drop
