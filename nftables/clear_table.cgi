@@ -27,6 +27,7 @@ if ($in{'confirm'}) {
 	webmin_log("clear", "table", $table->{'name'},
 		   { 'family' => $table->{'family'} });
 	redirect("active.cgi");
+	return;
 	}
 
 ui_print_header(undef, $text{'clear_title'}, "", "intro", 1, 1);

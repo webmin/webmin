@@ -37,6 +37,7 @@ if ($in{'confirm'}) {
     webmin_log("delete", "table", $table->{'name'},
                 { 'family' => $table->{'family'} });
     redirect("index.cgi");
+    return;
 }
 
 ui_print_header(undef, $text{'delete_title'}, "", "intro", 1, 1);

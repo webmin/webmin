@@ -38,6 +38,7 @@ if ($is_new) {
 if ($is_rename) {
     if ($name eq $old) {
         redirect("index.cgi?table=$in{'table'}");
+        return;
     }
     if ($name ne $old) {
         $table->{'chains'}->{$name} = $table->{'chains'}->{$old};
@@ -65,6 +66,7 @@ if ($is_rename) {
                   'table' => $table->{'name'},
                   'family' => $table->{'family'} });
     redirect("index.cgi?table=$in{'table'}");
+    return;
 }
 
 my $type = $in{'chain_type'};

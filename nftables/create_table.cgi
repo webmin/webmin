@@ -47,6 +47,7 @@ if ($in{'create'}) {
 
     redirect("index.cgi?table_family=".urlize($family).
              "&table_name=".urlize($name));
+    return;
 }
 
 ui_print_header(undef, $text{'create_title'}, "", "intro", 1, 1);

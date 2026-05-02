@@ -44,6 +44,7 @@ if ($in{'action'} eq 'create') {
 	webmin_log("setup", "create", $profile,
 		   { 'family' => 'inet', 'table' => $table_name });
 	redirect("index.cgi?table_family=inet&table_name=".urlize($table_name));
+	return;
 	}
 
 ui_print_header(undef, $text{'setup_title'}, "", "intro", 1, 1);

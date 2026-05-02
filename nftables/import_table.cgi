@@ -57,6 +57,7 @@ if ($in{'import'}) {
 			{ 'family' => $source->{'family'}, 'new' => $name });
 	redirect("index.cgi?table_family=".urlize($source->{'family'}).
 		 "&table_name=".urlize($name));
+	return;
 }
 
 ui_print_header(undef, $text{'import_title'}, "", "intro", 1, 1);
