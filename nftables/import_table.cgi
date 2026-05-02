@@ -69,11 +69,12 @@ print ui_hidden("import", 1);
 print ui_table_start($text{'import_header'}, "width=100%", 2);
 print ui_table_row($text{'import_source'}, html_escape(nft_table_spec($source)));
 print ui_table_row($text{'import_flags'}, html_escape($source->{'flags'} || "-"));
-if (table_is_externally_managed($source)) {
-	print ui_table_row("", $text{'import_external_note'});
-}
 print ui_table_row($text{'import_new_name'},
 	ui_textbox("new_name", unique_import_table_name($source, \@tables, $active), 30));
+if (table_is_externally_managed($source)) {
+	print ui_table_row("", ui_note($text{'import_external_note'}),
+				       undef, undef, undef, 1);
+}
 print ui_table_end();
 
 print ui_form_end([ [ undef, $text{'import_ok'} ] ]);
