@@ -123,7 +123,7 @@ return (
 	  'input' => 'drop',
 	  'forward' => 'drop',
 	  'output' => 'accept',
-	  'services' => [ qw(ssh webmin smtp submission smtps pop3 pop3s imap imaps) ] },
+	  'services' => [ qw(ssh usermin smtp submission smtps pop3 pop3s imap imaps) ] },
 	{ 'id' => 'dns',
 	  'name' => $text{'setup_profile_dns'},
 	  'desc' => $text{'setup_profile_dns_desc'},
