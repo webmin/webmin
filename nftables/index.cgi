@@ -46,9 +46,21 @@ if (!@tables) {
     $rules_html .= ui_buttons_end();
 } else {
     # Select table
-    if (!defined($in{'table'}) || $in{'table'} !~ /^\d+$/ ||
-        $in{'table'} > $#tables) {
-        $in{'table'} = 0;
+    my $found_table;
+    if (defined($in{'table_family'}) && defined($in{'table_name'})) {
+        for (my $i = 0; $i <= $#tables; $i++) {
+            if ($tables[$i]->{'family'} eq $in{'table_family'} &&
+                $tables[$i]->{'name'} eq $in{'table_name'}) {
+                $in{'table'} = $i;
+                $found_table = 1;
+                last;
+            }
+        }
+    }
+    if (!$found_table &&
+        (!defined($in{'table'}) || $in{'table'} !~ /^\d+$/ ||
+         $in{'table'} > $#tables)) {
+            $in{'table'} = 0;
     }
     my @table_opts;
     for (my $i = 0; $i <= $#tables; $i++) {
@@ -194,13 +206,12 @@ print "<div id='nftables_ruleset'>\n";
 print $rules_html;
 print "</div>\n";
 
-if (@tables) {
+if (@tables && !$config{'direct'}) {
     print ui_hr();
     print ui_buttons_start();
     print ui_buttons_row("create_table.cgi", $text{'index_table_create'},
                           $text{'index_table_createdesc'});
     print ui_buttons_row("apply.cgi", $text{'index_apply'}, $text{'index_applydesc'});
-    print ui_buttons_row("flush.cgi", $text{'index_flush'}, $text{'index_flushdesc'});
     print ui_buttons_end();
 }
 

@@ -58,7 +58,7 @@ if ($is_rename) {
         }
     }
 
-    my $err = save_configuration(@tables);
+    my $err = save_table_configuration($table, @tables);
     error(text('rename_chain_failed', $err)) if ($err);
     webmin_log("rename", "chain", $old,
                 { 'new' => $name,
@@ -91,7 +91,7 @@ $chain->{'priority'} = $priority;
 $chain->{'policy'} = $policy;
 $table->{'chains'}->{$name} = $chain;
 
-my $err = save_configuration(@tables);
+my $err = save_table_configuration($table, @tables);
 error(text('chain_failed', $err)) if ($err);
 
 webmin_log($is_new ? "create" : "modify", "chain", $name,

@@ -28,7 +28,7 @@ if (!defined($rv)) {
 }
 
 if ($rv) {
-    my $err = save_configuration(@tables);
+    my $err = save_table_configuration($table, @tables);
     error(text('move_failed', $err)) if ($err);
     webmin_log("move", "rule", undef,
                 { 'table' => $table->{'name'},

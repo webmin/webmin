@@ -27,7 +27,7 @@ if ($in{'confirm'}) {
     @{$table->{'rules'}} = grep { $_->{'chain'} ne $in{'chain'} } @{$table->{'rules'}};
     delete($table->{'chains'}->{$in{'chain'}});
 
-    my $err = save_configuration(@tables);
+    my $err = save_table_configuration($table, @tables);
     error(text('delete_chain_failed', $err)) if ($err);
     webmin_log("delete", "chain", $in{'chain'},
                 { 'table' => $table->{'name'}, 'family' => $table->{'family'} });

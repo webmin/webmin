@@ -54,9 +54,9 @@ $set->{'raw_lines'} ||= [ ];
 
 $table->{'sets'}->{$name} = $set;
 
-my $err = save_configuration(@tables);
+my $err = save_table_configuration($table, @tables);
 error(text('set_failed', $err)) if ($err);
 
 webmin_log($is_new ? "create" : "save", "set", $name,
            { 'table' => $table->{'name'}, 'family' => $table->{'family'} });
-redirect("index.cgi?table=$in{'table'}");
+redirect("index.cgi?table=$in{'table'}&view=sets");

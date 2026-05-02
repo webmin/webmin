@@ -22,11 +22,11 @@ if ($in{'confirm'}) {
     $refs && error(text('delete_set_inuse', $in{'set'}, $refs));
 
     delete($table->{'sets'}->{$in{'set'}});
-    my $err = save_configuration(@tables);
+    my $err = save_table_configuration($table, @tables);
     error(text('delete_set_failed', $err)) if ($err);
     webmin_log("delete", "set", $in{'set'},
                { 'table' => $table->{'name'}, 'family' => $table->{'family'} });
-    redirect("index.cgi?table=$in{'table'}");
+    redirect("index.cgi?table=$in{'table'}&view=sets");
 }
 
 ui_print_header(undef, $text{'delete_set_title'}, "", "intro", 1, 1);
@@ -45,4 +45,4 @@ print "<p>\n";
 print ui_submit($text{'delete'}, "confirm");
 print "</center>\n";
 print ui_form_end();
-ui_print_footer("index.cgi?table=$in{'table'}", $text{'index_return'});
+ui_print_footer("index.cgi?table=$in{'table'}&view=sets", $text{'index_return'});

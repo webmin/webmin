@@ -997,6 +997,20 @@ foreach my $t (@tables) {
 return $rv;
 }
 
+# write_configuration(@tables)
+# Writes the configuration to the save file
+sub write_configuration
+{
+my (@tables) = @_;
+my $out = dump_nftables_save(@tables);
+my $file = $config{'save_file'} || "$module_config_directory/nftables.conf";
+
+open_tempfile(my $fh, ">$file");
+print_tempfile($fh, $out);
+close_tempfile($fh);
+return;
+}
+
 # save_table(&table)
 # Saves a single table to the save file or applies it
 sub save_table
@@ -1010,21 +1024,57 @@ my ($table) = @_;
 }
 
 # save_configuration(@tables)
-# Writes the configuration to the save file. If direct mode is on, applies it.
+# Writes the configuration to the save file. If direct mode is on, applies it
+# without creating a persistent save file.
 sub save_configuration
 {
 my (@tables) = @_;
-my $out = dump_nftables_save(@tables);
-my $file = $config{'save_file'} || "$module_config_directory/nftables.conf";
-
-# Write to file
-open_tempfile(my $fh, ">$file");
-print_tempfile($fh, $out);
-close_tempfile($fh);
-
 if ($config{'direct'}) {
-    return apply_restore($file);
+    my $tmp = tempname();
+    open_tempfile(my $fh, ">$tmp");
+    print_tempfile($fh, dump_nftables_save(@tables));
+    close_tempfile($fh);
+    my $err = apply_restore($tmp);
+    unlink_file($tmp);
+    return $err;
 }
+write_configuration(@tables);
+return;
+}
+
+# create_table_configuration(&table, @tables)
+# Writes the full configuration, but in direct mode creates only the selected table
+sub create_table_configuration
+{
+my ($table, @tables) = @_;
+if ($config{'direct'}) {
+    return apply_table_restore($table, 0);
+}
+write_configuration(@tables);
+return;
+}
+
+# save_table_configuration(&table, @tables)
+# Writes the full configuration, but in direct mode replaces only the selected table
+sub save_table_configuration
+{
+my ($table, @tables) = @_;
+if ($config{'direct'}) {
+    return apply_table_restore($table, 1);
+}
+write_configuration(@tables);
+return;
+}
+
+# delete_table_configuration(&table, @tables)
+# Writes the full configuration, but in direct mode deletes only the selected table
+sub delete_table_configuration
+{
+my ($table, @tables) = @_;
+if ($config{'direct'}) {
+    return apply_table_delete($table);
+}
+write_configuration(@tables);
 return;
 }
 
@@ -1043,13 +1093,60 @@ if ($?) {
 return;
 }
 
-# flush_ruleset()
-# Flushes all active nftables tables, chains, sets and rules
-sub flush_ruleset
+# nft_table_spec(&table)
+# Returns a table spec for nft commands
+sub nft_table_spec
 {
+my ($table) = @_;
+return $table->{'family'} ? "$table->{'family'} $table->{'name'}" :
+                            $table->{'name'};
+}
+
+# apply_table_restore(&table, [replace-existing])
+# Applies a single table without touching unrelated tables
+sub apply_table_restore
+{
+my ($table, $replace) = @_;
 my $cmd = get_nft_command();
 return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
-my $out = backquote_logged("$cmd flush ruleset 2>&1");
+
+my $spec = nft_table_spec($table);
+my $tmp = tempname();
+open_tempfile(my $fh, ">$tmp");
+print_tempfile($fh, "delete table $spec\n") if ($replace);
+print_tempfile($fh, dump_nftables_save($table));
+close_tempfile($fh);
+
+my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
+if (!$?) {
+    $out = backquote_logged("$cmd -f $tmp 2>&1");
+}
+unlink_file($tmp);
+if ($?) {
+    return "<pre>$out</pre>";
+}
+return;
+}
+
+# apply_table_delete(&table)
+# Deletes a single active table without touching unrelated tables
+sub apply_table_delete
+{
+my ($table) = @_;
+my $cmd = get_nft_command();
+return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
+
+my $spec = nft_table_spec($table);
+my $tmp = tempname();
+open_tempfile(my $fh, ">$tmp");
+print_tempfile($fh, "delete table $spec\n");
+close_tempfile($fh);
+
+my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
+if (!$?) {
+    $out = backquote_logged("$cmd -f $tmp 2>&1");
+}
+unlink_file($tmp);
 if ($?) {
     return "<pre>$out</pre>";
 }

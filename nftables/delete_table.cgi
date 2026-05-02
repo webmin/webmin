@@ -10,12 +10,27 @@ ReadParse();
 error_setup($text{'delete_err'});
 
 my @tables = get_nftables_save();
-my $table = $tables[$in{'table'}];
+my $table_idx = $in{'table'};
+my $table;
+if (defined($in{'table_family'}) && defined($in{'table_name'})) {
+    for (my $i = 0; $i <= $#tables; $i++) {
+        if ($tables[$i]->{'family'} eq $in{'table_family'} &&
+            $tables[$i]->{'name'} eq $in{'table_name'}) {
+            $table_idx = $i;
+            $table = $tables[$i];
+            last;
+        }
+    }
+    $table || error($text{'delete_notable'});
+}
+else {
+    $table = $tables[$table_idx];
+}
 $table || error($text{'delete_notable'});
 
 if ($in{'confirm'}) {
-    splice(@tables, $in{'table'}, 1);
-    my $err = save_configuration(@tables);
+    splice(@tables, $table_idx, 1);
+    my $err = delete_table_configuration($table, @tables);
     error(text('delete_failed', $err)) if ($err);
     webmin_log("delete", "table", $table->{'name'},
                 { 'family' => $table->{'family'} });
@@ -24,7 +39,9 @@ if ($in{'confirm'}) {
 
 ui_print_header(undef, $text{'delete_title'}, "", "intro", 1, 1);
 print ui_form_start("delete_table.cgi");
-print ui_hidden("table", $in{'table'});
+print ui_hidden("table", $table_idx);
+print ui_hidden("table_family", $table->{'family'});
+print ui_hidden("table_name", $table->{'name'});
 print "<center><b>",
       text('delete_confirm',
             "<tt>$table->{'family'} $table->{'name'}</tt>"),
@@ -32,5 +49,5 @@ print "<center><b>",
 print ui_submit($text{'delete'}, "confirm");
 print "</center>\n";
 print ui_form_end();
-ui_print_footer("index.cgi?table=$in{'table'}", $text{'index_return'});
-
+ui_print_footer("index.cgi?table_family=".urlize($table->{'family'}).
+                "&table_name=".urlize($table->{'name'}), $text{'index_return'});

@@ -165,7 +165,8 @@ if ($in{'delete'}) {
         if ($cmd) {
             my $tmp = tempname();
             open_tempfile(my $fh, ">$tmp");
-            print_tempfile($fh, dump_nftables_save(@tables));
+            print_tempfile($fh, dump_nftables_save(
+                $config{'direct'} ? ($table) : @tables));
             close_tempfile($fh);
             my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
             unlink_file($tmp);
@@ -175,6 +176,6 @@ if ($in{'delete'}) {
 
     webmin_log("save", $in{'new'} ? "create" : "modify", $rule->{'text'});
 }
-my $err = save_configuration(@tables);
+my $err = save_table_configuration($table, @tables);
 error(text('save_failed', $err)) if ($err);
 redirect("index.cgi?table=$in{'table'}");

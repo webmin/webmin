@@ -26,17 +26,18 @@ if ($in{'create'}) {
         }
     }
 
-    push(@tables, { 'name' => $name,
-                    'family' => $family,
-                    'rules' => [],
-                    'chains' => {},
-                    'sets' => {} });
-    my $err = save_configuration(@tables);
+    my $table = { 'name' => $name,
+                  'family' => $family,
+                  'rules' => [],
+                  'chains' => {},
+                  'sets' => {} };
+    push(@tables, $table);
+    my $err = create_table_configuration($table, @tables);
     error(text('create_failed', $err)) if ($err);
     webmin_log("create", "table", $name, { 'family' => $family });
 
-    my $idx = $#tables;
-    redirect("index.cgi?table=$idx");
+    redirect("index.cgi?table_family=".urlize($family).
+             "&table_name=".urlize($name));
 }
 
 ui_print_header(undef, $text{'create_title'}, "", "intro", 1, 1);

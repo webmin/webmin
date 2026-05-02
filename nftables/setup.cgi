@@ -27,9 +27,11 @@ if ($in{'action'} eq 'create') {
     if ($error) {
         error(text('setup_failed', $error));
     }
-    $error = apply_restore();
-    if ($error) {
-        error(text('setup_failed', $error));
+    if (!$config{'direct'}) {
+        $error = apply_restore();
+        if ($error) {
+            error(text('setup_failed', $error));
+        }
     }
     webmin_log("setup", "create", $type);
     redirect("index.cgi");
