@@ -83,4 +83,4 @@ print ui_table_row(hlink($text{'set_elements'}, "set_elements"),
 print ui_table_end();
 
 print ui_form_end([ [ undef, $text{$is_new ? 'create' : 'save'} ] ]);
-ui_print_footer("index.cgi?table=$in{'table'}", $text{'index_return'});
+ui_print_footer("index.cgi?table=$in{'table'}&view=sets", $text{'index_return'});
