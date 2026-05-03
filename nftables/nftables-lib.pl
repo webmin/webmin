@@ -40,7 +40,7 @@ return $url;
 # Updates the flag file indicating when the saved config was changed
 sub update_last_config_change
 {
-open_tempfile(my $fh, ">$last_config_change_flag", 0, 1);
+open_lock_tempfile(my $fh, ">$last_config_change_flag", 0, 1);
 close_tempfile($fh);
 }
 
@@ -48,7 +48,7 @@ close_tempfile($fh);
 # Updates the flag file indicating when the saved config was applied
 sub restart_last_restart_time
 {
-open_tempfile(my $fh, ">$last_restart_time_flag", 0, 1);
+open_lock_tempfile(my $fh, ">$last_restart_time_flag", 0, 1);
 close_tempfile($fh);
 }
 
@@ -100,14 +100,17 @@ my $set_elem_buf = '';
 my $lnum = 0;
 my $content;
 my $fh;
-if ($file =~ /\|\s*$/) {
+my $is_pipe = $file =~ /\|\s*$/;
+if ($is_pipe) {
     (my $pipe_cmd = $file) =~ s/\|\s*$//;
     open($fh, '-|', $pipe_cmd);
 } else {
+    lock_file($file);
     open($fh, '<', $file);
 }
 $content = do { local $/; <$fh> };
 close($fh);
+unlock_file($file) if (!$is_pipe);
 
 my @lines = split /\r?\n/, $content;
 for(my $i=0; $i<@lines; $i++) {
@@ -1249,7 +1252,7 @@ my (@tables) = @_;
 my $out = dump_nftables_save(@tables);
 my $file = $config{'save_file'} || "$module_config_directory/rules.conf";
 
-open_tempfile(my $fh, ">$file");
+open_lock_tempfile(my $fh, ">$file");
 print_tempfile($fh, $out);
 close_tempfile($fh);
 sync_managed_metadata(@tables);
@@ -1465,8 +1468,18 @@ return nft_table_spec($table);
 sub read_managed_metadata
 {
 my $file = managed_metadata_file();
-return { 'tables' => { } } if (!-r $file);
+return parse_managed_metadata(undef) if (!-r $file);
+lock_file($file);
 my $json = read_file_contents($file);
+unlock_file($file);
+return parse_managed_metadata($json);
+}
+
+# parse_managed_metadata(json)
+# Parses managed table metadata, returning an empty structure on failure
+sub parse_managed_metadata
+{
+my ($json) = @_;
 my $meta = eval { convert_from_json($json) };
 if (!$meta || ref($meta) ne 'HASH') {
 	$meta = { };
@@ -1477,26 +1490,15 @@ if (!$meta->{'tables'} || ref($meta->{'tables'}) ne 'HASH') {
 return $meta;
 }
 
-# write_managed_metadata(&metadata)
-# Writes metadata about tables managed by this module
-sub write_managed_metadata
-{
-my ($meta) = @_;
-$meta ||= { };
-$meta->{'tables'} = { } if (ref($meta->{'tables'}) ne 'HASH');
-my $file = managed_metadata_file();
-lock_file($file);
-write_file_contents($file, convert_to_json($meta, 1));
-unlock_file($file);
-return;
-}
-
 # sync_managed_metadata(@tables)
 # Keeps managed metadata aligned with the saved Webmin config
 sub sync_managed_metadata
 {
 my (@tables) = @_;
-my $meta = read_managed_metadata();
+my $file = managed_metadata_file();
+lock_file($file);
+my $meta = -r $file ? parse_managed_metadata(read_file_contents($file)) :
+		      { 'tables' => { } };
 my %old = %{$meta->{'tables'}};
 my %new;
 foreach my $t (@tables) {
@@ -1510,7 +1512,8 @@ foreach my $t (@tables) {
 	$new{$key} = \%entry;
 	}
 $meta->{'tables'} = \%new;
-write_managed_metadata($meta);
+write_file_contents($file, convert_to_json($meta, 1));
+unlock_file($file);
 return;
 }
 
@@ -1519,7 +1522,10 @@ return;
 sub register_managed_table
 {
 my ($table, %info) = @_;
-my $meta = read_managed_metadata();
+my $file = managed_metadata_file();
+lock_file($file);
+my $meta = -r $file ? parse_managed_metadata(read_file_contents($file)) :
+		      { 'tables' => { } };
 my $key = managed_table_key($table);
 my %entry = $meta->{'tables'}->{$key} &&
 	    ref($meta->{'tables'}->{$key}) eq 'HASH' ?
@@ -1532,7 +1538,8 @@ $entry{'name'} = $table->{'name'};
 $entry{'source'} ||= 'webmin';
 $entry{'managed_at'} ||= time();
 $meta->{'tables'}->{$key} = \%entry;
-write_managed_metadata($meta);
+write_file_contents($file, convert_to_json($meta, 1));
+unlock_file($file);
 return;
 }
 
@@ -1541,9 +1548,13 @@ return;
 sub unregister_managed_table
 {
 my ($table) = @_;
-my $meta = read_managed_metadata();
+my $file = managed_metadata_file();
+lock_file($file);
+my $meta = -r $file ? parse_managed_metadata(read_file_contents($file)) :
+		      { 'tables' => { } };
 delete($meta->{'tables'}->{managed_table_key($table)});
-write_managed_metadata($meta);
+write_file_contents($file, convert_to_json($meta, 1));
+unlock_file($file);
 return;
 }
 
