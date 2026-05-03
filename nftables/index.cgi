@@ -301,7 +301,7 @@ if (@tables && (check_acl('apply') || check_acl('active') ||
     check_acl('setup') || check_manual_acl())) {
     print ui_hr();
     print ui_buttons_start();
-    print ui_buttons_row("restart.cgi", $text{'index_apply'}, $text{'index_applydesc'})
+    print ui_buttons_row("restart.cgi", $text{'index_nftables_apply'}, $text{'index_nftables_applydesc'})
         if (check_acl('apply'));
     print ui_buttons_row("active.cgi", $text{'index_ruleset_active'}, $text{'index_ruleset_activedesc'})
         if (check_acl('active'));
