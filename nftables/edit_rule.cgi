@@ -36,6 +36,8 @@ my @addr_set_opts;
 my @port_set_opts;
 my %set_families;
 
+# split_multi_value(string)
+# Splits an nftables comma list for multi-select form values
 sub split_multi_value
 {
     my ($v) = @_;
@@ -322,6 +324,8 @@ if ($in{'new'}) {
 }
 print ui_form_end(\@buttons);
 
+# js_array(values...)
+# Returns a JavaScript array literal for simple strings
 sub js_array
 {
     my (@vals) = @_;
@@ -333,6 +337,8 @@ sub js_array
     } @vals)."]";
 }
 
+# js_object(%values)
+# Returns a JavaScript object literal for simple string pairs
 sub js_object
 {
     my (%vals) = @_;

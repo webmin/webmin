@@ -84,6 +84,8 @@ print ui_table_end();
 print ui_form_end([ [ undef, $text{'import_ok'} ] ]);
 ui_print_footer("active.cgi", $text{'active_return'});
 
+# unique_import_table_name(&source-table, &saved-tables, &active-tables)
+# Returns an unused table name for an imported active table
 sub unique_import_table_name
 {
 my ($source, $saved, $active_tables) = @_;

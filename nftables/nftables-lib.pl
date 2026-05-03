@@ -382,6 +382,8 @@ unlink_file($tmp);
 return (\@tables, undef);
 }
 
+# tokenize_nft_rule(rule-text)
+# Splits an nftables rule line into parser tokens
 sub tokenize_nft_rule
 {
 my ($line) = @_;
@@ -443,6 +445,8 @@ while ($i < $len) {
 return @tokens;
 }
 
+# unquote_nft_string(string)
+# Removes nftables-style quotes and escapes from a string token
 sub unquote_nft_string
 {
 my ($s) = @_;
@@ -458,6 +462,8 @@ elsif ($s =~ /^'(.*)'$/s) {
 return $s;
 }
 
+# escape_nft_string(string)
+# Escapes a string for use inside nftables double quotes
 sub escape_nft_string
 {
 my ($s) = @_;
@@ -467,6 +473,8 @@ $s =~ s/"/\\"/g;
 return $s;
 }
 
+# guess_addr_family(address, [fallback])
+# Returns ip or ip6 based on an address-like value
 sub guess_addr_family
 {
 my ($addr, $fallback) = @_;
@@ -475,6 +483,8 @@ return "ip6" if (defined($addr) && $addr =~ /:/);
 return "ip";
 }
 
+# validate_chain_base(type, hook, priority, policy)
+# Returns true if a chain has a complete or empty base-chain definition
 sub validate_chain_base
 {
 my ($type, $hook, $priority, $policy) = @_;
@@ -627,6 +637,8 @@ reindex_table_rules($table);
 return;
 }
 
+# move_rule_in_chain(&table, chain, index, direction)
+# Moves one rule within its chain and returns true if changed
 sub move_rule_in_chain
 {
 my ($table, $chain, $idx, $dir) = @_;
@@ -674,6 +686,8 @@ reindex_table_rules($table);
 return 1;
 }
 
+# format_addr_expr(direction, &rule)
+# Formats a source or destination address expression
 sub format_addr_expr
 {
 my ($dir, $rule) = @_;
@@ -683,6 +697,8 @@ my $fam = guess_addr_family($val, $rule->{$dir."_family"});
 return $fam." ".$dir." ".$val;
 }
 
+# format_l4proto_expr(&rule)
+# Formats a layer-4 protocol expression
 sub format_l4proto_expr
 {
 my ($rule) = @_;
@@ -695,6 +711,8 @@ if ($fam eq 'ip' || $fam eq 'ip6') {
 return "meta l4proto ".$proto;
 }
 
+# format_port_expr(direction, &rule)
+# Formats a source or destination port expression
 sub format_port_expr
 {
 my ($dir, $rule) = @_;
@@ -711,6 +729,8 @@ return if (!defined($proto) || $proto eq '');
 return $proto." ".$dir." ".$val;
 }
 
+# format_tcp_flags_expr(&rule)
+# Formats a TCP flags expression
 sub format_tcp_flags_expr
 {
 my ($rule) = @_;
@@ -722,6 +742,8 @@ if (defined($rule->{'tcp_flags_mask'}) && $rule->{'tcp_flags_mask'} ne '') {
 return "tcp flags ".$val;
 }
 
+# format_limit_expr(&rule)
+# Formats a rate limit expression
 sub format_limit_expr
 {
 my ($rule) = @_;
@@ -735,6 +757,8 @@ if (defined($rule->{'limit_burst'}) && $rule->{'limit_burst'} ne '') {
 return $out;
 }
 
+# format_log_expr(&rule)
+# Formats a log expression
 sub format_log_expr
 {
 my ($rule) = @_;
@@ -750,6 +774,8 @@ if (defined($rule->{'log_level'}) && $rule->{'log_level'} ne '') {
 return join(" ", @p);
 }
 
+# parse_rule_text(rule-text)
+# Parses one nftables rule line into structured fields where possible
 sub parse_rule_text
 {
 my ($line) = @_;
@@ -950,6 +976,8 @@ $rule{'exprs'} = \@exprs;
 return \%rule;
 }
 
+# format_rule_text(&rule)
+# Formats a structured rule hash into nftables rule text
 sub format_rule_text
 {
 my ($rule) = @_;
@@ -1179,6 +1207,8 @@ $text =~ s/\s+$//;
 return $text;
 }
 
+# parse_set_elements_string(string)
+# Parses a comma-separated nftables set elements string
 sub parse_set_elements_string
 {
 my ($text) = @_;
@@ -1191,6 +1221,8 @@ my @vals = split(/\s*,\s*/, $text);
 return \@vals;
 }
 
+# parse_set_elements_input(string)
+# Parses set elements from textarea input
 sub parse_set_elements_input
 {
 my ($text) = @_;
@@ -1203,6 +1235,8 @@ $text =~ s/\n/,/g;
 return parse_set_elements_string($text);
 }
 
+# set_elements_text(&set)
+# Returns set elements formatted for textarea editing
 sub set_elements_text
 {
 my ($set) = @_;
@@ -1211,6 +1245,8 @@ return "" if (!$set->{'elements'} || ref($set->{'elements'}) ne 'ARRAY');
 return join("\n", @{$set->{'elements'}});
 }
 
+# set_elements_summary(&set)
+# Returns a short set elements summary for table listings
 sub set_elements_summary
 {
 my ($set) = @_;
@@ -1270,6 +1306,8 @@ my ($bb) = $b =~ /^(\d+)/;
 return ($aa || 0) <=> ($bb || 0) || $a cmp $b;
 }
 
+# set_type_kind(type)
+# Returns addr, port or undef for a set type
 sub set_type_kind
 {
 my ($type) = @_;
@@ -1279,6 +1317,8 @@ return 'port' if ($type =~ /(service|port)$/);
 return;
 }
 
+# set_type_family(type)
+# Returns ip or ip6 for address set types
 sub set_type_family
 {
 my ($type) = @_;
@@ -1288,6 +1328,8 @@ return 'ip' if ($type eq 'ipv4_addr');
 return;
 }
 
+# set_name_from_value(value)
+# Returns the set name from an @set reference value
 sub set_name_from_value
 {
 my ($val) = @_;
@@ -1296,6 +1338,8 @@ return $1 if ($val =~ /^\@(\S+)$/);
 return;
 }
 
+# rule_uses_set(&rule, set-name)
+# Returns true if a rule references a set
 sub rule_uses_set
 {
 my ($rule, $setname) = @_;
@@ -1307,6 +1351,8 @@ return 1 if ($rule->{'text'} && $rule->{'text'} =~ /\@\Q$setname\E\b/);
 return 0;
 }
 
+# count_set_references(&table, set-name)
+# Returns the number of rules in a table that reference a set
 sub count_set_references
 {
 my ($table, $setname) = @_;
@@ -1724,6 +1770,7 @@ return;
 }
 
 # describe_rule(&rule)
+# Returns a human-readable rule summary for listings
 sub describe_rule
 {
 my ($r) = @_;

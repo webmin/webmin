@@ -37,6 +37,8 @@ foreach my $check (
     }
 }
 
+# join_multi_value(string)
+# Joins multi-select form values into an nftables comma list
 sub join_multi_value
 {
     my ($v) = @_;
