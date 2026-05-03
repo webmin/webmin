@@ -8,7 +8,7 @@ use warnings;
 our (%text);
 assert_acl('active');
 
-ui_print_header(undef, $text{'active_title'}, "", "intro", 1, 1);
+ui_print_header(undef, $text{'active_title'}, "");
 
 my ($tables, $err) = get_active_nftables_save();
 if ($err) {

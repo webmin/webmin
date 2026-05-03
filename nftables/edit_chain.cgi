@@ -19,12 +19,12 @@ my $chain_name = "";
 my $is_new = $in{'new'} ? 1 : 0;
 
 if ($is_new) {
-    ui_print_header(undef, $text{'chain_title_new'}, "", "intro", 1, 1);
+    ui_print_header(undef, $text{'chain_title_new'}, "");
 } else {
     $chain_name = $in{'chain'};
     $chain = $table->{'chains'}->{$chain_name};
     $chain || error($text{'chain_nochain'});
-    ui_print_header(undef, $text{'chain_title_edit'}, "", "intro", 1, 1);
+    ui_print_header(undef, $text{'chain_title_edit'}, "");
 }
 
 my @type_opts = (

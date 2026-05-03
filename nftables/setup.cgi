@@ -49,7 +49,7 @@ if ($in{'action'} eq 'create') {
 	return;
 	}
 
-ui_print_header(undef, $text{'index_profile_setup'}, "", "intro", 1, 1);
+ui_print_header(undef, $text{'index_profile_setup'}, "");
 
 print ui_form_start("setup.cgi");
 print ui_hidden("action", "create");

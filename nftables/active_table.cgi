@@ -26,7 +26,7 @@ my @saved_tables = get_nftables_save();
 my $status_key = active_table_status($table, \@saved_tables);
 my $is_saved = table_is_webmin_managed($table, \@saved_tables);
 
-ui_print_header(undef, $text{'active_table_title'}, "", "intro", 1, 1);
+ui_print_header(undef, $text{'active_table_title'}, "");
 
 print ui_table_start($text{'active_table_summary'}, "width=100%", 2);
 print ui_table_row($text{'active_table'}, html_escape(nft_table_spec($table)));

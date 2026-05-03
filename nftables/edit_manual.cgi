@@ -9,7 +9,7 @@ our (%in, %text);
 ReadParse();
 assert_manual_acl();
 
-ui_print_header(undef, $text{'index_edit_manual'}, "", "intro", 1, 1);
+ui_print_header(undef, $text{'index_edit_manual'}, "");
 
 my @files = unique(get_nftables_config_files());
 @files || error($text{'manual_enofile'});

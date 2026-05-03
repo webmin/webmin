@@ -63,7 +63,7 @@ if ($in{'import'}) {
 	return;
 }
 
-ui_print_header(undef, $text{'import_title'}, "", "intro", 1, 1);
+ui_print_header(undef, $text{'import_title'}, "");
 
 print ui_form_start("import_table.cgi");
 print ui_hidden("family", $source->{'family'});

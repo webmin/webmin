@@ -28,7 +28,7 @@ if ($in{'confirm'}) {
 	return;
 	}
 
-ui_print_header(undef, $text{'clear_all_title'}, "", "intro", 1, 1);
+ui_print_header(undef, $text{'clear_all_title'}, "");
 print "<center>\n";
 print ui_form_start("clear_tables.cgi");
 print text('clear_all_confirm', scalar(@clearable)),"<p>\n";

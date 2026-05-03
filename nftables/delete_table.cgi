@@ -44,7 +44,7 @@ if ($in{'confirm'}) {
     return;
 }
 
-ui_print_header(undef, $text{'delete_title'}, "", "intro", 1, 1);
+ui_print_header(undef, $text{'delete_title'}, "");
 print "<center>\n";
 print ui_form_start("delete_table.cgi");
 print ui_hidden("table", $table_idx);
