@@ -1,5 +1,5 @@
 name=Nftables
-desc=NFTables Firewall
+desc=Linux Firewall
 os_support=*-linux
 category=net
-longdesc=Configure a Linux firewall using NFTables. Allows the editing of all tables, chains, and rules.
+longdesc=Configure a Linux firewall using nftables. Allows the editing of tables, chains, sets, and rules.

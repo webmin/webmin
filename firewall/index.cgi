@@ -19,7 +19,8 @@ $subhead = $text{"index_title_v${ipvx}"};
 if ($ipvx_save) {
 	$subhead .= ", ".&text('index_editing', "<tt>$ipvx_save</tt>");
 	}
-&ui_print_header($subhead, $text{'index_title'}, undef,
+my $title = $ipvx_version == 6 ? $text{'index_title6'} : $text{'index_title'};
+&ui_print_header($subhead, $title, undef,
 		 "intro", 1, 1, 0,
 		 &help_search_link("ip${ipvx}tables", "man", "doc"));
 

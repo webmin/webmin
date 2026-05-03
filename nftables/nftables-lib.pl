@@ -147,6 +147,25 @@ my $cmd = $config{'nft_cmd'} || "nft";
 return has_command($cmd);
 }
 
+# nft_version_text()
+# Returns a friendly nftables version string for page subtitles
+sub nft_version_text
+{
+my $cmd = get_nft_command();
+return undef if (!$cmd);
+my $out = backquote_command(quotemeta($cmd)." --version 2>&1");
+return undef if ($? || !$out);
+$out =~ s/\r?\n.*$//s;
+$out =~ s/^\s+|\s+$//g;
+if ($out =~ /^nftables\s+v?(\S+)(?:\s+(.*))?$/i) {
+	my $details = $2 || "";
+	$details =~ s/^\s+|\s+$//g;
+	return text('index_version',
+		    $1.($details ne "" ? " ".$details : ""));
+	}
+return $out;
+}
+
 # check_nftables()
 # Returns an error message if nftables is not installed, undef if all is OK
 sub check_nftables

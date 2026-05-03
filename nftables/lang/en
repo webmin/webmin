@@ -1,10 +1,11 @@
-index_title=NFTables Firewall
+index_title=Linux Firewall
+index_version=nftables version $1
 index_tab_chains=Chains
 index_tab_sets=Sets
 index_editing=Rules file $1
-index_ecommand=The NFTables command $1 was not found on your system.
-index_ekernel=An error occurred checking your current NFTables configuration: $1
-index_header=Existing NFTables Rules
+index_ecommand=The nftables command $1 was not found on your system.
+index_ekernel=An error occurred checking your current nftables configuration: $1
+index_header=Existing nftables rules
 index_change=Selected table
 index_table_filter=Packet filtering
 index_table_nat=Network address translation

@@ -1,4 +1,5 @@
-index_title=Linux IPTables Firewall
+index_title=Linux Firewall (iptables)
+index_title6=Linux Firewall (ip6tables)
 index_title_v=IPv4 Firewall
 index_title_v6=IPv6 Firewall
 index_position=Showing rules $1 to $2 of $3

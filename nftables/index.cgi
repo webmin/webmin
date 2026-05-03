@@ -14,7 +14,7 @@ if (!$can_view_saved && !check_acl('active') && !check_acl('create') &&
 }
 my $partial = $in{'partial'};
 if (!$partial) {
-    ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1,
+    ui_print_header(nft_version_text(), $text{'index_title'}, "", "intro", 1, 1,
                     undef, restart_button());
 }
 
