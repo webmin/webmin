@@ -297,12 +297,11 @@ if ($partial) {
 
 print $rules_html;
 
-if (@tables && (check_acl('apply') || check_acl('active') ||
-    check_acl('setup') || check_manual_acl())) {
+my $init_support = foreign_check("init") && check_acl('bootup') ? 1 : 0;
+if (@tables && (check_acl('active') || check_acl('setup') ||
+    check_manual_acl() || $init_support)) {
     print ui_hr();
     print ui_buttons_start();
-    print ui_buttons_row("restart.cgi", $text{'index_nftables_apply'}, $text{'index_nftables_applydesc'})
-        if (check_acl('apply'));
     print ui_buttons_row("active.cgi", $text{'index_ruleset_active'}, $text{'index_ruleset_activedesc'})
         if (check_acl('active'));
     print ui_buttons_row("setup.cgi", $text{'index_profile_setup'}, $text{'index_profile_setupdesc'})
@@ -310,6 +309,10 @@ if (@tables && (check_acl('apply') || check_acl('active') ||
     print ui_buttons_row("edit_manual.cgi", $text{'index_edit_manual'},
                          $text{'index_edit_manualdesc'})
         if (check_manual_acl());
+    print ui_buttons_row("bootup.cgi", $text{'index_bootup'},
+                         $text{'index_bootupdesc'}, undef,
+                         ui_yesno_radio("boot", nftables_started_at_boot()))
+        if ($init_support);
     print ui_buttons_end();
 }
 

@@ -5,7 +5,8 @@ BEGIN { push(@INC, ".."); }; ## no critic
 use WebminCore;
 use strict;
 use warnings;
-our (%config, %access, $module_config_directory, $module_var_directory);
+our (%config, %access, $module_config_directory, $module_var_directory,
+     $module_root_directory);
 our ($last_config_change_flag, $last_restart_time_flag);
 init_config();
 %access = get_module_acl();
@@ -179,6 +180,76 @@ return text('index_ecommand', "<tt>nft</tt>");
 sub nftables_rules_file
 {
 return "$module_config_directory/rules.conf";
+}
+
+# nftables_boot_action()
+# Returns the init action name for applying nftables rules at boot
+sub nftables_boot_action
+{
+return "webmin-nftables";
+}
+
+# nftables_boot_wrapper()
+# Returns the generated wrapper used by the boot action
+sub nftables_boot_wrapper
+{
+return "$module_config_directory/apply-boot.pl";
+}
+
+# nftables_started_at_boot()
+# Returns true if Webmin-managed nftables rules are enabled at boot
+sub nftables_started_at_boot
+{
+return 0 if (!foreign_check("init"));
+foreign_require("init", "init-lib.pl");
+return init::action_status(nftables_boot_action()) == 2 ? 1 : 0;
+}
+
+# create_nftables_init()
+# Creates or enables the boot action for Webmin-managed nftables rules
+sub create_nftables_init
+{
+foreign_require("init", "init-lib.pl");
+chmod(0755, "$module_root_directory/apply-boot.pl");
+create_wrapper(nftables_boot_wrapper(), "nftables", "apply-boot.pl");
+my $action = nftables_boot_action();
+{
+	no warnings 'once';
+	if (($init::init_mode || "") eq "systemd") {
+		my $unit = init::action_unit($action);
+		my $unit_file = init::get_systemd_root($unit)."/".$unit;
+		if (-r $unit_file) {
+			init::disable_at_boot($action);
+			init::delete_systemd_service($unit);
+			}
+		}
+	}
+init::enable_at_boot($action,
+		      "Load Webmin nftables rules",
+		      nftables_boot_wrapper(),
+		      undef, undef,
+		      { 'exit' => 1,
+			'opts' => {
+				'after' => 'local-fs.target systemd-modules-load.service',
+				'before' => 'network-pre.target network.target',
+				'wants' => 'network-pre.target',
+				} });
+}
+
+# disable_nftables_init()
+# Disables the boot action for Webmin-managed nftables rules
+sub disable_nftables_init
+{
+foreign_require("init", "init-lib.pl");
+my $action = nftables_boot_action();
+init::disable_at_boot($action);
+{
+	no warnings 'once';
+	if (($init::init_mode || "") eq "systemd") {
+		init::delete_systemd_service(init::action_unit($action));
+		}
+	}
+unlink_file(nftables_boot_wrapper());
 }
 
 # get_nftables_config_files()
