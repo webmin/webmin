@@ -9,7 +9,8 @@ our (%in, %text, %config);
 ReadParse();
 my $partial = $in{'partial'};
 if (!$partial) {
-    ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
+    ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1,
+                    undef, restart_button());
 }
 
 # Check for nft command
@@ -279,7 +280,7 @@ print $rules_html;
 if (@tables) {
     print ui_hr();
     print ui_buttons_start();
-    print ui_buttons_row("apply.cgi", $text{'index_apply'}, $text{'index_applydesc'});
+    print ui_buttons_row("restart.cgi", $text{'index_apply'}, $text{'index_applydesc'});
     print ui_buttons_row("active.cgi", $text{'index_active'}, $text{'index_activedesc'});
     print ui_buttons_row("setup.cgi", $text{'index_setup'}, $text{'index_setupdesc'});
     print ui_buttons_end();

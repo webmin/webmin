@@ -47,7 +47,8 @@ if ($in{'action'} eq 'create') {
 	return;
 	}
 
-ui_print_header(undef, $text{'setup_title'}, "", "intro", 1, 1);
+ui_print_header(undef, $text{'setup_title'}, "", "intro", 1, 1,
+                undef, restart_button());
 
 print ui_form_start("setup.cgi");
 print ui_hidden("action", "create");

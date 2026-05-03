@@ -7,7 +7,8 @@ use strict;
 use warnings;
 our (%text);
 
-ui_print_header(undef, $text{'active_title'}, "", "intro", 1, 1);
+ui_print_header(undef, $text{'active_title'}, "", "intro", 1, 1,
+                undef, restart_button());
 
 my ($tables, $err) = get_active_nftables_save();
 if ($err) {

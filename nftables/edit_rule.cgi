@@ -47,10 +47,12 @@ sub split_multi_value
 }
 
 if ($in{'new'}) {
-    ui_print_header(undef, $text{'edit_title_new'}, "", "intro", 1, 1);
+    ui_print_header(undef, $text{'edit_title_new'}, "", "intro", 1, 1,
+                    undef, restart_button());
     $rule = { 'chain' => $in{'chain'} };
 } else {
-    ui_print_header(undef, $text{'edit_title_edit'}, "", "intro", 1, 1);
+    ui_print_header(undef, $text{'edit_title_edit'}, "", "intro", 1, 1,
+                    undef, restart_button());
     $rule = $table->{'rules'}->[$in{'idx'}];
 }
 if ($table && $rule->{'chain'}) {

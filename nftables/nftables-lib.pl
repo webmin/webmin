@@ -5,8 +5,63 @@ BEGIN { push(@INC, ".."); }; ## no critic
 use WebminCore;
 use strict;
 use warnings;
-our (%config, $module_config_directory);
+our (%config, $module_config_directory, $module_var_directory);
+our ($last_config_change_flag, $last_restart_time_flag);
 init_config();
+$last_config_change_flag = $module_var_directory."/config-flag";
+$last_restart_time_flag = $module_var_directory."/restart-flag";
+
+# restart_button()
+# Returns HTML for the header apply button
+sub restart_button
+{
+my @tables = get_nftables_save();
+return "" if (!@tables);
+my $args = "redir=".urlize(this_url());
+my $needs = needs_config_restart();
+my $apply = text('index_apply_changes');
+my $label = $needs ? "<b>$apply</b>" : $apply;
+my $url = "restart.cgi?$args";
+$url .= "&newconfig=1" if ($needs);
+return ui_link($url, $label);
+}
+
+# this_url()
+# Returns the URL in the nftables module for the current script
+sub this_url
+{
+my $url = $ENV{'SCRIPT_NAME'} || "";
+my $query = $ENV{'QUERY_STRING'} || "";
+$url .= "?$query" if ($query ne "");
+return $url;
+}
+
+# update_last_config_change()
+# Updates the flag file indicating when the saved config was changed
+sub update_last_config_change
+{
+open_tempfile(my $fh, ">$last_config_change_flag", 0, 1);
+close_tempfile($fh);
+}
+
+# restart_last_restart_time()
+# Updates the flag file indicating when the saved config was applied
+sub restart_last_restart_time
+{
+open_tempfile(my $fh, ">$last_restart_time_flag", 0, 1);
+close_tempfile($fh);
+}
+
+# needs_config_restart()
+# Returns 1 if saved config changes still need to be applied
+sub needs_config_restart
+{
+my @cst = stat($last_config_change_flag);
+my @rst = stat($last_restart_time_flag);
+return 0 if (!@cst);
+return 1 if (!@rst);
+return $cst[9] > $rst[9] ? 1 : 0;
+}
 
 # get_nft_command()
 # Returns the configured nft command path, or finds it in PATH
@@ -1198,6 +1253,7 @@ open_tempfile(my $fh, ">$file");
 print_tempfile($fh, $out);
 close_tempfile($fh);
 sync_managed_metadata(@tables);
+update_last_config_change();
 return;
 }
 
@@ -1294,6 +1350,7 @@ unlink_file($tmp);
 if ($?) {
     return "<pre>$out</pre>";
 }
+restart_last_restart_time();
 return;
 }
 

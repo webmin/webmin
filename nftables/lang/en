@@ -50,6 +50,7 @@ index_cdeletesel=Delete Selected Chains
 index_cmovesel=Move Selected
 index_radd=Add Rule
 index_apply=Apply Configuration
+index_apply_changes=Apply Changes
 index_applydesc=Click this button to replace the saved Webmin-managed tables in the active nftables ruleset.
 index_active=View Active Ruleset
 index_activedesc=View active nftables tables and import copies into Webmin's saved configuration.
