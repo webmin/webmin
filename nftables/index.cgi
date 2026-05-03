@@ -35,16 +35,16 @@ my $rules_html = "";
 
 if (!@tables) {
     $rules_html .= ui_buttons_start();
-    $rules_html .= ui_buttons_row("setup.cgi", $text{'index_setup'}, $text{'index_setupdesc'})
+    $rules_html .= ui_buttons_row("setup.cgi", $text{'index_profile_setup'}, $text{'index_profile_setupdesc'})
         if (check_acl('setup'));
     $rules_html .= ui_buttons_row("create_table.cgi", $text{'index_table_create'},
                                    $text{'index_table_createdesc'})
         if (check_acl('create'));
-    $rules_html .= ui_buttons_row("active.cgi", $text{'index_active'},
-                                   $text{'index_activedesc'})
+    $rules_html .= ui_buttons_row("active.cgi", $text{'index_ruleset_active'},
+                                   $text{'index_ruleset_activedesc'})
         if (check_acl('active'));
-    $rules_html .= ui_buttons_row("edit_manual.cgi", $text{'index_manual'},
-                                   $text{'index_manualdesc'})
+    $rules_html .= ui_buttons_row("edit_manual.cgi", $text{'index_edit_manual'},
+                                   $text{'index_edit_manualdesc'})
         if (check_manual_acl());
     $rules_html .= ui_buttons_end();
 } else {
@@ -303,12 +303,12 @@ if (@tables && (check_acl('apply') || check_acl('active') ||
     print ui_buttons_start();
     print ui_buttons_row("restart.cgi", $text{'index_apply'}, $text{'index_applydesc'})
         if (check_acl('apply'));
-    print ui_buttons_row("active.cgi", $text{'index_active'}, $text{'index_activedesc'})
+    print ui_buttons_row("active.cgi", $text{'index_ruleset_active'}, $text{'index_ruleset_activedesc'})
         if (check_acl('active'));
-    print ui_buttons_row("setup.cgi", $text{'index_setup'}, $text{'index_setupdesc'})
+    print ui_buttons_row("setup.cgi", $text{'index_profile_setup'}, $text{'index_profile_setupdesc'})
         if (check_acl('setup'));
-    print ui_buttons_row("edit_manual.cgi", $text{'index_manual'},
-                         $text{'index_manualdesc'})
+    print ui_buttons_row("edit_manual.cgi", $text{'index_edit_manual'},
+                         $text{'index_edit_manualdesc'})
         if (check_manual_acl());
     print ui_buttons_end();
 }
