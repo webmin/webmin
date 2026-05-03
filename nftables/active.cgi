@@ -6,6 +6,7 @@ require './nftables-lib.pl'; ## no critic
 use strict;
 use warnings;
 our (%text);
+assert_acl('active');
 
 ui_print_header(undef, $text{'active_title'}, "", "intro", 1, 1);
 
@@ -13,10 +14,12 @@ my ($tables, $err) = get_active_nftables_save();
 if ($err) {
 	print text('active_failed', $err);
 }
-elsif (!@$tables) {
-	print "<b>$text{'active_none'}</b><p>\n";
-}
 else {
+	@$tables = grep { check_table_acl($_) } @$tables;
+	if (!@$tables) {
+		print "<b>$text{'active_none'}</b><p>\n";
+		}
+	else {
 	my @saved_tables = get_nftables_save();
 	print ui_columns_start(
 		[ $text{'active_table'}, $text{'active_flags'},
@@ -40,12 +43,13 @@ else {
 		push(@actions, ui_link(
 				"import_table.cgi?family=".urlize($t->{'family'}).
 				"&name=".urlize($t->{'name'}),
-				$text{'active_import'})) if (!$is_saved);
+				$text{'active_import'}))
+			if (!$is_saved && check_acl('import'));
 		push(@actions, ui_link(
 				"clear_table.cgi?family=".urlize($t->{'family'}).
 				"&name=".urlize($t->{'name'}),
 				$text{'active_clear'}))
-			if (!table_is_externally_managed($t));
+			if (!table_is_externally_managed($t) && check_acl('clear'));
 		my $actions = @actions ? join(" ", @actions) : "-";
 		print ui_columns_row([
 			ui_link($table_url, html_escape(nft_table_spec($t))),
@@ -59,7 +63,8 @@ else {
 	}
 	print ui_columns_end();
 
-	my @clearable = grep { !table_is_externally_managed($_) } @$tables;
+	my @clearable = grep { !table_is_externally_managed($_) &&
+			       check_acl('clear') } @$tables;
 	if (@clearable) {
 		print ui_hr();
 		print ui_buttons_start();
@@ -68,6 +73,7 @@ else {
 				     $text{'active_clear_alldesc'});
 		print ui_buttons_end();
 		}
+	}
 }
 
 ui_print_footer("index.cgi", $text{'index_return'});

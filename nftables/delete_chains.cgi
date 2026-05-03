@@ -8,6 +8,7 @@ use warnings;
 our (%in, %text);
 ReadParse();
 error_setup($text{'delete_chains_err'});
+assert_acl('delete');
 
 my @tables = get_nftables_save();
 my $table_idx = $in{'table'};
@@ -24,6 +25,7 @@ if (defined($in{'table_family'}) && defined($in{'table_name'})) {
 }
 $table ||= $tables[$table_idx];
 $table || error($text{'chain_notable'});
+assert_table_acl($table);
 
 my @chains = split(/\0/, $in{'d'} || "");
 my %seen;

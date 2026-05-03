@@ -8,11 +8,13 @@ use warnings;
 our (%in, %text);
 ReadParse();
 error_setup($text{'clear_all_err'});
+assert_acl('clear');
 
 my ($tables, $err) = get_active_nftables_save();
 error(text('active_failed', $err)) if ($err);
 
-my @clearable = grep { !table_is_externally_managed($_) } @$tables;
+my @clearable = grep { !table_is_externally_managed($_) &&
+		       check_table_acl($_) } @$tables;
 @clearable || error($text{'clear_all_enone'});
 
 if ($in{'confirm'}) {

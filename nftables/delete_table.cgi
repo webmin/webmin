@@ -8,6 +8,7 @@ use warnings;
 our (%in, %text);
 ReadParse();
 error_setup($text{'delete_err'});
+assert_acl('delete');
 
 my @tables = get_nftables_save();
 my $table_idx = $in{'table'};
@@ -27,6 +28,7 @@ else {
     $table = $tables[$table_idx];
 }
 $table || error($text{'delete_notable'});
+assert_table_acl($table);
 
 if ($in{'confirm'}) {
     my $needs_apply = needs_config_restart();

@@ -8,6 +8,7 @@ use warnings;
 our (%in, %text);
 ReadParse();
 error_setup($text{'apply_err'});
+assert_acl('apply');
 
 my $err = apply_restore();
 error($err) if ($err);

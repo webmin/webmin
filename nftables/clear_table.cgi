@@ -8,6 +8,7 @@ use warnings;
 our (%in, %text);
 ReadParse();
 error_setup($text{'clear_err'});
+assert_acl('clear');
 
 my ($tables, $err) = get_active_nftables_save();
 error(text('active_failed', $err)) if ($err);
@@ -20,6 +21,7 @@ foreach my $t (@$tables) {
 		}
 	}
 $table || error($text{'active_table_notable'});
+assert_table_acl($table);
 
 if ($in{'confirm'}) {
 	$err = delete_active_table($table);

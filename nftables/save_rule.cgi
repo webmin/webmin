@@ -8,8 +8,12 @@ use warnings;
 our (%in, %text);
 ReadParse();
 error_setup($text{'save_err'});
+assert_acl('rules');
+assert_acl('raw') if ($in{'edit_direct'});
 my @tables = get_nftables_save();
 my $table = $tables[$in{'table'}];
+$table || error($text{'move_notable'});
+assert_table_acl($table);
 
 foreach my $sfield (qw(saddr_set daddr_set sport_set dport_set)) {
     if ($in{$sfield}) {

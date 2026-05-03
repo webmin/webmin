@@ -7,10 +7,12 @@ use strict;
 use warnings;
 our (%in, %text);
 ReadParse();
+assert_acl('chains');
 
 my @tables = get_nftables_save();
 my $table = $tables[$in{'table'}];
 $table || error($text{'chain_notable'});
+assert_table_acl($table);
 
 my $chain = $table->{'chains'}->{$in{'chain'}};
 $chain || error($text{'chain_nochain'});

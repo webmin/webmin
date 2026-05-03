@@ -8,6 +8,7 @@ use warnings;
 our (%in, %text);
 ReadParse();
 error_setup($text{'create_err'});
+assert_acl('create');
 
 my @families = qw(ip ip6 inet arp bridge netdev);
 my %family_ok = map { $_ => 1 } @families;
@@ -40,6 +41,7 @@ if ($in{'create'}) {
                   'rules' => [],
                   'chains' => {},
                   'sets' => {} };
+    assert_table_acl($table);
     push(@tables, $table);
     my $err = create_table_configuration($table, @tables);
     error(text('create_failed', $err)) if ($err);

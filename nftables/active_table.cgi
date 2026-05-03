@@ -8,6 +8,7 @@ use warnings;
 our (%in, %text);
 ReadParse();
 error_setup($text{'active_table_err'});
+assert_acl('active');
 
 my ($tables, $err) = get_active_nftables_save();
 error(text('active_failed', $err)) if ($err);
@@ -20,6 +21,7 @@ foreach my $t (@$tables) {
 	}
 }
 $table || error($text{'active_table_notable'});
+assert_table_acl($table);
 my @saved_tables = get_nftables_save();
 my $status_key = active_table_status($table, \@saved_tables);
 my $is_saved = table_is_webmin_managed($table, \@saved_tables);
@@ -32,7 +34,7 @@ print ui_table_row($text{'active_flags'}, html_escape($table->{'flags'} || "-"))
 print ui_table_row($text{'active_status'}, $text{'active_'.$status_key});
 print ui_table_end();
 
-if (!$is_saved) {
+if (!$is_saved && check_acl('import')) {
 	print ui_buttons_start();
 	print ui_buttons_row(
 		"import_table.cgi?family=".urlize($table->{'family'}).

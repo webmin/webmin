@@ -8,10 +8,12 @@ use warnings;
 our (%in, %text);
 ReadParse();
 error_setup($text{'chain_err'});
+assert_acl('chains');
 
 my @tables = get_nftables_save();
 my $table = $tables[$in{'table'}];
 $table || error($text{'chain_notable'});
+assert_table_acl($table);
 
 my $is_new = $in{'new'} ? 1 : 0;
 my $is_rename = $in{'rename'} ? 1 : 0;

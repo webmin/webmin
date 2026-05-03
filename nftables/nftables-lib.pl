@@ -5,16 +5,69 @@ BEGIN { push(@INC, ".."); }; ## no critic
 use WebminCore;
 use strict;
 use warnings;
-our (%config, $module_config_directory, $module_var_directory);
+our (%config, %access, $module_config_directory, $module_var_directory);
 our ($last_config_change_flag, $last_restart_time_flag);
 init_config();
+%access = get_module_acl();
 $last_config_change_flag = $module_var_directory."/config-flag";
 $last_restart_time_flag = $module_var_directory."/restart-flag";
+
+# check_acl(action)
+# Returns true if the current Webmin user can perform an action
+sub check_acl
+{
+my ($action) = @_;
+return $access{$action} ? 1 : 0;
+}
+
+# assert_acl(action)
+# Fails if the current Webmin user cannot perform an action
+sub assert_acl
+{
+my ($action) = @_;
+check_acl($action) || error(text('acl_ecannot'));
+}
+
+# table_acl_name(&table)
+# Returns the ACL token for a table
+sub table_acl_name
+{
+my ($table) = @_;
+return ($table->{'family'} || '').":".($table->{'name'} || '');
+}
+
+# check_table_acl(&table)
+# Returns true if the current Webmin user can manage a table
+sub check_table_acl
+{
+my ($table) = @_;
+return 0 if (!$table);
+my $tables = defined($access{'tables'}) ? $access{'tables'} : '*';
+return 1 if ($tables eq '*');
+my $name = table_acl_name($table);
+my @tokens = grep { $_ ne '' } split(/\s+/, $tables);
+if (@tokens && $tokens[0] eq '!') {
+	my %deny = map { $_ => 1 } @tokens[1..$#tokens];
+	return !$deny{$name};
+	}
+my %allow = map { $_ => 1 } @tokens;
+return $allow{$name} ? 1 : 0;
+}
+
+# assert_table_acl(&table)
+# Fails if the current Webmin user cannot manage a table
+sub assert_table_acl
+{
+my ($table) = @_;
+check_table_acl($table) ||
+	error(text('acl_etable', html_escape(nft_table_spec($table))));
+}
 
 # restart_button()
 # Returns HTML for the header apply button
 sub restart_button
 {
+return "" if (!check_acl('apply'));
 my @tables = get_nftables_save();
 return "" if (!@tables);
 my $args = "redir=".urlize(this_url());

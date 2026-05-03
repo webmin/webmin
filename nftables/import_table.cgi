@@ -9,6 +9,7 @@ use Storable qw(dclone);
 our (%in, %text);
 ReadParse();
 error_setup($text{'import_err'});
+assert_acl('import');
 
 my ($active, $active_err) = get_active_nftables_save();
 error(text('active_failed', $active_err)) if ($active_err);
@@ -21,6 +22,7 @@ foreach my $t (@$active) {
 	}
 }
 $source || error($text{'import_esource'});
+assert_table_acl($source);
 
 my @tables = get_nftables_save();
 if (table_is_webmin_managed($source, \@tables)) {
@@ -45,6 +47,7 @@ if ($in{'import'}) {
 	my $import = dclone($source);
 	$import->{'name'} = $name;
 	delete($import->{'flags'});
+	assert_table_acl($import);
 	push(@tables, $import);
 	write_configuration(@tables);
 	register_managed_table($import,

@@ -8,10 +8,12 @@ use warnings;
 our (%in, %text);
 ReadParse();
 error_setup($text{'set_err'});
+assert_acl('sets');
 
 my @tables = get_nftables_save();
 my $table = $tables[$in{'table'}];
 $table || error($text{'set_notable'});
+assert_table_acl($table);
 
 my $is_new = $in{'new'} ? 1 : 0;
 my $name = $in{'set_name'};

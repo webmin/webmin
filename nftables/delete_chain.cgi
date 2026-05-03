@@ -8,10 +8,12 @@ use warnings;
 our (%in, %text);
 ReadParse();
 error_setup($text{'delete_chain_err'});
+assert_acl('delete');
 
 my @tables = get_nftables_save();
 my $table = $tables[$in{'table'}];
 $table || error($text{'chain_notable'});
+assert_table_acl($table);
 
 my $chain = $table->{'chains'}->{$in{'chain'}};
 $chain || error($text{'chain_nochain'});

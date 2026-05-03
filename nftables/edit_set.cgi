@@ -7,10 +7,12 @@ use strict;
 use warnings;
 our (%in, %text);
 ReadParse();
+assert_acl('sets');
 
 my @tables = get_nftables_save();
 my $table = $tables[$in{'table'}];
 $table || error($text{'set_notable'});
+assert_table_acl($table);
 
 my $set = { };
 my $set_name = "";

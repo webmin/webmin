@@ -7,8 +7,12 @@ use strict;
 use warnings;
 our (%in, %text, %config);
 ReadParse();
+assert_acl('rules');
+my $can_edit_raw = check_acl('raw');
 my @tables = get_nftables_save();
 my $table = $tables[$in{'table'}];
+$table || error($text{'move_notable'});
+assert_table_acl($table);
 my $rule;
 my $chain_def;
 my $chain_hook;
@@ -301,10 +305,11 @@ print ui_hidden_table_end("advanced");
 print ui_table_start($text{'edit_rule'}, "width=100%", 2);
 
 # Raw rule (read-only unless edit direct is checked)
-my $raw_controls = ui_checkbox("edit_direct", 1, $text{'edit_raw_rule_direct'}, 0);
+my $raw_controls = $can_edit_raw ?
+    ui_checkbox("edit_direct", 1, $text{'edit_raw_rule_direct'}, 0)."<br>" : "";
 my $raw_area = ui_textarea("raw_rule", $rule->{'text'}, 4, 60, undef, undef,
                             "readonly='true'");
-print ui_table_row(hlink($text{'edit_raw_rule'}, "raw_rule"), $raw_controls."<br>".$raw_area,
+print ui_table_row(hlink($text{'edit_raw_rule'}, "raw_rule"), $raw_controls.$raw_area,
                     undef, undef, ["data-column-span='all' data-column-locked='1'"]);
 
 print ui_table_end();

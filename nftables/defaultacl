@@ -1,0 +1,14 @@
+view=1
+active=1
+tables=*
+create=1
+setup=1
+chains=1
+sets=1
+rules=1
+raw=1
+delete=1
+apply=1
+import=1
+clear=1
+quick=1

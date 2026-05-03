@@ -8,6 +8,7 @@ use warnings;
 our (%in, %text);
 ReadParse();
 error_setup($text{'setup_err'});
+assert_acl('setup');
 if ($in{'action'} eq 'create') {
 	my $profile = $in{'profile'} || 'virtualmin';
 	my $table_name = $in{'table_name'} || default_profile_table_name();
@@ -31,6 +32,7 @@ if ($in{'action'} eq 'create') {
 
 	my @allow = grep { $_ ne '' } split(/\0/, $in{'allow'} || '');
 	my $table = create_profile_ruleset($profile, $table_name, \@allow);
+	assert_table_acl($table);
 	push(@tables, $table);
 
 	my $error = save_configuration(@tables);

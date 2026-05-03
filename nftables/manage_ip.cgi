@@ -7,6 +7,7 @@ use strict;
 use warnings;
 our (%in, %text);
 ReadParse();
+assert_acl('quick');
 
 my $action = $in{'allow'} ? 'allow' : $in{'block'} ? 'block' : '';
 error_setup($action eq 'allow' ? $text{'quick_allow_err'} :
@@ -29,6 +30,7 @@ else {
 	$table = $tables[$table_idx];
 	}
 $table || error($text{'quick_etable'});
+assert_table_acl($table);
 
 my $err = add_quick_ip_rule($table, $in{'ip'}, $action);
 error($err) if ($err);
