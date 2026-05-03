@@ -27,7 +27,7 @@ print ui_table_row($text{'acl_tables'},
 	3);
 
 foreach my $a (qw(view active create setup chains sets rules raw delete
-		 apply import clear quick)) {
+		 apply import clear quick manual)) {
 	print ui_table_row($text{'acl_'.$a}, ui_yesno_radio($a, $o->{$a}));
 	}
 }
@@ -46,7 +46,7 @@ else {
 	$_[0]->{'tables'} = join(" ", split(/\0/, $in{'tables'}));
 	}
 foreach my $a (qw(view active create setup chains sets rules raw delete
-		 apply import clear quick)) {
+		 apply import clear quick manual)) {
 	$_[0]->{$a} = $in{$a} || 0;
 	}
 }

@@ -63,6 +63,29 @@ check_table_acl($table) ||
 	error(text('acl_etable', html_escape(nft_table_spec($table))));
 }
 
+# check_unrestricted_table_acl()
+# Returns true if the current Webmin user can manage every saved table
+sub check_unrestricted_table_acl
+{
+my $tables = defined($access{'tables'}) ? $access{'tables'} : '*';
+return $tables eq '*';
+}
+
+# check_manual_acl()
+# Returns true if the current user can edit the full saved rules file
+sub check_manual_acl
+{
+return check_acl('manual') && check_unrestricted_table_acl();
+}
+
+# assert_manual_acl()
+# Fails if the current user cannot edit the full saved rules file
+sub assert_manual_acl
+{
+check_acl('manual') || error(text('acl_ecannot'));
+check_unrestricted_table_acl() || error(text('manual_etables'));
+}
+
 # restart_button()
 # Returns HTML for the header apply button
 sub restart_button
@@ -130,6 +153,51 @@ sub check_nftables
 {
 return undef if (get_nft_command());
 return text('index_ecommand', "<tt>nft</tt>");
+}
+
+# get_nftables_config_files()
+# Returns files that can be manually edited by this module
+sub get_nftables_config_files
+{
+my @files;
+my $file = $config{'save_file'} || "$module_config_directory/rules.conf";
+push(@files, $file) if ($file && $file !~ /\|\s*$/);
+
+foreach my $sysfile ("/etc/nftables.conf", "/etc/sysconfig/nftables.conf") {
+	push(@files, $sysfile) if (-f $sysfile);
+	}
+
+if (-d "/etc/nftables") {
+	opendir(my $dir, "/etc/nftables");
+	if ($dir) {
+		foreach my $name (sort readdir($dir)) {
+			next if ($name =~ /^\./);
+			next if ($name !~ /\.(?:nft|conf)$/);
+			my $path = "/etc/nftables/$name";
+			push(@files, $path) if (-f $path);
+			}
+		closedir($dir);
+		}
+	}
+
+my %seen;
+return grep { !$seen{$_}++ } @files;
+}
+
+# validate_nftables_text(text)
+# Returns an error if nft rejects the supplied ruleset text
+sub validate_nftables_text
+{
+my ($text) = @_;
+my $cmd = get_nft_command();
+return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
+my $tmp = tempname();
+open_tempfile(my $fh, ">$tmp");
+print_tempfile($fh, $text);
+close_tempfile($fh);
+my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
+unlink_file($tmp);
+return $? ? "<pre>$out</pre>" : undef;
 }
 
 # get_nftables_save([file])

@@ -9,7 +9,7 @@ our (%in, %text, %config);
 ReadParse();
 my $can_view_saved = check_acl('view');
 if (!$can_view_saved && !check_acl('active') && !check_acl('create') &&
-    !check_acl('setup')) {
+    !check_acl('setup') && !check_manual_acl()) {
     error($text{'acl_ecannot'});
 }
 my $partial = $in{'partial'};
@@ -43,6 +43,9 @@ if (!@tables) {
     $rules_html .= ui_buttons_row("active.cgi", $text{'index_active'},
                                    $text{'index_activedesc'})
         if (check_acl('active'));
+    $rules_html .= ui_buttons_row("edit_manual.cgi", $text{'index_manual'},
+                                   $text{'index_manualdesc'})
+        if (check_manual_acl());
     $rules_html .= ui_buttons_end();
 } else {
     # Select table
@@ -294,7 +297,8 @@ if ($partial) {
 
 print $rules_html;
 
-if (@tables && (check_acl('apply') || check_acl('active') || check_acl('setup'))) {
+if (@tables && (check_acl('apply') || check_acl('active') ||
+    check_acl('setup') || check_manual_acl())) {
     print ui_hr();
     print ui_buttons_start();
     print ui_buttons_row("restart.cgi", $text{'index_apply'}, $text{'index_applydesc'})
@@ -303,6 +307,9 @@ if (@tables && (check_acl('apply') || check_acl('active') || check_acl('setup'))
         if (check_acl('active'));
     print ui_buttons_row("setup.cgi", $text{'index_setup'}, $text{'index_setupdesc'})
         if (check_acl('setup'));
+    print ui_buttons_row("edit_manual.cgi", $text{'index_manual'},
+                         $text{'index_manualdesc'})
+        if (check_manual_acl());
     print ui_buttons_end();
 }
 
