@@ -50,8 +50,7 @@ if ($in{'create'}) {
     return;
 }
 
-ui_print_header(undef, $text{'create_title'}, "", "intro", 1, 1,
-                undef, restart_button());
+ui_print_header(undef, $text{'create_title'}, "", "intro", 1, 1);
 print ui_form_start("create_table.cgi");
 print ui_hidden("create", 1);
 

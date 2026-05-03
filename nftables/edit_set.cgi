@@ -17,15 +17,13 @@ my $set_name = "";
 my $is_new = $in{'new'} ? 1 : 0;
 
 if ($is_new) {
-    ui_print_header(undef, $text{'set_title_new'}, "", "intro", 1, 1,
-                    undef, restart_button());
+    ui_print_header(undef, $text{'set_title_new'}, "", "intro", 1, 1);
 }
 else {
     $set_name = $in{'set'};
     $set = $table->{'sets'}->{$set_name};
     $set || error($text{'set_noset'});
-    ui_print_header(undef, $text{'set_title_edit'}, "", "intro", 1, 1,
-                    undef, restart_button());
+    ui_print_header(undef, $text{'set_title_edit'}, "", "intro", 1, 1);
 }
 
 my $elements_text = set_elements_text($set);

@@ -15,8 +15,7 @@ $table || error($text{'chain_notable'});
 my $chain = $table->{'chains'}->{$in{'chain'}};
 $chain || error($text{'chain_nochain'});
 
-ui_print_header(undef, $text{'rename_chain_title'}, "", "intro", 1, 1,
-                undef, restart_button());
+ui_print_header(undef, $text{'rename_chain_title'}, "", "intro", 1, 1);
 print ui_form_start("save_chain.cgi");
 print ui_hidden("table", $in{'table'});
 print ui_hidden("rename", 1);
