@@ -2,7 +2,7 @@
 # restart.cgi
 # Apply saved nftables configuration from the header action
 
-require './nftables-lib.pl'; ## no critic
+require './nftables-lib.pl';    ## no critic
 use strict;
 use warnings;
 our (%in, %text);

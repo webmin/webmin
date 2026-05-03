@@ -2,7 +2,7 @@
 # save_manual.cgi
 # Save the manually edited nftables rules file
 
-require './nftables-lib.pl'; ## no critic
+require './nftables-lib.pl';    ## no critic
 use strict;
 use warnings;
 our (%in, %text);

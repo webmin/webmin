@@ -2,7 +2,7 @@
 # edit_manual.cgi
 # Show a page for manually editing the saved nftables rules file
 
-require './nftables-lib.pl'; ## no critic
+require './nftables-lib.pl';    ## no critic
 use strict;
 use warnings;
 our (%in, %text);
@@ -18,7 +18,7 @@ indexof($file, @files) >= 0 || error($text{'manual_efile'});
 
 print ui_form_start("edit_manual.cgi");
 print "<b>$text{'manual_editsel'}</b>\n";
-print ui_select("file", $file, \@files),"\n";
+print ui_select("file", $file, \@files), "\n";
 print ui_submit($text{'manual_ok'});
 print ui_form_end();
 
@@ -34,6 +34,6 @@ print ui_hidden("file", $file);
 print ui_table_start(undef, undef, 2);
 print ui_table_row(undef, ui_textarea("data", $data, 24, 100), 2);
 print ui_table_end();
-print ui_form_end([ [ "save", $text{'save'} ] ]);
+print ui_form_end([["save", $text{'save'}]]);
 
 ui_print_footer("index.cgi", $text{'index_return'});

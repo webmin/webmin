@@ -2,7 +2,7 @@
 # save_set.cgi
 # Save a new or existing set
 
-require './nftables-lib.pl'; ## no critic
+require './nftables-lib.pl';    ## no critic
 use strict;
 use warnings;
 our (%in, %text);
@@ -20,8 +20,8 @@ my $name = $in{'set_name'};
 $name =~ /^\w[\w-]*$/ || error($text{'set_ename'});
 
 if ($is_new && $table->{'sets'}->{$name}) {
-    error($text{'set_edup'});
-}
+	error($text{'set_edup'});
+	}
 
 my $type = $in{'set_type'};
 $type = undef if (defined($type) && $type =~ /^\s*$/);
@@ -29,24 +29,24 @@ error($text{'set_etype'}) if (!$type);
 
 my $flags = $in{'set_flags'};
 if (defined($flags) && $flags ne '') {
-    my @vals = split(/\0/, $flags);
-    @vals = grep { defined($_) && $_ ne '' } @vals;
-    $flags = @vals ? join(" ", @vals) : undef;
-}
+	my @vals = split(/\0/, $flags);
+	@vals = grep { defined($_) && $_ ne '' } @vals;
+	$flags = @vals ? join(" ", @vals) : undef;
+	}
 $flags = undef if (defined($flags) && $flags =~ /^\s*$/);
 
 my $elements = parse_set_elements_input($in{'set_elements'});
 
 my $set;
 if ($is_new) {
-    $set = { 'name' => $name, 'raw_lines' => [ ] };
-}
+	$set = {'name' => $name, 'raw_lines' => [ ]};
+	}
 else {
-    my $orig = $in{'set'};
-    $set = $table->{'sets'}->{$orig};
-    $set || error($text{'set_noset'});
-    $name = $orig;
-}
+	my $orig = $in{'set'};
+	$set = $table->{'sets'}->{$orig};
+	$set || error($text{'set_noset'});
+	$name = $orig;
+	}
 
 $set->{'name'} = $name;
 $set->{'type'} = $type;
@@ -62,6 +62,6 @@ error($set_err) if ($set_err);
 my $err = save_table_configuration($table, @tables);
 error(text('set_failed', $err)) if ($err);
 
-webmin_log($is_new ? "create" : "save", "set", $name,
-           { 'table' => $table->{'name'}, 'family' => $table->{'family'} });
+webmin_log($is_new ? "create" : "save",
+	"set", $name, {'table' => $table->{'name'}, 'family' => $table->{'family'}});
 redirect("index.cgi?table=$in{'table'}&view=sets");

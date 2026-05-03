@@ -2,7 +2,7 @@
 # delete_set.cgi
 # Delete an existing nftables set
 
-require './nftables-lib.pl'; ## no critic
+require './nftables-lib.pl';    ## no critic
 use strict;
 use warnings;
 our (%in, %text);
@@ -26,5 +26,5 @@ delete($table->{'sets'}->{$in{'set'}});
 my $err = save_table_configuration($table, @tables);
 error(text('delete_set_failed', $err)) if ($err);
 webmin_log("delete", "set", $in{'set'},
-			{ 'table' => $table->{'name'}, 'family' => $table->{'family'} });
+	{'table' => $table->{'name'}, 'family' => $table->{'family'}});
 redirect("index.cgi?table=$in{'table'}&view=sets");

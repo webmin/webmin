@@ -2,7 +2,7 @@
 # rename_chain.cgi
 # Rename an existing chain
 
-require './nftables-lib.pl'; ## no critic
+require './nftables-lib.pl';    ## no critic
 use strict;
 use warnings;
 our (%in, %text);
@@ -24,11 +24,12 @@ print ui_hidden("rename", 1);
 print ui_hidden("chain_old", $in{'chain'});
 
 print ui_table_start($text{'rename_chain_header'}, "width=100%", 2);
-print ui_table_row($text{'rename_chain_old'},
-    "<tt>".html_escape($in{'chain'})."</tt>");
-print ui_table_row(hlink($text{'rename_chain_new'}, "chain_name"),
-    ui_textbox("chain_name", $in{'chain'}, 20));
+print ui_table_row($text{'rename_chain_old'}, "<tt>".html_escape($in{'chain'})."</tt>");
+print ui_table_row(
+	hlink($text{'rename_chain_new'}, "chain_name"),
+	ui_textbox("chain_name", $in{'chain'}, 20)
+);
 print ui_table_end();
 
-print ui_form_end([ [ undef, $text{'rename_chain_ok'} ] ]);
+print ui_form_end([[undef, $text{'rename_chain_ok'}]]);
 ui_print_footer("index.cgi?table=$in{'table'}", $text{'index_return'});

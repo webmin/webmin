@@ -19,7 +19,7 @@ if ($module_name ne 'nftables') {
 
 my $err = apply_restore();
 if ($err) {
-	print STDERR $err,"\n";
+	print STDERR $err, "\n";
 	exit(1);
 	}
 exit(0);

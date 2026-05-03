@@ -2,7 +2,7 @@
 # move_rule.cgi
 # Move a rule up or down within a chain
 
-require './nftables-lib.pl'; ## no critic
+require './nftables-lib.pl';    ## no critic
 use strict;
 use warnings;
 our (%in, %text);
@@ -26,17 +26,21 @@ $idx =~ /^\d+$/ || error($text{'move_norule'});
 
 my $rv = move_rule_in_chain($table, $chain, $idx, $dir);
 if (!defined($rv)) {
-    error($text{'move_norule'});
-}
+	error($text{'move_norule'});
+	}
 
 if ($rv) {
-    my $err = save_table_configuration($table, @tables);
-    error(text('move_failed', $err)) if ($err);
-    webmin_log("move", "rule", undef,
-                { 'table' => $table->{'name'},
-                  'family' => $table->{'family'},
-                  'chain' => $chain,
-                  'dir' => $dir });
-}
+	my $err = save_table_configuration($table, @tables);
+	error(text('move_failed', $err)) if ($err);
+	webmin_log(
+		"move", "rule", undef,
+		{
+			'table' => $table->{'name'},
+			'family' => $table->{'family'},
+			'chain' => $chain,
+			'dir' => $dir
+		}
+	);
+	}
 
 redirect("index.cgi?table=$in{'table'}");

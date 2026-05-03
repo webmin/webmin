@@ -2,7 +2,7 @@
 # setup.cgi
 # Create a Webmin-managed nftables profile table
 
-require './nftables-lib.pl'; ## no critic
+require './nftables-lib.pl';    ## no critic
 use strict;
 use warnings;
 our (%in, %text);
@@ -23,8 +23,10 @@ if ($in{'action'} eq 'create') {
 	my ($active, $active_err) = get_active_nftables_save();
 	if (!$active_err) {
 		foreach my $t (@$active) {
-			if ($t->{'family'} eq 'inet' && $t->{'name'} eq $table_name &&
-			    table_is_externally_managed($t)) {
+			if ($t->{'family'} eq 'inet' &&
+				$t->{'name'} eq $table_name &&
+				table_is_externally_managed($t))
+			{
 				error(text('create_eexternal', nft_table_spec($t)));
 				}
 			}
@@ -44,7 +46,7 @@ if ($in{'action'} eq 'create') {
 		error(text('setup_failed', $error));
 		}
 	webmin_log("setup", "create", $profile,
-		   { 'family' => 'inet', 'table' => $table_name });
+		{'family' => 'inet', 'table' => $table_name});
 	redirect("index.cgi?table_family=inet&table_name=".urlize($table_name));
 	return;
 	}
@@ -59,40 +61,51 @@ my $profile = $in{'profile'} || 'virtualmin';
 my %profile_map = map { $_->{'id'} => $_ } @profiles;
 $profile = 'virtualmin' if (!$profile_map{$profile});
 my %checked = map { $_ => 1 } @{$profile_map{$profile}->{'services'} || [ ]};
-my @profile_opts = map { [ $_->{'id'}, $_->{'name'} ] } @profiles;
+my @profile_opts = map { [$_->{'id'}, $_->{'name'}] } @profiles;
 
 print ui_table_start($text{'setup_header'}, "width=100%", 2);
 print ui_table_row($text{'setup_table_name'},
-	ui_textbox("table_name", $in{'table_name'} || profile_table_name($profile), 24));
-print ui_table_row($text{'setup_profile'},
+	ui_textbox("table_name", $in{'table_name'} || profile_table_name($profile), 24)
+);
+print ui_table_row(
+	$text{'setup_profile'},
 	ui_select("profile", $profile, \@profile_opts, 1, 0, 0, 0).
-	ui_tag('div', ui_note($profile_map{$profile}->{'desc'}, 0),
-		{ 'id' => 'nftables_profile_note',
-		  'style' => 'margin-top: 0.35em; margin-left: 0.15em;' }));
+	    ui_tag(
+		'div',
+		ui_note($profile_map{$profile}->{'desc'}, 0),
+		{
+			'id' => 'nftables_profile_note',
+			'style' => 'margin-top: 0.35em; margin-left: 0.15em;'
+		}
+	    )
+);
 print ui_table_end();
 
 my @services = setup_services();
-my @links = ( select_all_link("allow", 0),
-	      select_invert_link("allow", 0) );
+my @links = (select_all_link("allow", 0), select_invert_link("allow", 0));
 print ui_hr();
 print ui_links_row(\@links);
-my @tds = ( "width=5" );
+my @tds = ("width=5");
 print ui_columns_start(
-	[ "", $text{'setup_service_col'}, $text{'setup_type_col'},
-	  $text{'setup_port_col'}, $text{'setup_proto_col'} ], 100, 0, \@tds,
-	$text{'setup_services'});
+	[
+		"", $text{'setup_service_col'},
+		$text{'setup_type_col'}, $text{'setup_port_col'},
+		$text{'setup_proto_col'}
+	],
+	100, 0,
+	\@tds,
+	$text{'setup_services'}
+);
+
 foreach my $svc (sort { lc($a->{'label'}) cmp lc($b->{'label'}) } @services) {
-	print ui_checked_columns_row([
-		$svc->{'label'},
-		$svc->{'type'},
-		$svc->{'port'},
-		$svc->{'proto'},
-		], \@tds, "allow", $svc->{'id'}, $checked{$svc->{'id'}});
+	print ui_checked_columns_row(
+		[$svc->{'label'}, $svc->{'type'}, $svc->{'port'}, $svc->{'proto'},],
+		\@tds, "allow", $svc->{'id'}, $checked{$svc->{'id'}});
 	}
 print ui_columns_end();
 print profile_javascript(@profiles);
 
-print ui_form_end([ [ undef, $text{'setup_create'} ] ]);
+print ui_form_end([[undef, $text{'setup_create'}]]);
 ui_print_footer("index.cgi", $text{'index_return'});
 
 # profile_javascript(@profiles)
@@ -100,63 +113,58 @@ ui_print_footer("index.cgi", $text{'index_return'});
 sub profile_javascript
 {
 my (@profiles) = @_;
-my %profile_services = map {
-	$_->{'id'} => $_->{'services'}
-	} @profiles;
-my %profile_tables = map {
-	$_->{'id'} => profile_table_name($_->{'id'})
-	} @profiles;
-my %profile_notes = map {
-	$_->{'id'} => ui_note($_->{'desc'}, 0)
-	} @profiles;
+my %profile_services = map { $_->{'id'} => $_->{'services'} } @profiles;
+my %profile_tables =
+    map { $_->{'id'} => profile_table_name($_->{'id'}) } @profiles;
+my %profile_notes = map { $_->{'id'} => ui_note($_->{'desc'}, 0) } @profiles;
 my $json = convert_to_json(\%profile_services);
 my $table_json = convert_to_json(\%profile_tables);
 my $note_json = convert_to_json(\%profile_notes);
 return <<EOF;
 <script type='text/javascript'>
 (function() {
-	var profileServices = $json;
-	var profileTables = $table_json;
-	var profileNotes = $note_json;
-	var tableInput = document.querySelector('input[name="table_name"]');
-	var profileSelect = document.querySelector('select[name="profile"]');
-	var profileNote = document.getElementById('nftables_profile_note');
-	var tableNameTouched = false;
-	if (tableInput) {
-		tableInput.addEventListener('input', function() {
-			tableNameTouched = true;
-		});
-	}
-	function applyProfileServices(profile) {
-		var selected = {};
-		(profileServices[profile] || []).forEach(function(id) {
-			selected[id] = true;
-		});
-		document.querySelectorAll('input[name="allow"]').forEach(function(input) {
-			var checked = !!selected[input.value];
-			if (input.checked != checked) {
-				input.click();
-			}
-		});
-	}
-	function applyProfileTable(profile) {
-		if (!tableInput || tableNameTouched || !profileTables[profile]) {
-			return;
+var profileServices = $json;
+var profileTables = $table_json;
+var profileNotes = $note_json;
+var tableInput = document.querySelector('input[name="table_name"]');
+var profileSelect = document.querySelector('select[name="profile"]');
+var profileNote = document.getElementById('nftables_profile_note');
+var tableNameTouched = false;
+if (tableInput) {
+	tableInput.addEventListener('input', function() {
+		tableNameTouched = true;
+	});
+}
+function applyProfileServices(profile) {
+	var selected = {};
+	(profileServices[profile] || []).forEach(function(id) {
+		selected[id] = true;
+	});
+	document.querySelectorAll('input[name="allow"]').forEach(function(input) {
+		var checked = !!selected[input.value];
+		if (input.checked != checked) {
+			input.click();
 		}
-		tableInput.value = profileTables[profile];
+	});
+}
+function applyProfileTable(profile) {
+	if (!tableInput || tableNameTouched || !profileTables[profile]) {
+		return;
 	}
-	function applyProfileNote(profile) {
-		if (profileNote && profileNotes[profile]) {
-			profileNote.innerHTML = profileNotes[profile];
-		}
+	tableInput.value = profileTables[profile];
+}
+function applyProfileNote(profile) {
+	if (profileNote && profileNotes[profile]) {
+		profileNote.innerHTML = profileNotes[profile];
 	}
-	if (profileSelect) {
-		profileSelect.addEventListener('change', function() {
-			applyProfileServices(this.value);
-			applyProfileTable(this.value);
-			applyProfileNote(this.value);
-		});
-	}
+}
+if (profileSelect) {
+	profileSelect.addEventListener('change', function() {
+		applyProfileServices(this.value);
+		applyProfileTable(this.value);
+		applyProfileNote(this.value);
+	});
+}
 })();
 </script>
 EOF

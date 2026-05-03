@@ -2,7 +2,7 @@
 # bootup.cgi
 # Enable or disable Webmin-managed nftables rules at boot time
 
-require './nftables-lib.pl'; ## no critic
+require './nftables-lib.pl';    ## no critic
 use strict;
 use warnings;
 our (%in, %text);
