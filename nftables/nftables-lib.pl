@@ -1558,6 +1558,39 @@ foreach my $rule (@special_rules) {
 return $table;
 }
 
+# save_profile_ruleset(table-name, profile-id, allowed-service-ids|'*')
+# Saves or replaces a Webmin-managed profile table and returns an error
+sub save_profile_ruleset
+{
+my ($table_name, $profile_id, $allow_ids) = @_;
+return text('create_ename')
+	if (!defined($table_name) || $table_name !~ /^\w[\w-]*$/);
+my $table = create_profile_ruleset($table_name, $profile_id, $allow_ids);
+
+my ($active, $active_err) = get_active_nftables_save();
+if (!$active_err) {
+	foreach my $t (@$active) {
+		if ($t->{'family'} eq 'inet' && $t->{'name'} eq $table_name &&
+		    table_is_externally_managed($t)) {
+			return text('create_eexternal', nft_table_spec($t));
+			}
+		}
+	}
+
+my @tables = get_nftables_save();
+my $done;
+foreach my $i (0 .. $#tables) {
+	if ($tables[$i]->{'family'} eq 'inet' &&
+	    $tables[$i]->{'name'} eq $table_name) {
+		$tables[$i] = $table;
+		$done = 1;
+		last;
+		}
+	}
+push(@tables, $table) if (!$done);
+return save_configuration(@tables);
+}
+
 # add_profile_port_set(&table, profile-id, &proto-ports)
 # Adds profile service port sets and their input accept rules
 sub add_profile_port_set
