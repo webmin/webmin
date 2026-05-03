@@ -93,6 +93,8 @@ print profile_javascript(@profiles);
 print ui_form_end([ [ undef, $text{'setup_create'} ] ]);
 ui_print_footer("index.cgi", $text{'index_return'});
 
+# setup_profiles()
+# Returns available ruleset profiles and their default policies/services
 sub setup_profiles
 {
 return (
@@ -157,6 +159,8 @@ return (
 	);
 }
 
+# setup_services()
+# Returns selectable services and ports used by ruleset profiles
 sub setup_services
 {
 my $webmin_port = get_webmin_port();
@@ -232,6 +236,8 @@ return (
 	);
 }
 
+# create_profile_ruleset(profile-id, table-name, &allowed-service-ids)
+# Builds an inet table for a selected profile and service list
 sub create_profile_ruleset
 {
 my ($profile_id, $table_name, $allow_ids) = @_;
@@ -283,16 +289,54 @@ if ($profile->{'output'} eq 'drop') {
 	}
 
 my %seen;
+my %ports;
+my @special_rules;
 foreach my $id (map { $_->{'id'} } @services) {
 	next if (!$allow{$id});
 	foreach my $rule (@{$services{$id}->{'rules'}}) {
 		next if ($seen{$rule}++);
-		add_profile_rule($table, 'input', $rule);
+		if ($rule =~ /^(tcp|udp)\s+dport\s+(\S+)\s+accept$/) {
+			$ports{$1}->{$2} = 1;
+			}
+		else {
+			push(@special_rules, $rule);
+			}
 		}
+	}
+add_profile_port_set($table, $profile_id, \%ports);
+foreach my $rule (@special_rules) {
+	add_profile_rule($table, 'input', $rule);
 	}
 return $table;
 }
 
+# add_profile_port_set(&table, profile-id, &proto-ports)
+# Adds profile service port sets and their input accept rules
+sub add_profile_port_set
+{
+my ($table, $profile_id, $ports) = @_;
+# Keep TCP and UDP ports in separate sets when they differ, otherwise a UDP
+# accept rule would also allow TCP-only service ports.
+my @protos = grep { keys %{$ports->{$_}} } sort keys %$ports;
+return if (!@protos);
+foreach my $proto (@protos) {
+	next if (!keys %{$ports->{$proto}});
+	my $set_name = profile_port_set_name($profile_id, $proto, scalar(@protos));
+	my @elements = normalize_port_set_elements(keys %{$ports->{$proto}});
+	$table->{'sets'}->{$set_name} = {
+		'name' => $set_name,
+		'type' => 'inet_service',
+		'flags' => (grep { /-/ } @elements) ? 'interval' : undef,
+		'elements' => \@elements,
+		'raw_lines' => [ ],
+		};
+	add_profile_rule($table, 'input', "$proto dport \@$set_name accept");
+	}
+return;
+}
+
+# profile_javascript(@profiles)
+# Returns JavaScript for profile-driven table names, notes and service checks
 sub profile_javascript
 {
 my (@profiles) = @_;
@@ -358,6 +402,8 @@ return <<EOF;
 EOF
 }
 
+# add_profile_rule(&table, chain, rule-text)
+# Appends a generated rule to a profile table
 sub add_profile_rule
 {
 my ($table, $chain, $text) = @_;
@@ -369,7 +415,26 @@ push(@{$table->{'rules'}}, {
 return;
 }
 
+# profile_table_name(profile-id)
+# Returns an unused default table name for a profile
 sub profile_table_name
+{
+my ($profile) = @_;
+my $base = profile_base_table_name($profile);
+my @tables = get_nftables_save();
+my %used = map { $_->{'family'} eq 'inet' ? ($_->{'name'} => 1) : ( ) }
+	   @tables;
+my $name = $base;
+my $i = 1;
+while ($used{$name}) {
+	$name = $base."_".$i++;
+	}
+return $name;
+}
+
+# profile_base_table_name(profile-id)
+# Returns the base table name for a profile before uniquifying
+sub profile_base_table_name
 {
 my ($profile) = @_;
 my %names = (
@@ -382,18 +447,23 @@ my %names = (
 	'locked' => 'profile_locked',
 	'custom' => 'profile_custom',
 	);
-my $base = $names{$profile} || 'profile_custom';
-my @tables = get_nftables_save();
-my %used = map { $_->{'family'} eq 'inet' ? ($_->{'name'} => 1) : ( ) }
-	   @tables;
-my $name = $base;
-my $i = 1;
-while ($used{$name}) {
-	$name = $base."_".$i++;
-	}
+return $names{$profile} || 'profile_custom';
+}
+
+# profile_port_set_name(profile, proto, proto-count)
+# Returns the set name used for profile-generated service ports
+sub profile_port_set_name
+{
+my ($profile, $proto, $proto_count) = @_;
+my $name = profile_base_table_name($profile);
+$name .= "_".$proto if ($proto_count && $proto_count > 1);
+$name .= "_ports";
+$name =~ s/[^\w-]/_/g;
 return $name;
 }
 
+# default_profile_table_name()
+# Returns the default table name for the default profile
 sub default_profile_table_name
 {
 return profile_table_name('virtualmin');

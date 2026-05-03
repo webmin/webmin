@@ -1105,6 +1105,50 @@ if (@elems > $max) {
 return $preview;
 }
 
+# normalize_port_set_elements(elements)
+# Removes overlaps from port set elements so interval sets are valid
+sub normalize_port_set_elements
+{
+my (@elements) = @_;
+my (@ranges, @other);
+foreach my $e (@elements) {
+	if ($e =~ /^(\d+)-(\d+)$/) {
+		my ($start, $end) = ($1, $2);
+		($start, $end) = ($end, $start) if ($start > $end);
+		push(@ranges, [ $start, $end ]);
+		}
+	elsif ($e =~ /^(\d+)$/) {
+		push(@ranges, [ $1, $1 ]);
+		}
+	else {
+		push(@other, $e);
+		}
+	}
+@ranges = sort { $a->[0] <=> $b->[0] || $a->[1] <=> $b->[1] } @ranges;
+my @merged;
+foreach my $r (@ranges) {
+	if (@merged && $r->[0] <= $merged[-1]->[1]) {
+		$merged[-1]->[1] = $r->[1] if ($r->[1] > $merged[-1]->[1]);
+		}
+	else {
+		push(@merged, [ @$r ]);
+		}
+	}
+return (
+	map { $_->[0] == $_->[1] ? $_->[0] : $_->[0]."-".$_->[1] } @merged,
+	sort port_sort @other
+	);
+}
+
+# port_sort(a, b)
+# Sorts nftables service ports and ranges by starting port number
+sub port_sort
+{
+my ($aa) = $a =~ /^(\d+)/;
+my ($bb) = $b =~ /^(\d+)/;
+return ($aa || 0) <=> ($bb || 0) || $a cmp $b;
+}
+
 sub set_type_kind
 {
 my ($type) = @_;
