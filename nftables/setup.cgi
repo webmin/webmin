@@ -146,7 +146,7 @@ return (
 	  'input' => 'drop',
 	  'forward' => 'drop',
 	  'output' => 'drop',
-	  'services' => [ qw(ssh webmin) ] },
+	  'services' => [ ] },
 	{ 'id' => 'custom',
 	  'name' => $text{'setup_profile_custom'},
 	  'desc' => $text{'setup_profile_custom_desc'},
