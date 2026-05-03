@@ -174,13 +174,19 @@ return undef if (get_nft_command());
 return text('index_ecommand', "<tt>nft</tt>");
 }
 
+# nftables_rules_file()
+# Returns the Webmin-managed nftables rules file
+sub nftables_rules_file
+{
+return "$module_config_directory/rules.conf";
+}
+
 # get_nftables_config_files()
 # Returns files that can be manually edited by this module
 sub get_nftables_config_files
 {
 my @files;
-my $file = $config{'save_file'} || "$module_config_directory/rules.conf";
-push(@files, $file) if ($file && $file !~ /\|\s*$/);
+push(@files, nftables_rules_file());
 
 foreach my $sysfile ("/etc/nftables.conf", "/etc/sysconfig/nftables.conf") {
 	push(@files, $sysfile) if (-f $sysfile);
@@ -225,7 +231,7 @@ sub get_nftables_save
 {
 my ($file) = @_;
 if (!$file) {
-    $file = $config{'save_file'} || "$module_config_directory/rules.conf";
+    $file = nftables_rules_file();
 }
 return ( ) if (!$file);
 return ( ) if ($file !~ /\|\s*$/ && !-r $file);
@@ -1480,7 +1486,7 @@ sub write_configuration
 {
 my (@tables) = @_;
 my $out = dump_nftables_save(@tables);
-my $file = $config{'save_file'} || "$module_config_directory/rules.conf";
+my $file = nftables_rules_file();
 
 open_lock_tempfile(my $fh, ">$file");
 print_tempfile($fh, $out);
@@ -1543,7 +1549,7 @@ return;
 sub apply_restore
 {
 my ($file) = @_;
-$file ||= $config{'save_file'} || "$module_config_directory/rules.conf";
+$file ||= nftables_rules_file();
 my $cmd = get_nft_command();
 return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
 

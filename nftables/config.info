@@ -1,4 +1,4 @@
-line0=Configurable global options,11
+nft_cmd=Full path to nft command,0
 perpage=Number of rules to display per page,3,Default (50)
 view_condition=Display condition in rules list?,1,1-Yes,0-No
 view_comment=Display comment in rules list?,1,1-Yes,0-No
@@ -6,6 +6,3 @@ before_cmd=Command to run before changing rules,3,None
 after_cmd=Command to run after changing rules,3,None
 before_apply_cmd=Command to run before applying configuration,3,None
 after_apply_cmd=Command to run after applying configuration,3,None
-line2=nftables configuration,11
-nft_cmd=Full path to nft command,0
-save_file=File to save/edit nftables rules,3,Use operating system or Webmin default

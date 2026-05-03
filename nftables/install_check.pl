@@ -16,8 +16,7 @@ sub is_installed
 my ($mode) = @_;
 return 0 if (&check_nftables());
 if ($mode) {
-    my $file = $config{'save_file'} ||
-               "$module_config_directory/rules.conf";
+    my $file = nftables_rules_file();
     return 1 if (!-s $file);
     return 2;
     }
