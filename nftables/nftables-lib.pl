@@ -306,6 +306,148 @@ if (defined($type) || defined($hook) || defined($priority) || defined($policy)) 
 return 1;
 }
 
+# reindex_table_rules(&table)
+# Updates rule index fields to match their array positions
+sub reindex_table_rules
+{
+my ($table) = @_;
+return if (!$table || ref($table) ne 'HASH' ||
+	   !$table->{'rules'} || ref($table->{'rules'}) ne 'ARRAY');
+for (my $i = 0; $i < @{$table->{'rules'}}; $i++) {
+	my $r = $table->{'rules'}->[$i];
+	$r->{'index'} = $i if ($r && ref($r) eq 'HASH');
+	}
+return;
+}
+
+# find_input_chain(&table)
+# Returns the best input chain for adding inbound quick rules
+sub find_input_chain
+{
+my ($table) = @_;
+return if (!$table || ref($table) ne 'HASH' ||
+	   !$table->{'chains'} || ref($table->{'chains'}) ne 'HASH');
+# Quick IP rules must live in the selected table's input chain. A separate
+# table cannot reliably allow traffic, because another input chain can still
+# drop the packet later.
+foreach my $c (sort keys %{$table->{'chains'}}) {
+	my $chain = $table->{'chains'}->{$c} || { };
+	return $c if ($c eq 'input' && ($chain->{'hook'} || '') eq 'input');
+	}
+foreach my $c (sort keys %{$table->{'chains'}}) {
+	my $chain = $table->{'chains'}->{$c} || { };
+	return $c if (($chain->{'hook'} || '') eq 'input');
+	}
+return $table->{'chains'}->{'input'} ? 'input' : undef;
+}
+
+# parse_ip_cidr(string)
+# Returns address, nftables family and optional error for an IPv4/IPv6 CIDR
+sub parse_ip_cidr
+{
+my ($ip) = @_;
+$ip = "" if (!defined($ip));
+$ip =~ s/^\s+//;
+$ip =~ s/\s+$//;
+return (undef, undef, text('quick_eip')) if ($ip eq '' || $ip =~ /\s/);
+return (undef, undef, text('quick_eip')) if ($ip =~ tr/\/// > 1);
+
+my $mask;
+my $addr = $ip;
+if ($addr =~ s/\/(\d+)$//) {
+	$mask = $1;
+	}
+elsif ($addr =~ /\//) {
+	return (undef, undef, text('quick_eip'));
+	}
+
+if (check_ipaddress($addr)) {
+	return (undef, undef, text('quick_eip')) if (defined($mask) && $mask > 32);
+	return ($addr.(defined($mask) ? "/".$mask : ""), 'ip', undef);
+	}
+if (check_ip6address($addr)) {
+	return (undef, undef, text('quick_eip')) if (defined($mask) && $mask > 128);
+	return ($addr.(defined($mask) ? "/".$mask : ""), 'ip6', undef);
+	}
+return (undef, undef, text('quick_eip'));
+}
+
+# quick_rule_type(&rule)
+# Returns allow or block if this rule was created by the quick IP controls
+sub quick_rule_type
+{
+my ($rule) = @_;
+return if (!$rule || ref($rule) ne 'HASH');
+return 'allow' if (($rule->{'comment'} || '') eq 'Webmin quick allow');
+return 'block' if (($rule->{'comment'} || '') eq 'Webmin quick block');
+return;
+}
+
+# add_quick_ip_rule(&table, ip-cidr, action)
+# Adds an allow or block source-address rule to the table's input chain
+sub add_quick_ip_rule
+{
+my ($table, $ip, $action) = @_;
+return text('quick_etable') if (!$table || ref($table) ne 'HASH');
+$action = $action eq 'allow' ? 'allow' : $action eq 'block' ? 'block' : '';
+return text('quick_eaction') if (!$action);
+
+my ($source, $family, $err) = parse_ip_cidr($ip);
+return $err if ($err);
+
+if (($table->{'family'} || '') eq 'ip' && $family ne 'ip' ||
+    ($table->{'family'} || '') eq 'ip6' && $family ne 'ip6' ||
+    ($table->{'family'} || '') !~ /^(inet|ip|ip6)$/) {
+	return text('quick_efamily', nft_table_spec($table));
+	}
+
+my $chain = find_input_chain($table);
+return text('quick_echain', nft_table_spec($table)) if (!$chain);
+
+$table->{'rules'} ||= [ ];
+foreach my $r (@{$table->{'rules'} || [ ]}) {
+	next if (!$r || ref($r) ne 'HASH');
+	next if (($r->{'chain'} || '') ne $chain);
+	next if (($r->{'saddr'} || '') ne $source);
+	next if (($r->{'action'} || '') ne ($action eq 'allow' ? 'accept' : 'drop'));
+	next if (!quick_rule_type($r));
+	return text('quick_edup', $source);
+	}
+
+my $rule = {
+	'chain' => $chain,
+	'saddr' => $source,
+	'saddr_family' => $family,
+	'action' => $action eq 'allow' ? 'accept' : 'drop',
+	'comment' => $action eq 'allow' ? 'Webmin quick allow' :
+				      'Webmin quick block',
+	};
+$rule->{'text'} = format_rule_text($rule);
+
+my $insert = scalar(@{$table->{'rules'} || [ ]});
+# Keep quick allow rules first, then quick block rules, then normal input
+# rules. This makes the quick controls predictable regardless of later rules.
+for (my $i = 0; $i < @{$table->{'rules'} || [ ]}; $i++) {
+	my $r = $table->{'rules'}->[$i];
+	next if (!$r || ref($r) ne 'HASH');
+	next if (($r->{'chain'} || '') ne $chain);
+	my $qt = quick_rule_type($r);
+	if ($action eq 'allow') {
+		next if ($qt && $qt eq 'allow');
+		$insert = $i;
+		last;
+		}
+	else {
+		next if ($qt && ($qt eq 'allow' || $qt eq 'block'));
+		$insert = $i;
+		last;
+		}
+	}
+splice(@{$table->{'rules'}}, $insert, 0, $rule);
+reindex_table_rules($table);
+return;
+}
+
 sub move_rule_in_chain
 {
 my ($table, $chain, $idx, $dir) = @_;
@@ -348,10 +490,7 @@ else {
 ($table->{'rules'}->[$idx], $table->{'rules'}->[$swap]) =
     ($table->{'rules'}->[$swap], $table->{'rules'}->[$idx]);
 
-for (my $i = 0; $i < @{$table->{'rules'}}; $i++) {
-    my $r = $table->{'rules'}->[$i];
-    $r->{'index'} = $i if ($r && ref($r) eq 'HASH');
-}
+reindex_table_rules($table);
 
 return 1;
 }

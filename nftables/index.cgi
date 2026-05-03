@@ -248,6 +248,24 @@ if (!@tables) {
         $rules_html .= $sets_html;
         $rules_html .= ui_tabs_end_tab();
         $rules_html .= ui_tabs_end(1);
+
+        if (find_input_chain($curr)) {
+            my $ip_placeholder =
+                text('quick_ip_placeholder', '1.2.3.4', '2001:db8::1/64');
+            foreach my $action (
+                [ 'allow', $text{'index_allowip_go'} ],
+                [ 'block', $text{'index_blockip_go'} ],
+                ) {
+                $rules_html .= "<br>".ui_form_start("manage_ip.cgi", "post");
+                $rules_html .= ui_hidden("table", $in{'table'});
+                $rules_html .= ui_hidden("table_family", $curr->{'family'});
+                $rules_html .= ui_hidden("table_name", $curr->{'name'});
+                $rules_html .= ui_submit($action->[1], $action->[0]).
+                    ui_textbox("ip", undef, 22, undef, undef,
+                        "placeholder='".quote_escape($ip_placeholder)."'");
+                $rules_html .= ui_form_end();
+            }
+        }
     }
 }
 

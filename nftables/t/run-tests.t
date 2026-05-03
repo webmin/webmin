@@ -204,4 +204,35 @@ my $table_move2 = {
 is(move_rule_in_chain($table_move2, 'input', 0, 'up'), 0,
    'top rule cannot move up');
 
+my $quick_table = {
+    family => 'inet',
+    name => 'quick',
+    chains => {
+        input => { hook => 'input' },
+    },
+    rules => [
+        { chain => 'input', index => 0, text => 'ct state established,related accept' },
+    ],
+};
+is(add_quick_ip_rule($quick_table, '192.0.2.1', 'block'), undef,
+   'quick block rule added');
+is($quick_table->{rules}->[0]->{text},
+   'ip saddr 192.0.2.1 drop comment "Webmin quick block"',
+   'quick block inserted before normal input rules');
+is(add_quick_ip_rule($quick_table, '192.0.2.1', 'allow'), undef,
+   'quick allow rule added');
+is($quick_table->{rules}->[0]->{text},
+   'ip saddr 192.0.2.1 accept comment "Webmin quick allow"',
+   'quick allow inserted before quick block rules');
+like(add_quick_ip_rule($quick_table, '192.0.2.1', 'allow'), qr/exists/,
+     'duplicate quick rule rejected');
+my $quick_ip_table = {
+    family => 'ip',
+    name => 'quick',
+    chains => { input => { hook => 'input' } },
+    rules => [ ],
+};
+like(add_quick_ip_rule($quick_ip_table, '2001:db8::1/64', 'allow'),
+     qr/cannot contain/, 'wrong address family rejected');
+
 done_testing();
