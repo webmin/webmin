@@ -61,7 +61,7 @@ print ui_table_row($text{'create_family'},
     ui_select("family", $in{'family'} || "inet",
         [ map { [ $_, $_ ] } @families ]));
 print ui_table_row($text{'create_name'},
-    ui_textbox("name", $in{'name'}, 20));
+    ui_textbox("name", $in{'name'}, 30));
 print ui_table_end();
 
 print ui_form_end([ [ undef, $text{'create_ok'} ] ]);

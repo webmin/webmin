@@ -48,7 +48,7 @@ print ui_table_start($text{'chain_header'}, "width=100%", 2);
 
 my $name_tags = $is_new ? undef : "readonly";
 print ui_table_row(hlink($text{'chain_name'}, "chain_name"),
-    ui_textbox("chain_name", $chain_name, 20, 0, undef, $name_tags));
+    ui_textbox("chain_name", $chain_name, 30, 0, undef, $name_tags));
 
 print ui_table_row(hlink($text{'chain_type'}, "chain_type"),
     ui_select("chain_type", $chain->{'type'}, \@type_opts, 1, 0, 1, 0,

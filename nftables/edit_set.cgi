@@ -69,7 +69,7 @@ print ui_table_start($text{'set_header'}, "width=100%", 2);
 
 my $name_tags = $is_new ? undef : "readonly";
 print ui_table_row(hlink($text{'set_name'}, "set_name"),
-    ui_textbox("set_name", $set_name, 20, 0, undef, $name_tags));
+    ui_textbox("set_name", $set_name, 30, 0, undef, $name_tags));
 
 print ui_table_row(hlink($text{'set_type'}, "set_type"),
     ui_select("set_type", $set->{'type'}, \@type_opts, 1, 0, 1));
