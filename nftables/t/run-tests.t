@@ -235,4 +235,20 @@ my $quick_ip_table = {
 like(add_quick_ip_rule($quick_ip_table, '2001:db8::1/64', 'allow'),
      qr/cannot contain/, 'wrong address family rejected');
 
+my $profile_table = create_profile_ruleset('profile_virtualmin', 'virtualmin', '*');
+is($profile_table->{family}, 'inet', 'profile helper family');
+is($profile_table->{name}, 'profile_virtualmin', 'profile helper table name');
+ok($profile_table->{sets}->{profile_hosting_tcp_ports},
+   'profile helper tcp port set');
+is($profile_table->{sets}->{profile_hosting_tcp_ports}->{flags}, 'interval',
+   'profile helper tcp port set interval flag');
+is_deeply($profile_table->{sets}->{profile_hosting_udp_ports}->{elements},
+          [ '53' ], 'profile helper udp port set elements');
+ok(scalar(grep { $_->{text} eq 'tcp dport @profile_hosting_tcp_ports accept' }
+          @{$profile_table->{rules}}),
+   'profile helper tcp set rule');
+ok(scalar(grep { $_->{text} eq 'ip6 daddr fe80::/64 udp dport 546 accept' }
+          @{$profile_table->{rules}}),
+   'profile helper special dhcpv6 rule');
+
 done_testing();
