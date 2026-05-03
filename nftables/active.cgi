@@ -59,6 +59,16 @@ else {
 		]);
 	}
 	print ui_columns_end();
+
+	my @clearable = grep { !table_is_externally_managed($_) } @$tables;
+	if (@clearable) {
+		print ui_hr();
+		print ui_buttons_start();
+		print ui_buttons_row("clear_tables.cgi",
+				     $text{'active_clear_all'},
+				     $text{'active_clear_alldesc'});
+		print ui_buttons_end();
+		}
 }
 
 ui_print_footer("index.cgi", $text{'index_return'});
