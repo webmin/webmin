@@ -280,6 +280,23 @@ my %seen;
 return grep { !$seen{$_}++ } @files;
 }
 
+# list_foreign_firewall_modules()
+# Returns other configured Webmin firewall modules that may manage rules
+sub list_foreign_firewall_modules
+{
+my @mods = qw(firewalld firewall firewall6 shorewall shorewall6 csf);
+my @rv;
+foreach my $mod (@mods) {
+	next if (!foreign_check($mod));
+	my $installed = eval { foreign_installed($mod, 1) };
+	next if ($@ || $installed != 2);
+	my %minfo = get_module_info($mod);
+	push(@rv, { 'module' => $mod,
+		    'desc' => $minfo{'desc'} });
+	}
+return @rv;
+}
+
 # validate_nftables_text(text)
 # Returns an error if nft rejects the supplied ruleset text
 sub validate_nftables_text

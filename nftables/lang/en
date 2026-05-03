@@ -53,6 +53,7 @@ index_radd=Add Rule
 index_apply_changes=Apply Changes
 index_ruleset_active=View Active Ruleset
 index_ruleset_activedesc=View active nftables tables and import copies into module's saved configuration.
+index_foreign_firewalls=The other configured firewall modules were detected: $1. It is recommended not to use multiple programs to change the active kernel firewall configuration at the same time.
 index_edit_manual=Edit Config Files
 index_edit_manualdesc=Edit saved nftables configuration files manually.
 index_allowip_go=Allow IP/CIDR

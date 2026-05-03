@@ -28,6 +28,20 @@ if (!$cmd) {
     exit;
 }
 
+if (!$partial) {
+    my @foreign_firewalls = list_foreign_firewall_modules();
+    if (@foreign_firewalls) {
+        my @names;
+        foreach my $fw (@foreign_firewalls) {
+            my $name = html_escape($fw->{'desc'});
+            push(@names, ui_tag('strong', $name));
+        }
+        print ui_alert_box(text('index_foreign_firewalls',
+                                trim(join(", ", @names))),
+                            'warn', undef, undef, "");
+    }
+}
+
 # Load tables
 my @tables = $can_view_saved ? get_nftables_save() : ( );
 @tables = grep { check_table_acl($_) } @tables;
