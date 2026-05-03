@@ -1279,7 +1279,7 @@ return "-" if (!$set || ref($set) ne 'HASH');
 return "-" if (!$set->{'elements'} || ref($set->{'elements'}) ne 'ARRAY');
 my @elems = @{$set->{'elements'}};
 return "-" if (!@elems);
-my $max = 3;
+my $max = 20;
 my $preview = join(", ", @elems[0 .. ($#elems < $max-1 ? $#elems : $max-1)]);
 if (@elems > $max) {
     $preview .= ", ...";
