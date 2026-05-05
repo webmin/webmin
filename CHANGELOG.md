@@ -23,6 +23,7 @@
 * Fix to allow toggling process priority and I/O controls on or off
 * Fix issue where disabled email notifications were still being processed
 * Update Authentic theme to the latest version with various improvements and fixes:
+  - Upgrade stats history graphs from laggy SVG to a blazing-fast canvas renderer
   - Add option to control corner roundness for the menu, content area and right-side slider
   - Change the content area to use rounded corners and a margin by default
   - Fix message of the day display in login page correctly [webmin#2555](https://github.com/webmin/webmin/issues/2685)
