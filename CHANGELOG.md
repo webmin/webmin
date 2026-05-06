@@ -19,6 +19,7 @@
 * Fix unsafe decoding of Outlook `winmail.dat` attachments
 * Fix Certbot standalone port conflicts
 * Fix to correctly preserve full quoted action parameters in the Fail2Ban jail editor [#2647](https://github.com/webmin/webmin/issues/2647)
+* Fix Fail2Ban default jail options to preserve required timing defaults when saving
 * Fix ZFS to fall back to `df` when disk space cannot be computed from `zpool`
 * Fix to allow toggling process priority and I/O controls on or off
 * Fix issue where disabled email notifications were still being processed
