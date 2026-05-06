@@ -635,7 +635,7 @@ if (&has_command("sensors")) {
             next if ($cpu_aux && !$cpu_unnamed);
 
             # CPU types
-            ($cpu_broadcom) = $_ =~ /cpu_thermal-virtual-[\d]+/i if (!$cpu_broadcom);
+            ($cpu_broadcom) = $_ =~ /(cpu|soc)_thermal-virtual-[\d]+/i if (!$cpu_broadcom);
             ($cpu_amd)      = $_ =~ /\w[\d]{2}temp-pci/i         if (!$cpu_amd);
 
             # Full CPU output #1253
