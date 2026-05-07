@@ -22,23 +22,23 @@ print &ui_table_start($text{'jaildef_header'}, undef, 2);
 # Matches needed
 my $def_maxretry = 3;
 my $maxretry = &find_value("maxretry", $jail);
+$maxretry = $def_maxretry if (!defined($maxretry) || $maxretry eq "");
 print &ui_table_row($text{'jail_maxretry'},
-	&ui_opt_textbox("maxretry", $maxretry, 6,
-			$text{'default'}." (".$def_maxretry.")"));
+	&ui_textbox("maxretry", $maxretry, 3));
 
 # Time to scan over
 my $def_findtime = 600;
 my $findtime = &find_value("findtime", $jail);
+$findtime = $def_findtime if (!defined($findtime) || $findtime eq "");
 print &ui_table_row($text{'jail_findtime'},
-	&ui_opt_textbox("findtime", $findtime, 6,
-			$text{'default'}." (".$def_findtime.")"));
+	&ui_textbox("findtime", $findtime, 5));
 
 # Time to ban for
 my $def_bantime = 600;
 my $bantime = &find_value("bantime", $jail);
+$bantime = $def_bantime if (!defined($bantime) || $bantime eq "");
 print &ui_table_row($text{'jail_bantime'},
-	&ui_opt_textbox("bantime", $bantime, 6,
-			$text{'default'}." (".$def_bantime.")"));
+	&ui_textbox("bantime", $bantime, 5));
 
 # IPs to ignore
 my $def_ignoreip = "127.0.0.1";

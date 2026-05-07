@@ -19,10 +19,12 @@
 * Fix unsafe decoding of Outlook `winmail.dat` attachments
 * Fix Certbot standalone port conflicts
 * Fix to correctly preserve full quoted action parameters in the Fail2Ban jail editor [#2647](https://github.com/webmin/webmin/issues/2647)
+* Fix Fail2Ban default jail options to preserve required timing defaults when saving
 * Fix ZFS to fall back to `df` when disk space cannot be computed from `zpool`
 * Fix to allow toggling process priority and I/O controls on or off
 * Fix issue where disabled email notifications were still being processed
 * Update Authentic theme to the latest version with various improvements and fixes:
+  - Upgrade stats history graphs from laggy SVG to a blazing-fast canvas renderer
   - Add option to control corner roundness for the menu, content area and right-side slider
   - Change the content area to use rounded corners and a margin by default
   - Fix message of the day display in login page correctly [webmin#2555](https://github.com/webmin/webmin/issues/2685)

@@ -33,8 +33,13 @@ foreach my $ip (@ignoreips) {
 
 # Update the jail
 &lock_all_config_files();
+my %defaults = (
+	'maxretry' => 3,
+	'findtime' => 600,
+	'bantime' => 600,
+	);
 foreach my $f ("maxretry", "findtime", "bantime") {
-	&save_directive($f, $in{$f."_def"} ? undef : $in{$f}, $jail);
+	&save_directive($f, $in{$f."_def"} ? $defaults{$f} : $in{$f}, $jail);
 	}
 &save_directive("ignoreip", @ignoreips ? join(" ", @ignoreips) : undef, $jail);
 &save_directive("backend", $in{'backend'} || undef, $jail);
