@@ -211,7 +211,7 @@ else {
 	open(TEMP, ">$temp");
 	print TEMP "n\ny\n";
 	close(TEMP);
-	$out = &backquote_logged("/usr/sbin/ypinit -s $in{'slave'} <$temp 2>&1");
+	$out = &backquote_logged("/usr/sbin/ypinit -s ".quotemeta($in{'slave'})." <$temp 2>&1");
 	unlink($temp);
 	if ($?) { &error("<tt>$out</tt>"); }
 	$config{'slave'} = $in{'slave'};

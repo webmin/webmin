@@ -263,7 +263,7 @@ if ($in{'type'}) {
 	&apply_table_changes() if ($in{'boot'});
 	}
 else {
-	$out = &backquote_logged("/usr/lib/yp/ypinit -s $in{'slave'} 2>&1");
+	$out = &backquote_logged("/usr/lib/yp/ypinit -s ".quotemeta($in{'slave'})." 2>&1");
 	if ($?) { &error("<tt>$out</tt>"); }
 	$config{'slave'} = $in{'slave'};
 	}
