@@ -11559,7 +11559,7 @@ my %access = &get_module_acl($u, $m, 1);
 return $access{'rbac'} ? 1 : 0;
 }
 
-=head2 execute_command(command, stdin, stdout, stderr, translate-files?, safe?)
+=head2 execute_command(command, stdin, stdout, stderr, translate-files?, safe?, logged?)
 
 Runs some command, possibly feeding it input and capturing output to the
 give files or scalar references. The parameters are :
@@ -11576,16 +11576,19 @@ give files or scalar references. The parameters are :
 
 =item safe - Set to 1 if this command is safe and does not modify the state of the system.
 
+=item logged - Set to 1 if the command should be logged.
+
 =cut
 sub execute_command
 {
-my ($cmd, $stdin, $stdout, $stderr, $trans, $safe) = @_;
+my ($cmd, $stdin, $stdout, $stderr, $trans, $safe, $logged) = @_;
 if (&is_readonly_mode() && !$safe) {
 	print STDERR "Vetoing command $_[0]\n";
 	$? = 0;
 	return 0;
 	}
 $cmd = &translate_command($cmd);
+&additional_log('exec', undef, $cmd) if ($logged);
 
 # Use ` operator where possible
 &webmin_debug_log('CMD', "cmd=$cmd") if ($gconfig{'debug_what_cmd'});
@@ -11679,6 +11682,17 @@ if ($stderr && ref($stderr) && $stderr ne $stdout) {
 # Get exit status
 waitpid($pid, 0);
 return $?;
+}
+
+=head2 execute_command_logged(command, stdin, stdout, stderr, translate-files?, safe?)
+
+Like execute_command, but also logs the command run.
+
+=cut
+sub execute_command_logged
+{
+my ($cmd, $stdin, $stdout, $stderr, $trans, $safe) = @_;
+return &execute_command($cmd, $stdin, $stdout, $stderr, $trans, $safe, 1);
 }
 
 =head2 open_readfile(handle, file)
