@@ -456,9 +456,9 @@ if (!$config{'collect_notemp'} &&
 			     $a->[0] =~ /^Temperature$/i ||
 			     $a->[0] =~ /^Current\s+Drive\s+Temperature$/i ||
 			     $a->[0] =~ /^Airflow\s+Temperature\s+Cel/i) &&
-			    $a->[1] > 0) {
+			     defined($a->[1]) && $a->[1] =~ /^\s*(\d+)/ && $1 > 0) {
 				push(@rv, { 'device' => $d->{'device'},
-					    'temp' => int($a->[1]),
+					    'temp' => int($1),
 					    'errors' => $st->{'errors'},
 					    'failed' => !$st->{'check'} });
 				last;
