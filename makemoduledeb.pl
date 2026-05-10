@@ -528,7 +528,7 @@ if [ "$post_config" = "1" ]; then
 	# Copy config file to /etc/webmin or /etc/usermin
 	os_type=`grep "^os_type=" /etc/$product/config | sed -e 's/os_type=//g'`
 	os_version=`grep "^os_version=" /etc/$product/config | sed -e 's/os_version=//g'`
-	/usr/bin/perl /usr/share/$product/copyconfig.pl \$os_type \$os_version /usr/share/$product /etc/$product $mod
+	/usr/bin/perl /usr/share/$product/copyconfig.pl \$os_type \$os_version /usr/share/$product /etc/$product $mod >/dev/null
 
 	# Update the ACL for the root user, or the first user in the ACL
 	grep "^root:" /etc/$product/webmin.acl >/dev/null
