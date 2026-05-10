@@ -104,6 +104,14 @@ if (&unix_crypt_supports_sha512()) {
 	push(@startup_msg, "Using SHA512 via crypt() function");
 	}
 
+# Check if Digest::SHA with hmac_sha256_hex is available, for keying
+# the session-ID lookup table.
+eval "use Digest::SHA qw(hmac_sha256_hex); hmac_sha256_hex('x', 'y');";
+if (!$@) {
+	$use_hmac_sha256 = 1;
+	push(@startup_msg, "Using HMAC-SHA256 for session ID hashing");
+	}
+
 # Get miniserv's perl path and location
 $miniserv_path = $0;
 open(SOURCE, $miniserv_path);
@@ -605,17 +613,7 @@ if ($config{'logclear'}) {
 
 # Setup the logout time dbm if needed
 if ($config{'session'}) {
-	eval "use SDBM_File";
-	dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
-	eval "\$sessiondb{'1111111111'} = 'foo bar';";
-	if ($@) {
-		dbmclose(%sessiondb);
-		eval "use NDBM_File";
-		dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
-		}
-	else {
-		delete($sessiondb{'1111111111'});
-		}
+	&open_session_db();
 	}
 
 # Run the main loop
@@ -5011,7 +5009,7 @@ print DEBUG "in reload_config_file\n";
 &parse_websockets_config();
 if ($config{'session'}) {
 	dbmclose(%sessiondb);
-	dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
+	&open_session_db();
 	}
 print DEBUG "done reload_config_file\n";
 }
@@ -5095,6 +5093,10 @@ my $var_dir = $1;
 if (!$config{'sessiondb'}) {
 	$config{'sessiondb'} = "$var_dir/sessiondb";
 	}
+if (!$config{'session_keyfile'}) {
+	$config{'session_keyfile'} = "$var_dir/session.key";
+	}
+&load_session_secret();
 if (!$config{'errorlog'}) {
 	$config{'logfile'} =~ /^(.*)\/[^\/]+$/;
 	$config{'errorlog'} = "$1/miniserv.error";
@@ -6537,12 +6539,19 @@ return -1;	# This should never be reached
 }
 
 # hash_session_id(sid)
-# Returns an MD5 or Unix-crypted session ID
+# Returns a keyed hash of a session ID, used as the lookup key in the
+# session DBM. HMAC-SHA256 with a per-install secret is preferred; the
+# legacy MD5 / Unix crypt paths remain only as fallbacks for systems that
+# lack Digest::SHA.
 sub hash_session_id
 {
 local ($sid) = @_;
 if (!$hash_session_id_cache{$sid}) {
-	if ($use_md5) {
+	if ($use_hmac_sha256 && $session_hmac_key) {
+		$hash_session_id_cache{$sid} =
+			Digest::SHA::hmac_sha256_hex($sid, $session_hmac_key);
+		}
+	elsif ($use_md5) {
 		# Take MD5 hash
 		$hash_session_id_cache{$sid} = &encrypt_md5($sid);
 		}
@@ -6552,6 +6561,84 @@ if (!$hash_session_id_cache{$sid}) {
 		}
 	}
 return $hash_session_id_cache{$sid};
+}
+
+# load_session_secret()
+# Reads a per-install HMAC key from $config{'session_keyfile'}, or generates
+# a new 32-byte key from /dev/urandom and writes it with mode 0600 if the
+# file is missing. Sets $session_hmac_key. Idempotent across config reloads.
+sub load_session_secret
+{
+my $kf = $config{'session_keyfile'};
+return if (!$kf);
+my $oldumask = umask(0077);
+if (-r $kf) {
+	chmod(0600, $kf);
+	if (open(my $fh, "<", $kf)) {
+		binmode($fh);
+		local $/;
+		$session_hmac_key = <$fh>;
+		close($fh);
+		}
+	}
+if (!$session_hmac_key || length($session_hmac_key) < 16) {
+	my $key;
+	if (open(my $rh, "<", "/dev/urandom")) {
+		binmode($rh);
+		read($rh, $key, 32);
+		close($rh);
+		}
+	if (!$key || length($key) < 32) {
+		# /dev/urandom unusable; fall back to a hashed mix of
+		# Perl's rand() and the PID/time. Weaker, but the file
+		# still ends up 0600 and is per-install.
+		my $mix = '';
+		$mix .= pack("N", int(rand(0xffffffff))) for (1..8);
+		$mix .= pack("NN", $$, time());
+		if ($use_hmac_sha256) {
+			$key = Digest::SHA::sha256($mix);
+			}
+		else {
+			$key = $mix;
+			}
+		}
+	if (open(my $wh, ">", $kf)) {
+		binmode($wh);
+		chmod(0600, $kf);
+		print $wh $key;
+		close($wh);
+		$session_hmac_key = $key;
+		}
+	else {
+		&log_error("Failed to write session key file $kf : $!");
+		}
+	}
+umask($oldumask);
+}
+
+# open_session_db()
+# Opens the session DBM with a tight umask, then forces 0600 on the
+# resulting on-disk files so pre-existing loose perms from older installs
+# are corrected. Tries SDBM first, falling back to NDBM (matching the
+# original probe).
+sub open_session_db
+{
+my $oldumask = umask(0077);
+eval "use SDBM_File";
+dbmopen(%sessiondb, $config{'sessiondb'}, 0600);
+eval "\$sessiondb{'1111111111'} = 'foo bar';";
+if ($@) {
+	dbmclose(%sessiondb);
+	eval "use NDBM_File";
+	dbmopen(%sessiondb, $config{'sessiondb'}, 0600);
+	}
+else {
+	delete($sessiondb{'1111111111'});
+	}
+foreach my $f (glob("$config{'sessiondb'}*")) {
+	chmod(0600, $f);
+	}
+umask($oldumask);
 }
 
 # encrypt_md5(string, [salt])
