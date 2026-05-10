@@ -104,7 +104,7 @@ if ($support_hwtime) {
 		print &tabletime(&hlink($text{'hw_title'}, "hardware_time"),
 				 0, %hw_date);
 		print &ui_submit($text{'action_save'}, "action");
-		if (support_hwtime()) {
+		if ($support_hwtime) {
 			print &ui_submit($text{'action_sync_s'}, "action");
 			}
 		print &ui_form_end();
@@ -153,7 +153,8 @@ if ($access{'timezone'} && &has_timezone()) {
 	print &ui_tabs_end_tab();
 	}
 
-if ( ( !$access{ 'sysdate' } && &has_command( "date" ) || !$access{ 'hwdate' } && &has_command( "hwclock" ) ) && $access{'ntp'} )
+if (((!$access{'sysdate'} && &has_command("date")) ||
+     (!$access{'hwdate'} && $support_hwtime)) && $access{'ntp'})
 {
 	# Show time server input
 	print &ui_tabs_start_tab("mode", "sync");

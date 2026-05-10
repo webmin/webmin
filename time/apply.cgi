@@ -1,8 +1,5 @@
 #!/usr/local/bin/perl
 
-local $format;
-local $out;
-
 require "./time-lib.pl";
 use Time::Local;
 
@@ -17,17 +14,15 @@ $mode = "time";
 if ($in{'action'} eq $text{'action_sync'}) {
   # Set system time to hardware time
   &error( $text{ 'acl_nosys' } ) if( $access{ 'sysdate' } );
-  local $flags = &get_hwclock_flags();
-  $out = &backquote_logged("hwclock $flags --hctosys");
-  &error( &text( 'error_sync', $out ) ) if( $out ne "" );
+  $err = &set_system_time_to_hardware_time();
+  &error( &text( 'error_sync', &html_escape($err) ) ) if ($err);
   &webmin_log("sync");
 
 } elsif ($in{'action'} eq $text{'action_sync_s'}) {
   # Set hardware time to system time
   &error( $text{ 'acl_nohw' } ) if( $access{ 'hwdate' } && $access{'sysdate'} );
-  local $flags = &get_hwclock_flags();
-  $out = &backquote_logged("hwclock $flags --systohc");
-  &error( &text( 'error_sync', $out ) ) if( $out ne "" );
+  $err = &set_hardware_time_to_system_time();
+  &error( &text( 'error_sync', &html_escape($err) ) ) if ($err);
   &webmin_log("sync_s");
 
 } elsif($in{'action'} eq $text{'action_apply'} || $in{'mode'} eq 'sysdate' ) {
@@ -111,4 +106,3 @@ if ($in{'action'} eq $text{'action_sync'}) {
 }
 
 &redirect("index.cgi?mode=$mode");
-

@@ -102,9 +102,10 @@ elsif ($?) {
 
 if ($hwtoo) {
 	# Set hardware clock time to match system time (which is now correct)
-	my $flags = &get_hwclock_flags();
-	my $out = &backquote_logged("hwclock $flags --systohc");
-	return $? ? $out : undef;
+	if (&support_hwtime()) {
+		my $err = &set_hardware_time_to_system_time();
+		return $err if ($err);
+		}
 	}
 
 return undef;
@@ -163,16 +164,34 @@ else {
 	}
 }
 
+# hwclock_command()
+# Returns the path to the hwclock command, if available
+sub hwclock_command
+{
+return &has_command("hwclock");
+}
+
+# hwclock_missing_error()
+sub hwclock_missing_error
+{
+return &text('error_cnf', "hwclock");
+}
+
 # get_hardware_time()
 # Returns the current hardware time, in localtime format. On failure returns
 # an empty array, and sets the global $get_hardware_time_error
 sub get_hardware_time
 {
+my $hwclock = &hwclock_command();
+$get_hardware_time_error = undef;
+if (!$hwclock) {
+	$get_hardware_time_error = &hwclock_missing_error();
+	return ( );
+	}
 my $flags = &get_hwclock_flags();
 $flags ||= "";
-$get_hardware_time_error = undef;
 &clean_language();
-my $out = &backquote_command("hwclock $flags 2>/dev/null");
+my $out = &backquote_command("$hwclock $flags 2>/dev/null");
 &reset_environment();
 if ($out =~ /^(\S+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\d+)\s+/) {
 	return ($6, $5, $4, $3, &month_to_number($2), $7-1900, &weekday_to_number($1));
@@ -186,7 +205,7 @@ elsif ($out =~ /^(\d+)\-(\d+)\-(\d+)\s+(\d+):(\d+):(\d+)/) {
 	}
 else {
 	$get_hardware_time_error = &text('index_ehwclock',
-			"<tt>".&html_escape("hwclock $flags")."</tt>",
+			"<tt>".&html_escape("$hwclock $flags")."</tt>",
 			"<pre>".&html_escape($out)."</pre>");
 	return ( );
 	}
@@ -203,13 +222,39 @@ return localtime(time());
 sub set_hardware_time
 {
 my ($second, $minute, $hour, $date, $month, $year) = @_;
+my $hwclock = &hwclock_command();
+return &hwclock_missing_error() if (!$hwclock);
 $month++;
 $year += 1900;
 my $format = "--set --date=".
 		quotemeta("$year-$month-$date $hour:$minute:$second");
 my $flags = &get_hwclock_flags();
-my $out = &backquote_logged("hwclock $flags $format 2>&1");
+my $out = &backquote_logged("$hwclock $flags $format 2>&1");
 return $? ? $out : undef;
+}
+
+# set_hardware_time_to_system_time()
+# Sets the hardware time to the current system time
+sub set_hardware_time_to_system_time
+{
+my $hwclock = &hwclock_command();
+return &hwclock_missing_error() if (!$hwclock);
+my $flags = &get_hwclock_flags();
+$flags ||= "";
+my $out = &backquote_logged("$hwclock $flags --systohc 2>&1");
+return $? ? $out : undef;
+}
+
+# set_system_time_to_hardware_time()
+# Sets the system time to the current hardware time
+sub set_system_time_to_hardware_time
+{
+my $hwclock = &hwclock_command();
+return &hwclock_missing_error() if (!$hwclock);
+my $flags = &get_hwclock_flags();
+$flags ||= "";
+my $out = &backquote_logged("$hwclock $flags --hctosys 2>&1");
+return $? || $out ne "" ? $out : undef;
 }
 
 # set_system_time(secs, mins, hours, day, month, year)
@@ -278,8 +323,9 @@ return defined($_[0]) ? ucfirst($weekday_names[$_[0]]) : undef;
 # Returns 1 if this system supports setting the hardware clock.
 sub support_hwtime
 {
-return &has_command("hwclock") &&
-       &execute_command("hwclock") == 0 &&
+my $hwclock = &hwclock_command();
+return $hwclock &&
+       &execute_command($hwclock) == 0 &&
        !&running_in_xen() && !&running_in_vserver() &&
        !&running_in_openvz() && !&running_in_zone();
 }
@@ -307,4 +353,3 @@ if ($modconf_info) {
 }
 
 1;
-
