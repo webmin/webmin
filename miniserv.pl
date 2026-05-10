@@ -6619,8 +6619,7 @@ umask($oldumask);
 # open_session_db()
 # Opens the session DBM with a tight umask, then forces 0600 on the
 # resulting on-disk files so pre-existing loose perms from older installs
-# are corrected. Tries SDBM first, falling back to NDBM (matching the
-# original probe).
+# are corrected. Tries SDBM first, falling back to NDBM.
 sub open_session_db
 {
 my $oldumask = umask(0077);
