@@ -1,0 +1,25 @@
+<header>Trusted proxy addresses</header>
+
+A list of IP addresses or networks (one per line, in the same format as the
+allowed addresses field above) that are permitted to provide proxy headers
+such as <tt>X-Forwarded-For</tt>, <tt>X-Real-IP</tt>, <tt>X-SSL-Client-DN</tt>
+and <tt>X-SSL-Client-Verify</tt>.
+
+<p>
+When this list is set, headers received from any other peer are ignored,
+preventing a client that can reach Webmin directly from spoofing its source
+IP or impersonating a user via a fake SSL client certificate header.
+
+<p>
+This field is required when the trust level is set to trust both the remote
+IP and SSL certificate provided by proxies. It is strongly recommended
+whenever any proxy header trust is enabled.
+
+<p>
+Example:
+<pre>
+10.0.0.5
+192.168.1.0/24
+2001:DB8::/32
+</pre>
+<p></p>

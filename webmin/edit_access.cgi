@@ -38,6 +38,10 @@ print &ui_table_row(&hlink($text{'access_trust_lvl'}, "access_trust_lvl"),
 		    [ 1, $text{'access_trust_lvl1'} ],
 		    [ 2, $text{'access_trust_lvl2'} ] ]));
 
+@tprox = split(/\s+/, $miniserv{'trusted_proxies'});
+print &ui_table_row(&hlink($text{'access_tproxies'}, "access_tproxies"),
+	&ui_textarea("trusted_proxies", join("\n", @tprox), 4, 30));
+
 eval "use Authen::Libwrap qw(hosts_ctl STRING_UNKNOWN)";
 if (!$@) {
 	print &ui_table_row($text{'access_libwrap'},

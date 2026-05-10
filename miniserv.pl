@@ -1469,6 +1469,19 @@ if ($headerhost) {
 	$headerhost = undef if (!&check_ipaddress($headerhost) &&
 				!&check_ip6address($headerhost));
 	}
+# If trusted_proxies is configured, header-supplied client IP and SSL
+# client info are only honored when the direct TCP peer is in that list.
+# Otherwise drop them so an attacker reaching miniserv directly cannot
+# spoof X-Forwarded-For or X-SSL-Client-* to bypass auth.
+if ($config{'trust_real_ip'} && $config{'trusted_proxies'} ne '' &&
+    !&ip_match($acptip, $localip,
+	       split(/\s+/, $config{'trusted_proxies'}))) {
+	print DEBUG "handle_request: peer $acptip not in trusted_proxies; ".
+		    "ignoring forwarding and SSL client headers\n";
+	$headerhost = undef;
+	delete $header{'x-ssl-client-dn'};
+	delete $header{'x-ssl-client-verify'};
+	}
 if ($config{'trust_real_ip'}) {
 	$acpthost = $headerhost || $acpthost;
 	if (&check_ipaddress($headerhost) || &check_ip6address($headerhost)) {
@@ -1723,7 +1736,7 @@ if ($header{'user-agent'} =~ /webmin/i ||
 my $trust_ssl = $config{'trust_real_ip'} && !$config{'no_trust_ssl'};
 if ($use_ssl && $verified_client ||
     $trust_ssl && $header{'x-ssl-client-dn'} &&
-                  $header{'x-ssl-client-verify'} =~ /^success/i) {
+                  $header{'x-ssl-client-verify'} =~ /^success$/i) {
 	if ($use_ssl && $verified_client) {
 		$peername = Net::SSLeay::X509_NAME_oneline(
 				Net::SSLeay::X509_get_subject_name(
@@ -1731,8 +1744,12 @@ if ($use_ssl && $verified_client ||
 						$ssl_con)));
 		$u = &find_user_by_cert($peername);
 		}
-	if ($trust_ssl && !$u && $header{'x-ssl-client-dn'}) {
-		# Use proxied client cert
+	if ($trust_ssl && !$u && $header{'x-ssl-client-dn'} &&
+	    !($use_ssl && $verified_client)) {
+		# Use proxied client cert (only when this connection
+		# is not itself a verified mTLS client; otherwise the
+		# header could be set by a real-cert client that didn't
+		# match a user, to authenticate as someone else).
 		$u = &find_user_by_cert($header{'x-ssl-client-dn'});
 		}
 	if ($u) {
