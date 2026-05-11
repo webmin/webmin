@@ -128,18 +128,30 @@ return $fp;
 sub get_passphrase
 {
 my ($key) = @_;
-open(PASS, "<$user_module_config_directory/pass.$key->{'key'}") ||
-  open(PASS, "<$user_module_config_directory/pass") || return undef;
+my $file = &get_passphrase_file($key);
+open(PASS, "<", $file) || return undef;
 my $pass = <PASS>;
 close(PASS);
-chop($pass);
+chomp($pass);
 return $pass;
 }
 
 sub get_passphrase_file
 {
 my ($key) = @_;
-return "$user_module_config_directory/pass.$key->{'key'}";
+if ($key && $key->{'key'}) {
+	my @keys = ( $key->{'key'} );
+	push(@keys, $1) if ($key->{'key'} =~ /([A-F0-9]{16})$/i);
+	push(@keys, $1) if ($key->{'key'} =~ /([A-F0-9]{8})$/i);
+	foreach my $k (@keys) {
+		my $file = "$user_module_config_directory/pass.$k";
+		return $file if (-r $file);
+		}
+	}
+my $file = "$user_module_config_directory/pass";
+return $file if (-r $file);
+return $key && $key->{'key'} ?
+	"$user_module_config_directory/pass.$key->{'key'}" : $file;
 }
 
 # put_passphrase(pass, &key)
