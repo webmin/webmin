@@ -136,6 +136,9 @@ chomp($pass);
 return $pass;
 }
 
+# get_passphrase_file(&key)
+# Returns the stored passphrase file for a key, falling back through full
+# fingerprint, long and short key IDs, and the old generic passphrase file.
 sub get_passphrase_file
 {
 my ($key) = @_;
