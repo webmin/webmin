@@ -5093,10 +5093,12 @@ my $var_dir = $1;
 if (!$config{'sessiondb'}) {
 	$config{'sessiondb'} = "$var_dir/sessiondb";
 	}
-if (!$config{'session_keyfile'}) {
-	$config{'session_keyfile'} = "$var_dir/session.key";
+if ($config{'session'}) {
+	if (!$config{'session_keyfile'}) {
+		$config{'session_keyfile'} = "$var_dir/session.key";
+		}
+	&load_session_secret();
 	}
-&load_session_secret();
 if (!$config{'errorlog'}) {
 	$config{'logfile'} =~ /^(.*)\/[^\/]+$/;
 	$config{'errorlog'} = "$1/miniserv.error";
