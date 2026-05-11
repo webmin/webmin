@@ -68,7 +68,7 @@ sub run_http_error {
 	return join('', @written);
 }
 
-# --- minimal call: code + message, no body, no reqline ------------------
+# minimal call: code + message, no body, no reqline 
 # Assert on the contract, not the cosmetics: the status code, the
 # presence of required headers, and that the caller's code + message
 # reach the rendered page. Specific wording, header values, decoration
@@ -90,13 +90,13 @@ sub run_http_error {
 	is(scalar @reqlog, 0,                                 'log_request skipped when reqline empty');
 }
 
-# --- body argument renders as a paragraph -------------------------------
+# body argument renders as a paragraph
 {
 	my $out = run_http_error(code => 500, msg => 'Server Error', body => 'something broke');
 	like($out, qr{<p\b[^>]*>[^<]*\Qsomething broke\E[^<]*</p>}, 'body argument rendered in a paragraph');
 }
 
-# --- reqline triggers log_request ---------------------------------------
+# reqline triggers log_request
 {
 	run_http_error(
 		code => 403, msg => 'Forbidden', body => 'no access',
@@ -110,13 +110,13 @@ sub run_http_error {
 	is($reqlog[0][3], 403,                                'log_request code arg');
 }
 
-# --- noerr suppresses log_error -----------------------------------------
+# noerr suppresses log_error
 {
 	run_http_error(code => 401, msg => 'Unauthorized', noerr => 1);
 	is(scalar @errlog, 0,                                 'log_error suppressed when noerr is true');
 }
 
-# --- error_handler config that points to a missing file falls through ---
+# error_handler config that points to a missing file falls through 
 # This exercises the early branch without triggering `goto rerun` (which
 # only resolves inside handle_request).
 {
@@ -125,7 +125,7 @@ sub run_http_error {
 	like($out, qr{^HTTP/1\.0 500\b}, 'falls through to standard path when handler file missing');
 }
 
-# --- HTML scaffolding is balanced ---------------------------------------
+# HTML scaffolding is balanced
 {
 	my $out = run_http_error(code => 400, msg => 'Bad Request', body => 'oops');
 	for my $tag (qw(html head title body h2 p)) {
