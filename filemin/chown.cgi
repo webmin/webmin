@@ -22,6 +22,11 @@ else {
 	}
 
 my @errors;
+my @names = split(/\0/, $in{'name'});
+my @files;
+foreach my $name (@names) {
+	push(@files, [ $name, &validate_filename_path($name) ]);
+	}
 
 if (!defined($login)) {
 	push @errors,
@@ -39,10 +44,11 @@ if (scalar(@errors) > 0) {
 	print_errors(@errors);
 	}
 else {
-	foreach $name (split(/\0/, $in{'name'})) {
+	foreach my $file (@files) {
+		my ($name, $full) = @$file;
 		if (system_logged(
 			"chown $recursive $uid:$grid ".
-			quotemeta("$cwd/$name")) != 0) {
+			quotemeta($full)) != 0) {
 			push @errors,
 				"$name - " .
 				"$text{'error_chown'}: $?";

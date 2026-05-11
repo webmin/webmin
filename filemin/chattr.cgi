@@ -29,11 +29,10 @@ if (scalar(@errors) > 0) {
 	}
 else {
 	foreach my $file (split(/\0/, $in{'name'})) {
-		$file =~ s/\.\.//g;
-		$file = &simplify_path($file);
+		my $full = &validate_filename_path($file);
 		if (system_logged(
 			"chattr $recursive ".$label.
-			" ".quotemeta("$cwd/$file")
+			" ".quotemeta($full)
 			) != 0) {
 			push @errors,
 				(html_escape($file).

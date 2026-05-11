@@ -260,13 +260,5 @@ else {
 sub upload_full_path
 {
 my ($file) = @_;
-my $full = &simplify_path("$cwd/$file");
-if (!defined($full)) {
-	&error(&text('notallowed',
-	      '`' . &html_escape("$cwd/$file") . '`',
-	      '`' . &html_escape(
-		join(" , ", @allowed_paths)) . '`.'));
-	}
-&check_allowed_path($full);
-return $full;
+return &validate_filename_path($file);
 }

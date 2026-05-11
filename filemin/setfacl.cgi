@@ -56,15 +56,16 @@ my $args = quotemeta($action).
 $args =~ s/\s+/ /g;
 $args = &trim($args);
 foreach my $file (@files) {
-	my $qfile = quotemeta("$cwd/$file");
-	next if (!-r "$cwd/$file");
+	my $full = &validate_filename_path($file);
+	my $qfile = quotemeta($full);
+	next if (!-r $full);
 	my $fullcmd = "$cmd $args $qfile";
 	my $out = &backquote_logged(
 		"$fullcmd 2>&1 >/dev/null </dev/null");
 	if ($?) {
 		$out =~ s/^setfacl: //;
 		&error(&html_escape(
-			"$cmd $args $cwd/$file : $out"));
+			"$cmd $args $full : $out"));
 		}
 	}
 

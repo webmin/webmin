@@ -9,13 +9,19 @@ get_paths();
 my @errors;
 
 my $perms = $in{'perms'};
+my @names = split(/\0/, $in{'name'});
+my @files;
+foreach my $name (@names) {
+	push(@files, [ $name, &validate_filename_path($name) ]);
+	}
 
 # Selected directories and files only
 if ($in{'applyto'} eq '1') {
-	foreach $name (split(/\0/, $in{'name'})) {
+	foreach my $file (@files) {
+		my ($name, $full) = @$file;
 		if (system_logged(
 			"chmod " . quotemeta($perms) . " " .
-			quotemeta("$cwd/$name")) != 0) {
+			quotemeta($full)) != 0) {
 			push @errors,
 				"$name - $text{'error_chmod'}: $?";
 			}
@@ -25,17 +31,18 @@ if ($in{'applyto'} eq '1') {
 # Selected files and directories and files in
 # selected directories
 if ($in{'applyto'} eq '2') {
-	foreach $name (split(/\0/, $in{'name'})) {
+	foreach my $file (@files) {
+		my ($name, $full) = @$file;
 		if (system_logged(
 			"chmod " . quotemeta($perms) . " " .
-			quotemeta("$cwd/$name")) != 0) {
+			quotemeta($full)) != 0) {
 			push @errors,
 				"$name - $text{'error_chmod'}: $?";
 			}
-		if (-d "$cwd/$name") {
+		if (-d $full) {
 			if (system_logged(
 				"find " .
-				quotemeta("$cwd/$name") .
+				quotemeta($full) .
 				" -maxdepth 1 -type f" .
 				" -exec chmod " .
 				quotemeta($perms) .
@@ -50,11 +57,12 @@ if ($in{'applyto'} eq '2') {
 
 # All (recursive)
 if ($in{'applyto'} eq '3') {
-	foreach $name (split(/\0/, $in{'name'})) {
+	foreach my $file (@files) {
+		my ($name, $full) = @$file;
 		if (system_logged(
 			"chmod -R " . quotemeta($perms) .
 			" " .
-			quotemeta("$cwd/$name")) != 0) {
+			quotemeta($full)) != 0) {
 			push @errors,
 				"$name - $text{'error_chmod'}: $?";
 			}
@@ -64,12 +72,13 @@ if ($in{'applyto'} eq '3') {
 # Selected files and files under selected directories
 # and subdirectories
 if ($in{'applyto'} eq '4') {
-	foreach $name (split(/\0/, $in{'name'})) {
-		if (-f "$cwd/$name") {
+	foreach my $file (@files) {
+		my ($name, $full) = @$file;
+		if (-f $full) {
 			if (system_logged(
 				"chmod " .
 				quotemeta($perms) . " " .
-				quotemeta("$cwd/$name")) != 0) {
+				quotemeta($full)) != 0) {
 				push @errors,
 					"$name - " .
 					"$text{'error_chmod'}: $?";
@@ -78,7 +87,7 @@ if ($in{'applyto'} eq '4') {
 		else {
 			if (system_logged(
 				"find " .
-				quotemeta("$cwd/$name") .
+				quotemeta($full) .
 				" -type f -exec chmod " .
 				quotemeta($perms) .
 				" {} \\;") != 0) {
@@ -92,19 +101,20 @@ if ($in{'applyto'} eq '4') {
 
 # Selected directories and subdirectories
 if ($in{'applyto'} eq '5') {
-	foreach $name (split(/\0/, $in{'name'})) {
-		if (-d "$cwd/$name") {
+	foreach my $file (@files) {
+		my ($name, $full) = @$file;
+		if (-d $full) {
 			if (system_logged(
 				"chmod " .
 				quotemeta($perms) . " " .
-				quotemeta("$cwd/$name")) != 0) {
+				quotemeta($full)) != 0) {
 				push @errors,
 					"$name - " .
 					"$text{'error_chmod'}: $?";
 				}
 			if (system_logged(
 				"find " .
-				quotemeta("$cwd/$name") .
+				quotemeta($full) .
 				" -type d -exec chmod " .
 				quotemeta($perms) .
 				" {} \\;") != 0) {

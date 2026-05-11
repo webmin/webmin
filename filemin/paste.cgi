@@ -15,52 +15,61 @@ my $dir = $arr[1];
 chomp($act);
 chomp($dir);
 $from = abs_path($base.$dir);
-if ($cwd eq $from) {
+if (!defined($from)) {
+	print_errors($text{'error_pasting_nonsence'});
+	}
+elsif ($cwd eq $from) {
 	print_errors($text{'error_pasting_nonsence'});
 	}
 else {
+	&check_allowed_path($from);
 	my @errors;
 	for (my $i = 2; $i <= scalar(@arr) - 1; $i++) {
 		chomp($arr[$i]);
+		my $name = $arr[$i];
+		my $source;
+		{
+		local $cwd = $from;
+		$source = &validate_filename_path($name);
+		}
+		my ($target_name) = fileparse($source);
+		my $target = &validate_filename_path($target_name);
 		if ($act eq "copy") {
-			if (-e "$cwd/$arr[$i]") {
+			if (-e $target) {
 				push @errors,
-					"$cwd/$arr[$i] " .
+					"$target " .
 					"$text{'error_exists'}";
 				}
 			else {
 				system("cp -r ".
-					quotemeta(
-					"$from/$arr[$i]").
+					quotemeta($source).
 					" ".quotemeta($cwd)
 					) == 0 ||
 				push @errors,
-					"$from/$arr[$i] " .
+					"$source " .
 					"$text{'error_copy'}" .
 					" $!";
 				}
 			}
 		elsif ($act eq "cut") {
-			if (!can_move("$from/$arr[$i]",
-			    $cwd, $from)) {
+			if (!can_move($source, $from, $cwd)) {
 				push @errors,
-					"$from/$arr[$i]" .
+					"$source" .
 					" - " .
 					"$text{'error_move'}";
 				}
-			elsif (-e "$cwd/$arr[$i]") {
+			elsif (-e $target) {
 				push @errors,
-					"$cwd/$arr[$i] " .
+					"$target " .
 					"$text{'error_exists'}";
 				}
 			else {
 				system("mv ".
-					quotemeta(
-					"$from/$arr[$i]").
+					quotemeta($source).
 					" ".quotemeta($cwd)
 					) == 0 ||
 				push @errors,
-					"$from/$arr[$i] " .
+					"$source " .
 					"$text{'error_cut'}" .
 					" $!";
 				}

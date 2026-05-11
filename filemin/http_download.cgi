@@ -24,7 +24,7 @@ else {
 	my $file = $page;
 	$file =~ s/^.*\///;
 	$file ||= "index.html";
-	$full = "$cwd/$file";
+	my $full = &validate_filename_path($file);
 
 	if (-e $full) {
 		push @errors,

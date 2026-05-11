@@ -872,6 +872,73 @@ $error && &error(
 		join(" , ", @allowed_paths)) . '`.'));
 }
 
+# filemin_path_under_directory(directory, file)
+# Like is_under_directory, but permits legitimate names containing "..".
+sub filemin_path_under_directory
+{
+my ($dir, $file) = @_;
+$dir = &simplify_path($dir);
+$file = &simplify_path($file);
+return 0 if (!defined($dir) || !defined($file));
+return 1 if ($dir eq "/");
+$dir = &simplify_path(&resolve_links($dir));
+$file = &simplify_path(&resolve_links($file));
+return 0 if (!defined($dir) || !defined($file));
+return 1 if ($dir eq $file);
+$dir =~ s/\/*$/\//;
+return substr($file, 0, length($dir)) eq $dir;
+}
+
+# filemin_lexical_path_under_directory(directory, file)
+# Like filemin_path_under_directory, but does not resolve symlinks. Used before
+# the allowed-path check to make sure the submitted name was relative to the
+# current directory, while still allowing symlinks to other allowed paths.
+sub filemin_lexical_path_under_directory
+{
+my ($dir, $file) = @_;
+$dir = &simplify_path($dir);
+$file = &simplify_path($file);
+return 0 if (!defined($dir) || !defined($file));
+return 1 if ($dir eq "/");
+return 1 if ($dir eq $file);
+$dir =~ s/\/*$/\//;
+return substr($file, 0, length($dir)) eq $dir;
+}
+
+# validate_filename_path(file)
+# Returns a checked full path for a name or relative path from the current
+# directory, or calls error if it could escape the allowed paths.
+sub validate_filename_path
+{
+my ($file) = @_;
+my $display_file = defined($file) ? $file : '';
+if (!defined($file) || $file eq '' || $file =~ /[\0\r\n]/ ||
+    $file =~ m!(^|/)\.\.(?:/|$)!) {
+	&error(&text('error_invalid_filename',
+		     '<tt>'.&html_escape($display_file).'</tt>'));
+	}
+my $full = &simplify_path("$cwd/$file");
+if (!defined($full) || !&filemin_lexical_path_under_directory($cwd, $full)) {
+	&error(&text('error_invalid_filename',
+		     '<tt>'.&html_escape($display_file).'</tt>'));
+	}
+my $allowed = 0;
+foreach my $allowed_path (@allowed_paths) {
+	if (&filemin_path_under_directory($allowed_path, $full)) {
+		$allowed = 1;
+		last;
+		}
+	}
+if (!$allowed) {
+	&error(
+		&text('notallowed',
+		      '`' . &html_escape($full) . '`',
+		      '`' . &html_escape(
+			join(" , ", @allowed_paths)) . '`.'));
+	}
+return $full;
+}
+
 # clean_mimetype(file)
 # Returns the MIME type for a file, ensuring proper encoding
 sub clean_mimetype
@@ -901,10 +968,20 @@ my @errors;
 foreach my $fref (@{$files_to_extract}) {
 	my $status = -1;
 
-	my $cwd = $fref->{'path'};
+	my $extract_cwd = &simplify_path($fref->{'path'});
 	my $name = $fref->{'file'};
+	if (!defined($extract_cwd)) {
+		&error(&text('error_invalid_filename',
+			     '<tt>'.&html_escape($fref->{'path'}).'</tt>'));
+		}
+	&check_allowed_path($extract_cwd);
+	my $archive;
+	{
+	local $cwd = $extract_cwd;
+	$archive = &validate_filename_path($name);
+	}
 
-	my $extract_to = $cwd;
+	my $extract_to = $extract_cwd;
 	if (!$in{'overwrite_existing'}) {
 		my ($file_name) = $name =~ /(?|
 			(.*)\.((?|tar|wbm|wbt)\..*) |
@@ -912,26 +989,36 @@ foreach my $fref (@{$files_to_extract}) {
 			(.*)\.(?=(.*)) |
 			(.*)()
 		)/x;
-		if (!-e "$cwd/$file_name") {
-			$extract_to = "$cwd/$file_name";
+		my $candidate;
+		{
+		local $cwd = $extract_cwd;
+		$candidate = &validate_filename_path($file_name);
+		}
+		if (!-e $candidate) {
+			$extract_to = $candidate;
 			}
 		else {
 			my $__ = 1;
 			for (;;) {
 				my $new_dir_name =
 					"$file_name(" . $__++ . ")";
-				if (!-e "$cwd/$new_dir_name") {
-					$extract_to =
-						"$cwd/$new_dir_name";
+				{
+				local $cwd = $extract_cwd;
+				$candidate =
+					&validate_filename_path(
+						$new_dir_name);
+				}
+				if (!-e $candidate) {
+					$extract_to = $candidate;
 					last;
 					}
 				}
 			}
 		}
-	mkdir("$extract_to");
+	mkdir($extract_to);
 
 	my $archive_type =
-		mimetype($cwd . '/' . $name);
+		mimetype($archive);
 
 	if ($archive_type =~ /x-tar/ ||
 	    $archive_type =~ /-compressed-tar/) {
@@ -947,7 +1034,7 @@ foreach my $fref (@{$files_to_extract}) {
 		else {
 			$status = system(
 				"$tar_cmd xpf " .
-				quotemeta("$cwd/$name") .
+				quotemeta($archive) .
 				" -C " .
 				quotemeta($extract_to));
 			}
@@ -965,7 +1052,7 @@ foreach my $fref (@{$files_to_extract}) {
 		else {
 			$status = system(
 				"$tar_cmd xjfp " .
-				quotemeta("$cwd/$name") .
+				quotemeta($archive) .
 				" -C " .
 				quotemeta($extract_to));
 			}
@@ -984,7 +1071,7 @@ foreach my $fref (@{$files_to_extract}) {
 		else {
 			$status = system(
 				"$gz_cmd -d -f -k " .
-				quotemeta("$cwd/$name"));
+				quotemeta($archive));
 			}
 		}
 	elsif ($archive_type =~ /x-xz/) {
@@ -1000,7 +1087,7 @@ foreach my $fref (@{$files_to_extract}) {
 		else {
 			$status = system(
 				"$xz_cmd -d -f -k " .
-				quotemeta("$cwd/$name"));
+				quotemeta($archive));
 			}
 		}
 	elsif ($archive_type =~ /x-7z/ ||
@@ -1018,7 +1105,7 @@ foreach my $fref (@{$files_to_extract}) {
 		else {
 			$status = system(
 				"$x7z_cmd x -aoa " .
-				quotemeta("$cwd/$name") .
+				quotemeta($archive) .
 				" -o" .
 				quotemeta($extract_to));
 			}
@@ -1039,7 +1126,7 @@ foreach my $fref (@{$files_to_extract}) {
 				? '-UU' : undef);
 			$status = system(
 				"$unzip_cmd $uu -q -o " .
-				quotemeta("$cwd/$name") .
+				quotemeta($archive) .
 				" -d " .
 				quotemeta($extract_to));
 			}
@@ -1059,8 +1146,7 @@ foreach my $fref (@{$files_to_extract}) {
 			if ($unrar_cmd =~ /unar$/) {
 				$status = system(
 					"$unrar_cmd " .
-					quotemeta(
-					"$cwd/$name") .
+					quotemeta($archive) .
 					" -o " .
 					quotemeta(
 					$extract_to));
@@ -1069,8 +1155,7 @@ foreach my $fref (@{$files_to_extract}) {
 				$status = system(
 					"$unrar_cmd " .
 					"x -r -y -o+ " .
-					quotemeta(
-					"$cwd/$name") .
+					quotemeta($archive) .
 					" " .
 					quotemeta(
 					$extract_to));
@@ -1100,7 +1185,7 @@ foreach my $fref (@{$files_to_extract}) {
 		else {
 			$status = system(
 				"($rpm2cpio_cmd " .
-				quotemeta("$cwd/$name") .
+				quotemeta($archive) .
 				" | (cd " .
 				quotemeta($extract_to) .
 				"; $cpio_cmd -idmv))");
@@ -1120,14 +1205,14 @@ foreach my $fref (@{$files_to_extract}) {
 		else {
 			$status = system(
 				"$dpkg_cmd -x " .
-				quotemeta("$cwd/$name") .
+				quotemeta($archive) .
 				" " .
 				quotemeta($extract_to));
 			}
 		}
 
 	# Set permissions for all extracted files
-	my @perms = stat("$cwd/$name");
+	my @perms = stat($archive);
 	system("chown -R $perms[4]:$perms[5] " .
 		quotemeta($extract_to));
 
@@ -1136,7 +1221,7 @@ foreach my $fref (@{$files_to_extract}) {
 
 	# Delete if no error
 	if ($delete && $status == 0) {
-		unlink_file("$cwd/$name");
+		unlink_file($archive);
 		}
 	}
 return @errors;
