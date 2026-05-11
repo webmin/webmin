@@ -30,6 +30,15 @@ if (!$@ && $in{'libwrap'}) {
 		}
 	}
 
+@tprox = split(/\s+/, $in{'trusted_proxies'});
+foreach $h (@tprox) {
+	$err = &valid_allow($h);
+	&error($err) if ($err);
+	}
+if ($in{'trust'} == 2 && !@tprox) {
+	&error($text{'access_etproxies'});
+	}
+
 &lock_file($ENV{'MINISERV_CONFIG'});
 &get_miniserv_config(\%miniserv);
 delete($miniserv{"allow"});
@@ -52,6 +61,7 @@ else {
 	$miniserv{'trust_real_ip'} = 0;
 	$miniserv{'no_trust_ssl'} = 1;
 	}
+$miniserv{'trusted_proxies'} = join(' ', @tprox);
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 &show_restart_page();
