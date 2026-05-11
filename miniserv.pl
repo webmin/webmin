@@ -11,6 +11,17 @@ eval "use Time::HiRes;";
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 @miniserv_argv = @ARGV;
 
+# init days and months for http_date
+@weekday = ( "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" );
+@month = ( "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+	   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" );
+
+# Only run the server logic when invoked as a script. When loaded as a
+# module (e.g. for unit tests) all subs below remain callable, but none
+# of the config-driven setup, socket binding, forking or accept loop
+# fires.
+unless (caller) {
+
 # Find and read config file
 if ($ARGV[0] eq "--nofork") {
 	$nofork_argv = 1;
@@ -228,11 +239,6 @@ if ($rand1 eq $rand2) {
 if ($config{'sudo'} && &has_command("sudo")) {
 	$use_sudo = 1;
 	}
-
-# init days and months for http_date
-@weekday = ( "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" );
-@month = ( "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-	   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" );
 
 # Change dir to the server root
 @roots = ( $config{'root'} );
@@ -1295,6 +1301,8 @@ while(1) {
 	@passin = grep { defined($_) } @passin;
 	@passout = grep { defined($_) } @passout;
 	}
+
+} # end of unless (caller)
 
 # handle_request(remoteaddress, localaddress, ipv6-flag)
 # Where the real work is done
