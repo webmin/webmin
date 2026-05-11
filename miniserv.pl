@@ -4441,51 +4441,36 @@ if ($ok && (!$expired ||
 	&run_login_script($authuser, $sid,
 			  $loghost, $localip);
 
-	# Check for a redirect URL for the user
-	local $rurl = &login_redirect($authuser, $pass, $host);
-	print DEBUG "handle_login: redirect URL rurl=$rurl\n";
-	if ($rurl) {
-		# Got one .. go to it
-		&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
-		&write_data("Date: $datestr\r\n");
-		&write_data("Server: @{[&server_info()]}\r\n");
-		&write_data("Location: $rurl\r\n");
-		&write_keep_alive(0);
-		&write_data("\r\n");
-		&log_request($loghost, $authuser, $reqline, 302, 0);
+	# Set cookie and redirect to originally requested page
+	&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
+	&write_data("Date: $datestr\r\n");
+	&write_data("Server: @{[&server_info()]}\r\n");
+	local $sec = $ssl ? "; secure" : "";
+	if (!$config{'no_httponly'}) {
+		$sec .= "; httpOnly";
+		}
+	if (!$config{'no_samesite'}) {
+		$sec .= "; SameSite=Lax";
+		}
+	if ($in{'page'} !~ /^\/[A-Za-z0-9\/\.\-\_:]+$/) {
+		# Make redirect URL safe
+		$in{'page'} = "/";
+		}
+	local $cpath = $config{'cookiepath'};
+	if ($in{'save'}) {
+		&write_data("Set-Cookie: $sidname=$sid; path=$cpath; ".
+		    "expires=\"Thu, 31-Dec-2037 00:00:00\"$sec\r\n");
 		}
 	else {
-		# Set cookie and redirect to originally requested page
-		&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
-		&write_data("Date: $datestr\r\n");
-		&write_data("Server: @{[&server_info()]}\r\n");
-		local $sec = $ssl ? "; secure" : "";
-		if (!$config{'no_httponly'}) {
-			$sec .= "; httpOnly";
-			}
-		if (!$config{'no_samesite'}) {
-			$sec .= "; SameSite=Lax";
-			}
-		if ($in{'page'} !~ /^\/[A-Za-z0-9\/\.\-\_:]+$/) {
-			# Make redirect URL safe
-			$in{'page'} = "/";
-			}
-		local $cpath = $config{'cookiepath'};
-		if ($in{'save'}) {
-			&write_data("Set-Cookie: $sidname=$sid; path=$cpath; ".
-			    "expires=\"Thu, 31-Dec-2037 00:00:00\"$sec\r\n");
-			}
-		else {
-			&write_data("Set-Cookie: $sidname=$sid; path=$cpath".
-				    "$sec\r\n");
-			}
-		&write_data("Location: $prot://$hostport$in{'page'}\r\n");
-		&write_keep_alive(0);
-		&write_data("\r\n");
-		&log_request($loghost, $authuser, $reqline, 302, 0);
-		syslog("info", "%s", "Successful login as $authuser from $loghost") if ($use_syslog);
-		&write_login_utmp($authuser, $acpthost);
+		&write_data("Set-Cookie: $sidname=$sid; path=$cpath".
+			    "$sec\r\n");
 		}
+	&write_data("Location: $prot://$hostport$in{'page'}\r\n");
+	&write_keep_alive(0);
+	&write_data("\r\n");
+	&log_request($loghost, $authuser, $reqline, 302, 0);
+	syslog("info", "%s", "Successful login as $authuser from $loghost") if ($use_syslog);
+	&write_login_utmp($authuser, $acpthost);
 	return 0;
 	}
 elsif ($ok && $expired &&
@@ -4995,20 +4980,6 @@ foreach my $c (keys %config) {
 		push(@websocket_paths, $ws);
 		}
 	}
-}
-
-# login_redirect(username, password, host)
-# Calls the login redirect script (if configured), which may output a URL to
-# re-direct a user to after logging in.
-sub login_redirect
-{
-return undef if (!$config{'login_redirect'});
-local $quser = quotemeta($_[0]);
-local $qpass = quotemeta($_[1]);
-local $qhost = quotemeta($_[2]);
-local $url = `$config{'login_redirect'} $quser $qpass $qhost`;
-chop($url);
-return $url;
 }
 
 # reload_config_file()
