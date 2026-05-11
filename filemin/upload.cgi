@@ -54,6 +54,7 @@ MAINLOOP: while (index($line, "$boundary--") == -1) {
 		}
 
 	if (defined($file)) {
+		my $full = &upload_full_path($file);
 		my @st = stat($cwd);
 		# If we have a dir, parse it and create a
 		# sub-tree first
@@ -99,18 +100,21 @@ MAINLOOP: while (index($line, "$boundary--") == -1) {
 					}
 				foreach my $updir (@dirs) {
 					$dir .= "$updir/";
-					if (!-e "$cwd$dir") {
-						mkdir("$cwd$dir");
+					my $fulldir =
+						&upload_full_path($dir);
+					if (!-e $fulldir) {
+						mkdir($fulldir);
 						set_ownership_permissions(
 							$st[4], $st[5],
-							undef, "$cwd$dir");
+							undef, $fulldir);
 						}
 					}
 				}
 			}
 		# In case of a regular file check for dupes
+		$full = &upload_full_path($file);
 		if (!$in{'overwrite_existing'}) {
-			if ($file && -e "$cwd/$file") {
+			if ($file && -e $full) {
 				# If the file exists, add a suffix
 				my ($file_name,
 				    $file_extension) =
@@ -138,7 +142,7 @@ MAINLOOP: while (index($line, "$boundary--") == -1) {
 			}
 
 		# OK, we have a file, let's save it
-		my $full = "$cwd/$file";
+		$full = &upload_full_path($file);
 		my $newfile = !-e $full;
 		if (!open(OUTFILE, ">$full")) {
 			push @errors,
@@ -250,3 +254,19 @@ if (scalar(@errors) > 0) {
 else {
 	&redirect("index.cgi?path=" . &urlize($path));
 	}
+
+# upload_full_path(file)
+# Returns a fully resolved upload path, or fails if it leaves allowed paths.
+sub upload_full_path
+{
+my ($file) = @_;
+my $full = &simplify_path("$cwd/$file");
+if (!defined($full)) {
+	&error(&text('notallowed',
+	      '`' . &html_escape("$cwd/$file") . '`',
+	      '`' . &html_escape(
+		join(" , ", @allowed_paths)) . '`.'));
+	}
+&check_allowed_path($full);
+return $full;
+}
