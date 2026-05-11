@@ -1,5 +1,10 @@
 ## Changelog
 
+#### 2.641 (May 10, 2026)
+* Fixed a bug when editing monitors in the System and Server Status module
+* Fix Fail2Ban default jail options
+* Added support for trusted proxy IP addresses
+
 #### 2.640 (May 4, 2026)
 * Add new nftables module with profiles, saved tables, and chains/sets management
 * Add new Nginx module with look and feel matching the Apache module
