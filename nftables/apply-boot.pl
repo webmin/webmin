@@ -11,7 +11,7 @@ $no_acl_check++;
 if ($0 =~ /^(.*\/)[^\/]+$/) {
 	chdir($1);
 	}
-require './nftables-lib.pl';    ## no critic (Modules::RequireBarewordIncludes)
+require './nftables-lib.pl';
 if ($module_name ne 'nftables') {
 	print STDERR "Command must be run with full path\n";
 	exit(5);
