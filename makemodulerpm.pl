@@ -268,7 +268,7 @@ system("/usr/bin/find /tmp/makemodulerpm -name .git | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name .github | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name RELEASE | xargs rm -rf");
 system("/usr/bin/find /tmp/makemodulerpm -name RELEASE.sh | xargs rm -rf");
-system("/usr/bin/find /tmp/makemodulerpm -name t | xargs rm -rf");
+system("/usr/bin/find /tmp/makemodulerpm -type d \\( -name t -o -name xt \\) | xargs rm -rf");
 if (-r "/tmp/makemodulerpm/$mod/EXCLUDE") {
 	system("cd /tmp/makemodulerpm/$mod && cat EXCLUDE | xargs rm -rf");
 	system("rm -f /tmp/makemodulerpm/$mod/EXCLUDE");

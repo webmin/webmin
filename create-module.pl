@@ -88,6 +88,7 @@ foreach my $m (@ARGV) {
 	system("cd /tmp/create-module && find . -name RELEASE -o -name RELEASE.sh | xargs rm -rf");
 	system("cd /tmp/create-module && find . -name linux.sh -o -name freebsd.sh -o -name LICENCE -o -name README.md -o -name distrib | xargs rm -rf");
 	system("cd /tmp/create-module && find . -name 'makemodule*.pl' | xargs rm -rf");
+	system("cd /tmp/create-module && find . -type d \\( -name t -o -name xt \\) | xargs rm -rf");
 	if (-r "/tmp/create-module/$subdir/EXCLUDE") {
 		system("cd /tmp/create-module/$subdir && cat EXCLUDE | xargs rm -rf");
 		unlink("/tmp/create-module/$subdir/EXCLUDE");
