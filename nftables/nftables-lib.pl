@@ -153,9 +153,9 @@ return has_command($cmd);
 sub nft_version_text
 {
 my $cmd = get_nft_command();
-return if (!$cmd);
+return undef if (!$cmd);
 my $out = backquote_command(quotemeta($cmd)." --version 2>&1");
-return if ($? || !$out);
+return undef if ($? || !$out);
 $out =~ s/\r?\n.*$//s;
 $out =~ s/^\s+|\s+$//g;
 if ($out =~ /^nftables\s+v?(\S+)(?:\s+(.*))?$/i) {
@@ -170,7 +170,7 @@ return $out;
 # Returns an error message if nftables is not installed, undef if all is OK
 sub check_nftables
 {
-return if (get_nft_command());
+return undef if (get_nft_command());
 return text('index_ecommand', "<tt>nft</tt>");
 }
 
