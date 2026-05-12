@@ -86,5 +86,6 @@ if (!$err) {
 		);
 		}
 	}
-return sort { $a->[1] cmp $b->[1] } @opts;
+my @sorted = sort { $a->[1] cmp $b->[1] } @opts;
+return @sorted;
 }
