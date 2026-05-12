@@ -3,6 +3,8 @@
 
 use Pod::Simple::Wiki;
 
+unless (caller) {
+
 $doxfer_host = "doxfer.com";
 $doxfer_dir = "/home/doxfer/public_html/twiki/data/Webmin";
 $temp_pod_dir = "/tmp/doxfer-wiki";
@@ -129,6 +131,8 @@ close(SUMM);
 print STDERR "Uploading to $doxfer_host\n";
 system("scp $temp_pod_dir/*.txt doxfer\@$doxfer_host:/home/doxfer/public_html/twiki/data/Webmin/");
 print STDERR "done\n";
+
+} # end of unless (caller)
 
 sub html_escape
 {

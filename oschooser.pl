@@ -7,6 +7,8 @@
 #	      2 = automatic, ask user if fails
 #             3 = automatic, ask user if fails and if a TTY
 
+unless (caller) {
+
 $| = 1;
 
 ($oslist, $out, $auto) = @ARGV;
@@ -167,6 +169,8 @@ print OUT "os_version='",$ver->[3],"'\n";
 print OUT "real_os_type='",$ver->[0],"'\n";
 print OUT "real_os_version='",$ver->[1],"'\n";
 close(OUT);
+
+} # end of unless (caller)
 
 # has_command(command)
 # Returns the full path if some command is in the path, undef if not

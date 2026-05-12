@@ -9,6 +9,8 @@ use POSIX;
 use Term::ANSIColor qw(:constants);
 use 5.010;
 
+unless (caller) {
+
 my $licence = "BSD";
 my $email = "Jamie Cameron <jcameron\@webmin.com>";
 my $target_dir = "/tmp";
@@ -651,6 +653,8 @@ EOF
 # Clean up
 # XXX Dangerous! Fix me.
 system("rm -rf $tmp_dir");
+
+} # end of unless (caller)
 
 # read_file(file, &assoc, [&order], [lowercase])
 # Fill an associative array with name=value pairs from a file

@@ -3,6 +3,8 @@
 # Creates a single .wbm file containing multiple modules, possibly with
 # forced versions
 
+unless (caller) {
+
 @ARGV >= 2 || die "usage: create-module.pl [--dir name] <file.wbm> <module>[/version] ..";
 
 my $pwd;
@@ -105,6 +107,8 @@ if ($createsig) {
 	system("gpg ".($keyname ? " --default-key $keyname" : "").
 	       " --armor --output $file-sig.asc --detach-sig $file");
 	}
+
+} # end of unless (caller)
 
 # read_file(file, &assoc, [&order], [lowercase])
 # Fill an associative array with name=value pairs from a file

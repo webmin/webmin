@@ -3,6 +3,8 @@
 
 use POSIX;
 
+unless (caller) {
+
 if ($ARGV[0] eq "--webmail" || $ARGV[0] eq "-webmail") {
 	$webmail = 1;
 	shift(@ARGV);
@@ -526,6 +528,8 @@ EOF
 
 	system("rm -rf $diff_orig_dir $diff_new_dir");
 	}
+
+} # end of unless (caller)
 
 # read_file(file, &assoc, [&order], [lowercase])
 # Fill an associative array with name=value pairs from a file

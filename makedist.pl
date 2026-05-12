@@ -1,6 +1,8 @@
 #!/usr/local/bin/perl
 # Builds a tar.gz package of a specified Webmin version
 
+unless (caller) {
+
 # Parse command line options
 $mod_list  = 'full';
 @ARGV = map { /^--\S+\s+/ ? split(/\s+/, $_) : $_ } @ARGV;
@@ -243,6 +245,8 @@ if ($min && !$release) {
 	# Delete the tarball directory
 	system("rm -rf $tardir/$dir");
 	}
+
+} # end of unless (caller)
 
 # read_file(file, &assoc, [&order])
 # Fill an associative array with name=value pairs from a file

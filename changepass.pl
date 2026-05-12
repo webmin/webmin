@@ -2,6 +2,8 @@
 # changepass.pl
 # Script for the user to change their webmin password
 
+unless (caller) {
+
 # Get Webmin directory
 my $cwd = $0;
 $cwd =~ s/(.*)\/.*/$1/;
@@ -20,6 +22,8 @@ if ($status != 0) {
 		}
 	}
 exit $status;
+
+} # end of unless (caller)
 
 sub usage
 {

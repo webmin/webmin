@@ -6,6 +6,8 @@
 use POSIX;
 use Socket;
 
+unless (caller) {
+
 # Find install directory
 $ENV{'LANG'} = '';
 $0 =~ s/\\/\//g;
@@ -1024,6 +1026,8 @@ if ($oldwadir ne $wadir && $upgrading && !$ENV{'deletedold'}) {
 	print "version.\n";
 	print "\n";
 	}
+
+} # end of unless (caller)
 
 sub errorexit
 {

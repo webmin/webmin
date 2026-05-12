@@ -3,6 +3,8 @@
 # not included in this new install, and offers to copy them across.
 # Also re-creates clones of existing modules in the new install
 
+unless (caller) {
+
 ($newdir, $olddir, $copythird) = @ARGV;
 
 # find missing modules
@@ -51,6 +53,8 @@ if (@missing) {
 			}
 		}
 	}
+
+} # end of unless (caller)
 
 # read_file(file, array)
 # Fill an associative array with name=value pairs from a file

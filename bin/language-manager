@@ -315,7 +315,7 @@ sub main
 
     return 0;
 }
-main();
+main() if !caller(0);
 
 # The following is used to get correct language files based on old language table.
 # This function, should not be really needed, unless compiling languages with

@@ -2,6 +2,8 @@
 # For each given module.info file, create new module.info.XX files for each
 # desc_XX= line in the original
 
+unless (caller) {
+
 if ($ARGV[0] eq "--dry-run") {
 	$dryrun = 1;
 	shift(@ARGV);
@@ -42,6 +44,8 @@ foreach my $f (@files) {
 			}
 		}
 	}
+
+} # end of unless (caller)
 
 # read_file(file, &assoc, [&order], [lowercase])
 # Fill an associative array with name=value pairs from a file

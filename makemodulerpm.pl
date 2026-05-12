@@ -10,6 +10,8 @@ use 5.010;
 # Colors!
 use Term::ANSIColor qw(:constants);
 
+unless (caller) {
+
 my $basedir;
 
 # Does any system still have a redhat dir?
@@ -601,6 +603,8 @@ elsif ($rpm_dir ne $target_dir) {
 		unlink("/tmp/$tar_release_file");
 		}
 	}
+
+} # end of unless (caller)
 
 # read_file(file, &assoc, [&order], [lowercase])
 # Fill an associative array with name=value pairs from a file

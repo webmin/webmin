@@ -2,6 +2,8 @@
 # Convert words in lang/en files from UK to US spelling.
 # Create lang/en_GB files containing words that are different.
 
+unless (caller) {
+
 if ($ARGV[0] eq "--svn" || $ARGV[0] eq "-svn" ||
     $ARGV[0] eq "--git" || $ARGV[0] eq "-git") {
 	shift(@ARGV);
@@ -61,6 +63,8 @@ foreach $f (@rv) {
 		system("cd $dir ; git add $rest ; git commit -m '$svn' $rest ; git push");
 		}
 	}
+
+} # end of unless (caller)
 
 sub fix_english_file
 {

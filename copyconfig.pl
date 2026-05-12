@@ -4,6 +4,8 @@
 # directory. If it is already there, merge in new directives. Called with
 # <osname> <osversion> <install dir> <config dir> <module>+
 
+unless (caller) {
+
 @ARGV >= 4 || die "usage: copyconfig.pl <os>[/real-os] <version>[/real-version] <webmin-dir> <config-dir> [module ...]";
 $os = $ARGV[0];
 $ver = $ARGV[1];
@@ -112,6 +114,8 @@ foreach $m (@mods) {
 		}
 	}
 print join(" ", @newmods),"\n";
+
+} # end of unless (caller)
 
 # read_file(file, &hash, [&order], [lowercase], [split-char])
 # Fill the given hash reference with name=value pairs from a file.
