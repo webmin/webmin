@@ -3,7 +3,7 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 
-require 'nftables-lib.pl';
+require 'nftables-lib.pl'; ## no critic
 our (%in, %text);
 
 # acl_security_form(&options)
