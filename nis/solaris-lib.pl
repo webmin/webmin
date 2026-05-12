@@ -193,7 +193,7 @@ else {
 	&open_tempfile(DOM, ">/etc/defaultdomain");
 	&print_tempfile(DOM, "$in{'domain'}\n");
 	&close_tempfile(DOM);
-	&system_logged("domainname \"$in{'domain'}\" >/dev/null 2>&1");
+	&system_logged("domainname ".quotemeta($in{'domain'})." >/dev/null 2>&1");
 	if ($in{'boot'}) {
 		# Create the domain directory
 		mkdir("/var/yp/$in{'domain'}", 0755);

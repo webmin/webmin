@@ -191,8 +191,8 @@ if ($in{'domain_def'}) {
 	}
 else {
 	local $old = `domainname`; chop($old);
-	&system_logged("chypdom -B \"$in{'domain'}\"");
-	&system_logged("domainname \"$in{'domain'}\" >/dev/null 2>&1");
+	&system_logged("chypdom -B ".quotemeta($in{'domain'}));
+	&system_logged("domainname ".quotemeta($in{'domain'})." >/dev/null 2>&1");
 	if ($in{'boot'}) {
 		# Create the domain directory
 		mkdir("/var/yp/$in{'domain'}", 0755);
