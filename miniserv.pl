@@ -1743,6 +1743,7 @@ my $trust_ssl = $config{'trust_real_ip'} && !$config{'no_trust_ssl'};
 if ($use_ssl && $verified_client ||
     $trust_ssl && $header{'x-ssl-client-dn'} &&
                   $header{'x-ssl-client-verify'} =~ /^success$/i) {
+	my $u;
 	if ($use_ssl && $verified_client) {
 		$peername = Net::SSLeay::X509_NAME_oneline(
 				Net::SSLeay::X509_get_subject_name(
