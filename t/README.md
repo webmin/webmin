@@ -10,6 +10,7 @@ Two kinds of tests live under this tree:
 ## Running tests
 
 ```sh
+prove -lr                                # everything, including modules t/
 prove -lr t                              # everything under repo-root t/
 prove t/compile.t                        # one test file
 WEBMIN_COMPILE_T_FILTER='^\./acl/' prove t/compile.t   # one module
