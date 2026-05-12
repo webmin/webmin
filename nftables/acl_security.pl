@@ -3,7 +3,7 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 
-require 'nftables-lib.pl';
+require './nftables-lib.pl';    ## no critic (Modules::RequireBarewordIncludes)
 our (%in, %text);
 
 # acl_security_form(&options)
@@ -86,5 +86,6 @@ if (!$err) {
 		);
 		}
 	}
-return sort { $a->[1] cmp $b->[1] } @opts;
+my @sorted = sort { $a->[1] cmp $b->[1] } @opts;
+return @sorted;
 }
