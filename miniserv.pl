@@ -1327,6 +1327,7 @@ $baseauthuser = undef;
 $authpass = undef;
 $session_id = undef;
 $already_session_id = undef;
+$already_authuser = undef;
 $miniserv_internal = undef;
 $querystring = undef;
 $queryargs = undef;
