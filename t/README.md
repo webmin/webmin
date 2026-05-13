@@ -24,11 +24,11 @@ WEBMIN_COMPILE_T_FILTER='^\./acl/' prove t/compile.t   # one module
 | File | What it checks |
 | --- | --- |
 | `compile.t` | Every `.pl`, `.cgi`, and shebang-perl script in `bin/` parses cleanly (`perl -c`). Catches breakage from bulk refactors without browsing every page. ~12s for the full tree. |
-| `miniserv-http_error.t` | Contract test for `miniserv::http_error` — status codes, headers, body rendering, log behaviour. Demonstrates the require-and-stub pattern below. |
+| `miniserv.t` | Contract test for `miniserv.pl` functions — status codes, headers, body rendering, log behaviour. Demonstrates the require-and-stub pattern below. |
 
 ## The require-and-stub pattern
 
-Most Webmin scripts mix sub definitions with a main body that opens sockets,
+Many Webmin scripts mix sub definitions with a main body that opens sockets,
 reads `/etc/webmin/*`, or spawns CGIs. To test individual subs in isolation
 we need to `require` the script as a library without running the main body.
 
@@ -79,7 +79,7 @@ under `require`.
 
 ## Sub-stubbing in tests
 
-`miniserv-http_error.t` is the canonical example. The pattern:
+`miniserv.t` is the canonical example. The pattern:
 
 1. `require` the script. The guard skips its main body.
 2. Replace side-effecting subs (socket I/O, logging, disk reads) with
