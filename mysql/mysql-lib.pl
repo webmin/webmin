@@ -2006,11 +2006,12 @@ my $other_field_values = $sc->{'other_field_values'};
 
 my ($ver, $variant) = &get_remote_mysql_variant();
 my $plugin = $sc->{'plugin'} || &get_mysql_plugin();
-$plugin = $plugin ? "with $plugin" : "";
 
 if ($variant eq "mariadb" && &compare_version_numbers($ver, "10.4") >= 0) {
-	my $sql = "create user '$user'\@'$host' identified $plugin by ".
-		"'".&escapestr($pass)."'";
+	my $auth = $plugin ?
+		&get_plugin_sql($ver, $variant, $pass, $plugin) :
+		"identified by '".&escapestr($pass)."'";
+	my $sql = "create user '$user'\@'$host' $auth";
 	&execute_sql_logged($master_db, $sql);
 	&execute_sql_logged($master_db, 'flush privileges');
 
@@ -2036,6 +2037,7 @@ else {
 	&execute_sql_logged($master_db, 'flush privileges');
 
 	if ($variant eq "mysql" && &compare_version_numbers($ver, "5.7.6") >= 0) {
+		$plugin = $plugin ? "with $plugin" : "";
 		&execute_sql_logged($master_db,
 		    "alter user '$user'\@'$host' identified $plugin by ".
 		        "'".&escapestr($pass)."'");
