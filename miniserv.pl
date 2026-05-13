@@ -1325,6 +1325,49 @@ $reqline = $request_uri = $page = undef;
 $authuser = undef;
 $validated = undef;
 
+# Reset all per-request state. Keep-alive lets one child handle many
+# requests on one TCP connection; behind a proxy that pools backend
+# connections, those requests can be from different clients. Anything
+# left set from the prior request would leak across that boundary -
+# most dangerously $baseauthuser, which feeds BASE_REMOTE_USER and the
+# Webmin ACL layer.
+$baseauthuser = undef;
+$authpass = undef;
+$session_id = undef;
+$already_session_id = undef;
+$already_authuser = undef;
+$miniserv_internal = undef;
+$querystring = undef;
+$queryargs = undef;
+$pathinfo = undef;
+$peername = undef;
+$uinfo = undef;
+$scriptname = undef;
+$cgi_pwd = undef;
+$full = undef;
+$realroot = undef;
+$foundroot = undef;
+$is_directory = undef;
+$nph_script = undef;
+$logout = undef;
+$failed_user = undef;
+$failed_save = undef;
+$twofactor_msg = undef;
+$timed_out = undef;
+$error_handler_recurse = undef;
+%cgiheader = ();
+@cgiheader = ();
+$doneheaders = undef;
+$headers = undef;
+@stfull = ();
+# Restore $host/$port to socket defaults; the Host: header overwrite
+# below should not persist if the next request omits Host.
+local $host = $host;
+local $port = $port;
+# Scope per-request mutation of %config so it cannot leak to later
+# requests on this connection (see $config{'session'} = 0 below).
+local $config{'session'} = $config{'session'};
+
 # check address against access list
 if (@deny && &ip_match($acptip, $localip, @deny) ||
     @allow && !&ip_match($acptip, $localip, @allow)) {
