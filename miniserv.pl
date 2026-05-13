@@ -1360,6 +1360,10 @@ $error_handler_recurse = undef;
 $doneheaders = undef;
 $headers = undef;
 @stfull = ();
+# Reset logout-triggered auth suppression and any partial POST body
+# count before handling the next request on this connection.
+$deny_authentication = undef;
+$clen_read = 0;
 # Restore $host/$port to socket defaults; the Host: header overwrite
 # below should not persist if the next request omits Host.
 local $host = $host;
