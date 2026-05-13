@@ -3471,13 +3471,13 @@ return &theme_ui_brh() if (defined(&theme_ui_brh));
 return "<br data-x-br>\n";
 }
 
-# ui_tag_start(tag, [attrs], [no-new-line])
+# ui_tag_start(tag, [attrs])
 # Function to create an opening HTML tag with optional attributes.
 # Attributes are passed as a hash reference and its values are quote escaped.
 sub ui_tag_start
 {
 return theme_ui_tag_start(@_) if (defined(&theme_ui_tag_start));
-my ($tag, $attrs, $nnl) = @_;
+my ($tag, $attrs) = @_;
 
 # Ensure every tag gets a proper marker class
 $attrs ||= {};
@@ -3505,7 +3505,7 @@ if ($attrs && ref($attrs) eq 'HASH') {
 	}
 
 # Close the opening tag
-$rv .= $nnl ? ">" : ">\n";
+$rv .= ">";
 
 # Handle special case for <html> tag
 $rv = "<!DOCTYPE html>\n$rv" if ($tag eq 'html');
@@ -3539,7 +3539,7 @@ sub ui_tag
 {
 return theme_ui_tag(@_) if (defined(&theme_ui_tag));
 my ($tag, $content, $attrs) = @_;
-my $rv = ui_tag_start($tag, $attrs, !defined($content));
+my $rv = ui_tag_start($tag, $attrs);
 $rv .= ui_tag_content($content) if (defined($content));
 my %void_tags = map { $_ => 1 }
 	qw(
