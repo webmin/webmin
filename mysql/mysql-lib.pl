@@ -272,7 +272,7 @@ if ($@) {
 			return ( );
 			}
 		else {
-			&error($$text{'edenied'});
+			&error($text{'edenied'});
 			}
 		}
 	elsif (!ref($t)) {
