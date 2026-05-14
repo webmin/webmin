@@ -671,8 +671,8 @@ else {
 	local $js2 = "onClick='form.db_def[2].checked = true'";
 	$rv = &ui_radio("db_def", $db eq '%' || $db eq '' ? 1 :
 				  $ind ? 2 : 0,
-			[ [ 1, text{'host_any'} ],
-			  [ 2, text{'host_sel'}."&nbsp;".
+			[ [ 1, $text{'host_any'} ],
+			  [ 2, $text{'host_sel'}."&nbsp;".
 			    &ui_select("dbs", $_[0], \@opts, 1, 0, 0, 0,$js1) ],
 			  [ 0, $text{'host_otherdb'}."&nbsp;".
 			       &ui_textbox("db", $db eq '%' || $db eq '' ||
