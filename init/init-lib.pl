@@ -2363,6 +2363,51 @@ my $out = &backquote_logged(
 return (!$?, $out);
 }
 
+=head2 split_systemd_exec_commands(command)
+
+Splits a multi-line systemd command field into individual command lines.
+
+=cut
+
+sub split_systemd_exec_commands
+{
+my ($cmd) = @_;
+return ( ) if (!defined($cmd));
+$cmd =~ s/\r//g;
+my @rv;
+foreach my $l (split(/\n/, $cmd)) {
+	$l =~ s/^\s+//;
+	$l =~ s/\s+$//;
+	push(@rv, $l) if ($l =~ /\S/);
+	}
+return @rv;
+}
+
+=head2 systemd_shell_exec_command(shell, command)
+
+Returns a systemd command line to run some command via a shell.
+
+=cut
+
+sub systemd_shell_exec_command
+{
+my ($sh, $cmd) = @_;
+$cmd =~ s/'/'\\''/g;
+return "$sh -c '$cmd'";
+}
+
+=head2 format_systemd_exec_command(shell, command)
+
+Returns a systemd command line, using a shell if redirection is needed.
+
+=cut
+
+sub format_systemd_exec_command
+{
+my ($sh, $cmd) = @_;
+return $cmd =~ /<|>/ ? &systemd_shell_exec_command($sh, $cmd) : $cmd;
+}
+
 =head2 create_systemd_service(name, description, start-script, stop-script,
 			      restart-script, [forks], [pidfile])
 
@@ -2372,20 +2417,22 @@ Create a new systemd service with the given details.
 sub create_systemd_service
 {
 my ($name, $desc, $start, $stop, $restart, $forks, $pidfile, $exits, $opts) = @_;
-$start =~ s/\r?\n/ ; /g;
-$stop =~ s/\r?\n/ ; /g;
-$restart =~ s/\r?\n/ ; /g;
 my $sh = &has_command("sh") || "sh";
 my $kill = &has_command("kill") || "kill";
-if ($start =~ /<|>/) {
-	$start = "$sh -c '$start'";
+my @starts = &split_systemd_exec_commands($start);
+my @stops = &split_systemd_exec_commands($stop);
+my @restarts = &split_systemd_exec_commands($restart);
+my $start_type = ref($opts) ? $opts->{'type'} : undef;
+$start_type ||= $forks ? 'forking' : $exits ? 'oneshot' : undef;
+my $multi_start_oneshot = @starts > 1 && !$start_type;
+if (@starts > 1 && $start_type && $start_type ne 'oneshot') {
+	@starts = (&systemd_shell_exec_command($sh, join("; ", @starts)));
 	}
-if ($restart =~ /<|>/) {
-	$restart = "$sh -c '$restart'";
+else {
+	@starts = map { &format_systemd_exec_command($sh, $_) } @starts;
 	}
-if ($stop =~ /<|>/) {
-	$stop = "$sh -c '$stop'";
-	}
+@stops = map { &format_systemd_exec_command($sh, $_) } @stops;
+@restarts = map { &format_systemd_exec_command($sh, $_) } @restarts;
 my $cfile = &get_systemd_root($name)."/".$name;
 &open_lock_tempfile(CFILE, ">$cfile");
 &print_tempfile(CFILE, "[Unit]\n");
@@ -2401,9 +2448,16 @@ if (ref($opts)) {
 	}
 &print_tempfile(CFILE, "\n");
 &print_tempfile(CFILE, "[Service]\n");
-&print_tempfile(CFILE, "ExecStart=$start\n");
-&print_tempfile(CFILE, "ExecStop=$stop\n") if ($stop);
-&print_tempfile(CFILE, "ExecReload=$restart\n") if ($restart);
+&print_tempfile(CFILE, "Type=oneshot\n") if ($multi_start_oneshot);
+foreach my $start (@starts) {
+	&print_tempfile(CFILE, "ExecStart=$start\n");
+	}
+foreach my $stop (@stops) {
+	&print_tempfile(CFILE, "ExecStop=$stop\n");
+	}
+foreach my $restart (@restarts) {
+	&print_tempfile(CFILE, "ExecReload=$restart\n");
+	}
 &print_tempfile(CFILE, "Type=forking\n") if ($forks);
 &print_tempfile(CFILE, "Type=oneshot\n",
 		       "RemainAfterExit=yes\n") if ($exits);

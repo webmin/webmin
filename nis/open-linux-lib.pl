@@ -143,6 +143,11 @@ for($n=0; defined($in{"old_$n"}); $n++) {
 		&error(&text('server_edomain', $in{"domain_$n"}));
 	local $domain = $in{"domain_def_$n"} ? undef : $in{"domain_$n"};
 	local $old = $in{"old_$n"};
+	if ($old) {
+		$old =~ /^[A-Za-z0-9\.\-]+$/ && $old !~ /^\./ &&
+			-r "$nis_config_dir/$old/.nisupdate.conf" ||
+				&error(&text('server_edomain', $old));
+		}
 	if (!$old && !$domain) {
 		# No domain before, and none chosen
 		next;
@@ -150,12 +155,12 @@ for($n=0; defined($in{"old_$n"}); $n++) {
 	elsif (!$old && $domain) {
 		# New domain added
 		mkdir("$nis_config_dir/$domain", 0755);
-		&system_logged("cp nisupdate.conf ".
-			       "$nis_config_dir/$domain/.nisupdate.conf");
+		&copy_source_dest("nisupdate.conf",
+				  "$nis_config_dir/$domain/.nisupdate.conf");
 		}
 	elsif ($old && !$domain) {
 		# Domain taken away
-		&system_logged("rm -rf $nis_config_dir/$old");
+		&unlink_logged("$nis_config_dir/$old");
 		next;
 		}
 	elsif ($old ne $domain) {
