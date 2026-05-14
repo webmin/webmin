@@ -2594,7 +2594,8 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	if ($use_ssl) {
 		$ENV{"SSL_CN"} = $ssl_cn;
 		$ENV{"SSL_CN_CERT"} =
-			&ssl_hostname_match($header{'host'}, $ssl_alts);
+			&ssl_hostname_match($header{'host'}, $ssl_alts) &&
+			&ssl_hostname_match($ssl_cn, $ssl_alts);
 		}
 	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 	if ($use_ssl) {
