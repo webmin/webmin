@@ -374,7 +374,7 @@ else {
 	}
 
 my $aclfile = "$config_directory/$in{'name'}.acl";
-if ($in{'old'} && $in{'acl_security_form'} && !$newgroup && !$in{'safe'}) {
+if ($in{'acl_security_form'} && !$newgroup && !$in{'safe'}) {
 	# Update user's global ACL
 	&foreign_require("", "acl_security.pl");
 	my %uaccess;

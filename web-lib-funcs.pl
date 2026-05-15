@@ -4819,10 +4819,12 @@ if (!$nodef) {
 
 	# If this isn't a master admin user, apply the negative permissions
 	# so that he doesn't un-expectedly gain access to new features
-	my %gacccess;
-	&read_file_cached("$config_directory/$u.acl", \%gaccess);
-	if ($gaccess{'negative'}) {
-		&read_file_cached("$mdir/negativeacl", \%rv);
+	if ($u ne '') {
+		my %gacccess;
+		&read_file_cached("$config_directory/$u.acl", \%gaccess);
+		if ($gaccess{'negative'}) {
+			&read_file_cached("$mdir/negativeacl", \%rv);
+			}
 		}
 	}
 my %usersacl;

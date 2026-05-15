@@ -450,11 +450,11 @@ print &ui_hidden_table_end("mods");
 
 # Add global ACL section, but only if not set from the group
 my $groupglobal = $memg && -r "$config_directory/$memg->{'name'}.acl";
-if ($access{'acl'} && !$groupglobal && $in{'user'} && !$safe) {
+if ($access{'acl'} && !$groupglobal && !$safe) {
 	print &ui_hidden_table_start($text{'edit_global'}, "width=100%", 2,
 				     "global", 0, [ "width=30%" ]);
 	my %uaccess;
-	%uaccess = &get_module_acl($in{'user'}, "", 1);
+	%uaccess = &get_module_acl($in{'user'} || "", "", 1);
 	print &ui_hidden("acl_security_form", 1);
 	&foreign_require("", "acl_security.pl");
 	&foreign_call("", "acl_security_form", \%uaccess);
