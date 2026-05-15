@@ -69,10 +69,12 @@ else {
 			$cmd = "cat";
 			}
 		$qout = quotemeta($out);
+		$uopts = &urlize($in{'opts'});
 		$manout = &backquote_command("$config{'man2html_path'} -v 2>&1", 1);
 		if ($manout =~ /Version:\s+([0-9\.]+)/i && $1 >= 3) {
 			# New version uses a different syntax!
-			$cmd .= " $qout | nroff -mman | $config{'man2html_path'} --cgiurl ".quotemeta("view_man.cgi?page=\\\${title}&sec=\\\${section}&opts=$in{'opts'}")." --bare";
+			$cgiurl = "view_man.cgi?page=\${title}&sec=\${section}&opts=$uopts";
+			$cmd .= " $qout | nroff -mman | $config{'man2html_path'} --cgiurl ".quotemeta($cgiurl)." --bare";
 			$out = &backquote_command("$cmd 2>&1", 1);
 			}
 		else {
@@ -82,8 +84,7 @@ else {
 			$out =~ s/^.*Content-type:.*\n//i;
 			$out =~ s/http:\/\///ig;
 			$out =~ s/\?/\?sec=/ig;
-			$eopts = &html_escape($in{'opts'});
-			$out =~ s/\+/&opts=$eopts&page=/ig;
+			$out =~ s/\+/&opts=$uopts&page=/ig;
 			$out =~ s/<HTML>.*<BODY>//isg;
 			$out =~ s/<\/HTML>//ig;
 			$out =~ s/<\/BODY>//ig;
