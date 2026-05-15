@@ -213,8 +213,9 @@ if ($section{'man'}) {
 			next if (!$all && $in{'and'} || !$any);
 
 			push(@rv, [ $text{'search_man'},
-				    "view_man.cgi?page=$pp[0]&sec=$3&opts=".
-				    $opts{'man'}, "$pp[0] ($sect)",
+				    "view_man.cgi?page=".&urlize($pp[0]).
+				    "&sec=".&urlize($sect)."&opts=".
+				    &urlize($opts{'man'}), "$pp[0] ($sect)",
 				    &html_escape($desc),
 				    $exact ? 4 : 3 ]);
 			}

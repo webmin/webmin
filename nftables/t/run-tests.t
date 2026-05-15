@@ -41,6 +41,28 @@ chdir("$bindir/..") or die "chdir: $!";
 
 require "$bindir/../nftables-lib.pl";
 
+my $services_file = "$confdir/services";
+open(my $sfh, ">", $services_file) or die "services: $!";
+print $sfh "customsvc 4242/tcp custom-alias\n";
+print $sfh "customsvc 4243/udp\n";
+close($sfh);
+is(get_etc_service_port('custom-alias', 'tcp', $services_file), 4242,
+   'custom services alias lookup');
+is(get_etc_service_port('customsvc', 'udp', $services_file), 4243,
+   'custom services udp lookup');
+
+my $sshd_config = "$confdir/sshd_config";
+open(my $sshcfh, ">", $sshd_config) or die "sshd_config: $!";
+print $sshcfh "Port 2223\n";
+print $sshcfh "Port 2200\n";
+print $sshcfh "ListenAddress 0.0.0.0:2022\n";
+close($sshcfh);
+mkdir "$confdir/sshd" or die "sshd confdir: $!";
+open(my $sshmodfh, ">", "$confdir/sshd/config") or die "sshd module config: $!";
+print $sshmodfh "sshd_path=/bin/true\n";
+print $sshmodfh "sshd_config=$sshd_config\n";
+close($sshmodfh);
+
 sub check_fields
 {
     my ($name, $got, $expect) = @_;
@@ -235,6 +257,13 @@ my $quick_ip_table = {
 like(add_quick_ip_rule($quick_ip_table, '2001:db8::1/64', 'allow'),
      qr/cannot contain/, 'wrong address family rejected');
 
+my %setup_services = map { $_->{id} => $_ } setup_services();
+is($setup_services{ssh}->{port}, '2022, 2200, 2223',
+   'ssh service uses configured sshd ports');
+ok(scalar(grep { $_ eq 'tcp dport 2022 accept' }
+          @{$setup_services{ssh}->{rules}}),
+   'ssh service includes ListenAddress port');
+
 my $profile_table = create_profile_ruleset('profile_virtualmin', 'virtualmin', '*');
 is($profile_table->{family}, 'inet', 'profile helper family');
 is($profile_table->{name}, 'profile_virtualmin', 'profile helper table name');
@@ -250,5 +279,8 @@ ok(scalar(grep { $_->{text} eq 'tcp dport @profile_hosting_tcp_ports accept' }
 ok(scalar(grep { $_->{text} eq 'ip6 daddr fe80::/64 udp dport 546 accept' }
           @{$profile_table->{rules}}),
    'profile helper special dhcpv6 rule');
+ok(scalar(grep { $_ eq '2022' }
+          @{$profile_table->{sets}->{profile_hosting_tcp_ports}->{elements}}),
+   'profile helper includes dynamic ssh port');
 
 done_testing();
