@@ -16,7 +16,7 @@ print &ui_table_row($text{'acl_root'},
 # Other dirs to allow
 print &ui_table_row($text{'acl_otherdirs'},
 	&ui_textarea("otherdirs", join("\n", split(/\t+/, $o->{'otherdirs'})),
-		     5, 40), 3);
+		     3, 40), 3);
 
 # Can see dot files?
 print &ui_table_row($text{'acl_nodot'},
@@ -110,27 +110,28 @@ print &ui_table_row($text{'acl_webminsearch'},
 # Parse the form for global security options
 sub acl_security_save
 {
-$_[0]->{'root'} = $in{'root_def'} ? undef : $in{'root'};
-$_[0]->{'otherdirs'} = join("\t", split(/\r?\n/, $in{'otherdirs'}));
-$_[0]->{'nodot'} = $in{'nodot'};
+my ($o) = @_;
+$o->{'root'} = $in{'root_def'} ? undef : $in{'root'};
+$o->{'otherdirs'} = join("\t", split(/\r?\n/, $in{'otherdirs'}));
+$o->{'nodot'} = $in{'nodot'};
 
-$_[0]->{'uedit_mode'} = $in{'uedit_mode'};
-$_[0]->{'uedit'} = $in{'uedit_mode'} == 2 ? $in{'uedit_can'} :
+$o->{'uedit_mode'} = $in{'uedit_mode'};
+$o->{'uedit'} = $in{'uedit_mode'} == 2 ? $in{'uedit_can'} :
 		   $in{'uedit_mode'} == 3 ? $in{'uedit_cannot'} :
 		   $in{'uedit_mode'} == 4 ? $in{'uedit_uid'} :
 		   $in{'uedit_mode'} == 5 ? getgrnam($in{'uedit_group'}) : "";
-$_[0]->{'uedit2'} = $in{'uedit_mode'} == 4 ? $in{'uedit_uid2'} : undef;
+$o->{'uedit2'} = $in{'uedit_mode'} == 4 ? $in{'uedit_uid2'} : undef;
 
-$_[0]->{'gedit_mode'} = $in{'gedit_mode'};
-$_[0]->{'gedit'} = $in{'gedit_mode'} == 2 ? $in{'gedit_can'} :
+$o->{'gedit_mode'} = $in{'gedit_mode'};
+$o->{'gedit'} = $in{'gedit_mode'} == 2 ? $in{'gedit_can'} :
 		   $in{'gedit_mode'} == 3 ? $in{'gedit_cannot'} :
 		   $in{'gedit_mode'} == 4 ? $in{'gedit_gid'} : "";
-$_[0]->{'gedit2'} = $in{'gedit_mode'} == 4 ? $in{'gedit_gid2'} : undef;
-$_[0]->{'feedback'} = $in{'feedback'};
-$_[0]->{'rpc'} = $in{'rpc'};
-$_[0]->{'negative'} = $in{'negative'};
-$_[0]->{'readonly'} = $in{'readonly'};
-$_[0]->{'fileunix'} = $in{'fileunix_def'} ? undef : $in{'fileunix'};
-$_[0]->{'webminsearch'} = $in{'webminsearch'};
+$o->{'gedit2'} = $in{'gedit_mode'} == 4 ? $in{'gedit_gid2'} : undef;
+$o->{'feedback'} = $in{'feedback'};
+$o->{'rpc'} = $in{'rpc'};
+$o->{'negative'} = $in{'negative'};
+$o->{'readonly'} = $in{'readonly'};
+$o->{'fileunix'} = $in{'fileunix_def'} ? undef : $in{'fileunix'};
+$o->{'webminsearch'} = $in{'webminsearch'};
 }
 
