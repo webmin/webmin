@@ -1535,151 +1535,757 @@ return (
 );
 }
 
+# profile_ports_or_default(&ports, proto, &service-names, &fallback-ports)
+# Returns valid nftables port expressions from config, /etc/services or fallback
+sub profile_ports_or_default
+{
+my ($ports, $proto, $service_names, $fallbacks) = @_;
+my @ports = clean_profile_ports($proto, @$ports);
+if (!@ports && $service_names && @$service_names) {
+	@ports = clean_profile_ports(
+		$proto,
+		map { get_etc_service_port($_, $proto) } @$service_names
+		);
+	}
+if (!@ports && $fallbacks) {
+	@ports = clean_profile_ports($proto, @$fallbacks);
+	}
+return @ports;
+}
+
+# clean_profile_ports(proto, port|service|range, ...)
+# Expands service names and removes invalid profile port expressions
+sub clean_profile_ports
+{
+my ($proto, @ports) = @_;
+my %seen;
+foreach my $port (@ports) {
+	next if (!defined($port));
+	foreach my $p (split(/[\s,]+/, $port)) {
+		foreach my $e (expand_profile_port($p, $proto)) {
+			$seen{$e} = 1;
+			}
+		}
+	}
+return normalize_port_set_elements(keys %seen);
+}
+
+# expand_profile_port(port|service|range, proto)
+# Converts one configured value to one or more nftables port expressions
+sub expand_profile_port
+{
+my ($port, $proto) = @_;
+return ( ) if (!defined($port));
+$port =~ s/^\s+//;
+$port =~ s/\s+$//;
+return ( ) if ($port eq '');
+if ($port =~ /^(\d+)$/) {
+	my $p = $1;
+	return valid_profile_port_number($p) ? ($p) : ( );
+	}
+if ($port =~ /^(\d+)-(\d+)$/) {
+	my ($from, $to) = ($1, $2);
+	return valid_profile_port_number($from) &&
+	       valid_profile_port_number($to) ? ("$from-$to") : ( );
+	}
+my $svcport = get_etc_service_port($port, $proto);
+return defined($svcport) ? ($svcport) : ( );
+}
+
+# valid_profile_port_number(port)
+# Returns true for a valid TCP/UDP port number
+sub valid_profile_port_number
+{
+return defined($_[0]) && $_[0] =~ /^\d+$/ && $_[0] >= 1 && $_[0] <= 65535;
+}
+
+# profile_port_number(port|service, proto)
+# Returns a single numeric port number for a configured value
+sub profile_port_number
+{
+my ($port, $proto) = @_;
+my @ports = expand_profile_port($port, $proto);
+return @ports && $ports[0] =~ /^\d+$/ ? $ports[0] : undef;
+}
+
+# profile_accept_rules(proto, ports...)
+# Returns simple inbound accept rules for the given ports
+sub profile_accept_rules
+{
+my ($proto, @ports) = @_;
+return map { "$proto dport $_ accept" } @ports;
+}
+
+# profile_ports_label(ports...)
+# Formats a port list for the setup UI
+sub profile_ports_label
+{
+return @_ ? join(", ", @_) : "-";
+}
+
+# get_etc_service_port(service|&services, proto, [services-file])
+# Looks up a default service port in /etc/services
+sub get_etc_service_port
+{
+my ($services, $proto, $file) = @_;
+my @services = ref($services) eq 'ARRAY' ? @$services : ($services);
+my $map = read_etc_services($file);
+foreach my $service (@services) {
+	next if (!defined($service));
+	my $port = $map->{lc($proto || '')}->{lc($service)};
+	return $port if (defined($port));
+	}
+return undef;
+}
+
+# read_etc_services([services-file])
+# Parses /etc/services into a protocol/name to port map
+sub read_etc_services
+{
+my ($file) = @_;
+$file ||= "/etc/services";
+our %profile_etc_services_cache;
+return $profile_etc_services_cache{$file}
+	if (defined($profile_etc_services_cache{$file}));
+my %map;
+if (open(my $fh, "<", $file)) {
+	while(my $line = <$fh>) {
+		$line =~ s/#.*$//;
+		$line =~ s/^\s+//;
+		$line =~ s/\s+$//;
+		next if ($line eq '');
+		my ($name, $portproto, @aliases) = split(/\s+/, $line);
+		next if (!$name || !$portproto);
+		next if ($portproto !~ /^(\d+)\/([A-Za-z0-9_+-]+)$/);
+		my ($port, $proto) = ($1, lc($2));
+		next if (!valid_profile_port_number($port));
+		foreach my $n ($name, @aliases) {
+			$map{$proto}->{lc($n)} ||= $port;
+			}
+		}
+	close($fh);
+	}
+$profile_etc_services_cache{$file} = \%map;
+return \%map;
+}
+
+# foreign_require_quiet(module, [config-key...])
+# Loads a foreign module API, returning false on any failure
+sub foreign_require_quiet
+{
+my ($mod, @config_keys) = @_;
+my $ok = eval {
+	if (foreign_check($mod) &&
+	    foreign_config_has_readable_file($mod, @config_keys)) {
+		local $main::error_must_die = 1;
+		foreign_require($mod);
+		1;
+		}
+	else {
+		0;
+		}
+	};
+return $ok && !$@ ? 1 : 0;
+}
+
+# foreign_config_has_readable_file(module, config-key...)
+# Returns true if no keys are required, or a configured file exists
+sub foreign_config_has_readable_file
+{
+my ($mod, @keys) = @_;
+return 1 if (!@keys);
+my %fconfig = foreign_config($mod);
+foreach my $key (@keys) {
+	foreach my $file (split(/\s+/, $fconfig{$key} || '')) {
+		return 1 if (-r $file);
+		}
+	}
+return 0;
+}
+
+# configured_port_from_address(value, [default-port])
+# Extracts a port from address:port, [address]:port or bare port values
+sub configured_port_from_address
+{
+my ($value, $default) = @_;
+return undef if (!defined($value) || $value eq '');
+return $1 if ($value =~ /^(\d+)$/);
+return $1 if ($value =~ /^\[[^\]]+\]:(\d+)$/);
+return $1 if ($value =~ /^[^:]+:(\d+)$/);
+return $default if (defined($default) && $value =~ /\S/);
+return undef;
+}
+
+# address_is_loopback(address)
+# Returns true if an address is loopback-only
+sub address_is_loopback
+{
+my ($addr) = @_;
+return 0 if (!defined($addr) || $addr eq '' || $addr eq '*' ||
+	     $addr eq '0.0.0.0' || $addr eq '::' || $addr eq '[::]');
+$addr =~ s/^\[//;
+$addr =~ s/\]$//;
+return 1 if (lc($addr) eq 'localhost' || $addr eq '::1' ||
+	     $addr =~ /^127\./);
+return 0;
+}
+
+# get_sshd_ports()
+# Returns configured SSH server ports from the sshd module
+sub get_sshd_ports
+{
+return ( ) if (!foreign_require_quiet('sshd', 'sshd_config'));
+my @ports = eval {
+	my $conf = sshd::get_sshd_config();
+	my @rv;
+	foreach my $p (sshd::find('Port', $conf)) {
+		push(@rv, @{$p->{'values'} || [ ]});
+		}
+	foreach my $l (sshd::find('ListenAddress', $conf)) {
+		my $listen = $l->{'values'}->[0];
+		my $port = configured_port_from_address($listen);
+		push(@rv, $port) if ($port);
+		}
+	clean_profile_ports('tcp', @rv);
+	};
+return $@ ? ( ) : @ports;
+}
+
+# miniserv_config_ports(&miniserv-config)
+# Extracts configured miniserv listener ports
+sub miniserv_config_ports
+{
+my ($miniserv) = @_;
+my @ports;
+push(@ports, $miniserv->{'port'})
+	if (valid_profile_port_number($miniserv->{'port'}));
+foreach my $sock (split(/\s+/, $miniserv->{'sockets'} || '')) {
+	my $port = configured_port_from_address($sock);
+	push(@ports, $port) if ($port);
+	}
+return clean_profile_ports('tcp', @ports);
+}
+
+# get_webmin_ports()
+# Returns configured Webmin listener ports
+sub get_webmin_ports
+{
+my %miniserv;
+if (get_miniserv_config(\%miniserv)) {
+	return miniserv_config_ports(\%miniserv);
+	}
+return ( );
+}
+
+# get_usermin_ports()
+# Returns configured Usermin listener ports
+sub get_usermin_ports
+{
+return ( ) if (!foreign_require_quiet('usermin'));
+my @ports = eval {
+	my %miniserv;
+	usermin::get_usermin_miniserv_config(\%miniserv);
+	miniserv_config_ports(\%miniserv);
+	};
+return $@ ? ( ) : @ports;
+}
+
+# get_bind_ports(tls)
+# Returns configured BIND DNS or DNS-over-TLS listener ports
+sub get_bind_ports
+{
+my ($want_tls) = @_;
+return ( ) if (!foreign_require_quiet('bind8', 'named_conf'));
+my @ports = eval {
+	my $conf = bind8::get_config();
+	my $options = bind8::find('options', $conf);
+	my @rv;
+	if ($options) {
+		foreach my $l (bind8::find('listen-on', $options->{'members'}),
+			       bind8::find('listen-on-v6',
+				   $options->{'members'})) {
+			my $vals = $l->{'values'} || [ ];
+			my $has_tls = scalar(grep { $_ eq 'tls' } @$vals) ? 1 : 0;
+			next if ($want_tls != $has_tls);
+			my $port;
+			for(my $i = 0; $i < @$vals; $i++) {
+				if ($vals->[$i] eq 'port') {
+					$port = $vals->[$i + 1];
+					last;
+					}
+				}
+			$port ||= get_etc_service_port('domain', 'tcp') || 53;
+			push(@rv, $port);
+			}
+		}
+	clean_profile_ports('tcp', @rv);
+	};
+return $@ ? ( ) : @ports;
+}
+
+# get_apache_ports(https)
+# Returns configured Apache HTTP or HTTPS listener ports
+sub get_apache_ports
+{
+my ($https) = @_;
+return ( ) if (!foreign_require_quiet('apache', 'httpd_conf'));
+my @ports = eval {
+	my $conf = apache::get_config();
+	my $defport = profile_port_number(
+		apache::find_directive('Port', $conf, 1), 'tcp');
+	$defport ||= get_etc_service_port('http', 'tcp') || 80;
+	my (%http_vhost, %https_vhost, @rv);
+	foreach my $v (apache::find_directive_struct('VirtualHost', $conf)) {
+		my $vm = $v->{'members'} || [ ];
+		my $ssl = lc(apache::find_vdirective(
+			'SSLEngine', $vm, $conf, 1) || '') eq 'on';
+		foreach my $word (@{$v->{'words'} || [ ]}) {
+			my $port = configured_port_from_address($word, $defport);
+			next if (!$port || $port eq '*');
+			if ($ssl || $port == 443) {
+				$https_vhost{$port} = 1;
+				}
+			else {
+				$http_vhost{$port} = 1;
+				}
+			}
+		}
+	foreach my $port (keys %http_vhost, keys %https_vhost) {
+		push(@rv, $port)
+			if ($https ? $https_vhost{$port} : $http_vhost{$port});
+		}
+	foreach my $listen (apache::find_directive('Listen', $conf)) {
+		my ($first) = split(/\s+/, $listen);
+		my $port = configured_port_from_address($first, $defport);
+		next if (!$port);
+		if ($https) {
+			push(@rv, $port)
+				if ($https_vhost{$port} ||
+				    (!$http_vhost{$port} && $port == 443));
+			}
+		else {
+			push(@rv, $port)
+				if ($http_vhost{$port} ||
+				    (!$https_vhost{$port} && $port != 443));
+			}
+		}
+	if (!@rv && !$https && $defport != 443) {
+		push(@rv, $defport);
+		}
+	elsif (!@rv && $https && $defport == 443) {
+		push(@rv, $defport);
+		}
+	clean_profile_ports('tcp', @rv);
+	};
+return $@ ? ( ) : @ports;
+}
+
+# get_nginx_ports(https)
+# Returns configured Nginx HTTP or HTTPS listener ports
+sub get_nginx_ports
+{
+my ($https) = @_;
+return ( ) if (!foreign_require_quiet('nginx', 'nginx_config'));
+my @ports = eval {
+	my $conf = nginx::get_config();
+	my $http = nginx::find('http', $conf);
+	my @rv;
+	if ($http) {
+		foreach my $server (nginx::find('server', $http)) {
+			my @listen = nginx::find('listen', $server);
+			@listen = ({ 'words' => [ '80' ] }) if (!@listen);
+			my $server_ssl = lc(nginx::find_value('ssl', $server) || '')
+			    eq 'on';
+			foreach my $l (@listen) {
+				my @words = @{$l->{'words'} || [ ]};
+				next if (!@words || $words[0] =~ /^unix:/);
+				my (undef, $port) = nginx::split_ip_port($words[0]);
+				next if (!valid_profile_port_number($port));
+				my $ssl = $server_ssl ||
+				    scalar(grep { lc($_) eq 'ssl' } @words);
+				if ($https ? ($ssl || $port == 443) :
+					     (!$ssl && $port != 443)) {
+					push(@rv, $port);
+					}
+				}
+			}
+		}
+	clean_profile_ports('tcp', @rv);
+	};
+return $@ ? ( ) : @ports;
+}
+
+# get_dovecot_ports(listener)
+# Returns configured Dovecot IMAP/POP3 listener ports
+sub get_dovecot_ports
+{
+my ($listener) = @_;
+return ( ) if (!foreign_require_quiet('dovecot', 'dovecot_config'));
+my @ports = eval {
+	my $conf = dovecot::get_config();
+	my @rv;
+	foreach my $p (dovecot::find('port', $conf, 0,
+				     'inet_listener', $listener)) {
+		push(@rv, $p->{'value'}) if (($p->{'value'} || '') ne '0');
+		}
+	clean_profile_ports('tcp', @rv);
+	};
+return $@ ? ( ) : @ports;
+}
+
+# get_proftpd_ports()
+# Returns configured ProFTPD control listener ports
+sub get_proftpd_ports
+{
+return ( ) if (!foreign_require_quiet('proftpd', 'proftpd_conf'));
+my @ports = eval {
+	my $conf = proftpd::get_config();
+	my @rv = proftpd::find_directive('Port', $conf);
+	foreach my $v (proftpd::find_directive_struct('VirtualHost', $conf)) {
+		push(@rv, proftpd::find_directive('Port',
+			$v->{'members'} || [ ]));
+		}
+	clean_profile_ports('tcp', @rv);
+	};
+return $@ ? ( ) : @ports;
+}
+
+# get_proftpd_passive_ports()
+# Returns configured ProFTPD passive port ranges
+sub get_proftpd_passive_ports
+{
+return ( ) if (!foreign_require_quiet('proftpd', 'proftpd_conf'));
+my @ports = eval {
+	my $conf = proftpd::get_config();
+	my @dirs = proftpd::find_directive_struct('PassivePorts', $conf);
+	foreach my $v (proftpd::find_directive_struct('VirtualHost', $conf)) {
+		push(@dirs, proftpd::find_directive_struct(
+			'PassivePorts', $v->{'members'} || [ ]));
+		}
+	my @rv;
+	foreach my $d (@dirs) {
+		my @w = @{$d->{'words'} || [ ]};
+		push(@rv, "$w[0]-$w[1]")
+			if (valid_profile_port_number($w[0]) &&
+			    valid_profile_port_number($w[1]));
+		}
+	clean_profile_ports('tcp', @rv);
+	};
+return $@ ? ( ) : @ports;
+}
+
+# get_postfix_ports(service)
+# Returns configured Postfix SMTP listener ports for smtp/submission/smtps
+sub get_postfix_ports
+{
+my ($service) = @_;
+return ( ) if (!foreign_require_quiet('postfix', 'postfix_master'));
+my @ports = eval {
+	my $masters = postfix::get_master_config();
+	my @rv;
+	foreach my $m (@$masters) {
+		next if (!$m->{'enabled'} || $m->{'type'} ne 'inet');
+		next if (($m->{'command'} || '') !~ /(^|\s)smtpd(\s|$)/);
+		my ($port, $addr) = postfix_master_port($m->{'name'});
+		next if (!$port || address_is_loopback($addr));
+		push(@rv, $port)
+			if (mail_listener_matches_service(
+				$service, $m->{'name'}, $port));
+		}
+	clean_profile_ports('tcp', @rv);
+	};
+return $@ ? ( ) : @ports;
+}
+
+# postfix_master_port(service-name)
+# Returns port and optional bind address from a Postfix master.cf service name
+sub postfix_master_port
+{
+my ($name) = @_;
+return (undef, undef) if (!defined($name));
+if ($name =~ /^\[([^\]]+)\]:(\S+)$/ || $name =~ /^([^:]+):(\S+)$/) {
+	my ($addr, $svc) = ($1, $2);
+	return (profile_port_number($svc, 'tcp'), $addr);
+	}
+return (profile_port_number($name, 'tcp'), undef);
+}
+
+# get_sendmail_ports(service)
+# Returns configured Sendmail listener ports for smtp/submission/smtps
+sub get_sendmail_ports
+{
+my ($service) = @_;
+return ( ) if (!foreign_require_quiet('sendmail', 'sendmail_cf'));
+my @ports = eval {
+	my $conf = sendmail::get_sendmailcf();
+	my @rv;
+	{
+		no warnings 'once';
+		local @sendmail::rv;
+		foreach my $dpo (sendmail::find_options(
+				 'DaemonPortOptions', $conf)) {
+			my %opts;
+			foreach my $o (split(/\s*,\s*/, $dpo->[1])) {
+				if ($o =~ /^([^=]+)=(\S+)$/) {
+					$opts{$1} = $2;
+					}
+				}
+			foreach my $k (qw(Name Address Port Modifiers Family)) {
+				my $short = substr($k, 0, 1);
+				$opts{$k} ||= $opts{$short};
+				}
+			$opts{'Address'} ||= $opts{'Addr'};
+			next if (address_is_loopback($opts{'Address'}));
+			my $name = $opts{'Name'} || 'MTA';
+			my $port = $opts{'Port'} ?
+			    profile_port_number($opts{'Port'}, 'tcp') :
+			    default_mail_service_port($name);
+			next if (!$port);
+			push(@rv, $port)
+				if (mail_listener_matches_service(
+					$service, $name, $port));
+			}
+		}
+	clean_profile_ports('tcp', @rv);
+	};
+return $@ ? ( ) : @ports;
+}
+
+# default_mail_service_port(listener-name)
+# Returns the default port implied by a Sendmail daemon name
+sub default_mail_service_port
+{
+my ($name) = @_;
+my $lname = lc($name || '');
+return get_etc_service_port('submission', 'tcp') || 587
+	if ($lname eq 'msa' || $lname eq 'submission');
+return get_etc_service_port([ 'submissions', 'smtps' ], 'tcp') || 465
+	if ($lname eq 'smtps' || $lname eq 'submissions');
+return get_etc_service_port('smtp', 'tcp') || 25;
+}
+
+# mail_listener_matches_service(service, listener-name, port)
+# Classifies MTA listener ports into smtp/submission/smtps profile services
+sub mail_listener_matches_service
+{
+my ($service, $name, $port) = @_;
+my $lname = lc($name || '');
+my $smtp = get_etc_service_port('smtp', 'tcp') || 25;
+my $submission = get_etc_service_port('submission', 'tcp') || 587;
+my $smtps = get_etc_service_port([ 'submissions', 'smtps' ], 'tcp') || 465;
+if ($service eq 'submission') {
+	return $lname eq 'submission' || $lname eq 'msa' ||
+	       $port == $submission;
+	}
+if ($service eq 'smtps') {
+	return $lname eq 'smtps' || $lname eq 'submissions' ||
+	       $port == $smtps;
+	}
+return $lname eq 'smtp' || $lname eq 'mta' || $port == $smtp ||
+       ($port != $submission && $port != $smtps);
+}
+
 # setup_services()
 # Returns selectable services and ports used by ruleset profiles
 sub setup_services
 {
-my $webmin_port = get_webmin_port();
-my $usermin_port = get_usermin_port();
+my @ssh_ports = profile_ports_or_default([ get_sshd_ports() ],
+	'tcp', [ 'ssh' ], [ 22 ]);
+my @webmin_ports = profile_ports_or_default([ get_webmin_ports() ],
+	'tcp', [ 'webmin' ], [ 10000 ]);
+my @usermin_ports = profile_ports_or_default([ get_usermin_ports() ],
+	'tcp', [ 'usermin' ], [ 20000 ]);
+my @dhcpv6_ports = profile_ports_or_default([ ],
+	'udp', [ 'dhcpv6-client' ], [ 546 ]);
+my @dns_ports = profile_ports_or_default([ get_bind_ports(0) ],
+	'tcp', [ 'domain', 'dns' ], [ 53 ]);
+my @dot_ports = profile_ports_or_default([ get_bind_ports(1) ],
+	'tcp', [ 'domain-s', 'dns-over-tls' ], [ 853 ]);
+my @ftp_ports = profile_ports_or_default([ get_proftpd_ports() ],
+	'tcp', [ 'ftp' ], [ 21 ]);
+my @http_ports = profile_ports_or_default(
+	[ get_apache_ports(0), get_nginx_ports(0) ],
+	'tcp', [ 'http', 'www', 'www-http' ], [ 80 ]);
+my @https_ports = profile_ports_or_default(
+	[ get_apache_ports(1), get_nginx_ports(1) ],
+	'tcp', [ 'https' ], [ 443 ]);
+my @imap_ports = profile_ports_or_default(
+	[ get_dovecot_ports('imap') ],
+	'tcp', [ 'imap2', 'imap' ], [ 143 ]);
+my @imaps_ports = profile_ports_or_default(
+	[ get_dovecot_ports('imaps') ],
+	'tcp', [ 'imaps' ], [ 993 ]);
+my @mdns_ports = profile_ports_or_default([ ],
+	'udp', [ 'mdns' ], [ 5353 ]);
+my @pop3_ports = profile_ports_or_default(
+	[ get_dovecot_ports('pop3') ],
+	'tcp', [ 'pop3' ], [ 110 ]);
+my @pop3s_ports = profile_ports_or_default(
+	[ get_dovecot_ports('pop3s') ],
+	'tcp', [ 'pop3s' ], [ 995 ]);
+my @smtp_ports = profile_ports_or_default(
+	[ get_postfix_ports('smtp'), get_sendmail_ports('smtp') ],
+	'tcp', [ 'smtp' ], [ 25 ]);
+my @submission_ports = profile_ports_or_default(
+	[ get_postfix_ports('submission'), get_sendmail_ports('submission') ],
+	'tcp', [ 'submission' ], [ 587 ]);
+my @smtps_ports = profile_ports_or_default(
+	[ get_postfix_ports('smtps'), get_sendmail_ports('smtps') ],
+	'tcp', [ 'submissions', 'smtps' ], [ 465 ]);
+my @ftp_data_ports = profile_ports_or_default([ ],
+	'tcp', [ 'ftp-data' ], [ 20 ]);
+my @passive_ftp_ports = profile_ports_or_default(
+	[ get_proftpd_passive_ports() ],
+	'tcp', [ ], [ '49152-65535' ]);
 return (
 	{
 		'id' => 'ssh',
 		'label' => text('setup_svc_ssh'),
 		'type' => text('setup_type_service'),
-		'port' => '22',
+		'port' => profile_ports_label(@ssh_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 22 accept']
+		'rules' => [ profile_accept_rules('tcp', @ssh_ports) ]
 	},
 	{
 		'id' => 'webmin',
 		'label' => text('setup_svc_webmin'),
 		'type' => text('setup_type_service'),
-		'port' => $webmin_port,
+		'port' => profile_ports_label(@webmin_ports),
 		'proto' => 'TCP',
-		'rules' => ["tcp dport $webmin_port accept"]
+		'rules' => [ profile_accept_rules('tcp', @webmin_ports) ]
 	},
 	{
 		'id' => 'dhcpv6',
 		'label' => text('setup_svc_dhcpv6'),
 		'type' => text('setup_type_service'),
-		'port' => '546',
+		'port' => profile_ports_label(@dhcpv6_ports),
 		'proto' => 'UDP',
-		'rules' => ['ip6 daddr fe80::/64 udp dport 546 accept']
+		'rules' => [
+			map { "ip6 daddr fe80::/64 udp dport $_ accept" }
+			    @dhcpv6_ports
+		]
 	},
 	{
 		'id' => 'dns',
 		'label' => text('setup_svc_dns'),
 		'type' => text('setup_type_service'),
-		'port' => '53',
+		'port' => profile_ports_label(@dns_ports),
 		'proto' => 'TCP/UDP',
-		'rules' => ['tcp dport 53 accept', 'udp dport 53 accept']
+		'rules' => [
+			profile_accept_rules('tcp', @dns_ports),
+			profile_accept_rules('udp', @dns_ports)
+		]
 	},
 	{
 		'id' => 'dot',
 		'label' => text('setup_svc_dot'),
 		'type' => text('setup_type_service'),
-		'port' => '853',
+		'port' => profile_ports_label(@dot_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 853 accept']
+		'rules' => [ profile_accept_rules('tcp', @dot_ports) ]
 	},
 	{
 		'id' => 'ftp',
 		'label' => text('setup_svc_ftp'),
 		'type' => text('setup_type_service'),
-		'port' => '21',
+		'port' => profile_ports_label(@ftp_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 21 accept']
+		'rules' => [ profile_accept_rules('tcp', @ftp_ports) ]
 	},
 	{
 		'id' => 'http',
 		'label' => text('setup_svc_http'),
 		'type' => text('setup_type_service'),
-		'port' => '80',
+		'port' => profile_ports_label(@http_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 80 accept']
+		'rules' => [ profile_accept_rules('tcp', @http_ports) ]
 	},
 	{
 		'id' => 'https',
 		'label' => text('setup_svc_https'),
 		'type' => text('setup_type_service'),
-		'port' => '443',
+		'port' => profile_ports_label(@https_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 443 accept']
+		'rules' => [ profile_accept_rules('tcp', @https_ports) ]
 	},
 	{
 		'id' => 'imap',
 		'label' => text('setup_svc_imap'),
 		'type' => text('setup_type_service'),
-		'port' => '143',
+		'port' => profile_ports_label(@imap_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 143 accept']
+		'rules' => [ profile_accept_rules('tcp', @imap_ports) ]
 	},
 	{
 		'id' => 'imaps',
 		'label' => text('setup_svc_imaps'),
 		'type' => text('setup_type_service'),
-		'port' => '993',
+		'port' => profile_ports_label(@imaps_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 993 accept']
+		'rules' => [ profile_accept_rules('tcp', @imaps_ports) ]
 	},
 	{
 		'id' => 'mdns',
 		'label' => text('setup_svc_mdns'),
 		'type' => text('setup_type_service'),
-		'port' => '5353',
+		'port' => profile_ports_label(@mdns_ports),
 		'proto' => 'UDP',
 		'rules' => [
-			'ip daddr 224.0.0.251 udp dport 5353 accept',
-			'ip6 daddr ff02::fb udp dport 5353 accept'
+			map {
+				(
+				"ip daddr 224.0.0.251 udp dport $_ accept",
+				"ip6 daddr ff02::fb udp dport $_ accept"
+				)
+			} @mdns_ports
 		]
 	},
 	{
 		'id' => 'pop3',
 		'label' => text('setup_svc_pop3'),
 		'type' => text('setup_type_service'),
-		'port' => '110',
+		'port' => profile_ports_label(@pop3_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 110 accept']
+		'rules' => [ profile_accept_rules('tcp', @pop3_ports) ]
 	},
 	{
 		'id' => 'pop3s',
 		'label' => text('setup_svc_pop3s'),
 		'type' => text('setup_type_service'),
-		'port' => '995',
+		'port' => profile_ports_label(@pop3s_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 995 accept']
+		'rules' => [ profile_accept_rules('tcp', @pop3s_ports) ]
 	},
 	{
 		'id' => 'smtp',
 		'label' => text('setup_svc_smtp'),
 		'type' => text('setup_type_service'),
-		'port' => '25',
+		'port' => profile_ports_label(@smtp_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 25 accept']
+		'rules' => [ profile_accept_rules('tcp', @smtp_ports) ]
 	},
 	{
 		'id' => 'submission',
 		'label' => text('setup_svc_submission'),
 		'type' => text('setup_type_service'),
-		'port' => '587',
+		'port' => profile_ports_label(@submission_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 587 accept']
+		'rules' => [ profile_accept_rules('tcp', @submission_ports) ]
 	},
 	{
 		'id' => 'smtps',
 		'label' => text('setup_svc_smtps'),
 		'type' => text('setup_type_service'),
-		'port' => '465',
+		'port' => profile_ports_label(@smtps_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 465 accept']
+		'rules' => [ profile_accept_rules('tcp', @smtps_ports) ]
 	},
 	{
 		'id' => 'ftp_data',
 		'label' => text('setup_port_ftp_data'),
 		'type' => text('setup_type_port'),
-		'port' => '20',
+		'port' => profile_ports_label(@ftp_data_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 20 accept']
+		'rules' => [ profile_accept_rules('tcp', @ftp_data_ports) ]
 	},
 	{
 		'id' => 'ssh_alt',
@@ -1701,17 +2307,17 @@ return (
 		'id' => 'usermin',
 		'label' => text('setup_port_usermin'),
 		'type' => text('setup_type_port'),
-		'port' => $usermin_port,
+		'port' => profile_ports_label(@usermin_ports),
 		'proto' => 'TCP',
-		'rules' => ["tcp dport $usermin_port accept"]
+		'rules' => [ profile_accept_rules('tcp', @usermin_ports) ]
 	},
 	{
 		'id' => 'passive_ftp',
 		'label' => text('setup_port_passive_ftp'),
 		'type' => text('setup_type_port'),
-		'port' => '49152-65535',
+		'port' => profile_ports_label(@passive_ftp_ports),
 		'proto' => 'TCP',
-		'rules' => ['tcp dport 49152-65535 accept']
+		'rules' => [ profile_accept_rules('tcp', @passive_ftp_ports) ]
 	},
 );
 }
