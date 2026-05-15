@@ -82,7 +82,8 @@ else {
 			$out =~ s/^.*Content-type:.*\n//i;
 			$out =~ s/http:\/\///ig;
 			$out =~ s/\?/\?sec=/ig;
-			$out =~ s/\+/&opts=$in{'opts'}&page=/ig;
+			$eopts = &html_escape($in{'opts'});
+			$out =~ s/\+/&opts=$eopts&page=/ig;
 			$out =~ s/<HTML>.*<BODY>//isg;
 			$out =~ s/<\/HTML>//ig;
 			$out =~ s/<\/BODY>//ig;
