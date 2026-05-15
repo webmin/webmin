@@ -23,8 +23,7 @@ our $error_handler_funcs = [ ];
 
 use vars qw($loaded_theme_library $wait_for_input
 	    $done_webmin_header $trust_unknown_referers $unsafe_index_cgi
-	    %done_foreign_require $webmin_feedback_address
-	    $pragma_no_cache $foreign_args);
+	    %done_foreign_require $pragma_no_cache $foreign_args);
 # Globals
 use vars qw($module_index_name $number_to_month_map $month_to_number_map
 	    $umask_already $default_charset $licence_status $os_type

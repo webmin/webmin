@@ -77,11 +77,6 @@ print &ui_table_row($text{'acl_gedit'},
 
 print &ui_table_hr();
 
-# Can submit feedback?
-print &ui_table_row($text{'acl_feedback'},
-	&ui_radio("feedback", int($o->{'feedback'}),
-	  	  [ map { [ $_, $text{'acl_feedback'.$_} ] } (2,3,1,0) ]));
-
 # Can accept RPC calls?
 print &ui_table_row($text{'acl_rpc'},
 	&ui_radio("rpc", int($o->{'rpc'}),
@@ -127,7 +122,6 @@ $o->{'gedit'} = $in{'gedit_mode'} == 2 ? $in{'gedit_can'} :
 		   $in{'gedit_mode'} == 3 ? $in{'gedit_cannot'} :
 		   $in{'gedit_mode'} == 4 ? $in{'gedit_gid'} : "";
 $o->{'gedit2'} = $in{'gedit_mode'} == 4 ? $in{'gedit_gid2'} : undef;
-$o->{'feedback'} = $in{'feedback'};
 $o->{'rpc'} = $in{'rpc'};
 $o->{'negative'} = $in{'negative'};
 $o->{'readonly'} = $in{'readonly'};
