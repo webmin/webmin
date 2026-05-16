@@ -426,34 +426,44 @@ subtest 'ip_match' => sub {
 		return miniserv::ip_match($remote, $local, @rules);
 	};
 
+	my $exact_match_rule    = '1.2.3.4';
+	my $exact_miss_rule     = '1.2.3.5';
+	my $cidr_match_rule     = '1.2.3.0/24';
+	my $cidr_miss_rule      = '1.2.4.0/24';
+	my $netmask_rule        = '10.0.0.0/255.0.0.0';
+	my $range_rule          = '1.2.3.5-1.2.3.15';
+	my $partial_rule        = '1.2.3';
+	my $multi_miss_rule     = '9.9.9.9';
+	my $multi_match_rule    = '1.2.3.4';
+
 	# Exact match.
-	ok( $check->('1.2.3.4', '5.6.7.8', '1.2.3.4'),
+	ok( $check->('1.2.3.4', '5.6.7.8', $exact_match_rule),
 	    'exact IPv4 match');
-	ok(!$check->('1.2.3.4', '5.6.7.8', '1.2.3.5'),
+	ok(!$check->('1.2.3.4', '5.6.7.8', $exact_miss_rule),
 	    'one-off IPv4 mismatch');
 
 	# CIDR.
-	ok( $check->('1.2.3.4', '5.6.7.8', '1.2.3.0/24'),
+	ok( $check->('1.2.3.4', '5.6.7.8', $cidr_match_rule),
 	    'CIDR /24 match');
-	ok(!$check->('1.2.3.4', '5.6.7.8', '1.2.4.0/24'),
+	ok(!$check->('1.2.3.4', '5.6.7.8', $cidr_miss_rule),
 	    'CIDR /24 miss');
 
 	# Netmask form.
-	ok( $check->('10.0.0.5', '5.6.7.8', '10.0.0.0/255.0.0.0'),
+	ok( $check->('10.0.0.5', '5.6.7.8', $netmask_rule),
 	    'netmask form match');
 
 	# Range form.
-	ok( $check->('1.2.3.10', '5.6.7.8', '1.2.3.5-1.2.3.15'),
+	ok( $check->('1.2.3.10', '5.6.7.8', $range_rule),
 	    'range form match');
-	ok(!$check->('1.2.3.20', '5.6.7.8', '1.2.3.5-1.2.3.15'),
+	ok(!$check->('1.2.3.20', '5.6.7.8', $range_rule),
 	    'range form miss');
 
 	# Partial address.
-	ok( $check->('1.2.3.4', '5.6.7.8', '1.2.3'),
+	ok( $check->('1.2.3.4', '5.6.7.8', $partial_rule),
 	    'partial address /24-equivalent match');
 
 	# Multiple rules: any match wins.
-	ok( $check->('1.2.3.4', '5.6.7.8', '9.9.9.9', '1.2.3.4'),
+	ok( $check->('1.2.3.4', '5.6.7.8', $multi_miss_rule, $multi_match_rule),
 	    'second rule matches when first does not');
 };
 
