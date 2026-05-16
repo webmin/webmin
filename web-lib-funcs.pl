@@ -5759,6 +5759,16 @@ if ($module_name && !$main::no_acl_check &&
 	$main::no_acl_check++;
 	}
 
+if (!$main::allow_rpc_only &&
+    $main::webmin_script_type eq 'web' &&
+    !$main::no_acl_check &&
+    !defined($ENV{'FOREIGN_MODULE_NAME'})) {
+	# Check if this user is RPC-only
+	if (&webmin_user_can_rpc() == 2) {
+		&error($text{'erpconly'});
+		}
+	}
+
 # Check the Referer: header for nasty redirects
 my @referers = split(/\s+/, $gconfig{'referers'});
 my $referer_site;
@@ -13752,12 +13762,14 @@ return &globals('delete', $variable, $scope);
 }
 
 # webmin_user_can_rpc()
-# Returns 1 if the given user can make remote calls
+# Returns 1 if the given user can receive remote calls, 0 if not, or 2 if the
+# user can receive remote calls but not use the UI
 sub webmin_user_can_rpc
 {
 my $u = $base_remote_user;
 my %access = &get_module_acl($u, "");
 return 1 if ($access{'rpc'} == 1);	# Can make arbitrary RPC calls
+return 2 if ($access{'rpc'} == 3);	# Can only make RPC calls
 return 0 if ($access{'rpc'} == 0);	# Cannot make RPCs
 
 # Assume that standard admin usernames

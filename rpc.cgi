@@ -4,8 +4,9 @@
 # other webmin servers. State is preserved by starting a process for each
 # session that listens for requests on a named pipe (and dies after a few
 # seconds of inactivity)
-# access{'rpc'}  0=not allowed 1=allowed 2=allowed if root or admin
+# access{'rpc'}  0=not allowed 1=allowed 2=allowed if root or admin, 3=allowed
 
+$main::allow_rpc_only = 1;
 BEGIN { push(@INC, "."); };
 use WebminCore;
 use POSIX;

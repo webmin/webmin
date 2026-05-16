@@ -4,6 +4,7 @@
 # client. From then on, direct TCP connections can be made to this port
 # to send requests and get replies.
 
+$main::allow_rpc_only = 1;
 BEGIN { push(@INC, "."); };
 use WebminCore;
 use POSIX;
