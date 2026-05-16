@@ -280,7 +280,7 @@ if ($showui) {
 # Start of security options section
 my $showsecurity = $access{'logouttime'} || $access{'ips'} ||
 		   $access{'minsize'} ||
-		   &supports_rbac() && $access{'mode'} == 0 || $access{'times'};
+		   $access{'times'};
 if ($showsecurity) {
 	print &ui_hidden_table_start($text{'edit_security'}, "width=100%", 2,
 				     "security", 0, [ "width=30%" ]);
@@ -319,14 +319,6 @@ if ($access{'ips'}) {
 		    join("\n", split(/\s+/, $user{'allow'} ||
 					    $user{'deny'} || "")),
 		    4, 30));
-	}
-
-if (&supports_rbac() && $access{'mode'} == 0) {
-	# Deny access to modules not managed by RBAC?
-	print &ui_table_row($text{'edit_rbacdeny'},
-		&ui_radio("rbacdeny", $user{'rbacdeny'} ? 1 : 0,
-			  [ [ 0, $text{'edit_rbacdeny0'} ],
-			    [ 1, $text{'edit_rbacdeny1'} ] ]));
 	}
 
 if ($access{'times'}) {

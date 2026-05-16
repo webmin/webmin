@@ -92,7 +92,6 @@ while(my $l = <$fh>) {
 		$user{'locale'} = $gconfig{"locale_$user[0]"};
 		$user{'dateformat'} = $gconfig{"dateformat_$user[0]"};
 		$user{'notabs'} = $gconfig{"notabs_$user[0]"};
-		$user{'rbacdeny'} = $gconfig{"rbacdeny_$user[0]"};
 		if ($gconfig{"theme_$user[0]"}) {
 			($user{'theme'}, $user{'overlay'}) =
 				split(/\s+/, $gconfig{"theme_$user[0]"});
@@ -501,8 +500,6 @@ else {
 	$gconfig{"lang_".$user->{'name'}} = $user->{'lang'} if ($user->{'lang'});
 	delete($gconfig{"notabs_".$user->{'name'}});
 	$gconfig{"notabs_".$user->{'name'}} = $user->{'notabs'} if ($user->{'notabs'});
-	delete($gconfig{"rbacdeny_".$user->{'name'}});
-	$gconfig{"rbacdeny_".$user->{'name'}} = $user->{'rbacdeny'} if ($user->{'rbacdeny'});
 	delete($gconfig{"ownmods_".$user->{'name'}});
 	$gconfig{"ownmods_".$user->{'name'}} = join(" ", @{$user->{'ownmods'}})
 		if ($user->{'ownmods'} && @{$user->{'ownmods'}});
@@ -722,9 +719,6 @@ else {
 	delete($gconfig{"notabs_".$username});
 	$gconfig{"notabs_".$user->{'name'}} = $user->{'notabs'}
 		if ($user->{'notabs'});
-	delete($gconfig{"rbacdeny_".$username});
-	$gconfig{"rbacdeny_".$user->{'name'}} = $user->{'rbacdeny'}
-		if ($user->{'rbacdeny'});
 	delete($gconfig{"ownmods_".$username});
 	$gconfig{"ownmods_".$user->{'name'}} = join(" ", @{$user->{'ownmods'}})
 		if ($user->{'ownmods'} && @{$user->{'ownmods'}});

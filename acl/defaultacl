@@ -19,7 +19,6 @@ sessions=1
 cats=1
 ips=1
 switch=1
-rbacenable=1
 logouttime=1
 times=1
 minsize=1

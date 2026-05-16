@@ -206,11 +206,6 @@ if (uc($ENV{'HTTPS'}) eq "ON" && $miniserv{'ca'}) {
 push(@icons, "images/twofactor.gif");
 push(@links, "twofactor_form.cgi");
 push(@titles, $text{'index_twofactor'});
-if ($access{'rbacenable'} && $gconfig{'os_type'} eq 'solaris') {
-	push(@icons, "images/rbac.gif");
-	push(@links, "edit_rbac.cgi");
-	push(@titles, $text{'index_rbac'});
-	}
 if ($access{'pass'}) {
 	push(@icons, "images/pass.gif");
 	push(@links, "edit_pass.cgi");

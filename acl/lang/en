@@ -23,7 +23,6 @@ index_modgroups=Modules from group $1
 index_sync=Configure Unix User Synchronization
 index_unix=Configure Unix User Authentication
 index_sessions=View Login Sessions
-index_rbac=Setup RBAC
 index_delete=Delete Selected
 index_joingroup=Add To Group:
 index_eulist=Failed to list users : $1
@@ -95,9 +94,6 @@ edit_switch=Switch to User
 edit_forgot=Send Password Reset Link
 edit_return=Webmin user
 edit_return2=Webmin group
-edit_rbacdeny=RBAC access mode
-edit_rbacdeny0=RBAC only controls selected module ACLs
-edit_rbacdeny1=RBAC controls all modules and ACLs
 edit_global=Permissions for all modules
 edit_templock=Temporarily locked
 edit_temppass=Force change at next login
@@ -185,8 +181,6 @@ acl_title3=For group $1 in $2
 acl_options=$1 access control options
 acl_config=Can edit module configuration?
 acl_reset=Reset To Full Access
-acl_rbac=Get access control settings from RBAC?
-acl_rbacyes=Yes (overrides settings below)
 
 acl_uall=All users
 acl_uthis=This user
@@ -381,13 +375,6 @@ hide_clone=(Clone $1)
 
 switch_euser=You are not allowed to switch to this user
 switch_eold=Existing session not found!
-
-rbac_title=Setup RBAC
-rbac_desc=Webmin's RBAC integration provides a way for user module and ACL permissions to be determined from an RBAC (Role Based Access Control) database, rather than Webmin's own configuration files. Once RBAC support is enabled, any user for whom the <b>RBAC controls all modules and ACLs</b> option is selected will have his capabilities determined by RBAC rather than Webmin's own access control settings.
-rbac_esolaris=RBAC is only supported on Solaris at the moment, and so cannot be used on this $1 system.
-rbac_eperl=The Perl module $1 needed for RBAC integration is not installed. <a href='$2'>Click here</a> to have it installed now.
-rbac_ecpan=You do not have access to Webmin's Perl Modules page in order to install the necessary $1 module for RBAC integration.
-rbac_ok=RBAC integration is available on this system, and can be enabled on a per-user basis on the Edit Webmin User page.
 
 udeletes_err=Failed to delete users
 udeletes_jerr=Failed to add users to group

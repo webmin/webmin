@@ -105,11 +105,6 @@ foreach my $u (@ulist) {
 # Find the current group
 my $oldgroup = $in{'old'} ? &get_users_group($in{'old'}) : undef;
 
-if (&supports_rbac()) {
-	# Save RBAC mode
-	$user{'rbacdeny'} = $in{'rbacdeny'};
-	}
-
 my $newgroup;
 if (defined($in{'group'})) {
 	# Check if group is allowed

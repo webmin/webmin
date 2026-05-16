@@ -48,15 +48,6 @@ else {
 	}
 print &ui_table_start(&text('acl_options', $minfo{'desc'}), "width=100%", 4);
 
-if ($in{'mod'} && $in{'user'} && &supports_rbac($in{'mod'}) &&
-    !$gconfig{'rbacdeny_'.$who}) {
-	# Show RBAC option
-	print &ui_table_row($text{'acl_rbac'},
-		&ui_radio("rbac", $maccess{'rbac'} ? 1 : 0,
-			[ [ 1, $text{'acl_rbacyes'} ],
-			  [ 0, $text{'no'} ] ]), 3);
-	}
-
 # Load custom ACL library
 my $mdir = &module_root_directory($in{'mod'});
 if (-r "$mdir/acl_security.pl") {
