@@ -18,9 +18,300 @@ if (!$can_view_saved &&
 	}
 my $partial = $in{'partial'};
 if (!$partial) {
-	ui_print_header(nft_version_text(), $text{'index_title'}, "", "intro", 1, 1,
-		undef, restart_button());
+	ui_print_header(nft_version_text() || "", 
+			$text{'index_title'}, "", "intro", 1, 1,
+			undef, restart_button());
 	}
+
+# quick_hidden_fields(table-index, &table, selected-view)
+# Returns hidden table selectors for quick action forms
+sub quick_hidden_fields
+{
+my ($idx, $table, $view) = @_;
+return ui_hidden("table", $idx).
+       ui_hidden("table_family", $table->{'family'}).
+       ui_hidden("table_name", $table->{'name'}).
+       ui_hidden("view", $view);
+}
+
+# quick_service_autocomplete()
+# Returns the quick service textbox and JavaScript-backed matcher
+sub quick_service_autocomplete
+{
+my $placeholder = quote_escape($text{'quick_service_placeholder'});
+my $results_style = "display: none; position: absolute; z-index: 1000; ".
+       "left: 0; right: auto; width: 100%; min-width: 0; ".
+       "max-height: 18em; overflow: auto; ".
+       "border: 1px solid var(--border-color-input-results, ".
+       "var(--border-color-input, #3f4855)); ".
+       "border-radius: var(--border-radius-input, 3px); ".
+       "background-color: var(--bg-color-input, #fff); ".
+       "color: var(--text-color, inherit);";
+my $results = ui_tag('div', undef, {
+	'id' => 'nftables_quick_service_results',
+	'role' => 'listbox',
+	'style' => $results_style,
+});
+my $input = ui_textbox(
+	       "service_text",
+	       "",
+	       32,
+	       undef,
+	       undef,
+	       "autocomplete='off' placeholder='".$placeholder."'"
+       );
+my $wrap = ui_tag('span', $input.$results, {
+	'id' => 'nftables_quick_service_wrap',
+	'style' => 'position: relative; display: inline-block; max-width: 100%;',
+});
+return ui_hidden("service", "").
+       $wrap.
+       quick_service_autocomplete_javascript();
+}
+
+# quick_service_autocomplete_javascript()
+# Returns JavaScript for the quick service autocomplete widget
+sub quick_service_autocomplete_javascript
+{
+my $labels = convert_to_json({
+	'no_matches' => $text{'quick_service_nomatch'},
+	'failed' => $text{'quick_service_searchfail'},
+});
+my $js = <<EOF;
+(function() {
+var labels = $labels;
+if (!window.fetch) {
+	return;
+}
+var mode = document.querySelector('form[action="manage_port.cgi"] input[name="mode"][value="service"]');
+if (!mode || !mode.form) {
+	return;
+}
+var form = mode.form;
+var input = form.querySelector('input[name="service_text"]');
+var hidden = form.querySelector('input[name="service"]');
+var box = document.getElementById('nftables_quick_service_results');
+if (!input || !hidden || !box) {
+	return;
+}
+var timer = null;
+var serial = 0;
+var currentQuery = "";
+var results = [];
+var active = -1;
+
+function trim(value) {
+	return (value || "").replace(/^\\s+|\\s+\$/g, "");
+}
+
+function showBox() {
+	placeBox();
+	box.style.display = "block";
+}
+
+function hideBox() {
+	box.style.display = "none";
+	box.textContent = "";
+	results = [];
+	active = -1;
+}
+
+function placeBox() {
+	var rect = input.getBoundingClientRect();
+	var below = window.innerHeight - rect.bottom;
+	var above = rect.top;
+	box.style.width = input.offsetWidth + "px";
+	var preferred = Math.min(box.scrollHeight || 288, 288);
+	if (below < preferred && above >= preferred) {
+		box.style.top = "auto";
+		box.style.bottom = (input.offsetHeight + 2) + "px";
+	}
+	else {
+		box.style.top = (input.offsetHeight + 2) + "px";
+		box.style.bottom = "auto";
+	}
+}
+
+function styleRow(row, selected) {
+	row.style.padding = "0.25em 0.45em";
+	row.style.cursor = "pointer";
+	row.style.whiteSpace = "nowrap";
+	row.style.overflow = "hidden";
+	row.style.textOverflow = "ellipsis";
+	row.style.borderTop = "1px solid var(--border-color-input-results, #3f4855)";
+	row.style.backgroundColor = selected ?
+		"var(--bg-color-input-results-hover, rgba(127,127,127,0.16))" :
+		"";
+}
+
+function setActive(index) {
+	active = index;
+	var rows = box.querySelectorAll('[data-service-id]');
+	for (var i = 0; i < rows.length; i++) {
+		styleRow(rows[i], i === active);
+	}
+	var row = rows[active];
+	if (row) {
+		var top = row.offsetTop;
+		var bottom = top + row.offsetHeight;
+		if (top < box.scrollTop) {
+			box.scrollTop = top;
+		}
+		else if (bottom > box.scrollTop + box.clientHeight) {
+			box.scrollTop = bottom - box.clientHeight;
+		}
+	}
+}
+
+function choose(item) {
+	if (!item) {
+		return;
+	}
+	hidden.value = item.id || "";
+	input.value = item.label || item.id || "";
+	hideBox();
+}
+
+function message(text) {
+	box.textContent = "";
+	var row = document.createElement("div");
+	row.textContent = text;
+	row.style.padding = "0.25em 0.45em";
+	row.style.fontStyle = "italic";
+	box.appendChild(row);
+	results = [];
+	active = -1;
+	showBox();
+}
+
+function draw(items, query) {
+	box.textContent = "";
+	results = items || [];
+	if (!results.length) {
+		if (query) {
+			message(labels.no_matches);
+		}
+		else {
+			hideBox();
+		}
+		return;
+	}
+	results.forEach(function(item, index) {
+		var row = document.createElement("div");
+		row.setAttribute("role", "option");
+		row.setAttribute("data-service-id", item.id || "");
+		row.textContent = item.label || item.id || "";
+		styleRow(row, false);
+		row.addEventListener("mousedown", function(event) {
+			event.preventDefault();
+			choose(item);
+		});
+		row.addEventListener("mousemove", function() {
+			setActive(index);
+		});
+		box.appendChild(row);
+	});
+	showBox();
+	setActive(0);
+}
+
+function search() {
+	var query = trim(input.value);
+	currentQuery = query;
+	if (!query) {
+		hideBox();
+		return;
+	}
+	var mySerial = ++serial;
+	fetch("search_services.cgi?q=" + encodeURIComponent(query) + "&limit=20", {
+		credentials: "same-origin"
+	}).then(function(response) {
+		if (!response.ok) {
+			throw new Error("service search failed");
+		}
+		return response.json();
+	}).then(function(items) {
+		if (mySerial !== serial || query !== currentQuery) {
+			return;
+		}
+		draw(items, query);
+	}).catch(function() {
+		if (mySerial === serial) {
+			message(labels.failed);
+		}
+	});
+}
+
+input.addEventListener("input", function() {
+	hidden.value = "";
+	if (timer) {
+		clearTimeout(timer);
+	}
+	timer = setTimeout(search, 200);
+});
+
+input.addEventListener("focus", function() {
+	if (trim(input.value) && !hidden.value) {
+		search();
+	}
+});
+
+input.addEventListener("keydown", function(event) {
+	var open = box.style.display !== "none";
+	if (!open) {
+		return;
+	}
+	if (event.key === "ArrowDown") {
+		event.preventDefault();
+		if (results.length) {
+			setActive((active + 1) % results.length);
+		}
+	}
+	else if (event.key === "ArrowUp") {
+		event.preventDefault();
+		if (results.length) {
+			setActive((active + results.length - 1) % results.length);
+		}
+	}
+	else if (event.key === "Enter" && active >= 0 && results[active]) {
+		event.preventDefault();
+		choose(results[active]);
+	}
+	else if (event.key === "Escape") {
+		hideBox();
+	}
+});
+
+form.addEventListener("submit", function() {
+	if (!hidden.value) {
+		hidden.value = trim(input.value);
+	}
+});
+
+document.addEventListener("mousedown", function(event) {
+	var wrap = document.getElementById("nftables_quick_service_wrap");
+	if (wrap && !wrap.contains(event.target)) {
+		hideBox();
+	}
+});
+
+window.addEventListener("resize", function() {
+	if (box.style.display !== "none") {
+		placeBox();
+	}
+});
+
+window.addEventListener("scroll", function() {
+	if (box.style.display !== "none") {
+		placeBox();
+	}
+}, true);
+})();
+EOF
+return ui_tag('script', $js, {
+	'type' => 'text/javascript',
+});
+}
 
 # Check for nft command
 my $cmd = get_nft_command();
@@ -443,29 +734,103 @@ else {
 			}
 		$rules_html .= ui_tabs_end(1);
 
-		if (check_acl('quick') && find_input_chain($curr)) {
-			my $ip_placeholder =
-			    text('quick_ip_placeholder', '1.2.3.4', '2001:db8::1/64');
-			foreach my $action (
-				['allow', $text{'index_allowip_go'}],
-				['block', $text{'index_blockip_go'}],
-			    )
-			{
+		if (check_quick_acl() && !table_supports_quick_l4($curr)) {
+			my @proto_opts = (
+				['tcp', 'TCP'],
+				['udp', 'UDP'],
+			);
+			my $has_input_chain = find_input_chain($curr) ? 1 : 0;
+			if ($has_input_chain) {
+				my $ip_placeholder =
+				    text('quick_ip_placeholder', '1.2.3.4', '2001:db8::1/64');
+				if (check_quick_acl('ip')) {
+					foreach my $action (
+						['allow', $text{'index_allowip_go'}],
+						['block', $text{'index_blockip_go'}],
+					    )
+					{
+						$rules_html .=
+						    "<br>".ui_form_start("manage_ip.cgi", "post");
+						$rules_html .= quick_hidden_fields($in{'table'}, $curr, $tab);
+						$rules_html .= ui_submit($action->[1], $action->[0]).
+						    ui_textbox(
+							"ip",
+							undef,
+							22,
+							undef,
+							undef,
+							"placeholder='".
+							    quote_escape($ip_placeholder)."'"
+						    );
+						$rules_html .= ui_form_end();
+						}
+					}
+				if (check_quick_acl('port')) {
+					$rules_html .=
+					    "<br>".ui_form_start("manage_port.cgi", "post");
+					$rules_html .= quick_hidden_fields($in{'table'}, $curr, $tab);
+					$rules_html .= ui_hidden("mode", "port");
+					$rules_html .= ui_submit($text{'index_allowport_go'}, "allow_port").
+					    ui_textbox(
+						"port",
+						undef,
+						14,
+						undef,
+						undef,
+						"placeholder='".
+						    quote_escape($text{'quick_port_placeholder'})."'"
+					    ).
+					    " ".
+					    ui_select("proto", "tcp", \@proto_opts, 1, 0, 1);
+					$rules_html .= ui_form_end();
+					}
+
+				if (check_quick_acl('service')) {
+					$rules_html .=
+					    "<br>".ui_form_start("manage_port.cgi", "post");
+					$rules_html .= quick_hidden_fields($in{'table'}, $curr, $tab);
+					$rules_html .= ui_hidden("mode", "service");
+					$rules_html .=
+					    ui_submit($text{'index_allowservice_go'},
+						    "allow_service").
+					    quick_service_autocomplete();
+					$rules_html .= ui_form_end();
+					}
+				}
+			if (check_quick_acl('forward')) {
 				$rules_html .=
-				    "<br>".ui_form_start("manage_ip.cgi", "post");
-				$rules_html .= ui_hidden("table", $in{'table'});
-				$rules_html .=
-				    ui_hidden("table_family", $curr->{'family'});
-				$rules_html .= ui_hidden("table_name", $curr->{'name'});
-				$rules_html .= ui_submit($action->[1], $action->[0]).
+				    "<br>".ui_form_start("manage_forward.cgi", "post");
+				$rules_html .= quick_hidden_fields($in{'table'}, $curr, $tab);
+				$rules_html .= ui_submit($text{'index_forward_go'}, "forward").
 				    ui_textbox(
-					"ip",
+					"src_port",
 					undef,
-					22,
+					10,
 					undef,
 					undef,
-					"placeholder='".
-					    quote_escape($ip_placeholder)."'"
+					"placeholder='".quote_escape($text{'quick_forward_src'})."'"
+				    ).
+				    " ".
+				    ui_select("proto", "tcp", \@proto_opts, 1, 0, 1).
+				    " ".
+				    $text{'quick_forward_to'}.
+				    " ".
+				    ui_textbox(
+					"dst_port",
+					undef,
+					10,
+					undef,
+					undef,
+					"placeholder='".quote_escape($text{'quick_forward_dst'})."'"
+				    ).
+				    " ".
+				    ui_textbox(
+					"dst_addr",
+					undef,
+					32,
+					undef,
+					undef,
+					"placeholder='".quote_escape($text{'quick_forward_addr'})."'"
 				    );
 				$rules_html .= ui_form_end();
 				}

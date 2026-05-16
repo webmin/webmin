@@ -32,6 +32,8 @@ my $saddr_val;
 my $daddr_val;
 my $sport_val;
 my $dport_val;
+my $nat_addr_val;
+my $nat_port_val;
 my @addr_set_opts;
 my @port_set_opts;
 my %set_families;
@@ -99,6 +101,8 @@ $saddr_val = $saddr_set ? "" : $rule->{'saddr'};
 $daddr_val = $daddr_set ? "" : $rule->{'daddr'};
 $sport_val = $sport_set ? "" : $rule->{'sport'};
 $dport_val = $dport_set ? "" : $rule->{'dport'};
+$nat_addr_val = $rule->{'nat_addr'};
+$nat_port_val = $rule->{'nat_port'};
 
 @addr_set_opts = (["", $text{'edit_set_none'}]);
 @port_set_opts = (["", $text{'edit_set_none'}]);
@@ -198,20 +202,39 @@ print ui_table_row(
 );
 
 # Action
+my $show_nat_actions =
+    ($chain_def && (($chain_def->{'type'} || '') eq 'nat')) ||
+    ($action_sel && $action_sel =~ /^(redirect|dnat)$/);
+my @action_opts = (
+	["accept", $text{'index_accept'}],
+	["drop", $text{'index_drop'}],
+	["reject", $text{'index_reject'}],
+	["return", $text{'edit_return'}],
+);
+push(@action_opts,
+	["redirect", $text{'edit_redirect_action'}],
+	["dnat", $text{'edit_dnat_action'}])
+    if ($show_nat_actions);
+push(@action_opts,
+	["jump", $text{'edit_jump_action'}],
+	["goto", $text{'edit_goto_action'}]);
 print ui_table_row(
 	hlink($text{'edit_action'}, "action"),
-	ui_select(
-		"action",
-		$action_sel,
-		[
-			["accept", $text{'index_accept'}],
-			["drop", $text{'index_drop'}],
-			["reject", $text{'index_reject'}],
-			["return", $text{'edit_return'}],
-			["jump", $text{'edit_jump_action'}],
-			["goto", $text{'edit_goto_action'}],
-		]
-	)
+	ui_select("action", $action_sel, \@action_opts)
+);
+
+my $nat_show = $action_sel && $action_sel =~ /^(redirect|dnat)$/;
+my $nat_addr_style = $action_sel && $action_sel eq 'dnat' ? "" : " style='display:none'";
+my $nat_port_style = $nat_show ? "" : " style='display:none'";
+print ui_table_row(
+	hlink($text{'edit_nat_addr'}, "nat_addr"),
+	ui_textbox("nat_addr", $nat_addr_val, 30),
+	undef, undef, ["id='nftables_nat_addr_row'".$nat_addr_style]
+);
+print ui_table_row(
+	hlink($text{'edit_nat_port'}, "nat_port"),
+	ui_textbox("nat_port", $nat_port_val, 10),
+	undef, undef, ["id='nftables_nat_port_row'".$nat_port_style]
 );
 
 # Addresses
@@ -400,6 +423,9 @@ my $icmpv6_js = js_array(@icmpv6_types);
 my $icmp_any = $text{'edit_proto_any'};
 $icmp_any =~ s/\\/\\\\/g;
 $icmp_any =~ s/"/\\"/g;
+my $table_family = $table->{'family'} || '';
+$table_family =~ s/\\/\\\\/g;
+$table_family =~ s/"/\\"/g;
 my $set_fam_js = js_object(%set_families);
 
 print "<script>\n";
@@ -407,6 +433,7 @@ print "(function() {\n";
 print "  var icmpTypes = $icmp_js;\n";
 print "  var icmpv6Types = $icmpv6_js;\n";
 print "  var icmpAnyLabel = \"$icmp_any\";\n";
+print "  var tableFamily = \"$table_family\";\n";
 print "  var setFamilies = $set_fam_js;\n";
 print <<'EOF';
   function byName(name) {
@@ -454,6 +481,13 @@ print <<'EOF';
   function guessFamily(addr) {
     return addr.indexOf(":") >= 0 ? "ip6" : "ip";
   }
+  function natTarget(addr, port) {
+    if (addr) {
+      if (port) return addr.indexOf(":") >= 0 ? "[" + addr + "]:" + port : addr + ":" + port;
+      return addr;
+    }
+    return port ? ":" + port : "";
+  }
   function familyForSet(name) {
     return setFamilies && setFamilies[name] ? setFamilies[name] : "";
   }
@@ -468,6 +502,7 @@ print <<'EOF';
   function buildRule() {
     var direct = byName("edit_direct");
     if (direct && direct.checked) return;
+    toggleNatFields();
     var parts = [];
 
     var iif = ifaceVal("iif");
@@ -573,6 +608,19 @@ print <<'EOF';
     var go = val("goto");
     if (action === "jump" && jump) parts.push("jump " + jump);
     else if (action === "goto" && go) parts.push("goto " + go);
+    else if (action === "redirect") {
+      var redirectTarget = natTarget("", val("nat_port"));
+      parts.push(redirectTarget ? "redirect to " + redirectTarget : "redirect");
+    }
+    else if (action === "dnat") {
+      var natAddr = val("nat_addr");
+      var natPort = val("nat_port");
+      var dnatTarget = natTarget(natAddr, natPort);
+      var dnatExpr = "dnat";
+      if (natAddr && tableFamily === "inet") dnatExpr += " " + guessFamily(natAddr);
+      if (dnatTarget) dnatExpr += " to " + dnatTarget;
+      parts.push(dnatExpr);
+    }
     else if (action && action !== "jump" && action !== "goto") parts.push(action);
 
     var comment = val("comment");
@@ -601,6 +649,17 @@ print <<'EOF';
     var rawEl = byName("raw_rule");
     if (rawEl) rawEl.readOnly = !on;
     if (!on) buildRule();
+  }
+
+  function setRowVisible(id, visible) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = visible ? "" : "none";
+  }
+
+  function toggleNatFields() {
+    var action = val("action");
+    setRowVisible("nftables_nat_addr_row", action === "dnat");
+    setRowVisible("nftables_nat_port_row", action === "redirect" || action === "dnat");
   }
 
   function uniqList(list) {
@@ -683,6 +742,7 @@ print <<'EOF';
       el.addEventListener("input", buildRule);
       el.addEventListener("change", buildRule);
     }
+    toggleNatFields();
     updateIcmpTypes();
     toggleDirect();
     buildRule();
