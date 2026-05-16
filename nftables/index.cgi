@@ -827,7 +827,7 @@ else {
 				    ui_textbox(
 					"dst_addr",
 					undef,
-					32,
+					33,
 					undef,
 					undef,
 					"placeholder='".quote_escape($text{'quick_forward_addr'})."'"
