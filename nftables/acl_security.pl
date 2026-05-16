@@ -36,10 +36,13 @@ print ui_table_row(
 
 foreach my $a (
 	qw(view active create setup chains sets rules raw delete
-	   apply bootup import clear quick manual)
+	   apply bootup import clear quick quick_ip quick_port
+	   quick_service quick_forward manual)
     )
 {
-	print ui_table_row($text{'acl_'.$a}, ui_yesno_radio($a, $o->{$a}));
+	my $enabled = $o->{$a};
+	$enabled = $o->{'quick'} if ($a =~ /^quick_/ && !defined($enabled));
+	print ui_table_row($text{'acl_'.$a}, ui_yesno_radio($a, $enabled));
 	}
 }
 
@@ -58,7 +61,8 @@ else {
 	}
 foreach my $a (
 	qw(view active create setup chains sets rules raw delete
-	   apply bootup import clear quick manual)
+	   apply bootup import clear quick quick_ip quick_port
+	   quick_service quick_forward manual)
     )
 {
 	$_[0]->{$a} = $in{$a} || 0;

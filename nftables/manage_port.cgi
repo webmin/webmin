@@ -1,19 +1,17 @@
 #!/usr/bin/perl
-# manage_ip.cgi
-# Quickly allow or block an IP/CIDR in the selected table
+# manage_port.cgi
+# Quickly allow a port or service in the selected table
 
 require './nftables-lib.pl';    ## no critic
 use strict;
 use warnings;
 our (%in, %text);
 ReadParse();
-assert_quick_acl('ip');
 
-my $action = $in{'allow'} ? 'allow' : $in{'block'} ? 'block' : '';
+my $mode = $in{'mode'} || '';
+assert_quick_acl($mode eq 'service' ? 'service' : 'port');
 error_setup(
-	  $action eq 'allow'
-	? $text{'quick_allow_err'}
-	: $text{'quick_block_err'}
+	$mode eq 'service' ? $text{'quick_service_err'} : $text{'quick_port_err'}
 );
 
 my @tables = get_nftables_save();
@@ -36,18 +34,32 @@ else {
 $table || error($text{'quick_etable'});
 assert_table_acl($table);
 
-my $err = add_quick_ip_rule($table, $in{'ip'}, $action);
+my $err;
+my $service = $in{'service'};
+if (!defined($service) || $service eq '') {
+	$service = $in{'service_text'};
+	}
+if ($mode eq 'service') {
+	$err = add_quick_service_rule($table, $service);
+	}
+else {
+	$err = add_quick_port_rule($table, $in{'port'}, $in{'proto'});
+	}
 error($err) if ($err);
 
 $err = save_table_configuration($table, @tables);
 error(text('quick_failed', $err)) if ($err);
 
-# Quick allow/block is expected to affect the live firewall immediately.
+# Quick allow actions are expected to affect the live firewall immediately.
 $err = apply_restore();
 error(text('quick_failed', $err)) if ($err);
 
-webmin_log($action, "ip", $in{'ip'},
-	{'table' => $table->{'name'}, 'family' => $table->{'family'}});
+webmin_log(
+	"allow",
+	$mode eq 'service' ? "service" : "port",
+	$mode eq 'service' ? $service : $in{'port'},
+	{'table' => $table->{'name'}, 'family' => $table->{'family'}}
+);
 my $redir = "index.cgi?table_family=".
 	    urlize($table->{'family'}).
 	    "&table_name=".

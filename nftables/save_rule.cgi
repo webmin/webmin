@@ -81,6 +81,9 @@ else {
 		$rule->{'action'} = undef;
 		$rule->{'jump'} = undef;
 		$rule->{'goto'} = undef;
+		$rule->{'nat_addr'} = undef;
+		$rule->{'nat_port'} = undef;
+		$rule->{'nat_family'} = undef;
 		if ($action eq 'jump') {
 			$rule->{'jump'} = $in{'jump'};
 			}
@@ -89,6 +92,29 @@ else {
 			}
 		else {
 			$rule->{'action'} = $action;
+			}
+		if ($action eq 'redirect') {
+			my $nat_port = $in{'nat_port'};
+			$nat_port =~ s/^\s+// if (defined($nat_port));
+			$nat_port =~ s/\s+$// if (defined($nat_port));
+			$rule->{'nat_port'} =
+			    (defined($nat_port) && $nat_port ne '') ? $nat_port : undef;
+			}
+		elsif ($action eq 'dnat') {
+			my $nat_addr = $in{'nat_addr'};
+			my $nat_port = $in{'nat_port'};
+			$nat_addr =~ s/^\s+// if (defined($nat_addr));
+			$nat_addr =~ s/\s+$// if (defined($nat_addr));
+			$nat_port =~ s/^\s+// if (defined($nat_port));
+			$nat_port =~ s/\s+$// if (defined($nat_port));
+			$rule->{'nat_addr'} =
+			    (defined($nat_addr) && $nat_addr ne '') ? $nat_addr : undef;
+			$rule->{'nat_port'} =
+			    (defined($nat_port) && $nat_port ne '') ? $nat_port : undef;
+			$rule->{'nat_family'} =
+			    $rule->{'nat_addr'} &&
+			    (($table->{'family'} || '') eq 'inet') ?
+			    guess_addr_family($rule->{'nat_addr'}) : undef;
 			}
 
 		my $saddr = $in{'saddr'};

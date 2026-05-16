@@ -1,8 +1,0 @@
-table inet filter {
-    chain input {
-        type filter hook input priority 0; policy drop;
-        iif "lo" accept
-        ip saddr 192.168.1.0/24 tcp dport 22 accept comment "ssh"
-        ct state established,related accept
-    }
-}
