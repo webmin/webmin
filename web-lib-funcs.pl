@@ -4380,22 +4380,6 @@ return 0 if (!$acl{$base_remote_user,$_[0]} &&
 my @usermods = &list_usermods();
 return 0 if (!&available_usermods( [ \%foreign_module_info ], \@usermods));
 
-if (&get_product_name() eq "webmin") {
-	# Check if the user has any RBAC privileges in this module
-	if (&supports_rbac($_[0]) &&
-	    &use_rbac_module_acl(undef, $_[0])) {
-		# RBAC is enabled for this user and module - check if he
-		# has any rights
-		my $rbacs = &get_rbac_module_acl($remote_user, $_[0]);
-		return 0 if (!$rbacs);
-		}
-	elsif ($gconfig{'rbacdeny_'.$base_remote_user}) {
-		# If denying access to modules not specifically allowed by
-		# RBAC, then prevent access
-		return 0;
-		}
-	}
-
 # Check readonly support
 if (&is_readonly_mode()) {
 	return 0 if (!$foreign_module_info{'readonly'});
@@ -4827,15 +4811,7 @@ if (!$nodef) {
 		}
 	}
 my %usersacl;
-if (!$norbac && &supports_rbac($m) && &use_rbac_module_acl($u, $m)) {
-	# RBAC overrides exist for this user in this module
-	my $rbac = &get_rbac_module_acl(
-			defined($_[0]) ? $_[0] : $remote_user, $m);
-	foreach my $r (keys %$rbac) {
-		$rv{$r} = $rbac->{$r};
-		}
-	}
-elsif ($u ne '') {
+if ($u ne '') {
 	# Use normal Webmin ACL, if a user is set
 	my $userdb = &get_userdb_string();
 	my $foundindb = 0;
@@ -10429,35 +10405,17 @@ my @usermods = &list_usermods();
 @rv = sort { lc($a->{'desc'}) cmp lc($b->{'desc'}) }
 	    &available_usermods(\@rv, \@usermods);
 
-# Check RBAC restrictions
-my @rbacrv;
-foreach my $m (@rv) {
-	if (&supports_rbac($m->{'dir'}) &&
-	    &use_rbac_module_acl(undef, $m->{'dir'})) {
-		local $rbacs = &get_rbac_module_acl($remote_user,
-						    $m->{'dir'});
-		if ($rbacs) {
-			# RBAC allows
-			push(@rbacrv, $m);
-			}
-		}
-	else {
-		# Module or system doesn't support RBAC
-		push(@rbacrv, $m) if (!$gconfig{'rbacdeny_'.$base_remote_user});
-		}
-	}
-
 # Check theme vetos
 my @themerv;
 if (defined(&theme_foreign_available)) {
-	foreach my $m (@rbacrv) {
+	foreach my $m (@rv) {
 		if (&theme_foreign_available($m->{'dir'})) {
 			push(@themerv, $m);
 			}
 		}
 	}
 else {
-	@themerv = @rbacrv;
+	@themerv = @rv;
 	}
 
 # Check licence module vetos
@@ -11451,91 +11409,6 @@ sub number_to_month
 return ucfirst($number_to_month_map{$_[0]});
 }
 
-=head2 get_rbac_module_acl(user, module)
-
-Returns a hash reference of RBAC overrides ACLs for some user and module.
-May return undef if none exist (indicating access denied), or the string *
-if full access is granted.
-
-=cut
-sub get_rbac_module_acl
-{
-my ($user, $mod) = @_;
-eval "use Authen::SolarisRBAC";
-return undef if ($@);
-my %rv;
-my $foundany = 0;
-if (Authen::SolarisRBAC::chkauth("webmin.$mod.admin", $user)) {
-	# Automagic webmin.modulename.admin authorization exists .. allow access
-	$foundany = 1;
-	if (!Authen::SolarisRBAC::chkauth("webmin.$mod.config", $user)) {
-		%rv = ( 'noconfig' => 1 );
-		}
-	else {
-		%rv = ( );
-		}
-	}
-local $_;
-open(RBAC, "<".&module_root_directory($mod)."/rbac-mapping");
-while(<RBAC>) {
-	s/\r|\n//g;
-	s/#.*$//;
-	my ($auths, $acls) = split(/\s+/, $_);
-	my @auths = split(/,/, $auths);
-	next if (!$auths);
-	my ($merge) = ($acls =~ s/^\+//);
-	my $gotall = 1;
-	if ($auths eq "*") {
-		# These ACLs apply to all RBAC users.
-		# Only if there is some that match a specific authorization
-		# later will they be used though.
-		}
-	else {
-		# Check each of the RBAC authorizations
-		foreach my $a (@auths) {
-			if (!Authen::SolarisRBAC::chkauth($a, $user)) {
-				$gotall = 0;
-				last;
-				}
-			}
-		$foundany++ if ($gotall);
-		}
-	if ($gotall) {
-		# Found an RBAC authorization - return the ACLs
-		return "*" if ($acls eq "*");
-		my %acl = map { split(/=/, $_, 2) } split(/,/, $acls);
-		if ($merge) {
-			# Just add to current set
-			foreach my $a (keys %acl) {
-				$rv{$a} = $acl{$a};
-				}
-			}
-		else {
-			# Found final ACLs
-			return \%acl;
-			}
-		}
-	}
-close(RBAC);
-return !$foundany ? undef : %rv ? \%rv : undef;
-}
-
-=head2 supports_rbac([module])
-
-Returns 1 if RBAC client support is available, such as on Solaris.
-
-=cut
-sub supports_rbac
-{
-return 0 if ($gconfig{'os_type'} ne 'solaris');
-eval "use Authen::SolarisRBAC";
-return 0 if ($@);
-if ($_[0]) {
-	#return 0 if (!-r &module_root_directory($_[0])."/rbac-mapping");
-	}
-return 1;
-}
-
 =head2 supports_ipv6()
 
 Returns 1 if outgoing IPv6 connections can be made
@@ -11544,20 +11417,6 @@ Returns 1 if outgoing IPv6 connections can be made
 sub supports_ipv6
 {
 return $ipv6_module_error ? 0 : 1;
-}
-
-=head2 use_rbac_module_acl(user, module)
-
-Returns 1 if some user should use RBAC to get permissions for a module
-
-=cut
-sub use_rbac_module_acl
-{
-my $u = defined($_[0]) ? $_[0] : $base_remote_user;
-my $m = defined($_[1]) ? $_[1] : &get_module_name();
-return 1 if ($gconfig{'rbacdeny_'.$u});		# RBAC forced for user
-my %access = &get_module_acl($u, $m, 1);
-return $access{'rbac'} ? 1 : 0;
 }
 
 =head2 execute_command(command, stdin, stdout, stderr, translate-files?, safe?, logged?)
