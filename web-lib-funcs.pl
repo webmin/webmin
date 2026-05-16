@@ -5741,6 +5741,16 @@ if ($module_name) {
 	$module_root_directory = &module_root_directory($module_name);
 	}
 
+if (!$main::allow_rpc_only &&
+    $main::webmin_script_type eq 'web' &&
+    !$main::no_acl_check &&
+    !defined($ENV{'FOREIGN_MODULE_NAME'})) {
+	# Check if this user is RPC-only
+	if (&webmin_user_can_rpc() == 2) {
+		&error($text{'erpconly'});
+		}
+	}
+
 if ($module_name && !$main::no_acl_check &&
     (!defined($ENV{'FOREIGN_MODULE_NAME'}) ||
       defined($ENV{'FOREIGN_MODULE_SEC_CHECK'})) &&
@@ -5757,16 +5767,6 @@ if ($module_name && !$main::no_acl_check &&
 			}
 		}
 	$main::no_acl_check++;
-	}
-
-if (!$main::allow_rpc_only &&
-    $main::webmin_script_type eq 'web' &&
-    !$main::no_acl_check &&
-    !defined($ENV{'FOREIGN_MODULE_NAME'})) {
-	# Check if this user is RPC-only
-	if (&webmin_user_can_rpc() == 2) {
-		&error($text{'erpconly'});
-		}
 	}
 
 # Check the Referer: header for nasty redirects
