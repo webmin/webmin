@@ -370,10 +370,11 @@ elsif ($miniserv{'twofactor_provider'}) {
 
 # Can accept RPC calls?
 if ($access{'acl'} && !$safe) {
-	print &ui_table_row($text{'acl_rpc'},
+	print &ui_table_row(&hlink($text{'acl_rpc'}, 'rpc'),
 		&ui_radio("rpc", int($uaccess{'rpc'}),
 			  [ [ 1, $text{'acl_rpc1'} ],
 			    $uaccess{'rpc'} == 2 ? ( [ 2, $text{'acl_rpc2'} ] ) : ( ),
+			    [ 3, $text{'acl_rpc3'} ],
 			    [ 0, $text{'acl_rpc0'} ] ]));
 	}
 

@@ -1,0 +1,14 @@
+<header>Can accept RPC calls?</header>
+
+This option determines if the user can make use of Webmin's poweful RPC calls
+feature, which is designed to allow this system to be controlled by a script
+or other Webmin server via HTTP. Because the RPC feature does <b>not</b>
+respect any module grants or fine-grained access controls, this option should
+only be enabled for fully trusted <tt>root</tt>-equivalent users. <p>
+
+In addition, if the <b>RPC calls only</b> option is selected, the user will not
+be able to use the Webmin UI. This is useful for creating a separate login with
+a longer password for RPC purposes only, as two-factor authentication cannot be
+used when making RPC calls. <p>
+
+<footer>
