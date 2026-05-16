@@ -370,10 +370,12 @@ else {
 
 my $aclfile = "$config_directory/$in{'name'}.acl";
 if ($in{'acl_security_form'} && !$newgroup && !$in{'safe'}) {
-	# Update user's global ACL
+	# Update user's global ACL, and merge in RPC setting which has
+	# been moved out of this form
 	&foreign_require("", "acl_security.pl");
 	my %uaccess;
 	&foreign_call("", "acl_security_save", \%uaccess, \%in);
+	$uaccess{'rpc'} = $in{'rpc'};
 	&lock_file($aclfile);
 	&save_module_acl(\%uaccess, $in{'name'}, "", 1);
 	&set_ownership_permissions(undef, undef, 0640, $aclfile);

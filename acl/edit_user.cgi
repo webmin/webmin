@@ -42,6 +42,11 @@ else {
 				      : $text{'edit_title2'}, "");
 	}
 my $me = &get_user($base_remote_user);
+my %uaccess = &get_module_acl($in{'user'} || "", "", 1);
+if (!$in{'user'} && $uaccess{'rpc'} == 2) {
+	# Don't offer the confusing 'root' or 'admin' RPC option by default
+	$uaccess{'rpc'} = 0;
+	}
 
 # Give up if readonly
 if ($user{'readonly'} && !$in{'readwrite'}) {
@@ -363,6 +368,15 @@ elsif ($miniserv{'twofactor_provider'}) {
 		&ui_submit($text{'edit_twofactoradd'}, "twofactor"));
 	}
 
+# Can accept RPC calls?
+if ($access{'acl'} && !$safe) {
+	print &ui_table_row($text{'acl_rpc'},
+		&ui_radio("rpc", int($uaccess{'rpc'}),
+			  [ [ 1, $text{'acl_rpc1'} ],
+			    $uaccess{'rpc'} == 2 ? ( [ 2, $text{'acl_rpc2'} ] ) : ( ),
+			    [ 0, $text{'acl_rpc0'} ] ]));
+	}
+
 print &ui_hidden_table_end("security");
 
 # Work out which modules can be selected
@@ -445,8 +459,6 @@ my $groupglobal = $memg && -r "$config_directory/$memg->{'name'}.acl";
 if ($access{'acl'} && !$groupglobal && !$safe) {
 	print &ui_hidden_table_start($text{'edit_global'}, "width=100%", 2,
 				     "global", 0, [ "width=30%" ]);
-	my %uaccess;
-	%uaccess = &get_module_acl($in{'user'} || "", "", 1);
 	print &ui_hidden("acl_security_form", 1);
 	&foreign_require("", "acl_security.pl");
 	&foreign_call("", "acl_security_form", \%uaccess);

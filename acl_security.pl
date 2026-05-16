@@ -77,13 +77,6 @@ print &ui_table_row($text{'acl_gedit'},
 
 print &ui_table_hr();
 
-# Can accept RPC calls?
-print &ui_table_row($text{'acl_rpc'},
-	&ui_radio("rpc", int($o->{'rpc'}),
-		  [ [ 1, $text{'acl_rpc1'} ],
-		    $o->{'rpc'} == 2 ? ( [ 2, $text{'acl_rpc2'} ] ) : ( ),
-		    [ 0, $text{'acl_rpc0'} ] ]));
-
 # Get new permissions?
 print &ui_table_row($text{'acl_negative'},
 	&ui_radio("negative", int($o->{'negative'}),
@@ -122,7 +115,6 @@ $o->{'gedit'} = $in{'gedit_mode'} == 2 ? $in{'gedit_can'} :
 		   $in{'gedit_mode'} == 3 ? $in{'gedit_cannot'} :
 		   $in{'gedit_mode'} == 4 ? $in{'gedit_gid'} : "";
 $o->{'gedit2'} = $in{'gedit_mode'} == 4 ? $in{'gedit_gid2'} : undef;
-$o->{'rpc'} = $in{'rpc'};
 $o->{'negative'} = $in{'negative'};
 $o->{'readonly'} = $in{'readonly'};
 $o->{'fileunix'} = $in{'fileunix_def'} ? undef : $in{'fileunix'};
