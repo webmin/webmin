@@ -569,4 +569,363 @@ subtest 'ssl_hostname_match' => sub {
 	   ':port suffix is stripped before matching');
 };
 
+# Capability probes used by the crypto subtests below. miniserv.pl's
+# detection logic runs inside its `unless(caller)` block, so when we load
+# it as a module the $use_md5 / $use_sha512 / $use_hmac_sha256 globals are
+# undef. Recreate them here from the same probes miniserv.pl uses itself.
+my $have_md5 = eval {
+	require Digest::MD5;
+	Digest::MD5->new->add('x');
+	'Digest::MD5';
+	};
+my $have_sha512 = miniserv::unix_crypt_supports_sha512() ? 1 : 0;
+my $have_hmac   = eval {
+	require Digest::SHA;
+	Digest::SHA::hmac_sha256_hex('x', 'y');
+	1;
+	};
+
+# to64 — itoa64 base64-style encoder used by encrypt_md5
+#
+# Indexes into @itoa64 ("./0123456789A-Za-z"). Output is exactly $n chars;
+# input is processed 6 bits at a time, low bits first.
+subtest 'to64' => sub {
+	is(miniserv::to64(0,  1), '.', 'index 0 → .');
+	is(miniserv::to64(1,  1), '/', 'index 1 → /');
+	is(miniserv::to64(2,  1), '0', 'index 2 → 0');
+	is(miniserv::to64(63, 1), 'z', 'index 63 → z (last alphabet char)');
+
+	is(length(miniserv::to64(0,        4)), 4, 'output length = requested digits');
+	is(length(miniserv::to64(0xffffff, 4)), 4, 'output length is constant, not entropy-dependent');
+
+	like(miniserv::to64(0xabcdef, 4), qr{^[./0-9A-Za-z]{4}$},
+	     'output uses only the itoa64 alphabet');
+
+	# 0x3f occupies the low 6 bits → first char z, remaining shifts → dots.
+	is(miniserv::to64(0x3f, 4), 'z...', 'low-bits-first ordering');
+};
+
+# encrypt_md5 — $1$ MD5-crypt
+#
+# Security-critical: this hashes user passwords. Contract we pin:
+#   - salt is preserved verbatim in the output
+#   - hash body is 22 itoa64 chars
+#   - deterministic for the same input
+#   - passing a full $1$salt$hash form re-extracts the salt (verification)
+#   - a different password produces a different hash
+subtest 'encrypt_md5' => sub {
+	plan skip_all => 'Digest::MD5 not available' if !$have_md5;
+	no warnings 'once';
+	local $miniserv::use_md5 = $have_md5;
+
+	my $h = miniserv::encrypt_md5('password', 'abcdefgh');
+	like($h, qr{^\$1\$abcdefgh\$[./0-9A-Za-z]{22}$},
+	     '$1$<salt>$<22-char hash> shape');
+	is(miniserv::encrypt_md5('password', 'abcdefgh'), $h, 'deterministic');
+	is(miniserv::encrypt_md5('password', $h),         $h,
+	   'salt re-extracted from $1$salt$hash form (verification round-trip)');
+	isnt(miniserv::encrypt_md5('wrong', $h), $h,
+	     'different password → different hash');
+
+	# No-salt form skips the iteration loop and returns just the body.
+	my $bare = miniserv::encrypt_md5('password');
+	unlike($bare, qr{\$}, 'no-salt form has no $-prefix');
+	like  ($bare, qr{^[./0-9A-Za-z]+$}, 'no-salt form uses itoa64 alphabet');
+};
+
+# unix_crypt — thin wrapper over libc crypt (or Crypt::UnixCrypt)
+subtest 'unix_crypt' => sub {
+	no warnings 'once';
+	local $miniserv::use_perl_crypt;
+	my $h = miniserv::unix_crypt('password', 'xy');
+	is(length($h), 13, 'classic DES crypt output is 13 chars');
+	like($h, qr{^xy}, 'salt is the prefix of the output');
+	is  (miniserv::unix_crypt('password', $h), $h, 'verification round-trip');
+	isnt(miniserv::unix_crypt('wrong',    $h), $h, 'wrong password → different hash');
+};
+
+# unix_crypt_supports_sha512 — capability probe used at startup
+subtest 'unix_crypt_supports_sha512' => sub {
+	my $r = miniserv::unix_crypt_supports_sha512();
+	ok(defined($r),           'returns a defined value');
+	ok($r == 0 || $r == 1,    'returns 0 or 1');
+};
+
+# encrypt_sha512 — $6$ SHA512-crypt via libc crypt()
+#
+# KNOWN BUG, intentionally failing here: miniserv.pl:6786 captures
+# /^\$6\$([^\$]+)/ and assigns the bare salt body back to $salt, stripping
+# the $6$ prefix that libc crypt() needs to select SHA512. crypt() then
+# falls back to DES and returns a 13-char hash. The function only "works"
+# in production because password_crypt falls through to unix_crypt with
+# the original (un-corrupted) salt when encrypt_sha512's output doesn't
+# match. The correct form is in useradmin/md5-lib.pl:218 — leave the full
+# $6$salt$ untouched, only synthesise a new salt when one is absent.
+# Fix is being tracked separately; these failures are the reminder.
+subtest 'encrypt_sha512' => sub {
+	plan skip_all => 'crypt() does not support SHA512 on this system'
+		if !$have_sha512;
+
+	my $h = miniserv::encrypt_sha512('password', '$6$testtest$');
+	like($h, qr{^\$6\$testtest\$}, '$6$<salt>$ prefix preserved');
+	cmp_ok(length($h), '>', 50,
+	       'SHA512 output is much longer than DES (DES is 13 chars)');
+
+	# Behaviour we pin regardless of the bug above:
+	# - calling the function twice with the same args is deterministic
+	# - a different password produces a different hash
+	# - the no-salt path correctly synthesises a $6$ salt
+	is  (miniserv::encrypt_sha512('password', $h), $h,
+	     'deterministic for same (password, salt) — verification round-trip');
+	isnt(miniserv::encrypt_sha512('wrong', $h), $h,
+	     'different password → different hash');
+	like(miniserv::encrypt_sha512('password'), qr{^\$6\$},
+	     'no-salt path synthesises $6$ salt (and produces real SHA512)');
+};
+
+# password_crypt — verifies a stored hash by recomputing
+#
+# The salt parameter doubles as the expected output: the caller passes the
+# stored hash, and password_crypt returns the recomputed hash. Equality means
+# "password matches". A non-$1$/$6$ salt (or unsupported module) falls through
+# to plain crypt().
+subtest 'password_crypt' => sub {
+	no warnings 'once';
+	local $miniserv::use_md5    = $have_md5;
+	local $miniserv::use_sha512 = $have_sha512;
+	local $miniserv::use_perl_crypt;
+
+	SKIP: {
+		skip 'Digest::MD5 not available', 2 if !$have_md5;
+		my $stored = miniserv::encrypt_md5('hunter2', 'abcdefgh');
+		is  (miniserv::password_crypt('hunter2', $stored), $stored,
+		     '$1$ stored hash + correct password verifies');
+		isnt(miniserv::password_crypt('wrong',   $stored), $stored,
+		     '$1$ stored hash + wrong password does not verify');
+	}
+
+	SKIP: {
+		skip 'SHA512 crypt not available', 2 if !$have_sha512;
+		my $stored = miniserv::encrypt_sha512('hunter2', '$6$testtest$');
+		is  (miniserv::password_crypt('hunter2', $stored), $stored,
+		     '$6$ stored hash + correct password verifies');
+		isnt(miniserv::password_crypt('wrong',   $stored), $stored,
+		     '$6$ stored hash + wrong password does not verify');
+	}
+
+	# 2-char salt → DES fallback (no $1$/$6$ branch taken).
+	my $des = miniserv::unix_crypt('hunter2', 'xy');
+	is(miniserv::password_crypt('hunter2', $des), $des,
+	   'DES stored hash + correct password verifies');
+};
+
+# hash_session_id — three independent code paths, picked by which crypto
+# globals are set. Each branch gets its own subtest so the cache and globals
+# can be reset cleanly via `local`.
+
+subtest 'hash_session_id (HMAC-SHA256 branch)' => sub {
+	plan skip_all => 'Digest::SHA hmac_sha256_hex not available' if !$have_hmac;
+	no warnings 'once';
+	local $miniserv::use_hmac_sha256        = 1;
+	local $miniserv::session_hmac_key       = 'a' x 32;
+	local %miniserv::hash_session_id_cache  = ();
+
+	my $h = miniserv::hash_session_id('sess123');
+	like($h, qr{^[0-9a-f]{64}$}, 'HMAC-SHA256 hex output: 64 hex chars');
+	is  (miniserv::hash_session_id('sess123'), $h,
+	     'second call for same sid is cached (and stable)');
+	isnt(miniserv::hash_session_id('other'), $h,
+	     'different sid → different hash');
+
+	# Different key must change the hash for the same input.
+	%miniserv::hash_session_id_cache = ();
+	local $miniserv::session_hmac_key = 'b' x 32;
+	isnt(miniserv::hash_session_id('sess123'), $h,
+	     'different HMAC key → different hash for the same sid');
+};
+
+subtest 'hash_session_id (MD5 branch)' => sub {
+	plan skip_all => 'Digest::MD5 not available' if !$have_md5;
+	no warnings 'once';
+	local $miniserv::use_hmac_sha256       = 0;
+	local $miniserv::session_hmac_key      = undef;
+	local $miniserv::use_md5               = $have_md5;
+	local %miniserv::hash_session_id_cache = ();
+
+	my $h = miniserv::hash_session_id('sess123');
+	like($h, qr{^[./0-9A-Za-z]{22}$},
+	     'MD5 (no-salt) form: 22 itoa64 chars');
+	is(miniserv::hash_session_id('sess123'), $h, 'cached on second call');
+};
+
+subtest 'hash_session_id (unix_crypt fallback)' => sub {
+	no warnings 'once';
+	local $miniserv::use_hmac_sha256       = 0;
+	local $miniserv::session_hmac_key      = undef;
+	local $miniserv::use_md5               = undef;
+	local %miniserv::hash_session_id_cache = ();
+
+	my $h = miniserv::hash_session_id('sess123');
+	is(length($h), 13, 'DES crypt fallback is 13 chars');
+	is(miniserv::hash_session_id('sess123'), $h, 'cached on second call');
+};
+
+# generate_random_id — session ID generator
+#
+# Two paths: /dev/urandom (preferred) and a rand()-based fallback. The
+# fallback should still produce a 32-char lowercase hex string. With
+# force_urandom=1 and /dev/urandom marked bad, the function must return
+# undef rather than fall back silently.
+subtest 'generate_random_id' => sub {
+	no warnings 'once';
+
+	# Fallback path: pretend /dev/urandom is unusable, allow fallback.
+	{
+		local $miniserv::bad_urandom = 1;
+		my $sid = miniserv::generate_random_id();
+		like($sid, qr{^[0-9a-f]{32}$}, 'fallback produces 32-char lowercase hex id');
+		isnt(miniserv::generate_random_id(), $sid,
+		     'two fallback calls produce different ids');
+	}
+
+	# /dev/urandom path, when available.
+	SKIP: {
+		skip '/dev/urandom not readable', 1 if !-r '/dev/urandom';
+		local $miniserv::bad_urandom = 0;
+		my $sid = miniserv::generate_random_id();
+		like($sid, qr{^[0-9a-f]{32}$},
+		     '/dev/urandom path produces 32-char lowercase hex id');
+	}
+
+	# force_urandom=1 + bad_urandom → no fallback, returns undef.
+	{
+		local $miniserv::bad_urandom = 1;
+		is(miniserv::generate_random_id(1), undef,
+		   'force_urandom=1 with bad_urandom returns undef (no silent fallback)');
+	}
+};
+
+# check_user_time — login allowed by current date/time?
+#
+# Pure logic over a $uinfo hashref once get_user_details is stubbed. We
+# anchor allow-window tests around the current minute-of-day so they pass
+# regardless of when the suite runs.
+subtest 'check_user_time' => sub {
+	no warnings qw(redefine once);
+	my $uinfo;
+	local *miniserv::get_user_details = sub { $uinfo };
+
+	# Unknown user → allowed (returns 1 early).
+	$uinfo = undef;
+	ok(miniserv::check_user_time('alice'), 'unknown user → allowed');
+
+	# Known user with no restrictions → allowed.
+	$uinfo = { 'name' => 'alice' };
+	ok(miniserv::check_user_time('alice'),
+	   'user with no allowdays/allowhours → allowed');
+
+	my @tm = localtime(time());
+	my $today     = $tm[6];
+	my $not_today = ($today + 3) % 7;
+	my $now_min   = $tm[2] * 60 + $tm[1];
+
+	$uinfo = { 'allowdays' => [$today] };
+	ok(miniserv::check_user_time('alice'), 'current weekday in allowdays → allowed');
+
+	$uinfo = { 'allowdays' => [$not_today] };
+	ok(!miniserv::check_user_time('alice'), 'current weekday not in allowdays → denied');
+
+	$uinfo = { 'allowhours' => [$now_min - 5, $now_min + 5] };
+	ok(miniserv::check_user_time('alice'), 'current time inside allowhours window → allowed');
+
+	# A window strictly in the future of $now_min, capped so we don't wrap
+	# past 23:59 (1439). If we'd wrap, push the window into the past instead.
+	my ($lo, $hi) = $now_min + 20 < 1440
+			? ($now_min + 10, $now_min + 20)
+			: ($now_min - 20, $now_min - 10);
+	$uinfo = { 'allowhours' => [$lo, $hi] };
+	ok(!miniserv::check_user_time('alice'),
+	   'current time outside allowhours window → denied');
+};
+
+# check_user_ip — login allowed from current remote IP?
+#
+# Same shape as check_user_time: stub get_user_details, set $acptip and
+# $localip (package globals that handle_request normally `local`-izes).
+subtest 'check_user_ip' => sub {
+	no warnings qw(redefine once);
+	my $uinfo;
+	local *miniserv::get_user_details = sub { $uinfo };
+	local %miniserv::ip_match_cache   = ();
+	local $miniserv::acptip           = '1.2.3.4';
+	local $miniserv::localip          = '5.6.7.8';
+
+	$uinfo = undef;
+	ok(miniserv::check_user_ip('alice'), 'unknown user → allowed');
+
+	$uinfo = { 'name' => 'alice' };
+	ok(miniserv::check_user_ip('alice'),
+	   'no allow or deny list → allowed');
+
+	my $deny_match = '1.2.3.4';
+	my $deny_miss  = '9.9.9.9';
+	my $allow_match = '1.2.3.4';
+	my $allow_miss  = '9.9.9.9';
+
+	$uinfo = { 'name' => 'alice', 'deny' => [ $deny_match ] };
+	ok(!miniserv::check_user_ip('alice'), 'deny list matches remote → denied');
+
+	$uinfo = { 'name' => 'alice', 'deny' => [ $deny_miss ] };
+	ok(miniserv::check_user_ip('alice'), 'deny list does not match → allowed');
+
+	$uinfo = { 'name' => 'alice', 'allow' => [ $allow_match ] };
+	ok(miniserv::check_user_ip('alice'), 'allow list matches remote → allowed');
+
+	$uinfo = { 'name' => 'alice', 'allow' => [ $allow_miss ] };
+	ok(!miniserv::check_user_ip('alice'), 'allow list does not match → denied');
+};
+
+# is_group_member — primary-gid match OR membership in /etc/group
+#
+# We pin the contract using the current process's own primary group, which
+# is guaranteed to exist on any system that runs the test suite.
+subtest 'is_group_member' => sub {
+	my @pw = getpwuid($<);
+	plan skip_all => 'cannot resolve current user via getpwuid' if !@pw;
+	my $primary_gid = $pw[3];
+	my @gr = getgrgid($primary_gid);
+	plan skip_all => 'cannot resolve current primary gid via getgrgid' if !@gr;
+	my $primary_group = $gr[0];
+
+	# uinfo[3] == primary gid → match regardless of group's member list.
+	my $uinfo_match = ['test-user', 'x', 99999, $primary_gid];
+	ok(miniserv::is_group_member($uinfo_match, $primary_group),
+	   'primary gid match → member');
+
+	# Nonexistent group → 0.
+	ok(!miniserv::is_group_member($uinfo_match,
+	    '__definitely_not_a_real_group_xyzzy__'),
+	   'nonexistent group → not a member');
+
+	# A user that's neither in the group's member list nor sharing its gid.
+	my $other_group;
+	my $other_gid;
+	setgrent();
+	while (my @g = getgrent()) {
+		next if $g[2] == $primary_gid;
+		# Skip groups our synthetic user happens to be "in"
+		next if $g[3] =~ /\bdefinitely-not-in-this-group-xyzzy\b/;
+		$other_group = $g[0];
+		$other_gid   = $g[2];
+		last;
+		}
+	endgrent();
+	SKIP: {
+		skip 'no second group available on this system', 1 if !$other_group;
+		my $alien = ['definitely-not-in-this-group-xyzzy', 'x', 99999, 99999];
+		ok(!miniserv::is_group_member($alien, $other_group),
+		   'gid mismatch + not in member list → not a member');
+	}
+};
+
 done_testing();
