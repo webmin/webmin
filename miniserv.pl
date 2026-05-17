@@ -6779,15 +6779,14 @@ return $newhash eq $hash;
 }
 
 # encrypt_sha512(password, [salt])
-# Hashes a password, possibly with the given salt, with SHA512
+# Hashes a password, possibly with the given salt, with SHA512. The salt
+# arg may be a full $6$salt$hash form (verification) or a bare $6$salt$
+# (fresh hashing) — either way it must be passed to crypt() intact so
+# crypt() selects SHA512. Only synthesise a new salt when none is given.
 sub encrypt_sha512
 {
 my ($passwd, $salt) = @_;
-if ($salt =~ /^\$6\$([^\$]+)/) {
-	# Extract actual salt from already encrypted password
-	$salt = $1;
-	}
-$salt ||= '$6$'.substr(time(), -8).'$';
+$salt = '$6$'.substr(time(), -8).'$' if (!$salt || $salt !~ /^\$6\$/);
 return crypt($passwd, $salt);
 }
 
