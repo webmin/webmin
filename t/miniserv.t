@@ -54,9 +54,9 @@ our @reqlog;
 # http_error
 #
 # Call http_error with capture buffers reset. noexit=1 is REQUIRED — the
-# real sub calls exit() otherwise. shutdown(SOCK,1)/close(SOCK) at the end
-# of http_error warn because SOCK is not a real socket here; the localized
-# warn handler swallows that one specific noise.
+# real sub calls exit() otherwise. Warnings about SOCK (not a real socket)
+# and DEBUG (filehandle never opened in tests) are expected and filtered;
+# any other warning fails the test so real regressions stay visible.
 sub run_http_error {
 	my (%args) = @_;
 	@written = ();
@@ -66,12 +66,19 @@ sub run_http_error {
 	local $miniserv::reqline  = $args{reqline};
 	local $miniserv::loghost  = $args{loghost};
 	local $miniserv::authuser = $args{authuser};
-	local $SIG{__WARN__} = sub { };
+
+	my @warnings;
+	local $SIG{__WARN__} = sub { push @warnings, $_[0]; };
 	miniserv::http_error(
 		$args{code}, $args{msg}, $args{body},
 		1,             # noexit
 		$args{noerr},
 	);
+
+	my @unexpected = grep { !/\b(?:SOCK|DEBUG)\b/ } @warnings;
+	is(scalar @unexpected, 0, 'no unexpected warnings from http_error')
+		or diag("unexpected warnings:\n", @unexpected);
+
 	return join('', @written);
 }
 
