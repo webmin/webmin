@@ -244,6 +244,7 @@ system("find $usr_dir -name .git | xargs rm -rf");
 system("find $usr_dir -name .github | xargs rm -rf");
 system("find $usr_dir -name RELEASE | xargs rm -rf");
 system("find $usr_dir -name RELEASE.sh | xargs rm -rf");
+system("find $usr_dir -type d \\( -name t -o -name xt \\) | xargs rm -rf");
 if (-r "$usr_dir/$mod/EXCLUDE") {
 	system("cd $usr_dir/$mod && cat EXCLUDE | xargs rm -rf");
 	system("rm -f $usr_dir/$mod/EXCLUDE");

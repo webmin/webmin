@@ -111,8 +111,9 @@ if (!$release || !-d "$tardir/$dir") {
 			next if ($f =~ /^\./ || $f =~ /\.git$/ ||
 				 $f =~ /\.(tar|wbm|wbt)\.gz$/ ||
 				 $f eq "README.md" || $f =~ /^makemodule.*\.pl$/ ||
-				 $f eq "linux.sh" || $f eq "freebsd.sh" || 
-				 $f eq "LICENCE" || $f eq "version");
+			 	 $f eq "linux.sh" || $f eq "freebsd.sh" ||
+				 $f eq "LICENCE" || $f eq "version" ||
+				 (-d "$m/$f" && ($f eq "t" || $f eq "xt")));
 			$flist .= " $m/$f";
 			}
 		closedir(DIR);
