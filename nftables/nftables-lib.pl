@@ -1175,7 +1175,8 @@ foreach my $svc (read_etc_service_defs($services_file)) {
 foreach my $svc (setup_quick_service_defs()) {
 	merge_quick_service(\%defs, $svc);
 	}
-return sort { lc($a->{'label'}) cmp lc($b->{'label'}) } values %defs;
+my @sorted = sort { lc($a->{'label'}) cmp lc($b->{'label'}) } values %defs;
+return @sorted;
 }
 
 # service_search_text(&service)
@@ -2543,7 +2544,7 @@ foreach my $service (@services) {
 	my $port = $map->{lc($proto || '')}->{lc($service)};
 	return $port if (defined($port));
 	}
-return undef;
+return;
 }
 
 # read_etc_services([services-file])
@@ -2616,12 +2617,12 @@ return 0;
 sub configured_port_from_address
 {
 my ($value, $default) = @_;
-return undef if (!defined($value) || $value eq '');
+return if (!defined($value) || $value eq '');
 return $1 if ($value =~ /^(\d+)$/);
 return $1 if ($value =~ /^\[[^\]]+\]:(\d+)$/);
 return $1 if ($value =~ /^[^:]+:(\d+)$/);
 return $default if (defined($default) && $value =~ /\S/);
-return undef;
+return;
 }
 
 # address_is_loopback(address)
