@@ -385,4 +385,62 @@ subtest 'config change apply flag tracks pending changes' => sub {
 	   'apply needed when config change is newer than last apply');
 };
 
+subtest 'manual edit ACL is separately configurable' => sub {
+	no warnings 'once';
+	{
+		local %main::access = ( 'global' => 1 );
+		ok(main::can_edit_manual_config(),
+		   'manual edit defaults to global ACL for existing users');
+	}
+	{
+		local %main::access = ( 'global' => 0 );
+		ok(!main::can_edit_manual_config(),
+		   'manual edit is denied when global ACL default is denied');
+	}
+	{
+		local %main::access = ( 'global' => 1, 'manual' => 0 );
+		ok(!main::can_edit_manual_config(),
+		   'manual edit can be disabled for global users');
+	}
+	{
+		local %main::access = ( 'global' => 0, 'manual' => 1 );
+		ok(main::can_edit_manual_config(),
+		   'manual edit can be explicitly enabled');
+	}
+};
+
+subtest 'manual edit files respect vhost ACL' => sub {
+	my $single = File::Spec->catfile($available, 'manual-single.conf');
+	my $shared = File::Spec->catfile($available, 'manual-shared.conf');
+	write_text($single,
+		server_conf('single.example', "\troot /srv/single;\n"));
+	write_text($shared,
+		server_conf('single.example', "\troot /srv/shared-single;\n").
+		server_conf('other.example', "\troot /srv/shared-other;\n"));
+	symlink($single, File::Spec->catfile($enabled, 'manual-single.conf')) ||
+		die "Failed to symlink manual-single: $!";
+	symlink($shared, File::Spec->catfile($enabled, 'manual-shared.conf')) ||
+		die "Failed to symlink manual-shared: $!";
+	main::flush_config_cache();
+
+	{
+		local %main::access = ( 'manual' => 1,
+					'vhosts' => 'single.example' );
+		ok(main::can_edit_manual_file($single),
+		   'restricted user can manually edit their own single-server file');
+		ok(!main::can_edit_manual_file($shared),
+		   'restricted user cannot manually edit a shared server file');
+		is_deeply(
+			[ grep { $_ eq $single || $_ eq $shared }
+			  main::get_manual_config_files() ],
+			[ $single ],
+			'manual file list excludes shared files for restricted users');
+	}
+	{
+		local %main::access = ( 'manual' => 1 );
+		ok(main::can_edit_manual_file($shared),
+		   'unrestricted user can manually edit shared server files');
+	}
+};
+
 done_testing();

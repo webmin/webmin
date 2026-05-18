@@ -48,7 +48,8 @@ print &ui_tabs_start(\@tabs, "mode", $mode, 1);
 if ($access{'global'}) {
 	# Show icons for global config types
 	print &ui_tabs_start_tab("mode", "global");
-	my @gpages = ( "net", "mime", "logs", "docs", "ssi", "misc", "manual" );
+	my @gpages = ( "net", "mime", "logs", "docs", "ssi", "misc",
+		       &can_edit_manual_config() ? ( "manual" ) : ( ) );
 	&icons_table(
 		[ map { "edit_".$_.".cgi" } @gpages ],
 		[ map { $text{$_."_title"} } @gpages ],

@@ -6,11 +6,11 @@ use warnings;
 require './nginx-lib.pl';
 &ReadParse();
 our (%text, %in, %access);
-$access{'global'} || &error($text{'index_eglobal'});
+&can_edit_manual_config() || &error($text{'manual_ecannot'});
 
 &ui_print_header(undef, $text{'manual_title'}, "");
 
-my @files = &get_all_config_files();
+my @files = &get_manual_config_files();
 $in{'file'} ||= $files[0];
 &indexof($in{'file'}, @files) >= 0 || &error($text{'manual_efile'});
 
@@ -38,4 +38,3 @@ print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
-

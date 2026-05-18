@@ -570,6 +570,16 @@ if ($parent->{'type'}) {
 return &unique(@rv);
 }
 
+# get_manual_config_files([&parent])
+# Returns all config files this user can manually edit
+sub get_manual_config_files
+{
+my ($parent) = @_;
+my @files = &get_all_config_files($parent);
+return @files if (!$access{'vhosts'});
+return grep { &can_edit_manual_file($_) } @files;
+}
+
 # directive_indent(&directive, &parent, &file-lines)
 # Returns the exact whitespace prefix to use when writing a directive
 sub directive_indent
@@ -2184,6 +2194,22 @@ return 1 if (!$access{'vhosts'});
 my $name = &find_value("server_name", $server);
 return 0 if (!$name);
 return &indexoflc($name, split(/\s+/, $access{'vhosts'})) >= 0;
+}
+
+# can_edit_manual_config()
+# Returns 1 if the user can manually edit raw configuration files
+sub can_edit_manual_config
+{
+return defined($access{'manual'}) ? $access{'manual'} : $access{'global'};
+}
+
+# can_edit_manual_file(file)
+# Returns 1 if the user can manually edit some raw configuration file
+sub can_edit_manual_file
+{
+my ($file) = @_;
+return 1 if (!$access{'vhosts'});
+return &can_manage_server_file($file);
 }
 
 # can_directory(dir)

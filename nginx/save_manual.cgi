@@ -7,9 +7,9 @@ require './nginx-lib.pl';
 &ReadParseMime();
 our (%text, %in, %access);
 &error_setup($text{'manual_err'});
-$access{'global'} || &error($text{'index_eglobal'});
+&can_edit_manual_config() || &error($text{'manual_ecannot'});
 
-my @files = &get_all_config_files();
+my @files = &get_manual_config_files();
 &indexof($in{'file'}, @files) >= 0 || &error($text{'manual_efile'});
 
 # Follow links to get the real file

@@ -151,12 +151,14 @@ opt_essi_types=$1 is not a valid MIME type
 opt_essi_value_length=Maximum parameter length must be a number
 
 manual_title=Edit Configuration Files
+manual_server=Edit Configuration File
 manual_file=Editing configuration file:
 manual_ok=Switch
 manual_efile=Selected file is not part of the Nginx configuration!
 manual_test=Test new configuration before saving?
 manual_elink=Dangling symbolic link!
 manual_err=Failed to save configuration file
+manual_ecannot=You are not allowed to manually edit configuration files!
 
 server_create=Create a New Server Block
 server_edit=Edit Server Block
@@ -419,6 +421,7 @@ acl_create=Can create server blocks?
 acl_stop=Can stop and start Nginx?
 acl_root=Allowed directories for locations
 acl_global=Can edit global settings?
+acl_manual=Can manually edit raw configuration files?
 acl_logs=Can configure log files?
 acl_user=Write password files as user
 
