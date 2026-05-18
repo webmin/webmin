@@ -11,8 +11,11 @@ eval "use WebminCore;";
 our %access = &get_module_acl();
 our ($get_config_cache, $get_config_parent_cache, %list_directives_cache,
      @list_modules_cache, @open_config_files);
-our (%config, %text, %in, $module_root_directory);
+our ($last_config_change_flag, $last_restart_time_flag);
+our (%config, %text, %in, $module_root_directory, $module_var_directory);
 &set_nginx_config_defaults();
+$last_config_change_flag = $module_var_directory."/config-flag";
+$last_restart_time_flag = $module_var_directory."/restart-flag";
 
 my @lock_all_config_files_cache;
 
@@ -522,9 +525,11 @@ if ($parent->{'type'}) {
 sub flush_config_file_lines
 {
 my ($parent) = @_;
-foreach my $f (&unique(@open_config_files)) {
+my @files = &unique(@open_config_files);
+foreach my $f (@files) {
 	&flush_file_lines($f);
 	}
+&update_last_config_change() if (@files);
 @open_config_files = ( );
 }
 
@@ -1480,7 +1485,11 @@ return $? ? $out : undef;
 sub start_nginx
 {
 my $out = &backquote_logged("$config{'start_cmd'} 2>&1 </dev/null");
-return $? ? $out : undef;
+if ($?) {
+	return $out;
+	}
+&update_last_restart_time();
+return undef;
 }
 
 # apply_nginx()
@@ -1489,7 +1498,11 @@ return $? ? $out : undef;
 sub apply_nginx
 {
 my $out = &backquote_logged("$config{'apply_cmd'} 2>&1 </dev/null");
-return $? ? $out : undef;
+if ($?) {
+	return $out;
+	}
+&update_last_restart_time();
+return undef;
 }
 
 # nginx_action_links()
@@ -1502,12 +1515,43 @@ if (&is_nginx_running()) {
 	if ($access{'stop'}) {
 		push(@rv, &ui_link("stop.cgi?$args", $text{'index_stop'}));
 		}
-	push(@rv, &ui_link("restart.cgi?$args", $text{'index_restart'}));
+	my $needs = &needs_config_restart();
+	my $apply = $text{'index_apply_changes'} || $text{'index_restart'};
+	my $label = $needs ? "<b>$apply</b>" : $apply;
+	my $url = "restart.cgi?$args";
+	push(@rv, &ui_link($url, $label));
 	}
 elsif ($access{'stop'}) {
 	push(@rv, &ui_link("start.cgi?$args", $text{'index_start'}));
 	}
 return join("<br>\n", @rv);
+}
+
+# update_last_config_change()
+# Updates the flag file indicating when the config was changed
+sub update_last_config_change
+{
+&open_lock_tempfile(my $fh, ">$last_config_change_flag", 0, 1);
+&close_tempfile($fh);
+}
+
+# update_last_restart_time()
+# Updates the flag file indicating when the config was applied
+sub update_last_restart_time
+{
+&open_lock_tempfile(my $fh, ">$last_restart_time_flag", 0, 1);
+&close_tempfile($fh);
+}
+
+# needs_config_restart()
+# Returns 1 if a restart is needed after a config change
+sub needs_config_restart
+{
+my @cst = stat($last_config_change_flag);
+my @rst = stat($last_restart_time_flag);
+return 0 if (!@cst);
+return 1 if (!@rst);
+return $cst[9] > $rst[9] ? 1 : 0;
 }
 
 # this_url()
@@ -1610,6 +1654,7 @@ if ($empty) {
 		}
 	&unlink_logged($file);
 	}
+&update_last_config_change();
 return scalar(@servers);
 }
 
@@ -1723,6 +1768,7 @@ if ($err) {
 	&unlink_logged($link);
 	return &text('enable_etest', "<tt>".&html_escape($err)."</tt>");
 	}
+&update_last_config_change();
 return undef;
 }
 
@@ -1756,6 +1802,7 @@ if ($err) {
 		}
 	return &text('enable_etest', "<tt>".&html_escape($err)."</tt>");
 	}
+&update_last_config_change();
 return undef;
 }
 
@@ -2037,7 +2084,8 @@ if ($config{'add_link'}) {
 	my $link = $server->{'file'};
 	$link =~ s/^.*\///;
 	$link = $config{'add_link'}."/".$link;
-	&symlink_logged($server->{'file'}, $link);
+	&update_last_config_change()
+		if (&symlink_logged($server->{'file'}, $link));
 	}
 }
 
@@ -2049,6 +2097,7 @@ sub delete_server_link
 my ($server) = @_;
 if ($config{'add_link'}) {
 	my $file = $server->{'file'};
+	my $changed;
         my $short = $file;
         $short =~ s/^.*\///;
         opendir(LINKDIR, $config{'add_link'});
@@ -2056,10 +2105,11 @@ if ($config{'add_link'}) {
                 if ($f ne "." && $f ne ".." &&
                     (&resolve_links($config{'add_link'}."/".$f) eq $file ||
                      $short eq $f)) {
-                        &unlink_logged($config{'add_link'}."/".$f);
+                        $changed++ if (&unlink_logged($config{'add_link'}."/".$f));
                         }
                 }
         closedir(LINKDIR);
+	&update_last_config_change() if ($changed);
         }
 }
 
@@ -2074,7 +2124,8 @@ foreach my $l (@$lref) {
 	$count++ if ($l =~ /\S/);
 	}
 if (!$count) {
-	&unlink_logged($server->{'file'});
+	&update_last_config_change()
+		if (&unlink_logged($server->{'file'}));
 	}
 }
 

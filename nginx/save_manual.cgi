@@ -43,6 +43,6 @@ else {
 	&print_tempfile($fh, $in{'data'});
 	&close_tempfile($fh);
 	}
+&update_last_config_change();
 &webmin_log("manual", undef, $in{'file'});
 &redirect("");
-

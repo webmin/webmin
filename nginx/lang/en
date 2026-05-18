@@ -32,6 +32,7 @@ index_stopdesc=Shut down all running Nginx webserver processes.
 index_start=Start Nginx Webserver
 index_startdesc=Start up the Nginx webserver using the current configuration.
 index_restart=Apply Nginx Configuration
+index_apply_changes=Apply Changes
 index_restartdesc=Apply the current configuration by stopping and re-starting the Nginx webserver.
 index_delete=Delete Selected Server Blocks
 index_eglobal=You are not allowed to edit global settings

@@ -130,11 +130,17 @@ subtest 'sites-available files are manageable and ordered' => sub {
 };
 
 subtest 'disable removes only the enabled symlink' => sub {
+	no warnings 'once';
+	unlink($main::last_config_change_flag);
+	unlink($main::last_restart_time_flag);
+
 	{
 		no warnings 'redefine';
 		local *main::test_config = sub { return undef; };
 		is(main::disable_server_file($alpha), undef, 'disable succeeds');
 	}
+	ok(main::needs_config_restart(),
+	   'disable marks config as needing apply');
 
 	ok(-f $alpha, 'disable leaves the sites-available file in place');
 	ok(!-e File::Spec->catfile($enabled, 'alpha.conf'),
@@ -150,11 +156,17 @@ subtest 'disable removes only the enabled symlink' => sub {
 };
 
 subtest 'enable creates a symlink without touching the source file' => sub {
+	no warnings 'once';
+	unlink($main::last_config_change_flag);
+	unlink($main::last_restart_time_flag);
+
 	{
 		no warnings 'redefine';
 		local *main::test_config = sub { return undef; };
 		is(main::enable_server_file($beta), undef, 'enable succeeds');
 	}
+	ok(main::needs_config_restart(),
+	   'enable marks config as needing apply');
 
 	my $link = File::Spec->catfile($enabled, 'beta.conf');
 	ok(-f $beta, 'enable leaves the sites-available file in place');
@@ -164,18 +176,28 @@ subtest 'enable creates a symlink without touching the source file' => sub {
 };
 
 subtest 'legacy create/delete link helpers still manage symlinks' => sub {
+	no warnings 'once';
 	my $echo = File::Spec->catfile($available, 'echo.conf');
 	my $echo_link = File::Spec->catfile($enabled, 'echo.conf');
 	write_text($echo, server_conf('echo.example', "\troot /srv/echo;\n"));
 	my $server = { 'file' => $echo };
 
+	unlink($main::last_config_change_flag);
+	unlink($main::last_restart_time_flag);
 	main::create_server_link($server);
 	ok(-l $echo_link, 'create_server_link creates expected symlink');
 	is(readlink($echo_link), $echo, 'created symlink points to server file');
+	ok(main::needs_config_restart(),
+	   'create_server_link marks config as needing apply');
 
+	main::update_last_restart_time();
+	my $old = time() - 10;
+	utime($old, $old, $main::last_restart_time_flag);
 	main::delete_server_link($server);
 	ok(!-e $echo_link, 'delete_server_link removes expected symlink');
 	ok(-f $echo, 'delete_server_link leaves server file in place');
+	ok(main::needs_config_restart(),
+	   'delete_server_link marks config as needing apply');
 };
 
 subtest 'disabled server blocks can be deleted from available files' => sub {
@@ -340,6 +362,27 @@ subtest 'root and proxy summaries are detected' => sub {
 	     'named-location proxy summary shows the proxy target');
 	is(main::server_url($named_server), 'http://named.example/',
 	   'named-location proxy URL uses HTTP default port');
+};
+
+subtest 'config change apply flag tracks pending changes' => sub {
+	no warnings 'once';
+	unlink($main::last_config_change_flag);
+	unlink($main::last_restart_time_flag);
+
+	ok(!main::needs_config_restart(),
+	   'no apply needed when no change flag exists');
+	main::update_last_config_change();
+	ok(main::needs_config_restart(),
+	   'apply needed after config change');
+	main::update_last_restart_time();
+	ok(!main::needs_config_restart(),
+	   'apply not needed after config has been applied');
+
+	my $old = time() - 10;
+	utime($old, $old, $main::last_restart_time_flag);
+	main::update_last_config_change();
+	ok(main::needs_config_restart(),
+	   'apply needed when config change is newer than last apply');
 };
 
 done_testing();
