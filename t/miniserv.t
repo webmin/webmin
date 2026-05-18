@@ -652,16 +652,6 @@ subtest 'unix_crypt_supports_sha512' => sub {
 };
 
 # encrypt_sha512 — $6$ SHA512-crypt via libc crypt()
-#
-# KNOWN BUG, intentionally failing here: miniserv.pl:6786 captures
-# /^\$6\$([^\$]+)/ and assigns the bare salt body back to $salt, stripping
-# the $6$ prefix that libc crypt() needs to select SHA512. crypt() then
-# falls back to DES and returns a 13-char hash. The function only "works"
-# in production because password_crypt falls through to unix_crypt with
-# the original (un-corrupted) salt when encrypt_sha512's output doesn't
-# match. The correct form is in useradmin/md5-lib.pl:218 — leave the full
-# $6$salt$ untouched, only synthesise a new salt when one is absent.
-# Fix is being tracked separately; these failures are the reminder.
 subtest 'encrypt_sha512' => sub {
 	plan skip_all => 'crypt() does not support SHA512 on this system'
 		if !$have_sha512;
@@ -671,16 +661,12 @@ subtest 'encrypt_sha512' => sub {
 	cmp_ok(length($h), '>', 50,
 	       'SHA512 output is much longer than DES (DES is 13 chars)');
 
-	# Behaviour we pin regardless of the bug above:
-	# - calling the function twice with the same args is deterministic
-	# - a different password produces a different hash
-	# - the no-salt path correctly synthesises a $6$ salt
 	is  (miniserv::encrypt_sha512('password', $h), $h,
 	     'deterministic for same (password, salt) — verification round-trip');
 	isnt(miniserv::encrypt_sha512('wrong', $h), $h,
 	     'different password → different hash');
 	like(miniserv::encrypt_sha512('password'), qr{^\$6\$},
-	     'no-salt path synthesises $6$ salt (and produces real SHA512)');
+	     'no-salt path synthesises $6$ salt');
 };
 
 # password_crypt — verifies a stored hash by recomputing
