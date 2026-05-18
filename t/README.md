@@ -132,8 +132,9 @@ yourmodule/
     run-tests.t    # see nftables/t/run-tests.t for the WEBMIN_CONFIG / tmpdir setup
 ```
 
-A module's tests are reachable from `prove -lr t` at the root via the
-`-r` recursive walk.
+A module's tests are reachable from `prove -lr` at the repo root (no
+path arg, so the recursive walk starts at the cwd). `prove -lr t` only
+walks within `t/` and will miss `<module>/t/`.
 
 ## Caveats
 
