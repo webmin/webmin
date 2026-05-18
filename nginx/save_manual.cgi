@@ -10,13 +10,8 @@ our (%text, %in, %access);
 &can_edit_manual_config() || &error($text{'manual_ecannot'});
 
 my @files = &get_manual_config_files();
-&indexof($in{'file'}, @files) >= 0 || &error($text{'manual_efile'});
-
-# Follow links to get the real file
-while(-l $in{'file'}) {
-	$in{'file'} = readlink($in{'file'});
-	}
-$in{'file'} || &error($text{'manual_elink'});
+$in{'file'} = &resolve_manual_config_file($in{'file'}, @files) ||
+	&error($text{'manual_efile'});
 
 $in{'data'} =~ s/\r//g;
 my $fh = "CONF";

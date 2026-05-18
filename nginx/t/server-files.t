@@ -412,6 +412,8 @@ subtest 'manual edit ACL is separately configurable' => sub {
 subtest 'manual edit files respect vhost ACL' => sub {
 	my $single = File::Spec->catfile($available, 'manual-single.conf');
 	my $shared = File::Spec->catfile($available, 'manual-shared.conf');
+	my $single_link = File::Spec->catfile($tmp, 'manual-single-link.conf');
+	my $shared_link = File::Spec->catfile($tmp, 'manual-shared-link.conf');
 	write_text($single,
 		server_conf('single.example', "\troot /srv/single;\n"));
 	write_text($shared,
@@ -421,20 +423,28 @@ subtest 'manual edit files respect vhost ACL' => sub {
 		die "Failed to symlink manual-single: $!";
 	symlink($shared, File::Spec->catfile($enabled, 'manual-shared.conf')) ||
 		die "Failed to symlink manual-shared: $!";
+	symlink($single, $single_link) ||
+		die "Failed to symlink manual-single-link: $!";
+	symlink($shared, $shared_link) ||
+		die "Failed to symlink manual-shared-link: $!";
 	main::flush_config_cache();
 
 	{
 		local %main::access = ( 'manual' => 1,
 					'vhosts' => 'single.example' );
+		my @files = main::get_manual_config_files();
 		ok(main::can_edit_manual_file($single),
 		   'restricted user can manually edit their own single-server file');
 		ok(!main::can_edit_manual_file($shared),
 		   'restricted user cannot manually edit a shared server file');
 		is_deeply(
-			[ grep { $_ eq $single || $_ eq $shared }
-			  main::get_manual_config_files() ],
+			[ grep { $_ eq $single || $_ eq $shared } @files ],
 			[ $single ],
 			'manual file list excludes shared files for restricted users');
+		is(main::resolve_manual_config_file($single_link, @files), $single,
+		   'submitted symlink resolves to an authorized config file');
+		is(main::resolve_manual_config_file($shared_link, @files), undef,
+		   'submitted symlink to unauthorized file is rejected');
 	}
 	{
 		local %main::access = ( 'manual' => 1 );

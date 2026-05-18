@@ -575,9 +575,22 @@ return &unique(@rv);
 sub get_manual_config_files
 {
 my ($parent) = @_;
-my @files = &get_all_config_files($parent);
+my @files = map { &resolve_links($_) || $_ } &get_all_config_files($parent);
+@files = &unique(@files);
 return @files if (!$access{'vhosts'});
 return grep { &can_edit_manual_file($_) } @files;
+}
+
+# resolve_manual_config_file(file, [files...])
+# Resolves a submitted manual config file path, if it is allowed
+sub resolve_manual_config_file
+{
+my ($file, @files) = @_;
+return undef if (!$file);
+@files = &get_manual_config_files() if (!@files);
+my $rfile = &resolve_links($file);
+$rfile ||= $file;
+return &indexof($rfile, @files) >= 0 ? $rfile : undef;
 }
 
 # directive_indent(&directive, &parent, &file-lines)

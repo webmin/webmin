@@ -12,7 +12,8 @@ our (%text, %in, %access);
 
 my @files = &get_manual_config_files();
 $in{'file'} ||= $files[0];
-&indexof($in{'file'}, @files) >= 0 || &error($text{'manual_efile'});
+$in{'file'} = &resolve_manual_config_file($in{'file'}, @files) ||
+	&error($text{'manual_efile'});
 
 # Show file selector
 print &ui_form_start("edit_manual.cgi");
