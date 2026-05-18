@@ -90,15 +90,11 @@ if (@rows) {
 		my $id = &server_id($s);
 		my $name_sort = ($default ? "0 " : "1 ").
 				lc($default ? $text{'default_server_block'} : $name);
-		my $name_sort_html = &html_escape($name_sort);
-		my $name_sort_span =
-			"<span style='position:absolute;left:-10000px;".
-			"width:1px;height:1px;overflow:hidden' ".
-			"aria-hidden='true'>$name_sort_html</span>";
+		my $name_sort_attr = &quote_escape($name_sort);
 		my $shownamelink = $r->{'active'} ?
-			$name_sort_span."<a href='edit_server.cgi?id=".
+			"<a href='edit_server.cgi?id=".
 			  &urlize($id)."'>".$showname."</a>" :
-			$name_sort_span.$showname;
+			$showname;
 
 		# Extract all IPs and ports from listen directives
 		my (@ips, @ports);
@@ -121,8 +117,8 @@ if (@rows) {
 			}
 		push(@cols, { 'type' => 'string',
 			      'value' => $shownamelink,
-			      'td' => "data-sort='$name_sort_html' ".
-				      "data-order='$name_sort_html'" });
+			      'td' => "data-sort=\"$name_sort_attr\" ".
+				      "data-order=\"$name_sort_attr\"" });
 		push(@cols,
 			join("<br>", @ips),
 			join("<br>", @ports),
