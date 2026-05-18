@@ -622,10 +622,10 @@ if ($dsc_file) {
 	$diffmd5 =~ s/\s+.*\n//g;
 	my @diffst = stat($diff_file);
 
-	# Create a tar file of the module directory
+	# Create a tar file of the cleaned staged module directory
 	my $tar_file = $dsc_file;
 	$tar_file =~ s/[^\/]+$//; $tar_file .= "$prefix$mod-$ver.tar.gz";
-	system("cd $par ; tar czf $tar_file $source_mod");
+	system("cd $usr_dir ; tar czf $tar_file $mod");
 	my $md5 = `md5sum $tar_file`;
 	$md5 =~ s/\s+.*\n//g;
 	my @st = stat($tar_file);
