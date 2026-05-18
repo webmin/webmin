@@ -60,21 +60,45 @@ if ($access{'global'}) {
 # Show list of server blocks
 print &ui_tabs_start_tab("mode", "list");
 my @allservers = &find("server", $http);
-my @servers = grep { &can_edit_server($_) } @allservers;
-if (@servers) {
+my $can_files = &can_manage_server_files();
+my @add_to_files = $can_files ? &get_add_to_files() : ( );
+my %add_to_file = map { $_, 1 } @add_to_files;
+my @rows = &get_server_list_rows($http);
+if (@rows) {
 	my $can_delete = $access{'edit'};
+	my $has_proxy;
+	foreach my $r (@rows) {
+		my (undef, $proxy) = &server_root_proxy_state($r->{'server'});
+		$has_proxy ||= $proxy;
+		}
 	my @heads = ( $can_delete ? ( "" ) : ( ),
 		      $text{'index_name'},
 		      $text{'index_ip'},
 		      $text{'index_port'},
-		      $text{'index_root'} );
+		      $text{'index_root'},
+		      $has_proxy ? ( $text{'index_proxytarget'} ) : ( ),
+		      $can_files ? ( $text{'index_status'} ) : ( ),
+		      $text{'index_url'} );
 	my @data;
-	foreach my $s (@servers) {
+	foreach my $r (@rows) {
+		my $s = $r->{'server'};
 		my $name = &find_value("server_name", $s);
 		$name ||= "";
 		my $default = &is_default_server_block($s);
 		my $showname = !$default ?
 			&html_escape($name) : $text{'default_server_block'};
+		my $id = &server_id($s);
+		my $name_sort = ($default ? "0 " : "1 ").
+				lc($default ? $text{'default_server_block'} : $name);
+		my $name_sort_html = &html_escape($name_sort);
+		my $name_sort_span =
+			"<span style='position:absolute;left:-10000px;".
+			"width:1px;height:1px;overflow:hidden' ".
+			"aria-hidden='true'>$name_sort_html</span>";
+		my $shownamelink = $r->{'active'} ?
+			$name_sort_span."<a href='edit_server.cgi?id=".
+			  &urlize($id)."'>".$showname."</a>" :
+			$name_sort_span.$showname;
 
 		# Extract all IPs and ports from listen directives
 		my (@ips, @ports);
@@ -86,32 +110,40 @@ if (@servers) {
 			push(@ports, $port);
 			}
 
-		my $rootdir = &find_value("root", $s);
-		my $root = $rootdir;
-		if (!$root) {
-			my @locs = &find("location", $s);
-			my ($rootloc) = grep { $_->{'value'} eq '/' } @locs;
-			if ($rootloc) {
-				$rootdir = &find_value("root", $rootloc);
-				$root = $rootdir ||
-					"<i>$text{'index_noroot'}</i>";
+		my @cols;
+		my $status = "";
+		if ($can_files) {
+			if ($add_to_file{$r->{'file'}}) {
+				my $enabled = &server_file_enabled($r->{'file'});
+				$status = $enabled ? $text{'index_enabled'} :
+						     $text{'index_disabled'};
 				}
-			else {
-				$root = "<i>$text{'index_norootloc'}</i>";
-				}
-			$rootdir ||= "";
 			}
-		my $id = $name.";".$rootdir;
-		my @cols = (
-			"<a href='edit_server.cgi?id=".&urlize($id)."'>".
-			  $showname."</a>",
+		push(@cols, { 'type' => 'string',
+			      'value' => $shownamelink,
+			      'td' => "data-sort='$name_sort_html' ".
+				      "data-order='$name_sort_html'" });
+		push(@cols,
 			join("<br>", @ips),
 			join("<br>", @ports),
-			$root );
-		if ($can_delete && !$default) {
+			&server_root_summary($s) );
+		push(@cols, &server_proxy_summary($s)) if ($has_proxy);
+		push(@cols, $status) if ($can_files);
+		my $url = $r->{'active'} ? &server_url($s) : undef;
+		push(@cols, $url ? &ui_link(&quote_escape($url),
+			$text{'index_view'}, undef,
+			'target="_blank" rel="noopener noreferrer"') : "");
+		if ($can_delete && $r->{'active'} && !$default) {
 			unshift(@cols, { 'type' => 'checkbox',
 					 'name' => 'd',
 					 'value' => $id });
+			}
+		elsif ($can_delete && $can_files && !$r->{'active'} &&
+		       !$default && $add_to_file{$r->{'file'}}) {
+			unshift(@cols, { 'type' => 'checkbox',
+					 'name' => 'd',
+					 'value' => "file\t".$r->{'file'}.
+						    "\t".$s->{'line'} });
 			}
 		elsif ($can_delete) {
 			unshift(@cols, "");
@@ -119,10 +151,25 @@ if (@servers) {
 		push(@data, \@cols);
 		}
 	if ($can_delete) {
-		print &ui_form_columns_table(
-			"delete_servers.cgi",
-			[ [ "delete", $text{'index_delete'} ] ],
-			1, [ ], [ ], \@heads, 100, \@data);
+		my $list_form = "server_blocks_form";
+		my $has_checkbox = grep {
+			ref($_->[0]) && $_->[0]->{'type'} eq 'checkbox'
+			} @data;
+		my $links = $has_checkbox ?
+			&ui_links_row([ &select_all_link("d", 0),
+					&select_invert_link("d", 0) ]) : "";
+		my @left_buttons = ( [ "delete", $text{'index_delete'} ] );
+		my @right_buttons = $can_files ?
+			( [ "toggle", $text{'index_toggle'}, undef, undef,
+			    "form=\"$list_form\"" ] ) : ( );
+		print &ui_form_start("delete_servers.cgi", "post", undef,
+				     "id='$list_form'");
+		print $links;
+		print &ui_columns_table(\@heads, 100, \@data);
+		print $links;
+		print &ui_form_end_side_by_side($list_form,
+						\@left_buttons,
+						\@right_buttons);
 		}
 	else {
 		print &ui_columns_table(\@heads, 100, \@data);

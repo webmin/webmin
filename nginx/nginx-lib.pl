@@ -1530,6 +1530,366 @@ my $out = &backquote_logged("$config{'nginx_cmd'} -t 2>&1 </dev/null");
 return $? || $out !~ /syntax\s+is\s+ok/ ? $out : undef;
 }
 
+# can_manage_server_files()
+# Returns 1 if this system uses Debian-style available/enabled site dirs
+sub can_manage_server_files
+{
+return $config{'add_to'} && -d $config{'add_to'} &&
+       $config{'add_link'} && -d $config{'add_link'};
+}
+
+# get_add_to_files()
+# Returns config files from the directory used for new server blocks
+sub get_add_to_files
+{
+my @rv;
+if ($config{'add_to'} && -d $config{'add_to'}) {
+	opendir(ADDTO, $config{'add_to'}) || return @rv;
+	foreach my $f (sort { lc($a) cmp lc($b) } readdir(ADDTO)) {
+		next if ($f eq "." || $f eq "..");
+		my $file = $config{'add_to'}."/".$f;
+		my $rfile = &resolve_links($file);
+		next if (!$rfile || !-f $rfile || !-r $rfile);
+		push(@rv, $rfile);
+		}
+	closedir(ADDTO);
+	}
+return &unique(@rv);
+}
+
+# find_servers_in_file(file)
+# Returns server blocks parsed from one config file
+sub find_servers_in_file
+{
+my ($file) = @_;
+my $rfile = &resolve_links($file);
+$rfile ||= $file;
+return ( ) if (!-r $rfile);
+my $conf = &read_config_file($rfile);
+return grep { $_->{'file'} eq $rfile } &find_recursive("server", $conf);
+}
+
+# can_manage_server_file(file)
+# Returns 1 if all server blocks in a file are manageable by this user
+sub can_manage_server_file
+{
+my ($file) = @_;
+my $rfile = &resolve_links($file);
+$rfile ||= $file;
+return 0 if (!$rfile || !-f $rfile || !-r $rfile);
+my @servers = &find_servers_in_file($rfile);
+return 0 if (!@servers);
+foreach my $server (@servers) {
+	return 0 if (!&can_edit_server($server));
+	}
+return 1;
+}
+
+# delete_servers_from_file(file, &servers...)
+# Deletes server blocks from one config file and removes the file if empty
+sub delete_servers_from_file
+{
+my ($file, @servers) = @_;
+return 0 if (!@servers);
+my $lref = &read_file_lines($file);
+foreach my $server (sort { $b->{'line'} <=> $a->{'line'} } @servers) {
+	my $len = $server->{'eline'} - $server->{'line'} + 1;
+	splice(@$lref, $server->{'line'}, $len);
+	}
+my $empty = 1;
+foreach my $line (@$lref) {
+	if ($line =~ /\S/) {
+		$empty = 0;
+		last;
+		}
+	}
+&flush_file_lines($file);
+if ($empty) {
+	foreach my $link (&server_file_links($file)) {
+		&unlink_logged($link);
+		}
+	&unlink_logged($file);
+	}
+return scalar(@servers);
+}
+
+# get_server_list_rows(&http)
+# Returns row hashes for the server blocks list, preserving sites-available order
+sub get_server_list_rows
+{
+my ($http) = @_;
+my @allservers = &find("server", $http);
+my @servers = grep { &can_edit_server($_) } @allservers;
+my $default_first = sub {
+	return ( grep { &is_default_server_block($_->{'server'}) } @_ ),
+	       ( grep { !&is_default_server_block($_->{'server'}) } @_ );
+	};
+if (&can_manage_server_files()) {
+	my @rows;
+	my %active_by_file;
+	foreach my $s (@servers) {
+		my $file = &resolve_links($s->{'file'});
+		$file ||= $s->{'file'};
+		push(@{$active_by_file{$file}}, $s);
+		}
+	my %done_server;
+	foreach my $file (&get_add_to_files()) {
+		my @fileservers = @{$active_by_file{$file} || [ ]};
+		my $active = @fileservers ? 1 : 0;
+		if (!@fileservers) {
+			@fileservers = grep { &can_edit_server($_) }
+				      &find_servers_in_file($file);
+			}
+		foreach my $s (@fileservers) {
+			push(@rows, { 'server' => $s,
+				      'active' => $active,
+				      'file' => $file });
+			$done_server{$s}++;
+			}
+		}
+	foreach my $s (@servers) {
+		next if ($done_server{$s});
+		push(@rows, { 'server' => $s,
+			      'active' => 1,
+			      'file' => $s->{'file'} });
+		}
+	return &$default_first(@rows);
+	}
+return &$default_first(
+	map { { 'server' => $_, 'active' => 1, 'file' => $_->{'file'} } }
+	@servers);
+}
+
+# server_file_link(file)
+# Returns the enabled symlink path for a server file
+sub server_file_link
+{
+my ($file) = @_;
+return undef if (!&can_manage_server_files());
+my $short = $file;
+$short =~ s/^.*\///;
+return $config{'add_link'}."/".$short;
+}
+
+# server_file_links(file)
+# Returns enabled symlinks for a server file
+sub server_file_links
+{
+my ($file) = @_;
+my @rv;
+return @rv if (!&can_manage_server_files());
+my $rfile = &resolve_links($file);
+$rfile ||= $file;
+opendir(LINKDIR, $config{'add_link'}) || return @rv;
+foreach my $f (readdir(LINKDIR)) {
+	next if ($f eq "." || $f eq "..");
+	my $link = $config{'add_link'}."/".$f;
+	next if (!-l $link);
+	my $rlink = &resolve_links($link);
+	if ($rlink && $rlink eq $rfile) {
+		push(@rv, $link);
+		}
+	}
+closedir(LINKDIR);
+return @rv;
+}
+
+# server_file_enabled(file)
+# Returns 1 if a server file has an enabled symlink
+sub server_file_enabled
+{
+my ($file) = @_;
+return scalar(&server_file_links($file)) ? 1 : 0;
+}
+
+# enable_server_file(file)
+# Enables a server file and rolls back if nginx -t fails
+sub enable_server_file
+{
+my ($file) = @_;
+my $rfile = &resolve_links($file);
+$rfile ||= $file;
+my $link = &server_file_link($rfile);
+$link || return $text{'enable_elinkdir'};
+return undef if (&server_file_enabled($rfile));
+if (-e $link || -l $link) {
+	return &text('enable_elinkexists', "<tt>".&html_escape($link)."</tt>");
+	}
+&symlink_logged($rfile, $link) ||
+	return &text('enable_elink', "<tt>".&html_escape($link)."</tt>",
+		     "<tt>".&html_escape($!)."</tt>");
+my $err = &test_config();
+if ($err) {
+	&unlink_logged($link);
+	return &text('enable_etest', "<tt>".&html_escape($err)."</tt>");
+	}
+return undef;
+}
+
+# disable_server_file(file)
+# Disables a server file and rolls back if nginx -t fails
+sub disable_server_file
+{
+my ($file) = @_;
+my @links = &server_file_links($file);
+return undef if (!@links);
+my @restore = map { [ $_, readlink($_) ] } @links;
+my @removed;
+foreach my $link (@links) {
+	if (!&unlink_logged($link)) {
+		foreach my $r (@removed) {
+			&symlink_logged($r->[1], $r->[0])
+				if (defined($r->[1]) && !-e $r->[0] && !-l $r->[0]);
+			}
+		return &text('enable_eunlink',
+			     "<tt>".&html_escape($link)."</tt>",
+			     "<tt>".&html_escape($!)."</tt>");
+		}
+	my ($restore) = grep { $_->[0] eq $link } @restore;
+	push(@removed, $restore) if ($restore);
+	}
+my $err = &test_config();
+if ($err) {
+	foreach my $r (@restore) {
+		&symlink_logged($r->[1], $r->[0])
+			if (defined($r->[1]) && !-e $r->[0] && !-l $r->[0]);
+		}
+	return &text('enable_etest', "<tt>".&html_escape($err)."</tt>");
+	}
+return undef;
+}
+
+# proxy_pass_value(&proxy_pass)
+# Returns the target URL from a proxy_pass directive
+sub proxy_pass_value
+{
+my ($pp) = @_;
+my @w = @{$pp->{'words'}};
+return (@w ? $w[0] : undef) || $pp->{'value'};
+}
+
+# server_proxy_target(&server|&location)
+# Returns the first proxy_pass target under a server or location block
+sub server_proxy_target
+{
+my ($conf) = @_;
+my ($pp) = &find_recursive("proxy_pass", $conf);
+return undef if (!$pp);
+return &proxy_pass_value($pp);
+}
+
+# server_proxy_pairs(&server)
+# Returns location path and proxy_pass target pairs for a server block
+sub server_proxy_pairs
+{
+my ($server) = @_;
+my @rv;
+foreach my $loc (&find("location", $server)) {
+	my $path = &location_path($loc) || "/";
+	foreach my $pp (&find_recursive("proxy_pass", $loc)) {
+		my $target = &proxy_pass_value($pp);
+		push(@rv, [ $path, $target ])
+			if (defined($target) && $target ne "");
+		}
+	}
+foreach my $pp (&find("proxy_pass", $server)) {
+	my $target = &proxy_pass_value($pp);
+	push(@rv, [ "/", $target ])
+		if (defined($target) && $target ne "");
+	}
+return @rv;
+}
+
+# server_root_summary(&server)
+# Returns the root directory for a server block, or a missing-root message
+sub server_root_summary
+{
+my ($server) = @_;
+my $root = &server_root_value($server);
+return defined($root) && $root ne "" ? &html_escape($root) :
+	"<i>$text{'index_noroot'}</i>";
+}
+
+# server_root_value(&server)
+# Returns the configured root directory for a server block
+sub server_root_value
+{
+my ($server) = @_;
+my $root = &find_value("root", $server);
+return $root if ($root);
+
+my @locs = &find("location", $server);
+my ($rootloc) = grep { &location_path($_) eq '/' } @locs;
+if ($rootloc) {
+	$root = &find_value("root", $rootloc);
+	return $root if ($root);
+	}
+return undef;
+}
+
+# server_proxy_summary(&server)
+# Returns the most relevant proxy target for a server block
+sub server_proxy_summary
+{
+my ($server) = @_;
+my @pairs = &server_proxy_pairs($server);
+return "<i>$text{'index_noproxy'}</i>" if (!@pairs);
+return join("<br>", map {
+	&html_escape($_->[0])." &#x21fe; ".&html_escape($_->[1])
+	} @pairs);
+}
+
+# server_root_proxy_summary(&server)
+# Returns the root directory or most relevant proxy target for a server block
+sub server_root_proxy_summary
+{
+my ($server) = @_;
+my $root = &server_root_value($server);
+return &html_escape($root) if (defined($root) && $root ne "");
+my $pp = &server_proxy_target($server);
+return &text('server_pp', "<tt>".&html_escape($pp)."</tt>")
+	if ($pp);
+return &server_root_summary($server);
+}
+
+# server_root_proxy_state(&server)
+# Returns booleans for whether a server has root and proxy_pass directives
+sub server_root_proxy_state
+{
+my ($server) = @_;
+my $has_root = &find_recursive("root", $server) ? 1 : 0;
+my $has_proxy = &server_proxy_target($server) ? 1 : 0;
+return ($has_root, $has_proxy);
+}
+
+# server_url(&server)
+# Returns the browser URL for a server block
+sub server_url
+{
+my ($server) = @_;
+my $name = &find_value("server_name", $server);
+return undef if (&is_default_server_block($server));
+return undef if (!$name || $name !~ /^[A-Za-z0-9.-]+$/);
+
+my ($best_scheme, $best_port);
+foreach my $l (&find("listen", $server)) {
+	my @w = @{$l->{'words'}};
+	my $addr = shift(@w);
+	next if (!$addr);
+	my (undef, $port) = &split_ip_port($addr);
+	my $ssl = grep { $_ eq "ssl" } @w;
+	my $scheme = $ssl || $port == 443 ? "https" : "http";
+	if (!$best_scheme || $scheme eq "https") {
+		($best_scheme, $best_port) = ($scheme, $port);
+		}
+	}
+$best_scheme ||= "http";
+$best_port ||= $best_scheme eq "https" ? 443 : 80;
+$best_port = undef if ($best_scheme eq "http" && $best_port == 80 ||
+		       $best_scheme eq "https" && $best_port == 443);
+return $best_scheme."://".$name.($best_port ? ":".$best_port : "")."/";
+}
+
 # find_server(id)
 # Convenience function to find an HTTP server object with some ID
 sub find_server

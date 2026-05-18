@@ -26,6 +26,12 @@ elsif ($type eq 'server') {
 	return &text('log_'.$action.'_server',
 		     "<tt>".&html_escape($object)."</tt>");
 	}
+elsif ($type eq 'servers') {
+	return &text('log_'.$action.'_servers', $object);
+	}
+elsif ($type eq 'serverfile') {
+	return &text('log_'.$action.'_serverfile', $object);
+	}
 elsif ($type eq 'location') {
 	return &text('log_'.$action.'_location',
 		     "<tt>".&html_escape($object)."</tt>",
@@ -41,4 +47,3 @@ else {
 	}
 return undef;
 }
-
