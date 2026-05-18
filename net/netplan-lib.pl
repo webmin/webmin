@@ -165,6 +165,30 @@ foreach my $f (glob("$netplan_dir/*.yaml")) {
 return @rv;
 }
 
+# yaml_directive_indent(&directive, default-spaces)
+# Returns the indentation to use for an existing or new YAML directive.
+sub yaml_directive_indent
+{
+my ($yaml, $def) = @_;
+my $indent = $yaml && defined($yaml->{'indent'}) ? $yaml->{'indent'} : $def;
+return " " x $indent;
+}
+
+# yaml_child_indent(&directive, default-spaces)
+# Returns the indentation step used by an existing YAML directive's children.
+sub yaml_child_indent
+{
+my ($yaml, $def) = @_;
+if ($yaml && $yaml->{'members'}) {
+	foreach my $m (@{$yaml->{'members'}}) {
+		if (defined($m->{'indent'}) && $m->{'indent'} > $yaml->{'indent'}) {
+			return $m->{'indent'} - $yaml->{'indent'};
+			}
+		}
+	}
+return $def;
+}
+
 # save_interface(&details, [&all-interfaces])
 # Create or update a boot-time interface
 sub save_interface
@@ -190,22 +214,25 @@ if ($iface->{'virtual'} ne '') {
 	}
 else {
 	# Build interface config lines
-	my $id = " " x 8;
+	my $id = &yaml_directive_indent($iface->{'yaml'}, 8);
+	my $step = &yaml_child_indent($iface->{'yaml'}, 4);
+	my $cid = $id.(" " x $step);
+	my $gid = $cid.(" " x $step);
 	my @lines;
 	push(@lines, $id.$iface->{'fullname'}.":");
 	my @addrs;
 	if (!$iface->{'up'}) {
-		push(@lines, $id."    "."optional: true");
+		push(@lines, $cid."optional: true");
 		}
 	if ($iface->{'dhcp'}) {
-		push(@lines, $id."    "."dhcp4: true");
+		push(@lines, $cid."dhcp4: true");
 		}
 	elsif ($iface->{'address'}) {
 		push(@addrs, $iface->{'address'}."/".
 			     &mask_to_prefix($iface->{'netmask'}));
 		}
 	if ($iface->{'auto6'}) {
-		push(@lines, $id."    "."dhcp6: true");
+		push(@lines, $cid."dhcp6: true");
 		}
 	for(my $i=0; $i<@{$iface->{'address6'}}; $i++) {
 		push(@addrs, $iface->{'address6'}->[$i]."/".
@@ -218,37 +245,37 @@ else {
 			}
 		}
 	if (@addrs) {
-		push(@lines, $id."    "."addresses: [".
+		push(@lines, $cid."addresses: [".
 				&join_addr_list(@addrs)."]");
 		}
 	if ($iface->{'gateway'}) {
-		push(@lines, $id."    "."gateway4: ".$iface->{'gateway'});
+		push(@lines, $cid."gateway4: ".$iface->{'gateway'});
 		}
 	if ($iface->{'gateway6'}) {
-		push(@lines, $id."    "."gateway6: ".$iface->{'gateway6'});
+		push(@lines, $cid."gateway6: ".$iface->{'gateway6'});
 		}
 	if ($iface->{'nameserver'}) {
-		push(@lines, $id."    "."nameservers:");
-		push(@lines, $id."        "."addresses: [".
+		push(@lines, $cid."nameservers:");
+		push(@lines, $gid."addresses: [".
 			     &join_addr_list(@{$iface->{'nameserver'}})."]");
 		if ($iface->{'search'}) {
-			push(@lines, $id."        "."search: [".
+			push(@lines, $gid."search: [".
 			     &join_addr_list(@{$iface->{'search'}})."]");
 			}
 		}
 	if ($iface->{'ether'}) {
-		push(@lines, $id."    "."macaddress: ".$iface->{'ether'});
+		push(@lines, $cid."macaddress: ".$iface->{'ether'});
 		}
 	if ($iface->{'routes'}) {
-		push(@lines, &yaml_lines($iface->{'routes'}, $id."    "));
+		push(@lines, &yaml_lines($iface->{'routes'}, $cid, $step));
 		}
 	if ($iface->{'bridgeto'}) {
-		push(@lines, $id."    "."interfaces: [".$iface->{'bridgeto'}."]");
-		push(@lines, $id."    "."parameters:");
-		push(@lines, $id."        "."stp: ".
+		push(@lines, $cid."interfaces: [".$iface->{'bridgeto'}."]");
+		push(@lines, $cid."parameters:");
+		push(@lines, $gid."stp: ".
 			($iface->{'bridgestp'} eq 'on' ? 'true' : 'false'));
 		if ($iface->{'bridgefd'}) {
-			push(@lines, $id."        "."forward-delay: ".
+			push(@lines, $gid."forward-delay: ".
 				     $iface->{'bridgefd'});
 			}
 		}
@@ -259,7 +286,7 @@ else {
 	if ($iface->{'yaml'}) {
 		foreach my $y (@{$iface->{'yaml'}->{'members'}}) {
 			next if (&indexof($y->{'name'}, @poss) >= 0);
-			push(@lines, &yaml_lines($y, $id."    "));
+			push(@lines, &yaml_lines($y, $cid, $step));
 			}
 		}
 
@@ -610,7 +637,29 @@ return ( "/etc/hostname", "/etc/HOSTNAME", "/etc/mailname" );
 # Apply the interface and routing settings
 sub apply_network
 {
-&system_logged("(cd / ; netplan apply) >/dev/null 2>&1");
+my $err = &validate_netplan_config();
+return $err if ($err);
+my $out;
+my $cmd = "(cd / && ".quotemeta(&netplan_command())." apply)";
+my $rv = &execute_command_logged($cmd, undef, \$out, \$out);
+return $rv ? $out || "netplan apply failed" : undef;
+}
+
+# validate_netplan_config()
+# Check that the current YAML can be rendered before applying it.
+sub validate_netplan_config
+{
+my $out;
+my $cmd = "(cd / && ".quotemeta(&netplan_command())." generate)";
+my $rv = &execute_command_logged($cmd, undef, \$out, \$out);
+return $rv ? $out || "netplan generate failed" : undef;
+}
+
+# netplan_command()
+# Returns the netplan command path.
+sub netplan_command
+{
+return &has_command("netplan") || "netplan";
 }
 
 # get_default_gateway()
@@ -728,13 +777,49 @@ sub os_save_dns_config
 {
 my ($conf) = @_;
 my @boot = &boot_interfaces();
-my @fix = grep { $_->{'nameserver'} } @boot;
-@fix = @boot if (!@fix);
-foreach my $iface (@fix) {
-	$iface->{'nameserver'} = $conf->{'nameserver'};
-	$iface->{'search'} = $conf->{'domain'};
-	&save_interface($iface);
+my $newns = @{$conf->{'nameserver'} || []} ? $conf->{'nameserver'} : undef;
+my $newsearch = @{$conf->{'domain'} || []} ? $conf->{'domain'} : undef;
+my @fix = grep { (!defined($_->{'virtual'}) || $_->{'virtual'} eq '') &&
+		  $_->{'nameserver'} } @boot;
+if (!@fix) {
+	@fix = grep { (!defined($_->{'virtual'}) || $_->{'virtual'} eq '') &&
+		      $_->{'name'} !~ /^lo/ } @boot;
+	@fix = @fix ? ( $fix[0] ) : ( );
 	}
+my $need_apply = 0;
+foreach my $iface (@fix) {
+	next if (&same_list($iface->{'nameserver'}, $newns) &&
+		 &same_list($iface->{'search'}, $newsearch));
+	if ($newns) {
+		$iface->{'nameserver'} = $newns;
+		}
+	else {
+		delete($iface->{'nameserver'});
+		}
+	if ($newsearch) {
+		$iface->{'search'} = $newsearch;
+		}
+	else {
+		delete($iface->{'search'});
+		}
+	&save_interface($iface, \@boot);
+	$need_apply = 1;
+	}
+return ($need_apply, 1);
+}
+
+# same_list(&list1, &list2)
+# Returns 1 if two optional array refs contain the same values.
+sub same_list
+{
+my ($a, $b) = @_;
+my @a = $a ? @$a : ( );
+my @b = $b ? @$b : ( );
+return 0 if (@a != @b);
+for(my $i=0; $i<@a; $i++) {
+	return 0 if ($a[$i] ne $b[$i]);
+	}
+return 1;
 }
 
 # read_yaml_file(file)
@@ -754,7 +839,8 @@ foreach my $origl (@$lref) {
 	if ($l =~ /^(\s*)(\S+):\s*(.*)/) {
 		# Name and possibly value
 		my $i = length($1);
-		if ($i >= $lastdir->{'indent'} + 2 &&
+		if ($lastdir &&
+		    $i >= $lastdir->{'indent'} + 2 &&
 		    ref($lastdir->{'value'}) eq 'ARRAY' &&
 		    @{$lastdir->{'value'}} &&
 		    ref($lastdir->{'value'}->[0]) eq 'HASH') {
@@ -844,11 +930,12 @@ foreach my $c (@$conf) {
 	}
 }
 
-# yaml_lines(&directive, indent-string)
+# yaml_lines(&directive, indent-string, [indent-step])
 # Converts a YAML directive into text lines
 sub yaml_lines
 {
-my ($yaml, $id) = @_;
+my ($yaml, $id, $step) = @_;
+$step ||= 4;
 my @rv;
 my $v = $id.$yaml->{'name'}.":";
 if (ref($yaml->{'value'}) eq 'ARRAY') {
@@ -878,7 +965,7 @@ else {
 	}
 if ($yaml->{'members'}) {
 	foreach my $m (@{$yaml->{'members'}}) {
-		push(@rv, &yaml_lines($m, $id."    "));
+		push(@rv, &yaml_lines($m, $id.(" " x $step), $step));
 		}
 	}
 return @rv;

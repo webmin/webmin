@@ -968,7 +968,8 @@ if ($use_suse_dns) {
 
 # Update resolv.conf from network interfaces config
 if ($need_apply) {
-	&apply_network();
+	my $err = &apply_network();
+	&error("<pre>".&html_escape($err)."</pre>") if ($err);
 	}
 }
 
@@ -1007,4 +1008,3 @@ else {
 }
 
 1;
-
