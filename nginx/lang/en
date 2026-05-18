@@ -210,14 +210,14 @@ delete_err=Failed to delete server blocks
 delete_eaction=No action was selected
 delete_enone=No server blocks were selected to delete
 delete_edefault=The default server block cannot be deleted
-enable_err=Failed to change server file status
+enable_err=Failed to change server file state
 enable_enone=No manageable server files were selected
 enable_efile=Server file does not exist or cannot be managed
 enable_elinkdir=No enabled server-block links directory is configured
 enable_elink=Failed to create symbolic link $1 : $2
 enable_eunlink=Failed to remove symbolic link $1 : $2
 enable_elinkexists=The symbolic link $1 already exists
-enable_etest=Nginx configuration test failed after changing the server file status : $1
+enable_etest=Nginx configuration test failed after changing the server file state : $1
 
 slogs_title=Server Block Logging
 slogs_header=Log file options
