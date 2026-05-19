@@ -453,4 +453,69 @@ subtest 'manual edit files respect vhost ACL' => sub {
 	}
 };
 
+subtest 'Virtualmin-managed server files cannot be toggled directly' => sub {
+	my $enabled_domain = File::Spec->catfile($available, 'vm-enabled.conf');
+	my $disabled_domain = File::Spec->catfile($available, 'vm-disabled.conf');
+	write_text($enabled_domain,
+		server_conf('vm-enabled.example www.vm-enabled.example',
+			    "\troot /srv/vm-enabled;\n"));
+	write_text($disabled_domain,
+		server_conf('vm-disabled.example',
+			    "\troot /srv/vm-disabled;\n"));
+
+	{
+		no warnings qw(redefine once);
+		local *main::virtualmin_available = sub { return 1; };
+		local *main::virtualmin_domain_by_name = sub {
+			my ($name) = @_;
+			return $name eq 'vm-enabled.example' ?
+				{ 'dom' => $name, 'id' => '12345',
+				  'disabled' => '' } :
+			       $name eq 'vm-disabled.example' ?
+				{ 'dom' => $name, 'id' => '67890',
+				  'disabled' => 'web' } :
+				undef;
+			};
+
+		my $disable_err =
+			main::virtualmin_server_file_state_error($enabled_domain,
+								 'disable');
+		my $enabled_state = main::server_file_state($enabled_domain);
+		is($enabled_state->{'source'}, 'virtualmin',
+		   'Virtualmin is the effective state source for managed files');
+		ok($enabled_state->{'enabled'},
+		   'Virtualmin enabled domain is reported as enabled');
+		is(main::server_file_toggle_action($enabled_domain), 'disable',
+		   'toggle action follows the Virtualmin enabled state');
+		like($disable_err, qr/currently enabled/,
+		     'Virtualmin state is included for enabled domains');
+		like($disable_err, qr/Disable Virtual Server/,
+		     'disabling directs users to Virtualmin disable action');
+		like($disable_err,
+		     qr{virtual-server/disable_domain\.cgi\?dom=12345},
+		     'disabling links to the Virtualmin disable form');
+
+		my $enable_err =
+			main::virtualmin_server_file_state_error($disabled_domain,
+								 'enable');
+		my $disabled_state = main::server_file_state($disabled_domain);
+		is($disabled_state->{'source'}, 'virtualmin',
+		   'Virtualmin remains the state source for disabled domains');
+		ok(!$disabled_state->{'enabled'},
+		   'Virtualmin disabled domain is reported as disabled');
+		is(main::server_file_toggle_action($disabled_domain), 'enable',
+		   'toggle action follows the Virtualmin disabled state');
+		like($enable_err, qr/currently disabled/,
+		     'Virtualmin state is included for disabled domains');
+		like($enable_err, qr/Enable Virtual Server/,
+		     'enabling directs users to Virtualmin enable action');
+		like($enable_err,
+		     qr{virtual-server/enable_domain\.cgi\?dom=67890},
+		     'enabling links to the Virtualmin enable form');
+
+		is(main::virtualmin_server_file_state_error($alpha, 'disable'),
+		   undef, 'non-Virtualmin server files can still be toggled');
+	}
+};
+
 done_testing();

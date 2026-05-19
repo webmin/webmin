@@ -1829,6 +1829,122 @@ if ($err) {
 return undef;
 }
 
+# virtualmin_available()
+# Returns 1 if Virtualmin is installed and supported on this system
+sub virtualmin_available
+{
+return $main::nginx_virtualmin_available
+	if (defined($main::nginx_virtualmin_available));
+$main::nginx_virtualmin_available = &foreign_check("virtual-server");
+return $main::nginx_virtualmin_available;
+}
+
+# virtualmin_domain_by_name(name)
+# Returns a Virtualmin domain object by domain name, if one exists
+sub virtualmin_domain_by_name
+{
+my ($name) = @_;
+return undef if (!&virtualmin_available());
+return $main::nginx_virtualmin_domain_by_name_cache{$name}
+	if (exists($main::nginx_virtualmin_domain_by_name_cache{$name}));
+&foreign_require("virtual-server");
+my $d = &virtual_server::get_domain_by("dom", $name);
+$main::nginx_virtualmin_domain_by_name_cache{$name} = $d;
+return $d;
+}
+
+# server_names(&server)
+# Returns all names from server_name directives in a server block
+sub server_names
+{
+my ($server) = @_;
+my @rv;
+foreach my $sn (&find("server_name", $server)) {
+	push(@rv, @{$sn->{'words'} || [ ]});
+	if (!@{$sn->{'words'} || [ ]} && $sn->{'value'}) {
+		push(@rv, $sn->{'value'});
+		}
+	}
+return grep { $_ && $_ ne "_" && $_ ne "-" } &unique(@rv);
+}
+
+# virtualmin_domain_for_server_file(file)
+# Returns the Virtualmin domain object for a server file, if any
+sub virtualmin_domain_for_server_file
+{
+my ($file) = @_;
+return undef if (!&virtualmin_available());
+my $rfile = &resolve_links($file);
+$rfile ||= $file;
+return $main::nginx_virtualmin_domain_for_file_cache{$rfile}
+	if (exists($main::nginx_virtualmin_domain_for_file_cache{$rfile}));
+foreach my $server (&find_servers_in_file($file)) {
+	foreach my $name (&server_names($server)) {
+		my $d = &virtualmin_domain_by_name($name);
+		if ($d) {
+			$main::nginx_virtualmin_domain_for_file_cache{$rfile} = $d;
+			return $d;
+			}
+		}
+	}
+$main::nginx_virtualmin_domain_for_file_cache{$rfile} = undef;
+return undef;
+}
+
+# server_file_state(file)
+# Returns the effective enabled state for a server file
+sub server_file_state
+{
+my ($file) = @_;
+my $d = &virtualmin_domain_for_server_file($file);
+if ($d) {
+	return { 'enabled' => $d->{'disabled'} ? 0 : 1,
+		 'source' => 'virtualmin',
+		 'domain' => $d };
+	}
+return { 'enabled' => &server_file_enabled($file) ? 1 : 0,
+	 'source' => 'nginx' };
+}
+
+# server_file_toggle_action(file)
+# Returns the action needed to toggle a server file's effective state
+sub server_file_toggle_action
+{
+my ($file) = @_;
+return &server_file_state($file)->{'enabled'} ? "disable" : "enable";
+}
+
+# virtualmin_domain_state_link(&domain, enabled?)
+# Returns a link to the Virtualmin state change form for some domain
+sub virtualmin_domain_state_link
+{
+my ($d, $enabled) = @_;
+my $page = $enabled ? "disable_domain.cgi" : "enable_domain.cgi";
+my $label = $enabled ? $text{'enable_virtualmin_disable_label'} :
+		       $text{'enable_virtualmin_enable_label'};
+my $url = "../virtual-server/".$page."?dom=".&urlize($d->{'id'});
+return &ui_link(&quote_escape($url), "\"".$label."\"");
+}
+
+# virtualmin_server_file_state_error(file, action)
+# Returns an error if a Virtualmin-owned site is being enabled or disabled here
+sub virtualmin_server_file_state_error
+{
+my ($file, $action) = @_;
+return undef if ($action ne "enable" && $action ne "disable");
+my $state_info = &server_file_state($file);
+return undef if ($state_info->{'source'} ne "virtualmin");
+my $d = $state_info->{'domain'};
+return undef if (!$d);
+my $state = lc($state_info->{'enabled'} ? $text{'index_enabled'} :
+					  $text{'index_disabled'});
+my $dom = "<tt>".&html_escape($d->{'dom'})."</tt>";
+my $link = &virtualmin_domain_state_link($d, $state_info->{'enabled'});
+return $state_info->{'enabled'} ?
+	&text('enable_evirtualmin_disable', $dom, $state, $link) :
+	&text('enable_evirtualmin_enable', $dom, $state, $link);
+}
+
 # proxy_pass_value(&proxy_pass)
 # Returns the target URL from a proxy_pass directive
 sub proxy_pass_value

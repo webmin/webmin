@@ -221,6 +221,10 @@ enable_elink=Failed to create symbolic link $1 : $2
 enable_eunlink=Failed to remove symbolic link $1 : $2
 enable_elinkexists=The symbolic link $1 already exists
 enable_etest=Nginx configuration test failed after changing the server file state : $1
+enable_evirtualmin_disable=This Nginx server block is managed by Virtualmin virtual server $1, which is currently $2. Site disabling should be done in Virtualmin using $3.
+enable_evirtualmin_enable=This Nginx server block is managed by Virtualmin virtual server $1, which is currently $2. Site enabling should be done in Virtualmin using $3.
+enable_virtualmin_disable_label=Disable and Delete &#x21fe; Disable Virtual Server
+enable_virtualmin_enable_label=Disable and Delete &#x21fe; Enable Virtual Server
 
 slogs_title=Server Block Logging
 slogs_header=Log file options

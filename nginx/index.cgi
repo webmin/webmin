@@ -111,7 +111,8 @@ if (@rows) {
 		my $status = "";
 		if ($can_files) {
 			if ($add_to_file{$r->{'file'}}) {
-				my $enabled = &server_file_enabled($r->{'file'});
+				my $enabled =
+					&server_file_state($r->{'file'})->{'enabled'};
 				$status = $enabled ? $text{'index_enabled'} :
 						     $text{'index_disabled'};
 				}

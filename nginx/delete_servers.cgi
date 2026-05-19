@@ -33,12 +33,16 @@ if ($file_action) {
 		}
 	my @files = keys %files;
 	@files || &error($text{'enable_enone'});
+	my %file_actions;
 	foreach my $file (@files) {
-		my $err = $file_action eq "toggle" ?
-			&server_file_enabled($file) ?
-				&disable_server_file($file) :
-				&enable_server_file($file) :
-			$file_action eq "enable" ?
+		my $action = $file_action eq "toggle" ?
+				&server_file_toggle_action($file) : $file_action;
+		my $err = &virtualmin_server_file_state_error($file, $action);
+		$err && &error($err);
+		$file_actions{$file} = $action;
+		}
+	foreach my $file (@files) {
+		my $err = $file_actions{$file} eq "enable" ?
 				&enable_server_file($file) :
 				&disable_server_file($file);
 		$err && &error($err);
