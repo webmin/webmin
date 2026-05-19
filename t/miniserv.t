@@ -821,15 +821,21 @@ subtest 'check_user_time' => sub {
 	$uinfo = { 'allowdays' => [$not_today] };
 	ok(!miniserv::check_user_time('alice'), 'current weekday not in allowdays → denied');
 
-	$uinfo = { 'allowhours' => [$now_min - 5, $now_min + 5] };
+	# Build a window that contains $now_min and is clamped to [0, 1439]
+	# so we never depend on negative bounds happening to compare correctly.
+	my $in_lo = $now_min >= 5    ? $now_min - 5 : 0;
+	my $in_hi = $now_min <= 1434 ? $now_min + 5 : 1439;
+	$uinfo = { 'allowhours' => [$in_lo, $in_hi] };
 	ok(miniserv::check_user_time('alice'), 'current time inside allowhours window → allowed');
 
-	# A window strictly in the future of $now_min, capped so we don't wrap
-	# past 23:59 (1439). If we'd wrap, push the window into the past instead.
-	my ($lo, $hi) = $now_min + 20 < 1440
-			? ($now_min + 10, $now_min + 20)
-			: ($now_min - 20, $now_min - 10);
-	$uinfo = { 'allowhours' => [$lo, $hi] };
+	# A fixed window strictly disjoint from $now_min and entirely within
+	# [0, 1439]. Pick the half-day opposite the current time: morning →
+	# evening window, afternoon/night → early-morning window. Either way
+	# the window cannot contain $now_min, and the bounds stay valid.
+	my ($out_lo, $out_hi) = $now_min < 720
+				? (1380, 1430)   # 23:00–23:50
+				: (10,   60);    # 00:10–01:00
+	$uinfo = { 'allowhours' => [$out_lo, $out_hi] };
 	ok(!miniserv::check_user_time('alice'),
 	   'current time outside allowhours window → denied');
 };
@@ -912,6 +918,522 @@ subtest 'is_group_member' => sub {
 		ok(!miniserv::is_group_member($alien, $other_group),
 		   'gid mismatch + not in member list → not a member');
 	}
+};
+
+# matches_cron — combined range/step (the `1-10/2` branch is not covered above)
+subtest 'matches_cron (range/step)' => sub {
+	ok( miniserv::matches_cron('2-10/2',  4, 0), 'inside range, divisible by step → match');
+	ok(!miniserv::matches_cron('2-10/2',  3, 0), 'inside range, indivisible → miss');
+	ok(!miniserv::matches_cron('2-10/2', 12, 0), 'outside range → miss');
+	ok( miniserv::matches_cron('0-30/15', 15, 0), 'step matches at boundary');
+};
+
+# indexof — duplicate / undef handling
+subtest 'indexof (extras)' => sub {
+	# Duplicates: first hit wins.
+	is(miniserv::indexof('a', 'a', 'b', 'a'), 0,
+	   'duplicate needle returns first index');
+	# Numeric needle compared with `eq` to a string element.
+	is(miniserv::indexof(1, '0', '1', '2'), 1,
+	   'numeric needle matches stringwise');
+};
+
+# get_type — the regex is /\.([A-z0-9]+)$/ — `[A-z]` covers more than letters.
+subtest 'get_type (extras)' => sub {
+	no warnings 'once';
+	local %miniserv::mime = (HTML => 'text/html-upper');
+	# Extension lookup is case-sensitive (the hash key wins or loses literally).
+	is(miniserv::get_type('foo.HTML'), 'text/html-upper',
+	   'extension hash lookup is case-sensitive');
+	is(miniserv::get_type('foo.html'), 'text/plain',
+	   'differently-cased miss falls back to text/plain');
+	# Empty extension — pattern needs at least one char after the dot.
+	is(miniserv::get_type('foo.'), 'text/plain',
+	   'empty extension falls through');
+};
+
+# is_mobile_useragent — config-driven `@mobile_agents` extension list
+subtest 'is_mobile_useragent (config-driven extras)' => sub {
+	no warnings 'once';
+	local @miniserv::mobile_agents = ('MyCustomBrowser');
+
+	ok( miniserv::is_mobile_useragent('Foo MyCustomBrowser/1.0'),
+	    'config-supplied substring matches');
+	ok(!miniserv::is_mobile_useragent('Foo OtherBrowser/1.0'),
+	    'unrelated UA still not flagged');
+	# Text-mode browsers (Lynx, Links) are in the hard-coded prefix list.
+	ok(miniserv::is_mobile_useragent('Lynx/2.8.9rel.1'), 'Lynx prefix flagged');
+	ok(miniserv::is_mobile_useragent('Links (2.21; Linux)'), 'Links prefix flagged');
+};
+
+# urlize — high-bit / control-character behaviour
+subtest 'urlize (extras)' => sub {
+	# Non-ASCII bytes — must be percent-encoded.
+	my $out = miniserv::urlize("\xc3\xa9");        # UTF-8 'é'
+	like($out, qr/^%[0-9A-Fa-f]{2}%[0-9A-Fa-f]{2}$/,
+	     'high-bit UTF-8 bytes are percent-encoded');
+	# Control characters.
+	is(miniserv::urlize("\n"), '%0A', 'newline encoded');
+	is(miniserv::urlize("\t"), '%09', 'tab encoded');
+};
+
+# simplify_path — additional adversarial inputs
+subtest 'simplify_path (extras)' => sub {
+	my $bogus;
+	# An empty string normalises to a bare slash.
+	is(miniserv::simplify_path('', $bogus), '/', 'empty string → /');
+	# A trailing slash is preserved? Run it and pin whatever the contract is.
+	is(miniserv::simplify_path('/foo/', $bogus), '/foo',
+	   'trailing slash collapses');
+	# ".." mixed with concrete segments collapses correctly.
+	is(miniserv::simplify_path('/a/b/c/../../d', $bogus), '/a/d',
+	   'multiple .. pop the right number of segments');
+	is($bogus, 0, '.. that stays in-bounds is not bogus');
+};
+
+# make_datestr — log timestamp format
+subtest 'make_datestr' => sub {
+	no warnings 'once';
+	local @miniserv::month = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
+	local $miniserv::timezone = '+0000';
+
+	my $d = miniserv::make_datestr();
+	# Format: DD/Mon/YYYY:HH:MM:SS +0000 (Apache combined-log shape).
+	like($d, qr{^\d{2}/(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/\d{4}:\d{2}:\d{2}:\d{2}\s\+0000$},
+	     'datestr matches Apache combined-log shape');
+};
+
+# getenv — case-insensitive env var lookup
+subtest 'getenv' => sub {
+	local %ENV = (FOO => 'upper', bar => 'lower');
+	is(miniserv::getenv('foo'), 'upper', 'lc lookup finds uc-set var');
+	is(miniserv::getenv('FOO'), 'upper', 'uc lookup finds uc-set var');
+	is(miniserv::getenv('BAR'), 'lower', 'uc lookup falls through to lc-set var');
+	is(miniserv::getenv('bar'), 'lower', 'lc lookup finds lc-set var');
+	is(miniserv::getenv('missing'), undef, 'missing var returns undef');
+};
+
+# should_gzip_file — content-type-class allow/deny
+subtest 'should_gzip_file' => sub {
+	ok( miniserv::should_gzip_file('foo.html'), 'html → gzip ok');
+	ok( miniserv::should_gzip_file('foo.css'),  'css → gzip ok');
+	ok( miniserv::should_gzip_file('foo.js'),   'js → gzip ok');
+	ok( miniserv::should_gzip_file('noext'),    'no extension → gzip ok');
+	ok(!miniserv::should_gzip_file('foo.png'),  'png skipped');
+	ok(!miniserv::should_gzip_file('foo.jpg'),  'jpg skipped');
+	ok(!miniserv::should_gzip_file('foo.JPEG'), 'JPEG (uppercase) skipped');
+	ok(!miniserv::should_gzip_file('foo.tif'),  'tif skipped');
+};
+
+# get_expires_time — per-path expiry table with default fallback
+subtest 'get_expires_time' => sub {
+	no warnings 'once';
+	local @miniserv::expires_paths = (
+		[ '\.css$', 3600  ],
+		[ '\.js$',  86400 ],
+		);
+	local %miniserv::config = ('expires' => 60);
+
+	is(miniserv::get_expires_time('/x.css'), 3600,
+	   'matching regexp → its expiry');
+	is(miniserv::get_expires_time('/x.js'),  86400,
+	   'second matching regexp → its expiry');
+	is(miniserv::get_expires_time('/x.html'), 60,
+	   'no match → falls back to config{expires}');
+	# Case-insensitivity is part of the contract (path !~ /$re/i).
+	is(miniserv::get_expires_time('/X.CSS'), 3600,
+	   'regexp match is case-insensitive');
+};
+
+# network_to_address — inet_ntoa / inet_ntop dispatch
+subtest 'network_to_address' => sub {
+	no warnings 'once';
+
+	# 4-byte input always uses inet_ntoa, regardless of $use_ipv6.
+	{
+		local $miniserv::use_ipv6 = 0;
+		is(miniserv::network_to_address(pack("CCCC", 1, 2, 3, 4)),
+		   '1.2.3.4', 'IPv4 bytes formatted via inet_ntoa');
+	}
+
+	# 16-byte input with IPv6 enabled → inet_ntop. miniserv.pl normally
+	# imports inet_ntop via Socket6 (loaded under `eval` at startup); in the
+	# module-load path it may not be bound, so glob it in for the test.
+	SKIP: {
+		eval { require Socket; Socket->import(qw(AF_INET6 inet_ntop inet_pton)); };
+		skip 'Socket lacks IPv6 helpers', 1 if $@;
+		no warnings 'redefine';
+		local *miniserv::inet_ntop = \&Socket::inet_ntop;
+		local $miniserv::use_ipv6 = 1;
+		my $packed = Socket::inet_pton(Socket::AF_INET6(), '::1');
+		is(miniserv::network_to_address($packed), '::1',
+		   'IPv6 bytes formatted via inet_ntop');
+	}
+};
+
+# to_ipaddress — pattern shortcuts that skip DNS
+subtest 'to_ipaddress (pattern shortcuts)' => sub {
+	# IPv4 literal: returned verbatim.
+	is(miniserv::to_ipaddress('1.2.3.4'), '1.2.3.4',
+	   'IPv4 literal short-circuits');
+	# Hostname-glob pattern: returned verbatim.
+	is(miniserv::to_ipaddress('*.example.com'), '*.example.com',
+	   'wildcard hostname pattern short-circuits');
+	# 'LOCAL' literal: returned verbatim.
+	is(miniserv::to_ipaddress('LOCAL'), 'LOCAL',
+	   'LOCAL keyword short-circuits');
+	# CIDR pattern: returned verbatim.
+	is(miniserv::to_ipaddress('10.0.0.0/8'), '10.0.0.0/8',
+	   'CIDR pattern short-circuits');
+};
+
+# ip_match — additional branches: LOCAL, IPv6 exact, IPv6 CIDR, hostname-glob miss
+subtest 'ip_match (extra branches)' => sub {
+	no warnings 'once';
+	local %miniserv::ip_match_cache = ();
+
+	# LOCAL keyword expands to a class-derived prefix of the local IP.
+	my $local_rule = 'LOCAL';
+	ok( miniserv::ip_match('10.1.2.3', '10.9.9.9', $local_rule),
+	    'LOCAL: class-A remote in same /8 as local matches');
+	ok(!miniserv::ip_match('11.1.2.3', '10.9.9.9', $local_rule),
+	    'LOCAL: different /8 does not match');
+
+	# 192.x.x.x is class C → /24 comparison.
+	my $local_rule2 = 'LOCAL';
+	ok( miniserv::ip_match('192.168.1.5', '192.168.1.1', $local_rule2),
+	    'LOCAL: class-C remote in same /24 as local matches');
+	ok(!miniserv::ip_match('192.168.2.5', '192.168.1.1', $local_rule2),
+	    'LOCAL: different /24 does not match');
+
+	# IPv6 exact match.
+	my $v6_exact = '2001:db8::1';
+	ok( miniserv::ip_match('2001:db8::1', '::1', $v6_exact),
+	    'IPv6 exact match (canonicalized)');
+	ok( miniserv::ip_match('2001:DB8::1', '::1', $v6_exact),
+	    'IPv6 exact match is case-insensitive after canonicalization');
+
+	# IPv6 CIDR — /32 covers the leading 4 bytes (2001:0db8:...).
+	my $v6_cidr = '2001:db8::/32';
+	ok( miniserv::ip_match('2001:db8:1234::5', '::1', $v6_cidr),
+	    'IPv6 CIDR /32 covers a host inside the prefix');
+	ok(!miniserv::ip_match('2002:db8:1234::5', '::1', $v6_cidr),
+	    'IPv6 CIDR /32 does not cover a host outside the prefix');
+};
+
+# users_match — group (@-prefix) branch
+subtest 'users_match (group branch)' => sub {
+	# Pick the current user's primary group, guaranteed to resolve.
+	my @pw = getpwuid($<);
+	plan skip_all => 'cannot resolve current user via getpwuid' if !@pw;
+	my $gid = $pw[3];
+	my @gr  = getgrgid($gid);
+	plan skip_all => 'cannot resolve primary gid via getgrgid' if !@gr;
+	my $group = $gr[0];
+
+	# uinfo[3] == primary gid → is_group_member returns true → users_match matches.
+	my $uinfo = ['someuser', 'x', 99999, $gid];
+	ok( miniserv::users_match($uinfo, '@'.$group),
+	    '@<group> matches when uinfo primary gid matches');
+	ok(!miniserv::users_match($uinfo,
+				 '@__definitely_not_a_real_group_xyzzy__'),
+	    '@<nonexistent-group> does not match');
+};
+
+# read_config_file — KEY=VAL parser used at startup
+subtest 'read_config_file' => sub {
+	require File::Temp;
+	my ($fh, $path) = File::Temp::tempfile(UNLINK => 1);
+	print $fh <<'EOF';
+# this is a comment
+
+  key1 = value1
+key2=value2
+  key3   =   has  spaces
+empty=
+EOF
+	close($fh);
+
+	my %got = miniserv::read_config_file($path);
+	is($got{key1},  'value1',         'leading/trailing whitespace trimmed');
+	is($got{key2},  'value2',         'tight key=val parsed');
+	is($got{key3},  'has  spaces',    'interior whitespace preserved');
+	is($got{empty}, '',               'empty value yields empty string');
+	ok(!exists $got{'# this is a comment'}, 'comment lines skipped');
+};
+
+# read_any_file — basic file reader; returns undef on open failure
+subtest 'read_any_file' => sub {
+	require File::Temp;
+	my ($fh, $path) = File::Temp::tempfile(UNLINK => 1);
+	print $fh "line1\nline2\n";
+	close($fh);
+
+	is(miniserv::read_any_file($path), "line1\nline2\n",
+	   'returns the entire file contents');
+	is(miniserv::read_any_file('/definitely/not/a/real/path/xyzzy'), undef,
+	   'open failure returns undef');
+};
+
+# read_mime_types — populates %mime from file + addtype_* config
+subtest 'read_mime_types' => sub {
+	no warnings 'once';
+	require File::Temp;
+	my ($fh, $path) = File::Temp::tempfile(UNLINK => 1);
+	print $fh <<'EOF';
+# comment line
+text/html	html htm
+image/png	png
+EOF
+	close($fh);
+
+	local %miniserv::config = (
+		'mimetypes'        => $path,
+		'addtype_custom'   => 'application/x-custom',
+		);
+	local %miniserv::mime = ();
+
+	miniserv::read_mime_types();
+	is($miniserv::mime{html},   'text/html',          'first extension from file mapped');
+	is($miniserv::mime{htm},    'text/html',          'second extension on same line mapped');
+	is($miniserv::mime{png},    'image/png',          'second line mapped');
+	is($miniserv::mime{custom}, 'application/x-custom', 'addtype_* config overrides file');
+};
+
+# parse_websockets_config — turns websockets_<path> config lines into structs
+subtest 'parse_websockets_config' => sub {
+	no warnings 'once';
+	local %miniserv::config = (
+		'websockets_/chat' => 'host=back.example.com port=9000 proto=ws',
+		'unrelated_key'    => 'ignored',
+		);
+	local @miniserv::websocket_paths = ();
+
+	miniserv::parse_websockets_config();
+	is(scalar @miniserv::websocket_paths, 1, 'one websocket entry produced');
+	my $ws = $miniserv::websocket_paths[0];
+	is($ws->{path},  '/chat',             'path captured from key suffix');
+	is($ws->{host},  'back.example.com',  'host kv parsed');
+	is($ws->{port},  '9000',              'port kv parsed');
+	is($ws->{proto}, 'ws',                'proto kv parsed');
+};
+
+# get_user_details — local-files branch (skips the userdb code path entirely)
+subtest 'get_user_details (local files)' => sub {
+	no warnings 'once';
+	local %miniserv::config       = ();   # no userdb → file path only
+	local %miniserv::users        = ('alice' => 'hashedpass');
+	local %miniserv::certs        = ('alice' => 'CN=Alice');
+	local %miniserv::allow        = ('alice' => ['1.2.3.4']);
+	local %miniserv::deny         = ('alice' => ['9.9.9.9']);
+	local %miniserv::allowdays    = ('alice' => [0, 1, 2]);
+	local %miniserv::allowhours   = ('alice' => [540, 1020]);
+	local %miniserv::lastchanges  = ('alice' => '1700000000');
+	local %miniserv::nochange     = ('alice' => 1);
+	local %miniserv::temppass     = ('alice' => 0);
+	local %miniserv::twofactor    = ('alice' => {
+		'provider' => 'totp', 'id' => 'aliceid', 'apikey' => 'secret' });
+
+	my $u = miniserv::get_user_details('alice');
+	is(ref($u), 'HASH',                       'returns a hashref');
+	is($u->{name},     'alice',               'name field');
+	is($u->{pass},     'hashedpass',          'pass field comes from %users');
+	is($u->{certs},    'CN=Alice',            'certs field');
+	is_deeply($u->{allow}, ['1.2.3.4'],       'allow list');
+	is_deeply($u->{deny},  ['9.9.9.9'],       'deny list');
+	is($u->{twofactor_provider}, 'totp',      'twofactor provider lifted');
+	is($u->{twofactor_id},       'aliceid',   'twofactor id lifted');
+	is($u->{twofactor_apikey},   'secret',    'twofactor apikey lifted');
+
+	is(miniserv::get_user_details('nobody'), undef,
+	   'unknown user with no userdb returns undef');
+
+	# origusername falls back to username for twofactor lookup.
+	local %miniserv::twofactor = (
+		'bob_orig' => { 'provider' => 'duo', 'id' => 'bid', 'apikey' => 'bk' });
+	local %miniserv::users = ('bob_local' => 'hash');
+	my $u2 = miniserv::get_user_details('bob_local', 'bob_orig');
+	is($u2->{twofactor_provider}, 'duo',
+	   'twofactor looked up by origusername when present');
+};
+
+# find_user_by_cert — local-files branch (matches against %certs)
+subtest 'find_user_by_cert (local files)' => sub {
+	no warnings 'once';
+	local %miniserv::config = ();   # no userdb
+	local %miniserv::certs  = (
+		'alice' => 'CN=Alice,Email=alice@example.com',
+		'bob'   => 'CN=Bob,emailAddress=bob@example.com',
+		);
+
+	is(miniserv::find_user_by_cert('CN=Alice,Email=alice@example.com'),
+	   'alice', 'exact match returns username');
+	# emailAddress=/Email= are swapped before comparison.
+	is(miniserv::find_user_by_cert('CN=Alice,emailAddress=alice@example.com'),
+	   'alice', 'Email/emailAddress form aliasing matches');
+	is(miniserv::find_user_by_cert('CN=Bob,Email=bob@example.com'),
+	   'bob',   'reverse aliasing also matches');
+	is(miniserv::find_user_by_cert('CN=Nobody'), undef,
+	   'unknown peer name returns undef');
+};
+
+# get_logout_time — per-user / per-group / default rules
+subtest 'get_logout_time' => sub {
+	no warnings 'once';
+	local %miniserv::logout_time_cache = ();
+
+	# Username branch beats the default.
+	local @miniserv::logouttimes = (
+		[ 'alice', 30 ],
+		[ undef,   10 ],
+		);
+	is(miniserv::get_logout_time('alice', 'sid1'), 30,
+	   'username-specific rule wins');
+	is(miniserv::get_logout_time('alice', 'sid1'), 30,
+	   'second call returns cached value');
+
+	is(miniserv::get_logout_time('charlie', 'sid2'), 10,
+	   'user with no specific rule falls through to default (undef key)');
+
+	# Group rule (@-prefix) — requires that the user resolves via getpwnam,
+	# so use the current process user.
+	my @pw = getpwuid($<);
+	SKIP: {
+		skip 'cannot resolve current user', 1 if !@pw;
+		my @gr = getgrgid($pw[3]);
+		skip 'cannot resolve primary group', 1 if !@gr;
+		local %miniserv::logout_time_cache = ();
+		local @miniserv::logouttimes = (
+			[ '@'.$gr[0], 99 ],
+			[ undef,      10 ],
+			);
+		is(miniserv::get_logout_time($pw[0], 'sid3'), 99,
+		   '@group rule matches via primary gid');
+	}
+};
+
+# build_config_mappings — turns flat %config keys into structured globals
+subtest 'build_config_mappings' => sub {
+	no warnings qw(once redefine);
+	# Stub open_debug_to_log — it touches DEBUG (an unopened fh in tests).
+	local *miniserv::open_debug_to_log = sub { };
+	local *miniserv::to_ipaddress      = sub { return @_; };
+
+	local %miniserv::config = (
+		'anonymous'         => '/pub=guest /api=apiuser',
+		'ipaccess'          => '/admin=10.0.0.0/8',
+		'unauth'            => '^/public/ ^/robots.txt$',
+		'unauthcgi'         => '^/login.cgi$',
+		'redirect'          => '/old=/new',
+		'strip_prefix'      => '/virt',
+		'deny'              => '9.9.9.9 8.8.8.8',
+		'allow'             => '1.2.3.4',
+		'allowusers'        => 'alice bob',
+		'unixauth'          => 'admin=root *=apache',
+		'sessiononly'       => '/api /webhooks',
+		'logouttimes'       => 'alice=15 @wheel=60',
+		'logouttime'        => 5,
+		'davpaths'          => '/dav1 /dav2',
+		'dav_users'         => 'eve',
+		'mobile_agents'     => "Foo\tBar",
+		'mobile_prefixes'   => 'XYZ ABC',
+		'expires_paths'     => "\\.css\$=3600\t\\.js\$=86400",
+		'alwaysresolve'     => 1,   # keep deny/allow as-is (no DNS)
+		);
+
+	# Reset every output global.
+	local %miniserv::anonymous   = ();
+	local %miniserv::ipaccess    = ();
+	local @miniserv::unauth      = ();
+	local @miniserv::unauthcgi   = ();
+	local %miniserv::redirect    = ();
+	local @miniserv::strip_prefix = ();
+	local @miniserv::deny        = ();
+	local @miniserv::allow       = ();
+	local @miniserv::allowusers  = ();
+	local @miniserv::denyusers   = ();
+	local %miniserv::unixauth    = ();
+	local %miniserv::sessiononly = ();
+	local @miniserv::logouttimes = ();
+	local @miniserv::davpaths    = ();
+	local @miniserv::davusers    = ();
+	local @miniserv::mobile_agents   = ();
+	local @miniserv::mobile_prefixes = ();
+	local @miniserv::expires_paths   = ();
+	local %miniserv::sudocache       = ();
+	local %miniserv::cert_names_cache = ();
+
+	miniserv::build_config_mappings();
+
+	is($miniserv::anonymous{'/pub'}, 'guest',         'anonymous map parsed');
+	is($miniserv::ipaccess{'/admin'}, '10.0.0.0/8',   'ipaccess map parsed');
+	is_deeply(\@miniserv::unauth,    ['^/public/', '^/robots.txt$'], 'unauth list parsed');
+	is_deeply(\@miniserv::unauthcgi, ['^/login.cgi$'],                'unauthcgi list parsed');
+	is($miniserv::redirect{'/old'},  '/new',                          'redirect map parsed');
+	is_deeply(\@miniserv::strip_prefix, ['/virt'],                    'strip_prefix parsed');
+	is_deeply(\@miniserv::allowusers,  ['alice', 'bob'],              'allowusers parsed');
+	is(scalar @miniserv::denyusers, 0,
+	   'denyusers stays empty when allowusers is set (mutually exclusive)');
+	is($miniserv::unixauth{admin}, 'root',                            'specific unixauth parsed');
+	is($miniserv::unixauth{'*'},   'apache',                          'default unixauth parsed');
+	ok($miniserv::sessiononly{'/api'},                                'sessiononly entry set');
+	is_deeply(\@miniserv::davpaths,    ['/dav1', '/dav2'],            'davpaths parsed');
+	is_deeply(\@miniserv::davusers,    ['eve'],                       'davusers parsed');
+	is_deeply(\@miniserv::mobile_agents, ['Foo', 'Bar'],
+	          'mobile_agents tab-split');
+
+	# logouttimes: configured rules + an always-match default appended.
+	is(scalar @miniserv::logouttimes, 3, 'two configured + one default');
+	is($miniserv::logouttimes[-1][0], undef, 'last entry is the default rule');
+	is($miniserv::logouttimes[-1][1], 5,     'default uses logouttime');
+
+	# expires_paths: each tab-separated entry becomes [regex, secs].
+	is(scalar @miniserv::expires_paths, 2, 'two expires entries');
+	is_deeply($miniserv::expires_paths[0], ['\.css$', '3600'],
+	          'first expires entry split on =');
+};
+
+# lock_user_password — local-file branch rewrites the users file in place
+subtest 'lock_user_password (local file)' => sub {
+	no warnings qw(once redefine);
+	require File::Temp;
+	my ($fh, $path) = File::Temp::tempfile(UNLINK => 1);
+	# Standard 5-field users line (user:pass:lastchange:certs:opts...).
+	print $fh "alice:hashedpass:0::\n";
+	print $fh "bob:bobhash:0::\n";
+	close($fh);
+
+	local %miniserv::config = ('userfile' => $path);
+	local %miniserv::users  = (
+		'alice' => 'hashedpass',
+		'bob'   => 'bobhash',
+		);
+	# get_user_details would normally do %users → hashref; stub it.
+	local *miniserv::get_user_details = sub {
+		my ($u) = @_;
+		return undef if !exists $miniserv::users{$u};
+		return { 'name' => $u, 'pass' => $miniserv::users{$u} };
+		};
+
+	is(miniserv::lock_user_password('nobody'), -1,
+	   'unknown user returns -1');
+
+	is(miniserv::lock_user_password('alice'), 0, 'lock succeeds');
+	is($miniserv::users{alice}, '!hashedpass',
+	   'in-memory pass is prefixed with !');
+
+	# File on disk reflects the change.
+	open(my $rh, '<', $path) or die "reopen: $!";
+	my $content = do { local $/; <$rh> };
+	close($rh);
+	like  ($content, qr/^alice:!hashedpass:/m,  'alice line rewritten with !');
+	like  ($content, qr/^bob:bobhash:/m,        'bob line untouched');
+
+	# Locking an already-locked user is a no-op (returns 0 but no double-!).
+	is(miniserv::lock_user_password('alice'), 0,
+	   'already-locked user → 0 (no-op)');
+	is($miniserv::users{alice}, '!hashedpass',
+	   'no double-bang prefix on second lock');
 };
 
 done_testing();
