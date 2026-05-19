@@ -5741,6 +5741,16 @@ if ($module_name) {
 	$module_root_directory = &module_root_directory($module_name);
 	}
 
+if (!$main::allow_rpc_only &&
+    $main::webmin_script_type eq 'web' &&
+    !$main::no_acl_check &&
+    !defined($ENV{'FOREIGN_MODULE_NAME'})) {
+	# Check if this user is RPC-only
+	if (&webmin_user_can_rpc() == 2) {
+		&error($text{'erpconly'});
+		}
+	}
+
 if ($module_name && !$main::no_acl_check &&
     (!defined($ENV{'FOREIGN_MODULE_NAME'}) ||
       defined($ENV{'FOREIGN_MODULE_SEC_CHECK'})) &&
@@ -5757,16 +5767,6 @@ if ($module_name && !$main::no_acl_check &&
 			}
 		}
 	$main::no_acl_check++;
-	}
-
-if (!$main::allow_rpc_only &&
-    $main::webmin_script_type eq 'web' &&
-    !$main::no_acl_check &&
-    !defined($ENV{'FOREIGN_MODULE_NAME'})) {
-	# Check if this user is RPC-only
-	if (&webmin_user_can_rpc() == 2) {
-		&error($text{'erpconly'});
-		}
 	}
 
 # Check the Referer: header for nasty redirects
@@ -10179,10 +10179,15 @@ sub filter_javascript
 my ($rv, $type) = @_;
 if (!$type || $type eq 'html') {
 	$rv =~ s/<\s*script[^>]*>([\000-\377]*?)<\s*\/script\s*>//gi;
-	$rv =~ s/(on(Abort|BeforeUnload|Blur|Change|Click|ContextMenu|Copy|Cut|DblClick|Drag|DragEnd|DragEnter|DragLeave|DragOver|DragStart|DragDrop|Drop|Error|Focus|FocusIn|FocusOut|HashChange|Input|Invalid|KeyDown|KeyPress|KeyUp|Load|MouseDown|MouseEnter|MouseLeave|MouseMove|MouseOut|MouseOver|MouseUp|Move|Paste|PageShow|PageHide|Reset|Resize|Scroll|Search|Select|Submit|Toggle|Unload)=)/x$1/gi;
 	$rv =~ s/(javascript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
 	$rv =~ s/(vbscript(:|&colon;|&#58;|&#x3A;))/x$1/gi;
-	$rv =~ s/<([^>]*\s|)(on\S+=)(.*)>/<$1x$2$3>/gi;
+	my $event_attr = qr/on[a-z][a-z0-9_:-]*\s*=/i;
+	my $event_attrs;
+	do {
+		$event_attrs = 0;
+		$event_attrs += $rv =~ s{(<[^>]*?)([\s/]+)($event_attr)}{$1$2x$3}g;
+		$event_attrs += $rv =~ s{(<)($event_attr)}{$1x$2}g;
+		} while ($event_attrs);
 	}
 if ($type eq 'pdf') {
 	$rv =~ s/([\n]*)<<[\n((?:.*?|\n)*?)][\w\s\/]+[\n((?:.*?|\n)*?)][\w\s\/]+JavaScript[\w\s\/]*[\n((?:.*?|\n)*?)][\w\s\/]+\s.*?>>[\n]*/$1/gmsi;

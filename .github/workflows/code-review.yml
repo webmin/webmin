@@ -1,0 +1,12 @@
+name: Code Review
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  code-review:
+    uses: webmin/webmin-ci-cd/.github/workflows/code-review.yml@main
+    secrets:
+      CODE_REVIEW_API_KEY: ${{ secrets.CODE_REVIEW_API_KEY }}

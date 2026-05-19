@@ -1962,7 +1962,15 @@ my ($title, $msg) = @_;
 if (!$gconfig{'restart_async'}) {
 	&restart_miniserv();
 	my $msg_redir = "";
-	$msg_redir = "?title=".&urlize($title)."&message=".&urlize($msg) if $msg;
+	if ($msg) {
+		$title = defined($title) ? &html_strip($title, " ") : "";
+		$msg = &html_strip($msg, " ");
+		$title =~ s/\s+/ /g;
+		$title =~ s/^\s+|\s+$//g;
+		$msg =~ s/\s+/ /g;
+		$msg =~ s/^\s+|\s+$//g;
+		$msg_redir = "?title=".&urlize($title)."&message=".&urlize($msg);
+		}
 	&redirect($msg_redir);
 	return;
 	}

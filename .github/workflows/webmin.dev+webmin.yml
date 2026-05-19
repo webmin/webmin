@@ -26,3 +26,4 @@ jobs:
       DEV_SSH_PRV_KEY: ${{ secrets.DEV_SSH_PRV_KEY }}
       ALL_GPG_PH2: ${{ secrets.ALL_GPG_PH2 }}
       CODE_REVIEW_API_KEY: ${{ secrets.CODE_REVIEW_API_KEY }}
+      CODE_REVIEW_SMTP_PASSWORD: ${{ secrets.CODE_REVIEW_SMTP_PASSWORD }}

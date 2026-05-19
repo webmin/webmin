@@ -28,10 +28,18 @@ if ($in{'id'}) {
 	my @spages = ( $access{'logs'} ? ( "slogs" ) : ( ),
 		       "sdocs", "ssl", "fcgi", "sssi", "sgzip", "sproxy",
 		       "saccess", "srewrite", );
+	my @slinks = map { "edit_".$_.".cgi?id=".&urlize($in{'id'}) } @spages;
+	my @stitles = map { $text{$_."_title"} } @spages;
+	my @sicons = map { "images/".$_.".gif" } @spages;
+	if (&can_edit_manual_config() && &can_edit_manual_file($server->{'file'})) {
+		push(@slinks, "edit_manual.cgi?file=".&urlize($server->{'file'}));
+		push(@stitles, $text{'manual_server'});
+		push(@sicons, "images/manual.gif");
+		}
 	&icons_table(
-		[ map { "edit_".$_.".cgi?id=".&urlize($in{'id'}) } @spages ],
-		[ map { $text{$_."_title"} } @spages ],
-		[ map { "images/".$_.".gif" } @spages ],
+		\@slinks,
+		\@stitles,
+		\@sicons,
 		);
 
 	# Show table for locations

@@ -38,6 +38,11 @@ print &ui_table_row($text{'acl_root'},
 print &ui_table_row($text{'acl_global'},
 	&ui_yesno_radio("global", $o->{'global'}));
 
+# Can manually edit configuration files?
+print &ui_table_row($text{'acl_manual'},
+	&ui_yesno_radio("manual",
+		defined($o->{'manual'}) ? $o->{'manual'} : $o->{'global'}));
+
 # Can edit log files?
 print &ui_table_row($text{'acl_logs'},
 	&ui_yesno_radio("logs", $o->{'logs'}));
@@ -59,6 +64,7 @@ $o->{'edit'} = $in{'edit'};
 $o->{'create'} = $in{'create'};
 $o->{'root'} = $in{'root'};
 $o->{'global'} = $in{'global'};
+$o->{'manual'} = $in{'manual'};
 $o->{'logs'} = $in{'logs'};
 $o->{'user'} = $in{'user'};
 $o->{'stop'} = $in{'stop'};

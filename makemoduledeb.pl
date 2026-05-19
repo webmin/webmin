@@ -244,6 +244,7 @@ system("find $usr_dir -name .git | xargs rm -rf");
 system("find $usr_dir -name .github | xargs rm -rf");
 system("find $usr_dir -name RELEASE | xargs rm -rf");
 system("find $usr_dir -name RELEASE.sh | xargs rm -rf");
+system("find $usr_dir -type d \\( -name t -o -name xt \\) | xargs rm -rf");
 if (-r "$usr_dir/$mod/EXCLUDE") {
 	system("cd $usr_dir/$mod && cat EXCLUDE | xargs rm -rf");
 	system("rm -f $usr_dir/$mod/EXCLUDE");
@@ -621,10 +622,10 @@ if ($dsc_file) {
 	$diffmd5 =~ s/\s+.*\n//g;
 	my @diffst = stat($diff_file);
 
-	# Create a tar file of the module directory
+	# Create a tar file of the cleaned staged module directory
 	my $tar_file = $dsc_file;
 	$tar_file =~ s/[^\/]+$//; $tar_file .= "$prefix$mod-$ver.tar.gz";
-	system("cd $par ; tar czf $tar_file $source_mod");
+	system("cd $usr_dir ; tar czf $tar_file $mod");
 	my $md5 = `md5sum $tar_file`;
 	$md5 =~ s/\s+.*\n//g;
 	my @st = stat($tar_file);

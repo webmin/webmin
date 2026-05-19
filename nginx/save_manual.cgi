@@ -7,16 +7,11 @@ require './nginx-lib.pl';
 &ReadParseMime();
 our (%text, %in, %access);
 &error_setup($text{'manual_err'});
-$access{'global'} || &error($text{'index_eglobal'});
+&can_edit_manual_config() || &error($text{'manual_ecannot'});
 
-my @files = &get_all_config_files();
-&indexof($in{'file'}, @files) >= 0 || &error($text{'manual_efile'});
-
-# Follow links to get the real file
-while(-l $in{'file'}) {
-	$in{'file'} = readlink($in{'file'});
-	}
-$in{'file'} || &error($text{'manual_elink'});
+my @files = &get_manual_config_files();
+$in{'file'} = &resolve_manual_config_file($in{'file'}, @files) ||
+	&error($text{'manual_efile'});
 
 $in{'data'} =~ s/\r//g;
 my $fh = "CONF";
@@ -43,6 +38,6 @@ else {
 	&print_tempfile($fh, $in{'data'});
 	&close_tempfile($fh);
 	}
+&update_last_config_change();
 &webmin_log("manual", undef, $in{'file'});
 &redirect("");
-

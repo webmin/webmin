@@ -11,8 +11,11 @@ eval "use WebminCore;";
 our %access = &get_module_acl();
 our ($get_config_cache, $get_config_parent_cache, %list_directives_cache,
      @list_modules_cache, @open_config_files);
-our (%config, %text, %in, $module_root_directory);
+our ($last_config_change_flag, $last_restart_time_flag);
+our (%config, %text, %in, $module_root_directory, $module_var_directory);
 &set_nginx_config_defaults();
+$last_config_change_flag = $module_var_directory."/config-flag";
+$last_restart_time_flag = $module_var_directory."/restart-flag";
 
 my @lock_all_config_files_cache;
 
@@ -522,9 +525,11 @@ if ($parent->{'type'}) {
 sub flush_config_file_lines
 {
 my ($parent) = @_;
-foreach my $f (&unique(@open_config_files)) {
+my @files = &unique(@open_config_files);
+foreach my $f (@files) {
 	&flush_file_lines($f);
 	}
+&update_last_config_change() if (@files);
 @open_config_files = ( );
 }
 
@@ -563,6 +568,29 @@ if ($parent->{'type'}) {
 		}
 	}
 return &unique(@rv);
+}
+
+# get_manual_config_files([&parent])
+# Returns all config files this user can manually edit
+sub get_manual_config_files
+{
+my ($parent) = @_;
+my @files = map { &resolve_links($_) || $_ } &get_all_config_files($parent);
+@files = &unique(@files);
+return @files if (!$access{'vhosts'});
+return grep { &can_edit_manual_file($_) } @files;
+}
+
+# resolve_manual_config_file(file, [files...])
+# Resolves a submitted manual config file path, if it is allowed
+sub resolve_manual_config_file
+{
+my ($file, @files) = @_;
+return undef if (!$file);
+@files = &get_manual_config_files() if (!@files);
+my $rfile = &resolve_links($file);
+$rfile ||= $file;
+return &indexof($rfile, @files) >= 0 ? $rfile : undef;
 }
 
 # directive_indent(&directive, &parent, &file-lines)
@@ -1480,7 +1508,11 @@ return $? ? $out : undef;
 sub start_nginx
 {
 my $out = &backquote_logged("$config{'start_cmd'} 2>&1 </dev/null");
-return $? ? $out : undef;
+if ($?) {
+	return $out;
+	}
+&update_last_restart_time();
+return undef;
 }
 
 # apply_nginx()
@@ -1489,7 +1521,11 @@ return $? ? $out : undef;
 sub apply_nginx
 {
 my $out = &backquote_logged("$config{'apply_cmd'} 2>&1 </dev/null");
-return $? ? $out : undef;
+if ($?) {
+	return $out;
+	}
+&update_last_restart_time();
+return undef;
 }
 
 # nginx_action_links()
@@ -1502,12 +1538,43 @@ if (&is_nginx_running()) {
 	if ($access{'stop'}) {
 		push(@rv, &ui_link("stop.cgi?$args", $text{'index_stop'}));
 		}
-	push(@rv, &ui_link("restart.cgi?$args", $text{'index_restart'}));
+	my $needs = &needs_config_restart();
+	my $apply = $text{'index_apply_changes'} || $text{'index_restart'};
+	my $label = $needs ? "<b>$apply</b>" : $apply;
+	my $url = "restart.cgi?$args";
+	push(@rv, &ui_link($url, $label));
 	}
 elsif ($access{'stop'}) {
 	push(@rv, &ui_link("start.cgi?$args", $text{'index_start'}));
 	}
 return join("<br>\n", @rv);
+}
+
+# update_last_config_change()
+# Updates the flag file indicating when the config was changed
+sub update_last_config_change
+{
+&open_lock_tempfile(my $fh, ">$last_config_change_flag", 0, 1);
+&close_tempfile($fh);
+}
+
+# update_last_restart_time()
+# Updates the flag file indicating when the config was applied
+sub update_last_restart_time
+{
+&open_lock_tempfile(my $fh, ">$last_restart_time_flag", 0, 1);
+&close_tempfile($fh);
+}
+
+# needs_config_restart()
+# Returns 1 if a restart is needed after a config change
+sub needs_config_restart
+{
+my @cst = stat($last_config_change_flag);
+my @rst = stat($last_restart_time_flag);
+return 0 if (!@cst);
+return 1 if (!@rst);
+return $cst[9] > $rst[9] ? 1 : 0;
 }
 
 # this_url()
@@ -1528,6 +1595,485 @@ sub test_config
 my $out = &backquote_logged("$config{'nginx_cmd'} -t 2>&1 </dev/null");
 &reset_environment() if (defined(&clean_language));
 return $? || $out !~ /syntax\s+is\s+ok/ ? $out : undef;
+}
+
+# can_manage_server_files()
+# Returns 1 if this system uses Debian-style available/enabled site dirs
+sub can_manage_server_files
+{
+return $config{'add_to'} && -d $config{'add_to'} &&
+       $config{'add_link'} && -d $config{'add_link'};
+}
+
+# get_add_to_files()
+# Returns config files from the directory used for new server blocks
+sub get_add_to_files
+{
+my @rv;
+if ($config{'add_to'} && -d $config{'add_to'}) {
+	opendir(ADDTO, $config{'add_to'}) || return @rv;
+	foreach my $f (sort { lc($a) cmp lc($b) } readdir(ADDTO)) {
+		next if ($f eq "." || $f eq "..");
+		my $file = $config{'add_to'}."/".$f;
+		my $rfile = &resolve_links($file);
+		next if (!$rfile || !-f $rfile || !-r $rfile);
+		push(@rv, $rfile);
+		}
+	closedir(ADDTO);
+	}
+return &unique(@rv);
+}
+
+# find_servers_in_file(file)
+# Returns server blocks parsed from one config file
+sub find_servers_in_file
+{
+my ($file) = @_;
+my $rfile = &resolve_links($file);
+$rfile ||= $file;
+return ( ) if (!-r $rfile);
+my $conf = &read_config_file($rfile);
+return grep { $_->{'file'} eq $rfile } &find_recursive("server", $conf);
+}
+
+# can_manage_server_file(file)
+# Returns 1 if all server blocks in a file are manageable by this user
+sub can_manage_server_file
+{
+my ($file) = @_;
+my $rfile = &resolve_links($file);
+$rfile ||= $file;
+return 0 if (!$rfile || !-f $rfile || !-r $rfile);
+my @servers = &find_servers_in_file($rfile);
+return 0 if (!@servers);
+foreach my $server (@servers) {
+	return 0 if (!&can_edit_server($server));
+	}
+return 1;
+}
+
+# delete_servers_from_file(file, &servers...)
+# Deletes server blocks from one config file and removes the file if empty
+sub delete_servers_from_file
+{
+my ($file, @servers) = @_;
+return 0 if (!@servers);
+my $lref = &read_file_lines($file);
+foreach my $server (sort { $b->{'line'} <=> $a->{'line'} } @servers) {
+	my $len = $server->{'eline'} - $server->{'line'} + 1;
+	splice(@$lref, $server->{'line'}, $len);
+	}
+my $empty = 1;
+foreach my $line (@$lref) {
+	if ($line =~ /\S/) {
+		$empty = 0;
+		last;
+		}
+	}
+&flush_file_lines($file);
+if ($empty) {
+	foreach my $link (&server_file_links($file)) {
+		&unlink_logged($link);
+		}
+	&unlink_logged($file);
+	}
+&update_last_config_change();
+return scalar(@servers);
+}
+
+# get_server_list_rows(&http)
+# Returns row hashes for the server blocks list, preserving sites-available order
+sub get_server_list_rows
+{
+my ($http) = @_;
+my @allservers = &find("server", $http);
+my @servers = grep { &can_edit_server($_) } @allservers;
+my $default_first = sub {
+	return ( grep { &is_default_server_block($_->{'server'}) } @_ ),
+	       ( grep { !&is_default_server_block($_->{'server'}) } @_ );
+	};
+if (&can_manage_server_files()) {
+	my @rows;
+	my %active_by_file;
+	foreach my $s (@servers) {
+		my $file = &resolve_links($s->{'file'});
+		$file ||= $s->{'file'};
+		push(@{$active_by_file{$file}}, $s);
+		}
+	my %done_server;
+	foreach my $file (&get_add_to_files()) {
+		my @fileservers = @{$active_by_file{$file} || [ ]};
+		my $active = @fileservers ? 1 : 0;
+		if (!@fileservers) {
+			@fileservers = grep { &can_edit_server($_) }
+				      &find_servers_in_file($file);
+			}
+		foreach my $s (@fileservers) {
+			push(@rows, { 'server' => $s,
+				      'active' => $active,
+				      'file' => $file });
+			$done_server{$s}++;
+			}
+		}
+	foreach my $s (@servers) {
+		next if ($done_server{$s});
+		push(@rows, { 'server' => $s,
+			      'active' => 1,
+			      'file' => $s->{'file'} });
+		}
+	return &$default_first(@rows);
+	}
+return &$default_first(
+	map { { 'server' => $_, 'active' => 1, 'file' => $_->{'file'} } }
+	@servers);
+}
+
+# server_file_link(file)
+# Returns the enabled symlink path for a server file
+sub server_file_link
+{
+my ($file) = @_;
+return undef if (!&can_manage_server_files());
+my $short = $file;
+$short =~ s/^.*\///;
+return $config{'add_link'}."/".$short;
+}
+
+# server_file_links(file)
+# Returns enabled symlinks for a server file
+sub server_file_links
+{
+my ($file) = @_;
+my @rv;
+return @rv if (!&can_manage_server_files());
+my $rfile = &resolve_links($file);
+$rfile ||= $file;
+opendir(LINKDIR, $config{'add_link'}) || return @rv;
+foreach my $f (readdir(LINKDIR)) {
+	next if ($f eq "." || $f eq "..");
+	my $link = $config{'add_link'}."/".$f;
+	next if (!-l $link);
+	my $rlink = &resolve_links($link);
+	if ($rlink && $rlink eq $rfile) {
+		push(@rv, $link);
+		}
+	}
+closedir(LINKDIR);
+return @rv;
+}
+
+# server_file_enabled(file)
+# Returns 1 if a server file has an enabled symlink
+sub server_file_enabled
+{
+my ($file) = @_;
+return scalar(&server_file_links($file)) ? 1 : 0;
+}
+
+# enable_server_file(file)
+# Enables a server file and rolls back if nginx -t fails
+sub enable_server_file
+{
+my ($file) = @_;
+my $rfile = &resolve_links($file);
+$rfile ||= $file;
+my $link = &server_file_link($rfile);
+$link || return $text{'enable_elinkdir'};
+return undef if (&server_file_enabled($rfile));
+if (-e $link || -l $link) {
+	return &text('enable_elinkexists', "<tt>".&html_escape($link)."</tt>");
+	}
+&symlink_logged($rfile, $link) ||
+	return &text('enable_elink', "<tt>".&html_escape($link)."</tt>",
+		     "<tt>".&html_escape($!)."</tt>");
+my $err = &test_config();
+if ($err) {
+	&unlink_logged($link);
+	return &text('enable_etest', "<tt>".&html_escape($err)."</tt>");
+	}
+&update_last_config_change();
+return undef;
+}
+
+# disable_server_file(file)
+# Disables a server file and rolls back if nginx -t fails
+sub disable_server_file
+{
+my ($file) = @_;
+my @links = &server_file_links($file);
+return undef if (!@links);
+my @restore = map { [ $_, readlink($_) ] } @links;
+my @removed;
+foreach my $link (@links) {
+	if (!&unlink_logged($link)) {
+		foreach my $r (@removed) {
+			&symlink_logged($r->[1], $r->[0])
+				if (defined($r->[1]) && !-e $r->[0] && !-l $r->[0]);
+			}
+		return &text('enable_eunlink',
+			     "<tt>".&html_escape($link)."</tt>",
+			     "<tt>".&html_escape($!)."</tt>");
+		}
+	my ($restore) = grep { $_->[0] eq $link } @restore;
+	push(@removed, $restore) if ($restore);
+	}
+my $err = &test_config();
+if ($err) {
+	foreach my $r (@restore) {
+		&symlink_logged($r->[1], $r->[0])
+			if (defined($r->[1]) && !-e $r->[0] && !-l $r->[0]);
+		}
+	return &text('enable_etest', "<tt>".&html_escape($err)."</tt>");
+	}
+&update_last_config_change();
+return undef;
+}
+
+# virtualmin_available()
+# Returns 1 if Virtualmin is installed and supported on this system
+sub virtualmin_available
+{
+return $main::nginx_virtualmin_available
+	if (defined($main::nginx_virtualmin_available));
+$main::nginx_virtualmin_available = &foreign_check("virtual-server");
+return $main::nginx_virtualmin_available;
+}
+
+# virtualmin_domain_by_name(name)
+# Returns a Virtualmin domain object by domain name, if one exists
+sub virtualmin_domain_by_name
+{
+my ($name) = @_;
+return undef if (!&virtualmin_available());
+return $main::nginx_virtualmin_domain_by_name_cache{$name}
+	if (exists($main::nginx_virtualmin_domain_by_name_cache{$name}));
+&foreign_require("virtual-server");
+my $d = &virtual_server::get_domain_by("dom", $name);
+$main::nginx_virtualmin_domain_by_name_cache{$name} = $d;
+return $d;
+}
+
+# server_names(&server)
+# Returns all names from server_name directives in a server block
+sub server_names
+{
+my ($server) = @_;
+my @rv;
+foreach my $sn (&find("server_name", $server)) {
+	push(@rv, @{$sn->{'words'} || [ ]});
+	if (!@{$sn->{'words'} || [ ]} && $sn->{'value'}) {
+		push(@rv, $sn->{'value'});
+		}
+	}
+return grep { $_ && $_ ne "_" && $_ ne "-" } &unique(@rv);
+}
+
+# virtualmin_domain_for_server_file(file)
+# Returns the Virtualmin domain object for a server file, if any
+sub virtualmin_domain_for_server_file
+{
+my ($file) = @_;
+return undef if (!&virtualmin_available());
+my $rfile = &resolve_links($file);
+$rfile ||= $file;
+return $main::nginx_virtualmin_domain_for_file_cache{$rfile}
+	if (exists($main::nginx_virtualmin_domain_for_file_cache{$rfile}));
+foreach my $server (&find_servers_in_file($file)) {
+	foreach my $name (&server_names($server)) {
+		my $d = &virtualmin_domain_by_name($name);
+		if ($d) {
+			$main::nginx_virtualmin_domain_for_file_cache{$rfile} = $d;
+			return $d;
+			}
+		}
+	}
+$main::nginx_virtualmin_domain_for_file_cache{$rfile} = undef;
+return undef;
+}
+
+# server_file_state(file)
+# Returns the effective enabled state for a server file
+sub server_file_state
+{
+my ($file) = @_;
+my $d = &virtualmin_domain_for_server_file($file);
+if ($d) {
+	return { 'enabled' => $d->{'disabled'} ? 0 : 1,
+		 'source' => 'virtualmin',
+		 'domain' => $d };
+	}
+return { 'enabled' => &server_file_enabled($file) ? 1 : 0,
+	 'source' => 'nginx' };
+}
+
+# server_file_toggle_action(file)
+# Returns the action needed to toggle a server file's effective state
+sub server_file_toggle_action
+{
+my ($file) = @_;
+return &server_file_state($file)->{'enabled'} ? "disable" : "enable";
+}
+
+# virtualmin_domain_state_link(&domain, enabled?)
+# Returns a link to the Virtualmin state change form for some domain
+sub virtualmin_domain_state_link
+{
+my ($d, $enabled) = @_;
+my $page = $enabled ? "disable_domain.cgi" : "enable_domain.cgi";
+my $label = $enabled ? $text{'enable_virtualmin_disable_label'} :
+		       $text{'enable_virtualmin_enable_label'};
+my $url = "../virtual-server/".$page."?dom=".&urlize($d->{'id'});
+return &ui_link(&quote_escape($url), "\"".$label."\"");
+}
+
+# virtualmin_server_file_state_error(file, action)
+# Returns an error if a Virtualmin-owned site is being enabled or disabled here
+sub virtualmin_server_file_state_error
+{
+my ($file, $action) = @_;
+return undef if ($action ne "enable" && $action ne "disable");
+my $state_info = &server_file_state($file);
+return undef if ($state_info->{'source'} ne "virtualmin");
+my $d = $state_info->{'domain'};
+return undef if (!$d);
+my $state = lc($state_info->{'enabled'} ? $text{'index_enabled'} :
+					  $text{'index_disabled'});
+my $dom = "<tt>".&html_escape($d->{'dom'})."</tt>";
+my $link = &virtualmin_domain_state_link($d, $state_info->{'enabled'});
+return $state_info->{'enabled'} ?
+	&text('enable_evirtualmin_disable', $dom, $state, $link) :
+	&text('enable_evirtualmin_enable', $dom, $state, $link);
+}
+
+# proxy_pass_value(&proxy_pass)
+# Returns the target URL from a proxy_pass directive
+sub proxy_pass_value
+{
+my ($pp) = @_;
+my @w = @{$pp->{'words'}};
+return (@w ? $w[0] : undef) || $pp->{'value'};
+}
+
+# server_proxy_target(&server|&location)
+# Returns the first proxy_pass target under a server or location block
+sub server_proxy_target
+{
+my ($conf) = @_;
+my ($pp) = &find_recursive("proxy_pass", $conf);
+return undef if (!$pp);
+return &proxy_pass_value($pp);
+}
+
+# server_proxy_pairs(&server)
+# Returns location path and proxy_pass target pairs for a server block
+sub server_proxy_pairs
+{
+my ($server) = @_;
+my @rv;
+foreach my $loc (&find("location", $server)) {
+	my $path = &location_path($loc) || "/";
+	foreach my $pp (&find_recursive("proxy_pass", $loc)) {
+		my $target = &proxy_pass_value($pp);
+		push(@rv, [ $path, $target ])
+			if (defined($target) && $target ne "");
+		}
+	}
+foreach my $pp (&find("proxy_pass", $server)) {
+	my $target = &proxy_pass_value($pp);
+	push(@rv, [ "/", $target ])
+		if (defined($target) && $target ne "");
+	}
+return @rv;
+}
+
+# server_root_summary(&server)
+# Returns the root directory for a server block, or a missing-root message
+sub server_root_summary
+{
+my ($server) = @_;
+my $root = &server_root_value($server);
+return defined($root) && $root ne "" ? &html_escape($root) :
+	"<i>$text{'index_noroot'}</i>";
+}
+
+# server_root_value(&server)
+# Returns the configured root directory for a server block
+sub server_root_value
+{
+my ($server) = @_;
+my $root = &find_value("root", $server);
+return $root if ($root);
+
+my @locs = &find("location", $server);
+my ($rootloc) = grep { &location_path($_) eq '/' } @locs;
+if ($rootloc) {
+	$root = &find_value("root", $rootloc);
+	return $root if ($root);
+	}
+return undef;
+}
+
+# server_proxy_summary(&server)
+# Returns the most relevant proxy target for a server block
+sub server_proxy_summary
+{
+my ($server) = @_;
+my @pairs = &server_proxy_pairs($server);
+return "<i>$text{'index_noproxy'}</i>" if (!@pairs);
+return join("<br>", map {
+	&html_escape($_->[0])." &#x21fe; ".&html_escape($_->[1])
+	} @pairs);
+}
+
+# server_root_proxy_summary(&server)
+# Returns the root directory or most relevant proxy target for a server block
+sub server_root_proxy_summary
+{
+my ($server) = @_;
+my $root = &server_root_value($server);
+return &html_escape($root) if (defined($root) && $root ne "");
+my $pp = &server_proxy_target($server);
+return &text('server_pp', "<tt>".&html_escape($pp)."</tt>")
+	if ($pp);
+return &server_root_summary($server);
+}
+
+# server_root_proxy_state(&server)
+# Returns booleans for whether a server has root and proxy_pass directives
+sub server_root_proxy_state
+{
+my ($server) = @_;
+my $has_root = &find_recursive("root", $server) ? 1 : 0;
+my $has_proxy = &server_proxy_target($server) ? 1 : 0;
+return ($has_root, $has_proxy);
+}
+
+# server_url(&server)
+# Returns the browser URL for a server block
+sub server_url
+{
+my ($server) = @_;
+my $name = &find_value("server_name", $server);
+return undef if (&is_default_server_block($server));
+return undef if (!$name || $name !~ /^[A-Za-z0-9.-]+$/);
+
+my ($best_scheme, $best_port);
+foreach my $l (&find("listen", $server)) {
+	my @w = @{$l->{'words'}};
+	my $addr = shift(@w);
+	next if (!$addr);
+	my (undef, $port) = &split_ip_port($addr);
+	my $ssl = grep { $_ eq "ssl" } @w;
+	my $scheme = $ssl || $port == 443 ? "https" : "http";
+	if (!$best_scheme || $scheme eq "https") {
+		($best_scheme, $best_port) = ($scheme, $port);
+		}
+	}
+$best_scheme ||= "http";
+$best_port ||= $best_scheme eq "https" ? 443 : 80;
+$best_port = undef if ($best_scheme eq "http" && $best_port == 80 ||
+		       $best_scheme eq "https" && $best_port == 443);
+return $best_scheme."://".$name.($best_port ? ":".$best_port : "")."/";
 }
 
 # find_server(id)
@@ -1677,7 +2223,8 @@ if ($config{'add_link'}) {
 	my $link = $server->{'file'};
 	$link =~ s/^.*\///;
 	$link = $config{'add_link'}."/".$link;
-	&symlink_logged($server->{'file'}, $link);
+	&update_last_config_change()
+		if (&symlink_logged($server->{'file'}, $link));
 	}
 }
 
@@ -1689,6 +2236,7 @@ sub delete_server_link
 my ($server) = @_;
 if ($config{'add_link'}) {
 	my $file = $server->{'file'};
+	my $changed;
         my $short = $file;
         $short =~ s/^.*\///;
         opendir(LINKDIR, $config{'add_link'});
@@ -1696,10 +2244,11 @@ if ($config{'add_link'}) {
                 if ($f ne "." && $f ne ".." &&
                     (&resolve_links($config{'add_link'}."/".$f) eq $file ||
                      $short eq $f)) {
-                        &unlink_logged($config{'add_link'}."/".$f);
+                        $changed++ if (&unlink_logged($config{'add_link'}."/".$f));
                         }
                 }
         closedir(LINKDIR);
+	&update_last_config_change() if ($changed);
         }
 }
 
@@ -1714,7 +2263,8 @@ foreach my $l (@$lref) {
 	$count++ if ($l =~ /\S/);
 	}
 if (!$count) {
-	&unlink_logged($server->{'file'});
+	&update_last_config_change()
+		if (&unlink_logged($server->{'file'}));
 	}
 }
 
@@ -1773,6 +2323,22 @@ return 1 if (!$access{'vhosts'});
 my $name = &find_value("server_name", $server);
 return 0 if (!$name);
 return &indexoflc($name, split(/\s+/, $access{'vhosts'})) >= 0;
+}
+
+# can_edit_manual_config()
+# Returns 1 if the user can manually edit raw configuration files
+sub can_edit_manual_config
+{
+return defined($access{'manual'}) ? $access{'manual'} : $access{'global'};
+}
+
+# can_edit_manual_file(file)
+# Returns 1 if the user can manually edit some raw configuration file
+sub can_edit_manual_file
+{
+my ($file) = @_;
+return 1 if (!$access{'vhosts'});
+return &can_manage_server_file($file);
 }
 
 # can_directory(dir)
