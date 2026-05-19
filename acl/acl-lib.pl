@@ -1809,6 +1809,7 @@ foreach my $g (&list_groups()) {
 		return $g;
 		}
 	}
+return undef;
 }
 
 =head2 check_password_restrictions(username, password)

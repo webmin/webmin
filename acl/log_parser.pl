@@ -16,8 +16,9 @@ my ($user, $script, $action, $type, $object, $p) = @_;
 my $g = $type eq 'group' ? "_g" : "";
 if ($action eq 'modify') {
 	if ($p->{'old'} ne $p->{'name'}) {
-		return &text('log_rename'.$g, "<tt>$p->{'old'}</tt>",
-					      "<tt>$p->{'name'}</tt>");
+		return &text('log_rename'.$g,
+			     "<tt>".&html_escape($p->{'old'})."</tt>",
+			     "<tt>".&html_escape($p->{'name'})."</tt>");
 		}
 	else {
 		return &text('log_modify'.$g,
@@ -36,21 +37,23 @@ elsif ($action eq 'create') {
 	}
 elsif ($action eq 'delete') {
 	if ($type eq "users" || $type eq "groups") {
-		return &text('log_delete_'.$type, $object);
+		return &text('log_delete_'.$type, &html_escape($object));
 		}
 	else {
-		return &text('log_delete'.$g, "<tt>$object</tt>");
+		return &text('log_delete'.$g,
+			     "<tt>".&html_escape($object)."</tt>");
 		}
 	}
 elsif ($action eq 'joingroup') {
-	return &text('log_joingroup', $object, $p->{'group'});
+	return &text('log_joingroup', &html_escape($object),
+		     &html_escape($p->{'group'}));
 	}
 elsif ($action eq 'acl') {
-	return &text('log_acl', "<tt>$object</tt>",
+	return &text('log_acl', "<tt>".&html_escape($object)."</tt>",
 		     "<i>".&html_escape($p->{'moddesc'})."</i>");
 	}
 elsif ($action eq 'reset') {
-	return &text('log_reset', "<tt>$object</tt>",
+	return &text('log_reset', "<tt>".&html_escape($object)."</tt>",
 		     "<i>".&html_escape($p->{'moddesc'})."</i>");
 	}
 elsif ($action eq 'cert') {
@@ -60,7 +63,9 @@ elsif ($action eq 'switch') {
 	return &text('log_switch', "<tt>".&html_escape($object)."</tt>");
 	}
 elsif ($action eq 'twofactor') {
-	return &text('log_twofactor', $object, $p->{'provider'}, $p->{'id'});
+	return &text('log_twofactor', &html_escape($object),
+		     &html_escape($p->{'provider'}),
+		     &html_escape($p->{'id'}));
 	}
 elsif ($action eq 'forgot') {
 	return &text('log_forgot_'.$type, &html_escape($p->{'user'}),

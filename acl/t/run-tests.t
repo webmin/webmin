@@ -865,11 +865,8 @@ is(group_line({ name => 'empty' }),
 
     my $g = get_users_group('bob');
     is($g && $g->{'name'}, 'wheel', 'get_users_group finds bob in wheel');
-    # get_users_group falls off the end without an explicit return; in scalar
-    # context that yields '' (the failed loop condition) rather than undef.
-    # Asserting falsy keeps the test honest about the current contract.
-    ok(!get_users_group('nobody'),
-       'get_users_group returns falsy for unaffiliated user');
+    is(get_users_group('nobody'), undef,
+       'get_users_group returns undef when user is in no group');
 
     delete_from_groups('bob');
     _clear_caches();
@@ -934,22 +931,50 @@ is(group_line({ name => 'empty' }),
     like(parse_webmin_log('admin', 's', 'switch', 'user', 'alice', {}),
          qr/Switched to.*alice/,    'parse_webmin_log switch');
 
-    # html_escape: a malicious $object or moddesc must come back escaped.
-    # Several branches (delete, modify rename, joingroup, twofactor) currently
-    # do NOT escape $object — they interpolate it into a <tt> tag verbatim.
-    # That's an audit-trail XSS gap; mark these TODO so the suite documents
-    # the expected post-fix behavior without going red.
-    TODO: {
-        local $TODO = 'parse_webmin_log delete branch does not html_escape $object';
-        my $xss = parse_webmin_log('admin', 's', 'delete', 'user',
-                                   '<script>x</script>', {});
-        unlike($xss, qr/<script>/,
-               'parse_webmin_log html-escapes user-supplied object in delete');
-        like($xss, qr/&lt;script&gt;/,
-             'parse_webmin_log emits escaped entities for delete object');
+    # html_escape: every branch that interpolates a user-controlled value into
+    # the rendered audit-trail string must come back escaped. These are
+    # defense-in-depth — usernames are normally restricted to a safe charset,
+    # but the audit log is the wrong place to trust upstream validation.
+    my $payload = '<script>x</script>';
+    my $esc     = qr/&lt;script&gt;/;
+
+    for my $case (
+        [ 'delete user',
+          [ 'admin', 's', 'delete', 'user', $payload, {} ] ],
+        [ 'modify rename (old name)',
+          [ 'admin', 's', 'modify', 'user', 'safe',
+            { old => $payload, name => 'safe' } ] ],
+        [ 'modify rename (new name)',
+          [ 'admin', 's', 'modify', 'user', 'safe',
+            { old => 'safe', name => $payload } ] ],
+        [ 'joingroup (object)',
+          [ 'admin', 's', 'joingroup', 'user', $payload,
+            { group => 'wheel' } ] ],
+        [ 'joingroup (group)',
+          [ 'admin', 's', 'joingroup', 'user', 'alice',
+            { group => $payload } ] ],
+        [ 'twofactor (object)',
+          [ 'admin', 's', 'twofactor', 'user', $payload,
+            { provider => 'totp', id => 'k' } ] ],
+        [ 'acl (object)',
+          [ 'admin', 's', 'acl', 'user', $payload,
+            { moddesc => 'User Admin' } ] ],
+        [ 'reset (object)',
+          [ 'admin', 's', 'reset', 'user', $payload,
+            { moddesc => 'User Admin' } ] ],
+        [ 'delete users bulk (object)',
+          [ 'admin', 's', 'delete', 'users', $payload, {} ] ],
+        ) {
+        my ($name, $args) = @$case;
+        my $out = parse_webmin_log(@$args);
+        unlike($out, qr/<script>/,
+               "parse_webmin_log html-escapes $name");
+        like($out, $esc,
+             "parse_webmin_log emits entities for $name");
     }
 
-    # acl branch DOES escape moddesc, so this one should pass today.
+    # acl/reset moddesc was already escaped pre-fix; keep the test as a
+    # regression guard.
     my $xss2 = parse_webmin_log('admin', 's', 'acl', 'user', 'alice',
                                 { moddesc => '<img src=x>' });
     unlike($xss2, qr/<img/,
