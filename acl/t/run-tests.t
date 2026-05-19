@@ -865,8 +865,9 @@ is(group_line({ name => 'empty' }),
 
     my $g = get_users_group('bob');
     is($g && $g->{'name'}, 'wheel', 'get_users_group finds bob in wheel');
-    is(get_users_group('nobody'), undef,
-       'get_users_group returns undef when user is in no group');
+    my $miss = get_users_group('nobody');
+    ok(!defined($miss),
+       'get_users_group returns nothing when user is in no group');
 
     delete_from_groups('bob');
     _clear_caches();
