@@ -914,7 +914,8 @@ if (&can_manage_vhost_files()) {
 		my @filevirts = @{$active_by_file{$file} || [ ]};
 		my $active = @filevirts ? 1 : 0;
 		if (!@filevirts) {
-			@filevirts = grep { &can_edit_virt($_) }
+			@filevirts = grep { &can_edit_virt($_) &&
+					     !&is_default_vhost($_) }
 				     &find_virtuals_in_file($file);
 			}
 		foreach my $v (@filevirts) {

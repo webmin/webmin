@@ -227,6 +227,16 @@ subtest 'same-name symlink to another target is not disabled' => sub {
 	is(readlink($link), $other, 'preserved symlink target is unchanged');
 };
 
+subtest 'disabled default virtual hosts stay hidden' => sub {
+	my $disabled_default = File::Spec->catfile($available,
+						  'zz-disabled-default.conf');
+	write_text($disabled_default, vhost_conf(undef, '/srv/disabled-default'));
+
+	my @rows = main::get_virtual_list_rows(apache_config());
+	ok(!(grep { $_->{'file'} eq $disabled_default } @rows),
+	   'disabled catch-all virtual host file is not listed as a normal vhost');
+};
+
 subtest 'legacy webfile link helpers resolve relative link_dir' => sub {
 	my $relative = File::Spec->catfile($available, 'relative.conf');
 	my $link = File::Spec->catfile($enabled, 'relative.conf');
