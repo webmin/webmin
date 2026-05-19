@@ -27,7 +27,8 @@ if ($action eq 'modify') {
 	}
 elsif ($action eq 'create') {
 	if ($p->{'clone'}) {
-		return &text('log_clone'.$g, "<tt>$p->{'clone'}</tt>",
+		return &text('log_clone'.$g,
+			     "<tt>".&html_escape($p->{'clone'})."</tt>",
 			     "<tt>".&html_escape($object)."</tt>");
 		}
 	else {
