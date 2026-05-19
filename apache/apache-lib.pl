@@ -436,6 +436,13 @@ foreach $v (@virt) {
 return \@get_config_cache;
 }
 
+# flush_config_cache()
+# Delete all in-memory config caches
+sub flush_config_cache
+{
+undef(@get_config_cache);
+}
+
 # get_config_file(filename, [&seen-files])
 # Returns a list of config hash refs from some file
 sub get_config_file
@@ -786,6 +793,427 @@ foreach my $l (@$lref) {
 &unflush_file_lines($file);
 unlink($file);
 &delete_webfile_link($file);
+}
+
+# can_manage_vhost_files()
+# Returns 1 if this system uses Debian-style available/enabled site dirs
+sub can_manage_vhost_files
+{
+return 0 if ($gconfig{'os_type'} ne 'debian-linux');
+my $avail = &vhost_available_dir();
+my $enabled = &vhost_enabled_dir();
+return $avail && -d $avail && $enabled && -d $enabled &&
+       &simplify_path(&resolve_links($avail)) ne
+       &simplify_path(&resolve_links($enabled));
+}
+
+# vhost_available_dir()
+# Returns the configured directory of available Apache virtual host files
+sub vhost_available_dir
+{
+return $config{'virt_file'} ? &server_root($config{'virt_file'}) : undef;
+}
+
+# vhost_enabled_dir()
+# Returns the configured directory of enabled Apache virtual host symlinks
+sub vhost_enabled_dir
+{
+return $config{'link_dir'} ? &server_root($config{'link_dir'}) : undef;
+}
+
+# get_vhost_available_files()
+# Returns real config files from the directory used for new virtual hosts
+sub get_vhost_available_files
+{
+my @rv;
+return @rv if (!&can_manage_vhost_files());
+my $avail = &vhost_available_dir();
+opendir(AVAIL, $avail) || return @rv;
+foreach my $f (sort { lc($a) cmp lc($b) } readdir(AVAIL)) {
+	next if ($f eq "." || $f eq "..");
+	my $file = $avail."/".$f;
+	my $rfile = &simplify_path(&resolve_links($file));
+	next if (!$rfile || !-f $rfile || !-r $rfile);
+	push(@rv, $rfile);
+	}
+closedir(AVAIL);
+return &unique(@rv);
+}
+
+# find_virtuals_in_file(file)
+# Returns VirtualHost blocks parsed from one config file
+sub find_virtuals_in_file
+{
+my ($file) = @_;
+my $rfile = &simplify_path(&resolve_links($file));
+$rfile ||= $file;
+return ( ) if (!-r $rfile);
+my @conf = &get_config_file($rfile);
+return grep { $_->{'file'} eq $rfile }
+       &find_directive_struct("VirtualHost", \@conf);
+}
+
+# is_default_vhost(&virt)
+# Returns 1 if a VirtualHost looks like a default/catch-all host
+sub is_default_vhost
+{
+my ($virt) = @_;
+return 1 if (!$virt);
+return 1 if ($virt->{'value'} =~ /_default_/i);
+return 1 if (!&find_directive("ServerName", $virt->{'members'}));
+return 0;
+}
+
+# can_manage_vhost_file(file)
+# Returns 1 if all virtual hosts in a file are manageable by this user
+sub can_manage_vhost_file
+{
+my ($file) = @_;
+my $rfile = &simplify_path(&resolve_links($file));
+$rfile ||= $file;
+return 0 if (!$rfile || !-f $rfile || !-r $rfile);
+my @virts = &find_virtuals_in_file($rfile);
+return 0 if (!@virts);
+foreach my $virt (@virts) {
+	return 0 if (&is_default_vhost($virt));
+	return 0 if (!&can_edit_virt($virt));
+	}
+return 1;
+}
+
+# can_manage_vhost_state_file(file)
+# Returns 1 if a virtual host file can have its enabled state managed here
+sub can_manage_vhost_state_file
+{
+my ($file) = @_;
+my $rfile = &simplify_path(&resolve_links($file));
+$rfile ||= $file;
+return 0 if (!$rfile || !-f $rfile);
+my %available = map { $_, 1 } &get_vhost_available_files();
+return 0 if (!$available{$rfile});
+return &can_manage_vhost_file($rfile);
+}
+
+# get_virtual_list_rows(&config)
+# Returns row hashes for the virtual-host list, preserving sites-available order
+sub get_virtual_list_rows
+{
+my ($conf) = @_;
+my @active = grep { &can_edit_virt($_) }
+	     &find_directive_struct("VirtualHost", $conf);
+if (&can_manage_vhost_files()) {
+	my @rows;
+	my %active_by_file;
+	foreach my $v (@active) {
+		my $file = &simplify_path(&resolve_links($v->{'file'}));
+		$file ||= $v->{'file'};
+		push(@{$active_by_file{$file}}, $v);
+		}
+	my %done_virt;
+	foreach my $file (&get_vhost_available_files()) {
+		my @filevirts = @{$active_by_file{$file} || [ ]};
+		my $active = @filevirts ? 1 : 0;
+		if (!@filevirts) {
+			@filevirts = grep { &can_edit_virt($_) }
+				     &find_virtuals_in_file($file);
+			}
+		foreach my $v (@filevirts) {
+			push(@rows, { 'virt' => $v,
+				      'active' => $active,
+				      'file' => $file });
+			$done_virt{$v}++;
+			}
+		}
+	foreach my $v (@active) {
+		next if ($done_virt{$v});
+		push(@rows, { 'virt' => $v,
+			      'active' => 1,
+			      'file' => $v->{'file'} });
+		}
+	return @rows;
+	}
+return map { { 'virt' => $_, 'active' => 1, 'file' => $_->{'file'} } }
+       @active;
+}
+
+# vhost_file_link(file)
+# Returns the enabled symlink path for a virtual host file
+sub vhost_file_link
+{
+my ($file) = @_;
+return undef if (!&can_manage_vhost_files());
+my $rfile = &simplify_path(&resolve_links($file));
+$rfile ||= $file;
+my $avail = &vhost_available_dir();
+my $short;
+if (opendir(AVAIL, $avail)) {
+	foreach my $f (sort { lc($a) cmp lc($b) } readdir(AVAIL)) {
+		next if ($f eq "." || $f eq "..");
+		my $afile = $avail."/".$f;
+		my $rafile = &simplify_path(&resolve_links($afile));
+		if ($rafile && $rafile eq $rfile) {
+			$short = $f;
+			last;
+			}
+		}
+	closedir(AVAIL);
+	}
+$short ||= $rfile;
+$short =~ s/^.*\///;
+return &vhost_enabled_dir()."/".$short;
+}
+
+# vhost_file_links(file)
+# Returns enabled symlinks for a virtual host file
+sub vhost_file_links
+{
+my ($file) = @_;
+my @rv;
+return @rv if (!&can_manage_vhost_files());
+my $rfile = &simplify_path(&resolve_links($file));
+$rfile ||= $file;
+my $enabled = &vhost_enabled_dir();
+opendir(LINKDIR, $enabled) || return @rv;
+foreach my $f (readdir(LINKDIR)) {
+	next if ($f eq "." || $f eq "..");
+	my $link = $enabled."/".$f;
+	next if (!-l $link);
+	my $rlink = &simplify_path(&resolve_links($link));
+	if ($rlink && $rlink eq $rfile) {
+		push(@rv, $link);
+		}
+	}
+closedir(LINKDIR);
+return @rv;
+}
+
+# vhost_file_enabled(file)
+# Returns 1 if a virtual host file has an enabled symlink
+sub vhost_file_enabled
+{
+my ($file) = @_;
+return scalar(&vhost_file_links($file)) ? 1 : 0;
+}
+
+# enable_vhost_file(file)
+# Enables a virtual host file and rolls back if apache configtest fails
+sub enable_vhost_file
+{
+my ($file) = @_;
+my $rfile = &simplify_path(&resolve_links($file));
+$rfile ||= $file;
+return $text{'enable_efile'} if (!&can_manage_vhost_state_file($rfile));
+my $verr = &virtualmin_vhost_file_state_error($rfile, "enable");
+return $verr if ($verr);
+my $link = &vhost_file_link($rfile);
+$link || return $text{'enable_elinkdir'};
+return undef if (&vhost_file_enabled($rfile));
+if (-e $link || -l $link) {
+	return &text('enable_elinkexists', "<tt>".&html_escape($link)."</tt>");
+	}
+&symlink_logged($rfile, $link) ||
+	return &text('enable_elink', "<tt>".&html_escape($link)."</tt>",
+		     "<tt>".&html_escape($!)."</tt>");
+my $err = &test_config();
+if ($err) {
+	&unlink_logged($link);
+	return &text('enable_etest', "<tt>".&html_escape($err)."</tt>");
+	}
+&flush_config_cache();
+&update_last_config_change();
+return undef;
+}
+
+# disable_vhost_file(file)
+# Disables a virtual host file and rolls back if apache configtest fails
+sub disable_vhost_file
+{
+my ($file) = @_;
+my $rfile = &simplify_path(&resolve_links($file));
+$rfile ||= $file;
+return $text{'enable_efile'} if (!&can_manage_vhost_state_file($rfile));
+my $verr = &virtualmin_vhost_file_state_error($rfile, "disable");
+return $verr if ($verr);
+my @links = &vhost_file_links($file);
+return undef if (!@links);
+my @restore = map { [ $_, readlink($_) ] } @links;
+my @removed;
+foreach my $link (@links) {
+	if (!&unlink_logged($link)) {
+		foreach my $r (@removed) {
+			&symlink_logged($r->[1], $r->[0])
+				if (defined($r->[1]) && !-e $r->[0] && !-l $r->[0]);
+			}
+		return &text('enable_eunlink',
+			     "<tt>".&html_escape($link)."</tt>",
+			     "<tt>".&html_escape($!)."</tt>");
+		}
+	my ($restore) = grep { $_->[0] eq $link } @restore;
+	push(@removed, $restore) if ($restore);
+	}
+my $err = &test_config();
+if ($err) {
+	foreach my $r (@restore) {
+		&symlink_logged($r->[1], $r->[0])
+			if (defined($r->[1]) && !-e $r->[0] && !-l $r->[0]);
+		}
+	return &text('enable_etest', "<tt>".&html_escape($err)."</tt>");
+	}
+&flush_config_cache();
+&update_last_config_change();
+return undef;
+}
+
+# virtualmin_available()
+# Returns 1 if Virtualmin is installed and supported on this system
+sub virtualmin_available
+{
+return $main::apache_virtualmin_available
+	if (defined($main::apache_virtualmin_available));
+$main::apache_virtualmin_available = &foreign_check("virtual-server");
+return $main::apache_virtualmin_available;
+}
+
+# virtualmin_domain_by_name(name)
+# Returns a Virtualmin domain object by domain name, if one exists
+sub virtualmin_domain_by_name
+{
+my ($name) = @_;
+return undef if (!&virtualmin_available());
+return $main::apache_virtualmin_domain_by_name_cache{$name}
+	if (exists($main::apache_virtualmin_domain_by_name_cache{$name}));
+&foreign_require("virtual-server");
+my $d = &virtual_server::get_domain_by("dom", $name);
+$main::apache_virtualmin_domain_by_name_cache{$name} = $d;
+return $d;
+}
+
+# virtual_names(&virt)
+# Returns all hostnames from ServerName and ServerAlias directives
+sub virtual_names
+{
+my ($virt) = @_;
+my @rv;
+my $sn = &find_directive("ServerName", $virt->{'members'});
+push(@rv, $sn) if ($sn);
+foreach my $sa (&find_directive_struct("ServerAlias", $virt->{'members'})) {
+	push(@rv, @{$sa->{'words'} || [ ]});
+	if (!@{$sa->{'words'} || [ ]} && $sa->{'value'}) {
+		push(@rv, $sa->{'value'});
+		}
+	}
+return grep { $_ && $_ ne "*" } &unique(@rv);
+}
+
+# virtualmin_domain_for_vhost_file(file)
+# Returns the Virtualmin domain object for a virtual host file, if any
+sub virtualmin_domain_for_vhost_file
+{
+my ($file) = @_;
+return undef if (!&virtualmin_available());
+my $rfile = &simplify_path(&resolve_links($file));
+$rfile ||= $file;
+return $main::apache_virtualmin_domain_for_file_cache{$rfile}
+	if (exists($main::apache_virtualmin_domain_for_file_cache{$rfile}));
+foreach my $virt (&find_virtuals_in_file($file)) {
+	next if (!&can_edit_virt($virt));
+	foreach my $name (&virtual_names($virt)) {
+		my $d = &virtualmin_domain_by_name($name);
+		if (!$d && $name =~ /^www\.(\S+)/i) {
+			$d = &virtualmin_domain_by_name($1);
+			}
+		if ($d) {
+			$main::apache_virtualmin_domain_for_file_cache{$rfile} = $d;
+			return $d;
+			}
+		}
+	}
+$main::apache_virtualmin_domain_for_file_cache{$rfile} = undef;
+return undef;
+}
+
+# vhost_file_state(file)
+# Returns the effective enabled state for a virtual host file
+sub vhost_file_state
+{
+my ($file) = @_;
+my $d = &virtualmin_domain_for_vhost_file($file);
+if ($d) {
+	return { 'enabled' => $d->{'disabled'} ? 0 : 1,
+		 'source' => 'virtualmin',
+		 'domain' => $d };
+	}
+return { 'enabled' => &vhost_file_enabled($file) ? 1 : 0,
+	 'source' => 'apache' };
+}
+
+# vhost_file_toggle_action(file)
+# Returns the action needed to toggle a virtual host file's effective state
+sub vhost_file_toggle_action
+{
+my ($file) = @_;
+return &vhost_file_state($file)->{'enabled'} ? "disable" : "enable";
+}
+
+# virtualmin_domain_state_link(&domain, enabled?)
+# Returns a link to the Virtualmin state change form for some domain
+sub virtualmin_domain_state_link
+{
+my ($d, $enabled) = @_;
+my $page = $enabled ? "disable_domain.cgi" : "enable_domain.cgi";
+my $label = $enabled ? $text{'enable_virtualmin_disable_label'} :
+		       $text{'enable_virtualmin_enable_label'};
+my $url = "../virtual-server/".$page."?dom=".&urlize($d->{'id'});
+return &ui_link(&quote_escape($url), "\"".$label."\"");
+}
+
+# virtualmin_vhost_file_state_error(file, action)
+# Returns an error if a Virtualmin-owned site is being enabled or disabled here
+sub virtualmin_vhost_file_state_error
+{
+my ($file, $action) = @_;
+return undef if ($action ne "enable" && $action ne "disable");
+my $state_info = &vhost_file_state($file);
+return undef if ($state_info->{'source'} ne "virtualmin");
+my $d = $state_info->{'domain'};
+return undef if (!$d);
+my $state = lc($state_info->{'enabled'} ? $text{'index_enabled'} :
+					  $text{'index_disabled'});
+my $dom = "<tt>".&html_escape($d->{'dom'})."</tt>";
+my $link = &virtualmin_domain_state_link($d, $state_info->{'enabled'});
+return $state_info->{'enabled'} ?
+	&text('enable_evirtualmin_disable', $dom, $state, $link) :
+	&text('enable_evirtualmin_enable', $dom, $state, $link);
+}
+
+# delete_virtuals_from_file(file, &virtualhosts...)
+# Deletes VirtualHost blocks from one file and removes the file if empty
+sub delete_virtuals_from_file
+{
+my ($file, @virts) = @_;
+return 0 if (!@virts);
+my $lref = &read_file_lines($file);
+foreach my $virt (sort { $b->{'line'} <=> $a->{'line'} } @virts) {
+	my $len = $virt->{'eline'} - $virt->{'line'} + 1;
+	splice(@$lref, $virt->{'line'}, $len);
+	}
+my $empty = 1;
+foreach my $line (@$lref) {
+	if ($line =~ /\S/) {
+		$empty = 0;
+		last;
+		}
+	}
+&flush_file_lines($file);
+if ($empty) {
+	foreach my $link (&vhost_file_links($file)) {
+		&unlink_logged($link);
+		}
+	&unlink_logged($file);
+	}
+&flush_config_cache();
+&update_last_config_change();
+return scalar(@virts);
 }
 
 # renumber(&config, line, file, offset)
@@ -1985,16 +2413,16 @@ if ($config{'link_dir'}) {
 sub delete_webfile_link
 {
 local ($file) = @_;
+$file = &simplify_path(&resolve_links($file));
 if ($config{'link_dir'}) {
-	local $short = $file;
-	$short =~ s/^.*\///;
 	opendir(LINKDIR, $config{'link_dir'});
 	foreach my $f (readdir(LINKDIR)) {
-		if ($f ne "." && $f ne ".." &&
-		    (&simplify_path(
-		       &resolve_links($config{'link_dir'}."/".$f)) eq $file ||
-		     $short eq $f)) {
-			&unlink_logged($config{'link_dir'}."/".$f);
+		if ($f ne "." && $f ne "..") {
+			my $link = $config{'link_dir'}."/".$f;
+			next if (!-l $link);
+			if (&simplify_path(&resolve_links($link)) eq $file) {
+				&unlink_logged($link);
+				}
 			}
 		}
 	closedir(LINKDIR);

@@ -34,6 +34,9 @@ index_listen=Listen on address (if needed)
 index_port=Port
 index_name=Server Name
 index_root=Document Root
+index_status=State
+index_enabled=Enabled
+index_disabled=Disabled
 index_url=URL
 index_view=Open..
 index_adddir=Allow access to this directory
@@ -57,6 +60,7 @@ index_fmode1=Virtual servers file $1
 index_fmode1d=New file under virtual servers directory $1
 index_fmode2=Selected file..
 index_delete=Delete Selected Servers
+index_toggle=Toggle State
 
 cvirt_ecannot=You are not allowed to create a virtual server
 cvirt_err=Failed to create virtual server
@@ -1032,6 +1036,7 @@ log_stop=Stopped webserver
 log_apply=Applied changes
 log_manual=Manually edited configuration file $1
 log_virts_delete=Deleted $1 virtual servers
+log_toggle_vhostfile=Toggled state of $1 virtual host files
 
 search_title=Find Servers
 search_notfound=No matching virtual servers found
@@ -1148,6 +1153,22 @@ delete_err=Failed to delete virtual servers
 delete_enone=None selected
 delete_ecannot=You are not allowed to delete servers
 delete_ecannot2=You are not allowed to edit the server $1
+delete_eaction=No action was selected
+delete_egone=The selected virtual server no longer exists
+delete_edefault=The default virtual server cannot be deleted
+
+enable_err=Failed to change virtual host file state
+enable_enone=No manageable virtual host files were selected
+enable_efile=Virtual host file does not exist or cannot be managed
+enable_elinkdir=No enabled virtual host links directory is configured
+enable_elink=Failed to create symbolic link $1 : $2
+enable_eunlink=Failed to remove symbolic link $1 : $2
+enable_elinkexists=The symbolic link $1 already exists
+enable_etest=Apache configuration test failed after changing the virtual host file state : $1
+enable_evirtualmin_disable=This Apache virtual host is managed by Virtualmin virtual server $1, which is currently $2. Site disabling should be done in Virtualmin using $3.
+enable_evirtualmin_enable=This Apache virtual host is managed by Virtualmin virtual server $1, which is currently $2. Site enabling should be done in Virtualmin using $3.
+enable_virtualmin_disable_label=Disable and Delete &#x21fe; Disable Virtual Server
+enable_virtualmin_enable_label=Disable and Delete &#x21fe; Enable Virtual Server
 
 syslog_desc=Apache error log
 

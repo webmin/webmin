@@ -102,6 +102,10 @@ if (&can_edit_virt()) {
 	push(@vproxy, undef);
 	$sn ||= &get_system_hostname();
 	push(@vurl, $defport ? "http://$sn:$defport/" : "http://$sn/");
+	push(@vfile, undef);
+	push(@vstatus, "");
+	push(@vsel, undef);
+	push(@vfilemanage, 0);
 	$showing_default++;
 	}
 
@@ -128,16 +132,23 @@ elsif ($httpd_modules{'core'} >= 1.2) {
 	$ba = &find_directive("ServerName", $conf);
 	$nv{&to_ipaddress($ba ? $ba : &get_system_hostname())}++;
 	}
-@virt = grep { &can_edit_virt($_) } @virt;
+$can_vhost_files = &can_manage_vhost_files();
+@vrows = &get_virtual_list_rows($conf);
 if ($config{'show_order'} == 1) {
 	# sort by server name
-	@virt = sort { &server_name_sort($a) cmp &server_name_sort($b) } @virt;
+	@vrows = sort { &server_name_sort($a->{'virt'}) cmp
+			&server_name_sort($b->{'virt'}) } @vrows;
 	}
 elsif ($config{'show_order'} == 2) {
 	# sort by IP address
-	@virt = sort { &server_ip_sort($a) cmp &server_ip_sort($b) } @virt;
+	@vrows = sort { &server_ip_sort($a->{'virt'}) cmp
+			&server_ip_sort($b->{'virt'}) } @vrows;
 	}
-foreach $v (@virt) {
+@virt = map { $_->{'virt'} } grep { $_->{'active'} } @vrows;
+%available_vhost_file = map { $_, 1 } &get_vhost_available_files()
+	if ($can_vhost_files);
+foreach $r (@vrows) {
+	$v = $r->{'virt'};
 	$vm = $v->{'members'};
 	if ($v->{'words'}->[0] =~ /^\[(\S+)\]:(\d+)$/) {
 		# IPv6 address and port
@@ -163,7 +174,7 @@ foreach $v (@virt) {
 	$idx = &indexof($v, @$conf);
 	push(@vidx, $idx);
 	push(@vname, $text{'index_virt'});
-	push(@vlink, "virt_index.cgi?virt=$idx");
+	push(@vlink, $r->{'active'} ? "virt_index.cgi?virt=$idx" : undef);
 	$sname = &find_directive("ServerName", $vm);
 	local $daddr = $addr eq "_default_" ||
                        ($addr eq "*" && $httpd_modules{'core'} < 1.2);
@@ -225,10 +236,34 @@ foreach $v (@virt) {
 		}
 	$sp = undef if ($sp == 80 && $prot eq "http" ||
 			$sp == 443 && $prot eq "https");
-	push(@vurl, $sp ? "$prot://$sn:$sp/" : "$prot://$sn/");
+	push(@vurl, $r->{'active'} ?
+		    ($sp ? "$prot://$sn:$sp/" : "$prot://$sn/") : undef);
+	local $rfile = $r->{'file'} ? &simplify_path(&resolve_links($r->{'file'}))
+				    : undef;
+	push(@vfile, $rfile);
+	local $status = "";
+	if ($can_vhost_files && $rfile && $available_vhost_file{$rfile}) {
+		local $enabled = &vhost_file_state($rfile)->{'enabled'};
+		$status = $enabled ? $text{'index_enabled'} :
+				     $text{'index_disabled'};
+		}
+	push(@vstatus, $status);
+	local $file_manage = $can_vhost_files && $rfile &&
+			     $available_vhost_file{$rfile} &&
+			     &can_manage_vhost_state_file($rfile);
+	push(@vfilemanage, $file_manage ? 1 : 0);
+	local $sel;
+	if ($r->{'active'} && (!$can_vhost_files || !&is_default_vhost($v))) {
+		$sel = $idx;
+		}
+	elsif (!$r->{'active'} && $can_vhost_files && $rfile &&
+	       $available_vhost_file{$rfile} && $file_manage) {
+		$sel = "file\t".$rfile."\t".$v->{'line'};
+		}
+	push(@vsel, $sel);
 	}
 
-if (@vlink == 1 && !$access{'global'} && $access{'virts'} ne "*" &&
+if (@vlink == 1 && $vlink[0] && !$access{'global'} && $access{'virts'} ne "*" &&
     !$access{'create'} && $access{'noconfig'}) {
 	# Can only manage one vhost, so go direct to it
 	&redirect($vlink[0]);
@@ -297,7 +332,9 @@ if ($access{'global'}) {
 # work out select links
 print &ui_tabs_start_tab("mode", "list");
 #print $text{'index_desclist'},"<p>\n";
-$showdel = $access{'vaddr'} && ($vidx[0] || $vidx[1]);
+$showdel = $access{'vaddr'} &&
+	   grep { defined($_) && $_ ne "" } @vsel;
+$showtoggle = $can_vhost_files && grep { $_ } @vfilemanage;
 @links = ( );
 if ($showdel) {
 	push(@links, &select_all_link("d"),
@@ -326,8 +363,10 @@ if ($config{'max_servers'} && @vname > $config{'max_servers'}) {
 	}
 elsif ($config{'show_list'} && scalar(@vname)) {
 	# as list for people with lots of servers
+	$list_form = "vhosts_form";
 	if ($showdel) {
-		print &ui_form_start("delete_vservs.cgi", "post");
+		print &ui_form_start("delete_vservs.cgi", "post", undef,
+				     "id='$list_form'");
 		}
 	print &ui_links_row(\@links);
 	print &ui_columns_start([
@@ -337,19 +376,23 @@ elsif ($config{'show_list'} && scalar(@vname)) {
 		$text{'index_port'},
 		$text{'index_name'},
 		$text{'index_root'},
+		$can_vhost_files ? ( $text{'index_status'} ) : ( ),
 		$text{'index_url'} ], 100);
 	for($i=0; $i<@vname; $i++) {
 		local @cols;
-		push(@cols, &ui_link($vlink[$i], $vname[$i]) );
+		push(@cols, $vlink[$i] ? &ui_link($vlink[$i], $vname[$i]) :
+					  $vname[$i] );
 		push(@cols, &html_escape($vaddr[$i]));
 		push(@cols, &html_escape($vport[$i]));
 		push(@cols, $vserv[$i] || $text{'index_auto'});
 		push(@cols, &html_escape($vproxy[$i]) ||
 			    &html_escape($vroot[$i]));
-		push(@cols, &ui_link($vurl[$i], $text{'index_view'}) );
-		if ($showdel && $vidx[$i]) {
+		push(@cols, $vstatus[$i]) if ($can_vhost_files);
+		push(@cols, $vurl[$i] ? &ui_link($vurl[$i], $text{'index_view'}) :
+					"" );
+		if ($showdel && defined($vsel[$i]) && $vsel[$i] ne "") {
 			print &ui_checked_columns_row(\@cols, undef,
-						      "d", $vidx[$i]);
+						      "d", $vsel[$i]);
 			}
 		elsif ($showdel) {
 			print &ui_columns_row([ "", @cols ]);
@@ -361,13 +404,23 @@ elsif ($config{'show_list'} && scalar(@vname)) {
 	print &ui_columns_end();
 	print &ui_links_row(\@links);
 	if ($showdel) {
-		print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+		if ($showtoggle) {
+			print &ui_form_end_side_by_side($list_form,
+				[ [ "delete", $text{'index_delete'} ] ],
+				[ [ "toggle", $text{'index_toggle'}, undef,
+				    undef, "form=\"$list_form\"" ] ]);
+			}
+		else {
+			print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+			}
 		}
 	}
 else {
 	# as icons for niceness
+	$list_form = "vhosts_form";
 	if ($showdel) {
-		print &ui_form_start("delete_vservs.cgi", "post");
+		print &ui_form_start("delete_vservs.cgi", "post", undef,
+				     "id='$list_form'");
 		}
 	print &ui_links_row(\@links);
 	print "<table width=100% cellpadding=5>\n";
@@ -376,8 +429,9 @@ else {
 		print '<div class="row icons-row inline-row">';
 		&generate_icon("images/virt.gif", $vname[$i], $vlink[$i],
 			       undef, undef, undef,
-			       $vidx[$i] && $access{'vaddr'} ?
-					&ui_checkbox("d", $vidx[$i]) : "");
+			       defined($vsel[$i]) && $vsel[$i] ne "" &&
+			       $access{'vaddr'} ?
+					&ui_checkbox("d", $vsel[$i]) : "");
 		print "</div>\n";
 		print "</td> <td valign=top>\n";
 		print "$vdesc[$i]<br>\n";
@@ -397,12 +451,24 @@ else {
 			print "<b>$text{'index_root'}</b> ",
 			      &html_escape($vroot[$i]),"</td> </tr>\n";
 			}
+		if ($can_vhost_files && $vstatus[$i]) {
+			print "<tr><td colspan=2><b>$text{'index_status'}</b> ",
+			      $vstatus[$i],"</td></tr>\n";
+			}
 		print "</table></td> </tr>\n";
 		}
 	print "</table>\n";
 	print &ui_links_row(\@links);
 	if ($showdel) {
-		print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+		if ($showtoggle) {
+			print &ui_form_end_side_by_side($list_form,
+				[ [ "delete", $text{'index_delete'} ] ],
+				[ [ "toggle", $text{'index_toggle'}, undef,
+				    undef, "form=\"$list_form\"" ] ]);
+			}
+		else {
+			print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+			}
 		}
 	}
 print &ui_tabs_end_tab();
@@ -492,4 +558,3 @@ return $addr eq '_default_' || $addr eq '*' ? undef :
        $addr =~ /^\[(\S+)\]$/ && &check_ip6address($1) ? $1 :
 			         &to_ipaddress($addr);
 }
-
