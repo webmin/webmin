@@ -1972,9 +1972,10 @@ return undef;
 # if necessary.
 sub before_changing
 {
+my @extra = grep { $_ } @_;
 if ($config{'test_always'} || $access{'test_always'}) {
 	local $conf = &get_config();
-	local @files = &unique(map { $_->{'file'} } @$conf);
+	local @files = &unique((map { $_->{'file'} } @$conf), @extra);
 	local $/ = undef;
 	local $f;
 	foreach $f (@files) {
@@ -2397,10 +2398,11 @@ return @rv;
 sub create_webfile_link
 {
 local ($file) = @_;
-if ($config{'link_dir'}) {
+my $linkdir = &vhost_enabled_dir();
+if ($linkdir) {
 	local $short = $file;
 	$short =~ s/^.*\///;
-	local $linksrc = "$config{'link_dir'}/$short";
+	local $linksrc = "$linkdir/$short";
 	&lock_file($linksrc);
 	symlink($file, $linksrc);
 	&unlock_file($linksrc);
@@ -2414,11 +2416,11 @@ sub delete_webfile_link
 {
 local ($file) = @_;
 $file = &simplify_path(&resolve_links($file));
-if ($config{'link_dir'}) {
-	opendir(LINKDIR, $config{'link_dir'});
+my $linkdir = &vhost_enabled_dir();
+if ($linkdir && opendir(LINKDIR, $linkdir)) {
 	foreach my $f (readdir(LINKDIR)) {
 		if ($f ne "." && $f ne "..") {
-			my $link = $config{'link_dir'}."/".$f;
+			my $link = $linkdir."/".$f;
 			next if (!-l $link);
 			if (&simplify_path(&resolve_links($link)) eq $file) {
 				&unlink_logged($link);

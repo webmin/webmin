@@ -30,6 +30,16 @@ print $fh $text;
 close($fh) || die "Failed to close $file: $!";
 }
 
+sub read_text
+{
+my ($file) = @_;
+open(my $fh, '<', $file) || die "Failed to read $file: $!";
+local $/ = undef;
+my $text = <$fh>;
+close($fh) || die "Failed to close $file: $!";
+return $text;
+}
+
 sub vhost_conf
 {
 my ($name, $rootdir) = @_;
@@ -102,6 +112,7 @@ require File::Spec->catfile($root, 'apache', 'apache-lib.pl');
 	$main::text{'enable_virtualmin_enable_label'} = 'Disable and Delete &#x21fe; Enable Virtual Server';
 	$main::text{'index_enabled'} = 'Enabled';
 	$main::text{'index_disabled'} = 'Disabled';
+	$main::text{'eafter'} = 'Apache configuration test failed : $1';
 }
 
 sub apache_config
@@ -216,6 +227,25 @@ subtest 'same-name symlink to another target is not disabled' => sub {
 	is(readlink($link), $other, 'preserved symlink target is unchanged');
 };
 
+subtest 'legacy webfile link helpers resolve relative link_dir' => sub {
+	my $relative = File::Spec->catfile($available, 'relative.conf');
+	my $link = File::Spec->catfile($enabled, 'relative.conf');
+	write_text($relative, vhost_conf('relative.example', '/srv/relative'));
+	unlink($link);
+
+	{
+		no warnings 'once';
+		local $main::config{'link_dir'} = 'sites-enabled';
+		main::create_webfile_link($relative);
+		ok(-l $link, 'relative link_dir creates link under ServerRoot');
+		is(readlink($link), $relative,
+		   'created relative link_dir symlink points to the vhost file');
+		main::delete_webfile_link($relative);
+		ok(!-e $link && !-l $link,
+		   'relative link_dir delete removes the enabled symlink');
+	}
+};
+
 subtest 'file-level actions require access to every virtual host in the file' => sub {
 	my $mixed = File::Spec->catfile($available, 'mixed.conf');
 	write_text($mixed,
@@ -250,6 +280,31 @@ subtest 'state helpers enforce allowed files and ACLs directly' => sub {
 		   'Virtual host file does not exist or cannot be managed',
 		   'enable rejects mixed-access files without relying on caller validation');
 	}
+};
+
+subtest 'change rollback covers extra disabled vhost files' => sub {
+	my $rollback = File::Spec->catfile($available, 'rollback.conf');
+	my $original = vhost_conf('rollback.example', '/srv/rollback');
+	write_text($rollback, $original);
+	my @virts = main::find_virtuals_in_file($rollback);
+	is(scalar(@virts), 1, 'rollback fixture has one vhost');
+
+	{
+		no warnings qw(redefine once);
+		local %main::before_changing;
+		local $main::config{'test_always'} = 1;
+		local *main::test_config = sub { return 'bad config'; };
+		local *main::error = sub { die $_[0]; };
+		main::before_changing($rollback);
+		is(main::delete_virtuals_from_file($rollback, @virts), 1,
+		   'disabled vhost file deletion removes the vhost');
+		ok(!-e $rollback, 'empty disabled vhost file is deleted');
+		like(eval { main::after_changing(); 1 } ? '' : $@,
+		     qr/bad config/, 'failed post-change test reports an error');
+	}
+	ok(-f $rollback, 'rollback recreates the disabled vhost file');
+	is(read_text($rollback), $original,
+	   'rollback restores the disabled vhost file contents');
 };
 
 subtest 'apache configtest failure rolls back link changes' => sub {

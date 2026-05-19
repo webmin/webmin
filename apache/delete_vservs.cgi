@@ -89,21 +89,21 @@ if (%file_lines) {
 @virts || %file_virts || &error($text{'delete_enone'});
 
 # Delete their structures
-&before_changing();
+&before_changing(keys %file_virts);
 foreach $vconf (@virts) {
 	&lock_file($vconf->{'file'});
 	&save_directive_struct($vconf, undef, $conf, $conf);
 	&delete_file_if_empty($vconf->{'file'});
 	}
-&flush_file_lines();
-&unlock_all_files();
-&update_last_config_change();
-&after_changing();
 foreach $file (keys %file_virts) {
 	&lock_file($file);
 	$deleted += &delete_virtuals_from_file($file, @{$file_virts{$file}});
 	&unlock_file($file);
 	}
+&flush_file_lines();
+&unlock_all_files();
+&update_last_config_change();
+&after_changing();
 $deleted += scalar(@virts);
 &webmin_log("virts", "delete", $deleted);
 &redirect("");
