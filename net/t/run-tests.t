@@ -148,14 +148,14 @@ unlike($saved, qr/eth1:\n(?:.*\n)*?\s+nameservers:/,
 
 @commands = ( );
 %command_status = (
-	"(cd / && \\/usr\\/sbin\\/netplan generate)" => 1,
+	"(cd / && /usr/sbin/netplan generate)" => 1,
 	);
 %command_output = (
-	"(cd / && \\/usr\\/sbin\\/netplan generate)" => "bad yaml\n",
+	"(cd / && /usr/sbin/netplan generate)" => "bad yaml\n",
 	);
 is(main::apply_network(), "bad yaml\n",
    "apply_network returns validation errors");
-is_deeply(\@commands, [ "(cd / && \\/usr\\/sbin\\/netplan generate)" ],
+is_deeply(\@commands, [ "(cd / && /usr/sbin/netplan generate)" ],
 	  "apply_network skips apply when generate fails");
 
 @commands = ( );
@@ -163,8 +163,8 @@ is_deeply(\@commands, [ "(cd / && \\/usr\\/sbin\\/netplan generate)" ],
 %command_output = ( );
 is(main::apply_network(), undef, "apply_network applies after validation");
 is_deeply(\@commands,
-	  [ "(cd / && \\/usr\\/sbin\\/netplan generate)",
-	    "(cd / && \\/usr\\/sbin\\/netplan apply)" ],
+	  [ "(cd / && /usr/sbin/netplan generate)",
+	    "(cd / && /usr/sbin/netplan apply)" ],
 	  "apply_network validates before applying");
 
 done_testing();

@@ -640,7 +640,7 @@ sub apply_network
 my $err = &validate_netplan_config();
 return $err if ($err);
 my $out;
-my $cmd = "(cd / && ".quotemeta(&netplan_command())." apply)";
+my $cmd = "(cd / && ".&netplan_command()." apply)";
 my $rv = &execute_command_logged($cmd, undef, \$out, \$out);
 return $rv ? $out || "netplan apply failed" : undef;
 }
@@ -650,7 +650,7 @@ return $rv ? $out || "netplan apply failed" : undef;
 sub validate_netplan_config
 {
 my $out;
-my $cmd = "(cd / && ".quotemeta(&netplan_command())." generate)";
+my $cmd = "(cd / && ".&netplan_command()." generate)";
 my $rv = &execute_command_logged($cmd, undef, \$out, \$out);
 return $rv ? $out || "netplan generate failed" : undef;
 }
