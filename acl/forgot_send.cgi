@@ -5,7 +5,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-require './acl-lib.pl';
+require './acl-lib.pl';    ## no critic
 our (%in, %text, %gconfig);
 &foreign_require("webmin");
 &error_setup($text{'forgot_err'});
@@ -37,7 +37,7 @@ my %link = ( 'id' => &generate_random_id(),
 	     'user' => $wuser->{'name'},
 	     'uuser' => $unixuser, );
 $link{'id'} || &error($text{'forgot_erandom'});
-&make_dir($main::forgot_password_link_dir, 0700);
+&make_dir($main::forgot_password_link_dir, 0700);    ## no critic (ProhibitLeadingZeros)
 my $linkfile = $main::forgot_password_link_dir."/".$link{'id'};
 &lock_file($linkfile);
 &write_file($linkfile, \%link);

@@ -6,7 +6,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-require './acl-lib.pl';
+require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access);
 &ReadParse();
 &error_setup($text{'unix_err'});
@@ -70,7 +70,7 @@ else {
 	}
 if ($in{'sudo'}) {
 	&has_command("sudo") || &error(&text('unix_esudo', "<tt>sudo</tt>"));
-	eval "use IO::Pty";
+	eval { require IO::Pty; IO::Pty->import; 1 };
 	$@ && &error(&text('unix_esudomod', "<tt>IO::Pty</tt>"));
 	}
 $miniserv{'sudo'} = $in{'sudo'};

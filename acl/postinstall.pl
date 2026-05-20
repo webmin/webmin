@@ -3,7 +3,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-require 'acl-lib.pl';
+require 'acl-lib.pl';    ## no critic
 our ($config_directory);
 
 # Rename the .acl files for any groups to .gacl files

@@ -6,7 +6,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-require './acl-lib.pl';
+require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access, $config_directory);
 &ReadParse();
 
@@ -131,7 +131,7 @@ if ($in{'old'} && $in{'acl_security_form'}) {
 	my $aclfile = "$config_directory/$in{'name'}.gacl";
 	&lock_file($aclfile);
 	&save_group_module_acl(\%uaccess, $in{'name'}, "", 1);
-	&set_ownership_permissions(undef, undef, 0640, $aclfile);
+	&set_ownership_permissions(undef, undef, 0640, $aclfile);    ## no critic (ProhibitLeadingZeros)
 	&unlock_file($aclfile);
 	}
 

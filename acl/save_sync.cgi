@@ -6,7 +6,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-require './acl-lib.pl';
+require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access, $module_config_directory);
 &ReadParse();
 $access{'sync'} && $access{'create'} && $access{'delete'} ||

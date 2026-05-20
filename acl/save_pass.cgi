@@ -5,7 +5,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-require './acl-lib.pl';
+require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access);
 $access{'pass'} || &error($text{'pass_ecannot'});
 &error_setup($text{'pass_err'});
