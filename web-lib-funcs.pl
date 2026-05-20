@@ -13322,7 +13322,7 @@ $data ||= {};
 return $raw_utf8 ? $json->utf8->encode($data) : $json->latin1->encode($data);
 }
 
-=head2 convert_from_json(data, [raw-utf8])
+=head2 convert_from_json(data, [raw-utf8], [relaxed])
 
 Parses given JSON string
 
@@ -13330,13 +13330,20 @@ Parses given JSON string
 
 =item raw-utf8 parameter, if set, treats the input as raw UTF-8
 
+=item relaxed parameter, if set, uses JSON::PP relaxed syntax including comments and trailing commas
+
 =cut
 sub convert_from_json
 {
-my ($json_text, $raw_utf8) = @_;
+my ($json_text, $raw_utf8, $relaxed) = @_;
 
 my $json;
-if (eval { require JSON::XS }) {
+if ($relaxed) {
+	eval { require JSON::PP } ||
+		error("The JSON::PP Perl module is required for relaxed JSON parsing");
+	$json = JSON::PP->new->relaxed;
+	}
+elsif (eval { require JSON::XS }) {
 	$json = JSON::XS->new;
 	}
 elsif (eval { require JSON::PP }) {
