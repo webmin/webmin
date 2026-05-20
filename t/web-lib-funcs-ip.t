@@ -35,9 +35,9 @@ subtest 'check_ipaddress' => sub {
 
 # check_ip6address — IPv6, optionally with /N netmask suffix.
 #
-# Unlike the docstring, this sub also accepts an address/netmask form, but
-# only when the `::` shorthand is at the *start* of the address — see the
-# bug notes below. Pin current behaviour so a future fix shows up loudly.
+# Accepts the standard text forms, the "::" shorthand at any position, an
+# optional /N netmask, and the IPv4-in-IPv6 dotted-quad tail (RFC 4291
+# §2.5.5: "::ffff:N.N.N.N" mapped and "X:X:X:X:X:X:N.N.N.N" compatible).
 subtest 'check_ip6address' => sub {
 	ok( main::check_ip6address('::'),              'unspecified accepted');
 	ok( main::check_ip6address('::1'),             'loopback accepted');
@@ -45,23 +45,27 @@ subtest 'check_ip6address' => sub {
 	ok( main::check_ip6address('1:2:3:4:5:6:7:8'), 'full eight-block form accepted');
 	ok( main::check_ip6address('2001:db8::'),      'trailing :: accepted (no netmask)');
 
-	# Netmask suffix.
-	ok( main::check_ip6address('::1/64'),  'address/netmask accepted when :: is at start');
-	ok(!main::check_ip6address('::1/200'), 'netmask > 128 rejected');
+	# Netmask suffix — both with leading and trailing :: shorthand.
+	ok( main::check_ip6address('::1/64'),       'address/netmask accepted with leading ::');
+	ok( main::check_ip6address('2001:db8::/32'), 'address/netmask accepted with trailing ::');
+	ok( main::check_ip6address('::/0'),         '::/0 default route accepted');
+	ok( main::check_ip6address('fe80::/10'),    'fe80::/10 link-local prefix accepted');
+	ok(!main::check_ip6address('::1/200'),      'netmask > 128 rejected');
 
-	# BUG: a netmask suffix combined with a trailing `::` shorthand
-	# fails. The validator's empty-block accounting is thrown off because
-	# split() no longer trims trailing empties when the final element is
-	# the netmask. Real-world example: "2001:db8::/32" — a perfectly
-	# valid CIDR — is rejected.
-	ok(!main::check_ip6address('2001:db8::/32'),
-	   'BUG: valid CIDR with trailing :: rejected by validator');
+	# IPv4-in-IPv6 tails.
+	ok( main::check_ip6address('::ffff:10.0.0.1'),      'IPv4-mapped (::ffff:N.N.N.N) accepted');
+	ok( main::check_ip6address('::ffff:0.0.0.0'),       'IPv4-mapped all-zero accepted');
+	ok( main::check_ip6address('::1.2.3.4'),            'IPv4-compatible (::N.N.N.N) accepted');
+	ok( main::check_ip6address('0:0:0:0:0:ffff:1.2.3.4'),
+	    'fully-expanded IPv4-mapped accepted');
+	ok(!main::check_ip6address('::ffff:256.0.0.1'),     'IPv4-mapped with octet > 255 rejected');
+	ok(!main::check_ip6address('::ffff:1.2.3'),         'IPv4-mapped with too-few octets rejected');
 
-	# BUG: IPv4-mapped IPv6 (RFC 4291 §2.5.5.2) is rejected because the
-	# per-block regex requires hex digits. Notably, is_non_public_ipaddress
-	# has an unreachable ::ffff:N.N.N.N branch downstream of this check.
-	ok(!main::check_ip6address('::ffff:10.0.0.1'),
-	   'BUG: IPv4-mapped IPv6 rejected by validator');
+	# Bare IPv4 must be rejected — callers (e.g. ip_match) use this sub
+	# as a type discriminator and a true result re-routes IPv4 input
+	# through the IPv6 codepath.
+	ok(!main::check_ip6address('10.0.0.1'),          'bare IPv4 rejected (type-discriminator contract)');
+	ok(!main::check_ip6address('1.2.3.4'),           'bare IPv4 rejected (type-discriminator contract)');
 
 	ok(!main::check_ip6address('gggg::1'),           'non-hex rejected');
 	ok(!main::check_ip6address('1:2:3:4:5:6:7:8:9'), 'too many groups rejected');
@@ -111,12 +115,11 @@ subtest 'is_non_public_ipaddress (IPv6)' => sub {
 	ok( main::is_non_public_ipaddress('fc00::1'), 'ULA (fc00)');
 	ok( main::is_non_public_ipaddress('fd12::1'), 'ULA (fd12)');
 
-	# IPv4-mapped (::ffff:N.N.N.N) is meant to recurse on the embedded
-	# IPv4, but the branch is unreachable: check_ip6address rejects all
-	# ::ffff:N.N.N.N inputs (see BUG note in check_ip6address subtest).
-	# Both calls below currently return 0 — pin that.
-	ok(!main::is_non_public_ipaddress('::ffff:10.0.0.1'),
-	   'BUG: ::ffff:<private> falsely reported as public (validator rejects input)');
+	# IPv4-mapped (::ffff:N.N.N.N) recurses on the embedded IPv4.
+	ok( main::is_non_public_ipaddress('::ffff:10.0.0.1'),
+	   '::ffff:<private> recurses → non-public');
+	ok( main::is_non_public_ipaddress('::ffff:192.168.1.1'),
+	   '::ffff:<rfc1918> recurses → non-public');
 	ok(!main::is_non_public_ipaddress('::ffff:8.8.8.8'),
 	   '::ffff:<public> reported as public');
 
