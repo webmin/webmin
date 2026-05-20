@@ -295,6 +295,16 @@ subtest 'check_ip6address' => sub {
 	ok(!miniserv::check_ip6address('10.0.0.1'),             'bare IPv4 rejected (type-discriminator contract)');
 	ok(!miniserv::check_ip6address('1.2.3.4'),              'bare IPv4 rejected (type-discriminator contract)');
 
+	# Degenerate netmask shapes — stripping "/N" from the input must not
+	# let an address that's otherwise just a stray colon (or empty) pass.
+	# perl's split() trims trailing empties hard, so e.g. split(":") is
+	# () not (""), and our @blocks==0 guard catches it.
+	ok(!miniserv::check_ip6address(':/64'),                 'bare colon with netmask rejected');
+	ok(!miniserv::check_ip6address('/64'),                  'netmask without address rejected');
+	ok(!miniserv::check_ip6address(':'),                    'bare colon rejected');
+	ok(!miniserv::check_ip6address('::/'),                  'trailing slash with no digits rejected');
+	ok(!miniserv::check_ip6address('//64'),                 'leading slash with netmask rejected');
+
 	ok(!miniserv::check_ip6address('gggg::1'),              'non-hex rejected');
 	ok(!miniserv::check_ip6address('1:2:3:4:5:6:7:8:9'),    'too many groups rejected');
 	ok(!miniserv::check_ip6address('::1::2'),               'multiple :: rejected');
