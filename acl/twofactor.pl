@@ -21,8 +21,10 @@ my ($user, $provider, $id, $token, $apikey) = @ARGV;
 
 # Call the provider validation function
 &foreign_require("webmin");
-my $func = "webmin::validate_twofactor_".$provider;
-my $err = &$func($id, $token, $apikey);
+my $method = "validate_twofactor_".$provider;
+my $code = webmin->can($method)
+	or die "Unknown twofactor provider: $provider\n";
+my $err = $code->($id, $token, $apikey);
 if ($err) {
 	$err =~ s/\r|\n/ /g;
 	print $err,"\n";
