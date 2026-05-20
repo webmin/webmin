@@ -624,11 +624,14 @@ sub trunc
 if (length($_[0]) <= $_[1]) {
 	return $_[0];
 	}
-my $str = substr($_[0],0,$_[1]);
-my $c;
-do {
-	$c = chop($str);
-	} while($c !~ /\S/);
+my $str = substr($_[0], 0, $_[1]);
+# If the cut landed inside a word (next char in the original is
+# non-whitespace), back the partial word out — but only when there's
+# a word boundary inside $str to back up to. If the first word is
+# longer than maxlen, return that partial word rather than empty.
+if (substr($_[0], $_[1], 1) =~ /\S/ && $str =~ /\s/) {
+	$str =~ s/\S+$//;
+	}
 $str =~ s/\s+$//;
 return $str;
 }
@@ -693,35 +696,48 @@ Check if some IPv6 address is properly formatted, and returns 1 if so.
 =cut
 sub check_ip6address
 {
-# Special case for unspecified address (analogous to 0.0.0.0 in IPv4)
-return 1 if ($_[0] eq "::");
-my @blocks = split(/:/, $_[0]);
-return 0 if (@blocks == 0 || @blocks > 8);
-
-# The address/netmask format is accepted. So we're looking for a "/" to isolate a possible netmask.
-# After that, we delete the netmask to control the address only format, but we verify whether the netmask
-# value is in [0;128].
-my $ib = $#blocks;
-my $where = index($blocks[$ib],"/");
+my $addr = $_[0];
 my $m = 0;
-if ($where != -1) {
-my $b = substr($blocks[$ib],0,$where);
-$m = substr($blocks[$ib],$where+1,length($blocks[$ib])-($where+1));
-$blocks[$ib]=$b;
-}
 
-# The netmask must take its value in [0;128]
-return 0 if ($m <0 || $m >128);
+# Strip an optional /N netmask before splitting. Doing this on the
+# raw string (rather than from the last split element) keeps split()'s
+# trailing-empty accounting intact for inputs like "2001:db8::/32",
+# where the netmask would otherwise hide the trailing "::" shorthand.
+if ($addr =~ s{/(\d+)\z}{}) {
+	$m = $1;
+	}
+return 0 if ($m < 0 || $m > 128);
+
+# Special case for unspecified address (analogous to 0.0.0.0 in IPv4),
+# both bare and with a netmask.
+return 1 if ($addr eq "::");
+
+my @blocks = split(/:/, $addr);
+return 0 if (@blocks == 0);
+
+# Accept the IPv4-in-IPv6 forms (RFC 4291 §2.5.5: "::ffff:N.N.N.N"
+# IPv4-mapped, and the more general "X:X:X:X:X:X:N.N.N.N"). If the
+# last block is a dotted-quad, validate the octets and count it as two
+# 16-bit groups for the overall 8-group ceiling. The leading ":" guard
+# distinguishes IPv4-tailed IPv6 from a bare IPv4 address — callers
+# like ip_match() rely on this sub returning false for "10.0.0.1".
+my $count = scalar(@blocks);
+if ($addr =~ /:/ &&
+    $blocks[-1] =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)\z/) {
+	return 0 if ($1 > 255 || $2 > 255 || $3 > 255 || $4 > 255);
+	$count++;
+	pop(@blocks);
+	}
+return 0 if ($count > 8);
 
 # Check the different blocks of the address : 16 bits block in hexa notation.
 # Possibility of 1 empty block or 2 if the address begins with "::".
-my $b;
 my $empty = 0;
-foreach $b (@blocks) {
+foreach my $b (@blocks) {
 	return 0 if ($b ne "" && $b !~ /^[0-9a-f]{1,4}$/i);
 	$empty++ if ($b eq "");
 	}
-return 0 if ($empty > 1 && !($_[0] =~ /^::/ && $empty == 2));
+return 0 if ($empty > 1 && !($addr =~ /^::/ && $empty == 2));
 return 1;
 }
 
@@ -12471,9 +12487,9 @@ sub split_quoted_string
 {
 my ($str) = @_;
 my @rv;
-while($str =~ /^"([^"]*)"\s*([\000-\377]*)$/ ||
-      $str =~ /^'([^']*)'\s*([\000-\377]*)$/ ||
-      $str =~ /^(\S+)\s*([\000-\377]*)$/) {
+while($str =~ /^\s*"([^"]*)"\s*([\000-\377]*)$/ ||
+      $str =~ /^\s*'([^']*)'\s*([\000-\377]*)$/ ||
+      $str =~ /^\s*(\S+)\s*([\000-\377]*)$/) {
 	push(@rv, $1);
 	$str = $2;
 	}
