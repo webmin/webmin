@@ -3015,6 +3015,18 @@ $rv .= "</details>";
 return $rv;
 }
 
+=head2 ui_div(data)
+
+Returns passed HTML as div element
+
+=cut
+sub ui_div
+{
+return &theme_ui_div(@_) if (defined(&theme_ui_div));
+my ($data) = @_;
+return &ui_tag('div', $data, { 'class' => 'ui_div' });
+}
+
 =head2 ui_div_row(label, content)
 
 Prints a row without using a table and
