@@ -624,11 +624,14 @@ sub trunc
 if (length($_[0]) <= $_[1]) {
 	return $_[0];
 	}
-my $str = substr($_[0],0,$_[1]);
-my $c;
-do {
-	$c = chop($str);
-	} while($c !~ /\S/);
+my $str = substr($_[0], 0, $_[1]);
+# If the cut landed inside a word (next char in the original is
+# non-whitespace), back the partial word out — but only when there's
+# a word boundary inside $str to back up to. If the first word is
+# longer than maxlen, return that partial word rather than empty.
+if (substr($_[0], $_[1], 1) =~ /\S/ && $str =~ /\s/) {
+	$str =~ s/\S+$//;
+	}
 $str =~ s/\s+$//;
 return $str;
 }
@@ -12484,9 +12487,9 @@ sub split_quoted_string
 {
 my ($str) = @_;
 my @rv;
-while($str =~ /^"([^"]*)"\s*([\000-\377]*)$/ ||
-      $str =~ /^'([^']*)'\s*([\000-\377]*)$/ ||
-      $str =~ /^(\S+)\s*([\000-\377]*)$/) {
+while($str =~ /^\s*"([^"]*)"\s*([\000-\377]*)$/ ||
+      $str =~ /^\s*'([^']*)'\s*([\000-\377]*)$/ ||
+      $str =~ /^\s*(\S+)\s*([\000-\377]*)$/) {
 	push(@rv, $1);
 	$str = $2;
 	}

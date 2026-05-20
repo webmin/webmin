@@ -124,12 +124,14 @@ subtest 'split_quoted_string' => sub {
 		  ['unbalanced', '"quote'],
 		  'unterminated quote is taken as a bare token');
 
-	# Pure-whitespace input drops everything because no branch tolerates
-	# a leading-whitespace prefix. Surface this as current behaviour —
-	# arguably a bug, but documenting it here protects us from a silent
-	# behaviour change.
-	is_deeply([main::split_quoted_string('   spaces   between   ')], [],
-		  'leading whitespace short-circuits the tokenizer (current behaviour)');
+	# Leading and trailing whitespace tolerated around tokens.
+	is_deeply([main::split_quoted_string('   spaces   between   ')],
+		  ['spaces', 'between'],
+		  'leading whitespace tolerated, interior whitespace splits tokens');
+	is_deeply([main::split_quoted_string("\tfoo\n")], ['foo'],
+		  'tabs and newlines treated as whitespace too');
+	is_deeply([main::split_quoted_string('   ')], [],
+		  'pure-whitespace input → empty list');
 };
 
 # quote_path — OS-dependent shell quoting.

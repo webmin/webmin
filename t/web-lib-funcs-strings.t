@@ -170,39 +170,32 @@ subtest 'trim' => sub {
 
 # trunc — truncate to a "whole word" within a max length.
 #
-# The implementation cuts at maxlen, then pops one char unconditionally
-# and continues popping only while the popped char is whitespace; trailing
-# whitespace is then trimmed. This pins current behaviour, which has two
-# notable edge cases worth flagging:
-#
-#   * `trunc("hello world foo", 11)` returns "hello worl", losing the
-#     final 'd' even though substr(0, 11) cleanly ends on a word boundary.
-#   * `trunc("hello world", 5)` returns "hell" rather than "hello".
-#
-# These pass today; a future fix to trunc will break these and prompt
-# re-review.
+# Contract: if the cut lands inside a word, back up to the previous
+# whitespace; if no whitespace precedes (the first word is itself longer
+# than maxlen), return the partial first word rather than empty.
 subtest 'trunc' => sub {
 	# Early-exit when input already fits.
 	is(main::trunc('short',  99), 'short', 'no-op when input shorter than max');
 	is(main::trunc('exact5',  6), 'exact5', 'no-op when input equals max');
 
-	# Truncation lands at a partial word — pops the partial word back to
-	# whitespace, then trims trailing whitespace.
-	is(main::trunc('a b c',  4),  'a',      'cuts back through partial word');
-	# substr(0,8) = "foo bar ", pop one (always), pop "r" — non-ws so stop.
-	# Result: "foo ba" (last word "baz" partial → chopped one char short).
-	is(main::trunc('foo bar baz', 8), 'foo ba',
-	   'partial word loses one extra char (current behaviour)');
+	# Cut landed at a word boundary — keep the substring intact.
+	is(main::trunc('hello world foo', 11), 'hello world',
+	   'cut at word boundary keeps last whole word');
+	is(main::trunc('hello world',      5), 'hello',
+	   'cut at word boundary returns first whole word');
 
-	# Edge case: substr cleanly ends on a word boundary. Current behaviour
-	# still pops one char; pin it.
-	is(main::trunc('hello world foo', 11), 'hello worl',
-	   'always pops at least one char even at word boundary (current behaviour)');
-	is(main::trunc('hello world',      5), 'hell',
-	   'always pops at least one char (current behaviour)');
+	# Cut landed mid-word — back up to the previous whitespace.
+	is(main::trunc('foo bar baz', 8), 'foo bar',
+	   'mid-word cut backs up to previous whitespace');
+	is(main::trunc('a b c',  4),     'a b',
+	   'mid-word cut backs up past a one-char word');
 
-	# Truncating to 1 leaves nothing after the mandatory pop.
-	is(main::trunc('abc', 1), '', 'maxlen=1 returns empty');
+	# First word longer than maxlen and no preceding whitespace — fall
+	# back to the partial word rather than empty.
+	is(main::trunc('hellothere', 5), 'hello',
+	   'long first word with no boundary returns partial');
+	is(main::trunc('abc', 1),        'a',
+	   'maxlen=1 returns the first char when no boundary exists');
 };
 
 # indexof — first-index lookup with `eq`.
