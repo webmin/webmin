@@ -37,7 +37,7 @@ my %link = ( 'id' => &generate_random_id(),
 	     'user' => $wuser->{'name'},
 	     'uuser' => $unixuser, );
 $link{'id'} || &error($text{'forgot_erandom'});
-&make_dir($main::forgot_password_link_dir, 0700);    ## no critic (ProhibitLeadingZeros)
+&make_dir($main::forgot_password_link_dir, 0700);
 my $linkfile = $main::forgot_password_link_dir."/".$link{'id'};
 &lock_file($linkfile);
 &write_file($linkfile, \%link);

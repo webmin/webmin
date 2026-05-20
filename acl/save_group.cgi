@@ -131,7 +131,7 @@ if ($in{'old'} && $in{'acl_security_form'}) {
 	my $aclfile = "$config_directory/$in{'name'}.gacl";
 	&lock_file($aclfile);
 	&save_group_module_acl(\%uaccess, $in{'name'}, "", 1);
-	&set_ownership_permissions(undef, undef, 0640, $aclfile);    ## no critic (ProhibitLeadingZeros)
+	&set_ownership_permissions(undef, undef, 0640, $aclfile);
 	&unlock_file($aclfile);
 	}
 

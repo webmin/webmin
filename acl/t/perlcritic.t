@@ -51,8 +51,7 @@ if (!@files) {
 }
 
 my $critic = Perl::Critic->new(
-    -severity => 5,
-    -profile => '',
+    -profile => "$bindir/../../.perlcriticrc",
 );
 
 foreach my $file (@files) {

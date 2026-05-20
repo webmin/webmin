@@ -73,7 +73,7 @@ else {
 		&save_module_acl(\%maccess, $in{'_acl_user'},
 				 $in{'_acl_mod'},1);
 		}
-	&set_ownership_permissions(undef, undef, 0640, $aclfile);    ## no critic (ProhibitLeadingZeros)
+	&set_ownership_permissions(undef, undef, 0640, $aclfile);
 	&unlock_file($aclfile);
 
 	if ($in{'_acl_group'}) {

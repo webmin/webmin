@@ -378,7 +378,7 @@ if ($in{'acl_security_form'} && !$newgroup && !$in{'safe'}) {
 	$uaccess{'rpc'} = $in{'rpc'};
 	&lock_file($aclfile);
 	&save_module_acl(\%uaccess, $in{'name'}, "", 1);
-	&set_ownership_permissions(undef, undef, 0640, $aclfile);    ## no critic (ProhibitLeadingZeros)
+	&set_ownership_permissions(undef, undef, 0640, $aclfile);
 	&unlock_file($aclfile);
 	}
 
