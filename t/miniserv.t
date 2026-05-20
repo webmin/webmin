@@ -264,13 +264,41 @@ subtest 'check_ipaddress' => sub {
 	ok(!miniserv::check_ipaddress('not an ip'),       'garbage rejected');
 };
 
+# Kept in lockstep with t/web-lib-funcs-ip.t's matching subtest, since the
+# two copies of check_ip6address must accept and reject the same inputs.
 subtest 'check_ip6address' => sub {
+	ok( miniserv::check_ip6address('::'),                   'unspecified accepted');
 	ok( miniserv::check_ip6address('::1'),                  'loopback accepted');
 	ok( miniserv::check_ip6address('2001:db8::1'),          'compressed form accepted');
-	ok( miniserv::check_ip6address('1:2:3:4:5:6:7:8'),      'full form accepted');
-	ok(!miniserv::check_ip6address('not an addr'),          'garbage rejected');
-	ok(!miniserv::check_ip6address('1:2:3:4:5:6:7:8:9'),    'too many groups rejected');
+	ok( miniserv::check_ip6address('1:2:3:4:5:6:7:8'),      'full eight-block form accepted');
+	ok( miniserv::check_ip6address('2001:db8::'),           'trailing :: accepted (no netmask)');
+
+	# Netmask suffix — both with leading and trailing :: shorthand.
+	ok( miniserv::check_ip6address('::1/64'),               'address/netmask accepted with leading ::');
+	ok( miniserv::check_ip6address('2001:db8::/32'),        'address/netmask accepted with trailing ::');
+	ok( miniserv::check_ip6address('::/0'),                 '::/0 default route accepted');
+	ok( miniserv::check_ip6address('fe80::/10'),            'fe80::/10 link-local prefix accepted');
+	ok(!miniserv::check_ip6address('::1/200'),              'netmask > 128 rejected');
+
+	# IPv4-in-IPv6 tails.
+	ok( miniserv::check_ip6address('::ffff:10.0.0.1'),      'IPv4-mapped (::ffff:N.N.N.N) accepted');
+	ok( miniserv::check_ip6address('::ffff:0.0.0.0'),       'IPv4-mapped all-zero accepted');
+	ok( miniserv::check_ip6address('::1.2.3.4'),            'IPv4-compatible (::N.N.N.N) accepted');
+	ok( miniserv::check_ip6address('0:0:0:0:0:ffff:1.2.3.4'),
+	    'fully-expanded IPv4-mapped accepted');
+	ok(!miniserv::check_ip6address('::ffff:256.0.0.1'),     'IPv4-mapped with octet > 255 rejected');
+	ok(!miniserv::check_ip6address('::ffff:1.2.3'),         'IPv4-mapped with too-few octets rejected');
+
+	# Bare IPv4 must be rejected — callers (e.g. ip_match) use this sub
+	# as a type discriminator and a true result re-routes IPv4 input
+	# through the IPv6 codepath.
+	ok(!miniserv::check_ip6address('10.0.0.1'),             'bare IPv4 rejected (type-discriminator contract)');
+	ok(!miniserv::check_ip6address('1.2.3.4'),              'bare IPv4 rejected (type-discriminator contract)');
+
 	ok(!miniserv::check_ip6address('gggg::1'),              'non-hex rejected');
+	ok(!miniserv::check_ip6address('1:2:3:4:5:6:7:8:9'),    'too many groups rejected');
+	ok(!miniserv::check_ip6address('::1::2'),               'multiple :: rejected');
+	ok(!miniserv::check_ip6address('not an addr'),          'garbage rejected');
 };
 
 # canonicalize_ip6 / expand_ipv6_bytes
