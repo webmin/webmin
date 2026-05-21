@@ -6242,6 +6242,7 @@ sub decode_base32
 {
 $_ = shift;
 my ($l);
+s/=+$//;
 tr|A-Z2-7|\0-\37|;
 $_ = unpack('B*', $_);
 s/000(.....)/$1/g;
