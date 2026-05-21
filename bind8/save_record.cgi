@@ -153,7 +153,7 @@ if ($in{'type'} eq "PTR" && $reverse) {
 	}
 else {
 	# some other kind of record
-	$in{'name'} eq "" || $in{'name'} eq "@" || &valnamewild($in{'name'}) ||
+	$in{'name'} eq "" || $in{'name'} eq "@" || &valnamewild($in{'name'}, $in{'type'}) ||
 		&error(&text('edit_ename', $in{'name'}));
 	if ($in{'type'} eq "A") {
 		&check_ipaddress($vals) ||
@@ -723,14 +723,14 @@ $r->{'newvalues'} = $vals;
 &redirect("edit_recs.cgi?zone=$in{'zone'}&view=$in{'view'}&".
 	  "type=$in{'redirtype'}&sort=$in{'sort'}");
 
-# valname(name)
+# valname(name, [type])
 sub valname
 {
-return valdnsname($_[0], 0, $in{'origin'});
+return valdnsname($_[0], 0, $in{'origin'}, $_[1]);
 }
 
-# valnamewild(name)
+# valnamewild(name, [type])
 sub valnamewild
 {
-return valdnsname($_[0], 1, $in{'origin'});
+return valdnsname($_[0], 1, $in{'origin'}, $_[1]);
 }

@@ -23,7 +23,7 @@ foreach my $d (split(/\0/, $in{'d'})) {
 $access{'ro'} && &error($text{'master_ero'});
 
 # Validate inputs
-&valdnsname($in{'name'}) || $in{'name'} eq '@' || &error($text{'rmass_ename'});
+&valdnsname($in{'name'}, 0, undef, $in{'type'}) || $in{'name'} eq '@' || &error($text{'rmass_ename'});
 $in{'name'} =~ /\.$/ && &error($text{'rmass_ename2'});
 my $mxpri;
 if ($in{'type'} eq 'A') {
