@@ -70,6 +70,12 @@ foreach my $zi (@zones) {
 	my $fullname = $in{'name'} eq '@' ?
 			$zi->{'name'}."." :
 			$in{'name'}.".".$zi->{'name'}.".";
+	if (length($fullname) > 255) {
+		# The owner name fits on its own but exceeds the 255-octet
+		# DNS limit once this zone's name is appended; skip this one.
+		print &text('edit_efqdn', "<tt>$fullname</tt>"),"<p>\n";
+		next;
+		}
 	&before_editing($zi);
 	my @recs = &read_zone_file($zi->{'file'}, $zi->{'name'});
 	my $clash;

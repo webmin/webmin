@@ -739,7 +739,10 @@ our %hostname_owner_types = map { $_ => 1 } qw(A AAAA MX NS DS DNAME);
 sub valdnsname
 {
 my ($name, $wild, $origin, $type) = @_;
-my $fqdn = $name !~ /\.$/ ? "$name.$origin." : $name;
+my $root = !defined($origin) || $origin eq "" || $origin eq ".";
+my $fqdn = $name =~ /\.$/    ? $name
+	 : $root              ? "$name."
+	 :                      "$name.$origin.";
 if (length($fqdn) > 255) {
 	&error(&text('edit_efqdn', $fqdn));
 	}
