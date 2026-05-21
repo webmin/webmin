@@ -82,6 +82,17 @@ subtest 'encode_base32 / decode_base32' => sub {
 	is(main::decode_base32('MZXW6==='), 'foo',  'padded "MZXW6===" decodes');
 	is(main::decode_base32('MZXW6YQ='), 'foob', 'padded "MZXW6YQ=" decodes');
 
+	# Case-insensitive decode — Webmin's TOTP path accepts secrets
+	# case-insensitively (twofactor-funcs-lib.pl validates with /i),
+	# so lowercase input from third-party authenticators must decode
+	# identically to uppercase.
+	is(main::decode_base32('mzxw6ytboi'),       'foobar',
+	   'lowercase decodes identically to uppercase');
+	is(main::decode_base32('MzXw6YtBoI'),       'foobar',
+	   'mixed-case decodes identically');
+	is(main::decode_base32('mzxw6yq='),         'foob',
+	   'lowercase with padding decodes correctly');
+
 	# Empty input → empty output, both directions.
 	is(main::encode_base32(''), '', 'empty encode → empty');
 	is(main::decode_base32(''), '', 'empty decode → empty');
