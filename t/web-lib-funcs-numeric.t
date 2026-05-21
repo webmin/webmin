@@ -30,7 +30,12 @@ subtest 'is_int' => sub {
 	ok(!main::is_int('0x10'), 'hex rejected');
 	ok(!main::is_int(''),     'empty rejected');
 	ok(!main::is_int('abc'),  'non-numeric rejected');
-	ok(!main::is_int(undef),  'undef rejected (no warnings under use warnings)');
+	# undef returns false but also triggers a "uninitialized value" warning
+	# inside the regex (web-lib-funcs.pl is not warnings-enabled today, but
+	# `prove -w` or a future `use warnings` would surface it). Silence the
+	# warning at the call site so the suite stays clean either way.
+	{ local $SIG{__WARN__} = sub {};
+	  ok(!main::is_int(undef), 'undef rejected'); }
 };
 
 # is_float — strict decimal with a dot.
@@ -52,7 +57,9 @@ subtest 'is_float' => sub {
 	ok(!main::is_float(' 1.5'),  'leading whitespace rejected');
 	ok(!main::is_float(''),      'empty rejected');
 	ok(!main::is_float('abc'),   'non-numeric rejected');
-	ok(!main::is_float(undef),   'undef rejected');
+	# See is_int's undef comment.
+	{ local $SIG{__WARN__} = sub {};
+	  ok(!main::is_float(undef), 'undef rejected'); }
 };
 
 # float — parse-and-format helper.
@@ -69,10 +76,14 @@ subtest 'float' => sub {
 	is(main::float('1e3'),   '1000.00', 'scientific notation parsed');
 	is(main::float('+5'),    '5.00',   'leading "+" silently accepted (asymmetric with is_int/is_float)');
 
-	# All these collapse to plain 0 — non-parseable, empty, undef, true zero.
-	is(main::float('abc'), 0, 'non-numeric → 0');
-	is(main::float(''),    0, 'empty → 0');
-	is(main::float(undef), 0, 'undef → 0');
+	# All these collapse to plain 0 — non-parseable, empty, undef, true
+	# zero. Non-numeric / undef inputs warn inside sprintf under -w
+	# (uninitialized / isn't numeric); silence per call site so the suite
+	# stays warning-free regardless of how prove is invoked.
+	{ local $SIG{__WARN__} = sub {};
+	  is(main::float('abc'),  0, 'non-numeric → 0');
+	  is(main::float(''),     0, 'empty → 0');
+	  is(main::float(undef),  0, 'undef → 0'); }
 	is(main::float('0'),   0, 'zero collapses to plain 0 (not "0.00")');
 	is(main::float('0.0'), 0, 'zero with decimal also collapses to plain 0');
 };
@@ -130,7 +141,8 @@ subtest 'compare_version_numbers (numeric form)' => sub {
 	is(main::compare_version_numbers('1.0.0', '1.0'),    1, 'longer > shorter when prefix matches');
 
 	# Empty / undef inputs degrade quietly to a numeric answer rather
-	# than crashing.
+	# than crashing. (The sub defaults undef to '' internally, so undef
+	# args don't warn under -w.)
 	is(main::compare_version_numbers('', '1.0'),   -1, 'empty < non-empty');
 	is(main::compare_version_numbers(undef, undef), 0, 'two undefs compare equal');
 };
