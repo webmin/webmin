@@ -726,25 +726,38 @@ return $addr;
 our $uscore = $config{'allow_underscore'} ? "_" : "";
 our $star = $config{'allow_wild'} ? "\\*" : "";
 
-# valdnsname(name, wild, origin)
-# Returns 1 if a DNS record has a valid name
+# Record types whose owner names must follow hostname rules. Other types
+# (TXT, CNAME, SRV, PTR, TLSA, CAA, ...) may legitimately use underscores
+# in their owner names (e.g. _domainkey, _dmarc, _acme-challenge), so the
+# allow_underscore config is ignored for them, matching BIND's check-names.
+our %hostname_owner_types = map { $_ => 1 } qw(A AAAA MX NS DS DNAME);
+
+# valdnsname(name, wild, [origin], [type])
+# Returns 1 if a DNS record has a valid name. If a type is supplied and
+# isn't one of the hostname-bearing types, underscores are accepted in
+# the name regardless of the allow_underscore config.
 sub valdnsname
 {
-my ($name, $wild, $origin) = @_;
-my $fqdn = $name !~ /\.$/ ? "$name.$origin." : $name;
+my ($name, $wild, $origin, $type) = @_;
+my $root = !defined($origin) || $origin eq "" || $origin eq ".";
+my $fqdn = $name =~ /\.$/    ? $name
+	 : $root              ? "$name."
+	 :                      "$name.$origin.";
 if (length($fqdn) > 255) {
 	&error(&text('edit_efqdn', $fqdn));
 	}
-if ($_[0] =~ /[^\.]{64}/) {
+if ($name =~ /[^\.]{64}/) {
 	# no label longer than 63 chars
-	&error(&text('edit_elabel', $_[0]));
+	&error(&text('edit_elabel', $name));
 	}
+my $u = ($config{'allow_underscore'} ||
+	 ($type && !$hostname_owner_types{uc($type)})) ? "_" : "";
 return ((($wild && $config{'allow_wild'})
-	 ? (($name =~ /^[\*A-Za-z0-9\-\.$uscore]+$/)
+	 ? (($name =~ /^[\*A-Za-z0-9\-\.$u]+$/)
 	   && ($name !~ /.\*/ || $bind_version >= 9) # "*" can be only the first
 						    # char, for bind 8
 	   && ($name !~ /\*[^\.]/))	# a "." must always follow "*"
-	 : ($name =~ /^[\A-Za-z0-9\-\.$uscore]+$/))
+	 : ($name =~ /^[A-Za-z0-9\-\.$u]+$/))
 	&& ($name !~ /\.\./)		# no ".." inside
 	&& ($name !~ /^\../)		# no "." at the beginning
 	&& ($name !~ /^\-/)		# no "-" at the beginning
