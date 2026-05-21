@@ -757,7 +757,7 @@ return ((($wild && $config{'allow_wild'})
 	   && ($name !~ /.\*/ || $bind_version >= 9) # "*" can be only the first
 						    # char, for bind 8
 	   && ($name !~ /\*[^\.]/))	# a "." must always follow "*"
-	 : ($name =~ /^[\A-Za-z0-9\-\.$u]+$/))
+	 : ($name =~ /^[A-Za-z0-9\-\.$u]+$/))
 	&& ($name !~ /\.\./)		# no ".." inside
 	&& ($name !~ /^\../)		# no "." at the beginning
 	&& ($name !~ /^\-/)		# no "-" at the beginning
