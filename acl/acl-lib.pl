@@ -11,7 +11,7 @@ Library for editing webmin users, passwords and access rights.
 
 =cut
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, ".."); };    ## no critic
 use strict;
 use warnings;
 no warnings 'redefine';
@@ -352,7 +352,8 @@ each of which is a hash reference in the same format as their module.info files.
 sub list_module_infos
 {
 my @mods = grep { &check_os_support($_) } &get_all_module_infos();
-return sort { $a->{'desc'} cmp $b->{'desc'} } @mods;
+my @sorted = sort { $a->{'desc'} cmp $b->{'desc'} } @mods;
+return @sorted;
 }
 
 =head2 create_user(&details, [clone])
@@ -1331,12 +1332,12 @@ my ($miniserv) = @_;
 my $sfile = $miniserv->{'sessiondb'} ? $miniserv->{'sessiondb'} :
 	    $miniserv->{'pidfile'} =~ /^(.*)\/[^\/]+$/ ? "$1/sessiondb"
 						     : return;
-eval "use SDBM_File";
+eval { require SDBM_File; SDBM_File->import; 1 };
 dbmopen(%sessiondb, $sfile, 0700);
 eval { $sessiondb{'1111111111'} = 'foo bar' };
 if ($@) {
 	dbmclose(%sessiondb);
-	eval "use NDBM_File";
+	eval { require NDBM_File; NDBM_File->import; 1 };
 	dbmopen(%sessiondb, $sfile, 0700);
 	}
 else {
@@ -1422,10 +1423,10 @@ Creates a new session ID that's already logged in as the given user
 sub create_session_user
 {
 my ($miniserv, $username, $lifetime) = @_;
-return undef if (&is_readonly_mode());
+return if (&is_readonly_mode());
 &open_session_db($miniserv);
 my $sid = &generate_random_session_id();
-return undef if (!$sid);
+return if (!$sid);
 my $t = time();
 $sessiondb{$sid} = "$username $t 127.0.0.1".($lifetime ? " ".$lifetime : "");
 dbmclose(%sessiondb);
@@ -1693,7 +1694,7 @@ elsif (&has_command("ssleay")) {
 	return &has_command("ssleay");
 	}
 else {
-	return undef;
+	return;
 	}
 }
 
@@ -1854,7 +1855,7 @@ if ($miniserv{'pass_oldblock'} && $user) {
 		last if ($c++ > $miniserv{'pass_oldblock'});
 		}
 	}
-return undef;
+return;
 }
 
 =head2 hash_session_id(sid)
@@ -1891,11 +1892,11 @@ my $use_md5 = &md5_perl_module();
 $use_md5 || &error("No Perl MD5 hashing module found!");
 
 # Add the password
-my $ctx = eval "new $use_md5";
+my $ctx = $use_md5->new;
 $ctx->add($passwd);
 
 # Add some more stuff from the hash of the password and salt
-my $ctx1 = eval "new $use_md5";
+my $ctx1 = $use_md5->new;
 $ctx1->add($passwd);
 $ctx1->add($passwd);
 my $final = $ctx1->digest();
@@ -1944,12 +1945,12 @@ Returns a Perl module for MD5 hashing, or undef if none.
 sub md5_perl_module
 {
 my $use_md5;
-eval "use MD5";
+eval { require MD5; MD5->import; 1 };
 if (!$@) {
         $use_md5 = "MD5";
         }
 else {
-        eval "use Digest::MD5";
+        eval { require Digest::MD5; Digest::MD5->import; 1 };
         if (!$@) {
                 $use_md5 = "Digest::MD5";
                 }
@@ -2106,16 +2107,16 @@ my ($str, $notablecheck) = @_;
 my ($proto, $user, $pass, $host, $prefix, $args) = &split_userdb_string($str);
 if ($proto eq "mysql" || $proto eq "postgresql") {
 	# Load DBI driver
-	eval 'use DBI;';
+	eval { require DBI; DBI->import; 1 };
 	return &text('sql_emod', 'DBI') if ($@);
 	if ($proto eq "mysql") {
-		eval 'use DBD::mysql;';
+		eval { require DBD::mysql; DBD::mysql->import; 1 };
 		return &text('sql_emod', 'DBD::mysql') if ($@);
 		my $drh = DBI->install_driver("mysql");
 		return $text{'sql_emysqldriver'} if (!$drh);
 		}
 	else {
-		eval 'use DBD::Pg;';
+		eval { require DBD::Pg; DBD::Pg->import; 1 };
 		return &text('sql_emod', 'DBD::Pg') if ($@);
 		my $drh = DBI->install_driver("Pg");
 		return $text{'sql_epostgresqldriver'} if (!$drh);
@@ -2147,11 +2148,11 @@ if ($proto eq "mysql" || $proto eq "postgresql") {
 			}
 		}
 	&disconnect_userdb($str, $dbh);
-	return undef;
+	return;
 	}
 elsif ($proto eq "ldap") {
 	# Load LDAP module
-	eval 'use Net::LDAP;';
+	eval { require Net::LDAP; Net::LDAP->import; 1 };
 	return &text('sql_emod', 'Net::LDAP') if ($@);
 
 	# Try to connect
@@ -2185,7 +2186,7 @@ elsif ($proto eq "ldap") {
 		$found || return &text('sql_eldapdn', $prefix);
 		}
 	&disconnect_userdb($str, $dbh);
-	return undef;
+	return;
 	}
 else {
 	return "Unknown user database type $proto";
@@ -2279,8 +2280,8 @@ if (!$miniserv) {
 	$miniserv = { };
 	&get_miniserv_config($miniserv);
 	}
-foreach $a (split(/\s+/, $miniserv->{'anonymous'})) {
-        if ($a =~ /^([^=]+)=(\S+)$/ && $2 eq $user) {
+foreach my $tok (split(/\s+/, $miniserv->{'anonymous'})) {
+        if ($tok =~ /^([^=]+)=(\S+)$/ && $2 eq $user) {
 		push(@rv, $1);
 		}
 	}
@@ -2294,7 +2295,7 @@ sub get_safe_acl
 my ($m) = @_;
 my $mdir = &module_root_directory($m);
 my %rv;
-&read_file_cached("$mdir/safeacl", \%rv) || return undef;
+&read_file_cached("$mdir/safeacl", \%rv) || return;
 return \%rv;
 }
 
@@ -2308,17 +2309,19 @@ sub generate_random_session_id
 my $sid;
 
 # Try /dev/urandom, but with a timeout
-$SIG{ALRM} = sub { close(RANDOM) };
+my $randomfh;
+$SIG{ALRM} = sub { close($randomfh) if ($randomfh) };
 alarm(5);
-if (open(RANDOM, "/dev/urandom")) {
+if (open($randomfh, "<", "/dev/urandom")) {
 	my $tmpsid;
-	if (read(RANDOM, $tmpsid, 16) == 16) {
+	if (read($randomfh, $tmpsid, 16) == 16) {
 		$sid = lc(unpack('h*',$tmpsid));
 		if ($sid !~ /^[0-9a-fA-F]{32}$/) {
 			$sid = 'bad';
 			}
 		}
-	close(RANDOM);
+	close($randomfh);
+	undef($randomfh);
 	}
 alarm(0);
 
@@ -2336,7 +2339,7 @@ return $sid eq 'bad' ? undef : $sid;
 # Generate an ID string that can be used for a password reset link
 sub generate_random_id
 {
-if (open(my $RANDOM, "</dev/urandom")) {
+if (open(my $RANDOM, "<", "/dev/urandom")) {
 	my $sid;
 	my $tmpsid;
 	if (read($RANDOM, $tmpsid, 16) == 16) {
@@ -2345,7 +2348,9 @@ if (open(my $RANDOM, "</dev/urandom")) {
 	close($RANDOM);
 	return $sid;
 	}
-return undef;
+# Explicit undef: callers consume this in hash-literal value position,
+# where bare 'return' would yield () and shift the surrounding pairing.
+return undef;    ## no critic (ProhibitExplicitReturnUndef)
 }
 
 # obsfucate_email(email)

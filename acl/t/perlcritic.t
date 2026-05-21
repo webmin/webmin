@@ -34,7 +34,12 @@ my @files;
 find(
     sub {
         return if -d;
+        # Skip symlinks: shared libs (e.g. md5-lib.pl -> ../useradmin/md5-lib.pl)
+        # belong to the module that owns the underlying file.
+        return if -l;
         return unless /\.(pl|cgi)\z/;
+        # *.info.pl is the Polish-locale translation of *.info, not Perl code.
+        return if /\.info\.pl\z/;
         push(@files, $File::Find::name);
     },
     '.'

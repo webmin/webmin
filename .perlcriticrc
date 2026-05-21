@@ -1,0 +1,6 @@
+severity = 5
+
+# Octal file permission literals (0700, 0640, etc.) are the standard Perl
+# idiom for chmod/mkdir/permission helpers throughout this codebase. The
+# policy flags chmod 0700 itself, so it is too coarse for our use.
+[-ValuesAndExpressions::ProhibitLeadingZeros]

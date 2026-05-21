@@ -6,7 +6,7 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-require './acl-lib.pl';
+require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %gconfig, %access, $config_directory, $base_remote_user, $remote_user);
 &foreign_require("webmin", "webmin-lib.pl");
 
@@ -215,7 +215,10 @@ if ($access{'lang'}) {
 
 if ($access{'locale'}) {
 	# Current locale
-	eval "use DateTime; use DateTime::Locale; use DateTime::TimeZone;";
+	eval { require DateTime; DateTime->import;
+	       require DateTime::Locale; DateTime::Locale->import;
+	       require DateTime::TimeZone; DateTime::TimeZone->import;
+	       1 };
 	if (!$@ && $] > 5.011) {
 		my $locales = &list_locales();
 		my %localesrev = reverse %{$locales};
