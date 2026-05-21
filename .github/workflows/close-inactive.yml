@@ -1,0 +1,14 @@
+name: Close inactive
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  close-inactive:
+    uses: webmin/webmin-ci-cd/.github/workflows/close-inactive.yml@main
