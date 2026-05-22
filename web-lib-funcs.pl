@@ -13315,7 +13315,7 @@ return 0;
 Converts the given Perl data structure to encoded binary string
 
 =item data parameter is a hash/array reference
-=item if the output should be prettified
+=item if the output should be prettified and hash keys sorted
 =item raw-utf8 parameter, if set to 1, encodes data using UTF-8
 
 =cut
@@ -13334,6 +13334,7 @@ else {
 	error("Neither JSON::XS nor JSON::PP Perl module is available on your system");
 	}
 $json->pretty(!!$pretty);
+$json->canonical(1) if ($pretty);
 $data ||= {};
 return $raw_utf8 ? $json->utf8->encode($data) : $json->latin1->encode($data);
 }
