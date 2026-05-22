@@ -123,6 +123,38 @@ The goal is not coverage-as-a-number. It's:
 - Every privilege boundary has a test.
 - Every external-binary call has a mock-driven test for its output parser.
 
+## Perlcritic conventions
+
+A few rewrites come up repeatedly when bringing a module under
+`perlcritic.t` severity 5. Document them here so reviewers and future
+refactors land on the same shape.
+
+### Stringy `eval "use Module"` → block eval + `require`
+
+`perlcritic` (BuiltinFunctions::ProhibitStringyEval) flags
+`eval "use Module::Name;";`. The fix is a block eval that does the work
+`use` would have done at compile time, deferred to runtime:
+
+```perl
+# before
+eval "use DBI;";
+if ($@) { return "DBI not installed"; }
+
+# after
+eval { require DBI; DBI->import; 1 }
+        or return "DBI not installed";
+```
+
+The trailing `1` makes the block return true on success so the caller's
+`or ...` only fires on failure. Pass import args the same way a `use`
+would: `Module->import(qw(foo bar))`. If the module exports nothing you
+need, drop the `->import` call but keep the `1`.
+
+`acl/acl-lib.pl` has worked examples for the common shapes —
+single-module probes, fallback chains (`SDBM_File` → `NDBM_File`,
+`MD5` → `Digest::MD5`), and driver lookups (`DBD::mysql`, `DBD::Pg`,
+`Net::LDAP`).
+
 ## Adding a per-module test directory
 
 ```
