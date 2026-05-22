@@ -14,34 +14,37 @@ ReadParse();
 $ENV{'HTTP_WEBMIN_PATH'} && error($text{'index_eproxy'});
 
 # Check for needed modules
-my @modnames = ("Digest::SHA", "Digest::MD5",
-                "IO::Select", "Time::HiRes",
-                "Net::WebSocket::Server");
-foreach my $modname (@modnames) {
-	eval "use ${modname};";    ## no critic (ProhibitStringyEval)
-	if ($@) {
-		ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0);
-		my $missinglink = text('index_cpan', "<tt>$modname</tt>",
-			    "../cpan/download.cgi?source=3&cpan=$modname&mode=2&return=/$module_name/&returndesc=".urlize($module_info{'desc'}));
-		if ($gconfig{'os_type'} eq 'redhat-linux') {
-			$missinglink .= " ".
-				text('index_epel',
-					'https://docs.fedoraproject.org/en-US/epel');
-			}
-		elsif ($gconfig{'os_type'} eq 'suse-linux') {
-			$missinglink =
-				text('index_suse', "<tt>$modname</tt>",
-					'https://software.opensuse.org/download/package?package=perl-IO-Tty&project=devel%3Alanguages%3Aperl');
-			}
-		if (get_product_name() eq 'usermin') {
-			print text('index_missing', $modname) ."<p>\n";
-			}
-		else {
-			print $missinglink ."<p>\n";
-			}
-		ui_print_footer("/", $text{'index'});
-		exit;
+my @modload = (
+	['Digest::SHA',            sub { eval { require Digest::SHA;            Digest::SHA->import;            1 } }],
+	['Digest::MD5',            sub { eval { require Digest::MD5;            Digest::MD5->import;            1 } }],
+	['IO::Select',             sub { eval { require IO::Select;             IO::Select->import;             1 } }],
+	['Time::HiRes',            sub { eval { require Time::HiRes;            Time::HiRes->import;            1 } }],
+	['Net::WebSocket::Server', sub { eval { require Net::WebSocket::Server; Net::WebSocket::Server->import; 1 } }],
+	);
+foreach my $m (@modload) {
+	my ($modname, $loader) = @$m;
+	next if ($loader->());
+	ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0);
+	my $missinglink = text('index_cpan', "<tt>$modname</tt>",
+		    "../cpan/download.cgi?source=3&cpan=$modname&mode=2&return=/$module_name/&returndesc=".urlize($module_info{'desc'}));
+	if ($gconfig{'os_type'} eq 'redhat-linux') {
+		$missinglink .= " ".
+			text('index_epel',
+				'https://docs.fedoraproject.org/en-US/epel');
 		}
+	elsif ($gconfig{'os_type'} eq 'suse-linux') {
+		$missinglink =
+			text('index_suse', "<tt>$modname</tt>",
+				'https://software.opensuse.org/download/package?package=perl-IO-Tty&project=devel%3Alanguages%3Aperl');
+		}
+	if (get_product_name() eq 'usermin') {
+		print text('index_missing', $modname) ."<p>\n";
+		}
+	else {
+		print $missinglink ."<p>\n";
+		}
+	ui_print_footer("/", $text{'index'});
+	exit;
 	}
 
 # Get Webmin current version for links serial
