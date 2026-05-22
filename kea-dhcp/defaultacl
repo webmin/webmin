@@ -1,0 +1,11 @@
+dhcp4=1
+dhcp6=1
+ddns=1
+services=1
+runtime=1
+edit4=1
+edit6=1
+editddns=1
+manual=1
+apply=1
+install=1
