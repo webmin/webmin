@@ -49,15 +49,31 @@ $ENV{'FOREIGN_ROOT_DIRECTORY'} = $rootdir;
 
 chdir("$bindir/..") or die "chdir: $!";
 
-require "$bindir/../xterm-lib.pl";
-require "$bindir/../acl_security.pl";
+# Each xterm script pulls in xterm-lib.pl via a different path string —
+# `require 'xterm-lib.pl'` from acl_security.pl, `require './xterm-lib.pl'`
+# from shellserver.pl. %INC keys on the literal path, so multiple distinct
+# paths all map to the same file and Perl would helpfully re-load it,
+# producing "Subroutine ... redefined" warnings.
+#
+# Fix: pre-populate %INC for every path the in-tree code will use, then
+# `do` the file ourselves (load once, all subsequent `require`s become
+# no-ops because %INC already shows the file as loaded). Test cwd is the
+# module dir, so '.' is on the search path for the do() to find it.
+push @INC, '.';
+{
+	my $file = "$bindir/../xterm-lib.pl";
+	do $file or die "load xterm-lib.pl: $@ $!";
+	$INC{$_} = $file for ('xterm-lib.pl', './xterm-lib.pl', $file);
+}
+
+require "./acl_security.pl";
 
 # shellserver.pl pulls in Net::WebSocket::Server which is an optional CPAN
 # dep — on stripped CI images it may not be installed. Required helpers all
 # live in xterm-lib.pl, so a missing module only costs us the require side-
 # effect check at the bottom of the file.
 my $shellserver_loaded = eval {
-	require "$bindir/../shellserver.pl";
+	require "./shellserver.pl";
 	1;
 };
 
