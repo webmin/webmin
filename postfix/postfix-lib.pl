@@ -682,7 +682,6 @@ sub regenerate_aliases
     }
     else
     {
-	my $map;
 	foreach my $map (get_maps_types_files(get_real_value("alias_maps")))
 	{
 	    if (&file_map_type($map->[0])) {
@@ -2369,7 +2368,6 @@ foreach my $p (split(/\t+/, $text)) {
                 }
         }
 my @rv;
-my $k;
 foreach my $k (keys %pmap) {
         my $v = $pmap{$k};
         if (@$v == 1) {

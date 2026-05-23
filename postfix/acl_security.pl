@@ -12,7 +12,6 @@ our (@acl_pages, %in, %text);
 # Print the form for security options of postfix module
 sub acl_security_form
 {
-my $o;
 foreach my $o (@acl_pages) {
 	print &ui_table_row($text{'acl_'.$o} || $o,
 			    &ui_yesno_radio($o, $_[0]->{$o} ? 1 : 0));
@@ -26,7 +25,6 @@ print &ui_table_row($text{'acl_dir'},
 # Parse the form for security options for the postfix module
 sub acl_security_save
 {
-my $o;
 foreach my $o (@acl_pages) {
 	$_[0]->{$o} = $in{$o};
 	}
