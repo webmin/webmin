@@ -914,7 +914,7 @@ return (\@leases, undef, $file);
 sub kea_csv_fields
 {
 my ($line) = @_;
-eval "use Text::ParseWords ();";
+eval { require Text::ParseWords; };
 return split(/,/, $line, -1) if ($@);
 my @cols = Text::ParseWords::parse_line(',', 0, $line);
 return @cols;
