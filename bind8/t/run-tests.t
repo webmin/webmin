@@ -159,17 +159,24 @@ my $serial2 = compute_serial($now - 10);
 ok($serial2 > $now - 10, 'soa_style 2 unix-time serial advances');
 $config{'soa_style'} = 1;
 $config{'soa_start'} = 0;
-my $today = date_serial();
-my $serial1 = compute_serial($today.'00');
-is($serial1, $today.'01', 'soa_style 1 increments within day');
-# Rollover: same date, counter at 99 -> next day, counter reset to soa_start.
-my $rolled = compute_serial($today.'99');
-is($rolled, sprintf("%d%02d", $today + 1, 0),
-   'soa_style 1 rolls counter past 99 to next day');
-# Older-dated serial gets bumped forward to today regardless.
-my $caught_up = compute_serial('1999010199');
-is($caught_up, $today.'00',
-   'soa_style 1 catches up to current date when old serial is stale');
+{
+    # Pin date_serial() to a fixed value so a midnight rollover during the
+    # test run can't desynchronize the "today" computed here from the one
+    # computed inside compute_serial().
+    my $today = '20260101';
+    no warnings qw(redefine once);
+    local *date_serial = sub { $today };
+    my $serial1 = compute_serial($today.'00');
+    is($serial1, $today.'01', 'soa_style 1 increments within day');
+    # Rollover: same date, counter at 99 -> next day, counter resets to soa_start.
+    my $rolled = compute_serial($today.'99');
+    is($rolled, sprintf("%d%02d", $today + 1, 0),
+       'soa_style 1 rolls counter past 99 to next day');
+    # Older-dated serial gets bumped forward to today regardless.
+    my $caught_up = compute_serial('1999010199');
+    is($caught_up, $today.'00',
+       'soa_style 1 catches up to current date when old serial is stale');
+}
 
 # --- make_record / record_id / find_record_by_id --------------------------
 my $rec = make_record('www', 3600, 'IN', 'A', '192.0.2.1', 'web server');
