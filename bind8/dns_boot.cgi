@@ -7,7 +7,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%text, %config, %in);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &error_setup($text{'boot_err'});
 &ReadParse();
 

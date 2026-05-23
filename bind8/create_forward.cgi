@@ -8,7 +8,7 @@ no warnings 'uninitialized';
 # Globals
 our (%access, %text, %in, %config);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 &error_setup($text{'fcreate_err'});
 $access{'forward'} || &error($text{'fcreate_ecannot'});

@@ -7,7 +7,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%access, %text);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 my $conf = &get_config();
 $access{'views'} == 1 || &error($text{'vcreate_ecannot'});

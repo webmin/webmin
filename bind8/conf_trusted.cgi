@@ -8,7 +8,7 @@ no warnings 'uninitialized';
 our (%access, %text, $bind_version);
 our $dnssec_dlv_zone;
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 $access{'defaults'} || &error($text{'trusted_ecannot'});
 &supports_dnssec_client() || &error($text{'trusted_esupport'});

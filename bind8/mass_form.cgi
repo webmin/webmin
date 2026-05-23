@@ -6,7 +6,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%access, %text, %config);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 &ui_print_header(undef, $text{'mass_title'}, "");
 

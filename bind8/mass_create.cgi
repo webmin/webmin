@@ -6,7 +6,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%access, %in, %text, %config);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParseMime();
 &ui_print_unbuffered_header(undef, $text{'mass_title'}, "");
 &error_setup($text{'mass_err'});

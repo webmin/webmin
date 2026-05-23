@@ -7,7 +7,7 @@ no warnings 'uninitialized';
 # Globals
 our (%access, %text, %in);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 $access{'defaults'} || &error($text{'manual_ecannot'});
 &ReadParse();
 &ui_print_header(undef, $text{'manual_title'}, "",

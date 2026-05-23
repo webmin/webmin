@@ -7,7 +7,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%access, %text, %in, %config);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 $access{'defaults'} || &error($text{'keys_ecannot'});
 &error_setup($text{'keys_err'});
 &ReadParse();

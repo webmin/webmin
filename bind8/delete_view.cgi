@@ -8,7 +8,7 @@ no warnings 'uninitialized';
 # Globals
 our (%access, %text, %in); 
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 my $parent = &get_config_parent();
 my $conf = $parent->{'members'};

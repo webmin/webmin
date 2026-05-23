@@ -830,7 +830,7 @@ if ($txt =~ /^v=spf1/) {
 		}
 	return $spf;
 	}
-return undef;
+return;
 }
 
 # join_spf(&spf)
@@ -898,7 +898,7 @@ if ($txt =~ /^v=dmarc1/i) {
 		}
 	return $dmarc;
 	}
-return undef;
+return;
 }
 
 # join_dmarc(&dmarc)
@@ -1018,13 +1018,13 @@ $abs ||= 0;
 my $fn;
 if ($z->{'members'}) {
 	my $file = &find("file", $z->{'members'});
-	return undef if (!$file);
+	return if (!$file);
 	$fn = $file->{'values'}->[0];
 	}
 else {
 	$fn = $z->{'file'};
 	}
-return undef if (!$fn);
+return if (!$fn);
 if ($abs) {
 	$fn = &absolute_path($fn);
 	}
@@ -1075,7 +1075,7 @@ sub find_record_by_id
 my ($recs, $id, $num) = @_;
 my @rv = grep { &record_id($_) eq $id } @$recs;
 if (!@rv) {
-	return undef;
+	return;
 	}
 elsif (@rv == 1) {
 	return $rv[0];

@@ -6,7 +6,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%access, %text, %in);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &error_setup($text{'manual_err'});
 $access{'defaults'} || &error($text{'manual_ecannot'});
 &ReadParseMime();

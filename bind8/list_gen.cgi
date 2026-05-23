@@ -8,7 +8,7 @@ no warnings 'uninitialized';
 our(%access, %text, %in); 
 our $bind_version;
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 $access{'gen'} || &error($text{'gen_ecannot'});
 

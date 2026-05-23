@@ -1,13 +1,16 @@
 # log_parser.pl
 # Functions for parsing this module's logs
+use strict;
+use warnings;
 
-do 'bind8-lib.pl';
+do 'bind8-lib.pl';    ## no critic
+our (%text);
 
 # parse_webmin_log(user, script, action, type, object, &params)
 # Converts logged information from this module into human-readable form
 sub parse_webmin_log
 {
-local ($user, $script, $action, $type, $object, $p) = @_;
+my ($user, $script, $action, $type, $object, $p) = @_;
 if ($type eq 'record') {
 	if ($p->{'type'} eq 'PTR') {
 		return &text("log_${action}_record", $text{"type_$p->{'type'}"},
@@ -88,7 +91,7 @@ elsif ($text{"log_${action}"}) {
 	return $text{"log_${action}"};
 	}
 else {
-	return undef;
+	return;
 	}
 }
 

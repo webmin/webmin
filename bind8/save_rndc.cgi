@@ -6,7 +6,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%access, %text, %config);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 $access{'defaults'} || &error($text{'rndc_ecannot'});
 &error_setup($text{'rndc_err'});
 my $cfile = &make_chroot($config{'named_conf'});

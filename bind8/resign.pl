@@ -7,7 +7,7 @@ no warnings 'uninitialized';
 our %config;
 
 my $no_acl_check++;
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 
 my $zonefile;
 my $krfile;
