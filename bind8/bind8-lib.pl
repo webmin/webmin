@@ -19,7 +19,10 @@ my $have_dnssec_tools = eval {
 my %freeze_zone_count;
 
 if ($have_dnssec_tools) {
-	eval {
+	# All companion modules must load cleanly. A partial install would
+	# otherwise leave unqualified calls like rollmgr_sendcmd / rollrec_*
+	# undefined, causing runtime death deep inside dnssec helpers.
+	my $ok = eval {
 		require Net::DNS::SEC::Tools::dnssectools;
 		Net::DNS::SEC::Tools::dnssectools->import;
 		require Net::DNS::SEC::Tools::rollmgr;
@@ -34,6 +37,7 @@ if ($have_dnssec_tools) {
 		Net::DNS->import;
 		1;
 		};
+	$have_dnssec_tools = 0 if (!$ok);
 	}
 
 &init_config();
