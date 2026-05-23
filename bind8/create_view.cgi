@@ -7,7 +7,7 @@ no warnings 'uninitialized';
 # Globals
 our (%access, %text, %in);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &error_setup($text{'vcreate_err'});
 &ReadParse();
 my $add_to_file = &add_to_file();

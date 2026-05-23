@@ -1,5 +1,8 @@
+use strict;
+use warnings;
 
-do 'bind8-lib.pl';
+do 'bind8-lib.pl';    ## no critic
+our (%text, %config, %access, $module_name);
 
 sub list_system_info
 {

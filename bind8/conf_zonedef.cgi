@@ -8,7 +8,7 @@ no warnings 'uninitialized';
 # Globals
 our (%access, %text, %config);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 $access{'defaults'} || &error($text{'zonedef_ecannot'});
 &ui_print_header(undef, $text{'zonedef_title'}, "",
 		 undef, undef, undef, undef, &restart_links());

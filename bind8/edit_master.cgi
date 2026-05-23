@@ -7,7 +7,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%access, %text, %in, %config, %is_extra);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 our $ipv6revzone;
 $in{'view'} = 'any' if (!$in{'view'} || $in{'view'} eq '');

@@ -9,7 +9,7 @@ our $dnssec_cron_cmd;
 our $module_name;
 our $module_config_file;
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &foreign_require("cron", "cron-lib.pl");
 &ReadParse();
 &error_setup($text{'dnssec_err'});

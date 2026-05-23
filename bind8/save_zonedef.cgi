@@ -8,7 +8,7 @@ no warnings 'uninitialized';
 our (%access, %text, %in, %config);
 our $module_config_directory;
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 &error_setup($text{'zonedef_err'});
 $access{'defaults'} || &error($text{'zonedef_ecannot'});

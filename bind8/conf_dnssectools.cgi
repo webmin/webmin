@@ -7,7 +7,7 @@ no warnings 'uninitialized';
 # Globals
 our (%access, %text, %config);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 
 &ReadParse();
 $access{'defaults'} || &error($text{'dt_conf_ecannot'});

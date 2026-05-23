@@ -7,7 +7,7 @@ no warnings 'uninitialized';
 # Globals
 our (%in);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 my @heiropen = &get_heiropen();
 @heiropen = grep { $_ ne $in{'what'} } @heiropen;

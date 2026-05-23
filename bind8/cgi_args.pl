@@ -62,5 +62,5 @@ elsif ($cgi eq 'view_text.cgi' || $cgi eq 'edit_soptions.cgi') {
 	return $z ? 'zone='.$z->{'zone'}.
 		    ($z->{'view'} ? '&view='.$z->{'viewindex'} : '') : 'none';
 	}
-return undef;
+return;
 }

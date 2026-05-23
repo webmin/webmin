@@ -9,7 +9,7 @@ no warnings 'uninitialized';
 our (%access, %text, %in);
 our $module_root_directory;
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 &error_setup($text{'hcreate_err'});
 $access{'master'} || &error($text{'hcreate_ecannot'});

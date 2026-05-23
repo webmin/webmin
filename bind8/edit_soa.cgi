@@ -7,7 +7,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%access, %in, %text, %config);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});
 my $dom = $zone->{'name'};
@@ -65,7 +65,7 @@ print &ui_table_row($text{'master_minimum'},
 	&time_unit_choice("minunit", $u[3]));
 
 # Default TTL
-my $ttl = $defttl->{'defttl'} if ($defttl);
+my $ttl = $defttl ? $defttl->{'defttl'} : undef;
 my ($ttlu) = &extract_time_units($ttl);
 print &ui_table_row($text{'master_defttl'},
 	&ui_radio("defttl_def", $defttl ? 0 : 1,

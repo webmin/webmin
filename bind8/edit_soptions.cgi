@@ -8,7 +8,7 @@ no warnings 'uninitialized';
 our (%access, %in, %text);
 our $scriptname;
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});

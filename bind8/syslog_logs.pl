@@ -5,7 +5,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%text);
 
-require 'bind8-lib.pl';
+require 'bind8-lib.pl';    ## no critic
 
 # syslog_getlogs()
 # Returns a list of structures containing extra log files known to this module

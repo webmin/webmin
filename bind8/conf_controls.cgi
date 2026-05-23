@@ -7,7 +7,7 @@ no warnings 'uninitialized';
 # Globals
 our (%text, %access); 
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 $access{'defaults'} || &error($text{'controls_ecannot'});
 &ui_print_header(undef, $text{'controls_title'}, "",
 		 undef, undef, undef, undef, &restart_links());

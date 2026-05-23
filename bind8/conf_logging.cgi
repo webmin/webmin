@@ -8,7 +8,7 @@ no warnings 'uninitialized';
 our (%access, %text, %in);
 our (@syslog_levels, @severities, @cat_list);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 $access{'defaults'} || &error($text{'logging_ecannot'});
 &ui_print_header(undef, $text{'logging_title'}, "",
 		 undef, undef, undef, undef, &restart_links());

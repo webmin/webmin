@@ -7,7 +7,7 @@ no warnings 'uninitialized';
 our (%access, %text, %config, %gconfig, %in);
 our ($module_name, $module_config_directory);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 
 my $need_create = !-r &make_chroot($config{'named_conf'}) ||

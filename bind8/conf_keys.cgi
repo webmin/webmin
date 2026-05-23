@@ -6,7 +6,7 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 # Globals
 our (%access, %text);
 

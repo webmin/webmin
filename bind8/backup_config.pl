@@ -45,21 +45,21 @@ return map { &make_chroot($_) } &unique(@rv);
 # Called before the files are actually read
 sub pre_backup
 {
-return undef;
+return;
 }
 
 # post_backup(&files)
 # Called after the files are actually read
 sub post_backup
 {
-return undef;
+return;
 }
 
 # pre_restore(&files)
 # Called before the files are restored from a backup
 sub pre_restore
 {
-return undef;
+return;
 }
 
 # post_restore(&files)
@@ -71,7 +71,7 @@ my $pidfile = &get_pid_file();
 if (&check_pid_file(&make_chroot($pidfile, 1))) {
 	return &restart_bind();
 	}
-return undef;
+return;
 }
 
 1;

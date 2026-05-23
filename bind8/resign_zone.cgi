@@ -6,7 +6,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%text, %in);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &error_setup($text{'resign_err'});
 &ReadParse();
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});

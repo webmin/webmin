@@ -6,7 +6,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%access, %text);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 $access{'slaves'} || &error($text{'slaves_ecannot'});
 &foreign_require("servers", "servers-lib.pl");
 &ReadParse();
