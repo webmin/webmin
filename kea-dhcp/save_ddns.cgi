@@ -3,7 +3,7 @@
 
 use strict;
 use warnings;
-require './kea-dhcp-lib.pl';
+require './kea-dhcp-lib.pl';    ## no critic
 &ReadParse();
 our (%in, %text);
 &error_setup($text{'eacl_aviol'});

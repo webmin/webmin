@@ -1,7 +1,7 @@
 
 use strict;
 use warnings;
-require 'kea-dhcp-lib.pl';
+require 'kea-dhcp-lib.pl';    ## no critic
 
 # backup_config_files()
 # Returns files that can be backed up.

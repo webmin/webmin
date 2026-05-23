@@ -1,7 +1,7 @@
 # kea-dhcp-lib.pl
 # Helpers for the ISC Kea DHCP Webmin module.
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, ".."); };    ## no critic
 use strict;
 use warnings;
 use WebminCore;
