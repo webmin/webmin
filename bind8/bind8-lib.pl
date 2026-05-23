@@ -3836,8 +3836,16 @@ my ($z, $saved) = @_;
 my $dir = &get_keys_dir($z);
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 my %keymap;
-opendir(my $zonedir, $dir)
-	|| return "Failed to open keys directory $dir : $!";
+my $zonedir;
+if (!opendir($zonedir, $dir)) {
+	# A missing keys directory is the normal state before any DNSSEC
+	# keys have been generated for this zone; an unreadable one is a
+	# real error, but we can't return a string here because several
+	# list-context callers would treat it as a key hashref. Fall back
+	# to "no keys" and leave a breadcrumb in the error log.
+	warn "get_dnssec_key: opendir $dir failed: $!\n" if (-e $dir);
+	return wantarray ? () : undef;
+	}
 foreach my $f (readdir($zonedir)) {
 	if ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.key(\.saved)?$/) {
 		# Found the public key file .. read it
