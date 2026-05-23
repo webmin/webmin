@@ -3470,7 +3470,8 @@ $fn || return "Could not work out keys directory!";
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 
 # Remove all keys for the same zone
-opendir(my $zonedir, $fn);
+opendir(my $zonedir, $fn)
+	|| return "Failed to open keys directory $fn : $!";
 foreach my $f (readdir($zonedir)) {
 	if ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.(key|private)$/) {
 		&unlink_file("$fn/$f");
@@ -3832,7 +3833,8 @@ my ($z, $saved) = @_;
 my $dir = &get_keys_dir($z);
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 my %keymap;
-opendir(my $zonedir, $dir);
+opendir(my $zonedir, $dir)
+	|| return "Failed to open keys directory $dir : $!";
 foreach my $f (readdir($zonedir)) {
 	if ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.key(\.saved)?$/) {
 		# Found the public key file .. read it
