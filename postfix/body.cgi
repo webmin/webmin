@@ -8,7 +8,10 @@
 # << Here are all options seen in Postfix sample-virtual.cf >>
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our (%access, %text);
 &ReadParse();
 
 $access{'body'} || &error($text{'body_ecannot'});

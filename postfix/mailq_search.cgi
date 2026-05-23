@@ -2,8 +2,11 @@
 # mailq_search.cgi
 # Display some messages from the mail queue
 
-require './postfix-lib.pl';
-require './boxes-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($neg, %access, %in, @qfiles, %text);
+require './boxes-lib.pl';    ## no critic
 &ReadParse();
 $access{'mailq'} || &error($text{'mailq_ecannot'});
 &ui_print_header(undef, $text{'searchq_title'}, "");
@@ -17,7 +20,8 @@ $neg = ($in{'field'} =~ s/^!//);
 		 $neg ? !$r : $r } @qfiles;
 
 print "<p><b>",&text($in{'field'} =~ /^\!/ ? 'search_results3' :
-	  'search_results2', scalar(@qfiles), "<tt>$in{'match'}</tt>"),"</b><p>\n";
+	  'search_results2', scalar(@qfiles),
+	  "<tt>".&html_escape($in{'match'})."</tt>"),"</b><p>\n";
 if (@qfiles) {
 	# Show matching messages
 	&mailq_table(\@qfiles);

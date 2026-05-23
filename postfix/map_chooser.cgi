@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Show a form for selecting the source for a map
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($i, $lconf, $ltable, $mtable, $myconf, $postfix_version, $t, %in, @maps, @opts, @sources, %text);
 &ReadParse();
 &popup_header($text{'chooser_title'});
 
@@ -14,7 +17,7 @@ print &ui_form_start("map_chooser_save.cgi", "post");
 print &ui_hidden("map", $in{'map'});
 print &ui_hidden("mapname", $in{'mapname'});
 $i = 0;
-foreach $tv (@maps) {
+foreach my $tv (@maps) {
 	print &ui_hidden_table_start(&text('chooser_header', $i+1),
 				     "width=100%", 2, "section$i",
 				     $tv->[0] || $i == 0, [ "width=30%" ]);

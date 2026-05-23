@@ -2,8 +2,11 @@
 # mailq.cgi
 # Display messages currently in the queue.
 
-require './postfix-lib.pl';
-require './boxes-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($e, $in, $s, %access, %config, %in, @qfiles, %text);
+require './boxes-lib.pl';    ## no critic
 &ReadParse();
 
 $access{'mailq'} || &error($text{'mailq_ecannot'});

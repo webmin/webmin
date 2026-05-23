@@ -8,7 +8,10 @@
 #
 # << Here are all options seen in Postfix sample-smtpd.cf >>
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($default, $no_, $none, %access, %text);
 &ReadParse();
 
 $access{'smtpd'} || &error($text{'smtpd_ecannot'});

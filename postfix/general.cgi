@@ -7,7 +7,10 @@
 #
 # << Here are all options seen in Postfix sample-misc.cf >>
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($default, $no_, $none, $postfix_version, $v, %access, %text, @v);
 
 
 $access{'general'} || &error($text{'general_ecannot'});

@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Create, update or delete a server process
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($clash, $err, $master, $prog, %access, %config, %in, %text);
 $access{'master'} || &error($text{'master_ecannot'});
 &ReadParse();
 &error_setup($text{'master_err'});

@@ -1,5 +1,8 @@
 
-require 'postfix-lib.pl';
+require 'postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our (@acl_pages, %in, %text);
 @acl_pages = ("resource", "address_rewriting", "aliases", "general",
 	      "canonical", "virtual", "transport", "relocated", "header",
 	      "body", "bcc", "dependent", "sni", "local_delivery", "smtpd",
@@ -9,8 +12,8 @@ require 'postfix-lib.pl';
 # Print the form for security options of postfix module
 sub acl_security_form
 {
-local $o;
-foreach $o (@acl_pages) {
+my $o;
+foreach my $o (@acl_pages) {
 	print &ui_table_row($text{'acl_'.$o} || $o,
 			    &ui_yesno_radio($o, $_[0]->{$o} ? 1 : 0));
 	}
@@ -23,8 +26,8 @@ print &ui_table_row($text{'acl_dir'},
 # Parse the form for security options for the postfix module
 sub acl_security_save
 {
-local $o;
-foreach $o (@acl_pages) {
+my $o;
+foreach my $o (@acl_pages) {
 	$_[0]->{$o} = $in{$o};
 	}
 $_[0]->{'dir'} = $in{'dir'};

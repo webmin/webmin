@@ -7,7 +7,10 @@
 #
 # << Here are all options seen in Postfix sample-rate.cf >>
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($default, $no_, $none, %access, %text);
 
 
 $access{'rate'} || &error($text{'rate_ecannot'});

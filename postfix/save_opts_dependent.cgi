@@ -6,7 +6,10 @@
 # Save Postfix options ; special because for sender transport maps
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($err, %access, %in, %text);
 
 &ReadParse();
 

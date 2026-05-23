@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Show a form for editing a mapping file
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($data, $file, %access, @files, %in, %text);
 &ReadParse();
 $access{'manual'} || &error($text{'manual_ecannot'});
 &ui_print_header(undef, $text{'manual_title'}, "");

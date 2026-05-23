@@ -1,6 +1,9 @@
 #!/usr/local/bin/perl
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our (%access, %in, %text);
 
 $access{'bcc'} || &error($text{'bcc_ecannot'});
 &ui_print_header(undef, $text{'bcc_title'}, "", "bcc");

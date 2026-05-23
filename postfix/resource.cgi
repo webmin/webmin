@@ -7,7 +7,10 @@
 #
 # << Here are all options seen in Postfix sample-resource.cf >>
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($default, $no_, $none, %access, %text);
 
 
 $access{'resource'} || &error($text{'resource_ecannot'});

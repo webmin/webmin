@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Delete multiple mappings
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($err, $map, $maps, @d, %in, %text);
 &ReadParse();
 &error_setup($text{'delete_err'});
 
@@ -9,7 +12,7 @@ require './postfix-lib.pl';
 @d || &error($text{'delete_enone'});
 
 $maps = &get_maps($in{'map_name'});
-foreach $d (@d) {
+foreach my $d (@d) {
 	($map) = grep { $_->{'name'} eq $d } @$maps;
 	if ($map) {
 		&lock_file($map->{'file'});

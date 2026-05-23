@@ -7,7 +7,10 @@
 #
 # << Here are all options seen in Postfix sample-smtp.cf >>
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($default, $inet, $level, $no_, $none, $postfix_version, $pref, %access, %inet, @opts, %text);
 
 
 $access{'smtp'} || &error($text{'smtp_ecannot'});

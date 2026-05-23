@@ -2,7 +2,10 @@
 # A single page just for editing smtpd_client_restrictions
 # XXX editing access maps?
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($default, $has_client_access, $no_, $none, $vals, %access, %done, @grid, %opts, @opts, @rest, %text, @v);
 
 $access{'client'} || &error($text{'client_ecannot'});
 &ui_print_header(undef, $text{'client_title'}, "");
@@ -24,14 +27,14 @@ for(my $i=0; $i<@opts; $i++) {
 # Add binary restrictions to list
 @grid = ( );
 %done = ( );
-foreach $r (&list_client_restrictions()) {
+foreach my $r (&list_client_restrictions()) {
 	push(@grid, &ui_checkbox("client", $r, $text{'sasl_'.$r},
 				 defined($opts{$r})), undef);
 	$done{$r} = 1;
 	}
 
 # Add restrictions with values
-foreach $r (&list_multi_client_restrictions()) {
+foreach my $r (&list_multi_client_restrictions()) {
 	@v = @{$opts{$r}};
 	$vals = undef;
 	if (scalar(@v)) {
@@ -43,7 +46,7 @@ foreach $r (&list_multi_client_restrictions()) {
 		    ($r eq "check_client_access" ?
 			" ".&map_chooser_button("value_$r", $r) : ""));
 	$done{$r} = 1;
-	foreach $v (@v) {
+	foreach my $v (@v) {
 		$done{$opts[$v+1]} = 1;
 		}
 	if ($r eq "check_client_access" && @v) {

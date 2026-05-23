@@ -6,7 +6,10 @@
 # Save, modify, delete an alias for Postfix
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($err, $i, $loga, $module_config_directory, $t, $v, %access, @afiles, @aliases, %in, %newa, %text, @values);
 &ReadParse();
 
 $access{'aliases'} || &error($text{'aliases_ecannot'});

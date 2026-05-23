@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Show a form for selecting the source for a map
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($file, $i, $postfix_version, $str, $t, @files, %in, @maps, @newfiles, @oldmaps, %text);
 &ReadParse();
 &error_setup($text{'chooser_err'});
 @oldmaps = &get_maps_types_files($in{'map'});
@@ -225,14 +228,14 @@ for($i=0; defined($t = $in{"type_".$i}); $i++) {
 # Write out mysql and LDAP files
 @files = &unique(@files);
 @newfiles = map { !-r $_ } @files;
-foreach $f (@files) {
+foreach my $f (@files) {
 	&lock_file($f);
 	}
 &flush_file_lines(@files);
-foreach $f (@newfiles) {
+foreach my $f (@newfiles) {
 	&set_ownership_permissions(undef, undef, 0700, $f);
 	}
-foreach $f (@files) {
+foreach my $f (@files) {
 	&unlock_file($f);
 	}
 

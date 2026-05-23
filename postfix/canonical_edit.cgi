@@ -5,7 +5,10 @@
 # 
 # Edit one category of canonical maps
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our (%in, %text);
 &ReadParse();
 
 &ui_print_header(undef, $text{'canonical_edit_title'}, "", "canonical");

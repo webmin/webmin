@@ -6,7 +6,10 @@
 # Save Postfix options ; special because for aliases
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($err, %in, %text);
 
 &ReadParse();
 

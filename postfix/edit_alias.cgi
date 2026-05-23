@@ -5,7 +5,10 @@
 # 
 # Edit an email alias
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($cancmt, %in, %text);
 &ReadParse();
 
 &ui_print_header(undef, $text{'edit_alias_title'}, "");

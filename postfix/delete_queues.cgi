@@ -2,27 +2,30 @@
 # delete_queues.cgi
 # Delete multiple messages from the postfix queue
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($postfix_version, %access, %config, @files, %in, @qfiles, %text);
 $access{'mailq'} || &error($text{'mailq_ecannot'});
 &ReadParse();
 
 if ($in{'move'}) {
 	# Re-queuing messages
-	foreach $f (split(/\0/, $in{'file'})) {
+	foreach my $f (split(/\0/, $in{'file'})) {
 		&system_logged("$config{'postfix_super_command'} -r ".
 				quotemeta($f)." >/dev/null 2>&1 </dev/null");
 		}
 	}
 elsif ($in{'hold'}) {
 	# Holding messages
-	foreach $f (split(/\0/, $in{'file'})) {
+	foreach my $f (split(/\0/, $in{'file'})) {
 		&system_logged("$config{'postfix_super_command'} -h ".
 				quotemeta($f)." >/dev/null 2>&1 </dev/null");
 		}
 	}
 elsif ($in{'unhold'}) {
 	# Un-holding messages
-	foreach $f (split(/\0/, $in{'file'})) {
+	foreach my $f (split(/\0/, $in{'file'})) {
 		&system_logged("$config{'postfix_super_command'} -H ".
 				quotemeta($f)." >/dev/null 2>&1 </dev/null");
 		}
@@ -41,7 +44,7 @@ else {
 		if (&compare_version_numbers($postfix_version, 1.1) < 0) {
 			@qfiles = &recurse_files($config{'mailq_dir'});
 			}
-		foreach $f (@files) {
+		foreach my $f (@files) {
 			$f =~ /^[A-Za-z0-9]+$/ || next;
 			if (&compare_version_numbers($postfix_version, 1.1) >= 0) {
 				&system_logged("$config{'postfix_super_command'} -d ".quotemeta($f)." >/dev/null 2>&1 </dev/null");
