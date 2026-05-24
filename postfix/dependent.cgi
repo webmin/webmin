@@ -6,7 +6,10 @@
 # Manages sender_dependent_default_transport_maps for Postfix
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our (%access, %text);
 
 $access{'dependent'} || &error($text{'dependent_ecannot'});
 &ui_print_header(undef, $text{'dependent_title'}, "", "dependent");

@@ -8,7 +8,10 @@
 # << Here are all options seen in Postfix sample-canonical.cf >>
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our (%access, %text);
 
 $access{'canonical'} || &error($text{'canonical_ecannot'});
 &ui_print_header(undef, $text{'canonical_title'}, "", "canonical");

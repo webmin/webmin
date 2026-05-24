@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Update a manually edited map file
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($err, %access, @files, %in, %text);
 &ReadParseMime();
 &error_setup($text{'manual_err'});
 $access{'manual'} || &error($text{'manual_ecannot'});
@@ -10,9 +13,10 @@ $access{'manual'} || &error($text{'manual_ecannot'});
 
 # Save the data
 $in{'data'} =~ s/\r//g;
-&open_lock_tempfile(FILE, ">$in{'file'}");
-&print_tempfile(FILE, $in{'data'});
-&close_tempfile(FILE);
+my $filefh = "FILE";
+&open_lock_tempfile($filefh, ">$in{'file'}");
+&print_tempfile($filefh, $in{'data'});
+&close_tempfile($filefh);
 
 # Regenerate map
 &regenerate_map_table($in{'map_name'});

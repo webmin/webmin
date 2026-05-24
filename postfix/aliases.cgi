@@ -8,7 +8,10 @@
 # << Here are all options seen in Postfix sample-aliases.cf >>
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($al, $anum, $astr, $i, $lines, $mid, $midline, %access, @aline, %config, @grid, @links, %text);
 
 $access{'aliases'} || &error($text{'aliases_ecannot'});
 &ui_print_header(undef, $text{'aliases_title'}, "", "aliases");
@@ -93,8 +96,8 @@ foreach my $a (@_) {
 	push(@cols, "<a href=\"edit_alias.cgi?num=$a->{'num'}\">".
 	      ($a->{'enabled'} ? "" : "<i>").&html_escape($a->{'name'}).
 	      ($a->{'enabled'} ? "" : "</i>")."</a>");
-	local $vstr;
-	foreach $v (@{$a->{'values'}}) {
+	my $vstr;
+	foreach my $v (@{$a->{'values'}}) {
 		($anum, $astr) = &alias_type($v);
 		$vstr .= &text("aliases_type$anum",
 			    "<tt>".&html_escape($astr)."</tt>")."<br>\n";

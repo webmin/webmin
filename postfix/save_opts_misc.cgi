@@ -6,7 +6,10 @@
 # Save Postfix options ; special case in which we need to regenerate the relocated table
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($err, %in, %text);
 
 &ReadParse();
 

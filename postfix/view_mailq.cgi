@@ -2,8 +2,11 @@
 # view_mailq.cgi
 # Display some message from the mail queue
 
-require './postfix-lib.pl';
-require './boxes-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($body, $bodyhtml, $desc, $mail, $rlink, $subs, %access, @attach, %config, %in, @sub, %text);
+require './boxes-lib.pl';    ## no critic
 &ReadParse();
 $access{'mailq'} || &error($text{'mailq_ecannot'});
 
@@ -12,9 +15,9 @@ $mail || &error($text{'mailq_egone'});
 &parse_mail($mail);
 @sub = split(/\0/, $in{'sub'});
 $subs = join("", map { "&sub=$_" } @sub);
-foreach $s (@sub) {
+foreach my $s (@sub) {
         # We are looking at a mail within a mail ..
-        local $amail = &extract_mail($mail->{'attach'}->[$s]->{'data'});
+        my $amail = &extract_mail($mail->{'attach'}->[$s]->{'data'});
         &parse_mail($amail);
         $mail = $amail;
         }
@@ -49,7 +52,7 @@ if ($in{'headers'}) {
 		print &ui_table_row($text{'mail_rfc'},
 				    &html_escape($mail->{'fromline'}));
 		}
-	foreach $h (@{$mail->{'headers'}}) {
+	foreach my $h (@{$mail->{'headers'}}) {
 		print &ui_table_row($h->[0],
 			&html_escape(&decode_mimewords($h->[1])), 1, [ "nowrap" ]);
 		}
@@ -84,7 +87,7 @@ print &ui_table_end();
 
 # Find body attachment
 @attach = @{$mail->{'attach'}};
-foreach $a (@attach) {
+foreach my $a (@attach) {
 	if ($a->{'type'} eq 'text/plain') {
 		$body = $a;
 		last;
@@ -93,7 +96,7 @@ foreach $a (@attach) {
 if ($body) {
 	print &ui_table_start($text{'view_body'}, "width=100%", 2);
 	$bodyhtml = "";
-	foreach $l (&wrap_lines($body->{'data'}, $config{'wrap_width'})) {
+	foreach my $l (&wrap_lines($body->{'data'}, $config{'wrap_width'})) {
 		$bodyhtml .= &link_urls_and_escape($l)."\n";
 		}
 	print &ui_table_row(undef, "<pre>".$bodyhtml."</pre>", 2);
@@ -107,7 +110,7 @@ if (@attach) {
 	print &ui_columns_start([ $text{'view_afile'}, $text{'view_atype'},
 				  $text{'view_asize'} ], 100, 0);
 	my $attachment_id;
-	foreach $a (@attach) {
+	foreach my $a (@attach) {
 		$attachment_id++;
 		if ($a->{'type'} eq 'message/rfc822') {
 			print &ui_columns_row([

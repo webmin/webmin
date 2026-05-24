@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Update a manually edited config file
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our (%access, @files, %in, %text);
 &error_setup($text{'cmanual_err'});
 $access{'manual'} || &error($text{'cmanual_ecannot'});
 &ReadParseMime();
@@ -15,9 +18,10 @@ if ($in{'file'} eq $files[0]) {
 	}
 
 # Write to it
-&open_lock_tempfile(DATA, ">$in{'file'}");
-&print_tempfile(DATA, $in{'data'});
-&close_tempfile(DATA);
+my $datafh = "DATA";
+&open_lock_tempfile($datafh, ">$in{'file'}");
+&print_tempfile($datafh, $in{'data'});
+&close_tempfile($datafh);
 
 &webmin_log("manual", undef, $in{'file'});
 &redirect("");

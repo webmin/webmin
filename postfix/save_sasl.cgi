@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Save SMTP authentication options
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($err, $newmap, $old, $pmap, $postfix_version, $rh, %access, %in, %newrecip, %newrelay, @opts, @recip, @relay, %text);
 
 &ReadParse();
 
@@ -36,7 +39,7 @@ if (!$in{'login_none'}) {
 # Save recipient options that we care about
 @recip = split(/[\s,]+/, &get_current_value("smtpd_recipient_restrictions"));
 %newrecip = map { $_, 1 } split(/\0/, $in{'sasl_recip'});
-foreach $o (&list_smtpd_restrictions()) {
+foreach my $o (&list_smtpd_restrictions()) {
 	if ($newrecip{$o}) {
 		push(@recip, $o) if (&indexof($o, @recip) < 0);
 		}
@@ -49,7 +52,7 @@ foreach $o (&list_smtpd_restrictions()) {
 # Save relay options that we care about
 @relay = split(/[\s,]+/, &get_current_value("smtpd_relay_restrictions"));
 %newrelay = map { $_, 1 } split(/\0/, $in{'sasl_relay'});
-foreach $o (&list_smtpd_restrictions()) {
+foreach my $o (&list_smtpd_restrictions()) {
 	if ($newrelay{$o}) {
 		push(@relay, $o) if (&indexof($o, @relay) < 0);
 		}

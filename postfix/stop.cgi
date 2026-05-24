@@ -5,7 +5,10 @@
 # 
 # Stop postfix
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($err, %access, %text);
 
 $access{'startstop'} || &error($text{'stop_ecannot'});
 &error_setup($text{'stop_efailed'});

@@ -5,7 +5,10 @@
 # 
 # Edit a mapping
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($cb, $tb, %in, %text);
 &ReadParse();
 
 &ui_print_header(undef, $text{'edit_mapping_title'}, "");
@@ -26,7 +29,7 @@ else
 my $mappingsaliases = &get_aliases();
 my %alias;
 
-foreach $trans (@{$aliases})
+foreach my $trans (@{$mappingsaliases})
 {
     if ($trans->{'number'} == $num) { %alias = %{$trans}; }
 }    

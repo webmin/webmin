@@ -1,4 +1,5 @@
-
+use strict;
+use warnings;
 do 'postfix-lib.pl';
 
 # backup_config_files()
@@ -12,21 +13,21 @@ return &get_all_config_files();
 # Called before the files are actually read
 sub pre_backup
 {
-return undef;
+return;
 }
 
 # post_backup(&files)
 # Called after the files are actually read
 sub post_backup
 {
-return undef;
+return;
 }
 
 # pre_restore(&files)
 # Called before the files are restored from a backup
 sub pre_restore
 {
-return undef;
+return;
 }
 
 # post_restore(&files)
@@ -36,7 +37,7 @@ sub post_restore
 if (&is_postfix_running()) {
 	return &reload_postfix();
 	}
-return undef;
+return;
 }
 
 1;

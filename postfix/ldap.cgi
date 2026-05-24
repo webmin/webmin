@@ -7,7 +7,10 @@
 #
 # << Here are all options seen in Postfix sample-ldap.cf >>
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($cb, $default, $ldap_timeout, $no_, $none, $tb, %access, %text);
 
 
 $access{'ldap'} || &error($text{'ldap_ecannot'});

@@ -8,7 +8,10 @@
 # << Here are all options seen in Postfix sample-sni.cf >>
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our (%access, %text);
 &ReadParse();
 
 $access{'sni'} || &error($text{'sni_ecannot'});

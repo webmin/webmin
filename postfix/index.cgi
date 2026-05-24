@@ -23,7 +23,10 @@
 #
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($err, $lnk, $module_config_directory, $module_name, $postfix_version, %access, %config, @oicons, @olinks, @onames, @otitles, %text);
 
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 	&help_search_link("postfix", "man", "doc", "google"),
@@ -31,9 +34,10 @@ require './postfix-lib.pl';
 		&text('index_version', $postfix_version) : undef);
 
 # Save the version for use by other CGIs
-&open_tempfile(VERSION, ">$module_config_directory/version", 0, 1);
-&print_tempfile(VERSION, "$postfix_version\n");
-&close_tempfile(VERSION);
+my $verfh = "VERSION";
+&open_tempfile($verfh, ">$module_config_directory/version", 0, 1);
+&print_tempfile($verfh, "$postfix_version\n");
+&close_tempfile($verfh);
 
 # Verify the postfix control command
 if (!&valid_postfix_command($config{'postfix_control_command'})) {
@@ -92,7 +96,7 @@ if ($config{'index_check'} && ($err = &check_postfix())) {
 	     "master", "mailq", "postfinger", "boxes", "manual" );
 
 $access{'boxes'} = &foreign_available("mailboxes");
-foreach $oitem (@onames)
+foreach my $oitem (@onames)
 {
 	if ($access{$oitem}) {
 		push (@olinks, $oitem eq "boxes" ? "../mailboxes/"
@@ -101,8 +105,8 @@ foreach $oitem (@onames)
 						   : $text{$oitem . "_title"});
 		if ($oitem eq 'mailq' && !$config{'mailq_count'}) {
 			# Count the queue
-			local @mqueue = &list_queue(0);
-			local $mcount = scalar(@mqueue);
+			my @mqueue = &list_queue(0);
+			my $mcount = scalar(@mqueue);
 			$otitles[$#otitles] .=
 				"<br>".&text('mailq_count', $mcount);
 			}

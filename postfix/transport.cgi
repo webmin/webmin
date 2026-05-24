@@ -8,7 +8,10 @@
 # << Here are all options seen in Postfix sample-transport.cf >>
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our (%access, %text);
 &ReadParse();
 
 $access{'transport'} || &error($text{'transport_ecannot'});
