@@ -8,7 +8,7 @@
 require './postfix-lib.pl';    ## no critic
 use strict;
 use warnings;
-our ($aliases, $cb, $tb, %in, %text);
+our ($cb, $tb, %in, %text);
 &ReadParse();
 
 &ui_print_header(undef, $text{'edit_mapping_title'}, "");
@@ -29,7 +29,7 @@ else
 my $mappingsaliases = &get_aliases();
 my %alias;
 
-foreach my $trans (@{$aliases})
+foreach my $trans (@{$mappingsaliases})
 {
     if ($trans->{'number'} == $num) { %alias = %{$trans}; }
 }    

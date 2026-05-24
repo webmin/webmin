@@ -35,7 +35,7 @@ foreach my $r (&list_client_restrictions()) {
 
 # Add restrictions with values
 foreach my $r (&list_multi_client_restrictions()) {
-	@v = @{$opts{$r}};
+	@v = $opts{$r} ? @{$opts{$r}} : ();
 	$vals = undef;
 	if (scalar(@v)) {
 		$vals = join(" ", map { $opts[$_+1] } @v);
