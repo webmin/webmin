@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Show a table of Postfix server processes
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($master, %access, %text);
 
 $access{'master'} || &error($text{'master_ecannot'});
 &ui_print_header(undef, $text{'master_title'}, "", "master");
@@ -15,7 +18,7 @@ print &ui_columns_start([ $text{'master_name'},
 			  $text{'master_unpriv'},
 			  $text{'master_chroot'},
 			  $text{'master_max'} ], "100%");
-foreach $m (@$master) {
+foreach my $m (@$master) {
 	print &ui_columns_row([
 		"<a href='edit_master.cgi?name=".&urlize($m->{'name'}).
 		 "&type=".&urlize($m->{'type'})."&enabled=$m->{'enabled'}'>".

@@ -2,8 +2,11 @@
 # detach_queue.cgi
 # View one attachment from a queued message
 
-require './postfix-lib.pl';
-require './boxes-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($attach, $mail, %access, %in, %text);
+require './boxes-lib.pl';    ## no critic
 &ReadParse();
 $access{'mailq'} || &error($text{'mailq_ecannot'});
 

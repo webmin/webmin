@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Save SMTP authentication options
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($err, %access, %in, %newopts, %oldopts, @opts, %text, @v);
 
 &ReadParse();
 
@@ -23,7 +26,7 @@ else {
 	%newopts = map { $_, 1 } split(/\0/, $in{'client'});
 
 	# Save boolean options
-	foreach $o (&list_client_restrictions()) {
+	foreach my $o (&list_client_restrictions()) {
 		if ($newopts{$o} && !$oldopts{$o}) {
 			push(@opts, $o);
 			}
@@ -33,9 +36,9 @@ else {
 		}
 
 	# Save options with values
-	foreach $o (&list_multi_client_restrictions()) {
+	foreach my $o (&list_multi_client_restrictions()) {
 		# Find all current positions
-		local @pos;
+		my @pos;
 		for(my $i=0; $i<@opts; $i++) {
 			push(@pos, $i) if ($opts[$i] eq $o);
 			}

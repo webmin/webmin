@@ -1,6 +1,9 @@
 # install_check.pl
 
+use strict;
+use warnings;
 do 'postfix-lib.pl';
+our (%config);
 
 # is_installed(mode)
 # For mode 1, returns 2 if the server is installed and configured for use by

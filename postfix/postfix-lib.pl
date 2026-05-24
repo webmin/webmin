@@ -3,10 +3,26 @@
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
 # for webmin by Jamie Cameron
 
-$POSTFIX_MODULE_VERSION = 5;
+use strict;
+use warnings;
+no warnings 'redefine';
+no warnings 'uninitialized';
+
+our $POSTFIX_MODULE_VERSION = 5;
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
+
+# Package globals: Webmin-provided config/text/acl, plus module state and
+# caches that persist or are shared across the subs below.
+our (%config, %text, %access, $module_name, $module_config_directory);
+our ($postfix_version, $version_file, $postfix_config_command,
+     $has_postfix_config_command, $config_dir, $virtual_maps, $ldap_timeout,
+     $save_file);
+our (%maps_cache, @master_config_cache, @mail_system_cache,
+     @supports_map_type_cache, $connect_ldap_db_cache);
+our (@header_checks_actions, @check_sender_actions);
+
 &init_config();
 %access = &get_module_acl();
 $access{'postfinger'} = 0 if (&is_readonly_mode());
@@ -15,12 +31,13 @@ do 'aliases-lib.pl';
 $config{'perpage'} ||= 20;      # a value of 0 can cause problems
 
 # Get the saved version number
+my $version_fh = "VERSION";
 $version_file = "$module_config_directory/version";
 $postfix_config_command = $config{'postfix_config_command'};
 $has_postfix_config_command = &has_command($postfix_config_command);
-if (&open_readfile(VERSION, $version_file)) {
-	chop($postfix_version = <VERSION>);
-	close(VERSION);
+if (&open_readfile($version_fh, $version_file)) {
+	chop($postfix_version = <$version_fh>);
+	close($version_fh);
 	my @vst = stat($version_file);
 	my @cst = stat($postfix_config_command);
 	if (@cst && $cst[9] > $vst[9]) {
@@ -38,9 +55,9 @@ if (!$postfix_version) {
 		}
 
 	# And save for other callers
-	&open_tempfile(VERSION, ">$version_file", 0, 1);
-	&print_tempfile(VERSION, "$postfix_version\n");
-	&close_tempfile(VERSION);
+	&open_tempfile($version_fh, ">$version_file", 0, 1);
+	&print_tempfile($version_fh, "$postfix_version\n");
+	&close_tempfile($version_fh);
 	}
 
 if (&compare_version_numbers($postfix_version, 2) >= 0) {
@@ -144,7 +161,7 @@ if (!defined($out) && !$nodef) {
 		}
 	elsif ($out =~ /warning:.*unknown\s+parameter/ ||
 	       $err =~ /warning:.*unknown\s+parameter/) {
-		return undef;
+		return;
 		}
 	chop($out);
 	}
@@ -178,8 +195,16 @@ my $compatibility_level = &get_current_value("compatibility_level");
 
 if ($raw_value =~ /\{\{\$compatibility_level\}\s*([<>=!]+)\s*\{(\d+)\}\s*\?\s*\{(.*?)\}\s*:\s*\{(.*?)\}\}/) {
 	my ($op, $lvl, $tval, $fval) = ($1, $2, $3, $4);
-	return undef if ($op !~ /^([<>]=?|==|!=)$/);
-	return eval "\$compatibility_level $op $lvl" ? $tval : $fval;
+	my %compare = (
+		'<'  => sub { $_[0] <  $_[1] },
+		'<=' => sub { $_[0] <= $_[1] },
+		'>'  => sub { $_[0] >  $_[1] },
+		'>=' => sub { $_[0] >= $_[1] },
+		'==' => sub { $_[0] == $_[1] },
+		'!=' => sub { $_[0] != $_[1] },
+		);
+	return if (!$compare{$op});
+	return $compare{$op}->($compatibility_level, $lvl) ? $tval : $fval;
 	}
 
 return $raw_value;
@@ -288,16 +313,16 @@ sub reload_postfix
 		$cmd = $config{'reload_cmd'};
 		}
 	my $ex = &system_logged("$cmd >/dev/null 2>&1");
-	return $ex ? ($out || "$cmd failed") : undef;
+	return $ex ? "$cmd failed" : undef;
     }
-    return undef;
+    return;
 }
 
 # get_bootup_action()
 # Returns the name of the init script to start and stop Postfix, if found.
 sub get_bootup_action
 {
-return undef if (!&foreign_check("init"));
+return if (!&foreign_check("init"));
 &foreign_require("init");
 my $name = $config{'init_name'} || 'postfix';
 my $st = &init::action_status($name);
@@ -481,11 +506,11 @@ sub get_aliases_files
 # gives a new number of alias
 sub init_new_alias
 {
-    $aliases = &get_aliases();
+    my $aliases = &get_aliases();
 
     my $max_number = 0;
 
-    foreach $trans (@{$aliases})
+    foreach my $trans (@{$aliases})
     {
 	if ($trans->{'number'} > $max_number) { $max_number = $trans->{'number'}; }
     }
@@ -498,11 +523,12 @@ sub init_new_alias
 # be taken from a MySQL or LDAP backend
 sub list_postfix_aliases
 {
-local @rv;
+my @rv;
+my @maps;
 foreach my $f (&get_maps_types_files(&get_current_value("alias_maps"))) {
 	if (&file_map_type($f->[0])) {
 		# We can read this file directly
-		local $sofar = scalar(@rv);
+		my $sofar = scalar(@rv);
 		foreach my $a (&list_aliases([ $f->[1] ])) {
 			$a->{'num'} += $sofar;
 			push(@rv, $a);
@@ -515,10 +541,10 @@ foreach my $f (&get_maps_types_files(&get_current_value("alias_maps"))) {
 	}
 if (@maps) {
 	# Convert values from MySQL and LDAP maps into alias structures
-	local $maps = &get_maps("alias_maps", undef, join(",", @maps));
+	my $maps = &get_maps("alias_maps", undef, join(",", @maps));
 	foreach my $m (@$maps) {
-		local $v = $m->{'value'};
-		local @values;
+		my $v = $m->{'value'};
+		my @values;
 		while($v =~ /^\s*,?\s*()"([^"]+)"(.*)$/ ||
 		      $v =~ /^\s*,?\s*(\|)"([^"]+)"(.*)$/ ||
 		      $v =~ /^\s*,?\s*()([^,\s]+)(.*)$/) {
@@ -544,10 +570,10 @@ return @rv;
 # Adds a new alias, either to the local file or another backend
 sub create_postfix_alias
 {
-local ($alias) = @_;
-local @afiles = &get_maps_types_files(&get_current_value("alias_maps"));
-local $last_type = $afiles[$#afiles]->[0];
-local $last_file = $afiles[$#afiles]->[1];
+my ($alias) = @_;
+my @afiles = &get_maps_types_files(&get_current_value("alias_maps"));
+my $last_type = $afiles[$#afiles]->[0];
+my $last_file = $afiles[$#afiles]->[1];
 if (&file_map_type($last_type)) {
 	# Just adding to a file
 	&create_alias($alias, [ $last_file ], 1);
@@ -567,7 +593,7 @@ else {
 # Delete an alias, either from the files or from a MySQL or LDAP map
 sub delete_postfix_alias
 {
-local ($alias) = @_;
+my ($alias) = @_;
 if ($alias->{'map_type'}) {
 	# This was from a map
 	&delete_mapping("alias_maps", $alias);
@@ -582,7 +608,7 @@ else {
 # Update an alias, either in a file or in a map
 sub modify_postfix_alias
 {
-local ($oldalias, $alias) = @_;
+my ($oldalias, $alias) = @_;
 if ($oldalias->{'map_type'}) {
 	# In the map
 	if (!$alias->{'enabled'}) {
@@ -602,8 +628,7 @@ else {
 sub renumber_list
 {
 return if (!$_[2]);
-local $e;
-foreach $e (@{$_[0]}) {
+foreach my $e (@{$_[0]}) {
 	next if (defined($e->{'alias_file'}) &&
 	         $e->{'alias_file'} ne $_[1]->{'alias_file'});
 	next if (defined($e->{'map_file'}) &&
@@ -622,7 +647,7 @@ sub save_options
 
     my %options = %{$_[0]};
 
-    foreach $key (keys %options)
+    foreach my $key (keys %options)
     {
 	if ($key =~ /_def$/)
 	{
@@ -648,7 +673,7 @@ sub save_options
 #
 sub regenerate_aliases
 {
-    local $out;
+    my $out;
     $access{'aliases'} || error($text{'regenerate_ecannot'});
     if (get_current_value("alias_maps") eq "")
     {
@@ -657,8 +682,7 @@ sub regenerate_aliases
     }
     else
     {
-	local $map;
-	foreach $map (get_maps_types_files(get_real_value("alias_maps")))
+	foreach my $map (get_maps_types_files(get_real_value("alias_maps")))
 	{
 	    if (&file_map_type($map->[0])) {
 		    my $cmd = $config{'postfix_aliases_table_command'};
@@ -782,7 +806,7 @@ sub regenerate_any_table
         next unless $map;
 	if (&file_map_type($map->[0]) &&
 	    $map->[0] ne 'regexp' && $map->[0] ne 'pcre') {
-		local $out = &backquote_logged(
+		my $out = &backquote_logged(
 			$config{'postfix_lookup_table_command'}.
 			" -c $config_dir".
 			($base64 ? " -F" : "").
@@ -832,11 +856,12 @@ sub get_maps
 
 	    if (&file_map_type($maps_type)) {
 		    # Read a file on disk
-		    &open_readfile(MAPS, $maps_file);
+		    my $mapsfh = "MAPS";
+		    &open_readfile($mapsfh, $maps_file);
 		    my $i = 0;
 		    my $cmt;
 		    my $lastmap;
-		    while (<MAPS>)
+		    while (<$mapsfh>)
 		    {
 			s/\r|\n//g;	# remove newlines
 			if (/^\s*#+\s*(.*)/) {
@@ -871,14 +896,14 @@ sub get_maps
 			    }
 			$i++;
 		    }
-		    close(MAPS);
+		    close($mapsfh);
 
 	     } elsif ($maps_type eq "mysql") {
 		    # Get from a MySQL database
-		    local $conf = &mysql_value_to_conf($maps_file);
-		    local $dbh = &connect_mysql_db($conf);
+		    my $conf = &mysql_value_to_conf($maps_file);
+		    my $dbh = &connect_mysql_db($conf);
 		    ref($dbh) || &error($dbh);
-		    local $cmd = $dbh->prepare(
+		    my $cmd = $dbh->prepare(
 				       "select ".$conf->{'where_field'}.
 				       ",".$conf->{'select_field'}.
 				       " from ".$conf->{'table'}.
@@ -904,12 +929,12 @@ sub get_maps
 
 	     } elsif ($maps_type eq "ldap") {
 		    # Get from an LDAP database
-	     	    local $conf = &ldap_value_to_conf($maps_file);
-		    local $ldap = &connect_ldap_db($conf);
+	     	    my $conf = &ldap_value_to_conf($maps_file);
+		    my $ldap = &connect_ldap_db($conf);
 		    ref($ldap) || &error($ldap);
-		    local ($name_attr, $filter) = &get_ldap_key($conf);
-		    local $scope = $conf->{'scope'} || 'sub';
-		    local $rv = $ldap->search(base => $conf->{'search_base'},
+		    my ($name_attr, $filter) = &get_ldap_key($conf);
+		    my $scope = $conf->{'scope'} || 'sub';
+		    my $rv = $ldap->search(base => $conf->{'search_base'},
 					      scope => $scope,
 					      filter => $filter);
 		    if (!$rv || $rv->code) {
@@ -969,7 +994,7 @@ sub generate_map_edit
     my $nt = $_[3] || $text{'mapping_name'};
     my $vt = $_[4] || $text{'mapping_value'};
 
-    local @links = ( &ui_link("edit_mapping.cgi?map_name=$_[0]",
+    my @links = ( &ui_link("edit_mapping.cgi?map_name=$_[0]",
 			      $text{'new_mapping'}),);
     if ($access{'manual'} && &can_map_manual($_[0])) {
 	push(@links, &ui_link("edit_manual.cgi?map_name=$_[0]",
@@ -1126,10 +1151,10 @@ if (&file_map_type($maps_type)) {
 	}
 elsif ($maps_type eq "mysql") {
 	# Adding to a MySQL table
-	local $conf = &mysql_value_to_conf($maps_file);
-	local $dbh = &connect_mysql_db($conf);
+	my $conf = &mysql_value_to_conf($maps_file);
+	my $dbh = &connect_mysql_db($conf);
 	ref($dbh) || &error($dbh);
-	local $cmd = $dbh->prepare("insert into ".$conf->{'table'}." ".
+	my $cmd = $dbh->prepare("insert into ".$conf->{'table'}." ".
 				   "(".$conf->{'where_field'}.",".
 					$conf->{'select_field'}.") values (".
 				   "?, ?)");
@@ -1143,18 +1168,18 @@ elsif ($maps_type eq "mysql") {
 	}
 elsif ($maps_type eq "ldap") {
 	# Adding to an LDAP database
-	local $conf = &ldap_value_to_conf($maps_file);
-	local $ldap = &connect_ldap_db($conf);
+	my $conf = &ldap_value_to_conf($maps_file);
+	my $ldap = &connect_ldap_db($conf);
 	ref($ldap) || &error($ldap);
-	local @classes = split(/\s+/, $config{'ldap_class'} ||
+	my @classes = split(/\s+/, $config{'ldap_class'} ||
 				      "inetLocalMailRecipient");
-	local @attrs = ( "objectClass", \@classes );
-	local $name_attr = &get_ldap_key($conf);
+	my @attrs = ( "objectClass", \@classes );
+	my $name_attr = &get_ldap_key($conf);
 	push(@attrs, $name_attr, $map->{'name'});
 	push(@attrs, $conf->{'result_attribute'} || "maildrop",
 		     $map->{'value'});
 	push(@attrs, &split_props($config{'ldap_attrs'}));
-	local $dn = &make_map_ldap_dn($map, $conf);
+	my $dn = &make_map_ldap_dn($map, $conf);
 	if ($dn =~ /^([^=]+)=([^, ]+)/ && !&in_props(\@attrs, $1)) {
 		push(@attrs, $1, $2);
 		}
@@ -1163,7 +1188,7 @@ elsif ($maps_type eq "ldap") {
 	&ensure_ldap_parent($ldap, $dn);
 
 	# Actually add
-	local $rv = $ldap->add($dn, attr => \@attrs);
+	my $rv = $ldap->add($dn, attr => \@attrs);
 	if ($rv->code) {
 		&error(&text('ldap_eadd', "<tt>$dn</tt>",
 			     "<tt>".&html_escape($rv->error)."</tt>"));
@@ -1185,9 +1210,9 @@ sub delete_mapping
 {
 if (&file_map_type($_[1]->{'map_type'}) || !$_[1]->{'map_type'}) {
 	# Deleting from a file
-	local $lref = &read_file_lines($_[1]->{'map_file'});
-	local $dl = $lref->[$_[1]->{'eline'}];
-	local $len = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
+	my $lref = &read_file_lines($_[1]->{'map_file'});
+	my $dl = $lref->[$_[1]->{'eline'}];
+	my $len = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
 	if (($dl =~ /^\s*(\/[^\/]*\/[a-z]*)\s+([^#]*)/ ||
 	     $dl =~ /^\s*([^\s]+)\s+([^#]*)/) &&
 	    $1 eq $_[1]->{'name'}) {
@@ -1201,7 +1226,7 @@ if (&file_map_type($_[1]->{'map_type'}) || !$_[1]->{'map_type'}) {
 		}
 	&flush_file_lines($_[1]->{'map_file'});
 	&renumber_list($maps_cache{$_[0]}, $_[1], -$len);
-	local $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
+	my $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
 	if ($idx >= 0) {
 		# Take out of cache
 		splice(@{$maps_cache{$_[0]}}, $idx, 1);
@@ -1209,10 +1234,10 @@ if (&file_map_type($_[1]->{'map_type'}) || !$_[1]->{'map_type'}) {
 	}
 elsif ($_[1]->{'map_type'} eq 'mysql') {
 	# Deleting from MySQL
-	local $conf = &mysql_value_to_conf($_[1]->{'map_file'});
-	local $dbh = &connect_mysql_db($conf);
+	my $conf = &mysql_value_to_conf($_[1]->{'map_file'});
+	my $dbh = &connect_mysql_db($conf);
 	ref($dbh) || &error($dbh);
-	local $cmd = $dbh->prepare("delete from ".$conf->{'table'}.
+	my $cmd = $dbh->prepare("delete from ".$conf->{'table'}.
 				   " where ".$conf->{'where_field'}." = ?".
 				   " ".$conf->{'additional_conditions'});
 	if (!$cmd || !$cmd->execute($_[1]->{'key'})) {
@@ -1224,10 +1249,10 @@ elsif ($_[1]->{'map_type'} eq 'mysql') {
 	}
 elsif ($_[1]->{'map_type'} eq 'ldap') {
 	# Deleting from LDAP
-	local $conf = &ldap_value_to_conf($_[1]->{'map_file'});
-	local $ldap = &connect_ldap_db($conf);
+	my $conf = &ldap_value_to_conf($_[1]->{'map_file'});
+	my $ldap = &connect_ldap_db($conf);
 	ref($ldap) || &error($ldap);
-	local $rv = $ldap->delete($_[1]->{'dn'});
+	my $rv = $ldap->delete($_[1]->{'dn'});
 	if ($rv->code) {
 		my $err = $rv->error;
 		if ($err !~ /No such object/i) {
@@ -1238,7 +1263,7 @@ elsif ($_[1]->{'map_type'} eq 'ldap') {
 	}
 
 # Delete from in-memory cache
-local $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
+my $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
 splice(@{$maps_cache{$_[0]}}, $idx, 1) if ($idx != -1);
 }
 
@@ -1248,15 +1273,15 @@ sub modify_mapping
 {
 if (&file_map_type($_[1]->{'map_type'}) || !$_[1]->{'map_type'}) {
 	# Modifying in a file
-	local $lref = &read_file_lines($_[1]->{'map_file'});
-	local $oldlen = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
-	local @newlines;
+	my $lref = &read_file_lines($_[1]->{'map_file'});
+	my $oldlen = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
+	my @newlines;
 	push(@newlines, &make_table_comment($_[2]->{'cmt'}));
 	push(@newlines, "$_[2]->{'name'}\t$_[2]->{'value'}");
 	splice(@$lref, $_[1]->{'line'}, $oldlen, @newlines);
 	&flush_file_lines($_[1]->{'map_file'});
 	&renumber_list($maps_cache{$_[0]}, $_[1], scalar(@newlines)-$oldlen);
-	local $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
+	my $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
 	if ($idx >= 0) {
 		# Update in cache
 		$_[2]->{'map_file'} = $_[1]->{'map_file'};
@@ -1268,10 +1293,10 @@ if (&file_map_type($_[1]->{'map_type'}) || !$_[1]->{'map_type'}) {
 	}
 elsif ($_[1]->{'map_type'} eq 'mysql') {
 	# Updating in MySQL
-	local $conf = &mysql_value_to_conf($_[1]->{'map_file'});
-	local $dbh = &connect_mysql_db($conf);
+	my $conf = &mysql_value_to_conf($_[1]->{'map_file'});
+	my $dbh = &connect_mysql_db($conf);
 	ref($dbh) || &error($dbh);
-	local $cmd = $dbh->prepare("update ".$conf->{'table'}.
+	my $cmd = $dbh->prepare("update ".$conf->{'table'}.
 				   " set ".$conf->{'where_field'}." = ?,".
 				   " ".$conf->{'select_field'}." = ?".
 				   " where ".$conf->{'where_field'}." = ?".
@@ -1286,25 +1311,25 @@ elsif ($_[1]->{'map_type'} eq 'mysql') {
 	}
 elsif ($_[1]->{'map_type'} eq 'ldap') {
 	# Updating in LDAP
-	local $conf = &ldap_value_to_conf($_[1]->{'map_file'});
-	local $ldap = &connect_ldap_db($conf);
+	my $conf = &ldap_value_to_conf($_[1]->{'map_file'});
+	my $ldap = &connect_ldap_db($conf);
 	ref($ldap) || &error($ldap);
 
 	# Work out attribute changes
-	local %replace;
-	local $name_attr = &get_ldap_key($conf);
+	my %replace;
+	my $name_attr = &get_ldap_key($conf);
 	$replace{$name_attr} = [ $_[2]->{'name'} ];
 	$replace{$conf->{'result_attribute'} || "maildrop"} =
 		[ $_[2]->{'value'} ];
 
 	# Work out new DN, if needed
-	local $newdn = &make_map_ldap_dn($_[2], $conf);
+	my $newdn = &make_map_ldap_dn($_[2], $conf);
 	if ($_[1]->{'name'} ne $_[2]->{'name'} &&
 	    $_[1]->{'dn'} ne $newdn) {
 		# Changed .. update the object in LDAP
 		&ensure_ldap_parent($ldap, $newdn);
-		local ($newprefix, $newrest) = split(/,/, $newdn, 2);
-		local $rv = $ldap->moddn($_[1]->{'dn'},
+		my ($newprefix, $newrest) = split(/,/, $newdn, 2);
+		my $rv = $ldap->moddn($_[1]->{'dn'},
 					 newrdn => $newprefix,
 					 newsuperior => $newrest);
 		if ($rv->code) {
@@ -1323,7 +1348,7 @@ elsif ($_[1]->{'map_type'} eq 'ldap') {
 		}
 
 	# Modify attributes
-	local $rv = $ldap->modify($_[2]->{'dn'}, replace => \%replace);
+	my $rv = $ldap->modify($_[2]->{'dn'}, replace => \%replace);
 	if ($rv->code) {
 		&error(&text('ldap_emodify',
 			     "<tt>$_[2]->{'dn'}</tt>",
@@ -1332,7 +1357,7 @@ elsif ($_[1]->{'map_type'} eq 'ldap') {
 	}
 
 # Update in-memory cache
-local $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
+my $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
 $_[2]->{'map_file'} = $_[1]->{'map_file'};
 $_[2]->{'map_type'} = $_[1]->{'map_type'};
 $_[2]->{'file'} = $_[1]->{'file'};
@@ -1345,11 +1370,11 @@ $maps_cache{$_[0]}->[$idx] = $_[2] if ($idx != -1);
 # Work out an LDAP DN for a map
 sub make_map_ldap_dn
 {
-local ($map, $conf) = @_;
-local $dn;
-local $scope = $conf->{'scope'} || 'sub';
+my ($map, $conf) = @_;
+my $dn;
+my $scope = $conf->{'scope'} || 'sub';
 $scope = 'base' if (!$config{'ldap_doms'});	# Never create sub-domains
-local $id = $config{'ldap_id'} || 'cn';
+my $id = $config{'ldap_id'} || 'cn';
 if ($map->{'name'} =~ /^(\S+)\@(\S+)$/ && $scope ne 'base') {
 	# Within a domain
 	$dn = "$id=$1,cn=$2,$conf->{'search_base'}";
@@ -1369,8 +1394,8 @@ return $dn;
 # Returns the attribute name for the LDAP key. May call &error
 sub get_ldap_key
 {
-local ($conf) = @_;
-local ($filter, $name_attr) = @_;
+my ($conf) = @_;
+my ($filter, $name_attr) = @_;
 if ($conf->{'query_filter'}) {
 	$filter = $conf->{'query_filter'};
 	$conf->{'query_filter'} =~ /([a-z0-9]+)=\%[su]/i ||
@@ -1391,17 +1416,17 @@ return wantarray ? ( $name_attr, $filter ) : $name_attr;
 # Create the parent of some DN if needed
 sub ensure_ldap_parent
 {
-local ($ldap, $dn) = @_;
-local $pdn = $dn;
+my ($ldap, $dn) = @_;
+my $pdn = $dn;
 $pdn =~ s/^([^,]+),//;
-local $rv = $ldap->search(base => $pdn, scope => 'base',
+my $rv = $ldap->search(base => $pdn, scope => 'base',
 			  filter => "(objectClass=top)",
 			  sizelimit => 1);
 if (!$rv || $rv->code || !$rv->all_entries) {
 	# Does not .. so add it
-	local @pclasses = ( "top" );
-	local @pattrs = ( "objectClass", \@pclasses );
-	local $rv = $ldap->add($pdn, attr => \@pattrs);
+	my @pclasses = ( "top" );
+	my @pattrs = ( "objectClass", \@pclasses );
+	my $rv = $ldap->add($pdn, attr => \@pattrs);
 	}
 }
 
@@ -1411,7 +1436,7 @@ sub init_new_mapping
 {
 my $maps = &get_maps($_[0]);
 my $max_number = 0;
-foreach $trans (@{$maps}) {
+foreach my $trans (@{$maps}) {
 	if ($trans->{'number'} > $max_number) {
 		$max_number = $trans->{'number'};
 		}
@@ -1422,7 +1447,7 @@ return $max_number+1;
 # postfix_mail_file(user|user-details-list)
 sub postfix_mail_file
 {
-local @s = &postfix_mail_system();
+my @s = &postfix_mail_system();
 if ($s[0] == 0) {
 	return "$s[1]/$_[0]";
 	}
@@ -1430,7 +1455,7 @@ elsif (@_ > 1) {
 	return "$_[7]/$s[1]";
 	}
 else {
-	local @u = getpwnam($_[0]);
+	my @u = getpwnam($_[0]);
 	return "$u[7]/$s[1]";
 	}
 }
@@ -1442,13 +1467,13 @@ else {
 sub postfix_mail_system
 {
 if (!scalar(@mail_system_cache)) {
-	local $home_mailbox = &get_current_value("home_mailbox");
+	my $home_mailbox = &get_current_value("home_mailbox");
 	if ($home_mailbox) {
 		@mail_system_cache = $home_mailbox =~ /^(.*)\/$/ ?
 			(2, $1) : (1, $home_mailbox);
 		}
 	else {
-		local $mail_spool_directory =
+		my $mail_spool_directory =
 			&get_current_value("mail_spool_directory");
 		@mail_system_cache = (0, $mail_spool_directory);
 		}
@@ -1460,18 +1485,18 @@ return wantarray ? @mail_system_cache : $mail_system_cache[0];
 # Returns a list of strutures, each containing details of one queued message
 sub list_queue
 {
-local ($throw) = @_;
-local @qfiles;
-local $out = &backquote_command("$config{'mailq_cmd'} 2>&1 </dev/null");
+my ($throw) = @_;
+my @qfiles;
+my $out = &backquote_command("$config{'mailq_cmd'} 2>&1 </dev/null");
 &error("$config{'mailq_cmd'} failed : ".&html_escape($out)) if ($? && $throw);
 foreach my $l (split(/\r?\n/, $out)) {
 	next if ($l =~ /^(\S+)\s+is\s+empty/i ||
 		 $l =~ /^\s+Total\s+requests:/i);
 	if ($l =~ /^([^\s\*\!]+)[\*\!]?\s*(\d+)\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+)\s+(.*)/) {
-		local $q = { 'id' => $1, 'size' => $2,
+		my $q = { 'id' => $1, 'size' => $2,
                              'date' => $3, 'from' => $4 };
 		if (defined(&parse_mail_date)) {
-			local $t = &parse_mail_date($q->{'date'});
+			my $t = &parse_mail_date($q->{'date'});
 			if ($t) {
 				$q->{'date'} = &make_date($t, 0, 'yyyy/mm/dd');
 				$q->{'time'} = $t;
@@ -1482,7 +1507,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 			my $path = "$config{'mailq_dir'}/$dir/$f/$q->{'id'}";
 			if (-r $path) {
 				$q->{'dir'} = $dir;
-				$q->{'file'} = $file;
+				$q->{'file'} = $path;
 				last;
 				}
 			}
@@ -1507,15 +1532,16 @@ return ("active", "incoming", "deferred", "corrupt", "hold", "maildrop");
 # Parses a postfix mail queue file into a standard mail structure
 sub parse_queue_file
 {
-local ($f) = @_;
-local @qfiles = map { &recurse_files("$config{'mailq_dir'}/$_") }
+my ($f) = @_;
+my @qfiles = map { &recurse_files("$config{'mailq_dir'}/$_") }
 		    &list_mailq_directories();
-local ($file) = grep { $_ =~ /\/$f$/ } @qfiles;
-return undef if (!$file);
-local $mode = 0;
-local ($mail, @headers);
-&open_execute_command(QUEUE, "$config{'postcat_cmd'} ".quotemeta($file), 1, 1);
-while(<QUEUE>) {
+my ($file) = grep { $_ =~ /\/$f$/ } @qfiles;
+return if (!$file);
+my $mode = 0;
+my ($mail, @headers);
+my $queuefh = "QUEUE";
+&open_execute_command($queuefh, "$config{'postcat_cmd'} ".quotemeta($file), 1, 1);
+while(<$queuefh>) {
 	if (/^\*\*\*\s+MESSAGE\s+CONTENTS/ && !$mode) {	   # Start of headers
 		$mode = 1;
 		}
@@ -1536,9 +1562,9 @@ while(<QUEUE>) {
 		$mail->{'body'} .= $_;
 		}
 	}
-close(QUEUE);
+close($queuefh);
 $mail->{'headers'} = \@headers;
-foreach $h (@headers) {
+foreach my $h (@headers) {
 	$mail->{'header'}->{lc($h->[0])} = $h->[1];
 	}
 $mail->{'file'} = $file;
@@ -1553,11 +1579,11 @@ return $mail;
 # recurse_files(dir)
 sub recurse_files
 {
-opendir(DIR, &translate_filename($_[0])) || return ( $_[0] );
-local @dir = readdir(DIR);
-closedir(DIR);
-local ($f, @rv);
-foreach $f (@dir) {
+opendir(my $dirh, &translate_filename($_[0])) || return ( $_[0] );
+my @dir = readdir($dirh);
+closedir($dirh);
+my @rv;
+foreach my $f (@dir) {
 	push(@rv, &recurse_files("$_[0]/$f")) if ($f !~ /^\./);
 	}
 return @rv;
@@ -1565,7 +1591,7 @@ return @rv;
 
 sub sort_by_domain
 {
-local ($a1, $a2, $b1, $b2);
+my ($a1, $a2, $b1, $b2);
 if ($a->{'name'} =~ /^(.*)\@(.*)$/ && (($a1, $a2) = ($1, $2)) &&
     $b->{'name'} =~ /^(.*)\@(.*)$/ && (($b1, $b2) = ($1, $2))) {
 	return $a2 cmp $b2 ? $a2 cmp $b2 : $a1 cmp $b1;
@@ -1589,7 +1615,7 @@ if ($config{'check_config'} && !defined($save_file)) {
 sub after_save
 {
 if (defined($save_file)) {
-	local $err = &check_postfix();
+	my $err = &check_postfix();
 	if ($err) {
 		&copy_source_dest($save_file, $config{'postfix_config_file'});
 		&unlink_file($save_file);
@@ -1627,9 +1653,10 @@ sub ensure_map
 {
 foreach my $mf (&get_maps_files(&get_real_value($_[0]))) {
 	if ($mf =~ /^\// && !-e $mf) {
-		&open_lock_tempfile(TOUCH, ">$mf", 1) ||
+		my $touchfh = "TOUCH";
+		&open_lock_tempfile($touchfh, ">$mf", 1) ||
 			&error(&text("efilewrite", $mf, $!));
-		&close_tempfile(TOUCH);
+		&close_tempfile($touchfh);
 		&set_ownership_permissions(undef, undef, 0755, $mf);
 		}
 	}
@@ -1650,7 +1677,7 @@ return $_[1]->{'name'};
 
 sub edit_value_header_checks
 {
-local ($act, $dest) = split(/\s+/, $_[0]->{'value'}, 2);
+my ($act, $dest) = split(/\s+/, $_[0]->{'value'}, 2);
 return &ui_table_row($text{'header_value'},
               &ui_select("action", $act,
 			 [ map { [ $_, $text{'header_'.lc($_)} ] }
@@ -1660,7 +1687,7 @@ return &ui_table_row($text{'header_value'},
 
 sub parse_value_header_checks
 {
-local $rv = $_[1]->{'action'};
+my $rv = $_[1]->{'action'};
 if ($_[1]->{'value'}) {
 	$rv .= " ".$_[1]->{'value'};
 	}
@@ -1716,7 +1743,7 @@ return "<td><b>$text{'access_addresses'}</b></td>\n".
 
 sub edit_value_check_sender_access
 {
-local ($act, $dest) = split(/\s+/, $_[0]->{'value'}, 2);
+my ($act, $dest) = split(/\s+/, $_[0]->{'value'}, 2);
 return "<td><b>$text{'header_value'}</b></td>\n".
        "<td>".&ui_select("action", $act,
 			 [ map { [ $_, $text{'header_'.lc($_)} ] }
@@ -1742,10 +1769,11 @@ sub get_master_config
 {
 if (!scalar(@master_config_cache)) {
 	@master_config_cache = ( );
-	local $lnum = 0;
-	local $prog;
-	open(MASTER, "<".$config{'postfix_master'});
-	while(<MASTER>) {
+	my $lnum = 0;
+	my $prog;
+	open(my $masterfh, "<", $config{'postfix_master'}) ||
+		return \@master_config_cache;
+	while(<$masterfh>) {
 		s/\r|\n//g;
 		if (/^(#?)\s*(\S+)\s+(inet|unix|fifo)\s+(y|n|\-)\s+(y|n|\-)\s+(y|n|\-)\s+(\S+)\s+(\S+)\s+(.*)$/) {
 			# A program line
@@ -1772,7 +1800,7 @@ if (!scalar(@master_config_cache)) {
 			}
 		$lnum++;
 		}
-	close(MASTER);
+	close($masterfh);
 	}
 return \@master_config_cache;
 }
@@ -1781,9 +1809,9 @@ return \@master_config_cache;
 # Adds a new Postfix server process
 sub create_master
 {
-local ($master) = @_;
-local $conf = &get_master_config();
-local $lref = &read_file_lines($config{'postfix_master'});
+my ($master) = @_;
+my $conf = &get_master_config();
+my $lref = &read_file_lines($config{'postfix_master'});
 push(@$lref, &master_line($master));
 &flush_file_lines($config{'postfix_master'});
 $master->{'line'} = scalar(@$lref)-1;
@@ -1795,10 +1823,10 @@ push(@$conf, $master);
 # Removes one Postfix server process
 sub delete_master
 {
-local ($master) = @_;
-local $conf = &get_master_config();
-local $lref = &read_file_lines($config{'postfix_master'});
-local $lines = $master->{'eline'} - $master->{'line'} + 1;
+my ($master) = @_;
+my $conf = &get_master_config();
+my $lref = &read_file_lines($config{'postfix_master'});
+my $lines = $master->{'eline'} - $master->{'line'} + 1;
 splice(@$lref, $master->{'line'}, $lines);
 &flush_file_lines($config{'postfix_master'});
 @$conf = grep { $_ ne $master } @$conf;
@@ -1814,10 +1842,10 @@ foreach my $c (@$conf) {
 # Updates one Postfix server process
 sub modify_master
 {
-local ($master) = @_;
-local $conf = &get_master_config();
-local $lref = &read_file_lines($config{'postfix_master'});
-local $lines = $master->{'eline'} - $master->{'line'} + 1;
+my ($master) = @_;
+my $conf = &get_master_config();
+my $lref = &read_file_lines($config{'postfix_master'});
+my $lines = $master->{'eline'} - $master->{'line'} + 1;
 splice(@$lref, $master->{'line'}, $lines,
        &master_line($master));
 &flush_file_lines($config{'postfix_master'});
@@ -1832,7 +1860,7 @@ foreach my $c (@$conf) {
 # master_line(&master)
 sub master_line
 {
-local ($prog) = @_;
+my ($prog) = @_;
 return ($prog->{'enabled'} ? "" : "#").
        join("\t", $prog->{'name'}, $prog->{'type'}, $prog->{'private'},
 		  $prog->{'unpriv'}, $prog->{'chroot'}, $prog->{'wakeup'},
@@ -1841,7 +1869,7 @@ return ($prog->{'enabled'} ? "" : "#").
 
 sub redirect_to_map_list
 {
-local ($map_name) = @_;
+my ($map_name) = @_;
 if ($map_name =~ /sender_dependent_default_transport_maps/) {
 	redirect("dependent.cgi");
 	}
@@ -1861,7 +1889,7 @@ else { &redirect(""); }
 
 sub regenerate_map_table
 {
-local ($map_name) = @_;
+my ($map_name) = @_;
 if ($map_name =~ /canonical/) { &regenerate_canonical_table(); }
 if ($map_name =~ /relocated/) { &regenerate_relocated_table(); }
 if ($map_name =~ /virtual/) { &regenerate_virtual_table(); }
@@ -1889,16 +1917,16 @@ if ($map_name =~ /smtpd_sender_restrictions/) {
 # Print a table of queued mail messages
 sub mailq_table
 {
-local ($qfiles) = @_;
+my ($qfiles) = @_;
 
 # Build table data
 my @table;
 foreach my $q (@$qfiles) {
-	local @cols;
+	my @cols;
 	push(@cols, { 'type' => 'checkbox', 'name' => 'file',
 		      'value' => $q->{'id'} });
 	push(@cols, &ui_link("view_mailq.cgi?id=$q->{'id'}",$q->{'id'}));
-	local $size = &nice_size($q->{'size'});
+	my $size = &nice_size($q->{'size'});
 	push(@cols, $q->{'date'});
 	push(@cols, &html_escape($q->{'from'}));
 	push(@cols, &html_escape($q->{'to'}));
@@ -1931,7 +1959,7 @@ print &ui_form_columns_table("delete_queues.cgi",
 # Returns the comment text if a line contains a comment, like # foo
 sub is_table_comment
 {
-local ($line, $force) = @_;
+my ($line, $force) = @_;
 if ($config{'prefix_cmts'} || $force) {
 	return $line =~ /^\s*#+\s*Webmin:\s*(.*)/ ? $1 : undef;
 	}
@@ -1944,7 +1972,7 @@ else {
 # Returns an array of lines for a comment in a map file, like # foo
 sub make_table_comment
 {
-local ($cmt, $force) = @_;
+my ($cmt, $force) = @_;
 if (!$cmt) {
 	return ( );
 	}
@@ -1976,7 +2004,7 @@ sub unlock_postfix_files
 # Returns HTML for a button for popping up a map file chooser
 sub map_chooser_button
 {
-local ($name, $mapname) = @_;
+my ($name, $mapname) = @_;
 return &popup_window_button("map_chooser.cgi?mapname=$mapname", 1024, 600, 1,
 			    [ [ "ifield", $name, "map" ] ]);
 }
@@ -2000,7 +2028,7 @@ return @rv;
 # Returns a list of global MySQL source names in main.cf
 sub list_mysql_sources
 {
-local @rv;
+my @rv;
 my $lref = &read_file_lines($config{'postfix_config_file'});
 foreach my $l (@$lref) {
 	if ($l =~ /^\s*(\S+)_dbname\s*=/) {
@@ -2015,9 +2043,9 @@ return @rv;
 # config file.
 sub get_backend_config
 {
-local ($file) = @_;
-local %rv;
-local $lref = &read_file_lines($file, 1);
+my ($file) = @_;
+my %rv;
+my $lref = &read_file_lines($file, 1);
 foreach my $l (@$lref) {
 	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)/i) {
 		$rv{$1} = $2;
@@ -2030,9 +2058,9 @@ return \%rv;
 # Updates one setting in a backend config file
 sub save_backend_config
 {
-local ($file, $name, $value) = @_;
-local $lref = &read_file_lines($file);
-local $found = 0;
+my ($file, $name, $value) = @_;
+my $lref = &read_file_lines($file);
+my $found = 0;
 for(my $i=0; $i<@$lref; $i++) {
 	if ($lref->[$i] =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)/i &&
 	    $1 eq $name) {
@@ -2056,16 +2084,16 @@ if (!$found && defined($value)) {
 # Checks if some map (such as a database) can be accessed
 sub can_access_map
 {
-local ($type, $value) = @_;
+my ($type, $value) = @_;
 if (&file_map_type($type)) {
-	return undef;	# Always can
+	return;	# Always can
 	}
 elsif ($type eq "mysql") {
 	# Parse config, connect to DB
-	local $conf;
+	my $conf;
 	if ($value =~ /^[\/\.]/) {
 		# Config file
-		local $cfile = $value;
+		my $cfile = $value;
 		if ($cfile !~ /^\//) {
 			$cfile = &guess_config_dir()."/".$cfile;
 			}
@@ -2085,11 +2113,11 @@ elsif ($type eq "mysql") {
 			}
 		}
 	# Try a connect, and a query
-	local $dbh = &connect_mysql_db($conf);
+	my $dbh = &connect_mysql_db($conf);
 	if (!ref($dbh)) {
 		return $dbh;
 		}
-	local $cmd = $dbh->prepare("select ".$conf->{'select_field'}." ".
+	my $cmd = $dbh->prepare("select ".$conf->{'select_field'}." ".
 				   "from ".$conf->{'table'}." ".
 				   "where ".$conf->{'where_field'}." = ".
 					    $conf->{'where_field'}." ".
@@ -2101,21 +2129,21 @@ elsif ($type eq "mysql") {
 		}
 	$cmd->finish();
 	$dbh->disconnect();
-	return undef;
+	return;
 	}
 elsif ($type eq "ldap") {
 	# Parse config, connect to LDAP server
-	local $conf = &ldap_value_to_conf($value);
+	my $conf = &ldap_value_to_conf($value);
 	$conf->{'search_base'} || return &text('ldap_esource', $value);
 
 	# Try a connect and a search
-	local $ldap = &connect_ldap_db($conf);
+	my $ldap = &connect_ldap_db($conf);
 	if (!ref($ldap)) {
 		return $ldap;
 		}
-	local @classes = split(/\s+/, $config{'ldap_class'} ||
+	my @classes = split(/\s+/, $config{'ldap_class'} ||
 				      "inetLocalMailRecipient");
-	local $rv = $ldap->search(base => $conf->{'search_base'},
+	my $rv = $ldap->search(base => $conf->{'search_base'},
 				  filter => "(objectClass=$classes[0])",
 				  sizelimit => 1);
 	if (!$rv || $rv->code && !$rv->all_entries) {
@@ -2123,7 +2151,7 @@ elsif ($type eq "ldap") {
 			     $rv ? $rv->error : "Unknown search error");
 		}
 
-	return undef;
+	return;
 	}
 else {
 	return &text('map_unknown', "<tt>$type</tt>");
@@ -2135,21 +2163,16 @@ else {
 # a driver handle on success, or an error message string on failure.
 sub connect_mysql_db
 {
-local ($conf) = @_;
-local $driver = "mysql";
-local $drh;
-eval <<EOF;
-use DBI;
-\$drh = DBI->install_driver(\$driver);
-EOF
-if ($@) {
-	return &text('mysql_edriver', "<tt>DBD::$driver</tt>");
-        }
-local @hosts = split(/\s+/, $config{'mysql_hosts'} || $conf->{'hosts'});
+my ($conf) = @_;
+my $driver = "mysql";
+my $drh;
+eval { require DBI; DBI->import; $drh = DBI->install_driver($driver); 1 }
+	or return &text('mysql_edriver', "<tt>DBD::$driver</tt>");
+my @hosts = split(/\s+/, $config{'mysql_hosts'} || $conf->{'hosts'});
 @hosts = ( undef ) if (!@hosts);	# Localhost only
-local $dbh;
+my $dbh;
 foreach my $host (@hosts) {
-	local $dbistr = "database=$conf->{'dbname'}";
+	my $dbistr = "database=$conf->{'dbname'}";
 	if ($host =~ /^unix:(.*)$/) {
 		# Socket file
 		$dbistr .= ";mysql_socket=$1";
@@ -2174,19 +2197,17 @@ return $dbh;
 # a driver handle on success, or an error message string on failure.
 sub connect_ldap_db
 {
-local ($conf) = @_;
+my ($conf) = @_;
 if (defined($connect_ldap_db_cache)) {
 	return $connect_ldap_db_cache;
 	}
-eval "use Net::LDAP";
-if ($@) {
-	return &text('ldap_eldapmod', "<tt>Net::LDAP</tt>");
-	}
-local @servers = split(/\s+/, $config{'ldap_host'} ||
+eval { require Net::LDAP; Net::LDAP->import; 1 }
+	or return &text('ldap_eldapmod', "<tt>Net::LDAP</tt>");
+my @servers = split(/\s+/, $config{'ldap_host'} ||
 			      $conf->{'server_host'} || "localhost");
-local ($ldap, $lasterr);
+my ($ldap, $lasterr);
 foreach my $server (@servers) {
-	local ($host, $port, $tls);
+	my ($host, $port, $tls);
 	if ($server =~ /^(\S+):(\d+)$/) {
 		# Host and port
 		($host, $port) = ($1, $2);
@@ -2213,7 +2234,7 @@ foreach my $server (@servers) {
 		$ldap->start_tls;
 		}
 	if ($conf->{'bind'} eq 'yes' || $config{'ldap_user'}) {
-		local $mesg = $ldap->bind(
+		my $mesg = $ldap->bind(
 			dn => $config{'ldap_user'} || $conf->{'bind_dn'},
 			password => $config{'ldap_pass'} || $conf->{'bind_pw'});
 		if (!$mesg || $mesg->code) {
@@ -2242,11 +2263,11 @@ else {
 # Converts a MySQL config file or source name to a config hash ref
 sub mysql_value_to_conf
 {
-local ($value) = @_;
-local $conf;
+my ($value) = @_;
+my $conf;
 if ($value =~ /^[\/\.]/) {
 	# Config file
-	local $cfile = $value;
+	my $cfile = $value;
 	if ($cfile !~ /^\//) {
 		$cfile = &guess_config_dir()."/".$cfile;
 		}
@@ -2268,7 +2289,7 @@ else {
 	foreach my $k ("hosts", "dbname", "user", "password", "query",
 		       "table", "where_field", "select_field",
 		       "additional_conditions") {
-		local $v = &get_real_value($value."_".$k);
+		my $v = &get_real_value($value."_".$k);
 		$conf->{$k} = $v;
 		}
 	if ($conf->{'query'} =~ /^select\s+(\S+)\s+from\s+(\S+)\s+where\s+(\S+)\s*=\s*'\%s'\s*(.*)/i && !$conf->{'table'}) {
@@ -2286,9 +2307,9 @@ return $conf;
 # Converts an LDAP config file name to a config hash ref
 sub ldap_value_to_conf
 {
-local ($value) = @_;
-local $conf;
-local $cfile = $value;
+my ($value) = @_;
+my $conf;
+my $cfile = $value;
 if ($cfile !~ /^\//) {
 	$cfile = &guess_config_dir()."/".$cfile;
 	}
@@ -2300,7 +2321,7 @@ return &get_backend_config($cfile);
 # Returns 1 if some map can have comments. Not allowed for MySQL and LDAP.
 sub can_map_comments
 {
-local ($name) = @_;
+my ($name) = @_;
 foreach my $tv (&get_maps_types_files(&get_real_value($name))) {
 	return 0 if (!&file_map_type($tv->[0]));
 	}
@@ -2311,7 +2332,7 @@ return 1;
 # Returns 1 if osme map has a file that can be manually edited
 sub can_map_manual
 {
-local ($name) = @_;
+my ($name) = @_;
 foreach my $tv (&get_maps_types_files(&get_real_value($name))) {
 	return 0 if (!&file_map_type($tv->[0]));
 	}
@@ -2322,15 +2343,15 @@ return 1;
 # Returns 1 if a map of some type is supported by Postfix
 sub supports_map_type
 {
-local ($type) = @_;
+my ($type) = @_;
 if (!scalar(@supports_map_type_cache)) {
-	@supports_map_type = ( );
-	open(POSTCONF, "$config{'postfix_config_command'} -m |");
-	while(<POSTCONF>) {
+	@supports_map_type_cache = ( );
+	open(my $postconffh, "-|", "$config{'postfix_config_command'} -m");
+	while(<$postconffh>) {
 		s/\r|\n//g;
 		push(@supports_map_type_cache, $_);
 		}
-	close(POSTCONF);
+	close($postconffh);
 	}
 return &indexoflc($type, @supports_map_type_cache) >= 0;
 }
@@ -2339,17 +2360,16 @@ return &indexoflc($type, @supports_map_type_cache) >= 0;
 # Converts multiple lines of text into LDAP attributes
 sub split_props
 {
-local ($text) = @_;
-local %pmap;
-foreach $p (split(/\t+/, $text)) {
+my ($text) = @_;
+my %pmap;
+foreach my $p (split(/\t+/, $text)) {
         if ($p =~ /^(\S+):\s*(.*)/) {
                 push(@{$pmap{$1}}, $2);
                 }
         }
-local @rv;
-local $k;
-foreach $k (keys %pmap) {
-        local $v = $pmap{$k};
+my @rv;
+foreach my $k (keys %pmap) {
+        my $v = $pmap{$k};
         if (@$v == 1) {
                 push(@rv, $k, $v->[0]);
                 }
@@ -2402,7 +2422,7 @@ return ( "check_client_access",
 
 sub file_map_type
 {
-local ($type) = @_;
+my ($type) = @_;
 return 1 if ($type eq 'hash' || $type eq 'regexp' || $type eq 'pcre' ||
 	     $type eq 'btree' || $type eq 'dbm' || $type eq 'cidr' ||
 	     $type eq 'lmdb');
@@ -2413,13 +2433,13 @@ return 0;
 # Looks up the value of a named property in a list
 sub in_props
 {
-local ($props, $name) = @_;
+my ($props, $name) = @_;
 for(my $i=0; $i<@$props; $i++) {
 	if (lc($props->[$i]) eq lc($name)) {
 		return $props->[$i+1];
 		}
 	}
-return undef;
+return;
 }
 
 # For calling from aliases-lib only
@@ -2460,13 +2480,13 @@ push(@rv, &get_maps_files("relay_recipient_maps"));
 push(@rv, &get_maps_files("smtpd_sender_restrictions"));
 
 # Add other files in /etc/postfix
-local $cdir = &guess_config_dir();
-opendir(DIR, $cdir);
-foreach $f (readdir(DIR)) {
+my $cdir = &guess_config_dir();
+opendir(my $cdirh, $cdir);
+foreach my $f (readdir($cdirh)) {
 	next if ($f eq "." || $f eq ".." || $f =~ /\.(db|dir|pag)$/i);
 	push(@rv, "$cdir/$f");
 	}
-closedir(DIR);
+closedir($cdirh);
 
 # Add TLS files
 foreach my $o ("smtpd_tls_cert_file", "smtpd_tls_key_file","smtpd_tls_CAfile") {

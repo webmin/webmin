@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Show a page for manually editing the Postfix config file
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($data, %access, @files, %in, %text);
 $access{'manual'} || &error($text{'cmanual_ecannot'});
 &ReadParse();
 &ui_print_header(undef, $text{'cmanual_title'}, "");

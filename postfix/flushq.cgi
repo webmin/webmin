@@ -2,7 +2,10 @@
 # flushq.cgi
 # Run postqueue -f and display the output
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($cmd, $config_dir, $out, %config, %text);
 &ui_print_unbuffered_header(undef, $text{'flushq_title'}, "");
 
 $cmd = "$config{'postfix_queue_command'} -c $config_dir -f";

@@ -7,7 +7,10 @@
 #
 # << Here are all options seen in Postfix sample-rewrite.cf >>
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($default, $no_, $none, %access, %text);
 
 $access{'address_rewriting'} || &error($text{'address_rewriting_ecannot'});
 &ui_print_header(undef, $text{'address_rewriting_title'}, "");

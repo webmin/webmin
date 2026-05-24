@@ -6,7 +6,10 @@
 # Save, modify, delete a map for Postfix
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($action, $err, $logmap, $nfunc, $vfunc, $whatfailed, %access, %in, %text);
 
 &ReadParse();
 
@@ -21,7 +24,7 @@ my $add = 1; my %map;
 ## added to split main_parameter:sub_parameter
 my ($mainparm,$subparm)=split /:/,$in{'map_name'};
 
-foreach $trans (@{$maps})
+foreach my $trans (@{$maps})
 {
     if ($trans->{'number'} == $in{'num'}) { $add = 0; %map = %{$trans}; }
 }
@@ -75,7 +78,7 @@ if ($in{'delete'})
 elsif ($add == 0)
 {
     # modify an existing map
-    local %newmap = ( 'name' => $in{'name'},
+    my %newmap = ( 'name' => $in{'name'},
 		      'value' => $in{'value'},
 		      'cmt' => $in{'cmt'} );
     &modify_mapping($in{'map_name'}, \%map, \%newmap);
@@ -85,7 +88,7 @@ elsif ($add == 0)
 else
 {
     # add a new map -- much more easy! :-)
-    local %newmap = ( 'name' => $in{'name'},
+    my %newmap = ( 'name' => $in{'name'},
 		      'value' => $in{'value'},
 		      'cmt' => $in{'cmt'} );
     &create_mapping($in{'map_name'}, \%newmap);

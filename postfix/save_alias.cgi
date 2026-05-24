@@ -6,7 +6,10 @@
 # Save, modify, delete an alias for Postfix
 
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($err, $i, $loga, $module_config_directory, $t, $v, %access, @afiles, @aliases, %in, %newa, %text, @values);
 &ReadParse();
 
 $access{'aliases'} || &error($text{'aliases_ecannot'});
@@ -15,21 +18,22 @@ $access{'aliases'} || &error($text{'aliases_ecannot'});
 # Get the alias (if editing or deleting)
 @afiles = &get_aliases_files(&get_current_value("alias_maps"));
 @aliases = &list_postfix_aliases();
+my $alias;
 if (!$in{'new'}) {
-	$a = $aliases[$in{'num'}];
+	$alias = $aliases[$in{'num'}];
 	}
 &lock_alias_files(\@afiles);
 
 if ($in{'delete'}) {
 	# delete some alias
-	&delete_postfix_alias($a);
-	$loga = $a;
+	&delete_postfix_alias($alias);
+	$loga = $alias;
 	}
 else {
 	# saving or creating .. check inputs
 	$in{'name'} =~ /^[^:@ ]+$/ ||
 		&error(&text('asave_eaddr', $in{'name'}));
-	if ($in{'new'} || uc($a->{'name'}) ne uc($in{'name'})) {
+	if ($in{'new'} || uc($alias->{'name'}) ne uc($in{'name'})) {
 		# is this name taken?
 		for($i=0; $i<@aliases; $i++) {
 			if (uc($in{'name'}) eq uc($aliases[$i]->{'name'})) {
@@ -86,7 +90,7 @@ else {
 		&create_postfix_alias(\%newa);
 		}
 	else {
-		&modify_postfix_alias($a, \%newa);
+		&modify_postfix_alias($alias, \%newa);
 		}
 	$loga = \%newa;
 	}

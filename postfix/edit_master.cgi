@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Edit or create a server process
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($host, $master, $pmode, $prog, $wmode, $wused, %access, %in, %text);
 $access{'master'} || &error($text{'master_ecannot'});
 &ReadParse();
 $master = &get_master_config();

@@ -5,7 +5,10 @@
 # 
 # Edit a mapping
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($nfunc, $vfunc, $virtual_maps, %in, %text);
 &ReadParse();
 
 &ui_print_header(undef, $text{'edit_map_title'}, "");
@@ -28,7 +31,7 @@ else
 my $maps = &get_maps($in{'map_name'});
 my %map;
 
-foreach $trans (@{$maps})
+foreach my $trans (@{$maps})
 {
     if ($trans->{'number'} == $num) { %map = %{$trans}; }
 }    

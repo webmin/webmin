@@ -3,7 +3,10 @@
 # Display a form to edit a general access mapping table
 # by Roberto Tecchio, 2005 (www.tecchio.net)
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our (%access, %in, %text);
 
 $access{'smtpd'} || &error($text{'smtpd_ecannot'});
 &ReadParse();

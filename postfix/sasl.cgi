@@ -1,7 +1,10 @@
 #!/usr/local/bin/perl
 # Show SMTP authentication related parameters
 
-require './postfix-lib.pl';
+require './postfix-lib.pl';    ## no critic
+use strict;
+use warnings;
+our ($default, $level, $no_, $none, $pmap, $postfix_version, $rh, $rpass, $ruser, %access, @cbs, %opts, %recip, %relay, %text);
 
 $access{'sasl'} || &error($text{'sasl_ecannot'});
 &ui_print_header(undef, $text{'sasl_title'}, "");
@@ -23,7 +26,7 @@ print &ui_table_start($text{'sasl_title'}, "width=100%", 2);
 %opts = map { $_, 1 }
 	    split(/[\s,]+/, &get_current_value("smtpd_sasl_security_options"));
 @cbs = ( );
-foreach $o ("noanonymous", "noplaintext", "noactive", "nodictionary", "forward_secrecy") {
+foreach my $o ("noanonymous", "noplaintext", "noactive", "nodictionary", "forward_secrecy") {
 	push(@cbs, &ui_checkbox("sasl_opts", $o, $text{'sasl_'.$o}, $opts{$o}));
 	}
 print &ui_table_row($text{'sasl_opts'}, join("<br>\n", @cbs), 3);
@@ -32,7 +35,7 @@ print &ui_table_row($text{'sasl_opts'}, join("<br>\n", @cbs), 3);
 %recip = map { $_, 1 }
 	    split(/[\s,]+/, &get_current_value("smtpd_recipient_restrictions"));
 @cbs = ( );
-foreach $o (&list_smtpd_restrictions()) {
+foreach my $o (&list_smtpd_restrictions()) {
 	push(@cbs, &ui_checkbox("sasl_recip", $o, $text{'sasl_'.$o},
 				$recip{$o}));
 	}
@@ -42,7 +45,7 @@ print &ui_table_row($text{'sasl_recip'}, join("<br>\n", @cbs), 3);
 %relay = map { $_, 1 }
 	    split(/[\s,]+/, &get_current_value("smtpd_relay_restrictions"));
 @cbs = ( );
-foreach $o (&list_smtpd_restrictions()) {
+foreach my $o (&list_smtpd_restrictions()) {
 	push(@cbs, &ui_checkbox("sasl_relay", $o, $text{'sasl_'.$o},
 				$relay{$o}));
 	}
