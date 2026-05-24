@@ -15,7 +15,7 @@ if ($access{'create'} == 2 && @titles >= $access{'max'}) {
 	}
 
 $in{'db'} =~ /^[A-z0-9\.\-]+$/ || &error($text{'newdb_edb'});
-$cmd = "create database $in{'db'}";
+$cmd = "create database ".&quote_table($in{'db'});
 if (!$in{'path_def'}) {
 	$in{'path'} =~ /\S/ || &error($text{'newdb_epath'});
 	$cmd .= " with location = '$in{'path'}'";
