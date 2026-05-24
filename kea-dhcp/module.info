@@ -1,0 +1,7 @@
+name=Kea DHCP
+desc=Kea DHCP Server
+category=servers
+os_support=*-linux freebsd
+longdesc=Manage ISC Kea DHCP configuration files and service state.
+rpm_recommends=kea
+deb_recommends=kea-dhcp4-server kea-dhcp6-server kea-dhcp-ddns-server kea-ctrl-agent kea-admin

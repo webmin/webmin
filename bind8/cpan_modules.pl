@@ -1,4 +1,6 @@
-require 'bind8-lib.pl';
+use strict;
+use warnings;
+require 'bind8-lib.pl';    ## no critic
 
 sub cpan_recommended
 {

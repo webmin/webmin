@@ -624,11 +624,14 @@ sub trunc
 if (length($_[0]) <= $_[1]) {
 	return $_[0];
 	}
-my $str = substr($_[0],0,$_[1]);
-my $c;
-do {
-	$c = chop($str);
-	} while($c !~ /\S/);
+my $str = substr($_[0], 0, $_[1]);
+# If the cut landed inside a word (next char in the original is
+# non-whitespace), back the partial word out — but only when there's
+# a word boundary inside $str to back up to. If the first word is
+# longer than maxlen, return that partial word rather than empty.
+if (substr($_[0], $_[1], 1) =~ /\S/ && $str =~ /\s/) {
+	$str =~ s/\S+$//;
+	}
 $str =~ s/\s+$//;
 return $str;
 }
@@ -693,35 +696,48 @@ Check if some IPv6 address is properly formatted, and returns 1 if so.
 =cut
 sub check_ip6address
 {
-# Special case for unspecified address (analogous to 0.0.0.0 in IPv4)
-return 1 if ($_[0] eq "::");
-my @blocks = split(/:/, $_[0]);
-return 0 if (@blocks == 0 || @blocks > 8);
-
-# The address/netmask format is accepted. So we're looking for a "/" to isolate a possible netmask.
-# After that, we delete the netmask to control the address only format, but we verify whether the netmask
-# value is in [0;128].
-my $ib = $#blocks;
-my $where = index($blocks[$ib],"/");
+my $addr = $_[0];
 my $m = 0;
-if ($where != -1) {
-my $b = substr($blocks[$ib],0,$where);
-$m = substr($blocks[$ib],$where+1,length($blocks[$ib])-($where+1));
-$blocks[$ib]=$b;
-}
 
-# The netmask must take its value in [0;128]
-return 0 if ($m <0 || $m >128);
+# Strip an optional /N netmask before splitting. Doing this on the
+# raw string (rather than from the last split element) keeps split()'s
+# trailing-empty accounting intact for inputs like "2001:db8::/32",
+# where the netmask would otherwise hide the trailing "::" shorthand.
+if ($addr =~ s{/(\d+)\z}{}) {
+	$m = $1;
+	}
+return 0 if ($m < 0 || $m > 128);
+
+# Special case for unspecified address (analogous to 0.0.0.0 in IPv4),
+# both bare and with a netmask.
+return 1 if ($addr eq "::");
+
+my @blocks = split(/:/, $addr);
+return 0 if (@blocks == 0);
+
+# Accept the IPv4-in-IPv6 forms (RFC 4291 §2.5.5: "::ffff:N.N.N.N"
+# IPv4-mapped, and the more general "X:X:X:X:X:X:N.N.N.N"). If the
+# last block is a dotted-quad, validate the octets and count it as two
+# 16-bit groups for the overall 8-group ceiling. The leading ":" guard
+# distinguishes IPv4-tailed IPv6 from a bare IPv4 address — callers
+# like ip_match() rely on this sub returning false for "10.0.0.1".
+my $count = scalar(@blocks);
+if ($addr =~ /:/ &&
+    $blocks[-1] =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)\z/) {
+	return 0 if ($1 > 255 || $2 > 255 || $3 > 255 || $4 > 255);
+	$count++;
+	pop(@blocks);
+	}
+return 0 if ($count > 8);
 
 # Check the different blocks of the address : 16 bits block in hexa notation.
 # Possibility of 1 empty block or 2 if the address begins with "::".
-my $b;
 my $empty = 0;
-foreach $b (@blocks) {
+foreach my $b (@blocks) {
 	return 0 if ($b ne "" && $b !~ /^[0-9a-f]{1,4}$/i);
 	$empty++ if ($b eq "");
 	}
-return 0 if ($empty > 1 && !($_[0] =~ /^::/ && $empty == 2));
+return 0 if ($empty > 1 && !($addr =~ /^::/ && $empty == 2));
 return 1;
 }
 
@@ -6226,6 +6242,8 @@ sub decode_base32
 {
 $_ = shift;
 my ($l);
+s/=+$//;
+$_ = uc($_);
 tr|A-Z2-7|\0-\37|;
 $_ = unpack('B*', $_);
 s/000(.....)/$1/g;
@@ -12471,9 +12489,9 @@ sub split_quoted_string
 {
 my ($str) = @_;
 my @rv;
-while($str =~ /^"([^"]*)"\s*([\000-\377]*)$/ ||
-      $str =~ /^'([^']*)'\s*([\000-\377]*)$/ ||
-      $str =~ /^(\S+)\s*([\000-\377]*)$/) {
+while($str =~ /^\s*"([^"]*)"\s*([\000-\377]*)$/ ||
+      $str =~ /^\s*'([^']*)'\s*([\000-\377]*)$/ ||
+      $str =~ /^\s*(\S+)\s*([\000-\377]*)$/) {
 	push(@rv, $1);
 	$str = $2;
 	}
@@ -13219,12 +13237,16 @@ if ($cmp) {
 	return &compare_version_numbers($ver1, $ver2) < 0  if ($cmp eq '<');
 	}
 
+# Default undef inputs to '' so undef args don't warn in split and
+# shorter-vs-longer comparisons don't warn on the missing-segment side.
+$ver1 = '' if (!defined($ver1));
+$ver2 = '' if (!defined($ver2));
 my @sp1 = split(/[\.\-\+\~\_]/, $ver1);
 my @sp2 = split(/[\.\-\+\~\_]/, $ver2);
 my $tmp;
 for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
-	my $v1 = $sp1[$i];
-	my $v2 = $sp2[$i];
+	my $v1 = defined($sp1[$i]) ? $sp1[$i] : '';
+	my $v2 = defined($sp2[$i]) ? $sp2[$i] : '';
 	my $comp;
 	$v1 =~ s/^ubuntu//g;
 	$v2 =~ s/^ubuntu//g;
@@ -13299,7 +13321,7 @@ return 0;
 Converts the given Perl data structure to encoded binary string
 
 =item data parameter is a hash/array reference
-=item if the output should be prettified
+=item if the output should be prettified and hash keys sorted
 =item raw-utf8 parameter, if set to 1, encodes data using UTF-8
 
 =cut
@@ -13318,11 +13340,12 @@ else {
 	error("Neither JSON::XS nor JSON::PP Perl module is available on your system");
 	}
 $json->pretty(!!$pretty);
+$json->canonical(1) if ($pretty);
 $data ||= {};
 return $raw_utf8 ? $json->utf8->encode($data) : $json->latin1->encode($data);
 }
 
-=head2 convert_from_json(data, [raw-utf8])
+=head2 convert_from_json(data, [raw-utf8], [relaxed])
 
 Parses given JSON string
 
@@ -13330,13 +13353,20 @@ Parses given JSON string
 
 =item raw-utf8 parameter, if set, treats the input as raw UTF-8
 
+=item relaxed parameter, if set, uses JSON::PP relaxed syntax including comments and trailing commas
+
 =cut
 sub convert_from_json
 {
-my ($json_text, $raw_utf8) = @_;
+my ($json_text, $raw_utf8, $relaxed) = @_;
 
 my $json;
-if (eval { require JSON::XS }) {
+if ($relaxed) {
+	eval { require JSON::PP } ||
+		error("The JSON::PP Perl module is required for relaxed JSON parsing");
+	$json = JSON::PP->new->relaxed;
+	}
+elsif (eval { require JSON::XS }) {
 	$json = JSON::XS->new;
 	}
 elsif (eval { require JSON::PP }) {

@@ -9,7 +9,7 @@ no warnings 'uninitialized';
 our (%access, %text, %config);
 our $module_name;
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 $access{'defaults'} || &error($text{'rndc_ecannot'});
 &ui_print_header(undef, $text{'rndc_title'}, "",
 		 undef, undef, undef, undef, &restart_links());

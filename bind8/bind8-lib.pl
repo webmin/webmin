@@ -12,16 +12,31 @@ use WebminCore;
 our (%text, %config, %gconfig, $module_name, $module_var_directory, $module_config_file, $module_config_directory);
 
 my $dnssec_tools_minver = 1.13;
-my $have_dnssec_tools = eval "require Net::DNS::SEC::Tools::dnssectools;";
+my $have_dnssec_tools = eval {
+	require Net::DNS::SEC::Tools::dnssectools;
+	1;
+	};
 my %freeze_zone_count;
 
 if ($have_dnssec_tools) {
-	eval "use Net::DNS::SEC::Tools::dnssectools;
-	      use Net::DNS::SEC::Tools::rollmgr;
-	      use Net::DNS::SEC::Tools::rollrec;
-	      use Net::DNS::SEC::Tools::keyrec;
-	      use Net::DNS::RR::DS;
-	      use Net::DNS;";
+	# All companion modules must load cleanly. A partial install would
+	# otherwise leave unqualified calls like rollmgr_sendcmd / rollrec_*
+	# undefined, causing runtime death deep inside dnssec helpers.
+	$have_dnssec_tools = eval {
+		require Net::DNS::SEC::Tools::dnssectools;
+		Net::DNS::SEC::Tools::dnssectools->import;
+		require Net::DNS::SEC::Tools::rollmgr;
+		Net::DNS::SEC::Tools::rollmgr->import;
+		require Net::DNS::SEC::Tools::rollrec;
+		Net::DNS::SEC::Tools::rollrec->import;
+		require Net::DNS::SEC::Tools::keyrec;
+		Net::DNS::SEC::Tools::keyrec->import;
+		require Net::DNS::RR::DS;
+		Net::DNS::RR::DS->import;
+		require Net::DNS;
+		Net::DNS->import;
+		1;
+		};
 	}
 
 &init_config();
@@ -78,7 +93,7 @@ if ($gconfig{'os_type'} =~ /-linux$/ &&
 		# Version: 9.14.2 deprecated the use of -r option
 		# in favor of using /dev/random [bugs:#5370]. So no
 		# entropy generation is needed.
-		return undef;
+		return;
 		}
 	}
 # No random flag, and entropy is needed
@@ -97,13 +112,13 @@ sub have_dnssec_tools_support
 		# dnssectools_rollrec
 		# dnssectools_keydir
 		# dnssectools_rollmgr_pidfile
-		return undef if (!$config{'dnssectools_conf'} ||
+		return if (!$config{'dnssectools_conf'} ||
 				 !$config{'dnssectools_rollrec'} ||
 				 !$config{'dnssectools_keydir'} ||
 				 !$config{'dnssectools_rollmgr_pidfile'});
 		return 1;
 	}
-	return undef;
+	return;
 }
 
 # get_bind_version()
@@ -116,7 +131,7 @@ if (&has_command($config{'named_path'})) {
 		return $2;
 		}
 	}
-return undef;
+return;
 }
 
 our @get_config_cache;
@@ -330,7 +345,7 @@ else {
 	while(1) {
 		$t = $_[0]->[++$i];
 		if ($t eq "{" || $t eq ";" || $t eq "}") { last; }
-		elsif (!defined($t)) { ${$_[2]} = $i; return undef; }
+		elsif (!defined($t)) { ${$_[2]} = $i; return; }
 		else { push(@vals, $t); }
 		}
 	$str{'values'} = \@vals;
@@ -342,7 +357,7 @@ else {
 		$str{'type'} = 1;
 		$j = 0;
 		while($_[0]->[$i] ne "}") {
-			if (!defined($_[0]->[$i])) { ${$_[2]} = $i; return undef; }
+			if (!defined($_[0]->[$i])) { ${$_[2]} = $i; return; }
 			my $substr = &parse_struct(
 				$_[0], $_[1], \$i, $j++, $_[4]);
 			if ($substr) {
@@ -388,7 +403,7 @@ sub find_value
 {
 my @v = &find($_[0], $_[1]);
 if (!@v) {
-	return undef;
+	return wantarray ? () : undef;
 	}
 elsif (wantarray) {
 	return map { &extract_value($_) } @v;
@@ -2075,9 +2090,9 @@ foreach my $v (&find("view", $conf)) {
         push(@zones, &find("zone", $v->{'members'}));
         }
 my ($z) = grep { lc($_->{'value'}) eq lc($name) } @zones;
-return undef if (!$z);
+return if (!$z);
 my $file = &find("file", $z->{'members'});
-return undef if (!$file);
+return if (!$file);
 my $filename = &absolute_path($file->{'values'}->[0]);
 $filename = &make_chroot($filename) if ($chroot);
 return $filename;
@@ -2256,7 +2271,7 @@ else {
 		}
 	}
 &refresh_nscd();
-return undef;
+return;
 }
 
 # before_editing(&zone)
@@ -2330,7 +2345,7 @@ elsif ($ex || $out =~ /failed|not found|error/i) {
 	return &text('restart_endc', "<tt>".&html_escape($out)."</tt>");
 	}
 &refresh_nscd();
-return undef;
+return;
 }
 
 # start_bind()
@@ -2375,7 +2390,7 @@ my $rv = $?;
 if ($rv || $out =~ /chroot.*not available/i) {
 	return &text('start_error', $out ? "<tt>$out</tt>" : "Unknown error");
 	}
-return undef;
+return;
 }
 
 # stop_bind()
@@ -2398,7 +2413,7 @@ else {
 		return $text{'stop_epid'};
 		}
 	}
-return undef;
+return;
 }
 
 # is_bind_running()
@@ -2437,7 +2452,7 @@ foreach my $c (@$vconf) {
 		return $c->{'index'};
 		}
 	}
-return undef;
+return;
 }
 
 # create_zone(&zone, &conf, [view-idx])
@@ -2641,7 +2656,7 @@ foreach my $z (@zones) {
 		return $z;
 		}
 	}
-return undef;
+return;
 }
 
 # get_zone_name_or_error(index|name, [viewindex|"any"])
@@ -2870,7 +2885,7 @@ if ($config{'tmpl_dnssec'} && &supports_dnssec()) {
 if ($secerr) {
 	return &text('mcreate_ednssec', $secerr);
 	}
-return undef;
+return;
 }
 
 # automatic_filename(domain, is-reverse, base, [viewname])
@@ -3305,7 +3320,7 @@ if ($view eq '' && @views || $view ne '' && @views > 1) {
                         [ map { [ $_->{'index'}, $_->{'value'} ] }
                             grep { $_->{'index'} ne $view } @views ]));
 	}
-return undef;
+return;
 }
 
 # download_root_zone(file)
@@ -3344,7 +3359,7 @@ if ($temp) {
 				     quotemeta($rootfile)." </dev/null");
 	return &text('boot_egzip2', "<tt>".&html_escape($out)."</tt>") if ($?);
 	}
-return undef;
+return;
 }
 
 # restart_links([&zone-name])
@@ -3458,13 +3473,14 @@ $fn || return "Could not work out keys directory!";
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 
 # Remove all keys for the same zone
-opendir(ZONEDIR, $fn);
-foreach my $f (readdir(ZONEDIR)) {
+opendir(my $zonedir, $fn)
+	|| return "Failed to open keys directory $fn : $!";
+foreach my $f (readdir($zonedir)) {
 	if ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.(key|private)$/) {
 		&unlink_file("$fn/$f");
 		}
 	}
-closedir(ZONEDIR);
+closedir($zonedir);
 
 # Fork a background job to do lots of IO, to generate entropy
 my $pid;
@@ -3570,7 +3586,7 @@ foreach my $key (@keys) {
 	}
 &bump_soa_record($chrootfn, \@recs);
 
-return undef;
+return;
 }
 
 # resign_dnssec_key(&zone|&zone-name)
@@ -3643,7 +3659,7 @@ $newzonekey || return "Could not find new DNSSEC zone key";
 my $err = &sign_dnssec_zone($z);
 return "Re-signing failed : $err" if ($err);
 
-return undef;
+return;
 }
 
 # delete_dnssec_key(&zone|&zone-name, [save-key])
@@ -3753,7 +3769,7 @@ foreach my $r (@signedrecs) {
 	}
 &create_multiple_records($fn, \@addrecs);
 &unlink_file($signed);
-return undef;
+return;
 }
 
 # check_if_dnssec_tools_managed(&domain)
@@ -3801,7 +3817,7 @@ if (&check_if_dnssec_tools_managed($dom)) {
 	my $err = &dt_resign_zone($dom, $zonefile, $krfile, 0);
 	&unlock_file(&make_chroot($zonefile));
 	&error($err) if ($err);
-	return undef;
+	return;
 	}
 
 my $keyrec = &get_dnskey_record($z, $recs);
@@ -3820,8 +3836,17 @@ my ($z, $saved) = @_;
 my $dir = &get_keys_dir($z);
 my $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 my %keymap;
-opendir(ZONEDIR, $dir);
-foreach my $f (readdir(ZONEDIR)) {
+my $zonedir;
+if (!opendir($zonedir, $dir)) {
+	# A missing keys directory is the normal state before any DNSSEC
+	# keys have been generated for this zone; an unreadable one is a
+	# real error, but we can't return a string here because several
+	# list-context callers would treat it as a key hashref. Fall back
+	# to "no keys" and leave a breadcrumb in the error log.
+	warn "get_dnssec_key: opendir $dir failed: $!\n" if (-e $dir);
+	return wantarray ? () : undef;
+	}
+foreach my $f (readdir($zonedir)) {
 	if ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.key(\.saved)?$/) {
 		# Found the public key file .. read it
 		next if ($3 && !$saved);
@@ -3867,7 +3892,7 @@ foreach my $f (readdir(ZONEDIR)) {
 		while($rv->{'privatetext'} =~ s/^;.*\r?\n//) { }
 		}
 	}
-closedir(ZONEDIR);
+closedir($zonedir);
 
 # Sort to put KSK first
 my @rv = values %keymap;
@@ -4155,7 +4180,7 @@ sub dt_sign_zone
 
 	&dt_rollerd_restart();
 	&restart_bind();
-	return undef;
+	return;
 }
 
 # dt_resign_zone(zone-name, zonefile, krfile, threshold)
@@ -4212,7 +4237,7 @@ sub dt_resign_zone
 
 	&restart_zone($d);
 
-	return undef;
+	return;
 }
 
 # dt_zskroll_zone(zone-name)
@@ -4220,12 +4245,13 @@ sub dt_resign_zone
 sub dt_zskroll_zone
 {
 	my ($d) = @_;
-	no strict "subs";
+	# Constants exported by Net::DNS::SEC::Tools::rollmgr,
+	# which is only loaded when dnssec-tools is installed.
+	no strict "subs";    ## no critic (ProhibitNoStrict)
 	if (!rollmgr_sendcmd(CHANNEL_WAIT,ROLLCMD_ROLLZSK,$d)) {
 		return $text{'dt_zone_erollctl'};
 	}
-	use strict "subs";
-	return undef;
+	return;
 }
 
 # dt_kskroll_zone(zone-name)
@@ -4233,12 +4259,11 @@ sub dt_zskroll_zone
 sub dt_kskroll_zone
 {
 	my ($d) = @_;
-	no strict "subs";
+	no strict "subs";    ## no critic (ProhibitNoStrict)
 	if (!rollmgr_sendcmd(CHANNEL_WAIT,ROLLCMD_ROLLKSK,$d)) {
 		return $text{'dt_zone_erollctl'};
 	}
-	use strict "subs";
-	return undef;
+	return;
 }
 
 # dt_notify_parentzone(zone-name)
@@ -4246,12 +4271,11 @@ sub dt_kskroll_zone
 sub dt_notify_parentzone
 {
 	my ($d) = @_;
-	no strict "subs";
+	no strict "subs";    ## no critic (ProhibitNoStrict)
 	if (!rollmgr_sendcmd(CHANNEL_WAIT,ROLLCMD_DSPUB,$d)) {
 		return $text{'dt_zone_erollctl'};
 	}
-	use strict "subs";
-	return undef;
+	return;
 }
 
 # dt_rollerd_restart()
@@ -4270,7 +4294,7 @@ sub dt_rollerd_restart
 	$r = $config{"dnssectools_rollrec"};
 	$cmd = "$rollerd -rrfile ".quotemeta($r);
 	&execute_command($cmd);
-	return undef;
+	return;
 }
 
 # dt_genkrf()
@@ -4329,7 +4353,7 @@ sub dt_genkrf
 	$out = &backquote_logged("$cmd 2>&1");
 
 	return $out if ($?);
-	return undef;
+	return;
 }
 
 
@@ -4400,7 +4424,7 @@ sub dt_delete_dnssec_state
 		&unlink_file($z_dir."/dsset-".$dom.".");
 	}
 
-	return undef;
+	return;
 }
 
 # get_ds_record(&zone|&zone-name)
@@ -4424,7 +4448,7 @@ else {
 if (&has_command("dnssec-dsfromkey")) {
 	# Generate with a command
 	my $out = &backquote_command("dnssec-dsfromkey -f ".quotemeta(&make_chroot(&absolute_path($zonefile)))." ".quotemeta($dom)." 2>/dev/null");
-	return undef if ($?);
+	return if ($?);
 	$out =~ s/\r|\n//g;
 	return $out;
 	}
@@ -4445,9 +4469,9 @@ my $conf = &get_config();
 my $options = &find("options", $conf);
 my $mems = $options ? $options->{'members'} : [ ];
 my $en = &find_value("dnssec-enable", $mems);
-return undef if (!$en || $en !~ /yes/i);
+return if (!$en || $en !~ /yes/i);
 my $tkeys = &find("trusted-keys", $conf);
-return undef if (!$tkeys || !@{$tkeys->{'members'}});
+return if (!$tkeys || !@{$tkeys->{'members'}});
 return &text('trusted_warning',
 	     &get_webprefix().'/bind8/conf_trusted.cgi')."<p>\n".
        &ui_form_start(&get_webprefix().'/bind8/fix_trusted.cgi')."\n".

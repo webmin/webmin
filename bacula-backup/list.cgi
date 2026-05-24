@@ -78,6 +78,12 @@ $cmd->finish();
 
 @rv = &unique(@rv);
 
+my $filename_table = &bacula_catalog_table_exists($dbh, "Filename");
+my $filename_col = $filename_table ? "Filename.Name" : "File.Filename";
+my $filename_from = $filename_table ? ", Filename" : "";
+my $filename_join = $filename_table ?
+	"AND File.FilenameId  = Filename.FilenameId" : "";
+
 # Build the nodes structure for folders
 foreach $f (@rv) {
 	$f =~ /([^\/]+)\/\Z/;
@@ -92,16 +98,16 @@ foreach $f (@rv) {
 if ($in{'volume'}) {
 	# Files in directory, that are on this volume
 	$cmd = $dbh->prepare("
-		SELECT Filename.Name
-		FROM File, Filename, Job, JobMedia, Media
-		WHERE File.FilenameId  = Filename.FilenameId
-		  AND File.JobId       = Job.JobId
+		SELECT $filename_col
+		FROM File$filename_from, Job, JobMedia, Media
+		WHERE File.JobId       = Job.JobId
 		  AND Job.JobId        = JobMedia.JobId
 		  AND JobMedia.MediaId = Media.MediaId
 		  AND File.PathId      = ?
 		  AND Media.VolumeName = ?
+		  $filename_join
 		  $jobsql
-		ORDER BY Filename.Name
+		ORDER BY $filename_col
 	");
 
 	$cmd->execute($pid, $in{'volume'}) || die "db error: ".$dbh->errstr;
@@ -109,13 +115,13 @@ if ($in{'volume'}) {
 else {
 	# Files in directory
 	$cmd = $dbh->prepare("
-		SELECT Filename.Name
-		FROM Job, File, Filename
+		SELECT $filename_col
+		FROM Job, File$filename_from
 		WHERE Job.JobId       = File.JobId
-		  AND File.FilenameId = Filename.FilenameId
 		  AND File.PathId     = ?
+		  $filename_join
 		  $jobsql
-		ORDER BY Filename.Name
+		ORDER BY $filename_col
 	");
 
 	$cmd->execute($pid) || die "db error: ".$dbh->errstr;

@@ -11,7 +11,7 @@ our (%access, %text, %in, %config);
 # Globals from records-lib.pl
 our $ipv6revzone;
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 
 my $zone = &get_zone_name_or_error($in{'zone'}, $in{'view'});

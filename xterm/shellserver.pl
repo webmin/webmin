@@ -1,12 +1,18 @@
 #!/usr/local/bin/perl
 # Start a websocket server connected to a shell
 
+use strict;
+use warnings;
+no warnings 'uninitialized';
 use lib ("$ENV{'PERLLIB'}/vendor_perl");
 use Net::WebSocket::Server;
 use IO::Socket::INET;
 use utf8;
 
-require './xterm-lib.pl';
+require './xterm-lib.pl';    ## no critic
+our (%config, $module_name, $module_root_directory);
+
+unless (caller) {
 
 my ($port, $user, $dir) = @ARGV;
 
@@ -15,7 +21,7 @@ my @uinfo = getpwnam($user);
 my ($uid, $gid);
 if ($user ne "root" && !$<) {
 	if (!@uinfo) {
-		&remove_miniserv_websocket($port, $module_name);
+		remove_miniserv_websocket($port, $module_name);
 		die "User $user does not exist!";
 		}
 	$uid = $uinfo[2];
@@ -26,8 +32,8 @@ else {
 	}
 
 # Run the user's shell in a sub-process
-&foreign_require("proc");
-&clean_environment();
+foreign_require("proc");
+clean_environment();
 
 # Set locale
 my $lang = $config{'locale'};
@@ -35,7 +41,7 @@ if ($lang) {
 	my @opts = ('LC_ALL', 'LANG', 'LANGUAGE');
 	$lang = 'en_US.UTF-8' if ($lang == 1);
 	foreach my $opt (@opts) {
-		$ENV{$opt} = &trim($lang);
+		$ENV{$opt} = trim($lang);
 		}
 	}
 
@@ -80,15 +86,15 @@ if ($config{'rcfile'} ne '0') {
 		$shelllogin = undef;
 		}
 	}
-my ($shellfh, $pid) = &proc::pty_process_exec($shellexec, $uid, $gid, $shelllogin);
-&reset_environment();
+my ($shellfh, $pid) = proc::pty_process_exec($shellexec, $uid, $gid, $shelllogin);
+reset_environment();
 my $shcmd = "'$shellexec".($shelllogin ? " $shelllogin" : "")."'";
 if (!$pid) {
-	&remove_miniserv_websocket($port, $module_name);
+	remove_miniserv_websocket($port, $module_name);
 	die "Failed to run shell with $shcmd\n";
 	}
 else {
-	&error_stderr("Running shell $shcmd for user $user with pid $pid");
+	error_stderr("Running shell $shcmd for user $user with pid $pid");
 	}
 
 # Detach from controlling terminal
@@ -100,11 +106,11 @@ close(STDIN);
 
 # Clean up when socket is terminated
 $SIG{'ALRM'} = sub {
-	&remove_miniserv_websocket($port, $module_name);
+	remove_miniserv_websocket($port, $module_name);
 	die "timeout waiting for connection";
 	};
 alarm(60);
-&error_stderr("Listening on port $port");
+error_stderr("Listening on port $port");
 my ($wsconn, $shellbuf);
 my $server_socket = IO::Socket::INET->new(
     Listen    => 5,
@@ -118,9 +124,9 @@ Net::WebSocket::Server->new(
 	listen     => $server_socket,
 	on_connect => sub {
 		my ($serv, $conn) = @_;
-		&error_stderr("WebSocket connection established");
+		error_stderr("WebSocket connection established");
 		if ($wsconn) {
-			&error_stderr("Unexpected second connection to the same port");
+			error_stderr("Unexpected second connection to the same port");
 			$conn->disconnect();
 			return;
 			}
@@ -130,12 +136,12 @@ Net::WebSocket::Server->new(
 			handshake => sub {
 				# Is the key valid for this Webmin session?
 				my ($conn, $handshake) = @_;
-				my $key   = $handshake->req->fields->{'sec-websocket-key'};
-				my $dsess = &encode_base64($main::session_id);
-				$key   =~ s/\s//g;
-				$dsess =~ s/\s//g;
-				if (!$key || !$dsess || $key ne $dsess) {
-					&error_stderr("Key $key does not match session ID $dsess");
+				my $key = $handshake->req->fields->{'sec-websocket-key'};
+				if (!verify_websocket_key($key, $main::session_id)) {
+					# Don't log the key or session ID — both are
+					# session-bearing secrets and the log file may
+					# be readable post-mortem.
+					error_stderr("WebSocket key does not match session ID");
 					$conn->disconnect();
 					}
 				},
@@ -146,10 +152,9 @@ Net::WebSocket::Server->new(
 			utf8 => sub {
 				my ($conn, $msg) = @_;
 				utf8::encode($msg) if (utf8::is_utf8($msg));
-				# Check for resize escape sequence explicitly
-				if ($msg =~ /^\\033\[8;\((\d+)\);\((\d+)\)t$/) {
-					my ($rows, $cols) = ($1, $2);
-					&error_stderr("Got resize to $rows $cols");
+				my ($rows, $cols) = parse_resize_message($msg);
+				if (defined($rows)) {
+					error_stderr("Got resize to $rows $cols");
 					eval {
 						$shellfh->set_winsize($rows, $cols);
 						};
@@ -162,14 +167,14 @@ Net::WebSocket::Server->new(
 					return;
 					}
 				if (!syswrite($shellfh, $msg, length($msg))) {
-					&error_stderr("Write to shell failed : $!");
-					&remove_miniserv_websocket($port, $module_name);
+					error_stderr("Write to shell failed : $!");
+					remove_miniserv_websocket($port, $module_name);
 					exit(1);
 					}
 				},
 			disconnect => sub {
-				&error_stderr("WebSocket connection closed");
-				&remove_miniserv_websocket($port, $module_name);
+				error_stderr("WebSocket connection closed");
+				remove_miniserv_websocket($port, $module_name);
 				kill('KILL', $pid) if ($pid);
 				exit(0);
 				}
@@ -181,8 +186,8 @@ Net::WebSocket::Server->new(
 			my $buf;
 			my $ok = sysread($shellfh, $buf, 1024);
 			if ($ok <= 0) {
-				&error_stderr("End of output from shell");
-				&remove_miniserv_websocket($port, $module_name);
+				error_stderr("End of output from shell");
+				remove_miniserv_websocket($port, $module_name);
 				exit(0);
 				}
 			if ($wsconn) {
@@ -194,6 +199,10 @@ Net::WebSocket::Server->new(
 		},
 	],
 )->start;
-&error_stderr("Exited WebSocket server");
-&remove_miniserv_websocket($port, $module_name);
-&cleanup_miniserv_websockets([$port], $module_name);
+error_stderr("Exited WebSocket server");
+remove_miniserv_websocket($port, $module_name);
+cleanup_miniserv_websockets([$port], $module_name);
+
+} # end of unless (caller)
+
+1;

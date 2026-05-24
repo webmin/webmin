@@ -5,11 +5,11 @@ use strict;
 use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
-require './acl-lib.pl';
+require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access);
 &ui_print_header(undef, $text{'cert_title'}, "", undef, undef, undef, undef,
 		 undef, undef, "language=VBSCRIPT onload='postLoad()'");
-eval "use Net::SSLeay";
+eval { require Net::SSLeay; Net::SSLeay->import; 1 };
 
 print "<p>$text{'cert_msg'}<p>\n";
 if ($ENV{'SSL_USER'}) {

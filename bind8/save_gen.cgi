@@ -10,7 +10,7 @@ our (%access, %text, %in);
 # From records-lib.pl
 our ($uscore, $star);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 $access{'gen'} || &error($text{'gen_ecannot'});
 

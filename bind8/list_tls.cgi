@@ -7,7 +7,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%access, %text);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 $access{'defaults'} || &error($text{'tls_ecannot'});
 &supports_tls() || &error($text{'tls_esupport'});
 my $conf = &get_config();

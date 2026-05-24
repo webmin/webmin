@@ -7,7 +7,7 @@ no warnings 'uninitialized';
 # Globals
 our (%text, %access, %config);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 $access{'defaults'} || &error($text{'dnssec_ecannot'});
 &ui_print_header(undef, $text{'dnssec_title'}, "",

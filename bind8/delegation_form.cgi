@@ -8,7 +8,7 @@ no warnings 'uninitialized';
 # Globals
 our (%access, %text, %config);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 $access{'delegation'} || &error($text{'dcreate_ecannot'});
 $access{'ro'} && &error($text{'master_ero'});
 &ui_print_header(undef, $text{'dcreate_title'}, "",

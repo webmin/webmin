@@ -6,7 +6,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%config, %text);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 
 # Go through all zones to find IPs in use, and networks
 my $conf = &get_config();

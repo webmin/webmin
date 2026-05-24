@@ -6,7 +6,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 our (%access, %text, %in);
 
-require './bind8-lib.pl';
+require './bind8-lib.pl';    ## no critic
 &ReadParse();
 &error_setup($text{'rmass_err'});
 
@@ -23,7 +23,7 @@ foreach my $d (split(/\0/, $in{'d'})) {
 $access{'ro'} && &error($text{'master_ero'});
 
 # Validate inputs
-&valdnsname($in{'name'}) || $in{'name'} eq '@' || &error($text{'rmass_ename'});
+&valdnsname($in{'name'}, 0, undef, $in{'type'}) || $in{'name'} eq '@' || &error($text{'rmass_ename'});
 $in{'name'} =~ /\.$/ && &error($text{'rmass_ename2'});
 my $mxpri;
 if ($in{'type'} eq 'A') {
@@ -70,6 +70,12 @@ foreach my $zi (@zones) {
 	my $fullname = $in{'name'} eq '@' ?
 			$zi->{'name'}."." :
 			$in{'name'}.".".$zi->{'name'}.".";
+	if (length($fullname) > 255) {
+		# The owner name fits on its own but exceeds the 255-octet
+		# DNS limit once this zone's name is appended; skip this one.
+		print &text('edit_efqdn', "<tt>$fullname</tt>"),"<p>\n";
+		next;
+		}
 	&before_editing($zi);
 	my @recs = &read_zone_file($zi->{'file'}, $zi->{'name'});
 	my $clash;

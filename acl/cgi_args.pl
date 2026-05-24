@@ -27,5 +27,5 @@ elsif ($cgi eq 'edit_acl.cgi') {
 		}
 	return 'none';
 	}
-return undef;
+return;
 }

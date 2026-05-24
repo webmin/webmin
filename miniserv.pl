@@ -7027,27 +7027,50 @@ return $_[0] =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/ &&
 }
 
 # Check if some IPv6 address is properly formatted, and returns 1 if so.
+# Kept in sync with web-lib-funcs.pl's copy.
 sub check_ip6address
 {
-  my @blocks = split(/:/, $_[0]);
-  return 0 if (@blocks == 0 || @blocks > 8);
-  my $ib = $#blocks;
-  my $where = index($blocks[$ib],"/");
-  my $m = 0;
-  if ($where != -1) {
-    my $b = substr($blocks[$ib],0,$where);
-    $m = substr($blocks[$ib],$where+1,length($blocks[$ib])-($where+1));
-    $blocks[$ib]=$b;
-  }
-  return 0 if ($m <0 || $m >128); 
-  my $b;
-  my $empty = 0;
-  foreach $b (@blocks) {
-	  return 0 if ($b ne "" && $b !~ /^[0-9a-f]{1,4}$/i);
-	  $empty++ if ($b eq "");
-	  }
-  return 0 if ($empty > 1 && !($_[0] =~ /^::/ && $empty == 2));
-  return 1;
+my $addr = $_[0];
+my $m = 0;
+
+# Strip an optional /N netmask before splitting. Doing this on the
+# raw string (rather than from the last split element) keeps split()'s
+# trailing-empty accounting intact for inputs like "2001:db8::/32",
+# where the netmask would otherwise hide the trailing "::" shorthand.
+if ($addr =~ s{/(\d+)\z}{}) {
+	$m = $1;
+	}
+return 0 if ($m < 0 || $m > 128);
+
+# Special case for unspecified address (analogous to 0.0.0.0 in IPv4),
+# both bare and with a netmask.
+return 1 if ($addr eq "::");
+
+my @blocks = split(/:/, $addr);
+return 0 if (@blocks == 0);
+
+# Accept the IPv4-in-IPv6 forms (RFC 4291 §2.5.5: "::ffff:N.N.N.N"
+# IPv4-mapped, and the more general "X:X:X:X:X:X:N.N.N.N"). If the
+# last block is a dotted-quad, validate the octets and count it as two
+# 16-bit groups for the overall 8-group ceiling. The leading ":" guard
+# distinguishes IPv4-tailed IPv6 from a bare IPv4 address — callers
+# like ip_match() rely on this sub returning false for "10.0.0.1".
+my $count = scalar(@blocks);
+if ($addr =~ /:/ &&
+    $blocks[-1] =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)\z/) {
+	return 0 if ($1 > 255 || $2 > 255 || $3 > 255 || $4 > 255);
+	$count++;
+	pop(@blocks);
+	}
+return 0 if ($count > 8);
+
+my $empty = 0;
+foreach my $b (@blocks) {
+	return 0 if ($b ne "" && $b !~ /^[0-9a-f]{1,4}$/i);
+	$empty++ if ($b eq "");
+	}
+return 0 if ($empty > 1 && !($addr =~ /^::/ && $empty == 2));
+return 1;
 }
 
 # network_to_address(binary)
