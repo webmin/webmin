@@ -6242,6 +6242,8 @@ sub decode_base32
 {
 $_ = shift;
 my ($l);
+s/=+$//;
+$_ = uc($_);
 tr|A-Z2-7|\0-\37|;
 $_ = unpack('B*', $_);
 s/000(.....)/$1/g;
@@ -13235,12 +13237,16 @@ if ($cmp) {
 	return &compare_version_numbers($ver1, $ver2) < 0  if ($cmp eq '<');
 	}
 
+# Default undef inputs to '' so undef args don't warn in split and
+# shorter-vs-longer comparisons don't warn on the missing-segment side.
+$ver1 = '' if (!defined($ver1));
+$ver2 = '' if (!defined($ver2));
 my @sp1 = split(/[\.\-\+\~\_]/, $ver1);
 my @sp2 = split(/[\.\-\+\~\_]/, $ver2);
 my $tmp;
 for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
-	my $v1 = $sp1[$i];
-	my $v2 = $sp2[$i];
+	my $v1 = defined($sp1[$i]) ? $sp1[$i] : '';
+	my $v2 = defined($sp2[$i]) ? $sp2[$i] : '';
 	my $comp;
 	$v1 =~ s/^ubuntu//g;
 	$v2 =~ s/^ubuntu//g;
