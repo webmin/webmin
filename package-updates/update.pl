@@ -33,6 +33,7 @@ else {
 	}
 &start_update_progress([ map { $_->{'name'} } @todo ]);
 $icount = 0;
+$fcount = 0;
 foreach $t (@todo) {
 	next if ($already{$t->{'update'}});
 	my $umsg = $t->{'security'} ? "security update" : "update";
@@ -57,6 +58,7 @@ foreach $t (@todo) {
 			$body .= "However, this $umsg could not be installed! ".
 				 "Try the update manually\nusing the Package ".
 				 "Updates module.\n\n";
+			$fcount++;
 			}
 		foreach $p (@$done) {
 			$already{$p}++;
@@ -89,7 +91,9 @@ if ($tellcount) {
 # Email the admin
 $emailto = $config{'sched_email'} eq '*' ? $gconfig{'webmin_email_to'}
 					 : $config{'sched_email'};
-if ($emailto && $body) {
+if ($emailto && $body &&
+    ($config{'sched_when'} == 0 ||
+     $config{'sched_when'} == 1 && $fcount)) {
 	&foreign_require("mailboxes", "mailboxes-lib.pl");
 	my $from = &mailboxes::get_from_address();
 	my $mail = { 'headers' =>

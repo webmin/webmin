@@ -220,6 +220,13 @@ else {
 	}
 print &ui_table_row($text{'index_email'}, $efield);
 
+# When to send email
+print &ui_table_row($text{'index_ewhen'},
+	&ui_radio("when", int($config{'sched_when'}),
+		  [ [ 0, $text{'index_ewhen0'} ],
+		    [ 1, $text{'index_ewhen1'} ],
+		    [ 2, $text{'index_ewhen2'} ] ]));
+
 # Install or just notify?
 $action_ui = &ui_select("action", int($config{'sched_action'}),
 			[ [ -1, $text{'index_action-1'} ],
