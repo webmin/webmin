@@ -495,6 +495,10 @@ details > span .ui_alert_box:not(:has(+p)) {
 details.inline.inlined > span {
     margin-top: 10px;
 }
+/* Inline details inside table rows should align with the row content. */
+.ui_table.ui_columns td > details.inline.inlined > span {
+    margin-top: 0;
+}
 
 details.inline > summary + span > tt {
   font-size: 96%;
@@ -926,4 +930,8 @@ body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
 }
 .text-info {
   color: #108eda;
+}
+/* Utility used by forms that need fields to consume the available row width. */
+.w-100 {
+    width: 100% !important;
 }
