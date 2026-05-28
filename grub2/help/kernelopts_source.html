@@ -1,0 +1,11 @@
+<header>Detected kernel options source</header>
+<p>Shows where the currently detected Linux boot entries get their kernel
+command-line options.</p>
+<p>Generated menu entries usually come from the GRUB defaults file when the
+menu is regenerated. BLS entries may instead store options in
+<tt>/boot/loader/entries</tt> files, or reference <tt>$kernelopts</tt>.</p>
+<p><tt>kernelopts</tt> is not a setting in <tt>/etc/default/grub</tt>. It is a
+GRUB environment value stored in <tt>grubenv</tt> and commonly managed with
+<tt>grubby</tt>. Webmin does not edit <tt>grubenv</tt> directly; when
+<tt>grubby</tt> is available, Webmin asks it to apply changed kernel options to
+existing BLS entries.</p>

@@ -1,0 +1,12 @@
+<header>Kernel options for regular Linux entries</header>
+<p>Edits <tt>GRUB_CMDLINE_LINUX_DEFAULT</tt>. GRUB menu generators normally add
+this value to regular Linux menu entries, but not to generated recovery or
+rescue entries.</p>
+<p>Use this for options that make normal boots quieter or more convenient, such
+as <tt>quiet</tt>, <tt>splash</tt>, or console and graphics workarounds that
+are not needed for recovery boots.</p>
+<p>On BLS-based systems, existing boot entries may store options directly in
+BLS entry files, or reference <tt>$kernelopts</tt>, a GRUB environment value
+stored in <tt>grubenv</tt>. Webmin does not edit <tt>grubenv</tt> directly;
+when <tt>grubby</tt> is available, Webmin asks it to apply changes here to
+existing non-rescue BLS entries.</p>
