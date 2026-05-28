@@ -13,16 +13,19 @@ our $grub2_formno = 0;
 &error_setup($text{'acl_ecannot'});
 my %access = &grub2_effective_acl();
 &error("$text{'eacl_np'} $text{'eacl_pview'}")
-	if (!&grub2_can_enter_module(\%access));
+	if (!&can_use_index(\%access));
 
 # Show configuration/install guidance before rendering module actions.
 if (!&grub2_any_installed()) {
 	&ui_print_header(&grub2_version_text() || "", $text{'index_title'},
 			 "", undef, 1, 1);
 	print &ui_alert($text{'index_missing'}, 'warning');
-	foreach my $issue (&grub2_install_issues()) {
-		print &ui_div(&text('index_missing_detail',
-				    &ui_tag('tt', &html_escape($issue))));
+	if ($access{'view'}) {
+		# Install issue details include discovered paths and commands.
+		foreach my $issue (&grub2_install_issues()) {
+			print &ui_div(&text('index_missing_detail',
+					    &ui_tag('tt', &html_escape($issue))));
+			}
 		}
 	print &ui_p(&ui_link("@{[&get_webprefix()]}/config.cgi?$module_name",
 			     $text{'index_config_link'}));
@@ -41,32 +44,46 @@ if (!&grub2_any_installed()) {
 &ui_print_header(&grub2_version_text() || "", $text{'index_title'}, "",
 		 undef, 1, 1, undef, &grub2_action_links(\%access));
 
-foreach my $warning (&grub2_status_warnings()) {
-	print &ui_alert($warning, 'warning');
+if ($access{'view'}) {
+	foreach my $warning (&grub2_status_warnings()) {
+		print &ui_alert($warning, 'warning');
+		}
+
+	# Only the two entry lists are tabs; global settings live in separate pages.
+	my @tabs = (
+		[ 'entries', $text{'index_entries_tab'} ],
+		[ 'custom', $text{'index_custom_tab'} ],
+	);
+	my %valid = map { $_->[0] => 1 } @tabs;
+	my $requested = defined($in{'mode'}) ? $in{'mode'} : '';
+	my $mode = $requested && $valid{$requested} ? $requested : 'entries';
+	print &ui_tabs_start(\@tabs, "mode", $mode, 1);
+
+	print &ui_tabs_start_tab("mode", "entries");
+	&print_entries_tab(\%access);
+	print &ui_tabs_end_tab("mode", "entries");
+
+	print &ui_tabs_start_tab("mode", "custom");
+	&print_custom_tab(\%access);
+	print &ui_tabs_end_tab("mode", "custom");
+
+	print &ui_tabs_end();
 	}
-
-# Only the two entry lists are tabs; global settings live in separate pages.
-my @tabs = (
-	[ 'entries', $text{'index_entries_tab'} ],
-	[ 'custom', $text{'index_custom_tab'} ],
-);
-my %valid = map { $_->[0] => 1 } @tabs;
-my $requested = defined($in{'mode'}) ? $in{'mode'} : '';
-my $mode = $requested && $valid{$requested} ? $requested : 'entries';
-print &ui_tabs_start(\@tabs, "mode", $mode, 1);
-
-print &ui_tabs_start_tab("mode", "entries");
-&print_entries_tab(\%access);
-print &ui_tabs_end_tab("mode", "entries");
-
-print &ui_tabs_start_tab("mode", "custom");
-&print_custom_tab(\%access);
-print &ui_tabs_end_tab("mode", "custom");
-
-print &ui_tabs_end();
 
 &print_action_buttons(\%access);
 &ui_print_footer("/", $text{'index_return'});
+
+# can_use_index(&access)
+# Returns true if the index can show entry data or a global action.
+sub can_use_index
+{
+my ($access) = @_;
+return 1 if ($access->{'view'});
+return 1 if ($access->{'edit'} || $access->{'security'} ||
+	     $access->{'manual'} || $access->{'install'});
+return 1 if ($access->{'apply'} && &grub2_command('mkconfig_cmd'));
+return 0;
+}
 
 # print_entries_tab(&access)
 # Outputs generated boot menu entries and selected-entry runtime actions.
@@ -78,8 +95,10 @@ my $parsed = &read_grub_defaults();
 my %env = &grub2_read_env();
 # Selection roles are derived from both defaults and grubenv state.
 my %selection = &grub2_entry_selection_roles(\@entries, $parsed, \%env);
-my $can_default = $access->{'runtime'} && &grub2_command('set_default_cmd');
-my $can_once = $access->{'runtime'} && &grub2_command('reboot_once_cmd');
+my $can_default = $access->{'view'} && $access->{'runtime'} &&
+		  &grub2_command('set_default_cmd');
+my $can_once = $access->{'view'} && $access->{'runtime'} &&
+	       &grub2_command('reboot_once_cmd');
 my $show_actions = $can_default || $can_once;
 print &ui_div($text{'index_entries_desc'});
 if (!@entries) {
@@ -230,7 +249,8 @@ if ($access->{'manual'}) {
 	push(@icons, "images/manual.svg");
 	}
 return if (!@links && !$can_status && !$can_generate);
-print &ui_hr();
+# Without view content, the action hub should start directly with actions.
+print &ui_hr() if ($access->{'view'});
 if (@links) {
 	print &ui_subheading($text{'index_global'});
 	&icons_table(\@links, \@titles, \@icons, scalar(@links) > 5 ? 5 :

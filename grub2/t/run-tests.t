@@ -153,6 +153,7 @@ my $save_defaults_source = slurp_test_file("$bindir/../save_defaults.cgi");
 my $theme_source = slurp_test_file("$bindir/../edit_theme.cgi");
 my $save_theme_source = slurp_test_file("$bindir/../save_theme.cgi");
 my $edit_install_source = slurp_test_file("$bindir/../edit_install.cgi");
+my $acl_source = slurp_test_file("$bindir/../acl_security.pl");
 unlike($index_source, qr/\[\s*'security'\s*,/,
        'index has no separate security tab');
 unlike($index_source, qr/\[\s*'defaults'\s*,/,
@@ -168,8 +169,28 @@ like($index_source,
      qr/ui_print_header\(&grub2_version_text\(\) \|\| "".*?\$text\{'index_title'\}/s,
      'index header displays GRUB version text when available');
 like($index_source,
+     qr/sub can_use_index\b.*?\$access->\{'view'\}.*?\$access->\{'edit'\}.*?\$access->\{'security'\}.*?\$access->\{'manual'\}.*?\$access->\{'install'\}.*?\$access->\{'apply'\} && &grub2_command\('mkconfig_cmd'\)/s,
+     'index allows action-only ACLs without granting entry view');
+like($index_source,
+     qr/if \(\$access\{'view'\}\) \{.*?grub2_install_issues/s,
+     'index hides install issue details without view ACL');
+like($index_source,
+     qr/if \(\$access\{'view'\}\) \{.*?grub2_status_warnings.*?ui_tabs_start/s,
+     'index hides status warnings and entry tabs without view ACL');
+like($index_source,
+     qr/my \$can_default = \$access->\{'view'\} && \$access->\{'runtime'\}/,
+     'index runtime default actions require view ACL');
+like($index_source,
+     qr/my \$can_once = \$access->\{'view'\} && \$access->\{'runtime'\}/,
+     'index one-time boot actions require view ACL');
+like($index_source,
      qr/sub print_action_buttons\b.*?ui_buttons_row\("status\.cgi".*?ui_buttons_row\("generate\.cgi"/ms,
      'index exposes status above the bottom regenerate action');
+like($acl_source,
+     qr/ui_table_row\(\$text\{'acl_view'\},\s*&ui_yesno_radio\("view"/s,
+     'ACL view permission is rendered as a standalone row');
+unlike($acl_source, qr/acl_section_view/,
+       'ACL view permission does not use a one-row section heading');
 like($status_source, qr/grub2_assert_acl\('view'\)/,
      'status page enforces view ACL directly');
 like($status_source, qr/index_boot_mode.*boot_mode_cell/s,
@@ -357,6 +378,9 @@ like($edit_install_source, qr/install_boot_directory.*use_boot_directory/s,
 like($index_source,
      qr/sub print_action_buttons\b.*?&icons_table\(/ms,
      'index action shortcuts use an icon table');
+like($index_source,
+     qr/sub print_action_buttons\b.*?print &ui_hr\(\) if \(\$access->\{'view'\}\)/ms,
+     'index omits the top action separator for action-only ACLs');
 like($index_source,
      qr/sub print_action_buttons\b.*?ui_buttons_row\("generate\.cgi"/ms,
      'index exposes a bottom regenerate action button');
