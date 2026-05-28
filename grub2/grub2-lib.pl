@@ -2037,7 +2037,7 @@ foreach my $move (@moves) {
 	return &text('defaults_ebls_rescue_move', $from, $to, $err)
 		if (!$ok);
 	}
-return undef;
+return;
 }
 
 # grub2_disabled_bls_rescue_suffix()
