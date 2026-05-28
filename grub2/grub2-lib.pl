@@ -29,7 +29,7 @@ return qw(view edit security apply runtime manual install backup);
 }
 
 # grub2_effective_acl([&raw-acl])
-# Returns normalized ACL settings for the current Webmin user.
+# Returns normalized ACL settings for a supplied ACL hash or current user.
 sub grub2_effective_acl
 {
 my ($rawacl) = @_;
