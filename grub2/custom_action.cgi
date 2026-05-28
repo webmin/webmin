@@ -9,7 +9,8 @@ our (%in, %text);
 
 &ReadParse();
 &error_setup($text{'custom_err'});
-&grub2_assert_acl('manual');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pmanual'}") if (!$access{'manual'});
 
 # Per-row up/down links post an index and direction directly.
 if (defined($in{'idx'}) || defined($in{'dir'})) {

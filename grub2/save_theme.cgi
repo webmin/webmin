@@ -9,7 +9,8 @@ our (%in, %text);
 
 &ReadParse();
 &error_setup($text{'theme_err'});
-&grub2_assert_acl('edit');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pedit'}") if (!$access{'edit'});
 
 my $parsed = &read_grub_defaults();
 my $current_values = $parsed->{'values'};

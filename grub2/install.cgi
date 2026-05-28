@@ -9,7 +9,8 @@ our (%in, %text);
 
 &ReadParse();
 &error_setup($text{'install_err'});
-&grub2_assert_acl('install');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pinstall'}") if (!$access{'install'});
 
 # Trim text fields before validation so shell arguments are deterministic.
 foreach my $field (qw(target efi_dir platform directory boot_directory

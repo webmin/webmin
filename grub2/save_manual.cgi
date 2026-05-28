@@ -9,7 +9,8 @@ our (%in, %text);
 
 &ReadParseMime();
 &error_setup($text{'manual_err'});
-&grub2_assert_acl('manual');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pmanual'}") if (!$access{'manual'});
 
 # Re-check the allowlist on save; the form value is not trusted.
 my $file = $in{'file'} || '';

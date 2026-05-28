@@ -9,7 +9,8 @@ our (%text);
 
 &ReadParse();
 &error_setup($text{'security_err'});
-&grub2_assert_acl('security');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_psecurity'}") if (!$access{'security'});
 
 my $state = &grub2_read_security_config();
 

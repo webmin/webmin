@@ -21,51 +21,6 @@ $grub2_config_change_flag = $module_var_directory."/config-flag";
 $grub2_generate_time_flag = $module_var_directory."/generate-flag";
 &load_grub2_defaults();
 
-# grub2_acl_keys()
-# Returns the supported GRUB 2 ACL capabilities.
-sub grub2_acl_keys
-{
-return qw(view edit security apply runtime manual install backup);
-}
-
-# grub2_effective_acl([&raw-acl])
-# Returns normalized ACL settings for a supplied ACL hash or current user.
-sub grub2_effective_acl
-{
-my ($rawacl) = @_;
-my %raw = $rawacl ? %$rawacl : &get_module_acl();
-return map { $_ => $raw{$_} ? 1 : 0 } &grub2_acl_keys();
-}
-
-# grub2_check_acl(action, [&raw-acl])
-# Returns true when an effective ACL permits the requested action.
-sub grub2_check_acl
-{
-my ($action, $rawacl) = @_;
-my %acl = &grub2_effective_acl($rawacl);
-return $acl{$action} ? 1 : 0;
-}
-
-# grub2_assert_acl(action)
-# Fails if the current Webmin user cannot perform an action.
-sub grub2_assert_acl
-{
-my ($action) = @_;
-&grub2_check_acl($action) ||
-	&error("$text{'eacl_np'} $text{'eacl_p'.$action}");
-}
-
-# grub2_can_enter_module(&acl)
-# Returns true if a user has at least one useful module capability.
-sub grub2_can_enter_module
-{
-my ($acl) = @_;
-foreach my $a (&grub2_acl_keys()) {
-	return 1 if ($acl->{$a});
-	}
-return 0;
-}
-
 # grub2_mark_regenerate_needed()
 # Updates the flag indicating that grub.cfg needs to be regenerated.
 sub grub2_mark_regenerate_needed

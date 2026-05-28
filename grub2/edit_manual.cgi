@@ -9,7 +9,8 @@ our (%in, %text);
 
 &ReadParse();
 &error_setup($text{'manual_err'});
-&grub2_assert_acl('manual');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pmanual'}") if (!$access{'manual'});
 
 # The manual editor is restricted to discovered GRUB-related files only.
 my @files = &grub2_manual_files();

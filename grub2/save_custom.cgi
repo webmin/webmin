@@ -9,7 +9,8 @@ our (%in, %text);
 
 &ReadParse();
 &error_setup($text{'custom_err'});
-&grub2_assert_acl('manual');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pmanual'}") if (!$access{'manual'});
 
 # A missing index means create; a present one must address a parsed entry.
 my $idx = defined($in{'idx'}) && $in{'idx'} ne '' ? $in{'idx'} : undef;

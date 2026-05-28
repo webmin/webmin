@@ -9,7 +9,8 @@ our (%in, %text);
 
 &ReadParse();
 &error_setup($text{'custom_err'});
-&grub2_assert_acl('manual');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pmanual'}") if (!$access{'manual'});
 
 my $is_new = !defined($in{'idx'}) || $in{'idx'} eq '';
 my ($title, $id, $body) =

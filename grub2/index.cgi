@@ -5,13 +5,13 @@ use strict;
 use warnings;
 require './grub2-lib.pl';    ## no critic
 
-our (%in, %text);
+our (%in, %text, %access);
 our $module_name;
 our $grub2_formno = 0;
 
 &ReadParse();
 &error_setup($text{'acl_ecannot'});
-my %access = &grub2_effective_acl();
+%access = &get_module_acl();
 &error("$text{'eacl_np'} $text{'eacl_pview'}")
 	if (!&can_use_index(\%access));
 
@@ -361,7 +361,7 @@ if ($direct_file) {
 else {
 	$html = &ui_tag('tt', &html_escape($file));
 	}
-if (&grub2_check_acl('manual') && &grub2_manual_file($file)) {
+if ($access{'manual'} && &grub2_manual_file($file)) {
 	# The manual editor repeats its allowlist check on entry.
 	$html = &ui_tag('a', $html, {
 		'href' => "edit_manual.cgi?file=".&urlize($file),

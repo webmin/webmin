@@ -5,12 +5,11 @@ use strict;
 use warnings;
 require './grub2-lib.pl';    ## no critic
 
-our (%text);
+our (%text, %access);
 
 &error_setup($text{'acl_ecannot'});
-&grub2_assert_acl('view');
-
-my %access = &grub2_effective_acl();
+%access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pview'}") if (!$access{'view'});
 &ui_print_header(undef, $text{'status_title'}, "");
 
 # Missing-install output mirrors index.cgi but keeps this page read-only.
@@ -194,7 +193,7 @@ return &ui_tag('tt', &html_escape($raw)).' '.$text{'index_not_readable'};
 sub manual_path_link
 {
 my ($path, $html) = @_;
-return $html if (!&grub2_check_acl('manual') || !&grub2_manual_file($path));
+return $html if (!$access{'manual'} || !&grub2_manual_file($path));
 # Link only allowlisted paths; generated grub.cfg remains informational.
 return &ui_tag('a', $html, {
 	'href' => "edit_manual.cgi?file=".&urlize($path),

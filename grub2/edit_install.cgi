@@ -9,7 +9,8 @@ our (%text);
 
 &ReadParse();
 &error_setup($text{'install_err'});
-&grub2_assert_acl('install');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pinstall'}") if (!$access{'install'});
 
 my $cmd = &grub2_command('install_cmd');
 my $platform = &grub2_default_platform_target();

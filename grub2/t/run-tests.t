@@ -101,14 +101,6 @@ $config{'shell_cmd'} = '/bin/sh';
 mkdir $config{'grub_dir'} or die "mkdir grub.d: $!";
 mkdir $bls_dir or die "mkdir bls_dir: $!";
 
-{
-    my %acl = grub2_effective_acl({ view => 1, edit => 0 });
-    ok($acl{'view'}, 'view ACL is enabled');
-    ok(!$acl{'edit'}, 'edit ACL is disabled');
-    ok(!grub2_can_enter_module({ map { $_ => 0 } grub2_acl_keys() }),
-       'empty ACL cannot enter module');
-}
-
 ok(!grub2_needs_regenerate(), 'fresh module does not need regeneration');
 grub2_mark_regenerate_needed();
 ok(grub2_needs_regenerate(), 'config change flag requires regeneration');
@@ -191,7 +183,12 @@ like($acl_source,
      'ACL view permission is rendered as a standalone row');
 unlike($acl_source, qr/acl_section_view/,
        'ACL view permission does not use a one-row section heading');
-like($status_source, qr/grub2_assert_acl\('view'\)/,
+like($acl_source, qr/&ui_yesno_radio\("view", \$o->\{'view'\}\)/,
+     'ACL editor uses the supplied view ACL value directly');
+unlike($acl_source, qr/grub2_(?:check|effective)_acl/,
+       'ACL editor does not normalize supplied ACL values');
+like($status_source,
+     qr/%access = &get_module_acl\(\).*?\$access\{'view'\}/s,
      'status page enforces view ACL directly');
 like($status_source, qr/index_boot_mode.*boot_mode_cell/s,
      'status page displays detected boot mode');
@@ -242,7 +239,7 @@ like($status_source,
      qr/sub path_cell\b.*manual_path_link\(\$path, &ui_tag\('tt'/s,
      'status page renders paths with tt tags');
 like($status_source,
-     qr/sub manual_path_link\b.*grub2_check_acl\('manual'\).*grub2_manual_file\(\$path\).*edit_manual\.cgi\?file=/s,
+     qr/sub manual_path_link\b.*\$access\{'manual'\}.*grub2_manual_file\(\$path\).*edit_manual\.cgi\?file=/s,
      'status page links allowlisted paths to the manual editor when permitted');
 like($status_source, qr/sub status_table_row\b.*hlink\(\$label, \$help\)/s,
      'status page labels use contextual help links');
@@ -324,7 +321,7 @@ like($index_source,
      qr/sub entry_source_detail_line\b.*index_col_file.*index_col_generator.*ui_tag\('a'.*edit_manual\.cgi\?file=/ms,
      'entry details label generator scripts and link direct entry files to the manual editor');
 like($index_source,
-     qr/sub entry_source_detail_line\b.*else \{\s*\$html = &ui_tag\('tt', &html_escape\(\$file\)\).*?grub2_check_acl\('manual'\).*?edit_manual\.cgi\?file=/s,
+     qr/sub entry_source_detail_line\b.*else \{\s*\$html = &ui_tag\('tt', &html_escape\(\$file\)\).*?\$access\{'manual'\}.*?edit_manual\.cgi\?file=/s,
      'entry details link editable generator scripts to the manual editor');
 like($index_source,
      qr/sub entry_source_detail_line\b.*entry_file_display_name.*'title'\s*=>\s*\$file.*edit_manual\.cgi\?file=/s,

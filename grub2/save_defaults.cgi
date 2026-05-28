@@ -9,7 +9,8 @@ our (%in, %text);
 
 &ReadParse();
 &error_setup($text{'defaults_err'});
-&grub2_assert_acl('edit');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pedit'}") if (!$access{'edit'});
 
 # Capture both the current defaults file and generated entries for validation.
 my $current = &read_grub_defaults();

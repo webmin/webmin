@@ -9,7 +9,8 @@ our (%in, %text);
 
 &ReadParse();
 &error_setup($text{'runtime_err'});
-&grub2_assert_acl('runtime');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pruntime'}") if (!$access{'runtime'});
 
 # Runtime commands operate on the parsed generated menu index shown on index.cgi.
 my $entry = &grub2_entry_by_index($in{'idx'});

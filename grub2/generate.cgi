@@ -9,7 +9,8 @@ our (%in, %text);
 
 &ReadParse();
 &error_setup($text{'generate_err'});
-&grub2_assert_acl('apply');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_papply'}") if (!$access{'apply'});
 
 my $return_url = $in{'redir'} || "index.cgi";
 my ($current_step, $failed_printed, $failure_output_shown, $command_output) =

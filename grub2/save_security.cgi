@@ -9,7 +9,8 @@ our (%in, %text);
 
 &ReadParse();
 &error_setup($text{'security_err'});
-&grub2_assert_acl('security');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_psecurity'}") if (!$access{'security'});
 
 # The enable flag is deliberately boolean; all other fields normalize below.
 defined($in{'enabled'}) && $in{'enabled'} =~ /^[01]\z/ ||
