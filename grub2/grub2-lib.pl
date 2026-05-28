@@ -1406,7 +1406,7 @@ if ($grub_dir ne '' && -d $grub_dir && opendir(my $dh, $grub_dir)) {
 		# Hide dotfiles and only expose regular generator/text files.
 		next if ($base =~ /^\./);
 		my $file = "$grub_dir/$base";
-		next if (!-f $file);
+		next if (!&grub2_manual_file_safe($file, $grub_dir, 1));
 		my $type = defined($custom_file) && $file eq $custom_file ? 'custom' :
 			   (-x $file || $base =~ /^\d+_/) ? 'grub_script' :
 			   'text';
@@ -1422,7 +1422,7 @@ if ($bls_dir ne '' && -d $bls_dir && opendir(my $dh, $bls_dir)) {
 		# Disabled rescue files deliberately do not appear in the editor.
 		next if ($base =~ /^\./ || $base !~ /\.conf\z/);
 		my $file = "$bls_dir/$base";
-		next if (!-f $file);
+		next if (!&grub2_manual_file_safe($file, $bls_dir, 1));
 		&add_grub2_manual_file(\@files, \%seen, 'bls_dir', $file,
 				       'bls');
 		}
@@ -1438,7 +1438,21 @@ sub add_grub2_manual_file
 {
 my ($files, $seen, $key, $file, $type) = @_;
 return if (!defined($file) || $file eq '' || $seen->{$file}++);
+return if (!&grub2_manual_file_safe($file, undef, 0));
 push(@$files, { 'key' => $key, 'file' => $file, 'type' => $type });
+}
+
+# grub2_manual_file_safe(file, [parent-dir], must-exist?)
+# Returns true if a path is safe for the manual editor allowlist.
+sub grub2_manual_file_safe
+{
+my ($file, $parent, $must_exist) = @_;
+return 0 if (!defined($file) || $file eq '');
+my @st = lstat($file);
+return $must_exist ? 0 : 1 if (!@st);
+# Symlinks would be followed by the Webmin write path, so reject them here.
+return 0 if (-l _ || !-f _);
+return $parent ? &grub2_path_is_under($file, $parent) : 1;
 }
 
 # grub2_manual_file(file)

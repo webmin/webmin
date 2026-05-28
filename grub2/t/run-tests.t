@@ -677,6 +677,35 @@ ok(grub2_manual_file($os_prober_file), 'grub.d script is manual-edit allowlisted
 ok(grub2_manual_file($readme_file), 'grub.d regular file is manual-edit allowlisted');
 ok(grub2_manual_file($bls_entry_file), 'BLS entry is manual-edit allowlisted');
 ok(!grub2_manual_file("$work/not-allowed"), 'unexpected file is rejected');
+SKIP: {
+    my $outside_manual = "$work/outside-manual-target";
+    my $manual_link = "$work/grub.d/09_symlink";
+    write_test_file($outside_manual, "outside\n");
+    skip 'symlink unavailable', 5 if (!symlink($outside_manual, $manual_link));
+    ok(!grub2_manual_file($manual_link),
+       'grub.d symlink is not manual-edit allowlisted');
+    is(save_manual_grub_file($manual_link, "#!/bin/sh\nexit 0\n"),
+       $text{'manual_efile'}, 'manual save rejects grub.d symlink');
+    is(slurp_test_file($outside_manual), "outside\n",
+       'manual save does not write through grub.d symlink');
+
+    my $outside_bls = "$work/outside-bls-target";
+    my $bls_link = "$bls_dir/symlink.conf";
+    write_test_file($outside_bls, "title Outside\nlinux /vmlinuz\n");
+    if (!symlink($outside_bls, $bls_link)) {
+        unlink($manual_link);
+        skip 'second symlink unavailable', 2;
+    }
+    ok(!grub2_manual_file($bls_link),
+       'BLS symlink is not manual-edit allowlisted');
+    {
+        local $config{'custom_file'} = $manual_link;
+        ok(!grub2_manual_file($manual_link),
+           'configured custom symlink is not manual-edit allowlisted');
+    }
+    unlink($manual_link);
+    unlink($bls_link);
+}
 is(save_manual_grub_file($default_file, $saved), undef,
    'manual save validates default file');
 is(save_manual_grub_file($custom_file, "menuentry 'X' { true }\n"), undef,
