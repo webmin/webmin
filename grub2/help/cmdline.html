@@ -1,0 +1,12 @@
+<header>Kernel options for all Linux entries</header>
+<p>Edits <tt>GRUB_CMDLINE_LINUX</tt>. GRUB menu generators normally add this
+value to every generated Linux menu entry, including recovery or rescue
+entries.</p>
+<p>Use this for options that must be present whenever Linux boots, such as
+storage, root filesystem, LVM, filesystem flag, security, mitigation, or
+<tt>crashkernel</tt> options.</p>
+<p>On BLS-based systems, existing boot entries may store options directly in
+BLS entry files, or reference <tt>$kernelopts</tt>, a GRUB environment value
+stored in <tt>grubenv</tt>. Webmin does not edit <tt>grubenv</tt> directly;
+when <tt>grubby</tt> is available, Webmin asks it to apply changes here to all
+existing BLS entries.</p>

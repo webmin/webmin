@@ -1,0 +1,9 @@
+<header>Disable recovery and rescue entries</header>
+<p>When enabled, Webmin sets <tt>GRUB_DISABLE_RECOVERY=true</tt>, which tells
+GRUB generator scripts to omit recovery-mode entries on distributions that
+support this option.</p>
+<p>On BLS-based systems such as Rocky, AlmaLinux, and RHEL, rescue entries are
+separate files under <tt>/boot/loader/entries</tt>. Webmin hides existing BLS
+rescue entries by renaming their entry files, and restores only entries hidden
+by Webmin when this option is disabled again. Future kernel or rescue-image
+updates may create new BLS rescue entries.</p>

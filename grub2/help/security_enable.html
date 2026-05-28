@@ -1,0 +1,7 @@
+<header>Enable password protection</header>
+<p>When enabled, GRUB is configured with a superuser and a
+<tt>password_pbkdf2</tt> hash. This protects interactive editing and command
+line access at the boot menu.</p>
+<p>Boot entries that are marked <tt>--unrestricted</tt> can still be started
+without a password. The original password is not stored; only the GRUB PBKDF2
+hash is saved in the configured password script.</p>

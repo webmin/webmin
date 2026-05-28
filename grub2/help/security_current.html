@@ -1,0 +1,15 @@
+<header>Current protection</header>
+<p>GRUB password protection adds a GRUB superuser account to the generated boot
+menu. GRUB asks for this password when someone tries to use the GRUB command
+line or edit boot menu entries. Depending on how menu entries are generated, it
+may also be required to boot entries that are not marked as unrestricted.</p>
+
+<p>This is useful on kiosks, lab systems, shared consoles, and other systems
+where an untrusted person may reach the boot menu. It helps stop simple boot
+menu attacks such as editing kernel parameters, starting a GRUB shell, or
+booting an unrestricted recovery entry.</p>
+
+<p>It does not protect against someone who can change firmware boot settings,
+boot from other media, remove the disk, modify an unencrypted boot partition, or
+log in as root. Use it with firmware security, Secure Boot, encrypted storage,
+and normal operating system access controls when those threats matter.</p>
