@@ -649,7 +649,7 @@ my $err = &grub2_validate_background_path($source,
 return ('', $err) if ($err);
 my $dir = &grub2_background_dir();
 return ('', &text('defaults_econfigpath', $dir)) if ($dir !~ m{^/});
-make_path($dir, { mode => 0755 }) if (!-d $dir);
+make_path($dir, { mode => oct("0755") }) if (!-d $dir);
 return ('', &text('defaults_edir', $dir)) if (!-d $dir);
 # Already-installed backgrounds can be reused without copying.
 return ($source) if (&grub2_path_is_under($source, $dir));
@@ -677,7 +677,7 @@ my $in;
 return "$source : $!" if (!CORE::open($in, '<', $real));
 CORE::binmode($in);
 my $dir = &grub2_dirname($dest);
-make_path($dir, { mode => 0755 }) if ($dir ne '' && !-d $dir);
+make_path($dir, { mode => oct("0755") }) if ($dir ne '' && !-d $dir);
 open_tempfile(my $out, ">$dest");
 my $buf;
 my $err = '';
@@ -689,7 +689,7 @@ while (read($in, $buf, 32768)) {
 $err = "$!" if ($!);
 my $cerr = close($in) ? '' : "$source : $!";
 close_tempfile($out);
-chmod(0644, $dest);
+chmod(oct("0644"), $dest);
 return $err if ($err);
 return $cerr if ($cerr);
 return;
@@ -734,7 +734,7 @@ $base = 'theme-source' if ($base eq '' || $base =~ /\.\./);
 # The downloaded filename is only a label; keep it filesystem-safe anyway.
 $base =~ s/[^A-Za-z0-9._+-]/_/g;
 my $tmpdir = &tempname("grub2-theme-download-$$-".int(rand(1000000)));
-make_path($tmpdir, { mode => 0700 });
+make_path($tmpdir, { mode => oct("0700") });
 return ('', '', '', &text('defaults_edir', $tmpdir)) if (!-d $tmpdir);
 my $temp = "$tmpdir/$base";
 my $err = '';
@@ -800,7 +800,7 @@ $err = &grub2_validate_archive_members(split(/\r?\n/, $out || ''));
 return ('', $err) if ($err);
 
 my $tmpdir = &tempname("grub2-theme-extract-$$-".int(rand(1000000)));
-make_path($tmpdir, { mode => 0700 });
+make_path($tmpdir, { mode => oct("0700") });
 return ('', &text('defaults_edir', $tmpdir)) if (!-d $tmpdir);
 my ($extract_cmd, $xerr) = &grub2_archive_command($type, $file, 'extract',
 						 $tmpdir);
@@ -946,7 +946,7 @@ my ($srcdir, $label) = @_;
 my $theme_dir = &grub2_theme_dir();
 return ('', &text('defaults_econfigpath', $theme_dir))
 	if ($theme_dir !~ m{^/});
-make_path($theme_dir, { mode => 0755 }) if (!-d $theme_dir);
+make_path($theme_dir, { mode => oct("0755") }) if (!-d $theme_dir);
 return ('', &text('defaults_edir', $theme_dir)) if (!-d $theme_dir);
 my $theme_file = "$srcdir/theme.txt";
 return ('', $text{'defaults_etheme_notfound'}) if (!-r $theme_file);
@@ -1047,7 +1047,7 @@ find({
 			return;
 			}
 		if (-d _) {
-			make_path($target, { mode => 0755 });
+			make_path($target, { mode => oct("0755") });
 			return;
 			}
 		my $source = &grub2_theme_regular_source($path, $src_abs);
@@ -1056,7 +1056,7 @@ find({
 			return;
 			}
 		my $tdir = &grub2_dirname($target);
-		make_path($tdir, { mode => 0755 }) if (!-d $tdir);
+		make_path($tdir, { mode => oct("0755") }) if (!-d $tdir);
 		my $in;
 		if (!CORE::open($in, '<', $source)) {
 			$err = "$source : $!";
@@ -1072,7 +1072,7 @@ find({
 			$err = "$path : $!";
 			}
 		close_tempfile($out);
-		chmod(0644, $target);
+		chmod(oct("0644"), $target);
 		},
 	}, $src_abs);
 return $err;
@@ -1673,7 +1673,7 @@ my ($file, $data) = @_;
 open_tempfile(my $fh, ">$file");
 print_tempfile($fh, $data);
 close_tempfile($fh);
-chmod(0700, $file);
+chmod(oct("0700"), $file);
 return;
 }
 
@@ -1757,7 +1757,7 @@ my ($file, $data) = @_;
 open_tempfile(my $fh, ">$file");
 print_tempfile($fh, $data);
 close_tempfile($fh);
-chmod(0755, $file);
+chmod(oct("0755"), $file);
 return;
 }
 
@@ -2649,7 +2649,7 @@ my ($file, $data) = @_;
 open_tempfile(my $fh, ">$file");
 print_tempfile($fh, $data);
 close_tempfile($fh);
-chmod(0755, $file);
+chmod(oct("0755"), $file);
 return;
 }
 
@@ -2666,7 +2666,7 @@ for (my $i = 0; $i < 20; $i++) {
 		   int(rand(1000000000))."-$i";
 	my $fh;
 	# O_EXCL avoids racing another Webmin process in the same directory.
-	if (!sysopen($fh, $temp, O_WRONLY|O_CREAT|O_EXCL, 0600)) {
+	if (!sysopen($fh, $temp, O_WRONLY|O_CREAT|O_EXCL, oct("0600"))) {
 		$last_err = $!;
 		next if ($! == EEXIST);
 		next;
