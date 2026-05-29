@@ -2,6 +2,6 @@ name=GRUB 2
 desc=GRUB 2 Boot Loader
 category=hardware
 os_support=*-linux
-longdesc=Configure GRUB 2 boot loader defaults, inspect generated menu entries, and update boot loader configuration safely.
+longdesc=Configure GRUB 2 boot loader defaults, inspect the generated menu entries, and update the boot loader configuration safely.
 rpm_recommends=grub2-tools
 deb_recommends=grub2-common
