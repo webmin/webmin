@@ -2087,10 +2087,20 @@ foreach $f (@files) {
 		$i++;
 		next;
 		}
+	local $idx = $i++;
 	local $mail = &read_mail_file($f, $_[3]);
-	$mail->{'idx'} = $i++;
-	$mail->{'id'} = $f;	# ID is relative path, like cur/4535534
-	$mail->{'id'} = substr($mail->{'id'}, length($_[0])+1);
+	if (!$mail && !$_[4]) {
+		# The cached Maildir file list can be stale if another client
+		# deleted or moved a message. Re-read it once before returning
+		# blank entries to the caller.
+		&flush_maildir_cachefile($_[0]);
+		return &list_maildir($_[0], $_[1], $_[2], $_[3], 1);
+		}
+	if ($mail) {
+		$mail->{'idx'} = $idx;
+		$mail->{'id'} = $f;	# ID is relative path, like cur/4535534
+		$mail->{'id'} = substr($mail->{'id'}, length($_[0])+1);
+		}
 	push(@rv, $mail);
 	}
 return @rv;
@@ -2110,9 +2120,11 @@ return map { substr($_, length($file)+1) } &get_maildir_files($file);
 sub select_maildir
 {
 local ($file, $ids, $headersonly) = @_;
+local $retried = $_[3];
 &mark_read_maildir($file);
 local @files = &get_maildir_files($file);
 local @rv;
+local $missing;
 foreach my $i (@$ids) {
 	local $path = "$file/$i";
 	local $mail = &read_mail_file($path, $headersonly);
@@ -2139,7 +2151,14 @@ foreach my $i (@$ids) {
 		# Get index in directory
 		$mail->{'idx'} = &indexof($path, @files);
 		}
+	else {
+		$missing = 1;
+		}
 	push(@rv, $mail);
+	}
+if ($missing && !$retried) {
+	&flush_maildir_cachefile($file);
+	return &select_maildir($file, $ids, $headersonly, 1);
 	}
 return @rv;
 }
@@ -2167,7 +2186,7 @@ else {
 	# Check the on-disk cache file
 	local $cachefile = &get_maildir_cachefile($_[0]);
 	local @cst = $cachefile ? stat($cachefile) : ( );
-	if ($cst[9] >= $newest) {
+	if ($cst[9] > $newest) {
 		# Can read the cache
 		open(CACHE, "<", $cachefile);
 		while(<CACHE>) {

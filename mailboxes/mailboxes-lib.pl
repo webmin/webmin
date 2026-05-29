@@ -1209,6 +1209,7 @@ print &ui_columns_start(\@hcols, 100, 0, \@tds);
 # Show rows for actual mail messages
 my $i = 0;
 foreach my $mail (@mail) {
+	next if (!$mail);
 	local $idx = $mail->{'idx'};
 	local $cols = 0;
 	local @cols;
