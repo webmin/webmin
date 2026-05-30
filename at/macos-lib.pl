@@ -35,21 +35,24 @@ return @rv;
 # create_atjob(user, time, commands, directory, send-email)
 sub create_atjob
 {
-my @tm = localtime($_[1]);
+my ($user, $tm, $cmds, $dir, $email) = @_;
+my @tm = localtime($tm);
 my $date = sprintf "%2.2d:%2.2d %d.%d.%d",
 		$tm[2], $tm[1], $tm[3], $tm[4]+1, $tm[5]+1900;
-my $mailflag = $_[4] ? "-m" : "";
+my $mailflag = $email ? "-m" : "";
 no strict "subs";
-&open_execute_command(AT, "su \"$_[0]\" -c \"cd $_[3] ; at $mailflag $date\" >/dev/null 2>&1", 0); 
-print AT $_[2];
+my $fullcmd = &command_as_user($user, 0, "cd $dir ; at $mailflag $date");
+&open_execute_command(AT, "$fullcmd >/dev/null 2>&1", 0); 
+print AT $cmds;
 close(AT);
 use strict "subs";
-&additional_log('exec', undef, "su \"$_[0]\" -c \"cd $_[3] ; at $mailflag $date\"");
+&additional_log('exec', undef, $fullcmd);
 }
 
 # delete_atjob(id)
 sub delete_atjob
 {
-&system_logged("atrm \"$_[0]\" >/dev/null 2>&1");
+my ($id) = @_;
+&system_logged("atrm ".quotemeta($id)." >/dev/null 2>&1");
 }
 

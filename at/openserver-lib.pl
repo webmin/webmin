@@ -5,13 +5,13 @@ no warnings "redefine";
 
 sub list_atjobs
 {
-local @rv;
+my @rv;
 opendir(DIR, $config{'at_dir'}) || return ();
 while($f = readdir(DIR)) {
-	local $p = "$config{'at_dir'}/$f";
+	my $p = "$config{'at_dir'}/$f";
 	if ($f =~ /^(\d+)\.a(\S+)$/) {
-		local @st = stat($p);
-		local $job = { 'id' => $f,
+		my @st = stat($p);
+		my $job = { 'id' => $f,
 			       'date' => $1,
 			       'user' => scalar(getpwuid($st[4])),
 			       'created' => $st[9] };
@@ -32,17 +32,20 @@ return @rv;
 # create_atjob(user, time, commands, directory)
 sub create_atjob
 {
-local @tm = localtime($_[1]);
-local $date = strftime "%H:%M %b %d", @tm;
-&open_execute_command(AT, "su \"$_[0]\" -c \"cd $_[3] ; at $date\"", 0); 
-print AT $_[2];
+my ($user, $tm, $cmds, $dir) = @_;
+my @tm = localtime($tm);
+my $date = strftime "%H:%M %b %d", @tm;
+my $fullcmd = &command_as_user($user, 0, "cd $dir ; at $date");
+&open_execute_command(AT, $fullcmd, 0); 
+print AT $cmds;
 close(AT);
-&additional_log('exec', undef, "su \"$_[0]\" -c \"cd $_[3] ; at $date\"");
+&additional_log('exec', undef, $fullcmd);
 }
 
 # delete_atjob(id)
 sub delete_atjob
 {
-&system_logged("at -r \"$_[0]\"");
+my ($id) = @_;
+&system_logged("at -r ".quotemeta($id));
 }
 
