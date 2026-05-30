@@ -28,5 +28,5 @@ $location || &error($text{'location_egone'});
 my $name = &find_value("server_name", $server);
 &webmin_log("gzip", "location", &location_path($location),
             { 'server' => $name });
-&redirect("edit_location.cgi?id=".&urlize($in{'id'}).
-          "&path=".&urlize($in{'path'}));
+&redirect(&nginx_submod_url("edit_location.cgi?id=".&urlize($in{'id'}).
+          "&path=".&urlize($in{'path'})));

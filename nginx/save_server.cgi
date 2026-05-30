@@ -63,11 +63,13 @@ if ($in{'delete'}) {
 			&text('server_rusure',
 			      "<tt>".&html_escape($name)."</tt>"),
 			[ [ 'id', $in{'id'} ],
+			  (defined($in{'nmod'}) ? [ 'nmod', $in{'nmod'} ] : ( )),
 			  [ 'delete', 1 ] ],
 			[ [ 'confirm', $text{'server_confirm'} ] ],
 			);
 
-		&ui_print_footer("edit_server.cgi?id=".&urlize($in{'id'}),
+		&ui_print_footer(&nginx_submod_url("edit_server.cgi?id=".
+				 &urlize($in{'id'})),
 				 $text{'server_return'});
 		}
 	}
@@ -177,5 +179,11 @@ elsif ($action eq 'delete') {
 	}
 if ($action) {
 	&webmin_log($action, 'server', $name);
-	&redirect("");
+	if (defined($in{'nmod'}) && $action ne 'delete') {
+		&redirect(&nginx_submod_url("edit_server.cgi?id=".
+			  &urlize(&server_id($server))));
+		}
+	else {
+		&redirect("");
+		}
 	}

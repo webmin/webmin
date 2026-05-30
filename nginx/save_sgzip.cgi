@@ -25,5 +25,4 @@ $server || &error($text{'server_egone'});
 &unlock_all_config_files();
 my $name = &find_value("server_name", $server);
 &webmin_log("gzip", "server", $name);
-&redirect("edit_server.cgi?id=".&urlize($in{'id'}));
-
+&redirect(&nginx_submod_url("edit_server.cgi?id=".&urlize($in{'id'})));

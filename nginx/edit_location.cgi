@@ -30,8 +30,9 @@ if ($in{'path'}) {
 	my @lpages = ( "ldocs", "lfcgi", "lssi", "lgzip", "lproxy",
 		       "laccess", "lrewrite", );
 	&icons_table(
-		[ map { "edit_".$_.".cgi?id=".&urlize($in{'id'}).
-			"&path=".&urlize($in{'path'}) } @lpages ],
+		[ map { &nginx_submod_url("edit_".$_.".cgi?id=".
+			&urlize($in{'id'})."&path=".&urlize($in{'path'})) }
+			@lpages ],
 		[ map { $text{$_."_title"} } @lpages ],
 		[ map { "images/".$_.".gif" } @lpages ],
 		);
@@ -47,6 +48,7 @@ print &ui_form_start("save_location.cgi", "post");
 print &ui_hidden("id", $in{'id'});
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("oldpath", $in{'path'});
+print &nginx_submod_hidden();
 print &ui_table_start($text{'location_header'}, "width=100%", 2);
 
 # Location path
@@ -73,5 +75,5 @@ else {
 			     [ 'delete', $text{'location_delete'} ] ]);
 	}
 
-&ui_print_footer("edit_server.cgi?id=".&urlize($in{'id'}),
+&ui_print_footer(&nginx_submod_url("edit_server.cgi?id=".&urlize($in{'id'})),
 		 $text{'server_return'});

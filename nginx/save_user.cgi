@@ -53,6 +53,5 @@ else {
 &unlock_file($in{'file'});
 &webmin_log($in{'new'} ? "create" : $in{'delete'} ? "delete" : "modify",
 	    "user", $user->{'user'}, { 'file' => $in{'file'} });
-&redirect("list_users.cgi?file=".&urlize($in{'file'}).
-	  "&id=".&urlize($in{'id'})."&path=".&urlize($in{'path'}));
-
+&redirect(&nginx_submod_url("list_users.cgi?file=".&urlize($in{'file'}).
+	  "&id=".&urlize($in{'id'})."&path=".&urlize($in{'path'})));

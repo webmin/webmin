@@ -40,4 +40,9 @@ else {
 	}
 &update_last_config_change();
 &webmin_log("manual", undef, $in{'file'});
-&redirect("");
+if ($in{'id'}) {
+	&redirect(&nginx_submod_url("edit_server.cgi?id=".&urlize($in{'id'})));
+	}
+else {
+	&redirect("index.cgi");
+	}

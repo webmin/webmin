@@ -56,12 +56,14 @@ if ($in{'delete'}) {
 			      "<tt>".&html_escape(&location_path($location))."</tt>"),
 			[ [ 'id', $in{'id'} ],
 			  [ 'oldpath', $in{'oldpath'} ],
+			  (defined($in{'nmod'}) ? [ 'nmod', $in{'nmod'} ] : ( )),
 			  [ 'delete', 1 ] ],
 			[ [ 'confirm', $text{'server_confirm'} ] ],
 			);
 
-		&ui_print_footer("edit_location.cgi?id=".&urlize($in{'id'}).
-				   "&path=".&urlize($in{'oldpath'}),
+		&ui_print_footer(&nginx_submod_url("edit_location.cgi?id=".
+				   &urlize($in{'id'}).
+				   "&path=".&urlize($in{'oldpath'})),
 				 $text{'server_return'});
 		}
 	}
@@ -95,7 +97,7 @@ if ($action) {
 	my $name = &find_value("server_name", $server);
 	&webmin_log($action, 'location', &location_path($location),
 		    { 'server' => $name });
-	&redirect("edit_server.cgi?id=".&urlize($in{'id'}));
+	&redirect(&nginx_submod_url("edit_server.cgi?id=".&urlize($in{'id'})));
 	}
 
 

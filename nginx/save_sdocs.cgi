@@ -28,4 +28,4 @@ $in{'root_def'} || &can_directory($in{'root'}) ||
 my $name = &find_value("server_name", $server);
 &webmin_log("sdocs", "server", $name);
 
-&redirect("edit_server.cgi?id=".&urlize(&server_id($server)));
+&redirect(&nginx_submod_url("edit_server.cgi?id=".&urlize(&server_id($server))));

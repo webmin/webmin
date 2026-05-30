@@ -4,14 +4,19 @@
 use strict;
 use warnings;
 require './nginx-lib.pl';
-our (%text, %in, %access);
+our (%text, %in, %access, %config);
 &ReadParse();
 
+my $from_submod = defined($in{'nmod'});
+my $action_links = -r $config{'nginx_config'} &&
+		   &has_command($config{'nginx_cmd'}) ?
+		   &nginx_action_links() : "";
 my $server;
 my $can_create = !defined($access{'create'}) || $access{'create'};
 if ($in{'new'}) {
 	$can_create || &error($text{'server_ecannotcreate'});
-	&ui_print_header(undef, $text{'server_create'}, "");
+	&ui_print_header(undef, $text{'server_create'}, "", undef, undef,
+			 undef, undef, $action_links);
 	$server = { 'name' => 'server',
 		    'members' => [ ] };
 	}
@@ -19,7 +24,8 @@ else {
 	$server = &find_server($in{'id'});
 	$server || &error($text{'server_egone'});
 	&can_edit_server($server) || &error($text{'server_ecannot'});
-	&ui_print_header(&server_desc($server), $text{'server_edit'}, "");
+	&ui_print_header(&server_desc($server), $text{'server_edit'}, "",
+			 undef, undef, undef, undef, $action_links);
 	}
 
 if ($in{'id'}) {
@@ -28,11 +34,14 @@ if ($in{'id'}) {
 	my @spages = ( $access{'logs'} ? ( "slogs" ) : ( ),
 		       "sdocs", "ssl", "fcgi", "sssi", "sgzip", "sproxy",
 		       "saccess", "srewrite", );
-	my @slinks = map { "edit_".$_.".cgi?id=".&urlize($in{'id'}) } @spages;
+	my @slinks = map { &nginx_submod_url("edit_".$_.".cgi?id=".
+			      &urlize($in{'id'})) } @spages;
 	my @stitles = map { $text{$_."_title"} } @spages;
 	my @sicons = map { "images/".$_.".gif" } @spages;
 	if (&can_edit_manual_config() && &can_edit_manual_file($server->{'file'})) {
-		push(@slinks, "edit_manual.cgi?file=".&urlize($server->{'file'}));
+		push(@slinks, &nginx_submod_url("edit_manual.cgi?file=".
+					       &urlize($server->{'file'}).
+					       "&id=".&urlize($in{'id'})));
 		push(@stitles, $text{'manual_server'});
 		push(@sicons, "images/manual.gif");
 		}
@@ -45,8 +54,9 @@ if ($in{'id'}) {
 	# Show table for locations
 	print &ui_subheading($text{'server_locations'});
 	my @locations = &find("location", $server);
-	my @links = ( "<a href='edit_location.cgi?id=".&urlize($in{'id'}).
-		      "&new=1'>$text{'server_addloc'}</a>" );
+	my @links = ( "<a href='".&nginx_submod_url("edit_location.cgi?id=".
+		      &urlize($in{'id'})."&new=1").
+		      "'>$text{'server_addloc'}</a>" );
 	if (@locations) {
 		print &ui_links_row(\@links);
 		print &ui_columns_start([ $text{'server_pathloc'},
@@ -62,9 +72,9 @@ if ($in{'id'}) {
 			my $auto = &find_value("autoindex", $l);
 			my @w = @{$l->{'words'}};
 			print &ui_columns_row([
-				"<a href='edit_location.cgi?id=".
+				"<a href='".&nginx_submod_url("edit_location.cgi?id=".
 				  &urlize($in{'id'})."&path=".
-				  &urlize($w[$#w])."'>".
+				  &urlize($w[$#w]))."'>".
 				  &html_escape($w[$#w])."</a>",
 				&match_desc(@w > 1 ? $w[0] : ""),
 				$rootdir ? $rootdir :
@@ -92,6 +102,7 @@ if ($access{'edit'} || ($in{'new'} && $can_create)) {
 	print &ui_form_start("save_server.cgi", "post");
 	print &ui_hidden("id", $in{'id'});
 	print &ui_hidden("new", $in{'new'});
+	print &nginx_submod_hidden();
 	print &ui_table_start($text{'server_header'}, "width=100%", 2);
 
 	# Server name
@@ -168,10 +179,18 @@ if ($access{'edit'} || ($in{'new'} && $can_create)) {
 	if ($in{'new'}) {
 		print &ui_form_end([ [ undef, $text{'create'} ] ]);
 		}
+	elsif ($from_submod) {
+		print &ui_form_end([ [ undef, $text{'save'} ] ]);
+		}
 	else {
 		print &ui_form_end([ [ undef, $text{'save'} ],
 				     [ 'delete', $text{'server_delete'} ] ]);
 		}
 	}
 
-&ui_print_footer("", $text{'index_return'});
+if ($from_submod) {
+	&ui_print_footer();
+	}
+else {
+	&ui_print_footer("", $text{'index_return'});
+	}

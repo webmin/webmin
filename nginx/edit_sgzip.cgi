@@ -14,6 +14,7 @@ $server || &error($text{'server_egone'});
 
 print &ui_form_start("save_sgzip.cgi", "post");
 print &ui_hidden("id", $in{'id'});
+print &nginx_submod_hidden();
 print &ui_table_start($text{'gzip_header'}, undef, 2);
 
 print &nginx_onoff_input("gzip", $server);
@@ -28,5 +29,5 @@ print &nginx_opt_list_input("gzip_types", $server, 60, $text{'ssi_types'});
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
-&ui_print_footer("edit_server.cgi?id=".&urlize($in{'id'}),
+&ui_print_footer(&nginx_submod_url("edit_server.cgi?id=".&urlize($in{'id'})),
 		 $text{'server_return'});

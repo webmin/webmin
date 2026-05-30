@@ -1390,8 +1390,9 @@ my ($name, $parent, $id, $path) = @_;
 my $value = &find_value($name, $parent);
 my $edit;
 if ($value =~ /^\/\S/) {
-	$edit = " <a href='list_users.cgi?file=".&urlize($value).
-		"&id=".&urlize($id)."&path=".&urlize($path)."'>".
+	$edit = " <a href='".&nginx_submod_url("list_users.cgi?file=".
+		&urlize($value)."&id=".&urlize($id).
+		"&path=".&urlize($path))."'>".
 		$text{'access_edit'}."</a>";
 	}
 return &nginx_opt_input($name, $parent, 50, $text{'access_pfile'},
@@ -1585,6 +1586,24 @@ my $url = $ENV{'SCRIPT_NAME'};
 $url .= "?$ENV{'QUERY_STRING'}"
 	if (defined($ENV{'QUERY_STRING'}) && $ENV{'QUERY_STRING'} ne "");
 return $url;
+}
+
+# nginx_submod_url(url)
+# Adds the submodule context parameter to a URL, if present
+sub nginx_submod_url
+{
+my ($url) = @_;
+our %in;
+return $url if (!defined($in{'nmod'}));
+return $url.($url =~ /\?/ ? "&" : "?")."nmod=".&urlize($in{'nmod'});
+}
+
+# nginx_submod_hidden()
+# Returns a hidden field for the submodule context parameter
+sub nginx_submod_hidden
+{
+our %in;
+return defined($in{'nmod'}) ? &ui_hidden("nmod", $in{'nmod'}) : "";
 }
 
 # test_config()

@@ -15,16 +15,19 @@ $in{'file'} || &error($text{'users_efile'});
 &switch_write_user(1);
 my $users = &htaccess_htpasswd::list_users($in{'file'});
 &switch_write_user(0);
-my @links = ( "<a href='edit_user.cgi?new=1&file=".&urlize($in{'file'})."'>".
+my @links = ( "<a href='".&nginx_submod_url("edit_user.cgi?new=1&file=".
+	      &urlize($in{'file'})."&id=".&urlize($in{'id'}).
+	      "&path=".&urlize($in{'path'}))."'>".
 	      $text{'users_add'}."</a>" );
 if (@$users) {
 	print &ui_links_row(\@links);
-	my @grid = map { my $h = "<a href='edit_user.cgi".
+	my @grid = map { my $url = &nginx_submod_url("edit_user.cgi".
 				 "?user=".&urlize($_->{'user'}).
 				 "&file=".&urlize($in{'file'}).
 				 "&id=".&urlize($in{'id'}).
-				 "&path=".&urlize($in{'path'})."'>".
-				 &html_escape($_->{'user'})."</a>";
+				 "&path=".&urlize($in{'path'}));
+			 my $h = "<a href='$url'>".
+				  &html_escape($_->{'user'})."</a>";
 			 !$_->{'enabled'} ? "<i>$h</i>" : $h } @$users;
 	print &ui_grid_table(\@grid, 4, 100);
 	}
@@ -34,12 +37,12 @@ else {
 print &ui_links_row(\@links);
 
 if ($in{'path'}) {
-	&ui_print_footer("edit_location.cgi?id=".&urlize($in{'id'}).
-			   "&path=".&urlize($in{'path'}),
+	&ui_print_footer(&nginx_submod_url("edit_location.cgi?id=".
+			   &urlize($in{'id'})."&path=".&urlize($in{'path'})),
 			 $text{'location_return'});
 	}
 elsif ($in{'id'}) {
-	&ui_print_footer("edit_server.cgi?id=".&urlize($in{'id'}),
+	&ui_print_footer(&nginx_submod_url("edit_server.cgi?id=".&urlize($in{'id'})),
 			 $text{'server_return'});
 	}
 else {

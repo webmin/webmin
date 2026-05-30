@@ -31,5 +31,4 @@ if ($in{'ssl'} && $in{"ssl_certificate_key_def"}) {
 &unlock_all_config_files();
 my $name = &find_value("server_name", $server);
 &webmin_log("ssl", "server", $name);
-&redirect("edit_server.cgi?id=".&urlize($in{'id'}));
-
+&redirect(&nginx_submod_url("edit_server.cgi?id=".&urlize($in{'id'})));

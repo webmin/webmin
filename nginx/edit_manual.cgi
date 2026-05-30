@@ -17,6 +17,8 @@ $in{'file'} = &resolve_manual_config_file($in{'file'}, @files) ||
 
 # Show file selector
 print &ui_form_start("edit_manual.cgi");
+print &nginx_submod_hidden();
+print &ui_hidden("id", $in{'id'});
 print "<b>$text{'manual_file'}</b>\n";
 print &ui_select("file", $in{'file'}, \@files, 1, 0, 0, 0,
 		 "onChange='form.submit()'");
@@ -26,6 +28,8 @@ print &ui_form_end();
 # Show current file
 print &ui_form_start("save_manual.cgi", "form-data");
 print &ui_hidden("file", $in{'file'});
+print &ui_hidden("id", $in{'id'});
+print &nginx_submod_hidden();
 print &ui_table_start(undef, "width=100%", 2);
 
 print &ui_table_row(undef,
