@@ -7,7 +7,8 @@ require './kea-dhcp-lib.pl';    ## no critic
 &ReadParseMime();
 our (%in, %text);
 &error_setup($text{'eacl_aviol'});
-&kea_assert_acl('manual');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pmanual'}") if (!$access{'manual'});
 
 my $info = &kea_manual_edit_file($in{'file'});
 &error($text{'save_efile'}) if (!$info);

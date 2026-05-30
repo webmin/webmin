@@ -7,7 +7,8 @@ require './kea-dhcp-lib.pl';    ## no critic
 &ReadParse();
 our (%in, %text);
 &error_setup($text{'eacl_aviol'});
-&kea_assert_acl('runtime');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pruntime'}") if (!$access{'runtime'});
 
 &ui_print_header(undef, $text{'runtime_title'}, "", undef, 1, 1);
 

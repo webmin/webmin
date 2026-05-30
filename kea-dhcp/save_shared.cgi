@@ -9,7 +9,9 @@ our (%in, %text);
 &error_setup($text{'eacl_aviol'});
 
 my $ver = $in{'version'} == 6 ? 6 : 4;
-&kea_assert_acl('edit'.$ver);
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_pedit'.$ver}")
+	if (!$access{'edit'.$ver});
 my ($c, $root, $data, $err) = &kea_read_dhcp_config($ver);
 &error($err) if ($err);
 my $shareds = &kea_shared_networks($root);

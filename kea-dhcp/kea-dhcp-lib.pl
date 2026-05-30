@@ -12,51 +12,6 @@ our $module_root_directory;
 &init_config();
 &load_kea_defaults();
 
-# kea_acl_keys()
-# Returns the supported Kea DHCP ACL capabilities.
-sub kea_acl_keys
-{
-return qw(dhcp4 dhcp6 ddns services runtime edit4 edit6 editddns manual apply install);
-}
-
-# kea_effective_acl([&raw-acl])
-# Returns normalized ACL settings for the current Webmin user.
-sub kea_effective_acl
-{
-my ($rawacl) = @_;
-my %raw = $rawacl ? %$rawacl : &get_module_acl();
-return map { $_ => $raw{$_} ? 1 : 0 } &kea_acl_keys();
-}
-
-# kea_check_acl(action, [&raw-acl])
-# Returns true when an effective ACL permits the requested action.
-sub kea_check_acl
-{
-my ($action, $rawacl) = @_;
-my %acl = &kea_effective_acl($rawacl);
-return $acl{$action} ? 1 : 0;
-}
-
-# kea_assert_acl(action)
-# Fails if the current Webmin user cannot perform an action.
-sub kea_assert_acl
-{
-my ($action) = @_;
-&kea_check_acl($action) ||
-	&error("$text{'eacl_np'} $text{'eacl_p'.$action}");
-}
-
-# kea_can_enter_module(&acl)
-# Returns true if a user has at least one useful module capability.
-sub kea_can_enter_module
-{
-my ($acl) = @_;
-foreach my $a (&kea_acl_keys()) {
-	return 1 if ($acl->{$a});
-	}
-return 0;
-}
-
 # kea_can_view_dhcp(&acl, version)
 # Structured edit access implies read access to that DHCP version.
 sub kea_can_view_dhcp

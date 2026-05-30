@@ -7,11 +7,13 @@ require './kea-dhcp-lib.pl';    ## no critic
 &ReadParse();
 our (%in, %text);
 our $module_name;
-my %access = &kea_effective_acl();
+my %access = &get_module_acl();
 my $delete_formno;
 &error_setup($text{'eacl_aviol'});
 &error("$text{'eacl_np'} $text{'eacl_penter'}")
-	unless &kea_can_enter_module(\%access);
+	unless grep { $access{$_} } qw(dhcp4 dhcp6 ddns services runtime
+				       edit4 edit6 editddns manual apply
+				       install);
 
 # If the Kea daemons cannot be found, keep the index page focused on the
 # repair path. Leftover config files are not enough to run the module safely.

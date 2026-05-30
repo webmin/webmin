@@ -6,7 +6,8 @@ use warnings;
 require './kea-dhcp-lib.pl';    ## no critic
 our %text;
 &error_setup($text{'eacl_aviol'});
-&kea_assert_acl('apply');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_papply'}") if (!$access{'apply'});
 
 # The header action buttons operate on all configured Kea components together.
 &error_setup($text{'stop_fail'});

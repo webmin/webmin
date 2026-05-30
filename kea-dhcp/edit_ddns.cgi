@@ -7,7 +7,9 @@ require './kea-dhcp-lib.pl';    ## no critic
 &ReadParse();
 our (%in, %text);
 &error_setup($text{'eacl_aviol'});
-&kea_assert_acl('editddns');
+my %access = &get_module_acl();
+&error("$text{'eacl_np'} $text{'eacl_peditddns'}")
+	if (!$access{'editddns'});
 
 my $c = &kea_component('ddns');
 my ($root, $err) = &kea_read_component_config($c);
