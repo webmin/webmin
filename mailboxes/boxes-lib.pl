@@ -2706,12 +2706,12 @@ sub read_mail_file
 my ($file, $headersonly) = @_;
 
 # Open and read the mail file
+local @st = stat($file);
+return undef if (@st && !$st[7]);
 &open_as_mail_user(MAIL, $file) || return undef;
 my $mail = &read_mail_fh(MAIL, 0, $headersonly);
 close(MAIL);
 
-local @st = stat($file);
-return undef if (@st && !$st[7]);
 $mail->{'file'} = $file;
 $mail->{'size'} = $st[7];
 $mail->{'time'} = $st[9];
