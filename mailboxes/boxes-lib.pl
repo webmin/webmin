@@ -2207,6 +2207,32 @@ else {
 					# Flagged as deleted by IMAP .. skip
 					next;
 					}
+				# Skip entries that cannot be read as messages.
+				local $path = "$_[0]/$d/$f";
+				local @fst = stat($path);
+				if (!@fst) {
+					&error_stderr("Skipping Maildir file ".
+						      "$path : stat failed : ".
+						      "$!");
+					next;
+					}
+				if (!$fst[7]) {
+					&error_stderr("Skipping Maildir file ".
+						      "$path : file is zero ".
+						      "bytes");
+					next;
+					}
+				if (!-r _) {
+					my $m = sprintf("%04o",$fst[2] & 07777);
+					my $o = getpwuid($fst[4]) || $fst[4];
+					my $g = getgrgid($fst[5]) || $fst[5];
+					&error_stderr("Skipping Maildir file ".
+						      "$path : not readable by".
+						      " current user, owner=".
+						      "$o($fst[4]):$g($fst[5])".
+						      " mode=$m");
+					next;
+					}
 				push(@shorts, "$d/$f")
 				}
 			closedir(DIR);
@@ -2682,9 +2708,11 @@ my ($file, $headersonly) = @_;
 # Open and read the mail file
 &open_as_mail_user(MAIL, $file) || return undef;
 my $mail = &read_mail_fh(MAIL, 0, $headersonly);
-$mail->{'file'} = $file;
 close(MAIL);
+
 local @st = stat($file);
+return undef if (@st && !$st[7]);
+$mail->{'file'} = $file;
 $mail->{'size'} = $st[7];
 $mail->{'time'} = $st[9];
 $mail->{'ctime'} = $st[10];
