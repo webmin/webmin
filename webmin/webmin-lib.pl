@@ -64,7 +64,7 @@ our $third_port = $primary_port;
 our $third_page = "/cgi-bin/third.cgi";
 our $third_ssl = $primary_ssl;
 
-our $default_key_size = "2048";
+our $default_key_size = "4096";
 
 our $webmin_yum_repo_file = "/etc/yum.repos.d/webmin.repo";
 our $webmin_yum_repo_url = "https://download.webmin.com/download/newkey/yum";

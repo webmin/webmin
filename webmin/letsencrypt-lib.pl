@@ -269,7 +269,7 @@ if ($letsencrypt_cmd) {
 			}
 		}
 	$dir =~ s/\/[^\/]+$//;
-	$size ||= 2048;
+	$size ||= 4096;
 	my $out;
 	my $common_flags = " --duplicate".
 			   " --force-renewal".

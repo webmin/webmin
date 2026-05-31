@@ -494,7 +494,7 @@ else {
 		$cert = &tempname();
 		$key = &tempname();
 		$addtextsup = &get_openssl_version() >= 1.1 ? "-addext subjectAltName=DNS:$host,DNS:localhost -addext extendedKeyUsage=serverAuth" : "";
-		open(SSL, "| openssl req -newkey rsa:2048 -x509 -nodes -out $cert -keyout $key -days 1825 -sha256 -subj '/CN=$host/C=US/L=Santa Clara' $addtextsup >/dev/null 2>&1");
+		open(SSL, "| openssl req -newkey rsa:4096 -x509 -nodes -out $cert -keyout $key -days 1825 -sha256 -subj '/CN=$host/C=US/L=Santa Clara' $addtextsup >/dev/null 2>&1");
 		print SSL ".\n";
 		print SSL ".\n";
 		print SSL ".\n";
