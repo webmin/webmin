@@ -468,6 +468,14 @@ elsif ($file =~ /\/(php-fpm)\.conf/) {
 		return $init;
 		}
 	}
+# Generic /etc/php.ini config shared by EL PHP-FPM packages
+elsif ($file eq "/etc/php.ini") {
+	my $init = "php-fpm";
+	my $st = &init::action_status($init);
+	if ($st) {
+		return $init;
+		}
+	}
 return undef;
 }
 
