@@ -6,6 +6,9 @@ use WebminCore;
 &init_config();
 %access = &get_module_acl();
 $access{'ipnodes'} = $access{'hosts'};
+do "net-detect.pl";
+
+$auto_net_mode = &net_auto_backend($gconfig{'os_type'});
 
 if (-r "$module_root_directory/$gconfig{'os_type'}-$gconfig{'os_version'}-lib.pl") {
 	do "$gconfig{'os_type'}-$gconfig{'os_version'}-lib.pl";
@@ -23,19 +26,15 @@ elsif ($gconfig{'os_type'} eq 'slackware-linux' &&
 	do "$gconfig{'os_type'}-9.1-ALL-lib.pl";
 	$net_mode = $gconfig{'os_type'}."/9.1";
 	}
-elsif ($gconfig{'os_type'} eq 'redhat-linux' &&
-       -d "/etc/NetworkManager/system-connections" &&
-       glob("/etc/NetworkManager/system-connections/*.nmconnection")) {
-	# Special case for systems with network manager
-	do 'nm-lib.pl';
-	$net_mode = "nm";
-	}
-elsif ($gconfig{'os_type'} eq 'debian-linux' && 
-       &has_command("netplan") &&
-       -d "/etc/netplan") {
+elsif ($auto_net_mode eq "netplan") {
 	# Special case for newer Ubuntu versions
 	do "netplan-lib.pl";
 	$net_mode = "netplan";
+	}
+elsif ($auto_net_mode eq "nm") {
+	# Special case for systems with network manager
+	do 'nm-lib.pl';
+	$net_mode = "nm";
 	}
 else {
 	do "$gconfig{'os_type'}-lib.pl";
