@@ -1,0 +1,7 @@
+<header>Wants</header>
+<p>Weak dependencies for this unit. When this unit is started, systemd also
+tries to start the units listed in <tt>Wants=</tt>.</p>
+<p>Enter space-separated unit names. Use this when the listed unit is helpful
+but not strictly required. If it fails, this unit may still start.</p>
+<p>A common pattern is to use both <tt>Wants=other.service</tt> and
+<tt>After=other.service</tt> so the other unit is pulled in and ordered first.</p>

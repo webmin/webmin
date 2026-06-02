@@ -1,0 +1,10 @@
+<header>Start command</header>
+<p>Commands run by systemd when a service starts. These are written as
+<tt>ExecStart=</tt> entries in the unit file and apply only to
+<tt>.service</tt> units.</p>
+<p>Enter one command per line. For ordinary long-running daemons this is
+usually a single absolute command, for example <tt>/usr/bin/node
+/home/app/server.js</tt>.</p>
+<p>Multiple start commands are best used with <tt>Type=oneshot</tt>. For other
+service types, multiple commands are combined through a shell command so
+systemd still has one main process to track.</p>

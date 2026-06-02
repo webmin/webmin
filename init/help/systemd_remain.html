@@ -1,0 +1,5 @@
+<header>Remain after exit</header>
+<p>Writes <tt>RemainAfterExit=yes</tt>. This is most useful for
+<tt>oneshot</tt> services whose command exits after changing system state.</p>
+<p>When enabled, systemd keeps the service in the active state after the start
+command exits. This lets a later stop command undo the action.</p>

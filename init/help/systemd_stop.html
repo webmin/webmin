@@ -1,0 +1,7 @@
+<header>Stop command</header>
+<p>Optional commands run when a service is stopped. These are written as
+<tt>ExecStop=</tt> entries in the unit file and apply only to
+<tt>.service</tt> units.</p>
+<p>Use this when the application has its own graceful shutdown command. If this
+is left empty, systemd stops the service using its normal signal and
+<tt>KillMode=</tt> behavior.</p>

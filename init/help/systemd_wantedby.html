@@ -1,0 +1,8 @@
+<header>Install target</header>
+<p>The target that should want this unit when it is enabled. This writes
+<tt>WantedBy=</tt> in the <tt>[Install]</tt> section.</p>
+<p>For system services, <tt>multi-user.target</tt> is the usual default. For
+user service units, <tt>default.target</tt> is normally used so the service starts
+with the user's default manager target. Timers, sockets, and paths usually use
+<tt>timers.target</tt>, <tt>sockets.target</tt>, and <tt>paths.target</tt>
+respectively.</p>

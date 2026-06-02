@@ -1,0 +1,8 @@
+<header>Watchdog timeout</header>
+<p>Enables the systemd watchdog for services that send watchdog notifications.
+This writes <tt>WatchdogSec=</tt>.</p>
+<p>Only use this for applications that support systemd watchdog pings, usually
+through <tt>sd_notify()</tt>. If the service does not send keep-alive
+notifications before the timeout, systemd treats it as failed.</p>
+<p>This pairs naturally with <tt>Type=notify</tt> and
+<tt>Restart=on-watchdog</tt> or <tt>Restart=on-failure</tt>.</p>

@@ -1,0 +1,7 @@
+<header>Before</header>
+<p>Units that should be ordered after this unit. This writes
+<tt>Before=</tt> in the <tt>[Unit]</tt> section.</p>
+<p>Enter space-separated unit names, such as <tt>nginx.service
+myapp.target</tt>. Ordering alone does not cause the other unit to start; pair
+it with <tt>Wants=</tt> or <tt>Requires=</tt> when this unit should also
+pull that unit into the same start transaction.</p>

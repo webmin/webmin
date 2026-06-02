@@ -1,0 +1,7 @@
+<header>Run as user</header>
+<p>For system services, writes <tt>User=</tt> so the service process runs as
+the selected Unix user. This option is hidden for user units.</p>
+<p>Use this when creating a system service that should be managed by the system
+manager but should drop privileges before running the application process.</p>
+<p>This is different from creating a user unit. A user unit is owned and
+managed by the user's systemd manager and does not need <tt>User=</tt>.</p>

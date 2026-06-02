@@ -1,0 +1,10 @@
+<header>Unit type</header>
+<p>The type of systemd unit to create. The selected type controls the filename
+suffix and the type-specific section written to the unit file.</p>
+<p><tt>service</tt> creates a guided <tt>[Service]</tt> unit with command
+fields. <tt>timer</tt>, <tt>socket</tt>, <tt>path</tt>, and <tt>target</tt>
+create the corresponding unit file and show a type-specific settings field for
+directives in that unit's section.</p>
+<p>All of these system units are written below <tt>/etc/systemd/system</tt>.
+User units are written below the selected user's
+<tt>~/.config/systemd/user</tt> directory.</p>

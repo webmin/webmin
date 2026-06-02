@@ -1,0 +1,11 @@
+<header>Kill mode</header>
+<p>Controls how systemd terminates processes belonging to the service. This
+writes <tt>KillMode=</tt>.</p>
+<p><tt>control-group</tt> is the default and safest choice: systemd stops the
+main process and any remaining child processes in the service cgroup.
+<tt>mixed</tt> sends the first termination signal only to the main process,
+then later kills remaining cgroup processes if needed.</p>
+<p><tt>process</tt> stops only the main process and can leave child processes
+behind. <tt>none</tt> makes systemd run the stop command but not kill service
+processes. Avoid <tt>process</tt> and <tt>none</tt> unless you know the
+application manages its own process tree safely.</p>

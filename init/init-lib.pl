@@ -200,8 +200,8 @@ return $_[0] =~ /^\// ? $_[0] : "$config{init_dir}/$_[0]";
 
 =head2 action_unit(name)
 
-Returns systemd service unit name (to avoid a clash with init)
-unless full unit name is passed
+Returns a full systemd unit name, defaulting bare legacy action names to
+.service units.
 
 =cut
 sub action_unit
@@ -1226,9 +1226,8 @@ sub delete_at_boot
 my ($name) = @_;
 my $mode = &get_action_mode($name);
 if ($mode eq "systemd") {
-	# Delete systemd service
+	# Delete systemd unit
 	&delete_systemd_service($name);
-	&delete_systemd_service($name.".service");
 	}
 elsif ($mode eq "upstart") {
 	# Delete upstart service
@@ -2156,9 +2155,9 @@ my $ifile = "/etc/init.d/$name";
 
 =head2 list_systemd_services(skip-init)
 
-Returns a list of all known systemd services, each of which is a hash ref
+Returns a list of all known systemd units, each of which is a hash ref
 with 'name', 'desc', 'boot', 'status' and 'pid' keys. Also includes init.d
-scripts, which will be preferred over native systemd services (because sometimes
+scripts, which will be preferred over native systemd units (because sometimes
 systemd automatically includes init scripts).
 
 =cut
@@ -2170,9 +2169,13 @@ if (@list_systemd_services_cache && !$noinit) {
 	}
 
 my $units_piped = join('|', &get_systemd_unit_types());
+my $creatable_piped = join('|', &get_systemd_creatable_unit_types());
+my $list_piped = join('|', &get_systemd_list_unit_types());
+my $list_types = join(" ", map { "-t ".quotemeta($_) }
+			   &get_systemd_list_unit_types());
 
 # Get all systemd unit names
-my $out = &backquote_command("systemctl list-units --full --all -t service --no-legend");
+my $out = &backquote_command("systemctl list-units --full --all $list_types --no-legend");
 my $ex = $?;
 foreach my $l (split(/\r?\n/, $out)) {
 	$l =~ s/^[^a-z0-9\-\_\.]+//i;
@@ -2187,14 +2190,22 @@ foreach my $l (split(/\r?\n/, $out)) {
 &error("Failed to list systemd units : $out") if ($ex && @units < 10);
 
 # Also find unit files for units that may be disabled at boot and not running,
-# and so don't show up in systemctl list-units
-my $root = &get_systemd_root(undef, 1);
-opendir(UNITS, $root);
-push(@units, grep { !/\.wants$/ && !/^\./ && !-d "$root/$_" } readdir(UNITS));
-closedir(UNITS);
+# and so don't show up in systemctl list-units.
+my $local_root = &get_systemd_root();
+my $packaged_root = &get_systemd_root(undef, 1);
+my @scan_roots = ( [ $local_root, $creatable_piped ] );
+push(@scan_roots, [ $packaged_root, $list_piped ])
+	if ($packaged_root && $packaged_root ne $local_root);
+foreach my $scan (@scan_roots) {
+	my ($root, $type_piped) = @$scan;
+	next if (!$root || !-d $root || !opendir(UNITS, $root));
+	push(@units, grep { !/\.wants$/ && !/^\./ && !-d "$root/$_" &&
+			    /\.($type_piped)$/ } readdir(UNITS));
+	closedir(UNITS);
+	}
 
 # Also add units from list-unit-files that also don't show up
-$out = &backquote_command("systemctl list-unit-files -t service --no-legend");
+$out = &backquote_command("systemctl list-unit-files $list_types --no-legend");
 foreach my $l (split(/\r?\n/, $out)) {
 	if ($l =~ /^(\S+\.($units_piped))\s+disabled/ ||
 	    $l =~ /^(\S+)\s+disabled/) {
@@ -2310,7 +2321,7 @@ return @rv;
 
 =head2 start_systemd_service(name)
 
-Run the systemd service with some name, and return an OK flag and output
+Run the systemd unit with some name, and return an OK flag and output.
 
 =cut
 sub start_systemd_service
@@ -2326,7 +2337,7 @@ return (!$?, $out);
 
 =head2 stop_systemd_service(name)
 
-Shut down the systemctl service with some name, and return an OK flag and output
+Shut down the systemd unit with some name, and return an OK flag and output.
 
 =cut
 sub stop_systemd_service
@@ -2339,7 +2350,7 @@ return (!$?, $out);
 
 =head2 restart_systemd_service(name)
 
-Restart the systemd service with some name, and return an OK flag and output
+Restart the systemd unit with some name, and return an OK flag and output.
 
 =cut
 sub restart_systemd_service
@@ -2352,7 +2363,7 @@ return (!$?, $out);
 
 =head2 reload_systemd_service(name)
 
-Reload the systemd service with some name, and return an OK flag and output
+Reload the systemd unit with some name, and return an OK flag and output.
 
 =cut
 sub reload_systemd_service
@@ -2360,6 +2371,35 @@ sub reload_systemd_service
 my ($name) = @_;
 my $out = &backquote_logged(
 	"systemctl reload ".quotemeta($name)." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+=head2 status_systemd_service(name)
+
+Get the full status of the systemd unit with some name.
+
+=cut
+sub status_systemd_service
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"systemctl --full --no-pager status ".quotemeta($name)." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+=head2 logs_systemd_service(name)
+
+Get recent journal logs for the systemd unit with some name.
+
+=cut
+sub logs_systemd_service
+{
+my ($name) = @_;
+my $journalctl = &has_command("journalctl");
+return (0, $text{'systemd_ejournal'}) if (!$journalctl);
+my $out = &backquote_logged(
+	quotemeta($journalctl)." --no-pager --unit ".quotemeta($name).
+	" --lines 200 2>&1 </dev/null");
 return (!$?, $out);
 }
 
@@ -2408,23 +2448,120 @@ my ($sh, $cmd) = @_;
 return $cmd =~ /<|>/ ? &systemd_shell_exec_command($sh, $cmd) : $cmd;
 }
 
-=head2 create_systemd_service(name, description, start-script, stop-script,
-			      restart-script, [forks], [pidfile])
+=head2 clean_systemd_unit_value(value)
 
-Create a new systemd service with the given details.
+Returns a scalar systemd unit value with line breaks removed.
 
 =cut
-sub create_systemd_service
+sub clean_systemd_unit_value
 {
-my ($name, $desc, $start, $stop, $restart, $forks, $pidfile, $exits, $opts) = @_;
+my ($value) = @_;
+return if (!defined($value));
+$value =~ s/\r|\n/ /g;
+$value =~ s/\0//g;
+$value =~ s/^\s+//;
+$value =~ s/\s+$//;
+return $value;
+}
+
+=head2 clean_systemd_unit_body(value)
+
+Returns multi-line systemd unit directives with nulls and carriage returns
+removed.
+
+=cut
+sub clean_systemd_unit_body
+{
+my ($value) = @_;
+return if (!defined($value));
+$value =~ s/\r//g;
+$value =~ s/\0//g;
+$value =~ s/^\s+//;
+$value =~ s/\s+$//;
+return $value;
+}
+
+=head2 quote_systemd_unit_word(value)
+
+Returns a quoted systemd unit word with quotes and backslashes escaped.
+
+=cut
+sub quote_systemd_unit_word
+{
+my ($value) = @_;
+$value =~ s/\\/\\\\/g;
+$value =~ s/"/\\"/g;
+return "\"$value\"";
+}
+
+=head2 format_systemd_environment_directives(value)
+
+Returns Environment= lines for a user-entered set of environment variables.
+
+=cut
+sub format_systemd_environment_directives
+{
+my ($value) = @_;
+$value = &clean_systemd_unit_value($value);
+$value = "" if (!defined($value));
+return ( ) if ($value !~ /\S/);
+
+# Preserve quoted variable values while still allowing several NAME=VALUE
+# words to become separate Environment= directives.
+my @vars = &split_quoted_string($value);
+@vars = ( $value ) if (!@vars);
+return map { "Environment=".&quote_systemd_unit_word($_)."\n" } @vars;
+}
+
+=head2 format_systemd_output_value(value)
+
+Returns a StandardOutput/StandardError value, appending to absolute files.
+
+=cut
+sub format_systemd_output_value
+{
+my ($value) = @_;
+$value = &clean_systemd_unit_value($value);
+$value = "" if (!defined($value));
+return if ($value !~ /\S/);
+return $value =~ /^\// ? "append:$value" : $value;
+}
+
+=head2 write_systemd_service_file(file, description, start-script, stop-script,
+				  reload-script, [forks], [pidfile], [exits],
+				  [&options])
+
+Writes a systemd service file with the given details.
+
+=cut
+sub write_systemd_service_file
+{
+my ($cfile, $desc, $start, $stop, $restart, $forks, $pidfile, $exits, $opts) = @_;
 my $sh = &has_command("sh") || "sh";
 my $kill = &has_command("kill") || "kill";
+$desc = &clean_systemd_unit_value($desc);
+$pidfile = &clean_systemd_unit_value($pidfile);
+
+# Scalar directives must stay on one line; command hook fields keep their
+# line breaks so each line becomes a separate Exec*= directive.
+if (ref($opts)) {
+	my %cleanopts;
+	foreach my $o (keys(%$opts)) {
+		$cleanopts{$o} = $o =~ /^(startpre|startpost|stoppost|stop|reload)$/ ?
+			$opts->{$o} : &clean_systemd_unit_value($opts->{$o});
+		}
+	$opts = \%cleanopts;
+	}
 my @starts = &split_systemd_exec_commands($start);
 my @stops = &split_systemd_exec_commands($stop);
 my @restarts = &split_systemd_exec_commands($restart);
-my $start_type = ref($opts) ? $opts->{'type'} : undef;
-$start_type ||= $forks ? 'forking' : $exits ? 'oneshot' : undef;
-my $multi_start_oneshot = @starts > 1 && !$start_type;
+my $service_type = ref($opts) ? $opts->{'type'} : undef;
+$service_type ||= $forks ? 'forking' : $exits ? 'oneshot' : undef;
+
+# Multiple startup commands need oneshot semantics unless an explicit type was
+# chosen.  For other types, run them through one shell command.
+my $multi_start_oneshot = @starts > 1 && !$service_type;
+my $start_type = $service_type || ($multi_start_oneshot ? 'oneshot' : undef);
 if (@starts > 1 && $start_type && $start_type ne 'oneshot') {
 	@starts = (&systemd_shell_exec_command($sh, join("; ", @starts)));
 	}
@@ -2433,7 +2570,22 @@ else {
 	}
 @stops = map { &format_systemd_exec_command($sh, $_) } @stops;
 @restarts = map { &format_systemd_exec_command($sh, $_) } @restarts;
-my $cfile = &get_systemd_root($name)."/".$name;
+my (@startpres, @startposts, @stopposts, @optstops, @optreloads);
+if (ref($opts)) {
+	@startpres = map { &format_systemd_exec_command($sh, $_) }
+		      &split_systemd_exec_commands($opts->{'startpre'});
+	@startposts = map { &format_systemd_exec_command($sh, $_) }
+		       &split_systemd_exec_commands($opts->{'startpost'});
+	@stopposts = map { &format_systemd_exec_command($sh, $_) }
+		      &split_systemd_exec_commands($opts->{'stoppost'});
+	@optstops = map { &format_systemd_exec_command($sh, $_) }
+		    &split_systemd_exec_commands($opts->{'stop'})
+		if ($opts->{'stop'} && $opts->{'stop'} ne '0');
+	@optreloads = map { &format_systemd_exec_command($sh, $_) }
+		      &split_systemd_exec_commands($opts->{'reload'})
+		if ($opts->{'reload'} && $opts->{'reload'} ne '0');
+	}
+$service_type = 'oneshot' if ($multi_start_oneshot);
 &open_lock_tempfile(CFILE, ">$cfile");
 &print_tempfile(CFILE, "[Unit]\n");
 &print_tempfile(CFILE, "Description=$desc\n") if ($desc);
@@ -2448,41 +2600,65 @@ if (ref($opts)) {
 	}
 &print_tempfile(CFILE, "\n");
 &print_tempfile(CFILE, "[Service]\n");
-&print_tempfile(CFILE, "Type=oneshot\n") if ($multi_start_oneshot);
+&print_tempfile(CFILE, "Type=$service_type\n") if ($service_type);
+foreach my $startpre (@startpres) {
+	&print_tempfile(CFILE, "ExecStartPre=$startpre\n");
+	}
 foreach my $start (@starts) {
 	&print_tempfile(CFILE, "ExecStart=$start\n");
+	}
+foreach my $startpost (@startposts) {
+	&print_tempfile(CFILE, "ExecStartPost=$startpost\n");
 	}
 foreach my $stop (@stops) {
 	&print_tempfile(CFILE, "ExecStop=$stop\n");
 	}
+foreach my $stoppost (@stopposts) {
+	&print_tempfile(CFILE, "ExecStopPost=$stoppost\n");
+	}
 foreach my $restart (@restarts) {
 	&print_tempfile(CFILE, "ExecReload=$restart\n");
 	}
-&print_tempfile(CFILE, "Type=forking\n") if ($forks);
-&print_tempfile(CFILE, "Type=oneshot\n",
-		       "RemainAfterExit=yes\n") if ($exits);
+&print_tempfile(CFILE, "RemainAfterExit=yes\n") if ($exits);
 &print_tempfile(CFILE, "PIDFile=$pidfile\n") if ($pidfile);
 
-# Opts
+# Optional [Service] directives from the advanced creation form.
 if (ref($opts)) {
-	&print_tempfile(CFILE, "ExecStop=$kill \$MAINPID\n") if ($opts->{'stop'} eq '0');
-	&print_tempfile(CFILE, "ExecReload=$kill -HUP \$MAINPID\n") if ($opts->{'reload'} eq '0');
-	&print_tempfile(CFILE, "ExecStop=$opts->{'stop'}\n") if ($opts->{'stop'});
-	&print_tempfile(CFILE, "ExecReload=$opts->{'reload'}\n") if ($opts->{'reload'});
-	&print_tempfile(CFILE, "ExecStartPre=$opts->{'startpre'}\n") if ($opts->{'startpre'});
-	&print_tempfile(CFILE, "ExecStartPost=$opts->{'startpost'}\n") if ($opts->{'startpost'});
-	&print_tempfile(CFILE, "Type=$opts->{'type'}\n") if ($opts->{'type'});
-	&print_tempfile(CFILE, "Environment=\"$opts->{'env'}\"\n") if ($opts->{'env'});
+	&print_tempfile(CFILE, "ExecStop=$kill \$MAINPID\n")
+		if (defined($opts->{'stop'}) && $opts->{'stop'} eq '0');
+	&print_tempfile(CFILE, "ExecReload=$kill -HUP \$MAINPID\n")
+		if (defined($opts->{'reload'}) && $opts->{'reload'} eq '0');
+	foreach my $stop (@optstops) {
+		&print_tempfile(CFILE, "ExecStop=$stop\n");
+		}
+	foreach my $reload (@optreloads) {
+		&print_tempfile(CFILE, "ExecReload=$reload\n");
+		}
+	foreach my $env (&format_systemd_environment_directives($opts->{'env'})) {
+		&print_tempfile(CFILE, $env);
+		}
+	&print_tempfile(CFILE, "EnvironmentFile=$opts->{'envfile'}\n") if ($opts->{'envfile'});
 	&print_tempfile(CFILE, "User=$opts->{'user'}\n") if ($opts->{'user'});
 	&print_tempfile(CFILE, "Group=$opts->{'group'}\n") if ($opts->{'group'});
 	&print_tempfile(CFILE, "KillMode=$opts->{'killmode'}\n") if ($opts->{'killmode'});
 	&print_tempfile(CFILE, "WorkingDirectory=$opts->{'workdir'}\n") if ($opts->{'workdir'});
 	&print_tempfile(CFILE, "Restart=$opts->{'restart'}\n") if ($opts->{'restart'});
 	&print_tempfile(CFILE, "RestartSec=$opts->{'restartsec'}\n") if ($opts->{'restartsec'});
-	&print_tempfile(CFILE, "TimeoutSec=$opts->{'timeout'}\n") if ($opts->{'timeout'});
+	&print_tempfile(CFILE, "WatchdogSec=$opts->{'watchdogsec'}\n") if ($opts->{'watchdogsec'});
+	my $timeoutstartsec = $opts->{'timeoutstartsec'} || $opts->{'timeout'};
+	&print_tempfile(CFILE, "TimeoutStartSec=$timeoutstartsec\n")
+		if ($timeoutstartsec);
 	&print_tempfile(CFILE, "TimeoutStopSec=$opts->{'timeoutstopsec'}\n") if ($opts->{'timeoutstopsec'});
-	&print_tempfile(CFILE, "StandardOutput=".($opts->{'logstd'} =~ /^\// ? 'file:' : '')."$opts->{'logstd'}\n") if ($opts->{'logstd'});
-	&print_tempfile(CFILE, "StandardError=".($opts->{'logerr'} =~ /^\// ? 'file:' : '')."$opts->{'logerr'}\n") if ($opts->{'logerr'});
+	&print_tempfile(CFILE, "LimitNOFILE=$opts->{'limitnofile'}\n") if ($opts->{'limitnofile'});
+	my $logout = &format_systemd_output_value($opts->{'logstd'});
+	my $logerr = &format_systemd_output_value($opts->{'logerr'});
+	&print_tempfile(CFILE, "StandardOutput=$logout\n") if ($logout);
+	&print_tempfile(CFILE, "StandardError=$logerr\n") if ($logerr);
+	&print_tempfile(CFILE, "SyslogIdentifier=$opts->{'syslogid'}\n") if ($opts->{'syslogid'});
+	&print_tempfile(CFILE, "NoNewPrivileges=yes\n") if ($opts->{'nonewprivs'});
+	&print_tempfile(CFILE, "PrivateTmp=yes\n") if ($opts->{'privatetmp'});
+	&print_tempfile(CFILE, "ProtectSystem=$opts->{'protectsystem'}\n") if ($opts->{'protectsystem'});
+	&print_tempfile(CFILE, "ReadWritePaths=$opts->{'readwritepaths'}\n") if ($opts->{'readwritepaths'});
 	}
 
 &print_tempfile(CFILE, "\n");
@@ -2494,19 +2670,782 @@ else {
 	&print_tempfile(CFILE, "WantedBy=multi-user.target\n");
 	}
 &close_tempfile(CFILE);
+}
+
+=head2 write_systemd_unit_file(file, type, description, body, [&options])
+
+Writes a non-service systemd unit file with common [Unit] and [Install]
+settings and a type-specific section.
+
+=cut
+sub write_systemd_unit_file
+{
+my ($cfile, $type, $desc, $body, $opts) = @_;
+my $section = &get_systemd_unit_section($type);
+$desc = &clean_systemd_unit_value($desc);
+$body = &clean_systemd_unit_body($body);
+$body = "" if (!defined($body));
+if (ref($opts)) {
+	my %cleanopts;
+	foreach my $o (keys(%$opts)) {
+		$cleanopts{$o} = &clean_systemd_unit_value($opts->{$o});
+		}
+	$opts = \%cleanopts;
+	}
+
+&open_lock_tempfile(CFILE, ">$cfile");
+&print_tempfile(CFILE, "[Unit]\n");
+&print_tempfile(CFILE, "Description=$desc\n") if ($desc);
+
+# Relationship options are common [Unit] directives for all unit types.
+if (ref($opts)) {
+	&print_tempfile(CFILE, "Before=$opts->{'before'}\n") if ($opts->{'before'});
+	&print_tempfile(CFILE, "After=$opts->{'after'}\n") if ($opts->{'after'});
+	&print_tempfile(CFILE, "Wants=$opts->{'wants'}\n") if ($opts->{'wants'});
+	&print_tempfile(CFILE, "Requires=$opts->{'requires'}\n") if ($opts->{'requires'});
+	&print_tempfile(CFILE, "Conflicts=$opts->{'conflicts'}\n") if ($opts->{'conflicts'});
+	&print_tempfile(CFILE, "OnFailure=$opts->{'onfailure'}\n") if ($opts->{'onfailure'});
+	&print_tempfile(CFILE, "OnSuccess=$opts->{'onsuccess'}\n") if ($opts->{'onsuccess'});
+	}
+
+# The UI accepts only the body of the type-specific section; wrap it here so
+# users do not need to type [Timer], [Socket], and so on.
+if ($section && $body =~ /\S/) {
+	&print_tempfile(CFILE, "\n[$section]\n");
+	&print_tempfile(CFILE, $body);
+	&print_tempfile(CFILE, "\n") if ($body !~ /\n$/);
+	}
+
+if (ref($opts) && $opts->{'wantedby'}) {
+	&print_tempfile(CFILE, "\n[Install]\n");
+	&print_tempfile(CFILE, "WantedBy=$opts->{'wantedby'}\n");
+	}
+&close_tempfile(CFILE);
+}
+
+=head2 create_systemd_service(name, description, start-script, stop-script,
+			      reload-script, [forks], [pidfile], [exits],
+			      [&options])
+
+Create a new systemd service with the given details.
+
+=cut
+sub create_systemd_service
+{
+my ($name, $desc, $start, $stop, $restart, $forks, $pidfile, $exits, $opts) = @_;
+my $cfile = &get_systemd_root($name)."/".$name;
+&write_systemd_service_file($cfile, $desc, $start, $stop, $restart, $forks,
+			    $pidfile, $exits, $opts);
 &restart_systemd();
+}
+
+=head2 create_systemd_unit(name, type, description, body, [&options])
+
+Create a new non-service systemd unit with the given details.
+
+=cut
+sub create_systemd_unit
+{
+my ($name, $type, $desc, $body, $opts) = @_;
+my $cfile = &get_systemd_root($name)."/".$name;
+&write_systemd_unit_file($cfile, $type, $desc, $body, $opts);
+&restart_systemd();
+}
+
+=head2 get_systemd_user_details(user)
+
+Returns user account details needed for per-user systemd units.
+
+=cut
+sub get_systemd_user_details
+{
+my ($user) = @_;
+return if (!$user || $user =~ /[\0\r\n\/]/);
+my @uinfo = getpwnam($user);
+return if (!@uinfo || $uinfo[7] !~ /^\//);
+return { 'user' => $uinfo[0],
+	 'uid' => $uinfo[2],
+	 'gid' => $uinfo[3],
+	 'home' => $uinfo[7] };
+}
+
+=head2 get_systemd_user_root(user)
+
+Returns the base directory for a user's systemd unit config files.
+
+=cut
+sub get_systemd_user_root
+{
+my ($user) = @_;
+my $uinfo = &get_systemd_user_details($user);
+return if (!$uinfo);
+return $uinfo->{'home'}."/.config/systemd/user";
+}
+
+=head2 valid_systemd_unit_name(name)
+
+Returns 1 if a systemd unit name is safe for direct file management.
+
+=cut
+sub valid_systemd_unit_name
+{
+my ($name) = @_;
+my $units_piped = join('|', &get_systemd_creatable_unit_types());
+return 0 if ($name =~ /\@$/ || $name =~ /\@\.($units_piped)$/i);
+return $name && $name =~ /^[a-z0-9\.\_\-\@:]+\.($units_piped)$/i;
+}
+
+=head2 systemd_user_root_safe(user)
+
+Returns 1 if the user's systemd unit config path does not contain symlinked
+components controlled by the user.
+
+=cut
+sub systemd_user_root_safe
+{
+my ($user) = @_;
+my $uinfo = &get_systemd_user_details($user);
+return 0 if (!$uinfo);
+
+# Every path component below ~/.config is user-controlled, so reject symlinks
+# before any root-visible operation uses the directory.
+foreach my $dir ($uinfo->{'home'}."/.config",
+		 $uinfo->{'home'}."/.config/systemd",
+		 $uinfo->{'home'}."/.config/systemd/user") {
+	return 0 if (-l $dir);
+	return 0 if (-e $dir && !-d $dir);
+	}
+return 1;
+}
+
+=head2 systemd_user_unit_file_safe(user, file, [must-exist])
+
+Returns 1 if a user unit file is a direct, non-symlinked file below the
+user's systemd unit config directory.
+
+=cut
+sub systemd_user_unit_file_safe
+{
+my ($user, $file, $must_exist) = @_;
+my $root = &get_systemd_user_root($user);
+return 0 if (!$root || !$file || $file =~ /[\0\r\n]/);
+return 0 if (!&systemd_user_root_safe($user));
+
+# Only direct child unit files are managed.  This prevents path traversal and
+# avoids following user-created subdirectories or symlinks.
+return 0 if ($file !~ /^\Q$root\E\/([^\/]+)$/);
+my $unit = $1;
+return 0 if (!&valid_systemd_unit_name($unit));
+return 0 if (-l $file);
+return $must_exist ? -f $file : (!-e $file || -f $file);
+}
+
+=head2 read_systemd_user_unit_file(user, file)
+
+Reads a user unit file as the owning Unix user after path validation.
+
+=cut
+sub read_systemd_user_unit_file
+{
+my ($user, $file) = @_;
+return if (!&systemd_user_unit_file_safe($user, $file, 1));
+return &eval_as_unix_user($user, sub {
+	return &read_file_contents($file);
+	});
+}
+
+=head2 write_systemd_user_unit_file(user, file, data)
+
+Writes a user unit file as the owning Unix user after path validation.
+
+=cut
+sub write_systemd_user_unit_file
+{
+my ($user, $file, $data) = @_;
+return (0, $text{'systemd_euserunitfile'})
+	if (!&systemd_user_unit_file_safe($user, $file, 0));
+return (1, undef) if (&is_readonly_mode());
+my $ok = eval {
+	# Drop privileges for the actual write so a race cannot make root write
+	# through a user-controlled symlink.
+	&eval_as_unix_user($user, sub {
+		&open_lock_tempfile(USERUNIT, ">$file");
+		&print_tempfile(USERUNIT, $data);
+		&close_tempfile(USERUNIT);
+		&set_ownership_permissions(undef, undef, 0644, $file);
+		});
+	1;
+	};
+my $err = $@;
+$err =~ s/\s+at\s+(\/\S+)\s+line\s+(\d+)\.?// if ($err);
+return $ok ? (1, undef) : (0, $err || $text{'systemd_euserunitfile'});
+}
+
+=head2 delete_systemd_user_unit_file(user, file)
+
+Deletes a user unit file as the owning Unix user after path validation, so a
+symlinked path component cannot trick root into removing files outside the
+user's systemd unit config directory.
+
+=cut
+sub delete_systemd_user_unit_file
+{
+my ($user, $file) = @_;
+return 0 if (!&systemd_user_unit_file_safe($user, $file, 0));
+return 1 if (&is_readonly_mode());
+return &eval_as_unix_user($user, sub {
+	# Re-check in the user's context immediately before unlinking.
+	return 1 if (!-e $file && !-l $file);
+	return 0 if (-l $file || !-f $file);
+	return &unlink_file($file) ? 1 : 0;
+	});
+}
+
+=head2 make_systemd_user_root(user)
+
+Creates the base directory for a user's systemd unit config files.
+
+=cut
+sub make_systemd_user_root
+{
+my ($user) = @_;
+my $uinfo = &get_systemd_user_details($user);
+return if (!$uinfo);
+my @dirs = ( $uinfo->{'home'}."/.config",
+	     $uinfo->{'home'}."/.config/systemd",
+	     $uinfo->{'home'}."/.config/systemd/user" );
+foreach my $dir (@dirs) {
+	return if (-l $dir || (-e $dir && !-d $dir));
+	}
+return $dirs[-1] if (&is_readonly_mode() && &systemd_user_root_safe($user));
+my $ok = eval {
+	# Create the directory tree as the owning user, then validate it again in
+	# root context before returning the path.
+	&eval_as_unix_user($uinfo->{'user'}, sub {
+		foreach my $dir (@dirs) {
+			return 0 if (-l $dir || (-e $dir && !-d $dir));
+			if (!-d $dir) {
+				&make_dir($dir, 0755, 0) || return 0;
+				}
+			}
+		return 1;
+		});
+	};
+return if (!$ok || !&systemd_user_root_safe($user));
+return $dirs[-1];
+}
+
+=head2 systemd_user_command(user, command, ...)
+
+Returns a command line that runs a command inside the user's systemd context.
+
+=cut
+sub systemd_user_command
+{
+my ($user, @cmd) = @_;
+my $uinfo = &get_systemd_user_details($user);
+return if (!$uinfo);
+my $runtime = "/run/user/".$uinfo->{'uid'};
+
+# systemctl --user needs the user's home, runtime directory and bus address
+# even though the CGI is running from Webmin's root-owned environment.
+my $env = "HOME=".quotemeta($uinfo->{'home'})." ".
+	  "XDG_RUNTIME_DIR=".quotemeta($runtime)." ".
+	  "DBUS_SESSION_BUS_ADDRESS=".quotemeta("unix:path=".$runtime."/bus");
+return &command_as_user($uinfo->{'user'}, 0, $env." ".join(" ", @cmd));
+}
+
+=head2 systemd_user_systemctl_command(user, arg, ...)
+
+Returns a systemctl --user command line for some user.
+
+=cut
+sub systemd_user_systemctl_command
+{
+my ($user, @args) = @_;
+my $systemctl = &has_command("systemctl") || "systemctl";
+return &systemd_user_command($user, quotemeta($systemctl), "--user",
+			     map { quotemeta($_) } @args);
+}
+
+=head2 run_systemd_user_systemctl(user, arg, ...)
+
+Runs systemctl --user for some user, returning an OK flag and output.
+
+=cut
+sub run_systemd_user_systemctl
+{
+my ($user, @args) = @_;
+my $cmd = &systemd_user_systemctl_command($user, @args);
+return (0, $text{'systemd_euser'}) if (!$cmd);
+my $out = &backquote_logged($cmd." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+=head2 restart_systemd_user(user)
+
+Tell a user's systemd daemon to re-read its config.
+
+=cut
+sub restart_systemd_user
+{
+my ($user) = @_;
+return &run_systemd_user_systemctl($user, "daemon-reload");
+}
+
+=head2 set_systemd_user_linger(user, enabled)
+
+Enables or disables lingering for a user.
+
+=cut
+sub set_systemd_user_linger
+{
+my ($user, $enabled) = @_;
+my $uinfo = &get_systemd_user_details($user);
+return (0, $text{'systemd_euser'}) if (!$uinfo);
+my $loginctl = &has_command("loginctl");
+return (0, $text{'systemd_eloginctl'}) if (!$loginctl);
+my $cmd = quotemeta($loginctl)." ".
+	  ($enabled ? "enable-linger" : "disable-linger")." ".
+	  quotemeta($uinfo->{'user'});
+my $out = &backquote_logged($cmd." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+=head2 systemd_user_linger_enabled(user)
+
+Returns 1 if lingering is enabled for some user, 0 if not.
+
+=cut
+sub systemd_user_linger_enabled
+{
+my ($user) = @_;
+my $uinfo = &get_systemd_user_details($user);
+return 0 if (!$uinfo);
+return 1 if (-e "/var/lib/systemd/linger/".$uinfo->{'user'});
+my $loginctl = &has_command("loginctl");
+return 0 if (!$loginctl);
+my $out = &backquote_command(quotemeta($loginctl)." show-user ".
+			     quotemeta($uinfo->{'user'}).
+			     " -p Linger 2>/dev/null");
+return $out =~ /^Linger=yes/m ? 1 : 0;
+}
+
+=head2 start_systemd_user_manager(user)
+
+Starts a user's systemd manager through the system manager.
+
+=cut
+sub start_systemd_user_manager
+{
+my ($user) = @_;
+my $uinfo = &get_systemd_user_details($user);
+return (0, $text{'systemd_euser'}) if (!$uinfo);
+my $systemctl = &has_command("systemctl") || "systemctl";
+my $unit = "user\@".$uinfo->{'uid'}.".service";
+my $out = &backquote_logged(quotemeta($systemctl)." start ".
+			    quotemeta($unit)." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+=head2 systemd_user_file_description(user, file)
+
+Returns the Description= line from a systemd unit file.
+
+=cut
+sub systemd_user_file_description
+{
+my ($user, $file) = @_;
+my $data = &read_systemd_user_unit_file($user, $file);
+return if (!defined($data));
+return $1 if ($data =~ /^Description=(.*)$/m);
+return;
+}
+
+=head2 systemd_user_file_enabled(user, name)
+
+Returns 1 if some user unit file is enabled by a *.wants symlink. The lookup
+runs as the owning Unix user so that a symlinked path component cannot make
+root probe files outside the user's systemd unit config directory.
+
+=cut
+sub systemd_user_file_enabled
+{
+my ($user, $name) = @_;
+my $root = &get_systemd_user_root($user);
+return 0 if (!$root || !&systemd_user_root_safe($user));
+return &eval_as_unix_user($user, sub {
+	return 0 if (!-d $root);
+	opendir(my $dh, $root) || return 0;
+	my @dirs = grep { /\.wants$/ && -d "$root/$_" } readdir($dh);
+	closedir($dh);
+	foreach my $dir (@dirs) {
+		return 1 if (-e "$root/$dir/$name");
+		}
+	return 0;
+	});
+}
+
+=head2 list_systemd_user_services(user)
+
+Returns a list of all known systemd user units for some user.
+
+=cut
+sub list_systemd_user_services
+{
+my ($user) = @_;
+my $uinfo = &get_systemd_user_details($user);
+return ( ) if (!$uinfo);
+my $units_piped = join('|', &get_systemd_unit_types());
+my $list_types = join(" ", map { "-t ".quotemeta($_) }
+			   &get_systemd_list_unit_types());
+my @units;
+my $root = &get_systemd_user_root($user);
+my %local_files;
+
+# Read local user unit files even if the user's manager is not running.
+if ($root && &systemd_user_root_safe($user)) {
+	my @local_units = &eval_as_unix_user($user, sub {
+		return ( ) if (!-d $root || !opendir(SYSTEMDUSERUNITS, $root));
+		my @rv;
+		foreach my $unit (readdir(SYSTEMDUSERUNITS)) {
+			next if ($unit =~ /^\./ || $unit =~ /\.wants$/ ||
+				 $unit !~ /\.($units_piped)$/ || -d "$root/$unit");
+			push(@rv, $unit);
+			}
+		closedir(SYSTEMDUSERUNITS);
+		return @rv;
+		});
+	foreach my $unit (@local_units) {
+		next if (!&systemd_user_unit_file_safe($user, "$root/$unit", 1));
+		push(@units, $unit);
+		$local_files{$unit} = "$root/$unit";
+		}
+	}
+
+# Add active or loaded units from the user's manager.
+my $out = &backquote_command(
+	&systemd_user_systemctl_command($user, "list-units", "--full",
+					"--all", split(/\s+/, $list_types),
+					"--no-legend")." 2>/dev/null");
+foreach my $l (split(/\r?\n/, $out)) {
+	$l =~ s/^[^a-z0-9\-\_\.]+//i;
+	my ($unit, $loaded) = split(/\s+/, $l, 3);
+	push(@units, $unit)
+		if ($unit && $unit ne "UNIT" && $loaded eq "loaded");
+	}
+
+# Also add units from list-unit-files that may not be loaded.
+$out = &backquote_command(
+	&systemd_user_systemctl_command($user, "list-unit-files",
+					split(/\s+/, $list_types),
+					"--no-legend").
+	" 2>/dev/null");
+foreach my $l (split(/\r?\n/, $out)) {
+	if ($l =~ /^(\S+)\s+/) {
+		push(@units, $1);
+		}
+	}
+
+@units = grep { !/\@$/ && !/\@\.($units_piped)$/ } &unique(@units);
+
+# Dump state in batches, keeping command lines short and parsing the property
+# format into one hash per unit.
+my @show_units = @units;
+my %info;
+while(@show_units) {
+	my @args;
+	while(@args < 100 && @show_units) {
+		push(@args, shift(@show_units));
+		}
+	my $cmd = &systemd_user_systemctl_command(
+		$user, "show",
+		"--property=Id,Description,UnitFileState,ActiveState,SubState,ExecStart,ExecStop,ExecReload,ExecMainPID,FragmentPath,DropInPaths",
+		@args);
+	my $show = &backquote_command($cmd." 2>/dev/null");
+	my @lines = split(/\r?\n/, $show);
+	my $curr;
+	my @shown;
+	if (@lines) {
+		$curr = { };
+		push(@shown, $curr);
+		}
+	foreach my $l (@lines) {
+		if ($l eq "") {
+			$curr = { };
+			push(@shown, $curr);
+			}
+		else {
+			my ($n, $v) = split(/=/, $l, 2);
+			$curr->{$n} = $v;
+			}
+		}
+	foreach my $u (@shown) {
+		$info{$u->{'Id'}} = $u if ($u->{'Id'});
+		}
+	}
+
+my @rv;
+my %done;
+foreach my $name (sort keys %info) {
+	my $i = $info{$name};
+	my $file = $i->{'FragmentPath'} || $local_files{$name};
+
+	# Only expose local user-owned files.  Vendor user units are not editable
+	# here because deletion/editing would not affect their source.
+	next if ($root && (!$file || $file !~ /^\Q$root\E\//));
+	next if (!&systemd_user_unit_file_safe($user, $file, 1));
+	next if ($i->{'Description'} =~ /^LSB:\s/);
+	push(@rv, { 'name' => $name,
+		    'desc' => $i->{'Description'},
+		    'legacy' => 0,
+		    'boot' => $i->{'UnitFileState'} =~ /^enabled/ ? 1 :
+			      $i->{'UnitFileState'} eq 'static' ? 2 :
+			      $i->{'UnitFileState'} eq 'masked' ? -1 : 0,
+		    'status' => $i->{'ActiveState'} eq 'active' ? 1 : 0,
+		    'substatus' => $i->{'SubState'},
+		    'fullstatus' => $i->{'SubState'} ?
+			"@{[ucfirst($i->{'ActiveState'})]} ($i->{'SubState'})" :
+			ucfirst($i->{'ActiveState'}),
+		    'start' => $i->{'ExecStart'},
+		    'stop' => $i->{'ExecStop'},
+		    'reload' => $i->{'ExecReload'},
+		    'pid' => $i->{'ExecMainPID'},
+		    'file' => $file,
+		    'user' => $uinfo->{'user'},
+		  });
+	$done{$name}++;
+	}
+
+foreach my $name (sort keys %local_files) {
+	next if ($done{$name});
+
+	# Include local files even when the user manager is offline and cannot
+	# report them through systemctl show.
+	push(@rv, { 'name' => $name,
+		    'desc' => &systemd_user_file_description(
+			$user, $local_files{$name}) || "",
+		    'legacy' => 0,
+		    'boot' => &systemd_user_file_enabled($user, $name),
+		    'status' => undef,
+		    'fullstatus' => undef,
+		    'file' => $local_files{$name},
+		    'user' => $uinfo->{'user'},
+		  });
+	}
+
+	return sort { $a->{'name'} cmp $b->{'name'} } @rv;
+	}
+
+=head2 list_all_systemd_user_services()
+
+Returns all locally editable systemd user units from users' home directories.
+
+=cut
+sub list_all_systemd_user_services
+{
+my @rv;
+setpwent();
+while(my @uinfo = getpwent()) {
+	my ($user, $home) = ($uinfo[0], $uinfo[7]);
+	next if (!$user || $home !~ /^\//);
+	my $root = $home."/.config/systemd/user";
+	next if (!-d $root || !&systemd_user_root_safe($user));
+	push(@rv, &list_systemd_user_services($user));
+	}
+endpwent();
+return sort { $a->{'user'} cmp $b->{'user'} ||
+	      $a->{'name'} cmp $b->{'name'} } @rv;
+}
+
+=head2 start_systemd_user_service(user, name)
+
+Run the systemd user unit with some name, and return OK flag and output.
+
+=cut
+sub start_systemd_user_service
+{
+my ($user, $name) = @_;
+my ($ok, $out) = &run_systemd_user_systemctl($user, "start", $name);
+if (!$ok && $out =~ /journalctl/) {
+	my ($lok, $lout) = &logs_systemd_user_service($user, $name);
+	$out .= $lout if ($lout);
+	}
+return ($ok, $out);
+}
+
+=head2 stop_systemd_user_service(user, name)
+
+Shut down the systemd user unit with some name.
+
+=cut
+sub stop_systemd_user_service
+{
+my ($user, $name) = @_;
+return &run_systemd_user_systemctl($user, "stop", $name);
+}
+
+=head2 restart_systemd_user_service(user, name)
+
+Restart the systemd user unit with some name.
+
+=cut
+sub restart_systemd_user_service
+{
+my ($user, $name) = @_;
+return &run_systemd_user_systemctl($user, "restart", $name);
+}
+
+=head2 status_systemd_user_service(user, name)
+
+Get the full status of the systemd user unit with some name.
+
+=cut
+sub status_systemd_user_service
+{
+my ($user, $name) = @_;
+return &run_systemd_user_systemctl($user, "--full", "--no-pager",
+				  "status", $name);
+}
+
+=head2 logs_systemd_user_service(user, name)
+
+Get recent journal logs for the systemd user unit with some name.
+
+=cut
+sub logs_systemd_user_service
+{
+my ($user, $name) = @_;
+my $journalctl = &has_command("journalctl");
+return (0, $text{'systemd_ejournal'}) if (!$journalctl);
+my $cmd = &systemd_user_command($user, quotemeta($journalctl), "--user",
+				"--no-pager", "--unit", quotemeta($name),
+				"--lines", "200");
+return (0, $text{'systemd_euser'}) if (!$cmd);
+my $out = &backquote_logged($cmd." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+=head2 enable_systemd_user_service(user, name)
+
+Enable a systemd user unit.
+
+=cut
+sub enable_systemd_user_service
+{
+my ($user, $name) = @_;
+return &run_systemd_user_systemctl($user, "enable", $name);
+}
+
+=head2 disable_systemd_user_service(user, name)
+
+Disable a systemd user unit.
+
+=cut
+sub disable_systemd_user_service
+{
+my ($user, $name) = @_;
+return &run_systemd_user_systemctl($user, "disable", $name);
+}
+
+=head2 create_systemd_user_service(user, name, description, start-script, stop-script,
+				   reload-script, [forks], [pidfile], [exits],
+				   [&options])
+
+Create a new systemd user service with the given details.
+
+=cut
+sub create_systemd_user_service
+{
+my ($user, $name, $desc, $start, $stop, $restart, $forks, $pidfile, $exits,
+    $opts) = @_;
+my $uinfo = &get_systemd_user_details($user);
+return (0, $text{'systemd_euser'}) if (!$uinfo);
+my $root = &make_systemd_user_root($user);
+return (0, $text{'systemd_euserhome'}) if (!$root);
+my $cfile = $root."/".$name;
+return (0, $text{'systemd_eclash'}) if (-e $cfile || -l $cfile);
+
+# Render with the system service writer, then copy the bytes into the user's
+# home through the privilege-dropped user-unit writer.
+my $tmp = &transname();
+&write_systemd_service_file($tmp, $desc, $start, $stop, $restart, $forks,
+			    $pidfile, $exits, $opts);
+my $data = &read_file_contents($tmp);
+&unlink_file($tmp);
+my ($wok, $wout) = &write_systemd_user_unit_file($user, $cfile, $data);
+return ($wok, $wout) if (!$wok);
+my ($ok, $out) = &restart_systemd_user($user);
+if (!$ok) {
+	# Avoid leaving a half-created unit when daemon-reload cannot see it.
+	&delete_systemd_user_unit_file($user, $cfile);
+	}
+return ($ok, $out);
+}
+
+=head2 create_systemd_user_unit(user, name, type, description, body, [&options])
+
+Create a new non-service systemd user unit with the given details.
+
+=cut
+sub create_systemd_user_unit
+{
+my ($user, $name, $type, $desc, $body, $opts) = @_;
+my $uinfo = &get_systemd_user_details($user);
+return (0, $text{'systemd_euser'}) if (!$uinfo);
+my $root = &make_systemd_user_root($user);
+return (0, $text{'systemd_euserhome'}) if (!$root);
+my $cfile = $root."/".$name;
+return (0, $text{'systemd_eclash'}) if (-e $cfile || -l $cfile);
+
+# Non-service units share the same safe user write and rollback path.
+my $tmp = &transname();
+&write_systemd_unit_file($tmp, $type, $desc, $body, $opts);
+my $data = &read_file_contents($tmp);
+&unlink_file($tmp);
+my ($wok, $wout) = &write_systemd_user_unit_file($user, $cfile, $data);
+return ($wok, $wout) if (!$wok);
+my ($ok, $out) = &restart_systemd_user($user);
+if (!$ok) {
+	# Avoid leaving a half-created unit when daemon-reload cannot see it.
+	&delete_systemd_user_unit_file($user, $cfile);
+	}
+return ($ok, $out);
+}
+
+=head2 delete_systemd_user_service(user, name)
+
+Delete all traces of some systemd user unit.
+
+=cut
+sub delete_systemd_user_service
+{
+my ($user, $name) = @_;
+my $root = &get_systemd_user_root($user);
+return (0, $text{'systemd_euser'}) if (!$root);
+my $unit = &action_unit($name);
+
+# Keep the old bare-name compatibility path, but every candidate is deleted
+# through the privilege-dropped helper.
+foreach my $file (map { $root."/".$_ } &unique($name, $unit)) {
+	&delete_systemd_user_unit_file($user, $file) ||
+		return (0, $text{'systemd_euserunitfile'});
+	}
+return &restart_systemd_user($user);
 }
 
 =head2 delete_systemd_service(name)
 
-Delete all traces of some systemd service
+Delete all traces of some systemd unit.
 
 =cut
 sub delete_systemd_service
 {
 my ($name) = @_;
-&unlink_logged(&get_systemd_root($name)."/".$name);
-&unlink_logged(&get_systemd_root($name)."/".$name.".service");
+my $unit = &action_unit($name);
+foreach my $file (&unique($name, $unit)) {
+	&unlink_logged(&get_systemd_root($file)."/".$file);
+	}
 &restart_systemd();
 }
 
@@ -2522,9 +3461,102 @@ return ('target', 'service', 'socket', 'device', 'mount', 'automount',
 	'swap', 'path', 'timer', 'snapshot', 'slice', 'scope', 'busname');
 }
 
+=head2 get_systemd_creatable_unit_types()
+
+Returns systemd unit types that can be created as persistent unit files from
+this module.
+
+=cut
+sub get_systemd_creatable_unit_types
+{
+return ('service', 'timer', 'socket', 'path', 'target');
+}
+
+=head2 get_systemd_list_unit_types()
+
+Returns systemd unit types that should be listed by default.
+
+=cut
+sub get_systemd_list_unit_types
+{
+return ('service', 'timer', 'socket', 'path', 'target');
+}
+
+=head2 get_systemd_unit_type_from_name(name)
+
+Returns the systemd unit type suffix from a full unit name, such as service or
+timer, if it is a known unit type.
+
+=cut
+sub get_systemd_unit_type_from_name
+{
+my ($name) = @_;
+return if (!defined($name));
+my $units_piped = join('|', map { quotemeta } &get_systemd_unit_types());
+return lc($1) if ($name =~ /\.($units_piped)$/i);
+return;
+}
+
+=head2 systemd_index_url([unit-name], [user-scope], [user])
+
+Returns the init module index URL with the correct systemd tab selected when
+the unit type or user scope is known.
+
+=cut
+sub systemd_index_url
+{
+my ($name, $user_scope, $user) = @_;
+my @args;
+if ($user_scope) {
+	push(@args, "mode=user");
+	if ($user) {
+		push(@args, "scope=user");
+		push(@args, "unituser=".&urlize($user));
+		}
+	}
+else {
+	my $type = &get_systemd_unit_type_from_name($name);
+	my %list_types = map { $_, 1 } &get_systemd_list_unit_types();
+	push(@args, "mode=".&urlize($type)) if ($type && $list_types{$type});
+	}
+return "index.cgi".(@args ? "?".join("&", @args) : "");
+}
+
+=head2 get_systemd_unit_section(type)
+
+Returns the type-specific section name for a systemd unit type.
+
+=cut
+sub get_systemd_unit_section
+{
+my ($type) = @_;
+my %sections = ( 'service' => 'Service',
+		 'timer' => 'Timer',
+		 'socket' => 'Socket',
+		 'path' => 'Path',
+		 'target' => 'Target' );
+return $sections{$type};
+}
+
+=head2 get_systemd_default_install_target(type, [user-scope])
+
+Returns the default WantedBy target for a new systemd unit.
+
+=cut
+sub get_systemd_default_install_target
+{
+my ($type, $user_scope) = @_;
+my %targets = ( 'service' => $user_scope ? 'default.target' : 'multi-user.target',
+		'timer' => 'timers.target',
+		'socket' => 'sockets.target',
+		'path' => 'paths.target',
+		'target' => $user_scope ? 'default.target' : 'multi-user.target' );
+return $targets{$type};
+}
+
 =head2 is_systemd_service(name)
 
-Returns 1 if some service is managed by systemd
+Returns 1 if some unit is managed by systemd.
 
 =cut
 sub is_systemd_service
@@ -2615,7 +3647,7 @@ else {
 
 =head2 is_active_systemd(unit-name)
 
-Check if systemd service or socket is active
+Check if a systemd unit is active.
 
 =cut
 sub is_active_systemd
@@ -2719,7 +3751,7 @@ my $override_file = "$override_dir/$override_filename";
 
 # Create override directory if it doesn't exist
 if (!-d($override_dir)) {
-	mkdir($override_dir) ||
+	&make_dir($override_dir, 0755, 0) ||
 		&error("Failed to create directory '$override_dir': $!");
 	}
 

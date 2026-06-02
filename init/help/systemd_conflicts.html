@@ -1,0 +1,8 @@
+<header>Conflicts</header>
+<p>Units that cannot run at the same time as this unit. Starting one side
+causes systemd to stop the other.</p>
+<p>Enter space-separated unit names. This is useful for mutually exclusive
+implementations, such as two services that bind the same port or manage the
+same resource.</p>
+<p>Use <tt>After=</tt> or <tt>Before=</tt> as well if the stop/start order
+matters when switching between conflicting units.</p>

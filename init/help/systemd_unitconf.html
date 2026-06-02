@@ -1,0 +1,17 @@
+<header>Type-specific settings</header>
+<p>Directives for the selected non-service unit type. Enter directives only,
+without the section header; the correct section will be written, such as
+<tt>[Timer]</tt>, <tt>[Socket]</tt>, <tt>[Path]</tt>, or <tt>[Target]</tt>.</p>
+<p>For a timer, examples include <tt>OnCalendar=daily</tt>,
+<tt>Persistent=true</tt>, and <tt>Unit=myjob.service</tt>. If <tt>Unit=</tt>
+is omitted, systemd activates the service with the same base name, such as
+<tt>myjob.service</tt> for <tt>myjob.timer</tt>.</p>
+<p>For a socket, examples include <tt>ListenStream=8080</tt>,
+<tt>ListenStream=/run/myapp.sock</tt>, <tt>Accept=false</tt>, and
+<tt>Service=myapp.service</tt>. If <tt>Service=</tt> is omitted, systemd uses
+the service with the same base name.</p>
+<p>For a path unit, examples include <tt>PathChanged=/srv/myapp</tt>,
+<tt>PathExists=/var/run/myapp.ready</tt>, and <tt>Unit=myjob.service</tt>.</p>
+<p>For a target unit, this field can usually be left empty. Dependencies such
+as <tt>Wants=</tt>, <tt>Requires=</tt>, <tt>Before=</tt>, and <tt>After=</tt>
+are normally set in the common advanced options.</p>

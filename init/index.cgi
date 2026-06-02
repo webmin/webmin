@@ -5,7 +5,8 @@
 
 require './init-lib.pl';
 require './hostconfig-lib.pl';
-&ui_print_header(&text('index_mode', $text{'mode_'.$init_mode}),
+&ReadParse();
+&ui_print_header(&text('index_mode', &index_boot_system_title()),
 		 $text{'index_title'}, "", undef, 1, 1);
 
 if ($init_mode eq "osx" && $access{'bootup'}) {
@@ -329,70 +330,40 @@ elsif ($init_mode eq "upstart" && $access{'bootup'}) {
 
 	}
 elsif ($init_mode eq "systemd" && $access{'bootup'}) {
-	# Show systemd actions
-	print &ui_form_start("mass_systemd.cgi", "post");
-	@links = ( &select_all_link("d"),
-		   &select_invert_link("d"),
-		   &ui_link("edit_systemd.cgi?new=1", $text{'index_sadd'}) );
-	print &ui_links_row(\@links);
-	print &ui_columns_start([ "", $text{'systemd_name'},
-				  $config{'desc'} ? $text{'systemd_desc'} : (),
-				  $text{'systemd_type'},
-				  $text{'systemd_status'},
-				  $text{'systemd_boot'},
-				  $text{'index_ustatus'} ]);
-	my $units_piped = join('|', map { quotemeta } &get_systemd_unit_types());
-	foreach $u (&list_systemd_services()) {
-		if ($u->{'legacy'}) {
-			$l = "edit_action.cgi?0+".&urlize($u->{'name'});
-			}
-		else {
-			$l = "edit_systemd.cgi?name=".&urlize($u->{'name'});
-			}
-		my $sname = $u->{'name'};
-		my ($type) = $sname =~ /\.([^.]+)$/;
-		if (defined($type) && $type =~ /^(?:$units_piped)$/) {
-			$sname =~ s/\.$type$//;
-			}
-		else {
-			$type = '';
-			}
-		my $title = ($u->{'boot'} == -1 ?
-			    &html_escape($sname) :
-			    &ui_link($l, &html_escape($sname)));
-		my $desc = $config{'desc'} ? &html_escape($u->{'desc'}) : undef;
-		print &ui_columns_row([
-			&ui_checkbox("d", $u->{'name'}, undef),
-			$title,
-			$desc // (),
-			$type,
-			$u->{'fullstatus'} || "<i>$text{'index_unknown'}</i>",
-			$u->{'boot'} == 1 ?
-			    &ui_text_color("$text{'yes'}", 'success') :
-			  $u->{'boot'} == 2 ?
-			    &ui_text_color("$text{'index_sboot6'}", 'success') :
-			  $u->{'boot'} == -1 ?
-			    &ui_text_color("$text{'index_sboot5'}", 'warn') :
-			  &ui_text_color("$text{'no'}", 'warn'),
-			$u->{'status'} == 1 ? &ui_text_color("$text{'yes'}", 'success') :
-			  $u->{'status'} == 0 ?
-			  &ui_text_color("$text{'no'}", 'warn') :
-			  "<i>$text{'index_unknown'}</i>",
-			]);
+	# Show systemd units by type; keep user units on their own tab.
+	# Query parameters only choose the tab and optional user context.
+	print &systemd_index_style();
+	my $scope = $in{'scope'} eq 'user' ? 'user' : '';
+	my $unituser = &clean_systemd_unit_value($in{'unituser'});
+	my $unituser_details = $unituser ?
+		&get_systemd_user_details($unituser) : undef;
+	if ($scope eq 'user') {
+		$unituser_details || &error($text{'systemd_euser'});
 		}
-	print &ui_columns_end();
-	print &ui_links_row(\@links);
-	print &ui_form_end([ [ "start", $text{'index_start'} ],
-			     [ "stop", $text{'index_stop'} ],
-			     [ "restart", $text{'index_restart'} ],
-			     undef,
-			     [ "addboot", $text{'index_addboot'} ],
-			     [ "delboot", $text{'index_delboot'} ],
-			     undef,
-			     [ "addboot_start", $text{'index_addboot_start'} ],
-			     [ "delboot_stop", $text{'index_delboot_stop'} ],
-			    ]);
+	$unituser = "" if (!$unituser_details);
+	my @systemd_units = &list_systemd_services();
+	my @user_units = &list_all_systemd_user_services();
+	my @tabs = &systemd_index_tabs(\@systemd_units, \@user_units, $unituser);
+	my %valid_tabs = map { $_->{'id'}, 1 } @tabs;
+	my $requested = defined($in{'mode'}) ? $in{'mode'} : "";
+	my $mode = $requested && $valid_tabs{$requested} ? $requested :
+		   $scope eq 'user' && $valid_tabs{'user'} ? 'user' :
+		   $tabs[0]->{'id'};
+	my $formno = 0;
 
+	if (@tabs > 1) {
+		my @uitabs = map { [ $_->{'id'}, $_->{'title'} ] } @tabs;
+		print &ui_tabs_start(\@uitabs, "mode", $mode, 1);
+		foreach my $tab (@tabs) {
+			print &ui_tabs_start_tab("mode", $tab->{'id'});
+			&print_systemd_index_tab($tab, $formno++);
+			print &ui_tabs_end_tab("mode", $tab->{'id'});
+			}
+		print &ui_tabs_end(1);
+		}
+	else {
+		&print_systemd_index_tab($tabs[0], $formno);
+		}
 	}
 elsif ($init_mode eq "launchd" && $access{'bootup'}) {
 	# Show launchd agents
@@ -450,3 +421,252 @@ print &ui_buttons_end();
 
 &ui_print_footer("/", $text{'index'});
 
+# index_boot_system_title()
+# Returns the boot-system label shown in the page header.  For systemd
+# systems, prefer the exact systemctl version string so the title reflects
+# what is installed on the host.
+sub index_boot_system_title
+{
+return $text{'mode_'.$init_mode} if ($init_mode ne "systemd");
+my $systemctl = &has_command("systemctl");
+return $text{'mode_systemd'} if (!$systemctl);
+
+my $out = &backquote_command(quotemeta($systemctl)." --version 2>/dev/null");
+return $text{'mode_systemd'} if ($?);
+return $text{'mode_systemd'} if (!defined($out) || $out eq "");
+my ($first) = split(/\r?\n/, $out, 2);
+$first = &clean_systemd_unit_value($first);
+return $first || $text{'mode_systemd'};
+}
+
+# systemd_index_style()
+# Returns CSS used by the systemd index fragment.
+sub systemd_index_style
+{
+return &ui_tag('style',
+	".systemd_linger_toggle { text-decoration: none; }\n".
+	".systemd_linger_toggle .ui_text_color { border-bottom: 1px dotted currentColor; }\n",
+	{ 'type' => 'text/css' });
+}
+
+# systemd_index_tabs(&system-units, &user-units, [user])
+# Builds the tab metadata for the systemd index, keeping system unit types
+# separate and grouping all user-owned units into a dedicated tab.
+sub systemd_index_tabs
+{
+my ($system_units, $user_units, $unituser) = @_;
+my %by_type;
+foreach my $u (@$system_units) {
+	my ($display, $type) = &systemd_index_name_type($u->{'name'});
+	$type = 'service' if ($u->{'legacy'} || !$type);
+	next if (&indexof($type, &get_systemd_list_unit_types()) < 0);
+	$u->{'_systemd_display'} = $display;
+	$u->{'_systemd_type'} = $type;
+	push(@{$by_type{$type}}, $u);
+	}
+
+my @tabs;
+foreach my $type (&get_systemd_list_unit_types()) {
+	my $units = $by_type{$type} || [ ];
+	next if (!@$units);
+	push(@tabs, { 'id' => $type,
+		      'type' => $type,
+		      'title' => &systemd_index_tab_title($type),
+		      'desc' => &systemd_index_tab_desc($type),
+		      'units' => $units });
+	}
+
+foreach my $u (@$user_units) {
+	my ($display, $type) = &systemd_index_name_type($u->{'name'});
+	$u->{'_systemd_display'} = $display;
+	$u->{'_systemd_type'} = $type || 'service';
+	}
+if (@$user_units || $unituser) {
+	push(@tabs, { 'id' => 'user',
+		      'user' => 1,
+		      'unituser' => $unituser,
+		      'title' => $text{'systemd_tab_user'},
+		      'desc' => $text{'systemd_tabdesc_user'},
+		      'units' => $user_units });
+	}
+
+if (!@tabs) {
+	push(@tabs, { 'id' => 'service',
+		      'type' => 'service',
+		      'title' => &systemd_index_tab_title('service'),
+		      'desc' => &systemd_index_tab_desc('service'),
+		      'units' => [ ] });
+	}
+return @tabs;
+}
+
+# print_systemd_index_tab(&tab, form-number)
+# Outputs one systemd tab description and its mass-action table.
+sub print_systemd_index_tab
+{
+my ($tab, $formno) = @_;
+my $user_tab = $tab->{'user'} ? 1 : 0;
+my %linger_cache;
+my $create_url = $user_tab && $tab->{'unituser'} ?
+	"edit_systemd.cgi?new=1&scope=user&unittype=service&unituser=".
+	&urlize($tab->{'unituser'}) :
+	$user_tab ? "edit_systemd.cgi?new=1&scope=user&unittype=service" :
+	"edit_systemd.cgi?new=1&unittype=".&urlize($tab->{'type'} || 'service');
+my @links = ( &select_all_link("d", $formno),
+	      &select_invert_link("d", $formno),
+	      &ui_link($create_url, $text{'index_sadd'}) );
+
+print &ui_div($tab->{'desc'});
+print &ui_form_start("mass_systemd.cgi", "post");
+print &ui_links_row(\@links);
+print &ui_hidden("scope", "users") if ($user_tab);
+
+my @heads = ( "" );
+push(@heads, $text{'systemd_name'});
+push(@heads, $text{'systemd_desc'}) if ($config{'desc'});
+push(@heads, $text{'systemd_type'}) if ($user_tab);
+push(@heads, $text{'systemd_status'}, $text{'systemd_boot'},
+	     $text{'index_ustatus'});
+push(@heads, $text{'systemd_owner'}, $text{'systemd_linger_status'})
+	if ($user_tab);
+print &ui_columns_start(\@heads);
+foreach my $u (@{$tab->{'units'}}) {
+	my $link = $user_tab ?
+		"edit_systemd.cgi?scope=user&unituser=".&urlize($u->{'user'}).
+		"&name=".&urlize($u->{'name'}) :
+		$u->{'legacy'} ? "edit_action.cgi?0+".&urlize($u->{'name'}) :
+		"edit_systemd.cgi?name=".&urlize($u->{'name'});
+	my $title = (defined($u->{'boot'}) && $u->{'boot'} == -1 ?
+		     &html_escape($u->{'_systemd_display'}) :
+		     &ui_link($link, &html_escape($u->{'_systemd_display'})));
+	my $checkvalue = $user_tab ?
+		&systemd_user_unit_selection_value($u->{'user'}, $u->{'name'}) :
+		$u->{'name'};
+	my @row = ( &ui_checkbox("d", $checkvalue, undef) );
+	push(@row, $title);
+	push(@row, &html_escape($u->{'desc'})) if ($config{'desc'});
+	push(@row, &html_escape(&systemd_index_unit_type_title(
+			$u->{'_systemd_type'}))) if ($user_tab);
+	push(@row,
+	     $u->{'fullstatus'} || &ui_tag('i', $text{'index_unknown'}),
+	     &systemd_index_boot_column($u),
+	     &systemd_index_status_column($u));
+	if ($user_tab) {
+		if (!exists($linger_cache{$u->{'user'}})) {
+			$linger_cache{$u->{'user'}} =
+				&systemd_user_linger_enabled($u->{'user'});
+			}
+		push(@row, &ui_tag('tt', &html_escape($u->{'user'})),
+		     &systemd_linger_toggle_link(
+			$u->{'user'}, $linger_cache{$u->{'user'}}));
+		}
+	print &ui_columns_row(\@row);
+	}
+print &ui_columns_end();
+print &ui_links_row(\@links);
+print &ui_form_end([ [ "start", $text{'index_start'} ],
+		     [ "stop", $text{'index_stop'} ],
+		     [ "restart", $text{'index_restart'} ],
+		     undef,
+		     [ "addboot", $text{'index_addboot'} ],
+		     [ "delboot", $text{'index_delboot'} ],
+		     undef,
+		     [ "addboot_start", $text{'index_addboot_start'} ],
+		     [ "delboot_stop", $text{'index_delboot_stop'} ],
+		    ]);
+}
+
+# systemd_index_name_type(unit-name)
+# Splits a full unit name into display name and unit type.
+sub systemd_index_name_type
+{
+my ($name) = @_;
+my $units_piped = join('|', map { quotemeta } &get_systemd_unit_types());
+my ($type) = $name =~ /\.([^.]+)$/;
+if (defined($type) && $type =~ /^(?:$units_piped)$/) {
+	my $display = $name;
+	$display =~ s/\.$type$//;
+	return ($display, $type);
+	}
+return ($name, "");
+}
+
+# systemd_index_tab_title(type)
+# Returns the plural tab title for a systemd unit type.
+sub systemd_index_tab_title
+{
+my ($type) = @_;
+return $text{'systemd_tab_'.$type} ||
+       $text{'systemd_type_'.$type} ||
+       ucfirst($type);
+}
+
+# systemd_index_tab_desc(type)
+# Returns the explanatory text shown under a systemd unit tab.
+sub systemd_index_tab_desc
+{
+my ($type) = @_;
+return $text{'systemd_tabdesc_'.$type} || "";
+}
+
+# systemd_index_unit_type_title(type)
+# Returns the display label for a single unit type.
+sub systemd_index_unit_type_title
+{
+my ($type) = @_;
+return $text{'systemd_type_'.$type} || $type;
+}
+
+# systemd_user_unit_selection_value(user, unit)
+# Encodes a user-unit owner and name into one checkbox value for mass actions.
+sub systemd_user_unit_selection_value
+{
+my ($user, $unit) = @_;
+return &urlize($user)."\t".&urlize($unit);
+}
+
+# systemd_linger_toggle_link(user, enabled)
+# Returns a link to toggle linger for a user-unit owner.
+sub systemd_linger_toggle_link
+{
+my ($user, $enabled) = @_;
+my $target = $enabled ? 0 : 1;
+my $label = $enabled ? $text{'yes'} : $text{'no'};
+my $type = $enabled ? 'success' : 'warn';
+my $title = $enabled ? &text('systemd_linger_disable', $user) :
+		       &text('systemd_linger_enable', $user);
+my $url = "set_systemd_linger.cgi?user=".&urlize($user).
+	  "&enabled=".$target;
+return &ui_tag('a', &ui_text_color(&html_escape($label), $type),
+	       { 'href' => $url,
+		 'class' => 'systemd_linger_toggle',
+		 'title' => $title });
+}
+
+# systemd_index_boot_column(&unit)
+# Returns the formatted startup-state column for a unit row.
+sub systemd_index_boot_column
+{
+my ($u) = @_;
+return defined($u->{'boot'}) && $u->{'boot'} == 1 ?
+	&ui_text_color("$text{'yes'}", 'success') :
+       defined($u->{'boot'}) && $u->{'boot'} == 2 ?
+	&ui_text_color("$text{'index_sboot6'}", 'success') :
+       defined($u->{'boot'}) && $u->{'boot'} == -1 ?
+	&ui_text_color("$text{'index_sboot5'}", 'warn') :
+       !defined($u->{'boot'}) ?
+	&ui_tag('i', $text{'index_unknown'}) :
+	&ui_text_color("$text{'no'}", 'warn');
+}
+
+# systemd_index_status_column(&unit)
+# Returns the formatted runtime-state column for a unit row.
+sub systemd_index_status_column
+{
+my ($u) = @_;
+return defined($u->{'status'}) && $u->{'status'} == 1 ?
+	&ui_text_color("$text{'yes'}", 'success') :
+       defined($u->{'status'}) && $u->{'status'} == 0 ?
+	&ui_text_color("$text{'no'}", 'warn') :
+       &ui_tag('i', $text{'index_unknown'});
+}

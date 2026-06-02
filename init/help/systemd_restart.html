@@ -1,0 +1,9 @@
+<header>Restart policy</header>
+<p>Controls when systemd restarts the service after it exits. This writes
+<tt>Restart=</tt>.</p>
+<p><tt>no</tt> disables automatic restarts. <tt>on-failure</tt> restarts after
+non-zero exits, signals, timeouts, and watchdog failures. <tt>always</tt>
+restarts after almost any exit except an explicit stop by systemd.</p>
+<p><tt>on-success</tt>, <tt>on-abnormal</tt>, <tt>on-abort</tt>, and
+<tt>on-watchdog</tt> are narrower policies. For ordinary server processes,
+<tt>on-failure</tt> is usually the practical choice.</p>
