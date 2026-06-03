@@ -9,14 +9,14 @@ sub parse_webmin_log
 {
 local ($user, $script, $action, $type, $object, $p) = @_;
 
-# User unit names and owners can come from user-controlled home directories, so
-# escape them before inserting into the log viewer HTML.
+# This parser returns HTML fragments, so escape log values before wrapping them
+# in UI tags or translated strings.
 if ($type eq 'systemd-user' &&
     ($action eq 'modify' || $action eq 'create' || $action eq 'delete' ||
      $action eq 'status' || $action eq 'logs' ||
      $action eq 'massstart' || $action eq 'massstop' ||
      $action eq 'massrestart' || $action eq 'massenable' ||
-	     $action eq 'massdisable' || $action eq 'linger')) {
+     $action eq 'massdisable' || $action eq 'linger')) {
 	if ($action eq 'linger') {
 		return &text('log_user_linger',
 			     &ui_tag('tt', &html_escape($p->{'user'})),
@@ -79,7 +79,7 @@ elsif ($action eq 'massstart' || $action eq 'massstop' ||
 			  split(/\s+/, $object)));
 	}
 elsif ($action eq 'telinit') {
-	return &text('log_telinit', $object);
+	return &text('log_telinit', &html_escape($object));
 	}
 else {
 	return;
