@@ -4,6 +4,7 @@ use warnings;
 use Test::More;
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
+use File::Path qw(make_path);
 use File::Temp qw(tempdir);
 
 my $root = abs_path(dirname(__FILE__)."/../..") or die "rootdir: $!";
@@ -58,6 +59,7 @@ close($fh) || die "close $file: $!";
 sub lock_file { return 1; }
 sub unlock_file { return 1; }
 sub error { die join("", @_), "\n"; }
+sub unflush_file_lines { delete($file_cache{$_[0]}); }
 sub has_command { return $_[0] eq "netplan" ? "/usr/sbin/netplan" : undef; }
 sub execute_command_logged
 {
@@ -67,6 +69,13 @@ my $out = $command_output{$cmd} || "";
 $$stdout = $out if (ref($stdout));
 $$stderr = $out if (ref($stderr) && $stderr ne $stdout);
 return $command_status{$cmd} || 0;
+}
+sub backquote_logged
+{
+my ($cmd) = @_;
+push(@commands, $cmd);
+$? = $command_status{$cmd} || 0;
+return $command_output{$cmd} || "";
 }
 sub check_ipaddress { return $_[0] =~ /^\d+\.\d+\.\d+\.\d+$/; }
 sub check_ip6address { return $_[0] =~ /:/; }
@@ -83,6 +92,29 @@ return -1;
 }
 
 unshift(@INC, "$root/net", $root);
+do "$root/net/net-detect.pl" || die "net-detect.pl: $@ $!";
+
+my $detect_root = tempdir(CLEANUP => 1);
+my $detect_netplan = "$detect_root/netplan";
+my $detect_no_netplan = "$detect_root/no-netplan";
+my $detect_nm = "$detect_root/NetworkManager/system-connections";
+my $detect_nm_empty = "$detect_root/NetworkManager-empty/system-connections";
+make_path($detect_netplan, $detect_nm, $detect_nm_empty);
+write_text("$detect_nm/eth0.nmconnection", "");
+
+is(main::net_auto_backend("debian-linux", $detect_netplan, $detect_nm_empty),
+   "netplan", "Debian uses Netplan when the config directory exists");
+is(main::net_auto_backend("debian-linux", $detect_no_netplan, $detect_nm),
+   "nm", "Debian uses NetworkManager when only nmconnection files exist");
+is(main::net_auto_backend("redhat-linux", $detect_no_netplan, $detect_nm),
+   "nm", "Red Hat still uses NetworkManager when nmconnection files exist");
+write_text("$detect_netplan/50-cloud-init.yaml", "");
+is(main::net_auto_backend("debian-linux", $detect_netplan, $detect_nm),
+   "netplan", "Debian prefers Netplan over NetworkManager when YAML exists");
+unlink("$detect_netplan/50-cloud-init.yaml");
+is(main::net_auto_backend("debian-linux", $detect_no_netplan, $detect_nm_empty),
+   undef, "Debian falls back when no Netplan or NetworkManager config exists");
+
 do "$root/net/netplan-lib.pl" || die "netplan-lib.pl: $@ $!";
 
 {
@@ -166,5 +198,38 @@ is_deeply(\@commands,
 	  [ "(cd / && /usr/sbin/netplan generate)",
 	    "(cd / && /usr/sbin/netplan apply)" ],
 	  "apply_network validates before applying");
+
+do "$root/net/nm-lib.pl" || die "nm-lib.pl: $@ $!";
+my $nmfile = "$tmp/eth0.nmconnection";
+write_text($nmfile, <<'NM');
+[connection]
+id=eth0
+uuid=11111111-2222-3333-4444-555555555555
+type=ethernet
+interface-name=eth0
+
+[ipv4]
+method=auto
+
+[ipv6]
+method=disabled
+NM
+my $nmcfg = main::read_nm_config($nmfile);
+my $nmiface = {
+	'name' => 'eth0',
+	'fullname' => 'eth0',
+	'file' => $nmfile,
+	'cfg' => $nmcfg,
+	'edit' => 1,
+	'up' => 1,
+	'dhcp' => 1,
+	'address6' => [ ],
+	'netmask6' => [ ],
+	'nameserver' => [ "2001:4860:4860::8888" ],
+	};
+@commands = ( );
+main::save_interface($nmiface, [ $nmiface ]);
+like(join("\n", @commands), qr/ipv6\.dns/,
+     "NetworkManager save_interface writes IPv6 nameservers");
 
 done_testing();
