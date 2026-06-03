@@ -249,11 +249,11 @@ do {    local $oldexit = $?;
 	} while($xp > 0);
 }
 
-# pty_process_exec(command, [uid, gid], [force-binary-name])
+# pty_process_exec(command, [uid, gid], [force-binary-name], [skip-stty])
 # Starts the given command in a new pty and returns the pty filehandle and PID
 sub pty_process_exec
 {
-local ($cmd, $uid, $gid, $binary) = @_;
+local ($cmd, $uid, $gid, $binary, $skip_stty) = @_;
 if (&is_readonly_mode()) {
 	# When in readonly mode, don't run the command
 	$cmd = "/bin/true";
@@ -262,6 +262,13 @@ if (&is_readonly_mode()) {
 	if ($gconfig{'debug_what_cmd'});
 
 my ($ptyfh, $ttyfh, $pty, $tty, $TIOCSCTTY);
+my $set_pty_raw_noecho = sub {
+	my ($ttyfh) = @_;
+	eval "use IO::Stty";
+	if (!$@) {
+		IO::Stty::stty($ttyfh, 'raw', '-echo');
+		}
+	};
 
 eval "use IO::Pty";
 if (!$@) {
@@ -281,10 +288,7 @@ if (!$@) {
 		$ptyfh->make_slave_controlling_terminal();
 
 		# Turn off echoing, if we can
-		eval "use IO::Stty";
-		if (!$@) {
-			IO::Stty::stty($ttyfh, 'raw', '-echo');
-			}
+		$set_pty_raw_noecho->($ttyfh) if (!$skip_stty);
 
 		close(STDIN); close(STDOUT); close(STDERR);
 		untie(*STDIN); untie(*STDOUT); untie(*STDERR);
@@ -342,10 +346,7 @@ elsif (defined &linux_openpty &&
 			};
 
 		# Turn off echoing, if we can
-		eval "use IO::Stty";
-		if (!$@) {
-			IO::Stty::stty($ttyfh, 'raw', '-echo');
-			}
+		$set_pty_raw_noecho->($ttyfh) if (!$skip_stty);
 
 		close(STDIN); close(STDOUT); close(STDERR);
 		untie(*STDIN); untie(*STDOUT); untie(*STDERR);
@@ -397,10 +398,7 @@ else {
 			}
 
 		# Turn off echoing, if we can
-		eval "use IO::Stty";
-		if (!$@) {
-			IO::Stty::stty($ttyfh, 'raw', '-echo');
-			}
+		$set_pty_raw_noecho->($ttyfh) if (!$skip_stty);
 
 		if (defined(&open_controlling_pty)) {
 			&open_controlling_pty($ptyfh, $ttyfh, $pty, $tty);
