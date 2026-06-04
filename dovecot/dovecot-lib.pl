@@ -26,7 +26,9 @@ return undef;
 # directives
 sub get_add_config_file
 {
-foreach my $f (split(/\s+/, $config{'add_config'})) {
+my $f = $config{'add_config'};
+$f =~ s/^\s+|\s+$//g;
+if ($f) {
 	return $f if (-r $f);
 	}
 return &get_config_file();
