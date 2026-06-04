@@ -86,8 +86,12 @@ if ($in{'new'}) {
 			    &ui_yesno_radio("boot", 1));
 
 	# User service controls
-	my $default_unituser = $unituser ||
-		($remote_user && $remote_user ne "root" ? $remote_user : undef);
+	my $default_unituser = $unituser;
+	if (!$default_unituser) {
+		my $ruinfo = &get_systemd_user_details($remote_user);
+		$default_unituser = $ruinfo->{'user'}
+			if ($ruinfo && $ruinfo->{'uid'} != 0);
+		}
 	# User units live in the selected user's home and run under that user's
 	# systemd manager, so the service-level User=/Group= rows are hidden by JS.
 	print &ui_table_row(&hlink($text{'systemd_userservice'}, "systemd_userservice"),
