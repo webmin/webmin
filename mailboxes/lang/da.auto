@@ -17,7 +17,7 @@ index_find=Find brugere, hvor brugernavn
 index_equals=lige med
 index_contains=indeholder
 index_eperl=Det Perl-modul $1, der kræves til den valgte SMTP-godkendelsestilstand, er ikke installeret eller mangler et afhængigt modul. <a href='$2'>Klik her</a> for at installere det nu.
-index_file=Læs Mail i File eller Maildir:
+index_file=Læs Mail i File eller Maildir
 index_nousers=Ingen brugere blev fundet!
 index_nousersmail=Ingen brugere med e-mail blev fundet.
 

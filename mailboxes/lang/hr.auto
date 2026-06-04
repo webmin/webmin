@@ -17,7 +17,7 @@ index_find=Pronađi korisnike gdje je korisničko ime
 index_equals=jednaki
 index_contains=sadrži
 index_eperl=Perl modul $1 potreban za odabrani način provjere identiteta SMTP nije instaliran ili nedostaje ovisni modul. <a href='$2'>Kliknite ovdje</a> da biste ga sada instalirali.
-index_file=Pročitajte poštu u datoteci ili maildiru:
+index_file=Pročitajte poštu u datoteci ili maildiru
 index_nousers=Nisu pronađeni korisnici!
 index_nousersmail=Nije pronađen nijedan korisnik s e-poštom.
 

@@ -4,6 +4,8 @@
 
 require './mailboxes-lib.pl';
 &ReadParse();
+&error_setup($text{'mail_eopen'});
+$in{'user'} =~ /\S/ || &error($text{'mail_euser'});
 &can_user($in{'user'}) || &error($text{'mail_ecannot'});
 &is_user($in{'user'}) || -e $in{'user'} || &error($text{'mail_efile'});
 $uuser = &urlize($in{'user'});

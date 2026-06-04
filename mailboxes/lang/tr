@@ -16,7 +16,7 @@ index_find=Kullanıcıları bul
 index_equals=Eşitlik
 index_contains=içeriyor
 index_eperl=Seçilen STMP doğrulama modu için $1 Perl modülüne ihtiyaç. <a href='$2'>buraya tıklayara yükleyebilirsiniz</a>
-index_file=Dosyadaki postayı oku:
+index_file=Dosyadaki postayı oku
 index_nousers=Hiçbir kullanıcı bulunamadı'
 index_nousersmail=E-posta'sı olan hiçbir kullanıcı bulunamadı.
 

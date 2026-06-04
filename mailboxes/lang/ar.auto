@@ -17,7 +17,7 @@ index_find=العثور على المستخدمين حيث اسم المستخد
 index_equals=يساوي
 index_contains=يحتوي على
 index_eperl=The Perl module $1 needed for the selected SMTP authentication mode is not installed or is missing a dependent module. <a href='$2'>Click here</a> to install it now.
-index_file=قراءة البريد في ملف أو Maildir:
+index_file=قراءة البريد في ملف أو Maildir
 index_nousers=لم يتم العثور على المستخدمين!
 index_nousersmail=لم يتم العثور على المستخدمين الذين لديهم بريد إلكتروني.
 

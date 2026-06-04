@@ -8,7 +8,7 @@ index_system2=Levelező szerver: Qmail
 index_system1=Levelező szerver: Sendmail
 index_system0=Levelező szerver: Postfix
 index_contains=tartalom
-index_file=Levél olvasása fájlból:
+index_file=Levél olvasása fájlból
 
 mail_title=Levelek
 mail_from=Feladó

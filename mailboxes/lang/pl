@@ -17,7 +17,7 @@ index_find=Wyszukaj użytkowników, gdzie nazwa użytkownika
 index_equals=jest równa
 index_contains=zawiera
 index_eperl=Moduł Perl $1 wymagany dla wybranego trybu uwierzytelniania SMTP nie jest zainstalowany lub brakuje zależnego modułu. <a href='$2'>Kliknij tutaj</a>, aby go teraz zainstalować.
-index_file=Odczytaj pocztę z pliku lub Maildir:
+index_file=Odczytaj pocztę z pliku lub Maildir
 index_nousers=Nie znaleziono żadnych użytkowników!
 index_nousersmail=Nie znaleziono użytkowników z pocztą.
 

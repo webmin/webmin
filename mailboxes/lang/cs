@@ -13,7 +13,7 @@ index_find=Najít uživatele, kdy uživatelské jméno
 index_equals=odpovídá
 index_contains=obsahuje
 index_eperl=Perlový podul $1 potřebný pro vybraný mód ověření SMTP není instalován nebo chybí závislý modul. <a href='$2'>Klikněte zde</a> pro instalaci.
-index_file=Čtení pošty ze souboru:
+index_file=Čtení pošty ze souboru
 index_nousers=Žádní uživatelé nenalezeni!
 index_nousersmail=V e-mailu nebyli nalezeni žádní uživatelé.
 

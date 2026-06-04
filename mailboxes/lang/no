@@ -17,7 +17,7 @@ index_find=Finn brukere hvor brukernavnet
 index_equals=er lik
 index_contains=inneholder
 index_eperl=Perl modulen $1 som er nødvendig for den valgte SMTP autentiseringsmodusen er ikke installert eller den mangler an modul den er avhangig av. <a href='$2'>Klikk her</a> for å installere den nå.
-index_file=Les e-post i fil:
+index_file=Les e-post i fil
 index_nousers=Ingen brukere funnet!
 index_nousersmail=Ingen brukere med e-post ble funnet.
 

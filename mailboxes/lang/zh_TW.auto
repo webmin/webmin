@@ -4,7 +4,7 @@ index_system6=郵件服務器：Exim
 index_system5=郵件服務器：Qmail+VPopMail
 index_system4=郵件服務器：Qmail+LDAP
 index_eperl=所選SMTP身份驗證模式所需的Perl模塊$1未安裝或缺少從屬模塊。 <a href='$2'>單擊此處</a>立即安裝。
-index_file=讀取文件或Maildir中的郵件：
+index_file=讀取文件或Maildir中的郵件
 index_nousers=找不到用戶！
 index_nousersmail=找不到使用電子郵件的用戶。
 

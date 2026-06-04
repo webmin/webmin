@@ -17,7 +17,7 @@ index_find=Encuentra usuarios donde nombre de usuario
 index_equals=es igual
 index_contains=contiene
 index_eperl=El módulo Perl $1 necesario para el modo de autenticación SMTP seleccionado no está instalado o le falta un módulo dependiente. <a href='$2'>Haga clic aquí</a> para instalarlo ahora.
-index_file=Leer correo en archivo o Maildir:
+index_file=Leer correo en archivo o Maildir
 index_nousers=¡No se encontraron usuarios!
 index_nousersmail=No se encontraron usuarios con correo electrónico.
 

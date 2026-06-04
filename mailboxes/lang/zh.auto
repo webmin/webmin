@@ -17,7 +17,7 @@ index_find=查找用户名所在的用户
 index_equals=等于
 index_contains=包含
 index_eperl=所选SMTP身份验证模式所需的Perl模块$1未安装或缺少从属模块。 <a href='$2'>单击此处</a>立即安装。
-index_file=读取文件或Maildir中的邮件：
+index_file=读取文件或Maildir中的邮件
 index_nousers=找不到用户！
 index_nousersmail=找不到使用电子邮件的用户。
 

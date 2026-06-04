@@ -17,7 +17,7 @@ index_find=Nájdite používateľov, kde je používateľské meno
 index_equals=rovní
 index_contains=obsahuje
 index_eperl=Nie je nainštalovaný modul Perl $1 potrebný pre vybratý režim autentifikácie SMTP alebo chýba závislý modul. <a href='$2'>Kliknite sem</a> a nainštalujte ho teraz.
-index_file=Čítanie správ v súbore alebo v pošte:
+index_file=Čítanie správ v súbore alebo v pošte
 index_nousers=Nenašli sa žiadni používatelia!
 index_nousersmail=Nenašli sa žiadni používatelia s e-mailom.
 

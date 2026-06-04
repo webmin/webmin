@@ -6,7 +6,7 @@ index_system2=Sähköpostipalvelin: Qmail
 index_system1=Sähköpostipalvelin: Sendmail
 index_system0=Sähköpostipalvelin: Postfix
 index_contains=Sisältää
-index_file=Luo sähköposti tiedostosta:
+index_file=Luo sähköposti tiedostosta
 index_nousers=Käyttäjiä ei löytynyt!
 index_nousersmail=Yhtään sähköpostikäyttäjää ei löytynyt.
 

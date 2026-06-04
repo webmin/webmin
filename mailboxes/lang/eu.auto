@@ -17,7 +17,7 @@ index_find=Erabiltzaile izena erabiltzaileak aurkitu
 index_equals=berdinen
 index_contains=dauka
 index_eperl=Hautatutako SMTP autentifikazio moduan beharrezkoa den Perl modulua $1 ez dago instalatuta edo ez dago menpeko modulurik. <a href='$2'>Egin klik hemen</a> orain instalatzeko.
-index_file=Irakurri Posta Fitxategian edo Maildir-en:
+index_file=Irakurri Posta Fitxategian edo Maildir-en
 index_nousers=Ez da erabiltzailerik aurkitu!
 index_nousersmail=Ez da mezu elektronikorik aurkitu erabiltzaileak.
 

@@ -16,7 +16,7 @@ index_find=Vind gebruikers met de naam
 index_equals=gelijken
 index_contains=bevat
 index_eperl=De Perl module $1 die nodig is voor de geselecteerde SMTP authenticatie mode is niet geinstalleerd of mist een afhankelijke module. <a href='$2'>Klik hier</a> om het nu te installeren.
-index_file=Lees Email in File :
+index_file=Lees Email in File
 index_nousers=Geen gebruikers gevonden!
 index_nousersmail=Geen gebruikers met email gevonden.
 

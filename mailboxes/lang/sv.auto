@@ -17,7 +17,7 @@ index_find=Hitta användare där användarnamn
 index_equals=jämlikar
 index_contains=innehåller
 index_eperl=Perl-modulen $1 som behövs för det valda SMTP-autentiseringsläget är inte installerat eller saknas en beroende modul. <a href='$2'>Klicka här</a> för att installera det nu.
-index_file=Läs Mail i File eller Maildir:
+index_file=Läs Mail i File eller Maildir
 index_nousers=Inga användare hittades!
 index_nousersmail=Inga användare med e-post hittades.
 

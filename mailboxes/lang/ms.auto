@@ -17,7 +17,7 @@ index_find=Cari pengguna di mana nama pengguna
 index_equals=sama dengan
 index_contains=mengandungi
 index_eperl=Mod Perl $1 diperlukan untuk mod pengesahan SMTP yang dipilih tidak dipasang atau tiada modul yang bergantung. <a href='$2'>Klik di sini</a> untuk memasangnya sekarang.
-index_file=Baca Mel dalam Fail atau Maildir:
+index_file=Baca Mel dalam Fail atau Maildir
 index_nousers=Tiada pengguna dijumpai!
 index_nousersmail=Tiada pengguna dengan e-mel yang ditemui.
 

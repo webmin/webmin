@@ -12,7 +12,7 @@ index_toomany=시스템의 사용자가 너무 많아서 한 페이지에 모두
 index_find=유저이름에서 유저 찾기
 index_contains=포함
 index_eperl=SMTP 인증 모드를 위한 $1 펄모듈이 설치되어 있지 않거나, 의존성이 걸려있는 도뮬이 설치되어 있지 않습니다. 지금 설치 하려면 <a href='$2'>여기를 클릭</a>하십시오.
-index_file=파일의 메일 읽기:
+index_file=파일의 메일 읽기
 index_nousers=유저를 찾을 수 없습니다!
 index_nousersmail=이메일을 가지고 있는 유저가 존재하지 않습니다.
 
