@@ -60,7 +60,7 @@ sub ui_help
 {
 return &theme_ui_help(@_) if (defined(&theme_ui_help));
 my ($title) = @_;
-$title = html_strip($title);
+$title = &html_escape(&html_strip($title));
 return ("<sup class=\"ui_help\" aria-label=\"$title\" data-tooltip><samp>?</samp></sup>");
 }
 
@@ -84,7 +84,10 @@ sub ui_img
 {
 return &theme_ui_img(@_) if (defined(&theme_ui_img));
 my ($src, $alt, $title, $class, $tags) = @_;
-return ("<img src='".$src."' class='ui_img".($class ? " ".$class : "")."' alt='$alt' ".($title ? "title='$title'" : "").($tags ? " ".$tags : "").">");
+my $esrc   = &quote_escape($src);
+my $ealt   = &quote_escape($alt);
+my $etitle = &quote_escape($title);
+return ("<img src='".$esrc."' class='ui_img".($class ? " ".$class : "")."' alt='$ealt' ".($title ne '' ? "title='$etitle'" : "").($tags ? " ".$tags : "").">");
 }
 
 =head2 ui_link_button(href, text, [target], [tags])
@@ -3046,15 +3049,21 @@ my ($url, $window, $timeout) = @_;
 if (defined(&theme_js_redirect)) {
 	return &theme_js_redirect(@_);
 	}
-$window ||= "window";
-$timeout ||= 0;
+$window = $window && $window =~ /^[\w.]+$/ ? $window : "window";
+$timeout = int($timeout);
 if ($url =~ /^\//) {
 	# If the URL is like /foo , add webprefix
 	$url = &get_webprefix().$url;
 	}
+$url = &quote_escape($url);
+# Prevent the URL from terminating or destabilising the enclosing
+# script element. </script> would close it outright; <!-- would push
+# the parser into script-data-escaped state.
+$url =~ s|</script|<\\/script|gi;
+$url =~ s|<!--|<\\!--|g;
 return "<script type='text/javascript'>
 		setTimeout(function(){
-			${window}.location = '".&quote_escape($url)."';
+			${window}.location = '$url';
 		}, $timeout);
 	</script>";
 }
