@@ -364,7 +364,7 @@ if ($parent) {
 	}
 else {
 	# Add to the global config file
-	$file = &get_config_file();
+	$file = $before ? $before->{'file'} : &get_add_config_file();
 	$lref = &read_file_lines($file);
 	if ($before) {
 		# Add before another block
