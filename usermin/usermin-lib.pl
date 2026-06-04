@@ -41,7 +41,7 @@ $latest_page_url = "$http_proto://$update_host/index6.html";
 $latest_rpm = "$http_proto://$update_host/download/usermin-latest.noarch.rpm";
 $latest_tgz = "$http_proto://$update_host/download/usermin-latest.tar.gz";
 
-$default_key_size = 2048;
+$default_key_size = 4096;
 
 $cron_cmd = "$module_config_directory/update.pl";
 

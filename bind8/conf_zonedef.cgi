@@ -92,7 +92,7 @@ if (&supports_dnssec()) {
 
 	# Default algorithm
 	print &ui_table_row($text{'zonedef_alg'},
-		&ui_select("alg", $config{'tmpl_dnssecalg'} || "RSASHA1",
+		&ui_select("alg", $config{'tmpl_dnssecalg'} || "RSASHA256",
 			   [ &list_dnssec_algorithms() ]), 3);
 
 	# Default size

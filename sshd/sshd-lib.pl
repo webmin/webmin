@@ -505,7 +505,7 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 6.5) {
 	return "ed25519";
 	}
 if ($version{'type'} eq 'openssh' && $version{'number'} >= 3.2) {
-	return "rsa1";
+	return "rsa";
 	}
 return undef;
 }

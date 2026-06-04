@@ -1,6 +1,7 @@
 use vars qw($theme_no_table $ui_radio_selector_donejs $module_name
 	    $ui_multi_select_donejs, $ui_formcount,
-	    $ui_form_end_side_by_side_donecss);
+	    $ui_form_end_side_by_side_donecss,
+	    $ui_form_grouped_buttons_donecss);
 
 =head1 ui-lib.pl
 
@@ -817,6 +818,48 @@ $rv .= &_ui_form_end_nojs($nojs);
 return $rv;
 }
 
+=head2 ui_form_grouped_buttons(&groups, [width])
+
+Returns HTML for a responsive row of submit buttons, without closing the form.
+Each button uses the same array format as C<ui_form_end>.
+
+Pass an array of button groups. A group can be a normal button list, or a list
+of button lists when you want a visible gap between sets of buttons. Groups are
+spread across the row when there is room, and wrap on narrow screens. Buttons
+inside the same list stay visually joined.
+
+Example :
+
+  my @save_buttons = ([ undef, $text{'save'} ]);
+  my @control_buttons = ([ 'start', $text{'start'} ],
+                         [ 'stop', $text{'stop'} ]);
+  my @delete_buttons = ([ 'delete', $text{'delete'} ]);
+
+  print &ui_form_grouped_buttons([
+    [ \@save_buttons, \@control_buttons ],
+    \@delete_buttons,
+    ]);
+
+=cut
+sub ui_form_grouped_buttons
+{
+return &theme_ui_form_grouped_buttons(@_) if (defined(&theme_ui_form_grouped_buttons));
+my ($groups, $width) = @_;
+$groups ||= [ ];
+my @groups = grep { $_ && ref($_) eq 'ARRAY' && @$_ } @$groups;
+return "" if (!@groups);
+
+my %attrs = ( 'class' => 'ui_form_grouped_buttons' );
+$attrs{'style'} = "width:$width" if ($width);
+my $rv = &_ui_form_grouped_buttons_css();
+$rv .= &ui_tag_start('div', \%attrs);
+foreach my $group (@groups) {
+	$rv .= &_ui_form_grouped_buttons_group($group);
+	}
+$rv .= &ui_tag_end('div');
+return $rv;
+}
+
 sub _ui_form_end_buttons_table
 {
 my ($buttons, $width, $formid, $class) = @_;
@@ -850,6 +893,54 @@ $rv .= "</tr></table>\n";
 return $rv;
 }
 
+sub _ui_form_grouped_buttons_group
+{
+my ($group) = @_;
+my @clusters = &_ui_form_grouped_buttons_clusters($group);
+return "" if (!@clusters);
+my $rv = &ui_tag_start('div', { 'class' => 'ui_form_grouped_group' });
+foreach my $cluster (@clusters) {
+	$rv .= &_ui_form_grouped_buttons_cluster($cluster);
+	}
+$rv .= &ui_tag_end('div');
+return $rv;
+}
+
+sub _ui_form_grouped_buttons_clusters
+{
+my ($group) = @_;
+return ( ) if (!$group || ref($group) ne 'ARRAY' || !@$group);
+foreach my $item (@$group) {
+	next if (!defined($item));
+	return ref($item) eq 'ARRAY' &&
+	       (!@$item || ref($item->[0]) eq 'ARRAY') ?
+		grep { $_ && ref($_) eq 'ARRAY' && @$_ } @$group :
+		( $group );
+	}
+return ( );
+}
+
+sub _ui_form_grouped_buttons_cluster
+{
+my ($buttons) = @_;
+return "" if (!$buttons || !@$buttons);
+my $rv = &ui_tag_start('span', { 'class' => 'ui_form_grouped_cluster' });
+foreach my $b (@$buttons) {
+	next if (!defined($b));
+	if (ref($b)) {
+		my $submit = &ui_submit($b->[1], $b->[0], $b->[3], $b->[4]);
+		chomp($submit);
+		$rv .= $submit;
+		$rv .= $b->[2] ? " ".$b->[2] : "";
+		}
+	elsif ($b) {
+		$rv .= $b;
+		}
+	}
+$rv .= &ui_tag_end('span');
+return $rv;
+}
+
 sub _ui_form_end_side_by_side_css
 {
 return "" if ($ui_form_end_side_by_side_donecss++);
@@ -874,6 +965,41 @@ return <<'EOF';
 }
 </style>
 EOF
+}
+
+sub _ui_form_grouped_buttons_css
+{
+return "" if ($ui_form_grouped_buttons_donecss++);
+my $css = <<'EOF';
+.ui_form_grouped_buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em 0.45em;
+	align-items: flex-start;
+	justify-content: space-between;
+	width: 100%;
+}
+.ui_form_grouped_group {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 0 0 auto;
+	align-items: center;
+	width: max-content;
+	max-width: 100%;
+	margin: 0 -0.45em -0.45em 0;
+}
+.ui_form_grouped_cluster {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	max-width: 100%;
+	margin: 0 0.45em 0 0;
+}
+.ui_form_grouped_cluster .ui_submit {
+	margin: 0 0 0.45em 0;
+}
+EOF
+return &ui_tag('style', $css, { 'type' => 'text/css' });
 }
 
 sub _ui_form_end_nojs
@@ -2719,16 +2845,17 @@ Returns HTML for a text string, with its color determined by $type.
 sub ui_text_color
 {
 my ($text, $type) = @_;
-my ($color);
+my ($color, $class_type);
 
 if (defined (&theme_ui_text_color)) {
     return &theme_ui_text_color(@_);
     }
-if ($type eq "success") { $color = "#3c763d"; }
-elsif ($type eq "info") { $color = "#31708f"; }
-elsif ($type eq "warn") { $color = "#8a6d3b"; }
-elsif ($type eq "danger") { $color = "#a94442"; }
-return "<span class=\"ui_text_color text_type_$type\" style=\"color: $color\">$text</span>";
+$class_type = $type eq "warn" ? "warning" : $type;
+if ($type eq "success") { $color = "var(--text-color-success, #3c763d)"; }
+elsif ($type eq "info") { $color = "var(--text-color-info, #31708f)"; }
+elsif ($type eq "warn") { $color = "var(--text-color-warning, #8a6d3b)"; }
+elsif ($type eq "danger") { $color = "var(--text-color-danger, #a94442)"; }
+return "<span class=\"ui_text_color text_type_$type text-$class_type\" style=\"color: $color\">$text</span>";
 }
 
 =head2 ui_alert_box(msg, type)
@@ -3934,4 +4061,3 @@ return $rv;
 }
 
 1;
-

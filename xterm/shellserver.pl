@@ -86,7 +86,8 @@ if ($config{'rcfile'} ne '0') {
 		$shelllogin = undef;
 		}
 	}
-my ($shellfh, $pid) = proc::pty_process_exec($shellexec, $uid, $gid, $shelllogin);
+my ($shellfh, $pid) = proc::pty_process_exec(
+	$shellexec, $uid, $gid, $shelllogin, 1);
 reset_environment();
 my $shcmd = "'$shellexec".($shelllogin ? " $shelllogin" : "")."'";
 if (!$pid) {

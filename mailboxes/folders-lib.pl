@@ -174,6 +174,7 @@ elsif ($_[2]->{'type'} == 4) {
 	local $count = $rv[2];
 	return () if (!$count);
 	$_[2]->{'lastchange'} = $rv[3] if ($rv[3]);
+	$_[2]->{'mailcount'} = $count;
 
 	# Work out what range we want
 	local ($start, $end) = &compute_start_end($_[0], $_[1], $count);
@@ -458,6 +459,7 @@ elsif ($folder->{'type'} == 4) {
 		}
 	local $h = $irv[1];
 	local $count = $irv[2];
+	$folder->{'mailcount'} = $count;
 	return () if (!$count);
         $folder->{'lastchange'} = $irv[3] if ($irv[3]);
 
@@ -637,8 +639,9 @@ elsif ($folder->{'type'} == 4) {
 		}
 	local $h = $rv[1];
 	local $count = $rv[2];
+	$folder->{'mailcount'} = $count;
 	return () if (!$count);
-        $folder->{'lastchange'} = $irv[3] if ($irv[3]);
+        $folder->{'lastchange'} = $rv[3] if ($rv[3]);
 
 	@rv = &imap_command($h, "FETCH 1:$count UID");
 	foreach my $uid (@{$rv[1]}) {
@@ -708,6 +711,8 @@ else {
 sub mailbox_list_mails_sorted
 {
 local ($start, $end, $folder, $headersonly, $error, $field, $dir) = @_;
+local ($requested_start, $requested_end) = ($start, $end);
+local $retried = $_[7];
 print DEBUG "mailbox_list_mails_sorted from $start to $end\n";
 if (!$field) {
 	# Default to current ordering
@@ -738,10 +743,24 @@ local @rv = map { undef } (0 .. scalar(@sorter)-1);
 local @wantids = map { $sorter[$_] } ($start .. $end);
 print DEBUG "wantids = ",scalar(@wantids),"\n";
 local @mails = &mailbox_select_mails($folder, \@wantids, $headersonly);
+local @missing;
 for(my $i=0; $i<@mails; $i++) {
+	if (!$mails[$i]) {
+		push(@missing, $wantids[$i]);
+		next;
+		}
 	$rv[$start+$i] = $mails[$i];
 	print DEBUG "setting $start+$i to ",$mails[$i]," id ",$wantids[$i],"\n";
 	$mails[$i]->{'sortidx'} = $start+$i;
+	}
+if (@missing && !$retried) {
+	# A sorted IMAP list can contain UIDs for messages that were
+	# expunged or moved by another client. Force one rebuild so stale
+	# entries don't render as blank 1969/no-subject rows.
+	&force_new_index_recheck($folder);
+	return &mailbox_list_mails_sorted($requested_start, $requested_end,
+					  $folder, $headersonly, $error,
+					  $field, $dir, 1);
 	}
 print DEBUG "rv = ",scalar(@rv),"\n";
 return @rv;
@@ -808,7 +827,9 @@ local $ifile = &folder_new_sort_index_file($folder);
 &open_dbm_db($index, $ifile, 0600);
 print DEBUG "indexchange=$index->{'lastchange'} folderchange=$folder->{'lastchange'}\n";
 if ($index->{'lastchange'} != $folder->{'lastchange'} ||
-    !$folder->{'lastchange'}) {
+    !$folder->{'lastchange'} ||
+    (defined($folder->{'mailcount'}) &&
+     $index->{'mailcount'} != $folder->{'mailcount'})) {
 	# The mail file has changed .. get IDs and update the index with any
 	# that are missing
 	local @ids = &mailbox_idlist($folder);
@@ -823,6 +844,7 @@ if ($index->{'lastchange'} != $folder->{'lastchange'} ||
 	local @mails = scalar(@newids) ?
 			&mailbox_select_mails($folder, \@newids, 1) : ( );
 	foreach my $mail (@mails) {
+		next if (!$mail || !defined($mail->{'id'}));
 		foreach my $f (@index_fields) {
 			if ($f eq "date") {
 				# Convert date to Unix time

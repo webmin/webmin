@@ -607,7 +607,7 @@ else
 			addtextsup=""
 		fi
 		# We can generate a new SSL key for this host
-		openssl req -newkey rsa:2048 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 -subj "/CN=$host/C=US/L=Santa Clara" $addtextsup >/dev/null 2>&1 <<EOF
+		openssl req -newkey rsa:4096 -x509 -nodes -out $tempdir/cert -keyout $tempdir/key -days 1825 -sha256 -subj "/CN=$host/C=US/L=Santa Clara" $addtextsup >/dev/null 2>&1 <<EOF
 .
 .
 .
