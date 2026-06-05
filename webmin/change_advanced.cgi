@@ -8,6 +8,10 @@ require './webmin-lib.pl';
 
 # Permissions used for newly created Webmin temp directories.
 my $advanced_temp_dir_perms = 0755;
+my $advanced_temp_dir_perms_text = sprintf("%04o", $advanced_temp_dir_perms);
+my $advanced_temp_dir_shared_perms = 01777;
+my $advanced_temp_dir_shared_perms_text =
+	sprintf("%04o", $advanced_temp_dir_shared_perms);
 
 # Save global temp dir setting
 if ($in{'tempdir_def'}) {
@@ -186,7 +190,8 @@ foreach my $part (split(/\/+/, $dir)) {
 		if ($final) {
 			&advanced_temp_dir_perms_ok($path) ||
 				&error(&text('advanced_etempperms', $path,
-					     &advanced_temp_dir_allowed_perms_text()));
+					     $advanced_temp_dir_perms_text,
+					     $advanced_temp_dir_shared_perms_text));
 			}
 		else {
 			&advanced_temp_parent_dir_perms_ok($path) ||
@@ -199,24 +204,13 @@ foreach my $part (split(/\/+/, $dir)) {
 		&error(&text('advanced_etempmkdir', $path, "$!"));
 	&advanced_temp_dir_perms_ok($path) ||
 		&error(&text('advanced_etempchmod', $path,
-			     &advanced_temp_dir_perms_text(), "$!"));
+			     $advanced_temp_dir_perms_text, "$!"));
 	}
 &advanced_temp_dir_perms_ok($dir) ||
 	&error(&text('advanced_etempperms', $dir,
-		     &advanced_temp_dir_allowed_perms_text()));
+		     $advanced_temp_dir_perms_text,
+		     $advanced_temp_dir_shared_perms_text));
 return $dir;
-}
-
-# Octal text form used in error messages.
-sub advanced_temp_dir_perms_text
-{
-return sprintf("%04o", $advanced_temp_dir_perms);
-}
-
-# Existing final temp dirs may be Webmin-private, or standard shared temp dirs.
-sub advanced_temp_dir_allowed_perms_text
-{
-return "<tt>".&advanced_temp_dir_perms_text()."</tt> or <tt>1777</tt>";
 }
 
 # Check the final configured temp directory. Webmin creates 0755 directories,
@@ -229,7 +223,7 @@ return 0 if (!@st || !-d _);
 return 0 if ($st[4] != $<);
 my $mode = $st[2] & 07777;
 return 1 if (($mode & 0777) == $advanced_temp_dir_perms);
-return 1 if ($mode == 01777);
+return 1 if ($mode == $advanced_temp_dir_shared_perms);
 return 0;
 }
 
