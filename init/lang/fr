@@ -1,4 +1,4 @@
-index_title=Actions de démarrage et d'arrêt
+index_title=Services de démarrage et d'arrêt
 index_add=Créer une nouvelle action de démarrage ou d'arrêt
 index_reboot=Redémarrer le Système
 index_rebootmsg=Cliquer sur ce bouton va immédiatement redémarrer le système. Tout utilisateur avec une session ouverte va être déconnecté et tout les services seront redémarrés.

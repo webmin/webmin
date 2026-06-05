@@ -1,4 +1,4 @@
-index_title=開機與關機
+index_title=開機與關機服務
 index_add=建立新的開機或關機動作
 index_reboot=重新啟動系統
 index_rebootmsg=按下這個按鈕以立刻重新啟動這個系統. 所有目前登入的使用者都會斷線, 而且所有的服務都會重新啟動.

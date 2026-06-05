@@ -1,4 +1,4 @@
-index_title=Inicialização e desligamento
+index_title=Serviços de inicialização e desligamento
 index_mode=Sistema de inicialização : $1
 index_add=Crie uma nova ação de inicialização e desligamento.
 index_reboot=Reiniciar sistema

@@ -1,4 +1,4 @@
-index_title=Açılış ve Kapanış
+index_title=Önyükleme ve Kapatma Hizmetleri
 index_add=Yeni bir açılış veya kapanış komutu ekle
 index_reboot=Sistemi Yeniden Başlat
 index_rebootmsg=Bu butonu tıkayarak makineyi hemen yeniden başlatabilirsiniz.Sistemdeki bütün kullanıcıların bağlantısı kesilecek ve bütün servisler yeniden başlatılacaktır.

@@ -1,4 +1,4 @@
-index_title=부팅 및 종료
+index_title=부팅 및 종료 서비스
 index_add=새 부팅 또는 종료 동작 작성
 index_reboot=시스템 재부팅
 index_rebootmsg=시스템을 즉시 재부팅하려면 이 버튼을 누르십시오. 그러면 현재 로그인한 모든 사용자의 연결이 끊긴 후 모든 서비스가 다시 실행됩니다.

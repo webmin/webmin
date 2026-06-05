@@ -1,4 +1,4 @@
-index_title=开关机
+index_title=开机与关机服务
 index_add=创建一个新的开关机动作
 index_reboot=重新启动系统
 index_rebootmsg=按前三思！按下后将立即重新启动系统。当前所有登录用户将被中断连接，所有服务将被重新启动。

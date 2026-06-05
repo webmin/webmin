@@ -1,4 +1,4 @@
-index_title=Bootup and Shutdown
+index_title=Indítási és leállítási szolgáltatások
 index_mode=Boot system : $1
 index_add=Create a new bootup and shutdown action.
 index_reboot=Reboot System

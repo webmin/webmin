@@ -1,4 +1,4 @@
-index_title=Start a vypnutí
+index_title=Služby spuštění a vypnutí
 index_add=Vytvořit novou akci pro start a vypnutí
 index_reboot=Restartovat systém
 index_rebootmsg=Klepnutím na toto tlačítko se ihned restartuje systém. Všichni aktuálně připojení uživatelé budou odpojeni a všechny služby budou restartovány.

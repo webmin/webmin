@@ -1,4 +1,4 @@
-index_title=Iniciar e Encerrar
+index_title=Serviços de inicialização e encerramento
 index_add=Criar nova acção de iniciar ou encerrar
 index_reboot=Reiniciar o Sistema
 index_rebootmsg=Clique neste botão para reiniciar imediatamente o sistema. Todos os utilizadores ligados serão desconectados e todos os serviços serão reiniciados.

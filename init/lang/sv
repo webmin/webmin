@@ -1,4 +1,4 @@
-index_title=Start och avstängning
+index_title=Start- och avstängningstjänster
 index_add=Skapa en ny start- eller avstängningsfunktion
 index_reboot=Starta om systemet
 index_rebootmsg=Tryck på denna knapp för att omedelbart starta om systemet. Alla inloggade användare kommer att loggas ut och alla tjänster startas om.

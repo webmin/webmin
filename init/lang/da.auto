@@ -1,4 +1,4 @@
-index_title=Opstart og lukning
+index_title=Opstarts- og nedlukningstjenester
 index_mode=Bootsystem : $1
 index_add=Opret en ny opstarts- og nedlukningsaktion.
 index_reboot=Genstart systemet

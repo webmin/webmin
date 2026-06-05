@@ -1,4 +1,4 @@
-index_title=Bootup and Shutdown
+index_title=Boot and Shutdown Services
 index_mode=Boot system : $1
 index_add=Create a new bootup and shutdown action.
 index_reboot=Reboot System
@@ -7,7 +7,7 @@ index_shutdown=Shutdown System
 index_shutdownmsg=Click on this button to immediately shutdown the system. All services will be stopped, all users disconnected and the system powered off (if your hardware supports it).
 index_script=The script $1 listed below will be run at bootup time. You may add your own commands to have daemons or servers re-started when the system is re-booted.
 index_downscript=Similarly, the script $1 listed below will be run at shutdown time. You may add your own commands to have daemons or servers stopped cleanly when the system is shut down.
-index_return=bootup and shutdown actions
+index_return=boot and shutdown services
 index_action=Action
 index_desc=Description
 index_boot=At boot?

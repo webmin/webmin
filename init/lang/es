@@ -1,4 +1,4 @@
-index_title=Iniciar y Apagar
+index_title=Servicios de inicio y apagado
 index_add=Crear una nueva acción de inicio y apagado
 index_reboot=Reiniciar Sistema
 index_rebootmsg=Presione este botón para reiniciar el sistema inmediatamente. Todos los usuarios conectados actualmente serán desconectados y todos los servicios serán recomenzados.
