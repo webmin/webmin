@@ -180,6 +180,10 @@ debian_overwrite=Overwrite files from other packages?
 debian_downgrade=Replace newer package with old?
 debian_manager=Debian
 
+apk_unknown=Unknown
+apk_manager=Alpine Package Keeper
+apk_untrusted=Allow untrusted package file?
+
 log_install_package=Installed package $1
 log_install_apt_l=Installed package(s) $1 from APT
 log_install_apt=Installed $2 package(s) from APT
@@ -360,6 +364,13 @@ emerge_noreplace=Replace existing packages?
 emerge_onlydeps=Only install dependencies?
 emerge_title=Search Portage
 emerge_name=Portage
+
+apk_input=Package from APK
+apk_find=Search APK ..
+apk_install=Installing package(s) with command $1 ..
+apk_ok=.. install complete
+apk_failed=.. install failed!
+apk_name=APK
 
 cygwin_fmissing=The file is missing
 cygwin_lmissing=The file to which the link points is missing

@@ -56,6 +56,26 @@ if ($product) {
 				quotemeta($product).".service >/dev/null 2>&1");
 			}
 		}
+	elsif ($init_mode eq "openrc") {
+		my $status = &action_status($product);
+		my %miniserv;
+		&get_miniserv_config(\%miniserv);
+		my $want_boot = $miniserv{'atboot'} ? 1 : 0;
+		my $temp = &transname();
+		$ENV{'WEBMIN_KILLCMD'} = &has_command('kill');
+		&copy_source_dest("$root_directory/webmin-gentoo-init", "$temp");
+		my $lref = &read_file_lines($temp);
+		foreach my $l (@{$lref}) {
+			$l =~ s/(WEBMIN_[A-Z]+)/$ENV{$1}/g;
+			}
+		&flush_file_lines($temp);
+		&copy_source_dest($temp, "/etc/init.d/$product");
+		chmod(0755, "/etc/init.d/$product");
+		&unlink_file($temp);
+		if ($status == 2 || $want_boot) {
+			&enable_at_boot($product);
+			}
+		}
 	elsif ($init_mode eq "launchd") {
 		# Update or create launchd agent to use start init wrapper
 		my $name = &launchd_name($product);

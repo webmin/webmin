@@ -334,6 +334,9 @@ Immunix Linux			$1	redhat-linux	$1	$etc_issue =~ /Immunix.*\s([0-9\.]+)/i || `ca
 # All versions of Gentoo (which don't appear to have version numbers)
 Gentoo Linux			Any version	gentoo-linux	*	-d "/usr/portage" || `cat /etc/os-release 2>/dev/null` =~ /gentoo/
 
+# Alpine Linux
+Alpine Linux			$1	alpine-linux	$1	`cat /etc/alpine-release 2>/dev/null` =~ /^([0-9][0-9\.]*)/ || `cat /etc/os-release 2>/dev/null` =~ /^ID="?alpine"?$/m && `cat /etc/os-release 2>/dev/null` =~ /^VERSION_ID="?([0-9\.]+)/m
+
 # Secure Linux (now called Trustix?)
 Secure Linux			1.0	redhat-linux	7.2	`cat /etc/securelinux-release 2>/dev/null` =~ /SecureLinux.*1\.0/i
 

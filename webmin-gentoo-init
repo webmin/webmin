@@ -5,11 +5,7 @@
 
 
 name="webmin"
-# config file must be in sync with setup script, so i will not touch cos process will be the same as webmin-systemd
-# like calling updateboot.pl with a new procedure method defined as openrc and not just assumed sysvinit if not systemd is present
-# and also atboot.pl with new procedure for openrc the alpine linux init system at the moment
-#conf_file="WEBMIN_CONFIG/miniserv.conf"
-conf_file="/etc/webmin/miniserv.conf"
+conf_file="WEBMIN_CONFIG/miniserv.conf"
 
 
 depend() { 
@@ -19,16 +15,12 @@ depend() {
 }
 
 start() {
-# same problem here.. we need to use WEBMIN_CONFIG variable to find the start script
-#   WEBMIN_CONFIG/start
-    /etc/webmin/start
+    WEBMIN_CONFIG/start
     eend $?
 }
 
 stop() {
-# same problem here.. we need to use WEBMIN_CONFIG variable to find the stop script
-#   WEBMIN_CONFIG/stop
-    /etc/webmin/stop
+    WEBMIN_CONFIG/stop
     eend $?
 }
 
