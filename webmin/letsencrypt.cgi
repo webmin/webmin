@@ -132,7 +132,7 @@ else {
 		&save_renewal_only(\@doms, $webroot, $mode,
 				   $size, $in{'subset'}, $in{'use'},
 				   $in{'directory_url'},
-				   $in{'eab_kid'}, $in{'eab_hmac'});
+				   $in{'eab_kid'}, $in{'eab_hmac'}, 1);
 
 		# Copy cert, key and chain to Webmin
 		if ($in{'use'}) {
@@ -182,12 +182,12 @@ else {
 	}
 
 # save_renewal_only(&doms, webroot, mode, size, subset-mode, used-by-webmin,
-#		    directory-url, eab-kid, eab-hmac)
+#		    directory-url, eab-kid, eab-hmac, [reset-renewal-time])
 # Save for future renewals
 sub save_renewal_only
 {
 my ($doms, $webroot, $mode, $size, $subset, $usewebmin, $directory_url,
-    $eab_kid, $eab_hmac) = @_;
+    $eab_kid, $eab_hmac, $reset_renewal_time) = @_;
 $config{'letsencrypt_doms'} = join(" ", @$doms);
 $config{'letsencrypt_webroot'} = $webroot;
 $config{'letsencrypt_mode'} = $mode;
@@ -219,14 +219,24 @@ if (&foreign_check("webmincron")) {
 		&webmincron::delete_webmin_cron($job) if ($job);
 		}
 	else {
-		my @tm = localtime(time() - 60);
+		# A manual cert request does not update Webmin cron's last-run
+		# state, so re-create the job to start the elapsed renewal
+		# interval from now instead of immediately running an overdue
+		# job with the old ID
+		if ($job && $reset_renewal_time) {
+			&webmincron::delete_webmin_cron($job);
+			$job = undef;
+			}
 		$job ||= { 'module' => $module_name,
 			   'func' => 'renew_letsencrypt_cert' };
-		$job->{'mins'} ||= $tm[1];
-		$job->{'hours'} ||= $tm[2];
-		$job->{'days'} ||= $tm[3];
+		# Scheduling is driven by 'interval' (elapsed seconds); 'months'
+		# is retained only so edit_ssl.cgi can show the renewal interval
+		$job->{'mins'} = '';
+		$job->{'hours'} = '';
+		$job->{'days'} = '';
 		$job->{'months'} = '*/'.$in{'renew'};
-		$job->{'weekdays'} = '*';
+		$job->{'weekdays'} = '';
+		$job->{'interval'} = $in{'renew'}*30*24*60*60;
 		&webmincron::create_webmin_cron($job);
 		}
 	}
