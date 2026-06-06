@@ -533,7 +533,8 @@ if ($gconfig{'os_type'} eq 'windows' || $tmp_dir =~ /^[a-z]:/i) {
 	}
 else {
 	# On Unix systems, need to make sure temp dir is valid
-	if ($tmp_dir ne "/tmp") {
+	if ($tmp_dir ne "/dev/shm" && $tmp_dir ne "/tmp" &&
+	    $tmp_dir ne "/var/tmp" && $tmp_dir ne "/usr/tmp") {
 		my $tries = 0;
 		my $mkdirerr;
 		while($tries++ < 10) {

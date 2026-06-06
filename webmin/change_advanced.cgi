@@ -9,9 +9,8 @@ require './webmin-lib.pl';
 # Permissions used for newly created Webmin temp directories.
 my $advanced_temp_dir_perms = 0755;
 my $advanced_temp_dir_perms_text = sprintf("%04o", $advanced_temp_dir_perms);
-my $advanced_temp_dir_shared_perms = 01777;
-my $advanced_temp_dir_shared_perms_text =
-	sprintf("%04o", $advanced_temp_dir_shared_perms);
+my %advanced_system_temp_dirs = map { $_ => 1 }
+	( "/dev/shm", "/tmp", "/var/tmp", "/usr/tmp" );
 
 # Save global temp dir setting
 if ($in{'tempdir_def'}) {
@@ -148,7 +147,10 @@ else {
 sub allowed_temp_dir
 {
 my ($t) = @_;
-return $t eq "/" || $t =~ /^\/[^\/]+\/?$/ ? 0 : 1;
+my $dir = $t;
+$dir =~ s/\/+$// if ($dir ne "/");
+return $dir eq "/" || $dir =~ /^\/[^\/]+$/ ||
+       $advanced_system_temp_dirs{$dir} ? 0 : 1;
 }
 
 # Create a configured Webmin temp directory if needed, and validate existing
@@ -184,14 +186,13 @@ foreach my $part (split(/\/+/, $dir)) {
 	$path = $path eq "/" ? "/$part" :
 		$path eq "" ? $part : "$path/$part";
 	my $final = $path eq $dir;
-	if (-e $path || -l $path) {
-		-d $path ||
-			&error(&text('advanced_etempparent', $path));
+	my @st = lstat($path);
+	if (@st) {
+		-d _ || &error(&text('advanced_etempparent', $path));
 		if ($final) {
 			&advanced_temp_dir_perms_ok($path) ||
 				&error(&text('advanced_etempperms', $path,
-					     $advanced_temp_dir_perms_text,
-					     $advanced_temp_dir_shared_perms_text));
+					     $advanced_temp_dir_perms_text));
 			}
 		else {
 			&advanced_temp_parent_dir_perms_ok($path) ||
@@ -208,13 +209,11 @@ foreach my $part (split(/\/+/, $dir)) {
 	}
 &advanced_temp_dir_perms_ok($dir) ||
 	&error(&text('advanced_etempperms', $dir,
-		     $advanced_temp_dir_perms_text,
-		     $advanced_temp_dir_shared_perms_text));
+		     $advanced_temp_dir_perms_text));
 return $dir;
 }
 
-# Check the final configured temp directory. Webmin creates 0755 directories,
-# but also permits standard shared temp directories like /var/tmp.
+# Check the final configured temp directory. It must be Webmin-private.
 sub advanced_temp_dir_perms_ok
 {
 my ($dir) = @_;
@@ -222,9 +221,7 @@ my @st = lstat($dir);
 return 0 if (!@st || !-d _);
 return 0 if ($st[4] != $<);
 my $mode = $st[2] & 07777;
-return 1 if (($mode & 0777) == $advanced_temp_dir_perms);
-return 1 if ($mode == $advanced_temp_dir_shared_perms);
-return 0;
+return $mode == $advanced_temp_dir_perms;
 }
 
 # Existing parents only need to be searchable by group and others. The final
@@ -232,7 +229,7 @@ return 0;
 sub advanced_temp_parent_dir_perms_ok
 {
 my ($dir) = @_;
-my @st = stat($dir);
+my @st = lstat($dir);
 return 0 if (!@st || !-d _);
 my $mode = $st[2] & 07777;
 return 0 if (($mode & 0011) != 0011);
