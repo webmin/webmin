@@ -219,11 +219,10 @@ if (&foreign_check("webmincron")) {
 		&webmincron::delete_webmin_cron($job) if ($job);
 		}
 	else {
-		# When a cert was just issued, delete and re-create the job so
-		# it gets a fresh ID and its elapsed-interval countdown restarts
-		# from now. Re-using the ID could keep a stale last-run time
-		# that is already past the interval, firing a renewal
-		# immediately and wasting a Let's Encrypt issuance
+		# A manual cert request does not update Webmin cron's last-run
+		# state, so re-create the job to start the elapsed renewal
+		# interval from now instead of immediately running an overdue
+		# job with the old ID
 		if ($job && $reset_renewal_time) {
 			&webmincron::delete_webmin_cron($job);
 			$job = undef;
