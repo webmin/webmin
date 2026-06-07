@@ -24,6 +24,9 @@ use WebminCore;
 		    'stop' );
 %access = &get_module_acl();
 
+# File read by module.info alternate description selection
+$init_mode_file = "$module_config_directory/mode";
+
 =head2 init_mode
 
 This variable is set based on the bootup system in use. Possible values are :
@@ -45,36 +48,7 @@ This variable is set based on the bootup system in use. Possible values are :
 =item systemd - SystemD, seen on Fedora 16
 
 =cut
-if ($config{'init_mode'}) {
-	$init_mode = $config{'init_mode'};
-	}
-elsif (&has_command("launchd")) {
-	$init_mode = "launchd";
-	}
-elsif ($config{'hostconfig'}) {
-	$init_mode = "osx";
-	}
-elsif ($config{'rc_dir'}) {
-	$init_mode = "rc";
-	}
-elsif ($config{'init_base'} && -d "/etc/init" &&
-       &has_command("initctl") &&
-       &execute_command("/sbin/init --version") == 0) {
-	$init_mode = "upstart";
-	}
-elsif (-d "/etc/systemd" && &has_command("systemctl") &&
-       &execute_command("systemctl list-units") == 0) {
-	$init_mode = "systemd";
-	}
-elsif ($config{'init_base'}) {
-	$init_mode = "init";
-	}
-elsif ($config{'local_script'}) {
-	$init_mode = "local";
-	}
-elsif ($gconfig{'os_type'} eq 'windows') {
-	$init_mode = "win32";
-	}
+$init_mode = &detect_init_mode();
 
 # Do init scripts support start and stop custom messages?
 if ($init_mode eq "init" && $gconfig{'os_type'} =~ /^(osf1|hpux)$/) {
@@ -4096,6 +4070,69 @@ delete($modconf_info->{$sections[0]});
 if (ref($modconf_order) eq 'ARRAY') {
 	@$modconf_order = grep { $_ ne $sections[0] } @$modconf_order;
 	}
+}
+
+# detect_init_mode([&config])
+# Returns the boot system mode to use for a module config.
+sub detect_init_mode
+{
+my ($conf) = @_;
+$conf ||= \%config;
+
+if ($conf->{'init_mode'}) {
+	return $conf->{'init_mode'};
+	}
+elsif (&has_command("launchd")) {
+	return "launchd";
+	}
+elsif ($conf->{'hostconfig'}) {
+	return "osx";
+	}
+elsif ($conf->{'rc_dir'}) {
+	return "rc";
+	}
+elsif ($conf->{'init_base'} && -d "/etc/init" &&
+       &has_command("initctl") &&
+       &execute_command("/sbin/init --version") == 0) {
+	return "upstart";
+	}
+elsif (-d "/etc/systemd" && &has_command("systemctl") &&
+       &execute_command("systemctl list-units") == 0) {
+	return "systemd";
+	}
+elsif ($conf->{'init_base'}) {
+	return "init";
+	}
+elsif ($conf->{'local_script'}) {
+	return "local";
+	}
+elsif ($gconfig{'os_type'} eq 'windows') {
+	return "win32";
+	}
+return undef;
+}
+
+# save_init_mode([&config])
+# Save detected init mode for module.info description selection.
+sub save_init_mode
+{
+my ($conf) = @_;
+my %mode;
+my $mode = $conf ? &detect_init_mode($conf) : $init_mode;
+$mode{'mode'} = $mode if ($mode);
+&lock_file($init_mode_file);
+&write_file($init_mode_file, \%mode);
+&unlock_file($init_mode_file);
+unlink("$config_directory/module.infos.cache");
+unlink("$var_directory/module.infos.cache");
+}
+
+# config_post_save(&new-config, &old-config)
+# Called after the module's configuration has been saved.
+sub config_post_save
+{
+my ($newconfig, $oldconfig) = @_;
+&save_init_mode($newconfig);
 }
 
 1;

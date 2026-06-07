@@ -1,7 +1,8 @@
 name=Boot Manager
 category=system
 os_support=solaris *-linux hpux freebsd unixware openserver openbsd osf1 irix aix macos netbsd windows 
-desc=Boot and Shutdown Services
+desc=Bootup and Shutdown
+desc+systemd=Systemd Services and Units
 depends=proc inittab
 longdesc=Manage services, scripts and systemd units that start at boot time or stop during shutdown.
 readonly=1

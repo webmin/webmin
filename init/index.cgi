@@ -6,8 +6,15 @@
 require './init-lib.pl';
 require './hostconfig-lib.pl';
 &ReadParse();
+
+# Save detected mode before rendering, so module.info can use mode-specific desc
+&save_init_mode()
+	if (!-r $init_mode_file && !&is_readonly_mode());
+
+# Show the page title with the detected boot system name
 &ui_print_header(&text('index_mode', &index_boot_system_title()),
-		 $text{'index_title'}, "", undef, 1, 1);
+		 $text{"index_title_$init_mode"} || $text{'index_title'},
+		 "", undef, 1, 1);
 
 if ($init_mode eq "osx" && $access{'bootup'}) {
 	# This hostconfig if block written by Michael A Peters <mpeters@mac.com>
