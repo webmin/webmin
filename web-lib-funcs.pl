@@ -6259,7 +6259,8 @@ Returns a hash containing details of the given module. Some useful keys are :
 
 =item dir - The module directory, like sendmail.
 
-=item desc - Human-readable description, in the current users' language.
+=item desc - Human-readable description, in the current users' language. This
+may be selected from an alternate desc+suffix key.
 
 =item version - Optional module version number.
 
@@ -6320,6 +6321,24 @@ if (defined($rv{'category_'.$pn})) {
 $rv{'realcategory'} = $rv{'category'};
 $rv{'category'} = $module_categories{$mod}
 	if (defined($module_categories{$mod}));
+
+# Apply alternate description from cached module mode
+if (my @descplus = grep { /^desc\+/ } keys %rv) {
+	my %mode;
+	&read_file_cached("$config_directory/$mod/mode", \%mode);
+	my $alt = $mode{'mode'};
+	if ($alt) {
+		$alt =~ s/^\s+|\s+$//g;
+		$alt =~ s/^desc\+//;
+		my $desc = $rv{"desc+$alt"};
+		foreach my $o (@lang_order_list) {
+			my $k = "desc+${alt}_$o";
+			$desc = $rv{$k} if ($rv{$k});
+			}
+		$rv{'desc'} = $desc if ($desc);
+		}
+	delete(@rv{@descplus});
+	}
 
 # Apply overrides from local configuration files, such as for the title
 my %overs;
