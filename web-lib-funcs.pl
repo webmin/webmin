@@ -541,10 +541,10 @@ else {
 			my @st = lstat($tmp_dir);
 			if (@st) {
 				my $mode = $st[2] & 07777;
-				# Accept Webmin-private dirs and standard shared
+				# Accept only Webmin-private dirs here. Shared
+				# system temp roots are skipped above.
 				last if ($st[4] == $< && (-d _) &&
-					 ((($mode & 0777) == 0755) ||
-					  $mode == 01777));
+					 $mode == 0755);
 				unlink($tmp_dir) || rmdir($tmp_dir) ||
 					system("/bin/rm -rf ".
 					       quotemeta($tmp_dir));
