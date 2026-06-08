@@ -63,7 +63,7 @@ if ($product) {
 		my $want_boot = $miniserv{'atboot'} ? 1 : 0;
 		my $temp = &transname();
 		$ENV{'WEBMIN_KILLCMD'} = &has_command('kill');
-		&copy_source_dest("$root_directory/webmin-gentoo-init", "$temp");
+		&copy_source_dest("$root_directory/webmin-openrc-init", "$temp");
 		my $lref = &read_file_lines($temp);
 		foreach my $l (@{$lref}) {
 			$l =~ s/(WEBMIN_[A-Z]+)/$ENV{$1}/g;
