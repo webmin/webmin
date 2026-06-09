@@ -46,7 +46,7 @@ $vers || usage();
 	  "defaulttheme",
 	  "javascript-lib.pl", "webmin-pam", "webmin-debian-pam", "maketemp.pl",
 	  "run-uninstalls.pl",
-	  "webmin-gentoo-init", "run-postinstalls.pl",
+	  "webmin-openrc-init", "run-postinstalls.pl",
 	  "config-lib.pl", "entities_map.txt", "ui-lib.pl",
 	  "password_form.cgi", "password_change.cgi", "pam_login.cgi",
 	  "module_chooser.cgi", "config-windows", "xmlrpc.cgi",

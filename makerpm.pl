@@ -112,7 +112,7 @@ browser and login as root with your root password.
 rm -f mount/freebsd-mounts*
 rm -f mount/openbsd-mounts*
 rm -f mount/macos-mounts*
-rm -f webmin-gentoo-init
+rm -f webmin-openrc-init
 rm -rf format bsdexports hpuxexports sgiexports zones rbac bsdfdisk
 rm -rf acl/Authen-SolarisRBAC-0.1*
 chmod -R og-w .
@@ -360,4 +360,3 @@ foreach $rpm ("rpm", "newkey/rpm") {
 		system("cp $rpm/webmin-$ver-$rel.noarch.rpm /usr/local/webadmin/$rpm/yum");
 		}
 	}
-

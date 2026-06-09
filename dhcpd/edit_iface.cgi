@@ -73,6 +73,11 @@ elsif ($config{'interfaces_type'} eq 'gentoo') {
 	&read_env_file("/etc/conf.d/dhcp", \%dhcp);
 	$iface = $dhcp{'IFACE'};
 	}
+elsif ($config{'interfaces_type'} eq 'alpine') {
+	# Interfaces are set in a file on Alpine
+	&read_env_file("/etc/conf.d/dhcpd", \%dhcp);
+	$iface = $dhcp{'DHCPD_IFACE'};
+	}
 elsif ($config{'interfaces_type'} eq 'freebsd') {
 	# From FreeBSD rc.conf file
 	&foreign_require("init");
@@ -114,4 +119,3 @@ print &ui_submit($text{'save'});
 print &ui_form_end(undef,undef,1);
 
 &ui_print_footer("", $text{'listl_return'});
-

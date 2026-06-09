@@ -44,6 +44,8 @@ This variable is set based on the bootup system in use. Possible values are :
 
 =item systemd - SystemD, seen on Fedora 16
 
+=item openrc - OpenRC, seen on Alpine Linux and Gentoo
+
 =cut
 if ($config{'init_mode'}) {
 	$init_mode = $config{'init_mode'};
@@ -100,6 +102,14 @@ local($dir, $f, @stbuf, @rv);
 $dir = &runlevel_dir($_[0]);
 opendir(DIR, $dir);
 foreach $f (readdir(DIR)) {
+	if ($init_mode eq "openrc") {
+		next if ($_[1] ne "S" || $f eq "." || $f eq "..");
+		next if (-d "$dir/$f");
+		if (@stbuf = stat("$dir/$f")) {
+			push(@rv, "00 $f $stbuf[1]");
+			}
+		next;
+		}
 	if ($f !~ /^([A-Z])(\d+)(.*)$/ || $1 ne $_[1]) { next; }
 	if (!(@stbuf = stat("$dir/$f"))) { next; }
 	push(@rv, "$2 $3 $stbuf[1]");
@@ -120,7 +130,11 @@ sub list_runlevels
 local(@rv);
 opendir(DIR, $config{init_base});
 foreach (readdir(DIR)) {
-	if (/^rc([A-z0-9])\.d$/ || /^(boot)\.d$/) {
+	if ($init_mode eq "openrc") {
+		push(@rv, $_) if ($_ ne "." && $_ ne ".." &&
+				  -d "$config{init_base}/$_");
+		}
+	elsif (/^rc([A-z0-9])\.d$/ || /^(boot)\.d$/) {
 		push(@rv, $1);
 		}
 	}
@@ -174,6 +188,16 @@ foreach $rl (&list_runlevels()) {
 	$dir = &runlevel_dir($rl);
 	opendir(DIR, $dir);
 	foreach $f (readdir(DIR)) {
+		if ($init_mode eq "openrc") {
+			next if ($_[0] ne "S" || $f eq "." || $f eq "..");
+			next if (-d "$dir/$f");
+			@stbuf2 = stat("$dir/$f");
+			if ($stbuf[1] == $stbuf2[1]) {
+				push(@rv, "$rl 00 $f");
+				last;
+				}
+			next;
+			}
 		if ($f =~ /^([A-Z])(\d+)(.*)$/ && $1 eq $_[0]) {
 			@stbuf2 = stat("$dir/$f");
 			if ($stbuf[1] == $stbuf2[1]) {
@@ -242,6 +266,14 @@ Add some existing action to a runlevel. The parameters are :
 =cut
 sub add_rl_action
 {
+if ($init_mode eq "openrc") {
+	return if ($_[2] ne "S");
+	my $file = &runlevel_dir($_[1])."/$_[0]";
+	&lock_file($file);
+	&symlink_file(&action_filename($_[0]), $file) if (!-e $file);
+	&unlock_file($file);
+	return;
+	}
 $file = &runlevel_filename($_[1], $_[2], $_[3], $_[0]);
 while(-r $file) {
 	if ($file =~ /^(.*)_(\d+)$/) { $file = "$1_".($2+1); }
@@ -269,6 +301,11 @@ sub delete_rl_action
 local(@stbuf, $dir, $f, @stbuf2);
 @stbuf = stat(&action_filename($_[0]));
 $dir = &runlevel_dir($_[1]);
+if ($init_mode eq "openrc") {
+	my $file = "$dir/$_[0]";
+	&unlink_logged($file) if ($_[2] eq "S" && -e $file);
+	return;
+	}
 opendir(DIR, $dir);
 foreach $f (readdir(DIR)) {
 	if ($f =~ /^([A-Z])(\d+)(.+)$/ && $1 eq $_[2]) {
@@ -565,6 +602,11 @@ elsif ($init_mode eq "systemd") {
 		return 1 if ($out eq "disabled");
 		}
 	}
+elsif ($init_mode eq "openrc") {
+	my $exists = -r &action_filename($name);
+	my @boot = &action_levels("S", $name);
+	return !$exists ? 0 : @boot ? 2 : 1;
+	}
 if ($init_mode eq "init" || $init_mode eq "upstart" ||
     $init_mode eq "systemd") {
 	# Look for init script
@@ -708,6 +750,48 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$action" ||
 	&unmask_action($unit);
 	&system_logged("systemctl enable ".
 		       quotemeta($unit)." >/dev/null 2>&1");
+	return;
+	}
+if ($init_mode eq "openrc") {
+	if ($st == 0) {
+		$start || $stop || &error("OpenRC service $action does not exist");
+		my $fn = &action_filename($action);
+		my $qdesc = $desc || "";
+		$qdesc =~ s/\\/\\\\/g;
+		$qdesc =~ s/"/\\"/g;
+		&lock_file($fn);
+		&open_tempfile(ACTION, ">$fn");
+		&print_tempfile(ACTION, "#!/sbin/openrc-run\n\n");
+		&print_tempfile(ACTION, "description=\"$qdesc\"\n\n") if ($desc);
+		&print_tempfile(ACTION, "start() {\n");
+		&print_tempfile(ACTION, &tab_indent($start));
+		&print_tempfile(ACTION, "}\n\n");
+		if ($stop) {
+			&print_tempfile(ACTION, "stop() {\n");
+			&print_tempfile(ACTION, &tab_indent($stop));
+			&print_tempfile(ACTION, "}\n\n");
+			}
+		if ($status) {
+			&print_tempfile(ACTION, "status() {\n");
+			&print_tempfile(ACTION, &tab_indent($status));
+			&print_tempfile(ACTION, "}\n");
+			}
+		&close_tempfile(ACTION);
+		chmod(0755, $fn);
+		&unlock_file($fn);
+		}
+	my @levels = &get_start_runlevels();
+	if (&has_command("rc-update")) {
+		foreach my $level (@levels) {
+			&system_logged("rc-update add ".quotemeta($action)." ".
+				       quotemeta($level)." >/dev/null 2>&1");
+			}
+		}
+	else {
+		foreach my $level (@levels) {
+			&add_rl_action($action, $level, "S", 0);
+			}
+		}
 	return;
 	}
 if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
@@ -1087,6 +1171,18 @@ elsif ($init_mode eq "systemd") {
 	&system_logged("systemctl disable ".quotemeta($unit).
 		       " >/dev/null 2>&1");
 	}
+elsif ($init_mode eq "openrc") {
+	if (&has_command("rc-update")) {
+		&system_logged("rc-update del ".quotemeta($_[0]).
+			       " >/dev/null 2>&1");
+		}
+	else {
+		foreach my $a (&action_levels('S', $_[0])) {
+			$a =~ /^(\S+)\s+(\S+)\s+(\S+)$/ &&
+				&delete_rl_action($_[0], $1, 'S');
+			}
+		}
+	}
 if ($init_mode eq "init" || $init_mode eq "upstart" ||
     $init_mode eq "systemd") {
 	# Unlink or disable init script
@@ -1251,6 +1347,11 @@ elsif ($mode eq "init") {
 	my $fn = &action_filename($name);
 	&unlink_logged($fn);
 	}
+elsif ($mode eq "openrc") {
+	&disable_at_boot($name);
+	my $fn = &action_filename($name);
+	&unlink_logged($fn);
+	}
 elsif ($mode eq "win32") {
 	# Delete windows service
 	&delete_win32_service($name);
@@ -1303,6 +1404,16 @@ if ($action_mode eq "init" || $action_mode eq "local") {
 	my $ex = $?;
 	return (!$ex, $out);
 	}
+elsif ($action_mode eq "openrc") {
+	my $cmd = &has_command("rc-service") ?
+		"rc-service ".quotemeta($name)." start" :
+		&action_filename($name)." start";
+	&clean_environment();
+	my $out = &backquote_logged("$cmd 2>&1 </dev/null");
+	&reset_environment();
+	my $ex = $?;
+	return (!$ex, $out);
+	}
 elsif ($action_mode eq "rc") {
 	# Run FreeBSD RC script
 	return &start_rc_script($name);
@@ -1351,6 +1462,14 @@ if ($action_mode eq "init" || $action_mode eq "local") {
 	my $ex = $?;
 	return (!$ex, $out);
 	}
+elsif ($action_mode eq "openrc") {
+	my $cmd = &has_command("rc-service") ?
+		"rc-service ".quotemeta($name)." stop" :
+		&action_filename($name)." stop";
+	my $out = &backquote_logged("$cmd 2>&1 </dev/null");
+	my $ex = $?;
+	return (!$ex, $out);
+	}
 elsif ($action_mode eq "rc") {
 	# Run FreeBSD RC script
 	return &stop_rc_script($name);
@@ -1392,6 +1511,11 @@ if ($action_mode eq "upstart") {
 elsif ($action_mode eq "systemd") {
 	return &restart_systemd_service($name);
 	}
+elsif ($action_mode eq "openrc" && &has_command("rc-service")) {
+	my $out = &backquote_logged("rc-service ".quotemeta($name).
+				    " restart 2>&1 </dev/null");
+	return $? ? (0, $out) : (1, $out);
+	}
 else {
 	&stop_action($name);
 	return &start_action($name);
@@ -1412,6 +1536,11 @@ if ($action_mode eq "upstart") {
 	}
 elsif ($action_mode eq "systemd") {
 	return &reload_systemd_service($name);
+	}
+elsif ($action_mode eq "openrc" && &has_command("rc-service")) {
+	my $out = &backquote_logged("rc-service ".quotemeta($name).
+				    " reload 2>&1 </dev/null");
+	return $? ? (0, $out) : (1, $out);
 	}
 elsif ($action_mode eq "init") {
 	my $file = &action_filename($name);
@@ -1437,6 +1566,13 @@ my $action_mode = &get_action_mode($name);
 if ($action_mode eq "init") {
 	# Run init script to get status
 	return &action_running(&action_filename($name));
+	}
+elsif ($action_mode eq "openrc") {
+	my $cmd = &has_command("rc-service") ?
+		"rc-service ".quotemeta($name)." status" :
+		&action_filename($name)." status";
+	my $out = &backquote_command("$cmd 2>&1 </dev/null");
+	return $? == 0 ? 1 : $out =~ /stopped|inactive/i ? 0 : -1;
 	}
 elsif ($action_mode eq "win32") {
 	# Check with Windows if it is running
@@ -1519,6 +1655,9 @@ elsif ($init_mode eq "systemd") {
 elsif ($init_mode eq "init") {
 	return map { my @w = split(/\s+/, $_); $w[0] } &list_actions();
 	}
+elsif ($init_mode eq "openrc") {
+	return map { my @w = split(/\s+/, $_); $w[0] } &list_actions();
+	}
 elsif ($init_mode eq "win32") {
 	return map { $_->{'name'} } &list_win32_services();
 	}
@@ -1595,7 +1734,10 @@ like /etc/rc2.d.
 =cut
 sub runlevel_dir
 {
-if ($_[0] eq "boot") {
+if ($init_mode eq "openrc") {
+	return "$config{init_base}/$_[0]";
+	}
+elsif ($_[0] eq "boot") {
 	return "$config{init_base}/boot.d";
 	}
 else {
