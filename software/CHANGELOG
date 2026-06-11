@@ -1,3 +1,5 @@
+---- Changes since 2.641 ----
+Fix mysql/mariadb package installs
 ---- Changes since 1.130 ----
 Packages can now be installed directly from yum, if installed.
 The entire system can also be upgraded from yum.

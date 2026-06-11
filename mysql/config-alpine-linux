@@ -1,0 +1,25 @@
+start_cmd=rc-service mariadb start
+mysql=/usr/bin/mariadb
+mysqld=/usr/bin/mariadbd
+mysqldump=/usr/bin/mysqldump
+mysqlimport=/usr/bin/mariadb-import
+mysql_libs=/usr/lib/mariadb/plugin
+mysqladmin=/usr/bin/mariadb-admin
+mysqlshow=/usr/bin/mariadb-show
+perpage=25
+style=1
+add_mode=1
+nodbi=0
+access=*: *
+blob_mode=0
+date_subs=0
+passwd_mode=0
+mysql_data=/var/lib/mysql
+max_dbs=50
+my_cnf=/etc/my.cnf
+max_text=1000
+nopwd=0
+webmin_subs=0
+ssl=0
+stop_cmd=rc-service mariadb stop
+
