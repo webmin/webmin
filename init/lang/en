@@ -247,6 +247,8 @@ systemd_edesc=Missing unit description
 systemd_return=systemd unit
 systemd_econf=No systemd unit configuration entered
 systemd_estart=Missing commands to run on startup
+index_systemd_module=Systemd Services and Units
+index_systemd_dedicated=Use the dedicated $1 module to manage systemd services and units. This page now shows only system reboot and shutdown controls.
 
 launchd_title1=Create Launchd Agent
 launchd_title2=Edit Launchd Agent

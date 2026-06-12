@@ -3168,8 +3168,11 @@ my @display = ( 'expert', 'desc', 'order', 'status_check', 'sort_mode' );
 my @common = ( 'init_mode', 'reboot_command', 'shutdown_command' );
 my @sysv = ( @common, 'init_base', 'init_dir', 'order_digits',
 	     'boot_levels', 'local_script', 'local_down', 'inittab_id' );
+my @systemd_display = ( 'desc' );
+push(@systemd_display, 'systemd_dedicated')
+	if (&init_dedicated_systemd_module_available());
 
-return ( 'line1', 'desc', 'line2', @common )
+return ( 'line1', @systemd_display, 'line2', @common )
 	if ($mode eq 'systemd');
 return ( 'line1', @display, 'line2', @sysv )
 	if ($mode eq 'init' || $mode eq 'upstart' || $mode eq 'openrc');
@@ -3202,6 +3205,23 @@ delete($modconf_info->{$sections[0]});
 if (ref($modconf_order) eq 'ARRAY') {
 	@$modconf_order = grep { $_ ne $sections[0] } @$modconf_order;
 	}
+}
+
+# init_dedicated_systemd_module_available()
+# Returns 1 if the standalone Systemd module can be used by this Webmin user.
+sub init_dedicated_systemd_module_available
+{
+return &foreign_available("systemd") && &foreign_installed("systemd");
+}
+
+# init_show_systemd_services()
+# Returns 1 if this module should show its legacy systemd service table.
+sub init_show_systemd_services
+{
+return 1 if (!&init_dedicated_systemd_module_available());
+return 0 if ($config{'systemd_dedicated'} &&
+	     $config{'systemd_dedicated'} eq '1');
+return 1;
 }
 
 1;

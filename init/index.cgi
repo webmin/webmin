@@ -329,61 +329,74 @@ elsif ($init_mode eq "upstart" && $access{'bootup'}) {
 
 	}
 elsif ($init_mode eq "systemd" && $access{'bootup'}) {
-	# Show systemd actions
-	print &ui_form_start("mass_systemd.cgi", "post");
-	@links = ( &select_all_link("d"),
-		   &select_invert_link("d"),
-		   &ui_link("edit_systemd.cgi?new=1", $text{'index_sadd'}) );
-	print &ui_links_row(\@links);
-	print &ui_columns_start([ "", $text{'systemd_name'},
-				  $config{'desc'} ? $text{'systemd_desc'} : (),
-				  $text{'systemd_status'},
-				  $text{'systemd_boot'},
-				  $text{'index_ustatus'} ]);
-	foreach $u (&list_systemd_services()) {
-		if ($u->{'legacy'}) {
-			$l = "edit_action.cgi?0+".&urlize($u->{'name'});
-			}
-		else {
-			$l = "edit_systemd.cgi?name=".&urlize($u->{'name'});
-			}
-		my $sname = $u->{'name'};
-		$sname =~ s/\.service$//;
-		my $title = ($u->{'boot'} == -1 ?
-			    &html_escape($sname) :
-			    &ui_link($l, &html_escape($sname)));
-		my $desc = $config{'desc'} ? &html_escape($u->{'desc'}) : undef;
-		print &ui_columns_row([
-			&ui_checkbox("d", $u->{'name'}, undef),
-			$title,
-			$desc // (),
-			$u->{'fullstatus'} || "<i>$text{'index_unknown'}</i>",
-			$u->{'boot'} == 1 ?
-			    &ui_text_color("$text{'yes'}", 'success') :
-			  $u->{'boot'} == 2 ?
-			    &ui_text_color("$text{'index_sboot6'}", 'success') :
-			  $u->{'boot'} == -1 ?
-			    &ui_text_color("$text{'index_sboot5'}", 'warn') :
-			  &ui_text_color("$text{'no'}", 'warn'),
-			$u->{'status'} == 1 ? &ui_text_color("$text{'yes'}", 'success') :
-			  $u->{'status'} == 0 ?
-			  &ui_text_color("$text{'no'}", 'warn') :
-			  "<i>$text{'index_unknown'}</i>",
-			]);
+	if (!&init_show_systemd_services()) {
+		my $systemd_link = &ui_tag('a',
+			$text{'index_systemd_module'},
+			{ 'href' => '../systemd/' });
+		print &ui_alert_box(
+			&text('index_systemd_dedicated', $systemd_link),
+			'info', undef, undef, ""),"\n";
 		}
-	print &ui_columns_end();
-	print &ui_links_row(\@links);
-	print &ui_form_end([ [ "start", $text{'index_start'} ],
-			     [ "stop", $text{'index_stop'} ],
-			     [ "restart", $text{'index_restart'} ],
-			     undef,
-			     [ "addboot", $text{'index_addboot'} ],
-			     [ "delboot", $text{'index_delboot'} ],
-			     undef,
-			     [ "addboot_start", $text{'index_addboot_start'} ],
-			     [ "delboot_stop", $text{'index_delboot_stop'} ],
-			    ]);
+	else {
+		# Show systemd actions
+		print &ui_form_start("mass_systemd.cgi", "post");
+		@links = ( &select_all_link("d"),
+			   &select_invert_link("d"),
+			   &ui_link("edit_systemd.cgi?new=1",
+				    $text{'index_sadd'}) );
+		print &ui_links_row(\@links);
+		print &ui_columns_start([ "", $text{'systemd_name'},
+					  $config{'desc'} ?
+					    $text{'systemd_desc'} : (),
+					  $text{'systemd_status'},
+					  $text{'systemd_boot'},
+					  $text{'index_ustatus'} ]);
+		foreach $u (&list_systemd_services()) {
+			if ($u->{'legacy'}) {
+				$l = "edit_action.cgi?0+".&urlize($u->{'name'});
+				}
+			else {
+				$l = "edit_systemd.cgi?name=".&urlize($u->{'name'});
+				}
+			my $sname = $u->{'name'};
+			$sname =~ s/\.service$//;
+			my $title = ($u->{'boot'} == -1 ?
+				    &html_escape($sname) :
+				    &ui_link($l, &html_escape($sname)));
+			my $desc = $config{'desc'} ?
+				&html_escape($u->{'desc'}) : undef;
+			print &ui_columns_row([
+				&ui_checkbox("d", $u->{'name'}, undef),
+				$title,
+				$desc // (),
+				$u->{'fullstatus'} || "<i>$text{'index_unknown'}</i>",
+				$u->{'boot'} == 1 ?
+				    &ui_text_color("$text{'yes'}", 'success') :
+				  $u->{'boot'} == 2 ?
+				    &ui_text_color("$text{'index_sboot6'}", 'success') :
+				  $u->{'boot'} == -1 ?
+				    &ui_text_color("$text{'index_sboot5'}", 'warn') :
+				  &ui_text_color("$text{'no'}", 'warn'),
+				$u->{'status'} == 1 ? &ui_text_color("$text{'yes'}", 'success') :
+				  $u->{'status'} == 0 ?
+				  &ui_text_color("$text{'no'}", 'warn') :
+				  "<i>$text{'index_unknown'}</i>",
+				]);
+			}
+		print &ui_columns_end();
+		print &ui_links_row(\@links);
+		print &ui_form_end([ [ "start", $text{'index_start'} ],
+				     [ "stop", $text{'index_stop'} ],
+				     [ "restart", $text{'index_restart'} ],
+				     undef,
+				     [ "addboot", $text{'index_addboot'} ],
+				     [ "delboot", $text{'index_delboot'} ],
+				     undef,
+				     [ "addboot_start", $text{'index_addboot_start'} ],
+				     [ "delboot_stop", $text{'index_delboot_stop'} ],
+				    ]);
 
+		}
 	}
 elsif ($init_mode eq "launchd" && $access{'bootup'}) {
 	# Show launchd agents
@@ -440,4 +453,3 @@ if ($access{'shutdown'}) {
 print &ui_buttons_end();
 
 &ui_print_footer("/", $text{'index'});
-
