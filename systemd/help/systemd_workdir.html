@@ -1,0 +1,10 @@
+<header>Working directory</header>
+<p>Directory used as the service process current working directory. This writes
+<tt>WorkingDirectory=</tt>.</p>
+<p>Use an absolute path, such as <tt>/srv/myapp</tt>. A path beginning with
+<tt>~</tt> is also accepted by systemd for the service user's home directory,
+and a leading <tt>-</tt> makes a missing directory non-fatal.</p>
+<p>This is useful for applications that load relative configuration files or
+assets.</p>
+<p>For user units, use a directory that belongs to the selected user, typically
+below that user's home directory.</p>

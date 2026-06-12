@@ -1,0 +1,18 @@
+<header>Unit type</header>
+<p>The type of system unit to create. The selected type controls the filename
+suffix and the type-specific section written to the unit file. Created system
+units are written below <tt>/etc/systemd/system</tt>.</p>
+<p><tt>service</tt> creates a guided <tt>[Service]</tt> unit for starting and
+supervising a process. <tt>timer</tt> creates a <tt>[Timer]</tt> unit that
+activates another unit on a schedule. <tt>socket</tt> creates a
+<tt>[Socket]</tt> unit for socket activation. <tt>path</tt> creates a
+<tt>[Path]</tt> unit that reacts to filesystem changes. <tt>target</tt>
+creates a grouping or synchronization point for other units.</p>
+<p><tt>mount</tt> creates a <tt>[Mount]</tt> unit for a filesystem mount, and
+<tt>automount</tt> creates a matching <tt>[Automount]</tt> unit that activates
+a mount on demand. <tt>swap</tt> creates a <tt>[Swap]</tt> unit for swap space.
+<tt>slice</tt> creates a <tt>[Slice]</tt> unit for resource-control grouping
+and cgroup policy.</p>
+<p>Scope and device units are normally created by systemd, udev, or other
+programs at runtime. They can be inspected when listed by systemd, but they are
+not created as persistent unit files here.</p>

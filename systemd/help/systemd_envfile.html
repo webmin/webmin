@@ -1,0 +1,11 @@
+<header>Environment file</header>
+<p>Absolute path to a file containing environment variables for the service.
+This writes <tt>EnvironmentFile=</tt>. Prefix the path with <tt>-</tt> to
+ignore a missing file.</p>
+<p>Each line in the file should normally be a shell-style assignment such as
+<tt>NAME=value</tt>. Common examples are <tt>/etc/default/myapp</tt>,
+<tt>/etc/sysconfig/myapp</tt>, or a private file under the application's
+directory.</p>
+<p>For user units, use an absolute path to a file readable by the selected
+user, typically below that user's home directory such as
+<tt>/home/example/.config/myapp/environment</tt>.</p>

@@ -1,0 +1,21 @@
+<header>Unit type</header>
+<p>The type of user unit to create. The selected type controls the filename
+suffix and the type-specific section written to the unit file. Created user
+units are written below the selected user's
+<tt>~/.config/systemd/user</tt> directory.</p>
+<p><tt>service</tt> creates a guided <tt>[Service]</tt> unit for starting and
+supervising a process as this Unix user. <tt>timer</tt> creates a
+<tt>[Timer]</tt> unit that activates another user unit on a schedule.
+<tt>socket</tt> creates a <tt>[Socket]</tt> unit for user-level socket
+activation. <tt>path</tt> creates a <tt>[Path]</tt> unit that reacts to
+filesystem changes visible to this user. <tt>target</tt> creates a grouping or
+synchronization point for other user units.</p>
+<p><tt>slice</tt> creates a <tt>[Slice]</tt> unit for grouping this user's own
+units and applying resource-control settings such as <tt>CPUWeight=</tt>,
+<tt>MemoryMax=</tt>, <tt>TasksMax=</tt>, or <tt>IOWeight=</tt>. These limits
+apply only within the user's systemd manager and cannot grant control over
+system slices or other users.</p>
+<p>Mount, automount and swap units are system-manager unit types and are not
+available when creating user units. Scope and device units are created at
+runtime by systemd or other programs and are not created as persistent unit
+files here.</p>

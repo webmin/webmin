@@ -1,0 +1,7 @@
+<header>Allow user units to run without login?</header>
+<p>Controls whether this user's systemd manager is allowed to continue running
+without an active login session. This is useful for user units that should keep
+running after the user logs out or start at boot.</p>
+<p>This is systemd linger for the unit owner. Enabling a user unit at boot and
+allowing it to run without login are separate settings; server-style user units
+usually need both.</p>

@@ -1,0 +1,10 @@
+<header>Service type</header>
+<p>The systemd <tt>Type=</tt> value. Leave as default for ordinary long-running
+commands unless the service needs another startup protocol such as
+<tt>forking</tt>, <tt>oneshot</tt>, or <tt>notify</tt>.</p>
+<p><tt>simple</tt> treats the started process as the service immediately.
+<tt>exec</tt> is similar but waits until the command has been executed.
+<tt>forking</tt> is for daemons that background themselves and often needs a
+PID file. <tt>oneshot</tt> is for short tasks that exit. <tt>dbus</tt> and
+<tt>notify</tt> wait for D-Bus ownership or systemd readiness notification.
+<tt>idle</tt> delays execution until other jobs are dispatched.</p>

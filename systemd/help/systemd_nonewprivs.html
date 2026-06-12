@@ -1,0 +1,6 @@
+<header>Prevent gaining new privileges?</header>
+<p>Writes <tt>NoNewPrivileges=yes</tt>, preventing the service and its child
+processes from gaining additional privileges.</p>
+<p>This is a low-risk hardening option for many services. Avoid it only when
+the application intentionally relies on setuid helpers or other privilege
+elevation after startup.</p>

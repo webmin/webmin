@@ -1,0 +1,10 @@
+<header>Protect system files</header>
+<p>Restricts write access to system directories using
+<tt>ProtectSystem=</tt>. Stronger values provide stricter filesystem
+protection.</p>
+<p><tt>true</tt> makes core system directories such as <tt>/usr</tt> and
+<tt>/boot</tt> read-only. <tt>full</tt> also protects <tt>/etc</tt>.
+<tt>strict</tt> makes the filesystem broadly read-only except for API
+filesystems and paths explicitly made writable.</p>
+<p>Use <tt>ReadWritePaths=</tt> for directories the service still needs to
+modify.</p>

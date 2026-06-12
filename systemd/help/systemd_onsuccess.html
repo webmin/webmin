@@ -1,0 +1,8 @@
+<header>On success units</header>
+<p>Units to activate when this unit finishes successfully. This writes
+<tt>OnSuccess=</tt>.</p>
+<p>Enter space-separated unit names, not commands. This is mainly useful for
+oneshot jobs that should trigger a follow-up unit after completing normally,
+such as <tt>publish-report.service</tt>.</p>
+<p>This directive was added in systemd 249, so older distributions may ignore
+it or log a warning.</p>
