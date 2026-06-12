@@ -28,9 +28,9 @@ use WebminCore;
 
 This variable is set based on the bootup system in use. Possible values are :
 
-=item osx - MacOSX hostconfig files, for older versions
+=item osx - Legacy macOS StartupItems and hostconfig files
 
-=item launchd - MacOS Launchd, for newer versions
+=item launchd - macOS launchd, for newer versions
 
 =item rc - FreeBSD 6+ RC files
 
@@ -3142,11 +3142,70 @@ return $name =~ /\./ ? $name : "com.webmin.".$name;
 }
 
 # config_pre_load(mod-info, [mod-order])
-# Check if some config options are conditional
+# Hides config options that do not apply to the detected boot system.
 sub config_pre_load
 {
 my ($modconf_info, $modconf_order) = @_;
-$modconf_info->{'desc'} =~ s/2-[^,]+,// if ($init_mode eq "systemd");
+return if (ref($modconf_info) ne 'HASH');
+
+if ($init_mode eq "systemd" && $modconf_info->{'desc'}) {
+	# Systemd has no runlevels, so keep only the plain yes/no choices.
+	$modconf_info->{'desc'} =~ s/2-[^,]+,//;
+	}
+
+my %keep = map { $_, 1 } &init_config_options_for_mode($init_mode);
+foreach my $key (keys %$modconf_info) {
+	delete($modconf_info->{$key}) if (!$keep{$key});
+	}
+if (ref($modconf_order) eq 'ARRAY') {
+	@$modconf_order = grep { $keep{$_} } @$modconf_order;
+	}
+&hide_single_init_config_section($modconf_info, $modconf_order);
+}
+
+# init_config_options_for_mode(mode)
+# Returns config.info keys that should be visible for a boot system.
+sub init_config_options_for_mode
+{
+my ($mode) = @_;
+my @display = ( 'expert', 'desc', 'order', 'status_check', 'sort_mode' );
+my @common = ( 'init_mode', 'reboot_command', 'shutdown_command' );
+my @sysv = ( @common, 'init_base', 'init_dir', 'order_digits',
+	     'boot_levels', 'local_script', 'local_down', 'inittab_id' );
+
+return ( 'line1', 'desc', 'line2', @common )
+	if ($mode eq 'systemd');
+return ( 'line1', @display, 'line2', @sysv )
+	if ($mode eq 'init' || $mode eq 'upstart' || $mode eq 'openrc');
+return ( 'line2', @common, 'local_script', 'local_down',
+	 'rc_dir', 'rc_conf' )
+	if ($mode eq 'rc');
+return ( 'line2', @common, 'local_script', 'local_down' )
+	if ($mode eq 'local');
+return ( 'line2', @common, 'line3', 'startup_dirs', 'darwin_setup',
+	 'hostconfig', 'plist' )
+	if ($mode eq 'osx');
+return ( 'line2', @common )
+	if ($mode eq 'launchd' || $mode eq 'win32');
+return ( 'line1', @display, 'line2', @sysv, 'rc_dir', 'rc_conf',
+	 'line3', 'startup_dirs', 'darwin_setup', 'hostconfig', 'plist' );
+}
+
+# hide_single_init_config_section(&config-info, [&config-order])
+# Removes the lone section header when filtering leaves only one group.
+sub hide_single_init_config_section
+{
+my ($modconf_info, $modconf_order) = @_;
+my @sections = grep {
+	exists($modconf_info->{$_}) &&
+	    (split(/,/, $modconf_info->{$_}))[1] == 11
+	} keys %$modconf_info;
+return if (@sections != 1);
+
+delete($modconf_info->{$sections[0]});
+if (ref($modconf_order) eq 'ARRAY') {
+	@$modconf_order = grep { $_ ne $sections[0] } @$modconf_order;
+	}
 }
 
 1;
