@@ -2311,16 +2311,15 @@ if (@list_systemd_services_cache && !$noinit) {
 	return @list_systemd_services_cache;
 	}
 
-my $units_piped = join('|', &get_systemd_unit_types());
-
 # Get all systemd unit names
 my $out = &backquote_command("systemctl list-units --full --all -t service --no-legend");
 my $ex = $?;
 foreach my $l (split(/\r?\n/, $out)) {
 	$l =~ s/^[^a-z0-9\-\_\.]+//i;
 	my ($unit, $loaded, $active, $sub, $desc) = split(/\s+/, $l, 5);
+	next if ($unit !~ /\.service$/);
 	my $a = $unit;
-	$a =~ s/\.($units_piped)$//;
+	$a =~ s/\.service$//;
 	my $f = &action_filename($a);
 	if ($unit ne "UNIT" && $loaded eq "loaded" && !-r $f) {
 		push(@units, $unit);
@@ -2332,29 +2331,26 @@ foreach my $l (split(/\r?\n/, $out)) {
 # and so don't show up in systemctl list-units
 my $root = &get_systemd_root(undef, 1);
 opendir(UNITS, $root);
-push(@units, grep { !/\.wants$/ && !/^\./ && !-d "$root/$_" } readdir(UNITS));
+push(@units, grep { /\.service$/ && !-d "$root/$_" } readdir(UNITS));
 closedir(UNITS);
 
 # Also add units from list-unit-files that also don't show up
 $out = &backquote_command("systemctl list-unit-files -t service --no-legend");
 foreach my $l (split(/\r?\n/, $out)) {
-	if ($l =~ /^(\S+\.($units_piped))\s+disabled/ ||
-	    $l =~ /^(\S+)\s+disabled/) {
+	if ($l =~ /^(\S+\.service)\s+disabled/) {
 		push(@units, $1);
 		}
 	}
 
 # Skip useless units
 @units = grep { !/^sys-devices-/ &&
-	        !/^\-\.mount/ &&
-	        !/^\-\.slice/ &&
 		!/^dev-/ &&
 		!/^systemd-/ } @units;
 @units = &unique(@units);
 
 # Filter out templates
-my @templates = grep { /\@$/ || /\@\.($units_piped)$/ } @units;
-@units = grep { !/\@$/ && !/\@\.($units_piped)$/ } @units;
+my @templates = grep { /\@$/ || /\@\.service$/ } @units;
+@units = grep { !/\@$/ && !/\@\.service$/ } @units;
 
 # Dump state of all of them, 100 at a time
 my %info;

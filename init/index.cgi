@@ -337,11 +337,9 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "", $text{'systemd_name'},
 				  $config{'desc'} ? $text{'systemd_desc'} : (),
-				  $text{'systemd_type'},
 				  $text{'systemd_status'},
 				  $text{'systemd_boot'},
 				  $text{'index_ustatus'} ]);
-	my $units_piped = join('|', map { quotemeta } &get_systemd_unit_types());
 	foreach $u (&list_systemd_services()) {
 		if ($u->{'legacy'}) {
 			$l = "edit_action.cgi?0+".&urlize($u->{'name'});
@@ -350,13 +348,7 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 			$l = "edit_systemd.cgi?name=".&urlize($u->{'name'});
 			}
 		my $sname = $u->{'name'};
-		my ($type) = $sname =~ /\.([^.]+)$/;
-		if (defined($type) && $type =~ /^(?:$units_piped)$/) {
-			$sname =~ s/\.$type$//;
-			}
-		else {
-			$type = '';
-			}
+		$sname =~ s/\.service$//;
 		my $title = ($u->{'boot'} == -1 ?
 			    &html_escape($sname) :
 			    &ui_link($l, &html_escape($sname)));
@@ -365,7 +357,6 @@ elsif ($init_mode eq "systemd" && $access{'bootup'}) {
 			&ui_checkbox("d", $u->{'name'}, undef),
 			$title,
 			$desc // (),
-			$type,
 			$u->{'fullstatus'} || "<i>$text{'index_unknown'}</i>",
 			$u->{'boot'} == 1 ?
 			    &ui_text_color("$text{'yes'}", 'success') :
