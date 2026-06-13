@@ -533,14 +533,18 @@ if ($gconfig{'os_type'} eq 'windows' || $tmp_dir =~ /^[a-z]:/i) {
 	}
 else {
 	# On Unix systems, need to make sure temp dir is valid
-	if ($tmp_dir ne "/tmp") {
+	if ($tmp_dir ne "/dev/shm" && $tmp_dir ne "/tmp" &&
+	    $tmp_dir ne "/var/tmp" && $tmp_dir ne "/usr/tmp") {
 		my $tries = 0;
 		my $mkdirerr;
 		while($tries++ < 10) {
 			my @st = lstat($tmp_dir);
-			last if ($st[4] == $< && (-d _) &&
-				 ($st[2] & 0777) == 0755);
 			if (@st) {
+				my $mode = $st[2] & 07777;
+				# Accept only Webmin-private dirs here. Shared
+				# system temp roots are skipped above.
+				last if ($st[4] == $< && (-d _) &&
+					 $mode == 0755);
 				unlink($tmp_dir) || rmdir($tmp_dir) ||
 					system("/bin/rm -rf ".
 					       quotemeta($tmp_dir));
@@ -559,14 +563,15 @@ else {
 			       $tmp_dir.$mkdirerr);
 			}
 		}
-	# If running as root, check parent dir (usually /tmp) to make sure it's
-	# world-writable and owned by root
+	# If running as root, check parent dir (usually /tmp) to make sure it
+	# is searchable by group and others.
 	my $tmp_parent = $tmp_dir;
 	$tmp_parent =~ s/\/[^\/]+$//;
 	if ($tmp_parent eq "/tmp") {
 		my @st = stat($tmp_parent);
-		if (($st[2] & 0555) != 0555) {
-			&error("Base temp directory $tmp_parent is not world readable and listable");
+		if (($st[2] & 0011) != 0011) {
+			&error("Base temp directory $tmp_parent must be ".
+			       "group and other executable");
 			}
 		}
 	}
