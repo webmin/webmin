@@ -5,11 +5,10 @@ After=network.target network-online.target
 
 [Service]
 Environment="PERLLIB=WEBMIN_LIBDIR"
-ExecStart=WEBMIN_LIBDIR/miniserv.pl WEBMIN_CONFIG/miniserv.conf
+ExecStart=WEBMIN_LIBDIR/miniserv.pl --nofork WEBMIN_CONFIG/miniserv.conf
 ExecStop=WEBMIN_KILLCMD $MAINPID
 ExecReload=WEBMIN_KILLCMD -HUP $MAINPID
 PIDFile=WEBMIN_VAR/miniserv.pid
-Type=forking
 Restart=always
 RestartSec=2s
 TimeoutSec=15s
