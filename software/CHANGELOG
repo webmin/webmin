@@ -1,5 +1,5 @@
 ---- Changes since 2.641 ----
-Fix mysql/mariadb package installs
+Fix Alpine Linux mysql/mariadb package installs names due missing server utils (means at least Alpine Linux package installation is supported since Alpine linux v 3.16 up to edge)
 ---- Changes since 1.130 ----
 Packages can now be installed directly from yum, if installed.
 The entire system can also be upgraded from yum.
