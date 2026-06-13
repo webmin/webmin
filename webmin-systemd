@@ -10,7 +10,7 @@ ExecStart=WEBMIN_LIBDIR/miniserv.pl --nofork WEBMIN_CONFIG/miniserv.conf
 ExecReload=WEBMIN_KILLCMD -HUP $MAINPID
 Restart=on-failure
 RestartSec=2s
-TimeoutStopSec=120s
+TimeoutStopSec=300s
 
 [Install]
 WantedBy=multi-user.target
