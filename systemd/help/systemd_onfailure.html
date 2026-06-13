@@ -1,0 +1,8 @@
+<header>On failure units</header>
+<p>Units to activate when this unit enters a failed state. This writes
+<tt>OnFailure=</tt>.</p>
+<p>Enter space-separated unit names, not commands. For example,
+<tt>alert-admin@%n.service</tt> can start a separate templated service and pass
+this unit's name as <tt>%n</tt>.</p>
+<p>For services with a restart policy, the failure unit is normally activated
+only after systemd gives up and the service becomes failed.</p>

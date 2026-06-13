@@ -1,0 +1,7 @@
+<header>Path exists glob</header>
+<p>An absolute shell-style glob for <tt>PathExistsGlob=</tt>, such as
+<tt>/var/spool/app/*.ready</tt>. The path unit activates its target unit when at
+least one matching file or directory exists.</p>
+<p>For user units, the glob is evaluated by the selected user's systemd
+manager. It should match paths that user can access, typically below the user's
+home directory or runtime directory such as <tt>/run/user/UID</tt>.</p>

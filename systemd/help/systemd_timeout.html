@@ -1,0 +1,7 @@
+<header>Startup timeout</header>
+<p>Maximum time systemd waits for the service to start. This writes
+<tt>TimeoutStartSec=</tt>.</p>
+<p>Use systemd time syntax such as <tt>30s</tt>, <tt>2min</tt>, or <tt>0</tt>
+to disable the timeout. This matters most for service types where systemd waits
+for readiness, such as <tt>forking</tt>, <tt>notify</tt>, and
+<tt>oneshot</tt>.</p>

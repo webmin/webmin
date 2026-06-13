@@ -1,0 +1,31 @@
+<header>Type-specific settings</header>
+<p>Directives for the selected non-service unit type. Enter directives only,
+without the section header; the correct section will be written, such as
+<tt>[Timer]</tt>, <tt>[Socket]</tt>, <tt>[Path]</tt>, <tt>[Mount]</tt>,
+<tt>[Automount]</tt>, <tt>[Swap]</tt>, or <tt>[Slice]</tt>.</p>
+<p>Mount and automount units have dedicated fields for their common settings.
+Use this field only for uncommon directives that are not shown elsewhere in
+the form.</p>
+<p>For a timer, examples include <tt>OnCalendar=daily</tt>,
+<tt>Persistent=true</tt>, and <tt>Unit=myjob.service</tt>. If <tt>Unit=</tt>
+is omitted, systemd activates the service with the same base name, such as
+<tt>myjob.service</tt> for <tt>myjob.timer</tt>.</p>
+<p>For a socket, examples include <tt>ListenStream=8080</tt>,
+<tt>ListenStream=/run/myapp.sock</tt>, <tt>Accept=false</tt>, and
+<tt>Service=myapp.service</tt>. For user units, filesystem socket paths should
+be below a location the selected user can write, such as
+<tt>/run/user/UID</tt>. If <tt>Service=</tt> is omitted, systemd uses the
+service with the same base name.</p>
+<p>For a path unit, examples include <tt>PathChanged=/srv/myapp</tt>,
+<tt>PathExists=/var/run/myapp.ready</tt>, and <tt>Unit=myjob.service</tt>.
+For user units, watched paths should normally be below the selected user's
+home directory or runtime directory.</p>
+<p>Target units do not need a type-specific settings body in this form.
+Dependencies such as <tt>Wants=</tt>, <tt>Requires=</tt>, <tt>Before=</tt>,
+and <tt>After=</tt> are set in the common advanced options.</p>
+<p>For a swap unit, examples include <tt>What=/swapfile</tt> and
+<tt>Priority=10</tt>. For a slice unit, use the dedicated fields for
+CPU weight, memory maximum, task maximum, and I/O weight; this field can be
+used for additional resource controls such as <tt>CPUQuota=50%</tt> or
+<tt>MemoryHigh=256M</tt>. For user units, slice resource controls apply only
+within the selected user's systemd manager.</p>

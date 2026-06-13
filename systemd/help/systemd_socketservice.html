@@ -1,0 +1,8 @@
+<header>Service to activate</header>
+<p>The service unit activated by this socket, written as <tt>Service=</tt>.
+Include the full service name, such as <tt>example.service</tt>. If omitted,
+systemd uses the matching service name.</p>
+<p>For the common <tt>Accept=no</tt> model, this is usually a normal service.
+When <tt>Accept=yes</tt> is enabled, use a service that is designed to run as
+one instance per connection, typically a template such as
+<tt>example@.service</tt>.</p>

@@ -1,0 +1,11 @@
+<header>Standard error</header>
+<p>Destination for the service standard error stream, written as
+<tt>StandardError=</tt>. Common values include <tt>journal</tt>,
+<tt>null</tt>, <tt>inherit</tt>, <tt>journal+console</tt>,
+<tt>file:/path/to/file</tt>, <tt>append:/path/to/file</tt>, and
+<tt>truncate:/path/to/file</tt>.</p>
+<p>Advanced systemd targets such as <tt>kmsg</tt>, <tt>tty</tt>,
+<tt>socket</tt>, and <tt>fd:name</tt> are also accepted.</p>
+<p>If you enter an absolute file path, it will be written as
+<tt>append:/path/to/file</tt>. Use <tt>journal</tt> to keep errors in
+<tt>journalctl</tt>, or leave empty to inherit the systemd default.</p>

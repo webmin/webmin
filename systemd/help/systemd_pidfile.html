@@ -1,0 +1,7 @@
+<header>PID file</header>
+<p>Path to a PID file for <tt>forking</tt> services. This writes
+<tt>PIDFile=</tt>.</p>
+<p>Use an absolute path to the file written by the daemon after it forks, such
+as <tt>/run/myapp.pid</tt>. This helps systemd identify the main process.</p>
+<p>For user units, use a path writable by the selected user, typically below
+the user's runtime directory such as <tt>/run/user/UID</tt>.</p>

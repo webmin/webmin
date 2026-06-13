@@ -1,0 +1,6 @@
+<header>Shutdown timeout</header>
+<p>Maximum time systemd waits for the service to stop cleanly. This writes
+<tt>TimeoutStopSec=</tt>.</p>
+<p>After this timeout, systemd may force termination according to the service
+kill settings. Increase it for applications that need time to flush data or
+shut down cleanly.</p>

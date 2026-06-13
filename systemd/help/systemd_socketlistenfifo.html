@@ -1,0 +1,6 @@
+<header>FIFO listener</header>
+<p>An absolute path for <tt>ListenFIFO=</tt>. systemd creates or opens this FIFO
+and activates the matching service when data is written to it.</p>
+<p>For user units, the FIFO is created by the selected user's systemd manager.
+Use a path that user can create, typically below the user's home directory or
+runtime directory such as <tt>/run/user/UID</tt>.</p>
