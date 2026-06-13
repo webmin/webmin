@@ -1,3 +1,5 @@
+---- Changes since 2.641 ----
+Added defaults for alpine linux and fix package installs
 ---- Changes since 1.140 ----
 The not null flag and a default value can be specified for fields in new tables.
 The form for creating an initial table in a new database is now the same as the one for adding a table to an existing database.
