@@ -4,6 +4,7 @@ Wants=network-online.target
 After=network.target network-online.target
 
 [Service]
+Type=simple
 Environment="PERLLIB=WEBMIN_LIBDIR"
 ExecStart=WEBMIN_LIBDIR/miniserv.pl --nofork WEBMIN_CONFIG/miniserv.conf
 ExecReload=WEBMIN_KILLCMD -HUP $MAINPID
