@@ -222,7 +222,8 @@ else {
 				}
 			&unlock_user_files();
 
-			if ($in{'delhome'} && $user->{'home'} !~ /^\/+$/) {
+			if ($in{'delhome'} && $user->{'home'} !~ /^\/+$/ &&
+			    $access{'delhome'}) {
 				print "$text{'udel_home'}<br>\n";
 				&lock_file($user->{'home'});
 				&delete_home_directory($user);
