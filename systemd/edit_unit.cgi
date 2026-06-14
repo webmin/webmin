@@ -252,7 +252,7 @@ if ($in{'new'}) {
 			$mu, $create_user_scope ? $unituser : undef);
 		my $label = $mu->{'name'}.
 			($where ? " (".$where.")" : "");
-		push(@automount_mounts, [ $mu->{'name'}, $label ]);
+		push(@automount_mounts, [ $mu->{'name'}, html_escape($label) ]);
 		}
 
 	# Service units use command fields rather than raw [Service] body text.
