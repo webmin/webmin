@@ -28,9 +28,9 @@ use WebminCore;
 
 This variable is set based on the bootup system in use. Possible values are :
 
-=item osx - MacOSX hostconfig files, for older versions
+=item osx - Legacy macOS StartupItems and hostconfig files
 
-=item launchd - MacOS Launchd, for newer versions
+=item launchd - macOS launchd, for newer versions
 
 =item rc - FreeBSD 6+ RC files
 
@@ -2311,16 +2311,15 @@ if (@list_systemd_services_cache && !$noinit) {
 	return @list_systemd_services_cache;
 	}
 
-my $units_piped = join('|', &get_systemd_unit_types());
-
 # Get all systemd unit names
 my $out = &backquote_command("systemctl list-units --full --all -t service --no-legend");
 my $ex = $?;
 foreach my $l (split(/\r?\n/, $out)) {
 	$l =~ s/^[^a-z0-9\-\_\.]+//i;
 	my ($unit, $loaded, $active, $sub, $desc) = split(/\s+/, $l, 5);
+	next if ($unit !~ /\.service$/);
 	my $a = $unit;
-	$a =~ s/\.($units_piped)$//;
+	$a =~ s/\.service$//;
 	my $f = &action_filename($a);
 	if ($unit ne "UNIT" && $loaded eq "loaded" && !-r $f) {
 		push(@units, $unit);
@@ -2332,29 +2331,26 @@ foreach my $l (split(/\r?\n/, $out)) {
 # and so don't show up in systemctl list-units
 my $root = &get_systemd_root(undef, 1);
 opendir(UNITS, $root);
-push(@units, grep { !/\.wants$/ && !/^\./ && !-d "$root/$_" } readdir(UNITS));
+push(@units, grep { /\.service$/ && !-d "$root/$_" } readdir(UNITS));
 closedir(UNITS);
 
 # Also add units from list-unit-files that also don't show up
 $out = &backquote_command("systemctl list-unit-files -t service --no-legend");
 foreach my $l (split(/\r?\n/, $out)) {
-	if ($l =~ /^(\S+\.($units_piped))\s+disabled/ ||
-	    $l =~ /^(\S+)\s+disabled/) {
+	if ($l =~ /^(\S+\.service)\s+disabled/) {
 		push(@units, $1);
 		}
 	}
 
 # Skip useless units
 @units = grep { !/^sys-devices-/ &&
-	        !/^\-\.mount/ &&
-	        !/^\-\.slice/ &&
 		!/^dev-/ &&
 		!/^systemd-/ } @units;
 @units = &unique(@units);
 
 # Filter out templates
-my @templates = grep { /\@$/ || /\@\.($units_piped)$/ } @units;
-@units = grep { !/\@$/ && !/\@\.($units_piped)$/ } @units;
+my @templates = grep { /\@$/ || /\@\.service$/ } @units;
+@units = grep { !/\@$/ && !/\@\.service$/ } @units;
 
 # Dump state of all of them, 100 at a time
 my %info;
@@ -3142,11 +3138,90 @@ return $name =~ /\./ ? $name : "com.webmin.".$name;
 }
 
 # config_pre_load(mod-info, [mod-order])
-# Check if some config options are conditional
+# Hides config options that do not apply to the detected boot system.
 sub config_pre_load
 {
 my ($modconf_info, $modconf_order) = @_;
-$modconf_info->{'desc'} =~ s/2-[^,]+,// if ($init_mode eq "systemd");
+return if (ref($modconf_info) ne 'HASH');
+
+if ($init_mode eq "systemd" && $modconf_info->{'desc'}) {
+	# Systemd has no runlevels, so keep only the plain yes/no choices.
+	$modconf_info->{'desc'} =~ s/2-[^,]+,//;
+	}
+
+my %keep = map { $_, 1 } &init_config_options_for_mode($init_mode);
+foreach my $key (keys %$modconf_info) {
+	delete($modconf_info->{$key}) if (!$keep{$key});
+	}
+if (ref($modconf_order) eq 'ARRAY') {
+	@$modconf_order = grep { $keep{$_} } @$modconf_order;
+	}
+&hide_single_init_config_section($modconf_info, $modconf_order);
+}
+
+# init_config_options_for_mode(mode)
+# Returns config.info keys that should be visible for a boot system.
+sub init_config_options_for_mode
+{
+my ($mode) = @_;
+my @display = ( 'expert', 'desc', 'order', 'status_check', 'sort_mode' );
+my @common = ( 'init_mode', 'reboot_command', 'shutdown_command' );
+my @sysv = ( @common, 'init_base', 'init_dir', 'order_digits',
+	     'boot_levels', 'local_script', 'local_down', 'inittab_id' );
+my @systemd_display = ( 'desc' );
+push(@systemd_display, 'systemd_dedicated')
+	if (&init_dedicated_systemd_module_available());
+
+return ( 'line1', @systemd_display, 'line2', @common )
+	if ($mode eq 'systemd');
+return ( 'line1', @display, 'line2', @sysv )
+	if ($mode eq 'init' || $mode eq 'upstart' || $mode eq 'openrc');
+return ( 'line2', @common, 'local_script', 'local_down',
+	 'rc_dir', 'rc_conf' )
+	if ($mode eq 'rc');
+return ( 'line2', @common, 'local_script', 'local_down' )
+	if ($mode eq 'local');
+return ( 'line2', @common, 'line3', 'startup_dirs', 'darwin_setup',
+	 'hostconfig', 'plist' )
+	if ($mode eq 'osx');
+return ( 'line2', @common )
+	if ($mode eq 'launchd' || $mode eq 'win32');
+return ( 'line1', @display, 'line2', @sysv, 'rc_dir', 'rc_conf',
+	 'line3', 'startup_dirs', 'darwin_setup', 'hostconfig', 'plist' );
+}
+
+# hide_single_init_config_section(&config-info, [&config-order])
+# Removes the lone section header when filtering leaves only one group.
+sub hide_single_init_config_section
+{
+my ($modconf_info, $modconf_order) = @_;
+my @sections = grep {
+	exists($modconf_info->{$_}) &&
+	    (split(/,/, $modconf_info->{$_}))[1] == 11
+	} keys %$modconf_info;
+return if (@sections != 1);
+
+delete($modconf_info->{$sections[0]});
+if (ref($modconf_order) eq 'ARRAY') {
+	@$modconf_order = grep { $_ ne $sections[0] } @$modconf_order;
+	}
+}
+
+# init_dedicated_systemd_module_available()
+# Returns 1 if the standalone Systemd module can be used by this Webmin user.
+sub init_dedicated_systemd_module_available
+{
+return &foreign_available("systemd") && &foreign_installed("systemd");
+}
+
+# init_show_systemd_services()
+# Returns 1 if this module should show its legacy systemd service table.
+sub init_show_systemd_services
+{
+return 1 if (!&init_dedicated_systemd_module_available());
+return 0 if ($config{'systemd_dedicated'} &&
+	     $config{'systemd_dedicated'} eq '1');
+return 1;
 }
 
 1;

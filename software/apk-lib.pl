@@ -364,7 +364,7 @@ sub update_system_resolve
 my ($name) = @_;
 return $name eq "apache" ? "apache2" :
        $name eq "dhcpd" ? "dhcp" :
-       $name eq "mysql" ? "mariadb mariadb-client" :
+       $name eq "mysql" ? "mariadb mariadb-client mariadb-server-utils" :
        $name eq "postgresql" ? "postgresql postgresql-client" :
        $name eq "openldap" ? "openldap openldap-clients" :
        $name eq "ldap" ? "openldap openldap-clients" :
