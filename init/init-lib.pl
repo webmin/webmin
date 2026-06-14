@@ -28,9 +28,9 @@ use WebminCore;
 
 This variable is set based on the bootup system in use. Possible values are :
 
-=item osx - MacOSX hostconfig files, for older versions
+=item osx - Legacy macOS StartupItems and hostconfig files
 
-=item launchd - MacOS Launchd, for newer versions
+=item launchd - macOS launchd, for newer versions
 
 =item rc - FreeBSD 6+ RC files
 
@@ -43,6 +43,8 @@ This variable is set based on the bootup system in use. Possible values are :
 =item upstart - Upstart, seen on Ubuntu 11
 
 =item systemd - SystemD, seen on Fedora 16
+
+=item openrc - OpenRC, seen on Alpine Linux and Gentoo
 
 =cut
 if ($config{'init_mode'}) {
@@ -100,6 +102,14 @@ local($dir, $f, @stbuf, @rv);
 $dir = &runlevel_dir($_[0]);
 opendir(DIR, $dir);
 foreach $f (readdir(DIR)) {
+	if ($init_mode eq "openrc") {
+		next if ($_[1] ne "S" || $f eq "." || $f eq "..");
+		next if (-d "$dir/$f");
+		if (@stbuf = stat("$dir/$f")) {
+			push(@rv, "00 $f $stbuf[1]");
+			}
+		next;
+		}
 	if ($f !~ /^([A-Z])(\d+)(.*)$/ || $1 ne $_[1]) { next; }
 	if (!(@stbuf = stat("$dir/$f"))) { next; }
 	push(@rv, "$2 $3 $stbuf[1]");
@@ -120,7 +130,11 @@ sub list_runlevels
 local(@rv);
 opendir(DIR, $config{init_base});
 foreach (readdir(DIR)) {
-	if (/^rc([A-z0-9])\.d$/ || /^(boot)\.d$/) {
+	if ($init_mode eq "openrc") {
+		push(@rv, $_) if ($_ ne "." && $_ ne ".." &&
+				  -d "$config{init_base}/$_");
+		}
+	elsif (/^rc([A-z0-9])\.d$/ || /^(boot)\.d$/) {
 		push(@rv, $1);
 		}
 	}
@@ -174,6 +188,16 @@ foreach $rl (&list_runlevels()) {
 	$dir = &runlevel_dir($rl);
 	opendir(DIR, $dir);
 	foreach $f (readdir(DIR)) {
+		if ($init_mode eq "openrc") {
+			next if ($_[0] ne "S" || $f eq "." || $f eq "..");
+			next if (-d "$dir/$f");
+			@stbuf2 = stat("$dir/$f");
+			if ($stbuf[1] == $stbuf2[1]) {
+				push(@rv, "$rl 00 $f");
+				last;
+				}
+			next;
+			}
 		if ($f =~ /^([A-Z])(\d+)(.*)$/ && $1 eq $_[0]) {
 			@stbuf2 = stat("$dir/$f");
 			if ($stbuf[1] == $stbuf2[1]) {
@@ -242,6 +266,14 @@ Add some existing action to a runlevel. The parameters are :
 =cut
 sub add_rl_action
 {
+if ($init_mode eq "openrc") {
+	return if ($_[2] ne "S");
+	my $file = &runlevel_dir($_[1])."/$_[0]";
+	&lock_file($file);
+	&symlink_file(&action_filename($_[0]), $file) if (!-e $file);
+	&unlock_file($file);
+	return;
+	}
 $file = &runlevel_filename($_[1], $_[2], $_[3], $_[0]);
 while(-r $file) {
 	if ($file =~ /^(.*)_(\d+)$/) { $file = "$1_".($2+1); }
@@ -269,6 +301,11 @@ sub delete_rl_action
 local(@stbuf, $dir, $f, @stbuf2);
 @stbuf = stat(&action_filename($_[0]));
 $dir = &runlevel_dir($_[1]);
+if ($init_mode eq "openrc") {
+	my $file = "$dir/$_[0]";
+	&unlink_logged($file) if ($_[2] eq "S" && -e $file);
+	return;
+	}
 opendir(DIR, $dir);
 foreach $f (readdir(DIR)) {
 	if ($f =~ /^([A-Z])(\d+)(.+)$/ && $1 eq $_[2]) {
@@ -565,6 +602,11 @@ elsif ($init_mode eq "systemd") {
 		return 1 if ($out eq "disabled");
 		}
 	}
+elsif ($init_mode eq "openrc") {
+	my $exists = -r &action_filename($name);
+	my @boot = &action_levels("S", $name);
+	return !$exists ? 0 : @boot ? 2 : 1;
+	}
 if ($init_mode eq "init" || $init_mode eq "upstart" ||
     $init_mode eq "systemd") {
 	# Look for init script
@@ -708,6 +750,48 @@ if ($init_mode eq "systemd" && (!-r "$config{'init_dir'}/$action" ||
 	&unmask_action($unit);
 	&system_logged("systemctl enable ".
 		       quotemeta($unit)." >/dev/null 2>&1");
+	return;
+	}
+if ($init_mode eq "openrc") {
+	if ($st == 0) {
+		$start || $stop || &error("OpenRC service $action does not exist");
+		my $fn = &action_filename($action);
+		my $qdesc = $desc || "";
+		$qdesc =~ s/\\/\\\\/g;
+		$qdesc =~ s/"/\\"/g;
+		&lock_file($fn);
+		&open_tempfile(ACTION, ">$fn");
+		&print_tempfile(ACTION, "#!/sbin/openrc-run\n\n");
+		&print_tempfile(ACTION, "description=\"$qdesc\"\n\n") if ($desc);
+		&print_tempfile(ACTION, "start() {\n");
+		&print_tempfile(ACTION, &tab_indent($start));
+		&print_tempfile(ACTION, "}\n\n");
+		if ($stop) {
+			&print_tempfile(ACTION, "stop() {\n");
+			&print_tempfile(ACTION, &tab_indent($stop));
+			&print_tempfile(ACTION, "}\n\n");
+			}
+		if ($status) {
+			&print_tempfile(ACTION, "status() {\n");
+			&print_tempfile(ACTION, &tab_indent($status));
+			&print_tempfile(ACTION, "}\n");
+			}
+		&close_tempfile(ACTION);
+		chmod(0755, $fn);
+		&unlock_file($fn);
+		}
+	my @levels = &get_start_runlevels();
+	if (&has_command("rc-update")) {
+		foreach my $level (@levels) {
+			&system_logged("rc-update add ".quotemeta($action)." ".
+				       quotemeta($level)." >/dev/null 2>&1");
+			}
+		}
+	else {
+		foreach my $level (@levels) {
+			&add_rl_action($action, $level, "S", 0);
+			}
+		}
 	return;
 	}
 if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart" ||
@@ -1087,6 +1171,18 @@ elsif ($init_mode eq "systemd") {
 	&system_logged("systemctl disable ".quotemeta($unit).
 		       " >/dev/null 2>&1");
 	}
+elsif ($init_mode eq "openrc") {
+	if (&has_command("rc-update")) {
+		&system_logged("rc-update del ".quotemeta($_[0]).
+			       " >/dev/null 2>&1");
+		}
+	else {
+		foreach my $a (&action_levels('S', $_[0])) {
+			$a =~ /^(\S+)\s+(\S+)\s+(\S+)$/ &&
+				&delete_rl_action($_[0], $1, 'S');
+			}
+		}
+	}
 if ($init_mode eq "init" || $init_mode eq "upstart" ||
     $init_mode eq "systemd") {
 	# Unlink or disable init script
@@ -1251,6 +1347,11 @@ elsif ($mode eq "init") {
 	my $fn = &action_filename($name);
 	&unlink_logged($fn);
 	}
+elsif ($mode eq "openrc") {
+	&disable_at_boot($name);
+	my $fn = &action_filename($name);
+	&unlink_logged($fn);
+	}
 elsif ($mode eq "win32") {
 	# Delete windows service
 	&delete_win32_service($name);
@@ -1303,6 +1404,16 @@ if ($action_mode eq "init" || $action_mode eq "local") {
 	my $ex = $?;
 	return (!$ex, $out);
 	}
+elsif ($action_mode eq "openrc") {
+	my $cmd = &has_command("rc-service") ?
+		"rc-service ".quotemeta($name)." start" :
+		&action_filename($name)." start";
+	&clean_environment();
+	my $out = &backquote_logged("$cmd 2>&1 </dev/null");
+	&reset_environment();
+	my $ex = $?;
+	return (!$ex, $out);
+	}
 elsif ($action_mode eq "rc") {
 	# Run FreeBSD RC script
 	return &start_rc_script($name);
@@ -1351,6 +1462,14 @@ if ($action_mode eq "init" || $action_mode eq "local") {
 	my $ex = $?;
 	return (!$ex, $out);
 	}
+elsif ($action_mode eq "openrc") {
+	my $cmd = &has_command("rc-service") ?
+		"rc-service ".quotemeta($name)." stop" :
+		&action_filename($name)." stop";
+	my $out = &backquote_logged("$cmd 2>&1 </dev/null");
+	my $ex = $?;
+	return (!$ex, $out);
+	}
 elsif ($action_mode eq "rc") {
 	# Run FreeBSD RC script
 	return &stop_rc_script($name);
@@ -1392,6 +1511,11 @@ if ($action_mode eq "upstart") {
 elsif ($action_mode eq "systemd") {
 	return &restart_systemd_service($name);
 	}
+elsif ($action_mode eq "openrc" && &has_command("rc-service")) {
+	my $out = &backquote_logged("rc-service ".quotemeta($name).
+				    " restart 2>&1 </dev/null");
+	return $? ? (0, $out) : (1, $out);
+	}
 else {
 	&stop_action($name);
 	return &start_action($name);
@@ -1412,6 +1536,11 @@ if ($action_mode eq "upstart") {
 	}
 elsif ($action_mode eq "systemd") {
 	return &reload_systemd_service($name);
+	}
+elsif ($action_mode eq "openrc" && &has_command("rc-service")) {
+	my $out = &backquote_logged("rc-service ".quotemeta($name).
+				    " reload 2>&1 </dev/null");
+	return $? ? (0, $out) : (1, $out);
 	}
 elsif ($action_mode eq "init") {
 	my $file = &action_filename($name);
@@ -1437,6 +1566,13 @@ my $action_mode = &get_action_mode($name);
 if ($action_mode eq "init") {
 	# Run init script to get status
 	return &action_running(&action_filename($name));
+	}
+elsif ($action_mode eq "openrc") {
+	my $cmd = &has_command("rc-service") ?
+		"rc-service ".quotemeta($name)." status" :
+		&action_filename($name)." status";
+	my $out = &backquote_command("$cmd 2>&1 </dev/null");
+	return $? == 0 ? 1 : $out =~ /stopped|inactive/i ? 0 : -1;
 	}
 elsif ($action_mode eq "win32") {
 	# Check with Windows if it is running
@@ -1519,6 +1655,9 @@ elsif ($init_mode eq "systemd") {
 elsif ($init_mode eq "init") {
 	return map { my @w = split(/\s+/, $_); $w[0] } &list_actions();
 	}
+elsif ($init_mode eq "openrc") {
+	return map { my @w = split(/\s+/, $_); $w[0] } &list_actions();
+	}
 elsif ($init_mode eq "win32") {
 	return map { $_->{'name'} } &list_win32_services();
 	}
@@ -1595,7 +1734,10 @@ like /etc/rc2.d.
 =cut
 sub runlevel_dir
 {
-if ($_[0] eq "boot") {
+if ($init_mode eq "openrc") {
+	return "$config{init_base}/$_[0]";
+	}
+elsif ($_[0] eq "boot") {
 	return "$config{init_base}/boot.d";
 	}
 else {
@@ -2169,16 +2311,15 @@ if (@list_systemd_services_cache && !$noinit) {
 	return @list_systemd_services_cache;
 	}
 
-my $units_piped = join('|', &get_systemd_unit_types());
-
 # Get all systemd unit names
 my $out = &backquote_command("systemctl list-units --full --all -t service --no-legend");
 my $ex = $?;
 foreach my $l (split(/\r?\n/, $out)) {
 	$l =~ s/^[^a-z0-9\-\_\.]+//i;
 	my ($unit, $loaded, $active, $sub, $desc) = split(/\s+/, $l, 5);
+	next if ($unit !~ /\.service$/);
 	my $a = $unit;
-	$a =~ s/\.($units_piped)$//;
+	$a =~ s/\.service$//;
 	my $f = &action_filename($a);
 	if ($unit ne "UNIT" && $loaded eq "loaded" && !-r $f) {
 		push(@units, $unit);
@@ -2190,29 +2331,26 @@ foreach my $l (split(/\r?\n/, $out)) {
 # and so don't show up in systemctl list-units
 my $root = &get_systemd_root(undef, 1);
 opendir(UNITS, $root);
-push(@units, grep { !/\.wants$/ && !/^\./ && !-d "$root/$_" } readdir(UNITS));
+push(@units, grep { /\.service$/ && !-d "$root/$_" } readdir(UNITS));
 closedir(UNITS);
 
 # Also add units from list-unit-files that also don't show up
 $out = &backquote_command("systemctl list-unit-files -t service --no-legend");
 foreach my $l (split(/\r?\n/, $out)) {
-	if ($l =~ /^(\S+\.($units_piped))\s+disabled/ ||
-	    $l =~ /^(\S+)\s+disabled/) {
+	if ($l =~ /^(\S+\.service)\s+disabled/) {
 		push(@units, $1);
 		}
 	}
 
 # Skip useless units
 @units = grep { !/^sys-devices-/ &&
-	        !/^\-\.mount/ &&
-	        !/^\-\.slice/ &&
 		!/^dev-/ &&
 		!/^systemd-/ } @units;
 @units = &unique(@units);
 
 # Filter out templates
-my @templates = grep { /\@$/ || /\@\.($units_piped)$/ } @units;
-@units = grep { !/\@$/ && !/\@\.($units_piped)$/ } @units;
+my @templates = grep { /\@$/ || /\@\.service$/ } @units;
+@units = grep { !/\@$/ && !/\@\.service$/ } @units;
 
 # Dump state of all of them, 100 at a time
 my %info;
@@ -3000,11 +3138,90 @@ return $name =~ /\./ ? $name : "com.webmin.".$name;
 }
 
 # config_pre_load(mod-info, [mod-order])
-# Check if some config options are conditional
+# Hides config options that do not apply to the detected boot system.
 sub config_pre_load
 {
 my ($modconf_info, $modconf_order) = @_;
-$modconf_info->{'desc'} =~ s/2-[^,]+,// if ($init_mode eq "systemd");
+return if (ref($modconf_info) ne 'HASH');
+
+if ($init_mode eq "systemd" && $modconf_info->{'desc'}) {
+	# Systemd has no runlevels, so keep only the plain yes/no choices.
+	$modconf_info->{'desc'} =~ s/2-[^,]+,//;
+	}
+
+my %keep = map { $_, 1 } &init_config_options_for_mode($init_mode);
+foreach my $key (keys %$modconf_info) {
+	delete($modconf_info->{$key}) if (!$keep{$key});
+	}
+if (ref($modconf_order) eq 'ARRAY') {
+	@$modconf_order = grep { $keep{$_} } @$modconf_order;
+	}
+&hide_single_init_config_section($modconf_info, $modconf_order);
+}
+
+# init_config_options_for_mode(mode)
+# Returns config.info keys that should be visible for a boot system.
+sub init_config_options_for_mode
+{
+my ($mode) = @_;
+my @display = ( 'expert', 'desc', 'order', 'status_check', 'sort_mode' );
+my @common = ( 'init_mode', 'reboot_command', 'shutdown_command' );
+my @sysv = ( @common, 'init_base', 'init_dir', 'order_digits',
+	     'boot_levels', 'local_script', 'local_down', 'inittab_id' );
+my @systemd_display = ( 'desc' );
+push(@systemd_display, 'systemd_dedicated')
+	if (&init_dedicated_systemd_module_available());
+
+return ( 'line1', @systemd_display, 'line2', @common )
+	if ($mode eq 'systemd');
+return ( 'line1', @display, 'line2', @sysv )
+	if ($mode eq 'init' || $mode eq 'upstart' || $mode eq 'openrc');
+return ( 'line2', @common, 'local_script', 'local_down',
+	 'rc_dir', 'rc_conf' )
+	if ($mode eq 'rc');
+return ( 'line2', @common, 'local_script', 'local_down' )
+	if ($mode eq 'local');
+return ( 'line2', @common, 'line3', 'startup_dirs', 'darwin_setup',
+	 'hostconfig', 'plist' )
+	if ($mode eq 'osx');
+return ( 'line2', @common )
+	if ($mode eq 'launchd' || $mode eq 'win32');
+return ( 'line1', @display, 'line2', @sysv, 'rc_dir', 'rc_conf',
+	 'line3', 'startup_dirs', 'darwin_setup', 'hostconfig', 'plist' );
+}
+
+# hide_single_init_config_section(&config-info, [&config-order])
+# Removes the lone section header when filtering leaves only one group.
+sub hide_single_init_config_section
+{
+my ($modconf_info, $modconf_order) = @_;
+my @sections = grep {
+	exists($modconf_info->{$_}) &&
+	    (split(/,/, $modconf_info->{$_}))[1] == 11
+	} keys %$modconf_info;
+return if (@sections != 1);
+
+delete($modconf_info->{$sections[0]});
+if (ref($modconf_order) eq 'ARRAY') {
+	@$modconf_order = grep { $_ ne $sections[0] } @$modconf_order;
+	}
+}
+
+# init_dedicated_systemd_module_available()
+# Returns 1 if the standalone Systemd module can be used by this Webmin user.
+sub init_dedicated_systemd_module_available
+{
+return &foreign_available("systemd") && &foreign_installed("systemd");
+}
+
+# init_show_systemd_services()
+# Returns 1 if this module should show its legacy systemd service table.
+sub init_show_systemd_services
+{
+return 1 if (!&init_dedicated_systemd_module_available());
+return 0 if ($config{'systemd_dedicated'} &&
+	     $config{'systemd_dedicated'} eq '1');
+return 1;
 }
 
 1;

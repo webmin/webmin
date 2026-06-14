@@ -124,6 +124,15 @@ elsif ($init_mode eq "systemd") {
 	# Create systemd
 	# See updateboot.pl
 	}
+elsif ($init_mode eq "openrc") {
+	# Create OpenRC script, if missing
+	&enable_at_boot($product, $ucproduct,
+	     "$config_directory/.start-init",
+	     "$config_directory/.stop-init",
+	     undef,
+	     { 'fork' => 1,
+	       'pidfile' => $var_directory."/miniserv.pid" });
+	}
 elsif ($init_mode eq "rc" || $init_mode eq "upstart") {
 	# Create RC or upstart script
 	&enable_at_boot($product, $ucproduct,
@@ -141,4 +150,3 @@ elsif ($init_mode eq "launchd") {
 
 $config{'atboot_product'} = $product;
 &save_module_config();
-

@@ -34,6 +34,21 @@ elsif ($miniserv{'cipher_list_def'} == 2 || $miniserv{'cipher_list_def'} == 3) {
 		$strong_ssl_ciphers : $pfs_ssl_ciphers;
 	}
 
+# Convert old Let's Encrypt renewal schedules to elapsed interval timers
+if (&foreign_check("webmincron")) {
+	my $job = &find_letsencrypt_cron_job();
+	if ($job && !$job->{'interval'} &&
+	    $job->{'months'} =~ /^\*\/([1-9][0-9]*)$/) {
+		my $renew = $1;
+		$job->{'mins'} = '';
+		$job->{'hours'} = '';
+		$job->{'days'} = '';
+		$job->{'weekdays'} = '';
+		$job->{'interval'} = $renew*30*24*60*60;
+		&webmincron::save_webmin_cron($job);
+		}
+	}
+
 # If this is the first install, enable recording of logins by default
 if (!-r $first_install_file || $miniserv{'login_script'} eq $record_login_cmd) {
 	&foreign_require("cron");

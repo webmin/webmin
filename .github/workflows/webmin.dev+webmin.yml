@@ -1,4 +1,4 @@
-name: Build
+name: Package and upload artifacts
 
 on:
   push:

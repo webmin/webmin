@@ -1,0 +1,44 @@
+#!/sbin/openrc-run
+
+# Copyright 2024 webmin & mckaygerhard
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+
+name="webmin"
+conf_file="WEBMIN_CONFIG/miniserv.conf"
+
+
+depend() { 
+    need logger localmount
+    use net
+    after bootmisc
+}
+
+start() {
+    WEBMIN_CONFIG/start
+    eend $?
+}
+
+stop() {
+    WEBMIN_CONFIG/stop
+    eend $?
+}
+
+status() {
+    pidfile=`grep "^pidfile=" "${conf_file}" | sed -e 's/pidfile=//g'`
+    if [ -s $pidfile ]; then
+	pid=`cat $pidfile`
+	kill -0 $pid >/dev/null 2>&1
+	if [ "$?" = "0" ]; then
+	    einfo "webmin (pid $pid) is running"
+	    return 0
+	else
+	    einfo "webmin is stopped"
+	    return 0
+	fi
+    else
+	einfo "webmin is stopped"
+	return 0
+    fi
+
+}

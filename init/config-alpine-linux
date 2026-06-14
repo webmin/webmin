@@ -1,0 +1,11 @@
+init_mode=openrc
+init_base=/etc/runlevels
+init_dir=/etc/init.d
+reboot_command=reboot
+shutdown_command=poweroff
+expert=0
+desc=1
+status_check=1
+order=0
+sort_mode=0
+boot_levels=default
