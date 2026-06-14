@@ -771,6 +771,36 @@ is(group_line({ name => 'empty' }),
 
 {
     _reset_fixture();
+    create_user({ name => 'carol',
+                  pass => 'x',
+                  modules => [ 'useradmin' ] });
+    create_group({ name => 'child',
+                   members => [ 'carol' ],
+                   modules => [ 'useradmin' ],
+                   desc => 'Child group' });
+    create_group({ name => 'parent',
+                   members => [ '@child' ],
+                   modules => [ 'useradmin' ],
+                   desc => 'Parent group' });
+    _clear_caches();
+
+    is(enable_module_access([ 'apache' ]), 1,
+       'enable_module_access handles all nested groups');
+
+    my $child = get_group('child');
+    my $carol = get_user('carol');
+    is_deeply($child->{'modules'}, [ 'useradmin', 'apache' ],
+              'child group inherits module from parent enabled later in file');
+    is_deeply($child->{'ownmods'}, [],
+              'child group does not record inherited module as ownmod');
+    is_deeply($carol->{'modules'}, [ 'useradmin', 'apache' ],
+              'child group member inherits module through nested groups');
+    is_deeply($carol->{'ownmods'}, [],
+              'child group member does not record inherited module as ownmod');
+}
+
+{
+    _reset_fixture();
     create_user({ name => 'root',
                   pass => 'x',
                   modules => [ 'useradmin' ] });

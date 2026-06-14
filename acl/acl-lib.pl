@@ -1499,9 +1499,23 @@ foreach my $g (@groups) {
 			}
 		}
 	}
+my (@ordered_groups, %ordered_group, %ordering_group);
+my $add_ordered_group;
+$add_ordered_group = sub {
+	my ($g) = @_;
+	return if (!$g || $ordered_group{$g->{'name'}});
+	return if ($ordering_group{$g->{'name'}}++);
+	$add_ordered_group->($group_parent{$g->{'name'}});
+	delete($ordering_group{$g->{'name'}});
+	push(@ordered_groups, $g);
+	$ordered_group{$g->{'name'}}++;
+	};
+foreach my $g (@groups) {
+	$add_ordered_group->($g);
+	}
 
 # Update groups first, so member users and sub-groups inherit the new set
-foreach my $g (@groups) {
+foreach my $g (@ordered_groups) {
 	next if (!$all && !$target_group{$g->{'name'}});
 	my $gchanged = 0;
 	my $parent = $group_parent{$g->{'name'}};
@@ -2496,4 +2510,3 @@ return $mailbox."\@".join(".", @doms);
 }
 
 1;
-
