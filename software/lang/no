@@ -20,7 +20,7 @@ index_filter=Filtrer pakker
 index_filterclear=Fjern filter
 index_filtered=Viser <tt>$1</tt> pakkker av <tt>$2</tt>
 
-search_title=Pakke søk
+search_title=Pakkesøk
 search_nomatch=Ingen pakker stemte med $1
 search_none=Ingen
 search_desc=Beskrivelse
@@ -187,7 +187,7 @@ rhn_failed=.. installasjon feilet!
 rhn_title=Velg RHN pakke
 rhn_pack=Pakke
 rhn_version=Versjon
-rhn_form=Instillinger for Redhat Network
+rhn_form=Innstillinger for Redhat Network
 rhn_header=Innstillinger for automatisk pakkeoppgradering
 rhn_auto=Se etter oppdateringer automatisk?
 rhn_interval=Sjekk-intervall
@@ -344,8 +344,8 @@ cygwin_elread=Kunne ikke lese symlink: $1
 cygwin_elstat=Kunne ikke hente informasjon om symlink: $1
 cygwin_badpostscript=Advarsel: Dette scriptet ser ikke ut til å ha blitt kjørt
 cygwin_pkgexists=Pakken $1 finnes allerede.
-cygwin_warnuse=Advarsel: Dette er ikke et offisielt grensesnitt for administrering av Cygwin programvare. Bruk på egen risiko.
-cygwin_edb=Mangler Cygwin pakkedatabase $1
+cygwin_warnuse=Advarsel: Dette er ikke et offisielt grensesnitt for administrering av Cygwin-programvare. Bruk på egen risiko.
+cygwin_edb=Mangler Cygwin-pakkedatabase $1
 
 deletes_err=Kunne ikke slette pakker
 deletes_enone=Ingen pakker valgt
@@ -416,7 +416,7 @@ ports_apply=Laste siste snapshot
 ports_upgrade=Laster ned porterings-snapshots
 ports_running=Kjører kommandoen $1 ..
 
-pkg_install=Installerer FreeBSD pakker $1 ..
+pkg_install=Installerer FreeBSD-pakker $1 ..
 pkg_failed=.. noen pakker feilet
 pkg_ok=.. installasjon fullført
 pkg_find=Søk pkgng
