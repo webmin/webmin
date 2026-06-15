@@ -10,8 +10,9 @@ our (%access, %config, %in, %text);
 
 ReadParse();
 
-# The index can be reached by GET, so all query input below is either reduced
-# to known values or validated before it is used.
+# Read query params to restore the selected tab/user context on return links.
+# The index is GET-addressable, so every value from %in below is either reduced
+# to known values or validated before use, and none is printed raw.
 has_command("systemctl") || error($text{'systemd_esystemctl'});
 systemd_can_enter_module(\%access) || systemd_acl_error('penter');
 
