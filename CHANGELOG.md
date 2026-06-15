@@ -11,6 +11,7 @@
 * Add option to control when scheduled package update email is sent
 * Add per-user RPC/API-only access option to the Webmin Users module
 * Update Xterm.js to fix Control-C handling on iPadOS/Safari terminals
+* Update Webmin systemd service unit to run without forking
 * Fix Bootup and Shutdown module to show only services and not all units on systemd systems
 * Fix Let's Encrypt renewal scheduling to count from the last successful request
 * Fix NetworkManager detection on Debian and IPv6 DNS nameserver saving
