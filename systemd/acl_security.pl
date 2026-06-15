@@ -13,6 +13,7 @@ sub acl_security_form
 my ($o) = @_;
 my $m = $o->{'mode'} || 0;
 
+# User scope controls limit which Unix users' units this Webmin user can touch.
 print ui_table_span(ui_tag('b', html_escape($text{'acl_section_users'})));
 print ui_table_row($text{'acl_users'},
 	ui_radio("mode", $m,
@@ -36,6 +37,7 @@ print ui_table_row($text{'acl_users'},
 	 ]), 3, undef, undef, 1);
 print ui_table_hr();
 
+# View controls cover listing units and reading status or journal output.
 print ui_table_span(ui_tag('b', html_escape($text{'acl_section_view'})));
 foreach my $a (qw(view view_user status status_user logs logs_user)) {
 	print ui_table_row($text{'acl_'.$a},
@@ -43,6 +45,7 @@ foreach my $a (qw(view view_user status status_user logs logs_user)) {
 	}
 print ui_table_hr();
 
+# Runtime controls cover actions that change active state or manager state.
 print ui_table_span(ui_tag('b', html_escape($text{'acl_section_runtime'})));
 foreach my $a (qw(start start_user stop stop_user restart restart_user
 		  boot boot_user mask mask_user reload linger)) {
@@ -51,6 +54,7 @@ foreach my $a (qw(start start_user stop stop_user restart restart_user
 	}
 print ui_table_hr();
 
+# Change controls cover writing, deleting, drop-ins, manual edits and backup.
 print ui_table_span(ui_tag('b', html_escape($text{'acl_section_change'})));
 foreach my $a (qw(create create_user edit edit_user delete delete_user
 		  dropin dropin_user manual manual_user backup)) {
