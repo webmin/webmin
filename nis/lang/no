@@ -216,17 +216,17 @@ netgroup_edom=Manglende eller ugyldig NIS-domene i rad $1
 ethers_mac=Ethernet-adresse
 ethers_ip=IP-adresse
 ethers_title=Ethernet-adresse
-ethers_header=Instillinger for ethernet tilordning
+ethers_header=Innstillinger for ethernet-tilordning
 ethers_err=Kunne ikke lagre ethernet-adresse
 ethers_emac=Ugyldig ethernet-adresse
 ethers_eip=Ugyldig IP-adresse
 
-rpc_name=Program navn
+rpc_name=Programnavn
 rpc_number=Nummer
 rpc_aliases=Aliaser
-rpc_title=RPC Program
-rpc_header=Detaljer for RPC program
-rpc_err=Kunne ikke lagre RPC program
+rpc_title=RPC-program
+rpc_header=Detaljer for RPC-program
+rpc_err=Kunne ikke lagre RPC-program
 rpc_ename=Manglende eller ugyldig programnavn
 rpc_enumber=Manglende eller ugyldig nummer
 
