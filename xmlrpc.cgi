@@ -35,8 +35,8 @@ $trust_unknown_referers = 2;	# Only trust if referer was not set
 $main::error_must_die = 1;
 
 # Can this user make remote calls? webmin_user_can_rpc() centralises the
-# policy (rpc=0 none, 1 all, 2 admin-only, 3 RPC-only) and is fail-closed
-# when the ACL is unset.
+# policy (rpc=0 none, 1 all, 2 admin-only, 3 RPC-only). If the rpc ACL is
+# unset, it falls back to allowing only standard admin usernames.
 if (!$command_line && !&webmin_user_can_rpc()) {
 	&error_exit(1, "Invalid user for RPC");
 	}
