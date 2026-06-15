@@ -68,6 +68,30 @@ assert_no_handler_injection(
 	'ui_select option value');
 assert_no_handler_injection(main::ui_select($xss_dq, '', [['v','label']]),
 	'ui_select name');
+
+# ui_select option label is element content, not an attribute, so it must be
+# html-escaped to stop a label breaking out of the <option>/<select>.
+{
+	my $payload = q{</option></select><img src=x onerror=alert(1)>};
+	my $html = main::ui_select('field', '', [['v', $payload]]);
+	unlike($html, qr{</option></select><img}i,
+		'ui_select option label cannot close the option/select');
+	like($html, qr{&lt;/option}, 'ui_select option label html-escapes <');
+}
+# Single-element option: the value doubles as the label and must be escaped
+# in content position too.
+{
+	my $html = main::ui_select('field', '', [['<img src=x onerror=alert(1)>']]);
+	assert_no_handler_injection($html, 'ui_select fallback label');
+	like($html, qr{&lt;img}, 'ui_select fallback label html-escapes <');
+}
+# add-if-missing branch emits a selected value as its own label.
+{
+	my $html = main::ui_select('field', '<img src=x onerror=alert(1)>',
+				   [['other', 'Other']], 0, 0, 1);
+	assert_no_handler_injection($html, 'ui_select missing-value label');
+	like($html, qr{&lt;img}, 'ui_select missing-value label html-escapes <');
+}
 assert_no_handler_injection(main::ui_checkbox($xss_dq, 'v', 'label', 0),
 	'ui_checkbox name');
 assert_no_handler_injection(main::ui_oneradio($xss_dq, 'v', 'label', 0),
