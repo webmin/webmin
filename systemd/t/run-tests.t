@@ -280,7 +280,7 @@ ok(!unit_file_editable({
                            { scope => 'user', user => 'bob' }),
        'manual user file ACL rejects disallowed owner');
 
-    my %virtualmin_acl = systemd_user_unit_acl('alice');
+    my %virtualmin_acl = systemd_safe_user_unit_acl('alice');
     is($virtualmin_acl{'noconfig'}, 1,
        'Virtualmin user-unit ACL preset disables module config access');
     is($virtualmin_acl{'mode'}, 1,

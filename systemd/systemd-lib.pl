@@ -59,13 +59,13 @@ return (qw(view view_user status status_user logs logs_user
 	   dropin dropin_user manual manual_user reload linger backup));
 }
 
-=head2 systemd_user_unit_acl(user)
+=head2 systemd_safe_user_unit_acl(user)
 
 Returns a safe ACL hash for managing one Unix user's systemd user units,
 without granting any system-unit access.
 
 =cut
-sub systemd_user_unit_acl
+sub systemd_safe_user_unit_acl
 {
 my ($user) = @_;
 my %acl = map { $_, 0 } systemd_acl_keys();
