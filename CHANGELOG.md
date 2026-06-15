@@ -1,5 +1,41 @@
 ## Changelog
 
+#### 2.650 (June 16, 2026)
+* Add new Systemd Services and Units module
+* Add new GRUB 2 Boot Loader module
+* Add new Kea DHCP Server module
+* Add basic Alpine Linux support
+* Add IP-based Let's Encrypt certificate support with Certbot 5.3
+* Add quick service and port forwarding controls to the nftables module
+* Add optional pre- and post-scripts for scheduled package updates
+* Add option to control when scheduled package update email is sent
+* Add per-user RPC/API-only access option to the Webmin Users module
+* Update Xterm.js to fix Control-C handling on iPadOS/Safari terminals
+* Fix Bootup and Shutdown module to show only services and not all units on systemd systems
+* Fix Let's Encrypt renewal scheduling to count from the last successful request
+* Fix NetworkManager detection on Debian and IPv6 DNS nameserver saving
+* Fix Dovecot configuration file handling when saving extra configs
+* Fix mailbox listing to skip unusable Maildir entries and remove stale deleted or moved entries
+* Fix Apache module to hide disabled default virtual hosts from the active server list
+* Fix Netplan DNS saving to preserve YAML structure
+* Fix BIND DNS handling of underscores, trailing dots, and mass record length checks
+* Fix MariaDB user creation when using auth plugin syntax
+* Fix PHP-FPM monitor on EL systems when using `/etc/php.ini` as the config file
+* Fix RPC-only accounts to block browser/module access before module ACL checks
+* Fix reflected XSS in Webmin status messages
+* Fix authentication state handling for SSL certificate logins and proxied keep-alive requests
+* Fix path validation in File Manager, package delete helpers, and Apache virtual host files
+* Update the Authentic theme to the latest version with various improvements and fixes:
+  - Add zooming to stats history graphs by holding shift and scrolling in the dashboard
+  - Add support for saving live stats history for up to 24 hours without performance impact
+  - Add better support for the new Nginx, nftables, and upcoming systemd, Kea-DHCP, and GRUB 2 Webmin modules
+  - Add ability to always show available dashboard panels in theme configuration
+  - Fix iOS terminal viewport sizing
+  - Fix editor save handling, clean-state indication and dirty reload guard
+  - Fix popover positioning, z-index and border color for help bubbles
+  - Fix the active product switch border in the navigation menu for the dark palette
+  - Fix to validate password reset return URLs
+
 #### 2.641 (May 10, 2026)
 * Fixed a bug when editing monitors in the System and Server Status module
 * Fix Fail2Ban default jail options
@@ -912,4 +948,3 @@ This updated includes the latest Authentic theme, a new IPv6 Firewall module for
 #### Version 1.140
 * Fixed a security hole that allowed any user to view the configuration of any module, even those that they should not have access to.
 * Fixed a security hole that could allow an attacker to lock valid users by sending a bogus username or password.
-
