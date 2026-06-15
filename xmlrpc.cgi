@@ -1,6 +1,18 @@
 #!/usr/local/bin/perl
 # Handles xml-rpc requests from arbitrary clients. Each is a call to a
-# function in a Webmin module. 
+# function in a Webmin module.
+
+use strict;
+use warnings;
+
+our ($command_line, $no_acl_check, $force_lang, $trust_unknown_referers);
+
+BEGIN { push(@INC, "."); };
+use WebminCore;
+use POSIX;
+use Socket;
+
+unless (caller) {
 
 if (!$ENV{'GATEWAY_INTERFACE'}) {
 	# Command-line mode
@@ -10,15 +22,11 @@ if (!$ENV{'GATEWAY_INTERFACE'}) {
 	if ($0 =~ /^(.*\/)[^\/]+$/) {
 		chdir($1);
 		}
-	chop($pwd = `pwd`);
+	chomp(my $pwd = `pwd`);
 	$0 = "$pwd/xmlrpc.pl";
 	$command_line = 1;
 	$> == 0 || die "xmlrpc.cgi must be run as root";
 	}
-BEGIN { push(@INC, "."); };
-use WebminCore;
-use POSIX;
-use Socket;
 
 $main::allow_rpc_only = 1;
 $force_lang = $default_lang;
@@ -26,24 +34,19 @@ $trust_unknown_referers = 2;	# Only trust if referer was not set
 &init_config();
 $main::error_must_die = 1;
 
-# Can this user make remote calls?
-if (!$command_line) {
-	%access = &get_module_acl();
-	if ($access{'rpc'} == 0 || $access{'rpc'} == 2 &&
-	    $base_remote_user ne 'admin' && $base_remote_user ne 'root' &&
-	    $base_remote_user ne 'sysadm') {
-		&error_exit(1, "Invalid user for RPC");
-		}
+# Can this user make remote calls? webmin_user_can_rpc() centralises the
+# policy (rpc=0 none, 1 all, 2 admin-only, 3 RPC-only) and is fail-closed
+# when the ACL is unset.
+if (!$command_line && !&webmin_user_can_rpc()) {
+	&error_exit(1, "Invalid user for RPC");
 	}
 
 # Load the XML parser module
-eval "use XML::Parser";
-if ($@) {
-	&error_exit(2, "XML::Parser Perl module is not installed");
-	}
+eval { require XML::Parser; 1 }
+	or &error_exit(2, "XML::Parser Perl module is not installed");
 
 # Read in the XML
-my $rawxml;
+my $rawxml = "";
 if ($command_line) {
 	# From STDIN
 	while(<STDIN>) {
@@ -52,7 +55,7 @@ if ($command_line) {
 	}
 else {
 	# From web client
-	my $clen = $ENV{'CONTENT_LENGTH'};
+	my $clen = $ENV{'CONTENT_LENGTH'} || 0;
 	while(length($rawxml) < $clen) {
 		my $buf;
 		my $got = read(STDIN, $buf, $clen - length($rawxml));
@@ -64,7 +67,7 @@ else {
 	}
 
 # Parse the XML
-my $parser = new XML::Parser('Style' => 'Tree');
+my $parser = XML::Parser->new('Style' => 'Tree');
 my $xml;
 eval { $xml = $parser->parse($rawxml); };
 if ($@) {
@@ -72,11 +75,11 @@ if ($@) {
 	}
 
 # Look for the method calls, and invoke each one
+my %done_require_module;
 my $xmlrv = "<?xml version=\"1.0\" encoding=\"$default_charset\"?>\n";
 foreach my $mc (&find_xmls("methodCall", $xml)) {
 	# Find the method name and module
 	my ($mn) = &find_xmls("methodName", $mc);
-	$h = $mn->[1]->[0];
 	my ($mod, $func) = $mn->[1]->[2] =~ /::/ ?
 				split(/::/, $mn->[1]->[2]) :
 			   $mn->[1]->[2] =~ /\./ ?
@@ -100,7 +103,7 @@ foreach my $mc (&find_xmls("methodCall", $xml)) {
 				&error_exit(5,
 					"Webmin module $mod does not exist");
 				}
-			eval { &foreign_require($mod, $lib); };
+			eval { &foreign_require($mod); };
 			if ($@) {
 				$xmlrv .= &make_error_xml(6,
 					"Failed to load module $mod : $@");
@@ -113,7 +116,7 @@ foreach my $mc (&find_xmls("methodCall", $xml)) {
 	my @rv;
 	if ($func eq "eval") {
 		# Execute some Perl code
-		@rv = eval "$args[0]";
+		@rv = eval $args[0];	## no critic (ProhibitStringyEval)
 		if ($@) {
 			$xmlrv .= &make_error_xml(8, "Eval failed : $@");
 			}
@@ -153,6 +156,8 @@ if (!$command_line) {
 	print "\n";
 	}
 print $xmlrv;
+
+} # end of unless (caller)
 
 # parse_xml_value(&value)
 # Given a <value> object, returns a Perl scalar, hash ref or array ref for
@@ -208,7 +213,7 @@ else {
 # Given a Perl object, returns XML lines representing it for return to a caller
 sub encode_xml_value
 {
-local ($perlv) = @_;
+my ($perlv) = @_;
 if (ref($perlv) eq "ARRAY") {
 	# Convert to array XML format
 	my $xmlrv = "<array>\n<data>\n";
@@ -256,8 +261,8 @@ else {
 # Returns the XMLs object with some name, by recursively searching the XML
 sub find_xmls
 {
-local ($name, $conf, $depth) = @_;
-local @m = ref($name) ? @$name : ( $name );
+my ($name, $conf, $depth) = @_;
+my @m = ref($name) ? @$name : ( $name );
 if (&indexoflc($conf->[0], @m) >= 0) {
         # Found it!
         return ( $conf );
@@ -269,11 +274,13 @@ else {
 		# Gone too far .. stop
 		return ( );
 		}
-        local $i;
-        local $list = $conf->[1];
-        local @rv;
-        for($i=1; $i<@$list; $i+=2) {
-                local @srv = &find_xmls($name,
+        my $list = $conf->[1];
+        # A char-data leaf has a plain string here, not a child list. There
+        # is nothing to scan, so stop before dereferencing it as an array.
+        ref($list) eq 'ARRAY' || return ( );
+        my @rv;
+        for(my $i=1; $i<@$list; $i+=2) {
+                my @srv = &find_xmls($name,
                                        [ $list->[$i], $list->[$i+1] ],
 				       defined($depth) ? $depth-1 : undef);
                 push(@rv, @srv);
@@ -305,10 +312,12 @@ print $xmlerr;
 exit($command_line ? $code : 0);
 }
 
+# make_error_xml(code, message)
+# Returns an XML methodResponse fault document for the given code and message
 sub make_error_xml
 {
 my ($code, $msg) = @_;
-$xmlerr .= "<methodResponse>\n";
+my $xmlerr = "<methodResponse>\n";
 $xmlerr .= "<fault>\n";
 $xmlerr .= "<value>\n";
 $xmlerr .= &encode_xml_value( { 'faultCode' => $code,
