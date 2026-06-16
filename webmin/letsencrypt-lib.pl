@@ -18,6 +18,26 @@ $letsencrypt_chain_urls = [
 	"https://letsencrypt.org/certs/lets-encrypt-e1.pem",
 	];
 
+# letsencrypt_is_ip_cert_identifier(identifier)
+# Returns 1 if some certificate identifier is an IPv4 or IPv6 address
+sub letsencrypt_is_ip_cert_identifier
+{
+my ($id) = @_;
+return 1 if (&check_ipaddress($id));
+return $id !~ /\// && $id =~ /:/ && &check_ip6address($id);
+}
+
+# letsencrypt_doms_have_ips(&domains)
+# Returns 1 if any certificate identifier is an IP address
+sub letsencrypt_doms_have_ips
+{
+my ($doms) = @_;
+foreach my $d (@$doms) {
+	return 1 if (&letsencrypt_is_ip_cert_identifier($d));
+	}
+return 0;
+}
+
 # check_letsencrypt()
 # Returns undef if all dependencies are installed, or an error message
 sub check_letsencrypt
@@ -126,8 +146,8 @@ my ($dom, $webroot, $email, $size, $mode, $staging, $account_email,
     $subset) = @_;
 my @doms = ref($dom) ? @$dom : ($dom);
 @doms = &unique(@doms);
-my @ips = grep { &check_ipaddress($_) } @doms;
-@doms = grep { !&check_ipaddress($_) } @doms;
+my @ips = grep { &letsencrypt_is_ip_cert_identifier($_) } @doms;
+@doms = grep { !&letsencrypt_is_ip_cert_identifier($_) } @doms;
 $email ||= (@doms ? "root\@$doms[0]" : "root\@".&get_system_hostname());
 $mode ||= "web";
 $reuse_key = $config{'letsencrypt_reuse'} if (!defined($reuse_key));
@@ -152,9 +172,11 @@ if (@ips) {
 				     "for IP addresses");
 	$letsencrypt_cmd || return (0, "The certbot command is required for ".
 				       "IP address certificates");
-	&compare_version_numbers($cmd_ver, "5.3") >= 0 ||
-		return (0, "Certbot version 5.3 or later is required for ".
-			   "IP address certificates");
+	my $ip_min_certbot = $mode eq "web" ? "5.4" : "5.3";
+	&compare_version_numbers($cmd_ver, $ip_min_certbot) >= 0 ||
+		return (0, "Certbot version $ip_min_certbot or later is ".
+			   "required for IP address certificates".
+			   ($mode eq "web" ? " in webroot mode" : ""));
 	}
 
 if ($mode eq "web") {
@@ -365,7 +387,7 @@ if ($letsencrypt_cmd) {
 		goto FAILED;
 		}
 	my ($full, $cert, $key, $chain);
-	if ($out =~ /((?:\/usr\/local)?\/etc\/letsencrypt\/(?:live|archive)\/[a-zA-Z0-9\.\_\-\/\r\n\* ]*\.pem)/) {
+	if ($out =~ /((?:\/usr\/local)?\/etc\/letsencrypt\/(?:live|archive)\/[a-zA-Z0-9\.\_\-:\/\r\n\* ]*\.pem)/) {
 		# Output contained the full path
 		$full = $1;
 		$full =~ s/\s//g;

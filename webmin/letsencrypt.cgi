@@ -16,6 +16,8 @@ our $module_name;
 our $letsencrypt_cmd;
 &error_setup($text{'letsencrypt_err'});
 
+my $letsencrypt_ip_cert_renewal_max_days = 5;
+
 # Re-check if let's encrypt is available
 my $err = &check_letsencrypt();
 &error($err) if ($err);
@@ -24,8 +26,11 @@ my $err = &check_letsencrypt();
 &ReadParse();
 my @doms = split(/\s+/, $in{'dom'});
 foreach my $dom (@doms) {
-	$dom =~ /^(\*\.)?[a-z0-9\-\.\_]+$/i || &error($text{'letsencrypt_edom'});
+	$dom =~ /^(\*\.)?[a-z0-9\-\.\_]+$/i ||
+	    &letsencrypt_is_ip_cert_identifier($dom) ||
+		&error($text{'letsencrypt_edom'});
 	}
+my $has_ip_doms = &letsencrypt_doms_have_ips(\@doms);
 $in{'directory_url'} = &trim($in{'directory_url'});
 $in{'eab_kid'} = &trim($in{'eab_kid'});
 $in{'eab_hmac'} = &trim($in{'eab_hmac'});
@@ -39,8 +44,19 @@ if ($in{'eab_kid'} || $in{'eab_hmac'}) {
 		&error($text{'letsencrypt_eeabpair'});
 	$letsencrypt_cmd || &error($text{'letsencrypt_eeabnative'});
 	}
-$in{'renew_def'} || $in{'renew'} =~ /^[1-9][0-9]*$/ ||
-	&error($text{'letsencrypt_erenew'});
+if (!$in{'renew_def'}) {
+	$in{'renew'} =~ /^[1-9][0-9]*$/ ||
+		&error($text{'letsencrypt_erenew'});
+	$in{'renew_unit'} ||= $has_ip_doms ? "days" : "months";
+	$in{'renew_unit'} =~ /^(days|months)$/ ||
+		&error($text{'letsencrypt_erenewunit'});
+	my $ip_max_days = $letsencrypt_ip_cert_renewal_max_days;
+	if ($has_ip_doms && ($in{'renew_unit'} ne "days" ||
+			     $in{'renew'} > $ip_max_days)) {
+		&error(&text('letsencrypt_erenewipauto',
+			     $ip_max_days));
+		}
+	}
 $in{'size_def'} || $in{'size'} =~ /^\d+$/ ||
 	&error($text{'newkey_esize'});
 my $size = $in{'size_def'} ? undef : $in{'size'};
@@ -122,7 +138,7 @@ else {
 		undef, undef, undef, $in{'directory_url'},
 		$in{'eab_kid'}, $in{'eab_hmac'}, $in{'subset'});
 	if (!$ok) {
-		print &text('letsencrypt_failed', $cert),"<p>\n";
+		print &text('letsencrypt_failed', $cert),"\n";
 		}
 	else {
 		# Worked, now copy to Webmin
@@ -194,6 +210,11 @@ $config{'letsencrypt_mode'} = $mode;
 $config{'letsencrypt_size'} = $size;
 $config{'letsencrypt_subset'} = $subset;
 $config{'letsencrypt_nouse'} = $usewebmin ? 0 : 1;
+my $renew_has_ip_doms = &letsencrypt_doms_have_ips($doms);
+my $renew_unit = $in{'renew_unit'} =~ /^(days|months)$/ ?
+		 $in{'renew_unit'} :
+		 ($renew_has_ip_doms ? "days" : "months");
+$config{'letsencrypt_renew_unit'} = $renew_unit;
 if ($directory_url) {
 	$config{'letsencrypt_directory_url'} = $directory_url;
 	}
@@ -229,14 +250,18 @@ if (&foreign_check("webmincron")) {
 			}
 		$job ||= { 'module' => $module_name,
 			   'func' => 'renew_letsencrypt_cert' };
-		# Scheduling is driven by 'interval' (elapsed seconds); 'months'
-		# is retained only so edit_ssl.cgi can show the renewal interval
+		# Scheduling is driven by 'interval' (elapsed seconds).
+		# 'months' is retained only for month-based schedules so
+		# edit_ssl.cgi can show the renewal interval.
 		$job->{'mins'} = '';
 		$job->{'hours'} = '';
 		$job->{'days'} = '';
-		$job->{'months'} = '*/'.$in{'renew'};
+		$job->{'months'} = $renew_unit eq "months" ?
+				    '*/'.$in{'renew'} : '';
 		$job->{'weekdays'} = '';
-		$job->{'interval'} = $in{'renew'}*30*24*60*60;
+		$job->{'interval'} = $renew_unit eq "days" ?
+				      $in{'renew'}*24*60*60 :
+				      $in{'renew'}*30*24*60*60;
 		&webmincron::create_webmin_cron($job);
 		}
 	}

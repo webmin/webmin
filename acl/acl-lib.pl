@@ -1433,6 +1433,148 @@ dbmclose(%sessiondb);
 return $sid;
 }
 
+=head2 set_module_access(&modules, enabled, [&users-groups])
+
+Grants or revokes Webmin module access for users and groups. The modules
+parameter must be an array ref of module names. The enabled flag should be
+1 to grant access, or 0 to revoke access. If the users-groups parameter is
+not given, all users and groups are updated. Otherwise, it must be an array
+ref of usernames and group names. Group names may be prefixed with @ to
+target only a group.
+
+Returns the number of directly updated user and group records.
+
+=cut
+sub set_module_access
+{
+my ($mods, $enabled, $usersgroups) = @_;
+$mods ||= [];
+return 0 if (!@$mods);
+my $set_module_access_list = sub {
+	my ($obj, $key, $addmods) = @_;
+	$addmods ||= $mods;
+	my @old = @{$obj->{$key} || []};
+	my @new;
+	if ($enabled) {
+		@new = &unique(@old, @$addmods);
+		}
+	else {
+		my %remove = map { $_, 1 } @$mods;
+		@new = grep { !$remove{$_} } @old;
+		}
+	return 0 if (join("\0", @old) eq join("\0", @new));
+	$obj->{$key} = \@new;
+	return 1;
+	};
+my $own_module_updates = sub {
+	my ($obj, $inherited) = @_;
+	return $mods if (!$enabled);
+	return [] if (!@{$obj->{'ownmods'} || []} && !@$inherited);
+	return [ grep { &indexof($_, @$inherited) < 0 } @$mods ];
+	};
+my @users = &list_users();
+my @groups = &list_groups();
+my $all = !defined($usersgroups);
+my (%target_user, %target_group);
+if (!$all) {
+	foreach my $ug (@$usersgroups) {
+		if ($ug =~ /^\@(.*)$/) {
+			$target_group{$1} = 1;
+			}
+		else {
+			$target_user{$ug} = 1;
+			$target_group{$ug} = 1;
+			}
+		}
+	}
+my $changed = 0;
+my (%user_group, %group_parent);
+foreach my $g (@groups) {
+	foreach my $m (@{$g->{'members'} || []}) {
+		if ($m =~ /^\@(.*)$/) {
+			$group_parent{$1} = $g;
+			}
+		else {
+			$user_group{$m} = $g;
+			}
+		}
+	}
+my (@ordered_groups, %ordered_group, %ordering_group);
+my $add_ordered_group;
+$add_ordered_group = sub {
+	my ($g) = @_;
+	return if (!$g || $ordered_group{$g->{'name'}});
+	return if ($ordering_group{$g->{'name'}}++);
+	$add_ordered_group->($group_parent{$g->{'name'}});
+	delete($ordering_group{$g->{'name'}});
+	push(@ordered_groups, $g);
+	$ordered_group{$g->{'name'}}++;
+	};
+foreach my $g (@groups) {
+	$add_ordered_group->($g);
+	}
+
+# Update groups first, so member users and sub-groups inherit the new set
+foreach my $g (@ordered_groups) {
+	next if (!$all && !$target_group{$g->{'name'}});
+	my $gchanged = 0;
+	my $parent = $group_parent{$g->{'name'}};
+	my $ownmods = $own_module_updates->(
+		$g, [ @{$parent ? $parent->{'modules'} || [] : []} ]);
+	$gchanged += $set_module_access_list->($g, "modules");
+	$gchanged += $set_module_access_list->($g, "ownmods", $ownmods);
+	if ($gchanged) {
+		&modify_group($g->{'name'}, $g);
+		&update_members(\@users, \@groups, $g->{'modules'},
+				$g->{'members'});
+		$changed++;
+		}
+	}
+
+# Update directly targeted users
+foreach my $u (@users) {
+	next if (!$all && !$target_user{$u->{'name'}});
+	my $uchanged = 0;
+	my $group = $user_group{$u->{'name'}};
+	my $ownmods = $own_module_updates->(
+		$u, [ @{$group ? $group->{'modules'} || [] : []} ]);
+	$uchanged += $set_module_access_list->($u, "modules");
+	$uchanged += $set_module_access_list->($u, "ownmods", $ownmods);
+	if ($uchanged) {
+		&modify_user($u->{'name'}, $u);
+		$changed++;
+		}
+	}
+
+if ($changed) {
+	undef(%main::acl_hash_cache);
+	undef(%main::acl_array_cache);
+	}
+return $changed;
+}
+
+=head2 enable_module_access(&modules, [&users-groups])
+
+Grants users and groups access to one or more modules. This is a wrapper
+around set_module_access.
+
+=cut
+sub enable_module_access
+{
+return &set_module_access($_[0], 1, $_[1]);
+}
+
+=head2 disable_module_access(&modules, [&users-groups])
+
+Revokes users and groups access to one or more modules. This is a wrapper
+around set_module_access.
+
+=cut
+sub disable_module_access
+{
+return &set_module_access($_[0], 0, $_[1]);
+}
+
 =head2 update_members(&allusers, &allgroups, &modules, &members)
 
 Update the modules for members users and groups of some group. The parameters
@@ -2368,4 +2510,3 @@ return $mailbox."\@".join(".", @doms);
 }
 
 1;
-

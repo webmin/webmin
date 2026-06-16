@@ -406,9 +406,29 @@ else {
 
 	# Renewal option
 	my $job = &find_letsencrypt_cron_job();
-	my $renew = $job && $job->{'months'} =~ /^\*\/(\d+)$/ ? $1 : undef;
-	print &ui_table_row($text{'ssl_letsrenew'},
-		&ui_opt_textbox("renew", $renew, 4, $text{'ssl_letsnotrenew'}));
+	my $has_ip_doms = &letsencrypt_doms_have_ips(\@doms);
+	my $renew_unit = $has_ip_doms ? "days" :
+			 ($config{'letsencrypt_renew_unit'} || "months");
+	my $renew;
+	if ($job && $renew_unit eq "days" && $job->{'interval'}) {
+		$renew = int($job->{'interval'} / (24*60*60));
+		}
+	elsif ($job && $job->{'months'} =~ /^\*\/(\d+)$/) {
+		$renew_unit = "months";
+		$renew = $1;
+		}
+	elsif ($job && $job->{'interval'}) {
+		$renew_unit = "months";
+		$renew = int($job->{'interval'} / (30*24*60*60));
+		}
+	my @renew_units = ( [ "months", $text{'ssl_letsrenew_months'} ],
+			    [ "days", $text{'ssl_letsrenew_days'} ] );
+	my $renew_disabled = $renew eq '';
+	print &ui_table_row(&hlink($text{'ssl_letsrenew'}, "letsrenew"),
+		&ui_opt_textbox("renew", $renew, 4, $text{'ssl_letsnotrenew'},
+				undef, undef, [ "renew_unit" ])." ".
+		&ui_select("renew_unit", $renew_unit, \@renew_units,
+			   undef, undef, undef, $renew_disabled));
 
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'ssl_letsok'} ],

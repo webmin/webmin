@@ -701,6 +701,152 @@ is(group_line({ name => 'empty' }),
               'delete_group removes the only group');
 }
 
+# set_module_access and wrappers: batch enable/disable module visibility for
+# users and groups, while keeping ownmods in sync for future group refreshes.
+{
+    _reset_fixture();
+    create_user({ name => 'alice',
+                  pass => 'x',
+                  modules => [ 'useradmin', 'apache' ],
+                  ownmods => [ 'apache' ] });
+    create_group({ name => 'wheel',
+                   members => [ 'alice' ],
+                   modules => [ 'useradmin', 'apache' ],
+                   desc => 'Sysadmins',
+                   ownmods => [ 'apache' ] });
+    _clear_caches();
+
+    is(disable_module_access([ 'apache' ]), 2,
+       'disable_module_access without targets updates all users and groups');
+
+    my $alice = get_user('alice');
+    my $wheel = get_group('wheel');
+    is_deeply($alice->{'modules'}, [ 'useradmin' ],
+              'global disable removes module from user modules');
+    is_deeply($alice->{'ownmods'}, [],
+              'global disable removes module from user ownmods');
+    is_deeply($wheel->{'modules'}, [ 'useradmin' ],
+              'global disable removes module from group modules');
+    is_deeply($wheel->{'ownmods'}, [],
+              'global disable removes module from group ownmods');
+}
+
+{
+    _reset_fixture();
+    create_user({ name => 'alice',
+                  pass => 'x',
+                  modules => [ 'useradmin' ] });
+    create_group({ name => 'wheel',
+                   members => [ 'alice' ],
+                   modules => [ 'useradmin' ],
+                   desc => 'Sysadmins' });
+    _clear_caches();
+
+    is(enable_module_access([ 'apache' ], [ '@wheel' ]), 1,
+       'enable_module_access can target one group by @name');
+
+    my $alice = get_user('alice');
+    my $wheel = get_group('wheel');
+    is_deeply($wheel->{'modules'}, [ 'useradmin', 'apache' ],
+              'targeted group enable adds module to group modules');
+    is_deeply($wheel->{'ownmods'}, [],
+              'targeted group enable leaves top-level group ownmods unchanged');
+    is_deeply($alice->{'modules'}, [ 'useradmin', 'apache' ],
+              'targeted group enable propagates to member user modules');
+    is_deeply($alice->{'ownmods'}, [],
+              'targeted group enable leaves member user ownmods unchanged');
+
+    is(disable_module_access([ 'apache' ], [ '@wheel' ]), 1,
+       'disable_module_access can target one group by @name');
+
+    $alice = get_user('alice');
+    $wheel = get_group('wheel');
+    is_deeply($wheel->{'modules'}, [ 'useradmin' ],
+              'targeted group disable removes module from group modules');
+    is_deeply($wheel->{'ownmods'}, [],
+              'targeted group disable removes module from group ownmods');
+    is_deeply($alice->{'modules'}, [ 'useradmin' ],
+              'targeted group disable propagates to member user modules');
+}
+
+{
+    _reset_fixture();
+    create_user({ name => 'carol',
+                  pass => 'x',
+                  modules => [ 'useradmin' ] });
+    create_group({ name => 'child',
+                   members => [ 'carol' ],
+                   modules => [ 'useradmin' ],
+                   desc => 'Child group' });
+    create_group({ name => 'parent',
+                   members => [ '@child' ],
+                   modules => [ 'useradmin' ],
+                   desc => 'Parent group' });
+    _clear_caches();
+
+    is(enable_module_access([ 'apache' ]), 1,
+       'enable_module_access handles all nested groups');
+
+    my $child = get_group('child');
+    my $carol = get_user('carol');
+    is_deeply($child->{'modules'}, [ 'useradmin', 'apache' ],
+              'child group inherits module from parent enabled later in file');
+    is_deeply($child->{'ownmods'}, [],
+              'child group does not record inherited module as ownmod');
+    is_deeply($carol->{'modules'}, [ 'useradmin', 'apache' ],
+              'child group member inherits module through nested groups');
+    is_deeply($carol->{'ownmods'}, [],
+              'child group member does not record inherited module as ownmod');
+}
+
+{
+    _reset_fixture();
+    create_user({ name => 'root',
+                  pass => 'x',
+                  modules => [ 'useradmin' ] });
+    _clear_caches();
+
+    is(enable_module_access([ 'apache' ], [ 'root' ]), 1,
+       'enable_module_access can target a standalone user');
+    my $root = get_user('root');
+    is_deeply($root->{'modules'}, [ 'useradmin', 'apache' ],
+              'standalone user enable adds module to user modules');
+    is_deeply($root->{'ownmods'}, [],
+              'standalone user enable does not create ownmods');
+}
+
+{
+    _reset_fixture();
+    create_user({ name => 'bob',
+                  pass => 'x',
+                  modules => [ 'useradmin' ] });
+    create_group({ name => 'wheel',
+                   members => [ 'bob' ],
+                   modules => [ 'useradmin' ],
+                   desc => 'Sysadmins' });
+    _clear_caches();
+
+    is(enable_module_access([ 'apache' ], [ 'bob' ]), 1,
+       'enable_module_access can target one user by name');
+
+    my $bob = get_user('bob');
+    is_deeply($bob->{'modules'}, [ 'useradmin', 'apache' ],
+              'targeted user enable adds module to user modules');
+    is_deeply($bob->{'ownmods'}, [ 'apache' ],
+              'targeted user enable records explicit user ownmod');
+
+    # A later group refresh must not erase a directly granted user module.
+    my @users = list_users();
+    my @groups = list_groups();
+    my ($wheel) = grep { $_->{'name'} eq 'wheel' } @groups;
+    update_members(\@users, \@groups, $wheel->{'modules'},
+                   $wheel->{'members'});
+    _clear_caches();
+    $bob = get_user('bob');
+    is_deeply($bob->{'modules'}, [ 'useradmin', 'apache' ],
+              'targeted user enable survives later group refresh');
+}
+
 # copy_acl_files (file mode): copy a module ACL file from one name to another.
 {
     _reset_fixture();

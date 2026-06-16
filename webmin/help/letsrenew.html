@@ -1,0 +1,22 @@
+<header>Automatic renewal interval</header>
+
+<p>Sets how often Webmin should request a replacement certificate from the ACME
+provider.</p>
+
+<p>For hostname certificates, a renewal interval measured in months is usually
+appropriate. You can also choose days if you want Webmin to rotate the
+certificate more frequently.</p>
+
+<p>IP address certificates are issued as short-lived certificates by CAs such as
+Let's Encrypt. Let's Encrypt currently makes these certificates valid for
+160 hours, just over six days, and requires IP address certificates to use the
+short-lived profile because IP addresses can change ownership more often than
+domain names.</p>
+
+<p>For IP address certificates, Webmin defaults to days and using 1 or 2 days
+is recommended so there is time to retry before the certificate expires. If
+Webmin is managing automatic renewal, the interval must be no more than 5 days.
+Manual renewal remains an administrator choice, especially if renewal is handled
+by separate automation or another operational policy.</p>
+
+<footer>
