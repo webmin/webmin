@@ -2930,10 +2930,11 @@ if ($url =~ /^\//) {
 	}
 $url = &quote_escape($url);
 # Prevent the URL from terminating or destabilising the enclosing
-# script element. </script> would close it outright; <!-- would push
-# the parser into script-data-escaped state.
-$url =~ s|</script|<\\/script|gi;
-$url =~ s|<!--|<\\!--|g;
+# script element. Escaping every "<" stops the HTML parser from ever
+# seeing </script (which would close it) or <!-- (which would enter
+# script-data-escaped state). < evaluates back to "<" in JS, so
+# the redirect target is preserved.
+$url =~ s|<|\\u003C|g;
 return "<script type='text/javascript'>
 		setTimeout(function(){
 			${window}.location = '$url';
