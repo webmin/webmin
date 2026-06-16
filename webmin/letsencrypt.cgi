@@ -138,7 +138,7 @@ else {
 		undef, undef, undef, $in{'directory_url'},
 		$in{'eab_kid'}, $in{'eab_hmac'}, $in{'subset'});
 	if (!$ok) {
-		print &text('letsencrypt_failed', $cert),"<p>\n";
+		print &text('letsencrypt_failed', $cert),"\n";
 		}
 	else {
 		# Worked, now copy to Webmin
