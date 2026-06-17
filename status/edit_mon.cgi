@@ -214,7 +214,7 @@ if (@servs) {
 	  &ui_select("depend", $serv->{'depend'},
 		 [ [ "", "&nbsp;" ],
 		   map { [ $_->{'id'}, $_->{'desc'}.
-				       " (".&nice_remotes($_).")" ] }
+				       " (".&html_strip(&nice_remotes($_), " ").")" ] }
 		     sort { $a->{'desc'} cmp $b->{'desc'} } @servs ]),
 	  undef, \@tds);
 	}

@@ -53,7 +53,7 @@ print &ui_table_row($text{'log_filter'},
     &ui_select("filter", \@gotfilters, \@allfilters, 10, 1));
 
 # Show destinations
-@alldestinations = map { [ $_->{'value'}, $_->{'value'}." (".&nice_destination_file($_).")" ] } &find("destination", $conf);
+@alldestinations = map { [ $_->{'value'}, $_->{'value'}." (".&html_strip(&nice_destination_file($_)).")" ] } &find("destination", $conf);
 @gotdestinations = map { $_->{'value'} } &find("destination",$log->{'members'});
 print &ui_table_row($text{'log_destination'},
     &ui_select("destination", \@gotdestinations, \@alldestinations, 10, 1));

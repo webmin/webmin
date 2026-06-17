@@ -60,7 +60,7 @@ sub ui_help
 {
 return &theme_ui_help(@_) if (defined(&theme_ui_help));
 my ($title) = @_;
-$title = html_strip($title);
+$title = &html_escape(&html_strip($title));
 return ("<sup class=\"ui_help\" aria-label=\"$title\" data-tooltip><samp>?</samp></sup>");
 }
 
@@ -84,7 +84,10 @@ sub ui_img
 {
 return &theme_ui_img(@_) if (defined(&theme_ui_img));
 my ($src, $alt, $title, $class, $tags) = @_;
-return ("<img src='".$src."' class='ui_img".($class ? " ".$class : "")."' alt='$alt' ".($title ? "title='$title'" : "").($tags ? " ".$tags : "").">");
+my $esrc   = &quote_escape($src);
+my $ealt   = &quote_escape($alt);
+my $etitle = &quote_escape($title);
+return ("<img src='".$esrc."' class='ui_img".($class ? " ".$class : "")."' alt='$ealt' ".($title ne '' ? "title='$etitle'" : "").($tags ? " ".$tags : "").">");
 }
 
 =head2 ui_link_button(href, text, [target], [tags])
@@ -1230,13 +1233,13 @@ foreach $o (@$opts) {
 	$o = [ $o ] if (!ref($o));
 	$rv .= "<option value=\"".&quote_escape($o->[0])."\"".
 	       ($sel{$o->[0]} ? " selected" : "").($o->[2] ne '' ? " ".$o->[2] : "").">".
-	       ($o->[1] || $o->[0])."</option>\n";
+	       &html_escape($o->[1] || $o->[0], 1)."</option>\n";
 	$opt{$o->[0]}++;
 	}
 foreach $s (keys %sel) {
 	if (!$opt{$s} && $missing) {
 		$rv .= "<option value=\"".&quote_escape($s)."\"".
-		       " selected>".($s eq "" ? "&nbsp;" : $s)."</option>\n";
+		       " selected>".($s eq "" ? "&nbsp;" : &html_escape($s, 1))."</option>\n";
 		}
 	}
 $rv .= "</select>\n";
@@ -3046,15 +3049,22 @@ my ($url, $window, $timeout) = @_;
 if (defined(&theme_js_redirect)) {
 	return &theme_js_redirect(@_);
 	}
-$window ||= "window";
-$timeout ||= 0;
+$window = $window && $window =~ /^[\w.]+$/ ? $window : "window";
+$timeout = int($timeout);
 if ($url =~ /^\//) {
 	# If the URL is like /foo , add webprefix
 	$url = &get_webprefix().$url;
 	}
+$url = &quote_escape($url);
+# Prevent the URL from terminating or destabilising the enclosing
+# script element. Escaping every "<" stops the HTML parser from ever
+# seeing </script (which would close it) or <!-- (which would enter
+# script-data-escaped state). < evaluates back to "<" in JS, so
+# the redirect target is preserved.
+$url =~ s|<|\\u003C|g;
 return "<script type='text/javascript'>
 		setTimeout(function(){
-			${window}.location = '".&quote_escape($url)."';
+			${window}.location = '$url';
 		}, $timeout);
 	</script>";
 }
