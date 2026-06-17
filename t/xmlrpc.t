@@ -1,16 +1,18 @@
 #!/usr/bin/perl
 # Unit tests for xmlrpc.cgi helper subs.
 #
-# xmlrpc.cgi is loaded as a module; its top-level body (ACL check, reading
-# the request, dispatching the call, emitting the response) is skipped by
-# the `unless (caller) { ... }` guard, so requiring it only defines the
-# subs plus loads WebminCore.
+# xmlrpc.cgi is loaded like miniserv loads Perl CGIs; its top-level body
+# (ACL check, reading
+# the request, dispatching the call, emitting the response) is skipped unless
+# it is invoked directly or via Webmin's CGI environment, so loading it only
+# defines the subs plus loads WebminCore.
 #
-# The four subs under test are the XML <-> Perl marshalling layer:
+# Most subs under test are the XML <-> Perl marshalling layer:
 #   encode_xml_value  - Perl scalar/hashref/arrayref -> XML-RPC <value> body
 #   parse_xml_value   - parsed XML <value> node      -> Perl scalar/ref
 #   find_xmls         - recursive element search over an XML::Parser tree
 #   make_error_xml    - faultCode/faultString -> <methodResponse> fault doc
+# A separate regression test covers Webmin's internal-CGI `do` execution path.
 #
 # Assertions target the contract (type selection, round-trip identity,
 # structural balance, escaping), not exact whitespace or attribute order.
@@ -28,11 +30,66 @@ my $root = File::Spec->rel2abs(
 chdir($root) or die "chdir $root: $!";
 
 my $script = File::Spec->catfile($root, 'xmlrpc.cgi');
-require $script;
+my $loaded = do $script;
+die $@ if $@;
+die "do $script: $!" if (!defined($loaded) && $!);
 
 # XML::Parser is only needed to build the parsed-tree inputs for
 # parse_xml_value and the round-trip tests. Probe for it once.
 my $have_parser = eval { require XML::Parser; 1 };
+
+sub run_internal_cgi_empty_post {
+	my $code = <<'PERL';
+use strict;
+use warnings;
+use File::Path qw(make_path);
+use File::Temp qw(tempdir);
+
+my ($root) = @ARGV;
+my $cfg = tempdir(CLEANUP => 1);
+my $var = tempdir(CLEANUP => 1);
+make_path("$var/modules");
+
+open(my $config, ">", "$cfg/config") or die "open config: $!";
+print {$config} "os_type=unix\n";
+close($config) or die "close config: $!";
+
+open(my $acl, ">", "$cfg/webmin.acl") or die "open acl: $!";
+print {$acl} "root: *\n";
+close($acl) or die "close acl: $!";
+
+local %ENV = (
+	%ENV,
+	WEBMIN_CONFIG    => $cfg,
+	WEBMIN_VAR       => $var,
+	SERVER_ROOT      => $root,
+	GATEWAY_INTERFACE => "CGI/1.1",
+	REQUEST_METHOD   => "POST",
+	CONTENT_LENGTH   => 0,
+	SCRIPT_NAME      => "/xmlrpc.cgi",
+	SCRIPT_FILENAME  => "$root/xmlrpc.cgi",
+	REMOTE_USER      => "root",
+);
+
+do "./xmlrpc.cgi";
+die $@ if $@;
+PERL
+	open(my $child, "-|", $^X, "-I.", "-e", $code, $root)
+		or die "fork xmlrpc.cgi CGI harness: $!";
+	local $/ = undef;
+	my $out = <$child>;
+	close($child);
+	return ($?, $out);
+}
+
+subtest 'internal CGI invocation emits headers' => sub {
+	my ($status, $out) = run_internal_cgi_empty_post();
+
+	is($status, 0, 'internal CGI harness exits cleanly');
+	like($out, qr/\AContent-type:\s*text\/xml/i,
+	     'response starts with a CGI Content-type header');
+	like($out, qr/<methodResponse>/, 'response contains an XML-RPC fault body');
+};
 
 # Build the parsed-tree node that parse_xml_value expects from an
 # encode_xml_value body: wrap it in <value>...</value> and parse. The root

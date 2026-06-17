@@ -12,7 +12,7 @@ use WebminCore;
 use POSIX;
 use Socket;
 
-unless (caller) {
+if (!caller || $ENV{'GATEWAY_INTERFACE'}) {
 
 if (!$ENV{'GATEWAY_INTERFACE'}) {
 	# Command-line mode
@@ -157,7 +157,7 @@ if (!$command_line) {
 	}
 print $xmlrv;
 
-} # end of unless (caller)
+} # end of script/CGI request handler
 
 # parse_xml_value(&value)
 # Given a <value> object, returns a Perl scalar, hash ref or array ref for
@@ -327,4 +327,3 @@ $xmlerr .= "</fault>\n";
 $xmlerr .= "</methodResponse>\n";
 return $xmlerr;
 }
-
