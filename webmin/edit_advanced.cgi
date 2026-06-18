@@ -9,11 +9,12 @@ print &ui_form_start("change_advanced.cgi", "post");
 print &ui_table_start($text{'advanced_header'}, undef, 2);
 
 # Global temp directory
+my $tempdir_placeholder = &webmin_temp_dir_path("/var/tmp");
 print &ui_table_row($text{'advanced_temp'},
 		    &ui_opt_textbox("tempdir", $gconfig{'tempdir'}, 30,
 			&text('advanced_tempdef', &default_webmin_temp_dir()),
 			undef, undef, undef, undef,
-			"placeholder='/var/tmp/.webmin'").
+			"placeholder='".&quote_escape($tempdir_placeholder)."'").
 		    "<br>".
 		    &ui_checkbox("tempdirdelete", 1, $text{'advanced_tdd'},
 				 $gconfig{'tempdirdelete'}));

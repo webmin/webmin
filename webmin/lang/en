@@ -941,7 +941,6 @@ advanced_eprecache=Missing list of shell patterns to pre-cache
 advanced_err=Failed to save advanced options
 advanced_etemp=Missing or non-existant temporary files directory
 advanced_etdir=Missing or non-existant temporary files directory for $1
-advanced_etempallowed=Temporary files directory $1 is a system directory
 advanced_etempmkdir=Failed to create temporary files directory $1 : $2
 advanced_etempparent=Cannot create temporary files directory because $1 exists and is not a directory
 advanced_etempparentperms=Parent directory <tt>$1</tt> must be group and other executable.

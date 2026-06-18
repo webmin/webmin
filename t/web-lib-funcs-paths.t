@@ -47,6 +47,36 @@ subtest 'simplify_path' => sub {
 	is(main::simplify_path('foo'), '/foo', 'relative input is promoted to absolute');
 };
 
+# webmin_temp_dir_name / webmin_temp_dir_path — hidden final temp dir name.
+subtest 'webmin temp dir path' => sub {
+	no warnings 'once';
+	local %main::gconfig = ('os_type' => 'linux');
+
+	is(main::webmin_temp_dir_name(), '.webmin',
+	   'default final temp dir name');
+	is(main::webmin_temp_dir_path('/var/tmp'), '/var/tmp/.webmin',
+	   'default name appended to base path');
+	is(main::webmin_temp_dir_path('/var/tmp/.webmin'), '/var/tmp/.webmin',
+	   'default name is not appended twice');
+
+	local %main::gconfig = (
+		'os_type' => 'linux',
+		'tempdirname' => 'webmin-private',
+		);
+	is(main::webmin_temp_dir_name(), 'webmin-private',
+	   'hidden tempdirname config overrides default name');
+	is(main::webmin_temp_dir_path('/tmp/path1/path2/path3'),
+	   '/tmp/path1/path2/path3/webmin-private',
+	   'custom name becomes the final path component');
+
+	local %main::gconfig = (
+		'os_type' => 'linux',
+		'tempdirname' => '../bad',
+		);
+	is(main::webmin_temp_dir_name(), '.webmin',
+	   'invalid hidden name falls back to default');
+};
+
 # parse_http_url — absolute and base-relative URL parsing.
 #
 # Contract on success: returns (host, port, page, ssl, [user], [pass]).

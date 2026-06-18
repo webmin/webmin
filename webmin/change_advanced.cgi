@@ -9,8 +9,6 @@ require './webmin-lib.pl';
 # Permissions used for newly created Webmin temp directories.
 my $advanced_temp_dir_perms = 0755;
 my $advanced_temp_dir_perms_text = sprintf("%04o", $advanced_temp_dir_perms);
-my %advanced_system_temp_dirs = map { $_ => 1 }
-	( "/dev/shm", "/tmp", "/var/tmp", "/usr/tmp" );
 my @advanced_temp_dirs_to_create;
 
 # Save global temp dir setting
@@ -145,15 +143,6 @@ if (defined($in{'sortconfigs'})) {
 &webmin_log("advanced");
 
 
-sub allowed_temp_dir
-{
-my ($t) = @_;
-my $dir = $t;
-$dir =~ s/\/+$// if ($dir ne "/");
-return $dir eq "/" || $dir =~ /^\/[^\/]+$/ ||
-       $advanced_system_temp_dirs{$dir} ? 0 : 1;
-}
-
 # Validate a configured Webmin temp directory without creating or changing it.
 # Missing components are queued and created after all form validation passes.
 sub validate_advanced_temp_dir
@@ -163,6 +152,7 @@ $dir =~ /\S/ || &error($missing_error);
 $dir =~ s/\/+$// if ($dir ne "/");
 $dir =~ /\S/ || &error($missing_error);
 if (&advanced_temp_dir_is_windows($dir)) {
+	$dir = &webmin_temp_dir_path($dir);
 	if (-e $dir || -l $dir) {
 		-d $dir ||
 			&error(&text('advanced_etempparent', $dir));
@@ -177,8 +167,9 @@ if ($dir =~ /^\//) {
 	defined($sdir) || &error($missing_error);
 	$dir = $sdir;
 	}
-&allowed_temp_dir($dir) ||
-	&error(&text('advanced_etempallowed', $dir));
+# Treat the entered directory as a base path. The final Webmin-private
+# component is always the hidden tempdirname setting, or .webmin by default.
+$dir = &webmin_temp_dir_path($dir);
 
 # Walk the path so existing components are checked, while missing components
 # can be created after all form validation has passed.

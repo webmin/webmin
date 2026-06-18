@@ -466,6 +466,45 @@ my $keys = ($modk && $gconfig{$modk}) ? "$modk or tempdir_sys" : "tempdir_sys";
        "directory in $config_directory/config and try again.");
 }
 
+=head2 webmin_temp_dir_name()
+
+Returns the final directory name used for Webmin-private temp directories.
+This defaults to .webmin, and can be changed with the hidden tempdirname
+configuration option.
+
+=cut
+sub webmin_temp_dir_name
+{
+my $name = $gconfig{'tempdirname'} || ".webmin";
+$name =~ s/^\s+//;
+$name =~ s/\s+$//;
+return $name =~ /^[^\/\\]+$/ && $name ne "." && $name ne ".." ?
+	$name : ".webmin";
+}
+
+=head2 webmin_temp_dir_path(path)
+
+Returns a temporary directory path ending in the configured Webmin-private
+directory name.
+
+=cut
+sub webmin_temp_dir_path
+{
+my ($dir) = @_;
+my $name = &webmin_temp_dir_name();
+return $dir if (!defined($dir) || $dir eq "");
+if ($gconfig{'os_type'} eq 'windows' || $dir =~ /^[a-z]:/i) {
+	my $slash = $dir =~ /\// && $dir !~ /\\/ ? "/" : "\\";
+	$dir =~ s/[\/\\]+$// if ($dir !~ /^[a-z]:[\/\\]?$/i);
+	return $dir if ($dir =~ /[\/\\]\Q$name\E$/);
+	return $dir =~ /^[a-z]:[\/\\]?$/i ? "$dir$name" :
+	       "$dir$slash$name";
+	}
+$dir =~ s/\/+$// if ($dir ne "/");
+return $dir if ($dir =~ /(^|\/)\Q$name\E$/);
+return $dir eq "/" ? "/$name" : "$dir/$name";
+}
+
 =head2 default_webmin_temp_dir()
 
 Returns the built-in Webmin temporary directory path used when no tempdir
@@ -474,7 +513,7 @@ configuration or environment override is set.
 =cut
 sub default_webmin_temp_dir
 {
-return -d "c:/temp" ? "c:/temp" : "/tmp/.webmin";
+return -d "c:/temp" ? "c:/temp" : "/tmp/".&webmin_temp_dir_name();
 }
 
 =head2 tempname_dir()
