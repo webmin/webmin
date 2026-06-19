@@ -466,6 +466,45 @@ my $keys = ($modk && $gconfig{$modk}) ? "$modk or tempdir_sys" : "tempdir_sys";
        "directory in $config_directory/config and try again.");
 }
 
+=head2 webmin_temp_dir_name()
+
+Returns the final directory name used for Webmin-private temp directories.
+This defaults to .webmin, and can be changed with the hidden tempdirname
+configuration option.
+
+=cut
+sub webmin_temp_dir_name
+{
+my $name = $gconfig{'tempdirname'} || ".webmin";
+$name =~ s/^\s+//;
+$name =~ s/\s+$//;
+return $name =~ /^[^\/\\]+$/ && $name ne "." && $name ne ".." ?
+	$name : ".webmin";
+}
+
+=head2 webmin_temp_dir_path(path)
+
+Returns a temporary directory path ending in the configured Webmin-private
+directory name.
+
+=cut
+sub webmin_temp_dir_path
+{
+my ($dir) = @_;
+my $name = &webmin_temp_dir_name();
+return $dir if (!defined($dir) || $dir eq "");
+if ($gconfig{'os_type'} eq 'windows' || $dir =~ /^[a-z]:/i) {
+	my $slash = $dir =~ /\// && $dir !~ /\\/ ? "/" : "\\";
+	$dir =~ s/[\/\\]+$// if ($dir !~ /^[a-z]:[\/\\]?$/i);
+	return $dir if ($dir =~ /[\/\\]\Q$name\E$/);
+	return $dir =~ /^[a-z]:[\/\\]?$/i ? "$dir$name" :
+	       "$dir$slash$name";
+	}
+$dir =~ s/\/+$// if ($dir ne "/");
+return $dir if ($dir =~ /(^|\/)\Q$name\E$/);
+return $dir eq "/" ? "/$name" : "$dir/$name";
+}
+
 =head2 default_webmin_temp_dir()
 
 Returns the built-in Webmin temporary directory path used when no tempdir
@@ -474,7 +513,7 @@ configuration or environment override is set.
 =cut
 sub default_webmin_temp_dir
 {
-return -d "c:/temp" ? "c:/temp" : "/tmp/.webmin";
+return -d "c:/temp" ? "c:/temp" : "/tmp/".&webmin_temp_dir_name();
 }
 
 =head2 tempname_dir()
@@ -533,14 +572,18 @@ if ($gconfig{'os_type'} eq 'windows' || $tmp_dir =~ /^[a-z]:/i) {
 	}
 else {
 	# On Unix systems, need to make sure temp dir is valid
-	if ($tmp_dir ne "/tmp") {
+	if ($tmp_dir ne "/dev/shm" && $tmp_dir ne "/tmp" &&
+	    $tmp_dir ne "/var/tmp" && $tmp_dir ne "/usr/tmp") {
 		my $tries = 0;
 		my $mkdirerr;
 		while($tries++ < 10) {
 			my @st = lstat($tmp_dir);
-			last if ($st[4] == $< && (-d _) &&
-				 ($st[2] & 0777) == 0755);
 			if (@st) {
+				my $mode = $st[2] & 07777;
+				# Accept only Webmin-private dirs here. Shared
+				# system temp roots are skipped above.
+				last if ($st[4] == $< && (-d _) &&
+					 $mode == 0755);
 				unlink($tmp_dir) || rmdir($tmp_dir) ||
 					system("/bin/rm -rf ".
 					       quotemeta($tmp_dir));
@@ -559,14 +602,15 @@ else {
 			       $tmp_dir.$mkdirerr);
 			}
 		}
-	# If running as root, check parent dir (usually /tmp) to make sure it's
-	# world-writable and owned by root
+	# If running as root, check parent dir (usually /tmp) to make sure it
+	# is searchable by group and others.
 	my $tmp_parent = $tmp_dir;
 	$tmp_parent =~ s/\/[^\/]+$//;
 	if ($tmp_parent eq "/tmp") {
 		my @st = stat($tmp_parent);
-		if (($st[2] & 0555) != 0555) {
-			&error("Base temp directory $tmp_parent is not world readable and listable");
+		if (($st[2] & 0011) != 0011) {
+			&error("Base temp directory $tmp_parent must be ".
+			       "group and other executable");
 			}
 		}
 	}

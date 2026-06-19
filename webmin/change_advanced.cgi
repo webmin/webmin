@@ -6,14 +6,19 @@ require './webmin-lib.pl';
 &error_setup($text{'advanced_err'});
 &get_miniserv_config(\%miniserv);
 
+# Permissions used for newly created Webmin temp directories.
+my $advanced_temp_dir_perms = 0755;
+my $advanced_temp_dir_perms_text = sprintf("%04o", $advanced_temp_dir_perms);
+my @advanced_temp_dirs_to_create;
+
 # Save global temp dir setting
 if ($in{'tempdir_def'}) {
 	delete($gconfig{'tempdir'});
 	}
 else {
-	-d $in{'tempdir'} || &error($text{'advanced_etemp'});
-	&allowed_temp_dir($in{'tempdir'}) ||
-		&error(&text('advanced_etempallowed', $in{'tempdir'}));
+	$in{'tempdir'} = &validate_advanced_temp_dir(
+		$in{'tempdir'}, $text{'advanced_etemp'},
+		\@advanced_temp_dirs_to_create);
 	$gconfig{'tempdir'} = $in{'tempdir'};
 	}
 
@@ -33,9 +38,9 @@ for($i=0; defined($tmod = $in{'tmod_'.$i}); $i++) {
 	next if (!$tmod);
 	$tdir = $in{'tdir_'.$i};
 	%minfo = &get_module_info($tmod);
-	-d $tdir || &error(&text('advanced_etdir', $minfo{'desc'}));
-	&allowed_temp_dir($tdir) ||
-		&error(&text('advanced_etempallowed', $in{'tempdir'}));
+	$tdir = &validate_advanced_temp_dir(
+		$tdir, &text('advanced_etdir', $minfo{'desc'}),
+		\@advanced_temp_dirs_to_create);
 	push(@tdirs, [ $tmod, $tdir ]);
 	}
 &save_tempdirs(\%gconfig, \@tdirs);
@@ -75,15 +80,6 @@ foreach my $l (split(/\r?\n/, $in{'headers'})) {
 	push(@hl, $l);
 	}
 $gconfig{'extra_headers'} = join("\t", @hl);
-
-# Sort config file's keys alphabetically
-if (defined($in{'sortconfigs'})) {
-	$gconfig{'sortconfigs'} = $in{'sortconfigs'};
-	}
-
-&lock_file("$config_directory/config");
-&write_file("$config_directory/config", \%gconfig);
-&unlock_file("$config_directory/config");
 
 if (defined($in{'preload'})) {
 	# Save preload option, forcing new mode
@@ -128,6 +124,17 @@ else {
 	$miniserv{'bufsize_binary'} = $in{'bufsize_binary'};
 	}
 
+# Sort config file's keys alphabetically
+if (defined($in{'sortconfigs'})) {
+	$gconfig{'sortconfigs'} = $in{'sortconfigs'};
+	}
+
+&setup_advanced_temp_dirs(\@advanced_temp_dirs_to_create);
+
+&lock_file("$config_directory/config");
+&write_file("$config_directory/config", \%gconfig);
+&unlock_file("$config_directory/config");
+
 &lock_file($ENV{'MINISERV_CONFIG'});
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
@@ -136,8 +143,142 @@ else {
 &webmin_log("advanced");
 
 
-sub allowed_temp_dir
+# Validate a configured Webmin temp directory without creating or changing it.
+# Missing components are queued and created after all form validation passes.
+sub validate_advanced_temp_dir
 {
-my ($t) = @_;
-return $t eq "/" || $t =~ /^\/[^\/]+\/?$/ ? 0 : 1;
+my ($dir, $missing_error, $create_dirs) = @_;
+$dir =~ /\S/ || &error($missing_error);
+$dir =~ s/\/+$// if ($dir ne "/");
+$dir =~ /\S/ || &error($missing_error);
+if (&advanced_temp_dir_is_windows($dir)) {
+	$dir = &webmin_temp_dir_path($dir);
+	if (-e $dir || -l $dir) {
+		-d $dir ||
+			&error(&text('advanced_etempparent', $dir));
+		}
+	else {
+		push(@$create_dirs, $dir);
+		}
+	return $dir;
+	}
+if ($dir =~ /^\//) {
+	my $sdir = &simplify_path($dir);
+	defined($sdir) || &error($missing_error);
+	$dir = $sdir;
+	}
+# Treat the entered directory as a base path. The final Webmin-private
+# component is always the hidden tempdirname setting, or .webmin by default.
+$dir = &webmin_temp_dir_path($dir);
+
+# Walk the path so existing components are checked, while missing components
+# can be created after all form validation has passed.
+my $path = $dir =~ /^\// ? "/" : "";
+foreach my $part (split(/\/+/, $dir)) {
+	next if ($part eq "");
+	$path = $path eq "/" ? "/$part" :
+		$path eq "" ? $part : "$path/$part";
+	my $final = $path eq $dir;
+	my @st = lstat($path);
+	if (!@st) {
+		push(@$create_dirs, $path);
+		next;
+		}
+	-d _ || &error(&text('advanced_etempparent', $path));
+	if ($final) {
+		&advanced_temp_dir_perms_ok($path) ||
+			&error(&text('advanced_etempperms', $path,
+				     $advanced_temp_dir_perms_text));
+		}
+	else {
+		&advanced_temp_parent_dir_perms_ok($path) ||
+			&error(&text('advanced_etempparentperms',
+				     $path));
+		}
+	}
+return $dir;
+}
+
+# Create missing temp directory components after all form validation passes.
+sub setup_advanced_temp_dirs
+{
+my ($dirs) = @_;
+my %done;
+my @created;
+foreach my $dir (@$dirs) {
+	next if ($done{$dir}++);
+	if (&advanced_temp_dir_is_windows($dir)) {
+		if (!-d $dir) {
+			&make_dir($dir, $advanced_temp_dir_perms, 1) ||
+				&advanced_temp_dirs_error(
+					\@created,
+					&text('advanced_etempmkdir',
+					      $dir, "$!"));
+			push(@created, $dir);
+			}
+		-d $dir ||
+			&advanced_temp_dirs_error(
+				\@created,
+				&text('advanced_etempmkdir', $dir, "$!"));
+		next;
+		}
+	if (-e $dir || -l $dir) {
+		&advanced_temp_dir_perms_ok($dir) ||
+			&advanced_temp_dirs_error(
+				\@created,
+				&text('advanced_etempperms', $dir,
+				      $advanced_temp_dir_perms_text));
+		next;
+		}
+	&make_dir($dir, $advanced_temp_dir_perms) ||
+		&advanced_temp_dirs_error(
+			\@created,
+			&text('advanced_etempmkdir', $dir, "$!"));
+	push(@created, $dir);
+	&advanced_temp_dir_perms_ok($dir) ||
+		&advanced_temp_dirs_error(
+			\@created,
+			&text('advanced_etempchmod', $dir,
+			      $advanced_temp_dir_perms_text, "$!"));
+	}
+}
+
+# Roll back only directories created by this save attempt, and only if empty.
+sub advanced_temp_dirs_error
+{
+my ($created, $msg) = @_;
+foreach my $dir (reverse(@$created)) {
+	rmdir($dir);
+	}
+&error($msg);
+}
+
+# Check the final configured temp directory. It must be Webmin-private.
+sub advanced_temp_dir_perms_ok
+{
+my ($dir) = @_;
+my @st = lstat($dir);
+return 0 if (!@st || !-d _);
+return 0 if ($st[4] != $<);
+my $mode = $st[2] & 07777;
+return $mode == $advanced_temp_dir_perms;
+}
+
+# Existing parents only need to be searchable by group and others. The final
+# temp directory itself is checked more strictly above.
+sub advanced_temp_parent_dir_perms_ok
+{
+my ($dir) = @_;
+my @st = lstat($dir);
+return 0 if (!@st || !-d _);
+my $mode = $st[2] & 07777;
+return 0 if (($mode & 0011) != 0011);
+return 1;
+}
+
+# Windows temp directories are only checked when they already exist.
+sub advanced_temp_dir_is_windows
+{
+my ($dir) = @_;
+return $gconfig{'os_type'} eq 'windows' || $dir =~ /^[a-z]:/i;
 }
