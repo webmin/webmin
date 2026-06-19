@@ -17,7 +17,14 @@ if ($in{'delete'} || $in{'unapply'}) {
 		&error_setup($text{'bifc_err4'});
 		@active = &active_interfaces();
 		($act) = grep { $_->{'fullname'} eq $b->{'fullname'} } @active;
-		if ($act) {
+		if (!$act && $b->{'virtual'} ne '' && $b->{'address'}) {
+			# ip(8) may renumber unlabelled secondary addresses.
+			($act) = grep { $_->{'virtual'} ne '' &&
+					$_->{'name'} eq $b->{'name'} &&
+					$_->{'address'} eq $b->{'address'} } @active;
+			}
+		if ($act && !defined(&unapply_interface_after_delete)) {
+			# Legacy backends remove live state before deleting config.
 			if (defined(&unapply_interface)) {
 				$err = &unapply_interface($act);
 				$err && &error("<pre>$err</pre>");
@@ -29,6 +36,12 @@ if ($in{'delete'} || $in{'unapply'}) {
 
 		}
 	&delete_interface($b);
+	if ($in{'unapply'} && $act && defined(&unapply_interface_after_delete)) {
+		# Config-driven backends apply removals after deleting config.
+		&error_setup($text{'bifc_err4'});
+		$err = &unapply_interface_after_delete($act, $b);
+		$err && &error("<pre>$err</pre>");
+		}
 	&webmin_log("delete", "bifc", $b->{'fullname'}, $b);
 	}
 else {
@@ -59,19 +72,19 @@ else {
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($b) || &error($text{'ifcs_ecannot'});
 		}
-	elsif ($in{'name'} =~ /^([a-z]+\d*(s\d*)?(\.\d+)?):(\d+)$/ ||
-	       $in{'name'} =~ /^(en[0-9a-z]+(s\d*)?(\.\d+)?):(\d+)$/) {
+	elsif ($in{'name'} =~ /^((?:[a-z]+\d*(?:s\d*)?(?:\.\d+)?)|(?:en[0-9a-z]+(?:s\d*)?(?:\.\d+)?)):(\d+)$/) {
 		# also creating a virtual interface
+		local ($vname, $vnum) = ($1, $2);
 		foreach $eb (@boot) {
-			if ($eb->{'name'} eq $2 &&
-			    $eb->{'virtual'} eq $4) {
+			if ($eb->{'name'} eq $vname &&
+			    $eb->{'virtual'} eq $vnum) {
 				&error(&text('bifc_evirtdup', &html_escape($in{'name'})));
 				}
 			}
-		$4 >= $min_virtual_number ||
+		$vnum >= $min_virtual_number ||
 			&error(&text('aifc_evirtmin', &html_escape($min_virtual_number)));
-		$b->{'name'} = $1;
-		$b->{'virtual'} = $4;
+		$b->{'name'} = $vname;
+		$b->{'virtual'} = $vnum;
 		$b->{'fullname'} = $b->{'name'}.":".$b->{'virtual'};
 		}
 	elsif ($in{'bridge'}) {
@@ -376,4 +389,3 @@ else {
 		    "bifc", $b->{'fullname'}, $b);
 	}
 &redirect("list_ifcs.cgi?mode=boot");
-
