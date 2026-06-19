@@ -276,11 +276,6 @@ maps_internal_error=Correspondances: erreur interne
 maps_cant_write=Impossible d'écrire
 help_map_format=Quel format dois-je utiliser ?
 
-virtual_title=Domaines virtuels
-virtual_ecannot=Vous n'êtes pas autorisé à éditer la configuration des domaines virtuels
-opts_virtual_maps=Tables de correspondances de domaines
-virtual_return=domaines virtuels
-
 transport_title=Correspondances de transport
 transport_ecannot=Vous n'êtes pas autorisé à éditer les correspondance de transport
 opts_transport_maps=Tables de correspondances de transport
@@ -313,7 +308,6 @@ acl_aliases_options=Peut éditer les options d'alias ?
 acl_general=Peut éditer les options générales ?
 acl_address_rewriting=Peut éditer la réécriture d'adresse ?
 acl_canonical=Peut éditer les correspondances canoniques ?
-acl_virtual=Peut éditer les domaines virtuels ?
 acl_transport=Peut éditer le transport ?
 acl_relocated=Peut éditer les correspondances de relogement ?
 acl_local_delivery=Peut éditer la livraison locale ?

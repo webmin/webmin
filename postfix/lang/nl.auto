@@ -21,6 +21,13 @@ mapping_find=Overeenkomende toewijzingen weergeven:
 mapping_search=Zoeken
 mapping_match=Mapbestandvermeldingen die overeenkomen met <tt>$1</tt> ..
 
+virtual_title=Virtuele Alias-kaarten
+virtual_ecannot=Het is niet toegestaan de configuratie van de virtuele alias-toewijzing te bewerken
+opts_virtual_maps=Tabellen voor het opzoeken van virtuele aliassen
+opts_virtual_alias_maps=Tabellen voor het opzoeken van virtuele aliassen
+virtual_same=Uit virtuele alias-opzoektabellen
+virtual_return=virtuele alias-kaarten
+
 sni_title=Certificaattoewijzing
 sni_ecannot=U mag de configuratie van de certificaattoewijzing niet bewerken
 opts_sni_maps=Opzoektabellen voor certificaattoewijzing
@@ -28,6 +35,7 @@ sni_return=certificaatkaarten
 sni_dom=Hostnaam
 sni_certs=Certificaatbestanden
 
+acl_virtual=Kan ik virtuele aliassen bewerken?
 acl_sni=Kan certificaten bewerken?
 acl_body=Kan ik bodychecks bewerken?
 acl_dependent=Kan ik afzenderafhankelijke transportkaarten bewerken?
@@ -54,12 +62,14 @@ opts_mime_header_checks=MIME-koptekstcontroletabellen
 opts_header_checks_no_map=(Er is momenteel geen kaart voor kopcontrole gedefinieerd. Definieer eerst een kaart, daarna kunt u deze bewerken)
 
 opts_mime_header_checks_no_map=(Er is momenteel geen MIME-koptekstcontrolekaart gedefinieerd. Definieer eerst een kaart, daarna kunt u deze bewerken)
+opts_mime_header_checks_same_map=(MIME-headercontroles zijn hetzelfde als reguliere headercontroles. Definieer eerst een andere kaart, daarna kunt u deze bewerken.)
 
 dependent_title=Afzenderafhankelijke transporttoewijzing
 dependent_ecannot=Het is niet toegestaan afzenderafhankelijke transporttoewijzingen te bewerken
 dependent_eregexp=De kaart die afhankelijk is van de afzender moet de indeling <tt>regexp:</tt> <i>bestandsnaam</i> hebben
 dependent_return=afzenderafhankelijke transporttoewijzingen
 
+log_virtual=De opties voor het toewijzen van virtuele aliassen zijn gewijzigd
 log_sni=Wijzig de opties voor certificaattoewijzing
 log_dependent=Veranderde afzenderafhankelijke adresopties
 log_reload=Herladen Postfix-configuratie
@@ -77,6 +87,7 @@ sasl_forward_secrecy=Sta alleen methoden toe die forward secrecy ondersteunen
 sasl_mutual_auth=Sta alleen methoden toe die wederzijdse authenticatie bieden
 sasl_relay=SMTP-relaisbeperkingen
 opts_smtp_enforce_tls=TLS-codering vereist?
+opts_smtputf8_enable=SMTPUTF8-ondersteuning inschakelen?
 sasl_level_dane=Opportunistische DANE TLS
 sasl_level_dane_only=Verplicht DANE TLS
 sasl_level_fingerprint=Vingerafdrukverificatie certificaat

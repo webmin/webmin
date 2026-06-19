@@ -244,10 +244,6 @@ maps_internal_error=映射：内部错误
 maps_cant_write=不能写入
 help_map_format=我应该使用什么格式？
 
-virtual_title=虚拟域
-virtual_ecannot=你没有编辑虚拟域映射配置的权力
-opts_virtual_maps=域映射查找表
-
 transport_title=传输映射
 transport_ecannot=你没有编辑传输映射配置的权力
 opts_transport_maps=传输映射查找表

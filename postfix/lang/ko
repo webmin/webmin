@@ -248,10 +248,6 @@ maps_internal_error=맵: 내부 오류
 maps_cant_write=쓰기를 할 수 없습니다
 help_map_format=무슨 포맷을 사용할까요?
 
-virtual_title=가상 도메인
-virtual_ecannot=가상 도메인 매핑 구성을 편집할 수 없습니다
-opts_virtual_maps=도메인 매핑 조회 테이블
-
 transport_title=전송 매핑
 transport_ecannot=전송 매핑 구성을 편집할 수 없습니다
 opts_transport_maps=전송 매핑 조회 테이블

@@ -1,6 +1,6 @@
-<header>Virtual Domains</header>
+<header>Virtual Alias Maps</header>
 
-The optional virtual table specifies redirections for local and non-local
+The optional virtual alias table specifies redirections for local and non-local
 recipients or domains. The redirections are used by the cleanup(8) daemon. The
 redirections are recursive.
 
@@ -13,7 +13,7 @@ envelope addresses in general.
 
 <p>
 
-Typical support for a virtual domain looks like the following:
+Typical support for a virtual alias domain looks like the following:
 
 <ul>
 <li> <b><tt>virtual.domain</tt></b> mapped to... <b><tt>anything</tt></b> (right-hand content does not matter)
@@ -27,7 +27,7 @@ With this, the SMTP server accepts mail for <tt>virtual.domain</tt> and rejects 
 
 <p>
 
-The format of the virtual table is as follows, mappings being tried in the
+The format of the virtual alias table is as follows, mappings being tried in the
 order as listed here:
 
 <ul>

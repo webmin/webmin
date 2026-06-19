@@ -153,10 +153,13 @@ mapping_find=顯示匹配的映射：
 mapping_search=搜索
 mapping_match=匹配<tt>$1</tt>的映射文件條目。
 
-opts_virtual_alias_maps=域映射查找表
+virtual_title=虛擬別名映射
+virtual_ecannot=您無權編輯虛擬別名映射配置
+opts_virtual_maps=虛擬別名查找表
+opts_virtual_alias_maps=虛擬別名查找表
 opts_virtual_alias_domains=要為其執行虛擬映射的域
-virtual_same=來自域映射表
-virtual_return=虛擬域
+virtual_same=來自虛擬別名查找表
+virtual_return=虛擬別名映射
 
 transport_return=運輸地圖
 
@@ -173,6 +176,7 @@ opts_content_filter=電子郵件內容過濾器
 start_efailed=無法啟動Postfix
 start_ecannot=您無權啟動Postfix
 
+acl_virtual=可以編輯虛擬別名嗎？
 acl_sni=可以編輯證書嗎？
 acl_header=可以編輯標題檢查嗎？
 acl_sasl=可以編輯SMTP身份驗證嗎？
@@ -264,6 +268,7 @@ opts_mime_header_checks=MIME 標頭檢查表
 opts_header_checks_no_map=（目前沒有定義頭部檢查映射。先定義一個映射，然後才能編輯它）
 
 opts_mime_header_checks_no_map=（當前未定義 MIME 標頭檢查映射。先定義映射，然後才能編輯它）
+opts_mime_header_checks_same_map=（MIME 標頭檢查與常規標頭檢查相同。請先定義一個不同的映射，然後才能對其進行編輯。）
 header_name=正則表達式
 header_value=比賽動作
 header_discard=丟棄（帶有日誌消息..）
@@ -362,7 +367,7 @@ log_misc=更改的常規選項
 log_opts=更改地址重寫和偽裝
 log_aliases=別名更改
 log_canonical=更改規範映射選項
-log_virtual=更改的虛擬域選項
+log_virtual=更改了虛擬別名映射選項
 log_bcc=更改的密件抄送地圖選項
 log_transport=更改了傳輸映射選項
 log_sni=更改證書映射選項
@@ -477,6 +482,7 @@ opts_smtpd_tls_key_file=TLS私鑰文件
 opts_smtpd_tls_CAfile=TLS證書授權文件
 opts_smtpd_use_tls=啟用TLS加密？
 opts_smtp_enforce_tls=需要TLS加密嗎？
+opts_smtputf8_enable=啟用SMTPUTF8支援？
 sasl_err=保存SMTP身份驗證和加密失敗
 sasl_ecert=缺少或無效的TLS證書文件
 sasl_ekey=缺少或無效的TLS密鑰文件

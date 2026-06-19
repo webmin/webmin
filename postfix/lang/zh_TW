@@ -248,10 +248,6 @@ maps_internal_error=對應: 內部錯誤
 maps_cant_write=無法寫入
 help_map_format=我因該使用哪一個格式?
 
-virtual_title=虛擬網域
-virtual_ecannot=您不被允許編輯虛擬網域對應組態
-opts_virtual_maps=網域對應查詢表
-
 transport_title=傳輸對應表
 transport_ecannot=您不被允許編輯傳輸對應表組態
 opts_transport_maps=傳輸對應查詢表
@@ -282,7 +278,6 @@ acl_aliases_options=可以編輯別名選項?
 acl_general=可以編輯一般選項?
 acl_address_rewriting=可以編輯位址重寫?
 acl_canonical=可以編輯主要的對應表?
-acl_virtual=可以編輯虛擬網域?
 acl_transport=可以編輯傳輸對應表?
 acl_relocated=可以編輯重新定位對應表?
 acl_local_delivery=可以編輯本地端遞送?

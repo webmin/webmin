@@ -1,0 +1,14 @@
+virtual_title=Virtuelle Alias-Karten
+virtual_ecannot=Sie sind nicht berechtigt, die Konfiguration der virtuellen Aliaszuordnung zu bearbeiten
+opts_virtual_maps=Virtuelle Alias-Lookuptabellen
+opts_virtual_alias_maps=Virtuelle Alias-Lookuptabellen
+virtual_same=Aus virtuellen Alias-Lookup-Tabellen
+virtual_return=virtuelle Alias-Karten
+
+acl_virtual=Kann man virtuelle Aliase bearbeiten?
+
+opts_mime_header_checks_same_map=(Die MIME-Header-Prüfungen sind die gleichen wie die regulären Header-Prüfungen. Definieren Sie zuerst eine andere Zuordnung, dann können Sie sie bearbeiten.)
+
+log_virtual=Geänderte Optionen für die Zuordnung virtueller Aliase
+
+opts_smtputf8_enable=SMTPUTF8-Unterstützung aktivieren?

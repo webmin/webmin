@@ -23,6 +23,13 @@ mapping_find=Megfelelő leképezések megjelenítése:
 mapping_search=Keresés
 mapping_match=A <tt>$1</tt> megfelelő térképfájl-bejegyzések ..
 
+virtual_title=Virtuális alias térképek
+virtual_ecannot=Nem jogosult a virtuális alias-leképezés konfigurációjának szerkesztésére
+opts_virtual_maps=Virtuális alias keresőtáblák
+opts_virtual_alias_maps=Virtuális alias keresőtáblák
+virtual_same=Virtuális alias keresőtáblákból
+virtual_return=virtuális alias térképek
+
 sni_title=Tanúsítvány-hozzárendelés
 sni_ecannot=Nem szerkesztheti a tanúsítvány-hozzárendelés konfigurációját
 opts_sni_maps=Tanúsítvány-leképező keresőtáblák
@@ -30,6 +37,7 @@ sni_return=tanúsítványtérképek
 sni_dom=Gazdanév
 sni_certs=Tanúsítványfájlok
 
+acl_virtual=Szerkeszthetőek a virtuális aliasok?
 acl_sni=Szerkesztheti a tanúsítványokat?
 acl_body=Lehet szerkeszteni a testellenőrzéseket?
 acl_dependent=Szerkeszthetőek a feladótól függő szállítási térképek?
@@ -56,12 +64,14 @@ opts_mime_header_checks=MIME fejléc-ellenőrző táblázatok
 opts_header_checks_no_map=(Jelenleg nincs meghatározva fejléc-ellenőrző térkép. Először határozzon meg egy térképet, majd szerkesztheti)
 
 opts_mime_header_checks_no_map=(Jelenleg nincs meghatározva MIME fejléc-ellenőrző térkép. Először határozzon meg egy térképet, majd szerkesztheti)
+opts_mime_header_checks_same_map=(A MIME fejlécellenőrzések ugyanazok, mint a szokásos fejlécellenőrzések. Először definiálj egy másik map-et, majd szerkesztheted.)
 
 dependent_title=Feladó-függő szállítási térképezés
 dependent_ecannot=A feladóktól függő szállítási leképezések nem szerkeszthetők
 dependent_eregexp=A feladóktól függő szállítási térképnek <tt>regexp:</tt> <i>fájlnév</i> formátumban kell lennie.
 dependent_return=feladóktól függő szállítási leképezések
 
+log_virtual=Módosított virtuális alias leképezési beállítások
 log_sni=Tanúsítvány-hozzárendelési beállítások módosítása
 log_dependent=Megváltozott a küldőtől függő címbeállítások
 log_reload=Újratöltött Postfix konfiguráció
@@ -79,6 +89,7 @@ sasl_forward_secrecy=Csak olyan módszereket engedélyezzen, amelyek támogatjá
 sasl_mutual_auth=Csak a kölcsönös hitelesítést biztosító módszereket engedélyezze
 sasl_relay=SMTP továbbítási korlátozások
 opts_smtp_enforce_tls=TLS titkosítást igényel?
+opts_smtputf8_enable=Engedélyezi az SMTPUTF8 támogatást?
 sasl_level_dane=Opportunista DANE TLS
 sasl_level_dane_only=Kötelező DANE TLS
 sasl_level_fingerprint=Tanúsítvány ujjlenyomat-ellenőrzése

@@ -16,6 +16,13 @@ mapping_find=Mostra els mapatges que coincideixen:
 mapping_search=Cerca
 mapping_match=Entrades de fitxers del mapa que coincideixen amb <tt>$1</tt> ..
 
+virtual_title=Mapes d'àlies virtuals
+virtual_ecannot=No teniu permís per editar la configuració de mapatge d'àlies virtuals
+opts_virtual_maps=Taules de cerca d'àlies virtuals
+opts_virtual_alias_maps=Taules de cerca d'àlies virtuals
+virtual_same=De les taules de cerca d'àlies virtuals
+virtual_return=mapes d'àlies virtuals
+
 sni_title=Assignació de certificats
 sni_ecannot=No podeu editar la configuració de mapatge de certificats
 opts_sni_maps=Taules de cerca de mapatge de certificats
@@ -23,6 +30,7 @@ sni_return=mapes de certificats
 sni_dom=Nom de l'amfitrió
 sni_certs=Fitxers de certificats
 
+acl_virtual=Puc editar àlies virtuals?
 acl_sni=Es poden editar certificats?
 acl_body=Es poden editar les comprovacions del cos?
 acl_dependent=Es poden editar mapes de transport dependents del remitent?
@@ -49,12 +57,15 @@ opts_mime_header_checks=Taules de comprovació de capçaleres MIME
 opts_header_checks_no_map=(Actualment no s'ha definit cap mapa de comprovació de capçalera. Defineix primer un mapa i després pots editar-lo)
 
 opts_mime_header_checks_no_map=(Actualment no s'ha definit cap mapa de comprovació de la capçalera MIME. Defineix primer un mapa i després pots editar-lo)
+opts_mime_header_checks_same_map=(Les comprovacions de capçalera MIME són les mateixes que les comprovacions de capçalera normals. Primer definiu un mapa diferent i després el podeu editar)
 
+log_virtual=Opcions de mapatge d'àlies virtuals canviades
 log_sni=Canvieu les opcions de mapatge de certificats
 
 sasl_noactive=Rebutja No permet subjecte a un atac actiu (no diccionari)
 sasl_nodictionary=Rebutja els mètodes subjectes a atac passiu (diccionari)
 sasl_forward_secrecy=Permet només mètodes que admetin el secret directe
 sasl_mutual_auth=Només permeteu mètodes que proporcionen autenticació mútua
+opts_smtputf8_enable=Voleu activar la compatibilitat amb SMTPUTF8?
 
 mysql_ecfile2=No s'ha pogut trobar la taula al fitxer de configuració de MySQL $1

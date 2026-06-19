@@ -114,9 +114,13 @@ mapping_find=Pokaż pasujące odwzorowania:
 mapping_search=Szukaj
 mapping_match=Zamapuj wpisy plików pasujące do <tt>$1</tt> ..
 
-opts_virtual_alias_maps=Tabele wyszukiwania odwzorowań domen
+virtual_title=Wirtualne mapy aliasów
+virtual_ecannot=Nie masz uprawnień do edytowania konfiguracji mapowania aliasów wirtualnych
+opts_virtual_maps=Tabele wyszukiwania aliasów wirtualnych
+opts_virtual_alias_maps=Tabele wyszukiwania aliasów wirtualnych
 opts_virtual_alias_domains=Domeny do wykonania mapowania wirtualnego
-virtual_same=Z tabel mapowania domen
+virtual_same=Z wirtualnych tabel wyszukiwania aliasów
+virtual_return=wirtualne mapy aliasów
 
 transport_return=mapy transportowe
 
@@ -132,6 +136,7 @@ relocated_return=przeniesione mapy
 start_efailed=Nie udało się uruchomić Postfix
 start_ecannot=Nie możesz uruchomić Postfix
 
+acl_virtual=Czy można edytować wirtualne aliasy?
 acl_sni=Czy można edytować certyfikaty?
 acl_sasl=Czy można edytować uwierzytelnianie SMTP?
 acl_client=Czy można edytować ograniczenia klienta SMTP?
@@ -324,6 +329,7 @@ opts_mime_header_checks=Tabele sprawdzania nagłówków MIME
 opts_header_checks_no_map=(Obecnie nie zdefiniowano mapy sprawdzania nagłówka. Najpierw zdefiniuj mapę, a następnie możesz ją edytować)
 
 opts_mime_header_checks_no_map=(Obecnie nie zdefiniowano mapy sprawdzania nagłówka MIME. Najpierw zdefiniuj mapę, a następnie możesz ją edytować)
+opts_mime_header_checks_same_map=(Sprawdzanie nagłówków MIME przebiega tak samo, jak sprawdzanie zwykłych nagłówków. Najpierw zdefiniuj inną mapę, a następnie możesz ją edytować)
 header_value=Akcja dla meczów
 header_discard=Odrzuć (z komunikatem dziennika...)
 header_hold=Umieść w kolejce wstrzymania (z komunikatem dziennika...)
@@ -400,7 +406,7 @@ opts_check_sender_access=Sprawdź tabelę map dostępu do nadawcy
 log_misc=Zmieniono opcje ogólne
 log_opts=Zmieniono przepisywanie i maskowanie adresów
 log_canonical=Zmiana kanonicznych opcji mapowania
-log_virtual=Zmieniono opcje domeny wirtualnej
+log_virtual=Zmieniono opcje mapowania aliasów wirtualnych
 log_transport=Zmieniono opcje mapowania transportu
 log_sni=Zmień opcje mapowania certyfikatów
 log_dependent=Zmieniono opcje adresu zależne od nadawcy
@@ -505,6 +511,7 @@ sasl_reject_rbl_client=Odrzuć, jeśli adres IP klienta znajduje się w RBL :
 sasl_reject_rhsbl_client=Odrzuć, jeśli nazwa hosta klienta jest w RBL :
 opts_smtpd_tls_CAfile=Plik urzędu certyfikacji TLS
 opts_smtp_enforce_tls=Wymagać szyfrowania TLS?
+opts_smtputf8_enable=Włączyć obsługę SMTPUTF8?
 sasl_err=Nie udało się zapisać uwierzytelnienia i szyfrowania SMTP
 sasl_ecert=Brakujący lub nieprawidłowy plik certyfikatu TLS
 sasl_ekey=Brakujący lub nieprawidłowy plik klucza TLS

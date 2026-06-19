@@ -245,10 +245,6 @@ maps_internal_error=Mapa: interní chyba
 maps_cant_write=Nejde zapsat
 help_map_format=Jaký formát bych mohl použít?
 
-virtual_title=Virtuální domény
-virtual_ecannot=Nemáte oprávnění editovat konfiguraci mapování virtuálních domén
-opts_virtual_maps=Tabulky zpětných kontrol mapování domén
-
 transport_title=Mapování transportu
 transport_ecannot=Nemáte oprávnění editovat konfiguraci mapování transportu
 opts_transport_maps=Tabulky zpětných kontrol mapování transportu
@@ -279,7 +275,6 @@ acl_aliases_options=Může editovat nastavení aliasů?
 acl_general=Může editovat hlavní nastavení?
 acl_address_rewriting=Může editovat přepisování adres?
 acl_canonical=Může editovat kanonické mapování?
-acl_virtual=Může editovat virtuální mapování?
 acl_transport=Může editovat mapování transportu?
 acl_relocated=Může editovat relokační mapování?
 acl_local_delivery=Může editovat lokální odesílání?

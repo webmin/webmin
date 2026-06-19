@@ -249,12 +249,7 @@ maps_internal_error=Map: internal error
 maps_cant_write=Can not write
 help_map_format=What format should I use?
 
-virtual_title=Virtual Domains
-virtual_ecannot=You are not allowed to edit the virtual domains mapping configuration
-opts_virtual_maps=Domain mapping lookup tables
-opts_virtual_alias_maps=$opts_virtual_maps
 opts_virtual_alias_domains=Domains to perform virtual mapping for
-virtual_same=From domain mapping tables
 
 transport_title=Transport Mapping
 transport_ecannot=You are not allowed to edit the transport mapping configuration
@@ -286,7 +281,6 @@ acl_aliases_options=Can edit aliases options?
 acl_general=Can edit general options?
 acl_address_rewriting=Can edit adress rewriting?
 acl_canonical=Can edit canonical?
-acl_virtual=Can edit virtual?
 acl_transport=Can edit transport?
 acl_relocated=Can edit relocated?
 acl_local_delivery=Can edit local delivery?

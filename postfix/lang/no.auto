@@ -9,6 +9,14 @@ opts_smtp_address_preference=Foretrukket SMTP-klientprotokoll
 opts_smtp_address_preference_any=Enten
 opts_smtp_balance_inet_protocols=Valider SMTP-klientprotokoller
 
+virtual_title=Virtuelle aliaskart
+virtual_ecannot=Du har ikke tillatelse til å redigere konfigurasjonen for virtuell alias-tilordning
+opts_virtual_maps=Oppslagstabeller for virtuelle alias
+opts_virtual_alias_maps=Oppslagstabeller for virtuelle alias
+virtual_same=Fra oppslagstabeller for virtuelle alias
+virtual_return=virtuelle aliaskart
+
+acl_virtual=Kan man redigere virtuelle aliaser?
 acl_body=Kan du redigere kroppssjekker?
 acl_dependent=Kan du redigere avsenderavhengige transportkart?
 
@@ -32,8 +40,12 @@ opts_mime_header_checks=MIME-overskriftskontrolltabeller
 opts_header_checks_no_map=(Ingen overskriftskontrollkart er for øyeblikket definert. Definer et kart først, så kan du redigere det)
 
 opts_mime_header_checks_no_map=(Ingen MIME-overskriftskontrollkart er for øyeblikket definert. Definer et kart først, så kan du redigere det)
+opts_mime_header_checks_same_map=(MIME-headersjekker er de samme som vanlige headersjekker. Definer et annet kart først, deretter kan du redigere det)
+
+log_virtual=Endrede alternativer for virtuell alias-tilordning
 
 sasl_noactive=Avvis Ikke tillat gjenstand for aktivt (ikke-ordbok) angrep
 sasl_nodictionary=Avvis metoder som er utsatt for passivt (ordbok)angrep
 sasl_forward_secrecy=Tillat bare metoder som støtter fremadrettet hemmelighold
 sasl_mutual_auth=Tillat bare metoder som gir gjensidig autentisering
+opts_smtputf8_enable=Aktivere SMTPUTF8-støtte?

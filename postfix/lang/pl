@@ -292,11 +292,6 @@ maps_internal_error=Podstawianie: błąd wewnętrzny
 maps_cant_write=Brak praw zapisu
 help_map_format=Z jakiego formatu korzystać?
 
-virtual_title=Domeny wirtualne
-virtual_ecannot=Nie masz uprawnień do zmiany konfiguracji podstawiania domen wirtualnych
-opts_virtual_maps=Tabele przeszukiwania podstawiania domen
-virtual_return=wirtualnych domen
-
 transport_title=Podstawianie ekspedycji
 transport_ecannot=Nie masz uprawnień do zmiany konfiguracji podstawiania metod ekspedycji
 opts_transport_maps=Tabele przeszukiwania podstawiania metod ekspedycji
@@ -328,7 +323,6 @@ acl_aliases_options=Może zmieniać opcje aliasów?
 acl_general=Może zmieniać opcje ogólne?
 acl_address_rewriting=Może zmieniać przepisywanie adresów?
 acl_canonical=Może zmieniać podstawienia kanoniczne?
-acl_virtual=Może zmieniać domeny wirtualne?
 acl_transport=Może zmieniać metody ekspedycji?
 acl_relocated=Może zmieniać przeniesionych użytkowników?
 acl_header=Może edytować sprawdzanie nagłówków?

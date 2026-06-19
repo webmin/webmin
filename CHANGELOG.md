@@ -17,6 +17,7 @@
 * Fix NetworkManager detection on Debian and IPv6 DNS nameserver saving
 * Fix Dovecot configuration file handling when saving extra configs
 * Fix mailbox listing to skip unusable Maildir entries and remove stale deleted or moved entries
+* Fix Postfix module labels to identify virtual alias maps instead of virtual mailbox domains #1541
 * Fix Apache module to hide disabled default virtual hosts from the active server list
 * Fix Netplan DNS saving to preserve YAML structure
 * Fix BIND DNS handling of underscores, trailing dots, and mass record length checks

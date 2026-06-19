@@ -247,10 +247,6 @@ maps_internal_error=Mapa: error interno
 maps_cant_write=No puedo escribir
 help_map_format=¿Qué formato debería de usar?
 
-virtual_title=Dominios Virtuales
-virtual_ecannot=No estás autorizado a editar configuración de mapeo de dominios virtuales
-opts_virtual_maps=Tablas de búsqueda de mapeo de dominio
-
 transport_title=Mapeo de Transporte
 transport_ecannot=No estás autorizado a editar configuración de mapeo de transporte
 opts_transport_maps=Tablas de búsqueda de mapeo de transporte
@@ -281,7 +277,6 @@ acl_aliases_options=¿Puede editar opciones de alias?
 acl_general=¿Puede editar opciones generales?
 acl_address_rewriting=¿Puede editar reescritura de dirección?
 acl_canonical=¿Puede editar canónigos?
-acl_virtual=¿Puede editar virtual?
 acl_transport=¿Puede editar transporte?
 acl_relocated=¿Puede editar relocalizados?
 acl_local_delivery=¿Puede editar entrega local?

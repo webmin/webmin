@@ -244,10 +244,6 @@ maps_internal_error=Översättning: internt fel
 maps_cant_write=Det går inte att skriva
 help_map_format=Vilket format ska användas?
 
-virtual_title=Virtella domäner
-virtual_ecannot=Du får inte ändra inställningarna för virtuella domäner
-opts_virtual_maps=Domänuppslagningstabeller
-
 transport_title=Transportuppslagning
 transport_ecannot=Du får inte ändra inställningarna för transportuppslagning
 opts_transport_maps=Transport-uppslagningstabeller

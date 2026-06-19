@@ -129,9 +129,13 @@ mapping_find=Afficher les correspondances correspondant:
 mapping_search=Chercher
 mapping_match=Entrées de fichier de mappage correspondant à <tt>$1</tt> ..
 
-opts_virtual_alias_maps=Tables de recherche de mappage de domaine
+virtual_title=Cartes d'alias virtuels
+virtual_ecannot=Vous n'êtes pas autorisé à modifier la configuration de mappage des alias virtuels
+opts_virtual_maps=Tables de consultation d'alias virtuels
+opts_virtual_alias_maps=Tables de consultation d'alias virtuels
 opts_virtual_alias_domains=Domaines pour effectuer le mappage virtuel pour
-virtual_same=À partir des tables de mappage de domaine
+virtual_same=À partir des tables de consultation d'alias virtuels
+virtual_return=cartes d'alias virtuels
 
 transport_return=cartes de transport
 
@@ -147,6 +151,7 @@ opts_content_filter=Filtre de contenu des e-mails
 
 start_efailed=Impossible de démarrer Postfix
 
+acl_virtual=Peut-on modifier les alias virtuels ?
 acl_sni=Pouvez-vous modifier les certificats?
 acl_header=Peut modifier les vérifications d'en-tête?
 acl_client=Peut modifier les restrictions du client SMTP?
@@ -325,6 +330,7 @@ opts_mime_header_checks=Tables de vérification des en-têtes MIME
 opts_header_checks_no_map=(Aucune carte de vérification d'en-tête n'est actuellement définie. Définissez d'abord une carte, puis vous pourrez la modifier)
 
 opts_mime_header_checks_no_map=(Aucune carte de vérification d'en-tête MIME n'est actuellement définie. Définissez d'abord une carte, puis vous pourrez la modifier)
+opts_mime_header_checks_same_map=(Les vérifications d'en-tête MIME sont identiques aux vérifications d'en-tête classiques. Définissez d'abord une table de correspondance différente, puis vous pourrez la modifier.)
 header_name=Expression régulière
 header_value=Action pour les matchs
 header_discard=Jeter (avec message de journal..)
@@ -423,7 +429,7 @@ log_misc=Options générales modifiées
 log_opts=Réécriture et masquage d'adresse modifiés
 log_aliases=Options d'alias modifiées
 log_canonical=Modification des options de mappage canonique
-log_virtual=Options de domaine virtuel modifiées
+log_virtual=Options de mappage d'alias virtuels modifiées
 log_bcc=Options de carte BCC modifiées
 log_transport=Options de mappage de transport modifiées
 log_sni=Modifier les options de mappage de certificat
@@ -538,6 +544,7 @@ opts_smtpd_tls_key_file=Fichier de clé privée TLS
 opts_smtpd_tls_CAfile=Fichier d'autorité de certification TLS
 opts_smtpd_use_tls=Activer le cryptage TLS?
 opts_smtp_enforce_tls=Besoin d'un cryptage TLS?
+opts_smtputf8_enable=Activer la prise en charge SMTPUTF8 ?
 sasl_err=Échec de l'enregistrement de l'authentification et du chiffrement SMTP
 sasl_ecert=Fichier de certificat TLS manquant ou non valide
 sasl_ekey=Fichier de clé TLS manquant ou non valide

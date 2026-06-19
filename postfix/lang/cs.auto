@@ -157,10 +157,13 @@ mapping_find=Zobrazit mapování odpovídající:
 mapping_search=Vyhledávání
 mapping_match=Položky mapových souborů odpovídající <tt>$1</tt> ..
 
-opts_virtual_alias_maps=Vyhledávací tabulky mapování domén
+virtual_title=Virtuální mapy aliasů
+virtual_ecannot=Nemáte oprávnění upravovat konfiguraci mapování virtuálních aliasů
+opts_virtual_maps=Vyhledávací tabulky virtuálních aliasů
+opts_virtual_alias_maps=Vyhledávací tabulky virtuálních aliasů
 opts_virtual_alias_domains=Domény k provedení virtuálního mapování
-virtual_same=Z tabulek mapování domény
-virtual_return=virtuální domény
+virtual_same=Z vyhledávacích tabulek virtuálních aliasů
+virtual_return=mapy virtuálních aliasů
 
 transport_return=dopravní mapy
 
@@ -177,6 +180,7 @@ opts_content_filter=Filtr obsahu e-mailu
 start_efailed=Postfix se nepodařilo spustit
 start_ecannot=Není dovoleno spustit Postfix
 
+acl_virtual=Lze upravovat virtuální aliasy?
 acl_sni=Mohou certifikáty upravovat?
 acl_header=Lze upravit kontrolu záhlaví?
 acl_sasl=Lze upravit ověřování SMTP?
@@ -268,6 +272,7 @@ opts_mime_header_checks=Kontrolní tabulky MIME záhlaví
 opts_header_checks_no_map=(Aktuálně není definována žádná mapa pro kontrolu záhlaví. Nejprve definujte mapu a poté ji můžete upravovat)
 
 opts_mime_header_checks_no_map=(Aktuálně není definována žádná mapa pro kontrolu záhlaví MIME. Nejprve definujte mapu a poté ji můžete upravovat)
+opts_mime_header_checks_same_map=(Kontroly MIME hlaviček jsou stejné jako běžné kontroly hlaviček. Nejprve definujte jinou mapu a poté ji můžete upravovat.)
 header_name=Regulární výraz
 header_value=Akce pro zápasy
 header_discard=Zahodit (se zprávou protokolu..)
@@ -366,7 +371,7 @@ log_misc=Změněny obecné možnosti
 log_opts=Změna přepisování adresy a maskování
 log_aliases=Změněné možnosti aliasu
 log_canonical=Změna možností kanonického mapování
-log_virtual=Změněny možnosti virtuální domény
+log_virtual=Změněné možnosti mapování virtuálních aliasů
 log_bcc=Změněné možnosti mapy BCC
 log_transport=Změněné možnosti mapování dopravy
 log_sni=Změňte možnosti mapování certifikátu
@@ -481,6 +486,7 @@ opts_smtpd_tls_key_file=Soubor soukromého klíče TLS
 opts_smtpd_tls_CAfile=Soubor certifikační autority TLS
 opts_smtpd_use_tls=Povolit šifrování TLS?
 opts_smtp_enforce_tls=Vyžadujete šifrování TLS?
+opts_smtputf8_enable=Povolit podporu SMTPUTF8?
 sasl_err=Uložení ověřování a šifrování SMTP se nezdařilo
 sasl_ecert=Chybějící nebo neplatný soubor certifikátu TLS
 sasl_ekey=Chybějící nebo neplatný soubor klíče TLS

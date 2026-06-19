@@ -154,10 +154,13 @@ mapping_find=Mostrar asignaciones que coinciden:
 mapping_search=Buscar
 mapping_match=Entradas de archivo de mapa que coinciden con <tt>$1</tt> ..
 
-opts_virtual_alias_maps=Tablas de búsqueda de mapeo de dominios
+virtual_title=Mapas de alias virtuales
+virtual_ecannot=No tiene permiso para editar la configuración de asignación de alias virtuales
+opts_virtual_maps=Tablas de búsqueda de alias virtuales
+opts_virtual_alias_maps=Tablas de búsqueda de alias virtuales
 opts_virtual_alias_domains=Dominios para realizar mapeo virtual para
-virtual_same=Desde tablas de mapeo de dominios
-virtual_return=dominios virtuales
+virtual_same=A partir de tablas de búsqueda de alias virtuales
+virtual_return=mapas de alias virtuales
 
 transport_return=mapas de transporte
 
@@ -174,6 +177,7 @@ opts_content_filter=Filtro de contenido de correo electrónico
 start_efailed=Error al iniciar Postfix
 start_ecannot=No tienes permiso para iniciar Postfix
 
+acl_virtual=¿Se pueden editar los alias virtuales?
 acl_sni=¿Puede editar certificados?
 acl_header=¿Se pueden editar las verificaciones de encabezado?
 acl_sasl=¿Se puede editar la autenticación SMTP?
@@ -379,6 +383,7 @@ opts_mime_header_checks=Tablas de comprobación de encabezados MIME
 opts_header_checks_no_map=(Actualmente no hay ningún mapa de verificación de encabezado definido. Defina un mapa primero, luego puede editarlo)
 
 opts_mime_header_checks_no_map=(Actualmente no hay ningún mapa de verificación de encabezado MIME definido. Defina un mapa primero, luego puede editarlo)
+opts_mime_header_checks_same_map=(Las comprobaciones de encabezado MIME son iguales que las comprobaciones de encabezado normales. Primero define un mapa diferente y luego podrás editarlo)
 header_name=Expresión regular
 header_value=Acción para partidos
 header_discard=Descartar (con mensaje de registro..)
@@ -478,7 +483,7 @@ log_misc=Opciones generales modificadas
 log_opts=Cambio de reescritura de direcciones y disfraces
 log_aliases=Opciones de alias modificadas
 log_canonical=Cambiar las opciones de mapeo canónico
-log_virtual=Opciones de dominio virtual modificadas
+log_virtual=Se modificaron las opciones de asignación de alias virtuales
 log_bcc=Se cambiaron las opciones de mapa de BCC
 log_transport=Opciones de mapeo de transporte modificadas
 log_sni=Cambiar las opciones de asignación de certificados
@@ -593,6 +598,7 @@ opts_smtpd_tls_key_file=Archivo de clave privada TLS
 opts_smtpd_tls_CAfile=Archivo de autoridad de certificación TLS
 opts_smtpd_use_tls=¿Habilitar el cifrado TLS?
 opts_smtp_enforce_tls=¿Requiere encriptación TLS?
+opts_smtputf8_enable=¿Habilitar la compatibilidad con SMTPUTF8?
 sasl_err=Error al guardar la autenticación y el cifrado SMTP
 sasl_ecert=Archivo de certificado TLS faltante o no válido
 sasl_ekey=Archivo de clave TLS faltante o no válido
