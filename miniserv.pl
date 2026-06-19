@@ -4823,19 +4823,22 @@ foreach my $ip (keys %ssl_contexts) {
 		}
 	}
 
-# Setup per-hostname SSL contexts on the main IP
+# Setup per-hostname SSL contexts on all IPs, not just the default
+# Ref: https://github.com/virtualmin/virtualmin-gpl/pull/1229
 if (defined(&Net::SSLeay::CTX_set_tlsext_servername_callback)) {
-	Net::SSLeay::CTX_set_tlsext_servername_callback(
-	    $ssl_contexts{"*"}->{'ctx'},
-	    sub {
-		my $ssl = shift;
-		my $h = Net::SSLeay::get_servername($ssl);
-		my $c = $ssl_contexts{$h} ||
-			$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
-		if ($c) {
-			Net::SSLeay::set_SSL_CTX($ssl, $c->{'ctx'});
-			}
-		});
+	foreach my $ctx_key (keys %ssl_contexts) {
+		Net::SSLeay::CTX_set_tlsext_servername_callback(
+		    $ssl_contexts{$ctx_key}->{'ctx'},
+		    sub {
+			my $ssl = shift;
+			my $h = Net::SSLeay::get_servername($ssl);
+			my $c = $ssl_contexts{$h} ||
+				$h =~ /^[^\.]+\.(.*)$/ && $ssl_contexts{"*.$1"};
+			if ($c) {
+				Net::SSLeay::set_SSL_CTX($ssl, $c->{'ctx'});
+				}
+			});
+		}
 	}
 return undef;
 }
