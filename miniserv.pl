@@ -3200,14 +3200,7 @@ for($i=2; $i<@_; $i++) {
 		# Compare with an IPv6 network
 		local $v6size = $2;
 		local $v6addr = &canonicalize_ip6($1);
-		local $bytes = $v6size / 8;
-		@mo = &expand_ipv6_bytes($v6addr);
-		local @io6 = &expand_ipv6_bytes(&canonicalize_ip6($_[0]));
-		for($j=0; $j<$bytes; $j++) {
-			if ($mo[$j] ne $io6[$j]) {
-				$mismatch = 1;
-				}
-			}
+		$mismatch = 1 if (!&ip6_prefix_match($_[0], $v6addr, $v6size));
 		}
 	elsif ($_[$i] !~ /^[0-9\.]+$/) {
 		# Compare with hostname
@@ -7284,16 +7277,20 @@ sub canonicalize_ip6
 {
 my ($addr) = @_;
 return $addr if (!&check_ip6address($addr));
-my @w = split(/:/, $addr);
+my @w = split(/:/, $addr, -1);
 my $idx = &indexof("", @w);
 if ($idx >= 0) {
 	# Expand ::
-	my $mis = 8 - scalar(@w);
-	my @nw = @w[0..$idx];
+	my $endidx = $idx;
+	while($endidx+1 < @w && $w[$endidx+1] eq "") {
+		$endidx++;
+		}
+	my $mis = 8 - (scalar(@w) - ($endidx - $idx + 1));
+	my @nw = @w[0..$idx-1];
 	for(my $i=0; $i<$mis; $i++) {
 		push(@nw, 0);
 		}
-	push(@nw, @w[$idx+1 .. $#w]);
+	push(@nw, @w[$endidx+1 .. $#w]);
 	@w = @nw;
 	}
 foreach my $w (@w) {
@@ -7315,6 +7312,26 @@ foreach my $w (split(/:/, $addr)) {
 	push(@rv, hex($1), hex($2));
 	}
 return @rv;
+}
+
+# ip6_prefix_match(address, network, prefix)
+# Returns 1 if an IPv6 address is in a network prefix.
+sub ip6_prefix_match
+{
+my ($addr, $network, $prefix) = @_;
+my @addr = &expand_ipv6_bytes(&canonicalize_ip6($addr));
+my @network = &expand_ipv6_bytes(&canonicalize_ip6($network));
+return 0 if (@addr != 16 || @network != 16 || $prefix < 0 || $prefix > 128);
+my $bytes = int($prefix / 8);
+my $bits = $prefix % 8;
+for(my $i=0; $i<$bytes; $i++) {
+	return 0 if ($addr[$i] != $network[$i]);
+	}
+if ($bits) {
+	my $mask = (0xff << (8 - $bits)) & 0xff;
+	return 0 if (($addr[$bytes] & $mask) != ($network[$bytes] & $mask));
+	}
+return 1;
 }
 
 sub get_somaxconn

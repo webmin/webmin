@@ -321,6 +321,13 @@ subtest 'canonicalize_ip6' => sub {
 	is($c2, '2001:0db8:0000:0000:0000:0000:0000:0001',
 	   '2001:DB8::1 lower-cased and zero-expanded');
 
+	is(miniserv::canonicalize_ip6('::'),
+	   '0000:0000:0000:0000:0000:0000:0000:0000',
+	   ':: expands to 8 zero-padded groups');
+	is(miniserv::canonicalize_ip6('2001:db8::'),
+	   '2001:0db8:0000:0000:0000:0000:0000:0000',
+	   'trailing :: expands to 8 zero-padded groups');
+
 	# Idempotency: running canonicalize on canonical input returns the same.
 	is(miniserv::canonicalize_ip6($c), $c, 'canonical form is idempotent');
 };
@@ -331,6 +338,44 @@ subtest 'expand_ipv6_bytes' => sub {
 	is(scalar @bytes, 16, 'IPv6 expands to 16 bytes');
 	is($bytes[15],     1, 'low byte is 1 for ::1');
 	is($bytes[0],      0, 'high byte is 0 for ::1');
+};
+
+subtest 'ip6_prefix_match' => sub {
+	ok( miniserv::ip6_prefix_match('2001:db8::1', '::', 0),
+	    '/0 matches any IPv6 address');
+	ok( miniserv::ip6_prefix_match('2001:dbf::1', '2001:db8::', 29),
+	    '/29 accepts address inside non-byte-aligned prefix');
+	ok(!miniserv::ip6_prefix_match('2001:dc0::1', '2001:db8::', 29),
+	    '/29 rejects address outside non-byte-aligned prefix');
+	ok( miniserv::ip6_prefix_match('2001:db8:ffff::1', '2001:db8::', 32),
+	    '/32 matches across the third word');
+	ok( miniserv::ip6_prefix_match('2001:db8:0:1::1', '2001:db8:0:1::', 63),
+	    '/63 accepts address inside partial fourth-word prefix');
+	ok(!miniserv::ip6_prefix_match('2001:db8:0:3::1', '2001:db8:0:1::', 63),
+	    '/63 rejects address outside partial fourth-word prefix');
+	ok( miniserv::ip6_prefix_match('2001:db8:0:1::1', '2001:db8:0:1::', 64),
+	    '/64 matches exact first four words');
+	ok( miniserv::ip6_prefix_match('2001:db8::2', '2001:db8::2', 127),
+	    '/127 accepts low address in two-address subnet');
+	ok( miniserv::ip6_prefix_match('2001:db8::3', '2001:db8::2', 127),
+	    '/127 accepts high address in two-address subnet');
+	ok(!miniserv::ip6_prefix_match('2001:db8::4', '2001:db8::2', 127),
+	    '/127 rejects next subnet');
+	ok( miniserv::ip6_prefix_match('2001:db8::1', '2001:db8::1', 128),
+	    '/128 matches identical host address');
+	ok(!miniserv::ip6_prefix_match('2001:db8::2', '2001:db8::1', 128),
+	    '/128 rejects neighboring host address');
+};
+
+subtest 'ip_match IPv6 CIDR prefixes' => sub {
+	ok( miniserv::ip_match('2001:dbf::1', '2001:db8::1', '2001:db8::/29'),
+	    'ip_match accepts non-byte-aligned IPv6 CIDR match');
+	ok(!miniserv::ip_match('2001:dc0::1', '2001:db8::1', '2001:db8::/29'),
+	    'ip_match rejects neighboring non-byte-aligned IPv6 CIDR prefix');
+	ok( miniserv::ip_match('2001:db8:0:1::1', '2001:db8::1', '2001:db8:0:1::/63'),
+	    'ip_match accepts partial-byte IPv6 prefix');
+	ok(!miniserv::ip_match('2001:db8:0:3::1', '2001:db8::1', '2001:db8:0:1::/63'),
+	    'ip_match rejects address outside partial-byte IPv6 prefix');
 };
 
 # is_bad_header — ShellShock guard
