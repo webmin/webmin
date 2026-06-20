@@ -46,7 +46,8 @@ foreach $d (reverse(@d)) {
 			else {
 				&deactivate_interface($act);
 				if (&iface_type($b->{'name'}) eq 'Bonded'){
-					if (($gconfig{'os_type'} eq 'debian-linux') && ($gconfig{'os_version'} >= 5)) {}
+					if ($gconfig{'os_type'} eq 'debian-linux' && 
+					    $gconfig{'os_version'} >= 5) {}
 					else {&unload_module($b->{'name'});}
 					}
 				}
