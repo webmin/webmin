@@ -232,4 +232,56 @@ main::save_interface($nmiface, [ $nmiface ]);
 like(join("\n", @commands), qr/ipv6\.dns/,
      "NetworkManager save_interface writes IPv6 nameservers");
 
+do "$root/net/linux-lib.pl" || die "linux-lib.pl: $@ $!";
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ( );
+		};
+	main::activate_interface({ 'name' => 'enp0s5',
+				   'fullname' => 'enp0s5:1',
+				   'virtual' => 1,
+				   'address' => '10.211.55.25',
+				   'netmask' => '255.255.255.0',
+				   'address6' => [ ],
+				   'netmask6' => [ ],
+				   'up' => 0 });
+	}
+is_deeply(\@commands, [ ],
+	  "Linux active virtual interface stays absent when created down");
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ({ 'name' => 'enp0s5',
+			  'fullname' => 'enp0s5:1',
+			  'virtual' => 1,
+			  'address' => '10.211.55.25',
+			  'netmask' => '255.255.255.0',
+			  'address6' => [ ],
+			  'netmask6' => [ ],
+			  'up' => 1 });
+		};
+	main::activate_interface({ 'name' => 'enp0s5',
+				   'fullname' => 'enp0s5:1',
+				   'virtual' => 1,
+				   'address' => '10.211.55.25',
+				   'netmask' => '255.255.255.0',
+				   'address6' => [ ],
+				   'netmask6' => [ ],
+				   'up' => 0 });
+	}
+is_deeply(\@commands,
+	  [ "ip addr del 10\\.211\\.55\\.25\\/24 dev enp0s5 2>&1" ],
+	  "Linux active virtual interface is removed when saved down");
+
 done_testing();

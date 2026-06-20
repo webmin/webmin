@@ -252,6 +252,12 @@ if(($a->{'vlan'} == 1) && !(($gconfig{'os_type'} eq 'debian-linux') && ($gconfig
 	if ($?) { &error($vonconfigout); }
 	}
 
+if (&has_command("ip") && $a->{'virtual'} ne '' && !$a->{'up'}) {
+	# Linux virtual aliases are addresses, not independent links.
+	&deactivate_interface($old) if ($old && $old->{'address'});
+	return;
+	}
+
 if (!&has_command("ifconfig") && &has_command("ip")) {
 	# For a real interface, activate or de-activate the link
 	if ($a->{'virtual'} eq '' && $a->{'up'} && (!$old || !$old->{'up'})) {
