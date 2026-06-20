@@ -49,14 +49,14 @@ else {
 		# also creating a virtual interface
 		foreach $ea (@acts) {
 			if ($ea->{'name'} eq $1 &&
-			    $ea->{'virtual'} eq $4) {
+			    $ea->{'virtual'} eq $3) {
 				&error(&text('aifc_evirtdup', &html_escape($in{'name'})));
 				}
 			}
-		$4 >= $min_virtual_number ||
+		$3 >= $min_virtual_number ||
 			&error(&text('aifc_evirtmin', &html_escape($min_virtual_number)));
 		$a->{'name'} = $1;
-		$a->{'virtual'} = $4;
+		$a->{'virtual'} = $3;
 		$a->{'fullname'} = $a->{'name'}.":".$a->{'virtual'};
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($a) || &error($text{'ifcs_ecannot'});
@@ -131,14 +131,7 @@ else {
 		}
 
 	# Save active flag
-	if ($a->{'virtual'} ne "") {
-		# Virtual aliases are addresses only, so present means up.
-		if ($access{'up'} && defined($in{'up'}) && !$in{'up'}) {
-			&error($text{'aifc_evirtdown'});
-			}
-		$a->{'up'} = 1;
-		}
-	elsif (!$access{'up'}) {
+	if (!$access{'up'}) {
 		$a->{'up'} = $in{'new'} ? 1 : $olda->{'up'};
 		}
 	elsif ($in{'up'}) {
@@ -182,8 +175,7 @@ else {
 		delete($a->{'netmask6'});
 		}
 
-	if (defined($in{'ether'}) && $in{'ether'} ne '' &&
-	    !$in{'ether_def'} && $a->{'virtual'} eq "" &&
+	if (!$in{'ether_def'} && $a->{'virtual'} eq "" &&
 	    &iface_hardware($a->{'name'})) {
 		$in{'ether'} =~ /^[A-Fa-f0-9:]+$/ ||
 			&error(&text('aifc_ehard', &html_escape($in{'ether'})));
@@ -199,3 +191,4 @@ else {
 		    "aifc", $a->{'fullname'}, $a);
 	}
 &redirect("list_ifcs.cgi?mode=active");
+
