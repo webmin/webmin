@@ -948,7 +948,8 @@ close(SWITCH);
 &open_tempfile(SWITCH, ">/etc/nsswitch.conf");
 foreach (@switch) {
 	if (/^\s*hosts:\s+/) {
-		&print_tempfile(SWITCH, "hosts:\t$conf->{'order'}\n");
+		&print_tempfile(SWITCH,
+			&linux_nsswitch_hosts_line($_, $conf->{'order'}));
 		}
 	else {
 		&print_tempfile(SWITCH, $_);
@@ -1011,6 +1012,22 @@ else {
 		}
 	$_[0]->{'order'} = join(" ", @order);
 	}
+}
+
+# linux_nsswitch_hosts_line(line, order)
+# Returns an updated nsswitch hosts line preserving existing spacing
+sub linux_nsswitch_hosts_line
+{
+my ($line, $order) = @_;
+$line =~ s/\r?\n$//;
+my $comment = "";
+if ($line =~ s/(\s+#.*)$//) {
+	# Keep inline comments while replacing only the lookup order.
+	$comment = $1;
+	}
+return $1.$2.$order.$comment."\n"
+	if ($line =~ /^(\s*hosts:)(\s+)\S/);
+return "hosts:\t$order$comment\n";
 }
 
 1;
