@@ -124,19 +124,6 @@ if (&foreign_installed("postfix") && $in{'hostname'} ne $old_hostname) {
 		&postfix::set_current_value("mydestination",
 					    join(", ", @mydests));
 		}
-	$old_domain = $old_hostname =~ /^[^\.]+\.(.*)$/ ? $1 :
-		      $old_fqdn =~ /^[^\.]+\.(.*)$/ ? $1 : undef;
-	$new_domain = $in{'hostname'} =~ /^[^\.]+\.(.*)$/ ? $1 :
-		      $new_fqdn =~ /^[^\.]+\.(.*)$/ ? $1 : undef;
-	if ($old_domain && $new_domain &&
-	    lc($old_domain) ne lc($new_domain)) {
-		$idx = &indexoflc("localhost.$old_domain", @mydests);
-		if ($idx >= 0) {
-			$mydests[$idx] = "localhost.$new_domain";
-			&postfix::set_current_value("mydestination",
-						    join(", ", @mydests));
-			}
-		}
 
 	# Update postfix myorigin
 	$myorigin = &postfix::get_current_value("myorigin");
@@ -160,3 +147,4 @@ if (&foreign_installed("postfix") && $in{'hostname'} ne $old_hostname) {
 
 &webmin_log("dns", undef, undef, \%in);
 &redirect("");
+

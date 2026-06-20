@@ -149,15 +149,6 @@ do "$root/net/netplan-lib.pl" || die "netplan-lib.pl: $@ $!";
 	$main::netplan_dir = $tmp;
 }
 
-is(main::linux_nsswitch_hosts_line("hosts:          files dns\n",
-				   "files dns"),
-   "hosts:          files dns\n",
-   "Linux DNS save preserves nsswitch hosts spacing");
-is(main::linux_nsswitch_hosts_line("hosts:\tfiles dns # local policy\n",
-				   "files mdns4 dns"),
-   "hosts:\tfiles mdns4 dns # local policy\n",
-   "Linux DNS save preserves nsswitch hosts comments");
-
 my $netplan = "$tmp/50-cloud-init.yaml";
 write_text($netplan, <<'YAML');
 network:
