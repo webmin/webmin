@@ -72,19 +72,19 @@ else {
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($b) || &error($text{'ifcs_ecannot'});
 		}
-	elsif ($in{'name'} =~ /^([a-z]+\d*(s\d*)?(\.\d+)?):(\d+)$/ ||
-	       $in{'name'} =~ /^(en[0-9a-z]+(s\d*)?(\.\d+)?):(\d+)$/) {
+	elsif ($in{'name'} =~ /^((?:[a-z]+\d*(?:s\d*)?(?:\.\d+)?)|(?:en[0-9a-z]+(?:s\d*)?(?:\.\d+)?)):(\d+)$/) {
 		# also creating a virtual interface
+		local ($vname, $vnum) = ($1, $2);
 		foreach $eb (@boot) {
-			if ($eb->{'name'} eq $2 &&
-			    $eb->{'virtual'} eq $4) {
+			if ($eb->{'name'} eq $vname &&
+			    $eb->{'virtual'} eq $vnum) {
 				&error(&text('bifc_evirtdup', &html_escape($in{'name'})));
 				}
 			}
-		$4 >= $min_virtual_number ||
+		$vnum >= $min_virtual_number ||
 			&error(&text('aifc_evirtmin', &html_escape($min_virtual_number)));
-		$b->{'name'} = $1;
-		$b->{'virtual'} = $4;
+		$b->{'name'} = $vname;
+		$b->{'virtual'} = $vnum;
 		$b->{'fullname'} = $b->{'name'}.":".$b->{'virtual'};
 		}
 	elsif ($in{'bridge'}) {

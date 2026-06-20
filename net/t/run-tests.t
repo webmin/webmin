@@ -149,6 +149,15 @@ do "$root/net/netplan-lib.pl" || die "netplan-lib.pl: $@ $!";
 	$main::netplan_dir = $tmp;
 }
 
+is(main::linux_nsswitch_hosts_line("hosts:          files dns\n",
+				   "files dns"),
+   "hosts:          files dns\n",
+   "Linux DNS save preserves nsswitch hosts spacing");
+is(main::linux_nsswitch_hosts_line("hosts:\tfiles dns # local policy\n",
+				   "files mdns4 dns"),
+   "hosts:\tfiles mdns4 dns # local policy\n",
+   "Linux DNS save preserves nsswitch hosts comments");
+
 my $netplan = "$tmp/50-cloud-init.yaml";
 write_text($netplan, <<'YAML');
 network:
@@ -552,5 +561,56 @@ unlike($saved, qr/static ip_address=10\.211\.55\.23\/24/,
 is_deeply(\@commands,
 	  [ "ip addr del 10\\.211\\.55\\.23\\/24 dev enp0s5 2>&1" ],
 	  "dhcpcd active delete drops only the selected live virtual alias");
+do "$root/net/linux-lib.pl" || die "linux-lib.pl: $@ $!";
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ( );
+		};
+	main::activate_interface({ 'name' => 'enp0s5',
+				   'fullname' => 'enp0s5:1',
+				   'virtual' => 1,
+				   'address' => '10.211.55.25',
+				   'netmask' => '255.255.255.0',
+				   'address6' => [ ],
+				   'netmask6' => [ ],
+				   'up' => 0 });
+	}
+is_deeply(\@commands, [ ],
+	  "Linux active virtual interface stays absent when created down");
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ({ 'name' => 'enp0s5',
+			  'fullname' => 'enp0s5:1',
+			  'virtual' => 1,
+			  'address' => '10.211.55.25',
+			  'netmask' => '255.255.255.0',
+			  'address6' => [ ],
+			  'netmask6' => [ ],
+			  'up' => 1 });
+		};
+	main::activate_interface({ 'name' => 'enp0s5',
+				   'fullname' => 'enp0s5:1',
+				   'virtual' => 1,
+				   'address' => '10.211.55.25',
+				   'netmask' => '255.255.255.0',
+				   'address6' => [ ],
+				   'netmask6' => [ ],
+				   'up' => 0 });
+	}
+is_deeply(\@commands,
+	  [ "ip addr del 10\\.211\\.55\\.25\\/24 dev enp0s5 2>&1" ],
+	  "Linux active virtual interface is removed when saved down");
 
 done_testing();

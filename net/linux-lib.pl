@@ -252,6 +252,12 @@ if(($a->{'vlan'} == 1) && !(($gconfig{'os_type'} eq 'debian-linux') && ($gconfig
 	if ($?) { &error($vonconfigout); }
 	}
 
+if (&has_command("ip") && $a->{'virtual'} ne '' && !$a->{'up'}) {
+	# Linux virtual aliases are addresses, not independent links.
+	&deactivate_interface($old) if ($old && $old->{'address'});
+	return;
+	}
+
 if (!&has_command("ifconfig") && &has_command("ip")) {
 	# For a real interface, activate or de-activate the link
 	if ($a->{'virtual'} eq '' && $a->{'up'} && (!$old || !$old->{'up'})) {
@@ -942,7 +948,8 @@ close(SWITCH);
 &open_tempfile(SWITCH, ">/etc/nsswitch.conf");
 foreach (@switch) {
 	if (/^\s*hosts:\s+/) {
-		&print_tempfile(SWITCH, "hosts:\t$conf->{'order'}\n");
+		&print_tempfile(SWITCH,
+			&linux_nsswitch_hosts_line($_, $conf->{'order'}));
 		}
 	else {
 		&print_tempfile(SWITCH, $_);
@@ -1005,6 +1012,22 @@ else {
 		}
 	$_[0]->{'order'} = join(" ", @order);
 	}
+}
+
+# linux_nsswitch_hosts_line(line, order)
+# Returns an updated nsswitch hosts line preserving existing spacing
+sub linux_nsswitch_hosts_line
+{
+my ($line, $order) = @_;
+$line =~ s/\r?\n$//;
+my $comment = "";
+if ($line =~ s/(\s+#.*)$//) {
+	# Keep inline comments while replacing only the lookup order.
+	$comment = $1;
+	}
+return $1.$2.$order.$comment."\n"
+	if ($line =~ /^(\s*hosts:)(\s+)\S/);
+return "hosts:\t$order$comment\n";
 }
 
 1;

@@ -100,15 +100,20 @@ if ($file) {
 	}
 
 # Create the structure
-my @mdirs = map { { 'name' => $_ } } @masters;
+my @mdirs;
+foreach my $m (@masters) {
+	my $mdir = { 'name' => $m,
+		     'values' => [ ] };
+	if ($masterkey) {
+		push(@{$mdir->{'values'}}, 'key', $masterkey);
+		}
+	push(@mdirs, $mdir);
+	}
 my $masters = { 'name' => 'masters',
-	     'type' => 1,
-	     'members' => \@mdirs };
+	        'type' => 1,
+	        'members' => \@mdirs };
 if (defined($masterport)) {
 	$masters->{'values'} = [ 'port', $masterport ];
-	}
-if ($masterkey) {
-	$masters->{'values'} = [ 'key', $masterkey ];
 	}
 my $dir = { 'name' => 'zone',
 	 'values' => [ $in{'zone'} ],

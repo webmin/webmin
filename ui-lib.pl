@@ -3038,6 +3038,136 @@ foreach $f (@{$_[2]}) {
 return $_[3] ? "$_[3]='$rv'" : $rv;
 }
 
+=head2 ui_form_field_state_javascript(control-name, &active-values, &element-ids, &field-names, [&reset-values])
+
+Returns a <script> block that keeps page elements and form fields in sync with
+another form control. When the control's current value is one of active-values,
+the element IDs are shown and field names are enabled. Otherwise the elements
+are hidden, the fields are disabled, and any reset-values are applied.
+
+=item control-name - Name of the controlling form field.
+
+=item active-values - Array ref of values for which dependents are active.
+
+=item element-ids - Array ref of element IDs to show or hide.
+
+=item field-names - Array ref of form field names to enable or disable.
+
+=item reset-values - Optional hash ref of field name to value to set when disabled.
+
+=cut
+sub ui_form_field_state_javascript
+{
+return &theme_ui_form_field_state_javascript(@_)
+	if (defined(&theme_ui_form_field_state_javascript));
+my ($control, $values, $ids, $fields, $resets) = @_;
+$values ||= [ ];
+$ids ||= [ ];
+$fields ||= [ ];
+$resets ||= { };
+my $js_quote = sub {
+	my ($str) = @_;
+	return "'".&quote_javascript($str)."'";
+	};
+my $js_array = sub {
+	my ($arr) = @_;
+	return "[".join(",", map { &$js_quote($_) } @$arr)."]";
+	};
+my $js_hash = sub {
+	my ($hash) = @_;
+	return "{".
+	       join(",", map { &$js_quote($_).":".&$js_quote($hash->{$_}) }
+			 sort { $a cmp $b } keys %$hash).
+	       "}";
+	};
+my $jcontrol = &$js_quote($control);
+my $jvalues = &$js_array($values);
+my $jids = &$js_array($ids);
+my $jfields = &$js_array($fields);
+my $jresets = &$js_hash($resets);
+return <<EOF;
+<script type='text/javascript'>
+(function() {
+	var controlName = $jcontrol,
+	    activeValues = $jvalues,
+	    elementIds = $jids,
+	    fieldNames = $jfields,
+	    resetValues = $jresets;
+
+	function currentControlValue() {
+		var controls = document.getElementsByName(controlName), i, c;
+		for (i = 0; i < controls.length; i++) {
+			c = controls[i];
+			if (c.type == 'radio' || c.type == 'checkbox') {
+				if (c.checked) {
+					return c.value;
+				}
+			}
+			else {
+				return c.value;
+			}
+		}
+		return null;
+	}
+
+	function hasActiveValue(value) {
+		var i;
+		for (i = 0; i < activeValues.length; i++) {
+			if (String(activeValues[i]) == String(value)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	function setFieldValue(field, value) {
+		if (field.type == 'radio' || field.type == 'checkbox') {
+			field.checked = String(field.value) == String(value);
+		}
+		else {
+			field.value = value;
+		}
+	}
+
+	function syncDependentFields() {
+		var active = hasActiveValue(currentControlValue()), i, j, elem,
+		    fields, field, name;
+		for (i = 0; i < elementIds.length; i++) {
+			elem = document.getElementById(elementIds[i]);
+			if (elem) {
+				elem.style.display = active ? '' : 'none';
+			}
+		}
+		for (i = 0; i < fieldNames.length; i++) {
+			name = fieldNames[i];
+			fields = document.getElementsByName(name);
+			for (j = 0; j < fields.length; j++) {
+				field = fields[j];
+				field.disabled = !active;
+				if (!active &&
+				    Object.prototype.hasOwnProperty.call(resetValues, name)) {
+					setFieldValue(field, resetValues[name]);
+				}
+			}
+		}
+	}
+
+	var controls = document.getElementsByName(controlName), i;
+	for (i = 0; i < controls.length; i++) {
+		controls[i].addEventListener('change', syncDependentFields);
+		controls[i].addEventListener('input', syncDependentFields);
+	}
+	if (document.readyState == 'loading') {
+		document.addEventListener('DOMContentLoaded', syncDependentFields);
+	}
+	else {
+		syncDependentFields();
+	}
+})();
+</script>
+EOF
+}
+
 =head2 js_redirect(url, [window-object], [timeout])
 
 Returns HTML to trigger a redirect to some URL.
