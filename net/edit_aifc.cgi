@@ -128,16 +128,21 @@ else {
 print &ui_table_row($text{'ifcs_mtu'}, $mtufield);
 
 # Current status
-if (!$access{'up'}) {
+if (($in{'new'} && $in{'virtual'}) || ($a && $a->{'virtual'} ne "")) {
+	# Virtual aliases are IP addresses, not links with independent status.
+	print &ui_hidden("up", 1);
+	}
+elsif (!$access{'up'}) {
 	# Cannot edit
 	$upfield = !$a ? $text{'ifcs_up'} :
 		   $a->{'up'} ? $text{'ifcs_up'} : $text{'ifcs_down'};
+	print &ui_table_row($text{'ifcs_status'}, $upfield);
 	}
 else {
 	$upfield = &ui_radio("up", $in{'new'} || $a->{'up'} ? 1 : 0,
 			[ [ 1, $text{'ifcs_up'} ], [ 0, $text{'ifcs_down'} ] ]);
+	print &ui_table_row($text{'ifcs_status'}, $upfield);
 	}
-print &ui_table_row($text{'ifcs_status'}, $upfield);
 
 # Hardware address, if non-virtual
 if ((!$a && $in{'virtual'} eq "") ||

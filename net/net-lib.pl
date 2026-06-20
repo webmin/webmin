@@ -52,18 +52,34 @@ local $line="";
 &open_readfile(HOSTS, $config{'hosts_file'});
 while($line=<HOSTS>) {
 	local $comment = 0;
+	local $comment_prefix = "";
+	local $leading = "";
+	local $inline_comment = "";
 	$line =~ s/\r|\n//g;
-	if ($line =~ s/^\s*#+\s*//) {
+	if ($line =~ s/^(\s*#+\s*)//) {
 		$comment = 1;
+		$comment_prefix = $1;
 		}
-	$line =~ s/#.*$//g;
+	elsif ($line =~ s/^(\s+)//) {
+		# Preserve indentation if this file uses it for host rows.
+		$leading = $1;
+		}
+	if ($line =~ s/(\s+#.*)$//) {
+		# Keep inline comments attached to edited host rows.
+		$inline_comment = $1;
+		}
 	$line =~ s/\s+$//g;
+	local @seps = &host_line_separators($line);
 	local @f = split(/\s+/, $line);
 	local $ipaddr = shift(@f);
 	if (check_ipaddress_any($ipaddr)) {
 		push(@rv, { 'address' => $ipaddr,
 			    'hosts' => [ @f ],
 			    'active' => !$comment,
+			    'comment_prefix' => $comment_prefix,
+			    'leading' => $leading,
+			    'comment' => $inline_comment,
+			    'seps' => \@seps,
 			    'line', $lnum,
 			    'index', scalar(@rv) });
 		}
@@ -73,13 +89,35 @@ close(HOSTS);
 return @rv;
 }
 
+# host_line_separators(line)
+# Returns the field separators from a parsed /etc/hosts line
+sub host_line_separators
+{
+local ($line) = @_;
+local @seps;
+while($line =~ /\S+(\s+)/g) {
+	push(@seps, $1);
+	}
+return @seps;
+}
+
 # make_host_line(&host)
 # Internal function to return a line for the hosts file
 sub make_host_line
 {
 local ($host) = @_;
-return ($host->{'active'} ? "" : "# ").
-       $host->{'address'}."\t".join(" ",@{$host->{'hosts'}})."\n";
+local $prefix = $host->{'active'} ? $host->{'leading'} || "" :
+		$host->{'comment_prefix'} || "# ";
+local @seps = @{$host->{'seps'} || [ ]};
+local @hosts = @{$host->{'hosts'} || [ ]};
+local $line = $prefix.$host->{'address'};
+for(local $i=0; $i<@hosts; $i++) {
+	# Reuse original spacing by field position, then fall back to defaults.
+	local $sep = $seps[$i] || ($i == 0 ? "\t" : " ");
+	$line .= $sep.$hosts[$i];
+	}
+$line .= $host->{'comment'} if ($host->{'comment'});
+return $line."\n";
 }
 
 # create_host(&host)
