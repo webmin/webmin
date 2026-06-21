@@ -118,6 +118,19 @@ return &parse_opt("MaxClients", '^\d+$',
 		  $text{'core_emaxconc'});
 }
 
+sub edit_MaxRequestWorkers
+{
+return (1,
+	$text{'core_maxconc'},
+	&opt_input($_[0]->{'value'}, "MaxRequestWorkers",
+		   $text{'core_default'}, 4));
+}
+sub save_MaxRequestWorkers
+{
+return &parse_opt("MaxRequestWorkers", '^\d+$',
+		  $text{'core_emaxconc'});
+}
+
 sub edit_MaxKeepAliveRequests
 {
 return (1,
@@ -176,6 +189,66 @@ sub save_StartServers
 {
 return &parse_opt("StartServers", '^\d+$',
 		  $text{'core_einitial'});
+}
+
+sub edit_ServerLimit
+{
+return (1,
+	$text{'core_serverlimit'},
+	&opt_input($_[0]->{'value'}, "ServerLimit", $text{'core_default'}, 4));
+}
+sub save_ServerLimit
+{
+return &parse_opt("ServerLimit", '^\d+$',
+		  $text{'core_eserverlimit'});
+}
+
+sub edit_MinSpareThreads
+{
+return (1,
+	$text{'worker_minspare'},
+	&opt_input($_[0]->{'value'},"MinSpareThreads",$text{'core_default'}, 4));
+}
+sub save_MinSpareThreads
+{
+return &parse_opt("MinSpareThreads", '^\d+$',
+		  $text{'worker_eminspare'});
+}
+
+sub edit_MaxSpareThreads
+{
+return (1,
+	$text{'worker_maxspare'},
+	&opt_input($_[0]->{'value'},"MaxSpareThreads",$text{'core_default'}, 4));
+}
+sub save_MaxSpareThreads
+{
+return &parse_opt("MaxSpareThreads", '^\d+$',
+		  $text{'worker_emaxspare'});
+}
+
+sub edit_ThreadLimit
+{
+return (1,
+	$text{'worker_threadlimit'},
+	&opt_input($_[0]->{'value'},"ThreadLimit",$text{'core_default'}, 4));
+}
+sub save_ThreadLimit
+{
+return &parse_opt("ThreadLimit", '^\d+$',
+		  $text{'worker_ethreadlimit'});
+}
+
+sub edit_ThreadsPerChild
+{
+return (1,
+	$text{'worker_threads'},
+	&opt_input($_[0]->{'value'},"ThreadsPerChild",$text{'core_default'}, 4));
+}
+sub save_ThreadsPerChild
+{
+return &parse_opt("ThreadsPerChild", '^\d+$',
+		  $text{'worker_ethreads'});
 }
 
 sub edit_RLimitCPU

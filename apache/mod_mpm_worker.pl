@@ -1,8 +1,8 @@
-# mod_mpm_event.pl
-# Defines editors for the event MPM module in apache 2.4.
+# mod_mpm_worker.pl
+# Defines editors for the worker MPM module in apache 2.4.
 # The actual functions for all of these are still in core.pl
 
-sub mod_mpm_event_directives
+sub mod_mpm_worker_directives
 {
 local $rv;
 $rv = [ [ 'CoreDumpDirectory', 0, 9, 'global', 2.0 ],
@@ -22,7 +22,6 @@ $rv = [ [ 'CoreDumpDirectory', 0, 9, 'global', 2.0 ],
 	[ 'ThreadsPerChild', 0, 0, 'global', 2.0 ],
 	[ 'Group', 0, 8, 'global', 2.0 ],
 	[ 'User', 0, 8, 'global', 2.0, 10 ] ];
-return &make_directives($rv, $_[0], "mod_mpm_event");
+return &make_directives($rv, $_[0], "mod_mpm_worker");
 }
-
 
