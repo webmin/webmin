@@ -42,7 +42,7 @@ return &parse_opt("MaxSpareThreads", '^\d+$',
 sub edit_StartThreads
 {
 return (1,
-	$text{'perchild_sthreads'},
+	&hlink($text{'perchild_sthreads'}, "StartThreads"),
 	&opt_input($_[0]->{'value'},"StartThreads",$text{'default'}, 4));
 }
 sub save_StartThreads

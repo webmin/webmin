@@ -1,0 +1,7 @@
+<header>Maximum request header size</header>
+The <tt>LimitRequestFieldSize</tt> directive sets the maximum size of each HTTP
+request header field in bytes.
+<p>
+Lowering this limit can reject oversized request headers, but values that are
+too low can break clients that send larger cookies or authorization headers.
+<p><footer>

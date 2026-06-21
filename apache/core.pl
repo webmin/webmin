@@ -253,7 +253,8 @@ return &parse_opt("ThreadsPerChild", '^\d+$',
 
 sub edit_RLimitCPU
 {
-return &rlimit_input("RLimitCPU", $text{'core_cpulimit'}, $_[0]);
+return &rlimit_input("RLimitCPU",
+		     &hlink($text{'core_cpulimit'}, "RLimitCPU"), $_[0]);
 }
 sub save_RLimitCPU
 {
@@ -262,7 +263,8 @@ return &parse_rlimit("RLimitCPU", $text{'core_cpulimit2'});
 
 sub edit_RLimitMEM
 {
-return &rlimit_input("RLimitMEM", $text{'core_memlimit'}, $_[0]);
+return &rlimit_input("RLimitMEM",
+		     &hlink($text{'core_memlimit'}, "RLimitMEM"), $_[0]);
 }
 sub save_RLimitMEM
 {
@@ -271,7 +273,8 @@ return &parse_rlimit("RLimitMEM", $text{'core_memlimit2'});
 
 sub edit_RLimitNPROC
 {
-return &rlimit_input("RLimitNPROC", $text{'core_proclimit'}, $_[0]);
+return &rlimit_input("RLimitNPROC",
+		     &hlink($text{'core_proclimit'}, "RLimitNPROC"), $_[0]);
 }
 sub save_RLimitNPROC
 {
@@ -1353,7 +1356,7 @@ return &parse_opt("LockFile", '^\S+', $text{'core_elock'});
 
 sub edit_LimitRequestBody
 {
-return (1, $text{'core_maxbody'},
+return (1, &hlink($text{'core_maxbody'}, "LimitRequestBody"),
 	&opt_input($_[0]->{'value'}, "LimitRequestBody", $text{'core_default'}, 8)
 		.&ui_space(2).$text{'bytes'});
 }
@@ -1364,7 +1367,7 @@ return &parse_opt("LimitRequestBody", '^\d+$', $text{'core_ebody'});
 
 sub edit_LimitXMLRequestBody
 {
-return (1, $text{'core_maxxml'},
+return (1, &hlink($text{'core_maxxml'}, "LimitXMLRequestBody"),
 	&opt_input($_[0]->{'value'}, "LimitXMLRequestBody",
 		   $text{'core_default'}, 8).&ui_space(2).$text{'bytes'});
 }
@@ -1377,7 +1380,7 @@ return &parse_opt("LimitXMLRequestBody", '^\d+$', $text{'core_exml'});
 
 sub edit_LimitRequestFields
 {
-return (1, $text{'core_maxhead'},
+return (1, &hlink($text{'core_maxhead'}, "LimitRequestFields"),
 	&opt_input($_[0]->{'value'}, "LimitRequestFields", $text{'core_default'}, 6));
 }
 sub save_LimitRequestFields
@@ -1387,7 +1390,7 @@ return &parse_opt("LimitRequestFields", '^\d+$', $text{'core_ehead'});
 
 sub edit_LimitRequestFieldsize
 {
-return (1, $text{'core_maxshead'},
+return (1, &hlink($text{'core_maxshead'}, "LimitRequestFieldsize"),
 	&opt_input($_[0]->{'value'}, "LimitRequestFieldsize", $text{'core_default'}, 6));
 }
 sub save_LimitRequestFieldsize
@@ -1397,7 +1400,7 @@ return &parse_opt("LimitRequestFieldsize", '^\d+$', $text{'core_eshead'});
 
 sub edit_LimitRequestLine
 {
-return (1, $text{'core_maxline'},
+return (1, &hlink($text{'core_maxline'}, "LimitRequestLine"),
 	&opt_input($_[0]->{'value'}, "LimitRequestLine", $text{'core_default'}, 6));
 }
 sub save_LimitRequestLine
