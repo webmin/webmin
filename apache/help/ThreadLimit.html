@@ -1,0 +1,7 @@
+<header>Thread limit per child process</header>
+The <tt>ThreadLimit</tt> directive sets the hard upper limit for the number of
+worker threads that can be configured in each child process.
+<p>
+It must be high enough for <tt>ThreadsPerChild</tt>. Increasing this value may
+require a full Apache stop and start before it takes effect.
+<p><footer>

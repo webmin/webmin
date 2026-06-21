@@ -88,7 +88,7 @@ return ( \@rv );
 sub edit_MinSpareThreads
 {
 return (1,
-	$text{'worker_minspare'},
+	&hlink($text{'worker_minspare'}, "MinSpareThreads"),
 	&opt_input($_[0]->{'value'},"MinSpareThreads",$text{'default'}, 4));
 }
 sub save_MinSpareThreads
@@ -100,7 +100,7 @@ return &parse_opt("MinSpareThreads", '^\d+$',
 sub edit_MaxSpareThreads
 {
 return (1,
-	$text{'worker_maxspare'},
+	&hlink($text{'worker_maxspare'}, "MaxSpareThreads"),
 	&opt_input($_[0]->{'value'},"MaxSpareThreads",$text{'default'}, 4));
 }
 sub save_MaxSpareThreads

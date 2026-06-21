@@ -1,0 +1,8 @@
+<header>Maximum simultaneous requests</header>
+The <tt>MaxClients</tt> directive is the old Apache name for the maximum number
+of requests that can be served at the same time. On Apache 2.4 and newer, the
+equivalent directive is <tt>MaxRequestWorkers</tt>.
+<p>
+For prefork MPM, this limits child server processes. For threaded MPMs, it
+limits the total number of worker threads across all child processes.
+<p><footer>

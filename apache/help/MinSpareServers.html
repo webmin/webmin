@@ -1,0 +1,8 @@
+<header>Minimum idle server processes</header>
+The <tt>MinSpareServers</tt> directive sets the minimum number of idle child
+server processes Apache tries to keep ready when using prefork-style process
+handling.
+<p>
+If fewer idle child processes are available, Apache starts more so new
+connections can be accepted without waiting for a process to be created.
+<p><footer>

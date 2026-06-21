@@ -29,7 +29,7 @@ return &make_directives($rv, $_[0], "worker");
 sub edit_MinSpareThreads
 {
 return (1,
-	$text{'worker_minspare'},
+	&hlink($text{'worker_minspare'}, "MinSpareThreads"),
 	&opt_input($_[0]->{'value'},"MinSpareThreads",$text{'default'}, 4));
 }
 sub save_MinSpareThreads
@@ -41,7 +41,7 @@ return &parse_opt("MinSpareThreads", '^\d+$',
 sub edit_MaxSpareThreads
 {
 return (1,
-	$text{'worker_maxspare'},
+	&hlink($text{'worker_maxspare'}, "MaxSpareThreads"),
 	&opt_input($_[0]->{'value'},"MaxSpareThreads",$text{'default'}, 4));
 }
 sub save_MaxSpareThreads
@@ -53,7 +53,7 @@ return &parse_opt("MaxSpareThreads", '^\d+$',
 sub edit_ThreadsPerChild
 {
 return (1,
-	$text{'worker_threads'},
+	&hlink($text{'worker_threads'}, "ThreadsPerChild"),
 	&opt_input($_[0]->{'value'},"ThreadsPerChild",$text{'default'}, 4));
 }
 sub save_ThreadsPerChild
@@ -61,4 +61,3 @@ sub save_ThreadsPerChild
 return &parse_opt("ThreadsPerChild", '^\d+$',
 		  $text{'worker_ethreads'});
 }
-

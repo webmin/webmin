@@ -1,0 +1,8 @@
+<header>Maximum requests per child process</header>
+The <tt>MaxRequestsPerChild</tt> directive sets how many requests an Apache
+child process will handle before it exits and is replaced. A value of
+<tt>0</tt> means the process is not recycled because of this limit.
+<p>
+Recycling can help contain memory growth in long-running processes, but setting
+this too low can create unnecessary process churn.
+<p><footer>

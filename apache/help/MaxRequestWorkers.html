@@ -1,0 +1,9 @@
+<header>Maximum simultaneous requests</header>
+The <tt>MaxRequestWorkers</tt> directive sets the maximum number of requests
+that Apache can serve at the same time. Requests above this limit wait until an
+existing worker is free.
+<p>
+For prefork MPM, this limits child server processes. For threaded MPMs, it
+limits the total number of worker threads across all child processes. Raising
+this value may also require increasing <tt>ServerLimit</tt>.
+<p><footer>

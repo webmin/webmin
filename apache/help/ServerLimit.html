@@ -1,0 +1,9 @@
+<header>Server process limit</header>
+The <tt>ServerLimit</tt> directive sets the hard upper limit on the number of
+Apache child server processes. It caps values such as
+<tt>MaxRequestWorkers</tt> for prefork MPM, and works with
+<tt>ThreadsPerChild</tt> for threaded MPMs.
+<p>
+Increasing this value may require a full Apache stop and start before it takes
+effect.
+<p><footer>

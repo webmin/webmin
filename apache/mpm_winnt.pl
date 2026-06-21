@@ -18,7 +18,7 @@ return &make_directives($rv, $_[0], "mpm_winnt");
 sub edit_ThreadsPerChild
 {
 return (1,
-	$text{'worker_threads'},
+	&hlink($text{'worker_threads'}, "ThreadsPerChild"),
 	&opt_input($_[0]->{'value'},"ThreadsPerChild",$text{'default'}, 4));
 }
 sub save_ThreadsPerChild
@@ -26,4 +26,3 @@ sub save_ThreadsPerChild
 return &parse_opt("ThreadsPerChild", '^\d+$',
 		  $text{'worker_ethreads'});
 }
-

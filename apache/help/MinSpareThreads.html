@@ -1,0 +1,8 @@
+<header>Minimum idle worker threads</header>
+The <tt>MinSpareThreads</tt> directive sets the minimum number of idle worker
+threads Apache tries to keep ready when using a threaded MPM such as worker or
+event.
+<p>
+If fewer idle threads are available, Apache starts or adjusts child processes
+so new connections can be accepted without waiting for threads to become free.
+<p><footer>
