@@ -1,0 +1,13 @@
+<header>Hardware RAID passthrough devices</header>
+
+This option can be used to add physical disks behind hardware RAID
+controllers when they are not detected automatically, but can be queried
+by <tt>smartctl</tt> through a passthrough device. Leave it empty unless
+you need to monitor disks behind such a controller. <p>
+
+For example, <tt>/dev/sg0 cciss 0 3</tt> adds three <tt>cciss</tt>
+physical disks numbered 0, 1 and 2 through the <tt>/dev/sg0</tt>
+passthrough device. The final value is the number of disks to add, not the
+last disk number. <p>
+
+<footer>

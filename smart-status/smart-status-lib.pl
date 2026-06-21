@@ -31,16 +31,18 @@ Returns a sorted list of disks that can support SMART.
 =cut
 sub list_smart_disks_partitions
 {
+my @rv;
 if (&foreign_check("fdisk")) {
-	return &list_smart_disks_partitions_fdisk();
+	@rv = &list_smart_disks_partitions_fdisk();
 	}
 elsif (&foreign_check("bsdfdisk")) {
-	return &list_smart_disks_partitions_bsdfdisk();
+	@rv = &list_smart_disks_partitions_bsdfdisk();
 	}
 elsif (&foreign_check("mount")) {
-	return &list_smart_disks_partitions_fstab();
+	@rv = &list_smart_disks_partitions_fstab();
 	}
-return ( );
+push(@rv, &list_configured_raid_disks());
+return &unique_smart_disks(@rv);
 }
 
 =head2 list_smart_disks_partitions_fdisk
@@ -218,6 +220,71 @@ while(1) {
 	$count++;
 	}
 return $count;
+}
+
+=head2 list_configured_raid_disks()
+
+Returns SMART disk entries for manually configured hardware RAID passthrough
+devices. Each configured line is in device type first-disk disk-count format.
+
+=cut
+sub list_configured_raid_disks
+{
+my @rv;
+foreach my $line (split(/\t/, $config{'raid_devices'} || "")) {
+	$line =~ s/^\s+//;
+	$line =~ s/\s+$//;
+	next if (!$line || $line =~ /^#/);
+	my ($device, $type, $first, $count, $extra) = split(/\s+/, $line, 5);
+	next if (!$device || !$type ||
+		 !defined($first) || !defined($count) || defined($extra));
+	next if ($device !~ /^\/dev\/\S+$/);
+	next if ($type !~ /^[A-Za-z0-9_.+-]+$/);
+	next if ($first !~ /^\d+$/ || $count !~ /^\d+$/);
+	next if ($count < 1 || $count > 256);
+
+	for(my $i=$first; $i<$first+$count; $i++) {
+		push(@rv, { 'device' => $device,
+			    'prefix' => $device,
+			    'desc' => &configured_raid_disk_desc($type, $i),
+			    'type' => 'scsi',
+			    'subtype' => $type,
+			    'subdisk' => $i,
+			    'ids' => [ ],
+			    'manual' => 1 });
+		}
+	}
+return @rv;
+}
+
+=head2 configured_raid_disk_desc(type, subdisk)
+
+Returns a description for a manually configured hardware RAID disk.
+
+=cut
+sub configured_raid_disk_desc
+{
+my ($type, $subdisk) = @_;
+if ($type eq "cciss") {
+	return "HP Smart Array physical disk ".$subdisk;
+	}
+return "Hardware RAID ".$type." physical disk ".$subdisk;
+}
+
+=head2 unique_smart_disks(&disks)
+
+Returns SMART disk entries with duplicate device/type/subdisk entries removed.
+
+=cut
+sub unique_smart_disks
+{
+my %seen;
+return grep {
+	my $key = $_->{'device'}.":".
+		  ($_->{'subtype'} || "").":".
+		  (defined($_->{'subdisk'}) ? $_->{'subdisk'} : "");
+	!$seen{$key}++;
+	} @_;
 }
 
 =head2 list_smart_disks_partitions_fstab
@@ -563,4 +630,3 @@ return $extra_args;
 }
 
 1;
-

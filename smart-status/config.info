@@ -3,3 +3,4 @@ attribs=Show all attributes,1,1-Yes,0-No
 smartctl=Full path to smartctl command,0
 ata=Force ATA query mode?,1,1-Yes,0-No
 extra=Extra command-line parameters to smartctl,3,None
+raid_devices=Hardware RAID passthrough devices,15,raid_devices

@@ -2,3 +2,4 @@ smartctl=smartctl
 mode=1
 attribs=1
 ata=0
+raid_devices=
