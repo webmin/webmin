@@ -10,8 +10,12 @@
 * Add optional pre- and post-scripts for scheduled package updates
 * Add option to control when scheduled package update email is sent
 * Add per-user RPC/API-only access option to the Webmin Users module
+* Add Apache 2.4 MPM process limit directives [#1821](https://github.com/webmin/webmin/issues/1821)
+* Add dhcpcd network backend for Debian and Raspberry Pi OS [#1607](https://github.com/webmin/webmin/issues/1607)
+* Add hardware RAID passthrough devices config in the SMART Status module [#1704](https://github.com/webmin/webmin/issues/1704)
 * Update Xterm.js to fix Control-C handling on iPadOS/Safari terminals
 * Update Webmin systemd service unit to run without forking
+* Fix IPv6 CIDR access control matching [#1570](https://github.com/webmin/webmin/issues/1570)
 * Fix Bootup and Shutdown module to show only services and not all units on systemd systems
 * Fix Let's Encrypt renewal scheduling to count from the last successful request
 * Fix NetworkManager detection on Debian and IPv6 DNS nameserver saving
