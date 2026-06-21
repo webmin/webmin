@@ -574,7 +574,7 @@ if (&has_command("sensors")) {
 	# and/or 'cpu fan 1', 'cpu_fan1', 'cpufan1', 'cpu_fan 2', 'cpu_fan2',
 	# 'cpufan2' etc.
         my ($cpu_fan_num, $cpu_fan_rpm) =
-		$_ =~ /(?|^\s*cpu[_ ]?fan(?:[_ ]?(\d+))?\s*:\s*(\d+)\s*rpm)/i;
+		$_ =~ /^\s*cpu[_ ]?fan(?:[_ ]?(\d+))?(?:[_ ]?(?:speed|rpm))?\s*:\s*(\d+)\s*rpm/i;
 	$cpu_fan_num //= 1 if (defined($cpu_fan_rpm));
         $cpu++ if ($cpu_volt || $cpu_fan_num);
 
@@ -785,7 +785,7 @@ if (@cpu || !@fans) {
 
 		# Fan RPM
 		if (defined $chip && $chip =~ /fan$/i &&
-		    /\b(?:cpu[_ ]?fan(?:\s*\d+)?|fan\d+)\s*:\s*(\d+)\s*rpm\b/i) {
+		    /\b(?:cpu[_ ]?fan(?:\s*\d+)?(?:\s*(?:speed|rpm))?|fan\d+)\s*:\s*(\d+)\s*rpm\b/i) {
 			my $rpm = $1 + 0;
 			$fan_rpm = $rpm if (!$fan_rpm || $rpm > $fan_rpm);
 			next;
