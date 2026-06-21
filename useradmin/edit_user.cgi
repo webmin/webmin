@@ -221,11 +221,11 @@ print &ui_table_row(&hlink($text{'pass'}, "pass"),
 				$text{'uedit_disabled'}, $disabled) : "")
 	  );
 
-# Show SSH public key field, for new users
-if ($n eq '') {
-	print &ui_table_row(&hlink($text{'sshkey'}, "sshkey"),
-		&ui_textarea("sshkey", undef, 3, 60), 3);
-	}
+# Show SSH public key field. Existing users only display the Webmin-managed
+# key, identified by our marker in authorized_keys; unrelated keys stay hidden.
+my $sshkey = $n ne '' ? &get_user_ssh_pubkey(\%uinfo) : undef;
+print &ui_table_row(&hlink($text{'sshkey'}, "sshkey"),
+	&ui_textarea("sshkey", $sshkey, 4, 60), 3);
 
 print &ui_table_end();
 
