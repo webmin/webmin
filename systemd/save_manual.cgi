@@ -14,7 +14,7 @@ error_setup($text{'manual_err'});
 # The posted path must still be in the discovered allowlist at save time.
 my $info = manual_unit_file($in{'file'});
 $info || error($text{'manual_efile'});
-systemd_can_manual(\%access, $info) ||
+systemd_can_manual($info) ||
 	systemd_acl_error($info->{'scope'} eq 'user' ?
 			  'pmanual_user' : 'pmanual');
 my ($ok, $err) = write_manual_unit_file($info, $in{'data'});

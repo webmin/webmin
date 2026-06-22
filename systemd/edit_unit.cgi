@@ -127,7 +127,7 @@ my $edit_dropin = !$in{'new'} && $in{'dropin'} ? 1 : 0;
 my $dropin_file = $edit_dropin ? clean_unit_value($in{'dropfile'}) : "";
 my $dropin_info;
 if ($in{'new'} && $create_user_scope && !$unituser) {
-	$unituser = systemd_acl_default_user(\%access) || "";
+	$unituser = systemd_acl_default_user() || "";
 	if (!$unituser) {
 		my $ruinfo = get_user_details($remote_user);
 		$unituser = $ruinfo->{'user'}
@@ -149,7 +149,7 @@ my $remote_uinfo = get_user_details($remote_user);
 # New units start with an empty record.  Existing units are looked up from the
 # selected system or user scope so edits cannot cross scopes accidentally.
 if ($in{'new'}) {
-	systemd_can_create(\%access, $create_user_scope,
+	systemd_can_create($create_user_scope,
 			   $create_user_scope ? $unituser : undef) ||
 		systemd_acl_error($create_user_scope ?
 				  'pcreate_user' : 'pcreate');
@@ -163,13 +163,13 @@ else {
 		# The owner must be a real Unix user before we inspect their units.
 		get_user_details($unituser) ||
 			error($text{'systemd_euser'});
-		systemd_can_view_scope(\%access, 1, $unituser) ||
+		systemd_can_view_scope(1, $unituser) ||
 			systemd_acl_error('pview_user');
 		@units = list_user_units($unituser);
 		}
 	else {
 		# System-scope edits use the system unit list.
-		systemd_can_view_scope(\%access, 0) ||
+		systemd_can_view_scope(0) ||
 			systemd_acl_error('pview');
 		@units = list_units();
 		}
@@ -187,8 +187,8 @@ else {
 		}
 	$unit_file_editable = unit_file_editable($u);
 	$can_save_unit = $edit_dropin ?
-		systemd_can_dropin(\%access, $edit_user_scope, $unituser) :
-		systemd_can_edit(\%access, $edit_user_scope, $unituser);
+		systemd_can_dropin($edit_user_scope, $unituser) :
+		systemd_can_edit($edit_user_scope, $unituser);
 
 	# Runtime-managed units are inspect-only, so title them as views.
 	my $title_key = $unit_file_editable && $can_save_unit ?
@@ -479,7 +479,7 @@ if ($in{'new'}) {
 			    1, undef, \@slice_row);
 
 	# Startup state is applied after the unit is created.
-	if (systemd_can_boot(\%access, $create_user_scope,
+	if (systemd_can_boot($create_user_scope,
 			     $create_user_scope ? $unituser : undef)) {
 		print ui_table_row(hlink($text{'systemd_boot'}, "systemd_boot"),
 				    ui_yesno_radio("boot", 1));
@@ -490,7 +490,7 @@ if ($in{'new'}) {
 	my $acl_default_unituser;
 	if (!$default_unituser) {
 		$acl_default_unituser =
-			systemd_acl_default_user(\%access) || "";
+			systemd_acl_default_user() || "";
 		$default_unituser = $acl_default_unituser;
 		if (!$default_unituser) {
 			$default_unituser = $remote_uinfo->{'user'}
@@ -499,7 +499,7 @@ if ($in{'new'}) {
 			}
 		}
 	my $force_user_scope_create = $create_user_scope &&
-		!systemd_can_create(\%access, 0) &&
+		!systemd_can_create(0) &&
 		(($remote_uinfo && $remote_uinfo->{'uid'} != 0) ||
 		 $acl_default_unituser) ? 1 : 0;
 	my $force_user_scope_owner = $force_user_scope_create &&
@@ -535,7 +535,7 @@ if ($in{'new'}) {
 				      ($create_user_scope ? "" :
 				       " style='display:none'") ]);
 		}
-	if (systemd_acl_bool(\%access, 'linger')) {
+	if (systemd_acl_bool('linger')) {
 		my $linger_text = $create_user_scope ?
 			$text{'systemd_linger_user'} : $text{'systemd_linger'};
 		my $linger_help = $create_user_scope ?
@@ -1010,7 +1010,7 @@ else {
 
 	# Only file-backed installable units can have their startup state changed.
 	if (boot_state_changeable($u->{'unitstate'}, $u->{'name'}) &&
-	    systemd_can_boot(\%access, $edit_user_scope, $unituser)) {
+	    systemd_can_boot($edit_user_scope, $unituser)) {
 		print ui_table_row(hlink($text{'systemd_boot'}, "systemd_boot"),
 			    ui_yesno_radio("boot", $u->{'boot'}));
 		}
@@ -1018,7 +1018,7 @@ else {
 	# User-scope edits allow linger to be managed alongside the raw unit file.
 	if ($edit_user_scope) {
 		my $linger_enabled = user_linger_enabled($unituser);
-		my $linger_field = systemd_can_linger(\%access, $unituser) ?
+		my $linger_field = systemd_can_linger($unituser) ?
 			ui_yesno_radio("linger", $linger_enabled) :
 			html_escape($linger_enabled ? $text{'yes'} : $text{'no'});
 		print ui_table_row(hlink($text{'systemd_linger_user'},
@@ -1039,13 +1039,11 @@ else {
 	my @save_buttons = $unit_file_editable && $can_save_unit ?
 		( [ undef, $text{'save'} ] ) : ( );
 	my @control_buttons;
-	my @inspect_buttons = systemd_can_inspect(
-		\%access, $edit_user_scope, $unituser) ?
+	my @inspect_buttons = systemd_can_inspect($edit_user_scope, $unituser) ?
 		( [ 'status', $text{'edit_statusnow'} ],
 		  [ 'props', $text{'edit_propsnow'} ],
 		  [ 'deps', $text{'edit_depsnow'} ] ) : ( );
-	my @log_buttons = systemd_can_logs(
-		\%access, $edit_user_scope, $unituser) ?
+	my @log_buttons = systemd_can_logs($edit_user_scope, $unituser) ?
 		( [ 'logs', $text{'edit_logsnow'} ] ) : ( );
 
 	# Running units can be stopped, but only restart units where systemd
@@ -1054,16 +1052,14 @@ else {
 	if (defined($u->{'status'}) && $u->{'status'} == 1) {
 		push(@control_buttons, [ 'restart', $text{'edit_restartnow'} ])
 			if (unit_restartable($in{'name'}) &&
-			    systemd_can_runtime(
-				\%access, 'restart', $edit_user_scope,
+			    systemd_can_runtime('restart', $edit_user_scope,
 				$unituser));
 		push(@control_buttons, [ 'stop', $text{'edit_stopnow'} ])
-			if (systemd_can_runtime(
-				\%access, 'stop', $edit_user_scope,
+			if (systemd_can_runtime('stop', $edit_user_scope,
 				$unituser));
 		}
 	elsif (unit_startable($in{'name'}) &&
-	       systemd_can_runtime(\%access, 'start',
+	       systemd_can_runtime('start',
 				   $edit_user_scope, $unituser)) {
 		push(@control_buttons, [ 'start', $text{'edit_startnow'} ]);
 		}
@@ -1075,7 +1071,7 @@ else {
 		       $text{'edit_stockunitnow'} || "Stock Unit" ]);
 		}
 	elsif ($unit_file_editable &&
-	       systemd_can_dropin(\%access, $edit_user_scope, $unituser)) {
+	       systemd_can_dropin($edit_user_scope, $unituser)) {
 		my $override_text = dropin_exists($edit_user_scope,
 			$unituser, $in{'name'}) ?
 				($text{'edit_editoverridenow'} ||
@@ -1086,13 +1082,13 @@ else {
 		}
 	my @delete_buttons;
 	if ($edit_dropin && !$dropin_file && $unit_file_editable &&
-	    systemd_can_dropin(\%access, $edit_user_scope, $unituser)) {
+	    systemd_can_dropin($edit_user_scope, $unituser)) {
 		push(@delete_buttons,
 		     [ 'delete_override',
 		       $text{'edit_deleteoverridenow'} || "Delete Override" ]);
 		}
 	elsif ($unit_file_editable && $in{'name'} ne 'webmin.service' &&
-	       systemd_can_delete(\%access, $edit_user_scope, $unituser)) {
+	       systemd_can_delete($edit_user_scope, $unituser)) {
 		push(@delete_buttons, [ 'delete', $text{'delete'} ]);
 		}
 

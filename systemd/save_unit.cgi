@@ -25,13 +25,13 @@ if ($user_scope) {
 	# User units must always be tied to a real Unix account.
 	get_user_details($unituser) ||
 		error($text{'systemd_euser'});
-	systemd_can_view_scope(\%access, 1, $unituser) ||
+	systemd_can_view_scope(1, $unituser) ||
 		systemd_acl_error('pview_user');
 	@units = list_user_units($unituser);
 	}
 else {
 	# System units are managed through the system manager.
-	systemd_can_view_scope(\%access, 0) || systemd_acl_error('pview');
+	systemd_can_view_scope(0) || systemd_acl_error('pview');
 	@units = list_units();
 	}
 
@@ -67,26 +67,26 @@ if (!$in{'new'} &&
     ($in{'start'} || $in{'stop'} || $in{'restart'} || $in{'status'} ||
     $in{'props'} || $in{'deps'} || $in{'logs'})) {
 	if ($in{'start'}) {
-		systemd_can_runtime(\%access, 'start',
+		systemd_can_runtime('start',
 				     $user_scope, $unituser) ||
 			systemd_acl_error('pstart');
 		}
 	elsif ($in{'stop'}) {
-		systemd_can_runtime(\%access, 'stop',
+		systemd_can_runtime('stop',
 				     $user_scope, $unituser) ||
 			systemd_acl_error('pstop');
 		}
 	elsif ($in{'restart'}) {
-		systemd_can_runtime(\%access, 'restart',
+		systemd_can_runtime('restart',
 				     $user_scope, $unituser) ||
 			systemd_acl_error('prestart');
 		}
 	elsif ($in{'logs'}) {
-		systemd_can_logs(\%access, $user_scope, $unituser) ||
+		systemd_can_logs($user_scope, $unituser) ||
 			systemd_acl_error('plogs');
 		}
 	else {
-		systemd_can_inspect(\%access, $user_scope, $unituser) ||
+		systemd_can_inspect($user_scope, $unituser) ||
 			systemd_acl_error('pstatus');
 		}
 	# Stream runtime actions through mass_units.cgi.
@@ -112,7 +112,7 @@ if (!$in{'new'} &&
 
 if ($in{'override'}) {
 	# Create the standard override file if needed, then open that drop-in.
-	systemd_can_dropin(\%access, $user_scope, $unituser) ||
+	systemd_can_dropin($user_scope, $unituser) ||
 		systemd_acl_error($user_scope ? 'pdropin_user' : 'pdropin');
 	unit_file_editable($u) || error($text{'systemd_ereadonly'});
 	my $base_data = $user_scope ?
@@ -166,7 +166,7 @@ if ($in{'override'}) {
 	}
 elsif ($in{'delete_override'}) {
 	# Drop-in deletes are available only from the override editor.
-	systemd_can_dropin(\%access, $user_scope, $unituser) ||
+	systemd_can_dropin($user_scope, $unituser) ||
 		systemd_acl_error($user_scope ? 'pdropin_user' : 'pdropin');
 	$edit_dropin || error($text{'systemd_edropinfile'});
 	$dropin_file && error($text{'systemd_edropinfile'});
@@ -192,7 +192,7 @@ elsif ($in{'delete_override'}) {
 	}
 elsif ($in{'delete'}) {
 	# Delete the unit after trying to stop it and remove it from startup.
-	systemd_can_delete(\%access, $user_scope, $unituser) ||
+	systemd_can_delete($user_scope, $unituser) ||
 		systemd_acl_error($user_scope ? 'pdelete_user' : 'pdelete');
 	if ($user_scope) {
 		# User-unit deletion goes through helpers that drop to the owner.
@@ -215,7 +215,7 @@ elsif ($in{'delete'}) {
 	$redirect = index_url($in{'name'}, $user_scope, $unituser);
 	}
 elsif ($in{'new'}) {
-	systemd_can_create(\%access, $user_scope, $user_scope ? $unituser : undef) ||
+	systemd_can_create($user_scope, $user_scope ? $unituser : undef) ||
 		systemd_acl_error($user_scope ? 'pcreate_user' : 'pcreate');
 	# Normalize the unit name and suffix before checking for clashes.
 	my @creatable_unit_types = get_creatable_unit_types($user_scope);
@@ -613,7 +613,7 @@ elsif ($in{'new'}) {
 	if ($user_scope) {
 		# Linger is optional on create, but enabling it also starts the manager.
 		if ($in{'linger'}) {
-			systemd_can_linger(\%access, $unituser) ||
+			systemd_can_linger($unituser) ||
 				systemd_acl_error('plinger');
 			my ($lok, $lout) = set_user_linger($unituser, 1);
 			$lok || error_user_command($unituser, $lout);
@@ -635,7 +635,7 @@ elsif ($in{'new'}) {
 
 	# Enable or disable startup after the unit has been written and reloaded.
 	if (defined($in{'boot'}) &&
-	    systemd_can_boot(\%access, $user_scope, $unituser)) {
+	    systemd_can_boot($user_scope, $unituser)) {
 		if ($user_scope) {
 			my ($ok, $out);
 
@@ -688,8 +688,8 @@ elsif ($in{'new'}) {
 else {
 	# Save the raw unit file contents from the edit form.
 	my $can_save_unit = $edit_dropin ?
-		systemd_can_dropin(\%access, $user_scope, $unituser) :
-		systemd_can_edit(\%access, $user_scope, $unituser);
+		systemd_can_dropin($user_scope, $unituser) :
+		systemd_can_edit($user_scope, $unituser);
 	$can_save_unit ||
 		systemd_acl_error($edit_dropin ?
 			($user_scope ? 'pdropin_user' : 'pdropin') :
@@ -740,7 +740,7 @@ else {
 
 		# Enabling linger happens before reload; disabling waits until after.
 		if (defined($in{'linger'})) {
-			systemd_can_linger(\%access, $unituser) ||
+			systemd_can_linger($unituser) ||
 				systemd_acl_error('plinger');
 			if ($in{'linger'}) {
 				my ($lok, $lout) =
@@ -789,7 +789,7 @@ else {
 	# Apply startup state changes after saving the config.
 	if (defined($in{'boot'}) &&
 	    boot_state_changeable($u->{'unitstate'}, $u->{'name'})) {
-		systemd_can_boot(\%access, $user_scope, $unituser) ||
+		systemd_can_boot($user_scope, $unituser) ||
 			systemd_acl_error('pboot');
 		if ($user_scope) {
 			my ($ok, $out);

@@ -11,16 +11,16 @@ our (%access, %config, %text);
 ReadParse();
 
 has_command("systemctl") || error($text{'systemd_esystemctl'});
-systemd_can_enter_module(\%access) || systemd_acl_error('penter');
+systemd_can_enter_module() || systemd_acl_error('penter');
 $config{'show_dropin_inventory'} || error($text{'dropins_disabled'});
 
-my $can_system = systemd_can_view_system(\%access);
-my $can_user = systemd_can_view_user_scope(\%access);
+my $can_system = systemd_can_view_system();
+my $can_user = systemd_can_view_user_scope();
 
 my @system_units = $can_system ? list_units() : ( );
 my %system_units = map { $_->{'name'}, $_ } @system_units;
 my @user_units = $can_user ?
-	grep { systemd_acl_user_allowed(\%access, $_->{'user'}) }
+	grep { systemd_acl_user_allowed($_->{'user'}) }
 	     list_all_user_units() : ( );
 my %user_units = map { $_->{'user'}."\t".$_->{'name'}, $_ } @user_units;
 
@@ -28,7 +28,7 @@ my @dropins;
 push(@dropins, list_system_dropin_override_files()) if ($can_system);
 if ($can_user) {
 	foreach my $dropin (list_all_user_dropin_override_files()) {
-		next if (!systemd_acl_user_allowed(\%access, $dropin->{'user'}));
+		next if (!systemd_acl_user_allowed($dropin->{'user'}));
 		push(@dropins, $dropin);
 		}
 	}
@@ -96,7 +96,7 @@ if ($dropin->{'scope'} eq 'user') {
 	return ui_tag('i', html_escape($text{'dropins_unit_missing'}))
 		if (!$user_units->{$user."\t".$unit});
 	return ui_tag('i', html_escape($text{'dropins_view_only'}))
-		if (!systemd_can_dropin(\%access, 1, $user));
+		if (!systemd_can_dropin(1, $user));
 	my $url = "edit_unit.cgi?scope=user&unituser=".urlize($user).
 		  "&name=".urlize($unit)."&dropin=1".
 		  dropin_file_arg($dropin);
@@ -106,7 +106,7 @@ my $unit = $dropin->{'unit'};
 return ui_tag('i', html_escape($text{'dropins_unit_missing'}))
 	if (!$system_units->{$unit});
 return ui_tag('i', html_escape($text{'dropins_view_only'}))
-	if (!systemd_can_dropin(\%access, 0));
+	if (!systemd_can_dropin(0));
 return ui_link("edit_unit.cgi?name=".urlize($unit)."&dropin=1".
 	       dropin_file_arg($dropin),
 	       $text{'dropins_edit'});

@@ -11,12 +11,12 @@ our (%access, %in, %text);
 ReadParse();
 error_setup($text{'manual_edit_err'});
 
-systemd_acl_bool(\%access, 'manual') ||
-	systemd_acl_bool(\%access, 'manual_user') ||
+systemd_acl_bool('manual') ||
+	systemd_acl_bool('manual_user') ||
 	systemd_acl_error('pmanual');
 
 # File choices are constrained to discovered system and local user unit files.
-my @files = grep { systemd_can_manual(\%access, $_) } list_manual_unit_files();
+my @files = grep { systemd_can_manual($_) } list_manual_unit_files();
 @files || error(manual_empty_message());
 my %allowed = map { $_->{'file'}, $_ } @files;
 my $info = $allowed{$in{'file'}} || $files[0];
@@ -61,10 +61,10 @@ return html_escape($info->{'file'});
 # Returns an empty-state message for the current manual-edit ACL scope.
 sub manual_empty_message
 {
-my $user = systemd_acl_default_user(\%access);
+my $user = systemd_acl_default_user();
 return text('manual_enone_user',
 	    ui_tag('tt', html_escape($user)))
-	if ($user && systemd_acl_bool(\%access, 'manual_user') &&
-	    !systemd_acl_bool(\%access, 'manual'));
+	if ($user && systemd_acl_bool('manual_user') &&
+	    !systemd_acl_bool('manual'));
 return $text{'manual_enone'};
 }

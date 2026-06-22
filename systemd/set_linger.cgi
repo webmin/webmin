@@ -16,7 +16,7 @@ ReadParse();
 my $user = clean_unit_value($in{'user'});
 my $enabled = $in{'enabled'};
 get_user_details($user) || error($text{'systemd_euser'});
-systemd_can_linger(\%access, $user) || systemd_acl_error('plinger');
+systemd_can_linger($user) || systemd_acl_error('plinger');
 if (!defined($enabled) || ($enabled ne '0' && $enabled ne '1')) {
 	error($text{'systemd_elinger'});
 	}

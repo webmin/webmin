@@ -10,7 +10,7 @@ our (%access, %text);
 
 ReadParse();
 error_setup($text{'reload_err'});
-systemd_can_reload(\%access) || systemd_acl_error('preload');
+systemd_can_reload() || systemd_acl_error('preload');
 
 ui_print_unbuffered_header(undef, $text{'reload_title'}, "");
 

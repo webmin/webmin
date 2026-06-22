@@ -242,6 +242,17 @@ ok(!unit_file_editable({
                             'start', 1),
        'one runtime action does not grant another');
 
+    {
+        local %access = ( view_user => 1, create_user => 1,
+                          linger => 1, mode => 1, users => 'alice' );
+        ok(systemd_acl_bool('view_user'),
+           'ACL bool defaults to the current module ACL');
+        ok(systemd_can_create(1, 'alice'),
+           'ACL helpers default to the current module ACL');
+        ok(!systemd_can_create(1, 'bob'),
+           'default ACL still applies user ownership filters');
+    }
+
     my %only_acl = ( mode => 1, users => 'alice bob' );
     ok(systemd_acl_user_allowed(\%only_acl, 'alice'),
        'user ACL only-list accepts listed owner');
@@ -2030,7 +2041,7 @@ like($index_source, qr/sub index_tabs\b/,
      'index contains tab builder helper');
 like($index_source, qr/sub index_tab_groups\b/,
      'index defines grouped tabs for related unit types');
-like($index_source, qr/next if \(!systemd_can_view_system\(\\%access\)\)/,
+like($index_source, qr/next if \(!systemd_can_view_system\(\)\)/,
      'index shows system tabs only when system scope is allowed');
 unlike($index_source, qr/next if \(!\@\$units\)/,
        'index keeps visible tabs even when they have no units');

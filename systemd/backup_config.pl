@@ -11,7 +11,7 @@ sub backup_config_files
 {
 my @rv;
 my %seen;
-return @rv if (!systemd_acl_bool(\%access, 'backup'));
+return @rv if (!systemd_acl_bool('backup'));
 my $add_file = sub {
 	my ($file) = @_;
 	push(@rv, $file) if ($file && !$seen{$file}++);
@@ -29,7 +29,7 @@ foreach my $u (list_units()) {
 
 # User units live under home directories and are safe to include by path.
 foreach my $u (list_all_user_units()) {
-	next if (!systemd_acl_user_allowed(\%access, $u->{'user'}));
+	next if (!systemd_acl_user_allowed($u->{'user'}));
 	$add_file->($u->{'file'}) if ($u->{'file'});
 	my $name = backup_unit_name($u);
 	if ($name && dropin_exists(1, $u->{'user'}, $name)) {

@@ -14,7 +14,7 @@ error_setup($text{'reload_user_err'});
 my $user = clean_unit_value($in{'user'});
 my $uinfo = $user ? get_user_details($user) : undef;
 $uinfo || error($text{'systemd_euser'});
-systemd_can_reload_user(\%access, $uinfo->{'user'}) ||
+systemd_can_reload_user($uinfo->{'user'}) ||
 	systemd_acl_error('pmanual_user');
 
 ui_print_unbuffered_header(undef, $text{'reload_user_title'}, "");

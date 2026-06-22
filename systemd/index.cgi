@@ -14,7 +14,7 @@ ReadParse();
 # The index is GET-addressable, so every value from %in below is either reduced
 # to known values or validated before use, and none is printed raw.
 has_command("systemctl") || error($text{'systemd_esystemctl'});
-systemd_can_enter_module(\%access) || systemd_acl_error('penter');
+systemd_can_enter_module() || systemd_acl_error('penter');
 
 # Print the page shell before building the tab contents.
 ui_print_header(version_title(),
@@ -25,21 +25,21 @@ print index_style();
 # Query parameters only choose the active tab and optional user context.
 my $scope = $in{'scope'} eq 'user' && tab_visible('user') ? 'user' : '';
 my $unituser = clean_unit_value($in{'unituser'});
-$unituser ||= systemd_acl_default_user(\%access) || "";
+$unituser ||= systemd_acl_default_user() || "";
 my $unituser_details = $unituser ?
 	get_user_details($unituser) : undef;
 if ($scope eq 'user') {
 	$unituser_details || error($text{'systemd_euser'});
-	systemd_can_view_user_scope(\%access, $unituser) ||
+	systemd_can_view_user_scope($unituser) ||
 		systemd_acl_error('pview_user');
 	}
 $unituser = "" if (!$unituser_details);
 
 # Load both system and user units so the visible tab set matches reality.
-my @system_units = systemd_can_view_system(\%access) ? list_units() : ( );
+my @system_units = systemd_can_view_system() ? list_units() : ( );
 my @user_units = tab_visible('user') &&
-		 systemd_can_view_user_scope(\%access) ?
-	grep { systemd_acl_user_allowed(\%access, $_->{'user'}) }
+		 systemd_can_view_user_scope() ?
+	grep { systemd_acl_user_allowed($_->{'user'}) }
 	     list_all_user_units() : ( );
 my @tabs = index_tabs(\@system_units, \@user_units, $unituser);
 
@@ -104,17 +104,17 @@ my @buttons;
 push(@buttons, [ "edit_manual.cgi",
 		 $text{'index_edit_files'},
 		 $text{'index_edit_filesdesc'} ])
-	if (systemd_acl_bool(\%access, 'manual') ||
-	    systemd_acl_bool(\%access, 'manual_user'));
+	if (systemd_acl_bool('manual') ||
+	    systemd_acl_bool('manual_user'));
 push(@buttons, [ "dropins.cgi",
 		 $text{'index_dropins'},
 		 $text{'index_dropinsdesc'} ])
 	if ($config{'show_dropin_inventory'} &&
-	    systemd_can_enter_module(\%access));
+	    systemd_can_enter_module());
 push(@buttons, [ "restart.cgi",
 		 $text{'index_reload'},
 		 $text{'index_reloaddesc'} ])
-	if (systemd_can_reload(\%access));
+	if (systemd_can_reload());
 return if (!@buttons);
 print ui_hr();
 print ui_buttons_start();
@@ -185,7 +185,7 @@ foreach my $u (@$system_units) {
 my @tabs;
 foreach my $group (index_tab_groups()) {
 	next if (!tab_visible($group->{'id'}));
-	next if (!systemd_can_view_system(\%access));
+	next if (!systemd_can_view_system());
 	my $units = $by_tab{$group->{'id'}} || [ ];
 	push(@tabs, { %$group,
 		      'title' => index_tab_title($group->{'id'}),
@@ -205,7 +205,7 @@ foreach my $u (@$user_units) {
 	}
 $user_units = \@visible_user_units;
 if (tab_visible('user') &&
-    systemd_can_view_user_scope(\%access, $unituser)) {
+    systemd_can_view_user_scope($unituser)) {
 	push(@tabs, { 'id' => 'user',
 		      'user' => 1,
 		      'unituser' => $unituser,
@@ -222,19 +222,19 @@ sub print_index_tab
 {
 my ($tab, $formno) = @_;
 my $user_tab = $tab->{'user'} ? 1 : 0;
-my $can_status = systemd_can_inspect(\%access, $user_tab, $tab->{'unituser'});
-my $can_logs = systemd_can_logs(\%access, $user_tab, $tab->{'unituser'});
-my $can_start = systemd_can_runtime(\%access, 'start',
+my $can_status = systemd_can_inspect($user_tab, $tab->{'unituser'});
+my $can_logs = systemd_can_logs($user_tab, $tab->{'unituser'});
+my $can_start = systemd_can_runtime('start',
 				    $user_tab, $tab->{'unituser'});
-my $can_stop = systemd_can_runtime(\%access, 'stop',
+my $can_stop = systemd_can_runtime('stop',
 				   $user_tab, $tab->{'unituser'});
-my $can_restart = systemd_can_runtime(\%access, 'restart',
+my $can_restart = systemd_can_runtime('restart',
 				      $user_tab, $tab->{'unituser'});
-my $can_boot = systemd_can_boot(\%access, $user_tab, $tab->{'unituser'});
+my $can_boot = systemd_can_boot($user_tab, $tab->{'unituser'});
 my $can_mask = $user_tab ? 0 :
-	       systemd_can_mask(\%access, $user_tab, $tab->{'unituser'});
+	       systemd_can_mask($user_tab, $tab->{'unituser'});
 my $can_delete = $user_tab ?
-	systemd_can_delete(\%access, $user_tab, $tab->{'unituser'}) : 0;
+	systemd_can_delete($user_tab, $tab->{'unituser'}) : 0;
 my $selectable = exists($tab->{'selectable'}) ? $tab->{'selectable'} : 1;
 $selectable &&= $can_status || $can_logs || $can_start || $can_stop ||
 	       $can_restart || $can_boot || $can_mask || $can_delete ? 1 : 0;
@@ -306,7 +306,7 @@ foreach my $u (@{$tab->{'units'}}) {
 			$linger_cache{$u->{'user'}} =
 				user_linger_enabled($u->{'user'});
 			}
-		my $linger_html = systemd_can_linger(\%access, $u->{'user'}) ?
+		my $linger_html = systemd_can_linger($u->{'user'}) ?
 			linger_toggle_link(
 				$u->{'user'}, $linger_cache{$u->{'user'}}) :
 			html_escape($linger_cache{$u->{'user'}} ?
@@ -404,7 +404,7 @@ sub index_create_link
 {
 my ($tab, $user_tab, $create_type) = @_;
 return "" if (!$create_type);
-return "" if (!systemd_can_create(\%access, $user_tab, $tab->{'unituser'}));
+return "" if (!systemd_can_create($user_tab, $tab->{'unituser'}));
 my $create_url = $user_tab && $tab->{'unituser'} ?
 	"edit_unit.cgi?new=1&scope=user&unittype=service&unituser=".
 	urlize($tab->{'unituser'}) :

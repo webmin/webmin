@@ -29,7 +29,7 @@ if ($in{'return'}) {
 # Convert raw checkbox values into validated action records.
 my @units = mass_units(\@sel, $user_scope, $users_scope, $unituser);
 foreach my $u (@units) {
-	systemd_can_view_scope(\%access, $u->{'user_scope'}, $u->{'user'}) ||
+	systemd_can_view_scope($u->{'user_scope'}, $u->{'user'}) ||
 		systemd_acl_error($u->{'user_scope'} ? 'pview_user' : 'pview');
 	}
 
@@ -68,7 +68,7 @@ ui_print_unbuffered_header(undef, $logs ? $text{'systemd_logs'} :
 if ($status) {
 	# Show full systemd status output for selected units.
 	foreach my $u (@units) {
-		systemd_can_inspect(\%access, $u->{'user_scope'}, $u->{'user'}) ||
+		systemd_can_inspect($u->{'user_scope'}, $u->{'user'}) ||
 			systemd_acl_error('pstatus');
 		my $s = $u->{'name'};
 
@@ -88,7 +88,7 @@ if ($status) {
 if ($props) {
 	# Show the exact property set systemd reports for selected units.
 	foreach my $u (@units) {
-		systemd_can_inspect(\%access, $u->{'user_scope'}, $u->{'user'}) ||
+		systemd_can_inspect($u->{'user_scope'}, $u->{'user'}) ||
 			systemd_acl_error('pstatus');
 		my $s = $u->{'name'};
 
@@ -108,7 +108,7 @@ if ($props) {
 if ($deps) {
 	# Show the dependency tree for selected units.
 	foreach my $u (@units) {
-		systemd_can_inspect(\%access, $u->{'user_scope'}, $u->{'user'}) ||
+		systemd_can_inspect($u->{'user_scope'}, $u->{'user'}) ||
 			systemd_acl_error('pstatus');
 		my $s = $u->{'name'};
 
@@ -128,7 +128,7 @@ if ($deps) {
 if ($logs) {
 	# Show recent journal output for selected units.
 	foreach my $u (@units) {
-		systemd_can_logs(\%access, $u->{'user_scope'}, $u->{'user'}) ||
+		systemd_can_logs($u->{'user_scope'}, $u->{'user'}) ||
 			systemd_acl_error('plogs');
 		my $s = $u->{'name'};
 
@@ -149,7 +149,7 @@ if ($stop || $restart) {
 	# Webmin itself cannot be stopped here, but it can be restarted specially.
 	$SIG{'TERM'} = 'ignore';	# Restarting webmin may kill this script
 	foreach my $u (@units) {
-		systemd_can_runtime(\%access, $stop ? 'stop' : 'restart',
+		systemd_can_runtime($stop ? 'stop' : 'restart',
 				     $u->{'user_scope'}, $u->{'user'}) ||
 			systemd_acl_error($stop ? 'pstop' : 'prestart');
 		my $s = $u->{'name'};
@@ -202,7 +202,7 @@ if ($stop || $restart) {
 if ($enable || $disable) {
 	# Enable or disable startup for each selected unit.
 	foreach my $u (@units) {
-		systemd_can_boot(\%access, $u->{'user_scope'}, $u->{'user'}) ||
+		systemd_can_boot($u->{'user_scope'}, $u->{'user'}) ||
 			systemd_acl_error('pboot');
 		my $b = $u->{'name'};
 		my ($ok, $out) = (1, undef);
@@ -242,7 +242,7 @@ if ($enable || $disable) {
 if ($mask || $unmask) {
 	# Masking prevents activation; unmasking restores normal start behavior.
 	foreach my $u (@units) {
-		systemd_can_mask(\%access, $u->{'user_scope'}, $u->{'user'}) ||
+		systemd_can_mask($u->{'user_scope'}, $u->{'user'}) ||
 			systemd_acl_error('pmask');
 		my $b = $u->{'name'};
 		my ($ok, $out);
@@ -275,7 +275,7 @@ if ($delete) {
 	# deletion stays on the per-unit edit page where the risk is clearer.
 	foreach my $u (@units) {
 		$u->{'user_scope'} || error($text{'mass_edelete_user'});
-		systemd_can_delete(\%access, 1, $u->{'user'}) ||
+		systemd_can_delete(1, $u->{'user'}) ||
 			systemd_acl_error('pdelete_user');
 		my $s = $u->{'name'};
 		print_action_start(text('mass_udeleting',
@@ -292,7 +292,7 @@ if ($delete) {
 if ($start) {
 	# Start last, so "enable and start" first creates the wanted symlink.
 	foreach my $u (@units) {
-		systemd_can_runtime(\%access, 'start',
+		systemd_can_runtime('start',
 				     $u->{'user_scope'}, $u->{'user'}) ||
 			systemd_acl_error('pstart');
 		my $s = $u->{'name'};

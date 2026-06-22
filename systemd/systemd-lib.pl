@@ -82,15 +82,27 @@ $acl{'uidmax'} = "";
 return %acl;
 }
 
-=head2 systemd_acl_bool(&acl, key)
+=head2 systemd_acl_args([&acl], args...)
+
+Returns an ACL hash ref and the remaining arguments, defaulting to the current
+module C<%access> hash when no explicit ACL is passed.
+
+=cut
+sub systemd_acl_args
+{
+my @args = @_;
+my $acl = @args && ref($args[0]) eq 'HASH' ? shift(@args) : \%access;
+return ($acl, @args);
+}
+
+=head2 systemd_acl_bool([&acl], key)
 
 Returns a boolean ACL value.
 
 =cut
 sub systemd_acl_bool
 {
-my ($acl, $key) = @_;
-$acl ||= \%access;
+my ($acl, $key) = systemd_acl_args(@_);
 return $acl->{$key} ? 1 : 0 if (exists($acl->{$key}));
 return 0;
 }
@@ -110,21 +122,21 @@ my $msg = $text{'eacl_'.$reason} || $text{'eacl_penter'} ||
 error($prefix." ".$msg);
 }
 
-=head2 systemd_acl_any(&acl, keys...)
+=head2 systemd_acl_any([&acl], keys...)
 
 Returns 1 if any named ACL key is allowed.
 
 =cut
 sub systemd_acl_any
 {
-my ($acl, @keys) = @_;
+my ($acl, @keys) = systemd_acl_args(@_);
 foreach my $key (@keys) {
 	return 1 if (systemd_acl_bool($acl, $key));
 	}
 return 0;
 }
 
-=head2 systemd_acl_user_allowed(&acl, user)
+=head2 systemd_acl_user_allowed([&acl], user)
 
 Returns 1 if the ACL's Unix-user filter permits access to a systemd user
 manager owned by C<user>.  The filter intentionally mirrors Cron's mode/users
@@ -133,8 +145,7 @@ ACL model so Virtualmin templates can grant per-owner access predictably.
 =cut
 sub systemd_acl_user_allowed
 {
-my ($acl, $user) = @_;
-$acl ||= \%access;
+my ($acl, $user) = systemd_acl_args(@_);
 return 0 if (!$user);
 my $mode = defined($acl->{'mode'}) ? $acl->{'mode'} : 0;
 $mode = 0 if ($mode !~ /^[0-5]$/);
@@ -164,7 +175,7 @@ elsif ($mode == 5) {
 return 1;
 }
 
-=head2 systemd_acl_default_user(&acl)
+=head2 systemd_acl_default_user([&acl])
 
 Returns a safe default Unix owner for user-unit views when the ACL narrows the
 user set to exactly one account, or to the current Webmin user.
@@ -172,8 +183,7 @@ user set to exactly one account, or to the current Webmin user.
 =cut
 sub systemd_acl_default_user
 {
-my ($acl) = @_;
-$acl ||= \%access;
+my ($acl) = systemd_acl_args(@_);
 my $mode = defined($acl->{'mode'}) ? $acl->{'mode'} : 0;
 $mode = 0 if ($mode !~ /^[0-5]$/);
 if ($mode == 1) {
@@ -191,19 +201,19 @@ elsif ($mode == 3) {
 return;
 }
 
-=head2 systemd_can_view_system(&acl)
+=head2 systemd_can_view_system([&acl])
 
 Returns 1 if the ACL allows seeing or acting on system-scope units.
 
 =cut
 sub systemd_can_view_system
 {
-my ($acl) = @_;
+my ($acl) = systemd_acl_args(@_);
 return systemd_acl_any($acl, qw(view status logs start stop restart boot mask
 				create edit delete dropin manual reload));
 }
 
-=head2 systemd_can_view_user_scope(&acl, [user])
+=head2 systemd_can_view_user_scope([&acl], [user])
 
 Returns 1 if the ACL allows seeing or acting on user-scope units, optionally
 constrained to a specific Unix owner.
@@ -211,7 +221,7 @@ constrained to a specific Unix owner.
 =cut
 sub systemd_can_view_user_scope
 {
-my ($acl, $user) = @_;
+my ($acl, $user) = systemd_acl_args(@_);
 return 0 if (defined($user) && $user ne "" &&
 	     !systemd_acl_user_allowed($acl, $user));
 return systemd_acl_bool($acl, 'view_user') ||
@@ -221,56 +231,56 @@ return systemd_acl_bool($acl, 'view_user') ||
 				linger));
 }
 
-=head2 systemd_can_enter_module(&acl)
+=head2 systemd_can_enter_module([&acl])
 
 Returns 1 if the ACL allows any interactive access to this module.
 
 =cut
 sub systemd_can_enter_module
 {
-my ($acl) = @_;
+my ($acl) = systemd_acl_args(@_);
 return systemd_can_view_system($acl) || systemd_can_view_user_scope($acl);
 }
 
-=head2 systemd_can_view_scope(&acl, user-scope, [user])
+=head2 systemd_can_view_scope([&acl], user-scope, [user])
 
 Returns 1 if the ACL allows seeing or acting on the selected unit scope.
 
 =cut
 sub systemd_can_view_scope
 {
-my ($acl, $user_scope, $user) = @_;
+my ($acl, $user_scope, $user) = systemd_acl_args(@_);
 return $user_scope ? systemd_can_view_user_scope($acl, $user) :
 		     systemd_can_view_system($acl);
 }
 
-=head2 systemd_can_inspect(&acl, user-scope, [user])
+=head2 systemd_can_inspect([&acl], user-scope, [user])
 
 Returns 1 if status, properties or dependency inspection is allowed.
 
 =cut
 sub systemd_can_inspect
 {
-my ($acl, $user_scope, $user) = @_;
+my ($acl, $user_scope, $user) = systemd_acl_args(@_);
 my $key = $user_scope ? 'status_user' : 'status';
 return systemd_acl_bool($acl, $key) &&
        systemd_can_view_scope($acl, $user_scope, $user) ? 1 : 0;
 }
 
-=head2 systemd_can_logs(&acl, user-scope, [user])
+=head2 systemd_can_logs([&acl], user-scope, [user])
 
 Returns 1 if journal log inspection is allowed.
 
 =cut
 sub systemd_can_logs
 {
-my ($acl, $user_scope, $user) = @_;
+my ($acl, $user_scope, $user) = systemd_acl_args(@_);
 my $key = $user_scope ? 'logs_user' : 'logs';
 return systemd_acl_bool($acl, $key) &&
        systemd_can_view_scope($acl, $user_scope, $user) ? 1 : 0;
 }
 
-=head2 systemd_can_runtime(&acl, action, user-scope, [user])
+=head2 systemd_can_runtime([&acl], action, user-scope, [user])
 
 Returns 1 if a runtime action such as C<start>, C<stop> or C<restart> is
 allowed for the selected scope.
@@ -278,92 +288,92 @@ allowed for the selected scope.
 =cut
 sub systemd_can_runtime
 {
-my ($acl, $action, $user_scope, $user) = @_;
+my ($acl, $action, $user_scope, $user) = systemd_acl_args(@_);
 return 0 if ($action !~ /^(start|stop|restart)$/);
 my $key = $user_scope ? $action.'_user' : $action;
 return systemd_acl_bool($acl, $key) &&
        systemd_can_view_scope($acl, $user_scope, $user) ? 1 : 0;
 }
 
-=head2 systemd_can_boot(&acl, user-scope, [user])
+=head2 systemd_can_boot([&acl], user-scope, [user])
 
 Returns 1 if enabling, disabling, masking or unmasking units is allowed.
 
 =cut
 sub systemd_can_boot
 {
-my ($acl, $user_scope, $user) = @_;
+my ($acl, $user_scope, $user) = systemd_acl_args(@_);
 my $key = $user_scope ? 'boot_user' : 'boot';
 return systemd_acl_bool($acl, $key) &&
        systemd_can_view_scope($acl, $user_scope, $user) ? 1 : 0;
 }
 
-=head2 systemd_can_mask(&acl, user-scope, [user])
+=head2 systemd_can_mask([&acl], user-scope, [user])
 
 Returns 1 if masking or unmasking units is allowed.
 
 =cut
 sub systemd_can_mask
 {
-my ($acl, $user_scope, $user) = @_;
+my ($acl, $user_scope, $user) = systemd_acl_args(@_);
 my $key = $user_scope ? 'mask_user' : 'mask';
 return systemd_acl_bool($acl, $key) &&
        systemd_can_view_scope($acl, $user_scope, $user) ? 1 : 0;
 }
 
-=head2 systemd_can_create(&acl, user-scope, [user])
+=head2 systemd_can_create([&acl], user-scope, [user])
 
 Returns 1 if creating units in the selected scope is allowed.
 
 =cut
 sub systemd_can_create
 {
-my ($acl, $user_scope, $user) = @_;
+my ($acl, $user_scope, $user) = systemd_acl_args(@_);
 my $key = $user_scope ? 'create_user' : 'create';
 return systemd_acl_bool($acl, $key) &&
        systemd_can_view_scope($acl, $user_scope, $user) ? 1 : 0;
 }
 
-=head2 systemd_can_edit(&acl, user-scope, [user])
+=head2 systemd_can_edit([&acl], user-scope, [user])
 
 Returns 1 if editing a full unit file in the selected scope is allowed.
 
 =cut
 sub systemd_can_edit
 {
-my ($acl, $user_scope, $user) = @_;
+my ($acl, $user_scope, $user) = systemd_acl_args(@_);
 my $key = $user_scope ? 'edit_user' : 'edit';
 return systemd_acl_bool($acl, $key) &&
        systemd_can_view_scope($acl, $user_scope, $user) ? 1 : 0;
 }
 
-=head2 systemd_can_delete(&acl, user-scope, [user])
+=head2 systemd_can_delete([&acl], user-scope, [user])
 
 Returns 1 if deleting units in the selected scope is allowed.
 
 =cut
 sub systemd_can_delete
 {
-my ($acl, $user_scope, $user) = @_;
+my ($acl, $user_scope, $user) = systemd_acl_args(@_);
 my $key = $user_scope ? 'delete_user' : 'delete';
 return systemd_acl_bool($acl, $key) &&
        systemd_can_view_scope($acl, $user_scope, $user) ? 1 : 0;
 }
 
-=head2 systemd_can_dropin(&acl, user-scope, [user])
+=head2 systemd_can_dropin([&acl], user-scope, [user])
 
 Returns 1 if managing drop-in overrides in the selected scope is allowed.
 
 =cut
 sub systemd_can_dropin
 {
-my ($acl, $user_scope, $user) = @_;
+my ($acl, $user_scope, $user) = systemd_acl_args(@_);
 my $key = $user_scope ? 'dropin_user' : 'dropin';
 return systemd_acl_bool($acl, $key) &&
        systemd_can_view_scope($acl, $user_scope, $user) ? 1 : 0;
 }
 
-=head2 systemd_can_manual(&acl, file-info)
+=head2 systemd_can_manual([&acl], file-info)
 
 Returns 1 if the ACL permits manual editing for a file descriptor returned by
 C<list_manual_unit_files>.
@@ -371,7 +381,7 @@ C<list_manual_unit_files>.
 =cut
 sub systemd_can_manual
 {
-my ($acl, $info) = @_;
+my ($acl, $info) = @_ == 1 ? (\%access, $_[0]) : @_;
 return 0 if (!$info || !$info->{'scope'});
 if ($info->{'scope'} eq 'user') {
 	return systemd_acl_bool($acl, 'manual_user') &&
@@ -380,37 +390,37 @@ if ($info->{'scope'} eq 'user') {
 return systemd_acl_bool($acl, 'manual') ? 1 : 0;
 }
 
-=head2 systemd_can_linger(&acl, user)
+=head2 systemd_can_linger([&acl], user)
 
 Returns 1 if managing linger for a Unix user is allowed.
 
 =cut
 sub systemd_can_linger
 {
-my ($acl, $user) = @_;
+my ($acl, $user) = systemd_acl_args(@_);
 return systemd_acl_bool($acl, 'linger') &&
        systemd_acl_user_allowed($acl, $user) ? 1 : 0;
 }
 
-=head2 systemd_can_reload(&acl)
+=head2 systemd_can_reload([&acl])
 
 Returns 1 if reloading the system manager is allowed.
 
 =cut
 sub systemd_can_reload
 {
-my ($acl) = @_;
+my ($acl) = systemd_acl_args(@_);
 return systemd_acl_bool($acl, 'reload');
 }
 
-=head2 systemd_can_reload_user(&acl, user)
+=head2 systemd_can_reload_user([&acl], user)
 
 Returns 1 if reloading a user's systemd manager is allowed.
 
 =cut
 sub systemd_can_reload_user
 {
-my ($acl, $user) = @_;
+my ($acl, $user) = systemd_acl_args(@_);
 return 0 if (!systemd_can_view_user_scope($acl, $user));
 return systemd_acl_any($acl, qw(create_user edit_user delete_user
 				dropin_user manual_user boot_user
@@ -3161,7 +3171,7 @@ sub action_reload_user
 my ($user) = @_;
 $user ||= defined($in{'unituser'}) ? clean_unit_value($in{'unituser'}) : "";
 $user ||= defined($in{'user'}) ? clean_unit_value($in{'user'}) : "";
-$user ||= systemd_acl_default_user(\%access) || "";
+$user ||= systemd_acl_default_user() || "";
 my $uinfo = $user ? get_user_details($user) : undef;
 return $uinfo ? $uinfo->{'user'} : undef;
 }
@@ -3177,13 +3187,13 @@ my ($user) = @_;
 my @links;
 push(@links, ui_link("restart.cgi",
 		     ui_tag('b', html_escape($text{'index_reload'}))))
-	if (needs_daemon_reload() && systemd_can_reload(\%access));
+	if (needs_daemon_reload() && systemd_can_reload());
 my $reload_user = action_reload_user($user);
 push(@links, ui_link("restart_user.cgi?user=".urlize($reload_user),
 		     ui_tag('b', html_escape($text{'index_reload_user'}))))
 	if ($reload_user &&
 	    needs_user_daemon_reload($reload_user) &&
-	    systemd_can_reload_user(\%access, $reload_user));
+	    systemd_can_reload_user($reload_user));
 return join(" &nbsp; ", @links);
 }
 
