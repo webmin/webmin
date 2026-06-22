@@ -197,13 +197,18 @@ if ($header->{'content-type'} &&
 	# (as themes do for AJAX page loads), because a websocket connection
 	# cannot be tunnelled through link.cgi itself.
 	my $dolinks = !$header->{'x-no-links'};
+	my %websocket_links;
 	&cleanup_link_websockets();
 	while($_ = &read_http_connection($con)) {
 		# Websocket URLs can appear in JavaScript strings or JSON values,
 		# where slashes are escaped. Ordinary HTML rewrites remain gated
 		# below by x-no-links, but websocket URLs always need local routes.
-		s#(['"])(wss?://[^'"]+)#"$1".&register_link_websocket($2, $s, $auth)#egi;
-		s#(['"])(wss?:\\/\\/[^'"]+)#"$1".&register_link_websocket($2, $s, $auth)#egi;
+		s#(['"])(wss?://[^'"]+)#
+			"$1".&register_link_websocket(
+				$2, $s, $auth, \%websocket_links)#egi;
+		s#(['"])(wss?:\\/\\/[^'"]+)#
+			"$1".&register_link_websocket(
+				$2, $s, $auth, \%websocket_links)#egi;
 		if ($dolinks) {
 			s/src='(\/[^']*)'/src='$url$1'/gi;
 			s/src="(\/[^"]*)"/src="$url$1"/gi;
@@ -253,7 +258,7 @@ else {
 # the linked Webmin server, and returns the local URL for the browser to use.
 sub register_link_websocket
 {
-my ($wsurl, $s, $auth) = @_;
+my ($wsurl, $s, $auth, $cache) = @_;
 # JSON script responses can encode wss:// as wss:\/\/. Normalize before
 # matching, and restore the escaping style for the returned URL below.
 my $escaped_slashes = $wsurl =~ /\\\//;
@@ -277,17 +282,28 @@ my $from_link_path = $remote_path =~ s/^\Q$link_prefix\E//;
 # before registering the backend path.
 return $wsurl if (!$from_link_path &&
 		  !grep { lc($_) eq $url_host_cmp } @valid_hosts);
+return $wsurl if (!$from_link_path && defined($url_port) &&
+		  $url_port != $port);
 my ($remote_port) = $remote_path =~ /\/ws-(\d+)(?:\?|$)/;
 return $wsurl if (!$remote_port);
+# Reuse the same local URL when a response repeats the same backend websocket.
+# Otherwise the later rewrite would replace the config token for the earlier URL.
+my $cache_key = join("\0", $s->{'id'}, $remote_path);
+if ($cache && $cache->{$cache_key}) {
+	my $rv = $cache->{$cache_key};
+	$rv =~ s#/#\\/#g if ($escaped_slashes);
+	return $rv;
+	}
 
 my $token = &generate_miniserv_websocket_token();
-my $wspath = "/$module_name/ws-link-$s->{'id'}-$remote_port";
+my $wspath = "/$module_name/ws-link-$s->{'id'}-$remote_port-$token";
 my $now = time();
 my $backend_host = $s->{'ip'} || $host;
 my $defport = $ssl ? 443 : 80;
-my $hostheader = $url_host;
-$hostheader .= ":".(defined($url_port) ? $url_port : $port)
-	if ((defined($url_port) ? $url_port : $port) != $defport);
+# If the URL was already routed through this parent link.cgi, its host is the
+# parent server. Backend Host, Origin and TLS checks must use the child server.
+my $hostheader = $from_link_path ? $host : $url_host;
+$hostheader .= ":".$port if ($port != $defport);
 my $origin = ($ssl ? "https" : "http")."://".$hostheader;
 my $checkssl = $s->{'checkssl'} ? 1 : 0;
 my %miniserv;
@@ -306,6 +322,7 @@ $miniserv{"websockets_$wspath"} =
 # config cache and return a stale token for the same ws-link path.
 my $rv = &get_miniserv_websocket_url(
 	undef, undef, $module_name, $wspath, $token);
+$cache->{$cache_key} = $rv if ($cache);
 $rv =~ s#/#\\/#g if ($escaped_slashes);
 return $rv;
 }
