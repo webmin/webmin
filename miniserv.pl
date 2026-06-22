@@ -5122,15 +5122,23 @@ while(1) {
 		# the non-blocking flock just narrows races between lock claimers.
 		unlink($lockfile);
 		if (open(my $locking, ">", $lockfile)) {
-			my $locked = eval { flock($locking, 2+4) };
-			my $ok;
-			if ($locked) {
-				$ok = print $locking $$,"\n";
+			if (!flock($locking, 2+4)) {
+				$last_lock_err = "Flock failed : ".$!;
+				close($locking);
+				unlink($lockfile);
 				}
-			my $closed = close($locking);
-			return 1 if ($locked && $ok && $closed);
-			unlink($lockfile);
-			$last_lock_err = "Lock failed : ".($@ || $!);
+			elsif (!print $locking $$,"\n") {
+				$last_lock_err = "Lock write failed : ".$!;
+				close($locking);
+				unlink($lockfile);
+				}
+			elsif (!close($locking)) {
+				$last_lock_err = "Lock close failed : ".$!;
+				unlink($lockfile);
+				}
+			else {
+				return 1;
+				}
 			}
 		else {
 			$last_lock_err = "Lock open failed : ".$!;
