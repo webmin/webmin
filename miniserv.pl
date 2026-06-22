@@ -5097,6 +5097,63 @@ close(CONF);
 return %rv;
 }
 
+# lock_config_file(file)
+# Lock a config file using Webmin's .lock sidecar convention. miniserv.pl must
+# stay standalone, but link.cgi also edits miniserv.conf through this lock.
+sub lock_config_file
+{
+my ($file) = @_;
+if ($file =~ /\r|\n|\0/) {
+	die "Lock filename contains invalid characters";
+	}
+my $lockfile = $file.".lock";
+my $tries = 0;
+my $last_lock_err;
+while(1) {
+	my $pid;
+	# Webmin's lock file contains the owner PID. A dead owner means the lock
+	# can be safely reclaimed.
+	if (open(my $locking, "<", $lockfile)) {
+		$pid = int(<$locking>);
+		close($locking);
+		}
+	if (!$pid || !kill(0, $pid) || $pid == $$) {
+		# The sidecar lock is the shared convention with web-lib-funcs.pl;
+		# the non-blocking flock just narrows races between lock claimers.
+		unlink($lockfile);
+		if (open(my $locking, ">", $lockfile)) {
+			my $locked = eval { flock($locking, 2+4) };
+			my $ok;
+			if ($locked) {
+				$ok = print $locking $$,"\n";
+				}
+			my $closed = close($locking);
+			return 1 if ($locked && $ok && $closed);
+			unlink($lockfile);
+			$last_lock_err = "Lock failed : ".($@ || $!);
+			}
+		else {
+			$last_lock_err = "Lock open failed : ".$!;
+			}
+		}
+	elsif ($pid) {
+		$last_lock_err = "Locked by PID $pid";
+		}
+	sleep(1);
+	if ($tries++ > 5*60) {
+		die "Failed to lock config file $file : $last_lock_err";
+		}
+	}
+}
+
+# unlock_config_file(file)
+# Release a config lock taken by lock_config_file.
+sub unlock_config_file
+{
+my ($file) = @_;
+unlink($file.".lock");
+}
+
 # read_any_file(file)
 # Reads any given file and returns its content
 sub read_any_file
@@ -6359,17 +6416,21 @@ close(SOCK);
 if ($ws->{'path'} =~ /\/ws-link-/) {
 	# Linked-server websocket routes are single-use routes registered by
 	# link.cgi, so remove them and refresh the master when the tunnel ends.
-	open(my $config_lock, "<", $config_file) ||
-		die "Failed to open config file $config_file : $!";
-	flock($config_lock, 2);
-	my %miniserv = &read_config_file($config_file);
+	&lock_config_file($config_file);
 	my $deleted;
-	if (delete($miniserv{"websockets_$ws->{'path'}"})) {
-		&write_file($config_file, \%miniserv);
-		$deleted = 1;
-		}
-	flock($config_lock, 8);
-	close($config_lock);
+	# Always release the config lock, even if the read/write path fails.
+	my $cleanup_ok = eval {
+		my %miniserv = &read_config_file($config_file);
+		if (delete($miniserv{"websockets_$ws->{'path'}"})) {
+			&write_file($config_file, \%miniserv);
+			$deleted = 1;
+			}
+		1;
+		};
+	my $cleanup_err = $@;
+	&unlock_config_file($config_file);
+	die $cleanup_err if (!$cleanup_ok);
+	# The master keeps websocket routes parsed in memory.
 	kill('USR1', $miniserv_main_pid || getppid()) if ($deleted);
 	}
 print DEBUG "done websockets loop\n";

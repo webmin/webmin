@@ -1245,6 +1245,30 @@ EOF
 	ok(!exists $got{'# this is a comment'}, 'comment lines skipped');
 };
 
+# lock_config_file — matches Webmin's .lock convention without loading web-lib
+subtest 'lock_config_file' => sub {
+	require File::Temp;
+	my ($fh, $path) = File::Temp::tempfile(UNLINK => 1);
+	close($fh);
+
+	ok(miniserv::lock_config_file($path), 'lock succeeds');
+	ok(-e "$path.lock", 'sidecar lock file created');
+
+	open(my $locking, '<', "$path.lock") or die "open lock: $!";
+	chomp(my $pid = <$locking>);
+	close($locking);
+	is($pid, $$, 'lock records the current PID');
+
+	miniserv::unlock_config_file($path);
+	ok(!-e "$path.lock", 'unlock removes sidecar lock file');
+
+	open($locking, '>', "$path.lock") or die "create stale lock: $!";
+	print $locking "999999999\n";
+	close($locking);
+	ok(miniserv::lock_config_file($path), 'stale lock is reclaimed');
+	miniserv::unlock_config_file($path);
+};
+
 # read_any_file — basic file reader; returns undef on open failure
 subtest 'read_any_file' => sub {
 	require File::Temp;
