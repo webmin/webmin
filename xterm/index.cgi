@@ -8,7 +8,7 @@ our $unsafe_index_cgi = 1;
 require './xterm-lib.pl';    ## no critic
 our (%in, %text, %config, %gconfig, %access, %module_info,
      $module_name, $module_config_directory, $module_var_directory,
-     $remote_user);
+     $remote_user, $session_id);
 ReadParse();
 
 # Check for needed modules
@@ -179,12 +179,18 @@ ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0, undef,
 # Print main container
 print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\"></div>\n";
 
-# Get a free port that can be used for the socket. Proxied or Basic-auth
-# requests may not have a Webmin session cookie, so give the backend its own
-# one-time handshake secret.
-my $websocket_session_id = $main::session_id || generate_miniserv_websocket_token();
+# Get a free port that can be used for the socket. Normal browser sessions
+# are revalidated by miniserv while the websocket stays open. Proxied or
+# Basic-auth requests may not have a session cookie, so only those routes get
+# a one-time backend handshake secret.
+my $websocket_session_id = $session_id;
+my $backend_session;
+if (!$websocket_session_id) {
+	$websocket_session_id = generate_miniserv_websocket_token();
+	$backend_session = $websocket_session_id;
+	}
 my $port = allocate_miniserv_websocket(
-	$module_name, undef, $websocket_session_id);
+	$module_name, undef, $backend_session);
 
 # Decide which Unix account the terminal will run as
 my $user = resolve_shell_user(\%access, $remote_user, \%in, \%config);
@@ -199,8 +205,9 @@ my $shellserver_cmd = "$module_config_directory/shellserver.pl";
 if (!-r $shellserver_cmd) {
 	create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
 	}
-# shellserver.pl validates the websocket key against SESSION_ID; keep it in
-# sync with the backend_session stored in miniserv.conf above.
+# shellserver.pl validates the backend websocket key against SESSION_ID. For
+# normal sessions miniserv forwards the browser session; no-cookie routes use
+# the one-time backend_session stored in miniserv.conf above.
 $ENV{'SESSION_ID'} = $websocket_session_id;
 system_logged($shellserver_cmd." ".quotemeta($port)." ".quotemeta($user).
 	       ($dir ? " ".quotemeta($dir) : "").
