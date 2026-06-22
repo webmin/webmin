@@ -4,6 +4,7 @@
 use strict;
 use warnings;
 no warnings 'uninitialized';
+no warnings 'once';
 use lib ("$ENV{'PERLLIB'}/vendor_perl");
 use Net::WebSocket::Server;
 use IO::Socket::INET;
