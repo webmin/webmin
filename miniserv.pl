@@ -6258,6 +6258,13 @@ my $backend_readline = sub {
 	return $line;
 	};
 
+# OpenSSL can keep decrypted bytes in its own buffer after the socket fd stops
+# being readable, so the forwarding loop must check this before select().
+my $backend_pending = sub {
+	return $backend_ssl && defined(&Net::SSLeay::pending) &&
+	       Net::SSLeay::pending($backend_ssl) > 0;
+	};
+
 # Prepare successful connection headers, but don't send them to the browser
 # until the backend websocket handshake has succeeded.
 eval "use Digest::SHA";
@@ -6384,20 +6391,32 @@ my $last_session_check_time = time();
 # by the periodic session check.
 my $verify_session = defined($session_id) && $session_id ne "";
 while(1) {
-	my $rmask = undef;
-	vec($rmask, fileno($fh), 1) = 1;
-	vec($rmask, fileno(SOCK), 1) = 1;
-	my $sel = select($rmask, undef, undef, 10);
 	my ($buf, $ok);
 	my $uptime = 0;
-	if (vec($rmask, fileno($fh), 1)) {
+	my ($backend_ready, $browser_ready);
+	if (&$backend_pending()) {
+		$backend_ready = 1;
+		my $bm = undef;
+		vec($bm, fileno(SOCK), 1) = 1;
+		select($bm, undef, undef, 0);
+		$browser_ready = vec($bm, fileno(SOCK), 1);
+		}
+	else {
+		my $rmask = undef;
+		vec($rmask, fileno($fh), 1) = 1;
+		vec($rmask, fileno(SOCK), 1) = 1;
+		my $sel = select($rmask, undef, undef, 10);
+		$backend_ready = vec($rmask, fileno($fh), 1);
+		$browser_ready = vec($rmask, fileno(SOCK), 1);
+		}
+	if ($backend_ready) {
 		# Got something from the websockets backend
 		$buf = $backend_read->(1024);
 		last if (!defined($buf) || length($buf) == 0);
 		&write_data($buf);
 		$uptime = 1;
 		}
-	if (vec($rmask, fileno(SOCK), 1)) {
+	if ($browser_ready) {
 		# Got something from the browser
 		$buf = &read_data(1024);
 		last if (!defined($buf) || length($buf) == 0);
