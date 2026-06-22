@@ -14331,8 +14331,10 @@ my $opt_backend = "";
 # cookie. Store the one-time backend session key that the child server expects.
 $opt_backend = " backend_session=$backend_session"
 	if (defined($backend_session) && $backend_session =~ /^\S+$/);
+my $opt_basic = "";
+$opt_basic = " allow_basic_ws=1" if ($opt_backend);
 $miniserv{"websockets_$wspath"} = "host=127.0.0.1 port=$port wspath=/ ".
-	  "user=$remote_user$opt_buser$opt_backend token=$token time=$now";
+	  "user=$remote_user$opt_buser$opt_backend$opt_basic token=$token time=$now";
 &put_miniserv_config(\%miniserv);
 &unlock_file(&get_miniserv_config_file());
 &reload_miniserv();

@@ -1311,7 +1311,7 @@ EOF
 subtest 'parse_websockets_config' => sub {
 	no warnings 'once';
 	local %miniserv::config = (
-		'websockets_/chat' => 'host=back.example.com port=9000 proto=ws ssl=1 checkssl=1 backend_session=abc123',
+		'websockets_/chat' => 'host=back.example.com port=9000 proto=ws ssl=1 checkssl=1 backend_session=abc123 allow_basic_ws=1',
 		'unrelated_key'    => 'ignored',
 		);
 	local @miniserv::websocket_paths = ();
@@ -1326,6 +1326,7 @@ subtest 'parse_websockets_config' => sub {
 	is($ws->{ssl},   '1',                 'ssl kv parsed');
 	is($ws->{checkssl}, '1',              'SSL check kv parsed');
 	is($ws->{backend_session}, 'abc123',  'backend session kv parsed');
+	is($ws->{allow_basic_ws}, '1',        'Basic auth websocket flag parsed');
 };
 
 # find_websocket_config

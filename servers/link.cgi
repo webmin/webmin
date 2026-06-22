@@ -312,7 +312,7 @@ my %miniserv;
 $miniserv{"websockets_$wspath"} =
 	"host=$backend_host port=$port ssl=$ssl wspath=$remote_path ".
 	"hostheader=$hostheader origin=$origin auth=basic:$auth ".
-	"checkssl=$checkssl nokey=1 user=$main::remote_user ".
+	"checkssl=$checkssl nokey=1 allow_basic_ws=1 user=$main::remote_user ".
 	"token=$token time=$now";
 &put_miniserv_config(\%miniserv);
 &unlock_file(&get_miniserv_config_file());

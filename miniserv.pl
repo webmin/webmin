@@ -1512,6 +1512,7 @@ alarm(0);
 my $websocket_upgrade_request = lc($header{'connection'}) =~ /upgrade/ &&
 				lc($header{'upgrade'}) eq 'websocket';
 my $websocket_configured_request;
+my $websocket_basic_auth_ok;
 if ($websocket_upgrade_request) {
 	# Check the configured websocket paths before auth, so Basic auth can
 	# remain disabled for normal session-mode requests.
@@ -1519,6 +1520,12 @@ if ($websocket_upgrade_request) {
 	my $ws_simple = &simplify_path($page, $wsbogus);
 	$websocket_configured_request = !$wsbogus &&
 					&find_websocket_config($ws_simple);
+	if ($websocket_configured_request) {
+		# Session-mode Basic auth stays disabled unless the websocket
+		# route explicitly allows a no-cookie Basic-auth hop.
+		$websocket_basic_auth_ok =
+			$websocket_configured_request->{'allow_basic_ws'};
+		}
 	}
 
 # If a remote IP is given in a header (such as via a proxy), only use it
@@ -1840,11 +1847,11 @@ if (!$validated && !$deny_authentication) {
 		}
 	}
 
-# Keep Basic auth disabled in session mode except for configured websocket
-# proxy paths. Linked-server websocket hops need it, and token/user checks
-# still run before the backend connection is opened.
+# Keep Basic auth disabled in session mode except for websocket routes that
+# explicitly allow no-cookie Basic-auth hops. Token/user checks still run
+# before the backend connection is opened.
 if (!$validated && !$deny_authentication &&
-    (!$config{'session'} || $websocket_configured_request) &&
+    (!$config{'session'} || $websocket_basic_auth_ok) &&
     $header{authorization} =~ /^basic\s+(\S+)$/i) {
 	# authorization given..
 	($authuser, $authpass) = split(/:/, &b64decode($1), 2);
