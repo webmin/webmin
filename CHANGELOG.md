@@ -1,11 +1,12 @@
 ## Changelog
 
-#### 2.650 (June 16, 2026)
+#### 2.650 (June 21, 2026)
 * Add new Systemd Services and Units module
 * Add new GRUB 2 Boot Loader module
 * Add new Kea DHCP Server module
 * Add basic Alpine Linux support
 * Add IP-based Let's Encrypt certificate support with Certbot 5.3
+* Add improvements to custom Webmin temporary directory handling
 * Add quick service and port forwarding controls to the nftables module
 * Add optional pre- and post-scripts for scheduled package updates
 * Add option to control when scheduled package update email is sent
