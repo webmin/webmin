@@ -6358,14 +6358,19 @@ close($fh);
 close(SOCK);
 if ($ws->{'path'} =~ /\/ws-link-/) {
 	# Linked-server websocket routes are single-use routes registered by
-	# link.cgi, so remove them as soon as the tunnel ends.
-	&lock_file($config_file);
+	# link.cgi, so remove them and refresh the master when the tunnel ends.
+	open(my $config_lock, "<", $config_file) ||
+		die "Failed to open config file $config_file : $!";
+	flock($config_lock, 2);
 	my %miniserv = &read_config_file($config_file);
+	my $deleted;
 	if (delete($miniserv{"websockets_$ws->{'path'}"})) {
 		&write_file($config_file, \%miniserv);
+		$deleted = 1;
 		}
-	&unlock_file($config_file);
-	&reload_miniserv();
+	flock($config_lock, 8);
+	close($config_lock);
+	kill('USR1', $miniserv_main_pid || getppid()) if ($deleted);
 	}
 print DEBUG "done websockets loop\n";
 
