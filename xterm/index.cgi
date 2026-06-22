@@ -11,8 +11,6 @@ our (%in, %text, %config, %gconfig, %access, %module_info,
      $remote_user);
 ReadParse();
 
-$ENV{'HTTP_WEBMIN_PATH'} && error($text{'index_eproxy'});
-
 # Check for needed modules
 my @modload = (
 	['Digest::SHA',            sub { eval { require Digest::SHA;            Digest::SHA->import;            1 } }],
@@ -181,8 +179,12 @@ ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0, undef,
 # Print main container
 print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\"></div>\n";
 
-# Get a free port that can be used for the socket
-my $port = allocate_miniserv_websocket($module_name);
+# Get a free port that can be used for the socket. Proxied or Basic-auth
+# requests may not have a Webmin session cookie, so give the backend its own
+# one-time handshake secret.
+my $websocket_session_id = $main::session_id || generate_miniserv_websocket_token();
+my $port = allocate_miniserv_websocket(
+	$module_name, undef, $websocket_session_id);
 
 # Decide which Unix account the terminal will run as
 my $user = resolve_shell_user(\%access, $remote_user, \%in, \%config);
@@ -197,7 +199,9 @@ my $shellserver_cmd = "$module_config_directory/shellserver.pl";
 if (!-r $shellserver_cmd) {
 	create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
 	}
-$ENV{'SESSION_ID'} = $main::session_id;
+# shellserver.pl validates the websocket key against SESSION_ID; keep it in
+# sync with the backend_session stored in miniserv.conf above.
+$ENV{'SESSION_ID'} = $websocket_session_id;
 system_logged($shellserver_cmd." ".quotemeta($port)." ".quotemeta($user).
 	       ($dir ? " ".quotemeta($dir) : "").
 	       " >$module_var_directory/websocket-connection-$port.out 2>&1 </dev/null");
@@ -210,8 +214,8 @@ my $term_script = <<EOF;
 (function() {
 	const socket = new WebSocket('$url', 'binary'),
 	      termcont = document.getElementById('terminal'),
-	      err_conn_cannot = 'Cannot connect to the socket $url',
-	      err_conn_lost = 'Connection to the socket $url lost',
+	      err_conn_cannot = 'Cannot connect to the socket ' + socket.url,
+	      err_conn_lost = 'Connection to the socket ' + socket.url + ' lost',
 	      webGLAddonLink = '$webGLAddon',
 	      detectWebGLContext = (function() {
 	          const canvas = document.createElement("canvas"),

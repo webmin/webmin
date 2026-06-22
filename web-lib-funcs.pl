@@ -14294,11 +14294,11 @@ if (!$token) {
 return $token;
 }
 
-# allocate_miniserv_websocket([module], [base-remote-user])
+# allocate_miniserv_websocket([module], [base-remote-user], [backend-session])
 # Allocate a new websocket and stores it miniserv.conf file
 sub allocate_miniserv_websocket
 {
-my ($module, $buser) = @_;
+my ($module, $buser, $backend_session) = @_;
 $module ||= $module_name;
 # Find ports already in use
 &lock_file(&get_miniserv_config_file());
@@ -14326,40 +14326,65 @@ my $now = time();
 my $token = &generate_miniserv_websocket_token();
 my $opt_buser = "";
 $opt_buser = " buser=$buser" if (defined($buser) && $buser eq $base_remote_user);
+my $opt_backend = "";
+# Some websocket backends are reached with Basic auth and no browser session
+# cookie. Store the one-time backend session key that the child server expects.
+$opt_backend = " backend_session=$backend_session"
+	if (defined($backend_session) && $backend_session =~ /^\S+$/);
 $miniserv{"websockets_$wspath"} = "host=127.0.0.1 port=$port wspath=/ ".
-	  "user=$remote_user$opt_buser token=$token time=$now";
+	  "user=$remote_user$opt_buser$opt_backend token=$token time=$now";
 &put_miniserv_config(\%miniserv);
 &unlock_file(&get_miniserv_config_file());
 &reload_miniserv();
 return $port;
 }
 
-# get_miniserv_websocket_url(port, [host], [module])
-# Returns the URL for a websocket
+# get_miniserv_websocket_url(port, [host], [module], [path], [token])
+# Returns the browser-visible URL for a websocket. The optional path/token
+# arguments are used by linked-server websocket proxy routes, whose path does
+# not follow the normal /module/ws-port form.
 sub get_miniserv_websocket_url
 {
-my ($port, $host, $module) = @_;
+my ($port, $host, $module, $path, $wstoken) = @_;
 $module ||= $module_name;
-my $ws_proto = lc($ENV{'HTTPS'}) eq 'on' ? 'wss' : 'ws';
 my %miniserv;
 my $webprefix = &get_webprefix();
 &get_miniserv_config(\%miniserv);
 my $trust_proxy = $miniserv{'trust_real_ip'};
-my $wspath = "/$module/ws-".$port;
-my $wstoken;
-if ($miniserv{'websockets_'.$wspath} &&
+my $default_ws_proto = lc($ENV{'HTTPS'}) eq 'on' ? 'wss' : 'ws';
+my $ws_proto;
+# Match the public browser scheme when Webmin is behind a trusted reverse
+# proxy, but only allow websocket schemes into the returned URL.
+if ($trust_proxy && $ENV{'HTTP_X_FORWARDED_PROTO'}) {
+	$ws_proto = (split(/\s*,\s*/, $ENV{'HTTP_X_FORWARDED_PROTO'}))[0];
+	$ws_proto =~ s/^\s+|\s+$//g;
+	}
+if (!$ws_proto && $trust_proxy && $ENV{'HTTP_FORWARDED'} &&
+    (split(/\s*,\s*/, $ENV{'HTTP_FORWARDED'}))[0] =~
+	/(?:^|;)\s*proto="?([^";]+)"?/i) {
+	$ws_proto = $1;
+	}
+$ws_proto ||= $default_ws_proto;
+$ws_proto = lc($ws_proto);
+$ws_proto = 'wss' if ($ws_proto eq 'https');
+$ws_proto = 'ws' if ($ws_proto eq 'http');
+$ws_proto = $default_ws_proto if ($ws_proto ne 'wss' && $ws_proto ne 'ws');
+my $wspath = $path || "/$module/ws-".$port;
+# If the caller already generated the token, use it directly; otherwise fall
+# back to reading the token stored for the normal allocated websocket route.
+if (!defined($wstoken) && $miniserv{'websockets_'.$wspath} &&
     $miniserv{'websockets_'.$wspath} =~ /\btoken=(\S+)/) {
 	$wstoken = $1;
 	}
 my $http_host_conf = &trim($miniserv{'websocket_host'} || $host);
-# Pass as defined
+# Prefer the explicit websocket host when configured
 if ($http_host_conf) {
 	if ($http_host_conf !~ /^wss?:\/\//) {
 		$http_host_conf = "$ws_proto://$http_host_conf";
 		}
 	$http_host_conf =~ s/[\/]+$//g;
 	}
-# Try to rely on the proxy
+# Otherwise use trusted proxy headers when available
 if ($trust_proxy && !defined($http_host_conf)) {
 	my $forwarded_host = $ENV{'HTTP_X_FORWARDED_HOST'};
 	if ($forwarded_host) {
