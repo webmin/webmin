@@ -223,7 +223,18 @@ print &ui_table_row(&hlink($text{'pass'}, "pass"),
 
 # Show SSH public key field. Existing users only display the Webmin-managed
 # key, identified by our marker in authorized_keys; unrelated keys stay hidden.
-my $sshkey = $n ne '' ? &get_user_ssh_pubkey(\%uinfo) : undef;
+my %sshinfo = %uinfo;
+if ($n ne '' && $config{'real_base'} && $config{'home_base'}) {
+	# Match save_user.cgi, which stores files below real_base for automatic
+	# homes while leaving the account home set to the visible home_base path.
+	my $grp = &my_getgrgid($uinfo{'gid'});
+	if (&auto_home_dir($config{'home_base'}, $uinfo{'user'}, $grp) eq
+	    $uinfo{'home'}) {
+		$sshinfo{'home'} = &auto_home_dir($config{'real_base'},
+						  $uinfo{'user'}, $grp);
+		}
+	}
+my $sshkey = $n ne '' ? &get_user_ssh_pubkey(\%sshinfo) : undef;
 print &ui_table_row(&hlink($text{'sshkey'}, "sshkey"),
 	&ui_textarea("sshkey", $sshkey, 4, 60), 3);
 
