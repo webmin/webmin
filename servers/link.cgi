@@ -137,6 +137,9 @@ if ($ref && $ref =~ /^.*\Q$url\E(.*)/) {
 		   ':'.$s->{'port'}.$1;
 	&write_http_connection($con, "Referer: $rurl\r\n");
 	}
+if (($ENV{'HTTP_X_REQUESTED_WITH_PROXY'} || '') eq 'XMLHttpRequest') {
+	&write_http_connection($con, "X-Requested-With: XMLHttpRequest\r\n");
+	}
 &write_http_connection($con, "\r\n");
 my $post;
 if ($cl) {
