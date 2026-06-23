@@ -329,18 +329,19 @@ return $rv;
 
 # cleanup_link_websockets()
 # Removes abandoned websocket proxy routes created for linked Webmin servers.
-# Active routes are removed by miniserv when their websocket tunnel closes.
+# Routes opened by the browser are removed by miniserv when consumed.
 sub cleanup_link_websockets
 {
 my %miniserv;
 my $now = time();
+my $link_ttl = 5*60;
 my $changed = 0;
 &lock_file(&get_miniserv_config_file());
 &get_miniserv_config(\%miniserv);
 foreach my $k (keys %miniserv) {
 	next if ($k !~ /^websockets_\/\Q$module_name\E\/ws-link-/);
 	my ($time) = $miniserv{$k} =~ /\btime=(\d+)/;
-	if (!$time || $now - $time > 24*60*60) {
+	if (!$time || $now - $time > $link_ttl) {
 		delete($miniserv{$k});
 		$changed++;
 		}

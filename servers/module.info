@@ -4,3 +4,4 @@ desc=Webmin Servers Index
 longdesc=Displays an index of other Webmin servers for easy linking.
 readonly=1
 depends=mailboxes cron
+websockets=1

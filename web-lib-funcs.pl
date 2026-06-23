@@ -14429,19 +14429,26 @@ sub cleanup_miniserv_websockets
 my ($skip, $module) = @_;
 $skip ||= [ ];
 $module ||= $module_name;
+my $link_ttl = 5*60;
 &lock_file(&get_miniserv_config_file());
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 my $now = time();
 my @clean;
 foreach my $k (keys %miniserv) {
-    $k =~ /^websockets_\/$module\/ws-(\d+)$/ || next;
-    my $port = $1;
-    next if (&indexof($port, @$skip) >= 0);
     my $when = 0;
     if ($miniserv{$k} =~ /time=(\d+)/) {
         $when = $1;
         }
+    if ($k =~ /^websockets_\/\Q$module\E\/ws-link-/) {
+        # Linked-server websocket routes carry a backend credential and are
+        # single-use. If the browser never opens them, expire them by age.
+        push(@clean, $k) if (!$when || $now - $when > $link_ttl);
+        next;
+        }
+    $k =~ /^websockets_\/\Q$module\E\/ws-(\d+)$/ || next;
+    my $port = $1;
+    next if (&indexof($port, @$skip) >= 0);
     if ($now - $when > 60) {
         # Has been open for a while, check if the port is still in use?
         my $err;
