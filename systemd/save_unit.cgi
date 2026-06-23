@@ -205,10 +205,16 @@ elsif ($in{'delete'}) {
 			    { 'user' => $unituser });
 		}
 	else {
+		my $delete_file = $u->{'file'};
+		system_unit_file_deletable($u) ||
+			error($text{'systemd_elocaldelete'});
+		(-e $delete_file || -l $delete_file) ||
+			error($text{'systemd_egone'});
+
 		# Stop and disable are best-effort, but deletion must be reported.
 		disable_unit($in{'name'});
 		stop_unit($in{'name'});
-		my ($ok, $out) = delete_system_unit($in{'name'});
+		my ($ok, $out) = delete_system_unit($in{'name'}, $delete_file);
 		$ok || error($out);
 		webmin_log("delete", "systemd", $in{'name'});
 		}

@@ -991,20 +991,21 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
 
     write_test_file("$root/demo", "bare");
     write_test_file("$root/demo.service", "typed");
-    ($ok) = delete_system_unit('demo');
+    ($ok) = delete_system_unit('demo', "$root/demo");
     ok(!$ok, 'delete_system_unit rejects bare service name');
     ok(-e "$root/demo", 'delete_system_unit leaves suffix-less file alone');
     ok(-e "$root/demo.service", 'delete_system_unit leaves typed file after bare rejection');
-    ($ok) = delete_system_unit('demo.service');
+    ($ok) = delete_system_unit('demo.service', "$root/demo.service");
     ok($ok, 'delete_system_unit accepts typed service name');
     ok(!-e "$root/demo.service", 'delete_system_unit removes service file');
     my $out;
-    ($ok, $out) = delete_system_unit('demo.service');
+    ($ok, $out) = delete_system_unit('demo.service', "$root/demo.service");
     ok(!$ok, 'delete_system_unit rejects already-missing unit');
     is($out, $text{'systemd_egone'},
        'delete_system_unit reports stale missing unit');
     write_test_file("$vendor_root/vendor.service", "packaged");
-    ($ok, $out) = delete_system_unit('vendor.service');
+    ($ok, $out) = delete_system_unit('vendor.service',
+                                      "$vendor_root/vendor.service");
     ok(!$ok, 'delete_system_unit rejects packaged system unit files');
     is($out, $text{'systemd_elocaldelete'},
        'delete_system_unit reports local-only delete policy');
@@ -1012,10 +1013,23 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
        'delete_system_unit leaves packaged system unit file alone');
     {
         local $config{'delete_vendor_units'} = 1;
-        ($ok, $out) = delete_system_unit('vendor.service');
+        ($ok, $out) = delete_system_unit('vendor.service',
+                                          "$vendor_root/vendor.service");
         ok($ok, 'delete_system_unit can delete packaged unit files when configured');
         ok(!-e "$vendor_root/vendor.service",
            'delete_system_unit removes configured packaged unit file');
+    }
+    write_test_file("$root/shadow.service", "local");
+    write_test_file("$vendor_root/shadow.service", "packaged");
+    {
+        local $config{'delete_vendor_units'} = 1;
+        ($ok, $out) = delete_system_unit('shadow.service',
+                                          "$vendor_root/shadow.service");
+        ok($ok, 'delete_system_unit deletes the selected packaged unit file');
+        ok(-e "$root/shadow.service",
+           'delete_system_unit leaves same-named local unit file alone');
+        ok(!-e "$vendor_root/shadow.service",
+           'delete_system_unit removes selected packaged unit file');
     }
 }
 
@@ -2286,7 +2300,10 @@ like($save_source, qr/delete_user_dropin_file/,
 like($save_source, qr/delete_system_dropin_file/,
      'save page can delete system drop-in overrides');
 like($save_source,
-     qr/my \(\$ok, \$out\) = delete_system_unit\(\$in\{'name'\}\);\s*\$ok \|\| error\(\$out\);/s,
+     qr/system_unit_file_deletable\(\$u\).*?disable_unit\(\$in\{'name'\}\)/s,
+     'save page validates system unit delete target before side effects');
+like($save_source,
+     qr/my \(\$ok, \$out\) = delete_system_unit\(\$in\{'name'\}, \$delete_file\);\s*\$ok \|\| error\(\$out\);/s,
      'save page reports failed system unit deletes');
 like($save_source, qr/stock_unit/,
      'save page can return from override edits without saving');

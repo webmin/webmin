@@ -3465,25 +3465,21 @@ delete_user_unit_file($user, $file) ||
 return reload_user_manager($user);
 }
 
-=head2 delete_system_unit(name)
+=head2 delete_system_unit(name, file)
 
-Delete a permitted systemd unit file.
+Delete the selected permitted systemd unit file.
 
 =cut
 sub delete_system_unit
 {
-my ($name) = @_;
+my ($name, $file) = @_;
 return (0, $text{'systemd_ename'}) if (!valid_unit_name($name));
-foreach my $root (get_system_unit_file_root_candidates()) {
-	my $file = $root."/".$name;
-	next if (!-e $file && !-l $file);
-	return (0, $text{'systemd_elocaldelete'})
-		if (!system_unit_root_delete_allowed($root));
-	unlink_logged($file);
-	reload_manager();
-	return (1, "");
-	}
-return (0, $text{'systemd_egone'});
+return (0, $text{'systemd_elocaldelete'})
+	if (!system_unit_file_delete_allowed($file, $name));
+return (0, $text{'systemd_egone'}) if (!-e $file && !-l $file);
+unlink_logged($file);
+reload_manager();
+return (1, "");
 }
 
 =head2 get_unit_types()
