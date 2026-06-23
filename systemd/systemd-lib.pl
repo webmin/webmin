@@ -32,6 +32,9 @@ $config{"default_create_scope"} = "system"
 	    $config{"default_create_scope"} !~ /^(system|user)$/);
 $config{"manual_vendor_units"} = 1
 	if (!defined($config{"manual_vendor_units"}));
+$config{"delete_vendor_units"} = 0
+	if (!defined($config{"delete_vendor_units"}) ||
+	    $config{"delete_vendor_units"} !~ /^[01]$/);
 $config{"default_linger"} = 1
 	if (!defined($config{"default_linger"}));
 $config{"show_unit_suffixes"} = 0
@@ -2853,7 +2856,7 @@ Returns true if a system unit root is the local administrator directory.
 sub local_unit_file_root
 {
 my ($root) = @_;
-return $root eq "/etc/systemd/system";
+return $root eq get_local_unit_root();
 }
 
 =head2 get_system_unit_file_root_candidates()
@@ -2863,7 +2866,7 @@ Returns possible systemd unit directories before existence and symlink checks.
 =cut
 sub get_system_unit_file_root_candidates
 {
-return ("/etc/systemd/system",
+return (get_local_unit_root(),
 	"/usr/lib/systemd/system",
 	"/lib/systemd/system");
 }
@@ -3417,18 +3420,23 @@ return reload_user_manager($user);
 
 =head2 delete_system_unit(name)
 
-Delete all traces of some systemd unit.
+Delete a permitted systemd unit file.
 
 =cut
 sub delete_system_unit
 {
 my ($name) = @_;
 return (0, $text{'systemd_ename'}) if (!valid_unit_name($name));
-my $file = get_unit_root($name)."/".$name;
-return (0, $text{'systemd_egone'}) if (!-e $file && !-l $file);
-unlink_logged($file);
-reload_manager();
-return (1, "");
+foreach my $root (get_system_unit_file_root_candidates()) {
+	my $file = $root."/".$name;
+	next if (!-e $file && !-l $file);
+	return (0, $text{'systemd_elocaldelete'})
+		if (!system_unit_root_delete_allowed($root));
+	unlink_logged($file);
+	reload_manager();
+	return (1, "");
+	}
+return (0, $text{'systemd_egone'});
 }
 
 =head2 get_unit_types()
@@ -3556,6 +3564,48 @@ my $state = defined($unit->{'unitstate'}) ? lc($unit->{'unitstate'}) : "";
 return 0 if ($state eq 'transient' || $state eq 'generated');
 return 0 if ($unit->{'file'} =~ m{/systemd/(transient|generator)/});
 return 1;
+}
+
+=head2 system_unit_file_deletable(&unit)
+
+Returns 1 if a system unit record points to a unit file that can be removed
+under the current module configuration.
+
+=cut
+sub system_unit_file_deletable
+{
+my ($unit) = @_;
+return 0 if (!unit_file_editable($unit));
+return system_unit_file_delete_allowed($unit->{'file'}, $unit->{'name'});
+}
+
+=head2 system_unit_file_delete_allowed(file, name)
+
+Returns 1 if a system unit path is in a root where deleting unit files is
+currently permitted.
+
+=cut
+sub system_unit_file_delete_allowed
+{
+my ($file, $name) = @_;
+return 0 if (!$file || !$name || !valid_unit_name($name));
+foreach my $root (get_system_unit_file_root_candidates()) {
+	next if (!system_unit_root_delete_allowed($root));
+	return 1 if ($file eq $root."/".$name);
+	}
+return 0;
+}
+
+=head2 system_unit_root_delete_allowed(root)
+
+Returns 1 if system unit files under this root may be deleted.
+
+=cut
+sub system_unit_root_delete_allowed
+{
+my ($root) = @_;
+return (local_unit_file_root($root) ||
+	$config{'delete_vendor_units'} eq '1') ? 1 : 0;
 }
 
 =head2 unit_visible_on_index(&unit)
@@ -3701,7 +3751,7 @@ sub get_unit_root
 {
 my ($name, $packaged) = @_;
 # Common system and vendor unit directories.
-my $systemd_local_conf = "/etc/systemd/system";
+my $systemd_local_conf = get_local_unit_root();
 my $systemd_unit_dir1 = "/usr/lib/systemd/system";
 my $systemd_unit_dir2 = "/lib/systemd/system";
 if ($name) {
@@ -3713,7 +3763,7 @@ if ($name) {
 		return $p if (-r "$p/$name");
 		}
 	}
-# Always use /etc/systemd/system for locally created units.
+# Always use the local administrator directory for locally created units.
 return $systemd_local_conf if (!$packaged && -d $systemd_local_conf);
 
 # Debian prefers /lib/systemd/system for packaged units.
@@ -3727,6 +3777,16 @@ if (-d $systemd_unit_dir1) {
 	}
 # Fallback path for other systems.
 return $systemd_unit_dir2;
+}
+
+=head2 get_local_unit_root()
+
+Returns the local administrator directory for system unit files.
+
+=cut
+sub get_local_unit_root
+{
+return "/etc/systemd/system";
 }
 
 

@@ -1087,7 +1087,8 @@ else {
 		     [ 'delete_override',
 		       $text{'edit_deleteoverridenow'} || "Delete Override" ]);
 		}
-	elsif ($unit_file_editable && $in{'name'} ne 'webmin.service' &&
+	elsif (($edit_user_scope || system_unit_file_deletable($u)) &&
+	       $unit_file_editable && $in{'name'} ne 'webmin.service' &&
 	       systemd_can_delete($edit_user_scope, $unituser)) {
 		push(@delete_buttons, [ 'delete', $text{'delete'} ]);
 		}

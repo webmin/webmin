@@ -1,0 +1,9 @@
+<header>Allow deleting packaged unit files</header>
+<p>Controls whether the module may delete unit files from package-managed
+vendor directories such as <tt>/usr/lib/systemd/system</tt> or
+<tt>/lib/systemd/system</tt>. This is disabled by default because package
+updates may restore or expect those files.</p>
+
+<p>When set to no, only local administrator-created unit files under
+<tt>/etc/systemd/system</tt> can be deleted. Packaged units can still be
+disabled, masked, or customized with drop-in overrides.</p>

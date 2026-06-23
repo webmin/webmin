@@ -80,6 +80,7 @@ our (%access, %config, %in, %text, %gconfig, $remote_user);
     systemd_ereadonly => 'runtime unit file',
     systemd_ename => 'bad unit name',
     systemd_egone => 'unit gone',
+    systemd_elocaldelete => 'local unit delete only',
     systemd_eclash => 'unit clash',
     systemd_emountwhat => 'missing mount source',
     systemd_emountname => 'bad mount name',
@@ -196,6 +197,27 @@ ok(!unit_file_editable({
         unitstate => 'generated',
     }),
    'generated unit files are read-only');
+ok(system_unit_file_deletable({
+        name => 'local.service',
+        file => '/etc/systemd/system/local.service',
+        unitstate => 'enabled',
+    }),
+   'local system unit files can be deleted');
+ok(!system_unit_file_deletable({
+        name => 'vendor.service',
+        file => '/usr/lib/systemd/system/vendor.service',
+        unitstate => 'enabled',
+    }),
+   'packaged system unit files cannot be deleted');
+{
+    local $config{'delete_vendor_units'} = 1;
+    ok(system_unit_file_deletable({
+            name => 'vendor.service',
+            file => '/usr/lib/systemd/system/vendor.service',
+            unitstate => 'enabled',
+        }),
+       'packaged system unit files can be deleted when configured');
+}
 {
     local $config{'show_runtime_units'} = 0;
     ok(unit_visible_on_index({
@@ -908,9 +930,18 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
 
 {
     my $root = "$work/system-root";
-    make_path($root);
+    my $vendor_root = "$work/system-vendor-root";
+    make_path($root, $vendor_root);
     my $reloaded = 0;
-    local *main::get_unit_root = sub { return $root };
+    local *main::get_local_unit_root = sub { return $root };
+    local *main::get_unit_root = sub {
+        my ($name) = @_;
+        return $vendor_root if (defined($name) && $name eq 'vendor.service');
+        return $root;
+    };
+    local *main::get_system_unit_file_root_candidates = sub {
+        return ($root, $vendor_root);
+    };
     local *main::reload_manager = sub { $reloaded++ };
     local *main::has_command = sub { return };
     my ($ok) = create_system_unit(
@@ -949,6 +980,20 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
     ok(!$ok, 'delete_system_unit rejects already-missing unit');
     is($out, $text{'systemd_egone'},
        'delete_system_unit reports stale missing unit');
+    write_test_file("$vendor_root/vendor.service", "packaged");
+    ($ok, $out) = delete_system_unit('vendor.service');
+    ok(!$ok, 'delete_system_unit rejects packaged system unit files');
+    is($out, $text{'systemd_elocaldelete'},
+       'delete_system_unit reports local-only delete policy');
+    ok(-e "$vendor_root/vendor.service",
+       'delete_system_unit leaves packaged system unit file alone');
+    {
+        local $config{'delete_vendor_units'} = 1;
+        ($ok, $out) = delete_system_unit('vendor.service');
+        ok($ok, 'delete_system_unit can delete packaged unit files when configured');
+        ok(!-e "$vendor_root/vendor.service",
+           'delete_system_unit removes configured packaged unit file');
+    }
 }
 
 {
@@ -1999,6 +2044,8 @@ like($config_source, qr/^default_create_scope=/m,
      'module config exposes default create scope');
 like($config_source, qr/^manual_vendor_units=/m,
      'module config exposes vendor-file manual editor visibility');
+like($config_source, qr/^delete_vendor_units=/m,
+     'module config exposes packaged unit delete policy');
 like($config_source, qr/^default_linger=/m,
      'module config exposes default linger choice');
 like($config_source, qr/^show_dropin_inventory=/m,
@@ -2236,6 +2283,8 @@ like($edit_source, qr/readonly='readonly'/,
      'edit page shows runtime-managed unit files as read-only');
 like($edit_source, qr/unit_file_editable/,
      'edit page hides save and delete for runtime-managed unit files');
+like($edit_source, qr/system_unit_file_deletable/,
+     'edit page hides delete for packaged system unit files');
 like($edit_source, qr/edit_depsnow/,
      'edit page includes dependency inspect action');
 like($edit_source, qr/edit_propsnow/,

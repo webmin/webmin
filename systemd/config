@@ -5,6 +5,7 @@ visible_tabs=service,timer,socket,path,target,storage,resources,device,user
 show_runtime_units=1
 default_create_scope=system
 manual_vendor_units=1
+delete_vendor_units=0
 default_linger=1
 show_unit_suffixes=0
 show_dropin_inventory=1

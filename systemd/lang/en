@@ -217,6 +217,7 @@ systemd_title2_user=Edit Systemd User Unit
 systemd_title2_view=View Systemd Unit
 systemd_title2_view_user=View Systemd User Unit
 systemd_egone=Unit no longer exists!
+systemd_elocaldelete=Deleting packaged unit files is disabled in the module configuration. Disable, mask or create a drop-in override, or enable packaged unit deletion first.
 systemd_header=Systemd unit details
 systemd_name=Unit name
 systemd_type=Unit type
