@@ -1245,6 +1245,30 @@ EOF
 	ok(!exists $got{'# this is a comment'}, 'comment lines skipped');
 };
 
+# lock_config_file — matches Webmin's .lock convention without loading web-lib
+subtest 'lock_config_file' => sub {
+	require File::Temp;
+	my ($fh, $path) = File::Temp::tempfile(UNLINK => 1);
+	close($fh);
+
+	ok(miniserv::lock_config_file($path), 'lock succeeds');
+	ok(-e "$path.lock", 'sidecar lock file created');
+
+	open(my $locking, '<', "$path.lock") or die "open lock: $!";
+	chomp(my $pid = <$locking>);
+	close($locking);
+	is($pid, $$, 'lock records the current PID');
+
+	miniserv::unlock_config_file($path);
+	ok(!-e "$path.lock", 'unlock removes sidecar lock file');
+
+	open($locking, '>', "$path.lock") or die "create stale lock: $!";
+	print $locking "999999999\n";
+	close($locking);
+	ok(miniserv::lock_config_file($path), 'stale lock is reclaimed');
+	miniserv::unlock_config_file($path);
+};
+
 # read_any_file — basic file reader; returns undef on open failure
 subtest 'read_any_file' => sub {
 	require File::Temp;
@@ -1287,7 +1311,7 @@ EOF
 subtest 'parse_websockets_config' => sub {
 	no warnings 'once';
 	local %miniserv::config = (
-		'websockets_/chat' => 'host=back.example.com port=9000 proto=ws',
+		'websockets_/chat' => 'host=back.example.com port=9000 proto=ws ssl=1 checkssl=1 backend_session=abc123 allow_basic_ws=1',
 		'unrelated_key'    => 'ignored',
 		);
 	local @miniserv::websocket_paths = ();
@@ -1299,6 +1323,27 @@ subtest 'parse_websockets_config' => sub {
 	is($ws->{host},  'back.example.com',  'host kv parsed');
 	is($ws->{port},  '9000',              'port kv parsed');
 	is($ws->{proto}, 'ws',                'proto kv parsed');
+	is($ws->{ssl},   '1',                 'ssl kv parsed');
+	is($ws->{checkssl}, '1',              'SSL check kv parsed');
+	is($ws->{backend_session}, 'abc123',  'backend session kv parsed');
+	is($ws->{allow_basic_ws}, '1',        'Basic auth websocket flag parsed');
+};
+
+# find_websocket_config
+subtest 'find_websocket_config' => sub {
+	no warnings 'once';
+	local %miniserv::config = ( 'redirect_prefix' => '/prefix' );
+	local @miniserv::websocket_paths = (
+		{ 'path' => '/chat' },
+		);
+
+	my ($ws, $simple) = miniserv::find_websocket_config('/prefix/chat');
+	is($ws->{path}, '/chat', 'matches after redirect prefix stripping');
+	is($simple, '/chat', 'returns canonical websocket path');
+	($ws, $simple) = miniserv::find_websocket_config('/prefix/chat?token=abc');
+	is($ws->{path}, '/chat', 'matches request path with query string');
+	is($simple, '/chat', 'drops query string from canonical path');
+	ok(!miniserv::find_websocket_config('/missing'), 'unknown path rejected');
 };
 
 # get_user_details — local-files branch (skips the userdb code path entirely)

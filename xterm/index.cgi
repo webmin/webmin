@@ -8,10 +8,8 @@ our $unsafe_index_cgi = 1;
 require './xterm-lib.pl';    ## no critic
 our (%in, %text, %config, %gconfig, %access, %module_info,
      $module_name, $module_config_directory, $module_var_directory,
-     $remote_user);
+     $remote_user, $session_id);
 ReadParse();
-
-$ENV{'HTTP_WEBMIN_PATH'} && error($text{'index_eproxy'});
 
 # Check for needed modules
 my @modload = (
@@ -181,8 +179,18 @@ ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0, undef,
 # Print main container
 print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\"></div>\n";
 
-# Get a free port that can be used for the socket
-my $port = allocate_miniserv_websocket($module_name);
+# Get a free port that can be used for the socket. Normal browser sessions
+# are revalidated by miniserv while the websocket stays open. Proxied or
+# Basic-auth requests may not have a session cookie, so only those routes get
+# a one-time backend handshake secret.
+my $websocket_session_id = $session_id;
+my $backend_session;
+if (!$websocket_session_id) {
+	$websocket_session_id = generate_miniserv_websocket_token();
+	$backend_session = $websocket_session_id;
+	}
+my $port = allocate_miniserv_websocket(
+	$module_name, undef, $backend_session);
 
 # Decide which Unix account the terminal will run as
 my $user = resolve_shell_user(\%access, $remote_user, \%in, \%config);
@@ -197,7 +205,10 @@ my $shellserver_cmd = "$module_config_directory/shellserver.pl";
 if (!-r $shellserver_cmd) {
 	create_wrapper($shellserver_cmd, $module_name, "shellserver.pl");
 	}
-$ENV{'SESSION_ID'} = $main::session_id;
+# shellserver.pl validates the backend websocket key against SESSION_ID. For
+# normal sessions miniserv forwards the browser session; no-cookie routes use
+# the one-time backend_session stored in miniserv.conf above.
+$ENV{'SESSION_ID'} = $websocket_session_id;
 system_logged($shellserver_cmd." ".quotemeta($port)." ".quotemeta($user).
 	       ($dir ? " ".quotemeta($dir) : "").
 	       " >$module_var_directory/websocket-connection-$port.out 2>&1 </dev/null");
@@ -210,8 +221,8 @@ my $term_script = <<EOF;
 (function() {
 	const socket = new WebSocket('$url', 'binary'),
 	      termcont = document.getElementById('terminal'),
-	      err_conn_cannot = 'Cannot connect to the socket $url',
-	      err_conn_lost = 'Connection to the socket $url lost',
+	      err_conn_cannot = 'Cannot connect to the socket ' + socket.url,
+	      err_conn_lost = 'Connection to the socket ' + socket.url + ' lost',
 	      webGLAddonLink = '$webGLAddon',
 	      detectWebGLContext = (function() {
 	          const canvas = document.createElement("canvas"),

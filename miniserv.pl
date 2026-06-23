@@ -1509,6 +1509,24 @@ while(1) {
 		}
 	}
 alarm(0);
+my $websocket_upgrade_request = lc($header{'connection'}) =~ /upgrade/ &&
+				lc($header{'upgrade'}) eq 'websocket';
+my $websocket_configured_request;
+my $websocket_basic_auth_ok;
+if ($websocket_upgrade_request) {
+	# Check the configured websocket paths before auth, so Basic auth can
+	# remain disabled for normal session-mode requests.
+	my $wsbogus;
+	my $ws_simple = &simplify_path($page, $wsbogus);
+	$websocket_configured_request = !$wsbogus &&
+					&find_websocket_config($ws_simple);
+	if ($websocket_configured_request) {
+		# Session-mode Basic auth stays disabled unless the websocket
+		# route explicitly allows a no-cookie Basic-auth hop.
+		$websocket_basic_auth_ok =
+			$websocket_configured_request->{'allow_basic_ws'};
+		}
+	}
 
 # If a remote IP is given in a header (such as via a proxy), only use it
 # for logging unless trust_real_ip is set
@@ -1829,8 +1847,11 @@ if (!$validated && !$deny_authentication) {
 		}
 	}
 
-# Check for normal HTTP authentication
-if (!$validated && !$deny_authentication && !$config{'session'} &&
+# Keep Basic auth disabled in session mode except for websocket routes that
+# explicitly allow no-cookie Basic-auth hops. Token/user checks still run
+# before the backend connection is opened.
+if (!$validated && !$deny_authentication &&
+    (!$config{'session'} || $websocket_basic_auth_ok) &&
     $header{authorization} =~ /^basic\s+(\S+)$/i) {
 	# authorization given..
 	($authuser, $authpass) = split(/:/, &b64decode($1), 2);
@@ -2335,21 +2356,9 @@ if ($davpath) {
 	}
 
 # Check for a websockets request
-if (lc($header{'connection'}) =~ /upgrade/ &&
-    lc($header{'upgrade'}) eq 'websocket' &&
-    $baseauthuser) {
+if ($websocket_upgrade_request && $baseauthuser) {
 	print DEBUG "websockets request to $simple\n";
-	my $ws_simple = $simple;
-	my ($ws) = grep { $_->{'path'} eq $ws_simple } @websocket_paths;
-	if (!$ws && $config{'redirect_prefix'}) {
-		my $prefix = $config{'redirect_prefix'};
-		$prefix =~ s/[\/]+$//g;
-		if ($prefix && $ws_simple =~ s/^\Q$prefix\E(?=\/|$)//) {
-			$ws_simple ||= "/";
-			print DEBUG "websockets retry without prefix $prefix as $ws_simple\n";
-			($ws) = grep { $_->{'path'} eq $ws_simple } @websocket_paths;
-			}
-		}
+	my ($ws, $ws_simple) = &find_websocket_config($simple);
 	if (!$ws) {
 		&http_error(400, "Unknown websocket path");
 		return 0;
@@ -5033,6 +5042,27 @@ foreach my $c (keys %config) {
 	}
 }
 
+# find_websocket_config(path)
+# Returns the websocket config and path, after dropping any query string and
+# redirect prefix from the request path.
+sub find_websocket_config
+{
+my ($simple) = @_;
+my $ws_simple = $simple;
+$ws_simple =~ s/\?.*$//;
+my ($ws) = grep { $_->{'path'} eq $ws_simple } @websocket_paths;
+if (!$ws && $config{'redirect_prefix'}) {
+	my $prefix = $config{'redirect_prefix'};
+	$prefix =~ s/[\/]+$//g;
+	if ($prefix && $ws_simple =~ s/^\Q$prefix\E(?=\/|$)//) {
+		$ws_simple ||= "/";
+		print DEBUG "websockets retry without prefix $prefix as $ws_simple\n";
+		($ws) = grep { $_->{'path'} eq $ws_simple } @websocket_paths;
+		}
+	}
+return wantarray ? ($ws, $ws_simple) : $ws;
+}
+
 # reload_config_file()
 # Re-read %config, and call post-config actions
 sub reload_config_file
@@ -5072,6 +5102,71 @@ while(<CONF>) {
 	}
 close(CONF);
 return %rv;
+}
+
+# lock_config_file(file)
+# Lock a config file using Webmin's .lock sidecar convention. miniserv.pl must
+# stay standalone, but link.cgi also edits miniserv.conf through this lock.
+sub lock_config_file
+{
+my ($file) = @_;
+if ($file =~ /\r|\n|\0/) {
+	die "Lock filename contains invalid characters";
+	}
+my $lockfile = $file.".lock";
+my $tries = 0;
+my $last_lock_err;
+while(1) {
+	my $pid;
+	# Webmin's lock file contains the owner PID. A dead owner means the lock
+	# can be safely reclaimed.
+	if (open(my $locking, "<", $lockfile)) {
+		$pid = int(<$locking>);
+		close($locking);
+		}
+	if (!$pid || !kill(0, $pid) || $pid == $$) {
+		# The sidecar lock is the shared convention with web-lib-funcs.pl;
+		# the non-blocking flock just narrows races between lock claimers.
+		unlink($lockfile);
+		if (open(my $locking, ">", $lockfile)) {
+			if (!flock($locking, 2+4)) {
+				$last_lock_err = "Flock failed : ".$!;
+				close($locking);
+				unlink($lockfile);
+				}
+			elsif (!print $locking $$,"\n") {
+				$last_lock_err = "Lock write failed : ".$!;
+				close($locking);
+				unlink($lockfile);
+				}
+			elsif (!close($locking)) {
+				$last_lock_err = "Lock close failed : ".$!;
+				unlink($lockfile);
+				}
+			else {
+				return 1;
+				}
+			}
+		else {
+			$last_lock_err = "Lock open failed : ".$!;
+			}
+		}
+	elsif ($pid) {
+		$last_lock_err = "Locked by PID $pid";
+		}
+	sleep(1);
+	if ($tries++ > 5*60) {
+		die "Failed to lock config file $file : $last_lock_err";
+		}
+	}
+}
+
+# unlock_config_file(file)
+# Release a config lock taken by lock_config_file.
+sub unlock_config_file
+{
+my ($file) = @_;
+unlink($file.".lock");
 }
 
 # read_any_file(file)
@@ -6078,79 +6173,178 @@ if (!grep { $_ eq $parsed_origin } @allowed_origins) {
 	}
 my @protos = split(/\s*,\s*/, $header{'sec-websocket-protocol'});
 print DEBUG "websockets protos ",join(" ", @protos),"\n";
+# Once token and origin checks have passed, a ws-link route is a live
+# single-use credential. If the backend cannot complete its handshake, remove
+# that route before http_error exits this child.
+my $backend_fail = sub {
+	&cleanup_websocket_route($ws);
+	&http_error(@_);
+	return 0;
+	};
 
 # Connect to the configured backend
 my $fh = "WEBSOCKET";
+my ($backend_ssl, $backend_ssl_ctx);
 if ($ws->{'host'}) {
 	# Backend is a TCP port
 	my $err = &open_socket($ws->{'host'}, $ws->{'port'}, $fh);
-	&http_error(500, "Websockets connection failed : $err") if ($err);
+	return &$backend_fail(500, "Websockets connection failed : $err")
+		if ($err);
+	if ($ws->{'ssl'}) {
+		eval "use Net::SSLeay";
+		if ($@) {
+			return &$backend_fail(500,
+				"Missing Net::SSLeay perl module");
+			}
+		$backend_ssl_ctx = Net::SSLeay::CTX_new();
+		if (!$backend_ssl_ctx) {
+			return &$backend_fail(500,
+				"Failed to create SSL context");
+			}
+		$backend_ssl = Net::SSLeay::new($backend_ssl_ctx);
+		if (!$backend_ssl) {
+			return &$backend_fail(500,
+				"Failed to create SSL connection");
+			}
+		Net::SSLeay::set_fd($backend_ssl, fileno($fh));
+		my $sslhost = $ws->{'hostheader'} || $ws->{'host'};
+		if (defined(&Net::SSLeay::set_tlsext_host_name)) {
+			# Linked websocket routes may connect to an IP while the
+			# certificate belongs to the configured linked-server
+			# host.
+			my $snihost = $sslhost;
+			if ($snihost =~ /^\[([^\]]+)\](?::\d+)?$/) {
+				$snihost = $1;
+				}
+			elsif ($snihost =~ /^([^:]+):\d+$/) {
+				$snihost = $1;
+				}
+			Net::SSLeay::set_tlsext_host_name($backend_ssl, $snihost);
+			}
+		if (!Net::SSLeay::connect($backend_ssl)) {
+			return &$backend_fail(500,
+				"SSL connect to websockets backend failed");
+			}
+		if ($ws->{'checkssl'}) {
+			my $err = &check_websocket_backend_ssl(
+				$backend_ssl, $sslhost);
+			if ($err) {
+				return &$backend_fail(500,
+				    "Invalid SSL certificate from websockets ".
+				    "backend : $err");
+				}
+			}
+		}
 	print DEBUG "websockets host $ws->{'host'}:$ws->{'port'}\n";
 	}
 elsif ($ws->{'pipe'}) {
 	# Backend is a Unix pipe
 	open($fh, $ws->{'pipe'}) ||
-		&http_error(500, "Websockets pipe failed : $?");
+		return &$backend_fail(500, "Websockets pipe failed : $?");
 	print DEBUG "websockets pipe $ws->{'pipe'}\n";
 	}
 else {
-	&http_error(500, "Invalid Webmin websockets config");
+	return &$backend_fail(500, "Invalid Webmin websockets config");
 	}
+# Keep the rest of the websocket proxy code independent of whether the
+# backend hop is plain TCP or wrapped in TLS.
+my $backend_write = sub {
+	my ($buf) = @_;
+	return $backend_ssl ? Net::SSLeay::write($backend_ssl, $buf)
+			    : syswrite($fh, $buf, length($buf));
+	};
+my $backend_read = sub {
+	my ($size) = @_;
+	if ($backend_ssl) {
+		return Net::SSLeay::read($backend_ssl, $size);
+		}
+	my $buf;
+	my $rv = sysread($fh, $buf, $size);
+	return $rv ? $buf : undef;
+	};
+my $backend_readline = sub {
+	my $line = "";
+	while(1) {
+		my $c = $backend_read->(1);
+		return undef if (!defined($c) || $c eq "");
+		$line .= $c;
+		last if ($c eq "\n");
+		}
+	return $line;
+	};
 
-# Send successful connection headers
+# OpenSSL can keep decrypted bytes in its own buffer after the socket fd stops
+# being readable, so the forwarding loop must check this before select().
+my $backend_pending = sub {
+	return $backend_ssl && defined(&Net::SSLeay::pending) &&
+	       Net::SSLeay::pending($backend_ssl) > 0;
+	};
+
+# Prepare successful connection headers, but don't send them to the browser
+# until the backend websocket handshake has succeeded.
 eval "use Digest::SHA";
 if ($@) {
-	&http_error(500, "Missing Digest::SHA perl module");
+	return &$backend_fail(500, "Missing Digest::SHA perl module");
 	}
 my $rkey = $key."258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
 my $sha1 = Digest::SHA->new;
 $sha1->add($rkey);
 my $digest = $sha1->digest;
 $digest = &b64encode($digest);
-&write_data("HTTP/1.1 101 Switching Protocols\r\n");
-&write_data("Upgrade: websocket\r\n");
-&write_data("Connection: Upgrade\r\n");
-&write_data("Sec-Websocket-Accept: $digest\r\n");
-if (@protos) {
-	&write_data("Sec-Websocket-Protocol: $protos[0]\r\n");
-	}
-&write_data("\r\n");
 
 # Send a websockets request to the backend
 my $path = $ws->{'wspath'} || $simple;
-my $bsession_id = &b64encode($session_id);
+# Normal websocket proxies use the browser session id in the backend
+# Sec-WebSocket-Key. Linked xterm routes can instead provide a one-time
+# backend session key because the backend request is authenticated with Basic.
+my $backend_session = $ws->{'backend_session'} || $session_id;
+my $bsession_id = &b64encode($backend_session);
 print DEBUG "send request to $path to websockets backend\n";
-print $fh "GET $path HTTP/1.1\r\n";
-if ($ws->{'host'}) {
-	print $fh "Host: $ws->{'host'}\r\n";
+$backend_write->("GET $path HTTP/1.1\r\n");
+if ($ws->{'host'} || $ws->{'hostheader'}) {
+	$backend_write->("Host: ".($ws->{'hostheader'} || $ws->{'host'})."\r\n");
 	}
-print $fh "Upgrade: websocket\r\n";
-print $fh "Connection: Upgrade\r\n";
+$backend_write->("Upgrade: websocket\r\n");
+$backend_write->("Connection: Upgrade\r\n");
 if ($ws->{'nokey'}) {
-	print $fh "Sec-WebSocket-Key: $key\r\n";
+	$backend_write->("Sec-WebSocket-Key: $key\r\n");
 	}
 else {
 	print DEBUG "Sending key $bsession_id\n";
-	print $fh "Sec-WebSocket-Key: $bsession_id\r\n";
+	$backend_write->("Sec-WebSocket-Key: $bsession_id\r\n");
 	}
 if (@protos) {
-	print $fh "Sec-WebSocket-Protocol: ",join(" ", @protos),"\r\n";
+	$backend_write->("Sec-WebSocket-Protocol: ".join(" ", @protos)."\r\n");
 	}
-print $fh "Sec-WebSocket-Version: $header{'sec-websocket-version'}\r\n";
-print $fh "\r\n";
+if ($ws->{'origin'}) {
+	$backend_write->("Origin: $ws->{'origin'}\r\n");
+	}
+if ($ws->{'auth'} && $ws->{'auth'} =~ /^basic:(\S+)$/) {
+	$backend_write->("Authorization: Basic $1\r\n");
+	}
+$backend_write->("Sec-WebSocket-Version: $header{'sec-websocket-version'}\r\n");
+$backend_write->("\r\n");
 
 # Read back the reply
-my $rh = <$fh>;
+my $rh = $backend_readline->();
+if (!defined($rh)) {
+	return &$backend_fail(500, "No response from websockets backend");
+	}
 $rh =~ s/\r|\n//g;
 print DEBUG "got $rh from websockets backend\n";
-$rh =~ /^HTTP\/1\.1\s+(\d+)/ ||
-	&http_error(500, "Bad response from websockets backend : ".
-		    &html_strip($rh));
+if ($rh !~ /^HTTP\/1\.1\s+(\d+)/) {
+	return &$backend_fail(500, "Bad response from websockets backend : ".
+			      &html_strip($rh));
+	}
 my $code = $1;
 my %rheader;
 my $lastheader;
 while(1) {
-	$rh = <$fh>;
+	$rh = $backend_readline->();
+	if (!defined($rh)) {
+		return &$backend_fail(500,
+			"Unexpected EOF from websockets backend");
+		}
 	$rh =~ s/\r|\n//g;
 	last if ($rh eq "");
 	if ($rh =~ /^(\S+):\s*(.*)$/) {
@@ -6161,18 +6355,24 @@ while(1) {
                 $rheader{$lastheader} .= $headline;
                 }
         else {
-                &http_error(500, "Bad header from websockets backend ".
-			    &html_strip($rh));
+                return &$backend_fail(500,
+			"Bad header from websockets backend ".
+			&html_strip($rh));
                 }
 	}
 if ($code != 101) {
-	&http_error(500, "Bad response code $code from websockets backend : ".
-			 &html_strip($rh));
+	return &$backend_fail(500,
+		"Bad response code $code from websockets backend : ".
+		&html_strip($rh));
 	}
-lc($rheader{'upgrade'}) eq 'websocket' ||
-	 &http_error(500, "Missing Upgrade header from websockets backend");
-lc($rheader{'connection'}) =~ /upgrade/ ||
-	 &http_error(500, "Missing Connection header from websockets backend");
+if (lc($rheader{'upgrade'}) ne 'websocket') {
+	return &$backend_fail(500,
+		"Missing Upgrade header from websockets backend");
+	}
+if (lc($rheader{'connection'}) !~ /upgrade/) {
+	return &$backend_fail(500,
+		"Missing Connection header from websockets backend");
+	}
 
 # Check the reply key
 my $bdigest;
@@ -6187,8 +6387,24 @@ else {
 	$bdigest = &b64encode($bdigest);
 	}
 print DEBUG "expecting digest $bdigest\n";
-lc($rheader{'sec-websocket-accept'}) eq lc($bdigest) ||
-	 &http_error(500, "Incorrect digest header from websockets backend");
+if (lc($rheader{'sec-websocket-accept'}) ne lc($bdigest)) {
+	return &$backend_fail(500,
+		"Incorrect digest header from websockets backend");
+	}
+# The route has been consumed by this child process. The active tunnel now owns
+# the open backend socket, so the temporary miniserv.conf route can be removed
+# before the tunnel goes long-lived. Final cleanup remains a harmless fallback.
+&cleanup_websocket_route($ws);
+
+# Send successful connection headers
+&write_data("HTTP/1.1 101 Switching Protocols\r\n");
+&write_data("Upgrade: websocket\r\n");
+&write_data("Connection: Upgrade\r\n");
+&write_data("Sec-Websocket-Accept: $digest\r\n");
+if (@protos) {
+	&write_data("Sec-Websocket-Protocol: $protos[0]\r\n");
+	}
+&write_data("\r\n");
 
 # Log now
 &log_request($loghost, $authuser, $reqline, "101", 0);
@@ -6197,29 +6413,45 @@ lc($rheader{'sec-websocket-accept'}) eq lc($bdigest) ||
 seek(DEBUG, 0, 2);
 print DEBUG "in websockets loop\n";
 my $last_session_check_time = time();
+# Frontend browser sockets have a session id and should be revalidated while
+# open. Backend hops authenticated without a browser session must not be closed
+# by the periodic session check.
+my $verify_session = defined($session_id) && $session_id ne "";
 while(1) {
-	my $rmask = undef;
-	vec($rmask, fileno($fh), 1) = 1;
-	vec($rmask, fileno(SOCK), 1) = 1;
-	my $sel = select($rmask, undef, undef, 10);
 	my ($buf, $ok);
 	my $uptime = 0;
-	if (vec($rmask, fileno($fh), 1)) {
+	my ($backend_ready, $browser_ready);
+	if (&$backend_pending()) {
+		$backend_ready = 1;
+		my $bm = undef;
+		vec($bm, fileno(SOCK), 1) = 1;
+		select($bm, undef, undef, 0);
+		$browser_ready = vec($bm, fileno(SOCK), 1);
+		}
+	else {
+		my $rmask = undef;
+		vec($rmask, fileno($fh), 1) = 1;
+		vec($rmask, fileno(SOCK), 1) = 1;
+		my $sel = select($rmask, undef, undef, 10);
+		$backend_ready = vec($rmask, fileno($fh), 1);
+		$browser_ready = vec($rmask, fileno(SOCK), 1);
+		}
+	if ($backend_ready) {
 		# Got something from the websockets backend
-		$ok = sysread($fh, $buf, 1024);
-		last if ($ok <= 0);	# Backend has closed
+		$buf = $backend_read->(1024);
+		last if (!defined($buf) || length($buf) == 0);
 		&write_data($buf);
 		$uptime = 1;
 		}
-	if (vec($rmask, fileno(SOCK), 1)) {
+	if ($browser_ready) {
 		# Got something from the browser
 		$buf = &read_data(1024);
 		last if (!defined($buf) || length($buf) == 0);
-		syswrite($fh, $buf, length($buf)) || last;
+		$backend_write->($buf) || last;
 		$uptime = 1;
 		}
 	my $now = time();
-	if ($now - $last_session_check_time > 10) {
+	if ($verify_session && $now - $last_session_check_time > 10) {
 		# Re-validate the browser session every 10 seconds
 		print DEBUG "verifying websockets session $session_id\n";
 		print $PASSINw "verify $session_id $acptip $uptime\n";
@@ -6231,11 +6463,45 @@ while(1) {
 		$last_session_check_time = $now;
 		}
 	}
+Net::SSLeay::free($backend_ssl) if ($backend_ssl);
+Net::SSLeay::CTX_free($backend_ssl_ctx) if ($backend_ssl_ctx);
 close($fh);
 close(SOCK);
+&cleanup_websocket_route($ws);
 print DEBUG "done websockets loop\n";
 
 return 0;
+}
+
+# cleanup_websocket_route(&wsconfig)
+# Removes a single-use linked-server websocket route from miniserv.conf.
+sub cleanup_websocket_route
+{
+my ($ws) = @_;
+# Only link.cgi-created ws-link routes are temporary. Ordinary module
+# websocket routes are managed by their owning code and must be left alone.
+return 0 if (!$ws || !$ws->{'path'} || $ws->{'path'} !~ /\/ws-link-/);
+my $deleted;
+my $locked;
+my $cleanup_ok = eval {
+	&lock_config_file($config_file);
+	$locked = 1;
+	my %miniserv = &read_config_file($config_file);
+	if (delete($miniserv{"websockets_$ws->{'path'}"})) {
+		&write_file($config_file, \%miniserv);
+		$deleted = 1;
+		}
+	1;
+	};
+my $cleanup_err = $@;
+eval { &unlock_config_file($config_file) } if ($locked);
+if (!$cleanup_ok) {
+	&log_error("Failed to cleanup linked websocket route", $cleanup_err);
+	return 0;
+	}
+# The master keeps websocket routes parsed in memory.
+kill('USR1', $miniserv_main_pid || getppid()) if ($deleted);
+return $deleted;
 }
 
 # get_system_hostname()
@@ -7526,4 +7792,38 @@ foreach my $p (@$hosts) {
 	return 2 if ($p eq "*");
 	}
 return 0;
+}
+
+# check_websocket_backend_ssl(ssl-handle, host)
+# Returns an error if the websocket backend certificate is not for host.
+sub check_websocket_backend_ssl
+{
+my ($ssl, $host) = @_;
+if ($host =~ /^\[([^\]]+)\](?::\d+)?$/) {
+	$host = $1;
+	}
+elsif ($host =~ /^([^:]+):\d+$/) {
+	$host = $1;
+	}
+my $cert = Net::SSLeay::get_peer_certificate($ssl);
+return "Could not fetch peer certificate" if (!$cert);
+my @hosts;
+my $subject = Net::SSLeay::X509_get_subject_name($cert);
+if ($subject) {
+	my $cn = Net::SSLeay::X509_NAME_get_text_by_NID($subject, 13);
+	push(@hosts, $cn) if (defined($cn) && $cn ne "" && $cn ne "-1");
+	}
+my @alts = Net::SSLeay::X509_get_subjectAltNames($cert);
+while(my ($type, $val) = splice(@alts, 0, 2)) {
+	push(@hosts, $val) if ($type == 2 || $type == 7);
+	}
+Net::SSLeay::X509_free($cert);
+if (&check_ipaddress($host) || &check_ip6address($host)) {
+	return undef if (grep { lc($_) eq lc($host) } @hosts);
+	return @hosts ? "Certificate is for ".join(", ", @hosts).", not $host"
+		      : "No certificate names found";
+	}
+return undef if (@hosts && &ssl_hostname_match($host, \@hosts));
+return @hosts ? "Certificate is for ".join(", ", @hosts).", not $host"
+	      : "No certificate names found";
 }
