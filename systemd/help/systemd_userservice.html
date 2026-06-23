@@ -1,0 +1,10 @@
+<header>Create as user unit?</header>
+<p>Creates the unit under the selected user's <tt>~/.config/systemd/user</tt>
+directory and manages it with <tt>systemctl --user</tt>.</p>
+<p>User units run inside the user's systemd manager. For service units,
+<tt>User=</tt> and <tt>Group=</tt> are not written because the user manager
+already runs as that user.</p>
+<p>Choose this for applications that belong to a user account and should use
+that user's home directory, environment, and user unit lifecycle. Choose
+No for a normal system unit, even if a service unit later uses
+<tt>User=</tt> to drop privileges.</p>

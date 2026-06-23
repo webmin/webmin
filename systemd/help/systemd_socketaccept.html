@@ -1,0 +1,7 @@
+<header>Accept each connection?</header>
+<p>When enabled, <tt>Accept=yes</tt> is written and systemd starts one service
+instance for each incoming connection. Leave disabled for the common model where
+one service handles all traffic.</p>
+<p>Per-connection sockets normally activate a template-style service that can
+handle instances. Use <tt>Accept=no</tt> when a single service should receive
+all accepted connections from the socket.</p>

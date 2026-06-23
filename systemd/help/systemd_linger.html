@@ -1,0 +1,8 @@
+<header>Enable linger for this user?</header>
+<p>Controls systemd linger, implemented by
+<tt>loginctl enable-linger</tt> for the selected user. This allows the user's
+systemd manager and enabled user units to run after the user logs out and to
+start at boot.</p>
+<p>Without linger, a user unit normally requires an active login session or an
+already-running user manager. This is fine for desktop/session units, but
+server-style user units usually need linger enabled.</p>

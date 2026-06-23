@@ -1,0 +1,11 @@
+desc=1
+logs_lines=200
+logs_current_boot=0
+visible_tabs=service,timer,socket,path,target,storage,resources,device,user
+show_runtime_units=1
+default_create_scope=system
+manual_vendor_units=1
+default_linger=1
+show_unit_suffixes=0
+show_dropin_inventory=1
+create_return_index=0

@@ -1,0 +1,11 @@
+<header>Standard output</header>
+<p>Destination for the service standard output stream, written as
+<tt>StandardOutput=</tt>. Common values include <tt>journal</tt>,
+<tt>null</tt>, <tt>inherit</tt>, <tt>journal+console</tt>,
+<tt>file:/path/to/file</tt>, <tt>append:/path/to/file</tt>, and
+<tt>truncate:/path/to/file</tt>.</p>
+<p>Advanced systemd targets such as <tt>kmsg</tt>, <tt>tty</tt>,
+<tt>socket</tt>, and <tt>fd:name</tt> are also accepted.</p>
+<p>If you enter an absolute file path, it will be written as
+<tt>append:/path/to/file</tt> so output is appended instead of replacing the
+file. Leave empty to use the systemd default.</p>

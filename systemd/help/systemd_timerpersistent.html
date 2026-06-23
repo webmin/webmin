@@ -1,0 +1,6 @@
+<header>Catch up missed runs?</header>
+<p>When enabled, <tt>Persistent=yes</tt> is written. For calendar timers, this
+lets systemd run the timer once when it becomes active again if a scheduled run
+was missed while the manager was stopped or the system was off.</p>
+<p>This does not catch up monotonic timers such as <tt>OnBootSec=</tt> or
+<tt>OnUnitActiveSec=</tt>.</p>

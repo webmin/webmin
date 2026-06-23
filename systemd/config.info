@@ -1,0 +1,11 @@
+desc=Display unit descriptions,1,1-Yes,0-No
+logs_lines=Number of journal log lines to show,0
+logs_current_boot=Journal log scope,1,1-Current boot only,0-All available logs
+visible_tabs=Tabs to show on the index page,15,visible_tabs
+show_runtime_units=Show generated and transient units,1,1-Yes,0-No
+default_create_scope=Default scope for new units,1,system-System units,user-User units
+manual_vendor_units=Include vendor unit files in the manual editor,1,1-Yes,0-No
+default_linger=Enable linger by default for new user units,1,1-Yes,0-No
+show_unit_suffixes=Show full unit names with type suffixes,1,1-Yes,0-No
+show_dropin_inventory=Show drop-in override inventory,1,1-Yes,0-No
+create_return_index=Return to index after creating a new unit,1,1-Yes,0-No

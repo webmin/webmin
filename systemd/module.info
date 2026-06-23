@@ -1,0 +1,7 @@
+name=Systemd
+category=system
+os_support=*-linux
+desc=Systemd Services and Units
+longdesc=Manage systemd system and user units, including services, timers, sockets, paths and targets.
+readonly=1
+syslog=1

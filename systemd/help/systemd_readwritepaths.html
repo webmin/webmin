@@ -1,0 +1,11 @@
+<header>Writable paths</header>
+<p>Paths that remain writable when filesystem protection is enabled. This
+writes <tt>ReadWritePaths=</tt>.</p>
+<p>Enter space-separated absolute paths, such as <tt>/var/lib/myapp
+/var/log/myapp</tt>. This is typically used with <tt>ProtectSystem=full</tt>
+or <tt>ProtectSystem=strict</tt>.</p>
+<p>Advanced systemd path prefixes such as <tt>-</tt> for optional paths are
+accepted when needed.</p>
+<p>For user units, these should be paths the selected user can access,
+typically below that user's home directory. They cannot make system
+directories writable to the user.</p>
