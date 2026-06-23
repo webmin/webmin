@@ -36,6 +36,11 @@ elsif ($auto_net_mode eq "nm") {
 	do 'nm-lib.pl';
 	$net_mode = "nm";
 	}
+elsif ($auto_net_mode eq "dhcpcd") {
+	# Special case for Debian systems managed by dhcpcd
+	do 'dhcpcd-lib.pl';
+	$net_mode = "dhcpcd";
+	}
 else {
 	do "$gconfig{'os_type'}-lib.pl";
 	$net_mode = $gconfig{'os_type'};

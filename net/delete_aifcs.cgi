@@ -16,9 +16,15 @@ foreach $d (@d) {
 	($a) = grep { $_->{'fullname'} eq $d } @acts;
 	$a || &error($text{'daifcs_egone'});
 	&can_iface($a) || &error($text{'ifcs_ecannot_this'});
-	&deactivate_interface($a);
+	if (defined(&delete_active_interface)) {
+		# Config-driven backends may need to remove persistent state too.
+		$err = &delete_active_interface($a);
+		$err && &error("<pre>$err</pre>");
+		}
+	else {
+		&deactivate_interface($a);
+		}
 	}
 
 &webmin_log("delete", "aifcs", scalar(@d));
 &redirect("list_ifcs.cgi?mode=active");
-

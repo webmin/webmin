@@ -10,6 +10,7 @@ index_apply2=Apply Selected Interfaces
 index_vmin=Virtualmin
 index_mode=Network config type: $1
 index_mode_netplan=Netplan
+index_mode_dhcpcd=dhcpcd
 index_mode_cygwin=Cygwin
 index_mode_freebsd=FreeBSD
 index_mode_macos=MacOS

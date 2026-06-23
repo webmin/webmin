@@ -17,7 +17,14 @@ if ($in{'delete'} || $in{'unapply'}) {
 		&error_setup($text{'bifc_err4'});
 		@active = &active_interfaces();
 		($act) = grep { $_->{'fullname'} eq $b->{'fullname'} } @active;
-		if ($act) {
+		if (!$act && $b->{'virtual'} ne '' && $b->{'address'}) {
+			# ip(8) may renumber unlabelled secondary addresses.
+			($act) = grep { $_->{'virtual'} ne '' &&
+					$_->{'name'} eq $b->{'name'} &&
+					$_->{'address'} eq $b->{'address'} } @active;
+			}
+		if ($act && !defined(&unapply_interface_after_delete)) {
+			# Legacy backends remove live state before deleting config.
 			if (defined(&unapply_interface)) {
 				$err = &unapply_interface($act);
 				$err && &error("<pre>$err</pre>");
@@ -29,6 +36,12 @@ if ($in{'delete'} || $in{'unapply'}) {
 
 		}
 	&delete_interface($b);
+	if ($in{'unapply'} && $act && defined(&unapply_interface_after_delete)) {
+		# Config-driven backends apply removals after deleting config.
+		&error_setup($text{'bifc_err4'});
+		$err = &unapply_interface_after_delete($act, $b);
+		$err && &error("<pre>$err</pre>");
+		}
 	&webmin_log("delete", "bifc", $b->{'fullname'}, $b);
 	}
 else {
