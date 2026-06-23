@@ -2853,4 +2853,283 @@ return -1 if ($?);
 return $out =~ /\(ALL\)\s+ALL|\(ALL\)\s+NOPASSWD:\s+ALL|\(ALL\s*:\s*ALL\)\s+ALL|\(ALL\s*:\s*ALL\)\s+NOPASSWD:\s+ALL/ ? 1 : 0;
 }
 
+# escape_ssh_key_identifier_user(username)
+# Escapes a username for use inside the managed SSH public key marker.
+sub escape_ssh_key_identifier_user
+{
+my ($user) = @_;
+
+# Keep normal usernames readable, but encode characters that would break the
+# bracketed marker or make it span multiple authorized_keys lines.
+$user =~ s/([\\\]\r\n\t])/sprintf("\\x%02X", ord($1))/ge;
+return $user;
+}
+
+# unescape_ssh_key_identifier_user(username)
+# Reverses escape_ssh_key_identifier_user.
+sub unescape_ssh_key_identifier_user
+{
+my ($user) = @_;
+
+# The marker stores only explicit \xHH escapes, so this is deterministic and
+# does not reinterpret ordinary backslashes in usernames.
+$user =~ s/\\x([0-9A-Fa-f]{2})/chr(hex($1))/ge;
+return $user;
+}
+
+# get_ssh_key_identifier(&user)
+# Returns the marker used for the SSH public key managed by this module.
+sub get_ssh_key_identifier
+{
+my ($user) = @_;
+
+# A readable marker lets admins recognize Webmin-managed keys in the file.
+return "[webmin-useradmin:".
+       &escape_ssh_key_identifier_user($user->{'user'})."]";
+}
+
+# normalize_ssh_pubkey(pubkey)
+# Returns a single-line SSH public key from form input.
+sub normalize_ssh_pubkey
+{
+my ($pubkey) = @_;
+
+# Form input may wrap long keys. SSH wants one logical authorized_keys line.
+$pubkey =~ s/\r/ /g;
+$pubkey =~ s/\n/ /g;
+
+# Collapse repeated whitespace so re-saving an unchanged key does not drift.
+$pubkey =~ s/^\s+|\s+$//g;
+$pubkey =~ s/\s+/ /g;
+return $pubkey;
+}
+
+# ssh_pubkey_validation_user([preferred-user])
+# Returns a non-root local user to run ssh-keygen for key validation.
+sub ssh_pubkey_validation_user
+{
+my ($preferred) = @_;
+my %seen;
+
+# Prefer the edited account, but never run the parser as UID 0.
+foreach my $user ($preferred, "nobody") {
+	next if (!$user || $seen{$user}++);
+	my @uinfo = getpwnam($user);
+	next if (!@uinfo || $uinfo[2] == 0);
+	return $uinfo[0];
+	}
+
+# Systems without a usable unprivileged account will use the regex fallback.
+return undef;
+}
+
+# ssh_pubkey_validation_tempfile(pubkey)
+# Writes a public key to a read-only temp file for unprivileged validation.
+sub ssh_pubkey_validation_tempfile
+{
+my ($pubkey) = @_;
+my $tmpdir = &webmin_temp_dir_path(&tempname_dir_sys());
+
+# Keep the temp file in a root-owned, non-writable directory under system temp.
+if (!-d $tmpdir) {
+	&make_dir($tmpdir, 0755, 0) || return undef;
+	}
+my @dst = lstat($tmpdir);
+my $dmode = @dst ? $dst[2] & 0777 : 0;
+return undef if (!@dst || !-d _ || $dst[4] != $<);
+return undef if ($dmode != 0755);
+
+# Use Webmin's temp-file writer inside a root-owned directory.
+&seed_random();
+for(my $i = 0; $i < 20; $i++) {
+	my $pubkeyfile = $tmpdir."/sshkey-".$$."-".
+			 int(rand(1000000000000)).".pub";
+	next if (-e $pubkeyfile);
+	&open_tempfile(SSHKEY, ">$pubkeyfile", 1) || return undef;
+	&print_tempfile(SSHKEY, $pubkey."\n");
+	if (!&close_tempfile(SSHKEY) || !chmod(0444, $pubkeyfile)) {
+		&unlink_file($pubkeyfile);
+		return undef;
+		}
+	push(@main::temporary_files, $pubkeyfile);
+	return $pubkeyfile;
+	}
+return undef;
+}
+
+# validate_ssh_pubkey(pubkey, [run-as-user])
+# Returns an error message if a public key does not look usable.
+sub validate_ssh_pubkey
+{
+my ($pubkey, $run_as) = @_;
+
+# Callers pass empty string only when they mean "remove"; validation is for add.
+return $text{'sshkey_eempty'} if (!$pubkey);
+my $ssh_keygen = &has_command("ssh-keygen");
+my $validation_user = &ssh_pubkey_validation_user($run_as);
+if ($ssh_keygen && $validation_user) {
+	# Prefer OpenSSH's parser when available, but keep it unprivileged.
+	my $pubkeyfile = &ssh_pubkey_validation_tempfile($pubkey);
+	if (!$pubkeyfile) {
+		$ssh_keygen = undef;
+		}
+	else {
+		my ($out, $err);
+		my $cmd = &command_as_user($validation_user, 0,
+					   $ssh_keygen, "-l", "-f",
+					   $pubkeyfile);
+		&execute_command($cmd, undef, \$out, \$err);
+		&unlink_file($pubkeyfile);
+		if ($?) {
+			# Strip the temp path from ssh-keygen errors before showing them.
+			$err =~ s/\s+$//g;
+			return &text('sshkey_einvalid',
+				     &html_escape($err || $text{'sshkey_eformat'}));
+			}
+		}
+	}
+if ((!$ssh_keygen || !$validation_user) && $pubkey !~
+	/^(ssh-rsa|ssh-dss|ecdsa-sha2-nistp256|rsa-sha2-512|rsa-sha2-256|ecdsa-sha2-nistp384|ecdsa-sha2-nistp521|ssh-ed25519|sk-ecdsa-sha2-nistp256|sk-ssh-ed25519)\s+\S+(?:\s+.*)?$/) {
+	# Minimal fallback for systems without ssh-keygen.
+	return &text('sshkey_einvalid', $text{'sshkey_eformat'});
+	}
+return undef;
+}
+
+# user_ssh_authorized_keys_file(&user)
+# Returns the user's authorized_keys file, if the home directory is usable.
+sub user_ssh_authorized_keys_file
+{
+my ($user) = @_;
+
+# No home directory means there is nowhere safe to create .ssh.
+return undef if (!$user->{'home'} || !-d $user->{'home'});
+my $sshdir = $user->{'home'}."/.ssh";
+if (-l $sshdir) {
+	# Refuse symlinks in the user-controlled path to avoid root-follow races.
+	return (undef, $text{'sshkey_esshdirlink'});
+	}
+if (-e $sshdir && !-d $sshdir) {
+	# A non-directory .ssh cannot contain authorized_keys.
+	return (undef, &text('sshkey_esshdir', "<tt>$sshdir</tt>"));
+	}
+return ($sshdir."/authorized_keys", undef);
+}
+
+# get_user_ssh_pubkey(&user)
+# Returns the SSH public key managed by this module, if any.
+sub get_user_ssh_pubkey
+{
+my ($user) = @_;
+my ($sshfile, $err) = &user_ssh_authorized_keys_file($user);
+
+# Missing files simply mean Webmin has not managed a key for this user.
+return undef if (!$sshfile || !-f $sshfile || -l $sshfile);
+my $identifier = &get_ssh_key_identifier($user);
+
+# Read as the target user so a raced path cannot expose root-only files. Fall
+# back to a plain read when the account is not resolvable locally (e.g. an
+# alternate password_file), so the edit page never fails just to show a key.
+my $lines;
+if (getpwnam($user->{'user'})) {
+	$lines = &eval_as_unix_user($user->{'user'}, sub {
+		return &read_file_lines($sshfile, 1);
+		});
+	}
+else {
+	$lines = &read_file_lines($sshfile, 1);
+	}
+foreach my $line (@$lines) {
+	if ($line =~ /\s+\Q$identifier\E\s*$/) {
+		# Only a marker at end-of-line counts; ordinary comments are ignored.
+		$line =~ s/\s+\Q$identifier\E\s*$//;
+		return $line;
+		}
+	}
+return undef;
+}
+
+# save_user_ssh_pubkey(&user, [&olduser], pubkey)
+# Adds, updates or deletes this module's managed SSH public key.
+sub save_user_ssh_pubkey
+{
+my ($user, $olduser, $pubkey) = @_;
+my ($sshfile, $err) = &user_ssh_authorized_keys_file($user);
+if (!$sshfile) {
+	# Adding requires a real home; removing from a missing home is already done.
+	return $pubkey ? $err || $text{'sshkey_ehome'} : undef;
+	}
+my $sshdir = $user->{'home'}."/.ssh";
+my @pwent = getpwnam($user->{'user'});
+my $user_exists = scalar(@pwent);
+
+# Clearing an empty/nonexistent setup should not create .ssh or authorized_keys.
+return undef if (!$pubkey && !-e $sshdir);
+
+# All changes are made as the target user, so there must be a resolvable local
+# account to drop privileges to. Report this cleanly when adding or updating a
+# key, rather than failing later with an internal error.
+return $text{'sshkey_euser'} if ($pubkey && !$user_exists);
+if (!-d $sshdir) {
+	# Create .ssh as the user, not root, to avoid symlink/ownership races.
+	&eval_as_unix_user($user->{'user'}, sub {
+		&make_dir($sshdir, 0700);
+		chmod(0700, $sshdir);
+		});
+	}
+
+# Refuse symlinked authorized_keys after .ssh creation, just before use.
+return $text{'sshkey_efilelink'} if (-l $sshfile);
+return undef if (!$pubkey && !-f $sshfile);
+return $text{'sshkey_euser'} if (!$user_exists);
+
+my $identifier = &get_ssh_key_identifier($user);
+my $oldidentifier = $olduser ? &get_ssh_key_identifier($olduser)
+			     : $identifier;
+&eval_as_unix_user($user->{'user'}, sub {
+	# Lock as the user before reading, otherwise a concurrent edit can be lost.
+	&lock_file($sshfile);
+
+	my @lines;
+	if (-f $sshfile) {
+		# Read the existing file as the account owner, preserving all other keys.
+		my $lines = &read_file_lines($sshfile, 1);
+		@lines = @$lines;
+		}
+
+	my $found;
+	for (my $i = 0; $i < @lines; $i++) {
+		if ($lines[$i] =~ /\s+\Q$oldidentifier\E\s*$/) {
+			if ($pubkey) {
+				# Replace the managed key and update the marker after rename.
+				$lines[$i] = "$pubkey $identifier";
+				}
+			else {
+				# Empty field removes only the Webmin-managed key.
+				splice(@lines, $i, 1);
+				}
+			$found = 1;
+			last;
+			}
+		}
+
+	# If no previous marker exists, add a new Webmin-managed entry.
+	push(@lines, "$pubkey $identifier") if ($pubkey && !$found);
+
+	# Removing a non-existent managed key is a no-op.
+	if (!$pubkey && !$found) {
+		&unlock_file($sshfile);
+		return;
+		}
+
+	my $contents = join("", map { $_."\n" } @lines);
+
+	# Write and chmod as the target user; root must not follow this path.
+	&write_file_contents($sshfile, $contents);
+	chmod(0600, $sshfile);
+	&unlock_file($sshfile);
+	});
+return undef;
+}
+
 1;
