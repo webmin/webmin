@@ -13,6 +13,7 @@ $network_interfaces = '/proc/net/dev';
 $sysctl_config = "/etc/sysctl.conf";
 
 do 'linux-lib.pl';
+do 'ifupdown-lib.pl' if (!defined(&ifupdown_get_interface_defs));
 
 # boot_interfaces()
 # Returns a list of interfaces brought up at boot time
@@ -802,106 +803,7 @@ sub get_interface_defs
 {
 my ($file, $done) = @_;
 $file ||= $network_interfaces_config;
-$done ||= { };
-return ( ) if ($done->{$file}++);
-my $fh;
-my @ret;
-open($fh, $file) || return ();
-# read the file line by line
-my $line = <$fh>;
-my $lnum = 0;
-my $err;
-while (defined $line) {
-	last if ($err);
-	chomp($line);
-	# skip comments
-	if ($line =~ /^\s*#/ || $line =~ /^\s*$/) {
-		$line = <$fh>;
-		$lnum++;
-		next;
-		}
-	if ($line =~ /^\s*auto/) {
-		# skip auto stanzas
-		$line = <$fh>;
-		$lnum++;
-		while(defined($line) && $line !~ /^\s*(iface|mapping|auto|source|allow-hotplug)/) {
-			$line = <$fh>;
-			$lnum++;
-			next;
-			}
-		}
-	elsif ($line =~ /^\s*mapping/) {
-		# skip mapping stanzas
-		$line = <$fh>;
-		$lnum++;
-		while(defined($line) && $line !~ /^\s*(iface|mapping|auto|source|allow-hotplug)/) {
-			$line = <$fh>;
-			$lnum++;
-			next;
-			}
-		}
-	elsif ($line =~ /^\s*(source|source-directory)\s+(\S+)/) {
-		# Expand includes
-		$line = <$fh>;
-		$lnum++;
-		my ($dir, $src) = ($1, $2);
-		my @srcs;
-		if ($dir eq "source-directory") {
-			opendir(SRCDIR, $src);
-			@srcs = grep { /^[a-zA-Z0-9_-]+$/ } readdir(SRCDIR);
-			closedir(SRCDIR);
-			@srcs = map { "$src/$_" } @srcs
-				if (@srcs);
-			}
-		else {
-			@srcs = glob($src);
-			}
-		foreach $src (@srcs) {
-			my @inc = &get_interface_defs($src, $done);
-			push(@ret, @inc);
-			}
-		}
-	elsif ($line =~ /^\s*allow-hotplug/) {
-		# Skip hotplug lines
-		$line = <$fh>;
-		$lnum++;
-		}
-	elsif (my ($name, $addrfam, $method) = ($line =~ /^\s*iface\s+(\S+)\s+(\S+)\s+(\S+)\s*$/) ) {
-		# only lines starting with "iface" are expected here
-		my @iface_options;
-		# now read everything until the next iface definition
-		$line = <$fh>;
-		$lnum++;
-		while (defined $line && ! ($line =~ /^\s*(iface|mapping|auto|source|allow-hotplug)/)) {
-			# skip comments and empty lines
-			if ($line =~ /^\s*#/ || $line =~ /^\s*$/) {
-				$line = <$fh>;
-				$lnum++;
-				next;
-				}
-			my ($param, $value);
-			if ( ($param, $value) = ($line =~ /^\s*(\S+)\s+(.*)\s*$/) ) {
-				push(@iface_options, [$param, $value]);
-				}
-			elsif ( ($param) = ($line =~ /^\s*(\S+)\s*$/) ) {
-				push(@iface_options, [$param, '']);
-				}
-			else {
-				error("Error in option line: '$line' invalid");
-				}
-			$line = <$fh>;
-			$lnum++;
-			}
-		push(@ret, [$name, $addrfam, $method, \@iface_options,
-			    $file, $lnum]);
-		}
-	else {
-		$err++;
-		error("Error reading file $network_interfaces_config: unexpected line '$line'");
-		}
-	}
-close($fh);
-return @ret;
+return &ifupdown_get_interface_defs($file, $done);
 }
 
 # get_auto_defs()

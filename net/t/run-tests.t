@@ -141,6 +141,10 @@ write_text("$detect_ifupdown_dir/eth0", "iface eth0 inet dhcp\n");
 is(main::net_auto_backend("debian-linux", $detect_no_netplan, $detect_nm_empty,
 			  $detect_ifupdown, $detect_dhcpcd),
    undef, "Debian does not prefer dhcpcd over ifupdown iface stanzas");
+write_text("$detect_ifupdown_dir/eth0", "iface eth0 inet dhcp # uplink\n");
+is(main::net_auto_backend("debian-linux", $detect_no_netplan, $detect_nm_empty,
+			  $detect_ifupdown, $detect_dhcpcd),
+   undef, "Debian ifupdown detection tolerates inline iface comments");
 
 do "$root/net/netplan-lib.pl" || die "netplan-lib.pl: $@ $!";
 

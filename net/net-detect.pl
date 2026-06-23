@@ -1,6 +1,8 @@
 # net-detect.pl
 # Helper functions for choosing the network config backend
 
+do 'ifupdown-lib.pl' if (!defined(&ifupdown_get_interface_defs));
+
 # net_has_network_manager_config([connections-directory])
 # Returns true if NetworkManager connection profiles exist
 sub net_has_network_manager_config
@@ -21,52 +23,16 @@ return &has_command("netplan") &&
        -d $dir;
 }
 
-# net_has_ifupdown_config([interfaces-file], [&seen-files])
+# net_has_ifupdown_config([interfaces-file])
 # Returns true if ifupdown has any non-loopback iface stanzas
 sub net_has_ifupdown_config
 {
-my ($file, $done) = @_;
+my ($file) = @_;
 $file ||= "/etc/network/interfaces";
-$done ||= { };
-
-# Avoid loops from recursive source/source-directory includes.
-return 0 if ($done->{$file}++);
-open(my $fh, "<", $file) || return 0;
-while(my $line = <$fh>) {
-	$line =~ s/#.*$//;
-
+foreach my $iface (&ifupdown_get_interface_defs($file, undef, 1)) {
 	# Loopback alone does not mean ifupdown owns real interfaces.
-	if ($line =~ /^\s*iface\s+(\S+)\s+\S+\s+\S+/ && $1 ne "lo") {
-		close($fh);
-		return 1;
-		}
-
-	# Debian supports including all simple filenames from a directory.
-	if ($line =~ /^\s*source-directory\s+(\S+)/) {
-		my $dir = $1;
-		if (opendir(my $dh, $dir)) {
-			foreach my $name (grep { /^[A-Za-z0-9_-]+$/ } readdir($dh)) {
-				if (&net_has_ifupdown_config("$dir/$name", $done)) {
-					closedir($dh);
-					close($fh);
-					return 1;
-					}
-				}
-			closedir($dh);
-			}
-		}
-
-	# A source directive can point to a glob of extra interface files.
-	elsif ($line =~ /^\s*source\s+(\S+)/) {
-		foreach my $src (glob($1)) {
-			if (&net_has_ifupdown_config($src, $done)) {
-				close($fh);
-				return 1;
-				}
-			}
-		}
+	return 1 if ($iface->[0] ne "lo");
 	}
-close($fh);
 return 0;
 }
 
