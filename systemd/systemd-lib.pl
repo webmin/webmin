@@ -32,6 +32,9 @@ $config{"default_create_scope"} = "system"
 	    $config{"default_create_scope"} !~ /^(system|user)$/);
 $config{"manual_vendor_units"} = 1
 	if (!defined($config{"manual_vendor_units"}));
+$config{"edit_vendor_units"} = 0
+	if (!defined($config{"edit_vendor_units"}) ||
+	    $config{"edit_vendor_units"} !~ /^[01]$/);
 $config{"delete_vendor_units"} = 0
 	if (!defined($config{"delete_vendor_units"}) ||
 	    $config{"delete_vendor_units"} !~ /^[01]$/);
@@ -1756,10 +1759,12 @@ systemd-analyze cannot reliably load their temporary copies by name.
 sub verify_dropin_data
 {
 my ($file, $unit_data, $dropin_data, $user_scope, $unitstate, $user) = @_;
-my $analyze = has_command("systemd-analyze");
-return (1, undef) if (!$analyze);
 return (0, $text{'systemd_econf'})
 	if (!defined($unit_data) || !defined($dropin_data));
+return (0, $text{'systemd_edropininstall'})
+	if (dropin_has_install_section($dropin_data));
+my $analyze = has_command("systemd-analyze");
+return (1, undef) if (!$analyze);
 my $name = $file;
 $name =~ s/^.*\///;
 return (0, $text{'systemd_ename'}) if (!valid_unit_file_name($name));
@@ -1905,6 +1910,8 @@ Writes the standard local drop-in override file for a system unit.
 sub write_system_dropin_file
 {
 my ($unit, $data) = @_;
+return (0, $text{'systemd_edropininstall'})
+	if (dropin_has_install_section($data));
 my $file = system_dropin_file($unit);
 return (0, $text{'systemd_ename'}) if (!$file);
 my $dir = $file;
@@ -2009,6 +2016,8 @@ Writes the standard user drop-in override file as the owning Unix user.
 sub write_user_dropin_file
 {
 my ($user, $unit, $data) = @_;
+return (0, $text{'systemd_edropininstall'})
+	if (dropin_has_install_section($data));
 my $file = user_dropin_file($user, $unit);
 return (0, $text{'systemd_euserunitfile'})
 	if (!$file || !user_dropin_file_safe($user, $file, 0));
@@ -2174,6 +2183,8 @@ Writes a safe existing system drop-in config file.
 sub write_system_dropin_config_file
 {
 my ($file, $data) = @_;
+return (0, $text{'systemd_edropininstall'})
+	if (dropin_has_install_section($data));
 return (0, $text{'systemd_edropinfile'})
 	if (!system_dropin_config_file_safe($file, 1));
 return (1, undef) if (is_readonly_mode());
@@ -2252,6 +2263,8 @@ Writes a safe existing user drop-in config file as the owning Unix user.
 sub write_user_dropin_config_file
 {
 my ($user, $file, $data) = @_;
+return (0, $text{'systemd_edropininstall'})
+	if (dropin_has_install_section($data));
 return (0, $text{'systemd_edropinfile'})
 	if (!user_dropin_config_file_safe($user, $file, 1));
 return (1, undef) if (is_readonly_mode());
@@ -2416,6 +2429,24 @@ my ($data) = @_;
 $data = "" if (!defined($data));
 $data =~ s/^### Lines below this comment will be discarded\s*\n.*\z//ms;
 return $data;
+}
+
+=head2 dropin_has_install_section(data)
+
+Returns 1 if a drop-in contains an active C<[Install]> section. Drop-ins are
+for unit overrides; startup state is managed by enable and disable actions.
+
+=cut
+sub dropin_has_install_section
+{
+my ($data) = @_;
+return 0 if (!defined($data));
+foreach my $line (split(/\n/, $data)) {
+	$line =~ s/\r//g;
+	next if ($line =~ /^\s*(?:[#;]|$)/);
+	return 1 if ($line =~ /^\s*\[\s*Install\s*\]\s*(?:[#;].*)?$/i);
+	}
+return 0;
 }
 
 =head2 delete_user_unit_file(user, file)
@@ -3022,6 +3053,8 @@ sub write_manual_unit_file
 my ($info, $data) = @_;
 return (0, $text{'manual_efile'})
 	if (!$info || !$info->{'file'});
+return (0, $text{'systemd_evendoredit'})
+	if (!manual_unit_file_writable($info));
 $data = "" if (!defined($data));
 $data =~ s/\0//g;
 $data =~ s/\r//g;
@@ -3065,6 +3098,20 @@ print_tempfile($fh, $data);
 close_tempfile($fh);
 unlock_file($info->{'file'});
 return (1, undef);
+}
+
+=head2 manual_unit_file_writable(info)
+
+Returns 1 if a manual editor file descriptor may be saved.
+
+=cut
+sub manual_unit_file_writable
+{
+my ($info) = @_;
+return 0 if (!$info || !$info->{'scope'});
+return 1 if ($info->{'scope'} eq 'user');
+return 1 if ($info->{'kind'} && $info->{'kind'} eq 'dropin');
+return system_unit_file_edit_allowed($info->{'file'}, $info->{'name'});
 }
 
 =head2 mark_units_changed()
@@ -3577,6 +3624,51 @@ sub system_unit_file_deletable
 my ($unit) = @_;
 return 0 if (!unit_file_editable($unit));
 return system_unit_file_delete_allowed($unit->{'file'}, $unit->{'name'});
+}
+
+=head2 system_unit_file_writable(&unit)
+
+Returns 1 if a system unit record points to a unit file that can be edited
+under the current module configuration.
+
+=cut
+sub system_unit_file_writable
+{
+my ($unit) = @_;
+return 0 if (!unit_file_editable($unit));
+return system_unit_file_edit_allowed($unit->{'file'}, $unit->{'name'});
+}
+
+=head2 system_unit_file_edit_allowed(file, name)
+
+Returns 1 if a system unit path is in a root where editing unit files is
+currently permitted.
+
+=cut
+sub system_unit_file_edit_allowed
+{
+my ($file, $name) = @_;
+return 0 if (!$file || !$name || !valid_unit_name($name));
+foreach my $root (get_system_unit_file_root_candidates()) {
+	next if (!system_unit_root_edit_allowed($root));
+	if ($file eq $root."/".$name) {
+		return 0 if (-l $file);
+		return 1;
+		}
+	}
+return 0;
+}
+
+=head2 system_unit_root_edit_allowed(root)
+
+Returns 1 if system unit files under this root may be edited.
+
+=cut
+sub system_unit_root_edit_allowed
+{
+my ($root) = @_;
+return (local_unit_file_root($root) ||
+	$config{'edit_vendor_units'} eq '1') ? 1 : 0;
 }
 
 =head2 system_unit_file_delete_allowed(file, name)

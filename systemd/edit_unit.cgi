@@ -143,7 +143,9 @@ my (@units, @unittypes, @types, @killmodes, @restarts, @protects);
 my (%creatable_types);
 my $default_unittype = 'service';
 my $unit_file_editable = 0;
+my $unit_file_writable = 0;
 my $can_save_unit = 0;
+my $can_write_current_file = 0;
 my $remote_uinfo = get_user_details($remote_user);
 
 # New units start with an empty record.  Existing units are looked up from the
@@ -186,12 +188,17 @@ else {
 		$dropin_file = $dropin_info->{'file'};
 		}
 	$unit_file_editable = unit_file_editable($u);
+	$unit_file_writable = $edit_user_scope ? $unit_file_editable :
+		system_unit_file_writable($u);
 	$can_save_unit = $edit_dropin ?
 		systemd_can_dropin($edit_user_scope, $unituser) :
 		systemd_can_edit($edit_user_scope, $unituser);
+	$can_write_current_file =
+		($edit_dropin ? $unit_file_editable : $unit_file_writable) &&
+		$can_save_unit ? 1 : 0;
 
 	# Runtime-managed units are inspect-only, so title them as views.
-	my $title_key = $unit_file_editable && $can_save_unit ?
+	my $title_key = $can_write_current_file ?
 		($edit_user_scope ? 'systemd_title2_user' : 'systemd_title2') :
 		($edit_user_scope ? 'systemd_title2_view_user' :
 				    'systemd_title2_view');
@@ -985,8 +992,8 @@ else {
 		}
 	print ui_table_row(hlink($text{'systemd_conf'}, "systemd_conf"),
 			    ui_textarea("data", $conf, 20, 80, undef,
-					undef, $unit_file_editable &&
-					$can_save_unit ? undef :
+					undef, $can_write_current_file ?
+					undef :
 					"readonly='readonly'"));
 
 	if ($edit_user_scope) {
@@ -1010,6 +1017,7 @@ else {
 
 	# Only file-backed installable units can have their startup state changed.
 	if (boot_state_changeable($u->{'unitstate'}, $u->{'name'}) &&
+	    ($edit_user_scope || $unit_file_writable) &&
 	    systemd_can_boot($edit_user_scope, $unituser)) {
 		print ui_table_row(hlink($text{'systemd_boot'}, "systemd_boot"),
 			    ui_yesno_radio("boot", $u->{'boot'}));
@@ -1036,7 +1044,7 @@ if ($in{'new'}) {
 else {
 	# Keep save, override, runtime and inspection actions in nearby clusters;
 	# destructive actions stay isolated on the far side of the button row.
-	my @save_buttons = $unit_file_editable && $can_save_unit ?
+	my @save_buttons = $can_write_current_file ?
 		( [ undef, $text{'save'} ] ) : ( );
 	my @control_buttons;
 	my @inspect_buttons = systemd_can_inspect($edit_user_scope, $unituser) ?
@@ -1066,18 +1074,21 @@ else {
 
 	my @override_buttons;
 	if ($edit_dropin) {
+		my $base_unit_editable =
+			$unit_file_writable &&
+			systemd_can_edit($edit_user_scope, $unituser);
+		my $stock_text = $base_unit_editable
+			? $text{'edit_stockunitnow'}
+			: $text{'edit_view_stockunitnow'};
 		push(@override_buttons,
-		     [ 'stock_unit',
-		       $text{'edit_stockunitnow'} || "Stock Unit" ]);
+		     [ 'stock_unit', $stock_text ]);
 		}
 	elsif ($unit_file_editable &&
 	       systemd_can_dropin($edit_user_scope, $unituser)) {
 		my $override_text = dropin_exists($edit_user_scope,
 			$unituser, $in{'name'}) ?
-				($text{'edit_editoverridenow'} ||
-				 "Edit Override") :
-				($text{'edit_overridenow'} ||
-				 "Create Override");
+				$text{'edit_editoverridenow'} :
+				$text{'edit_overridenow'};
 		push(@override_buttons, [ 'override', $override_text ]);
 		}
 	my @delete_buttons;
@@ -1085,7 +1096,7 @@ else {
 	    systemd_can_dropin($edit_user_scope, $unituser)) {
 		push(@delete_buttons,
 		     [ 'delete_override',
-		       $text{'edit_deleteoverridenow'} || "Delete Override" ]);
+		       $text{'edit_deleteoverridenow'} ]);
 		}
 	elsif (($edit_user_scope || system_unit_file_deletable($u)) &&
 	       $unit_file_editable && $in{'name'} ne 'webmin.service' &&

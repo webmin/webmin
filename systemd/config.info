@@ -5,6 +5,7 @@ visible_tabs=Tabs to show on the index page,15,visible_tabs
 show_runtime_units=Show generated and transient units,1,1-Yes,0-No
 default_create_scope=Default scope for new units,1,system-System units,user-User units
 manual_vendor_units=Include vendor unit files in the manual editor,1,1-Yes,0-No
+edit_vendor_units=Allow editing packaged unit files,1,1-Yes,0-No
 delete_vendor_units=Allow deleting packaged unit files,1,1-Yes,0-No
 default_linger=Enable linger by default for new user units,1,1-Yes,0-No
 show_unit_suffixes=Show full unit names with type suffixes,1,1-Yes,0-No

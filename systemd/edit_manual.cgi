@@ -23,6 +23,7 @@ my $info = $allowed{$in{'file'}} || $files[0];
 my $file = $info->{'file'};
 my $data = read_manual_unit_file($info);
 defined($data) || error($text{'manual_eread'});
+my $file_writable = manual_unit_file_writable($info);
 
 ui_print_header(undef, $text{'manual_title'}, "");
 my $desc = $info->{'scope'} eq 'user' ?
@@ -43,9 +44,11 @@ print ui_form_end();
 print ui_form_start("save_manual.cgi", "form-data");
 print ui_hidden("file", $file);
 print ui_table_start(undef, undef, 2);
-print ui_table_row(undef, ui_textarea("data", $data, 35, 120), 2);
+print ui_table_row(undef, ui_textarea("data", $data, 35, 120, undef,
+				      undef, $file_writable ? undef :
+				      "readonly='readonly'"), 2);
 print ui_table_end();
-print ui_form_end([ [ "save", $text{'save'} ] ]);
+print ui_form_end($file_writable ? [ [ "save", $text{'save'} ] ] : undef);
 
 ui_print_footer("index.cgi", $text{'index_return'});
 

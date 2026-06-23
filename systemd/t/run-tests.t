@@ -77,9 +77,11 @@ our (%access, %config, %in, %text, %gconfig, $remote_user);
     systemd_euserunitfile => 'bad user unit file',
     systemd_euserunitdir => 'bad user unit dir',
     systemd_edropinfile => 'bad drop-in file',
+    systemd_edropininstall => 'bad drop-in install section',
     systemd_ereadonly => 'runtime unit file',
     systemd_ename => 'bad unit name',
     systemd_egone => 'unit gone',
+    systemd_evendoredit => 'vendor unit edit disabled',
     systemd_elocaldelete => 'local unit delete only',
     systemd_eclash => 'unit clash',
     systemd_emountwhat => 'missing mount source',
@@ -197,6 +199,27 @@ ok(!unit_file_editable({
         unitstate => 'generated',
     }),
    'generated unit files are read-only');
+ok(system_unit_file_writable({
+        name => 'local.service',
+        file => '/etc/systemd/system/local.service',
+        unitstate => 'enabled',
+    }),
+   'local system unit files can be edited directly');
+ok(!system_unit_file_writable({
+        name => 'vendor.service',
+        file => '/usr/lib/systemd/system/vendor.service',
+        unitstate => 'enabled',
+    }),
+   'packaged system unit files cannot be edited directly by default');
+{
+    local $config{'edit_vendor_units'} = 1;
+    ok(system_unit_file_writable({
+            name => 'vendor.service',
+            file => '/usr/lib/systemd/system/vendor.service',
+            unitstate => 'enabled',
+        }),
+       'packaged system unit files can be edited directly when configured');
+}
 ok(system_unit_file_deletable({
         name => 'local.service',
         file => '/etc/systemd/system/local.service',
@@ -1009,10 +1032,17 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
                     "[Service]\nRestart=always\n");
     write_test_file("$packaged_root/vendor.socket", "");
     write_test_file("$packaged_root/vendor.mount", "");
+    symlink("$packaged_root/vendor.socket", "$local_root/vendor-link.service");
     my @commands;
     local @main::list_units_cache = ();
     local *main::get_system_unit_file_roots = sub {
         return ($local_root, $packaged_root);
+    };
+    local *main::get_system_unit_file_root_candidates = sub {
+        return ($local_root, $packaged_root);
+    };
+    local *main::get_local_unit_root = sub {
+        return $local_root;
     };
     local *main::get_system_dropin_roots = sub {
         return ($local_root);
@@ -1148,6 +1178,21 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
        'manual unit files include system drop-in override files');
     is($manual{"$local_root/demo.service.d/00-local.conf"}->{'kind'},
        'dropin', 'manual drop-in descriptor is marked');
+    ok(manual_unit_file_writable($manual{"$local_root/local.path"}),
+       'manual local system unit files are writable');
+    ok(!manual_unit_file_writable($manual{"$packaged_root/vendor.mount"}),
+       'manual packaged unit files are read-only by default');
+    ok(!system_unit_file_writable({
+            name => 'vendor-link.service',
+            file => "$local_root/vendor-link.service",
+            unitstate => 'enabled',
+        }),
+       'local symlink unit files are not edited directly');
+    {
+        local $config{'edit_vendor_units'} = 1;
+        ok(manual_unit_file_writable($manual{"$packaged_root/vendor.mount"}),
+           'manual packaged unit files are writable when configured');
+    }
     ok(!manual_system_unit_file_safe("$local_root/../escape.service"),
        'manual system unit file safety rejects traversal');
     my $manual_info = manual_unit_file("$local_root/local.path");
@@ -1161,6 +1206,8 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
         manual_unit_file("$local_root/demo.service.d/00-local.conf");
     ok($manual_dropin_info,
        'manual_unit_file returns allowed drop-in descriptor');
+    ok(manual_unit_file_writable($manual_dropin_info),
+       'manual system drop-in files remain writable');
     is(read_manual_unit_file($manual_dropin_info),
        "[Service]\nRestart=always\n",
        'read_manual_unit_file reads system drop-in files');
@@ -1170,6 +1217,12 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
     is(slurp_test_file("$local_root/demo.service.d/00-local.conf"),
        "[Service]\nRestart=on-failure\n",
        'manual system drop-in write preserves exact file');
+    ($ok, $err) = write_manual_unit_file(
+        $manual{"$packaged_root/vendor.mount"},
+        "[Mount]\nWhat=/tmp\nWhere=/vendor\n");
+    ok(!$ok, 'write_manual_unit_file rejects packaged unit writes by default');
+    is($err, $text{'systemd_evendoredit'},
+       'write_manual_unit_file reports packaged unit edit policy');
     unlink($main::unit_config_change_flag);
     unlink($main::daemon_reload_time_flag);
     ok(!needs_daemon_reload(), 'daemon reload is not needed initially');
@@ -1280,6 +1333,13 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
          'verify_dropin_data verifies the base unit name');
     ok(!-e "$verify_root/verify-4/drop.service.d/override.conf",
        'verify_dropin_data removes temporary override files');
+    ($ok, $err) = verify_dropin_data(
+        '/etc/systemd/system/drop.service',
+        "[Unit]\nDescription=Drop\n[Service]\nExecStart=/bin/true\n",
+        "[Install]\nWantedBy=multi-user.target\n", 0);
+    ok(!$ok, 'verify_dropin_data rejects Install sections');
+    is($err, $text{'systemd_edropininstall'},
+       'verify_dropin_data reports Install section policy');
 
     my $before_transient_verify = scalar(@verify_commands);
     ($ok, $err) = verify_dropin_data(
@@ -1346,6 +1406,10 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
        "### Anything between here and the comment below will become ".
        "the new contents of the file\n\n\n\n",
        'dropin_effective_data discards commented base unit contents');
+    ok(dropin_has_install_section("[Install]\nWantedBy=multi-user.target\n"),
+       'drop-in install-section detector rejects active Install sections');
+    ok(!dropin_has_install_section("# [Install]\n[Service]\nRestart=always\n"),
+       'drop-in install-section detector ignores commented examples');
 
     my ($ok, $out) = write_system_dropin_file('demo.service', $template);
     ok($ok, 'write_system_dropin_file writes standard override files');
@@ -1368,6 +1432,12 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
         "$dropin_root/demo.service.d/10-extra.conf",
         "[Service]\nRestartSec=10s\n");
     ok($ok, 'system drop-in config writer updates exact safe file');
+    ($ok, $out) = write_system_dropin_config_file(
+        "$dropin_root/demo.service.d/10-extra.conf",
+        "[Install]\nWantedBy=multi-user.target\n");
+    ok(!$ok, 'system drop-in config writer rejects Install sections');
+    is($out, $text{'systemd_edropininstall'},
+       'system drop-in config writer reports Install section policy');
     is(slurp_test_file("$dropin_root/demo.service.d/10-extra.conf"),
        "[Service]\nRestartSec=10s\n",
        'system drop-in config writer preserves non-standard filename');
@@ -1459,6 +1529,12 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
     is(slurp_test_file("$root/demo.service.d/20-local.conf"),
        "[Service]\nEnvironment=DEMO=2\n",
        'user drop-in config writer preserves non-standard filename');
+    ($ok, $out) = write_user_dropin_config_file(
+        'alice', "$root/demo.service.d/20-local.conf",
+        "[Install]\nWantedBy=default.target\n");
+    ok(!$ok, 'user drop-in config writer rejects Install sections');
+    is($out, $text{'systemd_edropininstall'},
+       'user drop-in config writer reports Install section policy');
     ok(dropin_exists(1, 'alice', 'demo.service'),
        'dropin_exists detects user override files');
     is(read_user_dropin_file('alice', 'demo.service'),
@@ -2044,6 +2120,8 @@ like($config_source, qr/^default_create_scope=/m,
      'module config exposes default create scope');
 like($config_source, qr/^manual_vendor_units=/m,
      'module config exposes vendor-file manual editor visibility');
+like($config_source, qr/^edit_vendor_units=/m,
+     'module config exposes packaged unit edit policy');
 like($config_source, qr/^delete_vendor_units=/m,
      'module config exposes packaged unit delete policy');
 like($config_source, qr/^default_linger=/m,
@@ -2185,6 +2263,12 @@ like($save_source, qr/write_user_unit_file/,
      'save page uses safe user-unit writer');
 like($save_source, qr/unit_file_editable/,
      'save page rejects direct writes to runtime-managed unit files');
+like($save_source, qr/system_unit_file_writable/,
+     'save page rejects direct writes to packaged unit files by default');
+like($save_source, qr/systemd_evendoredit/,
+     'save page reports packaged unit edit policy');
+like($save_source, qr/boot_state_changeable.*?\(\$user_scope \|\| system_unit_file_writable\(\$u\)\)/s,
+     'save page ignores edit-form boot changes for protected packaged units');
 like($save_source, qr/verify_unit_data/,
      'save page verifies raw unit edits before writing');
 like($save_source, qr/dropin_template/,
@@ -2279,10 +2363,14 @@ like($edit_source,
 like($edit_source,
      qr/systemd_unituser.*systemd_runtime_state.*systemd_unit_state.*systemd_boot.*systemd_linger_user/s,
      'edit page orders user unit metadata rows');
+like($edit_source, qr/boot_state_changeable.*?\(\$edit_user_scope \|\| \$unit_file_writable\).*?systemd_can_boot/s,
+     'edit page hides boot radio for protected packaged units');
 like($edit_source, qr/readonly='readonly'/,
      'edit page shows runtime-managed unit files as read-only');
 like($edit_source, qr/unit_file_editable/,
      'edit page hides save and delete for runtime-managed unit files');
+like($edit_source, qr/system_unit_file_writable/,
+     'edit page makes packaged system unit files read-only by default');
 like($edit_source, qr/system_unit_file_deletable/,
      'edit page hides delete for packaged system unit files');
 like($edit_source, qr/edit_depsnow/,
@@ -2297,6 +2385,8 @@ like($edit_source, qr/edit_deleteoverridenow/,
      'edit page labels override deletes clearly');
 like($edit_source, qr/edit_stockunitnow/,
      'edit page links override edits back to the stock unit');
+like($edit_source, qr/edit_view_stockunitnow/,
+     'edit page labels protected base units as view-only from drop-ins');
 like($edit_source, qr/stock_unit/,
      'edit page uses a grouped button for stock-unit navigation');
 like($edit_source, qr/systemd_can_edit/,
@@ -2353,6 +2443,8 @@ unlike($edit_manual_source, qr/action_links\(/,
        'manual editor header omits daemon reload action');
 like($edit_manual_source, qr/systemd_can_manual/,
      'manual editor filters files by ACL');
+like($edit_manual_source, qr/manual_unit_file_writable/,
+     'manual editor hides save for read-only packaged unit files');
 like($dropins_source, qr/list_system_dropin_override_files/,
      'drop-in inventory lists system drop-ins');
 like($dropins_source, qr/list_all_user_dropin_override_files/,
@@ -2365,6 +2457,8 @@ like($dropins_source, qr/sub dropin_file_arg\b/,
      'drop-in inventory links non-standard drop-ins by exact file');
 like($save_manual_source, qr/write_manual_unit_file/,
      'manual save uses constrained unit file writer');
+like($lib_source, qr/sub manual_unit_file_writable\b/,
+     'library distinguishes writable manual files from read-only inventory');
 like($save_manual_source, qr/mark_units_changed/,
      'manual system save marks daemon reload as needed');
 like($save_manual_source, qr/mark_user_units_changed/,

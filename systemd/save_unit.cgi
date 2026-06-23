@@ -697,6 +697,9 @@ else {
 	if (!unit_file_editable($u)) {
 		error($text{'systemd_ereadonly'});
 		}
+	if (!$edit_dropin && !$user_scope && !system_unit_file_writable($u)) {
+		error($text{'systemd_evendoredit'});
+		}
 	$in{'data'} =~ /\S/ || error($text{'systemd_econf'});
 	$in{'data'} =~ s/\r//g;
 	my $save_data = $edit_dropin ?
@@ -788,7 +791,8 @@ else {
 
 	# Apply startup state changes after saving the config.
 	if (defined($in{'boot'}) &&
-	    boot_state_changeable($u->{'unitstate'}, $u->{'name'})) {
+	    boot_state_changeable($u->{'unitstate'}, $u->{'name'}) &&
+	    ($user_scope || system_unit_file_writable($u))) {
 		systemd_can_boot($user_scope, $unituser) ||
 			systemd_acl_error('pboot');
 		if ($user_scope) {
