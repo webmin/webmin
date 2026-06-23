@@ -2904,32 +2904,91 @@ $pubkey =~ s/\s+/ /g;
 return $pubkey;
 }
 
-# validate_ssh_pubkey(pubkey)
+# ssh_pubkey_validation_user([preferred-user])
+# Returns a non-root local user to run ssh-keygen for key validation.
+sub ssh_pubkey_validation_user
+{
+my ($preferred) = @_;
+my %seen;
+
+# Prefer the edited account, but never run the parser as UID 0.
+foreach my $user ($preferred, "nobody") {
+	next if (!$user || $seen{$user}++);
+	my @uinfo = getpwnam($user);
+	next if (!@uinfo || $uinfo[2] == 0);
+	return $uinfo[0];
+	}
+
+# Systems without a usable unprivileged account will use the regex fallback.
+return undef;
+}
+
+# ssh_pubkey_validation_tempfile(pubkey)
+# Writes a public key to a read-only temp file for unprivileged validation.
+sub ssh_pubkey_validation_tempfile
+{
+my ($pubkey) = @_;
+my $tmpdir = &webmin_temp_dir_path(&tempname_dir_sys());
+
+# Keep the temp file in a root-owned, non-writable directory under system temp.
+if (!-d $tmpdir) {
+	&make_dir($tmpdir, 0755, 0) || return undef;
+	}
+my @dst = lstat($tmpdir);
+my $dmode = @dst ? $dst[2] & 0777 : 0;
+return undef if (!@dst || !-d _ || $dst[4] != $<);
+return undef if ($dmode != 0755);
+
+# Use Webmin's temp-file writer inside a root-owned directory.
+&seed_random();
+for(my $i = 0; $i < 20; $i++) {
+	my $pubkeyfile = $tmpdir."/sshkey-".$$."-".
+			 int(rand(1000000000000)).".pub";
+	next if (-e $pubkeyfile);
+	&open_tempfile(SSHKEY, ">$pubkeyfile", 1) || return undef;
+	&print_tempfile(SSHKEY, $pubkey."\n");
+	if (!&close_tempfile(SSHKEY) || !chmod(0444, $pubkeyfile)) {
+		&unlink_file($pubkeyfile);
+		return undef;
+		}
+	push(@main::temporary_files, $pubkeyfile);
+	return $pubkeyfile;
+	}
+return undef;
+}
+
+# validate_ssh_pubkey(pubkey, [run-as-user])
 # Returns an error message if a public key does not look usable.
 sub validate_ssh_pubkey
 {
-my ($pubkey) = @_;
+my ($pubkey, $run_as) = @_;
 
 # Callers pass empty string only when they mean "remove"; validation is for add.
 return $text{'sshkey_eempty'} if (!$pubkey);
 my $ssh_keygen = &has_command("ssh-keygen");
-if ($ssh_keygen) {
-	# Prefer OpenSSH's parser when available, because key formats evolve.
-	my $pubkeyfile = &transname("id.pub");
-	&write_file_contents($pubkeyfile, $pubkey."\n");
-	my ($out, $err);
-	&execute_command(quotemeta($ssh_keygen)." -l -f ".
-			 quotemeta($pubkeyfile),
-			 undef, \$out, \$err);
-	&unlink_file($pubkeyfile);
-	if ($?) {
-		# Strip the temp path from ssh-keygen errors before showing them.
-		$err =~ s/\s+$//g;
-		return &text('sshkey_einvalid',
-			     &html_escape($err || $text{'sshkey_eformat'}));
+my $validation_user = &ssh_pubkey_validation_user($run_as);
+if ($ssh_keygen && $validation_user) {
+	# Prefer OpenSSH's parser when available, but keep it unprivileged.
+	my $pubkeyfile = &ssh_pubkey_validation_tempfile($pubkey);
+	if (!$pubkeyfile) {
+		$ssh_keygen = undef;
+		}
+	else {
+		my ($out, $err);
+		my $cmd = &command_as_user($validation_user, 0,
+					   $ssh_keygen, "-l", "-f",
+					   $pubkeyfile);
+		&execute_command($cmd, undef, \$out, \$err);
+		&unlink_file($pubkeyfile);
+		if ($?) {
+			# Strip the temp path from ssh-keygen errors before showing them.
+			$err =~ s/\s+$//g;
+			return &text('sshkey_einvalid',
+				     &html_escape($err || $text{'sshkey_eformat'}));
+			}
 		}
 	}
-elsif ($pubkey !~
+if ((!$ssh_keygen || !$validation_user) && $pubkey !~
 	/^(ssh-rsa|ssh-dss|ecdsa-sha2-nistp256|rsa-sha2-512|rsa-sha2-256|ecdsa-sha2-nistp384|ecdsa-sha2-nistp521|ssh-ed25519|sk-ecdsa-sha2-nistp256|sk-ssh-ed25519)\s+\S+(?:\s+.*)?$/) {
 	# Minimal fallback for systems without ssh-keygen.
 	return &text('sshkey_einvalid', $text{'sshkey_eformat'});

@@ -243,7 +243,7 @@ if (!$access{'autohome'}) {
 my $sshkey = &normalize_ssh_pubkey($in{'sshkey'});
 if ($sshkey) {
 	# Empty field means "remove the Webmin-managed key"; non-empty must parse.
-	my $sshkeyerr = &validate_ssh_pubkey($sshkey);
+	my $sshkeyerr = &validate_ssh_pubkey($sshkey, $user{'user'});
 	&error($sshkeyerr) if ($sshkeyerr);
 	}
 $user{'shell'} = $in{'shell'};
