@@ -1,11 +1,13 @@
 ## Changelog
 
-#### 2.650 (June 21, 2026)
+#### 2.650 (June 25, 2026)
 * Add new Systemd Services and Units module
 * Add new GRUB 2 Boot Loader module
 * Add new Kea DHCP Server module
+* Add WebSocket proxy support to the Webmin Servers Index module
 * Add basic Alpine Linux support
 * Add IP-based Let's Encrypt certificate support with Certbot 5.3
+* Add editable SSH public keys for newly added Unix users in Users and Groups module
 * Add improvements to custom Webmin temporary directory handling
 * Add quick service and port forwarding controls to the nftables module
 * Add optional pre- and post-scripts for scheduled package updates
@@ -37,6 +39,9 @@
   - Add support for saving live stats history for up to 24 hours without performance impact
   - Add better support for the new Nginx, nftables, and upcoming systemd, Kea-DHCP, and GRUB 2 Webmin modules
   - Add ability to always show available dashboard panels in theme configuration
+  - Add support for live stats and terminal WebSocket connections through Webmin Servers Index proxy links
+  - Fix proxying when Webmin is accessed with a webprefix using Webmin Servers Index module
+  - Fix theme UI helpers to escape generated markup more safely
   - Fix iOS terminal viewport sizing
   - Fix editor save handling, clean-state indication and dirty reload guard
   - Fix popover positioning, z-index and border color for help bubbles
