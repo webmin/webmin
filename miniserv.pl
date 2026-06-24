@@ -139,12 +139,14 @@ if (-l $perl_path) {
 # Check vital config options
 &update_vital_config();
 
-# Check if already running via the PID file
-if (open(PIDFILE, $config{'pidfile'})) {
+# Check if already running via the PID file. In foreground mode, systemd or
+# the socket bind owns duplicate-start detection.
+if (!$config{'nofork'} && !$nofork_argv && open(PIDFILE, $config{'pidfile'})) {
 	my $already = <PIDFILE>;
 	close(PIDFILE);
-	chop($already);
-	if ($already && $already != $$ && kill(0, $already)) {
+	chomp($already);
+	$already =~ s/^\s+|\s+$//g;
+	if ($already =~ /^\d+$/ && $already != $$ && kill(0, $already)) {
 		die "Webmin is already running with PID $already\n";
 		}
 	}
