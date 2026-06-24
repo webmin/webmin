@@ -6250,8 +6250,16 @@ else {
 # backend hop is plain TCP or wrapped in TLS.
 my $backend_write = sub {
 	my ($buf) = @_;
-	return $backend_ssl ? Net::SSLeay::write($backend_ssl, $buf)
-			    : syswrite($fh, $buf, length($buf));
+	my $offset = 0;
+	my $len = length($buf);
+	while($offset < $len) {
+		my $rv = $backend_ssl ?
+			Net::SSLeay::write($backend_ssl, substr($buf, $offset)) :
+			syswrite($fh, $buf, $len - $offset, $offset);
+		return 0 if (!defined($rv) || $rv <= 0);
+		$offset += $rv;
+		}
+	return 1;
 	};
 my $backend_read = sub {
 	my ($size) = @_;
@@ -6300,30 +6308,41 @@ my $path = $ws->{'wspath'} || $simple;
 my $backend_session = $ws->{'backend_session'} || $session_id;
 my $bsession_id = &b64encode($backend_session);
 print DEBUG "send request to $path to websockets backend\n";
-$backend_write->("GET $path HTTP/1.1\r\n");
+$backend_write->("GET $path HTTP/1.1\r\n") ||
+	return &$backend_fail(500, "Failed to write to websockets backend");
 if ($ws->{'host'} || $ws->{'hostheader'}) {
-	$backend_write->("Host: ".($ws->{'hostheader'} || $ws->{'host'})."\r\n");
+	$backend_write->("Host: ".($ws->{'hostheader'} || $ws->{'host'})."\r\n") ||
+		return &$backend_fail(500, "Failed to write to websockets backend");
 	}
-$backend_write->("Upgrade: websocket\r\n");
-$backend_write->("Connection: Upgrade\r\n");
+$backend_write->("Upgrade: websocket\r\n") ||
+	return &$backend_fail(500, "Failed to write to websockets backend");
+$backend_write->("Connection: Upgrade\r\n") ||
+	return &$backend_fail(500, "Failed to write to websockets backend");
 if ($ws->{'nokey'}) {
-	$backend_write->("Sec-WebSocket-Key: $key\r\n");
+	$backend_write->("Sec-WebSocket-Key: $key\r\n") ||
+		return &$backend_fail(500, "Failed to write to websockets backend");
 	}
 else {
 	print DEBUG "Sending key $bsession_id\n";
-	$backend_write->("Sec-WebSocket-Key: $bsession_id\r\n");
+	$backend_write->("Sec-WebSocket-Key: $bsession_id\r\n") ||
+		return &$backend_fail(500, "Failed to write to websockets backend");
 	}
 if (@protos) {
-	$backend_write->("Sec-WebSocket-Protocol: ".join(" ", @protos)."\r\n");
+	$backend_write->("Sec-WebSocket-Protocol: ".join(" ", @protos)."\r\n") ||
+		return &$backend_fail(500, "Failed to write to websockets backend");
 	}
 if ($ws->{'origin'}) {
-	$backend_write->("Origin: $ws->{'origin'}\r\n");
+	$backend_write->("Origin: $ws->{'origin'}\r\n") ||
+		return &$backend_fail(500, "Failed to write to websockets backend");
 	}
 if ($ws->{'auth'} && $ws->{'auth'} =~ /^basic:(\S+)$/) {
-	$backend_write->("Authorization: Basic $1\r\n");
+	$backend_write->("Authorization: Basic $1\r\n") ||
+		return &$backend_fail(500, "Failed to write to websockets backend");
 	}
-$backend_write->("Sec-WebSocket-Version: $header{'sec-websocket-version'}\r\n");
-$backend_write->("\r\n");
+$backend_write->("Sec-WebSocket-Version: $header{'sec-websocket-version'}\r\n") ||
+	return &$backend_fail(500, "Failed to write to websockets backend");
+$backend_write->("\r\n") ||
+	return &$backend_fail(500, "Failed to write to websockets backend");
 
 # Read back the reply
 my $rh = $backend_readline->();
