@@ -139,22 +139,15 @@ if (-l $perl_path) {
 # Check vital config options
 &update_vital_config();
 
-# Check if already running via the PID file
-if (open(PIDFILE, $config{'pidfile'})) {
+# Check if already running via the PID file. In foreground mode, systemd or
+# the socket bind owns duplicate-start detection.
+if (!$config{'nofork'} && !$nofork_argv && open(PIDFILE, $config{'pidfile'})) {
 	my $already = <PIDFILE>;
 	close(PIDFILE);
 	chomp($already);
 	$already =~ s/^\s+|\s+$//g;
 	if ($already =~ /^\d+$/ && $already != $$ && kill(0, $already)) {
-		my $active = &pid_is_miniserv_for_config($already, $config_file);
-		if (defined($active) && !$active) {
-			warn "Ignoring stale Webmin PID file $config{'pidfile'} ".
-			     "for unrelated PID $already\n";
-			unlink($config{'pidfile'});
-			}
-		else {
-			die "Webmin is already running with PID $already\n";
-			}
+		die "Webmin is already running with PID $already\n";
 		}
 	}
 
@@ -5189,56 +5182,6 @@ local $/;
 $rv = <$fh>;
 close($fh);
 return $rv;
-}
-
-# read_process_cmdline(pid)
-# Returns a process command line from /proc, or undef if unavailable.
-sub read_process_cmdline
-{
-my ($pid) = @_;
-return undef if (!$pid || $pid !~ /^\d+$/);
-return &read_any_file("/proc/$pid/cmdline");
-}
-
-# same_config_file(file1, file2)
-# Returns 1 if two config paths refer to the same file.
-sub same_config_file
-{
-my ($file1, $file2) = @_;
-return 0 if (!$file1 || !$file2);
-return 1 if ($file1 eq $file2);
-my @stat1 = stat($file1);
-my @stat2 = stat($file2);
-return @stat1 && @stat2 && $stat1[0] == $stat2[0] &&
-       $stat1[1] == $stat2[1];
-}
-
-# pid_is_miniserv_for_config(pid, config-file)
-# Returns 1 if pid appears to be miniserv for this config, 0 if it is a
-# different process, or undef if this platform cannot tell.
-sub pid_is_miniserv_for_config
-{
-my ($pid, $config_file) = @_;
-my $cmdline = &read_process_cmdline($pid);
-return undef if (!defined($cmdline));
-return 0 if ($cmdline eq "");
-my @args = split(/\0/, $cmdline);
-my $script_idx;
-for(my $i=0; $i<@args; $i++) {
-	if ($args[$i] =~ /(?:^|\/)miniserv\.pl$/) {
-		$script_idx = $i;
-		last;
-		}
-	}
-return 0 if (!defined($script_idx));
-my $config_arg;
-for(my $i=$script_idx+1; $i<@args; $i++) {
-	next if ($args[$i] =~ /^-/);
-	$config_arg = $args[$i];
-	last;
-	}
-return defined($config_arg) ?
-       (&same_config_file($config_arg, $config_file) ? 1 : 0) : undef;
 }
 
 # update_vital_config()
