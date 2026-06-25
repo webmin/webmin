@@ -276,14 +276,44 @@ if (!&has_command("ifconfig") && &has_command("ip")) {
 
 my $cmd;
 if (&has_command("ip")) {
+	# Create bonding device if it doesn't exist yet
+	if ($a->{'bond'} && !$old) {
+		my $out = &backquote_logged("ip link add ".&escape_shellarg($a->{'name'})." type bond 2>&1");
+		&error("Failed to create bond device : ".&html_escape($out)) if ($?);
+		if ($a->{'mode'}) {
+			$out = &backquote_logged("ip link set ".&escape_shellarg($a->{'name'})." type bond mode ".&escape_shellarg($a->{'mode'})." 2>&1");
+			&error("Failed to set bond mode : ".&html_escape($out)) if ($?);
+			}
+		if ($a->{'miimon'}) {
+			$out = &backquote_logged("ip link set ".&escape_shellarg($a->{'name'})." type bond miimon ".&escape_shellarg($a->{'miimon'})." 2>&1");
+			&error("Failed to set bond miimon : ".&html_escape($out)) if ($?);
+			}
+		if ($a->{'updelay'}) {
+			$out = &backquote_logged("ip link set ".&escape_shellarg($a->{'name'})." type bond updelay ".&escape_shellarg($a->{'updelay'})." 2>&1");
+			&error("Failed to set bond updelay : ".&html_escape($out)) if ($?);
+			}
+		if ($a->{'downdelay'}) {
+			$out = &backquote_logged("ip link set ".&escape_shellarg($a->{'name'})." type bond downdelay ".&escape_shellarg($a->{'downdelay'})." 2>&1");
+			&error("Failed to set bond downdelay : ".&html_escape($out)) if ($?);
+			}
+		foreach my $slave (split(/\s+/, $a->{'partner'})) {
+			$out = &backquote_logged("ip link set ".&escape_shellarg($slave)." down 2>&1");
+			&error("Failed to set slave down : ".&html_escape($out)) if ($?);
+			$out = &backquote_logged("ip link set ".&escape_shellarg($slave)." master ".&escape_shellarg($a->{'name'})." 2>&1");
+			&error("Failed to add bond slave : ".&html_escape($out)) if ($?);
+			}
+		$out = &backquote_logged("ip link set ".&escape_shellarg($a->{'name'})." up 2>&1");
+		&error("Failed to bring up bond device : ".&html_escape($out)) if ($?);
+		}
+
 	# If the IP is changing, first remove it then re-add
 	my $readd = 0;
 	if ($old && $old->{'address'}) {
 		if ($old->{'address'} ne $a->{'address'} ||
 		    $old->{'netmask'} ne $a->{'netmask'}) {
-			my $rcmd = "ip addr del ".quotemeta($old->{'address'}).
+			my $rcmd = "ip addr del ".&escape_shellarg($old->{'address'}).
 				   "/".&mask_to_prefix($old->{'netmask'}).
-				   " dev ".quotemeta($a->{'name'});
+				   " dev ".&escape_shellarg($a->{'name'});
 			&system_logged("$rcmd >/dev/null 2>&1");
 			$readd = 1;
 			}
@@ -294,19 +324,19 @@ if (&has_command("ip")) {
 
 	# Build ip command to add the new IP
 	if ($readd && $a->{'address'}) {
-		$cmd .= "ip addr add ".quotemeta($a->{'address'});
+		$cmd .= "ip addr add ".&escape_shellarg($a->{'address'});
 		if ($a->{'netmask'}) {
 			$cmd .= "/".&mask_to_prefix($a->{'netmask'});
 			}
 		if ($a->{'broadcast'}) {
-			$cmd .= " broadcast ".quotemeta($a->{'broadcast'});
+			$cmd .= " broadcast ".&escape_shellarg($a->{'broadcast'});
 			}
 		if($a->{'vlan'} == 1) {
-			$cmd .= " dev ".quotemeta($a->{'physical'}).".".
-				quotemeta($a->{'vlanid'});
+			$cmd .= " dev ".&escape_shellarg($a->{'physical'}).".".
+				&escape_shellarg($a->{'vlanid'});
 			}
 		else {
-			$cmd .= " dev ".quotemeta($a->{'name'});
+			$cmd .= " dev ".&escape_shellarg($a->{'name'});
 			}
 		}
 	}
