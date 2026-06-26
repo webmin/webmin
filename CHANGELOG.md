@@ -32,8 +32,9 @@
 * Fix PHP-FPM monitor on EL systems when using `/etc/php.ini` as the config file
 * Fix RPC-only accounts to block browser/module access before module ACL checks
 * Fix reflected XSS in Webmin status messages
-* Fix authentication state handling for SSL certificate logins and proxied keep-alive requests
 * Fix path validation in File Manager, package delete helpers, and Apache virtual host files
+* Fix authentication state handling for SSL certificate logins and proxied keep-alive requests
+* Update session handling to improve security, which will require users to re-authenticate after upgrading
 * Update the Authentic theme to the latest version with various improvements and fixes:
   - Add zooming to stats history graphs by holding shift and scrolling in the dashboard
   - Add support for saving live stats history for up to 24 hours without performance impact
