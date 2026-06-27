@@ -131,6 +131,20 @@ return &software::missing_install_link(
 	"certbot", $text{'letsencrypt_certbot'}, $rlink, $rmsg);
 }
 
+# get_letsencrypt_output_pem_path(output)
+# Returns the first certbot PEM path from command output, or undef
+sub get_letsencrypt_output_pem_path
+{
+my ($out) = @_;
+if ($out =~ /((?:\/usr\/local)?\/etc\/letsencrypt\/(?:live|archive)\/[a-zA-Z0-9\.\_\-:\/\*]+\.pem)/ ||
+    $out =~ /((?:\/usr\/local)?\/etc\/letsencrypt\/(?:live|archive)\/[a-zA-Z0-9\.\_\-:\/\r\n\* ]*?\.pem)/) {
+	my $full = $1;
+	$full =~ s/\s//g;
+	return $full;
+	}
+return undef;
+}
+
 # request_letsencrypt_cert(domain|&domains|&ips, webroot, [email], [keysize],
 # 			   [request-mode], [use-staging], [account-email],
 # 			   [key-type], [reuse-key],
@@ -387,14 +401,15 @@ if ($letsencrypt_cmd) {
 		goto FAILED;
 		}
 	my ($full, $cert, $key, $chain);
-	if ($out =~ /((?:\/usr\/local)?\/etc\/letsencrypt\/(?:live|archive)\/[a-zA-Z0-9\.\_\-:\/\r\n\* ]*\.pem)/) {
+	if ($full = &get_letsencrypt_output_pem_path($out)) {
 		# Output contained the full path
-		$full = $1;
-		$full =~ s/\s//g;
 		}
 	else {
 		# Try searching common paths
-		my @fulls = (glob("/etc/letsencrypt/live/$certname-*/cert.pem"),
+		my @fulls = grep { -r $_ } (
+			     "/etc/letsencrypt/live/$certname/cert.pem",
+			     glob("/etc/letsencrypt/live/$certname-*/cert.pem"),
+			     "/usr/local/etc/letsencrypt/live/$certname/cert.pem",
 			     glob("/usr/local/etc/letsencrypt/live/$certname-*/cert.pem"));
 		if (@fulls) {
 			my %stats = map { $_, [ stat($_) ] } @fulls;
