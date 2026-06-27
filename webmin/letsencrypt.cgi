@@ -132,7 +132,7 @@ else {
 		    $mode eq 'certbot' ? 'letsencrypt_doingcertbot' :
 					 'letsencrypt_doing',
 		    "<tt>".&html_escape(join(", ", @doms))."</tt>",
-		    "<tt>".&html_escape($webroot)."</tt>"),"<p>\n";
+		    "<tt>".&html_escape($webroot)."</tt>"),"<br>\n";
 	my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(
 		\@doms, $webroot, undef, $size, $mode, $in{'staging'},
 		undef, undef, undef, $in{'directory_url'},
@@ -142,7 +142,20 @@ else {
 		}
 	else {
 		# Worked, now copy to Webmin
-		print $text{'letsencrypt_done'},"<p>\n";
+		my @grid = ( $text{'letsencrypt_cert'}, $cert,
+			     $text{'letsencrypt_key'}, $key );
+		push(@grid, $text{'letsencrypt_chain'}, $chain) if ($chain);
+		my $details = &html_escape($text{'letsencrypt_show'})."<p>\n".
+			      &ui_grid_table(\@grid, 2);
+		print &ui_details({
+			'html' => 1,
+			'title' => &ui_tag('span',
+					   &html_escape($text{'letsencrypt_done'}),
+					   { 'data-second-print' => undef }),
+			'content' => $details,
+			'class' => 'inline inlined',
+			});
+		print "<div data-x-br=\"\"></div>\n";
 
 		# Save the renewal schedule
 		&save_renewal_only(\@doms, $webroot, $mode,
@@ -183,15 +196,11 @@ else {
 
 			&webmin_log("letsencrypt");
 			&restart_miniserv(1);
-			print $text{'letsencrypt_wdone'},"<p>\n";
+			print &ui_tag('span',
+				      &html_escape($text{'letsencrypt_wdone'}),
+				      { 'data-second-print' => undef });
+			print "<br><div data-x-br=\"\"></div>\n";
 			}
-
-		# Tell the user what was done
-		print $text{'letsencrypt_show'},"<p>\n";
-		my @grid = ( $text{'letsencrypt_cert'}, $cert,
-			     $text{'letsencrypt_key'}, $key );
-		push(@grid, $text{'letsencrypt_chain'}, $chain) if ($chain);
-		print &ui_grid_table(\@grid, 2);
 		}
 
 	&ui_print_footer("", $text{'index_return'});
