@@ -4,7 +4,7 @@
 require './custom-lib.pl';
 &ReadParse();
 
-$access{'edit'} || &error($text{'save_ecannot'});
+&custom_can_edit_commands() || &error($text{'save_ecannot'});
 if ($in{'delete'}) {
 	$cmd = &get_command($in{'id'}, $in{'idx'});
 	&delete_command($cmd);

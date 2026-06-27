@@ -30,6 +30,27 @@ do "md5-lib.pl";
 @random_password_chars = ( 'a' .. 'z', 'A' .. 'Z', '0' .. '9' );
 $disable_string = $config{'lock_prepend'} eq "" ? "!" : $config{'lock_prepend'};
 
+# useradmin_has_full_webmin_access()
+# Returns 1 if the current Webmin user has access to all modules.
+sub useradmin_has_full_webmin_access
+{
+return $useradmin_full_webmin_access_cache
+	if (defined($useradmin_full_webmin_access_cache));
+local %acl;
+&read_acl(\%acl, undef, [ $base_remote_user ]);
+local %global_access = &get_module_acl($base_remote_user, "");
+return $useradmin_full_webmin_access_cache = 0
+	if ($global_access{'_safe'} || $global_access{'rpc'} == 0);
+return $useradmin_full_webmin_access_cache = 1
+	if ($acl{$base_remote_user,'*'});
+foreach my $m (&get_all_module_infos()) {
+	next if (!&check_os_support($m));
+	return $useradmin_full_webmin_access_cache = 0
+		if (!$acl{$base_remote_user,$m->{'dir'}});
+	}
+return $useradmin_full_webmin_access_cache = 1;
+}
+
 # Search types
 $match_modes = [ [ 0, $text{'index_equals'} ], [ 4, $text{'index_contains'} ],
 		 [ 1, $text{'index_matches'} ], [ 2, $text{'index_nequals'} ],
@@ -1004,6 +1025,11 @@ control permissions for this module are in the acl parameter.
 =cut
 sub can_edit_user
 {
+if (!&useradmin_has_full_webmin_access() && defined($_[1]->{'user'}) &&
+    ($_[1]->{'user'} eq 'root' ||
+     (defined($_[1]->{'uid'}) && $_[1]->{'uid'} <= 0))) {
+	return 0;
+	}
 local $m = $_[0]->{'uedit_mode'};
 local %u;
 if ($m == 0) { return 1; }

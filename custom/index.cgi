@@ -10,7 +10,7 @@ require './custom-lib.pl';
 
 # Build links
 @links = ( );
-if ($access{'edit'}) {
+if (&custom_can_edit_commands()) {
 	push(@links,&ui_link("edit_cmd.cgi?new=1",$text{'index_create'}));
 	push(@links,&ui_link("edit_file.cgi?new=1",$text{'index_ecreate'}));
 	push(@links,&ui_link("edit_sql.cgi?new=1",$text{'index_screate'}));
@@ -66,7 +66,7 @@ elsif ($config{'display_mode'} == 0) {
 			$html .= &ui_table_row(&html_escape($a->{'desc'}),
 					&show_parameter_input($a, $formno));
 			}
-		if ($access{'edit'}) {
+		if (&custom_can_edit_commands()) {
 			if ($c->{'edit'}) {
 				$link = &ui_link("edit_file.cgi?id=$c->{'id'}",$text{'index_fedit'});
 				}
@@ -98,7 +98,7 @@ else {
 	foreach $c (@cust) {
 		@cols = ( );
 		local @links = ( );
-		if ($access{'edit'}) {
+		if (&custom_can_edit_commands()) {
 			local $e = $c->{'edit'} ? "edit_file.cgi" :
 				   $c->{'sql'} ? "edit_sql.cgi" :
 						 "edit_cmd.cgi";

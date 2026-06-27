@@ -7,9 +7,9 @@ my ($cgi) = @_;
 my @cust = grep { &can_run_command($_) } &list_commands();
 if ($cgi eq 'edit_cmd.cgi') {
 	# Custom command editor
+	return 'none' if (!&custom_can_edit_commands());
 	my ($cmd) = grep { !$_->{'edit'} && !$_->{'sql'} } @cust;
-	return $cmd ? 'id='.&urlize($cmd->{'id'}) :
-	       $access{'edit'} ? 'new=1' : 'none';
+	return $cmd ? 'id='.&urlize($cmd->{'id'}) : 'new=1';
 	}
 elsif ($cgi eq 'form.cgi') {
 	# Custom command form
@@ -18,9 +18,9 @@ elsif ($cgi eq 'form.cgi') {
 	}
 elsif ($cgi eq 'edit_file.cgi') {
 	# File editor editor
+	return 'none' if (!&custom_can_edit_commands());
 	my ($cmd) = grep { $_->{'edit'} } @cust;
-	return $cmd ? 'id='.&urlize($cmd->{'id'}) :
-	       $access{'edit'} ? 'new=1' : 'none';
+	return $cmd ? 'id='.&urlize($cmd->{'id'}) : 'new=1';
 	}
 elsif ($cgi eq 'view.cgi') {
 	# Custom command form
@@ -29,9 +29,9 @@ elsif ($cgi eq 'view.cgi') {
 	}
 elsif ($cgi eq 'edit_sql.cgi') {
 	# SQL query
+	return 'none' if (!&custom_can_edit_commands());
 	my ($cmd) = grep { $_->{'sql'} } @cust;
-	return $cmd ? 'id='.&urlize($cmd->{'id'}) :
-	       $access{'edit'} ? 'new=1' : 'none';
+	return $cmd ? 'id='.&urlize($cmd->{'id'}) : 'new=1';
 	}
 elsif ($cgi eq 'sqlform.cgi') {
 	# SQL query form

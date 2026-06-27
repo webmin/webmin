@@ -58,6 +58,7 @@ $err = &check_username_restrictions($in{'user'});
 &lock_user_files();
 @ulist = &list_users();
 @glist = &list_groups();
+$full_webmin_access = &useradmin_has_full_webmin_access();
 if ($in{'old'} ne "") {
 	# Get old user info
 	($ouser_hash) = grep { $_->{'user'} eq $in{'old'} } @ulist;
@@ -151,6 +152,12 @@ elsif ( $in{'uid_def'} eq '2' ) {
 		}
 	}
 
+if (!$full_webmin_access && $in{'user'} eq 'root') {
+	&error($text{'usave_eedit'});
+	}
+if (!$full_webmin_access && $in{'uid'} <= 0) {
+	&error(&text('usave_elowuid', 1));
+	}
 $in{'real'} =~ /^[^:]*$/ || &error(&text('usave_ereal', $in{'real'}));
 if ($in{'shell'} eq "*") { $in{'shell'} = $in{'othersh'}; }
 if ($access{'shells'} ne "*") {

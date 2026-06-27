@@ -20,7 +20,7 @@ if (!@drivers) {
 		"../cpan/download.cgi?source=3&cpan=$pgneed&return=/$module_name/&returndesc=".&urlize($text{'index_return'})),"<p>\n";
 	}
 
-$access{'edit'} || &error($text{'edit_ecannot'});
+&custom_can_edit_commands() || &error($text{'edit_ecannot'});
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'sql_title1'}, "");
 	if ($in{'clone'}) {

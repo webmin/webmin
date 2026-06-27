@@ -6,6 +6,34 @@ use WebminCore;
 &init_config();
 %access = &get_module_acl();
 
+# custom_has_full_webmin_access()
+# Returns 1 if the current Webmin user has access to all modules.
+sub custom_has_full_webmin_access
+{
+return $custom_full_webmin_access_cache
+	if (defined($custom_full_webmin_access_cache));
+local %acl;
+&read_acl(\%acl, undef, [ $base_remote_user ]);
+local %global_access = &get_module_acl($base_remote_user, "");
+return $custom_full_webmin_access_cache = 0
+	if ($global_access{'_safe'} || $global_access{'rpc'} == 0);
+return $custom_full_webmin_access_cache = 1
+	if ($acl{$base_remote_user,'*'});
+foreach my $m (&get_all_module_infos()) {
+	next if (!&check_os_support($m));
+	return $custom_full_webmin_access_cache = 0
+		if (!$acl{$base_remote_user,$m->{'dir'}});
+	}
+return $custom_full_webmin_access_cache = 1;
+}
+
+# custom_can_edit_commands()
+# Returns 1 if the current Webmin user can create or edit commands.
+sub custom_can_edit_commands
+{
+return $access{'edit'} && &custom_has_full_webmin_access();
+}
+
 # list_commands()
 # Returns a list of all custom commands
 sub list_commands

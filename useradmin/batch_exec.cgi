@@ -52,6 +52,7 @@ $newgid = int($config{'base_gid'} > $access{'lowgid'} ?
 # Process the file
 &batch_start() if ($in{'batch'});
 &lock_user_files();
+$full_webmin_access = &useradmin_has_full_webmin_access();
 $lnum = $created = $modified = $deleted = 0;
 print "<pre>\n";
 $pft = &passfiles_type();
@@ -601,6 +602,15 @@ print "</pre>\n";
 # Check access control restrictions for a user
 sub check_user
 {
+if (!$full_webmin_access) {
+	if ($_[0]->{'user'} eq 'root') {
+		return $text{'usave_eedit'};
+		}
+	if ($_[0]->{'uid'} <= 0) {
+		return &text('usave_elowuid', 1);
+		}
+	}
+
 # check if uid is within range
 if ($access{'lowuid'} && $_[0]->{'uid'} < $access{'lowuid'}) {
 	return &text('usave_elowuid', $access{'lowuid'});

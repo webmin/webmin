@@ -5,7 +5,7 @@
 require './custom-lib.pl';
 &ReadParse();
 
-$access{'edit'} || &error($text{'edit_ecannot'});
+&custom_can_edit_commands() || &error($text{'edit_ecannot'});
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'create_title'}, "", "create");
 	if ($in{'clone'}) {
