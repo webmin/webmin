@@ -258,7 +258,44 @@ if (&has_command("ip") && $a->{'virtual'} ne '' && !$a->{'up'}) {
 	return;
 	}
 
-if (!&has_command("ifconfig") && &has_command("ip")) {
+if (&has_command("ip") && $a->{'bond'} && $a->{'up'} && !$old) {
+	# Create the bond before assigning addresses to it.
+	my $bcmd = "ip link add ".quotemeta($a->{'name'})." type bond";
+	if (defined($a->{'mode'}) && $a->{'mode'} ne '') {
+		$bcmd .= " mode ".quotemeta(&bond_mode_name($a->{'mode'}));
+		}
+	if ($a->{'miimon'}) {
+		$bcmd .= " miimon ".quotemeta($a->{'miimon'});
+		}
+	if ($a->{'updelay'}) {
+		$bcmd .= " updelay ".quotemeta($a->{'updelay'});
+		}
+	if ($a->{'downdelay'}) {
+		$bcmd .= " downdelay ".quotemeta($a->{'downdelay'});
+		}
+	my $out = &backquote_logged("$bcmd 2>&1");
+	&error("Failed to create bond device : $out") if ($?);
+	foreach my $slave (grep { $_ ne '' } split(/\s+/, $a->{'partner'})) {
+		$bcmd = "ip link set dev ".quotemeta($slave)." down";
+		$out = &backquote_logged("$bcmd 2>&1");
+		&error("Failed to bring down bond slave : $out") if ($?);
+		$bcmd = "ip link set dev ".quotemeta($slave)." master ".
+			quotemeta($a->{'name'});
+		$out = &backquote_logged("$bcmd 2>&1");
+		&error("Failed to add bond slave : $out") if ($?);
+		$bcmd = "ip link set dev ".quotemeta($slave)." up";
+		$out = &backquote_logged("$bcmd 2>&1");
+		&error("Failed to bring up bond slave : $out") if ($?);
+		}
+	if ($a->{'primary'}) {
+		$bcmd = "ip link set dev ".quotemeta($a->{'name'}).
+			" type bond primary ".quotemeta($a->{'primary'});
+		$out = &backquote_logged("$bcmd 2>&1");
+		&error("Failed to set bond primary interface : $out") if ($?);
+		}
+	}
+
+if (($a->{'bond'} || !&has_command("ifconfig")) && &has_command("ip")) {
 	# For a real interface, activate or de-activate the link
 	if ($a->{'virtual'} eq '' && $a->{'up'} && (!$old || !$old->{'up'})) {
 		# Bring up
@@ -644,6 +681,19 @@ if ($a->{'updelay'}) {
 
 local $out = &backquote_logged("$cmd 2>&1");
 &error($out) if ($?);
+}
+
+# bond_mode_name(mode)
+# Convert Webmin's numeric bonding mode to the name expected by ip(8).
+sub bond_mode_name
+{
+my ($mode) = @_;
+my @modes = ("balance-rr", "active-backup", "balance-xor", "broadcast",
+	     "802.3ad", "balance-tlb", "balance-alb");
+if ($mode =~ /^\d+$/ && defined($modes[$mode])) {
+	return $modes[$mode];
+	}
+return $mode eq "activebackup" ? "active-backup" : $mode;
 }
 
 # Tries to unload the module

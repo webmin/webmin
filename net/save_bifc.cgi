@@ -377,7 +377,7 @@ else {
 			$err && &error("<pre>$err</pre>");
 			}
 		else {
-			if ($in{'bond'}) {
+			if ($in{'bond'} && !&has_command("ip")) {
 				if (($gconfig{'os_type'} eq 'debian-linux') &&
 				    ($gconfig{'os_version'} >= 5)) {}
 				else {&load_module($b);}
@@ -389,4 +389,3 @@ else {
 		    "bifc", $b->{'fullname'}, $b);
 	}
 &redirect("list_ifcs.cgi?mode=boot");
-

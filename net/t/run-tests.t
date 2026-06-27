@@ -617,4 +617,47 @@ is_deeply(\@commands,
 	  [ "ip addr del 10\\.211\\.55\\.25\\/24 dev enp0s5 2>&1" ],
 	  "Linux active virtual interface is removed when saved down");
 
+@commands = ( );
+{
+	no warnings 'redefine';
+	no warnings 'once';
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" :
+		       $_[0] eq "ifconfig" ? "/sbin/ifconfig" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ( );
+		};
+	local *main::backquote_command = sub {
+		return "";
+		};
+	main::activate_interface({ 'name' => 'bond0',
+				   'fullname' => 'bond0',
+				   'virtual' => '',
+				   'bond' => 1,
+				   'partner' => 'eth0 eth1',
+				   'mode' => '1',
+				   'primary' => 'eth0',
+				   'miimon' => '100',
+				   'updelay' => '200',
+				   'downdelay' => '200',
+				   'address' => '10.0.0.2',
+				   'netmask' => '255.255.255.0',
+				   'address6' => [ ],
+				   'netmask6' => [ ],
+				   'up' => 1 });
+	}
+is_deeply(\@commands,
+	  [ "ip link add bond0 type bond mode active\\-backup miimon 100 updelay 200 downdelay 200 2>&1",
+	    "ip link set dev eth0 down 2>&1",
+	    "ip link set dev eth0 master bond0 2>&1",
+	    "ip link set dev eth0 up 2>&1",
+	    "ip link set dev eth1 down 2>&1",
+	    "ip link set dev eth1 master bond0 2>&1",
+	    "ip link set dev eth1 up 2>&1",
+	    "ip link set dev bond0 type bond primary eth0 2>&1",
+	    "ip link set dev bond0 up 2>&1",
+	    "cd / ; ip addr add 10\\.0\\.0\\.2/24 dev bond0 2>&1" ],
+	  "Linux active bond interface is created before assigning an address");
+
 done_testing();
