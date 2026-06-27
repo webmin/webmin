@@ -1,5 +1,8 @@
 ## Changelog
 
+#### 2.651 (June 28, 2026)
+* Fix Certbot-backed certificate requests and renewals to correctly parse PEM paths after issuance
+
 #### 2.650 (June 25, 2026)
 * Add new Systemd Services and Units module
 * Add new GRUB 2 Boot Loader module
