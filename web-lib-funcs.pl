@@ -302,7 +302,7 @@ if (!defined $tmp) {
 	};
 # Before escaping ampersand use negative lookahead to see if occurrence
 # is not an HTML entity already to prevent double escaping (optionally)
-$tmp =~ s/&(?!(([a-zA-Z]+)|(#|#x)\d+);)/&amp;/g if ($nodblamp);
+$tmp =~ s/&(?!([a-zA-Z]+|#\d+|#[xX][0-9A-Fa-f]+);)/&amp;/g if ($nodblamp);
 # Always escape all ampersands by default
 # to make sure they are displayed per se
 $tmp =~ s/&/&amp;/g if (!$nodblamp);
