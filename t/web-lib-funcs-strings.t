@@ -38,6 +38,9 @@ subtest 'html_escape' => sub {
 	is(main::html_escape('&amp;'),    '&amp;amp;', 'default mode double-escapes &amp;');
 	is(main::html_escape('&amp;', 1), '&amp;',     'nodblamp preserves existing &amp;');
 	is(main::html_escape('&#65;', 1), '&#65;',     'nodblamp preserves numeric entity');
+	is(main::html_escape('&#x25E6;', 1), '&#x25E6;', 'nodblamp preserves hex numeric entity');
+	is(main::html_escape('&#X25E6;', 1), '&#X25E6;', 'nodblamp preserves uppercase hex numeric entity');
+	is(main::html_escape('&#xZZ;', 1), '&amp;#xZZ;', 'nodblamp escapes invalid hex numeric entity');
 	# Note: nodblamp's lookahead matches any &<letters>; as an entity, so
 	# made-up names like &x; are treated as entities and not re-escaped.
 	is(main::html_escape('&x;',   1), '&x;',       'nodblamp preserves arbitrary &word; shape');
