@@ -1,5 +1,8 @@
 ## Changelog
 
+#### 2.652 (July, 2026)
+* Fix to recognize hex numeric HTML entities to work in various elements
+
 #### 2.651 (June 28, 2026)
 * Fix Certbot-backed certificate requests and renewals to correctly parse PEM paths after issuance
 * Fix live activation of Linux bond interfaces [#2777](https://github.com/webmin/webmin/pull/2777)
