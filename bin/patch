@@ -185,8 +185,8 @@ else {
 	print "  $1\n" while $output =~ /^(?|Applied patch\s+(\S+)|patching file\s+(\S+))/mg;
 }
 
-# Restart Webmin
-system("$config_dir/restart");
+# Reload Webmin
+reload_miniserv();
 
 =pod
 
