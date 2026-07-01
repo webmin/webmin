@@ -316,7 +316,7 @@ if [ "\$1" = 0 ]; then
 		# has taken it's place. Rename away the /etc/webmin directory
 		rm -rf /etc/webmin.rpmsave
 		mv /etc/webmin /etc/webmin.rpmsave
-		if command -v semanage >/dev/null 2>&1; then
+		if type semanage >/dev/null 2>&1; then
 			semanage fcontext -d "/var/webmin(/.*)?" >/dev/null 2>&1 || true
 		fi
 		rm -rf /var/webmin
