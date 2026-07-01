@@ -1542,16 +1542,25 @@ if ($headerhost) {
 	$headerhost = undef if (!&check_ipaddress($headerhost) &&
 				!&check_ip6address($headerhost));
 	}
-# If trusted_proxies is configured, header-supplied client IP and SSL
-# client info are only honored when the direct TCP peer is in that list.
-# Otherwise drop them so an attacker reaching miniserv directly cannot
-# spoof X-Forwarded-For or X-SSL-Client-* to bypass auth.
-if ($config{'trust_real_ip'} && $config{'trusted_proxies'} ne '' &&
-    !&ip_match($acptip, $localip,
-	       split(/\s+/, $config{'trusted_proxies'}))) {
+# If trusted_proxies is configured, header-supplied client IP is only
+# honored when the direct TCP peer is in that list. Proxied SSL client
+# cert headers carry authentication identity, so only honor those from
+# an explicitly trusted proxy.
+my @trusted_proxies = split(/\s+/, $config{'trusted_proxies'} || "");
+my $trusted_proxy = @trusted_proxies &&
+	&ip_match($acptip, $localip, @trusted_proxies);
+my $trust_ssl_client_headers = $config{'trust_real_ip'} &&
+	!$config{'no_trust_ssl'} && $trusted_proxy;
+if ($config{'trust_real_ip'} && @trusted_proxies && !$trusted_proxy) {
 	print DEBUG "handle_request: peer $acptip not in trusted_proxies; ".
-		    "ignoring forwarding and SSL client headers\n";
+		    "ignoring forwarding headers\n";
 	$headerhost = undef;
+	}
+if (!$trust_ssl_client_headers) {
+	print DEBUG "handle_request: ignoring SSL client headers from ".
+		    "peer $acptip\n"
+		if ($header{'x-ssl-client-dn'} ||
+		    $header{'x-ssl-client-verify'});
 	delete $header{'x-ssl-client-dn'};
 	delete $header{'x-ssl-client-verify'};
 	}

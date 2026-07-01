@@ -60,8 +60,12 @@ if (!-r $first_install_file || $miniserv{'login_script'} eq $record_login_cmd) {
 	$miniserv{'failed_script'} = $record_failed_cmd;
 	}
 
-# Disable trusting SSL certs unless already enabled
-if (!$miniserv{'trust_real_ip'} && !defined($miniserv{'no_trust_ssl'})) {
+# Disable trusting SSL certs unless already enabled. Legacy configs with
+# trust_real_ip but no trusted proxy cannot safely authenticate from
+# proxied SSL client cert headers.
+my @trusted_proxies = split(/\s+/, $miniserv{'trusted_proxies'} || "");
+if ((!$miniserv{'trust_real_ip'} || !@trusted_proxies) &&
+    !defined($miniserv{'no_trust_ssl'})) {
 	$miniserv{'no_trust_ssl'} = 1;
 	}
 
