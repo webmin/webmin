@@ -168,7 +168,7 @@ foreach $r (&expand_remotes($serv)) {
 			$remote_error_msg = undef;
 			&remote_foreign_require($r, 'status', 'status-lib.pl')
 				if (!$done_remote_status{$r}++);
-			my $webmindown = $s->{'type'} eq 'alive' ? 0 : -2;
+			my $webmindown = $serv->{'type'} eq 'alive' ? 0 : -2;
 			if ($remote_error_msg) {
 				$rv = { 'up' => $webmindown,
 					 'desc' => "$text{'mon_webmin'} : $remote_error_msg" };
@@ -195,7 +195,11 @@ foreach $r (&expand_remotes($serv)) {
 			}
 		else {
 			# Just include and use the local monitor library
-			do "${t}-monitor.pl" if (!$done_monitor{$t}++);
+			my $mfile = "$module_root_directory/${t}-monitor.pl";
+			if (-r $mfile && !$done_monitor{$t}++) {
+				do $mfile;
+				$done_monitor_err{$t} = "$@" if ($@);
+				}
 			my $func = "get_${t}_status";
 			if (defined(&$func)) {
 				$rv = &$func($serv,
@@ -203,7 +207,12 @@ foreach $r (&expand_remotes($serv)) {
 				     $fromcgi);
 				}
 			else {
+				# Monitor type is unknown, or its program
+				# failed to load
 				$rv = { 'up' => -1 };
+				$rv->{'desc'} = &text('mon_eload', $mfile,
+						      $done_monitor_err{$t})
+					if ($done_monitor_err{$t});
 				}
 			}
 		alarm(0);

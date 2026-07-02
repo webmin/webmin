@@ -5,9 +5,11 @@ sub get_tcp_status
 {
 # Connect to the server
 socket(SOCK, PF_INET, SOCK_STREAM, getprotobyname("tcp")) ||
-	return { 'up' => -1 };
+	return { 'up' => -3,
+		 'desc' => &text('tcp_esocket', $!) };
 local $addr = inet_aton($_[0]->{'host'});
-return { 'up' => -1 } if (!$addr);
+return { 'up' => 0,
+	 'desc' => &text('tcp_eresolve', $_[0]->{'host'}) } if (!$addr);
 local $st = time();
 local $rv;
 eval {
@@ -18,7 +20,7 @@ eval {
 	alarm(0);
 	};
 return { 'up' => 0 } if ($@);
-return { 'up' => $rv,
+return { 'up' => $rv ? 1 : 0,
 	 'time' => time() - $st };
 }
 

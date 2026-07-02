@@ -2,6 +2,8 @@
 
 sub get_sslcert_status
 {
+# The openssl command is needed for all checks
+&has_command("openssl") || return { 'up' => -1 };
 local $up = 0;
 local $desc;
 local $certfile;
@@ -21,12 +23,15 @@ if ($_[0]->{'url'}) {
 		# don't support it
 		$cmd = "openssl s_client -host ".quotemeta($host).
 		       " -port ".quotemeta($port)." </dev/null 2>&1";
-		$out = &backquote_with_timeout($cmd, 10);
+		($out, $timed) = &backquote_with_timeout($cmd, 10);
 		}
 	if ($?) {
-		# Connection failed
-		return { 'up' => -1,
-			 'desc' => $text{'sslcert_edown'} };
+		# Connection failed or timed out, meaning the web server
+		# is down rather than the monitor being uninstalled
+		return $timed ? { 'up' => -3,
+				  'desc' => $text{'sslcert_etimeout'} }
+			      : { 'up' => 0,
+				  'desc' => $text{'sslcert_edown'} };
 		}
 
 	# Extract the cert part and save
@@ -61,6 +66,11 @@ if ($info =~ /Not\s*Before\s*:\s*(.*)/i) {
 	}
 if ($info =~ /Not\s+After\s*:\s*(.*)/i) {
 	$end = &mailboxes::parse_mail_date("$1");
+	}
+if (!$end) {
+	# Certificate could not be parsed, so it cannot be considered OK
+	return { 'up' => 0,
+		 'desc' => $text{'sslcert_ecert'} };
 	}
 local $now = time();
 if ($start && $now < $start) {

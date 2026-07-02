@@ -3,6 +3,7 @@
 #### 2.652 (July, 2026)
 * Fix to recognize hex numeric HTML entities to work in various elements
 * Fix `patch` sub-command to reload Webmin instead of restarting
+* Fix SSL certificate and TCP monitors to report connection, timeout and DNS failures as down or timed out rather than uninstalled
 
 #### 2.651 (June 28, 2026)
 * Fix Certbot-backed certificate requests and renewals to correctly parse PEM paths after issuance
