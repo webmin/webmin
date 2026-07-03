@@ -60,8 +60,8 @@ if (!-r $first_install_file || $miniserv{'login_script'} eq $record_login_cmd) {
 	$miniserv{'failed_script'} = $record_failed_cmd;
 	}
 
-# Disable trusting SSL certs unless already enabled
-if (!$miniserv{'trust_real_ip'} && !defined($miniserv{'no_trust_ssl'})) {
+# Disable trusting SSL certs from proxies unless already explicitly enabled
+if (!defined($miniserv{'no_trust_ssl'})) {
 	$miniserv{'no_trust_ssl'} = 1;
 	}
 
