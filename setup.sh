@@ -663,12 +663,12 @@ if [ ! -f "$config_dir/.pre-install" ]; then
 fi
 
 # Test if we have systemd system
-systemctlcmd=$(command -v systemctl 2>/dev/null || :)
+systemctlcmd=`command -v systemctl 2>/dev/null`
 if [ -x "$systemctlcmd" ]; then
-    initsys=$(cat /proc/1/comm 2>/dev/null)
-    if [ "$initsys" != "systemd" ]; then
-        systemctlcmd=""
-    fi
+	initsys=`cat /proc/1/comm 2>/dev/null`
+	if [ "$initsys" != "systemd" ]; then
+		systemctlcmd=""
+	fi
 fi
 
 # Re-generating main scripts
@@ -959,6 +959,9 @@ if [ "\$answer" = "y" ]; then
 	echo "Deleting $config_dir .."
 	rm -rf "$config_dir"
 	echo "Deleting $var_dir .."
+	if [ "$var_dir" = "/var/webmin" ] && command -v semanage >/dev/null 2>&1; then
+		semanage fcontext -d "/var/webmin(/.*)?" >/dev/null 2>&1 || true
+	fi
 	rm -rf "$var_dir"
 	echo "Done!"
 fi
@@ -1006,6 +1009,34 @@ for m in ldap-client ldap-server ldap-useradmin mailboxes mysql postgresql serve
 done
 echo ".. done"
 echo ""
+
+fix_selinux_var_dir()
+{
+	selinux_var_dir="$1"
+	case "$selinux_var_dir" in
+	/var/webmin) ;;
+	*) return 0 ;;
+	esac
+	if ! command -v selinuxenabled >/dev/null 2>&1 ||
+	   ! selinuxenabled >/dev/null 2>&1; then
+		return 0
+	fi
+	restored=0
+	if command -v semanage >/dev/null 2>&1; then
+		if semanage fcontext -m -t var_run_t "$selinux_var_dir(/.*)?" >/dev/null 2>&1 ||
+		   semanage fcontext -a -t var_run_t "$selinux_var_dir(/.*)?" >/dev/null 2>&1; then
+			if command -v restorecon >/dev/null 2>&1; then
+				restorecon -R "$selinux_var_dir" >/dev/null 2>&1 && restored=1
+			fi
+		fi
+	fi
+	# chcon is an immediate fallback only; semanage above makes it persistent.
+	if [ "$restored" != "1" ] && command -v chcon >/dev/null 2>&1; then
+		chcon -R -t var_run_t "$selinux_var_dir" >/dev/null 2>&1 || true
+	fi
+	return 0
+}
+fix_selinux_var_dir "$var_dir"
 
 # Save target directory if one was specified
 if [ "$wadir" != "$srcdir" ]; then
