@@ -310,7 +310,7 @@ if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
 		return $text{'install_erpm'};
 		}
 	$redirect_to = $name = $3;
-	$out = &backquote_logged("rpm -Uv \"$file\" 2>&1");
+	$out = &backquote_logged("rpm -Uv ".&quote_path($file)." 2>&1");
 	if ($?) {
 		unlink($file) if ($need_unlink);
 		return &text('install_eirpm', "<tt>$out</tt>");
@@ -381,7 +381,9 @@ else {
 			 !$hasfile{$m,"theme.info"});
 		push(@realmods, $m);
 		my %minfo;
-		system("cd $tmpdir ; tar xf \"$file\" $m/module.info ./$m/module.info $m/theme.info ./$m/theme.info >/dev/null 2>&1");
+		system("cd ".&quote_path($tmpdir)." && tar xf ".&quote_path($file)." ".
+		       &quote_path("$m/module.info")." ".&quote_path("./$m/module.info")." ".
+		       &quote_path("$m/theme.info")." ".&quote_path("./$m/theme.info")." >/dev/null 2>&1");
 		if (!&read_file("$tmpdir/$m/module.info", \%minfo) &&
 		    !&read_file("$tmpdir/$m/theme.info", \%minfo)) {
 			$err = &text('install_einfo', "<tt>$m</tt>");
@@ -451,7 +453,7 @@ else {
 	foreach $m (@realmods) {
 		push(@grantmods, $m) if (!&foreign_exists($m));
 		if ($m ne "webmin") {
-			system("rm -rf ".quotemeta("$install_root_directory/$m")." 2>&1 >/dev/null");
+			system("rm -rf ".&quote_path("$install_root_directory/$m")." 2>&1 >/dev/null");
 			}
 		}
 
