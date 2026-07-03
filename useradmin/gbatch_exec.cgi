@@ -14,6 +14,8 @@ if ($in{'source'} == 0) {
 	$data =~ /\S/ || &error($text{'batch_efile'});
 	}
 elsif ($in{'source'} == 1) {
+	&is_under_directory($access{'batchdir'}, $in{'local'}) ||
+		&error($text{'batch_elocaldir'});
 	open(LOCAL, "<$in{'local'}") || &error($text{'batch_elocal'});
 	while(<LOCAL>) {
 		$data .= $_;

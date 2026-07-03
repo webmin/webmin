@@ -40,8 +40,12 @@ print &ui_table_row($text{'acl_uedit'},
 
 print &ui_table_row($text{'acl_ucreate'},
 	&ui_yesno_radio("ucreate", $o->{'ucreate'}));
+
 print &ui_table_row($text{'acl_batch'},
 	&ui_yesno_radio("batch", $o->{'batch'}));
+
+print &ui_table_row($text{'acl_batchdir'},
+	&ui_filebox("batchdir", $o->{'batchdir'}, 60), 3);
 
 print &ui_table_row($text{'acl_export'},
 	&ui_radio("export", defined($o->{'export'}) ? $o->{'export'} : 0,
@@ -227,6 +231,7 @@ $_[0]->{'shells'} = $in{'shells_def'} ? "*"
 				      : join(" ", split(/\s+/, $in{'shells'}));
 $_[0]->{'peopt'} = $in{'peopt'};
 $_[0]->{'batch'} = $in{'batch'};
+$_[0]->{'batchdir'} = $in{'batchdir'};
 $_[0]->{'export'} = $in{'export'};
 $_[0]->{'home'} = $in{'home'};
 $_[0]->{'delhome'} = $in{'delhome'};
