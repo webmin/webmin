@@ -88,6 +88,6 @@ else {
 	}
 &unlock_file(&bind8::make_chroot($file));
 die $err if ($err);
-sleep($config{'letsencrypt_dns_wait'} || 10);	# Wait for DNS propagation
+sleep($config{'letsencrypt_dns_wait'} // 10);	# Wait for DNS propagation
 &webmin_log("letsencryptdns", undef, $dname);
 exit(0);
