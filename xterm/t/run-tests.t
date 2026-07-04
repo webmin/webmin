@@ -1,10 +1,9 @@
 #!/usr/bin/perl
 # Functional tests for the xterm module.
 #
-# Loads xterm-lib.pl (and acl_security.pl) as libraries. shellserver.pl is
-# guarded by `unless (caller)` so requiring it has no side effects, and the
-# helpers it relies on (verify_websocket_key, parse_resize_message,
-# resolve_shell_user) live in xterm-lib.pl so we can test them in isolation.
+# Loads xterm-lib.pl (and acl_security.pl) as libraries. shellserver.pl
+# remains an executable entry point covered by compile tests; its pure
+# helpers live in xterm-lib.pl so we can test them in isolation.
 
 use strict;
 use warnings;
@@ -49,16 +48,10 @@ $ENV{'FOREIGN_ROOT_DIRECTORY'} = $rootdir;
 
 chdir("$bindir/..") or die "chdir: $!";
 
-# Each xterm script pulls in xterm-lib.pl via a different path string —
-# `require 'xterm-lib.pl'` from acl_security.pl, `require './xterm-lib.pl'`
-# from shellserver.pl. %INC keys on the literal path, so multiple distinct
-# paths all map to the same file and Perl would helpfully re-load it,
-# producing "Subroutine ... redefined" warnings.
-#
-# Fix: pre-populate %INC for every path the in-tree code will use, then
-# `do` the file ourselves (load once, all subsequent `require`s become
-# no-ops because %INC already shows the file as loaded). Test cwd is the
-# module dir, so '.' is on the search path for the do() to find it.
+# acl_security.pl requires xterm-lib.pl by path string. Load it once
+# ourselves, then pre-populate %INC so the later require is a no-op and
+# the test does not get duplicate-subroutine warnings. Test cwd is the
+# module dir, so '.' is on the search path for do() to find it.
 push @INC, '.';
 {
 	my $file = "$bindir/../xterm-lib.pl";
@@ -67,15 +60,6 @@ push @INC, '.';
 }
 
 require "./acl_security.pl";
-
-# shellserver.pl pulls in Net::WebSocket::Server which is an optional CPAN
-# dep — on stripped CI images it may not be installed. Required helpers all
-# live in xterm-lib.pl, so a missing module only costs us the require side-
-# effect check at the bottom of the file.
-my $shellserver_loaded = eval {
-	require "./shellserver.pl";
-	1;
-};
 
 our (%in, %access);
 
@@ -394,32 +378,6 @@ subtest 'shipped ACL templates' => sub {
 	   'safeacl runs as authenticated user (no root for non-admins)');
 	is($safe{'noconfig'}, '1',
 	   'safeacl forbids the module config screen for non-admins');
-};
-
-# shellserver.pl require-and-stub —
-# After the unless(caller) wrap, `require`'ing shellserver.pl should not
-# bind any sockets, fork shells, or otherwise touch the system.
-subtest 'shellserver require is side-effect free' => sub {
-	if ($shellserver_loaded) {
-		# It was required at the top of this file. If that had taken any
-		# of the main-body side effects, this test process would have
-		# died or hung. Reaching this point is itself the assertion.
-		ok(1, 'shellserver.pl required without firing main body');
-	}
-	else {
-		# Net::WebSocket::Server is an optional CPAN dep — record a skip
-		# rather than failing on hosts that don't have it. The guard we're
-		# testing for is still present in the file; compile.t covers parse.
-		SKIP: {
-			skip 'Net::WebSocket::Server not installed (optional dep)', 1;
-		}
-	}
-
-	# Verify the helpers shellserver relies on are reachable from this
-	# scope (i.e. xterm-lib.pl provided them, not an inside-caller block).
-	ok(defined(&verify_websocket_key), 'verify_websocket_key is callable');
-	ok(defined(&parse_resize_message), 'parse_resize_message is callable');
-	ok(defined(&resolve_shell_user),   'resolve_shell_user is callable');
 };
 
 done_testing();

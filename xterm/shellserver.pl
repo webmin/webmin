@@ -13,8 +13,6 @@ use utf8;
 require './xterm-lib.pl';    ## no critic
 our (%config, $module_name, $module_root_directory);
 
-unless (caller) {
-
 my ($port, $user, $dir) = @ARGV;
 
 # Switch to the user we're running as
@@ -204,7 +202,3 @@ Net::WebSocket::Server->new(
 error_stderr("Exited WebSocket server");
 remove_miniserv_websocket($port, $module_name);
 cleanup_miniserv_websockets([$port], $module_name);
-
-} # end of unless (caller)
-
-1;
