@@ -1,13 +1,8 @@
 #!/usr/bin/perl
-# Unit tests for xmlrpc.cgi helper subs.
+# Unit tests for XML-RPC helper subs.
 #
-# xmlrpc.cgi is loaded like miniserv loads Perl CGIs; its top-level body
-# (ACL check, reading
-# the request, dispatching the call, emitting the response) is skipped unless
-# it is invoked directly or via Webmin's CGI environment, so loading it only
-# defines the subs plus loads WebminCore.
-#
-# Most subs under test are the XML <-> Perl marshalling layer:
+# The XML <-> Perl marshalling layer lives in xmlrpc-lib.pl so tests can
+# load it directly without changing xmlrpc.cgi's executable CGI/API flow:
 #   encode_xml_value  - Perl scalar/hashref/arrayref -> XML-RPC <value> body
 #   parse_xml_value   - parsed XML <value> node      -> Perl scalar/ref
 #   find_xmls         - recursive element search over an XML::Parser tree
@@ -29,10 +24,10 @@ my $root = File::Spec->rel2abs(
 	File::Spec->catdir(dirname(__FILE__), '..'));
 chdir($root) or die "chdir $root: $!";
 
-my $script = File::Spec->catfile($root, 'xmlrpc.cgi');
-my $loaded = do $script;
+my $lib = File::Spec->catfile($root, 'xmlrpc-lib.pl');
+my $loaded = do $lib;
 die $@ if $@;
-die "do $script: $!" if (!defined($loaded) && $!);
+die "do $lib: $!" if (!defined($loaded) && $!);
 
 # XML::Parser is only needed to build the parsed-tree inputs for
 # parse_xml_value and the round-trip tests. Probe for it once.
