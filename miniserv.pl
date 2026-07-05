@@ -4,7 +4,7 @@
 package miniserv;
 
 use FindBin;
-use lib $FindBin::Bin;
+use lib $FindBin::RealBin;
 BEGIN {
 	require 'miniserv-lib.pl';
 	}

@@ -24,6 +24,7 @@ use Test::More;
 use File::Find;
 use File::Basename qw(dirname);
 use File::Spec;
+use File::Temp qw(tempdir);
 use Cwd qw(abs_path getcwd);
 
 my $root = abs_path(File::Spec->catdir(dirname(__FILE__), '..'));
@@ -70,7 +71,7 @@ if ($filter) {
 
 if (grep { $_ eq q{./miniserv.pl} } @files) {
 	my $cwd = getcwd();
-	my $tmpdir = File::Spec->tmpdir();
+	my $tmpdir = tempdir(CLEANUP => 1);
 	my $miniserv = File::Spec->catfile($root, q{miniserv.pl});
 	chdir($tmpdir) or BAIL_OUT("chdir($tmpdir): $!");
 	my $out = qx{perl -c -- "$miniserv" 2>&1};
@@ -81,6 +82,20 @@ if (grep { $_ eq q{./miniserv.pl} } @files) {
 	else {
 		fail(q{miniserv.pl compiles outside the source tree});
 		diag($out);
+		}
+
+	SKIP: {
+		my $link = File::Spec->catfile($tmpdir, q{miniserv.pl});
+		skip(q{symlinks are not available}, 1)
+			if !symlink($miniserv, $link);
+		my $out = qx{perl -c -- "$link" 2>&1};
+		if ($out =~ /\bsyntax OK\b/) {
+			pass(q{miniserv.pl compiles when invoked through a symlink});
+			}
+		else {
+			fail(q{miniserv.pl compiles when invoked through a symlink});
+			diag($out);
+			}
 		}
 	}
 
@@ -103,4 +118,3 @@ for my $f (@files) {
 	}
 
 done_testing();
-
