@@ -4,9 +4,8 @@
 package miniserv;
 
 use FindBin;
+use lib $FindBin::Bin;
 BEGIN {
-	unshift(@INC, $FindBin::Bin);
-	push(@INC, $FindBin::RealBin) if $FindBin::RealBin ne $FindBin::Bin;
 	require 'miniserv-lib.pl';
 	}
 
