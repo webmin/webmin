@@ -1,11 +1,10 @@
 #!/usr/bin/perl
-# Unit tests for miniserv.pl helper subs.
+# Unit tests for miniserv helper subs.
 #
-# miniserv.pl is loaded as a module; its top-level script body is skipped
-# by the `unless (caller) { ... }` guard, so we only get the sub
-# definitions plus a handful of pure-constant globals (@itoa64, @weekday,
-# @month, @miniserv_argv). Everything else (%config, @roots, $datestr,
-# etc.) we populate ourselves.
+# miniserv-lib.pl contains the helper functions and pure-constant globals
+# used by miniserv.pl. The daemon startup path stays in miniserv.pl, while
+# tests load this library directly and populate mutable runtime globals
+# (%config, @roots, $datestr, etc.) themselves.
 #
 # Each helper has its own `subtest`. Assertions target the contract
 # (status code present, headers present, redaction happened, round-trip
@@ -18,9 +17,9 @@ use Test::More;
 use File::Basename qw(dirname);
 use File::Spec;
 
-my $script = File::Spec->rel2abs(
-	File::Spec->catfile(dirname(__FILE__), '..', 'miniserv.pl'));
-require $script;
+my $lib = File::Spec->rel2abs(
+	File::Spec->catfile(dirname(__FILE__), '..', 'miniserv-lib.pl'));
+require $lib;
 
 # Capture buffers populated by overridden I/O subs.
 our @written;
@@ -652,10 +651,9 @@ subtest 'ssl_hostname_match' => sub {
 	   ':port suffix is stripped before matching');
 };
 
-# Capability probes used by the crypto subtests below. miniserv.pl's
-# detection logic runs inside its `unless(caller)` block, so when we load
-# it as a module the $use_md5 / $use_sha512 / $use_hmac_sha256 globals are
-# undef. Recreate them here from the same probes miniserv.pl uses itself.
+# Capability probes used by the crypto subtests below. miniserv.pl sets
+# these globals during daemon startup, while the tests load only the helper
+# library. Recreate them here from the same probes miniserv.pl uses itself.
 my $have_md5 = eval {
 	require Digest::MD5;
 	Digest::MD5->new->add('x');

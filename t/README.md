@@ -33,37 +33,19 @@ You need Devel::Cover installed.
 | File | What it checks |
 | --- | --- |
 | `compile.t` | Every `.pl`, `.cgi`, and shebang-perl script in `bin/` parses cleanly (`perl -c`). Catches breakage from bulk refactors without browsing every page. ~12s for the full tree. |
-| `miniserv.t` | Contract test for `miniserv.pl` functions — status codes, headers, body rendering, log behaviour. Demonstrates the require-and-stub pattern below. |
+| `miniserv.t` | Contract test for `miniserv-lib.pl` helpers used by `miniserv.pl` — status codes, headers, body rendering, log behaviour. |
 
-## The require-and-stub pattern
+## Testing helpers from executable code
 
-Many Webmin scripts mix sub definitions with a main body that opens sockets,
-reads `/etc/webmin/*`, or spawns CGIs. To test individual subs in isolation
-we need to `require` the script as a library without running the main body.
+Many Webmin scripts mix helper definitions with a main body that opens sockets,
+reads `/etc/webmin/*`, or spawns CGIs. Prefer moving testable helpers into a
+small `*-lib.pl` file, keeping the executable script focused on startup and
+request handling, and requiring the library from tests. `miniserv.pl` follows
+that pattern: daemon startup remains in `miniserv.pl`, while helper coverage
+loads `miniserv-lib.pl` directly.
 
-Two complementary idioms can be used. Both work; they look different because
-the underlying script does.
-
-### Block wrap (main body precedes sub definitions)
-
-Used by `miniserv.pl`. The executable preamble runs at file scope (so any 
-`my` vars stay file-scoped for the subs below); the main body wraps in
-`unless (caller)`:
-
-```perl
-#!/usr/bin/perl
-use Foo;            # use lines and pragmas stay outside the guard
-
-unless (caller) {
-
-# main body: arg parsing, setup, the actual work
-...
-
-} # end of unless (caller)
-
-sub helper { ... }
-sub other_helper { ... }
-```
+A second useful idiom still applies to simple CLI tools whose sub definitions
+precede the main call.
 
 ### One-liner (sub definitions precede the main call)
 
@@ -90,7 +72,7 @@ under `require`.
 
 `miniserv.t` is the canonical example. The pattern:
 
-1. `require` the script. The guard skips its main body.
+1. `require` the helper library.
 2. Replace side-effecting subs (socket I/O, logging, disk reads) with
    capture-buffer overrides under `no warnings 'redefine'`.
 3. Populate package globals (`%miniserv::config`, `@miniserv::roots`, etc.)

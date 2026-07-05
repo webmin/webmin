@@ -24,7 +24,7 @@ use Test::More;
 use File::Find;
 use File::Basename qw(dirname);
 use File::Spec;
-use Cwd qw(abs_path);
+use Cwd qw(abs_path getcwd);
 
 my $root = abs_path(File::Spec->catdir(dirname(__FILE__), '..'));
 chdir($root) or die "chdir($root): $!";
@@ -66,6 +66,22 @@ find({
 if ($filter) {
 	@files = grep { /$filter/ } @files;
 	@files or do { diag("filter '$filter' matched zero files"); plan skip_all => "no files match filter"; };
+	}
+
+if (grep { $_ eq q{./miniserv.pl} } @files) {
+	my $cwd = getcwd();
+	my $tmpdir = File::Spec->tmpdir();
+	my $miniserv = File::Spec->catfile($root, q{miniserv.pl});
+	chdir($tmpdir) or BAIL_OUT("chdir($tmpdir): $!");
+	my $out = qx{perl -c -- "$miniserv" 2>&1};
+	chdir($cwd) or BAIL_OUT("chdir($cwd): $!");
+	if ($out =~ /\bsyntax OK\b/) {
+		pass(q{miniserv.pl compiles outside the source tree});
+		}
+	else {
+		fail(q{miniserv.pl compiles outside the source tree});
+		diag($out);
+		}
 	}
 
 diag("compile-checking " . scalar(@files) . " files");
