@@ -11,6 +11,15 @@ sub list_update_system_commands
 return ($apt_get_command, $apt_search_command);
 }
 
+# strip_apt_package_arch(package)
+# Returns an APT package name without any Debian architecture suffix.
+sub strip_apt_package_arch
+{
+my ($name) = @_;
+$name =~ s/:[A-Za-z0-9][A-Za-z0-9._-]*$//;
+return $name;
+}
+
 # update_system_install([package], [&in], [no-force])
 # Install some package with apt
 sub update_system_install
@@ -47,7 +56,7 @@ foreach (0..100) {
 &open_execute_command(CMD, "$cmd <".quotemeta($yesfile), 2);
 while(<CMD>) {
 	if (/setting\s+up\s+(\S+)/i && !/as\s+MDA/i) {
-		push(@rv, $1);
+		push(@rv, &strip_apt_package_arch($1));
 		}
 	elsif (/packages\s+will\s+be\s+upgraded/i ||
 	       /new\s+packages\s+will\s+be\s+installed/i) {
@@ -94,6 +103,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 		if ($pkg->{'version'} =~ s/^(\S+)://) {
 			$pkg->{'epoch'} = $1;
 			}
+		$pkg->{'name'} = &strip_apt_package_arch($pkg->{'name'});
 		push(@rv, $pkg);
 		}
 	elsif ($l =~ /Inst\s+(\S+)\s+\(([^ \)]+)/) {
@@ -103,6 +113,7 @@ foreach my $l (split(/\r?\n/, $out)) {
 		if ($pkg->{'version'} =~ s/^(\S+)://) {
 			$pkg->{'epoch'} = $1;
 			}
+		$pkg->{'name'} = &strip_apt_package_arch($pkg->{'name'});
 		push(@rv, $pkg);
 		}
 	}
