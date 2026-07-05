@@ -92,7 +92,10 @@ if ($config{'index_check'} && ($err = &check_postfix())) {
 	     	( "sni" ) : ( ),
 	     "local_delivery", "resource",
 	     "smtpd", "smtp", "sasl", "client",
-	     "rate", "debug", $postfix_version > 2 ? ( ) : ( "ldap" ),
+	     "rate", "debug",
+	     	&compare_version_numbers($postfix_version, "2.0") > 0
+			? ( )
+			: ( "ldap" ),
 	     "master", "mailq", "postfinger", "boxes", "manual" );
 
 $access{'boxes'} = &foreign_available("mailboxes");
