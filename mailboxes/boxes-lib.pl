@@ -2507,7 +2507,11 @@ delete($main::list_maildir_cache_time{$dir});
 # Returns the number of messages in a maildir directory
 sub count_maildir
 {
-local @files = &get_maildir_files($_[0]);
+my $dir = $_[0];
+# A missing Maildir is empty until first delivery creates it. If a path
+# exists, including a dangling symlink, let the normal Maildir open fail.
+return 0 if (!-e $dir && !-l $dir);
+local @files = &get_maildir_files($dir);
 return scalar(@files);
 }
 
