@@ -91,7 +91,7 @@ return $data;
 sub can_read_batch_local_file
 {
 my ($file) = @_;
-return 0 if ($file !~ /^\//);
+return 0 if (!defined($file) || $file !~ /^\//);
 my $batchdir = defined($access{'batchdir'}) ? $access{'batchdir'} : "/";
 return 0 if ($batchdir eq "");
 return 0 if (!&is_under_directory($batchdir, $file));
@@ -107,11 +107,18 @@ my %gaccess = &get_module_acl($base_remote_user, "");
 my @uinfo = getpwnam($remote_user);
 my $rootdir;
 if (!$gaccess{'root'}) {
-	$rootdir = $uinfo[7] ? $uinfo[7] : "/";
+	$rootdir = $uinfo[7] || "";
 	}
 else {
 	$rootdir = $gaccess{'root'};
-	$rootdir =~ s/^\~/$uinfo[7]/;
+	if ($rootdir =~ /^\~/) {
+		if ($uinfo[7]) {
+			$rootdir =~ s/^\~/$uinfo[7]/;
+			}
+		else {
+			$rootdir = "";
+			}
+		}
 	}
 foreach my $dir ($rootdir, split(/\t+/, $gaccess{'otherdirs'})) {
 	next if ($dir eq "");

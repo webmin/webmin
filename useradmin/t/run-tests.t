@@ -51,12 +51,17 @@ undef(%main::read_file_cache_time);
 
 sub write_global_acl
 {
-my (%opts) = @_;
+write_acl_for($remote_user, @_);
+}
+
+sub write_acl_for
+{
+my ($user, %opts) = @_;
 my $text = "";
 foreach my $k (sort keys %opts) {
 	$text .= "$k=$opts{$k}\n";
 	}
-write_text("$confdir/$remote_user.acl", $text);
+write_text("$confdir/$user.acl", $text);
 clear_acl_cache();
 }
 
@@ -85,6 +90,8 @@ subtest 'local batch file path ACLs' => sub {
 	   'outside file is rejected');
 	ok(!can_read_batch_local_file("relative/batch.txt"),
 	   'relative paths are rejected');
+	ok(!can_read_batch_local_file(undef),
+	   'missing local file path is rejected');
 
 	%access = ( 'batchdir' => "" );
 	ok(!can_read_batch_local_file("$allowed/batch.txt"),
@@ -110,5 +117,40 @@ SKIP: {
 %access = ( 'batchdir' => $allowed );
 is(read_batch_local_file("$allowed/batch.txt"), "batch\n",
    'allowed batch file is read');
+
+subtest 'global ACL home fallback for Webmin-only users' => sub {
+	my $webmin_only = "webmin-batch-no-such-user-$$";
+	no warnings 'once';
+	local $main::remote_user = $webmin_only;
+	local $main::base_remote_user = $webmin_only;
+
+	write_acl_for(
+		$webmin_only,
+		root => "",
+		otherdirs => "",
+		fileunix => "nobody",
+		);
+	%access = ( 'batchdir' => "/" );
+	ok(!can_read_batch_local_file("$outside/secret.txt"),
+	   'missing Unix home does not fall back to filesystem root');
+
+	write_acl_for(
+		$webmin_only,
+		root => "~/allowed",
+		otherdirs => "",
+		fileunix => "nobody",
+		);
+	ok(!can_read_batch_local_file("/allowed/batch.txt"),
+	   'home-relative root does not become an absolute path without a home');
+
+	write_acl_for(
+		$webmin_only,
+		root => "",
+		otherdirs => $allowed,
+		fileunix => "nobody",
+		);
+	ok(can_read_batch_local_file("$allowed/batch.txt"),
+	   'explicit otherdirs still permits configured paths');
+	};
 
 done_testing();
