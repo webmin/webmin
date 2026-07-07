@@ -22,7 +22,11 @@ do 'md5-lib.pl';
 our ($module_root_directory, %text, %sessiondb, %config, %gconfig,
      $base_remote_user, %hash_session_id_cache, $session_hmac_key,
      $loaded_session_keyfile, $use_hmac_sha256);
-eval "use Digest::SHA qw(hmac_sha256_hex); hmac_sha256_hex('x', 'y');";
+eval {
+	require Digest::SHA;
+	Digest::SHA::hmac_sha256_hex('x', 'y');
+	1;
+	};
 $use_hmac_sha256 = 1 if (!$@);
 our %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
