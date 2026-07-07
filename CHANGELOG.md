@@ -4,7 +4,12 @@
 * Fix to recognize hex numeric HTML entities to work in various elements
 * Fix `patch` sub-command to reload Webmin instead of restarting
 * Fix SSL certificate and TCP monitors to report transient connection failures as down, and SSL check timeouts as timed out, rather than uninstalled
-* Fix local batch file imports to enforce file access ACLs in Users and Groups module
+* Fix local file imports to enforce file access ACLs in Users and Groups, LDAP Users, MySQL/MariaDB, and PostgreSQL modules
+* Fix Webmin user switching and session checks to find sessions stored with HMAC session keys
+* Fix Usermin user switching to use one-time login URLs instead of the legacy cookie handoff and service restart flow
+* Fix APT package architecture suffix handling to avoid false package update failure reports
+* Fix missing Maildir folders to be counted as empty in Mailboxes module
+* Fix Postfix version comparisons to handle version strings safely
 
 #### 2.651 (June 28, 2026)
 * Fix Certbot-backed certificate requests and renewals to correctly parse PEM paths after issuance
