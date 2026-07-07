@@ -20,7 +20,10 @@ use WebminCore;
 &init_config();
 do 'md5-lib.pl';
 our ($module_root_directory, %text, %sessiondb, %config, %gconfig,
-     $base_remote_user, %hash_session_id_cache);
+     $base_remote_user, %hash_session_id_cache, $session_hmac_key,
+     $loaded_session_keyfile, $use_hmac_sha256);
+eval "use Digest::SHA qw(hmac_sha256_hex); hmac_sha256_hex('x', 'y');";
+$use_hmac_sha256 = 1 if (!$@);
 our %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
 
@@ -1332,6 +1335,7 @@ my ($miniserv) = @_;
 my $sfile = $miniserv->{'sessiondb'} ? $miniserv->{'sessiondb'} :
 	    $miniserv->{'pidfile'} =~ /^(.*)\/[^\/]+$/ ? "$1/sessiondb"
 						     : return;
+&load_session_hmac_key($miniserv);
 eval { require SDBM_File; SDBM_File->import; 1 };
 dbmopen(%sessiondb, $sfile, 0700);
 eval { $sessiondb{'1111111111'} = 'foo bar' };
@@ -1343,6 +1347,36 @@ if ($@) {
 else {
 	delete($sessiondb{'1111111111'});
 	}
+}
+
+=head2 load_session_hmac_key(\%miniserv)
+
+Loads miniserv's existing session HMAC key, if present.
+
+=cut
+sub load_session_hmac_key
+{
+my ($miniserv) = @_;
+return if (!$use_hmac_sha256);
+if (!$miniserv) {
+	$miniserv = { };
+	&get_miniserv_config($miniserv);
+	}
+my $kf = $miniserv->{'session_keyfile'};
+if (!$kf && $miniserv->{'pidfile'} =~ /^(.*)\/[^\/]+$/) {
+	$kf = "$1/session.key";
+	}
+return if (!$kf);
+return if (defined($loaded_session_keyfile) && $loaded_session_keyfile eq $kf);
+$loaded_session_keyfile = $kf;
+$session_hmac_key = undef;
+if (open(my $fh, "<", $kf)) {
+	binmode($fh);
+	local $/;
+	$session_hmac_key = <$fh>;
+	close($fh);
+	}
+undef(%hash_session_id_cache);
 }
 
 =head2 delete_session_id(\%miniserv, id)
@@ -2002,23 +2036,28 @@ return;
 
 =head2 hash_session_id(sid)
 
-Returns an MD5 or Unix-crypted session ID.
+Returns a session DB key for a session ID.
 
 =cut
 sub hash_session_id
 {
 my ($sid) = @_;
 my $use_md5 = &md5_perl_module();
+&load_session_hmac_key() if ($use_hmac_sha256 && !$loaded_session_keyfile);
 if (!$hash_session_id_cache{$sid}) {
-        if ($use_md5) {
-                # Take MD5 hash
-                $hash_session_id_cache{$sid} = &hash_md5_session($sid);
-                }
-        else {
-                # Unix crypt
-                $hash_session_id_cache{$sid} = &unix_crypt($sid, "XX");
-                }
-        }
+	if ($use_hmac_sha256 && length($session_hmac_key) >= 16) {
+		$hash_session_id_cache{$sid} =
+			Digest::SHA::hmac_sha256_hex($sid, $session_hmac_key);
+		}
+	elsif ($use_md5) {
+		# Take MD5 hash
+		$hash_session_id_cache{$sid} = &hash_md5_session($sid);
+		}
+	else {
+		# Unix crypt
+		$hash_session_id_cache{$sid} = &unix_crypt($sid, "XX");
+		}
+	}
 return $hash_session_id_cache{$sid};
 }
 

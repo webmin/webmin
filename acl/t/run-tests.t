@@ -531,8 +531,12 @@ is(group_line({ name => 'empty' }),
 # hash_session_id: deterministic, with an in-process cache. Use a local cache
 # hash so test ordering doesn't pollute it.
 {
-    our %hash_session_id_cache;
+    our (%hash_session_id_cache, $session_hmac_key, $loaded_session_keyfile,
+         $use_hmac_sha256);
     local %hash_session_id_cache;
+    local $session_hmac_key;
+    local $loaded_session_keyfile;
+    local $use_hmac_sha256 = 0;
     my $sid = '0123456789abcdef0123456789abcdef';
     my $h1 = hash_session_id($sid);
     ok(length($h1) > 0, 'hash_session_id returns a non-empty hash');
@@ -540,6 +544,40 @@ is(group_line({ name => 'empty' }),
        'hash_session_id is deterministic on repeat call (cache hit)');
     isnt(hash_session_id('feedfacefeedfacefeedfacefeedface'), $h1,
          'different session id hashes differently');
+}
+
+# hash_session_id / session_db_key: HMAC session keys must match miniserv.
+{
+    my $have_hmac = eval {
+        require Digest::SHA;
+        Digest::SHA::hmac_sha256_hex('x', 'y');
+        1;
+    };
+    SKIP: {
+        skip 'Digest::SHA hmac_sha256_hex not available', 2 unless $have_hmac;
+        our (%hash_session_id_cache, %sessiondb, $session_hmac_key,
+             $loaded_session_keyfile, $use_hmac_sha256);
+        local %hash_session_id_cache;
+        local %sessiondb;
+        local $session_hmac_key;
+        local $loaded_session_keyfile;
+        local $use_hmac_sha256 = 1;
+        my $key = 'k' x 32;
+        my $keyfile = "$confdir/session.key";
+        open(my $kfh, ">", $keyfile) or die "$keyfile: $!";
+        binmode($kfh);
+        print $kfh $key;
+        close($kfh);
+        load_session_hmac_key({ session_keyfile => $keyfile });
+
+        my $sid = '0123456789abcdef0123456789abcdef';
+        my $expected = Digest::SHA::hmac_sha256_hex($sid, $key);
+        is(hash_session_id($sid), $expected,
+           'hash_session_id uses miniserv HMAC session key');
+        $sessiondb{$expected} = 'alice 1700000000 203.0.113.10';
+        is(session_db_key($sid), $expected,
+           'session_db_key finds existing HMAC-hashed session row');
+    }
 }
 
 # md5_perl_module: should report a usable MD5 class on any system with either
@@ -1501,8 +1539,6 @@ subtest 'save_user.cgi self-lockout guard' => sub {
 };
 
 # switch.cgi — access{switch} required AND can_edit_user(target) required.
-# The happy path is harder to assert because it touches the session DB and
-# kills the cookie. We test the gates here and the no-op contract.
 subtest 'switch.cgi gating' => sub {
     # 1. access{switch}=0 -> error (defaultacl has switch=1, must override)
     _reset_fixture();
@@ -1521,6 +1557,46 @@ subtest 'switch.cgi gating' => sub {
     $r = run_cgi('switch.cgi', { user => 'target' });
     ok(!$r->{location},
        'no redirect when can_edit_user denies (even with switch=1)');
+    delete_user('target');
+
+    # 3. happy path: the current HMAC-keyed session is rewritten to target
+    _reset_fixture();
+    _seed_user_acl('admin', { users => '*', switch => 1 });
+    create_user({ name => 'target', pass => 'x', modules => ['acl'] });
+    my $sid = '0123456789abcdef0123456789abcdef';
+    my $ip = '203.0.113.10';
+    my $key = 's' x 32;
+    open(my $kfh, ">", "$vardir/session.key") or die "$vardir/session.key: $!";
+    binmode($kfh);
+    print $kfh $key;
+    close($kfh);
+    {
+        our (%sessiondb, %hash_session_id_cache, $session_hmac_key,
+             $loaded_session_keyfile);
+        local %hash_session_id_cache;
+        local $session_hmac_key;
+        local $loaded_session_keyfile;
+        my %miniserv = ( pidfile => "$vardir/miniserv.pid" );
+        open_session_db(\%miniserv);
+        my $skey = hash_session_id($sid);
+        $sessiondb{$skey} = "admin 1700000000 $ip";
+        dbmclose(%sessiondb);
+
+        $r = run_cgi('switch.cgi', { user => 'target' },
+                     env => { SESSION_ID => $sid, REMOTE_ADDR => $ip });
+        like($r->{location}, qr{^(?:https?://[^/]+)?/$},
+             'switch.cgi redirects on successful switch')
+            or diag("stdout: $r->{out}\nstderr: $r->{err}");
+        open_session_db(\%miniserv);
+        my ($switched_user, $switched_time, $switched_ip) =
+            split(/\s+/, $sessiondb{$skey});
+        dbmclose(%sessiondb);
+        is($switched_user, 'target',
+           'switch.cgi rewrites HMAC-keyed session user');
+        is($switched_time, '1700000000',
+           'switch.cgi preserves original session timestamp');
+        is($switched_ip, $ip, 'switch.cgi stores caller IP');
+    }
     delete_user('target');
 };
 
