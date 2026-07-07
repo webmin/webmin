@@ -939,6 +939,7 @@ sub can_create_usermin_login_url
 {
 my ($miniserv) = @_;
 return $miniserv->{'session'} &&
+       &check_pid_file($miniserv->{'pidfile'}) &&
        defined(&acl::open_session_db) &&
        defined(&acl::generate_random_session_id) &&
        defined(&reload_usermin_miniserv);
