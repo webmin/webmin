@@ -3,10 +3,9 @@
 
 require './usermin-lib.pl';
 &ReadParse();
-$access{'sessions'} || &error($text{'switch_euser'});
+$access{'sessions'} || &error($text{'sessions_ecannot'});
 
-($cookie, $url) = &switch_to_usermin_user($in{'user'});
-print "Set-Cookie: $cookie\n";
+$url = &create_usermin_login_url($in{'user'});
 &redirect($url);
 &webmin_log("switch", undef, $in{'user'});
 

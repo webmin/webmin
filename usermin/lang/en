@@ -433,6 +433,8 @@ clone_ecopy=failed to copy config : $1
 clone_desc=Clone of $1
 
 sessions_title=Current Login Sessions
+sessions_ecannot=You are not allowed to manage Usermin login sessions
+switch_esession=Failed to create a Usermin login session
 sessions_desc=Current Usermin session logins are listed below. To cancel an existing session and force the user to login again, click on its session ID.
 sessions_id=Session ID
 sessions_user=Unix user

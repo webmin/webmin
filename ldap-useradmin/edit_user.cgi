@@ -474,7 +474,7 @@ else {
 		&foreign_require("usermin", "usermin-lib.pl");
 		local %uminiserv;
 		&usermin::get_usermin_miniserv_config(\%uminiserv);
-		if ($uminiserv{'session'}) {
+		if (&usermin::can_create_usermin_login_url(\%uminiserv)) {
 			push(@buts, [ "switch", $text{'uedit_swit'} ]);
 			}
 		}

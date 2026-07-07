@@ -930,47 +930,84 @@ else {
 return $mode;
 }
 
-=head2 switch_to_usermin_user(username)
+=head2 can_create_usermin_login_url(&miniserv)
 
-Returns a set-cookie header and redirect URL for auto-logging into Usermin
-as some user.
+Returns 1 if Usermin can accept a one-time login URL.
 
 =cut
-sub switch_to_usermin_user
+sub can_create_usermin_login_url
 {
-my ($user) = @_;
+my ($miniserv) = @_;
+return $miniserv->{'session'} &&
+       defined(&acl::open_session_db) &&
+       defined(&acl::generate_random_session_id) &&
+       defined(&reload_usermin_miniserv);
+}
 
-# Stop Usermin first, so that the DBM can be safely written
+=head2 create_usermin_login_url(username, [lifetime])
+
+Creates a one-time URL that logs into Usermin as some user.
+
+=cut
+sub create_usermin_login_url
+{
+my ($user, $lifetime) = @_;
 my %miniserv;
 &get_usermin_miniserv_config(\%miniserv);
-my $stopped;
-if (&check_pid_file($miniserv{'pidfile'})) {
-	&stop_usermin();
-	$stopped = 1;
-	}
+&can_create_usermin_login_url(\%miniserv) ||
+	&error($text{'switch_esession'});
+&check_pid_file($miniserv{'pidfile'}) ||
+	&error($text{'switch_esession'});
+$lifetime ||= 5*60;
+my $sid = &create_usermin_login_session(\%miniserv, "-".$user,
+					   $lifetime);
+$sid || &error($text{'switch_esession'});
 
-# Generate a session ID and set it in the DB
-&acl::open_session_db(\%miniserv);
-&seed_random();
-my $now = time();
-my $sid = int(rand()*$now);
-$acl::sessiondb{$sid} = "$user $now $ENV{'REMOTE_ADDR'}";
-dbmclose(%acl::sessiondb);
-if ($stopped) {
-	&start_usermin();
-	}
+# Make sure the running Usermin process re-opens the session DBM, without
+# stopping the service or racing its PID file re-creation.
 &reload_usermin_miniserv();
+my $url = &get_usermin_login_base_url(\%miniserv);
+$url =~ s/\/+$//;
+return $url."/session_login.cgi?session=".&urlize($sid);
+}
+
+=head2 create_usermin_login_session(&miniserv, username, lifetime)
+
+Creates a one-time Usermin session token for the current browser.
+
+=cut
+sub create_usermin_login_session
+{
+my ($miniserv, $user, $lifetime) = @_;
+return if (&is_readonly_mode());
+my $sid = &acl::generate_random_session_id();
+return if (!$sid);
+my $ip = $ENV{'REMOTE_ADDR'} || "127.0.0.1";
+my $now = time();
+&acl::open_session_db($miniserv);
+$acl::sessiondb{$sid} = "$user $now $ip".($lifetime ? " ".$lifetime : "");
+dbmclose(%acl::sessiondb);
+return $sid;
+}
+
+=head2 get_usermin_login_base_url(&miniserv)
+
+Returns the base URL to use for browser handoff to Usermin.
+
+=cut
+sub get_usermin_login_base_url
+{
+my ($miniserv) = @_;
+return $miniserv->{'redirect_url'} if ($miniserv->{'redirect_url'});
+
 eval "use Net::SSLeay";
 if ($@) {
-	$miniserv{'ssl'} = 0;
+	$miniserv->{'ssl'} = 0;
 	}
-my $ssl = $miniserv{'ssl'} || $miniserv{'inetd_ssl'};
-my $sec = $ssl ? "; secure" : "";
-my $sidname = $miniserv{'sidname'} || 'sid';
-my $cookie = "$sidname=$sid; path=/$sec";
+my $ssl = $miniserv->{'ssl'} || $miniserv->{'inetd_ssl'};
 
 # Work out redirect host
-my @sockets = &webmin::get_miniserv_sockets(\%miniserv);
+my @sockets = &webmin::get_miniserv_sockets($miniserv);
 my ($host, $port, $url);
 my %uconfig;
 &get_usermin_config(\%uconfig);
@@ -990,11 +1027,21 @@ else {
 		$host =~ s/:.*//;
 		}
 	}
-$port ||= $uconfig{'port'} || $miniserv{'port'};
+$port ||= $uconfig{'port'} || $miniserv->{'port'};
 $url = ($ssl ? "https://" : "http://").$host.":".$port."/";
-$url = $miniserv{'redirect_url'}
-    if ($miniserv{'redirect_url'});
-return ($cookie, $url);
+return $url;
+}
+
+=head2 switch_to_usermin_user(username)
+
+Returns a redirect URL for auto-logging into Usermin as some user.
+
+=cut
+sub switch_to_usermin_user
+{
+my ($user) = @_;
+my $url = &create_usermin_login_url($user);
+return wantarray ? ("", $url) : $url;
 }
 
 =head2 get_usermin_email_url([module], [cgi], [force-default], [force-host])
