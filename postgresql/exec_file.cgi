@@ -14,17 +14,21 @@ if ($in{'mode'}) {
 	open(TEMP, ">$file");
 	print TEMP $in{'upload'};
 	close(TEMP);
+	&set_postgresql_command_file_permissions($file) ||
+		&error($text{'exec_efile'});
 	&ui_print_header(undef, $text{'exec_title'}, "");
 	print "$text{'exec_uploadout'}<p>\n";
 	$need_unlink = 1;
 	}
 else {
 	# From local file
-	-r $in{'file'} || &error($text{'exec_efile'});
-	$file = $in{'file'};
+	$file = &transname();
+	&copy_file_under_global_acl($in{'file'}, $file, undef,
+				     &postgresql_command_unix_user()) ||
+		&error($text{'exec_efile'});
 	&ui_print_header(undef, $text{'exec_title'}, "");
 	print &text('exec_fileout', "<tt>$in{'file'}</tt>"),"<p>\n";
-	$need_unlink = 0;
+	$need_unlink = 1;
 	}
 
 # Un-compress file if needed
@@ -42,6 +46,8 @@ if ($cmd) {
 	if ($?) {
 		&error(&text('exec_ecompress2', "<pre>$out</pre>"));
 		}
+	&set_postgresql_command_file_permissions($tempfile) ||
+		&error($text{'exec_efile'});
 	unlink($file) if ($need_unlink);
 	$file = $tempfile;
 	$need_unlink = 1;

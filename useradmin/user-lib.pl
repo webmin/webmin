@@ -70,18 +70,7 @@ sub read_batch_local_file
 {
 my ($file) = @_;
 &can_read_batch_local_file($file) || &error($text{'batch_elocaldir'});
-my $data;
-my ($fileunix, $fileunix_err) = &batch_acl_fileunix();
-if ($fileunix_err) {
-	&error($text{'batch_elocal'});
-	}
-if ($fileunix && &supports_users() && $< == 0) {
-	$data = &eval_as_unix_user($fileunix,
-		sub { return &read_file_contents($file); });
-	}
-else {
-	$data = &read_file_contents($file);
-	}
+my $data = &read_file_under_global_acl($file);
 defined($data) || &error($text{'batch_elocal'});
 return $data;
 }
@@ -95,50 +84,7 @@ return 0 if (!defined($file) || $file !~ /^\//);
 my $batchdir = defined($access{'batchdir'}) ? $access{'batchdir'} : "/";
 return 0 if ($batchdir eq "");
 return 0 if (!&is_under_directory($batchdir, $file));
-return &is_under_global_file_acl($file);
-}
-
-# is_under_global_file_acl(file)
-# Returns 1 if a file is under the Webmin user's global file chooser ACL.
-sub is_under_global_file_acl
-{
-my ($file) = @_;
-my %gaccess = &get_module_acl($base_remote_user, "");
-my @uinfo = getpwnam($remote_user);
-my $rootdir;
-if (!$gaccess{'root'}) {
-	$rootdir = $uinfo[7] || "";
-	}
-else {
-	$rootdir = $gaccess{'root'};
-	if ($rootdir =~ /^\~/) {
-		if ($uinfo[7]) {
-			$rootdir =~ s/^\~/$uinfo[7]/;
-			}
-		else {
-			$rootdir = "";
-			}
-		}
-	}
-foreach my $dir ($rootdir, split(/\t+/, $gaccess{'otherdirs'})) {
-	next if ($dir eq "");
-	return 1 if (&is_under_directory($dir, $file));
-	}
-return 0;
-}
-
-# batch_acl_fileunix()
-# Returns the Unix user to read local batch files as, or an error flag.
-sub batch_acl_fileunix
-{
-my %gaccess = &get_module_acl($base_remote_user, "");
-my $fileunix = $gaccess{'fileunix'} || $remote_user;
-my @uinfo = getpwnam($fileunix);
-if (!@uinfo && !$gaccess{'fileunix'}) {
-	$fileunix = "nobody";
-	@uinfo = getpwnam($fileunix);
-	}
-return @uinfo ? ($fileunix, 0) : (undef, 1);
+return &can_read_file_under_global_acl($file);
 }
 
 =head2 list_users

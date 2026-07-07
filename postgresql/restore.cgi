@@ -11,9 +11,11 @@ $access{'restore'} || &error($text{'restore_ecannot'});
 
 # Work out where to restore from
 if ($in{'src'} == 0) {
-	-r $in{'path'} || &error(&text('restore_pe2', $in{'path'}));
-	$path = $in{'path'};
-	$need_unlink = 0;
+	$path = &transname();
+	&copy_file_under_global_acl($in{'path'}, $path, undef,
+				     &postgresql_command_unix_user()) ||
+		&error(&text('restore_pe2', $in{'path'}));
+	$need_unlink = 1;
 	}
 else {
 	$in{'data'} || &error($text{'restore_edata'});
@@ -21,6 +23,8 @@ else {
 	&open_tempfile(DATA, ">$path");
 	&print_tempfile(DATA, $in{'data'});
 	&close_tempfile(DATA);
+	&set_postgresql_command_file_permissions($path) ||
+		&error(&text('restore_pe2', $in{'path'}));
 	$need_unlink = 1;
 	}
 
@@ -52,13 +56,15 @@ if ($cmd) {
 	if ($?) {
 		&error(&text('exec_ecompress2', "<pre>$out</pre>"));
 		}
+	&set_postgresql_command_file_permissions($tempfile) ||
+		&error(&text('restore_pe2', $in{'path'}));
 	unlink($path) if ($need_unlink);
 	$path = $tempfile;
 	$need_unlink = 1;
 	}
 
 $err = &restore_database($in{'db'}, $path, $in{'only'}, $in{'clean'}, $tables);
-unlink($file) if ($need_unlink);
+unlink($path) if ($need_unlink);
 if ($err) {
 	&error(&text('restore_failed', "<pre>$err</pre>"));
 	}

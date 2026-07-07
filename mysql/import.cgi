@@ -18,14 +18,19 @@ if ($in{'mode'}) {
 	open(TEMP, ">$file");
 	print TEMP $in{'upload'};
 	close(TEMP);
+	&set_mysql_command_file_permissions($file) ||
+		&error($text{'import_efile'});
 	$need_unlink = 1;
 	&ui_print_header(undef, $text{'import_title'}, "");
 	print "$text{'import_uploadout'}<p>\n";
 	}
 else {
 	# From local file
-	-r $in{'file'} || &error($text{'import_efile'});
-	$file = $in{'file'};
+	$file = &transname();
+	&copy_file_under_global_acl($in{'file'}, $file, undef,
+				     &mysql_command_unix_user()) ||
+		&error($text{'import_efile'});
+	$need_unlink = 1;
 	&ui_print_header(undef, $text{'import_title'}, "");
 	print &text('import_fileout', "<tt>$in{'file'}</tt>"),"<p>\n";
 	}
@@ -34,6 +39,8 @@ else {
 if ($in{'table'}) {
 	$nfile = &transname("$in{'table'}.txt");
 	&copy_source_dest($file, $nfile);
+	&set_mysql_command_file_permissions($nfile) ||
+		&error($text{'import_efile'});
 	unlink($file) if ($need_unlink);
 	$file = $nfile;
 	$need_unlink = 1;

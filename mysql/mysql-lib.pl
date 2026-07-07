@@ -1087,6 +1087,26 @@ if (@auto) {
 return @sql;
 }
 
+# mysql_command_unix_user()
+# Returns the Unix user that mysql/mysqlimport commands will run as.
+sub mysql_command_unix_user
+{
+return $access{'buser'} && $access{'buser'} ne 'root' && $< == 0 ?
+	$access{'buser'} : undef;
+}
+
+# set_mysql_command_file_permissions(file)
+# Makes a temp file readable by the Unix user that will run mysql commands.
+sub set_mysql_command_file_permissions
+{
+my ($file) = @_;
+my $user = &mysql_command_unix_user();
+return 1 if (!$user);
+my @uinfo = getpwnam($user);
+return 0 if (!@uinfo);
+return &set_ownership_permissions($user, undef, 0600, $file);
+}
+
 # execute_sql_file(database, file, [user, pass], [unix-user])
 # Executes some file of SQL commands, and returns the exit status and output
 sub execute_sql_file

@@ -809,6 +809,27 @@ $value =~ s/'/''/g;
 return "'$value'";
 }
 
+# postgresql_command_unix_user([login])
+# Returns the Unix user that PostgreSQL commands will run as.
+sub postgresql_command_unix_user
+{
+my ($login) = @_;
+$login ||= $postgres_login;
+return undef if (!$login || !$postgres_sameunix || $< != 0);
+my @uinfo = getpwnam($login);
+return @uinfo ? $login : undef;
+}
+
+# set_postgresql_command_file_permissions(file, [login])
+# Makes a temp file readable by the Unix user that will run PostgreSQL commands.
+sub set_postgresql_command_file_permissions
+{
+my ($file, $login) = @_;
+my $user = &postgresql_command_unix_user($login);
+return 1 if (!$user);
+return &set_ownership_permissions($user, undef, 0600, $file);
+}
+
 # execute_sql_file(database, file, [user, pass], [unix-user])
 # Executes some file of SQL statements, and returns the exit status and output
 sub execute_sql_file

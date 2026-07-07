@@ -15,6 +15,7 @@ gmultiple=1
 ggid=1
 peopt=1
 batch=1
+batchdir=/
 chuid=1
 chgid=1
 movehome=1

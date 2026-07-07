@@ -12395,6 +12395,158 @@ close(FILE);
 return $rv;
 }
 
+=head2 can_read_file_under_global_acl(file, [webmin-user])
+
+Returns 1 if the given file is allowed by the Webmin user's global file
+access ACL, using the same root and additional-directory restrictions as the
+file chooser. Webmin users with no Unix home fail closed when the root ACL is
+unset or home-relative.
+
+=cut
+sub can_read_file_under_global_acl
+{
+my ($file, $user) = @_;
+if ($gconfig{'os_type'} eq 'windows') {
+	$file =~ s/\\/\//g if (defined($file));
+	return 0 if (!defined($file) || $file !~ /^([a-z]:)?\//i);
+	}
+else {
+	return 0 if (!defined($file) || $file !~ /^\//);
+	}
+my $acluser = defined($user) ? $user : $base_remote_user || $remote_user;
+my $unixuser = defined($user) ? $user : $remote_user;
+my %gaccess = &get_module_acl($acluser, "");
+my @uinfo = getpwnam($unixuser);
+my $rootdir;
+if (!$gaccess{'root'}) {
+	# Do not turn Webmin-only users with no Unix home into unrestricted /
+	$rootdir = $uinfo[7] || "";
+	}
+else {
+	$rootdir = $gaccess{'root'};
+	if ($rootdir =~ /^\~/) {
+		if ($uinfo[7]) {
+			$rootdir =~ s/^\~/$uinfo[7]/;
+			}
+		else {
+			$rootdir = "";
+			}
+		}
+	}
+foreach my $dir ($rootdir, split(/\t+/, $gaccess{'otherdirs'})) {
+	next if ($dir eq "");
+	return 1 if (&is_under_directory($dir, $file));
+	}
+return 0;
+}
+
+=head2 global_acl_file_unix_user([webmin-user])
+
+Returns the Unix user that local file reads should run as according to the
+global file ACL, plus an error flag.
+
+=cut
+sub global_acl_file_unix_user
+{
+my ($user) = @_;
+return (undef, 0) if (!&supports_users());
+my $acluser = defined($user) ? $user : $base_remote_user || $remote_user;
+my $unixuser = defined($user) ? $user : $remote_user;
+my %gaccess = &get_module_acl($acluser, "");
+my $fileunix = $gaccess{'fileunix'} || $unixuser;
+my @uinfo = getpwnam($fileunix);
+if (!@uinfo && !$gaccess{'fileunix'}) {
+	$fileunix = "nobody";
+	@uinfo = getpwnam($fileunix);
+	}
+return @uinfo ? ($fileunix, 0) : (undef, 1);
+}
+
+=head2 read_file_under_global_acl(file, [webmin-user])
+
+Returns the contents of a file after checking the global file ACL and reading
+as the ACL's configured Unix user.
+
+=cut
+sub read_file_under_global_acl
+{
+my ($file, $user) = @_;
+return undef if (!&can_read_file_under_global_acl($file, $user));
+my ($fileunix, $fileunix_err) = &global_acl_file_unix_user($user);
+return undef if ($fileunix_err);
+if ($fileunix && &supports_users() && $< == 0) {
+	return &eval_as_unix_user($fileunix,
+		sub { return &read_file_contents($file); });
+	}
+else {
+	return &read_file_contents($file);
+	}
+}
+
+=head2 copy_file_under_global_acl(source, dest, [webmin-user], [dest-user])
+
+Copies a file after checking the global file ACL and reading the source as
+the ACL's configured Unix user. If dest-user is set and Webmin is running as
+root, the copied file is left owned by that Unix user with mode 0600.
+
+=cut
+sub copy_file_under_global_acl
+{
+my ($src, $dst, $user, $destuser) = @_;
+return 0 if (!&can_read_file_under_global_acl($src, $user));
+return 0 if (-d $src);
+my ($fileunix, $fileunix_err) = &global_acl_file_unix_user($user);
+return 0 if ($fileunix_err);
+my $ok;
+if ($fileunix && &supports_users() && $< == 0) {
+	my @uinfo = getpwnam($fileunix);
+	return 0 if (!@uinfo);
+	open(my $init, ">", $dst) || return 0;
+	close($init);
+	&set_ownership_permissions($fileunix, undef, 0600, $dst) ||
+		return 0;
+	$ok = &eval_as_unix_user($fileunix, sub {
+		open(my $in, "<", $src) || return 0;
+		open(my $out, ">", $dst) || do {
+			close($in);
+			return 0;
+			};
+		binmode($in);
+		binmode($out);
+		my $rv = 1;
+		my $buf;
+		while (1) {
+			my $got = read($in, $buf, 32768);
+			if (!defined($got)) {
+				$rv = 0;
+				last;
+				}
+			last if (!$got);
+			if (!print $out $buf) {
+				$rv = 0;
+				last;
+				}
+			}
+		close($in) || ($rv = 0);
+		close($out) || ($rv = 0);
+		return $rv;
+		});
+	}
+else {
+	$ok = &copy_source_dest($src, $dst, 1);
+	}
+return 0 if (!$ok);
+if ($destuser && &supports_users() && $< == 0) {
+	my @duinfo = getpwnam($destuser);
+	return 0 if (!@duinfo);
+	return &set_ownership_permissions($destuser, undef, 0600, $dst);
+	}
+else {
+	chmod(0600, $dst);
+	return 1;
+	}
+}
+
 =head2 write_file_contents(file, data)
 
 Writes some data to the given file

@@ -118,11 +118,26 @@ SKIP: {
 is(read_batch_local_file("$allowed/batch.txt"), "batch\n",
    'allowed batch file is read');
 
+subtest 'global ACL file read and copy helpers' => sub {
+	my $copy = "$tmp/copied-batch.txt";
+	ok(copy_file_under_global_acl("$allowed/batch.txt", $copy),
+	   'allowed file can be copied through global ACL helper');
+	is(read_file_contents($copy), "batch\n",
+	   'copied file has expected contents');
+
+	my $blocked = "$tmp/blocked-copy.txt";
+	ok(!copy_file_under_global_acl("$outside/secret.txt", $blocked),
+	   'outside file cannot be copied through global ACL helper');
+	ok(!-e $blocked, 'blocked copy does not create destination');
+	};
+
 subtest 'global ACL home fallback for Webmin-only users' => sub {
 	my $webmin_only = "webmin-batch-no-such-user-$$";
 	no warnings 'once';
 	local $main::remote_user = $webmin_only;
 	local $main::base_remote_user = $webmin_only;
+	local $WebminCore::remote_user = $webmin_only;
+	local $WebminCore::base_remote_user = $webmin_only;
 
 	write_acl_for(
 		$webmin_only,

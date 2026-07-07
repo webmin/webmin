@@ -22,8 +22,10 @@ if ($in{'mode'}) {
 	}
 else {
 	# From local file
-	-r $in{'file'} || &error($text{'import_efile'});
-	$file = $in{'file'};
+	$file = &transname();
+	&copy_file_under_global_acl($in{'file'}, $file) ||
+		&error($text{'import_efile'});
+	$need_unlink = 1;
 	&ui_print_header(undef, $text{'import_title'}, "");
 	print &text('import_fileout', "<tt>$in{'file'}</tt>"),"<p>\n";
 	}

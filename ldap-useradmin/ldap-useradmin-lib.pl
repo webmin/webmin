@@ -50,6 +50,18 @@ $match_modes = [ [ 0, $text{'index_equals'} ], [ 1, $text{'index_contains'} ],
                  [ 2, $text{'index_nequals'} ], [ 3, $text{'index_ncontains'} ],
 		 [ 6, $text{'index_lower'} ], [ 7, $text{'index_higher'} ] ];
 
+# can_read_batch_local_file(file)
+# Returns 1 if a local batch file path is allowed by all relevant ACLs.
+sub can_read_batch_local_file
+{
+my ($file) = @_;
+return 0 if (!defined($file) || $file !~ /^\//);
+my $batchdir = defined($access{'batchdir'}) ? $access{'batchdir'} : "/";
+return 0 if ($batchdir eq "");
+return 0 if (!&is_under_directory($batchdir, $file));
+return &can_read_file_under_global_acl($file);
+}
+
 # ldap_connect(return-error)
 # Connect to the LDAP server and return a handle to the Net::LDAP object
 sub ldap_connect

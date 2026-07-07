@@ -15,11 +15,10 @@ if ($in{'source'} == 0) {
 	$data =~ /\S/ || &error($text{'batch_efile'});
 	}
 elsif ($in{'source'} == 1) {
-	open(LOCAL, "<$in{'local'}") || &error($text{'batch_elocal'});
-	while(<LOCAL>) {
-		$data .= $_;
-		}
-	close(LOCAL);
+	&can_read_batch_local_file($in{'local'}) ||
+		&error($text{'batch_elocaldir'});
+	$data = &read_file_under_global_acl($in{'local'});
+	defined($data) || &error($text{'batch_elocal'});
 	}
 elsif ($in{'source'} == 2) {
 	$data = $in{'text'};
