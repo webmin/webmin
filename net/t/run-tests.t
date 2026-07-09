@@ -660,4 +660,36 @@ is_deeply(\@commands,
 	    "cd / ; ip addr add 10\\.0\\.0\\.2/24 dev bond0 2>&1" ],
 	  "Linux active bond interface is created before assigning an address");
 
+@commands = ( );
+{
+	no warnings 'redefine';
+	no warnings 'once';
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" :
+		       $_[0] eq "ifconfig" ? "/sbin/ifconfig" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ( );
+		};
+	local *main::backquote_command = sub {
+		return "";
+		};
+	main::activate_interface({ 'name' => 'auto',
+				   'fullname' => 'auto',
+				   'virtual' => '',
+				   'vlan' => 1,
+				   'physical' => 'eth0',
+				   'vlanid' => '10',
+				   'address' => '10.0.0.2',
+				   'netmask' => '255.255.255.0',
+				   'address6' => [ ],
+				   'netmask6' => [ ],
+				   'up' => 1 });
+	}
+is_deeply(\@commands,
+	  [ "ip link add link eth0 name eth0\\.10 type vlan id 10 2>&1",
+	    "ip link set dev eth0\\.10 up 2>&1",
+	    "cd / ; ip addr add 10\\.0\\.0\\.2/24 dev eth0.10 2>&1" ],
+	  "Linux active VLAN interface is created before assigning an address");
+
 done_testing();

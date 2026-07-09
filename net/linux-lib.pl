@@ -242,9 +242,16 @@ sub activate_interface
 my ($a) = @_;
 my ($old) = grep { $_->{'fullname'} eq $a->{'fullname'} } &active_interfaces();
 
-# For Debian 5.0+ the "vconfig add" command is deprecated, this is handled
-# by ifup.
-if(($a->{'vlan'} == 1) && !(($gconfig{'os_type'} eq 'debian-linux') && ($gconfig{'os_version'} >= 5))) {
+# Create VLAN device with ip link if available (analogous to bond creation)
+if (&has_command("ip") && $a->{'vlan'} && $a->{'up'} && !$old) {
+	my $vdev = $a->{'physical'}.".".$a->{'vlanid'};
+	my $bcmd = "ip link add link ".quotemeta($a->{'physical'}).
+		   " name ".quotemeta($vdev)." type vlan id ".quotemeta($a->{'vlanid'});
+	my $out = &backquote_logged("$bcmd 2>&1");
+	&error("Failed to create VLAN device : $out") if ($?);
+	}
+# For older systems without ip command, use deprecated vconfig
+elsif(($a->{'vlan'} == 1) && !(($gconfig{'os_type'} eq 'debian-linux') && ($gconfig{'os_version'} >= 5))) {
 	local $vconfigCMD = "vconfig add " .
 			    quotemeta($a->{'physical'})." ".
 			    quotemeta($a->{'vlanid'});
@@ -295,17 +302,18 @@ if (&has_command("ip") && $a->{'bond'} && $a->{'up'} && !$old) {
 		}
 	}
 
-if (($a->{'bond'} || !&has_command("ifconfig")) && &has_command("ip")) {
+if (($a->{'bond'} || $a->{'vlan'} || !&has_command("ifconfig")) && &has_command("ip")) {
 	# For a real interface, activate or de-activate the link
+	my $devname = $a->{'vlan'} ? $a->{'physical'}.".".$a->{'vlanid'} : $a->{'name'};
 	if ($a->{'virtual'} eq '' && $a->{'up'} && (!$old || !$old->{'up'})) {
 		# Bring up
-		my $cmd = "ip link set dev ".quotemeta($a->{'name'})." up";
+		my $cmd = "ip link set dev ".quotemeta($devname)." up";
 		my $out = &backquote_logged("$cmd 2>&1");
 		&error("Failed to bring up link : $out") if ($?);
 		}
 	elsif ($a->{'virtual'} eq '' && !$a->{'up'} && $old && $old->{'up'}) {
 		# Take down
-		my $cmd = "ip link set dev ".quotemeta($a->{'name'})." down";
+		my $cmd = "ip link set dev ".quotemeta($devname)." down";
 		my $out = &backquote_logged("$cmd 2>&1");
 		&error("Failed to bring down link : $out") if ($?);
 		}
