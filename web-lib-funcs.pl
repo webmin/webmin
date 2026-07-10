@@ -16,6 +16,7 @@ Example code:
 use Socket;
 use POSIX;
 use IO::Handle;
+use bytes ();
 use feature 'state';
 eval "use Socket6";
 $ipv6_module_error = $@;
@@ -926,6 +927,38 @@ while(read($in, $buf, $bs) > 0) {
 	(print $out $buf) || return 0;
 	}
 return 1;
+}
+
+=head2 copydata_len(in-handle, out-handle|&writer, length, [buffer-size])
+
+Read a fixed number of bytes from one file handle and write them to another,
+or pass each chunk to a writer function. The writer must synchronously consume
+the entire chunk and return true on success. Returns the number of bytes
+copied, or undef if a read or write fails.
+
+=cut
+sub copydata_len
+{
+my ($in, $out, $len, $bs) = @_;
+$in = &callers_package($in);
+$out = &callers_package($out) if (ref($out) ne 'CODE');
+$bs ||= &get_buffer_size();
+my $got = 0;
+while($got < $len) {
+	my $want = $len - $got;
+	$want = $bs if ($want > $bs);
+	my $buf;
+	my $r = read($in, $buf, $want);
+	if (!defined($r)) {
+		next if ($!{'EINTR'});
+		return undef;
+		}
+	last if (!$r);
+	my $ok = ref($out) eq 'CODE' ? &$out($buf) : print $out $buf;
+	return undef if (!$ok);
+	$got += $r;
+	}
+return $got;
 }
 
 =head2 ReadParseMime([maximum], [&cbfunc, &cbargs], [array-mode], [&direct-write])
@@ -9893,9 +9926,21 @@ my $h = shift(@_);
 my $fh = $h->{'fh'};
 my $allok = 1;
 if ($h->{'ssl_ctx'}) {
+	# Net::SSLeay::write returns a byte count, but regular length/substr may
+	# count characters for UTF-8-flagged strings. Mixing those units could
+	# end the retry loop early or skip data, so track lengths and offsets in
+	# bytes.
 	foreach my $s (@_) {
-		my $ok = Net::SSLeay::write($h->{'ssl_con'}, $s);
-		$allok = 0 if (!$ok);
+		my $len = bytes::length($s);
+		my $got = 0;
+		while($got < $len) {
+			my $ok = Net::SSLeay::write(
+				$h->{'ssl_con'}, bytes::substr($s, $got));
+			if (!defined($ok) || $ok <= 0) {
+				return 0;
+				}
+			$got += $ok;
+			}
 		}
 	}
 else {

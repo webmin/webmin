@@ -141,10 +141,12 @@ if (($ENV{'HTTP_X_REQUESTED_WITH_PROXY'} || '') eq 'XMLHttpRequest') {
 	&write_http_connection($con, "X-Requested-With: XMLHttpRequest\r\n");
 	}
 &write_http_connection($con, "\r\n");
-my $post;
 if ($cl) {
-	&read_fully(\*STDIN, \$post, $cl);
-	&write_http_connection($con, $post);
+	my $got = &copydata_len(\*STDIN,
+		sub { &write_http_connection($con, $_[0]) },
+		$cl, &get_buffer_size_binary());
+	defined($got) || &error("Failed to forward request body");
+	$got == $cl || &error("Failed to read complete request body");
 	}
 
 # read back the headers
