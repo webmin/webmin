@@ -26,13 +26,15 @@ if (&has_command("ip")) {
 		my %ifc;
 		my $iface_name = $ifc{'name'};
 		my $iface_auto_ip;
-		if ($l =~ /^\d+:\s+([^ \t\r\n\@]+\d+\.(\d+))@([^ \t\r\n\@]+\d+):/) {
+		if ($l =~ /^\d+:\s+([^ \t\r\n\@]+\.(\d+))@([^ \t\r\n\@]+):/) {
 			# Line like :
 			# 3: eth0.99@eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
 			$ifc{'fullname'} = $1;
 			$ifc{'name'} = $ifc{'fullname'};
 			$ifc{'vlanid'} = $2;
-			$ifc{'virtual'} = $3;
+			$ifc{'physical'} = $3;
+			$ifc{'vlan'} = 1;
+			$ifc{'virtual'} = '';
 			}
 		elsif ($l =~ /^\d+:\s+([^ \t\r\n\@]+):/) {
 			# Line like :
@@ -240,16 +242,48 @@ return @rv;
 sub activate_interface
 {
 my ($a) = @_;
-my ($old) = grep { $_->{'fullname'} eq $a->{'fullname'} } &active_interfaces();
 
-# For Debian 5.0+ the "vconfig add" command is deprecated, this is handled
-# by ifup.
-if(($a->{'vlan'} == 1) && !(($gconfig{'os_type'} eq 'debian-linux') && ($gconfig{'os_version'} >= 5))) {
-	local $vconfigCMD = "vconfig add " .
-			    quotemeta($a->{'physical'})." ".
-			    quotemeta($a->{'vlanid'});
-	local $vconfigout = &backquote_logged("$vconfigCMD 2>&1");
-	if ($?) { &error($vonconfigout); }
+my @active = &active_interfaces(1);
+
+# Some boot-time backends preserve only the conventional dotted VLAN name.
+# Only infer a VLAN when the parent device really exists, as a dotted name
+# alone can belong to an interface of any type.
+if (!$a->{'vlan'} &&
+    (!defined($a->{'virtual'}) || $a->{'virtual'} eq '') &&
+    $a->{'fullname'} =~ /^(.+)\.(\d+)$/) {
+	my ($physical, $vlanid) = ($1, $2);
+	if (grep { $_->{'fullname'} eq $physical } @active) {
+		$a = { %$a,
+		       'vlan' => 1,
+		       'physical' => $physical,
+		       'vlanid' => $vlanid,
+		       'virtual' => '' };
+		}
+	}
+my ($old) = grep { $_->{'fullname'} eq $a->{'fullname'} } @active;
+my $devname = $a->{'vlan'} ? $a->{'physical'}.".".$a->{'vlanid'}
+			    : $a->{'name'};
+
+# A disabled VLAN that does not exist has no live state to update.
+return if ($a->{'vlan'} && !$a->{'up'} && !$old);
+
+# Create a missing VLAN device before assigning addresses to it.
+if ($a->{'vlan'} && $a->{'up'} && !$old) {
+	if (&has_command("ip")) {
+		my $cmd = "ip link add link ".quotemeta($a->{'physical'}).
+			  " name ".quotemeta($devname).
+			  " type vlan id ".quotemeta($a->{'vlanid'});
+		my $out = &backquote_logged("$cmd 2>&1");
+		&error("Failed to create VLAN device : $out") if ($?);
+		}
+	# For Debian 5.0+ VLAN creation is handled by ifup.
+	elsif (!(($gconfig{'os_type'} eq 'debian-linux') &&
+		 ($gconfig{'os_version'} >= 5))) {
+		my $cmd = "vconfig add ".quotemeta($a->{'physical'})." ".
+			  quotemeta($a->{'vlanid'});
+		my $out = &backquote_logged("$cmd 2>&1");
+		&error($out) if ($?);
+		}
 	}
 
 if (&has_command("ip") && $a->{'virtual'} ne '' && !$a->{'up'}) {
@@ -295,17 +329,18 @@ if (&has_command("ip") && $a->{'bond'} && $a->{'up'} && !$old) {
 		}
 	}
 
-if (($a->{'bond'} || !&has_command("ifconfig")) && &has_command("ip")) {
+if (($a->{'bond'} || $a->{'vlan'} || !&has_command("ifconfig")) &&
+    &has_command("ip")) {
 	# For a real interface, activate or de-activate the link
 	if ($a->{'virtual'} eq '' && $a->{'up'} && (!$old || !$old->{'up'})) {
 		# Bring up
-		my $cmd = "ip link set dev ".quotemeta($a->{'name'})." up";
+		my $cmd = "ip link set dev ".quotemeta($devname)." up";
 		my $out = &backquote_logged("$cmd 2>&1");
 		&error("Failed to bring up link : $out") if ($?);
 		}
 	elsif ($a->{'virtual'} eq '' && !$a->{'up'} && $old && $old->{'up'}) {
 		# Take down
-		my $cmd = "ip link set dev ".quotemeta($a->{'name'})." down";
+		my $cmd = "ip link set dev ".quotemeta($devname)." down";
 		my $out = &backquote_logged("$cmd 2>&1");
 		&error("Failed to bring down link : $out") if ($?);
 		}
@@ -320,7 +355,7 @@ if (&has_command("ip")) {
 		    $old->{'netmask'} ne $a->{'netmask'}) {
 			my $rcmd = "ip addr del ".quotemeta($old->{'address'}).
 				   "/".&mask_to_prefix($old->{'netmask'}).
-				   " dev ".quotemeta($a->{'name'});
+				   " dev ".quotemeta($devname);
 			&system_logged("$rcmd >/dev/null 2>&1");
 			$readd = 1;
 			}
@@ -338,13 +373,7 @@ if (&has_command("ip")) {
 		if ($a->{'broadcast'}) {
 			$cmd .= " broadcast ".quotemeta($a->{'broadcast'});
 			}
-		if($a->{'vlan'} == 1) {
-			$cmd .= " dev ".quotemeta($a->{'physical'}).".".
-				quotemeta($a->{'vlanid'});
-			}
-		else {
-			$cmd .= " dev ".quotemeta($a->{'name'});
-			}
+		$cmd .= " dev ".quotemeta($devname);
 		}
 	}
 elsif (&use_ifup_command($a)) {
@@ -406,37 +435,46 @@ elsif (&has_command("ifconfig")) {
 else {
 	&error("Both the ifconfig and ip commands are missing");
 	}
-my $out = &backquote_logged("cd / ; $cmd 2>&1");
-if ($?) { &error("$cmd failed : $out"); }
+my $out;
+if ($cmd) {
+	$out = &backquote_logged("cd / ; $cmd 2>&1");
+	if ($?) { &error("$cmd failed : $out"); }
+	}
+
+# Apply settings directly when a VLAN was activated using ip, even on
+# systems where its boot-time configuration would normally use ifup.
+my $apply_link_settings = !&use_ifup_command($a) ||
+			  ($a->{'vlan'} && &has_command("ip") &&
+			   ($a->{'up'} || $old));
 
 # Apply ethernet address
-if ($a->{'ether'} && !&use_ifup_command($a) && &has_command("ifconfig")) {
+if ($a->{'ether'} && $apply_link_settings && &has_command("ifconfig")) {
 	# With ifconfig command
-	$out = &backquote_logged("ifconfig ".quotemeta($a->{'name'}).
+	$out = &backquote_logged("ifconfig ".quotemeta($devname).
 				 " hw ether ".quotemeta($a->{'ether'})." 2>&1");
 	if ($?) { &error($out); }
 	}
-elsif ($a->{'ether'} && !&use_ifup_command($a) && &has_command("ip")) {
+elsif ($a->{'ether'} && $apply_link_settings && &has_command("ip")) {
 	# With ip link command
-	$out = &backquote_logged("ip link set dev ".quotemeta($a->{'name'}).
+	$out = &backquote_logged("ip link set dev ".quotemeta($devname).
 				 " address ".quotemeta($a->{'ether'})." 2>&1");
 	if ($?) { &error($out); }
 	}
 
 # Apply MTU
-if ($a->{'mtu'} && !&use_ifup_command($a) && &has_command("ip")) {
+if ($a->{'mtu'} && $apply_link_settings && &has_command("ip")) {
 	$out = &backquote_logged(
-		"ip link set dev ".quotemeta($a->{'name'})." mtu ".
+		"ip link set dev ".quotemeta($devname)." mtu ".
 		quotemeta($a->{'mtu'})." 2>&1");
 	if ($?) { &error($out); }
 	}
 
 if ($a->{'virtual'} eq '' && &has_command("ifconfig")) {
 	# Remove old IPv6 addresses
-	local $l = &backquote_command("ifconfig ".quotemeta($a->{'name'}));
+	local $l = &backquote_command("ifconfig ".quotemeta($devname));
 	while($l =~ s/inet6 addr:\s*(\S+)\/(\d+)\s+Scope:(\S+)// ||
 	      $l =~ s/inet6\s+(\S+)\s+prefixlen\s+(\d+)\s+scopeid\s+\S+//) {
-		my $cmd = "ifconfig ".quotemeta($a->{'name'})." inet6 del ".
+		my $cmd = "ifconfig ".quotemeta($devname)." inet6 del ".
 			  quotemeta("$1/$2")." 2>&1";
 		$out = &backquote_logged($cmd);
 		&error("Failed to remove old IPv6 address : $out") if ($?);
@@ -444,7 +482,7 @@ if ($a->{'virtual'} eq '' && &has_command("ifconfig")) {
 
 	# Add IPv6 addresses
 	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
-		my $cmd = "ifconfig ".quotemeta($a->{'name'})." inet6 add ".
+		my $cmd = "ifconfig ".quotemeta($devname)." inet6 add ".
 			  quotemeta($a->{'address6'}->[$i])."/".
 			  quotemeta($a->{'netmask6'}->[$i])." 2>&1";
 		$out = &backquote_logged($cmd);
@@ -458,7 +496,7 @@ elsif ($a->{'virtual'} eq '' && &has_command("ip")) {
 			my $cmd = "ip -6 addr del ".
 				  quotemeta($old->{'address6'}->[$i])."/".
 				  quotemeta($old->{'netmask6'}->[$i])." dev ".
-				  quotemeta($a->{'name'});
+				  quotemeta($devname);
 			$out = &backquote_logged("$cmd 2>&1");
 			&error("Failed to remove old IPv6 address : $out") if ($?);
 			}
@@ -469,7 +507,7 @@ elsif ($a->{'virtual'} eq '' && &has_command("ip")) {
 		my $cmd = "ip -6 addr add ".
 			  quotemeta($a->{'address6'}->[$i])."/".
 			  quotemeta($a->{'netmask6'}->[$i])." dev ".
-			  quotemeta($a->{'name'});
+			  quotemeta($devname);
 		$out = &backquote_logged("$cmd 2>&1");
 		&error("Failed to add IPv6 address with $cmd : $out") if ($?);
 		}

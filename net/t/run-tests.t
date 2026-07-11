@@ -567,6 +567,48 @@ is_deeply(\@commands,
 	  "dhcpcd active delete drops only the selected live virtual alias");
 do "$root/net/linux-lib.pl" || die "linux-lib.pl: $@ $!";
 
+my $ip_vlan_output = <<'IPADDR';
+5: br-lan.10@br-lan: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 02:00:00:00:00:10 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.0.2/24 brd 10.0.0.255 scope global br-lan.10
+6: eth0.10.30@eth0.10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    inet 10.0.30.1/24 brd 10.0.30.255 scope global eth0.10.30
+IPADDR
+my @parsed_vlan;
+{
+	no warnings 'redefine';
+	no warnings 'once';
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" : undef;
+		};
+	local *main::clean_language = sub { };
+	local *main::reset_environment = sub { };
+	local *main::open_execute_command = sub {
+		open(main::IFC, "<", \$ip_vlan_output) || die "open scalar: $!";
+		return 1;
+		};
+	@parsed_vlan = main::active_interfaces(1);
+	}
+is_deeply([ map { [ $_->{'fullname'}, $_->{'name'},
+			  $_->{'vlanid'}, $_->{'physical'},
+			  $_->{'vlan'}, $_->{'virtual'} ] } @parsed_vlan ],
+	  [ [ 'br-lan.10', 'br-lan.10', '10', 'br-lan', 1, '' ],
+	    [ 'eth0.10.30', 'eth0.10.30', '30', 'eth0.10', 1, '' ] ],
+	  "Linux active VLAN parsing supports parent names without digits");
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" : undef;
+		};
+	main::deactivate_interface($parsed_vlan[0]);
+	}
+is_deeply(\@commands,
+	  [ 'ip addr del 10\.0\.0\.2\/24 dev br\-lan\.10 2>&1',
+	    "ip link set dev br\\-lan\\.10 down 2>&1" ],
+	  "Linux active VLAN is treated as a real link when deactivated");
+
 @commands = ( );
 {
 	no warnings 'redefine';
@@ -659,5 +701,267 @@ is_deeply(\@commands,
 	    "ip link set dev bond0 up 2>&1",
 	    "cd / ; ip addr add 10\\.0\\.0\\.2/24 dev bond0 2>&1" ],
 	  "Linux active bond interface is created before assigning an address");
+
+my $vlan = { 'name' => 'auto',
+	     'fullname' => 'eth0.10',
+	     'virtual' => '',
+	     'vlan' => 1,
+	     'physical' => 'eth0',
+	     'vlanid' => '10',
+	     'address' => '10.0.0.2',
+	     'netmask' => '255.255.255.0',
+	     'address6' => [ ],
+	     'netmask6' => [ ],
+	     'up' => 1 };
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	no warnings 'once';
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" :
+		       $_[0] eq "ifconfig" ? "/sbin/ifconfig" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ( );
+		};
+	local *main::backquote_command = sub {
+		return "";
+		};
+	main::activate_interface({ %$vlan });
+	}
+is_deeply(\@commands,
+	  [ "ip link add link eth0 name eth0\\.10 type vlan id 10 2>&1",
+	    "ip link set dev eth0\\.10 up 2>&1",
+	    "cd / ; ip addr add 10\\.0\\.0\\.2/24 dev eth0\\.10 2>&1" ],
+	  "Linux active VLAN interface is created before assigning an address");
+
+my $persisted_vlan = { 'name' => 'br-lan.10',
+		       'fullname' => 'br-lan.10',
+		       'address' => '10.0.0.2',
+		       'netmask' => '255.255.255.0',
+		       'address6' => [ ],
+		       'netmask6' => [ ],
+		       'up' => 1 };
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" :
+		       $_[0] eq "ifconfig" ? "/sbin/ifconfig" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ({ 'name' => 'br-lan',
+			  'fullname' => 'br-lan',
+			  'virtual' => '',
+			  'address6' => [ ],
+			  'netmask6' => [ ],
+			  'up' => 1 });
+		};
+	local *main::backquote_command = sub {
+		return "";
+		};
+	main::activate_interface({ %$persisted_vlan });
+	}
+is_deeply(\@commands,
+	  [ "ip link add link br\\-lan name br\\-lan\\.10 type vlan id 10 2>&1",
+	    "ip link set dev br\\-lan\\.10 up 2>&1",
+	    "cd / ; ip addr add 10\\.0\\.0\\.2/24 dev br\\-lan\\.10 2>&1" ],
+	  "Linux persisted dotted VLAN is normalized before activation");
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	no warnings 'once';
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ( );
+		};
+	main::activate_interface({ 'name' => 'lan.10',
+				   'fullname' => 'lan.10',
+				   'virtual' => '',
+				   'address' => '10.0.0.2',
+				   'netmask' => '255.255.255.0',
+				   'address6' => [ ],
+				   'netmask6' => [ ],
+				   'up' => 1 });
+	}
+is_deeply(\@commands,
+	  [ "ip link set dev lan\\.10 up 2>&1",
+	    "cd / ; ip addr add 10\\.0\\.0\\.2/24 dev lan\\.10 2>&1" ],
+	  "Linux dotted interface without a live parent is not made a VLAN");
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	no warnings 'once';
+	local $main::gconfig{'os_type'} = 'redhat-linux';
+	local $main::gconfig{'os_version'} = 13;
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" :
+		       $_[0] eq "ifconfig" ? "/sbin/ifconfig" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ({ 'name' => 'eth0.10',
+			  'fullname' => 'eth0.10',
+			  'virtual' => '',
+			  'vlan' => 1,
+			  'physical' => 'eth0',
+			  'vlanid' => '10',
+			  'address' => '10.0.0.2',
+			  'netmask' => '255.255.255.0',
+			  'address6' => [ ],
+			  'netmask6' => [ ],
+			  'up' => 1 });
+		};
+	local *main::system_logged = sub {
+		push(@commands, $_[0]);
+		$? = 0;
+		return 0;
+		};
+	local *main::backquote_command = sub {
+		return "";
+		};
+	main::activate_interface({ %$vlan, 'address' => '10.0.0.3' });
+	}
+is_deeply(\@commands,
+	  [ "ip addr del 10\\.0\\.0\\.2/24 dev eth0\\.10 >/dev/null 2>&1",
+	    "cd / ; ip addr add 10\\.0\\.0\\.3/24 dev eth0\\.10 2>&1" ],
+	  "Linux active VLAN interface is updated without being recreated");
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	no warnings 'once';
+	local $main::gconfig{'os_type'} = 'debian-linux';
+	local $main::gconfig{'os_version'} = 12;
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" :
+		       $_[0] eq "ifup" ? "/sbin/ifup" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ( );
+		};
+	main::activate_interface({ %$vlan,
+				   'ether' => '02:00:00:00:00:10',
+				   'mtu' => '1400',
+				   'address6' => [ '2001:db8::2' ],
+				   'netmask6' => [ '64' ] });
+	}
+is_deeply(\@commands,
+	  [ "ip link add link eth0 name eth0\\.10 type vlan id 10 2>&1",
+	    "ip link set dev eth0\\.10 up 2>&1",
+	    "cd / ; ip addr add 10\\.0\\.0\\.2/24 dev eth0\\.10 2>&1",
+	    "ip link set dev eth0\\.10 address 02\\:00\\:00\\:00\\:00\\:10 2>&1",
+	    "ip link set dev eth0\\.10 mtu 1400 2>&1",
+	    "ip -6 addr add 2001\\:db8\\:\\:2/64 dev eth0\\.10 2>&1" ],
+	  "Linux active VLAN settings use the created device with ifup present");
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	no warnings 'once';
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ({ 'name' => 'eth0.10',
+			  'fullname' => 'eth0.10',
+			  'virtual' => '',
+			  'vlan' => 1,
+			  'physical' => 'eth0',
+			  'vlanid' => '10',
+			  'address' => '10.0.0.2',
+			  'netmask' => '255.255.255.0',
+			  'address6' => [ ],
+			  'netmask6' => [ ],
+			  'up' => 1 });
+		};
+	main::activate_interface({ %$vlan, 'up' => 0 });
+	}
+is_deeply(\@commands,
+	  [ "ip link set dev eth0\\.10 down 2>&1" ],
+	  "Linux active VLAN is brought down without running an empty command");
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	no warnings 'once';
+	local $main::gconfig{'os_type'} = 'debian-linux';
+	local $main::gconfig{'os_version'} = 12;
+	local *main::has_command = sub {
+		return $_[0] eq "ip" ? "/sbin/ip" :
+		       $_[0] eq "ifup" ? "/sbin/ifup" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ( );
+		};
+	main::activate_interface({ %$vlan,
+				   'ether' => '02:00:00:00:00:10',
+				   'mtu' => '1400',
+				   'address6' => [ '2001:db8::2' ],
+				   'netmask6' => [ '64' ],
+				   'up' => 0 });
+	}
+is_deeply(\@commands, [ ],
+	  "Linux absent disabled VLAN does not receive live link settings");
+
+@commands = ( );
+my @active_include_empty;
+{
+	no warnings 'redefine';
+	no warnings 'once';
+	local $main::gconfig{'os_type'} = 'suse-linux';
+	local $main::gconfig{'os_version'} = 15;
+	local *main::has_command = sub {
+		return $_[0] eq "ifconfig" ? "/sbin/ifconfig" :
+		       $_[0] eq "vconfig" ? "/sbin/vconfig" : undef;
+		};
+	local *main::active_interfaces = sub {
+		push(@active_include_empty, @_ ? $_[0] : undef);
+		return @_ && $_[0] ?
+			({ 'name' => 'eth0.10',
+			   'fullname' => 'eth0.10',
+			   'virtual' => '',
+			   'address6' => [ ],
+			   'netmask6' => [ ],
+			   'up' => 0 }) : ( );
+		};
+	local *main::backquote_command = sub {
+		return "";
+		};
+	main::activate_interface({ %$vlan });
+	}
+is_deeply(\@active_include_empty, [ 1 ],
+	  "Linux activation checks for interfaces without IPv4");
+is_deeply(\@commands,
+	  [ "cd / ; ifconfig eth0.10 10\\.0\\.0\\.2 netmask 255\\.255\\.255\\.0 up 2>&1" ],
+	  "Linux existing addressless VLAN is configured without being recreated");
+
+@commands = ( );
+{
+	no warnings 'redefine';
+	no warnings 'once';
+	local $main::gconfig{'os_type'} = 'suse-linux';
+	local $main::gconfig{'os_version'} = 15;
+	local *main::has_command = sub {
+		return $_[0] eq "ifconfig" ? "/sbin/ifconfig" :
+		       $_[0] eq "vconfig" ? "/sbin/vconfig" : undef;
+		};
+	local *main::active_interfaces = sub {
+		return ( );
+		};
+	local *main::backquote_command = sub {
+		return "";
+		};
+	main::activate_interface({ %$vlan });
+	}
+is_deeply(\@commands,
+	  [ "vconfig add eth0 10 2>&1",
+	    "cd / ; ifconfig eth0.10 10\\.0\\.0\\.2 netmask 255\\.255\\.255\\.0 up 2>&1" ],
+	  "Linux VLAN interface falls back to vconfig without ip");
 
 done_testing();
