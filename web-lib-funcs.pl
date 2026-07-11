@@ -8417,18 +8417,20 @@ if (&is_selinux_enabled() && &has_command("chcon")) {
 return wantarray ? (1, undef) : 1;
 }
 
-=head2 copy_source_dest(source, dest, [copy-link-target])
+=head2 copy_source_dest(source, dest, [copy-link-target], [keep-dest-permissions])
 
 Copy some file or directory to a new location. Returns 1 on success, or 0
 on failure - also sets $! on failure. If the source is a directory, uses
 piped tar commands to copy a whole directory structure including permissions
-and special files.
+and special files. If keep-dest-permissions is set for a regular file, copies
+the file contents without changing the destination's existing permissions or
+ownership.
 
 =cut
 sub copy_source_dest
 {
 return (1, undef) if (&is_readonly_mode());
-my ($src, $dst, $copylink) = @_;
+my ($src, $dst, $copylink, $keepperms) = @_;
 my $ok = 1;
 my ($err, $out);
 &webmin_debug_log('COPY', "src=$src dst=$dst")
@@ -8464,6 +8466,47 @@ elsif (-d $src) {
 	if ($?) {
 		$ok = 0;
 		$err = $out;
+		}
+	}
+elsif ($keepperms) {
+	# Copy contents without changing destination permissions
+	my ($in, $outfh);
+	if (!open($in, "<", $src)) {
+		$ok = 0;
+		$err = "$src : $!";
+		}
+	elsif (!open($outfh, ">", $dst)) {
+		$ok = 0;
+		$err = "$dst : $!";
+		close($in);
+		}
+	else {
+		binmode($in);
+		binmode($outfh);
+		my $buf;
+		my $bs = &get_buffer_size();
+		while (1) {
+			my $got = read($in, $buf, $bs);
+			if (!defined($got)) {
+				$ok = 0;
+				$err = "$src : $!";
+				last;
+				}
+			last if (!$got);
+			if (!print $outfh $buf) {
+				$ok = 0;
+				$err = "$dst : $!";
+				last;
+				}
+			}
+		if (!close($in) && $ok) {
+			$ok = 0;
+			$err = "$src : $!";
+			}
+		if (!close($outfh) && $ok) {
+			$ok = 0;
+			$err = "$dst : $!";
+			}
 		}
 	}
 else {
@@ -12551,30 +12594,7 @@ if ($fileunix && &supports_users() && $< == 0) {
 	&set_ownership_permissions($fileunix, undef, 0600, $dst) ||
 		return 0;
 	$ok = &eval_as_unix_user($fileunix, sub {
-		open(my $in, "<", $src) || return 0;
-		open(my $out, ">", $dst) || do {
-			close($in);
-			return 0;
-			};
-		binmode($in);
-		binmode($out);
-		my $rv = 1;
-		my $buf;
-		while (1) {
-			my $got = read($in, $buf, 32768);
-			if (!defined($got)) {
-				$rv = 0;
-				last;
-				}
-			last if (!$got);
-			if (!print $out $buf) {
-				$rv = 0;
-				last;
-				}
-			}
-		close($in) || ($rv = 0);
-		close($out) || ($rv = 0);
-		return $rv;
+		return &copy_source_dest($src, $dst, 1, 1);
 		});
 	}
 else {

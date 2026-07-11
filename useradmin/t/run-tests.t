@@ -125,6 +125,15 @@ subtest 'global ACL file read and copy helpers' => sub {
 	is(read_file_contents($copy), "batch\n",
 	   'copied file has expected contents');
 
+	my $modecopy = "$tmp/mode-preserving-copy.txt";
+	write_text($modecopy, "old\n");
+	chmod(0644, "$allowed/batch.txt");
+	chmod(0600, $modecopy);
+	ok(copy_source_dest("$allowed/batch.txt", $modecopy, 1, 1),
+	   'contents-only copy succeeds');
+	is((stat($modecopy))[2] & 0777, 0600,
+	   'contents-only copy retains destination permissions');
+
 	my $blocked = "$tmp/blocked-copy.txt";
 	ok(!copy_file_under_global_acl("$outside/secret.txt", $blocked),
 	   'outside file cannot be copied through global ACL helper');
