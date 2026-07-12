@@ -17,6 +17,10 @@ my $script = File::Spec->rel2abs(
 	File::Spec->catfile(dirname(__FILE__), '..', 'web-lib-funcs.pl'));
 require $script;
 
+my $has_ipv6_packing = eval {
+	defined(main::inet_pton(main::AF_INET6(), '::1'));
+	};
+
 # check_ipaddress — strict dotted-quad IPv4.
 subtest 'check_ipaddress' => sub {
 	ok( main::check_ipaddress('1.2.3.4'),         'plain IPv4 accepted');
@@ -128,27 +132,32 @@ subtest 'is_non_public_ipaddress (IPv6)' => sub {
 	ok( main::is_non_public_ipaddress('fc00::1'), 'ULA (fc00)');
 	ok( main::is_non_public_ipaddress('fd12::1'), 'ULA (fd12)');
 	ok( main::is_non_public_ipaddress('ff02::1'), 'IPv6 multicast');
-	ok( main::is_non_public_ipaddress('64:ff9b::a9fe:a9fe'),
-	   'NAT64 translation of link-local IPv4');
-	ok(!main::is_non_public_ipaddress('64:ff9b::808:808'),
-	   'NAT64 translation of public IPv4 remains public');
-	ok( main::is_non_public_ipaddress('100::1'), 'discard-only prefix');
-	ok( main::is_non_public_ipaddress('2001:db8::1'),
-	   'IPv6 documentation prefix');
-	ok( main::is_non_public_ipaddress('2002:7f00:1::'),
-	   '6to4 translation of loopback IPv4');
-	ok(!main::is_non_public_ipaddress('2002:808:808::'),
-	   '6to4 translation of public IPv4 remains public');
+	SKIP: {
+		skip 'IPv6 binary conversion unavailable', 10
+			if (!$has_ipv6_packing);
+		ok( main::is_non_public_ipaddress('64:ff9b::a9fe:a9fe'),
+		   'NAT64 translation of link-local IPv4');
+		ok(!main::is_non_public_ipaddress('64:ff9b::808:808'),
+		   'NAT64 translation of public IPv4 remains public');
+		ok( main::is_non_public_ipaddress('100::1'),
+		   'discard-only prefix');
+		ok( main::is_non_public_ipaddress('2001:db8::1'),
+		   'IPv6 documentation prefix');
+		ok( main::is_non_public_ipaddress('2002:7f00:1::'),
+		   '6to4 translation of loopback IPv4');
+		ok(!main::is_non_public_ipaddress('2002:808:808::'),
+		   '6to4 translation of public IPv4 remains public');
 
-	# IPv4-mapped (::ffff:N.N.N.N) recurses on the embedded IPv4.
-	ok( main::is_non_public_ipaddress('::ffff:10.0.0.1'),
-	   '::ffff:<private> recurses → non-public');
-	ok( main::is_non_public_ipaddress('::ffff:192.168.1.1'),
-	   '::ffff:<rfc1918> recurses → non-public');
-	ok( main::is_non_public_ipaddress('0:0:0:0:0:ffff:7f00:1'),
-	   'expanded mapped loopback recurses → non-public');
-	ok(!main::is_non_public_ipaddress('::ffff:8.8.8.8'),
-	   '::ffff:<public> reported as public');
+		# IPv4-mapped addresses recurse on the embedded IPv4.
+		ok( main::is_non_public_ipaddress('::ffff:10.0.0.1'),
+		   '::ffff:<private> recurses → non-public');
+		ok( main::is_non_public_ipaddress('::ffff:192.168.1.1'),
+		   '::ffff:<rfc1918> recurses → non-public');
+		ok( main::is_non_public_ipaddress('0:0:0:0:0:ffff:7f00:1'),
+		   'expanded mapped loopback recurses → non-public');
+		ok(!main::is_non_public_ipaddress('::ffff:8.8.8.8'),
+		   '::ffff:<public> reported as public');
+		}
 
 	# Plainly public IPv6.
 	ok(!main::is_non_public_ipaddress('2606:4700::1111'),
@@ -162,12 +171,19 @@ subtest 'ipaddress_matches_network' => sub {
 	   'IPv4 address outside CIDR does not match');
 	ok( main::ipaddress_matches_network('192.168.1.2', '192.168.1.2'),
 	   'exact IPv4 address matches');
-	ok( main::ipaddress_matches_network('fd00:1234::20', 'fd00:1234::/48'),
-	   'IPv6 address matches CIDR');
-	ok(!main::ipaddress_matches_network('fd00:1235::20', 'fd00:1234::/48'),
-	   'IPv6 address outside CIDR does not match');
-	ok( main::ipaddress_matches_network('::ffff:10.1.2.3', '10.0.0.0/8'),
-	   'IPv4 exception matches mapped IPv6 destination');
+	SKIP: {
+		skip 'IPv6 binary conversion unavailable', 3
+			if (!$has_ipv6_packing);
+		ok( main::ipaddress_matches_network(
+			'fd00:1234::20', 'fd00:1234::/48'),
+		   'IPv6 address matches CIDR');
+		ok(!main::ipaddress_matches_network(
+			'fd00:1235::20', 'fd00:1234::/48'),
+		   'IPv6 address outside CIDR does not match');
+		ok( main::ipaddress_matches_network(
+			'::ffff:10.1.2.3', '10.0.0.0/8'),
+		   'IPv4 exception matches mapped IPv6 destination');
+		}
 	ok(!main::ipaddress_matches_network('10.1.2.3', 'bad-network'),
 	   'invalid exception does not match');
 };
