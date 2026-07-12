@@ -85,10 +85,9 @@ subtest 'check_ip6address' => sub {
 
 # is_non_public_ipaddress — RFC1918 + reserved-range classifier.
 #
-# Returns 1 for: 0.x, 10.x, 127.x, 169.254/16, 172.16/12, 192.168/16,
-# 100.64/10 (CGNAT), 224+/4 (multicast/reserved); IPv6 loopback, link-local
-# (fe80–febf), ULA (fc00/fd00), and ::ffff:N.N.N.N when the wrapped IPv4
-# is itself non-public.
+# Returns 1 for private, local, link-local, documentation, benchmarking,
+# translation, reserved and multicast ranges in IPv4 and IPv6, including
+# IPv4-mapped IPv6 addresses when the wrapped IPv4 is itself non-public.
 subtest 'is_non_public_ipaddress (IPv4)' => sub {
 	# Private / reserved.
 	ok( main::is_non_public_ipaddress('10.0.0.1'),     '10/8 private');
@@ -100,6 +99,10 @@ subtest 'is_non_public_ipaddress (IPv4)' => sub {
 	ok( main::is_non_public_ipaddress('0.1.2.3'),      '0/8 reserved');
 	ok( main::is_non_public_ipaddress('100.64.0.1'),   'CGNAT 100.64/10 low');
 	ok( main::is_non_public_ipaddress('100.127.255.255'), 'CGNAT 100.64/10 high');
+	ok( main::is_non_public_ipaddress('192.0.2.1'),   'documentation network');
+	ok( main::is_non_public_ipaddress('198.18.0.1'),  'benchmarking network');
+	ok( main::is_non_public_ipaddress('198.51.100.1'), 'documentation network');
+	ok( main::is_non_public_ipaddress('203.0.113.1'), 'documentation network');
 	ok( main::is_non_public_ipaddress('224.0.0.1'),    '224+ multicast / reserved');
 	ok( main::is_non_public_ipaddress('255.255.255.255'), '255+ reserved');
 
@@ -124,19 +127,134 @@ subtest 'is_non_public_ipaddress (IPv6)' => sub {
 	ok( main::is_non_public_ipaddress('feb0::1'), 'link-local (feb0)');
 	ok( main::is_non_public_ipaddress('fc00::1'), 'ULA (fc00)');
 	ok( main::is_non_public_ipaddress('fd12::1'), 'ULA (fd12)');
+	ok( main::is_non_public_ipaddress('ff02::1'), 'IPv6 multicast');
+	ok( main::is_non_public_ipaddress('64:ff9b::a9fe:a9fe'),
+	   'NAT64 translation of link-local IPv4');
+	ok(!main::is_non_public_ipaddress('64:ff9b::808:808'),
+	   'NAT64 translation of public IPv4 remains public');
+	ok( main::is_non_public_ipaddress('100::1'), 'discard-only prefix');
+	ok( main::is_non_public_ipaddress('2001:db8::1'),
+	   'IPv6 documentation prefix');
+	ok( main::is_non_public_ipaddress('2002:7f00:1::'),
+	   '6to4 translation of loopback IPv4');
+	ok(!main::is_non_public_ipaddress('2002:808:808::'),
+	   '6to4 translation of public IPv4 remains public');
 
 	# IPv4-mapped (::ffff:N.N.N.N) recurses on the embedded IPv4.
 	ok( main::is_non_public_ipaddress('::ffff:10.0.0.1'),
 	   '::ffff:<private> recurses → non-public');
 	ok( main::is_non_public_ipaddress('::ffff:192.168.1.1'),
 	   '::ffff:<rfc1918> recurses → non-public');
+	ok( main::is_non_public_ipaddress('0:0:0:0:0:ffff:7f00:1'),
+	   'expanded mapped loopback recurses → non-public');
 	ok(!main::is_non_public_ipaddress('::ffff:8.8.8.8'),
 	   '::ffff:<public> reported as public');
 
 	# Plainly public IPv6.
-	ok(!main::is_non_public_ipaddress('2001:db8::1'), '2001:db8 is public per classifier');
 	ok(!main::is_non_public_ipaddress('2606:4700::1111'),
 	   'global unicast address is public');
+};
+
+subtest 'ipaddress_matches_network' => sub {
+	ok( main::ipaddress_matches_network('10.1.2.3', '10.0.0.0/8'),
+	   'IPv4 address matches CIDR');
+	ok(!main::ipaddress_matches_network('11.1.2.3', '10.0.0.0/8'),
+	   'IPv4 address outside CIDR does not match');
+	ok( main::ipaddress_matches_network('192.168.1.2', '192.168.1.2'),
+	   'exact IPv4 address matches');
+	ok( main::ipaddress_matches_network('fd00:1234::20', 'fd00:1234::/48'),
+	   'IPv6 address matches CIDR');
+	ok(!main::ipaddress_matches_network('fd00:1235::20', 'fd00:1234::/48'),
+	   'IPv6 address outside CIDR does not match');
+	ok( main::ipaddress_matches_network('::ffff:10.1.2.3', '10.0.0.0/8'),
+	   'IPv4 exception matches mapped IPv6 destination');
+	ok(!main::ipaddress_matches_network('10.1.2.3', 'bad-network'),
+	   'invalid exception does not match');
+};
+
+subtest 'check_download_address' => sub {
+	my $resolved;
+	is(main::check_download_address('8.8.8.8', 'public'), undef,
+	   'public destination is allowed in public mode');
+	is(main::check_download_address('8.8.8.8', 'public', undef,
+					  \$resolved), undef,
+	   'public destination resolves for a restricted proxy');
+	is($resolved, '8.8.8.8', 'policy-checked proxy address is returned');
+	like(main::check_download_address('127.0.0.1', 'public'),
+	     qr/non-public IP address 127\.0\.0\.1/,
+	     'loopback destination is blocked in public mode');
+	like(main::check_download_address('169.254.169.254', 'public'),
+	     qr/non-public IP address 169\.254\.169\.254/,
+	     'cloud metadata destination is blocked in public mode');
+	is(main::check_download_address('10.1.2.3', 'listed', '10.0.0.0/8'),
+	   undef, 'listed CIDR permits a private destination');
+	like(main::check_download_address('192.168.1.2', 'listed', '10.0.0.0/8'),
+	     qr/not allowed/, 'unlisted private destination remains blocked');
+	is(main::check_download_address('127.0.0.1', 'all'), undef,
+	   'all mode permits loopback');
+	is(main::check_download_address('127.0.0.1', undef), undef,
+	   'unspecified policy preserves compatibility for existing callers');
+	{
+		no warnings qw(once redefine);
+		local *main::to_ipaddress = sub { return; };
+		local *main::to_ip6address = sub { return; };
+		like(main::check_download_address('unresolved.example', 'public'),
+		     qr/Failed to lookup IP address/,
+		     'restricted policy fails closed when DNS cannot resolve');
+		}
+};
+
+subtest 'restricted download cache isolation' => sub {
+	no warnings qw(once redefine);
+	my $cache_checks = 0;
+	local *main::check_in_http_cache = sub { $cache_checks++; return; };
+	local *main::make_http_connection = sub { return 'test connection stopped'; };
+	my ($dest, $err);
+	main::http_download('8.8.8.8', 80, '/', \$dest, \$err, undef, 0,
+			    undef, undef, 0, undef, undef, undef, undef,
+			    'public', undef);
+	is($cache_checks, 0, 'restricted download does not consult shared cache');
+	is($err, 'test connection stopped', 'download reached mocked connection');
+};
+
+subtest 'redirect destination policy' => sub {
+	no warnings qw(once redefine);
+	my @lines = (
+		"HTTP/1.0 302 Found\r\n",
+		"Location: http://127.0.0.1/private\r\n",
+		"\r\n",
+		);
+	local *main::read_http_connection = sub { return shift(@lines); };
+	local *main::close_http_connection = sub { return 1; };
+	my ($dest, $err);
+	main::complete_http_download({}, \$dest, \$err, undef, undef,
+				     '8.8.8.8', 80, {}, 0, 1, 0, undef,
+				     'public', undef);
+	like($err, qr/non-public IP address 127\.0\.0\.1/,
+	     'redirect to loopback is blocked before connecting');
+};
+
+subtest 'restricted HTTP proxy pins checked address' => sub {
+	no warnings qw(once redefine);
+	local %main::gconfig = (http_proxy => 'http://proxy.test:3128');
+	local *main::is_readonly_mode = sub { return 0; };
+	local *main::no_proxy = sub { return 0; };
+	my $wire = '';
+	local *main::open_socket = sub {
+		my $name = $_[2];
+		no strict 'refs';
+		open(*{"main::$name"}, '>', \$wire) || die $!;
+		return 1;
+		};
+	my $h = main::make_http_connection(
+		'origin.test', 80, 0, 'GET', '/path',
+		[ [ 'Host', 'origin.test' ] ], undef, undef,
+		'public', undef, '93.184.216.34');
+	main::close_http_connection($h);
+	like($wire, qr{^GET http://93\.184\.216\.34:80/path HTTP/1\.0\r\n},
+	     'proxy request targets the policy-checked IP');
+	like($wire, qr/Host: origin\.test\r\n/,
+	     'proxy request preserves the original Host header');
 };
 
 done_testing();

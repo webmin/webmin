@@ -58,6 +58,23 @@ print &ui_table_row($text{'acl_canattach'},
 
 print &ui_table_row($text{'acl_candetach'},
 	&ui_yesno_radio("candetach", $o->{'candetach'}));
+
+# Destinations allowed for remote message content
+my $download_address_mode = $o->{'download_address_mode'} || 'public';
+print &ui_table_row(
+	$text{'acl_download_addresses'} .
+		&ui_help($text{'acl_download_addresses_desc'}),
+	&ui_radio_table(
+		"download_address_mode", $download_address_mode,
+		[ [ 'public', $text{'acl_download_public'} ],
+		  [ 'listed', $text{'acl_download_listed'},
+		    &ui_textarea(
+			"download_allowed_addresses",
+			join("\n", split(/\s+/,
+				$o->{'download_allowed_addresses'})),
+			4, 50) ],
+		  [ 'all', $text{'acl_download_all'} ] ]),
+	3);
 }
 
 # acl_security_save(&options)
@@ -83,5 +100,10 @@ $o->{'attach'} = $in{'attach_def'} ? -1 : $in{'attach'};
 $o->{'canattach'} = $in{'canattach'};
 $o->{'candetach'} = $in{'candetach'};
 $o->{'dir'} = $in{'dir_def'} ? undef : $in{'dir'};
+my $download_address_mode = $in{'download_address_mode'};
+$download_address_mode = 'public'
+	if ($download_address_mode !~ /^(public|listed|all)$/);
+$o->{'download_address_mode'} = $download_address_mode;
+$o->{'download_allowed_addresses'} = join(" ",
+	split(/\s+/, $in{'download_allowed_addresses'}));
 }
-

@@ -1,5 +1,6 @@
 upload=1
 download=1
+download_address_mode=public
 fetch=1
 mode=0
 dirs=/

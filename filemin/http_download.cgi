@@ -46,7 +46,10 @@ else {
 				$full, undef,
 				\&progress_callback,
 				$ssl, $in{'username'},
-				$in{'password'});
+				$in{'password'}, undef, undef,
+				undef, undef, undef,
+				$access{'download_address_mode'} || 'public',
+				$access{'download_allowed_addresses'});
 			}
 		else {
 			# Actually an FTP download
@@ -55,7 +58,9 @@ else {
 				undef,
 				\&progress_callback,
 				$in{'username'},
-				$in{'password'}, $port);
+				$in{'password'}, $port, undef, undef,
+				$access{'download_address_mode'} || 'public',
+				$access{'download_allowed_addresses'});
 			}
 		&set_ownership_permissions(
 			$st[4], $st[5], undef, $full);

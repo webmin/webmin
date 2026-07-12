@@ -31,6 +31,8 @@ if ($module_info{'usermin'}) {
 	$upload_dir = $userconfig{'dir'};
 	$upload_dir = $remote_user_info[7] if ($upload_dir eq "~");
 	$upload_max = $config{'max'};
+	$download_address_mode = $config{'download_address_mode'} || 'public';
+	$download_allowed_addresses = $config{'download_allowed_addresses'};
 	$fetch_file = $userconfig{'fetch'};
 	$fetch_show = $userconfig{'show'} || 0;
 	}
@@ -72,6 +74,8 @@ else {
 	$upload_user = $config{'user_'.$remote_user} || $config{'user'};
 	$upload_group = $config{'group_'.$remote_group} || $config{'group'};
 	$upload_max = $access{'max'};
+	$download_address_mode = $access{'download_address_mode'} || 'public';
+	$download_allowed_addresses = $access{'download_allowed_addresses'};
 	$download_user = $config{'duser_'.$remote_user} || $config{'duser'};
 	$download_group = $config{'dgroup_'.$remote_group} || $config{'dgroup'};
 	$fetch_file = $config{'fetch_'.$remote_user};
@@ -127,6 +131,13 @@ unlink("$downloads_dir/$_[0]->{'id'}.down");
 sub do_download
 {
 local ($i, $error, $msg);
+my $address_mode = $download_address_mode;
+my $allowed_addresses = $download_allowed_addresses;
+if (!$module_info{'usermin'} && $_[0]->{'webmin_user'}) {
+	my %download_access = &get_module_acl($_[0]->{'webmin_user'});
+	$address_mode = $download_access{'download_address_mode'} || 'public';
+	$allowed_addresses = $download_access{'download_allowed_addresses'};
+	}
 for($i=0; $_[0]->{"url_$i"}; $i++) {
 	$error = undef;
 	$progress_callback_url = $_[0]->{"url_$i"};
@@ -156,7 +167,10 @@ for($i=0; $_[0]->{"url_$i"}; $i++) {
 			       $_[1],
 			       $_[0]->{"ssl_$i"},
 			       $_[0]->{"user_$i"},
-			       $_[0]->{"pass_$i"});
+			       $_[0]->{"pass_$i"}, undef, undef,
+			       undef, undef, undef,
+			       $address_mode,
+			       $allowed_addresses);
 		}
 	else {
 		&ftp_download($_[0]->{"host_$i"},
@@ -165,7 +179,9 @@ for($i=0; $_[0]->{"url_$i"}; $i++) {
 			       \$error,
 			       $_[1],
 			       $_[0]->{"user_$i"},
-			       $_[0]->{"pass_$i"});
+			       $_[0]->{"pass_$i"}, undef, undef, undef,
+			       $address_mode,
+			       $allowed_addresses);
 		}
 	unlink($path) if ($error);
 	&switch_uid_back();
@@ -311,4 +327,3 @@ return @rv;
 }
 
 1;
-

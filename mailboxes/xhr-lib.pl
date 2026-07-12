@@ -3,7 +3,7 @@
 
 use strict;
 
-our (%in, %gconfig, $root_directory, $remote_user, $current_theme);
+our (%in, %gconfig, %access, $root_directory, $remote_user, $current_theme);
 
 sub xhr
 {
@@ -37,7 +37,9 @@ if ($in{'action'} eq "fetch") {
                 my ($img, $err, $response_headers);
                 &http_download($host, $port, $page, \$img, \$err, undef,
                                $ssl, undef, undef, 10, undef, undef,
-                               undef, \$response_headers);
+                               undef, \$response_headers,
+                               $access{'download_address_mode'} || 'public',
+                               $access{'download_allowed_addresses'});
                 # Check if download worked
                 &$error("File download failed : $err")
                     if ($err);

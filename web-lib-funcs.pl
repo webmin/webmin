@@ -801,19 +801,141 @@ if (&check_ipaddress($ip)) {
 	return 1 if ($o[0] == 169 && $o[1] == 254);
 	return 1 if ($o[0] == 172 && $o[1] >= 16 && $o[1] <= 31);
 	return 1 if ($o[0] == 192 && $o[1] == 168);
+	return 1 if ($o[0] == 192 && $o[1] == 0 &&
+		     ($o[2] == 0 || $o[2] == 2));
+	return 1 if ($o[0] == 192 && $o[1] == 88 && $o[2] == 99);
 	return 1 if ($o[0] == 100 && $o[1] >= 64 && $o[1] <= 127);
+	return 1 if ($o[0] == 198 && ($o[1] == 18 || $o[1] == 19));
+	return 1 if ($o[0] == 198 && $o[1] == 51 && $o[2] == 100);
+	return 1 if ($o[0] == 203 && $o[1] == 0 && $o[2] == 113);
 	return 1 if ($o[0] >= 224);
 	}
 elsif (&check_ip6address($ip)) {
 	my $l = lc($ip);
+	$l =~ s{/\d+$}{};
 	return 1 if ($l eq "::1" || $l eq "::");
 	return 1 if ($l =~ /^fe[89ab]/);
+	return 1 if ($l =~ /^fe[c-f]/);
 	return 1 if ($l =~ /^f[cd]/);
-	if ($l =~ /^::ffff:(\d+\.\d+\.\d+\.\d+)$/) {
-		return &is_non_public_ipaddress($1);
+	return 1 if ($l =~ /^ff/);
+	my $packed = eval { inet_pton(AF_INET6(), $l) };
+	if (defined($packed) &&
+	    substr($packed, 0, 12) eq pack("H*", "0064ff9b0000000000000000")) {
+		my $ip4 = join(".", unpack("C4", substr($packed, 12, 4)));
+		return &is_non_public_ipaddress($ip4);
+		}
+	if (defined($packed) && substr($packed, 0, 2) eq "\x20\x02") {
+		my $ip4 = join(".", unpack("C4", substr($packed, 2, 4)));
+		return &is_non_public_ipaddress($ip4);
+		}
+	return 1 if (&ipaddress_matches_network($l, "64:ff9b:1::/48"));
+	return 1 if (&ipaddress_matches_network($l, "100::/64"));
+	return 1 if (&ipaddress_matches_network($l, "2001:db8::/32"));
+	if (defined($packed) &&
+	    (substr($packed, 0, 12) eq "\0" x 12 ||
+	     substr($packed, 0, 10) eq "\0" x 10 &&
+	     substr($packed, 10, 2) eq "\xff" x 2)) {
+		my $ip4 = join(".", unpack("C4", substr($packed, 12, 4)));
+		return &is_non_public_ipaddress($ip4);
 		}
 	}
 return 0;
+}
+
+=head2 ipaddress_matches_network(ip, address-or-network)
+
+Returns 1 if an IPv4 or IPv6 address matches an exact address or CIDR network.
+
+=cut
+sub ipaddress_matches_network
+{
+my ($ip, $network) = @_;
+return 0 if (!defined($ip) || !defined($network));
+$network =~ s/^\s+|\s+$//g;
+my ($base, $prefix) = split(/\//, $network, 2);
+my ($family, $bits);
+# Permit an IPv4 exception to match the equivalent mapped IPv6 destination.
+if (&check_ip6address($ip) && &check_ipaddress($base)) {
+	my $packed = eval { inet_pton(AF_INET6(), $ip) };
+	if (defined($packed) &&
+	    (substr($packed, 0, 12) eq "\0" x 12 ||
+	     substr($packed, 0, 10) eq "\0" x 10 &&
+	     substr($packed, 10, 2) eq "\xff" x 2)) {
+		my $ip4 = join(".", unpack("C4", substr($packed, 12, 4)));
+		return &ipaddress_matches_network(
+			$ip4, $base.(defined($prefix) ? "/$prefix" : ""));
+		}
+	}
+if (&check_ipaddress($ip) && &check_ipaddress($base)) {
+	$family = AF_INET();
+	$bits = 32;
+	}
+elsif (&check_ip6address($ip) && &check_ip6address($base)) {
+	$family = eval { AF_INET6() };
+	return 0 if (!defined($family));
+	$bits = 128;
+	}
+else {
+	return 0;
+	}
+$prefix = $bits if (!defined($prefix));
+return 0 if ($prefix !~ /^\d+$/ || $prefix > $bits);
+my ($packed_ip, $packed_base);
+if ($family == AF_INET()) {
+	$packed_ip = inet_aton($ip);
+	$packed_base = inet_aton($base);
+	}
+else {
+	$packed_ip = eval { inet_pton($family, $ip) };
+	$packed_base = eval { inet_pton($family, $base) };
+	}
+return 0 if (!defined($packed_ip) || !defined($packed_base));
+my $bytes = int($prefix / 8);
+return 0 if (substr($packed_ip, 0, $bytes) ne
+		     substr($packed_base, 0, $bytes));
+my $remaining = $prefix % 8;
+if ($remaining) {
+	my $mask = (0xff << (8-$remaining)) & 0xff;
+	return 0 if ((ord(substr($packed_ip, $bytes, 1)) & $mask) !=
+		     (ord(substr($packed_base, $bytes, 1)) & $mask));
+	}
+return 1;
+}
+
+=head2 check_download_address(host, mode, [allowed-addresses], [&resolved-address])
+
+Checks a download destination against an address policy. The mode can be
+"public", "listed" or "all". In listed mode, non-public addresses are allowed
+when they match a whitespace-separated list of IP addresses or CIDR networks.
+Returns an error message when the destination is blocked, or undef otherwise.
+If resolved-address is set, it is populated with a checked IP suitable for a
+proxy connection.
+
+=cut
+sub check_download_address
+{
+my ($host, $mode, $allowed, $resolved) = @_;
+return undef if (!defined($mode) || $mode eq 'all');
+$mode = 'public' if ($mode ne 'listed');
+my @ips = &to_ipaddress($host);
+push(@ips, &to_ip6address($host));
+return "Failed to lookup IP address for $host" if (!@ips);
+foreach my $ip (@ips) {
+	next if (!&is_non_public_ipaddress($ip));
+	if ($mode eq 'listed') {
+		my $matched = 0;
+		foreach my $network (split(/\s+/, $allowed)) {
+			if (&ipaddress_matches_network($ip, $network)) {
+				$matched = 1;
+				last;
+				}
+			}
+		next if ($matched);
+		}
+	return "Download from non-public IP address $ip is not allowed";
+	}
+$$resolved = $ips[0] if ($resolved);
+return undef;
 }
 
 =head2 generate_icon(image, title, link, [href], [width], [height], [before-title], [after-title])
@@ -3191,7 +3313,7 @@ while(1) {
 return $anyneg;
 }
 
-=head2 http_download(host, port, page, destfile, [&error], [&callback], [sslmode], [user], [pass], [timeout], [osdn-convert], [no-cache], [&headers])
+=head2 http_download(host, port, page, destfile, [&error], [&callback], [sslmode], [user], [pass], [timeout], [osdn-convert], [no-cache], [&headers], [&response-headers], [address-mode], [allowed-addresses])
 
 Downloads data from a HTTP url to a local file or string. The parameters are :
 
@@ -3223,11 +3345,17 @@ Downloads data from a HTTP url to a local file or string. The parameters are :
 
 =item response_headers - If set returns a hash ref of response HTTP headers.
 
+=item address-mode - Optional destination policy: "public", "listed" or "all".
+
+=item allowed-addresses - Whitespace-separated IP addresses or CIDR networks
+allowed as exceptions when address-mode is "listed".
+
 =cut
 sub http_download
 {
 my ($host, $port, $page, $dest, $error, $cbfunc, $ssl, $user, $pass,
-    $timeout, $osdn, $nocache, $headers, $response_headers) = @_;
+    $timeout, $osdn, $nocache, $headers, $response_headers, $address_mode,
+    $allowed_addresses) = @_;
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('HTTP', "host=$host port=$port page=$page ssl=$ssl".
 				  ($user ? " user=$user pass=$pass" : "").
@@ -3242,10 +3370,22 @@ if ($osdn) {
 		&convert_osdn_url($prot.$host.$portstr.$page));
 	}
 
+# Enforce the destination policy before consulting the shared cache or proxy
+my $resolved_address;
+my $address_error = &check_download_address(
+	$host, $address_mode, $allowed_addresses, \$resolved_address);
+if ($address_error) {
+	if ($error) { $$error = $address_error; return; }
+	else { &error(&html_escape($address_error)); }
+	}
+
+# Restricted downloads must not share cached responses with unrestricted ones
+$nocache = 1 if (defined($address_mode) && $address_mode ne 'all');
+
 # Check if we already have cached the URL
 my $url = ($ssl ? "https://" : "http://").$host.":".$port.$page;
-my $cfile = &check_in_http_cache($url);
-if ($cfile && !$nocache) {
+my $cfile = !$nocache ? &check_in_http_cache($url) : undef;
+if ($cfile) {
 	# Yes! Copy to dest file or variable
 	&$cbfunc(6, $url) if ($cbfunc);
 	if (ref($dest)) {
@@ -3283,7 +3423,9 @@ $main::download_timed_out = undef;
 local $SIG{ALRM} = \&download_timeout;
 $timeout = 60 if (!defined($timeout));
 alarm($timeout) if ($timeout);
-my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
+my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers,
+			     undef, undef, $address_mode, $allowed_addresses,
+			     $resolved_address);
 alarm(0) if ($timeout);
 $h = $main::download_timed_out if ($main::download_timed_out);
 if (!ref($h)) {
@@ -3292,7 +3434,8 @@ if (!ref($h)) {
 	else { &error(&html_escape($h)); }
 	}
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
-			$headers, $ssl, $nocache, $timeout, $response_headers);
+			$headers, $ssl, $nocache, $timeout, $response_headers,
+			$address_mode, $allowed_addresses);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
 	}
@@ -3300,7 +3443,8 @@ if ((!$error || !$$error) && !$nocache) {
 
 =head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn],
 			      [oldhost], [oldport], [&send-headers], [old-ssl],
-			      [no-cache], [timeout], [response-header])
+			      [no-cache], [timeout], [response-header],
+			      [address-mode], [allowed-addresses])
 
 Do a HTTP download, after the headers have been sent. For internal use only,
 typically called by http_download.
@@ -3309,7 +3453,8 @@ typically called by http_download.
 sub complete_http_download
 {
 my ($h, $destfile, $error, $cbfunc, $osdn, $oldhost, $oldport, $headers,
-    $oldssl, $nocache, $timeout, $response_headers) = @_;
+    $oldssl, $nocache, $timeout, $response_headers, $address_mode,
+    $allowed_addresses) = @_;
 
 # Kept local so that callback funcs # can access them.
 local ($line, %header, @headers, $s);
@@ -3384,7 +3529,8 @@ if ($rcode >= 300 && $rcode < 400) {
 	$page =~ s/ /%20/g;
 	$page .= "?".$params if (defined($params));
 	&http_download($host, $port, $page, $destfile, $error, $cbfunc, $ssl,
-		       undef, undef, undef, $osdn, $nocache, $headers);
+		       undef, undef, undef, $osdn, $nocache, $headers, undef,
+		       $address_mode, $allowed_addresses);
 	}
 else {
 	# read data
@@ -3518,7 +3664,7 @@ if (!ref($h)) {
 			$headers, $ssl, $nocache, $timeout, $response_headers);
 }
 
-=head2 ftp_download(host, file, destfile, [&error], [&callback], [user, pass], [port], [no-cache])
+=head2 ftp_download(host, file, destfile, [&error], [&callback], [user, pass], [port], [no-cache], [timeout], [address-mode], [allowed-addresses])
 
 Download data from an FTP site to a local file. The parameters are :
 
@@ -3542,10 +3688,16 @@ Download data from an FTP site to a local file. The parameters are :
 
 =item timeout - Timeout for connections, defaults to 60s
 
+=item address-mode - Optional destination policy: "public", "listed" or "all".
+
+=item allowed-addresses - Whitespace-separated IP addresses or CIDR networks
+allowed as exceptions when address-mode is "listed".
+
 =cut
 sub ftp_download
 {
-my ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port, $nocache, $timeout) = @_;
+my ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port, $nocache,
+    $timeout, $address_mode, $allowed_addresses) = @_;
 $port ||= 21;
 $timeout = 60 if (!defined($timeout));
 if ($gconfig{'debug_what_net'}) {
@@ -3564,10 +3716,22 @@ if (&is_readonly_mode()) {
 		}
 	}
 
+# Enforce the destination policy before consulting the shared cache or proxy
+my $resolved_address;
+my $address_error = &check_download_address(
+	$host, $address_mode, $allowed_addresses, \$resolved_address);
+if ($address_error) {
+	if ($error) { $$error = $address_error; return 0; }
+	else { &error(&html_escape($address_error)); }
+	}
+
+# Restricted downloads must not share cached responses with unrestricted ones
+$nocache = 1 if (defined($address_mode) && $address_mode ne 'all');
+
 # Check if we already have cached the URL
 my $url = "ftp://".$host.$file;
-my $cfile = &check_in_http_cache($url);
-if ($cfile && !$nocache) {
+my $cfile = !$nocache ? &check_in_http_cache($url) : undef;
+if ($cfile) {
 	# Yes! Copy to dest file or variable
 	&$cbfunc(6, $url) if ($cbfunc);
 	if (ref($dest)) {
@@ -3605,7 +3769,9 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 		my $esc = $file; $esc =~ s/ /%20/g;
 		my $up = "${user}:${pass}\@" if ($user);
 		my $portstr = $port == 21 ? "" : ":$port";
-		print SOCK "GET ftp://${up}${host}${portstr}${esc} HTTP/1.0\r\n";
+		my $proxy_host = $resolved_address || $host;
+		$proxy_host = "[$proxy_host]" if (&check_ip6address($proxy_host));
+		print SOCK "GET ftp://${up}${proxy_host}${portstr}${esc} HTTP/1.0\r\n";
 		print SOCK "User-agent: Webmin\r\n";
 		if ($gconfig{'proxy_user'}) {
 			my $auth = &encode_base64(
@@ -3616,7 +3782,8 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 		print SOCK "\r\n";
 		&complete_http_download(
 			{ 'fh' => "SOCK" }, $dest, $error, $cbfunc,
-			undef, undef, undef, undef, 0, $nocache);
+			undef, undef, undef, undef, 0, $nocache,
+			undef, undef, $address_mode, $allowed_addresses);
 		$connected = 1;
 		}
 	elsif (!$gconfig{'proxy_fallback'}) {
@@ -3633,7 +3800,8 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 
 if (!$connected) {
 	# connect to host and login with real FTP protocol
-	&open_socket($host, $port, "SOCK", $_[3]) || return 0;
+	&open_socket($host, $port, "SOCK", $_[3], undef,
+		     $address_mode, $allowed_addresses) || return 0;
 	alarm(0) if ($timeout);
 	if ($main::download_timed_out) {
 		if ($error) {
@@ -3683,7 +3851,8 @@ if (!$connected) {
 			defined($epsv) || return 0;
 			$epsv =~ /\|(\d+)\|/ || return 0;
 			my $epsvport = $1;
-			&open_socket($host, $epsvport, CON, $error) || return 0;
+			&open_socket($host, $epsvport, CON, $error, undef,
+			     $address_mode, $allowed_addresses) || return 0;
 			}
 		else {
 			# request the file over a PASV connection
@@ -3692,7 +3861,8 @@ if (!$connected) {
 			$pasv =~ /\(([0-9,]+)\)/ || return 0;
 			@n = split(/,/ , $1);
 			&open_socket("$n[0].$n[1].$n[2].$n[3]",
-				$n[4]*256 + $n[5], "CON", $_[3]) || return 0;
+				$n[4]*256 + $n[5], "CON", $_[3], undef,
+				$address_mode, $allowed_addresses) || return 0;
 			}
 		&ftp_command("RETR $file", 1, $error) || return 0;
 
@@ -3726,7 +3896,7 @@ if (!$connected) {
 	close(SOCK);
 	}
 
-&write_to_http_cache($url, $dest);
+&write_to_http_cache($url, $dest) if (!$nocache);
 return 1;
 }
 
@@ -3868,7 +4038,7 @@ foreach my $n (split(/\s+/, $gconfig{'noproxy'})) {
 return 0;
 }
 
-=head2 open_socket(host, port, handle, [&error])
+=head2 open_socket(host, port, handle, [&error], [bindip], [address-mode], [allowed-addresses])
 
 Open a TCP connection to some host and port, using a file handle. The
 parameters are :
@@ -3883,10 +4053,16 @@ parameters are :
 
 =item bindip - Local IP address to bind to for outgoing connections
 
+=item address-mode - Optional destination policy: "public", "listed" or "all".
+
+=item allowed-addresses - Whitespace-separated IP addresses or CIDR networks
+allowed as exceptions when address-mode is "listed".
+
 =cut
 sub open_socket
 {
-my ($host, $port, $fh, $err, $bindip) = @_;
+my ($host, $port, $fh, $err, $bindip, $address_mode,
+    $allowed_addresses) = @_;
 $fh = &callers_package($fh);
 $bindip ||= $gconfig{'bind_proxy'};
 
@@ -3901,6 +4077,28 @@ if (!@ips) {
 	my $msg = "Failed to lookup IP address for $host";
 	if ($err) { $$err = $msg; return 0; }
 	else { &error($msg); }
+	}
+
+# Check the addresses returned by the same lookup used for connect(), which
+# prevents a hostname from bypassing the policy by resolving to a local IP.
+if (defined($address_mode) && $address_mode ne 'all') {
+	foreach my $ip (@ips) {
+		next if (!&is_non_public_ipaddress($ip));
+		my $allowed = 0;
+		if ($address_mode eq 'listed') {
+			foreach my $network (split(/\s+/, $allowed_addresses)) {
+				if (&ipaddress_matches_network($ip, $network)) {
+					$allowed = 1;
+					last;
+					}
+				}
+			}
+		if (!$allowed) {
+			my $msg = "Download from non-public IP address $ip is not allowed";
+			if ($err) { $$err = $msg; return 0; }
+			else { &error($msg); }
+			}
+		}
 	}
 
 # Try each of the resolved IPs
@@ -9640,7 +9838,8 @@ return $can_use_http_ssl_cache;
 }
 
 =head2 make_http_connection(host, port, ssl, method, page, [&headers],
-			    [&certreqs])
+			    [bindip], [&certreqs], [address-mode],
+			    [allowed-addresses], [resolved-address])
 
 Opens a connection to some HTTP server, maybe through a proxy, and returns
 a handle object. The handle can then be used to send additional headers
@@ -9664,10 +9863,18 @@ The parameters are :
 
 =item certreqs - A hash ref containing options for remote cert verification
 
+=item address-mode - Optional destination policy: "public", "listed" or "all".
+
+=item allowed-addresses - Whitespace-separated IP addresses or CIDR networks
+allowed as exceptions when address-mode is "listed".
+
+=item resolved-address - A policy-checked destination IP to use through a proxy.
+
 =cut
 sub make_http_connection
 {
-my ($host, $port, $ssl, $method, $page, $headers, $bindip, $certreqs) = @_;
+my ($host, $port, $ssl, $method, $page, $headers, $bindip, $certreqs,
+    $address_mode, $allowed_addresses, $resolved_address) = @_;
 my $htxt;
 if (ref($headers) eq 'ARRAY') {
 	# Headers are name-value pairs
@@ -9687,6 +9894,8 @@ if (&is_readonly_mode()) {
 	return "HTTP connections not allowed in readonly mode";
 	}
 my $rv = { 'fh' => time().$$ };
+my $proxy_host = $resolved_address || $host;
+$proxy_host = "[$proxy_host]" if (&check_ip6address($proxy_host));
 if ($ssl) {
 	# Connect using SSL
 	&can_use_http_ssl() || return $text{'link_essl'};
@@ -9755,7 +9964,7 @@ if ($ssl) {
 		if (!$error) {
 			# Connected OK
 			my $fh = $rv->{'fh'};
-			print $fh "CONNECT $host:$port HTTP/1.0\r\n";
+			print $fh "CONNECT $proxy_host:$port HTTP/1.0\r\n";
 			if ($gconfig{'proxy_user'}) {
 				my $auth = &encode_base64(
 				   "$gconfig{'proxy_user'}:".
@@ -9782,7 +9991,8 @@ if ($ssl) {
 	if (!$connected) {
 		# Direct connection
 		my $error;
-		&open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
+		&open_socket($host, $port, $rv->{'fh'}, \$error, $bindip,
+			     $address_mode, $allowed_addresses);
 		return $error if ($error);
 		}
 	Net::SSLeay::set_fd($rv->{'ssl_con'}, fileno($rv->{'fh'}));
@@ -9817,7 +10027,7 @@ else {
 			$connected = 1;
 			my $fh = $rv->{'fh'};
 			my $rtxt = $method." ".
-				   "http://$host:$port$page HTTP/1.0\r\n";
+				   "http://$proxy_host:$port$page HTTP/1.0\r\n";
 			if ($gconfig{'proxy_user'}) {
 				my $auth = &encode_base64(
 				   "$gconfig{'proxy_user'}:".
@@ -9835,7 +10045,8 @@ else {
 	if (!$connected) {
 		# Connecting directly
 		my $error;
-		&open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
+		&open_socket($host, $port, $rv->{'fh'}, \$error, $bindip,
+			     $address_mode, $allowed_addresses);
 		return $error if ($error);
 		my $fh = $rv->{'fh'};
 		my $rtxt = "$method $page HTTP/1.0\r\n".$htxt;

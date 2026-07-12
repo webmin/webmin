@@ -2,3 +2,4 @@ mode=3
 dirs=
 home=1
 fetch=0
+download_address_mode=public
