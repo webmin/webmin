@@ -11390,7 +11390,8 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 		}
 	if ($file_acls) {
 		# Set original ACLs
-		open(my $pipe, '|-', "$setfacl --restore=-");
+		my $restore_command = &get_setfacl_restore_command($setfacl);
+		open(my $pipe, '|-', $restore_command);
 		print($pipe $file_acls);
 		close($pipe);
 		}
@@ -11453,6 +11454,27 @@ if (!defined($main::selinux_enabled_cache)) {
 		}
 	}
 return $main::selinux_enabled_cache;
+}
+
+=head2 get_setfacl_restore_command(setfacl-command)
+
+Returns a command for restoring ACLs from standard input. Uses physical
+restore when supported by setfacl, while remaining compatible with versions
+older than 2.4.0 which reject -P together with --restore.
+
+=cut
+sub get_setfacl_restore_command
+{
+my ($setfacl) = @_;
+state %physical_restore_cache;
+
+if (!exists($physical_restore_cache{$setfacl})) {
+	my $help = &backquote_command("$setfacl --help 2>&1 </dev/null");
+	$physical_restore_cache{$setfacl} =
+		$help =~ /\[-P\]\s+--restore(?:=|\b)/ ? 1 : 0;
+	}
+my $physical = $physical_restore_cache{$setfacl} ? "-P " : "";
+return "$setfacl ${physical}--restore=-";
 }
 
 =head2 get_clear_file_attributes(file)
