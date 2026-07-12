@@ -60,7 +60,7 @@ print &ui_table_row($text{'acl_candetach'},
 	&ui_yesno_radio("candetach", $o->{'candetach'}));
 
 # Destinations allowed for remote message content
-my $download_address_mode = $o->{'download_address_mode'} || 'public';
+my $download_address_mode = $o->{'download_address_mode'};
 print &ui_table_row(
 	$text{'acl_download_addresses'} .
 		&ui_help($text{'acl_download_addresses_desc'}),

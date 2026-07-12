@@ -20,7 +20,7 @@ print &ui_table_row($text{'acl_download'},
 		    [ 2, $text{'acl_nosched'} ],
 		    [ 0, $text{'no'} ] ]), 3);
 
-my $download_address_mode = $o->{'download_address_mode'} || 'public';
+my $download_address_mode = $o->{'download_address_mode'};
 print &ui_table_row(
 	$text{'acl_download_addresses'} .
 		&ui_help($text{'acl_download_addresses_desc'}),

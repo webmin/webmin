@@ -32,7 +32,7 @@ print &ui_table_row(
 	2);
 
 # Destinations allowed for URL downloads
-my $download_address_mode = $access->{'download_address_mode'} || 'public';
+my $download_address_mode = $access->{'download_address_mode'};
 print &ui_table_row(
 	$text{'acl_download_addresses'} .
 		&ui_help($text{'acl_download_addresses_desc'}),
