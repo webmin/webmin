@@ -48,6 +48,7 @@ return 1;
 }
 
 require "$root/mailboxes/boxes-lib.pl";
+require "$root/mailboxes/folders-lib.pl";
 
 sub write_file
 {
@@ -92,6 +93,35 @@ subtest 'count_maildir' => sub {
 		ok(!$ok, 'dangling Maildir symlink still fails');
 		like($@, qr/Failed to open \Q$link\/cur\E/,
 		     'dangling Maildir symlink reports the existing error');
+		}
+	};
+
+subtest 'mailbox_uncompress_folder skips invalid Maildir subfolders' => sub {
+	my $maildir = "$tmp/uncompress/Maildir";
+	make_path("$maildir/cur", "$maildir/new", "$maildir/tmp");
+
+	# A valid Maildir++ subfolder should still be scanned.
+	make_path("$maildir/.Archive/cur", "$maildir/.Archive/new",
+		  "$maildir/.Archive/tmp");
+
+	# A partial Maildir must be skipped because get_maildir_files reads both
+	# cur and new unconditionally.
+	make_path("$maildir/.Partial/cur");
+	my $ok = eval {
+		mailbox_uncompress_folder({ 'type' => 1, 'file' => $maildir });
+		1;
+		};
+	ok($ok, 'partial Maildir++ entries are ignored');
+
+	SKIP: {
+		skip 'symlink unavailable', 1
+			if (!symlink("$tmp/no-such-target", "$maildir/.Alias"));
+		$ok = eval {
+			mailbox_uncompress_folder({ 'type' => 1,
+						    'file' => $maildir });
+			1;
+			};
+		ok($ok, 'dangling Maildir++ symlinks are ignored');
 		}
 	};
 
