@@ -1583,6 +1583,10 @@ if ($folder->{'type'} == 1 || $folder->{'type'} == 3) {
 			&get_mhdir_files($folder->{'file'});
 	if ($folder->{'type'} == 1) {
 		foreach my $sf (glob("\Q$folder->{'file'}\E/.??*")) {
+			# Skip entries that aren't real Maildirs, e.g. a
+			# dangling symlink relocated during migration (no
+			# cur/new to read)
+			next if (!-d "$sf/cur" || !-d "$sf/new");
 			push(@files, &get_maildir_files($sf));
 			}
 		}
