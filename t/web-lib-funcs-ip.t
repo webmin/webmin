@@ -188,33 +188,47 @@ subtest 'ipaddress_matches_network' => sub {
 	   'invalid exception does not match');
 };
 
-subtest 'check_download_address' => sub {
-	my $resolved;
-	is(main::check_download_address('8.8.8.8', 'public'), undef,
+subtest 'download address callback' => sub {
+	my $public = main::get_download_address_callback('public');
+	is(&$public('public.test', [ '8.8.8.8' ]), undef,
 	   'public destination is allowed in public mode');
-	is(main::check_download_address('8.8.8.8', 'public', undef,
-					  \$resolved), undef,
-	   'public destination resolves for a restricted proxy');
-	is($resolved, '8.8.8.8', 'policy-checked proxy address is returned');
-	like(main::check_download_address('127.0.0.1', 'public'),
+	like(&$public('loopback.test', [ '127.0.0.1' ]),
 	     qr/non-public IP address 127\.0\.0\.1/,
 	     'loopback destination is blocked in public mode');
-	like(main::check_download_address('169.254.169.254', 'public'),
+	like(&$public('metadata.test', [ '169.254.169.254' ]),
 	     qr/non-public IP address 169\.254\.169\.254/,
 	     'cloud metadata destination is blocked in public mode');
-	is(main::check_download_address('10.1.2.3', 'listed', '10.0.0.0/8'),
+	like(&$public('mixed.test', [ '8.8.8.8', '127.0.0.1' ]),
+	     qr/non-public IP address 127\.0\.0\.1/,
+	     'destination is blocked when any resolved address is non-public');
+	my $listed = main::get_download_address_callback(
+		'listed', '10.0.0.0/8');
+	is(&$listed('listed.test', [ '10.1.2.3' ]),
 	   undef, 'listed CIDR permits a private destination');
-	like(main::check_download_address('192.168.1.2', 'listed', '10.0.0.0/8'),
+	like(&$listed('unlisted.test', [ '192.168.1.2' ]),
 	     qr/not allowed/, 'unlisted private destination remains blocked');
-	is(main::check_download_address('127.0.0.1', 'all'), undef,
-	   'all mode permits loopback');
-	is(main::check_download_address('127.0.0.1', undef), undef,
+	ok(!defined(main::get_download_address_callback('all')),
+	   'all mode does not install a destination callback');
+	ok(!defined(main::get_download_address_callback(undef)),
 	   'unspecified policy preserves compatibility for existing callers');
+
+	my (@resolved, @checked);
+	my $callback = sub {
+		my ($host, $addresses) = @_;
+		@checked = @$addresses;
+		return undef;
+		};
+	is(main::check_download_address('8.8.8.8', $callback, \@resolved),
+	   undef, 'destination is resolved and passed to its callback');
+	is_deeply(\@checked, [ '8.8.8.8' ],
+	   'callback receives the resolved destination address');
+	is_deeply(\@resolved, \@checked,
+	   'checked addresses are returned for the connection');
 	{
 		no warnings qw(once redefine);
 		local *main::to_ipaddress = sub { return; };
 		local *main::to_ip6address = sub { return; };
-		like(main::check_download_address('unresolved.example', 'public'),
+		like(main::check_download_address('unresolved.example', $public),
 		     qr/Failed to lookup IP address/,
 		     'restricted policy fails closed when DNS cannot resolve');
 		}
@@ -226,11 +240,42 @@ subtest 'restricted download cache isolation' => sub {
 	local *main::check_in_http_cache = sub { $cache_checks++; return; };
 	local *main::make_http_connection = sub { return 'test connection stopped'; };
 	my ($dest, $err);
-	main::http_download('8.8.8.8', 80, '/', \$dest, \$err, undef, 0,
-			    undef, undef, 0, undef, undef, undef, undef,
-			    'public', undef);
+	my $callbacks = { 'address_callback' => sub { return undef; } };
+	main::http_download('8.8.8.8', 80, '/', \$dest, \$err, $callbacks,
+			    0, undef, undef, 0);
 	is($cache_checks, 0, 'restricted download does not consult shared cache');
 	is($err, 'test connection stopped', 'download reached mocked connection');
+};
+
+subtest 'callback hash dispatches tracker events' => sub {
+	no warnings qw(once redefine);
+	my @lines = (
+		"HTTP/1.0 200 OK\r\n",
+		"Content-Length: 0\r\n",
+		"\r\n",
+		);
+	local *main::read_http_connection = sub { return shift(@lines); };
+	local *main::close_http_connection = sub { return 1; };
+	my @events;
+	my $callbacks = {
+		'tracker_callback' => sub { push(@events, $_[0]); },
+		};
+	my ($dest, $err);
+	main::complete_http_download({}, \$dest, \$err, $callbacks, undef,
+				     '8.8.8.8', 80, {}, 0, 1, 0);
+	is_deeply(\@events, [ 1, 2, 4 ],
+		  'tracker callback receives the existing event sequence');
+	@lines = (
+		"HTTP/1.0 200 OK\r\n",
+		"Content-Length: 0\r\n",
+		"\r\n",
+		);
+	my @legacy_events;
+	main::complete_http_download({}, \$dest, \$err,
+				     sub { push(@legacy_events, $_[0]); },
+				     undef, '8.8.8.8', 80, {}, 0, 1, 0);
+	is_deeply(\@legacy_events, [ 1, 2, 4 ],
+		  'legacy callback code refs remain supported');
 };
 
 subtest 'redirect destination policy' => sub {
@@ -243,9 +288,10 @@ subtest 'redirect destination policy' => sub {
 	local *main::read_http_connection = sub { return shift(@lines); };
 	local *main::close_http_connection = sub { return 1; };
 	my ($dest, $err);
-	main::complete_http_download({}, \$dest, \$err, undef, undef,
-				     '8.8.8.8', 80, {}, 0, 1, 0, undef,
-				     'public', undef);
+	my $address_callback = main::get_download_address_callback('public');
+	my $callbacks = { 'address_callback' => $address_callback };
+	main::complete_http_download({}, \$dest, \$err, $callbacks, undef,
+				     '8.8.8.8', 80, {}, 0, 1, 0);
 	like($err, qr/non-public IP address 127\.0\.0\.1/,
 	     'redirect to loopback is blocked before connecting');
 };
@@ -255,6 +301,10 @@ subtest 'restricted HTTP proxy pins checked address' => sub {
 	local %main::gconfig = (http_proxy => 'http://proxy.test:3128');
 	local *main::is_readonly_mode = sub { return 0; };
 	local *main::no_proxy = sub { return 0; };
+	local *main::to_ipaddress = sub {
+		return $_[0] eq 'origin.test' ? '93.184.216.34' : ();
+		};
+	local *main::to_ip6address = sub { return; };
 	my $wire = '';
 	local *main::open_socket = sub {
 		my $name = $_[2];
@@ -262,15 +312,55 @@ subtest 'restricted HTTP proxy pins checked address' => sub {
 		open(*{"main::$name"}, '>', \$wire) || die $!;
 		return 1;
 		};
+	my $address_callback = main::get_download_address_callback('public');
 	my $h = main::make_http_connection(
 		'origin.test', 80, 0, 'GET', '/path',
 		[ [ 'Host', 'origin.test' ] ], undef, undef,
-		'public', undef, '93.184.216.34');
+		$address_callback);
 	main::close_http_connection($h);
 	like($wire, qr{^GET http://93\.184\.216\.34:80/path HTTP/1\.0\r\n},
 	     'proxy request targets the policy-checked IP');
 	like($wire, qr/Host: origin\.test\r\n/,
 	     'proxy request preserves the original Host header');
+};
+
+subtest 'open_socket destination callback' => sub {
+	no warnings qw(once redefine);
+	local *main::to_ipaddress = sub { return '127.0.0.1'; };
+	local *main::to_ip6address = sub { return; };
+	my $address_callback = main::get_download_address_callback('public');
+	my $err;
+	ok(!main::open_socket('loopback.test', 80, 'TESTSOCK', \$err,
+			      undef, $address_callback),
+	   'socket connection is rejected by its destination callback');
+	like($err, qr/non-public IP address 127\.0\.0\.1/,
+	     'socket reports the callback rejection');
+};
+
+subtest 'restricted FTP proxy pins checked address' => sub {
+	no warnings qw(once redefine);
+	local %main::gconfig = (ftp_proxy => 'http://proxy.test:3128');
+	local *main::is_readonly_mode = sub { return 0; };
+	local *main::no_proxy = sub { return 0; };
+	local *main::to_ipaddress = sub {
+		return $_[0] eq 'origin.test' ? '93.184.216.34' : ();
+		};
+	local *main::to_ip6address = sub { return; };
+	my $wire = '';
+	local *main::open_socket = sub {
+		no strict 'refs';
+		open(*{'main::SOCK'}, '>', \$wire) || die $!;
+		return 1;
+		};
+	local *main::complete_http_download = sub { return 1; };
+	my $address_callback = main::get_download_address_callback('public');
+	my $callbacks = { 'address_callback' => $address_callback };
+	my ($dest, $err);
+	ok(main::ftp_download('origin.test', '/file', \$dest, \$err, $callbacks,
+			      undef, undef, 21),
+	   'restricted FTP download reaches its proxy');
+	like($wire, qr{^GET ftp://93\.184\.216\.34/file HTTP/1\.0\r\n},
+	     'FTP proxy request targets the policy-checked IP');
 };
 
 done_testing();

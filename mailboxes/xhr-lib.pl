@@ -35,11 +35,14 @@ if ($in{'action'} eq "fetch") {
                 $url = &html_unescape($url);
                 my ($host, $port, $page, $ssl) = &parse_http_url($url);
                 my ($img, $err, $response_headers);
-                &http_download($host, $port, $page, \$img, \$err, undef,
+                my $callbacks = {
+                    'address_callback' => &get_download_address_callback(
+                        $access{'download_address_mode'} || 'public',
+                        $access{'download_allowed_addresses'}),
+                    };
+                &http_download($host, $port, $page, \$img, \$err, $callbacks,
                                $ssl, undef, undef, 10, undef, undef,
-                               undef, \$response_headers,
-                               $access{'download_address_mode'} || 'public',
-                               $access{'download_allowed_addresses'});
+                               undef, \$response_headers);
                 # Check if download worked
                 &$error("File download failed : $err")
                     if ($err);

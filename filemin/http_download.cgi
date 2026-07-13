@@ -39,28 +39,29 @@ else {
 
 		$progress_callback_url = $in{'link'};
 		my @st = stat($cwd);
+		my $callbacks = {
+			'tracker_callback' => \&progress_callback,
+			'address_callback' => &get_download_address_callback(
+				$access{'download_address_mode'} || 'public',
+				$access{'download_allowed_addresses'}),
+			};
 		if ($ssl == 0 || $ssl == 1) {
 			# HTTP or HTTPS download
 			&http_download(
 				$host, $port, $page,
 				$full, undef,
-				\&progress_callback,
+				$callbacks,
 				$ssl, $in{'username'},
-				$in{'password'}, undef, undef,
-				undef, undef, undef,
-				$access{'download_address_mode'} || 'public',
-				$access{'download_allowed_addresses'});
+				$in{'password'});
 			}
 		else {
 			# Actually an FTP download
 			&ftp_download(
 				$host, $page, $full,
 				undef,
-				\&progress_callback,
+				$callbacks,
 				$in{'username'},
-				$in{'password'}, $port, undef, undef,
-				$access{'download_address_mode'} || 'public',
-				$access{'download_allowed_addresses'});
+				$in{'password'}, $port);
 			}
 		&set_ownership_permissions(
 			$st[4], $st[5], undef, $full);

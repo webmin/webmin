@@ -138,6 +138,11 @@ if (!$module_info{'usermin'} && $_[0]->{'webmin_user'}) {
 	$address_mode = $download_access{'download_address_mode'} || 'public';
 	$allowed_addresses = $download_access{'download_allowed_addresses'};
 	}
+my $callbacks = {
+	'tracker_callback' => $_[1],
+	'address_callback' => &get_download_address_callback(
+		$address_mode, $allowed_addresses),
+	};
 for($i=0; $_[0]->{"url_$i"}; $i++) {
 	$error = undef;
 	$progress_callback_url = $_[0]->{"url_$i"};
@@ -164,24 +169,19 @@ for($i=0; $_[0]->{"url_$i"}; $i++) {
 			       $_[0]->{"page_$i"},
 			       $path,
 			       \$error,
-			       $_[1],
+			       $callbacks,
 			       $_[0]->{"ssl_$i"},
 			       $_[0]->{"user_$i"},
-			       $_[0]->{"pass_$i"}, undef, undef,
-			       undef, undef, undef,
-			       $address_mode,
-			       $allowed_addresses);
+			       $_[0]->{"pass_$i"});
 		}
 	else {
 		&ftp_download($_[0]->{"host_$i"},
-			      $_[0]->{"page_$i"},
+			       $_[0]->{"page_$i"},
 			       $path,
 			       \$error,
-			       $_[1],
+			       $callbacks,
 			       $_[0]->{"user_$i"},
-			       $_[0]->{"pass_$i"}, undef, undef, undef,
-			       $address_mode,
-			       $allowed_addresses);
+			       $_[0]->{"pass_$i"});
 		}
 	unlink($path) if ($error);
 	&switch_uid_back();
