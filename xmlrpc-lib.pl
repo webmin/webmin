@@ -18,7 +18,7 @@ my ($base64) = &find_xmls("base64", $value, 1);
 my ($struct) = &find_xmls("struct", $value, 1);
 my ($array) = &find_xmls("array", $value, 1);
 if ($scalar) {
-	return $scalar->[1]->[2];
+	return $scalar->[1]->[2] // "";
 	}
 elsif ($date) {
 	# Need to decode date
@@ -26,7 +26,7 @@ elsif ($date) {
 	}
 elsif ($base64) {
 	# Convert to binary
-	return &decode_base64($base64->[1]->[2]);
+	return &decode_base64($base64->[1]->[2] // "");
 	}
 elsif ($struct) {
 	# Parse member names and values
@@ -35,7 +35,7 @@ elsif ($struct) {
 		my ($name) = &find_xmls("name", $member, 1);
 		my ($value) = &find_xmls("value", $member, 1);
 		my $perlv = &parse_xml_value($value);
-		$rv{$name->[1]->[2]} = $perlv;
+		$rv{$name->[1]->[2] // ""} = $perlv;
 		}
 	return \%rv;
 	}
@@ -51,7 +51,7 @@ elsif ($array) {
 	}
 else {
 	# Fallback - just a string directly in the value
-	return $value->[1]->[2];
+	return $value->[1]->[2] // "";
 	}
 }
 
@@ -60,6 +60,7 @@ else {
 sub encode_xml_value
 {
 my ($perlv) = @_;
+$perlv = "" if (!defined($perlv));
 if (ref($perlv) eq "ARRAY") {
 	# Convert to array XML format
 	my $xmlrv = "<array>\n<data>\n";

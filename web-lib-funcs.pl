@@ -10359,16 +10359,17 @@ out progress of an HTTP request.
 =cut
 sub progress_callback
 {
+my ($mode, $arg) = @_;
 if (defined(&theme_progress_callback)) {
 	# Call the theme override
 	return &theme_progress_callback(@_);
 	}
-if ($_[0] == 2) {
+if ($mode == 2) {
 	# Got size
 	print $progress_callback_prefix;
-	if ($_[1]) {
-		$progress_size = $_[1];
-		$progress_step = int($_[1] / 10);
+	if ($arg) {
+		$progress_size = $arg;
+		$progress_step = int($arg / 10);
 		print &text('progress_size2',
 			    &html_escape($progress_callback_url),
 			    &nice_size($progress_size)),"<br>\n";
@@ -10380,42 +10381,42 @@ if ($_[0] == 2) {
 		}
 	$last_progress_time = $last_progress_size = undef;
 	}
-elsif ($_[0] == 3) {
+elsif ($mode == 3) {
 	# Got data update
 	my $sp = $progress_callback_prefix.("&nbsp;" x 5);
 	if ($progress_size) {
 		# And we have a size to compare against
-		my $st = int(($_[1] * 10) / $progress_size);
+		my $st = int(($arg * 10) / $progress_size);
 		my $time_now = time();
 		if ($st != $progress_step ||
 		    $time_now - $last_progress_time > 60) {
 			# Show progress every 10% or 60 seconds
-			print $sp,&text('progress_datan', &nice_size($_[1]),
-				        int($_[1]*100/$progress_size)),"<br>\n";
+			print $sp,&text('progress_datan', &nice_size($arg),
+				        int($arg*100/$progress_size)),"<br>\n";
 			$last_progress_time = $time_now;
 			}
 		$progress_step = $st;
 		}
 	else {
 		# No total size .. so only show in 1M jumps
-		if ($_[1] > $last_progress_size+1024*1024) {
+		if ($arg > $last_progress_size+1024*1024) {
 			print $sp,&text('progress_data2n',
-					&nice_size($_[1])),"<br>\n";
-			$last_progress_size = $_[1];
+					&nice_size($arg)),"<br>\n";
+			$last_progress_size = $arg;
 			}
 		}
 	}
-elsif ($_[0] == 4) {
+elsif ($mode == 4) {
 	# All done downloading
 	print $progress_callback_prefix,&text('progress_done'),"<br>\n";
 	}
-elsif ($_[0] == 5) {
+elsif ($mode == 5) {
 	# Got new location after redirect
-	$progress_callback_url = $_[1];
+	$progress_callback_url = $arg;
 	}
-elsif ($_[0] == 6) {
+elsif ($mode == 6) {
 	# URL is in cache
-	$progress_callback_url = $_[1];
+	$progress_callback_url = $arg;
 	print &text('progress_incache',
 		    &html_escape($progress_callback_url)),"<br>\n";
 	}
@@ -11629,7 +11630,8 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 		}
 	if ($file_acls) {
 		# Set original ACLs
-		open(my $pipe, '|-', "$setfacl --restore=-");
+		my $restore_command = &get_setfacl_restore_command($setfacl);
+		open(my $pipe, '|-', $restore_command);
 		print($pipe $file_acls);
 		close($pipe);
 		}
@@ -11692,6 +11694,27 @@ if (!defined($main::selinux_enabled_cache)) {
 		}
 	}
 return $main::selinux_enabled_cache;
+}
+
+=head2 get_setfacl_restore_command(setfacl-command)
+
+Returns a command for restoring ACLs from standard input. Uses physical
+restore when supported by setfacl, while remaining compatible with versions
+older than 2.4.0 which reject -P together with --restore.
+
+=cut
+sub get_setfacl_restore_command
+{
+my ($setfacl) = @_;
+state %physical_restore_cache;
+
+if (!exists($physical_restore_cache{$setfacl})) {
+	my $help = &backquote_command("$setfacl --help 2>&1 </dev/null");
+	$physical_restore_cache{$setfacl} =
+		$help =~ /\[-P\]\s+--restore(?:=|\b)/ ? 1 : 0;
+	}
+my $physical = $physical_restore_cache{$setfacl} ? "-P " : "";
+return "$setfacl ${physical}--restore=-";
 }
 
 =head2 get_clear_file_attributes(file)
