@@ -278,6 +278,34 @@ subtest 'callback hash dispatches tracker events' => sub {
 		  'legacy callback code refs remain supported');
 };
 
+subtest 'callback bundle preserves connected IP event' => sub {
+	no warnings qw(once redefine);
+	my ($connection_callback, $download_callbacks);
+	local *main::make_http_connection = sub {
+		$connection_callback = $_[8];
+		return { 'ip' => '93.184.216.34' };
+		};
+	local *main::complete_http_download = sub {
+		$download_callbacks = $_[3];
+		return 1;
+		};
+	my @events;
+	my $address_callback = sub { return undef; };
+	my $callbacks = {
+		'tracker_callback' => sub { push(@events, [ @_ ]); },
+		'address_callback' => $address_callback,
+		};
+	my ($dest, $err);
+	main::http_download('origin.test', 80, '/', \$dest, \$err, $callbacks,
+			    0, undef, undef, 0, undef, 1);
+	is_deeply(\@events, [ [ 7, '93.184.216.34' ] ],
+		  'tracker callback receives the connected IP event');
+	is($connection_callback, $address_callback,
+	   'connection receives the address callback');
+	is($download_callbacks, $callbacks,
+	   'download receives the complete callback bundle');
+};
+
 subtest 'redirect destination policy' => sub {
 	no warnings qw(once redefine);
 	my @lines = (
