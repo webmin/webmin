@@ -3223,6 +3223,23 @@ Downloads data from a HTTP url to a local file or string. The parameters are :
 
 =item response_headers - If set returns a hash ref of response HTTP headers.
 
+If the callback function is defined, it will be called at each step of the download process with a mode parameter and
+additional args. The mode will be one of :
+
+=item 1 - Completed reading headers, arg is 1 for a redirect, 0 otherwise
+
+=item 2 - Received content length, arg is the response size in bytes
+
+=item 3 - Received data, arg is the bytes returned so far
+
+=item 4 - Finished receiving data
+
+=item 5 - Following a redirect, arg is the new URL
+
+=item 6 - Data was found in cache, arg is the full cached URL
+
+=item 7 - TCP connection made, arg is the remote IP (if known)
+
 =cut
 sub http_download
 {
@@ -3291,6 +3308,7 @@ if (!ref($h)) {
 	if ($error) { $$error = $h; return; }
 	else { &error(&html_escape($h)); }
 	}
+&$cbfunc(7, $h->{'ip'}) if ($cbfunc);
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
 			$headers, $ssl, $nocache, $timeout, $response_headers);
 if ((!$error || !$$error) && !$nocache) {
@@ -3883,6 +3901,8 @@ parameters are :
 
 =item bindip - Local IP address to bind to for outgoing connections
 
+Returns the IP to which the connection was actually made.
+
 =cut
 sub open_socket
 {
@@ -3899,13 +3919,14 @@ my @ips = &to_ipaddress($host);
 push(@ips, &to_ip6address($host));
 if (!@ips) {
 	my $msg = "Failed to lookup IP address for $host";
-	if ($err) { $$err = $msg; return 0; }
+	if ($err) { $$err = $msg; return undef; }
 	else { &error($msg); }
 	}
 
 # Try each of the resolved IPs
 my $msg;
 my $proto = getprotobyname("tcp");
+my $gotip;
 foreach my $ip (@ips) {
 	$msg = undef;
 	if (&check_ipaddress($ip)) {
@@ -3943,11 +3964,12 @@ foreach my $ip (@ips) {
 			next;
 			}
 		}
+	$gotip = $ip;
 	last;	# If we got this far, it worked
 	}
 if ($msg) {
 	# Last attempt failed
-	if ($err) { $$err = $msg; return 0; }
+	if ($err) { $$err = $msg; return undef; }
 	else { &error($msg); }
 	}
 
@@ -3955,7 +3977,7 @@ if ($msg) {
 my $old = select($fh);
 $| = 1;
 select($old);
-return 1;
+return $gotip;
 }
 
 =head2 download_timeout
@@ -9782,8 +9804,9 @@ if ($ssl) {
 	if (!$connected) {
 		# Direct connection
 		my $error;
-		&open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
+		my $ip = &open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
 		return $error if ($error);
+		$rv->{'ip'} = $ip;
 		}
 	Net::SSLeay::set_fd($rv->{'ssl_con'}, fileno($rv->{'fh'}));
 	eval {
@@ -9835,9 +9858,10 @@ else {
 	if (!$connected) {
 		# Connecting directly
 		my $error;
-		&open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
+		my $ip = &open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
 		return $error if ($error);
 		my $fh = $rv->{'fh'};
+		$rv->{'ip'} = $ip;
 		my $rtxt = "$method $page HTTP/1.0\r\n".$htxt;
 		print $fh $rtxt;
 		}
