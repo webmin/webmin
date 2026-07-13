@@ -66,14 +66,14 @@ print &ui_table_row(
 		&ui_help($text{'acl_download_addresses_desc'}),
 	&ui_radio_table(
 		"download_address_mode", $download_address_mode,
-		[ [ 'public', $text{'acl_download_public'} ],
-		  [ 'listed', $text{'acl_download_listed'},
+		[ [ 'all', $text{'acl_download_all'} ],
+		  [ 'public', $text{'acl_download_public'} ],
+		  [ 'listed', $text{'acl_download_listed'}."<br>".
 		    &ui_textarea(
 			"download_allowed_addresses",
 			join("\n", split(/\s+/,
 				$o->{'download_allowed_addresses'})),
-			4, 50) ],
-		  [ 'all', $text{'acl_download_all'} ] ]),
+			4, 50) ] ]),
 	3);
 }
 
