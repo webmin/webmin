@@ -3651,7 +3651,8 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 
 if (!$connected) {
 	# connect to host and login with real FTP protocol
-	&open_socket($host, $port, "SOCK", $_[3]) || return 0;
+	my $ip = &open_socket($host, $port, "SOCK", $_[3]) || return 0;
+	&$cbfunc(7, $ip) if ($cbfunc);
 	alarm(0) if ($timeout);
 	if ($main::download_timed_out) {
 		if ($error) {
