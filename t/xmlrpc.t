@@ -110,6 +110,14 @@ subtest 'encode_xml_value type selection' => sub {
 	# Plain strings.
 	like(encode_xml_value('hello'), qr{^<string>hello</string>\s*$}, 'word -> string');
 	like(encode_xml_value(''),      qr{^<string></string>\s*$},      'empty string -> empty <string>');
+	my @warnings;
+	my $undef_xml;
+	{
+		local $SIG{__WARN__} = sub { push(@warnings, @_); };
+		$undef_xml = encode_xml_value(undef);
+	}
+	like($undef_xml, qr{^<string></string>\s*$}, 'undef -> empty <string>');
+	is_deeply(\@warnings, [], 'undef emits no warnings');
 
 	# A value with control characters cannot live in a <string> (the
 	# printable-range regex fails), so it must fall through to base64.
@@ -189,6 +197,19 @@ subtest 'parse_xml_value' => sub {
 	is(parse_xml_value(value_tree('<boolean>1</boolean>')),1,     'boolean parsed');
 	is(parse_xml_value(value_tree('<double>2.5</double>')),'2.5', 'double parsed');
 	is(parse_xml_value(value_tree('<string>hi</string>')), 'hi',  'string parsed');
+	my @warnings;
+	{
+		local $SIG{__WARN__} = sub { push(@warnings, @_); };
+		is(parse_xml_value(value_tree('<string></string>')), '',
+		   'empty string parsed');
+		is(parse_xml_value(value_tree('')), '', 'implicit empty string parsed');
+		is(parse_xml_value(value_tree('<base64></base64>')), '',
+		   'empty base64 parsed');
+		my $empty_name = parse_xml_value(value_tree(
+			'<struct><member><name></name><value><string>x</string></value></member></struct>'));
+		is_deeply($empty_name, { '' => 'x' }, 'empty struct member name parsed');
+	}
+	is_deeply(\@warnings, [], 'empty XML values emit no warnings');
 
 	# base64 is decoded back to its raw bytes.
 	my $b64 = encode_base64("ab\x00cd");
