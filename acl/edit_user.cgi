@@ -47,6 +47,10 @@ if (!$in{'user'} && $uaccess{'rpc'} == 2) {
 	# Don't offer the confusing 'root' or 'admin' RPC option by default
 	$uaccess{'rpc'} = 0;
 	}
+if (!$in{'user'} && $safe) {
+	# Safe users should not inherit new permissions by default
+	$uaccess{'negative'} = 1;
+	}
 
 # Give up if readonly
 if ($user{'readonly'} && !$in{'readwrite'}) {
