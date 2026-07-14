@@ -44,7 +44,7 @@ $vers || usage();
 	  "defaultacl", "rpc.cgi", "date_chooser.cgi",
 	  "safeacl", "install-module.pl", "LICENCE.ja", 
 	  "favicon.ico", "config-netbsd", "fastrpc.cgi",
-	  "defaulttheme",
+	  "defaulttheme", "negativeacl",
 	  "javascript-lib.pl", "webmin-pam", "webmin-debian-pam", "maketemp.pl",
 	  "run-uninstalls.pl",
 	  "webmin-openrc-init", "run-postinstalls.pl",
