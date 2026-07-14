@@ -143,3 +143,4 @@ $o->{'download_address_mode'} = $download_address_mode;
 $o->{'download_allowed_addresses'} = join(" ",
 	split(/\s+/, $in{'download_allowed_addresses'}));
 }
+

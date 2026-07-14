@@ -56,3 +56,4 @@ $o->{'dirs'} = join(" ", @dirs);
 $o->{'home'} = $in{'home'};
 $o->{'fetch'} = $in{'fetch'};
 }
+

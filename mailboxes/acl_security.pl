@@ -58,7 +58,6 @@ print &ui_table_row($text{'acl_canattach'},
 
 print &ui_table_row($text{'acl_candetach'},
 	&ui_yesno_radio("candetach", $o->{'candetach'}));
-
 }
 
 # acl_security_save(&options)
@@ -85,3 +84,4 @@ $o->{'canattach'} = $in{'canattach'};
 $o->{'candetach'} = $in{'candetach'};
 $o->{'dir'} = $in{'dir_def'} ? undef : $in{'dir'};
 }
+
