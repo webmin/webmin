@@ -6,6 +6,7 @@ require './updown-lib.pl';
 use Time::Local;
 &ReadParse();
 &error_setup($text{'download_err'});
+$can_download || &error($text{'download_ecannot'});
 
 # Validate and store inputs
 $i = 0;
@@ -96,6 +97,7 @@ if (!-d $download{'dir'} && $in{'mkdir'}) {
 	}
 
 # Save the settings
+$download{'webmin_user'} = $base_remote_user if (!$module_info{'usermin'});
 if ($module_info{'usermin'}) {
 	&lock_file("$user_module_config_directory/config");
 	$userconfig{'ddir'} = $in{'dir'};

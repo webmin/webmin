@@ -801,19 +801,163 @@ if (&check_ipaddress($ip)) {
 	return 1 if ($o[0] == 169 && $o[1] == 254);
 	return 1 if ($o[0] == 172 && $o[1] >= 16 && $o[1] <= 31);
 	return 1 if ($o[0] == 192 && $o[1] == 168);
+	return 1 if ($o[0] == 192 && $o[1] == 0 &&
+		     ($o[2] == 0 || $o[2] == 2));
+	return 1 if ($o[0] == 192 && $o[1] == 88 && $o[2] == 99);
 	return 1 if ($o[0] == 100 && $o[1] >= 64 && $o[1] <= 127);
+	return 1 if ($o[0] == 198 && ($o[1] == 18 || $o[1] == 19));
+	return 1 if ($o[0] == 198 && $o[1] == 51 && $o[2] == 100);
+	return 1 if ($o[0] == 203 && $o[1] == 0 && $o[2] == 113);
 	return 1 if ($o[0] >= 224);
 	}
 elsif (&check_ip6address($ip)) {
 	my $l = lc($ip);
+	$l =~ s{/\d+$}{};
 	return 1 if ($l eq "::1" || $l eq "::");
 	return 1 if ($l =~ /^fe[89ab]/);
+	return 1 if ($l =~ /^fe[c-f]/);
 	return 1 if ($l =~ /^f[cd]/);
-	if ($l =~ /^::ffff:(\d+\.\d+\.\d+\.\d+)$/) {
-		return &is_non_public_ipaddress($1);
+	return 1 if ($l =~ /^ff/);
+	my $packed = eval { inet_pton(AF_INET6(), $l) };
+	if (defined($packed) &&
+	    substr($packed, 0, 12) eq pack("H*", "0064ff9b0000000000000000")) {
+		my $ip4 = join(".", unpack("C4", substr($packed, 12, 4)));
+		return &is_non_public_ipaddress($ip4);
+		}
+	if (defined($packed) && substr($packed, 0, 2) eq "\x20\x02") {
+		my $ip4 = join(".", unpack("C4", substr($packed, 2, 4)));
+		return &is_non_public_ipaddress($ip4);
+		}
+	return 1 if (&ipaddress_matches_network($l, "64:ff9b:1::/48"));
+	return 1 if (&ipaddress_matches_network($l, "100::/64"));
+	return 1 if (&ipaddress_matches_network($l, "2001:db8::/32"));
+	if (defined($packed) &&
+	    (substr($packed, 0, 12) eq "\0" x 12 ||
+	     substr($packed, 0, 10) eq "\0" x 10 &&
+	     substr($packed, 10, 2) eq "\xff" x 2)) {
+		my $ip4 = join(".", unpack("C4", substr($packed, 12, 4)));
+		return &is_non_public_ipaddress($ip4);
 		}
 	}
 return 0;
+}
+
+=head2 ipaddress_matches_network(ip, address-or-network)
+
+Returns 1 if an IPv4 or IPv6 address matches an exact address or CIDR network.
+
+=cut
+sub ipaddress_matches_network
+{
+my ($ip, $network) = @_;
+return 0 if (!defined($ip) || !defined($network));
+$network =~ s/^\s+|\s+$//g;
+my ($base, $prefix) = split(/\//, $network, 2);
+my ($family, $bits);
+# Permit an IPv4 exception to match the equivalent mapped IPv6 destination.
+if (&check_ip6address($ip) && &check_ipaddress($base)) {
+	my $packed = eval { inet_pton(AF_INET6(), $ip) };
+	if (defined($packed) &&
+	    (substr($packed, 0, 12) eq "\0" x 12 ||
+	     substr($packed, 0, 10) eq "\0" x 10 &&
+	     substr($packed, 10, 2) eq "\xff" x 2)) {
+		my $ip4 = join(".", unpack("C4", substr($packed, 12, 4)));
+		return &ipaddress_matches_network(
+			$ip4, $base.(defined($prefix) ? "/$prefix" : ""));
+		}
+	}
+if (&check_ipaddress($ip) && &check_ipaddress($base)) {
+	$family = AF_INET();
+	$bits = 32;
+	}
+elsif (&check_ip6address($ip) && &check_ip6address($base)) {
+	$family = eval { AF_INET6() };
+	return 0 if (!defined($family));
+	$bits = 128;
+	}
+else {
+	return 0;
+	}
+$prefix = $bits if (!defined($prefix));
+return 0 if ($prefix !~ /^\d+$/ || $prefix > $bits);
+my ($packed_ip, $packed_base);
+if ($family == AF_INET()) {
+	$packed_ip = inet_aton($ip);
+	$packed_base = inet_aton($base);
+	}
+else {
+	$packed_ip = eval { inet_pton($family, $ip) };
+	$packed_base = eval { inet_pton($family, $base) };
+	}
+return 0 if (!defined($packed_ip) || !defined($packed_base));
+my $bytes = int($prefix / 8);
+return 0 if (substr($packed_ip, 0, $bytes) ne
+		     substr($packed_base, 0, $bytes));
+my $remaining = $prefix % 8;
+if ($remaining) {
+	my $mask = (0xff << (8-$remaining)) & 0xff;
+	return 0 if ((ord(substr($packed_ip, $bytes, 1)) & $mask) !=
+		     (ord(substr($packed_base, $bytes, 1)) & $mask));
+	}
+return 1;
+}
+
+=head2 get_download_address_callback(mode, [allowed-addresses])
+
+Returns a callback for checking resolved download addresses against a policy.
+The mode can be "public", "listed" or "all". In listed mode, non-public
+addresses are allowed when they match a whitespace-separated list of IP
+addresses or CIDR networks. Returns undef when no checks are required.
+
+=cut
+sub get_download_address_callback
+{
+my ($mode, $allowed) = @_;
+return undef if (!defined($mode) || $mode eq "all");
+$mode = 'public' if ($mode ne 'listed');
+
+return sub {
+	my ($host, $addresses) = @_;
+	foreach my $ip (@$addresses) {
+		next if (!&is_non_public_ipaddress($ip));
+		if ($mode eq 'listed') {
+			my $matched = 0;
+			foreach my $network (split(/\s+/, $allowed || "")) {
+				if (&ipaddress_matches_network($ip, $network)) {
+					$matched = 1;
+					last;
+					}
+				}
+			next if ($matched);
+			}
+		return "Download from non-public IP address $ip is not allowed";
+		}
+	return undef;
+	};
+}
+
+=head2 check_download_address(host, [&callback], [&resolved-addresses])
+
+Resolves a download hostname and passes the resulting IP addresses to an
+optional callback. The callback receives the hostname and an array reference
+of addresses, and returns an error message to reject them or undef to allow
+them. Returns an error message when resolution or validation fails. If the
+resolved-addresses array reference is set, it is populated with the checked
+addresses.
+
+=cut
+sub check_download_address
+{
+my ($host, $callback, $resolved_addresses) = @_;
+my @addresses = &to_ipaddress($host);
+push(@addresses, &to_ip6address($host));
+return "Failed to lookup IP address for $host" if (!@addresses);
+if ($callback) {
+	my $error = &$callback($host, \@addresses);
+	return $error if ($error);
+	}
+@$resolved_addresses = @addresses if ($resolved_addresses);
+return undef;
 }
 
 =head2 generate_icon(image, title, link, [href], [width], [height], [before-title], [after-title])
@@ -3191,7 +3335,7 @@ while(1) {
 return $anyneg;
 }
 
-=head2 http_download(host, port, page, destfile, [&error], [&callback], [sslmode], [user], [pass], [timeout], [osdn-convert], [no-cache], [&headers])
+=head2 http_download(host, port, page, destfile, [&error], [&callback], [sslmode], [user], [pass], [timeout], [osdn-convert], [no-cache], [&headers], [&response-headers])
 
 Downloads data from a HTTP url to a local file or string. The parameters are :
 
@@ -3536,7 +3680,7 @@ if (!ref($h)) {
 			$headers, $ssl, $nocache, $timeout, $response_headers);
 }
 
-=head2 ftp_download(host, file, destfile, [&error], [&callback], [user, pass], [port], [no-cache])
+=head2 ftp_download(host, file, destfile, [&error], [&callback], [user, pass], [port], [no-cache], [timeout])
 
 Download data from an FTP site to a local file. The parameters are :
 
@@ -3563,7 +3707,8 @@ Download data from an FTP site to a local file. The parameters are :
 =cut
 sub ftp_download
 {
-my ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port, $nocache, $timeout) = @_;
+my ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port, $nocache,
+    $timeout) = @_;
 $port ||= 21;
 $timeout = 60 if (!defined($timeout));
 if ($gconfig{'debug_what_net'}) {

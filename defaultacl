@@ -7,3 +7,4 @@ readonly=0
 nodot=0
 fileunix=root
 webminsearch=1
+download_address_mode=public
