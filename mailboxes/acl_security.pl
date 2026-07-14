@@ -51,7 +51,7 @@ print &ui_table_row($text{'acl_fromname'},
 
 print &ui_table_row($text{'acl_attach'},
 	&ui_opt_textbox("attach", $o->{'attach'}<0 ? "" : $o->{'attach'},
-			5, "")." kB");
+			5, $text{'acl_unlimited'})." kB");
 
 print &ui_table_row($text{'acl_canattach'},
 	&ui_yesno_radio("canattach", $o->{'canattach'}));
@@ -84,4 +84,3 @@ $o->{'canattach'} = $in{'canattach'};
 $o->{'candetach'} = $in{'candetach'};
 $o->{'dir'} = $in{'dir_def'} ? undef : $in{'dir'};
 }
-
