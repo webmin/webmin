@@ -39,18 +39,23 @@ else {
 
 		$progress_callback_url = $in{'link'};
 		my @st = stat($cwd);
-		my $callbacks = {
-			'tracker_callback' => \&progress_callback,
-			'address_callback' => &get_download_address_callback(
-				$access{'download_address_mode'} || 'public',
-				$access{'download_allowed_addresses'}),
+		my $address_checker = &get_download_address_callback(
+			$access{'download_address_mode'} || 'public',
+			$access{'download_allowed_addresses'});
+		my $download_callback = sub {
+			if ($_[0] == 7 && defined($_[1]) && $address_checker) {
+				my $address_error = &$address_checker(
+					$host, [ $_[1] ]);
+				&error(&html_escape($address_error)) if ($address_error);
+				}
+			&progress_callback(@_);
 			};
 		if ($ssl == 0 || $ssl == 1) {
 			# HTTP or HTTPS download
 			&http_download(
 				$host, $port, $page,
 				$full, undef,
-				$callbacks,
+				$download_callback,
 				$ssl, $in{'username'},
 				$in{'password'});
 			}
@@ -59,7 +64,7 @@ else {
 			&ftp_download(
 				$host, $page, $full,
 				undef,
-				$callbacks,
+				$download_callback,
 				$in{'username'},
 				$in{'password'}, $port);
 			}

@@ -3349,7 +3349,7 @@ Downloads data from a HTTP url to a local file or string. The parameters are :
 
 =item error - If set to a scalar ref, the function will store any error message in this scalar and return 0 on failure, or 1 on success. If not set, it will simply call the error function if the download fails.
 
-=item callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing download progress. It can also be a hash ref containing tracker_callback and address_callback function refs. The address callback receives the destination hostname and an array ref of resolved IP addresses, and returns an error message to reject the destination or undef to allow it.
+=item callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing download progress.
 
 =item sslmode - If set to 1, an HTTPS connection is used instead of HTTP.
 
@@ -3389,13 +3389,6 @@ sub http_download
 {
 my ($host, $port, $page, $dest, $error, $cbfunc, $ssl, $user, $pass,
     $timeout, $osdn, $nocache, $headers, $response_headers) = @_;
-my $callbacks = $cbfunc;
-my $address_callback;
-# Extract known callbacks from an extended callback hash
-if (ref($callbacks) eq 'HASH') {
-	$cbfunc = $callbacks->{'tracker_callback'};
-	$address_callback = $callbacks->{'address_callback'};
-	}
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('HTTP', "host=$host port=$port page=$page ssl=$ssl".
 				  ($user ? " user=$user pass=$pass" : "").
@@ -3410,13 +3403,10 @@ if ($osdn) {
 		&convert_osdn_url($prot.$host.$portstr.$page));
 	}
 
-# Restricted downloads must not share cached responses with unrestricted ones
-$nocache = 1 if ($address_callback);
-
 # Check if we already have cached the URL
 my $url = ($ssl ? "https://" : "http://").$host.":".$port.$page;
-my $cfile = !$nocache ? &check_in_http_cache($url) : undef;
-if ($cfile) {
+my $cfile = &check_in_http_cache($url);
+if ($cfile && !$nocache) {
 	# Yes! Copy to dest file or variable
 	&$cbfunc(6, $url) if ($cbfunc);
 	if (ref($dest)) {
@@ -3454,8 +3444,7 @@ $main::download_timed_out = undef;
 local $SIG{ALRM} = \&download_timeout;
 $timeout = 60 if (!defined($timeout));
 alarm($timeout) if ($timeout);
-my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers,
-			     undef, undef, $address_callback);
+my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
 alarm(0) if ($timeout);
 $h = $main::download_timed_out if ($main::download_timed_out);
 if (!ref($h)) {
@@ -3464,7 +3453,7 @@ if (!ref($h)) {
 	else { &error(&html_escape($h)); }
 	}
 &$cbfunc(7, $h->{'ip'}) if ($cbfunc);
-&complete_http_download($h, $dest, $error, $callbacks, $osdn, $host, $port,
+&complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
 			$headers, $ssl, $nocache, $timeout, $response_headers);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
@@ -3483,11 +3472,6 @@ sub complete_http_download
 {
 my ($h, $destfile, $error, $cbfunc, $osdn, $oldhost, $oldport, $headers,
     $oldssl, $nocache, $timeout, $response_headers) = @_;
-my $callbacks = $cbfunc;
-# Extract the tracker callback from an extended callback hash
-if (ref($callbacks) eq 'HASH') {
-	$cbfunc = $callbacks->{'tracker_callback'};
-	}
 
 # Kept local so that callback funcs # can access them.
 local ($line, %header, @headers, $s);
@@ -3561,7 +3545,7 @@ if ($rcode >= 300 && $rcode < 400) {
 	($page, $params) = split(/\?/, $page);
 	$page =~ s/ /%20/g;
 	$page .= "?".$params if (defined($params));
-	&http_download($host, $port, $page, $destfile, $error, $callbacks, $ssl,
+	&http_download($host, $port, $page, $destfile, $error, $cbfunc, $ssl,
 		       undef, undef, undef, $osdn, $nocache, $headers);
 	}
 else {
@@ -3708,7 +3692,7 @@ Download data from an FTP site to a local file. The parameters are :
 
 =item error - If set to a string ref, any error message is written into this string and the function returns 0 on failure, 1 on success. Otherwise, error is called on failure.
 
-=item callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing download progress. It can also be a hash ref containing tracker_callback and address_callback function refs. The address callback receives the destination hostname and an array ref of resolved IP addresses, and returns an error message to reject the destination or undef to allow it.
+=item callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing download progress.
 
 =item user - Username to login to the FTP server as. If missing, Webmin will login as anonymous.
 
@@ -3725,13 +3709,6 @@ sub ftp_download
 {
 my ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port, $nocache,
     $timeout) = @_;
-my $callbacks = $cbfunc;
-my $address_callback;
-# Extract known callbacks from an extended callback hash
-if (ref($callbacks) eq 'HASH') {
-	$cbfunc = $callbacks->{'tracker_callback'};
-	$address_callback = $callbacks->{'address_callback'};
-	}
 $port ||= 21;
 $timeout = 60 if (!defined($timeout));
 if ($gconfig{'debug_what_net'}) {
@@ -3750,13 +3727,10 @@ if (&is_readonly_mode()) {
 		}
 	}
 
-# Restricted downloads must not share cached responses with unrestricted ones
-$nocache = 1 if ($address_callback);
-
 # Check if we already have cached the URL
 my $url = "ftp://".$host.$file;
-my $cfile = !$nocache ? &check_in_http_cache($url) : undef;
-if ($cfile) {
+my $cfile = &check_in_http_cache($url);
+if ($cfile && !$nocache) {
 	# Yes! Copy to dest file or variable
 	&$cbfunc(6, $url) if ($cbfunc);
 	if (ref($dest)) {
@@ -3777,21 +3751,9 @@ local $SIG{ALRM} = \&download_timeout;
 alarm($timeout) if ($timeout);
 my $connected;
 if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
-	my ($ftp_proxy_host, $ftp_proxy_port) = ($1, $2);
-	my $proxy_address = $host;
-	if ($address_callback) {
-		my @addresses;
-		my $address_error = &check_download_address(
-			$host, $address_callback, \@addresses);
-		if ($address_error) {
-			if ($error) { $$error = $address_error; return 0; }
-			else { &error(&html_escape($address_error)); }
-			}
-		$proxy_address = $addresses[0];
-		}
 	# download through http-style proxy
 	my $error;
-	if (&open_socket($ftp_proxy_host, $ftp_proxy_port, "SOCK", \$error)) {
+	if (&open_socket($1, $2, "SOCK", \$error)) {
 		# Connected OK
 		if ($main::download_timed_out) {
 			alarm(0) if ($timeout);
@@ -3806,9 +3768,7 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 		my $esc = $file; $esc =~ s/ /%20/g;
 		my $up = "${user}:${pass}\@" if ($user);
 		my $portstr = $port == 21 ? "" : ":$port";
-		my $proxy_host = $proxy_address;
-		$proxy_host = "[$proxy_host]" if (&check_ip6address($proxy_host));
-		print SOCK "GET ftp://${up}${proxy_host}${portstr}${esc} HTTP/1.0\r\n";
+		print SOCK "GET ftp://${up}${host}${portstr}${esc} HTTP/1.0\r\n";
 		print SOCK "User-agent: Webmin\r\n";
 		if ($gconfig{'proxy_user'}) {
 			my $auth = &encode_base64(
@@ -3818,9 +3778,8 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 			}
 		print SOCK "\r\n";
 		&complete_http_download(
-			{ 'fh' => "SOCK" }, $dest, $error, $callbacks,
-			undef, undef, undef, undef, 0, $nocache,
-			undef, undef);
+			{ 'fh' => "SOCK" }, $dest, $error, $cbfunc,
+			undef, undef, undef, undef, 0, $nocache);
 		$connected = 1;
 		}
 	elsif (!$gconfig{'proxy_fallback'}) {
@@ -3888,8 +3847,7 @@ if (!$connected) {
 			defined($epsv) || return 0;
 			$epsv =~ /\|(\d+)\|/ || return 0;
 			my $epsvport = $1;
-			&open_socket($host, $epsvport, CON, $error, undef,
-			     $address_callback) || return 0;
+			&open_socket($host, $epsvport, CON, $error) || return 0;
 			}
 		else {
 			# request the file over a PASV connection
@@ -3898,8 +3856,7 @@ if (!$connected) {
 			$pasv =~ /\(([0-9,]+)\)/ || return 0;
 			@n = split(/,/ , $1);
 			&open_socket("$n[0].$n[1].$n[2].$n[3]",
-				$n[4]*256 + $n[5], "CON", $_[3], undef,
-				$address_callback) || return 0;
+				$n[4]*256 + $n[5], "CON", $_[3]) || return 0;
 			}
 		&ftp_command("RETR $file", 1, $error) || return 0;
 
@@ -3933,7 +3890,7 @@ if (!$connected) {
 	close(SOCK);
 	}
 
-&write_to_http_cache($url, $dest) if (!$nocache);
+&write_to_http_cache($url, $dest);
 return 1;
 }
 
@@ -4075,7 +4032,7 @@ foreach my $n (split(/\s+/, $gconfig{'noproxy'})) {
 return 0;
 }
 
-=head2 open_socket(host, port, handle, [&error], [bindip], [&address-callback])
+=head2 open_socket(host, port, handle, [&error])
 
 Open a TCP connection to some host and port, using a file handle. The
 parameters are :
@@ -4090,16 +4047,12 @@ parameters are :
 
 =item bindip - Local IP address to bind to for outgoing connections
 
-=item address-callback - Optional function called with the hostname and an
-array reference of its resolved IP addresses. It must return an error message
-to reject the destination, or undef to allow it.
-
 Returns the IP to which the connection was actually made.
 
 =cut
 sub open_socket
 {
-my ($host, $port, $fh, $err, $bindip, $address_callback) = @_;
+my ($host, $port, $fh, $err, $bindip) = @_;
 $fh = &callers_package($fh);
 $bindip ||= $gconfig{'bind_proxy'};
 
@@ -4107,12 +4060,11 @@ if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('TCP', "host=$host port=$port");
 	}
 
-# Resolve and validate the same addresses that will be used for connect().
-my @ips;
-my $address_error = &check_download_address(
-	$host, $address_callback, \@ips);
-if ($address_error) {
-	my $msg = $address_error;
+# Lookup all IPv4 and v6 addresses for the host
+my @ips = &to_ipaddress($host);
+push(@ips, &to_ip6address($host));
+if (!@ips) {
+	my $msg = "Failed to lookup IP address for $host";
 	if ($err) { $$err = $msg; return undef; }
 	else { &error($msg); }
 	}
@@ -9856,7 +9808,7 @@ return $can_use_http_ssl_cache;
 }
 
 =head2 make_http_connection(host, port, ssl, method, page, [&headers],
-			    [bindip], [&certreqs], [&address-callback])
+			    [&certreqs])
 
 Opens a connection to some HTTP server, maybe through a proxy, and returns
 a handle object. The handle can then be used to send additional headers
@@ -9880,15 +9832,10 @@ The parameters are :
 
 =item certreqs - A hash ref containing options for remote cert verification
 
-=item address-callback - Optional function called with the destination hostname
-and an array reference of its resolved IP addresses. It must return an error
-message to reject the destination, or undef to allow it.
-
 =cut
 sub make_http_connection
 {
-my ($host, $port, $ssl, $method, $page, $headers, $bindip, $certreqs,
-    $address_callback) = @_;
+my ($host, $port, $ssl, $method, $page, $headers, $bindip, $certreqs) = @_;
 my $htxt;
 if (ref($headers) eq 'ARRAY') {
 	# Headers are name-value pairs
@@ -9908,20 +9855,6 @@ if (&is_readonly_mode()) {
 	return "HTTP connections not allowed in readonly mode";
 	}
 my $rv = { 'fh' => time().$$ };
-my ($http_proxy_host, $http_proxy_port);
-if ($gconfig{'http_proxy'} =~ /^http:\/\/(\S+):(\d+)/ &&
-    !&no_proxy($host)) {
-	($http_proxy_host, $http_proxy_port) = ($1, $2);
-	}
-my $proxy_host = $host;
-if (defined($http_proxy_host) && $address_callback) {
-	my @addresses;
-	my $address_error = &check_download_address(
-		$host, $address_callback, \@addresses);
-	return $address_error if ($address_error);
-	$proxy_host = $addresses[0];
-	}
-$proxy_host = "[$proxy_host]" if (&check_ip6address($proxy_host));
 if ($ssl) {
 	# Connect using SSL
 	&can_use_http_ssl() || return $text{'link_essl'};
@@ -9982,15 +9915,15 @@ if ($ssl) {
 	$rv->{'ssl_con'} = Net::SSLeay::new($rv->{'ssl_ctx'}) ||
 		return "Failed to create SSL connection";
 	my $connected;
-	if (defined($http_proxy_host)) {
+	if ($gconfig{'http_proxy'} =~ /^http:\/\/(\S+):(\d+)/ &&
+	    !&no_proxy($host)) {
 		# Via proxy
 		my $error;
-		&open_socket($http_proxy_host, $http_proxy_port,
-			     $rv->{'fh'}, \$error, $bindip);
+		&open_socket($1, $2, $rv->{'fh'}, \$error, $bindip);
 		if (!$error) {
 			# Connected OK
 			my $fh = $rv->{'fh'};
-			print $fh "CONNECT $proxy_host:$port HTTP/1.0\r\n";
+			print $fh "CONNECT $host:$port HTTP/1.0\r\n";
 			if ($gconfig{'proxy_user'}) {
 				my $auth = &encode_base64(
 				   "$gconfig{'proxy_user'}:".
@@ -10017,8 +9950,7 @@ if ($ssl) {
 	if (!$connected) {
 		# Direct connection
 		my $error;
-		my $ip = &open_socket($host, $port, $rv->{'fh'}, \$error, $bindip,
-				      $address_callback);
+		my $ip = &open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
 		return $error if ($error);
 		$rv->{'ip'} = $ip;
 		}
@@ -10044,17 +9976,17 @@ if ($ssl) {
 else {
 	# Plain HTTP request
 	my $connected;
-	if (defined($http_proxy_host)) {
+	if ($gconfig{'http_proxy'} =~ /^http:\/\/(\S+):(\d+)/ &&
+	    !&no_proxy($host)) {
 		# Via a proxy
 		my $error;
-		&open_socket($http_proxy_host, $http_proxy_port,
-			     $rv->{'fh'}, \$error, $bindip);
+		&open_socket($1, $2, $rv->{'fh'}, \$error, $bindip);
 		if (!$error) {
 			# Connected OK
 			$connected = 1;
 			my $fh = $rv->{'fh'};
 			my $rtxt = $method." ".
-				   "http://$proxy_host:$port$page HTTP/1.0\r\n";
+				   "http://$host:$port$page HTTP/1.0\r\n";
 			if ($gconfig{'proxy_user'}) {
 				my $auth = &encode_base64(
 				   "$gconfig{'proxy_user'}:".
@@ -10072,8 +10004,7 @@ else {
 	if (!$connected) {
 		# Connecting directly
 		my $error;
-		my $ip = &open_socket($host, $port, $rv->{'fh'}, \$error, $bindip,
-				      $address_callback);
+		my $ip = &open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
 		return $error if ($error);
 		my $fh = $rv->{'fh'};
 		$rv->{'ip'} = $ip;

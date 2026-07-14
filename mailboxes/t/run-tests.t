@@ -149,21 +149,32 @@ subtest 'XHR remote content uses mailbox destination ACL' => sub {
 		local *parse_http_url = sub {
 			return ('example.test', 80, '/image.png', 0);
 			};
-		my $address_callback = sub { return 'mailbox-acl-callback'; };
+		my $address_checker = sub {
+			POSIX::_exit(4)
+				if ($_[0] ne 'example.test' ||
+				    $_[1]->[0] ne '127.0.0.1');
+			return 'mailbox-address-blocked';
+			};
 		local *get_download_address_callback = sub {
 			POSIX::_exit(3)
 				if ($_[0] ne 'listed' || $_[1] ne '10.0.0.0/8');
-			return $address_callback;
+			return $address_checker;
 			};
+		local *error = sub {
+			POSIX::_exit($_[0] eq 'mailbox-address-blocked' ? 0 : 1);
+			};
+		local *html_escape = sub { return $_[0]; };
 		local *http_download = sub {
-			my $callback = $_[5]->{'address_callback'};
-			POSIX::_exit(&$callback() eq 'mailbox-acl-callback' ? 0 : 1);
+			my $callback = $_[5];
+			POSIX::_exit(5) if (ref($callback) ne 'CODE');
+			&$callback(7, '127.0.0.1');
+			POSIX::_exit(2);
 			};
 		xhr();
-		POSIX::_exit(2);
+		POSIX::_exit(6);
 		}
 	waitpid($pid, 0);
-	is($? >> 8, 0, 'XHR passes its callback bundle to HTTP download');
+	is($? >> 8, 0, 'XHR checks mode 7 through the existing callback');
 	};
 
 done_testing();

@@ -138,10 +138,15 @@ if (!$module_info{'usermin'} && $_[0]->{'webmin_user'}) {
 	$address_mode = $download_access{'download_address_mode'} || 'public';
 	$allowed_addresses = $download_access{'download_allowed_addresses'};
 	}
-my $callbacks = {
-	'tracker_callback' => $_[1],
-	'address_callback' => &get_download_address_callback(
-		$address_mode, $allowed_addresses),
+my $tracker_callback = $_[1];
+my $address_checker = &get_download_address_callback(
+	$address_mode, $allowed_addresses);
+my $download_callback = sub {
+	if ($_[0] == 7 && defined($_[1]) && $address_checker) {
+		my $address_error = &$address_checker(undef, [ $_[1] ]);
+		&error(&html_escape($address_error)) if ($address_error);
+		}
+	&$tracker_callback(@_) if ($tracker_callback);
 	};
 for($i=0; $_[0]->{"url_$i"}; $i++) {
 	$error = undef;
@@ -169,7 +174,7 @@ for($i=0; $_[0]->{"url_$i"}; $i++) {
 			       $_[0]->{"page_$i"},
 			       $path,
 			       \$error,
-			       $callbacks,
+			       $download_callback,
 			       $_[0]->{"ssl_$i"},
 			       $_[0]->{"user_$i"},
 			       $_[0]->{"pass_$i"});
@@ -179,7 +184,7 @@ for($i=0; $_[0]->{"url_$i"}; $i++) {
 			       $_[0]->{"page_$i"},
 			       $path,
 			       \$error,
-			       $callbacks,
+			       $download_callback,
 			       $_[0]->{"user_$i"},
 			       $_[0]->{"pass_$i"});
 		}
