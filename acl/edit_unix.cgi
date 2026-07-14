@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 # edit_unix.cgi
-# Choose a user whose permissions will be used for logins that don't
-# match any webmin user, but have unix accounts
+# Map Unix users that do not have Webmin accounts to a Webmin user whose
+# access rights and authentication method will be used for their logins.
 
 use strict;
 use warnings;
@@ -20,7 +20,7 @@ my %miniserv;
 print &ui_form_start("save_unix.cgi", "post");
 print &ui_table_start($text{'unix_header'}, undef, 2);
 
-# Enable Unix auth
+# Configure Unix login mappings
 my @unixauth = &get_unixauth(\%miniserv);
 my $utable = "";
 $utable .= &ui_radio("unix_def", @unixauth ? 0 : 1,
@@ -28,8 +28,13 @@ $utable .= &ui_radio("unix_def", @unixauth ? 0 : 1,
 $utable .= &ui_columns_start([ $text{'unix_mode'}, $text{'unix_who'},
 			  $text{'unix_to'} ]);
 my $i = 0;
-my @webmins = map { [ $_->{'name'} ] }
-	       sort { $a->{'name'} cmp $b->{'name'} } &list_users();
+my @webmins = map {
+	my $auth = $_->{'pass'} eq 'x' ? $text{'edit_unix'} :
+		   $_->{'pass'} eq 'e' ? $text{'edit_extauth'} :
+		   $_->{'pass'} eq '*LK*' || $_->{'pass'} =~ /^!/ ?
+			$text{'edit_lock'} : $text{'unix_webminpass'};
+	[ $_->{'name'}, "$_->{'name'} ($auth)" ]
+	} sort { $a->{'name'} cmp $b->{'name'} } &list_users();
 foreach my $ua (@unixauth, [ ], [ ]) {
 	$utable .= &ui_columns_row([
 		&ui_select("mode_$i", !defined($ua->[0]) ? 0 :
@@ -47,6 +52,7 @@ foreach my $ua (@unixauth, [ ], [ ]) {
 	$i++;
 	}
 $utable .= &ui_columns_end();
+$utable .= "<p>".&ui_note($text{'unix_mapdesc'}, 0)."</p>\n";
 print &ui_table_row($text{'unix_utable'}, $utable);
 
 # Allow users who can sudo to root?
@@ -88,4 +94,3 @@ print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
-

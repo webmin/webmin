@@ -2581,7 +2581,8 @@ elsif ($canmode == 0) {
 	return ( $canuser, 0, 0, $webminuser );
 	}
 elsif ($canmode == 1) {
-	# Attempt Webmin authentication
+	# Attempt Webmin authentication. For a unixauth mapping, this checks
+	# the fixed password of the mapped Webmin user.
 	my $uinfo = &get_user_details($webminuser, $canuser);
 	if ($uinfo &&
 	    &password_crypt($pass, $uinfo->{'pass'}) eq $uinfo->{'pass'}) {
@@ -2774,14 +2775,17 @@ return $resp =~ /^OK/i ? 1 : 0;
 # Second is 0 if cannot login, 1 if using Webmin pass, 2 if PAM, 3 if password
 # file, 4 if external.
 # Third is 1 if the user does not exist at all, 0 if he does.
-# Fourth is the Webmin username whose permissions apply, based on unixauth.
+# Fourth is the Webmin username whose permissions apply. For a unixauth
+# mapping, its password setting also selects the authentication method.
 # Fifth is a flag indicating if a sudo check is needed.
 sub can_user_login
 {
 local $uinfo = &get_user_details($_[0]);
 if (!$uinfo) {
-	# See if this user exists in Unix and can be validated by the same
-	# method as the unixauth webmin user
+	# See if this user exists in Unix and can use the authentication method
+	# configured for the mapped Webmin user. The original username is passed
+	# to PAM, the password file, or the external authentication program; the
+	# mapped Webmin user supplies the access rights.
 	local $realuser = $unixauth{$_[0]};
 	local @uinfo;
 	local $sudo = 0;
@@ -2821,6 +2825,8 @@ if (!$uinfo) {
 	return (undef, 0, 1, undef) if (!$realuser);
 	local $uinfo = &get_user_details($realuser);
 	return (undef, 0, 1, undef) if (!$uinfo);
+	# The mapped user's password setting selects how the original username
+	# will be authenticated.
 	local $up = $uinfo->{'pass'};
 
 	# Work out possible domain names from the hostname
@@ -2920,17 +2926,17 @@ if (!$uinfo) {
 		}
 
 	if ($up eq 'x') {
-		# PAM or passwd file authentication
+		# Authenticate the original username through PAM or the password file
 		print DEBUG "can_user_login: Validate with PAM\n";
 		return ( $_[0], $use_pam ? 2 : 3, 0, $realuser, $sudo );
 		}
 	elsif ($up eq 'e') {
-		# External authentication
+		# Authenticate the original username externally
 		print DEBUG "can_user_login: Validate externally\n";
 		return ( $_[0], 4, 0, $realuser, $sudo );
 		}
 	else {
-		# Fixed Webmin password
+		# Authenticate against the fixed password of the mapped Webmin user
 		print DEBUG "can_user_login: Validate by Webmin\n";
 		return ( $_[0], 1, 0, $realuser, $sudo );
 		}

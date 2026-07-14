@@ -1179,6 +1179,34 @@ is(group_line({ name => 'empty' }),
 # writing <confdir>/acl/<user>.acl, seeds whatever miniserv-user state the CGI
 # needs, runs the CGI as a subprocess, and asserts on what the caller sees.
 
+# edit_unix.cgi should make the authentication method inherited from each
+# mapped Webmin user visible without changing the submitted username value.
+subtest 'edit_unix.cgi authentication labels' => sub {
+    _reset_fixture();
+    _seed_user_acl('admin', { unix => 1, create => 1, delete => 1 });
+    create_user({ name => 'external-user', pass => 'e', modules => ['acl'] });
+    create_user({ name => 'locked-user', pass => '*LK*', modules => ['acl'] });
+    create_user({ name => 'pam-user', pass => 'x', modules => ['acl'] });
+    create_user({ name => 'webmin-user', pass => 'fixed', modules => ['acl'] });
+
+    my $r = run_cgi('edit_unix.cgi', {});
+    is($r->{status}, 0, 'mapping page renders successfully');
+    like($r->{out},
+         qr/value="pam-user"[^>]*>pam-user \(Unix authentication\)/,
+         'Unix authentication target is labeled');
+    like($r->{out},
+         qr/value="external-user"[^>]*>external-user \(External authentication program\)/,
+         'external authentication target is labeled');
+    like($r->{out},
+         qr/value="locked-user"[^>]*>locked-user \(No password accepted\)/,
+         'locked target is labeled');
+    like($r->{out},
+         qr/value="webmin-user"[^>]*>webmin-user \(Webmin password\)/,
+         'fixed Webmin password target is labeled');
+    like($r->{out}, qr/every matching login uses that shared password/,
+         'mapping authentication behavior is explained');
+};
+
 # Harness sanity: a CGI with no privileges should reject any action and
 # print an HTML error (not a redirect). switch.cgi is the smallest victim.
 subtest 'CGI harness smoke' => sub {
