@@ -107,11 +107,6 @@ acl_max=Maximum upload size
 acl_unlim=Unlimited
 acl_b=bytes
 acl_fetch=Can download files to PC?
-acl_download_addresses=URL download destinations
-acl_download_addresses_desc=Public-only mode blocks private, loopback, link-local, reserved and multicast IP addresses. Listed exceptions may be entered as one IP address or CIDR network per line.
-acl_download_public=Public IP addresses only
-acl_download_listed=Public IP addresses and these exceptions
-acl_download_all=All IP addresses
 
 fetch_err=Failed to download file
 fetch_ecannot=You are not allowed to download files to a PC

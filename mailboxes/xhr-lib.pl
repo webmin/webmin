@@ -3,7 +3,8 @@
 
 use strict;
 
-our (%in, %gconfig, %access, $root_directory, $remote_user, $current_theme);
+our (%in, %gconfig, %access, %global_access, $root_directory, $remote_user,
+     $current_theme);
 
 sub xhr
 {
@@ -36,8 +37,8 @@ if ($in{'action'} eq "fetch") {
                 my ($host, $port, $page, $ssl) = &parse_http_url($url);
                 my ($img, $err, $response_headers);
                 my $address_checker = &get_download_address_callback(
-                    $access{'download_address_mode'} || 'public',
-                    $access{'download_allowed_addresses'});
+                    $global_access{'download_address_mode'},
+                    $global_access{'download_allowed_addresses'});
                 my $download_callback = sub {
                     if ($_[0] == 7 && defined($_[1]) && $address_checker) {
                         my $address_error = &$address_checker(

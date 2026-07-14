@@ -31,23 +31,6 @@ print &ui_table_row(
 		"style='width: 100%'"),
 	2);
 
-# Destinations allowed for URL downloads
-my $download_address_mode = $access->{'download_address_mode'};
-print &ui_table_row(
-	$text{'acl_download_addresses'} .
-		&ui_help($text{'acl_download_addresses_desc'}),
-	&ui_radio_table(
-		"download_address_mode", $download_address_mode,
-		[ [ 'all', $text{'acl_download_all'} ],
-		  [ 'public', $text{'acl_download_public'} ],
-		  [ 'listed', $text{'acl_download_listed'}."<br>".
-		    &ui_textarea(
-			"download_allowed_addresses",
-			join("\n", split(/\s+/,
-				$access->{'download_allowed_addresses'})),
-			4, 50) ] ]),
-	3);
-
 # Run as Unix user
 print &ui_table_row(
 	$text{'acl_work_as'},
@@ -108,13 +91,6 @@ if (scalar(@allowed_for_edit) == 0) {
 	}
 $access->{'allowed_for_edit'} =
 	join(" ", @allowed_for_edit);
-
-my $download_address_mode = $in->{'download_address_mode'};
-$download_address_mode = 'public'
-	if ($download_address_mode !~ /^(public|listed|all)$/);
-$access->{'download_address_mode'} = $download_address_mode;
-$access->{'download_allowed_addresses'} = join(" ",
-	split(/\s+/, $in->{'download_allowed_addresses'}));
 
 if ($in->{'user_mode'} == 0) {
 	$access->{'work_as_root'} = 1;

@@ -3,6 +3,7 @@
 require './filemin-lib.pl';
 
 &ReadParse();
+my %download_access = &get_module_acl(undef, "");
 get_paths();
 
 if (!$in{'link'}) {
@@ -40,8 +41,8 @@ else {
 		$progress_callback_url = $in{'link'};
 		my @st = stat($cwd);
 		my $address_checker = &get_download_address_callback(
-			$access{'download_address_mode'} || 'public',
-			$access{'download_allowed_addresses'});
+			$download_access{'download_address_mode'},
+			$download_access{'download_allowed_addresses'});
 		my $download_callback = sub {
 			if ($_[0] == 7 && defined($_[1]) && $address_checker) {
 				my $address_error = &$address_checker(

@@ -1,7 +1,7 @@
 ## Changelog
 
 #### 2.652 (July, 2026)
-* Add per-user ACL controls to block URL downloads from non-public IP addresses in File Manager, Mailboxes, and Upload and Download modules
+* Add a global per-user ACL control to block URL downloads from non-public IP addresses in File Manager, Mailboxes, and Upload and Download modules
 * Fix to recognize hex numeric HTML entities to work in various elements
 * Fix `patch` sub-command to reload Webmin instead of restarting
 * Fix SSL certificate and TCP monitors to report transient connection failures as down, and SSL check timeouts as timed out, rather than uninstalled

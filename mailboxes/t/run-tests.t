@@ -12,8 +12,8 @@ my $root = abs_path(dirname(__FILE__)."/../..") or die "rootdir: $!";
 my $tmp = tempdir(CLEANUP => 1);
 
 our (%config, %userconfig, $module_config_directory, $module_var_directory,
-     $user_module_config_directory, %in, %gconfig, %access, $root_directory,
-     $remote_user, $current_theme);
+     $user_module_config_directory, %in, %gconfig, %access, %global_access,
+     $root_directory, $remote_user, $current_theme);
 $module_config_directory = "$tmp/config";
 $module_var_directory = "$tmp/var";
 make_path($module_config_directory, $module_var_directory);
@@ -128,7 +128,7 @@ subtest 'mailbox_uncompress_folder skips invalid Maildir subfolders' => sub {
 		}
 	};
 
-subtest 'XHR remote content uses mailbox destination ACL' => sub {
+subtest 'XHR remote content uses global destination ACL' => sub {
 	my $pid = fork();
 	if (!defined($pid)) {
 		plan skip_all => 'fork unavailable';
@@ -141,7 +141,7 @@ subtest 'XHR remote content uses mailbox destination ACL' => sub {
 			'subtype' => 'blob',
 			'url' => 'http://example.test/image.png',
 			);
-		%access = (
+		%global_access = (
 			'download_address_mode' => 'listed',
 			'download_allowed_addresses' => '10.0.0.0/8',
 			);

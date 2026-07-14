@@ -31,8 +31,8 @@ if ($module_info{'usermin'}) {
 	$upload_dir = $userconfig{'dir'};
 	$upload_dir = $remote_user_info[7] if ($upload_dir eq "~");
 	$upload_max = $config{'max'};
-	$download_address_mode = $config{'download_address_mode'} || 'public';
-	$download_allowed_addresses = $config{'download_allowed_addresses'};
+	$download_address_mode = 'public';
+	$download_allowed_addresses = undef;
 	$fetch_file = $userconfig{'fetch'};
 	$fetch_show = $userconfig{'show'} || 0;
 	}
@@ -42,6 +42,7 @@ else {
 	$atjob_cmd = "$module_config_directory/download.pl";
 
 	%access = &get_module_acl();
+	my %global_access = &get_module_acl(undef, "");
 	$can_upload = $access{'upload'};
 	$can_download = $access{'download'};
 	$can_fetch = $access{'fetch'} && !&is_readonly_mode();
@@ -74,8 +75,9 @@ else {
 	$upload_user = $config{'user_'.$remote_user} || $config{'user'};
 	$upload_group = $config{'group_'.$remote_group} || $config{'group'};
 	$upload_max = $access{'max'};
-	$download_address_mode = $access{'download_address_mode'} || 'public';
-	$download_allowed_addresses = $access{'download_allowed_addresses'};
+	$download_address_mode = $global_access{'download_address_mode'};
+	$download_allowed_addresses =
+		$global_access{'download_allowed_addresses'};
 	$download_user = $config{'duser_'.$remote_user} || $config{'duser'};
 	$download_group = $config{'dgroup_'.$remote_group} || $config{'dgroup'};
 	$fetch_file = $config{'fetch_'.$remote_user};
@@ -134,8 +136,9 @@ local ($i, $error, $msg);
 my $address_mode = $download_address_mode;
 my $allowed_addresses = $download_allowed_addresses;
 if (!$module_info{'usermin'} && $_[0]->{'webmin_user'}) {
-	my %download_access = &get_module_acl($_[0]->{'webmin_user'});
-	$address_mode = $download_access{'download_address_mode'} || 'public';
+	my %download_access = &get_module_acl(
+		$_[0]->{'webmin_user'}, "");
+	$address_mode = $download_access{'download_address_mode'};
 	$allowed_addresses = $download_access{'download_allowed_addresses'};
 	}
 my $tracker_callback = $_[1];

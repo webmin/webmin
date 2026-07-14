@@ -237,6 +237,52 @@ ok(defined &validate_password, 'acl-lib loaded validate_password');
 ok(defined &acl_security_save, 'acl_security.pl loaded acl_security_save');
 ok(defined &list_acl_yesno_fields, 'acl_security.pl loaded list_acl_yesno_fields');
 
+# Load the top-level global ACL form in a separate namespace, so its
+# acl_security_save function does not replace the ACL module's function.
+{
+    package GlobalACLTest;
+    our %in;
+    my $r = do "$rootdir/acl_security.pl";
+    die "compile global acl_security.pl: $@" if $@;
+    die "open global acl_security.pl: $!" if !defined($r) && $!;
+}
+
+{
+    no warnings 'once';
+    my (%default_acl, %safe_acl);
+    read_file("$rootdir/defaultacl", \%default_acl);
+    read_file("$rootdir/safeacl", \%safe_acl);
+    is($default_acl{'download_address_mode'}, 'public',
+       'global default ACL defines the download address mode');
+    is($safe_acl{'download_address_mode'}, 'public',
+       'global safe ACL defines the download address mode');
+}
+
+{
+    no warnings 'once';
+    local %GlobalACLTest::in = (
+        download_address_mode => 'listed',
+        download_allowed_addresses => "10.0.0.0/8\n127.0.0.1",
+    );
+    my %o;
+    GlobalACLTest::acl_security_save(\%o);
+    is($o{'download_address_mode'}, 'listed',
+       'global ACL saves download address mode');
+    is($o{'download_allowed_addresses'}, '10.0.0.0/8 127.0.0.1',
+       'global ACL normalizes download address exceptions');
+}
+
+{
+    no warnings 'once';
+    local %GlobalACLTest::in = (
+        download_address_mode => 'invalid',
+    );
+    my %o;
+    GlobalACLTest::acl_security_save(\%o);
+    is($o{'download_address_mode'}, 'public',
+       'global ACL rejects an invalid download address mode');
+}
+
 # to64: small deterministic vectors over the itoa64 alphabet
 #   "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 is(to64(0, 1), '.', 'to64 first char');

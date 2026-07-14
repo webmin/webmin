@@ -3,3 +3,4 @@ fileunix=
 feedback=0
 rpc=0
 negative=0
+download_address_mode=public

@@ -28,6 +28,23 @@ print &ui_table_row($text{'acl_fileunix'},
 			$text{'acl_sameunix'})." ".
 	&user_chooser_button("fileunix"));
 
+# Destinations allowed for URL downloads
+my $download_address_mode = $o->{'download_address_mode'};
+print &ui_table_row(
+	$text{'acl_download_addresses'} .
+		&ui_help($text{'acl_download_addresses_desc'}),
+	&ui_radio_table(
+		"download_address_mode", $download_address_mode,
+		[ [ 'all', $text{'acl_download_all'} ],
+		  [ 'public', $text{'acl_download_public'} ],
+		  [ 'listed', $text{'acl_download_listed'}."<br>".
+		    &ui_textarea(
+			"download_allowed_addresses",
+			join("\n", split(/\s+/,
+				$o->{'download_allowed_addresses'})),
+			4, 50) ] ]),
+	3);
+
 print &ui_hr();
 
 # Users visible in chooser
@@ -119,5 +136,10 @@ $o->{'negative'} = $in{'negative'};
 $o->{'readonly'} = $in{'readonly'};
 $o->{'fileunix'} = $in{'fileunix_def'} ? undef : $in{'fileunix'};
 $o->{'webminsearch'} = $in{'webminsearch'};
+my $download_address_mode = $in{'download_address_mode'};
+$download_address_mode = 'public'
+	if ($download_address_mode !~ /^(public|listed|all)$/);
+$o->{'download_address_mode'} = $download_address_mode;
+$o->{'download_allowed_addresses'} = join(" ",
+	split(/\s+/, $in{'download_allowed_addresses'}));
 }
-

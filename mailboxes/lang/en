@@ -407,11 +407,6 @@ acl_usersu=With UID in range
 acl_sec=Include secondary groups?
 acl_dir=Can read mail files in directory
 acl_dirauto=Decide automatically (anywhere if all users are visible, nowhere otherwise)
-acl_download_addresses=Remote message content destinations
-acl_download_addresses_desc=Public-only mode blocks private, loopback, link-local, reserved and multicast IP addresses. Listed exceptions may be entered as one IP address or CIDR network per line.
-acl_download_public=Public IP addresses only
-acl_download_listed=Public IP addresses and these exceptions
-acl_download_all=All IP addresses
 
 log_delmail=Deleted $1 messages from $2
 log_movemail=Moved $1 messages from $2 to $3
