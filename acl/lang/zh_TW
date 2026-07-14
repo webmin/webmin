@@ -213,9 +213,6 @@ sync_group=配置新的使用者到Webmin群組。
 sync_ecannot=您不被允許同步組態使用者。
 
 unix_title=Unix使用者認證
-unix_desc=此頁讓可以您設定防止嘗試登入Webmi的系統使用者清單和PAM，如果您有一大堆想要讓他們進入Webmin的已經存在 Unix 使用者，這將對您很有幫助。
-unix_def=只有允許 Webmin 使用者登入
-unix_user=允許任何有使用者權限Unix使用者登入
 unix_ecannot=您不被允許組態Unix使用者認證
 unix_epam=Unix 認證無法使用因為<tt>Authen::PAM</tt> Perl模組尚未安裝或無法正常執行
 

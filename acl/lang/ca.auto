@@ -1,4 +1,5 @@
 index_screate=Creeu un nou usuari segur.
+index_twofactor_enabled=L'autenticació de dos factors està habilitada per a aquest usuari
 
 edit_title3=Creeu un usuari Webmin segur
 edit_email=Correu electrònic de contacte
@@ -20,6 +21,17 @@ log_forgot_admin=L'administrador ha enviat un correu electrònic de restabliment
 
 sync_modify=Canvieu el nom de l'usuari Webmin coincident quan es canvia el nom d'un usuari Unix.
 
+unix_desc=Aquesta pàgina permet als usuaris d'Unix i amb suport de directori, així com als usuaris només de PAM, iniciar sessió sense crear un compte Webmin separat per a cada usuari. Cada inici de sessió rep els drets d'accés i utilitza el mètode d'autenticació de l'usuari Webmin assignat.
+unix_def=Només permet que els usuaris de Webmin iniciïn sessió
+unix_sel=Permet que els usuaris i grups assignats a continuació iniciïn la sessió
+unix_group=Membres del grup
+unix_user=Usuari d'Unix
+unix_to=Usuari de Webmin assignat
+unix_mapdesc=L'usuari de Webmin seleccionat proporciona tant els drets d'accés com el mètode d'autenticació. Per autenticar el nom d'usuari original mitjançant PAM, SSSD o la base de dades de contrasenyes del sistema, seleccioneu un usuari de Webmin configurat per a l'<b>autenticació d'Unix</b>. Si l'usuari seleccionat té una contrasenya de Webmin, tots els inicis de sessió coincidents utilitzen aquesta contrasenya compartida.
+unix_webminpass=Contrasenya de Webmin
+unix_utable=Assignacions d'inici de sessió
+
+sessions_login_ago=Fa últim actiu
 sessions_all=Totes les sessions..
 sessions_action=Accions
 
@@ -29,6 +41,16 @@ sql_timeout_def=Utilitza el temps d'espera de connexió predeterminat (60 segons
 sql_timeout_for=Tanqueu les connexions a la memòria cau després
 sql_timeout_secs=segons
 sql_etimeout=El temps d'espera de la connexió a la memòria cau ha de ser un número
+
+twofactor_testdesc=Abans de tancar la sessió, podeu provar la nova configuració d'autenticació de dos factors aquí introduint un token. Si per alguna raó no funciona, desactiveu l'autenticació de dos factors i torneu a configurar-la.
+twofactor_testfield=Token de dos factors
+twofactor_test=Valida el testimoni
+twofactor_terr=No s'ha pogut provar la configuració de dos factors
+twofactor_etestuser=L'inici de sessió no té el doble factor habilitat!
+twofactor_testing=Provant la validació de dos factors amb $1 ..
+twofactor_testfailed=...la prova ha fallat! Potser s'ha introduït un token incorrecte o l'aplicació d'autenticació no s'ha configurat correctament?
+twofactor_testok=...prova superada! Ara podeu iniciar sessió de manera segura mitjançant l'autenticació de dos factors.
+twofactor_testdis=Desactiva el factor de dos ara
 
 forgot_title=Enviar enllaç de restabliment de contrasenya
 forgot_err=No s'ha pogut enviar l'enllaç de restabliment de la contrasenya

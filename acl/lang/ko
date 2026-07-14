@@ -20,7 +20,6 @@ index_modgroups=그룹 $1의 모듈
 index_sync=유닉스 사용자 동기화 설정
 index_unix=유닉스 그룹 동기화 설정
 index_sessions=로그인 세션 보기
-index_rbac=RBAC 설정
 index_delete=선택된 것을 삭제
 
 edit_title=Webmin 사용자 편집
@@ -77,9 +76,6 @@ edit_hide=사용하지 않은 것 숨김
 edit_switch=사용자 전환
 edit_return=Webmin 사용자
 edit_return2=Webmin 그룹
-edit_rbacdeny=RBAC 접근 모드
-edit_rbacdeny0=RBAC 는 선택된 모듈의 ACL 만 조절 함
-edit_rbacdeny1=RBAC 는 모든 모듈의 ACL 의 조절 함
 edit_templock=임시 잠금
 edit_temppass=다음 로그인시에 강제로 변경
 edit_days=주중 허락할 날
@@ -151,8 +147,6 @@ acl_title3=$2의 그룹 $1
 acl_options=$1 접근 제어 옵션
 acl_config=모듈 구성을 편집할 수 있습니까?
 acl_reset=모든 접속을 위한 재설정
-acl_rbac=RBAC 에서 access 조정 설정을 가져 오겠습니까?
-acl_rbacyes=예 (아래의 설정을 덮어씁니다.)
 
 acl_uall=모든 사용자
 acl_uthis=이 사용자
@@ -268,15 +262,9 @@ sync_ecannot=사용자 동기화 권한이 없습니다.
 
 unix_title=유닉스 사용자 인증
 unix_err=유닉스 인증 저장 실패
-unix_desc=이 페이지에서 시스템 사용자 리스트와 PAM 에 대한 로그인 시도를 유효하게 하기 위한 Webmin 설정을 할 수 있습니다. Webmin 으로의 접속을 줄 유기스 사용자가 아주 많을 경우 유용하게 사용할 수 있습니다.
-unix_def=Webmin 사용자만 로그인
-unix_sel=하단의 유닉스 사용자를 허가..
 unix_mode=허가
 unix_mall=모든 사용자
-unix_group=그룹의 구성원..
-unix_user=유닉스 사용자 ..
 unix_who=사용자 또는 그룹
-unix_to=Webmin 사용자로 매핑
 unix_ecannot=유닉스 사용자 인증 설정 권한이 없습니다.
 unix_epam=<tt>Authen::PAM</tt> 펄 모듈이 설치 되어 있지 않거나, 올바르게 작동하지 않아, 유닉스 인증 설정을 할 수 없습니다.
 unix_all=모든 유닉스 사용자 허가
@@ -312,13 +300,6 @@ hide_clone=(Clone $1)
 
 switch_euser=이 사용자로의 전환 권한이 없습니다.
 switch_eold=세션을 찾을 수 없습니다.
-
-rbac_title=RBAC 설정
-rbac_desc=Webmin's RBAC integration provides a way for user module and ACL permissions to be determined from an RBAC (Role Based Access Control) database, rather than Webmin's own configuration files. Once RBAC support is enabled, any user for whom the <b>$edit_rbacdeny1</b> option is selected will have his capabilities determined by RBAC rather than Webmin's own access control settings.
-rbac_esolaris=RBAC 는 현재 Solaris 에서만 지원이 됩니다. $1 system 에서는 사용할 수 없습니다.
-rbac_eperl=The Perl module $1 needed for RBAC integration is not installed. <a href='$2'>Click here</a> to have it installed now.
-rbac_ecpan=You do not have access to Webmin's Perl Modules page in order to install the necessary $1 module for RBAC integration.
-rbac_ok=RBAC integration is available on this sytem, and can be enabled on a per-user basis on the Edit Webmin User page.
 
 udeletes_err=유저 삭제 실패
 udeletes_enone=선택된 것이 없음

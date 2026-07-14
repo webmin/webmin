@@ -1,6 +1,6 @@
 index_screate=Yeni bir güvenli kullanıcı oluşturun.
 index_twofactor=İki Faktörlü Kimlik Doğrulama
-index_rbac=RBAC Kurulumu
+index_twofactor_enabled=Bu kullanıcı için iki faktörlü kimlik doğrulama etkinleştirilmiştir
 index_delete=Silme seçildi
 index_joingroup=Gruba ekle:
 index_eulist=Kullanıcılar listelenemedi: $1
@@ -30,9 +30,6 @@ edit_egone=Seçilen kullanıcı artık mevcut değil!
 edit_overlay=Kişisel tema kaplaması
 edit_overlayglobal=Yok - tema varsayılanlarını kullan
 edit_forgot=Şifre Sıfırlama Bağlantısını Gönder
-edit_rbacdeny=RBAC erişim modu
-edit_rbacdeny0=RBAC yalnızca seçilen modül ACL'lerini kontrol eder
-edit_rbacdeny1=RBAC tüm modülleri ve ACL'leri kontrol eder
 edit_global=Tüm modüller için izinler
 edit_templock=Geçici olarak kilitli
 edit_temppass=Bir sonraki girişte değişikliği zorla
@@ -71,9 +68,6 @@ delete_eanonuser=Bu kullanıcı anonim modül erişimi için kullanılıyor
 
 cert_etempdir=Geçersiz sertifika dosyası
 
-acl_rbac=RBAC'den erişim kontrolü ayarları alınıyor mu?
-acl_rbacyes=Evet (aşağıdaki ayarları geçersiz kılar)
-
 acl_locale=Yerel ayarı değiştirebilir miyim?
 acl_times=İzin verilen giriş zamanlarını değiştirebilir mi?
 acl_pass=Şifre kısıtlamalarını değiştirebilir mi?
@@ -108,12 +102,17 @@ sync_when=Ne zaman senkronize edilir
 sync_modify=Bir Unix kullanıcısı yeniden adlandırıldığında eşleşen Webmin kullanıcısını yeniden adlandırın.
 
 unix_err=Unix kimlik doğrulaması kaydedilemedi
-unix_sel=Aşağıda listelenen Unix kullanıcılarının oturum açmasına izin ver..
+unix_desc=Bu sayfa, Unix ve dizin tabanlı kullanıcıların yanı sıra yalnızca PAM kullanan kullanıcıların da her kullanıcı için ayrı bir Webmin hesabı oluşturmadan oturum açmasına olanak tanır. Her oturum açma işlemi, eşleştirilmiş Webmin kullanıcısının erişim haklarını alır ve kimlik doğrulama yöntemini kullanır.
+unix_def=Yalnızca Webmin kullanıcılarının giriş yapmasına izin verin
+unix_sel=Aşağıda belirtilen kullanıcıların ve grupların oturum açmasına izin verin
 unix_mode=İzin vermek
 unix_mall=Tüm kullanıcılar
-unix_group=Grup üyeleri..
+unix_group=Grup üyeleri
+unix_user=Unix kullanıcısı
 unix_who=Kullanıcı veya Grup
-unix_to=Webmin kullanıcısı olarak
+unix_to=Eşlenen Webmin kullanıcısı
+unix_mapdesc=Seçilen Webmin kullanıcısı hem erişim haklarını hem de kimlik doğrulama yöntemini sağlar. Orijinal kullanıcı adını PAM, SSSD veya sistem parola veritabanı aracılığıyla doğrulamak için, <b>Unix kimlik doğrulaması</b> için yapılandırılmış bir Webmin kullanıcısı seçin. Seçilen kullanıcının bir Webmin parolası varsa, eşleşen her oturum açma işlemi bunun yerine paylaşılan parolayı kullanır.
+unix_webminpass=Webmin şifresi
 unix_restrict2=Ek kısıtlamalar
 unix_ewhogroup=$1 satırında izin verecek grup eksik
 unix_ewhouser=$1 satırında izin verilecek kullanıcı yok
@@ -124,8 +123,9 @@ unix_pamany=Yalnızca PAM doğrulamasını geçen girişleri $1 olarak ele alın
 unix_esudo=$1 komutu yüklü değil
 unix_esudomod=<tt>sudo</tt> kimlik doğrulaması için gerekli olmayan $1 Perl modülü kurulu değil
 unix_header=Unix kullanıcı kimlik doğrulama ayarları
-unix_utable=İzin verilen Unix kullanıcıları
+unix_utable=Giriş eşlemeleri
 
+sessions_login_ago=Son aktivite tarihi: 2023
 sessions_host=IP adresi
 sessions_actions=Hareketler..
 sessions_all=Tüm oturumlar..
@@ -138,13 +138,6 @@ sessions_out=Çıkış yapıldı
 sessions_kill=Bağlantıyı kes..
 
 logins_title=Son Webmin girişleri
-
-rbac_title=RBAC Kurulumu
-rbac_desc=Webmin'in RBAC entegrasyonu, kullanıcı modülünün ve ACL izinlerinin Webmin'in kendi yapılandırma dosyalarından ziyade bir RBAC (Rol Tabanlı Erişim Kontrolü) veritabanından belirlenmesi için bir yol sağlar. RBAC desteği etkinleştirildikten sonra, <b>RBAC tüm modülleri ve ACL'leri</b> seçeneğini belirleyen herhangi bir kullanıcının yetenekleri, Webmin'in kendi erişim kontrol ayarları yerine RBAC tarafından belirlenir.
-rbac_esolaris=RBAC şu anda yalnızca Solaris'te desteklenmektedir ve bu nedenle bu $1 sisteminde kullanılamaz.
-rbac_eperl=RBAC entegrasyonu için gereken $1 Perl modülü kurulu değil. Şimdi yüklemek için <a href='$2'>burayı tıklayın</a>.
-rbac_ecpan=RBAC entegrasyonu için gerekli $1 modülünü kurmak için Webmin'in Perl Modülleri sayfasına erişiminiz yok.
-rbac_ok=RBAC entegrasyonu bu sistemde mevcuttur ve Webmin Kullanıcısını Düzenle sayfasında her kullanıcı için etkinleştirilebilir.
 
 udeletes_err=Kullanıcılar silinemedi
 udeletes_jerr=Gruba kullanıcı eklenemedi
@@ -274,6 +267,15 @@ twofactor_failed=.. kayıt başarısız oldu: $1
 twofactor_done=.. tamamlayınız. Bu sağlayıcıdaki kimliğiniz <tt>$1</tt>.
 twofactor_setup=İki faktörlü kimlik doğrulama henüz bu sistemde etkinleştirilmedi, ancak <a href='$1'>Webmin Yapılandırması</a> modülü kullanılarak açılabilir.
 twofactor_ebutton=Hiçbir düğme tıklanmadı!
+twofactor_testdesc=Çıkış yapmadan önce, yeni iki faktörlü kimlik doğrulama kurulumunuzu burada bir belirteç girerek test edebilirsiniz. Herhangi bir nedenle çalışmazsa, iki faktörlü kimlik doğrulamayı devre dışı bırakın ve tekrar kurmayı deneyin.
+twofactor_testfield=İki faktörlü belirteç
+twofactor_test=Tokeni Doğrula
+twofactor_terr=İki faktörlü kimlik doğrulama testi başarısız oldu
+twofactor_etestuser=Giriş yaparken iki faktörlü kimlik doğrulama etkinleştirilmemiş!
+twofactor_testing=$1 ile iki faktörlü doğrulama testi yapılıyor. ..
+twofactor_testfailed=Test başarısız oldu! Belki yanlış belirteç girildi veya kimlik doğrulama uygulamanız doğru yapılandırılmadı?
+twofactor_testok=... test başarılı! Artık iki faktörlü kimlik doğrulama kullanarak güvenle giriş yapabilirsiniz.
+twofactor_testdis=İki Faktörlü Kimlik Doğrulamasını Şimdi Devre Dışı Bırakın
 
 forgot_title=Şifre Sıfırlama Bağlantısını Gönder
 forgot_err=Şifre sıfırlama bağlantısı gönderilemedi

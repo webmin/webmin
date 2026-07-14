@@ -1,5 +1,6 @@
 index_screate=Vytvorte nového bezpečného používateľa.
 index_twofactor=Dvojfaktorové overenie
+index_twofactor_enabled=Pre tohto používateľa je povolené dvojfaktorové overenie
 index_joingroup=Pridať do skupiny:
 index_eulist=Nepodarilo sa uviesť používateľov: $1
 index_eglist=Nepodarilo sa uviesť skupiny: $1
@@ -27,8 +28,6 @@ edit_egone=Vybraný používateľ už neexistuje!
 edit_overlay=Prekrytie osobnej témy
 edit_overlayglobal=Žiadne - použite predvolené motívy
 edit_forgot=Odoslať odkaz na obnovenie hesla
-edit_rbacdeny0=RBAC riadi iba vybrané ACL modulov
-edit_rbacdeny1=RBAC riadi všetky moduly a ACL
 edit_global=Povolenia pre všetky moduly
 edit_temppass=Vynútiť zmenu pri ďalšom prihlásení
 edit_selhours=Od $1:$2 do $3:$4
@@ -60,9 +59,6 @@ save_eemail=E-mailová adresa nemôže obsahovať znak :
 delete_eanonuser=Tento užívateľ sa používa na anonymný prístup k modulu
 
 cert_etempdir=Neplatný súbor certifikátu
-
-acl_rbac=Získať nastavenia riadenia prístupu z RBAC?
-acl_rbacyes=Áno (prepíše nastavenia nižšie)
 
 acl_locale=Dá sa zmeniť miestne nastavenie?
 acl_times=Môžu zmeniť povolené časy prihlásenia?
@@ -96,9 +92,14 @@ sync_when=Kedy synchronizovať
 sync_modify=Pri premenovaní používateľa Unixu premenujte zodpovedajúceho používateľa Webmin.
 
 unix_err=Nepodarilo sa uložiť autentifikáciu Unix
-unix_sel=Povoliť používateľom Unixu uvedeným nižšie prihlásiť sa.
-unix_group=Členovia skupiny..
-unix_to=Ako používateľ Webmin
+unix_desc=Táto stránka umožňuje používateľom Unixu a používateľom podporovaným adresármi, ako aj používateľom iba s PAM, prihlásiť sa bez vytvorenia samostatného účtu Webmin pre každého používateľa. Každé prihlásenie získa prístupové práva a použije metódu autentifikácie namapovaného používateľa Webmin.
+unix_def=Povoliť prihlásenie iba používateľom Webminu
+unix_sel=Povoliť prihlásenie používateľom a skupinám mapovaným nižšie
+unix_group=Členovia skupiny
+unix_user=Používateľ Unixu
+unix_to=Namapovaný používateľ Webminu
+unix_mapdesc=Vybraný používateľ Webminu poskytuje prístupové práva aj metódu overenia. Ak chcete overiť pôvodné používateľské meno prostredníctvom PAM, SSSD alebo systémovej databázy hesiel, vyberte používateľa Webminu nakonfigurovaného na <b>overenie Unixu</b>. Ak má vybraný používateľ heslo Webminu, každé zodpovedajúce prihlásenie použije toto zdieľané heslo.
+unix_webminpass=Heslo pre Webmin
 unix_restrict2=Dodatočné obmedzenia
 unix_ewhogroup=Chýba skupina, ktorá by povolila v riadku $1
 unix_ewhouser=V riadku $1 chýba používateľ
@@ -109,8 +110,9 @@ unix_pamany=Zachádzajte s prihláseniami, ktoré prechádzajú iba overením PA
 unix_esudo=Príkaz $1 nie je nainštalovaný
 unix_esudomod=Nie je nainštalovaný modul Perl $1 potrebný na autentifikáciu <tt>sudo</tt>
 unix_header=Nastavenia overovania používateľov systému Unix
-unix_utable=Povolení používatelia Unixu
+unix_utable=Mapovania prihlásení
 
+sessions_login_ago=Naposledy aktívny pred
 sessions_actions=Akcia..
 sessions_all=Všetky relácie..
 sessions_logouts=Zobraziť aj odhlásené relácie.
@@ -122,12 +124,6 @@ sessions_out=Odhlasený
 sessions_kill=Odpojenie..
 
 logins_title=Posledné prihlasovacie údaje pre správcov webu
-
-rbac_desc=Integrácia produktu RBAC servera Webmin poskytuje spôsob, ako určiť užívateľské moduly a oprávnenia ACL z databázy RBAC (Role Based Access Control), a nie z vlastných konfiguračných súborov spoločnosti Webmin. Keď je podpora RBAC povolená, každý používateľ, pre ktorého je vybratá možnosť <b>RBAC riadi všetky moduly a ACL</b>, bude mať svoje schopnosti určené radšej RBAC ako nastavenia vlastného riadenia prístupu Webmin.
-rbac_esolaris=Systém RBAC je momentálne podporovaný iba v systéme Solaris, a preto ho nemožno použiť v tomto systéme $1.
-rbac_eperl=Nie je nainštalovaný modul Perl $1 potrebný na integráciu RBAC. <a href='$2'>Kliknite sem</a> a nainštalujte ho teraz.
-rbac_ecpan=Nemáte prístup na stránku Webmin Perl Moduules, aby ste mohli nainštalovať potrebný modul $1 na integráciu RBAC.
-rbac_ok=Integrácia RBAC je k dispozícii v tomto systéme a dá sa povoliť pre každého užívateľa na stránke Edit Webmin User user.
 
 udeletes_err=Nepodarilo sa odstrániť používateľov
 udeletes_jerr=Nepodarilo sa pridať používateľov do skupiny
@@ -253,6 +249,15 @@ twofactor_failed=.. zápis zlyhal: $1
 twofactor_done=.. dokončené. Vaše ID u tohto poskytovateľa je <tt>$1</tt>.
 twofactor_setup=V tomto systéme zatiaľ nie je povolená dvojfaktorová autentifikácia, ale dá sa zapnúť pomocou modulu <a href='$1'>Webmin Configuration</a>.
 twofactor_ebutton=Klikli na žiadne tlačidlo!
+twofactor_testdesc=Pred odhlásením si môžete otestovať svoje nové nastavenie dvojfaktorového overenia tu zadaním tokenu. Ak z nejakého dôvodu nefunguje, vypnite dvojfaktorové overenie a skúste ho znova nastaviť.
+twofactor_testfield=Dvojfaktorový token
+twofactor_test=Overiť token
+twofactor_terr=Nepodarilo sa otestovať dvojfaktorové nastavenie
+twofactor_etestuser=Prihlásenie nemá povolené dvojfaktorové overenie!
+twofactor_testing=Testovanie dvojfaktorovej validácie s $1 ..
+twofactor_testfailed=.. test zlyhal! Možno bol zadaný nesprávny token alebo vaša autentifikačná aplikácia nebola správne nakonfigurovaná?
+twofactor_testok=.. test prešiel! Teraz sa môžete bezpečne prihlásiť pomocou dvojfaktorového overenia.
+twofactor_testdis=Zakázať dvojfaktorové riešenie teraz
 
 forgot_title=Odoslať odkaz na obnovenie hesla
 forgot_err=Odoslanie odkazu na obnovenie hesla zlyhalo

@@ -1,5 +1,6 @@
 index_screate=یک کاربر ایمن جدید ایجاد کنید.
 index_twofactor=احراز هویت دو عاملی
+index_twofactor_enabled=احراز هویت دو مرحله‌ای برای این کاربر فعال است
 index_joingroup=افزودن به گروه:
 index_eulist=Failed to list users : $1
 index_eglist=Failed to list groups : $1
@@ -100,12 +101,17 @@ sync_when=چه موقع همگام سازی
 sync_modify=با تغییر نام کاربر یونیکس ، به کاربر مطابق وبمین تغییر نام دهید.
 
 unix_err=ذخیره احراز هویت یونیکس انجام نشد
-unix_sel=به کاربران Unix که در زیر ذکر شده اجازه دهید وارد شوید..
+unix_desc=این صفحه به کاربران یونیکس و کاربران دایرکتوری-پشتیبانی‌شده و همچنین کاربران PAM-only اجازه می‌دهد تا بدون ایجاد حساب کاربری جداگانه برای هر کاربر در وب‌مین، وارد سیستم شوند. هر ورود، حقوق دسترسی را دریافت می‌کند و از روش احراز هویت کاربر وب‌مین نگاشت‌شده استفاده می‌کند.
+unix_def=فقط به کاربران وب‌مین اجازه ورود بدهید
+unix_sel=به کاربران و گروه‌های مشخص‌شده در زیر اجازه ورود بدهید
 unix_mode=اجازه
 unix_mall=تمام کاربران
-unix_group=اعضای گروه..
+unix_group=اعضای گروه
+unix_user=کاربر یونیکس
 unix_who=کاربر یا گروه
-unix_to=به عنوان کاربر وبمین
+unix_to=کاربر نگاشت‌شده وب‌مین
+unix_mapdesc=کاربر وب‌مین انتخاب‌شده، هم حقوق دسترسی و هم روش احراز هویت را ارائه می‌دهد. برای احراز هویت نام کاربری اصلی از طریق PAM، SSSD یا پایگاه داده رمز عبور سیستم، یک کاربر وب‌مین پیکربندی‌شده برای <b>احراز هویت یونیکس</b> را انتخاب کنید. اگر کاربر انتخاب‌شده رمز عبور وب‌مین داشته باشد، هر ورود منطبق با آن از آن رمز عبور مشترک استفاده می‌کند.
+unix_webminpass=رمز عبور وب‌مین
 unix_restrict2=محدودیت های اضافی
 unix_ewhogroup=Missing group to allow in row $1
 unix_ewhouser=Missing user to allow in row $1
@@ -116,8 +122,9 @@ unix_pamany=Treat logins that only pass PAM validation as $1
 unix_esudo=The $1 command is not installed
 unix_esudomod=The Perl module $1 needed for <tt>sudo</tt> authentication is not installed
 unix_header=تنظیمات تأیید اعتبار کاربر یونیکس
-unix_utable=کاربران مجاز Unix
+unix_utable=نگاشت‌های ورود
 
+sessions_login_ago=آخرین فعالیت پیش
 sessions_host=آدرس آی پی
 sessions_actions=اقدامات..
 sessions_all=تمام جلسات..
@@ -130,8 +137,6 @@ sessions_out=خارج شد
 sessions_kill=قطع شدن..
 
 logins_title=ورود به وب اخیر
-
-rbac_ecpan=You do not have access to Webmin's Perl Modules page in order to install the necessary $1 module for RBAC integration.
 
 udeletes_err=کاربران حذف نشدند
 udeletes_jerr=افزودن کاربران به گروه انجام نشد
@@ -261,6 +266,15 @@ twofactor_failed=.. enrollment failed : $1
 twofactor_done=.. complete. Your ID with this provider is <tt>$1</tt>.
 twofactor_setup=Two-factor authentication has not been enabled on this system yet, but can be turned on using the <a href='$1'>Webmin Configuration</a> module.
 twofactor_ebutton=هیچ دکمه ای کلیک نشد!
+twofactor_testdesc=قبل از خروج، می‌توانید با وارد کردن یک توکن، تنظیمات احراز هویت دو مرحله‌ای جدید خود را اینجا آزمایش کنید. اگر به هر دلیلی کار نکرد، احراز هویت دو مرحله‌ای را غیرفعال کنید و دوباره آن را تنظیم کنید.
+twofactor_testfield=توکن دو عاملی
+twofactor_test=اعتبارسنجی توکن
+twofactor_terr=تست تنظیمات دو مرحله‌ای ناموفق بود
+twofactor_etestuser=ورود دو مرحله‌ای فعال نیست!
+twofactor_testing=آزمایش اعتبارسنجی دو عاملی با $1 ..
+twofactor_testfailed=.. تست ناموفق بود! شاید توکن اشتباهی وارد شده باشد، یا برنامه احراز هویت شما به درستی پیکربندی نشده باشد؟
+twofactor_testok=.. آزمون با موفقیت انجام شد! اکنون می‌توانید با خیال راحت با استفاده از احراز هویت دو مرحله‌ای وارد سیستم شوید.
+twofactor_testdis=همین حالا احراز هویت دو مرحله‌ای را غیرفعال کنید
 
 forgot_title=ارسال لینک بازیابی رمز عبور
 forgot_err=ارسال لینک بازیابی رمز عبور ناموفق بود

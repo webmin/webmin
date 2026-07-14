@@ -20,7 +20,6 @@ index_modgroups=Moduly ze skupiny $1
 index_sync=Nastavit synchronizaci Unix uživatele
 index_unix=Nastavit autentizaci Unix uživatele
 index_sessions=Zobrazit relaci přihlášení
-index_rbac=Nastavit RBAC
 index_delete=Smazat vybrané
 
 edit_title=Editovat Webmin uživatele
@@ -76,9 +75,6 @@ edit_hide=skrýt nepoužívané
 edit_switch=Přepnout na uživatele
 edit_return=Uživatel Webminu
 edit_return2=Skupina Webminu
-edit_rbacdeny=RBAC přístupový mod
-edit_rbacdeny0=RBAC pouze kontroluje vybraný modul ACLs
-edit_rbacdeny1=RBAC kontroluje všechny moduly a ACLs
 edit_templock=Dočasně uzamčeno
 edit_days=Povolené dny v týdnu
 edit_alldays=Každý den
@@ -149,8 +145,6 @@ acl_title3=For skupinu $1 v $2
 acl_options=$1 vlastnosti přístupu
 acl_config=Může měnit nastavení modulu?
 acl_reset=Resetovat na plný přístup
-acl_rbac=Získat nastavení pro přístup z RBAC?
-acl_rbacyes=Ano (přepsat níže uvedená nastavení)
 
 acl_uall=Všichni uživatelé
 acl_uthis=Tento uživatel
@@ -266,15 +260,9 @@ sync_ecannot=Nemáte oprávnění konfigurovat synchronizaci uživatele.
 
 unix_title=Autentizace Unix uživatele
 unix_err=Chyba při ukládání Unix autentikace
-unix_desc=Tato stránka umožňuje konfiguraci Webminu tak, aby ověřoval přihlášení proti systémovému seznamu uživatelů a PAM. Toto ověřování může být užitečné v případě, kdy máte velké množství Unix uživatelů, kteří chtějí přístup do Webminu.
-unix_def=Povolit přihlášení pouze Webmin uživatelům
-unix_sel=Povolit přihlášení pouze pro níže vybraní Unix uživatele ..
 unix_mode=Povolit
 unix_mall=Všichni uživatelé
-unix_group=Členové skupiny ..
-unix_user=Povolit přihlášení jakéhokoliv Unix uživatele s právy uživatele
 unix_who=Uživatel nebo skupina
-unix_to=Jako Webmin uživatel
 unix_ecannot=Nemáte oprávnění konfigurovat sautentizaci Unix uživatele
 unix_epam=Unix autentizace není k dispozici jako <tt>Authen::PAM</tt> Modul Perlu není nainstalován nebo nepracuje správně.
 unix_all=Povolit všechny Unix uživatele
@@ -310,13 +298,6 @@ hide_clone=(Klonovat $1)
 
 switch_euser=Nemáte oprávnění k přepínání uživatele
 switch_eold=Existující relace není nalezena!
-
-rbac_title=Nastavit RBAC
-rbac_desc=RBAC integrace do Webminu nabízí možnost....
-rbac_esolaris=RBAC je momentálně podporován pouze v Solaris, takže nemůže být využit na vašem $1 systému.
-rbac_eperl=Nezbytný modul Perlu $1 pro integraci RBAC není nainstalován. Chdte-li jej nainstalovat, <a href='$2'>klepněte zde</a>.
-rbac_ecpan=Nemáte dostatečné oprávnění pro zobrazení stránky pro správu Perlových modulů v rámci Webminu. Bez tohoto oprávnění nemůžete nainstalovat $1 modul, potřebný pro RBAC integraci.
-rbac_ok=RBAC integrace je ve vašem systému přístupná, takže může být využita pro každého uživatele v rámci stránky pro úpravu uživatelů Webminu.
 
 udeletes_err=Chyba při mazání uživatelů
 udeletes_enone=Nic není vybráno

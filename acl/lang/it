@@ -20,7 +20,6 @@ index_modgroups=Moduli dal gruppo $1
 index_sync=Configura la sincronizzazione utenti Unix
 index_unix=Configura l'autenticazione utenti Unix
 index_sessions=Visualizza le sessioni di login
-index_rbac=Impostazioni RBAC
 index_delete=Cancella i selezionati
 index_eulist=Fallito il tentativo di listare gli utenti : $1
 index_eglist=Tentativo fallito di listare i gruppi : $1
@@ -82,9 +81,6 @@ edit_hide=Nascondi quelli inutilizzati
 edit_switch=Passa all'utente
 edit_return=Utente Webmin
 edit_return2=Gruppo Webmin
-edit_rbacdeny=Modalità di accesso RBAC
-edit_rbacdeny0=RBAC controlla solamente i moduli ACL selezionati
-edit_rbacdeny1=RBAC controlla tutti i moduli e ACL
 edit_global=Permessi per tutti i moduli
 edit_templock=Temporaneamente bloccato
 edit_temppass=Forza cambio al prossimo login
@@ -164,8 +160,6 @@ acl_title3=Per il gruppo $1 in $2
 acl_options=$1 opzioni di accesso
 acl_config=Può modificare la configurazione del modulo?
 acl_reset=Reimposta ad accesso completo
-acl_rbac=Prelevare le impostazioni sul controllo degli accessi da RBAC?
-acl_rbacyes=Si (sovrascrive le impostazioni precedenti)
 
 acl_uall=Tutti gli utenti
 acl_uthis=Questo utente
@@ -287,15 +281,9 @@ sync_ecannot=Non hai i permessi per configurare la sincronizzazione utente.
 
 unix_title=Autenticazione Utenti Unix
 unix_err=Salvataggio dell'autenticazione Unix non riuscito
-unix_desc=Questa pagina ti permette di configurare Webmin per convalidare i tentativi di login nella lista utenti di sistema e PAM. Può essere utile se hai un grande numero di utenti Unix esistenti ai quali vuoi dare accesso a Webmin.
-unix_def=Consenti l'accesso solo agli utenti Webmin
-unix_sel=Consenti l'accesso solo agli utenti Unix elencati:
 unix_mode=Permetti
 unix_mall=Tutti gli utenti
-unix_group=Membri del gruppo:
-unix_user=Permetti a qualsiasi utente Unix di entrare con i permessi di utente
 unix_who=Utente o gruppo
-unix_to=Come utente Webmin
 unix_ecannot=Non hai i permessi per configurare l'autenticazione utenti Unix
 unix_epam=L'autenticazione Unix non è disponibile in quanto il modulo Perl <tt>Authen::PAM</tt> non è installato o non funziona correttamente.
 unix_all=Permetti a tutti gli utenti Unix
@@ -331,13 +319,6 @@ hide_clone=(Clona $1)
 
 switch_euser=Non hai i permessi per passare a questo utente
 switch_eold=Sessione esistente non trovata!
-
-rbac_title=Impostazioni di RBAC
-rbac_desc=L'integrazione di Webmin con RBAC fornisce un modo per fare in modo che il modulo utente e i permessi ACL siano determinati da un archivio RBAC (Role Based Access Control, ovvero Controllo degli accessi basato sul ruolo), piuttosto che dai file di configurazione di Webmin. Una volta che il supporto RBAC è attivato i permessi di ciascun utente per cui l'opzione <b>$edit_rbacdeny1</b> è selezionata saranno deternimati da RBAC piuttosto che dalle impostazioni di controllo degli accessi di Webmin.
-rbac_esolaris=RBAC è attualmente supportato solo su Solaris, per cui non può essere utilizzato su questo sistema su cui è installato $1.
-rbac_eperl=Il modulo Perl $1, necessario per l'integrazione RBAC, non è installato. <a href='$2'>Clicca qui</a> per installarlo adesso.
-rbac_ecpan=Non hai accesso alla pagina di Webmin relativa ai moduli Perl, per cui non è possibile installare il modulo Perl $1 necessario per l'integrazione RBAC.
-rbac_ok=L'integrazione RBAC è disponibile su questo sistema e può essere attivata utente per utente alla pagina di gestione degli utenti Webmin.
 
 udeletes_err=Cancellazione degli utenti non riuscita
 udeletes_enone=Nessuna selezione

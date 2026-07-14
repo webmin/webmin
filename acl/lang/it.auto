@@ -1,5 +1,6 @@
 index_screate=Crea un nuovo utente sicuro.
 index_twofactor=Autenticazione a due fattori
+index_twofactor_enabled=L'autenticazione a due fattori è abilitata per questo utente
 index_joingroup=Aggiungi al gruppo:
 
 edit_title3=Crea un utente Webmin sicuro
@@ -41,10 +42,19 @@ convert_users=Utenti da convertire
 sync_when=Quando sincronizzare
 sync_modify=Rinomina l'utente Webmin corrispondente quando viene rinominato un utente Unix.
 
+unix_desc=Questa pagina consente agli utenti Unix e con sistema di directory, nonché agli utenti che utilizzano solo PAM, di accedere senza dover creare un account Webmin separato per ciascun utente. Ogni accesso riceve i diritti di accesso e utilizza il metodo di autenticazione dell'utente Webmin mappato.
+unix_def=Consenti l'accesso solo agli utenti Webmin
+unix_sel=Consenti agli utenti e ai gruppi indicati di seguito di accedere
+unix_group=Membri del gruppo
+unix_user=utente Unix
+unix_to=Utente Webmin mappato
+unix_mapdesc=L'utente Webmin selezionato fornisce sia i diritti di accesso che il metodo di autenticazione. Per autenticare il nome utente originale tramite PAM, SSSD o il database delle password di sistema, selezionare un utente Webmin configurato per l'<b>autenticazione Unix</b>. Se l'utente selezionato dispone di una password Webmin, ogni accesso corrispondente utilizzerà tale password condivisa.
+unix_webminpass=password di Webmin
 unix_restrict2=Ulteriori restrizioni
 unix_header=Impostazioni di autenticazione utente Unix
-unix_utable=Utenti Unix consentiti
+unix_utable=Mappature di accesso
 
+sessions_login_ago=Ultima attività fa
 sessions_actions=Azioni..
 sessions_all=Tutte le sessioni..
 sessions_logouts=Mostra anche sessioni disconnesse.
@@ -81,6 +91,15 @@ twofactor_failed=.. registrazione non riuscita: $1
 twofactor_done=.. completare. Il tuo ID con questo provider è <tt>$1</tt>.
 twofactor_setup=L'autenticazione a due fattori non è stata ancora abilitata su questo sistema, ma può essere attivata utilizzando il modulo <a href='$1'>Configurazione Webmin</a>.
 twofactor_ebutton=Nessun pulsante cliccato!
+twofactor_testdesc=Prima di disconnetterti, puoi testare la tua nuova configurazione di autenticazione a due fattori inserendo un token. Se per qualche motivo non funziona, disattiva l'autenticazione a due fattori e prova a configurarla di nuovo.
+twofactor_testfield=Token a due fattori
+twofactor_test=Convalida il token
+twofactor_terr=Impossibile testare la configurazione a due fattori
+twofactor_etestuser=L'accesso non prevede l'autenticazione a due fattori!
+twofactor_testing=Test della convalida a due fattori con $1 ..
+twofactor_testfailed=... test fallito! Forse è stato inserito un token errato o la tua app di autenticazione non è stata configurata correttamente?
+twofactor_testok=...test superato! Ora puoi accedere in tutta sicurezza utilizzando l'autenticazione a due fattori.
+twofactor_testdis=Disattiva subito l'autenticazione a due fattori
 
 forgot_title=Invia collegamento per reimpostare la password
 forgot_err=Impossibile inviare il link per la reimpostazione della password

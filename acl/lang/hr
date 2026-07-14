@@ -20,7 +20,6 @@ index_modgroups=Moduli iz grupe $1
 index_sync=Podesi sinkronizaciju Unix korisnika
 index_unix=Podesi autorizaciju Unix korisnika
 index_sessions=Pogledaj logirane sekcije
-index_rbac=Postavi RBAC
 index_delete=Obriši Odabrano
 
 edit_title=Uredi Webmin Korisnika
@@ -75,9 +74,6 @@ edit_hide=Sakrij nekorištene
 edit_switch=prebaci na Korisnika
 edit_return=Webmin korisnik
 edit_return2=Webmin grupa
-edit_rbacdeny=RBAC način pristupa
-edit_rbacdeny0=RBAC kontrolira samo odabrane module ACLs
-edit_rbacdeny1=RBAC kontrolira sve module i ACLs
 edit_templock=Trenutno zaključan
 edit_days=Dopušteni dani u tjednu
 edit_alldays=Svaki dan
@@ -148,8 +144,6 @@ acl_title3=Za grupu $1 u $2
 acl_options=$1 opcije kontrole pristupa
 acl_config=Ne možete uređivati konfiguraciju modula?
 acl_reset=Ponovno postavi (resetiraj) na opciju Puni Pristup
-acl_rbac=Želite li preuzeti postavke kontrole pristupa od RBAC?
-acl_rbacyes=Da (prebriši prethodne postavke)
 
 acl_uall=Svi korisnici
 acl_uthis=Ovaj korisnik
@@ -265,15 +259,9 @@ sync_ecannot=Nije vam dopušteno podešavati sinkronizaciju korisnika.
 
 unix_title=Unix Korisnička Provjera
 unix_err=Nuspiješno sacuvana Unix autentikacija
-unix_desc=Ova stranica Vam dopušta da podesite Webmin da potvrđuje pokušaje prijavljivanja na korisničke liste i PAM. Ova opcija može biti korisna ukoliko imate veliki broj postojećih Unix korisnika kojima želite dati pravo pristupa na Webmin.
-unix_def=Dopusti jedino Webmin korisnicima da se prijave
-unix_sel=Dopusti Unix korisniucima sa sljedeće liste da se prijave...
 unix_mode=Dopusti
 unix_mall=Svi korisnici
-unix_group=Članovi grupe...
-unix_user=Unix korisnik...
 unix_who=KOrisnik ili Grupa
-unix_to=Kao Webmin korisnik
 unix_ecannot=Nije Vam dopušteno da podešavate autentikaciju Unux korisnika
 unix_epam=Unix autentikacija nije dostupna jer <tt>Authen::PAM</tt> Perl modul nije instaliran ili ne radi ispravno.
 unix_all=Dopusti sve Unix korisnike
@@ -309,13 +297,6 @@ hide_clone=(Kopirani $1)
 
 switch_euser=Nije Vam odpušteno da se prebacite na ovog korisnika
 switch_eold=Postojeći session nije pronađen
-
-rbac_title=Postavi RBAC
-rbac_desc=Webmin RBA integracija omogućava korisničkim modulima i ACL da budu uklonjeni iz RBAC (Role Based Access Control) baze podataka, radije nego vlastitim Webmin konfiguracjskim dokumentima. Jednom kada se onemogući RBAC potpora, svim korisnicima kod kojih je odabrana <b>$edit_rbacdeny1</b> opcija, bit će uklonjene mogućnosti od strane RBAC-a koji će radije ukloniti njih nego vlastite Webmin postavke kontrole pristupa.
-rbac_esolaris=RBAC je trenutno podržan jedino na Solarisu, tako da ne može biti korišten na $1 sustavu.
-rbac_eperl=Perl modul $1 potreban za RBAC integraciju nije instaliran. <a href='$2'>Kliknte ovdje</a> da ga instalirate.
-rbac_ecpan=Nemate mogućnost pristupa stranicam Webmin Perl Modula u svrhu instaliranja nužnih $1 modula za RBCA integraciju.
-rbac_ok=RBAC integracija je dosupna na ovom sustavu i može biti omogućena osnovi pojedinog korisnika na stranici Edit Webmin User.
 
 udeletes_err=Neuspješno brisanje korisnika
 udeletes_enone=Ništa nije odabrano

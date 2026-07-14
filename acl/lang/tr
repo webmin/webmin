@@ -223,9 +223,6 @@ sync_unix=Unix onaylaması yapacak yeni kullanıcılar için parola belirleyiniz
 sync_ecannot=Kullanıcı senkronizasyonunu yapılandırmak için izininiz yoktur
 
 unix_title=Unix Kullanıcı Onaylaması
-unix_desc=Bu sayfa Webmin'e girişlerde sistem kullanıcı listesi ve PAM dışında bir kontrol sağlamanıza olanak tanır. Eğer Webmin'e giriş yapmasını istediğiniz çok sayıda Unix kullanıcısı varsa bu sayfa faydalı olabilir.
-unix_def=Sadece Webmin kullanıcılarının giriş yapmasına izin ver
-unix_user=Bu kullanıcının izinlerine sahip bütün Unix kullanıcılarının girişine izin ver :
 unix_ecannot=Unix kullanıcı onaylamasını yapılandırmak için izininiz yoktur
 unix_epam=Unix onaylaması sisteminizde <tt>Authen::PAM</tt> Perl modülü kurulu olmadığı ve düzgün çalışmadığı sürece kullanılamayacaktır.
 unix_all=Bütün Unix kullanıcılarına izin ver

@@ -1,4 +1,5 @@
 index_screate=Crea un nuevo usuario seguro.
+index_twofactor_enabled=La autenticación de dos factores está habilitada para este usuario
 
 edit_title3=Crear usuario seguro de Webmin
 edit_email=Correo electrónico de contacto
@@ -22,6 +23,17 @@ log_forgot_admin=El administrador envió un correo electrónico de restablecimie
 
 sync_modify=Cambie el nombre del usuario de Webmin coincidente cuando se cambie el nombre de un usuario de Unix.
 
+unix_desc=Esta página permite a los usuarios de Unix y de directorios, así como a los usuarios que solo utilizan PAM, iniciar sesión sin necesidad de crear una cuenta de Webmin independiente para cada usuario. Cada inicio de sesión recibe los derechos de acceso y utiliza el método de autenticación del usuario de Webmin asignado.
+unix_def=Permitir únicamente el inicio de sesión a usuarios de Webmin
+unix_sel=Permitir que los usuarios y grupos que se muestran a continuación inicien sesión
+unix_group=Miembros del grupo
+unix_user=Usuario de Unix
+unix_to=Usuario de Webmin asignado
+unix_mapdesc=El usuario de Webmin seleccionado proporciona tanto los derechos de acceso como el método de autenticación. Para autenticar el nombre de usuario original mediante PAM, SSSD o la base de datos de contraseñas del sistema, seleccione un usuario de Webmin configurado para la <b>autenticación Unix</b>. Si el usuario seleccionado tiene una contraseña de Webmin, todos los inicios de sesión coincidentes utilizarán esa contraseña compartida.
+unix_webminpass=Contraseña de Webmin
+unix_utable=Asignaciones de inicio de sesión
+
+sessions_login_ago=Última actividad hace
 sessions_actions=Comportamiento..
 sessions_all=Todas las sesiones..
 sessions_logouts=Mostrar también sesiones cerradas.
@@ -42,6 +54,16 @@ sql_timeout_def=Usar tiempo de espera de conexión predeterminado (60 segundos)
 sql_timeout_for=Cerrar las conexiones en caché después
 sql_timeout_secs=segundos
 sql_etimeout=El tiempo de espera de la conexión en caché debe ser un número
+
+twofactor_testdesc=Antes de cerrar sesión, puedes probar la autenticación de dos factores introduciendo un código. Si por algún motivo no funciona, desactiva la autenticación de dos factores e intenta configurarla de nuevo.
+twofactor_testfield=Token de dos factores
+twofactor_test=Validar token
+twofactor_terr=No se pudo probar la configuración de dos factores
+twofactor_etestuser=¡El inicio de sesión no tiene habilitada la autenticación de dos factores!
+twofactor_testing=Prueba de validación de dos factores con $1 ..
+twofactor_testfailed=... ¡La prueba falló! ¿Quizás se introdujo un token incorrecto o su aplicación de autenticación no está configurada correctamente?
+twofactor_testok=¡Prueba superada! Ahora puedes iniciar sesión de forma segura mediante la autenticación de dos factores.
+twofactor_testdis=Desactivar la autenticación de dos factores ahora
 
 forgot_title=Enviar enlace de restablecimiento de contraseña
 forgot_err=No se pudo enviar el enlace de restablecimiento de contraseña

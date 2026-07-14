@@ -20,7 +20,6 @@ index_modgroups=Moduly skupiny $1
 index_sync=Nastaviť synchronizáciu s Unixovými užívateľmi
 index_unix=Nastaviť overovanie Unixových užívateľov
 index_sessions=Prezri si záznamy prihlásení
-index_rbac=Nastaviť RBAC
 index_delete=Odstrániť vybrané
 
 edit_title=Upraviť Webmin užívateľa
@@ -66,7 +65,6 @@ edit_hide=Skryť nepoužité
 edit_switch=Prihlásiť sa ako iný užívateľ
 edit_return=Webmin užívateľ
 edit_return2=Webmin skupina
-edit_rbacdeny=RBAC prístupový mód
 edit_templock=Dočasne uzamknutý
 edit_days=Povolené dni týždňa
 edit_alldays=Každý deň
@@ -235,11 +233,8 @@ sync_unix=Zadať heslo pre nových užívateľov pre Unixové overovanie.
 sync_ecannot=Nemáte oprávnenie na nastavenie synchronizácie užívateľov.
 
 unix_title=Overovanie Unixových užívateľov
-unix_desc=Táto stránka umožňuje nastaviť Webmin na kontrolu prihlasovanie systémových užívateľov.
-unix_def=Povoliť iba Webmin užívateľom prihlásenie
 unix_mode=Povoľ
 unix_mall=Všetci užívatelia
-unix_user=Povoliť ktorémukoľvek Unixovému užívateľovi prihlásenie s právami užívateľa
 unix_who=Užívateľ alebo skupina
 unix_ecannot=Nemáte oprávnenie konfigurovať overovanie Unixových užívateľov
 unix_epam=Overovanie Unixových užívateľov nie je dostupné, pretože Perlovský modul <tt>Authen::PAM</tt> nie je nainštalovaný alebo funkčný.
@@ -268,8 +263,6 @@ hide_clone=(Skopírovať $1)
 
 switch_euser=Nemôžete sa prihlásiť ako tento užívateľ
 switch_eold=Nenašiel som existujúce spojenie!
-
-rbac_title=Nastaviť RBAC
 
 gdeletes_err=Odstránenie skupín zlyhalo
 gdeletes_title=Odstránenie skupín

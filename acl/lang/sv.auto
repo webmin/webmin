@@ -1,5 +1,6 @@
 index_screate=Skapa en ny säker användare.
 index_twofactor=Tvåfaktorautentisering
+index_twofactor_enabled=Tvåfaktorsautentisering är aktiverad för den här användaren
 index_joingroup=Lägg till i gruppen:
 index_eulist=Det gick inte att lista användare: $1
 index_eglist=Det gick inte att lista grupper: $1
@@ -62,10 +63,19 @@ convert_users=Användare att konvertera
 sync_when=När du ska synkronisera
 sync_modify=Byt namn på matchande Webmin-användare när Unix-användare byter namn.
 
+unix_desc=Den här sidan tillåter Unix- och katalogbaserade användare, såväl som PAM-användare, att logga in utan att skapa ett separat Webmin-konto för varje användare. Varje inloggning får åtkomsträttigheter och använder autentiseringsmetoden för den mappade Webmin-användaren.
+unix_def=Tillåt endast Webmin-användare att logga in
+unix_sel=Tillåt användarna och grupperna som är mappade nedan att logga in
+unix_group=Medlemmar i gruppen
+unix_user=Unix-användare
+unix_to=Mappad Webmin-användare
+unix_mapdesc=Den valda Webmin-användaren anger både åtkomsträttigheter och autentiseringsmetod. För att autentisera det ursprungliga användarnamnet via PAM, SSSD eller systemets lösenordsdatabas, välj en Webmin-användare som är konfigurerad för <b>Unix-autentisering</b>. Om den valda användaren har ett Webmin-lösenord använder varje matchande inloggning det delade lösenordet istället.
+unix_webminpass=Webmin-lösenord
 unix_restrict2=Ytterligare begränsningar
 unix_header=Unix inställningar för användarautentisering
-unix_utable=Tillåtna Unix-användare
+unix_utable=Inloggningsmappningar
 
+sessions_login_ago=Senast aktiv sedan
 sessions_actions=Handlingar..
 sessions_all=Alla sessioner..
 sessions_logouts=Visa även utloggade sessioner..
@@ -168,6 +178,15 @@ twofactor_failed=.. anmälan misslyckades: $1
 twofactor_done=.. komplett. Ditt ID med denna leverantör är <tt>$1</tt>.
 twofactor_setup=Tvåfaktorsautentisering har inte aktiverats i det här systemet ännu, men kan aktiveras med <a href='$1'>Webmin Configuration</a> -modulen.
 twofactor_ebutton=Ingen knapp klickade!
+twofactor_testdesc=Innan du loggar ut kan du testa din nya tvåfaktorsautentisering här genom att ange en token. Om det av någon anledning inte fungerar, stäng av tvåfaktorsautentisering och försök att konfigurera den igen.
+twofactor_testfield=Tvåfaktorstoken
+twofactor_test=Validera token
+twofactor_terr=Misslyckades med att testa tvåfaktorsinställningarna
+twofactor_etestuser=Inloggningen har inte tvåfaktorsfunktion aktiverad!
+twofactor_testing=Testar tvåfaktorsvalidering med $1 ..
+twofactor_testfailed=.. testet misslyckades! Kanske har fel token angetts, eller så har din autentiseringsapp inte konfigurerats korrekt?
+twofactor_testok=... testet är godkänt! Du kan nu logga in säkert med tvåfaktorsautentisering.
+twofactor_testdis=Inaktivera tvåfaktorsfunktionen nu
 
 forgot_title=Skicka länk för återställning av lösenord
 forgot_err=Misslyckades med att skicka länken för återställning av lösenord

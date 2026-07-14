@@ -21,7 +21,6 @@ index_modgroups=Modul-modul dari grup $1
 index_sync=Konfigurasi Penyegerakan Pengguna Unix
 index_unix=Konfigurasi Pengesahan Pengguna Unix
 index_sessions=Lihat Sesi-sesi Login
-index_rbac=Sedia RBAC
 index_delete=Padam yang dipilih
 index_joingroup=Tambah ke Grup
 index_eulist=Gagal untuk menyenaraikan pengguna : $1
@@ -89,9 +88,6 @@ edit_hide=sembunyikan yang tidak digunakan
 edit_switch=Tukar kepada pengguna
 edit_return=Pengguna Webmin
 edit_return2=Grup Webmin
-edit_rbacdeny=mod akses RBAC
-edit_rbacdeny0=RBAC hanya mengawal ACLs modul yang dipilih
-edit_rbacdeny1=RBAC mengawal semua modul dan ACLs
 edit_global=Kebenaran untuk semua modul
 edit_templock=Dikunci sementara
 edit_temppass=Perubahan berkuat kuasa pada log masuk yang seterusnya
@@ -172,8 +168,6 @@ acl_title3=Bagi grup $1 pada $2
 acl_options=$1 pilihan kawalan capaian
 acl_config=Boleh ubah konfigurasi modul?
 acl_reset=Tetapkan semula ke Capaian Penuh
-acl_rbac=Dapatkan tetapan capaian kawalan dari RBAC?
-acl_rbacyes=Ya (tukar tetapan di bawah)
 
 acl_uall=Kesemua pengguna
 acl_uthis=Pengguna yang boleh diubah
@@ -304,15 +298,9 @@ sync_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi penyegerakan pengguna.
 
 unix_title=Pengesahan Pengguna Unix
 unix_err=Gagal untuk menyimpan pengesahan Unix
-unix_desc=Laman ini membolehkan anda untuk menetapkan Webmin untuk mengesahkan cubaan log masuk terhadap senarai pengguna sistem dan PAM. Ini amat berguna jika anda mempunyai sejumlah besar pengguna Unix yang sedia ada dan ingin memberi capaian kepada Webmin.
-unix_def=Hanya benarkan pengguna Webmin untuk log masuk
-unix_sel=Membolehkan pengguna Unix yang disenaraikan di bawah untuk login ..
 unix_mode=Benarkan
 unix_mall=Semua pengguna
-unix_group=Ahli kepada grup
-unix_user=Pengguna Unix ..
 unix_who=Pengguna atau Grup
-unix_to=Sebagai Pengguna Webmin
 unix_ecannot=Anda tidak dibenarkan untuk mengkonfigurasi pengesahan pengguna Unix
 unix_epam=Pengesahan Unix tidak boleh didapati kerana modul Perl <tt>Authen::PAM</tt> tidak dipasang atau tidak berfungsi dengan betul.
 unix_all=Benarkan semua pengguna Unix
@@ -333,7 +321,6 @@ unix_pamany=Lepaskan log masuk yang hanya lulus pengesahan PAM sebagai $1
 unix_esudo=Arahan $1 tidak dipasang
 unix_esudomod=Modul Perl $1 diperlukan untuk pengesahan <tt>sudo</tt> tidak dipasang
 unix_header=Tetapan pengesahan pengguna Unix
-unix_utable=Pengguna Unix yang dibenarkan
 
 sessions_title=Sesi log masuk terkini
 sessions_id=ID Sesi
@@ -351,13 +338,6 @@ hide_clone={Klon $1}
 
 switch_euser=Anda tidak dibenarkan untuk menukar kepada pengguna ini
 switch_eold=Sesi sedia ada tidak dijumpai!
-
-rbac_title=Tetapan RBAC
-rbac_desc=Integrasi RBAC Webmin menyediakan satu cara untuk modul pengguna dan kebenaran ACL ditentukan daripada (Peranan Berasakan Kawalan Capaian) pangkalan data RBAC, dan bukannya dari fail konfigurasi Webmin sendiri. Apabila sokongan RBAC diaktifkan pada mana-mana pengguna yang pilihan dipilih sebagai <b>semua modul dan Acls dikawal oleh RBAC</b> akan mempunyai keupayaan yang ditentukan oleh RBAC dan bukannya tetapan kawalan capaian oleh Webmin sendiri.
-rbac_esolaris=RBAC hanya disokong pada Solaris buat masa ini, oleh itu ia tidak boleh digunakan pada sistem $1 ini.
-rbac_eperl=Modul Perl $1 yang diperlukan untuk integrasi RBAC tidak dipasang. <a href='$2'> Klik di sini</a> untuk memasangnya sekarang.
-rbac_ecpan=Anda tidak mempunyai akses ke laman Modul Perl Webmin untuk memasang modul yang berkaitan dengan $1 bagi integrasi RBAC
-rbac_ok=Integrasi RBAC boleh didapati pada sistem ini, dan boleh diaktifkan pada setiap pengguna pada Sunting Webmin Laman pengguna.
 
 udeletes_err=Gagal untuk memadam pengguna
 udeletes_enone=Tiada dipilih

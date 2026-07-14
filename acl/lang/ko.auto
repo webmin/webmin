@@ -1,5 +1,6 @@
 index_screate=안전한 새 사용자를 작성하십시오.
 index_twofactor=2 단계 인증
+index_twofactor_enabled=이 사용자에게는 2단계 인증이 활성화되어 있습니다
 index_joingroup=그룹에 추가 :
 index_eulist=사용자를 나열하지 못했습니다 : $1
 index_eglist=그룹을 나열하지 못했습니다 : $1
@@ -62,10 +63,19 @@ convert_users=변환 할 사용자
 sync_when=동기화시기
 sync_modify=Unix 사용자의 이름이 변경되면 일치하는 Webmin 사용자의 이름을 변경합니다.
 
+unix_desc=이 페이지를 사용하면 Unix 및 디렉터리 기반 사용자뿐만 아니라 PAM 전용 사용자도 각 사용자별로 별도의 Webmin 계정을 만들지 않고 로그인할 수 있습니다. 각 로그인은 매핑된 Webmin 사용자의 접근 권한과 인증 방식을 사용합니다.
+unix_def=Webmin 사용자만 로그인할 수 있도록 허용합니다
+unix_sel=아래에 나열된 사용자 및 그룹의 로그인을 허용합니다
+unix_group=그룹 구성원
+unix_user=유닉스 사용자
+unix_to=매핑된 Webmin 사용자
+unix_mapdesc=선택한 Webmin 사용자는 액세스 권한과 인증 방법을 모두 제공합니다. PAM, SSSD 또는 시스템 암호 데이터베이스를 통해 원래 사용자 이름을 인증하려면 <b>Unix 인증</b>으로 구성된 Webmin 사용자를 선택하십시오. 선택한 사용자에게 Webmin 암호가 있는 경우, 일치하는 모든 로그인에는 해당 공유 암호가 사용됩니다.
+unix_webminpass=웹민 비밀번호
 unix_restrict2=추가 제한
 unix_header=유닉스 사용자 인증 설정
-unix_utable=허용 된 유닉스 사용자
+unix_utable=로그인 매핑
 
+sessions_login_ago=마지막 활동 시간: 몇 시
 sessions_actions=행위..
 sessions_all=모든 세션..
 sessions_logouts=로그 아웃 된 세션도 표시하십시오.
@@ -164,6 +174,15 @@ twofactor_failed=.. 등록 실패 : $1
 twofactor_done=.. 완료 이 제공자의 귀하의 ID는 <tt>$1</tt>입니다.
 twofactor_setup=이 시스템에서 2 단계 인증이 아직 활성화되지 않았지만 <a href='$1'>Webmin 구성</a> 모듈을 사용하여 켤 수 있습니다.
 twofactor_ebutton=버튼을 클릭하지 않았습니다!
+twofactor_testdesc=로그아웃하기 전에 토큰을 입력하여 새 2단계 인증 설정을 테스트할 수 있습니다. 어떤 이유로든 작동하지 않으면 2단계 인증을 해제하고 다시 설정해 보세요.
+twofactor_testfield=이중 인증 토큰
+twofactor_test=토큰 유효성 검사
+twofactor_terr=이중 인증 설정 테스트에 실패했습니다
+twofactor_etestuser=로그인에 2단계 인증이 활성화되어 있지 않습니다!
+twofactor_testing=$1을 사용한 2요인 검증 테스트 ..
+twofactor_testfailed=테스트에 실패했습니다! 잘못된 토큰을 입력했거나 인증 앱이 올바르게 구성되지 않았을 수 있습니다
+twofactor_testok=테스트가 통과되었습니다! 이제 2단계 인증을 사용하여 안전하게 로그인할 수 있습니다.
+twofactor_testdis=지금 바로 2단계 인증을 비활성화하세요
 
 forgot_title=비밀번호 재설정 링크 보내기
 forgot_err=비밀번호 재설정 링크를 보내지 못했습니다

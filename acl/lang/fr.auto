@@ -1,5 +1,6 @@
 index_screate=Créez un nouvel utilisateur sécurisé.
 index_twofactor=Authentification à deux facteurs
+index_twofactor_enabled=L'authentification à deux facteurs est activée pour cet utilisateur
 index_joingroup=Ajouter au groupe:
 index_eulist=Échec de la liste des utilisateurs: $1
 index_eglist=Échec de la liste des groupes: $1
@@ -59,12 +60,21 @@ sync_when=Quand synchroniser
 sync_modify=Renommez l'utilisateur Webmin correspondant lorsqu'un utilisateur Unix est renommé.
 
 unix_err=Échec de l'enregistrement de l'authentification Unix
+unix_desc=Cette page permet aux utilisateurs Unix et aux utilisateurs utilisant un annuaire, ainsi qu'aux utilisateurs utilisant uniquement PAM, de se connecter sans avoir à créer un compte Webmin distinct pour chaque utilisateur. Chaque connexion bénéficie des droits d'accès et utilise la méthode d'authentification de l'utilisateur Webmin associé.
+unix_def=Autoriser uniquement les utilisateurs Webmin à se connecter
+unix_sel=Autoriser les utilisateurs et les groupes répertoriés ci-dessous à se connecter
+unix_group=Membres du groupe
+unix_user=utilisateur Unix
+unix_to=Utilisateur Webmin associé
+unix_mapdesc=L'utilisateur Webmin sélectionné fournit à la fois les droits d'accès et la méthode d'authentification. Pour authentifier le nom d'utilisateur d'origine via PAM, SSSD ou la base de données des mots de passe système, sélectionnez un utilisateur Webmin configuré pour l'<b>authentification Unix</b>. Si l'utilisateur sélectionné possède un mot de passe Webmin, ce mot de passe sera utilisé pour chaque connexion correspondante.
+unix_webminpass=Mot de passe Webmin
 unix_restrict2=Restrictions supplémentaires
 unix_esudo=La commande $1 n'est pas installée
 unix_esudomod=Le module Perl $1 nécessaire à l'authentification <tt>sudo</tt> n'est pas installé
 unix_header=Paramètres d'authentification utilisateur Unix
-unix_utable=Utilisateurs Unix autorisés
+unix_utable=Mappages de connexion
 
+sessions_login_ago=Dernière activité il y a
 sessions_all=Toutes les séances..
 sessions_action=Actions
 
@@ -153,6 +163,15 @@ twofactor_failed=.. l'inscription a échoué: $1
 twofactor_done=.. Achevée. Votre ID auprès de ce fournisseur est <tt>$1</tt>.
 twofactor_setup=L'authentification à deux facteurs n'a pas encore été activée sur ce système, mais peut être activée à l'aide du module <a href='$1'>Configuration Webmin</a>.
 twofactor_ebutton=Aucun bouton cliqué!
+twofactor_testdesc=Avant de vous déconnecter, vous pouvez tester votre nouvelle configuration d'authentification à deux facteurs ici en saisissant un jeton. Si cela ne fonctionne pas, désactivez l'authentification à deux facteurs et réessayez.
+twofactor_testfield=Jeton à deux facteurs
+twofactor_test=Valider le jeton
+twofactor_terr=Échec du test de la configuration à deux facteurs
+twofactor_etestuser=L'authentification à deux facteurs n'est pas activée !
+twofactor_testing=Test de validation à deux facteurs avec $1 ..
+twofactor_testfailed=Le test a échoué ! Peut-être avez-vous saisi un jeton incorrect ou votre application d’authentification n’est-elle pas correctement configurée ?
+twofactor_testok=Test réussi ! Vous pouvez désormais vous connecter en toute sécurité grâce à l’authentification à deux facteurs.
+twofactor_testdis=Désactivez l'authentification à deux facteurs maintenant
 
 forgot_title=Envoyer le lien de réinitialisation du mot de passe
 forgot_err=Échec de l'envoi du lien de réinitialisation du mot de passe

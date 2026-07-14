@@ -20,7 +20,6 @@ index_modgroups=グループ$1のモジュール
 index_sync=Unixユーザとの同期設定
 index_unix=Unixユーザ認証設定
 index_sessions=ログインセッションを見る
-index_rbac=RBACの設定
 index_delete=選択したものを削除
 
 edit_title=Webminユーザの編集
@@ -77,9 +76,6 @@ edit_hide=使用していない物を隠す
 edit_switch=ユーザーに切り替え
 edit_return=Webmin ユーザ
 edit_return2=Webminグループ
-edit_rbacdeny=RBACアクセスモード
-edit_rbacdeny0=RBAC only controls selected module ACLs
-edit_rbacdeny1=RBACはすべてのモジュールとACLを制御します
 edit_templock=一時的にロックされています
 edit_temppass=次回のログイン時に変更を強制
 edit_days=ログインできる曜日
@@ -151,8 +147,6 @@ acl_title3=$2におけるグループ$1
 acl_options=$1のアクセス制御オプション
 acl_config=モジュール設定の編集を許可しますか?
 acl_reset=フルアクセスに再設定する
-acl_rbac=RBACからアクセス制御設定を取得しますか？
-acl_rbacyes=はい（以下の設定を上書きします）
 
 acl_uall=すべてのユーザ
 acl_uthis=このユーザ
@@ -268,15 +262,9 @@ sync_ecannot=ユーザ同期を設定する権限がありません
 
 unix_title=Unixユーザ認証
 unix_err=Unix ユーザ認証の保存に失敗しました
-unix_desc=このページではWebminへのログインをシステムのユーザリストとPAMで確認するための設定を行います。膨大な数のUnixユーザが存在するシステムにWebminへのアクセス権を与えるのに役立つでしょう
-unix_def=Webminユーザにのみログインを許可する
-unix_sel=以下の Unix ユーザにログインを許可する
 unix_mode=許可
 unix_mall=すべてのユーザ
-unix_group=グループのメンバ
-unix_user=全てのUnixユーザに次のユーザ権限でのログインを許可する
 unix_who=ユーザまたはグループ
-unix_to=Webmin ユーザとして
 unix_ecannot=Unixユーザ認証を設定する権限がありません
 unix_epam=<tt>Authen::PAM</tt> Perlモジュールがインストールされていないか適切に動作しないため Unix認証が利用できません
 unix_all=全てのUnixユーザを許可する
@@ -312,13 +300,6 @@ hide_clone=($1を複製する)
 
 switch_euser=このユーザーに切り替えることはできません
 switch_eold=既存のセッションが見つかりません！
-
-rbac_title=RBACの設定
-rbac_desc=WebminのRBAC統合は、Webminの独自の構成ファイルではなく、RBAC（Role Based Access Control）データベースからユーザーモジュールとACL権限を決定する方法を提供します。 RBACサポートを有効にすると、<b> $edit_rbacdeny1 </b>オプションが選択されているユーザーは、Webmin自体のアクセス制御設定ではなく、RBACによって機能が決定されます。
-rbac_esolaris=現在、RBACはSolarisでのみサポートされているため、この$1システムでは使用できません。
-rbac_eperl=RBAC統合に必要なPerlモジュール$1がインストールされていません。 <a href='$2'>ここをクリック</a>して、今すぐインストールしてください。
-rbac_ecpan=RBAC統合に必要な$1モジュールをインストールするために、WebminのPerlモジュールページにアクセスできません。
-rbac_ok=RBAC統合はこのシステムで利用可能であり、[Webminユーザーの編集]ページでユーザーごとに有効にすることができます。
 
 udeletes_err=ユーザーを削除できませんでした
 udeletes_enone=何も選択されていません

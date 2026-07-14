@@ -1,5 +1,6 @@
 index_screate=Crie um novo usuário seguro.
 index_twofactor=Autenticação de dois fatores
+index_twofactor_enabled=A autenticação de dois fatores está ativada para este usuário
 index_joingroup=Adicionar ao grupo:
 index_eulist=Falha ao listar usuários: $1
 index_eglist=Falha ao listar grupos: $1
@@ -58,10 +59,19 @@ convert_users=Usuários para converter
 sync_when=Quando sincronizar
 sync_modify=Renomeie o usuário Webmin correspondente quando um usuário Unix for renomeado.
 
+unix_desc=Esta página permite que usuários de Unix e sistemas com diretórios, bem como usuários que utilizam apenas PAM, façam login sem precisar criar uma conta Webmin separada para cada usuário. Cada login recebe os direitos de acesso e utiliza o método de autenticação do usuário Webmin mapeado.
+unix_def=Permitir que apenas usuários do Webmin façam login
+unix_sel=Permita que os usuários e grupos mapeados abaixo façam login
+unix_group=Membros do grupo
+unix_user=usuário Unix
+unix_to=Usuário Webmin mapeado
+unix_mapdesc=O usuário Webmin selecionado fornece tanto os direitos de acesso quanto o método de autenticação. Para autenticar o nome de usuário original por meio do PAM, SSSD ou do banco de dados de senhas do sistema, selecione um usuário Webmin configurado para <b>autenticação Unix</b>. Se o usuário selecionado tiver uma senha Webmin, todos os logins correspondentes usarão essa senha compartilhada.
+unix_webminpass=Senha do Webmin
 unix_restrict2=Restrições adicionais
 unix_header=Configurações de autenticação de usuário Unix
-unix_utable=Usuários Unix permitidos
+unix_utable=Mapeamentos de login
 
+sessions_login_ago=Última atividade há
 sessions_actions=Ações..
 sessions_all=Todas as sessões..
 sessions_logouts=Mostrar também sessões desconectadas.
@@ -160,6 +170,15 @@ twofactor_failed=.. inscrição falhou: $1
 twofactor_done=.. completo. Seu ID com este provedor é <tt>$1</tt>.
 twofactor_setup=A autenticação de dois fatores ainda não foi ativada neste sistema, mas pode ser ativada usando o módulo <a href='$1'>Webmin Configuration</a>.
 twofactor_ebutton=Nenhum botão clicou!
+twofactor_testdesc=Antes de sair, você pode testar sua nova configuração de autenticação de dois fatores aqui, inserindo um token. Se, por algum motivo, não funcionar, desative a autenticação de dois fatores e tente configurá-la novamente.
+twofactor_testfield=Token de dois fatores
+twofactor_test=Validar token
+twofactor_terr=Falha ao testar a configuração de autenticação de dois fatores
+twofactor_etestuser=O login não possui autenticação de dois fatores ativada!
+twofactor_testing=Testando a validação de dois fatores com $1 ..
+twofactor_testfailed=... o teste falhou! Talvez o token inserido esteja incorreto ou seu aplicativo de autenticação não esteja configurado corretamente?
+twofactor_testok=Teste aprovado! Agora você pode fazer login com segurança usando a autenticação de dois fatores.
+twofactor_testdis=Desative a autenticação de dois fatores agora
 
 forgot_title=Enviar link para redefinição de senha
 forgot_err=Falha ao enviar link para redefinição de senha

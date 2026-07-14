@@ -1,6 +1,6 @@
 index_screate=創建一個新的安全用戶。
 index_twofactor=兩要素認證
-index_rbac=設置RBAC
+index_twofactor_enabled=該用戶已啟用雙重認證
 index_delete=刪除所選
 index_joingroup=添加到組：
 index_eulist=無法列出用戶： $1
@@ -34,9 +34,6 @@ edit_switch=切換到用戶
 edit_forgot=發送密碼重設連結
 edit_return=Webmin用戶
 edit_return2=Webmin組
-edit_rbacdeny=RBAC訪問模式
-edit_rbacdeny0=RBAC僅控制選定的模塊ACL
-edit_rbacdeny1=RBAC控制所有模塊和ACL
 edit_global=所有模塊的權限
 edit_templock=暫時鎖定
 edit_temppass=下次登錄時強制更改
@@ -76,8 +73,6 @@ delete_eanonuser=該用戶正用於匿名模塊訪問
 cert_etempdir=無效的證書文件
 
 acl_reset=重置為完全訪問權限
-acl_rbac=從RBAC獲得訪問控制設置？
-acl_rbacyes=是（覆蓋下面的設置）
 
 acl_locale=可以改locale嗎？
 acl_switch=可以切換到其他用戶嗎？
@@ -118,12 +113,17 @@ sync_modify=重命名Unix用戶時，重命名匹配的Webmin用戶。
 sync_unix=為新用戶設置用於Unix身份驗證的密碼。
 
 unix_err=保存Unix認證失敗
-unix_sel=允許下面列出的Unix用戶登錄..
+unix_desc=此頁面允許 Unix 使用者、目錄型使用者以及僅使用 PAM 的使用者登錄，而無需為每個使用者建立單獨的 Webmin 帳戶。每次登入都會取得所對應 Webmin 使用者的存取權限，並使用其驗證方法。
+unix_def=僅允許Webmin使用者登入
+unix_sel=允許以下列出的使用者和群組登錄
 unix_mode=允許
 unix_mall=所有用戶
 unix_group=小組成員
+unix_user=Unix 用戶
 unix_who=用戶或組
-unix_to=作為Webmin用戶
+unix_to=對應的 Webmin 使用者
+unix_mapdesc=選定的 Webmin 使用者同時提供存取權限和驗證方法。若要透過 PAM、SSSD 或系統密碼資料庫驗證原始使用者名稱，請選擇已設定為 <b>Unix 驗證</b>的 Webmin 使用者。如果選定的使用者設定了 Webmin 密碼，則所有符合的登入都會使用該共用密碼。
+unix_webminpass=Webmin密碼
 unix_all=允許所有Unix用戶
 unix_allow=只允許列出的Unix用戶
 unix_deny=拒絕列出的Unix用戶
@@ -142,8 +142,9 @@ unix_pamany=將僅通過PAM驗證的登錄視為 $1
 unix_esudo=未安裝 $1 命令
 unix_esudomod=未安裝<tt>sudo</tt>身份驗證所需的Perl模塊 $1
 unix_header=Unix用戶認證設置
-unix_utable=允許的Unix用戶
+unix_utable=登入映射
 
+sessions_login_ago=最後活躍時間
 sessions_host=IP地址
 sessions_actions=動作..
 sessions_all=所有會議..
@@ -166,13 +167,6 @@ hide_clone=（克隆 $1 ）
 
 switch_euser=您無權切換到該用戶
 switch_eold=找不到現有的會話！
-
-rbac_title=設置RBAC
-rbac_desc=Webmin的RBAC集成提供了一種從RBAC（基於角色的訪問控制）數據庫而不是Webmin自己的配置文件中確定用戶模塊和ACL權限的方法。啟用RBAC支持後，選擇<b>RBAC控制所有模塊和ACL</b>選項的任何用戶，其功能將由RBAC而非Webmin自己的訪問控制設置決定。
-rbac_esolaris=RBAC目前僅在Solaris上受支持，因此不能在此 $1 系統上使用。
-rbac_eperl=未安裝RBAC集成所需的Perl模塊 $1 。 <a href='$2'>單擊此處</a>立即安裝。
-rbac_ecpan=您無權訪問Webmin的Perl模塊頁面來安裝必要的 $1 模塊以進行RBAC集成。
-rbac_ok=RBAC集成在此系統上可用，並且可以在“編輯Webmin用戶”頁面上按用戶啟用。
 
 udeletes_err=刪除用戶失敗
 udeletes_jerr=無法將用戶添加到組
@@ -302,6 +296,15 @@ twofactor_failed=..註冊失敗： $1
 twofactor_done=..完成。您在此提供程序處的ID是<tt>$1</tt>。
 twofactor_setup=此系統上尚未啟用兩因素身份驗證，但可以使用<a href='$1'>Webmin Configuration</a>模塊將其打開。
 twofactor_ebutton=沒有點擊按鈕！
+twofactor_testdesc=登出前，您可以在此輸入令牌測試新設定的雙重認證。如果由於某種原因無法正常運作，請關閉雙重認證並重新設定。
+twofactor_testfield=雙重因素令牌
+twofactor_test=驗證令牌
+twofactor_terr=雙因素認證測試失敗
+twofactor_etestuser=登入未啟用雙因素認證！
+twofactor_testing=使用 $1 測試雙重驗證 ..
+twofactor_testfailed=測試失敗！可能是輸入的令牌錯誤，或者您的身份驗證應用程式配置不正確？
+twofactor_testok=測試通過！現在您可以安全地使用雙重認證登入。
+twofactor_testdis=立即禁用雙重驗證
 
 forgot_title=發送密碼重設連結
 forgot_err=無法發送密碼重設鏈接

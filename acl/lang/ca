@@ -21,7 +21,6 @@ index_modgroups=Mòduls del grup $1
 index_sync=Configura la Sincronització d'Usuaris Unix
 index_unix=Configura l'Autenticació d'Usuaris Unix
 index_sessions=Visualitza les Sessions d'Entrada
-index_rbac=Configura RBAC
 index_delete=Suprimeix els Seleccionats
 index_joingroup=Afegeix al Grup:
 index_eulist=No s'han pogut llistar els usuaris: $1
@@ -89,9 +88,6 @@ edit_hide=Amaga els No Utilitzats
 edit_switch=Canvia a l'Usuari
 edit_return=a l'usuari Webmin
 edit_return2=al grup Webmin
-edit_rbacdeny=Mode d'accés RBAC
-edit_rbacdeny0=RBAC només controla les ACLs dels mòduls seleccionats
-edit_rbacdeny1=RBAC controla totes les ACLs i mòduls
 edit_global=Permisos per a tots els mòduls
 edit_templock=Temporalment bloquejat
 edit_temppass=Força el canvi a la pròxima entrada
@@ -173,8 +169,6 @@ acl_title3=Per al grup $1 de $2
 acl_options=Opcions de control d'accés de $1
 acl_config=Pot editar la configuració del mòdul
 acl_reset=Reinicia a Accés Total
-acl_rbac=Obtingues la configuració de control d'accés de RBAC
-acl_rbacyes=Sí (ignora la configuració de sota)
 
 acl_uall=Tots els usuaris
 acl_uthis=Aquest usuari
@@ -305,15 +299,9 @@ sync_ecannot=No tens permís per configurar la sincronització.
 
 unix_title=Autenticació d'Usuaris Unix
 unix_err=No s'ha pogut desar l'autenticació Unix
-unix_desc=Aquesta pàgina permet configurar Webmin per validar els intents de connexió contra la llista d'usuaris del sistema i PAM. Això pot ser útil si tens un gran nombre d'usuaris Unix als quals vols donar accés a Webmin.
-unix_def=Permet la connexió només als usuaris de Webmin
-unix_sel=Permet que entrin els usuaris Unix llistats a sota...
 unix_mode=Permet
 unix_mall=Tots els usuaris
-unix_group=Els membres del grup...
-unix_user=L'usuari Unix...
 unix_who=L'Usuari o Grup
-unix_to=Com a usuari Webmin
 unix_ecannot=No tens permís per configurar l'autenticació d'usuaris Unix
 unix_epam=L'autenticació d'usuaris Unix no està disponible, donat que el mòdul de Perl <tt>Authen::PAM</tt> no està instal·lat o no funciona adequadament.
 unix_all=Permet tots els usuaris Unix
@@ -334,7 +322,6 @@ unix_pamany=Tracta les entrades que només passen la validació PAM com a $1
 unix_esudo=L'ordre $1 no està instal·lada
 unix_esudomod=El mòdul Perl $1 necessari per a l'autenticació <tt>sudo</tt> no està instal·lat
 unix_header=Paràmetres d'autenticació d'usuari Unix
-unix_utable=Usuaris Unix permesos
 
 sessions_title=Sessions d'Entrada Actuals
 sessions_id=ID de sessió
@@ -361,13 +348,6 @@ hide_clone=(Clona $1)
 
 switch_euser=No tens permís per canviar a aquest usuari
 switch_eold=No s'ha trobat la sessió existent!
-
-rbac_title=Configuració de RBAC
-rbac_desc=La integració de Webmin amb RBAC proporciona una forma de determinar els permisos d'ACL i mòduls d'usuari des d'una base de dades RBAC (Role Based Access Control), en lloc d'utilitzar els fitxers propis de configuració de Webmin. Un cop s'ha activat el suport RBAC, tot usuari per al qual s'hagi seleccionat l'opció <b>RBAC controla totes les ACLs i mòduls</b> tindrà les seves capacitats determinades per RBAC en lloc de la configuració de control d'accés de Webmin.
-rbac_esolaris=De moment, RBAC només està suportat per Solaris, així que no es pot utilitzar en aquest sistema $1.
-rbac_eperl=El mòdul Perl $1 necessari per a la integració amb RBAC no està instal·lat. Fes clic <a href='$2'>aquí</a> per instal·lar-lo ara.
-rbac_ecpan=No tens accés a la pàgina de Mòduls Perl de Webmin per tal d'instal·lar el mòdul $1 necessari per a la integració amb RBAC.
-rbac_ok=La integració amb RBAC està disponible en aquest sistema, i es pot activar en base a cada usuari a la pàgina d'Edició d'Usuaris Webmin.
 
 udeletes_err=No s'han pogut suprimir els usuaris
 udeletes_jerr=No s'han pogut afegir els usuaris al grup

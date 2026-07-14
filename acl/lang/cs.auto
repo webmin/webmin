@@ -1,5 +1,6 @@
 index_screate=Vytvořte nového bezpečného uživatele.
 index_twofactor=Dvoufaktorové ověření
+index_twofactor_enabled=Pro tohoto uživatele je povoleno dvoufaktorové ověřování
 index_joingroup=Přidat do skupiny:
 index_eulist=Seznam uživatelů se nepodařilo uvést: $1
 index_eglist=Seznam se nezdařil: $1
@@ -64,10 +65,19 @@ convert_users=Uživatelé převést
 sync_when=Kdy synchronizovat
 sync_modify=Při přejmenování uživatele Unixu přejmenujte odpovídajícího uživatele Webminu.
 
+unix_desc=Tato stránka umožňuje uživatelům Unixu a uživatelům s podporou adresářů, stejně jako uživatelům s přístupem pouze přes PAM, přihlásit se bez nutnosti vytvářet samostatný účet Webmin pro každého uživatele. Každé přihlášení obdrží přístupová práva a použije metodu ověřování namapovaného uživatele Webmin.
+unix_def=Povolit přihlášení pouze uživatelům Webminu
+unix_sel=Povolit přihlášení uživatelům a skupinám mapovaným níže
+unix_group=Členové skupiny
+unix_user=Uživatel Unixu
+unix_to=Namapovaný uživatel Webminu
+unix_mapdesc=Vybraný uživatel Webminu poskytuje jak přístupová práva, tak i metodu ověřování. Chcete-li ověřit původní uživatelské jméno pomocí PAM, SSSD nebo systémové databáze hesel, vyberte uživatele Webminu nakonfigurovaného pro <b>ověřování Unix</b>. Pokud má vybraný uživatel heslo Webminu, každé odpovídající přihlášení použije toto sdílené heslo.
+unix_webminpass=Heslo k Webminu
 unix_restrict2=Další omezení
 unix_header=Nastavení ověřování uživatelů Unixu
-unix_utable=Povolení uživatelé Unixu
+unix_utable=Mapování přihlášení
 
+sessions_login_ago=Naposledy aktivní před
 sessions_actions=Akce..
 sessions_all=Všechny relace..
 sessions_logouts=Zobrazit také odhlášené relace.
@@ -167,6 +177,15 @@ twofactor_failed=.. zápis se nezdařil: $1
 twofactor_done=.. kompletní. Vaše ID u tohoto poskytovatele je <tt>$1</tt>.
 twofactor_setup=V tomto systému zatím není aktivována dvoufaktorová autentizace, ale lze ji zapnout pomocí modulu <a href='$1'>Webmin Configuration</a>.
 twofactor_ebutton=Nebylo kliknuto žádné tlačítko!
+twofactor_testdesc=Před odhlášením si můžete vyzkoušet nové nastavení dvoufaktorového ověřování zadáním tokenu. Pokud z nějakého důvodu nefunguje, vypněte dvoufaktorové ověřování a zkuste ho znovu nastavit.
+twofactor_testfield=Dvoufaktorový token
+twofactor_test=Ověřit token
+twofactor_terr=Nepodařilo se otestovat dvoufaktorové nastavení
+twofactor_etestuser=Přihlášení nemá povoleno dvoufaktorové ověřování!
+twofactor_testing=Testování dvoufaktorové validace s $1 ..
+twofactor_testfailed=.. test selhal! Možná byl zadán nesprávný token nebo vaše ověřovací aplikace nebyla správně nakonfigurována?
+twofactor_testok=... test prošel! Nyní se můžete bezpečně přihlásit pomocí dvoufaktorového ověřování.
+twofactor_testdis=Zakázat dvoufaktorové testování nyní
 
 forgot_title=Odeslat odkaz pro obnovení hesla
 forgot_err=Odeslání odkazu pro obnovení hesla se nezdařilo

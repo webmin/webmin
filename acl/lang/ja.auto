@@ -1,5 +1,6 @@
 index_screate=新しい安全なユーザーを作成します。
 index_twofactor=二要素認証
+index_twofactor_enabled=このユーザーに対して二段階認証が有効になっています
 index_joingroup=グループに追加：
 index_eulist=ユーザーのリストに失敗しました： $1
 index_eglist=グループのリストに失敗しました： $1
@@ -62,10 +63,19 @@ convert_users=変換するユーザー
 sync_when=同期するタイミング
 sync_modify=Unixユーザーの名前が変更されたときに、一致するWebminユーザーの名前を変更します。
 
+unix_desc=このページでは、Unixおよびディレクトリベースのユーザー、ならびにPAMのみを使用するユーザーが、ユーザーごとに個別のWebminアカウントを作成することなくログインできます。ログインするたびに、マッピングされたWebminユーザーのアクセス権限が付与され、認証方法が使用されます。
+unix_def=Webminユーザーのみログインを許可する
+unix_sel=下記にマッピングされたユーザーとグループにログインを許可します。
+unix_group=グループのメンバー
+unix_user=Unixユーザー
+unix_to=マッピング先のWebminユーザー
+unix_mapdesc=選択されたWebminユーザーは、アクセス権限と認証方法の両方を提供します。PAM、SSSD、またはシステムパスワードデータベースを介して元のユーザー名を認証するには、<b>Unix認証</b>用に構成されたWebminユーザーを選択します。選択されたユーザーにWebminパスワードが設定されている場合、一致するすべてのログインは、その共有パスワードを使用します。
+unix_webminpass=Webminのパスワード
 unix_restrict2=追加の制限
 unix_header=Unixユーザー認証設定
-unix_utable=許可されたUnixユーザー
+unix_utable=ログインマッピング
 
+sessions_login_ago=最終アクティブ時間：
 sessions_actions=行動..
 sessions_all=すべてのセッション。
 sessions_logouts=ログアウトしたセッションも表示します。
@@ -164,6 +174,15 @@ twofactor_failed=..登録に失敗しました： $1
 twofactor_done=..完了。このプロバイダーのIDは<tt>$1</tt>です。
 twofactor_setup=このシステムでは2要素認証はまだ有効になっていませんが、<a href='$1'>Webmin Configuration</a>モジュールを使用して有効にすることができます。
 twofactor_ebutton=ボタンがクリックされていません！
+twofactor_testdesc=ログアウトする前に、ここでトークンを入力して新しい二段階認証の設定をテストできます。何らかの理由で動作しない場合は、二段階認証を無効にして再度設定してみてください。
+twofactor_testfield=二段階認証トークン
+twofactor_test=トークンの検証
+twofactor_terr=二段階認証の設定テストに失敗しました
+twofactor_etestuser=ログイン時に二段階認証が有効になっていません！
+twofactor_testing=$1 を使用した 2 要素検証のテスト ..
+twofactor_testfailed=テストに失敗しました！トークンが間違って入力されたか、認証アプリの設定が正しくない可能性があります。
+twofactor_testok=テストに合格しました！これで二段階認証を使用して安全にログインできます。
+twofactor_testdis=二段階認証を今すぐ無効にする
 
 forgot_title=パスワードリセットリンクを送信
 forgot_err=パスワードリセットリンクの送信に失敗しました

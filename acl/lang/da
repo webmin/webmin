@@ -21,7 +21,6 @@ index_modgroups=Moduler fra gruppe $1
 index_sync=Konfigurer Unix brugersynkronisation
 index_unix=Konfigurer Unix brugergodkendelse
 index_sessions=Vis log ind sessioner
-index_rbac=Opsæt RBAC
 index_delete=Slet valgte
 index_joingroup=Tilføj til gruppe:
 index_eulist=Kunne ikke liste brugere : $1
@@ -89,9 +88,6 @@ edit_hide=Gem ubrugte
 edit_switch=Skift til bruger
 edit_return=Webmin bruger
 edit_return2=Webmin gruppe
-edit_rbacdeny=RBAC adgangs mode
-edit_rbacdeny0=RBAC kontrollerer kun valgte modul ACL'er
-edit_rbacdeny1=RBAC kontrollerer alle moduler og ACL'er
 edit_global=Tilladelser for alle moduler
 edit_templock=Midlertidig låst
 edit_temppass=Force forandring ved næste login
@@ -173,8 +169,6 @@ acl_title3=For gruppe $1 i $2
 acl_options=$1 adgangskontrol indstillinger
 acl_config=Kan ændre modul konfiguration
 acl_reset=Reset til fuld adgang
-acl_rbac=Få adgangskontrol indstillinger fra RBAC?
-acl_rbacyes=Ja (overskriv indstillinger nedenunder)
 
 acl_uall=Alle brugere
 acl_uthis=Denne bruger
@@ -305,15 +299,9 @@ sync_ecannot=Du har ikke tilladelse til at konfigurere brugersynkronisation.
 
 unix_title=Unix bruger godkendelse
 unix_err=Kunne ikke gemme Unix-godkendelse
-unix_desc=Denne side giver dig mulighed for at konfigurere Webmin til at godkende log ind forsøg imod system brugerlisten og PAM. Dette kan være nyttigt hvis du har et stort antal eksiterende Unix brugere som du vil give adgang til Webmin.
-unix_def=Tillad kun Webmin brugere at logge ind
-unix_sel=Tillad Unix brugere listede herunder at logge ind ..
 unix_mode=Tillad
 unix_mall=Alle brugere
-unix_group=Medlemmer af gruppe..
-unix_user=Unix bruger ..
 unix_who=Bruger eller gruppe
-unix_to=Som Webmin bruger
 unix_ecannot=Du har ikke tilladelse til at konfigurere Unix bruger godkendelse
 unix_epam=Unix godkendelse er ikke tilgængelig da Perl modulet <tt>Authen::PAM</tt> ikke er installeret eller fungerer korrekt.
 unix_all=Tillad alle Unix brugere
@@ -334,7 +322,6 @@ unix_pamany=Behandl login, der kun overfører PAM-validering til $1
 unix_esudo=Kommandoen $1 er ikke installeret
 unix_esudomod=Perl-modulet $1, der kræves til <tt>sudo</tt> autentificering, er ikke installeret
 unix_header=Unix-bruger godkendelses indstillinger
-unix_utable=Tilladte Unix-brugere
 
 sessions_title=Nuværende Log ind sessioner
 sessions_id=Sessions ID
@@ -361,13 +348,6 @@ hide_clone=(Klon $1)
 
 switch_euser=Du har ikke tilladelse til at skifte til denne bruger
 switch_eold=Eksiterende session ikke fundet!
-
-rbac_title=Opsæt RBAC
-rbac_desc=Webmin's RBAC integration giver mulighed for at brugermoduler og ACL tilladelser bliver bestemt ud fra en RBAC(Rolle Baseret Adgangs Kontrol) database, istedet for Webmin's egne konfigurationsfiler. Når RBAC support er slået til, vil alle brugere for hvem <b>$edit_rbacdenyl</b> indstillingen er aktivieret, få dersmuligheder bestemt af RBAC istedet for Webmin's egne adgangskontrol indstillinger.
-rbac_esolaris=RBAC er kun understøttet af Solaris for øjeblikket, og kan derfor ikke bruges på dette $1 system.
-rbac_eperl=Perl modulet $1 der skal bruges til RBAC integration er ikke installeret. <a href='$2'>Klik her</a> for at installere det nu.
-rbac_ecpan=Du har ikke adgang til Webmin's Perl modul side for at kunne installere det nødvendige $1 modul for RBAC integration.
-rbac_ok=RBAC integration er tilgængelig på dette system, og kan aktiveres på en pr-bruger basis på Rediger Webmin bruger siden.
 
 udeletes_err=Kunne ikke slette brugere
 udeletes_jerr=Kunne ikke tilføje brugere til gruppe

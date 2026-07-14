@@ -20,7 +20,6 @@ index_modgroups=Modules van de groep $1
 index_sync=Unix Gebruiker Synchronisatie Instellen
 index_unix=Unix Gebruiker Authenticatie Instellen
 index_sessions=Login Sessies Tonen
-index_rbac=RBAC instellen
 index_delete=Verwijder geselecteerde
 index_eulist=Gebruikers in lijst zetten mislukt : $1
 index_eglist=Groepen in lijst zetten mislukt : $1
@@ -82,9 +81,6 @@ edit_hide=Ongebruikte Verbergen
 edit_switch=Omschakelen naar Gebruiker
 edit_return=Webmin gebruiker
 edit_return2=Webmin groep
-edit_rbacdeny=RBAC toegang mode
-edit_rbacdeny0=RBAC controleert alleen de geselecteerde module ACLs
-edit_rbacdeny1=RBAC controleert alle modules en ACLs
 edit_global=Permissies voor alle modules
 edit_templock=Tijdelijk geblokkeerd
 edit_temppass=Forceer veranderen bij volgende login
@@ -164,8 +160,6 @@ acl_title3=Voor groep $1 in $2
 acl_options=$1 toegangscontrole opties
 acl_config=Mag de module configuratie bewerken?
 acl_reset=Opnieuw instellen op volledige toegang
-acl_rbac=Haal toegang instellingen op van RBAC?
-acl_rbacyes=Ja (heeft voorrang onderstaande instellingen)
 
 acl_uall=Alle gebruikers
 acl_uthis=Deze gebruiker
@@ -288,15 +282,9 @@ sync_ecannot=U bent niet bevoegd om gebruikers synchronisatie in te stellen
 
 unix_title=Unix Gebruikers Authenticatie
 unix_err=Mislukt om Unix authenticatie op te slaan
-unix_desc=Deze pagina stelt u in staat Webmin in te stellen om aanmeldingen te verifieren doormiddel van de systeem gebruikers lijst en PAM. Dit kan handig zijn wanneer u een groot aantal bestaande Unix gebruikers heeft welke u toegang tot Webmin wilt verlenen.
-unix_def=Alleen Webmin gebruikers toestaan aan te melden
-unix_sel=Sta de onderstaande gebruikers toe zich aan te melden ..
 unix_mode=Toestaan
 unix_mall=Alle gebruikers
-unix_group=Leden van de groep..
-unix_user=Unix gebruiker ..
 unix_who=Gebruiker of Groep
-unix_to=Als Webmin gebruiker
 unix_ecannot=U bent niet bevoegd om Unix gebruiker authenticatie in te stellen
 unix_epam=Unix authenticatie is niet beschikbaar, omdat de <tt>Auhten::PAM</tt> Perl module niet is geinstalleerd of niet goed werkt.
 unix_all=Alle Unix gebruikers toestaan
@@ -332,13 +320,6 @@ hide_clone=(Kloon $1)
 
 switch_euser=U bent niet bevoegd om over te schakelen naar deze gebruiker
 switch_eold=Geen bestaande sessies gevonden!
-
-rbac_title=RBAC instellen
-rbac_desc=Webmin's RBAC integratie geeft de mogelijkheid om de module toegang en ACL rechten voor gebruikers te bepalen aan de hand van een RBAC (Role Based Access Control) database, in plaats van gebruik te maken van de Webmin configuratie bestanden. Zodra de RBAC ondersteuning is aangezet zal voor iedere gebruiker waarvoor de <b>RBAC controleert alle modules en ACLs</b> optie is geselecteerd hun mogelijkheden worden bepaald door de RBAC in plaats van de eigen Webmin instellingen.
-rbac_esolaris=RBAC wordt op dit moment enkel op Solaris ondersteund, en kan derhalve niet op dit $1 systeem worden gebruikt.
-rbac_eperl=De voor RBAC integratie vereiste Perl module $1 is niet geinstalleerd. <a href='2'>Klik hier</a> om deze nu te installeren.
-rbac_ecpan=U heeft geen toegang tot Webmin's Perl Module pagina om de vereiste $1 module voor RBAC integratie te installeren
-rbac_ok=RBAC integratie is beschikbaar op dit systeem, en kan per gebruiker worden ingeschakeld op de Webmin Gebruikers pagina.
 
 udeletes_err=Mislukt om gebruikers te verwijderen
 udeletes_enone=Niets geselecteerd

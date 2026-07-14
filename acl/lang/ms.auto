@@ -1,4 +1,5 @@
 index_screate=Buat pengguna selamat yang baru.
+index_twofactor_enabled=Pengesahan dua faktor diaktifkan untuk pengguna ini
 
 edit_title3=Buat Pengguna Webmin Selamat
 edit_email=E-mel hubungan
@@ -22,6 +23,17 @@ log_forgot_admin=Pentadbir menghantar e-mel tetapan semula kata laluan untuk pen
 
 sync_modify=Ganti nama pengguna Webmin yang sepadan apabila pengguna Unix dinamakan semula.
 
+unix_desc=Halaman ini membenarkan pengguna Unix dan yang disokong direktori, serta pengguna PAM sahaja, untuk log masuk tanpa membuat akaun Webmin berasingan untuk setiap pengguna. Setiap log masuk menerima hak akses dan menggunakan kaedah pengesahan pengguna Webmin yang dipetakan.
+unix_def=Hanya benarkan pengguna Webmin untuk log masuk
+unix_sel=Benarkan pengguna dan kumpulan yang dipetakan di bawah untuk log masuk
+unix_group=Ahli kumpulan
+unix_user=Pengguna Unix
+unix_to=Pengguna Webmin yang dipetakan
+unix_mapdesc=Pengguna Webmin yang dipilih membekalkan kedua-dua hak akses dan kaedah pengesahan. Untuk mengesahkan nama pengguna asal melalui PAM, SSSD atau pangkalan data kata laluan sistem, pilih pengguna Webmin yang dikonfigurasikan untuk <b>Pengesahan Unix</b>. Jika pengguna yang dipilih mempunyai kata laluan Webmin, setiap log masuk yang sepadan akan menggunakan kata laluan kongsi tersebut.
+unix_webminpass=Kata laluan webmin
+unix_utable=Pemetaan log masuk
+
+sessions_login_ago=Aktif terakhir yang lalu
 sessions_actions=Tindakan..
 sessions_all=Semua sesi..
 sessions_logouts=Juga tunjukkan sesi log keluar..
@@ -44,6 +56,15 @@ sql_timeout_secs=saat
 sql_etimeout=Tamat masa sambungan cache mestilah nombor
 
 twofactor_ebutton=Tiada butang diklik!
+twofactor_testdesc=Sebelum log keluar, anda boleh menguji persediaan pengesahan dua faktor baharu anda di sini dengan memasukkan token. Jika atas sebab tertentu ia tidak berfungsi, matikan pengesahan dua faktor dan cuba sediakannya semula.
+twofactor_testfield=Token dua faktor
+twofactor_test=Sahkan Token
+twofactor_terr=Gagal menguji persediaan dua faktor
+twofactor_etestuser=Log masuk tidak mempunyai dua faktor yang didayakan!
+twofactor_testing=Menguji pengesahan dua faktor dengan $1 ..
+twofactor_testfailed=.. ujian gagal! Mungkin token yang salah telah dimasukkan atau aplikasi pengesahan anda tidak dikonfigurasikan dengan betul?
+twofactor_testok=.. ujian lulus! Anda kini boleh log masuk dengan selamat menggunakan pengesahan dua faktor.
+twofactor_testdis=Lumpuhkan Dua Faktor Sekarang
 
 forgot_title=Hantar Pautan Tetapan Semula Kata Laluan
 forgot_err=Gagal menghantar pautan tetapan semula kata laluan

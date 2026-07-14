@@ -1,5 +1,6 @@
 index_screate=Hozzon létre egy új biztonságos felhasználót.
 index_twofactor=Két tényezős hitelesítés
+index_twofactor_enabled=Kétfaktoros hitelesítés engedélyezve van ennél a felhasználónál
 index_joingroup=Hozzáadás a csoporthoz:
 index_eulist=Nem sikerült felsorolni a felhasználókat: $1
 index_eglist=A csoportok felsorolása nem sikerült: $1
@@ -87,14 +88,23 @@ sync_when=Mikor kell szinkronizálni
 sync_modify=Nevezze át a megfelelő Webmin felhasználót, amikor egy Unix felhasználót átnevez.
 
 unix_err=Nem sikerült menteni az Unix hitelesítést
+unix_desc=Ez az oldal lehetővé teszi a Unix és a könyvtáralapú felhasználók, valamint a csak PAM-ot használó felhasználók számára, hogy bejelentkezzenek anélkül, hogy minden egyes felhasználóhoz külön Webmin fiókot kellene létrehozni. Minden bejelentkezés megkapja a hozzárendelt Webmin felhasználó hozzáférési jogait és hitelesítési módszerét.
+unix_def=Csak Webmin felhasználók jelentkezhetnek be
+unix_sel=Engedélyezze az alább leképezett felhasználók és csoportok bejelentkezését
+unix_group=A csoport tagjai
+unix_user=Unix felhasználó
+unix_to=Hozzárendelt Webmin-felhasználó
+unix_mapdesc=A kiválasztott Webmin felhasználó biztosítja mind a hozzáférési jogokat, mind a hitelesítési módszert. Az eredeti felhasználónév PAM, SSSD vagy a rendszerjelszó-adatbázison keresztüli hitelesítéséhez válasszon ki egy <b>Unix hitelesítésre</b> konfigurált Webmin felhasználót. Ha a kiválasztott felhasználónak van Webmin jelszava, akkor minden egyező bejelentkezés ezt a megosztott jelszót használja.
+unix_webminpass=Webmin jelszó
 unix_restrict2=További korlátozások
 unix_sudo=Engedélyezze, hogy azok a felhasználók, akik az összes parancsot a <tt>sudo</tt> segítségével futtatják, <tt>gyökér</tt> néven jelentkezzenek be
 unix_pamany=Azokat a bejelentkezéseket, amelyek csak a PAM-hitelesítést teszik át, kezelje $1 -ként
 unix_esudo=A $1 parancs nincs telepítve
 unix_esudomod=A <tt>sudo</tt> hitelesítéshez szükséges Perl modul $1 nincs telepítve
 unix_header=Unix felhasználói hitelesítési beállítások
-unix_utable=Engedélyezett Unix felhasználók
+unix_utable=Bejelentkezési leképezések
 
+sessions_login_ago=Utoljára aktív
 sessions_actions=Hozzászólások..
 sessions_all=Minden ülés..
 sessions_logouts=A kijelentkezett munkamenetek megjelenítése is
@@ -218,6 +228,15 @@ twofactor_failed=.. a regisztráció sikertelen: $1
 twofactor_done=.. teljes. Az Ön azonosítója ezzel a szolgáltatóval <tt>$1</tt>.
 twofactor_setup=A kétfaktoros hitelesítés még nem engedélyezve van ebben a rendszeren, de bekapcsolható a <a href='$1'>Webmin konfigurálása</a> modul segítségével.
 twofactor_ebutton=Nincs gombra kattintva!
+twofactor_testdesc=Kijelentkezés előtt tesztelheted az új kétfaktoros hitelesítési beállításodat egy tokenek megadásával. Ha valamilyen okból nem működik, kapcsold ki a kétfaktoros hitelesítést, és próbáld meg újra beállítani.
+twofactor_testfield=Kétfaktoros token
+twofactor_test=Token érvényesítése
+twofactor_terr=Nem sikerült tesztelni a kétfaktoros beállítást
+twofactor_etestuser=A bejelentkezésnél nincs bekapcsolva a kétfaktoros bejelentkezés!
+twofactor_testing=Kétfaktoros validáció tesztelése $1-gyel ..
+twofactor_testfailed=.. teszt sikertelen! Lehet, hogy rossz tokent adott meg, vagy a hitelesítési alkalmazás nincs megfelelően konfigurálva?
+twofactor_testok=.. teszt sikeres! Most már biztonságosan bejelentkezhet kétfaktoros hitelesítéssel.
+twofactor_testdis=Kétfaktoros letiltás most
 
 forgot_title=Jelszó-visszaállítási link küldése
 forgot_err=Nem sikerült elküldeni a jelszó-visszaállító linket

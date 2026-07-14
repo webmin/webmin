@@ -1,3 +1,5 @@
+index_twofactor_enabled=Tofaktorautentisering er aktivert for denne brukeren
+
 edit_email=Kontakt-e-postadresse
 edit_locale=Språk
 edit_forgot=Send lenke til tilbakestilling av passord
@@ -12,6 +14,17 @@ log_forgot_admin=Admin sendte e-post om tilbakestilling av passord for bruker $1
 
 sync_modify=Gi nytt navn til den samsvarende Webmin-brukeren når en Unix-bruker får nytt navn.
 
+unix_desc=Denne siden lar Unix- og katalogstøttede brukere, samt PAM-brukere, logge inn uten å opprette en separat Webmin-konto for hver bruker. Hver pålogging får tilgangsrettighetene og bruker autentiseringsmetoden til den tilordnede Webmin-brukeren.
+unix_def=Tillat kun Webmin-brukere å logge inn
+unix_sel=Tillat brukerne og gruppene som er kartlagt nedenfor å logge inn
+unix_group=Medlemmer av gruppen
+unix_user=Unix-bruker
+unix_to=Tilordnet Webmin-bruker
+unix_mapdesc=Den valgte Webmin-brukeren oppgir både tilgangsrettigheter og autentiseringsmetoden. For å autentisere det opprinnelige brukernavnet via PAM, SSSD eller systemets passorddatabase, velg en Webmin-bruker som er konfigurert for <b>Unix-autentisering</b>. Hvis den valgte brukeren har et Webmin-passord, bruker alle samsvarende pålogginger det delte passordet i stedet.
+unix_webminpass=Webmin-passord
+unix_utable=Påloggingskartlegginger
+
+sessions_login_ago=Sist aktiv for
 sessions_all=Alle økter..
 sessions_action=Handlinger
 
@@ -21,6 +34,16 @@ sql_timeout_def=Bruk standard tilkoblingstimeout (60 sekunder)
 sql_timeout_for=Lukk hurtigbufrede tilkoblinger etter
 sql_timeout_secs=sekunder
 sql_etimeout=Tidsavbrudd for hurtigbufret tilkobling må være et tall
+
+twofactor_testdesc=Før du logger ut, kan du teste den nye tofaktorautentiseringen din her ved å skrive inn en token. Hvis den av en eller annen grunn ikke fungerer, slå av tofaktorautentiseringen og prøv å sette den opp på nytt.
+twofactor_testfield=Tofaktortoken
+twofactor_test=Valider token
+twofactor_terr=Kunne ikke teste tofaktoroppsettet
+twofactor_etestuser=Innloggingen har ikke tofaktorfunksjon aktivert!
+twofactor_testing=Tester tofaktorvalidering med $1 ..
+twofactor_testfailed=.. testen mislyktes! Kanskje feil token ble skrevet inn, eller kanskje autentiseringsappen din ikke er riktig konfigurert?
+twofactor_testok=... testen er bestått! Du kan nå trygt logge inn med tofaktorautentisering.
+twofactor_testdis=Deaktiver tofaktor nå
 
 forgot_title=Send lenke til tilbakestilling av passord
 forgot_err=Kunne ikke sende lenken for tilbakestilling av passord

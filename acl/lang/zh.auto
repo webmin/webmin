@@ -1,3 +1,5 @@
+index_twofactor_enabled=该用户已启用双因素身份验证
+
 edit_email=联系邮箱
 edit_egone=选定的用户不再存在！
 edit_forgot=发送密码重置链接
@@ -11,6 +13,28 @@ log_forgot_reset=为电子邮件为 $2 的用户 $1 重置密码
 log_forgot_admin=管理员已将用户 $1 的密码重置电子邮件发送给 $2
 
 gsave_edesc=无效描述 - 不允许使用 : 字符
+
+unix_desc=此页面允许 Unix 用户、目录型用户以及仅使用 PAM 的用户登录，而无需为每个用户创建单独的 Webmin 帐户。每次登录都会获得所映射 Webmin 用户的访问权限，并使用其身份验证方法。
+unix_def=仅允许Webmin用户登录
+unix_sel=允许以下列出的用户和组登录
+unix_group=小组成员
+unix_user=Unix 用户
+unix_to=映射的 Webmin 用户
+unix_mapdesc=选定的 Webmin 用户同时提供访问权限和身份验证方法。要通过 PAM、SSSD 或系统密码数据库验证原始用户名，请选择已配置为 <b>Unix 身份验证</b>的 Webmin 用户。如果选定的用户设置了 Webmin 密码，则所有匹配的登录都将使用该共享密码。
+unix_webminpass=Webmin密码
+unix_utable=登录映射
+
+sessions_login_ago=最后活跃时间
+
+twofactor_testdesc=登出前，您可以在此处输入令牌测试新设置的双因素身份验证。如果由于某种原因无法正常工作，请关闭双因素身份验证并重新设置。
+twofactor_testfield=双因素令牌
+twofactor_test=验证令牌
+twofactor_terr=双因素认证测试失败
+twofactor_etestuser=登录未启用双因素认证！
+twofactor_testing=使用 $1 测试双因素验证 ..
+twofactor_testfailed=测试失败！可能是输入的令牌错误，或者您的身份验证应用程序配置不正确？
+twofactor_testok=测试通过！您现在可以安全地使用双因素身份验证登录。
+twofactor_testdis=立即禁用双重验证
 
 forgot_title=发送密码重置链接
 forgot_err=无法发送密码重置链接

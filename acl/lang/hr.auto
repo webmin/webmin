@@ -1,5 +1,6 @@
 index_screate=Stvorite novog sigurnog korisnika.
 index_twofactor=Dvofaktorska provjera autentičnosti
+index_twofactor_enabled=Dvofaktorska autentifikacija je omogućena za ovog korisnika
 index_joingroup=Dodaj u grupu:
 index_eulist=Nije uspjelo popis korisnika: $1
 index_eglist=Nije uspjelo popis grupa: $1
@@ -65,10 +66,19 @@ convert_users=Korisnici koji žele pretvoriti
 sync_when=Kada se sinkronizirati
 sync_modify=Preimenujte odgovarajućeg korisnika Webmin kada se Unix korisnik preimenuje.
 
+unix_desc=Ova stranica omogućuje Unix i korisnicima s podržanim direktorijima, kao i korisnicima samo s PAM-om, prijavu bez stvaranja zasebnog Webmin računa za svakog korisnika. Svaka prijava dobiva prava pristupa i koristi metodu autentifikacije mapiranog Webmin korisnika.
+unix_def=Dopusti prijavu samo Webmin korisnicima
+unix_sel=Dopustite prijavu korisnicima i grupama mapiranim u nastavku
+unix_group=Članovi grupe
+unix_user=Korisnik Unixa
+unix_to=Mapirani Webmin korisnik
+unix_mapdesc=Odabrani Webmin korisnik daje i prava pristupa i metodu autentifikacije. Za autentifikaciju izvornog korisničkog imena putem PAM-a, SSSD-a ili baze podataka lozinki sustava, odaberite Webmin korisnika konfiguriranog za <b>Unix autentifikaciju</b>. Ako odabrani korisnik ima Webmin lozinku, svaka odgovarajuća prijava koristi tu dijeljenu lozinku.
+unix_webminpass=Lozinka za Webmin
 unix_restrict2=Dodatna ograničenja
 unix_header=Unix postavke provjere autentičnosti korisnika
-unix_utable=Dopušteni Unix korisnici
+unix_utable=Mapiranje prijava
 
+sessions_login_ago=Zadnji put aktivno prije
 sessions_actions=Akcije..
 sessions_all=Sve sesije..
 sessions_logouts=Prikaži i odjavljene sesije..
@@ -168,6 +178,15 @@ twofactor_failed=.. registracija nije uspjela: $1
 twofactor_done=.. kompletna. Vaš ID kod ovog davatelja usluga je <tt>$1</tt>.
 twofactor_setup=Dvofaktorna provjera identiteta još nije omogućena na ovom sustavu, ali se može uključiti pomoću modula <a href='$1'>Konfiguracija Webmin</a>.
 twofactor_ebutton=Nijedan gumb nije kliknut!
+twofactor_testdesc=Prije odjave, ovdje možete testirati svoju novu postavku dvofaktorske autentifikacije unosom tokena. Ako iz nekog razloga ne radi, isključite dvofaktorsku autentifikaciju i pokušajte je ponovno postaviti.
+twofactor_testfield=Dvofaktorski token
+twofactor_test=Validiraj token
+twofactor_terr=Nije uspjelo testiranje dvofaktorske postavke
+twofactor_etestuser=Prijava nema omogućenu dvofaktorsku zaštitu!
+twofactor_testing=Testiranje dvofaktorske validacije s $1 ..
+twofactor_testfailed=.. test nije uspio! Možda je unesen pogrešan token ili vaša aplikacija za autentifikaciju nije ispravno konfigurirana?
+twofactor_testok=.. test prošao! Sada se možete sigurno prijaviti pomoću dvofaktorske autentifikacije.
+twofactor_testdis=Onemogući dvofaktorski pristup sada
 
 forgot_title=Pošalji poveznicu za resetiranje lozinke
 forgot_err=Slanje poveznice za resetiranje lozinke nije uspjelo

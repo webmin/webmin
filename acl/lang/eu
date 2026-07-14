@@ -19,7 +19,6 @@ index_modgroups=$1 taldeko moduluak
 index_sync=Unix erabiltzaileen sinkronizazioa konfiguratu
 index_unix=Unix erabiltzailearen kautotzea konfiguratu
 index_sessions=Sarrerako saioak ikusi
-index_rbac=RBAC konfiguratu
 index_delete=Ezabatu aukeratutakoa
 
 edit_title=Webmin erabiltzailea editatu
@@ -77,9 +76,6 @@ edit_hide=Ezkutatu erabiltzen ez dena
 edit_switch=Aldatu erabiltzailera
 edit_return=Webmin erabiltzailea
 edit_return2=Webmin taldea
-edit_rbacdeny=RBAC atzipen modua
-edit_rbacdeny0=RBAC ek soilik aukeratutako ACL moduluak kontrolatzen ditu
-edit_rbacdeny1=RBAC ek kontrolatzen ditu modulu eta ACL guztiak
 edit_global=Modulu guztientzako baimenak
 edit_templock=Aldi baterako blokeatuta
 edit_temppass=Behartu hurrena saioa hastean aldatzera
@@ -153,8 +149,6 @@ acl_title3=$1 etik $2 rako taldeentzat
 acl_options=$1 atzipen kontrolerako aukerak
 acl_config=Edita dezake moduluaren konfigurazioa?
 acl_reset=Baimen guztiak berrezarri
-acl_rbac=RBAC en atzipen kontrolerako ezarpenak lortu?
-acl_rbacyes=Bai (beheko ezarpenak gain-idatzi)
 
 acl_uall=Erabiltzaile guztiak
 acl_uthis=Erabiltzaile hau
@@ -270,15 +264,9 @@ sync_ecannot=Ez zaude erabiltzaileen sinkronizazioa konfiguratzeko baimendua
 
 unix_title=Unix erabiltzaileen autentikazioa
 unix_err=Akatsa Unix autentikazioa gordetzean
-unix_desc=Orri honen bidez Webmin konfigura daiteke sistemako erabiltzaileen aurka egindako saio saiakerak eta PAM balidatzeko. Hau lagungarri da Unix erabiltzaile askori Webminerako atzipena eman nahi zaionean.
-unix_def=Soilik Webmin erabiltzaileei baimendu saioa hastea
-unix_sel=Behean zerrendatutako Unix erabiltzaileei utzi soilik login egiten
 unix_mode=Baimendu
 unix_mall=Erabiltzaile guztiei
-unix_group=Taldekideei..
-unix_user=Unix erabiltzaileei ..
 unix_who=Erabiltzaile edo Taldea
-unix_to=Webmin erabiltzaile gisa
 unix_ecannot=Ez zaude Unix erabiltzaileen autentikazioa konfiguratzeko baimendua
 unix_epam=Unix autentikazioa ez dago eskuragarri <tt>Authen::PAM</tt> Perl-en modulua ez dagoelako instalatua edo ez dabilelako ongi.
 unix_all=Unix erabiltzaile guztiak baimendu
@@ -314,13 +302,6 @@ hide_clone=($1 klonatu)
 
 switch_euser=Ez zaude erabiltze honetara bihurtzeko baimendua
 switch_eold=Ez da aurkitu sortuta dagoen saioa!
-
-rbac_title=RBAC konfiguratu
-rbac_desc=Webminen RBAC en integrazioak erabiltzaileen moduluak eta ACL baimenak RBAC (Role Based Access Control) datu base batetik egitea ahalbidetzen du, Webminen konfigurazio fitxategitik egin beharrean. Behin RBAC euskarria gaituta, RBAK ek kontrolatuko ditu modulu eta ACL guztiak aukera aktibatuta duten erabiltzaileak bere baitan izango ditu RBAC ek definitutako ahalmenak, Webminen atzipen konfigurazioaren partez.
-rbac_esolaris=Momentu honetan RBAC soilik Solaris-en dago eskuragarri, ondorioz ezin da $1 sistema honetan erabili.
-rbac_eperl=RBAC-en integraziorako beharrezko den $1 Perl-en modulua ez dago instalatua. <a href='$2'>Egin klik hemen</a> orain instalatzeko.
-rbac_ecpan=Ez daukazu Webmin-en Perl moduluen orrietarako atzipena RBAC-en integraziorako beharrezko den $1 modulua instalatzeko.
-rbac_ok=RBAC integrazioa eskuragarri dago sistema honetan, eta gaitua izan daiteke erabiltzaile bakoitzarentzat Webminen erabiltzaileak editatzeko orrian.
 
 udeletes_err=Akatsa erabiltzaileak ezabatzean
 udeletes_enone=Ez da inor hautatu

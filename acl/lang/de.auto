@@ -1,0 +1,23 @@
+index_twofactor_enabled=Die Zwei-Faktor-Authentifizierung ist für diesen Benutzer aktiviert
+
+unix_desc=Diese Seite ermöglicht es Unix- und verzeichnisbasierten Benutzern sowie PAM-Benutzern, sich anzumelden, ohne für jeden Benutzer ein separates Webmin-Konto erstellen zu müssen. Jede Anmeldung erhält die Zugriffsrechte und verwendet die Authentifizierungsmethode des zugeordneten Webmin-Benutzers.
+unix_def=Nur Webmin-Benutzern die Anmeldung erlauben
+unix_sel=Erlauben Sie den unten aufgeführten Benutzern und Gruppen, sich anzumelden
+unix_group=Mitglieder der Gruppe
+unix_user=Unix-Benutzer
+unix_to=Zugeordneter Webmin-Benutzer
+unix_mapdesc=Der ausgewählte Webmin-Benutzer legt sowohl die Zugriffsrechte als auch die Authentifizierungsmethode fest. Um den ursprünglichen Benutzernamen über PAM, SSSD oder die Systempasswortdatenbank zu authentifizieren, wählen Sie einen für <b>Unix-Authentifizierung</b> konfigurierten Webmin-Benutzer aus. Verfügt der ausgewählte Benutzer über ein Webmin-Passwort, wird dieses bei jeder Anmeldung verwendet.
+unix_webminpass=Webmin-Passwort
+unix_utable=Anmeldezuordnungen
+
+sessions_login_ago=Zuletzt aktiv vor
+
+twofactor_testdesc=Bevor Sie sich abmelden, können Sie Ihre neue Zwei-Faktor-Authentifizierung hier testen, indem Sie ein Token eingeben. Sollte dies aus irgendeinem Grund nicht funktionieren, deaktivieren Sie die Zwei-Faktor-Authentifizierung und versuchen Sie die Einrichtung erneut.
+twofactor_testfield=Zwei-Faktor-Token
+twofactor_test=Token validieren
+twofactor_terr=Zwei-Faktor-Authentifizierung konnte nicht getestet werden
+twofactor_etestuser=Die Anmeldung ist nicht mit Zwei-Faktor-Authentifizierung möglich!
+twofactor_testing=Test der Zwei-Faktor-Validierung mit $1 ..
+twofactor_testfailed=…Test fehlgeschlagen! Möglicherweise wurde das falsche Token eingegeben oder Ihre Authentifizierungs-App ist nicht korrekt konfiguriert?
+twofactor_testok=… Test bestanden! Sie können sich jetzt sicher mit Zwei-Faktor-Authentifizierung anmelden.
+twofactor_testdis=Zwei-Faktor-Authentifizierung jetzt deaktivieren

@@ -20,7 +20,6 @@ index_modgroups=Modulok a $1 csoportból
 index_sync=Unix felhasználó szinkronizálásának beállítása
 index_unix=Unix felhasználó azonosításának a beállítása
 index_sessions=Belépési folyamat megtekintése
-index_rbac=RBAC beállítása
 index_delete=Kiválasztott törlése
 
 edit_title=Felhasználói profil módosítása
@@ -69,9 +68,6 @@ edit_hide=Nem használtak elrejtése
 edit_switch=Átváltás más felhasználóra
 edit_return=Webmin felhasználó
 edit_return2=Webmin csoport
-edit_rbacdeny=RBAC hozzáférési mód
-edit_rbacdeny0=Csak RBAC kontrolok a kiválasztott ACL-hez
-edit_rbacdeny1=RBAC kontrollok minden modulhoz és ACL -hez
 edit_templock=Átmenetileg zárolva
 edit_alldays=Minden nap
 edit_allhours=Bármikor
@@ -131,8 +127,6 @@ acl_title3=A $1 csoportnak a $2 -ben
 acl_options=A "$1" modul feletti hatáskör
 acl_config=Megváltoztathatja a modul konfigurációját?
 acl_reset=Beállítás teljes hozzáférésre
-acl_rbac=Hozzáférési kontroll beállítások az RBAC -ből?
-acl_rbacyes=Igen (felülírja a beállításokat alább)
 
 acl_uall=Minden felhasználó
 acl_uthis=Ez a felhasználó
@@ -243,15 +237,9 @@ sync_unix=Jelszó beállítása az új felhasználóknak a Unix azonosításhoz.
 sync_ecannot=Önnek nincs joga a felhasználó szinkronizálását beállítani.
 
 unix_title=Unix felhasználó azonosítás
-unix_desc=Ezen az oldalon engedélyezni tudja a Webmin konfigurálását hogy a belépési kísérleteket a rendszer a felhasználói listából vagy PAM -ból validálja. Ez hasznos lehet, hogyha Önnek nagy számú Unix felhasználója van, akik hozzá akarnak férni a Webmin-hez.
-unix_def=Csak a Webmin felhasználóknak engedélyezve a belépés
-unix_sel=A listában szerplő Unix felhasználóknak engedélyezve legyen a belépés..
 unix_mode=Engedélyezve
 unix_mall=Minden felhasználó
-unix_group=A csoport tagjai..
-unix_user=Unix felhasználó..
 unix_who=Felhasználó vagy csoport
-unix_to=Mint Webmin felhasználó
 unix_ecannot=Önnek nincs joga beállítani a Unix felhasználók azonosítását
 unix_epam=Unix azonosítás nincs telepítve, vagy a <tt>Authen::PAM</tt> Perl modul nincs installálva vagy nem működik helyesen.
 unix_all=Minden Unix felhasználónak engedélyezve
@@ -283,13 +271,6 @@ hide_clone=(Klón $1)
 
 switch_euser=Önnek ninc joga átváltani erre a felhasználóra
 switch_eold=Meglévő folyamatot nem találom!
-
-rbac_title=RBAC beállítása
-rbac_desc=A webmin RBAC integráció segítségével Ön hozzá tud kapcsolódni és fel tudja használni az RBAC (Jogosultság bázisú hozzáférési kontroll) adatbázist, ahelyett, hogy a Webmin saját ACL rendszerét használná. Miután az RBAC engedélyezve lett, bármelyik felhasználó aki <b>$edit_rbacdeny1</b> beállítást kiváalsztotta kontrollálni tudja, hogy az RBAC -t használja a Webmin sdaját jogosultsági rendszere helyett.
-rbac_esolaris=RBAC csak a Solaris rendszereket támogatja jelenleg, ezért az Ön rendszerében $1 nem használható.
-rbac_eperl=A Perl modul $1 szükséges az RBAC integrációhoz, de nem lett installálva. <a href='$2'>Kattintson ide</a>, hogyha telepíteni szeretné.
-rbac_ecpan=Önnek nincs joga hozzáférni a Webmin Perl modul oldalhoz, hogy a megfelelő modult $1 telepítse a RBAC integrációhoz.
-rbac_ok=RBAC integráció létezik az Ön rendszerében, és engedélyezni lehet a per felhasználó bázisú használatát a Webmin felhasználó szerkesztése oldalon.
 
 udeletes_err=Nem sikerült a felhasználó törlése.
 udeletes_enone=Nem lett kiválasztva

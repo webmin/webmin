@@ -1,4 +1,5 @@
 index_screate=Opret en ny sikker bruger.
+index_twofactor_enabled=Tofaktorgodkendelse er aktiveret for denne bruger
 
 edit_title3=Opret sikker webmin-bruger
 edit_email=Kontakt e-mail
@@ -20,6 +21,17 @@ log_forgot_admin=Admin sendte en e-mail med nulstilling af adgangskode for bruge
 
 sync_modify=Omdøb den matchende Webmin-bruger, når en Unix-bruger omdøbes.
 
+unix_desc=Denne side giver Unix- og mappebaserede brugere, såvel som PAM-kun-brugere, mulighed for at logge ind uden at oprette en separat Webmin-konto for hver bruger. Hvert login modtager adgangsrettighederne og bruger den tilknyttede Webmin-brugers godkendelsesmetoder.
+unix_def=Tillad kun Webmin-brugere at logge ind
+unix_sel=Tillad de brugere og grupper, der er kortlagt nedenfor, at logge ind
+unix_group=Medlemmer af gruppen
+unix_user=Unix-bruger
+unix_to=Tilknyttet Webmin-bruger
+unix_mapdesc=Den valgte Webmin-bruger angiver både adgangsrettigheder og godkendelsesmetoden. For at godkende det oprindelige brugernavn via PAM, SSSD eller systemets adgangskodedatabase skal du vælge en Webmin-bruger, der er konfigureret til <b>Unix-godkendelse</b>. Hvis den valgte bruger har en Webmin-adgangskode, bruger alle matchende logins i stedet den delte adgangskode.
+unix_webminpass=Webmin-adgangskode
+unix_utable=Login-tilknytninger
+
+sessions_login_ago=Sidst aktiv siden
 sessions_all=Alle sessioner..
 sessions_action=Handlinger
 
@@ -29,6 +41,16 @@ sql_timeout_def=Brug standardforbindelse timeout (60 sekunder)
 sql_timeout_for=Luk cachelagrede forbindelser efter
 sql_timeout_secs=sekunder
 sql_etimeout=Timeout for cachelagret forbindelse skal være et tal
+
+twofactor_testdesc=Før du logger ud, kan du teste din nye opsætning af tofaktorgodkendelse her ved at indtaste en token. Hvis det af en eller anden grund ikke virker, skal du slå tofaktorgodkendelse fra og prøve at konfigurere det igen.
+twofactor_testfield=To-faktor token
+twofactor_test=Valider token
+twofactor_terr=Kunne ikke teste tofaktoropsætningen
+twofactor_etestuser=Login har ikke to-faktor-funktion aktiveret!
+twofactor_testing=Test af tofaktorvalidering med $1 ..
+twofactor_testfailed=.. testen mislykkedes! Måske blev der indtastet et forkert token, eller din godkendelsesapp er ikke konfigureret korrekt?
+twofactor_testok=... test bestået! Du kan nu sikkert logge ind med tofaktorgodkendelse.
+twofactor_testdis=Deaktiver tofaktorfunktion nu
 
 forgot_title=Send link til nulstilling af adgangskode
 forgot_err=Kunne ikke sende link til nulstilling af adgangskode

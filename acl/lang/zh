@@ -22,7 +22,6 @@ index_modgroups=工作组 $1 的模块
 index_sync=配置 Unix 用户同步
 index_unix=配置 Unix 用户的验证
 index_sessions=查看登陆 Sessions
-index_rbac=设置 RBAC
 index_delete=删除已选
 index_joingroup=添加到群组:
 index_eulist=未能列出用户 : $1
@@ -91,9 +90,6 @@ edit_hide=隐藏未使用
 edit_switch=切换到用户
 edit_return=Webmin 用户
 edit_return2=Webmin 群组
-edit_rbacdeny=RBAC 访问模式
-edit_rbacdeny0=RBAC 仅控制选定的模块 ACLs
-edit_rbacdeny1=RBAC 控制所有模块和ACLs
 edit_global=所有模块的权限
 edit_templock=暂时锁定
 edit_temppass=下次登录时强制更改
@@ -179,8 +175,6 @@ acl_title3=$2 中的 $1 工作组
 acl_options=$1 访问控制选项
 acl_config=是否可以编辑模块配置？
 acl_reset=重置为完全访问权限
-acl_rbac=从RBAC获取访问控制设置？
-acl_rbacyes=是（覆盖以下设置）
 
 acl_uall=所有用户
 acl_uthis=此用户
@@ -312,15 +306,9 @@ sync_ecannot=您没有配置用户同步的权限。
 
 unix_title=Unix 用户验证
 unix_err=保存Unix身份验证失败
-unix_desc=您可以在该页配置 Webmin 使用系统用户列表和 PAM 验证登录。如果您有许多想要授予访问 Webmin 的 Unix 用户，这个方法就会很有用。
-unix_def=只允许 Webmin 用户登录
-unix_sel=允许下面列出的Unix用户登录。。
 unix_mode=允许
 unix_mall=全部用户
-unix_group=群组成员..
-unix_user=允许任何 Unix 用户以右列用户的权限登录：
 unix_who=用户或群组
-unix_to=作为 Webmin 用户
 unix_ecannot=您没有配置 Unix 用户验证的权限
 unix_epam=没有安装 <tt>Authen::PAM</tt> Perl 或者该系统没有正常运行，Unix 验证不可用。
 unix_all=允许任何 Unix 用户
@@ -341,7 +329,6 @@ unix_pamany=将仅通过PAM验证的登录视为 $1
 unix_esudo=命令 $1 未安装
 unix_esudomod=未安装身份验证所需的Perl模块 $1 需要 <tt>sudo</tt>
 unix_header=Unix 用户认证设置
-unix_utable=允许 Unix 用户
 
 sessions_title=当前登陆会话
 sessions_id=会话 ID
@@ -370,13 +357,6 @@ hide_clone=(克隆 $1)
 
 switch_euser=不允许您切换到此用户
 switch_eold=找不到现有会话！
-
-rbac_title=设置 RBAC
-rbac_desc=Webmin的 RBAC 集成提供了一种从RBAC（基于角色的访问控制）数据库而不是Webmin自己的配置文件中确定用户模块和ACL权限的方法。启用RBAC支持后，任何使用 <b>RBAC 控制所有模块并选择 ACLs</b> 选项的用户，其能力将由RBAC决定，而不是由Webmin自己的访问控制设置决定.
-rbac_esolaris=RBAC 目前仅在Solaris上受支持， 因此不能在 $1 系统上使用.
-rbac_eperl=RBAC集成所需的Perl模块$1 尚未安装. <a href='$2'>单击此处</a> 立即安装.
-rbac_ecpan=安装 RBAC 所需要的 Webmin的 Perl 的模块 $1 页面您无权访问 .
-rbac_ok=RBAC 集成在此系统上可用, 可以在编辑 Webmin 用户页面上按用户启用。.
 
 udeletes_err=删除用户失败
 udeletes_jerr=无法将用户添加到组

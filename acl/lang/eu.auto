@@ -1,6 +1,7 @@
 index_title=Webmin erabiltzaileak
 index_screate=Sortu erabiltzaile segurua.
 index_twofactor=Bi faktoreen autentikazioa
+index_twofactor_enabled=Bi faktoreko autentifikazioa gaituta dago erabiltzaile honetarako
 index_joingroup=Taldeari gehitu:
 index_eulist=Ezin izan da erabiltzaileak zerrendatu: $1
 index_eglist=Huts egin du taldeen zerrendak: $1
@@ -60,10 +61,19 @@ convert_users=Erabiltzaileak bihurtzeko
 sync_when=Noiz sinkronizatu
 sync_modify=Berrizendatu bat datorren Webmin erabiltzaileari Unix erabiltzaileari izena aldatzen zaionean.
 
+unix_desc=Orrialde honek Unix eta direktorioetan oinarritutako erabiltzaileei, baita PAM soilik duten erabiltzaileei ere, saioa hasteko aukera ematen die erabiltzaile bakoitzarentzat Webmin kontu bereizi bat sortu gabe. Saioa hasteko bakoitzak sarbide eskubideak jasotzen ditu eta mapatutako Webmin erabiltzailearen autentifikazio metodoa erabiltzen du.
+unix_def=Webmin erabiltzaileei bakarrik saioa hasteko baimena eman
+unix_sel=Baimendu behean mapatutako erabiltzaile eta taldeei saioa hastea
+unix_group=Taldeko kideak
+unix_user=Unix erabiltzailea
+unix_to=Mapeatutako Webmin erabiltzailea
+unix_mapdesc=Hautatutako Webmin erabiltzaileak sarbide-eskubideak eta autentifikazio-metodoa ematen ditu. Jatorrizko erabiltzaile-izena PAM, SSSD edo sistemaren pasahitzen datu-basearen bidez autentifikatzeko, hautatu <b>Unix autentifikaziorako</b> konfiguratutako Webmin erabiltzaile bat. Hautatutako erabiltzaileak Webmin pasahitza badu, saio-hasiera guztiek pasahitz partekatu hori erabiliko dute.
+unix_webminpass=Webmin pasahitza
 unix_restrict2=Murrizketa osagarriak
 unix_header=Unix erabiltzailearen autentifikazio ezarpenak
-unix_utable=Onartutako Unix erabiltzaileak
+unix_utable=Saioa hasteko mapaketak
 
+sessions_login_ago=Azken jarduera duela gutxi
 sessions_actions=Ekintzak..
 sessions_all=Saio guztiak..
 sessions_logouts=Erakutsi itxitako saioak ere..
@@ -162,6 +172,15 @@ twofactor_failed=.. matrikulazioak huts egin du: $1
 twofactor_done=.. osatu. Hornitzaile honen IDa <tt>$1</tt> da.
 twofactor_setup=Bi faktoreen autentikazioa ez da gaituta oraindik sistema honetan, baina <a href='$1'>Webmin Konfigurazioa</a> modulua erabilita aktibatu daiteke.
 twofactor_ebutton=Ez da botoia sakatu!
+twofactor_testdesc=Saioa itxi aurretik, bi faktoreko autentifikazio konfigurazio berria hemen probatu dezakezu token bat sartuz. Arrazoiren batengatik funtzionatzen ez badu, desaktibatu bi faktoreko autentifikazioa eta saiatu berriro konfiguratzen.
+twofactor_testfield=Bi faktoreko tokena
+twofactor_test=Balioztatu tokena
+twofactor_terr=Bi faktoreko konfigurazioa probatzea huts egin da
+twofactor_etestuser=Saioa hasteko bi faktoreko aukera ez dago gaituta!
+twofactor_testing=Bi faktoreko balidazioa $1-rekin probatzen ..
+twofactor_testfailed=... probak huts egin du! Agian token okerra sartu da edo zure autentifikazio aplikazioa ez dago behar bezala konfiguratuta?
+twofactor_testok=... proba gainditu da! Orain segurtasunez saioa hasi dezakezu bi faktoreko autentifikazioa erabiliz.
+twofactor_testdis=Desgaitu Bi Faktoreko Aukera Orain
 
 forgot_title=Pasahitza berrezartzeko esteka bidali
 forgot_err=Pasahitza berrezartzeko esteka bidaltzea huts egin da

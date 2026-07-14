@@ -2,6 +2,7 @@ index_screate=Crie um novo usuário seguro.
 index_convert=Conversão Unix para usuários Webmin
 index_cert=Solicitar um certificado SSL
 index_twofactor=Autenticação de dois fatores
+index_twofactor_enabled=A autenticação de dois fatores está ativada para este usuário
 index_certmsg=Clique neste botão para solicitar um certificado SSL que permitirá que você efetue login com segurança no Webmin sem precisar digitar um nome de usuário e senha.
 index_none=Nenhum
 index_edit=ACL do módulo de edição:
@@ -17,7 +18,6 @@ index_modgroups=Módulos do grupo $1
 index_sync=Configurar sincronização de usuário Unix
 index_unix=Configurar autenticação de usuário Unix
 index_sessions=Exibir sessões de login
-index_rbac=Configurar RBAC
 index_delete=Excluir selecionado
 index_joingroup=Adicionar ao grupo:
 index_eulist=Falha ao listar usuários: $1
@@ -79,9 +79,6 @@ edit_switch=Mudar para usuário
 edit_forgot=Enviar link para redefinição de senha
 edit_return=Usuário Webmin
 edit_return2=Grupo Webmin
-edit_rbacdeny=Modo de acesso RBAC
-edit_rbacdeny0=O RBAC controla apenas as ACLs do módulo selecionado
-edit_rbacdeny1=O RBAC controla todos os módulos e ACLs
 edit_global=Permissões para todos os módulos
 edit_templock=Temporariamente trancado
 edit_temppass=Forçar alteração no próximo login
@@ -160,8 +157,6 @@ cert_etempdir=Arquivo de certificado inválido
 
 acl_title3=Para o grupo $1 em $2
 acl_reset=Redefinir para acesso total
-acl_rbac=Obter configurações de controle de acesso do RBAC?
-acl_rbacyes=Sim (substitui as configurações abaixo)
 
 acl_uall=Todos os usuários
 acl_uthis=Este usuário
@@ -297,15 +292,17 @@ sync_ecannot=Você não tem permissão para configurar a sincronização do usu�
 
 unix_title=Autenticação de Usuário Unix
 unix_err=Falha ao salvar a autenticação Unix
-unix_desc=Esta página permite configurar o Webmin para validar tentativas de login na lista de usuários do sistema e no PAM. Isso pode ser útil se você tiver um grande número de usuários Unix existentes aos quais deseja dar acesso ao Webmin.
-unix_def=Permitir apenas que usuários do Webmin efetuem login
-unix_sel=Permita que os usuários Unix listados abaixo façam login.
+unix_desc=Esta página permite que usuários de Unix e sistemas com diretórios, bem como usuários que utilizam apenas PAM, façam login sem precisar criar uma conta Webmin separada para cada usuário. Cada login recebe os direitos de acesso e utiliza o método de autenticação do usuário Webmin mapeado.
+unix_def=Permitir que apenas usuários do Webmin façam login
+unix_sel=Permita que os usuários e grupos mapeados abaixo façam login
 unix_mode=Permitir
 unix_mall=Todos os usuários
-unix_group=Membros do grupo..
-unix_user=Usuário Unix..
+unix_group=Membros do grupo
+unix_user=usuário Unix
 unix_who=Usuário ou Grupo
-unix_to=Como usuário do Webmin
+unix_to=Usuário Webmin mapeado
+unix_mapdesc=O usuário Webmin selecionado fornece tanto os direitos de acesso quanto o método de autenticação. Para autenticar o nome de usuário original por meio do PAM, SSSD ou do banco de dados de senhas do sistema, selecione um usuário Webmin configurado para <b>autenticação Unix</b>. Se o usuário selecionado tiver uma senha Webmin, todos os logins correspondentes usarão essa senha compartilhada.
+unix_webminpass=Senha do Webmin
 unix_ecannot=Você não tem permissão para configurar a autenticação de usuário Unix
 unix_epam=A autenticação Unix não está disponível, pois o módulo Perl <tt>Authen::PAM</tt> não está instalado ou não está funcionando corretamente.
 unix_all=Permitir todos os usuários Unix
@@ -326,11 +323,12 @@ unix_pamany=Trate logins que somente passam na validação do PAM como $1
 unix_esudo=O comando $1 não está instalado
 unix_esudomod=O módulo Perl $1 necessário para a autenticação <tt>sudo</tt> não está instalado
 unix_header=Configurações de autenticação de usuário Unix
-unix_utable=Usuários Unix permitidos
+unix_utable=Mapeamentos de login
 
 sessions_title=Sessões de login atuais
 sessions_id=Identificação de sessão
 sessions_user=Usuário Webmin
+sessions_login_ago=Última atividade há
 sessions_login=Ativo pela última vez às
 sessions_host=endereço de IP
 sessions_lview=Ver registros..
@@ -355,13 +353,6 @@ hide_clone=(Clone $1 )
 
 switch_euser=Você não tem permissão para mudar para este usuário
 switch_eold=Sessão existente não encontrada!
-
-rbac_title=Configurar RBAC
-rbac_desc=A integração RBAC do Webmin fornece uma maneira de determinar as permissões do módulo do usuário e da ACL a partir de um banco de dados RBAC (Role Based Access Control), em vez dos arquivos de configuração do Webmin. Quando o suporte ao RBAC estiver ativado, qualquer usuário para quem a opção <b>RBAC controla todos os módulos e ACLs</b> for selecionada terá seus recursos determinados pelo RBAC em vez das configurações de controle de acesso do Webmin.
-rbac_esolaris=O RBAC é suportado apenas no Solaris no momento e, portanto, não pode ser usado neste sistema $1.
-rbac_eperl=O módulo Perl $1 necessário para a integração do RBAC não está instalado. <a href='$2'>Clique aqui</a> para instalá-lo agora.
-rbac_ecpan=Você não tem acesso à página Perl Modules do Webmin para instalar o módulo $1 necessário para a integração do RBAC.
-rbac_ok=A integração do RBAC está disponível neste sistema e pode ser ativada por usuário na página Editar Usuário Webmin.
 
 udeletes_err=Falha ao excluir usuários
 udeletes_jerr=Falha ao adicionar usuários ao grupo
@@ -491,6 +482,15 @@ twofactor_failed=.. inscrição falhou: $1
 twofactor_done=.. completo. Seu ID com este provedor é <tt>$1</tt>.
 twofactor_setup=A autenticação de dois fatores ainda não foi ativada neste sistema, mas pode ser ativada usando o módulo <a href='$1'>Webmin Configuration</a>.
 twofactor_ebutton=Nenhum botão clicou!
+twofactor_testdesc=Antes de sair, você pode testar sua nova configuração de autenticação de dois fatores aqui, inserindo um token. Se, por algum motivo, não funcionar, desative a autenticação de dois fatores e tente configurá-la novamente.
+twofactor_testfield=Token de dois fatores
+twofactor_test=Validar token
+twofactor_terr=Falha ao testar a configuração de autenticação de dois fatores
+twofactor_etestuser=O login não possui autenticação de dois fatores ativada!
+twofactor_testing=Testando a validação de dois fatores com $1 ..
+twofactor_testfailed=... o teste falhou! Talvez o token inserido esteja incorreto ou seu aplicativo de autenticação não esteja configurado corretamente?
+twofactor_testok=Teste aprovado! Agora você pode fazer login com segurança usando a autenticação de dois fatores.
+twofactor_testdis=Desative a autenticação de dois fatores agora
 
 forgot_title=Enviar link para redefinição de senha
 forgot_err=Falha ao enviar link para redefinição de senha
