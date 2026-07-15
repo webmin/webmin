@@ -14763,10 +14763,15 @@ my %miniserv;
 my $webprefix = &get_webprefix();
 &get_miniserv_config(\%miniserv);
 my $trust_proxy = $miniserv{'trust_real_ip'};
+my $linked_server_request = $ENV{'HTTP_WEBMIN_PATH'};
+my $redirect_port_conf = $miniserv{'redirect_port'};
+$redirect_port_conf = undef if ($linked_server_request);
 my $default_ws_proto = lc($ENV{'HTTPS'}) eq 'on' ? 'wss' : 'ws';
 my $ws_proto;
-# Match the canonical redirect scheme when one has been configured.
-if ($miniserv{'redirect_ssl'} ne '') {
+# Match the canonical redirect scheme when one has been configured. Linked
+# server responses are rewritten by the parent, so they must retain the child
+# connection scheme and authority that the parent recognizes.
+if (!$linked_server_request && $miniserv{'redirect_ssl'} ne '') {
 	$ws_proto = $miniserv{'redirect_ssl'} ? 'wss' : 'ws';
 	}
 # Match the public browser scheme when Webmin is behind a trusted reverse
@@ -14785,6 +14790,38 @@ $ws_proto = lc($ws_proto);
 $ws_proto = 'wss' if ($ws_proto eq 'https');
 $ws_proto = 'ws' if ($ws_proto eq 'http');
 $ws_proto = $default_ws_proto if ($ws_proto ne 'wss' && $ws_proto ne 'ws');
+# Formats a host with the configured public port, replacing any port already
+# present on a request or proxy host. Explicit WebSocket and caller hosts
+# bypass this.
+my $format_hostport = sub {
+	my ($authority, $redirect_port) = @_;
+	return $authority if (!$authority);
+	# A non-numeric configured port is treated as unset, so a malformed
+	# value can never reach the returned URL.
+	$redirect_port = undef if (defined($redirect_port) &&
+				   $redirect_port !~ /^\d+$/);
+	# check_ip6address also accepts short hexadecimal strings. An unbracketed
+	# authority needs at least two colons to have the shape of an IPv6 address.
+	my $is_ip6 = $authority =~ /:.*:/ && &check_ip6address($authority);
+	if (!$redirect_port) {
+		$authority = "[".$authority."]"
+			if ($is_ip6);
+		return $authority;
+		}
+	if ($authority =~ /^\[([^\]]+)\](?::\d+)?$/) {
+		$authority = $1;
+		$is_ip6 = 1;
+		}
+	elsif (!$is_ip6) {
+		$authority =~ s/:\d+$//;
+		}
+	$authority = "[".$authority."]"
+		if ($is_ip6);
+	my $portstr = !($redirect_port == 80 && $ws_proto eq 'ws') &&
+		!($redirect_port == 443 && $ws_proto eq 'wss') ?
+		":".$redirect_port : "";
+	return $authority.$portstr;
+	};
 my $wspath = $path || "/$module/ws-".$port;
 # If the caller already generated the token, use it directly; otherwise fall
 # back to reading the token stored for the normal allocated websocket route.
@@ -14792,8 +14829,9 @@ if (!defined($wstoken) && $miniserv{'websockets_'.$wspath} &&
     $miniserv{'websockets_'.$wspath} =~ /\btoken=(\S+)/) {
 	$wstoken = $1;
 	}
-my $http_host_conf = &trim($miniserv{'websocket_host'} || $host);
-# Prefer the explicit websocket host when configured
+my $http_host_conf = $linked_server_request ? undef :
+			&trim($miniserv{'websocket_host'} || $host);
+# Prefer the explicit websocket host for direct browser requests
 if ($http_host_conf) {
 	if ($http_host_conf !~ /^wss?:\/\//) {
 		$http_host_conf = "$ws_proto://$http_host_conf";
@@ -14801,25 +14839,34 @@ if ($http_host_conf) {
 	$http_host_conf =~ s/[\/]+$//g;
 	}
 # Otherwise use the canonical redirect host and port when configured
-if (!$http_host_conf && $miniserv{'redirect_host'}) {
-	my $redirect_host = $miniserv{'redirect_host'};
-	my $redirect_port = $miniserv{'redirect_port'};
-	my $port = $redirect_port &&
-		!($redirect_port == 80 && $ws_proto eq 'ws') &&
-		!($redirect_port == 443 && $ws_proto eq 'wss') ?
-		":".$redirect_port : "";
-	$redirect_host = "[".$redirect_host."]" if (&check_ip6address($redirect_host));
-	$http_host_conf = "$ws_proto://$redirect_host$port";
+if (!$http_host_conf && !$linked_server_request &&
+    $miniserv{'redirect_host'}) {
+	my $redirect_host = &$format_hostport($miniserv{'redirect_host'},
+					       $redirect_port_conf);
+	$http_host_conf = "$ws_proto://$redirect_host";
 	}
 # Otherwise use trusted proxy headers when available
 if ($trust_proxy && !defined($http_host_conf)) {
-	my $forwarded_host = $ENV{'HTTP_X_FORWARDED_HOST'};
+	# A multi-proxy chain can send a comma-separated list; use the first
+	# entry, matching the X-Forwarded-Proto handling above.
+	my $forwarded_host = (split(/\s*,\s*/,
+				    $ENV{'HTTP_X_FORWARDED_HOST'}))[0];
 	if ($forwarded_host) {
+		$forwarded_host = &$format_hostport(
+			$forwarded_host, $redirect_port_conf)
+			if ($redirect_port_conf);
 		$http_host_conf = "$ws_proto://$forwarded_host";
 		$http_host_conf =~ s/[\/]+$//g;
 		}
 	}
-my $http_host = $http_host_conf || "$ws_proto://$ENV{'HTTP_HOST'}";
+my $http_host = $http_host_conf;
+if (!$http_host) {
+	my $request_host = $ENV{'HTTP_HOST'};
+	$request_host = &$format_hostport(
+		$request_host, $redirect_port_conf)
+		if ($redirect_port_conf);
+	$http_host = "$ws_proto://$request_host";
+	}
 $http_host .= $webprefix if ($webprefix);
 my $url = "$http_host$wspath";
 $url .= "?token=".&urlize($wstoken) if ($wstoken);
