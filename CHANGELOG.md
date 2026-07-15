@@ -11,6 +11,7 @@
 * Fix APT package architecture suffix handling to avoid false package update failure reports
 * Fix missing Maildir folders to be counted as empty in Mailboxes module
 * Fix Postfix version comparisons to handle version strings safely
+* Fix SELinux labeling for Webmin runtime data
 * Update the Authentic theme to the latest version with various improvements:
   - Fix inconsistent gaps around rounded UI elements
   - Fix CPU usage values exceeding 100% in the dashboard
