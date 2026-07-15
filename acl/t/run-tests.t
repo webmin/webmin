@@ -252,7 +252,7 @@ ok(defined &list_acl_yesno_fields, 'acl_security.pl loaded list_acl_yesno_fields
     my (%default_acl, %safe_acl);
     read_file("$rootdir/defaultacl", \%default_acl);
     read_file("$rootdir/safeacl", \%safe_acl);
-    is($default_acl{'download_address_mode'}, 'public',
+    is($default_acl{'download_address_mode'}, 'all',
        'global default ACL defines the download address mode');
     is($safe_acl{'download_address_mode'}, 'public',
        'global safe ACL defines the download address mode');
