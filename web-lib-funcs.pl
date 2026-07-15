@@ -14765,9 +14765,13 @@ my $webprefix = &get_webprefix();
 my $trust_proxy = $miniserv{'trust_real_ip'};
 my $default_ws_proto = lc($ENV{'HTTPS'}) eq 'on' ? 'wss' : 'ws';
 my $ws_proto;
+# Match the canonical redirect scheme when one has been configured.
+if ($miniserv{'redirect_ssl'} ne '') {
+	$ws_proto = $miniserv{'redirect_ssl'} ? 'wss' : 'ws';
+	}
 # Match the public browser scheme when Webmin is behind a trusted reverse
 # proxy, but only allow websocket schemes into the returned URL.
-if ($trust_proxy && $ENV{'HTTP_X_FORWARDED_PROTO'}) {
+if (!$ws_proto && $trust_proxy && $ENV{'HTTP_X_FORWARDED_PROTO'}) {
 	$ws_proto = (split(/\s*,\s*/, $ENV{'HTTP_X_FORWARDED_PROTO'}))[0];
 	$ws_proto =~ s/^\s+|\s+$//g;
 	}
@@ -14795,6 +14799,17 @@ if ($http_host_conf) {
 		$http_host_conf = "$ws_proto://$http_host_conf";
 		}
 	$http_host_conf =~ s/[\/]+$//g;
+	}
+# Otherwise use the canonical redirect host and port when configured
+if (!$http_host_conf && $miniserv{'redirect_host'}) {
+	my $redirect_host = $miniserv{'redirect_host'};
+	my $redirect_port = $miniserv{'redirect_port'};
+	my $port = $redirect_port &&
+		!($redirect_port == 80 && $ws_proto eq 'ws') &&
+		!($redirect_port == 443 && $ws_proto eq 'wss') ?
+		":".$redirect_port : "";
+	$redirect_host = "[".$redirect_host."]" if (&check_ip6address($redirect_host));
+	$http_host_conf = "$ws_proto://$redirect_host$port";
 	}
 # Otherwise use trusted proxy headers when available
 if ($trust_proxy && !defined($http_host_conf)) {
