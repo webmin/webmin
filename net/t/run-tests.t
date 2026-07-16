@@ -964,4 +964,89 @@ is_deeply(\@commands,
 	    "cd / ; ifconfig eth0.10 10\\.0\\.0\\.2 netmask 255\\.255\\.255\\.0 up 2>&1" ],
 	  "Linux VLAN interface falls back to vconfig without ip");
 
+# Test: Bond deactivation only brings it down, does not delete device
+@commands = ( );
+{
+no warnings 'redefine';
+local *main::has_command = sub {
+	return $_[0] eq "ip" ? "/sbin/ip" : undef;
+	};
+main::deactivate_interface({
+	'name' => 'bond0',
+	'fullname' => 'bond0',
+	'virtual' => '',
+	'address' => '10.0.0.2',
+	'netmask' => '255.255.255.0',
+	'address6' => [ ],
+	'netmask6' => [ ],
+	'up' => 1
+	});
+}
+is_deeply(\@commands, [
+	"ip addr del 10\\.0\\.0\\.2\\/24 dev bond0 2>&1",
+	"ip link set dev bond0 down 2>&1"
+	], "Linux bond deactivation removes address and brings link down");
+
+# Test: Bond deletion removes virtual device after deactivation
+@commands = ( );
+{
+no warnings 'redefine';
+no warnings 'once';
+local $main::gconfig{'os_type'} = 'debian-linux';
+local $main::gconfig{'os_version'} = 12;
+local *main::has_command = sub {
+	return $_[0] eq "ip" ? "/sbin/ip" :
+	       $_[0] eq "ifup" ? "/sbin/ifup" : undef;
+	};
+main::deactivate_interface({
+	'name' => 'bond0',
+	'fullname' => 'bond0',
+	'virtual' => '',
+	'address' => '10.0.0.2',
+	'netmask' => '255.255.255.0',
+	'address6' => [ ],
+	'netmask6' => [ ],
+	'up' => 1
+	});
+# Simulate delete path: destroy_interface_device after deactivation
+my $b = { 'name' => 'bond0', 'fullname' => 'bond0', 'virtual' => '' };
+main::destroy_interface_device($b);
+}
+is_deeply(\@commands, [
+	"ip addr del 10\\.0\\.0\\.2\\/24 dev bond0 2>&1",
+	"ip link set dev bond0 down 2>&1",
+	"ip link delete bond0 2>&1"
+	], "Linux bond deletion removes device after deactivation");
+
+# Test: VLAN deletion removes virtual device after deactivation
+@commands = ( );
+{
+no warnings 'redefine';
+no warnings 'once';
+local $main::gconfig{'os_type'} = 'debian-linux';
+local $main::gconfig{'os_version'} = 12;
+local *main::has_command = sub {
+	return $_[0] eq "ip" ? "/sbin/ip" :
+	       $_[0] eq "ifup" ? "/sbin/ifup" : undef;
+	};
+main::deactivate_interface({
+	'name' => 'eth0.10',
+	'fullname' => 'eth0.10',
+	'virtual' => '',
+	'address' => '10.0.10.2',
+	'netmask' => '255.255.255.0',
+	'address6' => [ ],
+	'netmask6' => [ ],
+	'up' => 1
+	});
+# Simulate delete path: destroy_interface_device after deactivation
+my $b = { 'name' => 'eth0.10', 'fullname' => 'eth0.10', 'virtual' => '' };
+main::destroy_interface_device($b);
+}
+is_deeply(\@commands, [
+	"ip addr del 10\\.0\\.10\\.2\\/24 dev eth0\\.10 2>&1",
+	"ip link set dev eth0\\.10 down 2>&1",
+	"ip link delete eth0\\.10 2>&1"
+	], "Linux VLAN deletion removes device after deactivation");
+
 done_testing();

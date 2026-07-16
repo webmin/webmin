@@ -32,6 +32,10 @@ if ($in{'delete'} || $in{'unapply'}) {
 			else {
 				&deactivate_interface($act);
 				}
+			# Remove the virtual device after deactivation
+			if (defined(&destroy_interface_device)) {
+				&destroy_interface_device($b);
+				}
 			}
 
 		}
