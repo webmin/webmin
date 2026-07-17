@@ -12,6 +12,7 @@
 * Fix missing Maildir folders to be counted as empty in Mailboxes module
 * Fix Postfix version comparisons to handle version strings safely
 * Fix SELinux labeling for Webmin runtime data
+* Fix LVM resizing to grow eligible partition-backed physical volumes into adjacent free disk space and handle unchanged logical volume sizes correctly
 * Update the Authentic theme to the latest version with various improvements:
   - Fix inconsistent gaps around rounded UI elements
   - Fix CPU usage values exceeding 100% in the dashboard

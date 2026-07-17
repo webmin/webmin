@@ -151,9 +151,56 @@ return $? ? $out : undef;
 # Set the size of a physical volume to match the underlying device
 sub resize_physical_volume
 {
-local $cmd = "pvresize ".quotemeta($_[0]->{'device'});
+local ($pv) = @_;
+local $cmd = "pvresize ".quotemeta($pv->{'device'});
 local $out = &backquote_logged("$cmd 2>&1");
-return $? ? $out : undef;
+return $out if ($?);
+
+# If the PV did not change, its partition may have adjacent free space
+return undef if (!defined($pv->{'pe_total'}));
+local ($newpv) = grep { $_->{'device'} eq $pv->{'device'} }
+		     &list_physical_volumes($pv->{'vg'});
+return undef if (!$newpv || !defined($newpv->{'pe_total'}) ||
+		 $newpv->{'pe_total'} != $pv->{'pe_total'});
+local ($grew, $err) = &grow_physical_volume_partition($pv);
+return $err if ($err);
+if ($grew) {
+	$out = &backquote_logged("$cmd 2>&1");
+	return $out if ($?);
+	}
+return undef;
+}
+
+# grow_physical_volume_partition(&pv)
+# Grow a partition-backed PV into adjacent free disk space, if possible
+sub grow_physical_volume_partition
+{
+local ($pv) = @_;
+return (0, undef) if (!&has_command("growpart"));
+local $pvdev = &simplify_path(&resolve_links($pv->{'device'}));
+local ($disk, $part);
+DISK: foreach $d (&fdisk::list_disks_partitions()) {
+	foreach $p (@{$d->{'parts'}}) {
+		local $pdev = &simplify_path(&resolve_links($p->{'device'}));
+		if ($pvdev eq $pdev &&
+		    $p->{'number'} =~ /^\d+$/) {
+			$disk = $d;
+			$part = $p;
+			last DISK;
+			}
+		}
+	}
+return (0, undef) if (!$disk);
+
+# Only modify the partition when growpart confirms that it can be enlarged
+local $cmd = "growpart -N ".quotemeta($disk->{'device'})." ".
+		    quotemeta($part->{'number'});
+&backquote_command("$cmd 2>&1");
+return (0, undef) if ($?);
+$cmd = "growpart ".quotemeta($disk->{'device'})." ".
+	      quotemeta($part->{'number'});
+local $out = &backquote_logged("$cmd 2>&1");
+return $? ? (0, $out) : (1, undef);
 }
 
 # list_volume_groups()
