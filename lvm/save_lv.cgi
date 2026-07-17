@@ -180,7 +180,10 @@ else {
 				$realsize = ($vg->{'pe_total'}*$vg->{'pe_size'})-($vg->{'pe_alloc'}*$vg->{'pe_size'})+$lv->{'size'};
 				}
 
-			if ($in{'sizeconfirm'}) {
+			if ($realsize == $lv->{'size'}) {
+				# No resize is needed
+				}
+			elsif ($in{'sizeconfirm'}) {
 				# Just resize the logical volume
 				$err = &resize_logical_volume($lv, $realsize);
 				&error("<pre>$err</pre>") if ($err);

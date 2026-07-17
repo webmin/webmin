@@ -39,6 +39,13 @@ elsif ($in{'resize'}) {
 	&error_setup($text{'pv_err3'});
 	$err = &resize_physical_volume($pv);
 	&error("<pre>$err</pre>") if ($err);
+	($newpv) = grep { $_->{'device'} eq $pv->{'device'} }
+		     &list_physical_volumes($in{'vg'});
+	if ($newpv && defined($pv->{'pe_total'}) &&
+	    defined($newpv->{'pe_total'}) &&
+	    $newpv->{'pe_total'} == $pv->{'pe_total'}) {
+		&error(&text('pv_enoresize', "<tt>$pv->{'device'}</tt>"));
+		}
 	&webmin_log("resize", "pv", $in{'pv'}, $pv);
 	&redirect("index.cgi?mode=pvs");
 	}

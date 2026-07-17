@@ -170,6 +170,7 @@ pv_resize=Resize To Match Device
 pv_err=Failed to save physical volume
 pv_err2=Failed to remove physical volume
 pv_err3=Failed to resize physical volume
+pv_enoresize=Physical volume $1 is already the size of its underlying device. If the device is a partition, expand the partition first and then resize the physical volume.
 pv_delete=Remove Physical Volume
 pv_rusure=Are you sure you want to remove physical volume device $1 from its volume group? This will result in any data being shifted to other physical volumes within the group.
 pv_deleteok=Remove Volume
