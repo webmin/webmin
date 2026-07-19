@@ -50,7 +50,7 @@ $vers || usage();
 	  "webmin-openrc-init", "run-postinstalls.pl",
 	  "config-lib.pl", "entities_map.txt", "ui-lib.pl",
 	  "password_form.cgi", "password_change.cgi", "pam_login.cgi",
-	  "module_chooser.cgi", "config-windows", "xmlrpc.cgi",
+	  "module_chooser.cgi", "config-windows", "xmlrpc.cgi", "xmlrpc-lib.pl",
 	  "uptracker.cgi", "create-module.pl", "webmin_search.cgi",
 	  "webmin-search-lib.pl", "WebminCore.pm",
 	  "record-login.pl", "record-logout.pl", "record-failed.pl",
