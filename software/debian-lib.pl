@@ -6,6 +6,33 @@ sub list_package_system_commands
 return ("dpkg");
 }
 
+# package_system_busy_internal()
+# Returns 1 if dpkg is locked or has incomplete packages, 0 if it is stable,
+# or undef if lock ownership cannot be checked.
+sub package_system_busy_internal
+{
+my $fuser = &has_command("fuser");
+my $locks_checked = 0;
+if ($fuser) {
+	foreach my $lock ("/var/lib/dpkg/lock-frontend",
+			  "/var/lib/dpkg/lock") {
+		&backquote_command(quotemeta($fuser)." -s ".
+				   quotemeta($lock)." 2>&1", 1);
+		return 1 if (!$?);
+		}
+	$locks_checked = 1;
+	}
+
+# An interrupted transaction can leave packages incomplete after the process
+# holding the lock has exited.
+my $dpkg = &has_command("dpkg");
+return undef if (!$dpkg);
+my $out = &backquote_command(quotemeta($dpkg)." --audit 2>&1", 1);
+return 1 if ($? || $out =~ /\S/);
+
+return $locks_checked ? 0 : undef;
+}
+
 # list_packages([package]*)
 # Fills the array %packages with a list of all packages
 sub list_packages
