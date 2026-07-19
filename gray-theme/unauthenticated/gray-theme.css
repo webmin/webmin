@@ -124,6 +124,7 @@ hr { border: 0;
   color: #D9D9D9;
   background-color: #D9D9D9;
 }
+table.shrinkwrapper table.ui_table td.ui_form_value > table.ui_table,
 table.wrapper, table.shrinkwrapper {
   background-color:#D9D9D9;
   border:1px solid #D9D9D9;
