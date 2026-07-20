@@ -16,7 +16,7 @@ local $arg = @_ ? join(" ", map { quotemeta($_) } @_) : "";
 &open_execute_command(PKGINFO, "COLUMNS=1024 dpkg --list $arg", 1, 1);
 while(<PKGINFO>) {
 	next if (/^\|/ || /^\+/);
-	if (/^[uirph]i..(\S+)\s+(\S+)\s+(.*)/) {
+	if (/^[uirph][iHUFWt]..(\S+)\s+(\S+)\s+(.*)/) {
 		$packages{$i,'name'} = $1;
 		$packages{$i,'class'} = &alphabet_name($1);
 		$packages{$i,'version'} = $2;
@@ -57,11 +57,11 @@ sub package_info
 local ($pkg, $ver) = @_;
 local $qm = quotemeta($pkg);
 
-# First check if it is really installed, and not just known to the package
-# system in some way
+# First check if it is installed or partially installed, and not just known
+# to the package system in some way
 local $out = &backquote_command("dpkg --list $qm 2>&1", 1);
 local @lines = split(/\r?\n/, $out);
-if ($lines[$#lines] !~ /^.[ih]/) {
+if ($lines[$#lines] !~ /^.[iHUFWt]/) {
 	return ( );
 	}
 
