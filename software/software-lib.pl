@@ -300,15 +300,6 @@ if ($rel1 ne "" && $rel2 ne "" && $config{'package_system'} eq 'rpm') {
 return &compare_version_numbers($_[0], $_[1]);
 }
 
-# package_system_busy()
-# Returns 1 if the package system is busy or incomplete, 0 if it is stable,
-# or undef if the current package system cannot determine this.
-sub package_system_busy
-{
-return defined(&package_system_busy_internal) ?
-	&package_system_busy_internal() : undef;
-}
-
 # check_package_system()
 # Returns an error message if some command needed by the selected package
 # management system is missing.
