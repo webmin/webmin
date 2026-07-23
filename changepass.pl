@@ -10,16 +10,10 @@ $cwd =~ s/(.*)\/.*/$1/;
 usage() if (@ARGV != 3);
 
 my ($config, $user, $pass) = @ARGV;
-my $status = system("$cwd/bin/webmin passwd --config $config --user $user --pass $pass");
-if ($status != 0) {
-	if ($! =~ /no such file/i) {
-		print "Error: Webmin CLI command cannot be found\n";
-		}
-	else {
-		print "Error: $!\n";		
-		}
-	}
-exit $status;
+exec "$cwd/bin/webmin", "passwd", "--webmin-only",
+	"--config", $config, "--user", $user, "--pass", $pass;
+print STDERR "Error: Failed to execute Webmin CLI command: $!\n";
+exit 1;
 
 sub usage
 {
