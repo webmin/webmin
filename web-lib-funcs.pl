@@ -14971,8 +14971,7 @@ if (&read_env_file($wconfig, \%wconfig) &&
 	my ($whost) = split(/:/, $ENV{'HTTP_HOST'});
 	my $wurl = ($wminiserv{'ssl'} ? 'https' : 'http').'://'.$whost;
 	if ($wminiserv{'port'} &&
-		$wminiserv{'port'} != 80 &&
-		$wminiserv{'port'} != 443) {
+	    $wminiserv{'port'} != 80 && $wminiserv{'port'} != 443) {
 		$wurl .= ":$wminiserv{'port'}";
 		}
 	$wurl .= $wminiserv{'webprefix'} if ($wminiserv{'webprefix'});
