@@ -149,6 +149,14 @@ div.wrapper {
 .tabUnselected {
   background-color:#D9D9D9;
 }
+.tabUnselected sup,
+.tabSelected sup {
+    vertical-align: text-top;
+    margin-top: -4px;
+    font-size: 70%;
+    display: inline-block;
+    margin-right: -3px;
+}
 .goArrow { margin-bottom: -4px; }
 .ui_checked_columns .ui_checked_checkbox {
   min-width: 20px;
