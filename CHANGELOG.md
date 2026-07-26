@@ -1,5 +1,12 @@
 ## Changelog
 
+#### 2.653 (July 26, 2026)
+* Fix to include missing `xmlrpc-lib.pl` file in the package
+* Fix listing partially installed Debian and derivative packages
+* Update the Authentic theme to the latest version with various improvements:
+  - Add improved support for the upcoming Virtualmin Podman plugin
+  - Fix mail compose panel styling and sizing on initial load in Usermin
+
 #### 2.652 (July 16, 2026)
 * Add a global per-user ACL control to block URL downloads from non-public IP addresses in File Manager, Mailboxes, and Upload and Download modules
 * Fix to recognize hex numeric HTML entities to work in various elements
