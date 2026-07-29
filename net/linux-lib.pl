@@ -486,7 +486,8 @@ if ($a->{'virtual'} eq '' && &has_command("ifconfig")) {
 			  quotemeta($a->{'address6'}->[$i])."/".
 			  quotemeta($a->{'netmask6'}->[$i])." 2>&1";
 		$out = &backquote_logged($cmd);
-		&error("Failed to add IPv6 address with $cmd : $out") if ($?);
+		&error("Failed to add IPv6 address with $cmd : $out")
+			if ($? && $a->{'address6'}->[$i] !~ /^fe80:/);
 		}
 	}
 elsif ($a->{'virtual'} eq '' && &has_command("ip")) {
@@ -509,7 +510,8 @@ elsif ($a->{'virtual'} eq '' && &has_command("ip")) {
 			  quotemeta($a->{'netmask6'}->[$i])." dev ".
 			  quotemeta($devname);
 		$out = &backquote_logged("$cmd 2>&1");
-		&error("Failed to add IPv6 address with $cmd : $out") if ($?);
+		&error("Failed to add IPv6 address with $cmd : $out")
+			if ($? && $a->{'address6'}->[$i] !~ /^fe80:/);
 		}
 	}
 
