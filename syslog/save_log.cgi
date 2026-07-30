@@ -178,12 +178,15 @@ else {
 
 	# Validate destination section
 	if ($in{'mode'} == 0) {
+		my $newfile = !-e($in{'file'});
 		open(FILE, ">>$in{'file'}") ||
 			&error(&text('save_efile', $in{'file'}, $!));
 		close(FILE);
-		my $user = $config{'log_user'} || 'root';
-		my $group = $config{'log_group'};
-		&set_ownership_permissions($user, $group, 644, $in{'file'});
+		if ($newfile) {
+			my $user = $config{'log_user'} || 'root';
+			my $group = $config{'log_group'};
+			&set_ownership_permissions($user, $group, 0644, $in{'file'});
+			}
 		$log->{'file'} = $in{'file'};
 		$log->{'sync'} = $in{'sync'};
 		}
