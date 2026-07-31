@@ -1835,7 +1835,7 @@ return &theme_ui_buttons_end(@_) if (defined(&theme_ui_buttons_end));
 return "</table>\n";
 }
 
-=head2 ui_buttons_row(script, button-label, description, [hiddens], [after-submit], [before-submit], [postmethod], [single-cell])
+=head2 ui_buttons_row(script, button-label, description, [hiddens], [after-submit], [before-submit], [postmethod], [single-cell], [disabled])
 
 Returns HTML for a button with a description next to it, and perhaps other
 inputs. The parameters are :
@@ -1856,23 +1856,26 @@ inputs. The parameters are :
 
 =item single-cell - If set to 1, omits the description cell and spans the button cell across both columns.
 
+=item disabled - If set to 1, disables the submit button.
+
 =cut
 sub ui_buttons_row
 {
 return &theme_ui_buttons_row(@_) if (defined(&theme_ui_buttons_row));
 my ($script, $label, $desc, $hiddens, $after, $before, $postmethod,
-    $singlecell) = @_;
+    $singlecell, $disabled) = @_;
 $postmethod ||= 'post';
 if (ref($hiddens)) {
 	$hiddens = join("\n", map { &ui_hidden(@$_) } @$hiddens);
 	}
 return "<form action='$script' class='ui_buttons_form' method='$postmethod'>\n".
        $hiddens.
-       "<tr class='ui_buttons_row'> ".
+       "<tr class='ui_buttons_row".($disabled ? " disabled" : "")."'> ".
        "<td nowrap".($singlecell ? " colspan='2'" : " width='20%'").
        " valign='top' class='ui_buttons_label'>".
        ($before ? $before." " : "").
-       &ui_submit($label).($after ? " ".$after : "")."</td>\n".
+       &ui_submit($label, '', $disabled).
+       ($after ? " ".$after : "")."</td>\n".
        ($singlecell ? "" :
         "<td width='80%' valign='top' class='ui_buttons_value'>".
         $desc."</td>\n").
