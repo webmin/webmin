@@ -134,6 +134,60 @@ print &ui_table_row($text{'jail_bantime'},
 	&ui_opt_textbox("bantime", $bantime, 6,
 			$text{'default'}." (".$def_bantime.")"));
 
+# Incremental banning options, supported since Fail2Ban 0.11.1
+if (&supports_bantime_increment()) {
+	print &ui_table_hr();
+	print &ui_table_span("<b>".$text{'jail_increment_header'}."</b><br>".
+		&ui_note($text{'jail_increment_desc'}, 0));
+
+	my $def_increment = &canonical_fail2ban_boolean(
+		&find_value("bantime.increment", $def));
+	my $increment = &canonical_fail2ban_boolean(
+		&find_value("bantime.increment", $jail));
+	my $def_increment_text = $def_increment eq "true" ? $text{'yes'} :
+								  $text{'no'};
+	print &ui_table_row($text{'jail_bantime_increment'},
+		&ui_select("bantime_increment", $increment,
+			[ [ "", $text{'default'}." (".$def_increment_text.")" ],
+			  [ "true", $text{'yes'} ],
+			  [ "false", $text{'no'} ] ], 1, 0, 1));
+
+	my $def_factor = &find_value("bantime.factor", $def) || 1;
+	my $factor = &find_value("bantime.factor", $jail);
+	print &ui_table_row($text{'jail_bantime_factor'},
+		&ui_opt_textbox("bantime_factor", $factor, 8,
+			$text{'default'}." (".&html_escape($def_factor).")"));
+
+	my $def_maxtime = &find_value("bantime.maxtime", $def);
+	my $maxtime = &find_value("bantime.maxtime", $jail);
+	my $def_maxtime_text = $def_maxtime ne "" ?
+		&html_escape($def_maxtime) : $text{'jail_nolimit'};
+	print &ui_table_row($text{'jail_bantime_maxtime'},
+		&ui_opt_textbox("bantime_maxtime", $maxtime, 8,
+			$text{'default'}." (".$def_maxtime_text.")"));
+
+	my $def_overalljails = &canonical_fail2ban_boolean(
+		&find_value("bantime.overalljails", $def));
+	my $overalljails = &canonical_fail2ban_boolean(
+		&find_value("bantime.overalljails", $jail));
+	my $def_overalljails_text = $def_overalljails eq "true" ?
+		$text{'yes'} : $text{'no'};
+	print &ui_table_row($text{'jail_bantime_overalljails'},
+		&ui_select("bantime_overalljails", $overalljails,
+			[ [ "", $text{'default'}." (".$def_overalljails_text.")" ],
+			  [ "true", $text{'yes'} ],
+			  [ "false", $text{'no'} ] ], 1, 0, 1));
+
+	my $def_rndtime = &find_value("bantime.rndtime", $def);
+	my $rndtime = &find_value("bantime.rndtime", $jail);
+	my $def_rndtime_text = $def_rndtime ne "" ?
+		&html_escape($def_rndtime) : $text{'jail_none'};
+	print &ui_table_row($text{'jail_bantime_rndtime'},
+		&ui_opt_textbox("bantime_rndtime", $rndtime, 8,
+			$text{'default'}." (".$def_rndtime_text.")"));
+	print &ui_table_hr();
+	}
+
 # IPs to ignore
 my $def_ignoreip = &find_value("ignoreip", $def) || "127.0.0.1";
 my $ignoreip = &find_value("ignoreip", $jail);

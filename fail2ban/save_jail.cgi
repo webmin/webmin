@@ -122,6 +122,19 @@ else {
 			&error($text{'jail_eignoreip'});
 		}
 
+	# Validate incremental banning options when submitted by a supported UI
+	my @increment_fields = ("bantime_increment", "bantime_factor",
+		"bantime_maxtime", "bantime_overalljails", "bantime_rndtime");
+	my $increment_submitted = scalar(grep { exists($in{$_}) }
+		@increment_fields);
+	if ($increment_submitted && !&supports_bantime_increment()) {
+		&error($text{'jail_eincrement_version'});
+		}
+	if ($increment_submitted) {
+		my $err = &validate_bantime_increment_inputs(\%in);
+		&error($text{$err}) if ($err);
+		}
+
 	# Create new section or rename existing if needed
 	&lock_all_config_files();
 	if ($in{'new'}) {
@@ -144,6 +157,8 @@ else {
 		}
 	&save_directive("ignoreip",
 		@ignoreips ? join(" ", @ignoreips) : undef, $jail);
+	&save_bantime_increment_options(\%in, $jail)
+		if ($increment_submitted);
 
 	&unlock_all_config_files();
 	}
