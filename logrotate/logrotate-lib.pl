@@ -32,19 +32,20 @@ return $get_config_parent_cache;
 # Returns a list of logrotate config file entries
 sub get_config
 {
-local $file = $_[0] || $config{'logrotate_conf'};
-if (!$_[0] && $get_config_cache{$file}) {
+my ($argfile) = @_;
+my $file = $argfile || $config{'logrotate_conf'};
+if (!$argfile && $get_config_cache{$file}) {
 	return wantarray ? ( $get_config_cache{$file},
 			     $get_config_lnum_cache{$file},
 			     $get_config_files_cache{$file} )
 			 : $get_config_cache{$file};
 	}
-local @files = ( $file );
-local @rv;
-local $addto = \@rv;
-local $section = undef;
-local $lnum = 0;
-local $fh = "FILE".$file_count++;
+my @files = ( $file );
+my @rv;
+my $addto = \@rv;
+my $section;
+my $lnum = 0;
+my $fh = "FILE".$file_count++;
 open($fh, "<".$file);
 while(<$fh>) {
 	s/\r|\n//g;
@@ -76,12 +77,12 @@ while(<$fh>) {
 		}
 	elsif (/^\s*include\s+(.*)$/i) {
 		# Including other directives files
-		local $incfile = $1;
+		my $incfile = $1;
 		if (-d $incfile) {
 			# Multiple files!
-			local $f;
+			my $f;
 			opendir(DIR, $incfile);
-			local @dirs = sort { $a cmp $b } readdir(DIR);
+			my @dirs = sort { $a cmp $b } readdir(DIR);
 			closedir(DIR);
 			foreach $f (@dirs) {
 				next if ($f =~ /^\./ ||
@@ -90,7 +91,7 @@ while(<$fh>) {
 					 $f =~ /,v$/ ||
 					 $f =~ /\.swp$/ ||
 					 $f =~ /\.lock$/);
-				local ($inc, $ilnum, $ifiles) =
+				my ($inc, $ilnum, $ifiles) =
 					&get_config("$incfile/$f");
 				push(@files, @$ifiles);
 				map { $_->{'index'} += @$addto } @$inc;
@@ -99,7 +100,7 @@ while(<$fh>) {
 			}
 		else {
 			# A single file
-			local ($inc, $ilnum, $ifiles) = &get_config($incfile);
+			my ($inc, $ilnum, $ifiles) = &get_config($incfile);
 			push(@files, @$ifiles);
 			map { $_->{'index'} += @$addto } @$inc;
 			push(@$addto, @$inc);
@@ -107,12 +108,12 @@ while(<$fh>) {
 		}
 	elsif (/^\s*(\S+)\s*(.*)$/) {
 		# Single directive
-		local $dir =  { 'name' => $1,
-				'value' => $2,
-			        'index' => scalar(@$addto),
-				'line' => $lnum,
-				'eline' => $lnum,
-				'file' => $file };
+		my $dir =  { 'name' => $1,
+			     'value' => $2,
+			     'index' => scalar(@$addto),
+			     'line' => $lnum,
+			     'eline' => $lnum,
+			     'file' => $file };
 		push(@$addto, $dir);
 		if ($1 eq 'postrotate' || $1 eq 'prerotate') {
 			# Followed by a multi-line script!
@@ -129,7 +130,7 @@ while(<$fh>) {
 	$lnum++;
 	}
 close($fh);
-if (!$_[0]) {
+if (!$argfile) {
 	$get_config_cache{$file} = \@rv;
 	$get_config_lnum_cache{$file} = $lnum;
 	$get_config_files_cache{$file} = \@files;
@@ -137,10 +138,12 @@ if (!$_[0]) {
 return wantarray ? (\@rv, $lnum, \@files) : \@rv;
 }
 
+# split_words(string)
+# Split a string like 'foo "bar" baz' into words
 sub split_words
 {
-local @rv;
-local $str = $_[0];
+my ($str) = @_;
+my @rv;
 while($str =~ /^\s*"(.*)"(.*)$/ || $str =~ /^\s*(\S+)(.*)$/) {
 	push(@rv, $1);
 	$str = $2;
@@ -148,59 +151,72 @@ while($str =~ /^\s*"(.*)"(.*)$/ || $str =~ /^\s*(\S+)(.*)$/) {
 return @rv;
 }
 
+# join_words(word, ...)
+# Joins an array of words into a string, with quotes if needed
 sub join_words
 {
 return join(" ", map { /\s/ ? "\"$_\"" : $_ } @_);
 }
 
 # find(name, &config)
+# Returns an object or objects from the config with some name
 sub find
 {
-local @rv = grep { lc($_->{'name'}) eq lc($_[0]) } @{$_[1]};
+my ($name, $conf) = @_;
+my @rv = grep { lc($_->{'name'}) eq lc($name) } @$conf;
 return wantarray ? @rv : $rv[0];
 }
 
 # find_value(name, &config)
+# Returns a value or values from the config with some name
 sub find_value
 {
-local @rv = map { defined($_->{'script'}) ? $_->{'script'} : $_->{'value'} }
-		grep { lc($_->{'name'}) eq lc($_[0]) } @{$_[1]};
+my ($name, $conf) = @_;
+my @rv = map { defined($_->{'script'}) ? $_->{'script'} : $_->{'value'} }
+	     grep { lc($_->{'name'}) eq lc($name) } @$conf;
 return wantarray ? @rv : $rv[0];
 }
 
-# get_logrotate_version(&out)
+# get_logrotate_version([&out])
+# Returns the version number, and saves the full -v output to the out param
 sub get_logrotate_version
 {
-local $out = &backquote_command("$config{'logrotate'} -v 2>&1", 1);
-${$_[0]} = $out if ($_[0]);
+my ($rv) = @_;
+my $out = &backquote_command("$config{'logrotate'} -v 2>&1", 1);
+$$rv = $out if ($rv);
 return $out =~ /logrotate\s+([0-9\.]+)\s/ ||
        $out =~ /logrotate\-([0-9\.]+)\s/ ? $1 : undef;
 }
 
 # get_period(&conf)
+# Returns the rotation time period set in the config
 sub get_period
 {
-foreach $p ("daily", "weekly", "monthly") {
-	local $ex = &find($p, $_[0]);
+my ($conf) = @_;
+foreach my $p ("daily", "weekly", "monthly") {
+	my $ex = &find($p, $conf);
 	return $p if ($ex);
 	}
 return undef;
 }
 
 # save_directive(&parent, &old|name, &new, [indent])
+# Update a single entry in the config, identified by either name or
+# the direcctive being replaced
 sub save_directive
 {
-local $conf = $_[0]->{'members'};
-local $old = !defined($_[1]) ? undef : ref($_[1]) ? $_[1] : &find($_[1], $conf);
-local $lref = &read_file_lines($old ? $old->{'file'} : $_[0]->{'file'});
-local $new = !defined($_[2]) ? undef : ref($_[2]) ? $_[2] :
-			{ 'name' => $old ? $old->{'name'} : $_[1],
-		     	  'value' => $_[2] };
-local @lines = &directive_lines($new, $_[3]) if ($new);
-local $gparent = &get_config_parent();
+my ($parent, $oldv, $newv, $indent) = @_;
+my $conf = $parent->{'members'};
+my $old = !defined($oldv) ? undef : ref($oldv) ? $oldv : &find($oldv, $conf);
+my $lref = &read_file_lines($old ? $old->{'file'} : $parent->{'file'});
+my $new = !defined($newv) ? undef : ref($newv) ? $newv :
+			{ 'name' => $old ? $old->{'name'} : $oldv,
+		     	  'value' => $newv };
+my @lines = &directive_lines($new, $indent) if ($new);
+my $gparent = &get_config_parent();
 if ($old && $new) {
 	# Update
-	local $oldlines = $old->{'eline'} - $old->{'line'} + 1;
+	my $oldlines = $old->{'eline'} - $old->{'line'} + 1;
 	splice(@$lref, $old->{'line'}, $oldlines, @lines);
 	$new->{'line'} = $old->{'line'};
 	$new->{'index'} = $old->{'index'};
@@ -212,18 +228,18 @@ if ($old && $new) {
 	}
 elsif ($old && !$new) {
 	# Delete
-	local $oldlines = $old->{'eline'} - $old->{'line'} + 1;
+	my $oldlines = $old->{'eline'} - $old->{'line'} + 1;
 	splice(@$lref, $old->{'line'}, $old->{'eline'} - $old->{'line'} + 1);
 	splice(@$conf, $old->{'index'}, 1);
 	&renumber($gparent, $old->{'file'}, $old->{'line'}, -$oldlines);
 	}
-elsif (!$old && $new && $_[0]->{'global'} && !$new->{'members'}) {
+elsif (!$old && $new && $parent->{'global'} && !$new->{'members'}) {
 	# Add at the start of the file
-	if (defined($_[0]->{'line'})) {
+	if (defined($parent->{'line'})) {
 		splice(@$lref, 0, 0, @lines);
 		$new->{'line'} = 0;
 		$new->{'eline'} = $new->{'line'} + scalar(@lines) - 1;
-		$new->{'file'} = $_[0]->{'file'};
+		$new->{'file'} = $parent->{'file'};
 		&renumber($gparent, $new->{'file'}, $new->{'line'}-1, scalar(@lines));
 		}
 	$new->{'index'} = 0;
@@ -231,18 +247,18 @@ elsif (!$old && $new && $_[0]->{'global'} && !$new->{'members'}) {
 	}
 elsif (!$old && $new) {
 	# Add (to end of section)
-	if (defined($_[0]->{'line'})) {
-		if (!$new->{'file'} || $_[0]->{'file'} eq $new->{'file'}) {
+	if (defined($parent->{'line'})) {
+		if (!$new->{'file'} || $parent->{'file'} eq $new->{'file'}) {
 			# Adding to parent file
-			splice(@$lref, $_[0]->{'eline'}, 0, @lines);
-			$new->{'line'} = $_[0]->{'eline'};
+			splice(@$lref, $parent->{'eline'}, 0, @lines);
+			$new->{'line'} = $parent->{'eline'};
 			$new->{'eline'} = $new->{'line'} + scalar(@lines) - 1;
-			$new->{'file'} = $_[0]->{'file'};
+			$new->{'file'} = $parent->{'file'};
 			&renumber($gparent, $new->{'file'}, $new->{'line'}-1, scalar(@lines));
 			}
 		else {
 			# Adding to another file
-			local $lref2 = &read_file_lines($new->{'file'});
+			my $lref2 = &read_file_lines($new->{'file'});
 			$new->{'line'} = scalar(@$lref2);
 			$new->{'eline'} = $new->{'line'} + scalar(@lines) - 1;
 			push(@$lref2, @lines);
@@ -254,52 +270,58 @@ elsif (!$old && $new) {
 }
 
 # renumber(&object, file, startline, count, [&skip])
+# Update line numbers in the config that are in some file and after
+# some line
 sub renumber
 {
-return if (!$_[3]);
-if ($_[0]->{'file'} eq $_[1] && $_[0] ne $_[4]) {
-	$_[0]->{'line'} += $_[3] if ($_[0]->{'line'} > $_[2]);
-	$_[0]->{'eline'} += $_[3] if ($_[0]->{'eline'} > $_[2]);
+my ($conf, $file, $start, $count, $skip) = @_;
+return if (!$count);
+if ($conf->{'file'} eq $file && $conf ne $skip) {
+	$conf->{'line'} += $count if ($conf->{'line'} > $start);
+	$conf->{'eline'} += $count if ($conf->{'eline'} > $start);
 	}
-if ($_[0]->{'members'}) {
-	local $c;
-	foreach $c (@{$_[0]->{'members'}}) {
-		&renumber($c, $_[1], $_[2], $_[3], $_[4]);
+if ($conf->{'members'}) {
+	foreach my $c (@{$conf->{'members'}}) {
+		&renumber($c, $file, $start, $count, $skip);
 		}
 	}
 }
 
 # directive_lines(&dir, indent)
+# Returns an array of lines to add to the config file for some directive
 sub directive_lines
 {
-local @rv;
-if ($_[0]->{'members'}) {
-	push(@rv, $_[1].&join_words(@{$_[0]->{'name'}})." {");
-	foreach $m (@{$_[0]->{'members'}}) {
-		push(@rv, &directive_lines($m, $_[1]."\t"));
+my ($dir, $indent) = @_;
+my @rv;
+if ($dir->{'members'}) {
+	push(@rv, $indent.&join_words(@{$dir->{'name'}})." {");
+	foreach my $m (@{$dir->{'members'}}) {
+		push(@rv, &directive_lines($m, $indent."\t"));
 		}
-	push(@rv, $_[1]."}");
+	push(@rv, $indent."}");
 	}
-elsif ($_[0]->{'script'}) {
-	push(@rv, $_[1].$_[0]->{'name'});
-	foreach $s (split(/\n/, $_[0]->{'script'})) {
-		push(@rv, $_[1].$s);
+elsif ($dir->{'script'}) {
+	push(@rv, $indent.$dir->{'name'});
+	foreach my $s (split(/\n/, $dir->{'script'})) {
+		push(@rv, $indent.$s);
 		}
-	push(@rv, $_[1]."endscript");
+	push(@rv, $indent."endscript");
 	}
 else {
-	push(@rv, $_[1].$_[0]->{'name'}.
-		  ($_[0]->{'value'} eq "" ? "" : " ".$_[0]->{'value'}));
+	push(@rv, $indent.$dir->{'name'}.
+		  ($dir->{'value'} eq "" ? "" : " ".$dir->{'value'}));
 	}
 return @rv;
 }
 
 # delete_if_empty(file)
+# Remove a file if it has no more lines in the config
 sub delete_if_empty
 {
-local $conf = &get_config();
-local %files = map { $_, 1 } &unique(map { $_->{'file'} } @$conf);
-&unlink_file($_[0]) if (!$files{$_[0]});
+my ($file) = @_;
+my $conf = &get_config();
+my %files = map { $_, 1 } &unique(map { $_->{'file'} } @$conf);
+&unlink_file($file) if (!$files{$file});
 }
 
 %global_default = ( "nocompress" => "",
@@ -333,19 +355,19 @@ local %files = map { $_, 1 } &unique(map { $_->{'file'} } @$conf);
 # immediately.
 sub rotate_log_now
 {
-local $conf = &get_config();
-local $temp = &transname();
+my ($dir) = @_;
+my $conf = &get_config();
+my $temp = &transname();
 open(TEMP, ">$temp");
-local $c;
-foreach $c (@$conf) {
+foreach my $c (@$conf) {
 	if (!$c->{'members'}) {
 		print TEMP map { "$_\n" } &directive_lines($c);
 		}
 	}
-print TEMP map { "$_\n" } &directive_lines($_[0]);
+print TEMP map { "$_\n" } &directive_lines($conf);
 close(TEMP);
 &set_ownership_permissions(undef, undef, 0644, $temp);
-local $out = &backquote_logged("$config{'logrotate'} -f $temp 2>&1");
+my $out = &backquote_logged("$config{'logrotate'} -f $temp 2>&1");
 return ($?, $out);
 }
 
@@ -353,7 +375,7 @@ return ($?, $out);
 # Returns the file to which new logrotate sections should be added
 sub get_add_file
 {
-local ($filename) = @_;
+my ($filename) = @_;
 $filename =~ s/\*/ALL/g;
 if ($config{'add_file'} && -d $config{'add_file'} && $filename) {
 	# Adding to a new file in a directory
@@ -361,7 +383,7 @@ if ($config{'add_file'} && -d $config{'add_file'} && $filename) {
 	}
 elsif ($config{'add_file'} && !-d $config{'add_file'}) {
 	# Make sure file is valid
-	local ($conf, $lnum, $files) = &get_config();
+	my ($conf, $lnum, $files) = &get_config();
 	if (&indexof($config{'add_file'}, @$files) >= 0) {
 		return $config{'add_file'};
 		}
