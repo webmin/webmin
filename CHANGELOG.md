@@ -6,7 +6,7 @@
   - Fix disallowed entry handling in File Manager [forum.virtualmin.com/t/137654](https://forum.virtualmin.com/t/extra-admin-file-manager-permissions/137654?u=ilia)
   - Fix File Manager errors for Webmin-only users
   - Fix File Manager opening the wrong directory in Terminal for domain owners
-  - ...
+  - Fix support for navigation detection for the upcoming Virtualmin Podman plugin
 
 #### 2.653 (July 26, 2026)
 * Fix to include missing `xmlrpc-lib.pl` file in the package
