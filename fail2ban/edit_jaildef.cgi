@@ -40,6 +40,45 @@ $bantime = $def_bantime if (!defined($bantime) || $bantime eq "");
 print &ui_table_row($text{'jail_bantime'},
 	&ui_textbox("bantime", $bantime, 5));
 
+# Incremental banning options, supported since Fail2Ban 0.11.1
+if (&supports_bantime_increment()) {
+	print &ui_table_hr();
+	print &ui_table_span("<b>".$text{'jail_increment_header'}."</b><br>".
+		&ui_note($text{'jail_increment_desc'}, 0));
+
+	my $increment = &canonical_fail2ban_boolean(
+		&find_value("bantime.increment", $jail));
+	print &ui_table_row($text{'jail_bantime_increment'},
+		&ui_select("bantime_increment", $increment,
+			[ [ "", $text{'default'}." (".$text{'no'}.")" ],
+			  [ "true", $text{'yes'} ],
+			  [ "false", $text{'no'} ] ], 1, 0, 1));
+
+	my $factor = &find_value("bantime.factor", $jail);
+	print &ui_table_row($text{'jail_bantime_factor'},
+		&ui_opt_textbox("bantime_factor", $factor, 8,
+			$text{'default'}." (1)"));
+
+	my $maxtime = &find_value("bantime.maxtime", $jail);
+	print &ui_table_row($text{'jail_bantime_maxtime'},
+		&ui_opt_textbox("bantime_maxtime", $maxtime, 8,
+			$text{'default'}." (".$text{'jail_nolimit'}.")"));
+
+	my $overalljails = &canonical_fail2ban_boolean(
+		&find_value("bantime.overalljails", $jail));
+	print &ui_table_row($text{'jail_bantime_overalljails'},
+		&ui_select("bantime_overalljails", $overalljails,
+			[ [ "", $text{'default'}." (".$text{'no'}.")" ],
+			  [ "true", $text{'yes'} ],
+			  [ "false", $text{'no'} ] ], 1, 0, 1));
+
+	my $rndtime = &find_value("bantime.rndtime", $jail);
+	print &ui_table_row($text{'jail_bantime_rndtime'},
+		&ui_opt_textbox("bantime_rndtime", $rndtime, 8,
+			$text{'default'}." (".$text{'jail_none'}.")"));
+	print &ui_table_hr();
+	}
+
 # IPs to ignore
 my $def_ignoreip = "127.0.0.1";
 my $ignoreip = &find_value("ignoreip", $jail);

@@ -671,6 +671,113 @@ my $out = &backquote_command("$config{'client_cmd'} -V 2>/dev/null </dev/null");
 return !$? && $out =~ /v?([0-9\.]+)/ ? $1 : undef;
 }
 
+# supports_bantime_increment([version])
+# Returns 1 if the installed Fail2Ban version supports incremental ban times
+sub supports_bantime_increment
+{
+my ($version) = @_;
+$version = &get_fail2ban_version() if (!defined($version));
+return 0 if (!defined($version) || $version eq "");
+return &compare_version_numbers($version, "0.11.1") >= 0;
+}
+
+# canonical_fail2ban_boolean(value)
+# Converts the boolean spellings accepted by Fail2Ban to true or false
+sub canonical_fail2ban_boolean
+{
+my ($value) = @_;
+return "" if (!defined($value) || $value eq "");
+return "true" if ($value =~ /^(1|on|true|yes)$/i);
+return "false" if ($value =~ /^(0|off|false|no)$/i);
+return $value;
+}
+
+# valid_fail2ban_duration(value, [allow-zero])
+# Returns 1 for a safe subset of Fail2Ban duration expressions
+sub valid_fail2ban_duration
+{
+my ($value, $allow_zero) = @_;
+return 0 if (!defined($value) || $value eq "");
+return 0 if ($value =~ /[\r\n]/);
+my $number = qr/\d+(?:\.\d+)?/;
+my $unit = qr/(?:s|sec(?:ond)?s?|m|min(?:ute)?s?|h|hour(?:s)?|d|day(?:s)?|w|week(?:s)?|mo|mon|month(?:s)?|y|year(?:s)?)/i;
+return 0 if ($value !~ /^\s*(?:$number\s*$unit\s*)+$/ &&
+		   $value !~ /^\s*$number\s*$/);
+return 1 if ($allow_zero);
+my @numbers = $value =~ /(\d+(?:\.\d+)?)/g;
+return scalar(grep { $_ > 0 } @numbers) ? 1 : 0;
+}
+
+# valid_positive_fail2ban_duration(value)
+# Returns 1 for a safe, positive Fail2Ban duration expression
+sub valid_positive_fail2ban_duration
+{
+return &valid_fail2ban_duration($_[0], 0);
+}
+
+# valid_nonnegative_fail2ban_duration(value)
+# Returns 1 for a safe Fail2Ban duration expression, including zero
+sub valid_nonnegative_fail2ban_duration
+{
+return &valid_fail2ban_duration($_[0], 1);
+}
+
+# valid_bantime_factor(value)
+# Returns 1 for a positive numeric incremental-ban growth factor
+sub valid_bantime_factor
+{
+my ($value) = @_;
+return defined($value) &&
+	$value =~ /^(?:\d+(?:\.\d+)?|\.\d+)$/ && $value > 0;
+}
+
+# validate_bantime_increment_inputs(&input)
+# Returns a language key for the first invalid incremental-ban option
+sub validate_bantime_increment_inputs
+{
+my ($input) = @_;
+foreach my $f ("bantime_increment", "bantime_overalljails") {
+	my $value = $input->{$f};
+	return "jail_e".$f if (defined($value) && $value ne "" &&
+					$value !~ /^(true|false)$/);
+	}
+if (!$input->{'bantime_factor_def'} &&
+    !&valid_bantime_factor($input->{'bantime_factor'})) {
+	return "jail_ebantime_factor";
+	}
+if (!$input->{'bantime_maxtime_def'} &&
+    !&valid_positive_fail2ban_duration($input->{'bantime_maxtime'})) {
+	return "jail_ebantime_maxtime";
+	}
+if (!$input->{'bantime_rndtime_def'} &&
+    !&valid_nonnegative_fail2ban_duration($input->{'bantime_rndtime'})) {
+	return "jail_ebantime_rndtime";
+	}
+return undef;
+}
+
+# save_bantime_increment_options(&input, &jail)
+# Saves incremental-ban options using the standard jail directive handling
+sub save_bantime_increment_options
+{
+my ($input, $jail) = @_;
+&save_directive("bantime.increment",
+	$input->{'bantime_increment'} eq "" ? undef :
+		$input->{'bantime_increment'}, $jail);
+&save_directive("bantime.factor",
+	$input->{'bantime_factor_def'} ? undef :
+		$input->{'bantime_factor'}, $jail);
+&save_directive("bantime.maxtime",
+	$input->{'bantime_maxtime_def'} ? undef :
+		$input->{'bantime_maxtime'}, $jail);
+&save_directive("bantime.overalljails",
+	$input->{'bantime_overalljails'} eq "" ? undef :
+		$input->{'bantime_overalljails'}, $jail);
+&save_directive("bantime.rndtime",
+	$input->{'bantime_rndtime_def'} ? undef :
+		$input->{'bantime_rndtime'}, $jail);
+}
+
 # Unblock given IP in given jail
 sub unblock_jailed_ip
 {
