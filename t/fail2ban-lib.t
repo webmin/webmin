@@ -64,7 +64,8 @@ subtest 'positive duration validation' => sub {
 		   "accepts $duration");
 		}
 	foreach my $duration ('', '0', '0m', '-1', '1d+12h',
-			     '1d;system("id")', 'forever', '1m 2') {
+			     '1d;system("id")', 'forever', '1m 2',
+			     "1\nm", "1\r\nm") {
 		ok(!main::valid_positive_fail2ban_duration($duration),
 		   "rejects $duration");
 		}

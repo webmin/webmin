@@ -698,6 +698,7 @@ sub valid_fail2ban_duration
 {
 my ($value, $allow_zero) = @_;
 return 0 if (!defined($value) || $value eq "");
+return 0 if ($value =~ /[\r\n]/);
 my $number = qr/\d+(?:\.\d+)?/;
 my $unit = qr/(?:s|sec(?:ond)?s?|m|min(?:ute)?s?|h|hour(?:s)?|d|day(?:s)?|w|week(?:s)?|mo|mon|month(?:s)?|y|year(?:s)?)/i;
 return 0 if ($value !~ /^\s*(?:$number\s*$unit\s*)+$/ &&
