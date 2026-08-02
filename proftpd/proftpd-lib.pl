@@ -9,7 +9,7 @@ use WebminCore;
 # if the ProFTPd binary changes, when Webmin is upgraded
 my @st = stat($config{'proftpd_path'});
 my %oldsite;
-&read_file("$module_config_directory/site", \%site);
+&read_file("$module_config_directory/site", \%oldsite);
 if ($oldsite{'size'} != $st[7] ||
     !$oldsite{'version'} ||
     !$oldsite{'fullversion'} ||
