@@ -43,7 +43,11 @@ if ($oldsite{'size'} != $st[7] ||
 		}
 	}
 }
-&refresh_site_cache();
+
+# Avoid cache writes from non-interactive commands on systemd systems
+unless ($main::webmin_script_type eq 'cron' && -d '/run/systemd/system') {
+	&refresh_site_cache();
+	}
 
 # Load the site-specific information on the server executable
 &read_file("$module_config_directory/site", \%site);
