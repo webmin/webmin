@@ -1084,6 +1084,392 @@ my $out = &backquote_logged(
 &error($out) if ($?);
 }
 
+=head2 is_btrfs_fs(path)
+
+Returns 1 if a path is on a mounted Btrfs filesystem, 0 otherwise.
+
+=cut
+sub is_btrfs_fs
+{
+my ($path) = @_;
+return 0 if (!&valid_btrfs_path($path));
+
+# Btrfs subvolumes can have a different st_dev from the filesystem mount, so
+# select the longest containing mount path instead of comparing device numbers.
+my $best;
+foreach my $m (&mount::list_mounted()) {
+	next if (!defined($m->[0]) || !defined($m->[2]));
+	next if (!&is_under_directory($m->[0], $path));
+	$best = $m if (!$best || length($m->[0]) > length($best->[0]));
+	}
+return $best && $best->[2] eq "btrfs" ? 1 : 0;
+}
+
+# valid_btrfs_path(path)
+# Returns 1 for an absolute path that is safe to pass to Btrfs tools.
+sub valid_btrfs_path
+{
+return defined($_[0]) && $_[0] =~ /^\// && $_[0] !~ /[\r\n\0]/ ? 1 : 0;
+}
+
+# run_btrfs_command(logged, arg, ...)
+# Runs a Btrfs command with a clean locale. Returns the output and undef on
+# success, or undef and an error message on failure.
+sub run_btrfs_command
+{
+my ($logged, @args) = @_;
+my $btrfs = &has_command("btrfs");
+return (undef, "The btrfs command was not found") if (!$btrfs);
+my $cmd = quotemeta($btrfs)." ".
+	  join(" ", map { quotemeta($_) } @args)." 2>&1";
+&clean_language();
+my $out = $logged ? &backquote_logged($cmd) : &backquote_command($cmd);
+my $ex = $?;
+&reset_environment();
+$out =~ s/\s+$//;
+return $ex ? (undef, $out || "The btrfs command failed") : ($out, undef);
+}
+
+=head2 parse_btrfs_quota_status(output)
+
+Parses output from C<btrfs quota status> and returns a hash reference with
+enabled, mode, inconsistent and other status fields, or undef for invalid
+output. This function is mainly intended for internal use.
+
+=cut
+sub parse_btrfs_quota_status
+{
+my ($out) = @_;
+my %rv;
+return undef if ($out !~ /^\s*Enabled:\s*(yes|no)\s*$/mi);
+$rv{'enabled'} = lc($1) eq "yes" ? 1 : 0;
+if ($out =~ /^\s*Mode:\s*(\S+)(?:\s+\(([^\)]*)\))?\s*$/mi) {
+	$rv{'mode'} = lc($1);
+	$rv{'mode_description'} = $2 if (defined($2));
+	}
+if ($out =~ /^\s*Inconsistent:\s*(yes|no)\s*$/mi) {
+	$rv{'inconsistent'} = lc($1) eq "yes" ? 1 : 0;
+	}
+if ($out =~ /^\s*Override limits:\s*(yes|no)\s*$/mi) {
+	$rv{'override_limits'} = lc($1) eq "yes" ? 1 : 0;
+	}
+if ($out =~ /^\s*Drop subtree threshold:\s*(\d+)\s*$/mi) {
+	$rv{'drop_subtree_threshold'} = int($1);
+	}
+if ($out =~ /^\s*Total count:\s*(\d+)\s*$/mi) {
+	$rv{'total_count'} = int($1);
+	}
+my %levels;
+while($out =~ /^\s*Level\s+(\d+):\s*(\d+)\s*$/gmi) {
+	$levels{$1} = int($2);
+	}
+$rv{'levels'} = \%levels if (%levels);
+return \%rv;
+}
+
+=head2 btrfs_quota_status(path)
+
+Returns a hash reference describing the Btrfs quota status for a path. The
+hash always contains C<supported>, and may contain C<enabled>, C<mode>,
+C<inconsistent> and C<error>. Returns undef when the path is not on Btrfs.
+Older btrfs-progs releases without C<btrfs quota status> are supported using
+C<btrfs qgroup show> as a fallback.
+
+=cut
+sub btrfs_quota_status
+{
+my ($path) = @_;
+return undef if (!&is_btrfs_fs($path));
+my ($out, $err) = &run_btrfs_command(0, "quota", "status", $path);
+if (defined($out)) {
+	my $rv = &parse_btrfs_quota_status($out);
+	if ($rv) {
+		$rv->{'supported'} = 1;
+		return $rv;
+		}
+	}
+
+# Older versions have no quota status command. qgroup show succeeds when
+# quotas are enabled, and reports a missing quota root when disabled.
+my ($qout, $qerr) = &run_btrfs_command(0, "qgroup", "show", "--raw", $path);
+if (defined($qout)) {
+	return { 'supported' => 1,
+		 'enabled' => 1 };
+	}
+elsif ($qerr =~ /(?:quota root does not exist|quotas? (?:are |is )?not enabled)/i) {
+	return { 'supported' => 1,
+		 'enabled' => 0 };
+	}
+return { 'supported' => 1,
+	 'error' => $qerr || $err || "Unable to read Btrfs quota status" };
+}
+
+=head2 parse_btrfs_qgroup_output(output)
+
+Parses raw output from C<btrfs qgroup show -repc> and returns an array
+reference of qgroup hashes. Numeric sizes are returned in bytes, missing
+limits are undef, and parent and child qgroups are returned as array refs.
+This function is mainly intended for internal use.
+
+=cut
+sub parse_btrfs_qgroup_output
+{
+my ($out) = @_;
+my @rv;
+foreach my $line (split(/\r?\n/, $out)) {
+	$line =~ s/^\s+//;
+	$line =~ s/\s+$//;
+	next if ($line !~ /^(\d+\/\d+)\s+/);
+	my @cols = split(/\s+/, $line, 8);
+	next if (@cols < 7);
+	my ($id, $referenced, $exclusive, $max_referenced, $max_exclusive,
+	    $parents, $children, $path) = @cols;
+	push(@rv, {
+		'id' => $id,
+		'referenced' => int($referenced),
+		'exclusive' => int($exclusive),
+		'max_referenced' => $max_referenced eq "none" ? undef :
+				    int($max_referenced),
+		'max_exclusive' => $max_exclusive eq "none" ? undef :
+				   int($max_exclusive),
+		'parents' => $parents =~ /^-+$/ ? [ ] :
+			     [ split(/,/, $parents) ],
+		'children' => $children =~ /^-+$/ ? [ ] :
+			      [ split(/,/, $children) ],
+		'path' => defined($path) ? $path : "",
+		});
+	}
+return \@rv;
+}
+
+=head2 list_btrfs_qgroups(path, [sync], [&error])
+
+Returns an array reference containing all Btrfs qgroups on the filesystem
+that contains path. Each entry contains id, referenced and exclusive usage,
+limits, parents, children and path. Returns undef on failure and optionally
+saves the error message to the final scalar reference. If sync is true, the
+filesystem is synchronized before usage is read.
+
+=cut
+sub list_btrfs_qgroups
+{
+my ($path, $sync, $errref) = @_;
+if (!&valid_btrfs_path($path)) {
+	$$errref = "Invalid Btrfs path" if ($errref);
+	return undef;
+	}
+my @args = ( "qgroup", "show", "--raw", "-r", "-e", "-p", "-c" );
+push(@args, "--sync") if ($sync);
+push(@args, $path);
+my ($out, $err) = &run_btrfs_command(0, @args);
+if (!defined($out)) {
+	$$errref = $err if ($errref);
+	return undef;
+	}
+my $rv = &parse_btrfs_qgroup_output($out);
+if (!@$rv && $out =~ /\S/) {
+	$$errref = "Unable to parse Btrfs qgroup output" if ($errref);
+	return undef;
+	}
+$$errref = undef if ($errref);
+return $rv;
+}
+
+=head2 btrfs_subvolume_id(path, [&error])
+
+Returns the numeric Btrfs subvolume ID for path, or undef if the path is not
+a subvolume or the ID cannot be read. The optional scalar reference receives
+the command error.
+
+=cut
+sub btrfs_subvolume_id
+{
+my ($path, $errref) = @_;
+if (!&valid_btrfs_path($path)) {
+	$$errref = "Invalid Btrfs path" if ($errref);
+	return undef;
+	}
+my ($out, $err) = &run_btrfs_command(0, "subvolume", "show", $path);
+if (defined($out) && $out =~ /^\s*Subvolume ID:\s*(\d+)\s*$/mi) {
+	$$errref = undef if ($errref);
+	return int($1);
+	}
+$$errref = $err || "Unable to read the Btrfs subvolume ID" if ($errref);
+return undef;
+}
+
+=head2 get_btrfs_qgroup(path, [sync], [&error])
+
+Returns the level-0 qgroup for a Btrfs subvolume path, or undef on failure.
+The returned hash has the same fields as entries from list_btrfs_qgroups.
+
+=cut
+sub get_btrfs_qgroup
+{
+my ($path, $sync, $errref) = @_;
+my $id = &btrfs_subvolume_id($path, $errref);
+return undef if (!defined($id));
+my $qgroups = &list_btrfs_qgroups($path, $sync, $errref);
+return undef if (!$qgroups);
+foreach my $q (@$qgroups) {
+	return $q if ($q->{'id'} eq "0/$id");
+	}
+$$errref = "No Btrfs qgroup exists for subvolume $id" if ($errref);
+return undef;
+}
+
+=head2 enable_btrfs_quotas(path, [simple])
+
+Enables Btrfs quotas on the filesystem containing path. If simple is true,
+simple quotas (squotas) are requested. Returns undef on success or an error
+message on failure.
+
+=cut
+sub enable_btrfs_quotas
+{
+my ($path, $simple) = @_;
+return "Invalid Btrfs path" if (!&valid_btrfs_path($path));
+my @args = ( "quota", "enable" );
+push(@args, "--simple") if ($simple);
+push(@args, $path);
+my ($out, $err) = &run_btrfs_command(1, @args);
+return $err;
+}
+
+=head2 disable_btrfs_quotas(path)
+
+Disables Btrfs quotas on the filesystem containing path. This removes all
+qgroup configuration. Returns undef on success or an error message on
+failure.
+
+=cut
+sub disable_btrfs_quotas
+{
+my ($path) = @_;
+return "Invalid Btrfs path" if (!&valid_btrfs_path($path));
+my ($out, $err) = &run_btrfs_command(1, "quota", "disable", $path);
+return $err;
+}
+
+=head2 rescan_btrfs_quotas(path, [wait])
+
+Starts a Btrfs quota rescan. If wait is true, waits for the rescan to finish.
+Returns undef on success or an error message on failure.
+
+=cut
+sub rescan_btrfs_quotas
+{
+my ($path, $wait) = @_;
+return "Invalid Btrfs path" if (!&valid_btrfs_path($path));
+my @args = ( "quota", "rescan" );
+push(@args, "-w") if ($wait);
+push(@args, $path);
+my ($out, $err) = &run_btrfs_command(1, @args);
+return $err;
+}
+
+# valid_btrfs_qgroup_id(id)
+# Returns 1 for a syntactically valid qgroup ID.
+sub valid_btrfs_qgroup_id
+{
+return defined($_[0]) && $_[0] =~ /^\d+\/\d+$/ ? 1 : 0;
+}
+
+=head2 set_btrfs_qgroup_limit(path, [qgroup], [bytes], [exclusive])
+
+Sets the referenced or exclusive byte limit for a Btrfs qgroup. If qgroup is
+undef, path must be a subvolume and its level-0 qgroup is changed. If bytes
+is undef, the limit is removed. Returns undef on success or an error message
+on failure.
+
+=cut
+sub set_btrfs_qgroup_limit
+{
+my ($path, $qgroup, $bytes, $exclusive) = @_;
+return "Invalid Btrfs path" if (!&valid_btrfs_path($path));
+return "Invalid Btrfs qgroup ID"
+	if (defined($qgroup) && !&valid_btrfs_qgroup_id($qgroup));
+return "Invalid Btrfs qgroup limit"
+	if (defined($bytes) && $bytes !~ /^\d+$/);
+my @args = ( "qgroup", "limit" );
+push(@args, "-e") if ($exclusive);
+push(@args, defined($bytes) ? $bytes : "none");
+push(@args, $qgroup) if (defined($qgroup));
+push(@args, $path);
+my ($out, $err) = &run_btrfs_command(1, @args);
+return $err;
+}
+
+=head2 create_btrfs_qgroup(path, qgroup)
+
+Creates a Btrfs qgroup on the filesystem containing path. Returns undef on
+success or an error message on failure.
+
+=cut
+sub create_btrfs_qgroup
+{
+my ($path, $qgroup) = @_;
+return "Invalid Btrfs path" if (!&valid_btrfs_path($path));
+return "Invalid Btrfs qgroup ID" if (!&valid_btrfs_qgroup_id($qgroup));
+my ($out, $err) = &run_btrfs_command(
+	1, "qgroup", "create", $qgroup, $path);
+return $err;
+}
+
+=head2 delete_btrfs_qgroup(path, qgroup)
+
+Deletes an unassigned Btrfs qgroup. Returns undef on success or an error
+message on failure.
+
+=cut
+sub delete_btrfs_qgroup
+{
+my ($path, $qgroup) = @_;
+return "Invalid Btrfs path" if (!&valid_btrfs_path($path));
+return "Invalid Btrfs qgroup ID" if (!&valid_btrfs_qgroup_id($qgroup));
+my ($out, $err) = &run_btrfs_command(
+	1, "qgroup", "destroy", $qgroup, $path);
+return $err;
+}
+
+=head2 assign_btrfs_qgroup(path, child, parent)
+
+Assigns a child Btrfs qgroup to a parent qgroup. Returns undef on success or
+an error message on failure.
+
+=cut
+sub assign_btrfs_qgroup
+{
+my ($path, $child, $parent) = @_;
+return "Invalid Btrfs path" if (!&valid_btrfs_path($path));
+return "Invalid child Btrfs qgroup ID"
+	if (!&valid_btrfs_qgroup_id($child));
+return "Invalid parent Btrfs qgroup ID"
+	if (!&valid_btrfs_qgroup_id($parent));
+my ($out, $err) = &run_btrfs_command(
+	1, "qgroup", "assign", $child, $parent, $path);
+return $err;
+}
+
+=head2 unassign_btrfs_qgroup(path, child, parent)
+
+Removes a child Btrfs qgroup from a parent qgroup. Returns undef on success
+or an error message on failure.
+
+=cut
+sub unassign_btrfs_qgroup
+{
+my ($path, $child, $parent) = @_;
+return "Invalid Btrfs path" if (!&valid_btrfs_path($path));
+return "Invalid child Btrfs qgroup ID"
+	if (!&valid_btrfs_qgroup_id($child));
+return "Invalid parent Btrfs qgroup ID"
+	if (!&valid_btrfs_qgroup_id($parent));
+my ($out, $err) = &run_btrfs_command(
+	1, "qgroup", "remove", $child, $parent, $path);
+return $err;
+}
+
 =head2 can_quotacheck(fs)
 
 Returns 1 if some FS supports quota checking
