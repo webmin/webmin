@@ -28,6 +28,22 @@ if (!$get_config_parent_cache) {
 return $get_config_parent_cache;
 }
 
+# get_add_file_configs([&already-loaded-files])
+# Returns configs loaded externally from the add-file directory
+sub get_add_file_configs
+{
+my ($files) = @_;
+return ( ) if (!$config{'scan_add_file'} || !$config{'add_file'} ||
+		       !-d $config{'add_file'});
+my @rv;
+foreach my $f (glob("$config{'add_file'}/*")) {
+	next if (!-f $f || $files &&
+		 grep { &same_file($_, $f) } @$files);
+	push(@rv, $f);
+	}
+return @rv;
+}
+
 # get_config([file])
 # Returns a list of logrotate config file entries
 sub get_config
@@ -131,6 +147,12 @@ while(<$fh>) {
 	}
 close($fh);
 if (!$argfile) {
+	foreach my $f (&get_add_file_configs(\@files)) {
+		my ($inc, undef, $ifiles) = &get_config($f);
+		map { $_->{'index'} += @rv } @$inc;
+		push(@rv, @$inc);
+		push(@files, @$ifiles);
+		}
 	$get_config_cache{$file} = \@rv;
 	$get_config_lnum_cache{$file} = $lnum;
 	$get_config_files_cache{$file} = \@files;
@@ -392,4 +414,3 @@ return $config{'logrotate_conf'};
 }
 
 1;
-

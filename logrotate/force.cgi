@@ -10,7 +10,10 @@ $SIG{'TERM'} = 'IGNORE';
 
 print $text{'force_doing'},"\n";
 &clean_environment();
-$out = &backquote_logged("$config{'logrotate'} -f $config{'logrotate_conf'} 2>&1");
+my (undef, undef, $files) = &get_config($config{'logrotate_conf'});
+my @configs = ($config{'logrotate_conf'}, &get_add_file_configs($files));
+my $configs = join(" ", map { &quote_path($_) } @configs);
+$out = &backquote_logged("$config{'logrotate'} -f $configs 2>&1");
 &reset_environment();
 if ($out) {
 	print "<pre>$out</pre>";
