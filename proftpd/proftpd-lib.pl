@@ -7,6 +7,8 @@ use WebminCore;
 
 # Check if a list of supported modules needs to be built. This is done
 # if the ProFTPd binary changes, when Webmin is upgraded
+sub refresh_site_cache
+{
 my @st = stat($config{'proftpd_path'});
 my %oldsite;
 &read_file("$module_config_directory/site", \%oldsite);
@@ -40,6 +42,8 @@ if ($oldsite{'size'} != $st[7] ||
 			}
 		}
 	}
+}
+&refresh_site_cache();
 
 # Load the site-specific information on the server executable
 &read_file("$module_config_directory/site", \%site);
