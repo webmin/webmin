@@ -5,6 +5,7 @@ require './sendmail-lib.pl';
 require './mailers-lib.pl';
 &ReadParse();
 &error_setup($text{'mdelete_err'});
+$access{'mailers'} || &error($text{'mailers_cannot'});
 $conf = &get_sendmailcf();
 $vfile = &mailers_file($conf);
 ($vdbm, $vdbmtype) = &mailers_dbm($conf);

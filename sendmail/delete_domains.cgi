@@ -5,6 +5,7 @@ require './sendmail-lib.pl';
 require './domain-lib.pl';
 &ReadParse();
 &error_setup($text{'ddelete_err'});
+$access{'domains'} || &error($text{'domains_ecannot'});
 $conf = &get_sendmailcf();
 $vfile = &domains_file($conf);
 ($vdbm, $vdbmtype) = &domains_dbm($conf);
