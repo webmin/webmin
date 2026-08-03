@@ -20,11 +20,11 @@ if ($oldsite{'size'} != $st[7] ||
 	my ($ver, $fullver) = &get_proftpd_version(\$out);
 	if ($ver) {
 		# Store the detected versions
-		my %site;
-		$site{'size'} = $st[7];
-		$site{'version'} = $ver;
-		$site{'fullversion'} = $fullver;
-		$site{'webmin'} = &get_webmin_version();
+		my %newsite;
+		$newsite{'size'} = $st[7];
+		$newsite{'version'} = $ver;
+		$newsite{'fullversion'} = $fullver;
+		$newsite{'webmin'} = &get_webmin_version();
 
 		# Get the list of modules
 		my @mods;
@@ -37,20 +37,27 @@ if ($oldsite{'size'} != $st[7] ||
 			}
 		close(MODS);
 		if (!$? || !-r "$module_config_directory/site") {
-			$site{'modules'} = join(" ", @mods);
-			&write_file("$module_config_directory/site", \%site);
+			$newsite{'modules'} = join(" ", @mods);
+			&write_file("$module_config_directory/site", \%newsite);
 			}
 		}
 	}
+&read_site_cache();
 }
 
-# Avoid cache writes from non-interactive commands on systemd systems
-unless ($main::webmin_script_type eq 'cron' && -d '/run/systemd/system') {
-	&refresh_site_cache();
-	}
+# read_site_cache()
+# Put site-specific information into the global %site hash
+sub read_site_cache
+{
+%site = ();
+&read_file("$module_config_directory/site", \%site);
+}
 
 # Load the site-specific information on the server executable
-&read_file("$module_config_directory/site", \%site);
+if (!-r "$module_config_directory/site") {
+	&refresh_site_cache();
+	}
+&read_site_cache();
 @ftpaccess_files = split(/\s+/, $site{'ftpaccess'});
 opendir(DIR, ".");
 foreach $f (readdir(DIR)) {
@@ -327,6 +334,7 @@ return @rv;
 sub editable_directives
 {
 local($m, $func, @rv);
+&refresh_site_cache();
 local @mods = split(/\s+/, $site{'modules'});
 foreach $m (@module_files) {
 	if (&indexof($m, @mods) != -1) {
@@ -478,6 +486,7 @@ return &parse_choice(@_);
 sub config_icons
 {
 local($m, $func, $e, %etype, $i, $c);
+&refresh_site_cache();
 local @mods = split(/\s+/, $site{'modules'});
 local @ctx = split(/\s+/, $_[0]);
 foreach $m (sort { $a cmp $b } (@module_files)) {
@@ -683,6 +692,7 @@ else {
 # or undef.
 sub test_config
 {
+&refresh_site_cache();
 if ($site{'version'} >= 1.2) {
 	# Test the configuration with -t flag
 	local $cmd = "$config{'proftpd_path'} -t -c $config{'proftpd_conf'}";
@@ -851,6 +861,7 @@ local $st = &find_directive("ServerType", $conf);
 if ($st eq 'inetd') {
 	return $text{'stop_einetd'};
 	}
+&refresh_site_cache();
 my $ver = $site{'version'} || &get_proftpd_version();
 if ($ver > 1.22) {
 	# Stop and re-start
