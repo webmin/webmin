@@ -177,9 +177,6 @@ index_btrfs_inconsistent=inconsistent
 index_btrfs_unavailable=Unavailable
 index_btrfs_error=Error: $1
 
-config_btrfs_full=Full accounting (recommended; tracks shared space and snapshots)
-config_btrfs_simple=Simple accounting (lower overhead; tracks original ownership only)
-
 btrfs_title=Btrfs Subvolume Quotas
 btrfs_return=filesystem list
 btrfs_status_header=Quota status for $1
