@@ -5,6 +5,8 @@ no warnings 'once';
 use Test::More;
 use Cwd qw(abs_path);
 use File::Basename qw(dirname);
+use File::Path qw(make_path);
+use File::Temp qw(tempdir);
 
 my $root = abs_path(dirname(__FILE__)."/../..") or die "rootdir: $!";
 my @commands;
@@ -71,6 +73,9 @@ return @{$main::mounted[0]};
 
 do "$root/quota/linux-lib.pl" or die "linux-lib.pl: $@ $!";
 
+# Device-less tmpfs quota options must not create unusable filesystem rows.
+is(main::quota_can([ "/tmp", "tmpfs", "tmpfs", "rw,usrquota" ], undef),
+   0, "tmpfs quota mount options are ignored");
 ok(main::is_btrfs_fs("/srv/btrfs"),
    "Btrfs mount point is detected");
 ok(main::is_btrfs_fs("/srv/btrfs/domain1"),
@@ -132,6 +137,27 @@ is(scalar(@commands), 1, "successful status does not run fallback");
 $status = main::btrfs_quota_status("/srv/btrfs");
 ok($status->{'enabled'}, "legacy qgroup fallback detects enabled quotas");
 
+my $sysfs = tempdir(CLEANUP => 1);
+my $fsuuid = "12345678-1234-1234-1234-123456789abc";
+make_path("$sysfs/$fsuuid/qgroups");
+foreach my $pair ([ 'enabled', 1 ], [ 'mode', 'squota' ],
+		  [ 'inconsistent', 1 ]) {
+	open(my $fh, '>', "$sysfs/$fsuuid/qgroups/$pair->[0]") or die $!;
+	print {$fh} "$pair->[1]\n";
+	close($fh);
+	}
+local $main::btrfs_sysfs_root = $sysfs;
+@responses = (
+	{ 'out' => "ERROR: unknown token 'status'\n", 'status' => 1 },
+	{ 'out' => "qgroupid rfer excl\n0/5 16384 16384\n", 'status' => 0 },
+	{ 'out' => "Label: none  uuid: $fsuuid\n", 'status' => 0 },
+	);
+$status = main::btrfs_quota_status("/srv/btrfs");
+is($status->{'mode'}, 'squota',
+   "legacy fallback reads simple-quota mode from sysfs");
+ok($status->{'inconsistent'},
+   "legacy fallback reads inconsistent accounting from sysfs");
+
 @responses = (
 	{ 'out' => "ERROR: unknown token 'status'\n", 'status' => 1 },
 	{ 'out' => "ERROR: quota root does not exist\n", 'status' => 1 },
@@ -172,6 +198,27 @@ is(scalar(@$qgroups), 4, "qgroup list command output is returned");
 ok(!defined($list_error), "successful qgroup list clears the error");
 like($commands[0], qr/qgroup show .*\\-\\-sync .*srv.*btrfs/,
      "synchronized qgroup listing requests --sync");
+
+my $legacy_qgroup_text = <<'EOF';
+Qgroupid Referenced Exclusive Max_referenced Max_exclusive Parent Child
+0/256 16384 16384 67108864 none 1/100 -
+0/257 0 0 none 33554432 1/100 -
+1/100 16384 16384 100663296 none - 0/256,0/257
+EOF
+@commands = ( );
+@responses = (
+	{ 'out' => $legacy_qgroup_text, 'status' => 0 },
+	{ 'out' => "ID 256 gen 10 top level 5 path domain1\n".
+		   "ID 257 gen 11 top level 5 path domain path two\n",
+	  'status' => 0 },
+	);
+$qgroups = main::list_btrfs_qgroups("/srv/btrfs", 0, \$list_error);
+is($qgroups->[0]->{'path'}, "domain1",
+   "legacy qgroup rows gain paths from the subvolume list");
+is($qgroups->[1]->{'path'}, "domain path two",
+   "legacy subvolume paths containing spaces and path are preserved");
+like($commands[1], qr/subvolume list .*srv.*btrfs/,
+     "legacy qgroup output triggers one compatibility lookup");
 
 @responses = ({ 'out' => "ERROR: quotas not enabled\n", 'status' => 1 });
 $qgroups = main::list_btrfs_qgroups("/srv/btrfs", 0, \$list_error);
@@ -239,6 +286,31 @@ is(main::set_btrfs_qgroup_limit("/srv/btrfs", "1/100", "1M"),
    "Invalid Btrfs qgroup limit", "non-byte limits are rejected");
 is(main::assign_btrfs_qgroup("/srv/btrfs", "bad", "1/100"),
    "Invalid child Btrfs qgroup ID", "invalid child assignment is rejected");
+
+# An existing over-limit qgroup must not prevent an administrator from raising
+# or removing its limit. The kernel override is restored after the retry.
+my $override_root = tempdir(CLEANUP => 1);
+my $override_uuid = "abcdef01-2345-6789-abcd-ef0123456789";
+make_path("$override_root/$override_uuid");
+open(my $override_fh, '>',
+     "$override_root/$override_uuid/quota_override") or die $!;
+print {$override_fh} "0\n";
+close($override_fh);
+local $main::btrfs_sysfs_root = $override_root;
+@commands = ( );
+@responses = (
+	{ 'out' => "ERROR: unable to limit requested quota group: ".
+		   "Disk quota exceeded\n", 'status' => 1 },
+	{ 'out' => "Label: none  uuid: $override_uuid\n", 'status' => 0 },
+	{ 'out' => "", 'status' => 0 },
+	);
+is(main::set_btrfs_qgroup_limit("/srv/btrfs", "1/100", 2097152),
+   undef, "over-limit qgroup updates retry with the administrative override");
+open($override_fh, '<', "$override_root/$override_uuid/quota_override")
+	or die $!;
+is(<$override_fh>, "0\n", "quota enforcement is restored after the retry");
+close($override_fh);
+is(scalar(@commands), 3, "one status lookup and one limit retry are run");
 
 @responses = ({ 'out' => "ERROR: qgroup exists\n", 'status' => 1 });
 is(main::create_btrfs_qgroup("/srv/btrfs", "1/100"),
