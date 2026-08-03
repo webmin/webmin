@@ -4,6 +4,7 @@
 
 require './shorewall-lib.pl';
 &ui_print_header(undef, $text{'check_title'}, "");
+
 print "<b>$text{'check_cmd'}</b><br>\n";
 print "<font size=-1><pre>";
 open(STATUS, "$config{'shorewall'} check 2>&1 |");
@@ -18,5 +19,6 @@ if ($?) {
 else {
 	print "<b>$text{'check_ok'}</b><p>\n";
 	}
+
 &ui_print_footer("", $text{'index_return'});
 

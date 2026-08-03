@@ -56,9 +56,10 @@ if (@table) {
 		local @tds;
 		if ($t[0] =~ /\??COMMENT/) {
 			# Special case - a comment line
-			push(@cols, "<a href='editcmt.cgi?table=$in{'table'}&".
-				    "idx=$i'><i>".join(" ", @t[1..$#t]).
-				    "</i></a>" );
+			push(@cols, &ui_link(
+				"editcmt.cgi?table=".&urlize($in{'table'}).
+				  "&idx=".&urlize($i),
+				"<i>".join(" ", @t[1..$#t])."</i>"));
 			@tds = ( "width=5", "colspan=".scalar(@colnames) );
 			}
 		else {
@@ -68,7 +69,9 @@ if (@table) {
 				}
 			for($j=0; $j<@colnames; $j++) {
 				if ($j == 0) {
-					$lnk = &ui_link("edit.cgi?table=$in{'table'}&idx=$i",$t[$j]);
+					$lnk = &ui_link(
+					    "edit.cgi?table=".&urlize($in{'table'}).
+					    "&idx=".&urlize($i), $t[$j]);
 					}
 				else {
 					$lnk = $t[$j];
@@ -78,26 +81,20 @@ if (@table) {
 			@tds = ( "width=5" );
 			}
 		if (@table > 1) {
-			$mover = "";
-			if ($i == 0) {
-				$mover .= "<img src=images/gap.gif>";
-				}
-			else {
-				$mover .= &ui_link("up.cgi?table=$in{'table'}&idx=$i","<img src=images/up.gif border=0>")."\n";
-				}
-			if ($i == $#table) {
-				$mover .= "<img src=images/gap.gif>";
-				}
-			else {
-				$mover .= &ui_link("down.cgi?table=$in{'table'}&idx=$i","<img src=images/down.gif border=0>")."\n";
-				}
-			push(@cols, $mover);
+			push(@cols, &ui_up_down_arrows(
+				"up.cgi?table=".&urlize($in{'table'})."&idx=".&urlize($i),
+				"down.cgi?table=".&urlize($in{'table'})."&idx=".&urlize($i),
+				$i > 0, $i != $#table,
+				"images/up.gif", "images/down.gif"));
 			}
-		push(@cols,
-		      "<a href='edit.cgi?table=$in{'table'}&new=1&before=$i'>".
-		      "<img src=images/before.gif border=0></a>\n".
-		      "<a href='edit.cgi?table=$in{'table'}&new=1&after=$i'>".
-		      "<img src=images/after.gif border=0></a>\n");
+		push(@cols, &ui_link(
+			"edit.cgi?table=".&urlize($in{'table'}).
+			  "&new=1&before=".&urlize($i),
+			"<img src=images/before.gif border=0>").
+			    &ui_link(
+			"edit.cgi?table=".&urlize($in{'table'}).
+			  "&new=1&after=".&urlize($i),
+			"<img src=images/after.gif border=0>"));
 		print &ui_checked_columns_row(\@cols, \@tds, "d", $i);
 		}
 	print &ui_columns_end();
