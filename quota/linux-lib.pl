@@ -1109,7 +1109,8 @@ return $best && $best->[2] eq "btrfs" ? 1 : 0;
 # Returns 1 for an absolute path that is safe to pass to Btrfs tools.
 sub valid_btrfs_path
 {
-return defined($_[0]) && $_[0] =~ /^\// && $_[0] !~ /[\r\n\0]/ ? 1 : 0;
+my ($path) = @_;
+return defined($path) && $path =~ /^\// && $path !~ /[\r\n\0]/ ? 1 : 0;
 }
 
 # run_btrfs_command(logged, arg, ...)
