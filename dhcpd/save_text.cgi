@@ -7,6 +7,7 @@
 
 require './dhcpd-lib.pl';
 &ReadParseMime();
+%access = &get_module_acl();
 $access{'noconfig'} && &error($text{'text_ecannot'});
 $conf = &get_config();
 
