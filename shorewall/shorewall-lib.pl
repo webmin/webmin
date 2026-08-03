@@ -414,7 +414,8 @@ if ($other) {
 elsif (!$found) {
 	push(@opts, [ $value, $value ]);
 	}
-return (&ui_select($name, $value, \@opts), $found);
+my $sel = &ui_select($name, $value, \@opts);
+return wantarray ? ($sel, $found) : $sel;
 }
 
 # iface_field(name, value)
