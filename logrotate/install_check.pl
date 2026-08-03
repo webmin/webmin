@@ -6,7 +6,9 @@ do 'logrotate-lib.pl';
 # For mode 0, returns 1 if installed, 0 if not.
 sub is_installed
 {
-return 0 if (!-r $config{'logrotate_conf'} && !-r $config{'sample_conf'});
+# Accept the vendor main config when the optional local override is absent.
+my $main = &get_main_config_file();
+return 0 if (!-r $main && !-r $config{'sample_conf'});
 return 0 if (!&has_command($config{'logrotate'}));
 return $_[0] ? 2 : 1;
 }

@@ -4,8 +4,22 @@
 
 require './logrotate-lib.pl';
 &ReadParse();
+
+# On systems with vendor configuration below /usr, create the writable local
+# main config before changing global options.  The parent object intentionally
+# keeps this local path as its write destination.
+&ensure_local_main_config() if ($in{'global'});
 $parent = &get_config_parent();
 $conf = $parent->{'members'};
+
+# A local drop-in shadows the whole vendor file, so copy it intact before
+# editing or deleting one section.  Rotate Now is read-only and needs no copy.
+if (!$in{'global'} && !$in{'new'} && !$in{'now'} &&
+    &is_vendor_config_file($conf->[$in{'idx'}]->{'file'})) {
+	&ensure_local_config_override($conf->[$in{'idx'}]->{'file'});
+	$parent = &get_config_parent();
+	$conf = $parent->{'members'};
+	}
 @files = split(/\s+/, $in{'file'});
 if ($in{'global'}) {
 	# Editing the global options
