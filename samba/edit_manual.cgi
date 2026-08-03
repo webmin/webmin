@@ -3,6 +3,7 @@
 
 require './samba-lib.pl';
 &ReadParse();
+$access{'manual'} || &error($text{'manual_ecannot'});
 &ui_print_header(undef, $text{'manual_title'}, "");
 
 # Show the file contents

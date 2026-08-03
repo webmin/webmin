@@ -3,6 +3,7 @@
 
 require './samba-lib.pl';
 &ReadParseMime();
+$access{'manual'} || &error($text{'manual_ecannot'});
 &error_setup($text{'manual_err'});
 
 $in{'data'} =~ s/\r//g;
