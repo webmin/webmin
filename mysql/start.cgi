@@ -4,6 +4,7 @@
 
 require './mysql-lib.pl';
 &error_setup($text{'start_err'});
+$access{'stop'} || &error($text{'stop_ecannot'});
 $err = &start_mysql();
 &error($err) if ($err);
 sleep(3);

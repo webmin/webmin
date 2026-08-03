@@ -919,4 +919,6 @@ ssl_eca=Missing or non-existent SSL CA file
 ssl_ecertexists=SSL certificate file $1 already exists!
 ssl_ekeyexists=SSL key file $1 already exists!
 
+stop_ecannot=You are not allowed to stop or start the MySQL server
+
 __norefs=1
