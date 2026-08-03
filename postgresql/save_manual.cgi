@@ -4,6 +4,7 @@
 require './postgresql-lib.pl';
 &ReadParseMime();
 &error_setup($text{'manual_err'});
+$access{'users'} || &error($text{'host_ecannot'});
 
 # Write the file
 $in{'data'} =~ s/\r//g;
