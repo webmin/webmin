@@ -667,6 +667,7 @@ start_ftsq=Failed to start Squid
 start_ecannot=You are not allowed to start Squid
 stop_ftsq=Failed to stop Squid
 stop_ecannot=You are not allowed to stop Squid
+restart_ecannot=You are not allowed to apply the Squid configuration
 
 calamaris_ecannot=You are not allowed to access Calamaris log analysis
 calamaris_title=Calamaris Log Analysis
