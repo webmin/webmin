@@ -367,56 +367,54 @@ sub get_parser_func
 # ensure that the passed string contains only characters valid in shell variable identifiers
 sub clean_name
 {
-    local $str = $_[0];
-    $str =~ s/\W/_/g;
-    return $str;
+my ($str) = @_;
+$str =~ s/\W/_/g;
+return $str;
 }
 
+# get_clean_table_name(table)
 # get a table name that is clean enough to use as a function prefix
 sub get_clean_table_name
 {
-    local $hashref = $_[0];
-    if (!exists hashref->{'tableclean'}) {
+my ($hashref) = @_;
+if (!exists hashref->{'tableclean'}) {
 	$hashref->{'tableclean'} = &clean_name($in{'table'});
-    }
+	}
 }
 
 # zone_field(name, value, othermode, simplemode)
+# Returns the HTML for a zone selector field, and a flag indicating
+# if the current value is a valid zone.
 sub zone_field
 {
-local @ztable = &read_table_file("zones", \&zones_parser);
-local $found = 0;
-
-print "<select name=$_[0]>\n";
-if ($_[3] == 2) {
-	$found = !$_[1];
+my ($name, $value, $other, $simple) = @_;
+my @ztable = &read_table_file("zones", \&zones_parser);
+my $found = 0;
+my @opts;
+if ($simple == 2) {
+	$found = !$value;
 	}
-elsif ($_[3] == 1) {
-	printf "<option value=- %s>%s</option>\n",
-		$_[1] eq '-' ? "selected" : "", "&lt;$text{'list_any'}&gt;";
-	$found = !$_[1] || $_[1] eq '-';
+elsif ($simple == 1) {
+	push(@opts, [ '-', "&lt;$text{'list_any'}&gt;" ]);
+	$found = !$value || $value eq '-';
 	}
-elsif ($_[3] == 0) {
-	printf "<option value=all %s>%s</option>\n",
-		$_[1] eq 'all' ? "selected" : "", "&lt;$text{'list_any'}&gt;";
-	printf "<option value=\$FW %s>%s</option>\n",
-		&is_fw($_[1]) ? "selected" : "", "&lt;$text{'list_fw'}&gt;";
-	$found = !$_[1] || $_[1] eq 'all' || &is_fw($_[1]);
+elsif ($simple == 0) {
+	push(@opts, [ 'all', "&lt;$text{'list_any'}&gt;" ]);
+	push(@opts, [ '$FW', "&lt;$text{'list_fw'}&gt;" ]);
+	$value = '$FW' if (&is_fw($value));
+	$found = !$value || $value eq 'all' || $value eq '$FW';
 	}
-foreach $z (@ztable) {
-	printf "<option value=%s %s>%s</option>\n",
-		$z->[0], $_[1] eq $z->[0] ? "selected" : "", &convert_zone($z->[0]);
-	$found++ if ($_[1] eq $z->[0]);
+foreach my $z (@ztable) {
+	push(@opts, [ $z->[0], &convert_zone($z->[0]) ]);
+	$found++ if ($value eq $z->[0]);
 	}
-if ($_[2]) {
-	printf "<option value='' %s>%s</option>\n",
-		$found ? "" : "selected", $text{'list_other'};
+if ($other) {
+	push(@opts, [ '', $text{'list_other'} ]);
 	}
-else {
-	print "<option value=$_[1] selected>$_[1]</option>\n" if (!$found);
+elsif (!$found) {
+	push(@opts, [ $value, $value ]);
 	}
-print "</select>\n";
-return $found;
+return (&ui_select($name, $value, \@opts), $found);
 }
 
 # iface_field(name, value)
@@ -466,7 +464,7 @@ return $ret || $_[0];
 # Convert a comma-separate host string to space-separated
 sub nice_host_list
 {
-local @hosts = split(/,/, $_[0]);
+my @hosts = split(/,/, $_[0]);
 if (@host > 5) {
 	return join(", ", @hosts[0..5]).", ...";
 	}
@@ -480,9 +478,10 @@ else {
 #   Now handles renaming of firewall zone in shorewall.conf.
 sub is_fw
 {
-	local $fw = &shorewall_config('FW');
-	$fw = 'fw' if ($fw eq '');
-	return $_[0] eq '$FW' || $_[0] eq $fw;
+my ($zone) = @_;
+my $fw = &shorewall_config('FW');
+$fw = 'fw' if ($fw eq '');
+return $zone eq '$FW' || $zone eq $fw;
 }
 
 ################################# zones #######################################
@@ -574,7 +573,7 @@ if (&new_zones_format()) {
 
 	print "<td><b>$text{'zones_1new'}</b></td>\n";
 	print "<td>\n";
-	&zone_field("parent", $_[1], 0, 1);
+	print &zone_field("parent", $_[1], 0, 1);
 	print "</td> </tr>\n";
 
 	print "<td><b>$text{'zones_2new'}</b></td>\n";
@@ -687,7 +686,7 @@ print "<td><input name=iface size=6 value='$_[1]'></td>\n";
 local @ztable = &read_table_file("zones", \&zones_parser);
 print "<td><b>$text{'interfaces_1'}</b></td>\n";
 print "<td>\n";
-&zone_field("zone", $_[0], 0, 1);
+print &zone_field("zone", $_[0], 0, 1);
 print "</td> </tr>\n";
 
 if (&new_interfaces_format()) {
@@ -769,12 +768,12 @@ local $found;
 
 print "<tr> <td><b>$text{'policy_0'}</b></td>\n";
 print "<td>\n";
-&zone_field("source", $_[0], 0);
+print &zone_field("source", $_[0], 0);
 print "</td>\n";
 
 print "<td><b>$text{'policy_1'}</b></td>\n";
 print "<td>\n";
-&zone_field("dest", $_[1], 0);
+print &zone_field("dest", $_[1], 0);
 print "</td> </tr>\n";
 
 print "<tr> <td><b>$text{'policy_2'}</b></td>\n";
@@ -930,7 +929,8 @@ if (&version_atleast(3)) {
 local ($zone, $host) = split(/:/, $_[1], 2);
 print "<tr> <td valign=top><b>$text{'rules_1z'}</b></td>\n";
 print "<td colspan=3 nowrap>\n";
-$found = &zone_field("source", $zone, 1);
+my ($zf, $found) = &zone_field("source", $zone, 1);
+print $zf;
 printf "<input name=sother size=10 value='%s'>\n",
 	$found ? "" : $zone;
 
@@ -943,7 +943,8 @@ printf "<input name=sinzone size=50 value='%s'></td> </tr>\n",
 ($zone, $host) = split(/:/, $_[2], 2);
 print "<tr> <td valign=top><b>$text{'rules_2z'}</b></td>\n";
 print "<td colspan=3 nowrap>\n";
-$found = &zone_field("dest", $zone, 1);
+($zf, $found) = &zone_field("dest", $zone, 1);
+print $zf;
 printf "<input name=dother size=10 value='%s'>\n",
 	$found ? "" : $zone;
 
@@ -1102,7 +1103,8 @@ sub tos_form
 local ($zone, $host) = split(/:/, $_[0], 2);
 print "<tr> <td valign=top><b>$text{'tos_0z'}</b></td>\n";
 print "<td colspan=3 nowrap>\n";
-$found = &zone_field("source", $zone, 1);
+my ($zf, $found) = &zone_field("source", $zone, 1);
+print $zf;
 printf "<input name=sother size=10 value='%s'>\n",
 	$found ? "" : $zone;
 
@@ -1115,7 +1117,8 @@ printf "<input name=sinzone size=50 value='%s'></td> </tr>\n",
 ($zone, $host) = split(/:/, $_[1], 2);
 print "<tr> <td valign=top><b>$text{'tos_1z'}</b></td>\n";
 print "<td colspan=3 nowrap>\n";
-$found = &zone_field("dest", $zone, 1);
+($zf, $found) = &zone_field("dest", $zone, 1);
+print $zf;
 printf "<input name=dother size=10 value='%s'>\n",
 	$found ? "" : $zone;
 
@@ -1510,7 +1513,7 @@ print "</td>\n";
 
 print "<tr> <td><b>$text{'tunnels_1'}</b></td>\n";
 print "<td>";
-&zone_field("zone", $_[1], 0, 0);
+print &zone_field("zone", $_[1], 0, 0);
 print "</td> </tr>\n";
 
 local $none = $_[2] eq '' || $_[2] eq '-';
@@ -1566,7 +1569,7 @@ sub hosts_form
 {
 print "<tr> <td><b>$text{'hosts_0'}</b></td>\n";
 print "<td>";
-&zone_field("zone", $_[0], 0, 2);
+print &zone_field("zone", $_[0], 0, 2);
 print "</td> </tr>\n";
 
 local ($iface, $net) = split(/:/, $_[1]);
