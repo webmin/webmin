@@ -377,7 +377,7 @@ return $str;
 sub get_clean_table_name
 {
 my ($hashref) = @_;
-if (!exists hashref->{'tableclean'}) {
+if (!exists $hashref->{'tableclean'}) {
 	$hashref->{'tableclean'} = &clean_name($in{'table'});
 	}
 }
@@ -574,7 +574,8 @@ if (&new_zones_format()) {
 
 	print "<td><b>$text{'zones_1new'}</b></td>\n";
 	print "<td>\n";
-	print &zone_field("parent", $_[1], 0, 1);
+	my $zf = &zone_field("parent", $_[1], 0, 1);
+	print $zf;
 	print "</td> </tr>\n";
 
 	print "<td><b>$text{'zones_2new'}</b></td>\n";
@@ -687,7 +688,8 @@ print "<td><input name=iface size=6 value='$_[1]'></td>\n";
 local @ztable = &read_table_file("zones", \&zones_parser);
 print "<td><b>$text{'interfaces_1'}</b></td>\n";
 print "<td>\n";
-print &zone_field("zone", $_[0], 0, 1);
+my $zf = &zone_field("zone", $_[0], 0, 1);
+print $zf;
 print "</td> </tr>\n";
 
 if (&new_interfaces_format()) {
@@ -769,12 +771,14 @@ local $found;
 
 print "<tr> <td><b>$text{'policy_0'}</b></td>\n";
 print "<td>\n";
-print &zone_field("source", $_[0], 0);
+my $zf = &zone_field("source", $_[0], 0);
+print $zf;
 print "</td>\n";
 
 print "<td><b>$text{'policy_1'}</b></td>\n";
 print "<td>\n";
-print &zone_field("dest", $_[1], 0);
+$zf = &zone_field("dest", $_[1], 0);
+print $zf;
 print "</td> </tr>\n";
 
 print "<tr> <td><b>$text{'policy_2'}</b></td>\n";
@@ -1514,7 +1518,8 @@ print "</td>\n";
 
 print "<tr> <td><b>$text{'tunnels_1'}</b></td>\n";
 print "<td>";
-print &zone_field("zone", $_[1], 0, 0);
+my $zf = &zone_field("zone", $_[1], 0, 0);
+print $zf;
 print "</td> </tr>\n";
 
 local $none = $_[2] eq '' || $_[2] eq '-';
@@ -1570,7 +1575,8 @@ sub hosts_form
 {
 print "<tr> <td><b>$text{'hosts_0'}</b></td>\n";
 print "<td>";
-print &zone_field("zone", $_[0], 0, 2);
+my $zf = &zone_field("zone", $_[0], 0, 2);
+print $zf;
 print "</td> </tr>\n";
 
 local ($iface, $net) = split(/:/, $_[1]);
