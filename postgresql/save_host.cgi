@@ -4,11 +4,12 @@
 
 require './postgresql-lib.pl';
 &ReadParse();
+&error_setup($text{'host_err'});
+$access{'users'} || &error($text{'host_ecannot'});
 &lock_file($hba_conf_file);
 $v = &get_postgresql_version();
 @all = &get_hba_config($v);
 $host = $all[$in{'idx'}] if (!$in{'new'});
-&error_setup($text{'host_err'});
 
 if ($in{'delete'}) {
 	# delete one host

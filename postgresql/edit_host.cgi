@@ -4,6 +4,7 @@
 
 require './postgresql-lib.pl';
 &ReadParse();
+$access{'users'} || &error($text{'host_ecannot'});
 $v = &get_postgresql_version();
 if ($in{'new'}) {
 	$type = $in{'new'};
