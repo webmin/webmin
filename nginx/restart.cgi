@@ -7,6 +7,7 @@ require './nginx-lib.pl';
 our (%text, %in, %access);
 &ReadParse();
 &error_setup($text{'restart_err'});
+$access{'stop'} || &error($text{'restart_ecannot'});
 
 my $test = &test_config();
 $test && &error(&text('restart_etest',

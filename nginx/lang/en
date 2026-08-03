@@ -386,6 +386,7 @@ log_delete_user=Deleted user $1 in $2
 
 stop_err=Failed to stop Nginx
 stop_ecannot=You are not allowed to stop the webserver
+restart_ecannot=You are not allowed to apply the webserver configuration
 
 start_err=Failed to start Nginx
 start_ecannot=You are not allowed to start the webserver
