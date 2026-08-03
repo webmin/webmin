@@ -9,13 +9,10 @@
 require './dhcpd-lib.pl';
 require './params-lib.pl';
 &ReadParse();
+%access = &get_module_acl();
+$access{'global'} || &error($text{'keys_ecannot'});
 $conf = &get_config();
 @keys = ( &find("key", $conf), { } );
-
-# check acls
-# %access = &get_module_acl();
-# &error_setup($text{'eacl_aviol'});
-# &error("$text{'eacl_np'} $text{'eacl_pss'}") if !&can('r',\%access,$sub);
 
 if ($in{'new'}) {
 	&ui_print_header($desc, $text{'keys_create'}, "");

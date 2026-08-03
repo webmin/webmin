@@ -8,6 +8,8 @@
 require './dhcpd-lib.pl';
 require './params-lib.pl';
 &ReadParse();
+%access = &get_module_acl();
+$access{'global'} || &error($text{'keys_ecannot'});
 &lock_all_files();
 $conf = &get_config();
 
