@@ -68,7 +68,7 @@ while(<$fh>) {
 	s/#.*$//;
 	if (/^\s*(.*)\{\s*$/) {
 		# Start of a section
-		push(@name, &split_words($1));
+		push(@name, &split_quoted_string($1));
 		$section = { 'name' => [ @name ],
 			     'members' => [ ],
 			     'index' => scalar(@$addto),
@@ -83,7 +83,7 @@ while(<$fh>) {
 	elsif ((/^\s*\// || /^\s*"\//) && !$section) {
 		# A path before a section
 		$namestart = $lnum if (!@name);
-		push(@name, &split_words($_));
+		push(@name, &split_quoted_string($_));
 		}
 	elsif (/^\s*}\s*$/) {
 		# End of a section
@@ -158,19 +158,6 @@ if (!$argfile) {
 	$get_config_files_cache{$file} = \@files;
 	}
 return wantarray ? (\@rv, $lnum, \@files) : \@rv;
-}
-
-# split_words(string)
-# Split a string like 'foo "bar" baz' into words
-sub split_words
-{
-my ($str) = @_;
-my @rv;
-while($str =~ /^\s*"(.*)"(.*)$/ || $str =~ /^\s*(\S+)(.*)$/) {
-	push(@rv, $1);
-	$str = $2;
-	}
-return @rv;
 }
 
 # join_words(word, ...)
