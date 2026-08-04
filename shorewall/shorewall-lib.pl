@@ -34,7 +34,7 @@ sub debug_message
 # - Check if the Shorewall version is greater than or equal to the one supplied.
 sub version_atleast
 {
-return &compare_version_numbers(join(".", @_), $shorewall_version) >= 0;
+return &compare_version_numbers($shorewall_version, join(".", @_)) >= 0;
 }
 
 # read_shorewall_config()
