@@ -433,18 +433,13 @@ return wantarray ? ($sel, $found) : $sel;
 }
 
 # iface_field(name, value)
+# Returns HTML for a network interface selector
 sub iface_field
 {
-local @itable = &read_table_file("interfaces", \&standard_parser);
-print "<select name=$_[0]>\n";
-local $found = !$_[1];
-foreach $i (@itable) {
-	printf "<option value=%s %s>%s</option>\n",
-		$i->[1], $_[1] eq $i->[1] ? "selected" : "", $i->[1];
-	$found++ if ($_[1] eq $i->[1]);
-	}
-print "<option value=$_[1] selected>$_[1]</option>\n" if (!$found);
-print "</select>\n";
+my ($name, $value) = @_;
+my @itable = &read_table_file("interfaces", \&standard_parser);
+my @opts = map { $_->[1] } @itable;
+return &ui_select($name, $value, \@opts, 1, 0, $value ? 1 : 0);
 }
 
 # convert_zone(name)
@@ -503,17 +498,17 @@ return $zone eq '$FW' || $zone eq $fw;
 
 sub zones_parser
 {
+my ($l) = @_;
 if (&new_zones_format()) {
 	# New format
-	local $l = $_[0];
 	$l =~ s/#\s*(.*?)\s*$//;	# save the stripped comment
-	local $comment = $1 if defined $1;
-	local @r = split(/\s+/, $l, 6);
+	my $comment = $1 if defined $1;
+	my @r = split(/\s+/, $l, 6);
 	if ($#r > -1) {
-	    local $zone = shift @r;
+	    my $zone = shift @r;
 
 	    # split out parent if it is present in the zone field
-	    local $parent;
+	    my $parent;
 	    $zone =~ m/(.*?):(.*)/;
 	    if (defined $2) {
 		$zone = $1;
@@ -539,7 +534,6 @@ if (&new_zones_format()) {
 	}
 else {
 	# Old format
-	local $l = $_[0];
 	$l =~ s/#.*$//;
 	if ($l =~ /^(\S+)\s+(\S+)\s*(.*)/) {
 		return [ $1, $2, $3 ];
@@ -1233,7 +1227,7 @@ sub masq_form
 {
 local ($iface, $net) = split(/:/, $_[0], 2);
 print "<tr> <td><b>$text{'masq_0'}</b></td> <td colspan=3>\n";
-&iface_field("iface", $iface);
+print &iface_field("iface", $iface);
 
 printf "<input type=checkbox name=net_def value=1 %s> %s\n",
 	$net ? "checked" : "", $text{'masq_net'};
@@ -1260,7 +1254,7 @@ printf "<input name=mnet size=60 value='%s'><br>\n",
 	$mode == 0 ? $mnet : "";
 printf "<input type=radio name=mode value=1 %s> %s\n",
 	$mode == 1 ? "checked" : "", $text{'masq_mode1'};
-&iface_field("miface", $mode == 1 ? $miface : undef);
+print &iface_field("miface", $mode == 1 ? $miface : undef);
 printf "<input type=checkbox name=mnet_def value=1 %s> %s\n",
 	$mode == 1 && $mnet ? "checked" : "", $text{'masq_except'};
 printf "<input name=mnete size=20 value='%s'>\n",
@@ -1341,13 +1335,13 @@ print "<td><b>$text{'nat_1'}</b></td>\n";
 print "<td>";
 if (&version_atleast(1, 3, 14)) {
 	local ($iface, $virt) = split(/:/, $_[1]);
-	&iface_field("iface", $iface);
+	print &iface_field("iface", $iface);
 	print "<b>$text{'nat_virt'}</b>\n";
 	print "<input name=virt size=3 value='$virt'>\n";
 	print "</td> </tr>\n";
 	}
 else {
-	&iface_field("iface", $_[1]);
+	print &iface_field("iface", $_[1]);
 	print "</td> </tr>\n";
 	}
 
@@ -1402,7 +1396,7 @@ printf "<td><input type=radio name=int_def value=1 %s> %s\n",
 	$_[1] eq '-' || $_[1] eq '' ? "checked" : "", $text{'list_auto'};
 printf "<input type=radio name=int_def value=0 %s>\n",
 	$_[1] eq '-' || $_[1] eq '' ? "" : "checked";
-&iface_field("int", $_[1] eq '-' ? undef : $_[1]);
+print &iface_field("int", $_[1] eq '-' ? undef : $_[1]);
 print "</td> </tr>";
 
 local $have = $_[3] =~ /yes/i;
@@ -1414,7 +1408,7 @@ printf "<input type=radio name=have value=0 %s> %s</td>\n",
 
 print "<td><b>$text{'proxyarp_2'}</b></td>\n";
 print "<td>";
-&iface_field("ext", $_[2]);
+print &iface_field("ext", $_[2]);
 print "</td> </tr>";
 
 if (&version_atleast(2, 0, 0)) {
@@ -1464,7 +1458,7 @@ sub routestopped_form
 {
 print "<tr> <td valign=top><b>$text{'routestopped_0'}</b></td>\n";
 print "<td valign=top>";
-&iface_field("iface", $_[0]);
+print &iface_field("iface", $_[0]);
 print "</td>\n";
 
 local $none = $_[1] eq '' || $_[1] eq '-' || $_[1] eq '0.0.0.0/0';
@@ -1596,7 +1590,7 @@ print "</td> </tr>\n";
 local ($iface, $net) = split(/:/, $_[1]);
 print "<tr> <td><b>$text{'hosts_1'}</b></td>\n";
 print "<td>";
-&iface_field("iface", $iface);
+print &iface_field("iface", $iface);
 print "</td> </tr>\n";
 
 print "<tr> <td><b>$text{'hosts_2'}</b></td>\n";
@@ -1731,7 +1725,7 @@ print "<td><input name=number size=4 value='$_[1]'></td> </tr>\n";
 
 print "<tr> <td><b>$text{'providers_iface'}</b></td>\n";
 print "<td>";
-&iface_field("iface", $_[4]);
+print &iface_field("iface", $_[4]);
 print "</td>\n";
 
 print "<td><b>$text{'providers_mark'}</b></td>\n";
@@ -1893,13 +1887,14 @@ sub params_validate
 #############################################################################
 
 # can_access(file)
+# Returns 1 if the ACL allows access to some file
 sub can_access
 {
 if ($access{'files'} eq '*') {
 	return 1;
 	}
 else {
-	local @acc = split(/\s+/, $access{'files'});
+	my @acc = split(/\s+/, $access{'files'});
 	return &indexof($_[0], @acc) >= 0;
 	}
 }
@@ -1910,7 +1905,7 @@ else {
 sub run_before_apply_command
 {
 if ($config{'before_apply_cmd'}) {
-	local $out = &backquote_logged("($config{'before_apply_cmd'}) </dev/null 2>&1");
+	my $out = &backquote_logged("($config{'before_apply_cmd'}) </dev/null 2>&1");
 	return $out if ($?);
 	}
 return undef;
@@ -1931,7 +1926,7 @@ if ($config{'after_apply_cmd'}) {
 sub run_before_refresh_command
 {
 if ($config{'before_refresh_cmd'}) {
-	local $out = &backquote_logged("($config{'before_refresh_cmd'}) </dev/null 2>&1");
+	my $out = &backquote_logged("($config{'before_refresh_cmd'}) </dev/null 2>&1");
 	return $out if ($?);
 	}
 return undef;
@@ -1950,7 +1945,7 @@ if ($config{'after_refresh_cmd'}) {
 # Returns a list of standard Shorewall actions
 sub list_standard_actions
 {
-local @rv;
+my @rv;
 foreach my $a (split(/\t+/, $config{'actions'})) {
 	open(ACTIONS, "<".$a);
 	while(<ACTIONS>) {
@@ -1976,7 +1971,7 @@ return &unique(@rv);
 # Returns a list of all macro. actions
 sub list_standard_macros
 {
-local @rv;
+my @rv;
 foreach my $a ($config{'config_dir'}, $config{'macros'}) {
 	opendir(DIR, $a);
 	foreach my $f (readdir(DIR)) {
