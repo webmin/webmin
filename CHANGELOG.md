@@ -2,6 +2,7 @@
 #### 2.654 (August, 2026)
 * Add incremental ban time options to the Fail2Ban module
 * Fix to ignore failures when adding IPv6 link-local (fe80::) addresses that may already be configured automatically
+* Fixed creation of permissions new log files in the System Logs module (thanks to Kevin Carter)
 * Update the Authentic theme to the latest version with various improvements:
   - Fix disallowed entry handling in File Manager [forum.virtualmin.com/t/137654](https://forum.virtualmin.com/t/extra-admin-file-manager-permissions/137654?u=ilia)
   - Fix File Manager errors for Webmin-only users
