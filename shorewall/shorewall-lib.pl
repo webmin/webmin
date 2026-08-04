@@ -172,12 +172,13 @@ foreach my $c (@$cache) {
 }
 
 # create_table_row(table, &parserfunc, line, [insert-index])
+# Add a row to a config table, at the end or before some index
 sub create_table_row
 {
-local $lref = &read_file_lines("$config{'config_dir'}/$_[0]");
-local ($i, $idx);
-$idx = -1;
-for($i=0; $i<@$lref; $i++) {
+my ($table, $pfunc, $line, $insert) = @_;
+my $lref = &read_file_lines("$config{'config_dir'}/$table");
+my $idx = -1;
+for(my $i=0; $i<@$lref; $i++) {
 	if ($lref->[$i] =~ /^#+\s*LAST\s+LINE/) {
 		$idx = $i;
 		last;
@@ -191,25 +192,26 @@ for($i=0; $i<@$lref; $i++) {
 		last;
 		}
 	}
-if (defined($_[3])) {
-	local $lnum = &find_line_num($lref, $_[1], $_[3]);
+my $txt = &simplify_line($line);
+if (defined($insert)) {
+	my $lnum = &find_line_num($lref, $pfunc, $insert);
 	$lnum = $idx if (!defined($lnum));
 	if ($lnum < 0) {
-		push(@$lref, &simplify_line($_[2]));
+		push(@$lref, $txt);
 		}
 	else {
-		splice(@$lref, $lnum, 0, &simplify_line($_[2]));
+		splice(@$lref, $lnum, 0, $txt);
 		}
 	}
 else {
 	if ($idx < 0) {
-		push(@$lref, &simplify_line($_[2]));
+		push(@$lref, $txt);
 		}
 	else {
-		splice(@$lref, $idx, 0, &simplify_line($_[2]));
+		splice(@$lref, $idx, 0, $txt);
 		}
 	}
-&flush_file_lines();
+&flush_file_lines("$config{'config_dir'}/$table");
 }
 
 # create_table_struct(&struct, parserfunc, [&insert-before])
@@ -315,19 +317,25 @@ while($rv =~ s/\s+$// || $rv =~ s/\-$//) { }
 return $rv;
 }
 
+# lock_table(table)
+# Lock the config file for some table
 sub lock_table
 {
 my ($table) = @_;
 &lock_file("$config{'config_dir'}/$table");
 }
 
+# unlock_table(table)
+# Release the lock on the config file for some table
 sub unlock_table
 {
 my ($table) = @_;
 &unlock_file("$config{'config_dir'}/$table");
 }
 
-# parser for whitespace-separated config files
+# standard_parser(line)
+# Parser for whitespace-separated config files. Converts a line of text
+# into an array ref of values.
 sub standard_parser
 {
 my ($l) = @_;
@@ -337,7 +345,9 @@ return undef if ($sp[0] =~ /\??SECTION/ || $sp[0] =~ /\??FORMAT/);
 return @sp ? \@sp : undef;
 }
 
-# parser for shell-style config files
+# config_parser(line)
+# Parser for shell-style config files. Converts a line of text
+# into an array ref of values.
 sub config_parser
 {
 my ($l) = @_;
@@ -349,7 +359,8 @@ if ($#sp > -1 && defined $1) {
 return @sp ? \@sp : undef;
 }
 
-# determine which parser function to use
+# get_parser_func(&hashref)
+# Determine which parser function to use
 sub get_parser_func
 {
 my ($hashref) = @_;
@@ -357,15 +368,16 @@ my ($hashref) = @_;
 my $pfunc = $hashref->{'tableclean'}."_parser";
 if (!defined(&$pfunc)) {
 	if ($hashref->{'tableclean'} =~ /^(params|shorewall_conf)$/) {
-	    $pfunc = "config_parser";
-	}
+		$pfunc = "config_parser";
+		}
 	else {
-	    $pfunc = "standard_parser";
+		$pfunc = "standard_parser";
+		}
 	}
-}
 return $pfunc;
 }
 
+# clean_name(string)
 # ensure that the passed string contains only characters valid in shell variable identifiers
 sub clean_name
 {
@@ -1979,16 +1991,17 @@ $BETA_STR = "-Beta";
 $BETA_NUM = "\.0000\.";
 
 # get_shorewall_version(nocache)
+# Returns the current Shorewall version, possibly from a local cache
 sub get_shorewall_version
 {
-local ($nocache) = @_;
-local $version;
+my ($nocache) = @_;
+my $version;
 if (!$nocache && open(VERSION, "<$module_config_directory/version")) {
 	chop($version = <VERSION>);
 	close(VERSION);
 	}
 if (!$version) {
-	local $out = `$config{'shorewall'} version 2>&1`;
+	local $out = &backquote_command("$config{'shorewall'} version 2>&1 </dev/null");
 	$out =~ s/\r//g;
 	$out =~ s/$BETA_STR/$BETA_NUM/i;		# Convert beta string to version number.
 	if ($out =~ /(\n|^)([0-9\.]+)\n/) {
@@ -2005,10 +2018,12 @@ sub get_printable_version($)
 	return $out;
 }
 
+# list_protocols()
+# Returns a list of network protocols
 sub list_protocols
 {
-local @stdprotos = ( 'tcp', 'udp', 'icmp' );
-local @otherprotos;
+my @stdprotos = ( 'tcp', 'udp', 'icmp' );
+my @otherprotos;
 open(PROTOS, "</etc/protocols");
 while(<PROTOS>) {
 	s/\r|\n//g;
