@@ -34,29 +34,25 @@ sub debug_message
 # - Check if the Shorewall version is greater than or equal to the one supplied.
 sub version_atleast
 {
-local @vsp = split(/\./, $shorewall_version);
-local $i;
-for($i=0; $i<@vsp || $i<@_; $i++) {
-	return 0 if ($vsp[$i] < $_[$i]);
-	return 1 if ($vsp[$i] > $_[$i]);
-	}
-return 1;	# same!
+return &compare_version_numbers(join(".", @_), $shorewall_version) >= 0;
 }
 
+# read_shorewall_config()
+# Returns an array of hash refs for the global Shorewall config
 sub read_shorewall_config
 {
-	local @ret;
-	open(SHOREWALL_CONF, "<$config{'config_dir'}/shorewall.conf");
-	while (<SHOREWALL_CONF>) {
-		chomp;
-		s/\r//;
-		s/#.*$//;
-		@F = split( /=/, $_, 2 );
-		next if $#F != 1;
-		push @ret, ( $F[0], $F[1] );
-	}
-	close(SHOREWALL_CONF);
-	return @ret;
+my @ret;
+open(SHOREWALL_CONF, "<$config{'config_dir'}/shorewall.conf");
+while (<SHOREWALL_CONF>) {
+	chomp;
+	s/\r//;
+	s/#.*$//;
+	@F = split( /=/, $_, 2 );
+	next if $#F != 1;
+	push @ret, ( $F[0], $F[1] );
+}
+close(SHOREWALL_CONF);
+return @ret;
 }
 
 # dump_shorewall_config()
@@ -71,32 +67,35 @@ sub dump_shorewall_config
 # shorewall_config(var)
 sub shorewall_config
 {
-	if (exists $shorewall_config{$_[0]}  &&  defined $shorewall_config{$_[0]}) {
-		return $shorewall_config{$_[0]};
+if (exists $shorewall_config{$_[0]}  &&  defined $shorewall_config{$_[0]}) {
+	return $shorewall_config{$_[0]};
 	}
-	return '';
+return '';
 }
 
 # return true if new zones format is in use
 sub new_zones_format
 {
-	# Shorewall 3.4.0 - 3.4.4 have a bug that prevents the old format from being used.
-	if (&version_atleast(3, 4)  &&  !&version_atleast(3, 4, 5)) {
-		return 1;
-	}
-	# Zones table is in new format in Shorewall 3, unless shorewall.conf has IPSECFILE=ipsec
-	if (!&version_atleast(3)  ||  &shorewall_config('IPSECFILE') eq 'ipsec') {
-		return 0;
-	}
+# Shorewall 3.4.0 - 3.4.4 have a bug that prevents the old format from being used.
+if (&version_atleast(3, 4)  &&  !&version_atleast(3, 4, 5)) {
 	return 1;
+	}
+# Zones table is in new format in Shorewall 3, unless shorewall.conf has
+# IPSECFILE=ipsec
+if (!&version_atleast(3)  ||  &shorewall_config('IPSECFILE') eq 'ipsec') {
+	return 0;
+	}
+return 1;
 }
 
 # read_table_file(table, &parserfunc)
+# Read lines from a file and call the parser function on each one, and put the
+# results into an array
 sub read_table_file
 {
-local @rv;
-local $func = $_[1];
-open(FILE, "<$config{'config_dir'}/$_[0]");
+my ($table, $func) = @_;
+my @rv;
+open(FILE, "<$config{'config_dir'}/$table");
 while(<FILE>) {
 	s/\r|\n//g;
 	local $l = &$func($_);
@@ -109,11 +108,11 @@ return @rv;
 # read_table_struct(table, &parserfunc)
 sub read_table_struct
 {
-if (!defined($read_table_cache{$_[0]})) {
-	local @rv;
-	local $func = $_[1];
-	open(FILE, "<$config{'config_dir'}/$_[0]");
-	local $lnum = 0;
+my ($table, $func) = @_;
+if (!defined($read_table_cache{$table})) {
+	my @rv;
+	open(FILE, "<$config{'config_dir'}/$table");
+	my $lnum = 0;
 	while(<FILE>) {
 		s/\r|\n//g;
 		local $cmt;
@@ -123,8 +122,8 @@ if (!defined($read_table_cache{$_[0]})) {
 		local $l = &$func($_);
 		if ($l) {
 			push(@rv, { 'line' => $lnum,
-				    'file' => "$config{'config_dir'}/$_[0]",
-				    'table' => $_[0],
+				    'file' => "$config{'config_dir'}/$table",
+				    'table' => $table,
 				    'index' => scalar(@rv),
 				    'values' => $l,
 				    'comment' => $cmt });
@@ -132,20 +131,19 @@ if (!defined($read_table_cache{$_[0]})) {
 		$lnum++;
 		}
 	close(FILE);
-	$read_table_cache{$_[0]} = \@rv;
+	$read_table_cache{$table} = \@rv;
 	}
-return $read_table_cache{$_[0]};
+return $read_table_cache{$table};
 }
 
 # find_line_num(&lref, &parserfunc, index)
 sub find_line_num
 {
-local $lref = $_[0];
-local $func = $_[1];
-local $idx = 0;
-for($i=0; $i<@$lref; $i++) {
+my ($lref, $func, $wantidx) = @_;
+my $idx = 0;
+for(my $i=0; $i<@$lref; $i++) {
 	if (&$func($lref->[$i])) {
-		if ($idx++ == $_[2]) {
+		if ($idx++ == $wantidx) {
 			return $i;
 			}
 		}
@@ -154,29 +152,32 @@ return undef;
 }
 
 # delete_table_row(table, &parserfunc, index)
+# Delete the line for one row from a table
 sub delete_table_row
 {
-local $lref = &read_file_lines("$config{'config_dir'}/$_[0]");
-local $lnum = &find_line_num($lref, $_[1], $_[2]);
+my ($table, $func, $idx) = @_;
+my $lref = &read_file_lines("$config{'config_dir'}/$table");
+my $lnum = &find_line_num($lref, $func, $idx);
 splice(@$lref, $lnum, 1) if (defined($lnum));
-&flush_file_lines();
+&flush_file_lines("$config{'config_dir'}/$table");
 }
 
 # delete_table_struct(&struct)
+# Delete the line corresponding to some structure from a config file
 sub delete_table_struct
 {
-local $lref = &read_file_lines($_[0]->{'file'});
-splice(@$lref, $_[0]->{'line'}, 1);
-&flush_file_lines();
-local $cache = $read_table_cache{$_[0]->{'table'}};
-local $idx = &indexof($_[0], @$cache);
+my ($str) = @_;
+my $lref = &read_file_lines($str->{'file'});
+splice(@$lref, $str->{'line'}, 1);
+&flush_file_lines($str->{'file'});
+my $cache = $read_table_cache{$str->{'table'}};
+my $idx = &indexof($str, @$cache);
 if ($idx >= 0) {
 	splice(@$cache, $idx, 1);
 	}
-local $c;
-foreach $c (@$cache) {
-	$c->{'line'}-- if ($c->{'line'} > $_[0]->{'line'});
-	$c->{'index'}-- if ($c->{'index'} > $_[0]->{'index'});
+foreach my $c (@$cache) {
+	$c->{'line'}-- if ($c->{'line'} > $str->{'line'});
+	$c->{'index'}-- if ($c->{'index'} > $str->{'index'});
 	}
 }
 
@@ -222,9 +223,11 @@ else {
 }
 
 # create_table_struct(&struct, parserfunc, [&insert-before])
+# Convert a strucutre to lines to add to a config table
 sub create_table_struct
 {
-local $lref = &read_file_lines("$config{'config_dir'}/$_[0]->{'table'}");
+my ($str, $pfunc, $before) = @_;
+my $lref = &read_file_lines("$config{'config_dir'}/$str->{'table'}");
 my $idx = -1;
 for(my $i=0; $i<@$lref; $i++) {
 	if ($lref->[$i] =~ /^#+\s*LAST\s+LINE/) {
@@ -236,70 +239,77 @@ if ($idx < 0) {
 	# Add at end
 	$idx = scalar(@$lref);
 	}
-local $cache = &read_table_struct($_[0]->{'table'}, $_[1]);
+my $cache = &read_table_struct($str->{'table'}, $pfunc);
 if ($_[2]) {
 	# Insert into file
-	splice(@$lref, $_[2]->{'line'}, 0, &make_struct($_[0]));
-	$_[0]->{'file'} = "$config{'config_dir'}/$_[0]->{'table'}";
-	$_[0]->{'line'} = $_[2]->{'line'};
-	$_[0]->{'index'} = $_[2]->{'index'};
-	local $c;
-	foreach $c (@$cache) {
-		$_[0]->{'line'}++ if ($c->{'line'} >= $_[2]->{'line'});
-		$_[0]->{'index'}++ if ($c->{'index'} >= $_[2]->{'index'});
+	splice(@$lref, $before->{'line'}, 0, &make_struct($str));
+	$str->{'file'} = "$config{'config_dir'}/$str->{'table'}";
+	$str->{'line'} = $before->{'line'};
+	$str->{'index'} = $before->{'index'};
+	foreach my $c (@$cache) {
+		$str->{'line'}++ if ($c->{'line'} >= $before->{'line'});
+		$str->{'index'}++ if ($c->{'index'} >= $before->{'index'});
 		}
-	local $iidx = &indexof($_[2], @$cache);
-	splice(@$cache, $iidx, 0, $_[0]);
+	my $iidx = &indexof($before, @$cache);
+	splice(@$cache, $iidx, 0, $str);
 	}
 else {
 	# Append to file
-	splice(@$lref, $idx, 0, &make_struct($_[0]));
-	$_[0]->{'file'} = "$config{'config_dir'}/$_[0]->{'table'}";
-	$_[0]->{'line'} = $idx;
-	$_[0]->{'index'} = @$cache;
-	push(@$cache, $_[0]->{'index'});
+	splice(@$lref, $idx, 0, &make_struct($str));
+	$str->{'file'} = "$config{'config_dir'}/$str->{'table'}";
+	$str->{'line'} = $idx;
+	$str->{'index'} = @$cache;
+	push(@$cache, $str->{'index'});
 	}
-&flush_file_lines();
+&flush_file_lines("$config{'config_dir'}/$str->{'table'}");
 }
 
 # modify_table_row(table, &parserfunc, index, line)
+# Update one row in a config table
 sub modify_table_row
 {
-local $lref = &read_file_lines("$config{'config_dir'}/$_[0]");
-local $lnum = &find_line_num($lref, $_[1], $_[2]);
-$lref->[$lnum] = &simplify_line($_[3]) if (defined($lnum));
-&flush_file_lines();
+my ($table, $pfunc, $idx, $line) = @_;
+my $lref = &read_file_lines("$config{'config_dir'}/$table");
+my $lnum = &find_line_num($lref, $pfunc, $idx);
+$lref->[$lnum] = &simplify_line($line) if (defined($lnum));
+&flush_file_lines("$config{'config_dir'}/$table");
 }
 
 # modify_table_struct(&newstruct, &oldstruct)
+# Replace one structure in a table with another
 sub modify_table_struct
 {
-local $lref = &read_file_lines("$config{'config_dir'}/$_[1]->{'table'}");
-$lref->[$_[1]->{'line'}] = &make_struct($_[0]);
-if ($_[0] ne $_[1]) {
-	$_[0]->{'line'} = $_[1]->{'line'};
-	$_[0]->{'index'} = $_[1]->{'index'};
-	local $cache = $read_table_cache{$_[1]->{'table'}};
-	local $idx = &indexof($_[1], @$cache);
-	$cache->[$idx] = $_[0];
+my ($oldstr, $newstr) = @_;
+my $lref = &read_file_lines("$config{'config_dir'}/$newstr->{'table'}");
+$lref->[$newstr->{'line'}] = &make_struct($oldstr);
+if ($oldstr ne $newstr) {
+	$oldstr->{'line'} = $newstr->{'line'};
+	$oldstr->{'index'} = $newstr->{'index'};
+	my $cache = $read_table_cache{$newstr->{'table'}};
+	my $idx = &indexof($newstr, @$cache);
+	$cache->[$idx] = $oldstr;
 	}
-&flush_file_lines();
+&flush_file_lines("$config{'config_dir'}/$newstr->{'table'}");
 }
 
 # swap_table_rows(table, &parserfunc, index1, index2)
+# Swap two config lines in some table
 sub swap_table_rows
 {
-local $lref = &read_file_lines("$config{'config_dir'}/$_[0]");
-local $lnum1 = &find_line_num($lref, $_[1], $_[2]);
-local $lnum2 = &find_line_num($lref, $_[1], $_[3]);
+my ($table, $pfunc, $idx1, $idx2) = @_;
+my $lref = &read_file_lines("$config{'config_dir'}/$table");
+my $lnum1 = &find_line_num($lref, $pfunc, $idx1);
+my $lnum2 = &find_line_num($lref, $pfunc, $idx2);
 ($lref->[$lnum1], $lref->[$lnum2]) = ($lref->[$lnum2], $lref->[$lnum1]);
-&flush_file_lines();
+&flush_file_lines("$config{'config_dir'}/$table");
 }
 
 # make_struct(&struct)
+# Convert a config structure into a line string
 sub make_struct
 {
-local $line = join("\t", @{$_[0]->{'values'}});
+my ($str) = @_;
+my $line = join("\t", @{$_[0]->{'values'}});
 if ($_[0]->{'comment'}) {
 	$line .= "\t# $_[0]->{'comment'}";
 	}
@@ -310,27 +320,29 @@ return &simplify_line($line);
 # Removes blank fields from the end of a line
 sub simplify_line
 {
-local $rv = $_[0];
+my ($rv) = @_;
 while($rv =~ s/\s+$// || $rv =~ s/\-$//) { }
 return $rv;
 }
 
 sub lock_table
 {
-&lock_file("$config{'config_dir'}/$_[0]");
+my ($table) = @_;
+&lock_file("$config{'config_dir'}/$table");
 }
 
 sub unlock_table
 {
-&unlock_file("$config{'config_dir'}/$_[0]");
+my ($table) = @_;
+&unlock_file("$config{'config_dir'}/$table");
 }
 
 # parser for whitespace-separated config files
 sub standard_parser
 {
-local $l = $_[0];
+my ($l) = @_;
 $l =~ s/#.*$//;
-local @sp = split(/\s+/, $l);
+my @sp = split(/\s+/, $l);
 return undef if ($sp[0] =~ /\??SECTION/ || $sp[0] =~ /\??FORMAT/);
 return @sp ? \@sp : undef;
 }
@@ -338,30 +350,30 @@ return @sp ? \@sp : undef;
 # parser for shell-style config files
 sub config_parser
 {
-    local $l = $_[0];
-    $l =~ s/#\s*(.*?)\s*$//;		# save the comment we strip
-    local @sp = split(/=/, $l, 2);
-    if ($#sp > -1 && defined $1) {
+my ($l) = @_;
+$l =~ s/#\s*(.*?)\s*$//;		# save the comment we strip
+my @sp = split(/=/, $l, 2);
+if ($#sp > -1 && defined $1) {
 	push @sp, $1;			# add back the saved comment, if present
 	}
-    return @sp ? \@sp : undef;
+return @sp ? \@sp : undef;
 }
 
 # determine which parser function to use
 sub get_parser_func
 {
-    local $hashref = $_[0];
-    &get_clean_table_name($hashref);
-    local $pfunc = $hashref->{'tableclean'}."_parser";
-    if (!defined(&$pfunc)) {
+my ($hashref) = @_;
+&get_clean_table_name($hashref);
+my $pfunc = $hashref->{'tableclean'}."_parser";
+if (!defined(&$pfunc)) {
 	if ($hashref->{'tableclean'} =~ /^(params|shorewall_conf)$/) {
 	    $pfunc = "config_parser";
 	}
 	else {
 	    $pfunc = "standard_parser";
 	}
-    }
-    return $pfunc;
+}
+return $pfunc;
 }
 
 # ensure that the passed string contains only characters valid in shell variable identifiers
