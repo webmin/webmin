@@ -11,7 +11,6 @@ use WebminCore;
 # Get the version
 $shorewall_version = &get_shorewall_version(0);
 %shorewall_config = &read_shorewall_config();
-#&dump_shorewall_config();
 
 # get access permissions
 %access = &get_module_acl();
@@ -53,15 +52,6 @@ while (<SHOREWALL_CONF>) {
 }
 close(SHOREWALL_CONF);
 return @ret;
-}
-
-# dump_shorewall_config()
-# - Debugging code
-sub dump_shorewall_config
-{
-	for (sort keys %shorewall_config) {
-		print STDERR "$_=$shorewall_config{$_}\n";
-	}
 }
 
 # shorewall_config(var)
