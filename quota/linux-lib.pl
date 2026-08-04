@@ -1482,9 +1482,9 @@ return defined($_[0]) && $_[0] =~ /^\d+\/\d+$/ ? 1 : 0;
 
 Sets the referenced or exclusive byte limit for a Btrfs qgroup. If qgroup is
 undef, path must be a subvolume and its level-0 qgroup is changed. If bytes
-is undef, the limit is removed. If an exceeded limit blocks the update, quota
-enforcement is temporarily overridden for one retry. Returns undef on success
-or an error message on failure.
+is undef, the limit is removed. If quota enforcement on path or one of its
+parent qgroups blocks the transaction, it is temporarily overridden for one
+retry. Returns undef on success or an error message on failure.
 
 =cut
 sub set_btrfs_qgroup_limit
@@ -1502,9 +1502,10 @@ push(@args, $qgroup) if (defined($qgroup));
 push(@args, $path);
 my ($out, $err) = &run_btrfs_command(1, @args);
 
-# An exceeded qgroup can block the metadata write needed to raise or remove its
-# own limit. Retry once with the kernel's administrative override, preserving
-# the previous state and restoring enforcement immediately after the command.
+# A limit on the command path or one of its parent qgroups can block the
+# transaction needed to update any qgroup limit. Retry once with the kernel's
+# administrative override, preserving the previous state and restoring
+# enforcement immediately after the command.
 if ($err && $err =~ /disk quota exceeded/i) {
 	my $uuid = &btrfs_filesystem_uuid($path);
 	my $sysfs = $btrfs_sysfs_root || "/sys/fs/btrfs";

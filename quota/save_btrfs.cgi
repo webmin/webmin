@@ -68,8 +68,8 @@ $same_referenced = &same_limit(
 $same_exclusive = &same_limit(
 	$max_exclusive, $qgroup->{'max_exclusive'});
 
-# Apply only changed limits, keeping an unrelated existing over-limit setting
-# from causing Btrfs to reject an otherwise valid update.
+# Apply only changed limits so each independent setting is left untouched when
+# the submitted value already matches it.
 if (!$same_referenced) {
 	$err = &set_btrfs_qgroup_limit(
 		$dir, $in{'qgroup'}, $max_referenced, 0);

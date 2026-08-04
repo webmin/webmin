@@ -287,8 +287,8 @@ is(main::set_btrfs_qgroup_limit("/srv/btrfs", "1/100", "1M"),
 is(main::assign_btrfs_qgroup("/srv/btrfs", "bad", "1/100"),
    "Invalid child Btrfs qgroup ID", "invalid child assignment is rejected");
 
-# An existing over-limit qgroup must not prevent an administrator from raising
-# or removing its limit. The kernel override is restored after the retry.
+# A qgroup-limit transaction rejected by quota enforcement is retried once,
+# and the kernel override is restored immediately afterward.
 my $override_root = tempdir(CLEANUP => 1);
 my $override_uuid = "abcdef01-2345-6789-abcd-ef0123456789";
 make_path("$override_root/$override_uuid");
@@ -305,12 +305,12 @@ local $main::btrfs_sysfs_root = $override_root;
 	{ 'out' => "", 'status' => 0 },
 	);
 is(main::set_btrfs_qgroup_limit("/srv/btrfs", "1/100", 2097152),
-   undef, "over-limit qgroup updates retry with the administrative override");
+   undef, "an EDQUOT limit update retries with the administrative override");
 open($override_fh, '<', "$override_root/$override_uuid/quota_override")
 	or die $!;
 is(<$override_fh>, "0\n", "quota enforcement is restored after the retry");
 close($override_fh);
-is(scalar(@commands), 3, "one status lookup and one limit retry are run");
+is(scalar(@commands), 3, "one UUID lookup and one limit retry are run");
 
 @responses = ({ 'out' => "ERROR: qgroup exists\n", 'status' => 1 });
 is(main::create_btrfs_qgroup("/srv/btrfs", "1/100"),
