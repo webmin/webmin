@@ -136,8 +136,14 @@ bonding_primary=Primary Interface
 bonding_primarydesc=Only applicable with activebackup, balance-tlb or balance-alb teaming modes
 bonding_miimon=Mii-Monitoring Interval
 bonding_miimondesc=(Leave blank to disable link monitoring)
+bonding_epartner=Teaming partner must be a space-separated list of interface names
 bonding_updelay=Updelay
 bonding_downdelay=Downdelay
+bonding_ebondmode=Teaming mode must be an integer
+bonding_eprimary=Primary interface must be an interface name
+bonding_emiimon=Mii-Monitoring interval must be an integer
+bonding_eupdelay=Updelay must be an integer
+bonding_edowndelay=Downdelay must be an integer
 
 vlan_add=Add Vlan Tagged Interface
 vlan_physical=Physical Device

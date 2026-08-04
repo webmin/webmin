@@ -292,11 +292,17 @@ else {
 	# Save bonding settings
 	if ($in{'bond'}) {
 		$b->{'bond'} = 1;
+		$in{'partner'} =~ /^\S+( +\S+)*$/ || &error($text{'bonding_epartner'});
 		$b->{'partner'} = $in{'partner'};
+		$in{'bondmode'} =~ /^\d*$/ || &error($text{'bonding_ebondmode'});
 		$b->{'mode'} = $in{'bondmode'};
+		$in{'primary'} =~ /^\S*$/ || &error($text{'bonding_eprimary'});
 		$b->{'primary'} = $in{'primary'};
+		$in{'miimon'} =~ /^\d*$/ || &error($text{'bonding_emiimon'});
 		$b->{'miimon'} = $in{'miimon'};
+		$in{'updelay'} =~ /^\d*$/ || &error($text{'bonding_eupdelay'});
 		$b->{'updelay'} = $in{'updelay'};
+		$in{'downdelay'} =~ /^\d*$/ || &error($text{'bonding_edowndelay'});
 		$b->{'downdelay'} = $in{'downdelay'};
 		}
 	else {
