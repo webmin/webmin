@@ -860,6 +860,8 @@ sub modify_interface_def
 {
 my ($name, $addrfam, $method, $options, $mode, $file) = @_;
 $file ||= $network_interfaces_config;
+&validate_interface_options($options);
+
 # make a backup copy
 &copy_source_dest($file, $file."~");
 local *OLDCFGFILE, *NEWCFGFILE;
@@ -907,7 +909,7 @@ while (defined ($line=<OLDCFGFILE>)) {
                # write only upon first entrance here
                if ($mode == 0 && $new_options_wrote == 0) {
                        $new_options_wrote = 1;
-                       foreach $option (@$options) {
+                       foreach my $option (@$options) {
 				my ($param, $value) = @$option;
 				&print_tempfile(NEWCFGFILE,"\t$param $value\n");
 				}
@@ -928,17 +930,33 @@ close(OLDCFGFILE);
 sub new_interface_def
 {
 local ($name, $addrfam, $method, $options, $file) = @_;
+&validate_interface_options($options);
 $file ||= $network_interfaces_config;
 local *CFGFILE;
 &open_lock_tempfile(CFGFILE, ">>$file") ||
 	error("Unable to open $file");
 &print_tempfile(CFGFILE, "\niface $name $addrfam $method\n");
-foreach $option (@$options) {
+foreach my $option (@$options) {
 	my ($param, $value) = @$option;
 	&print_tempfile(CFGFILE, "\t$param $value\n");
 	}
 &close_tempfile(CFGFILE);
 &unlock_file($file);
+}
+
+# validate_interface_options(&options)
+# Call error if any interface option name or valid is not suitable
+# for the config file
+sub validate_interface_options
+{
+my ($options) = @_;
+foreach my $option (@$options) {
+	my ($param, $value) = @$option;
+	$param =~ /\r|\n/ && &error("Invalid interface parameter name ".
+				    &html_escape($param));
+	$value =~ /\r|\n/ && &error("Invalid interface parameter value ".
+				    &html_escape($value));
+	}
 }
 
 # delete an already defined interface
