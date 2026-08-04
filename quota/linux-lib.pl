@@ -1111,6 +1111,84 @@ foreach my $m (&mount::list_mounted()) {
 return $best && $best->[2] eq "btrfs" ? 1 : 0;
 }
 
+# decode_btrfs_mount_path(path)
+# Decodes the octal escapes used by /proc/self/mountinfo.
+sub decode_btrfs_mount_path
+{
+my ($path) = @_;
+$path =~ s/\\([0-7]{3})/chr(oct($1))/eg;
+return $path;
+}
+
+# parse_btrfs_mountinfo(text, path)
+# Returns the deepest Btrfs mount point containing path and its filesystem root.
+sub parse_btrfs_mountinfo
+{
+my ($text, $path) = @_;
+my ($best_mount, $best_root);
+# Parse only Btrfs mountinfo records that can contain the requested path.
+foreach my $line (split(/\r?\n/, $text)) {
+	my ($left, $right) = split(/\s+-\s+/, $line, 2);
+	next if (!defined($right));
+	my @right = split(/\s+/, $right);
+	next if ($right[0] ne "btrfs");
+	my @left = split(/\s+/, $left);
+	next if (@left < 5);
+	my $root = &decode_btrfs_mount_path($left[3]);
+	my $mount = &decode_btrfs_mount_path($left[4]);
+	next if (!&is_under_directory($mount, $path));
+	# Prefer the deepest match when nested Btrfs subvolumes are mounted.
+	if (!defined($best_mount) || length($mount) > length($best_mount)) {
+		$best_mount = $mount;
+		$best_root = $root;
+		}
+	}
+return defined($best_mount) ? ($best_mount, $best_root) : ( );
+}
+
+=head2 btrfs_mountinfo(path)
+
+Returns the visible Btrfs mount point containing a path and its filesystem
+root, or an empty list when no containing Btrfs mount can be found.
+
+=cut
+sub btrfs_mountinfo
+{
+my ($path) = @_;
+open(my $fh, "<", "/proc/self/mountinfo") || return ( );
+local $/ = undef;
+my $text = <$fh>;
+close($fh);
+return &parse_btrfs_mountinfo($text, $path);
+}
+
+=head2 btrfs_qgroup_absolute_path(mount, filesystem-root, qgroup-path)
+
+Converts the filesystem-relative path reported by C<btrfs qgroup show> to a
+visible absolute path, or returns undef when it is outside the mounted root.
+
+=cut
+sub btrfs_qgroup_absolute_path
+{
+my ($mount, $root, $path) = @_;
+return undef if (!defined($path) || $path eq "" || $path =~ /^</);
+$root ||= "/";
+$root =~ s/^\/+//;
+$root =~ s/\/+\z//;
+$path =~ s/^\/+//;
+# Strip the mounted subvolume root from the filesystem-relative qgroup path.
+if ($root ne "") {
+	return undef if ($path ne $root && index($path, "$root/") != 0);
+	$path = substr($path, length($root));
+	$path =~ s/^\/+//;
+	}
+$mount =~ s/\/+\z// if ($mount ne "/");
+my $absolute = $path eq "" ? ($mount || "/") :
+		       ($mount eq "/" ? "/$path" : "$mount/$path");
+$absolute =~ s{//+}{/}g;
+return $absolute;
+}
+
 # valid_btrfs_path(path)
 # Returns 1 for an absolute path that is safe to pass to Btrfs tools.
 sub valid_btrfs_path

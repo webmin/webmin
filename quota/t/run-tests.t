@@ -87,6 +87,23 @@ ok(!main::is_btrfs_fs("/"),
 ok(!defined(main::btrfs_quota_status("/")),
    "quota status is unavailable for non-Btrfs paths");
 
+my $mountinfo = <<'EOF';
+24 1 0:20 / / rw,relatime - ext4 /dev/root rw
+31 24 0:42 /@home /home rw,relatime - btrfs /dev/vdb rw,compress=zstd
+32 31 0:42 /@home/example/homes/bob /srv/bob rw,relatime - btrfs /dev/vdb rw,compress=zstd
+EOF
+my ($mount, $fsroot) = main::parse_btrfs_mountinfo(
+	$mountinfo, "/home/example/homes/alice");
+is($mount, "/home", "containing Btrfs mount is selected");
+is($fsroot, '/@home', "mounted Btrfs filesystem root is returned");
+is(main::btrfs_qgroup_absolute_path(
+	$mount, $fsroot, '@home/example/homes/alice'),
+	"/home/example/homes/alice",
+	"qgroup path is translated through a mounted subvolume root");
+ok(!defined(main::btrfs_qgroup_absolute_path(
+	$mount, $fsroot, '@var/lib/mysql')),
+	"qgroups outside the mounted filesystem root are ignored");
+
 my $status_text = <<'EOF';
 Quotas on /srv/btrfs:
   Enabled:                 yes
