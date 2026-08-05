@@ -1717,6 +1717,47 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
 }
 
 {
+    my @cmds;
+    local *main::has_command = sub {
+        return $_[0] eq 'systemctl' ? '/bin/systemctl' : undef;
+    };
+    local *main::backquote_logged = sub {
+        push(@cmds, $_[0]);
+        $? = 0;
+        return 'ran';
+    };
+    my ($ok, $out) = run_global_user_systemctl(
+        'is-enabled', 'demo.service');
+    ok($ok, 'run_global_user_systemctl reports command success');
+    is($out, 'ran', 'run_global_user_systemctl returns command output');
+    is($cmds[-1],
+       quotemeta('/bin/systemctl').' --global '.quotemeta('is-enabled').' '.
+           quotemeta('demo.service').' 2>&1 </dev/null',
+       'global user systemctl command uses global scope and quotes arguments');
+}
+
+{
+    my @run;
+    local *main::run_global_user_systemctl = sub {
+        push(@run, [ @_ ]);
+        return (1, 'ok');
+    };
+    my ($ok) = enable_global_user_unit('demo.service');
+    ok($ok, 'enable_global_user_unit reports success');
+    is_deeply($run[-1], [ 'enable', 'demo.service' ],
+              'enable_global_user_unit arguments');
+    ($ok) = disable_global_user_unit('demo.service');
+    ok($ok, 'disable_global_user_unit reports success');
+    is_deeply($run[-1], [ 'disable', 'demo.service' ],
+              'disable_global_user_unit arguments');
+    my $before_invalid = scalar(@run);
+    ($ok) = enable_global_user_unit('bad;touch.service');
+    ok(!$ok, 'global user enable rejects invalid unit names');
+    is(scalar(@run), $before_invalid,
+       'invalid global user unit name builds no systemctl command');
+}
+
+{
     my @run;
     local *main::run_user_systemctl = sub {
         push(@run, [ @_ ]);
