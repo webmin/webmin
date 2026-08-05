@@ -18,7 +18,13 @@ my ($base64) = &find_xmls("base64", $value, 1);
 my ($struct) = &find_xmls("struct", $value, 1);
 my ($array) = &find_xmls("array", $value, 1);
 if ($scalar) {
-	return $scalar->[1]->[2] // "";
+    my ($type, $content) = ($scalar->[0], $scalar->[1]->[2] // "");
+
+    return int($content) if ($type eq "int" || $type eq "i4");
+    return $content ? 1 : 0 if ($type eq "boolean");
+    return $content + 0.0 if ($type eq "double");
+
+    return $content;
 	}
 elsif ($date) {
 	# Need to decode date
