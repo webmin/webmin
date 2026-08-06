@@ -71,7 +71,7 @@ if ($product) {
 			}
 		&flush_file_lines($temp);
 		&copy_source_dest($temp, "/etc/init.d/$product");
-		chmod(0755, "/etc/init.d/$product");
+		&set_ownership_permissions(0, 0, 0755, "/etc/init.d/$product");
 		&unlink_file($temp);
 		if ($status == 2 || $want_boot) {
 			&enable_at_boot($product);
@@ -100,6 +100,7 @@ if ($product) {
 		}
 	elsif (-d "/etc/init.d") {
 		copy_source_dest("$root_directory/webmin-init", "/etc/init.d/$product");
+		&set_ownership_permissions(0, 0, 0755, "/etc/init.d/$product");
 		system("chkconfig --add $product >/dev/null 2>&1");
 		}
 	}
