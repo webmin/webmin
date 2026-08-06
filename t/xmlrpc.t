@@ -228,6 +228,14 @@ subtest 'parse_xml_value' => sub {
 		'<array><data><value><int>1</int></value><value><string>x</string></value></data></array>'));
 	is(ref($a), 'ARRAY', 'array -> arrayref');
 	is_deeply($a, [1, 'x'], 'array elements parsed in order');
+
+	# Scalar tags must retain their type when a nested value is later encoded.
+	require JSON::PP;
+	my $typed = parse_xml_value(value_tree(
+		'<struct><member><name>integer</name><value><int>1800</int></value></member><member><name>boolean</name><value><boolean>1</boolean></value></member><member><name>double</name><value><double>2.5</double></value></member><member><name>string</name><value><string>1800</string></value></member></struct>'));
+	is(JSON::PP->new->canonical->encode($typed),
+	   '{"boolean":1,"double":2.5,"integer":1800,"string":"1800"}',
+	   'nested scalar types preserved for JSON');
 };
 
 # Round-trip: encode_xml_value then parse_xml_value should reproduce the

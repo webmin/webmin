@@ -2552,6 +2552,32 @@ my $out = backquote_logged($cmd." 2>&1 </dev/null");
 return (!$?, $out);
 }
 
+=head2 global_user_systemctl_command(arg, ...)
+
+Returns a quoted systemctl command line for changing global user-unit policy.
+
+=cut
+sub global_user_systemctl_command
+{
+my (@args) = @_;
+my $systemctl = has_command("systemctl") || "systemctl";
+return join(" ", quotemeta($systemctl), "--global",
+	    map { quotemeta($_) } @args);
+}
+
+=head2 run_global_user_systemctl(arg, ...)
+
+Runs systemctl --global, returning an OK flag and command output.
+
+=cut
+sub run_global_user_systemctl
+{
+my (@args) = @_;
+my $cmd = global_user_systemctl_command(@args);
+my $out = backquote_logged($cmd." 2>&1 </dev/null");
+return (!$?, $out);
+}
+
 =head2 reload_user_manager(user)
 
 Tells a user's systemd manager to re-read its unit files.
@@ -3348,6 +3374,32 @@ my $out = backquote_logged(
 	" --lines ".int($config{'logs_lines'}).$boot_arg.
 	" 2>&1 </dev/null");
 return (!$?, $out);
+}
+
+=head2 enable_global_user_unit(name)
+
+Enables a systemd user unit globally for all user managers.
+
+=cut
+sub enable_global_user_unit
+{
+my ($name) = @_;
+return (0, $text{'systemd_ename'}) if (!valid_unit_name($name));
+my ($ok, $out) = run_global_user_systemctl("enable", $name);
+return ($ok && !startup_change_skipped($out), $out);
+}
+
+=head2 disable_global_user_unit(name)
+
+Disables a globally-enabled systemd user unit for all user managers.
+
+=cut
+sub disable_global_user_unit
+{
+my ($name) = @_;
+return (0, $text{'systemd_ename'}) if (!valid_unit_name($name));
+my ($ok, $out) = run_global_user_systemctl("disable", $name);
+return ($ok && !startup_change_skipped($out), $out);
 }
 
 =head2 enable_user_unit(user, name)
