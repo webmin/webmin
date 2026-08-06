@@ -505,31 +505,31 @@ if (&new_zones_format()) {
 	my $comment = $1 if defined $1;
 	my @r = split(/\s+/, $l, 6);
 	if ($#r > -1) {
-	    my $zone = shift @r;
+		my $zone = shift(@r);
 
-	    # split out parent if it is present in the zone field
-	    my $parent;
-	    $zone =~ m/(.*?):(.*)/;
-	    if (defined $2) {
-		$zone = $1;
-		$parent = $2;
-		}
-	    else {
-		$parent = "";
-		}
-	    unshift @r, $zone, $parent;
+		# split out parent if it is present in the zone field
+		my $parent;
+		$zone =~ m/(.*?):(.*)/;
+		if (defined $2) {
+			$zone = $1;
+			$parent = $2;
+			}
+		else {
+			$parent = "";
+			}
+		unshift(@r, $zone, $parent);
 
-	    # put the saved comment back
-	    if (defined $comment) {
-		# ensure option fields are present
-		while ($#r < 5) {
-		    push @r, "";
-		}
+		# put the saved comment back
+		if (defined $comment) {
+			# ensure option fields are present
+			while ($#r < 5) {
+				push @r, "";
+			}
 
-		# add the comment field
-		push @r, $comment;
+			# add the comment field
+			push @r, $comment;
+			}
 		}
-	    }
 	return scalar(@r) ? \@r : undef;
 	}
 else {
