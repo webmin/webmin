@@ -41,6 +41,7 @@ if ($product) {
 		&flush_file_lines($temp);
 
 		copy_source_dest($temp, "$systemd_root/$product.service");
+		&set_ownership_permissions(0, 0, 0644, "$systemd_root/$product.service");
 		$reload_daemon->();
 
 		if ($status eq "disabled") {
