@@ -31,6 +31,8 @@ recommended mode when accurate referenced and exclusive usage is required.
 <dd>Tracks original ownership with lower overhead, but does not fully track
 space shared between subvolumes and snapshots.
 </dl>
+In simple accounting mode, both values show space assigned to the subvolume
+that first wrote the data. <p>
 Changing the module setting does not convert an already-enabled filesystem.
 The selected mode is used the next time quotas are enabled. <p>
 
@@ -38,7 +40,9 @@ The selected mode is used the next time quotas are enabled. <p>
 The main module page shows each mounted Btrfs filesystem, its accounting mode,
 consistency state, and an action to enable or disable quotas. Click a filesystem
 path to view its <tt>qgroups</tt>, usage, and limits. Click a <tt>qgroup</tt> ID
-to edit its referenced and exclusive limits. <p>
+to edit its referenced and exclusive limits. The top-level <tt>qgroup</tt>
+<tt>0/5</tt> is shown for information only because limiting it could stop
+filesystem changes. <p>
 
 Because quota state and <tt>qgroup</tt> IDs apply to the whole underlying Btrfs
 filesystem, delegated Webmin users must be allowed to manage all filesystems to
