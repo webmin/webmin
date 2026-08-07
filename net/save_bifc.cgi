@@ -294,7 +294,7 @@ else {
 		$b->{'bond'} = 1;
 		$in{'partner'} =~ /^\S+( +\S+)*$/ || &error($text{'bonding_epartner'});
 		$b->{'partner'} = $in{'partner'};
-		$in{'bondmode'} =~ /^\d*$/ || &error($text{'bonding_ebondmode'});
+		$in{'bondmode'} =~ /^[0-6]$/ || &error($text{'bonding_ebondmode'});
 		$b->{'mode'} = $in{'bondmode'};
 		$in{'primary'} =~ /^\S*$/ || &error($text{'bonding_eprimary'});
 		$b->{'primary'} = $in{'primary'};
