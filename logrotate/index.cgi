@@ -19,11 +19,12 @@ if (!&has_command($config{'logrotate'})) {
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
-if (!-r $config{'logrotate_conf'}) {
+my $main_config = &get_main_config_file();
+if (!-r $main_config) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
 	&ui_print_endpage(
 		&ui_config_link('index_econf',
-			[ "<tt>$config{'logrotate_conf'}</tt>", undef ]));
+			[ "<tt>$main_config</tt>", undef ]));
 	}
 
 # Get the version
@@ -52,9 +53,19 @@ foreach $c ($config{'sort_mode'} ?
 		local $p = &get_period($c->{'members'}) || $defp;
 		local $r = &find_value("postrotate", $c->{'members'});
 		$r =~ s/\n/<br>\n/g;
+		local $label = join(" ", map { "<tt>$_</tt><br>" }
+					      @{$c->{'name'}});
+
+		# Distinguish read-only vendor entries from writable local files
+		# that shadow a vendor entry at the same relative path.
+		if (&is_vendor_config_file($c->{'file'})) {
+			$label .= "<i>$text{'index_vendor'}</i>";
+			}
+		elsif (&get_vendor_config_file($c->{'file'})) {
+			$label .= "<i>$text{'index_override'}</i>";
+			}
 		push(@table, [ &ui_link("edit_log.cgi?idx=".$c->{'index'},
-			       join(" ", map { "<tt>$_</tt><br>" }
-					     @{$c->{'name'}}) ),
+			       $label),
 			       $text{'period_'.$p} ||
 				"<i>$text{'index_notset'}</i>",
 			       $r ? "<tt><font size=-1>$r</font></tt>"

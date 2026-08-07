@@ -5,7 +5,13 @@
 require './logrotate-lib.pl';
 &ui_print_header(undef, $text{'sched_title'}, "");
 
-print "<p>",&text('sched_desc', "<tt>$config{'logrotate'}</tt>"),"<p>\n";
+# Show the wrapper or fallback command on vendor-overlay systems, while
+# retaining the original short program name everywhere else.
+my $sched_command = ($config{'logrotate_all'} ||
+	$config{'vendor_logrotate_conf'} || $config{'vendor_add_file'}) ?
+		&get_scheduled_logrotate_command() : $config{'logrotate'};
+print "<p>",&text('sched_desc', "<tt>".
+	&html_escape($sched_command)."</tt>"),"<p>\n";
 
 # Find the job, looking in daily directories too
 &foreign_require("cron", "cron-lib.pl");

@@ -1,5 +1,8 @@
 sort_mode=0
 logrotate_conf=/etc/logrotate.conf
+vendor_logrotate_conf=/usr/etc/logrotate.conf
 add_file=/etc/logrotate.d
+vendor_add_file=/usr/etc/logrotate.d
 scan_add_file=1
 logrotate=logrotate
+logrotate_all=/usr/sbin/logrotate-all

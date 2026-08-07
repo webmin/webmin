@@ -19,6 +19,8 @@ index_force=Force Log Rotation
 index_forcedesc=Force the immediate rotation of all log files, even if it is not yet time.
 index_logrotate=Logrotate
 index_delete=Delete Selected Log Rotations
+index_vendor=Vendor configuration
+index_override=Local vendor override
 
 period_daily=Daily
 period_weekly=Weekly
@@ -65,11 +67,17 @@ edit_default=Default ($1)
 edit_sharedscripts=Only run scripts once for all files?
 edit_now=Rotate Now
 edit_clone=Clone
+edit_vendor=This is a vendor-provided configuration. Saving or deleting it will first create the local override $1; the file under <tt>/usr/etc</tt> will not be changed.
+edit_override=This local configuration overrides the vendor file $1.
 
 global_title=Global Options
 global_header=Default options for all log files
+global_vendor=These defaults currently come from the vendor configuration. Saving will first create the writable local configuration $1; the file under <tt>/usr/etc</tt> will not be changed.
 
 save_err=Failed to save log
+save_eoverride=Cannot create local override $1 because that path already exists and is not a regular file.
+save_ecopy=Failed to create local override $1: $2
+save_evendorwrite=Refusing to modify vendor configuration $1 without first creating a local override.
 save_efile=Missing or invalid log filename
 save_esize=Missing or invalid maximum size
 save_eminsize=Missing or invalid minimum size
