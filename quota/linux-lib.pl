@@ -1560,10 +1560,8 @@ return defined($_[0]) && $_[0] =~ /^\d+\/\d+$/ ? 1 : 0;
 
 Sets the referenced or exclusive byte limit for a Btrfs qgroup. If qgroup is
 undef, path must be a subvolume and its level-0 qgroup is changed. If bytes
-is undef, the limit is removed. If the qgroup for the subvolume containing
-path, or one of its parent qgroups, blocks the transaction, quota enforcement
-is temporarily overridden for one retry. Returns undef on success or an error
-message on failure.
+is undef, the limit is removed. Returns undef on success or an error message
+on failure.
 
 =cut
 sub set_btrfs_qgroup_limit
@@ -1580,45 +1578,6 @@ push(@args, defined($bytes) ? $bytes : "none");
 push(@args, $qgroup) if (defined($qgroup));
 push(@args, $path);
 my ($out, $err) = &run_btrfs_command(1, @args);
-
-# If the qgroup for the subvolume containing $path, or one of its parent
-# qgroups, is over quota, Btrfs can reject the transaction needed to update any
-# qgroup limit. Retry once with the kernel's administrative override,
-# preserving the previous state and restoring enforcement immediately after
-# the command.
-if ($err && $err =~ /disk quota exceeded/i) {
-	my $uuid = &btrfs_filesystem_uuid($path);
-	my $sysfs = $btrfs_sysfs_root || "/sys/fs/btrfs";
-	my $override = $uuid ? "$sysfs/$uuid/quota_override" : undef;
-	my $current;
-	if ($override && open(my $fh, "<", $override)) {
-		$current = <$fh>;
-		close($fh);
-		$current =~ s/\s+//g if (defined($current));
-		}
-
-	# Only change a known disabled override; an active or unreadable setting
-	# belongs to the administrator and must not be altered here.
-	if (defined($current) && $current eq "0") {
-		my $enabled;
-		if (open(my $fh, ">", $override)) {
-			my $written = syswrite($fh, "1\n");
-			$enabled = defined($written) && $written == 2;
-			close($fh);
-			}
-		if ($enabled) {
-			($out, $err) = &run_btrfs_command(1, @args);
-			my $restored;
-			if (open(my $fh, ">", $override)) {
-				my $written = syswrite($fh, "0\n");
-				$restored = defined($written) && $written == 2;
-				close($fh);
-				}
-			return "Failed to restore Btrfs quota enforcement"
-				if (!$restored);
-			}
-		}
-	}
 return $err;
 }
 

@@ -304,30 +304,12 @@ is(main::set_btrfs_qgroup_limit("/srv/btrfs", "1/100", "1M"),
 is(main::assign_btrfs_qgroup("/srv/btrfs", "bad", "1/100"),
    "Invalid child Btrfs qgroup ID", "invalid child assignment is rejected");
 
-# A qgroup-limit transaction rejected by quota enforcement is retried once,
-# and the kernel override is restored immediately afterward.
-my $override_root = tempdir(CLEANUP => 1);
-my $override_uuid = "abcdef01-2345-6789-abcd-ef0123456789";
-make_path("$override_root/$override_uuid");
-open(my $override_fh, '>',
-     "$override_root/$override_uuid/quota_override") or die $!;
-print {$override_fh} "0\n";
-close($override_fh);
-local $main::btrfs_sysfs_root = $override_root;
 @commands = ( );
-@responses = (
-	{ 'out' => "ERROR: unable to limit requested quota group: ".
-		   "Disk quota exceeded\n", 'status' => 1 },
-	{ 'out' => "Label: none  uuid: $override_uuid\n", 'status' => 0 },
-	{ 'out' => "", 'status' => 0 },
-	);
-is(main::set_btrfs_qgroup_limit("/srv/btrfs", "1/100", 2097152),
-   undef, "an EDQUOT limit update retries with the administrative override");
-open($override_fh, '<', "$override_root/$override_uuid/quota_override")
-	or die $!;
-is(<$override_fh>, "0\n", "quota enforcement is restored after the retry");
-close($override_fh);
-is(scalar(@commands), 3, "one UUID lookup and one limit retry are run");
+@responses = ({ 'out' => "ERROR: unable to limit requested quota group: ".
+			 "Disk quota exceeded\n", 'status' => 1 });
+like(main::set_btrfs_qgroup_limit("/srv/btrfs", "1/100", 2097152),
+     qr/Disk quota exceeded/, "qgroup limit errors are returned without retry");
+is(scalar(@commands), 1, "a failed qgroup limit command is not retried");
 
 @responses = ({ 'out' => "ERROR: qgroup exists\n", 'status' => 1 });
 is(main::create_btrfs_qgroup("/srv/btrfs", "1/100"),
