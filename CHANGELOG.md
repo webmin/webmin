@@ -1,6 +1,7 @@
 ## Changelog
 #### 2.654 (August, 2026)
 * Add incremental ban time options to the Fail2Ban module
+* Add Btrfs subvolume quota management to the Disk Quotas module, with full and simple accounting modes
 * Fix to ignore failures when adding IPv6 link-local (fe80::) addresses that may already be configured automatically
 * Fixed creation of permissions new log files in the System Logs module (thanks to Kevin Carter)
 * Update the Authentic theme to the latest version with various improvements:
