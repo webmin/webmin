@@ -82,6 +82,12 @@ the following :
 =cut
 sub quota_can
 {
+my ($mnttab) = @_;
+
+# The quota-tools commands used by this module cannot reliably manage tmpfs
+# mounts, even when they expose usrquota or grpquota mount options.
+return 0 if ($mnttab->[2] eq "tmpfs");
+
 my %exclude_mounts;
 if (&has_command("findmnt")) {
 	%exclude_mounts = map { $_ => 1 } split( /\n/m, backquote_command('findmnt -r | grep -oP \'^(\S+)(?=.*\[\/)\'') );
@@ -1105,6 +1111,84 @@ foreach my $m (&mount::list_mounted()) {
 return $best && $best->[2] eq "btrfs" ? 1 : 0;
 }
 
+# decode_btrfs_mount_path(path)
+# Decodes the octal escapes used by /proc/self/mountinfo.
+sub decode_btrfs_mount_path
+{
+my ($path) = @_;
+$path =~ s/\\([0-7]{3})/chr(oct($1))/eg;
+return $path;
+}
+
+# parse_btrfs_mountinfo(text, path)
+# Returns the deepest Btrfs mount point containing path and its filesystem root.
+sub parse_btrfs_mountinfo
+{
+my ($text, $path) = @_;
+my ($best_mount, $best_root);
+# Parse only Btrfs mountinfo records that can contain the requested path.
+foreach my $line (split(/\r?\n/, $text)) {
+	my ($left, $right) = split(/\s+-\s+/, $line, 2);
+	next if (!defined($right));
+	my @right = split(/\s+/, $right);
+	next if ($right[0] ne "btrfs");
+	my @left = split(/\s+/, $left);
+	next if (@left < 5);
+	my $root = &decode_btrfs_mount_path($left[3]);
+	my $mount = &decode_btrfs_mount_path($left[4]);
+	next if (!&is_under_directory($mount, $path));
+	# Prefer the deepest match when nested Btrfs subvolumes are mounted.
+	if (!defined($best_mount) || length($mount) > length($best_mount)) {
+		$best_mount = $mount;
+		$best_root = $root;
+		}
+	}
+return defined($best_mount) ? ($best_mount, $best_root) : ( );
+}
+
+=head2 btrfs_mountinfo(path)
+
+Returns the visible Btrfs mount point containing a path and its filesystem
+root, or an empty list when no containing Btrfs mount can be found.
+
+=cut
+sub btrfs_mountinfo
+{
+my ($path) = @_;
+open(my $fh, "<", "/proc/self/mountinfo") || return ( );
+local $/ = undef;
+my $text = <$fh>;
+close($fh);
+return &parse_btrfs_mountinfo($text, $path);
+}
+
+=head2 btrfs_qgroup_absolute_path(mount, filesystem-root, qgroup-path)
+
+Converts the filesystem-relative path reported by C<btrfs qgroup show> to a
+visible absolute path, or returns undef when it is outside the mounted root.
+
+=cut
+sub btrfs_qgroup_absolute_path
+{
+my ($mount, $root, $path) = @_;
+return undef if (!defined($path) || $path eq "" || $path =~ /^</);
+$root ||= "/";
+$root =~ s/^\/+//;
+$root =~ s/\/+\z//;
+$path =~ s/^\/+//;
+# Strip the mounted subvolume root from the filesystem-relative qgroup path.
+if ($root ne "") {
+	return undef if ($path ne $root && index($path, "$root/") != 0);
+	$path = substr($path, length($root));
+	$path =~ s/^\/+//;
+	}
+$mount =~ s/\/+\z// if ($mount ne "/");
+my $absolute = $path eq "" ? ($mount || "/") :
+		       ($mount eq "/" ? "/$path" : "$mount/$path");
+$absolute =~ s{//+}{/}g;
+return $absolute;
+}
+
 # valid_btrfs_path(path)
 # Returns 1 for an absolute path that is safe to pass to Btrfs tools.
 sub valid_btrfs_path
@@ -1168,6 +1252,53 @@ $rv{'levels'} = \%levels if (%levels);
 return \%rv;
 }
 
+# btrfs_filesystem_uuid(path)
+# Returns the UUID of the Btrfs filesystem containing a path.
+sub btrfs_filesystem_uuid
+{
+my ($path) = @_;
+my ($out, $err) = &run_btrfs_command(
+	0, "filesystem", "show", "--raw", $path);
+return undef if (!defined($out) ||
+		 $out !~ /^\s*Label:.*\buuid:\s*([0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})\s*$/mi);
+return lc($1);
+}
+
+# btrfs_sysfs_quota_status(path)
+# Reads quota state exported by the kernel. This preserves accounting mode and
+# consistency information on btrfs-progs releases older than `quota status`.
+sub btrfs_sysfs_quota_status
+{
+my ($path) = @_;
+my $uuid = &btrfs_filesystem_uuid($path);
+return undef if (!$uuid);
+my $sysfs = $btrfs_sysfs_root || "/sys/fs/btrfs";
+my $qdir = "$sysfs/$uuid/qgroups";
+return undef if (!-d $qdir);
+
+my %rv = ( 'supported' => 1, 'enabled' => 1 );
+foreach my $field (qw(enabled mode inconsistent)) {
+	my $file = "$qdir/$field";
+	next if (!-r $file);
+	open(my $fh, "<", $file) || next;
+	my $value = <$fh>;
+	close($fh);
+	next if (!defined($value));
+	$value =~ s/^\s+|\s+$//g;
+	if ($field eq "mode" && $value =~ /^(qgroup|squota)$/) {
+		$rv{$field} = $value;
+		}
+	elsif ($field ne "mode" && $value =~ /^([01])$/) {
+		$rv{$field} = int($1);
+		}
+	}
+
+# Kernels predating simple quotas expose the qgroups directory without a mode
+# file. Their only possible accounting mode is full qgroups.
+$rv{'mode'} = "qgroup" if (!defined($rv{'mode'}) && !-e "$qdir/mode");
+return \%rv;
+}
+
 =head2 btrfs_quota_status(path)
 
 Returns a hash reference describing the Btrfs quota status for a path. The
@@ -1194,8 +1325,20 @@ if (defined($out)) {
 # quotas are enabled, and reports a missing quota root when disabled.
 my ($qout, $qerr) = &run_btrfs_command(0, "qgroup", "show", "--raw", $path);
 if (defined($qout)) {
-	return { 'supported' => 1,
-		 'enabled' => 1 };
+	my $rv = &btrfs_sysfs_quota_status($path) ||
+		 { 'supported' => 1, 'enabled' => 1 };
+	# Old qgroup-show versions warn on stdout when the counters are
+	# inconsistent. Retain that signal if sysfs did not provide the flag.
+	if (!defined($rv->{'inconsistent'})) {
+		$rv->{'inconsistent'} =
+			$qout =~ /^\s*(?:warning|error):.*qgroup.*inconsistent/mi ?
+			1 : 0;
+		}
+	# A simple-quota space holder is definitive even when sysfs is unavailable.
+	$rv->{'mode'} = "squota"
+		if (!defined($rv->{'mode'}) &&
+		    $qout =~ /<squota space holder>/i);
+	return $rv;
 	}
 elsif ($qerr =~ /(?:quota root does not exist|quotas? (?:are |is )?not enabled)/i) {
 	return { 'supported' => 1,
@@ -1243,6 +1386,27 @@ foreach my $line (split(/\r?\n/, $out)) {
 return \@rv;
 }
 
+=head2 parse_btrfs_subvolume_list_output(output)
+
+Parses raw output from C<btrfs subvolume list> and returns a hash reference
+mapping numeric subvolume IDs to filesystem-relative paths. This is used to
+fill qgroup paths on btrfs-progs versions older than 6.0.1.
+
+=cut
+sub parse_btrfs_subvolume_list_output
+{
+my ($out) = @_;
+my %rv;
+foreach my $line (split(/\r?\n/, $out)) {
+	# The default output ends in "path <path relative to top level>".
+	# Keep the final field intact because Btrfs paths may contain spaces.
+	if ($line =~ /^ID\s+(\d+)\s+.*?\s+path\s+(.*)$/) {
+		$rv{int($1)} = $2;
+		}
+	}
+return \%rv;
+}
+
 =head2 list_btrfs_qgroups(path, [sync], [&error])
 
 Returns an array reference containing all Btrfs qgroups on the filesystem
@@ -1271,6 +1435,22 @@ my $rv = &parse_btrfs_qgroup_output($out);
 if (!@$rv && $out =~ /\S/) {
 	$$errref = "Unable to parse Btrfs qgroup output" if ($errref);
 	return undef;
+	}
+# qgroup paths were not printed by default until btrfs-progs 6.0.1. Populate
+# missing level-0 paths from the long-established subvolume-list output so
+# callers can keep identifying subvolumes by path on supported older systems.
+if (grep { $_->{'id'} =~ /^0\/(\d+)$/ && $_->{'path'} eq '' } @$rv) {
+	my ($subvolout) = &run_btrfs_command(
+		0, "subvolume", "list", $path);
+	if (defined($subvolout)) {
+		my $paths = &parse_btrfs_subvolume_list_output($subvolout);
+		foreach my $q (@$rv) {
+			if ($q->{'id'} =~ /^0\/(\d+)$/ && $q->{'path'} eq '' &&
+			    defined($paths->{$1})) {
+				$q->{'path'} = $paths->{$1};
+				}
+			}
+		}
 	}
 $$errref = undef if ($errref);
 return $rv;

@@ -1,0 +1,57 @@
+<header>Btrfs Subvolume Quotas</header>
+
+<h3>Introduction</h3>
+Btrfs quotas control disk usage for subvolumes through quota groups, usually
+called <tt>qgroups</tt>. Unlike traditional Unix quotas, they do not limit an
+individual user or group and do not provide soft limits, grace periods, or
+file-count limits. <p>
+
+Each Btrfs subvolume has a level-0 <tt>qgroup</tt>. The module displays the
+following usage and limit values for each <tt>qgroup</tt> :
+<dl>
+<dt><b>Referenced</b>
+<dd>All data reachable from the subvolume, including data shared with other
+subvolumes or snapshots.
+<dt><b>Exclusive</b>
+<dd>Data used only by the subvolume, which would be freed if it were deleted.
+<dt><b>Referenced limit</b>
+<dd>The maximum referenced space that the <tt>qgroup</tt> may use.
+<dt><b>Exclusive limit</b>
+<dd>The maximum exclusive space that the <tt>qgroup</tt> may use.
+</dl>
+
+<h3>Accounting Modes</h3>
+When Btrfs quotas are enabled, the accounting mode configured in the module
+settings is used :
+<dl>
+<dt><b>Full accounting</b>
+<dd>Tracks shared space between subvolumes and snapshots. This is the
+recommended mode when accurate referenced and exclusive usage is required.
+<dt><b>Simple accounting</b>
+<dd>Tracks original ownership with lower overhead, but does not fully track
+space shared between subvolumes and snapshots.
+</dl>
+In simple accounting mode, both values show space assigned to the subvolume
+that first wrote the data. <p>
+Changing the module setting does not convert an already-enabled filesystem.
+The selected mode is used the next time quotas are enabled. <p>
+
+<h3>Managing Btrfs Quotas</h3>
+The main module page shows each mounted Btrfs filesystem, its accounting mode,
+consistency state, and an action to enable or disable quotas. Click a filesystem
+path to view its <tt>qgroups</tt>, usage, and limits. Click a <tt>qgroup</tt> ID
+to edit its referenced and exclusive limits. The top-level <tt>qgroup</tt>
+<tt>0/5</tt> is shown for information only because limiting it could stop
+filesystem changes. <p>
+
+Because quota state and <tt>qgroup</tt> IDs apply to the whole underlying Btrfs
+filesystem, delegated Webmin users must be allowed to manage all filesystems to
+access these controls. A permission scoped to one mounted subvolume is not
+sufficient. <p>
+
+Full accounting also provides a rescan action for rebuilding <tt>qgroup</tt>
+accounting in the background. Disabling Btrfs quotas removes all
+<tt>qgroup</tt> configuration and limits on the filesystem, so the module
+always requests confirmation first. <p>
+
+<hr>

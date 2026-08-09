@@ -82,6 +82,32 @@ if (defined(&quota_possible)) {
 return grep { $_->[4] || $_->[6] } @mtab;
 }
 
+=head2 list_btrfs_filesystems
+
+Returns one entry for each mounted Btrfs filesystem when the OS library
+provides the Btrfs quota API. Command availability and quota status are checked
+separately by callers; on systems without the API, this function returns an
+empty list.
+
+=cut
+sub list_btrfs_filesystems
+{
+# The OS-specific library determines whether Btrfs quota operations exist.
+return ( ) if (!defined(&btrfs_quota_status));
+
+# Separately mounted subvolumes share quota state, so keep only the first mount
+# for each underlying source while preserving the original display order.
+my %seen;
+my @filesystems;
+foreach my $fs (&mount::list_mounted()) {
+	next if ($fs->[2] ne "btrfs");
+	(my $source = $fs->[1]) =~ s/\[[^\]]*\]$//;
+	next if ($seen{$source}++);
+	push(@filesystems, $fs);
+	}
+return @filesystems;
+}
+
 =head2 parse_options(type, options)
 
 Convert an options string for some filesystem into the global hash %options.
@@ -410,6 +436,20 @@ foreach $fs (split(/\s+/, $access{'filesys'})) {
 	return 1 if ($fs eq "*" || $fs eq $_[0]);
 	}
 return 0;
+}
+
+=head2 can_edit_btrfs_filesys(filesys)
+
+Returns 1 if the current Webmin user can manage Btrfs quotas. Btrfs quota state
+and qgroup IDs belong to the whole underlying filesystem, so a mount-path ACL
+cannot safely confine access to one separately mounted subvolume.
+
+=cut
+sub can_edit_btrfs_filesys
+{
+my ($filesys) = @_;
+return 0 if (!&can_edit_filesys($filesys));
+return scalar(grep { $_ eq "*" } split(/\s+/, $access{'filesys'})) ? 1 : 0;
 }
 
 =head2 can_edit_user(user)

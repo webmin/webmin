@@ -1,21 +1,31 @@
 #!/usr/local/bin/perl
 # index.cgi
 # Display a list of all local filesystems, and allow editing of quotas
-# on those which have quotas turned on. The actual turning on of quotas must
-# be done in the mount module first.
+# on those which have quotas turned on. Traditional quota mount options are
+# configured in the mount module, while Btrfs quotas are managed here.
 
 require './quota-lib.pl';
-&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
+
+# Discover allowed Btrfs mounts independently of the traditional quota tools.
+@btrfs = grep { &can_edit_btrfs_filesys($_->[0]) } &list_btrfs_filesystems();
+$err = &quotas_init();
+
+# Traditional filesystems are unavailable when quota-tools initialization fails.
+@list = $err ? ( ) : &list_filesystems();
+
+# Use focused Btrfs help when it is the only quota model shown on this page.
+$help = @btrfs && !@list ? "btrfs" : "intro";
+&ui_print_header(undef, $text{'index_title'}, "", $help, 1, 1, 0,
 	&help_search_link("quota", "man", "howto"));
 
-$err = &quotas_init();
-if ($err) {
+# Stop only when neither traditional quota tools nor Btrfs tools can provide a
+# usable filesystem list.
+if ($err && (!@btrfs || !&has_command("btrfs"))) {
 	print "<p><b>$err</b><p>\n";
 	&ui_print_footer("/", $text{'index_return'});
 	exit;
 	}
 
-@list = &list_filesystems();
 if (@list) {
 	print &ui_columns_start([
 		$text{'index_fs'},
@@ -97,11 +107,82 @@ if (@list) {
 		}
 	print &ui_columns_end();
 	}
-else {
+# Report no support only when neither traditional nor Btrfs filesystems exist.
+elsif (!@btrfs) {
 	print "<b>$text{'index_nosupport'}</b><p>\n";
 	if (&foreign_available("mount")) {
 		print &text('index_mountmod', "../mount/"),"<p>\n";
 		}
+	}
+
+# Btrfs subvolume quotas use qgroups instead of Unix users and groups, so they
+# are shown separately from the traditional quota filesystems above.
+if (@btrfs) {
+	# Activation controls require both enable permission and write access.
+	$btrfs_canactivate = $access{'enable'} && !$access{'ro'};
+
+	# Start a table with an action column only for users who can change state.
+	print &ui_columns_start([
+		$text{'index_fs'},
+		$text{'index_type'},
+		$text{'index_mount'},
+		$text{'index_status'},
+		$btrfs_canactivate ? ( $text{'index_action'} ) : (),
+		], 100, 0, undef, &hlink($text{'index_btrfs_title'}, "btrfs"));
+	foreach $f (@btrfs) {
+		# Query each mount independently so failures remain visible per row.
+		undef($action);
+		$status = &btrfs_quota_status($f->[0]);
+
+		# The OS library could not identify this path as manageable Btrfs.
+		if (!$status) {
+			$msg = $text{'index_btrfs_unavailable'};
+			}
+		# Surface command or parsing errors without offering a state change.
+		elsif ($status->{'error'}) {
+			$msg = &text('index_btrfs_error',
+					&html_escape($status->{'error'}));
+			}
+		# Disabled filesystems can be enabled using the configured mode.
+		elsif (!$status->{'enabled'}) {
+			$msg = $text{'index_btrfs_disabled'};
+			$action = "enable";
+			}
+		# Enabled filesystems expose their accounting and consistency state.
+		else {
+			$mode = $status->{'mode'} eq "squota" ?
+				$text{'index_btrfs_simple'} :
+				$status->{'mode'} eq "qgroup" ?
+				$text{'index_btrfs_full'} :
+				$text{'index_btrfs_unknown'};
+			$msg = &text('index_btrfs_enabled', $mode);
+			$msg .= ", $text{'index_btrfs_inconsistent'}"
+				if ($status->{'inconsistent'});
+			$action = "disable";
+			}
+
+		# Build the common filesystem, type, source and status columns.
+		local @cols = (
+			&ui_link("list_btrfs.cgi?dir=".&urlize($f->[0]),
+				 &html_escape($f->[0])),
+			&foreign_call("mount", "fstype_name", $f->[2]),
+			&foreign_call("mount", "device_name", $f->[1]),
+			$msg,
+			);
+
+		# Add the state-changing link only when the ACL allows it.
+		if ($btrfs_canactivate) {
+			push(@cols, $action ?
+				&ui_link("btrfs_action.cgi?dir=".&urlize($f->[0]).
+					 "&action=$action",
+					 $action eq "enable" ? $text{'index_enable'} :
+							       $text{'index_disable'}) : "-");
+			}
+		print &ui_columns_row(\@cols);
+		}
+
+	# Close the separately titled Btrfs filesystem table.
+	print &ui_columns_end();
 	}
 
 # Buttons to edit and specific user or group
