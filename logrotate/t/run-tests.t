@@ -162,22 +162,24 @@ is_deeply(log_names($config), [ '/var/log/vendor-main.log' ],
 is_deeply($files, [ $vendor_main_file ],
 	'file cache excludes external directories when scanning is disabled');
 
-# The low-level writer must fail closed if a caller skips copy-on-write.
-{
-no warnings qw(once redefine);
-local *main::error = sub { die $_[0]; };
-eval {
-	main::save_directive(main::get_config_parent(), 'weekly', '');
-	};
-like($@, qr/Refusing to modify vendor configuration/,
-	'direct writes to vendor configuration are rejected');
-}
+# The public writer performs copy-on-write itself, so API consumers do not
+# need to know whether the effective main configuration came from /usr/etc.
+my $vendor_parent = main::get_config_parent();
+main::save_directive($vendor_parent, 'weekly', '');
+main::flush_file_lines($local_main_file);
+is(read_text($local_main_file), $vendor_main_text,
+	'direct main-config writes automatically create a local copy');
+is(read_text($vendor_main_file), $vendor_main_text,
+	'automatic main-config copying leaves the vendor file unchanged');
+is(main::find('weekly', $vendor_parent->{'members'})->{'file'},
+	$local_main_file,
+	'the caller parent is rebound to the writable main config');
 
-# Editing global options materializes an exact local copy of the vendor main.
+# Repeated preparation is harmless once the local main override exists.
 $main::config{'scan_add_file'} = 1;
 clear_config_cache();
 is(main::ensure_local_main_config(), $local_main_file,
-	'editing the vendor main config creates a local main config');
+	'an existing local main config remains the write target');
 is(read_text($local_main_file), $vendor_main_text,
 	'local main config starts as an exact vendor copy');
 is(read_text($vendor_main_file), $vendor_main_text,
@@ -185,12 +187,18 @@ is(read_text($vendor_main_file), $vendor_main_text,
 is(main::get_main_config_file(), $local_main_file,
 	'local main config takes precedence after it is created');
 
-# Editing a nested vendor drop-in copies the whole source file to the same
-# relative path in the local tree and immediately switches parser ownership.
+# A nested save through the public API copies the whole vendor drop-in to the
+# same relative local path and immediately switches the caller's ownership.
 my $vendor_dropin = "$vendor_add_dir/deep/vendor";
 my $local_dropin = "$local_add_dir/deep/vendor";
-is(main::ensure_local_config_override($vendor_dropin), $local_dropin,
-	'editing a vendor drop-in creates its matching local override');
+($config, undef, $files) = main::get_config();
+my ($deep_log) = grep { $_->{'members'} &&
+			       $_->{'name'}->[0] eq '/var/log/deep-vendor.log' }
+			 @$config;
+main::save_directive($deep_log, 'monthly', '', "\t");
+main::flush_file_lines($local_dropin);
+is($deep_log->{'file'}, $local_dropin,
+	'nested vendor writes transparently rebind the caller locally');
 is(read_text($local_dropin), read_text($vendor_dropin),
 	'local drop-in starts as an exact copy of the whole vendor file');
 is(main::get_local_override_file($vendor_dropin), $local_dropin,
@@ -199,11 +207,28 @@ is(main::get_vendor_config_file($local_dropin), $vendor_dropin,
 	'local override maps back to the shadowed vendor file');
 
 ($config, undef, $files) = main::get_config();
-my ($deep_log) = grep { $_->{'members'} &&
-			       $_->{'name'}->[0] eq '/var/log/deep-vendor.log' }
-			 @$config;
+($deep_log) = grep { $_->{'members'} &&
+			    $_->{'name'}->[0] eq '/var/log/deep-vendor.log' }
+		      @$config;
 is($deep_log->{'file'}, $local_dropin,
 	'parser switches to the local copy after an override is created');
+
+# Whole-section callers may mutate and pass the same parsed object as both
+# old and new.  Preserve those edits while changing its file ownership.
+my $vendor_one = "$vendor_add_dir/one";
+my $local_one = "$local_add_dir/one";
+my ($one_log) = grep { $_->{'members'} &&
+			      $_->{'name'}->[0] eq '/var/log/vendor-one.log' }
+			@$config;
+push(@{$one_log->{'name'}}, '/var/log/vendor-one-extra.log');
+main::save_directive(main::get_config_parent(), $one_log, $one_log);
+main::flush_file_lines($local_one);
+is($one_log->{'file'}, $local_one,
+	'whole-section saves preserve the caller object and move it locally');
+like(read_text($local_one), qr{/var/log/vendor-one-extra\.log},
+	'whole-section saves preserve pending caller edits');
+unlike(read_text($vendor_one), qr{/var/log/vendor-one-extra\.log},
+	'whole-section saves never change the vendor source');
 
 # An empty local file must remain both effective and backup-visible because
 # its existence is what prevents the vendor file from becoming active again.
@@ -249,5 +274,22 @@ local $main::config{'vendor_add_file'} = $edge_vendor_dir;
 is_deeply([ main::get_add_file_configs() ], [ "$edge_local_dir/linked" ],
 	'local existing path overrides the matching vendor file');
 }
+
+# A regular local path must still be rejected when it is a hard link to its
+# vendor source, because otherwise an apparently local write would alter /usr.
+my $hardlink_dir = tempdir(CLEANUP => 1);
+my $hardlink_vendor = "$hardlink_dir/vendor";
+my $hardlink_local = "$hardlink_dir/local";
+write_text($hardlink_vendor, "vendor\n");
+link($hardlink_vendor, $hardlink_local) or
+	die "link $hardlink_local: $!";
+{
+no warnings qw(once redefine);
+local *main::error = sub { die $_[0]; };
+eval { main::copy_vendor_config($hardlink_vendor, $hardlink_local); };
+ok($@, 'a hard-linked local override is rejected');
+}
+is(read_text($hardlink_vendor), "vendor\n",
+	'rejecting a hard-linked override leaves the vendor source unchanged');
 
 done_testing();
