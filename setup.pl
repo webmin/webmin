@@ -66,7 +66,7 @@ if ($ENV{'perllib'}) {
 # Validate source directory
 @allmods = map { s/\/module.info$//; $_ } glob("*/module.info");
 if (!@allmods) {
-	&errorexit("ERROR: Failed to get module list");
+	&errorexit("Failed to get module list");
 	}
 $allmods = join(" ", @allmods);
 print "\n";
