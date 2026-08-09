@@ -74,15 +74,21 @@ print &ui_form_start("@{[&get_webprefix()]}/pam_login.cgi", "post");
 print &ui_hidden("cid", $in{'cid'});
 
 my $not_secure;
-if ($ENV{'HTTPS'} ne 'ON' && $miniserv{'ssl'}) {
-	my $link = ui_tag('a', "&#9888; $text{'login_notsecure'}",
-		{ 'href' => "javascript:void(0);",
-		  'class' => 'inherit-color',
-		  'onclick' => "window.location.href = ".
-		    "window.location.href.replace(/^http:/, 'https:'); return false;",
-		});
-	$not_secure = ui_tag('span', $link,
-		{ class => 'not-secure', title => $text{'login_notsecure_desc'} });
+if ($ENV{'HTTPS'} ne 'ON' &&
+    ($miniserv{'ssl'} || !$miniserv{'no_ssl_warn'})) {
+	my $warning = "&#9888; $text{'login_notsecure'}";
+	my $description = $text{'login_notsecure_http_desc'};
+	if ($miniserv{'ssl'}) {
+		$warning = ui_tag('a', $warning,
+			{ 'href' => "javascript:void(0);",
+			  'class' => 'inherit-color',
+			  'onclick' => "window.location.href = ".
+			    "window.location.href.replace(/^http:/, 'https:'); return false;",
+			});
+		$description = $text{'login_notsecure_desc'};
+		}
+	$not_secure = ui_tag('span', $warning,
+		{ class => 'not-secure', title => $description });
 	}
 
 print &ui_table_start($text{'pam_header'} . $not_secure,

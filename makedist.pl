@@ -30,7 +30,7 @@ $vers || usage();
 	  "miniserv.pl", "miniserv-lib.pl", "os_list.txt", "perlpath.pl",
 	  "setup.sh", "setup.pl", "setup.bat",
 	  "setup-repos.sh", "version", "web-lib.pl", "web-lib-funcs.pl",
-	  "config_save.cgi", "chooser.cgi", "miniserv.pem",
+	  "config_save.cgi", "chooser.cgi",
 	  "config-aix", "update-from-repo.sh", "README.md",
 	  "newmods.pl", "copyconfig.pl", "config-hpux", "config-freebsd",
 	  "changepass.pl", "help.cgi", "user_chooser.cgi",

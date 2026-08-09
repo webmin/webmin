@@ -458,6 +458,9 @@ else
 	fi
 
 	# Ask the user if SSL should be used
+	if [ "$ssl" = "0" ]; then
+		no_ssl_warn=1
+	fi
 	if [ "$ssl" = "" ]; then
 		ssl=0
 		$perl -e 'use Net::SSLeay' >/dev/null 2>/dev/null
@@ -466,6 +469,8 @@ else
 			read sslyn
 			if [ "$sslyn" = "y" -o "$sslyn" = "Y" ]; then
 				ssl=1
+			else
+				no_ssl_warn=1
 			fi
 		else
 			echo "The Perl SSLeay library is not installed. SSL not available."
@@ -528,6 +533,9 @@ else
 	echo "pidfile=$var_dir/miniserv.pid" >> $cfile
 	echo "logtime=168" >> $cfile
 	echo "ssl=$ssl" >> $cfile
+	if [ "$no_ssl_warn" = "1" ]; then
+		echo "no_ssl_warn=1" >> $cfile
+	fi
 	echo "no_ssl2=1" >> $cfile
 	echo "no_ssl3=1" >> $cfile
 	openssl version 2>&1 | grep "OpenSSL 1" >/dev/null
@@ -598,8 +606,10 @@ else
 	echo "userfile=$ufile" >> $cfile
 
 	kfile=$config_dir/miniserv.pem
+	openssl_available=0
 	openssl version >/dev/null 2>&1
 	if [ "$?" = "0" ]; then
+		openssl_available=1
 		# OpenSSL support `-addext` flag?
 		addtextsup="-addext subjectAltName=DNS:$host,DNS:localhost -addext extendedKeyUsage=serverAuth"
 		openssl version 2>&1 | grep "OpenSSL 1.0" >/dev/null
@@ -621,12 +631,28 @@ EOF
 		fi
 		rm -f $tempdir/cert $tempdir/key
 	fi
-	if [ ! -r $kfile ]; then
-		# Fall back to the built-in key
-		cp "$wadir/miniserv.pem" $kfile
+	if [ -r "$kfile" ]; then
+		chmod 600 "$kfile"
+		echo "keyfile=$config_dir/miniserv.pem" >> $cfile
+	elif [ "$ssl" = "1" ]; then
+		echo ""
+		if [ "$openssl_available" = "1" ]; then
+			echo "ERROR: Failed to generate or install a unique TLS certificate for this host."
+		else
+			echo "ERROR: OpenSSL is not available, so a unique TLS certificate could not be generated."
+		fi
+		echo "WARNING: Webmin will be configured to use HTTP only."
+		echo "Login credentials and sessions will not be encrypted until SSL is enabled"
+		echo "with a valid certificate. See https://webmin.com/docs/modules/webmin-configuration/#ssl-encryption for help."
+		echo ""
+		ssl=0
+		new_cfile=$tempdir/$$.miniserv.conf
+		if ! sed 's/^ssl=.*/ssl=0/' "$cfile" >"$new_cfile" ||
+		   ! mv "$new_cfile" "$cfile"; then
+			echo "ERROR: Failed to switch Webmin to HTTP-only mode."
+			exit 1
+		fi
 	fi
-	chmod 600 $kfile
-	echo "keyfile=$config_dir/miniserv.pem" >> $cfile
 
 	chmod 600 $cfile
 	echo ".. done"
@@ -980,9 +1006,11 @@ for m in $newmods; do
 done
 # Make miniserv config files non-world-readable
 for f in miniserv.conf miniserv.pem miniserv.users; do
-	chown -R root $config_dir/$f
-	chgrp -R bin $config_dir/$f
-	chmod -R og-rw $config_dir/$f
+	if [ -e "$config_dir/$f" ]; then
+		chown -R root $config_dir/$f
+		chgrp -R bin $config_dir/$f
+		chmod -R og-rw $config_dir/$f
+	fi
 done
 chmod +r $config_dir/version
 if [ "$nochown" = "" ]; then
