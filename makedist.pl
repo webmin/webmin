@@ -40,7 +40,7 @@ $vers || usage();
 	  "webmin-systemd", "webmin-init", "webmin-daemon",
 	  "config-openbsd",
 	  "config-macos", "LICENCE",
-	  "session_login.cgi", "acl_security.pl",
+	  "session_login.cgi", "login-lib.pl", "acl_security.pl",
 	  "defaultacl", "rpc.cgi", "date_chooser.cgi",
 	  "safeacl", "install-module.pl", "LICENCE.ja", 
 	  "favicon.ico", "config-netbsd", "fastrpc.cgi",

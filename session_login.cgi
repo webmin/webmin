@@ -4,6 +4,7 @@
 
 BEGIN { push(@INC, "."); };
 use WebminCore;
+require './login-lib.pl';
 
 $pragma_no_cache = 1;
 #$ENV{'MINISERV_INTERNAL'} || die "Can only be called by miniserv.pl";
@@ -93,23 +94,7 @@ print "$text{'session_prefix'}\n";
 print &ui_form_start("@{[&get_webprefix()]}/session_login.cgi", "post");
 print &ui_hidden("page", $in{'page'});
 
-my $not_secure;
-if ($ENV{'HTTPS'} ne 'ON' &&
-    ($miniserv{'ssl'} || !$miniserv{'no_ssl_warn'})) {
-	my $warning = "&#9888; $text{'login_notsecure'}";
-	my $description = $text{'login_notsecure_http_desc'};
-	if ($miniserv{'ssl'}) {
-		$warning = ui_tag('a', $warning,
-			{ 'href' => "javascript:void(0);",
-			  'class' => 'inherit-color',
-			  'onclick' => "window.location.href = ".
-			    "window.location.href.replace(/^http:/, 'https:'); return false;",
-			});
-		$description = $text{'login_notsecure_desc'};
-		}
-	$not_secure = ui_tag('span', $warning,
-		{ class => 'not-secure', title => $description });
-	}
+my $not_secure = &get_login_http_warning(\%miniserv);
 
 print &ui_table_start($text{'session_header'} . $not_secure,
 		      "width=40% class='loginform'", 2);
