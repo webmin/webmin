@@ -205,8 +205,8 @@ foreach $u (@ulist) {
 				"$mover&up=1",
 				"$mover&down=1",
 				$canup, $candown,
-			        ));
-			push(@cols, &ui_up_down_arrows(
+			        )." ".
+				    &ui_up_down_arrows(
 				"$mover&top=1",
 				"$mover&bottom=1",
 				$canup, $candown,
