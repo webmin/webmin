@@ -617,10 +617,10 @@ else {
 sub destroy_interface_device
 {
 my ($a) = @_;
+my $name = $a->{'fullname'} || $a->{'name'};
 if (&has_command("ip") && $a->{'virtual'} eq '' &&
-    (&use_ifup_command($a) || $a->{'bridge'})) {
-	&backquote_logged("ip link delete ".
-		quotemeta($a->{'fullname'} || $a->{'name'})." 2>&1");
+    &iface_type($name) =~ /(?:Bonded|VLAN|Bridge)$/) {
+	&backquote_logged("ip link delete ".quotemeta($name)." 2>&1");
 	}
 }
 
