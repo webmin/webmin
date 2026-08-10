@@ -51,6 +51,10 @@ foreach $d (reverse(@d)) {
 					else {&unload_module($b->{'name'});}
 					}
 				}
+			# Remove the virtual device after deactivation
+			if (defined(&destroy_interface_device)) {
+				&destroy_interface_device($b);
+				}
 			}
 
 		# Delete config
