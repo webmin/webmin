@@ -620,7 +620,9 @@ my ($a) = @_;
 my $name = $a->{'fullname'} || $a->{'name'};
 if (&has_command("ip") && $a->{'virtual'} eq '' &&
     &iface_type($name) =~ /(?:Bonded|VLAN|Bridge)$/) {
-	&backquote_logged("ip link delete ".quotemeta($name)." 2>&1");
+	my $out = &backquote_logged(
+		"ip link delete ".quotemeta($name)." 2>&1");
+	&error("Failed to delete virtual interface : $out") if ($?);
 	}
 }
 
