@@ -7,9 +7,13 @@ use File::Basename qw(dirname);
 use File::Path qw(make_path);
 use File::Temp qw(tempdir);
 
-# Build an isolated openSUSE-style /etc and /usr/etc configuration layout.
-my $module_dir = abs_path(dirname(abs_path($0))."/..");
+# Locate the repository and load its common test helpers.
+my $test_dir = dirname(abs_path($0));
+my $module_dir = abs_path("$test_dir/..");
 my $root_dir = abs_path("$module_dir/..");
+require "$root_dir/t/test-lib.pl";
+
+# Build an isolated openSUSE-style /etc and /usr/etc configuration layout.
 my $config_dir = tempdir(CLEANUP => 1);
 my $var_dir = tempdir(CLEANUP => 1);
 my $fixture_dir = tempdir(CLEANUP => 1);
@@ -21,28 +25,6 @@ my $wrapper = "$fixture_dir/usr/sbin/logrotate-all";
 make_path("$config_dir/logrotate", $local_add_dir,
 	  "$local_add_dir/nested", "$vendor_add_dir/deep",
 	  "$vendor_add_dir/nested", dirname($wrapper));
-
-# write_text(file, contents)
-# Writes a text fixture and fails the test immediately on an I/O error
-sub write_text
-{
-my ($file, $text) = @_;
-open(my $fh, ">", $file) or die "open $file: $!";
-print $fh $text;
-close($fh) or die "close $file: $!";
-}
-
-# read_text(file)
-# Returns the complete contents of a text fixture
-sub read_text
-{
-my ($file) = @_;
-open(my $fh, "<", $file) or die "open $file: $!";
-local $/;
-my $text = <$fh>;
-close($fh) or die "close $file: $!";
-return $text;
-}
 
 # Populate both trees with vendor-only, local-only, nested, and overridden
 # files so the fixture exercises the wrapper's key overlay rules.
