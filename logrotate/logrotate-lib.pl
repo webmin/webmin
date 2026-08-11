@@ -435,8 +435,7 @@ return undef;
 }
 
 # save_directive(&parent, &old|name, &new, [indent])
-# Updates one entry identified by either its name or parsed object.  Vendor
-# entries are transparently copied and rebound to their writable overrides.
+# Updates one entry identified by either its name or parsed object
 sub save_directive
 {
 my ($parent, $oldv, $newv, $indent) = @_;
@@ -446,10 +445,22 @@ my $new = !defined($newv) ? undef : ref($newv) ? $newv :
 			{ 'name' => $old ? $old->{'name'} : $oldv,
 		     	  'value' => $newv };
 
-# Find the vendor file behind this write.  Existing directives use their own
-# file, while additions use the parent section or the effective main config.
+# Deleting an entry that is already absent is a true no-op. In particular,
+# do not put a missing local main config into the writable line cache.
+return if (!$old && !$new);
+
+# Find the file behind this write. Existing directives use their own file,
+# new sections may name a separate file, and other additions use the parent
+# section or effective main config.
 my $vendor_file;
-my $write_file = $old ? $old->{'file'} : $parent->{'file'};
+my $write_file = $parent->{'file'};
+if ($old) {
+	$write_file = $old->{'file'};
+	}
+elsif ($new && $new->{'file'} &&
+       !($parent->{'global'} && !$new->{'members'})) {
+	$write_file = $new->{'file'};
+	}
 if ($write_file) {
 	my $shadowed_vendor = &get_vendor_config_file($write_file);
 	if (&is_vendor_main_config($write_file) ||
@@ -457,91 +468,24 @@ if ($write_file) {
 		$vendor_file = $write_file;
 		}
 	elsif ($shadowed_vendor &&
-	       &same_file($write_file, $shadowed_vendor)) {
+	       (!-f $write_file || -l $write_file ||
+		&same_file($write_file, $shadowed_vendor))) {
 		$vendor_file = $shadowed_vendor;
 		}
 	}
-if (!$vendor_file && !$old && $new && !$new->{'members'} &&
-	$parent->{'global'} &&
+if (!$vendor_file && !$old && $parent->{'global'} &&
+	&same_file($write_file, $parent->{'file'}) &&
 	&is_vendor_main_config(&get_main_config_file())) {
 	$vendor_file = &get_main_config_file();
 	}
 
-# Materialize a writable override, then replace stale parsed references with
-# their identical positions in the newly-parsed local configuration.  Exact
-# copying keeps both top-level and member indexes stable across this reparse.
-if ($vendor_file) {
-	my $parent_global = $parent->{'global'};
-	my $parent_index = $parent->{'index'};
-	my $old_index = $old ? $old->{'index'} : undef;
-	my $old_line = $old ? $old->{'line'} : undef;
-	my $old_ref = ref($oldv) ? $oldv : undef;
-	my $local_file = &is_vendor_main_config($vendor_file) ?
-		&ensure_local_main_config() :
-		&ensure_local_config_override($vendor_file);
-	if (!$local_file || &same_file($local_file, $vendor_file)) {
-		&error(&text('save_evendorwrite',
-			"<tt>".&html_escape($vendor_file)."</tt>"));
-		}
-	my $fresh_root = &get_config_parent();
-	my $fresh_parent = $parent_global ? $fresh_root :
-		$fresh_root->{'members'}->[$parent_index];
+# Copying changes which file owns the parsed objects, so callers must create
+# and reload a local override before editing.  Never write through a stale
+# object that still points at the vendor tree.
+&error(&text('save_evendorwrite',
+	"<tt>".&html_escape($vendor_file)."</tt>")) if ($vendor_file);
 
-	# Fail closed if concurrent configuration changes made the saved indexes
-	# unsafe to reuse.  This must never fall through to the vendor line cache.
-	if (!$fresh_parent ||
-	    (!$parent_global &&
-	     (!&same_file($fresh_parent->{'file'}, $local_file) ||
-	      !$fresh_parent->{'members'}))) {
-		&error(&text('save_evendorwrite',
-			"<tt>".&html_escape($vendor_file)."</tt>"));
-		}
-
-	# Preserve the caller's parent object identity so later saves, explicit
-	# flushes, and unlocks all refer to the new writable local file.
-	%$parent = %$fresh_parent;
-	if ($parent_global) {
-		$get_config_parent_cache = $parent;
-		$fresh_root = $parent;
-		}
-	else {
-		$fresh_root->{'members'}->[$parent_index] = $parent;
-		}
-	$conf = $parent->{'members'};
-
-	# A referenced old object may also contain the caller's pending edits, as
-	# when Virtualmin changes a section name and passes the same object twice.
-	# Keep its data and identity, but rebase all of its file ownership locally.
-	if ($old) {
-		my $fresh_old = $conf->[$old_index];
-		if (!$fresh_old || $fresh_old->{'line'} != $old_line ||
-		    !&same_file($fresh_old->{'file'}, $local_file)) {
-			&error(&text('save_evendorwrite',
-				"<tt>".&html_escape($vendor_file)."</tt>"));
-			}
-		if ($old_ref) {
-			$old_ref->{'line'} = $fresh_old->{'line'};
-			$old_ref->{'eline'} = $fresh_old->{'eline'};
-			$old_ref->{'index'} = $fresh_old->{'index'};
-			my @objects = ($old_ref);
-			while (@objects) {
-				my $object = shift(@objects);
-				$object->{'file'} = $local_file
-					if ($object->{'file'} &&
-					    &same_file($object->{'file'}, $vendor_file));
-				push(@objects, @{$object->{'members'}})
-					if ($object->{'members'});
-				}
-			$conf->[$old_index] = $old_ref;
-			$old = $old_ref;
-			}
-		else {
-			$old = $fresh_old;
-			}
-		}
-	}
-
-my $lref = &read_file_lines($old ? $old->{'file'} : $parent->{'file'});
+my $lref = &read_file_lines($write_file);
 my @lines = &directive_lines($new, $indent) if ($new);
 my $gparent = &get_config_parent();
 if ($old && $new) {

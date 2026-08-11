@@ -5,6 +5,32 @@
 require './logrotate-lib.pl';
 &ReadParse();
 
+# Resolve a new section's destination before loading any parsed objects. If
+# its relative name already exists in the vendor tree, materialize the whole
+# local override before appending the new section.
+@files = split(/\s+/, $in{'file'});
+if ($in{'new'} ||
+    (!$in{'global'} && !$in{'delete'} && !$in{'now'})) {
+	&error_setup($text{'save_err'});
+	foreach $f (@files) {
+		$f =~ /^\/\S+$/ || &error($text{'save_efile'});
+		}
+	@files || &error($text{'save_enofiles'});
+	$in{'file'} =~ s/\r//g;
+	}
+if ($in{'new'}) {
+	$cfilename = $files[0] =~ /\/([^\/]+)$/ ? $1 : undef;
+	$new_config_file = &get_add_file($cfilename);
+	$vendor_file = &get_vendor_config_file($new_config_file);
+	if ($vendor_file) {
+		&ensure_local_config_override($vendor_file);
+		}
+	elsif (&same_file($new_config_file, $config{'logrotate_conf'}) &&
+	       &is_vendor_main_config(&get_main_config_file())) {
+		&ensure_local_main_config();
+		}
+	}
+
 # On systems with vendor configuration below /usr, create the writable local
 # main config before changing global options.  The parent object intentionally
 # keeps this local path as its write destination.
@@ -20,16 +46,14 @@ if (!$in{'global'} && !$in{'new'} && !$in{'now'} &&
 	$parent = &get_config_parent();
 	$conf = $parent->{'members'};
 	}
-@files = split(/\s+/, $in{'file'});
 if ($in{'global'}) {
 	# Editing the global options
 	$log = $parent;
 	}
 elsif ($in{'new'}) {
 	# Adding a new section
-	$cfilename = $files[0] =~ /\/([^\/]+)$/ ? $1 : undef;
 	$log = { 'members' => [ ],
-		 'file' => &get_add_file($cfilename) };
+		 'file' => $new_config_file };
 	$logfile = $in{'file'};
 	}
 else {
@@ -66,11 +90,6 @@ else {
 	&lock_file($log->{'file'});
 	&error_setup($text{'save_err'});
 	if (!$in{'global'}) {
-		foreach $f (@files) {
-			$f =~ /^\/\S+$/ || &error($text{'save_efile'});
-			}
-		@files || &error($text{'save_enofiles'});
-		$in{'file'} =~ s/\r//g;
 		$log->{'name'} = [ split(/\n/, $in{'file'}) ];
 		}
 

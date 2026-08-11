@@ -144,24 +144,96 @@ is_deeply(log_names($config), [ '/var/log/vendor-main.log' ],
 is_deeply($files, [ $vendor_main_file ],
 	'file cache excludes external directories when scanning is disabled');
 
-# The public writer performs copy-on-write itself, so API consumers do not
-# need to know whether the effective main configuration came from /usr/etc.
-my $vendor_parent = main::get_config_parent();
-main::save_directive($vendor_parent, 'weekly', '');
-main::flush_file_lines($local_main_file);
-is(read_text($local_main_file), $vendor_main_text,
-	'direct main-config writes automatically create a local copy');
-is(read_text($vendor_main_file), $vendor_main_text,
-	'automatic main-config copying leaves the vendor file unchanged');
-is(main::find('weekly', $vendor_parent->{'members'})->{'file'},
-	$local_main_file,
-	'the caller parent is rebound to the writable main config');
+# The low-level writer must fail closed if a caller skips copy-on-write.
+{
+no warnings qw(once redefine);
+local *main::error = sub { die $_[0]; };
+eval {
+	main::save_directive(main::get_config_parent(), 'weekly', '');
+	};
+like($@, qr/Refusing to modify vendor configuration/,
+	'direct writes to the vendor main configuration are rejected');
+}
 
-# Repeated preparation is harmless once the local main override exists.
+# Deleting an already-absent option is a no-op and must not cache an empty
+# local main file that a later unscoped flush could accidentally create.
+main::save_directive(main::get_config_parent(),
+	'missing-vendor-option', undef);
+main::flush_file_lines();
+ok(!-e $local_main_file,
+	'missing global option deletion leaves the local main config absent');
+
+# A new section with an explicit vendor destination must also fail closed.
+my $vendor_target = "$vendor_add_dir/one";
+my $vendor_target_text = read_text($vendor_target);
+{
+no warnings qw(once redefine);
+local *main::error = sub { die $_[0]; };
+eval {
+	main::save_directive(main::get_config_parent(), undef,
+		{ 'file' => $vendor_target,
+		  'name' => [ '/var/log/unsafe-vendor-write.log' ],
+		  'members' => [ ] });
+	};
+like($@, qr/Refusing to modify vendor configuration/,
+	'new sections cannot target a vendor drop-in directly');
+}
+is(read_text($vendor_target), $vendor_target_text,
+	'rejecting a new vendor section leaves its destination unchanged');
+
+# A section without its own file would create an incomplete local main config.
+{
+no warnings qw(once redefine);
+local *main::error = sub { die $_[0]; };
+eval {
+	main::save_directive(main::get_config_parent(), undef,
+		{ 'name' => [ '/var/log/unsafe-main-write.log' ],
+		  'members' => [ ] });
+	};
+like($@, qr/Refusing to modify vendor configuration/,
+	'new sections cannot replace the vendor main config implicitly');
+}
+ok(!-e $local_main_file,
+	'rejecting an implicit main write does not create a partial override');
+
+# Adding a fresh local drop-in must not put the absent local main in the line
+# cache, because the normal unscoped flush would then create it as an empty
+# file and hide the complete vendor main configuration.
+my $new_local_dropin = "$local_add_dir/new-local";
+main::save_directive(main::get_config_parent(), undef,
+	{ 'file' => $new_local_dropin,
+	  'name' => [ '/var/log/new-local.log' ],
+	  'members' => [ { 'name' => 'weekly' } ] });
+main::flush_file_lines();
+ok(-f $new_local_dropin,
+	'new sections are written to their explicit local drop-in');
+ok(!-e $local_main_file,
+	'adding a local drop-in does not create an empty local main config');
+is(read_text($vendor_main_file), $vendor_main_text,
+	'adding a local drop-in leaves the vendor main config unchanged');
+
+# A missing local file cannot safely replace a whole same-named vendor file.
+my $missing_local_override = "$local_add_dir/one";
+{
+no warnings qw(once redefine);
+local *main::error = sub { die $_[0]; };
+eval {
+	main::save_directive(main::get_config_parent(), undef,
+		{ 'file' => $missing_local_override,
+		  'name' => [ '/var/log/incomplete-override.log' ],
+		  'members' => [ ] });
+	};
+like($@, qr/Refusing to modify vendor configuration/,
+	'new sections cannot create incomplete vendor overrides');
+}
+ok(!-e $missing_local_override,
+	'rejecting an incomplete override leaves its local path absent');
+
+# Editing global options materializes an exact local copy before parsing.
 $main::config{'scan_add_file'} = 1;
 clear_config_cache();
 is(main::ensure_local_main_config(), $local_main_file,
-	'an existing local main config remains the write target');
+	'editing the vendor main config creates a local main config');
 is(read_text($local_main_file), $vendor_main_text,
 	'local main config starts as an exact vendor copy');
 is(read_text($vendor_main_file), $vendor_main_text,
@@ -169,18 +241,40 @@ is(read_text($vendor_main_file), $vendor_main_text,
 is(main::get_main_config_file(), $local_main_file,
 	'local main config takes precedence after it is created');
 
-# A nested save through the public API copies the whole vendor drop-in to the
-# same relative local path and immediately switches the caller's ownership.
+# A new section may be appended after the same-named vendor file has been
+# copied in full, which is the preflight performed by save_log.cgi.
+is(main::ensure_local_config_override($vendor_target),
+	$missing_local_override,
+	'new-section preflight creates the complete local override');
+my $prepared_parent = main::get_config_parent();
+main::save_directive($prepared_parent, undef,
+	{ 'file' => $missing_local_override,
+	  'name' => [ '/var/log/appended-local.log' ],
+	  'members' => [ { 'name' => 'weekly' } ] });
+main::flush_file_lines($missing_local_override);
+like(read_text($missing_local_override), qr{/var/log/vendor-one\.log},
+	'prepared override retains the original vendor section');
+like(read_text($missing_local_override), qr{/var/log/appended-local\.log},
+	'prepared override receives the new local section');
+is(read_text($vendor_target), $vendor_target_text,
+	'appending locally leaves the same-named vendor file unchanged');
+
+# Editing a vendor drop-in must also be prepared before parsed objects change.
 my $vendor_dropin = "$vendor_add_dir/deep/vendor";
 my $local_dropin = "$local_add_dir/deep/vendor";
 ($config, undef, $files) = main::get_config();
 my ($deep_log) = grep { $_->{'members'} &&
 			       $_->{'name'}->[0] eq '/var/log/deep-vendor.log' }
 			 @$config;
-main::save_directive($deep_log, 'monthly', '', "\t");
-main::flush_file_lines($local_dropin);
-is($deep_log->{'file'}, $local_dropin,
-	'nested vendor writes transparently rebind the caller locally');
+{
+no warnings qw(once redefine);
+local *main::error = sub { die $_[0]; };
+eval { main::save_directive($deep_log, 'monthly', '', "\t"); };
+like($@, qr/Refusing to modify vendor configuration/,
+	'direct writes to a vendor drop-in are rejected');
+}
+is(main::ensure_local_config_override($vendor_dropin), $local_dropin,
+	'editing a vendor drop-in creates its matching local override');
 is(read_text($local_dropin), read_text($vendor_dropin),
 	'local drop-in starts as an exact copy of the whole vendor file');
 is(main::get_local_override_file($vendor_dropin), $local_dropin,
@@ -194,23 +288,12 @@ is(main::get_vendor_config_file($local_dropin), $vendor_dropin,
 		      @$config;
 is($deep_log->{'file'}, $local_dropin,
 	'parser switches to the local copy after an override is created');
-
-# Whole-section callers may mutate and pass the same parsed object as both
-# old and new.  Preserve those edits while changing its file ownership.
-my $vendor_one = "$vendor_add_dir/one";
-my $local_one = "$local_add_dir/one";
-my ($one_log) = grep { $_->{'members'} &&
-			      $_->{'name'}->[0] eq '/var/log/vendor-one.log' }
-			@$config;
-push(@{$one_log->{'name'}}, '/var/log/vendor-one-extra.log');
-main::save_directive(main::get_config_parent(), $one_log, $one_log);
-main::flush_file_lines($local_one);
-is($one_log->{'file'}, $local_one,
-	'whole-section saves preserve the caller object and move it locally');
-like(read_text($local_one), qr{/var/log/vendor-one-extra\.log},
-	'whole-section saves preserve pending caller edits');
-unlike(read_text($vendor_one), qr{/var/log/vendor-one-extra\.log},
-	'whole-section saves never change the vendor source');
+main::save_directive($deep_log, 'monthly', undef, "\t");
+main::flush_file_lines($local_dropin);
+unlike(read_text($local_dropin), qr/^\s*monthly\s*$/m,
+	'prepared drop-in can be changed through its local override');
+like(read_text($vendor_dropin), qr/^\s*monthly\s*$/m,
+	'changing the local override leaves the vendor drop-in unchanged');
 
 # An empty local file must remain both effective and backup-visible because
 # its existence is what prevents the vendor file from becoming active again.
@@ -255,6 +338,25 @@ local $main::config{'add_file'} = $edge_local_dir;
 local $main::config{'vendor_add_file'} = $edge_vendor_dir;
 is_deeply([ main::get_add_file_configs() ], [ "$edge_local_dir/linked" ],
 	'local existing path overrides the matching vendor file');
+
+# Discovery follows the wrapper's existence rule, but editing must not follow
+# a local symlink when it shadows a same-named vendor configuration.
+{
+no warnings qw(once redefine);
+local *main::error = sub { die $_[0]; };
+eval {
+	main::save_directive(
+		{ 'members' => [ ], 'file' => "$edge_dir/parent" },
+		undef,
+		{ 'file' => "$edge_local_dir/linked",
+		  'name' => [ '/var/log/symlink-write.log' ],
+		  'members' => [ ] });
+	};
+like($@, qr/Refusing to modify vendor configuration/,
+	'local symlink overrides are rejected for editing');
+}
+is(read_text($edge_target), "local\n",
+	'rejecting a symlink override leaves its target unchanged');
 }
 
 # A regular local path must still be rejected when it is a hard link to its
