@@ -295,15 +295,22 @@ if ($out =~ /\s(\d+\.\d+)/) {
 # Force load of quota kernel modules
 &system_logged("modprobe quota_v2 >/dev/null 2>&1");
 
-local $fmt = $version >= 2 ? "vfsv0" : "vfsold";
+# Quota tools 4 and later support 64-bit limits in vfsv1 files
+local $fmt = $version >= 4 ? "vfsv1" :
+	     $version >= 2 ? "vfsv0" : "vfsold";
 local $hidden = &hidden_ext_quota_mode($_[0]);
 if ($_[1]%2 == 1) {
 	# turn on user quotas
 	local $qf = $version >= 2 ? "aquota.user" : "quota.user";
-	if (!-s "$_[0]/$qf" && !($hidden & 1)) {
+	local $legacy = $version >= 4 && !($hidden & 1) &&
+			$qf ne "quota.user" &&
+			!-s "$_[0]/$qf" &&
+			-s "$_[0]/quota.user";
+	if (!-s "$_[0]/$qf" && !$legacy && !($hidden & 1)) {
 		# Setting up for the first time
 		local $ok = 0;
-		if (&has_command("convertquota") && $version >= 2) {
+		if (&has_command("convertquota") && $version >= 2 &&
+		    $version < 4) {
 			# Try creating a quota.user file and converting it
 			&open_tempfile(QUOTAFILE, ">>$_[0]/quota.user", 0, 1);
 			&close_tempfile(QUOTAFILE);
@@ -321,24 +328,32 @@ if ($_[1]%2 == 1) {
 				&set_ownership_permissions(undef, undef, 0600,
 							   "$_[0]/$qf");
 				}
-			&run_quotacheck($_[0]) ||
-				&run_quotacheck($_[0], "-u -f") ||
-				&run_quotacheck($_[0], "-u -f -m") ||
-				&run_quotacheck($_[0], "-u -f -m -c") ||
-				&run_quotacheck($_[0], "-u -f -m -c -F $fmt");
+			local $fflag = $fmt eq "vfsv1" ? " -F $fmt" : "";
+			$ok = &run_quotacheck($_[0], "-u$fflag") ||
+				&run_quotacheck($_[0], "-u -f$fflag") ||
+				&run_quotacheck($_[0], "-u -f -m$fflag") ||
+				&run_quotacheck($_[0], "-u -f -m -c$fflag");
+			&run_quotacheck($_[0], "-u -f -m -c -F ".
+				($fmt eq "vfsv1" ? "vfsv0" : $fmt)) if (!$ok);
 			}
 		}
-	$out = &backquote_logged(
-			"$config{'user_quotaon_command'} ".quotemeta($_[0])." 2>&1");
+	local $fflag = $legacy ? " -F vfsold" : "";
+	$out = &backquote_logged("$config{'user_quotaon_command'}$fflag ".
+			quotemeta($_[0])." 2>&1");
 	if ($?) { return $out; }
 	}
 if ($_[1] > 1) {
 	# turn on group quotas
 	local $qf = $version >= 2 ? "aquota.group" : "quota.group";
-	if (!-s "$_[0]/$qf" && !($hidden & 2)) {
+	local $legacy = $version >= 4 && !($hidden & 2) &&
+			$qf ne "quota.group" &&
+			!-s "$_[0]/$qf" &&
+			-s "$_[0]/quota.group";
+	if (!-s "$_[0]/$qf" && !$legacy && !($hidden & 2)) {
 		# Setting up for the first time
 		local $ok = 0;
-		if (!$ok && &has_command("convertquota") && $version >= 2) {
+		if (!$ok && &has_command("convertquota") && $version >= 2 &&
+		    $version < 4) {
 			# Try creating a quota.group file and converting it
 			&open_tempfile(QUOTAFILE, ">>$_[0]/quota.group", 0, 1);
 			&close_tempfile(QUOTAFILE);
@@ -356,15 +371,18 @@ if ($_[1] > 1) {
 				&set_ownership_permissions(undef, undef, 0600,
 							   "$_[0]/$qf");
 				}
-			&run_quotacheck($_[0]) ||
-				&run_quotacheck($_[0], "-g -f") ||
-				&run_quotacheck($_[0], "-g -f -m") ||
-				&run_quotacheck($_[0], "-g -f -m -c") ||
-				&run_quotacheck($_[0], "-g -f -m -c -F $fmt");
+			local $fflag = $fmt eq "vfsv1" ? " -F $fmt" : "";
+			$ok = &run_quotacheck($_[0], "-g$fflag") ||
+				&run_quotacheck($_[0], "-g -f$fflag") ||
+				&run_quotacheck($_[0], "-g -f -m$fflag") ||
+				&run_quotacheck($_[0], "-g -f -m -c$fflag");
+			&run_quotacheck($_[0], "-g -f -m -c -F ".
+				($fmt eq "vfsv1" ? "vfsv0" : $fmt)) if (!$ok);
 			}
 		}
-	$out = &backquote_logged(
-			"$config{'group_quotaon_command'} ".quotemeta($_[0])." 2>&1");
+	local $fflag = $legacy ? " -F vfsold" : "";
+	$out = &backquote_logged("$config{'group_quotaon_command'}$fflag ".
+			quotemeta($_[0])." 2>&1");
 	if ($?) { return $out; }
 	}
 return undef;
@@ -379,8 +397,10 @@ Runs the quotacheck command on some filesystem, and returns 1 on success or
 sub run_quotacheck
 {
 &clean_language();
+local $cmd = $config{'quotacheck_command'};
+$cmd =~ s/\s+-[ug]+(?=\s|$)//g;
 local $out = &backquote_logged(
-	"$config{'quotacheck_command'} $_[1] ".quotemeta($_[0])." 2>&1");
+	"$cmd $_[1] ".quotemeta($_[0])." 2>&1");
 &reset_environment();
 return $? || $out =~ /cannot guess|cannot remount|cannot find|please stop/i ? 0 : 1;
 }
@@ -773,18 +793,28 @@ if ($_[1] == 0 || $_[1] == 2) {
 	&unlink_file("$_[0]/aquota.group.new");
 	}
 local $cmd = $config{'quotacheck_command'};
-$cmd =~ s/\s+-[ug]//g;
+$cmd =~ s/\s+-[ug]+(?=\s|$)//g;
 local $flag = $_[1] == 1 ? "-u" : $_[1] == 2 ? "-g" : "-u -g";
-$out = &backquote_logged("$cmd $flag ".quotemeta($_[0])." 2>&1");
+local $new = $_[1] == 1 ?
+	     !-s "$_[0]/aquota.user" && !-s "$_[0]/quota.user" :
+	     $_[1] == 2 ?
+	     !-s "$_[0]/aquota.group" && !-s "$_[0]/quota.group" :
+	     !-s "$_[0]/aquota.user" && !-s "$_[0]/quota.user" &&
+	     !-s "$_[0]/aquota.group" && !-s "$_[0]/quota.group";
+local $qver = $new ? &backquote_command("quota -V 2>&1") : "";
+local $fmt = $new && $qver =~ /\s(\d+)\.\d+/ && $1 >= 4 ? "vfsv1" : undef;
+local $fflag = $fmt ? " -F $fmt" : "";
+$out = &backquote_logged("$cmd $flag$fflag ".quotemeta($_[0])." 2>&1");
 if ($?) {
 	# Try with the -f and -m options
 	$out = &backquote_logged(
-		"$cmd $flag -f -m ".quotemeta($_[0])." 2>&1");
+		"$cmd $flag -f -m$fflag ".quotemeta($_[0])." 2>&1");
 	if ($?) {
 		# Try with the -F option
-		foreach my $fmt ("vfsv1", "vfsv0", "vfsold") {
+		foreach my $tryfmt ($fmt ? ("vfsv0", "vfsold") :
+					 ("vfsv1", "vfsv0", "vfsold")) {
 			$out = &backquote_logged(
-				"$cmd $flag -f -m -F $fmt ".quotemeta($_[0])." 2>&1");
+				"$cmd $flag -f -m -F $tryfmt ".quotemeta($_[0])." 2>&1");
 			last if (!$?);
 			}
 		}
