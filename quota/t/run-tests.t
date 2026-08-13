@@ -24,6 +24,9 @@ return $_[0] eq "btrfs" ? "/usr/bin/btrfs" : undef;
 
 sub clean_language { }
 sub reset_environment { }
+sub is_readonly_mode { return 0; }
+sub system_logged { return 0; }
+sub unlink_file { return unlink($_[0]); }
 
 sub is_under_directory
 {
@@ -72,6 +75,134 @@ return @{$main::mounted[0]};
 }
 
 do "$root/quota/linux-lib.pl" or die "linux-lib.pl: $@ $!";
+
+$main::config{'quotacheck_command'} = "quotacheck -ug";
+$main::config{'user_quotaon_command'} = "quotaon -u";
+$main::config{'group_quotaon_command'} = "quotaon -g";
+
+my $newquota = tempdir(CLEANUP => 1);
+@commands = ( );
+@responses = (
+	{ 'out' => "Quota utilities version 4.06.\n", 'status' => 0 },
+	{ 'out' => "", 'status' => 0 },
+	);
+is(main::quotacheck($newquota, 1), undef,
+   "new user quota file can be checked");
+like($commands[1], qr/quotacheck -u -F vfsv1 /,
+     "combined configured flags are replaced and new files prefer vfsv1");
+unlike($commands[1], qr/ -g(?: |$)/,
+       "user quota check does not also create group quotas");
+
+my $oldquota = tempdir(CLEANUP => 1);
+open(my $oldfh, '>', "$oldquota/aquota.user") or die $!;
+print {$oldfh} "existing\n";
+close($oldfh);
+@commands = ( );
+@responses = ({ 'out' => "", 'status' => 0 });
+is(main::quotacheck($oldquota, 1), undef,
+   "existing user quota file can be checked");
+is(scalar(@commands), 1,
+   "existing quota check does not probe the quota tools version");
+unlike($commands[0], qr/ -F /,
+       "existing quota file format is auto-detected");
+
+my $groupquota = tempdir(CLEANUP => 1);
+@commands = ( );
+@responses = (
+	{ 'out' => "Quota utilities version 4.06.\n", 'status' => 0 },
+	{ 'out' => "", 'status' => 0 },
+	);
+is(main::quotacheck($groupquota, 2), undef,
+   "new group quota file can be checked");
+like($commands[1], qr/quotacheck -g -F vfsv1 /,
+     "group-only creation also prefers vfsv1");
+
+my $legacyquota = tempdir(CLEANUP => 1);
+@commands = ( );
+@responses = (
+	{ 'out' => "Quota utilities version 3.17.\n", 'status' => 0 },
+	{ 'out' => "", 'status' => 0 },
+	);
+is(main::quotacheck($legacyquota, 1), undef,
+   "legacy quota tools can create quota files");
+unlike($commands[1], qr/ -F vfsv1 /,
+       "legacy quota tools retain their default format");
+
+my $fallbackquota = tempdir(CLEANUP => 1);
+@commands = ( );
+@responses = (
+	{ 'out' => "Quota utilities version 4.06.\n", 'status' => 0 },
+	{ 'out' => "failed\n", 'status' => 1 },
+	{ 'out' => "failed\n", 'status' => 1 },
+	{ 'out' => "", 'status' => 0 },
+	);
+is(main::quotacheck($fallbackquota, 1), undef,
+   "quota check falls back when vfsv1 creation fails");
+like($commands[3], qr/ -F vfsv0 /,
+     "vfsv0 is the first creation fallback");
+
+my $activatequota = tempdir(CLEANUP => 1);
+@commands = ( );
+@responses = (
+	{ 'out' => "Quota utilities version 4.06.\n", 'status' => 0 },
+	{ 'out' => "", 'status' => 0 },
+	{ 'out' => "", 'status' => 0 },
+	);
+is(main::quotaon($activatequota, 1), undef,
+   "new user quotas can be activated");
+like($commands[1], qr/quotacheck -u -F vfsv1 /,
+     "quota activation creates vfsv1 files");
+unlike($commands[1], qr/ -g(?: |$)/,
+       "user quota activation does not also create group quotas");
+
+my $legacyfile = tempdir(CLEANUP => 1);
+open(my $legacyfh, '>', "$legacyfile/quota.user") or die $!;
+print {$legacyfh} "existing legacy quotas\n";
+close($legacyfh);
+@commands = ( );
+@responses = (
+	{ 'out' => "Quota utilities version 4.06.\n", 'status' => 0 },
+	{ 'out' => "", 'status' => 0 },
+	);
+is(main::quotaon($legacyfile, 1), undef,
+   "legacy user quota files can be activated");
+like($commands[1], qr/^quotaon -u -F vfsold /,
+     "legacy user quota files are activated without conversion");
+ok(-s "$legacyfile/quota.user",
+   "legacy user quota files are preserved");
+
+my $legacygroup = tempdir(CLEANUP => 1);
+open(my $legacygfh, '>', "$legacygroup/quota.group") or die $!;
+print {$legacygfh} "existing legacy quotas\n";
+close($legacygfh);
+@commands = ( );
+@responses = (
+	{ 'out' => "Quota utilities version 4.06.\n", 'status' => 0 },
+	{ 'out' => "", 'status' => 0 },
+	);
+is(main::quotaon($legacygroup, 2), undef,
+   "legacy group quota files can be activated");
+like($commands[1], qr/^quotaon -g -F vfsold /,
+     "legacy group quota files are activated without conversion");
+ok(-s "$legacygroup/quota.group",
+   "legacy group quota files are preserved");
+
+my $mixedquota = tempdir(CLEANUP => 1);
+foreach my $file (qw(aquota.user quota.user aquota.group quota.group)) {
+	open(my $mixedfh, '>', "$mixedquota/$file") or die $!;
+	print {$mixedfh} "existing quotas\n";
+	close($mixedfh);
+	}
+@commands = ( );
+@responses = (
+	{ 'out' => "Quota utilities version 4.06.\n", 'status' => 0 },
+	{ 'out' => "", 'status' => 0 },
+	{ 'out' => "", 'status' => 0 },
+	);
+is(main::quotaon($mixedquota, 3), undef,
+   "modern quota files take precedence over stale legacy files");
+unlike(join("\n", @commands), qr/ -F vfsold /,
+       "stale legacy files do not override modern quota formats");
 
 # Device-less tmpfs quota options must not create unusable filesystem rows.
 is(main::quota_can([ "/tmp", "tmpfs", "tmpfs", "rw,usrquota" ], undef),
