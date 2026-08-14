@@ -235,6 +235,7 @@ apt_input=Package from APT
 apt_install=Installing package(s) with command $1 ..
 apt_ok=.. install complete
 apt_failed=.. install failed!
+apt_reholdfailed=.. failed to restore the hold on $1 : $2
 apt_form=Upgrade All Packages
 apt_header=APT package upgrade options
 apt_update=Resynchronize package list (<tt>update</tt>)
