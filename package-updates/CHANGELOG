@@ -1,3 +1,5 @@
+---- Changes since 2.641 ----
+Added a Held updates view with controls to hold, unhold or explicitly update APT-held packages.
 ---- Changes since 1.490 ----
 First version of this module.
 ---- Changes since 1.500 ----

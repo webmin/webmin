@@ -13,12 +13,17 @@ require './package-updates-lib.pl';
 ($c) = grep { $_->{'name'} eq $in{'name'} &&
               $_->{'system'} eq $in{'system'} } @current;
 $p = $a || $c;
+$has_holds = &supports_package_holds();
+$held = $has_holds && $c &&
+	$c->{'system'} eq $software::update_system &&
+	&package_is_held($p->{'name'});
 
 print &ui_form_start("save_view.cgi");
 print &ui_hidden("name", $p->{'name'});
 print &ui_hidden("system", $p->{'system'});
 print &ui_hidden("version", $p->{'version'});
 print &ui_hidden("mode", $in{'mode'});
+print &ui_hidden("held", $held);
 print &ui_table_start($text{'view_header'}, undef, 2);
 
 # Package name and type
@@ -29,6 +34,11 @@ print &ui_table_row($text{'view_desc'}, $p->{'desc'});
 
 # Current state
 print &ui_table_row($text{'view_state'},
+	$held && $a && $c && &compare_versions($a, $c) > 0 ?
+		"<font color=#ffaa00>".
+		&text('index_held', $c->{'version'}, $a->{'version'})."</font>" :
+	$held && $c ? "<font color=#ffaa00>".
+		&text('view_held', $c->{'version'})."</font>" :
 	$a && !$c ? "<font color=#00aa00>$text{'index_caninstall'}</font>" :
 	!$a && $c ? "<font color=#ffaa00>".
                      &text('index_noupdate', $c->{'version'})."</font>" :
@@ -69,10 +79,15 @@ if ($c && &foreign_available("software") && $c->{'software'}) {
 	push(@buts, [ "software", $text{'view_software'} ]);
 	}
 if ($a && $c && &compare_versions($a, $c) > 0) {
-	push(@buts, [ "update", $text{'view_update'} ]);
+	push(@buts, [ "update", $held ? $text{'view_updateheld'} :
+							   $text{'view_update'} ]);
 	}
 elsif ($a && !$c) {
 	push(@buts, [ "update", $text{'view_install'} ]);
+	}
+if ($c && $has_holds && $c->{'system'} eq $software::update_system) {
+	push(@buts, [ $held ? "unhold" : "hold",
+			$held ? $text{'view_unhold'} : $text{'view_hold'} ]);
 	}
 print &ui_form_end(\@buts);
 

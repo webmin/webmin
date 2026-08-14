@@ -20,20 +20,33 @@ $name =~ s/:[A-Za-z0-9][A-Za-z0-9._-]*$//;
 return $name;
 }
 
-# update_system_install([package], [&in], [no-force])
+# update_system_install([package], [&in], [no-force], [flags])
 # Install some package with apt
 sub update_system_install
 {
 local $update = $_[0] || $in{'update'};
 local $force = !$_[2];
+local $flags = $_[3];
 local (@rv, @newpacks);
+
+# Only accept the one flag needed for an explicit update of held packages.
+# Other update systems use this argument for their own package-manager flags,
+# but APT historically ignored it.
+local $holdflag = defined($flags) &&
+		$flags eq '--allow-change-held-packages'
+		 	? ' --allow-change-held-packages' 
+			: '';
+local $install_command = $holdflag ? 'apt-get' : $apt_get_command;
+local @rehold = $holdflag ? &list_update_system_holds() : ( );
 
 # Build the command to run
 $ENV{'UCF_FORCE_CONFFOLD'} = 'YES';
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
-local $uicmd = "$apt_get_command -y ".($force ? " -f" : "")." install $update";
+local $uicmd = "$install_command -y".$holdflag.
+		($force ? " -f" : "")." install $update";
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
-local $cmd = "$apt_get_command -y ".($force ? " -f" : "")." install $update";
+local $cmd = "$install_command -y".$holdflag.
+		($force ? " -f" : "")." install $update";
 print &text('apt_install', "<tt>".&html_escape($uicmd)."</tt>"),"\n";
 print "<pre data-installer>";
 &additional_log('exec', undef, $cmd);
@@ -68,14 +81,27 @@ while(<CMD>) {
 	print &html_escape("$_");
 	}
 close(CMD);
+local $status = $?;
+
+# Restore holds after --allow-change-held-packages, which applies to the whole
+# transaction and can clear holds on selected packages or dependencies.
+if (@rehold) {
+	local $rehold_error = &update_system_hold(\@rehold, 1);
+	if ($rehold_error) {
+		print &text('apt_reholdfailed',
+			"<tt>".&html_escape(join(" ", @rehold))."</tt>",
+			&html_escape($rehold_error)),"<p>\n";
+		}
+	}
 &reset_environment();
-if (!@rv && $config{'package_system'} ne 'debian' && !$?) {
+if (!@rv && $config{'package_system'} ne 'debian' && !$status) {
 	# Other systems don't list the packages installed!
 	@rv = @newpacks;
 	}
 print "</pre>\n";
-if ($?) { print "$text{'apt_failed'}<p>\n"; }
+if ($status) { print "$text{'apt_failed'}<p>\n"; }
 else { print "$text{'apt_ok'}<p>\n"; }
+$? = $status;
 return @rv;
 }
 
@@ -239,21 +265,13 @@ return @rv;
 # Returns a list of available package updates
 sub update_system_updates
 {
+my ($include_holds) = @_;
 &execute_command("$apt_get_command update");
 
-# Find held packages by dpkg
-local %holds;
-if ($config{'package_system'} eq 'debian') {
-	&clean_language();
-	&open_execute_command(HOLDS, "dpkg --get-selections", 1, 1);
-	while(<HOLDS>) {
-		if (/^(\S+)\s+hold/) {
-			$holds{$1}++;
-			}
-		}
-	close(HOLDS);
-	&reset_environment();
-	}
+# Find held packages. By default these remain excluded, but callers can ask
+# for them so that a dedicated held-updates view can display them.
+local %holds = map { &strip_apt_package_arch($_), 1 }
+			&list_update_system_holds();
 
 if (&has_command("apt-show-versions")) {
 	# This awesome command can give us all updates in one hit, and takes
@@ -264,7 +282,7 @@ if (&has_command("apt-show-versions")) {
 	&open_execute_command(PKGS, "apt-show-versions 2>/dev/null", 1, 1);
 	while(<PKGS>) {
 		if (/^(\S+)\/(\S+)\s+upgradeable\s+from\s+(\S+)\s+to\s+(\S+)/ &&
-		    !$holds{$1}) {
+		    ($include_holds || !$holds{&strip_apt_package_arch($1)})) {
 			# Old format
 			local $pkg = { 'name' => $1,
 				       'source' => $2,
@@ -272,9 +290,12 @@ if (&has_command("apt-show-versions")) {
 			if ($pkg->{'version'} =~ s/^(\S+)://) {
 				$pkg->{'epoch'} = $1;
 				}
+			$pkg->{'held'} = 1
+				if ($holds{&strip_apt_package_arch($pkg->{'name'})});
 			push(@rv, $pkg);
 			}
-		elsif (/^(\S+):(\S+)\/(\S+)\s+(\S+)\s+upgradeable\s+to\s+(\S+)/ && !$holds{$1}) {
+		elsif (/^(\S+):(\S+)\/(\S+)\s+(\S+)\s+upgradeable\s+to\s+(\S+)/ &&
+		       ($include_holds || !$holds{$1})) {
 			# New format, like 
 			# libgomp1:i386/unstable 4.8.2-2 upgradeable to 4.8.2-4
 			local $pkg = { 'name' => $1,
@@ -284,12 +305,14 @@ if (&has_command("apt-show-versions")) {
 			if ($pkg->{'version'} =~ s/^(\S+)://) {
 				$pkg->{'epoch'} = $1;
 				}
+			$pkg->{'held'} = 1 if ($holds{$pkg->{'name'}});
 			push(@rv, $pkg);
 			}
 		}
 	close(PKGS);
 	&reset_environment();
-	@rv = &filter_held_packages(@rv);
+	@rv = grep { !$holds{&strip_apt_package_arch($_->{'name'})} } @rv
+		if (!$include_holds);
 	foreach my $pkg (@rv) {
 		$pkg->{'security'} = 1 if ($pkg->{'source'} =~ /security/i);
 		}
@@ -301,7 +324,8 @@ elsif (&has_command("apt")) {
 	&clean_language();
 	&open_execute_command(PKGS, "apt list --upgradable 2>/dev/null", 1, 1);
 	while(<PKGS>) {
-		if (/^(\S+)\/(\S+)\s+(\S+)\s+(\S+)\s+\[upgradable\s+from:\s+(\S+)\]/ && !$holds{$1}) {
+		if (/^(\S+)\/(\S+)\s+(\S+)\s+(\S+)\s+\[upgradable\s+from:\s+(\S+)\]/ &&
+		    ($include_holds || !$holds{&strip_apt_package_arch($1)})) {
 			local $pkg = { 'name' => $1,
 				       'source' => $2,
 				       'version' => $3,
@@ -310,12 +334,15 @@ elsif (&has_command("apt")) {
 				$pkg->{'epoch'} = $1;
 				}
 			$pkg->{'source'} =~ s/,.*$//;
+			$pkg->{'held'} = 1
+				if ($holds{&strip_apt_package_arch($pkg->{'name'})});
 			push(@rv, $pkg);
 			}
 		}
 	close(PKGS);
 	&reset_environment();
-	@rv = &filter_held_packages(@rv);
+	@rv = grep { !$holds{&strip_apt_package_arch($_->{'name'})} } @rv
+		if (!$include_holds);
 	foreach my $pkg (@rv) {
 		$pkg->{'security'} = 1 if ($pkg->{'source'} =~ /security/i);
 		}
@@ -334,7 +361,8 @@ else {
 		$currentmap{$pkg->{'name'}} ||= $pkg;
 		}
 	local @rv;
-	local @names = grep { !$holds{$_} } keys %currentmap;
+	local @names = $include_holds ? keys %currentmap :
+					grep { !$holds{$_} } keys %currentmap;
 	while(scalar(@names)) {
 		local @somenames;
 		if (scalar(@names) > 100) {
@@ -371,6 +399,8 @@ else {
 				    &compare_versions($pkg->{'version'},
 						      $pkg->{'oldversion'});
 				if ($newer > 0) {
+					$pkg->{'held'} = 1
+						if ($holds{$pkg->{'name'}});
 					push(@rv, $pkg);
 					}
 				}
@@ -378,7 +408,8 @@ else {
 		close(PKGS);
 		&reset_environment();
 		}
-	@rv = &filter_held_packages(@rv);
+	@rv = grep { !$holds{&strip_apt_package_arch($_->{'name'})} } @rv
+		if (!$include_holds);
 	&set_pinned_versions(\@rv);
 	return @rv;
 	}
@@ -411,11 +442,10 @@ close(PKGS);
 &reset_environment();
 }
 
-# filter_held_packages(package, ...)
-# Returns a list of package updates, minus those that are held
-sub filter_held_packages
+# list_update_system_holds()
+# Returns the unique names of all packages currently held by APT or dpkg.
+sub list_update_system_holds
 {
-my @pkgs = @_;
 my %hold;
 
 # Get holds from dpkg
@@ -447,15 +477,47 @@ if (&has_command("apt-mark")) {
 	&clean_language();
 	&open_execute_command(PKGS, "apt-mark showhold 2>/dev/null", 1, 1);
 	while(<PKGS>) { 
-		if (/^([^:\s]+)/) {
+		if (/^(\S+)/) {
 			$hold{$1} = 1;
 			}
 		}
 	close(PKGS);
 	&reset_environment();
 	}
+return sort keys %hold;
+}
 
-return grep { !$hold{$_->{'name'}} } @pkgs;
+# update_system_hold(&packages, hold)
+# Holds or unholds a list of packages. Returns undef on success, or an error.
+sub update_system_hold
+{
+my ($packages, $hold) = @_;
+return "The apt-mark command is not installed"
+	if (!&has_command("apt-mark"));
+my @packages = &unique(@$packages);
+return "No packages were specified" if (!@packages);
+my $action = $hold ? 'hold' : 'unhold';
+my $cmd = "apt-mark $action ".
+	  join(" ", map { quotemeta($_) } @packages);
+my $out;
+&clean_language();
+my $status = &execute_command_logged($cmd, undef, \$out, \$out);
+&reset_environment();
+if ($status) {
+	$out = &trim($out);
+	return $out || "apt-mark $action failed";
+	}
+return undef;
+}
+
+# filter_held_packages(package, ...)
+# Returns a list of package updates, minus those that are held
+sub filter_held_packages
+{
+my @pkgs = @_;
+my %hold = map { &strip_apt_package_arch($_), 1 }
+		       &list_update_system_holds();
+return grep { !$hold{&strip_apt_package_arch($_->{'name'})} } @pkgs;
 }
 
 # list_package_repos()
