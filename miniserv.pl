@@ -915,6 +915,13 @@ while(1) {
 				# Initialize SSL for this connection
 				if ($use_ssl) {
 					my $byte = '';
+					# Don't wait forever for a client that
+					# connects but never sends anything
+					my $pmask;
+					vec($pmask, fileno(SOCK), 1) = 1;
+					select($pmask, undef, undef,
+					       $config{'peek_timeout'} || 60)
+						|| exit;
 					# Look at the first byte of the socket
 					# buffer but don't consume it
 					recv(SOCK, $byte, 1, MSG_PEEK);
