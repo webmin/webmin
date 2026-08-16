@@ -1084,7 +1084,6 @@ print &ui_table_row($text{'tos_1z'},
         &ui_checkbox("dinzone_def", 1, $text{'rules_addr'}, $host ? 1 : 0)." ".
 	&ui_textbox("dinzone", join(" ", split(/,/, $host)), 50),
         3);
-	$found ? "" : $zone;
 
 my @opts;
 my $found = !$_[2];
