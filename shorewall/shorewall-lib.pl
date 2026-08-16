@@ -1178,7 +1178,7 @@ return 3;
 sub masq_form
 {
 my ($iface, $net) = split(/:/, $_[0], 2);
-print &ui_table_row(text{'masq_0'},
+print &ui_table_row($text{'masq_0'},
 	&iface_field("iface", $iface)." ".
 	&ui_checkbox("net_def", 1, $text{'masq_net'}, $net ? 1 : 0)." ".
 	&ui_textbox("net", $net, 20));
