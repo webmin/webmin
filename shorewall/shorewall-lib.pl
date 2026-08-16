@@ -1281,7 +1281,7 @@ return @rv;
 sub nat_form
 {
 print &ui_table_row($text{'nat_0'},
-	&ui_textbox("nat", $_[0], 15));
+	&ui_textbox("ext", $_[0], 15));
 
 if (&version_atleast(1, 3, 14)) {
 	my ($iface, $virt) = split(/:/, $_[1]);
