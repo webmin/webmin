@@ -1065,78 +1065,57 @@ return ( &is_fw($_[0]) ? $text{'list_fw'} :
 
 sub tos_form
 {
-local ($zone, $host) = split(/:/, $_[0], 2);
-print "<tr> <td valign=top><b>$text{'tos_0z'}</b></td>\n";
-print "<td colspan=3 nowrap>\n";
+my ($zone, $host) = split(/:/, $_[0], 2);
 my ($zf, $found) = &zone_field("source", $zone, 1);
-print $zf;
-printf "<input name=sother size=10 value='%s'>\n",
-	$found ? "" : $zone;
-
-print "<br><b>$text{'rules_inzone'}</b>\n";
-printf "<input type=checkbox name=sinzone_def value=1 %s> %s\n",
-	$host ? "checked" : "", $text{'rules_addr'};
-printf "<input name=sinzone size=50 value='%s'></td> </tr>\n",
-	join(" ", split(/,/, $host));
+print &ui_table_row($text{'tos_0z'},
+	$zf." ".
+	&ui_textbox("sother", $found ? "" : $zone, 10)."<br>\n".
+	"<b>$text{'rules_inzone'}</b>\n".
+	&ui_checkbox("sinzone_def", 1, $text{'rules_addr'}, $host ? 1 : 0)." ".
+	&ui_textbox("sinzone", join(" ", split(/,/, $host)), 50),
+	3);
 
 ($zone, $host) = split(/:/, $_[1], 2);
-print "<tr> <td valign=top><b>$text{'tos_1z'}</b></td>\n";
-print "<td colspan=3 nowrap>\n";
 ($zf, $found) = &zone_field("dest", $zone, 1);
-print $zf;
-printf "<input name=dother size=10 value='%s'>\n",
+print &ui_table_row($text{'tos_1z'},
+        $zf." ".
+        &ui_textbox("dother", $found ? "" : $zone, 10)."<br>\n".
+        "<b>$text{'rules_inzone'}</b>\n".
+        &ui_checkbox("dinzone_def", 1, $text{'rules_addr'}, $host ? 1 : 0)." ".
+	&ui_textbox("dinzone", join(" ", split(/,/, $host)), 50),
+        3);
 	$found ? "" : $zone;
 
-print "<br><b>$text{'rules_inzone'}</b>\n";
-printf "<input type=checkbox name=dinzone_def value=1 %s> %s\n",
-	$host ? "checked" : "", $text{'rules_addr'};
-printf "<input name=dinzone size=50 value='%s'></td> </tr>\n",
-	join(" ", split(/,/, $host));
-
-print "<tr> <td><b>$text{'tos_2'}</b></td>\n";
-print "<td><select name=proto>\n";
-$found = !$_[2];
-foreach $p (@tos_protos) {
-	printf "<option value=%s %s>%s</option>\n",
-		$p, $p eq $_[2] ? "selected" : "", uc($p);
+my @opts;
+my $found = !$_[2];
+foreach my $p (@tos_protos) {
+	push(@opts, [ $p, uc($p) ]);
 	$found++ if ($p eq $_[2]);
 	}
-printf "<option value='' %s>%s</option>\n",
-	$found ? "" : "selected", $text{'list_other'};
-print "</select>\n";
-printf "<input name=pother size=5 value='%s'></td> </tr>\n",
-	$found ? "" : $_[2];
+push(@opts, [ '', $text{'list_other'} ]);
+print &ui_table_row($text{'tos_2'},
+	&ui_select("proto", $found ? $_[2] : '', \@opts)." ".
+	&ui_textbox("pother", $found ? "" : $_[2], 5));
 
-print "<tr> <td><b>$text{'tos_3'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=sport_def value=1 %s> %s\n",
-	$_[3] eq '' || $_[3] eq '-' ? "checked" : "", $text{'list_any'};
-printf "<input type=radio name=sport_def value=0 %s> %s\n",
-	$_[3] eq '' || $_[3] eq '-' ? "" : "checked", $text{'rules_ranges'};
-printf "<input name=sport size=30 value='%s'></td> </tr>\n",
-	$_[3] eq '' || $_[3] eq '-' ? "" : join(" ", split(/,/, $_[3]));
+print &ui_table_row($text{'tos_3'},
+	&ui_opt_textbox("sport",
+			$_[3] eq '-' ? '' : join(" ", split(/,/, $_[3])),
+			30, $text{'list_any'}, $text{'rules_ranges'}));
 
-print "<tr> <td><b>$text{'tos_4'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=dport_def value=1 %s> %s\n",
-	$_[4] eq '' || $_[4] eq '-' ? "checked" : "", $text{'list_any'};
-printf "<input type=radio name=dport_def value=0 %s> %s\n",
-	$_[4] eq '' || $_[4] eq '-' ? "" : "checked", $text{'rules_ranges'};
-printf "<input name=dport size=30 value='%s'></td> </tr>\n",
-	$_[4] eq '' || $_[4] eq '-' ? "" : join(" ", split(/,/, $_[4]));
+print &ui_table_row($text{'tos_4'},
+	&ui_opt_textbox("dport",
+			$_[4] eq '-' ? '' : join(" ", split(/,/, $_[4])),
+			30, $text{'list_any'}, $text{'rules_ranges'}));
 
-print "<tr> <td><b>$text{'tos_5'}</b></td>\n";
-print "<td><select name=tos>\n";
-$found = !$_[5];
-foreach $t (sort { $a <=> $b } keys %tos_map) {
-	printf "<option value=%s %s>%s</option>\n",
-		$t, $_[5] == $t ? "selected" : "", $tos_map{$t};
-	$found++ if ($_[5] == $t);
+@opts = ( );
+foreach my $t (sort { $a <=> $b } keys %tos_map) {
+	push(@opts, [ $t, $tos_map{$t} ]);
 	}
-print "<option value=$_[5] selected>$_[5]</option>\n" if (!$found);
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'tos_5'},
+	&ui_select("tos", $_[5], \@opts, 1, 0, $_[5] ? 1 : 0));
 
-print "<tr> <td><b>$text{'tos_6'}</b></td>\n";
-printf "<td><input name=mark size=50 value='%s'></td> </tr>\n",
-	$_[6] eq "-" ? "" : $_[6];
+print &ui_table_row($text{'tos_6'},
+	&ui_textbox("mark", $_[6] eq "-" ? "" : $_[6], 50));
 }
 
 sub tos_validate
