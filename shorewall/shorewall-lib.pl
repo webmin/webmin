@@ -1404,30 +1404,24 @@ sub routestopped_columns
 return 2;
 }
 
-@routestopped_options = ( "routeback", "source", "dest", "critical" );
+our @routestopped_options = ( "routeback", "source", "dest", "critical" );
 
 sub routestopped_form
 {
-print "<tr> <td valign=top><b>$text{'routestopped_0'}</b></td>\n";
-print "<td valign=top>";
-print &iface_field("iface", $_[0]);
-print "</td>\n";
+print &ui_table_row($text{'routestopped_0'},
+	&iface_field("iface", $_[0]));
 
-local $none = $_[1] eq '' || $_[1] eq '-' || $_[1] eq '0.0.0.0/0';
-print "<td valign=top><b>$text{'routestopped_1'}</b></td>\n";
-printf "<td><input type=radio name=addr_def value=1 %s> %s<br>\n",
-	$none ? "checked" : "", $text{'routestopped_all'};
-printf "<input type=radio name=addr_def value=0 %s> %s<br>\n",
-	$none ? "" : "checked", $text{'routestopped_list'};
-print "<textarea name=addr rows=5 cols=20>",
-	$none ? "" : join("\n", split(/,/, $_[1])),
-	"</textarea></td> </tr>\n";
+my $none = $_[1] eq '' || $_[1] eq '-' || $_[1] eq '0.0.0.0/0';
+print &ui_table_row($text{'routestopped_1'},
+	&ui_radio("addr_def", $none ? 1 : 0,
+		  [ [ 1, $text{'routestopped_all'} ],
+		    [ 0, $text{'routestopped_list'} ] ])."<br>\n".
+	&ui_textarea("addr", $none ? "" : join("\n", split(/,/, $_[1])),
+		     5, 20));
 
 if (&version_atleast(3)) {
-	print "<tr> <td valign=top><b>$text{'routestopped_2'}</b></td>\n";
-	print "<td colspan=3>\n";
-	print &options_input("opts", $_[2], \@routestopped_options);
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'routestopped_2'},
+		&options_input("opts", $_[2], \@routestopped_options), 3);
 	}
 }
 
@@ -1452,52 +1446,36 @@ return ( $text{'tunnels_'.$tt} || $tt,
 
 sub tunnels_form
 {
-print "<tr> <td><b>$text{'tunnels_0'}</b></td>\n";
-print "<td><select name=type>\n";
-local $tt;
-local $found = !$_[0];
-local $ttype = $_[0];
-local $tport;
+my $ttype = $_[0];
+my $tport;
 if ($ttype =~ s/^(openvpn|generic):(.*)$/$1/) {
 	$tport = $2;
 	}
-foreach $tt ('ipsec', 'ipsecnat',
-	     (&version_atleast(2, 0, 0) ? ( 'ipsec:noah', 'ipsecnat:noah' )
-				       : ( )),
-	     'ip', 'gre', 'pptpclient', 'pptpserver', 'generic',
-	     (&version_atleast(1, 3, 14) ? ( 'openvpn' ) : ( )) ) {
-	printf "<option value=%s %s>%s</option>\n",
-		$tt, $ttype eq $tt ? "selected" : "",
-		$text{'tunnels_'.$tt.'_l'} || $text{'tunnels_'.$tt};
-	$found++ if ($ttype eq $tt);
+my @opts;
+foreach my $tt ('ipsec', 'ipsecnat',
+	        (&version_atleast(2, 0, 0) ? ( 'ipsec:noah', 'ipsecnat:noah' )
+				           : ( )),
+	        'ip', 'gre', 'pptpclient', 'pptpserver', 'generic',
+	        (&version_atleast(1, 3, 14) ? ( 'openvpn' ) : ( )) ) {
+	push(@opts, [ $tt, $text{'tunnels_'.$tt.'_l'} ||
+			   $text{'tunnels_'.$tt} ]);
 	}
-print "<option value=$ttype selected>",uc($ttype),"</option>\n" if (!$found);
-print "</select>\n";
-print "<input name=tport size=10 value='$tport'>\n";
-print "</td>\n";
+print &ui_table_row($text{'tunnels_0'},
+	&ui_select("type", $ttype, \@opts, 1, 0, $ttype ? 1 : 0)." ".
+	&ui_textbox("tport", $tport, 10));
 
-print "<tr> <td><b>$text{'tunnels_1'}</b></td>\n";
-print "<td>";
 my $zf = &zone_field("zone", $_[1], 0, 0);
-print $zf;
-print "</td> </tr>\n";
+print &ui_table_row($text{'tunnels_1'}, $zf);
 
-local $none = $_[2] eq '' || $_[2] eq '-';
-print "<tr> <td><b>$text{'tunnels_2'}</b></td> <td valign=top>\n";
-printf "<input type=radio name=gateway_def value=1 %s> %s\n",
-	$none ? "checked" : "", $text{'default'};
-printf "<input type=radio name=gateway_def value=0 %s> %s\n",
-	$none ? "" : "checked", $text{'tunnels_sel'};
-printf "<input name=gateway size=20 value='%s'></td> </tr>\n", $_[2];
+print &ui_table_row($text{'tunnels_2'},
+	&ui_opt_textbox("gateway", $_[2] eq '-' ? '' : $_[2], 20,
+		$text{'default'}, $text{'tunnels_sel'}));
 
-local $none = $_[2] eq '' || $_[2] eq '-';
-print "<tr> <td><b>$text{'tunnels_3'}</b></td> <td valign=top>\n";
-printf "<input type=radio name=gzones_def value=1 %s> %s\n",
-	$none ? "checked" : "", $text{'tunnels_gnone'};
-printf "<input type=radio name=gzones_def value=0 %s> %s\n",
-	$none ? "" : "checked", $text{'tunnels_gsel'};
-printf "<input name=gzones size=50 value='%s'></td> </tr>\n",
-	join(" ", split(/,/, $_[3]));
+print &ui_table_row($text{'tunnels_3'},
+	&ui_opt_textbox("gzones",
+		$_[2] eq '-' || $_[2] eq '' ? '' : join(" ", split(/,/, $_[3])),
+		20,
+		$text{'default'}, $text{'tunnels_gsel'}));
 }
 
 sub tunnels_validate
@@ -1525,7 +1503,7 @@ sub hosts_row
 return ( $_[0], $_[1] =~ /^(\S+):(\S+)$/ ? ( $1, $2 ) : ( undef, undef ) );
 }
 
-@host_options = ( "maclist", "routeback" );
+our @host_options = ( "maclist", "routeback" );
 if (&version_atleast(3)) {
 	push(@host_options, "norfc1918", "blacklist", "tcpflags",
 			    "nosmurfs", "ipsec");
@@ -1533,24 +1511,18 @@ if (&version_atleast(3)) {
 
 sub hosts_form
 {
-print "<tr> <td><b>$text{'hosts_0'}</b></td>\n";
-print "<td>";
 my $zf = &zone_field("zone", $_[0], 0, 2);
-print $zf;
-print "</td> </tr>\n";
+print &ui_table_row($text{'hosts_0'}, $zf);
 
-local ($iface, $net) = split(/:/, $_[1]);
-print "<tr> <td><b>$text{'hosts_1'}</b></td>\n";
-print "<td>";
-print &iface_field("iface", $iface);
-print "</td> </tr>\n";
+my ($iface, $net) = split(/:/, $_[1]);
+print &ui_table_row($text{'hosts_1'},
+	&iface_field("iface", $iface));
 
-print "<tr> <td><b>$text{'hosts_2'}</b></td>\n";
-print "<td><input name=net size=50 value='$net'></td> </tr>\n";
+print &ui_table_row($text{'hosts_2'},
+	&ui_textbox("net", $net, 50));
 
-print "<tr> <td valign=top><b>$text{'hosts_opts'}</b></td> <td>\n";
-print &options_input("opts", $_[2], \@host_options);
-print "</td> </tr>\n";
+print &ui_table_row($text{'hosts_opts'},
+	&options_input("opts", $_[2], \@host_options));
 }
 
 sub hosts_validate
@@ -1575,8 +1547,7 @@ return ( $_[0] eq '-' ? $text{'blacklist_any'} : $_[0],
 
 sub blacklist_form
 {
-print "<tr> <td valign=top><b>$text{'blacklist_host'}</b></td> <td colspan=3>\n";
-local ($mode, $ipset, $mac, $ip);
+my ($mode, $ipset, $mac, $ip);
 if ($_[0] =~ /^\+(.*)/) {
 	$mode = 2; $ipset = $1;
 	}
@@ -1589,37 +1560,34 @@ elsif ($_[0] eq '-') {
 else {
 	$mode = 0; $ip = $_[0];
 	}
-print &ui_radio("host_def", $mode,
-    [ [ 0, &text('hosts_ip', &ui_textbox("host", $ip, 30))."<br>" ],
-      [ 1, &text('hosts_mac', &ui_textbox("mac", $mac, 30))."<br>" ],
-      [ 3, $text{'hosts_any'}."<br>" ],
-      &version_atleast(3) ?
-       ( [ 2, &text('hosts_ipset', &ui_textbox("ipset", $ipset, 15)) ] ) : ( ),
-	    ]);
-print "</td> </tr>\n";
+print &ui_table_row(
+    &ui_radio("host_def", $mode,
+        [ [ 0, &text('hosts_ip', &ui_textbox("host", $ip, 30))."<br>" ],
+          [ 1, &text('hosts_mac', &ui_textbox("mac", $mac, 30))."<br>" ],
+          [ 3, $text{'hosts_any'}."<br>" ],
+          &version_atleast(3) ?
+           ( [ 2, &text('hosts_ipset', &ui_textbox("ipset", $ipset, 15)) ] ) :
+	   ( ),
+	]), 3);
 
-print "<tr> <td><b>$text{'blacklist_proto'}</b></td>\n";
-print "<td colspan=3><select name=proto>\n";
-$found = !$_[1];
-foreach $p (@blacklist_protos) {
-	printf "<option value='%s' %s>%s</option>\n",
-		$p, $p eq $_[1] ? "selected" : "",
-		$p eq '' ? "&lt;$text{'list_any'}&gt;" : uc($p);
+my $found = !$_[1];
+my @opts;
+foreach my $p (@blacklist_protos) {
+	push(@opts, [ $p, $p eq '' ? "&lt;$text{'list_any'}&gt;" : uc($p) ]);
 	$found++ if ($p eq $_[1]);
 	}
-printf "<option value='*' %s>%s</option>\n",
-	$found ? "" : "selected", $text{'list_other'};
-print "</select>\n";
-printf "<input name=pother size=5 value='%s'></td> </tr>\n",
-	$found ? "" : $_[1];
+push(@opts, [ '*', $text{'list_other'} ]);
+print &ui_table_row($text{'blacklist_proto'},
+	&ui_select("proto", $found ? $_[1] : "*", \@opts)." ".
+	&ui_textbox("pother", $found ? "" : $_[1], 5));
 
-print "<tr> <td><b>$text{'blacklist_ports'}</b></td>\n";
-print "<td colspan=3><input name=ports size=20 value='$_[2]'></td> </tr>\n";
+print &ui_table_row($text{'blacklist_ports'},
+	&ui_textbox("ports", $_[2], 20));
 }
 
 sub blacklist_validate
 {
-local $host;
+my $host;
 if ($in{'host_def'} == 0) {
 	&check_ipaddress($in{'host'}) ||
 		$in{'host'} =~ /^(\S+)\/(\d+)$/ && &check_ipaddress($1) ||
@@ -1639,7 +1607,7 @@ elsif ($in{'host_def'} == 2) {
 elsif ($in{'host_def'} == 3) {
 	$host = "-";
 	}
-local $proto;
+my $proto;
 if ($in{'proto'} eq '*') {
 	$in{'pother'} =~ /^\d+$/ ||
 	    defined(getprotobyname($in{'pother'})) ||
@@ -1665,7 +1633,7 @@ sub providers_row
 return ( $_[0], $_[1], $_[2], $_[4], $_[5] );
 }
 
-@providers_opts = ( "track", "balance", "loose" );
+our @providers_opts = ( "track", "balance", "loose" );
 
 sub providers_form
 {
@@ -1806,20 +1774,20 @@ return ($in{'var'}.'='.$in{'val'}.$comment);
 
 sub params_columns
 {
-    return 3;
+return 3;
 }
 
 sub params_form
 {
-    &conf_form($text{'params_0'}, $text{'params_1'}, $text{'params_2'}, @_);
+&conf_form($text{'params_0'}, $text{'params_1'}, $text{'params_2'}, @_);
 }
 
 sub params_validate
 {
-    &error($text{'params_varname'}) unless $in{'var'} =~ /^\w+$/;
-    local $comment = "";
-    $comment = "\t# ".$in{'comment'} if (exists $in{'comment'} and $in{'comment'} ne "");
-    return ($in{'var'}.'='.$in{'val'}.$comment);
+&error($text{'params_varname'}) unless $in{'var'} =~ /^\w+$/;
+my $comment = "";
+$comment = "\t# ".$in{'comment'} if (exists $in{'comment'} and $in{'comment'} ne "");
+return ($in{'var'}.'='.$in{'val'}.$comment);
 }
 
 
@@ -1921,8 +1889,8 @@ foreach my $a ($config{'config_dir'}, $config{'macros'}) {
 return &unique(sort(@rv));
 }
 
-$BETA_STR = "-Beta";
-$BETA_NUM = "\.0000\.";
+our $BETA_STR = "-Beta";
+our $BETA_NUM = "\.0000\.";
 
 # get_shorewall_version(nocache)
 # Returns the current Shorewall version, possibly from a local cache
