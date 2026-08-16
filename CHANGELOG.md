@@ -1,10 +1,12 @@
 ## Changelog
-#### 2.654 (August, 2026)
-* Add incremental ban time options to the Fail2Ban module
+#### 2.660 (August 16, 2026)
 * Add Btrfs subvolume quota management to the Disk Quotas module, with full and simple accounting modes
 * Add support for creating `vfsv1` Linux quota files for limits above 4 TiB, while preserving existing quota file formats
+* Add incremental ban time options to the Fail2Ban module
+* Add APT package hold management to the Package Updates module
 * Add support for openSUSE 16 vendor and local Logrotate configuration overlays [#2682](https://github.com/webmin/webmin/issues/2682)
-* Fix to ignore failures when adding IPv6 link-local (fe80::) addresses that may already be configured automatically
+* Fix Webmin server connections that open but never send a request, preventing them from waiting indefinitely [#2815](https://github.com/webmin/webmin/pull/2815)
+* Fix to ignore failures when adding IPv6 link-local (fe80\:\:) addresses that may already be configured automatically
 * Fixed creation of permissions new log files in the System Logs module (thanks to Kevin Carter)
 * Update the Authentic theme to the latest version with various improvements:
   - Fix disallowed entry handling in File Manager [forum.virtualmin.com/t/137654](https://forum.virtualmin.com/t/extra-admin-file-manager-permissions/137654?u=ilia)
