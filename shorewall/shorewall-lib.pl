@@ -1549,6 +1549,7 @@ else {
 	$mode = 0; $ip = $_[0];
 	}
 print &ui_table_row(
+    $text{'blacklist_host'},
     &ui_radio("host_def", $mode,
         [ [ 0, &text('hosts_ip', &ui_textbox("host", $ip, 30))."<br>" ],
           [ 1, &text('hosts_mac', &ui_textbox("mac", $mac, 30))."<br>" ],
