@@ -1177,15 +1177,13 @@ return 3;
 
 sub masq_form
 {
-local ($iface, $net) = split(/:/, $_[0], 2);
-print "<tr> <td><b>$text{'masq_0'}</b></td> <td colspan=3>\n";
-print &iface_field("iface", $iface);
+my ($iface, $net) = split(/:/, $_[0], 2);
+print &ui_table_row(text{'masq_0'},
+	&iface_field("iface", $iface)." ".
+	&ui_checkbox("net_def", 1, $text{'masq_net'}, $net ? 1 : 0)." ".
+	&ui_textbox("net", $net, 20));
 
-printf "<input type=checkbox name=net_def value=1 %s> %s\n",
-	$net ? "checked" : "", $text{'masq_net'};
-print "<input name=net size=20 value='$net'></td> </tr>\n";
-
-local ($mnet, $miface, $mode);
+my ($mnet, $miface, $mode);
 if ($_[1] =~ /^[0-9\.\/]+(,[0-9\.\/]+)*$/) {
 	$mnet = $_[1];
 	$mode = 0;
@@ -1199,44 +1197,37 @@ else {
 	$miface = $_[1];
 	$mode = 1;
 	}
-print "<tr> <td valign=top><b>$text{'masq_1'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=mode value=0 %s> %s\n",
-	$mode == 0 ? "checked" : "", $text{'masq_mode0'};
-printf "<input name=mnet size=60 value='%s'><br>\n",
-	$mode == 0 ? $mnet : "";
-printf "<input type=radio name=mode value=1 %s> %s\n",
-	$mode == 1 ? "checked" : "", $text{'masq_mode1'};
-print &iface_field("miface", $mode == 1 ? $miface : undef);
-printf "<input type=checkbox name=mnet_def value=1 %s> %s\n",
-	$mode == 1 && $mnet ? "checked" : "", $text{'masq_except'};
-printf "<input name=mnete size=20 value='%s'>\n",
-	$mode == 1 ? join(" ", split(/,/, $mnet)) : "";
-print "</td> </tr>\n";
+print &ui_table_row($text{'masq_1'},
+	&ui_radio_table("mode", $mode,
+		[ [ 0, $text{'masq_mode0'},
+		    &ui_textbox("mnet", $mode == 0 ? $mnet : "", 60) ],
+		  [ 1, $text{'masq_mode1'},
+		    &iface_field("miface", $mode == 1 ? $miface : undef)." ".
+		    &ui_checkbox("mnet_def", 1, $text{'masq_except'},
+				 $mode == 1 && $mnet ? 1 : 0)." ".
+		    &ui_textbox("mnete",
+			$mode == 1 ? join(" ", split(/,/, $mnet)) : "", 20) ],
+		], 3));
 
-print "<tr> <td><b>$text{'masq_2'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=snat_def value=1 %s> %s\n",
-	$_[2] eq '' || $_[2] eq '-' ? "checked" : "", $text{'list_none'};
-printf "<input type=radio name=snat_def value=0 %s>\n",
-	$_[2] eq '' || $_[2] eq '-' ? "" : "checked";
-printf "<input name=snat size=15 value='%s'></td> </tr>\n",
-	$_[2] eq '' || $_[2] eq '-' ? "" : $_[2];
+print &ui_table_row($text{'masq_2'},
+	&ui_opt_textbox("snat", $_[2] eq '-' ? '' : $_[2],
+			15, $text{'list_none'}));
 
 if (&version_atleast(3)) {
-	print "<tr> <td><b>$text{'masq_3'}</b></td> <td colspan=3>\n";
-	print &ui_radio("proto_def", $_[3] ? 0 : 1,
+	print &ui_table_row($text{'masq_3'},
+	      &ui_radio("proto_def", $_[3] ? 0 : 1,
 			[ [ 1, $text{'masq_any'} ],
-			  [ 0, " " ] ]),"\n",
+			  [ 0, " " ] ])."\n".
 	      &ui_select("proto", $_[3],
 			 [ map { [ $_, uc($_) ] } &list_protocols() ],
-			 1, 0, $_[3] ? 1 : 0),"</td> </tr>\n";
+			 1, 0, $_[3] ? 1 : 0),
+	      3);
 
-	print "<tr> <td><b>$text{'masq_4'}</b></td> <td colspan=3>\n";
-	print &ui_opt_textbox("ports", $_[4], 40, $text{'masq_all'}),
-	      "</td> </tr>\n";
+	print &ui_table_row($text{'masq_4'},
+		&ui_opt_textbox("ports", $_[4], 40, $text{'masq_all'}), 3);
 
-	print "<tr> <td><b>$text{'masq_5'}</b></td> <td colspan=3>\n";
-	print &ui_opt_textbox("ipsec", $_[5], 40, $text{'default'}),
-	      "</td> </tr>\n";
+	print &ui_table_row($text{'masq_5'},
+		&ui_opt_textbox("ipsec", $_[5], 40, $text{'default'}), 3);
 	}
 }
 
