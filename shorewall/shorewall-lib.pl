@@ -1340,36 +1340,24 @@ return ( $_[0],
 
 sub proxyarp_form
 {
-print "<tr> <td><b>$text{'proxyarp_0'}</b></td>\n";
-print "<td><input name=addr size=15 value='$_[0]'></td>\n";
+print &ui_table_row($text{'proxyarp_0'},
+	&ui_textbox("addr", $_[0], 15));
 
-print "<td><b>$text{'proxyarp_1'}</b></td>\n";
-printf "<td><input type=radio name=int_def value=1 %s> %s\n",
-	$_[1] eq '-' || $_[1] eq '' ? "checked" : "", $text{'list_auto'};
-printf "<input type=radio name=int_def value=0 %s>\n",
-	$_[1] eq '-' || $_[1] eq '' ? "" : "checked";
-print &iface_field("int", $_[1] eq '-' ? undef : $_[1]);
-print "</td> </tr>";
+print &ui_table_row($text{'proxyarp_1'},
+	&ui_radio("int_def", $_[1] eq '-' || $_[1] eq '' ? 1 : 0,
+		  [ [ 1, $text{'list_auto'} ],
+		    [ 0, &iface_field("int", $_[1] eq '-' ? undef : $_[1]) ]
+		  ]));
 
-local $have = $_[3] =~ /yes/i;
-print "<tr> <td><b>$text{'proxyarp_have'}</b></td>\n";
-printf "<td><input type=radio name=have value=1 %s> %s\n",
-	$have ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=have value=0 %s> %s</td>\n",
-	$have ? "" : "checked", $text{'no'};
+print &ui_table_row($text{'proxyarp_have'},
+	&ui_yesno_radio("have", $_[3] =~ /yes/i ? 1 : 0));
 
-print "<td><b>$text{'proxyarp_2'}</b></td>\n";
-print "<td>";
-print &iface_field("ext", $_[2]);
-print "</td> </tr>";
+print &ui_table_row($text{'proxyarp_2'},
+	&iface_field("ext", $_[2]));
 
 if (&version_atleast(2, 0, 0)) {
-	local $pers = $_[4] =~ /yes/i;
-	print "<tr> <td><b>$text{'proxyarp_pers'}</b></td>\n";
-	printf "<td><input type=radio name=pers value=1 %s> %s\n",
-		$pers ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=pers value=0 %s> %s</td>\n",
-		$pers ? "" : "checked", $text{'no'};
+	print &ui_table_row($text{'proxyarp_pers'},
+		&ui_yesno_radio("pers", $_[4] =~ /yes/i ? 1 : 0));
 	}
 }
 
@@ -1946,6 +1934,7 @@ sub options_input
 {
 my ($name, $value, $opts) = @_;
 my @grid;
+my %opts = map { $_, 1 } split(/,/, $value);
 foreach my $o (@$opts) {
 	push(@grid, &ui_checkbox($name, $o,
 			$text{'opts_'.$o} || $o, $opts{$o}));
