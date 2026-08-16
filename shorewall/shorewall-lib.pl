@@ -1280,39 +1280,31 @@ return @rv;
 
 sub nat_form
 {
-print "<tr> <td><b>$text{'nat_0'}</b></td>\n";
-print "<td><input name=ext size=15 value='$_[0]'></td>\n";
+print &ui_table_row($text{'nat_0'},
+	&ui_textbox("nat", $_[0], 15));
 
-print "<td><b>$text{'nat_1'}</b></td>\n";
-print "<td>";
 if (&version_atleast(1, 3, 14)) {
-	local ($iface, $virt) = split(/:/, $_[1]);
-	print &iface_field("iface", $iface);
-	print "<b>$text{'nat_virt'}</b>\n";
-	print "<input name=virt size=3 value='$virt'>\n";
-	print "</td> </tr>\n";
+	my ($iface, $virt) = split(/:/, $_[1]);
+	print &ui_table_row($text{'nat_1'},
+		&iface_field("iface", $iface)." ".
+		"<b>$text{'nat_virt'}</b>\n".
+		&ui_textbox("virt", $virt, 3));
 	}
 else {
-	print &iface_field("iface", $_[1]);
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'nat_1'},
+		&iface_field("iface", $_[1]));
 	}
 
-print "<tr> <td><b>$text{'nat_2'}</b></td>\n";
-print "<td><input name=int size=15 value='$_[2]'></td> </tr>\n";
+print &ui_table_row($text{'nat_2'},
+	&ui_textbox("int", $_[2], 15));
 
-local $all = $_[3] eq '-' || $_[3] eq '' || $_[3] =~ /yes/i;
-print "<tr> <td><b>$text{'nat_all'}</b></td>\n";
-printf "<td><input type=radio name=all value=1 %s> %s\n",
-	$all ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=all value=0 %s> %s</td>\n",
-	$all ? "" : "checked", $text{'no'};
+my $all = $_[3] eq '-' || $_[3] eq '' || $_[3] =~ /yes/i ? 1 : 0;
+print &ui_table_row($text{'nat_all'},
+	&ui_yesno_radio("all", $all));
 
-local $local = $_[4] =~ /yes/i;
-print "<td><b>$text{'nat_local'}</b></td>\n";
-printf "<td><input type=radio name=local value=1 %s> %s\n",
-	$local ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=local value=0 %s> %s</td> </tr>\n",
-	$local ? "" : "checked", $text{'no'};
+my $local = $_[4] =~ /yes/i ? 1 : 0;
+print &ui_table_row($text{'nat_local'},
+	&ui_yesno_radio("local", $local));
 }
 
 sub nat_validate
