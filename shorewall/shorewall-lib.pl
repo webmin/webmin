@@ -3,7 +3,6 @@
 # FIXME:
 # - rule sections
 # - read_shorewall_config & standard_parser do not allow quoted comment characters
-# test change
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
@@ -1670,44 +1669,41 @@ return ( $_[0], $_[1], $_[2], $_[4], $_[5] );
 
 sub providers_form
 {
-print "<tr> <td><b>$text{'providers_name'}</b></td>\n";
-print "<td><input name=name size=20 value='$_[0]'></td>\n";
+print &ui_table_row($text{'providers_name'},
+	&ui_textbox("name", $_[0], 20));
 
-print "<td><b>$text{'providers_number'}</b></td>\n";
-print "<td><input name=number size=4 value='$_[1]'></td> </tr>\n";
+print &ui_table_row($text{'providers_number'},
+	&ui_textbox("number", $_[1], 4));
 
-print "<tr> <td><b>$text{'providers_iface'}</b></td>\n";
-print "<td>";
-print &iface_field("iface", $_[4]);
-print "</td>\n";
+print &ui_table_row($text{'providers_iface'},
+	&iface_field("iface", $_[4]));
 
-print "<td><b>$text{'providers_mark'}</b></td>\n";
-print "<td><input name=mark size=4 value='$_[2]'></td> </tr>\n";
+print &ui_table_row($text{'providers_mark'},
+	&ui_textbox("mark", $_[2], 4));
 
-print "<tr> <td><b>$text{'providers_gateway'}</b></td>\n";
-print "<td><input name=gateway size=15 value='$_[5]'></td>\n";
+print &ui_table_row($text{'providers_gateway'},
+	&ui_textbox("gateway", $_[5], 15));
 
-local $ddef = $_[3] eq "-" || $_[3] eq "" ? 0 : $_[3] eq "main" ? 1 : 2;
-print "<td><b>$text{'providers_dup'}</b></td>\n";
-print "<td>",&ui_radio("dup_def", $ddef,
-		[ [ 0, $text{'default'} ],
-		  [ 1, $text{'providers_main'} ],
-		  [ 2, &ui_textbox("dup", $ddef == 2 ? $_[3] : "", 5) ] ]),
-      "</td> </tr>\n";
+my $ddef = $_[3] eq "-" || $_[3] eq "" ? 0 : $_[3] eq "main" ? 1 : 2;
+print &ui_table_row($text{'providers_dup'},
+	&ui_radio("dup_def", $ddef,
+		  [ [ 0, $text{'default'} ],
+		    [ 1, $text{'providers_main'} ],
+		    [ 2, &ui_textbox("dup", $ddef == 2 ? $_[3] : "", 5) ] ]));
 
-local %opts = map { $_, 1 } split(/,/, $_[6]);
-print "<tr> <td valign=top><b>$text{'providers_opts'}</b></td> <td>\n";
+my %opts = map { $_, 1 } split(/,/, $_[6]);
+my $ofield = "";
 foreach my $o (@providers_opts) {
-	print &ui_checkbox("opts", $o, $text{'providers_'.$o}, $opts{$o})."<br>\n";
+	$ofield .= &ui_checkbox("opts", $o, $text{'providers_'.$o}, $opts{$o})."<br>\n";
 	delete($opts{$o});
 	}
 foreach my $o (keys %opts) {
-	print &ui_hidden("opts", $o),"\n";
+	$ofield .= &ui_hidden("opts", $o),"\n";
 	}
-print "</td>\n";
+print &ui_table_row($text{'providers_opts'}, $ofield);
 
-print "<td valign=top><b>$text{'providers_copy'}</b></td>\n";
-print "<td valign=top><input name=copy size=15 value='$_[7]'></td> </tr>\n";
+print &ui_table_row($text{'providers_copy'},
+	&ui_textbox("copy", $_[7], 15));
 }
 
 sub providers_validate
@@ -1735,28 +1731,26 @@ return ( $_[0] eq "-" ? $text{'list_any'} : $_[0],
 
 sub route_rules_form
 {
-print "<tr> <td><b>$text{'route_rules_src'}</b></td>\n";
-print "<td>",&ui_opt_textbox("src", $_[0] eq "-" ? "" : $_[0],
-			     20, $text{'list_any'}, $text{'route_rules_ip'}),
-      "</td> </tr>\n";
+print &ui_table_row($text{'route_rules_src'},
+	&ui_opt_textbox("src", $_[0] eq "-" ? "" : $_[0],
+			20, $text{'list_any'}, $text{'route_rules_ip'}));
 
-print "<tr> <td><b>$text{'route_rules_dst'}</b></td>\n";
-print "<td>",&ui_opt_textbox("dst", $_[1] eq "-" ? "" : $_[1],
-			     20, $text{'list_any'}, $text{'route_rules_ip'}),
-      "</td> </tr>\n";
+print &ui_table_row($text{'route_rules_dst'},
+	&ui_opt_textbox("dst", $_[1] eq "-" ? "" : $_[1],
+			20, $text{'list_any'}, $text{'route_rules_ip'}));
 
-local @ptable = &read_table_file("providers", \&standard_parser);
-print "<tr> <td><b>$text{'route_rules_prov'}</b></td>\n";
-print "<td>",&ui_select("prov", $_[2] eq "254" ? "main" : $_[2],
-		[ [ "main", $text{'route_rules_main'} ],
-		  map { $_->[0] } @ptable ]),"</td> </tr>\n";
+my @ptable = &read_table_file("providers", \&standard_parser);
+print &ui_table_row($text{'route_rules_prov'},
+	&ui_select("prov", $_[2] eq "254" ? "main" : $_[2],
+		   [ [ "main", $text{'route_rules_main'} ],
+		     map { $_->[0] } @ptable ]));
 
-print "<tr> <td><b>$text{'route_rules_pri'}</b></td>\n";
-print "<td>",&ui_textbox("pri", $_[3], 10),"</td> </tr>\n";
+print &ui_table_row($text{'route_rules_pri'},
+	&ui_textbox("pri", $_[3], 10));
 
-print "<tr> <td><b>$text{'route_rules_mark'}</b></td>\n";
-print "<td>",&ui_opt_textbox("mark", $_[4] eq "-" ? $_[4] : "", 10,
-			     $text{'route_rules_nomark'}),"</td> </tr>\n";
+print &ui_table_row($text{'route_rules_mark'},
+	&ui_opt_textbox("mark", $_[4] eq "-" ? $_[4] : "", 10,
+		        $text{'route_rules_nomark'}));
 }
 
 sub route_rules_validate
@@ -1779,41 +1773,33 @@ return ( $in{'src_def'} ? "-" : $in{'src'},
 
 sub conf_form
 {
-    local ($msg1, $msg2, $msg3, $field1, $field2, $field3, $dummy) = @_;
+my ($msg1, $msg2, $msg3, $field1, $field2, $field3, $dummy) = @_;
 
-    $field1 =~ s/"/&#34;/g;
-    print "<tr><td><b>$msg1</b></td>\n";
-    print "<td><input name=var size=50 value=\"$field1\"></td></tr>\n";
+print &ui_table_row($msg1, &ui_textbox("var", $field1, 50));
 
-    $field2 =~ s/"/&#34;/g;
-    print "<tr><td><b>$msg2</b></td>\n";
-    print "<td><input name=val size=50 value=\"$field2\"></td></tr>\n";
+print &ui_table_row($msg2, &ui_textbox("val", $field2, 50));
 
-    $field3 =~ s/"/&#34;/g;
-    print "<tr><td><b>$msg3</b></td>\n";
-    print "<td><input name=comment size=50 value=\"$field3\"></td></tr>\n";
-
-    print "</td></tr>\n";
+print &ui_table_row($msg3, &ui_textbox("comment", $field3, 50));
 }
 
 ################################ shorewall.conf ##################################
 
 sub shorewall_conf_columns
 {
-    return 3;
+return 3;
 }
 
 sub shorewall_conf_form
 {
-    &conf_form($text{'shorewall_conf_0'}, $text{'shorewall_conf_1'}, $text{'shorewall_conf_2'}, @_);
+&conf_form($text{'shorewall_conf_0'}, $text{'shorewall_conf_1'}, $text{'shorewall_conf_2'}, @_);
 }
 
 sub shorewall_conf_validate
 {
-    &error($text{'shorewall_conf_varname'}) unless $in{'var'} =~ /^\w+$/;
-    local $comment = "";
-    $comment = "\t# ".$in{'comment'} if (exists $in{'comment'} and $in{'comment'} ne "");
-    return ($in{'var'}.'='.$in{'val'}.$comment);
+&error($text{'shorewall_conf_varname'}) unless $in{'var'} =~ /^\w+$/;
+my $comment = "";
+$comment = "\t# ".$in{'comment'} if (exists $in{'comment'} and $in{'comment'} ne "");
+return ($in{'var'}.'='.$in{'val'}.$comment);
 }
 
 ################################ params ##################################
@@ -1949,9 +1935,11 @@ if (!$nocache && open(VERSION, "<$module_config_directory/version")) {
 	close(VERSION);
 	}
 if (!$version) {
-	local $out = &backquote_command("$config{'shorewall'} version 2>&1 </dev/null");
+	# Convert beta string to version number.
+	my $out = &backquote_command(
+		"$config{'shorewall'} version 2>&1 </dev/null");
 	$out =~ s/\r//g;
-	$out =~ s/$BETA_STR/$BETA_NUM/i;		# Convert beta string to version number.
+	$out =~ s/$BETA_STR/$BETA_NUM/i;
 	if ($out =~ /(\n|^)([0-9\.]+)\n/) {
 		$version = $2;
 		}
@@ -1959,11 +1947,12 @@ if (!$version) {
 return $version;
 }
 
+# Convert version number back to string.
 sub get_printable_version($)
 {
-	local $out = $_[0];
-	$out =~ s/$BETA_NUM/$BETA_STR/i;		# Convert version number back to string.
-	return $out;
+my ($out) = @_;
+$out =~ s/$BETA_NUM/$BETA_STR/i;
+return $out;
 }
 
 # list_protocols()
