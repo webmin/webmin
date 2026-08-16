@@ -12,6 +12,19 @@ require './logrotate-lib.pl';
 # Delete the sections
 $parent = &get_config_parent();
 $conf = $parent->{'members'};
+
+# Copy each selected vendor file to the local override tree before changing
+# it.  Reload the parsed configuration after copying so all line references
+# point at the writable files.
+%vendor_files = map { $conf->[$_]->{'file'}, 1 }
+		grep { &is_vendor_config_file($conf->[$_]->{'file'}) } @d;
+if (%vendor_files) {
+	foreach $f (keys %vendor_files) {
+		&ensure_local_config_override($f);
+		}
+	$parent = &get_config_parent();
+	$conf = $parent->{'members'};
+	}
 foreach $d (sort { $b <=> $a } @d) {
 	$log = $conf->[$d];
 	&lock_file($log->{'file'});

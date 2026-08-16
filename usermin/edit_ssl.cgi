@@ -125,9 +125,7 @@ print &ui_tabs_end_tab();
 # SSL key generation form
 print &ui_tabs_start_tab("mode", "create");
 print "$text{'ssl_newkey'}<p>\n";
-my $curkey = &read_file_contents($miniserv{'keyfile'});
-my $origkey = &read_file_contents("$root_directory/miniserv.pem");
-if ($curkey eq $origkey) {
+if (&miniserv_using_default_cert($miniserv{'keyfile'})) {
 	# System is using the original (insecure) Webmin key!
 	print "<b>$text{'ssl_hole'}</b><p>\n";
 	}

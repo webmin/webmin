@@ -21,6 +21,7 @@ eval "use WebminCore;";
 $available_cache_file = &cache_file_path("available.cache");
 $current_cache_file = &cache_file_path("current.cache");
 $updates_cache_file = &cache_file_path("updates.cache");
+$held_updates_cache_file = &cache_file_path("held-updates.cache");
 $cron_cmd = "$module_config_directory/update.pl";
 
 $yum_cache_file = &cache_file_path("yumcache");
@@ -308,30 +309,74 @@ sub supports_updates_available
 return defined(&software::update_system_updates);
 }
 
-# updates_available(no-cache)
+# supports_package_holds()
+# Returns true if the current update system can list and change package holds.
+sub supports_package_holds
+{
+return defined(&software::list_update_system_holds) &&
+       defined(&software::update_system_hold);
+}
+
+# list_package_holds()
+# Returns the package names currently held by the update system.
+sub list_package_holds
+{
+return ( ) if (!&supports_package_holds());
+return &software::list_update_system_holds();
+}
+
+# package_is_held(package, [holds])
+# Returns true if a package is in a supplied or freshly-read list of holds.
+sub package_is_held
+{
+my ($name, $holds) = @_;
+my @holds = $holds ? @$holds : &list_package_holds();
+return 1 if (grep { $_ eq $name } @holds);
+if ($software::update_system eq 'apt' &&
+    defined(&software::strip_apt_package_arch)) {
+	my $base = &software::strip_apt_package_arch($name);
+	return 1 if (grep {
+		&software::strip_apt_package_arch($_) eq $base
+		} @holds);
+	}
+return 0;
+}
+
+# update_package_holds(&packages, hold)
+# Holds or unholds packages. Returns undef on success, or an error message.
+sub update_package_holds
+{
+my ($packages, $hold) = @_;
+return $text{'hold_enotsupported'} if (!&supports_package_holds());
+return &software::update_system_hold($packages, $hold);
+}
+
+# updates_available(no-cache, [include-held])
 # Returns an array of hash refs of package updates available, according to
 # the update system, with caching.
 sub updates_available
 {
-my ($nocache) = @_;
-if (!scalar(@updates_available_cache)) {
-	if ($nocache || &cache_expired($updates_cache_file)) {
+my ($nocache, $include_held) = @_;
+my $cache_file = $include_held ? $held_updates_cache_file :
+				$updates_cache_file;
+my $cache = $include_held ? \@held_updates_available_cache :
+				\@updates_available_cache;
+if (!scalar(@$cache)) {
+	if ($nocache || &cache_expired($cache_file)) {
 		# Get from original source
-		@updates_available_cache = &software::update_system_updates();
-		foreach my $a (@updates_available_cache) {
+		@$cache = &software::update_system_updates($include_held);
+		foreach my $a (@$cache) {
 			$a->{'update'} = $a->{'name'};
 			$a->{'system'} = $software::update_system;
 			}
-		&write_cache_file($updates_cache_file,
-				  \@updates_available_cache);
+		&write_cache_file($cache_file, $cache);
 		}
 	else {
 		# Use on-disk cache
-		@updates_available_cache =
-			&read_cache_file($updates_cache_file);
+		@$cache = &read_cache_file($cache_file);
 		}
 	}
-return @updates_available_cache;
+return @$cache;
 }
 
 # package_install(package-name, [system], [new-install], [flags])
@@ -343,12 +388,14 @@ my ($name, $system, $install, $flags) = @_;
 $system ||= $software::update_system;
 my @rv;
 my $pkg;
+my $include_held = $system eq 'apt' && defined($flags) &&
+		   $flags eq '--allow-change-held-packages';
 
 # First get from list of updates
 ($pkg) = grep { $_->{'update'} eq $name &&
 		($_->{'system'} eq $system || !$system) }
 	      sort { &compare_versions($b, $a) }
-		   &list_possible_updates(0);
+	           &list_possible_updates(0, 0, $include_held);
 if (!$pkg) {
 	# Then try list of all available packages
 	($pkg) = grep { $_->{'update'} eq $name &&
@@ -458,14 +505,14 @@ if (defined(&software::update_system_operations)) {
 return ( );
 }
 
-# list_possible_updates([nocache], [nocache-no-data])
+# list_possible_updates([nocache], [nocache-no-data], [include-held])
 # Returns a list of updates that are available. Each element in the array
 # is a hash ref containing a name, version, description and severity flag.
 # Intended for calling from themes. Nocache 0=cache everything, 1=flush all
 # caches, 2=flush only current. Nocache-no-data prohibits collecting data
 sub list_possible_updates
 {
-my ($nocache, $nocache_no_data) = @_;
+my ($nocache, $nocache_no_data, $include_held) = @_;
 my @rv;
 return @rv if ($nocache_no_data);
 my @current = &list_current($nocache);
@@ -476,9 +523,10 @@ if (&supports_updates_available()) {
 	foreach my $c (@current) {
 		$currentmap{$c->{'name'},$c->{'system'}} ||= $c;
 		}
-	foreach my $a (&updates_available($nocache == 1)) {
+	foreach my $a (&updates_available($nocache == 1, $include_held)) {
 		my $c = $currentmap{$a->{'name'},$a->{'system'}};
 		next if (!$c);
+		next if ($a->{'held'} && !$include_held);
 		next if ($a->{'version'} eq $c->{'version'} &&
 			 $a->{'epoch'} eq $c->{'epoch'});
 		push(@rv, { 'name' => $a->{'name'},
@@ -489,6 +537,7 @@ if (&supports_updates_available()) {
 			    'epoch' => $a->{'epoch'},
 			    'oldepoch' => $c->{'epoch'},
 			    'security' => $a->{'security'},
+			    'held' => $a->{'held'},
 			    'source' => $a->{'source'},
 			    'desc' => $c->{'desc'} || $a->{'desc'} });
 		}
@@ -700,10 +749,13 @@ sub flush_package_caches
 {
 unlink($current_cache_file);
 unlink($updates_cache_file);
+unlink($held_updates_cache_file);
 unlink($available_cache_file);
 unlink($available_cache_file.'0');
 unlink($available_cache_file.'1');
 @packages_available_cache = ( );
+@updates_available_cache = ( );
+@held_updates_available_cache = ( );
 %read_cache_file_cache = ( );
 }
 
@@ -713,6 +765,8 @@ unlink($available_cache_file.'1');
 sub list_for_mode
 {
 my ($mode, $nocache) = @_;
+return grep { $_->{'held'} }
+	&list_possible_updates($nocache, 0, 1) if ($mode eq 'held');
 return $mode eq 'updates' || $mode eq 'security' ?
 	&list_possible_updates($nocache) : &list_available($nocache);
 }

@@ -14367,21 +14367,21 @@ if (!%current_theme_info || $nocache) {
 return \%current_theme_info;
 }
 
-# miniserv_using_default_cert()
-# Returns 1 if miniserv is using one of the hard-coded certs
+# miniserv_using_default_cert([certificate-file])
+# Returns 1 if miniserv is using one of the formerly bundled certificates
 sub miniserv_using_default_cert
 {
-return 0 if ($ENV{'HTTPS'} ne 'ON');
+my ($currentcertfile) = @_;
+return 0 if (!$currentcertfile && $ENV{'HTTPS'} ne 'ON');
 my $defaultcertname = 'miniserv.pem';
-my $bundledcertfile = "$root_directory/$defaultcertname";
-my $currentcertfile = $ENV{'MINISERV_KEYFILE'};
+$currentcertfile ||= $ENV{'MINISERV_KEYFILE'};
 if (!$currentcertfile) {
 	my %miniserv;
 	&get_miniserv_config(\%miniserv);
 	$currentcertfile = $miniserv{'keyfile'};
 	}
-if (   $currentcertfile =~ /$defaultcertname$/ &&
-	-r $currentcertfile && -r $bundledcertfile) {
+if ($currentcertfile && $currentcertfile =~ /\Q$defaultcertname\E$/ &&
+    -r $currentcertfile) {
 	my $out;
 	&execute_command("md5sum ".quotemeta($currentcertfile), undef, \$out);
 	return 0 if ($?);

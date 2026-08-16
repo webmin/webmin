@@ -82,6 +82,12 @@ the following :
 =cut
 sub quota_can
 {
+my ($mnttab) = @_;
+
+# The quota-tools commands used by this module cannot reliably manage tmpfs
+# mounts, even when they expose usrquota or grpquota mount options.
+return 0 if ($mnttab->[2] eq "tmpfs");
+
 my %exclude_mounts;
 if (&has_command("findmnt")) {
 	%exclude_mounts = map { $_ => 1 } split( /\n/m, backquote_command('findmnt -r | grep -oP \'^(\S+)(?=.*\[\/)\'') );
@@ -289,15 +295,22 @@ if ($out =~ /\s(\d+\.\d+)/) {
 # Force load of quota kernel modules
 &system_logged("modprobe quota_v2 >/dev/null 2>&1");
 
-local $fmt = $version >= 2 ? "vfsv0" : "vfsold";
+# Quota tools 4 and later support 64-bit limits in vfsv1 files
+local $fmt = $version >= 4 ? "vfsv1" :
+	     $version >= 2 ? "vfsv0" : "vfsold";
 local $hidden = &hidden_ext_quota_mode($_[0]);
 if ($_[1]%2 == 1) {
 	# turn on user quotas
 	local $qf = $version >= 2 ? "aquota.user" : "quota.user";
-	if (!-s "$_[0]/$qf" && !($hidden & 1)) {
+	local $legacy = $version >= 4 && !($hidden & 1) &&
+			$qf ne "quota.user" &&
+			!-s "$_[0]/$qf" &&
+			-s "$_[0]/quota.user";
+	if (!-s "$_[0]/$qf" && !$legacy && !($hidden & 1)) {
 		# Setting up for the first time
 		local $ok = 0;
-		if (&has_command("convertquota") && $version >= 2) {
+		if (&has_command("convertquota") && $version >= 2 &&
+		    $version < 4) {
 			# Try creating a quota.user file and converting it
 			&open_tempfile(QUOTAFILE, ">>$_[0]/quota.user", 0, 1);
 			&close_tempfile(QUOTAFILE);
@@ -315,24 +328,32 @@ if ($_[1]%2 == 1) {
 				&set_ownership_permissions(undef, undef, 0600,
 							   "$_[0]/$qf");
 				}
-			&run_quotacheck($_[0]) ||
-				&run_quotacheck($_[0], "-u -f") ||
-				&run_quotacheck($_[0], "-u -f -m") ||
-				&run_quotacheck($_[0], "-u -f -m -c") ||
-				&run_quotacheck($_[0], "-u -f -m -c -F $fmt");
+			local $fflag = $fmt eq "vfsv1" ? " -F $fmt" : "";
+			$ok = &run_quotacheck($_[0], "-u$fflag") ||
+				&run_quotacheck($_[0], "-u -f$fflag") ||
+				&run_quotacheck($_[0], "-u -f -m$fflag") ||
+				&run_quotacheck($_[0], "-u -f -m -c$fflag");
+			&run_quotacheck($_[0], "-u -f -m -c -F ".
+				($fmt eq "vfsv1" ? "vfsv0" : $fmt)) if (!$ok);
 			}
 		}
-	$out = &backquote_logged(
-			"$config{'user_quotaon_command'} ".quotemeta($_[0])." 2>&1");
+	local $fflag = $legacy ? " -F vfsold" : "";
+	$out = &backquote_logged("$config{'user_quotaon_command'}$fflag ".
+			quotemeta($_[0])." 2>&1");
 	if ($?) { return $out; }
 	}
 if ($_[1] > 1) {
 	# turn on group quotas
 	local $qf = $version >= 2 ? "aquota.group" : "quota.group";
-	if (!-s "$_[0]/$qf" && !($hidden & 2)) {
+	local $legacy = $version >= 4 && !($hidden & 2) &&
+			$qf ne "quota.group" &&
+			!-s "$_[0]/$qf" &&
+			-s "$_[0]/quota.group";
+	if (!-s "$_[0]/$qf" && !$legacy && !($hidden & 2)) {
 		# Setting up for the first time
 		local $ok = 0;
-		if (!$ok && &has_command("convertquota") && $version >= 2) {
+		if (!$ok && &has_command("convertquota") && $version >= 2 &&
+		    $version < 4) {
 			# Try creating a quota.group file and converting it
 			&open_tempfile(QUOTAFILE, ">>$_[0]/quota.group", 0, 1);
 			&close_tempfile(QUOTAFILE);
@@ -350,15 +371,18 @@ if ($_[1] > 1) {
 				&set_ownership_permissions(undef, undef, 0600,
 							   "$_[0]/$qf");
 				}
-			&run_quotacheck($_[0]) ||
-				&run_quotacheck($_[0], "-g -f") ||
-				&run_quotacheck($_[0], "-g -f -m") ||
-				&run_quotacheck($_[0], "-g -f -m -c") ||
-				&run_quotacheck($_[0], "-g -f -m -c -F $fmt");
+			local $fflag = $fmt eq "vfsv1" ? " -F $fmt" : "";
+			$ok = &run_quotacheck($_[0], "-g$fflag") ||
+				&run_quotacheck($_[0], "-g -f$fflag") ||
+				&run_quotacheck($_[0], "-g -f -m$fflag") ||
+				&run_quotacheck($_[0], "-g -f -m -c$fflag");
+			&run_quotacheck($_[0], "-g -f -m -c -F ".
+				($fmt eq "vfsv1" ? "vfsv0" : $fmt)) if (!$ok);
 			}
 		}
-	$out = &backquote_logged(
-			"$config{'group_quotaon_command'} ".quotemeta($_[0])." 2>&1");
+	local $fflag = $legacy ? " -F vfsold" : "";
+	$out = &backquote_logged("$config{'group_quotaon_command'}$fflag ".
+			quotemeta($_[0])." 2>&1");
 	if ($?) { return $out; }
 	}
 return undef;
@@ -373,8 +397,10 @@ Runs the quotacheck command on some filesystem, and returns 1 on success or
 sub run_quotacheck
 {
 &clean_language();
+local $cmd = $config{'quotacheck_command'};
+$cmd =~ s/\s+-[ug]+(?=\s|$)//g;
 local $out = &backquote_logged(
-	"$config{'quotacheck_command'} $_[1] ".quotemeta($_[0])." 2>&1");
+	"$cmd $_[1] ".quotemeta($_[0])." 2>&1");
 &reset_environment();
 return $? || $out =~ /cannot guess|cannot remount|cannot find|please stop/i ? 0 : 1;
 }
@@ -767,18 +793,28 @@ if ($_[1] == 0 || $_[1] == 2) {
 	&unlink_file("$_[0]/aquota.group.new");
 	}
 local $cmd = $config{'quotacheck_command'};
-$cmd =~ s/\s+-[ug]//g;
+$cmd =~ s/\s+-[ug]+(?=\s|$)//g;
 local $flag = $_[1] == 1 ? "-u" : $_[1] == 2 ? "-g" : "-u -g";
-$out = &backquote_logged("$cmd $flag ".quotemeta($_[0])." 2>&1");
+local $new = $_[1] == 1 ?
+	     !-s "$_[0]/aquota.user" && !-s "$_[0]/quota.user" :
+	     $_[1] == 2 ?
+	     !-s "$_[0]/aquota.group" && !-s "$_[0]/quota.group" :
+	     !-s "$_[0]/aquota.user" && !-s "$_[0]/quota.user" &&
+	     !-s "$_[0]/aquota.group" && !-s "$_[0]/quota.group";
+local $qver = $new ? &backquote_command("quota -V 2>&1") : "";
+local $fmt = $new && $qver =~ /\s(\d+)\.\d+/ && $1 >= 4 ? "vfsv1" : undef;
+local $fflag = $fmt ? " -F $fmt" : "";
+$out = &backquote_logged("$cmd $flag$fflag ".quotemeta($_[0])." 2>&1");
 if ($?) {
 	# Try with the -f and -m options
 	$out = &backquote_logged(
-		"$cmd $flag -f -m ".quotemeta($_[0])." 2>&1");
+		"$cmd $flag -f -m$fflag ".quotemeta($_[0])." 2>&1");
 	if ($?) {
 		# Try with the -F option
-		foreach my $fmt ("vfsv1", "vfsv0", "vfsold") {
+		foreach my $tryfmt ($fmt ? ("vfsv0", "vfsold") :
+					 ("vfsv1", "vfsv0", "vfsold")) {
 			$out = &backquote_logged(
-				"$cmd $flag -f -m -F $fmt ".quotemeta($_[0])." 2>&1");
+				"$cmd $flag -f -m -F $tryfmt ".quotemeta($_[0])." 2>&1");
 			last if (!$?);
 			}
 		}
@@ -1105,6 +1141,84 @@ foreach my $m (&mount::list_mounted()) {
 return $best && $best->[2] eq "btrfs" ? 1 : 0;
 }
 
+# decode_btrfs_mount_path(path)
+# Decodes the octal escapes used by /proc/self/mountinfo.
+sub decode_btrfs_mount_path
+{
+my ($path) = @_;
+$path =~ s/\\([0-7]{3})/chr(oct($1))/eg;
+return $path;
+}
+
+# parse_btrfs_mountinfo(text, path)
+# Returns the deepest Btrfs mount point containing path and its filesystem root.
+sub parse_btrfs_mountinfo
+{
+my ($text, $path) = @_;
+my ($best_mount, $best_root);
+# Parse only Btrfs mountinfo records that can contain the requested path.
+foreach my $line (split(/\r?\n/, $text)) {
+	my ($left, $right) = split(/\s+-\s+/, $line, 2);
+	next if (!defined($right));
+	my @right = split(/\s+/, $right);
+	next if ($right[0] ne "btrfs");
+	my @left = split(/\s+/, $left);
+	next if (@left < 5);
+	my $root = &decode_btrfs_mount_path($left[3]);
+	my $mount = &decode_btrfs_mount_path($left[4]);
+	next if (!&is_under_directory($mount, $path));
+	# Prefer the deepest match when nested Btrfs subvolumes are mounted.
+	if (!defined($best_mount) || length($mount) > length($best_mount)) {
+		$best_mount = $mount;
+		$best_root = $root;
+		}
+	}
+return defined($best_mount) ? ($best_mount, $best_root) : ( );
+}
+
+=head2 btrfs_mountinfo(path)
+
+Returns the visible Btrfs mount point containing a path and its filesystem
+root, or an empty list when no containing Btrfs mount can be found.
+
+=cut
+sub btrfs_mountinfo
+{
+my ($path) = @_;
+open(my $fh, "<", "/proc/self/mountinfo") || return ( );
+local $/ = undef;
+my $text = <$fh>;
+close($fh);
+return &parse_btrfs_mountinfo($text, $path);
+}
+
+=head2 btrfs_qgroup_absolute_path(mount, filesystem-root, qgroup-path)
+
+Converts the filesystem-relative path reported by C<btrfs qgroup show> to a
+visible absolute path, or returns undef when it is outside the mounted root.
+
+=cut
+sub btrfs_qgroup_absolute_path
+{
+my ($mount, $root, $path) = @_;
+return undef if (!defined($path) || $path eq "" || $path =~ /^</);
+$root ||= "/";
+$root =~ s/^\/+//;
+$root =~ s/\/+\z//;
+$path =~ s/^\/+//;
+# Strip the mounted subvolume root from the filesystem-relative qgroup path.
+if ($root ne "") {
+	return undef if ($path ne $root && index($path, "$root/") != 0);
+	$path = substr($path, length($root));
+	$path =~ s/^\/+//;
+	}
+$mount =~ s/\/+\z// if ($mount ne "/");
+my $absolute = $path eq "" ? ($mount || "/") :
+		       ($mount eq "/" ? "/$path" : "$mount/$path");
+$absolute =~ s{//+}{/}g;
+return $absolute;
+}
+
 # valid_btrfs_path(path)
 # Returns 1 for an absolute path that is safe to pass to Btrfs tools.
 sub valid_btrfs_path
@@ -1168,6 +1282,53 @@ $rv{'levels'} = \%levels if (%levels);
 return \%rv;
 }
 
+# btrfs_filesystem_uuid(path)
+# Returns the UUID of the Btrfs filesystem containing a path.
+sub btrfs_filesystem_uuid
+{
+my ($path) = @_;
+my ($out, $err) = &run_btrfs_command(
+	0, "filesystem", "show", "--raw", $path);
+return undef if (!defined($out) ||
+		 $out !~ /^\s*Label:.*\buuid:\s*([0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})\s*$/mi);
+return lc($1);
+}
+
+# btrfs_sysfs_quota_status(path)
+# Reads quota state exported by the kernel. This preserves accounting mode and
+# consistency information on btrfs-progs releases older than `quota status`.
+sub btrfs_sysfs_quota_status
+{
+my ($path) = @_;
+my $uuid = &btrfs_filesystem_uuid($path);
+return undef if (!$uuid);
+my $sysfs = $btrfs_sysfs_root || "/sys/fs/btrfs";
+my $qdir = "$sysfs/$uuid/qgroups";
+return undef if (!-d $qdir);
+
+my %rv = ( 'supported' => 1, 'enabled' => 1 );
+foreach my $field (qw(enabled mode inconsistent)) {
+	my $file = "$qdir/$field";
+	next if (!-r $file);
+	open(my $fh, "<", $file) || next;
+	my $value = <$fh>;
+	close($fh);
+	next if (!defined($value));
+	$value =~ s/^\s+|\s+$//g;
+	if ($field eq "mode" && $value =~ /^(qgroup|squota)$/) {
+		$rv{$field} = $value;
+		}
+	elsif ($field ne "mode" && $value =~ /^([01])$/) {
+		$rv{$field} = int($1);
+		}
+	}
+
+# Kernels predating simple quotas expose the qgroups directory without a mode
+# file. Their only possible accounting mode is full qgroups.
+$rv{'mode'} = "qgroup" if (!defined($rv{'mode'}) && !-e "$qdir/mode");
+return \%rv;
+}
+
 =head2 btrfs_quota_status(path)
 
 Returns a hash reference describing the Btrfs quota status for a path. The
@@ -1194,8 +1355,20 @@ if (defined($out)) {
 # quotas are enabled, and reports a missing quota root when disabled.
 my ($qout, $qerr) = &run_btrfs_command(0, "qgroup", "show", "--raw", $path);
 if (defined($qout)) {
-	return { 'supported' => 1,
-		 'enabled' => 1 };
+	my $rv = &btrfs_sysfs_quota_status($path) ||
+		 { 'supported' => 1, 'enabled' => 1 };
+	# Old qgroup-show versions warn on stdout when the counters are
+	# inconsistent. Retain that signal if sysfs did not provide the flag.
+	if (!defined($rv->{'inconsistent'})) {
+		$rv->{'inconsistent'} =
+			$qout =~ /^\s*(?:warning|error):.*qgroup.*inconsistent/mi ?
+			1 : 0;
+		}
+	# A simple-quota space holder is definitive even when sysfs is unavailable.
+	$rv->{'mode'} = "squota"
+		if (!defined($rv->{'mode'}) &&
+		    $qout =~ /<squota space holder>/i);
+	return $rv;
 	}
 elsif ($qerr =~ /(?:quota root does not exist|quotas? (?:are |is )?not enabled)/i) {
 	return { 'supported' => 1,
@@ -1243,6 +1416,27 @@ foreach my $line (split(/\r?\n/, $out)) {
 return \@rv;
 }
 
+=head2 parse_btrfs_subvolume_list_output(output)
+
+Parses raw output from C<btrfs subvolume list> and returns a hash reference
+mapping numeric subvolume IDs to filesystem-relative paths. This is used to
+fill qgroup paths on btrfs-progs versions older than 6.0.1.
+
+=cut
+sub parse_btrfs_subvolume_list_output
+{
+my ($out) = @_;
+my %rv;
+foreach my $line (split(/\r?\n/, $out)) {
+	# The default output ends in "path <path relative to top level>".
+	# Keep the final field intact because Btrfs paths may contain spaces.
+	if ($line =~ /^ID\s+(\d+)\s+.*?\s+path\s+(.*)$/) {
+		$rv{int($1)} = $2;
+		}
+	}
+return \%rv;
+}
+
 =head2 list_btrfs_qgroups(path, [sync], [&error])
 
 Returns an array reference containing all Btrfs qgroups on the filesystem
@@ -1271,6 +1465,22 @@ my $rv = &parse_btrfs_qgroup_output($out);
 if (!@$rv && $out =~ /\S/) {
 	$$errref = "Unable to parse Btrfs qgroup output" if ($errref);
 	return undef;
+	}
+# qgroup paths were not printed by default until btrfs-progs 6.0.1. Populate
+# missing level-0 paths from the long-established subvolume-list output so
+# callers can keep identifying subvolumes by path on supported older systems.
+if (grep { $_->{'id'} =~ /^0\/(\d+)$/ && $_->{'path'} eq '' } @$rv) {
+	my ($subvolout) = &run_btrfs_command(
+		0, "subvolume", "list", $path);
+	if (defined($subvolout)) {
+		my $paths = &parse_btrfs_subvolume_list_output($subvolout);
+		foreach my $q (@$rv) {
+			if ($q->{'id'} =~ /^0\/(\d+)$/ && $q->{'path'} eq '' &&
+			    defined($paths->{$1})) {
+				$q->{'path'} = $paths->{$1};
+				}
+			}
+		}
 	}
 $$errref = undef if ($errref);
 return $rv;

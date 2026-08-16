@@ -1924,7 +1924,30 @@ elsif ($_[0] =~ /^ext\d+$/) {
 		($u, $g) = ("usrjquota", "grpjquota");
 		$jufile ||= "aquota.user";
 		$jgfile ||= "aquota.group";
-		$options{"jqfmt"} = "vfsv0";
+		if (!$options{"jqfmt"}) {
+			# Keep the format of existing external quota files when
+			# switching them to journaled quotas.
+			my $jqfmt;
+			foreach my $qfile ($jufile, $jgfile) {
+				next if (!-s "$_[2]/$qfile");
+				if (open(my $qfh, "<", "$_[2]/$qfile")) {
+					my $header;
+					if (read($qfh, $header, 8) == 8) {
+						my (undef, $version) = unpack("V2", $header);
+						$jqfmt = $version == 0 ? "vfsv0" :
+							 $version == 1 ? "vfsv1" : undef;
+						}
+					close($qfh);
+					}
+				last if ($jqfmt);
+				}
+			if (!$jqfmt) {
+				my $qver = &backquote_command("quota -V 2>&1");
+				$jqfmt = $qver =~ /\s(\d+)\.\d+/ && $1 >= 4 ?
+					"vfsv1" : "vfsv0";
+				}
+			$options{"jqfmt"} = $jqfmt;
+			}
 		}
 	else {
 		$jufile = "";

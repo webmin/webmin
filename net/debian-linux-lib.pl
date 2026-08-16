@@ -230,12 +230,12 @@ if ($cfg->{'bridge'}) {
 
 # Set bonding parameters
 if(($cfg->{'bond'} == 1) && ($gconfig{'os_version'} >= 5)) {
-	push(@options, [&bonding_option('mode').' '.$cfg->{'mode'}]);
-	push(@options, [&bonding_option('miimon').' '.$cfg->{'miimon'}]) if ($cfg->{'miimon'});
-	push(@options, [&bonding_option('updelay').' '.$cfg->{'updelay'}]) if ($cfg->{'updelay'});
-	push(@options, [&bonding_option('downdelay').' '.$cfg->{'downdelay'}]) if ($cfg->{'downdelay'});
-	push(@options, [&bonding_option('primary').' '.$cfg->{'primary'}]) if ($cfg->{'primary'});
-	push(@options, ['slaves '.$cfg->{'partner'}]);
+	push(@options, [&bonding_option('mode'), $cfg->{'mode'}]);
+	push(@options, [&bonding_option('miimon'), $cfg->{'miimon'}]) if ($cfg->{'miimon'});
+	push(@options, [&bonding_option('updelay'), $cfg->{'updelay'}]) if ($cfg->{'updelay'});
+	push(@options, [&bonding_option('downdelay'), $cfg->{'downdelay'}]) if ($cfg->{'downdelay'});
+	push(@options, [&bonding_option('primary'), $cfg->{'primary'}]) if ($cfg->{'primary'});
+	push(@options, ['slaves', $cfg->{'partner'}]);
 	}
 elsif ($cfg->{'bond'} == 1) {
 	push(@options, ['up', '/sbin/ifenslave '.$cfg->{'name'}." ".

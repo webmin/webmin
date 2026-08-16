@@ -66,7 +66,7 @@ if ($ENV{'perllib'}) {
 # Validate source directory
 @allmods = map { s/\/module.info$//; $_ } glob("*/module.info");
 if (!@allmods) {
-	&errorexit("ERROR: Failed to get module list");
+	&errorexit("Failed to get module list");
 	}
 $allmods = join(" ", @allmods);
 print "\n";
@@ -341,6 +341,7 @@ else {
 	# Ask the user if SSL should be used
 	if ($ENV{'ssl'} ne '') {
 		$ssl = $ENV{'ssl'};
+		$no_ssl_warn = 1 if (!$ssl);
 		}
 	else {
 		$ssl = 0;
@@ -350,6 +351,9 @@ else {
 			chop($sslyn = <STDIN>);
 			if ($sslyn =~ /^y/i) {
 				$ssl = 1;
+				}
+			else {
+				$no_ssl_warn = 1;
 				}
 			}
 		else {
@@ -431,6 +435,7 @@ else {
 	if ($ENV{'allow'}) {
 		$miniserv{'allow'} = $ENV{'allow'};
 		}
+	$miniserv{'no_ssl_warn'} = 1 if ($no_ssl_warn);
 	if ($ENV{'session'} eq '') {
 		$miniserv{'session'} = $os_type eq 'windows' ? 0 : 1;
 		}
@@ -488,7 +493,8 @@ else {
 	chmod(0600, $ufile);
 
 	# Generate cert
-	if (system("openssl version >/dev/null 2>&1") == 0) {
+	$openssl_available = system("openssl version >/dev/null 2>&1") == 0;
+	if ($openssl_available) {
 		# We can generate a new SSL key for this host
 		$host = &get_system_hostname();
 		$cert = &tempname();
@@ -519,11 +525,27 @@ else {
 			}
 		unlink($cert, $key);
 		}
-	if (!-r $kfile) {
-		# Fall back to the built-in key
-		&copy_source_dest("$wadir/miniserv.pem", $kfile);
+	if (-r $kfile) {
+		chmod(0600, $kfile);
 		}
-	chmod(0600, $kfile);
+	else {
+		delete($miniserv{'keyfile'});
+		if ($ssl) {
+			print "\n";
+			if ($openssl_available) {
+				print "ERROR: Failed to generate or install a unique TLS certificate for this host.\n";
+				}
+			else {
+				print "ERROR: OpenSSL is not available, so a unique TLS certificate could not be generated.\n";
+				}
+			print "WARNING: Webmin will be configured to use HTTP only.\n";
+			print "Login credentials and sessions will not be encrypted until SSL is enabled\n";
+			print "with a valid certificate. See https://webmin.com/docs/modules/webmin-configuration/#ssl-encryption for help.\n\n";
+			$ssl = 0;
+			$miniserv{'ssl'} = 0;
+			}
+		&put_miniserv_config(\%miniserv);
+		}
 	print ".. done\n";
 	print "\n";
 

@@ -1,6 +1,9 @@
 ## Changelog
 #### 2.654 (August, 2026)
 * Add incremental ban time options to the Fail2Ban module
+* Add Btrfs subvolume quota management to the Disk Quotas module, with full and simple accounting modes
+* Add support for creating `vfsv1` Linux quota files for limits above 4 TiB, while preserving existing quota file formats
+* Add support for openSUSE 16 vendor and local Logrotate configuration overlays [#2682](https://github.com/webmin/webmin/issues/2682)
 * Fix to ignore failures when adding IPv6 link-local (fe80::) addresses that may already be configured automatically
 * Fixed creation of permissions new log files in the System Logs module (thanks to Kevin Carter)
 * Update the Authentic theme to the latest version with various improvements:

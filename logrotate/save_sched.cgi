@@ -11,9 +11,10 @@ if ($in{'idx'} ne "") {
 	$oldjob = $job = $jobs[$in{'idx'}];
 	}
 else {
+	# Prefer the distro wrapper, when available, so future runs discover the
+	# then-current vendor and local drop-in set.
 	$job = { 'user' => 'root',
-		 'command' => &has_command($config{'logrotate'})." ".
-			      $config{'logrotate_conf'},
+		 'command' => &get_scheduled_logrotate_command(),
 		 'active' => 1 };
 	}
 &lock_file(&cron::cron_file($job));
