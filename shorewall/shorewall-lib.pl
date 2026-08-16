@@ -672,8 +672,8 @@ else {
 	}
 }
 
-@interfaces_opts = ( 'dhcp', 'multi', 'routefilter',
-		     'maclist', 'tcpflags', 'proxyarp' );
+our @interfaces_opts = ( 'dhcp', 'multi', 'routefilter',
+		         'maclist', 'tcpflags', 'proxyarp' );
 if (!&version_atleast(5, 0, 4)) {
 	push(@interfaces_opts, 'noping', 'filterping', 'routestopped',
 		       'norfc1918', 'dropunclean', 'logunclean', 'blacklist');
@@ -753,7 +753,7 @@ return ( $_[0] eq 'all' ? $text{'list_any'} :
 				: $text{'list_none'} );
 }
 
-@policy_list = ( "ACCEPT", "DROP", "REJECT", "CONTINUE" );
+our @policy_list = ( "ACCEPT", "DROP", "REJECT", "CONTINUE" );
 
 sub policy_form
 {
@@ -820,7 +820,7 @@ return ( $_[0] =~ /^(\S+):/ ? "$1" : $_[0],
 	);
 }
 
-@rules_actions = ( 'ACCEPT', 'DROP', 'REJECT', 'DNAT', 'DNAT-', 'REDIRECT' );
+our @rules_actions = ('ACCEPT', 'DROP', 'REJECT', 'DNAT', 'DNAT-', 'REDIRECT');
 if (&version_atleast(2, 0, 0)) {
 	push(@rules_actions, 'CONTINUE');
 	push(@rules_actions, 'ACCEPT+');
@@ -834,7 +834,7 @@ if (&version_atleast(3)) {
 	push(@rules_actions, 'SAME-');
 	push(@rules_actions, 'QUEUE');
 	}
-@rules_protos = ( 'all', 'related', 'tcp', 'udp', 'icmp' );
+our @rules_protos = ( 'all', 'related', 'tcp', 'udp', 'icmp' );
 
 sub rules_form
 {
@@ -1039,12 +1039,12 @@ return &version_atleast(1, 4, 7) ? 6 : 8;
 
 ################################# tos #########################################
 
-%tos_map = ( 0, 'Normal-Service',
-	     2, 'Minimize-Cost',
-	     4, 'Maximize-Reliability',
-	     8, 'Maximize-Throughput',
-	     16, 'Minimize-Delay' );
-@tos_protos = ( 'tcp', 'udp', 'icmp' );
+our %tos_map = ( 0, 'Normal-Service',
+	         2, 'Minimize-Cost',
+	         4, 'Maximize-Reliability',
+	         8, 'Maximize-Throughput',
+	         16, 'Minimize-Delay' );
+our @tos_protos = ( 'tcp', 'udp', 'icmp' );
 
 sub tos_row
 {
@@ -1492,7 +1492,7 @@ return ( $_[0] eq '-' ? $text{'blacklist_any'} : $_[0],
 	 $_[2] || $text{'blacklist_any'} );
 }
 
-@blacklist_protos = ( undef, 'tcp', 'udp', 'icmp' );
+our @blacklist_protos = ( undef, 'tcp', 'udp', 'icmp' );
 
 sub blacklist_form
 {
