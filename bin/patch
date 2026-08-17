@@ -155,7 +155,8 @@ if ($direct) {
 	}
 # Apply patch using patch command
 elsif (has_command('patch')) {
-	$output = `$cmd 2>&1 | patch -p1 --verbose 2>&1`;
+	# Do not leave .orig backups behind when hunks apply with fuzz or offset
+	$output = `$cmd 2>&1 | patch -p1 --verbose --no-backup-if-mismatch 2>&1`;
 	if ($output !~ /succeeded/i) {
 		print "Patch failed: $output\n";
 		exit 1;
