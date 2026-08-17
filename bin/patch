@@ -76,8 +76,9 @@ foreach my $patch (@patches) {
 	$applied++;
 	}
 
-# Reload Webmin once, if any patches were applied
-reload_miniserv() if ($applied);
+# Restart Webmin once, if any patches were applied, so that changes to
+# any file, including miniserv.pl itself, take effect
+restart_miniserv() if ($applied);
 
 # Report if some patches were not applied
 if ($failed) {
@@ -243,7 +244,7 @@ Apply a patch to Webmin core or its modules from GitHub/GitLab, a local
 file, or by downloading and replacing the entire file from a raw URL.
 
 Multiple patches can be given at once and are applied in the given order,
-stopping at the first failure. Webmin is reloaded only once after all
+stopping at the first failure. Webmin is restarted only once after all
 patches are applied.
 
 =head1 SYNOPSIS
