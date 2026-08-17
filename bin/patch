@@ -163,7 +163,14 @@ elsif (has_command('patch')) {
 	}
 # Apply patch using git command
 else {
-	$output = `$cmd 2>&1 | git apply --reject --verbose --whitespace=fix 2>&1`;
+	# If the current directory is inside some git repository (e.g. Webmin
+	# root tracked with git), git would treat patch paths as relative to
+	# that repository root and silently skip them, so stop repository
+	# discovery at the parent directory to always apply patch paths
+	# relative to the current directory
+	local $ENV{'GIT_CEILING_DIRECTORIES'} = dirname(cwd());
+	# Allow reduced context, similar to the default fuzz used by patch
+	$output = `$cmd 2>&1 | git apply --reject --verbose -C1 --whitespace=fix 2>&1`;
 	if ($output !~ /applied patch.*?cleanly/i) {
 		print "Patch failed: $output\n";
 		exit 1;
