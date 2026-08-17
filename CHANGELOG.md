@@ -1,8 +1,9 @@
 ## Changelog
-#### 2.660 (August 16, 2026)
+#### 2.660 (August 17, 2026)
 * Add support for creating `vfsv1` Linux quota files for limits above 4 TiB, while preserving existing quota file formats
 * Add Btrfs subvolume quota management to the Disk Quotas module, with full and simple accounting modes
 * Add support for openSUSE 16 vendor and local Logrotate configuration overlays [#2682](https://github.com/webmin/webmin/issues/2682)
+* Add support for applying multiple patches at once with the `patch` sub-command
 * Add APT package hold management to the Package Updates module
 * Add incremental ban time options to the Fail2Ban module
 * Fix Webmin server connections that open but never send a request, preventing them from waiting indefinitely [#2815](https://github.com/webmin/webmin/pull/2815)
