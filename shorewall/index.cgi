@@ -2,6 +2,10 @@
 # index.cgi
 # Display icons for the various shorewall configuration files
 
+use strict;
+use warnings;
+our (%text, %config, $module_name, $shorewall_version,
+     $module_config_directory, @shorewall_files, %access);
 require './shorewall-lib.pl';
 
 if (!&has_command($config{'shorewall'})) {
@@ -12,9 +16,10 @@ if (!&has_command($config{'shorewall'})) {
 else {
 	# Get the version
 	$shorewall_version = &get_shorewall_version(1);
-	&open_tempfile(VERSION, ">$module_config_directory/version");
-	&print_tempfile(VERSION, $shorewall_version,"\n");
-	&close_tempfile(VERSION);
+	my $fh;
+	&open_tempfile($fh, ">$module_config_directory/version");
+	&print_tempfile($fh, $shorewall_version,"\n");
+	&close_tempfile($fh);
 
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("shorewall", "doc", "google"),
@@ -28,10 +33,10 @@ else {
 		}
 	else {
 		# Just show the file icons
-		@files = grep { &can_access($_) } @shorewall_files;
-		@titles = map { $text{&clean_name($_)."_title"}."<br>($_)" } @files;
-		@links = map { "list.cgi?table=".$_ } @files;
-		@icons = map { "images/".$_.".gif" } @files;
+		my @files = grep { &can_access($_) } @shorewall_files;
+		my @titles = map { $text{&clean_name($_)."_title"}."<br>($_)" } @files;
+		my @links = map { "list.cgi?table=".$_ } @files;
+		my @icons = map { "images/".$_.".gif" } @files;
 		&icons_table(\@links, \@titles, \@icons, 4);
 
 		# Check if shorewall is running by looking for the 'shorewall'

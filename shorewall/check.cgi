@@ -2,6 +2,9 @@
 # check.cgi
 # Check if the firewall is valid
 
+use strict;
+use warnings;
+our (%text, %config);
 require './shorewall-lib.pl';
 &ui_print_header(undef, $text{'check_title'}, "");
 
