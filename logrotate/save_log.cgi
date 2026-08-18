@@ -73,8 +73,13 @@ elsif ($in{'now'}) {
 
 	print $text{'force_doingone'},"\n";
 	($ex, $out) = &rotate_log_now($log);
-	print "<pre>$out</pre>";
-	if ($?) {
+	if ($out =~ /\S/) {
+		print "<pre>",&html_escape($out),"</pre>";
+		}
+	else {
+		print "<br>\n";
+		}
+	if ($ex) {
 		print $text{'force_failed'},"<br>\n";
 		}
 	else {

@@ -210,7 +210,7 @@ my @w;
 my $v = $dir->{'value'};
 $v =~ s/\n/ /g;
 while($v =~ /\S/) {
-	if ($v =~ /^([^\[]+\[[^\]]+\])\s*(.*)/) {
+	if ($v =~ /^\s*([^\s\[]+\[[^\]]*\])\s*(.*)/) {
 		push(@w, $1);
 		$v = $2;
 		}
@@ -408,7 +408,9 @@ my @rv;
 my @v = ref($dir->{'value'}) eq 'ARRAY' ? @{$dir->{'value'}}
 					: split(/\n/, $dir->{'value'});
 push(@rv, $dir->{'name'}." = ".shift(@v));
-push(@rv, map { "        ".$_ } @v);	# Continuation
+# Indent continuation lines to align with the first value
+my $indent = " " x (length($dir->{'name'}) + 3);
+push(@rv, map { $indent.$_ } @v);
 return @rv;
 }
 

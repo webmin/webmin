@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
-# patch - Apply a patch to Webmin core or its modules from GitHub or a local file
+# patch - Apply one or more patches to Webmin core or its modules from
+# GitHub or a local file
 
 use strict;
 use warnings;
@@ -49,20 +50,56 @@ if (!has_command('patch')) {
 		}
 	}
 
-# Get patch URL or file
-my $patch = $ARGV[0];
+# Get patch URLs or files
+my @patches = @ARGV;
 
 # Params check
-if (!$patch) {
+if (!@patches) {
 	pod2usage(0);
 	exit 1;
 	}
+
+# Apply all patches in the given order, stopping at the first failure
+my $orig_cwd = cwd();
+my $applied = 0;
+my $failed = 0;
+foreach my $patch (@patches) {
+	# Show which patch is being applied if there are multiple
+	print "Applying $patch ..\n" if (@patches > 1);
+	# Always start from the original directory, as applying a patch
+	# may change it
+	chdir($orig_cwd);
+	if (!apply_patch($patch)) {
+		$failed = 1;
+		last;
+		}
+	$applied++;
+	}
+
+# Restart Webmin once, if any patches were applied, so that changes to
+# any file, including miniserv.pl itself, take effect
+restart_miniserv() if ($applied);
+
+# Report if some patches were not applied
+if ($failed) {
+	print "Stopped: $applied of ".scalar(@patches)." patches applied\n"
+		if (@patches > 1);
+	exit 1;
+	}
+exit 0;
+
+# apply_patch(patch)
+# Apply a single patch given as URL or local file, printing the outcome
+# and returning 1 on success or 0 on failure
+sub apply_patch
+{
+my ($patch) = @_;
 
 # Patch check
 if ($patch !~ /^https?:\/\//) {
 	if (!-r $patch) {
 		print "Patch file $patch doesn't exist\n";
-		exit 1;
+		return 0;
 		}
 	}
 elsif ($patch =~ /^https?:\/\/(github|gitlab)\.com/ &&
@@ -101,9 +138,9 @@ if ($patch =~ m{
 
 # Check if module exists
 if (!-d "$path/$module") {
-    print "Module '$module' doesn't exist\n";
-    exit 1;
-}
+	print "Module '$module' doesn't exist\n";
+	return 0;
+	}
 
 # Prepare patch command
 my $cmd;
@@ -128,7 +165,7 @@ if ($patch =~ m{^https?://raw\.githubusercontent\.com/} ||
 		}
 	else {
 		print "Patch failed: Can't parse file name from URL\n";
-		exit 1;
+		return 0;
 		}
 	my $cd = "$path/$module/$dir";
 	$cd =~ s|/+|/|g;
@@ -149,26 +186,34 @@ else {
 if ($direct) {
 	$output = `$cmd 2>&1`;
 	if ($output != 200) {
-        	print "Patch failed: Cannot download '$filename'. HTTP status code: $output\n";
-		exit 1;
-    		}
+		print "Patch failed: Cannot download '$filename'. HTTP status code: $output\n";
+		return 0;
+		}
 	}
 # Apply patch using patch command
 elsif (has_command('patch')) {
-	$output = `$cmd 2>&1 | patch -p1 --verbose 2>&1`;
+	# Do not leave .orig backups behind when hunks apply with fuzz or offset
+	$output = `$cmd 2>&1 | patch -p1 --verbose --no-backup-if-mismatch 2>&1`;
 	if ($output !~ /succeeded/i) {
 		print "Patch failed: $output\n";
-		exit 1;
+		return 0;
 		}
 	}
 # Apply patch using git command
 else {
-	$output = `$cmd 2>&1 | git apply --reject --verbose --whitespace=fix 2>&1`;
+	# If the current directory is inside some git repository (e.g. Webmin
+	# root tracked with git), git would treat patch paths as relative to
+	# that repository root and silently skip them, so stop repository
+	# discovery at the parent directory to always apply patch paths
+	# relative to the current directory
+	local $ENV{'GIT_CEILING_DIRECTORIES'} = dirname(cwd());
+	# Allow reduced context, similar to the default fuzz used by patch
+	$output = `$cmd 2>&1 | git apply --reject --verbose -C1 --whitespace=fix 2>&1`;
 	if ($output !~ /applied patch.*?cleanly/i) {
 		print "Patch failed: $output\n";
-		exit 1;
+		return 0;
 		}
-}
+	}
 
 # Print results
 if ($direct) {
@@ -183,10 +228,9 @@ if ($direct) {
 else {
 	print "Patch applied successfully to:\n";
 	print "  $1\n" while $output =~ /^(?|Applied patch\s+(\S+)|patching file\s+(\S+))/mg;
+	}
+return 1;
 }
-
-# Reload Webmin
-reload_miniserv();
 
 =pod
 
@@ -199,9 +243,13 @@ patch
 Apply a patch to Webmin core or its modules from GitHub/GitLab, a local
 file, or by downloading and replacing the entire file from a raw URL.
 
+Multiple patches can be given at once and are applied in the given order,
+stopping at the first failure. Webmin is restarted only once after all
+patches are applied.
+
 =head1 SYNOPSIS
 
-webmin patch patch-url/file
+webmin patch patch-url/file [patch-url/file ...]
 
 =head1 OPTIONS
 
@@ -228,6 +276,11 @@ Examples of usage:
   
     - cd /usr/libexec/webmin/virtual-server/pro &&
       webmin patch /root/virtualmin-pro/patches/patch-1.patch
+
+  Apply multiple patches at once.
+
+    - webmin patch https://github.com/webmin/webmin/commit/e6a2bb15b0 \
+                   https://github.com/virtualmin/virtualmin-gpl/commit/f4433153d
 
 =back
 
