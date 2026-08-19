@@ -10,6 +10,7 @@
 * Fix to ignore failures when adding IPv6 link-local (fe80\:\:) addresses that may already be configured automatically
 * Fixed creation of permissions new log files in the System Logs module (thanks to Kevin Carter)
 * Fix Fail2Ban jail editor to correctly separate actions when one has no parameters [#2718](https://github.com/webmin/webmin/issues/2718)
+* Fix to honor the editable users ACL in the group member chooser in Users and Groups module [#2464](https://github.com/webmin/webmin/issues/2464)
 * Update the Authentic theme to the latest version with various improvements:
   - Fix change detection and submission for forms using grouped bottom action buttons
   - Fix login page front side clipping and flip animation for long welcome messages
