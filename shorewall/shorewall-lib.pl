@@ -428,7 +428,16 @@ if ($other) {
 elsif (!$found) {
 	push(@opts, [ $value, $value ]);
 	}
-my $sel = &ui_select($name, $value, \@opts);
+my $selv = $value;
+if ($other && !$found) {
+	# Value is not in the list, so select the Other.. option
+	$selv = '';
+	}
+elsif ($value eq '' && @opts) {
+	# New entry, so select the first option
+	$selv = $opts[0]->[0];
+	}
+my $sel = &ui_select($name, $selv, \@opts);
 return wantarray ? ($sel, $found) : $sel;
 }
 
@@ -764,7 +773,7 @@ $zf = &zone_field("dest", $_[1], 0);
 print &ui_table_row($text{'policy_1'}, $zf);
 
 print &ui_table_row($text{'policy_2'},
-	&ui_select("policy", uc($_[2]), \@policy_list, 1, 0, 1));
+	&ui_select("policy", uc($_[2]), \@policy_list, 1, 0, $_[2] ? 1 : 0));
 
 &foreign_require("syslog");
 print &ui_table_row($text{'policy_3'},
@@ -838,145 +847,106 @@ our @rules_protos = ( 'all', 'related', 'tcp', 'udp', 'icmp' );
 
 sub rules_form
 {
-local $found;
-local @ztable = &read_table_file("zones", \&zones_parser);
-
-local ($action, $log) = split(/:/, $_[0]);
-local $macroarg;
+my ($action, $log) = split(/:/, $_[0]);
+my $macroarg;
 if ($action =~ /^(.*)\/(.*)$/) {
 	$action = $1;
 	$macroarg = $2;
 	}
 
-# Rule action
-print "<tr> <td><b>$text{'rules_0'}</b></td>\n";
-print "<td colspan=3><select name=action>\n";
-$found = !$_[0];
-foreach $a ((sort { $a cmp $b } @rules_actions),
-	    "-------- Actions --------",
-	    &list_standard_actions(),
-	    (&version_atleast(3) ? ( "-------- Macros --------",
-				     &list_standard_macros() ) : ( ) )) {
-	printf "<option value=%s %s>%s</option>\n",
-		$a, $action eq $a ? "selected" : "", $a;
-	$found++ if ($action eq $a);
-	}
-print "<option value=$action selected>$action</option>\n" if (!$found);
-print "</select>\n";
+# Rule action and logging level
+my @aopts = ( (sort { $a cmp $b } @rules_actions),
+	      "-------- Actions --------",
+	      &list_standard_actions(),
+	      (&version_atleast(3) ? ( "-------- Macros --------",
+				       &list_standard_macros() ) : ( ) ) );
+&foreign_require("syslog");
+print &ui_table_row($text{'rules_0'},
+	&ui_select("action", $action, \@aopts, 1, 0, $action ? 1 : 0)." ".
+	"<b>$text{'rules_log'}</b> ".
+	&ui_select("log", $log,
+		[ [ '', "&lt;$text{'rules_nolog'}&gt;" ],
+		  [ 'ULOG', "&lt;$text{'policy_ulog'}&gt;" ],
+		  &syslog::list_priorities() ], 1, 0, $log ? 1 : 0),
+	3);
 
-# Logging level
-print "<b>$text{'rules_log'}</b> <select name=log>\n";
-printf "<option value='' %s>%s</option>\n",
-	!$log ? "selected" : "", "&lt;$text{'rules_nolog'}&gt;";
-printf "<option value=ULOG %s>%s</option>\n",
-	$log eq 'ULOG' ? "selected" : "", "&lt;$text{'policy_ulog'}&gt;";
-$found = !$log || $log eq '-' || $log eq 'ULOG';
-&foreign_require("syslog", "syslog-lib.pl");
-foreach $l (&syslog::list_priorities()) {
-	printf "<option value=%s %s>%s</option>\n",
-		$l, $log eq $l ? "selected" : "", $l;
-	$found++ if ($log eq $l);
-	}
-print "<option value=$log selected>$log</option>\n" if (!$found);
-print "</select></td> </tr>\n";
-
+# Macro parameter
 if (&version_atleast(3)) {
-	print "<tr> <td valign=top><b>$text{'rules_macro'}</b></td>\n";
-	print "<td colspan=3 nowrap>\n";
-	print &ui_select("macro", $macroarg,
-		[ [ "", "&lt;$text{'rules_none2'}&gt;" ],
-		  map { [ $_ ] } (sort { $a cmp $b } @rules_actions) ],
-		1, 0, $macroarg);
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'rules_macro'},
+		&ui_select("macro", $macroarg,
+			[ [ "", "&lt;$text{'rules_none2'}&gt;" ],
+			  map { [ $_ ] } (sort { $a cmp $b } @rules_actions) ],
+			1, 0, $macroarg ? 1 : 0),
+		3);
 	}
 
 # Source zone and hosts
-local ($zone, $host) = split(/:/, $_[1], 2);
-print "<tr> <td valign=top><b>$text{'rules_1z'}</b></td>\n";
-print "<td colspan=3 nowrap>\n";
+my ($zone, $host) = split(/:/, $_[1], 2);
 my ($zf, $found) = &zone_field("source", $zone, 1);
-print $zf;
-printf "<input name=sother size=10 value='%s'>\n",
-	$found ? "" : $zone;
+print &ui_table_row($text{'rules_1z'},
+	$zf." ".
+	&ui_textbox("sother", $found ? "" : $zone, 10)."<br>\n".
+	&ui_checkbox("sinzone_def", 1, $text{'rules_addr'}, $host ? 1 : 0)." ".
+	&ui_textbox("sinzone", join(" ", split(/,/, $host)), 50),
+	3);
 
-print "<br><b>$text{'rules_inzone'}</b>\n";
-printf "<input type=checkbox name=sinzone_def value=1 %s> %s\n",
-	$host ? "checked" : "", $text{'rules_addr'};
-printf "<input name=sinzone size=50 value='%s'></td> </tr>\n",
-	join(" ", split(/,/, $host));
-
+# Destination zone and hosts
 ($zone, $host) = split(/:/, $_[2], 2);
-print "<tr> <td valign=top><b>$text{'rules_2z'}</b></td>\n";
-print "<td colspan=3 nowrap>\n";
 ($zf, $found) = &zone_field("dest", $zone, 1);
-print $zf;
-printf "<input name=dother size=10 value='%s'>\n",
-	$found ? "" : $zone;
+print &ui_table_row($text{'rules_2z'},
+	$zf." ".
+	&ui_textbox("dother", $found ? "" : $zone, 10)."<br>\n".
+	&ui_checkbox("dinzone_def", 1, $text{'rules_addr'}, $host ? 1 : 0)." ".
+	&ui_textbox("dinzone", join(" ", split(/,/, $host)), 50)."<br>\n".
+	$text{'rules_dnat_dest'},
+	3);
 
-print "<br><b>$text{'rules_inzone'}</b>\n";
-printf "<input type=checkbox name=dinzone_def value=1 %s> %s\n",
-	$host ? "checked" : "", $text{'rules_addr'};
-printf "<input name=dinzone size=50 value='%s'>\n",
-	join(" ", split(/,/, $host));
-print "<br>$text{'rules_dnat_dest'}</td> </tr>\n";
-
-print "<tr> <td><b>$text{'rules_3'}</b></td>\n";
-print "<td colspan=3><select name=proto>\n";
+# Protocol
+my @popts;
 $found = !$_[3];
-foreach $p (@rules_protos) {
-	printf "<option value=%s %s>%s</option>\n",
-		$p, $p eq $_[3] ? "selected" : "",
-		$p eq 'all' ? "&lt;$text{'list_any'}&gt;" :
-		 $p eq 'related' ? "&lt;$text{'rules_related'}&gt;" : uc($p);
+foreach my $p (@rules_protos) {
+	push(@popts, [ $p, $p eq 'all' ? "&lt;$text{'list_any'}&gt;" :
+			   $p eq 'related' ? "&lt;$text{'rules_related'}&gt;" :
+			   uc($p) ]);
 	$found++ if ($p eq $_[3]);
 	}
-printf "<option value='' %s>%s</option>\n",
-	$found ? "" : "selected", $text{'list_other'};
-print "</select>\n";
-printf "<input name=pother size=5 value='%s'></td> </tr>\n",
-	$found ? "" : $_[3];
+push(@popts, [ '', $text{'list_other'} ]);
+print &ui_table_row($text{'rules_3'},
+	&ui_select("proto", $found ? ($_[3] || 'all') : '', \@popts)." ".
+	&ui_textbox("pother", $found ? "" : $_[3], 5),
+	3);
 
-print "<tr> <td><b>$text{'rules_4'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=sport_def value=1 %s> %s\n",
-	$_[5] eq '' || $_[5] eq '-' ? "checked" : "", $text{'list_any'};
-printf "<input type=radio name=sport_def value=0 %s> %s\n",
-	$_[5] eq '' || $_[5] eq '-' ? "" : "checked", $text{'rules_ranges'};
-printf "<input name=sport size=30 value='%s'></td> </tr>\n",
-	$_[5] eq '' || $_[5] eq '-' ? "" : join(" ", split(/,/, $_[5]));
+# Source and destination ports
+print &ui_table_row($text{'rules_4'},
+	&ui_opt_textbox("sport",
+			$_[5] eq '-' ? '' : join(" ", split(/,/, $_[5])),
+			30, $text{'list_any'}, $text{'rules_ranges'}),
+	3);
 
-print "<tr> <td><b>$text{'rules_5'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=dport_def value=1 %s> %s\n",
-	$_[4] eq '' || $_[4] eq '-' ? "checked" : "", $text{'list_any'};
-printf "<input type=radio name=dport_def value=0 %s> %s\n",
-	$_[4] eq '' || $_[4] eq '-' ? "" : "checked", $text{'rules_ranges'};
-printf "<input name=dport size=30 value='%s'>\n",
-	$_[4] eq '' || $_[4] eq '-' ? "" : join(" ", split(/,/, $_[4]));
-print "<br>$text{'rules_dnat_port'}</td> </tr>\n";
+print &ui_table_row($text{'rules_5'},
+	&ui_opt_textbox("dport",
+			$_[4] eq '-' ? '' : join(" ", split(/,/, $_[4])),
+			30, $text{'list_any'}, $text{'rules_ranges'})."<br>\n".
+	$text{'rules_dnat_port'},
+	3);
 
-print "<tr> <td><b>$text{'rules_dnat'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=dnat_def value=1 %s> %s\n",
-	$_[6] eq '' || $_[6] eq '-' ? "checked" : "", $text{'list_none'};
-printf "<input type=radio name=dnat_def value=0 %s>\n",
-	$_[6] eq '' || $_[6] eq '-' ? "" : "checked";
-printf "<input name=dnat size=30 value='%s'></td> </tr>\n",
-	$_[6] eq '' || $_[6] eq '-' ? "" : $_[6];
+# Original destination for DNAT or REDIRECT
+print &ui_table_row($text{'rules_dnat'},
+	&ui_opt_textbox("dnat", $_[6] eq '-' ? '' : $_[6], 30,
+			$text{'list_none'}),
+	3);
 
+# Rate limit and user set
 if (&version_atleast(1, 4, 7)) {
-	print "<tr> <td><b>$text{'rules_rate'}</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=rate_def value=1 %s> %s\n",
-		$_[7] eq "-" || !$_[7] ? "checked" : "", $text{'rules_norate'};
-	printf "<input type=radio name=rate_def value=0 %s>\n",
-		$_[7] eq "-" || !$_[7] ? "" : "checked";
-	printf "<input name=rate size=15 value='%s'></td> </tr>\n",
-		$_[7] eq "-" ? "" : $_[7];
+	print &ui_table_row($text{'rules_rate'},
+		&ui_opt_textbox("rate", $_[7] eq '-' ? '' : $_[7], 15,
+				$text{'rules_norate'}),
+		3);
 
-	print "<tr> <td><b>$text{'rules_set'}</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=set_def value=1 %s> %s\n",
-		$_[8] eq "-" || !$_[8] ? "checked" : "", $text{'rules_noset'};
-	printf "<input type=radio name=set_def value=0 %s>\n",
-		$_[8] eq "-" || !$_[8] ? "" : "checked";
-	printf "<input name=set size=15 value='%s'></td> </tr>\n",
-		$_[8] eq "-" ? "" : $_[8];
+	print &ui_table_row($text{'rules_set'},
+		&ui_opt_textbox("set", $_[8] eq '-' ? '' : $_[8], 15,
+				$text{'rules_noset'}),
+		3);
 	}
 }
 
@@ -1086,14 +1056,14 @@ print &ui_table_row($text{'tos_1z'},
         3);
 
 my @opts;
-my $found = !$_[2];
+$found = !$_[2];
 foreach my $p (@tos_protos) {
 	push(@opts, [ $p, uc($p) ]);
 	$found++ if ($p eq $_[2]);
 	}
 push(@opts, [ '', $text{'list_other'} ]);
 print &ui_table_row($text{'tos_2'},
-	&ui_select("proto", $found ? $_[2] : '', \@opts)." ".
+	&ui_select("proto", $found ? ($_[2] || $tos_protos[0]) : '', \@opts)." ".
 	&ui_textbox("pother", $found ? "" : $_[2], 5));
 
 print &ui_table_row($text{'tos_3'},
@@ -1616,7 +1586,7 @@ foreach my $o (@providers_opts) {
 	delete($opts{$o});
 	}
 foreach my $o (keys %opts) {
-	$ofield .= &ui_hidden("opts", $o),"\n";
+	$ofield .= &ui_hidden("opts", $o)."\n";
 	}
 print &ui_table_row($text{'providers_opts'}, $ofield);
 

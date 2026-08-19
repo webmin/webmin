@@ -7,14 +7,14 @@ require './shorewall-lib.pl';
 &get_clean_table_name(\%in);
 &can_access($in{'table'}) || &error($text{'list_ecannot'});
 if ($in{'new'}) {
-	&ui_print_header(undef, $text{$in{'tableclean'}."_create"}, "");
+	# Show where the new entry will be inserted, if not at the end
 	if ($in{'before'} ne '') {
 		$msg = &text('edit_before', $in{'before'}+1);
 		}
 	elsif ($in{'after'} ne '') {
 		$msg = &text('edit_after', $in{'after'}+1);
 		}
-	print "<center><font size=+1>$msg</font></center>\n" if ($msg);
+	&ui_print_header($msg, $text{$in{'tableclean'}."_create"}, "");
 	}
 else {
 	&ui_print_header(undef, $text{$in{'tableclean'}."_edit"}, "");
