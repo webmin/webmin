@@ -745,7 +745,7 @@ sub is_run_parts
 local ($cmd) = @_;
 local $rp = $config{'run_parts'};
 $cmd =~ s/\s*#.*$//;
-return $rp && $cmd =~ /$rp(.*)\s+(\-\-\S+\s+)*([a-z0-9\.\-\/_]+)(\s*\))?$/i ? $3 : undef;
+return $rp && $cmd =~ /$rp(.*)\s+(\-\-\S+\s+)*([a-z0-9\.\-\/_]+);?\s*[\)\}]?$/i ? $3 : undef;
 }
 
 =head2 can_edit_user(&access, user)
