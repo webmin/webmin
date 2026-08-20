@@ -102,6 +102,20 @@ elsif ( $in{'gid_def'} eq '2' ) {
 	}
 
 @mems = split(/\r?\n/, $in{'members'});
+if ($access{'uedit_mode'} != 0) {
+	# Only users the Webmin user is allowed to edit can be added to or
+	# removed from the group
+	@ulist = &list_users();
+	%omems = map { $_, 1 } split(/,/, $ogroup{'members'});
+	%nmems = map { $_, 1 } @mems;
+	foreach $u (@ulist) {
+		$n = $u->{'user'};
+		next if (!$omems{$n} == !$nmems{$n});
+		next if (&can_edit_user(\%access, $u));
+		&error(&text($omems{$n} ? 'gsave_ememberr' : 'gsave_emember',
+			     &html_escape($n)));
+		}
+	}
 $group{'members'} = join(',', @mems);
 $group{'gid'} = $in{'gid'};
 

@@ -83,13 +83,16 @@ print &ui_table_row(&hlink($text{'pass'}, "gpasswd"),
 # Member chooser
 @ulist = &sort_users(\@ulist, $config{'sort_mode'});
 if ($config{'membox'} == 0) {
-	# Nicer left/right chooser
+	# Nicer left/right chooser for users current Webmin user is allowed to
+	# edit
+	@canulist = grep { &can_edit_user(\%access, $_) } @ulist;
 	print &ui_table_row(&hlink($text{'gedit_members'}, "gmembers"),
 		&ui_multi_select("members",
 			[ map { [ $_, $_ ] }
 			      sort { lc($a) cmp lc($b) }
-				   split(/,/ , &html_escape($group{'members'})) ],
-			[ map { [ $_->{'user'}, &html_escape($_->{'user'}) ] } @ulist ],
+			      split(/,/ , &html_escape($group{'members'})) ],
+			[ map { [ $_->{'user'}, &html_escape($_->{'user'}) ] }
+				@canulist ],
 			10, 1, 0,
 			$text{'gedit_allu'}, $text{'gedit_selu'}, 150));
 	}
