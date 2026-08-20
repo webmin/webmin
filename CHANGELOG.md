@@ -1,5 +1,5 @@
 ## Changelog
-#### 2.660 (August 19, 2026)
+#### 2.660 (August 20, 2026)
 * Add support for creating `vfsv1` Linux quota files for limits above 4 TiB, while preserving existing quota file formats
 * Add Btrfs subvolume quota management to the Disk Quotas module, with full and simple accounting modes
 * Add support for openSUSE 16 vendor and local Logrotate configuration overlays [#2682](https://github.com/webmin/webmin/issues/2682)
@@ -10,6 +10,8 @@
 * Fix Webmin server connections that open but never send a request, preventing them from waiting indefinitely [#2815](https://github.com/webmin/webmin/pull/2815)
 * Fix to ignore failures when adding IPv6 link-local (fe80\:\:) addresses that may already be configured automatically
 * Fixed creation of permissions new log files in the System Logs module (thanks to Kevin Carter)
+* Fix automatic reply message and reply tracking to keep working after a user's home directory changes in Usermin [#126](https://github.com/webmin/usermin/issues/126)
+* Fix custom reply tracking file being reset to the default when editing an automatic reply in Usermin
 * Fix Fail2Ban jail editor to correctly separate actions when one has no parameters [#2718](https://github.com/webmin/webmin/issues/2718)
 * Fix to honor the editable users ACL in the group member chooser in Users and Groups module [#2464](https://github.com/webmin/webmin/issues/2464)
 * Update the Authentic theme to the latest version with various improvements:
