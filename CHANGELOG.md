@@ -1,5 +1,5 @@
 ## Changelog
-#### 2.660 (August 17, 2026)
+#### 2.660 (August 19, 2026)
 * Add support for creating `vfsv1` Linux quota files for limits above 4 TiB, while preserving existing quota file formats
 * Add Btrfs subvolume quota management to the Disk Quotas module, with full and simple accounting modes
 * Add support for openSUSE 16 vendor and local Logrotate configuration overlays [#2682](https://github.com/webmin/webmin/issues/2682)
@@ -17,6 +17,7 @@
   - Fix opening the wrong directory in Terminal for domain owners in File Manager
   - Fix disallowed entry handling in File Manager [forum.virtualmin.com/t/137654](https://forum.virtualmin.com/t/extra-admin-file-manager-permissions/137654?u=ilia)
   - Fix inline images not displaying when printing emails in Usermin
+  - Fix various styling issues for ConfigServer Security & Firewall
   - Fix navigation detection for the new Virtualmin Podman plugin
   - Fix bottom page action buttons wrapping and alignment
   - Fix errors for Webmin-only users in File Manager
