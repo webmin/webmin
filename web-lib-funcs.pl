@@ -7800,8 +7800,16 @@ foreach my $k (keys %{$params_hash}) {
 # Construct description if one is needed
 my $lm = $m || "global";
 my $lu = $base_remote_user || $remote_user;
-my $logemailto = $gconfig{'logemail'} eq "*" ? $gconfig{'webmin_email_to'}
-					     : $gconfig{'logemail'};
+my $logemailto;
+if ($gconfig{'logemail'} eq "*") {
+	$logemailto = $gconfig{'webmin_email_to'};
+	if ($gconfig{'webmin_email_to_name'}) {
+		$logemailto = "$gconfig{'webmin_email_to_name'} <$logemailto>";
+		}
+	}
+else {
+	$logemailto = $gconfig{'logemail'};
+	}
 my $logemail =
        $logemailto &&
        (!$gconfig{'logmodulesemail'} ||
