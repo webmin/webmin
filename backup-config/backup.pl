@@ -79,7 +79,7 @@ if (($err || $backup->{'emode'} == 0) && $backup->{'email'}) {
 	my $email = $backup->{'email'};
 	if ($email eq '*') {
 		$email = $gconfig{'webmin_email_to'};
-		if ($gconfig{'webmin_email_to_name'}) {
+		if ($email && $gconfig{'webmin_email_to_name'}) {
 			$email = "$gconfig{'webmin_email_to_name'} <$email>";
 			}
 		}

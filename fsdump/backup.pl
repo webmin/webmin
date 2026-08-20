@@ -119,7 +119,7 @@ if ($out && $dump->{'email'} && &foreign_check("mailboxes")) {
 	my $email = $dump->{'email'};
 	if ($email eq '*') {
 		$email = $gconfig{'webmin_email_to'};
-		if ($gconfig{'webmin_email_to_name'}) {
+		if ($email && $gconfig{'webmin_email_to_name'}) {
 			$email = "$gconfig{'webmin_email_to_name'} <$email>";
 			}
 		}

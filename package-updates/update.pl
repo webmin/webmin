@@ -92,7 +92,7 @@ if ($tellcount) {
 $emailto = $config{'sched_email'};
 if ($emailto eq '*') {
 	$emailto = $gconfig{'webmin_email_to'};
-	if ($gconfig{'webmin_email_to_name'}) {
+	if ($emailto && $gconfig{'webmin_email_to_name'}) {
 		$emailto = "$gconfig{'webmin_email_to_name'} <$emailto>";
 		}
 	}
