@@ -9,6 +9,9 @@ our (%text, %in, %access);
 &ReadParse();
 &error_setup($text{'user_err'});
 $in{'file'} || &error($text{'users_efile'});
+&can_directory($in{'file'}) || &error(&text('access_ecannot',
+		"<tt>".&html_escape($in{'file'})."</tt>",
+		"<tt>".&html_escape($access{'root'})."</tt>"));
 
 # Get the user being edited
 &lock_file($in{'file'});

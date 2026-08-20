@@ -8,6 +8,9 @@ require './nginx-lib.pl';
 our (%text, %in, %access);
 &ReadParse();
 $in{'file'} || &error($text{'users_efile'});
+&can_directory($in{'file'}) || &error(&text('access_ecannot',
+		"<tt>".&html_escape($in{'file'})."</tt>",
+		"<tt>".&html_escape($access{'root'})."</tt>"));
 
 &switch_write_user(1);
 my $users = &htaccess_htpasswd::list_users($in{'file'});

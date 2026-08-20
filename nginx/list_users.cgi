@@ -8,6 +8,9 @@ require './nginx-lib.pl';
 our (%text, %in, %access);
 &ReadParse();
 $in{'file'} || &error($text{'users_efile'});
+&can_directory($in{'file'}) || &error(&text('access_ecannot',
+		"<tt>".&html_escape($in{'file'})."</tt>",
+		"<tt>".&html_escape($access{'root'})."</tt>"));
 
 &ui_print_header("<tt>".&html_escape($in{'file'})."</tt>",
 		 $text{'users_title'}, "");
