@@ -261,7 +261,7 @@ elsif (@rows) {
 		  ( $text{'index_comment'} ) : ( ),
 		$config{'show_next'} ? ( $text{'index_next'} ) : ( ),
 		$config{'show_run'} ? ( $text{'index_run'} ) : ( ),
-		$access{'move'} ? ( $text{'index_move'}, "" ) : ( ),
+		$access{'move'} ? ( $text{'index_move'} ) : ( ),
 		], 100, 0, \@tds);
 	foreach my $r (@rows) {
 		print &ui_checked_columns_row([ @$r[1..(@$r-2)] ],
