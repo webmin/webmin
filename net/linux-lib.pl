@@ -618,8 +618,10 @@ sub destroy_interface_device
 {
 my ($a) = @_;
 my $name = $a->{'fullname'} || $a->{'name'};
+# Check the bridge flag too, as bridges can have arbitrary names
 if (&has_command("ip") && $a->{'virtual'} eq '' &&
-    &iface_type($name) =~ /(?:Bonded|VLAN|Bridge)$/) {
+    ($a->{'bridge'} ||
+     &iface_type($name) =~ /(?:Bonded|VLAN|Bridge)$/)) {
 	my $out = &backquote_logged(
 		"ip link delete ".quotemeta($name)." 2>&1");
 	&error("Failed to delete virtual interface : $out") if ($?);

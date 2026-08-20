@@ -72,6 +72,8 @@ foreach $iface (@ifaces) {
 				$cfg->{'ether'} = $v[1];
 				}
 			elsif ($param eq 'bridge_ports') {
+				# An interface with bridge ports is a bridge
+				$cfg->{'bridge'} = 1;
 				$cfg->{'bridgeto'} = $value;
 				}
 			elsif ($param eq 'bridge_stp') {
