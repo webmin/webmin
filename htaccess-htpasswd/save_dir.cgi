@@ -99,6 +99,7 @@ else {
 			}
 		}
 	-d $file && &error(&text('dir_efiledir', $file));
+	&can_access_dir($file) || &error($text{'dir_ecannotfile'});
 
 	# Parse groups file option
 	if (!$can_htgroups) {
@@ -124,6 +125,8 @@ else {
 			}
 		}
 	-d $gfile && &error(&text('dir_egfiledir', $gfile));
+	!$gfile || &can_access_dir($gfile) ||
+		&error($text{'dir_ecannotgfile'});
 
 	# Parse require option
 	@require = ( $in{'require_mode'} );
