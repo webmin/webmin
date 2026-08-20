@@ -29,6 +29,7 @@ $apt_cache_file = &cache_file_path("aptcache");
 $yum_changelog_cache_dir = &cache_file_path("yumchangelog");
 
 $update_progress_dir = "$module_var_directory/progress";
+$notified_file = "$module_var_directory/notified";
 
 # list_enabled_auto_update_services()
 # Returns known OS-level auto-update services that are currently enabled.

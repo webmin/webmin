@@ -1,3 +1,5 @@
+---- Changes since 2.660 ----
+Added a "Send email when" option that sends a complete report when new updates become available, so notify-only schedules no longer repeat the same message every run.
 ---- Changes since 2.641 ----
 Added a Held updates view with controls to hold, unhold or explicitly update APT-held packages.
 ---- Changes since 1.490 ----

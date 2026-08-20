@@ -34,6 +34,13 @@ else {
 &start_update_progress([ map { $_->{'name'} } @todo ]);
 $icount = 0;
 $fcount = 0;
+
+# Track the updates that may need to be reported
+$newonly = $config{'sched_when'} == 3;
+$newcount = 0;
+$tellbody = "";
+%notified = ( );
+%pending = ( );
 foreach $t (@todo) {
 	next if ($already{$t->{'update'}});
 	my $umsg = $t->{'security'} ? "security update" : "update";
@@ -67,13 +74,35 @@ foreach $t (@todo) {
 	elsif ($config{'sched_action'} == 1 ||
 	       $config{'sched_action'} == 0 ||
 	       $config{'sched_action'} == -1 && $t->{'security'}) {
-		# Just tell the user about it
-		$body .= "$upfx $umsg to $t->{'name'} from $t->{'oldversion'} ".
-			 "to $t->{'version'} is available.\n\n";
+		# Add this update to the complete pending report
+		my $key = $t->{'system'}."/".$t->{'name'};
+		$pending{$key} = $t->{'version'};
+		$tellbody .= "$upfx $umsg to $t->{'name'} from ".
+			     "$t->{'oldversion'} to $t->{'version'} is ".
+			     "available.\n\n";
 		$tellcount++;
 		}
 	}
 &end_update_progress();
+
+# Serialize the notification decision with the state update, so overlapping
+# runs cannot both report the same new updates
+if ($newonly) {
+	&lock_file($notified_file);
+	&read_file($notified_file, \%notified);
+	foreach my $key (keys %pending) {
+		$newcount++ if ($notified{$key} ne $pending{$key});
+		}
+	}
+
+# In new-only mode, skip the list entirely if nothing changed. If something is
+# new, still include everything pending so the email is complete
+if ($newonly && !$newcount) {
+	$tellcount = 0;
+	}
+else {
+	$body .= $tellbody;
+	}
 
 if (@updated && $config{'sched_post_script'}) {
 	my @unique_updated = &unique(@updated);
@@ -97,7 +126,7 @@ if ($emailto eq '*') {
 		}
 	}
 if ($emailto && $body &&
-    ($config{'sched_when'} == 0 ||
+    ($config{'sched_when'} == 0 || $newonly ||
      $config{'sched_when'} == 1 && $fcount)) {
 	&foreign_require("mailboxes", "mailboxes-lib.pl");
 	my $from = &mailboxes::get_from_address();
@@ -110,9 +139,18 @@ if ($emailto && $body &&
 			[ { 'headers' => [ [ 'Content-type', 'text/plain' ] ],
 			    'data' => $body } ] };
 	&mailboxes::send_mail($mail, undef, 1, 0);
+	$sent = 1;
 	if ($debug) {
 		print STDERR $body;
 		}
+	}
+
+# Remember what was reported, but only if the email was actually sent
+if ($newonly && ($sent || !%pending)) {
+	&write_file($notified_file, \%pending);
+	}
+if ($newonly) {
+	&unlock_file($notified_file);
 	}
 
 # Log the update, if anything was installed

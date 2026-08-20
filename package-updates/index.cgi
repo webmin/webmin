@@ -232,10 +232,14 @@ else {
 	}
 print &ui_table_row($text{'index_email'}, $efield);
 
-# When to send email
+# When to send email. If never saved, keep the old behavior for an existing
+# schedule, but default new setups to only report new updates
+$when = $config{'sched_when'} ne '' ? int($config{'sched_when'}) :
+	$job ? 0 : 3;
 print &ui_table_row($text{'index_ewhen'},
-	&ui_radio("when", int($config{'sched_when'}),
+	&ui_select("when", $when,
 		  [ [ 0, $text{'index_ewhen0'} ],
+		    [ 3, $text{'index_ewhen3'} ],
 		    [ 1, $text{'index_ewhen1'} ],
 		    [ 2, $text{'index_ewhen2'} ] ]));
 
