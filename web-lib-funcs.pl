@@ -7803,7 +7803,7 @@ my $lu = $base_remote_user || $remote_user;
 my $logemailto;
 if ($gconfig{'logemail'} eq "*") {
 	$logemailto = $gconfig{'webmin_email_to'};
-	if ($gconfig{'webmin_email_to_name'}) {
+	if ($logemailto && $gconfig{'webmin_email_to_name'}) {
 		$logemailto = "$gconfig{'webmin_email_to_name'} <$logemailto>";
 		}
 	}
