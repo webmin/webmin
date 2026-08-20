@@ -71,8 +71,14 @@ print &ui_table_row($text{'sendmail_from'},
 
 # Default to address for notifications
 $to = $gconfig{'webmin_email_to'};
+$to_name = $gconfig{'webmin_email_to_name'};
 print &ui_table_row($text{'sendmail_toaddr'},
-	&ui_opt_textbox("to", $to, 40, $text{'sendmail_to_def'}));
+	&ui_radio_table("to_def", $to ? 0 : 1,
+		[ [ 1, "", $text{'sendmail_to_def'} ],
+		  [ 0, "", $text{'sendmail_fromaddr'}." ".
+			   &ui_textbox("to", $to, 40)."<br>\n".
+			   $text{'sendmail_name'}." ".
+			   &ui_textbox("to_name", $to_name, 40) ] ]), 3);
 
 # URL for use in emails
 $url = $gconfig{'webmin_email_url'};
