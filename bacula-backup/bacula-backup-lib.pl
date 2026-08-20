@@ -165,6 +165,15 @@ if (!defined($config_file_cache{$file})) {
 				       'parent' => $parent };
 			push(@{$parent->{'members'}}, $dir);
 
+			# A line like "Include = {" starts a section, rather
+			# than setting the value to a brace. The brace must be
+			# unquoted, so that a real value of "{" is preserved
+			if ($dir->{'value'} eq "{" && $rest !~ /\S/ &&
+			    /=\s*\{\s*$/) {
+				$dir->{'value'} = undef;
+				$rest = "{";
+				}
+
 			if ($rest =~ /\s*{\s*$/) {
 				# Also start of a section!
 				$dir->{'type'} = 2;
