@@ -32,6 +32,10 @@ if ($in{'apache'}) {
 	exit;
 	}
 
+# Reject a directory outside the allowed set before taking any root-owned
+# lock or reading the .htaccess file
+&can_access_dir($htaccess) || &error($text{'dir_ecannot'});
+
 &lock_file($htaccess);
 &lock_file($directories_file);
 
@@ -44,11 +48,11 @@ $currfile = &foreign_call($apachemod, "find_directive",
 			  $auf, $conf, 1);
 $currgfile = &foreign_call($apachemod, "find_directive",
 			   $agf, $conf, 1);
-&lock_file($currfile) if ($currfile);
+&lock_file($currfile)
+	if ($currfile && &can_access_dir($currfile));
 
-# Make sure it is allowed, and create new file if needed
+# Create the .htaccess file if it does not exist yet
 &switch_user();
-&can_access_dir($htaccess) || &error($text{'dir_ecannot'});
 $missing = !-r $htaccess;
 &open_tempfile(TEST, ">>$htaccess", 1) || &error(&text('dir_ehtaccess', $htaccess, $!));
 &close_tempfile(TEST);
@@ -60,6 +64,10 @@ if ($missing) {
 if ($in{'delete'} || $in{'remove'}) {
 	if ($in{'remove'}) {
 		# Blow away .htaccess, htpasswd and htgroups
+		!$currfile || &can_access_dir($currfile) ||
+			&error($text{'dir_ecannotfile'});
+		!$currgfile || &can_access_dir($currgfile) ||
+			&error($text{'dir_ecannotgfile'});
 		&unlink_logged($htaccess);
 		&unlink_logged($currfile) if ($currfile && !-d $currfile);
 		&unlink_logged($currgfile) if ($currgfile && !-d $currgfile);
@@ -171,6 +179,13 @@ else {
 			&foreign_call($apachemod, "save_directive",
 				      $agf, [ "\"$gfile\"" ], $conf,$conf);
 			}
+
+		# Validate paths imported from existing authentication directives
+		-d $file && &error(&text('dir_efiledir', $file));
+		&can_access_dir($file) || &error($text{'dir_ecannotfile'});
+		-d $gfile && &error(&text('dir_egfiledir', $gfile));
+		!$gfile || &can_access_dir($gfile) ||
+			&error($text{'dir_ecannotgfile'});
 
 		# Add an auth type if needed
 		$currtype = &foreign_call($apachemod, "find_directive",
