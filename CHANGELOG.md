@@ -5,6 +5,7 @@
 * Add support for openSUSE 16 vendor and local Logrotate configuration overlays [#2682](https://github.com/webmin/webmin/issues/2682)
 * Add support for applying multiple patches at once with the `patch` sub-command
 * Add APT package hold management to the Package Updates module
+* Add an option to send scheduled package update email only when new updates are found [forum.virtualmin.com/t/137796](https://forum.virtualmin.com/t/can-we-make-security-updates-email-less-chatty/137796)
 * Add incremental ban time options to the Fail2Ban module
 * Fix Webmin server connections that open but never send a request, preventing them from waiting indefinitely [#2815](https://github.com/webmin/webmin/pull/2815)
 * Fix to ignore failures when adding IPv6 link-local (fe80\:\:) addresses that may already be configured automatically
