@@ -124,7 +124,7 @@ else {
 		}
 	else {
 		# Groups file was entered by user
-		$in{'file'} || &error($text{'dir_egfile'});
+		$in{'gfile'} || &error($text{'dir_egfile'});
 		if ($in{'gfile'} !~ /^([a-z]:)?\//) {
 			$gfile = "$in{'dir'}/$in{'gfile'}";
 			}
