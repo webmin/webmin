@@ -72,13 +72,13 @@ else {
 
 	# Save compression level
 	if ($in{'comp'}) {
-		&save_directive($conf, $opts, "Compression", $in{'comp'}, 1);
+		&save_directive($conf, $opts, "Compression", $in{'comp'}, 3);
 		}
 	else {
 		&save_directive($conf, $opts, "Compression", undef);
 		}
 
-	&save_directive($conf, $opts, "OneFS", $in{'onefs'} || undef, 1);
+	&save_directive($conf, $opts, "OneFS", $in{'onefs'} || undef, 3);
 
 	# Create or update
 	if ($in{'new'}) {
