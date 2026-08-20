@@ -89,8 +89,13 @@ if ($tellcount) {
 	}
 
 # Email the admin
-$emailto = $config{'sched_email'} eq '*' ? $gconfig{'webmin_email_to'}
-					 : $config{'sched_email'};
+$emailto = $config{'sched_email'};
+if ($emailto eq '*') {
+	$emailto = $gconfig{'webmin_email_to'};
+	if ($gconfig{'webmin_email_to_name'}) {
+		$emailto = "$gconfig{'webmin_email_to_name'} <$emailto>";
+		}
+	}
 if ($emailto && $body &&
     ($config{'sched_when'} == 0 ||
      $config{'sched_when'} == 1 && $fcount)) {

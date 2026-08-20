@@ -116,12 +116,18 @@ if ($out && $dump->{'email'} && &foreign_check("mailboxes")) {
 		}
 
 	# Send the email
+	my $email = $dump->{'email'};
+	if ($email eq '*') {
+		$email = $gconfig{'webmin_email_to'};
+		if ($gconfig{'webmin_email_to_name'}) {
+			$email = "$gconfig{'webmin_email_to_name'} <$email>";
+			}
+		}
 	if (!$ok || !$config{'error_email'}) {
 		# Only send email upon failure, or it requested always
 		&mailboxes::send_text_mail(
 			&mailboxes::get_from_address(),
-			$dump->{'email'} eq '*' ? $gconfig{'webmin_email_to'}
-						: $dump->{'email'},
+			$email,
 			undef,
 			$subject,
 			$data,

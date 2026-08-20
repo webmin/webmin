@@ -76,10 +76,15 @@ if (($err || $backup->{'emode'} == 0) && $backup->{'email'}) {
 		       $postmsg;
 		$subject = &text('email_sok', $host);
 		}
+	my $email = $backup->{'email'};
+	if ($email eq '*') {
+		$email = $gconfig{'webmin_email_to'};
+		if ($gconfig{'webmin_email_to_name'}) {
+			$email = "$gconfig{'webmin_email_to_name'} <$email>";
+			}
+		}
 	&mailboxes::send_text_mail(
 		$config{'from_addr'} || &mailboxes::get_from_address(),
-		$backup->{'email'} eq '*' ? $gconfig{'webmin_email_to'}
-					  : $backup->{'email'},
-		undef, $subject, $msg);
+		$email, undef, $subject, $msg);
 	}
 
