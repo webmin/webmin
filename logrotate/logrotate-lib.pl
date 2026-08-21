@@ -168,6 +168,31 @@ return $file if (!$local);
 return &copy_vendor_config($file, $local);
 }
 
+# ensure_writable_config_file(file)
+# Makes a config file safe to edit, by creating the local override that
+# shadows it when it belongs to the vendor tree. Callers must use this before
+# saving directives, as save_directive refuses to write to a vendor file.
+sub ensure_writable_config_file
+{
+my ($file) = @_;
+if (&is_vendor_main_config($file)) {
+	return &ensure_local_main_config();
+	}
+elsif (&is_vendor_config_file($file)) {
+	return &ensure_local_config_override($file);
+	}
+elsif (my $vendor = &get_vendor_config_file($file)) {
+	# A local path that shadows a vendor file, but does not exist yet
+	return &ensure_local_config_override($vendor);
+	}
+elsif ($file eq &get_config_parent()->{'file'} &&
+       &is_vendor_main_config(&get_main_config_file())) {
+	# New directives go to the main config, which is still the vendor one
+	return &ensure_local_main_config();
+	}
+return $file;
+}
+
 # list_config_dir_files(directory, [relative-subdirectory])
 # Returns relative and absolute paths for regular files below a directory
 sub list_config_dir_files
