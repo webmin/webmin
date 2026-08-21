@@ -4859,11 +4859,25 @@ return if ($nocache == 2);
 if (!$system_hostname[$m]) {
 	if ($gconfig{'os_type'} ne 'windows') {
 		# If systemd system try /etc/hostname straight away
-		my $initsys = &trim(&backquote_command("cat /proc/1/comm 2>/dev/null"));
-		if ($initsys eq 'systemd') {
+		if (-d "/run/systemd/system") {
 			my $hostname = &read_file_contents("/etc/hostname");
 			$hostname =~ s/\r|\n//g;
+			# Cache the short name before resolving the full name
 			if ($hostname) {
+				my $shortname = $hostname;
+				$shortname =~ s/\..*$//;
+				$system_hostname[1] = $shortname;
+				}
+			# Resolve a short static hostname before caching it
+			if ($hostname && !$m && $hostname !~ /\./ &&
+			    !$gconfig{'no_hostname_f'}) {
+				my $fqdn;
+				my $ex = &execute_command("hostname -f", undef,
+							  \$fqdn, undef, 0, 1);
+				$fqdn = &trim($fqdn);
+				$hostname = $fqdn if (!$ex && $fqdn =~ /\./);
+				}
+			if ($hostname && ($m || $hostname =~ /\./)) {
 				$hostname =~ s/\..*$// if ($m);
 				$system_hostname[$m] = $hostname;
 				return $hostname;
