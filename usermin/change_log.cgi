@@ -7,8 +7,10 @@ $access{'log'} || &error($text{'acl_ecannot'});
 &error_setup($text{'log_err'});
 &get_usermin_miniserv_config(\%miniserv);
 
-# Only a change of error destination needs the systemd drop-in and restart.
+# Only a change of error destination on a systemd-managed service needs the
+# drop-in and a full restart; otherwise the option is ignored.
 my $journal_changed = defined($in{'error_journal'}) &&
+	&webmin::miniserv_systemd_journal_available("usermin.service") &&
 	($miniserv{'errorlog'} eq '-' ? 1 : 0) != ($in{'error_journal'} ? 1 : 0);
 
 # Validate and save the access-log settings.

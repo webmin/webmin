@@ -10,8 +10,10 @@ require './webmin-lib.pl';
 &get_miniserv_config(\%miniserv);
 my ($miniserv_log, $in_log) = ($miniserv{'log'}, $in{'log'});
 
-# Only a change of error destination needs the systemd drop-in and restart.
+# Only a change of error destination on a systemd-managed service needs the
+# drop-in and a full restart; otherwise the option is ignored.
 my $journal_changed = defined($in{'error_journal'}) &&
+	&miniserv_systemd_journal_available("webmin.service") &&
 	($miniserv{'errorlog'} eq '-' ? 1 : 0) != ($in{'error_journal'} ? 1 : 0);
 
 $miniserv{'log'} = $in{'log'};
