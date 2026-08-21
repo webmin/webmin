@@ -83,6 +83,8 @@ else {
 	$logfile =~ s![^/]+$!miniserv.error!;
 	$miniserv->{'errorlog'} = $logfile;
 	&unlink_file($dropin) if (-e $dropin);
+	# Take the directory too, unless other drop-ins are still using it
+	rmdir($dropin_dir) if (-d $dropin_dir);
 	}
 
 # Apply the Miniserv and service-manager settings as one UI operation.
@@ -107,6 +109,142 @@ if ($delay) {
 	}
 else {
 	&system_logged("systemctl restart $unit >/dev/null 2>&1 </dev/null");
+	}
+return 1;
+}
+
+=head2 miniserv_logrotate_available()
+
+Returns 1 if logrotate is installed and can be configured from Webmin.
+
+=cut
+sub miniserv_logrotate_available
+{
+return &foreign_available("logrotate") && &foreign_installed("logrotate")
+	? 1
+	: 0;
+}
+
+=head2 miniserv_log_files(&miniserv)
+
+Returns the Miniserv access and error log paths that rotation applies to.
+
+=cut
+sub miniserv_log_files
+{
+my ($miniserv) = @_;
+my $errorlog = $miniserv->{'logfile'};
+$errorlog =~ s![^/]+$!miniserv.error!;
+$errorlog = $miniserv->{'errorlog'} if ($miniserv->{'errorlog'} =~ /^\//);
+return &unique($miniserv->{'logfile'}, $errorlog);
+}
+
+=head2 get_miniserv_logrotate_section(&miniserv)
+
+Returns the logrotate section that covers the Miniserv access log, if any.
+
+=cut
+sub get_miniserv_logrotate_section
+{
+my ($miniserv) = @_;
+&foreign_require("logrotate");
+my ($logfile) = &miniserv_log_files($miniserv);
+# Global directives like weekly and rotate share the list with log sections,
+# but their name is a plain string instead of a list of log files
+foreach my $c (@{&logrotate::get_config()}) {
+	next if (ref($c->{'name'}) ne 'ARRAY');
+	return $c if (&indexof($logfile, @{$c->{'name'}}) >= 0);
+	}
+return undef;
+}
+
+=head2 setup_miniserv_logrotate(&miniserv, name, [&extra-logs])
+
+Adds any missing Miniserv and extra logs to the access-log section, or creates
+a section when none exists. Copy-truncate rotation lets Miniserv keep its open
+error log handle, as it only re-opens that log when the file disappears.
+
+=cut
+sub setup_miniserv_logrotate
+{
+my ($miniserv, $name, $extra) = @_;
+my @logs = &unique(&miniserv_log_files($miniserv), @{$extra || [ ]});
+my $lconf = &get_miniserv_logrotate_section($miniserv);
+
+# Skip any log that some other section already rotates
+my %covered;
+foreach my $c (@{&logrotate::get_config()}) {
+	next if (ref($c->{'name'}) ne 'ARRAY');
+	foreach my $log (@{$c->{'name'}}) {
+		$covered{$log} = 1;
+		}
+	}
+my @missing = grep { !$covered{$_} } @logs;
+return 0 if ($lconf && !@missing);
+
+# Vendor files cannot be edited in place, so copy first on systems that
+# keep their logrotate config under /usr
+my $file = $lconf ? $lconf->{'file'} : &logrotate::get_add_file($name);
+&logrotate::ensure_writable_config_file($file);
+my $parent = &logrotate::get_config_parent();
+if ($lconf) {
+	# Copying re-reads the config, so look the section up again
+	$lconf = &get_miniserv_logrotate_section($miniserv);
+	push(@{$lconf->{'name'}}, @missing);
+	}
+else {
+	$lconf = { 'file' => &logrotate::get_add_file($name),
+		   'name' => [ grep { !$covered{$_} } @logs ],
+		   'members' => [ { 'name' => 'weekly' },
+				  { 'name' => 'rotate', 'value' => 7 },
+				  { 'name' => 'missingok' },
+				  { 'name' => 'notifempty' },
+				  { 'name' => 'compress' },
+				  { 'name' => 'copytruncate' } ] };
+	}
+&lock_file($lconf->{'file'});
+&logrotate::save_directive($parent,
+	defined($lconf->{'index'}) ? $lconf : undef,
+	$lconf);
+&flush_file_lines($lconf->{'file'});
+&unlock_file($lconf->{'file'});
+&logrotate::flush_logrotate_config_cache();
+return 1;
+}
+
+=head2 remove_miniserv_logrotate(&miniserv, [&extra-logs])
+
+Removes the Miniserv logs and any extra logs from their logrotate section. The
+section and its file are deleted when they cover nothing else.
+
+=cut
+sub remove_miniserv_logrotate
+{
+my ($miniserv, $extra) = @_;
+my $lconf = &get_miniserv_logrotate_section($miniserv);
+return 0 if (!$lconf);
+&logrotate::ensure_writable_config_file($lconf->{'file'});
+
+# Copying re-reads the config, so look the section up again
+$lconf = &get_miniserv_logrotate_section($miniserv);
+my %logs = map { $_, 1 } (&miniserv_log_files($miniserv), @{$extra || [ ]});
+my @leftover = grep { !$logs{$_} } @{$lconf->{'name'}};
+my $parent = &logrotate::get_config_parent();
+&lock_file($lconf->{'file'});
+if (@leftover) {
+	# Other logs share the section, so only drop ours
+	$lconf->{'name'} = \@leftover;
+	&logrotate::save_directive($parent, $lconf, $lconf);
+	&flush_file_lines($lconf->{'file'});
+	&unlock_file($lconf->{'file'});
+	&logrotate::flush_logrotate_config_cache();
+	}
+else {
+	&logrotate::save_directive($parent, $lconf, undef);
+	&flush_file_lines($lconf->{'file'});
+	&unlock_file($lconf->{'file'});
+	&logrotate::flush_logrotate_config_cache();
+	&logrotate::delete_if_empty($lconf->{'file'});
 	}
 return 1;
 }

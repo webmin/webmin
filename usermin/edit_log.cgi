@@ -21,11 +21,17 @@ print &ui_table_row($text{'log_trust'},
 	&ui_yesno_radio("logtrust", int($miniserv{'logtrust'})));
 print &ui_table_row($text{'log_clf'},
 	&ui_yesno_radio("logclf", int($miniserv{'logclf'})));
+my @clear_opts = ( [ 1, &text('log_period',
+			&ui_textbox("logtime", $miniserv{'logtime'}, 10)) ] );
+my $logclear = int($miniserv{'logclear'});
+if (&webmin::miniserv_logrotate_available()) {
+	push(@clear_opts, [ 2, $text{'log_logrotate'} ]);
+	$logclear = 2 if (!$logclear &&
+			  &webmin::get_miniserv_logrotate_section(\%miniserv));
+	}
+push(@clear_opts, [ 0, $text{'no'} ]);
 print &ui_table_row($text{'log_clear'},
-	&ui_radio("logclear", int($miniserv{'logclear'}),
-		  [ [ 1, &text('log_period',
-			&ui_textbox("logtime", $miniserv{'logtime'}, 10)) ],
-		    [ 0, $text{'no'} ] ]));
+	&ui_radio("logclear", $logclear, \@clear_opts));
 
 # Only systemd services can safely inherit stderr into the journal.
 if (&webmin::miniserv_systemd_journal_available("usermin.service")) {

@@ -7621,6 +7621,14 @@ my ($param_action,
 
 my $m = $param_module ? $param_module : &get_module_name();
 
+# When logrotate has emptied the actions log, throw away the file changes
+# and annotations that belonged to the rotated entries
+if ($gconfig{'logrotate'} && -e $webmin_logfile && !-s _) {
+    &unlink_file("$ENV{'WEBMIN_VAR'}/diffs");
+    &unlink_file("$ENV{'WEBMIN_VAR'}/files");
+    &unlink_file("$ENV{'WEBMIN_VAR'}/annotations");
+    }
+
 if ($gconfig{'logclear'}) {
     # check if it is time to clear the log
     my @st = stat("$webmin_logfile.time");

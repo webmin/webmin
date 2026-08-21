@@ -20,8 +20,18 @@ $miniserv{'log'} = $in{'log'};
 $miniserv{'loghost'} = $in{'loghost'};
 $miniserv{'logtrust'} = $in{'logtrust'};
 $miniserv{'logclf'} = $in{'logclf'};
-$miniserv{'logclear'} = $in{'logclear'};
-!$in{'logclear'} || $in{'logtime'} =~ /^[1-9][0-9]*$/ ||
+
+# Either Miniserv clears the logs itself, or logrotate takes them over. There
+# is no setting for the latter, so it is on when clearing is off and a section
+# already rotates the logs.
+my $logrotate = $in{'logclear'} == 2 ? 1 : 0;
+!$logrotate || &miniserv_logrotate_available() ||
+	&error($text{'log_elogrotate'});
+my $was_logrotate = !int($miniserv{'logclear'}) &&
+		    &miniserv_logrotate_available() &&
+		    &get_miniserv_logrotate_section(\%miniserv) ? 1 : 0;
+$miniserv{'logclear'} = $logrotate ? 0 : $in{'logclear'};
+!$miniserv{'logclear'} || $in{'logtime'} =~ /^[1-9][0-9]*$/ ||
 	&error(&text('log_ehours', $in{'logtime'}));
 $miniserv{'logtime'} = $in{'logtime'};
 if ($in{'perms_def'}) {
@@ -60,9 +70,18 @@ else {
 	}
 &unlock_file($ENV{'MINISERV_CONFIG'});
 
+# Hand the Miniserv and actions logs to logrotate, or take them back from it
+if ($logrotate) {
+	&setup_miniserv_logrotate(\%miniserv, "webmin", [ $webmin_logfile ]);
+	}
+elsif ($was_logrotate) {
+	&remove_miniserv_logrotate(\%miniserv, [ $webmin_logfile ]);
+	}
+
 $gconfig{'log'} = $in{'log'};
 $gconfig{'logtime'} = $in{'logtime'};
-$gconfig{'logclear'} = $in{'logclear'};
+$gconfig{'logclear'} = $miniserv{'logclear'};
+$gconfig{'logrotate'} = $logrotate;
 $gconfig{'logusers'} =
 	$in{'uall'} ? '' : join(" ", split(/\0/, $in{'users'}));
 $gconfig{'logmodules'} =
@@ -95,4 +114,3 @@ else {
 	&show_restart_page();
 	}
 &webmin_log("log", undef, undef, \%in);
-
