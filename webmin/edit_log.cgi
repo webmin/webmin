@@ -38,6 +38,14 @@ print &ui_table_row($text{'log_clear2'},
 			&ui_textbox("logtime", $miniserv{'logtime'}, 10)) ],
 		    [ 0, $text{'no'} ] ]));
 
+# A systemd service can keep Miniserv errors in the journal instead.
+if (&miniserv_systemd_journal_available("webmin.service")) {
+	print &ui_table_row($text{'log_error'},
+		&ui_radio("error_journal", $miniserv{'errorlog'} eq '-' ? 1 : 0,
+			  [ [ 0, $text{'log_error_file'} ],
+			    [ 1, $text{'log_error_journal'} ] ]));
+	}
+
 print &ui_table_hr();
 
 # Webmin users to log for
@@ -101,4 +109,3 @@ print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
-

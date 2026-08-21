@@ -43,6 +43,73 @@ if (!-r $update_cache) {
 
 our $primary_host = "webmin.com";
 our $primary_ssl = $can_http_ssl;
+
+=head2 miniserv_systemd_journal_available(unit)
+
+Returns 1 if a systemd service is available for receiving Miniserv errors.
+
+=cut
+sub miniserv_systemd_journal_available
+{
+my ($unit) = @_;
+return &has_command("systemctl") &&
+       (-r "/etc/systemd/system/$unit" ||
+	-r "/usr/lib/systemd/system/$unit" ||
+	-r "/lib/systemd/system/$unit");
+}
+
+=head2 set_miniserv_error_destination(&miniserv, config, unit, journal)
+
+Selects the Miniserv error file or the systemd journal, using a local systemd
+drop-in so that the packaged service unit remains unchanged.
+
+=cut
+sub set_miniserv_error_destination
+{
+my ($miniserv, $config_file, $unit, $journal) = @_;
+$unit =~ /^(webmin|usermin)\.service$/ || return 0;
+my $dropin_dir = "/etc/systemd/system/$unit.d";
+my $dropin = "$dropin_dir/10-miniserv-error-log.conf";
+
+# The dash keeps Miniserv's stderr attached to the service manager.
+if ($journal) {
+	$miniserv->{'errorlog'} = '-';
+	&make_dir($dropin_dir, 0755) if (!-d $dropin_dir);
+	&write_file_contents($dropin,
+		"[Service]\nStandardError=journal\n");
+	}
+else {
+	my $logfile = $miniserv->{'logfile'};
+	$logfile =~ s![^/]+$!miniserv.error!;
+	$miniserv->{'errorlog'} = $logfile;
+	&unlink_file($dropin) if (-e $dropin);
+	}
+
+# Apply the Miniserv and service-manager settings as one UI operation.
+&write_file($config_file, $miniserv);
+&system_logged("systemctl daemon-reload >/dev/null 2>&1");
+}
+
+=head2 restart_miniserv_systemd_service(unit, [delay])
+
+Fully restarts a Miniserv systemd service so that stderr is re-attached to the
+selected destination. A delay allows the current Webmin response to finish.
+
+=cut
+sub restart_miniserv_systemd_service
+{
+my ($unit, $delay) = @_;
+$unit =~ /^(webmin|usermin)\.service$/ || return 0;
+$delay = int($delay);
+if ($delay) {
+	&system_logged("(sleep $delay; systemctl --no-block restart $unit) " .
+		">/dev/null 2>&1 </dev/null &");
+	}
+else {
+	&system_logged("systemctl restart $unit >/dev/null 2>&1 </dev/null");
+	}
+return 1;
+}
 our $primary_port = $primary_ssl ? 443 : 80;
 
 our $webmin_key_email = "jcameron\@webmin.com";

@@ -43,6 +43,6 @@ $o->{'bootup'} = $in{'bootup'};
 
 sub get_icons
 {
-return ( "access" ,"bind" ,"ui" ,"umods" ,"os" ,"lang" ,"upgrade" ,"session" ,"assignment" ,"categories" ,"themes", "referers", "anon", "ssl" ,"configs" ,"acl" ,"restrict" ,"users" ,"defacl", "sessions", "blocked", "advanced" );
+return ( "access" ,"bind" ,"log" ,"ui" ,"umods" ,"os" ,"lang" ,"upgrade" ,"session" ,"assignment" ,"categories" ,"themes", "referers", "anon", "ssl" ,"configs" ,"acl" ,"restrict" ,"users" ,"defacl", "sessions", "blocked", "advanced" );
 }
 

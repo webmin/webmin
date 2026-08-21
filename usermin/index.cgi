@@ -55,6 +55,7 @@ if (!$miniserv{'root'} && !-d $miniserv{'root'}) {
 
 @links = ( "edit_access.cgi",
 	   "edit_bind.cgi",
+	   "edit_log.cgi",
 	   "edit_ui.cgi",
 	   "edit_mods.cgi",
 	   "edit_os.cgi",

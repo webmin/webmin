@@ -1,4 +1,20 @@
 index_title=Usermin Configuration
+log_title=Logging
+log_desc=Usermin can be configured to write a log of web server hits, in the standard CLF log file format. If logging is enabled, you can also choose whether IP addresses or hostnames are recorded, and how often the log file is cleared. When enabled, logs are written to the file $1.
+log_header=Webserver logging options
+log_status=Logging active?
+log_enable=Enable logging
+log_disable=Disable logging
+log_resolv=Log resolved hostnames?
+log_trust=Log client IP address when behind proxy?
+log_clf=Use combined log format (including referrer and user agent)?
+log_clear=Periodically clear log files?
+log_period=Yes, every $1 hours
+log_error=Error log destination
+log_error_file=Write to <tt>miniserv.error</tt>
+log_error_journal=Write to the <tt>systemd journal</tt>
+log_err=Failed to save logging options
+log_ehours='$1' is not a valid number of hours
 index_econfig=The directory $1 either does not exist on your system, or is not the Usermin configuration directory. Maybe Usermin is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_return=Usermin configuration
 index_stop=Stop Usermin

@@ -9,6 +9,11 @@ require './webmin-lib.pl';
 &lock_file($ENV{'MINISERV_CONFIG'});
 &get_miniserv_config(\%miniserv);
 my ($miniserv_log, $in_log) = ($miniserv{'log'}, $in{'log'});
+
+# Only a change of error destination needs the systemd drop-in and restart.
+my $journal_changed = defined($in{'error_journal'}) &&
+	($miniserv{'errorlog'} eq '-' ? 1 : 0) != ($in{'error_journal'} ? 1 : 0);
+
 $miniserv{'log'} = $in{'log'};
 $miniserv{'loghost'} = $in{'loghost'};
 $miniserv{'logtrust'} = $in{'logtrust'};
@@ -42,7 +47,15 @@ if (defined($in{'login'})) {
 		delete($miniserv{'failed_script'});
 		}
 	}
-&put_miniserv_config(\%miniserv);
+# Save the error destination and matching systemd drop-in when supported.
+if ($journal_changed) {
+	&set_miniserv_error_destination(\%miniserv,
+		$ENV{'MINISERV_CONFIG'}, "webmin.service",
+		$in{'error_journal'});
+	}
+else {
+	&put_miniserv_config(\%miniserv);
+	}
 &unlock_file($ENV{'MINISERV_CONFIG'});
 
 $gconfig{'log'} = $in{'log'};
@@ -71,6 +84,13 @@ if ($miniserv_log != $in_log) {
 		}
 	}
 
-&show_restart_page();
+# Restart through systemd when stderr needs to be re-attached.
+if ($journal_changed) {
+	&restart_miniserv_systemd_service("webmin.service", 2);
+	&redirect("");
+	}
+else {
+	&show_restart_page();
+	}
 &webmin_log("log", undef, undef, \%in);
 
