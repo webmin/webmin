@@ -1,4 +1,5 @@
 ---- Changes since 2.660 ----
+Added support for managing DNF 4 and 5 version locks when the versionlock command is installed.
 Added a "New updates are found" choice to the "Send email when" option that sends a complete report only when new updates become available, so notify-only schedules no longer repeat the same message every run.
 ---- Changes since 2.641 ----
 Added a Held updates view with controls to hold, unhold or explicitly update APT-held packages.

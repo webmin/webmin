@@ -24,7 +24,9 @@ is(strip_apt_package_arch('ncurses-base'), 'ncurses-base',
 
 {
 no warnings qw(once redefine);
+my $command;
 local *backquote_command = sub {
+	$command = $_[0];
 	return "Inst libtinfo6:amd64 [6.3-2ubuntu0.1] ".
 	       "(6.3-2ubuntu0.2 Ubuntu:22.04/jammy-updates [amd64])\n";
 	};
@@ -34,6 +36,9 @@ local *reset_environment = sub { };
 my @ops = update_system_operations('libtinfo6');
 is($ops[0]->{'name'}, 'libtinfo6',
 	'normalizes package names from simulated APT operations');
+update_system_operations('libtinfo6', update_system_hold_flags());
+like($command, qr/^apt-get -s --allow-change-held-packages install /,
+	'overrides holds while resolving an explicit held-package update');
 }
 
 {

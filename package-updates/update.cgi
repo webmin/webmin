@@ -73,18 +73,18 @@ else {
 	@pkgs || &error($text{'update_enone'});
 	$allow_held = 0;
 	if ($in{'mode'} eq 'held') {
-		# The held-updates page is the only UI that can explicitly
-		# override an APT hold for a single update transaction.
+		# Only Held updates can override a hold for one transaction.
 		&supports_package_holds() || &error($text{'hold_enotsupported'});
 		@held = &list_package_holds();
 		foreach $ps (@pkgs) {
 			($p, $s) = split(/\//, $ps, 2);
-			$s eq 'apt' && &package_is_held($p, \@held) ||
+			$s eq $software::update_system &&
+				&package_is_held($p, \@held) ||
 				&error(&text('update_enotheld', $p));
 			}
 		$allow_held = 1;
 		}
-	$install_flags = $allow_held ? '--allow-change-held-packages' :
+	$install_flags = $allow_held ? &software::update_system_hold_flags() :
 					$in{'flags'};
 	&ui_print_unbuffered_header(undef,
 	    $in{'mode'} eq 'new' ? $text{'update_title2'} : $text{'update_title'}, "");
@@ -102,7 +102,8 @@ else {
 			($p, $s) = split(/\//, $ps);
 			push(@pkgnames, $p);
 			}
-		@ops = &list_package_operations(join(" ", @pkgnames), $s);
+		@ops = &list_package_operations(join(" ", @pkgnames), $s,
+					       $install_flags);
 		&error($text{'update_enoheldops'}) if (!@ops && $allow_held);
 		}
 
