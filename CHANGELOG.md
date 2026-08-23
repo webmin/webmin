@@ -3,6 +3,7 @@
 * Add options to send Webmin and Usermin errors to the systemd journal [forum.virtualmin.com/t/136562](https://forum.virtualmin.com/t/miniserv-webserver-log-growing-too-big-should-be-rotated/136562)
 * Add webserver logging controls to Usermin Configuration module
 * Add option to rotate Webmin and Usermin webserver logs using `logrotate` instead of periodically clearing them [#2821](https://github.com/webmin/webmin/pull/2821)
+* Fix PostgreSQL initialization on EL systems to use SCRAM-SHA-256 authentication by default
 
 #### 2.660 (August 20, 2026)
 * Add support for creating `vfsv1` Linux quota files for limits above 4 TiB, while preserving existing quota file formats
