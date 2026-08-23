@@ -5,6 +5,7 @@
 * Add option to rotate Webmin and Usermin webserver logs using `logrotate` instead of periodically clearing them [#2821](https://github.com/webmin/webmin/pull/2821)
 * Add DNF 4 and 5 package hold management to the Software Package Updates module
 * Fix DNF update confirmations by previewing packages and dependencies that will be installed or updated
+* Fix PostgreSQL initialization on EL systems to use SCRAM-SHA-256 authentication by default
 
 #### 2.660 (August 20, 2026)
 * Add support for creating `vfsv1` Linux quota files for limits above 4 TiB, while preserving existing quota file formats

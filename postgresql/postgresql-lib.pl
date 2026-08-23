@@ -986,6 +986,11 @@ return undef;
 sub setup_postgresql
 {
 return undef if (!$config{'setup_cmd'});
+# Use SCRAM defaults for new clusters when supported by the EL setup wrapper
+local $ENV{'PGSETUP_INITDB_OPTIONS'} = '--auth-host=scram-sha-256'
+	if ($config{'setup_cmd'} =~ /\bpostgresql-setup\b/ &&
+	    &get_postgresql_version(1) >= 10 &&
+	    !$ENV{'PGSETUP_INITDB_OPTIONS'});
 local $temp = &transname();
 local $rv = &system_logged("($config{'setup_cmd'}) >$temp 2>&1");
 local $out = `cat $temp`;
