@@ -314,8 +314,12 @@ return defined(&software::update_system_updates);
 # Returns true if the current update system can list and change package holds.
 sub supports_package_holds
 {
-return defined(&software::list_update_system_holds) &&
-       defined(&software::update_system_hold);
+return 0 if (!defined(&software::list_update_system_holds) ||
+	     !defined(&software::update_system_hold) ||
+	     !defined(&software::update_system_hold_flags));
+return &software::supports_update_system_holds()
+	if (defined(&software::supports_update_system_holds));
+return 1;
 }
 
 # list_package_holds()
@@ -389,8 +393,9 @@ my ($name, $system, $install, $flags) = @_;
 $system ||= $software::update_system;
 my @rv;
 my $pkg;
-my $include_held = $system eq 'apt' && defined($flags) &&
-		   $flags eq '--allow-change-held-packages';
+my $include_held = $system eq $software::update_system &&
+		   &supports_package_holds() && defined($flags) &&
+		   $flags eq &software::update_system_hold_flags();
 
 # First get from list of updates
 ($pkg) = grep { $_->{'update'} eq $name &&
@@ -490,14 +495,13 @@ unlink($current_cache_file);
 return @rv;
 }
 
-# list_package_operations(package|packages, system)
-# Given a package (or space-separate package list), returns a list of all
-# dependencies that will be installed
+# list_package_operations(package|packages, system, [flags])
+# Returns packages and dependencies that would be installed or updated.
 sub list_package_operations
 {
-my ($name, $system) = @_;
+my ($name, $system, $flags) = @_;
 if (defined(&software::update_system_operations)) {
-	my @rv = &software::update_system_operations($name);
+	my @rv = &software::update_system_operations($name, $flags);
 	foreach my $p (@rv) {
 		$p->{'system'} = $system;
 		}

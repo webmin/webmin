@@ -20,6 +20,13 @@ $name =~ s/:[A-Za-z0-9][A-Za-z0-9._-]*$//;
 return $name;
 }
 
+# update_system_hold_flags()
+# Returns the APT option for explicitly updating held packages.
+sub update_system_hold_flags
+{
+return '--allow-change-held-packages';
+}
+
 # update_system_install([package], [&in], [no-force], [flags])
 # Install some package with apt
 sub update_system_install
@@ -105,15 +112,17 @@ $? = $status;
 return @rv;
 }
 
-# update_system_operations(packages)
-# Given a list of packages, returns a list containing packages that will
-# actually get installed, each of which is a hash ref with name and version.
+# update_system_operations(packages, [flags])
+# Returns packages APT would install or update. The optional hold flag includes
+# held packages in the simulation.
 sub update_system_operations
 {
-my ($packages) = @_;
+my ($packages, $flags) = @_;
 $ENV{'UCF_FORCE_CONFFOLD'} = 'YES';
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
-my $cmd = "apt-get -s install ".
+my $holdflag = defined($flags) &&
+	       $flags eq &update_system_hold_flags() ? " $flags" : "";
+my $cmd = "apt-get -s$holdflag install ".
 	  join(" ", map { quotemeta($_) } split(/\s+/, $packages)).
 	  " </dev/null 2>&1";
 &clean_language();
@@ -261,8 +270,8 @@ close(DUMP);
 return @rv;
 }
 
-# update_system_updates()
-# Returns a list of available package updates
+# update_system_updates([include-holds])
+# Returns available package updates, optionally including held packages.
 sub update_system_updates
 {
 my ($include_holds) = @_;
