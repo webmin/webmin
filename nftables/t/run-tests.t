@@ -467,6 +467,12 @@ is($setup_services{ssh}->{port}, '2022, 2200, 2223',
 ok(scalar(grep { $_ eq 'tcp dport 2022 accept' }
           @{$setup_services{ssh}->{rules}}),
    'ssh service includes ListenAddress port');
+ok(scalar(grep { $_ eq 'tcp dport 443 accept' }
+          @{$setup_services{https}->{rules}}),
+   'https service allows TCP');
+ok(scalar(grep { $_ eq 'udp dport 443 accept' }
+          @{$setup_services{https}->{rules}}),
+   'https service allows HTTP/3 over UDP');
 
 my $profile_table = create_profile_ruleset('profile_virtualmin', 'virtualmin', '*');
 is($profile_table->{family}, 'inet', 'profile helper family');
@@ -476,7 +482,7 @@ ok($profile_table->{sets}->{profile_hosting_tcp_ports},
 is($profile_table->{sets}->{profile_hosting_tcp_ports}->{flags}, 'interval',
    'profile helper tcp port set interval flag');
 is_deeply($profile_table->{sets}->{profile_hosting_udp_ports}->{elements},
-          [ '53' ], 'profile helper udp port set elements');
+          [ '53', '443' ], 'profile helper udp port set elements');
 ok(scalar(grep { $_->{text} eq 'tcp dport @profile_hosting_tcp_ports accept' }
           @{$profile_table->{rules}}),
    'profile helper tcp set rule');

@@ -1017,7 +1017,7 @@ sub builtin_quick_service_defs
 my @defs = (
 	[ 'ssh',      [ [ 'tcp', '22' ] ] ],
 	[ 'http',     [ [ 'tcp', '80' ] ] ],
-	[ 'https',    [ [ 'tcp', '443' ] ] ],
+	[ 'https',    [ [ 'tcp', '443' ], [ 'udp', '443' ] ] ],
 	[ 'dns',      [ [ 'tcp', '53' ], [ 'udp', '53' ] ], [ 'domain' ] ],
 	[ 'smtp',     [ [ 'tcp', '25' ] ] ],
 	[ 'submission', [ [ 'tcp', '587' ] ], [ 'msa' ] ],
@@ -3114,8 +3114,11 @@ return (
 		'label' => text('setup_svc_https'),
 		'type' => text('setup_type_service'),
 		'port' => profile_ports_label(@https_ports),
-		'proto' => 'TCP',
-		'rules' => [ profile_accept_rules('tcp', @https_ports) ]
+		'proto' => 'TCP/UDP',
+		'rules' => [
+			profile_accept_rules('tcp', @https_ports),
+			profile_accept_rules('udp', @https_ports)
+		]
 	},
 	{
 		'id' => 'imap',
