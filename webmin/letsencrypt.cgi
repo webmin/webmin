@@ -133,9 +133,12 @@ else {
 					 'letsencrypt_doing',
 		    "<tt>".&html_escape(join(", ", @doms))."</tt>",
 		    "<tt>".&html_escape($webroot)."</tt>"),"<br>\n";
+	my $reuse = $config{'letsencrypt_reuse'};
+	$reuse = 0 if ($config{'letsencrypt_size'} &&
+		       ($size || 4096) != $config{'letsencrypt_size'});
 	my ($ok, $cert, $key, $chain) = &request_letsencrypt_cert(
 		\@doms, $webroot, undef, $size, $mode, $in{'staging'},
-		undef, undef, undef, $in{'directory_url'},
+		undef, undef, $reuse, $in{'directory_url'},
 		$in{'eab_kid'}, $in{'eab_hmac'}, $in{'subset'});
 	if (!$ok) {
 		print &text('letsencrypt_failed', $cert),"\n";
