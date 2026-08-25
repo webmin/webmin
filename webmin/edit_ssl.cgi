@@ -366,8 +366,8 @@ else {
 
 	# SSL key size
 	print &ui_table_row($text{'ssl_size'},
-		&ui_opt_textbox("size", undef, 6, $text{'default'}).
-				" ".$text{'ssl_bits'});
+		&ui_opt_textbox("size", $config{'letsencrypt_size'}, 6,
+				$text{'default'})." ".$text{'ssl_bits'});
 
 	# Staging mode
 	print &ui_table_row($text{'ssl_staging'},
