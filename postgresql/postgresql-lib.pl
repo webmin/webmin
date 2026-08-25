@@ -70,6 +70,7 @@ EOF
 # message too.
 sub is_postgresql_running
 {
+local $out;
 local $temp = &transname();
 local $cmd = &quote_path($config{'psql'}).
 	     &host_port_flags().
