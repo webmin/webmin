@@ -21,10 +21,12 @@ if ($in{'new'}) {
 		}
 	$sig = &get_signature($in{'user'});
 	if ($html_edit && $sig) {
-		$sig =~ s/\n/<br>\n/g;
-		$quote = "<html><body>$sig</body></html>";
+		$sig =~ s/\n/<br>\n/g if (!&signature_is_html($sig));
+		$quote = "<html><body><div class=\"x-signature\">$sig</div>".
+			 "</body></html>";
 		}
 	else {
+		$sig = &html_to_text($sig) if (&signature_is_html($sig));
 		$quote = "\n\n$sig" if ($sig);
 		}
 	$to = $in{'to'};
@@ -313,8 +315,9 @@ else {
 	$subject = "Fwd: ".$subject if ($subject !~ /^Fwd:/i &&
 					($in{'forward'} || @mailforward));
 
-	# Construct the initial mail text
-	$sig = &get_signature($in{'user'});
+	# Construct the initial mail text, without adding a signature when
+	# editing an existing draft which already contains one
+	$sig = &get_signature($in{'user'}) if (!$in{'enew'});
 	($quote, $html_edit, $body) = &quoted_message($mail, $qu, $sig);
 	# Load images using server in replies
 	$quote = &disable_html_images($quote, 3);
@@ -476,10 +479,11 @@ if ($html_edit) {
 	        after =>
 	           { editor => $iframe_quote }
 	      });
-	$sig =~ s/\n/<br>/g,
-	$sig =~ s/^\s+//g,
-	$sig = "<br><br>$sig<br><br>"
-		if ($sig);
+	if ($sig) {
+		$sig =~ s/\n/<br>/g if (!&signature_is_html($sig));
+		$sig =~ s/^\s+//g;
+		$sig = "<br><br><div class=\"x-signature\">$sig</div><br><br>";
+		}
 	print &ui_table_row(undef,
 		&ui_textarea("body", $sig, 12, 80, undef, 0,
 		             "style='display: none' id=body data-html-mode='$config{'html_edit_mode'}'").
@@ -487,6 +491,7 @@ if ($html_edit) {
 	}
 else {
 	# Show text editing area
+	$sig = &html_to_text($sig) if (&signature_is_html($sig));
 	$wm = $config{'wrap_mode'};
 	$wm =~ s/^wrap=//g;
 	$wcols = $config{'wrap_compose'};
