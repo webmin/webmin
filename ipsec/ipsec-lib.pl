@@ -139,11 +139,31 @@ return $? || $out =~ /not running/i ? 0 : 1;
 # Returns this system's public key
 sub get_public_key
 {
-local $out = `$config{'ipsec'} showhostkey --file '$config{'secrets'}' --left 2>&1`;
+local $ckaid = &get_libreswan_key_id();
+local $out;
+if ($ckaid) {
+	# Modern Libreswan reads the selected host key from NSS
+	$out = `$config{'ipsec'} showhostkey --left --ckaid '$ckaid' 2>&1`;
+	}
+else {
+	# Legacy implementations read the host key from ipsec.secrets
+	$out = `$config{'ipsec'} showhostkey --file '$config{'secrets'}' --left 2>&1`;
+	}
 if ($out =~ /leftrsasigkey=(\S+)/) {
 	return $1;
 	}
 return undef;
+}
+
+# get_libreswan_key_id()
+# Returns the CKAID of the first Libreswan host key, or undef
+sub get_libreswan_key_id
+{
+local $out;
+local ($version, $program) = &get_ipsec_version(\$out);
+return undef if (!$program || lc($program) ne "libreswan");
+local $keys = `$config{'ipsec'} showhostkey --list 2>&1`;
+return $keys =~ /\bckaid:\s*([a-f0-9]+)/i ? $1 : undef;
 }
 
 # get_public_key_dns()
@@ -292,16 +312,17 @@ return $out =~ /(FreeS\/WAN|Openswan|StrongSWAN|Libreswan)\s+([^ \n\(]+)/i ? ($2
 sub got_secret
 {
 local $gotkey;
-open(SEC, "<".$config{'secrets'}) || return 0;
-while(<SEC>) {
-	s/\r|\n//g;
-	s/#.*$//;
-	if (/Modulus:\s*(\S+)/) {
-		$gotkey = 1;
+if (open(SEC, "<".$config{'secrets'})) {
+	while(<SEC>) {
+		s/\r|\n//g;
+		s/#.*$//;
+		if (/Modulus:\s*(\S+)/) {
+			$gotkey = 1;
+			}
 		}
+	close(SEC);
 	}
-close(SEC);
-return $gotkey;
+return ($gotkey || &get_libreswan_key_id()) ? 1 : 0;
 }
 
 # expand_conf(&config)
