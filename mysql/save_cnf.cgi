@@ -11,9 +11,7 @@ foreach my $l (&get_all_mysqld_files()) {
 	&lock_file($l);
 	}
 $conf = &get_mysql_config();
-($mysqld) = grep { $_->{'name'} eq 'mysqld' ||
-		   $_->{'name'} eq 'mariadbd' ||
-		   $_->{'name'} eq 'mariadb' } @$conf;
+$mysqld = &get_mysqld_config_section($conf);
 $mysqld || &error($text{'cnf_emysqld'});
 $mems = $mysqld->{'members'};
 
@@ -134,4 +132,3 @@ if ($in{'restart'} && &is_mysql_running() > 0) {
 	}
 &webmin_log("cnf");
 &redirect("");
-

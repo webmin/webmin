@@ -13,9 +13,7 @@ if (!$conf) {
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}
-($mysqld) = grep { $_->{'name'} eq 'mysqld' ||
-		   $_->{'name'} eq 'mariadbd' ||
-		   $_->{'name'} eq 'mariadb' } @$conf;
+$mysqld = &get_mysqld_config_section($conf);
 $mysqld || &error($text{'cnf_emysqld'});
 $mems = $mysqld->{'members'};
 
@@ -110,4 +108,3 @@ print &ui_form_end([ [ "save", $text{'save'} ],
 		     [ "restart", $text{'cnf_restart'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
-
