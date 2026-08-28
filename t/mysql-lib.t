@@ -138,4 +138,19 @@ subtest 'binary log retention limit covers the full 32-bit range' => sub {
 	   'whole days below the maximum stay within the limit');
 };
 
+subtest 'retention maximum is variant specific' => sub {
+	is(main::get_binlog_expire_max('mysql'), 4294967295,
+	   'MySQL accepts the full 32-bit seconds range');
+	is(main::get_binlog_expire_max('mariadb'), 8553600,
+	   'MariaDB is limited to 99 days of seconds');
+	is(main::parse_binlog_expire_days(99),
+	   main::get_binlog_expire_max('mariadb'),
+	   'exactly 99 days is accepted on MariaDB');
+	cmp_ok(main::parse_binlog_expire_days('99.000012'), '>',
+	   main::get_binlog_expire_max('mariadb'),
+	   'just over 99 days exceeds the MariaDB limit');
+	is(main::format_binlog_expire_days(8553600), '99',
+	   'the MariaDB maximum displays as 99 days');
+};
+
 done_testing();

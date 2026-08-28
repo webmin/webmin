@@ -1288,6 +1288,17 @@ my ($days) = @_;
 return int($days * 86400 + 0.5);
 }
 
+# get_binlog_expire_max([variant])
+# Returns the maximum retention in seconds that this or the given database
+# variant accepts, which is 99 days on MariaDB but the full 32-bit range
+# on MySQL
+sub get_binlog_expire_max
+{
+my ($variant) = @_;
+($variant) = (&get_mysql_variant_cached())[1] if (!$variant);
+return $variant eq "mariadb" ? 8553600 : 4294967295;
+}
+
 # get_mysql_variant_cached()
 # Like get_remote_mysql_variant, but falls back to the version detected at
 # module setup time when the server cannot be queried, such as when it is

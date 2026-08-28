@@ -123,11 +123,13 @@ else {
 		&error($text{'binlogs_eexpire'});
 	my $days = $in{'expire'} + 0;
 	if ($newexpire) {
-		# The seconds variable is limited to 32 bits
+		# The seconds variable is limited to 99 days on MariaDB, and
+		# to 32 bits on MySQL
 		my $secs = &parse_binlog_expire_days($days);
-		$secs <= 4294967295 ||
+		my $max = &get_binlog_expire_max($variant);
+		$secs <= $max ||
 			&error(&text('binlogs_eexpiremax',
-				&format_binlog_expire_days(4294967295)));
+				&format_binlog_expire_days($max)));
 		&save_directive($conf, $mysqld, "expire_logs_days", [ ]);
 		&save_directive($conf, $mysqld, "binlog_expire_logs_seconds",
 				[ $secs ]);

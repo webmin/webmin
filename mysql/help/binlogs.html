@@ -8,11 +8,12 @@ point-in-time recovery of backups. <p>
 When binary logging is enabled, log files are written under the configured
 base name and grow as changes are made. To stop them from filling up the disk,
 a retention period can be set after which old logs are automatically deleted,
-or old logs can be deleted immediately using the form at the bottom of the
-page. <p>
+or old logs can be deleted immediately on the <b>Delete Logs</b> tab. The
+button at the bottom of the page closes the current log and starts a new one,
+giving backups and log deletion a clean boundary. <p>
 
-For any changes on this page to take effect, the MySQL server must be
-re-started, either with the <b>Save and Restart MySQL</b> button or using the
-buttons on the module's main page. <p>
+Configuration changes only take effect once the MySQL server is re-started,
+either with the <b>Save and Restart MySQL</b> button or using the buttons on
+the module's main page. Deleting and rotating logs happen immediately. <p>
 
 <footer>
