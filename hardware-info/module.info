@@ -1,0 +1,6 @@
+name=Hardware Information
+category=hardware
+os_support=*-linux
+desc=Hardware Information
+longdesc=View system hardware, firmware and security details, and inspect PCI, USB, storage, network and processor devices, hardware-monitor readings and their kernel drivers.
+readonly=1
