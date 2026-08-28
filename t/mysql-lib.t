@@ -153,4 +153,21 @@ subtest 'retention maximum is variant specific' => sub {
 	   'the MariaDB maximum displays as 99 days');
 };
 
+subtest 'preferred MySQL server configuration section' => sub {
+	my $mariadb = { 'name' => 'mariadb' };
+	my $mariadbd = { 'name' => 'mariadbd' };
+	my $mysqld = { 'name' => 'mysqld' };
+	my $client = { 'name' => 'client' };
+
+	is(main::get_mysqld_config_section(
+		[ $mariadb, $mariadbd, $mysqld ]), $mysqld,
+	   'mysqld is preferred regardless of file order');
+	is(main::get_mysqld_config_section([ $mariadb, $mariadbd ]), $mariadbd,
+	   'mariadbd is preferred when mysqld is absent');
+	is(main::get_mysqld_config_section([ $client, $mariadb ]), $mariadb,
+	   'mariadb is used as the final server-section fallback');
+	ok(!defined(main::get_mysqld_config_section([ $client ])),
+	   'no server section returns undef');
+};
+
 done_testing();

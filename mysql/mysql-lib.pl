@@ -1358,6 +1358,19 @@ if (!scalar(@mysql_config_cache)) {
 return \@mysql_config_cache;
 }
 
+# get_mysqld_config_section(&config)
+# Returns the preferred server section from a parsed MySQL configuration,
+# avoiding generic MariaDB sections when a dedicated server section exists
+sub get_mysqld_config_section
+{
+my ($conf) = @_;
+foreach my $name ('mysqld', 'mariadbd', 'mariadb') {
+	my ($section) = grep { $_->{'name'} eq $name } @$conf;
+	return $section if ($section);
+	}
+return undef;
+}
+
 # parse_mysql_config(file)
 # Reads one MySQL config file
 sub parse_mysql_config
