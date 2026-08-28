@@ -1,0 +1,6 @@
+<header>Maximum size of one log file</header>
+
+<p>When a binary log file reaches this size, the server closes it and starts
+writing a new one. Smaller files make deleting old logs and point-in-time
+recovery more granular, at the cost of more files. The server accepts sizes
+between 4 kB and 1 GB, which is also the default.</p>

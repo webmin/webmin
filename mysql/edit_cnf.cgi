@@ -13,9 +13,11 @@ if (!$conf) {
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}
-($mysqld) = grep { $_->{'name'} eq 'mysqld' ||
-		   $_->{'name'} eq 'mariadbd' ||
-		   $_->{'name'} eq 'mariadb' } @$conf;
+# Prefer the main server section over generic MariaDB sections that can
+# belong to a plugin-specific include file
+($mysqld) = grep { $_->{'name'} eq 'mysqld' } @$conf;
+($mysqld) = grep { $_->{'name'} eq 'mariadbd' } @$conf if (!$mysqld);
+($mysqld) = grep { $_->{'name'} eq 'mariadb' } @$conf if (!$mysqld);
 $mysqld || &error($text{'cnf_emysqld'});
 $mems = $mysqld->{'members'};
 
@@ -110,4 +112,3 @@ print &ui_form_end([ [ "save", $text{'save'} ],
 		     [ "restart", $text{'cnf_restart'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
-

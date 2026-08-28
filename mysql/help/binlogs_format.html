@@ -1,0 +1,10 @@
+<header>Binary log format</header>
+
+<p>Controls how changes are recorded in the binary logs. <b>Row based</b>
+logs the actual row changes, which is the most reliable format and is required
+for point-in-time recovery of individual databases. <b>Statement based</b>
+logs the SQL statements that were executed, and <b>Mixed</b> switches between
+the two automatically.</p>
+
+<p>Row based logging is recommended, as statement and mixed logs cannot be
+safely filtered by database when replaying transactions.</p>

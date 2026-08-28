@@ -11,9 +11,11 @@ foreach my $l (&get_all_mysqld_files()) {
 	&lock_file($l);
 	}
 $conf = &get_mysql_config();
-($mysqld) = grep { $_->{'name'} eq 'mysqld' ||
-		   $_->{'name'} eq 'mariadbd' ||
-		   $_->{'name'} eq 'mariadb' } @$conf;
+# Prefer the main server section over generic MariaDB sections that can
+# belong to a plugin-specific include file
+($mysqld) = grep { $_->{'name'} eq 'mysqld' } @$conf;
+($mysqld) = grep { $_->{'name'} eq 'mariadbd' } @$conf if (!$mysqld);
+($mysqld) = grep { $_->{'name'} eq 'mariadb' } @$conf if (!$mysqld);
 $mysqld || &error($text{'cnf_emysqld'});
 $mems = $mysqld->{'members'};
 
@@ -134,4 +136,3 @@ if ($in{'restart'} && &is_mysql_running() > 0) {
 	}
 &webmin_log("cnf");
 &redirect("");
-

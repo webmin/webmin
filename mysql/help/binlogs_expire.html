@@ -1,0 +1,7 @@
+<header>Automatically delete logs older than</header>
+
+<p>The number of days that binary log files are kept before the server deletes
+them automatically. Without a limit, logs will grow until they fill up the
+disk. For point-in-time recovery the retention period must be at least as long
+as the interval between full backups, so that all transactions since the last
+backup remain available for replay.</p>

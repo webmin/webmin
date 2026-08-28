@@ -370,6 +370,18 @@ if ($driver_handle && !$config{'nodbi'}) {
 	local $dbh = $driver_handle->connect($cstr, $mysql_login, $mysql_pass,
 					     { });
 	$dbh || &error("DBI connect failed : ",$driver_handle->errstr);
+	if ($disable_session_binlog) {
+		# A point-in-time restore must not add its own SQL to the log that
+		# it is replaying, because that would make later retries unsafe
+		local $nologsql = "set session sql_log_bin = 0";
+		local $nologcmd = $dbh->prepare($nologsql);
+		if (!$nologcmd || !$nologcmd->execute()) {
+			&error(&text('esql',
+				     "<tt>".&html_escape($nologsql)."</tt>",
+				     "<tt>".&html_escape($dbh->errstr)."</tt>"));
+			}
+		$nologcmd->finish();
+		}
 	if ($sql_charset) {
 		# Switch to correct character set
 		local $sql = "set names '$sql_charset'";
@@ -411,6 +423,10 @@ else {
 		$sql = &replace_sql_parameters($sql, @params);
 		}
 	open(TEMP, ">$temp");
+	if ($disable_session_binlog) {
+		# Keep point-in-time restore statements out of the binary log
+		print TEMP "set session sql_log_bin = 0;\n";
+		}
 	if ($sql_charset) {
 		print TEMP "set names '$sql_charset';\n";
 		}
@@ -928,6 +944,38 @@ if ($ver && $variant_ &&
 return ($rv, $variant);
 }
 
+# get_binary_log_status()
+# Returns the current binary log file and position, if binary logging is
+# active on the server
+sub get_binary_log_status
+{
+# The statement name varies between MySQL and MariaDB releases
+foreach my $sql ("show master status", "show binary log status",
+		 "show binlog status") {
+	my $d = eval {
+		local $main::error_must_die = 1;
+		&execute_sql($master_db, $sql);
+		};
+	next if ($@ || !$d);
+	return ( ) if (!@{$d->{'data'}});
+	return ($d->{'data'}->[0]->[0], $d->{'data'}->[0]->[1]);
+	}
+return ( );
+}
+
+# list_binary_logs()
+# Returns a list of binary log files on the server, each as a hash ref with
+# name and size keys
+sub list_binary_logs
+{
+my $d = eval {
+	local $main::error_must_die = 1;
+	&execute_sql($master_db, "show binary logs");
+	};
+return ( ) if ($@ || !$d);
+return map { { 'name' => $_->[0], 'size' => $_->[1] } } @{$d->{'data'}};
+}
+
 # save_mysql_version([number])
 # Update the saved local MySQL version number
 sub save_mysql_version
@@ -1122,6 +1170,10 @@ my $cs = $sql_charset ? "--default-character-set=".quotemeta($sql_charset)
 my $temp = &transname();
 $file = &fix_collation($file);
 &open_tempfile(TEMP, ">$temp");
+if ($disable_session_binlog) {
+	# Keep an imported backup or decoded binary log out of the source log
+	&print_tempfile(TEMP, "set session sql_log_bin = 0;\n");
+	}
 &print_tempfile(TEMP, "source ".$file.";\n");
 &close_tempfile(TEMP);
 &set_ownership_permissions(undef, undef, 0644, $temp);
@@ -1205,6 +1257,81 @@ sub is_mysql_local
 return $config{'host'} eq '' || $config{'host'} eq 'localhost' ||
        $config{'host'} eq &get_system_hostname() ||
        &to_ipaddress($config{'host'}) eq &to_ipaddress(&get_system_hostname());
+}
+
+# supports_disable_session_binlog()
+# Returns 1 if restore callers can request that their SQL sessions not be
+# written to the server's binary log.
+sub supports_disable_session_binlog
+{
+return 1;
+}
+
+# format_binlog_expire_days(seconds)
+# Converts a seconds-based binary log retention period to a days value with
+# enough decimal places to convert back to the exact same number of seconds
+sub format_binlog_expire_days
+{
+my ($secs) = @_;
+my $days = sprintf("%.6f", $secs / 86400);
+$days =~ s/0+$//;
+$days =~ s/\.$//;
+return $days;
+}
+
+# parse_binlog_expire_days(days)
+# Converts a days-based retention period back to the whole number of seconds
+# stored on the server
+sub parse_binlog_expire_days
+{
+my ($days) = @_;
+return int($days * 86400 + 0.5);
+}
+
+# get_mysql_variant_cached()
+# Like get_remote_mysql_variant, but falls back to the version detected at
+# module setup time when the server cannot be queried, such as when it is
+# stopped
+sub get_mysql_variant_cached
+{
+my ($ver, $variant) = &get_remote_mysql_variant();
+if (!$ver || $ver <= 0) {
+	$ver = $mysql_version;
+	$variant = $ver =~ /mariadb/i ? "mariadb" : "mysql";
+	$ver =~ s/[^0-9\.].*$//;
+	}
+return ($ver, $variant);
+}
+
+# get_binlog_default_on()
+# Returns 1 if this database server enables binary logging by default when
+# no directive is present, as MySQL does from version 8.0 onwards
+sub get_binlog_default_on
+{
+my ($ver, $variant) = &get_mysql_variant_cached();
+return $variant eq "mysql" && $ver &&
+       &compare_version_numbers($ver, "8.0") >= 0 ? 1 : 0;
+}
+
+# parse_binlog_max_size(number, units)
+# Converts a maximum log file size input to bytes, returning undef if it is
+# invalid or outside the range from 4 kB to 1 GB that servers support
+sub parse_binlog_max_size
+{
+my ($num, $units) = @_;
+$num =~ /^\d+$/ || return undef;
+my %mult = ( '' => 1, 'K' => 1024, 'M' => 1024*1024,
+	     'G' => 1024*1024*1024 );
+defined($mult{$units}) || return undef;
+my $bytes = $num * $mult{$units};
+return $bytes >= 4096 && $bytes <= 1024*1024*1024 ? $bytes : undef;
+}
+
+# rotate_binary_logs()
+# Closes the binary log currently being written and starts a new one
+sub rotate_binary_logs
+{
+&execute_sql_logged($master_db, "flush binary logs");
 }
 
 # get_mysql_config()

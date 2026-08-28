@@ -1,0 +1,7 @@
+<header>Binary logs to delete</header>
+
+<p>Deletes old binary log files from the server immediately to free up disk
+space, either those older than the chosen number of days, or all logs except
+the one currently being written. Logs that have been deleted can no longer be
+used for replication or point-in-time recovery, so make sure they are not
+needed by any replica or for replaying transactions since the last backup.</p>

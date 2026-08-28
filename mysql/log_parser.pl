@@ -20,6 +20,15 @@ elsif ($action eq 'restart') {
 elsif ($action eq 'cnf') {
 	return $text{'log_cnf'};
 	}
+elsif ($action eq 'binlogs') {
+	return $text{'log_binlogs'};
+	}
+elsif ($action eq 'purgebinlogs') {
+	return $text{'log_purgebinlogs'};
+	}
+elsif ($action eq 'flushbinlogs') {
+	return $text{'log_flushbinlogs'};
+	}
 elsif ($action eq 'ssl') {
 	return $text{'log_ssl'};
 	}

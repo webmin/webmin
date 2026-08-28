@@ -1,5 +1,6 @@
 ---- Changes since 2.641 ----
 Added defaults for alpine linux and fix package installs
+Added a Binary Logging page for enabling binary logs, setting their format, maximum file size and retention period, rotating logs on demand, and deleting old log files.
 ---- Changes since 1.140 ----
 The not null flag and a default value can be specified for fields in new tables.
 The form for creating an initial table in a new database is now the same as the one for adding a table to an existing database.
