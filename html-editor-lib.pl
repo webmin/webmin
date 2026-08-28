@@ -242,6 +242,9 @@ my $iframe_styles =
 $iframe_styles =~ s/\n/ /g;
 my $navigation_type = $ENV{'HTTP_X_NAVIGATION_TYPE'};
 $navigation_type ||= 'reload';
+
+# Key for preserving unsaved editor content across page reloads
+my $storage_key = $opts->{'storage'} || 'quill=last-message';
 my $html_editor_init_script =
 <<EOF;
 <script type="text/javascript">
@@ -262,6 +265,60 @@ my $html_editor_init_script =
     Quill.register(qs, true);
     qf.whitelist = ["monospace"],
     Quill.register(qf, true);
+
+    // Register signature class attributor, so signature blocks keep their
+    // marking class across editor round trips, e.g. when editing a draft
+    const qp = Quill.import('parchment');
+    Quill.register(new qp.Attributor.Class('signature', 'x-signature',
+        { scope: qp.Scope.BLOCK }), true);
+
+    // Convert the signature container into per-block marking classes,
+    // which the editor preserves via the registered signature attributor.
+    // Block children are marked directly, while runs of inline content,
+    // like plain text with line breaks, become marked paragraphs
+    const signature_marks = function(html) {
+        if (!html || html.indexOf('x-signature') < 0) {
+            return html;
+        }
+        const doc = document.createElement('div'),
+              blocks = ['P', 'DIV', 'UL', 'OL', 'TABLE',
+                        'BLOCKQUOTE', 'PRE', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+        doc.innerHTML = html;
+        doc.querySelectorAll('div.x-signature').forEach(function(sig) {
+            const frag = document.createDocumentFragment();
+            let run = [];
+            const run_empty = function() {
+                return !run.some(function(n) {
+                    return n.nodeType === 1 || (n.textContent || '').trim();
+                });
+            };
+            const flush = function() {
+                if (run.length && !run_empty()) {
+                    const p = document.createElement('p');
+                    p.className = 'x-signature-mark';
+                    run.forEach(function(n) { p.appendChild(n); });
+                    frag.appendChild(p);
+                }
+                run = [];
+            };
+            Array.from(sig.childNodes).forEach(function(node) {
+                if (node.nodeType === 1 && blocks.includes(node.tagName)) {
+                    // Mark block level parts of the signature directly
+                    flush();
+                    node.classList.add('x-signature-mark');
+                    frag.appendChild(node);
+                } else if (node.nodeType === 1 && node.tagName === 'BR') {
+                    // Line break ends the current inline line
+                    flush();
+                } else {
+                    run.push(node);
+                }
+            });
+            flush();
+            sig.replaceWith(frag);
+        });
+        return doc.innerHTML;
+    };
 
     const editor = new Quill('.ql-container', {
         modules: {
@@ -332,7 +389,7 @@ my $html_editor_init_script =
     editor.on('text-change', function() {
         // This should most probably go to onSubmit event
         targ.value = editor.root.innerHTML + "<br>";
-        sessionStorage.setItem('$module_name/quill=last-message', editor.root.innerHTML);
+        sessionStorage.setItem('$module_name/$storage_key', editor.root.innerHTML);
         let extraValue = String(),
             sync = JSON.parse('@{[&convert_to_json($opts->{'textarea'}->{'sync'}->{'data'})]}'),
             position = '@{[$opts->{'textarea'}->{'sync'}->{'position'}]}',
@@ -386,7 +443,7 @@ my $html_editor_init_script =
       restore_message = false;
     }
     if (restore_message) {
-        const quill_last_message = sessionStorage.getItem('$module_name/quill=last-message');
+        const quill_last_message = sessionStorage.getItem('$module_name/$storage_key');
         if (quill_last_message) {
             editor.pasteHTML(quill_last_message);
             return;
@@ -394,8 +451,8 @@ my $html_editor_init_script =
     }
 
     // Update editor on initial load
-    editor.pasteHTML(targ.value);
-    sessionStorage.setItem('$module_name/quill=last-message', editor.root.innerHTML);
+    editor.pasteHTML(signature_marks(targ.value));
+    sessionStorage.setItem('$module_name/$storage_key', editor.root.innerHTML);
   }
   @{[$opts->{'load'} ? "fn_${module_name}_html_editor_init()" : '']}
 </script>
@@ -506,13 +563,13 @@ if ($document_styles_string) {
                 }
             }
         }
-    # Fill tags with our inline styles
+    # Fill tags with our inline styles, preserving existing tag attributes
     my (@document_styles_tag_names) = $styled_html_email =~ /<(?!style)(?!script)(?!s)(\w+)\s*.*?>/migx;
     foreach my $tag_name (&unique(@document_styles_tag_names)) {
         my (%document_styles_tag_names) = $document_styles_string =~ /(\Q$tag_name\E)\s*\{\s*([^}]*?)\s*\}/migx;
         foreach my $tag (keys %document_styles_tag_names) {
             my $tag_style = &$style_format($document_styles_tag_names{$tag});
-            $styled_html_email =~ s/(<$tag)(?![^>]+style).*?>/$1 style="$tag_style">/mig;
+            $styled_html_email =~ s/(<$tag\b)(?![^>]+style)([^>]*)>/$1$2 style="$tag_style">/mig;
             }
         }
     }

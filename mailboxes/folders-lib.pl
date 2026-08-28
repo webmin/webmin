@@ -3285,6 +3285,14 @@ foreach my $a (@$attach) {
 return @rv;
 }
 
+# signature_is_html(sig)
+# Returns 1 if the given signature contains HTML markup
+sub signature_is_html
+{
+local ($sig) = @_;
+return 0 if (!$sig);
+return $sig =~ /<\/?(?:a|b|i|u|s|p|em|img|br|hr|div|span|font|code|pre|sub|sup|small|big|strong|strike|blockquote|table|tbody|thead|tr|td|th|ul|ol|li|h[1-6]|style)\b[^>]*>/i ? 1 : 0;
+}
 # quoted_message(&mail, quote-mode, sig, 0=any,1=text,2=html, sig-at-top?)
 # Returns the quoted text, html-flag and body attachment
 sub quoted_message
@@ -3315,20 +3323,22 @@ local $qm = %userconfig ? $userconfig{'html_quote'} : $config{'html_quote'};
 if (($cfg->{'html_edit'} == 2 ||
      $cfg->{'html_edit'} == 1 && $htmlbody) &&
      $bodymode != 1) {
-	# Create quoted body HTML
+	# Create quoted body HTML, with the signature wrapped in a container
+	# with a known class so that it can be styled later if needed
+	$sig =~ s/\n/<br>\n/g if (!&signature_is_html($sig));
+	$sig = "<div class=\"x-signature\">$sig</div>" if ($sig);
 	if ($htmlbody) {
 		$body = $htmlbody;
-		$sig =~ s/\n/<br>\n/g;
 		if ($qu && $qm == 0) {
 			# Quoted HTML as cite
 			$quote = &html_escape($writer)."\n".
 				 "<blockquote type=cite>\n".
 				 &safe_html($htmlbody->{'data'}).
 				 "</blockquote>";
-			if ($sigtop) {
+			if ($sig && $sigtop) {
 				$quote = $sig."<br>\n".$quote;
 				}
-			else {
+			elsif ($sig) {
 				$quote = $quote.$sig."<br>\n";
 				}
 			}
@@ -3341,10 +3351,10 @@ if (($cfg->{'html_edit'} == 2 ||
 		else {
 			# Un-quoted HTML
 			$quote = &safe_html($htmlbody->{'data'});
-			if ($sigtop) {
+			if ($sig && $sigtop) {
 				$quote = $sig."<br>\n".$quote;
 				}
-			else {
+			elsif ($sig) {
 				$quote = $quote.$sig."<br>\n";
 				}
 			}
@@ -3360,10 +3370,10 @@ if (($cfg->{'html_edit'} == 2 ||
 				 "<blockquote type=cite>\n".
 				 "<pre>$pd</pre>".
 				 "</blockquote>";
-			if ($sigtop) {
+			if ($sig && $sigtop) {
 				$quote = $sig."<br>\n".$quote;
 				}
-			else {
+			elsif ($sig) {
 				$quote = $quote.$sig."<br>\n";
 				}
 			}
@@ -3376,10 +3386,10 @@ if (($cfg->{'html_edit'} == 2 ||
 		else {
 			# Un-quoted plain text as HTML
 			$quote = "<pre>$pd</pre>";
-			if ($sigtop) {
+			if ($sig && $sigtop) {
 				$quote = $sig."<br>\n".$quote;
 				}
-			else {
+			elsif ($sig) {
 				$quote = $quote.$sig."<br>\n";
 				}
 			}
@@ -3388,6 +3398,7 @@ if (($cfg->{'html_edit'} == 2 ||
 	}
 else {
 	# Create quoted body text
+	$sig = &html_to_text($sig) if (&signature_is_html($sig));
 	if ($plainbody) {
 		$body = $plainbody;
 		$quote = $plainbody->{'data'};

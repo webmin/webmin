@@ -289,11 +289,22 @@ if ($letsencrypt_cmd) {
 	my $server_flags = "";
 	my $subset_flags = "";
 	$key_type ||= $config{'letsencrypt_algo'} || 'rsa';
+	$size ||= 4096;
+	my $certname = @doms ? $doms[0] : $ips[0];
 	if (&compare_version_numbers($cmd_ver, '<', 1.11)) {
 		$old_flags = " --manual-public-ip-logging-ok";
 		}
 	if (&compare_version_numbers($cmd_ver, '>=', 2.0)) {
 		$new_flags = " --key-type ".quotemeta($key_type);
+		my ($old_key_type, $old_size) =
+			&get_certbot_key_params($certname);
+		if ($reuse_key && $old_key_type &&
+		    ($old_key_type ne $key_type ||
+		     ($key_type eq 'rsa' && $old_size &&
+		      $old_size != $size))) {
+			# Replace a changed key once, then continue reusing it
+			$new_flags .= " --new-key";
+			}
 		}
 	if ($reuse_key) {
 		$reuse_flags = " --reuse-key";
@@ -319,15 +330,14 @@ if ($letsencrypt_cmd) {
 			}
 		}
 	$dir =~ s/\/[^\/]+$//;
-	$size ||= 4096;
 	my $out;
-	my $certname = @doms ? $doms[0] : $ips[0];
 	my $common_flags = " --duplicate".
 			   " --force-renewal".
 			   " --non-interactive".
 			   " --agree-tos".
 			   " --config ".quotemeta($temp)."".
-			   " --rsa-key-size ".quotemeta($size).
+			   ($key_type eq 'rsa' ?
+			    " --rsa-key-size ".quotemeta($size) : "").
 			   " --cert-name ".quotemeta($certname).
 			   " --no-autorenew".
 			   (!$directory_url && $staging ? " --test-cert" : "");
@@ -672,6 +682,23 @@ if ($out && $out =~ /\s*(\d+\.\d+)\s*/) {
 	return $1;
 	}
 return undef;
+}
+
+# get_certbot_key_params(certname)
+# Returns the key type and RSA size saved for an existing Certbot lineage
+sub get_certbot_key_params
+{
+my ($certname) = @_;
+foreach my $base ("/etc/letsencrypt", "/usr/local/etc/letsencrypt") {
+	my $conf = &read_file_contents("$base/renewal/$certname.conf");
+	next if (!defined($conf));
+	my ($key_type) = $conf =~ /^\s*key_type\s*=\s*(\S+)/mi;
+	my ($key_size) = $conf =~ /^\s*rsa_key_size\s*=\s*(\d+)/mi;
+	$key_type = lc($key_type) if ($key_type);
+	$key_type ||= 'rsa' if ($key_size);
+	return ($key_type, $key_size);
+	}
+return ();
 }
 
 # cleanup_letsencrypt_files(domain)
