@@ -51,3 +51,4 @@ Webmin 可以两种方法安装：
 ## 许可
 
 Webmin 基于 [BSD 许可](https://github.com/webmin/webmin/blob/master/LICENCE)发布。
+玛咖巴卡
