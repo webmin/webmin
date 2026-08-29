@@ -82,7 +82,7 @@ policy_1=Hedef Bölge
 policy_2=Denetim
 policy_3=Syslog Seviyesi
 policy_4=Trafik Limiti
-policy_limit=Limit $1, Burst $2
+policy_limit=Sınır $1, Ani artış $2
 policy_return=Denetim Listesi
 policy_edit=Standart Denetimi Görüntüle/Değiştir
 policy_create=Yeni Standart Denetim Oluştur
@@ -228,7 +228,7 @@ nat_eint=Hatalı İç IP Adresi
 nat_evirt=Hatalı Sanal Arayüz Numarası
 
 proxyarp_title=Proxy ARP
-proxyarp_desc=This page allows you to configure your system to answer ARP requests for IP addresses other than its own, so that it can forward packets to those addresses to their real destinations.
+proxyarp_desc=Bu sayfa, sisteminizi kendisine ait olmayan IP adresleri için de ARP isteklerine yanıt verecek şekilde yapılandırmanızı sağlar; böylece bu adreslere giden paketleri gerçek hedeflerine iletebilir.
 proxyarp_add=Yeni Proxy ARP Adresi Ekle
 proxyarp_none=Tanımlı herhangi bir proxy ARP adresi bulunmamaktadır.
 proxyarp_0=ARP adresi
@@ -315,7 +315,7 @@ edit_before=$1 numaralı girdi öncesi
 edit_after=$1 numaralı girdi sonrası
 
 blacklist_title=Kara Liste hostları
-blacklist_desc=Bu sayfada ağınıza zararlı içerik göndermek isteyen veya ağınıza zarar vermek isteyen host ve/veya ağları Kara Liste'ye ekleyerek, bu host ve/veya ağların ağınıza erişimini engelleyebilirsiniz.
+blacklist_desc=Bu sayfa, <b>blacklist</b> seçeneği ayarlanmış bir arayüze trafiği ulaştığında engellenecek makineleri ve servisleri listeler.
 blacklist_add=Yeni Kara Liste Hostu Ekle
 blacklist_none=Tanımlı herhangi bir kara liste hostu bulunmamaktadır.
 blacklist_0=Host veya Ağ
