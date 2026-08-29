@@ -8,7 +8,7 @@ index_newservice=Yeni bir internet servisi oluştur
 index_rpc=RPC Programları
 index_newrpc=Yeni bir RPC programı oluştur
 index_apply=Değişiklikleri Uygula
-index_applymsg=Bu butonu tıkladığınızda çalışan inetd işlemine SIGHUP sinyali gönderilerek mevcut yapılandırma uygulanacaktır.
+index_applymsg=Çalışan <tt>inetd</tt> işlemine SIGHUP sinyali göndererek mevcut yapılandırmayı uygulamak için bu butona tıklayın
 
 error_restart=Inetd'nin tekrar başlatılmasında hata oluştu
 error_saverpc=RPC programının kaydedilmesinde hata oluştu

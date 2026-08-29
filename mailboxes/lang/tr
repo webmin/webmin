@@ -71,8 +71,8 @@ mail_efile=Posta dosyası mevcut değil
 mail_fromsrch=Aynı gönderici..
 mail_subsrch=Aynı konu..
 mail_tosrch=Aynı alıcı..
-mail_fromfilter=GÃ¶nderene gÃ¶re filtre oluÅtur
-mail_subfilter=Konuya gÃ¶re filtre oluÅtur
+mail_fromfilter=Gönderene göre filtre oluştur
+mail_subfilter=Konuya göre filtre oluştur
 mail_unknown=Bilinmeyen
 
 mail_sign=Anahtarla işaretle:
@@ -105,7 +105,7 @@ mail_search3=Yukarıdaki skorla bul:
 mail_advanced=Gelişmiş Arama
 mail_return2=Kullanıcı E-postası
 mail_esystem=$1 posta sistemine bağlanırken hata oluştu. Bu hata sistem yöneticisi tarafından düzeltilmelidir.
-mail_selread=SeÃ§in okuyun.
+mail_selread=Seçin okuyun.
 
 view_title=E-posta oku
 view_desc=Mesaj $1, $2'de
@@ -239,13 +239,13 @@ delete_errm=Posta taşıma başarısız
 
 confirm_title=Silmeyi Onayla
 confirm_warn=$1 seçilmiş mesajı silmeyi istiyor musun?
-confirm_warnf=<b>$1</b> klasÃ¶rÃ¼nden seÃ§ilmiÅ $1 adet mesajÄ± silmek istediÄinizden emin misiniz?
+confirm_warnf=<b>$2</b> klasöründen seçilmiş $1 mesajı silmek istediğinizden emin misiniz?
 confirm_warn2=Posta kutusunun boyutu ve biçimi yüzünden, bu biraz zaman alır. Silme bitene kadar, diger uygulamalar calıştırılmamalıdır.
 confirm_warn3=Bu mesajı silmek istediğinizden emin misiniz?
 confirm_warn4=Silme bitene kadar, diger uygulamalar calıştırılmamalıdır.
 confirm_ok=Şimdi Sil
 confirm_warnall=Bu dosyadaki tüm e-postaları silmek istediğinizden emin misiniz?
-confirm_warnallf=<b>$1</b> klasÃ¶rÃ¼ndeki tÃ¼m mesajlarÄ± silmek istediÄinizden emin misiniz?
+confirm_warnallf=<b>$1</b> klasöründeki tüm mesajları silmek istediğinizden emin misiniz?
 
 search_title=Arama sonuçları
 search_ecannot=Bu kullanıcı e-postalarını aramak için izininiz yoktur
@@ -385,11 +385,11 @@ delall_rusure=$1'dan gelen $2 adet, toplamı $3 olan postaları silmek istediği
 delall_ok=Şimdi Sil
 
 left_search=Ara:
-left_folders=KlasÃ¶rleri YÃ¶net
+left_folders=Klasörleri Yönet
 left_addresses=Adres defteri
 left_prefs=Posta Tercihleri
-left_forward=E-postayÄ± YÃ¶nlendir
-left_autoreply=Otomatik yanÄ±t
+left_forward=E-postayı Yönlendir
+left_autoreply=Otomatik yanıt
 left_filter=E-posta Filtreleri
-left_pass=ParolayÄ± DeÄiÅtir
-left_sig=Ä°mza DÃ¼zenle
+left_pass=Parolayı Değiştir
+left_sig=İmza Düzenle

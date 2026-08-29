@@ -107,7 +107,7 @@ cert_done=$1 sertifikası başarı ile oluşturuldu.
 cert_pickup=<a href='$1'>Burayı tıklayarak sertifikayı alınız ve tarayıcınıza kurunuz</a>
 cert_install=Sertifikayı tarayıcı içine kurunuz
 cert_ekey=Yeni SSL anahtarı tarayıcınıza yerleştirilemedi.Tarayıcınız SSL istemci sertifikalarını desteklemiyor olabilir.
-cert_eca=Sertifikanın onaylama kurulumunda hata oluştu
+cert_eca=Sertifika otoritesi kurulamadı : $1
 cert_already=Uyarı- $1 sertifikasını her zaman kullanmaktasınız
 
 acl_title=Modül Erişim Kontrolü
@@ -160,7 +160,7 @@ log_create=Webmin kullanıcısı $1 oluşturuldu.
 log_clone=Webmin kullanıcısı $1, $2'ye kopyalandı.
 log_delete=Webmin kullanıcısı $1 silindi.
 log_acl=$2'de $1 için girişler güncellendi.
-log_reset=Reset access for $1 in $2
+log_reset=$2 içinde $1 için erişim sıfırlandı
 log_cert=$1 kullanıcısı için sertifika yayınlandı.
 log_modify_g=Webmin grubu $1 değiştirildi
 log_rename_g=Webmin grubu $1 , $2 olarak yeniden adlandırıldı
@@ -241,7 +241,7 @@ sessions_login=Giriş saati
 sessions_lview=Kayıtları göster..
 
 hide_title=Kullanılmayan Modülleri Gizle
-hide_desc=Aşağıdaki modüller ilgili sunucular sisteminizde kurulu olmadığından modül erişim listesinden silinecektir ..
+hide_desc=Aşağıdaki modüller, ilgili sunucular sisteminizde kurulu olmadığından $1 kullanıcısının modül erişim listesinden kaldırılacaktır ..
 hide_ok=Modülleri Şimdi Gizle
 hide_none=Gizlenecek birşey yok - $1 sisteminizde kurulmayan sunucularla ilgili modüllerin hiçbirine erişim izini yoktur.
 hide_desc2=İlgili sunucular sisteminize daha sonradan kurulursa modüller otomatik olarak ortaya çıkmayacaktır. Bu modülü kullanarak elle erişim izini vermeniz gerekmektedir.
