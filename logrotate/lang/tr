@@ -1,0 +1,126 @@
+index_title=Günlük Dosyası Döndürme
+index_econf=Günlük döndürme yapılandırma dosyası $1 sisteminizde bulunamadı. logrotate kurulu olmayabilir veya <a href='$2'>modül yapılandırması</a> hatalı olabilir.
+index_ecmd=Günlük döndürme programı $1 sisteminizde bulunamadı. Kurulu olmayabilir veya <a href='$2'>modül yapılandırması</a> hatalı olabilir.
+index_eversion=logrotate sürümü $1 komutuyla alınamadı : $2
+index_version=Logrotate sürüm $1
+index_add=Döndürülecek yeni bir günlük dosyası ekle.
+index_file=Günlük dosyası
+index_period=Döndürme dönemi
+index_post=Döndürme sonrası komut
+index_none=Henüz hiçbir günlük dosyası tanımlanmamış.
+index_global=Genel Seçenekleri Düzenle
+index_globaldesc=Tüm günlük dosyalarına uygulanan ve günlükler için varsayılanları belirleyen ayarları düzenlemek için bu düğmeye tıklayın.
+index_sched=Zamanlamayı Düzenle
+index_scheddesc=logrotate'in Cron tarafından çalıştırıldığı zamanlamayı düzenlemek ya da etkinleştirip devre dışı bırakmak için bu düğmeye tıklayın.
+index_nocmd=Yok
+index_notset=Ayarlanmamış
+index_return=günlük dosyası listesi
+index_force=Günlük Döndürmeyi Zorla
+index_forcedesc=Zamanı gelmemiş olsa bile tüm günlük dosyalarının hemen döndürülmesini zorlayın.
+index_logrotate=Logrotate
+index_delete=Seçilen Günlük Döndürmelerini Sil
+index_vendor=Sağlayıcı yapılandırması
+index_override=Yerel sağlayıcı geçersiz kılması
+
+period_daily=Günlük
+period_weekly=Haftalık
+period_monthly=Aylık
+period_never=Asla
+period_bytes=bayt
+
+edit_title1=Günlük Dosyasını Düzenle
+edit_title2=Günlük Dosyası Oluştur
+edit_header=Döndürülen günlük dosyası ayrıntıları
+edit_file=Günlük dosyası yolları
+edit_sched=Döndürme zamanlaması
+edit_rotate=Saklanacak eski günlük sayısı
+edit_compress=Eski günlük dosyaları sıkıştırılsın mı?
+edit_delaycompress=Sıkıştırma bir sonraki döngüye ertelensin mi?
+edit_copytruncate=Günlük dosyası yerinde kısaltılsın mı?
+edit_ifempty=Günlük dosyası boş olsa bile döndürülsün mü?
+edit_missingok=Günlük dosyası yoksa yoksayılsın mı?
+edit_size=Döndürmeden önceki azami boyut
+edit_always=Yoksayıldı
+edit_minsize=Döndürme için asgari boyut
+edit_nominsize=Her zaman
+edit_ext=Döndürülen dosya adları için uzantı
+edit_dateext=Döndürülen dosyalar için tarih uzantısı kullan
+edit_mail=Silmeden önce günlük dosyası e-postayla gönderilsin mi?
+edit_mailto=Evet, şu adrese
+edit_mailno=Hayır, gönderme
+edit_mailfl=E-postayla gönderilecek günlük dosyası
+edit_mailfirst=Yeni döndürülen en yeni dosya
+edit_maillast=Silinmek üzere olan en eski dosya
+edit_create=Döndürmeden sonra günlük dosyası yeniden oluşturulsun mu?
+edit_createas=Evet, $1 moduyla ve $2 kullanıcısı ile $3 grubuna ait olarak
+edit_createno=Hayır, yeniden oluşturma
+edit_createsame=Evet, eski izinlerle
+edit_olddir=Eski döndürülen günlükleri şurada sakla
+edit_olddirto=Dizin
+edit_olddirsame=Günlük dosyasıyla aynı dizin
+edit_errors=Hata iletilerini şuraya e-postala
+edit_errorsno=Hiç kimseye
+edit_errorsto=Adres veya kullanıcı
+edit_post=Döndürmeden sonra çalıştırılacak komutlar
+edit_pre=Döndürmeden önce çalıştırılacak komutlar
+edit_default=Varsayılan ($1)
+edit_sharedscripts=Betikler tüm dosyalar için yalnızca bir kez mi çalıştırılsın?
+edit_now=Şimdi Döndür
+edit_clone=Kopyala
+edit_vendor=Bu, sağlayıcı tarafından verilen bir yapılandırmadır. Kaydetmek veya silmek önce $1 yerel geçersiz kılmasını oluşturur; <tt>/usr/etc</tt> altındaki dosya değiştirilmez.
+edit_override=Bu yerel yapılandırma, $1 sağlayıcı dosyasını geçersiz kılar.
+
+global_title=Genel Seçenekler
+global_header=Tüm günlük dosyaları için varsayılan seçenekler
+global_vendor=Bu varsayılanlar şu anda sağlayıcı yapılandırmasından geliyor. Kaydetmek önce yazılabilir yerel yapılandırma $1 dosyasını oluşturur; <tt>/usr/etc</tt> altındaki dosya değiştirilmez.
+
+save_err=Günlük kaydedilemedi
+save_eoverride=$1 yerel geçersiz kılması oluşturulamıyor, çünkü bu yol zaten var ve normal bir dosya değil.
+save_ecopy=$1 yerel geçersiz kılması oluşturulamadı: $2
+save_evendorwrite=Önce yerel bir geçersiz kılma oluşturulmadan $1 sağlayıcı yapılandırması değiştirilmeyecek.
+save_efile=Eksik veya geçersiz günlük dosyası adı
+save_esize=Eksik veya geçersiz azami boyut
+save_eminsize=Eksik veya geçersiz asgari boyut
+save_erotate=Saklanacak eksik veya geçersiz azami eski günlük sayısı
+save_ecreatemode=Eksik veya geçersiz 3 ya da 4 basamaklı sekizlik oluşturma modu
+save_ecreateuser=Eksik veya geçersiz oluşturma kullanıcısı
+save_ecreategroup=Eksik veya geçersiz oluşturma grubu
+save_emust1=Bir oluşturma kullanıcısı girerken oluşturma modu da girmelisiniz
+save_emust2=Bir oluşturma grubu girerken oluşturma kullanıcısı da girmelisiniz
+save_eolddirto=Eski döndürülen günlükler için eksik veya geçersiz dizin
+save_eext=Döndürülen günlük dosyası adları için uzantı eksik
+save_emailto=Döndürülen günlükler için e-posta adresi eksik
+save_eerrors=Hata iletileri için e-posta adresi eksik
+save_epre=Döndürme öncesi betik <tt>endscript</tt> veya <tt>endrotate</tt> satırı içeremez
+save_epost=Döndürme sonrası betik <tt>endscript</tt> veya <tt>endrotate</tt> satırı içeremez
+save_enofiles=Döndürülecek hiçbir dosya girilmedi
+
+log_modify_sched=Günlük döndürme Cron işi değiştirildi
+log_create_sched=Günlük döndürme Cron işi oluşturuldu
+log_delete_sched=Günlük döndürme Cron işi silindi
+log_global=Genel seçenekler değiştirildi
+log_create=$1 günlük dosyası için döndürme eklendi
+log_modify=$1 günlük dosyası için döndürme değiştirildi
+log_delete=$1 günlük dosyası için döndürme silindi
+log_delete_logs=$1 günlük dosyası için döndürme silindi
+
+sched_title=Günlük Döndürme Zamanlaması
+sched_desc=Bu modülle yapılandırılan günlük döndürmenin gerçekleşmesi için $1 komutunun Cron tarafından düzenli bir zamanlamayla (genellikle günlük) çalıştırılması gerekir.
+sched_runparts=Şu anda günlük döndürme komutu $1 $2 betiğinden çalıştırılıyor ve ayarlanamaz.
+sched_sched=Günlük döndürme cron işi
+sched_disabled=Devre dışı
+sched_enabled=Etkin, aşağıdaki zamanlarda ..
+sched_save=Cron İşini Güncelle
+sched_err=Döndürme zamanlaması kaydedilemedi
+sched_when=Çalıştırma zamanları
+
+force_title=Günlük Döndürmeyi Zorla
+force_doing=Tüm günlük dosyalarının hemen döndürülmesi zorlanıyor ..
+force_doingone=Bir günlük dosyasının hemen döndürülmesi zorlanıyor ..
+force_done=.. tamamlandı.
+force_failed=.. başarısız oldu! Nedeni için yukarıdaki çıktıya bakın.
+
+delete_err=Günlükler silinemedi
+delete_enone=Hiçbiri seçilmedi
+
+__norefs=1
