@@ -1,0 +1,104 @@
+index_title=LDAP Kullanıcıları ve Grupları
+index_ebase=Sisteminizde hiçbir LDAP istemci yapılandırma dosyası bulunamadı, bu nedenle kullanıcı ve grup tabanları <a href='$1'>modül yapılandırması</a> sayfasından ayarlanmalıdır.
+index_eperl=Bu modülün gereksinim duyduğu $1 Perl modülü kurulu değil veya düzgün çalışmıyor. Şimdi indirilip kurulması için <a href='$2'>buraya tıklayın</a>.
+index_eperl2=Modül yüklenmeye çalışılırken Perl'in bildirdiği hata şuydu :
+index_eldap=$1. <a href='$2'>Modül yapılandırmasını</a> düzenlemek için buraya tıklayın.
+index_eschema=Webmin LDAP sunucusuna bağlandı, ancak şema alınamadı. <a href='$1'>LDAP Sunucusu</a> modülünde erişimin reddedilmediğinden emin olun.
+index_eimap=$1. <a href='$2'>Modül yapılandırmanız</a> hatalı olabilir.
+index_emd5=Bu modül parolalar için MD5 şifrelemesi kullanacak şekilde <a href='$1'>yapılandırılmış</a>, ancak $2 Perl modülü kurulu değil. $2 modülünün indirilip kurulması için <a href='$3'>buraya tıklayın</a>.
+index_eslappasswd=Bu modül parolalar için LDAP MD5 şifrelemesi kullanacak şekilde <a href='$1'>yapılandırılmış</a>, ancak parola şifrelemek için kullanılan <tt>$2</tt> programı kurulu değil.
+index_eusearch=$1 altında kullanıcı aranamadı : $2
+index_uadd=Yeni bir LDAP kullanıcısı ekle.
+index_gadd=Yeni bir LDAP grubu ekle.
+index_unone=$1 altında hiçbir LDAP kullanıcısı bulunamadı.
+index_gnone=$1 altında hiçbir LDAP grubu bulunamadı.
+index_return=kullanıcı listesi
+index_greturn=grup listesi
+index_egsearch=$1 altında grup aranamadı : $2
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=LDAP Kullanıcıları
+index_groups=LDAP Grupları
+
+imap_econn=$1 IMAP sunucusuna bağlanılamadı
+imap_elogin=$1 IMAP sunucusunda $2 olarak oturum açılamadı : $3
+conn_eldap_host=Sisteminizde hiçbir LDAP istemci yapılandırma dosyası bulunamadı, bu nedenle LDAP sunucusu Modül Yapılandırması sayfasından ayarlanmalıdır
+conn_elogin=Sisteminizde hiçbir LDAP istemci yapılandırma dosyası bulunamadı, bu nedenle LDAP oturum açma bilgileri Modül Yapılandırması sayfasından ayarlanmalıdır
+conn_efile_open=LDAP bağlanma kimlik bilgileri dosyası açılamadı:
+
+uedit_cap=Kullanıcı yetenekleri
+uedit_samba=Samba oturum açması?
+uedit_cyrus=IMAP sunucusu oturum açması?
+uedit_dn=Kullanıcının LDAP DN'si
+uedit_classes=LDAP nesne sınıfları
+uedit_alias=Posta takma adları
+uedit_fields=Ek LDAP alanları
+uedit_firstname=Ad
+uedit_lastname=Soyadı
+uedit_raw=LDAP Öznitelikleri
+uedit_return=kullanıcı ayrıntıları
+uedit_quota=IMAP kotası
+uedit_unquota=Değiştirme
+uedit_sambapassopts=Samba Parola Seçenekleri
+uedit_sambapwdlastset=Son Parola Güncellemesi
+uedit_sambapwdcanchange=Parola değiştirilebilir
+uedit_sambabadpasswordcount=Hatalı parola sayısı
+uedit_sambaacctflags=Hesap bayrakları
+
+usave_eadd=Kullanıcı LDAP veritabanına eklenemedi : $1
+usave_emod=Kullanıcı LDAP veritabanında değiştirilemedi : $1
+usave_emoddn=Kullanıcı LDAP veritabanında yeniden adlandırılamadı : $1
+usave_egroupmod=$1 grubu LDAP veritabanında değiştirilemedi : $2
+usave_edelete=Kullanıcı LDAP veritabanından silinemedi : $1
+usave_eicreate=Kullanıcı oluşturulamadı
+usave_eiacl=Yöneticiye yetki verilemedi
+usave_eimap=Kullanıcı LDAP veritabanına başarıyla kaydedildi, ancak bir IMAP hatası oluştu : $1 : $2
+usave_eisub=Kullanıcı $1 klasörüne abone edilemedi
+usave_eiquota=IMAP kotası ayarlanamadı
+usave_eifolder=$1 klasörü oluşturulamadı
+usave_eilogin=Yeni kullanıcı olarak oturum açılamadı
+usave_ecyruspass=IMAP etkinleştirilirken kullanıcının normal parolası girilmeli veya Parola gerekmiyor seçeneği işaretlenmelidir.
+usave_ebook=Adres defteri girdisi oluşturulamadı : $1
+usave_emodbook=Adres defteri girdisi değiştirilemedi : $1
+usave_emodbookdn=Adres defteri girdisi yeniden adlandırılamadı : $1
+usave_egone=Kullanıcı artık mevcut değil!
+usave_ex86=Bu modül, derlenmiş bir x86 programına bağımlı olduğu için Intel dışı sistemlerde Samba kullanıcısının parolasını ayarlamak üzere kullanılamaz.
+usave_esamba=Samba Windows Dosya Paylaşımı modülü kurulu olmadığı için bu modül Samba kullanıcısının parolasını ayarlamak üzere kullanılamaz.
+usave_ealiasdup=$1 takma adı $2 tarafından zaten kullanılıyor
+usave_eattrdup=$1 nesnesi $2 $3 değerini zaten kullanıyor
+usave_eattrdupu=$1 kullanıcısı $2 $3 değerini zaten kullanıyor
+usave_eattrdupg=$1 grubu $2 $3 değerini zaten kullanıyor
+usave_ereal=Gerçek ad eksik
+usave_equota=Eksik veya geçersiz IMAP kotası
+
+search_err=$2 altında $1 araması başarısız oldu : $3
+
+gedit_dn=Grubun LDAP DN'si
+gedit_return=grup ayrıntıları
+gedit_cap=Grup yetenekleri
+gedit_samba=Samba grubu?
+
+gsave_egone=Grup artık mevcut değil!
+gsave_edelete=Grup LDAP veritabanından silinemedi : $1
+gsave_eadd=Grup LDAP veritabanına eklenemedi : $1
+gsave_emod=Grup LDAP veritabanında değiştirilemedi : $1
+gsave_emoddn=Grup LDAP veritabanında yeniden adlandırılamadı : $1
+
+gdel_group=LDAP grup girdisi siliniyor ..
+
+udel_pass=LDAP kullanıcı girdisi siliniyor ..
+udel_book=Adres defterinden siliniyor ..
+udel_imap=IMAP klasörü siliniyor ..
+udel_warnimap=Ev dizini silinirken mevcut posta kutusu da silinecek!
+udel_failed=.. hata oluştu! : $1
+
+raw_title=LDAP Öznitelikleri
+raw_name=Öznitelik adı
+raw_value=Değerler
+raw_for=$1 için
+
+batch_samba=Yeni kullanıcılar için Samba hesabı oluşturulsun mu?
+batch_imap=Yeni kullanıcılar için IMAP hesabı oluşturulsun mu?
+batch_descafter3=<b>create</b> ve <b>modify</b> satırlarında, yeni veya değiştirilen kullanıcılara atanmak üzere <i>ad</i>=<i>değer</i> biçiminde LDAP öznitelikleri içeren ek alanlar ekleyebilirsiniz.
+batch_eattr=$1 satırında geçersiz LDAP özniteliği : $2
+__norefs=1
