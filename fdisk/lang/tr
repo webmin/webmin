@@ -1,4 +1,7 @@
 index_title=Disk Bölümleme Yöneticisi
+index_parted=<tt>parted</tt> kullanılıyor
+index_fdisk=<tt>fdisk</tt> kullanılıyor
+index_ecmd=Bölüm yönetimi için $1 komutunu kullanmayı seçtiniz, ancak bu komut sisteminizde kurulu değil.
 index_err=Disklerin listelenmesinde hata oluştu
 index_disk=Disk
 index_parts=Bölüm
@@ -19,9 +22,28 @@ index_addpri=Birincil disk bölüm ekle
 index_addlog=Mantıksal disk bölümü ekle
 index_addext=Uzatılmış disk bölümü ekle
 index_hdparm=IDE parametrelerini değiştir
+index_hdparmdesc=DMA modu, bekleme zaman aşımı ve okunacak sektör sayısı gibi bir IDE sürücüsüne ait ayarları değiştirin.
+index_smart=SMART durumunu göster
+index_smartdesc=Bu sürücünün bildirdiği, sıcaklık ve hata oranları dâhil durumu görüntüler.
+index_blink=Sürücüyü tanımla
+index_relabel=Bölümleri Sil
+index_relabeldesc=Mevcut tüm bölümleri siler ve farklı bir biçimde yeni bir bölüm tablosu oluşturur.
+index_relabel2=Bölüm Tablosu Oluştur
+index_relabeldesc2=Bölüm eklenebilmesi için bu diskte yeni ve boş bir bölüm tablosu oluşturun.
 index_use=Kullanılan
 index_free=Boş
 index_return=disk listesi
+index_dname=Disk adı
+index_dsize=Toplam boyut
+index_dmodel=Marka ve model
+index_dctrl=Denetleyici
+index_dacts=Eylemler
+index_dhdparm=IDE parametreleri
+index_dsmart=SMART durumu
+index_dscsi=SCSI aygıtı $1 denetleyici $2
+index_draid=RAID düzeyi $1
+index_dparts=Bölümler
+index_none2=Bu sistemde disk bulunamadı.
 
 bytes=byte
 megabytes=megabyte
@@ -44,6 +66,8 @@ select_smart=Compaq Smart Array $1 drive $2
 select_smartpart=Compaq Smart Array $1 drive $2 partition $3
 select_promise=Promise RAID drive $1
 select_ppart=Promise RAID drive $1 partition $2
+select_nvme=NVME SSD $1 sürücü $2
+select_nvmepart=NVME SSD $1 sürücü $2 bölüm $3
 
 edit_title=Bölümü Değiştir
 create_title=Bölüm Oluştur
@@ -65,12 +89,19 @@ edit_mountvm=Sanal bellek olarak bağlanıldı
 edit_umountvm=Sanal bellek olarak bağlamak için
 edit_mountraid=RAID aracı $1'in bölümü
 edit_mountlvm=LVM volume group $1 'in parçası
+edit_mountiscsi=iSCSI paylaşılan aygıtı $1
 edit_notexist=Henüz oluşturulmadı
 edit_notused=Kullanımda değil
 edit_size=Büyüklük
 edit_label=Bölüm etiketi
+edit_name=Bölüm adı
+edit_volid=Birim kimliği
 edit_blocks=$1 blok
 edit_inuse=Bu bölüm kullanımda olduğundan ya da kullanım için yapılandırıldığından değiştirilemez.
+edit_eparted=<tt>parted</tt> komutu kurulu olmadıkça bu bölüm değiştirilemez.
+edit_eparted2=Modül yapılandırmasında yönetim komutu olarak <tt>parted</tt> ayarlanmadıkça bu bölüm değiştirilemez.
+edit_edisk=<tt>parted</tt> komutu kurulu olmadıkça bu disk düzenlenemez.
+edit_edisk2=Modül yapılandırmasında yönetim komutu olarak <tt>parted</tt> ayarlanmadıkça bu disk düzenlenemez.
 edit_mkfs=Yeni dosya sistemi oluştur
 edit_mkfs2=Dosya Sistemi Oluştur:
 edit_mkfsmsg=Bu disk bölümünde yeni bir $1 dosya sistemi oluşturmak mevcut dosyaların silinmesine yol açacaktır. Bu işlemi yeni bir bölüm oluşturduktan ya da mevcut olanı değiştirdikten sonra yapılmalıdır.
@@ -81,8 +112,10 @@ edit_tune=Dosya Sistemi Düzenle
 edit_tunemsg=Mevcut dosya sisteminin farklı parametrelerini değiştirmenize izin verir
 edit_none=Hiçbiri
 edit_newmount=Disk Bölümünü Mount Et
+edit_newmount2=Bölümü Bağla
 edit_mountas=olarak
 edit_mountmsg=Bir disk bölümünü dosya saklama amaçlı olarak kullanmak için sisteminizde bir dizine mount edilmelidir. Bu bölümde dosya sistemi daha önceden oluşturulmuş olmalıdır.
+edit_mountmsg2=Kullanılabilir bellek miktarını artırmak için bu bölümü sisteminizde sanal bellek olarak bağlayın.
 
 mkfs_title=Yeni Dosya Sistemi
 mkfs_ecannot=Bu diskte yeni dosya sistei oluşturmanız izin verilmedi
@@ -154,6 +187,7 @@ ext3_j=Journal dosya boyutu
 
 msdos_ff=FAT'lerin sayısı
 msdos_F=FAT boyutu
+msdos_F_other=Diğer..
 msdos_i=Boyut ID'si
 msdos_n=Boyut ismi
 msdos_r=Kök girişleri
@@ -173,6 +207,12 @@ xfs_b=Blok boyutu
 
 jfs_s=Log boyutu
 jfs_c=Disk hataları kontrol edilsin mi?
+
+btrfs_l=Yaprak boyutu
+btrfs_n=Düğüm boyutu
+btrfs_s=Sektör boyutu
+
+fatx_none=FATX dosya sistemleri için kullanılabilir seçenek yok.
 
 acl_disks=Bu kullanıcı diskleri bölebilir ve biçimlendirebilir
 acl_dall=Bütün diskler
@@ -208,6 +248,10 @@ hdparm_buf1=Tampon önbelleği :
 hdparm_buf2=Ön belleğe alınan:
 hdparm_speedres=Hız testi sonuçları
 
+blink_title=Sürücüyü Tanımla
+blink_desc=Sürücünün etkinlik LED'i şimdi altmış kez yanacak
+blink_back=Geri Dön
+
 log_modify=$1 değiştirildi
 log_create=$1 oluşturuldu
 log_delete=$1 silindi
@@ -222,9 +266,44 @@ fs_msdos=MS-DOS
 fs_vfat=Windows
 fs_reiserfs=ReiserFS
 fs_ext3=New Linux Native
+fs_ext4=Yeni Linux Yerel
 fs_xfs=SGI
 fs_jfs=IBM Journalling
+fs_btrfs=BTR
 
 delete_title=Disk Bölümü Sil
 delete_rusure=$1 ( $2 )'i silmek istediğinizden emin misiniz ? Bu disk bölümdeki veri geri getirilemeyecek şekilde kaybedilebilir.
 delete_ok=Şimdi Sil
+
+disk_title=Disk Bölümlerini Düzenle
+disk_egone=Disk artık mevcut değil!
+disk_no=Numara
+disk_type=Tür
+disk_extent=Aralık
+disk_start=Başlangıç
+disk_end=Bitiş
+disk_use=Kullanan
+disk_free=Boş alan
+disk_vm=Sanal bellek
+disk_iscsi=iSCSI paylaşılan aygıtı $1
+disk_none=Bu diskte henüz bölüm yok.
+disk_size=Boyut
+disk_dsize=<b>Disk boyutu:</b> $1
+disk_model=<b>Marka ve model:</b> $1
+disk_cylinders=<b>Silindirler:</b> $1
+disk_table=<b>Bölüm tablosu biçimi:</b> $1
+disk_notable=<b>Bölüm tablosu biçimi:</b> Oluşturulmadı
+disk_needtable=Bölüm tablosu olmadan hiçbir bölüm oluşturulamaz.
+disk_return=bölüm listesi
+
+relabel_title=Bölümleri Sil
+relabel_warn=Disk etiketini yeniden yazarak $1 ($2) üzerindeki tüm bölümleri silmek istediğinizden emin misiniz? Mevcut tüm veriler ve dosya sistemleri kaybolacaktır!
+relabel_parts=Mevcut bölümler
+relabel_noparts=Henüz oluşturulmadı
+relabel_table=Bölüm tablosu biçimi
+relabel_ok=Sil ve Yeniden Etiketle
+
+table_msdos=MS-DOS (Standart bölüm biçimi)
+table_gpt=GPT (2T ve daha büyük diskler için)
+
+__norefs=1

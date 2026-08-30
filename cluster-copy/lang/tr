@@ -1,0 +1,69 @@
+index_title=Küme Dosya Kopyalama
+index_add=Yeni bir zamanlanmış dosya kopyalaması oluştur.
+index_none=Hiçbir zamanlanmış dosya kopyalaması tanımlanmamış.
+index_servers=Şu sunuculara kopyala
+index_return=küme kopyalama listesi
+index_more=$1 tane daha ..
+index_run=Şimdi&nbsp;çalıştır..
+index_files=Kopyalanacak dosyalar
+index_sched=Zamanlanmış mı?
+index_when=Evet, $1
+index_act=Eylem
+index_exec=Çalıştır
+index_delete=Seçilen Kopyalamaları Sil
+
+edit_title=Küme Kopyalamasını Düzenle
+create_title=Küme Kopyalaması Oluştur
+edit_header=Küme kopyalaması ayrıntıları
+edit_files=Kopyalanacak dosyalar
+edit_dest=Hedef dizin
+edit_cmd=Kopyalamadan sonra çalıştırılacak komut
+edit_before=Kopyalamadan önce çalıştırılacak komut
+edit_remote=Uzak sunucularda
+edit_dmode0=Tam yolları şu dizin altına kopyala
+edit_dmode1=Bu dizine kopyala
+edit_servers=Şu sunuculara kopyala
+edit_group=$1 üyeleri
+edit_this=bu sunucu
+edit_all=&lt;Tüm ana makineler&gt;
+edit_sched=Zamanlamaya göre kopyalansın mı?
+edit_schedyes=Evet, aşağıda seçilen zamanlarda ..
+edit_run=Şimdi Kopyala
+edit_return=küme kopyalaması
+edit_email=Çıktıyı şuraya e-postala
+edit_none=Hiç kimseye
+
+save_err=Küme cron işi kaydedilemedi
+save_efiles=Kopyalanacak hiçbir dosya girilmedi
+save_edest=Hedef dizin eksik
+save_eservers=Kopyalanacak hiçbir sunucu girilmedi
+save_efile=Kopyalanacak '$1' dosyası mutlak bir yol değil
+save_eemail=Eksik veya geçersiz e-posta adresi
+
+exec_title=Dosyalar Kopyalanıyor
+exec_files1=$1 dosya seçilen $2 sunucusuna kopyalanıyor ..
+exec_files2=$1, seçilen $2 sunucusuna kopyalanıyor ..
+exec_under=($1 dizini altında)
+exec_failed=$1 sunucusuna kopyalanamadı : $2
+exec_success=Şu dosyalar $1 sunucusuna kopyalandı :
+exec_made=$1 sunucusunda şu dizinler oluşturuldu :
+exec_nohosts=Üzerinde çalıştırılacak hiçbir ana makine seçilmedi veya seçilen gruplar kullanılabilir ana makine içermiyor.
+exec_nothing=$1 sunucusuna hiçbir dosya başarıyla kopyalanmadı.
+exec_not=Şu dosyalar $1 sunucusuna kopyalanamadı :
+exec_cmd=$1 üzerindeki kopyalama sonrası komut çıktısı :
+exec_before=$1 üzerindeki kopyalama öncesi komut çıktısı :
+exec_on=$1 üzerinde çalıştırılamadı : $2
+
+log_create=$1 için $2 sunucuya kopyalama oluşturuldu
+log_modify=$1 için $2 sunucuya kopyalama değiştirildi
+log_delete=$1 için $2 sunucuya kopyalama silindi
+log_exec=$1, $2 sunucuya kopyalandı
+log_deletes=$1 kopyalama silindi
+
+email_subject_succeeded=$1 küme kopyalaması başarılı oldu
+email_subject_failed=$1 küme kopyalaması başarısız oldu
+
+delete_err=Kopyalamalar silinemedi
+delete_enone=Hiçbiri seçilmedi
+
+__norefs=1

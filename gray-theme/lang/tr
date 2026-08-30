@@ -1,0 +1,79 @@
+left_home=Sistem Bilgileri
+left_search=Ara
+
+right_virtver=Bu tema artık Virtualmin $1 veya üstünü gerektiriyor!
+right_vm2ver=Bu tema artık Cloudmin $1 veya üstünü gerektiriyor!
+right_edit=Bu sayfayı yapılandır
+right_return=sistem bilgileri
+
+vmain_title=$2 üzerinde Virtualmin $1 ($3)
+vmain_title2=Virtualmin
+vmain_title3=Virtualmin $1 ($2)
+mmain_title=$2 üzerinde Cloudmin $1 ($3)
+mmain_title2=Cloudmin
+mmain_title3=Cloudmin $1 ($2)
+
+index_virtualmintitle=Virtualmin $1
+index_cloudmintitle=Cloudmin $1
+index_webmintitle=Webmin $1
+index_usermintitle=Usermin $1
+
+config_section=Yapılandırma kategorisi:
+config_change=Değiştir
+config_return=sistem bilgileri
+config_next=Kaydet ve İleri
+config_nnext=İleri
+config_nprev=Geri
+
+edright_title=Sistem Bilgileri Yapılandırması
+edright_header=Sistem bilgileri sayfası ayarları
+edright_sects=Görünür bilgiler
+edright_list=Varsayılan sağ çerçeve içeriği
+edright_list0=Sistem bilgileri
+edright_list1=Sanal sunucu listesi
+edright_list2=Yönetilen sistemlerin listesi
+edright_alt=Başlangıçtaki sistem bilgileri sayfası içeriği
+edright_altdef=Normal sistem bilgileri
+edright_global=Tüm kullanıcılara uygulansın mı?
+edright_nowebmin=Sol menüde Webmin sekmesi gösterilsin mi?
+edright_others=Yalnızca ana yönetici için
+edright_alturl=URL'yi göster
+edright_err=Sistem bilgileri sayfası yapılandırması kaydedilemedi
+edright_ealt=Eksik veya geçersiz URL
+edright_dom=Varsayılan sanal sunucu
+edright_server=Varsayılan Cloudmin sistemi
+edright_first=&lt;Listedeki ilk&gt;
+edright_qsort=Kota ve bant genişliği kullanımını şuna göre sırala
+edright_qsort1=Sınırın yüzdesi
+edright_qsort0=Kullanılan bayt
+edright_qshow=Kota ve bant genişliği kullanımını şöyle göster
+edright_max=Gösterilecek azami sunucu sayısı
+edright_emax=Azami sunucu sayısı sıfırdan büyük bir sayı olmalıdır
+edright_deftab=Sol menüdeki varsayılan mod
+edright_tab1=Hangisi ilkse
+edright_virtualmin=Virtualmin
+edright_vm2=Cloudmin
+edright_webmin=Webmin
+edright_fsize=Sol çerçeve genişliği
+edright_search=Sol menünün altında arama kutusu gösterilsin mi?
+edright_fsizedef=Otomatik belirle
+edright_pixels=piksel
+edright_efsize=Piksel cinsinden eksik veya geçersiz sol çerçeve genişliği
+edright_ecannot=Bu sayfayı özelleştirme izniniz yok
+
+has_virtualmin=Virtualmin
+has_mail=Posta
+has_vm2=Cloudmin
+has_webmin=Webmin
+has_usermin=Usermin
+
+overlay_title=Temayı Değiştir
+overlay_desc=Bu sayfa, Virtualmin kullanıcı arabiriminin renklerini, simgelerini ve düzenini değiştirebilen farklı bir tema kaplaması seçmenizi sağlar.
+overlay_msg=Tema kaplamasını şununla değiştir:
+overlay_ok=Şimdi Değiştir
+overlay_none=Yok - varsayılan renkleri ve simgeleri kullan
+overlay_refresh=Virtualmin kullanıcı arabirimi yenileniyor ..
+overlay_done=.. tamamlandı
+overlay_euser=Mevcut kullanıcının ayrıntıları alınamadı!
+overlay_webmin=Webmin yapılandırması yeniden yükleniyor ..
+__norefs=1
