@@ -1,5 +1,58 @@
+index_title=NFS Paylaşımları
+index_add=Yeni bir dizin paylaşmaya başla.
+index_dir=Dizin
+index_clients=İstemciler
+index_everyone=Herkes
+index_delete=Seçilen Paylaşımları Sil
+index_none=Şu anda bu sistemde dışa aktarılan dizin yok.
+index_apply=Değişiklikleri Uygula
+index_applydesc=Mevcut dosya paylaşım yapılandırmasını uygulamak için bu butona tıklayın. Bu, yukarıda listelenen tüm dizinleri belirtilen seçeneklerle erişilebilir kılar.
+index_return=paylaşım listesi
+
+edit_title1=Paylaşımı Düzenle
+edit_title2=Paylaşım Oluştur
+edit_header1=Paylaşım ayrıntıları
+edit_dir=Dizin
+edit_desc=Açıklama
+edit_ro=Salt okunur erişim
+edit_rw=Okuma-yazma erişimi
+edit_root=Root erişimi
+edit_none=Yok
+edit_all=Tüm makineler
+edit_listed=Listelenen makineler..
+edit_header2=Paylaşım seçenekleri
+edit_nosub=Alt dizinlerin bağlanmasına izin verilsin mi?
+edit_nosuid=setuid dosyalarına izin verilsin mi?
+edit_des=İstemciler DES kullanmak zorunda mı?
+edit_kerberos=İstemciler kerberos kullanmak zorunda mı?
+edit_anon=Anonim kullanıcı
+edit_anon0=Ayarlanmadı
+edit_anon1=Erişim yok
+edit_aclok=ACL'lere izin verilsin mi?
+edit_public=WebNFS paylaşımı mı?
+edit_index=WebNFS indeks dosyası
+
+save_err=Paylaşım kaydedilemedi
+save_edirectory='$1' geçerli bir dizin adı değil
+save_edirectory2='$1' dizini mevcut değil
+save_erw=Okuma-yazma paylaşımı yapılacak hiç makine listelemediniz
+save_ero=Salt okunur paylaşım yapılacak hiç makine listelemediniz
+save_eroot=root paylaşımı yapılacak hiç makine listelemediniz
+save_ealready='$1' dizini zaten paylaşılıyor
+save_ehost='$1' makinesi mevcut değil
+
 log_modify=NFS paylaşımı $1 değiştirildi
 log_rename=NFS paylaşımı $1, $2'ye değiştirildi
 log_create=NFS paylaşımı $1 oluşturuldu
 log_delete=NFS paylaşımı $1 silindi
 log_apply=Değişiklikler uygulandı
+
+acl_view=NFS paylaşımlarını düzenleyebilir mi?
+
+ecannot=NFS paylaşımlarını yönetme yetkiniz yok
+
+delete_err=Paylaşımlar silinemedi
+delete_enone=Hiçbiri seçilmedi
+
+restart_err=Değişiklikler uygulanamadı
+__norefs=1

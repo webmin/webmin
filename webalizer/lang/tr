@@ -1,5 +1,7 @@
 index_title=Webalizer Log Dosyası Analizi
 index_version=Webalizer verssiyon $1
+index_version_webalizer=Webalizer sürüm $1
+index_version_awffull=AWFFull
 index_ewebalizer=Sisteminizde webalizer komutu bulunamadı.Kurulmamış ş veya , <a href='$2'>module configuration</a> hatalı olabilir.
 index_econf=Webalizer konfigürasyon dosyası bulunamadı.Kurulmamış ş veya , <a href='$2'>module configuration</a> hatalı olabilir.
 index_add=Analiz için yeni bir log dosyası ekle.
@@ -29,7 +31,7 @@ edit_title1=Log Dosyası Ekle
 edit_title2=Log Dosyası Düzenle
 edit_header=Log dosyası rapor seçenekleri
 edit_file=Log dosyayolu
-edit_files=All logfiles in report
+edit_files=Rapordaki tüm günlük dosyaları
 edit_dir=Raporun saklanacağı klasör
 edit_user=Webalizer'in yürütüleceği kullanıcı
 edit_view=Rapor İncele
@@ -110,7 +112,7 @@ global_TopExit=Cıkış sayfaları
 global_TopSearch=Arama motorları
 global_TopUsers=Kullanıcılar
 global_index=Klasör indeks sayfaları
-global_all=Generate pages listing all
+global_all=Tümünü listeleyen sayfalar oluştur
 global_AllSites=Ziyaretçiler
 global_AllURLs=URL
 global_AllReferrers=Yönlendiriciler
@@ -160,3 +162,5 @@ acl_user=Webalizer'in yürütüleceği kullanıcı
 acl_this=Şuanki webmin kullanıcısı
 acl_any=Herhangibir kullanıcı
 acl_add=Analiz için log dosyası ekleyebilir?
+
+__norefs=1

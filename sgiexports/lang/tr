@@ -1,0 +1,41 @@
+index_title=NFS Dışa Aktarımları
+index_add=Yeni bir NFS dışa aktarımı ekle
+index_dir=Dizin
+index_hosts=İzin verilen makineler
+index_all=Tüm makineler
+index_none=Henüz hiç NFS dışa aktarımı tanımlanmamış.
+index_apply=Yapılandırmayı Uygula
+index_applydesc=Yukarıda listelenen tüm dışa aktarımları yapılandırılmış seçenekleriyle etkinleştirmek için bu butona tıklayın.
+index_return=dışa aktarım listesi
+
+edit_title1=Dışa Aktarım Oluştur
+edit_title2=Dışa Aktarımı Düzenle
+edit_header=Dışa aktarım ayrıntıları
+edit_dir=Dışa aktarılacak dizin
+edit_hosts=Şu makinelere/ağ gruplarına aktar
+edit_ro=Salt okunur mu?
+edit_wsync=Yazmalardan sonra eşitlensin mi?
+edit_anon=Root kullanıcısı izinleri
+edit_anon1=Varsayılan (<tt>nobody</tt> olarak değerlendir)
+edit_anon2=Erişimi reddet
+edit_anon0=Şu kullanıcı olarak değerlendir
+edit_rw=Okuma/yazma erişimi
+edit_root=Root dosya erişimi
+edit_access=Bağlama erişimi
+edit_all=Tüm makineler
+edit_sel=Listelenen makineler..
+edit_none=Makine yok
+
+save_err=Dışa aktarım kaydedilemedi
+save_edir=Dışa aktarılacak dizin eksik veya mevcut değil
+save_eanon=root kullanıcısı eksik veya geçersiz
+save_erw=Okuma-yazma makinesi girilmedi
+save_eroot=root dosya erişimi makinesi girilmedi
+save_eaccess=Bağlama erişimi makinesi girilmedi
+
+log_create_export=$1 dışa aktarımı oluşturuldu
+log_delete_export=$1 dışa aktarımı silindi
+log_modify_export=$1 dışa aktarımı değiştirildi
+log_apply=Yapılandırma uygulandı
+
+__norefs=1

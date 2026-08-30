@@ -14,6 +14,8 @@ index_esetup=RedHat ADSL yapılandırma dosyası $1 sisteminizde mevcut değil. 
 index_setup=Yapılandırma dosyasını ayarla
 index_cancel=Bağlantıyı iptal et
 index_canceldesc=ADSL istemcisi bir bağlantı kurmaya çalışıyor. Bu butonu tıkladığınızda bağlantı denemesi $1 komutu ile iptal edilecektir.
+index_cdemand=İstek Üzerine Bağlantıyı İptal Et
+index_cdemanddesc=ADSL istemcisi şu anda istek üzerine bağlantı talebi bekliyor. $1 komutuyla durdurmak için bu butona tıklayın.
 
 index_header=ADSL istemcisi yapılandırma seçenekleri
 index_desc=Aşağıdaki ayarlar sisteminizde başlatılacak olan yeni ADSL bağlantılarına uygulanacaktır. Eğer bunları değiştirirseniz, aktif hale gelmesi için bağlantıyı kapamalı ve yeniden başlatmalısınız.
@@ -62,3 +64,5 @@ log_start=ADSL başladı
 log_bootup=ADSL'in açılışta başlaması açıldı
 log_bootdown=ADSL'in açılışta başlaması kapatıldı
 log_setup=Öntanımlı yapılandırma yapıldı
+
+__norefs=1

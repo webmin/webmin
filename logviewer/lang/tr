@@ -1,0 +1,64 @@
+index_title=Sistem Günlükleri
+index_elogs=<tt>journalctl</tt> komutu sisteminizde kullanılamıyor ve diğer günlükler modül yapılandırmasında gösterilmeyecek şekilde ayarlanmış.
+index_to=Günlük
+index_rule=Açıklama
+index_file=Dosya $1
+index_cmd=$1 çıktısı
+index_return=sistem günlükleri
+index_view=Görüntüle..
+index_viewfile=Günlük dosyasını görüntüle:
+index_viewok=Görüntüle
+
+journal_journalctl=Tüm mesajlar
+journal_expla_journalctl=Açıklamalarıyla birlikte tüm mesajlar
+journal_journalctl_dmesg=Çekirdek mesajları
+journal_journalctl_debug_info=Hata ayıklama ve bilgi mesajları
+journal_journalctl_notice_warning=Bildirim ve uyarı mesajları
+journal_journalctl_err_crit=Hata ve kritik mesajlar
+journal_journalctl_alert_emerg=Alarm ve acil durum mesajları
+journal_journalctl_unit=Belirli bir birime ait mesajlar
+journal_since0=Mevcut en son
+journal_since1=Gerçek zamanlı takip
+journal_since2=Bu açılış
+journal_since2-1=Önceki açılış
+journal_since30=30 gün önce
+journal_since3=7 gün önce
+journal_since4=24 saat önce
+journal_since5=8 saat önce
+journal_since6=1 saat önce
+journal_since7=30 dakika önce
+journal_since8=10 dakika önce
+journal_since9=3 dakika önce
+journal_since10=1 dakika önce
+journal_sincefollow=şu aralıkta
+journal_since=şu tarihten beri
+
+view_title=Günlük Dosyasını Görüntüle
+view_titlejournal=Journal'ı Görüntüle
+view_header=$2 dosyasının son $1 satırı
+view_header2=Son $1 satır
+view_header3=$1 satırları
+view_empty=Günlük dosyası boş
+view_loading=Günlük dosyası izleniyor .. Henüz yeni satır yok.
+view_filter=$1 metnini içeren satırları filtrele
+view_filter_surround=Bağlamıyla birlikte
+view_filter_regex=Düzenli ifade kullan
+view_filter_btn=Filtrele
+
+save_efile='$1' geçerli bir dosya adı değil : $2
+save_ecannot2=Bu günlüğü görüntüleme yetkiniz yok
+save_ecannot3=Hata: Bu günlüğü görüntüleme yetkiniz yok
+save_ecannot4=Hata: '$1' açılamadı
+save_ecannot6=Rastgele günlükleri görüntüleme yetkiniz yok
+save_ecannot7=Bu ek günlüğü görüntüleme yetkiniz yok
+save_emissing=Görüntülenecek günlük dosyası eksik
+
+acl_any=Herhangi bir dosyayı günlük olarak görüntüleyebilir mi?
+acl_logs=Günlük dosyalarını görüntüleyip yapılandırabilir
+acl_all=Tüm günlükler
+acl_sel=Yalnızca listelenen dosyalar ve listelenen dizinler altındakiler ..
+acl_extra=Bu kullanıcı için ek günlük dosyaları
+acl_syslog=syslog günlüklerini görüntüleyebilir mi?
+acl_others=Diğer modüllerin günlüklerini görüntüleyebilir mi?
+
+__norefs=1

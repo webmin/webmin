@@ -20,9 +20,12 @@ inittab_powerokwait=Güç yeniden düzenlendiğinde
 inittab_powerfailnow=Güç düştüğünde
 inittab_ctrlaltdel=Ctrl-Alt-Del
 inittab_kbdrequest=Özel klavye kombinasyonu
+inittab_kbrequest=Özel tuş bileşimi
 inittab_return=inittab indeksi
 inittab_apply=Init Yapılandırmasını Uygula
 inittab_applymsg=Bu butonu tıklayarak mevcut SysV Init Yapılandırmasını <tt>telinit q</tt> komutu ile uygulayabilirsiniz. UYARI: Yapılandırmanızdaki herhangi bir hata sisteminizi kullanılamaz hale getirebilir.
+index_delete=Seçilen Süreçleri Sil
+inittab_none2=Sisteminizde hiç açılış süreci bulunamadı. Bu büyük olasılıkla sistemin SysV init yapılandırma dosyasını kullanmadığını gösterir.
 
 edit_inittab_err=Bir işlemi değiştirmek için izininiz yoktur
 edit_inittab_title=İşlem $1'i Değiştir
@@ -42,5 +45,11 @@ log_rename=Açılış işlemi $1, $1 olarak yeniden isimlendirildi
 log_create=Açılış işlemi $1 oluşturuldu
 log_delete=Açılış işlemi $1 silindi
 log_apply=Yapılandırma uygulandı
+log_deletes=$1 init süreci silindi
 
 apply_err=Yapılandırmanın uygulanmasında hata oluştu
+
+delete_err=Süreçler silinemedi
+delete_enone=Hiçbiri seçilmedi
+
+__norefs=1

@@ -1,4 +1,5 @@
 index_title=Genişletilmiş İnternet Servisleri
+index_none=Henüz hiç ağ servisi tanımlanmamış.
 index_name=Servis adı
 index_type=Tip
 index_port=Port / numara
@@ -20,6 +21,7 @@ index_applymsg=Bu butonu tıklayarak çalışan <tt>xinetd</tt> işlemine SIGUSR
 index_start=Xinetd'yi Başlat
 index_startmsg=Bu butonu tıklayarak Xinetd sunucusunu mevcut yapılandırma ile başlatabilirsiniz
 index_econf=Xinetd yapılandırma dosyası $1 mevcut değil. Kurulmamış ya da <a href='$2'>modül yapılandırmanız</a> yanlış olabilir.
+index_estart=Xinetd'yi başlatma komutu $1 mevcut değil. Kurulu olmayabilir veya <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
 index_noport=Bilinmeyen
 index_enable=Seçilileri Aktive Et
 index_disable=Seçilileri Kapat
@@ -85,8 +87,8 @@ sock_seqpacket=Sequential datagram
 
 proto_=Öntanımlı
 proto_ip=IP (İnternet Protokol)
-proto_tcp=TCP (Transmission Control Protocol)
-proto_udp=UDP (User Datagram Protocol)
+proto_tcp=TCP (İletim Denetim Protokolü)
+proto_udp=UDP (Kullanıcı Veri Bloğu Protokolü)
 
 restart_err=Değişikliklerin uygulanmasında hata oluştu
 restart_ekill=PID $1 'e USR2 sinyali gönderilirken hata oluştu : $2
@@ -133,3 +135,5 @@ log_disable_l=$1 servisleri kapatıldı
 
 config_dirdef=Xinetd yapılandırma dosyası
 config_dirto=Bu dizindeki yeni dosyaya
+
+__norefs=1
