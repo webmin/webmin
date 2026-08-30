@@ -2,8 +2,8 @@ index_title=Webalizer Log Dosyası Analizi
 index_version=Webalizer verssiyon $1
 index_version_webalizer=Webalizer sürüm $1
 index_version_awffull=AWFFull
-index_ewebalizer=Sisteminizde webalizer komutu bulunamadı.Kurulmamış ş veya , <a href='$2'>module configuration</a> hatalı olabilir.
-index_econf=Webalizer konfigürasyon dosyası bulunamadı.Kurulmamış ş veya , <a href='$2'>module configuration</a> hatalı olabilir.
+index_ewebalizer=Günlük dosyası analiz komutu $1 sisteminizde bulunamadı. Kurulu olmayabilir veya <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
+index_econf=Webalizer yapılandırma dosyası $1 sisteminizde bulunamadı. Kurulu olmayabilir veya <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
 index_add=Analiz için yeni bir log dosyası ekle.
 index_path=Log dosyası
 index_type=Tür

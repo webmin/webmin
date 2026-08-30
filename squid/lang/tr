@@ -149,7 +149,7 @@ chown_return=squid indeksi
 
 clear_ecannot=Önbelleği temizleyip yeniden oluşturma yetkiniz yok
 clear_header=Cache'i Temizle ve Tekrar Oluştur
-clear_msgclear=Squid cache'sini silmek ve tekrar oluşturmak istediğinizden emin misiniz?Bunu yaptığınızda Squid'in cache'sindeki <tt>bütün</tt> dosyalar silinecek ve Squid yeniden başlatılacaktır. Bağlantınız geçici olarak kesilebilir.
+clear_msgclear=Squid önbelleğinizi temizleyip yeniden oluşturmak istediğinizden emin misiniz? Bu işlem önbelleğe alınmış <b>tüm</b> dosyaları silecek ve Squid sunucunuzu yeniden başlatacaktır.
 clear_msgclear2=Bu önbelleği bu Webmin sunucusuyla iletişim kurmak için kullanmadığınızdan emin olun; aksi halde önbellek kapatıldığında bağlantınız kesilir.
 clear_buttclear=Squid Kayıtlarını Temizle ve Tekrar Oluştur
 clear_stop=Squid durduruluyor ...

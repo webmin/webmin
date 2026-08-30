@@ -171,7 +171,7 @@ cert_done=$1 sertifikası başarı ile oluşturuldu.
 cert_pickup=<a href='$1'>Burayı tıklayarak sertifikayı alınız ve tarayıcınıza kurunuz</a>
 cert_install=Sertifikayı tarayıcı içine kurunuz
 cert_ekey=Yeni SSL anahtarı tarayıcınıza yerleştirilemedi.Tarayıcınız SSL istemci sertifikalarını desteklemiyor olabilir.
-cert_eca=Sertifikanın onaylama kurulumunda hata oluştu
+cert_eca=Sertifika yetkilisi kurulamadı : $1
 cert_already=Uyarı- $1 sertifikasını her zaman kullanmaktasınız
 cert_etempdir=Geçersiz sertifika dosyası
 
@@ -369,7 +369,7 @@ sessions_kill=Bağlantıyı kes
 logins_title=Son Webmin girişleri
 
 hide_title=Kullanılmayan Modülleri Gizle
-hide_desc=Aşağıdaki modüller ilgili sunucular sisteminizde kurulu olmadığından modül erişim listesinden silinecektir ..
+hide_desc=Aşağıdaki modüller, ilgili sunucular sisteminizde kurulu olmadığından $1 için modül erişim listesinden kaldırılacaktır ..
 hide_ok=Modülleri Şimdi Gizle
 hide_none=Gizlenecek birşey yok - $1 sisteminizde kurulmayan sunucularla ilgili modüllerin hiçbirine erişim izini yoktur.
 hide_desc2=İlgili sunucular sisteminize daha sonradan kurulursa modüller otomatik olarak ortaya çıkmayacaktır. Bu modülü kullanarak elle erişim izini vermeniz gerekmektedir.

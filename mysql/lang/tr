@@ -19,17 +19,17 @@ index_eadmin=MySQL yönetim programı $1 sisteminizde bulunamadı.MySQL yüklenm
 index_esql=MySQL istemci programı $1 sisteminizde bulunamadı. MySQL yüklenmemiş ya da <a href='$2'>modül ayarları</a> doğru olmayabilir
 index_eshow=MySQL durum programı $1 sisteminizde bulunamadı. MySQL kurulu olmayabilir veya <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
 index_estart=MySQL başlatma betiği $1 sisteminizde bulunamadı. MySQL kurulu olmayabilir veya <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
-index_ever=MySQL istemci programı doğru sürüme sahip değil. Webmin sadece MySQL 3 ve daha üzeri sürümleri desteklemektedir.
+index_ever=MySQL istemci programı $1 doğru sürüme sahip görünmüyor. Webmin yalnızca MySQL 3 ve üzeri sürümleri destekler.
 index_nouser=Webmin hesabınız Mysql sunucuya $1 kullanıcısı ile bağlanacak şekilde yapılandırıldı, ama kullanıcının erişimine izin verilmedi.
 index_db=Veritabanı adı
 index_tables=Tablolar
 index_indexes=İndeksler
 index_views=Görünümler
 index_elibrary=MySQL istemci programı $1 çalıştırılamadı, çünkü MySQL paylaştırılmış kütüphaneleri bulunamadı. <a href='$2'>Modül yapılandırmasını</a> kontrol ederek <i>MySQL paylaştırılmış kütüphanelerinin</i> doğru belirtildiğinden emin olunuz.
-index_version=MySQL sürüm $1
+index_version=$2 sürüm $1
 index_version2=$2 üzerinde $3 sürüm $1
-index_nomod=Uyarı : Perl modülü $1 sisteminizde bulunamadı. Yani şu an Webmin, MySQL veritabanına erişebilecek yeteneğe sahip değil. Kurmak için <a href='$2'>Burayı yıklayınız</a> .
-index_nomods=Uyarı: $1 ve $2 perl modülleri sisteminizde kurulmadı. Yani şu an Webmin, MySQL veritabanına erişebilecek yeteneğe sahip değildir. Kurmak için <a href='$3'>burayı tıklayınız</a>
+index_nomod=<tt>$1</tt> Perl modülü sisteminizde kurulu değil, bu nedenle Webmin MySQL veritabanınıza güvenilir biçimde erişemeyecek. Şimdi kurmak için <a href='$2'>buraya tıklayın</a>.
+index_nomods=<tt>$1</tt> ve <tt>$2</tt> Perl modülleri sisteminizde kurulu değil, bu nedenle Webmin MySQL veritabanınıza güvenilir biçimde erişemeyecek. Şimdi kurmak için <a href='$3'>buraya tıklayın</a>.
 index_nomod_manual=<tt>$1</tt> Perl modülü sisteminizde kurulu değil, bu yüzden Webmin MySQL veritabanınıza güvenilir şekilde erişemeyecek. Paket yöneticinizi kullanarak elle kurun.
 index_nomods_manual=<tt>$1</tt> ve <tt>$2</tt> Perl modülleri sisteminizde kurulu değil, bu yüzden Webmin MySQL veritabanınıza güvenilir şekilde erişemeyecek. Paket yöneticinizi kullanarak elle kurun.
 index_mysqlver=<tt>$1</tt> komutu çıktısı :
@@ -589,9 +589,9 @@ log_exec_l=$1 veritabanındaki SQL komutu $2 komutu çalıştırıldı
 log_user_create=Makine $2, kullanıcı $1 için izinler oluşturuldu
 log_user_delete=Makine $2, kullanıcı $1 için izinler silindi
 log_user_modify=Makine $2, kullanıcı $1 için izinler değiştirildi
-log_perm_create=Makine $2, kullanıcı $1, veritabanı için izinler oluşturuldu
-log_perm_delete=Makine $2, kullanıcı $1, veritabanı için izinler silindi
-log_perm_modify=Makine $2, kullanıcı $1, veritabanı için izinler değiştirildi
+log_perm_create=$3 veritabanı, $1 kullanıcısı, $2 ana makinesi için izinler oluşturuldu
+log_perm_delete=$3 veritabanı, $1 kullanıcısı, $2 ana makinesi için izinler silindi
+log_perm_modify=$3 veritabanı, $1 kullanıcısı, $2 ana makinesi için izinler değiştirildi
 log_host_create=Veritabanı $3, makine $2 için izinler oluşturuldu
 log_host_delete=Veritabanı $3, makine $2 için izinler silindi
 log_host_modify=Veritabanı $3, makine $2 için izinler değiştirildi

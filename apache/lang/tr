@@ -247,7 +247,7 @@ htfile_header2=$2 için $1
 
 reconfig_title=Bilinen Modülleri Tekrar Tapılandır
 reconfig_ecannot=Apache'yi tekrar yapılandırmak için izininiz yoktur.
-reconfig_ever=Apache sunucusu çalıştırılabilirinin sürümünün alınmasında hata oluştu. Doğru dosyanın kontrol edilip edilmediğini<a href='$1'>modül yapılandırmasından</a> kontrol edebilirsiniz.
+reconfig_ever=Apache sunucusu çalıştırılabiliri $1 için sürüm bilgisi alınamadı. Bunun doğru yol olduğundan emin olmak için <a href='$2'>modül yapılandırmanızı</a> denetleyin.
 reconfig_desc1=Apache yapılandırmanız değişti ya da Webmin tarafından henüz incelenmedi. Aşağıda Webmin'in desteklediği tüm Apache modülleri listelenmiştir; şu anda kurulu olanlar seçilidir. Liste hatalıysa modülleri seçebilir veya seçimlerini kaldırabilirsiniz.
 reconfig_desc2=Aşağıda Webmin'in desteklediği tüm Apache modülleri listelenmiştir; şu anda kurulu olanlar seçilidir. Dinamik olarak yüklenen modüller kullanıyorsanız, dinamik yüklenenleri seçmeniz gerekebilir.
 reconfig_desc3=Sisteminizdeki Apache'nin hangi modülleri desteklediğinden emin değilseniz doğrudan Yapılandır'a tıklayın; Webmin desteklenen modülleri genellikle otomatik olarak belirleyebilir.
@@ -1026,8 +1026,8 @@ log_filesd=$1 için dosya seçenekleri silindi
 log_filesd_l=$2 dosyasındaki $1 için dosya seçenekleri silindi
 log_filesm=$1 için dosya seçenekleri elle değiştirildi
 log_filesm_l=$2 dosyasındaki $1 için dosya seçenekleri elle değiştirildi
-log_files=$1 için dosya seçenekleri değiştirildi
-log_files_l=$2 dosyasındaki $1 için dosya seçenekleri değiştirildi
+log_files=$2 için dosya seçeneklerinde $1 değiştirildi
+log_files_l=$3 dosyasındaki $2 için dosya seçeneklerinde $1 değiştirildi
 log_mime_modify=MIME tipi $1 değiştirildi
 log_mime_create=MIME tipi $1 eklendi
 log_defines=Tanımlı parametreler değiştirildi

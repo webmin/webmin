@@ -159,10 +159,10 @@ acl_who1=Geçerli Webmin kullanıcısı
 acl_who2=Listelenen kullanıcılar ..
 
 kill_kill=İşlemi Öldür
-kill_term=Yoket  
-kill_hup=Yeniden başlat  
-kill_stop=Durdur    
-kill_cont=Devam  
+kill_term=Yoket
+kill_hup=Yeniden başlat
+kill_stop=Durdur
+kill_cont=Devam
 
 open_title=Açık Dosyalar ve Bağlantılar
 open_proc=$1 işlemi (PID $2)

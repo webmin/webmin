@@ -294,7 +294,7 @@ delete_errm=Posta taşıma başarısız
 
 confirm_title=Silmeyi Onayla
 confirm_warn=$1 seçilmiş mesajı silmeyi istiyor musun?
-confirm_warnf=<b>$1</b> klasÃ¶rÃ¼nden seÃ§ilmiÅ $1 adet mesajÄ± silmek istediÄinizden emin misiniz?
+confirm_warnf=<b>$2</b> klasöründen seçilen $1 iletiyi silmek istediğinizden emin misiniz?
 confirm_warn2=Posta kutusunun boyutu ve biçimi yüzünden, bu biraz zaman alır. Silme bitene kadar, diger uygulamalar calıştırılmamalıdır.
 confirm_warn3=Bu mesajı silmek istediğinizden emin misiniz?
 confirm_warn4=Silme bitene kadar, diger uygulamalar calıştırılmamalıdır.

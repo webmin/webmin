@@ -1,6 +1,6 @@
 index_title=DHCP Sunucusu
 index_key=TSIG anahtarlarını düzenle (DNS sunucularına yapılan güncellemelerin kimlik doğrulaması için kullanılır)
-index_dhcpdnotfound=DHCP sunucusu <i>$1</i> sisteminizde bulunamadı.Kurulmamış ya da <a href="$2">DHCP modül ayarları </a> yanlış olabilir
+index_dhcpdnotfound=DHCP sunucusu <tt>$1</tt> sisteminizde bulunamadı. Kurulu olmayabilir veya <a href="$2">DHCP modül yapılandırmanız</a> hatalı olabilir.
 index_return=indeks
 index_dhcpdver2=DHCP sunucusu <tt>$1</tt> doğru sürümde görünmüyor. Webmin yalnızca ISC DHCPD $2 - $3 sürümlerini destekler.
 index_subtitle=Alt ve Paylaşılmış Ağlar
@@ -143,7 +143,7 @@ none=Hiçbiri
 listl_header=DHCP Gecikmeleri
 listl_network=$1/$2 ağında
 listl_lfnotexist=The DHCPd gecikme dosyası <tt>$1</tt> mevcut değil
-listl_lfnotcont=The DHCPd gecikme dosyası <tt>$1</tt> $2 gecikmeleri içermiyor
+listl_lfnotcont=DHCPd kiralama dosyası <tt>$1</tt> hiçbir kiralama içermiyor.
 listl_lfnotcont2=<tt>$1</tt> DHCPd kiralama dosyası şu anda etkin olan hiçbir kiralama içermiyor.
 listl_active=aktif
 listl_ipaddr=IP Adresi
