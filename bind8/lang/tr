@@ -654,7 +654,7 @@ log_forwarding=Yönlendirme ve transferler değiştirildi
 log_net=Adresler ve topoloji değiştirildi
 log_misc=Çeşitli seçenekler değiştirildi
 log_keys=DNS anahtarları değiştirildi
-log_manual=Elle düzenlenen yapılandırma klasörü
+log_manual=$1 yapılandırma dosyası elle düzenlendi
 log_zonedef=Bölge öntanımlıları değiştirildi
 log_apply=Değişiklikler uygulandı
 log_apply2=Değişiklikler $1'e uygulandı
@@ -806,7 +806,7 @@ add_ename=Eksik ya da geçersiz NS kayıt adı
 add_egname=Bir grup eklenirken bir NS (isim sunucusu) kayıt ismi belirlenemez
 
 mass_title=Toplu İş Dosyasından Bölgeler Oluşturmak
-mass_desc=Bu sayfa, karşı yükleme veya sunucuda bulunan metin dosyasından bir kerede çoklu bölgeler oluşturmanıza izin verir. Dosyadaki her satır şu biçimde olmalıdır:<p><tt><i>alanadı</i>:<i>tip</i>:<i>dosyaadı</i>:<i>ana IP'ler</i></tt><p><i>tip</i> mutlaka <tt>ana</tt>, <tt>bağımlı</tt>, <tt>koçan</tt> ya da <tt>yönlendirme</tt> bunlardan biri olmalıdır. <i>dosyaadı</i> seçmelidir. Eksikse otomatik olarak tanımlanmış olacaktır. Sadece bağımlı bölgeler için <i>ana IP'lerin</i> verilmesi gerekiyor.
+mass_desc=Bu sayfa, karşıya yüklenen veya sunucuda bulunan bir metin dosyasından tek seferde birden çok bölge oluşturmanızı sağlar. Dosyadaki her satır şu biçimde olmalıdır:<p></p><tt><i>alanadı</i>:<i>tip</i>:<i>dosyaadı</i>:<i>ana IP'ler</i></tt><p></p><i>tip</i> mutlaka <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> veya <tt>forward</tt> değerlerinden biri olmalıdır. <i>dosyaadı</i> isteğe bağlıdır, belirtilmezse otomatik olarak hesaplanır. <i>ana IP'ler</i> yalnızca slave bölgeler için verilmelidir.
 mass_local=Yerel toplu iş dosyası
 mass_upload=Karşıdan yüklenen toplu iş dosyası
 mass_text=Toplu iş dosyası metni

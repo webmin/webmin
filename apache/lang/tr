@@ -137,7 +137,7 @@ htfile_edit=Komutları Düzenle
 
 reconfig_title=Bilinen Modülleri Tekrar Tapılandır
 reconfig_ecannot=Apache'yi tekrar yapılandırmak için izininiz yoktur.
-reconfig_ever=Apache sunucusu çalıştırılabilirinin sürümünün alınmasında hata oluştu. Doğru dosyanın kontrol edilip edilmediğini<a href='$1'>modül yapılandırmasından</a> kontrol edebilirsiniz.
+reconfig_ever=$1 Apache sunucusu çalıştırılabilir dosyasının sürümü alınamadı. Doğru yol olduğundan emin olmak için <a href='$2'>modül yapılandırmanızı</a> kontrol edin.
 reconfig_ok=Yapılandır
 
 defines_title=Tanımlanmış Parametreleri Düzenle
@@ -673,8 +673,8 @@ log_filesd=$1 için dosya seçenekleri silindi
 log_filesd_l=$2 dosyasındaki $1 için dosya seçenekleri silindi
 log_filesm=$1 için dosya seçenekleri elle değiştirildi
 log_filesm_l=$2 dosyasındaki $1 için dosya seçenekleri elle değiştirildi
-log_files=$1 için dosya seçenekleri değiştirildi
-log_files_l=$2 dosyasındaki $1 için dosya seçenekleri değiştirildi
+log_files=$2 için dosya seçeneklerinde $1 değiştirildi
+log_files_l=$3 dosyasındaki $2 için dosya seçeneklerinde $1 değiştirildi
 log_mime_modify=MIME tipi $1 değiştirildi
 log_mime_create=MIME tipi $1 eklendi
 log_defines=Tanımlı parametreler değiştirildi

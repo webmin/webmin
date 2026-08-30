@@ -98,7 +98,7 @@ chown_failrestart=Squid'in tekrar başlatılmasında hata oluştu ..
 chown_return=squid indeksi
 
 clear_header=Cache'i Temizle ve Tekrar Oluştur
-clear_msgclear=Squid cache'sini silmek ve tekrar oluşturmak istediğinizden emin misiniz?Bunu yaptığınızda Squid'in cache'sindeki <tt>bütün</tt> dosyalar silinecek ve Squid yeniden başlatılacaktır. Bağlantınız geçici olarak kesilebilir.
+clear_msgclear=Squid önbelleğinizi temizleyip yeniden oluşturmak istediğinizden emin misiniz? Bu işlem önbelleğe alınmış <b>tüm</b> dosyaları silecek ve Squid sunucunuzu yeniden başlatacaktır.
 clear_buttclear=Squid Kayıtlarını Temizle ve Tekrar Oluştur
 clear_stop=Squid durduruluyor ...
 clear_done=.. Bitti

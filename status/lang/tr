@@ -155,7 +155,7 @@ proc_not=Eğer işlem bu durumda ise hata ver
 proc_not0=Çalışmıyor
 proc_not1=Çalışıyor
 proc_ecmd=Komut girilmemiş
-proc_thresh=İşlemin çalışıyor kabul edilebilmesi için kaç tane çalışıyor olması gerekiyor
+proc_thresh=İzleyicinin çalışıyor sayması için<br>var olması gereken işlem sayısı
 proc_ethresh=İşlem sayısı girilmemiş ya da yanlış girilmiş
 
 exec_cmd=Kontrol komutunun çıkış durumu

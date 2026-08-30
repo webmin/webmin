@@ -1,5 +1,5 @@
 index_title=DHCP Sunucusu
-index_dhcpdnotfound=DHCP sunucusu <i>$1</i> sisteminizde bulunamadı.Kurulmamış ya da <a href="$2">DHCP modül ayarları </a> yanlış olabilir
+index_dhcpdnotfound=<tt>$1</tt> DHCP sunucusu sisteminizde bulunamadı. Kurulu olmayabilir veya <a href="$2">DHCP modül yapılandırmanız</a> hatalı olabilir.
 index_return=indeks
 index_subtitle=Alt ve Paylaşılmış Ağlar
 index_nosubdef=Alt ya da paylaşılmış ağ tanımlanmamış
@@ -63,7 +63,7 @@ none=Hiçbiri
 
 listl_header=DHCP Gecikmeleri
 listl_lfnotexist=The DHCPd gecikme dosyası <tt>$1</tt> mevcut değil
-listl_lfnotcont=The DHCPd gecikme dosyası <tt>$1</tt> $2 gecikmeleri içermiyor
+listl_lfnotcont=<tt>$1</tt> DHCPd kiralama dosyası hiçbir kiralama içermiyor.
 listl_active=aktif
 listl_ipaddr=IP Adresi
 listl_ether=Ethernet

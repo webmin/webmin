@@ -297,7 +297,7 @@ sec_rwuser=Okuma/Yazma izinli kullanıcılar
 sec_rwgroup=Okuman/Yazma izinli gruplar
 
 esync_title=Kullanıcı Eşzamanlaması
-esync_msg=Webmin, Unix kullanıcıları listesi değiştiğinde otomatik olarak Samba kullanıcı listesini de değiştirecek şekilde yapılandırılabilir. Bu sadece kullanıcı ekleme, silme ve değiştirme işlemleri <tt>Kullanıcı ve Gruplar</tt> Webmin modülü kullanılarak yapıldığında münkündür.
+esync_msg=Webmin, Unix kullanıcı listesindeki değişikliklerin otomatik olarak Samba kullanıcı listesine uygulanacağı şekilde yapılandırılabilir. Bu yalnızca kullanıcı ekleme, silme veya değiştirme işlemleri <b>Kullanıcılar ve Gruplar</b> Webmin modülüyle yapıldığında çalışır.
 esync_add=Bir Unix kullanıcısı eklendiğinde Samba kullanıcısı ekle
 esync_chg=Bir Unix kullanıcısı değiştirildiğinde Samba kullanıcısı değiştir
 esync_del=Bir Unix kullanıcısı silindiğinde Samab kullanıcısı sil
@@ -390,7 +390,7 @@ swats_fail=Kullanıcı adının kaydedilmesinde hata oluştu
 swats_user=SWAT kullanıcı adı bulunamadı
 
 viewu_index=Mevcut kullanıcılar
-viewu_list=<i>$1</i>'in mevcut kullanıcıları
+viewu_list=$1 için mevcut kullanıcılar
 viewu_share=Paylaşım
 viewu_user=Kullanıcı
 viewu_group=Grup

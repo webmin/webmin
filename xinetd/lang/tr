@@ -85,8 +85,8 @@ sock_seqpacket=Sequential datagram
 
 proto_=Öntanımlı
 proto_ip=IP (İnternet Protokol)
-proto_tcp=TCP (Transmission Control Protocol)
-proto_udp=UDP (User Datagram Protocol)
+proto_tcp=TCP (İletim Denetim Protokolü)
+proto_udp=UDP (Kullanıcı Veri Bloğu Protokolü)
 
 restart_err=Değişikliklerin uygulanmasında hata oluştu
 restart_ekill=PID $1 'e USR2 sinyali gönderilirken hata oluştu : $2
