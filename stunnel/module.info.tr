@@ -1,0 +1,2 @@
+desc_tr=SSL Tünelleri
+longdesc_tr=inetd üzerinden çalıştırılan stunnel ile POP3 ve IMAP gibi hizmetleri şifrelemek için SSL tünelleri kurun.

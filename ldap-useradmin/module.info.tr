@@ -1,0 +1,2 @@
+desc_tr=LDAP Kullanıcıları ve Grupları
+longdesc_tr=Unix, Samba ve Cyrus IMAP kimlik doğrulaması için kullanılan bir LDAP veritabanında saklanan kullanıcıları ve grupları yönetin.

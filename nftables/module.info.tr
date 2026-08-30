@@ -1,0 +1,2 @@
+desc_tr=Linux Güvenlik Duvarı
+longdesc_tr=nftables kullanarak bir Linux güvenlik duvarı yapılandırın. Tabloların, zincirlerin, kümelerin ve kuralların düzenlenmesine olanak tanır.

@@ -1,0 +1,2 @@
+desc_tr=Linux Güvenlik Duvarı (ip6tables)
+longdesc_tr=ip6tables kullanarak bir Linux güvenlik duvarı yapılandırın. Tüm tabloların, zincirlerin, kuralların ve seçeneklerin düzenlenmesine olanak tanır.

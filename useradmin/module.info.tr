@@ -1,1 +1,2 @@
-desc_tr=Kullanıcı ve Gruplar
+desc_tr=Kullanıcılar ve Gruplar
+longdesc_tr=/etc/passwd ve /etc/group dosyalarındaki Unix kullanıcılarını ve gruplarını oluşturun ve düzenleyin.
