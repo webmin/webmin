@@ -48,11 +48,11 @@ return ( );
 sub get_hardware_device
 {
 my ($type, $id) = @_;
-return undef if (!defined($id));
+return if (!defined($id));
 foreach my $device (list_hardware_devices($type)) {
 	return $device if ($device->{'id'} eq $id);
 	}
-return undef;
+return;
 }
 
 # hardware_system_summary([processors])
@@ -128,9 +128,9 @@ return \%summary;
 sub hardware_memtotal
 {
 my $data = hardware_read_file("$hardware_proc_root/meminfo");
-return undef if (!defined($data));
+return if (!defined($data));
 return $1 * 1024 if ($data =~ /^MemTotal:\s+(\d+)\s+kB/im);
-return undef;
+return;
 }
 
 # hardware_secure_boot_status()
@@ -144,7 +144,7 @@ foreach my $entry (hardware_directory_entries($efivars, 1)) {
 	next if (!defined($value) || length($value) < 5);
 	return ord(substr($value, 4, 1)) ? 1 : 0;
 	}
-return undef;
+return;
 }
 
 # list_pci_devices()
@@ -202,7 +202,8 @@ foreach my $id (hardware_directory_entries($root)) {
 		'properties' => $uevent,
 		});
 	}
-return sort { $a->{'id'} cmp $b->{'id'} } @devices;
+my @sorted = sort { $a->{'id'} cmp $b->{'id'} } @devices;
+return @sorted;
 }
 
 # list_usb_devices()
@@ -282,11 +283,12 @@ foreach my $id (@entries) {
 		'properties' => $uevent,
 		});
 	}
-return sort {
+my @sorted = sort {
 	($a->{'bus_number'} || 0) <=> ($b->{'bus_number'} || 0) ||
 	($a->{'device_number'} || 0) <=> ($b->{'device_number'} || 0) ||
 	$a->{'id'} cmp $b->{'id'}
 	} @devices;
+return @sorted;
 }
 
 # list_storage_devices()
@@ -363,7 +365,8 @@ foreach my $id (hardware_directory_entries($root)) {
 		'properties' => $uevent,
 		});
 	}
-return sort { $a->{'id'} cmp $b->{'id'} } @devices;
+my @sorted = sort { $a->{'id'} cmp $b->{'id'} } @devices;
+return @sorted;
 }
 
 # list_network_devices()
@@ -430,8 +433,11 @@ foreach my $id (hardware_directory_entries($root)) {
 		'properties' => $uevent,
 		});
 	}
-return sort { $a->{'id'} eq 'lo' ? -1 :
-	      $b->{'id'} eq 'lo' ? 1 : $a->{'id'} cmp $b->{'id'} } @devices;
+my @sorted = sort {
+	$a->{'id'} eq 'lo' ? -1 :
+	$b->{'id'} eq 'lo' ? 1 : $a->{'id'} cmp $b->{'id'}
+	} @devices;
+return @sorted;
 }
 
 # list_sensor_devices()
@@ -476,8 +482,10 @@ foreach my $hwmon (hardware_directory_entries($root)) {
 			});
 		}
 	}
-return sort { $a->{'chip'} cmp $b->{'chip'} || $a->{'id'} cmp $b->{'id'} }
-	@devices;
+my @sorted = sort {
+		$a->{'chip'} cmp $b->{'chip'} || $a->{'id'} cmp $b->{'id'}
+		} @devices;
+return @sorted;
 }
 
 # hardware_sensor_reading(kind, raw-value)
@@ -485,7 +493,7 @@ return sort { $a->{'chip'} cmp $b->{'chip'} || $a->{'id'} cmp $b->{'id'} }
 sub hardware_sensor_reading
 {
 my ($kind, $raw) = @_;
-return undef if (!defined($raw) || $raw !~ /^-?\d+$/);
+return if (!defined($raw) || $raw !~ /^-?\d+$/);
 my %scale = (
 	'temp' => [ 1000, 'format_celsius' ],
 	'fan' => [ 1, 'format_rpm' ],
@@ -493,7 +501,7 @@ my %scale = (
 	'curr' => [ 1000, 'format_amps' ],
 	'power' => [ 1000000, 'format_watts' ],
 	);
-return undef if (!$scale{$kind});
+return if (!$scale{$kind});
 my $divisor = $scale{$kind}->[0];
 my $half = int($divisor / 2);
 my $scaled = $raw * 100 + ($raw < 0 ? -$half : $half);
@@ -598,7 +606,8 @@ foreach my $record (@records) {
 		});
 	$index++;
 	}
-return sort { $a->{'id'} <=> $b->{'id'} } @devices;
+my @sorted = sort { $a->{'id'} <=> $b->{'id'} } @devices;
+return @sorted;
 }
 
 # hardware_cpu_model(record, shared-record, id)
@@ -638,7 +647,7 @@ return "CPU $id";
 sub hardware_topology_id
 {
 my ($value) = @_;
-return undef if (!defined($value) || $value !~ /^-?\d+$/ || $value < 0);
+return if (!defined($value) || $value !~ /^-?\d+$/ || $value < 0);
 return $value;
 }
 
@@ -647,9 +656,9 @@ return $value;
 sub hardware_kernel_module
 {
 my ($name) = @_;
-return undef if (!defined($name) || $name !~ /^[A-Za-z0-9][A-Za-z0-9_+-]*$/);
+return if (!defined($name) || $name !~ /^[A-Za-z0-9][A-Za-z0-9_+-]*$/);
 my $path = "$hardware_sys_root/module/$name";
-return undef if (!-d $path);
+return if (!-d $path);
 my $module = {
 	'name' => $name,
 	'state' => hardware_read_value("$path/initstate"),
@@ -726,10 +735,10 @@ sub hardware_link_name
 {
 my ($path) = @_;
 my $target = readlink($path);
-return undef if (!defined($target));
+return if (!defined($target));
 $target =~ s{/+$}{};
 return $1 if ($target =~ m{([^/]+)$});
-return undef;
+return;
 }
 
 # hardware_read_uevent(file)
@@ -753,7 +762,7 @@ return \%values;
 sub hardware_read_file
 {
 my ($file) = @_;
-return undef if (!-r $file || -d $file);
+return if (!-r $file || -d $file);
 return read_file_contents($file);
 }
 
@@ -763,7 +772,7 @@ sub hardware_read_value
 {
 my ($file) = @_;
 my $value = hardware_read_file($file);
-return undef if (!defined($value));
+return if (!defined($value));
 $value =~ s/\0//g;
 $value =~ s/^\s+|\s+$//g;
 return $value;
@@ -781,7 +790,8 @@ my @entries = grep {
 	($include_files || -d "$directory/$_")
 	} readdir($dir);
 closedir($dir);
-return sort @entries;
+my @sorted = sort @entries;
+return @sorted;
 }
 
 # hardware_normalize_id(value)
@@ -789,10 +799,10 @@ return sort @entries;
 sub hardware_normalize_id
 {
 my ($value) = @_;
-return undef if (!defined($value));
+return if (!defined($value));
 $value =~ s/^0x//i;
 return lc($value) if ($value =~ /^[0-9a-f]+$/i);
-return undef;
+return;
 }
 
 # hardware_id_label(name, id)
@@ -800,7 +810,7 @@ return undef;
 sub hardware_id_label
 {
 my ($name, $id) = @_;
-return undef if (!defined($id) || $id eq "");
+return if (!defined($id) || $id eq "");
 return defined($name) && $name ne "" ? "$name ($id)" : uc($id);
 }
 
@@ -878,7 +888,7 @@ my @paths = $kind eq 'pci' ?
 foreach my $file (@paths) {
 	return $file if (-r $file);
 	}
-return undef;
+return;
 }
 
 # hardware_pci_class(class-id)
@@ -906,8 +916,7 @@ return $text{"usb_class_$key"} || $text{'usb_class_other'} ||
 sub hardware_chassis_type_name
 {
 my ($type) = @_;
-return undef if (!defined($type) || $type eq "" || $type eq '1' ||
-		 $type eq '2');
+return if (!defined($type) || $type eq "" || $type eq '1' || $type eq '2');
 return $text{"chassis_type_$type"} || text('chassis_type_other', $type)
 	if ($type =~ /^\d+$/);
 return $type;
