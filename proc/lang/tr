@@ -96,7 +96,7 @@ linux_group=Grup
 linux_ruser=Gerçek kullanıcı
 linux_rgroup=Gerçek grup
 linux_pgid=işlem grup numarası
-linux_stime=$stime
+linux_stime=Başlama zamanı
 
 linuxstat_R=Çalışıyor
 linuxstat_S=Uyuyor
@@ -112,14 +112,14 @@ freebsd_ruser=Gerçek kullanıcı
 freebsd_rgroup=Gerçek grup
 freebsd_tty=TTY
 freebsd_pgid=İşlem grubu
-freebsd_stime=$stime
+freebsd_stime=Başlama zamanı
 freebsd_lim=Bellek sınırı
 
 hpux_pri=Öncelik
 hpux_tty=TTY
 hpux_status=Durum
 hpux_wchan=Bekliyor
-hpux_stime=$stime
+hpux_stime=Başlama zamanı
 
 hpuxstat_0=Mevcut değil
 hpuxstat_S=Uyuyor
@@ -137,7 +137,7 @@ sysv_ruser=Gerçek kullanıcı
 sysv_rgroup=Gerçek grup
 sysv_pgid=İşlem grup numarası
 sysv_tty=TTY
-sysv_stime=$stime
+sysv_stime=Başlama zamanı
 sysv_task=Görev kimliği
 sysv_zone=Bölge adı
 
