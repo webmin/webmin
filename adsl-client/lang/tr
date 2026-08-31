@@ -3,7 +3,7 @@ index_eadsl=RP-PPPoE komutu $1 sisteminizde bulunamadı. Kurulmamış ya da <a h
 index_econfig=RP-PPPoE ADSL yapılandırma dosyası $1 sisteminizde bulunamadı. Kurulmamış ya da <a href='$2'>modül yapılandırmanız</a> yanlış olabilir.
 index_emodem=Mevcut yapılandırma dosyası bir ADSL bağlantısı için değil, RedHat Linux üzerindeki bir modeme aittir. <a href='$2'>Modül yapılandırması</a> sayfasından $1'de başka bir <tt>ifcfg-ppp*</tt> dosyası seçebilir, ya da mevcut değilse modülün sizin için oluşturmasını sağlayabilirsiniz.
 index_stop=ADSL'i Kapat
-index_stopdesc=ADSL bağlantınız şu anda $1 IP adresiyle etkin. Bu düğmeye tıkladığınızda bağlantı $2 komutuyla kapatılacaktır.
+index_stopdesc=ADSL bağlantınız $1 IP adresi ile aktif. Bu butona tıkladığınızda bağlantı $2 komutu ile kapatılacaktır.
 index_start=ADSL'i Başlat
 index_startdesc=ADSL bağlantınız aktif değil. Bu butonu tıkladığınızda bağlantı $1 komutu ile başlayacaktır.
 index_boot=Açılışta başlat

@@ -247,7 +247,7 @@ htfile_header2=$2 için $1
 
 reconfig_title=Bilinen Modülleri Tekrar Tapılandır
 reconfig_ecannot=Apache'yi tekrar yapılandırmak için izininiz yoktur.
-reconfig_ever=Apache sunucusu çalıştırılabiliri $1 için sürüm bilgisi alınamadı. Bunun doğru yol olduğundan emin olmak için <a href='$2'>modül yapılandırmanızı</a> denetleyin.
+reconfig_ever=$1 Apache sunucusu çalıştırılabilir dosyasının sürümü alınamadı. Doğru yol olduğundan emin olmak için <a href='$2'>modül yapılandırmanızı</a> kontrol edin.
 reconfig_desc1=Apache yapılandırmanız değişti ya da Webmin tarafından henüz incelenmedi. Aşağıda Webmin'in desteklediği tüm Apache modülleri listelenmiştir; şu anda kurulu olanlar seçilidir. Liste hatalıysa modülleri seçebilir veya seçimlerini kaldırabilirsiniz.
 reconfig_desc2=Aşağıda Webmin'in desteklediği tüm Apache modülleri listelenmiştir; şu anda kurulu olanlar seçilidir. Dinamik olarak yüklenen modüller kullanıyorsanız, dinamik yüklenenleri seçmeniz gerekebilir.
 reconfig_desc3=Sisteminizdeki Apache'nin hangi modülleri desteklediğinden emin değilseniz doğrudan Yapılandır'a tıklayın; Webmin desteklenen modülleri genellikle otomatik olarak belirleyebilir.

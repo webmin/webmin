@@ -532,5 +532,6 @@ forgot_link=The link below can be used to reset the Webmin password for $1 for t
 forgot_enosudo=Sudo is not available on this system!
 forgot_ecansudo=The user entered does not have sudo permissions
 forgot_eunix=The sudo-capable user entered does not exist!
+forgot_sudouser=Reset password for sudo-capable user
 
 __norefs=1

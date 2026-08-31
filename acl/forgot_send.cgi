@@ -19,6 +19,7 @@ $in{'email_def'} || $in{'email'} =~ /^\S+\@\S+$/ ||
 	&error($text{'forgot_eemail'});
 my $unixuser;
 if ($in{'user'} ne $in{'user_acc'}) {
+	# Find the sudo-capable user whose password is being reset
 	&foreign_require("useradmin");
 	my ($uinfo) = grep { $_->{'user'} eq $in{'user'} }
 			   &useradmin::list_users();

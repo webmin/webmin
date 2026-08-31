@@ -1,12 +1,12 @@
 index_title=Sendmail Yapılandırması
 index_econfig=Sendmail yapılandırma dosyası $1 mevcuut değil.Sizin <a href='$2'>modül yapılandırmanız</a> doğru olmayabilir
 index_eversion=Sendmail yapılandırma dosyanızın versiyonu belirlenenden küçük.Webmin sadece Sendmail 8.8 ve üstünü destekler
-index_epath=sendmail çalıştırılabilir dosyası $1 sisteminizde kurulu değil. <a href='$2'>Modül yapılandırmanız</a> hatalı olabilir ya da sendmail kurulu olmayabilir.
+index_epath=$1 sendmail çalıştırılabilir dosyası sisteminizde kurulu değil. <a href='$2'>Modül yapılandırmanız</a> hatalı olabilir veya sendmail kurulu değildir.
 index_return=sendmail yapılandırması
 index_stop=Sendmail'i Durdur
 index_stopmsg=Bu butonu tıklayarak çalışan sendmail işlemini durdurabilirsiniz. Durduğunda diğer sistemlerden yerel kullanıcılara gönderilen postalar duracak ve posta göndermek için posta sunucusu kullanan istemcilerin işlemleri engellenecektir
 index_start=Sendmail'i Çalıştır
-index_startmsg=sendmail'i $1 komutuyla başlatmak için bu düğmeye tıklayın. Bu yapılana kadar diğer sistemlerden yerel kullanıcılara posta teslim edilmeyecek ve istemciler bu sistemi posta sunucusu olarak kullanamayacaktır.
+index_startmsg=sendmail'i $1 komutuyla başlatmak için bu butona tıklayın. Bu yapılana kadar diğer sistemlerden yerel kullanıcılara posta iletilmeyecek ve istemciler bu sistemi posta sunucusu olarak kullanamayacaktır.
 index_version2=Sendmail sürüm $1, yapılandırma $2
 index_xversion=Sendmail sürüm $1
 index_version=Sendmail yapılandırması $1
@@ -181,7 +181,7 @@ masq_eip='$1' bir IP adresidir, alan adı değildir
 trusts_title=Doğrulanmış Kullanıcılar
 trusts_ecannot=Doğrulanmış kullanıcıları değiştirmek için izininiz yoktur
 trusts_users=Sendmail ile doğrulanmış yerel kullanıcılar
-trusts_desc=Yerel bir kullanıcı e-posta göndermeye çalıştığında, sendmail farklı bir <tt>From:</tt> adresi belirtmesine yalnızca kullanıcı aşağıdaki listede yer alıyorsa izin verir. Bu kısıtlama, kullanıcıların sisteminizden sahte <tt>From:</tt> adresleriyle e-posta göndermesini önlemek için vardır.
+trusts_desc=Yerel bir kullanıcı e-posta göndermeye çalıştığında, sendmail yalnızca kullanıcı aşağıdaki listede yer alıyorsa farklı bir <tt>From:</tt> adresi belirtmesine izin verir. Bu kısıtlama, kullanıcıların sisteminizden sahte <tt>From:</tt> adresleriyle e-posta göndermesini engellemek için vardır.
 trusts_err=Doğrulanmış kullanıcıların kaydedilmesinde hata oluştu
 trusts_euser='$1' geçerli bir kullanıcı edı değil
 
@@ -243,9 +243,9 @@ mailers_title=Alan Yönlendirme
 mailers_cannot=Alan yönlendirmeleri değiştirmenize izin verilmemiştir
 mailers_edirective=Sendmail yapılandırma dosyanız alan yöneldirme için gerekli komutları içermiyor
 mailers_efeature=Sendmail yapılandırmanızda alan adı yönlendirme (<tt>mailertable</tt>) özelliği etkin değil. Sendmail özelliklerini ayarlamak için <a href='$1'>buraya tıklayın</a>.
-mailers_efile=Alan adı yönlendirme veritabanı $2 dosyasının oluşturulduğu $1 metin dosyası mevcut değil. Doğru yolu kullanmak için <a href='$3'>modül yapılandırmasını</a> değiştirmeniz gerekebilir.
+mailers_efile=$2 alan yönlendirme veritabanının oluşturulduğu $1 metin dosyası mevcut değil. Doğru yolu kullanmak için <a href='$3'>modül yapılandırmasını</a> değiştirmeniz gerekebilir.
 mailers_desc1=Alan yönlendirmeyi sağlamanın bir yolu da belirli alanlara posta göndermek için özel transfer yöntemi tanımlamaktır. Sisteminiz posta sunucuları için bir ağ geçidi ise ağınıza dışarıdan ulaşılamaz ya da isterseniz diğer sunucudan yönlendirilmiş olan parçalı alan için sistminizi güçlendirebilirsiniz.
-mailers_desc2=Yönlendirilen alan adları için <a href='$1'>yerel alan adları</a> listesinde <b>kesinlikle</b> bir girdi bulunmamalıdır. Ancak sisteminizin ağ geçidi olduğu alan adları için sisteminizi gösteren bir DNS MX kaydınız olmalıdır.
+mailers_desc2=Yönlendirilen alanlar için <a href='$1'>yerel alanlar</a> listesinde <b>kesinlikle</b> bir kayıt bulunmamalıdır. Ancak, ağ geçidi olduğu alanlar için sisteminizi gösteren bir DNS MX kaydınız olmalıdır.
 mailers_desc3=Ayrıca her alan adı için <a href='$1'>aktarma alan adları</a> listesinde bir kayıt bulunmalıdır.
 mailers_for=Posta..
 mailers_delivery=Dağıtıcı
@@ -289,7 +289,7 @@ generics_title=Dışa Giden Adresler
 generics_cannot=Dışa giden adresleri değiştirmeye hakkınız yoktur
 generics_econfig=Sendmail yapılandırma dosyanız dış adres haritalandırması için gerekli komutları içermiyor
 generics_efeature=Sendmail yapılandırmanızda giden adres eşleme (<tt>generics</tt>) özelliği etkin değil. Sendmail özelliklerini ayarlamak için <a href='$1'>buraya tıklayın</a>.
-generics_efile=Giden adres veritabanı $2 dosyasının oluşturulduğu $1 metin dosyası mevcut değil. Doğru yolu kullanmak için <a href='$3'>modül yapılandırmasını</a> değiştirmeniz gerekebilir.
+generics_efile=$2 giden adres veritabanının oluşturulduğu $1 metin dosyası mevcut değil. Doğru yolu kullanmak için <a href='$3'>modül yapılandırmasını</a> değiştirmeniz gerekebilir.
 generics_desc1=Dış adres haritaları sisteminizden ya da yerel ağınızdaki diğer makinelerden gönderilen postaların <tt>From:</tt> adres kısımlarının değiştirilmesine izin verir.
 generics_desc2=<a href='$1'>Dışa alanlar</a> tablosunda olmasını istediğiniz dış haritalandırma için her alanı girmeniz gerekmektedir.Bu dışa adresleme haritalandırması yerel kullanıcılara gönderilmiş olan postalar için çalışmaz
 generics_from=Posta..
@@ -330,7 +330,7 @@ domains_ecannot=Alan haritalandırmasını değiştirmeye izininiz yoktur.
 domains_econfig=Sendmail yapılandırma dosyanız alan haritalandırması için gerekli komutları içermiyor.
 domains_efeature=Sendmail yapılandırmanızda alan adı eşleme (<tt>domaintable</tt>) özelliği etkin değil. Sendmail özelliklerini ayarlamak için <a href='$1'>buraya tıklayın</a>.
 domains_efile=Adres haritalandırma veritabanı $2'nin inşasında kullanılan $1 yaz dosyası mevcut değil.Doğru yolu kullanabilmek için belki de <a href='$3'>modül yapılandırma</a>yı değiştirmeniz gerekmektedir.
-domains_desc=Alan adı eşlemesi; sisteminizden gönderilen, sisteminiz üzerinden aktarılan veya sisteminizdeki kullanıcılara teslim edilen iletilerin <tt>To:</tt> adresini değiştirir. Aktarılan iletilerin ve yerel kullanıcılara giden iletilerin <tt>From:</tt> adresi de değiştirilir. Bu, alan adınız değiştiğinde ve eski alan adının geçtiği tüm yerleri yenisiyle değiştirmek istediğinizde yararlı olabilir.
+domains_desc=Alan eşlemesi; sisteminizden gönderilen, sisteminiz üzerinden aktarılan veya sisteminizdeki kullanıcılara teslim edilen mesajların <tt>To:</tt> adresini değiştirir. Aktarılan mesajların veya yerel kullanıcılara giden mesajların <tt>From:</tt> adresi de değiştirilir. Bu, alan adınız değiştiğinde ve eski alanın geçtiği tüm yerleri yenisiyle değiştirmek istediğinizde kullanışlıdır.
 domains_from=Alandan..
 domains_to=Alana..
 domains_return=alan haritalandırma listesi

@@ -41,7 +41,7 @@ save_inittab_noid=Hata, işlem ismi girilmedi
 save_inittab_already=Hata, işlem ismi her zaman mevcut
 
 log_modify=Açılış işlemi $1 değiştirildi
-log_rename=Açılış süreci $1, $2 olarak yeniden adlandırıldı
+log_rename=$1 açılış işlemi $2 olarak yeniden adlandırıldı
 log_create=Açılış işlemi $1 oluşturuldu
 log_delete=Açılış işlemi $1 silindi
 log_apply=Yapılandırma uygulandı

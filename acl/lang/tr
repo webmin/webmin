@@ -171,7 +171,7 @@ cert_done=$1 sertifikası başarı ile oluşturuldu.
 cert_pickup=<a href='$1'>Burayı tıklayarak sertifikayı alınız ve tarayıcınıza kurunuz</a>
 cert_install=Sertifikayı tarayıcı içine kurunuz
 cert_ekey=Yeni SSL anahtarı tarayıcınıza yerleştirilemedi.Tarayıcınız SSL istemci sertifikalarını desteklemiyor olabilir.
-cert_eca=Sertifika yetkilisi kurulamadı : $1
+cert_eca=Sertifika otoritesi kurulamadı : $1
 cert_already=Uyarı- $1 sertifikasını her zaman kullanmaktasınız
 cert_etempdir=Geçersiz sertifika dosyası
 
@@ -369,7 +369,7 @@ sessions_kill=Bağlantıyı kes
 logins_title=Son Webmin girişleri
 
 hide_title=Kullanılmayan Modülleri Gizle
-hide_desc=Aşağıdaki modüller, ilgili sunucular sisteminizde kurulu olmadığından $1 için modül erişim listesinden kaldırılacaktır ..
+hide_desc=Aşağıdaki modüller, ilgili sunucular sisteminizde kurulu olmadığından $1 kullanıcısının modül erişim listesinden kaldırılacaktır ..
 hide_ok=Modülleri Şimdi Gizle
 hide_none=Gizlenecek birşey yok - $1 sisteminizde kurulmayan sunucularla ilgili modüllerin hiçbirine erişim izini yoktur.
 hide_desc2=İlgili sunucular sisteminize daha sonradan kurulursa modüller otomatik olarak ortaya çıkmayacaktır. Bu modülü kullanarak elle erişim izini vermeniz gerekmektedir.
@@ -532,5 +532,6 @@ forgot_link=Aşağıdaki bağlantı, $1 için Webmin parolasını önümüzdeki 
 forgot_enosudo=Bu sistemde sudo kullanılamıyor!
 forgot_ecansudo=Girilen kullanıcının sudo yetkisi yok
 forgot_eunix=Girilen sudo yetkili kullanıcı mevcut değil!
+forgot_sudouser=sudo yetkisi olan kullanıcının parolasını sıfırla
 
 __norefs=1

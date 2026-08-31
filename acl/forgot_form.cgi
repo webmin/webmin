@@ -21,10 +21,15 @@ print &ui_form_start("forgot_send.cgi", "post");
 print &ui_hidden("user_acc", $u->{'name'});
 print &ui_table_start($text{'forgot_header'}, undef, 2);
 
-print &ui_table_row($text{'forgot_user'},
-	$u->{'name'} eq "root"
-	  ? &ui_textbox("user", $u->{'name'}, 12)
-	  : "<tt>".$u->{'name'}."</tt>");
+if ($u->{'name'} eq "root") {
+	print &ui_table_row($text{'forgot_sudouser'},
+			    &ui_textbox("user", $u->{'name'}, 12));
+	}
+else {
+	print &ui_table_row($text{'forgot_user'},
+			    "<tt>".$u->{'name'}."</tt>");
+	print &ui_hidden("user", $u->{'name'});
+	}
 
 print &ui_table_row($text{'forgot_email'},
 	&ui_opt_textbox("email", $u->{'email'}, 60,
