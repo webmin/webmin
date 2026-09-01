@@ -7,25 +7,12 @@ $p = $ENV{'PATH_INFO'};
 
 # Try to guess type from filename
 if ($p =~ /\.([^\.\/]+)$/) {
-	$ext = lc($1);
-	&get_miniserv_config(\%miniserv);
-	open(MIME, "<$miniserv{'mimetypes'}");
-	while(<MIME>) {
-		s/#.*//g;
-		if (/(\S+)\s+(.*)/) {
-			foreach $e (split(/\s+/, $2)) {
-				if ($ext eq $e) {
-					$type = $1;
-					last;
-					}
-				}
-			}
-		}
-	close(MIME);
+	$type = &guess_mime_type($p);
 	}
 if (!$type) {
 	# No idea .. use the 'file' command
-	if (`file "$p"` =~ /text|script/) {
+	my $out = &backquote_command("file ".quotemeta($p)." 2>/dev/null");
+	if ($out =~ /text|script/) {
 		$type = "text/plain";
 		}
 	else {
