@@ -1,0 +1,2 @@
+desc_tr=Linux Güvenlik Duvarı (iptables)
+longdesc_tr=iptables kullanarak bir Linux güvenlik duvarı yapılandırın. Tüm tabloların, zincirlerin, kuralların ve seçeneklerin düzenlenmesine olanak tanır.

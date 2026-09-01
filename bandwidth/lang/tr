@@ -1,0 +1,91 @@
+index_title=Bant Genişliği İzleme
+index_efiresys=Desteklenen güvenlik duvarlarından (IPtables, IPFW, IPFilter veya Shorewall) hiçbiri sisteminizde algılanmadı. Yapılandırıldıklarından emin olmak için ilgili modülleri denetleyin.
+index_efiresys2=Yapılandırılan $1 güvenlik duvarı sistemi sisteminizde bulunamadı. Doğru güvenlik duvarını kullanmak için <a href='$2'>modül yapılandırmasını</a> düzenleyin.
+index_elog=Bant genişliği günlüğü için kullanılan $1 dosyası sisteminizde aslında bir dizin. Farklı bir yol kullanmak için <a href='$2'>modül yapılandırmasını</a> düzenleyin.
+index_edir=Bant genişliği verilerinin saklanacağı $1 dizini mevcut değil veya bir dizin değil. Farklı bir yol kullanmak için <a href='$2'>modül yapılandırmasını</a> düzenleyin.
+index_emod=Webmin modülü $1 bu sistemde kurulu değil veya işletim sisteminiz tarafından desteklenmiyor. Bant Genişliği İzleme modülü onsuz çalışamaz.
+index_esyslog=Desteklenen sistem günlükleme sistemlerinden (Journald, Rsyslog vb.) hiçbiri kurulu değil ya da işletim sisteminiz tarafından desteklenmiyor. Bu modülün düzgün çalışması için en az biri gereklidir.
+index_firesys=$1, $2 ile kullanılıyor
+index_setupcannot=Ancak bunu kurma izniniz yok!
+index_setupdesc=Bu modül ağ kullanımını raporlayabilmesi için, seçilen ağ arabirimindeki trafiği izleyecek şekilde kurulmalıdır.
+index_setupdesc2=Bu modül, seçilen arabirimde gönderilen veya alınan <em>tüm</em> ağ trafiğini günlüğe kaydeder; bu, hızlı bir ağ bağlantısında çok fazla disk alanı ve işlemci zamanı tüketebilir.
+index_missing3=Sistem günlükleme sistemi için bir yapılandırma girdisiyle birlikte birkaç güvenlik duvarı kuralının eklenmesi gerekiyor.
+index_missing2=Birkaç güvenlik duvarı kuralının eklenmesi gerekiyor.
+index_missing1=Sistem günlükleme sistemi için bir yapılandırma girdisi oluşturulmalıdır.
+index_iface=Seçilen ağ arabirimi
+index_other=Diğer..
+index_setup=Şimdi Kur
+index_by=Trafiği şuna göre göster
+index_hour=saat
+index_host=ana makine
+index_proto=protokol
+index_iport=iç port
+index_oport=dış port
+index_port=port
+index_for=Şuna göre süz
+index_all=&lt;her şey&gt;
+index_forhour=saat..
+index_forhost=ana makine..
+index_forproto=protokol..
+index_foriport=iç port..
+index_foroport=dış port..
+index_search=Rapor Oluştur
+index_none=Bu modül henüz hiçbir trafiği özetlemedi. Yeni kurduysanız, trafiğin işlenmesi en az bir saat sürebilir.
+index_ehour=Geçersiz saat - yyyy-aa-gg ss:dd biçiminde olmalıdır
+index_eport=Bilinmeyen port adı
+index_eproto=Protokol eksik
+index_ehost=Eksik veya geçersiz ana makine
+index_from=Şu tarihten sonraki trafik için
+index_to=Şu tarihten önceki trafik için
+index_efrom=Geçersiz başlangıç tarihi ve saati
+index_eto=Geçersiz bitiş tarihi ve saati
+index_err=Rapor oluşturulamadı
+index_usage=<font color=#0000ff>Gelen</font> ve <font color=#ff0000>Giden</font> ağ trafiği
+index_in=Gelen
+index_out=Giden
+index_total=Toplam
+index_hhour=Saat
+index_hhost=Ana makine
+index_hday=Gün
+index_hproto=Protokol
+index_hiport=Port
+index_hoport=Port
+index_hport=Port
+index_low=Yalnızca sunucu portları mı?
+index_resolv=Ana makine adları çözümlensin mi?
+index_nomatch=Seçilen ölçütlerle eşleşen trafik yok.
+index_turnoff=İzlemeyi Kapat
+index_turnoffdesc=Bant genişliği izleme için kullanılan güvenlik duvarı kurallarını, ilgili sistem günlükleme yapılandırmasını ve Cron işini kaldırmak için bu düğmeye tıklayın. Toplanmış mevcut veriler olduğu gibi kalacaktır.
+index_rotate=İstatistikleri Güncelle
+index_rotatedesc=Günlüğe kaydedilen tüm ağ trafiğini şu ana kadar işleyip raporlamaya hemen hazır hâle getirmek için bu düğmeye tıklayın.
+index_eiptables=Uyarı - IPtables yapılandırmanızda bir hata var : $1. Bant genişliği izlemesini kurmak tüm güvenlik duvarı kurallarını temizleyecektir.
+index_return=rapor formu
+
+log_setup=$1 arabiriminde bant genişliği izleme kuruldu
+log_turnoff=Bant genişliği izleme devre dışı bırakıldı
+log_rotate=İstatistikler güncellendi
+
+acl_setup=İzlemeyi kurup devre dışı bırakabilir mi?
+
+turnoff_ecannot=İzlemeyi devre dışı bırakma izniniz yok
+
+setup_ecannot=İzlemeyi etkinleştirme izniniz yok
+setup_eiface=Eksik veya geçersiz arabirim adı
+setup_ezone=Seçilen arabirim için Shorewall bölgesi bulunamadı
+
+system_firewalld=Firewalld
+system_firewall=IPtables
+system_ipfw=IPFW
+system_ipfilter=IPFilter
+system_shorewall=Shorewall
+
+syslog_journald=Journald
+syslog_syslog=Syslog
+syslog_syslog-ng=Syslog-NG
+
+rotate_title=İstatistikler Güncelleniyor
+rotate_doing=Günlüğe kaydedilen ağ trafiği işleniyor ..
+rotate_done=.. tamamlandı
+rotate_failed=.. başarısız : $1
+
+__norefs=1

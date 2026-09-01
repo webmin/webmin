@@ -1,0 +1,51 @@
+index_title=OpenSLP Yapılandırması
+index_return=OpenSLP yapılandırması
+index_eslpd=OpenSLP arka plan süreci $1 sisteminizde bulunamadı. Kurulu olmayabilir veya <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
+index_econf=OpenSLP yapılandırma dosyası $1 sisteminizde bulunamadı. Kurulu olmayabilir veya <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
+index_version=OpenSLP sürüm $1
+
+slp_apply=Değişiklikleri Uygula
+slp_stop=OpenSLP'yi Durdur
+
+snda_title=Statik Kapsam ve DA
+snda_useScopes=Statik kapsam listesi
+snda_DAAddresses=Statik dizin aracıları (DA) listesi
+
+netcfg_title=Ağ Yapılandırması
+netcfg_isBroadcastOnly=Çoklu yayın yerine yayın kullanılmasını zorla
+netcfg_passiveDADetection=Pasif DA algılamayı kullan
+netcfg_activeDADetection=Etkin DA algılamayı kullan (yalnızca DHCP veya DA adresleriyle sınırla)
+netcfg_DAActiveDiscoveryInterval=Saniye cinsinden etkin keşif (0 etkin keşfi devre dışı bırakır)
+netcfg_multicastTTL=Çoklu yayın TTL (0-255)
+netcfg_DADiscoveryMaximumWait=DA keşif istekleri için en uzun bekleme süresi (milisaniye)
+netcfg_DADiscoveryTimeouts=Ardışık DA keşif bekleme süreleri (milisaniye)
+netcfg_HintsFile=OpenSLP ipucu dosyasının yolu
+netcfg_multicastMaximumWait=Çoklu yayın isteklerinde en uzun bekleme (milisaniye)
+netcfg_multicastTimeouts=Ardışık çoklu yayın bekleme süreleri (milisaniye)
+netcfg_unicastMaximumWait=Tek noktaya yayın istekleri arasındaki en uzun süre (milisaniye)
+netcfg_randomWaitBound=Tüm rastgele bekleme parametreleri için en büyük değer (milisaniye)
+netcfg_MTU=MTU paket boyutu (bayt)
+netcfg_interfaces=DA/SA'nın dinleyeceği arayüzlerin IP adresleri
+
+dacfg_title=DA Yapılandırması
+dacfg_isDA=Yalnızca DA olarak çalış (bunu değiştirmeden önce kullanıcı kılavuzunu okuyun)
+
+log_title=İzleme ve Günlükleme
+log_traceDATraffic=DA trafik mesajlarını yazdır
+log_traceMsg=SLP ayrıntı mesajlarını yazdır
+log_traceDrop=SLP düşürülen mesaj bilgilerini yazdır
+log_traceReg=DA ve SA kayıt ve kayıt silme bilgilerini yazdır
+
+error_open=Dosya açılırken hata
+error_flock_on=Dosya kilidi oluşturulurken hata
+error_flock_off=Dosya kilidi kaldırılırken hata
+error_hup=OpenSLP şu PID ile yeniden başlatılırken hata
+
+index_start=OpenSLP'yi Başlat
+index_startmsg=Sisteminizdeki OpenSLP arka plan sürecini başlatmak için bu butona tıklayın.
+index_stop=OpenSLP'yi Durdur
+index_stopmsg=Sisteminizdeki OpenSLP arka plan sürecini durdurmak için bu butona tıklayın.
+
+stop_err=OpenSLP durdurulamadı
+start_err=OpenSLP başlatılamadı
+__norefs=1

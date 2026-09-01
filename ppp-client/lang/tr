@@ -1,0 +1,106 @@
+index_title=PPP Çevirmeli İstemci
+index_ewvdial=WvDial programı $1 sisteminizde bulunamadı veya geçerli değil. Kurulu olmayabilir ya da <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
+index_init=WvDial yapılandırma dosyası $1 mevcut değil; bu genellikle programın henüz kurulmadığını gösterir. Sisteminize bağlı modemin algılanması ve yapılandırmanın uygun şekilde oluşturulması için aşağıdaki düğmeye tıklayın.
+index_ok=Yapılandırma Oluştur
+index_global=Genel Ayarları Düzenle
+index_globaldesc=Tüm çeviricilere uygulanan yapılandırma seçeneklerini düzenlemek için bu düğmeye tıklayın.
+index_refresh=Yapılandırmayı Yenile
+index_refreshdesc=Bu düğmeye tıklamak, sisteminize bağlı modemin yeniden algılanmasını ve yapılandırmanın güncellenmesini sağlar.
+index_defaults=Varsayılan Ayarlar
+index_dialer=Çevirici $1
+index_none=Henüz hiçbir modem veya çevirici tanımlanmamış.
+index_header=Modemler ve Çeviriciler
+index_dadd=Yeni bir ISS çevirici yapılandırması ekle.
+index_return=modem ve çevirici listesi
+index_version=WvDial sürüm $1
+index_connect=Şununla bağlan:
+index_connectdesc=Seçilen çevirici yapılandırmasını kullanarak bir PPP bağlantısı denemek için bu düğmeye tıklayın.
+index_disc=Bağlantıyı Kes
+index_discdesc1=$2 kullanılarak kurulan PPP bağlantınız şu anda $1 IP adresiyle etkin. Kapatmak için bu düğmeye tıklayın.
+index_discdesc2=Başka bir programla kurulmuş, $1 PID'li bir PPP bağlantısı şu anda etkin. Kapatmak için bu düğmeye tıklayın.
+index_discdesc3=$2 kullanılarak kurulan PPP bağlantınız şu anda etkin. Kapatmak için bu düğmeye tıklayın.
+index_eversion=WvDial sürümünüz $1, ancak bu modül yalnızca $2 ve üzeri sürümleri destekliyor.
+index_out=$1 çıktısı şuydu
+index_boot=Önyüklemede şununla bağlan:
+index_noboot=&lt;Bağlanma&gt;
+index_bootdesc=Seçilen PPP bağlantısının önyükleme sırasında başlatılıp başlatılmayacağını denetlemek için bu seçeneği değiştirin.
+
+init_title=Yapılandırmayı Algıla
+init_cmd=$1 komutuyla bağlı bir modem algılanıyor ..
+init_done=.. tamamlandı
+init_modems=Modemler $1 ve $2 üzerinde yapılandırıldı.
+init_modem=$1 üzerinde bir modem algılandı.
+init_none=Hiçbir modem algılanmadı!
+
+device_serial=seri port $1
+
+connect_title=Bağlantı Kur
+connect_cmd=$1 komutuyla bağlantı kurulmaya çalışılıyor ..
+connect_failed=.. bağlantı başarısız oldu! Nedeni için yukarıdaki çıktıya bakın.
+connect_ip=.. bağlantı $1 IP adresiyle başarıyla kuruldu.
+connect_noip=.. bağlantı başarıyla kuruldu.
+connect_dns=PPP tarafından atanan DNS yapılandırması kullanılıyor.
+connect_dns2=PPP tarafından atanan DNS yapılandırması ayarlandı.
+connect_dnsto=PPP tarafından atanan DNS yapılandırması beklenirken zaman aşımı.
+connect_dnsdown=PPP tarafından atanan DNS yapılandırması beklenirken bağlantı kesilmiş görünüyor.
+
+disc_title=PPP'yi Kapat
+disc_err=PPP bağlantısı kapatılamadı
+disc_edown=Zaten bağlantı kesilmiş
+disc_ok1=$2 kullanılarak kurulan PPP bağlantınız başarıyla kapatıldı.
+disc_ok2=PPP bağlantınız başarıyla kapatıldı.
+disc_dns=Eski DNS yapılandırması geri yüklendi.
+
+edit_title1=ISS Çeviricisi Ekle
+edit_title2=ISS Çeviricisini Düzenle
+edit_ddesc=Bu varsayılan ayarlar, diğer herhangi bir çeviriciyle kurulan bağlantılara uygulanır.
+edit_header=ISS çeviricisi ayarları
+edit_name=Çevirici adı
+edit_phone=Telefon numarası
+edit_user=Şu kullanıcı olarak oturum aç
+edit_pass=Şu parolayla oturum aç
+edit_none=Yok
+edit_other=Alternatif telefon numaraları
+edit_prefix=Çevirme öneki
+edit_stupid=Bağlantıdan hemen sonra PPP başlatılsın mı?
+edit_serial=Modem portu
+edit_modem=Standart modem
+edit_port=Seri port $1
+edit_otherm=Diğer aygıt ..
+edit_baud=Baud hızı
+edit_init=Modem başlatma komutları
+edit_carrier=Modem taşıyıcısı denetlensin mi?
+edit_busy=Meşgulse vazgeçilsin mi?
+edit_dialtone=Çevir sesi yoksa vazgeçilsin mi?
+edit_dial=Çevirme denemeleri
+edit_yd=Varsayılan (Evet)
+edit_nd=Varsayılan (Hayır)
+edit_dns=Atanan DNS sunucuları kullanılsın mı?
+edit_reconnect=Bağlantı kesilirse yeniden bağlanılsın mı?
+edit_idle=Boşta kalma zaman aşımı (saniye)
+edit_def=Varsayılan ayarlardan
+edit_inherits=Ayarları devral
+edit_from=Şu çeviriciden ..
+
+save_err=Çevirici kaydedilemedi
+save_err2=Çevirici silinemedi
+save_ename=Eksik veya geçersiz çevirici adı
+save_ephone=Eksik veya geçersiz telefon numarası
+save_eprefix=Eksik veya geçersiz çevirme öneki
+save_eother=Geçersiz alternatif telefon numarası
+save_eotherm=Var olmayan diğer modem aygıtı
+save_ebaud=Eksik veya geçersiz baud hızı
+save_edial=Eksik veya geçersiz çevirme denemesi sayısı
+save_eidle=Eksik veya geçersiz boşta kalma zaman aşımı
+save_einherits=Bu çevirici silinemez, çünkü '$1' ondan ayar devralıyor.
+save_eclash=Aynı ada sahip bir çevirici zaten var
+
+log_create=$1 oluşturuldu
+log_update=$1 güncellendi
+log_delete=$1 silindi
+log_init=Yapılandırma ilklendirildi veya yenilendi
+log_connect=$1 ile bağlanıldı
+log_fail=$1 ile bağlanılamadı
+log_disconnect=$1 bağlantısı kesildi
+
+__norefs=1

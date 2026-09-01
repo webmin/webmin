@@ -1,0 +1,22 @@
+edit_mins=Dakikalar
+edit_hours=Saatler
+edit_days=Günler
+edit_months=Aylar
+edit_weekdays=Hafta günleri
+edit_all=Tümü
+edit_selected=Seçilenler ..
+edit_run=Şimdi Çalıştır
+edit_clone=İşi Kopyala
+edit_return=cron işi
+edit_special1=Basit zamanlama
+edit_special0=Aşağıda seçilen zamanlar ve tarihler ..
+edit_special_hourly=Saatlik
+edit_special_daily=Günlük (gece yarısı)
+edit_special_weekly=Haftalık (Pazar günü)
+edit_special_monthly=Aylık (ayın 1'inde)
+edit_special_yearly=Yıllık (1 Ocak'ta)
+
+log_success=<tt>$1</tt> içindeki <tt>$2</tt> başarıyla çalıştırıldı
+log_failure=<tt>$1</tt> içindeki <tt>$2</tt> çalıştırılamadı : $3
+
+__norefs=1

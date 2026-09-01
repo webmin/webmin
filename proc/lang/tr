@@ -5,8 +5,20 @@ index_user=Kullanıcı
 index_size=Bellek
 index_cpu=İşlemci
 index_search=Bul
+index_zone=Bölge
 index_run=Çalıştır..
 index_return=işlem listesi
+index_memreal=Gerçek bellek:
+index_memswap=Takas alanı:
+index_memburst=Esnek bellek:
+index_memtf=toplam $1 / boş $2
+index_memtfc=toplam $1 / boş $2 / önbellekte $3
+index_loadname=CPU yük ortalamaları:
+index_loadnums=$1 (1 dk) , $2 (5 dk) , $3 (15 dk)
+index_cpuname=CPU türü:
+index_inzone=$1 bölgesinde
+index_core=$1 çekirdek
+index_cores=$1 çekirdek
 
 pid=İşlem numarası
 owner=Sahibi
@@ -17,10 +29,13 @@ parent=Ana işlem
 runtime=Çalışma süresi
 nice=Öncelik seviyesi
 stime=Başlama zamanı
+sclass=G/Ç zamanlama sınıfı
+sprio=G/Ç önceliği
 
 search_user=Sahibi
 search_match=Eşleşen
 search_cpupc=% $1 'den fazla CPU kullanan
+search_cpupc2=Şundan fazla CPU kullanan
 search_fs=Kullanılan dosya sistemi
 search_files=Kullanılan dosya
 search_submit=Bul
@@ -31,6 +46,7 @@ search_sigterm=İşlemleri Yoket
 search_sigkill=İşlemleri Öldür
 search_port=Kullanılan port
 search_protocol=protokol
+search_ip=Şu IP adresini kullanan
 
 run_command=Çalıştırılacak komut
 run_submit=Çalıştır
@@ -42,10 +58,15 @@ run_title=Komut çıktısı
 run_output=$1'in çıktısı ..
 run_none=Çıktı oluşturulmadı
 run_ecannot=Komut çalıştırmak için izininiz yoktur
+run_as=Şu kullanıcı olarak çalıştır
+run_euser=Kullanıcı adı eksik veya geçersiz
+run_euser2=Seçilen kullanıcı olarak komut çalıştırma yetkiniz yok
 
 edit_title=İşlem bilgisi
 edit_gone=Bu işlem artık çalışmıyor
 edit_sub=Alt işlemler
+edit_subid=Kimlik
+edit_subcmd=Alt süreç komutu
 edit_prilow=Düşük öncelik
 edit_prihigh=Yüksek öncelik
 edit_pridef=Öntanımlı
@@ -75,7 +96,7 @@ linux_group=Grup
 linux_ruser=Gerçek kullanıcı
 linux_rgroup=Gerçek grup
 linux_pgid=işlem grup numarası
-linux_stime=$stime
+linux_stime=Başlama zamanı
 
 linuxstat_R=Çalışıyor
 linuxstat_S=Uyuyor
@@ -83,18 +104,22 @@ linuxstat_D=Derin uyuyor
 linuxstat_T=Durduruldu
 linuxstat_Z=Zombi
 
+linux_real=Gerçek zaman
+linux_be=En iyi çaba
+linux_idle=Boşta
+
 freebsd_ruser=Gerçek kullanıcı
 freebsd_rgroup=Gerçek grup
 freebsd_tty=TTY
 freebsd_pgid=İşlem grubu
-freebsd_stime=$stime
+freebsd_stime=Başlama zamanı
 freebsd_lim=Bellek sınırı
 
 hpux_pri=Öncelik
 hpux_tty=TTY
 hpux_status=Durum
 hpux_wchan=Bekliyor
-hpux_stime=$stime
+hpux_stime=Başlama zamanı
 
 hpuxstat_0=Mevcut değil
 hpuxstat_S=Uyuyor
@@ -112,25 +137,32 @@ sysv_ruser=Gerçek kullanıcı
 sysv_rgroup=Gerçek grup
 sysv_pgid=İşlem grup numarası
 sysv_tty=TTY
-sysv_stime=$stime
+sysv_stime=Başlama zamanı
+sysv_task=Görev kimliği
+sysv_zone=Bölge adı
 
 log_run="$1" komutunu çalıştır
 log_kill=$2 işlemine $1 sinyali gönderildi
 log_kills=$2 işlemlerine $1 sinyali gönderildi
 log_kill_l=$2 işlemine $1 sinyali gönderildi
 log_kills_l=$2<br>işlemine $1 sinyali gönderildi
+log_renice=$2 sürecinin önceliği $1 olarak değiştirildi
 
 acl_manage=İşlemleri bu kullanıcı olarak yönet
 acl_manage_def=Mevcut Webmin kullanıcısı
 acl_edit=İşlemleri öldürebilir ve önceliğini değiştirebilir mi?
 acl_run=Komut çalıştırabilir mi?
 acl_only=Sadece kendi işlemlerini görebilsin?
+acl_who=Şu kullanıcılar için süreçleri yönetebilir
+acl_who0=Tüm kullanıcılar
+acl_who1=Geçerli Webmin kullanıcısı
+acl_who2=Listelenen kullanıcılar ..
 
 kill_kill=İşlemi Öldür
-kill_term=Yoket  
-kill_hup=Yeniden başlat  
-kill_stop=Durdur    
-kill_cont=Devam  
+kill_term=Yoket
+kill_hup=Yeniden başlat
+kill_stop=Durdur
+kill_cont=Devam
 
 open_title=Açık Dosyalar ve Bağlantılar
 open_proc=$1 işlemi (PID $2)
@@ -142,6 +174,7 @@ open_desc=Ayrıntılar
 open_fd=Dosya Açıklayıcısı
 open_listen1=$1 portunu dinliyor
 open_listen2=$1 adresinde $2 numaralı portu dinliyor
+open_recv=$1:$2 üzerinde alınıyor
 open_conn=$1 'den $2 'ye $3 durumunde bağlandı
 open_cwd=Mevcut dizin
 open_rtd=Root dizini
@@ -157,9 +190,20 @@ open_file=Yol
 
 trace_title=İşlemleri İzle
 trace_start=$1 için sistem çağrısının izlenmesi başlıyor ..
+trace_doing=$1 için sistem çağrısı izlemesi :
 trace_done=.. işlem yokedildi.
 trace_failed=.. izlemede hata oldu!
 trace_sorry=Bu sayfa tarayıcınızda Java desteğine ihtiyaç duymaktadır. Metin tabanlı izlemeyi kullanmak için modül yapılandırmasını değiştirmelisiniz.
 trace_syscalls=Sistem çağrılarını takip et:
 trace_all=Hepsi
 trace_sel=Listeli..
+
+windows_threads=Süreçteki iş parçacıkları
+
+syslog_dmesg=Çekirdek mesajları
+
+proc_kill=Sinyal Gönder
+proc_submit=Ayarla
+proc_filter=Filtrele
+
+__norefs=1

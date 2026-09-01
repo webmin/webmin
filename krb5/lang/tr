@@ -1,0 +1,18 @@
+index_title=Kerberos5 Yapılandırması
+index_econf=Kerberos5 yapılandırma dosyası $1 sisteminizde bulunamadı. Kurulu olmayabilir veya <a href='$2'>modül yapılandırması</a> hatalı olabilir.
+
+logging=Günlük dosyaları
+default_log=Varsayılan günlük dosyası
+kdc_log=KDC günlük dosyası
+admin_log=Yönetim sunucusu günlük dosyası
+
+libdefaults=Varsayılan Yapılandırma
+dns_kdc=KDC aramak için DNS kullan
+default_realm=Realm
+domain=Alan adı
+default_kdc=KDC
+default_admin=Yönetim sunucusu
+default_domain=Varsayılan alan adı
+
+save=Yapılandırmayı Güncelle
+__norefs=1

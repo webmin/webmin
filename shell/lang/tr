@@ -1,0 +1,20 @@
+index_title=Komut Kabuğu
+index_ok=Komutu çalıştır:
+index_history=Komut geçmişi
+index_clear=Geçmişi temizle
+index_clearcmds=Komutları temizle
+index_desc=Aşağıdaki metin alanına çalıştırılacak bir kabuk komutu girin. Sonraki komutlar için dizin değiştirmek üzere <tt>cd</tt> komutu kullanılabilir.
+index_pok=Önceki komutu çalıştır
+index_edit=Öncekini düzenle
+index_trunced=$2 komutunun toplam çıktısı $1 boyutunda kesildi.
+index_timedout=Komut $1 saniye çalıştıktan sonra sonlandırıldı.
+
+acl_user=Komutları şu kullanıcı olarak çalıştır
+acl_user_def=Geçerli Webmin kullanıcısı
+acl_shellenv=Seçilen kullanıcının ortamı kullanılsın mı?
+acl_chroot=Şu dizine chroot uygula
+
+log_run=$1 komutu çalıştırıldı
+log_clear=Komut geçmişi temizlendi
+
+__norefs=1

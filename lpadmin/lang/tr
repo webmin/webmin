@@ -21,6 +21,9 @@ index_restartmsg=Bu butonu tıklayarak yazıcı zamanlandırıcısını yeniden 
 index_return=yazıcı listesi
 index_esystem=Ya yazıcı sistemini sisteminize kurunuz ya da <a href='$1'>modül yapılandırmasını</a> kullanarak değiştiriniz.
 index_style=$1 Kullanılıyor
+index_cluster=Küme Sunucuları
+index_clusterdesc=Yazıcıların oluşturulacağı, güncelleneceği ve silineceği ek Webmin sunucularını ayarlamak için bu butona tıklayın.
+index_delete=Seçilen Yazıcıları Sil
 
 style_solaris=Solaris
 style_linux=Linux LPR
@@ -95,6 +98,10 @@ save_erqueue='$1' geçerli bir uzak kuyruk ismi değil
 save_eremote=Sürücüler uzak Unix yazıcıları ile kullanılamazlar
 save_edhost=Makine '$1' mevcut değil
 save_edport=Kayıp ya da yanlış doğrudan port
+save_evalid=Yazdırma sistemi bu yazıcıya izin vermedi
+save_errslave=Yazıcı bu sistemde başarıyla oluşturuldu, ancak küme sistemlerinde şu hatalar oluştu : $1
+save_egone='$1' adında yazıcı bulunamadı
+save_errdelslave=Yazıcı bu sistemde başarıyla silindi, ancak küme sistemlerinde şu hatalar oluştu : $1
 
 jobs_title=Yazma İşleri
 jobs_header=$1'deki Yazma İşleri
@@ -109,6 +116,9 @@ jobs_none=$1'de yazma işi bulunamadı
 jobs_all=Bütün yazma işlemleri iptal et
 jobs_bytes=byte
 jobs_test=Deneme Sayfası Yazdır
+jobs_cancelsel=Seçilen İşleri İptal Et
+jobs_on=$1 yazıcısında
+jobs_return=yazdırma işleri listesi
 
 cancel_ecannot=Yazma işlerini durdurmaya izininiz yoktur
 cancel_err=Yazma işinin durdurulmasında hata oluştu
@@ -202,12 +212,15 @@ acl_test=Test sayfaları yazdırabilir mi?
 acl_user=Hangi kullanıcıların yazıcı işleri yönetilsin
 acl_user_all=Bütün kullanıcılar
 acl_user_this=Mevcut Webmin kullanıcısı
+acl_delete=Yazıcı silebilir mi?
+acl_cluster=Yazıcı kümesini yönetebilir mi?
 
 log_stop=Yazıcı planlayıcısı durduruldu
 log_start=Yazıcı planlayıcısı çalıştırıldı
 log_restart=Yazıcı zamanlayıcısı yeniden başlatıldı
 log_cancel_job=$1'deki yazım işi $2 iptal edildi
 log_cancel_all=$1'deki bütün yazım işleri iptal edildi
+log_cancel_sel=$1 üzerinde $2 yazdırma işi iptal edildi
 log_create=$2'de $1 yazıcısı oluşturuldu
 log_modify=$2'de $1 yazıcısı değiştirildi
 log_delete=$2'de $1 yazıcısı silindi
@@ -279,3 +292,27 @@ irix_eiface=Arayüz script dizini $1 sisteminizde bulunamadı. Bu IRIX yazıcı 
 aix_port=Yazıcı portu $1
 aix_edesc=Geçersiz açıklama - sadece harfler ve rakamlar izin verilmiştir, boşluk kabul edilmemektedir.
 aix_ecmd=AIX yazıcı sunucusu $1 bulunamadı. Kurulmamış ya da başka bir yazıcı sistemi kullanılıyor olabilir.
+
+cluster_title=Küme Yazıcı Sunucuları
+cluster_none=Yazıcı kümesine henüz hiç sunucu eklenmemiş.
+cluster_host=Makine adı
+cluster_desc=Açıklama
+cluster_os=İşletim sistemi
+cluster_add=Sunucu ekle
+cluster_gadd=Gruptaki sunucuları ekle
+cluster_need=Burada yönetilebilmeleri için önce Webmin Sunucuları Dizini modülünde kullanıcı adı ve parolayla sunucu eklemelisiniz.
+cluster_return=küme sunucuları
+cluster_delete=Seçilenleri Kaldır
+cluster_ecannot=Küme yazıcı sunucularını yönetme yetkiniz yok
+
+add_title=Sunucu Ekle
+add_msg=$1 ekleniyor ..
+add_gmsg=$1 grubundaki sunucular ekleniyor ..
+add_err=Sunucu eklenemedi
+add_gerr=Grup eklenemedi
+add_echeck=$1 sunucusunda Yazıcı Yönetimi modülü yok
+add_ediff=$1 sunucusu bu sunucudan farklı bir yazdırma sistemi ($2) kullanıyor
+add_ediff2=$1 sunucusu bu sunucudan farklı bir yazdırma sürücüsü ($2) kullanıyor
+add_ok=$1, $2 yazıcı ile eklendi.
+
+__norefs=1

@@ -12,11 +12,15 @@ index_eaccess=Hiçbir dizine erişim yetkiniz yok!
 index_search=Şu dizin altında var olan korumalı dizinleri bul:
 index_md5=Modül yapılandırmasında MD5 şifrelemesi etkin, ancak bunun için gereken $1 Perl modülü kurulu değil.
 index_sha1=Modül yapılandırmasında SHA1 şifrelemesi etkin, ancak bunun için gereken $1 Perl modülü kurulu değil.
+index_digest2=Modül yapılandırmasında Digest şifrelemesi etkin, ancak bunun için gereken $1 komutu veya $2 Perl modülü kurulu değil.
 index_cpan=Şimdi indirip kurmak için <a href='$1'>buraya tıklayın</a>.
+index_delete=Seçilen Dizinlerin Korumasını Kaldır
+index_remove=Korumayı Kaldır ve Dosyaları Sil
 
 dir_title1=Korumalı Dizin Ekle
 dir_title2=Korumalı Dizini Düzenle
 dir_header=Korumalı dizin seçenekleri
+dir_header2=Kullanıcı eşitleme seçenekleri
 dir_dir=Dizin yolu
 dir_file=Kullanıcıları içeren dosya
 dir_gfile=Grupları içeren dosya
@@ -33,6 +37,9 @@ dir_err=Dizin kaydedilemedi
 dir_eclash=Bu dizin zaten korumalı
 dir_edir=Dizin eksik veya geçersiz
 dir_ecannot=Bu dizini koruma yetkiniz yok
+dir_ecannotcreate=Hangi dizinlerin korunacağını yapılandırma yetkiniz yok
+dir_ecannotfile=Bu dizinde kullanıcı dosyası kullanma yetkiniz yok
+dir_ecannotgfile=Bu dizinde grup dosyası kullanma yetkiniz yok
 dir_efile=Kullanıcı dosyası adı eksik veya geçersiz
 dir_ehtaccess=Apache seçenek dosyası $1 oluşturulamadı : $2
 dir_ehtpasswd=Kullanıcı dosyası $1 oluşturulamadı : $2
@@ -50,6 +57,12 @@ dir_requireu=Yalnızca şu kullanıcılar ..
 dir_requireg=Yalnızca şu grupların üyeleri ..
 dir_erequire_user=İzin verilecek kullanıcı girilmedi
 dir_erequire_group=İzin verilecek grup girilmedi
+dir_delete=Korumayı Kaldır
+dir_delete2=Korumayı Kaldır ve Dosyaları Sil
+dir_delete3=Korumayı Kaldır ve Dosyayı Sil
+dir_apache=Apache Seçeneklerini Düzenle
+dir_efiledir='$1' bir dizin, bu yüzden kullanıcı dosyası olarak kullanılamaz
+dir_egfiledir='$1' bir dizin, bu yüzden grup dosyası olarak kullanılamaz
 
 edit_title1=Kullanıcı Oluştur
 edit_title2=Kullanıcıyı Düzenle
@@ -88,6 +101,7 @@ acl_user=.htaccess ve htusers dosyalarını şu Unix kullanıcısı olarak oluş
 acl_same=Webmin girişiyle aynı
 acl_home=Unix kullanıcısının ev dizini dahil edilsin mi?
 acl_sync=Unix kullanıcı eşitlemesi kurabilir mi?
+acl_uonly=Korumalı dizin ekleyip değiştirebilir mi?
 
 log_create_dir=$1 dizini eklendi
 log_modify_dir=$1 dizini değiştirildi
@@ -98,6 +112,7 @@ log_delete_user=$1 kullanıcısı silindi
 log_create_group=$1 grubu oluşturuldu
 log_modify_group=$1 grubu değiştirildi
 log_delete_group=$1 grubu silindi
+log_delete_dirs=$1 dizin silindi
 
 search_title=Arama Sonuçları
 search_err=Arama başarısız
@@ -109,3 +124,5 @@ search_already=Bilinen Apache seçenek dosyası $1 atlanıyor.
 search_noprot=Apache seçenek dosyası $1, dizini korumadığı için atlanıyor.
 search_open=Apache seçenek dosyası $1 açılamadı : $2
 search_done=.. tamam
+
+__norefs=1

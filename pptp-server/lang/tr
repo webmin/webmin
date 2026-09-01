@@ -1,0 +1,153 @@
+index_title=PPTP VPN Sunucusu
+index_version=PoPToP sürüm $1
+index_epptpd=PoPToP PPTP sunucusu $1 sisteminizde bulunamadı veya doğru program değil. Kurulu olmayabilir ya da <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
+index_econfig=PPTP sunucusu yapılandırma dosyası $1 sisteminizde bulunamadı. <a href='$2'>Modül yapılandırmanız</a> hatalı olabilir.
+index_stop=PPTP sunucusunu durdur
+index_stopdesc=Yeni bağlantı kabul edilmemesi için çalışan PPTP sunucu sürecini kapatmak üzere bu düğmeye tıklayın. Ancak mevcut VPN bağlantıları etkin kalacaktır.
+index_start=PPTP sunucusunu başlat
+index_startdesc=İstemcilerden VPN bağlantısı alabilmesi için PPTP sunucu sürecini başlatmak üzere bu düğmeye tıklayın.
+index_apply=Yapılandırmayı Uygula
+index_applydesc=PPTP sunucu sürecini durdurup yeniden başlatarak mevcut PPTP sunucu seçeneklerini uygulamak için bu düğmeye tıklayın. PPP seçeneklerindeki ve PPP hesaplarındaki değişiklikler her zaman yeni bağlantılara uygulanır
+index_return=modül dizini
+index_epppd=PPP sunucu programı $1 sisteminizde kurulu değil. PPTP çalışmak için ona bağımlıdır.
+
+conf_title=PPTP Sunucusu Seçenekleri
+conf_ecannot=PPTP sunucusu seçeneklerini düzenleme izniniz yok
+conf_header=PPTP sunucusu yapılandırması
+conf_speed=PPP baud hızı
+conf_baud=bps
+conf_listen=Şu adreste dinle
+conf_all=Tüm adresler
+conf_localip=Bağlantının sunucu ucu için IP adresleri
+conf_remoteip=İstemcilere atanacak IP adresleri
+conf_ipxnets=Atanacak IPX ağları
+conf_from=Şuradan
+conf_to=şuraya
+conf_option=PPP seçenekleri dosyası
+conf_mode0=Genel ayarlar
+conf_mode1=PPTP'ye özgü ayarlar
+conf_mode2=Özel dosya
+conf_ipdesc=Her iki aralıktaki IP adresleri tek tek (192.168.1.1 gibi) veya aralık olarak (192.168.2.32-64 gibi) girilebilir
+conf_err=Sunucu seçenekleri kaydedilemedi
+conf_espeed=Eksik veya geçersiz baud hızı
+conf_elisten=Dinlenecek eksik veya geçersiz adres
+conf_eoption=Eksik veya geçersiz görünen özel PPP seçenekleri dosyası
+conf_elocalip='$1' geçerli bir yerel IP adresi veya aralığı değil
+conf_eremoteip='$1' geçerli bir uzak IP adresi veya aralığı değil
+conf_efrom=Eksik veya geçersiz IPX ağı başlangıç adresi
+conf_eto=Eksik veya geçersiz IPX ağı bitiş adresi
+
+options_title=PPP Seçenekleri
+options_ecannot=PPP seçeneklerini düzenleme izniniz yok
+options_desc0=$1 dosyasından alınan aşağıdaki PPP seçenekleri, çevirmeli modemlere yapılanlar dâhil olmak üzere sisteminizin aldığı TÜM gelen bağlantılara uygulanır.
+options_desc1=$1 dosyasından alınan aşağıdaki PPP seçenekleri yalnızca tüm PPTP bağlantılarına uygulanır.
+options_desc2=Bu form kaydedildikten sonra kurulan tüm yeni bağlantılarda kullanılacaklardır.
+options_header=PPP bağlantısı seçenekleri
+options_proxyarp=Vekil ARP girdisi oluşturulsun mu?
+options_lock=PTY aygıt dosyası kilitlensin mi?
+options_auth=Kimlik doğrulama gereksin mi?
+options_auth0=Hayır, ancak yönlendirilen IP'leri engelle
+options_auth1=Asla
+options_auth2=Her zaman
+options_login=Ayrıca unix kimlik doğrulaması yapılsın mı?
+options_pap=PAP kimlik doğrulaması
+options_chap=CHAP kimlik doğrulaması
+options_req=Kullanılmalıdır
+options_all=Kullanılabilir
+options_ref=Kullanılamaz
+options_name=Kimlik doğrulama için sunucu adı
+options_hn=Gerçek ana makine adı
+options_mtu=Azami gönderim paketi boyutu
+options_mru=Azami alım paketi boyutu
+options_err=PPP seçenekleri kaydedilemedi
+options_emtu=Eksik veya geçersiz azami gönderim paketi boyutu
+options_emru=Eksik veya geçersiz azami alım paketi boyutu
+options_ename=Kimlik doğrulama için eksik veya geçersiz sunucu adı
+options_version=PPPd sürüm $1
+options_msdesc=Aşağıdaki seçenekler, Windows VPN istemcilerinin varsayılan olarak kullandığı MS-CHAP kimlik doğrulama yöntemini ve MPPE şifrelemesini etkinleştirir. Ancak MPPE, hem PPP arka plan sürecinde hem de işletim sistemi çekirdeğinde destek gerektirir.
+options_mschap=MS-CHAP kimlik doğrulaması
+options_mschap-v2=MS-CHAP sürüm 2 kimlik doğrulaması
+options_chapms=MS-CHAP kimlik doğrulaması
+options_chapms-v2=MS-CHAP sürüm 2 kimlik doğrulaması
+
+secrets_title=PPP Hesapları
+secrets_ecannot=PPP hesaplarını düzenleme izniniz yok
+secrets_return=dizin
+secrets_none=Henüz hiçbir PPP hesabı oluşturulmamış.
+secrets_enopfile=PPP parola dosyası $1 sisteminizde mevcut değil. PPP kurulu olmayabilir veya <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
+secrets_table=$1 için PPP hesapları
+secrets_user=Kullanıcı adı
+secrets_ips=IP adresleri
+secrets_uany=HERHANGİ
+secrets_sany=HERHANGİ
+secrets_create=Yeni PPP hesabı oluştur.
+secrets_desc=Bu sayfada listelenen PPP hesapları, $3 kimlik doğrulaması için kullanılan $1 dosyasından alınmıştır. Yalnızca $2 sunucunuza ait olanlar gösterilir; giden bağlantı kurmaya yarayan hesaplar gösterilmez.
+secrets_delete=Seçilen PPP Hesaplarını Sil
+
+edit_secret_etitle=PPP Hesabını Düzenle
+edit_secret_ctitle=PPP Hesabı Oluştur
+edit_secret_acc=PPP Hesabı
+edit_secret_user=Kullanıcı adı
+edit_secret_serv=Sunucu
+edit_secret_sany=Herhangi biri
+edit_secret_uany=Herhangi biri
+edit_secret_pass=Parola
+edit_secret_none=Yok
+edit_secret_ffile=Dosyadan
+edit_secret_leave=Değiştirme
+edit_secret_setto=Şuna ayarla
+edit_secret_vaddr=Geçerli Adresler
+edit_secret_aany=Tümüne izin ver
+edit_secret_anone=Hiçbirine izin verme
+edit_secret_alist=Listelenenlere izin ver..
+edit_secret_save=Kaydet
+edit_secret_del=Sil
+edit_secret_return=hesap listesi
+
+save_secret_esave=Hesap kaydedilemedi
+save_secret_enoip='$1' geçerli bir adres değil
+
+stop_err=PPTP sunucusu durdurulamadı
+stop_egone=Artık çalışmıyor
+stop_ecannot=PPTP sunucusunu durdurma izniniz yok
+
+start_err=PPTP sunucusu başlatılamadı
+start_ecannot=PPTP sunucusunu başlatma izniniz yok
+
+apply_err=PPTP sunucusu yeniden başlatılamadı
+apply_ecannot=PPTP sunucusunu yeniden başlatma izniniz yok
+
+conns_title=Etkin Bağlantılar
+conns_ecannot=Etkin bağlantıları yönetme izniniz yok
+conns_desc=Bu sayfa, sunucunuza şu anda etkin olan PPTP bağlantılarını listeler. Birini zorla kesmek için arabirim adına tıklayın.
+conns_iface=PPP arabirimi
+conns_client=İstemci adresi
+conns_stime=Bağlantı başlangıcı
+conns_local=Sunucu VPN adresi
+conns_remote=İstemci VPN adresi
+conns_none=Şu anda etkin görünen hiçbir PPTP bağlantısı yok.
+conns_unknown=Bilinmiyor
+conns_user=Kullanıcı adı
+
+disc_err=Bağlantı kesilemedi
+disc_egone=Bağlantı artık etkin değil
+disc_ekill=Süreç artık çalışmıyor
+
+log_secret_create=PPP hesabı $1 oluşturuldu
+log_secret_modify=PPP hesabı $1 değiştirildi
+log_secret_delete=PPP hesabı $1 silindi
+log_deletes=$1 PPP hesabı silindi
+log_conf=PPTP sunucusu seçenekleri değiştirildi
+log_options=PPP seçenekleri değiştirildi
+log_disc=$1 istemcisinin bağlantısı kesildi
+log_start=PPTP sunucusu başlatıldı
+log_stop=PPTP sunucusu durduruldu
+log_apply=PPTP sunucusu yapılandırması uygulandı
+
+acl_conf=Yapılandırmayı düzenleyebilir mi?
+acl_options=Seçenekleri düzenleyebilir mi?
+acl_secrets=PPTP hesaplarını yönetebilir mi?
+acl_conns=Bağlantıları görüntüleyebilir mi?
+acl_stop=PPTP sunucusunu durdurup başlatabilir mi?
+acl_apply=Yapılandırmayı uygulayabilir mi?
+__norefs=1

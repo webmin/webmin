@@ -4,19 +4,37 @@ index_user=Çalıştıracak kullanıcı
 index_date=Çalıştırılma tarihi
 index_time=Çalıştırılma zamanı
 index_cmd=Çalıştırılacak komutlar
+index_mail=Tamamlandığında e-posta gönderilsin mi?
 index_id=İş ID
 index_exec=Çalıştırılma tarihi
 index_created=Oluşturulma tarihi
 index_dir=Çalıştırılacağı dizin
 index_return=komut listesi
+index_cdatetime=Geçerli tarih ve saat
+index_allow=İzin verilen zamanlanmış komut kullanıcıları
+index_amode=İzin verilecek kullanıcılar
+index_amode0=Tüm Unix kullanıcıları
+index_amode1=Yalnızca listelenen kullanıcılar ..
+index_amode2=Listelenenler dışındaki tümü ..
+index_delete=Seçilen Komutları İptal Et
+index_noat=$1 komutu sisteminizde bulunamadı - kurulu olmayabilir ya da işletim sisteminiz için mevcut olmayabilir.
+index_nostyle=Webmin bu işletim sisteminde zamanlanmış komutları nasıl yöneteceğini bilmiyor.
+index_stop=Zamanlanmış Komutlar Sunucusunu Durdur
+index_stopdesc=Zamanlanmış komutları çalıştıran <tt>atd</tt> arka plan sunucu sürecini kapatın. Bu, komutların belirtilen zamanlarda çalışmasını engeller.
+index_start=Zamanlanmış Komutlar Sunucusunu Başlat
+index_startdesc=Zamanlanmış komutları çalıştıran <tt>atd</tt> arka plan sunucu sürecini başlatın. Komutların belirtilen zamanlarda çalışması için bu gereklidir.
+index_boot=Sunucu Açılışta Başlatılsın mı?
+index_bootdesc=Zamanlanmış komutlar sunucusunun sistem açılışında başlatılmasını etkinleştirmek veya devre dışı bırakmak için bu ayarı değiştirin.
 
 edit_title=Zamanlandırılmış Komut
 edit_cmd=Çalıştırılacak tam betik
+edit_shortcmd=Çalıştırılacak komut
 edit_header=Zamanlandırılmış komutun ayrıntıları
 edit_delete=Bu komutu iptal et
 edit_run=Şimdi Çalıştır
 edit_ejob=Zamanlandırılmış komut artık mevcut değil!
 edit_ecannot=Bu zamanlandırılmış komutu düzenlemek için izininiz yoktur
+edit_showfull=Tam betiği göster.
 
 create_err=Zamanlandırılmış komut oluşturulurken hata oluştu
 create_euser=Eksik ya da geçersiz kullanıcı
@@ -25,6 +43,7 @@ create_ecmd=Komut girilmedi
 create_efuture=Tarih ve saat geçmişte
 create_edir=Eksik ya da geçersiz dizin
 create_ecannot=Bu kullanıcı ile zamanlandırılmış komut oluşturmak için izininiz yoktur
+create_eallow=Belirtilen kullanıcının zamanlanmış komut çalıştırma izni yok
 
 delete_err=Komutun iptal edilmesinde hata oluştu
 delete_egone=Komut zaten çalıştı ya da silindi
@@ -34,7 +53,34 @@ acl_all=Bütün kullanıcılar
 acl_this=Mevcut Webmin kullanıcısı
 acl_only=Sadece bu kullanıcılar
 acl_except=Bu kullanıcıların dışındakiler
+acl_allow=İzin verilen <tt>at</tt> kullanıcılarını düzenleyebilir mi?
+acl_stop=<tt>atd</tt> sürecini durdurup başlatabilir mi?
 
 run_title=Çalışan Komut
 run_output=Zamanlandırılmış komutun çıktısı ..
 run_none=Herhangi bir çıktı oluşturulmadı
+
+allow_err=İzin verilen kullanıcılar kaydedilemedi
+allow_ecannot=İzin verilen kullanıcıları yönetme yetkiniz yok
+allow_eusers=Hiç kullanıcı girilmedi
+
+deletes_err=Komutlar iptal edilemedi
+deletes_enone=Hiçbiri seçilmedi
+
+log_allow=İzin verilen kullanıcılar değiştirildi
+log_create_job=$1 için zamanlanmış komut oluşturuldu
+log_delete_job=$1 için zamanlanmış komut iptal edildi
+log_exec_job=$1 için zamanlanmış komut çalıştırıldı
+log_delete_jobs=$1 zamanlanmış komut iptal edildi
+log_stop=Zamanlanmış komutlar sunucusu durduruldu
+log_start=Zamanlanmış komutlar sunucusu başlatıldı
+log_bootup=Zamanlanmış komutlar sunucusu açılışta çalışacak şekilde etkinleştirildi
+log_bootdown=Zamanlanmış komutlar sunucusunun açılışta çalışması devre dışı bırakıldı
+
+stop_err=Sunucu durdurulamadı
+start_err=Sunucu başlatılamadı
+stop_ecannot=Sunucuyu durdurma yetkiniz yok
+start_ecannot=Sunucuyu başlatma yetkiniz yok
+bootup_ecannot=Sunucuyu açılışta etkinleştirme yetkiniz yok
+
+__norefs=1

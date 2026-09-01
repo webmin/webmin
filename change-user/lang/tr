@@ -1,10 +1,22 @@
 index_title=Dili ve Temayı Değiştir
+index_lang=Dil
+index_locale=Yerel ayar
+index_locale2=Tarih biçimi
+index_theme=Tema
+index_langglobal2=Genel dil .. $1 ($2)
 index_langset=Kişisel seçim ..
+index_localeglobal2=Genel yerel ayar .. $1 ($2)
+index_localeset=Kişisel seçim ..
+index_dateformatglobal2=Genel tarih biçimi .. $1
+index_dateformatset=Kişisel seçim ..
+index_overlay=Tema kaplaması
+index_overlaydef=Yok - tema varsayılanlarını kullan
 index_themeglobal=Genel tema ($1)
 index_themeset=Kişisel seçim ..
 index_pass=Webmin giriş parolası
 index_passleave=Değiştirmeden bırak
 index_passset=Belirle ..
+index_passagain=Parolayı yeniden girin
 index_ok=Değişiklikleri Yap
 index_themedef=Eski Webmin Teması
 index_desc2=Bu modül sadece sizin Webmin hesabınızdaki $1 değiştirmeniz için kullanılır
@@ -21,7 +33,14 @@ change_done=.. tamamlandı
 change_restart=Webmin yeniden başlatılıyor ..
 change_redirect=Ana sayfaya yönlendiriliyor ..
 change_ecolon=Parolanız : karakterini içermemelidir
+change_epass2=Yeni parolalar eşleşmiyor
+change_epass=Yeni parola geçerli değil : $1
+change_eoverlay=Bir arayüz teması seçilmeden tema kaplaması seçemezsiniz
+change_eoverlay2=Seçilen tema kaplaması, seçilen arayüz temasıyla uyumlu değil
 
 acl_lang=Dili değiştirebilir mi?
+acl_locale=Yerel ayarı değiştirebilir mi?
 acl_theme=Temayı değiştirebilir mi?
 acl_pass=Parolayı değiştirebilir mi (Webmin'de girildiğinde) ?
+
+__norefs=1

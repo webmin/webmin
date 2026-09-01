@@ -1,0 +1,60 @@
+index_title=SMART Disk Durumu
+index_ecmd=SMART denetim komutu $1 sisteminizde bulunamadı ya da <a href='$2'>modül yapılandırmasında</a> doğru ayarlanmamış. Bu modülün kullanılabilmesi için kurulmuş olmalıdır.
+index_ecmd2=$1 komutu SMART denetim komutu gibi görünmüyor. Bu modülün kullanılabilmesi için <a href='$2'>modül yapılandırmasında</a> doğru ayarlanmalıdır.
+index_version=SMARTsuite sürüm $1
+index_show=Şu diskin durumunu göster:
+index_ok=Göster
+index_eidescsi=Sisteminizde hiç IDE, SCSI veya SATA disk bulunamadı.
+index_drive=$1 diskinin durumu
+index_drivesub=$1 diskinin, $2 numaralı diskin durumu
+index_desc=Konum
+index_size=Disk boyutu
+index_model=Marka ve model
+index_support=SMART destekliyor mu?
+index_enabled=SMART etkin mi?
+index_check=Disk denetimini geçti mi?
+index_short=Kısa Kendi Kendine Test
+index_ext=Genişletilmiş Kendi Kendine Test
+index_data=Veri Toplama Testi
+index_errors=Günlüğe yazılan hatalar
+index_ecount=$1 hata algılandı
+index_attrs=Ek SMART öznitelikleri
+index_raw=Tam SMART durum raporu
+index_return=modül dizini
+index_family=Model ailesi
+index_serial=Seri numarası
+index_capacity=Kapasite
+index_norm=Normalleştirilmiş:
+
+monitor_type=SMART Disk Denetimi
+monitor_type2=SSD Aşınması
+monitor_drive=Denetlenecek disk
+monitor_errors=Hata günlüğü de denetlensin mi?
+monitor_errorsinc=Evet, ancak yalnızca hata sayısı artarsa uyar
+monitor_other=Diğer..
+monitor_edrive=Denetlenecek disk eksik veya geçersiz
+monitor_nosuch=Böyle bir disk yok
+monitor_nosmart=SMART desteği yok
+monitor_errorsfound=$1 hata bildirildi
+monitor_errorsinced=Hatalar $2 değerinden $1 değerine yükseldi
+monitor_wearlevel=Aşınma düzeyi şunun altına düşerse başarısız say
+monitor_ewearlevel=Geçersiz aşınma düzeyi yüzdesi
+monitor_nowearout=Disk SSD aşınma göstergesi bildirmiyor
+monitor_wornout=Aşınma düzeyi $1 değerine düştü
+
+short_title=Kısa Kendi Kendine Test
+short_doing=$1 diskinin kısa kendi kendine testi başlatılıyor ..
+short_failed=.. başarısız oldu!
+short_ok=.. test başarıyla başlatıldı. Sonuçlar için modülün ana sayfasındaki disk durumuna bakın.
+
+ext_title=Genişletilmiş Kendi Kendine Test
+ext_doing=$1 diskinin genişletilmiş kendi kendine testi başlatılıyor ..
+ext_failed=.. başarısız oldu!
+ext_ok=.. test başarıyla başlatıldı. Sonuçlar için modülün ana sayfasındaki disk durumuna bakın.
+
+data_title=Veri Toplama Testi
+data_doing=$1 diskinde çevrimdışı veri toplama başlatılıyor ..
+data_failed=.. başarısız oldu!
+data_ok=.. toplama başarıyla başlatıldı. Sonuçlar için modülün ana sayfasındaki disk durumuna bakın.
+
+__norefs=1

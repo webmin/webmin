@@ -1,0 +1,23 @@
+index_title=Küme Kabuk Komutları
+index_cmd=Çalıştırılacak komut
+index_old=ya da
+index_server=Şu sunucularda çalıştır
+index_run=Komutu Şimdi Çalıştır
+index_return=modül dizini
+index_this=bu sunucu
+index_all=&lt;Tüm makineler&gt;
+index_group=$1 üyeleri
+index_clear=Geçmişi Temizle
+index_edit=Öncekini Düzenle
+
+run_title=Komutu Çalıştır
+run_err=Komut çalıştırılamadı
+run_ecmd=Komut girilmedi
+run_failed=$1 üzerinde çalıştırılamadı : $2
+run_success=$1 çıktısı ..
+run_enone=Çalıştırılacak sunucu seçilmedi
+
+log_clear=Komut geçmişi temizlendi
+log_run=$1, $2 sunucuda çalıştırıldı
+log_run_l=$1, $2 üzerinde çalıştırıldı
+__norefs=1

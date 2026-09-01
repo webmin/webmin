@@ -1,1 +1,2 @@
-desc_tr=Sistem Kayıtları
+desc_tr=Sistem Günlükleri RS
+longdesc_tr=Sisteminizdeki syslog sunucusunu yapılandırın ve günlük dosyalarını görüntüleyin.

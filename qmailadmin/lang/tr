@@ -1,0 +1,406 @@
+index_title=QMail Posta Sunucusu
+index_edir=QMail temel dizini $1 mevcut değil. QMail kurulu olmayabilir veya <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
+index_edir2=$1 dizini QMail temel dizini gibi görünmüyor. QMail kurulu olmayabilir veya <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
+index_return=QMail yapılandırması
+index_stop=QMail Süreçlerini Durdur
+index_stopmsg=Kuyruktaki postaların teslim edilmesinden sorumlu arka plan QMail süreçlerini durdurmak için bu butona tıklayın. Bu süreçler olmadan sisteminizden posta gönderilemez ve sisteminize düzgün şekilde teslim edilemez.
+index_start=QMail Süreçlerini Başlat
+index_startmsg=Kuyruktaki postaların teslim edilmesinden sorumlu arka plan QMail süreçlerini başlatmak için bu butona tıklayın. Bu süreçler olmadan sisteminizden posta gönderilemez ve sisteminize düzgün şekilde teslim edilemez.
+
+opts_title=QMail Seçenekleri
+opts_me=Yerel makine adı
+opts_helo=SMTP HELO için makine adı
+opts_toconnect=SMTP bağlantı zaman aşımı
+opts_secs=saniye
+opts_toremote=SMTP giden yanıt zaman aşımı
+opts_bytes=En büyük mesaj boyutu
+opts_unlimited=Sınırsız
+opts_timeout=SMTP gelen veri zaman aşımı
+opts_localip=Yerel IP adresine gelen e-posta için makine adı
+opts_greet=SMTP karşılama mesajı
+opts_err=QMail seçenekleri kaydedilemedi
+opts_eme=Geçersiz yerel makine adı
+opts_etoconnect=Geçersiz SMTP bağlantı zaman aşımı
+opts_etoremote=Geçersiz SMTP giden yanıt zaman aşımı
+opts_ebytes=Geçersiz en büyük mesaj boyutu
+opts_etimeout=Geçersiz SMTP gelen veri zaman aşımı
+opts_elocalip=Geçersiz yerel IP adresi makine adı
+
+aliases_title=Posta Takma Adları
+aliases_addr=Adres
+aliases_to=Takma ad hedefi..
+aliases_type1=Adres $1
+aliases_type2=Posta dizini $1
+aliases_type3=Posta dosyası $1
+aliases_type4=Program $1
+aliases_type5=Otomatik yanıt dosyası $1
+aliases_type6=$1 filtre dosyasını uygula
+aliases_none=Yok
+aliases_return=takma ad listesi
+aliases_toomany=Sisteminizde bu sayfada gösterilemeyecek kadar çok posta takma adı var.
+aliases_go=Şununla eşleşen takma adları bul:
+aliases_delete=Seçilen Takma Adları Sil
+
+aform_type0=Yok
+aform_type1=E-posta adresi
+aform_type2=Posta dizini
+aform_type3=Posta dosyası
+aform_type4=Programa aktar
+aform_type5=Dosyadan otomatik yanıt
+aform_type6=Filtre dosyasını uygula
+aform_edit=Takma Adı Düzenle
+aform_create=Takma Ad Oluştur
+aform_name=Adres
+aform_val=Takma ad hedefi
+aform_afile=Düzenle..
+aform_novirt=&lt;Tüm alan adları&gt;
+aform_return=takma ad
+
+asave_err=Takma ad kaydedilemedi
+asave_eaddr='$1' geçerli bir adres değil
+asave_ealready='$1' için bir takma ad zaten var
+asave_etype1='$1' geçerli bir e-posta adresi değil
+asave_etype2='$1' geçerli bir posta dizini değil
+asave_etype3='$1' geçerli bir posta dosyası adı değil
+asave_etype4='$1' geçerli bir program değil veya mevcut değil
+asave_etype5='$1' otomatik yanıt dosyası geçerli değil
+asave_etype4none=Program belirtilmedi
+asave_etype6='$1' filtre dosyası geçerli değil
+
+adelete_err=Takma adlar silinemedi
+adelete_enone=Hiçbiri seçilmedi
+
+locals_title=Yerel Alan Adları
+locals_domains=Bu sunucu için yerel alan adları
+locals_desc=Qmail, soldaki metin kutusunda listelenen alan adlarına ve makine adlarına gelen postaları yerel kullanıcılara teslim etmek üzere kabul eder. Posta sunucunuzun birden çok e-posta alan adını karşılamasını istiyorsanız hepsi bu formda listelenmelidir.
+locals_only=Yalnızca yerel makine adı $1
+locals_sel=Aşağıda listelenen alan adları ..
+
+rcpts_title=Kabul Edilen Alan Adları
+rcpts_domains=Kabul edilen yerel ve aktarma alan adları
+rcpts_all=Herhangi bir alan adı
+rcpts_sel=Aşağıda listelenen alan adları ..
+rcpts_desc=Qmail yalnızca soldaki metin kutusunda listelenen alan adlarına ve makine adlarına gelen postaları aktarmak veya yerel olarak teslim etmek üzere kabul eder. Bir alan adındaki tüm makineleri eşleştirmek için <tt>.foo.com</tt> gibi joker karakterler de girebilirsiniz. Posta sunucunuzun istemciler için posta aktarmasını istiyorsanız, herhangi bir alan adından gelen postayı kabul etmelisiniz.
+rcpts_domains2=Ek yerel ve aktarma alan adları
+rcpts_desc2=Çok sayıda kabul edilen alan adınız varsa, daha az kullanılanlar bu metin kutusuna girilmelidir. Genel olarak izin verilen ilk 50 alan adı üstteki metin kutusuna, geri kalanı ise buraya girilmelidir.
+
+bads_title=Reddedilen Adresler
+bads_addresses=Reddedilen e-posta adresleri
+bads_desc=QMail, soldaki metin kutusunda listelenen adreslerden gelen postaları teslim veya aktarma için reddeder; bu adresler <tt>kullanıcıadı@alanadı</tt> biçiminde girilmelidir. Bir alan adının tamamından gelen postayı reddetmek istiyorsanız <tt>@alanadı</tt> biçiminde girilmelidir.
+
+routes_title=Alan Adı Yönlendirmesi
+routes_toomany=Sisteminizde bu sayfada gösterilemeyecek kadar çok alan adı yönlendirmesi var.
+routes_go=Şununla eşleşen alan adı yönlendirmelerini bul:
+routes_from=Şu alan adına gelen posta
+routes_to=Şu sunucu üzerinden gönder
+routes_direct=Doğrudan teslim et
+routes_defroute=Diğer tüm giden postaları şunun üzerinden teslim et:
+routes_return=alan adı yönlendirmeleri
+routes_delete=Seçilen Alan Adı Yönlendirmelerini Sil
+
+rform_edit=Alan Adı Yönlendirmesini Düzenle
+rform_create=Alan Adı Yönlendirmesi Oluştur
+rform_from=Şu makine veya alan adına gelen posta
+rform_to=Şu SMTP sunucusu üzerinden gönder
+rform_port=SMTP bağlantı noktası
+
+rsave_err=Alan adı yönlendirmesi kaydedilemedi
+rsave_efrom='$1' geçerli bir alan adı değil
+rsave_eto='$1' geçerli bir SMTP sunucusu değil
+rsave_eport='$1' geçerli bir bağlantı noktası numarası değil
+
+rdelete_err=Alan adı yönlendirmeleri silinemedi
+
+percents_title=% Adresi Alan Adları
+percents_domains=% adreslerini destekleyen alan adları
+percents_desc=QMail, <tt>ikincialanadı</tt> soldaki metin kutusunda listelenmişse <tt>kullanıcı%birincialanadı@ikincialanadı</tt> biçimindeki adreslere gelen e-postaları kabul eder. Bu biçimdeki mesajlar posta sunucusu tarafından <tt>kullanıcı@birincialanadı</tt> adresine yönlendirilir.
+
+virts_title=Sanal Eşlemeler
+virts_toomany=Sisteminizde bu sayfada gösterilemeyecek kadar çok sanal eşleme var.
+virts_go=Şununla eşleşen sanal eşlemeleri bul:
+virts_from=Şuna gelen posta
+virts_prepend=Başa eklenecek önek
+virts_all=Tüm adresler
+virts_none=Sanal değil
+virts_desc=Sanal eşlemeler, QMail tarafından sunucunuzdaki farklı alan adlarına gelen e-postaları karşılamak için kullanılır; e-posta adresinin kullanıcı kısmının başına işlemden önce metin eklenir. Bir alan adı için yeni bir sanal eşleme oluşturup ardından <a href='$1'>Posta Takma Adları</a> sayfasından o alan adı içinde takma adlar oluşturarak sanal posta alan adları kurabilirsiniz.
+virts_return=sanal eşlemeler
+virts_delete=Seçilen Sanal Eşlemeleri Sil
+
+vform_edit=Sanal Eşlemeyi Düzenle
+vform_create=Sanal Eşleme Oluştur
+vform_from=Şu adrese gelen posta
+vform_all=Başka bir sanal eşlemeyle eşleşmeyen herhangi bir adres
+vform_domain=Şu alan adına sahip adresler
+vform_user=Adres
+vform_to=Kullanıcı adının başına ekle
+vform_none=Hiçbir şey
+vform_prepend=Belirtilen önek
+vform_auto=Otomatik seçilen önek
+
+vsave_err=Sanal eşleme kaydedilemedi
+vsave_edomain='$1' geçerli bir e-posta alan adı değil
+vsave_euser='$1' geçerli bir e-posta kullanıcı adı değil
+vsave_eprepend='$1' geçerli bir eşleme öneki değil
+vsave_eboth=Hem 'Başka bir sanal eşlemeyle eşleşmeyen herhangi bir adres' hem de 'Hiçbir şey' seçeneklerini birlikte seçemezsiniz
+
+vdelete_err=Sanal eşlemeler silinemedi
+
+stop_err=qmail-send süreci artık çalışmıyor
+
+log_stop=QMail süreçleri durduruldu
+log_start=QMail süreçleri başlatıldı
+log_opts=QMail seçenekleri değiştirildi
+log_alias_create=$1 takma adı oluşturuldu
+log_alias_delete=$1 takma adı silindi
+log_alias_modify=$1 takma adı değiştirildi
+log_delete_aliases=$1 takma ad silindi
+log_virt_create=$1 sanal eşlemesi oluşturuldu
+log_virt_delete=$1 sanal eşlemesi silindi
+log_virt_modify=$1 sanal eşlemesi değiştirildi
+log_delete_virts=$1 sanal eşleme silindi
+log_virtall_create=Genel yakalayıcı sanal eşleme oluşturuldu
+log_virtall_delete=Genel yakalayıcı sanal eşleme silindi
+log_virtall_modify=Genel yakalayıcı sanal eşleme değiştirildi
+log_locals=Yerel alan adları değiştirildi
+log_rcpts=Kabul edilen alan adları değiştirildi
+log_bads=Reddedilen adresler değiştirildi
+log_percents=% adresi alan adları değiştirildi
+log_route_create=$1 için yönlendirme oluşturuldu
+log_route_delete=$1 için yönlendirme silindi
+log_route_modifed=$1 için yönlendirme değiştirildi
+log_delete_routes=$1 yönlendirme silindi
+log_defroute=Varsayılan yönlendirme değiştirildi
+log_assign_create=$1 posta kullanıcısı oluşturuldu
+log_assign_delete=$1 posta kullanıcısı silindi
+log_assign_modifed=$1 posta kullanıcısı değiştirildi
+log_delete_assigns=$1 posta kullanıcısı silindi
+log_delmail=$2 içinden $1 mesaj silindi
+log_movemail=$1 mesaj $2 konumundan $3 konumuna taşındı
+log_send=$1 adresine posta gönderildi
+
+rfile_title=Otomatik Yanıt Dosyasını Düzenle
+rfile_desc=$1 içindeki otomatik yanıt mesajını düzenlemek için aşağıdaki metin alanını kullanın. Mesaj, otomatik yanıt etkinleştirildiğinde yerine değerleri konacak olan $SUBJECT, $FROM, $TO, $DATE ve $BODY makrolarını içerebilir.
+rfile_desc2=Otomatik yanıtta kullanılan varsayılan başlıklara ekleme yapan veya onları değiştiren posta başlıklarını, mesajın en üstüne gövdeden tek bir boş satırla ayrılmış şu tür satırlar koyarak da ayarlayabilirsiniz:<br><tt>From: foo@bar.com</tt><br><tt>Subject: On holiday</tt><br>
+rfile_efile=$1 dosyasını düzenleme yetkiniz yok.
+rfile_undo=Değişiklikleri Geri Al
+rfile_replies=Posta döngülerini önlemek için yanıtlar izlensin mi?
+rfile_none=Hayır
+rfile_file=Evet, günlük dosyası kullanılarak
+rfile_period=Yanıtlar arasındaki en kısa süre
+rfile_default=Varsayılan (1 saat)
+rfile_secs=saniye
+rfile_ereplies=Yanıt izleme günlük dosyası eksik
+rfile_eperiod=Yanıtlar arasındaki saniye sayısı eksik veya geçersiz
+rfile_no_autoreply=Şu adreslere otomatik yanıt gönderme
+rfile_from=Yanıt için From: adresi
+rfile_auto=Otomatik (alıcının adresine göre)
+rfile_efrom=From: adresi eksik
+rfile_fromdesc=Otomatik yöntem güvenilir olmayabileceğinden, mümkün olduğunda her zaman bir From: adresi belirtilmelidir.
+
+ffile_title=Filtre Dosyasını Düzenle
+ffile_desc=$1 dosyasındaki filtre kurallarını ayarlamak için aşağıdaki formu kullanın.
+ffile_efile=$1 dosyasını düzenleme yetkiniz yok.
+ffile_line=$1 alanı $2 $3 ise $4 adresine yönlendir
+ffile_from=gönderen
+ffile_to=alıcı
+ffile_subject=konu
+ffile_cc=CC
+ffile_body=gövde
+ffile_what0=eşleşmiyorsa
+ffile_what1=eşleşiyorsa
+ffile_other=Aksi halde $1 adresine yönlendir
+ffile_err=Filtre dosyası kaydedilemedi
+ffile_ematch=Eşleşme ölçütü eksik
+ffile_eaction=Yönlendirme adresi eksik
+
+queue_title=Posta Kuyruğu
+queue_count=$1 mesaj
+queue_none=Şu anda teslim için kuyruğa alınmış posta yok
+queue_id=Posta kimliği
+queue_date=Gönderildi
+queue_from=Gönderen
+queue_to=Alıcı
+queue_cc=Cc
+queue_subject=Konu
+queue_return=posta kuyruğu
+queue_delete=Seçilen mesajları sil
+queue_all=Tümünü seç
+queue_invert=Seçimi tersine çevir
+queue_refresh=Posta Kuyruğunu Yenile
+queue_refreshdesc=Posta kuyruğunun güncel durumunu görmek için bu sayfayı yeniden yükleyin.
+
+qview_title=Kuyruktaki Mesaj
+qview_desc=$1 dosyasından
+qview_headers=Posta başlıkları
+qview_attach=Ekler
+
+assigns_title=Posta Kullanıcısı Atamaları
+assigns_return=posta kullanıcısı atamaları
+assigns_toomany=Sisteminizde bu sayfada gösterilemeyecek kadar çok posta kullanıcısı var.
+assigns_go=Şununla eşleşen posta kullanıcılarını bul:
+assigns_address=Şu adrese gelen posta
+assigns_user=Unix kullanıcısı
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Ev dizini
+assigns_desc=Posta kullanıcısı atamaları, Unix kullanıcı listesinde tanımlı olmayan kullanıcılar için posta kutusu oluşturmanızı sağlar. Her atama, seçilen bir kullanıcı adına veya kullanıcı adı desenine gelen postayı, gerçek bir Unix kullanıcısının posta kutusuna teslim ediliyormuş gibi teslim eder.
+assigns_delete=Seçilen Posta Kullanıcılarını Sil
+
+sform_edit=Posta kullanıcısını düzenle
+sform_create=Posta kullanıcısı oluştur
+sform_address=Adres kullanıcı adı
+sform_mode0=Tam kullanıcı adı
+sform_mode1=Şununla başlayan kullanıcı adları
+sform_user=Unix kullanıcısı
+sform_uid=UID
+sform_gid=GID
+sform_home=Ev dizini
+
+ssave_err=Posta kullanıcısı kaydedilemedi
+ssave_eaddress=Adres kullanıcı adı eksik veya geçersiz
+ssave_euser=Unix kullanıcısı eksik veya geçersiz
+ssave_euid=UID eksik veya geçersiz
+ssave_egid=GID eksik veya geçersiz
+ssave_ehome=Ev dizini eksik veya geçersiz
+
+sdelete_err=Posta kullanıcıları silinemedi
+
+delete_egone=Kuyruktaki mesaj artık mevcut değil
+delete_ebogus=Geçersiz kuyruk dosyası adı
+
+boxes_title=Kullanıcı Posta Kutuları
+boxes_user=Kullanıcı
+boxes_size=Posta kutusu boyutu
+boxes_none=Posta yok
+boxes_return=posta kutuları
+boxes_sent=Gönderilen posta
+boxes_ecannot=E-posta okuma yetkiniz yok
+boxes_toomany=Sisteminizde tüm posta kutularını listelemek için çok fazla kullanıcı var.
+boxes_go=Şu kullanıcının postasını görüntüle:
+
+mail_title=Kullanıcı E-postası
+mail_from=Gönderen
+mail_date=Tarih
+mail_subject=Konu
+mail_to=Alıcı
+mail_cc=Cc
+mail_bcc=Bcc
+mail_pri=Öncelik
+mail_highest=En yüksek
+mail_high=Yüksek
+mail_normal=Normal
+mail_low=Düşük
+mail_lowest=En düşük
+mail_for=$1 içinde
+mail_for2=$1 kullanıcısı için
+mail_sent=Gönderilen posta listesinde
+mail_size=Boyut
+mail_delete=Sil
+mail_compose=Yeni Posta
+mail_return=kullanıcı posta kutusu
+mail_pos=$3 mesajdan $1 - $2 arası
+mail_none=Bu posta kutusunda mesaj yok
+mail_ecannot=Bu kullanıcının e-postasını okuma yetkiniz yok
+mail_all=Tümünü seç
+mail_invert=Seçimi tersine çevir
+mail_search=Şu koşula uyan mesajları bul
+mail_body=Gövde
+mail_match=eşleşiyor
+mail_ok=Ara
+mail_nonefrom=Yok
+mail_mark=Şu şekilde işaretle:
+mail_mark0=Okunmadı
+mail_mark1=Okundu
+mail_mark2=Özel
+mail_forward=Yönlendir
+mail_rfc=From satırı
+mail_move=Şuraya taşı:
+mail_eexists=Mesaj artık mevcut değil!
+
+view_title=E-postayı Oku
+view_desc=$2 içindeki $1 numaralı mesaj
+view_desc2=$2 kullanıcısı için $1 numaralı mesaj
+view_desc3=$1 numaralı mesaj
+view_sent=Gönderilen posta listesindeki $1 numaralı mesaj
+view_qdesc=Kuyruğa alınmış $1 numaralı mesaj
+view_headers=Posta başlıkları
+view_allheaders=Tüm başlıkları göster
+view_noheaders=Temel başlıkları göster
+view_attach=Ekler
+view_reply=Yanıtla
+view_reply2=Tümünü yanıtla
+view_enew=Yeni olarak düzenle
+view_forward=Yönlendir
+view_delete=Sil
+view_strip=Ekleri Kaldır
+view_ecannot=Bu kullanıcının e-postasını okuma yetkiniz yok
+view_mark=Mesajı şu şekilde işaretle:
+view_mark0=Okunmadı
+view_mark1=Okundu
+view_mark2=Özel
+view_return=özgün e-posta
+view_sub=Ekli E-posta
+
+compose_title=E-posta Yaz
+reply_title=E-postayı Yanıtla
+forward_title=E-postayı Yönlendir
+enew_title=E-postayı Düzenle
+reply_headers=Posta başlıkları
+reply_attach=Yönlendirilen ekler
+reply_mailforward=Yönlendirilen mesajlar
+reply_attach2=İstemci ve sunucu taraflı ekler
+reply_send=Postayı Gönder
+reply_ecannot=Bu kullanıcı adına posta gönderme yetkiniz yok
+
+send_err=Posta gönderilemedi
+send_eto=Alıcı adresi eksik
+send_efrom=Gönderen adresi eksik
+send_title=Posta Gönderildi
+send_ok=Posta $1 adresine başarıyla gönderildi
+send_ecannot=Bu kullanıcı adına posta gönderme yetkiniz yok
+send_esmtp=SMTP komutu $1 başarısız oldu : $2
+send_efile=Ekli dosya $1 mevcut değil
+send_eattach=Eklerin toplam boyutu $1 kB'yi aşamaz.
+send_eperms=$1 kullanıcısı $2 dosyasını okuyamıyor
+send_eperms2=$1 dosyasını gönderme yetkiniz yok
+send_epath=Sendmail çalıştırılabilir dosyası $1 mevcut değil.
+
+delete_title=Postayı Sil
+delete_rusure=$2 içinden seçilen $1 mesajı silmek istediğinizden emin misiniz? Büyük bir posta dosyası için bu işlem biraz zaman alabilir. Silme bitene kadar başka bir işlem yapılmamalıdır.
+delete_rusure2=Bu mesajı $1 içinden silmek istediğinizden emin misiniz? Büyük bir posta dosyası için bu işlem biraz zaman alabilir. Silme bitene kadar başka bir işlem yapılmamalıdır.
+delete_ok=Şimdi Sil
+delete_ecannot=Bu kullanıcının postalarını silme yetkiniz yok
+delete_enone=Silmek için posta seçilmedi
+delete_emnone=İşaretlemek için posta seçilmedi
+delete_nobutton=Hiçbir butona tıklanmadı
+
+search_title=Arama Sonuçları
+search_ecannot=Bu kullanıcının e-postasında arama yapma yetkiniz yok
+search_ematch=Eşleştirilecek metni girmelisiniz.
+search_efield=Bir arama türü seçmelisiniz.
+search_none=Hiç mesaj bulunamadı.
+search_results2=$2 ile eşleşen $1 posta mesajı ..
+search_results3=$2 ile eşleşmeyen $1 posta mesajı ..
+
+match_from=From: eşleşiyor
+match_subject=Subject: eşleşiyor
+match_to=To: eşleşiyor
+match_cc=Cc: eşleşiyor
+match_date=Date: eşleşiyor
+match_body=Gövde eşleşiyor
+match_size=Boyut şundan büyük
+match_headers=Başlıklar eşleşiyor
+match_=-----------------
+match_!from=From: eşleşmiyor
+match_!subject=Subject: eşleşmiyor
+match_!to=To: eşleşmiyor
+match_!cc=Cc: eşleşmiyor
+match_!date=Date: eşleşmiyor
+match_!body=Gövde eşleşmiyor
+match_!size=Boyut şundan küçük
+match_!headers=Başlıklar eşleşmiyor
+
+delq_titles=Mesajlar Siliniyor
+delq_rusure=Seçilen $1 kuyruktaki mesajı silmek istediğinizden emin misiniz?
+delq_confirm=Mesajları Sil
+__norefs=1

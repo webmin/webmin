@@ -1,0 +1,105 @@
+index_title=Heartbeat İzleyicisi
+index_return=heartbeat izleyicisi
+index_edir=Heartbeat yapılandırma dizini $1 mevcut değil. Heartbeat kurulu olmayabilir veya <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
+index_start=Heartbeat İzleyicisini Başlat
+index_startmsg=Heartbeat izleyici sürecini başlatmak için bu düğmeye tıklayın. Bu, sisteminizde mevcut yapılandırmayla otomatik hizmet devretmeyi etkinleştirir.
+index_apply=Değişiklikleri Uygula
+index_applymsg=Çalışan Heartbeat izleyici sürecini mevcut yapılandırmayı yeniden yüklemeye zorlamak için bu düğmeye tıklayın.
+index_eha_cf=Heartbeat yapılandırma dosyası $1 sisteminizde bulunamadı. Henüz yerine kopyalanmamış olabilir veya <a href='$2'>modül yapılandırması</a> hatalı olabilir.
+index_eharesources=Kaynak dosyası $1 sisteminizde bulunamadı. Henüz yerine kopyalanmamış olabilir veya <a href='$2'>modül yapılandırması</a> hatalı olabilir.
+index_eauthkeys=Kimlik doğrulama anahtarları dosyası $1 sisteminizde bulunamadı. Henüz yerine kopyalanmamış olabilir veya <a href='$2'>modül yapılandırması</a> hatalı olabilir.
+index_ereq_resource_cmd=Diğer düğümden kaynak istemek için kullanılan betik ($1) sisteminizde bulunamadı. Henüz yerine kopyalanmamış olabilir veya <a href='$2'>modül yapılandırması</a> hatalı olabilir.
+index_version=Heartbeat sürüm $1
+index_noversion=Uyarı - Sisteminizde kurulu olan Heartbeat sürümü otomatik olarak algılanamadı. Bunu <a href='$1'>modül yapılandırması</a> sayfasından ayarlamalısınız.
+index_status=Heartbeat durumu
+
+conf_title=Yapılandırma Seçenekleri
+conf_header=Heartbeat yapılandırma seçenekleri
+conf_serials=Seri heartbeat portları
+conf_baud=Seri port için baud hızı
+conf_bcasts=Ethernet heartbeat arabirimleri
+conf_none=Yok
+conf_udpport=UDP heartbeat portu
+conf_mcast=Çok noktaya yayın heartbeat aygıtı
+conf_mcastv=Aygıt $1, grup $2, port $3, TTL $4, geri döngü $5
+conf_enabled=Etkin
+conf_disabled=Devre dışı
+conf_keepalive=Heartbeat'ler arasındaki süre
+conf_nice_failback=Nazik Geri Devretme Davranışı
+conf_secs=saniye
+conf_deadtime=Düğümün ölü sayılmasından önceki süre
+conf_watchdog=Watchdog aygıt dosyası
+conf_node=Kümedeki ana makineler
+conf_logfile=Heartbeat günlük dosyası
+conf_logfacility=Syslog günlük tesisi
+conf_initdead=Başlangıçtaki ölü süresi
+conf_ok=Seçenekleri Kaydet
+conf_err=Seçenekler kaydedilemedi
+conf_ebaud=Eksik veya geçersiz baud hızı
+conf_ebcast=Hiçbir heartbeat yayın arabirimi girilmedi
+conf_ebcastif='$1' geçerli bir yayın arabirimi değil
+conf_eudpport=Eksik veya geçersiz heartbeat portu
+conf_ekeepalive=Heartbeat'ler arasındaki süre eksik veya geçersiz
+conf_edeadtime=Eksik veya geçersiz ölü süresi
+conf_ewatchdog=Eksik veya var olmayan watchdog aygıt dosyası
+conf_enonode=Hiçbir küme ana makinesi girilmedi
+conf_ethisnode=Bu ana makine $1, küme ana makineleri listesinde yok
+conf_elogfile=Eksik veya geçersiz günlük dosyası adı
+conf_einitdead=Eksik veya geçersiz başlangıç ölü süresi
+conf_einitdead2=Başlangıç ölü süresi, bir düğümün ölü sayılmasından önceki sürenin en az iki katı olmalıdır
+conf_emcast_dev=Eksik veya geçersiz çok noktaya yayın aygıtı
+conf_emcast_ip=Eksik veya geçersiz çok noktaya yayın grubu adresi
+conf_emcast_port=Eksik veya geçersiz çok noktaya yayın port numarası
+conf_emcast_ttl=Eksik veya geçersiz çok noktaya yayın yaşam süresi
+conf_auto_on=${conf_enabled}
+conf_auto_off=${conf_disabled}
+conf_auto_legacy=Eski mod
+conf_auto_=${default}
+
+res_title=Küme Kaynakları
+res_node=Birincil Düğüm
+res_ips=IP Adresleri
+res_servs=Düğüm Hizmetleri
+res_none=Yok
+res_nores=Sisteminizde hiçbir küme kaynağı tanımlanmamış.
+res_add=Küme kaynağı ekle
+res_return=kaynak listesi
+res_active=Kaynak Durumu
+res_getserv=Kaynağı Al
+res_hbdown=Heartbeat kapalı
+res_up=AÇIK
+res_down=KAPALI
+
+node_create=Küme Kaynağı Ekle
+node_edit=Küme Kaynağını Düzenle
+node_header=Küme kaynağı ayrıntıları
+node_node=Kaynak için birincil düğüm
+node_ips=Kaynak için IP adresleri
+node_ip=IP adresi
+node_cidr=Ağ maskesi CIDR
+node_broad=Yayın adresi
+node_servs=Kaynak için hizmetler
+node_serv=Hizmet
+node_args=Ek argümanlar
+node_err=Küme kaynağı kaydedilemedi
+node_enone=Eksik veya geçersiz birincil düğüm
+node_eip='$1' geçerli bir IP adresi değil
+node_ecidr='$1' geçerli bir CIDR değil
+node_ebroad='$1' geçerli bir yayın adresi değil
+
+auth_title=Kimlik Doğrulama Anahtarları
+auth_header=Küme düğümü kimlik doğrulaması
+auth_mode=Kimlik doğrulama modu
+auth_crc=CRC (Güvenlik yok)
+auth_sha1=Parolayla SHA1
+auth_md5=Parolayla MD5
+auth_err=Kimlik doğrulama anahtarları kaydedilemedi
+auth_emd5=Eksik veya geçersiz MD5 parolası
+auth_esha1=Eksik veya geçersiz SHA1 parolası
+
+start_err=heartbeat başlatılamadı
+
+apply_err=Değişiklikler uygulanamadı
+apply_epid=Süreç artık çalışmıyor
+
+__norefs=1

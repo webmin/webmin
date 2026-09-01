@@ -1,0 +1,114 @@
+index_title=PPTP VPN İstemcisi
+index_epptp=PPTP istemci programı $1 sisteminizde bulunamadı. Kurulu olmayabilir veya <a href='$2'>modül yapılandırmanız</a> hatalı olabilir.
+index_eppp=PPP sunucu programı $1 sisteminizde kurulu değil. PPTP çalışmak için ona bağımlıdır.
+index_eoptions=Genel PPTP PPP seçenekleri dosyası $1 mevcut değil. Ya oluşturun ya da farklı bir dosya kullanmak veya hiç kullanmamak için <a href='$2'>modül yapılandırmasını</a> düzenleyin.
+index_header=Tanımlı Tüneller
+index_none=Henüz hiçbir PPTP tüneli tanımlanmamış.
+index_tunnel=Tünel $1
+index_add=Yeni bir PPTP VPN tüneli ekle.
+index_conn=Şuna bağlan:
+index_pass=isteğe bağlı parolayla:
+index_conndesc=Seçilen PPTP VPN tünelini mevcut yapılandırmasıyla bağlamak için bu düğmeye tıklayın.
+index_disc=Şununla bağlantıyı kes:
+index_discdesc=Şu anda etkin olan seçili PPTP VPN tünelinin bağlantısını kesmek ve üzerinden geçen tüm yönlendirmeleri kaldırmak için bu düğmeye tıklayın.
+index_return=PPTP tünel listesi
+index_opts=Genel PPP Seçeneklerini Düzenle
+index_optsdesc=Tüm PPTP VPN tünellerine uygulanan PPP seçeneklerini düzenlemek için bu düğmeye tıklayın.
+index_version=PPPd sürüm $1
+index_boot=Önyüklemede bağlan:
+index_noboot=&lt;Bağlanma&gt;
+index_bootdesc=Seçilen PPTP VPN bağlantısının önyükleme sırasında başlatılıp başlatılmayacağını denetlemek için bu seçeneği değiştirin.
+
+disc_err=Tünel bağlantısı kesilemedi
+disc_egone=Artık etkin değil
+disc_ekill=pppd süreci sonlandırılamadı
+disc_done=$1 tünelinin bağlantısı başarıyla kesildi.
+
+conn_err=Tünel bağlanamadı
+conn_egone=Tünel artık mevcut değil
+cone_ealready=Zaten bağlı
+conn_einvalid=Yapılandırma dosyasında sunucu IP adresi eksik
+conn_title=Tünel Bağlanıyor
+conn_cmd=$1 komutuyla bir PPTP bağlantısı kuruluyor ..
+conn_ok=.. bağlantı $1 arabirimi kullanılarak başarıyla etkinleştirildi. Yerel adresiniz $2, uzak adres ise $3.
+conn_timeout=.. bağlantı başarısız oldu! Nedenini öğrenmek için aşağıdaki günlük iletilerini inceleyin.
+conn_routes=Komutlarla yönlendirmeler ekleniyor ..
+conn_mppe=VPN şifrelemesi için MPPE protokolü, PPP arka plan sürecinde ve çekirdekte destek gerektirir. Ancak yukarıdaki hatalar, sisteminizde bunlardan birinin veya her ikisinin bulunmadığını gösteriyor. PPTP sunucusu MPPE gerektirmiyorsa, <a href='$1'>genel PPP seçenekleri</a> sayfasında bununla ilgili tüm seçenekleri kapatmayı deneyin.
+
+edit_title1=PPTP Tüneli Ekle
+edit_title2=PPTP Tünelini Düzenle
+edit_header=PPTP VPN tüneli seçenekleri
+edit_name=Tünel adı
+edit_server=Şu sunucuya bağlan
+edit_login=Şu kullanıcı olarak oturum aç
+edit_same=Sistem ana makine adı
+edit_pass=Şu parolayla oturum aç
+edit_remote=Sunucunun adı
+edit_auto=Otomatik
+edit_adddef=Varsayılan yönlendirme eklensin mi?
+edit_def1=Diğer uç üzerinden
+edit_def2=Şu ağ geçidi üzerinden ..
+edit_deldef=Eski varsayılan yönlendirme silinsin mi?
+edit_routes=Bağlandıktan sonra eklenecek yönlendirmeler
+edit_type=Tür
+edit_type0=&nbsp;
+edit_type1=Ağ
+edit_type2=Tek ana makine
+edit_net=Ağ veya ana makine
+edit_mask=Ağ maskesi
+edit_gw=Şu ağ geçidi üzerinden
+edit_gw_def=Diğer uç
+edit_unknown=Diğer <tt>route</tt> komutları
+edit_file=PPP seçenekleri dosyası
+edit_none=Yok
+edit_global=Standart genel dosya
+edit_ofile=Diğer dosya ..
+
+save_err=Tünel kaydedilemedi
+save_ename=Tünel adı eksik
+save_eserver=Bağlanılacak eksik veya geçersiz sunucu
+save_elogin=Eksik veya geçersiz oturum açma adı
+save_eremote=Eksik veya geçersiz uzak sunucu adı
+save_edef=Eksik veya geçersiz varsayılan yönlendirme ağ geçidi
+save_enet=$1 yönlendirmesinde geçersiz ağ adresi
+save_emask=$1 yönlendirmesinde geçersiz ağ maskesi
+save_egw=$1 yönlendirmesindeki ağ için geçersiz ağ geçidi
+save_ehost=$1 yönlendirmesinde geçersiz ana makine IP adresi
+save_emask2=$1 ana makine yönlendirmesi için ağ maskesi gerekmiyor
+save_egw2=$1 yönlendirmesindeki ana makine için geçersiz ağ geçidi
+save_erename=Tünel dosyası yeniden adlandırılamadı
+save_eclash=Aynı ada sahip bir tünel veya PPP eşi zaten var
+save_efile=Eksik veya geçersiz PPP seçenekleri dosyası
+
+opts_title=Genel PPP Seçenekleri
+opts_desc=Aşağıdaki ayarlar $1 dosyasından alınmıştır ve standart genel PPP seçenekleri dosyasını kullanacak şekilde ayarlanmış tüm tünellere uygulanır.
+opts_header=Tüm tüneller için PPP seçenekleri
+opts_mtu=Azami gönderim paketi boyutu
+opts_mru=Azami alım paketi boyutu
+opts_err=Genel PPP seçenekleri kaydedilemedi
+opts_emtu=Eksik veya geçersiz azami gönderim paketi boyutu
+opts_emru=Eksik veya geçersiz azami alım paketi boyutu
+opts_msdesc=Aşağıdaki seçenekler, Windows VPN sunucularının kullandığı MPPE şifrelemesini etkinleştirir. Ancak MPPE, hem PPP arka plan sürecinde hem de işletim sistemi çekirdeğinde destek gerektirir.
+
+mppe_mppe-40=40 bitlik MPPE şifrelemesi kullanılsın mı?
+mppe_mppe-128=128 bitlik MPPE şifrelemesi kullanılsın mı?
+mppe_mppe-stateless=Durumsuz MPPE modu etkinleştirilsin mi?
+mppe_mppe=MPPE şifrelemesi etkinleştirilsin mi?
+mppe_m2=Kullanılmalıdır
+mppe_m0=Kullanılamaz
+mppe_d0=Devre dışı
+mppe_d1=İzin verilir
+mppe_mppe-stateful=Durumlu MPPE modu etkinleştirilsin mi?
+mppe_old=Uyarı - PPP arka plan süreciniz yeni biçim yönergeleri desteklediği hâlde, yapılandırma dosyanızda eski biçim MPPE yönergeleri $1 bulundu.
+mppe_new=Uyarı - PPP arka plan süreciniz yalnızca eski biçim yönergeleri desteklediği hâlde, yapılandırma dosyanızda yeni biçim MPPE yönergeleri $1 bulundu.
+
+log_create=PPTP tüneli $1 oluşturuldu
+log_update=PPTP tüneli $1 değiştirildi
+log_delete=PPTP tüneli $1 silindi
+log_conn=$1 tüneli bağlandı
+log_conn_l=$1 tüneli $2 yerel adresiyle bağlandı
+log_failed=$1 tüneli bağlanamadı
+log_disc=$1 tünelinin bağlantısı kesildi
+log_opts=Genel PPP seçenekleri düzenlendi
+
+__norefs=1

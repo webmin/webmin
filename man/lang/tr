@@ -47,6 +47,7 @@ search_custom=Özel belge
 search_none=$1 ile eşleşen bir yardımcı sayfası bulunamadı
 search_for=Arama $1
 search_google=Google arama sonucu
+search_doxfer=Webmin çevrimiçi belgeleri
 
 howto_title=NASIL Belgesi
 howto_header=NASIL belgesi $1
@@ -59,6 +60,7 @@ doc_epath=Geçersiz paket belgesi yolu
 man_title=Yardımcı Sayfa
 man_header=Yardımcı sayfa $1($2)
 man_noentry=$1 yardımcı sayfası mevcut değil!
+man_epath=Kılavuz sayfası bir yol olamaz!
 
 kernel_title=Çekirdek Belgesi
 kernel_header=Çekirdek belgesi $1
@@ -71,3 +73,9 @@ kde_epath=Geçersiz KDE belgesi yolu
 perl_title=Perl Modülü
 perl_header=Perl modülü $1 belgesi
 perl_emod=Geçersiz Perl modülü adı
+
+acl_allow=İzin verilen arama türlerini düzenleyebilir mi?
+
+check_ecannot=İzin verilen arama türlerini düzenleme yetkiniz yok
+
+__norefs=1

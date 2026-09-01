@@ -1,9 +1,13 @@
 index_elink=Tünel için henüz bir URL belirlenmedi.
+index_url=Açılacak URL'yi girin:
+index_open=Aç
 
 link_eurl=Geçersiz URL tüneli: $1
 link_elogin=$1 için giriş engellendi $2 gibi
 link_eautologin=$1 için geçersiz giriş ya da şifre. <a href='$2'>tıklayın</a> giriş için
 link_enouser=$1 e giriş için bir kullanıcı adı ve şifre gerekli, ancak hiçbir şey bulunamadı.
+link_ebadurl=$1 adresine erişme yetkiniz yok
+link_mconfig=Girişi değiştirmek için <a href='$1'>modül yapılandırması</a> sayfasını kullanın.
 
 login_title=Websiteye giriş için
 login_desc=$1 e giriş yapabilmek için kullanıcı adı ve şifre gerekli.
@@ -12,3 +16,8 @@ login_user=kullanıcı adı
 login_pass=şifre
 login_login=giriş
 login_clear=temizle
+
+seturl_err=URL açılamadı
+seturl_eurl=Geçersiz URL girildi
+
+__norefs=1

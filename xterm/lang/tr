@@ -1,0 +1,14 @@
+index_title=Terminal
+index_cpan=<tt>$1</tt> Perl modülü eksik, ancak Webmin'in Perl Modülleri modülü kullanılarak <a href='$2'>otomatik kurulabilir</a>.
+index_epel=Önce <a href='$1' target='_blank'>EPEL</a> deposunun etkinleştirilmesi önerilir.
+index_suse=<tt>perl-IO-Tty</tt> Perl paketi eksik; önce <a href='$2' target='_blank'>devel:languages:perl</a> deposundan elle kurulmalıdır.
+index_euser=Hata : $1 kullanıcısı mevcut olmadığı için kabuğu çalıştıramaz!
+index_connecting=Bağlanılıyor ..
+index_missing=<tt>$1</tt> Perl modülü eksik. Bu sorunu çözmek için yöneticinizle iletişime geçmeniz gerekir.
+index_eproxy=Webmin'e başka bir Webmin sunucusu üzerinden erişilirken Terminal modülü kullanılamaz
+
+acl_user=Kabuğu şu Unix kullanıcısı olarak çalıştır
+acl_sameuser=Webmin girişiyle aynı
+acl_sudoenforce=Yalnızca <em>sudo</em> yetkilerini zorunlu kıl
+
+__norefs=1

@@ -1,0 +1,9 @@
+index_title=Küme Parola Değiştirme
+index_noservers=<a href=$1>Küme Kullanıcıları ve Grupları</a> modülünde kullanıcıların yönetileceği hiç sunucu tanımlanmamış.
+index_hosts=Bu modülle yapılan tüm parola değişiklikleri, Küme Kullanıcıları ve Grupları modülü tarafından yönetilen $1 makinenin tümünde uygulanacaktır.
+
+passwd_err=Parola değiştirilemedi
+passwd_title=Parola Değiştiriliyor
+passwd_on=$1 üzerinde parola değiştiriliyor ..
+passwd_euser=Kullanıcı mevcut değil!
+__norefs=1

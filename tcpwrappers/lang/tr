@@ -1,0 +1,34 @@
+index_title=TCP Wrappers
+index_return=dizin
+index_allowtitle=İzin verilen makineler
+index_denytitle=Reddedilen makineler
+index_norule=<tt>$1</tt> içinde henüz hiç kural tanımlanmamış.
+index_nofile='$1' dosyası mevcut değil - <a href="/config.cgi?tcpwrappers">modül yapılandırmanızı</a> kontrol edin
+index_add=Yeni bir kural ekle.
+index_service=Arka plan süreci
+index_hosts=Makineler
+index_cmd=Komut
+index_delete=Seçilenleri Sil
+index_none=yok
+
+edit_title1allow=İzin Kuralı Oluştur
+edit_title2allow=İzin Kuralını Düzenle
+edit_title1deny=Ret Kuralı Oluştur
+edit_title2deny=Ret Kuralını Düzenle
+edit_eid=Bu kural bulunamadı
+edit_header=Kural seçenekleri
+edit_service=Servisler
+edit_except=Şu servisler hariç
+edit_hosts=Uzak makineler
+edit_hostsexcept=Şu makineler hariç
+edit_cmd=Kabuk komutları
+edit_efound='$1' arka plan süreci xinetd yapılandırmasında bulunamadı.
+
+save_errtitle=Kural kaydedilirken hata
+save_ehost=Makine girdisi hatalı karakterler içeriyor
+save_ecmd=Komut girdisi hatalı karakterler içeriyor
+save_eservice=Arka plan süreci adları hatalı karakterler içeriyor
+
+del_errtitle=Kural silinirken hata
+del_enone=Silinmek üzere işaretlenmiş kural yok
+__norefs=1
