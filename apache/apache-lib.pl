@@ -548,11 +548,16 @@ return wantarray ? ($c, $v) : $c;
 }
 
 # get_htaccess_config(file)
+# Parses a .htaccess format file into a list of config objects
 sub get_htaccess_config
 {
-local($lnum, @conf);
-&open_readfile(HTACCESS, $_[0]);
-@conf = &parse_config_file(HTACCESS, $lnum, $_[0]);
+my ($file) = @_;
+my ($lnum, @conf);
+&open_readfile(HTACCESS, $file);
+@conf = &parse_config_file(HTACCESS, $lnum, $file);
+foreach my $c (@conf) {
+	$c->{'htaccess'} = 1;
+	}
 close(HTACCESS);
 return \@conf;
 }
@@ -650,7 +655,9 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 		$change = $old[$i];
 		}
 	}
-&update_last_config_change();
+if (!$_[3]->[0]->{'htaccess'}) {
+	&update_last_config_change();
+	}
 @files = &unique(@files);
 push(@{$saved_conf_files}, @files);
 return @files;
@@ -745,7 +752,9 @@ elsif (!$olddir && $newdir) {
 					   $newdir->{'file'});
 		}
 	}
-&update_last_config_change();
+if (!$conf->[0]->{'htaccess'}) {
+	&update_last_config_change();
+	}
 }
 
 # recursive_set_indent(&directive, indent)
