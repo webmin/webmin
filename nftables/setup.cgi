@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # setup.cgi
-# Create a Webmin-managed nftables profile table
+# Create an nftables profile table in the saved configuration
 
 require './nftables-lib.pl';    ## no critic
 use strict;

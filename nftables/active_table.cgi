@@ -24,7 +24,7 @@ $table || error($text{'active_table_notable'});
 assert_table_acl($table);
 my @saved_tables = get_nftables_save();
 my $status_key = active_table_status($table, \@saved_tables);
-my $is_saved = table_is_webmin_managed($table, \@saved_tables);
+my $is_saved = table_is_saved($table, \@saved_tables);
 
 ui_print_header(undef, $text{'active_table_title'}, "");
 

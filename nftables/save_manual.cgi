@@ -23,8 +23,6 @@ open_lock_tempfile(my $fh, ">$file");
 print_tempfile($fh, $in{'data'});
 close_tempfile($fh);
 
-my @tables = get_nftables_save($file);
-sync_managed_metadata(@tables);
 update_last_config_change();
 
 webmin_log("manual", undef, $file);

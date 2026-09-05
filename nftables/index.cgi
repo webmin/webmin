@@ -845,7 +845,8 @@ if ($partial) {
 
 print $rules_html;
 
-my $init_support = foreign_check("init") && check_acl('bootup') ? 1 : 0;
+my $init_support = foreign_check("init") && check_acl('bootup') &&
+                   nftables_service_status() ? 1 : 0;
 if (
 	@tables &&
 	(check_acl('active') ||
