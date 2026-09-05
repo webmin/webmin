@@ -41,14 +41,14 @@ else {
 					"$text{'error_exists'}";
 				}
 			else {
-				system("cp -r ".
+				# Capture command errors for display in the browser
+				my $out = &backquote_logged("cp -r ".
 					quotemeta($source).
-					" ".quotemeta($cwd)
-					) == 0 ||
-				push @errors,
-					"$source " .
-					"$text{'error_copy'}" .
-					" $!";
+					" ".quotemeta($cwd)." 2>&1");
+				if ($?) {
+					push @errors, &html_escape(
+						"$source $text{'error_copy'} $out");
+					}
 				}
 			}
 		elsif ($act eq "cut") {
@@ -64,14 +64,14 @@ else {
 					"$text{'error_exists'}";
 				}
 			else {
-				system("mv ".
+				# Capture command errors for display in the browser
+				my $out = &backquote_logged("mv ".
 					quotemeta($source).
-					" ".quotemeta($cwd)
-					) == 0 ||
-				push @errors,
-					"$source " .
-					"$text{'error_cut'}" .
-					" $!";
+					" ".quotemeta($cwd)." 2>&1");
+				if ($?) {
+					push @errors, &html_escape(
+						"$source $text{'error_cut'} $out");
+					}
 				}
 			}
 		}
