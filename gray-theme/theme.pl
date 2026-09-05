@@ -503,7 +503,7 @@ return $rv;
 # Returns HTML for a multi-column table, with the given headings
 sub theme_ui_columns_start
 {
-my ($heads, $width, $noborder, $tdtags, $title) = @_;
+my ($heads, $width, $noborder, $tdtags, $title, $sortable) = @_;
 my ($href) = grep { $_ =~ /<a\s+href/i } @$heads;
 my $rv;
 $theme_ui_columns_row_toggle = 0;
@@ -516,12 +516,15 @@ if (!$noborder && !$main::COLUMNS_WRAPPER_OPEN) {
 if (!$noborder) {
 	$main::COLUMNS_WRAPPER_OPEN++;
 	}
+# Tables are sorted by sorttable.js unless their headings are links, or
+# always when the caller asked for a sortable table
 my @classes;
 push(@classes, "ui_table") if (!$noborder);
-push(@classes, "sortable") if (!$href);
+push(@classes, "sortable") if (!$href || $sortable);
 push(@classes, "ui_columns");
 $rv .= "<table".(@classes ? " class='".join(" ", @classes)."'" : "").
-    (defined($width) ? " width=$width%" : "").">\n";
+    (defined($width) ? " width=$width%" : "").
+    ($sortable ? " data-sortable='1'" : "").">\n";
 if ($title) {
   $rv .= "<thead> <tr $tb class='ui_columns_heading'>".
 	 "<td colspan=".scalar(@$heads)."><b>$title</b></td>".
@@ -1014,9 +1017,11 @@ EOF
 # no-sort - Set to 1 to disable sorting by theme
 # title - Text to appear above the table
 # empty-msg - Message to display if no data
+# sortable - Set to 1 to mark the table for client-side sorting
 sub theme_ui_columns_table
 {
-my ($heads, $width, $data, $types, $nosort, $title, $emptymsg) = @_;
+my ($heads, $width, $data, $types, $nosort, $title, $emptymsg,
+    $sortable) = @_;
 my $rv;
 
 # Just show empty message if no data
@@ -1040,7 +1045,7 @@ foreach my $r (@$data) {
 		}
 	$maxwidth = $cc if ($cc > $maxwidth);
 	}
-$rv .= &ui_columns_start($heads, $width, 0, \@tds, $title);
+$rv .= &ui_columns_start($heads, $width, 0, \@tds, $title, $sortable);
 
 # Add the data rows
 foreach my $r (@$data) {

@@ -4,6 +4,8 @@
   --text-color-success: #3c763d;
   --text-color-warning: #b58900;
   --text-color-info: #108eda;
+  --font-family: sans-serif;
+  --font-family-mono: monospace;
 }
 body {margin: 8px; color: #212121; line-height:1.5em; text-align:left;}
 p { margin-top:4px; }
@@ -38,7 +40,7 @@ table.ui_table thead td {
 table.sortable tbody td {
   padding: 2px;
 }
-table.ui_table td textarea {line-height:normal; font-family:monospace;}
+table.ui_table td textarea {line-height:normal; font-family:var(--font-family-mono);}
 table.ui_table td div.barchart * {
   margin: 0;
 }
@@ -88,7 +90,7 @@ a:hover, a:visited:hover { color: #0b46ab;
 }
 a.ui-hidden-table-title { color: #212121; }
 title { color: #212121;
-  font-family: sans-serif;
+  font-family: var(--font-family);
 }
 h1,h2,h3,h4,h5 { color: #212121;
 }

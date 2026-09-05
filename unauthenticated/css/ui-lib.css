@@ -1,0 +1,992 @@
+/*
+ * ui-lib.css
+ * Stylesheet for the widgets added to ui-lib.pl: page header, grids,
+ * cards, stat tiles, description lists, badges, chips, lists, activity
+ * feeds, empty states, progress bars, toggles, search boxes and the
+ * boxed choice, radio list and select switch widgets.
+ *
+ * Widgets use their own classes, with shared spacing and margin resets
+ * inside .ui_page. Existing tabs, forms, tables and buttons retain their
+ * theme styling. Widgets use the theme's --font-family and
+ * --font-family-mono when defined, otherwise text inherits the page font
+ * and code uses the monospace fallback below.
+ *
+ * The .ui_page wrapper emitted by ui_page_start supplies the widget tokens.
+ * The palette and shared spacing come from --ui-* custom properties,
+ * which a theme may redefine on .ui_page to restyle every
+ * widget at once. Setting data-ui-scheme="dark" (or "auto") on any
+ * ancestor switches to the built-in dark palette.
+ */
+
+.ui_page {
+	/* Palette tokens read the theme's own custom properties first - the
+	 * names Authentic defines for its palettes and night mode - and
+	 * fall back to the colors of the gray theme, which defines only the
+	 * four --text-color-* state colors itself. */
+
+	/* Core palette */
+	--ui-canvas: var(--bg-color, #f2f3f5);
+	--ui-surface: var(--main-content, #ffffff);
+	--ui-surface-2: var(--bg-table-header, #f5f5f5);
+	--ui-border: var(--border-color, #d7dbe0);
+	--ui-border-soft: var(--border-color-light, #e8eaee);
+	--ui-border-strong: var(--border-color-darker, #b3bac2);
+	--ui-fg: var(--text-color, #212121);
+	--ui-fg-muted: var(--text-color-muted, #4b5563);
+
+	/* Accent */
+	--ui-accent: var(--link-color, #0b46ab);
+	--ui-accent-soft: var(--element-highlight-bg-color, #e8f1fb);
+	--ui-ring: var(--border-color-focused, rgba(11, 70, 171, 0.25));
+
+	/* States. The base color is used for icons, dots and bars; the
+	 * -text variant is a darker shade for text sitting on the -soft
+	 * background, as in badges. */
+	--ui-success: var(--text-color-success, #3c763d);
+	--ui-success-text: var(--text-color-success-stressed, #1e4f18);
+	--ui-success-soft: var(--bg-color-success, #edf7e7);
+	--ui-success-line: var(--border-color-success, #b9e0a4);
+	--ui-warning: var(--text-color-warning, #b58900);
+	--ui-warning-text: var(--text-color-warning-stressed, #795600);
+	--ui-warning-soft: var(--bg-color-warning, #fdf4d8);
+	--ui-warning-line: var(--border-color-warning, #eed483);
+	--ui-danger: var(--text-color-danger, #bc0303);
+	--ui-danger-text: var(--text-color-danger-stressed, #7d1007);
+	--ui-danger-soft: var(--bg-color-danger, #fbeae8);
+	--ui-danger-line: var(--border-color-danger, #f2bcb6);
+	--ui-info: var(--text-color-info, #108eda);
+	--ui-info-text: var(--text-color-info-stressed, #00477e);
+	--ui-info-soft: var(--bg-color-info, #e8f1fb);
+	--ui-info-line: var(--border-color-info, #b8d6f2);
+	--ui-neutral: var(--text-color-muted, #4b5563);
+	--ui-neutral-text: var(--text-color-neutral-stressed, #40474f);
+	--ui-neutral-soft: var(--bg-color-neutral, #eff1f3);
+	--ui-neutral-line: var(--border-color-neutral, #d7dbe0);
+
+	/* Controls */
+	--ui-toggle-bg: var(--toggle-bg-color, var(--ui-border-strong));
+	--ui-toggle-bg-checked: var(--toggle-bg-color-checked, var(--ui-accent));
+	--ui-toggle-thumb: var(--toggle-thumb-color, #ffffff);
+
+	/* Shape and rhythm. Boxed widgets have square corners; dots,
+	 * activity markers, ring gauges and toggles use circles or rounded tracks. */
+	--ui-gap: 7px;
+	/* Shared inset for boxed choice widgets: padding, option spacing,
+	 * vertical field gaps and gaps between labels and inputs */
+	--ui-inset: 5px;
+	/* Where the label text starts after a theme radio, so descriptions
+	 * and fields line up under it */
+	--ui-radio-indent: 1.6em;
+
+	/* Fonts. A theme that defines --font-family and --font-family-mono
+	 * (Authentic does) sets the widgets' text and code fonts with them;
+	 * otherwise text inherits the page font and code uses the system
+	 * monospace stack. */
+	--ui-font: var(--font-family, inherit);
+	--ui-font-mono: var(--font-family-mono, ui-monospace, SFMono-Regular,
+		"SF Mono", Menlo, Consolas, "Liberation Mono", monospace);
+
+	color-scheme: light;
+	color: var(--ui-fg);
+	font-family: var(--ui-font);
+	text-align: left;
+}
+
+/* Built-in dark palette, enabled with data-ui-scheme="dark" on any
+ * ancestor element (or on the .ui_page wrapper itself, via the scheme
+ * option of ui_page_start). With data-ui-scheme="auto" the dark
+ * palette follows the browser's prefers-color-scheme setting instead.
+ * The two blocks below must be kept identical. */
+[data-ui-scheme="dark"] .ui_page,
+.ui_page[data-ui-scheme="dark"] {
+	--ui-canvas: #15171b;
+	--ui-surface: #1e2126;
+	--ui-surface-2: #23262c;
+	--ui-border: #363b43;
+	--ui-border-soft: #2a2f36;
+	--ui-border-strong: #4d545e;
+	--ui-fg: #e6e8ea;
+	--ui-fg-muted: #99a3ae;
+	--ui-accent: #5aa2ec;
+	--ui-accent-soft: rgba(90, 162, 236, 0.14);
+	--ui-ring: rgba(90, 162, 236, 0.35);
+	--ui-success: #7ec563;
+	--ui-success-text: #8fd376;
+	--ui-success-soft: rgba(126, 197, 99, 0.13);
+	--ui-success-line: rgba(126, 197, 99, 0.4);
+	--ui-warning: #e0a63c;
+	--ui-warning-text: #eab54f;
+	--ui-warning-soft: rgba(224, 166, 60, 0.13);
+	--ui-warning-line: rgba(224, 166, 60, 0.4);
+	--ui-danger: #ef7b6f;
+	--ui-danger-text: #f28c82;
+	--ui-danger-soft: rgba(239, 123, 111, 0.13);
+	--ui-danger-line: rgba(239, 123, 111, 0.4);
+	--ui-info: #5aa2ec;
+	--ui-info-text: #78b3ef;
+	--ui-info-soft: rgba(90, 162, 236, 0.13);
+	--ui-info-line: rgba(90, 162, 236, 0.4);
+	--ui-neutral: #aeb6bf;
+	--ui-neutral-text: #b6bec7;
+	--ui-neutral-soft: #272b31;
+	--ui-neutral-line: #3c424b;
+	color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+	[data-ui-scheme="auto"] .ui_page,
+	.ui_page[data-ui-scheme="auto"] {
+		--ui-canvas: #15171b;
+		--ui-surface: #1e2126;
+		--ui-surface-2: #23262c;
+		--ui-border: #363b43;
+		--ui-border-soft: #2a2f36;
+		--ui-border-strong: #4d545e;
+		--ui-fg: #e6e8ea;
+		--ui-fg-muted: #99a3ae;
+		--ui-accent: #5aa2ec;
+		--ui-accent-soft: rgba(90, 162, 236, 0.14);
+		--ui-ring: rgba(90, 162, 236, 0.35);
+		--ui-success: #7ec563;
+		--ui-success-text: #8fd376;
+		--ui-success-soft: rgba(126, 197, 99, 0.13);
+		--ui-success-line: rgba(126, 197, 99, 0.4);
+		--ui-warning: #e0a63c;
+		--ui-warning-text: #eab54f;
+		--ui-warning-soft: rgba(224, 166, 60, 0.13);
+		--ui-warning-line: rgba(224, 166, 60, 0.4);
+		--ui-danger: #ef7b6f;
+		--ui-danger-text: #f28c82;
+		--ui-danger-soft: rgba(239, 123, 111, 0.13);
+		--ui-danger-line: rgba(239, 123, 111, 0.4);
+		--ui-info: #5aa2ec;
+		--ui-info-text: #78b3ef;
+		--ui-info-soft: rgba(90, 162, 236, 0.13);
+		--ui-info-line: rgba(90, 162, 236, 0.4);
+		--ui-neutral: #aeb6bf;
+		--ui-neutral-text: #b6bec7;
+		--ui-neutral-soft: #272b31;
+		--ui-neutral-line: #3c424b;
+		color-scheme: dark;
+	}
+	body[data-ui-scheme="auto"]:has(.ui_page),
+	[data-ui-scheme="auto"] body:has(.ui_page),
+	body:has(.ui_page[data-ui-scheme="auto"]) {
+		background: var(--ui-canvas, #15171b);
+	}
+}
+
+/* Paint the page canvas behind widget pages. Themes can override the
+ * color by defining --ui-canvas on :root or body. */
+body:has(.ui_page) {
+	background: var(--ui-canvas, var(--bg-color, #f2f3f5));
+}
+body[data-ui-scheme="dark"]:has(.ui_page),
+[data-ui-scheme="dark"] body:has(.ui_page),
+body:has(.ui_page[data-ui-scheme="dark"]) {
+	background: var(--ui-canvas, #15171b);
+}
+
+/* ---- Spacing between blocks ----
+ * Top-level blocks are spaced by the page area. Inside any other wrapper
+ * (a tab panel, a table cell) a widget that follows a sibling, and
+ * whatever follows a widget, get the same gap, so rows of cards and the
+ * forms between them line up whatever the theme wraps them in.
+ * Children of grids, stacks, clusters and stat rows use their own gaps. */
+
+.ui_page > * + * { margin-top: var(--ui-gap); }
+.ui_page :not(.ui_grid, .ui_stack, .ui_cluster, .ui_stats) >
+	* + :is(.ui_grid, .ui_stack, .ui_card, .ui_empty),
+.ui_page :not(.ui_grid, .ui_stack, .ui_cluster, .ui_stats) >
+	:is(.ui_grid, .ui_stack, .ui_card, .ui_empty) + * {
+	margin-top: var(--ui-gap);
+}
+.ui_page [hidden] { display: none !important; }
+
+/* Widgets size their boxes including padding and borders */
+.ui_page_head, .ui_grid, .ui_stack, .ui_cluster,
+.ui_card, .ui_card *, .ui_stats, .ui_stat, .ui_stat *,
+.ui_dl, .ui_dl *, .ui_badge, .ui_chip, .ui_list, .ui_list *,
+.ui_feed, .ui_feed *, .ui_empty, .ui_empty *, .ui_progress,
+.ui_progress *, .ui_toggle, .ui_toggle *,
+.ui_search, .ui_search * {
+	box-sizing: border-box;
+}
+.ui_page h1, .ui_page h2, .ui_page p, .ui_page dl, .ui_page dd { margin: 0; }
+.ui_page svg.ui_svg_icon { flex-shrink: 0; vertical-align: -0.18em; }
+
+/* Plain links inside widget text are underlined so they still read as
+ * links next to chips and badges. Theme buttons made of ui_link are not. */
+.ui_dl_row dd a:not(.ui_link), .ui_feed_text a:not(.ui_link),
+.ui_list_desc a:not(.ui_link), .ui_empty_desc a:not(.ui_link),
+.ui_card_desc a:not(.ui_link) {
+	text-decoration: underline;
+	text-underline-offset: 0.15em;
+}
+
+/* ---- Utilities ---- */
+
+.ui_push { margin-left: auto; }
+.ui_code {
+	font-family: var(--ui-font-mono);
+	font-size: 0.92em;
+	background: var(--ui-neutral-soft);
+	border: 1px solid var(--ui-border-soft);
+	padding: 1px 5px;
+}
+.ui_code_block {
+	font-family: var(--ui-font-mono);
+	font-size: 0.92em;
+	line-height: 1.5;
+	background: var(--ui-surface-2);
+	border: 1px solid var(--ui-border-soft);
+	padding: 10px 12px;
+	margin: 0;
+	overflow: auto;
+	white-space: pre;
+	color: var(--ui-fg);
+}
+.ui_fg_success { color: var(--ui-success); }
+.ui_fg_warning { color: var(--ui-warning); }
+.ui_fg_danger { color: var(--ui-danger); }
+.ui_fg_info { color: var(--ui-info); }
+.ui_fg_neutral { color: var(--ui-neutral); }
+.ui_bg_success { background: var(--ui-success); }
+.ui_bg_warning { background: var(--ui-warning); }
+.ui_bg_danger { background: var(--ui-danger); }
+.ui_bg_info { background: var(--ui-info); }
+.ui_bg_neutral { background: var(--ui-neutral); }
+
+/* ---- Page header ---- */
+
+.ui_page_head {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 10px 24px;
+	flex-wrap: wrap;
+	margin: 4px 0 2px;
+}
+.ui_page_title {
+	font-size: 1.85em;
+	font-weight: 650;
+	letter-spacing: -0.015em;
+	line-height: 1.2;
+}
+.ui_page_titles {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.ui_page_desc {
+	color: var(--ui-fg-muted);
+	margin-top: 4px;
+}
+.ui_page_actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding-top: 7px;
+}
+.ui_page_help {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-weight: 500;
+}
+
+/* ---- Layout primitives ---- */
+
+.ui_grid {
+	display: grid;
+	gap: var(--ui-gap);
+	grid-template-columns: repeat(auto-fit,
+		minmax(min(var(--ui-grid-min, 340px), 100%), 1fr));
+	align-items: stretch;
+}
+.ui_grid_fixed {
+	grid-template-columns: var(--ui-grid-template,
+		repeat(var(--ui-grid-cols, 2), minmax(0, 1fr)));
+}
+.ui_stack {
+	display: flex;
+	flex-direction: column;
+	gap: var(--ui-gap);
+}
+.ui_cluster {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: calc(var(--ui-gap) / 2) var(--ui-gap);
+}
+.ui_cluster { --ui-gap: 10px; }
+
+/* Themes that regroup adjacent submit buttons into one box, as Authentic
+ * does with its btn-group, wrap them inside that box with no vertical
+ * space. Give those rows a gap while keeping the buttons joined. */
+.ui_cluster > .btn-group {
+	display: inline-flex;
+	flex-wrap: wrap;
+	row-gap: 7px;
+}
+.ui_cluster_center { justify-content: center; }
+.ui_cluster_end { justify-content: flex-end; }
+.ui_cluster_between { justify-content: space-between; }
+
+@media (max-width: 760px) {
+	.ui_grid_fixed { grid-template-columns: 1fr; }
+}
+
+/* ---- Cards ---- */
+
+.ui_card {
+	background: var(--ui-surface);
+	border: 1px solid var(--ui-border);
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+.ui_card_success { border-left: 3px solid var(--ui-success); }
+.ui_card_warning { border-left: 3px solid var(--ui-warning); }
+.ui_card_danger { border-left: 3px solid var(--ui-danger); }
+.ui_card_info { border-left: 3px solid var(--ui-info); }
+.ui_card_head {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 4px 12px;
+	padding: 5px 6px 0 7px;
+	flex-wrap: wrap;
+}
+.ui_card_title {
+	font-size: 1.07697em;
+	font-weight: 650;
+	line-height: 1.3;
+}
+.ui_card_desc {
+	color: var(--ui-fg-muted);
+	font-size: 0.93em;
+	margin-top: 3px;
+}
+.ui_card_actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-shrink: 0;
+}
+.ui_card_body {
+	padding: 3px 7px 7px;
+	flex: 1;
+	min-width: 0;
+}
+.ui_card_body.ui_card_flush { padding: 1px 0 0; }
+.ui_card_head + .ui_card_body.ui_card_flush { padding-top: 3px; }
+.ui_card_foot {
+	border-top: 1px solid var(--ui-border-soft);
+	padding: 5px;
+	color: var(--ui-fg-muted);
+	font-size: 0.93em;
+}
+
+/* ---- Stat tiles ---- */
+
+.ui_stats {
+	display: grid;
+	gap: 12px 24px;
+	grid-template-columns: repeat(auto-fit,
+		minmax(min(var(--ui-grid-min, 150px), 100%), 1fr));
+}
+.ui_stat {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+	min-width: 0;
+	color: inherit;
+	text-decoration: none;
+}
+.ui_stat_value {
+	font-size: 1.85em;
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.ui_stat_label { font-weight: 600; }
+.ui_stat_desc { color: var(--ui-fg-muted); font-size: 0.9em; }
+a.ui_stat, a.ui_stat:hover {
+	color: inherit !important;
+	text-decoration: none !important;
+}
+a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
+
+/* ---- Description lists ---- */
+
+/* The list is one grid and every row contributes its dt and dd to it, so
+ * all labels share a single column sized to the longest label, up to the
+ * fraction given by --ui-dl-label. Labels only wrap past that limit. */
+.ui_dl {
+	display: grid;
+	grid-template-columns: var(--ui-dl-label, fit-content(45%)) 1fr;
+	gap: 10px 20px;
+	align-items: baseline;
+}
+.ui_dl_cols {
+	grid-template-columns:
+		repeat(2, var(--ui-dl-label, fit-content(45%)) 1fr);
+	column-gap: 24px;
+}
+.ui_dl_row { display: contents; }
+.ui_dl_row dt { font-weight: 600; }
+.ui_dl_row dd {
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+@media (max-width: 560px) {
+	.ui_dl, .ui_dl_cols { grid-template-columns: 1fr; }
+	.ui_dl { row-gap: 2px; }
+	.ui_dl_row dd { margin-bottom: 8px; }
+}
+
+/* ---- Badges and chips ---- */
+
+.ui_badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	padding: 2px 10px;
+	border: 1px solid transparent;
+	font-size: 0.9em;
+	font-weight: 600;
+	line-height: 1.5;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.ui_badge_success {
+	background: var(--ui-success-soft);
+	border-color: var(--ui-success-line);
+	color: var(--ui-success-text);
+}
+.ui_badge_warning {
+	background: var(--ui-warning-soft);
+	border-color: var(--ui-warning-line);
+	color: var(--ui-warning-text);
+}
+.ui_badge_danger {
+	background: var(--ui-danger-soft);
+	border-color: var(--ui-danger-line);
+	color: var(--ui-danger-text);
+}
+.ui_badge_info {
+	background: var(--ui-info-soft);
+	border-color: var(--ui-info-line);
+	color: var(--ui-info-text);
+}
+.ui_badge_neutral {
+	background: var(--ui-neutral-soft);
+	border-color: var(--ui-neutral-line);
+	color: var(--ui-neutral-text);
+}
+.ui_chip {
+	display: inline-flex;
+	align-items: center;
+	padding: 1px 8px;
+	background: var(--ui-neutral-soft);
+	border: 1px solid var(--ui-border);
+	color: var(--ui-neutral-text);
+	font-size: 0.86em;
+	line-height: 1.5;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+/* ---- Lists ---- */
+
+.ui_list { display: flex; flex-direction: column; }
+.ui_list_item {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	padding: 5px 0;
+	border-bottom: 1px solid var(--ui-border-soft);
+}
+.ui_list_item:last-child { border-bottom: 0; }
+.ui_list_flush .ui_list_item { padding: 5px 6px 5px 7px; }
+.ui_list_main { flex: 1; min-width: 0; }
+.ui_list_title {
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+	overflow-wrap: anywhere;
+}
+.ui_list_desc {
+	color: var(--ui-fg-muted);
+	font-size: 0.93em;
+	margin-top: 2px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+.ui_list_side {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-shrink: 0;
+	padding-top: 1px;
+}
+.ui_list_meta { color: var(--ui-fg-muted); font-size: 0.9em; }
+/* Badges in list rows are chip-sized, so they do not outweigh the text */
+.ui_list_item .ui_badge {
+	padding: 1px 8px;
+	gap: 4px;
+	font-size: 0.86em;
+}
+.ui_list_item .ui_badge .ui_svg_icon { width: 1em; height: 1em; }
+/* Description text is 0.93em, so badges and chips inside it are scaled
+ * back by that much to match the ones next to the title */
+.ui_list_desc :is(.ui_badge, .ui_chip) { font-size: calc(0.86em / 0.93); }
+.ui_list_icon { padding-top: 2px; color: var(--ui-fg-muted); }
+a.ui_list_link, a.ui_list_link:hover {
+	color: inherit !important;
+	text-decoration: none !important;
+}
+a.ui_list_link:hover { color: var(--ui-accent) !important; }
+
+/* ---- Activity feed ---- */
+
+.ui_feed { display: flex; flex-direction: column; }
+.ui_feed_item {
+	position: relative;
+	padding: 0 0 16px 20px;
+	border-left: 2px solid var(--ui-border-soft);
+	margin-left: 5px;
+}
+.ui_feed_item:last-child { padding-bottom: 2px; }
+.ui_feed_item::before {
+	content: "";
+	position: absolute;
+	left: -6px;
+	top: 4px;
+	width: 10px;
+	height: 10px;
+	border-radius: 999px;
+	background: var(--ui-border-strong);
+	border: 2px solid var(--ui-surface);
+}
+.ui_feed_success::before { background: var(--ui-success); }
+.ui_feed_warning::before { background: var(--ui-warning); }
+.ui_feed_danger::before { background: var(--ui-danger); }
+.ui_feed_info::before { background: var(--ui-info); }
+.ui_feed_when { font-weight: 600; font-size: 1em; }
+.ui_feed_text { color: var(--ui-fg-muted); font-size: 0.93em; margin-top: 1px; }
+.ui_feed_flush { padding: 3px 19px 7px; }
+
+/* ---- Empty states ---- */
+
+.ui_empty {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	padding: 1px 7px 7px;
+	text-align: center;
+}
+.ui_empty_icon { color: var(--ui-border-strong); margin-bottom: 2px; }
+.ui_empty_title { font-weight: 600; font-size: 1.04em; }
+.ui_empty_desc {
+	color: var(--ui-fg-muted);
+	font-size: 0.93em;
+	max-width: 46ch;
+}
+.ui_empty_actions { margin-top: 6px; }
+
+/* ---- Progress ---- */
+
+.ui_progress_head {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	font-size: 0.93em;
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+.ui_progress_value { color: var(--ui-fg-muted); font-weight: 400; }
+.ui_progress_track {
+	display: flex;
+	height: 4px;
+	background: var(--ui-neutral-soft);
+	overflow: hidden;
+}
+.ui_progress_bar {
+	height: 100%;
+	flex-shrink: 0;
+	transition: width 0.4s ease;
+}
+
+/* Inline layout : label, bar and value on one line */
+.ui_progress_inline {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 0.93em;
+}
+.ui_progress_inline .ui_progress_label {
+	font-weight: 600;
+	white-space: nowrap;
+}
+.ui_progress_inline .ui_progress_track { flex: 1 1 auto; }
+.ui_progress_inline .ui_progress_value {
+	min-width: 3em;
+	text-align: right;
+	white-space: nowrap;
+}
+
+/* Value shown as a small marker riding on the end of the bar, which
+ * keeps the same height as every other bar */
+.ui_progress_inside .ui_progress_track { overflow: visible; }
+.ui_progress_inside .ui_progress_bar { position: relative; }
+.ui_progress_inside_value {
+	position: absolute;
+	top: 50%;
+	left: 100%;
+	transform: translate(-50%, -50%);
+	padding: 1px 4px;
+	/* The bar's own color, lightened by a white veil, with dark text */
+	background: inherit;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.6),
+					  rgba(255, 255, 255, 0.6));
+	color: #1c1c1c;
+	font-size: 0.75em;
+	font-weight: 600;
+	line-height: 1.2;
+	white-space: nowrap;
+}
+.ui_progress_inside_start .ui_progress_inside_value {
+	transform: translate(0, -50%);
+}
+.ui_progress_inside_end .ui_progress_inside_value {
+	transform: translate(-100%, -50%);
+}
+
+/* Legend under a segmented bar */
+.ui_progress_legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 16px;
+	margin-top: 6px;
+	font-size: 0.9em;
+}
+.ui_progress_key {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+.ui_progress_dot {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+}
+
+/* Unknown progress : a bar sliding along the track */
+.ui_progress_indeterminate .ui_progress_bar {
+	width: 35%;
+	animation: ui_progress_slide 1.4s ease-in-out infinite;
+}
+@keyframes ui_progress_slide {
+	from { transform: translateX(-100%); }
+	to { transform: translateX(300%); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.ui_progress_indeterminate .ui_progress_bar {
+		width: 100%;
+		animation: none;
+		opacity: 0.6;
+		background-image: repeating-linear-gradient(45deg,
+			transparent 0 6px, rgba(255, 255, 255, 0.45) 6px 12px);
+	}
+}
+
+/* Ring gauge : the bar is a circle of circumference 100 whose dash
+ * length is the percentage */
+.ui_progress_ring {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+}
+.ui_progress_ring_box {
+	position: relative;
+	display: inline-block;
+	line-height: 0;
+}
+.ui_progress_ring_svg { transform: rotate(-90deg); }
+/* The stroke width is set on the circles by ui_progress, scaled to the
+ * ring size so it is always 3 pixels */
+.ui_progress_ring_track {
+	fill: none;
+	stroke: var(--ui-neutral-soft);
+}
+.ui_progress_ring_bar {
+	fill: none;
+	stroke: currentColor;
+	stroke-linecap: round;
+	transition: stroke-dasharray 0.4s ease;
+}
+.ui_progress_ring.ui_progress_indeterminate .ui_progress_ring_svg {
+	animation: ui_progress_spin 1s linear infinite;
+}
+@keyframes ui_progress_spin {
+	from { transform: rotate(-90deg); }
+	to { transform: rotate(270deg); }
+}
+.ui_progress_ring_box .ui_progress_value {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.8em;
+	font-weight: 600;
+	line-height: 1;
+	color: var(--ui-fg);
+}
+.ui_progress_ring .ui_progress_label {
+	font-size: 0.85em;
+	color: var(--ui-fg-muted);
+}
+
+/* ---- Choice lists ----
+ * One solid box holding a row per option : the theme's own radio button
+ * with its label, the inline inputs beside it, and further fields under
+ * them in as many columns as fit, indented under the label. Everything
+ * stays visible. */
+.ui_choice {
+	display: grid;
+	gap: var(--ui-inset);
+	min-width: 0;
+	/* Half the inset above and below, the full inset at the sides */
+	padding: calc(var(--ui-inset) / 2) var(--ui-inset);
+	border: 1px solid var(--ui-border);
+	background: var(--ui-surface);
+}
+.ui_choice_item { min-width: 0; }
+.ui_choice_head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 4px var(--ui-inset);
+	min-width: 0;
+}
+/* Only the option's own label is bold, not labels of inputs in its content */
+.ui_choice_head label:not(.ui_choice_content label) { font-weight: 600; }
+.ui_choice_content {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px var(--ui-inset);
+	min-width: 0;
+}
+.ui_choice_desc {
+	margin-left: var(--ui-radio-indent);
+	color: var(--ui-fg-muted);
+	font-size: 0.93em;
+}
+.ui_choice_fields {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+	gap: var(--ui-inset) 20px;
+	margin: var(--ui-inset) 0 0 var(--ui-radio-indent);
+}
+.ui_choice_field {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px var(--ui-inset);
+	min-width: 0;
+}
+.ui_choice_field_label { color: var(--ui-fg-muted); }
+.ui_choice_field_input { min-width: 0; }
+.ui_choice_disabled { opacity: 0.6; }
+
+/* ---- Radio lists ----
+ * The compact form : the theme's radio buttons at the left edge of a
+ * box, one option per line, an optional input after the label */
+.ui_radio_list {
+	display: grid;
+	gap: var(--ui-inset);
+	min-width: 0;
+	padding: var(--ui-inset);
+	border: 1px solid var(--ui-border);
+	background: var(--ui-surface);
+}
+.ui_radio_list_item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 4px var(--ui-inset);
+	min-width: 0;
+}
+.ui_radio_list_item label:not(.ui_radio_list_content label) {
+	font-weight: 600;
+}
+.ui_radio_list_content {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px var(--ui-inset);
+	min-width: 0;
+}
+.ui_radio_list_disabled { opacity: 0.6; }
+
+/* ---- Select switches ----
+ * A select, and under it the block of the chosen option only */
+.ui_select_switch {
+	display: grid;
+	justify-items: start;
+	gap: var(--ui-inset);
+	min-width: 0;
+}
+.ui_select_switch_panel {
+	display: grid;
+	gap: var(--ui-inset);
+	width: 100%;
+	min-width: 0;
+	padding: var(--ui-inset);
+	border: 1px solid var(--ui-border);
+	background: var(--ui-surface);
+}
+.ui_select_switch_desc {
+	color: var(--ui-fg-muted);
+	font-size: 0.93em;
+}
+.ui_select_switch_content {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px var(--ui-inset);
+	min-width: 0;
+}
+.ui_select_switch_fields {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+	gap: var(--ui-inset) 20px;
+}
+.ui_select_switch_field {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px var(--ui-inset);
+	min-width: 0;
+}
+.ui_select_switch_field_label { color: var(--ui-fg-muted); }
+.ui_select_switch_field_input { min-width: 0; }
+
+/* ---- Toggle switch ----
+ * Some themes wrap checkbox inputs in their own markup with JavaScript,
+ * so the real input - or whatever wrapper it ends up inside - is parked
+ * invisibly over the track, where clicks and keyboard focus still reach
+ * it, and the checked state is read with :has() which does not depend on
+ * the input being the track's sibling. */
+
+.ui_toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+	position: relative;
+	font-weight: normal;
+}
+.ui_toggle > :not(.ui_toggle_track):not(.ui_toggle_label),
+.ui_toggle input {
+	position: absolute !important;
+	left: 0 !important;
+	top: 0 !important;
+	width: 28px !important;
+	height: 14px !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	opacity: 0 !important;
+	overflow: hidden;
+	z-index: 1;
+	cursor: pointer;
+}
+.ui_toggle_track {
+	display: inline-flex;
+	align-items: center;
+	width: 28px;
+	height: 14px;
+	padding: 2px;
+	border-radius: 999px;
+	background: var(--ui-toggle-bg);
+	transition: background 0.15s ease;
+	flex-shrink: 0;
+}
+.ui_toggle_thumb {
+	width: 10px;
+	height: 10px;
+	border-radius: 999px;
+	background: var(--ui-toggle-thumb);
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.25);
+	transition: transform 0.15s ease;
+}
+.ui_toggle input:checked ~ .ui_toggle_track,
+.ui_toggle:has(input:checked) .ui_toggle_track {
+	background: var(--ui-toggle-bg-checked);
+}
+.ui_toggle input:checked ~ .ui_toggle_track .ui_toggle_thumb,
+.ui_toggle:has(input:checked) .ui_toggle_thumb {
+	transform: translateX(14px);
+}
+.ui_toggle input:focus-visible ~ .ui_toggle_track,
+.ui_toggle:has(input:focus-visible) .ui_toggle_track {
+	box-shadow: 0 0 0 3px var(--ui-ring);
+}
+.ui_toggle input:disabled ~ .ui_toggle_track,
+.ui_toggle:has(input:disabled) .ui_toggle_track { opacity: 0.5; }
+
+/* ---- Search box ---- */
+
+.ui_search {
+	position: relative;
+	display: inline-flex;
+	max-width: 100%;
+}
+.ui_search .ui_search_icon {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--ui-fg-muted);
+	pointer-events: none;
+}
+.ui_search .ui_search_input {
+	padding-left: 30px;
+	width: 100%;
+	min-width: 0;
+	font: inherit;
+	color: inherit;
+	background: var(--ui-surface);
+	border: 1px solid var(--ui-border-strong);
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+}
+.ui_search .ui_search_input:focus {
+	outline: none;
+	border-color: var(--ui-accent);
+	box-shadow: 0 0 0 3px var(--ui-ring);
+}
+
+/* ---- Reduced motion ---- */
+
+@media (prefers-reduced-motion: reduce) {
+	.ui_progress_ring.ui_progress_indeterminate .ui_progress_ring_svg {
+		animation: none;
+	}
+	.ui_page *, .ui_page *::before, .ui_page *::after {
+		transition: none !important;
+	}
+}

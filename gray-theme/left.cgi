@@ -133,6 +133,17 @@ if ($mode eq "modules" && foreign_available("webmin")) {
 			   'icon' => '/images/reload.png' });
 	}
 
+# Show the UI demo module when it has been dropped into the Webmin root,
+# so it is reachable even before it has been added to the user's module list
+if (-d &module_root_directory('ui-demo')) {
+	my %ui_demo = &get_module_info('ui-demo');
+	push(@leftitems, { 'type' => 'item',
+			   'id' => 'ui-demo',
+			   'desc' => $ui_demo{'desc'} || 'UI Demo',
+			   'icon' => '/ui-demo/images/menu.svg',
+			   'link' => '/ui-demo/' });
+	}
+
 # Show logout link
 get_miniserv_config(\%miniserv);
 if ($miniserv{'logout'} && !$ENV{'SSL_USER'} && !$ENV{'LOCAL_USER'} &&

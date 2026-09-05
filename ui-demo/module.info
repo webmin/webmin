@@ -1,0 +1,6 @@
+desc=UI Demo
+longdesc=Read-only gallery of the widgets in ui-lib.pl and of the existing forms, buttons and tables they are meant to be combined with. A reference for writing new modules; not part of the distribution.
+category=others
+os_support=*
+noacl=1
+readonly=1

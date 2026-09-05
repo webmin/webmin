@@ -336,6 +336,11 @@ ui_warning=Warning
 ui_error=Error
 ui_error_fatal=Fatal Error
 
+ui_page_help=Help
+ui_empty_state=Nothing to display
+ui_search=Search
+ui_dismiss=Dismiss
+
 header_statusmsg=$1 logged into $2 $3 on $4 ($5)
 
 uptracker_title=Uploading File
