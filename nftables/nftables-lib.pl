@@ -366,32 +366,73 @@ rename_file($legacy, $legacy.".migrated");
 return scalar(@add);
 }
 
+# nftables_include_files(file)
+# Returns the files that a ruleset file pulls in with include directives, in
+# the order nft reads them. Includes are followed recursively, globs are
+# expanded, and a relative path resolves against the including file's own
+# directory
+sub nftables_include_files
+{
+my ($file, $seen) = @_;
+$seen ||= {};
+return () if (!$file || $file =~ /\|\s*$/);
+return () if ($seen->{simplify_path($file)}++);
+return () if (!-r $file);
+my $data = read_file_contents($file);
+return () if (!defined($data));
+my $dir = $file;
+$dir =~ s/\/[^\/]+$//;
+$dir = "/" if ($dir eq "");
+
+my @rv;
+my $depth = 0;
+foreach my $l (split(/\r?\n/, $data)) {
+	$l =~ s/#.*$//;
+	if ($depth) {
+		my $opens = () = $l =~ /\{/g;
+		my $closes = () = $l =~ /\}/g;
+		$depth += $opens - $closes;
+		$depth = 0 if ($depth < 0);
+		next;
+		}
+	if ($l =~ /^\s*table\s+\S+(\s+\S+)?\s*\{/) {
+		$depth = 1;
+		next;
+		}
+
+	# An include only means anything at the top level
+	next if ($l !~ /^\s*include\s+(\S.*?)\s*;?\s*$/);
+	my $spec = $1;
+	if ($spec =~ /^"([^"]*)"$/ || $spec =~ /^'([^']*)'$/) {
+		$spec = $1;
+		}
+	next if ($spec eq "");
+	$spec = $dir."/".$spec if ($spec !~ /^\//);
+	foreach my $inc (nftables_glob($spec)) {
+		next if (!-f $inc);
+		push(@rv, $inc, nftables_include_files($inc, $seen));
+		}
+	}
+return @rv;
+}
+
+# nftables_glob(pattern)
+# Expands one include pattern, without the word splitting that the built-in
+# glob does on paths containing spaces
+sub nftables_glob
+{
+my ($pattern) = @_;
+require File::Glob;
+return File::Glob::bsd_glob($pattern);
+}
+
 # get_nftables_config_files()
 # Returns files that can be manually edited by this module
 sub get_nftables_config_files
 {
-my @files;
-push(@files, nftables_rules_file());
-
-foreach my $sysfile ("/etc/nftables.conf", "/etc/sysconfig/nftables.conf") {
-	push(@files, $sysfile) if (-f $sysfile);
-	}
-
-if (-d "/etc/nftables") {
-	opendir(my $dir, "/etc/nftables");
-	if ($dir) {
-		foreach my $name (sort readdir($dir)) {
-			next if ($name =~ /^\./);
-			next if ($name !~ /\.(?:nft|conf)$/);
-			my $path = "/etc/nftables/$name";
-			push(@files, $path) if (-f $path);
-			}
-		closedir($dir);
-		}
-	}
-
+my $main = nftables_rules_file();
 my %seen;
-return grep { !$seen{$_}++ } @files;
+return grep { !$seen{$_}++ } ($main, nftables_include_files($main));
 }
 
 # list_foreign_firewall_modules()
@@ -412,19 +453,18 @@ foreach my $mod (@mods) {
 return @rv;
 }
 
-# validate_nftables_text(text)
-# Returns an error if nft rejects the supplied ruleset text
-sub validate_nftables_text
+# validate_nftables_files()
+# Returns an error if nft rejects the saved ruleset as it stands on disk.
+# An included file cannot be checked on its own, as it may well use a define
+# from the file that includes it, so the whole ruleset is checked from the
+# top
+sub validate_nftables_files
 {
-my ($text) = @_;
 my $cmd = get_nft_command();
 return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
-my $tmp = tempname();
-open_tempfile(my $fh, ">$tmp");
-print_tempfile($fh, $text);
-close_tempfile($fh);
-my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
-unlink_file($tmp);
+my $file = nftables_rules_file();
+return if (!-r $file);
+my $out = backquote_logged("$cmd -c -f ".quotemeta($file)." 2>&1");
 return $? ? "<pre>$out</pre>" : undef;
 }
 
@@ -433,9 +473,21 @@ return $? ? "<pre>$out</pre>" : undef;
 sub get_nftables_save
 {
 my ($file) = @_;
-if (!$file) {
-	$file = nftables_rules_file();
+$file ||= nftables_rules_file();
+return () if (!$file);
+my @rv = parse_nftables_file($file);
+foreach my $inc (nftables_include_files($file)) {
+	push(@rv, parse_nftables_file($inc));
 	}
+return @rv;
+}
+
+# parse_nftables_file(file)
+# Returns the tables defined in one ruleset file, each tagged with the file
+# it came from so that it can be written back to the same place
+sub parse_nftables_file
+{
+my ($file) = @_;
 return () if (!$file);
 return () if ($file !~ /\|\s*$/ && !-r $file);
 
@@ -540,6 +592,7 @@ for (my $i = 0 ; $i < @lines ; $i++) {
 		$table = {
 			'name' => $2,
 			'family' => $1,
+			'file' => $file,
 			'line' => $lnum,
 			'rules' => [ ],
 			'chains' => {},
@@ -3793,13 +3846,38 @@ return $rv;
 sub write_configuration
 {
 my (@tables) = @_;
-my $file = nftables_rules_file();
-my ($pre, $post) = get_nftables_extras($file);
-my $out = $pre.dump_nftables_save(@tables).$post;
+my $main = nftables_rules_file();
+my @known = ($main, nftables_include_files($main));
+my %known = map { $_ => 1 } @known;
 
-open_lock_tempfile(my $fh, ">$file");
-print_tempfile($fh, $out);
-close_tempfile($fh);
+# Each table goes back to the file it was read from, so that a table living
+# in an included file is edited there instead of being copied into the main
+# one. Anything without a home, or pointing somewhere we do not manage, goes
+# to the main file
+my %byfile;
+foreach my $t (@tables) {
+	my $f = $t->{'file'};
+	$f = $main if (!$f || !$known{$f});
+	push(@{$byfile{$f}}, $t);
+	}
+
+# Every file that holds tables has to be re-written even if it ends up with
+# none, or a deleted table would survive in its own file
+foreach my $f (@known) {
+	$byfile{$f} ||= [ ];
+	}
+
+foreach my $f (sort keys %byfile) {
+	# Leave a file alone unless its own tables actually changed. Comparing
+	# through the dumper ignores whatever indenting the file happens to
+	# use, so an untouched file is not re-formatted behind the admin's back
+	my $want = dump_nftables_save(@{$byfile{$f}});
+	next if ($want eq dump_nftables_save(parse_nftables_file($f)));
+	my ($pre, $post) = get_nftables_extras($f);
+	open_lock_tempfile(my $fh, ">$f");
+	print_tempfile($fh, $pre.$want.$post);
+	close_tempfile($fh);
+	}
 update_last_config_change();
 return;
 }

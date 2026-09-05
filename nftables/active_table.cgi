@@ -32,6 +32,10 @@ print ui_table_start($text{'active_table_summary'}, "width=100%", 2);
 print ui_table_row($text{'active_table'}, html_escape(nft_table_spec($table)));
 print ui_table_row($text{'active_flags'}, html_escape($table->{'flags'} || "-"));
 print ui_table_row($text{'active_status'}, $text{'active_'.$status_key});
+my ($saved_copy) = grep { table_key($_) eq table_key($table) } @saved_tables;
+print ui_table_row($text{'active_file'},
+		   "<tt>".html_escape($saved_copy->{'file'})."</tt>")
+    if ($saved_copy && $saved_copy->{'file'});
 print ui_table_end();
 
 if (!$is_saved && check_acl('import')) {

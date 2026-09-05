@@ -49,6 +49,9 @@ if ($in{'import'}) {
 	my $import = dclone($source);
 	$import->{'name'} = $name;
 	delete($import->{'flags'});
+
+	# It came from the live ruleset, so it has no file of its own yet
+	delete($import->{'file'});
 	assert_table_acl($import);
 	push(@tables, $import);
 	write_configuration(@tables);

@@ -423,6 +423,15 @@ else {
 	# Identify current table
 	my $curr = $tables[$in{'table'}];
 
+	# Say which file holds it, as the ruleset can be spread over the main
+	# configuration file and the files it includes
+	if ($curr && $curr->{'file'} && !$partial) {
+		print ui_tag('div',
+			text('index_table_file',
+			     "<tt>".html_escape($curr->{'file'})."</tt>"),
+			{'class' => 'nftables_table_file'}), "\n";
+		}
+
 	if ($curr) {
 		my ($sets_html, $chains_html);
 
