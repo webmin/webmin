@@ -493,7 +493,7 @@ ok(scalar(grep { $_ eq '2022' }
           @{$profile_table->{sets}->{profile_hosting_tcp_ports}->{elements}}),
    'profile helper includes dynamic ssh port');
 
-# The saved configuration is now the system's own nftables file, so re-writing
+# The saved configuration is the system's own nftables file, so re-writing
 # it must not discard anything the module does not model
 my $sysfile = write_ruleset($confdir, 'system.nft', <<'EOF');
 #!/usr/sbin/nft -f
