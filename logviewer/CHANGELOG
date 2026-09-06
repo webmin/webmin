@@ -1,2 +1,4 @@
+---- Changes since 2.660 ----
+Fix systemd journal display with a since filter on older systemd, which returned the oldest entries instead of the newest when logs were shown in chronological order
 ---- Changes since 1.000 ----
 Add support for viewing all system logs files, including systemd-journald

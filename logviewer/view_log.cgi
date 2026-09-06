@@ -22,6 +22,7 @@ if ($in{'idx'} =~ /^\//) {
 	delete($in{'oidx'});
 	}
 my $journal_since = &get_journal_since();
+my $journal_tac = 0;
 if ($in{'idx'} ne '') {
 	# From systemctl commands
 	if ($in{'idx'} =~ /^journal-/) {
@@ -36,15 +37,18 @@ if ($in{'idx'} ne '') {
 			($log) = grep { $_->{'id'} eq $in{'idx'} }
 					@systemctl_cmds;
 			}
-		# If reverse is set, add it to the command
-		if ($reverse) {
-			$log->{'cmd'} .= " --reverse";
-			}
 		# If since is set and allowed, add it to the command
 		if ($in{'since'} &&
 		    grep { $_ eq $in{'since'} }
 		    	map { keys %$_ } @$journal_since) {
 			$log->{'cmd'} .= " $in{'since'}";
+			# On systemd before 254, --lines with --since returns
+			# the first N entries instead of the last N, so read
+			# in reverse and restore order with tac
+			if ($in{'since'} =~ /^--since/ && !$config{'reverse'}) {
+				$log->{'cmd'} .= " --reverse";
+				$journal_tac = 1;
+				}
 			}
 		&can_edit_log($log) && $access{'syslog'} ||
 			&error($text{'save_ecannot2'});
@@ -129,11 +133,20 @@ my $skip_index = $config{'skip_index'} == 1 ? 1 : undef;
 my $help_link = (!$no_navlinks && $skip_index) ?
 	&help_search_link("systemd-journal journalctl", "man", "doc") : undef;
 my $no_links = $no_navlinks || $skip_index;
+# Build the filter command, also shown in the header
+my $grep_cmd;
+if ($filter) {
+	my $grep_mode = $use_regex ? "-E" : "-F";
+	my $context_opts = $has_context ? " -C $context_lines" : "";
+	my $grep_flags = $cmd =~ /journalctl/ ? "-a" : "-i -a";
+	$grep_cmd = "grep $grep_flags $grep_mode$context_opts -- $filter";
+	}
 my $cmd_unpacked = $cmd;
 $cmd_unpacked =~ s/\\x([0-9A-Fa-f]{2})/pack('H2', $1)/eg;
 $cmd_unpacked =~ s/\s+\-\-reverse// if ($follow);
 $cmd_unpacked =~ s/\s+\-\-lines\s+\d+// if ($follow);
-$cmd_unpacked .= " --grep \"@{[&html_escape($jfilter)]}\"" if ($filter);
+$cmd_unpacked .= " | $grep_cmd" if ($filter);
+$cmd_unpacked .= " | tac" if ($journal_tac);
 my $view_title = $in{'idx'} =~ /^journal/ ?
 	$text{'view_titlejournal'} : $text{'view_title'};
 &ui_print_header("<tt>".&html_escape($file || $cmd_unpacked)."</tt>",
@@ -173,19 +186,14 @@ if (!$follow) {
 		if ($reverse) {
 			$tailcmd .= " | tac" if ($cmd !~ /journalctl/);
 			}
-		$dashflag = "--";
-		my $grep_mode = $use_regex ? "-E" : "-F";
 		if (@cats) {
 			my $fcmd;
-			my $context_opts = $has_context ? " -C $context_lines" : "";
 			if ($cmd =~ /journalctl/) {
-				$fcmd = "$cmd | grep -a $grep_mode$context_opts ".
-					"$dashflag $filter";
+				$fcmd = "$cmd | $grep_cmd";
+				$fcmd .= " | tac" if ($journal_tac);
 				}
 			else {
-				$fcmd = "$cat | grep -i -a $grep_mode$context_opts ".
-					"$dashflag $filter ".
-					"| $tailcmd";
+				$fcmd = "$cat | $grep_cmd | $tailcmd";
 				}
 			open(my $output_fh, '>', \$safe_proc_out);
 			$safe_proc_out_got = &proc::safe_process_exec(
@@ -201,6 +209,7 @@ if (!$follow) {
 		if ($cmd) {
 			# Getting output from a command
 			$fullcmd = $cmd.($cmd =~ /journalctl/ ? "" : (" | ".$tailcmd));
+			$fullcmd .= " | tac" if ($journal_tac);
 			}
 		elsif ($config{'compressed'}) {
 			# Cat all compressed files

@@ -8,6 +8,7 @@
 * Fix DNF update confirmations by previewing packages and dependencies that will be installed or updated
 * Fix PostgreSQL initialization on EL systems to use SCRAM-SHA-256 authentication by default
 * Fix IPsec host key generation with modern Libreswan [#2132](https://github.com/webmin/webmin/issues/2132)
+* Fix journal since filter showing oldest entries on older systemd [forum.virtualmin.com/t/137876](https://forum.virtualmin.com/t/137876)
 
 #### 2.660 (August 20, 2026)
 * Add support for creating `vfsv1` Linux quota files for limits above 4 TiB, while preserving existing quota file formats
