@@ -287,6 +287,59 @@ init::disable_at_boot(nftables_service_name());
 undef($nftables_service_status_cache);
 }
 
+# nftables_service_running()
+# Returns true if the system nftables service has its ruleset loaded
+sub nftables_service_running
+{
+return 0 if (!nftables_service_status());
+foreign_require("init", "init-lib.pl");
+no warnings 'once';
+if (($init::init_mode || "") eq "systemd") {
+	return init::is_active_systemd(
+	    init::action_unit(nftables_service_name())) ? 1 : 0;
+	}
+my $file = init::action_filename(nftables_service_name());
+return 0 if (!$file || !-x $file);
+return init::action_running($file) == 1 ? 1 : 0;
+}
+
+# nftables_service_stop_flushes()
+# Returns true if stopping the service flushes the whole kernel ruleset. Most
+# distributions do exactly that, which takes out tables belonging to other
+# software as well, so the admin is warned before doing it
+sub nftables_service_stop_flushes
+{
+my $unit_file = nftables_service_unit_file();
+return 0 if (!$unit_file);
+my $data = read_file_contents($unit_file);
+return 0 if (!$data);
+foreach my $l (split(/\r?\n/, $data)) {
+	next if ($l !~ /^\s*ExecStop\s*=/);
+	return 1 if ($l =~ /flush\s+ruleset/);
+	}
+return 0;
+}
+
+# start_nftables_service()
+# Starts the system nftables service, loading the saved ruleset
+sub start_nftables_service
+{
+foreign_require("init", "init-lib.pl");
+my ($ok, $err) = init::start_action(nftables_service_name());
+undef($nftables_service_status_cache);
+return $ok ? undef : $err;
+}
+
+# stop_nftables_service()
+# Stops the system nftables service
+sub stop_nftables_service
+{
+foreign_require("init", "init-lib.pl");
+my ($ok, $err) = init::stop_action(nftables_service_name());
+undef($nftables_service_status_cache);
+return $ok ? undef : $err;
+}
+
 # legacy_nftables_rules_files()
 # Returns the private rules files that releases before the switch to the
 # system nftables configuration wrote to

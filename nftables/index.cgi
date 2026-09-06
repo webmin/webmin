@@ -854,14 +854,11 @@ if ($partial) {
 
 print $rules_html;
 
-my $init_support = foreign_check("init") && check_acl('bootup') &&
-                   nftables_service_status() ? 1 : 0;
 if (
 	@tables &&
 	(check_acl('active') ||
 		check_acl('setup') ||
-		check_manual_acl() ||
-		$init_support)
+		check_manual_acl())
     )
 {
 	print ui_hr();
@@ -881,10 +878,35 @@ if (
 		$text{'index_edit_manual'},
 		$text{'index_edit_manualdesc'}
 	) if (check_manual_acl());
+	print ui_buttons_end();
+	}
+
+# Service controls, shown whether or not any rules are saved yet. Without
+# them there is no way to see that the service is stopped or disabled, which
+# is the normal state on a system that has never had a ruleset
+my $svc = foreign_check("init") ? nftables_service_status() : 0;
+my $can_service = $svc && check_acl('service');
+my $can_bootup = $svc && check_acl('bootup');
+if ($can_service || $can_bootup) {
+	print ui_hr();
+	print ui_buttons_start();
+	if ($can_service) {
+		if (nftables_service_running()) {
+			my $desc = $text{'index_stopdesc'};
+			$desc .= " ".$text{'index_stopflush'}
+			    if (nftables_service_stop_flushes());
+			print ui_buttons_row("stop.cgi", $text{'index_stop'},
+				$desc);
+			}
+		else {
+			print ui_buttons_row("start.cgi", $text{'index_start'},
+				$text{'index_startdesc'});
+			}
+		}
 	print ui_buttons_row("bootup.cgi", $text{'index_bootup'},
 		$text{'index_bootupdesc'},
 		undef, ui_yesno_radio("boot", nftables_started_at_boot()))
-	    if ($init_support);
+	    if ($can_bootup);
 	print ui_buttons_end();
 	}
 
