@@ -10,6 +10,7 @@
 * Fix IPsec host key generation with modern Libreswan [#2132](https://github.com/webmin/webmin/issues/2132)
 * Fix journal since filter showing oldest entries on older systemd [forum.virtualmin.com/t/137876](https://forum.virtualmin.com/t/137876)
 * Fix disk usage and mounted filesystem handling for mount points and devices with spaces, such as ZFS datasets [#2833](https://github.com/webmin/webmin/issues/2833)
+* Fix slave zone files staying empty on Debian and Ubuntu secondaries by creating BIND zone files owned by the `bind` user [forum.virtualmin.com/t/137767](https://forum.virtualmin.com/t/137767)
 
 #### 2.660 (August 20, 2026)
 * Add support for creating `vfsv1` Linux quota files for limits above 4 TiB, while preserving existing quota file formats
