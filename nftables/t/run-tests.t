@@ -231,10 +231,10 @@ ok(table_is_externally_managed($tables_prio[0]),
    'table with owner,persist flags is externally managed');
 is(active_table_status($tables_prio[0], []), 'external',
    'external active table status');
-is(active_table_status({ family => 'inet', name => 'filter' }, [ $t ]), 'webmin',
+is(active_table_status({ family => 'inet', name => 'filter' }, [ $t ]), 'saved',
    'saved active table status');
-is(active_table_status({ family => 'inet', name => 'loose' }, []), 'unclaimed',
-   'unclaimed active table status');
+is(active_table_status({ family => 'inet', name => 'loose' }, []), 'unsaved',
+   'unsaved active table status');
 my $managed_chain = $tables_prio[0]->{chains}->{managed_INPUT};
 ok($managed_chain, 'externally managed priority chain present');
 is($managed_chain->{type}, 'filter', 'externally managed priority chain type');
@@ -492,5 +492,242 @@ ok(scalar(grep { $_->{text} eq 'ip6 daddr fe80::/64 udp dport 546 accept' }
 ok(scalar(grep { $_ eq '2022' }
           @{$profile_table->{sets}->{profile_hosting_tcp_ports}->{elements}}),
    'profile helper includes dynamic ssh port');
+
+# The saved configuration is the system's own nftables file, so re-writing
+# it must not discard anything the module does not model
+my $sysfile = write_ruleset($confdir, 'system.nft', <<'EOF');
+#!/usr/sbin/nft -f
+# system firewall
+
+flush ruleset
+
+define lan = 192.168.0.0/24
+
+table inet filter {
+	set trusted {
+		type ipv4_addr
+		flags interval
+		elements = { 10.0.0.0/8 }
+	}
+
+	map porttoip {
+		type inet_service : ipv4_addr
+		elements = { 80 : 10.0.0.1 }
+	}
+
+	counter http_hits {
+	}
+
+	chain input {
+		type filter hook input priority 0; policy drop;
+		tcp dport 22 accept
+	}
+
+	chain output {
+		type filter hook output priority 0; policy accept;
+	}
+}
+
+table ip nat {
+	chain prerouting {
+		type nat hook prerouting priority -100; policy accept;
+	}
+}
+
+include "/etc/nftables.d/*.nft"
+
+define wan = eth0
+
+table inet extra {
+	comment "hand written"
+
+	chain forward {
+		type filter hook forward priority 0; policy drop;
+	}
+}
+
+# trailing note
+include "/etc/nftables.d/late.nft"
+EOF
+
+my @systables = get_nftables_save($sysfile);
+is(scalar(@systables), 3, 'system ruleset table count');
+is(scalar(@{$systables[0]->{raw_blocks} || []}), 2,
+   'unmodelled table objects are captured');
+ok(exists($systables[0]->{chains}->{output}),
+   'chain following an unmodelled object is still parsed');
+is(scalar(@{$systables[0]->{rules}}), 1,
+   'unmodelled objects are not parsed as rules');
+
+my ($pre, $post) = get_nftables_extras($sysfile);
+like($pre, qr/^\#\!\/usr\/sbin\/nft -f/, 'shebang kept ahead of the tables');
+like($pre, qr/flush ruleset/, 'flush ruleset kept ahead of the tables');
+like($pre, qr/define lan = /, 'defines kept ahead of the tables');
+like($pre, qr/include "\/etc\/nftables\.d\/\*\.nft"/,
+     'include between tables kept ahead of them');
+like($post, qr/include "\/etc\/nftables\.d\/late\.nft"/,
+     'trailing include kept after the tables');
+
+my $rewritten = $pre.dump_nftables_save(@systables).$post;
+like($rewritten, qr/map porttoip \{/, 'map survives a re-write');
+like($rewritten, qr/counter http_hits \{/, 'named counter survives a re-write');
+like($rewritten, qr/table ip nat \{/, 'second table survives a re-write');
+like($rewritten, qr/comment "hand written"/, 'table comment survives a re-write');
+is(scalar(() = $rewritten =~ /define wan = eth0/g), 1,
+   'content between tables is kept exactly once');
+like($pre, qr/define wan = eth0/, 'content between tables is kept ahead of them');
+
+is_deeply([ map { $_->[0] }
+            sort { $a->[1] <=> $b->[1] }
+            map { [ $_, $systables[0]->{chains}->{$_}->{order} ] }
+            keys %{$systables[0]->{chains}} ],
+          [ 'input', 'output' ], 'chain order in the file is recorded');
+like($rewritten, qr/chain input \{.*chain output \{/s,
+     'chains are written back in the order they were read');
+
+my $twicefile = write_ruleset($confdir, 'twice.nft', $rewritten);
+my @twice = get_nftables_save($twicefile);
+my ($tpre, $tpost) = get_nftables_extras($twicefile);
+is($tpre.dump_nftables_save(@twice).$tpost, $rewritten,
+   're-writing an already written file changes nothing');
+
+# A file with no tables at all, such as a stock /etc/sysconfig/nftables.conf,
+# keeps its comments and takes new tables at the end
+my $emptyfile = write_ruleset($confdir, 'empty.nft', <<'EOF');
+# Uncomment the include statement here to load the default config sample
+#include "/etc/nftables/main.nft"
+EOF
+my ($epre, $epost) = get_nftables_extras($emptyfile);
+like($epre, qr/Uncomment the include statement/,
+     'comment-only file is kept ahead of new tables');
+is($epost, '', 'comment-only file leaves nothing trailing');
+
+our ($module_config_directory, $nftables_rules_file_cache);
+
+# A ruleset spread over a main file and the files it includes has to be read
+# from, and written back to, the file each table actually lives in
+my $incdir = "$confdir/nftables.d";
+mkdir($incdir);
+my $incmain = write_ruleset($confdir, 'main.nft', <<'EOF');
+#!/usr/sbin/nft -f
+flush ruleset
+
+define lan = 192.168.0.0/24
+
+include "nftables.d/*.nft"
+
+table inet main_table {
+	chain input {
+		type filter hook input priority 0; policy drop;
+	}
+}
+EOF
+write_ruleset($incdir, '10-web.nft', <<'EOF');
+# web rules
+table inet web {
+	chain input {
+		type filter hook input priority 10; policy accept;
+		tcp dport 80 accept
+	}
+}
+EOF
+# Deliberately non-canonical spacing, so that a needless re-write would show
+write_ruleset($incdir, '20-mail.nft', <<'EOF');
+table inet mail {
+      chain input {
+            type filter hook input priority 20; policy accept;
+            tcp dport 25 accept
+      }
+}
+EOF
+
+is_deeply([ nftables_include_files($incmain) ],
+          [ "$incdir/10-web.nft", "$incdir/20-mail.nft" ],
+          'relative include glob is expanded in order');
+
+{
+    local $nftables_rules_file_cache = $incmain;
+    my @inctables = get_nftables_save();
+    is_deeply([ map { $_->{name} } @inctables ],
+              [ 'main_table', 'web', 'mail' ],
+              'tables are read from the main file and its includes');
+    is($inctables[0]->{file}, $incmain, 'main table is tagged with its file');
+    is($inctables[1]->{file}, "$incdir/10-web.nft",
+       'included table is tagged with the file it came from');
+    is_deeply([ get_nftables_config_files() ],
+              [ $incmain, "$incdir/10-web.nft", "$incdir/20-mail.nft" ],
+              'the manual editor offers exactly the files that are loaded');
+
+    # An included table is saved, so it must not be offered for import
+    is(active_table_status({ family => 'inet', name => 'web' }, \@inctables),
+       'saved', 'a table from an included file counts as saved');
+
+    my $main_before = read_file_contents($incmain);
+    my $mail_before = read_file_contents("$incdir/20-mail.nft");
+
+    # Editing a table in an included file writes it back there
+    my ($web) = grep { $_->{name} eq 'web' } @inctables;
+    push(@{$web->{rules}}, {'text' => 'tcp dport 443 accept',
+                            'chain' => 'input', 'index' => 99});
+    write_configuration(@inctables);
+    like(read_file_contents("$incdir/10-web.nft"), qr/tcp dport 443 accept/,
+         'edit lands in the included file');
+    unlike(read_file_contents($incmain), qr/table inet web/,
+           'edit is not copied into the main file');
+    is(read_file_contents($incmain), $main_before,
+       'the main file is left alone');
+    is(read_file_contents("$incdir/20-mail.nft"), $mail_before,
+       'an untouched included file is not re-written');
+
+    # Deleting it empties that file without disturbing the others
+    my @keep = grep { $_->{name} ne 'web' } get_nftables_save();
+    write_configuration(@keep);
+    unlike(read_file_contents("$incdir/10-web.nft"), qr/table\s/,
+           'deleted table is removed from its own file');
+    like(read_file_contents("$incdir/10-web.nft"), qr/# web rules/,
+         'the emptied file keeps its own comments');
+    is(read_file_contents($incmain), $main_before,
+       'deleting from an include leaves the main file alone');
+    is_deeply([ map { $_->{name} } get_nftables_save() ],
+              [ 'main_table', 'mail' ], 'the deleted table is gone');
+}
+
+# An include loop must not send the parser into a spin
+my $loop_a = write_ruleset($confdir, 'loop-a.nft', "include \"loop-b.nft\"\n");
+write_ruleset($confdir, 'loop-b.nft', "include \"loop-a.nft\"\n");
+is_deeply([ nftables_include_files($loop_a) ],
+          [ "$confdir/loop-b.nft", "$confdir/loop-a.nft" ],
+          'an include loop terminates');
+
+# Upgrades have to move rules out of the module's old private file, or the
+# firewall silently disappears once the private boot action is gone
+mkdir($module_config_directory) if (!-d $module_config_directory);
+my $legacy = write_ruleset($module_config_directory, 'rules.conf', <<'EOF');
+# This file was auto-generated by the module.
+# Manual changes may be overwritten.
+
+table inet webmin {
+	chain input {
+		type filter hook input priority 0; policy drop;
+		tcp dport 10000 accept
+	}
+}
+EOF
+my $target = write_ruleset($confdir, 'migrate-target.nft', <<'EOF');
+# Uncomment the include statement here to load the default config sample
+#include "/etc/nftables/main.nft"
+EOF
+{
+    local $nftables_rules_file_cache = $target;
+    is(migrate_legacy_nftables_config(), 1, 'legacy table is migrated');
+    ok(!-e $legacy, 'legacy rules file is moved aside');
+    ok(-e $legacy.'.migrated', 'legacy rules file is kept as a backup');
+    my @moved = get_nftables_save($target);
+    is(scalar(@moved), 1, 'migrated table lands in the system file');
+    is($moved[0]->{name}, 'webmin', 'migrated table keeps its name');
+    like(read_file_contents($target), qr/Uncomment the include statement/,
+         'migration keeps the system file comments');
+    is(migrate_legacy_nftables_config(), 0, 'migration only runs once');
+}
 
 done_testing();

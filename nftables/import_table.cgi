@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # import_table.cgi
-# Import an active nftables table as a Webmin-managed saved table
+# Import an active nftables table into the saved configuration
 
 require './nftables-lib.pl';    ## no critic
 use strict;
@@ -25,7 +25,7 @@ $source || error($text{'import_esource'});
 assert_table_acl($source);
 
 my @tables = get_nftables_save();
-if (table_is_webmin_managed($source, \@tables)) {
+if (table_is_saved($source, \@tables)) {
 	error(text('import_emanaged', nft_table_spec($source)));
 	}
 
@@ -49,17 +49,12 @@ if ($in{'import'}) {
 	my $import = dclone($source);
 	$import->{'name'} = $name;
 	delete($import->{'flags'});
+
+	# It came from the live ruleset, so it has no file of its own yet
+	delete($import->{'file'});
 	assert_table_acl($import);
 	push(@tables, $import);
 	write_configuration(@tables);
-	register_managed_table(
-		$import,
-		'source' => 'imported',
-		'imported_from' => nft_table_spec($source),
-		'imported_from_family' => $source->{'family'},
-		'imported_from_name' => $source->{'name'},
-		'imported_at' => time()
-	);
 	webmin_log("import", "table", $source->{'name'},
 		{'family' => $source->{'family'}, 'new' => $name});
 	redirect("index.cgi?table_family=".

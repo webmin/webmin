@@ -45,7 +45,7 @@ else {
 			my $flags = $t->{'flags'} || "-";
 			my $status_key = active_table_status($t, \@saved_tables);
 			my $status = $text{'active_'.$status_key};
-			my $is_saved = table_is_webmin_managed($t, \@saved_tables);
+			my $is_saved = table_is_saved($t, \@saved_tables);
 			my $table_url =
 			    "active_table.cgi?family=".
 			    urlize($t->{'family'}).
