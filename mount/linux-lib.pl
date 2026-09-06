@@ -470,6 +470,8 @@ while(<MTAB>) {
 	if (!/\S/) { next; }
 	@p = split(/\s+/, $_);
 	next if ($p[0] eq "rootfs");	# Bogus pseudo-fs
+	$p[0] =~ s/\\040/ /g;
+	$p[1] =~ s/\\040/ /g;
 	$p[1] = &simplify_path($p[1]);
 	if ($p[2] eq "auto" || $p[0] =~ /^\S+:\(pid\d+\)$/) {
 		# Automounter map.. turn the map= option into the device
@@ -926,7 +928,8 @@ if ($_[0] eq "proc" || $_[0] eq "swap" ||
 &clean_language();
 local $out = &backquote_command("df -k ".quotemeta($_[1]), 1);
 &reset_environment();
-if ($out =~ /Mounted on\n\S+\s+(?<total>\S+)\s+(?<used>\S+)\s+(?<free>\S+)\s+(?<percent>\d+)/) {
+# Match the numeric columns only, as the device name may contain spaces
+if ($out =~ /Mounted on\n.*?\s(?<total>\d+)\s+(?<used>\d+)\s+(?<free>\d+)\s+(?<percent>\d+)%/s) {
 	return ("$+{total}", "$+{free}", "$+{used}", "$+{percent}");
 	}
 return ( );
@@ -938,9 +941,10 @@ sub inode_space
 {
 if (&get_mounted($_[1], "*") < 0) { return (); }
 &clean_language();
-local $out = &backquote_command("df -i $_[1]", 1);
+local $out = &backquote_command("df -i ".quotemeta($_[1]), 1);
 &reset_environment();
-if ($out =~ /Mounted on\n\S+\s+(?<total>\S+)\s+(?<used>\S+)\s+(?<free>\S+)\s+(?<percent>\d+)/) {
+# Match the numeric columns only, as the device name may contain spaces
+if ($out =~ /Mounted on\n.*?\s(?<total>\d+)\s+(?<used>\d+)\s+(?<free>\d+)\s+(?<percent>\d+)%/s) {
 	return ("$+{total}", "$+{free}", "$+{used}", "$+{percent}");
 	}
 return ( );
