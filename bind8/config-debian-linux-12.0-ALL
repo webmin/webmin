@@ -31,6 +31,7 @@ pid_file=/var/run/named/named.pid
 zones_file=/etc/bind/named.conf.local
 master_dir=/var/lib/bind
 slave_dir=/var/lib/bind
+file_owner=bind:bind
 no_pid_chroot=0
 soa_start=0
 rndc_conf=/etc/bind/rndc.conf
