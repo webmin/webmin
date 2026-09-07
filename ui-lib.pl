@@ -286,7 +286,7 @@ $rv .= "<tr class='ui_table_span'> ".
 return $rv;
 }
 
-=head2 ui_columns_start(&headings, [width-percent], [noborder], [&tdtags], [heading], [sortable])
+=head2 ui_columns_start(&headings, [width-percent], [noborder], [&tdtags], [heading], [sortable], [class])
 
 Returns HTML for the start of a multi-column table, with the given headings.
 The parameters are :
@@ -303,14 +303,17 @@ The parameters are :
 
 =item sortable - Set to 1 to ask the theme for client-side sorting and searching of this table, such as with DataTables in the Authentic theme. The table is marked with a data-sortable attribute. A module can instead request this for all tables on its pages with sortable=1 in module.info.
 
+=item class - Extra CSS class names for the table, such as a theme's no-hover for a table whose rows are inputs.
+
 =cut
 sub ui_columns_start
 {
 return &theme_ui_columns_start(@_) if (defined(&theme_ui_columns_start));
-my ($heads, $width, $noborder, $tdtags, $title, $sortable) = @_;
+my ($heads, $width, $noborder, $tdtags, $title, $sortable, $class) = @_;
 my $rv;
 $rv .= "<table".($noborder ? "" : " border").
-		(defined($width) ? " width='$width%'" : "")." class='ui_columns'".
+		(defined($width) ? " width='$width%'" : "").
+		" class='ui_columns".($class ? " ".$class : "")."'".
 		($sortable ? " data-sortable='1'" : "").">\n";
 if ($title) {
 	$rv .= "<tr".($tb ? " ".$tb : "")." class='ui_columns_heading'>".

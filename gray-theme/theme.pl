@@ -503,7 +503,7 @@ return $rv;
 # Returns HTML for a multi-column table, with the given headings
 sub theme_ui_columns_start
 {
-my ($heads, $width, $noborder, $tdtags, $title, $sortable) = @_;
+my ($heads, $width, $noborder, $tdtags, $title, $sortable, $class) = @_;
 my ($href) = grep { $_ =~ /<a\s+href/i } @$heads;
 my $rv;
 $theme_ui_columns_row_toggle = 0;
@@ -522,6 +522,7 @@ my @classes;
 push(@classes, "ui_table") if (!$noborder);
 push(@classes, "sortable") if (!$href || $sortable);
 push(@classes, "ui_columns");
+push(@classes, $class) if ($class);
 $rv .= "<table".(@classes ? " class='".join(" ", @classes)."'" : "").
     (defined($width) ? " width=$width%" : "").
     ($sortable ? " data-sortable='1'" : "").">\n";
