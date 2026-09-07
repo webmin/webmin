@@ -14,13 +14,13 @@ Every tab of `index.cgi` is built by one function in `ui-demo-pages.pl` :
 |------------|-----------------------|------------------------------------------------------------------|
 | Cards      | `demo_cards_tab`      | `ui_card` in its variations : buttons inside a card, header actions and footer, state accents with icon titles, a two-column `ui_dl`, a flush list filtered by a `ui_search` in the header, a standard table inside a card, a metric card with `ui_stat` and inline `ui_progress`, a card printed with `ui_card_start`/`ui_card_end`; `ui_stats`; `ui_grid` with the `template` option |
 | Elements   | `demo_elements_tab`   | a `ui_dl` with help bubbles and HTML values, `ui_stats` with icons and links, `ui_feed` with an HTML event, `ui_empty_state`, then badges with their icon, dot and title options, chips, `ui_code`, `ui_note`, `ui_help`, `ui_tip`, every `ui_progress` variation and the ring gauges, and `ui_svg_icon` |
-| Forms      | `demo_forms_tab`      | the usual `ui_table_start` / `ui_table_row` form with `ui_toggle`, `ui_search`, the date chooser and password fields; a second form of choosers : `file_chooser_button` for files and directories, `ui_user_textbox`, `ui_group_textbox`, `ui_users_textbox`, `ui_groups_textbox`, and an `hlink` help link |
+| Forms      | `demo_forms_tab`      | the usual `ui_table_start` / `ui_table_row` form with `ui_toggle`, `ui_search`, the date chooser, password fields and a table of inputs inside one row built with `ui_columns_start` / `ui_columns_row` with the `no-hover` class, as the Nginx module's URL rewrites; a second form of choosers : `file_chooser_button` for files and directories, `ui_user_textbox`, `ui_group_textbox`, `ui_users_textbox`, `ui_groups_textbox`, and an `hlink` help link |
 | Choices    | `demo_choices_tab`    | three replacements for `ui_radio_table` and hand-made tables of radios with inputs : `ui_choice` (boxed, every option's inputs visible), `ui_select_switch` (a select showing only the chosen option's block) and `ui_radio_list` (compact radios); the backup destination selector twice and Virtualmin's new IP address selectors |
 | Buttons    | `demo_buttons_tab`    | `ui_submit`, `ui_reset` and `ui_link_button` in one row, with a disabled and a confirmed one; a form ended by `ui_form_end`, one by `ui_form_grouped_buttons`, one by `ui_form_end_side_by_side` with a separate form at the right; a `ui_confirmation_form` page |
 | Accordions | `demo_accordions_tab` | a settings form of `ui_table_start` followed by `ui_hidden_table_start` sections |
 | Tables     | `demo_tables_tab`     | the empty state shown instead of a table with no rows, `ui_columns_table` with a `ui_details` disclosure in its first cell (classes `inline inlined`, as grub2's boot entries), and `ui_form_columns_table`, both with the sortable flag; the tab description itself hides more text behind a `ui_details` tick (class `inline`), as Virtualmin's SSL page does |
 | Lists      | `demo_lists_tab`      | `ui_list` rows with badges, tags, meta and actions; a backup history with state icons, a filesystem list with inline progress bars, and a user list with a confirmed delete link |
-| Icon links | `demo_iconlinks_tab`  | `icons_table` with SVG icons from `images/`, then a rule and the bottom-of-page `ui_buttons_row` block from `demo_page_actions` |
+| Icon links | `demo_iconlinks_tab`  | `icons_table` with SVG icons from `images/`, then under a rule the page's own settings form with Save and Delete, as the Nginx location page lays out icons above the form, then another rule and the bottom-of-page `ui_buttons_row` block from `demo_page_actions` |
 | Config editor | `demo_editor_tab`  | links to `edit_manual.cgi`, a manual config file editor page as in nftables : file selector form, then a large `ui_textarea` with Save, submitting to a `save_manual.cgi` that writes nothing |
 | Alerts     | `demo_alerts_tab`     | every `ui_alert` type, one with a custom icon and title on one line, and an opened `ui_details` box with the `error` class under the error alert, as MariaDB shows its connection error |
 
@@ -73,7 +73,10 @@ not core API :
   show/hide eye and the generate key next to password inputs on module
   pages it knows, or on any page where a password input carries a
   `data-password` attribute. Mark the repeat field `data-password-again`
-  and it only gets the eye. Pass the attribute in the tags argument of
+  and it only gets the eye. A field for a password that is typed in
+  rather than created, such as the FTP and SSH logins on the Choices
+  tab, is marked `data-password-meter-skip` and gets neither the meter nor the
+  generate button. Pass the attribute in the tags argument of
   `ui_password`.
 - **Code editor.** Authentic replaces the text area of a manual config
   editor page with a code editor, and adds its own "Save and close" and

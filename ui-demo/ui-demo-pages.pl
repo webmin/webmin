@@ -535,6 +535,33 @@ $rv .= ui_table_row($text{'index_f_dates'},
 			     demo_date_input('to'))."</span>" ] ]));
 $rv .= ui_table_row($text{'index_f_notes'},
 	ui_textarea('notes', "# ".$text{'index_f_notes_value'}, 4, 60));
+
+# A table of inputs inside a form row, as the Nginx module edits URL
+# rewrites : ui_columns_start with the headings, nowrap cells and the
+# class argument set to no-hover, so the theme does not highlight rows
+# that are inputs, one ui_columns_row per existing entry plus two empty
+# rows for new ones, then the whole table as the value of a row spanning
+# the form (third argument 3). Inputs are numbered by row, and the save script walks
+# the numbers until the first missing from-field, skipping empty rows.
+my @rewrites = ( [ '^/old/(.*)$', '/new/$1', 'permanent' ],
+		 [ '^/api/v1/(.*)$', '/api/v2/$1', 'last' ] );
+my $rtable = ui_columns_start([ $text{'index_f_rw_from'},
+				$text{'index_f_rw_to'},
+				$text{'index_f_rw_flag'} ], 100, 0,
+			      [ 'nowrap', 'nowrap' ], undef, 0, 'no-hover');
+my $rn = 0;
+foreach my $r (@rewrites, [ ], [ ]) {
+	$rtable .= ui_columns_row([
+		ui_textbox("rw_from_$rn", $r->[0], 30),
+		ui_textbox("rw_to_$rn", $r->[1], 40),
+		ui_select("rw_flag_$rn", $r->[2],
+			  [ map { [ $_, $text{'index_f_rw_'.$_} ] }
+				('last', 'break', 'redirect', 'permanent') ]),
+		]);
+	$rn++;
+	}
+$rtable .= ui_columns_end();
+$rv .= ui_table_row($text{'index_f_rewrites'}, $rtable, 3);
 $rv .= ui_table_end();
 $rv .= ui_form_end([ [ 'save', $text{'save'} ],
 		     [ 'cancel', $text{'index_f_cancel'} ],
@@ -1140,7 +1167,8 @@ return $rv;
 # demo_iconlinks_tab()
 # Returns the icon links panel : a grid of linked icons with titles under
 # them, as the grub2 and Webmin Configuration modules show their
-# sub-pages. This is the existing icons_table(&links, &titles, &icons,
+# sub-pages, then the form of the page itself under a rule, as the Nginx
+# location page, then the buttons that end an index page. This is the existing icons_table(&links, &titles, &icons,
 # columns) function. The icons are small SVG files in the module's images
 # directory, 48x48 like those of grub2. icons_table prints rather than
 # returns, so its output is captured here.
@@ -1153,9 +1181,33 @@ my $rv = capture_function_output(\&icons_table,
 	[ map { "images/$_.svg" } @pages ],
 	scalar(@pages));
 
-# Then the bottom-of-page action buttons after a rule, as the SSH Server
-# and grub2 modules end their index page : icons first, a rule, then the
-# buttons
+# Under the icons, the settings of the page itself, as the Nginx module's
+# location page puts the form of the location below the icons of its
+# sub-pages : a rule, a two-column ui_table_start form, and Save next to
+# a Delete button. A row whose input is wide spans the form with a third
+# argument of 3. The file chooser needs the index of this form on the
+# page, 13 here : the Tables tab counts the forms before its own, and
+# this one follows it.
+$rv .= ui_hr();
+$rv .= ui_form_start('index.cgi', 'post');
+$rv .= ui_hidden('demo', 9);
+$rv .= ui_table_start($text{'index_i_header'}, 'width=100%', 2);
+$rv .= ui_table_row($text{'index_i_path'},
+	ui_textbox('lpath', '/.well-known/', 60));
+$rv .= ui_table_row($text{'index_i_match'},
+	ui_select('lmatch', 'noregexp',
+		  [ map { [ $_, $text{'index_i_match_'.$_} ] }
+			('default', 'exact', 'case', 'nocase', 'noregexp') ]));
+$rv .= ui_table_row($text{'index_i_root'},
+	ui_textbox('lroot', '', 60)." ".file_chooser_button('lroot', 1, 13), 3);
+$rv .= ui_table_end();
+$rv .= ui_form_end([ [ undef, $text{'save'} ],
+		     [ 'delete', $text{'index_i_delete'}, undef, 0,
+		       "data-ui-confirm='".
+		       quote_escape($text{'index_i_delete_confirm'})."'" ] ]);
+
+# Then the bottom-of-page action buttons after another rule, as the SSH
+# Server and grub2 modules end their index page
 $rv .= demo_page_actions();
 return $rv;
 }

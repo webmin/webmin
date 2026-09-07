@@ -164,6 +164,12 @@ unlike(main::ui_page_start({ 'scheme' => 'bogus"' }),
 		qr/\bvalue=""/, 'toggle preserves an explicitly empty submitted value');
 }
 
+# Column tables take extra class names for the theme, such as no-hover
+like(main::ui_columns_start([ 'A' ], undef, 0, undef, undef, 0, 'no-hover'),
+	qr/class='ui_columns no-hover'/, 'ui_columns_start adds the class argument');
+like(main::ui_columns_start([ 'A' ]), qr/class='ui_columns'/,
+	'ui_columns_start without the class argument is unchanged');
+
 # Search boxes carry the client-side filter target
 like(main::ui_search({ 'name' => 'q', 'filter' => '#rows' }),
 	qr/data-ui-filter="#rows"/, 'search filter selector emitted');
