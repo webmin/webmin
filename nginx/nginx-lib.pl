@@ -1462,6 +1462,73 @@ for(my $i=0; defined(my $from = $in->{$name."_from_".$i}); $i++) {
 &save_directive($parent, $name, \@obj);
 }
 
+# list_return_redirect_codes()
+# Returns the HTTP codes that the return directive accepts with a URL
+sub list_return_redirect_codes
+{
+return ( 301, 302, 303, 307, 308 );
+}
+
+# get_return_redirect(&object)
+# Returns the code and URL of a return directive if it is a redirect, or an
+# empty list for other uses such as return 404
+sub get_return_redirect
+{
+my ($obj) = @_;
+my @w = @{$obj->{'words'}};
+if (@w == 2 && &indexof($w[0], &list_return_redirect_codes()) >= 0) {
+	return @w;
+	}
+elsif (@w == 1 && $w[0] =~ /^(https?:\/\/|\$scheme)/) {
+	# Single URL form defaults to a 302 redirect
+	return ( 302, $w[0] );
+	}
+return ( );
+}
+
+# nginx_return_input(name, &parent)
+# Returns HTML for a redirect via the return directive
+sub nginx_return_input
+{
+my ($name, $parent) = @_;
+return undef if (!&supported_directive($name, $parent));
+my $obj = &find($name, $parent);
+my ($code, $url) = $obj ? &get_return_redirect($obj) : ( );
+# Leave a return directive that is not a redirect alone
+return undef if ($obj && !$code);
+my $sel = &ui_select($name."_code", $code || 301,
+		     [ map { [ $_, $text{'rewrite_return_'.$_} ] }
+			   &list_return_redirect_codes() ]);
+return &ui_table_row($text{'opt_'.$name},
+	&ui_opt_textbox($name, $url, 50, $text{'rewrite_return_none'},
+			$sel."&nbsp;".$text{'rewrite_return_to'}."&nbsp;", 0,
+			[ $name."_code" ]), 3);
+}
+
+# nginx_return_parse(name, &parent, &in)
+# Updates the config with input from nginx_return_input
+sub nginx_return_parse
+{
+my ($name, $parent, $in) = @_;
+return undef if (!&supported_directive($name, $parent));
+$in ||= \%in;
+my $obj = &find($name, $parent);
+# Never touch a return directive that was not shown in the form
+return undef if ($obj && !&get_return_redirect($obj));
+if ($in->{$name."_def"}) {
+	&save_directive($parent, $name, [ ]);
+	}
+else {
+	my $code = $in->{$name."_code"};
+	&indexof($code, &list_return_redirect_codes()) >= 0 ||
+		&error($text{'rewrite_ereturncode'});
+	my $url = $in->{$name};
+	$url =~ /^\S+$/ || &error($text{'rewrite_ereturn'});
+	&save_directive($parent, $name, [ { 'name' => $name,
+					    'words' => [ $code, $url ] } ]);
+	}
+}
+
 # list_log_formats([&server])
 # Returns a list of all log format names
 sub list_log_formats

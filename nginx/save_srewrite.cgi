@@ -14,6 +14,8 @@ $server || &error($text{'server_egone'});
 
 &nginx_rewrite_parse("rewrite", $server);
 
+&nginx_return_parse("return", $server);
+
 &nginx_onoff_parse("rewrite_log", $server);
 
 &flush_config_file_lines();
