@@ -672,8 +672,12 @@ my $dest_options = sub {
 			  ui_textbox($p.$_->[0].'_path', '', 25) ],
 			[ $text{'index_c_login'},
 			  ui_textbox($p.$_->[0].'_user', 'root', 15) ],
+			# An existing password is typed in, not created, so
+			# no strength meter or generate button in themes that
+			# support them
 			[ $text{'index_c_pass'},
-			  ui_password($p.$_->[0].'_pass', '', 15) ],
+			  ui_password($p.$_->[0].'_pass', '', 15, 0, undef,
+				      'data-password-meter-skip') ],
 			[ $text{'index_c_port'},
 			  ui_opt_textbox($p.$_->[0].'_port', '', 5, $text{'default'}) ],
 			] } } ( [ 'ftp', $text{'index_c_ftp'} ],
