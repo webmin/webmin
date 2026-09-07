@@ -324,6 +324,17 @@ rewrite_redirect=Return 302 redirect
 rewrite_permanent=Return 301 redirect
 rewrite_efrom=Source path $1 contains spaces
 rewrite_eto=Destination URL $1 is missing or contains spaces
+opt_return=Redirect all requests
+rewrite_return_none=No redirect
+rewrite_return_to=to
+rewrite_return_eg=/uri or https://example.com$request_uri
+rewrite_return_301=301 (Moved permanently)
+rewrite_return_302=302 (Found)
+rewrite_return_303=303 (See other)
+rewrite_return_307=307 (Temporary redirect)
+rewrite_return_308=308 (Permanent redirect)
+rewrite_ereturn=Redirect URL is missing or contains spaces
+rewrite_ereturncode=Invalid redirect HTTP code
 
 location_create=Create Location
 location_edit=Edit Location

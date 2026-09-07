@@ -19,6 +19,8 @@ print &ui_table_start($text{'rewrite_header'}, undef, 2);
 
 print &nginx_rewrite_input("rewrite", $server);
 
+print &nginx_return_input("return", $server);
+
 print &nginx_onoff_input("rewrite_log", $server);
 
 print &ui_table_end();

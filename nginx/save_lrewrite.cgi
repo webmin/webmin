@@ -16,6 +16,8 @@ $location || &error($text{'location_egone'});
 
 &nginx_rewrite_parse("rewrite", $location);
 
+&nginx_return_parse("return", $location);
+
 &nginx_onoff_parse("rewrite_log", $location);
 
 &flush_config_file_lines();
