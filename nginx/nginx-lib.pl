@@ -1502,7 +1502,9 @@ my $sel = &ui_select($name."_code", $code || 301,
 return &ui_table_row($text{'opt_'.$name},
 	&ui_opt_textbox($name, $url, 50, $text{'rewrite_return_none'},
 			$sel."&nbsp;".$text{'rewrite_return_to'}."&nbsp;", 0,
-			[ $name."_code" ]), 3);
+			[ $name."_code" ], undef,
+			"placeholder=\"".
+			  &quote_escape($text{'rewrite_return_eg'})."\""), 3);
 }
 
 # nginx_return_parse(name, &parent, &in)
