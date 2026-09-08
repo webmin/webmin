@@ -44,7 +44,7 @@
 #    The demo shows the pending state when opened with ?changed=1.
 #
 #  - The block of action buttons that modules put at the bottom of a
-#    page after a ui_hr is shown at the end of the Buttons tab, built by
+#    page after a ui_hr is shown at the end of the Icon links tab, built by
 #    demo_page_actions in ui-demo-pages.pl.
 
 use strict;

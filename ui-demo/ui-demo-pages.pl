@@ -629,22 +629,9 @@ return ui_date_input(undef, undef, undef,
 }
 
 # demo_choices_tab()
-# Returns the choice widgets panel : three ways to let the user pick one
-# option that needs its own inputs, all replacing ui_radio_table and the
-# hand-built tables of radios and fields of pages like the backup
-# destination selector of the Backup Configuration Files module or the
-# address selectors of Virtualmin's "Change IP Address" page :
-#  - ui_choice : a boxed list where every option shows its inputs and
-#    fields all the time, each row wrapping on narrow screens instead of
-#    squeezing a five-column table;
-#  - ui_select_switch : a select and, under it, only the block of the
-#    chosen option, switched by ui-lib.js, for many options or long field
-#    lists;
-#  - ui_radio_list : the compact list of radios with at most one input
-#    each, buttons at the left edge and close together in one box.
-# Each option is a hash : value, label, optional content shown after the
-# label (or first in the block for the select), optional desc, and
-# optional fields laid out in as many columns as fit.
+# Compare ui_choice (all fields visible), ui_select_switch (chosen fields
+# only) and ui_radio_list (compact inline inputs), then ui_multi_select_list.
+# Examples use backup destinations, IP addresses, servers and groups.
 sub demo_choices_tab
 {
 my $rv = "";
@@ -710,11 +697,58 @@ foreach my $v ( [ 'mode4', 'index_c_ip4', '10.211.55.20' ],
 		]));
 	}
 $rv .= ui_table_end();
+
+# Virtualmin backup picker: modes, shared domain suffixes and child folding.
+$rv .= ui_table_start($text{'index_c_servers'}, 'width=100%', 2);
+my $parent = 'ubuntu26-pro.virtualmin.dev';
+my @servers;
+foreach my $server (
+	[ $parent, 'actualbudget', 'audiobookshelf', 'bookstack', 'caddy' ],
+	[ 'debian13.virtualmin.dev', 'wordpress' ]) {
+	my ($domain, @subs) = @$server;
+	push(@servers, { 'value' => $domain, 'label' => $domain });
+	push(@servers, map { {
+		'value' => $_.'.'.$domain, 'label' => $_,
+		'suffix' => '.'.$domain, 'level' => 1 } } @subs);
+	}
+push(@servers, map { {
+	'value' => $_.'.virtualmin.dev', 'label' => $_.'.virtualmin.dev' } }
+	( 'gitea', 'grafana', 'immich', 'jellyfin', 'mattermost', 'vaultwarden' ));
+$rv .= ui_table_row($text{'index_c_doms'},
+	ui_multi_select_list('doms',
+		[ $parent, 'bookstack.'.$parent, 'caddy.'.$parent ], \@servers,
+		{ 'placeholder' => $text{'index_c_filter'},
+		  'modes' => { 'name' => 'all', 'value' => 0,
+			       'options' => [ [ 1, $text{'index_c_all'} ],
+					      [ 0, $text{'index_c_only'} ],
+					      [ 2, $text{'index_c_except'} ] ],
+			       'hide' => [ 1 ] },
+		  'children' => { 'name' => 'subservers',
+				  'label' => $text{'index_c_subservers'},
+				  'note' => 'index_c_subs' } }),
+	2);
+# Customize the empty-list label.
+$rv .= ui_table_row($text{'index_c_empty'},
+	ui_multi_select_list('empty_doms', [ ], [ ],
+		{ 'empty_label' => $text{'index_c_no_servers'} }), 2);
+$rv .= ui_table_end();
+
+# Plain group picker; filtering is enabled automatically above eight entries.
+$rv .= ui_table_start($text{'index_c_member'}, 'width=100%', 2);
+$rv .= ui_table_row($text{'index_c_secgroups'},
+	ui_multi_select_list('groups', [ 'wheel', 'docker' ],
+		[ map { [ $_, $_ ] }
+		      ( 'adm', 'audio', 'backup', 'cdrom', 'dialout', 'docker',
+			'lp', 'plugdev', 'sudo', 'video', 'wheel', 'www-data' ) ]),
+	2);
+$rv .= ui_table_end();
 $rv .= ui_form_end([ [ undef, $text{'save'} ] ]);
 return $rv;
 }
 
 # demo_buttons_tab()
+
+
 # Returns the button examples : every single button function, the row of
 # ui_form_end, the responsive groups of ui_form_grouped_buttons, the
 # left and right split of ui_form_end_side_by_side, and the confirmation

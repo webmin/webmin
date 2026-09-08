@@ -15,7 +15,7 @@ Every tab of `index.cgi` is built by one function in `ui-demo-pages.pl` :
 | Cards      | `demo_cards_tab`      | `ui_card` in its variations : buttons inside a card, header actions and footer, state accents with icon titles, a two-column `ui_dl`, a flush list filtered by a `ui_search` in the header, a standard table inside a card, a metric card with `ui_stat` and inline `ui_progress`, a card printed with `ui_card_start`/`ui_card_end`; `ui_stats`; `ui_grid` with the `template` option |
 | Elements   | `demo_elements_tab`   | a `ui_dl` with help bubbles and HTML values, `ui_stats` with icons and links, `ui_feed` with an HTML event, `ui_empty_state`, then badges with their icon, dot and title options, chips, `ui_code`, `ui_note`, `ui_help`, `ui_tip`, every `ui_progress` variation and the ring gauges, and `ui_svg_icon` |
 | Forms      | `demo_forms_tab`      | the usual `ui_table_start` / `ui_table_row` form with `ui_toggle`, `ui_search`, the date chooser, password fields and a table of inputs inside one row built with `ui_columns_start` / `ui_columns_row` with the `no-hover` class, as the Nginx module's URL rewrites; a second form of choosers : `file_chooser_button` for files and directories, `ui_user_textbox`, `ui_group_textbox`, `ui_users_textbox`, `ui_groups_textbox`, and an `hlink` help link |
-| Choices    | `demo_choices_tab`    | three replacements for `ui_radio_table` and hand-made tables of radios with inputs : `ui_choice` (boxed, every option's inputs visible), `ui_select_switch` (a select showing only the chosen option's block) and `ui_radio_list` (compact radios); the backup destination selector twice and Virtualmin's new IP address selectors |
+| Choices    | `demo_choices_tab`    | `ui_choice`, `ui_select_switch` and `ui_radio_list` for backup destinations and IP addresses; `ui_multi_select_list` for backup servers with modes and child folding, secondary groups, and an empty list with a custom label |
 | Buttons    | `demo_buttons_tab`    | `ui_submit`, `ui_reset` and `ui_link_button` in one row, with a disabled and a confirmed one; a form ended by `ui_form_end`, one by `ui_form_grouped_buttons`, one by `ui_form_end_side_by_side` with a separate form at the right; a `ui_confirmation_form` page |
 | Accordions | `demo_accordions_tab` | a settings form of `ui_table_start` followed by `ui_hidden_table_start` sections |
 | Tables     | `demo_tables_tab`     | the empty state shown instead of a table with no rows, `ui_columns_table` with a `ui_details` disclosure in its first cell (classes `inline inlined`, as grub2's boot entries), and `ui_form_columns_table`, both with the sortable flag; the tab description itself hides more text behind a `ui_details` tick (class `inline`), as Virtualmin's SSL page does |
@@ -27,6 +27,22 @@ Every tab of `index.cgi` is built by one function in `ui-demo-pages.pl` :
 The page itself is wrapped in `ui_page_start` / `ui_page_end`, which load
 the stylesheet and script from `unauthenticated/css/ui-lib.css` and
 `unauthenticated/js/ui-lib.js` once per page.
+
+In either `ui_multi_select_list` example on the Choices tab, click an
+entry and Shift-click another to select or clear the range between them.
+Checkboxes, labels and row backgrounds work alike; filtered, folded and
+disabled entries are skipped.
+
+The server example starts with a parent and two children selected. Turning
+on "Include sub-servers" folds the children and changes the count from
+three to one. Expanding restores the count to three; the child selections
+are retained throughout. Filtering does not change the selection count.
+
+The funnel button opens the filter to its left without moving the toolbar.
+It is blue while open and red while filtering. The cross clears the query,
+or closes an empty filter; the funnel and Escape close and clear it.
+The empty server example uses `empty_label` to replace the default
+"No entries" with a plain, caller-supplied message.
 
 ## Page chrome
 
@@ -52,7 +68,8 @@ of a module page that are easy to get wrong :
 - Reuse the existing API for tabs, forms, buttons and tables. The widget
   functions only add what was missing : cards, grids, stat tiles,
   description lists, badges, chips, list rows, feeds, empty states,
-  progress bars, the toggle switch and the search box.
+  progress bars, the toggle switch, the search box, the choice lists
+  and the multiple selection list.
 - Widget options are passed in a hash reference after any positional
   content arguments, and each widget returns a string. Text options are
   escaped by the library; `body`, `actions`, `footer` and `*_html` options
