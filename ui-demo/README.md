@@ -28,7 +28,7 @@ The page itself is wrapped in `ui_page_start` / `ui_page_end`, which load
 the stylesheet and script from `unauthenticated/css/ui-lib.css` and
 `unauthenticated/js/ui-lib.js` once per page.
 
-In either `ui_multi_select_list` example on the Choices tab, click an
+In a `ui_multi_select_list` example on the Choices tab, click an
 entry and Shift-click another to select or clear the range between them.
 Checkboxes, labels and row backgrounds work alike; filtered, folded and
 disabled entries are skipped.
@@ -43,6 +43,16 @@ It is blue while open and red while filtering. The cross clears the query,
 or closes an empty filter; the funnel and Escape close and clear it.
 The empty server example uses `empty_label` to replace the default
 "No entries" with a plain, caller-supplied message.
+
+The "Option attributes" example passes legacy `[ value, label, attributes ]`
+entries. Two rows are disabled, including a checked membership; the other
+rows remain editable. Titles and styles apply to the row, so the optional
+membership is italic and shows a tooltip.
+
+"Label comparison" passes `staff (Office accounts)` in the options of one
+list and only in the selected values of a legacy positional call. Both
+show the full description and submit `staff`. Positional calls also retain
+selected-value order and accept pre-escaped labels from existing callers.
 
 ## Page chrome
 

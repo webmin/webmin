@@ -741,6 +741,26 @@ $rv .= ui_table_row($text{'index_c_secgroups'},
 		      ( 'adm', 'audio', 'backup', 'cdrom', 'dialout', 'docker',
 			'lp', 'plugdev', 'sudo', 'video', 'wheel', 'www-data' ) ]),
 	2);
+# Legacy option attributes: locked selections, unavailable entries and row styling.
+my $locked = "disabled title=\"".html_escape($text{'index_c_managed'})."\"";
+$rv .= ui_table_row($text{'index_c_attrs'},
+	ui_multi_select_list('group_attrs', [ 'backup' ], [
+		[ 'backup', 'backup', $locked ],
+		[ 'docker', 'docker', $locked ],
+		[ 'audio', 'audio', "style='font-style:italic' title=\"".
+			html_escape($text{'index_c_optional'})."\"" ],
+		[ 'wheel', 'wheel' ] ], { 'search' => 1 }), 2);
+$rv .= ui_table_end();
+
+# Both APIs retain descriptions in their respective label arguments.
+my $staff_label = text('index_c_staff_desc', 'staff');
+$rv .= ui_table_start($text{'index_c_labels'}, 'width=100%', 4);
+$rv .= ui_table_row($text{'index_c_option_label'},
+	ui_multi_select_list('option_label', [ [ 'staff', 'staff' ] ],
+		[ [ 'staff', $staff_label ] ]));
+$rv .= ui_table_row($text{'index_c_selected_label'},
+	ui_multi_select_list('selected_label', [ [ 'staff', $staff_label ] ],
+		[ [ 'staff', 'staff' ] ], 5));
 $rv .= ui_table_end();
 $rv .= ui_form_end([ [ undef, $text{'save'} ] ]);
 return $rv;
