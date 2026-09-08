@@ -1100,7 +1100,7 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	display: flex;
 	align-items: center;
 	min-width: 0;
-	padding: 1px var(--ui-inset) 2px 7px;
+	padding: calc(var(--ui-inset) / 2) var(--ui-inset) calc(var(--ui-inset) / 2) var(--ui-inset);
 }
 /* Space unwrapped checkboxes; theme wrappers handle their own spacing. */
 .ui_multi_item > input[type="checkbox"] { margin-right: 6px; }
