@@ -1104,6 +1104,11 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 }
 /* Space unwrapped checkboxes; theme wrappers handle their own spacing. */
 .ui_multi_item > input[type="checkbox"] { margin-right: 6px; }
+/* Keep themed checkbox glyphs upright when the row text is italic. */
+.ui_multi_item input[type="checkbox"] + label::before,
+.ui_multi_item input[type="checkbox"] + label::after {
+	font-style: normal;
+}
 .ui_multi_item:hover { background: var(--ui-surface-2); }
 .ui_multi_level1 { padding-left: 27px; }
 .ui_multi_level2 { padding-left: 47px; }

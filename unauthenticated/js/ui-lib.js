@@ -121,7 +121,7 @@
 		applyMulti(box);
 		(open ? search : filter.querySelector('.ui_multi_filter_toggle')).focus();
 	}
-	function applyMulti(box) {
+	function applyMulti(box, reset) {
 		// Resets and history restores need not fire change events.
 		var mode = box.querySelector('.ui_multi_modes select, .ui_multi_modes input[type="radio"]:checked');
 		var body = box.querySelector('.ui_multi_body');
@@ -171,7 +171,24 @@
 		}
 		var name = box.getAttribute('data-ui-multi');
 		box.querySelectorAll('input[type="hidden"]').forEach(function (hidden) {
-			if (hidden.name === name) hidden.value = chosen.join('\n');
+			if (hidden.name !== name) return;
+			var order = box.getAttribute('data-ui-multi-order');
+			if (order !== null) {
+				// Capture browser-decoded values once, surviving script reinjection.
+				if (order === '') {
+					order = JSON.stringify(hidden.value.split('\n'));
+					box.setAttribute('data-ui-multi-order', order);
+				}
+				// Retain legacy selection order; newly added entries go first.
+				var checked = new Set(chosen);
+				var previous = (reset ? JSON.parse(order) : hidden.value.split('\n'))
+					.filter(function (value) { return checked.has(value); });
+				var retained = new Set(previous);
+				var added = chosen.filter(function (value) { return !retained.has(value); });
+				hidden.value = added.reverse().concat(previous).join('\n');
+			} else {
+				hidden.value = chosen.join('\n');
+			}
 		});
 	}
 	// Bulk actions affect only visible, enabled rows.
@@ -274,7 +291,7 @@
 			document.querySelectorAll('[data-ui-multi]').forEach(function (box) {
 				if (e.target.contains(box)) {
 					multiAnchors.delete(box);
-					applyMulti(box);
+					applyMulti(box, true);
 				}
 			});
 		}, 0);

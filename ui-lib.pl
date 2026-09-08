@@ -5700,7 +5700,8 @@ return &_ui_block('div', $select.$panels, &_ui_attrs({
 Returns a scrolling checkbox list with selection links, an expandable filter
 and a selection count beside the mode selector or links. Like ui_multi_select,
 it submits newline-joined values under name; ui-lib.js keeps them in sync.
-Missing selected values are added automatically. Labels are plain text.
+Missing selected values are added automatically. Labels are plain text with
+the options-hash API; positional calls also accept pre-escaped labels.
 
 With no entries, it shows only empty_label, preserving the selection, mode
 and children form values in hidden inputs. Nonempty lists load their assets
@@ -5711,14 +5712,15 @@ current one, skipping filtered, folded and disabled entries. Labels and row
 backgrounds work too.
 
 Accepts an options hash or ui_multi_select's trailing positional arguments.
-Only disabled is used from the legacy arguments; size, add-if-missing,
-titles and width are ignored.
+Positional calls preserve selected labels, attributes, value order and
+pre-escaped label text. Newly selected entries are prepended as in the old
+widget. Size, add-if-missing, titles and width are ignored.
 
 =item name - HTML name for the input.
 
-=item values - Array reference of selected scalars or [ value, label ] pairs.
+=item values - Array reference of selected scalars or [ value, label, attributes ] entries. Attributes are also retained when a selected entry is missing from options.
 
-=item options - Array reference of [ value, label ] pairs or hashes with keys value, label, suffix (muted text after the label), level (indentation depth), tag (chip at the right) and disabled.
+=item options - Array reference of [ value, label, attributes ] entries or hashes with keys value, label, suffix (muted text after the label), level (indentation depth), tag (chip at the right), disabled and attrs. Attributes may be a hash or trusted HTML attribute string, as in ui_select. disabled applies to the checkbox; other attributes, such as title, style and class, apply to the row. Widget identity and selection remain controlled by the library.
 
 =item opts - Optional hash reference with the keys :
 
@@ -5746,6 +5748,7 @@ sub ui_multi_select_list
 return &theme_ui_multi_select_list(@_)
 	if (defined(&theme_ui_multi_select_list));
 my ($name, $values, $options, $opts) = @_;
+my $legacy = @_ > 3 && ref($opts) ne 'HASH';
 if (ref($opts) ne 'HASH') {
 	# Accept ui_multi_select's positional disabled argument.
 	$opts = { 'disabled' => $_[5] };
@@ -5760,25 +5763,56 @@ foreach my $o (@{$options || []}) {
 		push(@items, { %$o });
 		}
 	elsif (ref($o) eq 'ARRAY') {
-		push(@items, { 'value' => $o->[0], 'label' => $o->[1] });
+		push(@items, { 'value' => $o->[0], 'label' => $o->[1],
+			      'attrs' => $o->[2] });
 		}
 	}
 # Index options to add missing selections without repeated scans.
-my %offered = map { defined($_->{'value'}) ? ($_->{'value'}, 1) : () } @items;
+my %offered = map { defined($_->{'value'}) ? ($_->{'value'}, $_) : () } @items;
 my %selected;
+my @chosen;
 foreach my $v (@{$values || []}) {
-	my ($val, $label) = ref($v) eq 'ARRAY' ? @$v : ($v);
+	my ($val, $label, $attrs) = ref($v) eq 'ARRAY' ? @$v : ($v);
 	next if (!defined($val));
-	$selected{$val} = 1;
-	push(@items, { 'value' => $val, 'label' => $label })
-		if (!$offered{$val}++);
+	next if ($selected{$val}++);
+	my $item = $offered{$val};
+	if (!$item) {
+		$item = { 'value' => $val, 'label' => $label, 'attrs' => $attrs };
+		push(@items, $item);
+		$offered{$val} = $item;
+		}
+	# The old selected pane uses the label and attributes supplied in values.
+	if ($legacy && ref($v) eq 'ARRAY') {
+		$item->{'label'} = defined($label) && $label ne '' ? $label : $val;
+		$item->{'attrs'} = $attrs;
+		}
+	push(@chosen, $item);
 	}
 foreach my $it (@items) {
 	$it->{'value'} = '' if (!defined($it->{'value'}));
 	$it->{'label'} = $it->{'value'}
 		if (!defined($it->{'label'}) || $it->{'label'} eq '');
+	my $tags = $it->{'attrs'};
+	my %attrs;
+	if (ref($tags) eq 'HASH') {
+		# Copy and normalize attribute names without changing caller data.
+		%attrs = map { lc($_), $tags->{$_} } keys %$tags;
+		}
+	else {
+		# Parse legacy tags without splitting quoted values.
+		$tags ||= '';
+		while ($tags =~ /\G\s*([a-z_:][a-z0-9_.:-]*)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'<>`]+)))?/gci) {
+			my ($name, $double, $single, $bare) = ($1, $2, $3, $4);
+			$attrs{lc($name)} = defined($double) ? $double :
+					   defined($single) ? $single : $bare;
+			}
+		}
+	# HTML boolean attributes are true whenever present, even disabled="false".
+	$it->{'disabled'} ||= exists($attrs{'disabled'});
+	delete($attrs{'disabled'});
+	$it->{'attrs'} = \%attrs;
 	}
-my @chosen = grep { $selected{$_->{'value'}} } @items;
+@chosen = grep { $selected{$_->{'value'}} } @items if (!$legacy);
 
 # Resolve the mode selector and initial list visibility.
 my $modes = $opts->{'modes'};
@@ -5902,7 +5936,7 @@ my $body = &ui_tag('div', $tools, { 'class' => 'ui_multi_tools' });
 my $rows = "";
 foreach my $it (@items) {
 	my $val = $it->{'value'};
-	my $label = &html_escape($it->{'label'});
+	my $label = &html_escape($it->{'label'}, $legacy);
 	$label .= &ui_tag('span', &html_escape($it->{'suffix'}),
 			  { 'class' => 'ui_multi_suffix' })
 		if (defined($it->{'suffix'}) && $it->{'suffix'} ne '');
@@ -5920,8 +5954,9 @@ foreach my $it (@items) {
 			{ 'class' => 'ui_multi_side' })
 		if (defined($it->{'tag'}) && $it->{'tag'} ne '');
 	# Lowercase in the browser, after UTF-8 bytes have been decoded.
-	my $attrs = &_ui_attrs({
+	my $attrs = { %{$it->{'attrs'}}, %{&_ui_attrs({
 		'class' => &_ui_class('ui_multi_item',
+			$it->{'attrs'}->{'class'},
 			$it->{'level'} ? 'ui_multi_level'.int($it->{'level'})
 				       : undef,
 			$it->{'disabled'} ? 'ui_multi_disabled' : undef),
@@ -5929,7 +5964,7 @@ foreach my $it (@items) {
 						       : undef,
 		'data-ui-multi-text' => &html_escape(join(" ",
 			grep { defined($_) && $_ ne '' }
-			     $it->{'label'}.($it->{'suffix'} // ''), $it->{'tag'})) });
+			     $it->{'label'}.($it->{'suffix'} // ''), $it->{'tag'}), $legacy) }) } };
 	$attrs->{'hidden'} = undef if ($folded && $it->{'level'});
 	$rows .= &ui_tag('div', $row, $attrs);
 	}
@@ -5971,6 +6006,8 @@ my $attrs = &_ui_attrs({
 	'data-ui-multi-hide' => &html_escape(
 		&convert_to_json([ map { "$_" } @hide ])),
 	'data-ui-multi-text-selected' => $text{'ui_multi_selected'} });
+# Have JavaScript retain the hidden input's initial order for resets.
+$attrs->{'data-ui-multi-order'} = '' if ($legacy);
 return &ui_page_assets().&_ui_block('div', $rv, $attrs);
 }
 

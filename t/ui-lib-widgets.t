@@ -403,6 +403,105 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 		'disabled of ui_multi_select disables the rows');
 }
 
+# Legacy attributes must retain row presentation and checkbox behavior.
+{
+	my $tags = q{DISABLED="false" class="managed" style='font-style:italic' title="Policy &amp; owner" data-policy=managed};
+	my @options = ( [ 'locked', 'Locked', $tags ],
+		[ 'open', 'Open', q{title="This is not disabled" data-note='a=b > c'} ] );
+	my $html = main::ui_multi_select_list('attrs', [ 'locked' ], \@options);
+	like($html, qr/<input (?=[^>]*value="locked")(?=[^>]*\bchecked\b)(?=[^>]*\bdisabled\b)/,
+		'legacy boolean disabled locks a selected checkbox, even with value false');
+	like($html, qr/name="attrs"[^>]*value="locked"/,
+		'disabled selections retain their submitted values');
+	like($html, qr/<div (?=[^>]*\bui_multi_item\b)(?=[^>]*\bui_multi_disabled\b)(?=[^>]*\bmanaged\b)/,
+		'legacy classes combine with the widget and disabled row classes');
+	like($html, qr/<div (?=[^>]*\bui_multi_item\b)(?=[^>]*style="font-style:italic")/,
+		'legacy styles apply to the whole row');
+	like($html, qr/title="Policy &amp; owner"/,
+		'legacy title entities are preserved without double escaping');
+	like($html, qr/data-policy="managed"/,
+		'unquoted data attributes survive normalization');
+	unlike($html, qr/<input (?=[^>]*value="open")(?=[^>]*\bdisabled\b)/,
+		'disabled inside a quoted attribute does not disable the checkbox');
+	like($html, qr/data-note="a=b > c"/,
+		'quoted attribute values retain spaces, equals and greater-than signs');
+	is($options[0]->[2], $tags, 'normalization does not modify legacy tags');
+	foreach my $disabled ( 'disabled', "disabled='disabled'", 'disabled=disabled' ) {
+		like(main::ui_multi_select_list('d', [ ], [ [ 'a', 'A', $disabled ] ]),
+			qr/<input (?=[^>]*value="a")(?=[^>]*\bdisabled\b)/,
+			"checkbox honors $disabled");
+		}
+	my $attrs = { 'disabled' => undef, 'title' => 'Managed', 'class' => 'managed' };
+	my $hash = main::ui_multi_select_list('hashattrs', [ ],
+		[ { 'value' => 'a', 'label' => 'A', 'attrs' => $attrs } ]);
+	like($hash, qr/<input (?=[^>]*value="a")(?=[^>]*\bdisabled\b)/,
+		'hash attributes also disable the checkbox');
+	is_deeply($attrs, { 'disabled' => undef, 'title' => 'Managed', 'class' => 'managed' },
+		'normalization does not modify the caller attribute hash');
+	my $missing = main::ui_multi_select_list('missing',
+		[ [ 'gone', 'Gone', q{disabled title='Retained'} ] ], [ ]);
+	like($missing, qr/<input (?=[^>]*value="gone")(?=[^>]*\bchecked\b)(?=[^>]*\bdisabled\b)/,
+		'missing selected values retain their legacy disabled attribute');
+	like($missing, qr/title="Retained"/, 'missing values retain row attributes');
+	my $fixed = main::ui_multi_select_list('fixed', [ ],
+		[ [ 'a', 'A', q{checked name=wrong value=wrong type=radio} ] ]);
+	like($fixed, qr/<input (?=[^>]*type='checkbox')(?=[^>]*name="fixed_item")(?=[^>]*value="a")/,
+		'row attributes cannot replace checkbox identity');
+	unlike($fixed, qr/<input (?=[^>]*value="a")(?=[^>]*\bchecked\b)/,
+		'row attributes cannot override the selected values');
+	my @disabled;
+	{
+		no warnings qw(redefine once);
+		local *main::theme_ui_checkbox = sub { push(@disabled, $_[5]); return ''; };
+		main::ui_multi_select_list('themed', [ ], \@options);
+	}
+	is_deeply(\@disabled, [ 1, 0 ], 'themes receive the normalized disabled state');
+}
+
+# Positional calls preserve the old selected pane's labels and value order.
+{
+	my @values = ( [ 'b', 'B (selected)', q{disabled title="Selected"} ],
+		[ 'a', 'R&amp;D' ], [ 'gone', 'Missing', q{title="Retained"} ] );
+	my @options = ( [ 'a', 'A', 'disabled' ], [ 'b', 'B' ],
+		[ 'c', 'C', 'disabled' ] );
+	my $html = main::ui_multi_select_list('legacy', \@values, \@options, 5, 1);
+	my $old = main::ui_multi_select('legacy', \@values, \@options, 5);
+	my ($value) = $html =~ /type='hidden'[^>]*name="legacy"[^>]*value="([^"]*)"/;
+	my ($oldvalue) = $old =~ /type='hidden'[^>]*name="legacy"[^>]*value="([^"]*)"/;
+	is($value, $oldvalue, 'legacy submitted order matches the old widget');
+	my ($order) = $html =~ /data-ui-multi-order="([^"]*)"/;
+	is($order, '', 'legacy order is captured from the initial hidden input');
+	like($html, qr/>B \(selected\)</, 'legacy selected description overrides the option label');
+	like($html, qr/>R&amp;D</, 'legacy pre-escaped labels are not double escaped');
+	my ($filter) = $html =~ /data-ui-multi-text="(R[^"]*)"/;
+	is(decode_attr($filter), 'R&D', 'legacy filter text matches the visible label');
+	like($html, qr/<input (?=[^>]*value="b")(?=[^>]*\bdisabled\b)/,
+		'legacy selected attributes disable existing entries');
+	unlike($html, qr/<input (?=[^>]*value="a")(?=[^>]*\bdisabled\b)/,
+		'selected attributes take precedence over available option attributes');
+	like($html, qr/<input (?=[^>]*value="c")(?=[^>]*\bdisabled\b)/,
+		'unselected entries keep their option attributes');
+	like($html, qr/title="Selected"/, 'legacy selected row keeps its tooltip');
+	like($html, qr/title="Retained"/, 'missing legacy selection keeps its tooltip');
+	is_deeply(\@values, [ [ 'b', 'B (selected)', q{disabled title="Selected"} ],
+		[ 'a', 'R&amp;D' ], [ 'gone', 'Missing', q{title="Retained"} ] ],
+		'legacy selected entries are not modified');
+	is_deeply(\@options, [ [ 'a', 'A', 'disabled' ], [ 'b', 'B' ],
+		[ 'c', 'C', 'disabled' ] ], 'legacy options are not modified');
+	my $numeric = main::ui_multi_select_list('numeric', [ [ 2, 'Two' ], [ 1, 'One' ] ],
+		[ [ 1, 'One' ], [ 2, 'Two' ] ], 5);
+	like($numeric, qr/name="numeric"[^>]*value="2\n1"/,
+		'numeric selection IDs retain their original order');
+	assert_no_handler_injection(main::ui_multi_select_list('legacy_xss',
+		[ [ 'a', $xss ] ], [ [ 'a', 'A' ] ], 5), 'legacy selected label');
+	my $modern = main::ui_multi_select_list('modern', [ [ 'b', 'B.x' ], [ 'a', 'A' ] ],
+		[ [ 'a', 'R&amp;D' ], { 'value' => 'b', 'label' => 'B', 'suffix' => '.x' } ], {});
+	unlike($modern, qr/data-ui-multi-order=/, 'options-hash calls retain the modern ordering policy');
+	like($modern, qr/name="modern"[^>]*value="a\nb"/, 'modern selections follow option order');
+	like($modern, qr/>R&amp;amp;D</, 'modern labels retain literal entity text');
+	like($modern, qr/>B<\/label><span[^>]*>\.x</, 'modern option labels retain their suffix without duplication');
+}
+
 # Preserve UTF-8 bytes and literal entities for browser-side matching.
 {
 	my $label = "\xC3\x89QUIPE";
