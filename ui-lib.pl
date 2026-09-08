@@ -1261,7 +1261,8 @@ return $rv;
 
 Returns HTML for selecting many of many from a list. By default, this is
 implemented using two <select> lists and Javascript buttons to move elements
-between them. The resulting input value is \n separated.
+between them. The resulting input value is \n separated. ui_multi_select_list
+offers a searchable checkbox list with the same values and submission format.
 
 Parameters are :
 
@@ -5691,5 +5692,287 @@ return &_ui_block('div', $select.$panels, &_ui_attrs({
 	'class' => &_ui_class('ui_select_switch', $opts->{'class'}),
 	'id' => $opts->{'id'} }));
 }
+
+####################### multiple selection
+
+=head2 ui_multi_select_list(name, &values, &options, [&opts] | [size], [add-if-missing], [disabled?], [options-title], [values-title], [width])
+
+Returns a scrolling checkbox list with selection links, an expandable filter
+and a selection count beside the mode selector or links. Like ui_multi_select,
+it submits newline-joined values under name; ui-lib.js keeps them in sync.
+Missing selected values are added automatically. Labels are plain text.
+
+With no entries, it shows only empty_label, preserving the selection, mode
+and children form values in hidden inputs. Nonempty lists load their assets
+even outside ui_page_start.
+
+Shift-click applies the clicked state from the last clicked entry to the
+current one, skipping filtered, folded and disabled entries. Labels and row
+backgrounds work too.
+
+Accepts an options hash or ui_multi_select's trailing positional arguments.
+Only disabled is used from the legacy arguments; size, add-if-missing,
+titles and width are ignored.
+
+=item name - HTML name for the input.
+
+=item values - Array reference of selected scalars or [ value, label ] pairs.
+
+=item options - Array reference of [ value, label ] pairs or hashes with keys value, label, suffix (muted text after the label), level (indentation depth), tag (chip at the right) and disabled.
+
+=item opts - Optional hash reference with the keys :
+
+=item search - Show or hide the filter button; defaults to on above eight entries. The input opens to its left in reserved space. Selection links affect visible, enabled entries and are omitted when disabled.
+
+=item placeholder - Hint text of the filter box.
+
+=item empty_label - Plain text shown when there are no entries, defaulting to "No entries".
+
+=item height - Height beyond which the list scrolls : a CSS length, 170px by default.
+
+=item modes - Hash with name, value and options as for ui_select. The hide array lists modes that hide the list, such as "all servers". Set radios to 1 to use radio buttons.
+
+=item children - Hash defining a switch that folds indented entries under their parent. Keys: name, value, checked, label or label_html, and note (a language key with $1 for the child count, shown beside the parent while folded). Folded selections are retained but excluded from the count.
+
+=item disabled - Set to 1 to disable every input of the widget.
+
+=item class - Extra CSS class names for the widget.
+
+=item id - HTML id of the widget, ui_multi_ followed by the name by default.
+
+=cut
+sub ui_multi_select_list
+{
+return &theme_ui_multi_select_list(@_)
+	if (defined(&theme_ui_multi_select_list));
+my ($name, $values, $options, $opts) = @_;
+if (ref($opts) ne 'HASH') {
+	# Accept ui_multi_select's positional disabled argument.
+	$opts = { 'disabled' => $_[5] };
+	}
+my $dis = $opts->{'disabled'} ? 1 : 0;
+
+
+# Normalize options without changing the caller's data.
+my @items;
+foreach my $o (@{$options || []}) {
+	if (ref($o) eq 'HASH') {
+		push(@items, { %$o });
+		}
+	elsif (ref($o) eq 'ARRAY') {
+		push(@items, { 'value' => $o->[0], 'label' => $o->[1] });
+		}
+	}
+# Index options to add missing selections without repeated scans.
+my %offered = map { defined($_->{'value'}) ? ($_->{'value'}, 1) : () } @items;
+my %selected;
+foreach my $v (@{$values || []}) {
+	my ($val, $label) = ref($v) eq 'ARRAY' ? @$v : ($v);
+	next if (!defined($val));
+	$selected{$val} = 1;
+	push(@items, { 'value' => $val, 'label' => $label })
+		if (!$offered{$val}++);
+	}
+foreach my $it (@items) {
+	$it->{'value'} = '' if (!defined($it->{'value'}));
+	$it->{'label'} = $it->{'value'}
+		if (!defined($it->{'label'}) || $it->{'label'} eq '');
+	}
+my @chosen = grep { $selected{$_->{'value'}} } @items;
+
+# Resolve the mode selector and initial list visibility.
+my $modes = $opts->{'modes'};
+my $hasmodes = ref($modes) eq 'HASH' && defined($modes->{'name'}) &&
+	       ref($modes->{'options'}) eq 'ARRAY';
+my @hide = $hasmodes ? @{$modes->{'hide'} || []} : ();
+my $hidden = $hasmodes && defined($modes->{'value'}) &&
+	     (grep { $_ eq $modes->{'value'} } @hide) ? 1 : 0;
+
+# Resolve the optional child-folding switch.
+my $children = ref($opts->{'children'}) eq 'HASH' &&
+	       defined($opts->{'children'}->{'name'}) ?
+			$opts->{'children'} : undef;
+my $folded = $children && $children->{'checked'} ? 1 : 0;
+
+# Exclude folded children from the count, retaining their submitted values.
+my $nchosen = grep { !$folded || !$_->{'level'} } @chosen;
+my $cattrs = { 'class' => 'ui_multi_count' };
+$cattrs->{'hidden'} = undef if (!$nchosen || $hidden);
+my $count = &ui_tag('span',
+	&html_escape(&text('ui_multi_selected', $nchosen)), $cattrs);
+my $counted = 0;
+my $search = defined($opts->{'search'}) ? $opts->{'search'} : @items > 8;
+
+# Empty lists need only a plain label; retain their submitted values.
+if (!@items) {
+	my $empty = &ui_tag('span', &html_escape(
+		defined($opts->{'empty_label'}) ? $opts->{'empty_label'} :
+		$text{'ui_multi_noentries'})).
+		&ui_hidden($name, '');
+	if (!$dis) {
+		$empty .= &ui_hidden($modes->{'name'}, $modes->{'value'})
+			if ($hasmodes && defined($modes->{'value'}));
+		$empty .= &ui_hidden($children->{'name'},
+			defined($children->{'value'}) ? $children->{'value'} : 1)
+			if ($folded);
+		}
+	return $empty;
+	}
+
+my $note = $children ? $children->{'note'} : undef;
+# Count children for each parent's folded summary.
+my $last;
+foreach my $it (@items) {
+	if ($it->{'level'}) {
+		$last->{'kids'}++ if ($last);
+		}
+	else {
+		$last = $it;
+		}
+	}
+
+# Render the mode selector and count.
+my $rv = "";
+if ($hasmodes) {
+	# ui_radio accepts HTML, so escape these plain-text labels first.
+	my @radios = map {
+		ref($_) eq 'ARRAY' ?
+			[ $_->[0], &html_escape($_->[1] || $_->[0]), $_->[2] ] :
+			[ $_, &html_escape($_) ]
+		} @{$modes->{'options'}};
+	$rv .= &ui_tag('div',
+		($modes->{'radios'} ?
+		    &ui_radio($modes->{'name'}, $modes->{'value'},
+			      \@radios, $dis) :
+		    &ui_select($modes->{'name'}, $modes->{'value'},
+			       $modes->{'options'}, 1, 0, 0, $dis)).
+		$count,
+		{ 'class' => 'ui_multi_modes' });
+	$counted = 1;
+	}
+
+# Use themed selection links, with actions scoped to this list.
+my $tools = "";
+if (!$dis) {
+	my $links = &ui_links_row([
+		&ui_tag('a', &html_escape($text{'ui_selall'}),
+			{ 'href' => '#', 'class' => 'select_all',
+			  'data-ui-multi-action' => 'all' }),
+		&ui_tag('a', &html_escape($text{'ui_selinv'}),
+			{ 'href' => '#', 'class' => 'select_invert',
+			  'data-ui-multi-action' => 'invert' }) ]);
+	# Keep the links and filter on the same toolbar.
+	$links =~ s/<br>\s*$//i;
+	# Keep link separators inside one flex item.
+	$tools .= &ui_tag('div', $links, { 'class' => 'ui_multi_links' });
+	}
+$tools .= $count if (!$counted);
+if ($search) {
+	# Render the filter with clear and toggle buttons.
+	my $hint = defined($opts->{'placeholder'}) ? $opts->{'placeholder'} :
+		$text{'ui_multi_filter'};
+	my $attrs = { 'type' => 'search', 'name' => $name.'_search',
+		'id' => $name.'_search', 'class' => 'ui_input ui_search_input',
+		'placeholder' => $hint, 'aria-label' => $hint,
+		'data-ui-multi-search' => 1, 'autocomplete' => 'off' };
+	$attrs->{'disabled'} = undef if ($dis);
+	my $filter = &ui_tag('input', undef, $attrs);
+	foreach my $action ( 'filter-clear', 'filter' ) {
+		my $clear = $action eq 'filter-clear';
+		my $battrs = {
+			'type' => 'button',
+			'class' => 'ui_multi_filter_button ui_multi_'.
+				($clear ? 'filter_clear' : 'filter_toggle'),
+			'data-ui-multi-action' => $action,
+			'aria-label' => $text{$clear ? 'ui_multi_filter_clear' :
+				'ui_multi_filter'},
+			'aria-controls' => $name.'_search' };
+		$battrs->{'aria-expanded'} = 'false' if (!$clear);
+		$battrs->{'disabled'} = undef if ($dis);
+		$filter .= &ui_tag('button',
+			&ui_svg_icon($clear ? 'x-circle' : 'filter', { 'size' => 14 }),
+			$battrs);
+		}
+	$tools .= &ui_tag('span', $filter,
+		{ 'class' => 'ui_search ui_multi_filter' });
+	}
+my $body = &ui_tag('div', $tools, { 'class' => 'ui_multi_tools' });
+
+# Render themed checkboxes with optional suffixes, child counts and tags.
+my $rows = "";
+foreach my $it (@items) {
+	my $val = $it->{'value'};
+	my $label = &html_escape($it->{'label'});
+	$label .= &ui_tag('span', &html_escape($it->{'suffix'}),
+			  { 'class' => 'ui_multi_suffix' })
+		if (defined($it->{'suffix'}) && $it->{'suffix'} ne '');
+	my $row = &ui_checkbox($name.'_item', $val, $label,
+			       $selected{$val} ? 1 : 0,
+			       "data-ui-multi-item='1'",
+			       $dis || $it->{'disabled'} ? 1 : 0);
+	if ($note && $it->{'kids'}) {
+		my $nattrs = { 'class' => 'ui_multi_note' };
+		$nattrs->{'hidden'} = undef if (!$folded);
+		$row .= &ui_tag('span',
+			&html_escape(&text($note, $it->{'kids'})), $nattrs);
+		}
+	$row .= &ui_tag('span', &ui_chip($it->{'tag'}),
+			{ 'class' => 'ui_multi_side' })
+		if (defined($it->{'tag'}) && $it->{'tag'} ne '');
+	# Lowercase in the browser, after UTF-8 bytes have been decoded.
+	my $attrs = &_ui_attrs({
+		'class' => &_ui_class('ui_multi_item',
+			$it->{'level'} ? 'ui_multi_level'.int($it->{'level'})
+				       : undef,
+			$it->{'disabled'} ? 'ui_multi_disabled' : undef),
+		'data-ui-multi-level' => $it->{'level'} ? int($it->{'level'})
+						       : undef,
+		'data-ui-multi-text' => &html_escape(join(" ",
+			grep { defined($_) && $_ ne '' }
+			     $it->{'label'}.($it->{'suffix'} // ''), $it->{'tag'})) });
+	$attrs->{'hidden'} = undef if ($folded && $it->{'level'});
+	$rows .= &ui_tag('div', $row, $attrs);
+	}
+
+# Include the initially hidden no-matches message.
+$body .= &_ui_block('div',
+	&_ui_block('div', $rows, { 'class' => 'ui_multi_items' }).
+	&ui_tag('div', &ui_svg_icon('search', { 'size' => 14 })." ".
+		&html_escape($text{'ui_multi_nomatch'}),
+		{ 'class' => 'ui_multi_empty', 'hidden' => undef }),
+	{ 'class' => 'ui_multi_list' });
+
+# Render the child-folding switch.
+if ($children) {
+	$body .= &ui_tag('div',
+		&ui_toggle({ 'name' => $children->{'name'},
+			     'value' => defined($children->{'value'}) ?
+					$children->{'value'} : 1,
+			     'checked' => $folded,
+			     'label' => $children->{'label'},
+			     'label_html' => $children->{'label_html'},
+			     'attrs' => { 'data-ui-multi-action' => 'children' },
+			     'disabled' => $dis }),
+		{ 'class' => 'ui_multi_foot' });
+	}
+
+# Preserve ui_multi_select's submission format.
+$body .= &ui_hidden($name, join("\n", map { $_->{'value'} } @chosen));
+my $battrs = { 'class' => 'ui_multi_body' };
+$battrs->{'hidden'} = undef if ($hidden);
+$rv .= &_ui_block('div', $body, $battrs);
+my $attrs = &_ui_attrs({
+	'class' => &_ui_class('ui_multi', $opts->{'class'},
+			      $dis ? 'ui_multi_disabled' : undef),
+	'id' => defined($opts->{'id'}) ? $opts->{'id'} : 'ui_multi_'.$name,
+	'style' => $opts->{'height'} ?
+		"--ui-multi-height:".$opts->{'height'} : undef,
+	'data-ui-multi' => $name,
+	'data-ui-multi-hide' => &html_escape(
+		&convert_to_json([ map { "$_" } @hide ])),
+	'data-ui-multi-text-selected' => $text{'ui_multi_selected'} });
+return &ui_page_assets().&_ui_block('div', $rv, $attrs);
+}
+
 
 1;

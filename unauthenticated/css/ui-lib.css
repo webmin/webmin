@@ -11,14 +11,15 @@
  * --font-family-mono when defined, otherwise text inherits the page font
  * and code uses the monospace fallback below.
  *
- * The .ui_page wrapper emitted by ui_page_start supplies the widget tokens.
+ * .ui_page and standalone .ui_multi lists supply the widget tokens.
  * The palette and shared spacing come from --ui-* custom properties,
  * which a theme may redefine on .ui_page to restyle every
  * widget at once. Setting data-ui-scheme="dark" (or "auto") on any
  * ancestor switches to the built-in dark palette.
  */
 
-.ui_page {
+/* Nested lists inherit the page's tokens. */
+.ui_page, .ui_multi:not(:where(.ui_page *)) {
 	/* Palette tokens read the theme's own custom properties first - the
 	 * names Authentic defines for its palettes and night mode - and
 	 * fall back to the colors of the gray theme, which defines only the
@@ -64,6 +65,8 @@
 	--ui-neutral-line: var(--border-color-neutral, #d7dbe0);
 
 	/* Controls */
+	--ui-input-bg: var(--bg-color-input, var(--ui-surface));
+	--ui-input-border: var(--border-color-input, var(--ui-border-strong));
 	--ui-toggle-bg: var(--toggle-bg-color, var(--ui-border-strong));
 	--ui-toggle-bg-checked: var(--toggle-bg-color-checked, var(--ui-accent));
 	--ui-toggle-thumb: var(--toggle-thumb-color, #ffffff);
@@ -98,7 +101,9 @@
  * palette follows the browser's prefers-color-scheme setting instead.
  * The two blocks below must be kept identical. */
 [data-ui-scheme="dark"] .ui_page,
-.ui_page[data-ui-scheme="dark"] {
+.ui_page[data-ui-scheme="dark"],
+[data-ui-scheme="dark"] .ui_multi:not(:where(.ui_page *)),
+.ui_multi[data-ui-scheme="dark"]:not(:where(.ui_page *)) {
 	--ui-canvas: #15171b;
 	--ui-surface: #1e2126;
 	--ui-surface-2: #23262c;
@@ -130,11 +135,15 @@
 	--ui-neutral-text: #b6bec7;
 	--ui-neutral-soft: #272b31;
 	--ui-neutral-line: #3c424b;
+	--ui-input-bg: var(--ui-surface);
+	--ui-input-border: var(--ui-border-strong);
 	color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
 	[data-ui-scheme="auto"] .ui_page,
-	.ui_page[data-ui-scheme="auto"] {
+	.ui_page[data-ui-scheme="auto"],
+	[data-ui-scheme="auto"] .ui_multi:not(:where(.ui_page *)),
+	.ui_multi[data-ui-scheme="auto"]:not(:where(.ui_page *)) {
 		--ui-canvas: #15171b;
 		--ui-surface: #1e2126;
 		--ui-surface-2: #23262c;
@@ -166,6 +175,8 @@
 		--ui-neutral-text: #b6bec7;
 		--ui-neutral-soft: #272b31;
 		--ui-neutral-line: #3c424b;
+		--ui-input-bg: var(--ui-surface);
+		--ui-input-border: var(--ui-border-strong);
 		color-scheme: dark;
 	}
 	body[data-ui-scheme="auto"]:has(.ui_page),
@@ -978,6 +989,142 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	outline: none;
 	border-color: var(--ui-accent);
 	box-shadow: 0 0 0 3px var(--ui-ring);
+}
+
+/* ---- Multiple selection ----
+ * Scrollable checkbox lists, also usable outside .ui_page. */
+
+.ui_multi, .ui_multi_body {
+	display: grid;
+	gap: var(--ui-inset);
+	min-width: 0;
+}
+.ui_multi [hidden] { display: none !important; }
+.ui_multi_modes {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 10px;
+}
+.ui_multi_count {
+	color: var(--ui-fg-muted);
+	font-size: 0.93em;
+	white-space: nowrap;
+}
+.ui_multi_tools {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 0;
+}
+/* ui_links_row handles link spacing; add room for the count. */
+.ui_multi_links { min-width: 0; }
+.ui_multi_tools .ui_multi_count:not(:first-child) {
+	margin-left: 2px;
+	margin-right: 10px;
+}
+/* Reserve filter space to prevent toolbar shifts on opening. */
+.ui_multi_tools .ui_search {
+	margin-left: auto;
+	flex: 1 1 9em;
+	min-width: 9em;
+	max-width: 14em;
+}
+/* Match the height of compact link buttons. */
+.ui_multi_tools .ui_search_input {
+	height: 22px;
+	padding: 0 26px;
+	font-size: 0.93em;
+	line-height: 20px;
+	background: var(--ui-input-bg);
+	border-color: var(--ui-input-border);
+}
+/* Keep dimensions while hiding closed controls from keyboard navigation. */
+.ui_multi_filter:not(.ui_multi_filter_open) .ui_search_input,
+.ui_multi_filter:not(.ui_multi_filter_open) .ui_multi_filter_clear {
+	visibility: hidden;
+}
+.ui_multi_filter .ui_search_input::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+}
+.ui_multi_tools .ui_multi_filter_button {
+	appearance: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 26px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid transparent;
+	border-radius: 0;
+	background: transparent;
+	color: var(--ui-fg-muted);
+	font: inherit;
+	cursor: pointer;
+}
+.ui_multi_tools .ui_multi_filter_toggle {
+	right: 0;
+	/* Share the input's theme colors. */
+	border-color: var(--ui-input-border);
+	background: var(--ui-input-bg);
+}
+.ui_multi_filter_toggle .ui_svg_icon {
+	fill: currentColor;
+	opacity: 0.75;
+}
+.ui_multi_tools .ui_multi_filter_clear { left: 0; }
+.ui_multi_filter_open .ui_multi_filter_toggle {
+	border-color: transparent;
+	background: transparent;
+	color: var(--ui-accent);
+}
+.ui_multi_filter_active .ui_multi_filter_toggle { color: var(--ui-danger); }
+.ui_multi_filter_button:focus-visible {
+	outline: 2px solid var(--ui-accent);
+	outline-offset: -2px;
+}
+.ui_multi_filter_button:disabled { cursor: default; }
+.ui_multi_list {
+	border: 1px solid var(--ui-border);
+	background: var(--ui-surface);
+	min-width: 0;
+}
+.ui_multi_items {
+	max-height: var(--ui-multi-height, 170px);
+	overflow-y: scroll;
+}
+.ui_multi_item {
+	display: flex;
+	align-items: center;
+	min-width: 0;
+	padding: 1px var(--ui-inset) 2px 7px;
+}
+/* Space unwrapped checkboxes; theme wrappers handle their own spacing. */
+.ui_multi_item > input[type="checkbox"] { margin-right: 6px; }
+.ui_multi_item:hover { background: var(--ui-surface-2); }
+.ui_multi_level1 { padding-left: 27px; }
+.ui_multi_level2 { padding-left: 47px; }
+.ui_multi_suffix { color: var(--ui-fg-muted); }
+.ui_multi_note {
+	margin-left: 6px;
+	color: var(--ui-fg-muted);
+	font-size: 0.93em;
+	white-space: nowrap;
+}
+.ui_multi_side { margin-left: auto; padding-left: 8px; flex-shrink: 0; }
+.ui_multi_disabled { opacity: 0.6; }
+.ui_multi_empty {
+	padding: 1px 2px 2px 2px;
+	color: var(--ui-fg-muted);
+	text-align: center;
+}
+.ui_multi_empty .ui_svg_icon {
+	vertical-align: -0.18em;
+	transform: scale(0.87);
+	margin-right: 0.025em;
 }
 
 /* ---- Reduced motion ---- */

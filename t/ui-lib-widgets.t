@@ -20,6 +20,14 @@ require File::Spec->catfile($root, 'ui-lib.pl');
 # Resolve the asset versions from this checkout, without init_config
 our $root_directory = $root;
 
+# Load widget strings without init_config.
+open(my $LANG, "<", File::Spec->catfile($root, 'lang', 'en')) or
+	die "lang/en: $!";
+while(my $line = <$LANG>) {
+	$main::text{$1} = $2 if ($line =~ /^([A-Za-z0-9_]+)=(.*)/);
+	}
+close($LANG);
+
 # Suppress the asset tags, whose legitimate <script src> would trip the
 # injection scanner below
 $main::ui_page_assets_done = 1;
@@ -39,6 +47,15 @@ sub assert_no_handler_injection {
 	unlike($bare, qr/\bon[a-z]+\s*=/i,
 		"$label: no event-handler attribute leaks out");
 	unlike($bare, qr/<script/i, "$label: no script element leaks out");
+}
+
+# Decode once like a browser; html_unescape also expands nested entities.
+sub decode_attr {
+	my ($value) = @_;
+	my %entities = ( 'amp' => '&', 'lt' => '<', 'gt' => '>',
+			 'quot' => '"', '#39' => "'", '#61' => '=' );
+	$value =~ s/&(amp|lt|gt|quot|#39|#61);/$entities{$1}/ge;
+	return $value;
 }
 
 my $xss = q{x"><script>alert(1)</script><b onmouseover="alert(1)};
@@ -313,6 +330,230 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 	like($first, qr/ui-lib\.css/, 'first assets call links the stylesheet');
 	like($first, qr/ui-lib\.js/, 'first assets call loads the script');
 	is($second, '', 'second assets call emits nothing');
+}
+
+# Multi-select values, modes, controls and hierarchy.
+# Match attributes independently because their order varies.
+{
+	my $html = main::ui_multi_select_list('doms',
+		[ 'b', [ 'zz', 'Gone' ] ],
+		[ [ 'a', 'A' ],
+		  { 'value' => 'b', 'label' => 'B', 'suffix' => '.x',
+		    'level' => 1, 'tag' => 'Plan' },
+		  [ 'c', 'C' ] ],
+		{ 'modes' => { 'name' => 'all', 'value' => 1,
+			       'options' => [ [ 1, 'All' ], [ 0, 'Some' ] ],
+			       'hide' => [ 1 ] } });
+	like($html, qr/type='hidden'[^>]*name="doms"[^>]*value="b\nzz"/,
+		'hidden input carries the newline-joined selection');
+	like($html, qr/name="doms_item" value="b"[^>]*checked/,
+		'selected entry is checked');
+	unlike($html, qr/name="doms_item" value="a"[^>]*checked/,
+		'unselected entry is not checked');
+	like($html, qr/value="zz"[^>]*checked/,
+		'selected value missing from the options is added');
+	like($html, qr/>Gone</, 'and keeps the label given with it');
+	like($html, qr/ui_multi_suffix">\.x</, 'suffix follows the label');
+	like($html, qr/data-ui-multi-text="B\.x Plan"/,
+		'filter text keeps the label and suffix joined for full-name searches');
+	like($html, qr/\bui_multi_level1\b/, 'level indents the row');
+	like($html, qr/ui_chip">Plan</, 'tag is a chip');
+	like($html, qr/<a (?=[^>]*\bselect_all\b)(?=[^>]*data-ui-multi-action="all")/,
+		'select all is the usual link');
+	like($html, qr/<a (?=[^>]*\bselect_invert\b)(?=[^>]*data-ui-multi-action="invert")/,
+		'invert selection is the usual link');
+	like($html, qr/select_all[^>]*>[^<]*<\/a>\s*\|\s*<a/s,
+		'the links are laid out by ui_links_row');
+	unlike($html, qr/<br>\s*<span[^>]*ui_search/,
+		'without the line break that row ends with');
+	unlike(main::ui_multi_select_list('x', [ ], [ [ 'a', 'A' ] ], { 'disabled' => 1 }),
+		qr/select_all/, 'a disabled widget has no links');
+	like($html, qr/<select [^>]*name="all"/, 'modes are a select by default');
+	my ($hide) = $html =~ /data-ui-multi-hide="([^"]*)"/;
+	is_deeply(main::convert_from_json(decode_attr($hide)), [ '1' ],
+		'hiding modes passed to the script as JSON strings');
+	like($html, qr/ui_multi_modes"[^>]*>(?:(?!<\/div>).)*<span (?=[^>]*\bui_multi_count\b)[^>]*>2 selected</s,
+		'count of chosen entries next to the mode select');
+	like(main::ui_multi_select_list('x', [ 'a' ], [ [ 'a', 'A' ] ]),
+		qr/ui_multi_tools"[^>]*>(?:(?!ui_multi_list).)*<span (?=[^>]*\bui_multi_count\b)[^>]*>1 selected</s,
+		'count next to the links when there are no modes');
+	like(main::ui_multi_select_list('x', [ ], [ [ 'a', 'A' ] ]),
+		qr/<span (?=[^>]*\bui_multi_count\b)(?=[^>]*\bhidden\b)/,
+		'count hidden while nothing is chosen');
+	like($html, qr/<span (?=[^>]*\bui_multi_count\b)(?=[^>]*\bhidden\b)/,
+		'count hidden under a mode that leaves the list out of use');
+	like($html, qr/<div (?=[^>]*\bui_multi_body\b)(?=[^>]*\bhidden\b)/,
+		'list hidden under a mode that does not use it');
+	unlike($html, qr/\bhidden\b[^>]*\bui_multi_item\b|\bui_multi_item\b[^>]*\bhidden\b/,
+		'every entry is shown, nothing folds');
+	unlike(main::ui_multi_select_list('x', [ ], [ [ 'a', 'A' ] ]),
+		qr/ui_search/, 'short list has no filter box');
+	like(main::ui_multi_select_list('x', [ ], [ map { [ $_, $_ ] } 1..9 ]),
+		qr/ui_search/, 'long list has one');
+	like(main::ui_multi_select_list('x', [ ], [ [ 'a', 'A' ] ],
+		{ 'modes' => { 'name' => 'all', 'value' => 1, 'radios' => 1,
+			       'options' => [ [ 1, 'All' ], [ 0, 'Some' ] ] } }),
+		qr/type='radio'[^>]*name="all"/, 'modes can be radios');
+	like(main::ui_multi_select_list('x', [ ], [ [ 'a', 'A' ] ],
+		{ 'height' => '200px' }),
+		qr/--ui-multi-height:200px/, 'height option sets the scroll height');
+	like(main::ui_multi_select_list('g', [ 'a' ],
+		[ [ 'a', 'A' ], [ 'b', 'B' ] ], 5, 1, 1),
+		qr/value="a"[^>]*disabled/,
+		'disabled of ui_multi_select disables the rows');
+}
+
+# Preserve UTF-8 bytes and literal entities for browser-side matching.
+{
+	my $label = "\xC3\x89QUIPE";
+	my $html = main::ui_multi_select_list('g', [ ],
+		[ [ 'team', $label ] ], { 'search' => 1 });
+	my ($filter) = $html =~ /data-ui-multi-text="([^"]*)"/;
+	is($filter, $label, 'filter label retains original UTF-8 bytes and case');
+	my $literal = 'R&amp;D';
+	$html = main::ui_multi_select_list('g', [ ], [ [ 'team', $literal ] ]);
+	($filter) = $html =~ /data-ui-multi-text="([^"]*)"/;
+	is(decode_attr($filter), $literal,
+		'filter text preserves literal HTML entity names in plain labels');
+}
+assert_no_handler_injection(
+	main::ui_multi_select_list($xss, [ $xss ],
+		[ { 'value' => $xss, 'label' => $xss, 'suffix' => $xss,
+		    'tag' => $xss } ],
+		{ 'placeholder' => $xss, 'search' => 1 }),
+	'ui_multi_select_list');
+
+# Filter accessibility, visibility and disabled state.
+{
+	my $html = main::ui_multi_select_list('filter', [ ], [ [ 'a', 'A' ] ],
+		{ 'search' => 1 });
+	like($html, qr/<button (?=[^>]*type="button")(?=[^>]*data-ui-multi-action="filter")(?=[^>]*aria-expanded="false")(?=[^>]*aria-controls="filter_search")(?=[^>]*aria-label="Filter content")/,
+		'filter starts collapsed with an accessible toggle button');
+	like($html, qr/<button (?=[^>]*type="button")(?=[^>]*data-ui-multi-action="filter-clear")(?=[^>]*aria-label="Clear or close filter")/,
+		'filter has a labelled clear button that cannot submit the form');
+	like($html, qr/<input (?=[^>]*type="search")(?=[^>]*id="filter_search")(?=[^>]*aria-label="Filter content")/,
+		'search input is labelled and targeted by its buttons');
+	unlike(main::ui_multi_select_list('filter', [ ],
+		[ map { [ $_, $_ ] } 1..9 ], { 'search' => 0 }),
+		qr/data-ui-multi-search/, 'search can still be explicitly hidden');
+	my $disabled = main::ui_multi_select_list('filter', [ ], [ [ 'a', 'A' ] ],
+		{ 'search' => 1, 'disabled' => 1 });
+	is(scalar(() = $disabled =~ /<(?:button|input) (?=[^>]*(?:data-ui-multi-action="filter(?:-clear)?"|data-ui-multi-search="1"))(?=[^>]*\bdisabled\b)/g), 3,
+		'disabled pickers disable the input and both filter buttons');
+}
+
+# Mode radio labels are plain text.
+assert_no_handler_injection(
+	main::ui_multi_select_list('d', [ ], [ [ 'a', 'A' ] ],
+		{ 'modes' => { 'name' => 'mode', 'value' => 'some', 'radios' => 1,
+			       'options' => [ [ 'some', $xss ], [ 'all', 'All' ] ] } }),
+	'ui_multi_select_list mode radios');
+
+# Hidden-mode values must survive attribute encoding intact.
+{
+	my @hide = ( 'all servers', '', '&quot;', "line\nbreak" );
+	my $html = main::ui_multi_select_list('d', [ ], [ [ 'a', 'A' ] ],
+		{ 'modes' => { 'name' => 'mode', 'value' => 'all servers',
+			       'options' => [ map { [ $_, $_ ] } @hide ],
+			       'hide' => \@hide } });
+	my ($hide) = $html =~ /data-ui-multi-hide="([^"]*)"/;
+	is_deeply(main::convert_from_json(decode_attr($hide)), \@hide,
+		'hidden-mode values survive attribute encoding without splitting');
+}
+
+# Empty pickers retain form values without visible controls.
+{
+	my $opts = { 'search' => 1,
+		'modes' => { 'name' => 'all', 'value' => 2,
+			     'options' => [ [ 1, 'All' ], [ 2, 'Except' ] ] },
+		'children' => { 'name' => 'sub', 'checked' => 1, 'value' => 'yes' } };
+	my $html = main::ui_multi_select_list('d', [ ], [ ], $opts);
+	like($html, qr/^<span class="ui--span">No entries<\/span>/,
+		'an empty picker is a plain span without empty-state styling');
+	unlike($html, qr/<(?:select|button|label|a|div|link|script)\b|type=['"](?:checkbox|radio|search)['"]|\bui_multi_(?:tools|list)\b/,
+		'no controls, wrapper or assets are emitted, even when search is requested');
+	like($html, qr/type='hidden'[^>]*name="d"[^>]*value=""/,
+		'an empty picker still submits an empty selection');
+	like($html, qr/type='hidden'[^>]*name="all"[^>]*value="2"/,
+		'the saved mode is retained without a visible selector');
+	like($html, qr/type='hidden'[^>]*name="sub"[^>]*value="yes"/,
+		'the checked children option retains its submitted value');
+	unlike($html, qr/\bdata-ui-multi=/,
+		'the static empty label needs no JavaScript initialization');
+	my $disabled = main::ui_multi_select_list('d', [ ], [ ],
+		{ %$opts, 'disabled' => 1 });
+	unlike($disabled, qr/name="(?:all|sub)"/,
+		'disabled mode and children controls remain excluded from submission');
+	my $label = 'No virtual servers have been created yet';
+	like(main::ui_multi_select_list('d', [ ], [ ], { 'empty_label' => $label }),
+		qr/^<span class="ui--span">\Q$label\E<\/span>/,
+		'caller can supply a plain empty label');
+	like(main::ui_multi_select_list('d', [ ], [ ], { 'empty_label' => '<b>None & none</b>' }),
+		qr/&lt;b&gt;None &amp; none&lt;\/b&gt;/,
+		'custom empty label is escaped as plain text');
+	assert_no_handler_injection(
+		main::ui_multi_select_list('d', [ ], [ ], { 'empty_label' => $xss }),
+		'custom empty label');
+}
+
+# Add missing saved values only once.
+{
+	my $html = main::ui_multi_select_list('d', [ 'gone', 'gone' ], [ ]);
+	is(scalar(() = $html =~ /\bclass="[^"]*\bui_multi_item\b/g), 1,
+		'a missing selected entry is added once');
+	unlike($html, qr/>No entries</,
+		'saved values absent from the options still make a populated picker');
+}
+
+# Folding hides children and shows their count beside the parent.
+{
+	my @opts = ( [ 'p', 'Parent' ],
+		     { 'value' => 'c1', 'label' => 'One', 'level' => 1 },
+		     { 'value' => 'c2', 'label' => 'Two', 'level' => 1 } );
+	# $1 expands to the child count.
+	$main::text{'ui_multi_test_note'} = '+$1 kids';
+	my $html = main::ui_multi_select_list('d', [ 'p' ], \@opts,
+		{ 'children' => { 'name' => 'sub', 'checked' => 1,
+				  'label' => 'With children',
+				  'note' => 'ui_multi_test_note' } });
+	like($html, qr/\bui_toggle\b/, 'the switch is a toggle');
+	like($html, qr/<input (?=[^>]*\bname="sub")(?=[^>]*\bdata-ui-multi-action="children")(?=[^>]*\bchecked\b)/,
+		'switch rendered on with its action');
+	my @folded = $html =~ /(<div (?=[^>]*\bui_multi_item\b)(?=[^>]*\bhidden\b)[^>]*>)/g;
+	is(scalar(@folded), 2, 'indented entries fold away while on');
+	like($html, qr/<span (?=[^>]*\bui_multi_note\b)[^>]*>\+2 kids</,
+		'parent row counts its children through the language');
+	unlike(main::ui_multi_select_list('d', [ 'p' ], \@opts,
+		{ 'children' => { 'name' => 'sub', 'label' => 'With children' } }),
+		qr/ui_multi_note/, 'no note without a key for it');
+	unlike($html, qr/<span (?=[^>]*\bui_multi_note\b)(?=[^>]*\bhidden\b)/,
+		'count shown while on');
+	my $open = main::ui_multi_select_list('d', [ 'p' ], \@opts,
+		{ 'children' => { 'name' => 'sub', 'label' => 'With children',
+				  'note' => 'ui_multi_test_note' } });
+	my @shown = $open =~ /(<div (?=[^>]*\bui_multi_item\b)(?=[^>]*\bhidden\b)[^>]*>)/g;
+	is(scalar(@shown), 0, 'entries shown while off');
+	like($open, qr/<span (?=[^>]*\bui_multi_note\b)(?=[^>]*\bhidden\b)/,
+		'count hidden while off');
+
+	# Initial counts must match JavaScript without losing folded selections.
+	my $selected = [ 'p', 'c1', 'c2' ];
+	my $closed = main::ui_multi_select_list('d', $selected, \@opts,
+		{ 'children' => { 'name' => 'sub', 'checked' => 1 } });
+	like($closed, qr/<span (?=[^>]*\bui_multi_count\b)[^>]*>1 selected</,
+		'folded count includes only the selected parent');
+	like($closed, qr/type='hidden'[^>]*name="d"[^>]*value="p\nc1\nc2"/,
+		'folded children retain their submitted selections');
+	my $expanded = main::ui_multi_select_list('d', $selected, \@opts,
+		{ 'children' => { 'name' => 'sub' } });
+	like($expanded, qr/<span (?=[^>]*\bui_multi_count\b)[^>]*>3 selected</,
+		'expanded count includes selected children');
+	my $only_children = main::ui_multi_select_list('d', [ 'c1' ], \@opts,
+		{ 'children' => { 'name' => 'sub', 'checked' => 1 } });
+	like($only_children, qr/<span (?=[^>]*\bui_multi_count\b)(?=[^>]*\bhidden\b)[^>]*>0 selected</,
+		'count is hidden when only folded children are selected');
+	like($only_children, qr/type='hidden'[^>]*name="d"[^>]*value="c1"/,
+		'folding retains child selections even without a selected parent');
 }
 
 done_testing();
