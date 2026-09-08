@@ -5462,7 +5462,7 @@ my $attrs = &_ui_attrs({
 	'class' => &_ui_class('ui_input', 'ui_search_input', $opts->{'class'}),
 	'value' => $opts->{'value'},
 	'placeholder' => defined($opts->{'placeholder'}) ?
-		$opts->{'placeholder'} : $text{'ui_search'} || 'Search',
+		$opts->{'placeholder'} : $text{'ui_search'},
 	'size' => $opts->{'size'} ? int($opts->{'size'}) : undef,
 	'form' => $opts->{'form'},
 	'data-ui-filter' => $opts->{'filter'} });
