@@ -11,15 +11,17 @@
  * --font-family-mono when defined, otherwise text inherits the page font
  * and code uses the monospace fallback below.
  *
- * .ui_page and standalone .ui_multi lists supply the widget tokens.
+ * .ui_page and standalone .ui_multi lists and .ui_toggle switches supply
+ * the widget tokens.
  * The palette and shared spacing come from --ui-* custom properties,
  * which a theme may redefine on .ui_page to restyle every
  * widget at once. Setting data-ui-scheme="dark" (or "auto") on any
  * ancestor switches to the built-in dark palette.
  */
 
-/* Nested lists inherit the page's tokens. */
-.ui_page, .ui_multi:not(:where(.ui_page *)) {
+/* Nested widgets inherit their container's tokens. */
+.ui_page, .ui_multi:not(:where(.ui_page *)),
+.ui_toggle:not(:where(.ui_page *, .ui_multi *)) {
 	/* Palette tokens read the theme's own custom properties first - the
 	 * names Authentic defines for its palettes and night mode - and
 	 * fall back to the colors of the gray theme, which defines only the
@@ -104,7 +106,9 @@
 [data-ui-scheme="dark"] .ui_page,
 .ui_page[data-ui-scheme="dark"],
 [data-ui-scheme="dark"] .ui_multi:not(:where(.ui_page *)),
-.ui_multi[data-ui-scheme="dark"]:not(:where(.ui_page *)) {
+.ui_multi[data-ui-scheme="dark"]:not(:where(.ui_page *)),
+[data-ui-scheme="dark"] .ui_toggle:not(:where(.ui_page *, .ui_multi *)),
+.ui_toggle[data-ui-scheme="dark"]:not(:where(.ui_page *, .ui_multi *)) {
 	--ui-canvas: #15171b;
 	--ui-surface: #1e2126;
 	--ui-surface-2: #23262c;
@@ -144,7 +148,9 @@
 	[data-ui-scheme="auto"] .ui_page,
 	.ui_page[data-ui-scheme="auto"],
 	[data-ui-scheme="auto"] .ui_multi:not(:where(.ui_page *)),
-	.ui_multi[data-ui-scheme="auto"]:not(:where(.ui_page *)) {
+	.ui_multi[data-ui-scheme="auto"]:not(:where(.ui_page *)),
+	[data-ui-scheme="auto"] .ui_toggle:not(:where(.ui_page *, .ui_multi *)),
+	.ui_toggle[data-ui-scheme="auto"]:not(:where(.ui_page *, .ui_multi *)) {
 		--ui-canvas: #15171b;
 		--ui-surface: #1e2126;
 		--ui-surface-2: #23262c;
