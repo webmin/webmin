@@ -4901,9 +4901,9 @@ label.
 
 Options are :
 
-=item cols - Set to 2 to flow rows into two columns on wide screens.
+=item cols - Set to 2 to fit up to two pairs per line. Longer pairs take a full line before moving the value below its label.
 
-=item wide - CSS width for the label column, such as 40%.
+=item wide - CSS width reserved for each label, such as 40%.
 
 =item class - Additional CSS classes.
 

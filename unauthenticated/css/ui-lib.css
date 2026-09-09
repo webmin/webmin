@@ -364,7 +364,7 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 	justify-content: space-between;
 	align-items: flex-start;
 	gap: 4px 12px;
-	padding: 5px 6px 0 7px;
+	padding: 5px 6px calc(var(--ui-gap) * 1.5) 7px;
 	flex-wrap: wrap;
 }
 .ui_card_title {
@@ -382,6 +382,8 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 	align-items: center;
 	gap: 8px;
 	flex-shrink: 0;
+	/* Let taller controls use the space below the title. */
+	margin-bottom: calc(var(--ui-gap) * -1.5);
 }
 .ui_card_body {
 	padding: 3px 7px 7px;
@@ -432,30 +434,37 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 
 /* ---- Description lists ---- */
 
-/* The list is one grid and every row contributes its dt and dd to it, so
- * all labels share a single column sized to the longest label, up to the
- * fraction given by --ui-dl-label. Labels only wrap past that limit. */
+/* Size rows to their content before deciding whether two can share a line. */
 .ui_dl {
-	display: grid;
-	grid-template-columns: var(--ui-dl-label, fit-content(45%)) 1fr;
-	gap: 10px 20px;
+	display: flex;
+	flex-wrap: wrap;
 	align-items: baseline;
+	gap: 10px 20px;
 }
-.ui_dl_cols {
-	grid-template-columns:
-		repeat(2, var(--ui-dl-label, fit-content(45%)) 1fr);
-	column-gap: 24px;
-}
-.ui_dl_row { display: contents; }
-.ui_dl_row dt { font-weight: 600; }
-.ui_dl_row dd {
+.ui_dl_row {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 1 1 100%;
+	align-content: start;
+	align-items: baseline;
+	gap: 3px 8px;
 	min-width: 0;
-	overflow-wrap: anywhere;
+	max-width: 100%;
 }
-@media (max-width: 560px) {
-	.ui_dl, .ui_dl_cols { grid-template-columns: 1fr; }
-	.ui_dl { row-gap: 2px; }
-	.ui_dl_row dd { margin-bottom: 8px; }
+.ui_dl_cols > .ui_dl_row {
+	flex-basis: auto;
+	min-width: calc((100% - 20px) / 2);
+}
+.ui_dl_row dt {
+	flex: 0 0 var(--ui-dl-label, auto);
+	font-weight: 600;
+}
+/* A value moves below its label only after the row has used all available space. */
+.ui_dl_row dd { flex: 1 1 auto; }
+.ui_dl_row dt, .ui_dl_row dd {
+	min-width: 0;
+	max-width: 100%;
+	overflow-wrap: anywhere;
 }
 
 /* ---- Badges and chips ---- */
