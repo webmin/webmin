@@ -5741,7 +5741,9 @@ Size, add-if-missing, titles and width are ignored.
 
 =item opts - Optional hash reference with the keys :
 
-=item search - Show or hide the filter button; defaults to on above eight entries. The input opens to its left in reserved space. Selection links affect visible, enabled entries and are omitted when disabled.
+=item search - Show or hide the filter button; defaults to on above eight entries. The input opens to its left in reserved space. Selection links appear above eight entries, affect visible, enabled entries and are omitted when disabled.
+
+=item count - Show the selection count; defaults to on. Set to 0 to omit it.
 
 =item placeholder - Hint text of the filter box.
 
@@ -5845,12 +5847,15 @@ my $children = ref($opts->{'children'}) eq 'HASH' &&
 			$opts->{'children'} : undef;
 my $folded = $children && $children->{'checked'} ? 1 : 0;
 
-# Exclude folded children from the count, retaining their submitted values.
-my $nchosen = grep { !$folded || !$_->{'level'} } @chosen;
-my $cattrs = { 'class' => 'ui_multi_count' };
-$cattrs->{'hidden'} = undef if (!$nchosen || $hidden);
-my $count = &ui_tag('span',
-	&html_escape(&text('ui_multi_selected', $nchosen)), $cattrs);
+my $count = '';
+if (!defined($opts->{'count'}) || $opts->{'count'}) {
+	# Exclude folded children, retaining their submitted values.
+	my $nchosen = grep { !$folded || !$_->{'level'} } @chosen;
+	my $cattrs = { 'class' => 'ui_multi_count' };
+	$cattrs->{'hidden'} = undef if (!$nchosen || $hidden);
+	$count = &ui_tag('span',
+		&html_escape(&text('ui_multi_selected', $nchosen)), $cattrs);
+	}
 my $counted = 0;
 my $search = defined($opts->{'search'}) ? $opts->{'search'} : @items > 8;
 
@@ -5902,9 +5907,9 @@ if ($hasmodes) {
 	$counted = 1;
 	}
 
-# Use themed selection links, with actions scoped to this list.
+# Larger lists get themed selection links, with actions scoped to this list.
 my $tools = "";
-if (!$dis) {
+if (!$dis && @items > 8) {
 	my $links = &ui_links_row([
 		&ui_tag('a', &html_escape($text{'ui_selall'}),
 			{ 'href' => '#', 'class' => 'select_all',
@@ -5947,7 +5952,7 @@ if ($search) {
 	$tools .= &ui_tag('span', $filter,
 		{ 'class' => 'ui_search ui_multi_filter' });
 	}
-my $body = &ui_tag('div', $tools, { 'class' => 'ui_multi_tools' });
+my $body = $tools ? &ui_tag('div', $tools, { 'class' => 'ui_multi_tools' }) : '';
 
 # Render themed checkboxes with optional suffixes, child counts and tags.
 my $rows = "";

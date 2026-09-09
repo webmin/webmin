@@ -1069,6 +1069,8 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	align-items: center;
 	gap: 4px 0;
 }
+/* A hidden count alone does not need a toolbar row. */
+.ui_multi_tools:not(:has(> :not([hidden]))) { display: none; }
 /* ui_links_row handles link spacing; add room for the count. */
 .ui_multi_links { min-width: 0; }
 .ui_multi_tools .ui_multi_count:not(:first-child) {

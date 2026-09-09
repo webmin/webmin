@@ -391,7 +391,7 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 		[ [ 'a', 'A' ],
 		  { 'value' => 'b', 'label' => 'B', 'suffix' => '.x',
 		    'level' => 1, 'tag' => 'Plan' },
-		  [ 'c', 'C' ] ],
+		  [ 'c', 'C' ], map { [ $_, uc($_) ] } qw(d e f g h) ],
 		{ 'modes' => { 'name' => 'all', 'value' => 1,
 			       'options' => [ [ 1, 'All' ], [ 0, 'Some' ] ],
 			       'hide' => [ 1 ] } });
@@ -417,7 +417,7 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 		'the links are laid out by ui_links_row');
 	unlike($html, qr/<br>\s*<span[^>]*ui_search/,
 		'without the line break that row ends with');
-	unlike(main::ui_multi_select_list('x', [ ], [ [ 'a', 'A' ] ], { 'disabled' => 1 }),
+	unlike(main::ui_multi_select_list('x', [ ], [ map { [ $_, $_ ] } 1..9 ], { 'disabled' => 1 }),
 		qr/select_all/, 'a disabled widget has no links');
 	like($html, qr/<select [^>]*name="all"/, 'modes are a select by default');
 	my ($hide) = $html =~ /data-ui-multi-hide="([^"]*)"/;
@@ -427,7 +427,7 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 		'count of chosen entries next to the mode select');
 	like(main::ui_multi_select_list('x', [ 'a' ], [ [ 'a', 'A' ] ]),
 		qr/ui_multi_tools"[^>]*>(?:(?!ui_multi_list).)*<span (?=[^>]*\bui_multi_count\b)[^>]*>1 selected</s,
-		'count next to the links when there are no modes');
+		'count in the toolbar when there are no modes');
 	like(main::ui_multi_select_list('x', [ ], [ [ 'a', 'A' ] ]),
 		qr/<span (?=[^>]*\bui_multi_count\b)(?=[^>]*\bhidden\b)/,
 		'count hidden while nothing is chosen');
@@ -451,7 +451,50 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 	like(main::ui_multi_select_list('g', [ 'a' ],
 		[ [ 'a', 'A' ], [ 'b', 'B' ] ], 5, 1, 1),
 		qr/value="a"[^>]*disabled/,
-		'disabled of ui_multi_select disables the rows');
+		'disabled of ui_multi_select_list disables the rows');
+}
+
+# Short pickers need neither bulk links nor the default filter.
+{
+	foreach my $size (1, 8, 9) {
+		my $html = main::ui_multi_select_list('size', [],
+			[ map { [ $_, $_ ] } 1..$size ]);
+		is(scalar(() = $html =~ /data-ui-multi-action="(?:all|invert)"/g),
+			$size > 8 ? 2 : 0, "$size entries: bulk link threshold");
+		is(scalar(() = $html =~ /data-ui-multi-search="1"/g),
+			$size > 8 ? 1 : 0, "$size entries: default search threshold");
+		}
+	unlike(main::ui_multi_select_list('short_search', [], [ [ 'a', 'A' ] ],
+		{ 'search' => 1 }), qr/data-ui-multi-action="(?:all|invert)"/,
+		'explicit search does not add bulk links to a short list');
+	my $html = main::ui_multi_select_list('short_mode', [], [ [ 'a', 'A' ] ],
+		{ 'modes' => { 'name' => 'mode', 'value' => 0,
+			'options' => [ [ 0, 'Selected' ], [ 1, 'All' ] ] } });
+	unlike($html, qr/ui_multi_tools/, 'mode-only pickers omit the empty toolbar');
+}
+
+# Omitting the counter preserves selections and the remaining controls.
+{
+	my $short = main::ui_multi_select_list('quiet', [ 'a' ], [ [ 'a', 'A' ] ],
+		{ 'count' => 0 });
+	unlike($short, qr/ui_multi_count|ui_multi_tools/,
+		'counter-free short lists have no empty toolbar');
+	like($short, qr/type='hidden'[^>]*name="quiet"[^>]*value="a"/,
+		'counter-free lists retain their submitted selection');
+	my $modes = main::ui_multi_select_list('quiet_mode', [ 'a' ], [ [ 'a', 'A' ] ],
+		{ 'count' => 0, 'modes' => { 'name' => 'mode', 'value' => 0,
+			'options' => [ [ 0, 'Selected' ], [ 1, 'All' ] ] } });
+	unlike($modes, qr/ui_multi_count|ui_multi_tools/,
+		'counter-free mode selectors have no counter or empty toolbar');
+	like($modes, qr/<select [^>]*name="mode"/,
+		'the mode selector remains available without a counter');
+	my $long = main::ui_multi_select_list('quiet_long', [ 1 ],
+		[ map { [ $_, $_ ] } 1..9 ], { 'count' => 0 });
+	unlike($long, qr/ui_multi_count/, 'long lists can also omit the counter');
+	like($long, qr/data-ui-multi-action="all"/,
+		'counter-free long lists retain bulk selection');
+	like($long, qr/data-ui-multi-search="1"/,
+		'counter-free long lists retain filtering');
 }
 
 # Legacy attributes must retain row presentation and checkbox behavior.
