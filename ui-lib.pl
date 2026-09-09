@@ -4293,8 +4293,8 @@ scheme option of ui_page_start. A theme can still replace any function
 by defining C<theme_ui_*>, but should rarely need to.
 
 Widget states used throughout are C<success>, C<warning>, C<danger>,
-C<info> and C<neutral>. The aliases C<ok>, C<warn>, C<error>, C<err> and
-C<off> are accepted.
+C<info> and C<neutral>. The aliases C<ok>, C<warn>, C<error>, C<err>,
+C<off>, C<secondary>, C<gray> and C<grey> are accepted.
 
 =cut
 
@@ -4309,6 +4309,7 @@ my %ui_states = (
 	'danger' => 'danger',	'error' => 'danger',	'err' => 'danger',
 	'info' => 'info',
 	'neutral' => 'neutral',	'off' => 'neutral',
+	'secondary' => 'neutral',	'gray' => 'neutral',	'grey' => 'neutral',
 	);
 
 # Built-in icon set, as 16x16 SVG path data drawn with the current color.
@@ -5388,6 +5389,16 @@ are :
 
 =item checked - Set to 1 if on by default.
 
+=item state - Color for the checked track: primary, success, warning, danger,
+info or neutral (the default). C<error> aliases danger; secondary, gray and grey
+alias neutral. Use primary for the theme's blue/accent toggle color.
+
+=item outline - Set to 1 for a bordered track with a matching thumb. Secondary
+uses the unchecked track color as a soft fill when on.
+
+=item round - Set to 1 for a fully rounded track and thumb. The default is
+smaller with softened corners. Works with filled and outline styles.
+
 =item disabled - Set to 1 to disable the switch.
 
 =item attrs - Hash reference of additional attributes for the input, such
@@ -5401,6 +5412,8 @@ sub ui_toggle
 return &theme_ui_toggle(@_) if (defined(&theme_ui_toggle));
 my ($opts) = @_;
 $opts ||= {};
+my $state = ($opts->{'state'} || '') eq 'primary' ? 'primary' :
+	    &_ui_state($opts->{'state'});
 my $value = defined($opts->{'value'}) ? $opts->{'value'} : 1;
 my $attrs = &_ui_attrs({
 	%{ $opts->{'attrs'} || {} },
@@ -5422,7 +5435,10 @@ my $label = &_ui_text($opts, 'label');
 $body .= &ui_tag('span', $label, { 'class' => 'ui_toggle_label' })
 	if (defined($label));
 return &ui_tag('label', $body,
-	{ 'class' => &_ui_class('ui_toggle', $opts->{'class'}) });
+	{ 'class' => &_ui_class('ui_toggle', 'ui_toggle_'.$state,
+		$opts->{'outline'} ? 'ui_toggle_outline' : undef,
+		$opts->{'round'} ? 'ui_toggle_round' : undef,
+		$opts->{'class'}) });
 }
 
 =head2 ui_search(&opts)

@@ -614,6 +614,64 @@ $rv .= ui_card({
 			    'label' => $text{'index_f_autoupdate'} }),
 		], { 'gap' => '20px' }),
 	});
+
+# Checked colors include primary and the shared semantic states.
+$rv .= ui_card({
+	'title' => $text{'index_f_toggle_colors'},
+	'desc' => $text{'index_f_toggle_colors_desc'},
+	'body' => ui_cluster([
+		ui_toggle({ 'name' => 'toggle_primary', 'checked' => 1,
+			    'state' => 'primary',
+			    'label' => $text{'index_f_toggle_primary'} }),
+		ui_toggle({ 'name' => 'toggle_success', 'checked' => 1,
+			    'state' => 'success', 'label' => $text{'ui_success'} }),
+		ui_toggle({ 'name' => 'toggle_warning', 'checked' => 1,
+			    'state' => 'warning', 'label' => $text{'ui_warning'} }),
+		ui_toggle({ 'name' => 'toggle_error', 'checked' => 1,
+			    'state' => 'error', 'label' => $text{'ui_error'} }),
+		ui_toggle({ 'name' => 'toggle_secondary', 'checked' => 1,
+			    'state' => 'secondary',
+			    'label' => $text{'index_f_toggle_secondary'} }),
+		], { 'gap' => '20px' }),
+	});
+
+# Outline variants shown off and on, including the softly filled secondary.
+my @toggle_states = (
+	[ 'primary', $text{'index_f_toggle_primary'} ],
+	[ 'success', $text{'ui_success'} ],
+	[ 'warning', $text{'ui_warning'} ],
+	[ 'error', $text{'ui_error'} ],
+	[ 'info', $text{'ui_info'} ],
+	[ 'secondary', $text{'index_f_toggle_secondary'} ],
+	);
+$rv .= ui_card({
+	'title' => $text{'index_f_toggle_outline'},
+	'desc' => $text{'index_f_toggle_outline_desc'},
+	'body' => ui_dl([ map {
+		my $checked = $_;
+		[ $text{$checked ? 'index_f_toggle_on' : 'index_f_toggle_off'},
+		  ui_cluster([ map {
+			ui_toggle({ 'name' => 'outline_'.$_->[0].'_'.$checked,
+				'state' => $_->[0], 'label' => $_->[1],
+				'outline' => 1, 'checked' => $checked })
+		  } @toggle_states ], { 'gap' => '20px' }) ]
+		} (0, 1) ]),
+	});
+
+# The round option works with every color and both track styles.
+$rv .= ui_card({
+	'title' => $text{'index_f_toggle_round'},
+	'desc' => $text{'index_f_toggle_round_desc'},
+	'body' => ui_dl([ map {
+		my $outline = $_;
+		[ $text{$outline ? 'index_f_toggle_outlined' : 'index_f_toggle_filled'},
+		  ui_cluster([ map {
+			ui_toggle({ 'name' => 'round_'.$_->[0].'_'.$outline,
+				'state' => $_->[0], 'label' => $_->[1],
+				'round' => 1, 'outline' => $outline, 'checked' => 1 })
+		  } @toggle_states ], { 'gap' => '20px' }) ]
+		} (0, 1) ]),
+	});
 return $rv;
 }
 

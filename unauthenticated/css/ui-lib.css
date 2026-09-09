@@ -68,11 +68,12 @@
 	--ui-input-bg: var(--bg-color-input, var(--ui-surface));
 	--ui-input-border: var(--border-color-input, var(--ui-border-strong));
 	--ui-toggle-bg: var(--toggle-bg-color, var(--ui-border-strong));
-	--ui-toggle-bg-checked: var(--toggle-bg-color-checked, var(--ui-accent));
+	/* Keep the default close to the unchecked track. */
+	--ui-toggle-bg-checked: color-mix(in srgb,
+		var(--ui-toggle-bg) 75%, var(--ui-neutral));
 	--ui-toggle-thumb: var(--toggle-thumb-color, #ffffff);
 
-	/* Shape and rhythm. Boxed widgets have square corners; dots,
-	 * activity markers, ring gauges and toggles use circles or rounded tracks. */
+	/* Shape and rhythm. Boxed widgets stay square; toggle corners are softened. */
 	--ui-gap: 7px;
 	/* Shared inset for boxed choice widgets: padding, option spacing,
 	 * vertical field gaps and gaps between labels and inputs */
@@ -919,6 +920,14 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	position: relative;
 	font-weight: normal;
 }
+/* State colors share the theme-backed palette used by other widgets. */
+.ui_toggle_primary {
+	--ui-toggle-bg-checked: var(--toggle-bg-color-checked, var(--ui-accent));
+}
+.ui_toggle_success { --ui-toggle-bg-checked: var(--ui-success); }
+.ui_toggle_warning { --ui-toggle-bg-checked: var(--ui-warning); }
+.ui_toggle_danger { --ui-toggle-bg-checked: var(--ui-danger); }
+.ui_toggle_info { --ui-toggle-bg-checked: var(--ui-info); }
 .ui_toggle > :not(.ui_toggle_track):not(.ui_toggle_label),
 .ui_toggle input {
 	position: absolute !important;
@@ -936,21 +945,32 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 .ui_toggle_track {
 	display: inline-flex;
 	align-items: center;
-	width: 28px;
-	height: 14px;
+	width: 26px;
+	height: 12px;
 	padding: 2px;
-	border-radius: 999px;
+	border-radius: 3px;
 	background: var(--ui-toggle-bg);
 	transition: background 0.15s ease;
 	flex-shrink: 0;
 }
 .ui_toggle_thumb {
+	width: 8px;
+	height: 8px;
+	border-radius: 2px;
+	background: var(--ui-toggle-thumb);
+	box-shadow: 0 1px 1px rgba(16, 24, 40, 0.18);
+	transition: transform 0.15s ease;
+}
+.ui_toggle_round .ui_toggle_track {
+	width: 28px;
+	height: 14px;
+	border-radius: 999px;
+}
+.ui_toggle_round .ui_toggle_thumb {
 	width: 10px;
 	height: 10px;
 	border-radius: 999px;
-	background: var(--ui-toggle-thumb);
 	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.25);
-	transition: transform 0.15s ease;
 }
 .ui_toggle input:checked ~ .ui_toggle_track,
 .ui_toggle:has(input:checked) .ui_toggle_track {
@@ -959,6 +979,29 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 .ui_toggle input:checked ~ .ui_toggle_track .ui_toggle_thumb,
 .ui_toggle:has(input:checked) .ui_toggle_thumb {
 	transform: translateX(14px);
+}
+/* Trade one pixel of padding for the border to keep the thumb in place. */
+.ui_toggle_outline .ui_toggle_track {
+	padding: 1px;
+	border: 1px solid currentColor;
+	color: var(--ui-toggle-bg);
+	background: transparent;
+}
+.ui_toggle_outline .ui_toggle_thumb {
+	background: currentColor;
+	box-shadow: none;
+}
+.ui_toggle_outline input:checked ~ .ui_toggle_track,
+.ui_toggle_outline:has(input:checked) .ui_toggle_track {
+	color: var(--ui-toggle-bg-checked);
+	background: transparent;
+}
+/* Secondary stays quiet when on, using the normal off-state fill. */
+.ui_toggle_outline.ui_toggle_neutral input:checked ~ .ui_toggle_track,
+.ui_toggle_outline.ui_toggle_neutral:has(input:checked) .ui_toggle_track {
+	color: var(--ui-toggle-thumb);
+	border-color: var(--ui-toggle-bg);
+	background: var(--ui-toggle-bg);
 }
 .ui_toggle input:focus-visible ~ .ui_toggle_track,
 .ui_toggle:has(input:focus-visible) .ui_toggle_track {

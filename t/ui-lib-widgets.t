@@ -179,6 +179,57 @@ unlike(main::ui_page_start({ 'scheme' => 'bogus"' }),
 		'toggle unchecked by default');
 	like(main::ui_toggle({ 'name' => 'boot', 'value' => '' }),
 		qr/\bvalue=""/, 'toggle preserves an explicitly empty submitted value');
+	like($html, qr/\bui_toggle_neutral\b/,
+		'toggle defaults to the secondary color');
+	unlike($html, qr/\bui_toggle_outline\b/, 'toggle is filled by default');
+	unlike($html, qr/\bui_toggle_round\b/, 'toggle uses the default compact shape');
+}
+
+# Toggle states share the widget aliases without changing checkbox behavior.
+{
+	foreach my $case ([ 'primary', 'primary' ], [ 'success', 'success' ],
+			  [ 'warning', 'warning' ],
+			  [ 'error', 'danger' ], [ 'info', 'info' ],
+			  [ 'secondary', 'neutral' ], [ 'gray', 'neutral' ],
+			  [ 'grey', 'neutral' ], [ 'invalid<', 'neutral' ]) {
+		my ($state, $suffix) = @$case;
+		my $html = main::ui_toggle({ 'name' => 'colored', 'state' => $state,
+			'class' => 'custom' });
+		like($html, qr/<label\b[^>]*class="[^"]*\bui_toggle_$suffix\b[^"]*\bcustom\b/,
+			"toggle maps $state and preserves the custom class");
+	}
+	my $html = main::ui_toggle({ 'name' => 'colored', 'state' => 'success',
+		'checked' => 1, 'disabled' => 1, 'value' => 'yes' });
+	my ($input) = $html =~ /(<input[^>]*>)/;
+	like($input, qr/\bchecked\b/, 'colored toggle stays checked');
+	like($input, qr/\bdisabled\b/, 'colored toggle stays disabled');
+	like($input, qr/\bvalue="yes"/, 'colored toggle preserves its value');
+}
+
+# Outline is optional and leaves the checkbox attributes intact.
+{
+	my $html = main::ui_toggle({ 'name' => 'outlined', 'state' => 'error',
+		'outline' => 1, 'checked' => 1, 'disabled' => 1, 'value' => 'yes' });
+	like($html, qr/\bui_toggle_danger\b[^"]*\bui_toggle_outline\b/,
+		'outline combines with the normalized state');
+	my ($input) = $html =~ /(<input[^>]*>)/;
+	like($input, qr/\bchecked\b/, 'outline preserves checked state');
+	like($input, qr/\bdisabled\b/, 'outline preserves disabled state');
+	like($input, qr/\bvalue="yes"/, 'outline preserves the submitted value');
+	unlike(main::ui_toggle({ 'name' => 'plain', 'outline' => 0 }),
+		qr/\bui_toggle_outline\b/, 'outline can be explicitly disabled');
+}
+
+# Rounding applies independently of the toggle's color and outline style.
+{
+	foreach my $outline (0, 1) {
+		my $html = main::ui_toggle({ 'name' => 'rounded', 'state' => 'primary',
+			'round' => 1, 'outline' => $outline });
+		like($html, qr/\bui_toggle_primary\b[^"]*\bui_toggle_round\b/,
+			"rounding applies with outline=$outline");
+	}
+	unlike(main::ui_toggle({ 'name' => 'square', 'round' => 0 }),
+		qr/\bui_toggle_round\b/, 'rounding can be explicitly disabled');
 }
 
 # Column tables take extra class names for the theme, such as no-hover

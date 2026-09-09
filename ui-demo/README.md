@@ -28,6 +28,18 @@ The page itself is wrapped in `ui_page_start` / `ui_page_end`, which load
 the stylesheet and script from `unauthenticated/css/ui-lib.css` and
 `unauthenticated/js/ui-lib.js` once per page.
 
+The Forms tab includes toggle colors: pass `state => 'primary'`, `'success'`,
+`'warning'`, `'error'` or `'secondary'` to `ui_toggle`. Checked tracks default
+to secondary (gray); primary uses the blue/accent color. Colors follow the
+theme with built-in fallbacks.
+
+Add `outline => 1` for a transparent track with a colored border and thumb.
+Secondary uses an outline when off and a soft gray fill when on. The Forms
+tab shows both positions for every outline color.
+
+Toggles are compact with softened corners by default. Pass `round => 1` for
+a fully rounded track and thumb; it works with every color and with `outline => 1`.
+
 In a `ui_multi_select_list` example on the Choices tab, click an
 entry and Shift-click another to select or clear the range between them.
 Checkboxes, labels and row backgrounds work alike; filtered, folded and
