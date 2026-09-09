@@ -552,6 +552,17 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 	is_deeply(\@disabled, [ 1, 0 ], 'themes receive the normalized disabled state');
 }
 
+# Checkbox lists load their assets once per request, including on ordinary forms.
+{
+	local $main::ui_page_assets_done = 0;
+	my $html = main::ui_multi_select_list('first', [], [ [ 'a', 'A' ] ], 5);
+	like($html, qr/data-ui-multi="first"/, 'positional list calls render checkboxes');
+	like($html, qr/ui-lib\.css/, 'lists load the widget stylesheet');
+	like($html, qr/ui-lib\.js/, 'lists load the delegated widget script');
+	unlike(main::ui_multi_select_list('second', [], [ [ 'b', 'B' ] ], 5),
+		qr/ui-lib\.(css|js)/, 'another picker does not reload the assets');
+}
+
 # Three-argument callers retain legacy selected labels and order.
 {
 	my $values = [ [ 'b', 'Selected &amp; saved' ], [ 'a', 'A' ] ];
@@ -561,6 +572,41 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 		'omitting size preserves the supplied selection order');
 	like($html, qr/>Selected &amp; saved</,
 		'omitting size preserves the selected description and escaped text');
+}
+
+# Each widget has its own theme entry point.
+{
+	no warnings qw(redefine once);
+	my @received;
+	local *main::theme_ui_multi_select_list = sub { @received = @_; return 'themed'; };
+	local *main::theme_ui_multi_select = sub { return 'dual-list'; };
+	foreach my $args ([ 'theme', [], [], 5, 1, 1, 'Available', 'Selected', 300 ],
+			 [ 'theme', [], [], { 'search' => 1 } ]) {
+		is(main::ui_multi_select_list(@$args), 'themed', 'the checkbox-list theme hook is used');
+		is_deeply(\@received, $args, 'the theme receives the original arguments');
+		}
+	is(main::ui_multi_select('old', [], [], 5), 'dual-list',
+		'the original widget retains its separate theme hook');
+}
+
+# The original widget retains dual selects, titles, size, width and script loading.
+{
+	no warnings 'once';
+	local $main::ui_multi_select_donejs = 0;
+	my $html = main::ui_multi_select('old', [ [ 'b', 'Chosen B' ] ],
+		[ [ 'a', 'Available A' ], [ 'b', 'Available B' ] ],
+		7, 1, 0, 'Available', 'Selected', 300);
+	like($html, qr/name="old_opts"[^>]*size='7'[^>]*min-width:300px/,
+		'the available pane retains its size and width');
+	like($html, qr/name="old_vals"[^>]*size='7'/,
+		'the selected pane is restored');
+	like($html, qr/<b>Available<\/b>.*<b>Selected<\/b>/s,
+		'dual-list column titles are retained');
+	like($html, qr/>Chosen B<\/option>/, 'selected labels retain their descriptions');
+	like($html, qr/function multi_select_move/, 'the original move script is loaded');
+	unlike($html, qr/data-ui-multi=/, 'the original widget does not render the checkbox list');
+	unlike(main::ui_multi_select('old_second', [], [], 5),
+		qr/function multi_select_move/, 'dual-list scripts load once per request');
 }
 
 # Trusted HTML is opt-in and filtering uses the displayed label text.
@@ -600,10 +646,8 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 	my @options = ( [ 'a', 'A', 'disabled' ], [ 'b', 'B' ],
 		[ 'c', 'C', 'disabled' ] );
 	my $html = main::ui_multi_select_list('legacy', \@values, \@options, 5, 1);
-	my $old = main::ui_multi_select('legacy', \@values, \@options, 5);
 	my ($value) = $html =~ /type='hidden'[^>]*name="legacy"[^>]*value="([^"]*)"/;
-	my ($oldvalue) = $old =~ /type='hidden'[^>]*name="legacy"[^>]*value="([^"]*)"/;
-	is($value, $oldvalue, 'legacy submitted order matches the old widget');
+	is($value, "b\na\ngone", 'legacy submission retains the supplied selection order');
 	my ($order) = $html =~ /data-ui-multi-order="([^"]*)"/;
 	is($order, '', 'legacy order is captured from the initial hidden input');
 	like($html, qr/>B \(selected\)</, 'legacy selected description overrides the option label');

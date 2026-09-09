@@ -5767,12 +5767,11 @@ Size, add-if-missing, titles and width are ignored.
 =cut
 sub ui_multi_select_list
 {
-return &theme_ui_multi_select_list(@_)
-	if (defined(&theme_ui_multi_select_list));
+return &theme_ui_multi_select_list(@_) if (defined(&theme_ui_multi_select_list));
 my ($name, $values, $options, $opts) = @_;
 my $legacy = ref($opts) ne 'HASH';
 if (ref($opts) ne 'HASH') {
-	# Accept ui_multi_select's positional disabled argument.
+	# Retain the legacy positional disabled argument.
 	$opts = { 'disabled' => $_[5] };
 	}
 my $dis = $opts->{'disabled'} ? 1 : 0;
@@ -6026,7 +6025,7 @@ if ($children) {
 		{ 'class' => 'ui_multi_foot' });
 	}
 
-# Preserve ui_multi_select's submission format.
+# Submit the selected values in the established newline-separated format.
 $body .= &ui_hidden($name, join("\n", map { $_->{'value'} } @chosen));
 my $battrs = { 'class' => 'ui_multi_body' };
 $battrs->{'hidden'} = undef if ($hidden);
