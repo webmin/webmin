@@ -87,7 +87,7 @@ if ($config{'membox'} == 0) {
 	# edit
 	@canulist = grep { &can_edit_user(\%access, $_) } @ulist;
 	print &ui_table_row(&hlink($text{'gedit_members'}, "gmembers"),
-		&ui_multi_select("members",
+		&ui_multi_select_list("members",
 			[ map { [ $_, $_ ] }
 			      sort { lc($a) cmp lc($b) }
 			      split(/,/ , &html_escape($group{'members'})) ],

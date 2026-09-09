@@ -488,7 +488,7 @@ if ($config{'secmode'} == 0) {
 		}
 	@ingroups = map { [ $_, $_ ] } sort { $a cmp $b }
 			grep { $ingroups{$_} } (keys %ingroups);
-	$secfield = &ui_multi_select("sgid", \@ingroups, \@canglist, 5, 1, 0,
+	$secfield = &ui_multi_select_list("sgid", \@ingroups, \@canglist, 5, 1, 0,
 				     $text{'uedit_allg'}, $text{'uedit_ing'});
 	}
 elsif ($config{'secmode'} == 2) {
