@@ -5393,8 +5393,8 @@ are :
 info or neutral (the default). C<error> aliases danger; secondary, gray and grey
 alias neutral. Use primary for the theme's blue/accent toggle color.
 
-=item outline - Set to 1 for a bordered track with a matching thumb. Secondary
-uses the unchecked track color as a soft fill when on.
+=item outline - Set to 1 for a transparent track with a matching border and
+thumb, using the state color when on.
 
 =item round - Set to 1 for a fully rounded track and thumb. The default is
 smaller with softened corners. Works with filled and outline styles.

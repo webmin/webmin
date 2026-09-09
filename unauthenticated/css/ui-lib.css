@@ -1002,13 +1002,6 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	color: var(--ui-toggle-bg-checked);
 	background: transparent;
 }
-/* Secondary stays quiet when on, using the normal off-state fill. */
-.ui_toggle_outline.ui_toggle_neutral input:checked ~ .ui_toggle_track,
-.ui_toggle_outline.ui_toggle_neutral:has(input:checked) .ui_toggle_track {
-	color: var(--ui-toggle-thumb);
-	border-color: var(--ui-toggle-bg);
-	background: var(--ui-toggle-bg);
-}
 .ui_toggle input:focus-visible ~ .ui_toggle_track,
 .ui_toggle:has(input:focus-visible) .ui_toggle_track {
 	box-shadow: 0 0 0 3px var(--ui-ring);

@@ -34,7 +34,7 @@ to secondary (gray); primary uses the blue/accent color. Colors follow the
 theme with built-in fallbacks.
 
 Add `outline => 1` for a transparent track with a colored border and thumb.
-Secondary uses an outline when off and a soft gray fill when on. The Forms
+The track stays unfilled in both positions, including secondary. The Forms
 tab shows both positions for every outline color.
 
 Toggles are compact with softened corners by default. Pass `round => 1` for
