@@ -563,6 +563,36 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 		'omitting size preserves the selected description and escaped text');
 }
 
+# Trusted HTML is opt-in and filtering uses the displayed label text.
+{
+	my $label = '<i title="a > b">Entire website &amp; files</i>';
+	my $options = [ { 'value' => 'root', 'label' => $label,
+		'suffix' => '<suffix>', 'tag' => '<tag>' } ];
+	my $plain = main::ui_multi_select_list('plain', [ 'root' ], $options, {});
+	like($plain, qr/&lt;i title&#61;/, 'labels are escaped by default');
+	unlike($plain, qr/<i\b/, 'default labels cannot introduce markup');
+	my $html = main::ui_multi_select_list('markup',
+		[ 'root', [ 'missing', '<b>Missing &amp;lt;path&amp;gt;</b>' ] ],
+		$options, { 'html' => 1 });
+	like($html, qr/\Q$label\E/, 'the HTML flag retains trusted label markup');
+	like($html, qr/aria-label="Entire website &amp; files"/,
+		'HTML labels retain an accessible checkbox name');
+	like($html, qr/<b>Missing &amp;lt;path&amp;gt;<\/b>/,
+		'missing selections also support trusted HTML labels');
+	like($html, qr/&lt;suffix&gt;/, 'HTML labels do not enable HTML suffixes');
+	like($html, qr/&lt;tag&gt;/, 'HTML labels do not enable HTML tags');
+	my @filter = $html =~ /data-ui-multi-text="([^"]*)"/g;
+	is_deeply([ map { decode_attr($_) } @filter ],
+		[ 'Entire website & files<suffix> <tag>', 'Missing &lt;path&gt;' ],
+		'filter text removes markup and decodes entities only once');
+	like($html, qr/name="markup"[^>]*value="root\nmissing"/,
+		'HTML labels do not change submitted values');
+	assert_no_handler_injection(main::ui_multi_select_list('safe', [ $xss ],
+		[ { 'value' => $xss, 'label' => '<b>Trusted</b>',
+		    'suffix' => $xss, 'tag' => $xss } ], { 'html' => 1 }),
+		'HTML mode value and metadata');
+}
+
 # Positional calls preserve the old selected pane's labels and value order.
 {
 	my @values = ( [ 'b', 'B (selected)', q{disabled title="Selected"} ],

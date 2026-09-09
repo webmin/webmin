@@ -5714,10 +5714,11 @@ return &_ui_block('div', $select.$panels, &_ui_attrs({
 =head2 ui_multi_select_list(name, &values, &options, [&opts] | [size], [add-if-missing], [disabled?], [options-title], [values-title], [width])
 
 Returns a scrolling checkbox list with selection links, an expandable filter
-and a selection count beside the mode selector or links. Like ui_multi_select,
-it submits newline-joined values under name; ui-lib.js keeps them in sync.
-Missing selected values are added automatically. Labels are plain text with
-the options-hash API; positional calls also accept pre-escaped labels.
+and a selection count beside the mode selector or links. It submits
+newline-joined values under name; ui-lib.js keeps them in sync.
+Missing selected values are added automatically. Labels are plain text by
+default; positional calls also accept pre-escaped labels. Set html to 1 for
+trusted label markup.
 
 With no entries, it shows only empty_label, preserving the selection, mode
 and children form values in hidden inputs. Nonempty lists load their assets
@@ -5744,6 +5745,8 @@ Size, add-if-missing, titles and width are ignored.
 =item search - Show or hide the filter button; defaults to on above eight entries. The input opens to its left in reserved space. Selection links appear above eight entries, affect visible, enabled entries and are omitted when disabled.
 
 =item count - Show the selection count; defaults to on. Set to 0 to omit it.
+
+=item html - Set to 1 to render labels as trusted HTML. Labels are escaped by default; values, suffixes and tags remain escaped.
 
 =item placeholder - Hint text of the filter box.
 
@@ -5958,13 +5961,20 @@ my $body = $tools ? &ui_tag('div', $tools, { 'class' => 'ui_multi_tools' }) : ''
 my $rows = "";
 foreach my $it (@items) {
 	my $val = $it->{'value'};
-	my $label = &html_escape($it->{'label'}, $legacy);
+	my $label = $opts->{'html'} ? $it->{'label'} :
+		&html_escape($it->{'label'}, $legacy);
+	# Filter on label text, excluding markup while retaining literal entities.
+	my $filter_label = $opts->{'html'} ?
+		&html_escape(&html_strip($label), 1) : $label;
 	$label .= &ui_tag('span', &html_escape($it->{'suffix'}),
 			  { 'class' => 'ui_multi_suffix' })
 		if (defined($it->{'suffix'}) && $it->{'suffix'} ne '');
+	# Checkbox renderers may place HTML outside their label element.
+	my $ctags = "data-ui-multi-item='1'";
+	$ctags .= ' aria-label="'.$filter_label.'"' if ($opts->{'html'});
 	my $row = &ui_checkbox($name.'_item', $val, $label,
 			       $selected{$val} ? 1 : 0,
-			       "data-ui-multi-item='1'",
+			       $ctags,
 			       $dis || $it->{'disabled'} ? 1 : 0);
 	if ($note && $it->{'kids'}) {
 		my $nattrs = { 'class' => 'ui_multi_note' };
@@ -5984,9 +5994,10 @@ foreach my $it (@items) {
 			$it->{'disabled'} ? 'ui_multi_disabled' : undef),
 		'data-ui-multi-level' => $it->{'level'} ? int($it->{'level'})
 						       : undef,
-		'data-ui-multi-text' => &html_escape(join(" ",
+		'data-ui-multi-text' => join(" ",
 			grep { defined($_) && $_ ne '' }
-			     $it->{'label'}.($it->{'suffix'} // ''), $it->{'tag'}), $legacy) }) } };
+			     $filter_label.&html_escape($it->{'suffix'}, $legacy),
+			     &html_escape($it->{'tag'}, $legacy)) }) } };
 	$attrs->{'hidden'} = undef if ($folded && $it->{'level'});
 	$rows .= &ui_tag('div', $row, $attrs);
 	}
