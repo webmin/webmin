@@ -40,6 +40,7 @@ tab shows both positions for every outline color.
 Toggles are compact with softened corners by default. Pass `round => 1` for
 a fully rounded track and thumb; it works with every color and with `outline => 1`.
 
+Bulk-selection links and the default filter appear at nine entries.
 In a `ui_multi_select_list` example on the Choices tab, click an
 entry and Shift-click another to select or clear the range between them.
 Checkboxes, labels and row backgrounds work alike; filtered, folded and
@@ -59,12 +60,18 @@ The empty server example uses `empty_label` to replace the default
 The "Option attributes" example passes legacy `[ value, label, attributes ]`
 entries. Two rows are disabled, including a checked membership; the other
 rows remain editable. Titles and styles apply to the row, so the optional
-membership is italic and shows a tooltip.
+membership is italic and shows a tooltip. This example also passes `count => 0`
+to omit the selection counter, which is enabled by default.
 
-"Label comparison" passes `staff (Office accounts)` in the options of one
-list and only in the selected values of a legacy positional call. Both
-show the full description and submit `staff`. Positional calls also retain
-selected-value order and accept pre-escaped labels from existing callers.
+"HTML labels" uses `html => 1` to render trusted markup, including an italic
+"Entire website" label. Filtering matches the label text. Labels are escaped
+by default; submitted values, suffixes and tags stay escaped in either mode.
+
+"Label comparison" shows `ui_multi_select_list` beside the original dual-list
+`ui_multi_select`. It passes `staff (Office accounts)` in the new list's options
+and the old widget's selected values. Both show the full description and submit
+`staff`. Positional list calls also retain selected-value order and accept
+pre-escaped labels from existing callers.
 
 ## Page chrome
 
