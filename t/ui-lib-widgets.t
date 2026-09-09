@@ -720,6 +720,21 @@ assert_no_handler_injection(
 		'disabled pickers disable the input and both filter buttons');
 }
 
+# Explicit widget IDs isolate labels and filters in forms sharing a field name.
+{
+	foreach my $id ('validate', 'schedule') {
+		my $html = main::ui_multi_select_list('servers', ['a'], [['a', 'A']],
+			{ 'id' => $id, 'search' => 1 });
+		like($html, qr/id="${id}_item_a"/, "$id checkbox uses the widget ID");
+		like($html, qr/for="${id}_item_a"/, "$id label targets its own checkbox");
+		like($html, qr/id="${id}_search"/, "$id filter uses the widget ID");
+		is(() = $html =~ /aria-controls="${id}_search"/g, 2,
+			"$id filter buttons target their own input");
+		like($html, qr/type='hidden'[^>]*name="servers"[^>]*value="a"/,
+			"$id retains the submitted field name and selected value");
+	}
+}
+
 # Mode radio labels are plain text.
 assert_no_handler_injection(
 	main::ui_multi_select_list('d', [ ], [ [ 'a', 'A' ] ],

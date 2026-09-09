@@ -5762,7 +5762,7 @@ Size, add-if-missing, titles and width are ignored.
 
 =item class - Extra CSS class names for the widget.
 
-=item id - HTML id of the widget, ui_multi_ followed by the name by default.
+=item id - Widget HTML ID, ui_multi_ followed by the name by default. Explicit IDs also separate checkbox and filter IDs when forms reuse a field name.
 
 =cut
 sub ui_multi_select_list
@@ -5775,7 +5775,8 @@ if (ref($opts) ne 'HASH') {
 	$opts = { 'disabled' => $_[5] };
 	}
 my $dis = $opts->{'disabled'} ? 1 : 0;
-
+# Separate controls in forms that share a submitted field name.
+my $inputname = defined($opts->{'id'}) ? $opts->{'id'} : $name;
 
 # Normalize options without changing the caller's data.
 my @items;
@@ -5930,7 +5931,7 @@ if ($search) {
 	my $hint = defined($opts->{'placeholder'}) ? $opts->{'placeholder'} :
 		$text{'ui_multi_filter'};
 	my $attrs = { 'type' => 'search', 'name' => $name.'_search',
-		'id' => $name.'_search', 'class' => 'ui_input ui_search_input',
+		'id' => $inputname.'_search', 'class' => 'ui_input ui_search_input',
 		'placeholder' => $hint, 'aria-label' => $hint,
 		'data-ui-multi-search' => 1, 'autocomplete' => 'off' };
 	$attrs->{'disabled'} = undef if ($dis);
@@ -5944,7 +5945,7 @@ if ($search) {
 			'data-ui-multi-action' => $action,
 			'aria-label' => $text{$clear ? 'ui_multi_filter_clear' :
 				'ui_multi_filter'},
-			'aria-controls' => $name.'_search' };
+			'aria-controls' => $inputname.'_search' };
 		$battrs->{'aria-expanded'} = 'false' if (!$clear);
 		$battrs->{'disabled'} = undef if ($dis);
 		$filter .= &ui_tag('button',
@@ -5971,7 +5972,7 @@ foreach my $it (@items) {
 	# Checkbox renderers may place HTML outside their label element.
 	my $ctags = "data-ui-multi-item='1'";
 	$ctags .= ' aria-label="'.$filter_label.'"' if ($opts->{'html'});
-	my $row = &ui_checkbox($name.'_item', $val, $label,
+	my $row = &ui_checkbox($inputname.'_item', $val, $label,
 			       $selected{$val} ? 1 : 0,
 			       $ctags,
 			       $dis || $it->{'disabled'} ? 1 : 0);
