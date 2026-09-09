@@ -509,6 +509,17 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 	is_deeply(\@disabled, [ 1, 0 ], 'themes receive the normalized disabled state');
 }
 
+# Three-argument callers retain legacy selected labels and order.
+{
+	my $values = [ [ 'b', 'Selected &amp; saved' ], [ 'a', 'A' ] ];
+	my $options = [ [ 'a', 'R&amp;D' ], [ 'b', 'Available' ] ];
+	my $html = main::ui_multi_select_list('short', $values, $options);
+	like($html, qr/name="short"[^>]*value="b\na"/,
+		'omitting size preserves the supplied selection order');
+	like($html, qr/>Selected &amp; saved</,
+		'omitting size preserves the selected description and escaped text');
+}
+
 # Positional calls preserve the old selected pane's labels and value order.
 {
 	my @values = ( [ 'b', 'B (selected)', q{disabled title="Selected"} ],
@@ -561,7 +572,7 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 	my ($filter) = $html =~ /data-ui-multi-text="([^"]*)"/;
 	is($filter, $label, 'filter label retains original UTF-8 bytes and case');
 	my $literal = 'R&amp;D';
-	$html = main::ui_multi_select_list('g', [ ], [ [ 'team', $literal ] ]);
+	$html = main::ui_multi_select_list('g', [ ], [ [ 'team', $literal ] ], {});
 	($filter) = $html =~ /data-ui-multi-text="([^"]*)"/;
 	is(decode_attr($filter), $literal,
 		'filter text preserves literal HTML entity names in plain labels');

@@ -5727,10 +5727,11 @@ Shift-click applies the clicked state from the last clicked entry to the
 current one, skipping filtered, folded and disabled entries. Labels and row
 backgrounds work too.
 
-Accepts an options hash or ui_multi_select's trailing positional arguments.
-Positional calls preserve selected labels, attributes, value order and
-pre-escaped label text. Newly selected entries are prepended as in the old
-widget. Size, add-if-missing, titles and width are ignored.
+Accepts an options hash or the legacy trailing positional arguments.
+Calls without an options hash preserve selected labels, attributes, value
+order and pre-escaped label text. Newly selected entries are prepended as in the old
+widget. Pass an options hash (even empty) for plain labels and option ordering.
+Size, add-if-missing, titles and width are ignored.
 
 =item name - HTML name for the input.
 
@@ -5764,7 +5765,7 @@ sub ui_multi_select_list
 return &theme_ui_multi_select_list(@_)
 	if (defined(&theme_ui_multi_select_list));
 my ($name, $values, $options, $opts) = @_;
-my $legacy = @_ > 3 && ref($opts) ne 'HASH';
+my $legacy = ref($opts) ne 'HASH';
 if (ref($opts) ne 'HASH') {
 	# Accept ui_multi_select's positional disabled argument.
 	$opts = { 'disabled' => $_[5] };
