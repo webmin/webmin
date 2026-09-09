@@ -6000,6 +6000,8 @@ if ($children) {
 			     'value' => defined($children->{'value'}) ?
 					$children->{'value'} : 1,
 			     'checked' => $folded,
+			     'state' => 'primary',
+			     'outline' => 1,
 			     'label' => $children->{'label'},
 			     'label_html' => $children->{'label_html'},
 			     'attrs' => { 'data-ui-multi-action' => 'children' },
