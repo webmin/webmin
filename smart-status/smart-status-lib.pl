@@ -342,18 +342,20 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 return sort { $a->{'device'} cmp $b->{'device'} } @rv;
 }
 
-=head2 get_drive_status(device-name, [&drive])
+=head2 get_drive_status(device-name, [&drive], [basic])
 
-Returns a hash reference containing the status of some drive
+Returns a hash reference containing the status of some drive. If basic is set,
+fetches attributes and the error log without self-test logs for background
+temperature collection.
 
 =cut
 sub get_drive_status
 {
-local ($device, $drive) = @_;
+local ($device, $drive, $basic) = @_;
 if ($device =~ /^(\/dev\/nvme\d+)n\d+$/) {
 	# For NVME drives, try the underlying device first
 	local $nd = $1;
-	local $st = &get_drive_status($nd, $drive);
+	local $st = &get_drive_status($nd, $drive, $basic);
 	return $st if ($st->{'support'} && $st->{'enabled'});
 	}
 local %rv;
@@ -452,7 +454,12 @@ if ($config{'attribs'}) {
 	local ($lastline, @attribs);
 	local $doneknown = 0;
 	$rv{'raw'} = "";
-	open(OUT, "$config{'smartctl'} $extra_args -a $qd |");
+	# Poll attributes and errors without requesting self-test logs, which
+	# can trigger resets on some USB bridges. Keep full details for callers
+	# that do not request basic status, and use legacy flags on old tools.
+	local $args = $basic ? (&get_smart_version() > 5.0 ?
+			       "-A -l error" : "-vl") : "-a";
+	open(OUT, "$config{'smartctl'} $extra_args $args $qd |");
 	while(<OUT>) {
 		s/\r|\n//g;
 		if (/Model\s+Family:\s+(.*)/i) {
