@@ -14338,10 +14338,9 @@ my $foreign_server_manager
 my %uaccess = &get_module_acl($remote_user, "");
 my %access = &get_module_acl($base_remote_user, "");
 
-# Check if mode must be restricted
+# Safe mode depends on explicit restrictions, not RPC permission
 if ($base_remote_user !~ /^(root|admin|sysadm)$/) {
-	if ($uaccess{'_safe'} == 1 || $access{'_safe'} == 1 ||
-	    $uaccess{'rpc'} == 0 || $access{'rpc'} == 0) {
+	if ($uaccess{'_safe'} == 1 || $access{'_safe'} == 1) {
 			# Safe Webmin user
 	        $mode = 'safe-user';
 	    }
