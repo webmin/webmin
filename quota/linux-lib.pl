@@ -1058,7 +1058,8 @@ $mnt ||= (grep { $_->[0] eq $fs } &mount::list_mounted())[0];
 return $hidden_ext_quota_mode_cache{$fs} = 0
 	if (!$mnt || $mnt->[2] !~ /^ext\d+$/ || !&has_command("tune2fs"));
 my $dev = $mnt->[3] =~ /(?:^|,)loop=([^,]+)/ ? $1 : $mnt->[1];
-$dev = &resolve_and_simplify($dev);
+# Preserve LABEL= and UUID= specifiers, which tune2fs resolves itself.
+$dev = &resolve_and_simplify($dev) if ($dev !~ /^(?:LABEL|UUID)=/);
 &clean_language();
 my $out = &backquote_command("tune2fs -l ".quotemeta($dev)." 2>/dev/null");
 &reset_environment();

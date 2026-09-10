@@ -11,6 +11,7 @@
 * Fix IPsec host key generation with modern Libreswan [#2132](https://github.com/webmin/webmin/issues/2132)
 * Fix journal since filter showing oldest entries on older systemd [forum.virtualmin.com/t/137876](https://forum.virtualmin.com/t/137876)
 * Fix disk usage and mounted filesystem handling for mount points and devices with spaces, such as ZFS datasets [#2833](https://github.com/webmin/webmin/issues/2833)
+* Fix native ext4 quota detection for filesystems mounted using `LABEL=` or `UUID=` identifiers [forum.virtualmin.com/t/137832](https://forum.virtualmin.com/t/137832)
 * Fix slave zone files staying empty on Debian and Ubuntu secondaries by creating BIND zone files owned by the `bind` user [forum.virtualmin.com/t/137767](https://forum.virtualmin.com/t/137767)
 * Fix Nginx Webserver module lock files not being released, causing saves to hang during long-running operations
 
