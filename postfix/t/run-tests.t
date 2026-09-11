@@ -118,6 +118,36 @@ is_deeply([ get_maps_types_files('') ], [],
 is_deeply([ get_maps_types_files('garbage-without-colon') ], [],
           'unparseable value yields no maps');
 
+# --- map regeneration ----------------------------------------------------
+# Rebuild only indexed maps, preserving their configured types. Text and
+# external database maps must never be passed to postmap for indexing.
+{
+    no warnings qw(redefine once);
+    my @commands;
+    my $maps = 'hash:/fixture/hash, lmdb:/fixture/lmdb, btree:/fixture/btree, '.
+               'dbm:/fixture/dbm, regexp:/fixture/regexp, pcre:/fixture/pcre, '.
+               'cidr:/fixture/cidr, mysql:/fixture/mysql';
+    local *get_current_value = sub { return $maps; };
+    local *get_real_value = sub { return $maps; };
+    local *backquote_logged = sub { push(@commands, $_[0]); $? = 0; return ''; };
+    local $config{'postfix_lookup_table_command'} = '/fixture/postmap';
+    regenerate_transport_table();
+    is(scalar(@commands), 4, 'only indexed maps are rebuilt');
+    foreach my $type ('hash', 'lmdb', 'btree', 'dbm') {
+        ok(scalar(grep { index($_, "$type:/fixture/$type") >= 0 } @commands),
+           "$type map keeps its configured type");
+    }
+    @commands = ();
+    $maps = 'cidr:/fixture/cidr';
+    regenerate_transport_table();
+    is_deeply(\@commands, [], 'CIDR-only configuration requires no index');
+    local *backquote_logged = sub { $? = 256; return 'postmap failed'; };
+    local *error = sub { die $_[0]; };
+    $maps = 'hash:/fixture/hash';
+    eval { regenerate_transport_table(); };
+    like($@, qr/postmap failed/, 'indexing failures retain the Postfix error');
+}
+
 # --- get_maps_files (path extraction) --------------------------------------
 is_deeply([ get_maps_files('hash:/etc/postfix/aliases,hash:/etc/aliases') ],
           [ '/etc/postfix/aliases', '/etc/aliases' ],

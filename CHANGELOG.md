@@ -7,6 +7,7 @@
 * Add DNF 4 and 5 package hold management to the Software Package Updates module
 * Add `return` based redirects with 301, 302, 303, 307 and 308 codes to the URL Re-Writing pages in the Nginx Webserver module [forum.virtualmin.com/t/137940](https://forum.virtualmin.com/t/137940)
 * Fix DNF update confirmations by previewing packages and dependencies that will be installed or updated
+* Fix Postfix map updates failing when CIDR tables are configured
 * Fix PostgreSQL initialization on EL systems to use SCRAM-SHA-256 authentication by default
 * Fix IPsec host key generation with modern Libreswan [#2132](https://github.com/webmin/webmin/issues/2132)
 * Fix journal since filter showing oldest entries on older systemd [forum.virtualmin.com/t/137876](https://forum.virtualmin.com/t/137876)

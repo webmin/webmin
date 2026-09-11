@@ -804,8 +804,10 @@ sub regenerate_any_table
     foreach my $map (@files)
     {
         next unless $map;
+	# Text maps are read directly by Postfix and cannot be indexed.
 	if (&file_map_type($map->[0]) &&
-	    $map->[0] ne 'regexp' && $map->[0] ne 'pcre') {
+	    $map->[0] ne 'regexp' && $map->[0] ne 'pcre' &&
+	    $map->[0] ne 'cidr') {
 		my $out = &backquote_logged(
 			$config{'postfix_lookup_table_command'}.
 			" -c $config_dir".
