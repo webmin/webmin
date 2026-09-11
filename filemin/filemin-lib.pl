@@ -71,24 +71,9 @@ return get_selinux_command_type() ?
 sub can_write
 {
 my ($file) = @_;
-# No restrictions for root
-if (&webmin_user_is_admin()) {
-	return 1;
-	}
-# If strict check is enabled or if safe user check for write
-# access explicitly
+# Enforce strict and safe-user ACLs regardless of the Webmin login role
 if ($access{'work_as_user_strict'} || $access{'_safe'}) {
-	# Check if the file is a symbolic link
-	if (-l $file) {
-		# Resolve symbolic link
-		my $resolved_file = readlink($file);
-		# If the link is broken, allow writing
-		# to the link itself
-		return -w $file if (!$resolved_file);
-		# Otherwise, check the resolved file
-		$file = $resolved_file;
-		}
-	# Check if the file itself is writable
+	# The file test follows symlinks relative to the link's directory
 	return -w $file;
 	}
 # Otherwise, allow writing depending on Unix permissions
