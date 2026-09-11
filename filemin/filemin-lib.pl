@@ -337,8 +337,8 @@ if (&has_command('setfacl')) {
 		{ title => $text{'acls_manual'},
 		  content => &ui_textbox(
 			"manual", undef, 40, undef, undef,
-			"placeholder='-m u:root:rw-," .
-			"g:stream:r-x -R'"),
+			"placeholder='u:root:rw-," .
+			"g:stream:r-x'"),
 		  html => 1 } );
 	}
 

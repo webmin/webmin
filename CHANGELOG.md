@@ -16,6 +16,7 @@
 * Fix slave zone files staying empty on Debian and Ubuntu secondaries by creating BIND zone files owned by the `bind` user [forum.virtualmin.com/t/137767](https://forum.virtualmin.com/t/137767)
 * Fix Nginx Webserver module lock files not being released, causing saves to hang during long-running operations
 * Fix module name validation to prevent loading files outside installed modules
+* Fix ACL operations bypassing configured allowed paths in File Manager
 
 #### 2.660 (August 20, 2026)
 * Add support for creating `vfsv1` Linux quota files for limits above 4 TiB, while preserving existing quota file formats

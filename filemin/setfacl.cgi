@@ -21,6 +21,30 @@ my $extra = $in{'manual'};
 # Apply to (arr)
 my @apply_to = split(/\0/, $in{'apply_to'});
 
+# Parse the documented manual syntax without allowing arbitrary options
+my @manual_entries;
+if ($extra) {
+	foreach my $entry (split(/\s+/, trim($extra))) {
+		if ($entry =~ /\A(?:-m|-x|-b|-k)\z/) {
+			&error('Invalid manual ACL')
+				if ($action && $action ne $entry);
+			$action ||= $entry;
+			next;
+			}
+		if ($entry eq '-R') {
+			$recursive = " -R";
+			next;
+			}
+		&error('Invalid manual ACL')
+			if ($entry !~ /:/ || $entry =~ /^-/);
+		push(@manual_entries, $entry);
+		}
+	}
+&error('Invalid ACL action')
+	if (!defined($action) || $action !~ /\A(?:-m|-x|-b|-k)\z/);
+&error('Invalid manual ACL')
+	if (@manual_entries && ($action eq '-b' || $action eq '-k'));
+
 # Delete doesn't allow perms
 $perms = "" if ($action eq '-x');
 
@@ -37,6 +61,7 @@ foreach my $type (@apply_to) {
 		push(@types, "${type}::${perms}");
 		}
 	}
+push(@types, @manual_entries);
 my $cmd = &has_command('setfacl');
 error($text{'acls_error'}) if (!$cmd);
 
@@ -45,11 +70,6 @@ my $types;
 if ($action ne '-b' && $action ne '-k') {
 	$types = quotemeta(join(',',@types))
 		if (@types);
-	if ($extra) {
-		my @extra = split(/\s/, $extra);
-		@extra = map { quotemeta($_) } @extra;
-		$types .= " ".join(' ', @extra);
-		}
 	}
 my $args = quotemeta($action).
 	" ".$types." ".$recursive;
