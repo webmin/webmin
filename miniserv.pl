@@ -631,7 +631,7 @@ while(1) {
 		}
 
 	# Check if any webmin cron jobs are ready to run
-	&execute_ready_webmin_crons($cron_runs++);
+	$cron_runs++ if (&execute_ready_webmin_crons($cron_runs));
 
 	# wait for a new connection, or a message from a child process
 	local ($i, $rmask);
