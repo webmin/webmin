@@ -251,6 +251,125 @@ subtest 'prefix_to_mask' => sub {
 	is(miniserv::prefix_to_mask(32), '255.255.255.255', '/32 = all ones');
 };
 
+# webmincrons_paused — post-install pause markers
+subtest 'webmincrons_paused' => sub {
+	my $pause = File::Spec->catfile(File::Spec->tmpdir(),
+					 "webmincron-pause-$$");
+	my $pause_dir = $pause.'.d';
+	my $default_pause = File::Spec->catfile(File::Spec->tmpdir(),
+						 "webmincron-pause");
+	{
+		no warnings 'once';
+		local %miniserv::config = (
+			'pidfile' => File::Spec->catfile(File::Spec->tmpdir(),
+							  "miniserv-$$.pid"),
+			'logfile' => File::Spec->catfile(File::Spec->tmpdir(),
+							  "miniserv-$$.log"),
+			);
+		local $miniserv::config_file = File::Spec->catfile(
+			File::Spec->tmpdir(), "miniserv-$$.conf");
+		miniserv::update_vital_config();
+		is($miniserv::config{'webmincron_pause'}, $default_pause,
+		   'pause path defaults to the Miniserv variable directory');
+	}
+	local $miniserv::config{'webmincron_pause'} = $pause;
+
+	rmdir($pause_dir);
+	ok(!miniserv::webmincrons_paused(),
+	   'scheduler is not paused without markers');
+
+	mkdir($pause_dir, 0700) or die "create pause directory: $!";
+	my $live_marker = File::Spec->catfile($pause_dir, $$);
+	open(my $live, '>', $live_marker) or die "open pause marker: $!";
+	close($live) or die "close pause marker: $!";
+	my $stale_marker = File::Spec->catfile($pause_dir, 2147483647);
+	open(my $stale, '>', $stale_marker) or die "open pause marker: $!";
+	close($stale) or die "close pause marker: $!";
+	ok(miniserv::webmincrons_paused(),
+	   'live marker pauses scheduled jobs');
+	ok(!-e $stale_marker, 'stale markers are removed while jobs are paused');
+
+	unlink($live_marker);
+	open($stale, '>', $stale_marker) or die "open pause marker: $!";
+	close($stale) or die "close pause marker: $!";
+	ok(!miniserv::webmincrons_paused(),
+	   'stale pause marker is ignored');
+	ok(!-e $stale_marker, 'stale pause marker is removed');
+
+	# A marker past the age limit is stale even though its PID is alive.
+	{
+		no warnings 'once';
+		open($live, '>', $live_marker) or die "open pause marker: $!";
+		close($live) or die "close pause marker: $!";
+		my $old = time() - $miniserv::webmincron_pause_max_age - 1;
+		utime($old, $old, $live_marker) or die "age pause marker: $!";
+		ok(!miniserv::webmincrons_paused(),
+		   'expired pause marker is ignored');
+		ok(!-e $live_marker, 'expired pause marker is removed');
+	}
+
+	# Pausing delays startup jobs instead of skipping them.
+	my $last = $pause.'-last';
+	my $started = 0;
+	{
+		no warnings qw(once redefine);
+		local @miniserv::webmincrons = ({
+			'id' => 'test', 'boot' => 1, 'module' => 'test',
+			'func' => 'test',
+			});
+		local %miniserv::webmincron_last = ();
+		local @miniserv::childpids = ();
+		local $miniserv::config{'webmincron_last'} = $last;
+		local *miniserv::execute_webmin_command = sub {
+			$started++;
+			return 12345;
+			};
+
+		open(my $active, '>', $live_marker)
+			or die "open pause marker: $!";
+		close($active) or die "close pause marker: $!";
+		ok(!miniserv::execute_ready_webmin_crons(0),
+		   'scheduler defers jobs while paused');
+		is($started, 0, 'paused scheduler starts no jobs');
+		is_deeply(\%miniserv::webmincron_last, {},
+			  'paused scheduler preserves job history');
+		ok(!-e $last, 'paused scheduler does not write job history');
+
+		unlink($live_marker);
+		ok(miniserv::execute_ready_webmin_crons(0),
+		   'scheduler resumes after marker removal');
+		is($started, 1, 'deferred startup job runs after marker removal');
+		ok(miniserv::execute_ready_webmin_crons(1),
+		   'subsequent scheduler passes complete');
+		is($started, 1, 'startup job does not run again');
+
+		# Overdue interval jobs retain their due time until the pause ends.
+		local @miniserv::webmincrons = ({
+			'id' => 'interval', 'interval' => 60, 'module' => 'test',
+			'func' => 'test',
+			});
+		my $previous = time() - 120;
+		local %miniserv::webmincron_last = ('interval' => $previous);
+		open($active, '>', $live_marker)
+			or die "open pause marker: $!";
+		close($active) or die "close pause marker: $!";
+		ok(!miniserv::execute_ready_webmin_crons(1),
+		   'scheduler defers overdue interval jobs while paused');
+		is($started, 1, 'paused interval job does not start');
+		is($miniserv::webmincron_last{'interval'}, $previous,
+		   'paused interval job retains its last run time');
+		unlink($live_marker);
+		ok(miniserv::execute_ready_webmin_crons(1),
+		   'scheduler resumes overdue interval jobs');
+		is($started, 2, 'overdue interval job runs after marker removal');
+	}
+
+	unlink($live_marker);
+	unlink($stale_marker);
+	rmdir($pause_dir);
+	unlink($last);
+};
+
 # check_ipaddress / check_ip6address — input validators
 subtest 'check_ipaddress' => sub {
 	ok( miniserv::check_ipaddress('1.2.3.4'),         'valid IPv4 accepted');

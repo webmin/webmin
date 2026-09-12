@@ -10,6 +10,10 @@ eval "use Time::HiRes;";
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 @miniserv_argv = @ARGV;
 
+# Limit scheduler pauses so an interrupted update or reused PID cannot block
+# WebminCron jobs indefinitely.
+$webmincron_pause_max_age = 60*60;
+
 # init days and months for http_date
 @weekday = ( "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" );
 @month = ( "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -3975,6 +3979,7 @@ if (!$config{'webmincron_wrapper'}) {
 	$config{'webmincron_wrapper'} = $config{'root'}.
 					"/webmincron/webmincron.pl";
 	}
+$config{'webmincron_pause'} ||= $var_dir."/webmincron-pause";
 if (!$config{'twofactor_wrapper'}) {
 	$config{'twofactor_wrapper'} = $config{'root'}."/acl/twofactor.pl";
 	}
@@ -5833,12 +5838,44 @@ foreach $k (keys %{$_[1]}) {
 close(ARFILE);
 }
 
+# webmincrons_paused()
+# Returns true while an unexpired marker has a live PID.
+# Removes expired markers and markers for dead PIDs.
+sub webmincrons_paused
+{
+my $pause_dir = $config{'webmincron_pause'}.".d";
+opendir(my $pause, $pause_dir) || return 0;
+my $paused = 0;
+my $now = time();
+foreach my $marker (readdir($pause)) {
+	next if ($marker !~ /^(\d+)$/);
+	my $pid = $1;
+	my $file = "$pause_dir/$marker";
+	my @st = stat($file);
+	if (@st && $now - $st[9] > $webmincron_pause_max_age) {
+		# Enforce the maximum pause even if the PID remains live or has
+		# been reused.
+		unlink($file);
+		}
+	# EPERM means the PID exists but Miniserv cannot signal it.
+	elsif (kill(0, $pid) || $!{'EPERM'}) {
+		$paused = 1;
+		}
+	else {
+		unlink($file);
+		}
+	}
+closedir($pause);
+return $paused;
+}
+
 # execute_ready_webmin_crons(run-count)
-# Find and run any cron jobs that are due, based on their last run time and
-# execution interval
+# Runs due WebminCron jobs. Returns false while paused, preserving the startup
+# pass for later.
 sub execute_ready_webmin_crons
 {
 my ($runs) = @_;
+return 0 if (&webmincrons_paused());
 my $now = time();
 my $changed = 0;
 foreach my $cron (@webmincrons) {
@@ -5890,6 +5927,7 @@ if ($changed) {
 	# Write out file containing last run times
 	&write_file($config{'webmincron_last'}, \%webmincron_last);
 	}
+return 1;
 }
 
 # matches_cron(cron-spec, time, first-value)
