@@ -32,8 +32,10 @@ for($i=0; $i<$n; $i++) {
 	else {
 		my $table = &ui_link($ls, &html_escape($files{$i,'path'}));
 		if ($ty == 0 || $ty == 5) {
-			$table .= "&nbsp;&nbsp;".&ui_link("view.cgi".
-				&html_escape($files{$i,'path'}),
+			my $view = "view.cgi?package=".&urlize($in{'package'}).
+				   "&version=".&urlize($in{'version'}).
+				   "&file=".&urlize($files{$i,'path'});
+			$table .= "&nbsp;&nbsp;".&ui_link($view,
 					     $text{'list_view'});
 			}
 		push(@cols, $table);
@@ -59,4 +61,3 @@ print &ui_columns_end();
 &ui_print_footer("edit_pack.cgi?package=".&urlize($in{'package'}).
 	"&version=".&urlize($in{'version'}), $text{'edit_return'},
 	"tree.cgi", $text{'index_treturn'});
-

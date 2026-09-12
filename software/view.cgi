@@ -3,7 +3,27 @@
 # Output the contents of a file
 
 require './software-lib.pl';
-$p = $ENV{'PATH_INFO'};
+require './view-lib.pl';
+&ReadParse();
+$p = $in{'file'};
+
+# Only show files listed for the selected package.
+&can_view_package_file($in{'package'}, $in{'version'}, $p) ||
+	&error($text{'list_enotpackage'});
+
+# Reject symlinks and path changes between validation and open.
+if (!open(FILE, "<", $p)) {
+	print "Content-type: text/plain\n\n";
+	print &text('list_eview', $p, $!),"\n";
+	exit;
+	}
+my @lst = lstat($p);
+my @st = stat(FILE);
+if (!@lst || !@st || ($lst[2] & 0170000) != 0100000 ||
+    $lst[0] != $st[0] || $lst[1] != $st[1]) {
+	close(FILE);
+	&error($text{'list_enotpackage'});
+	}
 
 # Try to guess type from filename
 if ($p =~ /\.([^\.\/]+)$/) {
@@ -21,18 +41,10 @@ if (!$type) {
 	}
 
 # Dump the file
-if (!open(FILE, "<$p")) {
-	print "Content-type: text/plain\n\n";
-	print &text('list_eview', $p, $!),"\n";
+print "Content-length: $st[7]\n";
+print "Content-type: $type\n\n";
+my $bs = &get_buffer_size();
+while(read(FILE, $buf, $bs)) {
+	print $buf;
 	}
-else {
-	@st = stat($p);
-	print "Content-length: $st[7]\n";
-	print "Content-type: $type\n\n";
-	my $bs = &get_buffer_size();
-	while(read(FILE, $buf, $bs)) {
-		print $buf;
-		}
-	close(FILE);
-	}
-
+close(FILE);

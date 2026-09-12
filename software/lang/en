@@ -79,6 +79,7 @@ list_status=Status
 list_ok=OK
 list_view=(View)
 list_eview=Failed to open $1 : $2
+list_enotpackage=Cannot view this file for the selected package
 
 delete_err=Failed to delete package $1
 delete_epack=The package $1 does not exist
