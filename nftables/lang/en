@@ -117,6 +117,7 @@ apply_err=Failed to apply configuration
 apply_enone=No nftables tables were found in $1 to apply.
 apply_eexternal=Cannot apply configuration because table $1 is currently marked as externally managed.
 apply_einclude_loop=Cannot apply the configuration because its include files form a loop at $1.
+migrate_evalidate=Cannot migrate the deprecated Webmin rules because the resulting system nftables configuration is invalid: $1
 apply_esettype=Set $1 in table $2 has type $3, but chain $4 uses it for $5. Use ipv4_addr or ipv6_addr sets for address fields, and inet_service sets for port fields.
 setup_header=Ruleset profile
 setup_err=Failed to create ruleset profile

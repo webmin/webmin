@@ -5,6 +5,8 @@ BEGIN { push(@INC, ".."); };    ## no critic
 use WebminCore;
 use strict;
 use warnings;
+use Errno qw(EEXIST);
+use Fcntl qw(O_CREAT O_EXCL O_WRONLY);
 our (%config, %access, %gconfig, $module_config_directory,
      $module_var_directory, $module_root_directory);
 our ($last_config_change_flag, $last_restart_time_flag);
@@ -461,8 +463,7 @@ return $ok ? undef : $err;
 }
 
 # legacy_nftables_rules_files()
-# Returns the private rules files that releases before the switch to the
-# system nftables configuration wrote to
+# Returns obsolete private rules files outside the system configuration
 sub legacy_nftables_rules_files
 {
 my @files = ("$module_config_directory/rules.conf",
@@ -473,7 +474,7 @@ return grep { !$seen{$_}++ && -s $_ } @files;
 }
 
 # legacy_nftables_boot_action()
-# Returns the name of the private boot action those releases created
+# Returns the name of the obsolete private boot action
 sub legacy_nftables_boot_action
 {
 return "webmin-nftables";
@@ -518,9 +519,8 @@ return 1;
 }
 
 # migrate_legacy_nftables_config()
-# Moves tables out of the module's own rules file and into the system
-# nftables configuration, so that upgrading does not silently drop rules that
-# used to be applied at boot. Returns the number of tables moved
+# Moves tables from obsolete private files into the system configuration.
+# Returns the number of tables moved
 sub migrate_legacy_nftables_config
 {
 my $file = nftables_rules_file();
@@ -528,27 +528,153 @@ my @legacy = grep { $_ ne $file } legacy_nftables_rules_files();
 return 0 if (!@legacy);
 
 my @new = get_nftables_save($file);
-my %have = map { table_key($_) => 1 } @new;
+my %used = map { table_key($_) => $_ } @new;
 
-# Several development releases used different private paths. Merge all of
-# them, taking the newest copy when the same table occurs more than once
+# Merge every private file, taking the newest copy when a table occurs more
+# than once
 my %order = map { $legacy[$_] => $_ } 0 .. $#legacy;
 @legacy = sort {
 	(stat($b))[9] <=> (stat($a))[9] || $order{$a} <=> $order{$b}
 	} @legacy;
-my @add;
+my (%seen, @add);
 foreach my $legacy (@legacy) {
 	foreach my $table (get_nftables_save($legacy)) {
-		push(@add, $table) if (!$have{table_key($table)}++);
+		my $oldkey = table_key($table);
+		next if ($seen{$oldkey}++);
+
+		# Prefix imported table names. If the name is already used, add a
+		# migration suffix so neither table is lost.
+		my %renamed = %$table;
+		delete($renamed{'file'});
+		my $base = "webmin_".$table->{'name'};
+		my $number = 0;
+		while (1) {
+			my $suffix = !$number ? "" : $number == 1
+			    ? "_migrated" : "_migrated_".$number;
+			$renamed{'name'} = substr($base, 0, 255 - length($suffix)).
+					   $suffix;
+			my $key = table_key(\%renamed);
+			my $existing = $used{$key};
+			if (!$existing) {
+				$used{$key} = \%renamed;
+				push(@add, \%renamed);
+				last;
+				}
+
+			# A previous run may have saved this table before cleanup.
+			# Treat an identical destination as already migrated.
+			last if (dump_nftables_save($existing) eq
+				 dump_nftables_save(\%renamed));
+			$number++;
+			}
 		}
 	}
 if (@add) {
-	write_configuration(@new, @add);
+	write_migrated_nftables_config($file, \@add);
+	}
+else {
+	# Keep the private files unless the system ruleset that replaces them
+	# can be loaded.
+	my $err = validate_nftables_files($file);
+	error(text('migrate_evalidate', $err)) if ($err);
 	}
 foreach my $legacy (@legacy) {
-	rename_file($legacy, $legacy.".migrated");
+	if (!unlink_file($legacy)) {
+		print STDERR "Failed to remove deprecated nftables rules file ".
+			     "$legacy: $!\n";
+		}
 	}
 return scalar(@add);
+}
+
+# write_migrated_nftables_config(file, &tables)
+# Writes migrated tables to a validated candidate, then atomically replaces
+# the system configuration
+sub write_migrated_nftables_config
+{
+my ($file, $add) = @_;
+my $data = "";
+if (-e $file) {
+	$data = read_file_contents($file);
+	error("Failed to read ".html_escape($file).": $!")
+	    if (!defined($data));
+	}
+
+# Keep the candidate beside the real file so nft resolves relative includes
+# from the same directory. The real file is unchanged during validation.
+my $dir = $file;
+$dir =~ s/\/[^\/]+$//;
+$dir = "/" if ($dir eq "");
+my $candidate_base = $dir."/.webmin-nftables-migrate.$$";
+my ($candidate, $fh);
+for (my $suffix = 0; ; $suffix++) {
+	$candidate = $candidate_base.($suffix ? ".".$suffix : "");
+	last if (sysopen($fh, $candidate, O_WRONLY|O_CREAT|O_EXCL, 0600));
+	next if ($! == EEXIST);
+	error("Failed to create migration candidate ".
+	      html_escape($candidate).": $!");
+	}
+binmode($fh);
+push(@main::temporary_files, $candidate);
+if (!(print $fh $data)) {
+	my $err = $!;
+	close($fh);
+	unlink_file($candidate);
+	error("Failed to write migration candidate ".
+	      html_escape($candidate).": $err");
+	}
+if (!close($fh)) {
+	my $err = $!;
+	unlink_file($candidate);
+	error("Failed to close migration candidate ".
+	      html_escape($candidate).": $err");
+	}
+
+# Keep the candidate private while writing, then apply the target file's mode.
+my @st = stat($file);
+my $mode = @st ? $st[2] & 07777 : 0600;
+if (!chmod($mode, $candidate)) {
+	my $err = $!;
+	unlink_file($candidate);
+	error("Failed to set permissions on migration candidate ".
+	      html_escape($candidate).": $err");
+	}
+
+my @root_tables = parse_nftables_file($candidate);
+rewrite_nftables_file($candidate, [ @root_tables, @$add ]);
+my $err = validate_nftables_files($candidate);
+if ($err) {
+	unlink_file($candidate);
+	error(text('migrate_evalidate', $err));
+	}
+
+# Replace an existing system file while preserving its mode, ownership, ACLs
+# and security attributes. A new file can take the validated candidate's place
+# directly, preserving its private mode.
+if (@st) {
+	my $candidate_data = read_file_contents($candidate);
+	error("Failed to read migration candidate ".html_escape($candidate).": $!")
+	    if (!defined($candidate_data));
+	open_lock_tempfile(my $out, ">".$file);
+	print_tempfile($out, $candidate_data);
+	close_tempfile($out);
+	unlink_file($candidate);
+	}
+else {
+	lock_file($file);
+	if (!rename($candidate, $file)) {
+		my $err = $!;
+		unlock_file($file);
+		unlink_file($candidate);
+		error("Failed to install migration candidate as ".
+		      html_escape($file).": $err");
+		}
+	unlock_file($file);
+	@main::temporary_files = grep { $_ ne $candidate }
+				       @main::temporary_files;
+	}
+update_last_config_change();
+return;
 }
 
 # nftables_include_spec(line)
@@ -684,16 +810,17 @@ foreach my $mod (@mods) {
 return @rv;
 }
 
-# validate_nftables_files()
+# validate_nftables_files([file])
 # Returns an error if nft rejects the saved ruleset as it stands on disk.
 # An included file cannot be checked on its own, as it may well use a define
 # from the file that includes it, so the whole ruleset is checked from the
 # top
 sub validate_nftables_files
 {
+my ($file) = @_;
 my $cmd = get_nft_command();
 return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
-my $file = nftables_rules_file();
+$file ||= nftables_rules_file();
 return if (!-r $file);
 my $cwd = quotemeta(nftables_include_cwd());
 my $out = backquote_logged("cd $cwd && $cmd -c -f ".quotemeta($file)." 2>&1");
@@ -850,38 +977,54 @@ for (my $i = 0 ; $i < @lines ; $i++) {
 	elsif ($line =~ /^\s*set\s+(\S+)\s+\{/) {
 		# Start of a set
 		if ($table) {
-			my $setname = $1;
-			$set = {
-				'name' => $setname,
-				'line' => $lnum,
-				'elements' => [ ],
-				'raw_lines' => [ ],
-			};
-			$table->{'sets'}->{$setname} = $set;
-			$set_depth = nftables_brace_delta($line);
-			$set_elem_open = 0;
-			$set_elem_buf = '';
+			if (nftables_brace_delta($line) == 0 &&
+			    $line =~ /\}\s*;?\s*$/) {
+				# Preserve balanced inline syntax as one raw object.
+				push(@{$table->{'raw_blocks'}},
+				     {'lines' => [ $lines[$i] ]});
+				}
+			else {
+				my $setname = $1;
+				$set = {
+					'name' => $setname,
+					'line' => $lnum,
+					'elements' => [ ],
+					'raw_lines' => [ ],
+				};
+				$table->{'sets'}->{$setname} = $set;
+				$set_depth = nftables_brace_delta($line);
+				$set_elem_open = 0;
+				$set_elem_buf = '';
+				}
 			}
 		}
 	elsif ($line =~ /^\s*chain\s+(\S+)\s+\{/) {
 		# Start of a chain
 		if ($table) {
-			$chain = $1;
-			$table->{'chains'}->{$chain} =
-			    {'order' => scalar(keys %{$table->{'chains'}})};
+			if (nftables_brace_delta($line) == 0 &&
+			    $line =~ /\}\s*;?\s*$/) {
+				# Preserve balanced inline syntax as one raw object.
+				push(@{$table->{'raw_blocks'}},
+				     {'lines' => [ $lines[$i] ]});
+				}
+			else {
+				$chain = $1;
+				$table->{'chains'}->{$chain} =
+				    {'order' => scalar(keys %{$table->{'chains'}})};
 
-			# Look at the next line for a base-chain definition. Policy is
-			# optional in nft and defaults to accept when it is absent
-			my $base = defined($lines[$i + 1])
-			    ? nftables_code_line($lines[$i + 1]) : "";
-			if ($base =~
-			    /^\s*type\s+(\S+)\s+hook\s+(\S+)\s+priority\s+(.+?)\s*;\s*(?:policy\s+(\S+)\s*;\s*)?$/) {
-				$table->{'chains'}->{$chain}->{'type'} = $1;
-				$table->{'chains'}->{$chain}->{'hook'} = $2;
-				$table->{'chains'}->{$chain}->{'priority'} = $3;
-				$table->{'chains'}->{$chain}->{'policy'} = $4
-				    if (defined($4));
-				$i++;    # Skip next line
+				# Look at the next line for a base-chain definition. Policy is
+				# optional in nft and defaults to accept when it is absent
+				my $base = defined($lines[$i + 1])
+				    ? nftables_code_line($lines[$i + 1]) : "";
+				if ($base =~
+				    /^\s*type\s+(\S+)\s+hook\s+(\S+)\s+priority\s+(.+?)\s*;\s*(?:policy\s+(\S+)\s*;\s*)?$/) {
+					$table->{'chains'}->{$chain}->{'type'} = $1;
+					$table->{'chains'}->{$chain}->{'hook'} = $2;
+					$table->{'chains'}->{$chain}->{'priority'} = $3;
+					$table->{'chains'}->{$chain}->{'policy'} = $4
+					    if (defined($4));
+					$i++;    # Skip next line
+					}
 				}
 			}
 		}
@@ -3841,6 +3984,14 @@ return $name;
 sub profile_base_table_name
 {
 my ($profile) = @_;
+return "webmin_".profile_base_name($profile);
+}
+
+# profile_base_name(profile-id)
+# Returns the base name used for generated sets and rules
+sub profile_base_name
+{
+my ($profile) = @_;
 my %names = (
 	'allow_all' => 'profile_allow_all',
 	'management' => 'profile_management',
@@ -3859,7 +4010,7 @@ return $names{$profile} || 'profile_custom';
 sub profile_port_set_name
 {
 my ($profile, $proto, $proto_count) = @_;
-my $name = profile_base_table_name($profile);
+my $name = profile_base_name($profile);
 $name .= "_".$proto if ($proto_count && $proto_count > 1);
 $name .= "_ports";
 $name =~ s/[^\w-]/_/g;

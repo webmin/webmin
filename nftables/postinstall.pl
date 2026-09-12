@@ -8,8 +8,8 @@ no warnings 'uninitialized';
 require 'nftables-lib.pl';    ## no critic
 
 # module_install()
-# Moves off the module's own rules file and boot action, which earlier
-# releases used in place of the system nftables configuration
+# Migrates private rules into the system configuration and removes the
+# obsolete boot action
 sub module_install
 {
 my ($moved, $removed);
@@ -20,7 +20,11 @@ eval {
 	&remove_legacy_managed_metadata();
 	};
 if ($@) {
-	print STDERR "Failed to migrate nftables configuration: $@\n";
+	# Remove the browser-only wrapper before writing the package error
+	my $err = $@;
+	$err =~ s/<\/?pre>//g;
+	$err =~ s/\s+$//;
+	print STDERR "Failed to migrate nftables configuration: $err\n";
 	return;
 	}
 if ($moved) {
