@@ -5,9 +5,14 @@ BEGIN { push(@INC, ".."); };    ## no critic
 use WebminCore;
 use strict;
 use warnings;
-our (%config, %access, $module_config_directory, $module_var_directory,
-     $module_root_directory);
+use Errno qw(EEXIST);
+use Fcntl qw(O_CREAT O_EXCL O_WRONLY);
+our (%config, %access, %gconfig, $module_config_directory,
+     $module_var_directory, $module_root_directory);
 our ($last_config_change_flag, $last_restart_time_flag);
+our ($nftables_rules_file_cache, $nftables_service_status_cache,
+     $nftables_include_paths_cache, $nftables_include_cwd_cache,
+     $nftables_include_basedir_cache);
 init_config();
 %access = get_module_acl();
 $last_config_change_flag = $module_var_directory."/config-flag";
@@ -193,76 +198,298 @@ return if (get_nft_command());
 return text('index_ecommand', "<tt>nft</tt>");
 }
 
-# nftables_rules_file()
-# Returns the Webmin-managed nftables rules file
-sub nftables_rules_file
+# nftables_service_name()
+# Returns the name of the system nftables service
+sub nftables_service_name
 {
-return "$module_config_directory/rules.conf";
+return "nftables";
 }
 
-# nftables_boot_action()
-# Returns the init action name for applying nftables rules at boot
-sub nftables_boot_action
+# nftables_service_unit_file()
+# Returns the path to the system nftables systemd unit, if there is one
+sub nftables_service_unit_file
+{
+return if (!foreign_check("init"));
+foreign_require("init", "init-lib.pl");
+no warnings 'once';
+return if (($init::init_mode || "") ne "systemd");
+my $unit = init::action_unit(nftables_service_name());
+my $root = init::get_systemd_root($unit);
+return $root && -r "$root/$unit" ? "$root/$unit" : undef;
+}
+
+# nftables_service_rules_file()
+# Returns the ruleset file that the system nftables service loads
+sub nftables_service_rules_file
+{
+my $unit_file = nftables_service_unit_file();
+return if (!$unit_file);
+my $data = read_file_contents($unit_file);
+return if (!$data);
+foreach my $l (split(/\r?\n/, $data)) {
+	next if ($l !~ /^\s*ExecStart\s*=/);
+	next if ($l !~ /\s-f\s+(\S+)/);
+	my $file = $1;
+	$file =~ s/^["']|["']$//g;
+	return $file if ($file =~ /^\//);
+	}
+return;
+}
+
+# nftables_rules_file()
+# Returns the system nftables ruleset file, which is the file the nftables
+# service loads at boot
+sub nftables_rules_file
+{
+return $nftables_rules_file_cache if ($nftables_rules_file_cache);
+my $file = nftables_service_rules_file();
+if (!$file) {
+	# No service to ask, so fall back to the distribution's convention
+	my @conv = ($gconfig{'os_type'} || "") =~ /^(redhat|suse|united)/
+	    ? ("/etc/sysconfig/nftables.conf", "/etc/nftables.conf")
+	    : ("/etc/nftables.conf", "/etc/sysconfig/nftables.conf");
+	($file) = grep { -r $_ } @conv;
+	$file ||= $conv[0];
+	}
+return $nftables_rules_file_cache = $file;
+}
+
+# nftables_include_paths()
+# Returns nft's compiled search path for include directives
+sub nftables_include_paths
+{
+return @{$nftables_include_paths_cache}
+    if (ref($nftables_include_paths_cache) eq 'ARRAY');
+
+my @paths;
+my $cmd = get_nft_command();
+if ($cmd) {
+	my $out = backquote_command(quotemeta($cmd)." --help 2>&1");
+	if ($out =~ /--includepath.*?Default is:\s*([^\s]+)/i) {
+		my $path = $1;
+		$path =~ s/^["']|["']$//g;
+		push(@paths, $path) if ($path =~ /^\//);
+		}
+	}
+push(@paths, "/etc") if (!@paths);
+$nftables_include_paths_cache = \@paths;
+return @paths;
+}
+
+# nftables_include_uses_basedir()
+# Returns true when nft prepends the -f input file's directory to its include
+# path. This behavior was added in nftables 1.1.0
+sub nftables_include_uses_basedir
+{
+return $nftables_include_basedir_cache
+    if (defined($nftables_include_basedir_cache));
+
+my $cmd = get_nft_command();
+return $nftables_include_basedir_cache = 0 if (!$cmd);
+my $out = backquote_command(quotemeta($cmd)." --version 2>&1");
+if ($out =~ /\bv?(\d+)\.(\d+)\.(\d+)\b/) {
+	my ($major, $minor) = ($1, $2);
+	return $nftables_include_basedir_cache =
+	    ($major > 1 || $major == 1 && $minor >= 1) ? 1 : 0;
+	}
+return $nftables_include_basedir_cache = 0;
+}
+
+# nftables_include_cwd()
+# Returns the working directory used for explicitly relative ./ includes.
+# System services start in / unless their unit says otherwise; standard
+# nftables units do not override it
+sub nftables_include_cwd
+{
+return defined($nftables_include_cwd_cache) ? $nftables_include_cwd_cache : "/";
+}
+
+# nftables_code_line(line)
+# Removes an nft comment without treating a # inside a quoted string as one
+sub nftables_code_line
+{
+my ($line) = @_;
+my ($quote, $escaped);
+my $rv = "";
+foreach my $ch (split(//, $line || "")) {
+	if ($quote) {
+		$rv .= $ch;
+		if ($escaped) {
+			$escaped = 0;
+			}
+		elsif ($ch eq "\\") {
+			$escaped = 1;
+			}
+		elsif ($ch eq $quote) {
+			$quote = undef;
+			}
+		}
+	elsif ($ch eq '"') {
+		$quote = $ch;
+		$rv .= $ch;
+		}
+	elsif ($ch eq '#') {
+		last;
+		}
+	else {
+		$rv .= $ch;
+		}
+	}
+return $rv;
+}
+
+# nftables_brace_delta(line)
+# Returns the structural brace change, ignoring comments and quoted strings
+sub nftables_brace_delta
+{
+my ($line) = @_;
+my ($quote, $escaped, $delta) = (undef, 0, 0);
+foreach my $ch (split(//, $line || "")) {
+	if ($quote) {
+		if ($escaped) {
+			$escaped = 0;
+			}
+		elsif ($ch eq "\\") {
+			$escaped = 1;
+			}
+		elsif ($ch eq $quote) {
+			$quote = undef;
+			}
+		}
+	elsif ($ch eq '"') {
+		$quote = $ch;
+		}
+	elsif ($ch eq '#') {
+		last;
+		}
+	elsif ($ch eq '{') {
+		$delta++;
+		}
+	elsif ($ch eq '}') {
+		$delta--;
+		}
+	}
+return $delta;
+}
+
+# nftables_service_status()
+# Returns the init status of the system nftables service
+sub nftables_service_status
+{
+return $nftables_service_status_cache
+    if (defined($nftables_service_status_cache));
+return $nftables_service_status_cache = 0 if (!foreign_check("init"));
+foreign_require("init", "init-lib.pl");
+return $nftables_service_status_cache =
+    init::action_status(nftables_service_name());
+}
+
+# nftables_started_at_boot()
+# Returns true if the system nftables service is enabled at boot
+sub nftables_started_at_boot
+{
+return nftables_service_status() == 2 ? 1 : 0;
+}
+
+# enable_nftables_at_boot()
+# Enables the system nftables service at boot
+sub enable_nftables_at_boot
+{
+foreign_require("init", "init-lib.pl");
+init::enable_at_boot(nftables_service_name());
+undef($nftables_service_status_cache);
+}
+
+# disable_nftables_at_boot()
+# Disables the system nftables service at boot
+sub disable_nftables_at_boot
+{
+foreign_require("init", "init-lib.pl");
+init::disable_at_boot(nftables_service_name());
+undef($nftables_service_status_cache);
+}
+
+# nftables_service_running()
+# Returns true if the system nftables service has its ruleset loaded
+sub nftables_service_running
+{
+return 0 if (!nftables_service_status());
+foreign_require("init", "init-lib.pl");
+no warnings 'once';
+if (($init::init_mode || "") eq "systemd") {
+	return init::is_active_systemd(
+	    init::action_unit(nftables_service_name())) ? 1 : 0;
+	}
+my $file = init::action_filename(nftables_service_name());
+return 0 if (!$file || !-x $file);
+return init::action_running($file) == 1 ? 1 : 0;
+}
+
+# nftables_service_stop_flushes()
+# Returns true if stopping the service flushes the whole kernel ruleset. Most
+# distributions do exactly that, which takes out tables belonging to other
+# software as well, so the admin is warned before doing it
+sub nftables_service_stop_flushes
+{
+my $unit_file = nftables_service_unit_file();
+return 0 if (!$unit_file);
+my $data = read_file_contents($unit_file);
+return 0 if (!$data);
+foreach my $l (split(/\r?\n/, $data)) {
+	next if ($l !~ /^\s*ExecStop\s*=/);
+	return 1 if ($l =~ /flush\s+ruleset/);
+	}
+return 0;
+}
+
+# start_nftables_service()
+# Starts the system nftables service, loading the saved ruleset
+sub start_nftables_service
+{
+foreign_require("init", "init-lib.pl");
+my ($ok, $err) = init::start_action(nftables_service_name());
+undef($nftables_service_status_cache);
+return $ok ? undef : $err;
+}
+
+# stop_nftables_service()
+# Stops the system nftables service
+sub stop_nftables_service
+{
+foreign_require("init", "init-lib.pl");
+my ($ok, $err) = init::stop_action(nftables_service_name());
+undef($nftables_service_status_cache);
+return $ok ? undef : $err;
+}
+
+# legacy_nftables_rules_files()
+# Returns obsolete private rules files outside the system configuration
+sub legacy_nftables_rules_files
+{
+my @files = ("$module_config_directory/rules.conf",
+	     "$module_config_directory/nftables.conf");
+unshift(@files, $config{'save_file'}) if ($config{'save_file'});
+my %seen;
+return grep { !$seen{$_}++ && -s $_ } @files;
+}
+
+# legacy_nftables_boot_action()
+# Returns the name of the obsolete private boot action
+sub legacy_nftables_boot_action
 {
 return "webmin-nftables";
 }
 
-# nftables_boot_wrapper()
-# Returns the generated wrapper used by the boot action
-sub nftables_boot_wrapper
-{
-return "$module_config_directory/apply-boot.pl";
-}
-
-# nftables_started_at_boot()
-# Returns true if Webmin-managed nftables rules are enabled at boot
-sub nftables_started_at_boot
+# remove_legacy_nftables_init()
+# Removes the private boot action that applied the private rules file, and
+# enables the system nftables service in its place if it was in use
+sub remove_legacy_nftables_init
 {
 return 0 if (!foreign_check("init"));
 foreign_require("init", "init-lib.pl");
-return init::action_status(nftables_boot_action()) == 2 ? 1 : 0;
-}
-
-# create_nftables_init()
-# Creates or enables the boot action for Webmin-managed nftables rules
-sub create_nftables_init
-{
-foreign_require("init", "init-lib.pl");
-chmod(0755, "$module_root_directory/apply-boot.pl");
-create_wrapper(nftables_boot_wrapper(), "nftables", "apply-boot.pl");
-my $action = nftables_boot_action();
-{
-	no warnings 'once';
-	if (($init::init_mode || "") eq "systemd") {
-		my $unit = init::action_unit($action);
-		my $unit_file = init::get_systemd_root($unit)."/".$unit;
-		if (-r $unit_file) {
-			init::disable_at_boot($action);
-			init::delete_systemd_service($unit);
-			}
-		}
-	}
-init::enable_at_boot(
-	$action,
-	"Load Webmin nftables rules",
-	nftables_boot_wrapper(),
-	undef, undef,
-	{
-		'exit' => 1,
-		'opts' => {
-			'after' => 'local-fs.target systemd-modules-load.service',
-			'before' => 'network-pre.target network.target',
-			'wants' => 'network-pre.target',
-		}
-	});
-}
-
-# disable_nftables_init()
-# Disables the boot action for Webmin-managed nftables rules
-sub disable_nftables_init
-{
-foreign_require("init", "init-lib.pl");
-my $action = nftables_boot_action();
+my $action = legacy_nftables_boot_action();
+my $st = init::action_status($action);
+return 0 if (!$st);
 init::disable_at_boot($action);
 {
 	no warnings 'once';
@@ -270,35 +497,299 @@ init::disable_at_boot($action);
 		init::delete_systemd_service(init::action_unit($action));
 		}
 	}
-unlink_file(nftables_boot_wrapper());
+unlink_file("$module_config_directory/apply-boot.pl");
+
+# The rules were loaded at boot before, so keep loading them
+if ($st == 2 && nftables_service_status() == 1) {
+	enable_nftables_at_boot();
+	}
+return 1;
+}
+
+# remove_legacy_managed_metadata()
+# Removes the sidecar that tracked which tables the module considered its
+# own, a distinction that stopped meaning anything once the saved rules
+# became the system's own configuration file
+sub remove_legacy_managed_metadata
+{
+my $file = "$module_config_directory/managed.json";
+return 0 if (!-e $file);
+unlink_file($file);
+return 1;
+}
+
+# migrate_legacy_nftables_config()
+# Moves tables from obsolete private files into the system configuration.
+# Returns the number of tables moved
+sub migrate_legacy_nftables_config
+{
+my $file = nftables_rules_file();
+my @legacy = grep { $_ ne $file } legacy_nftables_rules_files();
+return 0 if (!@legacy);
+
+my @new = get_nftables_save($file);
+my %used = map { table_key($_) => $_ } @new;
+
+# Merge every private file, taking the newest copy when a table occurs more
+# than once
+my %order = map { $legacy[$_] => $_ } 0 .. $#legacy;
+@legacy = sort {
+	(stat($b))[9] <=> (stat($a))[9] || $order{$a} <=> $order{$b}
+	} @legacy;
+my (%seen, @add);
+foreach my $legacy (@legacy) {
+	foreach my $table (get_nftables_save($legacy)) {
+		my $oldkey = table_key($table);
+		next if ($seen{$oldkey}++);
+
+		# Prefix imported table names. If the name is already used, add a
+		# migration suffix so neither table is lost.
+		my %renamed = %$table;
+		delete($renamed{'file'});
+		my $base = "webmin_".$table->{'name'};
+		my $number = 0;
+		while (1) {
+			my $suffix = !$number ? "" : $number == 1
+			    ? "_migrated" : "_migrated_".$number;
+			$renamed{'name'} = substr($base, 0, 255 - length($suffix)).
+					   $suffix;
+			my $key = table_key(\%renamed);
+			my $existing = $used{$key};
+			if (!$existing) {
+				$used{$key} = \%renamed;
+				push(@add, \%renamed);
+				last;
+				}
+
+			# A previous run may have saved this table before cleanup.
+			# Treat an identical destination as already migrated.
+			last if (dump_nftables_save($existing) eq
+				 dump_nftables_save(\%renamed));
+			$number++;
+			}
+		}
+	}
+if (@add) {
+	write_migrated_nftables_config($file, \@add);
+	}
+else {
+	# Keep the private files unless the system ruleset that replaces them
+	# can be loaded.
+	my $err = validate_nftables_files($file);
+	error(text('migrate_evalidate', $err)) if ($err);
+	}
+foreach my $legacy (@legacy) {
+	if (!unlink_file($legacy)) {
+		print STDERR "Failed to remove deprecated nftables rules file ".
+			     "$legacy: $!\n";
+		}
+	}
+return scalar(@add);
+}
+
+# write_migrated_nftables_config(file, &tables)
+# Writes migrated tables to a validated candidate, then atomically replaces
+# the system configuration
+sub write_migrated_nftables_config
+{
+my ($file, $add) = @_;
+my $data = "";
+if (-e $file) {
+	$data = read_file_contents($file);
+	error("Failed to read ".html_escape($file).": $!")
+	    if (!defined($data));
+	}
+
+# Keep the candidate beside the real file so nft resolves relative includes
+# from the same directory. The real file is unchanged during validation.
+my $dir = $file;
+$dir =~ s/\/[^\/]+$//;
+$dir = "/" if ($dir eq "");
+my $candidate_base = $dir."/.webmin-nftables-migrate.$$";
+my ($candidate, $fh);
+for (my $suffix = 0; ; $suffix++) {
+	$candidate = $candidate_base.($suffix ? ".".$suffix : "");
+	last if (sysopen($fh, $candidate, O_WRONLY|O_CREAT|O_EXCL, 0600));
+	next if ($! == EEXIST);
+	error("Failed to create migration candidate ".
+	      html_escape($candidate).": $!");
+	}
+binmode($fh);
+push(@main::temporary_files, $candidate);
+if (!(print $fh $data)) {
+	my $err = $!;
+	close($fh);
+	unlink_file($candidate);
+	error("Failed to write migration candidate ".
+	      html_escape($candidate).": $err");
+	}
+if (!close($fh)) {
+	my $err = $!;
+	unlink_file($candidate);
+	error("Failed to close migration candidate ".
+	      html_escape($candidate).": $err");
+	}
+
+# Keep the candidate private while writing, then apply the target file's mode.
+my @st = stat($file);
+my $mode = @st ? $st[2] & 07777 : 0600;
+if (!chmod($mode, $candidate)) {
+	my $err = $!;
+	unlink_file($candidate);
+	error("Failed to set permissions on migration candidate ".
+	      html_escape($candidate).": $err");
+	}
+
+my @root_tables = parse_nftables_file($candidate);
+rewrite_nftables_file($candidate, [ @root_tables, @$add ]);
+my $err = validate_nftables_files($candidate);
+if ($err) {
+	unlink_file($candidate);
+	error(text('migrate_evalidate', $err));
+	}
+
+# Replace an existing system file while preserving its mode, ownership, ACLs
+# and security attributes. A new file can take the validated candidate's place
+# directly, preserving its private mode.
+if (@st) {
+	my $candidate_data = read_file_contents($candidate);
+	error("Failed to read migration candidate ".html_escape($candidate).": $!")
+	    if (!defined($candidate_data));
+	open_lock_tempfile(my $out, ">".$file);
+	print_tempfile($out, $candidate_data);
+	close_tempfile($out);
+	unlink_file($candidate);
+	}
+else {
+	lock_file($file);
+	if (!rename($candidate, $file)) {
+		my $err = $!;
+		unlock_file($file);
+		unlink_file($candidate);
+		error("Failed to install migration candidate as ".
+		      html_escape($file).": $err");
+		}
+	unlock_file($file);
+	@main::temporary_files = grep { $_ ne $candidate }
+				       @main::temporary_files;
+	}
+update_last_config_change();
+return;
+}
+
+# nftables_include_spec(line)
+# Returns the filename or glob from a top-level include directive
+sub nftables_include_spec
+{
+my ($line) = @_;
+return if ($line !~ /^\s*include\s+(\S.*?)\s*;?\s*$/);
+my $spec = $1;
+$spec =~ s/\s*;\s*$//;
+if ($spec =~ /^"([^"]*)"$/ || $spec =~ /^'([^']*)'$/) {
+	$spec = $1;
+	}
+return $spec ne "" ? $spec : undef;
+}
+
+# nftables_resolve_include(pattern, [root-file])
+# Expands an include using nft's path rules. Current nft versions prepend the
+# root input file's directory to the compiled include path, while ./ and ../
+# use nft's working directory
+sub nftables_resolve_include
+{
+my ($pattern, $root) = @_;
+return () if (!defined($pattern) || $pattern eq "");
+my $is_glob = $pattern =~ /[*?\[]/;
+
+my @patterns;
+if ($pattern =~ /^\//) {
+	@patterns = ($pattern);
+	}
+elsif ($pattern =~ /^\.\.?(?:\/|$)/) {
+	@patterns = (nftables_include_cwd()."/".$pattern);
+	}
+else {
+	my @paths = nftables_include_paths();
+	if (nftables_include_uses_basedir() &&
+	    $root && $root !~ /\|\s*$/ && $root =~ /\//) {
+		my $dir = $root;
+		$dir =~ s/\/[^\/]*$//;
+		$dir = "/" if ($dir eq "");
+		unshift(@paths, $dir);
+		}
+	my %seen_path;
+	@patterns = map { $_."/".$pattern }
+		    grep { !$seen_path{simplify_path($_)}++ } @paths;
+
+	# A literal name comes from the first directory that has it, but a
+	# wildcard collects the matches from every directory. nft stacks those
+	# matches and reads the stack from the top, so the files below the last
+	# directory are processed first
+	@patterns = reverse(@patterns) if ($is_glob);
+	}
+
+my (%seen, @rv);
+foreach my $spec (@patterns) {
+	my @matched;
+	foreach my $file (nftables_glob($spec)) {
+		next if (!-f $file);
+		$file = simplify_path($file);
+		push(@matched, $file) if (!$seen{$file}++);
+		}
+	push(@rv, @matched);
+	last if (@matched && !$is_glob);
+	}
+return @rv;
+}
+
+# nftables_include_files(file)
+# Returns recursively included files in the collation order used by nft
+sub nftables_include_files
+{
+my ($file, $seen, $root) = @_;
+$seen ||= {};
+$root ||= $file;
+return () if (!$file || $file =~ /\|\s*$/);
+return () if ($seen->{simplify_path($file)}++);
+return () if (!-r $file);
+my $data = read_file_contents($file);
+return () if (!defined($data));
+
+my @rv;
+my $depth = 0;
+foreach my $l (split(/\r?\n/, $data)) {
+	my $code = nftables_code_line($l);
+	if (!$depth) {
+		my $spec = nftables_include_spec($code);
+		foreach my $inc (nftables_resolve_include($spec, $root)) {
+			next if ($seen->{simplify_path($inc)});
+			push(@rv, $inc,
+			     nftables_include_files($inc, $seen, $root));
+			}
+		}
+	$depth += nftables_brace_delta($l);
+	$depth = 0 if ($depth < 0);
+	}
+return @rv;
+}
+
+# nftables_glob(pattern)
+# Expands one include pattern, without the word splitting that the built-in
+# glob does on paths containing spaces
+sub nftables_glob
+{
+my ($pattern) = @_;
+require File::Glob;
+return File::Glob::bsd_glob($pattern);
 }
 
 # get_nftables_config_files()
 # Returns files that can be manually edited by this module
 sub get_nftables_config_files
 {
-my @files;
-push(@files, nftables_rules_file());
-
-foreach my $sysfile ("/etc/nftables.conf", "/etc/sysconfig/nftables.conf") {
-	push(@files, $sysfile) if (-f $sysfile);
-	}
-
-if (-d "/etc/nftables") {
-	opendir(my $dir, "/etc/nftables");
-	if ($dir) {
-		foreach my $name (sort readdir($dir)) {
-			next if ($name =~ /^\./);
-			next if ($name !~ /\.(?:nft|conf)$/);
-			my $path = "/etc/nftables/$name";
-			push(@files, $path) if (-f $path);
-			}
-		closedir($dir);
-		}
-	}
-
+my $main = nftables_rules_file();
 my %seen;
-return grep { !$seen{$_}++ } @files;
+return grep { !$seen{$_}++ } ($main, nftables_include_files($main));
 }
 
 # list_foreign_firewall_modules()
@@ -319,19 +810,20 @@ foreach my $mod (@mods) {
 return @rv;
 }
 
-# validate_nftables_text(text)
-# Returns an error if nft rejects the supplied ruleset text
-sub validate_nftables_text
+# validate_nftables_files([file])
+# Returns an error if nft rejects the saved ruleset as it stands on disk.
+# An included file cannot be checked on its own, as it may well use a define
+# from the file that includes it, so the whole ruleset is checked from the
+# top
+sub validate_nftables_files
 {
-my ($text) = @_;
+my ($file) = @_;
 my $cmd = get_nft_command();
 return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
-my $tmp = tempname();
-open_tempfile(my $fh, ">$tmp");
-print_tempfile($fh, $text);
-close_tempfile($fh);
-my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
-unlink_file($tmp);
+$file ||= nftables_rules_file();
+return if (!-r $file);
+my $cwd = quotemeta(nftables_include_cwd());
+my $out = backquote_logged("cd $cwd && $cmd -c -f ".quotemeta($file)." 2>&1");
 return $? ? "<pre>$out</pre>" : undef;
 }
 
@@ -340,9 +832,21 @@ return $? ? "<pre>$out</pre>" : undef;
 sub get_nftables_save
 {
 my ($file) = @_;
-if (!$file) {
-	$file = nftables_rules_file();
+$file ||= nftables_rules_file();
+return () if (!$file);
+my @rv = parse_nftables_file($file);
+foreach my $inc (nftables_include_files($file)) {
+	push(@rv, parse_nftables_file($inc));
 	}
+return @rv;
+}
+
+# parse_nftables_file(file)
+# Returns the tables defined in one ruleset file, each tagged with the file
+# it came from so that it can be written back to the same place
+sub parse_nftables_file
+{
+my ($file) = @_;
 return () if (!$file);
 return () if ($file !~ /\|\s*$/ && !-r $file);
 
@@ -353,6 +857,8 @@ my $set;
 my $set_depth = 0;
 my $set_elem_open = 0;
 my $set_elem_buf = '';
+my $rawblock;
+my $raw_depth = 0;
 my $lnum = 0;
 my $content;
 my $fh;
@@ -373,8 +879,15 @@ unlock_file($file) if (!$is_pipe);
 my @lines = split /\r?\n/, $content;
 for (my $i = 0 ; $i < @lines ; $i++) {
 	my $line = $lines[$i];
-	$lnum++;
-	$line =~ s/#.*$//;    # Ignore comments for now
+	$lnum = $i + 1;
+	$line = nftables_code_line($line);    # Ignore actual comments for now
+
+	if ($rawblock) {
+		push(@{$rawblock->{'lines'}}, $lines[$i]);
+		$raw_depth += nftables_brace_delta($line);
+		$rawblock = undef if ($raw_depth <= 0);
+		next;
+		}
 
 	if ($set) {
 		my $sline = $line;
@@ -419,9 +932,7 @@ for (my $i = 0 ; $i < @lines ; $i++) {
 				}
 			}
 
-		my $opens = () = $line =~ /\{/g;
-		my $closes = () = $line =~ /\}/g;
-		$set_depth += $opens - $closes;
+		$set_depth += nftables_brace_delta($line);
 		if ($set_depth <= 0) {
 			$set = undef;
 			$set_depth = 0;
@@ -431,11 +942,12 @@ for (my $i = 0 ; $i < @lines ; $i++) {
 		next;
 		}
 
-	if ($line =~ /^table\s+(\S+)\s+(\S+)\s+\{/) {
+	if ($line =~ /^\s*table\s+(\S+)\s+(\S+)\s+\{/) {
 		# Start of a table
 		$table = {
 			'name' => $2,
 			'family' => $1,
+			'file' => $file,
 			'line' => $lnum,
 			'rules' => [ ],
 			'chains' => {},
@@ -443,6 +955,21 @@ for (my $i = 0 ; $i < @lines ; $i++) {
 		};
 		push(@rv, $table);
 		$chain = undef;
+
+		# A balanced table contained on one physical line is already
+		# complete. Without this, following top-level text is mistaken for
+		# part of the table and the file cannot be saved
+		if (nftables_brace_delta($line) == 0 &&
+		    $line =~ /\}\s*;?\s*$/) {
+			my $inner = $line;
+			$inner =~ s/^[^\{]*\{//;
+			$inner =~ s/\}\s*;?\s*$//;
+			if ($inner =~ /\S/) {
+				$table->{'raw_blocks'} = [ {'lines' => [ $inner ]} ];
+				}
+			$table->{'end_line'} = $lnum;
+			$table = undef;
+			}
 		}
 	elsif ($line =~ /^\s*flags\s+(.+?)\s*;?$/ && $table && !$chain) {
 		$table->{'flags'} = $1;
@@ -450,36 +977,75 @@ for (my $i = 0 ; $i < @lines ; $i++) {
 	elsif ($line =~ /^\s*set\s+(\S+)\s+\{/) {
 		# Start of a set
 		if ($table) {
-			my $setname = $1;
-			$set = {
-				'name' => $setname,
-				'line' => $lnum,
-				'elements' => [ ],
-				'raw_lines' => [ ],
-			};
-			$table->{'sets'}->{$setname} = $set;
-			$set_depth = () = $line =~ /\{/g;
-			$set_depth -= () = $line =~ /\}/g;
-			$set_elem_open = 0;
-			$set_elem_buf = '';
+			if (nftables_brace_delta($line) == 0 &&
+			    $line =~ /\}\s*;?\s*$/) {
+				# Preserve balanced inline syntax as one raw object.
+				push(@{$table->{'raw_blocks'}},
+				     {'lines' => [ $lines[$i] ]});
+				}
+			else {
+				my $setname = $1;
+				$set = {
+					'name' => $setname,
+					'line' => $lnum,
+					'elements' => [ ],
+					'raw_lines' => [ ],
+				};
+				$table->{'sets'}->{$setname} = $set;
+				$set_depth = nftables_brace_delta($line);
+				$set_elem_open = 0;
+				$set_elem_buf = '';
+				}
 			}
 		}
 	elsif ($line =~ /^\s*chain\s+(\S+)\s+\{/) {
 		# Start of a chain
 		if ($table) {
-			$chain = $1;
-			$table->{'chains'}->{$chain} = {};
+			if (nftables_brace_delta($line) == 0 &&
+			    $line =~ /\}\s*;?\s*$/) {
+				# Preserve balanced inline syntax as one raw object.
+				push(@{$table->{'raw_blocks'}},
+				     {'lines' => [ $lines[$i] ]});
+				}
+			else {
+				$chain = $1;
+				$table->{'chains'}->{$chain} =
+				    {'order' => scalar(keys %{$table->{'chains'}})};
 
-			# Look at next line for chain definition
-			if ($lines[$i + 1] =~
-			    /^\s*type\s+(\S+)\s+hook\s+(\S+)\s+priority\s+(.+?);\s+policy\s+(\S+);/) {
-				$table->{'chains'}->{$chain}->{'type'} = $1;
-				$table->{'chains'}->{$chain}->{'hook'} = $2;
-				$table->{'chains'}->{$chain}->{'priority'} = $3;
-				$table->{'chains'}->{$chain}->{'policy'} = $4;
-				$i++;    # Skip next line
+				# Look at the next line for a base-chain definition. Policy is
+				# optional in nft and defaults to accept when it is absent
+				my $base = defined($lines[$i + 1])
+				    ? nftables_code_line($lines[$i + 1]) : "";
+				if ($base =~
+				    /^\s*type\s+(\S+)\s+hook\s+(\S+)\s+priority\s+(.+?)\s*;\s*(?:policy\s+(\S+)\s*;\s*)?$/) {
+					$table->{'chains'}->{$chain}->{'type'} = $1;
+					$table->{'chains'}->{$chain}->{'hook'} = $2;
+					$table->{'chains'}->{$chain}->{'priority'} = $3;
+					$table->{'chains'}->{$chain}->{'policy'} = $4
+					    if (defined($4));
+					$i++;    # Skip next line
+					}
 				}
 			}
+		}
+	elsif ($table && $line =~ /^\s*\}\s*$/) {
+		# End of the chain, or of the table itself
+		if ($chain) {
+			$chain = undef;
+			}
+		else {
+			$table->{'end_line'} = $lnum;
+			$table = undef;
+			}
+		}
+	elsif ($table && !$chain && $line =~ /\S/) {
+		# Something else in the table that this module does not model,
+		# such as a map, flowtable, named counter or table comment.
+		# Keep it verbatim so that re-writing the file does not drop it
+		$rawblock = {'lines' => [ $lines[$i] ]};
+		push(@{$table->{'raw_blocks'}}, $rawblock);
+		$raw_depth = nftables_brace_delta($line);
+		$rawblock = undef if ($raw_depth <= 0);
 		}
 	elsif ($line =~ /^\s*(.*?)$/ && $table && $chain && $1 ne "}") {
 		# A rule
@@ -626,14 +1192,15 @@ return "ip";
 }
 
 # validate_chain_base(type, hook, priority, policy)
-# Returns true if a chain has a complete or empty base-chain definition
+# Returns true if a chain has a complete or empty base-chain definition.
+# A base chain's policy is optional and defaults to accept
 sub validate_chain_base
 {
 my ($type, $hook, $priority, $policy) = @_;
 if (defined($type) || defined($hook) ||
     defined($priority) || defined($policy)) {
 	return 0 if (!defined($type) || !defined($hook) ||
-		     !defined($priority) || !defined($policy));
+		     !defined($priority));
 	}
 return 1;
 }
@@ -3321,7 +3888,7 @@ return $table;
 }
 
 # save_profile_ruleset(table-name, profile-id, allowed-service-ids|'*')
-# Saves or replaces a Webmin-managed profile table and returns an error
+# Saves or replaces a profile table and returns an error
 sub save_profile_ruleset
 {
 my ($table_name, $profile_id, $allow_ids) = @_;
@@ -3417,6 +3984,14 @@ return $name;
 sub profile_base_table_name
 {
 my ($profile) = @_;
+return "webmin_".profile_base_name($profile);
+}
+
+# profile_base_name(profile-id)
+# Returns the base name used for generated sets and rules
+sub profile_base_name
+{
+my ($profile) = @_;
 my %names = (
 	'allow_all' => 'profile_allow_all',
 	'management' => 'profile_management',
@@ -3435,7 +4010,7 @@ return $names{$profile} || 'profile_custom';
 sub profile_port_set_name
 {
 my ($profile, $proto, $proto_count) = @_;
-my $name = profile_base_table_name($profile);
+my $name = profile_base_name($profile);
 $name .= "_".$proto if ($proto_count && $proto_count > 1);
 $name .= "_ports";
 $name =~ s/[^\w-]/_/g;
@@ -3542,20 +4117,12 @@ foreach my $r (@{$table->{'rules'}}) {
 return;
 }
 
-# nftables_save_header()
-# Returns the generated-file header for saved rules
-sub nftables_save_header
-{
-return "# This file was auto-generated by the module.\n".
-       "# Manual changes may be overwritten.\n\n";
-}
-
 # dump_nftables_save(@tables)
 # Returns a string representation of the firewall rules
 sub dump_nftables_save
 {
 my (@tables) = @_;
-my $rv = nftables_save_header();
+my $rv = "";
 foreach my $t (@tables) {
 	if ($t->{'family'}) {
 		$rv .= "table $t->{'family'} $t->{'name'} {\n";
@@ -3563,6 +4130,7 @@ foreach my $t (@tables) {
 	else {
 		$rv .= "table $t->{'name'} {\n";
 		}
+	$rv .= "\tflags $t->{'flags'}\n" if ($t->{'flags'});
 
 	if ($t->{'sets'} && ref($t->{'sets'}) eq 'HASH') {
 		foreach my $s (sort keys %{$t->{'sets'}}) {
@@ -3589,12 +4157,31 @@ foreach my $t (@tables) {
 			}
 		}
 
-	foreach my $c (keys %{$t->{'chains'}}) {
+	if ($t->{'raw_blocks'} && ref($t->{'raw_blocks'}) eq 'ARRAY') {
+		foreach my $b (@{$t->{'raw_blocks'}}) {
+			next if (!$b || ref($b) ne 'HASH');
+			foreach my $l (@{$b->{'lines'}}) {
+				$rv .= $l."\n";
+				}
+			}
+		}
+
+	my $chain_order = sub {
+		my ($n) = @_;
+		my $o = $t->{'chains'}->{$n}->{'order'};
+		return defined($o) ? $o : 0x7fffffff;
+		};
+	foreach my $c (sort { &$chain_order($a) <=> &$chain_order($b) ||
+			      $a cmp $b } keys %{$t->{'chains'}}) {
 		my $chain = $t->{'chains'}->{$c};
 		$rv .= "\tchain $c {\n";
 		if ($chain->{'type'}) {
-			$rv .=
-			    "\t\ttype $chain->{'type'} hook $chain->{'hook'} priority $chain->{'priority'}; policy $chain->{'policy'};\n";
+			$rv .= "\t\ttype $chain->{'type'} hook " .
+			       "$chain->{'hook'} priority $chain->{'priority'};";
+			$rv .= " policy $chain->{'policy'};"
+			    if (defined($chain->{'policy'}) &&
+				$chain->{'policy'} ne "");
+			$rv .= "\n";
 			}
 
 		# Add rules for this chain
@@ -3611,19 +4198,177 @@ foreach my $t (@tables) {
 return $rv;
 }
 
+# rewrite_nftables_file(file, &tables)
+# Replaces only changed table spans. Text outside tables and byte-for-byte
+# copies of untouched tables stay in their original positions
+sub rewrite_nftables_file
+{
+my ($file, $tables) = @_;
+my @current = parse_nftables_file($file);
+my (%wanted, @order);
+foreach my $table (@$tables) {
+	my $key = table_key($table);
+	push(@order, $key) if (!exists($wanted{$key}));
+	$wanted{$key} = $table;
+	}
+
+my $data = -r $file ? read_file_contents($file) : "";
+$data = "" if (!defined($data));
+my @lines = split(/(?<=\n)/, $data, -1);
+pop(@lines) if (@lines && $lines[-1] eq "");
+foreach my $table (@current) {
+	if (!$table->{'line'} || !$table->{'end_line'} ||
+	    $table->{'end_line'} < $table->{'line'}) {
+		error(text('save_eparse', html_escape($file)));
+		}
+	}
+my %used;
+my $out = "";
+my $next_line = 1;
+
+# Copy the gaps verbatim, and replace, retain or remove each existing table
+# according to the desired table list
+foreach my $old (sort { $a->{'line'} <=> $b->{'line'} } @current) {
+	my ($start, $end) = ($old->{'line'}, $old->{'end_line'});
+	next if (!$start || !$end || $end < $start);
+	if ($start > $next_line) {
+		$out .= join("", @lines[$next_line - 1 .. $start - 2]);
+		}
+	my $key = table_key($old);
+	if (exists($wanted{$key})) {
+		my $new = $wanted{$key};
+		if (dump_nftables_save($old) eq dump_nftables_save($new)) {
+			$out .= join("", @lines[$start - 1 .. $end - 1]);
+			}
+		else {
+			$out .= dump_nftables_save($new);
+			}
+		$used{$key} = 1;
+		}
+	$next_line = $end + 1;
+	}
+
+# New tables go after the last existing table but before trailing directives.
+# If the file had no tables, append them after its header and comments
+my $added = join("", map { dump_nftables_save($wanted{$_}) }
+			  grep { !$used{$_} } @order);
+if (@current) {
+	$out .= "\n" if ($added ne "" && $out ne "" && $out !~ /\n\z/);
+	$out .= $added;
+	$out .= join("", @lines[$next_line - 1 .. $#lines])
+	    if ($next_line - 1 <= $#lines);
+	}
+else {
+	$out = $data;
+	if ($added ne "") {
+		$out .= "\n" if ($out ne "" && $out !~ /\n\z/);
+		$out .= "\n" if ($out ne "" && $out !~ /\n\n\z/);
+		$out .= $added;
+		}
+	}
+return 0 if ($out eq $data);
+
+open_lock_tempfile(my $fh, ">$file");
+print_tempfile($fh, $out);
+close_tempfile($fh);
+return 1;
+}
+
+# nftables_apply_text(file, [&stack], [root-file])
+# Expands includes into an apply-time copy of the saved ruleset. The usual
+# top-level flush is omitted so applying Webmin-visible tables cannot remove
+# active tables owned by fail2ban, firewalld or another service
+sub nftables_apply_text
+{
+my ($file, $stack, $root) = @_;
+$stack ||= {};
+return "" if (!$file || $file =~ /\|\s*$/ || !-r $file);
+$file = simplify_path($file);
+if ($stack->{$file}) {
+	error(text('apply_einclude_loop', html_escape($file)));
+	}
+$root ||= $file;
+$stack->{$file} = 1;
+my $data = read_file_contents($file);
+if (!defined($data)) {
+	delete($stack->{$file});
+	return "";
+	}
+
+my @lines = split(/(?<=\n)/, $data, -1);
+pop(@lines) if (@lines && $lines[-1] eq "");
+my ($depth, $rv) = (0, "");
+foreach my $line (@lines) {
+	my $code = nftables_code_line($line);
+	while (!$depth &&
+	       $code =~ /^\s*flush\s+ruleset(?:\s+(?:ip|ip6|inet|arp|bridge|netdev))?(?:\s*;\s*|\s*$)/) {
+		my $rest = substr($line, $+[0]);
+		if ($rest !~ /\S/) {
+			$line = "";
+			last;
+			}
+		$line = $rest;
+		$code = nftables_code_line($line);
+		}
+	next if ($line eq "");
+	if (!$depth) {
+		my $spec = nftables_include_spec($code);
+		if (defined($spec)) {
+			my @includes = nftables_resolve_include($spec, $root);
+			if (@includes || $spec =~ /[*?\[]/) {
+				foreach my $inc (@includes) {
+					my $included =
+					    nftables_apply_text($inc, $stack, $root);
+					$rv .= $included;
+					$rv .= "\n"
+					    if ($included ne "" && $included !~ /\n\z/);
+					}
+				next;
+				}
+			}
+		}
+	$rv .= $line;
+	$depth += nftables_brace_delta($line);
+	$depth = 0 if ($depth < 0);
+	}
+delete($stack->{$file});
+return $rv;
+}
+
 # write_configuration(@tables)
 # Writes the configuration to the save file
 sub write_configuration
 {
 my (@tables) = @_;
-my $out = dump_nftables_save(@tables);
-my $file = nftables_rules_file();
+my $main = nftables_rules_file();
+my @known = ($main, nftables_include_files($main));
+my %known = map { $_ => 1 } @known;
 
-open_lock_tempfile(my $fh, ">$file");
-print_tempfile($fh, $out);
-close_tempfile($fh);
-sync_managed_metadata(@tables);
-update_last_config_change();
+# Each table goes back to the file it was read from, so that a table living
+# in an included file is edited there instead of being copied into the main
+# one. Anything without a home, or pointing somewhere we do not manage, goes
+# to the main file
+my %byfile;
+foreach my $t (@tables) {
+	my $f = $t->{'file'};
+	$f = $main if (!$f || !$known{$f});
+	push(@{$byfile{$f}}, $t);
+	}
+
+# Every file that holds tables has to be re-written even if it ends up with
+# none, or a deleted table would survive in its own file
+foreach my $f (@known) {
+	$byfile{$f} ||= [ ];
+	}
+
+my $changed;
+my %done;
+foreach my $f (@known, sort keys %byfile) {
+	next if ($done{$f}++);
+	my $file_changed = rewrite_nftables_file($f, $byfile{$f} || [ ]);
+	$changed ||= $file_changed;
+	}
+update_last_config_change() if ($changed);
 return;
 }
 
@@ -3677,7 +4422,7 @@ return;
 }
 
 # apply_restore([file])
-# Applies Webmin-managed tables from the save file
+# Applies the saved tables to the live ruleset
 sub apply_restore
 {
 my ($file) = @_;
@@ -3686,7 +4431,7 @@ my $cmd = get_nft_command();
 return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
 
 my @tables = get_nftables_save($file);
-return text('apply_enone') if (!@tables);
+return text('apply_enone', "<tt>".html_escape($file)."</tt>") if (!@tables);
 
 my ($active, $active_err) = get_active_nftables_save();
 return $active_err if ($active_err);
@@ -3710,12 +4455,20 @@ foreach my $t (@tables) {
 	print_tempfile($fh, "delete table ".nft_table_spec($t)."\n")
 	    if ($active{table_key($t)});
 	}
-print_tempfile($fh, dump_nftables_save(@tables));
+
+# Use the actual saved text so top-level variables and hand-written syntax
+# remain available. Includes are expanded before loading the temporary file,
+# while flush ruleset is intentionally left out to protect unrelated tables
+my $rules = $file =~ /\|\s*$/
+    ? dump_nftables_save(@tables)
+    : nftables_apply_text($file);
+print_tempfile($fh, $rules);
 close_tempfile($fh);
 
-my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
+my $cwd = quotemeta(nftables_include_cwd());
+my $out = backquote_logged("cd $cwd && $cmd -c -f $tmp 2>&1");
 if (!$?) {
-	$out = backquote_logged("$cmd -f $tmp 2>&1");
+	$out = backquote_logged("cd $cwd && $cmd -f $tmp 2>&1");
 	}
 unlink_file($tmp);
 if ($?) {
@@ -3793,9 +4546,9 @@ my %flags =
 return $flags{'owner'} || $flags{'persist'};
 }
 
-# table_is_webmin_managed(&table, [&saved_tables])
-# Returns true if an active table is present in Webmin's saved config
-sub table_is_webmin_managed
+# table_is_saved(&table, [&saved_tables])
+# Returns true if an active table is also in the saved configuration
+sub table_is_saved
 {
 my ($table, $saved_tables) = @_;
 if (!$saved_tables) {
@@ -3809,130 +4562,13 @@ return 0;
 }
 
 # active_table_status(&table, [&saved_tables])
-# Returns webmin, external or unclaimed for an active table
+# Returns saved, external or unsaved for an active table
 sub active_table_status
 {
 my ($table, $saved_tables) = @_;
 return "external" if (table_is_externally_managed($table));
-return "webmin" if (table_is_webmin_managed($table, $saved_tables));
-return "unclaimed";
-}
-
-# managed_metadata_file()
-# Returns the path to Webmin's nftables metadata file
-sub managed_metadata_file
-{
-return "$module_config_directory/managed.json";
-}
-
-# managed_table_key(&table)
-# Returns the key used for managed table metadata
-sub managed_table_key
-{
-my ($table) = @_;
-return nft_table_spec($table);
-}
-
-# read_managed_metadata()
-# Returns metadata about tables managed by this module
-sub read_managed_metadata
-{
-my $file = managed_metadata_file();
-return parse_managed_metadata(undef) if (!-r $file);
-lock_file($file);
-my $json = read_file_contents($file);
-unlock_file($file);
-return parse_managed_metadata($json);
-}
-
-# parse_managed_metadata(json)
-# Parses managed table metadata, returning an empty structure on failure
-sub parse_managed_metadata
-{
-my ($json) = @_;
-my $meta = eval { convert_from_json($json) };
-if (!$meta || ref($meta) ne 'HASH') {
-	$meta = {};
-	}
-if (!$meta->{'tables'} || ref($meta->{'tables'}) ne 'HASH') {
-	$meta->{'tables'} = {};
-	}
-return $meta;
-}
-
-# sync_managed_metadata(@tables)
-# Keeps managed metadata aligned with the saved Webmin config
-sub sync_managed_metadata
-{
-my (@tables) = @_;
-my $file = managed_metadata_file();
-lock_file($file);
-my $meta =
-    -r $file
-    ? parse_managed_metadata(read_file_contents($file))
-    : {'tables' => {}};
-my %old = %{$meta->{'tables'}};
-my %new;
-foreach my $t (@tables) {
-	my $key = managed_table_key($t);
-	my %entry =
-	    $old{$key} && ref($old{$key}) eq 'HASH' ? %{$old{$key}} : ();
-	$entry{'family'} = $t->{'family'};
-	$entry{'name'} = $t->{'name'};
-	$entry{'source'} ||= 'webmin';
-	$entry{'managed_at'} ||= time();
-	$new{$key} = \%entry;
-	}
-$meta->{'tables'} = \%new;
-write_file_contents($file, convert_to_json($meta, 1));
-unlock_file($file);
-return;
-}
-
-# register_managed_table(&table, %info)
-# Adds or updates metadata for a Webmin-managed table
-sub register_managed_table
-{
-my ($table, %info) = @_;
-my $file = managed_metadata_file();
-lock_file($file);
-my $meta =
-    -r $file
-    ? parse_managed_metadata(read_file_contents($file))
-    : {'tables' => {}};
-my $key = managed_table_key($table);
-my %entry = $meta->{'tables'}->{$key} &&
-    ref($meta->{'tables'}->{$key}) eq 'HASH'
-    ? %{$meta->{'tables'}->{$key}}
-    : ();
-foreach my $k (keys %info) {
-	$entry{$k} = $info{$k};
-	}
-$entry{'family'} = $table->{'family'};
-$entry{'name'} = $table->{'name'};
-$entry{'source'} ||= 'webmin';
-$entry{'managed_at'} ||= time();
-$meta->{'tables'}->{$key} = \%entry;
-write_file_contents($file, convert_to_json($meta, 1));
-unlock_file($file);
-return;
-}
-
-# unregister_managed_table(&table)
-# Removes metadata for a table no longer managed by this module
-sub unregister_managed_table
-{
-my ($table) = @_;
-my $file = managed_metadata_file();
-lock_file($file);
-my $meta =
-    -r $file
-    ? parse_managed_metadata(read_file_contents($file))
-    : {'tables' => {}};
-delete($meta->{'tables'}->{managed_table_key($table)});
-write_file_contents($file, convert_to_json($meta, 1));
-unlock_file($file);
-return;
+return "saved" if (table_is_saved($table, $saved_tables));
+return "unsaved";
 }
 
 # describe_rule(&rule)

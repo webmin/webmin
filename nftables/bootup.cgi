@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # bootup.cgi
-# Enable or disable Webmin-managed nftables rules at boot time
+# Enable or disable the system nftables service at boot time
 
 require './nftables-lib.pl';    ## no critic
 use strict;
@@ -9,12 +9,13 @@ our (%in, %text);
 ReadParse();
 assert_acl('bootup');
 foreign_check("init") || error($text{'bootup_einit'});
+nftables_service_status() || error($text{'bootup_eservice'});
 
 if ($in{'boot'}) {
-	create_nftables_init();
+	enable_nftables_at_boot();
 	}
 else {
-	disable_nftables_init();
+	disable_nftables_at_boot();
 	}
 webmin_log($in{'boot'} ? "bootup" : "bootdown");
 redirect("index.cgi");

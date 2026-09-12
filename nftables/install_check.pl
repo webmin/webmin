@@ -15,10 +15,5 @@ sub is_installed
 {
 my ($mode) = @_;
 return 0 if (&check_nftables());
-if ($mode) {
-	my $file = nftables_rules_file();
-	return 1 if (!-s $file);
-	return 2;
-	}
-return 1;
+return $mode ? 2 : 1;
 }

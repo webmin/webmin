@@ -36,7 +36,7 @@ print ui_table_row(
 
 foreach my $a (
 	qw(view active create setup chains sets rules raw delete
-	   apply bootup import clear quick quick_ip quick_port
+	   apply bootup service import clear quick quick_ip quick_port
 	   quick_service quick_forward manual)
     )
 {
@@ -61,7 +61,7 @@ else {
 	}
 foreach my $a (
 	qw(view active create setup chains sets rules raw delete
-	   apply bootup import clear quick quick_ip quick_port
+	   apply bootup service import clear quick quick_ip quick_port
 	   quick_service quick_forward manual)
     )
 {

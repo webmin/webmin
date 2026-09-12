@@ -10,6 +10,7 @@ raw=1
 delete=1
 apply=1
 bootup=1
+service=1
 import=1
 clear=1
 quick=1
