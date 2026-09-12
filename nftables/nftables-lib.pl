@@ -8,7 +8,9 @@ use warnings;
 our (%config, %access, %gconfig, $module_config_directory,
      $module_var_directory, $module_root_directory);
 our ($last_config_change_flag, $last_restart_time_flag);
-our ($nftables_rules_file_cache, $nftables_service_status_cache);
+our ($nftables_rules_file_cache, $nftables_service_status_cache,
+     $nftables_include_paths_cache, $nftables_include_cwd_cache,
+     $nftables_include_basedir_cache);
 init_config();
 %access = get_module_acl();
 $last_config_change_flag = $module_var_directory."/config-flag";
@@ -250,6 +252,124 @@ if (!$file) {
 return $nftables_rules_file_cache = $file;
 }
 
+# nftables_include_paths()
+# Returns nft's compiled search path for include directives
+sub nftables_include_paths
+{
+return @{$nftables_include_paths_cache}
+    if (ref($nftables_include_paths_cache) eq 'ARRAY');
+
+my @paths;
+my $cmd = get_nft_command();
+if ($cmd) {
+	my $out = backquote_command(quotemeta($cmd)." --help 2>&1");
+	if ($out =~ /--includepath.*?Default is:\s*([^\s]+)/i) {
+		my $path = $1;
+		$path =~ s/^["']|["']$//g;
+		push(@paths, $path) if ($path =~ /^\//);
+		}
+	}
+push(@paths, "/etc") if (!@paths);
+$nftables_include_paths_cache = \@paths;
+return @paths;
+}
+
+# nftables_include_uses_basedir()
+# Returns true when nft prepends the -f input file's directory to its include
+# path. This behavior was added in nftables 1.1.0
+sub nftables_include_uses_basedir
+{
+return $nftables_include_basedir_cache
+    if (defined($nftables_include_basedir_cache));
+
+my $cmd = get_nft_command();
+return $nftables_include_basedir_cache = 0 if (!$cmd);
+my $out = backquote_command(quotemeta($cmd)." --version 2>&1");
+if ($out =~ /\bv?(\d+)\.(\d+)\.(\d+)\b/) {
+	my ($major, $minor) = ($1, $2);
+	return $nftables_include_basedir_cache =
+	    ($major > 1 || $major == 1 && $minor >= 1) ? 1 : 0;
+	}
+return $nftables_include_basedir_cache = 0;
+}
+
+# nftables_include_cwd()
+# Returns the working directory used for explicitly relative ./ includes.
+# System services start in / unless their unit says otherwise; standard
+# nftables units do not override it
+sub nftables_include_cwd
+{
+return defined($nftables_include_cwd_cache) ? $nftables_include_cwd_cache : "/";
+}
+
+# nftables_code_line(line)
+# Removes an nft comment without treating a # inside a quoted string as one
+sub nftables_code_line
+{
+my ($line) = @_;
+my ($quote, $escaped);
+my $rv = "";
+foreach my $ch (split(//, $line || "")) {
+	if ($quote) {
+		$rv .= $ch;
+		if ($escaped) {
+			$escaped = 0;
+			}
+		elsif ($ch eq "\\") {
+			$escaped = 1;
+			}
+		elsif ($ch eq $quote) {
+			$quote = undef;
+			}
+		}
+	elsif ($ch eq '"') {
+		$quote = $ch;
+		$rv .= $ch;
+		}
+	elsif ($ch eq '#') {
+		last;
+		}
+	else {
+		$rv .= $ch;
+		}
+	}
+return $rv;
+}
+
+# nftables_brace_delta(line)
+# Returns the structural brace change, ignoring comments and quoted strings
+sub nftables_brace_delta
+{
+my ($line) = @_;
+my ($quote, $escaped, $delta) = (undef, 0, 0);
+foreach my $ch (split(//, $line || "")) {
+	if ($quote) {
+		if ($escaped) {
+			$escaped = 0;
+			}
+		elsif ($ch eq "\\") {
+			$escaped = 1;
+			}
+		elsif ($ch eq $quote) {
+			$quote = undef;
+			}
+		}
+	elsif ($ch eq '"') {
+		$quote = $ch;
+		}
+	elsif ($ch eq '#') {
+		last;
+		}
+	elsif ($ch eq '{') {
+		$delta++;
+		}
+	elsif ($ch eq '}') {
+		$delta--;
+		}
+	}
+return $delta;
+}
+
 # nftables_service_status()
 # Returns the init status of the system nftables service
 sub nftables_service_status
@@ -403,68 +523,126 @@ return 1;
 # used to be applied at boot. Returns the number of tables moved
 sub migrate_legacy_nftables_config
 {
-my ($legacy) = legacy_nftables_rules_files();
-return 0 if (!$legacy);
 my $file = nftables_rules_file();
-return 0 if ($legacy eq $file);
+my @legacy = grep { $_ ne $file } legacy_nftables_rules_files();
+return 0 if (!@legacy);
 
-my @old = get_nftables_save($legacy);
 my @new = get_nftables_save($file);
 my %have = map { table_key($_) => 1 } @new;
-my @add = grep { !$have{table_key($_)} } @old;
+
+# Several development releases used different private paths. Merge all of
+# them, taking the newest copy when the same table occurs more than once
+my %order = map { $legacy[$_] => $_ } 0 .. $#legacy;
+@legacy = sort {
+	(stat($b))[9] <=> (stat($a))[9] || $order{$a} <=> $order{$b}
+	} @legacy;
+my @add;
+foreach my $legacy (@legacy) {
+	foreach my $table (get_nftables_save($legacy)) {
+		push(@add, $table) if (!$have{table_key($table)}++);
+		}
+	}
 if (@add) {
 	write_configuration(@new, @add);
 	}
-rename_file($legacy, $legacy.".migrated");
+foreach my $legacy (@legacy) {
+	rename_file($legacy, $legacy.".migrated");
+	}
 return scalar(@add);
 }
 
+# nftables_include_spec(line)
+# Returns the filename or glob from a top-level include directive
+sub nftables_include_spec
+{
+my ($line) = @_;
+return if ($line !~ /^\s*include\s+(\S.*?)\s*;?\s*$/);
+my $spec = $1;
+$spec =~ s/\s*;\s*$//;
+if ($spec =~ /^"([^"]*)"$/ || $spec =~ /^'([^']*)'$/) {
+	$spec = $1;
+	}
+return $spec ne "" ? $spec : undef;
+}
+
+# nftables_resolve_include(pattern, [root-file])
+# Expands an include using nft's path rules. Current nft versions prepend the
+# root input file's directory to the compiled include path, while ./ and ../
+# use nft's working directory
+sub nftables_resolve_include
+{
+my ($pattern, $root) = @_;
+return () if (!defined($pattern) || $pattern eq "");
+my $is_glob = $pattern =~ /[*?\[]/;
+
+my @patterns;
+if ($pattern =~ /^\//) {
+	@patterns = ($pattern);
+	}
+elsif ($pattern =~ /^\.\.?(?:\/|$)/) {
+	@patterns = (nftables_include_cwd()."/".$pattern);
+	}
+else {
+	my @paths = nftables_include_paths();
+	if (nftables_include_uses_basedir() &&
+	    $root && $root !~ /\|\s*$/ && $root =~ /\//) {
+		my $dir = $root;
+		$dir =~ s/\/[^\/]*$//;
+		$dir = "/" if ($dir eq "");
+		unshift(@paths, $dir);
+		}
+	my %seen_path;
+	@patterns = map { $_."/".$pattern }
+		    grep { !$seen_path{simplify_path($_)}++ } @paths;
+
+	# A literal name comes from the first directory that has it, but a
+	# wildcard collects the matches from every directory. nft stacks those
+	# matches and reads the stack from the top, so the files below the last
+	# directory are processed first
+	@patterns = reverse(@patterns) if ($is_glob);
+	}
+
+my (%seen, @rv);
+foreach my $spec (@patterns) {
+	my @matched;
+	foreach my $file (nftables_glob($spec)) {
+		next if (!-f $file);
+		$file = simplify_path($file);
+		push(@matched, $file) if (!$seen{$file}++);
+		}
+	push(@rv, @matched);
+	last if (@matched && !$is_glob);
+	}
+return @rv;
+}
+
 # nftables_include_files(file)
-# Returns the files that a ruleset file pulls in with include directives, in
-# the order nft reads them. Includes are followed recursively, globs are
-# expanded, and a relative path resolves against the including file's own
-# directory
+# Returns recursively included files in the collation order used by nft
 sub nftables_include_files
 {
-my ($file, $seen) = @_;
+my ($file, $seen, $root) = @_;
 $seen ||= {};
+$root ||= $file;
 return () if (!$file || $file =~ /\|\s*$/);
 return () if ($seen->{simplify_path($file)}++);
 return () if (!-r $file);
 my $data = read_file_contents($file);
 return () if (!defined($data));
-my $dir = $file;
-$dir =~ s/\/[^\/]+$//;
-$dir = "/" if ($dir eq "");
 
 my @rv;
 my $depth = 0;
 foreach my $l (split(/\r?\n/, $data)) {
-	$l =~ s/#.*$//;
-	if ($depth) {
-		my $opens = () = $l =~ /\{/g;
-		my $closes = () = $l =~ /\}/g;
-		$depth += $opens - $closes;
-		$depth = 0 if ($depth < 0);
-		next;
+	my $code = nftables_code_line($l);
+	if (!$depth) {
+		my $spec = nftables_include_spec($code);
+		foreach my $inc (nftables_resolve_include($spec, $root)) {
+			next if ($seen->{simplify_path($inc)});
+			push(@rv, $inc,
+			     nftables_include_files($inc, $seen, $root));
+			}
 		}
-	if ($l =~ /^\s*table\s+\S+(\s+\S+)?\s*\{/) {
-		$depth = 1;
-		next;
-		}
-
-	# An include only means anything at the top level
-	next if ($l !~ /^\s*include\s+(\S.*?)\s*;?\s*$/);
-	my $spec = $1;
-	if ($spec =~ /^"([^"]*)"$/ || $spec =~ /^'([^']*)'$/) {
-		$spec = $1;
-		}
-	next if ($spec eq "");
-	$spec = $dir."/".$spec if ($spec !~ /^\//);
-	foreach my $inc (nftables_glob($spec)) {
-		next if (!-f $inc);
-		push(@rv, $inc, nftables_include_files($inc, $seen));
-		}
+	$depth += nftables_brace_delta($l);
+	$depth = 0 if ($depth < 0);
 	}
 return @rv;
 }
@@ -517,7 +695,8 @@ my $cmd = get_nft_command();
 return text('index_ecommand', "<tt>nft</tt>") if (!$cmd);
 my $file = nftables_rules_file();
 return if (!-r $file);
-my $out = backquote_logged("$cmd -c -f ".quotemeta($file)." 2>&1");
+my $cwd = quotemeta(nftables_include_cwd());
+my $out = backquote_logged("cd $cwd && $cmd -c -f ".quotemeta($file)." 2>&1");
 return $? ? "<pre>$out</pre>" : undef;
 }
 
@@ -573,14 +752,12 @@ unlock_file($file) if (!$is_pipe);
 my @lines = split /\r?\n/, $content;
 for (my $i = 0 ; $i < @lines ; $i++) {
 	my $line = $lines[$i];
-	$lnum++;
-	$line =~ s/#.*$//;    # Ignore comments for now
+	$lnum = $i + 1;
+	$line = nftables_code_line($line);    # Ignore actual comments for now
 
 	if ($rawblock) {
 		push(@{$rawblock->{'lines'}}, $lines[$i]);
-		my $opens = () = $line =~ /\{/g;
-		my $closes = () = $line =~ /\}/g;
-		$raw_depth += $opens - $closes;
+		$raw_depth += nftables_brace_delta($line);
 		$rawblock = undef if ($raw_depth <= 0);
 		next;
 		}
@@ -628,9 +805,7 @@ for (my $i = 0 ; $i < @lines ; $i++) {
 				}
 			}
 
-		my $opens = () = $line =~ /\{/g;
-		my $closes = () = $line =~ /\}/g;
-		$set_depth += $opens - $closes;
+		$set_depth += nftables_brace_delta($line);
 		if ($set_depth <= 0) {
 			$set = undef;
 			$set_depth = 0;
@@ -640,7 +815,7 @@ for (my $i = 0 ; $i < @lines ; $i++) {
 		next;
 		}
 
-	if ($line =~ /^table\s+(\S+)\s+(\S+)\s+\{/) {
+	if ($line =~ /^\s*table\s+(\S+)\s+(\S+)\s+\{/) {
 		# Start of a table
 		$table = {
 			'name' => $2,
@@ -653,6 +828,21 @@ for (my $i = 0 ; $i < @lines ; $i++) {
 		};
 		push(@rv, $table);
 		$chain = undef;
+
+		# A balanced table contained on one physical line is already
+		# complete. Without this, following top-level text is mistaken for
+		# part of the table and the file cannot be saved
+		if (nftables_brace_delta($line) == 0 &&
+		    $line =~ /\}\s*;?\s*$/) {
+			my $inner = $line;
+			$inner =~ s/^[^\{]*\{//;
+			$inner =~ s/\}\s*;?\s*$//;
+			if ($inner =~ /\S/) {
+				$table->{'raw_blocks'} = [ {'lines' => [ $inner ]} ];
+				}
+			$table->{'end_line'} = $lnum;
+			$table = undef;
+			}
 		}
 	elsif ($line =~ /^\s*flags\s+(.+?)\s*;?$/ && $table && !$chain) {
 		$table->{'flags'} = $1;
@@ -668,8 +858,7 @@ for (my $i = 0 ; $i < @lines ; $i++) {
 				'raw_lines' => [ ],
 			};
 			$table->{'sets'}->{$setname} = $set;
-			$set_depth = () = $line =~ /\{/g;
-			$set_depth -= () = $line =~ /\}/g;
+			$set_depth = nftables_brace_delta($line);
 			$set_elem_open = 0;
 			$set_elem_buf = '';
 			}
@@ -681,20 +870,30 @@ for (my $i = 0 ; $i < @lines ; $i++) {
 			$table->{'chains'}->{$chain} =
 			    {'order' => scalar(keys %{$table->{'chains'}})};
 
-			# Look at next line for chain definition
-			if ($lines[$i + 1] =~
-			    /^\s*type\s+(\S+)\s+hook\s+(\S+)\s+priority\s+(.+?);\s+policy\s+(\S+);/) {
+			# Look at the next line for a base-chain definition. Policy is
+			# optional in nft and defaults to accept when it is absent
+			my $base = defined($lines[$i + 1])
+			    ? nftables_code_line($lines[$i + 1]) : "";
+			if ($base =~
+			    /^\s*type\s+(\S+)\s+hook\s+(\S+)\s+priority\s+(.+?)\s*;\s*(?:policy\s+(\S+)\s*;\s*)?$/) {
 				$table->{'chains'}->{$chain}->{'type'} = $1;
 				$table->{'chains'}->{$chain}->{'hook'} = $2;
 				$table->{'chains'}->{$chain}->{'priority'} = $3;
-				$table->{'chains'}->{$chain}->{'policy'} = $4;
+				$table->{'chains'}->{$chain}->{'policy'} = $4
+				    if (defined($4));
 				$i++;    # Skip next line
 				}
 			}
 		}
 	elsif ($table && $line =~ /^\s*\}\s*$/) {
 		# End of the chain, or of the table itself
-		$chain ? ($chain = undef) : ($table = undef);
+		if ($chain) {
+			$chain = undef;
+			}
+		else {
+			$table->{'end_line'} = $lnum;
+			$table = undef;
+			}
 		}
 	elsif ($table && !$chain && $line =~ /\S/) {
 		# Something else in the table that this module does not model,
@@ -702,8 +901,7 @@ for (my $i = 0 ; $i < @lines ; $i++) {
 		# Keep it verbatim so that re-writing the file does not drop it
 		$rawblock = {'lines' => [ $lines[$i] ]};
 		push(@{$table->{'raw_blocks'}}, $rawblock);
-		$raw_depth = () = $line =~ /\{/g;
-		$raw_depth -= () = $line =~ /\}/g;
+		$raw_depth = nftables_brace_delta($line);
 		$rawblock = undef if ($raw_depth <= 0);
 		}
 	elsif ($line =~ /^\s*(.*?)$/ && $table && $chain && $1 ne "}") {
@@ -851,14 +1049,15 @@ return "ip";
 }
 
 # validate_chain_base(type, hook, priority, policy)
-# Returns true if a chain has a complete or empty base-chain definition
+# Returns true if a chain has a complete or empty base-chain definition.
+# A base chain's policy is optional and defaults to accept
 sub validate_chain_base
 {
 my ($type, $hook, $priority, $policy) = @_;
 if (defined($type) || defined($hook) ||
     defined($priority) || defined($policy)) {
 	return 0 if (!defined($type) || !defined($hook) ||
-		     !defined($priority) || !defined($policy));
+		     !defined($priority));
 	}
 return 1;
 }
@@ -3767,57 +3966,6 @@ foreach my $r (@{$table->{'rules'}}) {
 return;
 }
 
-# get_nftables_extras(file)
-# Returns the content of a ruleset file that is outside any table block, as
-# the text before the first table and the text after the last one. Comments,
-# defines and includes placed there by the system or by hand must survive a
-# re-write of the tables
-sub get_nftables_extras
-{
-my ($file) = @_;
-return ("", "") if (!$file || !-r $file);
-my $data = read_file_contents($file);
-return ("", "") if (!defined($data));
-my (@pre, @cur);
-my ($depth, $seen) = (0, 0);
-foreach my $l (split(/\r?\n/, $data)) {
-	if (!$depth) {
-		if ($l =~ /^\s*table\s+\S+(\s+\S+)?\s*\{/) {
-			# Anything seen since the last table has to stay ahead
-			# of the tables, as defines and includes are only in
-			# scope for what follows them
-			push(@pre, @cur);
-			@cur = ();
-			$seen = 1;
-			$depth = 1;
-			next;
-			}
-		push(@cur, $l);
-		next;
-		}
-	my $opens = () = $l =~ /\{/g;
-	my $closes = () = $l =~ /\}/g;
-	$depth += $opens - $closes;
-	$depth = 0 if ($depth < 0);
-	}
-my @post;
-if ($seen) {
-	@post = @cur;
-	}
-else {
-	push(@pre, @cur);
-	}
-my $pre = join("\n", @pre);
-my $post = join("\n", @post);
-$pre =~ s/\n{3,}/\n\n/g;
-$pre =~ s/\s+$//;
-$post =~ s/^\s+//;
-$post =~ s/\s+$//;
-$pre .= "\n\n" if ($pre ne "");
-$post = "\n".$post."\n" if ($post ne "");
-return ($pre, $post);
-}
-
 # dump_nftables_save(@tables)
 # Returns a string representation of the firewall rules
 sub dump_nftables_save
@@ -3831,6 +3979,7 @@ foreach my $t (@tables) {
 	else {
 		$rv .= "table $t->{'name'} {\n";
 		}
+	$rv .= "\tflags $t->{'flags'}\n" if ($t->{'flags'});
 
 	if ($t->{'sets'} && ref($t->{'sets'}) eq 'HASH') {
 		foreach my $s (sort keys %{$t->{'sets'}}) {
@@ -3876,8 +4025,12 @@ foreach my $t (@tables) {
 		my $chain = $t->{'chains'}->{$c};
 		$rv .= "\tchain $c {\n";
 		if ($chain->{'type'}) {
-			$rv .=
-			    "\t\ttype $chain->{'type'} hook $chain->{'hook'} priority $chain->{'priority'}; policy $chain->{'policy'};\n";
+			$rv .= "\t\ttype $chain->{'type'} hook " .
+			       "$chain->{'hook'} priority $chain->{'priority'};";
+			$rv .= " policy $chain->{'policy'};"
+			    if (defined($chain->{'policy'}) &&
+				$chain->{'policy'} ne "");
+			$rv .= "\n";
 			}
 
 		# Add rules for this chain
@@ -3891,6 +4044,143 @@ foreach my $t (@tables) {
 		}
 	$rv .= "}\n";
 	}
+return $rv;
+}
+
+# rewrite_nftables_file(file, &tables)
+# Replaces only changed table spans. Text outside tables and byte-for-byte
+# copies of untouched tables stay in their original positions
+sub rewrite_nftables_file
+{
+my ($file, $tables) = @_;
+my @current = parse_nftables_file($file);
+my (%wanted, @order);
+foreach my $table (@$tables) {
+	my $key = table_key($table);
+	push(@order, $key) if (!exists($wanted{$key}));
+	$wanted{$key} = $table;
+	}
+
+my $data = -r $file ? read_file_contents($file) : "";
+$data = "" if (!defined($data));
+my @lines = split(/(?<=\n)/, $data, -1);
+pop(@lines) if (@lines && $lines[-1] eq "");
+foreach my $table (@current) {
+	if (!$table->{'line'} || !$table->{'end_line'} ||
+	    $table->{'end_line'} < $table->{'line'}) {
+		error(text('save_eparse', html_escape($file)));
+		}
+	}
+my %used;
+my $out = "";
+my $next_line = 1;
+
+# Copy the gaps verbatim, and replace, retain or remove each existing table
+# according to the desired table list
+foreach my $old (sort { $a->{'line'} <=> $b->{'line'} } @current) {
+	my ($start, $end) = ($old->{'line'}, $old->{'end_line'});
+	next if (!$start || !$end || $end < $start);
+	if ($start > $next_line) {
+		$out .= join("", @lines[$next_line - 1 .. $start - 2]);
+		}
+	my $key = table_key($old);
+	if (exists($wanted{$key})) {
+		my $new = $wanted{$key};
+		if (dump_nftables_save($old) eq dump_nftables_save($new)) {
+			$out .= join("", @lines[$start - 1 .. $end - 1]);
+			}
+		else {
+			$out .= dump_nftables_save($new);
+			}
+		$used{$key} = 1;
+		}
+	$next_line = $end + 1;
+	}
+
+# New tables go after the last existing table but before trailing directives.
+# If the file had no tables, append them after its header and comments
+my $added = join("", map { dump_nftables_save($wanted{$_}) }
+			  grep { !$used{$_} } @order);
+if (@current) {
+	$out .= "\n" if ($added ne "" && $out ne "" && $out !~ /\n\z/);
+	$out .= $added;
+	$out .= join("", @lines[$next_line - 1 .. $#lines])
+	    if ($next_line - 1 <= $#lines);
+	}
+else {
+	$out = $data;
+	if ($added ne "") {
+		$out .= "\n" if ($out ne "" && $out !~ /\n\z/);
+		$out .= "\n" if ($out ne "" && $out !~ /\n\n\z/);
+		$out .= $added;
+		}
+	}
+return 0 if ($out eq $data);
+
+open_lock_tempfile(my $fh, ">$file");
+print_tempfile($fh, $out);
+close_tempfile($fh);
+return 1;
+}
+
+# nftables_apply_text(file, [&stack], [root-file])
+# Expands includes into an apply-time copy of the saved ruleset. The usual
+# top-level flush is omitted so applying Webmin-visible tables cannot remove
+# active tables owned by fail2ban, firewalld or another service
+sub nftables_apply_text
+{
+my ($file, $stack, $root) = @_;
+$stack ||= {};
+return "" if (!$file || $file =~ /\|\s*$/ || !-r $file);
+$file = simplify_path($file);
+if ($stack->{$file}) {
+	error(text('apply_einclude_loop', html_escape($file)));
+	}
+$root ||= $file;
+$stack->{$file} = 1;
+my $data = read_file_contents($file);
+if (!defined($data)) {
+	delete($stack->{$file});
+	return "";
+	}
+
+my @lines = split(/(?<=\n)/, $data, -1);
+pop(@lines) if (@lines && $lines[-1] eq "");
+my ($depth, $rv) = (0, "");
+foreach my $line (@lines) {
+	my $code = nftables_code_line($line);
+	while (!$depth &&
+	       $code =~ /^\s*flush\s+ruleset(?:\s+(?:ip|ip6|inet|arp|bridge|netdev))?(?:\s*;\s*|\s*$)/) {
+		my $rest = substr($line, $+[0]);
+		if ($rest !~ /\S/) {
+			$line = "";
+			last;
+			}
+		$line = $rest;
+		$code = nftables_code_line($line);
+		}
+	next if ($line eq "");
+	if (!$depth) {
+		my $spec = nftables_include_spec($code);
+		if (defined($spec)) {
+			my @includes = nftables_resolve_include($spec, $root);
+			if (@includes || $spec =~ /[*?\[]/) {
+				foreach my $inc (@includes) {
+					my $included =
+					    nftables_apply_text($inc, $stack, $root);
+					$rv .= $included;
+					$rv .= "\n"
+					    if ($included ne "" && $included !~ /\n\z/);
+					}
+				next;
+				}
+			}
+		}
+	$rv .= $line;
+	$depth += nftables_brace_delta($line);
+	$depth = 0 if ($depth < 0);
+	}
+delete($stack->{$file});
 return $rv;
 }
 
@@ -3920,18 +4210,14 @@ foreach my $f (@known) {
 	$byfile{$f} ||= [ ];
 	}
 
-foreach my $f (sort keys %byfile) {
-	# Leave a file alone unless its own tables actually changed. Comparing
-	# through the dumper ignores whatever indenting the file happens to
-	# use, so an untouched file is not re-formatted behind the admin's back
-	my $want = dump_nftables_save(@{$byfile{$f}});
-	next if ($want eq dump_nftables_save(parse_nftables_file($f)));
-	my ($pre, $post) = get_nftables_extras($f);
-	open_lock_tempfile(my $fh, ">$f");
-	print_tempfile($fh, $pre.$want.$post);
-	close_tempfile($fh);
+my $changed;
+my %done;
+foreach my $f (@known, sort keys %byfile) {
+	next if ($done{$f}++);
+	my $file_changed = rewrite_nftables_file($f, $byfile{$f} || [ ]);
+	$changed ||= $file_changed;
 	}
-update_last_config_change();
+update_last_config_change() if ($changed);
 return;
 }
 
@@ -4018,12 +4304,20 @@ foreach my $t (@tables) {
 	print_tempfile($fh, "delete table ".nft_table_spec($t)."\n")
 	    if ($active{table_key($t)});
 	}
-print_tempfile($fh, dump_nftables_save(@tables));
+
+# Use the actual saved text so top-level variables and hand-written syntax
+# remain available. Includes are expanded before loading the temporary file,
+# while flush ruleset is intentionally left out to protect unrelated tables
+my $rules = $file =~ /\|\s*$/
+    ? dump_nftables_save(@tables)
+    : nftables_apply_text($file);
+print_tempfile($fh, $rules);
 close_tempfile($fh);
 
-my $out = backquote_logged("$cmd -c -f $tmp 2>&1");
+my $cwd = quotemeta(nftables_include_cwd());
+my $out = backquote_logged("cd $cwd && $cmd -c -f $tmp 2>&1");
 if (!$?) {
-	$out = backquote_logged("$cmd -f $tmp 2>&1");
+	$out = backquote_logged("cd $cwd && $cmd -f $tmp 2>&1");
 	}
 unlink_file($tmp);
 if ($?) {

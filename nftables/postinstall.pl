@@ -5,7 +5,7 @@ no warnings 'redefine';
 no warnings 'once';
 no warnings 'uninitialized';
 
-do 'nftables-lib.pl';
+require 'nftables-lib.pl';    ## no critic
 
 # module_install()
 # Moves off the module's own rules file and boot action, which earlier
@@ -20,7 +20,7 @@ eval {
 	&remove_legacy_managed_metadata();
 	};
 if ($@) {
-	print STDERR "Failed to migrate nftables configuration : $@\n";
+	print STDERR "Failed to migrate nftables configuration: $@\n";
 	return;
 	}
 if ($moved) {

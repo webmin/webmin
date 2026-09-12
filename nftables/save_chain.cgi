@@ -92,6 +92,9 @@ $hook = undef if (!defined($hook) || $hook eq '');
 $priority = undef if (!defined($priority) || $priority eq '');
 $policy = undef if (!defined($policy) || $policy eq '');
 
+defined($policy) && $policy !~ /^(accept|drop)$/ &&
+    error($text{'chain_epolicy'});
+
 validate_chain_base($type, $hook, $priority, $policy) ||
     error($text{'chain_ebase'});
 

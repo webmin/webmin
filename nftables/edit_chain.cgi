@@ -35,7 +35,7 @@ my @hook_opts = (
 );
 my @policy_opts = (
 	["", $text{'chain_policy_none'}],
-	map { [$_, $_] } qw(accept drop reject return queue continue)
+	map { [$_, $_] } qw(accept drop)
 );
 
 print ui_form_start("save_chain.cgi");
