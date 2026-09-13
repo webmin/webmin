@@ -796,6 +796,11 @@ if ($gconfig{'os_type'} eq 'debian-linux') {
 elsif ($gconfig{'os_type'} eq 'redhat-linux') {
 	my $needs_restarting_cmd = "needs-restarting";
 	my $needs_restarting = has_command($needs_restarting_cmd);
+	if (!$needs_restarting) {
+		# Fall back to the DNF subcommand when no standalone command exists
+		my $dnf = has_command("dnf");
+		$needs_restarting = "$dnf $needs_restarting_cmd" if ($dnf);
+		}
 	if ($needs_restarting) {
 		my $needs_restarting_rs =
 			&backquote_command("$needs_restarting -r 2>&1 </dev/null");
