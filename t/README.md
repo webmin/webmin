@@ -19,6 +19,20 @@ WEBMIN_COMPILE_T_FILTER='^\./acl/' prove t/compile.t   # one module
 `prove` and Test::More are core, though on RPM-based distros, you need
 `perl-Test-Harness`.
 
+## Socket compatibility tests on a VM
+
+`web-lib-funcs-open-socket.t` tests address selection without network access.
+
+Run the additional compatibility tests as root on a disposable Linux VM with Webmin, Python 3, OpenSSL, and IPv6 loopback support:
+
+```sh
+WEBMIN_OPEN_SOCKET_VM_TEST=1 timeout 90 prove -v t/web-lib-funcs-open-socket-vm.t
+```
+
+The VM test uses temporary loopback servers for HTTP, HTTPS, CONNECT proxies, passive FTP, and service greetings. It checks IPv4 and IPv6 fallback, source binding, and error reporting without changing service configuration. It skips unless explicitly enabled.
+
+By default, it tests `open_socket` from this checkout with the installed Webmin helpers. Set `WEBMIN_OPEN_SOCKET_SOURCE` to another `web-lib-funcs.pl` to compare versions.
+
 ## Coverage reports
 
 ```sh
