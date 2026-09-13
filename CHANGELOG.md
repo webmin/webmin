@@ -18,6 +18,7 @@
 * Fix module name validation to prevent loading files outside installed modules
 * Fix ACL operations bypassing configured allowed paths in File Manager
 * Fix arbitrary file reads in Software Packages module
+* Fix TLS client certificate verification
 
 #### 2.660 (August 20, 2026)
 * Add support for creating `vfsv1` Linux quota files for limits above 4 TiB, while preserving existing quota file formats

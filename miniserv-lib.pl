@@ -2510,11 +2510,19 @@ foreach $d (@_) {
 
 sub verify_client
 {
-local $cert = Net::SSLeay::X509_STORE_CTX_get_current_cert($_[1]);
-if ($cert) {
-	local $errnum = Net::SSLeay::X509_STORE_CTX_get_error($_[1]);
-	$verified_client = 1 if (!$errnum);
+local ($preverify_ok, $ctx) = @_;
+local $cert = Net::SSLeay::X509_STORE_CTX_get_current_cert($ctx);
+local $errnum = Net::SSLeay::X509_STORE_CTX_get_error($ctx);
+if (!$preverify_ok || $errnum) {
+	# Once any certificate fails, later successful checks must not
+	# mark the whole chain as verified.
+	$verified_client = 0;
 	}
+elsif ($cert && !defined($verified_client)) {
+	$verified_client = 1;
+	}
+# Continue the handshake so an invalid optional client certificate can fall
+# back to another login method instead of preventing access altogether.
 return 1;
 }
 
@@ -3625,11 +3633,9 @@ if ($@) {
 if ($client_certs) {
 	Net::SSLeay::CTX_load_verify_locations(
 		$ssl_ctx, $config{'ca'}, "");
-	eval {
-		Net::SSLeay::set_verify(
-			$ssl_ctx, &Net::SSLeay::VERIFY_PEER, \&verify_client);
-		};
-	if ($@) {
+	# Register verification on the context so every SSL connection created
+	# from it invokes the client-certificate callback.
+	if (defined(&Net::SSLeay::CTX_set_verify)) {
 		Net::SSLeay::CTX_set_verify(
 			$ssl_ctx, &Net::SSLeay::VERIFY_PEER, \&verify_client);
 		}
@@ -3710,6 +3716,13 @@ if (!$sn) {
 local (undef, $myip, undef) = &get_address_ip($sn, $ipv6);
 local $ssl_ctx = $ssl_contexts{$myip} || $ssl_contexts{"*"};
 local $ssl_con = Net::SSLeay::new($ssl_ctx->{'ctx'});
+if ($client_certs && !defined(&Net::SSLeay::CTX_set_verify)) {
+	# Older Net::SSLeay versions only provide the connection-level API.
+	# Register it on the SSL object rather than passing an incompatible
+	# context.
+	Net::SSLeay::set_verify(
+		$ssl_con, &Net::SSLeay::VERIFY_PEER, \&verify_client);
+	}
 if ($config{'ssl_cipher_list'}) {
 	# Force use of ciphers
 	eval "Net::SSLeay::set_cipher_list(
@@ -3722,6 +3735,7 @@ if ($config{'ssl_cipher_list'}) {
 
 # Accept the SSL connection
 Net::SSLeay::set_fd($ssl_con, fileno($sock));
+$verified_client = undef;
 alarm(10);
 $SIG{'ALRM'} = sub { die "timeout" };
 my $ok = Net::SSLeay::accept($ssl_con);

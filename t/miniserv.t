@@ -16,6 +16,7 @@ use warnings;
 use Test::More;
 use File::Basename qw(dirname);
 use File::Spec;
+use File::Temp qw(tempfile);
 
 my $lib = File::Spec->rel2abs(
 	File::Spec->catfile(dirname(__FILE__), '..', 'miniserv-lib.pl'));
@@ -784,6 +785,117 @@ subtest 'password_crypt' => sub {
 	my $des = miniserv::unix_crypt('hunter2', 'xy');
 	is(miniserv::password_crypt('hunter2', $des), $des,
 	   'DES stored hash + correct password verifies');
+};
+
+# verify_client — preserve optional-certificate fallback without allowing a
+# successful certificate check to hide an error elsewhere in the chain.
+subtest 'verify_client' => sub {
+	no warnings qw(redefine once);
+	my $has_cert = 1;
+	my $error = 0;
+	local *Net::SSLeay::X509_STORE_CTX_get_current_cert = sub {
+		return $has_cert;
+		};
+	local *Net::SSLeay::X509_STORE_CTX_get_error = sub {
+		return $error;
+		};
+
+	# A fully valid chain is eligible for certificate authentication.
+	{
+		local $miniserv::verified_client;
+		is(miniserv::verify_client(1, 'ctx'), 1,
+		   'valid issuer check continues the handshake');
+		is(miniserv::verify_client(1, 'ctx'), 1,
+		   'valid leaf check continues the handshake');
+		is($miniserv::verified_client, 1,
+		   'all-valid chain is marked verified');
+	}
+
+	# OpenSSL checks from the issuer toward the leaf, so a bad leaf must clear
+	# an earlier success while still allowing password authentication fallback.
+	{
+		local $miniserv::verified_client;
+		$error = 0;
+		miniserv::verify_client(1, 'ctx');
+		$error = 10;
+		is(miniserv::verify_client(0, 'ctx'), 1,
+		   'invalid leaf still continues the handshake');
+		is($miniserv::verified_client, 0,
+		   'invalid leaf clears successful issuer state');
+	}
+
+	# Do not let a later successful callback erase an earlier chain error.
+	{
+		local $miniserv::verified_client;
+		$error = 20;
+		miniserv::verify_client(0, 'ctx');
+		$error = 0;
+		miniserv::verify_client(1, 'ctx');
+		is($miniserv::verified_client, 0,
+		   'chain remains invalid after a later successful check');
+	}
+
+	# Treat pre-verification failure as authoritative even if a binding reports
+	# no numeric error.
+	{
+		local $miniserv::verified_client;
+		$error = 0;
+		miniserv::verify_client(0, 'ctx');
+		is($miniserv::verified_client, 0,
+		   'pre-verification failure rejects the chain');
+	}
+
+	# A successful callback without a current certificate cannot establish
+	# client identity, while an error without one still rejects the chain.
+	{
+		local $miniserv::verified_client;
+		$has_cert = 0;
+		$error = 0;
+		miniserv::verify_client(1, 'ctx');
+		is($miniserv::verified_client, undef,
+		   'callback without a certificate does not verify a client');
+		$error = 20;
+		miniserv::verify_client(0, 'ctx');
+		is($miniserv::verified_client, 0,
+		   'error without a current certificate rejects the chain');
+	}
+};
+
+# create_ssl_context — client-certificate verification belongs to the SSL
+# context, not to an individual SSL connection object.
+subtest 'create_ssl_context client verification' => sub {
+	no warnings qw(redefine once);
+	my ($keyfh, $keyfile) = tempfile();
+	my ($certfh, $certfile) = tempfile();
+	close($keyfh);
+	close($certfh);
+	my @verify_args;
+	my $legacy_calls = 0;
+
+	local $miniserv::client_certs = 1;
+	local %miniserv::config = (
+		'ca' => $certfile,
+		'dhparams_file' => "$certfile.missing",
+		);
+	local *Net::SSLeay::new_x_ctx = sub { return 'ctx'; };
+	local *Net::SSLeay::VERIFY_PEER = sub { return 1; };
+	local *Net::SSLeay::FILETYPE_PEM = sub { return 1; };
+	local *Net::SSLeay::CTX_load_verify_locations = sub { return 1; };
+	local *Net::SSLeay::CTX_set_verify = sub { @verify_args = @_; };
+	local *Net::SSLeay::set_verify = sub { $legacy_calls++; };
+	local *Net::SSLeay::CTX_use_PrivateKey_file = sub { return 1; };
+	local *Net::SSLeay::CTX_use_certificate_file = sub { return 1; };
+	local *Net::SSLeay::CTX_set_options = sub { return 1; };
+	local *miniserv::cert_names = sub { return { 'alt' => [] }; };
+
+	my $result = miniserv::create_ssl_context($keyfile, $certfile, 'none');
+	is($result->{'ctx'}, 'ctx', 'SSL context is created');
+	is($verify_args[0], 'ctx', 'verification is registered on the context');
+	is($verify_args[1], 1,
+	   'peer verification is enabled');
+	is($verify_args[2], \&miniserv::verify_client,
+	   'client-certificate callback is registered');
+	is($legacy_calls, 0, 'connection-level verification API is not used');
 };
 
 # hash_session_id — three independent code paths, picked by which crypto
