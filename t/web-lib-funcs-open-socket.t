@@ -5,7 +5,8 @@ use warnings;
 no warnings qw(once redefine);
 use Test::More;
 use FindBin;
-use Socket;
+# Import IPv6 helpers even when the optional Socket6 module is absent.
+use Socket qw(:DEFAULT inet_pton inet_ntop);
 use Errno qw(ECONNREFUSED);
 
 my (@events, %connect_ok);
