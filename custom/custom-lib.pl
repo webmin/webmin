@@ -481,7 +481,7 @@ foreach my $a (@{$cmd->{'args'}}) {
 		&error(&text('run_emust', $a->{'desc'}));
 		}
 	$ENV{$n} = $rv;
-	$env .= "$n='$rv'\n";
+	$env .= "$n=".quotemeta($rv)."\n";
 	$export .= " $n";
 	if ($a->{'quote'}) {
 		$str =~ s/\$$n/"\$$n"/g;
