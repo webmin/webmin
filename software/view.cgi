@@ -3,27 +3,19 @@
 # Output the contents of a file
 
 require './software-lib.pl';
-require './view-lib.pl';
 &ReadParse();
 $p = $in{'file'};
 
 # Only show files listed for the selected package.
-&can_view_package_file($in{'package'}, $in{'version'}, $p) ||
+&is_package_file($in{'package'}, $in{'version'}, $p) ||
 	&error($text{'list_enotpackage'});
 
-# Reject symlinks and path changes between validation and open.
 if (!open(FILE, "<", $p)) {
 	print "Content-type: text/plain\n\n";
 	print &text('list_eview', $p, $!),"\n";
 	exit;
 	}
-my @lst = lstat($p);
 my @st = stat(FILE);
-if (!@lst || !@st || ($lst[2] & 0170000) != 0100000 ||
-    $lst[0] != $st[0] || $lst[1] != $st[1]) {
-	close(FILE);
-	&error($text{'list_enotpackage'});
-	}
 
 # Try to guess type from filename
 if ($p =~ /\.([^\.\/]+)$/) {

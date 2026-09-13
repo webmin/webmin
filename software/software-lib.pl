@@ -300,6 +300,24 @@ if ($rel1 ne "" && $rel2 ne "" && $config{'package_system'} eq 'rpm') {
 return &compare_version_numbers($_[0], $_[1]);
 }
 
+# is_package_file(package, version, path)
+# Returns 1 if the exact path is listed for the selected package.
+sub is_package_file
+{
+my ($package, $version, $path) = @_;
+return 0 if (!defined($package) || $package eq "" ||
+	     !defined($path) || $path eq "");
+
+# Match the path against the package manager's file list.
+local %files;
+my $count = &check_files($package, $version);
+for(my $i = 0; $i < $count; $i++) {
+	return 1 if (defined($files{$i,'path'}) &&
+		     $files{$i,'path'} eq $path);
+	}
+return 0;
+}
+
 # check_package_system()
 # Returns an error message if some command needed by the selected package
 # management system is missing.
@@ -344,4 +362,3 @@ return $err;
 }
 
 1;
-
