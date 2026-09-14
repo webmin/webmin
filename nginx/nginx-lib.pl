@@ -554,10 +554,14 @@ my $ok = eval {
 	my %locked;
 	while (@files) {
 		foreach my $f (@files) {
-			if (&lock_file($f)) {
+			my $pid = &test_lock($f);
+			if ($pid && $pid == $$) {
+				# Keep a lock taken by the caller outside our unlock list.
+				}
+			elsif (&lock_file($f)) {
 				push(@lock_all_config_files_cache, $f);
 				}
-			elsif (!defined($main::locked_file_list{&translate_filename($f)})) {
+			else {
 				&error("Failed to lock Nginx config file $f");
 				}
 			$locked{$f} = 1;
