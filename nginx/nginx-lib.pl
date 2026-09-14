@@ -18,6 +18,7 @@ $last_config_change_flag = $module_var_directory."/config-flag";
 $last_restart_time_flag = $module_var_directory."/restart-flag";
 
 my @lock_all_config_files_cache;
+my $lock_all_config_files_depth = 0;
 
 # set_nginx_config_defaults()
 # Fill in sensible defaults if module config has not been initialized yet
@@ -534,14 +535,50 @@ foreach my $f (@files) {
 }
 
 # lock_all_config_files([&parent])
-# Locks all files used in the current config
+# Locks all config files and refreshes the config on the outermost call.
+# Fetch directive objects after locking; earlier objects may have stale lines.
 sub lock_all_config_files
 {
 my ($parent) = @_;
-@lock_all_config_files_cache = &get_all_config_files($parent);
-foreach my $f (@lock_all_config_files_cache) {
-	&lock_file($f);
+if ($lock_all_config_files_depth) {
+	# Nested edits share the caller's config tree and pending changes.
+	$lock_all_config_files_depth++;
+	return;
 	}
+
+# Lock the main file before parsing, so another writer cannot change the
+# include list or directive line numbers while we acquire the remaining locks.
+my $main = &resolve_links($config{'nginx_config'}) || $config{'nginx_config'};
+my $ok = eval {
+	my @files = ($main);
+	my %locked;
+	while (@files) {
+		foreach my $f (@files) {
+			if (&lock_file($f)) {
+				push(@lock_all_config_files_cache, $f);
+				}
+			elsif (!defined($main::locked_file_list{&translate_filename($f)})) {
+				&error("Failed to lock Nginx config file $f");
+				}
+			$locked{$f} = 1;
+			&unflush_file_lines($f);
+			}
+		# An included file may also be edited directly. Re-read after
+		# waiting for its lock and pick up any newly included files.
+		&flush_config_cache();
+		@files = grep { !$locked{$_} } &unique(&get_all_config_files(),
+			$parent ? &get_all_config_files($parent) : ());
+		}
+	1;
+	};
+my $err = $@;
+if (!$ok) {
+	# Do not leave partially acquired locks behind if parsing or locking fails.
+	&unlock_file($_) foreach reverse(@lock_all_config_files_cache);
+	@lock_all_config_files_cache = ();
+	die $err;
+	}
+$lock_all_config_files_depth = 1;
 }
 
 # unlock_all_config_files([&parent])
@@ -549,6 +586,8 @@ foreach my $f (@lock_all_config_files_cache) {
 sub unlock_all_config_files
 {
 my ($parent) = @_;
+return if (!$lock_all_config_files_depth);
+return if (--$lock_all_config_files_depth);
 foreach my $f (reverse(@lock_all_config_files_cache)) {
 	&unlock_file($f);
 	}
