@@ -31,6 +31,10 @@ foreach my $dom (@doms) {
 		&error($text{'letsencrypt_edom'});
 	}
 my $has_ip_doms = &letsencrypt_doms_have_ips(\@doms);
+# Ignore unused EAB fields, even if a password manager filled them in
+if ($in{'eab_kid_def'}) {
+	$in{'eab_kid'} = $in{'eab_hmac'} = '';
+	}
 $in{'directory_url'} = &trim($in{'directory_url'});
 $in{'eab_kid'} = &trim($in{'eab_kid'});
 $in{'eab_hmac'} = &trim($in{'eab_hmac'});

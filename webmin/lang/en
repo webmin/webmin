@@ -457,9 +457,10 @@ ssl_acmeopts=Provider settings
 ssl_acmeextra=Show advanced settings
 ssl_acmedir=Custom ACME directory URL
 ssl_acmedirdesc=If set, this overrides the default provider server above.
-ssl_acmekid=External Account Binding key ID
+ssl_acmeeab=External Account Binding
+ssl_acmekid=Key ID
 ssl_acmekiddesc=Optional. Some ACME providers require this in addition to the directory URL.
-ssl_acmehmac=External Account Binding HMAC key
+ssl_acmehmac=HMAC key
 ssl_acmehmacdesc=Optional. Requires the native Certbot client when used.
 
 newkey_err=Failed to create SSL key

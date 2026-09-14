@@ -261,16 +261,7 @@ print ui_tabs_start_tab("mode", "lets");
 my $err = &check_letsencrypt();
 print $text{'ssl_letsdesc'};
 if (!$err) {
-	print &ui_tag('span',
-		&ui_details({
-			'class' => 'inline inlined',
-			'title' => '',
-			'content' => $text{'ssl_letsdesc2'},
-			}))."\n".
-		&ui_tag('style',
-			".ui--span>details.inline>summary+span {\n".
-			"margin-top: 0;\n".
-			"}\n");
+	print "<p>", $text{'ssl_letsdesc2'}, "</p>\n";
 	}
 print "<p>\n";
 
@@ -283,7 +274,7 @@ if ($err) {
 	}
 else {
 	# Show form to create a cert
-	print &ui_form_start("letsencrypt.cgi");
+	print &ui_form_start("letsencrypt.cgi", "post");
 	print &ui_table_start($text{'ssl_letsheader'}, undef, 2);
 
 	# For domain names
@@ -375,31 +366,34 @@ else {
 			  [ [ 0, $text{'ssl_staging0'} ],
 			    [ 1, $text{'ssl_staging1'} ] ]));
 
-	my $acme_extra = &ui_table_start(undef, undef, 2);
-	$acme_extra .= &ui_table_row($text{'ssl_acmedir'},
+	# Provider settings are ordinary rows in the certificate form
+	print &ui_table_row($text{'ssl_acmedir'},
 		&ui_textbox("directory_url",
-			    $config{'letsencrypt_directory_url'}, 60)."<br>\n".
+			    $config{'letsencrypt_directory_url'}, 40)."<br>\n".
 		&ui_note($text{'ssl_acmedirdesc'}, 0));
-	$acme_extra .= &ui_table_row($text{'ssl_acmekid'},
-		&ui_textbox("eab_kid",
-			    $config{'letsencrypt_eab_kid'}, 40)."<br>\n".
-		&ui_note($text{'ssl_acmekiddesc'}, 0));
-	$acme_extra .= &ui_table_row($text{'ssl_acmehmac'},
-		&ui_password("eab_hmac",
-			     $config{'letsencrypt_eab_hmac'}, 50)."<br>\n".
+	# Keep both EAB credentials controlled by the same choice
+	my $eab_disabled = $config{'letsencrypt_eab_kid'} eq '';
+	print &ui_table_row($text{'ssl_acmeeab'},
+		&ui_radio_table("eab_kid_def", $eab_disabled ? 1 : 0,
+			[ [ 1, $text{'config_none'}, undef,
+			    &js_disable_inputs([ "eab_kid", "eab_hmac" ],
+					       [ ], "onClick") ],
+			  [ 0, $text{'config_setto'},
+			    &ui_textbox("eab_kid",
+				$config{'letsencrypt_eab_kid'}, 32,
+				$eab_disabled, undef, 'autocomplete="off" '.
+				'placeholder="'.&quote_escape($text{'ssl_acmekid'}).'" '.
+				'aria-label="'.&quote_escape($text{'ssl_acmekid'}).'"')."<br>\n".
+			    &ui_textbox("eab_hmac",
+				$config{'letsencrypt_eab_hmac'}, 32,
+				$eab_disabled, undef,
+				'autocomplete="new-password" '.
+				'placeholder="'.&quote_escape($text{'ssl_acmehmac'}).'" '.
+				'aria-label="'.&quote_escape($text{'ssl_acmehmac'}).'"'),
+			    &js_disable_inputs([ ], [ "eab_kid", "eab_hmac" ],
+					       "onClick") ] ], 1)."<br>\n".
+		&ui_note($text{'ssl_acmekiddesc'}, 0)."<br>\n".
 		&ui_note($text{'ssl_acmehmacdesc'}, 0));
-	$acme_extra .= &ui_table_end();
-	print &ui_table_row($text{'ssl_acmeopts'},
-		&ui_details({
-			'class' => 'inline inlined',
-			'html' => 1,
-			'title' => $text{'ssl_acmeextra'},
-			'content' => $acme_extra,
-			})."\n".
-		&ui_tag('style',
-			"tr>td>details.inline>summary+span {\n".
-			"margin-left: 0;\n".
-			"}\n"));
 
 	# Renewal option
 	my $job = &find_letsencrypt_cron_job();
