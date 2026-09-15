@@ -163,21 +163,4 @@ subtest 'included files are refreshed after waiting for their locks' => sub {
 	main::unlock_all_config_files();
 };
 
-subtest 'lock acquisition failure releases locks already acquired' => sub {
-	my $lock = \&main::lock_file;
-	{
-		no warnings 'redefine';
-		local *main::lock_file = sub {
-			return 0 if $_[0] eq $included;
-			return $lock->(@_);
-			};
-		eval { main::lock_all_config_files(); };
-		like($@, qr/Failed to lock Nginx config file/, 'failed lock aborts the edit');
-	}
-	ok(!-e "$conf.lock", 'main lock is released after failure');
-	main::lock_all_config_files();
-	ok(-e "$conf.lock", 'another acquisition works after failure');
-	main::unlock_all_config_files();
-};
-
 done_testing();

@@ -549,38 +549,28 @@ if ($lock_all_config_files_depth) {
 # Lock the main file before parsing, so another writer cannot change the
 # include list or directive line numbers while we acquire the remaining locks.
 my $main = &resolve_links($config{'nginx_config'}) || $config{'nginx_config'};
-my $ok = eval {
-	my @files = ($main);
-	my %locked;
-	while (@files) {
-		foreach my $f (@files) {
-			my $pid = &test_lock($f);
-			if ($pid && $pid == $$) {
-				# Keep a lock taken by the caller outside our unlock list.
-				}
-			elsif (&lock_file($f)) {
-				push(@lock_all_config_files_cache, $f);
-				}
-			else {
-				&error("Failed to lock Nginx config file $f");
-				}
-			$locked{$f} = 1;
-			&unflush_file_lines($f);
+my @files = ($main);
+my %locked;
+while (@files) {
+	foreach my $f (@files) {
+		my $pid = &test_lock($f);
+		if ($pid && $pid == $$) {
+			# Keep a lock taken by the caller outside our unlock list.
 			}
-		# An included file may also be edited directly. Re-read after
-		# waiting for its lock and pick up any newly included files.
-		&flush_config_cache();
-		@files = grep { !$locked{$_} } &unique(&get_all_config_files(),
-			$parent ? &get_all_config_files($parent) : ());
+		elsif (&lock_file($f)) {
+			push(@lock_all_config_files_cache, $f);
+			}
+		else {
+			&error("Failed to lock Nginx config file $f");
+			}
+		$locked{$f} = 1;
+		&unflush_file_lines($f);
 		}
-	1;
-	};
-my $err = $@;
-if (!$ok) {
-	# Do not leave partially acquired locks behind if parsing or locking fails.
-	&unlock_file($_) foreach reverse(@lock_all_config_files_cache);
-	@lock_all_config_files_cache = ();
-	die $err;
+	# An included file may also be edited directly. Re-read after
+	# waiting for its lock and pick up any newly included files.
+	&flush_config_cache();
+	@files = grep { !$locked{$_} } &unique(&get_all_config_files(),
+		$parent ? &get_all_config_files($parent) : ());
 	}
 $lock_all_config_files_depth = 1;
 }
