@@ -480,6 +480,7 @@ foreach my $a (@{$cmd->{'args'}}) {
 	if ($rv eq '' && $a->{'must'} && $a->{'type'} != 7) {
 		&error(&text('run_emust', $a->{'desc'}));
 		}
+	$rv =~ /\0/ && &error($text{'run_ezero'});
 	$ENV{$n} = $rv;
 	$env .= "$n=".quotemeta($rv)."\n";
 	$export .= " $n";
