@@ -126,6 +126,7 @@ if (&read_file($site_file, \%site)) {
 #  value -	Value (possibly with spaces)
 #  members -	For type 1, a reference to the array of members
 #  indent -     Number of spaces before the name
+#  comment -    Full text for a comment stored as a dummy directive
 sub parse_config_file
 {
 local($fh, @rv, $line, %dummy);
@@ -146,8 +147,22 @@ foreach my $d (&get_httpd_defines()) {
 	}
 while($line = <$fh>) {
 	$line =~ s/\r|\n//g;
-	$line =~ s/^\s*#.*$//g;
-	if ($line =~ /^\s*<\/(\S+)\s*(.*)>/) {
+	if ($line =~ /^(\s*)(#.*)$/) {
+		# Keep comments in the structure so block rewrites preserve them
+		local(%dir);
+		%dir = ('line', $_[1],
+			'eline', $_[1],
+			'file', $_[2],
+			'type', 0,
+			'name', 'dummy',
+			'comment', $2);
+		local $indent = $1;
+		$indent =~ s/\t/        /g;
+		$dir{'indent'} = length($indent);
+		push(@rv, \%dir);
+		$_[1]++;
+		}
+	elsif ($line =~ /^\s*<\/(\S+)\s*(.*)>/) {
 		# end of a container directive. This can only happen in a
 		# recursive call to this function
 		$_[1]++;
@@ -781,11 +796,12 @@ foreach my $dir (@$dirs) {
 	if ($dir->{'type'}) {
 		# Do sub-members too
 		&recursive_set_lines_files($dir->{'members'}, $line+1, $file);
-		$line += scalar(grep { $_->{'name'} ne 'dummy' }
+		$line += scalar(grep { $_->{'name'} ne 'dummy' ||
+				      defined($_->{'comment'}) }
 				     @{$dir->{'members'}})+1;
 		}
 	$dir->{'eline'} = $line;
-	$line++ if ($dir->{'name'} ne 'dummy');
+	$line++ if ($dir->{'name'} ne 'dummy' || defined($dir->{'comment'}));
 	}
 return $line;
 }
@@ -1931,7 +1947,13 @@ sub directive_lines
 {
 my @rv;
 foreach my $d (@_) {
-	next if ($d->{'name'} eq 'dummy');
+	if ($d->{'name'} eq 'dummy') {
+		if (defined($d->{'comment'})) {
+			my $indent = (" " x $d->{'indent'});
+			push(@rv, $indent.$d->{'comment'});
+			}
+		next;
+		}
 	my $indent = (" " x $d->{'indent'});
 	if ($d->{'type'}) {
 		push(@rv, $indent."<$d->{'name'} $d->{'value'}>");
