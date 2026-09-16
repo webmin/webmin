@@ -126,10 +126,10 @@ if (&read_file($site_file, \%site)) {
 #  value -	Value (possibly with spaces)
 #  members -	For type 1, a reference to the array of members
 #  indent -     Number of spaces before the name
-#  comment -    Full text for a comment stored as a dummy directive
+#  comments -   Full comment lines immediately before this directive
 sub parse_config_file
 {
-local($fh, @rv, $line, %dummy);
+local($fh, @rv, $line, %dummy, @comments);
 $fh = $_[0];
 $dummy{'line'} = $dummy{'eline'} = $_[1]-1;
 $dummy{'file'} = $_[2];
@@ -147,19 +147,10 @@ foreach my $d (&get_httpd_defines()) {
 	}
 while($line = <$fh>) {
 	$line =~ s/\r|\n//g;
-	if ($line =~ /^(\s*)(#.*)$/) {
-		# Keep comments in the structure so block rewrites preserve them
-		local(%dir);
-		%dir = ('line', $_[1],
-			'eline', $_[1],
-			'file', $_[2],
-			'type', 0,
-			'name', 'dummy',
-			'comment', $2);
-		local $indent = $1;
-		$indent =~ s/\t/        /g;
-		$dir{'indent'} = length($indent);
-		push(@rv, \%dir);
+	if ($line =~ /^\s*#/) {
+		# Attach comments to the next directive without reusing the
+		# dummy entry that marks the start of this block
+		push(@comments, $line);
 		$_[1]++;
 		}
 	elsif ($line =~ /^\s*<\/(\S+)\s*(.*)>/) {
@@ -193,10 +184,13 @@ while($line = <$fh>) {
 		    $not && !$httpd_modules{$mpmmod}
 		    ) {
 			# use the directives..
-			push(@rv, { 'line', $oldline,
-				    'eline', $oldline,
-				    'file', $_[2],
-				    'name', "<IfModule $not$mod>" });
+			local %open = ( 'line', $oldline,
+					'eline', $oldline,
+					'file', $_[2],
+					'name', "<IfModule $not$mod>" );
+			$open{'comments'} = [ @comments ] if (@comments);
+			@comments = ( );
+			push(@rv, \%open);
 			push(@rv, @dirs);
 			push(@rv, { 'line', $_[1]-1,
 				    'eline', $_[1]-1,
@@ -214,10 +208,13 @@ while($line = <$fh>) {
 		if (!$not && defined($defs{$def}) ||
 		    $not && !defined($defs{$def})) {
 			# use the directives..
-			push(@rv, { 'line', $oldline,
-				    'eline', $oldline,
-				    'file', $_[2],
-				    'name', "<IfDefine $not$def>" });
+			local %open = ( 'line', $oldline,
+					'eline', $oldline,
+					'file', $_[2],
+					'name', "<IfDefine $not$def>" );
+			$open{'comments'} = [ @comments ] if (@comments);
+			@comments = ( );
+			push(@rv, \%open);
 			push(@rv, @dirs);
 			push(@rv, { 'line', $_[1]-1,
 				    'eline', $_[1]-1,
@@ -262,10 +259,13 @@ while($line = <$fh>) {
 		$match = !$match if ($not);
 		if ($match) {
 			# use the directives..
-			push(@rv, { 'line', $oldline,
-				    'eline', $oldline,
-				    'file', $_[2],
-				    'name', "<IfVersion $not$op $ver>" });
+			local %open = ( 'line', $oldline,
+					'eline', $oldline,
+					'file', $_[2],
+					'name', "<IfVersion $not$op $ver>" );
+			$open{'comments'} = [ @comments ] if (@comments);
+			@comments = ( );
+			push(@rv, \%open);
 			push(@rv, @dirs);
 			push(@rv, { 'line', $_[1]-1,
 				    'eline', $_[1]-1,
@@ -291,6 +291,8 @@ while($line = <$fh>) {
 		$dir{'eline'} = $_[1]-1;
 		$indent =~ s/\t/        /g;
 		$dir{'indent'} = length($indent);
+		$dir{'comments'} = [ @comments ] if (@comments);
+		@comments = ( );
 		push(@rv, \%dir);
 		}
 	elsif ($line =~ /^(\s*)(\S+)\s*(.*)$/) {
@@ -324,11 +326,15 @@ while($line = <$fh>) {
 				}
 			}
 		$dir{'words'} = &wsplit($dir{'value'});
+		$dir{'comments'} = [ @comments ] if (@comments);
+		@comments = ( );
 		push(@rv, \%dir);
 		$_[1]++;
 		}
 	else {
-		# blank or comment line
+		# Keep blank lines that separate a pending comment block from
+		# the directive it describes
+		push(@comments, $line) if (@comments);
 		$_[1]++;
 		}
 	}
@@ -651,9 +657,12 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 		push(@files, $old[$i]->{'file'});
 		$idx = &indexof($old[$i], @{$_[2]});
 		splice(@{$_[2]}, $idx, 1);
-		$len = $old[$i]->{'eline'} - $old[$i]->{'line'} + 1;
-		splice(@$lref, $old[$i]->{'line'}, $len);
-		&renumber($_[3], $old[$i]->{'line'}, $old[$i]->{'file'}, -$len);
+		local $comments = $old[$i]->{'comments'} ?
+				scalar(@{$old[$i]->{'comments'}}) : 0;
+		local $start = $old[$i]->{'line'}-$comments;
+		$len = $old[$i]->{'eline'}-$start+1;
+		splice(@$lref, $start, $len);
+		&renumber($_[3], $start, $old[$i]->{'file'}, -$len);
 		}
 	else {
 		# just changing the value
@@ -688,9 +697,16 @@ return if (!$olddir && !$newdir);	# Nothing to do
 local $file = $olddir ? $olddir->{'file'} :
 	      $newdir->{'file'} ? $newdir->{'file'} : $pconf->[0]->{'file'};
 local $lref = &read_file_lines($file);
-local $oldlen = $olddir ? $olddir->{'eline'}-$olddir->{'line'}+1 : undef;
+local $oldcomments = $olddir && $olddir->{'comments'} ?
+			scalar(@{$olddir->{'comments'}}) : 0;
+local $oldline = $olddir ? $olddir->{'line'}-$oldcomments : undef;
+local $oldlen = $olddir ? $olddir->{'eline'}-$oldline+1 : undef;
 local @newlines;
 if ($newdir) {
+	if ($olddir && !exists($newdir->{'comments'}) && $oldcomments) {
+		# A replacement inherits the comments attached to the old block
+		$newdir->{'comments'} = [ @{$olddir->{'comments'}} ];
+		}
 	my $isrc = $olddir ? $olddir :
 		   @$pconf ? $pconf->[0] : undef;
 	if ($isrc) {
@@ -704,7 +720,9 @@ if ($olddir && $newdir) {
 	$newdir->{'words'} = &wsplit($newdir->{'value'});
 	if ($first) {
 		# Just changing first and last line, like virtualhost IP
-		$lref->[$olddir->{'line'}] = $newlines[0];
+		local $comments = $newdir->{'comments'} ?
+				scalar(@{$newdir->{'comments'}}) : 0;
+		$lref->[$olddir->{'line'}] = $newlines[$comments];
 		$lref->[$olddir->{'eline'}] = $newlines[$#newlines];
 		$olddir->{'name'} = $newdir->{'name'};
 		$olddir->{'value'} = $newdir->{'value'};
@@ -717,9 +735,11 @@ if ($olddir && $newdir) {
 		local $idx = &indexof($olddir, @$pconf);
 		$pconf->[$idx] = $newdir if ($idx >= 0);
 		$newdir->{'file'} = $olddir->{'file'};
-		$newdir->{'line'} = $olddir->{'line'};
-		$newdir->{'eline'} = $olddir->{'line'}+scalar(@newlines)-1;
-		splice(@$lref, $olddir->{'line'}, $oldlen, @newlines);
+		local $comments = $newdir->{'comments'} ?
+				scalar(@{$newdir->{'comments'}}) : 0;
+		$newdir->{'line'} = $oldline+$comments;
+		$newdir->{'eline'} = $oldline+scalar(@newlines)-1;
+		splice(@$lref, $oldline, $oldlen, @newlines);
 
 		# Update sub-directive lines and files too
 		if ($newdir->{'type'}) {
@@ -731,10 +751,10 @@ if ($olddir && $newdir) {
 	}
 elsif ($olddir && !$newdir) {
 	# Remove
-	splice(@$lref, $olddir->{'line'}, $oldlen);
+	splice(@$lref, $oldline, $oldlen);
 	local $idx = &indexof($olddir, @$pconf);
 	splice(@$pconf, $idx, 1) if ($idx >= 0);
-	&renumber($conf, $olddir->{'line'}, $olddir->{'file'}, -$oldlen);
+	&renumber($conf, $oldline, $olddir->{'file'}, -$oldlen);
 	}
 elsif (!$olddir && $newdir) {
 	# Add to file, at end of specific file or parent section
@@ -754,7 +774,9 @@ elsif (!$olddir && $newdir) {
 		}
 	$newdir->{'words'} = &wsplit($newdir->{'value'});
 	$newdir->{'file'} = $file;
-	$newdir->{'line'} = $addline;
+	local $comments = $newdir->{'comments'} ?
+			 scalar(@{$newdir->{'comments'}}) : 0;
+	$newdir->{'line'} = $addline+$comments;
 	$newdir->{'eline'} = $addline + scalar(@newlines) - 1;
 	&renumber($conf, $addline, $file, scalar(@newlines));
 	splice(@$pconf, $addpos, 0, $newdir);
@@ -791,17 +813,17 @@ sub recursive_set_lines_files
 {
 my ($dirs, $line, $file) = @_;
 foreach my $dir (@$dirs) {
+	# A directive's line follows any comments attached to it
+	$line += scalar(@{$dir->{'comments'}}) if ($dir->{'comments'});
 	$dir->{'line'} = $line;
 	$dir->{'file'} = $file;
 	if ($dir->{'type'}) {
-		# Do sub-members too
-		&recursive_set_lines_files($dir->{'members'}, $line+1, $file);
-		$line += scalar(grep { $_->{'name'} ne 'dummy' ||
-				      defined($_->{'comment'}) }
-				     @{$dir->{'members'}})+1;
+		# Continue after every line used by nested members
+		$line = &recursive_set_lines_files($dir->{'members'},
+						  $line+1, $file);
 		}
 	$dir->{'eline'} = $line;
-	$line++ if ($dir->{'name'} ne 'dummy' || defined($dir->{'comment'}));
+	$line++ if ($dir->{'name'} ne 'dummy');
 	}
 return $line;
 }
@@ -1947,13 +1969,8 @@ sub directive_lines
 {
 my @rv;
 foreach my $d (@_) {
-	if ($d->{'name'} eq 'dummy') {
-		if (defined($d->{'comment'})) {
-			my $indent = (" " x $d->{'indent'});
-			push(@rv, $indent.$d->{'comment'});
-			}
-		next;
-		}
+	next if ($d->{'name'} eq 'dummy');
+	push(@rv, @{$d->{'comments'}}) if ($d->{'comments'});
 	my $indent = (" " x $d->{'indent'});
 	if ($d->{'type'}) {
 		push(@rv, $indent."<$d->{'name'} $d->{'value'}>");
