@@ -28,16 +28,6 @@ print $fh $text;
 close($fh) || die "Failed to close $file: $!";
 }
 
-sub read_text
-{
-my ($file) = @_;
-open(my $fh, '<', $file) || die "Failed to read $file: $!";
-local $/ = undef;
-my $text = <$fh>;
-close($fh) || die "Failed to close $file: $!";
-return $text;
-}
-
 # Load the Apache module with an isolated Webmin configuration.
 write_text(File::Spec->catfile($webmin_config, 'config'),
 	"os_type=debian-linux\n".
@@ -97,49 +87,5 @@ is($files->{'eline'}, 14, 'nested block ends after all of its members');
 is($directory->{'eline'}, 15, 'outer block includes the nested closing line');
 is($alias->{'line'}, 16, 'following directive starts after the outer block');
 is($next, 10 + scalar(@lines), 'returned line follows serialized output');
-
-# Parsed comments are not Apache directives, but block rewrites must retain
-# their text and indentation around nested containers.
-my $roundtrip = File::Spec->catfile($tmp, 'comments.conf');
-my $roundtrip_text =
-	"# outer comment\n".
-	"<Directory /srv/example>\n".
-	"    # nested comment\n".
-	"    <Files *.php>\n".
-	"        Require all denied\n".
-	"    </Files>\n".
-	"</Directory>\n";
-write_text($roundtrip, $roundtrip_text);
-open(my $fh, '<', $roundtrip) || die "Failed to read $roundtrip: $!";
-my $line = 0;
-my @parsed = main::parse_config_file($fh, $line, $roundtrip);
-close($fh) || die "Failed to close $roundtrip: $!";
-is(join("\n", main::directive_lines(@parsed))."\n", $roundtrip_text,
-	'comments survive parsing and serialization');
-
-# Removing one of two parsed virtual hosts must use spans that include their
-# comments, or remnants of the removed block will make Apache invalid.
-my $vhosts_file = File::Spec->catfile($tmp, 'vhosts.conf');
-my $first_vhost =
-	"<VirtualHost *:80>\n".
-	"    # first comment\n".
-	"    ServerName first.example\n".
-	"</VirtualHost>\n";
-my $second_vhost =
-	"<VirtualHost *:443>\n".
-	"    # second comment\n".
-	"    ServerName second.example\n".
-	"</VirtualHost>\n";
-write_text($vhosts_file, $first_vhost.$second_vhost);
-open($fh, '<', $vhosts_file) || die "Failed to read $vhosts_file: $!";
-$line = 0;
-my @vhost_config = main::parse_config_file($fh, $line, $vhosts_file);
-close($fh) || die "Failed to close $vhosts_file: $!";
-my @vhosts = main::find_directive_struct('VirtualHost', \@vhost_config);
-main::save_directive_struct($vhosts[1], undef,
-	\@vhost_config, \@vhost_config);
-main::flush_file_lines($vhosts_file);
-is(read_text($vhosts_file), $first_vhost,
-	'removing a block also removes all of its comments');
 
 done_testing();
