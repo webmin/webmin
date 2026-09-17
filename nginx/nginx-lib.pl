@@ -566,8 +566,8 @@ while (@files) {
 		$locked{$f} = 1;
 		&unflush_file_lines($f);
 		}
-	# An included file may also be edited directly. Re-read after
-	# waiting for its lock and pick up any newly included files.
+	# Raw config edits lock included files independently. Re-read after
+	# acquiring each batch and lock any newly discovered includes.
 	&flush_config_cache();
 	@files = grep { !$locked{$_} } &unique(&get_all_config_files(),
 		$parent ? &get_all_config_files($parent) : ());
