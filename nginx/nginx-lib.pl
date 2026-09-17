@@ -551,8 +551,11 @@ if ($lock_all_config_files_depth) {
 my $main = &resolve_links($config{'nginx_config'}) || $config{'nginx_config'};
 my @files = ($main);
 my %locked;
-while (@files) {
+# Repeat until a fresh parse finds no additional config files.
+while (1) {
+	my $new_files = 0;
 	foreach my $f (@files) {
+		next if ($locked{$f});
 		my $pid = &test_lock($f);
 		if ($pid && $pid == $$) {
 			# Keep a lock taken by the caller outside our unlock list.
@@ -564,12 +567,15 @@ while (@files) {
 			&error("Failed to lock Nginx config file $f");
 			}
 		$locked{$f} = 1;
+		$new_files++;
 		&unflush_file_lines($f);
 		}
-	# Raw config edits lock included files independently. Re-read after
-	# acquiring each batch and lock any newly discovered includes.
+	last if (!$new_files);
+
+	# An included file may change while this process waits for its lock.
+	# Reparse after each batch to find any newly included files.
 	&flush_config_cache();
-	@files = grep { !$locked{$_} } &unique(&get_all_config_files(),
+	@files = &unique(&get_all_config_files(),
 		$parent ? &get_all_config_files($parent) : ());
 	}
 $lock_all_config_files_depth = 1;

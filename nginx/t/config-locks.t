@@ -163,4 +163,23 @@ subtest 'included files are refreshed after waiting for their locks' => sub {
 	main::unlock_all_config_files();
 };
 
+subtest 'a parent block can span included files' => sub {
+	write_text($included, "listen 80;\n");
+	write_text($conf,
+		"http {\n".
+		"    server {\n".
+		"        server_name parent.invalid;\n".
+		"        include $included;\n".
+		"    }\n".
+		"}\n");
+	main::flush_config_cache();
+	my $parent = server('parent.invalid');
+	is_deeply([sort(main::get_all_config_files($parent))],
+		[sort($conf, $included)], 'parent spans both config files');
+	main::lock_all_config_files($parent);
+	ok(-e "$conf.lock" && -e "$included.lock",
+		'parent lock covers both config files');
+	main::unlock_all_config_files();
+};
+
 done_testing();
