@@ -534,12 +534,11 @@ foreach my $f (@files) {
 @open_config_files = ( );
 }
 
-# lock_all_config_files([&parent])
+# lock_all_config_files()
 # Locks all config files and refreshes the config on the outermost call.
 # Fetch directive objects after locking; earlier objects may have stale lines.
 sub lock_all_config_files
 {
-my ($parent) = @_;
 if ($lock_all_config_files_depth) {
 	# Nested edits share the caller's config tree and pending changes.
 	$lock_all_config_files_depth++;
@@ -576,17 +575,15 @@ while (1) {
 	# An included file may change while this process waits for its lock.
 	# Reparse after each batch to find any newly included files.
 	&flush_config_cache();
-	@files = &unique(&get_all_config_files(),
-		$parent ? &get_all_config_files($parent) : ());
+	@files = &get_all_config_files();
 	}
 $lock_all_config_files_depth = 1;
 }
 
-# unlock_all_config_files([&parent])
+# unlock_all_config_files()
 # Un-locks all files used in the current config
 sub unlock_all_config_files
 {
-my ($parent) = @_;
 return if (!$lock_all_config_files_depth);
 return if (--$lock_all_config_files_depth);
 foreach my $f (reverse(@lock_all_config_files_cache)) {

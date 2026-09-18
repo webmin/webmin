@@ -109,7 +109,7 @@ foreach my $case ([0, 0], [0, 1], [1, 0], [1, 1]) {
 		main::lock_all_config_files();
 		my $s = server('beta.invalid');
 		main::save_directive($s, 'ssl_certificate_key', ['/beta.key']);
-		main::lock_all_config_files($s);
+		main::lock_all_config_files();
 		is(server('beta.invalid'), $s, 'nested lock keeps object identity');
 		main::unlock_all_config_files();
 		ok(-e "$conf.lock", 'nested unlock retains main config lock');
@@ -184,25 +184,6 @@ subtest 'included files are refreshed after waiting for their locks' => sub {
 	}
 	ok(-e "$extra.lock", 'new include is locked too');
 	ok(server('gamma.invalid'), 'updated include is parsed after locking');
-	main::unlock_all_config_files();
-};
-
-subtest 'a parent block can span included files' => sub {
-	write_text($included, "listen 80;\n");
-	write_text($conf,
-		"http {\n".
-		"    server {\n".
-		"        server_name parent.invalid;\n".
-		"        include $included;\n".
-		"    }\n".
-		"}\n");
-	main::flush_config_cache();
-	my $parent = server('parent.invalid');
-	is_deeply([sort(main::get_all_config_files($parent))],
-		[sort($conf, $included)], 'parent spans both config files');
-	main::lock_all_config_files($parent);
-	ok(-e "$conf.lock" && -e "$included.lock",
-		'parent lock covers both config files');
 	main::unlock_all_config_files();
 };
 
