@@ -562,13 +562,14 @@ while (1) {
 			}
 		elsif (&lock_file($f)) {
 			push(@lock_all_config_files_cache, $f);
+			# Drop stale lines only after acquiring this lock ourselves.
+			&unflush_file_lines($f);
 			}
 		else {
 			&error("Failed to lock Nginx config file $f");
 			}
 		$locked{$f} = 1;
 		$new_files++;
-		&unflush_file_lines($f);
 		}
 	last if (!$new_files);
 

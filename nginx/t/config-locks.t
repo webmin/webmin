@@ -142,8 +142,32 @@ subtest 'locks acquired by a caller remain owned by it' => sub {
 	main::unlock_file($conf);
 };
 
+subtest 'pending edits under a caller lock are retained' => sub {
+	write_text($conf, "http {\n}\n");
+	main::flush_config_cache();
+	main::unflush_file_lines($conf);
+	main::lock_file($conf);
+	my $lines = main::read_file_lines($conf);
+	splice(@$lines, 1, 0, '    # pending edit');
+	main::lock_all_config_files();
+	is(main::read_file_lines($conf), $lines,
+		'pre-existing writable cache is retained');
+	main::flush_file_lines($conf);
+	main::unlock_all_config_files();
+	main::unlock_file($conf);
+	open(my $fh, '<', $conf) or die "$conf: $!";
+	my $saved = do { local $/; <$fh> };
+	close($fh) or die "$conf: $!";
+	like($saved, qr/^    # pending edit$/m, 'pending edit is saved');
+};
+
 subtest 'included files are refreshed after waiting for their locks' => sub {
 	my $extra = "$tmp/extra.conf";
+	write_text($conf, "http {\n    include $included;\n}\n");
+	write_text($included, servers());
+	main::flush_config_cache();
+	main::unflush_file_lines($conf);
+	main::unflush_file_lines($included);
 	write_text($extra, "server {\n    server_name gamma.invalid;\n}\n");
 	my $lock = \&main::lock_file;
 	my $changed = 0;
