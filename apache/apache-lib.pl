@@ -779,10 +779,9 @@ foreach my $dir (@$dirs) {
 	$dir->{'line'} = $line;
 	$dir->{'file'} = $file;
 	if ($dir->{'type'}) {
-		# Do sub-members too
-		&recursive_set_lines_files($dir->{'members'}, $line+1, $file);
-		$line += scalar(grep { $_->{'name'} ne 'dummy' }
-				     @{$dir->{'members'}})+1;
+		# Continue after every line used by nested members
+		$line = &recursive_set_lines_files($dir->{'members'},
+						  $line+1, $file);
 		}
 	$dir->{'eline'} = $line;
 	$line++ if ($dir->{'name'} ne 'dummy');

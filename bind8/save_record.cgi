@@ -394,9 +394,14 @@ else {
 		my $dmarc = $r ? &parse_dmarc(@{$r->{'values'}}) : { };
 		$dmarc->{'p'} = $in{'dmarcp'};
 
-		$in{'dmarcpct'} =~ /^\d+$/ && $in{'dmarcpct'} >= 0 &&
-		  $in{'dmarcpct'} <= 100 || &error($text{'edit_edmarcpct'});
-		$dmarc->{'pct'} = $in{'dmarcpct'};
+		if ($in{'dmarcpct'} ne '') {
+			$in{'dmarcpct'} =~ /^\d+$/ && $in{'dmarcpct'} >= 0 &&
+			  $in{'dmarcpct'} <= 100 || &error($text{'edit_edmarcpct'});
+			$dmarc->{'pct'} = $in{'dmarcpct'};
+			}
+		else {
+			delete($dmarc->{'pct'});
+			}
 
 		if ($in{'dmarcsp'}) {
 			$dmarc->{'sp'} = $in{'dmarcsp'};
