@@ -1871,15 +1871,14 @@ return @rv;
 }
 
 # allowed_auth_file(file)
+# Returns 1 if a .htaccess file can be edited by the current user
 sub allowed_auth_file
 {
-local $_;
+my ($file) = @_;
+return 0 if ($file =~ /\.\./);
+my $f = &server_root($file);
 return 1 if ($access{'dir'} eq '/');
-return 0 if ($_[0] =~ /\.\./);
-local $f = &server_root($_[0]);
-return 0 if (-l $f && !&allowed_auth_file(readlink($f)));
-local $l = length($access{'dir'});
-return length($f) >= $l && substr($f, 0, $l) eq $access{'dir'};
+return &is_under_directory($access{'dir'}, $f);
 }
 
 # directory_exists(file)
