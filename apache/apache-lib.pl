@@ -569,7 +569,7 @@ return \@conf;
 # to be updated in the directives array and in the file.
 sub save_directive
 {
-local($i, @old, $lref, $change, $len, $v);
+my ($i, @old, $lref, $change, $len, $v);
 @old = &find_directive_struct($_[0], $_[2]);
 local @files;
 for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
@@ -668,7 +668,7 @@ return @files;
 # Updates, creates or removes only multi-line directive like a <virtualhost>
 sub save_directive_struct
 {
-local ($olddir, $newdir, $pconf, $conf, $first) = @_;
+my ($olddir, $newdir, $pconf, $conf, $first) = @_;
 return if (!$olddir && !$newdir);	# Nothing to do
 local $file = $olddir ? $olddir->{'file'} :
 	      $newdir->{'file'} ? $newdir->{'file'} : $pconf->[0]->{'file'};
@@ -2029,7 +2029,7 @@ foreach $f (keys %before_changing) {
 # (without any translation).
 sub find_httpd_conf
 {
-local $conf = $config{'httpd_conf'};
+my $conf = $config{'httpd_conf'};
 return ( -f &translate_filename($conf) ? $conf : undef, $conf ) if ($conf);
 $conf = "$config{'httpd_dir'}/conf/httpd.conf";
 $conf = "$config{'httpd_dir'}/conf/httpd2.conf"
