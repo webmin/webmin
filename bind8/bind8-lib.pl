@@ -3735,7 +3735,7 @@ while($tries++ < 10) {
 		"cd ".quotemeta($dir)." && ".
 		"$config{'signzone'} -o ".quotemeta($dom).
 		($alg =~ /^(NSEC3|RSASHA256|RSASHA512|ECCGOST|ECDSAP256SHA256|ECDSAP384SHA384|ED25519|ED448)/ ?
-			" -3 - -H -u" : "").
+			" -3 - -H 0 -u" : "").
 		" -f ".quotemeta($signed)." ".
 		quotemeta($chrootfn)." 2>&1");
 	last if (!$?);
