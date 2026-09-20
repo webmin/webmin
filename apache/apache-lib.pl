@@ -189,7 +189,6 @@ while($line = <$fh>) {
 					'file', $_[2],
 					'name', "<IfModule $not$mod>" );
 			$open{'comments'} = [ @comments ] if (@comments);
-			@comments = ( );
 			push(@rv, \%open);
 			push(@rv, @dirs);
 			push(@rv, { 'line', $_[1]-1,
@@ -197,6 +196,8 @@ while($line = <$fh>) {
 				    'file', $_[2],
 				    'name', "</IfModule>" });
 			}
+		# These comments belong to the conditional, even when skipped.
+		@comments = ( );
 		}
 	elsif ($line =~ /^\s*<IfDefine\s+(\!?)(\S+)>/i) {
 		# start of an IfDefine block. Read it, and if the define
@@ -213,7 +214,6 @@ while($line = <$fh>) {
 					'file', $_[2],
 					'name', "<IfDefine $not$def>" );
 			$open{'comments'} = [ @comments ] if (@comments);
-			@comments = ( );
 			push(@rv, \%open);
 			push(@rv, @dirs);
 			push(@rv, { 'line', $_[1]-1,
@@ -221,6 +221,8 @@ while($line = <$fh>) {
 				    'file', $_[2],
 				    'name', "</IfDefine>" });
 			}
+		# These comments belong to the conditional, even when skipped.
+		@comments = ( );
 		}
 	elsif ($line =~ /^\s*<IfVersion\s+(\!?)(\S*)\s*(\S+)>/i) {
 		# Start of an IfVersion block. Read it, and if the version
@@ -264,7 +266,6 @@ while($line = <$fh>) {
 					'file', $_[2],
 					'name', "<IfVersion $not$op $ver>" );
 			$open{'comments'} = [ @comments ] if (@comments);
-			@comments = ( );
 			push(@rv, \%open);
 			push(@rv, @dirs);
 			push(@rv, { 'line', $_[1]-1,
@@ -272,6 +273,8 @@ while($line = <$fh>) {
 				    'file', $_[2],
 				    'name', "</IfVersion>" });
 			}
+		# These comments belong to the conditional, even when skipped.
+		@comments = ( );
 		}
 	elsif ($line =~ /^(\s*)<(\S+)\s*(.*)>/) {
 		# start of a container directive. The first member is a dummy

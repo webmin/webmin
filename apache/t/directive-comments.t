@@ -211,4 +211,34 @@ is($outer->{'eline'}, 27, 'outer block ends after all nested lines');
 is($next_line, 20 + scalar(@nested_lines),
 	'line count matches nested serialized output');
 
+# Comments on skipped conditionals must not move to a later directive.
+my @skipped_conditionals = (
+	[ 'IfModule',
+	  '<IfModule webmin_test_missing_module.c>', '</IfModule>' ],
+	[ 'IfDefine',
+	  '<IfDefine WEBMIN_TEST_MISSING_DEFINE>', '</IfDefine>' ],
+	[ 'IfVersion', '<IfVersion >= 999.0>', '</IfVersion>' ],
+	);
+foreach my $conditional (@skipped_conditionals) {
+	my ($name, $opening, $closing) = @{$conditional};
+	my $conditional_file =
+		File::Spec->catfile($tmp, "skipped-$name.conf");
+	write_text($conditional_file,
+		"# skipped $name comment\n".
+		"$opening\n".
+		"    IgnoredDirective value\n".
+		"$closing\n".
+		"ServerName example.test\n");
+	open($fh, '<', $conditional_file) ||
+		die "Failed to read $conditional_file: $!";
+	$line = 0;
+	my @conditional_config =
+		main::parse_config_file($fh, $line, $conditional_file);
+	close($fh) || die "Failed to close $conditional_file: $!";
+	my ($conditional_servername) =
+		main::find_directive_struct('ServerName', \@conditional_config);
+	ok(!$conditional_servername->{'comments'},
+		"skipped $name comment is not attached to ServerName");
+	}
+
 done_testing();
