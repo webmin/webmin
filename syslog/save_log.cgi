@@ -178,27 +178,22 @@ else {
 
 	# Validate destination section
 	if ($in{'mode'} == 0) {
-		my $newfile = !-e($in{'file'});
-		open(FILE, ">>$in{'file'}") ||
-			&error(&text('save_efile', $in{'file'}, $!));
-		close(FILE);
-		if ($newfile) {
-			my $user = $config{'log_user'} || 'root';
-			my $group = $config{'log_group'};
-			&set_ownership_permissions($user, $group, 0644, $in{'file'});
-			}
+		# Logging to a local file
 		$log->{'file'} = $in{'file'};
 		$log->{'sync'} = $in{'sync'};
 		}
 	elsif ($in{'mode'} == 1 && $config{'pipe'} == 1) {
+		# To a pipe
 		-w $in{'pipe'} || &error(&text('save_epipe', $in{'pipe'}));
 		$log->{'pipe'} = $in{'pipe'};
 		}
 	elsif ($in{'mode'} == 1 && $config{'pipe'} == 2) {
+		# Also to a pipe
 		$in{'pipe'} || &error($text{'save_epipe2'});
 		$log->{'pipe'} = $in{'pipe'};
 		}
 	elsif ($in{'mode'} == 2) {
+		# Logging to a remote host
 		my $host = $in{'host'};
 		$host =~ s/:\d+$//;
 		&to_ipaddress($host) || &to_ip6address($host) ||
@@ -215,6 +210,7 @@ else {
 		$log->{'users'} = \@users;
 		}
 	elsif ($in{'mode'} == 5) {
+		# Logging to a socket file
 		-S $in{'socket'} || &error($text{'save_esocket'});
 		$log->{'socket'} = $in{'socket'};
 		}
@@ -252,6 +248,8 @@ else {
 		}
 	@sel || &error($text{'save_esel'});
 	$log->{'sel'} = \@sel;
+
+	# Create the syslog entry
 	if ($in{'new'}) {
 		&can_edit_log($log) || &error($text{'save_ecannot3'});
 		&lock_file($log->{'cfile'});
@@ -269,6 +267,20 @@ else {
 		&update_log($old, $log);
 		&unlock_file($old->{'cfile'});
 		}
+
+	# Create the empty log file if needed
+	if ($in{'mode'} == 0) {
+		my $newfile = !-e($in{'file'});
+		open(FILE, ">>$in{'file'}") ||
+			&error(&text('save_efile', $in{'file'}, $!));
+		close(FILE);
+		if ($newfile) {
+			my $user = $config{'log_user'} || 'root';
+			my $group = $config{'log_group'};
+			&set_ownership_permissions($user, $group, 0644, $in{'file'});
+			}
+		}
+
 	&redirect("");
 	}
 &log_line($log) =~ /(\S+)$/;
