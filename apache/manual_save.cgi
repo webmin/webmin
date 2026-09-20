@@ -34,6 +34,7 @@ if (defined($in{'virt'})) {
 		}
 	}
 else {
+	&allowed_auth_file($in{'file'}) || &error($text{'htindex_ecannot'});
 	if (defined($in{'idx'})) {
 		# files within .htaccess file
 		$hconf = &get_htaccess_config($in{'file'});
