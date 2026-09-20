@@ -24,6 +24,15 @@ else {
 	"find ".quotemeta($cwd).
 	" $criteria ".
 	quotemeta("*$in{'query'}*")));
+if (&test_allowed_paths()) {
+	foreach my $path (@allowed_paths) {
+		my $slashed = $path;
+		$slashed .= "/" if ($slashed !~ /\/$/);
+		@list = grep { $_ eq $path ||
+			       $_ =~ /^\Q$slashed\E/ } @list;
+		}
+	@list = &unique(@list);
+	}
 @list = map {
 	[$_, stat($_), &clean_mimetype($_), -d $_]
 	} @list;
