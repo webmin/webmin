@@ -60,7 +60,7 @@ if (&supports_users()) {
 # If a chroot is forced which is under the allowed root, there is no need for
 # a restrictred root
 if ($in{'chroot'} && $in{'chroot'} ne '/' && $rootdir && $rootdir ne '/' &&
-    $in{'chroot'} =~ /^\Q$rootdir\E/) {
+    ($in{'chroot'} =~ /^\Q$rootdir\E\// || $in{'chroot'} eq $rootdir)) {
 	$rootdir = undef;
 	}
 
