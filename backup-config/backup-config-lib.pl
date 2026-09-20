@@ -147,81 +147,69 @@ else {
 
 =head2 show_backup_destination(name, value, [local-mode])
 
-Returns HTML for a field for selecting a local or FTP file.
+Returns HTML for selecting a backup destination.
 
 =cut
 sub show_backup_destination
 {
 my ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($_[1]);
-my $rv;
-$rv .= "<table id='show_backup_destination' cellpadding=1 cellspacing=0>";
 
-# Local file field
-$rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 0, undef, $mode == 0)."</td>\n";
-$rv .= "<td>".&ui_tag('strong', $text{'backup_mode0'})."&nbsp;</td><td colspan='3'>".
-	&ui_textbox("$_[0]_file", $mode == 0 ? $path : "", 60, undef, undef,
-	    ($_[2] != 1 && $config{'date_subs'}) ?
-	        'placeholder="/backups/configs-%y-%m-%d-%H-%M-%S.tar.gz"' : undef).
-	" ".&file_chooser_button("$_[0]_file")."</td> </tr>\n";
-
-# FTP file fields
-$rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 1, undef, $mode == 1)."</td>\n";
-$rv .= "<td>".&ui_tag('strong', $text{'backup_mode1'})."&nbsp;</td><td>".
-	&ui_textbox("$_[0]_server", $mode == 1 ? $server : undef, 20).
-	"</td>\n";
-$rv .= "<td>&nbsp;$text{'backup_path'}&nbsp;</td><td> ".
-	&ui_textbox("$_[0]_path", $mode == 1 ? $path : undef, 20).
-	"</td> </tr>\n";
-$rv .= "<tr> <td></td>\n";
-$rv .= "<td>$text{'backup_login'}&nbsp;</td><td> ".
-	&ui_textbox("$_[0]_user", $mode == 1 ? $user : undef, 20).
-	"</td>\n";
-$rv .= "<td>&nbsp;$text{'backup_pass'}&nbsp;</td><td> ".
-	&ui_password("$_[0]_pass", $mode == 1 ? $pass : undef, 20).
-	"</td> </tr>\n";
-$rv .= "<tr> <td></td>\n";
-$rv .= "<td colspan='4'>$text{'backup_port'} ".
-	&ui_opt_textbox("$_[0]_port", $mode == 1 ? $port : undef, 5,
-			$text{'default'})."</td> </tr>\n";
-
-# SCP file fields
-$rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 2, undef, $mode == 2)."</td>\n";
-$rv .= "<td>".&ui_tag('strong', $text{'backup_mode2'})."&nbsp;</td><td>".
-	&ui_textbox("$_[0]_sserver", $mode == 2 ? $server : undef, 20).
-	"</td>\n";
-$rv .= "<td>&nbsp;$text{'backup_path'}&nbsp;</td><td> ".
-	&ui_textbox("$_[0]_spath", $mode == 2 ? $path : undef, 20).
-	"</td> </tr>\n";
-$rv .= "<tr> <td></td>\n";
-$rv .= "<td>$text{'backup_login'}&nbsp;</td><td> ".
-	&ui_textbox("$_[0]_suser", $mode == 2 ? $user : undef, 20).
-	"</td>\n";
-$rv .= "<td>&nbsp;$text{'backup_pass'}&nbsp;</td><td> ".
-	&ui_password("$_[0]_spass", $mode == 2 ? $pass : undef, 20).
-	"</td> </tr>\n";
-$rv .= "<tr> <td></td>\n";
-$rv .= "<td colspan='4'>$text{'backup_port'} ".
-	&ui_opt_textbox("$_[0]_sport", $mode == 2 ? $port : undef, 5,
-			$text{'default'})."</td> </tr>\n";
+# Keep the existing input names while showing only the selected fields
+my @options = (
+	# Local file path and chooser
+	{ 'value' => 0, 'label' => $text{'backup_mode0'},
+	  'content' =>
+		&ui_textbox("$_[0]_file", $mode == 0 ? $path : "", 60,
+			    undef, undef,
+			    ($_[2] != 1 && $config{'date_subs'}) ?
+			      'placeholder="/backups/configs-%y-%m-%d-%H-%M-%S.tar.gz"' :
+			      undef).
+		" ".&file_chooser_button("$_[0]_file") },
+	# FTP connection and remote path
+	{ 'value' => 1, 'label' => $text{'backup_mode1'},
+	  'content' => &ui_textbox("$_[0]_server",
+				  $mode == 1 ? $server : undef, 20),
+	  'fields' => [
+		[ $text{'backup_path'}, &ui_textbox("$_[0]_path",
+					     $mode == 1 ? $path : undef, 20) ],
+		[ $text{'backup_login'}, &ui_textbox("$_[0]_user",
+					      $mode == 1 ? $user : undef, 20) ],
+		[ $text{'backup_pass'}, &ui_password("$_[0]_pass",
+					      $mode == 1 ? $pass : undef, 20, 0,
+					      undef, 'data-password-meter-skip') ],
+		[ $text{'backup_port'}, &ui_opt_textbox("$_[0]_port",
+					      $mode == 1 ? $port : undef, 5,
+					      $text{'default'}) ],
+		] },
+	# SSH connection and remote path
+	{ 'value' => 2, 'label' => $text{'backup_mode2'},
+	  'content' => &ui_textbox("$_[0]_sserver",
+				  $mode == 2 ? $server : undef, 20),
+	  'fields' => [
+		[ $text{'backup_path'}, &ui_textbox("$_[0]_spath",
+					     $mode == 2 ? $path : undef, 20) ],
+		[ $text{'backup_login'}, &ui_textbox("$_[0]_suser",
+					      $mode == 2 ? $user : undef, 20) ],
+		[ $text{'backup_pass'}, &ui_password("$_[0]_spass",
+					      $mode == 2 ? $pass : undef, 20, 0,
+					      undef, 'data-password-meter-skip') ],
+		[ $text{'backup_port'}, &ui_opt_textbox("$_[0]_sport",
+					      $mode == 2 ? $port : undef, 5,
+					      $text{'default'}) ],
+		] },
+	);
 
 if ($_[2] == 1) {
 	# Uploaded file field
-	$rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 3, undef, $mode == 3).
-		"</td>\n";
-	$rv .= "<td colspan=4>".&ui_tag('strong', $text{'backup_mode3'})." ".
-		&ui_upload("$_[0]_upload", 40).
-		"</td> </tr>\n";
+	push(@options, { 'value' => 3, 'label' => $text{'backup_mode3'},
+			 'content' => &ui_upload("$_[0]_upload", 40) });
 	}
 elsif ($_[2] == 2) {
 	# Output to browser option
-	$rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 4, undef, $mode == 4).
-		"</td>\n";
-	$rv .= "<td colspan=4>".&ui_tag('strong', $text{'backup_mode4'}).
-		"</td> </tr>\n";
+	push(@options, { 'value' => 4, 'label' => $text{'backup_mode4'} });
 	}
 
-$rv .= "</table>\n";
-return $rv;
+return &ui_select_switch("$_[0]_mode", $mode, \@options);
 }
 
 =head2 parse_backup_destination(name, &in)
