@@ -25,13 +25,14 @@ else {
 	" $criteria ".
 	quotemeta("*$in{'query'}*")));
 if (&test_allowed_paths()) {
+	my @alist;
 	foreach my $path (@allowed_paths) {
 		my $slashed = $path;
 		$slashed .= "/" if ($slashed !~ /\/$/);
-		@list = grep { $_ eq $path ||
-			       $_ =~ /^\Q$slashed\E/ } @list;
+		@alist = grep { $_ eq $path ||
+			        $_ =~ /^\Q$slashed\E/ } @list;
 		}
-	@list = &unique(@list);
+	@list = &unique(@alist);
 	}
 @list = map {
 	[$_, stat($_), &clean_mimetype($_), -d $_]
