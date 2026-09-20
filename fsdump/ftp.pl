@@ -49,10 +49,6 @@ while(1) {
 		$ssl_enabled = 0;
 		if (&ftp_command("AUTH TLS", 2, \$err)) {
 			&start_tls(\*SOCK, "control");
-			&ftp_command("PBSZ 0", 2, \$err) ||
-				&error_exit("FTP TLS setup failed : $err");
-			&ftp_command("PROT P", 2, \$err) ||
-				&error_exit("FTP TLS setup failed : $err");
 			$ssl_enabled = 1;
 			}
 
@@ -62,6 +58,13 @@ while(1) {
 		if (int($urv[1]/100) == 3) {
 			&ftp_command("PASS $pass", 2, \$err) ||
 				&error_exit("FTP login failed : $err");
+			}
+		if ($ssl_enabled) {
+			# Some servers accept data-channel protection only after login
+			&ftp_command("PBSZ 0", 2, \$err) ||
+				&error_exit("FTP TLS setup failed : $err");
+			&ftp_command("PROT P", 2, \$err) ||
+				&error_exit("FTP TLS setup failed : $err");
 			}
 		&ftp_command("TYPE I", 2, \$err) ||
 			&error_exit("FTP file type failed : $err");
