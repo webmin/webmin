@@ -20,6 +20,20 @@
 * Fix ACL operations bypassing configured allowed paths in File Manager
 * Fix arbitrary file reads in Software Packages module
 * Fix TLS client certificate verification
+* Update the Authentic theme to the latest version with various improvements:
+  - Add support for HTML signatures in Usermin
+  - Fix light palette layout gaps to be slightly tighter to match dark palette better
+  - Fix data tables and their filter to be restored fully functional on history back navigation
+  - Fix history back navigation after a full page reload
+  - Fix disabled checked checkboxes showing a cross instead of a checkmark
+  - Fix theme authorization to use explicit Webmin module ACLs for privileged actions
+  - Fix Cloudmin shell history file path validation
+  - Fix module name validation in configuration pages
+  - Fix ACL operations bypassing configured allowed paths in File Manager
+  - Fix mail server credentials being exposed in Usermin responses
+  - Drop server-side Perl customizations
+  - Drop the built-in theme updater
+  - Drop dashboard-managed CSF update checks
 
 #### 2.660 (August 20, 2026)
 * Add support for creating `vfsv1` Linux quota files for limits above 4 TiB, while preserving existing quota file formats
