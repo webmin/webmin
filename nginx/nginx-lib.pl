@@ -581,7 +581,7 @@ $lock_all_config_files_depth = 1;
 }
 
 # unlock_all_config_files()
-# Un-locks all files used in the current config
+# Un-locks all files used in the current config.
 sub unlock_all_config_files
 {
 return if (!$lock_all_config_files_depth);
