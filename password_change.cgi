@@ -58,6 +58,7 @@ elsif ($gconfig{'passwd_cmd'}) {
 	$passwd_cmd .= " ".quotemeta($in{'user'});
 	($fh, $fpid) = &proc::pty_process_exec($passwd_cmd, 0, 0);
 	&reset_environment();
+	my $sent_old = 0;
 	while(1) {
 		local $rv = &wait_for($fh,
 			   '(new|re-enter).*:',
@@ -70,11 +71,13 @@ elsif ($gconfig{'passwd_cmd'}) {
 		sleep(1);
 		if ($rv == 0) {
 			# Prompt for the new password
+			$sent_old || &error($text{'password_enotold'});
 			syswrite($fh, $in{'new1'}."\n", length($in{'new1'})+1);
 			}
 		elsif ($rv == 1) {
 			# Prompt for the old password
 			syswrite($fh, $in{'old'}."\n", length($in{'old'})+1);
+			$sent_old = 1;
 			}
 		elsif ($rv == 2) {
 			# Request for a menu option (SCO?)
