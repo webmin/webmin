@@ -4,7 +4,7 @@ A read-only Webmin module that shows the widgets added at the end of
 `ui-lib.pl` next to the existing tabs, forms, buttons and tables they are
 meant to be combined with. It is a reference for writing new modules and
 is not part of the Webmin distribution. Dropping this directory into the
-Webmin root is enough to make it appear under the *Others* category.
+Webmin root is enough to make it appear under the *Tools* category.
 
 ## What it shows
 
