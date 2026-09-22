@@ -513,6 +513,17 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	border-color: var(--ui-neutral-line);
 	color: var(--ui-neutral-text);
 }
+/* A smaller badge, so it does not outweigh the text next to it. The
+ * icon scales with the text rather than staying at full size */
+.ui_badge_small {
+	padding: 0 8px;
+	font-size: 0.8em;
+	line-height: 1.25;
+}
+.ui_badge_small .ui_svg_icon { width: 1em; height: 1em; }
+/* Rounded ends, only when a caller asks for them. Widgets are drawn
+ * square, apart from the toggle and the badge dot, which are round */
+.ui_badge_rounded { border-radius: 999px; }
 .ui_chip {
 	display: inline-flex;
 	align-items: center;
@@ -564,16 +575,17 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	padding-top: 1px;
 }
 .ui_list_meta { color: var(--ui-fg-muted); font-size: 0.9em; }
-/* Badges in list rows are chip-sized, so they do not outweigh the text */
+/* Badges in list rows are small, so they do not outweigh the text */
 .ui_list_item .ui_badge {
-	padding: 1px 8px;
+	padding: 0 8px;
 	gap: 4px;
-	font-size: 0.86em;
+	font-size: 0.81em;
 }
 .ui_list_item .ui_badge .ui_svg_icon { width: 1em; height: 1em; }
 /* Description text is 0.93em, so badges and chips inside it are scaled
  * back by that much to match the ones next to the title */
-.ui_list_desc :is(.ui_badge, .ui_chip) { font-size: calc(0.86em / 0.93); }
+.ui_list_desc .ui_badge { font-size: calc(0.81em / 0.93); }
+.ui_list_desc .ui_chip { font-size: calc(0.86em / 0.93); }
 .ui_list_icon { padding-top: 2px; color: var(--ui-fg-muted); }
 a.ui_list_link, a.ui_list_link:hover {
 	color: inherit !important;

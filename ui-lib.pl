@@ -3756,8 +3756,10 @@ return &theme_ui_note(@_) if (defined(&theme_ui_note));
 my ($text, $whitespace) = @_;
 $whitespace //= 2;
 my $whitespace_str = "&nbsp;" x $whitespace;
+# Written as an entity, not a literal character, so the icon survives
+# whether the page is handled as bytes or as decoded text
 return "<font class='ui_note' style='font-size:92%;opacity:0.66'>".
-	"${whitespace_str}ⓘ&nbsp;&nbsp;$text".
+	"${whitespace_str}&#9432;&nbsp;&nbsp;$text".
 	"</font>";
 }
 
@@ -4955,6 +4957,12 @@ default icon. Set to an empty string for no icon at all.
 
 =item title - Tooltip text for the badge.
 
+=item small - Set to 1 for a smaller badge, so it does not outweigh the text next to it. List rows already draw their badges small.
+
+=item rounded - Set to 1 for rounded ends, instead of the square corners badges use by default.
+
+=item class - Extra CSS class names for the badge.
+
 =cut
 sub ui_badge
 {
@@ -4974,7 +4982,10 @@ elsif ($ui_state_icons{$state}) {
 	$icon = &ui_svg_icon($ui_state_icons{$state}, { 'size' => 13 });
 	}
 return &ui_tag('span', $icon.&ui_tag('span', &html_escape($label)),
-	&_ui_attrs({ 'class' => "ui_badge ui_badge_$state",
+	&_ui_attrs({ 'class' => &_ui_class('ui_badge', 'ui_badge_'.$state,
+			$opts->{'small'} ? 'ui_badge_small' : undef,
+			$opts->{'rounded'} ? 'ui_badge_rounded' : undef,
+			$opts->{'class'}),
 		     'title' => $opts->{'title'} }));
 }
 

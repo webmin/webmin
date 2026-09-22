@@ -60,6 +60,24 @@ sub decode_attr {
 
 my $xss = q{x"><script>alert(1)</script><b onmouseover="alert(1)};
 
+# A decoded value elsewhere on the page must not double-encode the note icon.
+{
+	my $decoded = 'efi';
+	utf8::upgrade($decoded);
+	foreach my $prefix ('efi', $decoded) {
+		my $html = $prefix.main::ui_note('Note', 0);
+		# Model the UTF-8 response bytes and the browser's decoding step.
+		utf8::encode($html) if (utf8::is_utf8($html));
+		utf8::decode($html);
+		like($html, qr/(?:\x{24d8}|&#9432;|&#x24d8;)/i,
+			'ui_note icon survives byte and decoded page strings');
+		}
+	my $html = main::ui_note("Note \x{20ac}", 0);
+	like($html, qr/(?:\x{24d8}|&#9432;|&#x24d8;)/i,
+		'ui_note icon survives decoded note text');
+	like($html, qr/Note \x{20ac}/, 'ui_note preserves decoded note text');
+}
+
 # ---- escaping contract -----------------------------------------------------
 
 assert_no_handler_injection(
@@ -71,6 +89,9 @@ assert_no_handler_injection(
 	'ui_card title+desc');
 assert_no_handler_injection(main::ui_badge($xss, 'success'),
 	'ui_badge text');
+assert_no_handler_injection(
+	main::ui_badge('B', 'success', { 'class' => $xss, 'title' => $xss }),
+	'ui_badge class+title');
 assert_no_handler_injection(main::ui_chip($xss), 'ui_chip text');
 assert_no_handler_injection(main::ui_code($xss), 'ui_code');
 assert_no_handler_injection(main::ui_tip('<b>x</b>', $xss), 'ui_tip');
@@ -118,6 +139,19 @@ like(main::ui_badge('down', 'err'), qr/ui_badge_danger/,
 	'state alias err maps to danger');
 like(main::ui_badge('what', 'bogus<'), qr/ui_badge_neutral/,
 	'unknown state falls back to neutral');
+
+# Badges take a smaller size, rounded ends and extra class names
+{
+	my $plain = main::ui_badge('B', 'info');
+	unlike($plain, qr/ui_badge_small|ui_badge_rounded/,
+		'a badge is full-sized and square by default');
+	my $html = main::ui_badge('B', 'info',
+		{ 'small' => 1, 'rounded' => 1, 'class' => 'mine' });
+	like($html, qr/\bui_badge_small\b/, 'small option adds its class');
+	like($html, qr/\bui_badge_rounded\b/, 'rounded option adds its class');
+	like($html, qr/\bui_badge_info\b/, 'and the state class stays');
+	like($html, qr/\bmine\b/, 'extra class names are passed through');
+}
 
 # The scheme option stamps the wrapper for the dark or auto palette
 like(main::ui_page_start({ 'scheme' => 'auto' }),
