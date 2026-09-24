@@ -4338,6 +4338,8 @@ my %ui_svg_icons = (
 	'stop'           => 'M4.7 4.7h6.6v6.6H4.7z',
 	'power'          => 'M8 2.2v5.6|M11.4 4.4a5.4 5.4 0 1 1-6.8 0',
 	'clock'          => 'M8 14.25A6.25 6.25 0 1 0 8 1.75a6.25 6.25 0 0 0 0 12.5z|M8 4.8V8l2.2 1.4',
+	'star'           => 'M8 1.5l2 4.1 4.5.7-3.25 3.2.75 4.5L8 11.9l-4 2.1.75-4.5L1.5 6.3 6 5.6z',
+	'hard-drive'     => 'M3 2.5h10l1.5 7v4H1.5v-4z|M1.5 9.5h13|M4 11.5h.01|M7 11.5h.01',
 	'shield'         => 'M8 1.8l5.2 2v4c0 3.2-2.2 5.3-5.2 6.4C4.8 13.1 2.8 11 2.8 7.8v-4z',
 	'server'         => 'M2 3.2h12v4.2H2z|M2 8.6h12v4.2H2z|M4.6 5.3h.01|M4.6 10.7h.01',
 	'gear'           => 'M8 10.4a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8z|M8 1.8v2|M8 12.2v2|M1.8 8h2|M12.2 8h2|M3.6 3.6L5 5|M11 11l1.4 1.4|M12.4 3.6L11 5|M5 11l-1.4 1.4',
@@ -5751,9 +5753,17 @@ Size, add-if-missing, titles and width are ignored.
 
 =item options - Array reference of [ value, label, attributes ] entries or hashes with keys value, label, suffix (muted text after the label), level (indentation depth), tag (chip at the right), disabled and attrs. Attributes may be a hash or trusted HTML attribute string, as in ui_select. disabled applies to the checkbox; other attributes, such as title, style and class, apply to the row. Widget identity and selection remain controlled by the library.
 
+=item badges - An option hash may also contain a badges array. Each entry holds ui_badge arguments: [ label, state, options ]. Badges appear separately at the right, beside any tag. Their labels are escaped and included in filtering.
+
+=item metadata - An option hash may contain an array of hashes with label, icon, title and state. These appear together in one compact badge at the right. Labels and tooltip titles are plain text and included in filtering. Unknown metadata should be omitted.
+
+=item group - An option hash may contain a hash with label, icon and state. Consecutive options with the same group share a heading. Group labels are plain text and included in filtering. Empty groups disappear when filtering; headings do not affect selection or submission order.
+
 =item opts - Optional hash reference with the keys :
 
-=item search - Show or hide the filter button; defaults to on above eight entries. The input opens to its left in reserved space. Selection links appear above eight entries, affect visible, enabled entries and are omitted when disabled.
+=item search - Show or hide the filter button; defaults to on above eight entries. The input opens to its left in reserved space.
+
+=item bulk - Set to 0 to omit Select all and Invert selection. By default, these links appear above eight entries, affect visible, enabled entries and are omitted when disabled.
 
 =item count - Show the selection count; defaults to on. Set to 0 to omit it.
 
@@ -5764,6 +5774,10 @@ Size, add-if-missing, titles and width are ignored.
 =item empty_label - Plain text shown when there are no entries, defaulting to "No entries".
 
 =item height - Height beyond which the list scrolls : a CSS length, 170px by default.
+
+=item compact - Opt into tighter rows and a highlight for selected entries. Other callers keep their existing layout.
+
+=item summary - Optional plain text displayed at the start of the toolbar. summary_icon adds an icon before it.
 
 =item modes - Hash with name, value and options as for ui_select. The hide array lists modes that hide the list, such as "all servers". Set radios to 1 to use radio buttons.
 
@@ -5923,7 +5937,14 @@ if ($hasmodes) {
 
 # Larger lists get themed selection links, with actions scoped to this list.
 my $tools = "";
-if (!$dis && @items > 8) {
+if (defined($opts->{'summary'}) && $opts->{'summary'} ne '') {
+	# Shared context belongs in the toolbar instead of every option.
+	$tools .= &ui_tag('span',
+		($opts->{'summary_icon'} ? &ui_svg_icon($opts->{'summary_icon'},
+			{ 'size' => 14 }) : '').&html_escape($opts->{'summary'}),
+		{ 'class' => 'ui_multi_summary' });
+	}
+if (!$dis && @items > 8 && (!defined($opts->{'bulk'}) || $opts->{'bulk'})) {
 	my $links = &ui_links_row([
 		&ui_tag('a', &html_escape($text{'ui_selall'}),
 			{ 'href' => '#', 'class' => 'select_all',
@@ -5970,7 +5991,24 @@ my $body = $tools ? &ui_tag('div', $tools, { 'class' => 'ui_multi_tools' }) : ''
 
 # Render themed checkboxes with optional suffixes, child counts and tags.
 my $rows = "";
+my ($lastgroup, $groupnum) = ('', 0);
 foreach my $it (@items) {
+	# Group headings never become selectable items or change option order.
+	my $group = ref($it->{'group'}) eq 'HASH' ? $it->{'group'} : {};
+	my $group_label = defined($group->{'label'}) ? $group->{'label'} : '';
+	my $group_key = $group_label eq '' ? '' :
+		join("\0", $group_label, $group->{'state'} || '', $group->{'icon'} || '');
+	if ($group_key ne '' && $group_key ne $lastgroup) {
+		$groupnum++;
+		$rows .= &ui_tag('div',
+			&ui_svg_icon($group->{'icon'} || 'dot', { 'size' => 14 }).
+			&ui_tag('span', &html_escape($group_label)),
+			{ 'class' => 'ui_multi_group ui_multi_group_' .
+				&_ui_state($group->{'state'}),
+			  'role' => 'heading', 'aria-level' => 3,
+			  'data-ui-multi-heading' => $groupnum });
+		}
+	$lastgroup = $group_key;
 	my $val = $it->{'value'};
 	my $label = $opts->{'html'} ? $it->{'label'} :
 		&html_escape($it->{'label'}, $legacy);
@@ -5993,9 +6031,32 @@ foreach my $it (@items) {
 		$row .= &ui_tag('span',
 			&html_escape(&text($note, $it->{'kids'})), $nattrs);
 		}
-	$row .= &ui_tag('span', &ui_chip($it->{'tag'}),
-			{ 'class' => 'ui_multi_side' })
-		if (defined($it->{'tag'}) && $it->{'tag'} ne '');
+	# Keep plain tags compatible while allowing separate state badges.
+	my @badges = ref($it->{'badges'}) eq 'ARRAY' ?
+		grep { ref($_) eq 'ARRAY' && defined($_->[0]) } @{$it->{'badges'}} : ();
+	my $side = defined($it->{'tag'}) && $it->{'tag'} ne '' ?
+		&ui_chip($it->{'tag'}) : '';
+	$side .= join('', map { &ui_badge(@$_) } @badges);
+	# Several facts share one badge, with plain labels and accessible tooltips.
+	my @metadata = ref($it->{'metadata'}) eq 'ARRAY' ?
+		grep { ref($_) eq 'HASH' && defined($_->{'label'}) &&
+			$_->{'label'} ne '' } @{$it->{'metadata'}} : ();
+	if (@metadata) {
+		my $parts = join('', map {
+			&ui_tag('span',
+				($_->{'icon'} ? &ui_svg_icon($_->{'icon'}, { 'size' => 13 }) : '').
+				&ui_tag('span', &html_escape($_->{'label'})),
+				&_ui_attrs({ 'class' => 'ui_multi_meta ui_multi_meta_' .
+					&_ui_state($_->{'state'}),
+					'title' => &html_escape($_->{'title'}) }))
+			} @metadata);
+		$side .= &ui_tag('span', $parts,
+			{ 'class' => 'ui_badge ui_badge_neutral ui_badge_small '.
+				'ui_badge_rounded ui_multi_metadata' });
+		}
+	$row .= &ui_tag('span', $side,
+		{ 'class' => &_ui_class('ui_multi_side', @badges ? 'ui_multi_badges' : undef) })
+		if (length($side));
 	# Lowercase in the browser, after UTF-8 bytes have been decoded.
 	my $attrs = { %{$it->{'attrs'}}, %{&_ui_attrs({
 		'class' => &_ui_class('ui_multi_item',
@@ -6005,10 +6066,15 @@ foreach my $it (@items) {
 			$it->{'disabled'} ? 'ui_multi_disabled' : undef),
 		'data-ui-multi-level' => $it->{'level'} ? int($it->{'level'})
 						       : undef,
+		'data-ui-multi-group' => $group_key ne '' ? $groupnum : undef,
 		'data-ui-multi-text' => join(" ",
 			grep { defined($_) && $_ ne '' }
 			     $filter_label.&html_escape($it->{'suffix'}, $legacy),
-			     &html_escape($it->{'tag'}, $legacy)) }) } };
+			     &html_escape($it->{'tag'}, $legacy),
+			     &html_escape($group_label),
+			     (map { &html_escape($_->[0]) } @badges),
+			     (map { &html_escape($_->{'label'}).' '.
+				&html_escape($_->{'title'}) } @metadata)) }) } };
 	$attrs->{'hidden'} = undef if ($folded && $it->{'level'});
 	$rows .= &ui_tag('div', $row, $attrs);
 	}
@@ -6044,6 +6110,7 @@ $battrs->{'hidden'} = undef if ($hidden);
 $rv .= &_ui_block('div', $body, $battrs);
 my $attrs = &_ui_attrs({
 	'class' => &_ui_class('ui_multi', $opts->{'class'},
+			      $opts->{'compact'} ? 'ui_multi_compact' : undef,
 			      $dis ? 'ui_multi_disabled' : undef),
 	'id' => defined($opts->{'id'}) ? $opts->{'id'} : 'ui_multi_'.$name,
 	'style' => $opts->{'height'} ?

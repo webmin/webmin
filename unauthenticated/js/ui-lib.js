@@ -140,6 +140,7 @@
 		var fold = box.querySelector('[data-ui-multi-action="children"]');
 		var folded = !!(fold && fold.checked);
 		var matched = 0;
+		var shownGroups = new Set();
 		var chosen = [];
 		var selectedCount = 0;
 		box.querySelectorAll('.ui_multi_item').forEach(function (item) {
@@ -157,8 +158,15 @@
 			if (input && input.checked) selectedCount++;
 			var match = query === '' ||
 				(item.getAttribute('data-ui-multi-text') || '').toLowerCase().indexOf(query) >= 0;
-			if (match) matched++;
+			if (match) {
+				matched++;
+				shownGroups.add(item.getAttribute('data-ui-multi-group'));
+			}
 			item.hidden = !match;
+		});
+		// Hide headings whose entries are all filtered or folded.
+		box.querySelectorAll('[data-ui-multi-heading]').forEach(function (heading) {
+			heading.hidden = !shownGroups.has(heading.getAttribute('data-ui-multi-heading'));
 		});
 		var empty = box.querySelector('.ui_multi_empty');
 		if (empty) empty.hidden = matched > 0;

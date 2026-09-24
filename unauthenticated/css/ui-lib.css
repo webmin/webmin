@@ -1175,8 +1175,6 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	font-style: normal;
 }
 .ui_multi_item:hover { background: var(--ui-surface-2); }
-.ui_multi_level1 { padding-left: 27px; }
-.ui_multi_level2 { padding-left: 47px; }
 .ui_multi_suffix { color: var(--ui-fg-muted); }
 .ui_multi_note {
 	margin-left: 6px;
@@ -1185,6 +1183,111 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	white-space: nowrap;
 }
 .ui_multi_side { margin-left: auto; padding-left: 8px; flex-shrink: 0; }
+/* Metadata stays secondary to the label, with room between rows and badges. */
+.ui_multi_item:has(> .ui_multi_badges) { padding: 7px 10px; }
+.ui_multi_badges {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 6px 8px;
+	flex-shrink: 1;
+	padding-left: 16px;
+}
+.ui_multi_badges .ui_badge {
+	padding: 3px 10px;
+	font-weight: 400;
+	line-height: 1.4;
+	border-color: color-mix(in srgb, currentColor 16%, transparent);
+}
+.ui_multi_badges .ui_badge_neutral {
+	background: color-mix(in srgb, var(--ui-neutral-soft) 35%, transparent);
+	color: var(--ui-fg-muted);
+}
+.ui_multi_badges .ui_badge_success {
+	background: color-mix(in srgb, var(--ui-success-soft) 45%, transparent);
+}
+.ui_multi_badges .ui_badge_warning {
+	background: color-mix(in srgb, var(--ui-warning-soft) 45%, transparent);
+}
+.ui_multi_badges .ui_badge_info {
+	background: color-mix(in srgb, var(--ui-info-soft) 45%, transparent);
+}
+/* Grouping and combined metadata are opt-in; ordinary selectors keep their layout. */
+.ui_multi_summary {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	flex: 1 1 auto;
+	padding-right: 12px;
+	color: var(--ui-fg-muted);
+}
+.ui_multi_group {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 6px;
+	border-top: 1px solid var(--ui-border);
+	color: var(--ui-fg-muted);
+	font-size: 0.93em;
+	font-weight: 600;
+}
+.ui_multi_group:first-child { border-top: 0; }
+.ui_multi_group_success > .ui_svg_icon { color: var(--ui-success); }
+.ui_multi_group_warning > .ui_svg_icon { color: var(--ui-warning); }
+.ui_multi_group_danger > .ui_svg_icon { color: var(--ui-danger); }
+.ui_multi_group_info > .ui_svg_icon { color: var(--ui-info); }
+.ui_multi_metadata.ui_badge {
+	gap: 8px;
+	padding: 1px 6px;
+	font-weight: 400;
+	line-height: 1.35;
+	color: var(--ui-fg-muted);
+	background: color-mix(in srgb, var(--ui-neutral-soft) 25%, transparent);
+	border-color: color-mix(in srgb, currentColor 15%, transparent);
+}
+.ui_multi_meta {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	--ui-meta-color: var(--ui-fg-muted);
+	color: var(--ui-meta-color);
+}
+/* Theme table rules may override SVG color, so paint icons explicitly. */
+.ui_multi_meta > .ui_svg_icon { stroke: var(--ui-meta-color); }
+.ui_multi_meta > .ui_svg_icon[fill="currentColor"] { fill: var(--ui-meta-color); }
+/* Mixed metadata keeps each fact's color; the strongest state colors its border. */
+.ui_multi_meta_info, .ui_multi_metadata:has(> .ui_multi_meta_info) {
+	--ui-meta-color: var(--ui-info-text);
+	color: var(--ui-meta-color);
+}
+.ui_multi_meta_success, .ui_multi_metadata:has(> .ui_multi_meta_success) {
+	--ui-meta-color: var(--ui-success-text);
+	color: var(--ui-meta-color);
+}
+.ui_multi_meta_warning, .ui_multi_metadata:has(> .ui_multi_meta_warning) {
+	--ui-meta-color: var(--ui-warning-text);
+	color: var(--ui-meta-color);
+}
+.ui_multi_meta_danger, .ui_multi_metadata:has(> .ui_multi_meta_danger) {
+	--ui-meta-color: var(--ui-danger-text);
+	color: var(--ui-meta-color);
+}
+.ui_multi_metadata:has(> .ui_multi_meta:not(.ui_multi_meta_neutral)) {
+	border-color: color-mix(in srgb, currentColor 40%, transparent);
+}
+.ui_multi_compact .ui_multi_item { padding: 2px 6px; min-height: 24px; }
+.ui_multi_compact .ui_multi_item:has(input:checked) {
+	background: color-mix(in srgb, var(--ui-accent) 10%, var(--ui-surface));
+}
+@media (max-width: 600px) {
+	.ui_multi_compact .ui_multi_item { flex-wrap: wrap; }
+	.ui_multi_compact .ui_multi_side { max-width: 100%; }
+	.ui_multi_compact .ui_multi_metadata { flex-wrap: wrap; justify-content: flex-end; }
+}
+/* Preserve child indentation when compact or badge styles set row padding. */
+.ui_multi_item.ui_multi_level1 { padding-left: 27px; }
+.ui_multi_item.ui_multi_level2 { padding-left: 47px; }
 .ui_multi_disabled { opacity: 0.6; }
 .ui_multi_empty {
 	padding: 1px 2px 2px 2px;

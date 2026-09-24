@@ -46,6 +46,12 @@ entry and Shift-click another to select or clear the range between them.
 Checkboxes, labels and row backgrounds work alike; filtered, folded and
 disabled entries are skipped.
 
+The "Image metadata" example opts into `compact` rows, a toolbar `summary`,
+and `group` headings. Each option's `metadata` array combines icon, label,
+state and tooltip fields in one small rounded badge. Labels and tooltips are
+escaped and searchable; filtering hides empty group headings. Existing callers
+keep their layout, tags, separate badges and selection behavior.
+
 The server example starts with a parent and two children selected. Turning
 on "Include sub-servers" folds the children and changes the count from
 three to one. Expanding restores the count to three; the child selections

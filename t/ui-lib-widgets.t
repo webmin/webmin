@@ -417,6 +417,75 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 	is($second, '', 'second assets call emits nothing');
 }
 
+# Separate multi-select badges retain plain-text escaping and filter metadata.
+{
+	my $html = main::ui_multi_select_list('images', [ 'linux' ], [
+		{ value => 'linux', label => '<b>Linux</b>', tag => 'QCOW2', badges => [
+			[ 'ARM64', 'neutral', { small => 1, rounded => 1 } ],
+			[ $xss, 'warning', { small => 1, rounded => 1 } ] ] },
+	], { html => 1 });
+	my @badges = $html =~ /class="[^"\n]*\bui_badge\b[^"\n]*"/g;
+	is(scalar(@badges), 2, 'each metadata badge is a separate element');
+	ok(!grep(!/ui_badge_small.*ui_badge_rounded/, @badges),
+		'badge rendering retains size and shape options');
+	like($html, qr/ui_chip">QCOW2</, 'plain tags still work beside badges');
+	my ($filter) = $html =~ /data-ui-multi-text="([^"]*)"/;
+	is(decode_attr($filter), 'Linux QCOW2 ARM64 '.$xss,
+		'filtering includes every badge label as plain text');
+	like($html, qr/value="linux"[^>]*checked/, 'badges do not alter selection');
+	assert_no_handler_injection($html, 'multi-select badges with HTML labels');
+}
+
+# Grouped metadata stays plain text and preserves values and legacy defaults.
+{
+	my $group = { label => $xss, state => 'success', icon => 'star' };
+	my @options = (
+		{ value => 'a', label => 'First', group => $group, metadata => [
+			{ label => '10 GiB', icon => 'hard-drive', title => $xss },
+			{ label => $xss, icon => 'clock', state => 'warning' } ] },
+		{ value => 'b', label => 'Second', group => $group },
+		{ value => 'c', label => 'Third', group => { label => 'Older', state => 'warning' } },
+	);
+	my $html = main::ui_multi_select_list('grouped', [ 'b', 'a' ], \@options,
+		{ compact => 1, search => 1, summary => $xss, summary_icon => 'download' });
+	is(scalar(() = $html =~ /data-ui-multi-heading=/g), 2, 'consecutive options share a heading');
+	is(scalar(() = $html =~ /class="[^"]*\bui_multi_metadata\b/g), 1, 'metadata facts share one badge');
+	is(scalar(() = $html =~ /class="[^"]*\bui_multi_item\b/g), 3, 'headings are not selectable options');
+	like($html, qr/ui_multi_compact/, 'compact layout is explicitly enabled');
+	like($html, qr/name="grouped"[^>]*value="a\nb"/, 'grouping retains normal submission order');
+	my ($filter) = $html =~ /data-ui-multi-text="([^"]*)"/;
+	like(decode_attr($filter), qr/First.*\Q$xss\E.*10 GiB.*\Q$xss\E/s,
+		'group names and metadata tooltips are searchable');
+	assert_no_handler_injection($html, 'group names, summary and metadata');
+	ok(!exists($options[0]->{'attrs'}), 'group rendering does not mutate input options');
+	my $plain = main::ui_multi_select_list('plain', [], [ [ 'a', 'First' ] ], {});
+	unlike($plain, qr/ui_multi_compact|data-ui-multi-group|data-ui-multi-heading|ui_multi_metadata/,
+		'existing callers opt into none of the new layout');
+}
+
+# Metadata tooltips treat entity names as literal text, like their filter text.
+{
+	my $title = 'Literal &amp; <tip> "quoted"';
+	my $html = main::ui_multi_select_list('literal_metadata', [],
+		[{ value => 'a', label => 'First', metadata => [{ label => 'Details', title => $title }] }], {});
+	my ($tooltip) = $html =~ /<span (?=[^>]*\bui_multi_meta\b)[^>]*\btitle="([^"]*)"/;
+	is(decode_attr($tooltip), $title, 'metadata tooltip retains literal entity text');
+	my ($filter) = $html =~ /data-ui-multi-text="([^"]*)"/;
+	is(decode_attr($filter), 'First Details '.$title, 'metadata filtering matches the tooltip text');
+}
+
+# Hiding bulk actions must retain the summary and automatic filter on long lists.
+{
+	my $html = main::ui_multi_select_list('no_bulk', [],
+		[ map { [ $_, "Option $_" ] } 1..9 ],
+		{ bulk => 0, count => 0, summary => $xss, summary_icon => 'star' });
+	unlike($html, qr/data-ui-multi-action="(?:all|invert)"/,
+		'bulk option hides selection links on long lists');
+	like($html, qr/data-ui-multi-search="1"/, 'bulk option preserves filtering');
+	like($html, qr/ui_multi_summary/, 'summary remains visible without a counter');
+	assert_no_handler_injection($html, 'summary without bulk actions');
+}
+
 # Multi-select values, modes, controls and hierarchy.
 # Match attributes independently because their order varies.
 {

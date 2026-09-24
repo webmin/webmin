@@ -831,6 +831,22 @@ $rv .= ui_table_row($text{'index_c_html'},
 		{ 'html' => 1, 'count' => 0, 'search' => 1 }), 2);
 $rv .= ui_table_end();
 
+# Compact grouped choices combine related facts in one badge per row.
+$rv .= ui_table_start($text{'index_c_images'}, 'width=100%', 2);
+$rv .= ui_table_row(undef,
+	ui_multi_select_list('images', [ ], [
+		{ value => 'bundled', label => $text{'index_c_image_linux'},
+		  group => { label => $text{'index_c_recommended'}, icon => 'star', state => 'success' },
+		  metadata => [ { label => '10 GiB', icon => 'hard-drive', title => $text{'index_c_disk_hint'} },
+			{ label => $text{'index_c_support_until'}, icon => 'clock' } ] },
+		{ value => 'custom', label => $text{'index_c_image_custom'},
+		  group => { label => $text{'index_c_older'}, icon => 'warning', state => 'warning' },
+		  metadata => [ { label => $text{'index_c_custom'}, icon => 'edit' },
+			{ label => $text{'index_c_support_ended'}, icon => 'warning', state => 'warning' } ] },
+	], { search => 1, compact => 1, summary => $text{'index_c_images'},
+		summary_icon => 'download' }), 2);
+$rv .= ui_table_end();
+
 # Both APIs retain descriptions in their respective label arguments.
 my $staff_label = text('index_c_staff_desc', 'staff');
 $rv .= ui_table_start($text{'index_c_labels'}, 'width=100%', 4);
