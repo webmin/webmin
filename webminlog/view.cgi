@@ -38,12 +38,14 @@ print &ui_table_row($text{'view_module'},
 
 if ($act->{'module'} ne 'global') {
 	print &ui_table_row($text{'view_script'},
-			    $act->{'script'} =~ /\// ?
-				"<tt>$act->{'script'}</tt>" :
-				"<tt>$act->{'module'}/$act->{'script'}</tt>");
+		    $act->{'script'} =~ /\// ?
+			"<tt>".&html_escape($act->{'script'})."</tt>" :
+			"<tt>".&html_escape($act->{'module'})."/".
+			       &html_escape($act->{'script'})."</tt>");
 	}
 else {
-	print &ui_table_row($text{'view_script'}, "<tt>$act->{'script'}</tt>");
+	print &ui_table_row($text{'view_script'},
+		"<tt>".&html_escape($act->{'script'})."</tt>");
 	}
 
 print &ui_table_row($text{'view_user'},
@@ -54,9 +56,10 @@ print &ui_table_row($text{'view_ip'},
 
 if ($act->{'sid'} ne '-') {
 	print &ui_table_row($text{'view_sid'},
-		&ui_link("search.cgi?sid=$act->{'sid'}&uall=1&mall=1&tall=1&fall=1&return=".
-        &urlize($in{'return'})."&returndesc=".
-        &urlize($in{'returndesc'}), $act->{'sid'}) );
+		&ui_link("search.cgi?sid=$act->{'sid'}&uall=1&mall=1&tall=1&".
+			 "fall=1&return=".&urlize($in{'return'}).
+			 "&returndesc=".&urlize($in{'returndesc'}),
+			 &html_escape($act->{'sid'})) );
 	}
 
 print &ui_table_row($text{'view_time'}, &make_date($act->{'time'}).
