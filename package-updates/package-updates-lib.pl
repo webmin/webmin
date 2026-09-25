@@ -18,10 +18,14 @@ eval "use WebminCore;";
 	"dnf-automatic-notifyonly.timer",
 );
 
+# Cache files for the package lists and the error from a failed check for
+# updates
 $available_cache_file = &cache_file_path("available.cache");
 $current_cache_file = &cache_file_path("current.cache");
 $updates_cache_file = &cache_file_path("updates.cache");
 $held_updates_cache_file = &cache_file_path("held-updates.cache");
+$updates_error_file = &cache_file_path("updates.error");
+$failed_check_retry_mins = 15;	# Minutes before a failed check is retried
 $cron_cmd = "$module_config_directory/update.pl";
 
 $yum_cache_file = &cache_file_path("yumcache");
@@ -222,6 +226,32 @@ if (-r $file) {
 return ( );
 }
 
+# save_updates_error([error])
+# Saves the error from a failed check for updates, or removes the saved
+# error if none is given
+sub save_updates_error
+{
+my ($err) = @_;
+if ($err) {
+	# Save it for the module pages and the scheduled job to report
+	&open_tempfile(ERR, ">$updates_error_file");
+	&print_tempfile(ERR, $err);
+	&close_tempfile(ERR);
+	}
+else {
+	# No error, so stop warning about an earlier failure
+	unlink($updates_error_file);
+	}
+}
+
+# get_updates_error()
+# Returns the error if the last check for updates failed, or undef
+sub get_updates_error
+{
+return undef if (!-r $updates_error_file);
+return &read_file_contents($updates_error_file);
+}
+
 # compare_versions(&pkg1, &pkg2)
 # Returns -1 if the version of pkg1 is older than pkg2, 1 if newer, 0 if same.
 sub compare_versions
@@ -356,25 +386,47 @@ return $text{'hold_enotsupported'} if (!&supports_package_holds());
 return &software::update_system_hold($packages, $hold);
 }
 
-# updates_available(no-cache, [include-held])
+# updates_available([no-cache], [include-held])
 # Returns an array of hash refs of package updates available, according to
-# the update system, with caching.
+# the update system, with caching. If the check fails, returns the last
+# known list and saves the error for get_updates_error.
 sub updates_available
 {
 my ($nocache, $include_held) = @_;
+# Held updates have their own cache file and in-memory list
 my $cache_file = $include_held ? $held_updates_cache_file :
 				$updates_cache_file;
 my $cache = $include_held ? \@held_updates_available_cache :
 				\@updates_available_cache;
+# Load the list, unless a non-empty one is already in memory
 if (!scalar(@$cache)) {
 	if ($nocache || &cache_expired($cache_file)) {
 		# Get from original source
 		@$cache = &software::update_system_updates($include_held);
+		if ($software::update_system_error) {
+			# The check failed, so keep the last known list rather
+			# than caching an empty one, and save the error
+			@$cache = &read_cache_file($cache_file);
+			&save_updates_error($software::update_system_error);
+			}
+		else {
+			# The check worked, so clear any earlier error
+			&save_updates_error(undef);
+			}
+		# Add the fields callers use, and cache the list
 		foreach my $a (@$cache) {
 			$a->{'update'} = $a->{'name'};
 			$a->{'system'} = $software::update_system;
 			}
 		&write_cache_file($cache_file, $cache);
+		if ($software::update_system_error) {
+			# Expire the cache after $failed_check_retry_mins
+			# minutes, so a failed check is retried soon but not on
+			# every page load. A shorter cache time is left alone.
+			my $retry = time() - $config{'cache_time'}*60*60 +
+				    $failed_check_retry_mins*60;
+			utime($retry, $retry, $cache_file) if ($retry < time());
+			}
 		}
 	else {
 		# Use on-disk cache
@@ -750,14 +802,23 @@ if ($pkg->{'system'} eq 'yum') {
 return undef;
 }
 
+# flush_package_caches()
+# Clears the package list caches, so the next lookups fetch fresh data. Also
+# removes any saved error from a failed check for updates.
 sub flush_package_caches
 {
 unlink($current_cache_file);
-unlink($updates_cache_file);
-unlink($held_updates_cache_file);
 unlink($available_cache_file);
+# Expire the update lists rather than deleting them, so a failed check can
+# still fall back to the last known list
+foreach my $f ($updates_cache_file, $held_updates_cache_file) {
+	utime(0, 0, $f) if (-e $f);
+	}
+# Delete the remaining cache files and the saved error
 unlink($available_cache_file.'0');
 unlink($available_cache_file.'1');
+unlink($updates_error_file);
+# Clear the lists held in memory by this process
 @packages_available_cache = ( );
 @updates_available_cache = ( );
 @held_updates_available_cache = ( );
