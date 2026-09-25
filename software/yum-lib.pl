@@ -537,6 +537,7 @@ if ($yum_command =~ /dnf/) {
 		# The check failed, so return no updates and set the error from
 		# stderr, or from stdout or the exit status if stderr is empty
 		$err =~ s/\s+$//;
+		$out =~ s/\s+$//;
 		$update_system_error = $err || $out ||
 			"$yum_command check-update exited with status $code";
 		return ( );
