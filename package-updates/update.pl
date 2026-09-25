@@ -13,6 +13,11 @@ if ($ARGV[0] eq "--debug" || $ARGV[0] eq "-debug") {
 &clear_repository_cache();
 @todo = &list_possible_updates();
 
+# If the check for updates failed, the list is only the last known one, so
+# ignore it and report the failure instead
+$checkerr = &get_updates_error();
+@todo = ( ) if ($checkerr);
+
 # Install packages that are needed
 $tellcount = 0;
 %already = ( );
@@ -41,6 +46,15 @@ $newcount = 0;
 $tellbody = "";
 %notified = ( );
 %pending = ( );
+
+# A failed check for updates counts as a failure, so the "any update fails"
+# mode emails it. It is also tracked like a pending update, so new-only mode
+# emails it once until a check works again. Its key is fixed, because DNF's
+# error text varies between runs.
+if ($checkerr) {
+	$fcount++;
+	$pending{'error'} = 1;
+	}
 foreach $t (@todo) {
 	next if ($already{$t->{'update'}});
 	my $umsg = $t->{'security'} ? "security update" : "update";
@@ -102,6 +116,13 @@ if ($newonly && !$newcount) {
 	}
 else {
 	$body .= $tellbody;
+	}
+
+# Report a failed check for updates first, unless only new updates are
+# being reported and the failure was already reported
+if ($checkerr && (!$newonly || $newcount)) {
+	$body = "Checking for updates failed :\n".
+		"$checkerr\n\n".$body;
 	}
 
 if (@updated && $config{'sched_post_script'}) {

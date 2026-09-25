@@ -8,7 +8,8 @@ use File::Spec;
 use Cwd qw(abs_path);
 
 our (%config, %packages, %text);
-our ($yum_command, $supports_dnf_versionlock, $dnf_version);
+our ($yum_command, $supports_dnf_versionlock, $dnf_version,
+     $update_system_error);
 
 sub has_command
 {
@@ -232,22 +233,26 @@ no warnings qw(once redefine);
 my $dnf_output =
 	"bash.aarch64 5.1.8-10.el9 baseos\n".
 	"coreutils.aarch64 8.32-40.el9 baseos\n";
+my $dnf_stderr = '';
+my $dnf_status = 100;
 my @commands;
 local *supports_update_system_holds = sub { return 1; };
 local *list_update_system_holds = sub { return ('bash'); };
 local *set_yum_security_field = sub { };
 local *get_dnf_version = sub { return 4; };
-local *open_execute_command = sub {
-	my ($fh, $command) = @_;
+local *transname = sub { return 'simulated-stderr-file'; };
+local *read_file_contents = sub { return $dnf_stderr; };
+local *execute_command = sub {
+	my ($command, $stdin, $stdout) = @_;
 	push(@commands, $command);
-	no strict 'refs';
-	open(ref($fh) ? $fh : \*{$fh}, '<', \$dnf_output)
-		or die "open simulated DNF updates: $!";
+	$$stdout = $dnf_output;
+	return $dnf_status << 8;
 	};
 
 my @normal = update_system_updates(0);
 is_deeply([ map { $_->{'name'} } @normal ], [ 'coreutils' ],
 	'DNF 4 regular updates exclude held packages');
+is($update_system_error, undef, 'a successful check reports no error');
 my @with_holds = update_system_updates(1);
 is_deeply([ map { $_->{'name'} } @with_holds ],
 	[ 'bash', 'coreutils' ], 'DNF 4 held-update query includes locks');
@@ -260,6 +265,39 @@ local *get_dnf_version = sub { return 5; };
 like($commands[0], qr/--setopt=disable_excludes=\\\* check-update/,
 	'DNF 5 disables excludes for held-update discovery');
 ok($with_holds[0]->{'held'}, 'marks a DNF 5 locked update as held');
+
+$dnf_output = '';
+$dnf_status = 0;
+is_deeply([ update_system_updates(0) ], [ ],
+	'DNF exit status 0 means no updates');
+is($update_system_error, undef, 'no updates is not reported as an error');
+
+$dnf_output = "Some repo   0.0  B/s |   0  B     00:00\n";
+$dnf_stderr =
+	"Errors during downloading metadata for repository 'x':\n".
+	"Error: Failed to download metadata for repo 'x'\n";
+$dnf_status = 1;
+is_deeply([ update_system_updates(0) ], [ ],
+	'a failed check returns no updates');
+is($update_system_error,
+	"Errors during downloading metadata for repository 'x':\n".
+	"Error: Failed to download metadata for repo 'x'",
+	'a failed check reports the DNF error output');
+
+$dnf_stderr = '';
+update_system_updates(0);
+is($update_system_error, 'Some repo   0.0  B/s |   0  B     00:00',
+	'a failed check without error output reports its normal output');
+
+$dnf_output = '';
+update_system_updates(0);
+is($update_system_error, '/usr/bin/dnf check-update exited with status 1',
+	'a silent failure reports the exit status');
+
+$dnf_status = 137;
+update_system_updates(0);
+is($update_system_error, '/usr/bin/dnf check-update exited with status 137',
+	'a killed check is reported as a failure');
 }
 
 {
