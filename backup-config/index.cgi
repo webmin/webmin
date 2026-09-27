@@ -15,6 +15,7 @@ my @mods = &list_backup_modules();
 if (!@mods) {
 	&ui_print_endpage($text{'index_emods'});
 	}
+print &ui_page_start();
 my %mods = map { $_->{'dir'}, $_ } @mods;
 
 # Show tabs
@@ -64,7 +65,10 @@ my $hostname = &get_system_hostname() || "localhost";
 $hostname =~ s/\./-/g;
 my $filename = $hostname."+configuration_backup-webmin-".
 	       strftime("%Y-%m-%d-%H-%M", localtime);
-print &ui_form_start("backup.cgi/$filename.tar.gz", "post");
+# Let themes bypass AJAX when the current destination is a browser download
+print &ui_form_start("backup.cgi/$filename.tar.gz", "post", undef,
+	"onsubmit=\"this.dataset.download = ".
+	"this.elements.dest_mode.value == '4' ? 'true' : 'false'\"");
 print &ui_table_start($text{'index_header'}, undef, 2);
 
 my @dmods = split(/\s+/, $config{'mods'} || "");
@@ -114,5 +118,6 @@ print &ui_form_end([ [ 'restore', $text{'index_now2'} ] ]);
 print &ui_tabs_end_tab();
 print &ui_tabs_end(1);
 
+print &ui_page_end();
 &ui_print_footer("/", $text{'index'});
 

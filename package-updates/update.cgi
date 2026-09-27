@@ -62,7 +62,16 @@ elsif ($in{'refresh'} || $in{'refresh_top'}) {
 	# Force re-fetch
 	print $text{'refresh_available'},"<br>\n";
 	@avail = &list_possible_updates();
-	print &text('refresh_done3', scalar(@avail)),"<p>\n";
+	$err = &get_updates_error();
+	if ($err) {
+		# The check failed, so show the error instead of the count
+		print $text{'refresh_failed'},"<br>\n";
+		print "<pre>",&html_escape($err),"</pre>\n";
+		}
+	else {
+		# The check worked, so show how many updates were found
+		print &text('refresh_done3', scalar(@avail)),"<p>\n";
+		}
 
 	&webmin_log("refresh");
 	&ui_print_footer($redir, $redirdesc);

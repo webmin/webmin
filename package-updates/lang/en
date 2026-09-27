@@ -35,6 +35,7 @@ index_action_note=Updates may also be installed by $1; disable external updates 
 index_action_disable=Disable external updates
 index_err=Failed to fetch package list
 index_refresh=Refresh Available Packages
+index_updateserr=The last check for updates failed, so the list below may be out of date
 index_noupdate=No update exists from version $1
 index_caninstall=Available for installation
 index_webmin=Webmin module $1
@@ -138,6 +139,7 @@ refresh_clearing=Clearing package caches ..
 refresh_done=.. done
 refresh_available=Re-fetching available packages ..
 refresh_done3=.. found $1 possible updates
+refresh_failed=.. failed, so the last known list of updates is kept :
 
 view_title=Package Details
 view_header=Updatable package information

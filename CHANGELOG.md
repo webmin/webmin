@@ -20,6 +20,7 @@
 * Fix ACL operations bypassing configured allowed paths in File Manager
 * Fix arbitrary file reads in Software Packages module
 * Fix TLS client certificate verification
+* Update Backup Configuration module's destination selector to use the new select-based UI
 * Update the Authentic theme to the latest version with various improvements:
   - Add support for HTML signatures in Usermin
   - Fix light palette layout gaps to be slightly tighter to match dark palette better

@@ -505,19 +505,49 @@ close(PKG);
 
 # update_system_updates([include-holds])
 # Returns available package updates, optionally including version-locked ones.
+# On DNF, a failed check returns an empty list and sets $update_system_error
+# to the error output. Any other result clears it, so callers can tell a
+# failure from no updates.
 sub update_system_updates
 {
 my ($include_holds) = @_;
 local @rv;
 local %done;
+$update_system_error = undef;
 if ($yum_command =~ /dnf/) {
+	# With DNF, add the flag that also lists version-locked updates if
+	# asked, escaping * for the shell
 	my $holdflag = $include_holds && &supports_update_system_holds() ?
 			" ".&update_system_hold_flags() : "";
 	$holdflag =~ s/\*/\\*/g;
-	&open_execute_command(PKG,
-		"$yum_command$holdflag check-update 2>/dev/null", 1, 1);
+
+	# Capture the exit status: DNF exits with 0 for no updates, 100 for
+	# updates found and any other status on failure. Stderr goes to a file
+	# rather than a second pipe, which could fill up and block DNF while
+	# stdout is still being read. Stdin comes from /dev/null so a prompt,
+	# such as for a repository key import, cannot hang.
+	my $out = "";
+	my $errfile = &transname();
+	my $ex = &execute_command("$yum_command$holdflag check-update",
+				  "/dev/null", \$out, $errfile, undef, 1);
+	my $code = $ex >> 8;
+	my $err = &read_file_contents($errfile);
+	unlink($errfile);
+	if ($code != 0 && $code != 100) {
+		# The check failed, so return no updates and set the error from
+		# stderr, or from stdout or the exit status if stderr is empty
+		$err =~ s/\s+$//;
+		$out =~ s/\s+$//;
+		$update_system_error = $err || $out ||
+			"$yum_command check-update exited with status $code";
+		return ( );
+		}
+	# Parse the captured output with the shared loop below
+	open(PKG, "<", \$out);
 	}
 else {
+	# YUM wraps long entries onto indented lines, so join them first.
+	# Failed YUM checks are not detected.
 	&open_execute_command(PKG, "$yum_command check-update 2>/dev/null | tr '\n' '#' | sed -e 's/# / /g' | tr '#' '\n'", 1, 1);
 	}
 while(<PKG>) {

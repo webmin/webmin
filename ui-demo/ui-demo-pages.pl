@@ -372,6 +372,22 @@ $rv .= ui_grid([
 			    ui_chip('journal'),
 			    ui_chip('ipv6'),
 			    ]),
+			# The small badge, which does not outweigh the
+			# text beside it, and the rounded one. Only
+			# badges take a rounded option; the widgets are
+			# drawn square by default
+			ui_cluster([
+			    ui_badge($text{'index_running'}, 'success',
+				     { 'small' => 1 }),
+			    ui_badge($text{'index_stopped'}, 'danger',
+				     { 'small' => 1, 'dot' => 1 }),
+			    ui_badge($text{'index_off'}, 'neutral',
+				     { 'small' => 1, 'icon' => '' }),
+			    ui_badge($text{'index_running'}, 'success',
+				     { 'rounded' => 1 }),
+			    ui_badge($text{'index_syncing'}, 'info',
+				     { 'small' => 1, 'rounded' => 1 }),
+			    ]),
 			# Inline code, a note, the existing help bubble, and
 			# ui_tip, which gives any HTML the same theme tooltip
 			ui_cluster([
@@ -813,6 +829,22 @@ $rv .= ui_table_row($text{'index_c_html'},
 		[ 'root', '<i>'.html_escape($text{'index_c_entire'}).'</i>' ],
 		[ 'private', '<b>'.html_escape($text{'index_c_private'}).'</b>' ] ],
 		{ 'html' => 1, 'count' => 0, 'search' => 1 }), 2);
+$rv .= ui_table_end();
+
+# Compact grouped choices combine related facts in one badge per row.
+$rv .= ui_table_start($text{'index_c_images'}, 'width=100%', 2);
+$rv .= ui_table_row(undef,
+	ui_multi_select_list('images', [ ], [
+		{ value => 'bundled', label => $text{'index_c_image_linux'},
+		  group => { label => $text{'index_c_recommended'}, icon => 'star', state => 'success' },
+		  metadata => [ { label => '10 GiB', icon => 'hard-drive', title => $text{'index_c_disk_hint'} },
+			{ label => $text{'index_c_support_until'}, icon => 'clock' } ] },
+		{ value => 'custom', label => $text{'index_c_image_custom'},
+		  group => { label => $text{'index_c_older'}, icon => 'warning', state => 'warning' },
+		  metadata => [ { label => $text{'index_c_custom'}, icon => 'edit' },
+			{ label => $text{'index_c_support_ended'}, icon => 'warning', state => 'warning' } ] },
+	], { search => 1, compact => 1, summary => $text{'index_c_images'},
+		summary_icon => 'download' }), 2);
 $rv .= ui_table_end();
 
 # Both APIs retain descriptions in their respective label arguments.

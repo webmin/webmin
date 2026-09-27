@@ -29,6 +29,7 @@ else {
 	$backup = &get_backup($in{'id'});
 	}
 
+print &ui_page_start();
 print &ui_form_start("save.cgi", "post");
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("id", $in{'id'});
@@ -107,6 +108,7 @@ else {
 			     [ 'delete', $text{'delete'} ] ], "100%");
 	}
 
+print &ui_page_end();
 &ui_print_footer("", $text{'index_return'});
 
 

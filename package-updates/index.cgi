@@ -51,6 +51,16 @@ print &ui_hidden("mode", $in{'mode'});
 print &ui_grid_table(\@grid, 2),"<p>\n";
 print &ui_form_end();
 
+# Warn if the last check for updates failed, as the list may be stale
+$updates_error = &get_updates_error();
+if ($updates_error) {
+	print &ui_tag('div', &ui_details({
+		'title' => $text{'index_updateserr'},
+		'content' => &ui_tag('tt', &html_escape($updates_error)),
+		'class' => 'error',
+		'html' => 1 }, 1), {'style' => 'margin-bottom: 0.333em;'});
+	}
+
 # Work out what packages to show
 @current = &list_current(1);
 

@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # Regression test for explicit FTP TLS servers that require login before
-# accepting PBSZ and PROT.
+# accepting PBSZ and PROT, and TLS session reuse on the data connection.
 
 use strict;
 use warnings;
@@ -40,7 +40,7 @@ sub open_socket
 my ($host, $port, $name, $err) = @_;
 my $socket = IO::Socket::INET->new(
 	PeerAddr => $host,
-	PeerPort => $ENV{'FSDUMP_TEST_FTP_PORT'},
+	PeerPort => $port == 21 ? $ENV{'FSDUMP_TEST_FTP_PORT'} : $port,
 	Proto => 'tcp');
 if (!$socket) {
 	$$err = $!;
@@ -87,6 +87,16 @@ PEM_key2file($key, $key_file);
 CERT_free($cert);
 KEY_free($key);
 
+# Use one TLS context for both server connections so session reuse can be
+# required and observed on the data connection.
+my $server_context = IO::Socket::SSL::SSL_Context->new(
+	SSL_server => 1,
+	SSL_version => 'TLSv1_2',
+	SSL_cert_file => $cert_file,
+	SSL_key_file => $key_file,
+	SSL_session_id_context => 'fsdump-ftps-test') or
+	die "server TLS context: ".IO::Socket::SSL::errstr()."\n";
+
 my $listener = IO::Socket::INET->new(
 	LocalAddr => '127.0.0.1',
 	LocalPort => 0,
@@ -95,6 +105,7 @@ my $listener = IO::Socket::INET->new(
 	ReuseAddr => 1) or die "listen: $!";
 my $port = $listener->sockport();
 my $log_file = File::Spec->catfile($tmp, 'server.log');
+my $data_file = File::Spec->catfile($tmp, 'backup.tar');
 my $server_pid = fork();
 defined($server_pid) or die "fork: $!";
 if (!$server_pid) {
@@ -113,8 +124,7 @@ if (!$server_pid) {
 		$socket = IO::Socket::SSL->start_SSL(
 			$socket,
 			SSL_server => 1,
-			SSL_cert_file => $cert_file,
-			SSL_key_file => $key_file) or
+			SSL_reuse_ctx => $server_context) or
 			die "server TLS: ".IO::Socket::SSL::errstr()."\n";
 		$socket->autoflush(1);
 
@@ -125,8 +135,7 @@ if (!$server_pid) {
 			[ qr/^PASS /, "230 logged in\r\n" ],
 			[ qr/^PBSZ 0$/, "200 buffer size set\r\n" ],
 			[ qr/^PROT P$/, "200 private data channel\r\n" ],
-			[ qr/^TYPE I$/, "200 binary mode\r\n" ],
-			[ qr/^QUIT$/, "221 goodbye\r\n" ]) {
+			[ qr/^TYPE I$/, "200 binary mode\r\n" ]) {
 			$line = <$socket>;
 			defined($line) or die "connection closed early\n";
 			$line =~ s/\r?\n$//;
@@ -135,6 +144,60 @@ if (!$server_pid) {
 					die "unexpected command $line\n";
 			print $socket $step->[1];
 			}
+
+		# Accept a protected passive upload and require it to reuse the
+		# control connection's TLS session, as strict FTPS servers do.
+		my $data_listener = IO::Socket::INET->new(
+			LocalAddr => '127.0.0.1',
+			LocalPort => 0,
+			Proto => 'tcp',
+			Listen => 1,
+			ReuseAddr => 1) or die "data listen: $!";
+		my $data_port = $data_listener->sockport();
+		$line = <$socket>;
+		defined($line) or die "connection closed before PASV\n";
+		$line =~ s/\r?\n$//;
+		push(@commands, $line);
+		$line eq 'PASV' or die "expected PASV, got $line\n";
+		print $socket "227 Entering Passive Mode (127,0,0,1,".
+			int($data_port / 256).",".($data_port % 256).")\r\n";
+		my $data_socket = $data_listener->accept() or die "data accept: $!";
+		close($data_listener);
+
+		$line = <$socket>;
+		defined($line) or die "connection closed before STOR\n";
+		$line =~ s/\r?\n$//;
+		push(@commands, $line);
+		$line eq 'STOR /backup.tar' or die "expected STOR, got $line\n";
+		print $socket "150 opening data connection\r\n";
+		$data_socket = IO::Socket::SSL->start_SSL(
+			$data_socket,
+			SSL_server => 1,
+			SSL_reuse_ctx => $server_context) or
+			die "server data TLS: ".IO::Socket::SSL::errstr()."\n";
+		$data_socket->get_session_reused() or
+			die "data TLS session was not reused\n";
+		push(@commands, 'DATA SESSION REUSED');
+
+		my $received = '';
+		while(1) {
+			my $read = read($data_socket, my $chunk, 8192);
+			defined($read) or die "data read: $!";
+			last if (!$read);
+			$received .= $chunk;
+			}
+		close($data_socket);
+		open(my $DATA, '>', $data_file) or die "open data: $!";
+		print $DATA $received;
+		close($DATA) or die "close data: $!";
+		print $socket "226 transfer complete\r\n";
+
+		$line = <$socket>;
+		defined($line) or die "connection closed before QUIT\n";
+		$line =~ s/\r?\n$//;
+		push(@commands, $line);
+		$line eq 'QUIT' or die "expected QUIT, got $line\n";
+		print $socket "221 goodbye\r\n";
 		open(my $LOG, '>', $log_file) or die "open log: $!";
 		print $LOG join("\n", @commands), "\n";
 		close($LOG) or die "close log: $!";
@@ -158,7 +221,8 @@ my $old_cwd = File::Spec->rel2abs('.');
 chdir($tmp) or die "chdir $tmp: $!";
 my $client_pid = open3(my $input, my $output, $stderr, $^X,
 	$client_script, '127.0.0.1', 'unused', 'test-user', 'touch');
-print $input "O/backup.tar\n64\nC\n";
+my $payload = "protected backup data\n";
+print $input "O/backup.tar\n64\nW".length($payload)."\n$payload"."C\n";
 close($input);
 my $client_output = do { local $/; <$output> };
 my $client_error = do { local $/; <$stderr> };
@@ -178,8 +242,14 @@ is($server_status, 0, 'mock FTPS server accepts the command sequence') or
 	diag($server_log);
 is($server_log,
 	"AUTH TLS\nUSER test-user\nPASS test-password\nPBSZ 0\n".
-	"PROT P\nTYPE I\nQUIT\n",
-	'login precedes data-channel protection setup');
-is($client_output, "A0\nA0\n", 'rmt protocol receives open and close success');
+	"PROT P\nTYPE I\nPASV\nSTOR /backup.tar\n".
+	"DATA SESSION REUSED\nQUIT\n",
+	'login precedes protection and the data TLS session is reused');
+is($client_output, "A0\nA".length($payload)."\nA0\n",
+	'rmt protocol receives open, write and close success');
+open(my $DATA, '<', $data_file) or die "open received data: $!";
+my $received = do { local $/; <$DATA> };
+close($DATA);
+is($received, $payload, 'protected data reaches the FTP server intact');
 
 done_testing();

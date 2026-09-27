@@ -60,6 +60,24 @@ sub decode_attr {
 
 my $xss = q{x"><script>alert(1)</script><b onmouseover="alert(1)};
 
+# A decoded value elsewhere on the page must not double-encode the note icon.
+{
+	my $decoded = 'efi';
+	utf8::upgrade($decoded);
+	foreach my $prefix ('efi', $decoded) {
+		my $html = $prefix.main::ui_note('Note', 0);
+		# Model the UTF-8 response bytes and the browser's decoding step.
+		utf8::encode($html) if (utf8::is_utf8($html));
+		utf8::decode($html);
+		like($html, qr/(?:\x{24d8}|&#9432;|&#x24d8;)/i,
+			'ui_note icon survives byte and decoded page strings');
+		}
+	my $html = main::ui_note("Note \x{20ac}", 0);
+	like($html, qr/(?:\x{24d8}|&#9432;|&#x24d8;)/i,
+		'ui_note icon survives decoded note text');
+	like($html, qr/Note \x{20ac}/, 'ui_note preserves decoded note text');
+}
+
 # ---- escaping contract -----------------------------------------------------
 
 assert_no_handler_injection(
@@ -71,6 +89,9 @@ assert_no_handler_injection(
 	'ui_card title+desc');
 assert_no_handler_injection(main::ui_badge($xss, 'success'),
 	'ui_badge text');
+assert_no_handler_injection(
+	main::ui_badge('B', 'success', { 'class' => $xss, 'title' => $xss }),
+	'ui_badge class+title');
 assert_no_handler_injection(main::ui_chip($xss), 'ui_chip text');
 assert_no_handler_injection(main::ui_code($xss), 'ui_code');
 assert_no_handler_injection(main::ui_tip('<b>x</b>', $xss), 'ui_tip');
@@ -118,6 +139,19 @@ like(main::ui_badge('down', 'err'), qr/ui_badge_danger/,
 	'state alias err maps to danger');
 like(main::ui_badge('what', 'bogus<'), qr/ui_badge_neutral/,
 	'unknown state falls back to neutral');
+
+# Badges take a smaller size, rounded ends and extra class names
+{
+	my $plain = main::ui_badge('B', 'info');
+	unlike($plain, qr/ui_badge_small|ui_badge_rounded/,
+		'a badge is full-sized and square by default');
+	my $html = main::ui_badge('B', 'info',
+		{ 'small' => 1, 'rounded' => 1, 'class' => 'mine' });
+	like($html, qr/\bui_badge_small\b/, 'small option adds its class');
+	like($html, qr/\bui_badge_rounded\b/, 'rounded option adds its class');
+	like($html, qr/\bui_badge_info\b/, 'and the state class stays');
+	like($html, qr/\bmine\b/, 'extra class names are passed through');
+}
 
 # The scheme option stamps the wrapper for the dark or auto palette
 like(main::ui_page_start({ 'scheme' => 'auto' }),
@@ -381,6 +415,75 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 	like($first, qr/ui-lib\.css/, 'first assets call links the stylesheet');
 	like($first, qr/ui-lib\.js/, 'first assets call loads the script');
 	is($second, '', 'second assets call emits nothing');
+}
+
+# Separate multi-select badges retain plain-text escaping and filter metadata.
+{
+	my $html = main::ui_multi_select_list('images', [ 'linux' ], [
+		{ value => 'linux', label => '<b>Linux</b>', tag => 'QCOW2', badges => [
+			[ 'ARM64', 'neutral', { small => 1, rounded => 1 } ],
+			[ $xss, 'warning', { small => 1, rounded => 1 } ] ] },
+	], { html => 1 });
+	my @badges = $html =~ /class="[^"\n]*\bui_badge\b[^"\n]*"/g;
+	is(scalar(@badges), 2, 'each metadata badge is a separate element');
+	ok(!grep(!/ui_badge_small.*ui_badge_rounded/, @badges),
+		'badge rendering retains size and shape options');
+	like($html, qr/ui_chip">QCOW2</, 'plain tags still work beside badges');
+	my ($filter) = $html =~ /data-ui-multi-text="([^"]*)"/;
+	is(decode_attr($filter), 'Linux QCOW2 ARM64 '.$xss,
+		'filtering includes every badge label as plain text');
+	like($html, qr/value="linux"[^>]*checked/, 'badges do not alter selection');
+	assert_no_handler_injection($html, 'multi-select badges with HTML labels');
+}
+
+# Grouped metadata stays plain text and preserves values and legacy defaults.
+{
+	my $group = { label => $xss, state => 'success', icon => 'star' };
+	my @options = (
+		{ value => 'a', label => 'First', group => $group, metadata => [
+			{ label => '10 GiB', icon => 'hard-drive', title => $xss },
+			{ label => $xss, icon => 'clock', state => 'warning' } ] },
+		{ value => 'b', label => 'Second', group => $group },
+		{ value => 'c', label => 'Third', group => { label => 'Older', state => 'warning' } },
+	);
+	my $html = main::ui_multi_select_list('grouped', [ 'b', 'a' ], \@options,
+		{ compact => 1, search => 1, summary => $xss, summary_icon => 'download' });
+	is(scalar(() = $html =~ /data-ui-multi-heading=/g), 2, 'consecutive options share a heading');
+	is(scalar(() = $html =~ /class="[^"]*\bui_multi_metadata\b/g), 1, 'metadata facts share one badge');
+	is(scalar(() = $html =~ /class="[^"]*\bui_multi_item\b/g), 3, 'headings are not selectable options');
+	like($html, qr/ui_multi_compact/, 'compact layout is explicitly enabled');
+	like($html, qr/name="grouped"[^>]*value="a\nb"/, 'grouping retains normal submission order');
+	my ($filter) = $html =~ /data-ui-multi-text="([^"]*)"/;
+	like(decode_attr($filter), qr/First.*\Q$xss\E.*10 GiB.*\Q$xss\E/s,
+		'group names and metadata tooltips are searchable');
+	assert_no_handler_injection($html, 'group names, summary and metadata');
+	ok(!exists($options[0]->{'attrs'}), 'group rendering does not mutate input options');
+	my $plain = main::ui_multi_select_list('plain', [], [ [ 'a', 'First' ] ], {});
+	unlike($plain, qr/ui_multi_compact|data-ui-multi-group|data-ui-multi-heading|ui_multi_metadata/,
+		'existing callers opt into none of the new layout');
+}
+
+# Metadata tooltips treat entity names as literal text, like their filter text.
+{
+	my $title = 'Literal &amp; <tip> "quoted"';
+	my $html = main::ui_multi_select_list('literal_metadata', [],
+		[{ value => 'a', label => 'First', metadata => [{ label => 'Details', title => $title }] }], {});
+	my ($tooltip) = $html =~ /<span (?=[^>]*\bui_multi_meta\b)[^>]*\btitle="([^"]*)"/;
+	is(decode_attr($tooltip), $title, 'metadata tooltip retains literal entity text');
+	my ($filter) = $html =~ /data-ui-multi-text="([^"]*)"/;
+	is(decode_attr($filter), 'First Details '.$title, 'metadata filtering matches the tooltip text');
+}
+
+# Hiding bulk actions must retain the summary and automatic filter on long lists.
+{
+	my $html = main::ui_multi_select_list('no_bulk', [],
+		[ map { [ $_, "Option $_" ] } 1..9 ],
+		{ bulk => 0, count => 0, summary => $xss, summary_icon => 'star' });
+	unlike($html, qr/data-ui-multi-action="(?:all|invert)"/,
+		'bulk option hides selection links on long lists');
+	like($html, qr/data-ui-multi-search="1"/, 'bulk option preserves filtering');
+	like($html, qr/ui_multi_summary/, 'summary remains visible without a counter');
+	assert_no_handler_injection($html, 'summary without bulk actions');
 }
 
 # Multi-select values, modes, controls and hierarchy.

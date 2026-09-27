@@ -29,8 +29,8 @@ if (&test_allowed_paths()) {
 	foreach my $path (@allowed_paths) {
 		my $slashed = $path;
 		$slashed .= "/" if ($slashed !~ /\/$/);
-		@alist = grep { $_ eq $path ||
-			        $_ =~ /^\Q$slashed\E/ } @list;
+		push(@alist, grep { $_ eq $path ||
+			       $_ =~ /^\Q$slashed\E/ } @list);
 		}
 	@list = &unique(@alist);
 	}

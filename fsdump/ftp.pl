@@ -4,12 +4,22 @@
 $no_acl_check++;
 require './fsdump-lib.pl';
 
+# start_tls(handle, channel-name, [control-handle])
+# Enables TLS and optionally reuses the control connection's session.
 sub start_tls
 {
-my ($fh, $what) = @_;
+my ($fh, $what, $control) = @_;
 eval { require IO::Socket::SSL; IO::Socket::SSL->import(); 1; } ||
 	&error_exit("FTP server requires TLS, but IO::Socket::SSL is not installed");
-IO::Socket::SSL->start_SSL($fh, SSL_verify_mode => 0) ||
+my %sslopts = ( SSL_verify_mode => 0,
+		SSL_session_key => $host );
+if ($control) {
+	$sslopts{'SSL_reuse_ctx'} = $control;
+	}
+else {
+	$sslopts{'SSL_session_cache_size'} = 1;
+	}
+IO::Socket::SSL->start_SSL($fh, %sslopts) ||
 	&error_exit("FTP $what TLS handshake failed : ".
 		    IO::Socket::SSL::errstr());
 }
@@ -197,7 +207,6 @@ else {
 	$opened = 0;
 	}
 if ($opened && $ssl_enabled) {
-	&start_tls(\*CON, "data");
+	&start_tls(\*CON, "data", \*SOCK);
 	}
 }
-
