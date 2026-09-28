@@ -12,6 +12,7 @@ our ($remote_user);
 
 my ($username, $reason, $remoteip, $localip) = @ARGV;
 if ($username && $reason && $remoteip) {
+	$username =~ s/[^A-z0-9\-\_\.\@]/_/g;
 	$ENV{'REMOTE_USER'} = $WebminCore::remote_user = $remote_user = $username;
 	$0 = "miniserv.pl";
 	&webmin_log("failed", undef, $reason, undef, "global", undef,
