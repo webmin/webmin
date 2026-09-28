@@ -41,8 +41,7 @@ else {
 	if (&test_allowed_paths()) {
 		for $path (@allowed_paths) {
 			my $slashed = $path;
-			$slashed .= "/"
-				if ($slashed !~ /\/$/);
+			$slashed .= "/" if ($slashed !~ /\/$/);
 			push @tmp_list,
 				grep { $slashed =~ /^\Q$_\E\// ||
 				       $_ =~ /\Q$slashed\E/ } @list;
