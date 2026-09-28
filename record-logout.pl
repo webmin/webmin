@@ -12,6 +12,7 @@ our ($remote_user);
 &init_config();
 my ($username, $sid, $remoteip, $localip) = @ARGV;
 if ($username && $sid && $remoteip) {
+	$user =~ s/[^A-z0-9\-\_\.\@]/_/g;
 	$ENV{'REMOTE_USER'} = $WebminCore::remote_user = $remote_user = $username;
 	$main::session_id = $sid;
 	$0 = "miniserv.pl";
