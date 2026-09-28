@@ -57,7 +57,7 @@ else {
 &error_setup($text{'save_err'});
 
 # Validate username, and check for a clash
-$in{'name'} =~ /^[A-z0-9\-\_\.\@]+$/ && $in{'name'} !~ /^\@/ ||
+$in{'name'} =~ /^[A-Za-z0-9\-\_\.\@]+$/ && $in{'name'} !~ /^\@/ ||
 	&error(&text('save_ename', &html_escape($in{'name'})));
 $in{'name'} eq 'webmin' && &error($text{'save_enamewebmin'});
 if (!$in{'old'} || $in{'old'} ne $in{'name'}) {
