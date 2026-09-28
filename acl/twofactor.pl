@@ -7,8 +7,8 @@ no warnings 'once';
 our $module_name;
 $main::no_acl_check = 1;
 $main::no_referers_check = 1;
-$ENV{'WEBMIN_CONFIG'} = "/etc/webmin";
-$ENV{'WEBMIN_VAR'} = "/var/webmin";
+$ENV{'WEBMIN_CONFIG'} ||= "/etc/webmin";
+$ENV{'WEBMIN_VAR'} ||= "/var/webmin";
 if ($0 =~ /^(.*\/)[^\/]+$/) {
         chdir($1);
         }
