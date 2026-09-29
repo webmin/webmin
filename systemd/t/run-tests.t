@@ -855,6 +855,30 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
     like($out, qr/Start failed/, 'failed start includes diagnostics');
 }
 
+# Readiness needs fresh properties, including idle sockets and missing units.
+{
+    my $reply = "LoadState=loaded\nUnitFileState=enabled\nActiveState=active\nSubState=listening\nMainPID=0\n";
+    my $status = 0;
+    my @commands;
+    local *main::backquote_logged = sub { push @commands, $_[0]; $? = $status; return $reply; };
+    my ($state, $error) = get_unit_state('demo.socket');
+    is($error, undef, 'valid unit state has no error');
+    is($state->{SubState}, 'listening', 'socket readiness is exposed');
+    like($commands[-1], qr/--property=LoadState,UnitFileState,ActiveState,SubState,MainPID/, 'only requested properties are read');
+    $reply = "LoadState=loaded\nUnitFileState=enabled\nActiveState=inactive\n";
+    ($state, $error) = get_unit_state('demo.socket');
+    is($state->{ActiveState}, 'inactive', 'state is not cached');
+    $reply = "LoadState=not-found\nActiveState=inactive\n"; $status = 1024;
+    ($state, $error) = get_unit_state('missing.service');
+    is($state->{LoadState}, 'not-found', 'missing unit is a valid discovery result');
+    $reply = 'Failed to connect to bus';
+    ($state, $error) = get_unit_state('demo.socket');
+    ok(!defined($state), 'bus failure returns no state');
+    like($error, qr/connect to bus/, 'bus error is preserved');
+    ($state, $error) = get_unit_state('bad;unit.service');
+    is($error, 'bad unit name', 'invalid state lookup is rejected');
+}
+
 {
     my @cmds;
     my $reloaded = 0;
