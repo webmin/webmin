@@ -846,6 +846,15 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
          'dependency command uses full non-paged output');
 }
 
+# Failed starts must remain failures even when journal diagnostics succeed.
+{
+    local *main::backquote_logged = sub { $? = 256; return 'See journalctl for details'; };
+    local *main::backquote_command = sub { $? = 0; return 'Start failed'; };
+    my ($ok, $out) = start_unit('broken.service');
+    ok(!$ok, 'journal lookup cannot hide a failed start');
+    like($out, qr/Start failed/, 'failed start includes diagnostics');
+}
+
 {
     my @cmds;
     my $reloaded = 0;

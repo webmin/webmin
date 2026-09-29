@@ -585,10 +585,11 @@ my ($name) = @_;
 return (0, $text{'systemd_ename'}) if (!valid_unit_name($name));
 my $out = backquote_logged(
 	"systemctl start ".quotemeta($name)." 2>&1 </dev/null");
-if ($? && $out =~ /journalctl/) {
+my $rv = $?;
+if ($rv && $out =~ /journalctl/) {
 	$out .= backquote_command("journalctl -xe 2>/dev/null");
 	}
-return (!$?, $out);
+return (!$rv, $out);
 }
 
 =head2 stop_unit(name)
