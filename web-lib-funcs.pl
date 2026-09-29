@@ -3083,7 +3083,9 @@ hash reference.
 =cut
 sub get_miniserv_config
 {
-return &read_file_cached_with_stat(&get_miniserv_config_file(), $_[0]);
+# WebSocket backends can change routes several times within one second.
+# An mtime-based cache can lose another process's update even under a file lock.
+return &read_file(&get_miniserv_config_file(), $_[0]);
 }
 
 =head2 put_miniserv_config(&hash)
