@@ -160,12 +160,28 @@ EOF
 		}
 	}
 
-# Write the name, version and real name and version to a file
+# Keep the point release separate from versions used to select module configs
+$fullver = $ver->[1];
+# The Debian family also includes derivatives with their own release versions
+if ($auto && $ver->[2] eq 'debian-linux' &&
+    $os_release =~ /^ID=["']?debian["']?$/m &&
+    open(DEBVER, '<', '/etc/debian_version')) {
+	# Only use a numeric point release from the detected major version
+	local $/ = undef;
+	my $debian_version = <DEBVER>;
+	close(DEBVER);
+	my ($major) = split(/\./, $ver->[1]);
+	$fullver = $1
+		if ($debian_version =~ /\A\s*(\Q$major\E\.\d+(?:\.\d+)*)\s*\z/);
+	}
+
+# Write the name, config versions and full display version to a file
 open(OUT, ">$out");
 print OUT "os_type='",$ver->[2],"'\n";
 print OUT "os_version='",$ver->[3],"'\n";
 print OUT "real_os_type='",$ver->[0],"'\n";
 print OUT "real_os_version='",$ver->[1],"'\n";
+print OUT "real_os_version_full='",$fullver,"'\n";
 close(OUT);
 
 # has_command(command)

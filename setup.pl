@@ -248,10 +248,12 @@ else {
 	$os_version = $osinfo{'os_version'};
 	$real_os_type = $osinfo{'real_os_type'};
 	$real_os_version = $osinfo{'real_os_version'};
+	$real_os_version_full = $osinfo{'real_os_version_full'} || $real_os_version;
 	$gconfig{'os_type'} = $os_type;
 	$gconfig{'os_version'} = $os_version;
 	$gconfig{'real_os_type'} = $real_os_type;
 	$gconfig{'real_os_version'} = $real_os_version;
+	$gconfig{'real_os_version_full'} = $real_os_version_full;
 	$path_separator = $gconfig{'os_type'} eq 'windows' ? ';' : ':';
 	$null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
 	unlink($temp);
@@ -821,6 +823,7 @@ if (!$upgrading) {
 	$gconfig{'os_version'} = $os_version;
 	$gconfig{'real_os_type'} = $real_os_type;
 	$gconfig{'real_os_version'} = $real_os_version;
+	$gconfig{'real_os_version_full'} = $real_os_version_full;
 	$gconfig{'logclear'} = 1;
 	$gconfig{'log'} = 1;
 	&write_file("$config_directory/config", \%gconfig);

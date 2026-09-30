@@ -56,7 +56,8 @@ if (&show_section('host')) {
 	my $os = &html_escape($gconfig{'os_version'} eq '*' ?
 				$gconfig{'real_os_type'} :
 				$gconfig{'real_os_type'}.' '.
-				  $gconfig{'real_os_version'});
+				  ($gconfig{'real_os_version_full'} ||
+				   $gconfig{'real_os_version'}));
 	push(@table, { 'desc' => $text{'right_os'},
 		       'value' => $os . ($eol ? " ($eol)" : "")
 		     });

@@ -1383,8 +1383,9 @@ else {
 
 =head2 detect_operating_system([os-list-file], [with-cache])
 
-Returns a hash containing os_type, os_version, real_os_type and
-real_os_version, suitable for the current system.
+Returns a hash containing os_type, os_version, real_os_type, real_os_version
+and real_os_version_full for the current system. The full version includes
+the point release for display without changing configuration version matching.
 
 =cut
 sub detect_operating_system
@@ -1393,13 +1394,14 @@ my $file = $_[0] || "$root_directory/os_list.txt";
 my $cache = $_[1];
 if ($cache) {
 	# Check the cache file, and only re-check the OS if older than
-	# 1 day, or if we have rebooted recently
+	# 1 day, if we have rebooted recently, or if the full version is missing
 	my %cache;
 	my $uptime = &get_system_uptime();
 	my $lastreboot = $uptime ? time()-$uptime : undef;
 	if (&read_file($detect_operating_system_cache, \%cache) &&
 	    $cache{'os_type'} && $cache{'os_version'} &&
-	    $cache{'real_os_type'} && $cache{'real_os_version'}) {
+	    $cache{'real_os_type'} && $cache{'real_os_version'} &&
+	    $cache{'real_os_version_full'}) {
 		if ($cache{'time'} > time()-24*60*60 &&
 		    $cache{'time'} > $lastreboot) {
 			return %cache;
@@ -1449,19 +1451,18 @@ my %miniserv;
 &get_miniserv_config(\%miniserv);
 &load_theme_library();	# So that UI functions work
 
-# Need OS upgrade, but only once per day or if the system was rebooted
+# Refresh OS details daily, after a reboot, or when the full version is missing
 my $now = time();
 my $uptime = &get_system_uptime();
 if (&foreign_available("webmin")) {
 	my %realos;
 	my @st = stat($realos_cache_file);
-	if (!@st || $now - $st[9] > 24*60*60 ||
+	&read_file($realos_cache_file, \%realos);
+	if (!@st || !$realos{'real_os_version_full'} ||
+	    $now - $st[9] > 24*60*60 ||
 	    $uptime && $now - $st[9] > $uptime) {
 		%realos = &detect_operating_system(undef, 1);
 		&write_file($realos_cache_file, \%realos);
-		}
-	else {
-		&read_file($realos_cache_file, \%realos);
 		}
 	my $new_real = $realos{'real_os_version'};
 	my $old_real = $gconfig{'real_os_version'};
@@ -1469,10 +1470,14 @@ if (&foreign_available("webmin")) {
 	$old_real =~ s/\.\d+$//;
 	if ($realos{'real_os_type'} eq $gconfig{'real_os_type'} &&
 	    $new_real eq $old_real &&
-	    $realos{'real_os_version'} ne $gconfig{'real_os_version'}) {
-		# Only the minor OS version has changed, just silently update it
+	    ($realos{'real_os_version'} ne $gconfig{'real_os_version'} ||
+	     $realos{'real_os_version_full'} &&
+	     $realos{'real_os_version_full'} ne $gconfig{'real_os_version_full'})) {
+		# Save minor and display version changes without an OS upgrade prompt
 		&lock_file("$config_directory/config");
 		$gconfig{'real_os_version'} = $realos{'real_os_version'};
+		$gconfig{'real_os_version_full'} = $realos{'real_os_version_full'} ||
+						 $realos{'real_os_version'};
 		$gconfig{'os_version'} = $realos{'os_version'};
 		&write_file("$config_directory/config", \%gconfig);
 		&unlock_file("$config_directory/config");
@@ -2908,6 +2913,8 @@ my %osinfo = %{$_[0]};
 &lock_file("$config_directory/config");
 $gconfig{'real_os_type'} = $osinfo{'real_os_type'};
 $gconfig{'real_os_version'} = $osinfo{'real_os_version'};
+$gconfig{'real_os_version_full'} = $osinfo{'real_os_version_full'} ||
+				 $osinfo{'real_os_version'};
 $gconfig{'os_type'} = $osinfo{'os_type'};
 $gconfig{'os_version'} = $osinfo{'os_version'};
 foreach my $key ('os_eol_db', 'os_eol_expired',
@@ -2927,6 +2934,8 @@ if (&foreign_installed("usermin")) {
 	&usermin::get_usermin_config(\%uconfig);
 	$uconfig{'real_os_type'} = $osinfo{'real_os_type'};
 	$uconfig{'real_os_version'} = $osinfo{'real_os_version'};
+	$uconfig{'real_os_version_full'} = $osinfo{'real_os_version_full'} ||
+					 $osinfo{'real_os_version'};
 	$uconfig{'os_type'} = $osinfo{'os_type'};
 	$uconfig{'os_version'} = $osinfo{'os_version'};
 	&usermin::put_usermin_config(\%uconfig);

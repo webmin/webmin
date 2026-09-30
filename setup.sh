@@ -849,6 +849,7 @@ if [ "$upgrading" != 1 ]; then
 	echo "os_version=$os_version" >> $config_dir/config
 	echo "real_os_type=$real_os_type" >> $config_dir/config
 	echo "real_os_version=$real_os_version" >> $config_dir/config
+	echo "real_os_version_full=${real_os_version_full:-$real_os_version}" >> $config_dir/config
 	echo "lang=en" >> $config_dir/config
 
 	# Turn on logging by default

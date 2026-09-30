@@ -15,6 +15,8 @@ if ($in{'update'}) {
 	%osinfo = &webmin::detect_operating_system($osfile);
 	$uconfig{'real_os_type'} = $osinfo{'real_os_type'};
 	$uconfig{'real_os_version'} = $osinfo{'real_os_version'};
+	$uconfig{'real_os_version_full'} = $osinfo{'real_os_version_full'} ||
+					 $osinfo{'real_os_version'};
 	$uconfig{'os_type'} = $osinfo{'os_type'};
 	$uconfig{'os_version'} = $osinfo{'os_version'};
 	}
@@ -26,6 +28,8 @@ elsif ($in{'type'} ne $uconfig{'real_os_type'} ||
 	$uconfig{'real_os_type'} = $in{'type'};
 	$in{'version'} || &error($text{'os_eversion'});
 	$uconfig{'real_os_version'} = $in{'version'};
+	# Discard the detected display version when OS settings are overridden
+	$uconfig{'real_os_version_full'} = $in{'version'};
 	($os) = grep { $_->{'realtype'} eq $in{'type'} }
 		     &webmin::list_operating_systems($osfile);
 	$uconfig{'os_type'} = $in{'itype'};
