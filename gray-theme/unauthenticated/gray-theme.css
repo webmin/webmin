@@ -2038,9 +2038,271 @@ table.shrinkwrapper.loginform {
 	max-width: 440px;
 	margin: 24px auto var(--card-gap);
 }
+/* Notices above the login form, the certificate warning and the login
+ * messages the script tags as failed, logout or timed out, take the
+ * card's width and sit a card gap above it. The messages are drawn by
+ * the error page rules below. The empty paragraph after a message is
+ * dropped. */
+body:has(> center > form.ui_form[action*="_login.cgi"]) > center > :is(.ui_alert_box, h3.ui_login_message) {
+	max-width: 640px;
+	margin: var(--card-gap) auto calc(var(--card-gap) * 2) auto;
+	text-align: start;
+}
+body:has(> center > form.ui_form[action*="_login.cgi"]) > center > h3.ui_login_message + p:empty {
+	display: none;
+}
+body:has(> center > form.ui_form[action*="_login.cgi"]) > center > .ui_alert_box + h3.ui_login_message {
+	margin-top: var(--card-gap);
+}
+body:has(> center > form.ui_form[action*="_login.cgi"]) > center > :is(.ui_alert_box + form.ui_form, h3.ui_login_message + p + form.ui_form) > table.shrinkwrapper.loginform {
+	margin-top: var(--card-gap);
+}
 table.header:has(#headln2c > font:empty):not(:has(a, img, #headln1)) {
 	display: none;
 }
+/* The login button is the main action of the page, and the forgotten
+ * password form under the card is a plain link with room above it,
+ * not a filled button; its selectors outrank the primary button rule */
+form.ui_form[action*="session_login.cgi"] > input.ui_submit {
+	background: var(--accent-color);
+	border-color: var(--accent-color-hover);
+	color: var(--text-color-inverse);
+	font-weight: 600;
+}
+form.ui_form[action*="session_login.cgi"] > input.ui_submit:hover {
+	background: var(--accent-color-hover);
+}
+form.ui_form[action*="forgot_form.cgi"] { margin-top: 14px; }
+form.ui_form[action*="forgot_form.cgi"] table.ui_form_end_buttons td:first-child > input.ui_submit {
+	min-height: 0;
+	padding: 4px 8px;
+	border-color: transparent;
+	background: transparent;
+	color: var(--link-color);
+	font-weight: 500;
+}
+form.ui_form[action*="forgot_form.cgi"] table.ui_form_end_buttons td:first-child > input.ui_submit:hover {
+	border-color: transparent;
+	background: transparent;
+	color: var(--link-color-hover);
+	text-decoration: underline;
+}
+/* The password reset flow: the form asking for the username, the page
+ * confirming the email, and the new password form from the emailed
+ * link. Each prints its title in the page header and its content inside
+ * a center block. The header becomes the head row of a card like the
+ * login form's, with the card's edge and top corners, and the center
+ * block continues the card under it. The confirmation page is told
+ * apart by its content, text with two tt elements and no form. The
+ * empty paragraph the core prints after the header is dropped, and a
+ * warning above the form takes the card's width. */
+:is(body:has(> center > form.ui_form[action*="forgot_send.cgi"]),
+    body:has(> center > form.ui_form[action*="forgot.cgi"]),
+    body:has(> table.header + p + center > tt:first-child)) > table.header {
+	position: static;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 440px;
+	margin: 24px auto 0;
+	padding: 9px 16px;
+	background: var(--main-content);
+	border: 1px solid var(--border-color);
+	border-bottom-color: var(--border-color-light);
+	border-radius: var(--radius) var(--radius) 0 0;
+}
+:is(body:has(> center > form.ui_form[action*="forgot_send.cgi"]),
+    body:has(> center > form.ui_form[action*="forgot.cgi"]),
+    body:has(> table.header + p + center > tt:first-child)) > table.header #headln2c {
+	padding: 0;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0;
+}
+:is(body:has(> center > form.ui_form[action*="forgot_send.cgi"]),
+    body:has(> center > form.ui_form[action*="forgot.cgi"]),
+    body:has(> table.header + p + center > tt:first-child)) > table.header + p:empty {
+	display: none;
+}
+:is(body:has(> center > form.ui_form[action*="forgot_send.cgi"]),
+    body:has(> center > form.ui_form[action*="forgot.cgi"]),
+    body:has(> table.header + p + center > tt:first-child)) > .ui_alert_box {
+	max-width: 440px;
+	margin: 0 auto;
+	border-radius: 0;
+}
+:is(body:has(> center > form.ui_form[action*="forgot_send.cgi"]),
+    body:has(> center > form.ui_form[action*="forgot.cgi"]),
+    body:has(> table.header + p + center > tt:first-child)) > center {
+	box-sizing: border-box;
+	max-width: 440px;
+	margin: 0 auto var(--card-gap);
+	padding: 12px 16px 6px;
+	background: var(--main-content);
+	border: 1px solid var(--border-color);
+	border-top: 0;
+	border-radius: 0 0 var(--radius) var(--radius);
+	box-shadow: var(--shadow);
+	text-align: start;
+}
+/* The username form: the field on a line of its own under its label.
+ * The new password form: its own card table melts into the card. Both:
+ * the button centered under the fields with room above it, like the
+ * buttons under the login card. The confirmation text keeps the card's
+ * bottom padding. */
+:is(body:has(> center > form.ui_form[action*="forgot_send.cgi"]),
+    body:has(> center > form.ui_form[action*="forgot.cgi"]),
+    body:has(> table.header + p + center > tt:first-child)) > center > form.ui_form > b {
+	display: block;
+	margin: 12px 0 4px;
+	font-weight: 400;
+	color: var(--text-color-desc);
+}
+:is(body:has(> center > form.ui_form[action*="forgot_send.cgi"]),
+    body:has(> center > form.ui_form[action*="forgot.cgi"]),
+    body:has(> table.header + p + center > tt:first-child)) > center > form.ui_form > input.ui_textbox {
+	width: 100%;
+}
+:is(body:has(> center > form.ui_form[action*="forgot_send.cgi"]),
+    body:has(> center > form.ui_form[action*="forgot.cgi"]),
+    body:has(> table.header + p + center > tt:first-child)) > center > form.ui_form > table.shrinkwrapper {
+	margin: 0;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
+}
+:is(body:has(> center > form.ui_form[action*="forgot_send.cgi"]),
+    body:has(> center > form.ui_form[action*="forgot.cgi"]),
+    body:has(> table.header + p + center > tt:first-child)) > center > form.ui_form > table.shrinkwrapper tr.ui_table_body > td {
+	padding: 0;
+}
+:is(body:has(> center > form.ui_form[action*="forgot_send.cgi"]),
+    body:has(> center > form.ui_form[action*="forgot.cgi"]),
+    body:has(> table.header + p + center > tt:first-child)) > center > form.ui_form > table.ui_form_end_buttons {
+	margin: 10px 0 8px;
+}
+:is(body:has(> center > form.ui_form[action*="forgot_send.cgi"]),
+    body:has(> center > form.ui_form[action*="forgot.cgi"]),
+    body:has(> table.header + p + center > tt:first-child)) > center > form.ui_form > table.ui_form_end_buttons > tbody > tr {
+	justify-content: center;
+}
+body:has(> table.header + p + center > tt:first-child) > center {
+	padding-bottom: 14px;
+	line-height: 1.5;
+}
+
+/* ---- Error page ---- */
+/* The core prints an error as a heading between rules, with an optional
+ * call stack table, and its own inline style after the theme's. The
+ * heading becomes a danger notice with the notice icon, the rules are
+ * dropped, and the stack becomes a card table under a small label. The
+ * selectors repeat the classes of the inline style, so they outrank it. */
+
+hr:has(+ h3[data-fatal-error-text]), h3[data-fatal-error-text] + hr,
+hr:has(+ table.err-stack), table.err-stack + hr { display: none; }
+/* The notice sits close under the title; the inline style block the
+ * core prints right after the header marks the error page */
+table.header:has(+ style[data-err]) { margin-bottom: 2px; }
+h3[data-fatal-error-text], h3.err-head[data-fatal-error-text],
+h3.ui_login_message {
+	display: flex;
+	box-sizing: border-box;
+	align-items: flex-start;
+	gap: 12px;
+	margin: 0 0 var(--card-gap);
+	padding: 10px 14px;
+	border: 1px solid var(--border-color-danger);
+	border-radius: var(--radius);
+	background: var(--bg-color-danger);
+	color: var(--text-color-danger-stressed);
+	font: 500 13px/1.45 var(--font-family);
+	text-transform: none;
+	transform: none;
+	white-space: normal;
+	overflow-wrap: break-word;
+}
+/* The login messages: a logout is a success notice and a timed out
+ * session a warning; a failed login keeps the danger look */
+h3.ui_login_logout {
+	background: var(--bg-color-success);
+	border-color: var(--border-color-success);
+	color: var(--text-color-success-stressed);
+}
+h3.ui_login_timed_out {
+	background: var(--bg-color-warning);
+	border-color: var(--border-color-warning);
+	color: var(--text-color-warning-stressed);
+}
+/* The icon is one of the theme's notice icons, drawn as a mask in the
+ * notice color: x-circle, check-circle or the warning triangle */
+h3[data-fatal-error-text]::before, h3.ui_login_message::before {
+	content: "";
+	flex: 0 0 auto;
+	width: 18px;
+	height: 18px;
+	margin-top: 1px;
+	background: var(--text-color-danger);
+	-webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M8 14.25A6.25 6.25 0 1 0 8 1.75a6.25 6.25 0 0 0 0 12.5z'/><path d='M6 6l4 4'/><path d='M10 6l-4 4'/></svg>") center / contain no-repeat;
+	mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M8 14.25A6.25 6.25 0 1 0 8 1.75a6.25 6.25 0 0 0 0 12.5z'/><path d='M6 6l4 4'/><path d='M10 6l-4 4'/></svg>") center / contain no-repeat;
+}
+h3.ui_login_logout::before {
+	background: var(--text-color-success);
+	-webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M8 14.25A6.25 6.25 0 1 0 8 1.75a6.25 6.25 0 0 0 0 12.5z'/><path d='M5.4 8.3l1.8 1.9 3.4-4'/></svg>");
+	mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M8 14.25A6.25 6.25 0 1 0 8 1.75a6.25 6.25 0 0 0 0 12.5z'/><path d='M5.4 8.3l1.8 1.9 3.4-4'/></svg>");
+}
+h3.ui_login_timed_out::before {
+	background: var(--text-color-warning);
+	-webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M8 2.6l6.4 10.4H1.6L8 2.6z'/><path d='M8 6.8v2.7'/><path d='M8 11.3h.01'/></svg>");
+	mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M8 2.6l6.4 10.4H1.6L8 2.6z'/><path d='M8 6.8v2.7'/><path d='M8 11.3h.01'/></svg>");
+}
+h3[data-fatal-error-text] pre {
+	margin: 0;
+	font-size: 12px;
+	white-space: pre-wrap;
+}
+table.err-stack, table.err-stack.captured {
+	width: 100%;
+	margin: 0 0 var(--card-gap);
+	border: 1px solid var(--border-color);
+	border-radius: var(--radius);
+	border-collapse: separate;
+	border-spacing: 0;
+	background: var(--main-content);
+	box-shadow: var(--shadow);
+}
+table.err-stack > caption.err-head, table.err-stack > caption.err-head.captured {
+	caption-side: top;
+	padding: 0 0 8px var(--title-inset);
+	color: var(--text-color-muted);
+	font: 600 12px/1.45 var(--font-family);
+	letter-spacing: 0.06em;
+	text-align: start;
+	text-transform: uppercase;
+	transform: none;
+}
+table.err-stack > tbody > tr > td, table.err-stack.captured > tbody > tr > td.captured {
+	padding: 4px 16px;
+	border-bottom: 1px solid var(--border-color-lighter);
+	color: var(--text-color);
+	font: 12.5px/1.45 var(--font-family-mono);
+	transform: none;
+}
+table.err-stack > tbody > tr:first-child > td,
+table.err-stack.captured > tbody > tr:first-child > td.captured {
+	height: auto;
+	padding: 8px 16px;
+	border-bottom: 1px solid var(--border-color);
+	color: var(--text-color-muted);
+	font: 600 12px/1.45 var(--font-family);
+	text-transform: none;
+	vertical-align: middle;
+}
+table.err-stack > tbody > tr:first-child > td > b,
+table.err-stack.captured > tbody > tr:first-child > td.captured > b {
+	border: 0;
+	color: inherit;
+	font-weight: inherit;
+}
+table.err-stack > tbody > tr:last-child > td { border-bottom: 0; }
 
 /* ---- Module specific rules ---- */
 

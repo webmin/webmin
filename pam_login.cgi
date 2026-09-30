@@ -59,14 +59,20 @@ if (&miniserv_using_default_cert()) {
     print "<h3>",&text('defcert_error',
     	ucfirst(&get_product_name()), ($ENV{'MINISERV_KEYFILE'} || $miniserv{'keyfile'})),"</h3><p></p>\n";
 	}
+# Message above the form, with classes naming its kind so a theme can
+# draw it as a notice
 if (defined($in{'failed'})) {
-	print "<h3>$text{'session_failed'}</h3><p>\n";
+	print "<h3 class='ui_login_message ui_login_failed'>",
+	      "$text{'session_failed'}</h3><p>\n";
 	}
 elsif ($in{'logout'}) {
-	print "<h3>$text{'session_logout'}</h3><p>\n";
+	print "<h3 class='ui_login_message ui_login_logout'>",
+	      "$text{'session_logout'}</h3><p>\n";
 	}
 elsif ($in{'timed_out'}) {
-	print "<h3>",&text('session_timed_out', int($in{'timed_out'}/60)),"</h3><p>\n";
+	print "<h3 class='ui_login_message ui_login_timed_out'>",
+	      &text('session_timed_out', int($in{'timed_out'}/60)),
+	      "</h3><p>\n";
 	}
 
 print "$text{'pam_prefix'}\n";

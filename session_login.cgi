@@ -74,20 +74,27 @@ if (&miniserv_using_default_cert()) {
 		ucfirst(&get_product_name()),
 		($ENV{'MINISERV_KEYFILE'} || $miniserv{'keyfile'})), 'warn');
 	}
+# Message above the form, with classes naming its kind so a theme can
+# draw it as a notice
 if (defined($in{'failed'})) {
 	if ($in{'twofactor_msg'}) {
-		print "<h3>",&text('session_twofailed',
-			&html_escape($in{'twofactor_msg'})),"</h3><p></p>\n";
+		print "<h3 class='ui_login_message ui_login_failed'>",
+		      &text('session_twofailed',
+			    &html_escape($in{'twofactor_msg'})),"</h3><p></p>\n";
 		}
 	else {
-		print "<h3>$text{'session_failed'}</h3><p></p>\n";
+		print "<h3 class='ui_login_message ui_login_failed'>",
+		      "$text{'session_failed'}</h3><p></p>\n";
 		}
 	}
 elsif ($in{'logout'}) {
-	print "<h3>$text{'session_logout'}</h3><p></p>\n";
+	print "<h3 class='ui_login_message ui_login_logout'>",
+	      "$text{'session_logout'}</h3><p></p>\n";
 	}
 elsif ($in{'timed_out'}) {
-	print "<h3>",&text('session_timed_out', int($in{'timed_out'}/60)),"</h3><p></p>\n";
+	print "<h3 class='ui_login_message ui_login_timed_out'>",
+	      &text('session_timed_out', int($in{'timed_out'}/60)),
+	      "</h3><p></p>\n";
 	}
 print "$text{'session_prefix'}\n";
 
