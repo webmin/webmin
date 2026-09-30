@@ -4897,6 +4897,8 @@ or a hash reference with keys :
 
 =item label - Plain label text.
 
+=item label_html - Pre-built HTML for the label, used instead of label.
+
 =item value - Plain value text, which will be escaped.
 
 =item value_html - Pre-built HTML for the value, used instead of value.
@@ -4924,12 +4926,15 @@ foreach my $row (@$rows) {
 	next if (!defined($row));
 	my ($label, $value, $help);
 	if (ref($row) eq 'HASH') {
-		$label = &html_escape($row->{'label'});
+		# Row given as named parts, escaped unless supplied as HTML
+		$label = defined($row->{'label_html'}) ? $row->{'label_html'}
+			   : &html_escape($row->{'label'});
 		$value = defined($row->{'value_html'}) ? $row->{'value_html'}
 			   : &html_escape($row->{'value'});
 		$help = $row->{'help'};
 		}
 	else {
+		# Row given as a [ label, value-html, help ] array
 		$label = &html_escape($row->[0]);
 		$value = defined($row->[1]) ? $row->[1] : "";
 		$help = $row->[2];

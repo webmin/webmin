@@ -176,6 +176,8 @@ unlike(main::ui_page_start({ 'scheme' => 'bogus"' }),
 				 { 'label' => 'Esc', 'value' => '<b>text</b>' } ]);
 	like($html, qr/<dd[^>]*><b>html<\/b><\/dd>/, 'array row value is HTML');
 	like($html, qr/&lt;b&gt;text&lt;\/b&gt;/, 'hash row value is escaped');
+	like(main::ui_dl([ { 'label_html' => '<i>L</i>', 'value' => 'v' } ]),
+		qr/<dt[^>]*><i>L<\/i><\/dt>/, 'hash row label_html is HTML');
 	like(main::ui_dl([ [ 'L', 'v', 'tip' ] ]), qr/ui_help/,
 		'help text uses the existing ui_help bubble');
 }
