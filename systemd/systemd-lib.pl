@@ -585,10 +585,11 @@ my ($name) = @_;
 return (0, $text{'systemd_ename'}) if (!valid_unit_name($name));
 my $out = backquote_logged(
 	"systemctl start ".quotemeta($name)." 2>&1 </dev/null");
-if ($? && $out =~ /journalctl/) {
+my $rv = $?;
+if ($rv && $out =~ /journalctl/) {
 	$out .= backquote_command("journalctl -xe 2>/dev/null");
 	}
-return (!$?, $out);
+return (!$rv, $out);
 }
 
 =head2 stop_unit(name)
@@ -659,6 +660,33 @@ return (0, $text{'systemd_ename'}) if (!valid_unit_name($name));
 my $out = backquote_logged(
 	"systemctl --full --no-pager show ".quotemeta($name)." 2>&1 </dev/null");
 return (!$?, $out);
+}
+
+=head2 get_unit_state(name)
+
+Returns a fresh hash of LoadState, UnitFileState, ActiveState, SubState and
+MainPID, followed by an error string. Missing units have LoadState not-found;
+command or validation failures return undef and an error. No inventory cache
+is used, so callers can verify a change immediately.
+
+=cut
+sub get_unit_state
+{
+my ($name) = @_;
+return (undef, $text{'systemd_ename'}) if (!valid_unit_name($name));
+my $out = backquote_logged("systemctl show --no-pager ".
+	"--property=LoadState,UnitFileState,ActiveState,SubState,MainPID ".
+	quotemeta($name)." 2>&1 </dev/null");
+my $rv = $?;
+my %state;
+foreach my $line (split(/\r?\n/, $out)) {
+	$state{$1} = $2
+		if ($line =~ /^(LoadState|UnitFileState|ActiveState|SubState|MainPID)=(.*)$/);
+	}
+# systemctl may return a nonzero status for an explicitly missing unit.
+return (undef, $out || "Failed to read systemd unit $name")
+	if (!$state{'LoadState'} || ($rv && $state{'LoadState'} ne 'not-found'));
+return (\%state, undef);
 }
 
 =head2 dependencies_unit(name)

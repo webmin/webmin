@@ -1,4 +1,8 @@
 ## Changelog
+#### 2.671 (October, 2026)
+* Fix two-factor authentication validation to use the Webmin configuration and data directories passed by the caller
+* Fix HTML escaping of module, script and session fields on the Webmin Actions Log details page
+
 #### 2.670 (September 20, 2026)
 * Add new Hardware Information module for inspecting system, firmware, security, PCI, USB, storage, network, processor, sensor, driver, and kernel module details
 * Add options to send Webmin and Usermin errors to the systemd journal [forum.virtualmin.com/t/136562](https://forum.virtualmin.com/t/miniserv-webserver-log-growing-too-big-should-be-rotated/136562)
@@ -20,6 +24,13 @@
 * Fix ACL operations bypassing configured allowed paths in File Manager
 * Fix arbitrary file reads in Software Packages module
 * Fix TLS client certificate verification
+* Fix Apache Webserver module to enforce the allowed directory ACL when manually editing `.htaccess` files
+* Fix Custom Commands module to properly quote parameter values passed to commands and to reject parameters with multiple values
+* Fix DNSSEC NSEC3 zone signing in BIND DNS Server module to use zero additional hash iterations, as recommended by RFC 9276
+* Fix System Logs module to create a new log file only after the log entry passes validation
+* Fix file chooser to lift the root directory restriction only when the chroot is at or under the allowed root
+* Fix password changes from the login page using a configured password change command to fail unless the command prompts for the old password
+* Fix File Manager search results to only include files under the allowed directories
 * Update Backup Configuration module's destination selector to use the new select-based UI
 * Update the Authentic theme to the latest version with various improvements:
   - Add support for HTML signatures in Usermin
