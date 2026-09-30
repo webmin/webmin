@@ -9,6 +9,7 @@ no warnings 'uninitialized';
 our %in;
 our %text;
 our $base_remote_user;
+our $remote_user;
 our %miniserv;
 our %gaccess;
 our $session_id;
@@ -18,15 +19,19 @@ require "gray-theme/gray-theme-lib.pl";
 require "gray-theme/theme.pl";
 ReadParse();
 
-popup_header("Virtualmin");
+# The body class selects the left frame styles
+our $gray_theme_body_class = 'left-frame';
 
 my $is_master;
-# Is this user root?
+# Is this user the master administrator? Virtualmin and Cloudmin each
+# have their own test for it
 if (foreign_available("virtual-server")) {
+	# Virtualmin's master admin
 	foreign_require("virtual-server");
 	$is_master = virtual_server::master_admin();
 	}
 elsif (foreign_available("server-manager")) {
+	# Cloudmin's user with global permissions
 	foreign_require("server-manager");
 	$is_master = server_manager::can_action(undef, "global");
 	}
@@ -41,16 +46,16 @@ my @has = ( );
 my %modmenu;
 foreach my $title (@lefttitles) {
 	push(@has, { 'id' => $title->{'module'},
-		     'desc' => $title->{'desc'},
-		     'icon' => $title->{'icon'} });
+		     'desc' => $title->{'desc'} });
 	$modmenu{$title->{'module'}}++;
 	}
 my $nw = $sects->{'nowebmin'} || 0;
 if ($nw == 0 || $nw == 2 && $is_master) {
+	# The Webmin modules mode is offered unless the settings hide it,
+	# from everyone or from all but the master
 	my $p = get_product_name();
 	push(@has, { 'id' => 'modules',
-		     'desc' => $text{'has_'.$p},
-		     'icon' => '/images/'.$p.'-small.png' });
+		     'desc' => $text{'has_'.$p} });
 	}
 
 # Default left-side mode
@@ -60,35 +65,25 @@ my $mode = $in{'mode'} ? $in{'mode'} :
 	   $sects->{'tab'} && $sects->{'tab'} =~ /mail/ ? "mailboxes" :
 	   $sects->{'tab'} && $sects->{'tab'} =~ /webmin/ ? "modules" :
 	   @leftitems ? $has[0]->{'id'} : "modules";
-
-# Show mode selector
 if (indexof($mode, (map { $_->{'id'} } @has)) < 0) {
+	# A mode that is not offered falls back to the first one
 	$mode = $has[0]->{'id'};
 	}
-if (@has > 1) {
-	print "<div class='mode'>";
-	foreach my $m (@has) {
-		print "<b data-mode='$m->{'id'}'>";
-		if ($m->{'id'} ne $mode) {
-			print "<a href='left.cgi?mode=$m->{'id'}'>";
-			}
-		if ($m->{'icon'}) {
-			my $icon = add_webprefix($m->{'icon'});
-			print "<img src='$icon' alt='$m->{'id'}'> ";
-			}
-		print $m->{'desc'};
-		if ($m->{'id'} ne $mode) {
-			print "</a>\n";
-			}
-		print "</b>\n";
-		}
-	print "</div>";
-	}
-print &ui_switch_theme_javascript();
-print "<div class='wrapper leftmenu'>\n";
-print "<table id='main' width='100%'><tbody><tr><td>\n";
 
-my $selwidth = (get_left_frame_width() - 70)."px";
+# Product shown in the brand block, and its name
+my $prod = foreign_available("server-manager") ? 'cloudmin' :
+	   foreign_available("virtual-server") ? 'virtualmin' :
+	   get_product_name() eq 'usermin' ? 'usermin' : 'webmin';
+my %prodnames = ( 'cloudmin' => $text{'has_vm2'},
+		  'virtualmin' => $text{'has_virtualmin'},
+		  'usermin' => $text{'has_usermin'},
+		  'webmin' => $text{'has_webmin'} );
+
+popup_header($prodnames{$prod});
+
+# The whole menu sits in one panel that floats on the page ground
+print "<div class='menu-panel'>\n";
+
 if ($mode eq "modules") {
 	# Only showing Webmin modules
 	@leftitems = &list_modules_webmin_menu();
@@ -104,6 +99,88 @@ else {
 	@leftitems = grep { $_->{'module'} eq $mode ||
 			    !$titlemods{$_->{'module'}} } @leftitems;
 	}
+@leftitems = grep { $_->{'type'} ne 'title' } @leftitems;
+
+# Lines of text at the start of the menu, such as the login and its level,
+# go into the brand block instead of the menu
+my @userlines;
+while(@leftitems && $leftitems[0]->{'type'} eq 'text') {
+	my $t = shift(@leftitems);
+	if ($t->{'json'} && $t->{'json'}->{'label'}) {
+		# Login line, shown as the username and its level
+		push(@userlines, "<b>".html_escape($remote_user)."</b>".
+			($t->{'json'}->{'level'} ?
+			    " &middot; ".$t->{'json'}->{'level'} : ""));
+		}
+	else {
+		# Any other line of text, as it is
+		push(@userlines, html_escape($t->{'desc'}));
+		}
+	}
+if (@userlines && $leftitems[0]->{'type'} eq 'hr') {
+	# The separator after the text lines goes with them
+	shift(@leftitems);
+	}
+if (!@userlines) {
+	# Without a login line, show the username alone
+	push(@userlines, "<b>".html_escape($remote_user || $base_remote_user).
+			 "</b>");
+	}
+
+# The brand block and the product switch stay at the top of the panel
+# while the menu scrolls under them. The loader is the bar that bounces
+# along the top edge while the right frame loads a page.
+print "<div class='menu-top'>\n";
+print "<div class='menu-loader'></div>\n";
+
+# Show the brand block, with the product logo in a light and a dark
+# version for the stylesheet to pick from
+my $imgdir = add_webprefix("/images");
+my $alt = html_escape($prodnames{$prod});
+print "<div class='menu-brand'>\n";
+print "<a class='menu-brand-name' href='".add_webprefix("/right.cgi").
+      "' target='right' title='$alt'>";
+print "<img class='menu-brand-logo' src='$imgdir/logos/$prod.svg' ".
+      "alt='$alt'>";
+print "<img class='menu-brand-logo menu-brand-logo-dark' ".
+      "src='$imgdir/logos/$prod-dark.svg' alt='$alt'>";
+print "</a>\n";
+# The host and the login, as small lines with icons
+print "<div class='menu-meta'>\n";
+print "<div class='menu-host'>".ui_svg_icon('server', { 'size' => 13 }).
+      "<span>".html_escape(get_display_hostname())."</span></div>\n";
+foreach my $l (@userlines) {
+	print "<div class='menu-user'>".ui_svg_icon('user', { 'size' => 13 }).
+	      "<span>$l</span></div>\n";
+	}
+print "</div>\n";
+print "</div>\n";
+
+# Show mode selector
+if (@has > 1) {
+	print "<div class='mode'>";
+	foreach my $m (@has) {
+		print "<b data-mode='$m->{'id'}'>";
+		if ($m->{'id'} ne $mode) {
+			# The click marks the switch as loading until the
+			# menu has been replaced
+			print "<a href='left.cgi?mode=$m->{'id'}' ".
+			      "onclick=\"this.parentNode.parentNode.".
+			      "classList.add('loading');".
+			      "this.parentNode.classList.add('active')\">";
+			}
+		print $m->{'desc'};
+		if ($m->{'id'} ne $mode) {
+			# Close the link of an unselected mode
+			print "</a>";
+			}
+		print "</b>\n";
+		}
+	print "</div>\n";
+	}
+print "</div>\n";
+print &ui_switch_theme_javascript();
+print "<div class='leftmenu'>\n";
 
 # Show Webmin search form
 my $cansearch = ($gaccess{'webminsearch'} || '') ne '0' &&
@@ -111,7 +188,7 @@ my $cansearch = ($gaccess{'webminsearch'} || '') ne '0' &&
 if ($mode eq "modules" && $cansearch) {
 	push(@leftitems, { 'type' => 'input',
 			   'desc' => ' ',
-			   'tags' => " placeholder='$text{'left_search'}' style='width: 92%;'",
+			   'tags' => " placeholder='$text{'left_search'}'",
 			   'size' => 10,
 			   'name' => 'search',
 			   'cgi' => '/webmin_search.cgi', });
@@ -121,16 +198,14 @@ if ($mode eq "modules" && $cansearch) {
 push(@leftitems, { 'type' => 'item',
 		   'id' => 'home',
 		   'desc' => $text{'left_home'},
-		   'link' => '/right.cgi',
-		   'icon' => '/images/gohome.png' });
+		   'link' => '/right.cgi' });
 
 # Show refresh modules link
 if ($mode eq "modules" && foreign_available("webmin")) {
 	push(@leftitems, { 'type' => 'item',
 			   'id' => 'refresh',
 			   'desc' => $text{'main_refreshmods'},
-			   'link' => '/webmin/refresh_modules.cgi',
-			   'icon' => '/images/reload.png' });
+			   'link' => '/webmin/refresh_modules.cgi' });
 	}
 
 # Show logout link
@@ -139,13 +214,14 @@ if ($miniserv{'logout'} && !$ENV{'SSL_USER'} && !$ENV{'LOCAL_USER'} &&
     $ENV{'HTTP_USER_AGENT'} !~ /webmin/i) {
 	my $logout = { 'type' => 'item',
 		       'id' => 'logout',
-		       'target' => 'window',
-		       'icon' => '/images/stock_quit.png' };
+		       'target' => 'window' };
 	if ($main::session_id) {
+		# Session logins can log out
 		$logout->{'desc'} = $text{'main_logout'};
 		$logout->{'link'} = '/session_login.cgi?logout=1';
 		}
 	else {
+		# Other logins can only switch to another user
 		$logout->{'desc'} = $text{'main_switch'};
 		$logout->{'link'} = '/switch_user.cgi';
 		}
@@ -157,76 +233,44 @@ if ($ENV{'HTTP_WEBMIN_SERVERS'}) {
 	push(@leftitems, { 'type' => 'item',
 			  'desc' => $text{'header_servers'},
 			  'link' => $ENV{'HTTP_WEBMIN_SERVERS'},
-			  'icon' => '/images/webmin-small.gif',
 			  'target' => 'window' });
 	}
 
 show_menu_items_list(\@leftitems, 0);
 
-print "</td></tr></tbody></table>\n";
-print <<EOF;
+print "</div>\n";
+print "</div>\n";
+
+# The loader starts on a click or a form submission aimed at the right
+# frame and stops when the new page there reports, through the functions
+# below, that it has loaded; a stuck loader stops on its own after 20
+# seconds
+print <<'EOF';
 <script type='text/javascript'>
 (function() {
-	var imgs = document.querySelectorAll('img[src]'),
-		mailfolders = 0;
-	imgs.forEach(function(img) {
-		var i = document.createElement("i");
-		if (img.src) {
-			if (img.src.includes('webmin-small.png')) {
-				i.classList.add('ff', 'ff-webmin');
-			} else if (img.src.includes('usermin-small.png')) {
-				i.classList.add('ff', 'ff-webmin', 'ff-usermin');
-			} else if (img.src.includes('virtualmin.png')) {
-				i.classList.add('ff', 'ff-virtualmin');
-			} else if (img.src.includes('vm2.png')) {
-				i.classList.add('ff', 'ff-cloudmin');
-			} else if (img.src.includes('index.png')) {
-				i.classList.add('ff', 'ff-fw', 'ff-virtualmin-tick');
-			} else if (img.src.includes('graph.png')) {
-				i.classList.add('ff', 'ff-fw', 'ff-chart');
-			} else if (img.src.includes('gohome.png')) {
-				i.classList.add('ff', 'ff-fw', 'ff-home');
-			} else if (img.src.includes('stock_quit.png')) {
-				i.classList.add('ff', 'ff-fw', 'ff-sign-out');
-			} else if (img.src.includes('reload.png')) {
-				i.classList.add('ff', 'ff-fw', 'ff-refresh');
-			} else if (img.src.includes('mail.') && !mailfolders) {
-				i.classList.add('ff', 'ff-mail');
-				mailfolders = 1;
-			} else if (img.src.includes('mail.') && mailfolders) {
-				i.classList.add('ff', 'ff-folder-open');
-			} else if (img.src.includes('address.')) {
-				i.classList.add('ff', 'ff-address-book');
-			} else if (img.src.includes('address.')) {
-				i.classList.add('ff', 'ff-address-book');
-			} else if (img.src.includes('sig.')) {
-				i.classList.add('ff', 'ff-signature');
-			} else if (img.src.includes('changepass.')) {
-				i.classList.add('ff', 'ff-lock');
-			}
-			if (i.classList.length) {
-				img.replaceWith(i);
-			}
-		}
+var root = document.documentElement, timer;
+function start() {
+	root.classList.add('loading-right');
+	clearTimeout(timer);
+	timer = setTimeout(stop, 20000);
+	}
+function stop() {
+	root.classList.remove('loading-right');
+	clearTimeout(timer);
+	}
+window.rightLoading = start;
+window.rightLoaded = stop;
+// Links and forms aimed at the right frame start the loader
+document.addEventListener('click', function(e) {
+	var a = e.target.closest ? e.target.closest('a') : null;
+	if (a && a.target == 'right' && !/^javascript:/.test(a.href)) start();
 	});
-	var inputs = document.querySelectorAll('input[src]');
-	inputs.forEach(function(input) {
-		var b = document.createElement("button"),
-			i = document.createElement("i");
-		if (input.src) {
-			if (input.src.includes('ok.png')) {
-				i.classList.add('ff', 'ff-play-circle');
-				b.type = 'submit';
-				b.classList.add('servers-submit');
-				b.appendChild(i);
-				input.replaceWith(b);
-			}
-		}
+document.addEventListener('submit', function(e) {
+	if (e.target.target == 'right') start();
 	});
 })();
 </script>
 EOF
-print "</div>\n";
 popup_footer();
 
 # show_menu_items_list(&list, indent)
@@ -242,89 +286,100 @@ foreach my $item (@$items) {
 			$it eq 'window' ? '_top' : 'right';
 		my $link = add_webprefix($item->{'link'});
 		if ($item->{'link'} =~ /^(https?):\/\//) {
+			# Links to other sites open in a new window
 			$t = '_blank';
 			$link = $item->{'link'};
 			}
-		if ($item->{'icon'}) {
-			my $icon = add_webprefix($item->{'icon'});
-			print "<div class='linkwithicon".
-			      ($item->{'inactive'} ? ' inactive' : '')."'>".
-			      "<img src='$icon' alt=''>\n";
+		my $cls;
+		if ($item->{'format'} eq 'link-new') {
+			# Creation link shown as a button with a plus
+			$cls = 'menu-create';
+			$item->{'desc'} = ui_svg_icon('plus', { 'size' => 15 }).
+					  " ".$item->{'desc'};
 			}
-		my $cls = $item->{'icon'} ? 'aftericon' :
-		          $indent ? 'linkindented'.
-		                    ($item->{'inactive'} ? ' inactive' : '').
-		                    '' : 'leftlink';
-		print "<div class='$cls'>";
-		print "<a href='$link' target=$t>".
-		      "$item->{'desc'}</a>";
-		print "</div>";
-		if ($item->{'icon'}) {
-			print "</div>";
+		else {
+			# Ordinary link, indented inside a category and muted
+			# when inactive
+			$cls = 'menu-link';
+			$cls .= ' menu-sub' if ($indent);
+			$cls .= ' inactive' if ($item->{'inactive'});
+			if ($item->{'id'} eq 'logout') {
+				# Logout gets an icon and a muted look
+				$cls .= ' menu-logout';
+				$item->{'desc'} = ui_svg_icon('power', { 'size' => 14 }).
+						  " ".$item->{'desc'};
+				}
 			}
-		print "\n";
+		print "<a class='$cls' href='$link' target='$t'>".
+		      "$item->{'desc'}</a>\n";
 		}
 	elsif ($item->{'type'} eq 'cat') {
-		# Start of a new category
+		# Start of a new category, opened when requested by the
+		# frameset page
 		my $c = $item->{'id'};
-		print "<details>";
-		print "<summary><span>$item->{'desc'}</span></summary>";
+		print "<details class='menu-cat'".($in{$c} ? " open" : "").">";
+		print "<summary><span>$item->{'desc'}</span></summary>\n";
 		show_menu_items_list($item->{'members'}, $indent+1);
 		print "</details>\n";
 		}
 	elsif ($item->{'type'} eq 'html') {
 		# Some HTML block
-		print "<div class='leftlink'>",$item->{'html'},"</div>\n";
+		print "<div class='menu-html'>",$item->{'html'},"</div>\n";
 		}
 	elsif ($item->{'type'} eq 'text') {
 		# A line of text
-		print "<div class='leftlink'>",
+		print "<div class='menu-text'>",
 		      html_escape($item->{'desc'}),"</div>\n";
 		}
 	elsif ($item->{'type'} eq 'hr') {
 		# Separator line
-		print "<hr>\n";
+		print "<hr class='menu-divider'>\n";
 		}
 	elsif ($item->{'type'} eq 'menu' || $item->{'type'} eq 'input') {
-		# For with an input of some kind
+		# Form with an input of some kind
 		if ($item->{'cgi'}) {
+			# The form submits to the item's CGI in the right frame
 			my $cgi = add_webprefix($item->{'cgi'});
-			print "<form action='$cgi' target=right>\n";
+			print "<form class='menu-form' action='$cgi' ".
+			      "target='right'>\n";
 			}
 		else {
-			print "<form>\n";
+			# Without a CGI, the form reloads this menu with the
+			# new value
+			print "<form class='menu-form'>\n";
 			}
 		foreach my $h (@{$item->{'hidden'}}) {
 			print ui_hidden(@$h);
 			}
 		print ui_hidden("mode", $mode);
-		print "<div class='leftlink'>";
-		print $item->{'desc'},"\n";
+		my $label = $item->{'desc'} =~ /\S/ ? $item->{'desc'}
+						     : $text{'left_'.$item->{'name'}};
+		if ($label) {
+			# Small caps label above the field
+			print "<label class='menu-label' for='".
+			      html_escape($item->{'name'})."'>$label</label>\n";
+			}
+		print "<div class='menu-field'>\n";
 		if ($item->{'type'} eq 'menu') {
+			# A drop-down that submits as soon as it changes
 			my $sel = "";
 			if ($item->{'onchange'}) {
+				# Some menus also load a page for the chosen
+				# value in the right frame
 				$sel = "window.parent.frames[1].location = ".
 				       "\"$item->{'onchange'}\" + this.value";
 				}
 			print ui_select($item->{'name'}, $item->{'value'},
 					 $item->{'menu'}, 1, 0, 0, 0,
-					 "onChange='form.submit(); $sel' ".
-					 "style='width:$selwidth'");
+					 "onChange='form.submit(); $sel'");
 			}
 		elsif ($item->{'type'} eq 'input') {
+			# A text field, such as the search box
 			print ui_textbox($item->{'name'}, $item->{'value'},
 					  $item->{'size'}, undef, undef, $item->{'tags'});
 			}
-		if ($item->{'icon'}) {
-			my $icon = add_webprefix($item->{'icon'});
-			print "<input type=image src='$icon' ".
-			      "border=0 class=goArrow>\n";
-			}
-		print "</div>";
+		print "</div>\n";
 		print "</form>\n";
-		}
-	elsif ($item->{'type'} eq 'title') {
-		# Nothing to print here, as it is used for the tab title
 		}
 	}
 }

@@ -1,5 +1,8 @@
 left_home=System Information
 left_search=Search
+left_dom=Virtual server
+left_sid=Managed system
+left_dname=Virtual server
 
 right_virtver=Virtualmin version $1 or higher is now required by this theme!
 right_vm2ver=Cloudmin version $1 or higher is now required by this theme!
@@ -59,6 +62,11 @@ edright_search=Show search box below left menu?
 edright_fsizedef=Decide automatically
 edright_pixels=pixels
 edright_efsize=Missing or invalid left frame width in pixels
+edright_scheme=Color scheme
+edright_scheme_auto=Follow the browser setting
+edright_scheme_light=Light
+edright_scheme_dark=Dark
+edright_escheme=Invalid color scheme
 edright_ecannot=You are not allowed to customize this page
 
 has_virtualmin=Virtualmin

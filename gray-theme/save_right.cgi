@@ -35,6 +35,9 @@ else {
 	$sect->{'fsize'} = $in{'fsize'};
 	}
 $sect->{'nosearch'} = !$in{'search'};
+# Color scheme, forced or following the browser when empty
+$in{'scheme'} =~ /^(light|dark|)$/ || &error($text{'edright_escheme'});
+$sect->{'scheme'} = $in{'scheme'};
 if ($hasvirt) {
 	$sect->{'dom'} = $in{'dom'};
 	$sect->{'qsort'} = $in{'qsort'};
