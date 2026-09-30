@@ -1,954 +1,2276 @@
-@font-face{font-family:FramedTheme;src:url(data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAu0AA0AAAAAFGQAAAtdAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP0ZGVE0cBmAAgmoIBBEICptQlWELLAABNgIkA1QEIAWDeweBTBtnEFGUjVaC7EdiHCuxHnVI3+/naZvv333qjj4shhMszqK1F4SNBTKXyJJFR+iq6H+C+/fz1vWVzDiZ6q9CD+HCeKkrVHl7S66FxgcLIzBY+bo/rv3qvgz15l8TkCItbd/fDbM7VCR0EqWYSYJG0pLonZSwWC4ZYgZR23P5WeseAIDKAdzee1eUeT7ad6rj2pj8jSYDB4CYRBwBgAlMCT0DE8LFBHBIEEEhKUw1GKCKIX2BztDI5WHyYLq1ytSNEDJiKjgCtGDIcMSQt18x8IEALgCIQF1FVgmqmEAAgHlDFb+KXowM3AspV0pI0fJbbRRwbUOFiHEBj/5lADggeA0xCL4oAAhJkCgeWSzwqBjOwqlAqIfodDHQqqIcEJBAyBBOIZCA9HoYz8xOommFQgT9BFEi6uuT6azaAcPM0aPHDjVq+dsp9NG02iFDjD5TVvXpX1eLe2o9XNwTfZKMidwFNtc7R1Hz7IRkwNGRcWxGZmK+9FomVsemngVl1WpZem1uOvrMfMO65F31ncVXhoc2N0LnQZdxZHi52Djp8Cwd+MXWeZ2jTnvpwNiMKhcXPE3MCBIrdmobYdfmJ0YXDoO6h6zqgGhC4kaCTuEBFWye8q4eFAOulzK98yIxWpnt3FHzsnGPneWBPz6fGy+8NDG10vEhCHT5ijc9HtVZLBnl0SFmY1PvUorZeHHBCBWVkIwXmHkp8P9mAvgTJKJ2Bol3TvQPpRzVya+bFfX+aTkgEmJsqm4ZZf7RJWGEs/hju4Si/u2el2Y0Vz3zWnDIf5ZKGWHn+VH3jxupPwjO1UDp2IXPTnlVXHE0u85bnbJeewy9pTrcCv5Jn2osO86bxA3U+aPQ6o6ip1SzvIn/Q27YKo5cEGldevAvz4065NGLKJVY8ZsHZbxkWC43GeXxudMFAv5JLiZYNqpUms3KhINuAmP1F5es1nghlNL/VF58MZjQyp3Frf8ptg+JEEwp4POPhLggPOUIm7tnH3PxOzaV36s3JOW+YJ57nUqi2GQHQ4IZAEhFtFjx9gLRW8APEKISdicKYxaCps9l0M2/Uvuzt7OHEPajBz0PcghrpR6Nfyf0v5oCZbRnBmJ5ElG+rDRtjv1HECqFmdjuxZjlu3ydc0RdO0CzUo5AfVtgplZWZ8bLTvvKMUMbttHlzHcjqr+dczuupNz3DrHxjq2doin4/D0cM+OdbqskGhxUkjIAmhleHcvNolp6FfZcC/fOxoR0n5nMpd84fROBAWuo1uDf210u0wbuJdHgcYMf6XP/BXtFDnyBj3BUS+XUr46xt94CafuYN5Pz06Ze+J0JYeFzCyrLE6W+MmNjIVHjgk2q152MDi+I9Q8u2lpsbPymKc1I5loxrmOt+pkezDu/zub6ru8+ceVnQ5olQqcRnYMoB8DPscYO/XRCSxR5axY4S62LjfznqEBfwt7kFa5hL8Bgwld6fFxeSD/N+ajz5zmiK47KkfztDNGTA/dWn46zg8RcEVUt75ISQgyylZqbduVN5cZAbz1xX62v1HsaJJJy8AbW2QvQbS2i7sthSBQT4KsCoHyS3bPDa45G//uOXXqMaunRgV71Ga5j9meDZrFg8Sv1Ke8p3Tz31HHLi3V/rdGFcceDfPItK79X3nwYIuJKr/8MC8wRFrfxXlWpWmT9KgGrpPZsmf/Hi++948pnZu36tjysXs4wHfIhK0Rma1WDzldP9TbsufjYoWFKda+nE5JmF3La9V7rrZNQnbtnykD/BUYyvv+KG0+WjPv6rHmqYrN7WlC8p0uTowm+1FuvV+coCvgOKJHIHgY0e5Afhjbw1RXPuuenhqL5EhS8PRfyQ9F2slEH8srlIevWK0IjLROe3ZtVvfDKdeVEqSC2w+4W177Qg2zWjjPTlwvk8/mFCTPThIrqRim/llyFW8cLB01i8GFvRmJUq/RLpOLk/paTAh85bsv0y1jR+EvS2salTA7tpm5WWB3bmdKC7beo8PWNyiz1cvpUhc2xfFvtypL3hh0wf28ji9f170zc4p3ijNctN9iPlqht8R2v4p3ecjltb2Tdg7E/jQNyGxdfQ4Nq4NFqDUU9lvaNrCizV93F5JAw7NL1nEvnrWilwcvTnDPjB3TDNev2mEfnLm9lxH73L6YLes2R4YGhDQemOJdjpoVlqZ/Og2XH1B3ZciJtGTvD7PHY56oc7W8i+zWCRQCBO4PnM5XMPsLP09fPcE7vlDX2H7jc6ULkjH7BM/CBvSHrp64J0EqVXvuvdDofdZoReMPe4Ge+9Q0dNfK2D2Ly8xrUDSqncwRMSrmutNXNFBQ0fA0zukgYqL115pcH61+HC9e3/NVv4p8+G5sLwze/hk4/8sjKGFUPjk/VKyLLayrRlMdW9qGGndTYLKVZeX0sLnL6peOh4Ytnzkl2XB834v64YffTSty1pT0LXEOd7s5fH5iSsmOUiojChMIIJRNWluiuZYq4syfzhDwR+hQX0/epFcUdOxb3NTJWUPfpTlmlvUZfpUOpn7ziXX5xvTXqA0JmP3OA2ccID0Ss8uTn39dCCnH5r8QhiY4uXe0scjm7FA7N67RY7RR25s/h4+iZL/bOc82rtTsvd6yUnlN0mYSomc/3zl3Xv6fSWzKnu9NVhNpPCVnGX8tHTelF8T3CeAVB8sUB3YTdLgzw8KleQra96tkzcmZsnjyJukB3pC9Qhqa/2yTgceLk2UUy0QO96KBIIxrowX2kwYC27jrURd5UpUM5sw11zLILbxcIPgpGcH0mPonGYIFYh45jgZbCPIptw7O3Mlqh8CkUIpp+SPWnPvYvKSgv8Mgp6YPhw8x4Y4o3dUuKBRtrR9vQHoZ0bnASD+B2aHClw2/lXOWvuLcntzuHDnVuP+mSlJRtrI8BGWVvDCNsLrpz6NZTVKxUJu0cmuh63dwcl+E1rlTvSImTtgtYK3Q/V0yclFWk8CiKsiKG3TSPzGydNih7+EpVjR2hrsROWdBhtCKi0JpClWjZEirVadPHSGfJmspnrX7SOj9f+ZL81UCWOk+VUBcotnjPXq0ntqe2Is7MjmJ7sj1iK7XUA6qYegDOLS96HDaJ6gjli+V+Y2d73vUjTkbjunpFXGwZ11kmRsqYN+sPP9svmNLFOXN5O9wufVW73PVNODmxKTaB533p+SnjprbpUvpPsZTFfMFw0Ohb6diRhb0tELlANTHT5eqJI2QeHmHoxfaI7av1xO7QVsT1ZUex+on9N278yW6jP2QaV44kTBWGsaNeR7MeNnPAgEy2Jbv9+YQvb76GM6pHN+2jKlSXgACAwE+ryXMkuwWBPmsrD8MH0xYu575hSRICbCH7xBwyEs9Ffx0JEhBA9KPx+8pKKiVZ3/g0WfVY4y/wTRv8nKzUPlwwmJqDR5Q0aITfE+hP+48RKkGoPWjAApWOJqsi/mzgVwYiiPhIqF0OD7gjF1dZBr6BlNeNJ7sG/vY+EAD8pxixBp8g+Apy7XaIUSHUBR2IFDFsRJIQlJUMAQ11ZATwoJGMBBZ2AKbxdxkHhEhVmgs0sgJpWGJBUigAlyEIBq2MADEUykgoheaAOX4o40AoIrbLhWAUBznQCbpCd1CDFXpBS+jWhA4ZB99iEKy9Wj75AkxCdNa0N68FlENrRcu17wpYi9/Z8ACuTp4fekD7qZK6AvybLoPFo4761YDfI16eCXRgyCAj6ni5+mEwSkhSHE2QhAwUHPw0iOCLXf0t1SadQZ2h3gLaKGc0JhlNSa+RumGTUT06hdAN2myidnW6zQqBV/4TN+oM6sUYnsAmDQwFEwghCAAm5Nw/CSTCiIO4iIf4SIAoRCMhEiExkiApkiE5LvY4nYTdxevRsU2OwWDIsBGbsBmn4XRsw3bswNnSHFujARuxiTMDAAA=) format('woff2');font-weight:400;font-style:normal}.ff{display:inline-block;font:normal normal normal 14px/1 FramedTheme;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.ff-lg{font-size:1.33333333em;line-height:.75em;vertical-align:-15%}.ff-2x{font-size:2em}.ff-3x{font-size:3em}.ff-4x{font-size:4em}.ff-5x{font-size:5em}.ff-fw{width:1.28571429em;text-align:center}.ff-ul{padding-left:0;margin-left:2.14285714em;list-style-type:none}.ff-ul>li{position:relative}.ff-li{position:absolute;left:-2.14285714em;width:2.14285714em;top:.14285714em;text-align:center}.ff-li.ff-lg{left:-1.85714286em}.ff-webmin:before{content:'\f000'}.ff-virtualmin:before{content:'\f001'}.ff-virtualmin-tick:before{content:'\f002'}.ff-cloudmin:before{content:'\f003'}.ff-sign-out:before{content:'\f008'}.ff-refresh:before{content:'\f009'}.ff-home:before{content:'\f00b'}.ff-chart:before{content:'\f00c'}.ff-exclamation-triangle:before{content:'\f00d'}.ff-play-circle:before{content:'\f00e'}.ff-mail:before{content:'\f00f'}.ff-address-book:before{content:'\f010'}.ff-signature:before{content:'\f011'}.ff-lock:before{content:'\f012'}.ff-folder-open:before{content:'\f013'}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.sr-only-focusable:active,.sr-only-focusable:focus{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto}
+/*
+ * gray-theme.css
+ * Stylesheet of the framed theme. The frameset, the left menu, module
+ * pages and the system information page share this one file.
+ *
+ * Colors are custom properties. The light palette is set on :root and
+ * the dark one when a scheme is dark: forced by the theme settings on
+ * body[data-scheme="dark"], kept by the theme script on the html element,
+ * or preferred by the browser when neither marks the scheme light. The
+ * property names are the ones the ui-lib widgets read, so cards, badges
+ * and progress bars follow the same palette without a switch of their own.
+ */
+
+/* ---- Palette ---- */
+
 :root {
-  --text-color-danger: #bc0303;
-  --text-color-success: #3c763d;
-  --text-color-warning: #b58900;
-  --text-color-info: #108eda;
-  --font-family: sans-serif;
-  --font-family-mono: monospace;
+	color-scheme: light;
+	--font-family: system-ui, -apple-system, "Segoe UI", "Helvetica Neue",
+		Helvetica, Arial, sans-serif;
+	--font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo,
+		Consolas, "Liberation Mono", monospace;
+	--font-size: 13px;
+	--radius: 8px;
+	--radius-sm: 6px;
+	--control-height: 32px;
+	/* Room between cards, buttons and blocks, and the same room around a
+	 * page at the top and the sides; the bottom keeps scroll room under
+	 * the last element */
+	--card-gap: 10px;
+	--page-pad-x: var(--card-gap);
+	--page-pad-top: var(--card-gap);
+	--page-pad-bottom: 28px;
+	/* Titles on the ground sit a little in from the card edge, so they
+	 * neither touch the edge nor go as deep as the text inside the
+	 * cards */
+	--title-inset: 4px;
+	--shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+	--shadow-color: rgba(16, 24, 40, 0.10);
+	/* The edge of the floating menu, a soft ring on the ground */
+	--border-color-panel: rgba(16, 24, 40, 0.17);
+	/* Which of two images, one per palette, is shown */
+	--show-light: block;
+	--show-dark: none;
+
+	/* Neutrals: a light gray ground, white surfaces and gray hairlines,
+	 * with near-black text */
+	--bg-color: #dfdfdf;
+	--bg-color-frame: #ffffff;
+	--bg-color-hover: #f0f0f0;
+	--bg-color-switch: #e2e2e2;
+	--bg-color-switch-on: #ffffff;
+	--main-content: #ffffff;
+	--bg-table-header: #f5f5f5;
+	--bg-color-input: #ffffff;
+	--bg-color-disabled: #dfdfdf;
+
+	/* Card edges and lines inside cards; the darker one is for lines and
+	 * controls drawn on the ground itself, which the gray ground would
+	 * otherwise swallow */
+	--border-color: #cfcfcf;
+	--border-color-light: #e2e2e2;
+	--border-color-lighter: #e8e8e8;
+	--border-color-frame: #e2e2e2;
+	--border-color-darker: #b8b8b8;
+	--border-color-input: #bcbcbc;
+	--border-color-focused: #dbe5f5;
+
+	/* Text is black; secondary text keeps at least 12:1 contrast on the
+	 * ground and the surfaces, and muted text at least 9:1 */
+	--text-color: #0b0c0e;
+	--text-color-soft: #1f2226;
+	--text-color-desc: #2b2f35;
+	--text-color-muted: #3d434b;
+	--text-color-disabled: #767d86;
+	--text-color-inverse: #ffffff;
+
+	/* Links are a deep blue, 9.5:1 on the ground, still apart from the
+	 * black text */
+	--link-color: #163b82;
+	--link-color-hover: #0f2b63;
+	--accent-color: #2f66c4;
+	--accent-color-hover: #234d93;
+	--accent-color-soft: #a9c0e8;
+	--element-highlight-bg-color: #e3ebf8;
+	/* Text on a button filled with a notice color: white on the deep
+	 * light-mode colors, the ground color on the bright dark-mode ones.
+	 * The dark palette keeps its own amber for the warning button. */
+	--alert-button-text: var(--text-color-inverse);
+	/* The warning button is a warm orange with dark text: the deep amber
+	 * of the warning text looked muddy on a button, and white text on
+	 * orange would be too faint */
+	--alert-button-warning: #e8933c;
+	--alert-button-warning-text: var(--text-color);
+
+	/* Notice borders are darker than the ground, so a notice keeps a
+	 * visible edge on it */
+	--text-color-success: #1f6f4a;
+	--text-color-success-stressed: #1f5c36;
+	--bg-color-success: #e8f5ec;
+	--border-color-success: #8fcaa3;
+	--text-color-info: #2f66c4;
+	--text-color-info-stressed: #1e3a5c;
+	--bg-color-info: #e9f1fa;
+	--border-color-info: #9dbde6;
+	--text-color-warning: #a86b12;
+	--text-color-warning-stressed: #4f3f0c;
+	--bg-color-warning: #fff6dd;
+	--border-color-warning: #e6c86f;
+	--text-color-danger: #b42323;
+	--text-color-danger-stressed: #7a1f1f;
+	--bg-color-danger: #fdecec;
+	--border-color-danger: #d98f8f;
+	--text-color-neutral-stressed: #4c535d;
+	--bg-color-neutral: #ececec;
+	--border-color-neutral: #d4d4d4;
+
+	--toggle-bg-color: #d0d5dc;
+	--toggle-thumb-color: #ffffff;
+	--select-arrow: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M2 3.5l3 3 3-3' fill='none' stroke='%236b7684' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
 }
-body {margin: 8px; color: #212121; line-height:1.5em; text-align:left;}
-p { margin-top:4px; }
-table { border-width: 0px;
-  empty-cells: hide;
-  border-collapse: separate;
-  margin:0;
+
+/* The dark palette. The two blocks below must be kept identical: the
+ * first applies when the browser prefers dark and nothing marks the
+ * scheme light, the second when the theme settings or the theme script
+ * mark it dark. */
+@media (prefers-color-scheme: dark) {
+	html:not([data-scheme="light"]) body:not([data-scheme="light"]) {
+		color-scheme: dark;
+		--shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+		--shadow-color: rgba(0, 0, 0, 0.4);
+		--border-color-panel: #30353d;
+		--show-light: none;
+		--show-dark: block;
+		--bg-color: #15171b;
+		--bg-color-frame: #1a1d22;
+		--bg-color-hover: #262a30;
+		--bg-color-switch: #262a30;
+		--bg-color-switch-on: #363b43;
+		--main-content: #1e2126;
+		--bg-table-header: #23262c;
+		--bg-color-input: #1b1e23;
+		--bg-color-disabled: #23262c;
+		--border-color: #2e333a;
+		--border-color-light: #2a2f36;
+		--border-color-lighter: #262a30;
+		--border-color-frame: #2a2f36;
+		--border-color-darker: #4d545e;
+		--border-color-input: #4d545e;
+		--border-color-focused: rgba(106, 168, 240, 0.3);
+		--text-color: #e6e8ea;
+		--text-color-soft: #c8ced5;
+		--text-color-desc: #a7b0ba;
+		--text-color-muted: #99a3ae;
+		--text-color-disabled: #6b7581;
+		--text-color-inverse: #ffffff;
+		--link-color: #6aa8f0;
+		--link-color-hover: #8fc0f3;
+		--accent-color: #3d6fc2;
+		--accent-color-hover: #5a8ad8;
+		--accent-color-soft: #3d5f8a;
+		--element-highlight-bg-color: #26395a;
+		--alert-button-text: var(--bg-color);
+		--alert-button-warning: #e0a63c;
+		--alert-button-warning-text: var(--bg-color);
+		--text-color-success: #7ec563;
+		--text-color-success-stressed: #8fd376;
+		--bg-color-success: rgba(126, 197, 99, 0.13);
+		--border-color-success: rgba(126, 197, 99, 0.5);
+		--text-color-info: #6aa8f0;
+		--text-color-info-stressed: #8fc0f3;
+		--bg-color-info: rgba(106, 168, 240, 0.13);
+		--border-color-info: rgba(106, 168, 240, 0.5);
+		--text-color-warning: #e0a63c;
+		--text-color-warning-stressed: #eab54f;
+		--bg-color-warning: rgba(224, 166, 60, 0.13);
+		--border-color-warning: rgba(224, 166, 60, 0.5);
+		--text-color-danger: #ef7b6f;
+		--text-color-danger-stressed: #f28c82;
+		--bg-color-danger: rgba(239, 123, 111, 0.13);
+		--border-color-danger: rgba(239, 123, 111, 0.5);
+		--text-color-neutral-stressed: #b6bec7;
+		--bg-color-neutral: #272b31;
+		--border-color-neutral: #3c424b;
+		--toggle-bg-color: #4d545e;
+		--toggle-thumb-color: #e6e8ea;
+		--select-arrow: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M2 3.5l3 3 3-3' fill='none' stroke='%2399a3ae' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+	}
+	html:not([data-scheme="light"]) body:not([data-scheme="light"])
+	:is(.ui_page, .ui_multi, .ui_toggle) {
+		color-scheme: dark;
+	}
+	/* The root follows its body, so the scrollbars and the canvas behind
+	 * the page are dark as well */
+	html:not([data-scheme="light"]):has(> body:not([data-scheme="light"])) {
+		color-scheme: dark;
+	}
+	/* The frameset page, in the dark ground color */
+	html:not([data-scheme="light"]):has(> frameset) {
+		color-scheme: dark;
+		background: #15171b;
+	}
 }
-table.formsection, table.ui_table, table.loginform {
-  border-collapse: separate;
-  border-collapse: collapse;
-  border: 1px solid #FFFFFF;
-  width: 100%;
+html[data-scheme="dark"] body, body[data-scheme="dark"] {
+	color-scheme: dark;
+	--shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+	--shadow-color: rgba(0, 0, 0, 0.4);
+	--border-color-panel: #30353d;
+	--show-light: none;
+	--show-dark: block;
+	--bg-color: #15171b;
+	--bg-color-frame: #1a1d22;
+	--bg-color-hover: #262a30;
+	--bg-color-switch: #262a30;
+	--bg-color-switch-on: #363b43;
+	--main-content: #1e2126;
+	--bg-table-header: #23262c;
+	--bg-color-input: #1b1e23;
+	--bg-color-disabled: #23262c;
+	--border-color: #2e333a;
+	--border-color-light: #2a2f36;
+	--border-color-lighter: #262a30;
+	--border-color-frame: #2a2f36;
+	--border-color-darker: #4d545e;
+	--border-color-input: #4d545e;
+	--border-color-focused: rgba(106, 168, 240, 0.3);
+	--text-color: #e6e8ea;
+	--text-color-soft: #c8ced5;
+	--text-color-desc: #a7b0ba;
+	--text-color-muted: #99a3ae;
+	--text-color-disabled: #6b7581;
+	--text-color-inverse: #ffffff;
+	--link-color: #6aa8f0;
+	--link-color-hover: #8fc0f3;
+	--accent-color: #3d6fc2;
+	--accent-color-hover: #5a8ad8;
+	--accent-color-soft: #3d5f8a;
+	--element-highlight-bg-color: #26395a;
+	--alert-button-text: var(--bg-color);
+	--alert-button-warning: #e0a63c;
+	--alert-button-warning-text: var(--bg-color);
+	--text-color-success: #7ec563;
+	--text-color-success-stressed: #8fd376;
+	--bg-color-success: rgba(126, 197, 99, 0.13);
+	--border-color-success: rgba(126, 197, 99, 0.5);
+	--text-color-info: #6aa8f0;
+	--text-color-info-stressed: #8fc0f3;
+	--bg-color-info: rgba(106, 168, 240, 0.13);
+	--border-color-info: rgba(106, 168, 240, 0.5);
+	--text-color-warning: #e0a63c;
+	--text-color-warning-stressed: #eab54f;
+	--bg-color-warning: rgba(224, 166, 60, 0.13);
+	--border-color-warning: rgba(224, 166, 60, 0.5);
+	--text-color-danger: #ef7b6f;
+	--text-color-danger-stressed: #f28c82;
+	--bg-color-danger: rgba(239, 123, 111, 0.13);
+	--border-color-danger: rgba(239, 123, 111, 0.5);
+	--text-color-neutral-stressed: #b6bec7;
+	--bg-color-neutral: #272b31;
+	--border-color-neutral: #3c424b;
+	--toggle-bg-color: #4d545e;
+	--toggle-thumb-color: #e6e8ea;
+	--select-arrow: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M2 3.5l3 3 3-3' fill='none' stroke='%2399a3ae' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
 }
-table.ui_table .ui_table {
-  border: none;
+html[data-scheme="dark"] body :is(.ui_page, .ui_multi, .ui_toggle),
+body[data-scheme="dark"] :is(.ui_page, .ui_multi, .ui_toggle) {
+	color-scheme: dark;
 }
-table.shrinkwrapper > tbody > tr > td > .ui_table {
-  table-layout: fixed;
+html[data-scheme="dark"], html:has(> body[data-scheme="dark"]) {
+	color-scheme: dark;
 }
-img, a img { border:0; }
-tr.row0 {background-color:#e8e8ea;}
-tr.row1 {background-color:#f8f8fa;}
-table.formsection thead, table.sortable thead, table.ui_table thead, table.loginform thead {
-background-color:#d0e0fc;
-border:0px;
-text-align:left;
+html[data-scheme="dark"]:has(> frameset) {
+	color-scheme: dark;
+	background: #15171b;
 }
-table.ui_table thead td {
-  padding: 0.5px 5px 1px 2px;
+/* A forced light scheme holds the frames to light as well, so a frame
+ * that is still loading never paints dark under a dark system setting */
+html[data-scheme="light"]:has(> frameset) {
+	color-scheme: light;
 }
-table.sortable tbody td {
-  padding: 2px;
+/* The frameset page has no body to carry the palette, so it paints the
+ * ground itself, showing behind a frame that is still loading. It
+ * supports both schemes, so its frames are not held to light. */
+:root:has(> frameset) {
+	color-scheme: light dark;
+	background: var(--bg-color);
 }
-table.ui_table td textarea {line-height:normal; font-family:var(--font-family-mono);}
-table.ui_table td div.barchart * {
-  margin: 0;
+
+/* ---- Base ---- */
+
+/* The root stays unpainted: the body's ground reaches the canvas, and
+ * the dark tokens live on the body */
+html {
+	background: transparent;
 }
-textarea {
-  padding: 4px;
-  resize: vertical;
+body {
+	margin: 0;
+	padding: var(--page-pad-top) var(--page-pad-x) var(--page-pad-bottom);
+	/* The core header sets height:100% inline on html and body, which
+	 * would end the body at the viewport and put the bottom padding
+	 * before the end of a long page */
+	height: auto !important;
+	font-family: var(--font-family);
+	font-size: var(--font-size);
+	line-height: 1.45;
+	color: var(--text-color);
+	background: var(--bg-color);
+	text-align: start;
 }
-table.ui_table thead td * {
-  vertical-align:middle;
-  margin: 0;
-  padding: 0 0 0 1px; 
+/* Kept at type-selector specificity, so that a class on a link can
+ * recolor it and the body's link attributes are ignored */
+a {
+	color: var(--link-color);
+	text-decoration: none;
 }
-table.ui_table dt, table.ui_table dd {
-  padding: 0 2px;
+a:hover {
+	color: var(--link-color-hover);
+	text-decoration: underline;
 }
-table.ui_form_end_buttons td {
-  padding: 6px 3px;
+/* Element defaults */
+img, a img { border: 0; }
+p { margin: 6px 0; }
+h1, h2, h3, h4, h5 {
+	margin: 10px 0 6px;
+	color: var(--text-color);
+	font-weight: 600;
+	line-height: 1.3;
 }
-div.ui_form_end_buttons {
-  padding: 6px 3px;
+h1 { font-size: 18px; }
+h2 { font-size: 15px; }
+h3, h4, h5 { font-size: 13px; }
+b, strong { font-weight: 600; }
+hr {
+	height: 0;
+	margin: 12px 0;
+	border: 0;
+	border-top: 1px solid var(--border-color-darker);
 }
-.ui_form_end_buttons input {
-  padding: 1px;
+code, kbd, samp, tt, pre {
+	font-family: var(--font-family-mono);
+	font-size: 12px;
 }
-.ui_form_value td > b > input+label+tt,
-.ui_form_value td > b > input+label {
-  font-weight: normal !important;
-}
-table.ui_grid_table td {
-  padding: 2px 4px;
-}
-select,
-input {
-  padding: 1px;
+pre { margin: 6px 0; }
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+	font-size: inherit;
 }
 th, td {
-	border: none;
+	border: 0;
+	text-align: start;
 }
-table.formsection tbody, table.sortable tbody, table.ui_table tbody, table.loginform tbody {
-background-color:#f5f5f5;
+font { font-size: inherit; }
+label { cursor: pointer; }
+/* Utility classes printed by ui-lib and by modules */
+.muted { color: var(--text-color-muted); }
+.text-danger { color: var(--text-color-danger); }
+.text-success { color: var(--text-color-success); }
+.text-warning { color: var(--text-color-warning); }
+.text-info { color: var(--text-color-info); }
+.w-100 { width: 100% !important; }
+.field-sizing-content {
+	field-sizing: content !important;
+	min-width: 15px !important;
 }
-a:link, a:visited { color: #0b46ab;
-  text-decoration: none;
+.inherit-color,
+.inherit-color:hover, .inherit-color:active, .inherit-color:focus,
+.inherit-color::before, .inherit-color::after,
+.inherit-color:hover::before, .inherit-color:hover::after,
+.inherit-color:active::before, .inherit-color:active::after,
+.inherit-color:focus::before, .inherit-color:focus::after {
+	color: inherit !important;
 }
-a:hover, a:visited:hover { color: #0b46ab;
-  text-decoration: none;
+/* The warning in the login heading over plain HTTP */
+.not-secure {
+	float: right;
+	color: var(--text-color-danger);
 }
-a.ui-hidden-table-title { color: #212121; }
-title { color: #212121;
-  font-family: var(--font-family);
+/* Sections and tab bodies that the theme scripts show and hide */
+.itemhidden, .opener_hidden { display: none; }
+.itemshown, .opener_shown { display: block; }
+
+/* Small chevron drawn with two borders, used for collapsible headings */
+details > summary {
+	cursor: pointer;
 }
-h1,h2,h3,h4,h5 { color: #212121;
+details > summary::-webkit-details-marker { display: none; }
+details.ui_hidden_table_start > summary::before,
+details.section > summary::after,
+details.menu-cat > summary::after {
+	content: "";
+	flex: 0 0 auto;
+	width: 7px;
+	height: 7px;
+	border-right: 1.5px solid var(--text-color-muted);
+	border-bottom: 1.5px solid var(--text-color-muted);
+	transform: rotate(-45deg);
+	transition: transform 0.12s;
 }
-/* pre { font-size: 77%; } */
-#main { border-style: solid;
-  border:1px solid #FFFFFF;
-  margin:0;
-  padding:0;
+details.ui_hidden_table_start > summary::before {
+	margin-right: 4px;
 }
-table#main td {
-  padding: 4px;
+details.section > summary::after {
+	margin: 0 4px 2px 0;
 }
-tr.mainsel { background-color: #ddffbb; }
-tr.mainhigh { background-color: #ffffbb; }
-tr.mainhighsel { background-color: #bbffcc; }
-.itemhidden { display: none; }
-.itemshown { display:block; }
-.barchart { padding: 1px;
-  border: 1px solid #d9d9d9;
-  white-space: nowrap;
-  /*position:relative;*/
+/* The menu chevron is smaller than the one on cards */
+details.menu-cat > summary::after {
+	width: 5px;
+	height: 5px;
+	margin: 0 5px 1px 0;
 }
-.ui_post_header{ font-size: 116%;
- text-align: center;
- padding: 4px;
+details[open].ui_hidden_table_start > summary::before,
+details[open].section > summary::after,
+details[open].menu-cat > summary::after {
+	transform: rotate(45deg);
 }
-.ui_subheading { font-size: 116%;
-  font-weight: bold;
+
+/* ---- Form controls ---- */
+
+/* Text fields, menus and text areas share one height, edge and radius */
+input[type="text"], input[type="password"], input[type="email"],
+input[type="number"], input[type="search"], input[type="url"],
+input[type="tel"], input[type="date"], input[type="time"],
+input[type="datetime-local"], input:not([type]), select, textarea {
+	box-sizing: border-box;
+	min-height: var(--control-height);
+	padding: 4px 10px;
+	border: 1px solid var(--border-color-input);
+	border-radius: var(--radius-sm);
+	background: var(--bg-color-input);
+	color: var(--text-color);
+	font: inherit;
+	line-height: 1.45;
 }
-hr { border: 0;
-  width: 90%;
-  height: 1px;
-  color: #D9D9D9;
-  background-color: #D9D9D9;
+select { padding: 4px 8px; }
+/* Drop-down selects draw their own arrow, inset from the edge */
+select:not([multiple]):not([size]), select[size="1"]:not([multiple]) {
+	appearance: none;
+	-webkit-appearance: none;
+	padding-right: 28px;
+	background-image: var(--select-arrow);
+	background-repeat: no-repeat;
+	background-position: right 9px center;
+	background-size: 10px 10px;
 }
-table.shrinkwrapper table.ui_table td.ui_form_value > table.ui_table,
-table.wrapper, table.shrinkwrapper {
-  background-color:#D9D9D9;
-  border:1px solid #D9D9D9;
-  border-collapse:collapse;
-  empty-cells: hide;
-  margin:0;
-  padding:0;
+/* List boxes keep their own height */
+select[multiple], select[size]:not([size="1"]) {
+	min-height: 0;
+	padding: 4px;
 }
-table.wrapper table.wrapper, table.shrinkwrapper table.shrinkwrapper {
-  border:none;
-  background-color:#f5f5f5;
+textarea {
+	min-height: 0;
+	padding: 8px 10px;
+	resize: vertical;
 }
-div.wrapper {
-  border:1px solid #D9D9D9;
-  background-color:#F5F5F5;
-  padding:0;
-  margin:0;
+/* Text areas in forms are monospace, for config files and scripts */
+table.ui_table td textarea {
+	line-height: normal;
+	font-family: var(--font-family-mono);
 }
-.tabSelected {
-  background-color:#D0E0FC;
+/* Focus ring in the accent color, and grayed disabled controls */
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+	outline: 0;
+	border-color: var(--accent-color);
+	box-shadow: 0 0 0 3px var(--border-color-focused);
 }
-.tabUnselected {
-  background-color:#D9D9D9;
+input:disabled, select:disabled, textarea:disabled {
+	background: var(--bg-color-disabled);
+	color: var(--text-color-disabled);
 }
-.tabUnselected sup,
-.tabSelected sup {
-    vertical-align: text-top;
-    margin-top: -4px;
-    font-size: 70%;
-    display: inline-block;
-    margin-right: -3px;
+/* Checkboxes and radios in the accent color, with room after a label */
+input[type="checkbox"], input[type="radio"] {
+	width: 15px;
+	height: 15px;
+	margin: 0 5px 0 0;
+	vertical-align: -3px;
+	accent-color: var(--accent-color);
 }
-.goArrow { margin-bottom: -4px; }
-.ui_checked_columns .ui_checked_checkbox {
-  min-width: 20px;
+input[type="checkbox"] + label, input[type="radio"] + label {
+	margin-right: 14px;
 }
-.ui_form_label{
-  text-align:right;
-  vertical-align:top;
+/* A checkbox or radio right after a button, a field or a menu keeps its
+ * distance */
+input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]) + input[type="checkbox"],
+select + input[type="checkbox"],
+textarea + input[type="checkbox"],
+button + input[type="checkbox"],
+input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]) + input[type="radio"],
+select + input[type="radio"],
+textarea + input[type="radio"],
+button + input[type="radio"] {
+	margin-left: 10px;
 }
-.ui_form_pair .ui_form_value {
-  padding-left: 8px;
+input[type="file"] { font: inherit; }
+/* Labels of checkboxes inside bold cells stay plain */
+.ui_form_value td > b > input + label + tt,
+.ui_form_value td > b > input + label {
+	font-weight: normal !important;
 }
-.ui_form_pair td {padding:4px;}
-.ui_form_pair td table.ui_radio_table tr td {padding:2px;}
-.ui_form_pair td table tr td {padding:0px;}
-.ui_radio_table tr td {padding:2px;}
-.ui_buttons_table tr td {padding:4px;}
-/* left menu */
-.mode {
-  left: auto;
-  right: auto;
+
+/* ---- Buttons ---- */
+
+/* Every button, from the core classes to plain button tags, is a white
+ * pill with a gray edge */
+input[type="submit"], input[type="button"], input[type="reset"], button,
+input.ui_submit, input.ui_button, input.ui_reset {
+	display: inline-block;
+	box-sizing: border-box;
+	min-height: var(--control-height);
+	margin: 1px 0;
+	padding: 5px 14px;
+	border: 1px solid var(--border-color-darker);
+	border-radius: var(--radius-sm);
+	background: var(--main-content);
+	color: var(--text-color);
+	font: inherit;
+	font-weight: 500;
+	line-height: 1.45;
+	cursor: pointer;
 }
-.linkwithicon {
-  position: relative;
-  white-space: nowrap;
-  left: 2px;
-  width: 16px;
-  padding-top: 3px;
-  padding-bottom: 3px;
+input[type="submit"]:hover, input[type="button"]:hover,
+input[type="reset"]:hover, button:hover,
+input.ui_submit:hover, input.ui_button:hover, input.ui_reset:hover {
+	background: var(--bg-color);
+	border-color: var(--text-color-disabled);
+	text-decoration: none;
 }
-.linkwithicon img, .mode img {
-  margin-bottom: -2px;
+input[type="submit"]:active, input[type="button"]:active,
+input[type="reset"]:active, button:active {
+	background: var(--bg-color-switch);
 }
-.leftlink {
-  position: relative;
-  left: 4px;
-  right: 4px;
-  line-height: 1.5em;
+input[type="submit"]:focus-visible, input[type="button"]:focus-visible,
+input[type="reset"]:focus-visible, button:focus-visible {
+	outline: 0;
+	border-color: var(--accent-color);
+	box-shadow: 0 0 0 3px var(--border-color-focused);
 }
-.linkindented {
-  border: none;
-  position: relative;
-  margin-right: 2px;
-  margin-left: 20px;
-  line-height: 1.5em;
+input[type="submit"]:disabled, input[type="button"]:disabled,
+input[type="reset"]:disabled, button:disabled {
+	background: var(--bg-color-disabled);
+	border-color: var(--border-color);
+	color: var(--text-color-disabled);
+	cursor: default;
 }
-.linkwithicon.inactive a,
-.linkindented.inactive a {
-  /* pointer-events: none; */
-  filter: grayscale(1);
-  opacity: .75;
+
+/* The first button of a form is the primary action, unless it deletes */
+.ui_form_end_buttons td:first-child > input.ui_submit:not([name*="delete"]):not([name*="remove"]),
+.ui_form_end_side_left .ui_form_end_buttons td:first-child > input.ui_submit,
+input.ui_submit.primary, button.primary {
+	background: var(--accent-color);
+	border-color: var(--accent-color-hover);
+	color: var(--text-color-inverse);
+	font-weight: 600;
 }
-.linkindented.inactive {
-  white-space: pre;
+.ui_form_end_buttons td:first-child > input.ui_submit:not([name*="delete"]):not([name*="remove"]):hover,
+.ui_form_end_side_left .ui_form_end_buttons td:first-child > input.ui_submit:hover,
+input.ui_submit.primary:hover, button.primary:hover {
+	background: var(--accent-color-hover);
+	border-color: var(--accent-color-hover);
 }
-.linkwithicon.inactive sub,
-.linkindented.inactive sub {
-  vertical-align: top;
+
+/* Destructive buttons are outlined in red */
+input.ui_submit[name="delete"], input.ui_submit[name^="delete"],
+input.ui_submit[name$="delete"], input.ui_submit[name="remove"],
+input.ui_submit.danger, button.danger {
+	background: var(--main-content);
+	border-color: var(--border-color-danger);
+	color: var(--text-color-danger);
+	font-weight: 500;
 }
-.aftericon {
-  display: inline;
+input.ui_submit[name="delete"]:hover, input.ui_submit[name^="delete"]:hover,
+input.ui_submit[name$="delete"]:hover, input.ui_submit[name="remove"]:hover,
+input.ui_submit.danger:hover, button.danger:hover {
+	background: var(--bg-color-danger);
+	border-color: var(--text-color-danger);
 }
-.domainmenu {
-  white-space: nowrap;
-  position: relative;
-  left: 4px;
-  padding-top: 2px;
+
+/* Buttons under a form sit at the left, with the same 11px gap between
+ * them as the footer bar keeps above and below them, whatever alignment
+ * the core gave their cells; the spacer cells between them are dropped */
+table.ui_form_end_buttons { margin: 4px 0 var(--card-gap); }
+table.ui_form_end_buttons > tbody > tr {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 11px;
 }
-br[data-x-br] {
-  content: "";
-  margin: 2em;
-  display: block;
-  font-size: 42%;
+table.ui_form_end_buttons td {
+	display: block;
+	padding: 0;
+	text-align: start;
 }
+table.ui_form_end_buttons td:not(:has(*)) { display: none; }
+div.ui_form_end_buttons { padding: 6px 0; }
+/* Buttons split between the left and the right of a form */
+.ui_form_end_side_by_side {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+/* Rows of action buttons with a description (ui_buttons_start) */
+table.ui_buttons_table {
+	width: 100%;
+	margin: 0 0 var(--card-gap);
+	background: var(--main-content);
+	border: 1px solid var(--border-color);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+tr.ui_buttons_row > td {
+	padding: 10px 16px;
+	border-top: 1px solid var(--border-color-lighter);
+	vertical-align: middle;
+}
+tr.ui_buttons_row:first-child > td { border-top: 0; }
+td.ui_buttons_label {
+	width: 1%;
+	padding-right: 16px;
+	white-space: nowrap;
+}
+td.ui_buttons_label > input.ui_submit { margin-right: 10px; }
+td.ui_buttons_label input.ui_button { margin-left: 6px; }
+td.ui_buttons_label label { margin-right: 6px; }
+td.ui_buttons_value {
+	padding-left: 16px;
+	color: var(--text-color-desc);
+}
+tr.ui_buttons_row.disabled > td { opacity: 0.6; }
+
+/* Rows of links above or below tables (ui_links_row): each link is a
+ * small button, styled with the header buttons below, and the bar
+ * separators between them are dropped */
+.ui_links_row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px 8px;
+	margin: 0 0 8px;
+}
+.ui_links_sep { display: none; }
+td[align="right"] > .ui_links_row { justify-content: flex-end; }
+/* Inside a table cell, such as the buttons of a login in the dashboard
+ * list, the row has no margin, so it centers with the cell's text */
+table.ui_columns td > .ui_links_row { margin: 0; }
+.ui_link_pagination.disabled {
+	filter: grayscale(1) opacity(0.6);
+	pointer-events: none;
+}
+
+/* ---- Module page header ---- */
+/* The header table printed by header() becomes the page title with the
+ * module links beside it, on the page ground. It bleeds over the page
+ * padding and stays at the top while the page scrolls. */
+
+table.header {
+	position: sticky;
+	top: 0;
+	z-index: 5;
+	display: block;
+	width: auto;
+	margin: calc(-1 * var(--page-pad-top)) calc(-1 * var(--page-pad-x)) 14px;
+	padding: 14px var(--page-pad-x) 12px;
+	background: var(--bg-color);
+}
+table.header > tbody { display: block; }
+/* The cells sit 8px apart, like the buttons inside them; the title cell
+ * keeps a little more distance from the first button */
+table.header > tbody > tr {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+table.header > tbody > tr > td {
+	width: auto;
+	padding: 0;
+	vertical-align: middle;
+}
+/* The status line above the title, when Webmin is set to show it */
+#headln1 {
+	flex: 1 1 100%;
+	text-align: center;
+	font-size: 12px;
+	color: var(--text-color-muted);
+}
+#headln2c {
+	order: 1;
+	flex: 1 1 auto;
+	min-width: 0;
+	padding-left: var(--title-inset);
+	padding-right: 10px;
+	text-align: start;
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: -0.3px;
+	line-height: 1.3;
+}
+#headln2c font { font-size: inherit; }
+/* The lighter line under a bold title starts a couple of pixels further
+ * in, so it reads as even with the title's first letter */
+.ui_header_below {
+	display: block;
+	margin-top: 2px;
+	padding-left: 2px;
+	font-size: 13px;
+	font-weight: 400;
+	letter-spacing: 0;
+	color: var(--text-color-muted);
+}
+#headln2c br:has(+ .ui_header_below) { display: none; }
+#headln2l { order: 2; }
+#headln2r { order: 3; }
+#headln2l, #headln2r {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px 8px;
+	font-size: 12.5px;
+	font-weight: 400;
+	white-space: nowrap;
+}
+#headln2l br, #headln2r br { display: none; }
+#headln2l:empty, #headln2r:empty { display: none; }
+/* The module links beside the title are small buttons; the flex box
+ * centers the icon and the text in the 26px height */
+#headln2l a, #headln2r a, .page-action, .ui_links_row > a {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	box-sizing: border-box;
+	min-height: 26px;
+	padding: 0 10px;
+	border: 1px solid var(--border-color-darker);
+	border-radius: var(--radius-sm);
+	background: var(--main-content);
+	color: var(--text-color);
+	font-size: 12.5px;
+	font-weight: 500;
+	line-height: 1.2;
+	white-space: nowrap;
+	text-decoration: none;
+}
+#headln2l a:hover, #headln2r a:hover, .page-action:hover,
+.ui_links_row > a:hover {
+	background: var(--bg-color);
+	border-color: var(--text-color-disabled);
+	color: var(--text-color);
+	text-decoration: none;
+}
+#headln2r b { font-weight: 600; }
+/* Text under the title, such as the domain a page is about, sits right
+ * below it */
+table.header:has(+ .ui_post_header) {
+	margin-bottom: 0;
+	padding-bottom: 2px;
+}
+.ui_post_header {
+	margin: 0 0 12px;
+	padding-left: calc(var(--title-inset) + 2px);
+	color: var(--text-color-desc);
+}
+/* Subheadings between groups on a page are small capital labels, like
+ * the labels in the menu and on the tiles, inset like the page title */
+.ui_subheading {
+	margin: 20px 0 8px;
+	padding-left: var(--title-inset);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--text-color-muted);
+}
+.ui_subheading:first-child { margin-top: 0; }
+
+/* Return links printed under a page by theme_footer */
+.ui_footer_links {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 8px;
+	margin: 12px 0 0;
+	color: var(--text-color-muted);
+}
+.ui_footer_links svg { vertical-align: middle; }
+/* Paging arrows */
+.ui_nav_link svg { vertical-align: middle; }
+.ui_nav_link_disabled { color: var(--text-color-disabled); }
+
+/* ---- Notices ---- */
+
+.ui_alert_box, .alert {
+	box-sizing: border-box;
+	margin: 0 0 10px;
+	padding: 10px 14px;
+	line-height: 1.45;
+	border: 1px solid var(--border-color-info);
+	border-radius: var(--radius);
+	background: var(--bg-color-info);
+	color: var(--text-color-info-stressed);
+}
+.alert-success {
+	background: var(--bg-color-success);
+	border-color: var(--border-color-success);
+	color: var(--text-color-success-stressed);
+}
+.alert-warning {
+	background: var(--bg-color-warning);
+	border-color: var(--border-color-warning);
+	color: var(--text-color-warning-stressed);
+}
+.alert-danger, .alert-danger-fatal {
+	background: var(--bg-color-danger);
+	border-color: var(--border-color-danger);
+	color: var(--text-color-danger-stressed);
+}
+.ui_alert_box center, .alert center { text-align: inherit; }
+.ui_alert_box a, .alert a { color: inherit; text-decoration: underline; }
+
+/* Notices drawn by the theme: an icon, the text, and any trailing
+ * buttons on the same line as the text. The icon is as tall as a line
+ * of text, so it sits centered on the first line when there are more */
+.ui_alert_box, .alert:has(> .ui_alert_icon) {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+}
+.ui_alert_icon {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	height: 1.45em;
+	color: var(--text-color-info);
+}
+.alert-success .ui_alert_icon { color: var(--text-color-success); }
+.alert-warning .ui_alert_icon { color: var(--text-color-warning); }
+.alert-danger .ui_alert_icon,
+.alert-danger-fatal .ui_alert_icon { color: var(--text-color-danger); }
+.ui_alert_body {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.ui_alert_body p { margin: 4px 0; }
+.ui_alert_body p:first-child { margin-top: 0; }
+.ui_alert_body p:last-child { margin-bottom: 0; }
+.ui_alert_body form { margin: 0; }
+.ui_alert_body:has(> .ui_alert_actions),
+.ui_alert_body form:has(> .ui_alert_actions) {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 2px 16px;
+}
+/* Buttons in a notice are slim, like the header buttons. With buttons,
+ * the icon and the text line are both as tall as one, so the three
+ * center on one another whether the buttons share the text line or sit
+ * under it */
+.ui_alert_box { --alert-button-height: 26px; }
+.ui_alert_box:has(.ui_alert_actions) > .ui_alert_icon {
+	height: var(--alert-button-height);
+}
+.ui_alert_box:has(.ui_alert_actions) .ui_alert_text {
+	padding: calc((var(--alert-button-height) - 1.45em) / 2) 0;
+}
+/* The text keeps its own width and grows into the rest of the line, so
+ * buttons that fit end at the right; when they do not fit they drop
+ * under the text, at its left edge */
+.ui_alert_text {
+	flex: 1 0 auto;
+	max-width: 100%;
+	min-width: 0;
+}
+.ui_alert_actions {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 6px;
+}
+.ui_alert_actions form { display: contents; }
+/* Buttons printed as a form end table become items of the actions row,
+ * like bare buttons */
+.ui_alert_actions table.ui_form_end_buttons,
+.ui_alert_actions table.ui_form_end_buttons > tbody,
+.ui_alert_actions table.ui_form_end_buttons > tbody > tr,
+.ui_alert_actions table.ui_form_end_buttons td { display: contents; }
+.ui_alert_box table.ui_form_end_buttons { margin: 6px 0 0; }
+.ui_alert_actions input.ui_submit, .ui_alert_actions input.ui_button,
+.ui_alert_actions button,
+.ui_alert_box table.ui_form_end_buttons input.ui_submit {
+	min-height: var(--alert-button-height);
+	margin: 0;
+	padding: 0 10px;
+	font-size: 12.5px;
+	line-height: 1.2;
+}
+/* The first of several buttons in a notice is its main action, filled
+ * in the notice's own color and a shade darker under the mouse. The
+ * buttons are either bare inputs or the cells of a form end table; in
+ * the table the first cell's button is the main one, unless it deletes,
+ * and the selectors outrank the primary button rule of ordinary forms. */
+.ui_alert_box input.ui_submit:first-of-type:not(:last-of-type),
+.ui_alert_box table.ui_form_end_buttons td:first-child > input.ui_submit:not([name*="delete"]):not([name*="remove"]) {
+	background: var(--text-color-info);
+	border-color: transparent;
+	color: var(--alert-button-text);
+	font-weight: 600;
+}
+.ui_alert_box.alert-success input.ui_submit:first-of-type:not(:last-of-type),
+.ui_alert_box.alert-success table.ui_form_end_buttons td:first-child > input.ui_submit:not([name*="delete"]):not([name*="remove"]) {
+	background: var(--text-color-success);
+}
+.ui_alert_box.alert-warning input.ui_submit:first-of-type:not(:last-of-type),
+.ui_alert_box.alert-warning table.ui_form_end_buttons td:first-child > input.ui_submit:not([name*="delete"]):not([name*="remove"]) {
+	background: var(--alert-button-warning);
+	color: var(--alert-button-warning-text);
+}
+.ui_alert_box.alert-danger input.ui_submit:first-of-type:not(:last-of-type),
+.ui_alert_box.alert-danger-fatal input.ui_submit:first-of-type:not(:last-of-type),
+.ui_alert_box.alert-danger table.ui_form_end_buttons td:first-child > input.ui_submit:not([name*="delete"]):not([name*="remove"]),
+.ui_alert_box.alert-danger-fatal table.ui_form_end_buttons td:first-child > input.ui_submit:not([name*="delete"]):not([name*="remove"]) {
+	background: var(--text-color-danger);
+}
+.ui_alert_box input.ui_submit:first-of-type:not(:last-of-type):hover,
+.ui_alert_box table.ui_form_end_buttons td:first-child > input.ui_submit:not([name*="delete"]):not([name*="remove"]):hover {
+	filter: brightness(0.92);
+}
+
+/* ---- Cards ---- */
+/* Forms with a heading, tables of rows, collapsible sections, tab boxes
+ * and icon grids all sit in the same card */
+
+table.shrinkwrapper, table.wrapper, div.wrapper,
+details.ui_hidden_table_start, details.section, div.ui_tabs_box {
+	width: 100%;
+	margin: 0 0 var(--card-gap);
+	background: var(--main-content);
+	border: 1px solid var(--border-color);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+div.wrapper, details.ui_hidden_table_start, details.section,
+div.ui_tabs_box { box-sizing: border-box; }
+table.shrinkwrapper > tbody > tr > td,
+table.wrapper > tbody > tr > td { padding: 0; }
+/* A fixed layout keeps the label and value columns steady whatever the
+ * values hold */
+table.shrinkwrapper > tbody > tr > td > .ui_table { table-layout: fixed; }
+
+/* ---- Forms with a heading (ui_table_start) ---- */
+/* Markup: table.shrinkwrapper > td > table.ui_table with the heading in
+ * thead and the label/value rows in a nested table. The heading is plain
+ * text over a hairline. */
+
+table.ui_table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+table.ui_table td { vertical-align: top; }
+table.ui_table > thead > tr > td,
+table.ui_table > tbody > tr.maintitle > td {
+	padding: 9px 16px;
+	border-bottom: 1px solid var(--border-color-light);
+	font-size: 14px;
+	font-weight: 600;
+	vertical-align: middle;
+}
+table.ui_table > thead > tr > td * { vertical-align: middle; }
+table.ui_table > thead > tr > td b { font-weight: 600; }
+/* The right-hand part of a heading is plain text */
+table.ui_table > thead > tr > td[align="right"] {
+	font-size: 13px;
+	font-weight: 400;
+}
+tr.ui_table_body > td { padding: 8px 16px 12px; }
+/* Label and value cells align at the top in every form table, also in
+ * collapsible sections, whose table has no ui_table class */
+tr.ui_form_pair > td {
+	padding: 4px 3px;
+	vertical-align: top;
+}
+td.ui_form_label {
+	text-align: end;
+	color: var(--text-color-desc);
+}
+td.ui_form_label b, td.ui_form_label label { font-weight: 400; }
+/* Room between a label and its value */
+tr.ui_form_pair .ui_form_value { padding-left: 10px; }
+/* A row without a label, such as a grid of features, starts where a
+ * label would */
+tr.ui_form_pair > .ui_form_value:first-child { padding-left: 3px; }
+/* A row whose value holds a field, menu or button, on its own or in an
+ * inline wrapper, gets an invisible strut of the control height on the
+ * first line of both cells, so the label centers on the control and a
+ * value of several lines keeps its label level with the first one.
+ * Rows of radios or checkboxes, text areas and nested tables keep the
+ * plain top alignment. A select switch widget starts with its menu at
+ * full control height, so only its label gets the strut: one in the
+ * cell would push the whole widget down. */
+tr.ui_form_pair:has(
+	> td.ui_form_value > input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="image"]),
+	> td.ui_form_value > select:not([multiple]):not([size]:not([size="1"])),
+	> td.ui_form_value > button,
+	> td.ui_form_value > :is(span, b, label, nobr, font) > input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="image"]),
+	> td.ui_form_value > :is(span, b, label, nobr, font) > select:not([multiple]):not([size]:not([size="1"]))
+) > :is(td.ui_form_label, td.ui_form_value)::before,
+tr.ui_form_pair:has(> td.ui_form_value > .ui_select_switch:first-child > select:first-child) > td.ui_form_label::before {
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: var(--control-height);
+	vertical-align: middle;
+}
+/* Tables nested in a value cell are flush, radio tables apart */
+.ui_form_pair td table tr td { padding: 0; }
+.ui_form_pair td table.ui_radio_table tr td,
+.ui_radio_table tr td { padding: 2px; }
+/* Grids of checkboxes inside a form row, such as a server's features */
+.ui_form_pair td table.ui_grid_table tr td { padding: 3px 4px; }
+.ui_form_pair td table.ui_grid_table tr td:first-child { padding-left: 0; }
+.ui_form_pair td > table.wrapper,
+.ui_form_pair td > div > table.wrapper { margin: 0; }
+/* Lists and the old bar charts some modules print inside forms */
+table.ui_table dt, table.ui_table dd { padding: 0 2px; }
+table.ui_table td div.barchart * { margin: 0; }
+.barchart {
+	padding: 1px;
+	border: 1px solid var(--border-color);
+	white-space: nowrap;
+}
+
+/* A form inside another form's row is an inner box */
+table.shrinkwrapper table.shrinkwrapper,
+table.shrinkwrapper table.wrapper,
+table.wrapper table.wrapper {
+	margin: 4px 0;
+	border-color: var(--border-color-light);
+	box-shadow: none;
+}
+/* A grid in a form row, such as the feature checkboxes, is plain: the
+ * card edge and shadow the theme gives every grid would show as a line
+ * under its last row */
+.ui_form_pair td table.wrapper:has(> tbody > tr > td > table.ui_grid_table) {
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
+}
+/* Nested form tables have no edge, unless marked with the border class */
+table.ui_table .ui_table { border: 0; }
+table.ui_table.border {
+	border: 1px solid var(--border-color);
+	border-radius: var(--radius);
+	background: var(--main-content);
+}
+/* Cells of a grid of elements (ui_grid_table) */
+table.ui_grid_table td { padding: 2px 4px; }
+/* A grid of plain items in a card of its own, such as the list of Webmin
+ * users, keeps the card's 16px side padding in its first and last
+ * columns, with some air above its first row and under its last. Grids
+ * inside a form row, grids of tables and the two-column link bars keep
+ * their tight cells. */
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row > td.ui_grid_cell {
+	padding: 4px 8px;
+}
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row > td.ui_grid_cell:first-child {
+	padding-left: 16px;
+}
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row > td.ui_grid_cell:last-child {
+	padding-right: 16px;
+}
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row:first-child > td.ui_grid_cell {
+	padding-top: 8px;
+}
+table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:has(.ui_links_row, table)) > tbody > tr.ui_grid_row:last-child > td.ui_grid_cell {
+	padding-bottom: 8px;
+}
+
+/* Collapsible sections (ui_hidden_table_start) and the system
+ * information cards share one look */
+details.ui_hidden_table_start > summary, details.section > summary {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 9px 16px;
+	border-radius: var(--radius);
+	font-size: 14px;
+	font-weight: 600;
+	list-style: none;
+}
+details.section > summary > span { flex: 1 1 auto; }
+details[open].ui_hidden_table_start > summary,
+details[open].section > summary {
+	border-bottom: 1px solid var(--border-color-light);
+	border-radius: var(--radius) var(--radius) 0 0;
+}
+details.ui_hidden_table_start > summary span { white-space: nowrap; }
+details.ui_hidden_table_start > summary span.rightheading {
+	margin-left: auto;
+	font-size: 13px;
+	font-weight: 400;
+}
+details.ui_hidden_table_start > table {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 8px 14px 10px;
+}
+.section-body { padding: 10px 16px 14px; }
+/* Text above a dashboard block's content */
+.section-note {
+	margin: 0 0 8px;
+	color: var(--text-color-muted);
+}
+
+/* ---- Tables of rows (ui_columns_start) ---- */
+/* The heading rows carry the maintitle class from the theme config as
+ * well as the ui_columns classes; body rows use mainbody, and the
+ * row0/row1, mainsel and mainhigh names are kept for modules that print
+ * them directly. */
+
+table.ui_columns {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+table.ui_columns > thead > tr > td,
+table.ui_columns > tbody > tr.maintitle > td,
+tr.ui_columns_heads > td, tr.ui_columns_heading > td, tr.ui_columns_header > td {
+	padding: 8px 16px;
+	border-bottom: 1px solid var(--border-color);
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--text-color-muted);
+	vertical-align: middle;
+}
+/* The title row above the column headings is larger */
+table.ui_columns > thead > tr.ui_columns_heading > td {
+	font-size: 14px;
+	color: var(--text-color);
+}
+table.ui_columns > thead > tr > td b { font-weight: inherit; }
+/* Rows are as tall as their content plus 4px above and below, in
+ * every table alike */
+table.ui_columns > tbody > tr > td,
+table.sortable > tbody > tr > td {
+	padding: 4px 16px;
+	border-bottom: 1px solid var(--border-color-lighter);
+	color: var(--text-color);
+	vertical-align: middle;
+}
+table.ui_columns > tbody > tr:last-child > td { border-bottom: 0; }
+/* The first column, or the one after a checkbox, names the row and is
+ * a little bolder; the checkbox column is as narrow as it can be */
+table.ui_columns > tbody > tr > td:first-child,
+table.ui_columns > tbody > tr > td.ui_checked_checkbox + td,
+table.ui_columns > tbody > tr > td.ui_radio_radio + td {
+	color: var(--text-color);
+	font-weight: 500;
+}
+table.ui_columns > tbody > tr > td.ui_checked_checkbox,
+table.ui_columns > tbody > tr > td.ui_radio_radio {
+	width: 1%;
+	padding-right: 4px;
+}
+table.ui_columns > tbody > tr.ui_columns_header > td,
+tr.ui_columns_header > td {
+	font-size: inherit;
+	color: var(--text-color);
+	background: var(--bg-table-header);
+}
+/* Rows carry bgcolor attributes from the theme config; the palette wins */
+tr.row0, tr.row1, tr.mainbody { background: transparent; }
+tr.maintitle { background: transparent; }
+/* Rows highlight on hover, except in tables of input fields */
+table.ui_columns > tbody > tr:not(:has(input:not([type="checkbox"]):not([type="radio"]), select, textarea)):hover > td,
+tr.mainhigh > td {
+	background: var(--bg-table-header);
+}
+tr.mainsel > td, tr.mainhighsel > td,
+tr.ui_checked_columns:has(> td > input:checked) > td,
+tr.ui_radio_columns:has(> td > input:checked) > td {
+	background: var(--element-highlight-bg-color);
+}
+table.ui_columns.no-hover > tbody > tr:hover > td { background: transparent; }
+.ui_checked_columns .ui_checked_checkbox { min-width: 20px; }
+.ui_emptymsg { color: var(--text-color-muted); }
+/* The icon grid table, which also carries the main id, and the compact
+ * tables some modules mark as simple */
+table#main {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+table#main td { padding: 4px; }
+.table-simple {
+	width: auto !important;
+	max-width: 100%;
+}
+.table-simple tr td { padding: 0 4px !important; }
+
+/* A colored word alone in a cell, such as Yes or No, becomes a pill */
+table.ui_columns > tbody > tr > td > .ui_text_color:only-child {
+	display: inline-block;
+	padding: 2px 9px;
+	border-radius: 999px;
+	font-size: 11.5px;
+	font-weight: 600;
+	line-height: 1.4;
+	background: var(--bg-color-neutral);
+}
+table.ui_columns > tbody > tr > td > .text_type_success:only-child {
+	background: var(--bg-color-success);
+}
+table.ui_columns > tbody > tr > td > .text_type_info:only-child {
+	background: var(--bg-color-info);
+}
+table.ui_columns > tbody > tr > td > .text_type_danger:only-child {
+	background: var(--bg-color-danger);
+}
+table.ui_columns > tbody > tr > td > .text_type_warn:only-child {
+	background: var(--bg-color-neutral);
+	color: var(--text-color-neutral-stressed) !important;
+}
+
+/* A links row right above a table is drawn as the card's toolbar, and
+ * a button row right after it as the card's footer. Both bars are
+ * tinted, so they stand apart from the white rows of the table. */
+form.ui_form > .ui_links_row:has(+ table.wrapper),
+form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row):has(+ table.wrapper) {
+	margin: 0;
+	padding: 11px 16px;
+	background: var(--bg-table-header);
+	border: 1px solid var(--border-color);
+	border-bottom: 0;
+	border-radius: var(--radius) var(--radius) 0 0;
+	box-shadow: var(--shadow);
+}
+/* The two-column variant, with links at the left and the right, is a
+ * table: its cell carries the bar padding, not the table */
+form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row):has(+ table.wrapper) {
+	padding: 0;
+}
+form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row):has(+ table.wrapper) > tbody > tr > td {
+	padding: 11px 16px;
+}
+form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) table.ui_grid_table td {
+	padding: 0;
+}
+form.ui_form > table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) .ui_links_row {
+	margin: 0;
+}
+form.ui_form > .ui_links_row:has(+ table.wrapper) + table.wrapper,
+form.ui_form > table.wrapper:has(.ui_links_row) + table.wrapper {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+form.ui_form > table.wrapper:has(+ table.ui_form_end_buttons) {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+form.ui_form > table.wrapper + table.ui_form_end_buttons {
+	box-sizing: border-box;
+	width: 100%;
+	margin: calc(-1px - var(--card-gap)) 0 var(--card-gap);
+	padding: 11px 16px;
+	background: var(--bg-table-header);
+	border: 1px solid var(--border-color);
+	border-top: 1px solid var(--border-color-light);
+	border-radius: 0 0 var(--radius) var(--radius);
+}
+form.ui_form > table.wrapper + table.ui_form_end_buttons + .ui_links_row {
+	margin-top: -4px;
+}
+/* A links row right after a table is the card's footer, matching the
+ * toolbar above it; any button row after that footer joins it */
+form.ui_form > table.wrapper:has(+ .ui_links_row),
+form.ui_form > table.wrapper:has(+ table.wrapper > tbody > tr > td > table.ui_grid_table .ui_links_row) {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+form.ui_form > table.wrapper + .ui_links_row,
+form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) {
+	margin: calc(-1px - var(--card-gap)) 0 var(--card-gap);
+	padding: 11px 16px;
+	background: var(--bg-table-header);
+	border: 1px solid var(--border-color);
+	border-top: 1px solid var(--border-color-light);
+	border-radius: 0 0 var(--radius) var(--radius);
+	box-shadow: var(--shadow);
+}
+form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) {
+	padding: 0;
+}
+form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) > tbody > tr > td {
+	padding: 11px 16px;
+}
+/* A links row and a button row under one table form a single footer
+ * bar: 11px above the links, 11px between the rows and 11px under the
+ * buttons, as in the toolbar above the table */
+form.ui_form > table.wrapper + .ui_links_row:has(+ table.ui_form_end_buttons),
+form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row):has(+ table.ui_form_end_buttons) {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: 0;
+	border-radius: 0;
+	box-shadow: none;
+}
+form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row):has(+ table.ui_form_end_buttons) > tbody > tr > td {
+	padding-bottom: 0;
+}
+form.ui_form > table.wrapper + .ui_links_row + table.ui_form_end_buttons,
+form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_grid_table .ui_links_row) + table.ui_form_end_buttons {
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0 0 var(--card-gap);
+	padding: 11px 16px;
+	background: var(--bg-table-header);
+	border: 1px solid var(--border-color);
+	border-top: 0;
+	border-radius: 0 0 var(--radius) var(--radius);
+	box-shadow: var(--shadow);
+}
+
+/* A small form of controls before another form or a table, such as the
+ * search box over a list of web apps or the file menu over a config
+ * editor, is one row of controls with the card gap under it, so it
+ * never touches what follows. The core prints a script right after
+ * every form end, so the next block may come after that script. */
+form:not(.menu-form):not(:has(table)):has(+ form, + table.wrapper, + table.shrinkwrapper, + script + form, + script + table.wrapper, + script + table.shrinkwrapper) {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px 8px;
+	margin: 0 0 var(--card-gap);
+}
+
+/* Icon grids (icons_table): the table is a grid of equal columns and
+ * its cells the items, so the icons reflow as the page narrows instead
+ * of squeezing their columns, and a partly filled last row keeps the
+ * columns of the rows above; the empty cells that fill the last row are
+ * dropped */
+div.wrapper:has(> table.icons_table) { padding: 8px; }
+table.icons_table {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	box-sizing: border-box;
+	width: 100%;
+}
+table.icons_table > tbody, table.icons_table > tbody > tr {
+	display: contents;
+}
+/* Each cell stacks the icon over its name, centered. The name is small
+ * text in the text color, balanced over two lines when it wraps, and
+ * takes the link color only on hover */
+table.icons_table > tbody > tr > td {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+	box-sizing: border-box;
+	/* The cell's own width attribute is a share of the old table, and
+	 * would shrink the cell to a sliver of its grid column */
+	width: auto;
+	min-width: 0;
+	padding: 12px 8px 14px;
+	text-align: center;
+}
+table.icons_table > tbody > tr > td:empty { display: none; }
+table.icons_table table {
+	display: table;
+	margin: 0;
+}
+table.icons_table a {
+	max-width: 100%;
+	color: var(--text-color);
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1.35;
+	text-decoration: none;
+	text-wrap: balance;
+	overflow-wrap: break-word;
+}
+table.icons_table a:hover {
+	color: var(--link-color);
+	text-decoration: none;
+}
+table.icons_table img { display: block; }
+
+/* ---- Tabs (ui_tabs_start) ---- */
+
+/* The tab row sits on the ground, so its line is the darker one */
+div.ui_tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	margin: 0 0 12px;
+	border-bottom: 1px solid var(--border-color-darker);
+}
+div.ui_tabs a.ui_tab {
+	display: block;
+	margin-bottom: -1px;
+	padding: 8px 12px 10px;
+	border-bottom: 2px solid transparent;
+	color: var(--text-color-muted);
+	font-weight: 500;
+	text-decoration: none;
+}
+div.ui_tabs a.ui_tab:hover { color: var(--text-color); }
+div.ui_tabs a.ui_tab.ui_tab_selected {
+	border-bottom-color: var(--accent-color);
+	color: var(--text-color);
+	font-weight: 600;
+}
+div.ui_tabs a.ui_tab sup {
+	vertical-align: text-top;
+	font-size: 70%;
+}
+div.ui_tabs_box { padding: 12px 14px 14px; }
+/* The last block in a tab body ends at the box padding */
+div.ui_tabs_box .ui_tabs_start > form:last-of-type > table.ui_form_end_buttons:last-child,
+div.ui_tabs_box .ui_tabs_start > table.ui_form_end_buttons:last-of-type,
+div.ui_tabs_box .ui_tabs_start > form:last-of-type > table.shrinkwrapper:last-child,
+div.ui_tabs_box .ui_tabs_start > table.shrinkwrapper:last-of-type,
+div.ui_tabs_box .ui_tabs_start > table.wrapper:last-of-type {
+	margin-bottom: 0;
+}
+
+/* ---- Help bubbles and tooltips ---- */
 
 .ui_help {
-    margin: auto 0 auto 5px;
-    font-size: 70%;
-    cursor: help;
-    color: #d0e0fb;
-    background-color: #00000099;
-    border-radius: 50%;
-    padding: 1px 3px;
-    vertical-align: super;
-    opacity: .8;
+	display: inline-block;
+	margin: 0 0 0 5px;
+	font-size: 10px;
+	line-height: 14px;
+	min-width: 14px;
+	text-align: center;
+	color: var(--text-color-inverse);
+	background: var(--text-color-muted);
+	border-radius: 50%;
+	cursor: help;
+	vertical-align: super;
+	opacity: 0.8;
 }
-
-tr:has(.ui_help) td:not(:hover) .ui_help {
-    visibility: hidden;
-}
-
-tr:has(.ui_help) td.ui_form_label .ui_help {
-  visibility: visible;
-}
-
-td:not(:hover) .ui_link_help {
-  visibility: hidden;
-}
-
+.ui_help samp { font: inherit; }
+/* Help bubbles show while the mouse is over their cell; the one next to
+ * a form label always shows */
+tr:has(.ui_help) td:not(:hover) .ui_help { visibility: hidden; }
+tr:has(.ui_help) td.ui_form_label .ui_help { visibility: visible; }
+td:not(:hover) .ui_link_help { visibility: hidden; }
 .ui_link_help {
-  display: initial;
-  float: right;
-  margin-right: 4px;
+	display: initial;
+	float: right;
+	margin-right: 4px;
 }
-
-.ui_text_wrap {
-  float: right;
-}
-
+.ui_text_wrap { float: right; }
+/* Tooltips from the aria-label of elements marked data-tooltip: a dark
+ * box with an arrow above the element, shown on hover */
 [data-tooltip][aria-label] {
-    position: relative;
-    vertical-align: top;
+	position: relative;
+	vertical-align: top;
 }
-
 [data-tooltip][aria-label]::after {
-    content: "";
-    pointer-events: none;
-    width: 0;
-    height: 0;
-    position: absolute;
-    border-color: black;
-    border-width: 0;
-    border-style: solid;
-    opacity: 0;
-    visibility: none;
-    margin-bottom: 5px;
-    border-top-width: 10px;
-    border-right-width: 10px;
-    border-right-color: transparent;
-    border-left-width: 10px;
-    border-left-color: transparent;
-    bottom: 100%;
-    right: 50%;
-    transform: translateX(50%)
+	content: "";
+	position: absolute;
+	bottom: 100%;
+	right: 50%;
+	width: 0;
+	height: 0;
+	margin-bottom: 5px;
+	border: 10px solid transparent;
+	border-top-color: var(--text-color);
+	border-bottom-width: 0;
+	transform: translateX(50%);
+	pointer-events: none;
+	opacity: 0;
+	visibility: hidden;
 }
-
 [data-tooltip][aria-label]::before {
-    bottom: calc(15px + 100%);
-    right: 50%;
-    transform: translateX(50%);
-    font-size: 11px;
-    font-weight: normal;
-    text-shadow: none;
-    content: attr(aria-label);
-    pointer-events: none;
-    word-wrap: initial;
-    word-break: break-all;
-    max-width: 50vw;
-    width: max-content;
-    position: absolute;
-    color: white;
-    background: black;
-    padding: 4px 8px;
-    border-radius: 2px;
-    opacity: 0;
-    visibility: none;
-    text-align: center;
+	content: attr(aria-label);
+	position: absolute;
+	bottom: calc(15px + 100%);
+	right: 50%;
+	width: max-content;
+	max-width: 50vw;
+	padding: 4px 8px;
+	border-radius: var(--radius-sm);
+	background: var(--text-color);
+	color: var(--bg-color);
+	font-size: 11px;
+	font-weight: normal;
+	text-align: center;
+	text-shadow: none;
+	word-break: break-all;
+	transform: translateX(50%);
+	pointer-events: none;
+	opacity: 0;
+	visibility: hidden;
 }
-
 [data-tooltip][aria-label]:hover::before,
 [data-tooltip][aria-label]:hover::after {
-    visibility: visible;
-    opacity: 1;
-    transition-duration: .5s
+	visibility: visible;
+	opacity: 1;
+	transition-duration: 0.5s;
 }
 
-@media print {
-    body > .header,
-    body > .header ~ center,
-    .ui_form ~ a,
-    .ui_table a[href*=".cgi"],
-    .ui_form .ui_link,
-    .ui_form > center,
-    .ui_form > [name],
-    .ui_form > .wrapper,
-    .ui_form > .wrapper ~ .shrinkwrapper,
-    .ui_table > thead > tr > td:not(:first-child):last-child {
-        display: none;
-    }
-    
-    .ui_table > thead > tr > td > b {
-        font-size: 1.33em;
-    }
+/* ---- Inline disclosures (ui_details) ---- */
 
-    .ui_table > thead >tr > td {
-        border-bottom: 2px solid #D9D9D9;
-        text-align: center;
-        position: relative;
-        padding: 10px;
-    }
-
-    body > .header ~ .ui_form[action*=".cgi"]:first-of-type {
-        margin-top: -50px;
-    }
-
-    pre {
-        white-space: pre-wrap;
-    }
-
-    a {
-        word-break: break-word;
-    }
-
-    a[href]:after {
-        content: none;
-    }
-}
-
-form[action="config_save.cgi"] #sortableTable2 > thead > tr > td {
-    text-align: center;
-}
-form [name="mode"] + .leftlink {
-    white-space: nowrap;
-}
-.leftmenu details > summary {
-  cursor: pointer;
-}
-.leftmenu details > summary::marker {
-  color: #bfbfbf;
-  font-size: 110%;
-}
-.leftmenu details > summary::-webkit-details-marker {
-    color: #bfbfbf;
-}
-
-.leftmenu details > summary  span {
-  padding-left: 2px;
-  white-space: nowrap;
-  color: #000;
-}
-
-.leftmenu details {
-  padding-left: 6px;
-  padding-bottom: 4px;
-}
-
-.leftmenu details .linkindented {
-  margin-left: 16px;
-}
-.ui_alert_box > tbody > tr > td {
-  padding-left: 8px;
-  padding-right: 8px;
-}
-.ui_alert_box > tbody > tr[bgcolor="#DFF0D8"] > td {
-  border: 1px solid #7cda1099;
-}
-.ui_alert_box > tbody > tr[bgcolor="#D9EDF7"] > td {
-    border: 1px solid #108eda5c;
-}
-.ui_alert_box > tbody > tr[bgcolor="#FCF8E3"] > td {
-  border: 1px solid #dac51099;
-}
-.ui_alert_box > tbody > tr[bgcolor="#F2DEDE"] > td {
-  border: 1px solid #da10bb57;
-}
-.alert {
-  padding: 2px 8px;
-}
-.alert.alert-success {
-  background-color: #DFF0D8;
-  border: 1px solid #7cda1099;
-}
-.alert.alert-info {
-  background-color: #D9EDF7;
-  border: 1px solid #108eda5c;
-}
-.alert.alert-warning {
-  background-color: #FCF8E3;
-  border: 1px solid #dac51099;
-}
-.alert.alert-danger,
-.alert.alert-danger-fatal {
-  background-color: #F2DEDE;
-  border: 1px solid #da10bb57;
-}
-
-.right-top-links {
-  margin-bottom: 4px;
-}
-
-details table.wrapper, details table.shrinkwrapper,
-details.ui_hidden_table_start {
-  background-color: #f5f5f5;
-}
-details.ui_hidden_table_start {
-  border: 1px solid #d9d9d9;
-  margin: 2px 0;
-}
-details.ui_hidden_table_start > summary {
-  cursor: pointer;
-  background-color: #d0dffc;
-  padding: 1px 6px;
-}
-details.ui_hidden_table_start > summary span {
-  font-weight: bold;
-}
-details.ui_hidden_table_start > summary span.rightheading {
-  float: right
-}
-details.ui_hidden_table_start > summary::marker {
-  color: #a1acc0;
-  font-size: 110%;
-}
-details.ui_hidden_table_start > summary  span {
-  padding-left: 3px;
-  white-space: nowrap;
-  color: #212121;
-  vertical-align: top;
-}
-details.ui_hidden_table_start > summary::-webkit-details-marker {
-    display: inline-block;
-    width: 0.66em;
-    height: 0.66em;
-    margin-top: 0.4em;
-    margin-right: 0.4em;
-    color: #a1acc0;
-}
-
+/* The arrow of a closed disclosure marked on-hover shows only under the
+ * mouse */
 details:not([open]).on-hover:not(:hover) summary::after {
-  visibility: hidden !important;
+	visibility: hidden !important;
 }
-
+/* An inline disclosure is plain text with an arrow after its summary
+ * and its content indented under it */
 details.inline {
-  cursor: pointer;
-  padding: 0;
-  background: transparent;
-  border: 0;
-  margin: 0;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	cursor: pointer;
 }
-
+details.inline > summary { list-style: none; }
+details.inline > summary::after {
+	content: "\23F4";
+	position: relative;
+	margin: 0 7px;
+	color: var(--text-color-muted);
+}
+details[open].inline > summary::after { content: "\23F7"; }
 details.inline > summary + span {
-  margin: 1px 0 0 18px;
-  display: inline-block;
-  font-size: 98%;
-  cursor: default;
-  line-height: 1.33;
+	display: inline-block;
+	margin: 1px 0 0 18px;
+	font-size: 98%;
+	line-height: 1.33;
+	cursor: default;
 }
-
 details.inline.inlined > summary,
-details.inline.inlined {
-    display: inline !important;
-}
-
-details > span .ui_alert_box {
-    margin-top: 5px;
-}
-
-details > span .ui_alert_box:not(:has(+p)) {
-    margin-bottom: 5px;
-}
-
-details.inline.inlined > span {
-    margin-top: 10px;
-}
-/* Inline details inside table rows should align with the row content. */
-.ui_table.ui_columns td > details.inline.inlined > span {
-    margin-top: 0;
-}
-
-details.inline > summary + span > tt {
-  font-size: 96%;
-}
-
-details.inline > summary {
-  list-style: none;
-}
-
-details[open].inline > summary:after,
-details.inline > summary:after {
-  content: '⏴';
-  opacity: 0.72;
-  margin-top: 0;
-  margin-left: 7px;
-  margin-right: 7px;
-  color: #010101;
-  position: relative;
-}
-
-details[open].inline > summary:after {
-  content: '⏷';
-}
-
+details.inline.inlined { display: inline !important; }
+details.inline.inlined > span { margin-top: 10px; }
+.ui_table.ui_columns td > details.inline.inlined > span { margin-top: 0; }
+details.inline > summary + span > tt { font-size: 96%; }
 details.inline.fit > summary + span span,
 details.inline.fit > summary + span {
-  width: fit-content;
-    display: inline-block;
+	display: inline-block;
+	width: fit-content;
+}
+details > span .ui_alert_box { margin-top: 5px; }
+details > span .ui_alert_box:not(:has(+ p)) { margin-bottom: 5px; }
+details.error, details.inline.error > summary + span {
+	color: var(--text-color-danger-stressed);
+}
+/* Line breaks the core marks with data-x-br become small block gaps;
+ * one right after a disclosure is dropped */
+[data-second-print]:has(details) + br:has(+ [data-x-br]) { display: none; }
+br[data-x-br] {
+	content: "";
+	display: block;
+	margin: 2em;
+	font-size: 42%;
 }
 
-details summary {
-  cursor: pointer;
+/* ---- Left frame (left.cgi) ---- */
+
+/* The frame shows the page ground, and the menu floats on it as a card
+ * with a 7px gap at the top, the left and the bottom, and rounder
+ * corners than the other cards. At the right the card meets the frame
+ * edge, so the page padding of the right frame is the whole gap between
+ * the card and the content, and a page opened in a window of its own
+ * keeps that same padding on every side. The card is as tall as the
+ * frame, so its bottom edge stays in view, and the menu scrolls inside
+ * it. The body height has to win over the theme's own height reset. */
+body.left-frame {
+	box-sizing: border-box;
+	height: 100vh !important;
+	padding: 7px 0 7px 7px;
+	overflow: hidden;
+	background: var(--bg-color);
+}
+.menu-panel {
+	box-sizing: border-box;
+	height: 100%;
+	overflow-y: auto;
+	background: var(--bg-color-frame);
+	border: 1px solid var(--border-color-panel);
+	border-radius: 14px;
+	box-shadow: 0 2px 6px var(--shadow-color);
+}
+/* The brand block and the product switch stick to the top of the panel
+ * while the menu scrolls under them */
+.menu-top {
+	position: sticky;
+	top: 0;
+	z-index: 2;
+	padding-bottom: 12px;
+	background: var(--bg-color-frame);
+	border-bottom: 1px solid var(--border-color-frame);
+}
+/* A bar bouncing along the top edge of the panel while the right frame
+ * loads a page; the menu script sets the class on the root */
+.menu-loader {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 3px;
+	overflow: hidden;
+}
+html.loading-right .menu-loader { display: block; }
+.menu-loader::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 35%;
+	height: 100%;
+	border-radius: 2px;
+	background: var(--accent-color);
+	animation: menu-bounce 0.9s ease-in-out infinite alternate;
+}
+@keyframes menu-bounce { to { left: 65%; } }
+/* The brand block: the logo has as much room above it as below it, and
+ * the logo files are trimmed to their drawing, so every product sits the
+ * same way. The logo links to the system information page. */
+.menu-brand {
+	padding: 14px 16px 14px;
+	border-bottom: 1px solid var(--border-color-frame);
+}
+.menu-brand-name {
+	display: block;
+	margin: 0 0 12px;
+	line-height: 0;
+}
+/* The product logo, in the version matching the palette */
+.menu-brand-logo {
+	display: var(--show-light);
+	height: 36px;
+	width: auto;
+	max-width: 100%;
+}
+.menu-brand-logo-dark { display: var(--show-dark); }
+/* Host and login under the logo: small lines with a leading icon; a
+ * long hostname wraps rather than being cut */
+.menu-meta {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.menu-host, .menu-user {
+	display: flex;
+	align-items: flex-start;
+	gap: 6px;
+	min-width: 0;
+	font-size: 12px;
+	line-height: 1.4;
+	color: var(--text-color-desc);
+}
+.menu-host svg, .menu-user svg {
+	flex: 0 0 auto;
+	margin-top: 2px;
+	color: var(--text-color-muted);
+}
+.menu-host span, .menu-user span {
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+.menu-user b {
+	color: var(--text-color);
+	font-weight: 600;
 }
 
-[data-second-print]:has(details) + br:has(+[data-x-br]) {
-  display: none;
+/* Product switch between Virtualmin, Cloudmin, Webmin and Usermin */
+.mode {
+	display: flex;
+	margin: 14px 16px 0;
+	padding: 3px;
+	background: var(--bg-color-switch);
+	border-radius: var(--radius);
+}
+.mode > b {
+	flex: 1 1 0;
+	padding: 3px 0;
+	border-radius: var(--radius-sm);
+	background: var(--bg-color-switch-on);
+	box-shadow: 0 1px 2px var(--shadow-color);
+	color: var(--text-color);
+	font-size: 12.5px;
+	font-weight: 600;
+	text-align: center;
+	white-space: nowrap;
+	cursor: default;
+}
+.mode > b:has(> a) {
+	background: transparent;
+	box-shadow: none;
+	color: var(--text-color-muted);
+	font-weight: 400;
+	cursor: pointer;
+}
+.mode > b > a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: inherit;
+	text-decoration: none;
+}
+.mode > b > a:hover { color: var(--text-color); }
+/* While the other product's menu loads, the switch ignores further
+ * clicks, the pill that was clicked reads as chosen with a small
+ * spinning ring before its name, and the old one fades */
+.mode.loading { pointer-events: none; }
+.mode.loading > b:not(.active) { opacity: 0.5; }
+.mode.loading > b.active { color: var(--text-color); }
+/* The ring sits 6px left of the name. Its right margin and its negative
+ * left margin cancel its own width, so it takes no room in the centered
+ * row and the name does not move when it appears */
+.mode.loading > b.active > a::before {
+	content: "";
+	flex: 0 0 auto;
+	box-sizing: border-box;
+	width: 10px;
+	height: 10px;
+	margin: 0 6px 0 -16px;
+	border: 2px solid var(--border-color-darker);
+	border-top-color: var(--accent-color);
+	border-radius: 50%;
+	animation: menu-spin 0.7s linear infinite;
+}
+@keyframes menu-spin { to { transform: rotate(360deg); } }
+
+/* Room under the last item, so the menu scrolls past it */
+.leftmenu { padding: 14px 8px 56px; }
+/* The creation link of the menu is its one filled button */
+.menu-create {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin: 0 8px 12px;
+	padding: 6px 12px;
+	border-radius: var(--radius-sm);
+	background: var(--accent-color);
+	color: var(--text-color-inverse);
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+}
+.menu-create:hover {
+	background: var(--accent-color-hover);
+	color: var(--text-color-inverse);
+	text-decoration: none;
+}
+/* Forms in the menu: a caps label over a field that fills the panel */
+.menu-form { margin: 0 8px 12px; }
+.menu-label {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 11.5px;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	color: var(--text-color-muted);
+}
+.menu-field {
+	display: flex;
+	gap: 6px;
+}
+.menu-field select, .menu-field input {
+	flex: 1 1 auto;
+	width: 100%;
+	min-width: 0;
+	font-size: 12.5px;
+}
+/* Menu rows: 26px links that highlight under the mouse */
+.menu-link {
+	display: block;
+	padding: 4px 8px 4px 12px;
+	border-radius: var(--radius-sm);
+	line-height: 18px;
+	color: var(--text-color);
+	text-decoration: none;
+}
+.menu-link:hover {
+	background: var(--bg-color-hover);
+	color: var(--text-color);
+	text-decoration: none;
+}
+/* Links inside a category are indented under its name */
+.menu-link.menu-sub { padding-left: 24px; }
+/* The logout link stands a little apart, muted, with its icon before
+ * the text like any other icon in a link */
+.menu-link.menu-logout {
+	margin-top: 8px;
+	color: var(--text-color-muted);
+}
+.menu-link svg {
+	margin-right: 6px;
+	vertical-align: -3px;
+	opacity: 0.85;
+}
+/* Items the user cannot use are grayed; small marks after a name sit at
+ * the top of the line */
+.menu-link.inactive, .menu-text.inactive {
+	opacity: 0.6;
+	filter: grayscale(1);
+}
+.menu-link sub {
+	vertical-align: top;
+	font-size: 80%;
+}
+/* Categories are rows with a chevron at the right, a little taller than
+ * the 26px link rows, and their names are cut with an ellipsis */
+details.menu-cat > summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	height: 28px;
+	padding: 0 10px 0 12px;
+	border-radius: var(--radius-sm);
+	color: var(--text-color);
+	list-style: none;
+}
+details.menu-cat > summary:hover {
+	background: var(--bg-color-hover);
+	color: var(--text-color);
+}
+details.menu-cat > summary span {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+details.menu-cat[open] { margin-bottom: 4px; }
+/* Separator lines, and plain text or HTML blocks between items */
+.menu-divider {
+	margin: 8px 8px;
+	border: 0;
+	border-top: 1px solid var(--border-color-frame);
+}
+.menu-text, .menu-html {
+	padding: 4px 12px;
+	font-size: 12px;
+	color: var(--text-color-muted);
+}
+.menu-html img { max-width: 100%; }
+
+/* ---- System information page (right.cgi) ---- */
+/* The page is a widget page: its header holds the title, the operating
+ * system and time, and the module links as buttons; then tiles, then
+ * the information blocks as collapsible cards. */
+
+body.right-frame { padding: 0; }
+/* Blocks are spaced by the widget page gap alone. The margins are set
+ * here again because the theme's own card and notice rules outrank the
+ * widget stylesheet's sibling gap. */
+.right-frame .ui_page.page {
+	--ui-gap: var(--card-gap);
+	padding: 0 var(--page-pad-x) var(--page-pad-bottom);
+}
+.right-frame .ui_page.page > * { margin: 0; }
+.right-frame .ui_page.page > * + * { margin-top: var(--ui-gap); }
+/* The header bleeds over the page padding; its selector outranks the
+ * margin reset above */
+.right-frame .ui_page.page > .ui_page_head {
+	position: sticky;
+	top: 0;
+	z-index: 5;
+	align-items: center;
+	margin: 0 calc(-1 * var(--page-pad-x)) 12px;
+	padding: 14px var(--page-pad-x) 12px;
+	background: var(--bg-color);
+}
+.right-frame .ui_page_titles { padding-left: var(--title-inset); }
+.right-frame .ui_page_title {
+	font-size: 22px;
+	font-weight: 700;
+	letter-spacing: -0.3px;
+}
+.right-frame .ui_page_desc {
+	margin-top: 4px;
+	padding-left: 2px;
+	color: var(--text-color-desc);
+}
+.right-frame .ui_page_actions {
+	flex-wrap: wrap;
+	gap: 8px;
+	padding-top: 0;
+}
+.page-action svg { color: var(--text-color-muted); }
+
+/* Tiles: one figure per card, with its label above and a bar under it.
+ * Four across, two on a narrow frame and one on a very narrow one. */
+.tiles { --ui-gap: var(--card-gap); }
+.tiles.ui_grid_fixed { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1100px) {
+	.tiles.ui_grid_fixed { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+	.tiles.ui_grid_fixed { grid-template-columns: minmax(0, 1fr); }
+}
+.tile .ui_card_body { padding: 12px 16px 14px; }
+.tile .ui_stat { gap: 4px; }
+.tile .ui_stat_label {
+	order: -1;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	color: var(--text-color-muted);
+}
+.tile .ui_stat_value {
+	font-size: 26px;
+	font-weight: 700;
+	letter-spacing: -0.3px;
+}
+.tile .ui_stat_desc {
+	font-size: 12.5px;
+	color: var(--text-color-desc);
+}
+.tile .ui_progress { margin-top: 10px; }
+
+/* Information cards */
+.section .ui_dl {
+	--ui-dl-label: 150px;
+	gap: 8px 40px;
+}
+.section .ui_dl_cols > .ui_dl_row { min-width: calc((100% - 40px) / 2); }
+.section .ui_dl_row { gap: 3px 14px; }
+.section .ui_dl_row dt {
+	font-weight: 400;
+	color: var(--text-color-desc);
+	text-align: end;
+}
+.section .ui_dl_row dd { display: block; }
+/* Values in the system status card are monospace */
+.section[data-name="system-statussysinfo"] .ui_dl_row dd {
+	font-family: var(--font-family-mono);
+	font-size: 12.5px;
+}
+.section-body > .ui_dl + .ui_dl { margin-top: 8px; }
+/* Bars in cards and tiles are thin and round, and their second segment
+ * is a soft accent instead of gray */
+.section .ui_progress { margin-top: 6px; }
+.section .ui_progress_track, .tile .ui_progress_track {
+	height: 6px;
+	border-radius: 999px;
+}
+.section .ui_progress_bar.ui_bg_neutral,
+.tile .ui_progress_bar.ui_bg_neutral { background: var(--accent-color-soft); }
+.section-body > table.wrapper:last-child { margin-bottom: 0; }
+/* A paragraph break between a note and the table under it, as in the
+ * package updates block, leaves a clear gap */
+.section-body p:has(+ table) { margin-bottom: 10px; }
+/* Rows of counts: every count carries the separator at its right, so a
+ * second row of counts lines up with the first */
+.section .ui_stats { gap: 8px 16px; }
+.section .ui_stats .ui_stat {
+	padding: 2px 16px 2px 0;
+	border-right: 1px solid var(--border-color-light);
+}
+.section .ui_stats .ui_stat:last-child { border-right: 0; }
+.section .ui_stats .ui_stat_value {
+	font-size: 24px;
+	font-weight: 700;
+}
+.section .ui_stats .ui_stat_label {
+	font-weight: 400;
+	color: var(--text-color-desc);
 }
 
-.leftmenu .ff {
-      font-size: 110%;
-    margin-left: -3px;
-    margin-right: 1px;
+/* ---- Widgets ---- */
+/* The ui-lib widgets keep square corners by default; this theme rounds
+ * them like its own cards. */
+
+.ui_card, .ui_stat, .ui_empty, .ui_choice, .ui_radio_list,
+.ui_select_switch_panel, .ui_code_block, .ui_multi_items {
+	border-radius: var(--radius);
 }
-.leftmenu .ff.ff-signature {
-  font-size: 92%;
-  margin-left: -1px;
-  margin-right: 2px;
-  color: seagreen;
+.ui_card { box-shadow: var(--shadow); }
+.ui_card_title { font-size: 15px; }
+.ui_badge, .ui_chip, .ui_code, .ui_search_input {
+	border-radius: var(--radius-sm);
 }
-.leftmenu .ff.ff-lock {
-  font-size: 105%;
-  margin-left: 0;
-  margin-right: 3.5px;
-  color: #d59500;
+.ui_progress_track, .ui_progress_bar { border-radius: 999px; }
+
+/* ---- Popup windows ---- */
+/* Choosers and help open in small windows split into frames, some only
+ * 50px tall, so their pages use tighter spacing and controls */
+
+body#popup:not(.left-frame):not(.right-frame) {
+	--control-height: 28px;
+	padding: 8px;
+	font-size: 12.5px;
 }
-.leftmenu .ff.ff-address-book {
-  margin-left: -1px;
-  margin-right: 5px;
-  color: lightseagreen;
+body#popup:not(.left-frame):not(.right-frame) input:not([type="checkbox"]):not([type="radio"]),
+body#popup:not(.left-frame):not(.right-frame) select,
+body#popup:not(.left-frame):not(.right-frame) button {
+	min-height: 28px;
+	padding: 2px 8px;
 }
-.leftmenu .ff.ff-mail {
-  margin-left: -2px;
-  margin-right: 4px;
-  color: #0b46ab;
+body#popup:not(.left-frame):not(.right-frame) table.wrapper {
+	margin: 0 0 6px;
 }
-.leftmenu .ff.ff-folder-open {
-  font-size: 100%;
-  margin-left: -2px;
-  margin-right: 3px;
-  color: #1180c4;
+/* Forms in popups have no box of their own: the chooser's bottom frame
+ * is 50px tall and holds only a button and a field */
+body#popup:not(.left-frame):not(.right-frame) table.shrinkwrapper {
+	margin: 0;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
 }
-.leftmenu .ff-refresh,
-.leftmenu .ff-virtualmin-tick {
-  color: #10a929;
+body#popup:not(.left-frame):not(.right-frame) table.ui_columns > thead > tr > td {
+	padding: 4px 8px;
 }
-.leftmenu .ff-cloudmin {
-  color: #df620a;
+body#popup:not(.left-frame):not(.right-frame) table.ui_columns > tbody > tr > td {
+	height: auto;
+	padding: 3px 8px;
+	white-space: nowrap;
 }
-.leftmenu .ff-virtualmin-tick {
-    font-size: 115%;
-    margin-right: 0;
+body#popup:not(.left-frame):not(.right-frame) tr.ui_table_body > td {
+	padding: 0;
 }
-.leftmenu .ff-cloudmin {
-    font-size: 140%;
-    vertical-align: middle;
-    margin-left: -2px;
-    margin-right: 0;
+body#popup:not(.left-frame):not(.right-frame) tr.ui_form_pair > td {
+	padding: 2px 3px;
 }
-.leftmenu .ff-chart {
-  color: #2174ac;
+body#popup:not(.left-frame):not(.right-frame) table.ui_form_end_buttons {
+	margin: 4px 0;
 }
-.leftmenu .ff-home {
-  color: #b5710b;
+body#popup:not(.left-frame):not(.right-frame) hr { margin: 6px 0; }
+body#popup:not(.left-frame):not(.right-frame) p { margin: 4px 0; }
+
+/* ---- Login page ---- */
+/* The login form is a narrow card in the middle of the page. The theme
+ * merges its class into the card table, as the core prints it as a
+ * second class attribute. A header without a title or links, as on this
+ * page, takes no room. */
+
+table.shrinkwrapper.loginform {
+	max-width: 440px;
+	margin: 24px auto var(--card-gap);
 }
-.leftmenu .ff-sign-out {
-  color: #b51b0b;
-  margin-left: -2px;
-  margin-right: 0;
-}
-.leftlink .servers-submit {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-.leftlink .servers-submit > i {
-  color:#399917;
-}
-.main-logo {
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-.main-logo.webmin {
-  filter: brightness(1.35) contrast(0.75) saturate(1.35);
+table.header:has(#headln2c > font:empty):not(:has(a, img, #headln1)) {
+	display: none;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* ---- Module specific rules ---- */
+
+/* The category selector above a module's configuration form */
+form.ui_form[action="config.cgi"],
+form.ui_form[action="uconfig.cgi"] {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px 8px;
+	margin: 0 0 8px;
 }
-body > .mode  {
-  opacity: 0;
-  font-size: 110%;
-  margin-bottom: 4px;
-  filter: saturate(1.5);
-  animation: fadeIn 0.025s;
-  animation-delay: 0.25s;
-  animation-fill-mode: forwards;
-}
-body > .mode + .wrapper.leftmenu {
-  opacity: 0;
-  animation: fadeIn 0.025s;
-  animation-delay: 0.25s;
-  animation-fill-mode: forwards; 
-}
-body > .mode img {
-  visibility: hidden;
-}
-body > .mode img[src*="vm2.png"] {
-  width: 18.59px;
-  height: 0;
-}
-body > .mode img[src*="virtualmin.png"] {
-  width: 17.16px;
-  height: 0;
-}
-body > .mode img[src*="webmin-small.png"] {
-  width: 16.52px;
-  height: 0;
-}
-body > .mode .ff {
-  font-size: 120%;
-}
-body > .mode .ff-cloudmin {
-  font-size: 130%;
-  vertical-align: top;
+/* The terminal fills the frame under the header, and the page does not
+ * scroll. The module sizes the terminal from the whole viewport with no
+ * room for the header, so the page scrolled, and the scrollbar widened
+ * the terminal past the frame. The 66px are the sticky header and its
+ * margin; the rules outrank the module's own by specificity. */
+body.xterm { overflow: hidden; }
+body.xterm #terminal {
+	box-sizing: border-box;
+	width: auto;
+	min-width: 0;
+	max-width: none;
+	height: calc(100vh - 66px - var(--card-gap));
+	min-height: 0;
+	max-height: none;
+	margin: 0;
+	padding: 6px;
+	border: 0;
+	border-radius: var(--radius);
+	overflow: hidden;
 }
 
-body > .mode > b {
-    cursor: default;  
-}
-
-/* Tears of joy! How long I wanted it to work without Javascript!
-   We can target parent that has only two children (i.e. WM+VM), so
-   now we can fit all three modes and have more space in two
-*/
-body > .mode:has(b:nth-child(1) + b:last-child) b {
-  padding-right: 3px
-}
-
-body > .mode > b {
-    color: #333;
-}
-body > .mode > b > a {
-  color: #0b46ab;
-}
-
-/* Light blue for Webmin */
-body > .mode > b[data-mode="mailbox"] > a,
-body > .mode > b[data-mode="mailbox"] > a > .ff-webmin {
-  color: #0a6bca;
-}
-/* Green for Usermin */
-body > .mode > b[data-mode="mailbox"] > a,
-body > .mode > b[data-mode="mailbox"] > a > .ff-usermin {
-  color: #19950d;
-}
-/* Orange for Cloudmin  */
-body > .mode > b[data-mode="server-manager"] > a,
-body > .mode > b[data-mode="server-manager"] > a > .ff-cloudmin {
-  color: #cb6d2f;
-}
-
-/* ui_div_row */
-.ui_div_row {
-  margin: 4px 0;
-}
+/* Label and value rows some modules print as divs */
+.ui_div_row { margin: 4px 0; }
 .ui_div_row > span:first-child {
-  width: 100px;
-  min-width: 10%;
-  max-width: 15%;
-  display: inline-block;
-  vertical-align: top;
-  padding-top: 4px;
-  text-align: right;
-  padding-right: 8px;
-  font-weight: bold;
+	display: inline-block;
+	width: 100px;
+	min-width: 10%;
+	max-width: 15%;
+	padding: 4px 8px 0 0;
+	vertical-align: top;
+	text-align: right;
+	font-weight: 600;
 }
 .ui_div_row > span:last-child {
-  padding-top: 4px;
-  display: inline-block;
-  max-width: 80%;
-  width: 80%;
+	display: inline-block;
+	width: 80%;
+	max-width: 80%;
+	padding-top: 4px;
 }
-.ui_link_pagination.disabled {
-  filter: grayscale(1) opacity(0.6);
-  pointer-events: none;
+/* The module configuration page centers its table headings */
+form[action="config_save.cgi"] #sortableTable2 > thead > tr > td {
+	text-align: center;
 }
-
+/* Search box and page selector at the right above paged lists, with the
+ * clear button inside the search field */
 .ui_form_elements_wrapper_search {
-  float:right;
-  margin-bottom: 3px;
+	float: right;
+	margin-bottom: 3px;
 }
-.ui_form_elements_wrapper_search * {
-  line-height: initial !important;
-}
-
+.ui_form_elements_wrapper_search * { line-height: initial !important; }
 .ui_form_elements_wrapper_search [data-class="ui_textbox_pagination_search"] {
-  padding-right: 17px;
+	padding-right: 17px;
 }
+.ui_form_elements_wrapper_search [data-class="ui_textbox_pagination_search"] + .ui_reset,
 .ui_form_elements_wrapper_search [data-class="ui_textbox_pagination_search"] + .ui_reset:active,
-.ui_form_elements_wrapper_search [data-class="ui_textbox_pagination_search"] + .ui_reset:focus,
-.ui_form_elements_wrapper_search [data-class="ui_textbox_pagination_search"] + .ui_reset {
-    position: absolute;
-    right: 17px;
-    min-height: 17px;
-    background-color: transparent;
-    border-color: transparent;
-    cursor: pointer;
-    outline: none;
+.ui_form_elements_wrapper_search [data-class="ui_textbox_pagination_search"] + .ui_reset:focus {
+	position: absolute;
+	right: 17px;
+	min-height: 17px;
+	background: transparent;
+	border-color: transparent;
+	box-shadow: none;
+	cursor: pointer;
+	outline: none;
 }
 .ui_form_elements_wrapper_search [data-class="ui_textbox_pagination_search"]:not([value=""]) + .ui_reset {
-    color: #dd4242;
+	color: var(--text-color-danger);
 }
-
-
 .ui_form_elements_wrapper_paginator {
-  float:right;
-  margin-top: 3px;
+	float: right;
+	margin-top: 3px;
 }
 .ui_form_elements_wrapper_paginator .ui_textbox {
-  border: 1px dashed #0b46ab;
-  padding-right: 2px;
-  text-align: center;
+	padding-right: 2px;
+	border: 1px dashed var(--link-color);
+	text-align: center;
 }
 
-/* Quill mods */
+/* Mail composer (Quill) */
 .ql-compose-container {
-  border: 1px solid #ccc;
+	border: 1px solid var(--border-color);
+	border-radius: var(--radius);
 }
-.ql-compose-container .ql-container.ql-snow {
-  border: 0;
-}
+.ql-compose-container .ql-container.ql-snow { border: 0; }
 .ql-compose-container .ql-toolbar.ql-snow {
-  border-top: none;
-  border-right: none;
-  border-left: none;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	border-color: var(--border-color-light);
 }
 .ql-compose-container .ql-editor {
-  min-height: 180px;
-  padding: 4px 6px 12px 6px;
+	min-height: 180px;
+	padding: 4px 6px 12px 6px;
 }
-.ql-snow .ql-editor pre {
-  font-size: 92%;
-}
+.ql-snow .ql-editor pre { font-size: 92%; }
 .ui_form_pair[data-contents="email"] > .ui_form_value,
 .ql-compose-container .iframe_quote_details,
 .ql-compose-container .ql-container.ql-snow .ql-editor {
-  background-color: #fff;
+	background: var(--main-content);
+	color: var(--text-color);
 }
 .ui_form_pair > .ui_form_value > textarea[name='body'],
 .ql-compose-container .ql-container.ql-snow .ql-editor {
-  font-size: 14px;
-  line-height: 1.231;
+	font-size: 14px;
+	line-height: 1.231;
 }
 .ui_form_pair > .ui_form_value > textarea[name='body'] {
-  width: -webkit-fill-available !important;
-  min-height: 180px;
+	width: -webkit-fill-available !important;
+	min-height: 180px;
 }
-.ql-compose-container .ql-container.ql-snow .ql-editor * {
-  line-height: 1.231;
-}
-.ui_form_pair[data-contents="email"] > .ui_form_value {
-  padding: 0;
-}
+.ql-compose-container .ql-container.ql-snow .ql-editor * { line-height: 1.231; }
+.ui_form_pair[data-contents="email"] > .ui_form_value { padding: 0; }
 .ql-compose-container .ql-container.ql-snow .ql-editor blockquote {
-  border-left-width: 1px;
-  margin-left: 6px;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 12px;
+	margin: 0 0 0 6px;
+	padding-left: 12px;
+	border-left-width: 1px;
 }
 .ql-compose-container .ql-container.ql-snow .ql-editor pre.ql-syntax {
-    background-color: #f5f5f5;
-    color: initial;
+	background: var(--bg-table-header);
+	color: initial;
 }
 .ql-compose-container .ql-snow .ql-picker.ql-expanded .ql-picker-label {
-    color: #00000066;
+	color: var(--text-color-muted);
 }
 .ql-compose-container .ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-fill {
-    fill: #00000055;
+	fill: var(--text-color-muted);
 }
 .ql-compose-container .ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke {
-    stroke: #00000044;
+	stroke: var(--text-color-muted);
 }
-.ql-compose-container .ql-snow .ql-tooltip {
-  z-index: 99;
-}
+.ql-compose-container .ql-snow .ql-tooltip { z-index: 99; }
 
-/* Shell module tweaks */
+/* Command shell */
 .shell pre {
-  overflow-x: auto;
-  overflow-y: hidden;
+	overflow-x: auto;
+	overflow-y: hidden;
 }
-.shell input[name="cmd"] {
-  max-width: 64.5vw;
-}
-.shell select[name="pcmd"] {
-  max-width: 65vw;
-}
-/* Disabled pages tweaks */
-[data-pro-disabled$="-link"] {
-  filter: grayscale(1) contrast(0.1);
-  opacity: 1;
-}
+.shell input[name="cmd"] { max-width: 64.5vw; }
+.shell select[name="pcmd"] { max-width: 65vw; }
 
+/* Features not available in this edition */
+[data-pro-disabled$="-link"] {
+	filter: grayscale(1) contrast(0.1);
+	opacity: 1;
+}
 .ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_label:not([data-pro-disabled="cell"]) > b > label > a,
 .ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_heads b,
 [data-pro-disabled="cell"],
 [data-pro-disabled$="-elem"] {
-  filter:grayscale(1);
-  opacity: .73;
+	filter: grayscale(1);
+	opacity: 0.73;
 }
 .ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value:not([data-pro-disabled="cell"]) > .ui_multi_select .ui_multi_select_heads b {
-  opacity: .61;
+	opacity: 0.61;
 }
 .ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row input[type="button"],
 .ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row select {
-  color: rgba(118, 118, 118, 0.4);
-  pointer-events: none;
-  opacity: 0.8;
+	color: rgba(118, 118, 118, 0.4);
+	pointer-events: none;
+	opacity: 0.8;
 }
 .ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row input[type="button"] {
-  opacity: 0.3;
+	opacity: 0.3;
 }
 .ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value:only-child {
-  color: rgba(18, 18, 18, 0.7);
-  filter: grayscale(1) contrast(0.9);
-  pointer-events: none;
+	color: var(--text-color-muted);
+	filter: grayscale(1) contrast(0.9);
+	pointer-events: none;
 }
 .ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row select {
-  background-color: rgba(239, 239, 239, 0.3);
-  border-color: rgba(118, 118, 118, 0.3);
-  box-shadow: none;
+	background: rgba(239, 239, 239, 0.3);
+	border-color: rgba(118, 118, 118, 0.3);
+	box-shadow: none;
 }
 [data-pro-disabled="cell"] + .ui_form_value,
 .ui_form_pair:has([data-pro-disabled="cell"]) ~ .ui_form_pair:has(hr) ~ .ui_form_pair > .ui_form_value > .ui_multi_select .ui_multi_select_row > td,
 .shrinkwrapper:has([data-pro-disabled="cell"]) ~ .ui_form_end_buttons {
-  cursor: not-allowed;
+	cursor: not-allowed;
 }
 .shrinkwrapper:has([data-pro-disabled="cell"]) ~ .ui_form_end_buttons [name="create"] {
-  pointer-events: none;
-  opacity: 0.4;
+	pointer-events: none;
+	opacity: 0.4;
 }
 [data-pro-disabled$="-elem"] input:not([type="radio"]):not([type="checkbox"]) {
-  filter: grayscale(1) contrast(0.9);
+	filter: grayscale(1) contrast(0.9);
 }
-[data-pro-disabled$="-elem"] input {
-  cursor: not-allowed !important;
-}
-.linkwithicon.inactive a,
-.linkindented.inactive a,
-[data-pro-disabled$="-link"] a {
-  cursor: alias;
-}
-[data-pro-disabled$="-elem"] a {
-  filter: grayscale(1) contrast(0.5);
-}
-[data-pro-disabled$="-elem"] a:hover {
-  filter: grayscale(1) contrast(1);
-}
-.not-secure {
-  color: #c40000;
-  float: right;
-}
-.inherit-color::after,
-.inherit-color::before,
-.inherit-color:focus::after,
-.inherit-color:focus::before,
-.inherit-color:active::after,
-.inherit-color:active::before,
-.inherit-color:hover::after,
-.inherit-color:hover::before,
-.inherit-color:focus,
-.inherit-color:active,
-.inherit-color:hover,
-.inherit-color {
-    color: inherit !important;
-}
-.table-simple {
-    width: auto !important;
-    max-width: 100%;
-}
-.table-simple tr td {
-    padding: 0 4px !important;
-}
-.field-sizing-content {
-  field-sizing: content !important;
-  min-width: 15px !important;
-}
-.text-danger {
-  color: var(--text-color-danger);
-}
-.text-success {
-  color: var(--text-color-success);
-}
-.text-warning {
-  color: var(--text-color-warning);
-}
-.text-info {
-  color: var(--text-color-info);
-}
-/* Utility used by forms that need fields to consume the available row width. */
-.w-100 {
-    width: 100% !important;
+[data-pro-disabled$="-elem"] input { cursor: not-allowed !important; }
+.menu-link.inactive, [data-pro-disabled$="-link"] a { cursor: alias; }
+[data-pro-disabled$="-elem"] a { filter: grayscale(1) contrast(0.5); }
+[data-pro-disabled$="-elem"] a:hover { filter: grayscale(1) contrast(1); }
+
+/* ---- Print ---- */
+
+@media print {
+	body { background: #fff; color: #000; }
+	body > .header,
+	body > .header ~ center,
+	.ui_form ~ a,
+	.ui_table a[href*=".cgi"],
+	.ui_form .ui_link,
+	.ui_form > center,
+	.ui_form > [name],
+	.ui_form > .wrapper,
+	.ui_form > .wrapper ~ .shrinkwrapper,
+	.ui_table > thead > tr > td:not(:first-child):last-child,
+	.ui_footer_links,
+	.page-links {
+		display: none;
+	}
+	.ui_table > thead > tr > td > b { font-size: 1.33em; }
+	.ui_table > thead > tr > td {
+		position: relative;
+		padding: 10px;
+		border-bottom: 2px solid #d9d9d9;
+		text-align: center;
+	}
+	body > .header ~ .ui_form[action*=".cgi"]:first-of-type { margin-top: -50px; }
+	pre { white-space: pre-wrap; }
+	a { word-break: break-word; }
+	a[href]:after { content: none; }
 }

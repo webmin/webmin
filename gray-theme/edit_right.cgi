@@ -55,6 +55,13 @@ print &ui_table_row($text{'edright_fsize'},
     &ui_opt_textbox("fsize", $sects->{'fsize'}, 6, $text{'edright_fsizedef'}).
     " ".$text{'edright_pixels'});
 
+# Light or dark colors
+print &ui_table_row($text{'edright_scheme'},
+    &ui_select("scheme", $sects->{'scheme'},
+	       [ [ "", $text{'edright_scheme_auto'} ],
+		 [ "light", $text{'edright_scheme_light'} ],
+		 [ "dark", $text{'edright_scheme_dark'} ] ]));
+
 # Show search box
 print &ui_table_row($text{'edright_search'},
     &ui_yesno_radio("search", !$sects->{'nosearch'}));
