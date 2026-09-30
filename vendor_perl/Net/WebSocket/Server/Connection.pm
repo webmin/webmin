@@ -146,6 +146,8 @@ sub send {
   syswrite($self->{socket}, $bytes);
 }
 
+# Webmin patch: https://github.com/webmin/webmin/pull/2861
+# Preserve the receive-loop fixes when updating from an unpatched upstream copy.
 sub recv {
   my ($self) = @_;
 
