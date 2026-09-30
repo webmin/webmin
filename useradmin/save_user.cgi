@@ -538,6 +538,7 @@ if (%ouser) {
 		$user{'passmode'} = 4;
 		}
 	$user{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
+	&can_edit_user(\%access, \%user) || &error($text{'usave_eeditafter'});
 	&modify_user(\%ouser, \%user);
 
 	# Add, update or remove the SSH public key managed by this module.
@@ -611,6 +612,7 @@ else {
 	# Save user details
 	$user{'passmode'} = $in{'passmode'};
 	$user{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
+	&can_edit_user(\%access, \%user) || &error($text{'usave_eeditafter'});
 	&create_user(\%user);
 
 	# Copy files into user's directory

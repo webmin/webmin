@@ -147,6 +147,7 @@ uedit_clone=Clone User
 
 usave_err=Failed to save user
 usave_eedit=You cannot edit this user
+usave_eeditafter=Saved user cannot be edited
 usave_ecreate=You cannot create new users
 usave_ebadname='$1' is not a valid username
 usave_elength=Username cannot be longer than $1 letters
