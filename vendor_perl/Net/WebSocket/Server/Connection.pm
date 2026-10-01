@@ -9,6 +9,7 @@ use Protocol::WebSocket::Handshake::Server;
 use Protocol::WebSocket::Frame;
 use Socket qw(IPPROTO_TCP TCP_NODELAY);
 use Encode;
+use Errno qw(EAGAIN EWOULDBLOCK EINTR);
 
 sub new {
   my $class = shift;
@@ -145,6 +146,8 @@ sub send {
   syswrite($self->{socket}, $bytes);
 }
 
+# Webmin patch: https://github.com/webmin/webmin/pull/2861
+# Preserve the receive-loop fixes when updating from an unpatched upstream copy.
 sub recv {
   my ($self) = @_;
 
@@ -158,14 +161,26 @@ sub recv {
     $self->{needs_ssl} = 0;
   }
 
-  my ($len, $data) = (0, "");
-  if (!($len = sysread($self->{socket}, $data, 8192))) {
+  # Read one chunk per readiness event. Draining with blocking reads can
+  # hang at a chunk boundary; nonblocking reads can instead return EAGAIN.
+  my ($len, $data);
+  $len = sysread($self->{socket}, $data, 8192);
+  return if !defined($len) && ($! == EAGAIN || $! == EWOULDBLOCK || $! == EINTR);
+  if (!defined($len) || !$len) {
     $self->disconnect();
     return;
   }
 
-  # read remaining data
-  $len = sysread($self->{socket}, $data, 8192, length($data)) while $len >= 8192;
+  # SSL may retain decrypted bytes even when select cannot see more data.
+  # Drain only those buffered bytes, without another blocking socket read.
+  while ($self->{socket}->can('pending') && $self->{socket}->pending) {
+    my $more = sysread($self->{socket}, $data, 8192, length($data));
+    last if !defined($more) && ($! == EAGAIN || $! == EWOULDBLOCK || $! == EINTR);
+    if (!defined($more) || !$more) {
+      $self->disconnect();
+      return;
+    }
+  }
 
   if ($self->{handshake}) {
     $self->{handshake}->parse($data);

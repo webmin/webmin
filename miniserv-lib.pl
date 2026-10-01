@@ -5173,12 +5173,18 @@ while(1) {
 	my ($buf, $ok);
 	my $uptime = 0;
 	my ($backend_ready, $browser_ready);
-	if (&$backend_pending()) {
-		$backend_ready = 1;
+	# TLS and HTTP parsing can retain bytes after the socket stops being
+	# readable. Drain either side's buffered data before waiting for more.
+	my $browser_pending = length($main::read_buffer) ||
+		($use_ssl && Net::SSLeay::pending($ssl_con) > 0);
+	my $backend_has_data = &$backend_pending();
+	if ($backend_has_data || $browser_pending) {
 		my $bm = undef;
 		vec($bm, fileno(SOCK), 1) = 1;
+		vec($bm, fileno($fh), 1) = 1;
 		select($bm, undef, undef, 0);
-		$browser_ready = vec($bm, fileno(SOCK), 1);
+		$backend_ready = $backend_has_data || vec($bm, fileno($fh), 1);
+		$browser_ready = $browser_pending || vec($bm, fileno(SOCK), 1);
 		}
 	else {
 		my $rmask = undef;
