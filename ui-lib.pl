@@ -1,7 +1,7 @@
 use vars qw($theme_no_table $ui_radio_selector_donejs $module_name
 	    $ui_multi_select_donejs, $ui_formcount,
 	    $ui_form_end_side_by_side_donecss,
-	    $ui_form_grouped_buttons_donecss);
+	    $ui_form_grouped_buttons_donecss, $ui_buttons_formcount);
 
 =head1 ui-lib.pl
 
@@ -1856,7 +1856,7 @@ inputs. The parameters are :
 
 =item button-label - Text to appear on the button.
 
-=item description - Text to appear next to the button, describing in more detail what it does.
+=item description - Text to appear next to the button, describing in more detail what it does. Inputs in it are linked to the button's form by the HTML5 C<form> attribute.
 
 =item hiddens - HTML for hidden fields to include in the form this function generates.
 
@@ -1880,19 +1880,27 @@ $postmethod ||= 'post';
 if (ref($hiddens)) {
 	$hiddens = join("\n", map { &ui_hidden(@$_) } @$hiddens);
 	}
-return "<form action='$script' class='ui_buttons_form' method='$postmethod'>\n".
-       $hiddens.
-       "<tr class='ui_buttons_row".($disabled ? " disabled" : "")."'> ".
+
+# A form cannot wrap table rows, so it lives in the button cell. Inputs in
+# the description cell are linked to it by the HTML5 form attribute
+my $formid;
+if (!$singlecell && $desc =~ /<(input|select|textarea|button)\b/i) {
+	$formid = "ui_buttons_form_".(++$ui_buttons_formcount);
+	$desc =~ s/<(input|select|textarea|button)\b(?![^>]*\sform\s*=)/<$1 form='$formid'/gi;
+	}
+return "<tr class='ui_buttons_row".($disabled ? " disabled" : "")."'> ".
        "<td nowrap".($singlecell ? " colspan='2'" : " width='20%'").
        " valign='top' class='ui_buttons_label'>".
+       "<form action='$script' class='ui_buttons_form'".
+       ($formid ? " id='$formid'" : "")." method='$postmethod'>\n".
+       $hiddens.
        ($before ? $before." " : "").
        &ui_submit($label, '', $disabled).
-       ($after ? " ".$after : "")."</td>\n".
+       ($after ? " ".$after : "")."</form></td>\n".
        ($singlecell ? "" :
         "<td width='80%' valign='top' class='ui_buttons_value'>".
         $desc."</td>\n").
-       "</tr>\n".
-       "</form>\n";
+       "</tr>\n";
 }
 
 =head2 ui_buttons_hr([title])
