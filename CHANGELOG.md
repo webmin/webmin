@@ -2,6 +2,7 @@
 #### 2.671 (October, 2026)
 * Fix two-factor authentication validation to use the Webmin configuration and data directories passed by the caller
 * Fix HTML escaping of module, script and session fields on the Webmin Actions Log details page
+* Fix mailbox attachment option injection
 
 #### 2.670 (September 20, 2026)
 * Add new Hardware Information module for inspecting system, firmware, security, PCI, USB, storage, network, processor, sensor, driver, and kernel module details

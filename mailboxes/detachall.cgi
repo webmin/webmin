@@ -52,7 +52,7 @@ foreach $a (@attach) {
 # Make and output the zip
 $zip = &transname("$$.zip");
 $out = &backquote_command(
-	"cd ".quotemeta($temp)." && zip ".quotemeta($zip)." * 2>&1");
+	"cd ".quotemeta($temp)." && zip ".quotemeta($zip)." -- * 2>&1");
 if ($?) {
 	&error(&text('detachall_ezip', "<tt>".&html_escape($out)."</tt>"));
 	}
