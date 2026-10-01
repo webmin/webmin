@@ -12,14 +12,11 @@ $right_frame_sections_file = "$config_directory/$current_theme/sections";
 $default_domains_to_show = 10;
 
 # get_left_frame_width()
-# Returns the width of the left frame in pixels
+# Returns the width of the left frame in pixels, the same as the width of
+# the menu in the single page layout
 sub get_left_frame_width
 {
-local $sects = &get_right_frame_sections();
-return $sects->{'fsize'} ? $sects->{'fsize'} :
-       &get_product_name() eq 'usermin' ? 200 :
-       &foreign_available("server-manager") &&
-       &foreign_available("virtual-server") ? 280 : 260;
+return &theme_menu_width();
 }
 
 # list_virtualmin_theme_overlays()

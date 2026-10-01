@@ -27,6 +27,9 @@ else {
 	}
 $sect->{'list'} = $in{'list'};
 $sect->{'tab'} = $in{'tab'};
+# Page layout, framed or a single page
+$in{'layout'} =~ /^(single|)$/ || &error($text{'edright_elayout'});
+$sect->{'layout'} = $in{'layout'};
 if ($in{'fsize_def'}) {
 	delete($sect->{'fsize'});
 	}
@@ -61,5 +64,16 @@ if ($hasvirt && &virtual_server::master_admin() ||
 
 # Save config
 &save_right_frame_sections($sect);
-&redirect("right.cgi");
+if ($sect->{'layout'} ne $sects->{'layout'}) {
+	# The layout changed, so reload the whole window to drop the frameset
+	# or bring it back
+	$main::gray_theme_settings = undef;
+	&popup_header();
+	print &js_redirect($sect->{'layout'} ? "/right.cgi" : "/", "top");
+	&popup_footer();
+	}
+else {
+	# Back to the system information page
+	&redirect("right.cgi");
+	}
 

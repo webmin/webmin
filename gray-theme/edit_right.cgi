@@ -50,6 +50,12 @@ if ($hasvirt || $hasvm2) {
 		 [ "webmin", $text{'edright_webmin'} ] ]));
 	}
 
+# Menu in a frame of its own, or on every page
+print &ui_table_row($text{'edright_layout'},
+    &ui_select("layout", $sects->{'layout'},
+	       [ [ "", $text{'edright_layout_frames'} ],
+		 [ "single", $text{'edright_layout_single'} ] ]));
+
 # Left frame size
 print &ui_table_row($text{'edright_fsize'},
     &ui_opt_textbox("fsize", $sects->{'fsize'}, 6, $text{'edright_fsizedef'}).
