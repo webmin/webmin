@@ -613,7 +613,14 @@ tr.ui_buttons_row > td {
 	border-top: 1px solid var(--border-color-lighter);
 	vertical-align: middle;
 }
-tr.ui_buttons_row:first-child > td { border-top: 0; }
+/* Each row is a form with a table of its own, as a form cannot wrap table
+ * rows. Flattening the wrappers lets all rows share the outer columns */
+tr.ui_buttons_form_row,
+tr.ui_buttons_form_row > td,
+form.ui_buttons_form,
+form.ui_buttons_form > table,
+form.ui_buttons_form > table > tbody { display: contents; }
+tr.ui_buttons_form_row:first-child tr.ui_buttons_row > td { border-top: 0; }
 td.ui_buttons_label {
 	width: 1%;
 	padding-right: 16px;
