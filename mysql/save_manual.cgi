@@ -2,6 +2,7 @@
 # Save a manually edited config file
 
 require './mysql-lib.pl';
+$access{'perms'} == 1 || &error($text{'cnf_ecannot'});
 &ReadParseMime();
 &error_setup($text{'manual_err'});
 

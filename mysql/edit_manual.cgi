@@ -2,6 +2,7 @@
 # Show a config file for manual editing
 
 require './mysql-lib.pl';
+$access{'perms'} == 1 || &error($text{'cnf_ecannot'});
 &ReadParse();
 &ui_print_header($header_subtext, $text{'manual_title'}, "");
 

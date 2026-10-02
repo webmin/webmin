@@ -4,6 +4,7 @@
 * Fix HTML escaping of module, script and session fields on the Webmin Actions Log details page
 * Fix mailbox attachment option injection
 * Fix path traversal and command injection in parameterized Custom Commands file editors
+* Fix MySQL/MariaDB manual editor ACL bypass
 
 #### 2.670 (September 20, 2026)
 * Add new Hardware Information module for inspecting system, firmware, security, PCI, USB, storage, network, processor, sensor, driver, and kernel module details
