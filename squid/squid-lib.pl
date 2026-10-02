@@ -468,7 +468,8 @@ if (my @str = &find_config("cache_dir", $conf)) {
 else {
 	push(@list, $config{'cache_dir'});
 	}
-system("chown -Rf $user:$group ".join(" ",@list)." >/dev/null 2>&1");
+system("chown -Rf ".quotemeta("$user:$group")." ".
+	join(" ", map { quotemeta($_) } @list)." >/dev/null 2>&1");
 }
 
 # can_access(file)
