@@ -447,7 +447,11 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 	$user->{'proto'} = $proto;
 	}
 else {
-	# Adding to local files
+	# Add a single-line record to the local user file
+	foreach my $value (values %$user) {
+		$value =~ s/[\r\n].*//s
+			if (defined($value) && !ref($value));
+		}
 	&lock_file($ENV{'MINISERV_CONFIG'});
 	if ($user->{'theme'}) {
 		$miniserv{"preroot_".$user->{'name'}} =
@@ -628,7 +632,11 @@ if ($user->{'proto'}) {
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	} 
 else {
-	# In local files
+	# Update the single-line record in the local user file
+	foreach my $value (values %$user) {
+		$value =~ s/[\r\n].*//s
+			if (defined($value) && !ref($value));
+		}
 	&lock_file($ENV{'MINISERV_CONFIG'});
 	delete($miniserv{"preroot_".$username});
 	if ($user->{'theme'}) {
