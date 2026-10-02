@@ -1880,8 +1880,13 @@ $postmethod ||= 'post';
 if (ref($hiddens)) {
 	$hiddens = join("\n", map { &ui_hidden(@$_) } @$hiddens);
 	}
-return "<form action='$script' class='ui_buttons_form' method='$postmethod'>\n".
+
+# A form cannot wrap table rows, so each row is a full-width cell holding
+# the form, which wraps a table of its own
+return "<tr class='ui_buttons_form_row'><td colspan='2' style='padding:0'>\n".
+       "<form action='$script' class='ui_buttons_form' method='$postmethod'>\n".
        $hiddens.
+       "<table width='100%' cellspacing='0'>\n".
        "<tr class='ui_buttons_row".($disabled ? " disabled" : "")."'> ".
        "<td nowrap".($singlecell ? " colspan='2'" : " width='20%'").
        " valign='top' class='ui_buttons_label'>".
@@ -1892,7 +1897,9 @@ return "<form action='$script' class='ui_buttons_form' method='$postmethod'>\n".
         "<td width='80%' valign='top' class='ui_buttons_value'>".
         $desc."</td>\n").
        "</tr>\n".
-       "</form>\n";
+       "</table>\n".
+       "</form>\n".
+       "</td></tr>\n";
 }
 
 =head2 ui_buttons_hr([title])
