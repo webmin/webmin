@@ -1991,29 +1991,56 @@ return @rv;
 # or undef.
 sub test_config
 {
-if ($httpd_modules{'core'} >= 1.301) {
-	# Test the configuration with the available command
-	local $cmd;
-	if ($config{'test_apachectl'} &&
-	    -x &translate_filename($config{'apachectl_path'})) {
-		# Test with apachectl
-		$cmd = "\"$config{'apachectl_path'}\" configtest";
+return undef if ($httpd_modules{'core'} < 1.301);
+my $okre = qr/(syntax|Checking).*\s+ok/i;
+
+# Build the httpd command from the configured paths
+my $httpd = &find_httpd();
+my $httpdcmd = "\"$httpd\" -d \"$config{'httpd_dir'}\"";
+if ($config{'httpd_conf'}) {
+	$httpdcmd .= " -f \"$config{'httpd_conf'}\"";
+	}
+foreach my $d (&get_httpd_defines()) {
+	$httpdcmd .= " -D$d";
+	}
+
+# Pick the standard test command
+my ($cmd, $apachectl);
+if ($config{'test_apachectl'} &&
+    -x &translate_filename($config{'apachectl_path'})) {
+	# Test with apachectl, which may set up environment the config needs
+	$apachectl = "\"$config{'apachectl_path'}\"";
+	$cmd = "$apachectl configtest";
+	}
+else {
+	# Test with httpd
+	$cmd = "$httpdcmd -t";
+	}
+
+# Without a global ServerName, Apache looks up the system hostname in DNS
+# while loading the config, which stalls the test when DNS is slow. So first
+# try the test with a placeholder ServerName. Apache applies -C directives
+# before reading the config files, so a ServerName that this check misses,
+# such as one inside an IfModule section, still takes effect.
+my $conf = &get_config();
+if ($conf && !&find_directive("ServerName", $conf)) {
+	my $noname = "-C \"ServerName localhost\"";
+	my $out = &backquote_command(
+		($apachectl ? "$apachectl $noname -t" : "$httpdcmd $noname -t").
+		" 2>&1");
+	if ($apachectl && $httpd && $out =~ /no\s+longer\s+supported/i) {
+		# Red Hat's apachectl refuses extra arguments, and its
+		# configtest just runs httpd -t, so test with httpd instead
+		$out = &backquote_command("$httpdcmd $noname -t 2>&1");
 		}
-	else {
-		# Test with httpd
-		local $httpd = &find_httpd();
-		$cmd = "\"$httpd\" -d \"$config{'httpd_dir'}\" -t";
-		if ($config{'httpd_conf'}) {
-			$cmd .= " -f \"$config{'httpd_conf'}\"";
-			}
-		foreach $d (&get_httpd_defines()) {
-			$cmd .= " -D$d";
-			}
-		}
-	local $out = &backquote_command("$cmd 2>&1");
-	if ($out && $out !~ /(syntax|Checking).*\s+ok/i) {
-		return $out;
-		}
+	return undef if ($out =~ $okre);
+	}
+
+# Run the standard test. This also runs when the quick test failed, in case
+# the extra arguments, rather than the config, caused the failure.
+my $out = &backquote_command("$cmd 2>&1");
+if ($out && $out !~ $okre) {
+	return $out;
 	}
 return undef;
 }
