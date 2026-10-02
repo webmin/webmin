@@ -17,12 +17,11 @@ if ($file !~ /^\//) {
 
 # Set environment variables for parameters
 ($env, $export, $str, $displayfile) = &set_parameter_envs($edit, $file);
-$displayfile = &html_escape($displayfile);
-
 if ($edit->{'envs'} || @{$edit->{'args'}}) {
-	# Do environment variable substitution
-	chop($file = `echo "$file"`);
+	# Expand variables without invoking a shell
+	$file = &resolve_editor_file($file);
 	}
+$displayfile = &html_escape($displayfile);
 
 # Run any before-edit command
 if ($edit->{'beforeedit'}) {

@@ -481,6 +481,11 @@ foreach my $a (@{$cmd->{'args'}}) {
 		&error(&text('run_emust', $a->{'desc'}));
 		}
 	$rv =~ /\0/ && &error($text{'run_ezero'});
+	# Stop non-path parameters from changing the editor's directory
+	if ($cmd->{'edit'} && $a->{'type'} != 5 && $a->{'type'} != 6 &&
+	    ($rv =~ /[\/\\\r\n]/ || $rv =~ /^\.\.?$/)) {
+		&error($text{'view_ecannot'});
+		}
 	$ENV{$n} = $rv;
 	$env .= "$n=".quotemeta($rv)."\n";
 	$export .= " $n";
@@ -494,6 +499,30 @@ foreach my $a (@{$cmd->{'args'}}) {
 	push(@vals, $rv);
 	}
 return ($env, $export, $str, $displaystr, \@vals);
+}
+
+# resolve_editor_file(template)
+# Expands environment variables and keeps the path in its fixed directory.
+sub resolve_editor_file
+{
+local ($file) = @_;
+# Leave fixed paths unchanged
+return $file if ($file !~ /\$/);
+local $template = $file;
+# Expand each supported variable once, but not variables inside its value
+$file =~ s{\$\{([A-Za-z_][A-Za-z0-9_]*)\}|
+	    \$([A-Za-z_][A-Za-z0-9_]*)}{
+	my $name = defined($1) ? $1 : $2;
+	defined($ENV{$name}) ? $ENV{$name} : "";
+	}gex;
+# Resolve the fixed directory and full path before checking their locations
+$template =~ s/\$.*$//;
+$template =~ s/\/[^\/]*$// if ($template ne "/");
+$template = &simplify_path(&resolve_links($template));
+$file = &simplify_path(&resolve_links($file));
+$template && $file && &is_under_directory($template, $file) ||
+	&error($text{'view_ecannot'});
+return $file;
 }
 
 # list_dbi_drivers()

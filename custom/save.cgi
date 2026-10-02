@@ -18,10 +18,9 @@ if ($file !~ /^\//) {
 
 # Set environment variables for parameters
 ($env, $export, $str, $displayfile) = &set_parameter_envs($edit, $file);
-
 if ($edit->{'envs'} || @{$edit->{'args'}}) {
-	# Do environment variable substitution
-	chop($file = `echo "$file"`);
+	# Expand variables without invoking a shell
+	$file = &resolve_editor_file($file);
 	}
 
 # Run the before-command
@@ -37,14 +36,15 @@ $in{'data'} =~ s/\r//g;
 &print_tempfile(FILE, $in{'data'});
 &close_tempfile(FILE);
 
-# Set permissions
+# Set file ownership and permissions without invoking a shell
 if ($edit->{'user'}) {
-	&system_logged("chown $edit->{'user'}:$edit->{'group'} ".
-		       "$file >/dev/null 2>&1");
+	# Apply the configured owner and group
+	&set_ownership_permissions($edit->{'user'}, $edit->{'group'},
+				   undef, $file);
 	}
 if ($edit->{'perms'}) {
-	&system_logged("chmod $edit->{'perms'} ".
-		       "$file >/dev/null 2>&1");
+	# Apply the configured file permissions
+	&set_ownership_permissions(undef, undef, oct($edit->{'perms'}), $file);
 	}
 
 # Run the after-command
