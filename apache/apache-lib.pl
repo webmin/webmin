@@ -1994,12 +1994,6 @@ sub test_config
 return undef if ($httpd_modules{'core'} < 1.301);
 my $okre = qr/(syntax|Checking).*\s+ok/i;
 
-# Without a global ServerName, Apache looks up the system hostname in DNS
-# while loading the config, which stalls the test when DNS is slow. Apache
-# applies -C directives before reading the config files, so this placeholder
-# never overrides a ServerName set in the config.
-my $noname = "-C \"ServerName localhost\"";
-
 # Build the httpd command from the configured paths
 my $httpd = &find_httpd();
 my $httpdcmd = "\"$httpd\" -d \"$config{'httpd_dir'}\"";
@@ -2010,33 +2004,41 @@ foreach my $d (&get_httpd_defines()) {
 	$httpdcmd .= " -D$d";
 	}
 
-# Pick the standard test command, and the same test without the DNS lookup
-my ($cmd, $fastcmd, $apachectl);
+# Pick the standard test command
+my ($cmd, $apachectl);
 if ($config{'test_apachectl'} &&
     -x &translate_filename($config{'apachectl_path'})) {
 	# Test with apachectl, which may set up environment the config needs
 	$apachectl = "\"$config{'apachectl_path'}\"";
 	$cmd = "$apachectl configtest";
-	$fastcmd = "$apachectl $noname -t";
 	}
 else {
 	# Test with httpd
 	$cmd = "$httpdcmd -t";
-	$fastcmd = "$httpdcmd $noname -t";
 	}
 
-# Try the test without the DNS lookup first
-my $out = &backquote_command("$fastcmd 2>&1");
-if ($apachectl && $httpd && $out =~ /no\s+longer\s+supported/i) {
-	# Red Hat's apachectl refuses extra arguments, and its configtest
-	# just runs httpd -t, so test with httpd instead
-	$out = &backquote_command("$httpdcmd $noname -t 2>&1");
+# Without a global ServerName, Apache looks up the system hostname in DNS
+# while loading the config, which stalls the test when DNS is slow. So first
+# try the test with a placeholder ServerName. Apache applies -C directives
+# before reading the config files, so a ServerName that this check misses,
+# such as one inside an IfModule section, still takes effect.
+my $conf = &get_config();
+if ($conf && !&find_directive("ServerName", $conf)) {
+	my $noname = "-C \"ServerName localhost\"";
+	my $out = &backquote_command(
+		($apachectl ? "$apachectl $noname -t" : "$httpdcmd $noname -t").
+		" 2>&1");
+	if ($apachectl && $httpd && $out =~ /no\s+longer\s+supported/i) {
+		# Red Hat's apachectl refuses extra arguments, and its
+		# configtest just runs httpd -t, so test with httpd instead
+		$out = &backquote_command("$httpdcmd $noname -t 2>&1");
+		}
+	return undef if ($out =~ $okre);
 	}
-return undef if ($out =~ $okre);
 
-# The quick test failed, so run the standard test in case the extra
-# arguments, rather than the config, caused the failure
-$out = &backquote_command("$cmd 2>&1");
+# Run the standard test. This also runs when the quick test failed, in case
+# the extra arguments, rather than the config, caused the failure.
+my $out = &backquote_command("$cmd 2>&1");
 if ($out && $out !~ $okre) {
 	return $out;
 	}

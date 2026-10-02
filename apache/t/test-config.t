@@ -120,6 +120,23 @@ require File::Spec->catfile($root, 'apache', 'apache-lib.pl');
 	$main::httpd_modules{'core'} = 2.4;
 }
 
+# set_apache_conf(text)
+# Writes the main Apache config file and clears the cached copy
+sub set_apache_conf
+{
+my ($text) = @_;
+write_text($apache_conf, $text);
+main::flush_config_cache();
+}
+
+# A ServerName inside a virtual host is not global, so Apache still looks up
+# the system hostname
+my $no_global_name = "Listen 80\n".
+		     "<VirtualHost *:80>\n".
+		     "    ServerName vhost.example\n".
+		     "</VirtualHost>\n";
+set_apache_conf($no_global_name);
+
 # Expected log lines for the fake commands
 my $noname = 'ServerName localhost';
 my $direct_fast = join('|', 'httpd', '-d', $apache_root, '-f', $apache_conf,
@@ -200,6 +217,32 @@ subtest 'unknown apachectl falls back to configtest' => sub {
 	is($err, undef, 'valid config passes');
 	is_deeply($cmds, [ $ctl_fast, $ctl_std, $httpd_std ],
 		  'standard test runs when apachectl rejects the arguments');
+};
+
+subtest 'global ServerName uses only the standard test' => sub {
+	set_apache_conf("ServerName www.example.com\n".$no_global_name);
+	my ($err, $cmds) = run_test(0, undef, 'ok');
+	is($err, undef, 'valid config passes');
+	is_deeply($cmds, [ $direct_std ], 'httpd runs without a placeholder');
+
+	($err, $cmds) = run_test(1, $redhat_ctl, 'error');
+	like($err, qr/Syntax error on line 2/, 'error output is returned');
+	is_deeply($cmds, [ $ctl_std, $httpd_std ],
+		  'apachectl configtest runs as before');
+	set_apache_conf($no_global_name);
+};
+
+subtest 'global ServerName in an included file is found' => sub {
+	# Webmin expands includes with glob(), which splits paths on spaces
+	my $inc = File::Spec->catfile($tmp, 'servername.conf');
+	write_text($inc, "ServerName www.example.com\n");
+	set_apache_conf("Include $inc\n".$no_global_name);
+	my ($err, $cmds) = run_test(1, $debian_ctl, 'ok');
+	is($err, undef, 'valid config passes');
+	is_deeply($cmds, [ $ctl_std, $httpd_std ],
+		  'apachectl configtest runs as before');
+	unlink($inc);
+	set_apache_conf($no_global_name);
 };
 
 subtest 'old Apache versions are not tested' => sub {
