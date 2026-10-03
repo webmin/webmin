@@ -46,6 +46,13 @@ if (!$goto) {
 		}
 	}
 
+if (&theme_single_page()) {
+	# The single page layout has no frameset, so the first page opens by
+	# itself and brings its own menu
+	&theme_local_redirect("/$goto");
+	exit;
+	}
+
 # Work out the title that includes the version
 if ($hasvirt) {
 	%minfo = &get_module_info("virtual-server");
@@ -107,20 +114,7 @@ print "<link rel='stylesheet' type='text/css' href='".&get_webprefix().
       &theme_asset_key("gray-theme.css")."'>\n";
 print &ui_switch_theme_javascript();
 print "<title>$title</title>\n";
-my $imgdir = "@{[&get_webprefix()]}/images";
-my $prod = 'webmin';
-if (foreign_available("server-manager")) {
-	$prod = 'cloudmin';
-	}
-elsif (foreign_available("virtual-server")) {
-	$prod = 'virtualmin';
-	}
-elsif (get_product_name() eq 'usermin') {
-	$prod = 'usermin';
-	}
-print "<link rel='icon' type='image/png' sizes='16x16'   href='$imgdir/favicons/$prod/favicon-16x16.png'>\n";
-print "<link rel='icon' type='image/png' sizes='32x32'   href='$imgdir/favicons/$prod/favicon-32x32.png'>\n";
-print "<link rel='icon' type='image/png' sizes='192x192' href='$imgdir/favicons/$prod/favicon-192x192.png'>\n";
+print &theme_favicons();
 print "</head>\n";
 
 # Upper custom frame

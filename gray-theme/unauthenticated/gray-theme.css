@@ -406,7 +406,8 @@ details.section > summary::after {
 details.menu-cat > summary::after {
 	width: 5px;
 	height: 5px;
-	margin: 0 5px 1px 0;
+	margin-block: 0 1px;
+	margin-inline: 0 5px;
 }
 details[open].ui_hidden_table_start > summary::before,
 details[open].section > summary::after,
@@ -658,11 +659,12 @@ table.ui_columns td > .ui_links_row { margin: 0; }
 /* ---- Module page header ---- */
 /* The header table printed by header() becomes the page title with the
  * module links beside it, on the page ground. It bleeds over the page
- * padding and stays at the top while the page scrolls. */
+ * padding and stays at the top while the page scrolls, or under the menu
+ * bar of the single page layout on a narrow screen. */
 
 table.header {
 	position: sticky;
-	top: 0;
+	top: var(--sticky-top, 0);
 	z-index: 5;
 	display: block;
 	width: auto;
@@ -1717,8 +1719,8 @@ html.loading-right .menu-loader { display: block; }
 .mode.loading { pointer-events: none; }
 .mode.loading > b:not(.active) { opacity: 0.5; }
 .mode.loading > b.active { color: var(--text-color); }
-/* The ring sits 6px left of the name. Its right margin and its negative
- * left margin cancel its own width, so it takes no room in the centered
+/* The ring sits 6px before the name. Its end margin and its negative
+ * start margin cancel its own width, so it takes no room in the centered
  * row and the name does not move when it appears */
 .mode.loading > b.active > a::before {
 	content: "";
@@ -1726,7 +1728,8 @@ html.loading-right .menu-loader { display: block; }
 	box-sizing: border-box;
 	width: 10px;
 	height: 10px;
-	margin: 0 6px 0 -16px;
+	margin-block: 0;
+	margin-inline: -16px 6px;
 	border: 2px solid var(--border-color-darker);
 	border-top-color: var(--accent-color);
 	border-radius: 50%;
@@ -1780,7 +1783,8 @@ html.loading-right .menu-loader { display: block; }
 /* Menu rows: 26px links that highlight under the mouse */
 .menu-link {
 	display: block;
-	padding: 4px 8px 4px 12px;
+	padding-block: 4px;
+	padding-inline: 12px 8px;
 	border-radius: var(--radius-sm);
 	line-height: 18px;
 	color: var(--text-color);
@@ -1792,7 +1796,7 @@ html.loading-right .menu-loader { display: block; }
 	text-decoration: none;
 }
 /* Links inside a category are indented under its name */
-.menu-link.menu-sub { padding-left: 24px; }
+.menu-link.menu-sub { padding-inline-start: 24px; }
 /* The logout link stands a little apart, muted, with its icon before
  * the text like any other icon in a link */
 .menu-link.menu-logout {
@@ -1800,7 +1804,7 @@ html.loading-right .menu-loader { display: block; }
 	color: var(--text-color-muted);
 }
 .menu-link svg {
-	margin-right: 6px;
+	margin-inline-end: 6px;
 	vertical-align: -3px;
 	opacity: 0.85;
 }
@@ -1822,7 +1826,8 @@ details.menu-cat > summary {
 	justify-content: space-between;
 	gap: 8px;
 	height: 28px;
-	padding: 0 10px 0 12px;
+	padding-block: 0;
+	padding-inline: 12px 10px;
 	border-radius: var(--radius-sm);
 	color: var(--text-color);
 	list-style: none;
@@ -1849,6 +1854,134 @@ details.menu-cat[open] { margin-bottom: 4px; }
 	color: var(--text-color-muted);
 }
 .menu-html img { max-width: 100%; }
+/* The link to the current page, marked in the single page layout */
+.menu-link.active,
+.menu-link.active:hover {
+	background: var(--element-highlight-bg-color);
+	color: var(--text-color);
+	font-weight: 600;
+}
+
+/* ---- Single page layout ---- */
+/* Without frames, every page carries the menu panel at the start of its
+ * body. The panel is fixed at the left with the same 7px gap as in
+ * the left frame, and the body leaves as much room for it as the left
+ * frame would take, so a page looks just as it does in the frameset. The
+ * page and the menu scroll separately. The logical properties put the
+ * menu at the right for right-to-left languages. */
+body.single-page {
+	padding-inline-start: calc(var(--menu-width, 260px) + var(--page-pad-x));
+}
+/* The system information page pads its own content */
+body.right-frame.single-page {
+	padding-inline-start: var(--menu-width, 260px);
+}
+.page-menu {
+	position: fixed;
+	z-index: 20;
+	top: 7px;
+	bottom: 7px;
+	inset-inline-start: 7px;
+	width: calc(var(--menu-width, 260px) - 7px);
+	height: auto;
+}
+/* The button that opens the menu on a narrow screen, square and with an
+ * icon only; it shows a cross while the menu is open */
+.page-menu .menu-toggle {
+	display: none;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	min-height: 0;
+	height: 34px;
+	margin: 0;
+	padding: 0;
+}
+.page-menu .menu-toggle svg { display: block; }
+.page-menu .menu-toggle .menu-toggle-close,
+.page-menu.open .menu-toggle .menu-toggle-open { display: none; }
+.page-menu.open .menu-toggle .menu-toggle-close { display: block; }
+/* A page that still ends up in a frame, such as in the old frameset right
+ * after the layout was changed, hides its menu */
+html.menu-framed .page-menu { display: none; }
+html.menu-framed body.single-page {
+	--menu-bar-height: 0px;
+	padding-inline-start: var(--page-pad-x);
+}
+html.menu-framed body.right-frame.single-page { padding-inline-start: 0; }
+
+/* On a narrow screen the menu is a bar across the top with the logo and
+ * the button, and the pages start under it; their sticky headers stop
+ * under it too. The button unfolds the bar into the whole menu, which
+ * covers the screen and scrolls, while the page behind it stays put. */
+@media (max-width: 800px) {
+	body.single-page {
+		--menu-bar-height: 52px;
+		--sticky-top: var(--menu-bar-height);
+		padding-top: calc(var(--menu-bar-height) + var(--page-pad-top));
+		padding-inline-start: var(--page-pad-x);
+	}
+	body.right-frame.single-page {
+		padding-top: var(--menu-bar-height);
+		padding-inline-start: 0;
+	}
+	body.single-page:has(> .page-menu.open) { overflow: hidden; }
+	/* The bar has no rounded corners, and a hairline and a soft shadow
+	 * along its bottom edge instead of a border, so that it is exactly
+	 * as tall as its brand row */
+	.page-menu {
+		top: 0;
+		bottom: auto;
+		inset-inline: 0;
+		width: auto;
+		max-height: 100vh;
+		max-height: 100dvh;
+		overflow: hidden;
+		border: 0;
+		border-radius: 0;
+		box-shadow: 0 1px 0 var(--border-color-panel),
+			    0 2px 6px var(--shadow-color);
+	}
+	.page-menu.open {
+		bottom: 0;
+		overflow-y: auto;
+	}
+	/* The brand row: the logo at the start, the button at the end, and
+	 * the host and login lines under them while the menu is open */
+	.page-menu .menu-brand {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		column-gap: 12px;
+		box-sizing: border-box;
+		min-height: var(--menu-bar-height);
+		padding-block: 0;
+		padding-inline: 16px 10px;
+		border-bottom: 0;
+	}
+	.page-menu .menu-brand-name {
+		flex: 1 1 auto;
+		margin: 0;
+	}
+	.page-menu .menu-brand-logo { height: 28px; }
+	.page-menu .menu-toggle { display: inline-flex; }
+	.page-menu .menu-meta {
+		flex: 1 0 100%;
+		padding-bottom: 14px;
+	}
+	.page-menu.open .menu-brand {
+		border-bottom: 1px solid var(--border-color-frame);
+	}
+	/* The folded bar shows the brand row alone */
+	.page-menu:not(.open) :is(.menu-meta, .mode, .leftmenu) {
+		display: none;
+	}
+	.page-menu:not(.open) .menu-top {
+		padding-bottom: 0;
+		border-bottom: 0;
+	}
+}
 
 /* ---- System information page (right.cgi) ---- */
 /* The page is a widget page: its header holds the title, the operating
@@ -1865,11 +1998,12 @@ body.right-frame { padding: 0; }
 }
 .right-frame .ui_page.page > * { margin: 0; }
 .right-frame .ui_page.page > * + * { margin-top: var(--ui-gap); }
-/* The header bleeds over the page padding; its selector outranks the
+/* The header bleeds over the page padding and stays at the top, or under
+ * the menu bar of the single page layout; its selector outranks the
  * margin reset above */
 .right-frame .ui_page.page > .ui_page_head {
 	position: sticky;
-	top: 0;
+	top: var(--sticky-top, 0);
 	z-index: 5;
 	align-items: center;
 	margin: 0 calc(-1 * var(--page-pad-x)) 12px;
@@ -2326,14 +2460,15 @@ form.ui_form[action="uconfig.cgi"] {
  * scroll. The module sizes the terminal from the whole viewport with no
  * room for the header, so the page scrolled, and the scrollbar widened
  * the terminal past the frame. The 66px are the sticky header and its
- * margin; the rules outrank the module's own by specificity. */
+ * margin, plus the menu bar of the single page layout on a narrow screen;
+ * the rules outrank the module's own by specificity. */
 body.xterm { overflow: hidden; }
 body.xterm #terminal {
 	box-sizing: border-box;
 	width: auto;
 	min-width: 0;
 	max-width: none;
-	height: calc(100vh - 66px - var(--card-gap));
+	height: calc(100vh - 66px - var(--card-gap) - var(--menu-bar-height, 0px));
 	min-height: 0;
 	max-height: none;
 	margin: 0;
@@ -2517,6 +2652,11 @@ form[action="config_save.cgi"] #sortableTable2 > thead > tr > td {
 
 @media print {
 	body { background: #fff; color: #000; }
+	.page-menu { display: none; }
+	body.single-page, body.right-frame.single-page {
+		padding-top: 0;
+		padding-inline-start: 0;
+	}
 	body > .header,
 	body > .header ~ center,
 	.ui_form ~ a,

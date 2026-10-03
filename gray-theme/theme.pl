@@ -16,6 +16,10 @@ $main::nosingledomain_virtualmin_mode = 1;
 
 our $ui_formcount;
 
+# The functions that read the theme settings, unless the core has already
+# loaded them into this package
+do "$theme_root_directory/theme-init.pl" if (!defined(&theme_settings));
+
 # Global state for wrapper
 # if 0, wrapper isn't on, add one and open it, if 1 close it, if 2+, subtract
 # but don't close
@@ -131,10 +135,17 @@ else {
 }
 
 # theme_post_save_domain(&domain, action)
-# Called by Virtualmin after a domain is updated, to refresh the left menu
+# Called by Virtualmin after a domain is updated, to refresh the left menu.
+# In the single page layout, a new domain becomes the one the menu shows.
 sub theme_post_save_domain
 {
 local ($d, $action) = @_;
+if (&theme_single_page()) {
+	# The next page builds the menu again, showing a new domain
+	print &theme_menu_remember({ 'dom' => $d->{'id'} })
+		if ($action eq 'create');
+	return;
+	}
 # Refresh left side, in case options have changed
 print "<script>\n";
 if ($action eq 'create') {
@@ -152,6 +163,8 @@ print "</script>\n";
 # Called after multiple domains are updated, to refresh the left menu
 sub theme_post_save_domains
 {
+# The single page layout builds the menu again on the next page
+return if (&theme_single_page());
 print "<script>\n";
 print "top.left.location = top.left.location;\n";
 print "</script>\n";
@@ -162,8 +175,12 @@ print "</script>\n";
 sub theme_post_save_server
 {
 local ($s, $action) = @_;
+# The single page layout builds the menu again on the next page
+return if (&theme_single_page());
 if ($action eq 'create' || $action eq 'delete' ||
     !$done_theme_post_save_server++) {
+	# Refresh the left frame after a system is added or removed, and once
+	# per page otherwise
 	print "<script>\n";
 	print "top.left.location = top.left.location;\n";
 	print "</script>\n";
@@ -171,11 +188,18 @@ if ($action eq 'create' || $action eq 'delete' ||
 }
 
 # theme_select_server(&server)
-# Called by Cloudmin when a page for a server is displayed, to select it on the
-# left menu.
+# Called by Cloudmin when a page for a server is displayed, to select it on
+# the left menu. In the single page layout, the menu shows it from the next
+# page on.
 sub theme_select_server
 {
 local ($server) = @_;
+if (&theme_single_page()) {
+	# This page's menu is already built, so only remember the system for
+	# the next pages
+	print &theme_menu_remember({ 'sid' => $server->{'id'} });
+	return;
+	}
 print <<EOF;
 <script>
 if (window.parent && window.parent.frames[0]) {
@@ -198,11 +222,18 @@ EOF
 }
 
 # theme_select_domain(&domain)
-# Called by Virtualmin when a page for a server is displayed, to select it on
-# the left menu.
+# Called by Virtualmin when a page for a domain is displayed, to select it
+# on the left menu. In the single page layout, the menu shows it from the
+# next page on.
 sub theme_select_domain
 {
 local ($d) = @_;
+if (&theme_single_page()) {
+	# This page's menu is already built, so only remember the domain for
+	# the next pages
+	print &theme_menu_remember({ 'dom' => $d->{'id'} });
+	return;
+	}
 print <<EOF;
 <script>
 if (window.parent && window.parent.frames[0]) {
@@ -227,6 +258,8 @@ EOF
 sub theme_post_save_folder
 {
 local ($folder, $action) = @_;
+# The single page layout builds the menu again on the next page
+return if (&theme_single_page());
 my $ref;
 if ($action eq 'create' || $action eq 'delete' || $action eq 'modify') {
 	# Always refresh
@@ -240,17 +273,24 @@ else {
 		}
 	}
 if ($ref) {
+	# Reload the left frame
 	print "<script>\n";
 	print "top.frames[0].document.location = top.frames[0].document.location;\n";
 	print "</script>\n";
 	}
 }
 
+# theme_post_change_modules()
+# Called after modules are installed, removed or refreshed, to reload the
+# left frame when it lists the Webmin modules
 sub theme_post_change_modules
 {
+# The single page layout builds the menu again on the next page
+return if (&theme_single_page());
 print <<EOF;
 <script>
 var url = '' + top.left.location;
+// Only the menu of the Webmin modules lists them
 if (url.indexOf('mode=modules') > 0) {
     top.left.location = url;
     }
@@ -260,20 +300,31 @@ EOF
 
 # theme_prebody(header-args...)
 # Hides the module index link on Virtualmin pages, whose menu is already
-# in the left frame
+# shown beside the page, and prints the menu of the single page layout
 sub theme_prebody
 {
 if (get_module_name() eq "virtual-server") {
-	# No need for Module Index link, as we have the left-side frame
+	# No need for Module Index link, as the menu already shows Virtualmin
 	$tconfig{'nomoduleindex'} = 1;
 	}
+# Print the menu if theme_prehead chose to show it on this page
+print &theme_page_menu() if ($main::gray_theme_page_menu);
+}
+
+# theme_popup_prebody(popup-header-args...)
+# Prints the menu of the single page layout on a theme page that asks for
+# it, such as the system information page. Real popups never get it.
+sub theme_popup_prebody
+{
+print &theme_page_menu() if ($main::gray_theme_page_menu);
 }
 
 # theme_prehead()
 # Prints the head parts of every page: the color scheme meta, the scheme
 # and frame scripts, and the links to the stylesheet and the table sorting
 # script. Also sets the body attributes the stylesheet keys on: the module
-# name as a class and the forced color scheme, if any.
+# name as a class and the forced color scheme, if any. In the single page
+# layout it also decides whether the page gets the menu.
 sub theme_prehead
 {
 my $pfx = &get_webprefix();
@@ -286,8 +337,203 @@ print "<link rel='stylesheet' type='text/css' href='$pfx/unauthenticated/".
 print "<script type='text/javascript' src='$pfx/unauthenticated/".
       "sorttable.js?".&theme_asset_key("sorttable.js")."'></script>\n";
 my @cls = grep { $_ } ( $main::gray_theme_body_class, &get_module_name() );
+
+# Decide whether this page shows the menu of the single page layout. The
+# body hooks read the result.
+my $menu = &theme_page_menu_wanted();
+if ($menu && &theme_one_module()) {
+	# Webmin opens this user's only module directly, so a menu would
+	# list just that module. Skip it, and let the core header show its
+	# logout link, which the theme otherwise hides with the index link.
+	$menu = 0;
+	$tconfig{'noindex'} = 0;
+	}
+$main::gray_theme_page_menu = $menu;
+if ($menu) {
+	# Leave room for the menu, as wide as the left frame. A page that
+	# still loads in a frame, such as in the old frameset right after the
+	# layout changes, hides the menu.
+	push(@cls, 'single-page');
+	print "<style>:root { --menu-width: ".&theme_menu_width()."px; }".
+	      "</style>\n";
+	# A window that a script opened as a popup, with no menu bar of its
+	# own, such as a chooser, hides the menu too
+	print "<script type='text/javascript'>if (self != top || ".
+	      "window.opener && window.menubar && !window.menubar.visible) ".
+	      "document.documentElement.classList.add('menu-framed');".
+	      "</script>\n";
+	# Phones lay the page out at their own width, so the menu folds into
+	# its bar there
+	print "<meta name='viewport' ".
+	      "content='width=device-width, initial-scale=1'>\n";
+	# The product's icons, as the frameset page has them
+	print &theme_favicons();
+	}
 $tconfig{'inbody'} = (@cls ? "class='".join(" ", @cls)."'" : "").
 		     ($scheme ? " data-scheme='$scheme'" : "");
+}
+
+# theme_page_menu_wanted()
+# Returns 1 if this page should show the menu of the single page layout:
+# the layout is on, a user is logged in, and the page is not a popup. Pages
+# loaded into a frame, an iframe or by a script get no menu either; browsers
+# report this in the Sec-Fetch-Dest header. If the menu code cannot be
+# loaded, the page shows no menu instead of an empty space.
+sub theme_page_menu_wanted
+{
+return 0 if (!&theme_single_page());
+return 0 if ($main::gray_theme_popup);
+return 0 if (!$remote_user || $ENV{'ANONYMOUS_USER'});
+my $dest = lc($ENV{'HTTP_SEC_FETCH_DEST'});
+return 0 if ($dest && $dest ne 'document');
+return &theme_menu_lib();
+}
+
+# theme_one_module()
+# Returns 1 if Webmin is set to open a user's only module directly, the
+# user has exactly one module, and it has no menu of its own. The modules
+# are counted the way the core header counts them when it decides to show
+# its logout link, hidden ones included, so the page never loses both the
+# menu and that link. A user with a hidden module as well keeps the menu,
+# which has its own logout link.
+sub theme_one_module
+{
+return 0 if (!$gconfig{'gotoone'});
+my @avail = &get_available_module_infos(1);
+return 0 if (@avail != 1);
+my $dir = &module_root_directory($avail[0]->{'dir'});
+return -r "$dir/webmin_menu.pl" ? 0 : 1;
+}
+
+# theme_page_menu()
+# Returns the menu of the single page layout. theme_prehead has already
+# decided to show it and loaded the menu code. A page that switched to a
+# Unix user other than root gets a panel that loads its menu instead.
+sub theme_page_menu
+{
+return $> ? &theme_menu_placeholder() : &theme_menu_html({ 'single' => 1 });
+}
+
+# theme_menu_lib()
+# Loads the functions that build the menu, once. Returns 1 when they are
+# available.
+sub theme_menu_lib
+{
+if (!defined(&theme_menu_html)) {
+	# do loads it into the package of this copy of theme.pl: WebminCore
+	# when the core calls the theme's hooks, as on module pages and the
+	# system information page, and main when a theme CGI such as left.cgi
+	# or menu.cgi calls it directly
+	do "$theme_root_directory/menu-lib.pl";
+	}
+return defined(&theme_menu_html) ? 1 : 0;
+}
+
+# theme_single_page()
+# Returns 1 if the theme settings choose the single page layout, with the
+# menu on every page instead of in a frame of its own. A server opened
+# through Webmin Servers Index keeps the frameset, as that index rewrites
+# only the links and redirects of framed pages.
+sub theme_single_page
+{
+return 0 if ($ENV{'HTTP_WEBMIN_SERVERS'} || $ENV{'HTTP_WEBMIN_PATH'});
+return &theme_settings()->{'layout'} eq 'single' ? 1 : 0;
+}
+
+# theme_favicons()
+# Returns the links to the icons of the product, Cloudmin, Virtualmin,
+# Usermin or Webmin, in three sizes
+sub theme_favicons
+{
+my $prod = &foreign_available("server-manager") ? 'cloudmin' :
+	   &foreign_available("virtual-server") ? 'virtualmin' :
+	   &get_product_name() eq 'usermin' ? 'usermin' : 'webmin';
+my $dir = &get_webprefix()."/images/favicons/$prod";
+return join("", map { "<link rel='icon' type='image/png' sizes='${_}x$_' ".
+		      "href='$dir/favicon-${_}x$_.png'>\n" } (16, 32, 192));
+}
+
+# theme_menu_width()
+# Returns the menu width in pixels: the width of the left frame, or of the
+# space the menu takes in the single page layout
+sub theme_menu_width
+{
+my $fsize = &theme_settings()->{'fsize'};
+return $fsize =~ /^(\d+)$/ ? $1 :
+       &get_product_name() eq 'usermin' ? 200 :
+       &foreign_available("server-manager") &&
+       &foreign_available("virtual-server") ? 280 : 260;
+}
+
+# theme_menu_cookie()
+# Returns the name of the cookie that remembers the menu choices of the
+# single page layout, and the path it is set for. The name holds the port,
+# so that Webmin and Usermin on one host keep their own choices.
+sub theme_menu_cookie
+{
+my $port = $ENV{'SERVER_PORT'} =~ /^(\d+)$/ ? $1 : "";
+# Use the URL prefix as the path, or / when there is none or it has
+# characters that are unsafe in a cookie
+my $path = &get_webprefix();
+$path = "/" if ($path !~ /^\/[\w\/.~\-]*$/);
+return ("gray_theme_menu$port", $path);
+}
+
+# theme_menu_state()
+# Returns the menu choices of the single page layout as a hash ref: the
+# menu mode, the Virtualmin domain ID and the Cloudmin system ID. They
+# come from the cookie, or from a later change on this page.
+sub theme_menu_state
+{
+return $main::gray_theme_menu_state if ($main::gray_theme_menu_state);
+my ($name) = &theme_menu_cookie();
+my %state;
+if ($ENV{'HTTP_COOKIE'} =~ /(?:^|;\s*)\Q$name\E=([^;\s]*)/) {
+	# The value holds key=value pairs joined with &, all URL-encoded
+	foreach my $kv (split(/&/, &un_urlize($1))) {
+		my ($k, $v) = split(/=/, $kv, 2);
+		$state{$k} = $v if ($k =~ /^(mode|dom|sid)$/ &&
+				    $v =~ /^[\w.\-]+$/);
+		}
+	}
+$main::gray_theme_menu_state = \%state;
+return $main::gray_theme_menu_state;
+}
+
+# theme_menu_cookie_string(&state)
+# Returns the cookie that stores the menu choices, with its attributes, in
+# the form both a Set-Cookie header and document.cookie take. It lasts
+# until the browser closes.
+sub theme_menu_cookie_string
+{
+my ($state) = @_;
+my ($name, $path) = &theme_menu_cookie();
+# Only the known choices, with values that need no quoting
+my $value = join("&", map { "$_=$state->{$_}" }
+			grep { $state->{$_} =~ /^[\w.\-]+$/ }
+			     ('mode', 'dom', 'sid'));
+return "$name=".&urlize($value)."; path=$path; SameSite=Lax".
+       (uc($ENV{'HTTPS'}) eq 'ON' ? "; Secure" : "");
+}
+
+# theme_menu_remember(&choices)
+# Returns a script that makes menu choices, such as a domain ID, the ones
+# of this page, and stores them in the cookie of the single page layout
+# when it does not hold them yet. The menu script puts the page's choices
+# back into the cookie whenever its tab comes back into use, so that tabs
+# keep their own choices.
+sub theme_menu_remember
+{
+my ($choices) = @_;
+my $state = &theme_menu_state();
+my %new = ( %$state, %$choices );
+my $cookie = &theme_menu_cookie_string(\%new);
+my $changed = $cookie ne &theme_menu_cookie_string($state);
+$main::gray_theme_menu_state = \%new;
+return "<script type='text/javascript'>".
+       "window.grayThemeMenuCookie = '$cookie';".
+       ($changed ? " document.cookie = '$cookie';" : "").
+       "</script>\n";
 }
 
 # theme_scheme_script()
@@ -355,18 +601,8 @@ EOF
 # system information page settings, per user unless they are global.
 sub theme_color_scheme
 {
-return $main::gray_theme_scheme if (defined($main::gray_theme_scheme));
-my $file = "$config_directory/$current_theme/sections";
-my %sects;
-&read_file($file, \%sects);
-if (!$sects{'global'}) {
-	# Unless the global settings are forced on everyone, the user's own
-	# file replaces them
-	my %usects;
-	%sects = %usects if (&read_file("$file.$remote_user", \%usects));
-	}
-$main::gray_theme_scheme = $sects{'scheme'} =~ /^(light|dark)$/ ? $1 : "";
-return $main::gray_theme_scheme;
+my $scheme = &theme_settings()->{'scheme'};
+return $scheme =~ /^(light|dark)$/ ? $1 : "";
 }
 
 # theme_asset_key(file)
@@ -391,10 +627,19 @@ return "$tags class='$class'";
 }
 
 # theme_popup_prehead(title, ...)
-# Popup windows and the frames get the same head as ordinary pages
+# Popup windows and frames get the same head as ordinary pages. A theme
+# page that uses the popup header but asks for the menu, such as the system
+# information page, is not treated as a popup.
 sub theme_popup_prehead
 {
-return &theme_prehead();
+local $main::gray_theme_popup = !$main::gray_theme_menu_page;
+&theme_prehead();
+if ($main::gray_theme_page_menu &&
+    $current_lang_info->{'dir'} =~ /^(rtl|ltr)$/) {
+	# The popup header sets no text direction on the body, but the menu
+	# needs one to stay on the same side as on other pages
+	$tconfig{'inbody'} .= " dir='$1'";
+	}
 }
 
 # theme_ui_table_start(heading, [tabletags], [cols], [&default-tds],
@@ -1036,6 +1281,25 @@ if (get_module_name() eq "virtual-server" && $orig eq "" &&
 	$url = "$1/right.cgi";
 	}
 print "Location: $url\n\n";
+}
+
+# theme_local_redirect(path)
+# Prints a redirect to a path on this server, such as /right.cgi, with the
+# path alone in the Location header. The browser then stays on the host and
+# port it used. The core redirect builds a full URL from the redirect host
+# in the Webmin settings, which a browser using another address may not
+# reach, so the page hangs.
+sub theme_local_redirect
+{
+my ($path) = @_;
+if ($gconfig{'webprefixnoredir'}) {
+	# Webmin is set not to add the URL prefix to redirects, because a
+	# proxy rewrites the full URLs of its redirects; the core redirect
+	# gives it those
+	&redirect($path);
+	return;
+	}
+print "Location: ".&get_webprefix()."$path\n\n";
 }
 
 # theme_ui_hidden_javascript()

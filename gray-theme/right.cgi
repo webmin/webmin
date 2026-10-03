@@ -7,6 +7,10 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 # The language table of the system status module is read once below
 no warnings 'once';
+# The page is the start page, which the browser opens without a Referer
+# when the address was typed, as / redirects to it in the single page
+# layout. A request with a Referer from another site is still refused.
+our $trust_unknown_referers = 2;
 require "gray-theme/gray-theme-lib.pl";
 require "gray-theme/theme.pl";
 &ReadParse();
@@ -25,8 +29,10 @@ if ($redir) {
 	return;
 	}
 
-# The body class selects the right frame styles
+# The body class selects the right frame styles. In the single page layout
+# this page shows the menu, even though it uses the popup header.
 our $gray_theme_body_class = 'right-frame';
+our $gray_theme_menu_page = 1;
 &popup_header($text{'left_home'});
 
 # Links from modules become the page actions, with an icon where the
