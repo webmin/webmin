@@ -3337,7 +3337,7 @@ while(1) {
 return $anyneg;
 }
 
-=head2 http_download(host, port, page, destfile, [&error], [&callback], [sslmode], [user], [pass], [timeout], [osdn-convert], [no-cache], [&headers], [&response-headers])
+=head2 http_download(host, port, page, destfile, [&error], [&callback], [sslmode], [user], [pass], [timeout], [osdn-convert], [no-cache], [&headers], [&response-headers], [address-family])
 
 Downloads data from a HTTP url to a local file or string. The parameters are :
 
@@ -3369,6 +3369,8 @@ Downloads data from a HTTP url to a local file or string. The parameters are :
 
 =item response_headers - If set returns a hash ref of response HTTP headers.
 
+=item address-family - If set to 4 or 6, connects only using that IP family.
+
 If the callback function is defined, it will be called at each step of the download process with a mode parameter and
 additional args. The mode will be one of :
 
@@ -3390,7 +3392,7 @@ additional args. The mode will be one of :
 sub http_download
 {
 my ($host, $port, $page, $dest, $error, $cbfunc, $ssl, $user, $pass,
-    $timeout, $osdn, $nocache, $headers, $response_headers) = @_;
+    $timeout, $osdn, $nocache, $headers, $response_headers, $family) = @_;
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('HTTP', "host=$host port=$port page=$page ssl=$ssl".
 				  ($user ? " user=$user pass=$pass" : "").
@@ -3446,7 +3448,8 @@ $main::download_timed_out = undef;
 local $SIG{ALRM} = \&download_timeout;
 $timeout = 60 if (!defined($timeout));
 alarm($timeout) if ($timeout);
-my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
+my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers,
+			      undef, undef, $family);
 alarm(0) if ($timeout);
 $h = $main::download_timed_out if ($main::download_timed_out);
 if (!ref($h)) {
@@ -3456,7 +3459,8 @@ if (!ref($h)) {
 	}
 &$cbfunc(7, $h->{'ip'}) if ($cbfunc);
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
-			$headers, $ssl, $nocache, $timeout, $response_headers);
+			$headers, $ssl, $nocache, $timeout, $response_headers,
+			$family);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
 	}
@@ -3464,7 +3468,8 @@ if ((!$error || !$$error) && !$nocache) {
 
 =head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn],
 			      [oldhost], [oldport], [&send-headers], [old-ssl],
-			      [no-cache], [timeout], [response-header])
+			      [no-cache], [timeout], [response-header],
+			      [address-family])
 
 Do a HTTP download, after the headers have been sent. For internal use only,
 typically called by http_download.
@@ -3473,7 +3478,7 @@ typically called by http_download.
 sub complete_http_download
 {
 my ($h, $destfile, $error, $cbfunc, $osdn, $oldhost, $oldport, $headers,
-    $oldssl, $nocache, $timeout, $response_headers) = @_;
+    $oldssl, $nocache, $timeout, $response_headers, $family) = @_;
 
 # Kept local so that callback funcs # can access them.
 local ($line, %header, @headers, $s);
@@ -3548,7 +3553,8 @@ if ($rcode >= 300 && $rcode < 400) {
 	$page =~ s/ /%20/g;
 	$page .= "?".$params if (defined($params));
 	&http_download($host, $port, $page, $destfile, $error, $cbfunc, $ssl,
-		       undef, undef, undef, $osdn, $nocache, $headers);
+		       undef, undef, undef, $osdn, $nocache, $headers, undef,
+		       $family);
 	}
 else {
 	# read data
@@ -4034,7 +4040,7 @@ foreach my $n (split(/\s+/, $gconfig{'noproxy'})) {
 return 0;
 }
 
-=head2 open_socket(host, port, handle, [&error])
+=head2 open_socket(host, port, handle, [&error], [bind-ip], [address-family])
 
 Open a TCP connection to some host and port, using a file handle. The
 parameters are :
@@ -4049,12 +4055,14 @@ parameters are :
 
 =item bindip - Local IP address to bind to for outgoing connections
 
+=item address-family - If set to 4 or 6, connects only using that IP family.
+
 Returns the IP to which the connection was actually made.
 
 =cut
 sub open_socket
 {
-my ($host, $port, $fh, $err, $bindip) = @_;
+my ($host, $port, $fh, $err, $bindip, $family) = @_;
 $fh = &callers_package($fh);
 $bindip ||= $gconfig{'bind_proxy'};
 
@@ -4062,10 +4070,13 @@ if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('TCP', "host=$host port=$port");
 	}
 
-# Try IPv4 first so a missing AAAA record cannot delay a working connection.
+# Use the requested family, or prefer IPv4 before falling back to IPv6.
 my ($msg, $gotip);
 my $proto = getprotobyname("tcp");
-foreach my $lookup (\&to_ipaddress, \&to_ip6address) {
+my @lookups = defined($family) && $family == 4 ? ( \&to_ipaddress ) :
+	      defined($family) && $family == 6 ? ( \&to_ip6address ) :
+	      ( \&to_ipaddress, \&to_ip6address );
+foreach my $lookup (@lookups) {
 	my @ips = &$lookup($host);
 	foreach my $ip (@ips) {
 		$msg = undef;
@@ -9835,7 +9846,7 @@ return $can_use_http_ssl_cache;
 }
 
 =head2 make_http_connection(host, port, ssl, method, page, [&headers],
-			    [&certreqs])
+			    [bind-ip], [&certreqs], [address-family])
 
 Opens a connection to some HTTP server, maybe through a proxy, and returns
 a handle object. The handle can then be used to send additional headers
@@ -9859,10 +9870,13 @@ The parameters are :
 
 =item certreqs - A hash ref containing options for remote cert verification
 
+=item address-family - If set to 4 or 6, connects only using that IP family.
+
 =cut
 sub make_http_connection
 {
-my ($host, $port, $ssl, $method, $page, $headers, $bindip, $certreqs) = @_;
+my ($host, $port, $ssl, $method, $page, $headers, $bindip, $certreqs,
+    $family) = @_;
 my $htxt;
 if (ref($headers) eq 'ARRAY') {
 	# Headers are name-value pairs
@@ -9946,7 +9960,7 @@ if ($ssl) {
 	    !&no_proxy($host)) {
 		# Via proxy
 		my $error;
-		&open_socket($1, $2, $rv->{'fh'}, \$error, $bindip);
+		&open_socket($1, $2, $rv->{'fh'}, \$error, $bindip, $family);
 		if (!$error) {
 			# Connected OK
 			my $fh = $rv->{'fh'};
@@ -9977,7 +9991,8 @@ if ($ssl) {
 	if (!$connected) {
 		# Direct connection
 		my $error;
-		my $ip = &open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
+		my $ip = &open_socket($host, $port, $rv->{'fh'}, \$error, $bindip,
+				      $family);
 		return $error if ($error);
 		$rv->{'ip'} = $ip;
 		}
@@ -10007,7 +10022,7 @@ else {
 	    !&no_proxy($host)) {
 		# Via a proxy
 		my $error;
-		&open_socket($1, $2, $rv->{'fh'}, \$error, $bindip);
+		&open_socket($1, $2, $rv->{'fh'}, \$error, $bindip, $family);
 		if (!$error) {
 			# Connected OK
 			$connected = 1;
@@ -10031,7 +10046,8 @@ else {
 	if (!$connected) {
 		# Connecting directly
 		my $error;
-		my $ip = &open_socket($host, $port, $rv->{'fh'}, \$error, $bindip);
+		my $ip = &open_socket($host, $port, $rv->{'fh'}, \$error, $bindip,
+				      $family);
 		return $error if ($error);
 		my $fh = $rv->{'fh'};
 		$rv->{'ip'} = $ip;

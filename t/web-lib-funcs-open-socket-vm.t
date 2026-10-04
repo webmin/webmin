@@ -57,14 +57,20 @@ WebminCore->import();
 init_config();
 $main::error_must_die = 1;
 
-# Substitute only the exact original or staged function; use installed callers.
+# Substitute the changed staged functions while using installed Webmin callers.
 open(my $source_file, '<', $source) or die $!;
 my $code = do { local $/; <$source_file> };
 close($source_file);
-$code =~ /\n(sub open_socket\n\{.*?\n\})\n\n=head2 download_timeout/s or die 'Cannot extract open_socket';
-eval "package WebminCore; no strict; no warnings 'redefine'; $1";
-die $@ if $@;
-*main::open_socket = \&WebminCore::open_socket;
+for my $function (qw(http_download complete_http_download open_socket
+			     make_http_connection)) {
+	$code =~ /\n(sub \Q$function\E\n\{.*?\n\})\n\n=head2 /s or
+		die "Cannot extract $function";
+	my $sub = $1;
+	eval "package WebminCore; no strict; no warnings 'redefine'; $sub";
+	die $@ if $@;
+	no strict 'refs';
+	*{"main::$function"} = \&{"WebminCore::$function"};
+}
 
 # Limit fixture DNS to loopback while preserving the real literal-IP handling.
 my $original4 = \&WebminCore::to_ipaddress;
@@ -93,7 +99,7 @@ local *WebminCore::no_proxy = sub { 0 };
 
 sub download
 {
-    my ($host, $port, $ssl, $post) = @_;
+    my ($host, $port, $ssl, $post, $family) = @_;
     my ($body, $error);
     if (defined $post) {
         http_post($host, $port, '/marker', $post, \$body, \$error,
@@ -101,7 +107,7 @@ sub download
     }
     else {
         http_download($host, $port, '/marker', \$body, \$error,
-            undef, $ssl, undef, undef, 5, 0, 1);
+            undef, $ssl, undef, undef, 5, 0, 1, undef, undef, $family);
     }
     is($error, undef, 'request succeeds');
     my $result = eval { decode_json($body || '') };
@@ -128,6 +134,31 @@ for my $case (
         is($reply->{'request'}, 'GET /marker HTTP/1.0', 'request reaches the endpoint');
         is($reply->{'sni'}, $host, 'TLS SNI is unchanged') if $ssl;
     };
+}
+
+for my $ssl (0, 1) {
+    my $protocol = $ssl ? 'HTTPS' : 'HTTP';
+    my $port_prefix = lc($protocol);
+    for my $family (4, 6) {
+        subtest "$protocol forced IPv$family" => sub {
+            my $reply = download('dual.invalid',
+                $ports->{$port_prefix.$family}, $ssl, undef, $family);
+            is($reply->{'host'}, 'dual.invalid',
+                'request reaches the matching address family');
+        };
+    }
+    for my $case ([4, 6], [6, 4]) {
+        my ($family, $listener_family) = @$case;
+        subtest "$protocol forced IPv$family skips IPv$listener_family" => sub {
+            my ($body, $error);
+            http_download('dual.invalid',
+                $ports->{$port_prefix.$listener_family}, '/', \$body,
+                \$error, undef, $ssl, undef, undef, 5, 0, 1, undef,
+                undef, $family);
+            like($error, qr/^Failed to (?:IPv6 )?connect to dual\.invalid:/,
+                'request does not fall back to the other address family');
+        };
+    }
 }
 
 subtest 'POST request body' => sub {
