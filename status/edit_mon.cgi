@@ -143,17 +143,23 @@ print &ui_table_end();
 
 print &ui_table_start($text{'mon_header5'}, "width=100%", 2, \@tds);
 
-# Show emailing schedule
+# Show if monitoring is enabled
 print &ui_table_row($text{'mon_nosched'},
-		    &ui_select("nosched", int($serv->{'nosched'}),
-			       [ [ 1, $text{'no'} ],
-				 [ 0, $text{'mon_warndef'} ],
-				 [ 3, $text{'mon_warn1'} ],
-				 [ 2, $text{'mon_warn0'} ],
-				 [ 4, $text{'mon_warn2'} ],
-				 [ 5, $text{'mon_warn3'} ],
-				 [ 6, $text{'mon_quiet'} ] ]),
-		    undef, \@tds);
+	&ui_yesno_radio("nosched", $serv->{'nosched'} == 1 ? 0 : 1),
+	undef, \@tds);
+
+# Show when to report
+my $report = $serv->{'nosched'} != 1 ? $serv->{'nosched'} :
+	     defined($serv->{'old_nosched'}) ? $serv->{'old_nosched'} : 0;
+print &ui_table_row($text{'mon_report'},
+	&ui_select("report", $report,
+	       [ [ 0, $text{'mon_warndef'} ],
+		 [ 3, $text{'mon_warn1'} ],
+		 [ 2, $text{'mon_warn0'} ],
+		 [ 4, $text{'mon_warn2'} ],
+		 [ 5, $text{'mon_warn3'} ],
+		 [ 6, $text{'mon_quiet'} ] ]),
+	undef, \@tds);
 
 # Show number of failures
 print &ui_table_row($text{'mon_fails'},

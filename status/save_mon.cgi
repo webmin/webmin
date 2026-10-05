@@ -70,7 +70,16 @@ else {
 	$serv->{'remote'} || $serv->{'groups'} ||
 		&error($text{'mon_enoremote'});
 
-	$serv->{'nosched'} = $in{'nosched'};
+	if ($in{'nosched'} == 0) {
+		# Reporting disabled
+		$serv->{'old_nosched'} = $in{'report'};
+		$serv->{'nosched'} = 1;
+		}
+	else {
+		# Reporting enabled with new mode
+		$serv->{'nosched'} = $in{'report'};
+		delete($serv->{'old_nosched'});
+		}
 	$serv->{'notify'} = join(" ", split(/\0/, $in{'notify'}));
 	$serv->{'ondown'} = $in{'ondown'};
 	$serv->{'onup'} = $in{'onup'};
