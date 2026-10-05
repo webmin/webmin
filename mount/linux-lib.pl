@@ -1643,17 +1643,19 @@ elsif ($type eq "xfs") {
 	print &ui_table_row($text{'linux_usrquotas'},
 		&ui_radio("xfs_usrquota",
 			defined($options{"quota"}) ||
-			  defined($options{"usrquota"}) ? 1 :
-			defined($options{"uqnoenforce"}) ? 2 : 0,
+			  defined($options{"usrquota"}) ||
+			  defined($options{"uquota"}) ? 1 :
+			defined($options{"uqnoenforce"}) ||
+			  defined($options{"qnoenforce"}) ? 2 : 0,
 			[ [ 1, $text{'yes'} ],
 			  [ 2, $text{'linux_noenforce'} ],
 			  [ 0, $text{'no'} ] ]));
 
 	print &ui_table_row($text{'linux_grpquotas'},
 		&ui_radio("xfs_grpquota",
-			defined($options{"quota"}) ||
-			  defined($options{"grpquota"}) ? 1 :
-			defined($options{"uqnoenforce"}) ? 2 : 0,
+			defined($options{"grpquota"}) ||
+			  defined($options{"gquota"}) ? 1 :
+			defined($options{"gqnoenforce"}) ? 2 : 0,
 			[ [ 1, $text{'yes'} ],
 			  [ 2, $text{'linux_noenforce'} ],
 			  [ 0, $text{'no'} ] ]));
@@ -2238,16 +2240,19 @@ elsif ($_[0] eq "tmpfs") {
 		}
 	}
 elsif ($_[0] eq "xfs") {
-	# Save XFS options
-	delete($options{'quota'});
-	delete($options{'usrquota'});
-	delete($options{'uqnoenforce'});
-	$options{'usrquota'} = "" if ($in{'xfs_usrquota'} == 1);
+	# Clear the global disable when enabling user or group accounting.
+	# Keep it when both are off, since it also disables project quotas.
+	delete($options{'noquota'})
+		if ($in{'xfs_usrquota'} || $in{'xfs_grpquota'});
+
+	# Replace user aliases so quota changes cannot leave conflicting options.
+	delete @options{qw(quota usrquota uquota uqnoenforce qnoenforce)};
+	$options{'uquota'} = "" if ($in{'xfs_usrquota'} == 1);
 	$options{'uqnoenforce'} = "" if ($in{'xfs_usrquota'} == 2);
 
-	delete($options{'grpquota'});
-	delete($options{'gqnoenforce'});
-	$options{'grpquota'} = "" if ($in{'xfs_grpquota'} == 1);
+	# Use the short group alias to avoid systemd's generic quota handling.
+	delete @options{qw(grpquota gquota gqnoenforce)};
+	$options{'gquota'} = "" if ($in{'xfs_grpquota'} == 1);
 	$options{'gqnoenforce'} = "" if ($in{'xfs_grpquota'} == 2);
 	}
 elsif ($_[0] eq "ntfs") {

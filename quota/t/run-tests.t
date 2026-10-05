@@ -204,6 +204,34 @@ is(main::quotaon($mixedquota, 3), undef,
 unlike(join("\n", @commands), qr/ -F vfsold /,
        "stale legacy files do not override modern quota formats");
 
+# XFS native aliases must be recognized before quota activation on reboot
+# and when there is no matching fstab entry for an active mount.
+subtest 'XFS quota mount aliases' => sub {
+	foreach my $case (
+		[ 'uquota', 1 ], [ 'gquota', 2 ], [ 'uquota,gquota', 3 ],
+		[ 'usrquota,grpquota', 3 ], [ 'quota,gquota', 3 ],
+		[ 'uqnoenforce,gqnoenforce', 3 ], [ 'qnoenforce', 1 ],
+		[ 'noquota', 0 ], [ 'pquota', 0 ]) {
+		my ($opts, $mode) = @$case;
+		my $mounted = [ "/srv/xfs", "/dev/xfs", "xfs", "rw,noquota" ];
+		my $fstab = [ "/srv/xfs", "/dev/xfs", "xfs", "rw,$opts" ];
+		is(main::quota_can($mounted, $fstab), $mode,
+		   "$opts is recognized in fstab before reboot");
+		$mounted->[3] = "rw,$opts";
+		is(main::quota_can($mounted, undef), $mode,
+		   "$opts is recognized on a mount without a fstab entry");
+		}
+	};
+
+# Short XFS aliases must not enable quota detection for ext filesystems.
+my $ext_mount = [ "/srv/ext", "/dev/ext", "ext4", "rw" ];
+is(main::quota_can($ext_mount,
+	[ "/srv/ext", "/dev/ext", "ext4", "rw,uquota,gquota" ]),
+   0, "XFS-only quota aliases are not accepted for ext4");
+is(main::quota_can($ext_mount,
+	[ "/srv/ext", "/dev/ext", "ext4", "rw,usrquota,grpquota" ]),
+   3, "ext4 generic quota options are still recognized");
+
 # Device-less tmpfs quota options must not create unusable filesystem rows.
 is(main::quota_can([ "/tmp", "tmpfs", "tmpfs", "rw,usrquota" ], undef),
    0, "tmpfs quota mount options are ignored");

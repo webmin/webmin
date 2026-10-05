@@ -99,6 +99,15 @@ if ($_[0]->[2] =~ /^bind/ ||
 	return 0;
 	}
 
+if ($mnttab->[2] eq "xfs") {
+	# XFS quotas may be waiting for a reboot. Recognize native aliases
+	# in fstab as well as the options reported by the mounted filesystem.
+	my $opts = join(",", $mnttab->[3] || "",
+		$_[1] ? $_[1]->[3] || "" : "");
+	return ($opts =~ /(?:^|,)(?:uquota|usrquota|quota|uqnoenforce|qnoenforce)(?:,|$)/ ? 1 : 0) +
+	       ($opts =~ /(?:^|,)(?:gquota|grpquota|gqnoenforce)(?:,|$)/ ? 2 : 0);
+	}
+
 my $hidden = &hidden_ext_quota_mode($_[0]->[0], $_[0]);
 return $hidden if ($hidden);
 
