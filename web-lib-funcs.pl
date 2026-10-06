@@ -11578,7 +11578,7 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 		# Set original ACLs
 		my $qaclfile = quotemeta($_[0]);
 		$file_acls = &backquote_command(
-			"$getfacl --absolute-names $qaclfile 2>/dev/null");
+			"$getfacl --absolute-names --omit-header $qaclfile 2>/dev/null");
 		}
 	# Get status info for a file
 	my @st = stat($_[0]);
@@ -11598,14 +11598,16 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 		else { &error("Failed to replace @{[html_escape($_[0])]} with @{[html_escape($main::open_tempfiles{$_[0]})]} : $!"); }
 		}
 	if (@st) {
-		# Set original permissions and ownership
-		chmod($st[2], $_[0]);
+		# Set original ownership and permissions, in this order as chown
+		# clears the setuid and setgid bits
 		chown($st[4], $st[5], $_[0]);
+		chmod($st[2], $_[0]);
 		}
 	if ($file_acls) {
-		# Set original ACLs
-		my $restore_command = &get_setfacl_restore_command($setfacl);
-		open(my $pipe, '|-', $restore_command);
+		# Set original ACLs, base entries included to remove any entries
+		# the new file inherited. Uses --set-file, as -P --restore fails on
+		# kernels without openat2, and -P to not follow a symlink
+		open(my $pipe, '|-', $setfacl, "-P", "--set-file=-", "--", $_[0]);
 		print($pipe $file_acls);
 		close($pipe);
 		}
