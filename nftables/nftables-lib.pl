@@ -2991,6 +2991,14 @@ return (
 		]
 	},
 	{
+		'id' => 'cloudmin',
+		'name' => text('setup_profile_cloudmin'),
+		'desc' => text('setup_profile_cloudmin_desc'),
+		'input' => 'drop',
+		'services' => [qw(ssh webmin)],
+		'guest_bridges' => [ 'virbr*' ]
+	},
+	{
 		'id' => 'locked',
 		'name' => text('setup_profile_locked'),
 		'desc' => text('setup_profile_locked_desc'),
@@ -3852,12 +3860,16 @@ my $table = {
 		}
 	}
 };
+# Omitted policies leave those hooks to another manager, such as libvirt.
+foreach my $chain (keys %{$table->{'chains'}}) {
+	delete $table->{'chains'}->{$chain} if (!defined($profile->{$chain}));
+	}
 return $table if ($profile_id eq 'allow_all');
 
 add_profile_rule($table, 'input', 'ct state established,related accept');
 add_profile_rule($table, 'input', 'iif "lo" accept');
 add_profile_rule($table, 'input', 'meta l4proto { icmp, ipv6-icmp } accept');
-if ($profile->{'output'} eq 'drop') {
+if (($profile->{'output'} || '') eq 'drop') {
 	add_profile_rule($table, 'output',
 		'ct state established,related accept');
 	add_profile_rule($table, 'output', 'oif "lo" accept');
@@ -3883,6 +3895,14 @@ foreach my $id (map { $_->{'id'} } @services) {
 add_profile_port_set($table, $profile_id, \%ports);
 foreach my $rule (@special_rules) {
 	add_profile_rule($table, 'input', $rule);
+	}
+
+# Guest DNS and DHCP reach the host only through the profile's bridges.
+foreach my $bridge (@{$profile->{'guest_bridges'} || [ ]}) {
+	add_profile_rule($table, 'input',
+		qq(iifname "$bridge" udp dport { 53, 67, 547 } accept));
+	add_profile_rule($table, 'input',
+		qq(iifname "$bridge" tcp dport 53 accept));
 	}
 return $table;
 }
@@ -3999,6 +4019,7 @@ my %names = (
 	'mail' => 'profile_mail',
 	'dns' => 'profile_dns',
 	'virtualmin' => 'profile_hosting',
+	'cloudmin' => 'profile_virtualization',
 	'locked' => 'profile_locked',
 	'custom' => 'profile_custom',
 );
