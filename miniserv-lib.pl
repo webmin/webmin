@@ -1978,6 +1978,11 @@ kill('KILL', $extauth) if ($extauth);
 if (&indexof("--nofork", @miniserv_argv) < 0) {
 	unshift(@miniserv_argv, "--nofork");
 	}
+# Preserve requests while exec() resets the signal handlers. Startup installs
+# the new handlers before unblocking these signals.
+defined(POSIX::sigprocmask(POSIX::SIG_BLOCK(),
+	POSIX::SigSet->new(POSIX::SIGHUP(), POSIX::SIGUSR1()))) ||
+	die "Failed to block miniserv signals: $!";
 exec($perl_path, $miniserv_path, @miniserv_argv);
 die "Failed to restart miniserv with $perl_path $miniserv_path";
 }
