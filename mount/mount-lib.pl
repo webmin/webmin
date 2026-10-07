@@ -405,5 +405,73 @@ foreach my $m (@mounted) {
 return ($total, $free, \@fs, $used);
 }
 
-1;
+# dashboard_mount_path(path)
+# Normalize trailing slashes only, without resolving the mount namespace.
+sub dashboard_mount_path
+{
+my ($path) = @_;
+$path =~ s{(?<=.)/+$}{};
+return $path;
+}
 
+# dashboard_mount_regex(expression)
+# Compile an optional regex defensively, including manually edited config.
+sub dashboard_mount_regex
+{
+my ($expression) = @_;
+return undef if (!defined($expression) || !length($expression));
+local $@;
+my $regex = eval { qr/$expression/ };
+return $@ ? undef : $regex;
+}
+
+# filter_dashboard_filesystems(&filesystems)
+# Return a new list of Dashboard-visible filesystems. Mount lists use tabs
+# (one path per line in config.info), preserving spaces and commas in paths.
+sub filter_dashboard_filesystems
+{
+my ($filesystems) = @_;
+my %types = map { lc($_), 1 }
+            grep { length($_) }
+            split(/[\s,]+/, $config{'sysinfo_exclude_types'} // '');
+my %mounts;
+foreach my $path (split(/[\t\r\n]+/, $config{'sysinfo_exclude_mounts'} // '')) {
+	$path =~ s/^\s+|\s+$//g;
+	$mounts{&dashboard_mount_path($path)} = 1 if (length($path));
+	}
+my $regex = &dashboard_mount_regex($config{'sysinfo_exclude_mount_regex'});
+my @visible = grep {
+	!$types{lc($_->{'type'})} &&
+	!$mounts{&dashboard_mount_path($_->{'dir'})} &&
+	!($regex && $_->{'dir'} =~ $regex)
+	} @$filesystems;
+return \@visible;
+}
+
+# filter_dashboard_disk_space(total, free, &filesystems, used)
+# Filter live or cached disk data and recalculate byte totals only when a
+# filesystem was excluded, preserving the original values otherwise.
+sub filter_dashboard_disk_space
+{
+my ($total, $free, $filesystems, $used) = @_;
+my $visible = &filter_dashboard_filesystems($filesystems);
+if (@$visible != @$filesystems) {
+	($total, $free, $used) = (0, 0, 0);
+	foreach my $fs (@$visible) {
+		$total += $fs->{'total'} // 0;
+		$free += $fs->{'free'} // 0;
+		$used += $fs->{'used'} //
+			 (($fs->{'total'} // 0) - ($fs->{'free'} // 0));
+		}
+	}
+return ($total, $free, $visible, $used);
+}
+
+# dashboard_disk_space([&always-count])
+# Dashboard-only wrapper; other local_disk_space callers remain unaffected.
+sub dashboard_disk_space
+{
+return &filter_dashboard_disk_space(&local_disk_space(@_));
+}
+
+1;
