@@ -776,7 +776,7 @@ elsif ($config{'mail_system'} == 5) {
 	opendir(DOMS, "$config{'vpopmail_dir'}/domains");
 	foreach my $d (readdir(DOMS)) {
 		next if ($d =~ /^\./);
-		local @uinfos = &parse_vpopmail_users("-D $d", $d);
+		local @uinfos = &parse_vpopmail_users("-D ".quotemeta($d), $d);
 		if ($filter) {
 			@uinfos = grep { &$filter(@$_) } @uinfos;
 			}
@@ -788,7 +788,7 @@ elsif ($config{'mail_system'} == 5) {
 return @rv;
 }
 
-# parse_vpopmail_users(command, domain)
+# parse_vpopmail_users(escaped-command, domain)
 sub parse_vpopmail_users
 {
 local %attr_map = ( "passwd" => 1,
@@ -843,7 +843,7 @@ elsif ($config{'mail_system'} == 4) {
 elsif ($config{'mail_system'} == 5) {
 	# Find in vpopmail
 	local ($box, $dom) = split(/\@/, $_[0]);
-	local @users = &parse_vpopmail_users($_[0], $dom);
+	local @users = &parse_vpopmail_users(quotemeta($_[0]), $dom);
 	return @{$users[0]};
 	}
 }
