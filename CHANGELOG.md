@@ -1,5 +1,7 @@
 ## Changelog
 #### 2.671 (October, 2026)
+* Add color schemes to the Terminal module
+* Add per-user Terminal preferences for color scheme, font size, screen reader mode and terminal dimensions
 * Add a Cloudmin virtualization host profile to the nftables module
 * Fix two-factor authentication validation to use the Webmin configuration and data directories passed by the caller
 * Fix HTML escaping of module, script and session fields on the Webmin Actions Log details page
@@ -7,6 +9,10 @@
 * Fix path traversal and command injection in parameterized Custom Commands file editors
 * Fix MySQL/MariaDB manual editor ACL bypass
 * Add optional address-family selection to HTTP downloads and socket connections, preserved across redirects [#1300](https://github.com/virtualmin/virtualmin-gpl/issues/1300)
+* Update the Authentic theme to the latest version with various improvements:
+  - Add support for Terminal module color preferences
+  - Add support for the new Cloudmin navigation, graphical console and live virtual machine controls
+  - Fix spacing and borders in widgets, tables and tab panes
 
 #### 2.670 (September 20, 2026)
 * Add new Hardware Information module for inspecting system, firmware, security, PCI, USB, storage, network, processor, sensor, driver, and kernel module details
