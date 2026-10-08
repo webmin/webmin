@@ -4442,7 +4442,8 @@ return &ui_tag($tag, "\n".$content."\n", $attrs);
 
 Returns inline SVG for a named icon from the built-in set, drawn with the
 current text color. Unlike ui_icon, this does not depend on any theme
-icon font. Options are :
+icon font. Each icon has a CSS class identifying its name, such as
+C<ui_svg_icon_trash>, for targeted styling. Options are :
 
 =item size - Pixel size, defaulting to 16.
 
@@ -4460,7 +4461,8 @@ $opts ||= {};
 my $paths = $ui_svg_icons{$name};
 return "" if (!$paths);
 my $size = int($opts->{'size'} || 16);
-my %attrs = ( 'class' => &_ui_class('ui_svg_icon', $opts->{'class'}),
+my %attrs = ( 'class' => &_ui_class('ui_svg_icon', 'ui_svg_icon_'.$name,
+				  $opts->{'class'}),
 	      'width' => $size,
 	      'height' => $size,
 	      'viewBox' => '0 0 16 16',
