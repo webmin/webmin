@@ -6540,7 +6540,7 @@ sub get_module_info
 {
 my ($mod, $noclone, $forcache) = @_;
 
-return () if (!defined($mod) || $mod !~ /^[A-Za-z0-9_-]+$/);
+return () if (!defined($mod) || $mod eq "" || $mod =~ /[^A-Za-z0-9_-]/);
 my (%rv, $clone, $o);
 my $mdir = &module_root_directory($mod);
 my $auto = load_language_auto();
