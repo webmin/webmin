@@ -7,7 +7,7 @@ index_ecommands=Ninguno de los comandos de respaldo de sistemas de archivo (como
 index_return=lista de respaldos
 
 dump_dir=Directorio a respaldar
-dump_dirs=Directorios a rspaldar
+dump_dirs=Directorios a respaldar
 dump_fs=Sistema de archivos
 dump_sched=¿Programado?
 dump_when=Horas programadas para respaldar
