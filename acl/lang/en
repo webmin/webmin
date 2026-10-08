@@ -201,6 +201,7 @@ acl_chcert=Can change SSL certificate name?
 acl_euser=You are not allowed to edit the ACL for this user
 acl_egroup=You are not allowed to edit group ACLs
 acl_emod=You are not allowed to edit the ACL for this module
+acl_emod2=Module does not exist
 acl_others=Can see inaccessible modules?
 acl_cert=Can request certificate?
 acl_err=Failed to save access control

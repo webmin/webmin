@@ -30,6 +30,7 @@ my $aclfile = $in{'_acl_group'} ? "$config_directory/$in{'_acl_mod'}/$who.gacl"
 			        : "$config_directory/$in{'_acl_mod'}/$who.acl";
 my %minfo = $in{'_acl_mod'} ? &get_module_info($in{'_acl_mod'})
 			    : ( 'desc' => $text{'index_global'} );
+%minfo || &error($text{'acl_emod2'});
 if ($in{'reset'}) {
 	# Just remove the .acl file
 	&lock_file($aclfile);
