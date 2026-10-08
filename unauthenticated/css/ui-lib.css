@@ -609,6 +609,9 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 :is(button, a).ui_action_rounded { border-radius: 4px; }
 :is(button, a).ui_action_pill { border-radius: 999px; }
 .ui_action .ui_svg_icon { width: 1em; height: 1em; flex-shrink: 0; }
+.ui_action_small .ui_svg_icon_trash {
+	transform: translateY(-0.25px);
+}
 
 /* Focus follows the visible surface, even when a theme resets link outlines. */
 .ui_action:not(:disabled):not([aria-disabled="true"]):hover .ui_action_content {
