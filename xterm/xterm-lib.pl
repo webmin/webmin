@@ -25,6 +25,95 @@ if (($ENV{'HTTP_X_REQUESTED_WITH'} || '') eq "XMLHttpRequest") {
 	}
 }
 
+# get_terminal_options([theme])
+# Return xterm.js color options for a Dark or Light scheme. Missing or
+# unrecognized names use Dark, preserving the default for older installs.
+# Auto starts with Dark until the client resolves the page color scheme.
+sub get_terminal_options
+{
+my ($theme) = @_;
+if ($theme ne 'light') {
+	# Keep xterm.js defaults for the dark palette and text contrast.
+	return { 'theme' => { 'background' => '#000000',
+	                     'foreground' => '#ffffff' },
+	         'minimumContrastRatio' => 1 };
+	}
+
+# Darker ANSI colors and contrast adjustment keep light terminals readable.
+return {
+	'theme' => {
+		'background' => '#ffffff', 'foreground' => '#242424',
+		'cursor' => '#242424', 'cursorAccent' => '#ffffff',
+		'selectionBackground' => '#add6ff',
+		'selectionInactiveBackground' => '#d0d0d0',
+		'black' => '#242424', 'red' => '#a31515', 'green' => '#256c18',
+		'yellow' => '#795e00', 'blue' => '#0451a5', 'magenta' => '#7a287d',
+		'cyan' => '#007070', 'white' => '#bfbfbf',
+		'brightBlack' => '#666666', 'brightRed' => '#b52020',
+		'brightGreen' => '#287028', 'brightYellow' => '#806000',
+		'brightBlue' => '#005cc5', 'brightMagenta' => '#8b298f',
+		'brightCyan' => '#007575', 'brightWhite' => '#ffffff',
+		},
+	'minimumContrastRatio' => 4.5,
+	};
+}
+
+# get_terminal_theme_script(theme)
+# Return the initial Auto palette and its change listener for #terminal.
+# Clients pass their xterm.js instance to the container's xtermTheme function
+# and call xtermTheme.dispose() when the connection closes.
+sub get_terminal_theme_script
+{
+my ($theme) = @_;
+return '' if ($theme ne 'auto');
+my $themes_json = convert_to_json({
+    'dark' => get_terminal_options('dark'),
+    'light' => get_terminal_options('light'),
+    });
+return <<EOF;
+<script>
+(function() {
+    const termcont = document.getElementById('terminal'),
+          root = document.documentElement,
+          themes = $themes_json,
+          schemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    let terminal;
+    // Keep the loading surface and renderer on the same palette.
+    const update = function() {
+        const pageScheme = getComputedStyle(document.body).colorScheme,
+              background = root.getAttribute('data-bgs'),
+              mode = background ? (background === 'nightRider' ? 'dark' : 'light') :
+                  (pageScheme === 'dark' || pageScheme === 'light' ? pageScheme :
+                   (schemeQuery.matches ? 'dark' : 'light')),
+              colors = themes[mode];
+        if (terminal) {
+            terminal.options.theme = colors.theme;
+            terminal.options.minimumContrastRatio = colors.minimumContrastRatio;
+        }
+        termcont.setAttribute('data-terminal-theme', mode);
+        termcont.style.setProperty('--terminal-background', colors.theme.background);
+        termcont.style.setProperty('--terminal-foreground', colors.theme.foreground);
+    };
+    // xtermTheme(term) attaches the renderer after the loading colors are set.
+    termcont.xtermTheme = function(term) { terminal = term; update(); };
+    const observer = new MutationObserver(update),
+          observeOptions = { attributes: true,
+              attributeFilter: ['data-bgs', 'data-scheme', 'class', 'style'] };
+    observer.observe(root, observeOptions);
+    observer.observe(document.body, observeOptions);
+    schemeQuery.addEventListener('change', update);
+    // dispose() stops palette notifications after disconnect or a theme takeover.
+    termcont.xtermTheme.dispose = function() {
+        observer.disconnect();
+        schemeQuery.removeEventListener('change', update);
+        terminal = null;
+    };
+    update();
+})();
+</script>
+EOF
+}
+
 # verify_websocket_key(client-key, session-id)
 # Returns 1 if the client's Sec-WebSocket-Key matches the base64-encoded
 # session ID, 0 otherwise. miniserv.pl rewrites the inbound handshake key
