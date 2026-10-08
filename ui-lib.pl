@@ -5003,6 +5003,96 @@ return &ui_tag('span', $icon.&ui_tag('span', &html_escape($label)),
 		     'title' => $opts->{'title'} }));
 }
 
+=head2 ui_action_button(label, [state], [&opts])
+
+Returns a native button, or a link when href is supplied, with the colors
+and compact appearance of ui_badge. State accepts the same values and
+aliases as ui_badge and defaults to neutral. Labels are plain text.
+The ui_action classes are separate from the existing theme button classes.
+Options are :
+
+=item href - Destination URL. When present, renders an <a> instead of a
+<button>. Use links for navigation and buttons for form actions.
+
+=item type - Button type: button (the default), submit or reset. Ignored
+for links. An ordinary button needs a caller-provided event handler.
+
+=item size - small, normal (the default), or large.
+
+=item shape - square corners (square, the default), rounded corners
+(rounded), or rounded ends (pill).
+
+=item icon - SVG icon name. Defaults to the state's badge icon. An empty
+string suppresses the icon. Set dot to 1 to use a dot instead.
+
+=item disabled - Disables a button. A disabled link has no destination,
+is marked aria-disabled and is removed from keyboard navigation.
+
+=item name, value, form, id, title - Native HTML attributes. A submit
+button's name and value are included only when it submits the form.
+
+=item class - Additional CSS classes.
+
+=item attrs - Additional HTML attributes, such as data-ui-confirm,
+aria-label or target. Generated classes, type, href and disabled behavior
+take precedence. Attribute values are escaped; event handlers are trusted
+code supplied by the calling module.
+
+Loads ui_page_assets once, and can also be used outside a ui_page.
+
+=cut
+sub ui_action_button
+{
+return &theme_ui_action_button(@_) if (defined(&theme_ui_action_button));
+my ($label, $state, $opts) = @_;
+$opts ||= {};
+$state = &_ui_state($state);
+my $size = ($opts->{'size'} || '') =~ /\A(?:small|normal|large)\z/
+	? $opts->{'size'} : 'normal';
+my $shape = ($opts->{'shape'} || '') =~ /\A(?:square|rounded|pill)\z/
+	? $opts->{'shape'} : 'square';
+my $tag = defined($opts->{'href'}) ? 'a' : 'button';
+my %attrs = %{$opts->{'attrs'} || {}};
+my $disabled = $opts->{'disabled'} || exists($attrs{'disabled'});
+$attrs{'class'} = &_ui_class('ui_action', 'ui_action_'.$state,
+	'ui_action_'.$size, 'ui_action_'.$shape, $opts->{'class'}, $attrs{'class'});
+# Preserve empty and zero values, which can be meaningful form values.
+foreach my $name (qw(name value form id title)) {
+	$attrs{$name} = $opts->{$name} if (defined($opts->{$name}));
+	}
+if ($tag eq 'a') {
+	# Native links retain browser navigation and SPA link handling.
+	delete(@attrs{qw(type disabled)});
+	$attrs{'href'} = $opts->{'href'};
+	if ($disabled) {
+		# Removing href also prevents navigation when JavaScript is unavailable.
+		delete($attrs{'href'});
+		$attrs{'role'} = 'link';
+		$attrs{'aria-disabled'} = 'true';
+		$attrs{'tabindex'} = -1;
+		}
+	}
+else {
+	# Default to a non-submitting button even inside an existing form.
+	delete($attrs{'href'});
+	$attrs{'type'} = ($opts->{'type'} || '') =~ /\A(?:button|submit|reset)\z/
+		? $opts->{'type'} : 'button';
+	$attrs{'disabled'} = undef if ($disabled);
+	}
+# Match badge icons without borrowing badge or legacy button classes.
+my $icon = '';
+if ($opts->{'dot'}) {
+	$icon = &ui_svg_icon('dot');
+	}
+else {
+	my $name = defined($opts->{'icon'}) ? $opts->{'icon'} : $ui_state_icons{$state};
+	$icon = &ui_svg_icon($name) if ($name);
+	}
+return &ui_page_assets().&ui_tag($tag,
+	&ui_tag('span', $icon.&ui_tag('span', &html_escape($label)),
+		{ 'class' => 'ui_action_content' }), \%attrs);
+}
+
 =head2 ui_chip(text, [&opts])
 
 Returns HTML for a small muted chip, such as a category or source label

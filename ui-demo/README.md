@@ -16,7 +16,7 @@ Every tab of `index.cgi` is built by one function in `ui-demo-pages.pl` :
 | Elements   | `demo_elements_tab`   | a `ui_dl` with help bubbles and HTML values, `ui_stats` with icons and links, `ui_feed` with an HTML event, `ui_empty_state`, then badges with their icon, dot, title, small and rounded options, chips, `ui_code`, `ui_note`, `ui_help`, `ui_tip`, every `ui_progress` variation and the ring gauges, and `ui_svg_icon` |
 | Forms      | `demo_forms_tab`      | the usual `ui_table_start` / `ui_table_row` form with `ui_toggle`, `ui_search`, the date chooser, password fields and a table of inputs inside one row built with `ui_columns_start` / `ui_columns_row` with the `no-hover` class, as the Nginx module's URL rewrites; a second form of choosers : `file_chooser_button` for files and directories, `ui_user_textbox`, `ui_group_textbox`, `ui_users_textbox`, `ui_groups_textbox`, and an `hlink` help link |
 | Choices    | `demo_choices_tab`    | `ui_choice`, `ui_select_switch` and `ui_radio_list` for backup destinations and IP addresses; `ui_multi_select_list` for backup servers with modes and child folding, secondary groups, and an empty list with a custom label |
-| Buttons    | `demo_buttons_tab`    | `ui_submit`, `ui_reset` and `ui_link_button` in one row, with a disabled and a confirmed one; a form ended by `ui_form_end`, one by `ui_form_grouped_buttons`, one by `ui_form_end_side_by_side` with a separate form at the right; a `ui_confirmation_form` page |
+| Buttons    | `demo_buttons_tab`    | `ui_action_button` as native buttons and links in all state colors, three sizes and three shapes, with submit, reset, disabled and confirmation examples; `ui_submit`, `ui_reset` and `ui_link_button` in one row, with a disabled and a confirmed one; a form ended by `ui_form_end`, one by `ui_form_grouped_buttons`, one by `ui_form_end_side_by_side` with a separate form at the right; a `ui_confirmation_form` page |
 | Accordions | `demo_accordions_tab` | a settings form of `ui_table_start` followed by `ui_hidden_table_start` sections |
 | Tables     | `demo_tables_tab`     | the empty state shown instead of a table with no rows, `ui_columns_table` with a `ui_details` disclosure in its first cell (classes `inline inlined`, as grub2's boot entries), and `ui_form_columns_table`, both with the sortable flag; the tab description itself hides more text behind a `ui_details` tick (class `inline`), as Virtualmin's SSL page does |
 | Lists      | `demo_lists_tab`      | `ui_list` rows with badges, tags, meta and actions; a backup history with state icons, a filesystem list with inline progress bars, and a user list with a confirmed delete link |
@@ -136,6 +136,18 @@ not core API :
   `edit_manual.cgi`. That is why the demo's editor is a page of its own
   rather than a tab : the same form inside a tab of `index.cgi` stays a
   plain text area.
+
+`ui_action_button(label, state, options)` draws a native `<button>` by default,
+or an `<a>` when `href` is set. It uses the badge palette with its own
+`ui_action_*` classes, so its appearance does not depend on theme button
+replacement or language key names. Use `type => 'submit'` or `'reset'` for
+form actions; the default type is `'button'`. Links keep ordinary navigation.
+
+Choose `size => 'small'`, `'normal'` or `'large'` and `shape => 'square'`,
+`'rounded'` or `'pill'`. The API supports badge icons, a dot, native form
+attributes, extra attributes such as `data-ui-confirm`, and disabled states.
+Disabled links have no destination and are skipped by keyboard navigation.
+The widget loads its assets once and also works outside `ui_page`.
 
 Authentic renders every `ui_link` as a small button, and inside widget
 pages it draws `ui_link_button` the same way, so the two can be mixed in

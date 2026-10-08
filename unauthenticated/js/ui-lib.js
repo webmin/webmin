@@ -48,6 +48,13 @@
 	// including existing ui_submit buttons given the attribute in tags.
 	// Capture the click before a theme or inline handler performs the action.
 	on('click', function (e) {
+		// Disabled action links must not run handlers or open confirmations.
+		var disabled = e.target.closest && e.target.closest('.ui_action[aria-disabled="true"]');
+		if (disabled) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			return;
+		}
 		var confirmer = e.target.closest && e.target.closest('[data-ui-confirm]');
 		if (confirmer &&
 		    !window.confirm(confirmer.getAttribute('data-ui-confirm'))) {
