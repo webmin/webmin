@@ -403,9 +403,10 @@ else {
 	# Call the psql program
 	local $cmd = &quote_path($config{'psql'})." --html".
 		     &host_port_flags().
-		     (!&supports_pgpass() ? " -u" : " -U $postgres_login").
+		     (!&supports_pgpass() ? " -u" :
+			" -U ".quotemeta($postgres_login)).
 		     " -c ".&quote_path($sql).
-		     " ".$_[0];
+		     " ".quotemeta($_[0]);
 	if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 		$cmd = &command_as_user($postgres_login, 0, $cmd);
 		}
@@ -1195,10 +1196,10 @@ elsif ($compress == 2) {
 my $cmd = &quote_path($config{'dump_cmd'}).
 	     &host_port_flags().
 	     (!$postgres_login ? "" :
-	      &supports_pgpass() ? " -U $postgres_login" : " -u").
+	      &supports_pgpass() ? " -U ".quotemeta($postgres_login) : " -u").
 	     ($format eq 'p' ? "" : " -b").
 	     $tablesarg.
-	     " -F$format $db | $writer";
+	     " -F".quotemeta($format)." ".quotemeta($db)." | $writer";
 if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 	# Postgres connections have to be made as the 'postgres' Unix user
 	$cmd = &command_as_user($postgres_login, 0, $cmd);
@@ -1228,11 +1229,11 @@ $pass ||= $postgres_pass;
 my $cmd = &quote_path($config{'rstr_cmd'}).
 	     &host_port_flags().
 	     (!$login ? "" :
-	      &supports_pgpass() ? " -U $login" : " -u").
+	      &supports_pgpass() ? " -U ".quotemeta($login) : " -u").
 	     ($only ? " -a" : "").
 	     ($clean ? " -c" : "").
 	     $tablesarg.
-	     " -d $db ".&quote_path($path);
+	     " -d ".quotemeta($db)." ".&quote_path($path);
 if ($postgres_sameunix && defined(getpwnam($login))) {
 	$cmd = &command_as_user($login, 0, $cmd);
 	}
