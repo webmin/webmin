@@ -7,7 +7,7 @@ my $can = &foreign_available($module_name) && $access{'sysinfo'};
 if ((length($config{'sysinfo'}) && !$config{'sysinfo'}) || !$can) {
 	return ();
 	}
-my (undef, undef, $disks, undef) = &local_disk_space();
+my (undef, undef, $disks, undef) = &dashboard_disk_space();
 if (!@$disks) {
 	return ();
 	}
