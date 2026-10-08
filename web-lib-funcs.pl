@@ -7772,7 +7772,8 @@ if ($gconfig{'logfiles'} && !&get_module_variable('$no_log_file_changes')) {
             }
         $i++;
         }
-    @main::locked_file_diff = undef;
+    # Empty the queue so another action does not inherit a blank record.
+    @main::locked_file_diff = ();
     }
 
 if ($gconfig{'logfullfiles'}) {

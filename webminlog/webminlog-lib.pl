@@ -170,6 +170,8 @@ foreach my $file (@files) {
         elsif ($line =~ /^(\S+)\s+(.*)/) {
                 $type = $1; $object = $2;
                 }
+	# Older log writers could leave empty records between valid details.
+	next if (!defined($type));
 	if ($type eq "exec") {
 		$input = &read_file_contents($file.".input");
 		}
