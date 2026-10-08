@@ -1,5 +1,6 @@
 ## Changelog
 #### 2.671 (October, 2026)
+* Add a Cloudmin virtualization host profile to the nftables module
 * Fix two-factor authentication validation to use the Webmin configuration and data directories passed by the caller
 * Fix HTML escaping of module, script and session fields on the Webmin Actions Log details page
 * Fix mailbox attachment option injection

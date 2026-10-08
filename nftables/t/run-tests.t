@@ -520,6 +520,40 @@ ok(scalar(grep { $_ eq '2022' }
 is(profile_base_table_name('virtualmin'), 'webmin_profile_hosting',
    'Virtualmin profiles use a Webmin-prefixed table name');
 
+# The virtualization profile must work through both the setup UI and installer.
+my %profiles = map { $_->{id} => $_ } setup_profiles();
+is($profiles{cloudmin}->{name}, 'Cloudmin virtualization host',
+   'Cloudmin profile appears in the setup profile list');
+is(profile_base_table_name('cloudmin'), 'webmin_profile_virtualization',
+   'Cloudmin follows the existing Webmin table naming convention');
+my $cloudmin_table = create_profile_ruleset(
+    profile_base_table_name('cloudmin'), 'cloudmin', '*');
+is_deeply([sort keys %{$cloudmin_table->{chains}}], ['input'],
+   'Cloudmin leaves forwarding and output to other managers');
+is($cloudmin_table->{chains}->{input}->{policy}, 'drop',
+   'Cloudmin denies unlisted host services');
+is_deeply($cloudmin_table->{sets}->{profile_virtualization_ports}->{elements},
+          [ '2022', '2200', '2223', '10000' ],
+   'Cloudmin allows configured SSH and Webmin ports only');
+my $cloudmin_rules = dump_nftables_save($cloudmin_table);
+like($cloudmin_rules, qr/iifname "virbr\*" udp dport \{ 53, 67, 547 \} accept/,
+   'Cloudmin allows guest DNS and DHCP only on libvirt bridges');
+like($cloudmin_rules, qr/iifname "virbr\*" tcp dport 53 accept/,
+   'Cloudmin allows guest DNS over TCP');
+unlike($cloudmin_rules, qr/(?:hook forward|hook postrouting|masquerade|2049)/,
+   'Cloudmin does not generate guest forwarding, NAT or public NFS access');
+my $cloudmin_custom = create_profile_ruleset('custom_vm_host', 'cloudmin', ['https']);
+is_deeply($cloudmin_custom->{sets}->{profile_virtualization_tcp_ports}->{elements},
+          [ '443' ], 'Cloudmin honors services selected in the setup UI');
+{
+    no warnings 'redefine';
+    local *get_nftables_save = sub { ($cloudmin_table) };
+    is(profile_table_name('cloudmin'), 'webmin_profile_virtualization_1',
+       'Cloudmin setup avoids colliding with an existing profile table');
+}
+is($profile_table->{chains}->{forward}->{policy}, 'drop',
+   'Virtualmin retains its existing forwarding policy');
+
 # The saved configuration is the system's own nftables file, so re-writing
 # it must not discard anything the module does not model
 my $sysfile = write_ruleset($confdir, 'system.nft', <<'EOF');

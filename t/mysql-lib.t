@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# Unit tests for MySQL module binary logging helpers.
+# Unit tests for MySQL module helpers.
 
 use strict;
 use warnings;
@@ -7,6 +7,7 @@ no warnings 'once';
 use Test::More;
 use File::Basename qw(dirname);
 use File::Spec;
+use File::Temp qw(tempdir);
 use Cwd qw(abs_path);
 
 BEGIN {
@@ -43,6 +44,45 @@ BEGIN {
 my $root = abs_path(File::Spec->catdir(dirname(__FILE__), '..'));
 chdir($root) or die "chdir($root): $!";
 do './mysql/mysql-lib.pl' or die $@ || $!;
+
+subtest 'database listings exclude raw dot directories and preserve valid names' => sub {
+	no warnings 'redefine';
+	my @hidden = ('#mysql50#.config', '#mysql50#.local', '#mysql50#.cache');
+	my @names = ('zeta', @hidden, 'mysql', '#mysql50#legacy-name',
+		     'App', '_config', '.config', '.local', '#reports');
+	my @expected = ('#mysql50#legacy-name', '#reports', '.config', '.local',
+			'_config', 'App', 'mysql', 'zeta');
+
+	# Exercise the real mysqlshow output parser without a local database server.
+	my $tmp = tempdir('webmin-mysql-list-XXXXXX', DIR => '/tmp', CLEANUP => 1);
+	my $show = "$tmp/mysqlshow.pl";
+	open(my $fh, '>', $show) or die "open($show): $!";
+	my $edge = '+'.('-' x 24)."+\n";
+	print $fh "print <<'TABLE';\n", $edge,
+		sprintf("| %-22s |\n", 'Databases'), $edge,
+		(map { sprintf("| %-22s |\n", $_) } @names), $edge,
+		"TABLE\n";
+	close($fh) or die "close($show): $!";
+	local $main::config{'mysqlshow'} = $^X;
+	local $main::authstr = quotemeta($show);
+
+	# Both listing methods must remove invalid names and keep the same sorting.
+	foreach my $source ('SQL', 'mysqlshow') {
+		local *main::execute_sql_safe = sub {
+			die "SQL unavailable\n" if ($source eq 'mysqlshow');
+			return { 'data' => [ map { [ $_ ] } @names ] };
+			};
+		is_deeply([ main::list_databases() ], \@expected,
+			  "$source excludes dot directories but keeps real database names");
+		}
+
+	# A successful SQL listing containing only invalid entries is simply empty.
+	local *main::execute_sql_safe = sub {
+		return { 'data' => [ map { [ $_ ] } @hidden ] };
+		};
+	is_deeply([ main::list_databases() ], [],
+		  'filtering all SQL results does not trigger the command fallback');
+};
 
 subtest 'binary log retention display round-trips exactly' => sub {
 	# The page shows seconds as days, and saving converts the shown days

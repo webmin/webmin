@@ -153,6 +153,55 @@ like(main::ui_badge('what', 'bogus<'), qr/ui_badge_neutral/,
 	like($html, qr/\bmine\b/, 'extra class names are passed through');
 }
 
+# Action controls retain native semantics and their own theme-independent classes.
+subtest 'action buttons and links' => sub {
+	my $button = main::ui_action_button('Save', 'ok');
+	like($button, qr/<button\b[^>]*type="button"/, 'default button does not submit');
+	like($button, qr/\bui_action_success\b/, 'state aliases match badges');
+	unlike($button, qr/\b(?:ui_badge|ui_button|ui_submit|ui_link|btn)\b/,
+		'legacy theme classes are absent');
+	my $opts = { type => 'submit', name => 'action', value => '', form => 'editor',
+		size => 'small', shape => 'pill', icon => 'trash',
+		attrs => { 'data-ui-confirm' => 'Proceed?', class => 'extra' } };
+	my $submit = main::ui_action_button('Delete', 'danger', $opts);
+	like($submit, qr/type="submit"/, 'submit is explicit');
+	like($submit, qr/name="action"/, 'submitter name is preserved');
+	like($submit, qr/value=""/, 'empty submitter value is preserved');
+	like($submit, qr/form="editor"/, 'external form association is preserved');
+	like($submit, qr/\bui_action_small\b.*\bui_action_pill\b.*\bextra\b/,
+		'size, shape and caller classes combine');
+	like($submit, qr/data-ui-confirm="Proceed\?"/, 'confirmation uses the shared handler');
+	like($submit, qr/<svg\b/, 'explicit icon is rendered');
+	is_deeply($opts->{'attrs'}, { 'data-ui-confirm' => 'Proceed?', class => 'extra' },
+		'caller attributes are not modified');
+	like(main::ui_action_button('Reset', undef, {type => 'reset'}),
+		qr/type="reset"/, 'reset is supported');
+	like(main::ui_action_button('Zero', undef, {value => 0}),
+		qr/value="0"/, 'zero value is preserved');
+	my $link = main::ui_action_button('Open', 'info',
+		{ href => 'edit.cgi?id=1&tab=disks', type => 'submit' });
+	like($link, qr/<a\b[^>]*href="edit.cgi\?id=1&amp;tab=disks"/, 'link has a normal URL');
+	unlike($link, qr/\btype=/, 'link has no button type');
+	my $disabled = main::ui_action_button('Open', 'info',
+		{ href => 'edit.cgi', disabled => 1, attrs => {href => 'other.cgi'} });
+	unlike($disabled, qr/\bhref=/, 'disabled link has no destination');
+	like($disabled, qr/aria-disabled="true"/, 'disabled link exposes its state');
+	like($disabled, qr/tabindex="-1"/, 'disabled link is outside keyboard navigation');
+	like($disabled, qr/role="link"/, 'disabled anchor retains link semantics');
+	like(main::ui_action_button('Disabled', undef, {disabled => 1}),
+		qr/<button\b[^>]*\bdisabled(?:\s|>)/, 'button uses native disabled behavior');
+	my $fallback = main::ui_action_button('Fallback', 'unknown',
+		{type => 'invalid', size => 'invalid', shape => 'invalid', attrs => {type => 'submit'}});
+	like($fallback, qr/\bui_action_neutral\b.*\bui_action_normal\b.*\bui_action_square\b/,
+		'unknown variants use defaults');
+	like($fallback, qr/type="button"/, 'unknown type cannot accidentally submit');
+	unlike(main::ui_action_button('Plain', 'danger', {icon => ''}), qr/<svg\b/,
+		'empty icon suppresses the state icon');
+	assert_no_handler_injection(main::ui_action_button($xss, 'danger',
+		{ href => $xss, title => $xss, class => $xss, name => $xss, value => $xss }),
+		'action text and attributes');
+};
+
 # The scheme option stamps the wrapper for the dark or auto palette
 like(main::ui_page_start({ 'scheme' => 'auto' }),
 	qr/data-ui-scheme="auto"/, 'scheme auto stamps the wrapper');

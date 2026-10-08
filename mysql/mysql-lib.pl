@@ -245,6 +245,8 @@ if (!@rv || $@) {
 	ref($t) || &error("Failed to list databases : $t");
 	@rv = map { $_->[0] } @{$t->{'data'}};
 	}
+# Ignore raw dot directories exposed with the legacy MySQL 5.0 prefix.
+@rv = grep { !/^#mysql50#\./ } @rv;
 return sort { lc($a) cmp lc($b) } @rv;
 }
 

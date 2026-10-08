@@ -879,6 +879,67 @@ my $rv = "";
 my $confirm = "data-ui-confirm='".
 	      quote_escape($text{'index_f_delete_confirm'})."'";
 
+# Native buttons and links share badge colors without legacy button classes.
+my @states = qw(success warning danger info neutral);
+$rv .= ui_card({
+	'title' => $text{'index_b_actions'},
+	'desc' => $text{'index_b_actions_desc'},
+	'body' => ui_stack([
+		ui_cluster([ map { ui_action_button($text{'index_b_action_'.$_}, $_) } @states ]),
+		ui_cluster([ map { ui_action_button($text{'index_b_action_'.$_}, $_,
+			{ 'href' => 'index.cgi?mode=buttons' }) } @states ]),
+		]),
+	});
+
+# Each cell pairs a native button with a link of the same size and shape.
+my @variants;
+foreach my $shape (qw(square rounded pill)) {
+	my @row = (html_escape($text{'index_b_action_'.$shape}));
+	foreach my $size (qw(small normal large)) {
+		push(@row, ui_cluster([
+			ui_action_button($text{'index_b_action_button'}, 'info',
+				{ 'size' => $size, 'shape' => $shape,
+				  'id' => 'demo-action-'.$shape.'-'.$size.'-button' }),
+			ui_action_button($text{'index_b_action_link'}, 'info',
+				{ 'size' => $size, 'shape' => $shape,
+				  'id' => 'demo-action-'.$shape.'-'.$size.'-link',
+				  'href' => 'index.cgi?mode=buttons' }),
+			]));
+		}
+	push(@variants, \@row);
+	}
+$rv .= ui_card({
+	'title' => $text{'index_b_action_variants'},
+	'desc' => $text{'index_b_action_variants_desc'},
+	'body' => ui_columns_table([ map { $text{'index_b_action_'.$_} }
+		qw(shape small normal large) ], 100, \@variants),
+	});
+
+# This read-only demo shows native submit/reset behavior and disabled controls.
+$rv .= ui_card({
+	'title' => $text{'index_b_action_form'},
+	'desc' => $text{'index_b_action_form_desc'},
+	'body' => ui_form_start('index.cgi', 'get', undef, "id='demo-action-form'").
+		ui_hidden('mode', 'buttons').
+		ui_tag('label', html_escape($text{'index_f_name'}).' '.
+			ui_textbox('action_name', 'web01', 20)).
+		ui_cluster([
+			ui_action_button($text{'save'}, 'success',
+				{ 'type' => 'submit', 'name' => 'action', 'value' => 'save',
+				  'id' => 'demo-action-submit' }),
+			ui_action_button($text{'index_b_reset'}, 'neutral',
+				{ 'type' => 'reset', 'icon' => 'refresh', 'id' => 'demo-action-reset' }),
+			ui_action_button($text{'index_b_action_confirm'}, 'danger',
+				{ 'icon' => 'trash', 'id' => 'demo-action-confirm',
+				  'attrs' => { 'data-ui-confirm' => $text{'index_b_action_prompt'} } }),
+			ui_action_button($text{'index_b_disabled'}, 'neutral',
+				{ 'disabled' => 1, 'id' => 'demo-action-disabled-button' }),
+			ui_action_button($text{'index_b_action_disabled_link'}, 'neutral',
+				{ 'disabled' => 1, 'href' => 'index.cgi?mode=cards',
+				  'id' => 'demo-action-disabled-link' }),
+			]).ui_form_end(),
+	});
+
 # Submit, reset and link buttons in one row. ui_submit sends the form, and gets
 # its color and icon in Authentic from the lang key of its label (see
 # the Cards tab) : "save" is green here and "delete" red. The third

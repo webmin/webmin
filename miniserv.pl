@@ -7,6 +7,12 @@ use FindBin;
 use lib $FindBin::RealBin;
 BEGIN {
 	require 'miniserv-lib.pl';
+	# Catch requests during startup, including signals held across exec().
+	$SIG{'HUP'} = 'miniserv::trigger_restart';
+	$SIG{'USR1'} = 'miniserv::trigger_reload';
+	defined(POSIX::sigprocmask(POSIX::SIG_UNBLOCK(),
+		POSIX::SigSet->new(POSIX::SIGHUP(), POSIX::SIGUSR1()))) ||
+		die "Failed to unblock miniserv signals: $!";
 	}
 
 # Find and read config file

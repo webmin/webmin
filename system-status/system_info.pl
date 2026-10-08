@@ -12,6 +12,16 @@ sub list_system_info
 {
 my ($data, $in, $modskip) = @_;
 my $info = &get_collected_info(undef, $modskip);
+# Filter a presentation copy so cached collection data and history stay raw.
+if ($info->{'disk_fs'}) {
+	&foreign_require("mount");
+	$info = { %$info };
+	($info->{'disk_total'}, $info->{'disk_free'},
+	 $info->{'disk_fs'}, $info->{'disk_used'}) =
+		&mount::filter_dashboard_disk_space(
+			$info->{'disk_total'}, $info->{'disk_free'},
+			$info->{'disk_fs'}, $info->{'disk_used'});
+	}
 my @rv;
 my @table;
 my @raw = $info;
