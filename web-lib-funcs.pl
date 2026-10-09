@@ -10580,16 +10580,18 @@ if ($type eq 'pdf') {
 return $rv;
 }
 
-=head2 resolve_links(path)
+=head2 resolve_links(path, [&seen-hash])
 
 Given a path that may contain symbolic links, returns the real path.
 
 =cut
 sub resolve_links
 {
-my ($path) = @_;
+my ($path, $seen) = @_;
+$seen ||= { };
 $path =~ s/\/+/\//g;
 $path =~ s/\/$// if ($path ne "/");
+return $path if ($seen->{$path}++);
 my @p = split(/\/+/, $path);
 shift(@p);
 for(my $i=0; $i<@p; $i++) {
@@ -10601,11 +10603,11 @@ for(my $i=0; $i<@p; $i++) {
 		}
 	elsif ($lnk =~ /^\//) {
 		# Link is absolute..
-		return &resolve_links($lnk."/".join("/", @p[$i+1 .. $#p]));
+		return &resolve_links($lnk."/".join("/", @p[$i+1 .. $#p]), $seen);
 		}
 	elsif ($lnk) {
 		# Link is relative
-		return &resolve_links("/".join("/", @p[0..$i-1])."/".$lnk."/".join("/", @p[$i+1 .. $#p]));
+		return &resolve_links("/".join("/", @p[0..$i-1])."/".$lnk."/".join("/", @p[$i+1 .. $#p]), $seen);
 		}
 	}
 return $path;
