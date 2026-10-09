@@ -116,28 +116,24 @@ else {
 		}
 	}
 
-# Show servers to run on
+# Show where checks run, including the local host when no remotes are configured
 @servs = grep { $_->{'user'} } &servers::list_servers_sorted();
 @servs = sort { $a->{'host'} cmp $b->{'host'} } @servs;
-if (@servs) {
-	# Show list of remote servers, and maybe groups
-	$s = &ui_select("remotes", [ split(/\s+/, $serv->{'remote'}) ],
-			 [ [ "*", "&lt;$text{'mon_local'}&gt;" ],
-			   map { [ $_->{'host'}, $_->{'host'} ] } @servs ],
-			 5, 1, 1),
-	@groups = &servers::list_all_groups(\@servs);
-	@groups = sort { $a->{'name'} cmp $b->{'name'} } @groups;
-	if (@groups) {
-		$s .= &ui_select("groups", [ split(/\s+/, $serv->{'groups'}) ],
-			 [ map { [ $_->{'name'}, &group_desc($_) ] } @groups ],
-			 5, 1, 1),
-		}
-	print &ui_table_row($text{'mon_remotes2'}, $s, undef, \@tds);
+$hasremotes = @servs || $serv->{'groups'} ||
+	grep { $_ ne "*" } split(/\s+/, $serv->{'remote'});
+$s = &ui_select("remotes", [ split(/\s+/, $serv->{'remote'}) ],
+		 [ [ "*", "&lt;$text{'mon_local'}&gt;" ],
+		   map { [ $_->{'host'}, $_->{'host'} ] } @servs ],
+		 5, 1, 1);
+@groups = &servers::list_all_groups(\@servs);
+@groups = sort { $a->{'name'} cmp $b->{'name'} } @groups;
+if (@groups) {
+	# Groups let one monitor check all their member hosts
+	$s .= &ui_select("groups", [ split(/\s+/, $serv->{'groups'}) ],
+		 [ map { [ $_->{'name'}, &group_desc($_) ] } @groups ],
+		 5, 1, 1);
 	}
-else {
-	# Only local is available
-	print &ui_hidden("remotes", "*"),"\n";
-	}
+print &ui_table_row($text{'mon_remotes2'}, $s, undef, \@tds);
 
 print &ui_table_end();
 
@@ -251,12 +247,19 @@ print &ui_table_row($text{'mon_cmdmode'},
 print &ui_table_row(" ", "<font size=-1>$text{'mon_oninfo'}</font>",
 		    undef, \@tds);
 
-# Radio button for where to run commands
-print &ui_table_row($text{'mon_runon'},
-		    &ui_radio("runon", $serv->{'runon'} ? 1 : 0,
-			      [ [ 0, $text{'mon_runon0'} ],
-				[ 1, $text{'mon_runon1'} ] ]),
-		    undef, \@tds);
+if ($hasremotes) {
+	# Commands can run here or on the host whose check triggered them
+	print &ui_table_row($text{'mon_runon'},
+		&ui_radio("runon", $serv->{'runon'} ? 1 : 0,
+			  [ [ 0, $text{'mon_runon0'} ],
+			    [ 1, $text{'mon_runonhost'} ] ]).
+		"<br>".$text{'mon_runonhelp'}, undef, \@tds);
+	}
+else {
+	# Both modes run locally, so just preserve the saved mode
+	print &ui_table_row($text{'mon_runon'}, $text{'mon_runon0'}.
+		&ui_hidden("runon", $serv->{'runon'} ? 1 : 0), undef, \@tds);
+	}
 
 print &ui_table_end();
 
