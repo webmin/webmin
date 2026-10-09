@@ -115,6 +115,50 @@ subtest 'config_pre_load' => sub {
 	}
 };
 
+# Terminal appearance settings use the module's native per-user preferences.
+subtest 'terminal appearance preferences' => sub {
+	my $dark = get_terminal_options('dark');
+	my $light = get_terminal_options('light');
+	is($dark->{'theme'}->{'background'}, '#000000', 'Dark background');
+	is($light->{'theme'}->{'background'}, '#ffffff', 'Light background');
+	is($light->{'theme'}->{'foreground'}, '#242424', 'Light uses dark text');
+	is($light->{'theme'}->{'cursorAccent'}, '#ffffff', 'block cursor text');
+	cmp_ok($light->{'minimumContrastRatio'}, '>=', 4.5,
+	       'bright and indexed text remains readable');
+	is_deeply(get_terminal_options(undef), $dark, 'missing theme defaults to Dark');
+	is_deeply(get_terminal_options('gray'), $dark, 'unknown theme defaults to Dark');
+	is_deeply(get_terminal_options('auto'), $dark, 'Auto starts Dark until resolved by the client');
+
+	# Save appearance settings per user without saving the shell account.
+	require '../config-lib.pl';
+	local $main::remote_user = 'color-test-one';
+	local $WebminCore::remote_user = $main::remote_user;
+	my %defaults = (theme => 'dark', fontsize => 14,
+	               screen_reader => 'false', size => '80X24');
+	save_module_preferences('xterm', { theme => 'light', fontsize => 16,
+	    screen_reader => 'true', size => '100X30', user => 'ignored' });
+	my %first = (%defaults, user => 'unchanged');
+	load_module_preferences('xterm', \%first);
+	is($first{'theme'}, 'light', 'first user reloads Light');
+	is_deeply([ @first{qw(fontsize screen_reader size)} ],
+	          [ 16, 'true', '100X30' ],
+	          'font size, screen reader and dimensions reload for this user');
+	is($first{'user'}, 'unchanged', 'shell account is not a personal preference');
+	{
+		local $main::remote_user = 'color-test-two';
+		local $WebminCore::remote_user = $main::remote_user;
+		my %second = %defaults;
+		load_module_preferences('xterm', \%second);
+		is_deeply(\%second, \%defaults, 'new user keeps all module defaults');
+		save_module_preferences('xterm', { theme => 'dark' });
+	}
+	load_module_preferences('xterm', \%first);
+	is($first{'theme'}, 'light', 'another user saving preserves the first choice');
+	save_module_preferences('xterm', { theme => 'auto' });
+	load_module_preferences('xterm', \%first);
+	is($first{'theme'}, 'auto', 'Auto is saved as a personal preference');
+};
+
 # verify_websocket_key — handshake auth
 #
 # miniserv.pl rewrites the inbound Sec-WebSocket-Key to base64(session_id)

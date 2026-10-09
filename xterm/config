@@ -1,5 +1,6 @@
 xterm=xterm-256color
 fontsize=14
+theme=dark
 base_port=555
 rcfile=0
 locale=0

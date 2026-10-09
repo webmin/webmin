@@ -64,7 +64,7 @@
 	--ui-info-line: var(--border-color-info, #b8d6f2);
 	--ui-neutral: var(--text-color-muted, #4b5563);
 	--ui-neutral-text: var(--text-color-neutral-stressed, #40474f);
-	--ui-neutral-soft: var(--bg-color-neutral, #eff1f3);
+	--ui-neutral-soft: var(--ui-surface-2);
 	--ui-neutral-line: var(--border-color-neutral, #d7dbe0);
 
 	/* Controls */
@@ -218,9 +218,9 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 
 .ui_page > * + * { margin-top: var(--ui-gap); }
 .ui_page :not(.ui_grid, .ui_stack, .ui_cluster, .ui_stats) >
-	* + :is(.ui_grid, .ui_stack, .ui_card, .ui_empty),
+	* + :is(.ui_grid, .ui_stack, .ui_card, .ui_empty, .ui_stats),
 .ui_page :not(.ui_grid, .ui_stack, .ui_cluster, .ui_stats) >
-	:is(.ui_grid, .ui_stack, .ui_card, .ui_empty) + * {
+	:is(.ui_grid, .ui_stack, .ui_card, .ui_empty, .ui_stats) + * {
 	margin-top: var(--ui-gap);
 }
 .ui_page [hidden] { display: none !important; }
@@ -342,6 +342,10 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 }
 .ui_cluster { --ui-gap: 10px; }
 
+/* Separate action forms share the cluster's gap. Theme spacing between stacked
+ * forms must not offset one action vertically inside a horizontal cluster. */
+.ui_cluster > form.ui_form { margin: 0 !important; }
+
 /* Themes that regroup adjacent submit buttons into one box, as Authentic
  * does with its btn-group, wrap them inside that box with no vertical
  * space. Give those rows a gap while keeping the buttons joined. */
@@ -427,6 +431,8 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 	color: inherit;
 	text-decoration: none;
 }
+.ui_stat_square { border-radius: 0; }
+.ui_stat_rounded { border-radius: 0.5em; }
 .ui_stat_value {
 	font-size: 1.85em;
 	font-weight: 500;
@@ -608,7 +614,11 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 }
 :is(button, a).ui_action_rounded { border-radius: 4px; }
 :is(button, a).ui_action_pill { border-radius: 999px; }
+.ui_action .ui_action_content > span { align-self: baseline; }
 .ui_action .ui_svg_icon { width: 1em; height: 1em; flex-shrink: 0; }
+.ui_action_small .ui_svg_icon_trash {
+	transform: translateY(-0.25px);
+}
 
 /* Focus follows the visible surface, even when a theme resets link outlines. */
 .ui_action:not(:disabled):not([aria-disabled="true"]):hover .ui_action_content {

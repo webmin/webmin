@@ -80,12 +80,26 @@ if ($conf_cols_n && $conf_rows_n && !$xmlhr) {
 	$ENV{'LINES'} = $conf_rows_n;
 	}
 
+# Resolve colors once for both the standalone terminal and theme clients.
+my $terminal_options = get_terminal_options($config{'theme'});
+# Auto clients choose between the same palettes used by explicit selections.
+my $terminal_themes = $config{'theme'} eq 'auto' ? {
+    'dark' => get_terminal_options('dark'),
+    'light' => get_terminal_options('light'),
+    } : undef;
+my $terminal_theme_json = convert_to_json($terminal_options->{'theme'});
+my $terminal_background = $terminal_options->{'theme'}->{'background'};
+my $terminal_foreground = $terminal_options->{'theme'}->{'foreground'};
+my $terminal_contrast = $terminal_options->{'minimumContrastRatio'};
+
 # Define columns and rows
 my $conf_screen_reader = $config{'screen_reader'} eq 'true' ? 'true' : 'false';
 my %term_opts;
 $term_opts{'Options'} = "{ cols: $env_cols, rows: $env_rows, ".
 			    "screenReaderMode: $conf_screen_reader, ".
 			    "overviewRuler: { width: 9 }, ".
+			    "theme: $terminal_theme_json, ".
+			    "minimumContrastRatio: $terminal_contrast, ".
 			    "fontSize: $font_size }";
 
 my $term_size = "
@@ -104,8 +118,9 @@ body[style='height:100%'] {
 	white-space: nowrap;
 }
 #terminal {
-	border: 1px solid #000;
-	background-color: #000;
+	border: 1px solid var(--terminal-background, #000);
+	background-color: var(--terminal-background, #000);
+	color: var(--terminal-foreground, #fff);
 	padding: 2px;
 	margin: 0 auto;
 	$term_size
@@ -126,8 +141,8 @@ body[style='height:100%'] {
     box-sizing: border-box;
 
     border: 1px solid transparent;
-    border-top-color: rgba(255, 255, 255, 0.8);
-    border-bottom-color: rgba(255, 255, 255, 0.8);
+    border-top-color: var(--terminal-foreground, #fff);
+    border-bottom-color: var(--terminal-foreground, #fff);
     animation: jumping-spinner 1s ease infinite;
 }
 
@@ -138,7 +153,7 @@ body[style='height:100%'] {
     margin-left: 24px;
     margin-top: -16px;
     font-weight: 100;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--terminal-foreground, #fff);
     font-family: "Lucida Console", Courier, monospace;
     font-size: 14px;
     text-transform: uppercase;
@@ -167,6 +182,9 @@ body[style='height:100%'] {
 
 EOF
 
+# Share loading colors and Auto updates with other terminal modules.
+my $terminal_loading_script = get_terminal_theme_script($config{'theme'});
+
 # Print header
 ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0, undef,
 		 "<link rel=stylesheet href=\"$termlinks->{'css'}[0]\">\n".
@@ -177,7 +195,10 @@ ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0, undef,
 		);
 
 # Print main container
-print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\"></div>\n";
+print "<div data-label=\"$text{'index_connecting'}\" id=\"terminal\" ".
+      "style=\"--terminal-background: $terminal_background; ".
+      "--terminal-foreground: $terminal_foreground\"></div>\n".
+      ($terminal_themes ? $terminal_loading_script : '');
 
 # Get a free port that can be used for the socket. Normal browser sessions
 # are revalidated by miniserv while the websocket stays open. Proxied or
@@ -236,6 +257,9 @@ my $term_script = <<EOF;
 		      fitAddon = new FitAddon.FitAddon(),
 		      renderScript = document.createElement('script');
 
+	  // Attach the renderer to the palette used while connecting.
+	  if (termcont.xtermTheme) termcont.xtermTheme(term);
+
 	  renderScript.src = webGLAddonLink;
 	  renderScript.async = false;
 	  document.body.appendChild(renderScript);
@@ -273,10 +297,12 @@ my $term_script = <<EOF;
 	  });
 	};
 	socket.onerror = function() {
+		if (termcont.xtermTheme) termcont.xtermTheme.dispose();
 		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
 			err_conn_cannot + '</tt>';
 	};
 	socket.onclose = function() {
+		if (termcont.xtermTheme) termcont.xtermTheme.dispose();
 		termcont.innerHTML = '<tt style="color: \#ff0000">Error: ' +
 			err_conn_lost + '</tt>';
 	};
@@ -284,21 +310,21 @@ my $term_script = <<EOF;
 
 EOF
 
-# Return inline script data depending on type
+# Expose the same options in full pages and XHR responses. Themes can also
+# read them when a proxy returns the standalone page instead of an XHR response.
 print "<script>\n";
-if ($xmlhr) {
-	print "var xterm_argv = ".
+print "var xterm_argv = ".
           convert_to_json(
             { 'conf'  => \%config,
+              'options' => $terminal_options,
+              'themes' => $terminal_themes,
               'files' => $termlinks,
               'socket_url' => $url,
               'port'  => $port,
               'cols'  => $env_cols,
               'rows'  => $env_rows,
-              'uinfo'  => \@uinfo });
-	}
-else {
-	print $term_script;
-	}
+              'uinfo'  => \@uinfo }).";\n";
+# Only standalone pages start their own terminal client.
+print $term_script if (!$xmlhr);
 print "</script>\n";
 ui_print_footer();

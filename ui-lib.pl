@@ -4442,7 +4442,8 @@ return &ui_tag($tag, "\n".$content."\n", $attrs);
 
 Returns inline SVG for a named icon from the built-in set, drawn with the
 current text color. Unlike ui_icon, this does not depend on any theme
-icon font. Options are :
+icon font. Each icon has a CSS class identifying its name, such as
+C<ui_svg_icon_trash>, for targeted styling. Options are :
 
 =item size - Pixel size, defaulting to 16.
 
@@ -4460,7 +4461,8 @@ $opts ||= {};
 my $paths = $ui_svg_icons{$name};
 return "" if (!$paths);
 my $size = int($opts->{'size'} || 16);
-my %attrs = ( 'class' => &_ui_class('ui_svg_icon', $opts->{'class'}),
+my %attrs = ( 'class' => &_ui_class('ui_svg_icon', 'ui_svg_icon_'.$name,
+				  $opts->{'class'}),
 	      'width' => $size,
 	      'height' => $size,
 	      'viewBox' => '0 0 16 16',
@@ -4850,6 +4852,8 @@ Options are :
 
 =item icon - Optional icon name shown before the value.
 
+=item shape - Square corners (square, the default) or rounded corners (rounded).
+
 =cut
 sub ui_stat
 {
@@ -4871,7 +4875,8 @@ my $desc = &_ui_text($opts, 'desc');
 $body .= &ui_tag('span', $desc, { 'class' => 'ui_stat_desc' })
 	if (defined($desc));
 return &_ui_block($opts->{'href'} ? 'a' : 'div', $body, &_ui_attrs({
-	'class' => 'ui_stat',
+	'class' => &_ui_class('ui_stat', ($opts->{'shape'} || '') eq 'rounded' ?
+		'ui_stat_rounded' : 'ui_stat_square'),
 	'href' => $opts->{'href'} }));
 }
 
@@ -4879,7 +4884,8 @@ return &_ui_block($opts->{'href'} ? 'a' : 'div', $body, &_ui_attrs({
 
 Returns HTML for a responsive row of statistic tiles. Each element of the
 stats array is a hash reference in ui_stat format. Options are C<class>
-and C<min> for the minimum tile width.
+and C<min> for the minimum tile width, and C<shape> for the default corner
+shape. An individual tile's C<shape> overrides the row's setting.
 
 =cut
 sub ui_stats
@@ -4888,7 +4894,9 @@ return &theme_ui_stats(@_) if (defined(&theme_ui_stats));
 my ($stats, $opts) = @_;
 $opts ||= {};
 return "" if (!$stats || !@$stats);
-return &_ui_block('div', join("", map { &ui_stat($_) } @$stats),
+# Apply row defaults to a copy so caller-owned tile options stay unchanged.
+return &_ui_block('div', join("", map {
+	&ui_stat({ 'shape' => $opts->{'shape'}, %$_ }) } @$stats),
 	&_ui_attrs({
 		'class' => &_ui_class('ui_stats', $opts->{'class'}),
 		'style' => $opts->{'min'} ?

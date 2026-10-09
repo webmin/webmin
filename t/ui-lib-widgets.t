@@ -113,6 +113,23 @@ assert_no_handler_injection(
 assert_no_handler_injection(
 	main::ui_stat({ 'value' => $xss, 'label' => $xss, 'href' => $xss }),
 	'ui_stat');
+
+# Row defaults must not replace explicit tile shapes or mutate input options.
+{
+	my $tile = { 'value' => 4 };
+	my $square = { 'value' => 2, 'shape' => 'square' };
+	my $html = main::ui_stats([$tile, $square], { 'shape' => 'rounded' });
+	my @shapes = $html =~ /\bui_stat_(rounded|square)\b/g;
+	is_deeply(\@shapes, ['rounded', 'square'],
+		'ui_stats applies its shape only when a tile has no override');
+	is_deeply($tile, { 'value' => 4 }, 'ui_stats preserves caller options');
+	like(main::ui_stat({ 'value' => 1 }), qr/\bui_stat_square\b/,
+		'ui_stat defaults to square corners');
+	$html = main::ui_stat({ 'value' => 1, 'shape' => $xss });
+	like($html, qr/\bui_stat_square\b/, 'unknown shapes fall back to square');
+	assert_no_handler_injection($html, 'ui_stat shape');
+}
+
 assert_no_handler_injection(
 	main::ui_empty_state({ 'title' => $xss, 'desc' => $xss }),
 	'ui_empty_state');

@@ -1307,6 +1307,8 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
     my $verify_root = "$work/verify-units";
     make_path($verify_root);
     my @verify_commands;
+    # Keep the original cases on the legacy analyzer path.
+    local *main::backquote_command = sub { $? = 0; return ""; };
     my $verify_count = 0;
     local *main::has_command = sub {
         return $_[0] eq 'systemd-analyze' ? '/bin/systemd-analyze' : undef;
@@ -1428,6 +1430,35 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
     ok($ok, 'verify_dropin_data accepts user-owned drop-in data');
     is($user_verify[-1]->[0], 'alice',
        'verify_dropin_data verifies as the target user');
+
+    # Modern analyzers distinguish submitted-unit warnings from dependency noise.
+    local *main::backquote_command = sub {
+        $? = 0;
+        return "  --recursive-errors=MODE Control verification\n";
+    };
+    foreach my $dropin (0, 1) {
+        my $status = 0;
+        local *main::backquote_logged = sub {
+            push(@verify_commands, $_[0]);
+            $? = $status;
+            return "vendor.service:2: Support for option CPUAccounting= has been removed\n";
+        };
+        my $validate = sub {
+            return $dropin ? verify_dropin_data(
+                '/etc/systemd/system/scoped.service',
+                "[Service]\nExecStart=/bin/true\n", "[Service]\nRestart=always\n", 0)
+                : verify_unit_data('/etc/systemd/system/scoped.service',
+                    "[Service]\nExecStart=/bin/true\n", 0);
+        };
+        ($ok, $err) = $validate->();
+        ok($ok, 'scoped verification accepts dependency warnings (drop-in='.$dropin.')');
+        like($verify_commands[-1], qr/--recursive-errors=no/,
+             'scoped verification asks for submitted-unit warning status');
+        $status = 256;
+        ($ok, $err) = $validate->();
+        ok(!$ok, 'scoped verification rejects submitted-unit warnings (drop-in='.$dropin.')');
+        like($err, qr/CPUAccounting/, 'scoped validation failure retains diagnostics');
+    }
 }
 
 {

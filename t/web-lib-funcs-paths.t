@@ -17,6 +17,43 @@ my $script = File::Spec->rel2abs(
 	File::Spec->catfile(dirname(__FILE__), '..', 'web-lib-funcs.pl'));
 require $script;
 
+# get_module_info — validate names before looking up module files.
+subtest 'get_module_info name validation' => sub {
+	no warnings qw(redefine once);
+	my @lookups;
+	# Record accepted names and stop before any filesystem access.
+	local *main::module_root_directory = sub {
+		push(@lookups, $_[0]);
+		return '/unused';
+		};
+	local *main::load_language_auto = sub { return 0; };
+	local *main::load_language_neutral = sub { return 0; };
+	local *main::read_file_cached = sub { return 0; };
+
+	# Invalid names must return empty without reaching the module lookup.
+	foreach my $case (
+		[ undef, 'undefined' ], [ '', 'empty' ],
+		[ "module\n", 'trailing newline' ],
+		[ "module\r\n", 'trailing CRLF' ],
+		[ "mod\nule", 'embedded newline' ],
+		[ 'module ', 'trailing space' ],
+		[ "module\t", 'trailing tab' ],
+		[ 'mod.ule', 'dot' ], [ 'mod/ule', 'slash' ],
+		[ "mod\x{e9}ule", 'non-ASCII letter' ]) {
+		@lookups = ();
+		is_deeply([main::get_module_info($case->[0])], [],
+			"$case->[1] returns no module info");
+		is_deeply(\@lookups, [], "$case->[1] skips module lookup");
+		}
+
+	# Valid names, including the string "0", must still reach the lookup.
+	foreach my $name ('module', 'Module_123-test', '0') {
+		@lookups = ();
+		my %info = main::get_module_info($name);
+		is_deeply(\@lookups, [$name], "$name reaches module lookup");
+		}
+};
+
 # simplify_path — strip ./ and resolve ../, refusing to escape root.
 #
 # Contract:
