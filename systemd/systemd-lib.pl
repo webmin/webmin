@@ -1553,6 +1553,19 @@ return $name && $name !~ /[\0\r\n\/]/ && $name !~ /^\./ &&
        $name =~ /^[a-z0-9\.\_\-\@:]+\.($units_piped)$/i;
 }
 
+=head2 unit_verify_options(analyze)
+
+Returns validation options supported by the given systemd-analyze executable.
+
+=cut
+sub unit_verify_options
+{
+my ($analyze) = @_;
+# Version 250 added an exit status for warnings in the submitted unit only.
+my $help = backquote_command(quotemeta($analyze)." --help 2>/dev/null");
+return !$? && $help =~ /--recursive-errors=/ ? ("--recursive-errors=no") : ();
+}
+
 =head2 verify_unit_data(file, data, [user-scope], [user])
 
 Runs C<systemd-analyze verify> against unit-file contents before a manual save.
@@ -1600,11 +1613,12 @@ if (!$write_ok) {
 
 # User units have slightly different directive rules, so verify them through
 # the target user's manager environment when the owner is known.
+my @verify_options = unit_verify_options($analyze);
 my $cmd = $uinfo ?
 	user_manager_command($user, quotemeta($analyze), "--user",
-			     "verify", quotemeta($tmpfile)) :
+			     "verify", @verify_options, quotemeta($tmpfile)) :
 	quotemeta($analyze)." ".($user_scope ? "--user " : "").
-		"verify ".quotemeta($tmpfile);
+		"verify ".join("", map { $_." " } @verify_options).quotemeta($tmpfile);
 return (0, $bad_user) if (!$cmd);
 $cmd .= " 2>&1 </dev/null";
 my $out = backquote_logged($cmd);
@@ -1613,7 +1627,9 @@ unlink($tmpfile);
 rmdir($tmpdir);
 my $issue = $out;
 $issue =~ s/^\s+|\s+$//g;
-return (1, undef) if (!$rv && !$issue);
+# Scoped validation reports this unit's warnings through the exit status.
+# Older analyzers still need their output checked to catch ignored directives.
+return (1, undef) if (!$rv && (@verify_options || !$issue));
 $out ||= $text{'manual_ewrite'};
 return (0, text('systemd_everify', ui_tag('tt', html_escape($out))));
 }
@@ -1843,11 +1859,12 @@ if (!$write_ok) {
 			ui_tag('tt', html_escape($err))));
 	}
 
+my @verify_options = unit_verify_options($analyze);
 my $cmd = $uinfo ?
 	user_manager_command($user, quotemeta($analyze), "--user",
-			     "verify", quotemeta($tmpfile)) :
+			     "verify", @verify_options, quotemeta($tmpfile)) :
 	quotemeta($analyze)." ".($user_scope ? "--user " : "").
-		"verify ".quotemeta($tmpfile);
+		"verify ".join("", map { $_." " } @verify_options).quotemeta($tmpfile);
 return (0, $bad_user) if (!$cmd);
 $cmd .= " 2>&1 </dev/null";
 my $out = backquote_logged($cmd);
@@ -1858,7 +1875,9 @@ unlink($tmpfile);
 rmdir($tmpdir);
 my $issue = $out;
 $issue =~ s/^\s+|\s+$//g;
-return (1, undef) if (!$rv && !$issue);
+# Scoped validation reports this unit's warnings through the exit status.
+# Older analyzers still need their output checked to catch ignored directives.
+return (1, undef) if (!$rv && (@verify_options || !$issue));
 $out ||= $text{'manual_ewrite'};
 return (0, text('systemd_everify', ui_tag('tt', html_escape($out))));
 }
