@@ -16,7 +16,8 @@ while(-r $newfile) {
 	else { $ac = $ac."_1"; }
 	$newfile = &action_filename($ac);
 	}
-`mv $oldfile $newfile`;
+&rename_logged($oldfile, $newfile);
 &add_rl_action($ac, $rl, $ss, $num);
+&webmin_log("fix", "action", $ac);
 &redirect("edit_action.cgi?0+$ac");
 

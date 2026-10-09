@@ -23,6 +23,9 @@ elsif ($action eq 'create') {
 elsif ($action eq 'delete') {
 	return &text('log_delete', "<tt>$object</tt>");
 	}
+elsif ($action eq 'fix') {
+	return &text('log_fix', "<tt>$object</tt>");
+	}
 elsif ($type eq 'action') {
 	return &text('log_'.$action, "<tt>$object</tt>");
 	}
