@@ -216,7 +216,12 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
  * forms between them line up whatever the theme wraps them in.
  * Children of grids, stacks, clusters and stat rows use their own gaps. */
 
-.ui_page > * + * { margin-top: var(--ui-gap); }
+/* Space content blocks, ignoring assets and hidden fields. */
+.ui_page > :where(:nth-child(n + 2 of :not(
+	script, style, link, [hidden], .ui_hidden, input[type="hidden"]
+))) {
+	margin-top: var(--ui-gap);
+}
 .ui_page :not(.ui_grid, .ui_stack, .ui_cluster, .ui_stats) >
 	* + :is(.ui_grid, .ui_stack, .ui_card, .ui_empty, .ui_stats),
 .ui_page :not(.ui_grid, .ui_stack, .ui_cluster, .ui_stats) >
