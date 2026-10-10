@@ -10583,6 +10583,7 @@ return $rv;
 =head2 resolve_links(path, [&seen-hash])
 
 Given a path that may contain symbolic links, returns the real path.
+Stops at a cycle or after 64 link expansions, returning the unresolved path.
 
 =cut
 sub resolve_links
@@ -10591,6 +10592,8 @@ my ($path, $seen) = @_;
 $seen ||= { };
 $path =~ s/\/+/\//g;
 $path =~ s/\/$// if ($path ne "/");
+# Growing loops never repeat a full path, so also limit link expansions.
+return $path if (keys %$seen >= 64);
 my @p = split(/\/+/, $path);
 shift(@p);
 for(my $i=0; $i<@p; $i++) {

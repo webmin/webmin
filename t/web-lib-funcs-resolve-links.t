@@ -72,7 +72,7 @@ ok(main::is_under_directory($root, "$root/x"),
 is($resolved, "$root/data/../data/file",
 	'resolves repeated uses of the same directory link');
 
-# Long acyclic chains remain supported without imposing an OS-specific limit.
+# Chains longer than common kernel limits remain supported.
 foreach my $i (0..44) {
 	my $target = $i == 44 ? 'target' : 'chain'.($i+1);
 	symlink($target, "$root/chain$i") or die "symlink: $!";
@@ -94,6 +94,17 @@ foreach my $name (qw(self dotself parentself a absa absolute-self via-dir)) {
 	my ($loop, $calls) = resolve_counted("$root/$name");
 	ok(-l $loop, "$name returns an unresolved loop path");
 	cmp_ok($calls, '<=', 4, "$name stops promptly");
+	}
+
+# Growing cycles never repeat a full path, but must still stop expanding.
+foreach my $link (
+	[ 'grow', 'grow/child' ],
+	[ 'absolute-grow', "$root/absolute-grow/child" ]) {
+	symlink($link->[1], "$root/$link->[0]") or die "symlink: $!";
+	my $loop = eval { (resolve_counted("$root/$link->[0]"))[0] };
+	is($@, '', "$link->[0] stops before the test recursion guard");
+	like($loop || '', qr/^\Q$root\/$link->[0]\E(?:\/child)+$/,
+		"$link->[0] returns the unresolved path");
 	}
 
 done_testing();
