@@ -10591,13 +10591,18 @@ my ($path, $seen) = @_;
 $seen ||= { };
 $path =~ s/\/+/\//g;
 $path =~ s/\/$// if ($path ne "/");
-my $simple = &simplify_path($path) || $path;
-return $path if ($seen->{$simple}++);
 my @p = split(/\/+/, $path);
 shift(@p);
 for(my $i=0; $i<@p; $i++) {
 	my $sofar = "/".join("/", @p[0..$i]);
 	my $lnk = readlink($sofar);
+	if (defined($lnk)) {
+		# Earlier components are resolved, so only simplify this prefix.
+		# Do not collapse .. past a symlink in the remaining path.
+		my $simple = &simplify_path($sofar) || $sofar;
+		my $key = $simple."/".join("/", @p[$i+1 .. $#p]);
+		return $path if ($seen->{$key}++);
+		}
 	if ($lnk eq $sofar) {
 		# Link to itself! Cannot do anything more really ..
 		last;
