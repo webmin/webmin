@@ -6,6 +6,7 @@ command=1
 create=1
 delete=1
 move=1
+env=1
 kill=1
 hourly=2
 stop=1

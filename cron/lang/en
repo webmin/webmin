@@ -115,6 +115,7 @@ env_where2=Move environment variable
 env_top=Before all Cron jobs for user
 env_bot=After all Cron jobs
 env_leave=Current position
+env_ecannot=You are not allowed to edit environment variables
 
 exec_title=Execute Cron Job
 exec_ecannot=You are not allowed to execute cron jobs for this user
@@ -134,6 +135,7 @@ acl_gid=Users with primary group
 acl_create=Can create Cron jobs?
 acl_delete=Can delete Cron jobs?
 acl_move=Can move Cron jobs?
+acl_env=Can edit environment variables?
 acl_kill=Can terminate Cron jobs?
 acl_hourly=Limit jobs to at most hourly?
 acl_hourlydef=As set in Module Config

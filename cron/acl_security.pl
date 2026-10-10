@@ -48,6 +48,10 @@ print &ui_table_row($text{'acl_move'},
 	&ui_radio("move", $_[0]->{'move'},
 		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
+print &ui_table_row($text{'acl_env'},
+	&ui_radio("env", $_[0]->{'env'},
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
+
 print &ui_table_row($text{'acl_kill'},
 	&ui_radio("kill", $_[0]->{'kill'},
 		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
@@ -79,6 +83,7 @@ $_[0]->{'command'} = $in{'command'};
 $_[0]->{'create'} = $in{'create'};
 $_[0]->{'delete'} = $in{'delete'};
 $_[0]->{'move'} = $in{'move'};
+$_[0]->{'env'} = $in{'env'};
 $_[0]->{'kill'} = $in{'kill'};
 $_[0]->{'hourly'} = $in{'hourly'};
 $_[0]->{'stop'} = $in{'stop'};

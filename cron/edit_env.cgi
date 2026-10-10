@@ -4,6 +4,7 @@
 
 require './cron-lib.pl';
 &ReadParse();
+$access{'env'} || &error($text{'env_ecannot'});
 
 if (!$in{'new'}) {
 	@jobs = &list_cron_jobs();
