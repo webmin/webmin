@@ -16,3 +16,4 @@ applet_light_bg=ffffff
 noindex=1
 inframe=1
 framed=1
+oofunctions=theme-init.pl
