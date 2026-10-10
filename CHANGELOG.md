@@ -1,6 +1,6 @@
 ## Changelog
 #### 2.680
-* Added protection against infinite loops resolving recursive symlinks (thanks to Carl Zuzart, Zedden I.T.
+* Added protection against infinite loops resolving recursive symlinks (thanks to Carl Zuzart, Zedden I.T.)
 
 #### 2.671 (October, 2026)
 * Add color schemes to the Terminal module
