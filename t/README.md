@@ -19,6 +19,15 @@ WEBMIN_COMPILE_T_FILTER='^\./acl/' prove t/compile.t   # one module
 `prove` and Test::More are core, though on RPM-based distros, you need
 `perl-Test-Harness`.
 
+## Scheduled SMART disk discovery
+
+Run `prove -lr fdisk/t smart-status/t t/disk-discovery-perlcritic.t` for disk-only discovery,
+partition parsing, cache isolation, synthetic inventory changes and RAID/SMART
+caller coverage. These tests use temporary kernel/device trees and fake
+partition commands; they never query real disks. Physical RAID and real hotplug
+still require hardware qualification. Install Perl::Critic to include lint checks
+for the new test files; the shared repository policy remains unchanged.
+
 ## Socket compatibility tests on a VM
 
 `web-lib-funcs-open-socket.t` tests address selection without network access.

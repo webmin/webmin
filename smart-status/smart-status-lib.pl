@@ -31,9 +31,10 @@ Returns a sorted list of disks that can support SMART.
 =cut
 sub list_smart_disks_partitions
 {
+my ($disk_only) = @_;
 my @rv;
 if (&foreign_check("fdisk")) {
-	@rv = &list_smart_disks_partitions_fdisk();
+	@rv = &list_smart_disks_partitions_fdisk($disk_only);
 	}
 elsif (&foreign_check("bsdfdisk")) {
 	@rv = &list_smart_disks_partitions_bsdfdisk();
@@ -53,11 +54,12 @@ module. May include faked-up 3ware devices.
 =cut
 sub list_smart_disks_partitions_fdisk
 {
+my ($disk_only) = @_;
 &foreign_require("fdisk");
 local @rv;
 my $twcount = 0;
 foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
-		    &fdisk::list_disks_partitions()) {
+		    &fdisk::list_disks_partitions(undef, $disk_only)) {
 	if (($d->{'type'} eq 'scsi' || $d->{'type'} eq 'raid') &&
 	    $d->{'model'} =~ /3ware|amcc|\b9750\b/i) {
 		# A 3ware hardware RAID device.
@@ -72,6 +74,8 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 			}
 
 		# Assume that /dev/sdX maps to units in order
+		die "Incomplete 3ware SMART discovery\n"
+			if ($disk_only && (!$units[$twcount] || !@{$units[$twcount]->[2]}));
 		my $i = 0;
 		foreach my $sd (@{$units[$twcount]->[2]}) {
 			my $c = $units[$twcount]->[1];
@@ -101,6 +105,7 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 	       $d->{'model'} =~ /LSI/i && $d->{'model'} !~ /\b9750\b/) {
 		# A LSI megaraid device.
 		local @units = &list_megaraid_subdisks(0);
+		die "Incomplete MegaRAID SMART discovery\n" if ($disk_only && !@units);
 
 		foreach my $i (@units) {
 			push(@rv, { 'device' => $d->{'device'},
@@ -117,6 +122,7 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 	elsif ($d->{'device'} =~ /^\/dev\/cciss\/(.*)$/) {
 		# HP Smart Array .. add underlying disks
 		my $count = &count_subdisks($d, "cciss");
+		die "Incomplete cciss SMART discovery\n" if ($disk_only && !$count);
 		for(my $i=0; $i<$count; $i++) {
 			push(@rv, { 'device' => $d->{'device'},
 				    'prefix' => $d->{'device'},
