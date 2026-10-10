@@ -11471,10 +11471,8 @@ else {
 		# Over-writing a file, via a temp file
 		$file = $1;
 		$file = &translate_filename($file);
-		if (-l $file) {
-			# Resolve the whole chain once, including cycle detection.
-			$file = &resolve_links($file);
-			}
+		# Resolve file and directory links once before choosing the temp path.
+		$file = &resolve_links($file);
 		if (-d $file) {
 			# Cannot open a directory!
 			if ($noerror) { return 0; }
@@ -11781,11 +11779,8 @@ $fh = &callers_package($fh);
 my $lockfile = $file;
 $lockfile =~ s/^[^\/]*//;
 if ($lockfile =~ /^\//) {
-	if (-l $lockfile) {
-		# Resolve once so locking and unlocking use the same target,
-		# without retrying a cycle that resolve_links already stopped.
-		$lockfile = &resolve_links($lockfile);
-		}
+	# Resolve file and directory links so locking uses the write target.
+	$lockfile = &resolve_links($lockfile);
 	$main::open_templocks{$lockfile} = &lock_file($lockfile);
 	}
 return &open_tempfile($fh, $file, $noerror, $notemp, $safe);

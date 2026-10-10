@@ -26,7 +26,8 @@ local *main::is_selinux_enabled = sub { return 0; };
 local *main::error = sub { die join(' ', @_)."\n"; };
 
 foreach my $opener (qw(open_tempfile open_lock_tempfile)) {
-	foreach my $kind (qw(self absolute-self chain dangling)) {
+	foreach my $kind (qw(self absolute-self chain dangling
+			    directory directory-retarget)) {
 		subtest "$opener through $kind" => sub {
 			my $root = abs_path(tempdir(CLEANUP => 1));
 			my $file = "$root/link";
@@ -39,9 +40,19 @@ foreach my $opener (qw(open_tempfile open_lock_tempfile)) {
 			else {
 				# A valid chain must write and lock its final target.
 				$target = "$root/target";
-				symlink('next', $file) or die "symlink: $!";
-				symlink('target', "$root/next") or die "symlink: $!";
-				if ($kind eq 'chain') {
+				if ($kind =~ /^directory/) {
+					# Only the parent directory is a link, not the file itself.
+					mkdir("$root/real") or die "mkdir: $!";
+					symlink('real', $file) or die "symlink: $!";
+					$file .= '/target';
+					$target = "$root/real/target";
+					}
+				else {
+					# Follow two file links, including a missing final target.
+					symlink('next', $file) or die "symlink: $!";
+					symlink('target', "$root/next") or die "symlink: $!";
+					}
+				if ($kind ne 'dangling') {
 					# Cover replacement as well as creation of a missing target.
 					open(my $fh, '>', $target) or die "create: $!";
 					print $fh "old\n";
@@ -69,7 +80,15 @@ foreach my $opener (qw(open_tempfile open_lock_tempfile)) {
 				ok(-f "$target.lock", 'locks the write target');
 				}
 			main::print_tempfile('main::TESTFILE', "updated\n");
-			ok(main::close_tempfile('main::TESTFILE'), 'commits the write');
+			if ($kind eq 'directory-retarget') {
+				# Closing must still use the directory selected at open time.
+				mkdir("$root/other") or die "mkdir: $!";
+				unlink("$root/link") or die "unlink: $!";
+				symlink('other', "$root/link") or die "symlink: $!";
+				}
+			my $closed = eval { main::close_tempfile('main::TESTFILE') };
+			ok($closed, 'commits the write') or diag($@);
+			return if (!$closed);
 			open(my $read, '<', $target) or die "read: $!";
 			is(<$read>, "updated\n", 'writes the intended target');
 			close($read) or die "close: $!";
@@ -78,6 +97,14 @@ foreach my $opener (qw(open_tempfile open_lock_tempfile)) {
 				# Following a valid chain must not replace either symlink.
 				is(readlink($file), 'next', 'preserves the first link');
 				is(readlink("$root/next"), 'target', 'preserves the second link');
+				}
+			elsif ($kind =~ /^directory/) {
+				# Do not replace the directory link or write to its new target.
+				is(readlink("$root/link"),
+					$kind eq 'directory' ? 'real' : 'other',
+					'preserves the directory link');
+				ok(!-e "$root/other/target", 'does not write to the new directory')
+					if ($kind eq 'directory-retarget');
 				}
 			};
 		}
