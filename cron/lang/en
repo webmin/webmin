@@ -81,6 +81,8 @@ lcedit_special_reboot=when system boots
 
 save_err=Failed to save cron job
 save_ecmd=You did not enter a command to execute
+save_ename=Missing or invalid environment variable name
+save_evalue=Invalid environment variable value
 save_euser=You must select a user
 save_euser2=User '$1' does not exist
 save_eallow=The user '$1' is not allowed to access cron

@@ -38,6 +38,9 @@ foreach $f (@files) { &lock_file($f); }
 if ($in{'name'} !~ /^\S+$/) {
 	&error($text{'save_ename'});
 	}
+if ($in{'value'} =~ /\r|\n/) {
+	&error($text{'save_evalue'});
+	}
 if (!$in{'user'}) {
 	&error($text{'save_euser'});
 	}
