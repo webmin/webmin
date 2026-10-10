@@ -10591,7 +10591,8 @@ my ($path, $seen) = @_;
 $seen ||= { };
 $path =~ s/\/+/\//g;
 $path =~ s/\/$// if ($path ne "/");
-return $path if ($seen->{$path}++);
+my $simple = &simplify_path($path) || $path;
+return $path if ($seen->{$simple}++);
 my @p = split(/\/+/, $path);
 shift(@p);
 for(my $i=0; $i<@p; $i++) {
