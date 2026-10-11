@@ -19,6 +19,7 @@ my @tabs = ( [ 'cards', $text{'index_tab_cards'} ],
 	     [ 'forms', $text{'index_tab_forms'} ],
 	     [ 'choices', $text{'index_tab_choices'} ],
 	     [ 'buttons', $text{'index_tab_buttons'} ],
+	     [ 'menus', $text{'index_tab_menus'} ],
 	     [ 'accordions', $text{'index_tab_accordions'} ],
 	     [ 'tables', $text{'index_tab_tables'} ],
 	     [ 'lists', $text{'index_tab_lists'} ],
@@ -30,6 +31,7 @@ my %builders = ( 'cards' => \&demo_cards_tab,
 		 'forms' => \&demo_forms_tab,
 		 'choices' => \&demo_choices_tab,
 		 'buttons' => \&demo_buttons_tab,
+		 'menus' => \&demo_menus_tab,
 		 'accordions' => \&demo_accordions_tab,
 		 'tables' => \&demo_tables_tab,
 		 'lists' => \&demo_lists_tab,
@@ -1039,6 +1041,241 @@ $rv .= ui_card({
 		[ [ 'confirm', $text{'index_b_delete'} ] ],
 		ui_checkbox('purge', 1, $text{'index_b_confirm_purge'}, 0),
 		$text{'index_b_confirm_warn'}),
+	});
+return $rv;
+}
+
+# demo_menus_tab()
+# Returns the menus, dialogs and navigation panel : drop-down menus of
+# every kind, the breadcrumbs and toolbar layout of the File Manager,
+# dialogs opened from buttons and menu entries, and page links
+sub demo_menus_tab
+{
+my $rv = "";
+my $here = 'index.cgi?mode=menus';
+
+# Menus. The File menu has icons, a separator and an entry with a
+# description line; the Edit menu a heading, a disabled entry and a
+# danger entry opening a confirmation; the third is icon-only, named by
+# its tooltip, without the arrow and aligned to its right edge, as a menu
+# at the end of a toolbar; the last two show a small rounded button and
+# a colored pill
+my @file = (
+	{ 'label' => $text{'index_m_new_file'}, 'icon' => 'file-plus',
+	  'dialog' => 'demo_dialog_create' },
+	{ 'label' => $text{'index_m_new_folder'}, 'icon' => 'folder-plus',
+	  'dialog' => 'demo_dialog_create' },
+	'-',
+	{ 'label' => $text{'index_m_upload'}, 'icon' => 'upload', 'href' => $here },
+	{ 'label' => $text{'index_m_download'}, 'icon' => 'globe', 'href' => $here,
+	  'desc' => $text{'index_m_download_desc'} },
+	);
+my @edit = (
+	{ 'heading' => $text{'index_m_clipboard'} },
+	{ 'label' => $text{'index_m_copy'}, 'icon' => 'copy', 'href' => $here },
+	{ 'label' => $text{'index_m_cut'}, 'icon' => 'scissors', 'href' => $here },
+	{ 'label' => $text{'index_m_paste'}, 'icon' => 'clipboard', 'href' => $here,
+	  'disabled' => 1 },
+	'-',
+	{ 'label' => $text{'index_m_delete'}, 'icon' => 'trash', 'state' => 'danger',
+	  'dialog' => 'demo_dialog_delete' },
+	);
+my @tools = (
+	{ 'label' => $text{'index_m_search'}, 'icon' => 'search', 'href' => $here },
+	{ 'label' => $text{'index_m_compress'}, 'icon' => 'archive', 'href' => $here },
+	{ 'label' => $text{'index_m_permissions'}, 'icon' => 'lock', 'href' => $here },
+	{ 'label' => $text{'index_m_acls'}, 'icon' => 'key', 'disabled' => 1,
+	  'desc' => $text{'index_m_acls_desc'} },
+	);
+$rv .= ui_card({
+	'title' => $text{'index_m_menus'},
+	'desc' => $text{'index_m_menus_desc'},
+	'body' => ui_cluster([
+		ui_dropdown($text{'index_m_file'}, \@file, { 'icon' => 'file' }),
+		ui_dropdown($text{'index_m_edit'}, \@edit,
+			    { 'icon' => 'clipboard', 'state' => 'info' }),
+		ui_dropdown('', \@tools, { 'icon' => 'ellipsis', 'caret' => 0,
+					   'align' => 'end',
+					   'title' => $text{'index_m_more'} }),
+		ui_dropdown($text{'index_m_tools'}, \@tools,
+			    { 'icon' => 'gear', 'size' => 'small',
+			      'shape' => 'rounded' }),
+		ui_dropdown($text{'index_m_tools'}, \@tools,
+			    { 'shape' => 'pill', 'state' => 'success' }),
+		]),
+	});
+
+# The File Manager layout : breadcrumbs at the left and the toolbar at
+# the right, in one cluster spread between both ends. The first crumb is
+# an icon named by its title; the last one is the current directory and
+# not a link. The bookmarks menu is the last of the toolbar and opens
+# leftwards.
+my $crumbs = ui_breadcrumb([
+	{ 'icon' => 'home', 'href' => $here, 'title' => $text{'index_m_crumb_home'} },
+	[ 'etc', $here ],
+	[ 'webmin', $here ],
+	{ 'label' => 'miniserv.conf' },
+	]);
+my @bookmarks = (
+	{ 'label' => $text{'index_m_bookmark'}, 'icon' => 'bookmark', 'href' => $here },
+	'-',
+	{ 'heading' => $text{'index_m_recent'} },
+	( map { { 'label' => $_, 'icon' => 'folder', 'href' => $here } }
+	      ( '/etc/webmin', '/var/log', '/home/deploy' ) ),
+	);
+$rv .= ui_card({
+	'title' => $text{'index_m_toolbar'},
+	'desc' => $text{'index_m_toolbar_desc'},
+	'body' => ui_cluster([
+		$crumbs,
+		ui_cluster([
+			ui_dropdown($text{'index_m_file'}, \@file, { 'icon' => 'file' }),
+			ui_dropdown($text{'index_m_edit'}, \@edit, { 'icon' => 'clipboard' }),
+			ui_dropdown($text{'index_m_bookmarks'}, \@bookmarks,
+				    { 'icon' => 'book', 'align' => 'end' }),
+			ui_action_button($text{'index_m_refresh'}, 'neutral',
+					 { 'icon' => 'refresh', 'href' => $here }),
+			ui_dialog_button($text{'delete'}, 'demo_dialog_delete', 'danger',
+					 { 'icon' => 'trash' }),
+			], { 'gap' => '6px' }),
+		], { 'align' => 'between' }),
+	});
+
+# Dialogs : a form dialog, a confirmation, dialogs opened with values,
+# and a details dialog with only a Close button. The buttons open them;
+# the dialogs themselves are printed after the card and stay hidden
+my @files = ( 'web01.conf', 'nginx.conf', 'hosts' );
+$rv .= ui_card({
+	'title' => $text{'index_m_dialogs'},
+	'desc' => $text{'index_m_dialogs_desc'},
+	'body' => ui_stack([
+		ui_cluster([
+			ui_dialog_button($text{'index_m_open_create'}, 'demo_dialog_create',
+					 'success', { 'icon' => 'folder-plus' }),
+			ui_dialog_button($text{'index_m_open_delete'}, 'demo_dialog_delete',
+					 'danger', { 'icon' => 'trash' }),
+			ui_dialog_button($text{'index_m_open_info'}, 'demo_dialog_info',
+					 'info', { 'icon' => 'info-circle' }),
+			ui_dialog_button($text{'index_m_open_warning'}, 'demo_dialog_warning',
+					 'warning', { 'icon' => 'warning' }),
+			]),
+		# One rename button per file, each passing the name it renames,
+		# so the same dialog serves every row, and a small menu whose
+		# entries open the same dialogs, the rename entry with values
+		# as well
+		ui_list([ map { {
+			'title' => $_,
+			'icon' => 'file',
+			'actions' => ui_cluster([
+				ui_dialog_button($text{'index_m_rename'},
+					'demo_dialog_rename', 'neutral',
+					{ 'icon' => 'cursor-text', 'size' => 'small',
+					  'values' => { 'file' => $_, 'name' => $_ } }),
+				ui_dropdown('', [
+					{ 'label' => $text{'index_m_rename'}, 'icon' => 'cursor-text',
+					  'dialog' => 'demo_dialog_rename',
+					  'values' => { 'file' => $_, 'name' => $_ } },
+					{ 'label' => $text{'index_m_open_info'}, 'icon' => 'info-circle',
+					  'dialog' => 'demo_dialog_info' },
+					'-',
+					{ 'label' => $text{'index_m_delete_file'}, 'icon' => 'trash',
+					  'state' => 'danger', 'dialog' => 'demo_dialog_delete' },
+					], { 'icon' => 'ellipsis', 'caret' => 0, 'size' => 'small',
+					     'align' => 'end', 'title' => $text{'index_m_more'} }),
+				], { 'gap' => '6px' }),
+			} } @files ]),
+		]),
+	});
+
+# Submitting the create and rename forms reloads this tab; the
+# confirmation uses the dialog form method, so it only closes
+$rv .= ui_dialog({
+	'id' => 'demo_dialog_create',
+	'title' => $text{'index_m_new_folder'},
+	'icon' => 'folder-plus',
+	'size' => 'small',
+	'form' => { 'action' => 'index.cgi', 'method' => 'get' },
+	'body' => ui_hidden('mode', 'menus').
+		  ui_table_start(undef, 'width=100%', 2).
+		  ui_table_row($text{'index_m_rename_name'},
+			       ui_textbox('name', '', 30, 0, undef, 'required')).
+		  ui_table_end(),
+	'buttons' => [ { 'label' => $text{'index_m_create'}, 'state' => 'success',
+			 'icon' => 'check' } ],
+	'close' => $text{'index_f_cancel'},
+	});
+# The form is given as a URL, which posts to it; this module changes
+# nothing on a post, so the tab simply reloads
+$rv .= ui_dialog({
+	'id' => 'demo_dialog_rename',
+	'title' => $text{'index_m_rename'},
+	'icon' => 'cursor-text',
+	'size' => 'small',
+	'form' => 'index.cgi',
+	'body' => ui_hidden('mode', 'menus').ui_hidden('file', '').
+		  ui_table_start(undef, 'width=100%', 2).
+		  ui_table_row($text{'index_m_rename_name'},
+			       ui_textbox('name', '', 30, 0, undef, 'required')).
+		  ui_table_end(),
+	'buttons' => [ { 'label' => $text{'index_m_rename'}, 'state' => 'success',
+			 'icon' => 'check' } ],
+	'close' => $text{'index_f_cancel'},
+	});
+# The text comes first, then the list as HTML. Cancel takes the focus,
+# so Enter does not confirm by accident
+$rv .= ui_dialog({
+	'id' => 'demo_dialog_delete',
+	'title' => $text{'index_m_open_delete'},
+	'state' => 'danger',
+	'icon' => 'trash',
+	'form' => { 'method' => 'dialog' },
+	'text' => $text{'index_m_delete_body'},
+	'body' => ui_tag('pre', join("\n", @files), { 'class' => 'ui_code_block' }).
+		  ui_p(html_escape($text{'index_m_delete_ask'})),
+	'buttons' => [ { 'label' => $text{'delete'}, 'state' => 'danger',
+			 'icon' => 'trash' } ],
+	'close' => $text{'index_f_cancel'},
+	'focus' => 'close',
+	});
+# A width of its own instead of one of the three sizes, and a
+# description under the heading, read out with it
+$rv .= ui_dialog({
+	'id' => 'demo_dialog_info',
+	'title' => $text{'index_m_info_title'},
+	'desc' => 'web01.conf',
+	'icon' => 'info-circle',
+	'width' => '44em',
+	'body' => ui_dl([
+		[ $text{'index_m_info_owner'}, ui_tag('tt', 'root:root') ],
+		[ $text{'index_m_info_size'}, '4.2 KB' ],
+		[ $text{'index_m_info_modified'}, '2026-09-05 08:12' ],
+		[ $text{'index_m_info_perms'}, ui_code('0644') ],
+		], { 'cols' => 2 }),
+	'close' => 1,
+	});
+# A notice : a state, a sentence and one button, as the File Manager
+# answers an action with nothing selected. The state picks the icon.
+$rv .= ui_dialog({
+	'id' => 'demo_dialog_warning',
+	'title' => $text{'index_m_warning_title'},
+	'state' => 'warning',
+	'size' => 'small',
+	'text' => $text{'index_m_warning_body'},
+	'close' => $text{'index_m_ok'},
+	});
+
+# Page links : the first page, a page in the middle with gaps on both
+# sides, the last page, and a window of one page on each side
+$rv .= ui_card({
+	'title' => $text{'index_m_pager'},
+	'desc' => $text{'index_m_pager_desc'},
+	'body' => ui_stack([
+		ui_pager({ 'page' => 1, 'pages' => 12, 'href' => $here.'&page=' }),
+		ui_pager({ 'page' => 6, 'pages' => 12, 'href' => $here.'&page=' }),
+		ui_pager({ 'page' => 12, 'pages' => 12, 'href' => $here.'&page=' }),
+		ui_pager({ 'page' => 6, 'pages' => 12, 'window' => 1,
+			   'href' => $here.'&page=' }),
+		], { 'gap' => '10px' }),
 	});
 return $rv;
 }

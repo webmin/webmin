@@ -17,6 +17,7 @@ Every tab of `index.cgi` is built by one function in `ui-demo-pages.pl` :
 | Forms      | `demo_forms_tab`      | the usual `ui_table_start` / `ui_table_row` form with `ui_toggle`, `ui_search`, the date chooser, password fields and a table of inputs inside one row built with `ui_columns_start` / `ui_columns_row` with the `no-hover` class, as the Nginx module's URL rewrites; a second form of choosers : `file_chooser_button` for files and directories, `ui_user_textbox`, `ui_group_textbox`, `ui_users_textbox`, `ui_groups_textbox`, and an `hlink` help link |
 | Choices    | `demo_choices_tab`    | `ui_choice`, `ui_select_switch` and `ui_radio_list` for backup destinations and IP addresses; `ui_multi_select_list` for backup servers with modes and child folding, secondary groups, and an empty list with a custom label |
 | Buttons    | `demo_buttons_tab`    | `ui_action_button` as native buttons and links in all state colors, three sizes and three shapes, with submit, reset, disabled and confirmation examples; `ui_submit`, `ui_reset` and `ui_link_button` in one row, with a disabled and a confirmed one; a form ended by `ui_form_end`, one by `ui_form_grouped_buttons`, one by `ui_form_end_side_by_side` with a separate form at the right; a `ui_confirmation_form` page |
+| Menus      | `demo_menus_tab`      | `ui_dropdown` menus with icons, descriptions, separators, headings, states and disabled entries, an icon-only one aligned to its right edge, and small, rounded and pill variants; a `ui_breadcrumb` trail next to a toolbar of menus and buttons, as the File Manager lays out its listing; `ui_dialog` dialogs opened by `ui_dialog_button` and by menu entries, with their buttons given as data : a form dialog, a danger confirmation built from `text` with the focus on Cancel, a rename dialog filled from the values of a button or of a row menu entry, a details dialog with a width of its own, and a small warning notice with one OK button; `ui_pager` page links |
 | Accordions | `demo_accordions_tab` | a settings form of `ui_table_start` followed by `ui_hidden_table_start` sections |
 | Tables     | `demo_tables_tab`     | the empty state shown instead of a table with no rows, `ui_columns_table` with a `ui_details` disclosure in its first cell (classes `inline inlined`, as grub2's boot entries), and `ui_form_columns_table`, both with the sortable flag; the tab description itself hides more text behind a `ui_details` tick (class `inline`), as Virtualmin's SSL page does |
 | Lists      | `demo_lists_tab`      | `ui_list` rows with badges, tags, meta and actions; a backup history with state icons, a filesystem list with inline progress bars, and a user list with a confirmed delete link |
@@ -103,8 +104,9 @@ of a module page that are easy to get wrong :
 - Reuse the existing API for tabs, forms, buttons and tables. The widget
   functions only add what was missing : cards, grids, stat tiles,
   description lists, badges, chips, list rows, feeds, empty states,
-  progress bars, the toggle switch, the search box, the choice lists
-  and the multiple selection list.
+  progress bars, the toggle switch, the search box, the choice lists,
+  the multiple selection list, drop-down menus, dialogs, breadcrumbs
+  and page links.
 - Widget options are passed in a hash reference after any positional
   content arguments, and each widget returns a string. Text options are
   escaped by the library; `body`, `actions`, `footer` and `*_html` options
@@ -136,6 +138,40 @@ not core API :
   `edit_manual.cgi`. That is why the demo's editor is a page of its own
   rather than a tab : the same form inside a tab of `index.cgi` stays a
   plain text area.
+
+## Menus and dialogs
+
+`ui_dropdown(label, items, options)` is a native `<details>` element :
+the `<summary>` is the button, drawn with the `ui_action` classes so it
+lines up with `ui_action_button`, and the entries are links or buttons.
+A menu opens and closes without JavaScript; `ui-lib.js` keeps one menu
+open at a time, closes it on Escape or a click elsewhere, moves between
+entries with the arrow keys, and flips a menu that would leave the
+window. An entry with a `dialog` key opens that dialog.
+
+`ui_dialog(options)` is a native `<dialog>` element shown modally. Any
+control carrying `data-ui-dialog="<id>"` opens it, which
+`ui_dialog_button` builds; `data-ui-dialog-values` on that control is a
+JSON object filled into the dialog's fields first, and the dialog gets a
+cancelable `ui-dialog-open` event, so a module script can prepare or
+refuse the opening. The `form` option wraps the dialog in a form, so
+Enter and the buttons given in `buttons` send it; a form with the
+`dialog` method only closes. A `text` option is the body of a notice or
+a confirmation, `close` adds the closing button and `focus => 'close'`
+gives it the focus, so Enter cannot confirm a deletion by accident.
+Controls carrying `data-ui-dialog-close`, the cross, Escape and a click
+on the backdrop close the dialog. From a module script,
+`webminUiWidgets.openDialog(id, values)` and `closeDialog(id)` do the
+same. The File Manager uses all of this for themes without Bootstrap.
+
+A `data-ui-confirm` attribute on any button or link, such as the Delete
+buttons on the Buttons, Forms and Lists tabs, asks its question in the
+same kind of dialog before the action runs, instead of the browser's own
+prompt. `data-ui-confirm-title`, `data-ui-confirm-ok` and
+`data-ui-confirm-state` set the heading, the confirming button's label
+and the color; a danger action button asks in the danger state by
+itself. `webminUiWidgets.confirm(message, { title, ok, state })` asks
+the same way from a script and resolves with the answer.
 
 `ui_action_button(label, state, options)` draws a native `<button>` by default,
 or an `<a>` when `href` is set. It uses the badge palette with its own
