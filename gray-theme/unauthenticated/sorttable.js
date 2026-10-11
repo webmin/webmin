@@ -28,6 +28,9 @@ function ts_makeSortable(table) {
     // We have a first row: assume it's the header, and make its contents clickable links
     for (var i=0;i<firstRow.cells.length;i++) {
         var cell = firstRow.cells[i];
+        // A heading holding a control, such as a select-all checkbox, is
+        // left as it is : rewriting it as a sort link would drop the control
+        if (cell.querySelector && cell.querySelector('input, select, button, textarea')) continue;
         var txt = ts_getInnerText(cell);
         cell.innerHTML = '<b><a href="#" class="sortheader" '+ 
         'onclick="ts_resortTable(this, '+i+');return false;">' + 
