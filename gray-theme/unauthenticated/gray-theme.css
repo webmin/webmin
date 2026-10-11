@@ -186,7 +186,7 @@
 		--select-arrow: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M2 3.5l3 3 3-3' fill='none' stroke='%2399a3ae' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
 	}
 	html:not([data-scheme="light"]) body:not([data-scheme="light"])
-	:is(.ui_page, .ui_multi, .ui_toggle) {
+	:is(.ui_page, .ui_multi, .ui_toggle, .ui_dropdown, .ui_dialog) {
 		color-scheme: dark;
 	}
 	/* The root follows its body, so the scrollbars and the canvas behind
@@ -261,8 +261,8 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--toggle-thumb-color: #e6e8ea;
 	--select-arrow: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M2 3.5l3 3 3-3' fill='none' stroke='%2399a3ae' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
 }
-html[data-scheme="dark"] body :is(.ui_page, .ui_multi, .ui_toggle),
-body[data-scheme="dark"] :is(.ui_page, .ui_multi, .ui_toggle) {
+html[data-scheme="dark"] body :is(.ui_page, .ui_multi, .ui_toggle, .ui_dropdown, .ui_dialog),
+body[data-scheme="dark"] :is(.ui_page, .ui_multi, .ui_toggle, .ui_dropdown, .ui_dialog) {
 	color-scheme: dark;
 }
 html[data-scheme="dark"], html:has(> body[data-scheme="dark"]) {
