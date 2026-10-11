@@ -17,32 +17,32 @@ if ($in{'method'} eq 'plain-tar') {
 	$extension = ".tar";
 	$full = &validate_filename_path($in{'arch'}.$extension);
 	$command = "tar cf ".quotemeta($full).
-		" -C ".quotemeta($cwd);
+		" -C ".quotemeta($cwd)." --";
 	}
 elsif ($in{'method'} eq 'xz-tar') {
 	$extension = ".tar.xz";
 	$full = &validate_filename_path($in{'arch'}.$extension);
 	$command = "tar cJf ".quotemeta($full).
-		" -C ".quotemeta($cwd);
+		" -C ".quotemeta($cwd)." --";
 	}
 elsif ($in{'method'} eq 'zstd-tar') {
 	$extension = ".zst";
 	$full = &validate_filename_path($in{'arch'}.$extension);
 	$command = "ZSTD_CLEVEL=19 tar --zstd -cf ".
 		quotemeta($full).
-		" -C ".quotemeta($cwd);
+		" -C ".quotemeta($cwd)." --";
 	}
 elsif ($in{'method'} eq 'tar') {
 	$extension = ".tar.gz";
 	$full = &validate_filename_path($in{'arch'}.$extension);
 	$command = "tar czf ".quotemeta($full).
-		" -C ".quotemeta($cwd);
+		" -C ".quotemeta($cwd)." --";
 	}
 elsif ($in{'method'} eq 'zip') {
 	$extension = ".zip";
 	$full = &validate_filename_path($in{'arch'}.$extension);
 	$command = "cd ".quotemeta($cwd).
-		" && zip -r -- ".quotemeta($full);
+		" && zip -r ".quotemeta($full)." --";
 	}
 else {
 	&error("Unknown method!");
