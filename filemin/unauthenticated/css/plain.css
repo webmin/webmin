@@ -1,0 +1,85 @@
+/*
+ * plain.css
+ * Layout of the File Manager for themes without Bootstrap. The toolbar,
+ * its menus, the dialogs and the page links are core widgets styled by
+ * ui-lib.css; this file only arranges them around the listing and
+ * styles the row action links and the permissions matrix.
+ */
+
+/* Breadcrumbs at the left, toolbar at the right, wrapping on a narrow
+ * frame */
+.filemin_head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px 16px;
+}
+.filemin_head .ui_breadcrumb {
+	min-width: 0;
+	font-size: 1.05em;
+}
+.filemin_toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	margin-left: auto;
+}
+.filemin_pager { display: flex; }
+.filemin_page .total { color: var(--ui-fg-muted); }
+
+/* Row action links hold icons and sit side by side */
+.filemin_page .action-link {
+	display: inline-flex;
+	align-items: center;
+	margin-right: 4px;
+	color: var(--ui-fg-muted);
+	vertical-align: middle;
+}
+.filemin_page .action-link:hover { color: var(--ui-accent); }
+.filemin_page td > a > img { vertical-align: middle; }
+
+/* Dialog forms sit flush inside the dialog body, and stay within it :
+ * both the theme's wrapper table and the form table take the dialog
+ * width with fixed columns, the label column has a set width, and the
+ * inputs fit the value column instead of widening the dialog */
+.filemin_page .ui_dialog_body > table.wrapper { margin: 0; }
+.filemin_page .ui_dialog_body table.wrapper,
+.filemin_page .ui_dialog_body table.ui_table {
+	width: 100%;
+	table-layout: fixed;
+}
+.filemin_page .ui_dialog_body td.ui_form_label {
+	width: 8.5em;
+	white-space: nowrap;
+}
+.filemin_page .ui_dialog_body td.ui_form_value select { width: 100%; }
+.filemin_page .ui_dialog_body td.ui_form_value
+	input:not([type="checkbox"]):not([type="radio"]) {
+	max-width: 100%;
+}
+
+/* The permissions matrix */
+.filemin_chmod_matrix { border-collapse: collapse; }
+.filemin_chmod_matrix th, .filemin_chmod_matrix td {
+	padding: 2px 12px 2px 0;
+	text-align: left;
+	font-weight: normal;
+}
+.filemin_chmod_matrix th { font-weight: 600; }
+.filemin_chmod_matrix input[type="checkbox"] { margin: 0; }
+
+/* The entries about to be deleted */
+.filemin_delete_items {
+	max-height: 180px;
+	margin: 8px 0;
+	padding: 8px 10px;
+	overflow: auto;
+	border: 1px solid var(--ui-border-soft);
+	background: var(--ui-surface-2);
+	font-family: var(--ui-font-mono);
+	font-size: 0.92em;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}

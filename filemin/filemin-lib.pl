@@ -11,7 +11,7 @@ eval "use File::MimeInfo";
 
 our ($path, $quote_escaped_path, $urlized_path, $base, $cwd, $upload_max,
 	 $confdir, $template_name, $bookmarks, $page, $pagelimit, $edit_icon,
-	 $rename_icon, $extract_icon, $goto_icon, $root_icon, $head);
+	 $rename_icon, $extract_icon, $goto_icon, $root_icon);
 our (%access, %userconfig, %allowed_for_edit);
 our (@allowed_paths, @allowed_for_edit, @remote_user_info);
 
@@ -413,124 +413,9 @@ if ($tinfo{'bootstrap'}) {
 		"unauthenticated/templates/dialogs.html");
 	}
 
-# Interface for legacy themes
+# Interface for other themes, built from the core widgets
 else {
-
-	# Set icons variables
-	$edit_icon =
-		"<img src='images/icons/quick/edit.png'" .
-		" alt='$text{'edit'}' />";
-	$rename_icon =
-		"<img src='images/icons/quick/" .
-		"rename.png' " .
-		"alt='$text{'rename'}' />";
-	$extract_icon =
-		"<img src='images/icons/quick/" .
-		"extract.png' " .
-		"alt='$text{'extract_archive'}' />";
-	$goto_icon =
-		"<img src='images/icons/quick/" .
-		"go-next.png' " .
-		"alt='$text{'goto_folder'}'";
-
-	# Add static files
-	$head = "<link rel=\"stylesheet\" " .
-		"type=\"text/css\" " .
-		"href=\"unauthenticated/css/" .
-		"style.css\" />";
-	$head .= "<script type=\"text/javascript\"" .
-		 " src=\"unauthenticated/jquery/" .
-		 "jquery.min.js\"></script>";
-	$head .= "<script type=\"text/javascript\"" .
-		 " src=\"unauthenticated/jquery/" .
-		 "jquery-ui.min.js\"></script>";
-	$head .= "<script type=\"text/javascript\"" .
-		 " src=\"unauthenticated/js/" .
-		 "legacy.js\"></script>";
-	$head .= "<link rel=\"stylesheet\" " .
-		 "type=\"text/css\" " .
-		 "href=\"unauthenticated/jquery/" .
-		 "jquery-ui.min.css\" />";
-	$head .= "<script type=\"text/javascript\"" .
-		 " src=\"unauthenticated/js/" .
-		 "chmod-calculator.js\"></script>";
-	$head .= "<link rel=\"stylesheet\" " .
-		 "type=\"text/css\" " .
-		 "href=\"unauthenticated/dropdown/" .
-		 "fg.menu.css\" />";
-	$head .= "<script type=\"text/javascript\"" .
-		 " src=\"unauthenticated/dropdown/" .
-		 "fg.menu.js\"></script>";
-	print $head;
-
-	# Set "root" icon
-	if ($base eq '/') {
-		$root_icon =
-			"<img src=\"images/icons/quick/" .
-			"drive-harddisk.png\" " .
-			"class=\"hdd-icon\" />";
-		}
-	else {
-		$root_icon = "~";
-		}
-	# Legacy breadcrumbs
-	print "<div id='bread' style='float: left;" .
-	      " padding-bottom: 2px;'>" .
-	      "<a href='index.cgi?path='>" .
-	      "$root_icon</a> / ";
-	my @breadcr = split('/', $path);
-	my $cp = '';
-	for (my $i = 1;
-	     $i <= scalar(@breadcr)-1; $i++) {
-		chomp($breadcr[$i]);
-		$cp = $cp.'/'.$breadcr[$i];
-		print "<a href='index.cgi?path=" .
-		      &urlize($cp) . "'>" .
-		      &html_escape($breadcr[$i]) .
-		      "</a> / ";
-		}
-	print "<br />";
-	# And pagination
-	$page = $in{'page'};
-	$pagelimit = $userconfig{'per_page'};
-	$pages = ceil((scalar(@list))/$pagelimit);
-	if (not defined $page or $page > $pages) {
-		$page = 1;
-		}
-	print "Pages: ";
-	for (my $i = 1; $i <= $pages; $i++) {
-		if ($page eq $i) {
-			print "<a class='pages active' " .
-			      "href='?path=" .
-			      &urlize($path) .
-			      "&page=$i" .
-			      "&query=" .
-			      &urlize($query) .
-			      "'>" .
-			      &html_escape($i) .
-			      "</a>";
-			}
-		else {
-			print "<a class='pages' " .
-			      "href='?path=" .
-			      &urlize($path) .
-			      "&page=$i" .
-			      "&query=" .
-			      &urlize($query) .
-			      "'>" .
-			      &html_escape($i) .
-			      "</a>";
-			}
-		}
-	print "</div>";
-
-	# And toolbar
-	print_template(
-		"unauthenticated/templates/" .
-		"legacy_quicks.html");
-	print_template(
-		"unauthenticated/templates/" .
-		"legacy_dialogs.html");
+	print &plain_interface_head();
 	}
 my $info_total;
 my $info_files = scalar @files;
@@ -801,6 +686,18 @@ for (my $count = 1 + $pagelimit * ($page - 1);
 print ui_columns_end();
 print &ui_hidden("path", $path),"\n";
 print &ui_form_end();
+# Close the widget page area opened by the non-Bootstrap interface
+print &ui_page_end() if (!$tinfo{'bootstrap'});
+}
+
+# list_bookmarks()
+# Returns the directories the user has bookmarked
+sub list_bookmarks
+{
+$confdir = "$remote_user_info[7]/.filemin";
+return () if (!-e "$confdir/.bookmarks");
+my $bookmarks = &read_file_lines($confdir.'/.bookmarks', 1);
+return grep { $_ ne '' } @$bookmarks;
 }
 
 # get_bookmarks()
@@ -811,10 +708,8 @@ $confdir = "$remote_user_info[7]/.filemin";
 if (!-e "$confdir/.bookmarks") {
 	return "<li><a>$text{'no_bookmarks'}</a></li>";
 	}
-my $bookmarks =
-	&read_file_lines($confdir.'/.bookmarks', 1);
 $result = '';
-foreach $bookmark (@$bookmarks) {
+foreach $bookmark (&list_bookmarks()) {
 	$result .=
 		"<li><a href='index.cgi?path=" .
 		&urlize($bookmark) . "'>" .
@@ -822,6 +717,486 @@ foreach $bookmark (@$bookmarks) {
 		"</a></li>";
 	}
 return $result;
+}
+
+# plain_interface_head()
+# Returns the top of the file list for themes without Bootstrap : the
+# module assets, the breadcrumbs, the toolbar of menus and buttons, the
+# page links and the dialogs behind the toolbar, all built from the core
+# widgets. Also sets the row action icons and the pagination that the
+# shared listing code uses, and opens the widget page area that
+# print_interface closes after the listing.
+sub plain_interface_head
+{
+my $rv = "";
+
+# Row action icons from the built-in icon set
+$edit_icon = &ui_svg_icon('edit', { 'title' => $text{'edit'} });
+$rename_icon = &ui_svg_icon('cursor-text', { 'title' => $text{'rename'} });
+$extract_icon = &ui_svg_icon('unarchive',
+			     { 'title' => $text{'extract_archive'} });
+$goto_icon = &ui_svg_icon('arrow-right', { 'title' => $text{'goto_folder'} });
+
+# Server-side pagination, with as many entries per page as the user chose
+$page = int($in{'page'} || 0) || 1;
+$pagelimit = int($userconfig{'per_page'} || 0) || 50;
+$pages = ceil(scalar(@list) / $pagelimit) || 1;
+$page = 1 if ($page > $pages);
+
+# The widget page area, with the module's own stylesheet and script
+$rv .= &ui_page_start({ 'class' => 'filemin_page' });
+$rv .= &plain_asset_tags();
+
+# Breadcrumbs at the left and the toolbar at the right
+$rv .= &ui_tag('div', &plain_breadcrumb().&plain_toolbar(),
+	       { 'class' => 'filemin_head' });
+
+# Page links, when the listing does not fit on one page. The URL is
+# relative, so a search keeps its query from page to page
+my $pager = &ui_pager({
+	'page' => $page,
+	'pages' => $pages,
+	'href' => "?path=".&urlize($path).
+		  (defined($query) && $query ne '' ?
+			"&query=".&urlize($query) : "").
+		  ($in{'caseins'} ? "&caseins=1" : "").
+		  "&page=" });
+$rv .= &ui_tag('div', $pager, { 'class' => 'filemin_pager' }) if ($pager);
+
+# The dialogs opened from the toolbar and the rows
+$rv .= &plain_dialogs();
+return $rv;
+}
+
+# plain_asset_tags()
+# Returns the tags loading the module's stylesheet and script for the
+# widget interface, each keyed by its modification time so that a changed
+# file is fetched at once, and the permissions calculator shared with the
+# Bootstrap interface
+sub plain_asset_tags
+{
+my $rv = "";
+foreach my $file ('css/plain.css', 'js/plain.js') {
+	my @st = stat("$module_root_directory/unauthenticated/$file");
+	my $url = "unauthenticated/$file?".(@st ? $st[9] : &get_webmin_version());
+	if ($file =~ /\.css$/) {
+		$rv .= &ui_tag('link', undef,
+			       { 'rel' => 'stylesheet', 'href' => $url })."\n";
+		}
+	else {
+		$rv .= &ui_tag('script', undef,
+			       { 'src' => $url, 'defer' => undef })."\n";
+		}
+	}
+$rv .= &ui_tag('script', undef,
+	       { 'src' => 'unauthenticated/js/chmod-calculator.js' })."\n";
+return $rv;
+}
+
+# plain_breadcrumb()
+# Returns the path to the current directory as breadcrumb links, starting
+# with the allowed base directory : the disk when it is the root, else
+# the home
+sub plain_breadcrumb
+{
+my @items = ( { 'icon' => $base eq '/' ? 'hard-drive' : 'home',
+		'href' => 'index.cgi?path=',
+		'title' => $base } );
+my $cp = '';
+foreach my $part (grep { $_ ne '' } split(/\//, $path)) {
+	$cp .= '/'.$part;
+	push(@items, { 'label' => $part,
+		       'href' => 'index.cgi?path='.&urlize($cp) });
+	}
+return &ui_breadcrumb(\@items, { 'class' => 'filemin_crumbs' });
+}
+
+# plain_toolbar()
+# Returns the toolbar : the File, Edit, Tools and Bookmarks menus, and the
+# refresh and delete buttons. Entries acting on the selected entries are
+# marked, so that plain.js asks for a selection first. Tools whose
+# command is missing are left out.
+sub plain_toolbar
+{
+my $urlpath = &urlize($path);
+my $sel = { 'data-filemin-selection' => '1' };
+my @file = (
+	{ 'label' => $text{'create_file'}, 'icon' => 'file-plus',
+	  'dialog' => 'filemin_create_file' },
+	{ 'label' => $text{'create_folder'}, 'icon' => 'folder-plus',
+	  'dialog' => 'filemin_create_folder' },
+	'-',
+	{ 'label' => $text{'upload_files'}, 'icon' => 'upload',
+	  'dialog' => 'filemin_upload' },
+	{ 'label' => $text{'get_from_url'}, 'icon' => 'globe',
+	  'dialog' => 'filemin_download' },
+	);
+my @edit = (
+	{ 'label' => $text{'copy_selected'}, 'icon' => 'copy',
+	  'attrs' => { %$sel, 'data-filemin-submit' => 'copy.cgi' } },
+	{ 'label' => $text{'cut_selected'}, 'icon' => 'scissors',
+	  'attrs' => { %$sel, 'data-filemin-submit' => 'cut.cgi' } },
+	{ 'label' => $text{'paste'}, 'icon' => 'clipboard',
+	  'href' => 'paste.cgi?path='.$urlpath },
+	'-',
+	{ 'label' => $text{'select_all'}, 'icon' => 'check-square',
+	  'attrs' => { 'data-filemin-select' => 'all' } },
+	{ 'label' => $text{'invert_selection'}, 'icon' => 'square-half',
+	  'attrs' => { 'data-filemin-select' => 'invert' } },
+	);
+my @tools = (
+	{ 'label' => $text{'search'}, 'icon' => 'search',
+	  'dialog' => 'filemin_search' },
+	'-',
+	{ 'label' => $text{'compress_selected'}, 'icon' => 'archive',
+	  'dialog' => 'filemin_compress', 'attrs' => $sel },
+	{ 'label' => $text{'chmod_selected'}, 'icon' => 'lock',
+	  'dialog' => 'filemin_chmod', 'attrs' => $sel },
+	{ 'label' => $text{'chown_selected'}, 'icon' => 'user',
+	  'dialog' => 'filemin_chown', 'attrs' => $sel },
+	);
+push(@tools, { 'label' => $text{'chattr_selected'}, 'icon' => 'tag',
+	       'dialog' => 'filemin_chattr', 'attrs' => $sel })
+	if (&has_command('chattr'));
+push(@tools, { 'label' => $text{'chcon_selected'}, 'icon' => 'shield',
+	       'dialog' => 'filemin_chcon', 'attrs' => $sel })
+	if (&get_selinux_status());
+push(@tools, { 'label' => $text{'acls_selected'}, 'icon' => 'key',
+	       'dialog' => 'filemin_acls', 'attrs' => $sel })
+	if (&has_command('setfacl'));
+my @bookmarks = (
+	{ 'label' => $text{'bookmark_folder'}, 'icon' => 'bookmark',
+	  'href' => 'bookmark.cgi?path='.$urlpath },
+	'-',
+	);
+my @marks = &list_bookmarks();
+if (@marks) {
+	push(@bookmarks, map { { 'label' => $_, 'icon' => 'folder',
+				 'href' => 'index.cgi?path='.&urlize($_) } }
+			     @marks);
+	}
+else {
+	push(@bookmarks, { 'label' => $text{'no_bookmarks'}, 'disabled' => 1 });
+	}
+my @buttons = (
+	&ui_dropdown($text{'menu_file'}, \@file, { 'icon' => 'file' }),
+	&ui_dropdown($text{'menu_edit'}, \@edit, { 'icon' => 'clipboard' }),
+	&ui_dropdown($text{'menu_tools'}, \@tools, { 'icon' => 'gear' }),
+	&ui_dropdown($text{'menu_bookmarks'}, \@bookmarks,
+		     { 'icon' => 'book', 'align' => 'end' }),
+	&ui_action_button($text{'refresh'}, 'neutral',
+		{ 'icon' => 'refresh', 'href' => 'index.cgi?path='.$urlpath }),
+	&ui_dialog_button($text{'delete'}, 'filemin_delete', 'danger',
+		{ 'icon' => 'trash', 'attrs' => $sel }),
+	);
+return &ui_tag('div', join("\n", @buttons),
+	       { 'class' => 'filemin_toolbar', 'role' => 'toolbar' });
+}
+
+# plain_dialog_table(&rows)
+# Returns a two-column table of label and input rows for a dialog body.
+# A row with an empty label spans the table.
+sub plain_dialog_table
+{
+my ($rows) = @_;
+my $rv = &ui_table_start(undef, "width=100%", 2);
+foreach my $row (@$rows) {
+	$rv .= defined($row->[0]) && $row->[0] ne '' ?
+		&ui_table_row($row->[0], $row->[1]) :
+		&ui_table_row(undef, $row->[1], 2);
+	}
+$rv .= &ui_table_end();
+return $rv;
+}
+
+# plain_dialogs()
+# Returns the dialogs behind the toolbar and the row actions. A dialog
+# acting on the selected entries carries the script to run in a
+# data-filemin-apply attribute : plain.js sends the selection form to that
+# script with the dialog's fields as URL parameters, as the action
+# scripts expect them. The other dialogs are ordinary forms posting to
+# their script.
+sub plain_dialogs
+{
+my $rv = "";
+my $hidden_path = &ui_hidden('path', $path);
+my $cancel = $text{'dialog_cancel'};
+my $recursive = &ui_checkbox('recursive', 'true', $text{'dialog_recursive'}, 0);
+my $apply = sub {
+	# A form sent to the selection, closed natively if the script fails
+	my ($script, $name) = @_;
+	return { 'method' => 'dialog',
+		 'name' => $name,
+		 'attrs' => { 'data-filemin-apply' => $script } };
+	};
+my $change = [ { 'label' => $text{'dialog_change'}, 'state' => 'success',
+		 'icon' => 'check' } ];
+
+# Shown when an action needs a selection and nothing is checked
+$rv .= &ui_dialog({
+	'id' => 'filemin_nothing',
+	'title' => $text{'warning_title'},
+	'state' => 'warning',
+	'size' => 'small',
+	'text' => $text{'nothing_selected'},
+	'close' => $text{'dialog_ok'} });
+
+# New file and directory
+foreach my $kind ([ 'file', 'create_file', 'new_file_name', 'file-plus' ],
+		  [ 'folder', 'create_folder', 'new_folder_name', 'folder-plus' ]) {
+	my ($what, $title, $label, $icon) = @$kind;
+	$rv .= &ui_dialog({
+		'id' => 'filemin_create_'.$what,
+		'title' => $text{$title},
+		'icon' => $icon,
+		'size' => 'small',
+		'form' => 'create_'.$what.'.cgi',
+		'body' => &plain_dialog_table([
+			[ $text{$label},
+			  &ui_textbox('name', '', 30, 0, undef, 'required') ],
+			]).$hidden_path,
+		'buttons' => [ { 'label' => $text{'create'}, 'state' => 'success',
+				 'icon' => 'check' } ],
+		'close' => $cancel });
+	}
+
+# Rename, filled in by the row link
+$rv .= &ui_dialog({
+	'id' => 'filemin_rename',
+	'title' => $text{'rename'},
+	'icon' => 'cursor-text',
+	'size' => 'small',
+	'form' => 'rename.cgi',
+	'body' => &plain_dialog_table([
+		[ $text{'new_name'},
+		  &ui_textbox('name', '', 30, 0, undef, 'required') ],
+		]).&ui_hidden('file', '').$hidden_path,
+	'buttons' => [ { 'label' => $text{'rename'}, 'state' => 'success',
+			 'icon' => 'check' } ],
+	'close' => $cancel });
+
+# Upload. The options travel in the URL, which upload.cgi reads before
+# the files arrive, so plain.js adds them to the action on submit
+my $upload_url = "upload.cgi?path=".&urlize($path)."&id=".$upid;
+$rv .= &ui_dialog({
+	'id' => 'filemin_upload',
+	'title' => $text{'upload_files'},
+	'icon' => 'upload',
+	'form' => { 'action' => $upload_url,
+		    'method' => 'form-data',
+		    'attrs' => {
+			'data-filemin-upload' => $upload_url,
+			'data-filemin-tracker' =>
+				&get_webprefix()."/uptracker.cgi?id=".$upid } },
+	'body' => &plain_dialog_table([
+		[ $text{'upload_files'},
+		  &ui_upload('upfiles', 40, 0, 'multiple required') ],
+		[ undef,
+		  &ui_checkbox('opt_dirs', 1, $text{'upload_dirs'}, 0,
+			       'data-filemin-upload-dirs')."<br>".
+		  &ui_checkbox('opt_extract', 1, $text{'extract_uploaded'}, 0,
+			       "data-filemin-upload-option='extract_uploaded'").
+		  "<br>".
+		  &ui_checkbox('opt_overwrite', 1, $text{'overwrite_existing'}, 0,
+			       "data-filemin-upload-option='overwrite_existing'") ],
+		]),
+	'buttons' => [ { 'label' => $text{'upload_files'}, 'state' => 'success',
+			 'icon' => 'upload' } ],
+	'close' => $cancel });
+
+# Download from a URL
+$rv .= &ui_dialog({
+	'id' => 'filemin_download',
+	'title' => $text{'get_from_url'},
+	'icon' => 'globe',
+	'form' => 'http_download.cgi',
+	'body' => &plain_dialog_table([
+		[ $text{'dialog_file_url'},
+		  &ui_tag('input', undef, { 'type' => 'url', 'name' => 'link',
+					    'class' => 'ui_textbox', 'size' => 40,
+					    'autocomplete' => 'url',
+					    'required' => undef }) ],
+		[ $text{'dialog_user_name'},
+		  &ui_textbox('username', '', 25, 0, undef, "autocomplete='off'") ],
+		[ $text{'dialog_user_pass'},
+		  &ui_password('password', '', 25, 0, undef,
+			       "autocomplete='new-password' data-password-meter-skip") ],
+		]).$hidden_path,
+	'buttons' => [ { 'label' => $text{'dialog_download'}, 'state' => 'success',
+			 'icon' => 'download' } ],
+	'close' => $cancel });
+
+# Search under the current directory
+$rv .= &ui_dialog({
+	'id' => 'filemin_search',
+	'title' => $text{'search'},
+	'icon' => 'search',
+	'size' => 'small',
+	'form' => 'search.cgi',
+	'body' => &plain_dialog_table([
+		[ $text{'search_label'},
+		  &ui_textbox('query', '', 30, 0, undef, 'required') ],
+		[ undef, &ui_checkbox('caseins', 1, $text{'search_insensitive'}, 1) ],
+		]).$hidden_path,
+	'buttons' => [ { 'label' => $text{'search_go'}, 'state' => 'success',
+			 'icon' => 'search' } ],
+	'close' => $cancel });
+
+# Compress the selection into an archive
+$rv .= &ui_dialog({
+	'id' => 'filemin_compress',
+	'title' => $text{'compress_selected'},
+	'icon' => 'archive',
+	'size' => 'small',
+	'form' => &$apply('compress.cgi'),
+	'body' => &plain_dialog_table([
+		[ $text{'archive_name'},
+		  &ui_textbox('arch', '', 30, 0, undef, 'required') ],
+		[ $text{'type'},
+		  &ui_select('method', 'tar', [ [ 'plain-tar', '.tar' ],
+						[ 'xz-tar', '.tar.xz' ],
+						[ 'tar', '.tar.gz' ],
+						[ 'zstd-tar', '.zstd' ],
+						[ 'zip', '.zip' ] ]) ],
+		]),
+	'buttons' => [ { 'label' => $text{'dialog_compress'}, 'state' => 'success',
+			 'icon' => 'archive' } ],
+	'close' => $cancel });
+
+# Permissions. The form is named for the calculator, whose fields are
+# kept out of the parameters; the perms parameter the script reads is a
+# hidden field that plain.js keeps equal to the octal field
+my $matrix = &ui_tag_start('table', { 'class' => 'filemin_chmod_matrix' }).
+	&ui_tag('tr', &ui_tag('th', '').
+		      join('', map { &ui_tag('th', &html_escape($text{$_})) }
+				   ('chmod_owner', 'chmod_group', 'chmod_others')));
+foreach my $bit ([ 'chmod_read', 4 ], [ 'chmod_write', 2 ],
+		 [ 'chmod_execute', 1 ]) {
+	$matrix .= &ui_tag('tr', &ui_tag('td', &html_escape($text{$bit->[0]})).
+		join('', map { &ui_tag('td', &ui_checkbox($_.$bit->[1], $bit->[1],
+				undef, 0, 'data-filemin-chmod data-filemin-skip')) }
+			     ('owner', 'group', 'other')));
+	}
+foreach my $extra ([ 'chmod_sticky', 'sticky', 1 ], [ 'chmod_setgid', 'setgid', 2 ]) {
+	$matrix .= &ui_tag('tr', &ui_tag('td', &html_escape($text{$extra->[0]})).
+		&ui_tag('td', &ui_checkbox($extra->[1], $extra->[2], undef, 0,
+					   'data-filemin-chmod data-filemin-skip')).
+		&ui_tag('td', '').&ui_tag('td', ''));
+	}
+$matrix .= &ui_tag_end('table');
+$rv .= &ui_dialog({
+	'id' => 'filemin_chmod',
+	'title' => $text{'chmod_selected'},
+	'icon' => 'lock',
+	'form' => &$apply('chmod.cgi', 'chmod'),
+	'body' => &plain_dialog_table([
+		[ $text{'permissions'},
+		  &ui_textbox('t_total', '0644', 4, 0, 4,
+			      "data-filemin-chmod-octal data-filemin-skip ".
+			      "pattern='[0-7]{3,4}' required")." ".
+		  &ui_textbox('sym_total', '', 12, 0, undef,
+			      'readonly data-filemin-skip').
+		  &ui_hidden('perms', '0644') ],
+		[ undef, $matrix ],
+		[ $text{'chmod_apply_to'},
+		  &ui_select('applyto', 1,
+			     [ map { [ $_->[0], $text{$_->[1]} ] }
+				   ( [ 1, 'chmod_dir_only' ],
+				     [ 2, 'chmod_dir_and_its_files' ],
+				     [ 3, 'chmod_all' ],
+				     [ 4, 'chmod_dir_files_and_subs_files' ],
+				     [ 5, 'chmod_dir_and_subs' ] ) ]) ],
+		]),
+	'buttons' => $change,
+	'close' => $cancel });
+
+# Ownership
+$rv .= &ui_dialog({
+	'id' => 'filemin_chown',
+	'title' => $text{'chown_selected'},
+	'icon' => 'user',
+	'size' => 'small',
+	'form' => &$apply('chown.cgi'),
+	'body' => &plain_dialog_table([
+		[ $text{'user_name'},
+		  &ui_textbox('owner', '', 20, 0, undef, 'required') ],
+		[ $text{'group_name'},
+		  &ui_textbox('group', '', 20, 0, undef, 'required') ],
+		[ undef, $recursive ],
+		]),
+	'buttons' => $change,
+	'close' => $cancel });
+
+# File attributes and SELinux context, which take one label each
+foreach my $tool ([ 'chattr', 'tag', 'attr_label' ],
+		  [ 'chcon', 'shield', 'context_label' ]) {
+	my ($what, $icon, $label) = @$tool;
+	$rv .= &ui_dialog({
+		'id' => 'filemin_'.$what,
+		'title' => $text{$what.'_selected'},
+		'icon' => $icon,
+		'size' => 'small',
+		'form' => &$apply($what.'.cgi'),
+		'body' => &plain_dialog_table([
+			[ $text{$label},
+			  &ui_textbox('label', '', 25, 0, undef, 'required') ],
+			[ undef, $recursive ],
+			]),
+		'buttons' => $change,
+		'close' => $cancel });
+	}
+
+# Access control lists, when setfacl exists
+if (&has_command('setfacl')) {
+	$rv .= &ui_dialog({
+		'id' => 'filemin_acls',
+		'title' => $text{'acls_selected'},
+		'icon' => 'key',
+		'form' => &$apply('setfacl.cgi'),
+		'body' => &plain_dialog_table([
+			[ $text{'acls_action'},
+			  &ui_select('action', '-m',
+				     [ [ '', '' ], [ '-m', 'Modify (-m)' ],
+				       [ '-x', 'Remove (-x)' ],
+				       [ '-b', 'Remove all extended (-b)' ],
+				       [ '-k', 'Remove default (-k)' ] ]) ],
+			[ $text{'acls_applyto'},
+			  &ui_select('apply_to', [ ],
+				     [ map { [ $_->[0], $text{$_->[1]} ] }
+					   ( [ 'u', 'acls_user' ], [ 'g', 'acls_group' ],
+					     [ 'm', 'acls_mask' ], [ 'o', 'acls_other' ] ) ],
+				     4, 1) ],
+			[ $text{'acls_perms'},
+			  &ui_select('perms', '',
+				     [ map { [ $_, $_ ] }
+					   ( '', '---', 'r--', '-w-', '--x',
+					     'r-x', 'rw-', '-wx', 'rwx' ) ]) ],
+			[ $text{'acls_user'}, $acl_user_select ],
+			[ $text{'acls_group'}, $acl_group_select ],
+			[ undef, &ui_checkbox('recursive', 1, $text{'dialog_recursive'}, 0) ],
+			[ undef, $acl_manual ],
+			]),
+		'buttons' => $change,
+		'close' => $cancel });
+	}
+
+# Delete, after listing what is selected. Cancel takes the focus, so
+# Enter does not delete by accident
+$rv .= &ui_dialog({
+	'id' => 'filemin_delete',
+	'title' => $text{'remove_selected'},
+	'state' => 'danger',
+	'icon' => 'trash',
+	'form' => &$apply('delete.cgi'),
+	'body' => &ui_tag('p', &html_escape($text{'about_to_delete'})).
+		  &ui_tag('pre', '', { 'id' => 'filemin_delete_items',
+				       'class' => 'filemin_delete_items' }).
+		  &ui_tag('p', &html_escape($text{'are_you_sure'})),
+	'buttons' => [ { 'label' => $text{'delete'}, 'state' => 'danger',
+			 'icon' => 'trash' } ],
+	'close' => $cancel,
+	'focus' => 'close' });
+return $rv;
 }
 
 # get_paste_buffer_file()

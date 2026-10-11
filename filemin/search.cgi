@@ -13,7 +13,6 @@ $query = $in{'query'};
 	$text{'search_results'} . " '" .
 	&html_escape($query) . "'", "");
 
-print $head;
 if ($in{'caseins'}) {
 	$criteria = '-iname';
 	}
