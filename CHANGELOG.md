@@ -1,11 +1,13 @@
 ## Changelog
-#### 2.680
-* Added protection against infinite loops resolving recursive symlinks (thanks to Carl Zuzart, Zedden I.T.)
-
-#### 2.671 (October, 2026)
+#### 2.680 (October, 2026)
 * Add color schemes to the Terminal module
 * Add per-user Terminal preferences for color scheme, font size, screen reader mode and terminal dimensions
+* Add protection against infinite loops resolving recursive symlinks (thanks to Carl Zuzart, Zedden I.T.)
 * Add a Cloudmin virtualization host profile to the nftables module
+* Add drop-down menu, dialog, breadcrumb and page link widgets to the UI library, built on native `details` and `dialog` elements
+* Add confirmation dialogs for buttons and links carrying `data-ui-confirm`, replacing the browser's own prompt
+* Update File Manager to use the new UI widgets in the standard theme, dropping legacy templates
+* Fix standard theme sortable tables dropping controls from table headings, such as the select-all checkbox in File Manager
 * Fix two-factor authentication validation to use the Webmin configuration and data directories passed by the caller
 * Fix HTML escaping of module, script and session fields on the Webmin Actions Log details page
 * Fix mailbox attachment option injection
