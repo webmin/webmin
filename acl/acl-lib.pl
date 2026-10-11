@@ -1474,7 +1474,9 @@ return if (&is_readonly_mode());
 my $sid = &generate_random_session_id();
 return if (!$sid);
 my $t = time();
-$sessiondb{$sid} = "$username $t 127.0.0.1".($lifetime ? " ".$lifetime : "");
+# miniserv only looks up sessions by their hashed key
+$sessiondb{&hash_session_id($sid)} =
+	"$username $t 127.0.0.1".($lifetime ? " ".$lifetime : "");
 dbmclose(%sessiondb);
 return $sid;
 }
