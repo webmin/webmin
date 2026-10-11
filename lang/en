@@ -346,6 +346,12 @@ ui_page_help=Help
 ui_empty_state=Nothing to display
 ui_search=Search
 ui_dismiss=Dismiss
+ui_close=Close
+ui_confirm=Please confirm
+ui_breadcrumb=Breadcrumb
+ui_pager=Pages
+ui_pager_prev=Previous page
+ui_pager_next=Next page
 
 header_statusmsg=$1 logged into $2 $3 on $4 ($5)
 

@@ -7,6 +7,17 @@
  * remain compatible with a strict Content-Security-Policy. Tabs, sorting
  * and select-all links keep using the scripts the existing ui-lib
  * functions and themes already provide.
+ *
+ * Besides the filters, confirmations, choice lists and selection lists,
+ * this script drives the drop-down menus of ui_dropdown (one open at a
+ * time, closed by a click elsewhere or Escape, arrow keys between the
+ * entries, flipped to stay in the window) and the dialogs of ui_dialog
+ * (opened by data-ui-dialog controls, filled from data-ui-dialog-values,
+ * closed by data-ui-dialog-close controls or a click on the backdrop).
+ * window.webminUiWidgets.openDialog(id, values) and closeDialog(id) do
+ * the same from module scripts, and webminUiWidgets.confirm(message,
+ * options) asks a question in the confirmation dialog that
+ * data-ui-confirm controls use, resolving with the answer.
  */
 (function () {
 	'use strict';
@@ -46,7 +57,12 @@
 
 	// Confirmation prompts on buttons and links carrying data-ui-confirm,
 	// including existing ui_submit buttons given the attribute in tags.
-	// Capture the click before a theme or inline handler performs the action.
+	// The click is caught before a theme or inline handler performs the
+	// action, the question is asked in a dialog, and the click is replayed
+	// once confirmed. data-ui-confirm-title, data-ui-confirm-ok and
+	// data-ui-confirm-state refine the dialog; a danger action button asks
+	// in the danger state by default.
+	var replaying = null;
 	on('click', function (e) {
 		// Disabled action links must not run handlers or open confirmations.
 		var disabled = e.target.closest && e.target.closest('.ui_action[aria-disabled="true"]');
@@ -56,11 +72,21 @@
 			return;
 		}
 		var confirmer = e.target.closest && e.target.closest('[data-ui-confirm]');
-		if (confirmer &&
-		    !window.confirm(confirmer.getAttribute('data-ui-confirm'))) {
-			e.preventDefault();
-			e.stopImmediatePropagation();
-		}
+		if (!confirmer || confirmer === replaying) return;
+		e.preventDefault();
+		e.stopImmediatePropagation();
+		openDropdowns().forEach(function (menu) { closeDropdown(menu); });
+		var state = confirmer.getAttribute('data-ui-confirm-state') ||
+			(confirmer.classList.contains('ui_action_danger') ? 'danger' : 'warning');
+		uiConfirm(confirmer.getAttribute('data-ui-confirm'), {
+			title: confirmer.getAttribute('data-ui-confirm-title'),
+			ok: confirmer.getAttribute('data-ui-confirm-ok'),
+			state: state
+		}).then(function (yes) {
+			if (!yes) return;
+			replaying = confirmer;
+			try { confirmer.click(); } finally { replaying = null; }
+		});
 	}, true);
 
 	on('input', function (e) {
@@ -325,5 +351,341 @@
 	} else {
 		initMulti();
 	}
+
+	// ---- Drop-down menus ----
+	// The details element opens and closes natively; this adds the
+	// behavior a menu needs on top of that.
+	function openDropdowns() {
+		return document.querySelectorAll('details.ui_dropdown[open]');
+	}
+	function dropdownItems(menu) {
+		return Array.prototype.slice.call(menu.querySelectorAll(
+			'.ui_dropdown_item:not(:disabled):not([aria-disabled="true"])'));
+	}
+	function closeDropdown(menu, refocus) {
+		menu.removeAttribute('open');
+		menu.classList.remove('ui_dropdown_flip');
+		var summary = menu.querySelector(':scope > summary');
+		if (refocus && summary) summary.focus();
+	}
+	// One menu at a time, and an open menu that would leave the window is
+	// flipped to the other side of its button. The toggle event does not
+	// bubble, so it is caught in the capture phase.
+	on('toggle', function (e) {
+		var menu = e.target;
+		if (!menu.matches || !menu.matches('details.ui_dropdown')) return;
+		if (!menu.open) {
+			menu.classList.remove('ui_dropdown_flip');
+			return;
+		}
+		openDropdowns().forEach(function (other) {
+			if (other !== menu) closeDropdown(other);
+		});
+		var panel = menu.querySelector('.ui_dropdown_menu');
+		if (!panel) return;
+		menu.classList.remove('ui_dropdown_flip');
+		var rect = panel.getBoundingClientRect();
+		var width = document.documentElement.clientWidth;
+		var end = menu.classList.contains('ui_dropdown_end');
+		if ((!end && rect.right > width - 8) || (end && rect.left < 8)) {
+			menu.classList.add('ui_dropdown_flip');
+		}
+	}, true);
+	// A click outside an open menu closes it; a chosen entry closes its
+	// menu once its own action has run
+	on('click', function (e) {
+		var inside = e.target.closest && e.target.closest('details.ui_dropdown[open]');
+		openDropdowns().forEach(function (menu) {
+			if (menu !== inside) closeDropdown(menu);
+		});
+		var item = e.target.closest && e.target.closest('.ui_dropdown_item');
+		if (item && inside && !e.defaultPrevented) {
+			window.setTimeout(function () { closeDropdown(inside); }, 0);
+		}
+	});
+	// Keep the focus, and so the menu, while clicking on its padding,
+	// headings and separators
+	on('mousedown', function (e) {
+		var panel = e.target.closest && e.target.closest('.ui_dropdown_menu');
+		if (panel && !e.target.closest('input, select, textarea, a, button, [tabindex]')) {
+			e.preventDefault();
+		}
+	});
+	on('keydown', function (e) {
+		var menu = e.target.closest && e.target.closest('details.ui_dropdown');
+		if (!menu || e.isComposing) return;
+		var items = dropdownItems(menu);
+		var current = items.indexOf(document.activeElement);
+		if (e.key === 'Escape') {
+			if (!menu.open) return;
+			e.preventDefault();
+			e.stopPropagation();
+			closeDropdown(menu, true);
+		}
+		else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+			e.preventDefault();
+			if (!menu.open) menu.setAttribute('open', '');
+			if (!items.length) return;
+			var next;
+			if (e.key === 'ArrowDown') {
+				next = current < 0 ? 0 : (current + 1) % items.length;
+			} else {
+				next = current < 0 ? items.length - 1 :
+					(current - 1 + items.length) % items.length;
+			}
+			items[next].focus();
+		}
+		else if ((e.key === 'Home' || e.key === 'End') && menu.open && items.length) {
+			e.preventDefault();
+			items[e.key === 'Home' ? 0 : items.length - 1].focus();
+		}
+	});
+	// Tabbing out of an open menu closes it
+	on('focusout', function (e) {
+		var menu = e.target.closest && e.target.closest('details.ui_dropdown[open]');
+		if (menu && (!e.relatedTarget || !menu.contains(e.relatedTarget))) {
+			closeDropdown(menu);
+		}
+	});
+
+	// ---- Dialogs ----
+	function findDialog(ref) {
+		if (!ref) return null;
+		return typeof ref === 'string' ? document.getElementById(ref) : ref;
+	}
+	// Fill the dialog's fields from a name to value map
+	function fillDialog(dialog, values) {
+		if (!values || typeof values !== 'object') return;
+		Object.keys(values).forEach(function (name) {
+			var value = values[name];
+			var selector = '[name="' + name.replace(/["\\]/g, '\\$&') + '"]';
+			dialog.querySelectorAll(selector).forEach(function (field) {
+				if (field.type === 'checkbox' || field.type === 'radio') {
+					field.checked = Array.isArray(value) ?
+						value.indexOf(field.value) >= 0 :
+						value === true || String(field.value) === String(value);
+				}
+				else if (field.tagName === 'SELECT' && field.multiple && Array.isArray(value)) {
+					Array.prototype.forEach.call(field.options, function (option) {
+						option.selected = value.indexOf(option.value) >= 0;
+					});
+				}
+				else if (field.type !== 'file') {
+					field.value = value === null || value === undefined ? '' : value;
+				}
+			});
+		});
+	}
+	// Open a dialog modally, after filling it and letting module scripts
+	// prepare or veto it through the ui-dialog-open event
+	function openDialog(ref, values, opener) {
+		var dialog = findDialog(ref);
+		if (!dialog) return null;
+		fillDialog(dialog, values);
+		var go = dialog.dispatchEvent(new CustomEvent('ui-dialog-open', {
+			bubbles: true, cancelable: true,
+			detail: { opener: opener || null, values: values || null }
+		}));
+		if (!go) return null;
+		if (!dialog.open) {
+			if (typeof dialog.showModal === 'function') dialog.showModal();
+			else dialog.setAttribute('open', '');
+		}
+		var focus = dialog.querySelector('[autofocus]') || dialog.querySelector(
+			'input:not([type="hidden"]):not([disabled]), select:not([disabled]), ' +
+			'textarea:not([disabled]), button:not([disabled]):not(.ui_dialog_x)');
+		if (focus) focus.focus();
+		return dialog;
+	}
+	function closeDialog(ref) {
+		var dialog = findDialog(ref);
+		if (dialog && dialog.open) dialog.close();
+	}
+
+	// ---- Confirmations ----
+	// One dialog, built on first use and reused, asks the questions of
+	// data-ui-confirm controls and of webminUiWidgets.confirm(). Its texts
+	// come from the data attributes ui_page_assets puts on this script
+	// tag, with English fallbacks for pages that load the script by hand.
+	var confirmTexts = (function () {
+		var me = document.currentScript || document.querySelector('script[data-ui-lib]');
+		var d = me ? me.dataset : {};
+		return { title: d.uiTextConfirm || 'Please confirm', ok: d.uiTextOk || 'OK',
+			 cancel: d.uiTextCancel || 'Cancel', close: d.uiTextClose || 'Close' };
+	})();
+	// The state icons of ui_svg_icon, drawn the same way
+	var confirmIcons = {
+		warning: 'M8 2.6l6.4 10.4H1.6L8 2.6z|M8 6.8v2.7|M8 11.3h.01',
+		danger: 'M8 14.25A6.25 6.25 0 1 0 8 1.75a6.25 6.25 0 0 0 0 12.5z|M6 6l4 4|M10 6l-4 4',
+		info: 'M8 14.25A6.25 6.25 0 1 0 8 1.75a6.25 6.25 0 0 0 0 12.5z|M8 7.4v3.4|M8 5.1h.01',
+		success: 'M8 14.25A6.25 6.25 0 1 0 8 1.75a6.25 6.25 0 0 0 0 12.5z|M5.4 8.3l1.8 1.9 3.4-4',
+		x: 'M4.5 4.5l7 7|M11.5 4.5l-7 7'
+	};
+	function confirmIcon(name, size) {
+		var ns = 'http://www.w3.org/2000/svg';
+		var svg = document.createElementNS(ns, 'svg');
+		svg.setAttribute('class', 'ui_svg_icon ui_svg_icon_' + name);
+		svg.setAttribute('width', size);
+		svg.setAttribute('height', size);
+		svg.setAttribute('viewBox', '0 0 16 16');
+		svg.setAttribute('fill', 'none');
+		svg.setAttribute('stroke', 'currentColor');
+		svg.setAttribute('stroke-width', '1.5');
+		svg.setAttribute('stroke-linecap', 'round');
+		svg.setAttribute('stroke-linejoin', 'round');
+		svg.setAttribute('aria-hidden', 'true');
+		confirmIcons[name].split('|').forEach(function (d) {
+			var path = document.createElementNS(ns, 'path');
+			path.setAttribute('d', d);
+			svg.appendChild(path);
+		});
+		return svg;
+	}
+	function actionButton(className, attrs) {
+		var button = document.createElement('button');
+		button.type = 'button';
+		button.className = className;
+		Object.keys(attrs).forEach(function (name) { button.setAttribute(name, attrs[name]); });
+		var content = document.createElement('span');
+		content.className = 'ui_action_content';
+		content.appendChild(document.createElement('span'));
+		button.appendChild(content);
+		return button;
+	}
+	// A page may supply its own dialog with the id ui_confirm, holding a
+	// data-ui-confirm-text element and a data-ui-confirm-ok button
+	function confirmDialog() {
+		var dialog = document.getElementById('ui_confirm');
+		if (dialog) return dialog;
+		dialog = document.createElement('dialog');
+		dialog.id = 'ui_confirm';
+		dialog.className = 'ui_dialog ui_dialog_small';
+		dialog.setAttribute('aria-labelledby', 'ui_confirm_title');
+		var head = document.createElement('header');
+		head.className = 'ui_dialog_head';
+		var titles = document.createElement('div');
+		titles.className = 'ui_dialog_titles';
+		var title = document.createElement('h2');
+		title.className = 'ui_dialog_title';
+		title.id = 'ui_confirm_title';
+		titles.appendChild(title);
+		head.appendChild(titles);
+		var x = document.createElement('button');
+		x.type = 'button';
+		x.className = 'ui_dialog_x';
+		x.setAttribute('data-ui-dialog-close', '1');
+		x.setAttribute('aria-label', confirmTexts.close);
+		x.title = confirmTexts.close;
+		x.appendChild(confirmIcon('x', 16));
+		head.appendChild(x);
+		dialog.appendChild(head);
+		var body = document.createElement('div');
+		body.className = 'ui_dialog_body';
+		var text = document.createElement('p');
+		text.className = 'ui_dialog_text';
+		text.setAttribute('data-ui-confirm-text', '1');
+		body.appendChild(text);
+		dialog.appendChild(body);
+		var foot = document.createElement('footer');
+		foot.className = 'ui_dialog_foot';
+		foot.appendChild(actionButton('ui_action ui_action_warning ui_action_normal ui_action_square',
+			{ 'data-ui-confirm-ok': '1' }));
+		var cancel = actionButton('ui_action ui_action_neutral ui_action_normal ui_action_square',
+			{ 'data-ui-dialog-close': '1', 'autofocus': '' });
+		cancel.querySelector('.ui_action_content > span').textContent = confirmTexts.cancel;
+		foot.appendChild(cancel);
+		dialog.appendChild(foot);
+		document.body.appendChild(dialog);
+		return dialog;
+	}
+	// Ask a question and resolve with true on OK, false otherwise. The
+	// options are title, ok (the label of the confirming button) and state.
+	// Without dialog support the browser's own prompt is used.
+	function uiConfirm(message, opts) {
+		opts = opts || {};
+		return new Promise(function (resolve) {
+			if (typeof HTMLDialogElement === 'undefined') {
+				resolve(window.confirm(message));
+				return;
+			}
+			var state = /^(?:warning|danger|info|success|neutral)$/.test(opts.state || '') ?
+				opts.state : 'warning';
+			var dialog = confirmDialog();
+			dialog.classList.remove('ui_dialog_warning', 'ui_dialog_danger',
+				'ui_dialog_info', 'ui_dialog_success', 'ui_dialog_neutral');
+			dialog.classList.add('ui_dialog_' + state);
+			var title = dialog.querySelector('.ui_dialog_title');
+			if (title) {
+				title.textContent = '';
+				if (confirmIcons[state]) title.appendChild(confirmIcon(state, 18));
+				var span = document.createElement('span');
+				span.textContent = opts.title || confirmTexts.title;
+				title.appendChild(span);
+			}
+			var text = dialog.querySelector('[data-ui-confirm-text]');
+			if (text) text.textContent = message;
+			var ok = dialog.querySelector('[data-ui-confirm-ok]');
+			if (ok) {
+				ok.className = 'ui_action ui_action_' + state + ' ui_action_normal ui_action_square';
+				var label = ok.querySelector('.ui_action_content > span');
+				if (label) label.textContent = opts.ok || confirmTexts.ok;
+			}
+			var done = false;
+			function finish(result) {
+				if (done) return;
+				done = true;
+				dialog.removeEventListener('close', onClose);
+				if (ok) ok.removeEventListener('click', onOk);
+				resolve(result);
+			}
+			function onOk() {
+				finish(true);
+				dialog.close();
+			}
+			function onClose() { finish(false); }
+			if (ok) ok.addEventListener('click', onOk);
+			dialog.addEventListener('close', onClose);
+			if (!openDialog(dialog)) finish(false);
+		});
+	}
+	window.webminUiWidgets.openDialog = openDialog;
+	window.webminUiWidgets.closeDialog = closeDialog;
+	window.webminUiWidgets.confirm = uiConfirm;
+	on('click', function (e) {
+		if (!e.target.closest) return;
+		var closer = e.target.closest('[data-ui-dialog-close]');
+		if (closer) {
+			var owner = closer.closest('dialog');
+			if (owner) {
+				e.preventDefault();
+				owner.close();
+			}
+			return;
+		}
+		var opener = e.target.closest('[data-ui-dialog]');
+		if (opener) {
+			// A link opener must not navigate
+			if (opener.matches('a')) e.preventDefault();
+			if (opener.matches(':disabled, [aria-disabled="true"]')) return;
+			var values = null;
+			try {
+				values = JSON.parse(opener.getAttribute('data-ui-dialog-values') || 'null');
+			} catch (err) {
+				values = null;
+			}
+			openDialog(opener.getAttribute('data-ui-dialog'), values, opener);
+			return;
+		}
+		// A click on the backdrop, which lands on the dialog element itself
+		// outside its box, closes the dialog
+		var dialog = e.target;
+		if (dialog.matches && dialog.matches('dialog.ui_dialog[open]')) {
+			var rect = dialog.getBoundingClientRect();
+			if (e.clientX < rect.left || e.clientX > rect.right ||
+			    e.clientY < rect.top || e.clientY > rect.bottom) {
+				dialog.close();
+			}
+		}
+	});
 
 })();

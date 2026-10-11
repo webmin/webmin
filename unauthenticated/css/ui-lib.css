@@ -22,7 +22,9 @@
 /* Nested widgets inherit their container's tokens. */
 .ui_page, .ui_multi:not(:where(.ui_page *)),
 .ui_toggle:not(:where(.ui_page *, .ui_multi *)),
-.ui_action:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)) {
+.ui_action:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
+.ui_dropdown:not(:where(.ui_page *)), .ui_dialog:not(:where(.ui_page *)),
+.ui_breadcrumb:not(:where(.ui_page *)), .ui_pager:not(:where(.ui_page *)) {
 	/* Palette tokens read the theme's own custom properties first - the
 	 * names Authentic defines for its palettes and night mode - and
 	 * fall back to the colors of the gray theme, which defines only the
@@ -111,7 +113,9 @@
 [data-ui-scheme="dark"] .ui_toggle:not(:where(.ui_page *, .ui_multi *)),
 .ui_toggle[data-ui-scheme="dark"]:not(:where(.ui_page *, .ui_multi *)),
 [data-ui-scheme="dark"] .ui_action:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
-.ui_action[data-ui-scheme="dark"]:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)) {
+.ui_action[data-ui-scheme="dark"]:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
+[data-ui-scheme="dark"] :is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager):not(:where(.ui_page *)),
+:is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager)[data-ui-scheme="dark"]:not(:where(.ui_page *)) {
 	--ui-canvas: #15171b;
 	--ui-surface: #1e2126;
 	--ui-surface-2: #23262c;
@@ -155,7 +159,9 @@
 	[data-ui-scheme="auto"] .ui_toggle:not(:where(.ui_page *, .ui_multi *)),
 	.ui_toggle[data-ui-scheme="auto"]:not(:where(.ui_page *, .ui_multi *)),
 	[data-ui-scheme="auto"] .ui_action:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
-	.ui_action[data-ui-scheme="auto"]:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)) {
+	.ui_action[data-ui-scheme="auto"]:not(:where(.ui_page *, .ui_multi *, .ui_toggle *)),
+	[data-ui-scheme="auto"] :is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager):not(:where(.ui_page *)),
+	:is(.ui_dropdown, .ui_dialog, .ui_breadcrumb, .ui_pager)[data-ui-scheme="auto"]:not(:where(.ui_page *)) {
 		--ui-canvas: #15171b;
 		--ui-surface: #1e2126;
 		--ui-surface-2: #23262c;
@@ -216,9 +222,10 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
  * forms between them line up whatever the theme wraps them in.
  * Children of grids, stacks, clusters and stat rows use their own gaps. */
 
-/* Space content blocks, ignoring assets and hidden fields. */
+/* Space content blocks, ignoring assets, hidden fields and dialogs,
+ * which are not in the flow. */
 .ui_page > :where(:nth-child(n + 2 of :not(
-	script, style, link, [hidden], .ui_hidden, input[type="hidden"]
+	script, style, link, dialog, [hidden], .ui_hidden, input[type="hidden"]
 ))) {
 	margin-top: var(--ui-gap);
 }
@@ -236,7 +243,9 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 .ui_dl, .ui_dl *, .ui_badge, .ui_chip, .ui_list, .ui_list *,
 .ui_feed, .ui_feed *, .ui_empty, .ui_empty *, .ui_progress,
 .ui_progress *, .ui_toggle, .ui_toggle *,
-.ui_search, .ui_search * {
+.ui_search, .ui_search *, .ui_dropdown, .ui_dropdown *,
+.ui_dialog, .ui_dialog_head, .ui_dialog_body, .ui_dialog_foot, .ui_dialog_x,
+.ui_breadcrumb, .ui_breadcrumb *, .ui_pager, .ui_pager * {
 	box-sizing: border-box;
 }
 .ui_page h1, .ui_page h2, .ui_page p, .ui_page dl, .ui_page dd { margin: 0; }
@@ -543,7 +552,7 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 /* ---- Action buttons and links ----
  * Native controls use their own classes. The inner surface keeps badge
  * styling and keyboard focus independent of a theme's button resets. */
-:is(button, a).ui_action {
+:is(button, a, summary).ui_action {
 	--ui-action-text: var(--ui-neutral-text);
 	--ui-action-soft: var(--ui-neutral-soft);
 	--ui-action-line: var(--ui-neutral-line);
@@ -587,22 +596,22 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	pointer-events: none;
 }
 /* Match the badge palette for each action state. */
-:is(button, a).ui_action_success {
+:is(button, a, summary).ui_action_success {
 	--ui-action-text: var(--ui-success-text);
 	--ui-action-soft: var(--ui-success-soft);
 	--ui-action-line: var(--ui-success-line);
 }
-:is(button, a).ui_action_warning {
+:is(button, a, summary).ui_action_warning {
 	--ui-action-text: var(--ui-warning-text);
 	--ui-action-soft: var(--ui-warning-soft);
 	--ui-action-line: var(--ui-warning-line);
 }
-:is(button, a).ui_action_danger {
+:is(button, a, summary).ui_action_danger {
 	--ui-action-text: var(--ui-danger-text);
 	--ui-action-soft: var(--ui-danger-soft);
 	--ui-action-line: var(--ui-danger-line);
 }
-:is(button, a).ui_action_info {
+:is(button, a, summary).ui_action_info {
 	--ui-action-text: var(--ui-info-text);
 	--ui-action-soft: var(--ui-info-soft);
 	--ui-action-line: var(--ui-info-line);
@@ -617,8 +626,8 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	padding: 4px 12px;
 	font-size: 1em;
 }
-:is(button, a).ui_action_rounded { border-radius: 4px; }
-:is(button, a).ui_action_pill { border-radius: 999px; }
+:is(button, a, summary).ui_action_rounded { border-radius: 4px; }
+:is(button, a, summary).ui_action_pill { border-radius: 999px; }
 .ui_action .ui_action_content > span { align-self: baseline; }
 .ui_action .ui_svg_icon { width: 1em; height: 1em; flex-shrink: 0; }
 .ui_action_small .ui_svg_icon_trash {
@@ -636,11 +645,11 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	outline: 2px solid currentColor;
 	outline-offset: 2px;
 }
-:is(button, a).ui_action:is(:disabled, [aria-disabled="true"]) {
+:is(button, a, summary).ui_action:is(:disabled, [aria-disabled="true"]) {
 	opacity: 0.55;
 	cursor: not-allowed;
 }
-:is(button, a).ui_action[hidden] { display: none; }
+:is(button, a, summary).ui_action[hidden] { display: none; }
 
 .ui_chip {
 	display: inline-flex;
@@ -1416,6 +1425,327 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	vertical-align: -0.18em;
 	transform: scale(0.87);
 	margin-right: 0.025em;
+}
+
+/* ---- Drop-down menus ----
+ * A details element : the summary is the button, drawn as an action
+ * button, and the menu panel floats under it. */
+
+.ui_dropdown {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+.ui_dropdown > summary.ui_dropdown_toggle {
+	list-style: none;
+	cursor: pointer;
+	user-select: none;
+}
+.ui_dropdown > summary::-webkit-details-marker,
+.ui_dropdown > summary::marker { display: none; content: ""; }
+.ui_dropdown .ui_dropdown_caret {
+	margin-left: -2px;
+	transition: transform 0.12s;
+}
+.ui_dropdown[open] .ui_dropdown_caret { transform: rotate(180deg); }
+.ui_dropdown_menu {
+	position: absolute;
+	top: calc(100% + 4px);
+	left: 0;
+	z-index: 30;
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+	min-width: 180px;
+	max-width: min(340px, calc(100vw - 16px));
+	padding: 4px;
+	border: 1px solid var(--ui-border);
+	background: var(--ui-surface);
+	box-shadow: 0 6px 20px rgba(16, 24, 40, 0.14);
+	color: var(--ui-fg);
+	font-weight: 400;
+	text-align: left;
+	white-space: nowrap;
+}
+/* A menu at the right end of a toolbar opens leftwards, and a menu
+ * that would leave the window is flipped by ui-lib.js */
+.ui_dropdown_end:not(.ui_dropdown_flip) > .ui_dropdown_menu,
+.ui_dropdown_flip:not(.ui_dropdown_end) > .ui_dropdown_menu {
+	left: auto;
+	right: 0;
+}
+:is(a, button).ui_dropdown_item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	min-height: 0;
+	margin: 0;
+	padding: 5px 10px;
+	border: 0;
+	border-radius: 0;
+	background: none;
+	box-shadow: none;
+	color: inherit;
+	font: inherit;
+	font-weight: 400;
+	line-height: 1.4;
+	text-align: left;
+	text-decoration: none;
+	cursor: pointer;
+	appearance: none;
+}
+:is(a, button).ui_dropdown_item:hover,
+:is(a, button).ui_dropdown_item:focus-visible {
+	background: var(--ui-accent-soft);
+	color: var(--ui-fg);
+	text-decoration: none;
+	outline: none;
+}
+:is(a, button).ui_dropdown_item:focus-visible {
+	box-shadow: inset 0 0 0 2px var(--ui-ring);
+}
+.ui_dropdown_item .ui_dropdown_icon {
+	flex-shrink: 0;
+	color: var(--ui-fg-muted);
+}
+.ui_dropdown_text {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+.ui_dropdown_desc {
+	color: var(--ui-fg-muted);
+	font-size: 0.9em;
+	white-space: normal;
+}
+.ui_dropdown_danger, .ui_dropdown_danger .ui_dropdown_icon {
+	color: var(--ui-danger-text);
+}
+.ui_dropdown_warning, .ui_dropdown_warning .ui_dropdown_icon {
+	color: var(--ui-warning-text);
+}
+.ui_dropdown_success, .ui_dropdown_success .ui_dropdown_icon {
+	color: var(--ui-success-text);
+}
+.ui_dropdown_info, .ui_dropdown_info .ui_dropdown_icon {
+	color: var(--ui-info-text);
+}
+:is(a, button).ui_dropdown_item:is(:disabled, [aria-disabled="true"]) {
+	opacity: 0.5;
+	cursor: not-allowed;
+	background: none;
+}
+.ui_dropdown_sep {
+	margin: 4px 0;
+	border: 0;
+	border-top: 1px solid var(--ui-border-soft);
+}
+.ui_dropdown_heading {
+	padding: 6px 10px 2px;
+	color: var(--ui-fg-muted);
+	font-size: 0.8em;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+/* ---- Dialogs ----
+ * A native dialog element, shown modal by ui-lib.js. The width comes
+ * from the size class and never exceeds the window. */
+
+dialog.ui_dialog {
+	--ui-dialog-width: 480px;
+	position: fixed;
+	inset: 0;
+	display: none;
+	flex-direction: column;
+	width: min(var(--ui-dialog-width), calc(100vw - 32px));
+	max-width: none;
+	max-height: calc(100vh - 32px);
+	margin: auto;
+	padding: 0;
+	border: 1px solid var(--ui-border);
+	border-radius: 0;
+	background: var(--ui-surface);
+	box-shadow: 0 18px 50px rgba(16, 24, 40, 0.28);
+	color: var(--ui-fg);
+	font-family: var(--ui-font);
+	text-align: left;
+}
+dialog.ui_dialog[open] { display: flex; }
+dialog.ui_dialog::backdrop { background: rgba(15, 18, 22, 0.45); }
+.ui_dialog_small { --ui-dialog-width: 380px; }
+.ui_dialog_large { --ui-dialog-width: 760px; }
+.ui_dialog > .ui_dialog_form {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	margin: 0;
+}
+.ui_dialog_head {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	padding: 12px 16px;
+	border-bottom: 1px solid var(--ui-border-soft);
+}
+.ui_dialog_titles { flex: 1; min-width: 0; }
+.ui_dialog_title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+	font-size: 1.05em;
+	font-weight: 600;
+	line-height: 1.4;
+}
+.ui_dialog_desc {
+	margin: 3px 0 0;
+	color: var(--ui-fg-muted);
+	font-size: 0.93em;
+}
+/* The state colors the heading icon and marks the top edge */
+.ui_dialog_danger { border-top: 3px solid var(--ui-danger); }
+.ui_dialog_warning { border-top: 3px solid var(--ui-warning); }
+.ui_dialog_success { border-top: 3px solid var(--ui-success); }
+.ui_dialog_info { border-top: 3px solid var(--ui-info); }
+.ui_dialog_danger .ui_dialog_title > .ui_svg_icon { color: var(--ui-danger); }
+.ui_dialog_warning .ui_dialog_title > .ui_svg_icon { color: var(--ui-warning); }
+.ui_dialog_success .ui_dialog_title > .ui_svg_icon { color: var(--ui-success); }
+.ui_dialog_info .ui_dialog_title > .ui_svg_icon { color: var(--ui-info); }
+button.ui_dialog_x {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 28px;
+	height: 28px;
+	min-height: 0;
+	margin: -4px -6px 0 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: none;
+	box-shadow: none;
+	color: var(--ui-fg-muted);
+	font: inherit;
+	line-height: 1;
+	cursor: pointer;
+	appearance: none;
+}
+button.ui_dialog_x:hover, button.ui_dialog_x:focus-visible {
+	background: var(--ui-surface-2);
+	color: var(--ui-fg);
+	outline: none;
+}
+button.ui_dialog_x:focus-visible { box-shadow: inset 0 0 0 2px var(--ui-ring); }
+.ui_dialog_body {
+	flex: 1 1 auto;
+	min-height: 0;
+	padding: 14px 16px;
+	overflow: auto;
+}
+/* The plain text paragraph, keeping its line breaks, and a gap before
+ * the HTML that follows it */
+.ui_dialog_body > .ui_dialog_text {
+	margin: 0;
+	white-space: pre-line;
+	overflow-wrap: anywhere;
+}
+.ui_dialog_body > .ui_dialog_text + * { margin-top: 10px; }
+.ui_dialog_foot {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 8px;
+	padding: 10px 16px 12px;
+	border-top: 1px solid var(--ui-border-soft);
+	background: var(--ui-surface-2);
+}
+
+/* ---- Breadcrumbs ---- */
+
+.ui_breadcrumb {
+	display: inline-flex;
+	min-width: 0;
+	max-width: 100%;
+}
+.ui_breadcrumb_list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 2px 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.ui_breadcrumb_item {
+	display: inline-flex;
+	align-items: center;
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+.ui_breadcrumb_item + .ui_breadcrumb_item::before {
+	content: "/";
+	margin: 0 7px;
+	color: var(--ui-fg-muted);
+}
+.ui_breadcrumb_item > :is(a, span) {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	padding: 1px 2px;
+	color: var(--ui-accent);
+	text-decoration: none;
+}
+.ui_breadcrumb_item > a:hover {
+	color: var(--ui-accent);
+	text-decoration: underline;
+}
+.ui_breadcrumb_item > span { color: var(--ui-fg); }
+.ui_breadcrumb_current > :is(a, span) { font-weight: 600; }
+
+/* ---- Pager ---- */
+
+.ui_pager {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 3px;
+}
+.ui_pager_link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 26px;
+	height: 26px;
+	padding: 0 7px;
+	border: 1px solid var(--ui-border);
+	background: var(--ui-surface);
+	color: var(--ui-fg);
+	font-size: 0.93em;
+	line-height: 1;
+	text-decoration: none;
+}
+a.ui_pager_link:hover, a.ui_pager_link:focus-visible {
+	border-color: var(--ui-accent);
+	color: var(--ui-accent);
+	text-decoration: none;
+	outline: none;
+}
+a.ui_pager_link:focus-visible { box-shadow: 0 0 0 3px var(--ui-ring); }
+.ui_pager_current {
+	border-color: var(--ui-accent);
+	background: var(--ui-accent);
+	color: #fff;
+	font-weight: 600;
+}
+.ui_pager_disabled { opacity: 0.5; }
+.ui_pager_gap {
+	padding: 0 4px;
+	color: var(--ui-fg-muted);
 }
 
 /* ---- Reduced motion ---- */

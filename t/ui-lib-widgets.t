@@ -1020,4 +1020,234 @@ assert_no_handler_injection(
 		'folding retains child selections even without a selected parent');
 }
 
+# ---- menus, dialogs and navigation -----------------------------------------
+
+# The script tag carries the texts of the confirmation dialog
+{
+	local $main::ui_page_assets_done = 0;
+	my $assets = main::ui_page_assets();
+	like($assets, qr/<script (?=[^>]*\bsrc="[^"]*ui-lib\.js)(?=[^>]*\bdata-ui-lib="1")(?=[^>]*\bdata-ui-text-confirm="Please confirm")(?=[^>]*\bdata-ui-text-ok="OK")(?=[^>]*\bdata-ui-text-cancel="Cancel")(?=[^>]*\bdata-ui-text-close="Close")/,
+		'the confirmation texts ride on the script tag');
+	is(main::ui_page_assets(), '', 'assets are emitted once');
+}
+
+# The icons the file manager and the menus draw with exist
+foreach my $icon (qw(folder folder-plus file file-plus copy scissors clipboard
+		     archive unarchive key tag lock link bookmark check-square
+		     square-half cursor-text ellipsis menu home)) {
+	like(main::ui_svg_icon($icon), qr/\bui_svg_icon_\Q$icon\E\b/, "icon $icon exists");
+}
+like(main::ui_svg_icon('ellipsis'), qr/fill="currentColor"/, 'ellipsis is drawn filled');
+
+# Drop-down menus : a details element whose summary is an action button,
+# with link and button entries, separators, headings and disabled entries
+{
+	my $html = main::ui_dropdown('File', [
+		{ 'label' => 'New', 'icon' => 'file-plus', 'dialog' => 'd1' },
+		{ 'label' => 'Open', 'href' => 'open.cgi?x=1&y=2', 'desc' => 'A file' },
+		'-',
+		{ 'heading' => 'Recent' },
+		{ 'label' => 'Gone', 'href' => 'gone.cgi', 'disabled' => 1 },
+		{ 'label' => 'Off', 'disabled' => 1 },
+		{ 'label' => 'Remove', 'state' => 'danger',
+		  'attrs' => { 'data-ui-confirm' => 'Sure?' } },
+		{ 'label' => 'Send', 'type' => 'submit', 'name' => 'act', 'value' => 'send',
+		  'form' => 'f1' },
+		{ 'html' => '<i class="raw">raw</i>' },
+		], { 'icon' => 'file', 'align' => 'end', 'id' => 'menu_file',
+		     'width' => '14em' });
+	like($html, qr/<details (?=[^>]*\bclass="[^"]*\bui_dropdown\b[^"]*\bui_dropdown_end\b)(?=[^>]*\bid="menu_file")(?=[^>]*\bdata-ui-dropdown="1")/,
+		'menu is a details element with its alignment, id and marker');
+	like($html, qr/<summary (?=[^>]*\bclass="[^"]*\bui_dropdown_toggle\b[^"]*\bui_action\b[^"]*\bui_action_neutral\b[^"]*\bui_action_normal\b[^"]*\bui_action_square\b)(?=[^>]*\brole="button")(?=[^>]*\baria-haspopup="menu")/,
+		'summary is the button, drawn as an action button');
+	like($html, qr/ui_svg_icon_file\b.*?<span class="ui--span">File<\/span>.*?ui_dropdown_caret/s,
+		'button shows its icon, label and arrow');
+	like($html, qr/<div (?=[^>]*\bclass="[^"]*\bui_dropdown_menu\b")(?=[^>]*\brole="menu")(?=[^>]*\bstyle="min-width:14em")/,
+		'entries sit in a menu panel of the asked width');
+	like($html, qr/<button (?=[^>]*\btype="button")(?=[^>]*\bdata-ui-dialog="d1")(?=[^>]*\brole="menuitem")[^>]*>.*?ui_svg_icon_file-plus.*?<span class="[^"]*ui_dropdown_label">New</s,
+		'an entry without a URL is a non-submitting button opening its dialog');
+	like($html, qr/<a (?=[^>]*\bhref="open.cgi\?x=1&amp;y=2")(?=[^>]*\brole="menuitem")[^>]*>.*?<span class="[^"]*ui_dropdown_desc">A file</s,
+		'an entry with a URL is a link, with its description line');
+	like($html, qr/<hr [^>]*\bui_dropdown_sep\b/, 'a dash is a separator');
+	like($html, qr/<div [^>]*\bui_dropdown_heading\b[^>]*>Recent</, 'a heading entry');
+	like($html, qr/<a (?=[^>]*\baria-disabled="true")(?=[^>]*\btabindex="-1")(?![^>]*\bhref=)[^>]*>.*?Gone/s,
+		'a disabled link loses its destination');
+	like($html, qr/<button (?=[^>]*\bdisabled\b)[^>]*>.*?Off/s, 'a disabled button entry');
+	like($html, qr/<button (?=[^>]*\bui_dropdown_danger\b)(?=[^>]*\bdata-ui-confirm="Sure\?")/,
+		'state and extra attributes are kept');
+	like($html, qr/<button (?=[^>]*\btype="submit")(?=[^>]*\bname="act")(?=[^>]*\bvalue="send")(?=[^>]*\bform="f1")/,
+		'a submit entry keeps its form attributes');
+	like($html, qr/<i class="raw">raw<\/i>/, 'raw entries are inserted as given');
+	my $valued = main::ui_dropdown('Row', [
+		{ 'label' => 'Rename', 'dialog' => 'd', 'values' => { 'name' => 'a "b"' } } ]);
+	my ($values) = $valued =~ /data-ui-dialog-values="([^"]*)"/;
+	is_deeply(main::convert_from_json(decode_attr($values)), { 'name' => 'a "b"' },
+		'an entry opening a dialog can carry values for it');
+	my $icon_only = main::ui_dropdown('', [ { 'label' => 'A' } ],
+		{ 'title' => 'More', 'caret' => 0, 'icon' => 'ellipsis' });
+	like($icon_only, qr/<summary (?=[^>]*\baria-label="More")(?=[^>]*\btitle="More")/,
+		'an icon-only menu is named by its tooltip');
+	unlike($icon_only, qr/ui_dropdown_caret/, 'the arrow can be left out');
+	assert_no_handler_injection(main::ui_dropdown($xss, [
+		{ 'label' => $xss, 'href' => $xss, 'desc' => $xss, 'title' => $xss },
+		{ 'heading' => $xss }, { 'label' => $xss, 'dialog' => $xss } ],
+		{ 'title' => $xss, 'id' => $xss, 'width' => $xss }), 'ui_dropdown text');
+}
+
+# Dialogs : a dialog element with a heading, a closing cross, a body,
+# a footer and an optional form around them
+{
+	my $html = main::ui_dialog({
+		'id' => 'd1', 'title' => 'Rename', 'desc' => 'Pick a name',
+		'state' => 'danger', 'size' => 'small',
+		'form' => { 'action' => 'rename.cgi', 'attrs' => { 'data-x' => '1' } },
+		'body' => '<input name="name">',
+		'footer' => '<button type="submit">Go</button>',
+		'close' => 'Cancel' });
+	like($html, qr/<dialog (?=[^>]*\bid="d1")(?=[^>]*\baria-labelledby="d1_title")(?=[^>]*\bclass="[^"]*\bui_dialog\b[^"]*\bui_dialog_small\b[^"]*\bui_dialog_danger\b)/,
+		'dialog element with id, label, size and state');
+	like($html, qr/<form (?=[^>]*\baction="rename.cgi")(?=[^>]*\bmethod="post")(?=[^>]*\bdata-x="1")(?=[^>]*\bui_dialog_form\b)/,
+		'the form wraps the dialog and posts by default');
+	like($html, qr/<h2 (?=[^>]*\bid="d1_title")[^>]*>.*?ui_svg_icon_x-circle.*?<span class="ui--span">Rename<\/span>/s,
+		'heading carries the state icon and the title');
+	like($html, qr/<p [^>]*\bui_dialog_desc\b[^>]*>Pick a name</, 'description under the heading');
+	like($html, qr/<button (?=[^>]*\btype="button")(?=[^>]*\bui_dialog_x\b)(?=[^>]*\bdata-ui-dialog-close="1")(?=[^>]*\baria-label="Close")/,
+		'closing cross');
+	like($html, qr/<div [^>]*\bui_dialog_body\b[^>]*>\s*<input name="name">/,
+		'body is inserted as given');
+	like($html, qr/<footer [^>]*\bui_dialog_foot\b[^>]*>.*?<button type="submit">Go<\/button>.*?<button (?=[^>]*\bdata-ui-dialog-close="1")[^>]*>.*?Cancel/s,
+		'footer holds the buttons, then the closing one');
+	my $plain = main::ui_dialog({ 'title' => 'Plain', 'body' => 'x' });
+	like($plain, qr/<dialog (?=[^>]*\bid="ui_dialog_\d+")(?=[^>]*\bui_dialog_normal\b)/,
+		'id and size by default');
+	unlike($plain, qr/<form|<footer|ui_dialog_danger/,
+		'no form, footer or state unless asked');
+	like($plain, qr/ui_dialog_title[^>]*><span class="ui--span">Plain</,
+		'no heading icon unless asked');
+	like(main::ui_dialog({ 'id' => 'u', 'form' => { 'method' => 'form-data', 'name' => 'up' } }),
+		qr/<form (?=[^>]*\bmethod="post")(?=[^>]*\benctype="multipart\/form-data")(?=[^>]*\bname="up")/,
+		'the form-data method makes an upload form');
+	like(main::ui_dialog({ 'id' => 'c', 'close' => 1 }), qr/<footer.*?>Close</s,
+		'close set to 1 uses the default label');
+	like(main::ui_dialog({ 'id' => 'i', 'icon' => 'trash', 'state' => 'warning' }),
+		qr/ui_svg_icon_trash/, 'an explicit icon replaces the state icon');
+	unlike($plain, qr/aria-describedby/, 'no description, nothing to describe by');
+
+	# The data forms : a form given as a URL, text before the body,
+	# buttons given as hashes, and the focus on the closing button
+	my $rich = main::ui_dialog({
+		'id' => 'r', 'title' => 'Remove', 'desc' => 'Careful',
+		'text' => 'Sure <b>?</b>', 'body' => '<i>more</i>',
+		'form' => 'delete.cgi', 'width' => '30em',
+		'buttons' => [
+			{ 'label' => 'Remove', 'state' => 'danger', 'icon' => 'trash',
+			  'name' => 'confirm', 'value' => 1 },
+			{ 'label' => 'Later', 'close' => 1 },
+			{ 'label' => 'Help', 'href' => 'help.cgi' },
+			'<span class="raw">x</span>',
+			],
+		'close' => 'Cancel', 'focus' => 'close' });
+	like($rich, qr/<form (?=[^>]*\baction="delete.cgi")(?=[^>]*\bmethod="post")/,
+		'a form given as a URL posts to it');
+	like($rich, qr/<dialog (?=[^>]*\baria-describedby="r_desc")(?=[^>]*\bstyle="--ui-dialog-width:30em")/,
+		'the description is announced with the dialog and the width applied');
+	like($rich, qr/<p (?=[^>]*\bid="r_desc")[^>]*>Careful</, 'the description carries its id');
+	like($rich, qr/<p [^>]*\bui_dialog_text\b[^>]*>Sure &lt;b&gt;\?&lt;\/b&gt;<\/p>\s*<i>more<\/i>/,
+		'text is escaped and comes before the body');
+	like($rich, qr/<button (?=[^>]*\btype="submit")(?=[^>]*\bname="confirm")(?=[^>]*\bvalue="1")(?=[^>]*\bui_action_danger\b)[^>]*>.*?ui_svg_icon_trash.*?Remove/s,
+		'a button in a form submits it with its name and value');
+	like($rich, qr/<button (?=[^>]*\btype="button")(?=[^>]*\bdata-ui-dialog-close="1")[^>]*>.*?Later/s,
+		'a closing button does not submit');
+	like($rich, qr/<a (?=[^>]*\bhref="help.cgi")(?=[^>]*\bui_action\b)/, 'a button with a URL is a link');
+	like($rich, qr/<span class="raw">x<\/span>/, 'raw strings are kept');
+	like($rich, qr/<button (?=[^>]*\bdata-ui-dialog-close="1")(?=[^>]*\bautofocus\b)[^>]*>.*?Cancel/s,
+		'the closing button takes the focus when asked');
+	like($rich, qr/Remove.*Later.*help.cgi.*raw.*Cancel/s, 'buttons, footer and the closing button keep their order');
+	unlike(main::ui_dialog({ 'id' => 'n', 'close' => 'OK' }), qr/autofocus/,
+		'no autofocus unless asked');
+	like(main::ui_dialog({ 'id' => 'b', 'buttons' => [ { 'label' => 'Go', 'autofocus' => 1 } ] }),
+		qr/<button (?=[^>]*\btype="button")(?=[^>]*\bautofocus\b)/,
+		'a button outside a form stays a plain button and can take the focus');
+	assert_no_handler_injection(main::ui_dialog({ 'id' => 'x', 'text' => $xss,
+		'width' => $xss, 'form' => $xss,
+		'buttons' => [ { 'label' => $xss, 'href' => $xss, 'name' => $xss } ] }),
+		'ui_dialog text and buttons');
+	assert_no_handler_injection(main::ui_dialog({
+		'id' => $xss, 'title' => $xss, 'desc' => $xss, 'close' => $xss,
+		'form' => { 'action' => $xss, 'name' => $xss } }), 'ui_dialog text');
+}
+
+# Dialog buttons carry the dialog's id and the values to fill in
+{
+	my $html = main::ui_dialog_button('Rename', 'd1', 'info', {
+		'values' => { 'name' => 'a "b"', 'file' => 'x' },
+		'icon' => 'cursor-text', 'href' => 'ignored.cgi' });
+	like($html, qr/<button (?=[^>]*\btype="button")(?=[^>]*\bdata-ui-dialog="d1")(?=[^>]*\bui_action_info\b)/,
+		'a button opening its dialog, never a link');
+	unlike($html, qr/href=/, 'the href option is dropped');
+	my ($values) = $html =~ /data-ui-dialog-values="([^"]*)"/;
+	is_deeply(main::convert_from_json(decode_attr($values)),
+		{ 'name' => 'a "b"', 'file' => 'x' }, 'values survive attribute encoding');
+	unlike(main::ui_dialog_button('Open', 'd2'), qr/data-ui-dialog-values/,
+		'no values attribute without values');
+	assert_no_handler_injection(main::ui_dialog_button($xss, $xss, 'info',
+		{ 'values' => { $xss => $xss } }), 'ui_dialog_button text');
+}
+
+# Breadcrumbs : a list of links, the last one current
+{
+	my $html = main::ui_breadcrumb([
+		{ 'icon' => 'home', 'href' => 'index.cgi?path=', 'title' => 'Root' },
+		[ 'etc', 'index.cgi?path=%2Fetc' ],
+		{ 'label' => 'webmin', 'icon' => 'folder' },
+		], { 'id' => 'crumbs' });
+	like($html, qr/<nav (?=[^>]*\bclass="[^"]*\bui_breadcrumb\b)(?=[^>]*\bid="crumbs")(?=[^>]*\baria-label="Breadcrumb")/,
+		'nav with its label');
+	like($html, qr/<li [^>]*\bui_breadcrumb_item\b[^>]*><a (?=[^>]*\bhref="index.cgi\?path=")(?=[^>]*\btitle="Root")(?=[^>]*\baria-label="Root")[^>]*>.*?ui_svg_icon_home/s,
+		'an icon-only item is named by its title');
+	like($html, qr/<a [^>]*\bhref="index.cgi\?path=%2Fetc"[^>]*><span class="ui--span">etc<\/span>/,
+		'array items are label and link');
+	like($html, qr/<li (?=[^>]*\bui_breadcrumb_current\b)(?=[^>]*\baria-current="page")[^>]*><span [^>]*>.*?ui_svg_icon_folder.*?<span class="ui--span">webmin<\/span>/s,
+		'the last item is current, and plain text without a link');
+	unlike($html, qr/<li [^>]*\bui_breadcrumb_current\b[^>]*><a /,
+		'the current item is not a link when it has no URL');
+	is(main::ui_breadcrumb([ ]), '', 'no items, no trail');
+	assert_no_handler_injection(main::ui_breadcrumb([ [ $xss, $xss ],
+		{ 'label' => $xss, 'title' => $xss } ], { 'label' => $xss }),
+		'ui_breadcrumb text');
+}
+
+# Page links : arrows, the first and last pages and a window around the
+# current one
+{
+	is(main::ui_pager({ 'page' => 1, 'pages' => 1, 'href' => 'x?page=' }), '',
+		'one page needs no pager');
+	my $html = main::ui_pager({ 'page' => 6, 'pages' => 12, 'href' => 'list.cgi?a=1&page=' });
+	like($html, qr/<nav (?=[^>]*\bclass="[^"]*\bui_pager\b)(?=[^>]*\baria-label="Pages")/,
+		'nav with its label');
+	like($html, qr/<a (?=[^>]*\bui_pager_prev\b)(?=[^>]*\bhref="list.cgi\?a=1&amp;page=5")(?=[^>]*\baria-label="Previous page")/,
+		'previous page link');
+	like($html, qr/<a (?=[^>]*\bui_pager_next\b)(?=[^>]*\bhref="list.cgi\?a=1&amp;page=7")(?=[^>]*\baria-label="Next page")/,
+		'next page link');
+	like($html, qr/<span (?=[^>]*\bui_pager_current\b)(?=[^>]*\baria-current="page")[^>]*>6</,
+		'the current page is marked, not linked');
+	my @pages = $html =~ /ui_pager_link[^>]*>(\d+)</g;
+	is_deeply(\@pages, [ 1, 4, 5, 6, 7, 8, 12 ],
+		'first, last and the window around the current page');
+	is(scalar(() = $html =~ /ui_pager_gap/g), 2, 'gaps on both sides');
+	my $first = main::ui_pager({ 'page' => 1, 'pages' => 4, 'href' => 'p=' });
+	like($first, qr/<span (?=[^>]*\bui_pager_prev\b)(?=[^>]*\bui_pager_disabled\b)(?=[^>]*\baria-disabled="true")/,
+		'no previous page on the first');
+	unlike($first, qr/ui_pager_gap/, 'no gaps when every page is shown');
+	my @five = main::ui_pager({ 'page' => 1, 'pages' => 5, 'href' => 'p=' }) =~ /ui_pager_link[^>]*>(\d+)</g;
+	is_deeply(\@five, [ 1, 2, 3, 4, 5 ], 'a single skipped page is shown instead of a gap');
+	my @narrow = main::ui_pager({ 'page' => 50, 'pages' => 99, 'window' => 1, 'href' => 'p=' }) =~ /ui_pager_link[^>]*>(\d+)</g;
+	is_deeply(\@narrow, [ 1, 49, 50, 51, 99 ], 'the window option narrows the range');
+	like(main::ui_pager({ 'page' => 2, 'pages' => 3,
+			      'url' => sub { "go.cgi?p=".$_[0]."&x=\"" } }),
+		qr/href="go.cgi\?p=3&amp;x=&quot;"/, 'a url callback builds each link, escaped');
+	assert_no_handler_injection(main::ui_pager({ 'page' => 2, 'pages' => 3,
+		'href' => $xss, 'label' => $xss }), 'ui_pager text');
+}
+
 done_testing();
