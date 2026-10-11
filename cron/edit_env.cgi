@@ -9,11 +9,13 @@ $access{'env'} || &error($text{'env_ecannot'});
 if (!$in{'new'}) {
 	@jobs = &list_cron_jobs();
 	$env = $jobs[$in{'idx'}];
+	$env && $env->{'name'} || &error($text{'env_egone'});
 	&can_edit_user(\%access, $env->{'user'}) ||
 		&error($text{'edit_ecannot'});
 	&ui_print_header(undef, $text{'env_title1'}, "");
 	}
 else {
+	$access{'create'} || &error($text{'save_ecannot2'});
 	&ui_print_header(undef, $text{'env_title2'}, "");
 	$env = { 'active' => 1 };
 	}
@@ -69,8 +71,9 @@ if ($in{'new'}) {
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print &ui_form_end([ [ undef, $text{'save'} ],
-			     [ "delete", $text{'delete'} ] ]);
+	my @buttons = ( [ undef, $text{'save'} ] );
+	push(@buttons, [ "delete", $text{'delete'} ]) if ($access{'delete'});
+	print &ui_form_end(\@buttons);
 	}
 
 &ui_print_footer("", $text{'index_return'});

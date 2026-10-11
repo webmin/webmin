@@ -9,10 +9,12 @@ $access{'env'} || &error($text{'env_ecannot'});
 
 @jobs = &list_cron_jobs();
 if ($in{'new'}) {
+	$access{'create'} || &error($text{'save_ecannot2'});
 	$job = { };
 	}
 else {
 	$oldjob = $jobs[$in{'idx'}];
+	$oldjob && $oldjob->{'name'} || &error($text{'env_egone'});
 	$job->{'file'} = $oldjob->{'file'};
 	$job->{'line'} = $oldjob->{'line'};
 	}

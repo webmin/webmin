@@ -13,6 +13,7 @@ if ($in{'new'}) {
 	}
 else {
 	$oldjob = $jobs[$in{'idx'}];
+	$oldjob && !$oldjob->{'name'} || &error($text{'edit_egone'});
 	$job->{'type'} = $oldjob->{'type'};
 	$job->{'file'} = $oldjob->{'file'};
 	$job->{'line'} = $oldjob->{'line'};

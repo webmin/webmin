@@ -7,6 +7,7 @@ require './cron-lib.pl';
 
 @jobs = &list_cron_jobs();
 $job = $jobs[$in{'idx'}];
+$job && !$job->{'name'} || &error($text{'edit_egone'});
 &can_edit_user(\%access, $job->{'user'}) || &error($text{'exec_ecannot'});
 &foreign_require("proc", "proc-lib.pl");
 

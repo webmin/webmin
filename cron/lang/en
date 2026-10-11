@@ -116,6 +116,7 @@ env_top=Before all Cron jobs for user
 env_bot=After all Cron jobs
 env_leave=Current position
 env_ecannot=You are not allowed to edit environment variables
+env_egone=Environment variable does not exist
 
 exec_title=Execute Cron Job
 exec_ecannot=You are not allowed to execute cron jobs for this user

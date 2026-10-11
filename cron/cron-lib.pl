@@ -1308,6 +1308,64 @@ elsif ($config{cron_deny_all} == 1) {
 return !$err;
 }
 
+=head2 get_cron_move_target(\@jobs, index, direction)
+
+Returns the Cron entry that the indexed entry would be swapped with for an up,
+down, top or bottom move.
+
+=cut
+sub get_cron_move_target
+{
+my ($jobs, $idx, $direction) = @_;
+my $job = $jobs->[$idx];
+return if (!$job);
+
+if ($direction eq "up") {
+	return $idx > 0 ? $jobs->[$idx-1] : undef;
+	}
+elsif ($direction eq "down") {
+	return $idx < $#$jobs ? $jobs->[$idx+1] : undef;
+	}
+elsif ($direction eq "top") {
+	my $swap;
+	for(my $i=$idx-1;
+	    $i >= 0 && $jobs->[$i]->{'file'} eq $job->{'file'}; $i--) {
+		$swap = $jobs->[$i];
+		}
+	return $swap;
+	}
+elsif ($direction eq "bottom") {
+	my $swap;
+	for(my $i=$idx+1;
+	    $i < @$jobs && $jobs->[$i]->{'file'} eq $job->{'file'}; $i++) {
+		$swap = $jobs->[$i];
+		}
+	return $swap;
+	}
+return;
+}
+
+=head2 cron_move_affects_env(\@jobs, &job, &target)
+
+Returns 1 if moving a Cron entry to the target crosses an environment
+variable, or 0 otherwise.
+
+=cut
+sub cron_move_affects_env
+{
+my ($jobs, $job, $target) = @_;
+return 0 if (!$job || !$target);
+my ($first, $last) = sort { $a <=> $b }
+	($job->{'index'}, $target->{'index'});
+for(my $i=$first; $i<=$last; $i++) {
+	my $entry = $jobs->[$i];
+	return 1 if ($entry &&
+		       $entry->{'file'} eq $job->{'file'} &&
+		       $entry->{'name'});
+	}
+return 0;
+}
+
 =head2 swap_cron_jobs(&job1, &job2)
 
 Swaps two Cron jobs, which must be in the same file, identified by their
