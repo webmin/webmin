@@ -87,6 +87,7 @@ while(my ($id, $idx) = each %index) {
 	     $in{'uall'} == 2 && $in{'nuser'} ne $user) &&
 	    ($in{'mall'} || $in{'module'} eq $module) &&
 	    (!$in{'sid'} || $in{'sid'} eq $sid ||
+			    &acl::hash_session_id($in{'sid'}) eq $sid ||
 			    $in{'sid'} eq &acl::hash_session_id($sid)) &&
 	    ($in{'tall'} || $from < $time && $to > $time)) {
 		# Passed index check .. now look at actual log entry
