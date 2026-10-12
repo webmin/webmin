@@ -71,6 +71,7 @@ if (defined($in{'range_def'})) {
 	&unconvert_range($job);
 	}
 
+$in{'comment'} =~ /\r|\n/ && &error($text{'save_ecomment'});
 $job->{'comment'} = $in{'comment'};
 &unconvert_comment($job);
 
