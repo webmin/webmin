@@ -7696,6 +7696,14 @@ return if ($gconfig{'logmodules'} && &indexof($m,
        split(/\s+/, $gconfig{'logmodules'})) < 0);
 
 # log the action
+my $sid = $main::session_id;
+if ($sid && &foreign_check("acl")) {
+	&foreign_require("acl");
+	$sid = &acl::hash_session_id($sid);
+	}
+else {
+	$sid = undef;
+	}
 my $now = time();
 my @tm = localtime($now);
 my $id = sprintf "%d.%d.%d", $now, $$, $main::action_id_count;
@@ -7706,7 +7714,7 @@ my $line = sprintf "%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d] %s %s %s %s %s \"%s\" 
     $id, $tm[3], ucfirst($number_to_month_map{$tm[4]}), $tm[5]+1900,
     $tm[2], $tm[1], $tm[0],
     $remote_user || '-',
-    $main::session_id || '-',
+    $sid || '-',
     $param_client_ip || $ENV{'REMOTE_HOST'} || '-',
     $m,
     $param_host ? $param_host.':'.$param_script_on_host :
