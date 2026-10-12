@@ -604,6 +604,14 @@ return $_[0] ne "information_schema" &&
        $_[0] ne "performance_schema";
 }
 
+# supports_sandbox_flag()
+# Returns 1 if the mysql client command supports the --sandbox flag
+sub supports_sandbox_flag
+{
+my $out = &backquote_command("$config{'mysql'} --help 2>&1 </dev/null");
+return $out =~ /--sandbox/ ? 1 : 0;
+}
+
 # list_accessible_databases()
 # Returns a list of databases that the current user may access to. Returns
 # an empty list if he has all of them.
@@ -1167,14 +1175,15 @@ return &set_ownership_permissions($user, undef, 0600, $file);
 # Executes some file of SQL commands, and returns the exit status and output
 sub execute_sql_file
 {
+my ($db, $file, $user, $pass, $unixuser) = @_;
 if (&is_readonly_mode()) {
 	return (0, undef);
 	}
-my ($db, $file, $user, $pass) = @_;
 -r $file || return (1, "$file does not exist");
 my $authstr = &make_authstr($user, $pass);
 my $cs = $sql_charset ? "--default-character-set=".quotemeta($sql_charset)
 			 : "";
+my $sb = &supports_sandbox_flag() ? "--sandbox" : "";
 my $temp = &transname();
 $file = &fix_collation($file);
 &open_tempfile(TEMP, ">$temp");
@@ -1186,11 +1195,11 @@ if ($disable_session_binlog) {
 &close_tempfile(TEMP);
 &set_ownership_permissions(undef, undef, 0644, $temp);
 &set_authstr_env();
-my $cmd = "$config{'mysql'} $authstr -t ".quotemeta($db)." ".$cs.
+my $cmd = "$config{'mysql'} $authstr -t ".quotemeta($db)." ".$cs." ".$sb.
 	     " <".quotemeta($temp);
-if ($_[4] && $_[4] ne 'root' && $< == 0) {
+if ($unixuser && $unixuser ne 'root' && $< == 0) {
 	# Restoring as a Unix user
-	$cmd = &command_as_user($_[4], 0, $cmd);
+	$cmd = &command_as_user($unixuser, 0, $cmd);
 	}
 my $out = &backquote_logged("$cmd 2>&1");
 my @rv;
