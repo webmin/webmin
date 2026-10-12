@@ -121,7 +121,7 @@ if (!$in{'uid_def'} || $in{'old'} ne '') {
 			}
 		}
 	}
-elsif ( $in{'uid_def'} eq '1' ) {
+elsif ($in{'uid_def'} == 1) {
 	# Can assign UID here
 	$in{'uid'} = int($config{'base_uid'} > $access{'lowuid'} ?
 			 $config{'base_uid'} : $access{'lowuid'});
@@ -133,15 +133,15 @@ elsif ( $in{'uid_def'} eq '1' ) {
 		&error($text{'usave_ealluid'});
 		}
 	}
-
-elsif ( $in{'uid_def'} eq '2' ) {
+elsif ($in{'uid_def'} == 2) {
 	# Can calculate UID here
-        if ( $config{'uid_calc'} ) {
-            $in{'uid'} = &mkuid($in{'user'});
-        } else {
-            $in{'uid'} = &berkeley_cksum($in{'user'});
-        }
-        &error("Unable to calculate UID, invalid user name specified") if ( $in{'uid'} lt 0 );
+        if ($config{'uid_calc'}) {
+		$in{'uid'} = &mkuid($in{'user'});
+		}
+	else {
+		$in{'uid'} = &berkeley_cksum($in{'user'});
+		}
+        &error($text{'usave_euidcalc'}) if ($in{'uid'} < 0);
 	while($used{$in{'uid'}}) {
 		$in{'uid'}++;
 		}
@@ -149,6 +149,10 @@ elsif ( $in{'uid_def'} eq '2' ) {
 		# Out of UIDs!
 		&error($text{'usave_ealluid'});
 		}
+	}
+else {
+	# Invalid value!
+	&error($text{'usave_euid_def'});
 	}
 
 $in{'real'} =~ /^[^:]*$/ || &error(&text('usave_ereal', $in{'real'}));
