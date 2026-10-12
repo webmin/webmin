@@ -38,6 +38,10 @@ foreach $f (@files) { &lock_file($f); }
 if ($in{"cmd"} !~ /\S/ && $access{'command'}) {
 	&error($text{'save_ecmd'});
 	}
+# A line break would add extra lines to the crontab
+if ($in{'cmd'} =~ /[\r\n]/ || $in{'comment'} =~ /[\r\n]/) {
+	&error($text{'save_enewline'});
+	}
 if (&supports_users()) {
 	if (!$in{'user'}) {
 		&error($text{'save_euser'});
