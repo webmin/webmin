@@ -56,6 +56,14 @@ else {
 	}
 &error_setup($text{'save_err'});
 
+if ((!$in{'old'} ||
+     $in{'name'} ne $in{'old'}) &&
+    $in{'name'} =~ /^(root|admin|sysadm)$/) {
+	# User has one of the privileged names, make sure this user can
+	# edit ACLs to prevent creation of RPC-root users
+	$access{'acl'} || &error($text{'save_ecreateroot'});
+	}
+
 # Validate username, and check for a clash
 $in{'name'} =~ /^[A-Za-z0-9\-\_\.\@]+$/ && $in{'name'} !~ /^\@/ ||
 	&error(&text('save_ename', &html_escape($in{'name'})));

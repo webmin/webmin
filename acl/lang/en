@@ -129,6 +129,7 @@ save_emd5=The Same as Unix password option cannot be used on systems with MD5 en
 save_eunix=The Unix user '$1' does not exist
 save_emod=You cannot grant access to module '$1'
 save_ecreate=You are not allowed to create users
+save_ecreateroot=You are not allowed to create RPC root users
 save_euser=You are not allowed to edit this user
 save_ecolon=Passwords cannot contain the : character
 save_epass=Password is not valid : $1
