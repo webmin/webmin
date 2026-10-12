@@ -7,7 +7,7 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access);
-$access{'pass'} || &error($text{'sql_ecannot'});
+$access{'sql'} || &error($text{'sql_ecannot'});
 &ReadParse();
 &error_setup($text{'sql_err'});
 my %miniserv;
