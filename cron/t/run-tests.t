@@ -81,14 +81,22 @@ ok(!cron_move_affects_env(\@jobs, $jobs[0], $jobs[6]),
 my $cronfile = "$vardir/crontab";
 my $crondir = "$vardir/crontabs";
 make_path($crondir);
-open(my $modfh, ">", "$confdir/cron/config") or die "cron config: $!";
-print $modfh "single_file=$cronfile\n";
-print $modfh "cron_dir=$crondir\n";
-print $modfh "system_crontab=$vardir/system-crontab\n";
-print $modfh "cronfiles_dir=$vardir/cron.d\n";
-print $modfh "vixie_cron=1\n";
-close($modfh);
 make_path("$vardir/cron.d");
+
+# Write the Cron module config, with the given lines added.
+sub write_cron_config
+{
+my (@lines) = @_;
+open(my $fh, ">", "$confdir/cron/config") or die "cron config: $!";
+print $fh map { "$_\n" } (@lines,
+	"cron_dir=$crondir",
+	"system_crontab=$vardir/system-crontab",
+	"cronfiles_dir=$vardir/cron.d",
+	"vixie_cron=1",
+	"cron_deny_all=2");
+close($fh);
+}
+write_cron_config("single_file=$cronfile");
 
 # Reset the crontab fixture to its original contents.
 sub write_crontab
@@ -246,11 +254,63 @@ like($result->{'out'}, qr/^Location:/m,
 is(read_crontab_fixture(), $original,
 	"re-enabling the normal job restores the fixture");
 
+# Job fields must not add lines or fields to the crontab
+seed_acl(%full_acl);
+my %edit = ( 'idx' => 0, 'user' => 'root', 'active' => 1,
+	     'cmd' => 'echo first', 'range_def' => 1,
+	     'special_def' => 0, 'all_mins' => 1, 'all_hours' => 1,
+	     'all_days' => 1, 'all_months' => 1, 'all_weekdays' => 1 );
+foreach my $case (
+	[ "a line break in the command",
+	  { 'cmd' => "echo first\nPATH=/tmp" }, qr/cannot contain line breaks/ ],
+	[ "a line break in the comment",
+	  { 'comment' => "x\nPATH=/tmp" }, qr/cannot contain line breaks/ ],
+	[ "a special time with spaces",
+	  { 'special_def' => 1, 'special' => "reboot echo x #" },
+	  qr/Invalid special time/ ],
+	[ "a minute with spaces",
+	  { 'all_mins' => 0, 'mins' => "* * * * * echo x #" },
+	  qr/Invalid Minutes selected/ ],
+	[ "a minute with a line break",
+	  { 'all_mins' => 0, 'mins' => "5\nPATH=/tmp" },
+	  qr/Invalid Minutes selected/ ],
+	[ "a range date with shell text",
+	  { 'range_def' => 0, 'range_start_day' => '1;echo x;',
+	    'range_start_month' => 1, 'range_start_year' => 2026,
+	    'range_end_day' => 31, 'range_end_month' => 12,
+	    'range_end_year' => 2026 }, qr/invalid start date/i ],
+	) {
+	my ($desc, $form, $re) = @$case;
+	$result = run_cgi("save_cron.cgi", { %edit, %$form });
+	like($result->{'out'}, $re, "save_cron.cgi rejects $desc");
+	is(read_crontab_fixture(), $original,
+		"rejected $desc leaves the crontab unchanged");
+	}
+
 seed_acl(%full_acl);
 $result = run_cgi("move.cgi", { 'idx' => 4, 'top' => 1 });
 like($result->{'out'}, qr/^Location:/m,
 	"a user with env permission can move a job across a variable");
 isnt(read_crontab_fixture(), $original,
 	"the permitted top move changes the crontab");
+
+# Saving a job needs a real Unix user, so check a valid save in a per-user
+# crontab, as on Linux. Plain shell commands stand in for the crontab
+# command, so the real one never runs.
+write_cron_config("cron_copy_command=cat >$crondir/USER",
+		  "cron_delete_command=rm -f $crondir/USER");
+$cronfile = "$crondir/root";
+write_crontab();
+$result = run_cgi("save_cron.cgi",
+	{ %edit, 'all_mins' => 0, 'mins' => [ 5, 6, 30 ],
+	  'range_def' => 0, 'range_start_day' => 1,
+	  'range_start_month' => 1, 'range_start_year' => 2026,
+	  'range_end_day' => 31, 'range_end_month' => 12,
+	  'range_end_year' => 2026 });
+like($result->{'out'}, qr/^Location:/m,
+	"save_cron.cgi accepts valid times and dates");
+like(read_crontab_fixture(),
+	qr/^5-6,30 \* \* \* \* \S+range\.pl 1-1-2026 31-12-2026 echo\\ first$/m,
+	"the saved job has the expected times and date range");
 
 done_testing();

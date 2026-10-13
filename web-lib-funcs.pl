@@ -13849,18 +13849,20 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 return 0;
 }
 
-=head2 convert_to_json(data, [pretty], [raw-utf8])
+=head2 convert_to_json(data, [pretty], [raw-utf8], [canonical])
 
 Converts the given Perl data structure to encoded binary string
 
 =item data parameter is a hash/array reference
-=item if the output should be prettified and hash keys sorted
+=item pretty parameter enables indentation and newlines; also sorts hash keys unless canonical is supplied
 =item raw-utf8 parameter, if set to 1, encodes data using UTF-8
+
+=item canonical parameter controls hash key sorting independently of pretty printing; defaults to pretty
 
 =cut
 sub convert_to_json
 {
-my ($data, $pretty, $raw_utf8) = @_;
+my ($data, $pretty, $raw_utf8, $canonical) = @_;
 my $json;
 
 if (eval { require JSON::XS }) {
@@ -13873,7 +13875,8 @@ else {
 	error("Neither JSON::XS nor JSON::PP Perl module is available on your system");
 	}
 $json->pretty(!!$pretty);
-$json->canonical(1) if ($pretty);
+# Preserve sorting for existing pretty calls unless explicitly overridden.
+$json->canonical(defined($canonical) ? !!$canonical : !!$pretty);
 $data ||= {};
 return $raw_utf8 ? $json->utf8->encode($data) : $json->latin1->encode($data);
 }

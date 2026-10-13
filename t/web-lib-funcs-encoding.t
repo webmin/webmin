@@ -173,6 +173,40 @@ subtest 'convert_to_json / convert_from_json' => sub {
 	is_deeply(main::convert_from_json($pretty), {a=>1,b=>2},
 		  'pretty output still parses');
 
+	# Sorting is independent of whitespace, with the same contract in both engines.
+	for my $engine ('JSON::PP', 'JSON::XS') {
+		subtest "$engine canonical output" => sub {
+			eval "require $engine; 1" or plan skip_all => "$engine is not installed";
+			# Force the supported PP fallback even when XS is installed.
+			local $INC{'JSON/XS.pm'} = $engine eq 'JSON::PP' ? undef : $INC{'JSON/XS.pm'};
+			my $data = {z => 2, a => {z => 1, a => 0}};
+			is(main::convert_to_json($data, 0, 1, 1),
+				'{"a":{"a":0,"z":1},"z":2}', 'compact output sorts nested keys');
+			is(main::convert_to_json($data, 1),
+				$engine->new->pretty->canonical->latin1->encode($data),
+				'existing pretty calls retain sorted output');
+			is(main::convert_to_json($data, 1, 0, 0),
+				$engine->new->pretty->latin1->encode($data),
+				'explicit false disables sorting independently of pretty printing');
+			is(main::convert_to_json($data, 0, 0, undef),
+				$engine->new->latin1->encode($data),
+				'undefined canonical flag retains the default');
+			# JSON syntax and byte encoding must remain independent of sorting.
+			my $unicode = {label => "Caf\x{e9} \x{65e5}\x{672c} \x{1f642}"};
+			my $bytes = main::convert_to_json($unicode, 0, 1, 1);
+			ok(!utf8::is_utf8($bytes), 'UTF-8 mode returns bytes');
+			is_deeply(main::convert_from_json($bytes), $unicode, 'Unicode round-trips');
+			is($bytes, JSON::PP->new->canonical->utf8->encode($unicode),
+				'compact UTF-8 matches the existing canonical encoding');
+			my $backup = {content => join('', map { chr } 0..255)};
+			my $raw = main::convert_to_json($backup, 0, 0, 1);
+			is($raw, JSON::PP->new->canonical->encode($backup),
+				'raw configuration bytes retain their existing serialized form');
+			is_deeply(main::convert_from_json($raw, 1), $backup,
+				'raw configuration bytes round-trip');
+		};
+	}
+
 	# Current contract: undef input becomes {} (the `||= {}` default).
 	is(main::convert_to_json(undef), '{}', 'undef input → "{}"');
 

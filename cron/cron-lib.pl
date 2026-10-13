@@ -1079,6 +1079,8 @@ if ($in{'special_def'}) {
 	foreach $arr (@pers) {
 		delete($job->{$arr});
 		}
+	# Special times are single words like daily or reboot
+	$in{'special'} =~ /^[a-z]+$/i || &error($text{'save_especial'});
 	$job->{'special'} = $in{'special'};
 	}
 else {
@@ -1092,6 +1094,11 @@ else {
 			# Need to work out and simplify ranges selected
 			local (@range, @newrange, $i);
 			@range = split(/\0/, $in{$arr});
+			# Selected times are plain numbers
+			foreach my $v (@range) {
+				$v =~ /^\d+$/ || &error(&text('save_etime',
+							$text{"edit_$arr"}));
+				}
 			@range = sort { $a <=> $b } @range;
 			local $start = -1;
 			for($i=0; $i<@range; $i++) {
@@ -1168,6 +1175,11 @@ if ($in->{'range_def'}) {
 else {
 	# Validate and store range
 	foreach my $r ("start", "end") {
+		# Dates go into the job's command, so only allow numbers
+		foreach my $f ("day", "month", "year") {
+			$in->{'range_'.$r.'_'.$f} =~ /^\d+$/ ||
+				&error($text{'range_e'.$r});
+			}
 		eval { timelocal(0, 0, 0, $in->{'range_'.$r.'_day'},
 					  $in->{'range_'.$r.'_month'}-1,
 					  $in->{'range_'.$r.'_year'}-1900) };
