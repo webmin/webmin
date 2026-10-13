@@ -982,6 +982,13 @@ else {
 	$fromaddr .= '@'.&get_system_hostname();
 	}
 local $qfromaddr = quotemeta($fromaddr);
+
+# Resolve SMTP credentials and the authentication method before choosing the
+# greeting because authenticated sessions require EHLO.
+$user ||= $userconfig{'smtp_user'} || $config{'smtp_user'};
+$pass ||= $userconfig{'smtp_pass'} || $config{'smtp_pass'};
+$auth ||= $userconfig{'smtp_auth'} ||
+	  $config{'smtp_auth'} || "Cram-MD5";
 local $esmtp = $flags || $user || $ssl ? 1 : 0;
 my $h = { 'fh' => 'mailboxes::MAIL' };
 if ($file) {
@@ -1004,28 +1011,25 @@ elsif ($sm) {
 
 	&smtp_command($h, undef, 0);
 
-	# Send SMTP HELO
+	# Send EHLO for ESMTP features, or HELO for basic SMTP
 	my $helo = $config{'helo_name'} || &get_system_hostname();
 	my $helocmd = $esmtp ? "ehlo $helo\r\n" : "helo $helo\r\n";
 	&smtp_command($h, $helocmd, 0);
 
 	if ($ssl == 2) {
-		# Switch to SSL with STARTTLS, if possible
+		# Request a TLS upgrade with STARTTLS
                 my $rv = &smtp_command($h, "starttls\r\n", 1);
                 if ($rv =~ /^2\d+/) {
+			# Enable TLS and repeat the greeting on the secure connection
                         &switch_smtp_to_ssl($h);
 			&smtp_command($h, $helocmd, 0);
                         }
                 else {
+			# Continue without TLS if STARTTLS is unavailable
                         $ssl = 0;
                         }
 		}
 
-	# Get username and password from parameters, or from module config
-	$user ||= $userconfig{'smtp_user'} || $config{'smtp_user'};
-	$pass ||= $userconfig{'smtp_pass'} || $config{'smtp_pass'};
-	$auth ||= $userconfig{'smtp_auth'} ||
-		  $config{'smtp_auth'} || "Cram-MD5";
 	if ($user) {
 		# Send authentication commands
 		eval "use Authen::SASL";
