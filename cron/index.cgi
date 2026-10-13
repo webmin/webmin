@@ -193,44 +193,15 @@ foreach $u (@ulist) {
 			}
 
 		# Show mover buttons
+		local $prv = $i > 0 ? $plist[$i-1]->[0] : undef;
+		local $nxt = $i != $#plist ? $plist[$i+1]->[0] : undef;
 		if ($access{'move'}) {
-			# Hide moves that would cross a protected variable
-			local $upswap = &get_cron_move_target(\@jobs, $idx, "up");
-			local $downswap = &get_cron_move_target(\@jobs, $idx, "down");
-			local $topswap = &get_cron_move_target(\@jobs, $idx, "top");
-			local $bottomswap = &get_cron_move_target(\@jobs, $idx, "bottom");
-			local $movable = $job->{'name'} ||
-					 $job->{'type'} == 0 ||
-					 $job->{'type'} == 3;
-			local $canup = $upswap && $movable &&
-				$upswap->{'index'} != $idx &&
-				$upswap->{'file'} eq $job->{'file'} &&
-				($upswap->{'name'} || $upswap->{'type'} == 0 ||
-				 $upswap->{'type'} == 3) &&
-				($access{'env'} ||
-				 !&cron_move_affects_env(\@jobs, $job, $upswap));
-			local $candown = $downswap && $movable &&
-				$downswap->{'index'} != $idx &&
-				$downswap->{'file'} eq $job->{'file'} &&
-				($downswap->{'name'} || $downswap->{'type'} == 0 ||
-				 $downswap->{'type'} == 3) &&
-				($access{'env'} ||
-				 !&cron_move_affects_env(\@jobs, $job, $downswap));
-			local $cantop = $topswap && $movable &&
-				$topswap->{'index'} != $idx &&
-				$topswap->{'file'} eq $job->{'file'} &&
-				($topswap->{'name'} || $topswap->{'type'} == 0 ||
-				 $topswap->{'type'} == 3) &&
-				($access{'env'} ||
-				 !&cron_move_affects_env(\@jobs, $job, $topswap));
-			local $canbottom = $bottomswap && $movable &&
-				$bottomswap->{'index'} != $idx &&
-				$bottomswap->{'file'} eq $job->{'file'} &&
-				($bottomswap->{'name'} ||
-				 $bottomswap->{'type'} == 0 ||
-				 $bottomswap->{'type'} == 3) &&
-				($access{'env'} ||
-				 !&cron_move_affects_env(\@jobs, $job, $bottomswap));
+			local $canup = $prv &&
+				$prv->{'file'} eq $job->{'file'} &&
+				($job->{'type'} == 0 || $job->{'type'} == 3);
+			local $candown = $nxt &&
+				$nxt->{'file'} eq $job->{'file'} &&
+				($job->{'type'} == 0 || $job->{'type'} == 3);
 			local $mover = "move.cgi?search=".
 				       &urlize($in{'search'})."&idx=$idx";
 			push(@cols, &ui_up_down_arrows(
@@ -241,7 +212,7 @@ foreach $u (@ulist) {
 				    &ui_up_down_arrows(
 				"$mover&top=1",
 				"$mover&bottom=1",
-				$cantop, $canbottom,
+				$canup, $candown,
 				"images/top.gif",
 				"images/bottom.gif",
 			        ));
