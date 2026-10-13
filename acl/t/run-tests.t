@@ -1265,6 +1265,31 @@ subtest 'CGI harness smoke' => sub {
          'error path emits an HTML error page');
 };
 
+# All SQL and LDAP user database helpers must use the dedicated SQL access
+# flag. Password-editing access alone must not allow direct CGI requests.
+subtest 'user database CGI permission gates' => sub {
+    foreach my $cgi ('schema.cgi', 'maketables.cgi', 'makedn.cgi') {
+        _reset_fixture();
+        _seed_user_acl('admin', { pass => 1, sql => 0 });
+        my $r = run_cgi($cgi, {});
+        ok(!$r->{location}, "$cgi does not redirect without SQL access");
+        like($r->{out},
+             qr/not allowed to configure the user and group database/i,
+             "$cgi rejects password-only administrators");
+    }
+
+    # The read-only schema endpoint provides a safe positive permission test.
+    _reset_fixture();
+    _seed_user_acl('admin', { pass => 0, sql => 1 });
+    my $r = run_cgi('schema.cgi', {});
+    is($r->{status}, 0, 'schema.cgi renders with SQL access');
+    unlike($r->{out},
+           qr/not allowed to configure the user and group database/i,
+           'schema.cgi accepts SQL-only administrators');
+    like($r->{out}, qr/attributetype/i,
+         'schema.cgi displays the LDAP schema');
+};
+
 # delete_user.cgi — four distinct gates. NOTE: <rootdir>/acl/defaultacl has
 # every flag set to 1, and get_module_acl merges it under the per-user ACL.
 # So each denial test must EXPLICITLY set the relevant key to 0; relying on
