@@ -1,8 +1,0 @@
-show_empty=1
-services_file=${systemroot}/system32/drivers/etc/services
-extended_inetd=0
-rpc_inetd=0
-sort_mode=0
-ipv6=0
-qm_mode=0
-display_max=100
