@@ -982,7 +982,7 @@ else {
 	$fromaddr .= '@'.&get_system_hostname();
 	}
 local $qfromaddr = quotemeta($fromaddr);
-local $esmtp = $flags ? 1 : 0;
+local $esmtp = $flags || $user || $ssl ? 1 : 0;
 my $h = { 'fh' => 'mailboxes::MAIL' };
 if ($file) {
 	# Just append the email to a file using mbox format
