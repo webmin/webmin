@@ -136,6 +136,51 @@ subtest 'sandboxed SQL files use direct input' => sub {
 	       'the sandboxed command does not use source');
 };
 
+subtest 'backup commands honor the backup user privilege boundary' => sub {
+	local %main::module_info;
+	local %main::access = ( 'buser' => 'root' );
+	ok(!main::can_run_backup_commands(0),
+	   'root commands require existing cron eligibility');
+	ok(main::can_run_backup_commands(1),
+	   'cron-eligible users can run root commands');
+
+	$main::access{'buser'} = 'backupuser';
+	ok(main::can_run_backup_commands(0),
+	   'Webmin backups can run commands as a non-root backup user');
+	$main::module_info{'usermin'} = 1;
+	ok(!main::can_run_backup_commands(1),
+	   'Usermin cannot gain backup command access');
+};
+
+subtest 'backup commands run as the non-root backup user' => sub {
+	no warnings 'redefine';
+	local $main::config{'backup_before_testdb'} = 'before-command';
+	local $main::config{'backup_after_testdb'} = 'after-command';
+	my @commands;
+	local *main::command_as_user = sub {
+		my ($user, $background, $command) = @_;
+		is($background, 0, 'backup command remains synchronous');
+		return "as-$user $command";
+		};
+	local *main::execute_command = sub {
+		push(@commands, $_[0]);
+		return 0;
+		};
+
+	ok(main::execute_before('testdb', undef, 0, '/tmp/test.sql',
+				'testdb', 'backupuser'),
+	   'before command succeeds');
+	ok(main::execute_after('testdb', undef, 0, '/tmp/test.sql',
+			       'testdb', 'backupuser'),
+	   'after command succeeds');
+	is_deeply(\@commands,
+		  [ 'as-backupuser before-command',
+		    'as-backupuser after-command' ],
+		  'both commands are wrapped for the backup user');
+	is($ENV{'BACKUP_FILE'}, '/tmp/test.sql',
+	   'backup commands receive the destination path');
+};
+
 subtest 'binary log retention display round-trips exactly' => sub {
 	# The page shows seconds as days, and saving converts the shown days
 	# back with int(days * 86400 + 0.5), which must reproduce the exact

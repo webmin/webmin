@@ -1023,6 +1023,17 @@ if ($config{'webmin_subs'}) {
 return $rv;
 }
 
+# can_run_backup_commands(cron)
+# Returns true if this request can configure and run backup commands. Cron
+# access already permits root commands, while other Webmin users are limited
+# to commands run as their configured non-root backup user.
+sub can_run_backup_commands
+{
+my ($cron) = @_;
+return !$module_info{'usermin'} &&
+	($cron || $access{'buser'} && $access{'buser'} ne 'root');
+}
+
 # execute_before(db, handle, escape, path, db-for-config, [&as-user])
 # Executes the before-backup command for some DB, and sends output to the
 # given file handle. Returns 1 if the command succeeds, or 0 on failure

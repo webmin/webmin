@@ -53,14 +53,17 @@ if (!$in{'save'} || $in{'sched'}) {
 push(@compat, split(/\0/, $in{'options'}));
 $cron = !$module_info{'usermin'} && $access{'buser'} eq 'root' &&
 	!$access{'user'} && &foreign_installed("cron");
+$commands = &can_run_backup_commands($cron);
 $cmode = 0;
-if ($cron) {
+if ($commands) {
 	$config{'backup_before_'.$in{'db'}} = $in{'before'};
 	$config{'backup_after_'.$in{'db'}} = $in{'after'};
 	if ($in{'all'}) {
 		$config{'backup_cmode_'.$in{'db'}} = $in{'cmode'};
 		$cmode = $in{'cmode'};
 		}
+	}
+if ($cron) {
 	$config{'backup_email_'.$in{'db'}} = $in{'email'};
 	$config{'backup_notify_'.$in{'db'}} = $in{'notify'};
 
@@ -193,7 +196,7 @@ if (!$in{'save'}) {
 				    &html_escape($file)),"<p>\n";
 			next;
 			}
-		if ($cron && $cmode == 0) {
+		if ($commands && $cmode == 0) {
 			# Run and check before-backup command (for one DB)
 			$bok = &execute_before($db, STDOUT, 1, $file,
 					       $in{'all'} ? undef : $db,
@@ -220,7 +223,7 @@ if (!$in{'save'}) {
 			}
 		&execute_after($db, STDOUT, 1, $file, $in{'all'} ? undef : $db,
 			       $access{'buser'})
-			if ($cron && $cmode == 0);
+			if ($commands && $cmode == 0);
 
 		if ($in{'dest'}) {
 			# Sent to browser
