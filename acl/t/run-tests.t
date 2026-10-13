@@ -1474,6 +1474,40 @@ subtest 'save_user.cgi create privilege' => sub {
     delete_user('admin');
 };
 
+# Unix conversion must not bypass the privileged-name guard in save_user.cgi.
+# An ACL-capable administrator can still deliberately convert such a user.
+subtest 'convert.cgi privileged username gate' => sub {
+    _reset_fixture();
+    _seed_user_acl('operator', {
+        sync => 1, create => 1, acl => 0, gassign => '*',
+    });
+    create_group({ name => 'converted', members => [], modules => ['acl'] });
+
+    my $r = run_cgi('convert.cgi', {
+        conv => 1, users => 'root', wgroup => 'converted', sync => 1,
+    }, user => 'operator');
+    _clear_caches();
+    is($r->{status}, 0, 'conversion completes without ACL access');
+    ok(!get_user('root'),
+       'conversion skips a privileged RPC username without ACL access');
+    like($r->{out}, qr/root.*not a valid Webmin username/i,
+         'conversion reports the privileged username as invalid');
+
+    _reset_fixture();
+    _seed_user_acl('operator', {
+        sync => 1, create => 1, acl => 1, gassign => '*',
+    });
+    create_group({ name => 'converted', members => [], modules => ['acl'] });
+
+    $r = run_cgi('convert.cgi', {
+        conv => 1, users => 'root', wgroup => 'converted', sync => 1,
+    }, user => 'operator');
+    _clear_caches();
+    is($r->{status}, 0, 'conversion completes with ACL access');
+    ok(get_user('root'),
+       'ACL-capable administrator can convert a privileged username');
+};
+
 subtest 'save_user.cgi gassign whitelist' => sub {
     # gassign='admins' allows assigning only to group "admins"; trying to
     # assign to a different group should fail.

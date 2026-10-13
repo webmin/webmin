@@ -108,7 +108,11 @@ foreach my $u (@users) {
 		$msg = "<i>".&text('convert_exists', $u->{'user'})."</i>";
 		$exists++;
 		}
-	elsif ($u->{'user'} !~ /^[A-z0-9\-\_\.]+$/) {
+	elsif ($u->{'user'} !~ /^[A-z0-9\-\_\.]+$/ ||
+	       (!$access{'acl'} &&
+		$u->{'user'} =~ /^(root|admin|sysadm)$/)) {
+		# Reject invalid names and privileged RPC names that this
+		# administrator is not allowed to create.
 		$msg = "<i>".&text('convert_invalid', $u->{'user'})."</i>";
 		$invalid++;
 		}
