@@ -28,7 +28,8 @@ sub disk {
     make_path("$fixture/sys/class/block/$name");
 }
 sub setup_fixture {
-    $fixture = tempdir(CLEANUP => 1);
+    my ($parent) = @_;
+    $fixture = abs_path(tempdir(CLEANUP => 1, defined($parent) ? (DIR => $parent) : ()));
     write_file('proc/partitions', "major minor  #blocks  name\n 8 0 100 sda\n 8 1 90 sda1\n");
     write_file('proc/scsi/scsi', "Attached devices:\n");
     disk('sda', 'Example', 'USB NVMe');
@@ -193,5 +194,30 @@ subtest 'failure reporting preserves the list-returning contract' => sub {
     $r = run_library();
     is_deeply($r->{'results'}, [[]], 'empty valid inventory succeeds');
     is($r->{'error'}, undef, 'empty valid inventory is not an error');
+};
+subtest 'controller-qualified sysfs replacement is detected with a retained device node' => sub {
+    setup_fixture();
+    write_file('proc/partitions', "major minor  #blocks  name\n 104 0 100 cciss/c0d0\n");
+    write_file('dev/cciss/c0d0', '');
+    write_file('proc/driver/cciss/cciss0', "cciss0: Smart Array\n");
+    make_path("$fixture/sys/class/block/cciss!c0d0");
+    my $stable = run_library('legacy_stable');
+    is($stable->{'error'}, undef, 'controller sysfs path is accepted');
+    my $before = [stat("$fixture/dev/cciss/c0d0")];
+    my $changed = run_library('legacy_replace');
+    like($changed->{'error'}, qr/Disk identity changed/, 'sysfs replacement is detected');
+    is_deeply($changed->{'results'}, [[]], 'replacement returns no stale inventory');
+    my $after = [stat("$fixture/dev/cciss/c0d0")];
+    is_deeply([@{$after}[0,1,6]], [@{$before}[0,1,6]], 'device-node identity was retained');
+};
+subtest 'symlinked temporary parents produce canonical fixture identities' => sub {
+    my $parent = abs_path(tempdir(CLEANUP => 1));
+    make_path("$parent/real");
+    symlink("$parent/real", "$parent/alias") or die $!;
+    setup_fixture("$parent/alias");
+    is($fixture, abs_path($fixture), 'fixture root is canonical');
+    my $result = run_library();
+    is($result->{'error'}, undef, 'discovery succeeds through symlinked parent');
+    is_deeply($result->{'results'}->[0]->[0]->{'ids'}, ['old'], 'resolved stable IDs match canonical devices');
 };
 done_testing();

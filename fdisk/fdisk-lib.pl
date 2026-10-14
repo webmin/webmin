@@ -41,8 +41,10 @@ else {
 $| = 1;
 
 # list_disks_partitions([include-cds], [disk-only], [error-ref])
-# Disk-only failures return no disks; error-ref receives the reason if supplied.
-# Returns a structure containing the details of all disks and partitions
+# Returns a list of disk hash refs; disk-only mode omits partition metadata.
+# Failure returns an empty list, never an error string. The optional error-ref
+# is a scalar reference that receives the reason without changing the return type.
+# Example: my @disks = list_disks_partitions(undef, 1, \$error);
 sub list_disks_partitions
 {
 local ($include_cds, $disk_only) = @_;
@@ -747,7 +749,8 @@ my ($device) = @_;
 my @node = stat($device);
 return if (!@node);
 my $short = $device;
-$short =~ s/^.*\///g;
+$short =~ s{^/dev/}{};
+$short =~ s{/}{!}g;
 my @sys = stat("/sys/class/block/$short");
 return join(':', @node[0,1,6], @sys ? @sys[0,1] : ('', ''));
 }

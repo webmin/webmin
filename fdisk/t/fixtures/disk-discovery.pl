@@ -41,6 +41,19 @@ sub read_file_contents {
     eval $code; ## no critic (BuiltinFunctions::ProhibitStringyEval)
     die $@ if $@;
 }
+if ($scenario eq 'legacy_replace') {
+    my $identity = \&disk_discovery_identity;
+    my $calls = 0;
+    no warnings 'redefine';
+    *disk_discovery_identity = sub {
+        if (++$calls == 2) {
+            my $sys = "$root/sys/class/block/cciss!c0d0";
+            rename($sys, "$sys.old") or die $!;
+            mkdir($sys) or die $!;
+        }
+        return $identity->(@_);
+    };
+}
 my @results;
 my $error;
 my $exception;
