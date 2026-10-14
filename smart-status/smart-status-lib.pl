@@ -27,8 +27,11 @@ return $smartctl_version_cache;
 =head2 list_smart_disks_partitions
 
 Returns a sorted list of disks that can support SMART. Optional disk-only and
-scalar error-reference arguments select fresh metadata and report failure without
-throwing an exception. Without an error reference, failures produce a warning.
+scalar error-reference arguments select fresh metadata and report fatal failure
+without throwing an exception. If automatic discovery fails, configured RAID
+disks are retained with a warning and no fatal error result. With no usable
+configured fallback, failure returns an empty list and sets the error reference,
+or produces a warning if no reference was supplied.
 
 =cut
 sub list_smart_disks_partitions
@@ -36,10 +39,9 @@ sub list_smart_disks_partitions
 my ($disk_only, $error_ref) = @_;
 $$error_ref = undef if ($error_ref);
 my @rv;
+my $discovery_error;
 if (&foreign_check("fdisk")) {
-	my $error;
-	@rv = &list_smart_disks_partitions_fdisk($disk_only, \$error);
-	return &smart_disk_discovery_error($error, $error_ref) if ($error);
+	@rv = &list_smart_disks_partitions_fdisk($disk_only, \$discovery_error);
 	}
 elsif (&foreign_check("bsdfdisk")) {
 	@rv = &list_smart_disks_partitions_bsdfdisk();
@@ -47,7 +49,13 @@ elsif (&foreign_check("bsdfdisk")) {
 elsif (&foreign_check("mount")) {
 	@rv = &list_smart_disks_partitions_fstab();
 	}
-push(@rv, &list_configured_raid_disks());
+my @manual = &list_configured_raid_disks();
+if ($discovery_error) {
+	return &smart_disk_discovery_error($discovery_error, $error_ref) if (!@manual);
+	warn "Automatic SMART disk discovery failed; using configured RAID disks: $discovery_error\n";
+	@rv = ();
+	}
+push(@rv, @manual);
 return &unique_smart_disks(@rv);
 }
 

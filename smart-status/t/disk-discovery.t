@@ -93,16 +93,52 @@ for my $disk_only (0,1) {
 {
     local $provider_error = 'Disk inventory changed during SMART discovery';
     local $config{raid_devices} = '/dev/sda sat+megaraid 9 1';
+    local $config{extra} = '-T permissive';
+    my @warnings;
+    local $SIG{__WARN__} = sub { push(@warnings, @_); };
+    my $error = 'previous failure';
+    my @manual = list_smart_disks_partitions(1, \$error);
+    is_deeply([map {[$_->{device},$_->{subtype},$_->{subdisk},$_->{manual}]} @manual],
+              [['/dev/sda','sat+megaraid',9,1]], 'provider failure preserves configured RAID');
+    is($error, undef, 'usable manual fallback is not a fatal discovery error');
+    is(scalar @warnings, 1, 'automatic failure warns once with manual fallback');
+    like($warnings[0], qr/Disk inventory changed/, 'fallback warning retains failure reason');
+    if (@manual) {
+        is(get_extra_args($manual[0]->{device},$manual[0]), '-T permissive -d sat+megaraid,9',
+           'manual fallback retains passthrough arguments');
+    }
+    @warnings = ();
+    @manual = list_smart_disks_partitions(1);
+    is(scalar @manual, 1, 'fallback is retained without an error reference');
+    is(scalar @warnings, 1, 'fallback without reference warns once');
+}
+for my $case (['LSI', '/dev/sda', 'sat+megaraid'],
+              ['AMCC 9750', '/dev/sda', '3ware'],
+              ['Smart Array', '/dev/cciss/c0d0', 'cciss']) {
+    local @fixture = ({device=>$case->[1],type=>'scsi',model=>$case->[0]});
+    local $missing = 1;
+    local $config{raid_devices} = "$case->[1] $case->[2] 9 2";
+    my @warnings;
+    local $SIG{__WARN__} = sub { push(@warnings, @_); };
+    my $error;
+    my @manual = list_smart_disks_partitions(1, \$error);
+    is_deeply([map {[$_->{subtype},$_->{subdisk},$_->{manual}]} @manual],
+              [[$case->[2],9,1],[$case->[2],10,1]], 'failed automatic RAID detection retains manual members');
+    is($error, undef, 'manual controller fallback clears fatal error result');
+    is(scalar @warnings, 1, 'controller fallback reports automatic failure once');
+}
+{
+    local $provider_error = 'Disk inventory changed during SMART discovery';
+    local $config{raid_devices} = '';
     my $error;
     my @failed = list_smart_disks_partitions(1, \$error);
-    is_deeply(\@failed, [], 'provider failure does not return configured partial inventory');
-    is($error, $provider_error, 'provider failure reason reaches the caller');
+    is_deeply(\@failed, [], 'provider failure without manual fallback returns no inventory');
+    is($error, $provider_error, 'fatal provider failure reaches the caller');
     my @warnings;
     local $SIG{__WARN__} = sub { push(@warnings, @_); };
     @failed = list_smart_disks_partitions(1);
-    is_deeply(\@failed, [], 'caller without error reference receives no partial inventory');
-    is(scalar @warnings, 1, 'provider failure warns once without an error reference');
-    like($warnings[0], qr/Disk inventory changed/, 'warning retains provider failure reason');
+    is_deeply(\@failed, [], 'failure without reference returns no inventory');
+    is(scalar @warnings, 1, 'fatal failure without reference warns once');
 }
 {
     local @fixture = ();
