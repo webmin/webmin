@@ -917,6 +917,7 @@ elsif ($unixuser && $unixuser ne 'root' && $< == 0) {
 	$cmd = &command_as_user($unixuser, 0, $cmd);
 	}
 $cmd = &command_with_login($cmd, $user, $pass);
+local $ENV{'LC_ALL'} = 'C';
 local $out = &backquote_logged("$cmd 2>&1");
 local $ex = $? ? 1 : 0;
 unlink($safe_file) if ($safe_file);
