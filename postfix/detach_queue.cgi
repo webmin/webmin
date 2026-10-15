@@ -16,16 +16,14 @@ $mail || &error($text{'mailq_egone'});
 $attach = $mail->{'attach'}->[$in{'attach'}];
 
 print "X-no-links: 1\n";
-if ($attach->{'type'} eq 'message/delivery-status') {
+if ($attach->{'type'} eq 'message/delivery-status' ||
+    $attach->{'type'} =~ /^text\/html/i ||
+    $attach->{'type'} =~ /^image\/svg(?:\+xml)?/i ||
+    $attach->{'type'} =~ /^application\/xhtml\+xml/i) {
 	print "Content-type: text/plain\n\n";
 	}
 else {
 	print "Content-type: $attach->{'type'}\n\n";
 	}
-if ($attach->{'type'} =~ /^(text\/html|image\/svg|application\/xhtml)/i) {
-	print &filter_javascript($attach->{'data'});
-	}
-else {
-	print $attach->{'data'};
-	}
+print $attach->{'data'};
 

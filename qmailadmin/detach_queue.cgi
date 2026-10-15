@@ -10,11 +10,13 @@ $mail = &read_mail_file($in{'file'});
 $attach = $mail->{'attach'}->[$in{'attach'}];
 
 print "X-no-links: 1\n";
-print "Content-type: $attach->{'type'}\n\n";
-if ($attach->{'type'} =~ /^(text\/html|image\/svg|application\/xhtml)/i) {
-	print &filter_javascript($attach->{'data'});
+if ($attach->{'type'} =~ /^text\/html/i ||
+    $attach->{'type'} =~ /^image\/svg(?:\+xml)?/i ||
+    $attach->{'type'} =~ /^application\/xhtml\+xml/i) {
+	print "Content-type: text/plain\n\n";
 	}
 else {
-	print $attach->{'data'};
+	print "Content-type: $attach->{'type'}\n\n";
 	}
+print $attach->{'data'};
 
