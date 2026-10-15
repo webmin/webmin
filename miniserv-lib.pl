@@ -739,7 +739,7 @@ if ($config{'session'} && !$deny_authentication &&
 	# A question has been entered .. submit it to the main process
 	print DEBUG "handle_request: Got call to $page ($in{'cid'})\n";
 	print DEBUG "handle_request: For PAM, authuser=$authuser\n";
-	if ($in{'answer'} =~ /\r|\n/ || $in{'cid'} =~ /\r|\n|\s/) {
+	if ($in{'answer'} =~ /\r|\n|\0/ || $in{'cid'} =~ /\r|\n|\s|\0/) {
 		&http_error(500, "Invalid response",
 		    "Response contains invalid characters");
 		}
