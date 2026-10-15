@@ -11,7 +11,7 @@ $attach = $mail->{'attach'}->[$in{'attach'}];
 
 print "X-no-links: 1\n";
 print "Content-type: $attach->{'type'}\n\n";
-if ($attach->{'type'} =~ /^text\/html/i) {
+if ($attach->{'type'} =~ /^(text\/html|image\/svg|application\/xhtml)/i) {
 	print &filter_javascript($attach->{'data'});
 	}
 else {

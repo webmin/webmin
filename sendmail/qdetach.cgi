@@ -34,7 +34,7 @@ if ($attach->{'type'} eq 'message/delivery-status') {
 else {
 	print "Content-type: $attach->{'type'}\n\n";
 	}
-if ($attach->{'type'} =~ /^text\/html/i) {
+if ($attach->{'type'} =~ /^(text\/html|image\/svg|application\/xhtml)/i) {
 	print &filter_javascript($attach->{'data'});
 	}
 else {
