@@ -9020,12 +9020,14 @@ else {
 	my ($data, $got);
 	my $rv = &remote_rpc_call($host, { 'action' => 'tcpwrite',
 					   'file' => $remotefile,
-					   'name' => $remotebase } );
+					   'name' => $remotebase,
+					   'xferauth' => 1 } );
 	my $error;
 	my $serv = !ref($host) ? $host : ($host->{'ip'} || $host->{'host'});
 	&open_socket($serv || "localhost", $rv->[1], TWRITE, \$error);
 	return &$main::remote_error_handler("Failed to transfer file : $error")
 		if ($error);
+	print TWRITE $rv->[2],"\n" if ($rv->[2]);
 	open(FILE, "<".$localfile) ||
 		return &$main::remote_error_handler("Failed to open $localfile : $!");
 	my $bs = &get_buffer_size();
@@ -9072,7 +9074,8 @@ if ($sn eq "" && ref($s) && $s->{'local'}) {
 	}
 else {
 	my $rv = &remote_rpc_call($host, { 'action' => 'tcpread',
-					   'file' => $remotefile } );
+					   'file' => $remotefile,
+					   'xferauth' => 1 } );
 	if (!$rv->[0]) {
 		return &$main::remote_error_handler("Failed to transfer file : $rv->[1]");
 		}
@@ -9081,6 +9084,7 @@ else {
 	&open_socket($serv || "localhost", $rv->[1], TREAD, \$error);
 	return &$main::remote_error_handler("Failed to transfer file : $error")
 		if ($error);
+	print TREAD $rv->[2],"\n" if ($rv->[2]);
 	my $got;
 	open(FILE, ">$localfile") ||
 		return &$main::remote_error_handler("Failed to open $localfile : $!");
