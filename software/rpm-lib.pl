@@ -54,11 +54,14 @@ local $n = $_[1] ? "$_[0]-$_[1]" : $_[0];
 @tmp = <RPM>;
 chop(@tmp);
 local $ex = close(RPM);
+&reset_environment();
 if (!@tmp || $tmp[0] =~ /not\s+installed/) { return (); }
+&clean_environment();
 &open_execute_command(RPM, "rpm -q $n --queryformat \"%{DESCRIPTION}\"", 1, 1);
 while(<RPM>) { $d .= $_; }
 close(RPM);
 &reset_environment();
+if (!@tmp || $tmp[0] =~ /not\s+installed/) { return (); }
 return ($tmp[0], $tmp[1], $d, $tmp[2], $tmp[3], $tmp[4], &make_date($tmp[5]),
 	$tmp[6]);
 }
@@ -117,11 +120,11 @@ else {
 		}
 	&clean_environment();
 	&open_execute_command(OUT, "rpm -q -p -l $qm 2>&1", 1, 1);
+	&reset_environment();
 	while(<OUT>) {
 		return 0 if (/^([^\/\s]+)\.spec$/);
 		}
 	close(OUT);
-	&reset_environment();
 	return 1;
 	}
 }
