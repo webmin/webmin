@@ -92,7 +92,10 @@ sub logged_in_users
 local @rv;
 open(WHO, "who |");
 while(<WHO>) {
-	if (/^(\S+)\s+(\S+)\s+(\S+\s+\d+\s+\d+:\d+)\s+(\((\S+)\))?/) {
+	# root  pts/0       Oct 15 02:33 (192.168.1.1)      C locale
+	# root  pts/0       2026-10-15 02:33 (192.168.1.1)  other locales
+	# root  sshd pts/0  2026-10-15 02:33 (192.168.1.1)  logind backend
+	if (/^(\S+)\s+(\S.*?)\s+(\S+\s+\d+\s+\d+:\d+|\d+-\d+-\d+\s+\d+:\d+)\s+(\((\S+)\))?/) {
 		push(@rv, { 'user' => $1, 'tty' => $2,
 			    'when' => $3, 'from' => $5 });
 		}
