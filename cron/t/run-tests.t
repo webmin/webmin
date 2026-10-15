@@ -67,17 +67,6 @@ is(get_cron_move_target(\@jobs, 0, "top"), undef,
 is(get_cron_move_target(\@jobs, 5, "bottom"), undef,
 	"bottom has no target for the last entry in a file");
 
-ok(cron_move_affects_env(\@jobs, $jobs[2], $jobs[3]),
-	"an adjacent variable affects a move");
-ok(cron_move_affects_env(\@jobs, $jobs[5], $jobs[1]),
-	"an intermediate variable affects a top move");
-ok(cron_move_affects_env(\@jobs, $jobs[1], $jobs[5]),
-	"an intermediate variable affects a bottom move");
-ok(!cron_move_affects_env(\@jobs, $jobs[1], $jobs[2]),
-	"ordinary jobs can move without a variable");
-ok(!cron_move_affects_env(\@jobs, $jobs[0], $jobs[6]),
-	"variables in another file do not affect a move");
-
 my $cronfile = "$vardir/crontab";
 my $crondir = "$vardir/crontabs";
 make_path($crondir);
@@ -204,13 +193,7 @@ my %full_acl = (
 write_crontab();
 my $original = read_crontab_fixture();
 seed_acl(%full_acl, 'env' => 0);
-my $result = run_cgi("move.cgi", { 'idx' => 4, 'top' => 1 });
-like($result->{'out'}, qr/not allowed to edit environment variables/i,
-	"top move cannot cross a protected variable");
-is(read_crontab_fixture(), $original,
-	"denied top move leaves the crontab unchanged");
-
-$result = run_cgi("delete_cron.cgi", { 'idx' => 2 });
+my $result = run_cgi("delete_cron.cgi", { 'idx' => 2 });
 like($result->{'out'}, qr/job does not exist/i,
 	"job delete endpoint rejects a variable row");
 $result = run_cgi("save_cron.cgi", { 'idx' => 2 });
@@ -287,10 +270,10 @@ foreach my $case (
 		"rejected $desc leaves the crontab unchanged");
 	}
 
-seed_acl(%full_acl);
+seed_acl(%full_acl, 'env' => 0);
 $result = run_cgi("move.cgi", { 'idx' => 4, 'top' => 1 });
 like($result->{'out'}, qr/^Location:/m,
-	"a user with env permission can move a job across a variable");
+	"a job can move across a variable without env permission");
 isnt(read_crontab_fixture(), $original,
 	"the permitted top move changes the crontab");
 

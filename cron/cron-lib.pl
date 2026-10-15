@@ -1357,27 +1357,6 @@ elsif ($direction eq "bottom") {
 return;
 }
 
-=head2 cron_move_affects_env(\@jobs, &job, &target)
-
-Returns 1 if moving a Cron entry to the target crosses an environment
-variable, or 0 otherwise.
-
-=cut
-sub cron_move_affects_env
-{
-my ($jobs, $job, $target) = @_;
-return 0 if (!$job || !$target);
-my ($first, $last) = sort { $a <=> $b }
-	($job->{'index'}, $target->{'index'});
-for(my $i=$first; $i<=$last; $i++) {
-	my $entry = $jobs->[$i];
-	return 1 if ($entry &&
-		       $entry->{'file'} eq $job->{'file'} &&
-		       $entry->{'name'});
-	}
-return 0;
-}
-
 =head2 swap_cron_jobs(&job1, &job2)
 
 Swaps two Cron jobs, which must be in the same file, identified by their

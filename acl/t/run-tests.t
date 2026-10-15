@@ -1265,6 +1265,31 @@ subtest 'CGI harness smoke' => sub {
          'error path emits an HTML error page');
 };
 
+# All SQL and LDAP user database helpers must use the dedicated SQL access
+# flag. Password-editing access alone must not allow direct CGI requests.
+subtest 'user database CGI permission gates' => sub {
+    foreach my $cgi ('schema.cgi', 'maketables.cgi', 'makedn.cgi') {
+        _reset_fixture();
+        _seed_user_acl('admin', { pass => 1, sql => 0 });
+        my $r = run_cgi($cgi, {});
+        ok(!$r->{location}, "$cgi does not redirect without SQL access");
+        like($r->{out},
+             qr/not allowed to configure the user and group database/i,
+             "$cgi rejects password-only administrators");
+    }
+
+    # The read-only schema endpoint provides a safe positive permission test.
+    _reset_fixture();
+    _seed_user_acl('admin', { pass => 0, sql => 1 });
+    my $r = run_cgi('schema.cgi', {});
+    is($r->{status}, 0, 'schema.cgi renders with SQL access');
+    unlike($r->{out},
+           qr/not allowed to configure the user and group database/i,
+           'schema.cgi accepts SQL-only administrators');
+    like($r->{out}, qr/attributetype/i,
+         'schema.cgi displays the LDAP schema');
+};
+
 # delete_user.cgi — four distinct gates. NOTE: <rootdir>/acl/defaultacl has
 # every flag set to 1, and get_module_acl merges it under the per-user ACL.
 # So each denial test must EXPLICITLY set the relevant key to 0; relying on
@@ -1447,6 +1472,40 @@ subtest 'save_user.cgi create privilege' => sub {
     ok(!get_user('newbie'),
        'new user is not created when create privilege is missing');
     delete_user('admin');
+};
+
+# Unix conversion must not bypass the privileged-name guard in save_user.cgi.
+# An ACL-capable administrator can still deliberately convert such a user.
+subtest 'convert.cgi privileged username gate' => sub {
+    _reset_fixture();
+    _seed_user_acl('operator', {
+        sync => 1, create => 1, acl => 0, gassign => '*',
+    });
+    create_group({ name => 'converted', members => [], modules => ['acl'] });
+
+    my $r = run_cgi('convert.cgi', {
+        conv => 1, users => 'root', wgroup => 'converted', sync => 1,
+    }, user => 'operator');
+    _clear_caches();
+    is($r->{status}, 0, 'conversion completes without ACL access');
+    ok(!get_user('root'),
+       'conversion skips a privileged RPC username without ACL access');
+    like($r->{out}, qr/root.*not a valid Webmin username/i,
+         'conversion reports the privileged username as invalid');
+
+    _reset_fixture();
+    _seed_user_acl('operator', {
+        sync => 1, create => 1, acl => 1, gassign => '*',
+    });
+    create_group({ name => 'converted', members => [], modules => ['acl'] });
+
+    $r = run_cgi('convert.cgi', {
+        conv => 1, users => 'root', wgroup => 'converted', sync => 1,
+    }, user => 'operator');
+    _clear_caches();
+    is($r->{status}, 0, 'conversion completes with ACL access');
+    ok(get_user('root'),
+       'ACL-capable administrator can convert a privileged username');
 };
 
 subtest 'save_user.cgi gassign whitelist' => sub {

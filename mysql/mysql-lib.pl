@@ -608,7 +608,8 @@ return $_[0] ne "information_schema" &&
 # Returns 1 if the mysql client command supports the --sandbox flag
 sub supports_sandbox_flag
 {
-my $out = &backquote_command("$config{'mysql'} --help 2>&1 </dev/null");
+my $mysql = &quote_path($config{'mysql'});
+my $out = &backquote_command("$mysql --help 2>&1 </dev/null");
 return $out =~ /--sandbox/ ? 1 : 0;
 }
 
@@ -1022,6 +1023,17 @@ if ($config{'webmin_subs'}) {
 return $rv;
 }
 
+# can_run_backup_commands(cron)
+# Returns true if this request can configure and run backup commands. Cron
+# access already permits root commands, while other Webmin users are limited
+# to commands run as their configured non-root backup user.
+sub can_run_backup_commands
+{
+my ($cron) = @_;
+return !$module_info{'usermin'} &&
+	($cron || $access{'buser'} && $access{'buser'} ne 'root');
+}
+
 # execute_before(db, handle, escape, path, db-for-config, [&as-user])
 # Executes the before-backup command for some DB, and sends output to the
 # given file handle. Returns 1 if the command succeeds, or 0 on failure
@@ -1183,20 +1195,30 @@ if (&is_readonly_mode()) {
 my $authstr = &make_authstr($user, $pass);
 my $cs = $sql_charset ? "--default-character-set=".quotemeta($sql_charset)
 			 : "";
-my $sb = &supports_sandbox_flag() ? "--sandbox" : "";
-my $temp = &transname();
+my $sandbox = &supports_sandbox_flag();
+my $sb = $sandbox ? "--sandbox" : "";
+my $init = $sandbox && $disable_session_binlog ?
+	"--init-command=".&quote_path("set session sql_log_bin = 0") : "";
 $file = &fix_collation($file);
-&open_tempfile(TEMP, ">$temp");
-if ($disable_session_binlog) {
-	# Keep an imported backup or decoded binary log out of the source log
-	&print_tempfile(TEMP, "set session sql_log_bin = 0;\n");
+
+if (!$sandbox) {
+	# Keep the more reliable source path on clients without sandbox support.
+	# Sandboxed clients must read the SQL file directly because source is blocked.
+	my $temp = &transname();
+	&open_tempfile(TEMP, ">$temp");
+	if ($disable_session_binlog) {
+		# Keep an imported backup or decoded binary log out of the source log
+		&print_tempfile(TEMP, "set session sql_log_bin = 0;\n");
+		}
+	&print_tempfile(TEMP, "source ".$file.";\n");
+	&close_tempfile(TEMP);
+	&set_ownership_permissions(undef, undef, 0644, $temp);
+	$file = $temp;
 	}
-&print_tempfile(TEMP, "source ".$file.";\n");
-&close_tempfile(TEMP);
-&set_ownership_permissions(undef, undef, 0644, $temp);
 &set_authstr_env();
-my $cmd = "$config{'mysql'} $authstr -t ".quotemeta($db)." ".$cs." ".$sb.
-	     " <".quotemeta($temp);
+my $mysql = &quote_path($config{'mysql'});
+my $cmd = "$mysql $authstr -t ".quotemeta($db)." ".$cs." ".$sb." ".$init.
+	     " <".quotemeta($file);
 if ($unixuser && $unixuser ne 'root' && $< == 0) {
 	# Restoring as a Unix user
 	$cmd = &command_as_user($unixuser, 0, $cmd);

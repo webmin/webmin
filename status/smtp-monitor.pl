@@ -1,4 +1,5 @@
-# Connect to an SMTP server, login and try to send a message
+# get_smtp_status(&service)
+# Checks an SMTP service, including optional TLS and authentication.
 
 sub get_smtp_status
 {
@@ -17,14 +18,20 @@ eval {
 	my $callpkg = (caller(0))[0];
         $h->{'fh'} = $callpkg."::".$h->{'fh'};
 	&mailboxes::smtp_command($h);
-        &mailboxes::smtp_command($h, "helo ".&get_system_hostname()."\r\n");
-	if ($ssl == 2) {
-                # Switch to SSL with STARTTLS
+	# Use EHLO for authentication or TLS, and HELO for basic SMTP
+	my $helocmd = ($serv->{'user'} || $serv->{'ssl'} ? "ehlo " : "helo ").
+		      &get_system_hostname()."\r\n";
+	&mailboxes::smtp_command($h, $helocmd);
+	if ($serv->{'ssl'} == 2) {
+                # Request a TLS upgrade with STARTTLS
                 my $rv = &mailboxes::smtp_command($h, "starttls\r\n", 1);
                 if ($rv =~ /^2\d+/) {
+			# Enable TLS and repeat the greeting on the secure connection
                         &switch_smtp_to_ssl($h);
+			&mailboxes::smtp_command($h, $helocmd);
                         }
                 else {
+			# Continue without TLS if STARTTLS is unavailable
                         $serv->{'ssl'} = 0;
                         }
                 }

@@ -10591,6 +10591,7 @@ return $rv;
 =head2 resolve_links(path, [&seen-hash])
 
 Given a path that may contain symbolic links, returns the real path.
+Stops at a cycle or after 64 link expansions, returning the unresolved path.
 
 =cut
 sub resolve_links
@@ -10599,6 +10600,8 @@ my ($path, $seen) = @_;
 $seen ||= { };
 $path =~ s/\/+/\//g;
 $path =~ s/\/$// if ($path ne "/");
+# Growing loops never repeat a full path, so also limit link expansions.
+return $path if (keys %$seen >= 64);
 my @p = split(/\/+/, $path);
 shift(@p);
 for(my $i=0; $i<@p; $i++) {
@@ -11476,10 +11479,8 @@ else {
 		# Over-writing a file, via a temp file
 		$file = $1;
 		$file = &translate_filename($file);
-		while(-l $file) {
-			# Open the link target instead
-			$file = &resolve_links($file);
-			}
+		# Resolve file and directory links once before choosing the temp path.
+		$file = &resolve_links($file);
 		if (-d $file) {
 			# Cannot open a directory!
 			if ($noerror) { return 0; }
@@ -11786,11 +11787,8 @@ $fh = &callers_package($fh);
 my $lockfile = $file;
 $lockfile =~ s/^[^\/]*//;
 if ($lockfile =~ /^\//) {
-	while(-l $lockfile) {
-		# If the file is a link, follow it so that locking is done on
-		# the same file that gets unlocked later
-		$lockfile = &resolve_links($lockfile);
-		}
+	# Resolve file and directory links so locking uses the write target.
+	$lockfile = &resolve_links($lockfile);
 	$main::open_templocks{$lockfile} = &lock_file($lockfile);
 	}
 return &open_tempfile($fh, $file, $noerror, $notemp, $safe);

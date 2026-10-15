@@ -84,6 +84,103 @@ subtest 'database listings exclude raw dot directories and preserve valid names'
 		  'filtering all SQL results does not trigger the command fallback');
 };
 
+subtest 'sandboxed SQL files use direct input' => sub {
+	no warnings 'redefine';
+	my $tmp = tempdir('webmin-mysql-sandbox-XXXXXX',
+			  DIR => '/tmp', CLEANUP => 1);
+	my $sqlfile = "$tmp/restore input.sql";
+	open(my $fh, '>', $sqlfile) or die "open($sqlfile): $!";
+	print $fh "select 1;\n";
+	close($fh) or die "close($sqlfile): $!";
+
+	my ($help_command, $sql_command);
+	local $main::config{'mysql'} = '/opt/Maria DB/bin/mariadb';
+	local $main::disable_session_binlog = 1;
+	local $main::sql_charset;
+	local *main::quote_path = sub { return "'".$_[0]."'"; };
+	local *main::backquote_command = sub {
+		$help_command = $_[0];
+		return "  --sandbox  Enable sandbox mode\n";
+		};
+	ok(main::supports_sandbox_flag(), 'sandbox support is detected');
+	is($help_command,
+	   "'/opt/Maria DB/bin/mariadb' --help 2>&1 </dev/null",
+	   'sandbox probe quotes the client path');
+
+	local *main::is_readonly_mode = sub { return 0; };
+	local *main::make_authstr = sub { return ''; };
+	local *main::fix_collation = sub { return $_[0]; };
+	local *main::supports_sandbox_flag = sub { return 1; };
+	local *main::transname = sub {
+		die "sandbox mode must not create a source wrapper";
+		};
+	local *main::set_authstr_env = sub { };
+	local *main::backquote_logged = sub {
+		$sql_command = $_[0];
+		$? = 0;
+		return '';
+		};
+	my ($status, $output) = main::execute_sql_file('mysql', $sqlfile);
+	is($status, 0, 'sandboxed SQL execution succeeds');
+	is($output, '', 'sandboxed SQL execution has no error output');
+	like($sql_command, qr/^'\/opt\/Maria DB\/bin\/mariadb' /,
+	     'SQL execution quotes the client path');
+	like($sql_command, qr/ --sandbox /,
+	     'SQL execution enables sandbox mode');
+	like($sql_command,
+	     qr/ --init-command='set session sql_log_bin = 0' /,
+	     'binary-log suppression uses an initial SQL command');
+	like($sql_command, qr/ <\Q@{[quotemeta($sqlfile)]}\E 2>&1\z/,
+	     'the SQL file is connected directly to standard input');
+	unlike($sql_command, qr/\bsource\b/,
+	       'the sandboxed command does not use source');
+};
+
+subtest 'backup commands honor the backup user privilege boundary' => sub {
+	local %main::module_info;
+	local %main::access = ( 'buser' => 'root' );
+	ok(!main::can_run_backup_commands(0),
+	   'root commands require existing cron eligibility');
+	ok(main::can_run_backup_commands(1),
+	   'cron-eligible users can run root commands');
+
+	$main::access{'buser'} = 'backupuser';
+	ok(main::can_run_backup_commands(0),
+	   'Webmin backups can run commands as a non-root backup user');
+	$main::module_info{'usermin'} = 1;
+	ok(!main::can_run_backup_commands(1),
+	   'Usermin cannot gain backup command access');
+};
+
+subtest 'backup commands run as the non-root backup user' => sub {
+	no warnings 'redefine';
+	local $main::config{'backup_before_testdb'} = 'before-command';
+	local $main::config{'backup_after_testdb'} = 'after-command';
+	my @commands;
+	local *main::command_as_user = sub {
+		my ($user, $background, $command) = @_;
+		is($background, 0, 'backup command remains synchronous');
+		return "as-$user $command";
+		};
+	local *main::execute_command = sub {
+		push(@commands, $_[0]);
+		return 0;
+		};
+
+	ok(main::execute_before('testdb', undef, 0, '/tmp/test.sql',
+				'testdb', 'backupuser'),
+	   'before command succeeds');
+	ok(main::execute_after('testdb', undef, 0, '/tmp/test.sql',
+			       'testdb', 'backupuser'),
+	   'after command succeeds');
+	is_deeply(\@commands,
+		  [ 'as-backupuser before-command',
+		    'as-backupuser after-command' ],
+		  'both commands are wrapped for the backup user');
+	is($ENV{'BACKUP_FILE'}, '/tmp/test.sql',
+	   'backup commands receive the destination path');
+};
+
 subtest 'binary log retention display round-trips exactly' => sub {
 	# The page shows seconds as days, and saving converts the shown days
 	# back with int(days * 86400 + 0.5), which must reproduce the exact

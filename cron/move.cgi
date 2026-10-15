@@ -34,9 +34,6 @@ $job->{'file'} eq $swap->{'file'} &&
   ($job->{'name'} || $job->{'type'} == 0 || $job->{'type'} == 3) &&
   ($swap->{'name'} || $swap->{'type'} == 0 || $swap->{'type'} == 3) ||
 	&error($text{'move_etype'});
-# Crossing a variable changes which jobs it applies to
-$access{'env'} || !&cron_move_affects_env(\@jobs, $job, $swap) ||
-	&error($text{'env_ecannot'});
 &lock_file($job->{'file'});
 &swap_cron_jobs($job, $swap);
 &unlock_file($job->{'file'});

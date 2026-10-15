@@ -28,6 +28,7 @@ if (!-x $cmd) {
 
 $cron = !$module_info{'usermin'} && $access{'buser'} eq 'root' &&
 	!$access{'user'} && &foreign_installed("cron");
+$commands = &can_run_backup_commands($cron);
 if ($in{'all'}) {
 	print "$text{'backup_desc3'}\n";
 	}
@@ -156,7 +157,7 @@ $b = $c{'backup_parameters_'.$in{'db'}};
 print &ui_table_row($text{'backup_parameters'},
 	&ui_textbox("parameters", $b, 60));
 
-if ($cron) {
+if ($commands) {
 	# Show before/after commands
 	$b = $c{'backup_before_'.$in{'db'}};
 	print &ui_table_row($text{'backup_before'},
@@ -175,7 +176,10 @@ if ($cron) {
 				  [ 1, $text{'backup_cmode1'} ] ]));
 		}
 
-	print &ui_hidden_table_end("opts");
+	}
+print &ui_hidden_table_end("opts");
+
+if ($cron) {
 	print &ui_hidden_table_start($text{'backup_header3'}, "width=100%", 2,
 				     "sched", 1, [ "width=30%" ]);
 
@@ -210,9 +214,6 @@ if ($cron) {
 	print &cron::get_times_input($job);
 
 	print &ui_hidden_table_end("sched");
-	}
-else {
-	print &ui_hidden_table_end("opts");
 	}
 
 if ($cron) {
