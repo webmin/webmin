@@ -14,6 +14,7 @@ local($i, $list); $i = 0;
 $list = @_ ? join(' ', map { quotemeta($_) } @_) : "-a";
 %packages = ( );
 &clean_environment();
+&clean_language();
 &open_execute_command(RPM, "rpm -q $list --queryformat \"%{NAME}\\n%{VERSION}-%{RELEASE}\\n%{EPOCH}\\n%{GROUP}\\n%{ARCH}\\n%{SUMMARY}\\n\\n\"", 1, 1);
 while(my $name = <RPM>) {
 	next if ($name =~ /is\s+not\s+installed$/);
@@ -50,6 +51,7 @@ sub package_info
 local(@rv, @tmp, $d);
 local $n = $_[1] ? "$_[0]-$_[1]" : $_[0];
 &clean_environment();
+&clean_language();
 &open_execute_command(RPM, "rpm -q $n --queryformat \"%{NAME}\\n%{GROUP}\\n%{ARCH}\\n%{VERSION}-%{RELEASE}\\n%{VENDOR}\\n%{INSTALLTIME}\\n%{URL}\\n\" 2>/dev/null", 1, 1);
 @tmp = <RPM>;
 chop(@tmp);
@@ -57,6 +59,7 @@ local $ex = close(RPM);
 &reset_environment();
 if (!@tmp || $tmp[0] =~ /not\s+installed/) { return (); }
 &clean_environment();
+&clean_language();
 &open_execute_command(RPM, "rpm -q $n --queryformat \"%{DESCRIPTION}\"", 1, 1);
 while(<RPM>) { $d .= $_; }
 close(RPM);
@@ -77,6 +80,7 @@ my $query_format =
 	'%{INSTALLTIME}\n%{DESCRIPTION}';
 
 &clean_environment();
+&clean_language();
 &open_execute_command(*RPM, "rpm -q --whatprovides $vpkg --queryformat ".
 			    "\"$query_format\" 2>/dev/null", 1, 1);
 my @tmp = <RPM>;
@@ -113,12 +117,14 @@ else {
 	# just a normal file .. check if it is an RPM and not an SRPM
 	local $qm = quotemeta($_[0]);
 	&clean_environment();
+	&clean_language();
 	$out = &backquote_command("rpm -q -p $qm 2>&1", 1);
 	&reset_environment();
 	if ($out =~ /does not appear|No such file|with major numbers|not an rpm/i || $?) {
 		return 0;
 		}
 	&clean_environment();
+	&clean_language();
 	&open_execute_command(OUT, "rpm -q -p -l $qm 2>&1", 1, 1);
 	&reset_environment();
 	while(<OUT>) {
@@ -139,6 +145,7 @@ local $qm = quotemeta($_[0]);
 if (-d $real) {
 	local @rv;
 	&clean_environment();
+	&clean_language();
 	&open_execute_command(RPM, "cd $qm ; rpm -q -p *.rpm --queryformat \"%{NAME} %{SUMMARY}\\n\" 2>&1", 1, 1);
 	while(<RPM>) {
 		chop;
@@ -151,6 +158,7 @@ if (-d $real) {
 elsif ($_[0] =~ /\*|\?/) {
 	local @rv;
 	&clean_environment();
+	&clean_language();
 	&open_execute_command(RPM, "rpm -q -p $qm --queryformat \"%{NAME} %{SUMMARY}\\n\" 2>&1", 1);
 	while(<RPM>) {
 		chop;
@@ -163,6 +171,7 @@ elsif ($_[0] =~ /\*|\?/) {
 else {
 	local($out);
 	&clean_environment();
+	&clean_language();
 	$out = &backquote_command("rpm -q -p $qm --queryformat \"%{NAME} %{SUMMARY}\\n\" 2>&1", 1);
 	&reset_environment();
 	$out =~ s/warning:.*\n//;
@@ -223,6 +232,7 @@ if (-d $real) {
 	# Find the package in the directory
 	local ($f, $out);
 	&clean_environment();
+	&clean_language();
 	opendir(DIR, $real);
 	while($f = readdir(DIR)) {
 		next if ($f !~ /\.rpm$/);
@@ -244,6 +254,7 @@ elsif ($file =~ /\*|\?/) {
 	# XXX won't work when translation is in effect
 	local ($f, $out);
 	&clean_environment();
+	&clean_language();
 	foreach $f (glob($real)) {
 		my $qf = quotemeta($f);
 		$out = &backquote_command("rpm -q -p $qf --queryformat \"%{NAME}\\n\" 2>&1", 1);
@@ -259,6 +270,7 @@ elsif ($file =~ /\*|\?/) {
 	}
 local $temp = &transname();
 &clean_environment();
+&clean_language();
 local $rv = &system_logged("rpm -i $opts ".quotemeta($file)." >$temp 2>&1");
 local $out = &backquote_command("cat $temp");
 &reset_environment();
@@ -298,6 +310,7 @@ local $temp = &transname();
 local $qm = quotemeta($file);
 $qm =~ s/\\([*?])/$1/g if ($file =~ /[\*\?]/);
 &clean_environment();
+&clean_language();
 local $rv = &system_logged("rpm -i $opts $qm >".quotemeta($temp)." 2>&1");
 local $out = &backquote_command("cat ".quotemeta($temp));
 &reset_environment();
@@ -318,6 +331,7 @@ local($i, $_, @w, %errs, $epath); $i = 0;
 local $n = $_[1] ? "$_[0]-$_[1]" : $_[0];
 local $qn = quotemeta($n);
 &clean_environment();
+&clean_language();
 &open_execute_command(RPM, "rpm -V $qn", 1, 1);
 while(<RPM>) {
 	/^(.{8}) (.) (.*)$/;
@@ -360,6 +374,7 @@ local ($pkg, $version) = @_;
 local $qn = quotemeta($version ? "$pkg-$version" : $pkg);
 local @rv;
 &clean_environment();
+&clean_language();
 &open_execute_command(RPM, "rpm -q -l $qn", 1, 1);
 while(<RPM>) {
 	s/\r|\n//g;
@@ -380,11 +395,13 @@ local($pkg, @w, $_, @pkgs, @vers);
 undef(%file);
 local $qm = quotemeta($_[0]);
 &clean_environment();
+&clean_language();
 $pkg = &backquote_command("rpm -q -f $qm --queryformat \"%{NAME}\\n\" 2>&1", 1);
 &reset_environment();
 if ($pkg =~ /not owned/ || $?) { return 0; }
 
 &clean_environment();
+&clean_language();
 @pkgs = split(/\n/, $pkg);
 $pkg = &backquote_command("rpm -q -f $qm --queryformat \"%{VERSION}-%{RELEASE}\\n\" 2>&1", 1);
 @vers = split(/\n/, $pkg);
@@ -433,6 +450,7 @@ $opts .= $_[1]->{'noscripts'} ? "--noscripts " : "";
 local $n = $_[2] ? "$_[0]-$_[2]" : $_[0];
 local $qm = quotemeta($n);
 &clean_environment();
+&clean_language();
 local $out = &backquote_logged("rpm -e $opts $qm 2>&1");
 &reset_environment();
 if ($? || $out =~ /error:/) { return "<pre>$out</pre>"; }
@@ -457,6 +475,7 @@ for($i=0; $i<@{$_[0]}; $i++) {
 		}
 	}
 &clean_environment();
+&clean_language();
 local $out = &backquote_logged("$cmd 2>&1");
 &reset_environment();
 if ($? || $out =~ /error:/) { return "<pre>$out</pre>"; }
@@ -469,6 +488,7 @@ sub package_dependencies
 {
 my ($pkg, $ver) = @_;
 &clean_environment();
+&clean_language();
 my $out = &backquote_command(
 	"rpm -qR ".quotemeta($pkg.($ver ? "-$ver" : ""))." 2>/dev/null");
 &reset_environment();
