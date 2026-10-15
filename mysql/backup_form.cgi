@@ -18,7 +18,7 @@ $access{'buser'} || &error($text{'dbase_ecannot'});
 				   : $text{'backup_title'}, "",
 	"backup_form");
 
-($cmd) = split(/\s+/, $config{'mysqldump'});
+($cmd) = &split_quoted_string($config{'mysqldump'});
 if (!-x $cmd) {
 	print &text('backup_edump', "<tt>$cmd</tt>",
 			  "../config.cgi?$module_name"),"<p>\n";
