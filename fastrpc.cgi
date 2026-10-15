@@ -211,6 +211,12 @@ while(1) {
 			elsif ($use_ipv6 && vec($rmask, fileno($tsock6), 1)) {
 				accept(TRANS, $tsock6) || exit;
 				}
+			if ($arg->{'xferauth'}) {
+				my $auth = <TRANS>;
+				exit if (!defined($auth));
+				chomp($auth);
+				exit if ($auth ne $sid);
+				}
 			print STDERR "fastrpc[$$]: tcpwrite $file accepted\n" if ($gconfig{'rpcdebug'});
 			my $buf;
 			my $err;
@@ -240,7 +246,9 @@ while(1) {
 			$xfer_kids{$cpid} = 1;
 			print STDERR "fastrpc[$$]: tcpwrite $file started\n"
 				if ($gconfig{'rpcdebug'});
-			$rv = { 'status' => 1, 'rv' => [ $file, $tport ] };
+			$rv = { 'status' => 1,
+				'rv' => [ $file, $tport,
+					  $arg->{'xferauth'} ? $sid : undef ] };
 			}
 		close($tsock);
 		close($tsock6) if ($use_ipv6);
@@ -295,6 +303,12 @@ while(1) {
 				elsif (vec($rmask, fileno($tsock6), 1)) {
 					accept(TRANS, $tsock6) || exit;
 					}
+				if ($arg->{'xferauth'}) {
+					my $auth = <TRANS>;
+					exit if (!defined($auth));
+					chomp($auth);
+					exit if ($auth ne $sid);
+					}
 				my $buf;
 				while(read(FILE, $buf, 1024) > 0) {
 					print TRANS $buf;
@@ -309,7 +323,8 @@ while(1) {
 					     "started\n"
 					     	if ($gconfig{'rpcdebug'});
 				$rv = { 'status' => 1,
-					'rv' => [ $arg->{'file'}, $tport ] };
+					'rv' => [ $arg->{'file'}, $tport,
+						  $arg->{'xferauth'} ? $sid : undef ] };
 				}
 			close(FILE);
 			close($tsock);
