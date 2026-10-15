@@ -829,6 +829,19 @@ return 1 if (!$user);
 return &set_ownership_permissions($user, undef, 0600, $file);
 }
 
+# supports_psql_restrict()
+# Returns 1 if psql supports restricted mode.
+sub supports_psql_restrict
+{
+local $out = &backquote_command(
+	&quote_path($config{'psql'})." -V 2>&1 <$null_file");
+local ($major, $minor) = $out =~ /psql.*?\s(\d+)(?:\.(\d+))?/i;
+local %minimum = ( 13 => 22, 14 => 19, 15 => 14, 16 => 10, 17 => 6 );
+return 0 if (!defined($major));
+return $major >= 18 || defined($minor) && $minimum{$major} &&
+       $minor >= $minimum{$major};
+}
+
 # execute_sql_file(database, file, [user, pass], [unix-user])
 # Executes some file of SQL statements, and returns the exit status and output
 sub execute_sql_file
@@ -841,6 +854,7 @@ if (!defined($user)) {
 	$user = $postgres_login;
 	$pass = $postgres_pass;
 	}
+&supports_psql_restrict() || return (1, $text{'exec_erestrict'});
 
 # Copy a plain PostgreSQL dump without its outer restriction wrapper.
 local (*SQLFILE, *SAFEFILE);
