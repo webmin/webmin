@@ -904,7 +904,7 @@ if ($safe_file) {
 # Restrict psql commands while executing the user-supplied file.
 local $restrict_key = &generate_miniserv_websocket_token();
 local $cmd = &quote_path($config{'psql'}).
-	     " -X -v ON_ERROR_STOP=1 -c ".
+	     " -X -c ".
 	     quotemeta("\\restrict $restrict_key").
 	     " -f ".&quote_path($file).
 	     &host_port_flags().
