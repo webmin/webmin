@@ -62,6 +62,7 @@ upload_extracted=, and extracted files ..
 upload_deleted=, and extracted files before deleting archive ..
 upload_notcomp=Not a ZIP or TAR file
 upload_eemail=Missing email address to notify
+upload_eextractacl=Archive extraction is not allowed when uploads are limited to specific directories
 upload_saving=Saving file $1 ..
 upload_saved=.. wrote $1
 upload_unzipping=Extracting file $1 ..
