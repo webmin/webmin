@@ -842,6 +842,51 @@ if (!defined($user)) {
 	$pass = $postgres_pass;
 	}
 
+# Copy a plain PostgreSQL dump without its outer restriction wrapper.
+local (*SQLFILE, *SAFEFILE);
+local ($line, $dump_key);
+open(SQLFILE, "<$file") || return (1, $text{'exec_efile'});
+while(defined($line = <SQLFILE>)) {
+	if ($line =~ /^\s*\\restrict\s+([A-Za-z0-9]+)\s*$/) {
+		$dump_key = $1;
+		last;
+		}
+	elsif ($line !~ /^\s*(?:--.*)?$/) {
+		last;
+		}
+	}
+local $safe_file;
+if ($dump_key) {
+	$safe_file = &transname();
+	&open_tempfile(SAFEFILE, ">$safe_file");
+	local ($last_line, $last_pos);
+	while(defined($line = <SQLFILE>)) {
+		if ($line =~ /\S/) {
+			$last_line = $line;
+			$last_pos = tell(SAFEFILE);
+			}
+		&print_tempfile(SAFEFILE, $line);
+		}
+	&close_tempfile(SAFEFILE);
+	if (!defined($last_line) ||
+	    $last_line !~ /^\s*\\unrestrict\s+\Q$dump_key\E\s*$/ ||
+	    !truncate($safe_file, $last_pos)) {
+		unlink($safe_file);
+		undef($safe_file);
+		}
+	}
+close(SQLFILE);
+if ($safe_file) {
+	local $fileuser = &postgresql_command_unix_user();
+	$fileuser ||= $unixuser if ($unixuser && $unixuser ne 'root' && $< == 0);
+	if ($fileuser &&
+	    !&set_ownership_permissions($fileuser, undef, 0600, $safe_file)) {
+		unlink($safe_file);
+		return (1, $text{'exec_efile'});
+		}
+	$file = $safe_file;
+	}
+
 # Restrict psql commands while executing the user-supplied file.
 local $restrict_key = &generate_miniserv_websocket_token();
 local $cmd = &quote_path($config{'psql'}).
@@ -859,6 +904,7 @@ elsif ($unixuser && $unixuser ne 'root' && $< == 0) {
 	}
 $cmd = &command_with_login($cmd, $user, $pass);
 local $out = &backquote_logged("$cmd 2>&1");
+unlink($safe_file) if ($safe_file);
 return ($out =~ /ERROR/i ? 1 : 0, $out);
 }
 
