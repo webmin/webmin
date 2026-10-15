@@ -918,8 +918,9 @@ elsif ($unixuser && $unixuser ne 'root' && $< == 0) {
 	}
 $cmd = &command_with_login($cmd, $user, $pass);
 local $out = &backquote_logged("$cmd 2>&1");
+local $ex = $? ? 1 : 0;
 unlink($safe_file) if ($safe_file);
-return ($out =~ /ERROR/i ? 1 : 0, $out);
+return ($ex || $out =~ /ERROR|backslash commands are restricted|\\unrestrict:\s+wrong key/i ? 1 : 0, $out);
 }
 
 # split_table(&titles, &checkboxes, &links, &col1, &col2, ...)
