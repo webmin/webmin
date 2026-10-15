@@ -3001,7 +3001,7 @@ my $rv = eval {
 		}
 	elsif ($str =~ /^(\d{4})\-(\d+)\-(\d+)\s+(\d+):(\d+)/) {
 		# Format like 2004-12-07 12:53
-		local $tm = timelocal(0, $4, $4, $3, $2-1,
+		local $tm = timelocal(0, $5, $4, $3, $2-1,
 				      $1 < 50 ? $1+100 : $1 < 1000 ? $1 : $1-1900);
 		return $tm;
 		}
