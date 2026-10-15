@@ -373,10 +373,7 @@ else {
 		}
         elsif ($sql =~ /^\s*\\/ ) {
 		$break_f = 1 ;
-		if ($sql !~ /^\s*\\copy\s+/ &&
-                    $sql !~ /^\s*\\i\s+/) {
-			&error ( &text ( 'r_command', ) ) ;
-			}
+		&error ( &text ( 'r_command', ) ) ;
 		}
 
 	if (@params) {
@@ -844,7 +841,13 @@ if (!defined($user)) {
 	$user = $postgres_login;
 	$pass = $postgres_pass;
 	}
-local $cmd = &quote_path($config{'psql'})." -f ".&quote_path($file).
+
+# Restrict psql commands while executing the user-supplied file.
+local $restrict_key = &generate_miniserv_websocket_token();
+local $cmd = &quote_path($config{'psql'}).
+	     " -X -v ON_ERROR_STOP=1 -c ".
+	     quotemeta("\\restrict $restrict_key").
+	     " -f ".&quote_path($file).
 	     &host_port_flags().
 	     (&supports_pgpass() ? " -U $user" : " -u").
 	     " ".$db;
