@@ -405,7 +405,7 @@ else {
 		     &host_port_flags().
 		     (!&supports_pgpass() ? " -u" :
 			" -U ".quotemeta($postgres_login)).
-		     " -c ".&quote_path($sql).
+		     " -c ".quotemeta($sql).
 		     " ".quotemeta($_[0]);
 	if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 		$cmd = &command_as_user($postgres_login, 0, $cmd);
