@@ -9192,15 +9192,6 @@ elsif ($serv_host) {
 	}
 my $ip = $serv->{'ip'} || $serv->{'host'};
 
-# Set certificate checks for either RPC transport
-my $reqs;
-if ($serv->{'checkssl'}) {
-	$reqs = { 'host' => $serv->{'host'},
-		  'self' => 1 };
-	my %sconfig = &foreign_config("servers");
-	$reqs->{'capath'} = $sconfig{'capath'} if ($sconfig{'capath'});
-	}
-
 # Work out the username and password
 my ($user, $pass);
 if ($serv->{'sameuser'}) {
@@ -9218,6 +9209,15 @@ if ($serv->{'fast'} || !$sn) {
 	# Make TCP connection call to fastrpc.cgi
 	if (!$fast_fh_cache{$sn} && $sn) {
 		# Need to open the connection
+		my $reqs;
+		if ($serv->{'checkssl'}) {
+			$reqs = { 'host' => $serv->{'host'},
+				  'self' => 1 };
+			my %sconfig = &foreign_config("servers");
+			if ($sconfig{'capath'}) {
+				$reqs->{'capath'} = $sconfig{'capath'};
+				}
+			}
 		my $con = &make_http_connection(
 			$ip, $serv->{'port'}, $serv->{'ssl'},
 			"GET", "/fastrpc.cgi", undef, undef, $reqs);
@@ -9391,8 +9391,7 @@ else {
 	my $error = 0;
 	my $tostr = &serialise_variable($str);
 	my $con = &make_http_connection($ip, $serv->{'port'},
-					$serv->{'ssl'}, "POST", "/rpc.cgi",
-					undef, undef, $reqs);
+					$serv->{'ssl'}, "POST", "/rpc.cgi");
 	return &$main::remote_error_handler("Failed to connect to $serv->{'host'} : $con") if (!ref($con));
 
 	&write_http_connection($con, "Host: $serv->{'host'}\r\n");
