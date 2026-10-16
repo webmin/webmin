@@ -1465,6 +1465,11 @@ td:not(:hover) .ui_link_help { visibility: hidden; }
 	position: relative;
 	vertical-align: top;
 }
+/* Card actions align help bubbles through ui-lib, but this theme still
+ * needs the bubble to anchor its generated tooltip. */
+.ui_card_actions .ui_help[data-tooltip][aria-label] {
+	position: relative;
+}
 [data-tooltip][aria-label]::after {
 	content: "";
 	position: absolute;
