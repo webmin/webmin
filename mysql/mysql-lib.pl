@@ -1900,25 +1900,30 @@ return $two eq "\037\213" ? 1 :
        $two eq "BZ" ? 3 : 0;
 }
 
-# backup_database(db, dest-file, compress-mode, drop-flag, where-clause,
-#                 charset, &compatible, &only-tables, run-as-user,
-#                 single-transaction-flag, quick-flag, force-flag, parameters)
-# Backs up a database to the given file, optionally with compression. Returns
-# undef on success, or an error message on failure.
+# backup_database(db, dest-file, compress-mode, drop-flag, [where-clause],
+#                 [charset], &compatible, &only-tables, [run-as-user],
+#                 single-transaction-flag, quick-flag, [force-flag],
+#                 [parameters])
+# Writes a database backup to a file, with optional compression. Returns undef
+# on success, or an error message on failure.
 sub backup_database
 {
 my ($db, $file, $compress, $drop, $where, $charset, $compatible,
        $tables, $user, $single, $quick, $force, $parameters) = @_;
 my $writer;
 if ($compress == 0) {
+	# Write an uncompressed SQL dump.
 	$writer = "cat >".quotemeta($file);
 	}
 elsif ($compress == 1) {
+	# Compress the dump with gzip while writing it.
 	$writer = "gzip -c >".quotemeta($file);
 	}
 elsif ($compress == 2) {
+	# Compress the dump with bzip2 while writing it.
 	$writer = "bzip2 -c >".quotemeta($file);
 	}
+# Build dump-client options for the requested backup behavior.
 my $dropsql = $drop ? "--add-drop-table" : "";
 my $singlesql = $single ? "--single-transaction" : "";
 my $forcesql = $force ? "--force" : "";
@@ -1928,13 +1933,15 @@ my $parameterssql = $parameters ?
 my $wheresql = $where ? "--where=".quotemeta($in{'where'}) : "";
 my $charsetsql = $charset ?
 	"--default-character-set=".quotemeta($charset) : "";
+# Quote compatibility values and table names as single shell arguments.
 my $compatiblesql = @$compatible ?
-	"--compatible=".join(",", @$compatible) : "";
+	"--compatible=".quotemeta(join(",", @$compatible)) : "";
 my $quotingsql = &supports_quoting() ? "--quote-names" : "";
 my $routinessql = &supports_routines() ? "--routines" : "";
 my $tablessql = join(" ", map { quotemeta($_) } @$tables);
 my $eventssql = &supports_mysqldump_events() ? "--events" : "";
 my $gtidsql = "";
+# Check whether the client and server need explicit GTID suppression.
 if (&supports_mysqldump_setgtid() &&
     $config{'mysqldump'} !~ /--set-gtid-purged/) {
 	eval {
@@ -1945,7 +1952,7 @@ if (&supports_mysqldump_setgtid() &&
 		if (@{$d->{'data'}} && uc($d->{'data'}->[0]->[1]) eq 'ON' &&
 		    $variant eq 'mysql' &&
 		    &compare_version_numbers($ver, "5.6") >= 0) {
-			# Add flag to support GTIDs
+			# Omit GTID_PURGED statements when backing up a GTID server.
 			$gtidsql = "--set-gtid-purged=OFF";
 			}
 		};
@@ -1955,12 +1962,15 @@ if ($user && $user ne "root") {
 	$writer = &command_as_user($user, 0, $writer);
 	}
 &set_authstr_env();
-my $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $forcesql $quicksql $parameterssql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql $eventssql $gtidsql | $writer";
+# Prevent database and table names from being parsed as dump options.
+my $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $forcesql $quicksql $parameterssql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql $eventssql $gtidsql -- ".quotemeta($db)." $tablessql | $writer";
 if (&shell_is_bash()) {
+	# Propagate dump-client failures through the output pipeline.
 	$cmd = "set -o pipefail ; $cmd";
 	}
 my $out = &backquote_logged("($cmd) 2>&1");
 if ($? || !-s $file || $out =~ /Aborted\s+connection|max_allowed_packet/i) {
+	# Return errors for command failures, empty output, or partial dumps.
 	return $out;
 	}
 return undef;

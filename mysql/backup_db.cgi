@@ -23,16 +23,30 @@ if ($in{'dest'} == 1 && $in{'all'}) {
 if ($in{'dest'} == 1 && ($in{'sched'} || $in{'save'})) {
 	&error($text{'backup_edownloadsave'});
 	}
+# Apply the path restriction to both immediate and saved backups.
+if (!$in{'dest'} && !&is_under_directory($access{'bpath'}, $in{'file'})) {
+	&error($text{'backup_epath'}."<br>".
+	       &text('backup_eunder', "<tt>$access{'bpath'}</tt>"));
+	}
+# Dump options can create files directly and bypass output restrictions.
+if ($in{'parameters'} &&
+    ($access{'bpath'} ne '/' || $access{'buser'} ne 'root')) {
+	&error($text{'backup_eparameters'});
+	}
 
+# Validate fields required to run a backup now or from a schedule.
 if (!$in{'save'} || $in{'sched'}) {
 	if ($in{'all'}) {
+		# All-database backups write one file per database into a directory.
 		-d $in{'file'} || -d &date_subs($in{'file'}) || $in{'mkdir'} ||
 			&error($text{'backup_efile2'});
 		}
 	else {
+		# A single-database file backup needs an absolute destination.
 		$in{'dest'} || $in{'file'} =~ /^\/\S+$/ ||
 			&error($text{'backup_efile'});
 		}
+	# Check optional filters, character sets, and compression programs.
 	$in{'where_def'} || $in{'where'} || &error($text{'backup_ewhere'});
 	$in{'charset_def'} || $in{'charset'} =~ /^\S+$/ ||
 		&error($text{'backup_echarset'});
@@ -40,11 +54,8 @@ if (!$in{'save'} || $in{'sched'}) {
 		$in{'compress'} == 2 ? "bzip2" : undef;
 	!$ccmd || &has_command($ccmd) ||
 		&error(&text('backup_eccmd', "<tt>$ccmd</tt>"));
-	if (!$in{'dest'} && !&is_under_directory($access{'bpath'}, $in{'file'})) {
-		&error($text{'backup_epath'}."<br>".
-		       &text('backup_eunder', "<tt>$access{'bpath'}</tt>"));
-		}
 	if (!$in{'all'} && !$in{'tables_def'}) {
+		# A custom table selection must include at least one table.
 		@tables = split(/\0/, $in{'tables'});
 		@tables || &error($text{'backup_etables'});
 		}
@@ -53,6 +64,10 @@ if (!$in{'save'} || $in{'sched'}) {
 push(@compat, split(/\0/, $in{'options'}));
 $cron = !$module_info{'usermin'} && $access{'buser'} eq 'root' &&
 	!$access{'user'} && &foreign_installed("cron");
+# Only root-backup schedulers may save shared settings.
+if (($in{'save'} || $in{'sched'}) && !$cron) {
+	&error($text{'backup_esave'});
+	}
 $commands = &can_run_backup_commands($cron);
 $cmode = 0;
 if ($commands) {
