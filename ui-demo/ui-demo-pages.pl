@@ -373,6 +373,12 @@ $rv .= ui_grid([
 				       'title' => $text{'index_badge_tip_text'} }),
 			    ui_chip('journal'),
 			    ui_chip('ipv6'),
+			    # Chips can carry a state dot for a summary line
+			    # that reads as facts rather than alerts
+			    ui_chip($text{'index_chip_cached'},
+				    { 'state' => 'success' }),
+			    ui_chip($text{'index_chip_download'},
+				    { 'state' => 'warning' }),
 			    ]),
 			# The small badge, which does not outweigh the
 			# text beside it, and the rounded one. Only

@@ -5139,7 +5139,24 @@ return &ui_page_assets().&ui_tag($tag,
 =head2 ui_chip(text, [&opts])
 
 Returns HTML for a small muted chip, such as a category or source label
-next to a list entry.
+next to a list entry, or one fact in a summary line. Options are :
+
+=item state - Shows a colored dot before the text : success, warning,
+danger, info or neutral, as for ui_badge. The chip itself stays muted,
+so a row of chips reads as one line rather than a row of alerts.
+
+=item icon - Icon name shown before the text instead of a dot.
+
+=item title - Tooltip text for the chip.
+
+=item id - HTML id for the chip.
+
+=item attrs - Hash reference of additional attributes, such as data-*
+values for a script that updates or hides the chip. The text sits in a
+span with the ui_chip_text class, so a script can replace it without
+touching the dot.
+
+=item class - Additional CSS classes.
 
 =cut
 sub ui_chip
@@ -5147,8 +5164,19 @@ sub ui_chip
 return &theme_ui_chip(@_) if (defined(&theme_ui_chip));
 my ($label, $opts) = @_;
 $opts ||= {};
-return &ui_tag('span', &html_escape($label),
-	{ 'class' => &_ui_class('ui_chip', $opts->{'class'}) });
+my $icon = "";
+if ($opts->{'state'}) {
+	$icon = &ui_tag('span', &ui_svg_icon('dot', { 'size' => 12 }),
+		{ 'class' => 'ui_chip_dot ui_fg_'.&_ui_state($opts->{'state'}) });
+	}
+elsif ($opts->{'icon'}) {
+	$icon = &ui_svg_icon($opts->{'icon'}, { 'size' => 12 });
+	}
+return &ui_tag('span',
+	$icon.&ui_tag('span', &html_escape($label), { 'class' => 'ui_chip_text' }),
+	&_ui_attrs({ %{$opts->{'attrs'} || {}},
+		     'class' => &_ui_class('ui_chip', $opts->{'class'}),
+		     'id' => $opts->{'id'}, 'title' => $opts->{'title'} }));
 }
 
 =head2 ui_list(&items, [&opts])

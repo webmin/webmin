@@ -654,6 +654,7 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 .ui_chip {
 	display: inline-flex;
 	align-items: center;
+	gap: 5px;
 	padding: 1px 8px;
 	background: var(--ui-neutral-soft);
 	border: 1px solid var(--ui-border);
@@ -663,6 +664,8 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	vertical-align: middle;
 	white-space: nowrap;
 }
+.ui_chip_dot { display: inline-flex; flex: none; }
+.ui_chip .ui_svg_icon { flex: none; }
 
 /* ---- Lists ---- */
 
