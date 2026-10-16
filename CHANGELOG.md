@@ -13,6 +13,7 @@
 * Fix mailbox attachment option injection
 * Fix path traversal and command injection in parameterized Custom Commands file editors
 * Fix MySQL/MariaDB manual editor ACL bypass
+* Fix MySQL database backups allowing restricted users to write files or save root-run settings outside their access limits
 * Fix the logged in users list in Users and Groups module showing nobody when `who` prints ISO dates under a non-C locale or `sshd pts/N` lines from the logind backend [forum.virtualmin.com/t/138162](https://forum.virtualmin.com/t/138162)
 * Fix mail date parsing of ISO dates like `2026-10-15 02:33` returning the wrong minutes
 * Add optional address-family selection to HTTP downloads and socket connections, preserved across redirects [#1300](https://github.com/virtualmin/virtualmin-gpl/issues/1300)
