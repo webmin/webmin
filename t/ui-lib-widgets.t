@@ -496,7 +496,7 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 	is(scalar(@badges), 2, 'each metadata badge is a separate element');
 	ok(!grep(!/ui_badge_small.*ui_badge_rounded/, @badges),
 		'badge rendering retains size and shape options');
-	like($html, qr/ui_chip">QCOW2</, 'plain tags still work beside badges');
+	like($html, qr/ui_chip"><span class="[^"]*\bui_chip_text">QCOW2</, 'plain tags still work beside badges');
 	my ($filter) = $html =~ /data-ui-multi-text="([^"]*)"/;
 	is(decode_attr($filter), 'Linux QCOW2 ARM64 '.$xss,
 		'filtering includes every badge label as plain text');
@@ -579,7 +579,7 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 	like($html, qr/data-ui-multi-text="B\.x Plan"/,
 		'filter text keeps the label and suffix joined for full-name searches');
 	like($html, qr/\bui_multi_level1\b/, 'level indents the row');
-	like($html, qr/ui_chip">Plan</, 'tag is a chip');
+	like($html, qr/ui_chip"><span class="[^"]*\bui_chip_text">Plan</, 'tag is a chip');
 	like($html, qr/<a (?=[^>]*\bselect_all\b)(?=[^>]*data-ui-multi-action="all")/,
 		'select all is the usual link');
 	like($html, qr/<a (?=[^>]*\bselect_invert\b)(?=[^>]*data-ui-multi-action="invert")/,
