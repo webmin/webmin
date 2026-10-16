@@ -181,6 +181,108 @@ subtest 'backup commands run as the non-root backup user' => sub {
 	   'backup commands receive the destination path');
 };
 
+subtest 'database backup arguments preserve option boundaries' => sub {
+	no warnings 'redefine';
+	# Stub dump-client capabilities and capture the generated shell command.
+	my $tmp = tempdir('webmin-mysql-backup-XXXXXX',
+			  DIR => '/tmp', CLEANUP => 1);
+	my $file = "$tmp/backup.sql";
+	my ($writer_command, $logged_command);
+	local $main::config{'mysqldump'} = '/usr/bin/mysqldump';
+	local $main::authstr = '';
+	local *main::supports_quoting = sub { return 0; };
+	local *main::supports_routines = sub { return 0; };
+	local *main::supports_mysqldump_events = sub { return 1; };
+	local *main::supports_mysqldump_setgtid = sub { return 0; };
+	local *main::set_authstr_env = sub { };
+	local *main::shell_is_bash = sub { return 1; };
+	# Capture the writer before the backup user wrapper is applied.
+	local *main::command_as_user = sub {
+		my ($user, $background, $command) = @_;
+		is($user, 'backupuser', 'the configured backup user is used');
+		is($background, 0, 'the backup remains synchronous');
+		$writer_command = $command;
+		return 'wrapped-writer-command';
+		};
+	# Simulate a successful dump while retaining its complete command.
+	local *main::backquote_logged = sub {
+		$logged_command = $_[0];
+		open(my $fh, '>', $file) or die "open($file): $!";
+		print $fh "dump\n";
+		close($fh) or die "close($file): $!";
+		$? = 0;
+		return '';
+		};
+
+	# Use option-shaped values to verify each argument boundary.
+	my $parameter = '--skip-comments';
+	my $table = '--result-file=/root/forged-table';
+	my $compatible = 'ansi --result-file=/root/forged-option; false';
+	my $error = main::backup_database('testdb', $file, 0, 0, undef,
+		undef, [ $compatible ], [ $table ], 'backupuser',
+		0, 0, 0, $parameter);
+	ok(!defined($error), 'the backup succeeds');
+	like($logged_command, qr/\Q@{[quotemeta($parameter)]}\E .* -- testdb \Q@{[quotemeta($table)]}\E \|/,
+	     'database and table names follow the end-of-options marker');
+	like($logged_command, qr/ --events .* -- testdb /,
+	     'generated dump options precede the end-of-options marker');
+	like($logged_command, qr/ --compatible=\Q@{[quotemeta($compatible)]}\E /,
+	     'the complete compatibility value is a single shell argument');
+	is($writer_command, 'cat >'.quotemeta($file),
+	   'only the output writer changes user, preserving database authentication');
+};
+
+subtest 'backup CGI enforces restrictions before saving or running' => sub {
+	no warnings 'redefine';
+	# Stub external Webmin services while running the real validation code.
+	local $INC{'./mysql-lib.pl'} = 1;
+	local %main::text = map { $_ => $_ } qw(backup_epath backup_eunder
+		backup_eparameters backup_esave);
+	local *main::ReadParse = sub { };
+	local *main::error_setup = sub { };
+	local *main::error = sub { die "$_[0]\n"; };
+	local *main::text = sub { return $_[0]; };
+	local *main::is_under_directory = sub {
+		return $_[0] eq '/' || index($_[1], $_[0].'/') == 0;
+		};
+	local *main::foreign_installed = sub { return 1; };
+	local *main::save_module_config = sub { die "SAVED\n"; };
+	local *main::ui_print_header = sub { die "VALIDATED\n"; };
+	local *main::list_databases = sub { return ('testdb'); };
+
+	# Test each restriction independently and in representative combinations.
+	foreach my $case (
+		[ 'saved destination outside allowed path', 'nobody', '/allowed',
+		  { save => 1, file => '/outside/dump' }, 'backup_epath' ],
+		[ 'restricted user saves shared hook', 'nobody', '/allowed',
+		  { save => 1, before => 'id' }, 'backup_esave' ],
+		[ 'restricted user schedules shared hook', 'nobody', '/allowed',
+		  { sched => 1, after => 'id' }, 'backup_esave' ],
+		[ 'restricted user saves all-database settings', 'nobody', '/',
+		  { save => 1, all => 1, before => 'id' }, 'backup_esave' ],
+		[ 'parameter with restricted output path', 'root', '/allowed',
+		  { parameters => '--result-file=/outside/dump' }, 'backup_eparameters' ],
+		[ 'restricted user parameter', 'nobody', '/',
+		  { parameters => '-r/outside/dump' }, 'backup_eparameters' ],
+		[ 'valid confined backup', 'nobody', '/allowed',
+		  { before => 'id' }, 'VALIDATED' ],
+		[ 'valid root backup without cron access', 'root', '/',
+		  {}, 'VALIDATED' ],
+		) {
+		my ($name, $user, $path, $input, $expected) = @$case;
+		local %main::module_info;
+		local %main::config;
+		local %main::access = ( dbs => 'testdb', buser => $user,
+			bpath => $path, user => 'dbuser' );
+		local %main::in = ( db => 'testdb', file => '/allowed/backup.sql',
+			where_def => 1, charset_def => 1, compatible_def => 1,
+			tables_def => 1, %$input );
+		local @main::tables;
+		do './mysql/backup_db.cgi';
+		like($@, qr/^\Q$expected\E\b/, $name);
+		}
+};
+
 subtest 'binary log retention display round-trips exactly' => sub {
 	# The page shows seconds as days, and saving converts the shown days
 	# back with int(days * 86400 + 0.5), which must reproduce the exact
