@@ -490,6 +490,11 @@ textarea + input[type="radio"],
 button + input[type="radio"] {
 	margin-left: 10px;
 }
+/* Keep controls on the line below a text area from touching it. */
+textarea + br + input[type="checkbox"],
+textarea + br + input[type="radio"] {
+	margin-top: 8px;
+}
 input[type="file"] { font: inherit; }
 /* Labels of checkboxes inside bold cells stay plain */
 .ui_form_value td > b > input + label + tt,
@@ -1485,6 +1490,8 @@ td:not(:hover) .ui_link_help { visibility: hidden; }
 	pointer-events: none;
 	opacity: 0;
 	visibility: hidden;
+	/* Keep a tooltip near the top above the sticky page header. */
+	z-index: 10;
 }
 [data-tooltip][aria-label]::before {
 	content: attr(aria-label);
@@ -1501,17 +1508,25 @@ td:not(:hover) .ui_link_help { visibility: hidden; }
 	font-weight: normal;
 	text-align: center;
 	text-shadow: none;
-	word-break: break-all;
+	/* Wrap between words, breaking one only when it is too long. */
+	overflow-wrap: anywhere;
 	transform: translateX(50%);
 	pointer-events: none;
 	opacity: 0;
 	visibility: hidden;
+	z-index: 10;
 }
 [data-tooltip][aria-label]:hover::before,
 [data-tooltip][aria-label]:hover::after {
 	visibility: visible;
 	opacity: 1;
 	transition-duration: 0.5s;
+}
+/* Opacity gives the tooltip trigger its own stacking context. Raise that
+ * context while the tooltip is visible, because raising its children alone
+ * cannot place them above the sticky header. */
+[data-tooltip][aria-label]:hover {
+	z-index: 10;
 }
 
 /* ---- Inline disclosures (ui_details) ---- */
