@@ -1,8 +1,9 @@
 /*
  * ui-lib.css
  * Stylesheet for the widgets added to ui-lib.pl: page header, grids,
- * cards, stat tiles, description lists, badges, action buttons, chips, lists, activity
- * feeds, empty states, progress bars, toggles, search boxes and the
+ * section titles, cards, stat tiles, description lists, badges, action
+ * buttons, chips, lists, activity feeds, empty states, progress bars,
+ * toggles, segmented controls, search boxes, stacked fields and the
  * boxed choice, radio list and select switch widgets.
  *
  * Widgets use their own classes, with shared spacing and margin resets
@@ -44,6 +45,9 @@
 	--ui-accent: var(--link-color, #0b46ab);
 	--ui-accent-soft: var(--element-highlight-bg-color, #e8f1fb);
 	--ui-ring: var(--border-color-focused, rgba(11, 70, 171, 0.25));
+	/* Filled primary controls : the theme's accent fill under white text */
+	--ui-primary: var(--toggle-bg-color-checked, var(--ui-accent));
+	--ui-primary-text: #ffffff;
 
 	/* States. The base color is used for icons, dots and bars; the
 	 * -text variant is a darker shade for text sitting on the -soft
@@ -127,6 +131,7 @@
 	--ui-accent: #5aa2ec;
 	--ui-accent-soft: rgba(90, 162, 236, 0.14);
 	--ui-ring: rgba(90, 162, 236, 0.35);
+	--ui-primary: var(--toggle-bg-color-checked, #2f6fdb);
 	--ui-success: #7ec563;
 	--ui-success-text: #8fd376;
 	--ui-success-soft: rgba(126, 197, 99, 0.13);
@@ -173,6 +178,7 @@
 		--ui-accent: #5aa2ec;
 		--ui-accent-soft: rgba(90, 162, 236, 0.14);
 		--ui-ring: rgba(90, 162, 236, 0.35);
+		--ui-primary: var(--toggle-bg-color-checked, #2f6fdb);
 		--ui-success: #7ec563;
 		--ui-success-text: #8fd376;
 		--ui-success-soft: rgba(126, 197, 99, 0.13);
@@ -229,6 +235,8 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 ))) {
 	margin-top: var(--ui-gap);
 }
+.ui_page >
+	:is(.ui_grid, .ui_stack, .ui_card, .ui_empty, .ui_stats) + *,
 .ui_page :not(.ui_grid, .ui_stack, .ui_cluster, .ui_stats) >
 	* + :is(.ui_grid, .ui_stack, .ui_card, .ui_empty, .ui_stats),
 .ui_page :not(.ui_grid, .ui_stack, .ui_cluster, .ui_stats) >
@@ -245,7 +253,9 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 .ui_progress *, .ui_toggle, .ui_toggle *,
 .ui_search, .ui_search *, .ui_dropdown, .ui_dropdown *,
 .ui_dialog, .ui_dialog_head, .ui_dialog_body, .ui_dialog_foot, .ui_dialog_x,
-.ui_breadcrumb, .ui_breadcrumb *, .ui_pager, .ui_pager * {
+.ui_breadcrumb, .ui_breadcrumb *, .ui_pager, .ui_pager *,
+.ui_section_title, .ui_section_title *, .ui_segmented, .ui_segmented *,
+.ui_field, .ui_field * {
 	box-sizing: border-box;
 }
 .ui_page h1, .ui_page h2, .ui_page p, .ui_page dl, .ui_page dd { margin: 0; }
@@ -255,7 +265,7 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
  * links next to chips and badges. Theme buttons made of ui_link are not. */
 .ui_dl_row dd a:not(.ui_link), .ui_feed_text a:not(.ui_link),
 .ui_list_desc a:not(.ui_link), .ui_empty_desc a:not(.ui_link),
-.ui_card_desc a:not(.ui_link) {
+.ui_card_desc a:not(.ui_link), .ui_field_help a:not(.ui_link) {
 	text-decoration: underline;
 	text-underline-offset: 0.15em;
 }
@@ -415,6 +425,11 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 	/* Let taller controls use the space below the title. */
 	margin-bottom: calc(var(--ui-gap) * -1.5);
 }
+/* Keep superscript-based help controls aligned with other card actions. */
+.ui_card_actions .ui_help {
+	position: static;
+	vertical-align: middle;
+}
 .ui_card_body {
 	padding: 3px 7px 7px;
 	flex: 1;
@@ -422,12 +437,79 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 }
 .ui_card_body.ui_card_flush { padding: 1px 0 0; }
 .ui_card_head + .ui_card_body.ui_card_flush { padding-top: 3px; }
+/* Flush content follows the card's corners, which a theme may round, so
+ * a highlighted first or last row does not stick out of the card. Each
+ * level inherits the corners it touches; a square card passes on zero. */
+.ui_card > .ui_card_body:first-child {
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+.ui_card > .ui_card_body:last-child {
+	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
+}
+.ui_card_flush > :is(.ui_list, .ui_feed) { border-radius: inherit; }
+.ui_list > .ui_list_item:first-child {
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+.ui_list > .ui_list_item:last-child {
+	border-bottom-left-radius: inherit;
+	border-bottom-right-radius: inherit;
+}
 .ui_card_foot {
 	border-top: 1px solid var(--ui-border-soft);
 	padding: 5px;
 	color: var(--ui-fg-muted);
 	font-size: 0.93em;
 }
+
+/* ---- Section titles ----
+ * A small uppercase heading over a group of widgets, with room for a
+ * link or button at its right. It stands off from what precedes it and
+ * sits close to what it names. */
+.ui_section_title {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 4px 16px;
+	padding: 0 1px;
+	/* The gap to what the title names is the title's own, so it does not
+	 * depend on the next block carrying a top margin; between blocks the
+	 * two margins collapse into one */
+	margin-bottom: calc(var(--ui-gap) / 2);
+}
+/* Stacks space their children with a flex gap, which does not collapse */
+.ui_stack > .ui_section_title { margin-bottom: 0; }
+.ui_section_title_text {
+	margin: 0;
+	color: var(--ui-fg-muted);
+	font-size: 0.75em;
+	font-weight: 650;
+	letter-spacing: 0.08em;
+	line-height: 1.6;
+	text-transform: uppercase;
+}
+.ui_section_title_actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--ui-fg-muted);
+}
+/* A plain link among the actions is drawn small and muted; a small
+ * ui_action_button keeps its own size */
+.ui_section_title_actions a:not(.ui_link, .ui_action) {
+	color: var(--ui-fg-muted);
+	font-size: 0.86em;
+	text-decoration: none;
+}
+.ui_section_title_actions a:not(.ui_link, .ui_action):hover {
+	color: var(--ui-accent);
+	text-decoration: underline;
+	text-underline-offset: 0.15em;
+}
+.ui_page > * + .ui_section_title { margin-top: calc(var(--ui-gap) * 2); }
 
 /* ---- Stat tiles ---- */
 
@@ -616,6 +698,17 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	--ui-action-soft: var(--ui-info-soft);
 	--ui-action-line: var(--ui-info-line);
 }
+/* The one main action of a form : filled with the accent, so it brightens
+ * on hover instead of taking the white border of the other states */
+:is(button, a, summary).ui_action_primary {
+	--ui-action-text: var(--ui-primary-text);
+	--ui-action-soft: var(--ui-primary);
+	--ui-action-line: var(--ui-primary);
+}
+.ui_action_primary:not(:disabled):not([aria-disabled="true"]):hover .ui_action_content {
+	border-color: var(--ui-action-line);
+	filter: brightness(1.1);
+}
 /* Size and shape are independent, for both native element types. */
 .ui_action_small .ui_action_content {
 	padding: 0 8px 0 7px;
@@ -705,6 +798,12 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	padding-top: 1px;
 }
 .ui_list_meta { color: var(--ui-fg-muted); font-size: 0.9em; }
+/* Stacked rows put the actions under the meta text, both at the right */
+.ui_list_stacked .ui_list_side {
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 4px;
+}
 /* Badges in list rows are small, so they do not outweigh the text */
 .ui_list_item .ui_badge {
 	padding: 0 8px;
@@ -722,6 +821,44 @@ a.ui_list_link, a.ui_list_link:hover {
 	text-decoration: none !important;
 }
 a.ui_list_link:hover { color: var(--ui-accent) !important; }
+/* Icons in square tiles, for rows of files or databases */
+.ui_list_icon_box .ui_list_icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: none;
+	align-self: center;
+	width: 2.25em;
+	height: 2.25em;
+	padding: 0;
+	border: 1px solid var(--ui-border-soft);
+	background: var(--ui-surface-2);
+}
+.ui_list_icon_box .ui_list_icon .ui_svg_icon { width: 18px; height: 18px; }
+/* The chevron of a navigation row is stretched over the row, so the
+ * whole entry opens its link; other links and controls stay on top */
+.ui_list_chevron {
+	display: inline-flex;
+	align-self: center;
+	color: var(--ui-fg-muted);
+	text-decoration: none !important;
+}
+.ui_list_item:has(.ui_list_chevron) { position: relative; }
+.ui_list_chevron::after { content: ""; position: absolute; inset: 0; }
+.ui_list_item:has(.ui_list_chevron)
+	:is(a, button, input, select, textarea, label, summary):not(.ui_list_chevron) {
+	position: relative;
+	z-index: 1;
+}
+.ui_list_item:has(.ui_list_chevron):hover { background: var(--ui-surface-2); }
+.ui_list_item:has(.ui_list_chevron):hover .ui_list_chevron { color: var(--ui-accent); }
+/* Icon tiles and inline code share the highlight shade, so on a
+ * highlighted row they step one shade further to stay visible */
+.ui_list_icon_box .ui_list_item:has(.ui_list_chevron):hover .ui_list_icon,
+.ui_list_item:has(.ui_list_chevron):hover .ui_code {
+	background: var(--ui-border-soft);
+	border-color: var(--ui-border);
+}
 
 /* ---- Activity feed ---- */
 
@@ -1151,6 +1288,73 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 .ui_toggle input:disabled ~ .ui_toggle_track,
 .ui_toggle:has(input:disabled) .ui_toggle_track { opacity: 0.5; }
 
+/* ---- Segmented control ----
+ * Radio buttons drawn as one row of joined buttons. As for the toggle,
+ * the real input - or a theme's wrapper around it - is parked invisibly
+ * over its label, and the selected state is read with :has(). */
+.ui_segmented {
+	display: inline-flex;
+	align-items: stretch;
+	max-width: 100%;
+	padding: 2px;
+	gap: 2px;
+	border: 1px solid var(--ui-border);
+	background: var(--ui-surface-2);
+	vertical-align: middle;
+}
+.ui_segment {
+	position: relative;
+	display: inline-flex;
+	margin: 0;
+	cursor: pointer;
+	font-weight: normal;
+}
+.ui_segment > :not(.ui_segment_label),
+.ui_segment input {
+	position: absolute !important;
+	inset: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	opacity: 0 !important;
+	overflow: hidden;
+	z-index: 1;
+	cursor: pointer;
+}
+.ui_segment_label {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	padding: 2px 10px;
+	border: 1px solid transparent;
+	color: var(--ui-fg-muted);
+	font-size: 0.9em;
+	font-weight: 600;
+	line-height: 1.5;
+	white-space: nowrap;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+.ui_segment_label .ui_svg_icon { width: 1em; height: 1em; }
+.ui_segmented_small .ui_segment_label {
+	padding: 0 8px;
+	font-size: 0.8em;
+	line-height: 1.25;
+}
+.ui_segment:hover .ui_segment_label { color: var(--ui-fg); }
+.ui_segment input:checked ~ .ui_segment_label,
+.ui_segment:has(input:checked) .ui_segment_label {
+	background: var(--ui-surface);
+	border-color: var(--ui-border);
+	color: var(--ui-fg);
+}
+.ui_segment input:focus-visible ~ .ui_segment_label,
+.ui_segment:has(input:focus-visible) .ui_segment_label {
+	box-shadow: 0 0 0 3px var(--ui-ring);
+}
+.ui_segment_disabled { opacity: 0.5; }
+.ui_segment_disabled, .ui_segment_disabled input { cursor: not-allowed; }
+
 /* ---- Search box ---- */
 
 .ui_search {
@@ -1183,6 +1387,32 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	border-color: var(--ui-accent);
 	box-shadow: 0 0 0 3px var(--ui-ring);
 }
+
+/* ---- Stacked fields ----
+ * A label above its control and a help line under it. Text inputs in
+ * the control row take the width left by the buttons after them. */
+.ui_field { display: grid; gap: 4px; min-width: 0; }
+.ui_field_label {
+	margin: 0;
+	font-size: 0.93em;
+	font-weight: 600;
+}
+.ui_field_control {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	min-width: 0;
+}
+.ui_field_control > :is(input:not([type="button"], [type="submit"],
+	[type="reset"], [type="checkbox"], [type="radio"], [type="image"]),
+	select, textarea, .ui_search) {
+	flex: 1 1 12em;
+	min-width: 0;
+	width: auto;
+}
+.ui_field_help { color: var(--ui-fg-muted); font-size: 0.93em; }
+.ui_page .ui_field + .ui_field { margin-top: calc(var(--ui-gap) * 1.5); }
 
 /* ---- Multiple selection ----
  * Scrollable checkbox lists, also usable outside .ui_page. */

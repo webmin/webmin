@@ -4238,9 +4238,10 @@ return $rv;
 =head1 Widgets
 
 The functions below add the UI elements that were missing from this
-library — cards, layout grids, description lists, stat tiles, badges,
-lists, activity feeds, empty states, progress bars, drop-down menus,
-dialogs, breadcrumbs and page links — styled by the widget stylesheet
+library — cards, layout grids, section titles, description lists, stat
+tiles, badges, lists, activity feeds, empty states, progress bars,
+segmented controls, stacked fields, drop-down menus, dialogs, breadcrumbs
+and page links — styled by the widget stylesheet
 served from C<unauthenticated/css/ui-lib.css> with a small behavior
 script in C<unauthenticated/js/ui-lib.js>.
 
@@ -4353,6 +4354,7 @@ my %ui_svg_icons = (
 	'clock'          => 'M8 14.25A6.25 6.25 0 1 0 8 1.75a6.25 6.25 0 0 0 0 12.5z|M8 4.8V8l2.2 1.4',
 	'star'           => 'M8 1.5l2 4.1 4.5.7-3.25 3.2.75 4.5L8 11.9l-4 2.1.75-4.5L1.5 6.3 6 5.6z',
 	'hard-drive'     => 'M3 2.5h10l1.5 7v4H1.5v-4z|M1.5 9.5h13|M4 11.5h.01|M7 11.5h.01',
+	'database'       => 'M8 6.3c3 0 5.4-.9 5.4-2s-2.4-2-5.4-2-5.4.9-5.4 2 2.4 2 5.4 2z|M2.6 4.3v7.4c0 1.1 2.4 2 5.4 2s5.4-.9 5.4-2V4.3|M2.6 8c0 1.1 2.4 2 5.4 2s5.4-.9 5.4-2',
 	'shield'         => 'M8 1.8l5.2 2v4c0 3.2-2.2 5.3-5.2 6.4C4.8 13.1 2.8 11 2.8 7.8v-4z',
 	'server'         => 'M2 3.2h12v4.2H2z|M2 8.6h12v4.2H2z|M4.6 5.3h.01|M4.6 10.7h.01',
 	'gear'           => 'M8 10.4a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8z|M8 1.8v2|M8 12.2v2|M1.8 8h2|M12.2 8h2|M3.6 3.6L5 5|M11 11l1.4 1.4|M12.4 3.6L11 5|M5 11l-1.4 1.4',
@@ -4764,6 +4766,41 @@ return &_ui_block('div', join("\n", @items), &_ui_attrs({
 	'style' => $opts->{'gap'} ? "--ui-gap:".$opts->{'gap'} : undef }));
 }
 
+=head2 ui_section_title(title, [&opts])
+
+Returns HTML for a small uppercase heading above a group of widgets,
+such as a card or a list, with optional links or buttons at its right.
+It names a part of a page without the weight of a card header. Options
+are :
+
+=item title_html - Pre-built HTML in place of the title text.
+
+=item actions - HTML (or array ref of fragments) shown at the right,
+such as a link that clears or adds to the group below.
+
+=item class - Additional CSS classes.
+
+=item id - HTML id for the heading row.
+
+=cut
+sub ui_section_title
+{
+return &theme_ui_section_title(@_) if (defined(&theme_ui_section_title));
+my ($title, $opts) = @_;
+$opts ||= {};
+my $text = &_ui_text({ 'title' => $title,
+		       'title_html' => $opts->{'title_html'} }, 'title');
+my $actions = &_ui_join($opts->{'actions'});
+return "" if (!defined($text) && !$actions);
+my $rv = &ui_tag('h2', defined($text) ? $text : "",
+		 { 'class' => 'ui_section_title_text' });
+$rv .= &ui_tag('div', $actions, { 'class' => 'ui_section_title_actions' })
+	if ($actions);
+return &_ui_block('div', $rv, &_ui_attrs({
+	'class' => &_ui_class('ui_section_title', $opts->{'class'}),
+	'id' => $opts->{'id'} }));
+}
+
 ####################### card functions
 
 # _ui_card_head(&opts)
@@ -5050,9 +5087,10 @@ return &ui_tag('span', $icon.&ui_tag('span', &html_escape($label)),
 
 Returns a native button, or a link when href is supplied, with the colors
 and compact appearance of ui_badge. State accepts the same values and
-aliases as ui_badge and defaults to neutral. Labels are plain text.
-The ui_action classes are separate from the existing theme button classes.
-Options are :
+aliases as ui_badge and defaults to neutral; the extra state primary
+draws a filled button in the theme's accent color, for the one main
+action of a form. Labels are plain text. The ui_action classes are
+separate from the existing theme button classes. Options are :
 
 =item href - Destination URL. When present, renders an <a> instead of a
 <button>. Use links for navigation and buttons for form actions.
@@ -5067,6 +5105,9 @@ for links. An ordinary button needs a caller-provided event handler.
 
 =item icon - SVG icon name. Defaults to the state's badge icon. An empty
 string suppresses the icon. Set dot to 1 to use a dot instead.
+
+=item icon_after - Set to 1 to show the icon after the label, as for a
+forward arrow.
 
 =item disabled - Disables a button. A disabled link has no destination,
 is marked aria-disabled and is removed from keyboard navigation.
@@ -5089,7 +5130,8 @@ sub ui_action_button
 return &theme_ui_action_button(@_) if (defined(&theme_ui_action_button));
 my ($label, $state, $opts) = @_;
 $opts ||= {};
-$state = &_ui_state($state);
+# Primary is the filled accent button, outside the badge states.
+$state = ($state || '') eq 'primary' ? 'primary' : &_ui_state($state);
 my $size = ($opts->{'size'} || '') =~ /\A(?:small|normal|large)\z/
 	? $opts->{'size'} : 'normal';
 my $shape = ($opts->{'shape'} || '') =~ /\A(?:square|rounded|pill)\z/
@@ -5131,8 +5173,9 @@ else {
 	my $name = defined($opts->{'icon'}) ? $opts->{'icon'} : $ui_state_icons{$state};
 	$icon = &ui_svg_icon($name) if ($name);
 	}
+my $label_html = &ui_tag('span', &html_escape($label));
 return &ui_page_assets().&ui_tag($tag,
-	&ui_tag('span', $icon.&ui_tag('span', &html_escape($label)),
+	&ui_tag('span', $opts->{'icon_after'} ? $label_html.$icon : $icon.$label_html,
 		{ 'class' => 'ui_action_content' }), \%attrs);
 }
 
@@ -5204,10 +5247,19 @@ after the description.
 
 =item state - Optional state name, which colors the icon.
 
+=item chevron - Set to 1 to end the row with a chevron and make the whole
+row open href, for entries that lead to another page.
+
 Options are :
 
 =item flush - Set to 1 when the list fills a flush card body, extending
 row separators to the card edges.
+
+=item icon_box - Set to 1 to draw each entry's icon in a small square
+tile, which gives rows of files or databases more weight.
+
+=item stacked - Set to 1 to put each entry's actions under its meta text,
+aligned to the right, instead of beside it.
 
 =item class - Additional CSS classes.
 
@@ -5256,10 +5308,20 @@ foreach my $item (@$items) {
 			&ui_tag('span', $meta, { 'class' => 'ui_list_meta' }) : "").
 		$actions,
 		{ 'class' => 'ui_list_side' }) if (defined($meta) || $actions);
+
+	# A chevron repeating the title link, hidden from assistive technology
+	# since the title already carries it; the stylesheet stretches it over
+	# the row so the whole entry is clickable
+	$row .= &ui_tag('a', &ui_svg_icon('chevron-right'),
+		{ 'class' => 'ui_list_chevron', 'href' => $item->{'href'},
+		  'aria-hidden' => 'true', 'tabindex' => '-1' })
+		if ($item->{'chevron'} && $item->{'href'});
 	$body .= &_ui_block('div', $row, { 'class' => 'ui_list_item' });
 	}
 return &_ui_block('div', $body, {
 	'class' => &_ui_class('ui_list', $opts->{'flush'} ? 'ui_list_flush' : undef,
+			      $opts->{'icon_box'} ? 'ui_list_icon_box' : undef,
+			      $opts->{'stacked'} ? 'ui_list_stacked' : undef,
 			      $opts->{'class'}) });
 }
 
@@ -5627,6 +5689,90 @@ return &ui_tag('label', $body,
 		$opts->{'class'}) });
 }
 
+=head2 ui_segmented(name, value, &options, [&opts])
+
+Returns HTML for a row of joined buttons of which one is selected,
+submitted like a group of radio buttons : the compact form of ui_radio
+for two to four short choices, such as a mode or a view, which fits in
+a card header or a toolbar. Each option is C<[ value, label ]> or a hash
+reference with keys :
+
+=item value - Value submitted when this option is selected.
+
+=item label - Option text (or label_html for pre-built HTML).
+
+=item icon - Optional icon name shown before the label.
+
+=item title - Tooltip for the option.
+
+=item disabled - Set to 1 to disable this option.
+
+The first option is selected when the value matches none of them, so
+one button is always down. Options are :
+
+=item size - small or normal (the default).
+
+=item disabled - Set to 1 to disable the whole control.
+
+=item form - Id of the form the buttons belong to, when outside it.
+
+=item class, id - As for other widgets.
+
+The buttons are native radio inputs, parked invisibly over their labels
+as the toggle switch does, so themes that wrap radio inputs in their own
+markup keep working, and the arrow keys move between options.
+
+=cut
+sub ui_segmented
+{
+return &theme_ui_segmented(@_) if (defined(&theme_ui_segmented));
+my ($name, $value, $options, $opts) = @_;
+$opts ||= {};
+# Accept [ value, label ] pairs as well as option hashes.
+my @options = map { ref($_) eq 'ARRAY' ?
+			{ 'value' => $_->[0], 'label' => $_->[1] } : $_ }
+		  grep { ref($_) eq 'ARRAY' || ref($_) eq 'HASH' }
+		       @{$options || []};
+return "" if (!@options);
+# Fall back to the first option so that one button is always selected.
+if (!defined($value) ||
+    !(grep { (defined($_->{'value'}) ? $_->{'value'} : '') eq $value }
+	   @options)) {
+	$value = defined($options[0]->{'value'}) ? $options[0]->{'value'} : '';
+	}
+my $body = "";
+foreach my $o (@options) {
+	my $oval = defined($o->{'value'}) ? $o->{'value'} : '';
+	my $disabled = $opts->{'disabled'} || $o->{'disabled'};
+	my $attrs = &_ui_attrs({
+		'type' => 'radio',
+		'name' => $name,
+		'form' => $opts->{'form'} });
+	# An empty value must be submitted as empty, not as the browser's
+	# default of "on"
+	$attrs->{'value'} = $oval;
+	$attrs->{'checked'} = undef if ($oval eq $value);
+	$attrs->{'disabled'} = undef if ($disabled);
+	my $label = &_ui_text($o, 'label');
+	$label = &html_escape($oval) if (!defined($label));
+	$label = &ui_svg_icon($o->{'icon'}).$label if ($o->{'icon'});
+	$body .= &ui_tag('label',
+		&ui_tag('input', undef, $attrs).
+		&ui_tag('span', $label, { 'class' => 'ui_segment_label' }),
+		&_ui_attrs({
+			'class' => &_ui_class('ui_segment',
+				$disabled ? 'ui_segment_disabled' : undef),
+			'title' => $o->{'title'} }));
+	}
+return &ui_tag('div', $body, &_ui_attrs({
+	'class' => &_ui_class('ui_segmented',
+			      ($opts->{'size'} || '') eq 'small' ?
+				'ui_segmented_small' : undef,
+			      $opts->{'class'}),
+	'role' => 'radiogroup',
+	'id' => $opts->{'id'} }));
+}
+
 =head2 ui_search(&opts)
 
 Returns HTML for a search input with a magnifying-glass icon. Options
@@ -5675,6 +5821,47 @@ return &ui_tag('span',
 	&_ui_attrs({ 'class' => 'ui_search',
 		     'style' => $opts->{'width'} ?
 				"width:".$opts->{'width'} : undef }));
+}
+
+=head2 ui_field(label, input-html, [&opts])
+
+Returns HTML for one form field laid out vertically : the label above
+the control and an optional help line under it, as the fields of a card
+or a dialog are laid out when a label column would waste the width. The
+control is raw HTML from ui_textbox, ui_select and friends, and may hold
+several inputs, such as a text box followed by a chooser button; text
+inputs stretch to the available width and buttons keep their size.
+Options are :
+
+=item for - Id of the input the label is for, which ui_textbox and most
+input functions set to the input name.
+
+=item help - Explanation shown under the control (or help_html).
+
+=item label_html - Pre-built HTML in place of the label text.
+
+=item class, id - As for other widgets.
+
+=cut
+sub ui_field
+{
+return &theme_ui_field(@_) if (defined(&theme_ui_field));
+my ($label, $input, $opts) = @_;
+$opts ||= {};
+my $text = &_ui_text({ 'label' => $label,
+		       'label_html' => $opts->{'label_html'} }, 'label');
+my $rv = "";
+$rv .= &ui_tag('label', $text, &_ui_attrs({
+	'class' => 'ui_field_label', 'for' => $opts->{'for'} }))
+	if (defined($text));
+$rv .= &ui_tag('div', defined($input) ? $input : "",
+	       { 'class' => 'ui_field_control' });
+my $help = &_ui_text($opts, 'help');
+$rv .= &ui_tag('div', $help, { 'class' => 'ui_field_help' })
+	if (defined($help));
+return &_ui_block('div', $rv, &_ui_attrs({
+	'class' => &_ui_class('ui_field', $opts->{'class'}),
+	'id' => $opts->{'id'} }));
 }
 
 ####################### choice lists

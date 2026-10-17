@@ -639,6 +639,39 @@ $rv .= ui_card({
 		], { 'gap' => '20px' }),
 	});
 
+# Fields stacked in a card, as an open form or a dialog lays them out when
+# a label column would waste the width : ui_field puts the label over the
+# control and the help under it, and the text input takes the width left
+# by the chooser button after it. ui_segmented in the card header picks
+# the mode, and the primary action button ends the form with its icon
+# after the label. This is the third form of the page, so the choosers
+# are given 3.
+$rv .= ui_form_start('index.cgi', 'post');
+$rv .= ui_hidden('demo', 9);
+$rv .= ui_card({
+	'title' => $text{'index_f_fields'},
+	'desc' => $text{'index_f_fields_desc'},
+	'actions' => ui_segmented('fmode', 'existing', [
+		[ 'existing', $text{'index_f_mode_existing'} ],
+		[ 'new', $text{'index_f_mode_new'} ] ]),
+	'body' => ui_stack([
+		ui_field($text{'index_f_path'},
+			ui_textbox('fpath', '', 50, 0, undef,
+				   "placeholder='/var/lib/myapp/data.db'")." ".
+			file_chooser_button('fpath', 0, 3),
+			{ 'for' => 'fpath', 'help' => $text{'index_f_path_help'} }),
+		ui_field($text{'index_f_owner'},
+			ui_user_textbox('fowner', 'root', 3),
+			{ 'for' => 'fowner', 'help' => $text{'index_f_owner_help'} }),
+		ui_cluster([
+			ui_action_button($text{'index_f_continue'}, 'primary',
+				{ 'type' => 'submit', 'icon' => 'arrow-right',
+				  'icon_after' => 1 }),
+			], { 'align' => 'end' }),
+		], { 'gap' => '12px' }),
+	});
+$rv .= ui_form_end();
+
 # Checked colors include primary and the shared semantic states.
 $rv .= ui_card({
 	'title' => $text{'index_f_toggle_colors'},
@@ -723,9 +756,9 @@ $rv .= ui_hidden('mode', 'choices');
 # The backup destination options, built for a given field name prefix so
 # that the two widgets below can show the same set without clashing. The
 # file chooser needs the index of this form on the page : the service
-# card form is 0, the edit and choosers forms of the Forms tab are 1 and
-# 2, so this one is 3.
-my $formno = 3;
+# card form is 0, the edit, choosers and stacked fields forms of the
+# Forms tab are 1, 2 and 3, so this one is 4.
+my $formno = 4;
 my $dest_options = sub {
 	my ($p) = @_;
 	return [
@@ -887,8 +920,9 @@ my $rv = "";
 my $confirm = "data-ui-confirm='".
 	      quote_escape($text{'index_f_delete_confirm'})."'";
 
-# Native buttons and links share badge colors without legacy button classes.
-my @states = qw(success warning danger info neutral);
+# Native buttons and links share badge colors without legacy button classes;
+# primary is the filled accent button for the main action of a form.
+my @states = qw(primary success warning danger info neutral);
 $rv .= ui_card({
 	'title' => $text{'index_b_actions'},
 	'desc' => $text{'index_b_actions_desc'},
@@ -1529,6 +1563,38 @@ $rv .= ui_grid([
 			], { 'flush' => 1 }),
 		}),
 	]);
+
+# A navigation list under a section title, as a module's front page lists
+# the files opened last : the chevron shows that the whole row opens its
+# link, the icons sit in tiles, the path is monospace under the name, and
+# the small button at the right of the title clears the list after a
+# confirmation
+$rv .= ui_section_title($text{'index_l_recent'}, {
+	'actions' => ui_action_button($text{'index_l_clear'}, 'neutral', {
+		'href' => 'index.cgi?mode=lists',
+		'size' => 'small',
+		'attrs' => { 'data-ui-confirm' => $text{'index_l_clear_confirm'} } }),
+	});
+$rv .= ui_card({
+	'flush' => 1,
+	'body' => ui_list([ map { {
+		'title' => $_->[0],
+		'href' => 'index.cgi?mode=lists',
+		'icon' => 'database',
+		'desc_html' => ui_tag('tt', html_escape($_->[1])),
+		'meta_html' => join(' &middot; ', $_->[2],
+				    text('index_l_tables', $_->[3]),
+				    html_escape($_->[4])),
+		'chevron' => 1,
+		} } ( [ 'production.sqlite3',
+			'/home/deploy/apps/shop/db/production.sqlite3',
+			'38.2 MB', 41, $text{'index_l_today'} ],
+		      [ 'grafana.db', '/var/lib/grafana/grafana.db',
+			'6.1 MB', 58, $text{'index_l_yesterday'} ],
+		      [ 'sessions.db', '/var/lib/webmin/sessions.db',
+			'412 KB', 3, 'Oct 9' ] ) ],
+		{ 'flush' => 1, 'icon_box' => 1 }),
+	});
 return $rv;
 }
 
@@ -1643,7 +1709,7 @@ my $rv = capture_function_output(\&icons_table,
 # sub-pages : a rule, a two-column ui_table_start form, and Save next to
 # a Delete button. A row whose input is wide spans the form with a third
 # argument of 3. The file chooser needs the index of this form on the
-# page, 13 here : the Tables tab counts the forms before its own, and
+# page, 14 here : the Tables tab counts the forms before its own, and
 # this one follows it.
 $rv .= ui_hr();
 $rv .= ui_form_start('index.cgi', 'post');
@@ -1656,7 +1722,7 @@ $rv .= ui_table_row($text{'index_i_match'},
 		  [ map { [ $_, $text{'index_i_match_'.$_} ] }
 			('default', 'exact', 'case', 'nocase', 'noregexp') ]));
 $rv .= ui_table_row($text{'index_i_root'},
-	ui_textbox('lroot', '', 60)." ".file_chooser_button('lroot', 1, 13), 3);
+	ui_textbox('lroot', '', 60)." ".file_chooser_button('lroot', 1, 14), 3);
 $rv .= ui_table_end();
 $rv .= ui_form_end([ [ undef, $text{'save'} ],
 		     [ 'delete', $text{'index_i_delete'}, undef, 0,

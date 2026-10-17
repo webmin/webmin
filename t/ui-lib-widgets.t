@@ -1250,4 +1250,131 @@ like(main::ui_svg_icon('ellipsis'), qr/fill="currentColor"/, 'ellipsis is drawn 
 		'href' => $xss, 'label' => $xss }), 'ui_pager text');
 }
 
+# ---- section titles, segmented controls and stacked fields -----------------
+
+subtest 'section titles' => sub {
+	my $html = main::ui_section_title('Recent', {
+		'actions' => '<a href="clear.cgi">Clear list</a>', 'id' => 'recent' });
+	like($html, qr/<div\b(?=[^>]*\bclass="[^"]*\bui_section_title\b)(?=[^>]*\bid="recent")[^>]*>/,
+		'section title is a block carrying its id');
+	like($html, qr/<h2 class="[^"]*\bui_section_title_text\b[^"]*">Recent<\/h2>/,
+		'the title is a heading');
+	like($html, qr/ui_section_title_actions"><a href="clear.cgi">Clear list<\/a>/,
+		'actions are raw HTML at the right');
+	unlike(main::ui_section_title('Plain'), qr/ui_section_title_actions/,
+		'no actions block without actions');
+	is(main::ui_section_title(undef), '', 'nothing without a title or actions');
+	like(main::ui_section_title(undef, { 'title_html' => '<i>Raw</i>' }),
+		qr/ui_section_title_text"><i>Raw<\/i>/, 'title_html is raw');
+	assert_no_handler_injection(
+		main::ui_section_title($xss, { 'class' => $xss, 'id' => $xss }),
+		'ui_section_title');
+};
+
+subtest 'segmented controls' => sub {
+	my $html = main::ui_segmented('mode', 1, [
+		[ 0, 'Existing' ],
+		{ 'value' => 1, 'label' => 'New', 'icon' => 'file-plus' },
+		{ 'value' => 2, 'label' => 'Off', 'disabled' => 1, 'title' => 'Not now' },
+		], { 'id' => 'mode_switch' });
+	like($html, qr/<div\b(?=[^>]*\brole="radiogroup")(?=[^>]*\bid="mode_switch")[^>]*>/,
+		'the control is a radio group with its id');
+	my @inputs = $html =~ /(<input\b[^>]*>)/g;
+	is(scalar(@inputs), 3, 'one input per option');
+	like($inputs[0], qr/\btype="radio"/, 'options are radio inputs');
+	like($inputs[0], qr/\bname="mode"/, 'radios share the field name');
+	like($inputs[0], qr/\bvalue="0"/, 'array options keep their value');
+	unlike($inputs[0], qr/\bchecked\b/, 'an unselected option is not checked');
+	like($inputs[1], qr/\bchecked\b/, 'the matching value is checked');
+	like($html, qr/ui_segment_label"><svg\b[^>]*\bui_svg_icon_file-plus\b/,
+		'an option icon precedes its label');
+	like($inputs[2], qr/\bdisabled\b/, 'a disabled option disables its radio');
+	like($html, qr/<label\b(?=[^>]*\bui_segment_disabled\b)(?=[^>]*\btitle="Not now")[^>]*>/,
+		'the disabled class and the tooltip sit on the label');
+	like(main::ui_segmented('mode', 'missing', [ [ 'a', 'A' ], [ 'b', 'B' ] ]),
+		qr/<input\b(?=[^>]*\bvalue="a")(?=[^>]*\bchecked\b)[^>]*>/,
+		'an unknown value selects the first option');
+	like(main::ui_segmented('mode', '', [ [ '', 'None' ], [ 'x', 'X' ] ]),
+		qr/<input\b(?=[^>]*\bvalue="")(?=[^>]*\bchecked\b)[^>]*>/,
+		'an empty value is submitted as empty');
+	my $small = main::ui_segmented('mode', 0, [ [ 0, 'A' ], [ 1, 'B' ] ],
+		{ 'size' => 'small', 'disabled' => 1, 'form' => 'f1' });
+	like($small, qr/\bui_segmented_small\b/, 'the small size adds its class');
+	my @small_inputs = $small =~ /(<input\b[^>]*>)/g;
+	ok((grep { /\bdisabled\b/ && /\bform="f1"/ } @small_inputs) == 2,
+		'whole-control disabling and the form id reach every radio');
+	is(main::ui_segmented('mode', 0, []), '', 'no options yields nothing');
+	is(main::ui_segmented('mode', 0, [ 'plain' ]), '',
+		'options must be pairs or hashes');
+	assert_no_handler_injection(main::ui_segmented($xss, $xss, [
+		[ $xss, $xss ], { 'value' => 1, 'label' => $xss, 'title' => $xss } ],
+		{ 'class' => $xss, 'id' => $xss, 'form' => $xss }), 'ui_segmented');
+};
+
+subtest 'stacked fields' => sub {
+	my $html = main::ui_field('Path', '<input type="text" name="db" id="db">',
+		{ 'for' => 'db', 'help' => 'Absolute <path>', 'id' => 'path_field' });
+	like($html, qr/<div\b(?=[^>]*\bui_field\b)(?=[^>]*\bid="path_field")[^>]*>/,
+		'the field is a block carrying its id');
+	like($html, qr/<label\b(?=[^>]*\bui_field_label\b)(?=[^>]*\bfor="db")[^>]*>Path<\/label>/,
+		'the label names its input');
+	like($html, qr/ui_field_control"><input type="text" name="db" id="db"><\/div>/,
+		'the control is raw HTML');
+	like($html, qr/ui_field_help">Absolute &lt;path&gt;<\/div>/,
+		'help text is escaped');
+	like(main::ui_field('L', 'x', { 'help_html' => '<i>raw</i>' }),
+		qr/ui_field_help"><i>raw<\/i>/, 'help_html is raw');
+	my $bare = main::ui_field(undef, 'x');
+	unlike($bare, qr/<label/, 'no label element without a label');
+	unlike($bare, qr/ui_field_help/, 'no help block without help');
+	like(main::ui_field(undef, 'x', { 'label_html' => '<b>L</b>' }),
+		qr/ui_field_label"><b>L<\/b><\/label>/, 'label_html is raw');
+	assert_no_handler_injection(main::ui_field($xss, 'x',
+		{ 'for' => $xss, 'help' => $xss, 'class' => $xss, 'id' => $xss }),
+		'ui_field');
+};
+
+# Navigation rows, icon tiles, the primary action and its trailing icon
+{
+	my $list = main::ui_list([
+		{ 'title' => 'a.db', 'href' => 'open.cgi?db=a', 'icon' => 'database',
+		  'chevron' => 1 },
+		{ 'title' => 'b', 'chevron' => 1 } ], { 'icon_box' => 1 });
+	like($list, qr/\bui_list_icon_box\b/, 'icon_box marks the list');
+	my @chevrons = $list =~ /(<a\b[^>]*\bui_list_chevron\b[^>]*>)/g;
+	is(scalar(@chevrons), 1, 'a chevron is only drawn for a row with a link');
+	like($chevrons[0], qr/\baria-hidden="true"/,
+		'the chevron is hidden from screen readers');
+	like($chevrons[0], qr/\btabindex="-1"/, 'the chevron is not a tab stop');
+	like($chevrons[0], qr/\bhref="open.cgi\?db=a"/,
+		'the chevron repeats the row link');
+	like($list, qr/\bui_svg_icon_database\b/, 'the database icon is drawn');
+	unlike(main::ui_list([ { 'title' => 'a', 'href' => 'a.cgi' } ]),
+		qr/ui_list_chevron|ui_list_icon_box|ui_list_stacked/,
+		'rows without the options keep their markup');
+	like(main::ui_list([ { 'title' => 'a', 'meta' => 'm', 'actions' => 'x' } ],
+		{ 'stacked' => 1 }), qr/\bui_list_stacked\b/,
+		'stacked puts the actions under the meta text');
+	assert_no_handler_injection(main::ui_list([
+		{ 'title' => 'a', 'href' => $xss, 'chevron' => 1 } ]),
+		'ui_list chevron');
+
+	my $primary = main::ui_action_button('Open', 'primary',
+		{ 'icon' => 'arrow-right', 'icon_after' => 1 });
+	like($primary, qr/\bui_action_primary\b/, 'primary is a state of its own');
+	like($primary, qr/>Open<\/span>\s*<svg\b/,
+		'icon_after puts the icon after the label');
+	like(main::ui_action_button('Open', 'primary'),
+		qr/ui_action_content"><span[^>]*>Open<\/span>\s*<\/span>/,
+		'primary has no default icon');
+	like(main::ui_action_button('Save', 'ok', { 'icon_after' => 1 }),
+		qr/<svg\b[^>]*>.*<\/svg>\s*<span[^>]*>Save<\/span>|<span[^>]*>Save<\/span>\s*<svg\b/s,
+		'icon_after also moves a state icon');
+	like(main::ui_action_button('Save', 'ok', { 'icon_after' => 1 }),
+		qr/<span[^>]*>Save<\/span>\s*<svg\b/,
+		'and the state icon then follows the label');
+	unlike(main::ui_badge('x', 'primary'), qr/ui_badge_primary/,
+		'badges keep their own states');
+}
+
 done_testing();
