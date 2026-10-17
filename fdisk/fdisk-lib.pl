@@ -40,11 +40,17 @@ else {
 	}
 $| = 1;
 
-# list_disks_partitions([include-cds])
-# Returns a structure containing the details of all disks and partitions
+# list_disks_partitions([include-cds], [disk-only], [error-ref])
+# Returns a list of disk hash refs; disk-only mode omits partition metadata.
+# Failure returns an empty list, never an error string. The optional error-ref
+# is a scalar reference that receives the reason without changing the return type.
+# Example: my @disks = list_disks_partitions(undef, 1, \$error);
 sub list_disks_partitions
 {
-if (scalar(@list_disks_partitions_cache)) {
+local ($include_cds, $disk_only) = @_;
+my $error_ref = $_[2];
+$$error_ref = undef if ($disk_only && $error_ref);
+if (!$disk_only && scalar(@list_disks_partitions_cache)) {
 	return @list_disks_partitions_cache;
 	}
 
@@ -122,10 +128,13 @@ else {
 	}
 
 local (@disks, @devs, $d);
+my $discovery_partitions = '';
+
 if (open(PARTS, "</proc/partitions")) {
 	# The list of all disks can come from the kernel
 	local $sc = 0;
 	while(<PARTS>) {
+		$discovery_partitions .= $_ if ($disk_only);
 		if (/\d+\s+\d+\s+\d+\s+sd([a-z]+)\s/ ||
 		    /\d+\s+\d+\s+\d+\s+(scsi\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/disc)\s+/) {
 			# New or old style SCSI device
@@ -213,6 +222,15 @@ if (open(PARTS, "</proc/partitions")) {
 	@devs = sort { ($b =~ /\/hd[a-z]+$/ ? 1 : 0) <=>
 		       ($a =~ /\/hd[a-z]+$/ ? 1 : 0) } @devs;
 	}
+elsif ($disk_only) {
+	return &disk_discovery_error("Cannot open disk inventory for SMART discovery", $error_ref);
+	}
+if ($disk_only) {
+	return &disk_discovery_error("Invalid disk inventory for SMART discovery", $error_ref)
+		if ($discovery_partitions !~ /major\s+minor\s+#blocks\s+name/);
+	return &disk_discovery_error("Disk inventory changed during SMART discovery", $error_ref)
+		if ($discovery_partitions ne &read_file_contents('/proc/partitions'));
+	}
 return ( ) if (!@devs);		# No disks, ie on Xen
 
 # Skip cd-rom drive, identified from symlink. Don't do this if we can identify
@@ -221,6 +239,16 @@ if (!-d "/proc/ide") {
 	local @cdstat = stat("/dev/cdrom");
 	if (@cdstat && !$_[0]) {
 		@devs = grep { (stat($_))[1] != $cdstat[1] } @devs;
+		}
+	}
+
+my %discovery_identity;
+if ($disk_only) {
+	foreach my $device (@devs) {
+		my $identity = &disk_discovery_identity($device);
+		return &disk_discovery_error("Missing device during SMART discovery: $device", $error_ref)
+			if (!defined($identity));
+		$discovery_identity{$device} = $identity;
 		}
 	}
 
@@ -239,6 +267,246 @@ foreach my $id (readdir(IDS)) {
 		}
 	}
 closedir(IDS);
+
+# Both paths use the same classification, ID and model logic.
+my $set_metadata = sub {
+	my ($disk) = @_;
+	if ($disk->{'device'} =~ /\/sd([a-z]+)$/) {
+		# Old-style SCSI disk
+		$disk->{'desc'} = &text('select_device', 'SCSI',
+					uc($1));
+		local ($dscsi) = grep { $_->{'dev'} eq "sd$1" } @dscsi;
+		$disk->{'scsi'} = $dscsi ? &indexof($dscsi, @dscsi)
+					 : ord(uc($1))-65;
+		$disk->{'type'} = 'scsi';
+		}
+	elsif ($disk->{'device'} =~ /\/hd([a-z]+)$/) {
+		# IDE disk
+		$disk->{'desc'} = &text('select_device', 'IDE', uc($1));
+		$disk->{'type'} = 'ide';
+		}
+	elsif ($disk->{'device'} =~ /\/xvd([a-z]+)$/) {
+		# Xen virtual disk
+		$disk->{'desc'} = &text('select_device', 'Xen', uc($1));
+		$disk->{'type'} = 'ide';
+		}
+	elsif ($disk->{'device'} =~ /\/mmcblk([0-9]+)$/) {
+		# SD-card / MMC
+		$disk->{'desc'} = &text('select_device', 'SD-Card', $1);
+		$disk->{'type'} = 'ide';
+		}
+	elsif ($disk->{'device'} =~ /\/vd([a-z]+)$/) {
+		# KVM virtual disk
+		$disk->{'desc'} = &text('select_device',
+					'VirtIO', uc($1));
+		$disk->{'type'} = 'virtio';
+		}
+	elsif ($disk->{'device'} =~ /\/(scsi\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/disc)/) {
+		# New complete SCSI disk specification
+		$disk->{'host'} = $2;
+		$disk->{'bus'} = $3;
+		$disk->{'target'} = $4;
+		$disk->{'lun'} = $5;
+		$disk->{'desc'} = &text('select_scsi',
+					"$2", "$3", "$4", "$5");
+
+		# Work out the SCSI index for this disk
+		local $j;
+		if ($dscsi_mode) {
+			for($j=0; $j<@dscsi; $j++) {
+				if ($dscsi[$j]->{'host'} == $disk->{'host'} && $dscsi[$j]->{'bus'} == $disk->{'bus'} && $dscsi[$j]->{'target'} == $disk->{'target'} && $dscsi[$j]->{'lnun'} == $disk->{'lun'}) {
+					$disk->{'scsi'} = $j;
+					last;
+					}
+				}
+			}
+		else {
+			for($j=0; $j<@pscsi; $j++) {
+				if ($pscsi[$j] =~ /Host:\s+scsi(\d+).*Id:\s+(\d+)/i && $disk->{'host'} == $1 && $disk->{'target'} == $2) {
+					$disk->{'scsi'} = $j;
+					last;
+					}
+				}
+			}
+		$disk->{'type'} = 'scsi';
+		$disk->{'prefix'} =~ s/disc$/part/g;
+		}
+	elsif ($disk->{'device'} =~ /\/(ide\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/disc)/) {
+		# New-style IDE specification
+		$disk->{'host'} = $2;
+		$disk->{'bus'} = $3;
+		$disk->{'target'} = $4;
+		$disk->{'lun'} = $5;
+		$disk->{'desc'} = &text('select_newide',
+					"$2", "$3", "$4", "$5");
+		$disk->{'type'} = 'ide';
+		$disk->{'prefix'} =~ s/disc$/part/g;
+		}
+	elsif ($disk->{'device'} =~ /\/(rd\/c(\d+)d(\d+))/) {
+		# Mylex raid device
+		local ($mc, $md) = ($2, $3);
+		$disk->{'desc'} = &text('select_mylex', $mc, $md);
+		open(RD, "</proc/rd/c$mc/current_status");
+		while(<RD>) {
+			if (/^Configuring\s+(.*)/i) {
+				$disk->{'model'} = $1;
+				}
+			elsif (/\s+(\S+):\s+([^, ]+)/ &&
+			       $1 eq $disk->{'device'}) {
+				$disk->{'raid'} = $2;
+				}
+			}
+		close(RD);
+		$disk->{'type'} = 'raid';
+		$disk->{'prefix'} = $disk->{'device'}.'p';
+		}
+	elsif ($disk->{'device'} =~ /\/(ida\/c(\d+)d(\d+))/) {
+		# Compaq RAID device
+		local ($ic, $id) = ($2, $3);
+		$disk->{'desc'} = &text('select_cpq', $ic, $id);
+		open(IDA, -d "/proc/driver/array" ? "</proc/driver/array/ida$ic" : "</proc/driver/cpqarray/ida$ic");
+		while(<IDA>) {
+			if (/^(\S+):\s+(.*)/ && $1 eq "ida$ic") {
+				$disk->{'model'} = $2;
+				}
+			}
+		close(IDA);
+		$disk->{'type'} = 'raid';
+		$disk->{'prefix'} = $disk->{'device'}.'p';
+		}
+	elsif ($disk->{'device'} =~ /\/(cciss\/c(\d+)d(\d+))/) {
+		# Compaq Smart Array RAID
+		local ($ic, $id) = ($2, $3);
+		$disk->{'desc'} = &text('select_smart', $ic, $id);
+		open(CCI, "</proc/driver/cciss/cciss$ic");
+		while(<CCI>) {
+			if (/^\s*(\S+):\s*(.*)/ && $1 eq "cciss$ic") {
+				$disk->{'model'} = $2;
+				}
+			}
+		close(CCI);
+		$disk->{'type'} = 'raid';
+		$disk->{'prefix'} = $disk->{'device'}.'p';
+		}
+	elsif ($disk->{'device'} =~ /\/(ataraid\/disc(\d+)\/disc)/) {
+		# Promise RAID controller
+		local $dd = $2;
+		$disk->{'desc'} = &text('select_promise', $dd);
+		$disk->{'type'} = 'raid';
+		$disk->{'prefix'} =~ s/disc$/part/g;
+		}
+	elsif ($disk->{'device'} =~ /\/nvme(\d+)n(\d+)$/) {
+		# NVME SSD controller
+		$disk->{'desc'} = &text('select_nvme', "$1", "$2");
+		$disk->{'type'} = 'scsi';
+		$disk->{'prefix'} = $disk->{'device'}.'p';
+		}
+
+	# Work out short name, like sda
+	local $short;
+	if (defined($disk->{'host'})) {
+		$short = &hbt_to_device($disk->{'host'},
+					$disk->{'bus'},
+					$disk->{'target'});
+		}
+	else {
+		$short = $disk->{'device'};
+		$short =~ s/^.*\///g;
+		}
+	$disk->{'short'} = $short;
+
+	$disk->{'id'} = $id_map{$disk->{'device'}} ||
+			$id_map{"/dev/$short"};
+	$disk->{'ids'} = $all_id_map{$disk->{'device'}} ||
+			 $all_id_map{"/dev/$short"};
+};
+my $enrich_metadata = sub {
+	local @disks = @_;
+	local $d;
+	# Check /proc/ide for IDE disk models
+	foreach $d (@disks) {
+		if ($d->{'type'} eq 'ide') {
+			local $short = $d->{'short'};
+			$d->{'model'} = &read_file_contents("/proc/ide/$short/model");
+			$d->{'model'} =~ s/\r|\n//g;
+			$d->{'media'} = &read_file_contents("/proc/ide/$short/media");
+			$d->{'media'} =~ s/\r|\n//g;
+			if ($d->{'short'} =~ /^vd/ && !$d->{'model'}) {
+				# Fake up model for KVM VirtIO disks
+				$d->{'model'} = "KVM VirtIO";
+				}
+			}
+		}
+
+	# Fill in SCSI information
+	foreach $d (@disks) {
+		if ($d->{'type'} eq 'scsi') {
+			local $s = $d->{'scsi'};
+			local $sysdir = "/sys/block/$d->{'short'}/device";
+			if (-d $sysdir) {
+				# From kernel 2.6.30+ sys directory
+				$d->{'model'} = &read_file_contents("$sysdir/vendor").
+						" ".
+						&read_file_contents("$sysdir/model");
+				$d->{'model'} =~ s/\r|\n//g;
+				$d->{'media'} = &read_file_contents("$sysdir/media");
+				$d->{'media'} =~ s/\r|\n//g;
+				}
+			elsif ($dscsi_mode) {
+				# From other scsi files
+				$d->{'model'} = "$dscsi[$s]->{'make'} $dscsi[$s]->{'model'}";
+				$d->{'controller'} = $dscsi[$s]->{'host'};
+				$d->{'scsiid'} = $dscsi[$s]->{'target'};
+				}
+			else {
+				# From /proc/scsi/scsi lines
+				if ($pscsi[$s] =~ /Vendor:\s+(\S+).*Model:\s+(.*)\s+Rev:/i) {
+					$d->{'model'} = "$1 $2";
+					}
+				if ($pscsi[$s] =~ /Host:\s+scsi(\d+).*Id:\s+(\d+)/i) {
+					$d->{'controller'} = int($1);
+					$d->{'scsiid'} = int($2);
+					}
+				}
+			if ($d->{'model'} =~ /ATA/) {
+				# Fake SCSI disk, actually IDE
+				$d->{'scsi'} = 0;
+				$d->{'desc'} =~ s/SCSI/SATA/g;
+				foreach my $p (@{$d->{'parts'} || []}) {
+					$p->{'desc'} =~ s/SCSI/SATA/g;
+					}
+				}
+			}
+		}
+
+};
+
+if ($disk_only) {
+	my @inventory = @devs;
+	foreach my $device (@inventory) {
+		my $disk = { 'device' => $device, 'prefix' => $device };
+		$set_metadata->($disk);
+		push(@disks, $disk);
+		}
+	$enrich_metadata->(@disks);
+	foreach my $disk (@disks) {
+		my $device = $disk->{'device'};
+		my $identity = &disk_discovery_identity($device);
+		return &disk_discovery_error("Missing device during SMART discovery: $device", $error_ref)
+			if (!defined($identity));
+		return &disk_discovery_error("Disk identity changed during SMART discovery: $device", $error_ref)
+			if ($discovery_identity{$device} ne $identity);
+		# An absent controller model must not silently bypass RAID expansion.
+		return &disk_discovery_error("Missing disk model during SMART discovery: $device", $error_ref)
+			if (($disk->{'type'} eq 'scsi' || $disk->{'type'} eq 'raid') &&
+			    $disk->{'model'} !~ /\S/);
+		}
+	return &disk_discovery_error("Disk inventory changed during SMART discovery", $error_ref)
+		if ($discovery_partitions ne &read_file_contents('/proc/partitions'));
+	# These are metadata records, not claims of empty partition tables.
+	# Do not read or populate the full partition cache.
+	return @disks;
+	}
 
 # Call fdisk to get partition and geometry information
 local $qdevs = join(" ", map { quotemeta($_) } @devs);
@@ -297,154 +565,7 @@ while(<FDISK>) {
 
 		local @st = stat($disk->{'device'});
 		next if (@cdstat && $st[1] == $cdstat[1]);
-		if ($disk->{'device'} =~ /\/sd([a-z]+)$/) {
-			# Old-style SCSI disk
-			$disk->{'desc'} = &text('select_device', 'SCSI',
-						uc($1));
-			local ($dscsi) = grep { $_->{'dev'} eq "sd$1" } @dscsi;
-			$disk->{'scsi'} = $dscsi ? &indexof($dscsi, @dscsi)
-						 : ord(uc($1))-65;
-			$disk->{'type'} = 'scsi';
-			}
-		elsif ($disk->{'device'} =~ /\/hd([a-z]+)$/) {
-			# IDE disk
-			$disk->{'desc'} = &text('select_device', 'IDE', uc($1));
-			$disk->{'type'} = 'ide';
-			}
-		elsif ($disk->{'device'} =~ /\/xvd([a-z]+)$/) {
-			# Xen virtual disk
-			$disk->{'desc'} = &text('select_device', 'Xen', uc($1));
-			$disk->{'type'} = 'ide';
-			}
-		elsif ($disk->{'device'} =~ /\/mmcblk([0-9]+)$/) {
-			# SD-card / MMC
-			$disk->{'desc'} = &text('select_device', 'SD-Card', $1);
-			$disk->{'type'} = 'ide';
-			}
-		elsif ($disk->{'device'} =~ /\/vd([a-z]+)$/) {
-			# KVM virtual disk
-			$disk->{'desc'} = &text('select_device',
-						'VirtIO', uc($1));
-			$disk->{'type'} = 'virtio';
-			}
-		elsif ($disk->{'device'} =~ /\/(scsi\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/disc)/) {
-			# New complete SCSI disk specification
-			$disk->{'host'} = $2;
-			$disk->{'bus'} = $3;
-			$disk->{'target'} = $4;
-			$disk->{'lun'} = $5;
-			$disk->{'desc'} = &text('select_scsi',
-						"$2", "$3", "$4", "$5");
-
-			# Work out the SCSI index for this disk
-			local $j;
-			if ($dscsi_mode) {
-				for($j=0; $j<@dscsi; $j++) {
-					if ($dscsi[$j]->{'host'} == $disk->{'host'} && $dscsi[$j]->{'bus'} == $disk->{'bus'} && $dscsi[$j]->{'target'} == $disk->{'target'} && $dscsi[$j]->{'lnun'} == $disk->{'lun'}) {
-						$disk->{'scsi'} = $j;
-						last;
-						}
-					}
-				}
-			else {
-				for($j=0; $j<@pscsi; $j++) {
-					if ($pscsi[$j] =~ /Host:\s+scsi(\d+).*Id:\s+(\d+)/i && $disk->{'host'} == $1 && $disk->{'target'} == $2) {
-						$disk->{'scsi'} = $j;
-						last;
-						}
-					}
-				}
-			$disk->{'type'} = 'scsi';
-			$disk->{'prefix'} =~ s/disc$/part/g;
-			}
-		elsif ($disk->{'device'} =~ /\/(ide\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/disc)/) {
-			# New-style IDE specification
-			$disk->{'host'} = $2;
-			$disk->{'bus'} = $3;
-			$disk->{'target'} = $4;
-			$disk->{'lun'} = $5;
-			$disk->{'desc'} = &text('select_newide',
-						"$2", "$3", "$4", "$5");
-			$disk->{'type'} = 'ide';
-			$disk->{'prefix'} =~ s/disc$/part/g;
-			}
-		elsif ($disk->{'device'} =~ /\/(rd\/c(\d+)d(\d+))/) {
-			# Mylex raid device
-			local ($mc, $md) = ($2, $3);
-			$disk->{'desc'} = &text('select_mylex', $mc, $md);
-			open(RD, "</proc/rd/c$mc/current_status");
-			while(<RD>) {
-				if (/^Configuring\s+(.*)/i) {
-					$disk->{'model'} = $1;
-					}
-				elsif (/\s+(\S+):\s+([^, ]+)/ &&
-				       $1 eq $disk->{'device'}) {
-					$disk->{'raid'} = $2;
-					}
-				}
-			close(RD);
-			$disk->{'type'} = 'raid';
-			$disk->{'prefix'} = $disk->{'device'}.'p';
-			}
-		elsif ($disk->{'device'} =~ /\/(ida\/c(\d+)d(\d+))/) {
-			# Compaq RAID device
-			local ($ic, $id) = ($2, $3);
-			$disk->{'desc'} = &text('select_cpq', $ic, $id);
-			open(IDA, -d "/proc/driver/array" ? "</proc/driver/array/ida$ic" : "</proc/driver/cpqarray/ida$ic");
-			while(<IDA>) {
-				if (/^(\S+):\s+(.*)/ && $1 eq "ida$ic") {
-					$disk->{'model'} = $2;
-					}
-				}
-			close(IDA);
-			$disk->{'type'} = 'raid';
-			$disk->{'prefix'} = $disk->{'device'}.'p';
-			}
-		elsif ($disk->{'device'} =~ /\/(cciss\/c(\d+)d(\d+))/) {
-			# Compaq Smart Array RAID
-			local ($ic, $id) = ($2, $3);
-			$disk->{'desc'} = &text('select_smart', $ic, $id);
-			open(CCI, "</proc/driver/cciss/cciss$ic");
-			while(<CCI>) {
-				if (/^\s*(\S+):\s*(.*)/ && $1 eq "cciss$ic") {
-					$disk->{'model'} = $2;
-					}
-				}
-			close(CCI);
-			$disk->{'type'} = 'raid';
-			$disk->{'prefix'} = $disk->{'device'}.'p';
-			}
-		elsif ($disk->{'device'} =~ /\/(ataraid\/disc(\d+)\/disc)/) {
-			# Promise RAID controller
-			local $dd = $2;
-			$disk->{'desc'} = &text('select_promise', $dd);
-			$disk->{'type'} = 'raid';
-			$disk->{'prefix'} =~ s/disc$/part/g;
-			}
-		elsif ($disk->{'device'} =~ /\/nvme(\d+)n(\d+)$/) {
-			# NVME SSD controller
-			$disk->{'desc'} = &text('select_nvme', "$1", "$2");
-			$disk->{'type'} = 'scsi';
-			$disk->{'prefix'} = $disk->{'device'}.'p';
-			}
-
-		# Work out short name, like sda
-		local $short;
-		if (defined($disk->{'host'})) {
-			$short = &hbt_to_device($disk->{'host'},
-						$disk->{'bus'},
-						$disk->{'target'});
-			}
-		else {
-			$short = $disk->{'device'};
-			$short =~ s/^.*\///g;
-			}
-		$disk->{'short'} = $short;
-
-		$disk->{'id'} = $id_map{$disk->{'device'}} ||
-				$id_map{"/dev/$short"};
-		$disk->{'ids'} = $all_id_map{$disk->{'device'}} ||
-				 $all_id_map{"/dev/$short"};
+		$set_metadata->($disk);
 
 		push(@disks, $disk);
 		}
@@ -600,64 +721,38 @@ while(<FDISK>) {
 	}
 close(FDISK);
 
-# Check /proc/ide for IDE disk models
-foreach $d (@disks) {
-	if ($d->{'type'} eq 'ide') {
-		local $short = $d->{'short'};
-		$d->{'model'} = &read_file_contents("/proc/ide/$short/model");
-		$d->{'model'} =~ s/\r|\n//g;
-		$d->{'media'} = &read_file_contents("/proc/ide/$short/media");
-		$d->{'media'} =~ s/\r|\n//g;
-		if ($d->{'short'} =~ /^vd/ && !$d->{'model'}) {
-			# Fake up model for KVM VirtIO disks
-			$d->{'model'} = "KVM VirtIO";
-			}
-		}
-	}
-
-# Fill in SCSI information
-foreach $d (@disks) {
-	if ($d->{'type'} eq 'scsi') {
-		local $s = $d->{'scsi'};
-		local $sysdir = "/sys/block/$d->{'short'}/device";
-		if (-d $sysdir) {
-			# From kernel 2.6.30+ sys directory
-			$d->{'model'} = &read_file_contents("$sysdir/vendor").
-					" ".
-					&read_file_contents("$sysdir/model");
-			$d->{'model'} =~ s/\r|\n//g;
-			$d->{'media'} = &read_file_contents("$sysdir/media");
-			$d->{'media'} =~ s/\r|\n//g;
-			}
-		elsif ($dscsi_mode) {
-			# From other scsi files
-			$d->{'model'} = "$dscsi[$s]->{'make'} $dscsi[$s]->{'model'}";
-			$d->{'controller'} = $dscsi[$s]->{'host'};
-			$d->{'scsiid'} = $dscsi[$s]->{'target'};
-			}
-		else {
-			# From /proc/scsi/scsi lines
-			if ($pscsi[$s] =~ /Vendor:\s+(\S+).*Model:\s+(.*)\s+Rev:/i) {
-				$d->{'model'} = "$1 $2";
-				}
-			if ($pscsi[$s] =~ /Host:\s+scsi(\d+).*Id:\s+(\d+)/i) {
-				$d->{'controller'} = int($1);
-				$d->{'scsiid'} = int($2);
-				}
-			}
-		if ($d->{'model'} =~ /ATA/) {
-			# Fake SCSI disk, actually IDE
-			$d->{'scsi'} = 0;
-			$d->{'desc'} =~ s/SCSI/SATA/g;
-			foreach my $p (@{$d->{'parts'}}) {
-				$p->{'desc'} =~ s/SCSI/SATA/g;
-				}
-			}
-		}
-	}
+$enrich_metadata->(@disks);
 
 @list_disks_partitions_cache = @disks;
 return @disks;
+}
+
+# Report disk-only failure without changing the list-returning caller contract.
+sub disk_discovery_error
+{
+my ($message, $error_ref) = @_;
+if ($error_ref) {
+	$$error_ref = $message;
+	}
+else {
+	warn "$message\n";
+	}
+return ();
+}
+
+# Compare device-node and sysfs object identity without opening the device.
+# This detects disappearance/replacement during enumeration, not all possible
+# changes after this function returns. The next collection always scans again.
+sub disk_discovery_identity
+{
+my ($device) = @_;
+my @node = stat($device);
+return if (!@node);
+my $short = $device;
+$short =~ s{^/dev/}{};
+$short =~ s{/}{!}g;
+my @sys = stat("/sys/class/block/$short");
+return join(':', @node[0,1,6], @sys ? @sys[0,1] : ('', ''));
 }
 
 # partition_description(device)
