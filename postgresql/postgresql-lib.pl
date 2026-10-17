@@ -373,10 +373,7 @@ else {
 		}
         elsif ($sql =~ /^\s*\\/ ) {
 		$break_f = 1 ;
-		if ($sql !~ /^\s*\\copy\s+/ &&
-                    $sql !~ /^\s*\\i\s+/) {
-			&error ( &text ( 'r_command', ) ) ;
-			}
+		&error ( &text ( 'r_command', ) ) ;
 		}
 
 	if (@params) {
@@ -832,6 +829,22 @@ return 1 if (!$user);
 return &set_ownership_permissions($user, undef, 0600, $file);
 }
 
+# supports_psql_restrict()
+# Returns 1 if psql supports restricted mode.
+sub supports_psql_restrict
+{
+local $out = &backquote_command(
+	&quote_path($config{'psql'})." -V 2>&1 <$null_file");
+local ($version) = $out =~ /psql.*?\s(\d+(?:\.\d+)*)/i;
+return 0 if (!defined($version));
+local ($major) = split(/\./, $version);
+local %minimum = ( 13 => "13.22", 14 => "14.19", 15 => "15.14",
+		  16 => "16.10", 17 => "17.6" );
+return &compare_version_numbers($version, "18") >= 0 ||
+       $minimum{$major} &&
+       &compare_version_numbers($version, $minimum{$major}) >= 0;
+}
+
 # execute_sql_file(database, file, [user, pass], [unix-user])
 # Executes some file of SQL statements, and returns the exit status and output
 sub execute_sql_file
@@ -844,7 +857,59 @@ if (!defined($user)) {
 	$user = $postgres_login;
 	$pass = $postgres_pass;
 	}
-local $cmd = &quote_path($config{'psql'})." -f ".&quote_path($file).
+&supports_psql_restrict() || return (1, $text{'exec_erestrict'});
+
+# Copy a plain PostgreSQL dump without its outer restriction wrapper.
+local (*SQLFILE, *SAFEFILE);
+local ($line, $dump_key);
+open(SQLFILE, "<$file") || return (1, $text{'exec_efile'});
+while(defined($line = <SQLFILE>)) {
+	if ($line =~ /^\s*\\restrict\s+([A-Za-z0-9]+)\s*$/) {
+		$dump_key = $1;
+		last;
+		}
+	elsif ($line !~ /^\s*(?:--.*)?$/) {
+		last;
+		}
+	}
+local $safe_file;
+if ($dump_key) {
+	$safe_file = &transname();
+	&open_tempfile(SAFEFILE, ">$safe_file");
+	local ($last_line, $last_pos);
+	while(defined($line = <SQLFILE>)) {
+		if ($line =~ /\S/) {
+			$last_line = $line;
+			$last_pos = tell(SAFEFILE);
+			}
+		&print_tempfile(SAFEFILE, $line);
+		}
+	&close_tempfile(SAFEFILE);
+	if (!defined($last_line) ||
+	    $last_line !~ /^\s*\\unrestrict\s+\Q$dump_key\E\s*$/ ||
+	    !truncate($safe_file, $last_pos)) {
+		unlink($safe_file);
+		undef($safe_file);
+		}
+	}
+close(SQLFILE);
+if ($safe_file) {
+	local $fileuser = &postgresql_command_unix_user();
+	$fileuser ||= $unixuser if ($unixuser && $unixuser ne 'root' && $< == 0);
+	if ($fileuser &&
+	    !&set_ownership_permissions($fileuser, undef, 0600, $safe_file)) {
+		unlink($safe_file);
+		return (1, $text{'exec_efile'});
+		}
+	$file = $safe_file;
+	}
+
+# Restrict psql commands while executing the user-supplied file.
+local $restrict_key = &generate_miniserv_websocket_token();
+local $cmd = &quote_path($config{'psql'}).
+	     " -X -c ".
+	     quotemeta("\\restrict $restrict_key").
+	     " -f ".&quote_path($file).
 	     &host_port_flags().
 	     (&supports_pgpass() ? " -U $user" : " -u").
 	     " ".$db;
@@ -855,8 +920,11 @@ elsif ($unixuser && $unixuser ne 'root' && $< == 0) {
 	$cmd = &command_as_user($unixuser, 0, $cmd);
 	}
 $cmd = &command_with_login($cmd, $user, $pass);
+local $ENV{'LC_ALL'} = 'C';
 local $out = &backquote_logged("$cmd 2>&1");
-return ($out =~ /ERROR/i ? 1 : 0, $out);
+local $ex = $? ? 1 : 0;
+unlink($safe_file) if ($safe_file);
+return ($ex || $out =~ /ERROR|backslash commands are restricted|\\unrestrict:\s+wrong key/i ? 1 : 0, $out);
 }
 
 # split_table(&titles, &checkboxes, &links, &col1, &col2, ...)
