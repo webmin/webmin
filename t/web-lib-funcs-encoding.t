@@ -148,11 +148,23 @@ subtest 'serialise_variable / unserialise_variable' => sub {
 	is(main::serialise_variable([1,2]),  'ARRAY,VAL%2C1,VAL%2C2',
 	   'array wire format (one level of urlize wrapping)');
 
-	# Data::Dumper path — opt-in via the second arg.
-	my $d = main::serialise_variable({k=>'v'}, 1);
-	like($d, qr/^\$VAR1\s*=/, 'dumper mode emits Data::Dumper format');
-	is_deeply(main::unserialise_variable($d), {k=>'v'},
-	   'dumper-format round-trips through the $VAR1 detector');
+	# The old Data::Dumper RPC format is never generated or evaluated.
+	my $encoded = main::serialise_variable({k=>'v'}, 1);
+	unlike($encoded, qr/^\$VAR1\s*=/,
+	   'obsolete dumper argument still emits the data-only format');
+	is_deeply(main::unserialise_variable($encoded), {k=>'v'},
+	   'data-only format round-trips');
+	$main::rpc_eval_test = 0;
+	is(main::unserialise_variable(
+	   '$VAR1 = {}; $main::rpc_eval_test = 1;'), undef,
+	   'Data::Dumper input is rejected');
+	is($main::rpc_eval_test, 0, 'Data::Dumper input is not executed');
+
+	# Remote object names must not load or bless local classes.
+	my $object = main::unserialise_variable(
+		'OBJECT RPC::Untrusted,VAL%2Ck,VAL%2Cv');
+	is_deeply($object, {k=>'v'}, 'object data is retained');
+	is(ref($object), 'HASH', 'object data is not blessed');
 };
 
 # convert_to_json / convert_from_json

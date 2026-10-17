@@ -9255,11 +9255,12 @@ if ($serv->{'fast'} || !$sn) {
 		if ($line =~ /^0\s+(.*)/) {
 			return &$main::remote_error_handler("RPC error : $1");
 			}
-		elsif ($line =~ /^1\s+(\S+)\s+(\S+)\s+(\S+)/ ||
-		       $line =~ /^1\s+(\S+)\s+(\S+)/) {
+		elsif ($line =~ /^1\s+(\S+)\s+(\S+)(?:\s+(\S+))?(?:\s+(\S+))?/) {
 			# Started ok .. connect and save SID
 			&close_http_connection($con);
-			my ($port, $sid, $version) = ($1, $2, $3);
+			my ($port, $sid, $wire_version, $version) =
+				($1, $2, $3, $4);
+			$version ||= $wire_version;
 			my $error;
 			&open_socket($ip, $port, $sid, \$error);
 			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error")
@@ -9317,11 +9318,13 @@ if ($serv->{'fast'} || !$sn) {
 			close(RPCOUTr);
 			return &$main::remote_error_handler("RPC error : $2");
 			}
-		elsif ($line =~ /^1\s+(\S+)\s+(\S+)\s+(\S+)/) {
+		elsif ($line =~ /^1\s+(\S+)\s+(\S+)(?:\s+(\S+))?(?:\s+(\S+))?/) {
 			# Started ok .. connect and save SID
 			close(SOCK);
 			close(RPCOUTr);
-			my ($port, $sid, $version) = ($1, $2, $3);
+			my ($port, $sid, $wire_version, $version) =
+				($1, $2, $3, $4);
+			$version ||= $wire_version;
 			my $error;
 			&open_socket("localhost", $port, $sid, \$error);
 			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error") if ($error);
@@ -9339,9 +9342,8 @@ if ($serv->{'fast'} || !$sn) {
 			}
 		}
 	# Got a connection .. send off the request
-	my ($fh, $version) = @{$fast_fh_cache{$sn}};
-	my $dumper = &compare_version_numbers($version, 2.014) >= 0;
-	my $tostr = &serialise_variable($str, $dumper);
+	my ($fh) = @{$fast_fh_cache{$sn}};
+	my $tostr = &serialise_variable($str);
 	print $fh length($tostr)," $fh\n";
 	print $fh $tostr;
 	my $rstr = <$fh>;
@@ -9526,7 +9528,7 @@ my ($err) = @_;
 $remote_multi_callback_err = $err;
 }
 
-=head2 serialise_variable(variable, [data-dumper-format])
+=head2 serialise_variable(variable)
 
 Converts some variable (maybe a scalar, hash ref, array ref or scalar ref)
 into a url-encoded string. In the cases of arrays and hashes, it is recursively
@@ -9535,15 +9537,7 @@ called on each member to serialize the entire object.
 =cut
 sub serialise_variable
 {
-my ($var, $dumper) = @_;
-if ($dumper) {
-	# Convert to Data::Dumper format
-	eval "use Data::Dumper";
-	if (!$@) {
-		$Data::Dumper::Purity = 1;
-		return Dumper($var);
-		}
-	}
+my ($var) = @_;
 if (!defined($var)) {
 	return 'UNDEF';
 	}
@@ -9583,17 +9577,16 @@ return ($r ? $r : 'VAL').",".$rv;
 =head2 unserialise_variable(string)
 
 Converts a string created by serialise_variable() back into the original
-scalar, hash ref, array ref or scalar ref. If the original variable was a Perl
-object, the same class is used on this system, if available.
+scalar, hash ref, array ref or scalar ref. Perl objects are returned as plain
+hashes to avoid loading a class selected by a remote system.
 
 =cut
 sub unserialise_variable
 {
 my ($str) = @_;
 if (substr($str, 0, 5) eq '$VAR1') {
-	# In Data::Dumper format
-	$rv = eval $str.' $VAR1;';
-	return $rv;
+	# Never execute Data::Dumper input received over RPC
+	return undef;
 	}
 my @v = split(/,/, $str);
 my $rv;
@@ -9626,15 +9619,12 @@ elsif ($v[0] eq 'UNDEF') {
 	$rv = undef;
 	}
 elsif ($v[0] =~ /^OBJECT\s+([A-Za-z0-9_:]+)$/) {
-	# An object hash that we have to re-bless
-	my $cls = $1;
+	# Keep the object's data without loading its remote-selected class
 	$rv = { };
 	for(my $i=1; $i<@v; $i+=2) {
 		$rv->{&unserialise_variable(&un_urlize($v[$i]))} =
 			&unserialise_variable(&un_urlize($v[$i+1]));
 		}
-	eval "use $cls";
-	bless $rv, $cls;
 	}
 return $rv;
 }
