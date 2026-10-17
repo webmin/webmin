@@ -1617,10 +1617,12 @@ body.left-frame {
 	position: sticky;
 	top: 0;
 	z-index: 2;
-	padding-bottom: 12px;
 	background: var(--bg-color-frame);
 	border-bottom: 1px solid var(--border-color-frame);
 }
+/* Leave room below the product switch only when it is present. Without
+ * one, the top block ends at its single divider. */
+.menu-top:has(> .mode) { padding-bottom: 12px; }
 /* A bar bouncing along the top edge of the panel while the right frame
  * loads a page; the menu script sets the class on the root */
 .menu-loader {
@@ -1650,6 +1652,9 @@ html.loading-right .menu-loader { display: block; }
  * same way. The logo links to the system information page. */
 .menu-brand {
 	padding: 14px 16px 14px;
+}
+/* Separate the brand details from the product switch when it exists. */
+.menu-top:has(> .mode) .menu-brand {
 	border-bottom: 1px solid var(--border-color-frame);
 }
 .menu-brand-name {
@@ -1886,6 +1891,9 @@ details.menu-cat[open] { margin-bottom: 4px; }
 	border: 0;
 	border-top: 1px solid var(--border-color-frame);
 }
+/* A leading separator follows hidden format metadata in modern Cloudmin,
+ * so it has no visible section above it to divide. */
+.leftmenu > .menu-divider:first-child { display: none; }
 .menu-text, .menu-html {
 	padding: 4px 12px;
 	font-size: 12px;
