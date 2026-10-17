@@ -449,6 +449,29 @@ select:not([multiple]):not([size]), select[size="1"]:not([multiple]) {
 	background-position: right 9px center;
 	background-size: 10px 10px;
 }
+/* Treat byte values and their unit menu as one compact control. */
+.ui_bytesbox {
+	display: inline-flex;
+	align-items: stretch;
+	max-width: 100%;
+	vertical-align: middle;
+}
+.ui_bytesbox > input {
+	flex: 1 1 auto;
+	min-width: 0;
+	border-start-end-radius: 0;
+	border-end-end-radius: 0;
+}
+.ui_bytesbox > select {
+	flex: 0 0 auto;
+	margin-inline-start: -1px;
+	border-start-start-radius: 0;
+	border-end-start-radius: 0;
+}
+.ui_bytesbox > :focus-visible {
+	position: relative;
+	z-index: 1;
+}
 /* List boxes keep their own height */
 select[multiple], select[size]:not([size="1"]) {
 	min-height: 0;
