@@ -8,6 +8,7 @@
 * Add confirmation dialogs for buttons and links carrying `data-ui-confirm`, replacing the browser's own prompt
 * Update File Manager to use the new UI widgets in the standard theme, dropping legacy templates
 * Fix standard theme sortable tables dropping controls from table headings, such as the select-all checkbox in File Manager
+* Fix package installation with DNF running `update` instead of `install` when one of several requested packages is already installed, leaving the others uninstalled
 * Fix two-factor authentication validation to use the Webmin configuration and data directories passed by the caller
 * Fix HTML escaping of module, script and session fields on the Webmin Actions Log details page
 * Fix mailbox attachment option injection
