@@ -170,13 +170,24 @@ like(main::ui_badge('what', 'bogus<'), qr/ui_badge_neutral/,
 	like($html, qr/\bmine\b/, 'extra class names are passed through');
 }
 
-# Action controls retain native semantics and their own theme-independent classes.
+# Action controls retain native semantics and use the theme's button classes.
 subtest 'action buttons and links' => sub {
 	my $button = main::ui_action_button('Save', 'ok');
 	like($button, qr/<button\b[^>]*type="button"/, 'default button does not submit');
 	like($button, qr/\bui_action_success\b/, 'state aliases match badges');
-	unlike($button, qr/\b(?:ui_badge|ui_button|ui_submit|ui_link|btn)\b/,
-		'legacy theme classes are absent');
+	like($button, qr/\bbtn\b.*\bbtn-success\b/,
+		'theme classes match the normalized state');
+	unlike($button, qr/\b(?:ui_badge|ui_button|ui_submit|ui_link)\b/,
+		'unrelated legacy classes are absent');
+	foreach my $case (
+		[ undef, 'btn-default' ], [ 'success', 'btn-success' ],
+		[ 'warning', 'btn-warning' ], [ 'danger', 'btn-danger' ],
+		[ 'info', 'btn-info' ], [ 'primary', 'btn-info' ]) {
+		my ($state, $class) = @{$case};
+		like(main::ui_action_button('Action', $state),
+			qr/\b\Q$class\E\b/,
+			($state || 'neutral').' uses its theme class');
+		}
 	my $opts = { type => 'submit', name => 'action', value => '', form => 'editor',
 		size => 'small', shape => 'pill', icon => 'trash',
 		attrs => { 'data-ui-confirm' => 'Proceed?', class => 'extra' } };
@@ -187,6 +198,7 @@ subtest 'action buttons and links' => sub {
 	like($submit, qr/form="editor"/, 'external form association is preserved');
 	like($submit, qr/\bui_action_small\b.*\bui_action_pill\b.*\bextra\b/,
 		'size, shape and caller classes combine');
+	like($submit, qr/\bbtn-xs\b/, 'small actions use the theme size class');
 	like($submit, qr/data-ui-confirm="Proceed\?"/, 'confirmation uses the shared handler');
 	like($submit, qr/<svg\b/, 'explicit icon is rendered');
 	is_deeply($opts->{'attrs'}, { 'data-ui-confirm' => 'Proceed?', class => 'extra' },
@@ -1060,6 +1072,12 @@ like(main::ui_svg_icon('ellipsis'), qr/fill="currentColor"/, 'ellipsis is drawn 
 		'menu is a details element with its alignment, id and marker');
 	like($html, qr/<summary (?=[^>]*\bclass="[^"]*\bui_dropdown_toggle\b[^"]*\bui_action\b[^"]*\bui_action_neutral\b[^"]*\bui_action_normal\b[^"]*\bui_action_square\b)(?=[^>]*\brole="button")(?=[^>]*\baria-haspopup="menu")/,
 		'summary is the button, drawn as an action button');
+	like($html, qr/<summary [^>]*\bclass="[^"]*\bbtn\b[^"]*\bbtn-default\b/,
+		'summary uses the native neutral theme button style');
+	my $styled = main::ui_dropdown('More', [],
+		{ 'state' => 'danger', 'size' => 'small' });
+	like($styled, qr/<summary [^>]*\bclass="[^"]*\bbtn-danger\b[^"]*\bbtn-xs\b/,
+		'summary maps its state and size to native theme classes');
 	like($html, qr/ui_svg_icon_file\b.*?<span class="ui--span">File<\/span>.*?ui_dropdown_caret/s,
 		'button shows its icon, label and arrow');
 	like($html, qr/<div (?=[^>]*\bclass="[^"]*\bui_dropdown_menu\b")(?=[^>]*\brole="menu")(?=[^>]*\bstyle="min-width:14em")/,
@@ -1362,6 +1380,7 @@ subtest 'stacked fields' => sub {
 	my $primary = main::ui_action_button('Open', 'primary',
 		{ 'icon' => 'arrow-right', 'icon_after' => 1 });
 	like($primary, qr/\bui_action_primary\b/, 'primary is a state of its own');
+	like($primary, qr/\bbtn-info\b/, 'primary uses the informational theme style');
 	like($primary, qr/>Open<\/span>\s*<svg\b/,
 		'icon_after puts the icon after the label');
 	like(main::ui_action_button('Open', 'primary'),

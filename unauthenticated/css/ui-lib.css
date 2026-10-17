@@ -45,9 +45,25 @@
 	--ui-accent: var(--link-color, #0b46ab);
 	--ui-accent-soft: var(--element-highlight-bg-color, #e8f1fb);
 	--ui-ring: var(--border-color-focused, rgba(11, 70, 171, 0.25));
-	/* Filled primary controls : the theme's accent fill under white text */
-	--ui-primary: var(--toggle-bg-color-checked, var(--ui-accent));
-	--ui-primary-text: #ffffff;
+	/* Primary controls use the theme's quieter info palette when available,
+	 * with its accent fill as the fallback. */
+	--ui-primary: var(--bg-color-info,
+		var(--accent-color,
+			var(--toggle-bg-color-checked, var(--ui-accent))));
+	--ui-primary-text: var(--text-color-stressed-more,
+		var(--text-color-info-stressed,
+			var(--text-color-inverse, #ffffff)));
+	--ui-primary-line: var(--border-color-info,
+		var(--accent-color-hover, var(--ui-primary)));
+	--ui-primary-hover: var(--bg-color-info, var(--ui-primary));
+	--ui-primary-hover-text: var(--text-color-stressed-more,
+		var(--text-color-info-stressed, var(--ui-primary-text)));
+	--ui-primary-hover-line: var(--border-color-focused,
+		var(--text-color-info,
+			var(--accent-color-hover, var(--ui-primary-line))));
+	--ui-primary-active: var(--ui-primary-hover);
+	--ui-primary-active-text: var(--ui-primary-hover-text);
+	--ui-primary-active-line: var(--ui-primary-hover-line);
 
 	/* States. The base color is used for icons, dots and bars; the
 	 * -text variant is a darker shade for text sitting on the -soft
@@ -70,7 +86,7 @@
 	--ui-info-line: var(--border-color-info, #b8d6f2);
 	--ui-neutral: var(--text-color-muted, #4b5563);
 	--ui-neutral-text: var(--text-color-neutral-stressed, #40474f);
-	--ui-neutral-soft: var(--ui-surface-2);
+	--ui-neutral-soft: var(--bg-color-neutral, var(--ui-surface-2));
 	--ui-neutral-line: var(--border-color-neutral, #d7dbe0);
 
 	/* Controls */
@@ -81,6 +97,9 @@
 	--ui-toggle-bg-checked: color-mix(in srgb,
 		var(--ui-toggle-bg) 75%, var(--ui-neutral));
 	--ui-toggle-thumb: var(--toggle-thumb-color, #ffffff);
+	--ui-disabled-bg: var(--bg-color-disabled, var(--ui-surface-2));
+	--ui-disabled-border: var(--border-color-disabled, var(--ui-border));
+	--ui-disabled-text: var(--text-color-disabled, var(--ui-fg-muted));
 
 	/* Shape and rhythm. Boxed widgets stay square; toggle corners are softened. */
 	--ui-gap: 7px;
@@ -130,28 +149,30 @@
 	--ui-fg-muted: #99a3ae;
 	--ui-accent: #5aa2ec;
 	--ui-accent-soft: rgba(90, 162, 236, 0.14);
-	--ui-ring: rgba(90, 162, 236, 0.35);
-	--ui-primary: var(--toggle-bg-color-checked, #2f6fdb);
-	--ui-success: #7ec563;
-	--ui-success-text: #8fd376;
-	--ui-success-soft: rgba(126, 197, 99, 0.13);
-	--ui-success-line: rgba(126, 197, 99, 0.4);
-	--ui-warning: #e0a63c;
-	--ui-warning-text: #eab54f;
-	--ui-warning-soft: rgba(224, 166, 60, 0.13);
-	--ui-warning-line: rgba(224, 166, 60, 0.4);
-	--ui-danger: #ef7b6f;
-	--ui-danger-text: #f28c82;
-	--ui-danger-soft: rgba(239, 123, 111, 0.13);
-	--ui-danger-line: rgba(239, 123, 111, 0.4);
-	--ui-info: #5aa2ec;
-	--ui-info-text: #78b3ef;
-	--ui-info-soft: rgba(90, 162, 236, 0.13);
-	--ui-info-line: rgba(90, 162, 236, 0.4);
-	--ui-neutral: #aeb6bf;
-	--ui-neutral-text: #b6bec7;
-	--ui-neutral-soft: #272b31;
-	--ui-neutral-line: #3c424b;
+	--ui-ring: var(--border-color-focused, rgba(90, 162, 236, 0.35));
+	--ui-primary: var(--bg-color-info,
+		var(--accent-color,
+			var(--toggle-bg-color-checked, #2f6fdb)));
+	--ui-success: var(--text-color-success, #7ec563);
+	--ui-success-text: var(--text-color-success-stressed, #8fd376);
+	--ui-success-soft: var(--bg-color-success, rgba(126, 197, 99, 0.13));
+	--ui-success-line: var(--border-color-success, rgba(126, 197, 99, 0.4));
+	--ui-warning: var(--text-color-warning, #e0a63c);
+	--ui-warning-text: var(--text-color-warning-stressed, #eab54f);
+	--ui-warning-soft: var(--bg-color-warning, rgba(224, 166, 60, 0.13));
+	--ui-warning-line: var(--border-color-warning, rgba(224, 166, 60, 0.4));
+	--ui-danger: var(--text-color-danger, #ef7b6f);
+	--ui-danger-text: var(--text-color-danger-stressed, #f28c82);
+	--ui-danger-soft: var(--bg-color-danger, rgba(239, 123, 111, 0.13));
+	--ui-danger-line: var(--border-color-danger, rgba(239, 123, 111, 0.4));
+	--ui-info: var(--text-color-info, #5aa2ec);
+	--ui-info-text: var(--text-color-info-stressed, #78b3ef);
+	--ui-info-soft: var(--bg-color-info, rgba(90, 162, 236, 0.13));
+	--ui-info-line: var(--border-color-info, rgba(90, 162, 236, 0.4));
+	--ui-neutral: var(--text-color-muted, #aeb6bf);
+	--ui-neutral-text: var(--text-color-neutral-stressed, #b6bec7);
+	--ui-neutral-soft: var(--bg-color-neutral, #272b31);
+	--ui-neutral-line: var(--border-color-neutral, #3c424b);
 	--ui-input-bg: var(--ui-surface);
 	--ui-input-border: var(--ui-border-strong);
 	color-scheme: dark;
@@ -177,28 +198,30 @@
 		--ui-fg-muted: #99a3ae;
 		--ui-accent: #5aa2ec;
 		--ui-accent-soft: rgba(90, 162, 236, 0.14);
-		--ui-ring: rgba(90, 162, 236, 0.35);
-		--ui-primary: var(--toggle-bg-color-checked, #2f6fdb);
-		--ui-success: #7ec563;
-		--ui-success-text: #8fd376;
-		--ui-success-soft: rgba(126, 197, 99, 0.13);
-		--ui-success-line: rgba(126, 197, 99, 0.4);
-		--ui-warning: #e0a63c;
-		--ui-warning-text: #eab54f;
-		--ui-warning-soft: rgba(224, 166, 60, 0.13);
-		--ui-warning-line: rgba(224, 166, 60, 0.4);
-		--ui-danger: #ef7b6f;
-		--ui-danger-text: #f28c82;
-		--ui-danger-soft: rgba(239, 123, 111, 0.13);
-		--ui-danger-line: rgba(239, 123, 111, 0.4);
-		--ui-info: #5aa2ec;
-		--ui-info-text: #78b3ef;
-		--ui-info-soft: rgba(90, 162, 236, 0.13);
-		--ui-info-line: rgba(90, 162, 236, 0.4);
-		--ui-neutral: #aeb6bf;
-		--ui-neutral-text: #b6bec7;
-		--ui-neutral-soft: #272b31;
-		--ui-neutral-line: #3c424b;
+		--ui-ring: var(--border-color-focused, rgba(90, 162, 236, 0.35));
+		--ui-primary: var(--bg-color-info,
+			var(--accent-color,
+				var(--toggle-bg-color-checked, #2f6fdb)));
+		--ui-success: var(--text-color-success, #7ec563);
+		--ui-success-text: var(--text-color-success-stressed, #8fd376);
+		--ui-success-soft: var(--bg-color-success, rgba(126, 197, 99, 0.13));
+		--ui-success-line: var(--border-color-success, rgba(126, 197, 99, 0.4));
+		--ui-warning: var(--text-color-warning, #e0a63c);
+		--ui-warning-text: var(--text-color-warning-stressed, #eab54f);
+		--ui-warning-soft: var(--bg-color-warning, rgba(224, 166, 60, 0.13));
+		--ui-warning-line: var(--border-color-warning, rgba(224, 166, 60, 0.4));
+		--ui-danger: var(--text-color-danger, #ef7b6f);
+		--ui-danger-text: var(--text-color-danger-stressed, #f28c82);
+		--ui-danger-soft: var(--bg-color-danger, rgba(239, 123, 111, 0.13));
+		--ui-danger-line: var(--border-color-danger, rgba(239, 123, 111, 0.4));
+		--ui-info: var(--text-color-info, #5aa2ec);
+		--ui-info-text: var(--text-color-info-stressed, #78b3ef);
+		--ui-info-soft: var(--bg-color-info, rgba(90, 162, 236, 0.13));
+		--ui-info-line: var(--border-color-info, rgba(90, 162, 236, 0.4));
+		--ui-neutral: var(--text-color-muted, #aeb6bf);
+		--ui-neutral-text: var(--text-color-neutral-stressed, #b6bec7);
+		--ui-neutral-soft: var(--bg-color-neutral, #272b31);
+		--ui-neutral-line: var(--border-color-neutral, #3c424b);
 		--ui-input-bg: var(--ui-surface);
 		--ui-input-border: var(--ui-border-strong);
 		color-scheme: dark;
@@ -632,33 +655,42 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
  * square, apart from the toggle and the badge dot, which are round */
 .ui_badge_rounded { border-radius: 999px; }
 /* ---- Action buttons and links ----
- * Native controls use their own classes. The inner surface keeps badge
- * styling and keyboard focus independent of a theme's button resets. */
-:is(button, a, summary).ui_action {
+ * Keep fallback styles at zero specificity so a theme's native button
+ * classes control the complete surface and interaction palette. */
+:where(:is(button, a, summary).ui_action) {
 	--ui-action-text: var(--ui-neutral-text);
-	--ui-action-soft: var(--ui-neutral-soft);
-	--ui-action-line: var(--ui-neutral-line);
+	--ui-action-bg: var(--ui-neutral-soft);
+	--ui-action-border: var(--ui-neutral-line);
+	--ui-action-hover-text: var(--ui-action-text);
+	--ui-action-hover-bg: var(--element-highlight-bg-color-hovered,
+		var(--bg-color-hover, var(--ui-action-bg)));
+	--ui-action-hover-border: var(--ui-action-text);
+	--ui-action-active-text: var(--ui-action-hover-text);
+	--ui-action-active-bg: var(--ui-action-hover-bg);
+	--ui-action-active-border: var(--ui-action-hover-border);
+	--ui-action-focus-ring: var(--ui-ring);
+	--ui-action-disabled-text: var(--ui-disabled-text);
+	--ui-action-disabled-bg: var(--ui-disabled-bg);
+	--ui-action-disabled-border: var(--ui-disabled-border);
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
 	appearance: none;
 	margin: 0;
-	padding: 0;
-	border: 0;
+	padding: 6px 12px;
+	border: 1px solid var(--ui-action-border);
 	border-radius: 0;
-	background: none;
+	background: var(--ui-action-bg);
 	box-shadow: none;
 	color: var(--ui-action-text);
 	font: inherit;
-	line-height: inherit;
+	font-size: inherit;
+	font-weight: 400;
+	line-height: 1.42857143;
 	text-decoration: none;
 	vertical-align: middle;
 	white-space: nowrap;
-	width: auto;
-	height: auto;
-	min-width: 0;
-	min-height: 0;
 	cursor: pointer;
 }
 .ui_action .ui_action_content {
@@ -667,57 +699,66 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	justify-content: center;
 	box-sizing: border-box;
 	gap: 5px;
-	padding: 2px 10px;
-	border: 1px solid var(--ui-action-line);
-	border-radius: inherit;
-	background: var(--ui-action-soft);
-	color: var(--ui-action-text);
-	font-size: 0.9em;
-	font-weight: 600;
-	line-height: 1.5;
+	color: inherit;
+	font: inherit;
+	line-height: inherit;
 	pointer-events: none;
 }
 /* Match the badge palette for each action state. */
 :is(button, a, summary).ui_action_success {
 	--ui-action-text: var(--ui-success-text);
-	--ui-action-soft: var(--ui-success-soft);
-	--ui-action-line: var(--ui-success-line);
+	--ui-action-bg: var(--ui-success-soft);
+	--ui-action-border: var(--ui-success-line);
+	--ui-action-hover-bg: var(--ui-success-soft);
+	--ui-action-hover-border: var(--ui-success);
 }
 :is(button, a, summary).ui_action_warning {
 	--ui-action-text: var(--ui-warning-text);
-	--ui-action-soft: var(--ui-warning-soft);
-	--ui-action-line: var(--ui-warning-line);
+	--ui-action-bg: var(--ui-warning-soft);
+	--ui-action-border: var(--ui-warning-line);
+	--ui-action-hover-bg: var(--ui-warning-soft);
+	--ui-action-hover-border: var(--ui-warning);
 }
 :is(button, a, summary).ui_action_danger {
 	--ui-action-text: var(--ui-danger-text);
-	--ui-action-soft: var(--ui-danger-soft);
-	--ui-action-line: var(--ui-danger-line);
+	--ui-action-bg: var(--ui-danger-soft);
+	--ui-action-border: var(--ui-danger-line);
+	--ui-action-hover-bg: var(--ui-danger-soft);
+	--ui-action-hover-border: var(--ui-danger);
 }
 :is(button, a, summary).ui_action_info {
 	--ui-action-text: var(--ui-info-text);
-	--ui-action-soft: var(--ui-info-soft);
-	--ui-action-line: var(--ui-info-line);
+	--ui-action-bg: var(--ui-info-soft);
+	--ui-action-border: var(--ui-info-line);
+	--ui-action-hover-bg: var(--ui-info-soft);
+	--ui-action-hover-border: var(--ui-info);
 }
-/* The one main action of a form : filled with the accent, so it brightens
- * on hover instead of taking the white border of the other states */
+/* The main form action follows the informational action palette through
+ * every fallback interaction state. */
 :is(button, a, summary).ui_action_primary {
 	--ui-action-text: var(--ui-primary-text);
-	--ui-action-soft: var(--ui-primary);
-	--ui-action-line: var(--ui-primary);
+	--ui-action-bg: var(--ui-primary);
+	--ui-action-border: var(--ui-primary-line);
+	--ui-action-hover-text: var(--ui-primary-hover-text);
+	--ui-action-hover-bg: var(--ui-primary-hover);
+	--ui-action-hover-border: var(--ui-primary-hover-line);
+	--ui-action-active-text: var(--ui-primary-active-text);
+	--ui-action-active-bg: var(--ui-primary-active);
+	--ui-action-active-border: var(--ui-primary-active-line);
 }
-.ui_action_primary:not(:disabled):not([aria-disabled="true"]):hover .ui_action_content {
-	border-color: var(--ui-action-line);
-	filter: brightness(1.1);
+/* Size and shape remain available to themes without matching classes. */
+:is(button, a, summary).ui_action_normal {
+	height: var(--btn-medium-height, 30px);
 }
-/* Size and shape are independent, for both native element types. */
-.ui_action_small .ui_action_content {
-	padding: 0 8px 0 7px;
+:where(.ui_action_small) {
+	padding: 1px 5px;
 	font-size: 0.8em;
-	line-height: 1.25;
+	line-height: 1.5;
 }
-.ui_action_large .ui_action_content {
-	padding: 4px 12px;
-	font-size: 1em;
+:where(.ui_action_large) {
+	padding: 10px 16px;
+	font-size: 1.15em;
+	line-height: 1.3333333;
 }
 :is(button, a, summary).ui_action_rounded { border-radius: 4px; }
 :is(button, a, summary).ui_action_pill { border-radius: 999px; }
@@ -727,18 +768,25 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	transform: translateY(-0.25px);
 }
 
-/* Focus follows the visible surface, even when a theme resets link outlines. */
-.ui_action:not(:disabled):not([aria-disabled="true"]):hover .ui_action_content {
-	border-color: currentColor;
+/* Theme button selectors override these zero-specificity fallback states. */
+:where(.ui_action:not(:disabled):not([aria-disabled="true"]):hover) {
+	background: var(--ui-action-hover-bg);
+	border-color: var(--ui-action-hover-border);
+	color: var(--ui-action-hover-text);
 }
-.ui_action:not(:disabled):not([aria-disabled="true"]):active .ui_action_content {
-	box-shadow: inset 0 0 0 1px currentColor;
+:where(.ui_action:not(:disabled):not([aria-disabled="true"]):active) {
+	background: var(--ui-action-active-bg);
+	border-color: var(--ui-action-active-border);
+	color: var(--ui-action-active-text);
 }
-.ui_action:focus-visible .ui_action_content {
-	outline: 2px solid currentColor;
-	outline-offset: 2px;
+:where(.ui_action:focus-visible) {
+	outline: 0;
+	box-shadow: 0 0 0 3px var(--ui-action-focus-ring);
 }
-:is(button, a, summary).ui_action:is(:disabled, [aria-disabled="true"]) {
+:where(:is(button, a, summary).ui_action:is(:disabled, [aria-disabled="true"])) {
+	background: var(--ui-action-disabled-bg);
+	border-color: var(--ui-action-disabled-border);
+	color: var(--ui-action-disabled-text);
 	opacity: 0.55;
 	cursor: not-allowed;
 }

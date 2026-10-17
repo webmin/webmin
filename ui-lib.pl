@@ -5085,12 +5085,11 @@ return &ui_tag('span', $icon.&ui_tag('span', &html_escape($label)),
 
 =head2 ui_action_button(label, [state], [&opts])
 
-Returns a native button, or a link when href is supplied, with the colors
-and compact appearance of ui_badge. State accepts the same values and
-aliases as ui_badge and defaults to neutral; the extra state primary
-draws a filled button in the theme's accent color, for the one main
-action of a form. Labels are plain text. The ui_action classes are
-separate from the existing theme button classes. Options are :
+Returns a native button, or a link when href is supplied, using the
+current theme's button styles. State accepts the same values and aliases
+as ui_badge and defaults to neutral; the extra state primary uses the
+theme's informational action style for the one main action of a form.
+Labels are plain text. Options are :
 
 =item href - Destination URL. When present, renders an <a> instead of a
 <button>. Use links for navigation and buttons for form actions.
@@ -5125,12 +5124,31 @@ code supplied by the calling module.
 Loads ui_page_assets once, and can also be used outside a ui_page.
 
 =cut
+
+# _ui_action_theme_classes(state, size)
+# Returns the native theme classes for a normalized action state and size.
+sub _ui_action_theme_classes
+{
+my ($state, $size) = @_;
+my $button_class = {
+	'neutral' => 'btn-default',
+	'success' => 'btn-success',
+	'warning' => 'btn-warning',
+	'danger' => 'btn-danger',
+	'info' => 'btn-info',
+	'primary' => 'btn-info',
+	}->{$state};
+my $button_size = $size eq 'small' ? 'btn-xs' :
+	$size eq 'large' ? 'btn-lg' : undef;
+return ('btn', $button_class, $button_size);
+}
+
 sub ui_action_button
 {
 return &theme_ui_action_button(@_) if (defined(&theme_ui_action_button));
 my ($label, $state, $opts) = @_;
 $opts ||= {};
-# Primary is the filled accent button, outside the badge states.
+# Keep primary distinct from the badge states.
 $state = ($state || '') eq 'primary' ? 'primary' : &_ui_state($state);
 my $size = ($opts->{'size'} || '') =~ /\A(?:small|normal|large)\z/
 	? $opts->{'size'} : 'normal';
@@ -5139,8 +5157,10 @@ my $shape = ($opts->{'shape'} || '') =~ /\A(?:square|rounded|pill)\z/
 my $tag = defined($opts->{'href'}) ? 'a' : 'button';
 my %attrs = %{$opts->{'attrs'} || {}};
 my $disabled = $opts->{'disabled'} || exists($attrs{'disabled'});
+my @theme_classes = &_ui_action_theme_classes($state, $size);
 $attrs{'class'} = &_ui_class('ui_action', 'ui_action_'.$state,
-	'ui_action_'.$size, 'ui_action_'.$shape, $opts->{'class'}, $attrs{'class'});
+	'ui_action_'.$size, 'ui_action_'.$shape, @theme_classes,
+	$opts->{'class'}, $attrs{'class'});
 # Preserve empty and zero values, which can be meaningful form values.
 foreach my $name (qw(name value form id title)) {
 	$attrs{$name} = $opts->{$name} if (defined($opts->{$name}));
@@ -6571,12 +6591,13 @@ $content .= &ui_svg_icon($opts->{'icon'}) if ($opts->{'icon'});
 $content .= &ui_tag('span', $text) if (defined($text));
 $content .= &ui_svg_icon('chevron-down', { 'class' => 'ui_dropdown_caret' })
 	if (!defined($opts->{'caret'}) || $opts->{'caret'});
+my @theme_classes = &_ui_action_theme_classes($state, $size);
 my $toggle = &ui_tag('summary',
 	&ui_tag('span', $content, { 'class' => 'ui_action_content' }),
 	&_ui_attrs({
 		'class' => &_ui_class('ui_dropdown_toggle', 'ui_action',
 				      'ui_action_'.$state, 'ui_action_'.$size,
-				      'ui_action_'.$shape),
+				      'ui_action_'.$shape, @theme_classes),
 		'role' => 'button',
 		'aria-haspopup' => 'menu',
 		'title' => $opts->{'title'},
