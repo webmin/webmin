@@ -178,6 +178,7 @@ error_notallowed=The database file $1 is outside the allowed directories for thi
 error_noallowed=None
 error_driver=Failed to load the SQLite Perl driver: $1
 error_connect=Failed to open SQLite database $1: $2
+error_secureopen=SQLite 3.39 or later is required for restricted database directories.
 error_unknown=Unknown SQLite error
 error_readonly=You do not have write access to this database
 error_key=Invalid row identity

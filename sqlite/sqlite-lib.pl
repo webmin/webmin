@@ -68,6 +68,8 @@ $sqlite_unix_home = $uinfo[7];
 
 # sub sqlite_acl_paths(value)
 # Returns allowed database directories, expanding $HOME for the Unix user.
+# Keep explicit ACL paths fixed after saving them. Resolve $HOME so
+# administrator-managed links such as /home -> /data continue to work.
 sub sqlite_acl_paths
 {
 my ($value) = @_;
@@ -80,14 +82,18 @@ my $owner = &sqlite_work_as_user() || $remote_user;
 my @user = $owner ? getpwnam($owner) : ( );
 my @resolved;
 foreach my $path (@paths) {
-	# Safe ACLs use $HOME, which is valid only for a matching Unix user.
+	# $HOME is valid only when the ACL identifies a matching Unix user.
 	if ($path eq '$HOME') {
-		push(@resolved, $user[7]) if ($user[7] && $user[7] =~ m!^/!);
+		$path = $user[7] ?
+			&simplify_path(&resolve_links($user[7])) : undef;
 		}
 	else {
-		# Administrators validate explicit ACL paths before saving them.
-		push(@resolved, $path);
+		# The ACL editor stores canonical paths. Normalize lexical components
+		# without following a link that may have been replaced later.
+		$path = &simplify_path($path);
 		}
+	# Discard unresolved or non-absolute ACL entries.
+	push(@resolved, $path) if ($path && $path =~ m!^/!);
 	}
 return @resolved;
 }
@@ -127,12 +133,14 @@ return ($DBD::SQLite::sqlite_version, $DBD::SQLite::VERSION);
 }
 
 # sub sqlite_path_under(path, directory)
-# Returns true if a resolved path is the directory or one of its descendants.
+# Returns true when a canonical candidate path is the saved ACL directory or
+# one of its descendants. Callers resolve candidate links but keep saved ACL
+# roots unchanged.
 sub sqlite_path_under
 {
 my ($path, $dir) = @_;
-$path = &simplify_path(&resolve_links($path));
-$dir = &simplify_path(&resolve_links($dir));
+$path = &simplify_path($path);
+$dir = &simplify_path($dir);
 # Reject paths that cannot be normalized.
 return 0 if (!defined($path) || !defined($dir));
 # A root ACL includes every absolute path.
@@ -141,6 +149,30 @@ return 1 if ($dir eq '/');
 return 1 if ($path eq $dir);
 $dir =~ s!/+$!!;
 return index($path, $dir.'/') == 0;
+}
+
+# sub sqlite_acl_unrestricted()
+# Returns true when the ACL includes the filesystem root.
+sub sqlite_acl_unrestricted
+{
+foreach my $dir (&sqlite_acl_paths($access{'paths'})) {
+	# Only the exact root path grants unrestricted filesystem access.
+	return 1 if ($dir eq '/');
+	}
+return 0;
+}
+
+# sub sqlite_secure_open_available([sqlite-version])
+# Returns true when the active ACL can be enforced while opening a validated
+# database path. sqlite-version overrides the loaded version for tests. A
+# restricted ACL requires SQLite 3.39 or later to reject links in every path
+# component.
+sub sqlite_secure_open_available
+{
+my ($version) = @_;
+# An unrestricted ACL has no narrower directory boundary to escape.
+return 1 if (&sqlite_acl_unrestricted());
+return &sqlite_supports('nofollow', $version);
 }
 
 # sub sqlite_path_allowed(path)
@@ -277,6 +309,8 @@ $path = &sqlite_database_path($path, $create);
 $create = 0 if (-e $path);
 my $driver_error = &sqlite_load_driver();
 $driver_error && &error(&text('error_driver', &html_escape($driver_error)));
+# Protect every restricted path ACL against an ancestor symlink race.
+&sqlite_secure_open_available() || &error($text{'error_secureopen'});
 # Refuse writes denied by the applicable ACL or filesystem.
 if ($write && !$create && !($sql_write ? &sqlite_can_sql_write($path) :
 					 &sqlite_can_write($path))) {
@@ -784,15 +818,15 @@ return 'CREATE TABLE '.&sqlite_quote_identifier($name).
 }
 
 # sub sqlite_supports(feature, [version])
-# Returns true when the SQLite library has a feature: rename_column (3.25
-# and later), drop_column (3.35 and later) or nofollow, the open flag that
-# refuses a symbolic link as the database file (3.31 and later). The
-# version defaults to the loaded library's version number.
+# Returns true when the SQLite library has a feature: rename_column (3.25 and
+# later), drop_column (3.35 and later), or full-path nofollow (3.39 and later).
+# Here nofollow means that every database path component is checked, not only
+# the final filename. version defaults to the loaded library's version number.
 sub sqlite_supports
 {
 my ($feature, $version) = @_;
 my %needs = ( 'rename_column' => 3025000, 'drop_column' => 3035000,
-	      'nofollow' => 3031000 );
+	      'nofollow' => 3039000 );
 # The driver sets the version once DBD::SQLite is loaded, so load it here
 # when nothing has yet; otherwise a check made before the first connection
 # would report every feature as missing.

@@ -73,8 +73,10 @@ write_text(File::Spec->catfile($config_dir, 'webmin.acl'),
 write_text(File::Spec->catfile($config_dir, 'sqlite', 'config'),
 	"perpage=1\nmax_text=1000\nbusy_timeout=100\n".
 	"max_query_rows=100\nconfirm_delete=1\n");
+# An unrestricted test ACL lets older local SQLite versions exercise CGI
+# behavior; the path-boundary tests restore a restricted ACL later.
 write_text(File::Spec->catfile($config_dir, 'sqlite', 'admin.acl'),
-	"paths=$data_dir\nwrite=1\ncreate=1\nsql=1\n");
+	"paths=/\nwrite=1\ncreate=1\nsql=1\n");
 write_text(File::Spec->catfile($config_dir, 'software', 'config'),
 	"package_system=debian\nupdate_system=apt\napt_mode=0\n");
 write_text(File::Spec->catfile($fake_lib, 'DBD', 'SQLite.pm'),
@@ -729,7 +731,7 @@ is($rename_back->{'err'}, '', 'renaming back emits no warnings');
 # Without write access there is no table form, no drop button, and no
 # new-file switch, since a new file could not be given a table.
 write_text(File::Spec->catfile($config_dir, 'sqlite', 'admin.acl'),
-	"paths=$data_dir\nwrite=0\ncreate=1\nsql=0\n");
+	"paths=/\nwrite=0\ncreate=1\nsql=0\n");
 my $readonly_form = run_cgi('table_form.cgi', 'GET', { 'db' => $database });
 like($readonly_form->{'out'}, qr/do not have write access/,
 	'table form CGI refuses a read-only user');
@@ -756,7 +758,7 @@ ok(!-e $never_database, 'and leaves no file behind');
 # Direct SQL is an independent write capability, while the structured table
 # forms remain governed by the normal write ACL.
 write_text(File::Spec->catfile($config_dir, 'sqlite', 'admin.acl'),
-	"paths=$data_dir\nwrite=0\ncreate=1\nsql=1\n");
+	"paths=/\nwrite=0\ncreate=1\nsql=1\n");
 my $sql_only_database = File::Spec->catfile($data_dir, 'sql-only.db');
 my $sql_only_index = run_cgi('index.cgi', 'GET', {});
 like($sql_only_index->{'out'}, qr/Webmin creates the file/,
@@ -784,12 +786,12 @@ is($sql_only_table, 1, 'SQL permission can change a writable database');
 $dbh->disconnect();
 
 write_text(File::Spec->catfile($config_dir, 'sqlite', 'admin.acl'),
-	"paths=$data_dir\nwrite=1\ncreate=1\nsql=0\n");
+	"paths=/\nwrite=1\ncreate=1\nsql=0\n");
 my $form_only_index = run_cgi('index.cgi', 'GET', {});
 like($form_only_index->{'out'}, qr/Webmin creates the file/,
 	'index CGI offers a new file when the table form can fill it');
 write_text(File::Spec->catfile($config_dir, 'sqlite', 'admin.acl'),
-	"paths=$data_dir\nwrite=1\ncreate=1\nsql=1\n");
+	"paths=/\nwrite=1\ncreate=1\nsql=1\n");
 
 # Insert a row and check the fixture database.
 my $insert = run_cgi('save_row.cgi', 'POST', {
@@ -854,6 +856,8 @@ is($first_count, 0, 'row delete CGI removes the selected row');
 $dbh->disconnect();
 
 # Check that denied paths reveal no contents or file metadata.
+write_text(File::Spec->catfile($config_dir, 'sqlite', 'admin.acl'),
+	"paths=$data_dir\nwrite=1\ncreate=1\nsql=1\n");
 my $outside_database = File::Spec->catfile($temp, 'outside.db');
 $dbh = DBI->connect('dbi:SQLite:dbname='.$outside_database, '', '', {
 	'RaiseError' => 1, 'PrintError' => 0 });

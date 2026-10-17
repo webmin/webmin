@@ -8,7 +8,13 @@ of the selected Unix user.
 line. The module allows files in those directories and their subdirectories.
 Use <tt>$HOME</tt> for the selected Unix user's home directory. Paths outside
 the listed directories are rejected. In root mode, <tt>$HOME</tt> refers to
-the Unix account whose name matches the Webmin user.</p>
+the Unix account whose name matches the Webmin user. SQLite 3.39 or later is
+required for a restricted list because it prevents symbolic links in any path
+component from escaping these directories. A list containing <tt>/</tt> does
+not restrict database paths and does not need this check. This requirement
+applies to the SQLite library used by <tt>DBD::SQLite</tt>, which may differ
+from the system <tt>sqlite3</tt> command. Unix permissions still apply, but they
+do not enforce this module's directory list.</p>
 
 <p>The row and table permission enables forms for editing rows and changing
 schemas. The file creation permission allows new files in writable allowed

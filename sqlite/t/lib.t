@@ -19,6 +19,9 @@ my $root = tempdir(CLEANUP => 1);
 my $allowed = "$root/allowed";
 my $outside = "$root/outside";
 make_path($allowed, $outside);
+# Explicit ACL paths are canonical when saved by the access-control editor.
+$allowed = simplify_path(resolve_links($allowed));
+$outside = simplify_path(resolve_links($outside));
 $access{'paths'} = $allowed;
 $access{'create'} = 1;
 $access{'write'} = 1;
@@ -40,7 +43,8 @@ SKIP: {
 		if (!$current_user[0] || !$current_user[7] ||
 		    $current_user[7] !~ m!^/!);
 	local $remote_user = $current_user[0];
-	is_deeply([ sqlite_acl_paths('$HOME') ], [ $current_user[7] ],
+	my $expected = simplify_path(resolve_links($current_user[7]));
+	is_deeply([ sqlite_acl_paths('$HOME') ], [ $expected ],
 		'safe path ACL expands the Unix user home directory');
 	}
 {
@@ -58,7 +62,8 @@ SKIP: {
 	local $remote_user = 'sqlite-safe-user-that-does-not-exist';
 	local $access{'work_as_root'} = 0;
 	local $access{'work_as_user'} = $current_user[0];
-	is_deeply([ sqlite_acl_paths('$HOME') ], [ $current_user[7] ],
+	my $expected = simplify_path(resolve_links($current_user[7]));
+	is_deeply([ sqlite_acl_paths('$HOME') ], [ $expected ],
 		'safe path ACL follows the named Unix user home directory');
 	}
 my %safe_acl;
@@ -106,6 +111,36 @@ is(sqlite_filename_uri('/tmp/a;b=c%20.db'),
 	'file:/tmp/a%3Bb%3Dc%2520.db',
 	'filename URI escapes DBD connection syntax and literal percent signs');
 
+# A saved ACL root stays fixed even if its former directory is replaced by
+# a symbolic link to an outside location.
+SKIP: {
+	my $replaceable = "$root/replaceable";
+	make_path($replaceable);
+	my $pinned = simplify_path(resolve_links($replaceable));
+	rmdir($replaceable) or die "rmdir $replaceable: $!";
+	skip('symbolic links are unavailable', 2)
+		if (!symlink($outside, $replaceable));
+	my $retargeted = simplify_path(resolve_links("$replaceable/private.db"));
+	my ($root_acl) = sqlite_acl_paths($pinned);
+	ok(!sqlite_path_under($retargeted, $root_acl),
+		'root keeps a saved ACL directory fixed');
+	my ($user_acl) = sqlite_acl_paths($pinned);
+	is($user_acl, $pinned,
+		'an unprivileged worker also keeps the ACL directory fixed');
+	}
+
+# Restricted path ACLs require SQLite's full-path no-follow protection.
+ok(!sqlite_secure_open_available(3038999),
+	'restricted access rejects SQLite before 3.39');
+ok(sqlite_secure_open_available(3039000),
+	'restricted access accepts SQLite 3.39');
+# The root ACL has no narrower directory boundary to enforce.
+{
+	local $access{'paths'} = '/';
+	ok(sqlite_secure_open_available(3030999),
+		'an unrestricted ACL needs no directory boundary');
+}
+
 # Ownership changes must reject links instead of following them as root.
 SKIP: {
 	my $target = "$outside/chown-target";
@@ -141,6 +176,11 @@ like($long_value, qr/overflow-wrap:anywhere;word-break:break-word/,
 unlike($long_value, qr/min-width:/,
 	'long text does not force a minimum table width');
 $config{'max_text'} = 8;
+# Later helpers receive paths returned by sqlite_database_path, which are
+# canonical even when a temporary-directory prefix is a symbolic link.
+$allowed = $resolved_allowed;
+$outside = simplify_path(resolve_links($outside));
+$access{'paths'} = $allowed;
 
 # Check the per-user recent list: the limit, ordering, de-duplication, ACL
 # filtering, deleted files and clearing.
@@ -294,10 +334,10 @@ ok(sqlite_supports('drop_column', 3035000),
 	'SQLite 3.35 can drop columns');
 ok(!sqlite_supports('alter_column', 3999000),
 	'unknown features are never supported');
-ok(!sqlite_supports('nofollow', 3030999),
-	'the no-follow open flag needs SQLite 3.31');
-ok(sqlite_supports('nofollow', 3031000),
-	'SQLite 3.31 refuses a symbolic link as the database');
+ok(!sqlite_supports('nofollow', 3038999),
+	'full-path no-follow needs SQLite 3.39');
+ok(sqlite_supports('nofollow', 3039000),
+	'SQLite 3.39 refuses links in every path component');
 # As a normal user the ownership helper changes nothing and never dies.
 touch("$allowed/owned.db");
 touch("$allowed/owned.db-wal");
@@ -340,6 +380,9 @@ SKIP: {
 	my $driver_error = sqlite_load_driver();
 	# Skip only database tests when DBD::SQLite is unavailable.
 	skip("DBD::SQLite unavailable: $driver_error", 31) if ($driver_error);
+	# Database helper tests use an unrestricted ACL so they can run with an
+	# older local SQLite; restricted-path version gates are tested above.
+	local $access{'paths'} = '/';
 	# Create a writable fixture and test schema and query helpers.
 	my $database = "$allowed/example.db";
 	my $dbh = sqlite_connect($database, 1, 1);
