@@ -21,7 +21,8 @@ my $job;
 if (!$in{'new'} && !$in{'view'} && !$in{'run'}) {
 	my @jobs = &cron::list_cron_jobs();
 	foreach my $j (@jobs) {
-		$job = $j if ($j->{'command'} eq "$cron_cmd $in{'file'}");
+		$job = $j if ($j->{'command'} eq "$cron_cmd $in{'file'}" ||
+			      $j->{'command'} eq $cron_cmd." ".quotemeta($in{'file'}));
 		}
 	}
 
@@ -120,7 +121,7 @@ else {
 		# Create cron job and script
 		$job->{'user'} = 'root';
 		$job->{'active'} = 1;
-		$job->{'command'} = "$cron_cmd $in{'file'}";
+		$job->{'command'} = $cron_cmd." ".quotemeta($in{'file'});
 		&lconf_to_cron($lconf, $job);
 		&lock_file($cron_cmd);
 		&cron::create_wrapper($cron_cmd, $module_name, "webalizer.pl");

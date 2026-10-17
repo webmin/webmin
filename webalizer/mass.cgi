@@ -19,7 +19,8 @@ my @jobs = &cron::list_cron_jobs();
 my %job;
 foreach my $file (@d) {
 	&can_edit_log($file) || &error($text{'edit_efilecannot'});
-	($job{$file}) = grep { $_->{'command'} eq "$cron_cmd $file" } @jobs;
+	($job{$file}) = grep { $_->{'command'} eq "$cron_cmd $file" ||
+			       $_->{'command'} eq $cron_cmd." ".quotemeta($file) } @jobs;
 	}
 
 my $count = 0;
@@ -35,7 +36,7 @@ if ($in{'enable'}) {
 			if (!$job) {
 				$job = { 'user' => 'root',
 					 'active' => 1,
-					 'command' => "$cron_cmd $file" };
+					 'command' => $cron_cmd." ".quotemeta($file) };
 				&lconf_to_cron($lconf, $job);
 				&lock_file(&cron::cron_file($job));
 				&cron::create_cron_job($job);

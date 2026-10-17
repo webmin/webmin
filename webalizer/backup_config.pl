@@ -53,8 +53,9 @@ my @jobs = &cron::list_cron_jobs();
 foreach my $log (&get_all_logs()) {
 	my $lconf = &get_log_config($log->{'file'});
 	if ($lconf->{'sched'}) {
-		my ($job) = grep { $_->{'command'} eq
-				   "$cron_cmd $log->{'file'}" } @jobs;
+		my ($job) = grep {
+			$_->{'command'} eq "$cron_cmd $log->{'file'}" ||
+			$_->{'command'} eq $cron_cmd." ".quotemeta($log->{'file'}) } @jobs;
 		if (!$job) {
 			# Need to create!
 			$job->{'user'} = 'root';
@@ -65,7 +66,7 @@ foreach my $log (&get_all_logs()) {
 			$job->{'days'} = $lconf->{'days'};
 			$job->{'months'} = $lconf->{'months'};
 			$job->{'weekdays'} = $lconf->{'weekdays'};
-			$job->{'command'} = "$cron_cmd $log->{'file'}";
+			$job->{'command'} = $cron_cmd." ".quotemeta($log->{'file'});
 			&cron::create_cron_job($job);
 			}
 		}
