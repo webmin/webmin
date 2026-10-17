@@ -519,6 +519,8 @@ return &theme_prehead();
 sub theme_ui_table_start
 {
 my ($heading, $tabletags, $cols, $tds, $rightheading) = @_;
+# Expose the column count so CSS can size the form layout.
+my $formcols = $cols || 4;
 if (! $tabletags =~ /width/) { $tabletages .= " width=100%"; }
 if (defined($main::ui_table_cols)) {
   # Push on stack, for nested call
@@ -540,9 +542,11 @@ $rv .= "<table class='ui_table' $tabletags>\n";
 if (defined($heading) || defined($rightheading)) {
 	# Heading row, with an optional part at the right
         $rv .= "<thead><tr>";
+	# Add the main heading when present.
         if (defined($heading)) {
                 $rv .= "<td><b>$heading</b></td>"
                 }
+	# Put optional actions or context at the right.
         if (defined($rightheading)) {
                 $rv .= "<td align=right>$rightheading</td>";
                 $colspan++;
@@ -550,8 +554,8 @@ if (defined($heading) || defined($rightheading)) {
         $rv .= "</tr></thead>\n";
         }
 $rv .= "<tbody> <tr class='ui_table_body'> <td colspan=$colspan>".
-       "<table width=100%>\n";
-$main::ui_table_cols = $cols || 4;
+       "<table class='ui_form_rows ui_form_rows_$formcols' width=100%>\n";
+$main::ui_table_cols = $formcols;
 $main::ui_table_pos = 0;
 $main::ui_table_default_tds = $tds;
 return $rv;
@@ -686,8 +690,10 @@ my ($border) = @_;
 return $border ? "</div>\n" : "";
 }
 
-# theme_ui_columns_start(&headings, [width-percent], [noborder], [&tdtags], [title])
-# Returns HTML for a multi-column table, with the given headings
+# theme_ui_columns_start(&headings, [width-percent], [no-border],
+#                        [&td-tags], [title], [sortable], [class])
+# Returns HTML for a multi-column table. The sortable flag forces client-side
+# sorting, and class adds a table class.
 sub theme_ui_columns_start
 {
 my ($heads, $width, $noborder, $tdtags, $title, $sortable, $class) = @_;
@@ -695,11 +701,12 @@ my ($href) = grep { $_ =~ /<a\s+href/i } @$heads;
 my $rv;
 $theme_ui_columns_row_toggle = 0;
 if (!$noborder && !$main::COLUMNS_WRAPPER_OPEN) {
-	# The outermost bordered table opens the card
+	# The outermost bordered table opens the card and a container that
+	# scrolls wide columns without widening the page.
 	$rv .= "<table class='wrapper' width="
 	     . ($width ? $width : "100")
 	     . "%>\n";
-	$rv .= "<tr><td>\n";
+	$rv .= "<tr><td><div class='ui_columns_scroll'>\n";
 	}
 if (!$noborder) {
 	# Nested bordered tables share that card
@@ -766,13 +773,15 @@ return $rv;
 }
 
 # theme_ui_columns_end()
-# Returns HTML to end a table started by ui_columns_start
+# Ends a table from theme_ui_columns_start. Also closes the scroll container
+# and card opened for the outermost bordered table.
 sub theme_ui_columns_end
 {
 my $rv;
 $rv = "</tbody> </table>\n";
-if ($main::COLUMNS_WRAPPER_OPEN == 1) { # Last wrapper
-	$rv .= "</td> </tr> </table>\n";
+# Close the shared scroll container with the outermost table.
+if ($main::COLUMNS_WRAPPER_OPEN == 1) {
+	$rv .= "</div></td> </tr> </table>\n";
 	}
 $main::COLUMNS_WRAPPER_OPEN--;
 return $rv;

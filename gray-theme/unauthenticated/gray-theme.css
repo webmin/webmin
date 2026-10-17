@@ -416,12 +416,19 @@ details[open].menu-cat > summary::after {
 
 /* ---- Form controls ---- */
 
+/* Forms and their controls shrink inside the content column. */
+form.ui_form {
+	min-width: 0;
+	max-width: 100%;
+}
+
 /* Text fields, menus and text areas share one height, edge and radius */
 input[type="text"], input[type="password"], input[type="email"],
 input[type="number"], input[type="search"], input[type="url"],
 input[type="tel"], input[type="date"], input[type="time"],
 input[type="datetime-local"], input:not([type]), select, textarea {
 	box-sizing: border-box;
+	max-width: 100%;
 	min-height: var(--control-height);
 	padding: 4px 10px;
 	border: 1px solid var(--border-color-input);
@@ -940,6 +947,14 @@ table.header:has(+ .ui_post_header) {
 /* Forms with a heading, tables of rows, collapsible sections, tab boxes
  * and icon grids all sit in the same card */
 
+/* Give modern widgets the theme's card spacing. Add the same gap after a
+ * widget group followed by legacy page content. */
+body .ui_page { --ui-gap: var(--card-gap); }
+.ui_page:has(~ :not(script, style, link, dialog, [hidden], .ui_hidden,
+	input[type="hidden"])) {
+	margin-bottom: var(--card-gap);
+}
+
 table.shrinkwrapper, table.wrapper, div.wrapper,
 details.ui_hidden_table_start, details.section, div.ui_tabs_box {
 	width: 100%;
@@ -953,9 +968,29 @@ div.wrapper, details.ui_hidden_table_start, details.section,
 div.ui_tabs_box { box-sizing: border-box; }
 table.shrinkwrapper > tbody > tr > td,
 table.wrapper > tbody > tr > td { padding: 0; }
-/* A fixed layout keeps the label and value columns steady whatever the
- * values hold */
-table.shrinkwrapper > tbody > tr > td > .ui_table { table-layout: fixed; }
+/* Data-table cards stay within the page. Only their columns scroll when
+ * their natural width is wider than the available content area. */
+table.wrapper:has(> tbody > tr > td > .ui_columns_scroll) {
+	table-layout: fixed;
+}
+.ui_columns_scroll {
+	width: 100%;
+	max-width: 100%;
+	overflow-x: auto;
+}
+/* Keep form tables inside their cards regardless of control width. Column
+ * count classes give labels useful proportions in multi-field rows. */
+table.shrinkwrapper > tbody > tr > td > .ui_table,
+table.ui_form_rows { table-layout: fixed; }
+table.ui_form_rows_2 > tbody > tr.ui_form_pair > td.ui_form_label:not([width]) {
+	width: 20%;
+}
+:is(table.ui_form_rows_3, table.ui_form_rows_4) > tbody > tr.ui_form_pair > td.ui_form_label:not([width]) {
+	width: 15%;
+}
+:is(table.ui_form_rows_5, table.ui_form_rows_6) > tbody > tr.ui_form_pair > td.ui_form_label:not([width]) {
+	width: 10%;
+}
 
 /* ---- Forms with a heading (ui_table_start) ---- */
 /* Markup: table.shrinkwrapper > td > table.ui_table with the heading in
@@ -1112,9 +1147,32 @@ details.ui_hidden_table_start > summary span.rightheading {
 	font-weight: 400;
 }
 details.ui_hidden_table_start > table {
+	display: block;
 	box-sizing: border-box;
 	width: 100%;
+	max-width: 100%;
 	padding: 8px 14px 10px;
+	overflow-x: auto;
+}
+details.ui_hidden_table_start > table > tbody {
+	display: table;
+	width: 100%;
+}
+/* Make a collapsible form the only horizontal scroll area. Nested column
+ * tables keep their natural width without adding another scrollbar. */
+details.ui_hidden_table_start table.wrapper:has(.ui_columns_scroll) {
+	width: max-content;
+	min-width: 100%;
+	table-layout: auto;
+}
+details.ui_hidden_table_start .ui_columns_scroll {
+	width: auto;
+	max-width: none;
+	overflow-x: visible;
+}
+details.ui_hidden_table_start table.ui_columns {
+	width: max-content;
+	min-width: 100%;
 }
 .section-body { padding: 10px 16px 14px; }
 /* Text above a dashboard block's content */
@@ -1330,6 +1388,14 @@ form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_gr
 	border-top: 0;
 	border-radius: 0 0 var(--radius) var(--radius);
 	box-shadow: var(--shadow);
+}
+
+/* A legacy card form may print its action buttons directly after the
+ * table. Leave the normal card gap before another form begins; the core
+ * may put its form-end script between the two forms. */
+form.ui_form:has(> :is(table.wrapper, table.shrinkwrapper)):has(> .ui_submit):has(
+	+ form.ui_form, + script + form.ui_form) {
+	margin-bottom: var(--card-gap);
 }
 
 /* A small form of controls before another form or a table, such as the
