@@ -1863,6 +1863,8 @@ html.loading-right .menu-loader { display: block; }
 	background: var(--accent-color);
 	animation: menu-bounce 0.9s ease-in-out infinite alternate;
 }
+/* Match Authentic's crimson progress bar for Cloudmin navigation. */
+.menu-panel-cloudmin .menu-loader::before { background: #dc143c; }
 @keyframes menu-bounce { to { left: 65%; } }
 /* The brand block: the logo has as much room above it as below it, and
  * the logo files are trimmed to their drawing, so every product sits the
