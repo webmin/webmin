@@ -61,7 +61,10 @@ return &get_dnf_version() >= 5 ? '--setopt=disable_excludes=*' :
 }
 
 # update_system_install([packages], [&in], [no-force], [flags])
-# Installs or updates packages with YUM or DNF.
+# Installs or updates space-separated packages with YUM or DNF. The package
+# list defaults to form input, the input hash can select a repository, and
+# flags are passed to the transaction. No-force is kept for compatibility but
+# has no effect.
 sub update_system_install
 {
 local $update = $_[0] || $in{'update'};
@@ -76,15 +79,30 @@ $qflags = &trim(join(" ", map { quotemeta($_) } split(/ /, $runflags)))
 	if ($runflags);
 $update =~ s/\.\*/\*/g;
 local $enable;
+# Add the repository selected on the install form.
 if ($in->{'enablerepo'}) {
 	$enable = "enablerepo=".quotemeta($in->{'enablerepo'});
 	}
 local (@rv, @newpacks);
 
-# If there are multiple architectures to update for a package, split them out
+# Split installed packages by architecture and record missing packages.
 local @updates = split(/\s+/, $update);
-local @names = map { &append_architectures($_) } split(/\s+/, $update);
+local (@names, @installed, @missing);
+foreach my $u (@updates) {
+	my $installed;
+	my @package_names = &append_architectures($u, \$installed);
+	push(@names, @package_names);
+	if ($installed) {
+		# Queue installed architectures for update.
+		push(@installed, @package_names);
+		}
+	else {
+		# Queue missing package specifications for installation.
+		push(@missing, @package_names);
+		}
+	}
 if (@names == 1) {
+	# Keep the original specification when no architecture split was needed.
 	@names = ( $update );
 	}
 $update = join(" ", map { quotemeta($_) } @names);
@@ -110,30 +128,39 @@ if ($versionlock_update) {
 		}
 	}
 
-# Use update for installed DNF packages and install for everything else.
-local $cmd;
-if ($yum_command =~ /dnf$/) {
-	local @pinfo = &package_info($updates[0]);
-	if ($pinfo[0]) {
-		$cmd = "update";
-		}
-	else {
-		$cmd = "install";
-		}
+# DNF 4 installs and upgrades a mixed package set in one transaction. DNF 5
+# needs separate actions because install does not upgrade packages by name.
+my @actions;
+if ($yum_command =~ /dnf$/ && @installed && @missing &&
+    &get_dnf_version() >= 5) {
+	@actions = ( [ 'update', \@installed ], [ 'install', \@missing ] );
 	}
 else {
-	$cmd = "install";
+	# Use one action for YUM and non-mixed DNF sets.
+	my $cmd = $yum_command =~ /dnf$/ && @installed && !@missing ?
+		'update' : 'install';
+	@actions = ( [ $cmd, \@names ] );
 	}
 
-# Work out the command to run, which may enable some repos
-my $uicmd = "$yum_command $enable -y $cmd ".join(" ", @names);
-$uicmd .= " $runflags" if ($runflags);
-my $fullcmd = "$yum_command $enable -y $cmd $update";
-$fullcmd .= " $qflags" if ($qflags);
+# Join actions so DNF 5 installs only after its update succeeds.
+my (@uicmds, @fullcmds);
+foreach my $action (@actions) {
+	my ($cmd, $packages) = @$action;
+	my $uicmd = "$yum_command $enable -y $cmd ".join(" ", @$packages);
+	$uicmd .= " $runflags" if ($runflags);
+	push(@uicmds, $uicmd);
+	my $fullcmd = "$yum_command $enable -y $cmd ".
+		join(" ", map { quotemeta($_) } @$packages);
+	$fullcmd .= " $qflags" if ($qflags);
+	push(@fullcmds, $fullcmd);
+	}
+my $uicmd = join(" && ", @uicmds);
+my $fullcmd = join(" && ", @fullcmds);
 foreach my $u (@updates) {
 	my $repo = &update_system_repo($u);
 	if ($repo) {
-		$fullcmd = "$yum_command -y $cmd $repo ; $fullcmd";
+		# Install a required repository package first.
+		$fullcmd = "$yum_command -y install $repo ; $fullcmd";
 		}
 	}
 
@@ -141,7 +168,7 @@ print &text('yum_install', "<tt>".&html_escape($uicmd)."</tt>"),"\n";
 print "<pre data-installer>";
 &additional_log('exec', undef, $fullcmd);
 $SIG{'TERM'} = 'ignore';	# Installing webmin itself may kill this script
-&open_execute_command(CMD, "$fullcmd </dev/null", 2);
+&open_execute_command(CMD, "($fullcmd) </dev/null", 2);
 while(<CMD>) {
 	s/\r|\n//g;
 	if (/^\[(update|install|deps):\s+(\S+)\s+/) {
@@ -220,21 +247,25 @@ else {
 	}
 }
 
-# append_architectures(package)
-# Given a package name, if it has multiple architectures return the name with
-# each appended
+# append_architectures(package, [installed])
+# Returns installed package names with their architectures. Sets installed
+# when any are found, or returns the original specification when none are.
 sub append_architectures
 {
-my ($name) = @_;
+my ($name, $installed) = @_;
 local %packages;
 my $n = &list_packages($name);
+$$installed = $n ? 1 : 0 if ($installed);
+# Keep an unresolved specification for installation.
 return ( $name ) if (!$n);
 my @rv;
 for(my $i=0; $i<$n; $i++) {
 	if ($packages{$i,'arch'}) {
+		# Include the installed architecture.
 		push(@rv, $packages{$i,'name'}.".".$packages{$i,'arch'});
 		}
 	else {
+		# Keep names with no architecture metadata.
 		push(@rv, $packages{$i,'name'});
 		}
 	}

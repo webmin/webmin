@@ -178,6 +178,7 @@ is_deeply(\@commands,
 	'uses name-based add and delete commands on both DNF generations');
 }
 
+# Test a held update with its package marked as installed.
 {
 no warnings qw(once redefine);
 my $dnf_output =
@@ -185,8 +186,12 @@ my $dnf_output =
 my $executed_command;
 my @lock_actions;
 local *update_system_hold_flags = sub { return 'held-update'; };
-local *append_architectures = sub { return @_; };
-local *package_info = sub { return ('bash'); };
+# append_architectures(name, [installed]) - Marks the package as installed.
+local *append_architectures = sub {
+	my ($name, $installed) = @_;
+	$$installed = 1;
+	return $name;
+	};
 local *update_system_repo = sub { return undef; };
 local *additional_log = sub { };
 local *html_escape = sub { return $_[0]; };
@@ -380,6 +385,68 @@ is_deeply([ map { $_->{'name'} } @ops ],
 	'parses the held-package preview after restoring its locks');
 is($ops[1]->{'epoch'}, '2', 'splits epochs from preview versions');
 is($ops[2]->{'arch'}, 'noarch', 'handles wrapped package names');
+}
+
+# Test command selection for installed, missing, and mixed package sets.
+{
+no warnings qw(once redefine);
+my @executed;
+my $dnf_major = 4;
+# get_dnf_version() - Returns the selected test version.
+local *get_dnf_version = sub { return $dnf_major; };
+# append_architectures(name, [installed]) - Marks only bash as installed.
+local *append_architectures = sub {
+	my ($name, $installed) = @_;
+	$$installed = $name eq 'bash' ? 1 : 0;
+	return $name;
+	};
+# update_system_repo(package) - Disables repository bootstrap commands.
+local *update_system_repo = sub { return undef; };
+# additional_log(action, object, details) - Suppresses command logging.
+local *additional_log = sub { };
+# html_escape(text) - Leaves commands unchanged for assertions.
+local *html_escape = sub { return $_[0]; };
+# text(key, [parameter]*) - Returns the untranslated key.
+local *text = sub { return $_[0]; };
+# unique(value*) - Removes duplicates while preserving order.
+local *unique = sub {
+	my %seen;
+	return grep { !$seen{$_}++ } @_;
+	};
+# open_execute_command(handle, command, [mode]) - Captures the command and
+# supplies successful DNF output.
+local *open_execute_command = sub {
+	my ($fh, $command) = @_;
+	push(@executed, $command);
+	my $output = "Complete!\n";
+	no strict 'refs';
+	open(ref($fh) ? $fh : \*{$fh}, '<', \$output)
+		or die "open simulated DNF install: $!";
+	};
+my $printed = '';
+open(my $stdout, '>', \$printed) or die "open captured stdout: $!";
+local *STDOUT = $stdout;
+$? = 0;
+# Match package names escaped by quotemeta for the shell.
+update_system_install('bash perl-DBD-SQLite', { }, 1);
+like($executed[-1],
+	qr{^\(/usr/bin/dnf\s+-y install bash perl\\-DBD\\-SQLite\) </dev/null$},
+	'DNF 4 installs a mixed package set');
+$dnf_major = 5;
+update_system_install('bash perl-DBD-SQLite', { }, 1);
+like($executed[-1],
+	qr{^\(/usr/bin/dnf\s+-y update bash && /usr/bin/dnf\s+-y install perl\\-DBD\\-SQLite\) </dev/null$},
+	'DNF 5 updates installed packages and installs missing packages');
+update_system_install('bash', { }, 1);
+like($executed[-1], qr{^\(/usr/bin/dnf\s+-y update bash\) </dev/null$},
+	'updates when every requested package is installed');
+update_system_install('perl-DBD-SQLite', { }, 1);
+like($executed[-1],
+	qr{^\(/usr/bin/dnf\s+-y install perl\\-DBD\\-SQLite\) </dev/null$},
+	'installs a single missing package');
+update_system_install(' ', { }, 1);
+like($executed[-1], qr{^\(/usr/bin/dnf\s+-y install\s+\) </dev/null$},
+	'does not turn an empty package list into a full system update');
 }
 
 done_testing();
