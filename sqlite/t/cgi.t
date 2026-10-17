@@ -443,6 +443,12 @@ like($table_page->{'out'}, qr/\bselect_all\b/,
 	'table CGI provides the standard select-all control');
 like($table_page->{'out'}, qr/\bselect_invert\b/,
 	'table CGI provides the standard invert-selection control');
+like($table_page->{'out'},
+	qr/document\.forms\[1\]\.row; ff\.checked = true/,
+	'table CGI select-all control targets the delete-row form');
+like($table_page->{'out'},
+	qr/document\.forms\[1\]\.row; ff\.checked = !ff\.checked/,
+	'table CGI invert-selection control targets the delete-row form');
 like($table_page->{'out'}, qr/\bui_form_grouped_buttons\b/,
 	'table CGI groups its bottom row actions');
 like($table_page->{'out'},

@@ -245,13 +245,15 @@ if (@rows) {
 
 	# Build the checked table and keep both bottom actions in one group.
 	if ($editable) {
+		# Target the delete form after any earlier forms on this page.
+		my $delete_form = $can_alter ? 1 : 0;
 		print &ui_form_start('delete_rows.cgi', 'post');
 		print &ui_hidden('db', $path);
 		print &ui_hidden('table', $object->{'name'});
 		print &ui_hidden('start', $start);
 		my @select_links = (
-			&select_all_link('row', 0),
-			&select_invert_link('row', 0),
+			&select_all_link('row', $delete_form),
+			&select_invert_link('row', $delete_form),
 			);
 		print &ui_links_row(\@select_links);
 		print &ui_columns_table(\@headers, 100, \@table_rows, undef, 1);
