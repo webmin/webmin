@@ -12,7 +12,9 @@ BEGIN { $ENV{'SQLITE_TESTING'} = 1; }
 chdir "$FindBin::Bin/.." or die "chdir: $!";
 require './sqlite-lib.pl';
 
-our (%access, %config, %text, $remote_user);
+our (%access, %config, %text, $remote_user, $error_must_die);
+# Make Webmin's error handler throw exceptions that the tests can inspect.
+$error_must_die = 1;
 
 # Build isolated allowed and denied directory trees for path checks.
 my $root = tempdir(CLEANUP => 1);
@@ -27,7 +29,11 @@ $access{'create'} = 1;
 $access{'write'} = 1;
 $config{'busy_timeout'} = 100;
 $config{'max_text'} = 8;
+$config{'max_result_bytes'} = 1048576;
 $text{'error_key'} = 'bad key';
+$text{'error_resultcontrol'} = 'cannot limit results: $1';
+$text{'error_resultlarge'} = 'result exceeds $1 bytes';
+$text{'error_valuelarge'} = 'value exceeds $1';
 $text{'value_more'} = '...';
 $text{'value_more_chars'} = '+ $1 chars';
 $text{'value_more_chars_truncated'} = '+ $1 of $2 chars';
@@ -140,6 +146,22 @@ ok(sqlite_secure_open_available(3039000),
 	ok(sqlite_secure_open_available(3030999),
 		'an unrestricted ACL needs no directory boundary');
 }
+
+# The result-size limit defaults to 16 MiB and stays within its documented
+# range.
+{
+	local $config{'max_result_bytes'};
+	is(sqlite_result_bytes_limit(), 16777216,
+		'result data defaults to a 16 MiB limit');
+	local $config{'max_result_bytes'} = 0;
+	is(sqlite_result_bytes_limit(), 1048576,
+		'result data has a 1 MiB minimum');
+	$config{'max_result_bytes'} = 999999999;
+	is(sqlite_result_bytes_limit(), 67108864,
+		'result data has a 64 MiB maximum');
+}
+is(sqlite_row_bytes([ 'abc', undef, 'de' ]), 261,
+	'result byte counting includes row and scalar storage');
 
 # Ownership changes must reject links instead of following them as root.
 SKIP: {
@@ -379,7 +401,23 @@ like($@, qr/^Invalid column name 'sqlite_x'/, 'added column names are checked');
 SKIP: {
 	my $driver_error = sqlite_load_driver();
 	# Skip only database tests when DBD::SQLite is unavailable.
-	skip("DBD::SQLite unavailable: $driver_error", 31) if ($driver_error);
+	skip("DBD::SQLite unavailable: $driver_error", 54) if ($driver_error);
+	my $limit_error = sqlite_result_limit_error();
+	# Verify the compatibility error before skipping capability-dependent tests.
+	if ($limit_error) {
+		like($limit_error, qr/does not provide sqlite_limit$/,
+			'an older driver loads but reports the missing capability');
+		skip("SQLite result limits unavailable: $limit_error", 53);
+		}
+	ok(!$limit_error,
+		'the installed driver exposes result-limit control');
+	{
+		no warnings 'once';
+		local *DBD::SQLite::db::sqlite_limit;
+		like(sqlite_result_limit_error(),
+			qr/^DBD::SQLite \S+ does not provide sqlite_limit$/,
+			'a loaded driver reports the missing capability');
+	}
 	# Database helper tests use an unrestricted ACL so they can run with an
 	# older local SQLite; restricted-path version gates are tested above.
 	local $access{'paths'} = '/';
@@ -388,6 +426,25 @@ SKIP: {
 	my $dbh = sqlite_connect($database, 1, 1);
 	my ($foreign_keys) = $dbh->selectrow_array('PRAGMA foreign_keys');
 	is($foreign_keys, 1, 'foreign-key enforcement is enabled');
+	my ($wide_sum) = $dbh->selectrow_array(
+		'SELECT '.sqlite_sum_sql(('1') x 2000));
+	is($wide_sum, 2000, 'wide schemas use a shallow size expression');
+	# The size guard must prevent SQLite from evaluating oversized expressions.
+	my $guarded_calls = 0;
+	# sub webmin_guarded_value()
+	# Counts calls when SQLite evaluates the registered test function.
+	$dbh->sqlite_create_function('webmin_guarded_value', 0, sub {
+		$guarded_calls++;
+		return 'guarded';
+		});
+	my $guarded_sql = sqlite_guarded_select('1', 0, [],
+		[ 'webmin_guarded_value()' ],
+		'FROM (SELECT 1) LIMIT 1 OFFSET 0');
+	my $guarded_rows = sqlite_select_rows_bounded($dbh, $guarded_sql);
+	is_deeply($guarded_rows, [ [ 0, undef ] ],
+		'an oversized guarded expression returns NULL');
+	is($guarded_calls, 0,
+		'an oversized guarded expression is not evaluated');
 	$dbh->do('CREATE TABLE sample (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, data BLOB)');
 	$dbh->do('INSERT INTO sample (name, data) VALUES (?, ?)', undef,
 		'first', "a\0b");
@@ -400,6 +457,72 @@ SKIP: {
 	is($identity->{'rowid'}, 'rowid', 'rowid selected for stable identity');
 	my $result = sqlite_query($dbh, 'SELECT name FROM sample', 10);
 	is_deeply($result->{'rows'}, [ [ 'first' ] ], 'query returns row data');
+	my $normal_limit = $dbh->sqlite_limit(
+		DBD::SQLite::Constants::SQLITE_LIMIT_LENGTH(), -1);
+	cmp_ok($normal_limit, '>', 1048576,
+		'database connections keep SQLite value limits unchanged');
+	# Schema SQL and default values must stay within the same result budgets as
+	# table data before Perl retains them.
+	my $oversized_default = 'x' x
+		(sqlite_result_bytes_limit() + 1024);
+	$dbh->do("CREATE TABLE oversized_schema (payload TEXT DEFAULT '".
+		$oversized_default."')");
+	my $objects_ok = eval { sqlite_objects($dbh); 1 };
+	ok(!$objects_ok, 'object lists reject oversized schema definitions');
+	like($@, qr/^result exceeds 1048576 bytes/,
+		'object-list failure reports the aggregate metadata limit');
+	my $object_ok = eval { sqlite_object($dbh, 'oversized_schema'); 1 };
+	ok(!$object_ok, 'single-object reads reject oversized schema definitions');
+	like($@, qr/^result exceeds 1048576 bytes/,
+		'single-object failure reports the aggregate metadata limit');
+	my $columns_ok = eval {
+		sqlite_table_columns($dbh, 'oversized_schema');
+		1;
+		};
+	ok(!$columns_ok, 'column reads reject oversized default expressions');
+	like($@, qr/^result exceeds 1048576 bytes/,
+		'column failure reports the aggregate metadata limit');
+	is($dbh->sqlite_limit(DBD::SQLite::Constants::SQLITE_LIMIT_LENGTH(), -1),
+		$normal_limit, 'metadata failures restore SQLite value limits');
+	$dbh->do('DROP TABLE oversized_schema');
+	my $result_dbh = sqlite_connect($database, 0);
+	is($result_dbh->sqlite_limit(
+		DBD::SQLite::Constants::SQLITE_LIMIT_LENGTH(), -1), $normal_limit,
+		'read connections restore SQLite value limits');
+	$result_dbh->disconnect();
+	# Exercise aggregate and hard value ceilings without restricting writes.
+	$dbh->do('CREATE TABLE result_sample (payload TEXT)');
+	my $result_insert = $dbh->prepare(
+		'INSERT INTO result_sample (payload) VALUES (?)');
+	$result_insert->execute('a' x 600000);
+	$result_insert->execute('b' x 600000);
+	my ($prefix, $full_length) = $dbh->selectrow_array(
+		'SELECT substr(payload, 1, 10), length(payload) '.
+		'FROM result_sample ORDER BY rowid LIMIT 1');
+	is($prefix, 'a' x 10,
+		'a shortened read succeeds when its source exceeds the budget');
+	is($full_length, 600000, 'the shortened read retains the source length');
+	my $byte_limited = sqlite_query($dbh,
+		'SELECT payload FROM result_sample ORDER BY rowid', 10);
+	is(scalar(@{$byte_limited->{'rows'}}), 1,
+		'query retains only rows inside the aggregate byte limit');
+	is($byte_limited->{'truncated_by'}, 'bytes',
+		'aggregate byte limit reports byte truncation');
+	is($dbh->sqlite_limit(DBD::SQLite::Constants::SQLITE_LIMIT_LENGTH(), -1),
+		$normal_limit, 'direct query restores SQLite value limits');
+	my $hard_limited = eval {
+		sqlite_query($dbh, 'SELECT zeroblob(67108865)', 10);
+		1;
+		};
+	ok(!$hard_limited, 'direct query rejects a value above the hard ceiling');
+	like($@, qr/^value exceeds 67108864/,
+		'hard ceiling failure reports the value limit');
+	is($dbh->sqlite_limit(DBD::SQLite::Constants::SQLITE_LIMIT_LENGTH(), -1),
+		$normal_limit, 'failed query restores SQLite value limits');
+	my $large_write = sqlite_query($dbh,
+		'INSERT INTO result_sample (payload) VALUES (zeroblob(2000000))', 10);
+	is($large_write->{'truncated'}, 0,
+		'direct SQL writes do not use the temporary result-value limit');
 
 	# A filename that resembles extra DBD parameters remains the literal
 	# validated filename instead of selecting a second database path.
@@ -425,7 +548,8 @@ SKIP: {
 	$dbh->do('INSERT INTO sample (name) VALUES (?)', undef, 'second');
 	my $limited = sqlite_query($dbh, 'SELECT name FROM sample ORDER BY id', 1);
 	is_deeply($limited->{'rows'}, [ [ 'first' ] ], 'query result honors row limit');
-	ok($limited->{'truncated'}, 'limited query reports truncation');
+	is($limited->{'truncated_by'}, 'rows',
+		'limited query reports row truncation');
 	ok(sqlite_value_is_binary("a\0b"), 'binary value detected');
 	ok(!sqlite_value_is_binary('plain text'), 'text value detected');
 

@@ -46,9 +46,16 @@ if (@{$result->{'columns'}}) {
 		print &ui_columns_row([ map { &sqlite_display_value($_) } @$row ]);
 		}
 	print &ui_columns_end();
-	# Warn when the configured result cap omitted additional rows.
-	print &ui_alert_box(&text('exec_truncated', $limit), 'warn')
-		if ($result->{'truncated'});
+	# Report whether the row limit or byte limit shortened the output.
+	if ($result->{'truncated_by'} eq 'bytes') {
+		# Report the byte limit that stopped result collection.
+		print &ui_alert_box(&text('exec_truncated_bytes',
+			&sqlite_result_bytes_limit()), 'warn');
+		}
+	elsif ($result->{'truncated_by'} eq 'rows') {
+		# Report the row limit that stopped result collection.
+		print &ui_alert_box(&text('exec_truncated', $limit), 'warn');
+		}
 	}
 else {
 	# Statements without result columns report their affected-row count.

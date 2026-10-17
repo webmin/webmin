@@ -11,26 +11,38 @@ require './sqlite-lib.pl';
 # Show the library and driver versions under the page title.
 my $driver_error = &sqlite_load_driver();
 my ($library, $driver) = &sqlite_versions();
+my $limit_error = $driver_error ? undef : &sqlite_result_limit_error();
 &ui_print_header($library ? &text('index_version', $library, $driver) : undef,
 	$text{'index_title'}, '', 'intro', 1);
-# Without the driver, show the missing dependency and installation choices.
-if ($driver_error) {
+# Without a usable driver, show the dependency or upgrade choices.
+if ($driver_error || $limit_error) {
 	my @needs;
 	my $install_link;
-	eval { require DBI; };
-	# Include DBI only when its independent load check failed.
-	push(@needs, 'DBI') if ($@);
-	eval { require DBD::SQLite; };
-	# Include the SQLite driver only when its load check failed.
-	push(@needs, 'DBD::SQLite') if ($@);
-	# The loader can fail for other reasons; then name the driver itself.
-	@needs = ( 'DBD::SQLite' ) if (!@needs);
-	print &ui_tag('p', &text(
-		@needs > 1 ? 'index_nodrivers' : 'index_nodriver',
-		join(', ', map { &ui_tag('tt', &html_escape($_)) } @needs)));
+	my $upgrade = $limit_error ? 1 : 0;
+	# An installed driver without limit control needs an upgrade.
+	if ($upgrade) {
+		@needs = ( 'DBD::SQLite' );
+		print &ui_tag('p', &text('index_olddriver',
+			&html_escape($driver)));
+		}
+	else {
+		# A missing driver may require DBI, DBD::SQLite or both.
+		eval { require DBI; };
+		# Include DBI only when its independent load check failed.
+		push(@needs, 'DBI') if ($@);
+		eval { require DBD::SQLite; };
+		# Include the SQLite driver only when its load check failed.
+		push(@needs, 'DBD::SQLite') if ($@);
+		# The loader can fail for other reasons; then name the driver itself.
+		@needs = ( 'DBD::SQLite' ) if (!@needs);
+		print &ui_tag('p', &text(
+			@needs > 1 ? 'index_nodrivers' : 'index_nodriver',
+			join(', ', map { &ui_tag('tt', &html_escape($_)) } @needs)));
+		}
 
-	# Prefer native packages supported by the Software Packages module.
-	if (&foreign_available('software')) {
+	# Prefer native packages only for a missing driver. Reinstalling an old
+	# native package would not add the required method.
+	if (!$upgrade && &foreign_available('software')) {
 		&foreign_require('software', 'software-lib.pl');
 		my $packages = $software::update_system eq 'apt' ?
 			'libdbi-perl libdbd-sqlite3-perl' :
@@ -46,21 +58,22 @@ if ($driver_error) {
 		print $install_link;
 		}
 	elsif (&foreign_available('cpan')) {
-		# Fall back to Webmin's CPAN module when no native link is
-		# available.
+		# Use Webmin's CPAN module when no suitable native package is available.
 		print &ui_form_start('../cpan/download.cgi', 'get');
-		print &ui_tag('p', $text{'index_driver_cpan'});
+		print &ui_tag('p', $text{$upgrade ?
+			'index_driver_cpan_upgrade' : 'index_driver_cpan'});
 		print &ui_hidden('source', 3);
 		print &ui_hidden('cpan', join(' ', @needs));
 		print &ui_hidden('mode', 2);
 		print &ui_hidden('return', '/sqlite/');
 		print &ui_hidden('returndesc', $text{'index_return'});
-		print &ui_form_end([ [ undef, $text{'index_driver_install'} ] ]);
+		print &ui_form_end([ [ undef, $text{$upgrade ?
+			'index_driver_update' : 'index_driver_install'} ] ]);
 		}
 	else {
-		# Give manual instructions when Webmin cannot install the
-		# dependency.
-		print &ui_tag('p', $text{'index_driver_manual'});
+		# Give manual instructions when Webmin cannot install the dependencies.
+		print &ui_tag('p', $text{$upgrade ?
+			'index_driver_upgrade_manual' : 'index_driver_manual'});
 		}
 	&ui_print_footer('/', $text{'index'});
 	exit;

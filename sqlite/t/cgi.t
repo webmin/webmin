@@ -16,8 +16,13 @@ use Symbol qw(gensym);
 my $driver_error;
 eval { require DBI; require DBD::SQLite; };
 $driver_error = $@;
-# CGI integration tests require a real DBI SQLite driver.
-plan skip_all => "DBD::SQLite unavailable: $driver_error" if ($driver_error);
+# Treat a driver without result-limit control as unavailable to CGI tests.
+if (!$driver_error && !DBD::SQLite::db->can('sqlite_limit')) {
+	$driver_error = 'DBD::SQLite does not provide sqlite_limit';
+	}
+# CGI integration tests require a real driver with result-limit control.
+plan skip_all => "DBD::SQLite unavailable or incompatible: $driver_error"
+	if ($driver_error);
 
 # Create isolated Webmin configuration, state and database directories.
 my $module_dir = abs_path(File::Spec->catdir($FindBin::Bin, '..'));
@@ -27,16 +32,18 @@ my $config_dir = File::Spec->catdir($temp, 'config');
 my $var_dir = File::Spec->catdir($temp, 'var');
 my $data_dir = File::Spec->catdir($temp, 'data');
 my $fake_lib = File::Spec->catdir($temp, 'fake-lib');
+my $old_driver_lib = File::Spec->catdir($temp, 'old-driver-lib');
 make_path(File::Spec->catdir($config_dir, 'sqlite'),
 	File::Spec->catdir($config_dir, 'software'),
-	File::Spec->catdir($fake_lib, 'DBD'), $var_dir, $data_dir);
+	File::Spec->catdir($fake_lib, 'DBD'),
+	File::Spec->catdir($old_driver_lib, 'DBD'), $var_dir, $data_dir);
 
 # Every page, configuration and ACL help topic must ship with the module.
 foreach my $topic (qw(
 	intro database table create column exec edit_row acl_info config_intro
 	config_recent config_perpage config_max_text config_busy_timeout
-	config_max_query_rows config_confirm_delete delete_rows drop_column
-	drop_table
+	config_max_query_rows config_max_result_bytes config_confirm_delete
+	delete_rows drop_column drop_table
 	)) {
 	ok(-f File::Spec->catfile($module_dir, 'help', $topic.'.html'),
 		"$topic help topic is installed");
@@ -72,7 +79,7 @@ write_text(File::Spec->catfile($config_dir, 'webmin.acl'),
 	"admin: sqlite software cpan\n");
 write_text(File::Spec->catfile($config_dir, 'sqlite', 'config'),
 	"perpage=1\nmax_text=1000\nbusy_timeout=100\n".
-	"max_query_rows=100\nconfirm_delete=1\n");
+	"max_query_rows=100\nmax_result_bytes=1048576\nconfirm_delete=1\n");
 # An unrestricted test ACL lets older local SQLite versions exercise CGI
 # behavior; the path-boundary tests restore a restricted ACL later.
 write_text(File::Spec->catfile($config_dir, 'sqlite', 'admin.acl'),
@@ -81,6 +88,15 @@ write_text(File::Spec->catfile($config_dir, 'software', 'config'),
 	"package_system=debian\nupdate_system=apt\napt_mode=0\n");
 write_text(File::Spec->catfile($fake_lib, 'DBD', 'SQLite.pm'),
 	"die \"DBD::SQLite disabled for this test\\n\";\n");
+# Load the real driver in a child process but hide sqlite_limit to simulate an
+# older distribution package without reimplementing the DBI driver interface.
+my $real_driver = $INC{'DBD/SQLite.pm'};
+$real_driver =~ s/([\\'])/\\$1/g;
+write_text(File::Spec->catfile($old_driver_lib, 'DBD', 'SQLite.pm'),
+	"do '$real_driver' or die \$\@ || \$!;\n".
+	"no warnings 'once';\n".
+	"undef *DBD::SQLite::db::sqlite_limit;\n".
+	"1;\n");
 
 # Populate tables for pagination, empty-state, long-text and BLOB checks.
 my $database = File::Spec->catfile($data_dir, 'sample.db');
@@ -96,6 +112,16 @@ my $blob_insert = $dbh->prepare(
 	'INSERT INTO blob_sample (data) VALUES (?)');
 $blob_insert->bind_param(1, 'ascii blob', DBI::SQL_BLOB());
 $blob_insert->execute();
+$dbh->disconnect();
+
+# Create a database whose schema metadata exceeds the request result budget.
+my $oversized_schema_database = File::Spec->catfile($data_dir,
+	'oversized-schema.db');
+$dbh = DBI->connect('dbi:SQLite:dbname='.$oversized_schema_database, '', '', {
+	'RaiseError' => 1, 'PrintError' => 0 });
+my $oversized_default = 's' x 1049000;
+$dbh->do("CREATE TABLE oversized_schema (id INTEGER PRIMARY KEY, ".
+	"payload TEXT DEFAULT '$oversized_default')");
 $dbh->disconnect();
 
 # sub url_encode(value)
@@ -260,6 +286,67 @@ like($missing_rpm_driver->{'out'}, qr{/software/install_pack\.cgi},
 like($missing_rpm_driver->{'out'}, qr/perl-DBI perl-DBD-SQLite/,
 	'index CGI requests the RPM SQLite driver packages');
 
+# An installed driver without sqlite_limit needs an upgrade, not another
+# installation of the same native package.
+my $old_driver = run_cgi('index.cgi', 'GET', {}, $old_driver_lib);
+is($old_driver->{'status'}, 0,
+	'index CGI exits successfully with an incompatible SQLite driver');
+is($old_driver->{'err'}, '',
+	'index CGI emits no warnings with an incompatible SQLite driver');
+like($old_driver->{'out'},
+	qr/DBD::SQLite \S+ is installed, but it cannot safely limit result data/,
+	'index CGI explains why the installed driver is incompatible');
+# Use Webmin's CPAN installer when that optional module is available. Otherwise,
+# tell the administrator to update the driver outside Webmin.
+if (-d File::Spec->catdir($root, 'cpan')) {
+	like($old_driver->{'out'}, qr{/cpan/download\.cgi},
+		'index CGI offers a CPAN upgrade for an incompatible driver');
+	like($old_driver->{'out'},
+		qr/name="cpan"[^>]*value="DBD::SQLite"/,
+		'index CGI asks CPAN to update DBD::SQLite');
+	}
+else {
+	# Without the optional CPAN module, provide manual upgrade instructions.
+	unlike($old_driver->{'out'}, qr{/cpan/download\.cgi},
+		'index CGI omits an unavailable CPAN installer');
+	like($old_driver->{'out'},
+		qr/Update DBD::SQLite to version 1\.62 or later/,
+		'index CGI gives manual driver upgrade instructions');
+	}
+unlike($old_driver->{'out'}, qr{/software/install_pack\.cgi},
+	'index CGI does not offer to reinstall the same native package');
+my $old_driver_database = run_cgi('database.cgi', 'GET', {
+	'db' => $database }, $old_driver_lib);
+is($old_driver_database->{'status'}, 1,
+	'database CGI refuses an incompatible SQLite driver');
+like($old_driver_database->{'out'},
+	qr/DBD::SQLite \S+ does not provide sqlite_limit/,
+	'direct database access reports the missing driver capability');
+
+# Verify that each CGI renders a Webmin error page for oversized metadata.
+my $oversized_database_page = run_cgi('database.cgi', 'GET', {
+	'db' => $oversized_schema_database });
+is($oversized_database_page->{'status'}, 1,
+	'database CGI uses Webmin error handling for oversized metadata');
+like($oversized_database_page->{'out'},
+	qr/result exceeds the configured 1048576-byte limit/i,
+	'database CGI shows the metadata size error');
+my $oversized_table_page = run_cgi('table.cgi', 'GET', {
+	'db' => $oversized_schema_database, 'table' => 'oversized_schema' });
+is($oversized_table_page->{'status'}, 1,
+	'table CGI uses Webmin error handling for oversized metadata');
+like($oversized_table_page->{'out'},
+	qr/result exceeds the configured 1048576-byte limit/i,
+	'table CGI shows the metadata size error');
+my $oversized_editor_page = run_cgi('edit_row.cgi', 'GET', {
+	'db' => $oversized_schema_database, 'table' => 'oversized_schema',
+	'new' => 1 });
+is($oversized_editor_page->{'status'}, 1,
+	'row editor uses Webmin error handling for oversized metadata');
+like($oversized_editor_page->{'out'},
+	qr/result exceeds the configured 1048576-byte limit/i,
+	'row editor shows the metadata size error');
+
 # Check database summary cards and object-table wrapping.
 my $database_page = run_cgi('database.cgi', 'GET', { 'db' => $database });
 is($database_page->{'status'}, 0, 'database CGI exits successfully');
@@ -371,7 +458,7 @@ like($table_page->{'out'}, qr/\bui_pager\b/,
 # loader before restoring the normal long-value test configuration.
 write_text(File::Spec->catfile($config_dir, 'sqlite', 'config'),
 	"perpage=1\nmax_text=10\nbusy_timeout=100\n".
-	"max_query_rows=100\nconfirm_delete=1\n");
+	"max_query_rows=100\nmax_result_bytes=1048576\nconfirm_delete=1\n");
 my $truncated_page = run_cgi('table.cgi', 'GET', {
 	'db' => $database, 'table' => 'long_sample' });
 is($truncated_page->{'status'}, 0,
@@ -382,7 +469,7 @@ like($truncated_page->{'out'}, qr/xxxxxxxxxx&hellip;/,
 	'truncated values use an encoding-safe ellipsis');
 write_text(File::Spec->catfile($config_dir, 'sqlite', 'config'),
 	"perpage=1\nmax_text=1000\nbusy_timeout=100\n".
-	"max_query_rows=100\nconfirm_delete=1\n");
+	"max_query_rows=100\nmax_result_bytes=1048576\nconfirm_delete=1\n");
 
 # Check long-text width and disclosure markup.
 my $long_page = run_cgi('table.cgi', 'GET', {
@@ -822,6 +909,30 @@ like($sql->{'out'}, qr/third/,
 	'SQL CGI displays query results');
 like($sql->{'out'}, qr/data-sortable=['"]1['"]/,
 	'SQL CGI explicitly makes result rows sortable');
+# Report byte truncation separately from row truncation.
+my $large_sql = run_cgi('exec.cgi', 'POST', {
+	'db' => $database,
+	'sql' => 'SELECT zeroblob(1048577)',
+	});
+like($large_sql->{'out'},
+	qr/Additional result data was omitted after reaching the 1048576-byte limit/i,
+	'SQL CGI identifies byte truncation instead of a row limit');
+unlike($large_sql->{'out'}, qr/Only the first 100 rows are shown/,
+	'byte truncation does not report the configured row limit');
+# Keep the result ceiling from restricting a write-only statement.
+my $large_write = run_cgi('exec.cgi', 'POST', {
+	'db' => $database,
+	'sql' => 'INSERT INTO blob_sample (data) VALUES (zeroblob(1048577))',
+	});
+is($large_write->{'err'}, '',
+	'large direct SQL write emits no warnings');
+$dbh = DBI->connect('dbi:SQLite:dbname='.$database, '', '', {
+	'RaiseError' => 1, 'PrintError' => 0 });
+my ($large_blob) = $dbh->selectrow_array(
+	'SELECT max(length(data)) FROM blob_sample');
+$dbh->disconnect();
+is($large_blob, 1048577,
+	'result-data limit does not reject a valid direct SQL write');
 my $two_statements = run_cgi('exec.cgi', 'POST', {
 	'db' => $database,
 	'sql' => "SELECT name FROM sample; DELETE FROM sample",

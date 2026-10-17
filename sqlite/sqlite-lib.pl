@@ -5,6 +5,7 @@ BEGIN { push(@INC, ".."); }
 use WebminCore;
 use strict;
 use warnings;
+use bytes ();
 use Encode qw(decode FB_CROAK);
 use MIME::Base64 ();
 use POSIX ();
@@ -120,6 +121,26 @@ if ($@) {
 	}
 $sqlite_driver_loaded = 1;
 return undef;
+}
+
+# sub sqlite_result_limit_error([dbh])
+# Returns undef when the driver provides sqlite_limit. Otherwise, returns an
+# error that names the installed version. When supplied, dbh is checked before
+# the driver class. Backported support is accepted.
+sub sqlite_result_limit_error
+{
+my ($dbh) = @_;
+my $driver_error = &sqlite_load_driver();
+# Propagate a driver load failure before checking its methods.
+return $driver_error if ($driver_error);
+my $class = 'DBD::SQLite::db';
+# Accept the method on either the supplied handle or the loaded driver class.
+return undef if ($dbh ? $dbh->can('sqlite_limit') :
+			 $class->can('sqlite_limit'));
+my (undef, $version) = &sqlite_versions();
+# Keep the compatibility error useful when the driver reports no version.
+$version = $text{'unknown'} || 'unknown' if (!defined($version));
+return "DBD::SQLite $version does not provide sqlite_limit";
 }
 
 # sub sqlite_versions()
@@ -296,6 +317,180 @@ $bytes =~ s!([^A-Za-z0-9._~/-])!sprintf('%%%02X', ord($1))!ge;
 return 'file:'.$bytes;
 }
 
+# sub sqlite_result_bytes_limit()
+# Returns the configured result-data budget, clamped from 1 MiB to 64 MiB.
+sub sqlite_result_bytes_limit
+{
+my $limit = defined($config{'max_result_bytes'}) &&
+	$config{'max_result_bytes'} ne '' ?
+	int($config{'max_result_bytes'}) : 16777216;
+# Very small budgets would reject ordinary schema metadata.
+$limit = 1048576 if ($limit < 1048576);
+# Keep one request from retaining more than 64 MiB of result data.
+$limit = 67108864 if ($limit > 67108864);
+return $limit;
+}
+
+# sub sqlite_with_value_limit(dbh, &code)
+# Runs code in list context while capping SQLite values at 64 MiB, then
+# restores the previous limit even if the callback dies. Missing limit control
+# and oversized values use localized errors. Returns every callback value to a
+# list caller, or the first value to a scalar caller.
+sub sqlite_with_value_limit
+{
+my ($dbh, $code) = @_;
+my $limit_error = &sqlite_result_limit_error($dbh);
+# Refuse the operation when the driver cannot enforce the ceiling.
+die &text('error_resultcontrol', $limit_error)."\n" if ($limit_error);
+# SQLITE_LIMIT_LENGTH is category zero in SQLite's stable public API.
+my $old = $dbh->sqlite_limit(0, -1);
+my $ceiling = $old < 67108864 ? $old : 67108864;
+$dbh->sqlite_limit(0, $ceiling);
+# Invoke the callback in list context so it can return several result fields.
+my @rv = eval { $code->() };
+my $error = $@;
+# Preserve a callback error; otherwise report failure to restore the old limit.
+eval { $dbh->sqlite_limit(0, $old); 1 } || ($error ||= $@);
+# Translate the hard-ceiling error and preserve every other exception.
+if ($error) {
+	# Give SQLite's oversized-value error a stable, localized explanation.
+	die &text('error_valuelarge', $ceiling)."\n"
+		if ($error =~ /string or blob too big/i);
+	die $error;
+	}
+return wantarray ? @rv : $rv[0];
+}
+
+# sub sqlite_fetch_rows(sth, [row-limit])
+# Fetches rows from an executed statement until it ends, the row limit is
+# reached, or the next row would push the retained data past the configured
+# byte budget. Returns the rows and why fetching stopped early: 'rows',
+# 'bytes', or undef when every row was fetched.
+sub sqlite_fetch_rows
+{
+my ($sth, $limit) = @_;
+my $byte_limit = &sqlite_result_bytes_limit();
+my ($bytes, $stopped, @rows) = (0);
+# Copy rows until the result ends, the row cap, or the byte budget is reached.
+while (my $row = $sth->fetchrow_arrayref()) {
+	# One extra row distinguishes a complete result from row truncation.
+	if ($limit && @rows >= $limit) {
+		$stopped = 'rows';
+		last;
+		}
+	my $copy = [ @$row ];
+	$bytes += &sqlite_row_bytes($copy);
+	# Stop before retaining a row that crosses the aggregate byte budget.
+	if ($bytes > $byte_limit) {
+		$stopped = 'bytes';
+		last;
+		}
+	push(@rows, $copy);
+	}
+return (\@rows, $stopped);
+}
+
+# sub sqlite_sum_sql(expressions...)
+# Builds a balanced SQL addition expression so wide schemas do not exceed
+# SQLite's expression-depth limit.
+sub sqlite_sum_sql
+{
+my (@parts) = @_;
+# An empty list sums to SQL zero.
+return '0' if (!@parts);
+# Pair expressions until one balanced tree remains.
+while (@parts > 1) {
+	my @next;
+	for(my $i = 0; $i < @parts; $i += 2) {
+		my $left = $parts[$i];
+		my $right = $i + 1 < @parts ? $parts[$i + 1] : undef;
+		push(@next, defined($right) ? "($left + $right)" : $left);
+		}
+	@parts = @next;
+	}
+return $parts[0];
+}
+
+# sub sqlite_row_bytes(&row)
+# Returns a conservative estimate of one retained result row, including
+# storage for the row and its scalar slots as well as the value bytes.
+sub sqlite_row_bytes
+{
+my ($row) = @_;
+my $bytes = 64 + 64 * scalar(@$row);
+foreach my $value (@$row) {
+	# References are metadata whose slot overhead was counted above.
+	$bytes += bytes::length($value) if (defined($value) && !ref($value));
+	}
+return $bytes;
+}
+
+# sub sqlite_select_rows_bounded(dbh, sql, [parameters...])
+# Runs a query whose complete result must fit the request budget, such as
+# schema metadata or one page of a table, under the value ceiling. Dies with
+# the result-too-large message when it does not fit, since a partial result
+# would be unsafe to act on.
+sub sqlite_select_rows_bounded
+{
+my ($dbh, $sql, @params) = @_;
+# sub bounded_query()
+# Executes and drains the internal statement under the temporary value limit.
+my ($rows, $stopped) = &sqlite_with_value_limit($dbh, sub {
+	my $sth = $dbh->prepare($sql);
+	$sth->execute(@params);
+	my @fetched = &sqlite_fetch_rows($sth);
+	$sth->finish();
+	return @fetched;
+	});
+# A partial internal result is unsafe for metadata and editing decisions.
+die &text('error_resultlarge', &sqlite_result_bytes_limit())."\n"
+	if ($stopped);
+return $rows;
+}
+
+# sub sqlite_select_metadata_rows(dbh, sql, [parameters...])
+# Runs a bounded metadata query with optional bind values. Converts query
+# failures into escaped Webmin error pages instead of uncaught CGI exceptions.
+sub sqlite_select_metadata_rows
+{
+my ($dbh, $sql, @params) = @_;
+my $rows = eval { &sqlite_select_rows_bounded($dbh, $sql, @params) };
+my $error = $@;
+# Send any query failure to a standard escaped Webmin error page.
+&error(&html_escape($error)) if ($error);
+return $rows;
+}
+
+# sub sqlite_bytes_sql(&quoted-columns, [count-blobs])
+# Returns an SQL expression for the total byte length of the column values.
+# BLOBs count only when count-blobs is set because display queries replace
+# their bodies with NULL.
+sub sqlite_bytes_sql
+{
+my ($quoted, $count_blobs) = @_;
+return &sqlite_sum_sql(map {
+	my $bytes = "coalesce(length(CAST($_ AS BLOB)), 0)";
+	$count_blobs ? $bytes :
+		"CASE WHEN typeof($_) = 'blob' THEN 0 ELSE $bytes END"
+	} @$quoted);
+}
+
+# sub sqlite_guarded_select(size-sql, max-bytes, &plain, &guarded, from-sql)
+# Builds a SELECT that returns a fit flag, plain expressions and size-guarded
+# expressions. SQLite's lazy CASE evaluation skips guarded expressions when
+# size-sql exceeds max-bytes. from-sql supplies the FROM clause and any WHERE,
+# ORDER BY, LIMIT or OFFSET clauses.
+sub sqlite_guarded_select
+{
+my ($size, $max, $plain, $guarded, $from) = @_;
+my @select = ('('.$size.') <= '.$max, @$plain);
+# Guard full values directly so a subquery cannot evaluate them first.
+push(@select, map {
+	'CASE WHEN ('.$size.') <= '.$max.' THEN '.$_.' ELSE NULL END'
+	} @$guarded);
+return 'SELECT '.join(', ', @select).' '.$from;
+}
+
 # sub sqlite_connect(path, [write], [create], [sql-write])
 # Opens a database using SQLite's read-only or read-write connection mode.
 # Set write for a read-write handle, create to allow a missing file, and
@@ -309,6 +504,11 @@ $path = &sqlite_database_path($path, $create);
 $create = 0 if (-e $path);
 my $driver_error = &sqlite_load_driver();
 $driver_error && &error(&text('error_driver', &html_escape($driver_error)));
+# Refuse to open the database unless the driver can bound values returned by
+# its schema and later queries.
+my $limit_error = &sqlite_result_limit_error();
+$limit_error && &error(&text('error_resultcontrol',
+	&html_escape($limit_error)));
 # Protect every restricted path ACL against an ancestor symlink race.
 &sqlite_secure_open_available() || &error($text{'error_secureopen'});
 # Refuse writes denied by the applicable ACL or filesystem.
@@ -356,8 +556,8 @@ $dbh->do('PRAGMA foreign_keys = ON');
 $dbh->do('PRAGMA trusted_schema = OFF');
 # Enforce query-only behavior inside SQLite as well as through open flags.
 $dbh->do('PRAGMA query_only = ON') if (!$write && !$create);
-# Read the schema now so invalid database files fail before use.
-eval { $dbh->selectrow_array('PRAGMA schema_version'); };
+# Read the schema through the bounded helper so invalid schema fails now.
+eval { &sqlite_select_rows_bounded($dbh, 'PRAGMA schema_version'); };
 # Close an unusable handle before reporting the error.
 if ($@) {
 	my $message = $@;
@@ -414,10 +614,14 @@ return '"'.$name.'"';
 sub sqlite_objects
 {
 my ($dbh) = @_;
-return $dbh->selectall_arrayref(
+my $rows = &sqlite_select_metadata_rows($dbh,
 	"SELECT name, type, sql FROM sqlite_master " .
 	"WHERE type IN ('table', 'view') AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\' " .
-	"ORDER BY type, lower(name)", { 'Slice' => {} });
+	"ORDER BY type, lower(name)");
+# Preserve the named fields expected by object-list callers.
+return [ map {
+	{ 'name' => $_->[0], 'type' => $_->[1], 'sql' => $_->[2] }
+	} @$rows ];
 }
 
 # sub sqlite_object(dbh, name)
@@ -425,10 +629,14 @@ return $dbh->selectall_arrayref(
 sub sqlite_object
 {
 my ($dbh, $name) = @_;
-return $dbh->selectrow_hashref(
+my $rows = &sqlite_select_metadata_rows($dbh,
 	"SELECT name, type, sql FROM sqlite_master " .
 	"WHERE type IN ('table', 'view') AND name = ? " .
-	"AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\'", undef, $name);
+	"AND name NOT LIKE 'sqlite\\_%' ESCAPE '\\'", $name);
+# Return undef when the named object is absent.
+return undef if (!@$rows);
+return { 'name' => $rows->[0]->[0], 'type' => $rows->[0]->[1],
+	 'sql' => $rows->[0]->[2] };
 }
 
 # sub sqlite_table_columns(dbh, table)
@@ -438,19 +646,25 @@ sub sqlite_table_columns
 my ($dbh, $table) = @_;
 my $quoted = &sqlite_quote_identifier($table);
 # Prefer table_xinfo because it includes generated columns.
-my $rows = eval {
-	$dbh->selectall_arrayref("PRAGMA table_xinfo($quoted)",
-		{ 'Slice' => {} });
-	};
-# Fall back for older SQLite versions that lack table_xinfo.
-$rows = $dbh->selectall_arrayref("PRAGMA table_info($quoted)",
-	{ 'Slice' => {} }) if (!$rows);
-# table_info results do not include the hidden-column flag.
-foreach my $col (@$rows) {
-	# Treat columns without this flag as visible.
-	$col->{'hidden'} = 0 if (!defined($col->{'hidden'}));
+my $rows = &sqlite_select_metadata_rows($dbh,
+	"PRAGMA table_xinfo($quoted)");
+# Older SQLite versions treat an unknown table_xinfo pragma as an empty result.
+$rows = &sqlite_select_metadata_rows($dbh, "PRAGMA table_info($quoted)")
+	if (!@$rows);
+my @fields = ('cid', 'name', 'type', 'notnull', 'dflt_value', 'pk',
+	'hidden');
+my @columns;
+# Convert positional PRAGMA rows to the named fields used by callers.
+foreach my $row (@$rows) {
+	my %column;
+	for(my $i = 0; $i < @$row && $i < @fields; $i++) {
+		$column{$fields[$i]} = $row->[$i];
+		}
+	# table_info results do not include the hidden-column flag.
+	$column{'hidden'} = 0 if (!defined($column{'hidden'}));
+	push(@columns, \%column);
 	}
-return [ grep { $_->{'hidden'} != 1 } @$rows ];
+return [ grep { $_->{'hidden'} != 1 } @columns ];
 }
 
 # sub sqlite_column_selects(&columns, [&blob-columns-to-keep])
@@ -682,8 +896,9 @@ $dbh->sqlite_set_authorizer(sub {
 }
 
 # sub sqlite_query(dbh, sql, [limit])
-# Executes one SQL statement and returns its columns, rows and affected-row
-# count.
+# Executes one SQL statement and returns its columns, rows, affected-row count
+# and truncation reason. limit optionally caps returned rows and is clamped
+# from 1 to 100,000.
 sub sqlite_query
 {
 my ($dbh, $sql, $limit) = @_;
@@ -703,30 +918,35 @@ $dbh->{'sqlite_allow_multiple_statements'} = 0;
 die $prepare_error if ($prepare_error);
 my $rest = $sth->{'sqlite_unprepared_statements'};
 die $text{'exec_multiple'}."\n" if (defined($rest) && $rest =~ /\S/);
-$sth->execute();
-# Collect result metadata before fetching the bounded set of rows.
+# Result columns are known before execution, so only statements that return
+# rows use the value ceiling. Writes keep SQLite's normal value-size limit, so
+# they can still save large values.
 my @columns = $sth->{'NAME'} ? @{$sth->{'NAME'}} : ( );
-my @rows;
-my $truncated;
-# Fetch result rows only when the statement exposes result columns.
-if (@columns) {
-	while (my $row = $sth->fetchrow_arrayref()) {
-		# Fetch one extra row to distinguish a full page from
-		# truncation.
-		if ($limit && @rows >= $limit) {
-			$truncated = 1;
-			last;
-			}
-		push(@rows, [ @$row ]);
-		}
+# sub run()
+# Executes the prepared statement and returns rows, stop reason and row count.
+my $run = sub {
+	$sth->execute();
+	my ($rows, $stopped) = @columns ? &sqlite_fetch_rows($sth, $limit) :
+					  ([ ], undef);
+	my $affected = $sth->rows();
+	$sth->finish();
+	return ($rows, $stopped, $affected);
+	};
+my ($rows, $stopped, $affected) = eval {
+	@columns ? &sqlite_with_value_limit($dbh, $run) : $run->();
+	};
+# Release the statement before passing a failure on.
+if ($@) {
+	my $error = $@;
+	eval { $sth->finish(); };
+	die $error;
 	}
-my $affected = $sth->rows();
-$sth->finish();
 return {
 	'columns' => \@columns,
-	'rows' => \@rows,
+	'rows' => $rows,
 	'affected' => $affected,
-	'truncated' => $truncated,
+	'truncated' => $stopped ? 1 : 0,
+	'truncated_by' => $stopped,
 	};
 }
 

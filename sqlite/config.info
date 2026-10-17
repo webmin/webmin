@@ -3,4 +3,5 @@ perpage=Rows per page,0,5
 max_text=Maximum characters to display from each text value,3,Unlimited
 busy_timeout=Locked database wait time in milliseconds,0,5
 max_query_rows=Maximum SQL query rows to display,0,5
+max_result_bytes=Maximum result data kept per request,0,12,,bytes
 confirm_delete=Confirm before deleting rows?,1,1-Yes,0-No

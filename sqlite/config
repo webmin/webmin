@@ -3,4 +3,5 @@ perpage=50
 max_text=1000
 busy_timeout=5000
 max_query_rows=1000
+max_result_bytes=16777216
 confirm_delete=1
