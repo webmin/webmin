@@ -1,0 +1,6 @@
+paths=$HOME
+write=1
+create=1
+sql=0
+work_as_root=0
+work_as_user=

@@ -1,0 +1,6 @@
+recent=Number of recent databases to list for each user,0,5
+perpage=Rows per page,0,5
+max_text=Maximum characters to display from each text value,3,Unlimited
+busy_timeout=Locked database wait time in milliseconds,0,5
+max_query_rows=Maximum SQL query rows to display,0,5
+confirm_delete=Confirm before deleting rows?,1,1-Yes,0-No

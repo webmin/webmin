@@ -1,0 +1,28 @@
+<header>SQLite module access control</header>
+
+These settings control which database files a Webmin user can open and what
+the user can do with them. They do not override the filesystem permissions
+of the selected Unix user.
+
+<p>For <b>Allowed database directories</b>, enter one absolute directory per
+line. The module allows files in those directories and their subdirectories.
+Use <tt>$HOME</tt> for the selected Unix user's home directory. Paths outside
+the listed directories are rejected. In root mode, <tt>$HOME</tt> refers to
+the Unix account whose name matches the Webmin user.</p>
+
+<p>The row and table permission enables forms for editing rows and changing
+schemas. The file creation permission allows new files in writable allowed
+directories. The module offers file creation only when the user can also add
+a table through a form or SQL.</p>
+
+<p><b>Execute SQL statements</b> permits one direct SQL statement at a time.
+This is a separate write permission: SQL may change the current database when
+its file and directory are writable. The module blocks attached databases,
+extensions, and SQL operations that access other files.</p>
+
+<p><b>Unix user for database access</b> selects the filesystem identity used
+by the module. Root normally bypasses file ownership and permissions. A
+matching or specific Unix user limits access to files that account can read
+and write.</p>
+
+<footer>

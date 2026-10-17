@@ -1,0 +1,17 @@
+<header>SQLite Table</header>
+
+This page shows the columns and rows in the selected SQLite table or view.
+Select a column heading to sort the rows. Use the page controls for large
+tables.
+
+<p>Rows can be added, edited or deleted when the database is writable and the
+table has a stable row identity. Views and tables without one are read-only.</p>
+
+<p>With structured write access, the <b>Structure</b> tab can add a column.
+SQLite 3.25 or later can rename one, and SQLite 3.35 or later can drop one.
+SQLite refuses to drop columns used by constraints, indexes or other schema
+objects. Changing a column's type or constraints requires rebuilding the
+table with <b>Execute SQL</b>.</p>
+
+<p>The buttons at the bottom rename a table or, after confirmation, drop a
+table or view. This module cannot recover a dropped table or its rows.</p>

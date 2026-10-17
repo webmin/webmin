@@ -1,0 +1,20 @@
+<header>Create Table</header>
+
+This page creates a table in the open SQLite database. Enter a table name and
+one row per column. Rows without a column name are ignored. <b>Add More
+Columns</b> shows four more rows without discarding your entries.
+
+<p>Each column uses one of these SQLite type affinities: <tt>INTEGER</tt>,
+<tt>TEXT</tt>, <tt>REAL</tt>, <tt>BLOB</tt> or <tt>NUMERIC</tt>. These are
+preferred storage types, not strict restrictions. A column that does not
+allow NULL needs a value or default when each database row is added.</p>
+
+<p>The key setting controls row identity and uniqueness. An
+<tt>INTEGER</tt> primary key with autoincrement is the usual choice and is
+filled in automatically. Marking several columns as the primary key creates
+a composite key. Primary key columns do not allow NULL. A unique column
+rejects duplicate values without becoming the primary key.</p>
+
+<p>A default value is stored as text unless it is a number, <tt>NULL</tt>, or
+one of <tt>CURRENT_TIME</tt>, <tt>CURRENT_DATE</tt> and
+<tt>CURRENT_TIMESTAMP</tt>.</p>

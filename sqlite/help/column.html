@@ -1,0 +1,16 @@
+<header>Add or Rename Column</header>
+
+This page adds or renames a column without rebuilding the table.
+
+<p>An added column has a name, type and optional default. Existing rows
+receive the default, so a column that does not allow NULL must have one.
+SQLite does not allow an added column to be a primary key, to be unique, or
+to default to the current time or date. Rebuild the table with SQL to make
+those changes.</p>
+
+<p>Renaming changes only the name. SQLite also updates dependent indexes,
+triggers and views. It rejects the rename if the updated schema would be
+ambiguous or invalid.</p>
+
+<p>Changing a column's type, NULL rule, default or key requires rebuilding
+the table. Use <b>Execute SQL</b> if your module permissions allow it.</p>

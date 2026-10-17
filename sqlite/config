@@ -1,0 +1,6 @@
+recent=3
+perpage=50
+max_text=1000
+busy_timeout=5000
+max_query_rows=1000
+confirm_delete=1

@@ -1,0 +1,6 @@
+paths=/
+write=1
+create=1
+sql=1
+work_as_root=1
+work_as_user=

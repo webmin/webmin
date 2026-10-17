@@ -1,0 +1,17 @@
+<header>SQLite Database Browser</header>
+
+This module opens SQLite database files without a database server. It can
+inspect tables and views, change schemas, edit rows and run individual SQL
+statements. Access can be read-only or limited to selected directories. The
+module can also use a selected Unix account so its file permissions apply.
+The safe defaults for delegated users limit access to their Unix home
+directory and run the module as their matching Unix account.
+
+<p>SQLite briefly locks the database file during writes. Write-ahead logging
+(WAL) can reduce blocking when Webmin and another application use the database
+at the same time.</p>
+
+<p>The front page lists each Webmin user's recently opened databases for quick
+access. The module configuration sets how many entries are kept. Users can
+remove individual entries, and databases no longer allowed by their access
+settings are hidden.</p>

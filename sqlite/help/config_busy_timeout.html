@@ -1,0 +1,11 @@
+<header>Database lock wait</header>
+
+This is how long, in milliseconds, SQLite waits for another connection to
+release a database lock. The default is 5,000 milliseconds. The maximum is
+600,000 milliseconds, or 10 minutes.
+
+<p>A negative value makes a locked operation fail immediately. A longer wait
+can help when another application makes short, frequent changes, but it also
+makes a blocked Webmin request take longer to fail.</p>
+
+<footer>

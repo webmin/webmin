@@ -1,0 +1,8 @@
+name=SQLite
+desc=SQLite Database Browser
+category=servers
+longdesc=Browse and edit SQLite database files, including tables, rows and schemas.
+readonly=1
+cpan=1
+rpm_recommends=perl-DBI perl-DBD-SQLite
+deb_recommends=libdbi-perl libdbd-sqlite3-perl
