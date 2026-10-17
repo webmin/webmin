@@ -982,14 +982,21 @@ else {
 }
 
 # theme_ui_links_row(&links)
-# Returns a row of links separated by bars, in a block of its own so that
-# the stylesheet can draw it as a toolbar when it sits above a table
+# Returns links in a toolbar wrapper. Gray Theme hides the legacy separators
+# and styles each link as a button.
 sub theme_ui_links_row
 {
 my ($links) = @_;
+# An empty list does not need a toolbar container.
 return "" if (!$links || !@$links);
+my @button_links = map {
+	my $link = $_;
+	# Drop the final period from the button without changing its source text.
+	$link =~ s/(?<!\.)\.(?=(?:\s*<\/[^>]+>)*\s*<\/a>\s*$)//i;
+	$link;
+	} @$links;
 return "<div class='ui_links_row'>".
-       join(" <span class='ui_links_sep'>|</span> ", @$links).
+       join(" <span class='ui_links_sep'>|</span> ", @button_links).
        "</div>\n";
 }
 
