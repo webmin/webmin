@@ -1776,6 +1776,29 @@ html.loading-right .menu-loader { display: block; }
 	color: var(--text-color-inverse);
 	text-decoration: none;
 }
+/* Cloudmin's creation action uses a quiet orange tint and outline. Normal
+ * theme text stays readable without making the button dominate the menu. */
+.menu-panel-cloudmin .menu-create {
+	background: rgba(223, 121, 53, 0.14);
+	box-shadow: inset 0 0 0 1px rgba(223, 121, 53, 0.42);
+	color: var(--text-color);
+}
+.menu-panel-cloudmin .menu-create:hover {
+	background: rgba(223, 121, 53, 0.22);
+	color: var(--text-color);
+}
+.menu-panel-cloudmin .menu-create svg { color: #df7935; }
+/* Virtualmin uses the same quiet treatment with the theme's blue palette. */
+.menu-panel-virtualmin .menu-create {
+	background: var(--element-highlight-bg-color);
+	box-shadow: inset 0 0 0 1px var(--accent-color-soft);
+	color: var(--text-color);
+}
+.menu-panel-virtualmin .menu-create:hover {
+	box-shadow: inset 0 0 0 2px var(--border-color-info);
+	color: var(--text-color);
+}
+.menu-panel-virtualmin .menu-create svg { color: var(--accent-color-hover); }
 /* Forms in the menu: a caps label over a field that fills the panel */
 .menu-form { margin: 0 8px 12px; }
 .menu-label {

@@ -82,7 +82,7 @@ my %prodnames = ( 'cloudmin' => $text{'has_vm2'},
 popup_header($prodnames{$prod});
 
 # The whole menu sits in one panel that floats on the page ground
-print "<div class='menu-panel'>\n";
+print "<div class='menu-panel menu-panel-$prod'>\n";
 
 if ($mode eq "modules") {
 	# Only showing Webmin modules
