@@ -10285,10 +10285,14 @@ won't be passed to programs started by webmin. This is useful when calling
 programs that check for CGI-related environment variables and modify their
 behaviour, and to avoid passing sensitive variables to un-trusted programs.
 
+Calls can be nested, with each reset_environment undoing the most recent call.
+
 =cut
 sub clean_environment
 {
-%UNCLEAN_ENV = %ENV;
+# Save each environment separately so nested calls restore in order
+push(@main::clean_environment_stack, { %ENV });
+%UNCLEAN_ENV = %ENV if (@main::clean_environment_stack == 1);
 foreach my $k (keys %ENV) {
 	if ($k =~ /^(HTTP|VIRTUALSERVER|QUOTA|USERADMIN)_/) {
 		delete($ENV{$k});
@@ -10310,17 +10314,17 @@ foreach my $e ('WEBMIN_CONFIG', 'SERVER_NAME', 'CONTENT_TYPE', 'REQUEST_URI',
 
 =head2 reset_environment
 
-Puts the environment back how it was before clean_environment was callled.
+Puts the environment back how it was before the matching cleanup call.
+A reset with no cleanup to match does nothing.
 
 =cut
 sub reset_environment
 {
-if (%UNCLEAN_ENV) {
-	foreach my $k (keys %UNCLEAN_ENV) {
-		$ENV{$k} = $UNCLEAN_ENV{$k};
-		}
-	undef(%UNCLEAN_ENV);
+my $saved = pop(@main::clean_environment_stack);
+if ($saved) {
+	%ENV = %$saved;
 	}
+undef(%UNCLEAN_ENV) if (!@main::clean_environment_stack);
 }
 
 =head2 clean_language
@@ -10332,7 +10336,9 @@ reset_environment.
 =cut
 sub clean_language
 {
-if (!%UNCLEAN_ENV) {
+# Share the snapshot from a preceding clean_environment call
+if (!@main::clean_environment_stack) {
+	push(@main::clean_environment_stack, { %ENV });
 	%UNCLEAN_ENV = %ENV;
 	}
 $ENV{'LANG'} = '';
