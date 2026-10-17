@@ -667,20 +667,39 @@ foreach my $row (@$rows) {
 return [ grep { $_->{'hidden'} != 1 } @columns ];
 }
 
-# sub sqlite_column_selects(&columns, [&blob-columns-to-keep])
+# sub sqlite_column_selects(&columns, [&blob-columns-to-keep], [shorten-text])
 # Returns value, storage class and length expressions. BLOB bodies are omitted
-# unless requested.
+# unless requested. Set shorten-text only for display queries that may safely
+# return a bounded prefix instead of the full stored value.
 sub sqlite_column_selects
 {
-my ($columns, $keep_blobs) = @_;
+my ($columns, $keep_blobs, $shorten_text) = @_;
 $keep_blobs ||= { };
 my (@values, @types, @lengths);
+my $text_limit;
+# Limit one row's text prefixes to half the result budget at four bytes per
+# UTF-8 character. The other half remains for identities and row metadata.
+if ($shorten_text) {
+	my $columns_count = scalar(@$columns) || 1;
+	my $safe_limit = int(&sqlite_result_bytes_limit() /
+		(8 * $columns_count));
+	# Always permit at least one character per displayed column.
+	$safe_limit = 1 if ($safe_limit < 1);
+	$text_limit = int($config{'max_text'} || 0);
+	# Use the safe share when the configured display limit is larger or absent.
+	$text_limit = $safe_limit if ($text_limit < 1 ||
+		$text_limit > $safe_limit);
+	}
 foreach my $column (@$columns) {
 	# Fetch BLOB bytes only when they identify the row.
 	my $name = $column->{'name'};
 	my $quoted = &sqlite_quote_identifier($name);
+	my $text_case = $shorten_text ?
+		"WHEN typeof($quoted) = 'text' THEN substr($quoted, 1, ".
+		$text_limit.") " : '';
 	push(@values, $keep_blobs->{$name} ? $quoted :
-		"CASE WHEN typeof($quoted) = 'blob' THEN NULL ELSE $quoted END");
+		"CASE WHEN typeof($quoted) = 'blob' THEN NULL ".
+		$text_case."ELSE $quoted END");
 	push(@types, "typeof($quoted)");
 	push(@lengths, "length($quoted)");
 	}
@@ -804,7 +823,9 @@ return !eval { decode('UTF-8', $value, FB_CROAK); 1 };
 }
 
 # sub sqlite_display_value(value, [storage-type], [storage-length])
-# Formats a database value for safe display in an HTML table.
+# Formats a database value for safe display in an HTML table. Optional SQLite
+# storage metadata identifies BLOBs and preserves the original length when SQL
+# returns only a text prefix.
 sub sqlite_display_value
 {
 my ($value, $storage_type, $storage_length) = @_;
@@ -821,11 +842,17 @@ return &text('value_blob', length($value)) if (&sqlite_value_is_binary($value));
 my $shown = $value;
 my $max = int($config{'max_text'} || 0);
 my $truncated;
+# Table queries provide the original character count after shortening text
+# inside SQLite, so the display still indicates omitted content.
+my $original_length = defined($storage_type) && $storage_type eq 'text' &&
+	defined($storage_length) ? $storage_length : length($shown);
 # Apply the display limit before building the details disclosure.
 if ($max > 0 && length($shown) > $max) {
 	$shown = substr($shown, 0, $max);
 	$truncated = 1;
 	}
+# Preserve the truncation marker when SQL already shortened the value.
+$truncated = 1 if ($original_length > length($shown));
 my $preview_length = 128;
 # Short values need no expandable details control.
 if (length($shown) <= $preview_length) {
@@ -840,7 +867,7 @@ if (length($shown) <= $preview_length) {
 # summary counts the hidden characters.
 my $preview = substr($shown, 0, $preview_length);
 my $remainder = substr($shown, $preview_length);
-my $remaining = length($value) - $preview_length;
+my $remaining = $original_length - $preview_length;
 my $summary = $truncated ?
 	&text('value_more_chars_truncated', length($remainder), $remaining) :
 	&text('value_more_chars', $remaining);

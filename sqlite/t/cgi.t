@@ -98,7 +98,8 @@ write_text(File::Spec->catfile($old_driver_lib, 'DBD', 'SQLite.pm'),
 	"undef *DBD::SQLite::db::sqlite_limit;\n".
 	"1;\n");
 
-# Populate tables for pagination, empty-state, long-text and BLOB checks.
+# Populate tables for pagination, empty-state, long text, oversized text and
+# BLOB checks.
 my $database = File::Spec->catfile($data_dir, 'sample.db');
 my $dbh = DBI->connect('dbi:SQLite:dbname='.$database, '', '', {
 	'RaiseError' => 1, 'PrintError' => 0 });
@@ -106,7 +107,11 @@ $dbh->do('CREATE TABLE sample (id INTEGER PRIMARY KEY, name TEXT NOT NULL)');
 $dbh->do("INSERT INTO sample (name) VALUES ('first'), ('second')");
 $dbh->do('CREATE TABLE empty_sample (id INTEGER PRIMARY KEY, name TEXT)');
 $dbh->do('CREATE TABLE long_sample (id INTEGER PRIMARY KEY, record TEXT)');
-$dbh->do('INSERT INTO long_sample (record) VALUES (?)', undef, 'x' x 2222);
+my $long_text = 'x' x 2222;
+$dbh->do('INSERT INTO long_sample (record) VALUES (?)', undef, $long_text);
+my $oversized_text = 'y' x 1049000;
+$dbh->do('INSERT INTO long_sample (record) VALUES (?)', undef,
+	$oversized_text);
 $dbh->do('CREATE TABLE blob_sample (id INTEGER PRIMARY KEY, data BLOB)');
 my $blob_insert = $dbh->prepare(
 	'INSERT INTO blob_sample (data) VALUES (?)');
@@ -482,6 +487,85 @@ unlike($long_page->{'out'}, qr/min-width:28em/,
 	'long-value cell does not force a wide table');
 like($long_page->{'out'}, qr/<details class="inline inlined">/,
 	'long-value cell keeps its remaining text in an inline disclosure');
+
+# Editing loads the full value even though table display is shortened.
+my $long_raw_key = 'V1:1;';
+my $long_key = MIME::Base64::encode_base64($long_raw_key, '');
+$long_key =~ tr!+/!-_!;
+$long_key =~ s/=+$//;
+my $long_edit = run_cgi('edit_row.cgi', 'GET', {
+	'db' => $database, 'table' => 'long_sample', 'key' => $long_key });
+is($long_edit->{'status'}, 0, 'long-value edit CGI exits successfully');
+is($long_edit->{'err'}, '', 'long-value edit CGI emits no warnings');
+like($long_edit->{'out'},
+	qr/name=['"]value_1['"][^>]*>\Q$long_text\E<\/textarea>/s,
+	'row editor loads the full text instead of the display prefix');
+
+# A value larger than the request budget remains browsable because the table
+# query returns only its display prefix. Editing refuses it before loading the
+# full value into Perl.
+my $oversized_page = run_cgi('table.cgi', 'GET', {
+	'db' => $database, 'table' => 'long_sample', 'start' => 1 });
+is($oversized_page->{'status'}, 0,
+	'oversized-value table CGI exits successfully');
+is($oversized_page->{'err'}, '',
+	'oversized-value table CGI emits no warnings');
+like($oversized_page->{'out'}, qr/yyyyyyyyyy/,
+	'table CGI shows only a bounded prefix of oversized text');
+my $oversized_raw_key = 'V1:2;';
+my $oversized_key = MIME::Base64::encode_base64($oversized_raw_key, '');
+$oversized_key =~ tr!+/!-_!;
+$oversized_key =~ s/=+$//;
+my $oversized_edit = run_cgi('edit_row.cgi', 'GET', {
+	'db' => $database, 'table' => 'long_sample', 'key' => $oversized_key });
+like($oversized_edit->{'out'},
+	qr/result exceeds the configured 1048576-byte limit/i,
+	'row editor rejects an oversized value before loading it');
+unlike($oversized_edit->{'out'}, qr/yyyyyyyyyy/,
+	'row editor does not return the oversized value');
+
+# An uneven composite key remains editable when its total size is within the
+# identity budget. No individual component receives an arbitrary equal share.
+$dbh = DBI->connect('dbi:SQLite:dbname='.$database, '', '', {
+	'RaiseError' => 1, 'PrintError' => 0 });
+my @uneven_names = map { 'key_'.$_ } 1..10;
+$dbh->do('CREATE TABLE uneven_key ('.
+	join(', ', map { $_.' TEXT NOT NULL' } @uneven_names).
+	', payload TEXT, PRIMARY KEY ('.join(', ', @uneven_names).
+	')) WITHOUT ROWID');
+my @uneven_values = ('k' x 60000, ('x') x 9, 'visible');
+$dbh->do('INSERT INTO uneven_key VALUES ('.
+	join(', ', ('?') x scalar(@uneven_values)).')', undef, @uneven_values);
+$dbh->disconnect();
+my $uneven_key_page = run_cgi('table.cgi', 'GET', {
+	'db' => $database, 'table' => 'uneven_key' });
+is($uneven_key_page->{'status'}, 0,
+	'uneven composite-key table CGI exits successfully');
+is($uneven_key_page->{'err'}, '',
+	'uneven composite-key table CGI emits no warnings');
+unlike($uneven_key_page->{'out'}, qr/Key is too large to edit/,
+	'composite-key components share one byte budget');
+like($uneven_key_page->{'out'},
+	qr/edit_row\.cgi\?db=.*?table=uneven%5Fkey/s,
+	'a composite key within the total budget remains editable');
+$dbh = DBI->connect('dbi:SQLite:dbname='.$database, '', '', {
+	'RaiseError' => 1, 'PrintError' => 0 });
+my @oversized_key_values = ('z' x 600000, ('x') x 9, 'visible');
+$dbh->do('INSERT INTO uneven_key VALUES ('.
+	join(', ', ('?') x scalar(@oversized_key_values)).')', undef,
+	@oversized_key_values);
+$dbh->disconnect();
+my $oversized_key_page = run_cgi('table.cgi', 'GET', {
+	'db' => $database, 'table' => 'uneven_key', 'sort' => 'key_1',
+	'start' => 1 });
+is($oversized_key_page->{'status'}, 0,
+	'oversized composite-key table CGI exits successfully');
+is($oversized_key_page->{'err'}, '',
+	'oversized composite-key table CGI emits no warnings');
+like($oversized_key_page->{'out'}, qr/Key is too large to edit/,
+	'an oversized composite key has no edit action');
+unlike($oversized_key_page->{'out'}, qr/<input\b[^>]*\bname="row"/,
+	'an oversized composite key has no delete checkbox');
 
 # Check that ASCII-only BLOBs stay hidden and binary.
 my $blob_page = run_cgi('table.cgi', 'GET', {

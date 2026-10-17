@@ -29,16 +29,46 @@ if (!$in{'new'}) {
 	my ($where, @params) = &sqlite_identity_where($identity, \@keys);
 	my ($value_selects, $type_selects, $length_selects) =
 		&sqlite_column_selects($columns);
-	my $sql = 'SELECT '.join(', ', @$value_selects, @$type_selects,
-		@$length_selects).
-		' FROM '.&sqlite_quote_identifier($object->{'name'}).
-		' WHERE '.$where.' LIMIT 2';
-	my $rows = $dbh->selectall_arrayref($sql, undef, @params);
-	@$rows == 1 || &error($text{'edit_missing'});
-	my @selected = @{$rows->[0]};
-	@values = splice(@selected, 0, scalar(@$columns));
-	@storage_types = splice(@selected, 0, scalar(@$columns));
-	@storage_lengths = splice(@selected, 0, scalar(@$columns));
+	# Measure the row before loading its full values. Run both queries in one
+	# read transaction so they use the same snapshot.
+	my @quoted = map { &sqlite_quote_identifier($_->{'name'}) } @$columns;
+	my $row_size = &sqlite_sum_sql(64 + 64 * 3 * scalar(@$columns),
+		&sqlite_bytes_sql(\@quoted));
+	my $from = ' FROM '.&sqlite_quote_identifier($object->{'name'}).
+		' WHERE '.$where.' LIMIT 2 OFFSET 0';
+	my $loaded = eval {
+		$dbh->do('BEGIN DEFERRED');
+		# Fetch only the row size and storage metadata for the size check.
+		my $metadata_sql = 'SELECT '.join(', ', $row_size,
+			@$type_selects, @$length_selects).$from;
+		my $metadata_rows = &sqlite_select_rows_bounded($dbh,
+			$metadata_sql, @params);
+		@$metadata_rows == 1 || die $text{'edit_missing'}."\n";
+		my @metadata = @{$metadata_rows->[0]};
+		my $measured_size = shift(@metadata);
+		# Reject an oversized row before SQLite evaluates its full values.
+		die &text('error_resultlarge', &sqlite_result_bytes_limit())."\n"
+			if ($measured_size > &sqlite_result_bytes_limit());
+		# Split the remaining metadata into type and length lists.
+		@storage_types = splice(@metadata, 0, scalar(@$columns));
+		@storage_lengths = @metadata;
+		undef($metadata_rows);
+		# Read full values from the same snapshot after the size check passes.
+		my $value_sql = 'SELECT '.join(', ', @$value_selects).$from;
+		my $value_rows = &sqlite_select_rows_bounded($dbh,
+			$value_sql, @params);
+		@$value_rows == 1 || die $text{'edit_missing'}."\n";
+		@values = @{$value_rows->[0]};
+		$dbh->do('COMMIT');
+		1;
+		};
+	# On failure, roll back the snapshot and close the handle before reporting it.
+	if (!$loaded) {
+		my $error = $@ || $text{'error_unknown'};
+		eval { $dbh->do('ROLLBACK'); };
+		$dbh->disconnect();
+		&error(&html_escape($error));
+		}
 	}
 $dbh->disconnect();
 

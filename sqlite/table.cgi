@@ -39,25 +39,34 @@ my %column_names = map { $_->{'name'} => 1 } @$columns;
 my $sort = $column_names{$in{'sort'}} ? $in{'sort'} : undef;
 my $order = $sort ? ' ORDER BY '.&sqlite_quote_identifier($sort).
 	($in{'desc'} ? ' DESC' : ' ASC') : '';
-my %identity_columns = $identity && !$identity->{'rowid'} ?
-	map { $_ => 1 } @{$identity->{'columns'}} : ( );
+# Bound display values separately from full composite-key values.
 my ($value_selects, $type_selects, $length_selects) =
-	&sqlite_column_selects($columns, \%identity_columns);
+	&sqlite_column_selects($columns, undef, 1);
 my @select = (@$value_selects, @$type_selects, @$length_selects);
+my $from = 'FROM '.$quoted_table.$order.' LIMIT ? OFFSET ?';
+my $sql;
 # Select rowid separately when it is the stable editing identity.
 if ($identity && $identity->{'rowid'}) {
 	unshift(@select, $identity->{'rowid'});
 	}
-# Fetch one page with the storage metadata needed for safe rendering.
-my $sth = $dbh->prepare('SELECT '.join(', ', @select).' FROM '.
-	$quoted_table.$order.' LIMIT ? OFFSET ?');
-$sth->execute($perpage, $start);
-my @rows;
-while (my $row = $sth->fetchrow_arrayref()) {
-	push(@rows, [ @$row ]);
+# Fetch a composite key only when its full byte length fits within half
+# the result budget. That half is reserved for identity data. Oversized keys
+# remain viewable, but the row must not expose edit or delete controls.
+elsif ($identity) {
+	my @quoted_keys = map { &sqlite_quote_identifier($_) }
+		@{$identity->{'columns'}};
+	$sql = &sqlite_guarded_select(&sqlite_bytes_sql(\@quoted_keys, 1),
+		int(&sqlite_result_bytes_limit() / 2), \@select, \@quoted_keys,
+		$from);
 	}
-$sth->finish();
+# Fetch one page and its rendering metadata within the per-value ceiling and
+# request byte budget.
+$sql ||= 'SELECT '.join(', ', @select).' '.$from;
+my $rows = eval { &sqlite_select_rows_bounded($dbh, $sql, $perpage, $start) };
+my $fetch_error = $@;
 $dbh->disconnect();
+&error(&html_escape($fetch_error)) if ($fetch_error);
+my @rows = @$rows;
 
 my $desc = &ui_tag('tt', &html_escape($object->{'name'})).' '.
 	$text{'table_in'}.' '.&ui_tag('tt', &html_escape($path));
@@ -154,43 +163,50 @@ if (@rows) {
 	push(@headers, $text{'table_action'}) if ($editable);
 	my @table_rows;
 	foreach my $row (@rows) {
-		my @values = @$row;
+		my @parts = @$row;
 		my @key_values;
-		# Remove the leading rowid before splitting values from
-		# metadata.
+		my $key_complete = 1;
+		# A rowid identity is the first returned column.
 		if ($identity && $identity->{'rowid'}) {
-			@key_values = (shift(@values));
+			@key_values = (shift(@parts));
 			}
-		my @storage_types = splice(@values, scalar(@$columns),
-			scalar(@$columns));
-		my @storage_lengths = splice(@values, scalar(@$columns),
-			scalar(@$columns));
-		# Build composite identities from their declared primary-key
-		# columns.
-		if ($identity && !$identity->{'rowid'}) {
-			my %by_name;
-			@by_name{map { $_->{'name'} } @$columns} = @values;
-			@key_values = @by_name{@{$identity->{'columns'}}};
+		# A composite identity starts with its fit flag and ends with key values.
+		elsif ($identity) {
+			$key_complete = shift(@parts) ? 1 : 0;
 			}
-		my $token = $identity ? &sqlite_encode_key(@key_values) : undef;
+		my @values = splice(@parts, 0, scalar(@$columns));
+		my @storage_types = splice(@parts, 0, scalar(@$columns));
+		my @storage_lengths = splice(@parts, 0, scalar(@$columns));
+		@key_values = @parts if ($identity && !$identity->{'rowid'});
+		my $row_editable = $editable && $key_complete;
+		my $token = $row_editable ? &sqlite_encode_key(@key_values) : undef;
 		my @shown = map {
 			&sqlite_display_value($values[$_], $storage_types[$_],
 				$storage_lengths[$_])
 			} 0..$#values;
-		# Mark writable rows for the standard checked-table renderer.
-		unshift(@shown, {
-			'type' => 'checkbox',
-			'name' => 'row',
-			'value' => $token,
-			}) if ($editable);
-		# Add an edit action only for writable rows.
+		# Keep the selection column aligned; only editable rows receive a box.
 		if ($editable) {
-			my $edit = 'edit_row.cgi?db='.&urlize($path).'&table='.
-				&urlize($object->{'name'}).'&key='.&urlize($token).
-				'&start='.$start;
-			push(@shown, &ui_tag('a', $text{'table_edit'}, {
-				'href' => $edit,
-				}));
+			unshift(@shown, $row_editable ? {
+				'type' => 'checkbox',
+				'name' => 'row',
+				'value' => $token,
+				} : '');
+			}
+		# Add an edit link or explain why this row cannot be edited.
+		if ($editable) {
+			# Link rows whose full identity was returned.
+			if ($row_editable) {
+				my $edit = 'edit_row.cgi?db='.&urlize($path).'&table='.
+					&urlize($object->{'name'}).'&key='.&urlize($token).
+					'&start='.$start;
+				push(@shown, &ui_tag('a', $text{'table_edit'}, {
+					'href' => $edit,
+					}));
+				}
+			else {
+				# Explain why an oversized composite key cannot be edited.
+				push(@shown, &html_escape($text{'table_key_large'}));
+				}
 			}
 		push(@table_rows, \@shown);
 		}

@@ -115,6 +115,7 @@ table_generated=Generated
 table_data=Data
 table_action=Action
 table_edit=Edit
+table_key_large=Key is too large to edit
 table_delete=Delete Selected Rows
 table_add=Add Row
 table_empty=No rows were found.

@@ -197,7 +197,21 @@ like($long_value, qr/overflow-wrap:anywhere;word-break:break-word/,
 	'long text can shrink with its table column');
 unlike($long_value, qr/min-width:/,
 	'long text does not force a minimum table width');
+like(sqlite_display_value('abcdefgh', 'text', 20), qr/>abcdefgh\.\.\.<\/span>/,
+	'text shortened by SQLite still shows its truncation marker');
+$text{'value_more'} = '&hellip;';
+like(sqlite_display_value('abcdefgh', 'text', 20), qr/abcdefgh&hellip;/,
+	'text shortened by SQLite uses the translated ellipsis');
+$text{'value_more'} = '...';
 $config{'max_text'} = 8;
+my ($full_values) = sqlite_column_selects([ { 'name' => 'note' } ]);
+unlike($full_values->[0], qr/substr/,
+	'non-display queries load full text values');
+my ($bounded_values) = sqlite_column_selects(
+	[ { 'name' => 'note' } ], undef, 1);
+like($bounded_values->[0], qr/substr\("note", 1, 8\)/,
+	'table SQL shortens text before returning it to Perl');
+
 # Later helpers receive paths returned by sqlite_database_path, which are
 # canonical even when a temporary-directory prefix is a symbolic link.
 $allowed = $resolved_allowed;
