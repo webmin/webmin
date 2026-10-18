@@ -75,13 +75,4 @@ has_vm2=Cloudmin
 has_webmin=Webmin
 has_usermin=Usermin
 
-overlay_title=Change Theme
-overlay_desc=This page allows you to select a different theme overlay, which can change the colors, icons and layout of the Virtualmin user interface.
-overlay_msg=Change theme overlay to:
-overlay_ok=Change Now
-overlay_none=None - use default colors and icons
-overlay_refresh=Refreshing Virtualmin user interface ..
-overlay_done=.. done
-overlay_euser=Failed to get details of current user!
-overlay_webmin=Reloading Webmin configuration ..
 __norefs=1
