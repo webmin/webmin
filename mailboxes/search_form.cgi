@@ -11,6 +11,22 @@ require './mailboxes-lib.pl';
 &ui_print_header(undef, $text{'sform_title'}, "", undef, 0, 0, undef,
 	&folder_link($in{'user'}, $folder));
 
+print <<EOF;
+<script>
+function set_neg(mode, negfield)
+{
+if (mode == "size") {
+	negfield.options[0].text = "$text{'sform_larger'}";
+	negfield.options[1].text = "$text{'sform_smaller'}";
+	}
+else {
+	negfield.options[0].text = "$text{'sform_neg0'}";
+	negfield.options[1].text = "$text{'sform_neg1'}";
+	}
+}
+</script>
+EOF
+
 # Start of form
 print &ui_form_start("mail_search.cgi");
 print &ui_hidden("user", $in{'user'});
@@ -33,7 +49,8 @@ for($i=0; $i<=4; $i++) {
 			  map { [ $_, $_ eq 'all' ? $text{'sform_allmsg'}
 						  : $text{"sform_".$_} ] }
 			      ( 'from', 'subject', 'to', 'cc', 'date',
-				'body', 'headers', 'all', 'size') ]));
+				'body', 'headers', 'all', 'size') ],
+			1, 0, 0, undef, "onChange='set_neg(value, form.neg_$i)'"));
 
 	push(@cols, &ui_select("neg_$i", 0,
 			[ [ 0, $text{'sform_neg0'} ],
