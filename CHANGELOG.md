@@ -14,6 +14,7 @@
 * Fix two-factor authentication validation to use the Webmin configuration and data directories passed by the caller
 * Fix HTML escaping of module, script and session fields on the Webmin Actions Log details page
 * Fix mailbox attachment option injection
+* Fix archive extraction bypassing Upload and Download directory restrictions
 * Fix path traversal and command injection in parameterized Custom Commands file editors
 * Fix MySQL/MariaDB manual editor ACL bypass
 * Fix MySQL database backups allowing restricted users to write files or save root-run settings outside their access limits

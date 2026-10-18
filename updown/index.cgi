@@ -204,12 +204,14 @@ if ($can_upload) {
 						$upload_group, $form) ] ]));
 		}
 
-	# Unzip files
-	print &ui_table_row($text{'index_zip'},
-		&ui_radio("zip", 0,
-			  [ [ 2, $text{'index_zipyes'} ],
-			    [ 1, $text{'yes'} ],
-			    [ 0, $text{'no'} ] ]));
+	if (&can_write_file("/")) {
+		# Offer extraction only when uploads are not directory-restricted
+		print &ui_table_row($text{'index_zip'},
+			&ui_radio("zip", 0,
+				  [ [ 2, $text{'index_zipyes'} ],
+				    [ 1, $text{'yes'} ],
+				    [ 0, $text{'no'} ] ]));
+		}
 
 	# Email notification
 	print &ui_table_row($text{'index_email2'},
