@@ -11,17 +11,22 @@ require './mailboxes-lib.pl';
 &ui_print_header(undef, $text{'sform_title'}, "", undef, 0, 0, undef,
 	&folder_link($in{'user'}, $folder));
 
+# Escape localized labels before inserting them into JavaScript strings.
+my $sform_larger_js = &quote_javascript($text{'sform_larger'});
+my $sform_smaller_js = &quote_javascript($text{'sform_smaller'});
+my $sform_neg0_js = &quote_javascript($text{'sform_neg0'});
+my $sform_neg1_js = &quote_javascript($text{'sform_neg1'});
 print <<EOF;
 <script>
 function set_neg(mode, negfield)
 {
 if (mode == "size") {
-	negfield.options[0].text = "$text{'sform_larger'}";
-	negfield.options[1].text = "$text{'sform_smaller'}";
+	negfield.options[0].text = "$sform_larger_js";
+	negfield.options[1].text = "$sform_smaller_js";
 	}
 else {
-	negfield.options[0].text = "$text{'sform_neg0'}";
-	negfield.options[1].text = "$text{'sform_neg1'}";
+	negfield.options[0].text = "$sform_neg0_js";
+	negfield.options[1].text = "$sform_neg1_js";
 	}
 }
 </script>
