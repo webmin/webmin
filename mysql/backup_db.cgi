@@ -84,9 +84,18 @@ if ($cron) {
 
 	&foreign_require("cron");
 	@jobs = &cron::list_cron_jobs();
-	$cmd = $in{'all'} ? "$cron_cmd --all" : "$cron_cmd $in{'db'}";
-	($job) = grep { $_->{'command'} eq $cmd } @jobs;
+	if ($in{'all'}) {
+		($job) = grep { $_->{'command'} eq "$cron_cmd --all" } @jobs;
+		}
+	else {
+		($job) = grep {
+			$_->{'command'} eq $cron_cmd." ".$in{'db'} ||
+			$_->{'command'} eq $cron_cmd." ".quotemeta($in{'db'}) }
+			@jobs;
+		}
 	$oldjob = $job;
+	$cmd = $in{'all'} ? "$cron_cmd --all"
+			  : $cron_cmd." ".quotemeta($in{'db'});
 	$job ||= { 'command' => $cmd,
 		   'user' => 'root',
 		   'active' => 1 };
@@ -292,7 +301,7 @@ if (!$in{'dest'}) {
 		}
 	else {
 		&ui_print_footer(
-			"edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+			"/$module_name/edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
 			&get_databases_return_link($in{'db'}), $text{'index_return'});
 		}
 	}

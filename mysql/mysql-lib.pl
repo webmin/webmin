@@ -1983,8 +1983,8 @@ sub delete_database_backup_job
 my ($db) = @_;
 &foreign_require("cron");
 my @jobs = &cron::list_cron_jobs();
-my $cmd = "$cron_cmd $db";
-my ($job) = grep { $_->{'command'} eq $cmd } @jobs;
+my ($job) = grep { $_->{'command'} eq $cron_cmd." ".$db ||
+		   $_->{'command'} eq $cron_cmd." ".quotemeta($db) } @jobs;
 if ($job) {
 	&lock_file(&cron::cron_file($job));
 	&cron::delete_cron_job($job);

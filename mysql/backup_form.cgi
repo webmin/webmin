@@ -201,8 +201,15 @@ if ($cron) {
 	# Show cron time
 	&foreign_require("cron", "cron-lib.pl");
 	@jobs = &cron::list_cron_jobs();
-	$cmd = $in{'all'} ? "$cron_cmd --all" : "$cron_cmd $in{'db'}";
-	($job) = grep { $_->{'command'} eq $cmd } @jobs;
+	if ($in{'all'}) {
+		($job) = grep { $_->{'command'} eq "$cron_cmd --all" } @jobs;
+		}
+	else {
+		($job) = grep {
+			$_->{'command'} eq $cron_cmd." ".$in{'db'} ||
+			$_->{'command'} eq $cron_cmd." ".quotemeta($in{'db'}) }
+			@jobs;
+		}
 
 	print &ui_table_row($text{'backup_sched'},
 		&ui_radio("sched", $job ? 1 : 0,
