@@ -204,8 +204,9 @@ if ($can_upload) {
 						$upload_group, $form) ] ]));
 		}
 
-	if (&can_write_file("/")) {
-		# Offer extraction only when uploads are not directory-restricted
+	if ($can_mode == 3 || &can_write_file("/")) {
+		# Offer extraction when uploads use the current user or are
+		# unrestricted
 		print &ui_table_row($text{'index_zip'},
 			&ui_radio("zip", 0,
 				  [ [ 2, $text{'index_zipyes'} ],
