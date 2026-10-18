@@ -9249,12 +9249,11 @@ if ($serv->{'fast'} || !$sn) {
 		if ($line =~ /^0\s+(.*)/) {
 			return &$main::remote_error_handler("RPC error : $1");
 			}
-		elsif ($line =~ /^1\s+(\S+)\s+(\S+)(?:\s+(\S+))?(?:\s+(\S+))?/) {
-			# Started ok .. connect and save SID
+		elsif ($line =~ /^1\s+(\S+)\s+(\S+)\s+(\S+)/ ||
+		       $line =~ /^1\s+(\S+)\s+(\S+)/) {
+			# Connect and cache the negotiated fast RPC version
 			&close_http_connection($con);
-			my ($port, $sid, $wire_version, $version) =
-				($1, $2, $3, $4);
-			$version ||= $wire_version;
+			my ($port, $sid, $version) = ($1, $2, $3);
 			my $error;
 			&open_socket($ip, $port, $sid, \$error);
 			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error")
@@ -9263,6 +9262,7 @@ if ($serv->{'fast'} || !$sn) {
 			$remote_server_version{$sn} = $version;
 			}
 		else {
+			# Reject a malformed fast RPC startup response
 			while($stuff = &read_http_connection($con)) {
 				$line .= $stuff;
 				}
@@ -9312,20 +9312,18 @@ if ($serv->{'fast'} || !$sn) {
 			close(RPCOUTr);
 			return &$main::remote_error_handler("RPC error : $2");
 			}
-		elsif ($line =~ /^1\s+(\S+)\s+(\S+)(?:\s+(\S+))?(?:\s+(\S+))?/) {
-			# Started ok .. connect and save SID
+		elsif ($line =~ /^1\s+(\S+)\s+(\S+)\s+(\S+)/) {
+			# Connect and cache the local fast RPC version
 			close(SOCK);
 			close(RPCOUTr);
-			my ($port, $sid, $wire_version, $version) =
-				($1, $2, $3, $4);
-			$version ||= $wire_version;
+			my ($port, $sid, $version) = ($1, $2, $3);
 			my $error;
 			&open_socket("localhost", $port, $sid, \$error);
 			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error") if ($error);
 			$fast_fh_cache{$sn} = [ $sid, $version ];
 			}
 		else {
-			# Unexpected response
+			# Reject a malformed local fast RPC startup response
 			local $_;
 			while(<RPCOUTr>) {
 				$line .= $_;
@@ -9335,9 +9333,10 @@ if ($serv->{'fast'} || !$sn) {
 				"Bad response from fastrpc.cgi : $line");
 			}
 		}
-	# Got a connection .. send off the request
-	my ($fh) = @{$fast_fh_cache{$sn}};
-	my $tostr = &serialise_variable($str);
+	# Use Data::Dumper only when the peer advertises parser support
+	my ($fh, $version) = @{$fast_fh_cache{$sn}};
+	my $dumper = &compare_version_numbers($version, 2.014) >= 0;
+	my $tostr = &serialise_variable($str, $dumper);
 	print $fh length($tostr)," $fh\n";
 	print $fh $tostr;
 	my $rstr = <$fh>;
@@ -9521,17 +9520,32 @@ my ($err) = @_;
 $remote_multi_callback_err = $err;
 }
 
-=head2 serialise_variable(variable)
+=head2 serialise_variable(variable, [data-dumper-format])
 
-Converts some variable (maybe a scalar, hash ref, array ref or scalar ref)
-into a url-encoded string. In the cases of arrays and hashes, it is recursively
-called on each member to serialize the entire object.
+Converts a scalar or reference into Webmin's RPC wire format. The legacy format
+recursively URL-encodes arrays and hashes. If data-dumper-format is set,
+Data::Dumper preserves shared and cyclic references.
 
 =cut
 sub serialise_variable
 {
-my ($var) = @_;
+my ($var, $dumper) = @_;
+if ($dumper) {
+	# Preserve shared and cyclic references for peers that support this format
+	eval "use Data::Dumper";
+	if (!$@) {
+		# Override global options to keep the wire format stable
+		my $dd = Data::Dumper->new([ $var ], [ 'VAR1' ]);
+		$dd->Purity(1)->Indent(0)->Terse(0)->Useqq(0)->Deparse(0)
+		   ->Pair(' => ')->Quotekeys(1)->Freezer('')->Toaster('')
+		   ->Bless('bless')->Maxdepth(0)->Deepcopy(0)->Pad('');
+		return $dd->Dump();
+		}
+	}
+
+# Fall back to the legacy format for older peers or if Data::Dumper is missing
 if (!defined($var)) {
+	# Preserve undef as a distinct wire type
 	return 'UNDEF';
 	}
 my $r = ref($var);
@@ -9554,11 +9568,11 @@ elsif ($r eq 'REF') {
 	$rv = &serialise_variable(${$var});
 	}
 elsif ($r eq 'CODE') {
-	# Code not handled
+	# Never transfer executable code
 	$rv = undef;
 	}
 elsif ($r) {
-	# An object - treat as a hash
+	# Transfer an object's fields without executing class code
 	$r = "OBJECT ".&urlize($r);
 	$rv = join(",", map { &urlize(&serialise_variable($_)).",".
 			      &urlize(&serialise_variable($var->{$_})) }
@@ -9569,17 +9583,18 @@ return ($r ? $r : 'VAL').",".$rv;
 
 =head2 unserialise_variable(string)
 
-Converts a string created by serialise_variable() back into the original
-scalar, hash ref, array ref or scalar ref. Perl objects are returned as plain
-hashes to avoid loading a class selected by a remote system.
+Decodes a value created by serialise_variable(). Data::Dumper input is parsed
+without evaluating Perl and returns undef if it contains unsupported syntax.
+Objects become plain data so a remote peer cannot load or bless a local class.
 
 =cut
 sub unserialise_variable
 {
 my ($str) = @_;
 if (substr($str, 0, 5) eq '$VAR1') {
-	# Never execute Data::Dumper input received over RPC
-	return undef;
+	# Parse Data::Dumper input as data rather than evaluating Perl code
+	my $rv = eval { local $SIG{'__DIE__'}; &unserialise_dumper_data($str) };
+	return $@ ? undef : $rv;
 	}
 my @v = split(/,/, $str);
 my $rv;
@@ -9620,6 +9635,339 @@ elsif ($v[0] =~ /^OBJECT\s+([A-Za-z0-9_:]+)$/) {
 		}
 	}
 return $rv;
+}
+
+# unserialise_dumper_data(string)
+# Parses supported Data::Dumper output generated with Purity, without evaluating
+# Perl. Code refs, globs and placeholders become undef, regexps become strings,
+# and objects become plain data. Dies on unsupported syntax.
+sub unserialise_dumper_data
+{
+my ($str) = @_;
+my $s = \$str;
+pos($str) = 0;
+
+# Read the main value
+$str =~ /\G\$VAR1\s*=/gc || die "Missing \$VAR1 assignment\n";
+my $root = &unserialise_dumper_value($s, 0);
+$str =~ /\G\s*;/gc || die "Missing ; after value\n";
+
+# Apply the assignments that link shared and cyclic references
+while(1) {
+	$str =~ /\G\s+/gc;
+	last if (pos($str) == length($str));
+	my $target = &unserialise_dumper_path($s, \$root);
+	$str =~ /\G\s*=\s*/gc || die "Missing = in reference link\n";
+	my $value;
+	if ($str =~ /\G\\/gc) {
+		# Reference to an existing slot, like \$VAR1->{'a'}
+		$value = &unserialise_dumper_path($s, \$root);
+		}
+	else {
+		# Copy of an existing value, like $VAR1->{'a'}
+		$value = ${&unserialise_dumper_path($s, \$root)};
+		}
+	$str =~ /\G\s*;/gc || die "Missing ; after reference link\n";
+	$$target = $value;
+	}
+return $root;
+}
+
+# unserialise_dumper_value(&string, depth)
+# Reads one Data::Dumper value at the current string position. Each match must
+# consume input because Perl rejects consecutive zero-length //g matches at the
+# same position.
+sub unserialise_dumper_value
+{
+my ($s, $depth) = @_;
+$depth < 1000 || die "Data is nested too deeply\n";
+$$s =~ /\G\s+/gc;
+if ($$s =~ /\G'/gc) {
+	return &unserialise_dumper_single($s);
+	}
+elsif ($$s =~ /\G"/gc) {
+	return &unserialise_dumper_double($s);
+	}
+elsif ($$s =~ /\G(-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][-+]?[0-9]+)?)(?![A-Za-z0-9_.])/gc) {
+	# Unquoted number
+	return $1 + 0;
+	}
+elsif ($$s =~ /\G\{/gc) {
+	# Hash of key => value pairs
+	my $rv = { };
+	return $rv if ($$s =~ /\G\s*\}/gc);
+	while(1) {
+		$$s =~ /\G\s+/gc;
+		my $key = &unserialise_dumper_key($s);
+		$$s =~ /\G\s*=>/gc || die "Missing => in hash\n";
+		$rv->{$key} = &unserialise_dumper_value($s, $depth+1);
+		if ($$s =~ /\G\s*,/gc) {
+			# More pairs, or a trailing comma
+			return $rv if ($$s =~ /\G\s*\}/gc);
+			}
+		elsif ($$s =~ /\G\s*\}/gc) {
+			# Accept a closing brace without a trailing comma
+			return $rv;
+			}
+		else {
+			# Reject all other separators
+			die "Missing , or } in hash\n";
+			}
+		}
+	}
+elsif ($$s =~ /\G\[/gc) {
+	# Array of values
+	my $rv = [ ];
+	return $rv if ($$s =~ /\G\s*\]/gc);
+	while(1) {
+		push(@$rv, &unserialise_dumper_value($s, $depth+1));
+		if ($$s =~ /\G\s*,/gc) {
+			# More values, or a trailing comma
+			return $rv if ($$s =~ /\G\s*\]/gc);
+			}
+		elsif ($$s =~ /\G\s*\]/gc) {
+			# Accept a closing bracket without a trailing comma
+			return $rv;
+			}
+		else {
+			# Reject all other separators
+			die "Missing , or ] in array\n";
+			}
+		}
+	}
+elsif ($$s =~ /\G\\/gc) {
+	# Reference to a new scalar, like \'text'
+	my $v = &unserialise_dumper_value($s, $depth+1);
+	return \$v;
+	}
+elsif ($$s =~ /\Gundef(?![A-Za-z0-9_:])/gc) {
+	return undef;
+	}
+elsif ($$s =~ /\Gbless\(/gc) {
+	# Object, kept as plain data without its class
+	my $rv = &unserialise_dumper_value($s, $depth+1);
+	$$s =~ /\G\s*,\s*/gc || die "Missing , in bless\n";
+	if ($$s =~ /\G'/gc) {
+		&unserialise_dumper_single($s);
+		}
+	elsif ($$s =~ /\G"/gc) {
+		&unserialise_dumper_double($s);
+		}
+	else {
+		# Reject a malformed or executable class expression
+		die "Missing class name in bless\n";
+		}
+	$$s =~ /\G\s*\)/gc || die "Missing ) in bless\n";
+	return $rv;
+	}
+elsif ($$s =~ /\Gdo\{my \$o\}/gc) {
+	# Placeholder that a later reference link fills in
+	return undef;
+	}
+elsif ($$s =~ /\Gdo\{\\\(my \$o =/gc) {
+	# Scalar ref, as used for blessed scalar refs
+	my $v = &unserialise_dumper_value($s, $depth+1);
+	$$s =~ /\G\s*\)\}/gc || die "Missing )} in scalar ref\n";
+	return \$v;
+	}
+elsif ($$s =~ /\Gsub \{ "DUMMY" \}/gc) {
+	# Code refs are not transferred
+	return undef;
+	}
+elsif ($$s =~ /\Gqr\//gc) {
+	# Regexp, returned as its pattern string without compiling it
+	my $pat = '';
+	while(1) {
+		if ($$s =~ /\G([^\/\\]+)/gc) {
+			$pat .= $1;
+			}
+		elsif ($$s =~ /\G(\\.)/gcs) {
+			$pat .= $1;
+			}
+		elsif ($$s =~ /\G\//gc) {
+			last;
+			}
+		else {
+			# Reject an incomplete regexp instead of compiling it
+			die "Unterminated regexp\n";
+			}
+		}
+	my $flags = $$s =~ /\G([a-z]+)/gc ? $1 : '';
+	return "(?^$flags:$pat)";
+	}
+elsif ($$s =~ /\G\*(?:[A-Za-z_][A-Za-z0-9_]*)?(?:::[A-Za-z0-9_]+)+/gc) {
+	# Globs are not transferred
+	return undef;
+	}
+elsif ($$s =~ /\G\*\{/gc) {
+	# Glob with an unusual name, like *{'::odd name'}
+	if ($$s =~ /\G'/gc) {
+		&unserialise_dumper_single($s);
+		}
+	elsif ($$s =~ /\G"/gc) {
+		&unserialise_dumper_double($s);
+		}
+	else {
+		# Reject any other glob expression
+		die "Invalid glob name\n";
+		}
+	$$s =~ /\G\}/gc || die "Missing } in glob\n";
+	return undef;
+	}
+elsif (substr($$s, pos($$s), 1) eq '$') {
+	# Match eval by using undef until a later assignment resolves this link
+	&unserialise_dumper_path($s);
+	return undef;
+	}
+die "Unsupported data at position ".pos($$s)."\n";
+}
+
+# unserialise_dumper_path(&string, [&root])
+# Reads a path such as ${$VAR1->{'a'}}->[0]. If root is supplied, returns a
+# reference to the existing slot. Without root, only validates the syntax.
+sub unserialise_dumper_path
+{
+my ($s, $root) = @_;
+my $slot;
+if ($$s =~ /\G\$\{/gc) {
+	# Follow a scalar reference such as ${$VAR1}
+	my $inner = &unserialise_dumper_path($s, $root);
+	$$s =~ /\G\}/gc || die "Missing } in reference path\n";
+	if ($root) {
+		# Resolve the dereference only when an actual root was supplied
+		my $type = ref($$inner);
+		$type eq 'SCALAR' || $type eq 'REF' ||
+			die "Reference path does not match the data\n";
+		$slot = $$inner;
+		}
+	}
+elsif ($$s =~ /\G\$VAR1(?![A-Za-z0-9_:])/gc) {
+	# Start at the root value
+	$slot = $root;
+	}
+else {
+	# Reject paths that do not begin at the serialized root
+	die "Invalid reference path\n";
+	}
+
+# Follow hash and array subscripts. The first requires an arrow because Perl
+# would otherwise parse a different variable.
+my $need_arrow = 1;
+while(1) {
+	my $arrow = $$s =~ /\G->/gc;
+	my $next = substr($$s, pos($$s), 1);
+	if ($next ne '{' && $next ne '[') {
+		$arrow && die "Missing subscript in reference path\n";
+		last;
+		}
+	$need_arrow && !$arrow && die "Missing -> in reference path\n";
+	$need_arrow = 0;
+	if ($$s =~ /\G\{/gc) {
+		# Refuse links to hash elements outside the parsed data
+		my $key = &unserialise_dumper_key($s);
+		$$s =~ /\G\}/gc || die "Missing } in reference path\n";
+		next if (!$root);
+		ref($$slot) eq 'HASH' && exists($$slot->{$key}) ||
+			die "Reference path does not match the data\n";
+		$slot = \$$slot->{$key};
+		}
+	elsif ($$s =~ /\G\[([0-9]+)\]/gc) {
+		# Refuse links to array elements outside the parsed data
+		my $i = $1;
+		next if (!$root);
+		ref($$slot) eq 'ARRAY' && $i < @{$$slot} ||
+			die "Reference path does not match the data\n";
+		$slot = \$$slot->[$i];
+		}
+	else {
+		# Reject an unsupported path component
+		die "Invalid subscript in reference path\n";
+		}
+	}
+return $slot;
+}
+
+# unserialise_dumper_key(&string)
+# Reads a quoted, bare-word or integer hash key.
+sub unserialise_dumper_key
+{
+my ($s) = @_;
+if ($$s =~ /\G'/gc) {
+	return &unserialise_dumper_single($s);
+	}
+elsif ($$s =~ /\G"/gc) {
+	return &unserialise_dumper_double($s);
+	}
+elsif ($$s =~ /\G(-?[A-Za-z_][A-Za-z0-9_]*|-?(?:0|[1-9][0-9]*))(?![A-Za-z0-9_'"])/gc) {
+	return $1;
+	}
+die "Invalid hash key at position ".pos($$s)."\n";
+}
+
+# unserialise_dumper_single(&string)
+# Reads a single-quoted string. Only \\ and \' are escapes.
+sub unserialise_dumper_single
+{
+my ($s) = @_;
+my $rv = '';
+while(1) {
+	if ($$s =~ /\G([^'\\]+)/gc) {
+		$rv .= $1;
+		}
+	elsif ($$s =~ /\G'/gc) {
+		return $rv;
+		}
+	elsif ($$s =~ /\G\\([\\'])/gc) {
+		$rv .= $1;
+		}
+	elsif ($$s =~ /\G\\/gc) {
+		# Preserve a backslash that does not escape a quote or backslash
+		$rv .= "\\";
+		}
+	else {
+		# Reject an incomplete quoted string
+		die "Unterminated string\n";
+		}
+	}
+}
+
+# unserialise_dumper_double(&string)
+# Reads a double-quoted string without using Perl interpolation. Rejects an
+# unescaped $ or @ and unsupported escapes.
+sub unserialise_dumper_double
+{
+my ($s) = @_;
+my $rv = '';
+while(1) {
+	if ($$s =~ /\G([^"\\\$\@]+)/gc) {
+		$rv .= $1;
+		}
+	elsif ($$s =~ /\G"/gc) {
+		return $rv;
+		}
+	elsif ($$s =~ /\G\\x\{([0-9A-Fa-f]{1,8})\}/gc) {
+		$rv .= chr(hex($1));
+		}
+	elsif ($$s =~ /\G\\x([0-9A-Fa-f]{1,2})/gc) {
+		$rv .= chr(hex($1));
+		}
+	elsif ($$s =~ /\G\\([0-7]{1,3})/gc) {
+		$rv .= chr(oct($1));
+		}
+	elsif ($$s =~ /\G\\([nrtfbae])/gc) {
+		# Named control character
+		$rv .= { 'n' => "\n", 'r' => "\r", 't' => "\t", 'f' => "\f",
+			 'b' => "\b", 'a' => "\a", 'e' => "\e" }->{$1};
+		}
+	elsif ($$s =~ /\G\\([^A-Za-z0-9])/gc) {
+		# Escaped punctuation, like \" or \$
+		$rv .= $1;
+		}
+	else {
+		# Reject interpolation and unsupported Perl escapes
+		die "Invalid double-quoted string\n";
+		}
+	}
 }
 
 =head2 other_groups(user)

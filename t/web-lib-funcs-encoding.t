@@ -10,6 +10,7 @@ use warnings;
 use Test::More;
 use File::Basename qw(dirname);
 use File::Spec;
+use Scalar::Util ();
 
 my $script = File::Spec->rel2abs(
 	File::Spec->catfile(dirname(__FILE__), '..', 'web-lib-funcs.pl'));
@@ -148,17 +149,11 @@ subtest 'serialise_variable / unserialise_variable' => sub {
 	is(main::serialise_variable([1,2]),  'ARRAY,VAL%2C1,VAL%2C2',
 	   'array wire format (one level of urlize wrapping)');
 
-	# The old Data::Dumper RPC format is never generated or evaluated.
-	my $encoded = main::serialise_variable({k=>'v'}, 1);
-	unlike($encoded, qr/^\$VAR1\s*=/,
-	   'obsolete dumper argument still emits the data-only format');
-	is_deeply(main::unserialise_variable($encoded), {k=>'v'},
-	   'data-only format round-trips');
-	$main::rpc_eval_test = 0;
-	is(main::unserialise_variable(
-	   '$VAR1 = {}; $main::rpc_eval_test = 1;'), undef,
-	   'Data::Dumper input is rejected');
-	is($main::rpc_eval_test, 0, 'Data::Dumper input is not executed');
+	# Enable Data::Dumper format with the optional second argument.
+	my $d = main::serialise_variable({k=>'v'}, 1);
+	like($d, qr/^\$VAR1 = /, 'Data::Dumper mode emits an assignment');
+	is_deeply(main::unserialise_variable($d), {k=>'v'},
+	   'Data::Dumper format round-trips');
 
 	# Remote object names must not load or bless local classes.
 	my $object = main::unserialise_variable(
@@ -166,6 +161,286 @@ subtest 'serialise_variable / unserialise_variable' => sub {
 	is_deeply($object, {k=>'v'}, 'object data is retained');
 	is(ref($object), 'HASH', 'object data is not blessed');
 };
+
+# Data::Dumper format
+#
+# Fast RPC uses Data::Dumper for serialization. unserialise_variable() parses
+# it as data instead of calling eval. Supported forms must preserve shared and
+# cyclic references, and input must never execute code.
+subtest 'Data::Dumper format' => sub {
+	require Data::Dumper;
+	require JSON::PP;
+
+	# Spot-check the supported scalar, reference, object and container forms.
+	my $str = 'x';
+	my $shared = [ 1 ];
+	my $v = { 'int' => 42, 'neg' => -7, 'float' => 1.5, 'undef' => undef,
+		  'quote' => "it's \\ ok", 'utf8' => "caf\x{e9} \x{263a}",
+		  'bin' => join('', map { chr } 0..255), 'nl' => "a\nb",
+		  'sref' => \$str, 'rref' => \\'y', 'a' => $shared, 'b' => $shared,
+		  'obj' => bless({ 'x' => 1 }, 'RPC::Untrusted'),
+		  'sobj' => bless(\$str, 'RPC::Untrusted'),
+		  'empty' => [], 'eh' => {} };
+	$v->{'self'} = $v;
+	# Data::Dumper cannot preserve a reference to a hash value if it sees that
+	# reference first. Sorting keys makes this test deterministic.
+	$v->{'slot'} = \$v->{'quote'};
+	for my $opts ([ 'compact', 0, 0, 0 ], [ 'indented', 2, 0, 0 ],
+		      [ 'useqq', 1, 1, 0 ], [ 'pure Perl', 2, 0, 1 ]) {
+		my ($name, $indent, $useqq, $useperl) = @$opts;
+		my $dd = Data::Dumper->new([ $v ], [ 'VAR1' ]);
+		$dd->Purity(1)->Indent($indent)->Useqq($useqq)->Useperl($useperl)
+		   ->Sortkeys(1);
+		my $got = main::unserialise_variable($dd->Dump());
+		ok(same_graph($got, $v), "$name output preserves data and links");
+		is($got->{'self'}, $got, "$name cyclic reference is restored");
+		is($got->{'a'}, $got->{'b'}, "$name shared reference is restored");
+		is($got->{'slot'}, \$got->{'quote'}, "$name slot reference is restored");
+		is(ref($got->{'obj'}), 'HASH', "$name object is not blessed");
+		is(ref($got->{'sobj'}), 'SCALAR', "$name scalar object is not blessed");
+		# Match eval's number-versus-string behavior.
+		is(JSON::PP->new->encode([ $got->{'int'}, $got->{'float'} ]),
+		   '[42,"1.5"]', "$name preserves number and string types");
+		}
+	delete($v->{'slot'});
+
+	# Convert executable and runtime-only values to inert data.
+	my $odd = main::unserialise_variable(
+		q{$VAR1 = [sub { "DUMMY" },*::STDOUT,\*{'::odd name'},qr/a\/b/i,do{my $o}];});
+	is_deeply($odd, [ undef, undef, \undef, '(?^i:a\/b)', undef ],
+		  'code refs, globs and regexps are not recreated');
+
+	# Ignore global options to keep the wire format stable.
+	{
+		no warnings 'once';
+		local $Data::Dumper::Indent = 2;
+		local $Data::Dumper::Terse = 1;
+		local $Data::Dumper::Useqq = 1;
+		local $Data::Dumper::Deparse = 1;
+		local $Data::Dumper::Varname = 'X';
+		local $Data::Dumper::Purity = 0;
+		local $Data::Dumper::Pad = 'BAD';
+		my $out = main::serialise_variable($v, 1);
+		like($out, qr/^\$VAR1 = \{'/, 'sender ignores global Dumper options');
+		ok(same_graph(main::unserialise_variable($out), $v),
+		   'sender output round-trips with links');
+		local $SIG{'__WARN__'} = sub { };
+		my $code = main::serialise_variable({ 'c' => sub { 1 } }, 1);
+		like($code, qr/sub \{ "DUMMY" \}/, 'sender never deparses code');
+	}
+
+	# Compare supported option combinations with trusted eval output.
+	srand(2886);
+	my ($count, @fail) = (0);
+	for my $round (1..400) {
+		my $data = random_graph();
+		for my $indent (0, 1, 2) {
+			for my $useqq (0, 1) {
+				for my $useperl (0, 1) {
+					my $dd = Data::Dumper->new([ $data ], [ 'VAR1' ]);
+					$dd->Purity(1)->Indent($indent)->Useqq($useqq)
+					   ->Useperl($useperl)->Quotekeys($round % 2)
+					   ->Sortkeys(1);
+					# Include trailing commas when indented output supports them.
+					$dd->Trailingcomma(1)
+						if ($indent && $dd->can('Trailingcomma'));
+					my $dump = $dd->Dump();
+					my ($want, $err) = eval_dumper($dump);
+					next if ($err);
+					$count++;
+					my $got = main::unserialise_variable($dump);
+					push(@fail, $dump) if (!same_graph($got, $want));
+					}
+				}
+			}
+		}
+	ok($count > 2000, "compared $count random dumps with eval");
+	is(scalar(@fail), 0, 'parser matches eval for every random dump')
+		|| diag("first mismatch:\n$fail[0]");
+
+	# Reject hostile input without executing it.
+	our $ran = 0;
+	my @hostile = (
+		q{$VAR1 = {}; $main::ran = 1;},
+		q{$VAR1 = "@{[ $main::ran = 1 ]}";},
+		q{$VAR1 = "${\ ($main::ran = 1)}";},
+		q{$VAR1 = do { $main::ran = 1 };},
+		q{$VAR1 = sub { $main::ran = 1 };},
+		q{$VAR1 = [ 1 ]; $VAR1->[0] = $main::ran;},
+		q{$VAR1 = [ 1 ]; $VAR1->[0] = &main::ran();},
+		q{$VAR1 = [ 1 ]; ${\ ($main::ran = 1)} = 1;},
+		q{$VAR1 = [ 1 ]; $VAR1->[5] = $VAR1;},
+		q{$VAR1 = {}; $VAR1->{'a'} = $VAR1;},
+		q{$VAR1 = { 'a' => 1 }; $VAR1->{'a'} = $VAR1->{'b'};},
+		q{$VAR1 = { 'a' => 1 }; $VAR1->{'a'} = ${$VAR1->{'a'}};},
+		q{$VAR1 = { 'a' => 'main::ran' }; ${$VAR1->{'a'}} = $VAR1;},
+		q{$VAR1 = [ 1 ]; $VAR1->[0] = 1;},
+		q{$VAR1 = { 'a' => 1 }; $VAR1{'a'} = $VAR1;},
+		q{$VAR1 = 'a' . system('true');},
+		q{$VAR1 = {}; BEGIN { $main::ran = 1 }},
+		q{$VAR1 = \&main::ran;},
+		q{$VAR1 = "\N{U+263A}";},
+		q{$VAR1 = "\u\LX";},
+		q{$VAR1 = bless( {}, 'X' )->new;},
+		q{$VAR1 = {} or $main::ran = 1;},
+		'$VAR1 = '.('[' x 5000).(']' x 5000).';',
+		q{$VAR1 = 'unterminated;},
+		);
+	for my $h (@hostile) {
+		is(main::unserialise_variable($h), undef,
+		   'refused: '.substr($h, 0, 50));
+		}
+	my $re = main::unserialise_variable(q{$VAR1 = qr/(?{ $main::ran = 1 })/;});
+	is(ref($re), '', 'regexp with code is returned as a plain string');
+	my $obj = main::unserialise_variable(
+		q{$VAR1 = bless( {'REALNAME' => '/nonexistent','CLEANUP' => 1}, 'File::Temp::Dir' );});
+	is(ref($obj), 'HASH', 'object with a DESTROY method is not blessed');
+	is($ran, 0, 'no hostile input was executed');
+};
+
+# eval_dumper(string)
+# Evaluates trusted, test-generated output for comparison with the old RPC
+# decoder. Returns the value and any error. Never pass external input.
+sub eval_dumper
+{
+	my ($dump) = @_;
+	no strict;
+	no warnings;
+	my $VAR1;
+	eval $dump;
+	return ($VAR1, $@);
+}
+
+# same_graph(a, b, [&seen])
+# Compares values and reference identities, including shared slots and cycles.
+# Objects compare by their underlying type because the parser does not bless.
+sub same_graph
+{
+	my ($x, $y, $seen) = @_;
+	$seen ||= {};
+
+	# Compare terminal values before tracking reference identities.
+	return !defined($y) if (!defined($x));
+	return 0 if (!defined($y));
+	my ($tx, $ty) = (Scalar::Util::reftype($x) || '',
+			 Scalar::Util::reftype($y) || '');
+	return 0 if ($tx ne $ty);
+	return $x eq $y if ($tx eq '');
+	my ($ax, $ay) = (Scalar::Util::refaddr($x), Scalar::Util::refaddr($y));
+	if (exists($seen->{"x$ax"}) || exists($seen->{"y$ay"})) {
+		# A repeated reference must point to the matching value in both graphs.
+		return ($seen->{"x$ax"} || 0) == $ay && ($seen->{"y$ay"} || 0) == $ax;
+	}
+	$seen->{"x$ax"} = $ay;
+	$seen->{"y$ay"} = $ax;
+	if ($tx eq 'HASH') {
+		# Compare slots so references to hash values must also match.
+		my @kx = sort keys %$x;
+		return 0 if (join("\0", @kx) ne join("\0", sort keys %$y));
+		for my $k (@kx) {
+			return 0 if (!same_graph(\$x->{$k}, \$y->{$k}, $seen));
+		}
+		return 1;
+	}
+	elsif ($tx eq 'ARRAY') {
+		# Compare slots so references to array elements must also match.
+		return 0 if (@$x != @$y);
+		for my $i (0..$#$x) {
+			return 0 if (!same_graph(\$x->[$i], \$y->[$i], $seen));
+		}
+		return 1;
+	}
+	elsif ($tx eq 'SCALAR' || $tx eq 'REF') {
+		return same_graph($$x, $$y, $seen);
+	}
+	return 1;
+}
+
+# random_graph()
+# Builds nested data with edge-case strings, shared references, cycles,
+# references to elements and objects.
+sub random_graph
+{
+	my @pool;
+	my $root = random_value(\@pool, 0);
+	return $root if (!@pool);
+	for (1..int(rand(5))) {
+		my $from = $pool[int(rand(@pool))];
+		my $to = $pool[int(rand(@pool))];
+		my $link = $to;
+		my $r = rand();
+		if ($r < 0.2) {
+			$link = \$to;
+		}
+		elsif ($r < 0.4 && ref($to) eq 'HASH' && %$to) {
+			$link = \$to->{(sort keys %$to)[0]};
+		}
+		elsif ($r < 0.5 && ref($to) eq 'ARRAY' && @$to) {
+			$link = \$to->[0];
+		}
+		elsif ($r < 0.6) {
+			$link = bless([ $to ], 'RPC::Untrusted');
+		}
+		my $type = Scalar::Util::reftype($from);
+		if ($type eq 'HASH') {
+			$from->{'link'.int(rand(3))} = $link;
+		}
+		elsif ($type eq 'ARRAY') {
+			push(@$from, $link);
+		}
+		else {
+			$$from = $link;
+		}
+	}
+	return $root;
+}
+
+# random_value(&pool, depth)
+# Returns a random scalar or container and adds containers to the pool.
+sub random_value
+{
+	my ($pool, $depth) = @_;
+	my $r = rand();
+	my $v;
+	if ($depth > 3 || $r < 0.35) {
+		# Bound recursion and make scalar leaves common.
+		return random_string();
+	}
+	elsif ($r < 0.6) {
+		$v = [ map { random_value($pool, $depth+1) } 1..int(rand(4)) ];
+	}
+	elsif ($r < 0.85) {
+		$v = { map { (random_string() // 'u' => random_value($pool, $depth+1)) }
+			   1..int(rand(4)) };
+	}
+	elsif ($r < 0.95) {
+		my $inner = random_value($pool, $depth+1);
+		$v = \$inner;
+	}
+	else {
+		$v = bless({ 'x' => random_value($pool, $depth+1) },
+			   'RPC::Untrusted');
+	}
+	push(@$pool, $v);
+	return $v;
+}
+
+# random_string()
+# Returns a hard-to-quote scalar containing bytes, Unicode, quotes, sigils,
+# numbers or number-like strings.
+sub random_string
+{
+	my @fixed = ('', 'plain', "it's", 'back\\slash', '$x @y', "a\nb",
+		     '007', '1.5', '-0', '12345678901', 42, -7, 0, undef,
+		     "\x{263a}\x{1f600}", "caf\x{e9}", "\0\x7f\x80\xff");
+
+	# Usually choose a fixed edge case so every run covers common forms.
+	return $fixed[int(rand(@fixed))] if (rand() < 0.7);
+
+	# Otherwise generate arbitrary byte or Unicode content.
+	return join('', map { chr(rand() < 0.1 ? int(rand(0x3000)) : int(rand(256))) }
+			     1..int(rand(20)));
+}
 
 # convert_to_json / convert_from_json
 #

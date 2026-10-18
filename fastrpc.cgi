@@ -49,9 +49,7 @@ else {
 	$sid = time()*$$;
 	}
 $version = &get_webmin_version();
-# Older clients use unsafe Data::Dumper encoding for version 2.014 or later.
-# Advertise the last data-only wire version, followed by the real version.
-print "1 $port $sid 2.013 $version\n";
+print "1 $port $sid $version\n";
 
 # Timeout
 my $rpc_idle_factor = $gconfig{'rpc_idle_factor'} || $DEFAULT_RPC_IDLE_FACTOR;
@@ -144,6 +142,9 @@ while(1) {
 		$rawarg .= $got;
 		}
 	print STDERR "fastrpc[$$]: raw $rawarg\n" if ($gconfig{'rpcdebug'});
+
+	# Mirror the request's wire format in the response
+	my $dumper = substr($rawarg, 0, 5) eq '$VAR1' ? 1 : 0;
 	my $arg = &unserialise_variable($rawarg);
 
 	# Process it
@@ -384,7 +385,7 @@ while(1) {
 		print STDERR "fastrpc[$$]: unknown $arg->{'action'}\n" if ($gconfig{'rpcdebug'});
 		$rv = { 'status' => 0 };
 		}
-	$rawrv = &serialise_variable($rv);
+	$rawrv = &serialise_variable($rv, $dumper);
 
 	# Send back to the client
 	print SOCK length($rawrv),"\n";
