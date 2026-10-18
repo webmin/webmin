@@ -279,7 +279,7 @@ sub theme_prehead
 my $pfx = &get_webprefix();
 my $scheme = &theme_color_scheme();
 print "<meta name='color-scheme' content='".($scheme || "light dark")."'>\n";
-print &theme_scheme_script() if (!$scheme);
+print &theme_scheme_script($scheme);
 print &theme_frame_script();
 print "<link rel='stylesheet' type='text/css' href='$pfx/unauthenticated/".
       "gray-theme.css?".&theme_asset_key("gray-theme.css")."'>\n";
@@ -290,42 +290,157 @@ $tconfig{'inbody'} = (@cls ? "class='".join(" ", @cls)."'" : "").
 		     ($scheme ? " data-scheme='$scheme'" : "");
 }
 
-# theme_scheme_script()
-# Returns a script that keeps the color scheme steady when none is forced.
-# A browser can report the system scheme for a moment before settling on
-# its own, and gives a frame the scheme of the page holding it only once
-# that page is styled, so a frame could paint dark and then turn light on
-# every reload. The script applies the last scheme seen to the root
-# element before the first paint and follows later changes. In a top
-# window it also writes the scheme into the root style, so the frames
-# inherit it, and checks again a second after load if no change came, in
-# case the stored scheme was stale.
+# theme_scheme_script([forced-scheme])
+# Returns the scheme bootstrap and frame-wide keyboard shortcuts. The optional
+# forced scheme is the configured default. Alt+T stores a per-tab override
+# without changing that setting, and Alt+R reloads only the content frame.
+# Scheme changes reach the frameset and both frames. An automatic scheme uses
+# its last value before first paint, follows system changes, and is checked
+# again after load.
 sub theme_scheme_script
 {
-return <<'EOF';
+my ($forced) = @_;
+$forced = $forced && $forced =~ /^(light|dark)$/ ? $1 : "";
+my $rv = <<'EOF';
 <script type='text/javascript'>
+/* initializeGrayTheme(): Apply the scheme and bind frame shortcuts. */
 (function() {
-var key = 'gray-theme-scheme', root = document.documentElement,
+var key = 'gray-theme-scheme', overrideKey = key + '-override',
+    forced = '__GRAY_THEME_FORCED_SCHEME__',
+    root = document.documentElement,
     mq = window.matchMedia('(prefers-color-scheme: dark)'),
     stored = null, changed = false;
 try { stored = localStorage.getItem(key); } catch(e) { }
-function current() { return mq.matches ? 'dark' : 'light'; }
-function apply(v) {
-	root.setAttribute('data-scheme', v);
-	if (self == top) root.style.colorScheme = v;
-	try { localStorage.setItem(key, v); } catch(e) { }
+/* valid(value): Return whether value is a supported scheme. */
+function valid(v) { return v == 'dark' || v == 'light'; }
+/* browserScheme(): Return the scheme selected by the browser. */
+function browserScheme() { return mq.matches ? 'dark' : 'light'; }
+/* baseScheme(): Return the configured scheme or system preference. */
+function baseScheme() { return valid(forced) ? forced : browserScheme(); }
+/* getOverride(): Read this tab's override when storage is available. */
+function getOverride() {
+	try { return sessionStorage.getItem(overrideKey); }
+	catch(e) { return null; }
 	}
-apply(stored == 'dark' || stored == 'light' ? stored : current());
-function onchange() { changed = true; apply(current()); }
-if (mq.addEventListener) mq.addEventListener('change', onchange);
-else mq.addListener(onchange);
-if (self == top)
+/* rememberOverride(value): Store only a scheme that differs from the base. */
+function rememberOverride(v) {
+	try {
+		/* Remove an override that now matches the base. */
+		if (v == baseScheme()) sessionStorage.removeItem(overrideKey);
+		/* Keep a different choice for later pages in this tab. */
+		else sessionStorage.setItem(overrideKey, v);
+		}
+	catch(e) { }
+	}
+/* apply(value, [remember]): Apply a scheme and optionally cache it. */
+function apply(v, remember) {
+	/* Ignore malformed values from storage or another frame. */
+	if (!valid(v)) return;
+	root.setAttribute('data-scheme', v);
+	/* Update body selectors once the body exists. */
+	if (document.body) document.body.setAttribute('data-scheme', v);
+	/* Let newly loaded frames inherit the frameset scheme. */
+	if (self == top) root.style.colorScheme = v;
+	/* Do not cache a scheme relayed from another frame. */
+	if (remember !== false) {
+		try { localStorage.setItem(key, v); } catch(e) { }
+		}
+	}
+/* grayThemeApplyScheme(value, [remember]): Apply a relayed scheme. */
+window.grayThemeApplyScheme = function(v, remember) {
+	changed = true;
+	/* Save a relayed user choice as this tab's override. */
+	if (remember) rememberOverride(v);
+	apply(v, false);
+	};
+/* applyEverywhere(value): Apply a scheme across the frameset. */
+function applyEverywhere(v) {
+	changed = true;
+	rememberOverride(v);
+	apply(v);
+	try {
+		/* Relay a child-frame change to the frameset. */
+		if (top != window && top.grayThemeApplyScheme)
+			top.grayThemeApplyScheme(v, true);
+		}
+	catch(e) { }
+	/* syncFrame(name): Apply the scheme to one named frame. */
+	['left', 'right'].forEach(function(name) {
+		try {
+			var frame = top.frames[name];
+			/* Skip this document and frames that are not ready. */
+			if (frame && frame != window && frame.grayThemeApplyScheme)
+				frame.grayThemeApplyScheme(v, true);
+			}
+		catch(e) { }
+		});
+	}
+/* Prefer the tab override, configured scheme, saved scheme, then system. */
+var override = getOverride();
+apply(valid(override) ? override :
+      valid(forced) ? forced :
+      valid(stored) ? stored : browserScheme());
+/* syncBodyScheme(): Copy the root scheme to the new body. */
+document.addEventListener('DOMContentLoaded', function() {
+	apply(root.getAttribute('data-scheme'), false);
+	});
+/* onchange(): Follow system changes unless a tab override is active. */
+function onchange() {
+	var override = getOverride(), current = browserScheme();
+	/* Preserve an override that differs from the system scheme. */
+	if (valid(override) && override != current) return;
+	/* Remove an override once the system reaches the same scheme. */
+	if (valid(override)) rememberOverride(current);
+	changed = true;
+	apply(current);
+	}
+/* A configured scheme does not follow system preference changes. */
+if (!valid(forced)) {
+	/* Prefer the current media-query listener API. */
+	if (mq.addEventListener) mq.addEventListener('change', onchange);
+	/* Fall back to the older listener API. */
+	else mq.addListener(onchange);
+	}
+/* handleThemeShortcut(event): Handle Alt+T and Alt+R in any frame. */
+document.addEventListener('keydown', function(event) {
+	/* Ignore other modifiers, repeats, composition and handled events. */
+	if (event.defaultPrevented || event.repeat || event.isComposing ||
+	    !event.altKey || event.ctrlKey || event.metaKey || event.shiftKey)
+		return;
+	/* Alt+T toggles the palette throughout the frameset. */
+	if (event.code == 'KeyT' || event.keyCode == 84) {
+		event.preventDefault();
+		event.stopPropagation();
+		applyEverywhere(root.getAttribute('data-scheme') == 'dark' ?
+			'light' : 'dark');
+		}
+	/* Alt+R reloads content without refreshing navigation. */
+	else if (event.code == 'KeyR' || event.keyCode == 82) {
+		var frame = null;
+		try { frame = top.frames['right']; } catch(e) { }
+		/* Do not claim the browser shortcut outside the main frameset. */
+		if (!frame) return;
+		event.preventDefault();
+		event.stopPropagation();
+		try { frame.location.reload(); } catch(e) { }
+		}
+	}, true);
+/* Recheck an automatic scheme after the top-level page loads. */
+if (self == top && !valid(forced))
+	/* refreshBrowserScheme(): Recheck after all frames load. */
 	window.addEventListener('load', function() {
-		setTimeout(function() { if (!changed) apply(current()); }, 1000);
+		/* refreshUnchangedScheme(): Correct untouched automatic state. */
+		setTimeout(function() {
+			/* Preserve user changes and tab overrides. */
+			if (!changed && !valid(getOverride()))
+				applyEverywhere(browserScheme());
+			}, 1000);
 		});
 })();
 </script>
 EOF
+$rv =~ s/__GRAY_THEME_FORCED_SCHEME__/$forced/g;
+return $rv;
 }
 
 # theme_frame_script()
@@ -404,6 +519,8 @@ return &theme_prehead();
 sub theme_ui_table_start
 {
 my ($heading, $tabletags, $cols, $tds, $rightheading) = @_;
+# Expose the column count so CSS can size the form layout.
+my $formcols = $cols || 4;
 if (! $tabletags =~ /width/) { $tabletages .= " width=100%"; }
 if (defined($main::ui_table_cols)) {
   # Push on stack, for nested call
@@ -425,9 +542,11 @@ $rv .= "<table class='ui_table' $tabletags>\n";
 if (defined($heading) || defined($rightheading)) {
 	# Heading row, with an optional part at the right
         $rv .= "<thead><tr>";
+	# Add the main heading when present.
         if (defined($heading)) {
                 $rv .= "<td><b>$heading</b></td>"
                 }
+	# Put optional actions or context at the right.
         if (defined($rightheading)) {
                 $rv .= "<td align=right>$rightheading</td>";
                 $colspan++;
@@ -435,8 +554,8 @@ if (defined($heading) || defined($rightheading)) {
         $rv .= "</tr></thead>\n";
         }
 $rv .= "<tbody> <tr class='ui_table_body'> <td colspan=$colspan>".
-       "<table width=100%>\n";
-$main::ui_table_cols = $cols || 4;
+       "<table class='ui_form_rows ui_form_rows_$formcols' width=100%>\n";
+$main::ui_table_cols = $formcols;
 $main::ui_table_pos = 0;
 $main::ui_table_default_tds = $tds;
 return $rv;
@@ -571,8 +690,10 @@ my ($border) = @_;
 return $border ? "</div>\n" : "";
 }
 
-# theme_ui_columns_start(&headings, [width-percent], [noborder], [&tdtags], [title])
-# Returns HTML for a multi-column table, with the given headings
+# theme_ui_columns_start(&headings, [width-percent], [no-border],
+#                        [&td-tags], [title], [sortable], [class])
+# Returns HTML for a multi-column table. The sortable flag forces client-side
+# sorting, and class adds a table class.
 sub theme_ui_columns_start
 {
 my ($heads, $width, $noborder, $tdtags, $title, $sortable, $class) = @_;
@@ -580,11 +701,12 @@ my ($href) = grep { $_ =~ /<a\s+href/i } @$heads;
 my $rv;
 $theme_ui_columns_row_toggle = 0;
 if (!$noborder && !$main::COLUMNS_WRAPPER_OPEN) {
-	# The outermost bordered table opens the card
+	# The outermost bordered table opens the card and a container that
+	# scrolls wide columns without widening the page.
 	$rv .= "<table class='wrapper' width="
 	     . ($width ? $width : "100")
 	     . "%>\n";
-	$rv .= "<tr><td>\n";
+	$rv .= "<tr><td><div class='ui_columns_scroll'>\n";
 	}
 if (!$noborder) {
 	# Nested bordered tables share that card
@@ -651,13 +773,15 @@ return $rv;
 }
 
 # theme_ui_columns_end()
-# Returns HTML to end a table started by ui_columns_start
+# Ends a table from theme_ui_columns_start. Also closes the scroll container
+# and card opened for the outermost bordered table.
 sub theme_ui_columns_end
 {
 my $rv;
 $rv = "</tbody> </table>\n";
-if ($main::COLUMNS_WRAPPER_OPEN == 1) { # Last wrapper
-	$rv .= "</td> </tr> </table>\n";
+# Close the shared scroll container with the outermost table.
+if ($main::COLUMNS_WRAPPER_OPEN == 1) {
+	$rv .= "</div></td> </tr> </table>\n";
 	}
 $main::COLUMNS_WRAPPER_OPEN--;
 return $rv;
@@ -858,14 +982,21 @@ else {
 }
 
 # theme_ui_links_row(&links)
-# Returns a row of links separated by bars, in a block of its own so that
-# the stylesheet can draw it as a toolbar when it sits above a table
+# Returns links in a toolbar wrapper. Gray Theme hides the legacy separators
+# and styles each link as a button.
 sub theme_ui_links_row
 {
 my ($links) = @_;
+# An empty list does not need a toolbar container.
 return "" if (!$links || !@$links);
+my @button_links = map {
+	my $link = $_;
+	# Drop the final period from the button without changing its source text.
+	$link =~ s/(?<!\.)\.(?=(?:\s*<\/[^>]+>)*\s*<\/a>\s*$)//i;
+	$link;
+	} @$links;
 return "<div class='ui_links_row'>".
-       join(" <span class='ui_links_sep'>|</span> ", @$links).
+       join(" <span class='ui_links_sep'>|</span> ", @button_links).
        "</div>\n";
 }
 

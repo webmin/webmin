@@ -416,12 +416,19 @@ details[open].menu-cat > summary::after {
 
 /* ---- Form controls ---- */
 
+/* Forms and their controls shrink inside the content column. */
+form.ui_form {
+	min-width: 0;
+	max-width: 100%;
+}
+
 /* Text fields, menus and text areas share one height, edge and radius */
 input[type="text"], input[type="password"], input[type="email"],
 input[type="number"], input[type="search"], input[type="url"],
 input[type="tel"], input[type="date"], input[type="time"],
 input[type="datetime-local"], input:not([type]), select, textarea {
 	box-sizing: border-box;
+	max-width: 100%;
 	min-height: var(--control-height);
 	padding: 4px 10px;
 	border: 1px solid var(--border-color-input);
@@ -441,6 +448,29 @@ select:not([multiple]):not([size]), select[size="1"]:not([multiple]) {
 	background-repeat: no-repeat;
 	background-position: right 9px center;
 	background-size: 10px 10px;
+}
+/* Treat byte values and their unit menu as one compact control. */
+.ui_bytesbox {
+	display: inline-flex;
+	align-items: stretch;
+	max-width: 100%;
+	vertical-align: middle;
+}
+.ui_bytesbox > input {
+	flex: 1 1 auto;
+	min-width: 0;
+	border-start-end-radius: 0;
+	border-end-end-radius: 0;
+}
+.ui_bytesbox > select {
+	flex: 0 0 auto;
+	margin-inline-start: -1px;
+	border-start-start-radius: 0;
+	border-end-start-radius: 0;
+}
+.ui_bytesbox > :focus-visible {
+	position: relative;
+	z-index: 1;
 }
 /* List boxes keep their own height */
 select[multiple], select[size]:not([size="1"]) {
@@ -504,8 +534,7 @@ input[type="file"] { font: inherit; }
 
 /* ---- Buttons ---- */
 
-/* Every button, from the core classes to plain button tags, is a white
- * pill with a gray edge */
+/* Form buttons use Gray Theme's compact raised surface and small radius. */
 input[type="submit"], input[type="button"], input[type="reset"], button,
 input.ui_submit, input.ui_button, input.ui_reset {
 	display: inline-block;
@@ -545,6 +574,135 @@ input[type="reset"]:disabled, button:disabled {
 	border-color: var(--border-color);
 	color: var(--text-color-disabled);
 	cursor: default;
+}
+
+/* UI-lib actions can carry classes used by other themes. Reset the outer
+ * control so they cannot change Gray Theme's sizing; the inner element draws
+ * the visible surface. */
+:is(button, a, summary).ui_action {
+	--ui-action-radius: var(--radius-sm);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	width: auto;
+	height: auto;
+	min-width: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: var(--ui-action-radius);
+	background: none;
+	box-shadow: none;
+	color: var(--ui-action-text);
+	font: inherit;
+	line-height: inherit;
+	text-decoration: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	cursor: pointer;
+}
+/* Gray Theme softens UI-lib's square default to match its form controls,
+ * while keeping the stronger rounded and pill shape options distinct. */
+:is(button, a, summary).ui_action.ui_action_rounded {
+	--ui-action-radius: var(--radius);
+}
+:is(button, a, summary).ui_action.ui_action_pill {
+	--ui-action-radius: 999px;
+}
+/* Neutral actions sit beside fields, so use the same surface and edge as
+ * inputs and selects in both palettes. */
+:is(button, a, summary).ui_action.ui_action_neutral {
+	--ui-action-text: var(--text-color);
+	--ui-action-bg: var(--bg-color-input);
+	--ui-action-border: var(--border-color-input);
+	--ui-action-hover-text: var(--text-color);
+	--ui-action-hover-bg: var(--bg-color-hover);
+	--ui-action-hover-border: var(--text-color-disabled);
+	--ui-action-active-text: var(--text-color);
+	--ui-action-active-bg: var(--bg-color-switch);
+	--ui-action-active-border: var(--border-color-darker);
+}
+/* The inner element draws the action; the outer element handles semantics,
+ * keyboard focus and shape. */
+:is(button, a, summary).ui_action > .ui_action_content {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	gap: 5px;
+	padding: 2px 10px;
+	border: 1px solid var(--ui-action-border);
+	border-radius: inherit;
+	background: var(--ui-action-bg);
+	color: inherit;
+	font: inherit;
+	font-size: 0.9em;
+	font-weight: 600;
+	line-height: 1.5;
+}
+/* Compact and large actions retain the shared component's size variants. */
+:is(button, a, summary).ui_action.ui_action_small > .ui_action_content {
+	padding: 0 8px 0 7px;
+	font-size: 0.8em;
+	line-height: 1.25;
+}
+:is(button, a, summary).ui_action.ui_action_large > .ui_action_content {
+	min-height: var(--control-height);
+	padding: 4px 12px;
+	font-size: 1em;
+}
+/* Interaction colors belong to the visible inner surface. */
+:is(button, a, summary).ui_action:not(:disabled):not([aria-disabled="true"]):hover {
+	border: 0;
+	background: none;
+	color: var(--ui-action-hover-text);
+	text-decoration: none;
+}
+:is(button, a, summary).ui_action:not(:disabled):not([aria-disabled="true"]):hover > .ui_action_content {
+	background: var(--ui-action-hover-bg);
+	border-color: var(--ui-action-hover-border);
+}
+:is(button, a, summary).ui_action:not(:disabled):not([aria-disabled="true"]):active {
+	border: 0;
+	background: none;
+	color: var(--ui-action-active-text);
+}
+:is(button, a, summary).ui_action:not(:disabled):not([aria-disabled="true"]):active > .ui_action_content {
+	background: var(--ui-action-active-bg);
+	border-color: var(--ui-action-active-border);
+	box-shadow: inset 0 0 0 1px var(--ui-action-active-border);
+}
+/* Put the keyboard outline around the painted surface, not its wrapper. */
+:is(button, a, summary).ui_action:focus-visible {
+	outline: 0;
+	box-shadow: none;
+}
+:is(button, a, summary).ui_action:focus-visible > .ui_action_content {
+	outline: 2px solid var(--ui-action-focus-ring);
+	outline-offset: 2px;
+}
+/* Disabled actions keep their semantic state and use disabled palette
+ * variables on the visible surface. */
+:is(button, a, summary).ui_action:is(:disabled, [aria-disabled="true"]) {
+	border: 0;
+	background: none;
+	color: var(--ui-action-disabled-text);
+	opacity: 0.55;
+	cursor: not-allowed;
+}
+:is(button, a, summary).ui_action:is(:disabled, [aria-disabled="true"]) > .ui_action_content {
+	background: var(--ui-action-disabled-bg);
+	border-color: var(--ui-action-disabled-border);
+}
+
+/* Legacy forms can print action buttons directly instead of using a
+ * button-row wrapper. Keep consecutive controls from touching. */
+form.ui_form > :is(input[type="submit"], input[type="button"],
+	input[type="reset"], button) +
+:is(input[type="submit"], input[type="button"], input[type="reset"], button) {
+	margin-inline-start: 6px;
 }
 
 /* The first button of a form is the primary action, unless it deletes */
@@ -748,7 +906,7 @@ table.header > tbody > tr > td {
 	color: var(--text-color);
 	font-size: 12.5px;
 	font-weight: 500;
-	line-height: 1.2;
+	line-height: 1.333;
 	white-space: nowrap;
 	text-decoration: none;
 }
@@ -940,6 +1098,14 @@ table.header:has(+ .ui_post_header) {
 /* Forms with a heading, tables of rows, collapsible sections, tab boxes
  * and icon grids all sit in the same card */
 
+/* Give modern widgets the theme's card spacing. Add the same gap after a
+ * widget group followed by legacy page content. */
+body .ui_page { --ui-gap: var(--card-gap); }
+.ui_page:has(~ :not(script, style, link, dialog, [hidden], .ui_hidden,
+	input[type="hidden"])) {
+	margin-bottom: var(--card-gap);
+}
+
 table.shrinkwrapper, table.wrapper, div.wrapper,
 details.ui_hidden_table_start, details.section, div.ui_tabs_box {
 	width: 100%;
@@ -953,9 +1119,29 @@ div.wrapper, details.ui_hidden_table_start, details.section,
 div.ui_tabs_box { box-sizing: border-box; }
 table.shrinkwrapper > tbody > tr > td,
 table.wrapper > tbody > tr > td { padding: 0; }
-/* A fixed layout keeps the label and value columns steady whatever the
- * values hold */
-table.shrinkwrapper > tbody > tr > td > .ui_table { table-layout: fixed; }
+/* Data-table cards stay within the page. Only their columns scroll when
+ * their natural width is wider than the available content area. */
+table.wrapper:has(> tbody > tr > td > .ui_columns_scroll) {
+	table-layout: fixed;
+}
+.ui_columns_scroll {
+	width: 100%;
+	max-width: 100%;
+	overflow-x: auto;
+}
+/* Keep form tables inside their cards regardless of control width. Column
+ * count classes give labels useful proportions in multi-field rows. */
+table.shrinkwrapper > tbody > tr > td > .ui_table,
+table.ui_form_rows { table-layout: fixed; }
+table.ui_form_rows_2 > tbody > tr.ui_form_pair > td.ui_form_label:not([width]) {
+	width: 20%;
+}
+:is(table.ui_form_rows_3, table.ui_form_rows_4) > tbody > tr.ui_form_pair > td.ui_form_label:not([width]) {
+	width: 15%;
+}
+:is(table.ui_form_rows_5, table.ui_form_rows_6) > tbody > tr.ui_form_pair > td.ui_form_label:not([width]) {
+	width: 10%;
+}
 
 /* ---- Forms with a heading (ui_table_start) ---- */
 /* Markup: table.shrinkwrapper > td > table.ui_table with the heading in
@@ -1112,9 +1298,32 @@ details.ui_hidden_table_start > summary span.rightheading {
 	font-weight: 400;
 }
 details.ui_hidden_table_start > table {
+	display: block;
 	box-sizing: border-box;
 	width: 100%;
+	max-width: 100%;
 	padding: 8px 14px 10px;
+	overflow-x: auto;
+}
+details.ui_hidden_table_start > table > tbody {
+	display: table;
+	width: 100%;
+}
+/* Make a collapsible form the only horizontal scroll area. Nested column
+ * tables keep their natural width without adding another scrollbar. */
+details.ui_hidden_table_start table.wrapper:has(.ui_columns_scroll) {
+	width: max-content;
+	min-width: 100%;
+	table-layout: auto;
+}
+details.ui_hidden_table_start .ui_columns_scroll {
+	width: auto;
+	max-width: none;
+	overflow-x: visible;
+}
+details.ui_hidden_table_start table.ui_columns {
+	width: max-content;
+	min-width: 100%;
 }
 .section-body { padding: 10px 16px 14px; }
 /* Text above a dashboard block's content */
@@ -1330,6 +1539,14 @@ form.ui_form > table.wrapper + table.wrapper:has(> tbody > tr > td > table.ui_gr
 	border-top: 0;
 	border-radius: 0 0 var(--radius) var(--radius);
 	box-shadow: var(--shadow);
+}
+
+/* A legacy card form may print its action buttons directly after the
+ * table. Leave the normal card gap before another form begins; the core
+ * may put its form-end script between the two forms. */
+form.ui_form:has(> :is(table.wrapper, table.shrinkwrapper)):has(> .ui_submit):has(
+	+ form.ui_form, + script + form.ui_form) {
+	margin-bottom: var(--card-gap);
 }
 
 /* A small form of controls before another form or a table, such as the
@@ -1646,6 +1863,8 @@ html.loading-right .menu-loader { display: block; }
 	background: var(--accent-color);
 	animation: menu-bounce 0.9s ease-in-out infinite alternate;
 }
+/* Match Authentic's crimson progress bar for Cloudmin navigation. */
+.menu-panel-cloudmin .menu-loader::before { background: #dc143c; }
 @keyframes menu-bounce { to { left: 65%; } }
 /* The brand block: the logo has as much room above it as below it, and
  * the logo files are trimmed to their drawing, so every product sits the

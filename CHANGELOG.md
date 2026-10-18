@@ -7,6 +7,7 @@
 * Add a Cloudmin virtualization host profile to the nftables module
 * Add drop-down menu, dialog, breadcrumb and page link widgets to the UI library, built on native `details` and `dialog` elements
 * Add confirmation dialogs for buttons and links carrying `data-ui-confirm`, replacing the browser's own prompt
+* Update the Framed Theme with many visual and usability improvements
 * Update File Manager to use the new UI widgets in the standard theme, dropping legacy templates
 * Fix standard theme sortable tables dropping controls from table headings, such as the select-all checkbox in File Manager
 * Fix package installation with DNF running `update` instead of `install` when one of several requested packages is already installed, leaving the others uninstalled
