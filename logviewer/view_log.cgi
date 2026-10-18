@@ -150,7 +150,7 @@ $cmd_unpacked .= " | tac" if ($journal_tac);
 my $view_title = $in{'idx'} =~ /^journal/ ?
 	$text{'view_titlejournal'} : $text{'view_title'};
 &ui_print_header("<tt>".&html_escape($file || $cmd_unpacked)."</tt>",
-		 $in{'linktitle'} || $view_title, "", undef,
+		 &html_escape($in{'linktitle'}) || $view_title, "", undef,
 		 	!$no_navlinks && $skip_index,
 			($no_navlinks || $skip_index) ? 1 : undef,
 			0, $help_link);
