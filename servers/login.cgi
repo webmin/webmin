@@ -10,7 +10,8 @@ require './servers-lib.pl';
 our (%in);
 &ReadParse();
 my $enc = &encode_base64($in{'user'}.":".$in{'pass'});
-$enc =~ s/\r|\n//g;
+$in{'id'} =~ s/\r|\n|\0//g;
+$enc =~ s/\r|\n|\0//g;
 print "Set-Cookie: $in{'id'}=$enc; path=/";
 if (uc($ENV{'HTTPS'}) eq 'ON') {
 	print "; secure";
