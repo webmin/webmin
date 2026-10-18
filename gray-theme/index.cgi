@@ -63,25 +63,6 @@ else {
 	}
 $title = &get_html_title($title);
 
-# Work out if we have a top frame
-if ($hasvirt) {
-	%vconfig = &foreign_config("virtual-server");
-	}
-$upperframe = $vconfig{'theme_topframe'} ||
-	      $gconfig{'theme_topframe'};
-$upperrows = $vconfig{'theme_toprows'} ||
-	     $gconfig{'theme_toprows'} || 200;
-if ($upperframe =~ /\$LEVEL|\$\{LEVEL/) {
-	# Sub in user level
-	$levelnum = &get_virtualmin_user_level();
-	$level = $levelnum == 0 ? "master" :
-		 $levelnum == 1 ? "reseller" :
-		 $levelnum == 2 ? "domain" :
-		 $levelnum == 3 ? "usermin" :
-		 $levelnum == 4 ? "owner" : "unknown";
-	$upperframe = &substitute_template($upperframe, { 'level' => $level });
-	}
-
 # Show frameset
 &PrintHeader();
 $cols = &get_left_frame_width();
@@ -123,19 +104,6 @@ print "<link rel='icon' type='image/png' sizes='32x32'   href='$imgdir/favicons/
 print "<link rel='icon' type='image/png' sizes='192x192' href='$imgdir/favicons/$prod/favicon-192x192.png'>\n";
 print "</head>\n";
 
-# Upper custom frame
-if ($upperframe) {
-	print "<frameset rows='$upperrows,*' border=0>\n";
-	if ($upperframe =~ /^\//) {
-		# Local file to serve
-		print "<frame name=top src='top.cgi' scrolling=auto>\n";
-		}
-	else {
-		# Absolute URL
-		print "<frame name=top src='$upperframe' scrolling=auto>\n";
-		}
-	}
-
 # Left and right frames
 print "<frameset cols='$fscols' border=0>\n";
 print $frame1,"\n";
@@ -149,9 +117,6 @@ print "</body>\n";
 print "</noframes>\n";
 
 # End of the frames and page
-if ($upperframe) {
-	print "</frameset>\n";
-	}
 print "</frameset>\n";
 print "</html>\n";
 
