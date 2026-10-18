@@ -20,7 +20,7 @@ foreach $w (@whos) {
 		&ui_link("list_logins.cgi?username=".&urlize($w->{'user'}),
 		&html_escape($w->{'user'}) ),
 		&html_escape($w->{'tty'}),
-		&html_escape($tm ? &make_date($tm) : $w->{'when'}),
+		$tm ? &make_date($tm) : &html_escape($w->{'when'}),
 		$w->{'from'} ? &html_escape($w->{'from'})
 			     : $text{'logins_local'},
 		]);

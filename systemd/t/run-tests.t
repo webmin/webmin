@@ -1900,6 +1900,56 @@ like(get_unit_root(), qr{^/(etc|usr/lib|lib)/systemd/system$},
          'logs_user_unit adds boot filter when configured');
 }
 
+# Check list_login_sessions() parsing and failure signals without loginctl.
+subtest 'login session properties' => sub {
+    # Model an SSH session with no TTY and a serial-console session.
+    my ($available, $status, $show_status) = (1, 0, 0);
+    my $listing = " 4 0 root - 57547 user - no -\n 5 0 root - 1633 user-early ttyAMA0 no -\n";
+    my $properties = "Id=4\nName=root\nType=tty\nClass=user\nService=sshd\n".
+                     "RemoteHost=2001:db8::1\nTimestamp=Sun 2026-10-18 14:51:36 CEST\n\n".
+                     "Id=5\nName=root\nType=tty\nClass=user-early\nTTY=ttyAMA0\n";
+    my @cmds;
+    # Mock has_command(command) so availability does not depend on the host.
+    local *main::has_command = sub { return $available ? '/bin/loginctl' : undef; };
+    # Mock backquote_command(command) with separate results for each query.
+    local *main::backquote_command = sub {
+        push(@cmds, $_[0]);
+        $? = $_[0] =~ /list-sessions/ ? $status : $show_status;
+        return $_[0] =~ /list-sessions/ ? $listing : $properties;
+    };
+
+    # Preserve SSH service and host details when no TTY is reported.
+    my $sessions = list_login_sessions();
+    is(scalar(@$sessions), 2, 'reads multiple sessions');
+    is($sessions->[0]->{'Service'}, 'sshd', 'preserves SSH service when TTY is absent');
+    is($sessions->[0]->{'RemoteHost'}, '2001:db8::1', 'preserves IPv6 address');
+    is($sessions->[1]->{'TTY'}, 'ttyAMA0', 'preserves serial console terminal');
+    like($cmds[0], qr/^LC_ALL=C .*--no-legend/, 'requests stable output without headers');
+    like($cmds[1], qr/show-session 4 5/, 'queries only the listed session IDs');
+
+    # Failed queries must return no result without retrying.
+    $show_status = 256;
+    @cmds = ();
+    ok(!defined(list_login_sessions()), 'property query failure returns undef');
+    is(scalar(@cmds), 2, 'property query failure does not retry');
+    $show_status = 0;
+    $status = 256;
+    @cmds = ();
+    ok(!defined(list_login_sessions()), 'listing failure returns undef');
+    is(scalar(@cmds), 1, 'listing failure does not retry');
+
+    # An empty list must not turn into a query for manager properties.
+    $status = 0;
+    $listing = '';
+    @cmds = ();
+    is_deeply(list_login_sessions(), [], 'returns an empty array reference when no sessions exist');
+    is(scalar(@cmds), 1, 'does not query manager properties for an empty list');
+
+    # A missing client must return the same fallback signal as query failure.
+    $available = 0;
+    ok(!defined(list_login_sessions()), 'missing loginctl returns undef');
+};
+
 {
     my @cmds;
     local *main::has_command = sub {

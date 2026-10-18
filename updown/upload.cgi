@@ -49,6 +49,8 @@ for($i=0; defined($in{"upload$i"}); $i++) {
 		}
 	}
 $found || &error($text{'upload_enone'});
+$in{'zip'} && $can_mode != 3 && !&can_write_file("/") &&
+	&error($text{'upload_eextractacl'});
 &can_write_file($in{'dir'}) ||
 	&error(&text('upload_eaccess', "<tt>$in{'dir'}</tt>", $!));
 
