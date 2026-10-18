@@ -2636,6 +2636,44 @@ my ($user) = @_;
 return run_user_systemctl($user, "daemon-reload");
 }
 
+=head2 list_login_sessions()
+
+Returns an array reference of unfiltered loginctl session property hashes.
+Returns no value if loginctl is unavailable or either query fails. An empty
+array reference means no sessions were found.
+
+=cut
+sub list_login_sessions
+{
+# Allow callers to use another backend when loginctl is not installed.
+my $loginctl = has_command("loginctl");
+return if (!$loginctl);
+
+# Use untranslated output to identify sessions and read their timestamps.
+my $cmd = "LC_ALL=C ".quotemeta($loginctl)." --no-pager";
+my $out = backquote_command($cmd." list-sessions --no-legend 2>/dev/null");
+# A failed listing must not be mistaken for a successful empty result.
+return if ($?);
+my @ids = $out =~ /^\s*(\S+)\s+\d+\s+/mg;
+# Without session IDs, show-session would return manager properties instead.
+return [] if (!@ids);
+
+# Read named properties so column layout and missing TTYs do not matter.
+$out = backquote_command($cmd." show-session ".
+	join(" ", map { quotemeta($_) } @ids)." 2>/dev/null");
+# A failed query may contain partial output; let callers fall back.
+return if ($?);
+
+# Each blank-line-separated block contains one session's properties.
+my @rv;
+foreach my $block (split(/\n\n+/, $out)) {
+	my %session = $block =~ /^(\w+)=(.*)$/mg;
+	# Only return records that identify a session.
+	push(@rv, \%session) if ($session{'Id'});
+	}
+return \@rv;
+}
+
 =head2 set_user_linger(user, enabled)
 
 Enables or disables lingering for a user.
