@@ -6,7 +6,8 @@ require './lpadmin-lib.pl';
 &ReadParse();
 print "Refresh: $config{'queue_refresh'}\r\n"
 	if ($config{'queue_refresh'});
-&ui_print_header(&text('jobs_on', "<tt>$in{'name'}</tt>"), $text{'jobs_title'}, "");
+&ui_print_header(&text('jobs_on', "<tt>".&html_escape($in{'name'})."</tt>"),
+		 $text{'jobs_title'}, "");
 
 @jobs = &get_jobs($in{'name'});
 if (@jobs) {
