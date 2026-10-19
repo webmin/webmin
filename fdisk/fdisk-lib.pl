@@ -166,7 +166,7 @@ if (open(PARTS, "</proc/partitions")) {
 			if (open(MEDIA, "</proc/ide/hd$n/media")) {
 				local $media = <MEDIA>;
 				close(MEDIA);
-				if ($media =~ /^disk/ && !$_[0]) {
+				if ($media =~ /^disk/ && !$include_cds) {
 					push(@devs, "/dev/hd$n");
 					}
 				}
@@ -223,12 +223,12 @@ if (open(PARTS, "</proc/partitions")) {
 		       ($a =~ /\/hd[a-z]+$/ ? 1 : 0) } @devs;
 	}
 elsif ($disk_only) {
-	return &disk_discovery_error("Cannot open disk inventory for SMART discovery", $error_ref);
+	return &disk_discovery_error("Cannot open disk inventory for disk-only discovery", $error_ref);
 	}
 if ($disk_only) {
-	return &disk_discovery_error("Invalid disk inventory for SMART discovery", $error_ref)
+	return &disk_discovery_error("Invalid disk inventory for disk-only discovery", $error_ref)
 		if ($discovery_partitions !~ /major\s+minor\s+#blocks\s+name/);
-	return &disk_discovery_error("Disk inventory changed during SMART discovery", $error_ref)
+	return &disk_discovery_error("Disk inventory changed during disk-only discovery", $error_ref)
 		if ($discovery_partitions ne &read_file_contents('/proc/partitions'));
 	}
 return ( ) if (!@devs);		# No disks, ie on Xen
@@ -237,7 +237,7 @@ return ( ) if (!@devs);		# No disks, ie on Xen
 # cds by their media type though
 if (!-d "/proc/ide") {
 	local @cdstat = stat("/dev/cdrom");
-	if (@cdstat && !$_[0]) {
+	if (@cdstat && !$include_cds) {
 		@devs = grep { (stat($_))[1] != $cdstat[1] } @devs;
 		}
 	}
@@ -246,7 +246,7 @@ my %discovery_identity;
 if ($disk_only) {
 	foreach my $device (@devs) {
 		my $identity = &disk_discovery_identity($device);
-		return &disk_discovery_error("Missing device during SMART discovery: $device", $error_ref)
+		return &disk_discovery_error("Missing device during disk-only discovery: $device", $error_ref)
 			if (!defined($identity));
 		$discovery_identity{$device} = $identity;
 		}
@@ -492,16 +492,16 @@ if ($disk_only) {
 	foreach my $disk (@disks) {
 		my $device = $disk->{'device'};
 		my $identity = &disk_discovery_identity($device);
-		return &disk_discovery_error("Missing device during SMART discovery: $device", $error_ref)
+		return &disk_discovery_error("Missing device during disk-only discovery: $device", $error_ref)
 			if (!defined($identity));
-		return &disk_discovery_error("Disk identity changed during SMART discovery: $device", $error_ref)
+		return &disk_discovery_error("Disk identity changed during disk-only discovery: $device", $error_ref)
 			if ($discovery_identity{$device} ne $identity);
 		# An absent controller model must not silently bypass RAID expansion.
-		return &disk_discovery_error("Missing disk model during SMART discovery: $device", $error_ref)
+		return &disk_discovery_error("Missing disk model during disk-only discovery: $device", $error_ref)
 			if (($disk->{'type'} eq 'scsi' || $disk->{'type'} eq 'raid') &&
 			    $disk->{'model'} !~ /\S/);
 		}
-	return &disk_discovery_error("Disk inventory changed during SMART discovery", $error_ref)
+	return &disk_discovery_error("Disk inventory changed during disk-only discovery", $error_ref)
 		if ($discovery_partitions ne &read_file_contents('/proc/partitions'));
 	# These are metadata records, not claims of empty partition tables.
 	# Do not read or populate the full partition cache.
