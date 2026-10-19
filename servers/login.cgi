@@ -11,6 +11,7 @@ our (%in);
 &ReadParse();
 my $enc = &encode_base64($in{'user'}.":".$in{'pass'});
 $in{'id'} =~ s/\r|\n|\0//g;
+$in{'id'} =~ /\A[0-9]+\z/ || &error("Invalid server ID");
 $enc =~ s/\r|\n|\0//g;
 print "Set-Cookie: $in{'id'}=$enc; path=/";
 if (uc($ENV{'HTTPS'}) eq 'ON') {

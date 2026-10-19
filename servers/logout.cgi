@@ -10,6 +10,7 @@ require './servers-lib.pl';
 &ReadParse();
 our (%in);
 $in{'id'} =~ s/\r|\n|\0//g;
+$in{'id'} =~ /\A[0-9]+\z/ || &error("Invalid server ID");
 print "Set-Cookie: $in{'id'}=; path=/";
 if (uc($ENV{'HTTPS'}) eq 'ON') {
 	print "; secure";
