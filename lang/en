@@ -478,4 +478,6 @@ defcert_error=Default $1 bundled SSL certificate is being used. It is highly adv
 
 main_error_details=Error details
 
+exempli_gratia=e.g.
+
 __norefs=1

@@ -9,7 +9,8 @@ print &ui_form_start("change_advanced.cgi", "post");
 print &ui_table_start($text{'advanced_header'}, undef, 2);
 
 # Global temp directory
-my $tempdir_placeholder = &webmin_temp_dir_path("/var/tmp");
+my $tempdir_placeholder = $text{'exempli_gratia'}." ".
+			  &webmin_temp_dir_path("/var/tmp");
 print &ui_table_row($text{'advanced_temp'},
 		    &ui_opt_textbox("tempdir", $gconfig{'tempdir'}, 30,
 			&text('advanced_tempdef', &default_webmin_temp_dir()),
