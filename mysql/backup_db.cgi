@@ -96,9 +96,10 @@ if ($cron) {
 	$oldjob = $job;
 	$cmd = $in{'all'} ? "$cron_cmd --all"
 			  : $cron_cmd." ".quotemeta($in{'db'});
-	$job ||= { 'command' => $cmd,
-		   'user' => 'root',
+	$job ||= { 'user' => 'root',
 		   'active' => 1 };
+	# Replace legacy unquoted commands when updating existing jobs.
+	$job->{'command'} = $cmd;
 	&cron::parse_times_input($job, \%in);
 	}
 
