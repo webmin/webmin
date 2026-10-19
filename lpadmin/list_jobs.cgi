@@ -75,7 +75,8 @@ if (@jobs) {
 		}
 	}
 else {
-	print "<b>",&text('jobs_none', "<tt>$in{'name'}</tt>"),"</b><p>\n";
+	print "<b>",&text('jobs_none', "<tt>".&html_escape($in{'name'})."</tt>"),
+	      "</b><p>\n";
 	}
 
 # Test print button
