@@ -2383,18 +2383,31 @@ $miniserv::page_capture_out .= $buf
 	if ($miniserv::page_capture);
 }
 
-# Send back already read data while we have it, then read from SOCK
+# READ(handle, buffer, length, [offset])
+# Read buffered POST data or SOCK, replacing the buffer tail like Perl read.
 sub READ
 {
 my $r = shift;
 my $bufref = \$_[0];
 my $len = $_[1];
-my $offset = $_[2];
+my $offset = $_[2] || 0;
+die "Negative length" if ($len < 0);
+$$bufref = '' if (!defined($$bufref));
+# Resolve offsets before consuming input, and pad beyond the old buffer end.
+$offset += length($$bufref) if ($offset < 0);
+die "Offset outside string" if ($offset < 0);
+$$bufref .= "\0" x ($offset - length($$bufref))
+	if ($offset > length($$bufref));
+# A zero-length read must not wait for network input.
+if (!$len) {
+	substr($$bufref, $offset) = '';
+	return 0;
+	}
 if ($postpos < length($postinput)) {
 	# Reading from already fetched array
 	my $left = length($postinput) - $postpos;
 	my $canread = $len > $left ? $left : $len;
-	substr($$bufref, $offset, $canread) =
+	substr($$bufref, $offset) =
 		substr($postinput, $postpos, $canread);
 	$postpos += $canread;
 	return $canread;
@@ -2406,7 +2419,7 @@ else {
 		# End of socket
 		shutdown(SOCK, 0);
 		}
-	substr($$bufref, $offset, length($data)) = $data;
+	substr($$bufref, $offset) = $data;
 	return length($data);
 	}
 }
