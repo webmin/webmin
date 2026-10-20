@@ -7,7 +7,8 @@ require './phpini-lib.pl';
 &can_php_config($in{'file'}) || &error($text{'manual_ecannot'});
 $access{'manual'} || &error($text{'manual_ecannot'});
 
-&ui_print_header("<tt>$in{'file'}</tt>", $text{'manual_title'}, "");
+&ui_print_header("<tt>".&html_escape($in{'file'})."</tt>",
+		 $text{'manual_title'}, "");
 
 print $text{'manual_desc'},"<p>\n";
 print &ui_form_start("save_manual.cgi", "form-data");

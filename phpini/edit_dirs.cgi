@@ -6,7 +6,8 @@ require './phpini-lib.pl';
 &can_php_config($in{'file'}) || &error($text{'list_ecannot'});
 $conf = &get_config($in{'file'});
 
-&ui_print_header("<tt>$in{'file'}</tt>", $text{'dirs_title'}, "");
+&ui_print_header("<tt>".&html_escape($in{'file'})."</tt>",
+		 $text{'dirs_title'}, "");
 
 print &ui_form_start("save_dirs.cgi", "post");
 print &ui_hidden("file", $in{'file'}),"\n";

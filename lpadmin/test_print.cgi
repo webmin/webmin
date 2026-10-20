@@ -6,7 +6,7 @@ require './lpadmin-lib.pl';
 &foreign_require("proc", "proc-lib.pl");
 &ReadParseMime();
 $access{'test'} || &error($text{'test_ecannot'});
-&ui_print_header(&text('jobs_on', "<tt>$in{'name'}</tt>"),
+&ui_print_header(&text('jobs_on', "<tt>".&html_escape($in{'name'})."</tt>"),
 		 $text{'test_title'}, "");
 
 if ($in{'mode'} == 0) {

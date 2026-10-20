@@ -6,7 +6,8 @@ require './phpini-lib.pl';
 &can_php_config($in{'file'}) || &error($text{'list_ecannot'});
 $conf = &get_config_as_user($in{'file'});
 
-&ui_print_header("<tt>$in{'file'}</tt>", $text{'vars_title'}, "");
+&ui_print_header("<tt>".&html_escape($in{'file'})."</tt>",
+		 $text{'vars_title'}, "");
 
 print &ui_form_start("save_vars.cgi", "post");
 print &ui_hidden("file", $in{'file'}),"\n";

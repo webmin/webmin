@@ -9,7 +9,7 @@ require './fetchmail-lib.pl';
 $file = "$uinfo[7]/.fetchmailrc";
 @conf = &parse_config_file("$uinfo[7]/.fetchmailrc");
 @conf = grep { $_->{'poll'} } @conf;
-&ui_print_header(&text('user_header', "<tt>$in{'user'}</tt>"), $text{'user_title'}, "");
+&ui_print_header(&text('user_header', "<tt>".&html_escape($in{'user'})."</tt>"), $text{'user_title'}, "");
 
 print &show_polls(\@conf, $file, $in{'user'});
 
