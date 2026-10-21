@@ -8,6 +8,8 @@
 use strict;
 use warnings;
 use Test::More;
+use FindBin qw($Bin);
+use lib "$Bin/../vendor_perl";
 use File::Basename qw(dirname);
 use File::Spec;
 use Scalar::Util ();
