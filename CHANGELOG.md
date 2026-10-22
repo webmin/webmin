@@ -18,7 +18,7 @@
 * Fix path traversal and command injection in parameterized Custom Commands file editors
 * Fix MySQL/MariaDB manual editor ACL bypass
 * Fix MySQL/MariaDB database backups allowing restricted users to write files or save root-run settings outside their access limits
-* Fix MySQL/MariaDB imports failing because the database server could not read the temporary import file
+* Fix MySQL/MariaDB imports to use server-accessible temporary files with restricted permissions, including when systemd isolates temporary directories or Webmin connects through a loopback address
 * Fix the logged in users list in Users and Groups module showing nobody when `who` prints ISO dates under a non-C locale or `sshd pts/N` lines from the logind backend [forum.virtualmin.com/t/138162](https://forum.virtualmin.com/t/138162)
 * Fix missing SSH logins in the Users and Groups module on Ubuntu 26.04 by using systemd-logind when `utmp` is absent
 * Fix mail date parsing of ISO dates like `2026-10-15 02:33` returning the wrong minutes

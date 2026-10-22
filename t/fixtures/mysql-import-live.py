@@ -7,6 +7,8 @@ Pass --shared-temp to isolate permissions from a service's PrivateTmp setting;
 this temporarily moves Webmin's MySQL temp files outside /tmp and /var/tmp.
 Use --secure-temp for MySQL's secure_file_priv directory. If that directory
 only permits the daemon and root, use --root-client to skip non-root clients.
+Pass --loopback to point the module at 127.0.0.1 over TCP for the run, which
+must still be treated as a local server.
 """
 import hashlib
 import html
@@ -146,6 +148,13 @@ def import_csv(mode, content, format=1, delete=0, ignore=0):
     if observation['other_readable'] is not None:
         check(not observation['other_readable'], 'unrelated Unix user cannot read the temporary CSV')
     check(not pathlib.Path(observation['path']).exists(), 'temporary CSV removed after import')
+    staging = pathlib.Path(observation['path']).parent
+    check(staging.name.startswith('#sql-webmin-import-'), 'CSV uses a per-import server-visible directory')
+    # The CGI removes its directory on exit, just after finishing the response.
+    deadline = time.monotonic() + 2
+    while staging.exists() and time.monotonic() < deadline:
+        time.sleep(0.05)
+    check(not staging.exists(), 'temporary import directory removed after the request')
     after = source.stat()
     check((before.st_uid, before.st_gid, before.st_mode) == (after.st_uid, after.st_gid, after.st_mode),
           'source permissions and ownership unchanged')
@@ -161,6 +170,12 @@ try:
     print('secure_file_priv: ' + repr(sql('SELECT @@secure_file_priv')), flush=True)
     for item in ('miniserv.conf', 'miniserv.users', 'webmin.acl', 'mysql/config', 'mysql/version', 'config'):
         snapshot('/etc/webmin/' + item)
+    if '--loopback' in sys.argv[1:]:
+        # A TCP loopback address is still the local server and must stage files the same way.
+        module_config = pathlib.Path('/etc/webmin/mysql/config')
+        text = re.sub(r'^host=.*\n?', '', module_config.read_text(), flags=re.M)
+        module_config.write_text(text + 'host=127.0.0.1\n')
+        print('TEST OVERRIDE: module connects to 127.0.0.1 over TCP', flush=True)
     if '--shared-temp' in sys.argv[1:] or '--secure-temp' in sys.argv[1:]:
         # Use a permitted location without disabling the server's restrictions.
         parent = sql('SELECT @@secure_file_priv') if '--secure-temp' in sys.argv[1:] else '/var/cache'

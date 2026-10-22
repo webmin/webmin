@@ -2,6 +2,7 @@
 # import.cgi
 # Import data from a text file
 
+use Fcntl qw(O_WRONLY O_CREAT O_EXCL);
 require './mysql-lib.pl';
 &ReadParseMime();
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
@@ -9,13 +10,22 @@ $access{'edonly'} && &error($text{'dbase_ecannot'});
 &error_setup($text{'import_err'});
 $sql_charset = $in{'charset'};
 
+# Use server-visible storage, not a /tmp hidden by the database service.
+my $import_tmpdir;
+if ($< == 0 && &supports_users() && &is_mysql_local()) {
+	$import_tmpdir = &mysql_import_tempdir($in{'db'}) ||
+		&error($text{'import_etemp'});
+	}
+
 if ($in{'mode'}) {
 	# From uploaded file
 	$in{'upload'} || &error($text{'import_eupload'});
 	$in{'upload_filename'} =~ /([^\/\\\s]+)$/ ||
 		&error($text{'import_eupload'});
-	$file = &transname($1);
-	open(TEMP, ">$file");
+	$file = &mysql_import_tempname($import_tmpdir, $1);
+	# Create a new upload file with owner-only permissions.
+	sysopen(TEMP, $file, O_WRONLY | O_CREAT | O_EXCL, 0600) ||
+		&error(&text('efileopen', &html_escape($file), &html_escape("$!")));
 	print TEMP $in{'upload'};
 	close(TEMP);
 	&set_mysql_command_file_permissions($file) ||
@@ -26,7 +36,7 @@ if ($in{'mode'}) {
 	}
 else {
 	# From local file
-	$file = &transname();
+	$file = &mysql_import_tempname($import_tmpdir);
 	&copy_file_under_global_acl($in{'file'}, $file, undef,
 				     &mysql_command_unix_user()) ||
 		&error($text{'import_efile'});
@@ -37,7 +47,7 @@ else {
 
 # Build the import command
 if ($in{'table'}) {
-	$nfile = &transname("$in{'table'}.txt");
+	$nfile = &mysql_import_tempname($import_tmpdir, "$in{'table'}.txt");
 	&copy_source_dest($file, $nfile);
 	&set_mysql_command_file_permissions($nfile) ||
 		&error($text{'import_efile'});

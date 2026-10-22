@@ -45,6 +45,30 @@ my $root = abs_path(File::Spec->catdir(dirname(__FILE__), '..'));
 chdir($root) or die "chdir($root): $!";
 do './mysql/mysql-lib.pl' or die $@ || $!;
 
+subtest 'local MySQL detection includes loopback addresses' => sub {
+	no warnings 'redefine';
+	# Debian can resolve the system hostname to 127.0.1.1, not 127.0.0.1.
+	local *main::get_system_hostname = sub { 'db.example.test' };
+	my %addresses = (
+		'db.example.test' => '127.0.1.1',
+		'local-alias.example.test' => '127.0.1.1',
+		'remote.example.test' => '192.0.2.20',
+		'::1' => undef,
+		);
+	local *main::to_ipaddress = sub {
+		return exists($addresses{$_[0]}) ? $addresses{$_[0]} : $_[0];
+		};
+	for my $host ('', 'localhost', 'db.example.test', 'local-alias.example.test',
+		     '127.0.1.1', '127.0.0.1', '::1') {
+		local $main::config{'host'} = $host;
+		ok(main::is_mysql_local(), "$host is local");
+		}
+	for my $host ('192.0.2.20', 'remote.example.test') {
+		local $main::config{'host'} = $host;
+		ok(!main::is_mysql_local(), "$host remains remote");
+		}
+};
+
 subtest 'database listings exclude raw dot directories and preserve valid names' => sub {
 	no warnings 'redefine';
 	my @hidden = ('#mysql50#.config', '#mysql50#.local', '#mysql50#.cache');
@@ -106,6 +130,66 @@ subtest 'view definitions quote and parse special-character names' => sub {
 			definer => 'root@localhost', security => 'invoker', check => 'local'
 			}, 'the edit form receives the original name and complete definition');
 		}
+};
+
+subtest 'import directories are server-visible and unique' => sub {
+	no warnings 'redefine';
+	my $tmp = tempdir('webmin-mysql-staging-XXXXXX', DIR => '/tmp', CLEANUP => 1);
+	my $data = "$tmp/data";
+	my $secure = "$tmp/mysql-files";
+	mkdir($data) or die $!;
+	mkdir($secure) or die $!;
+	my %vars = (datadir => "$data/", secure_file_priv => '');
+	local @main::temporary_files;
+	local *main::execute_sql_safe = sub {
+		is_deeply([ @_ ], [ 'app_db',
+			"show variables where Variable_name in ('secure_file_priv', 'datadir')" ],
+			'ask the connected server for its permitted directories');
+		return { data => [ map { [ $_, $vars{$_} ] } sort keys %vars ] };
+		};
+	my $first = main::mysql_import_tempdir('app_db');
+	like($first, qr{^\Q$data\E/\#sql-webmin-import-[^/]+$},
+		'use the server data directory, not the Webmin temp directory');
+	is((stat($first))[2] & 0777, 0755, 'client and daemon can traverse the directory');
+	is((stat($first))[4], $<, 'directory belongs to the creating Webmin process');
+	my $second = main::mysql_import_tempdir('app_db');
+	isnt($second, $first, 'simultaneous imports cannot reuse the same filename');
+	$vars{'secure_file_priv'} = $secure;
+	my $third = main::mysql_import_tempdir('app_db');
+	like($third, qr{^\Q$secure\E/\#sql-webmin-import-[^/]+$},
+		'prefer the configured server import directory');
+	is_deeply(\@main::temporary_files, [ $first, $second, $third ],
+		'register directories for cleanup even when an import fails');
+	for my $disabled (undef, 'NULL') {
+		$vars{'secure_file_priv'} = $disabled;
+		like(main::mysql_import_tempdir('app_db'), qr{^\Q$data\E/},
+			'NULL is not a path; leave server-side import restrictions to the server');
+		}
+	for my $invalid ("$tmp/missing", 'relative/path') {
+		$vars{'secure_file_priv'} = $invalid;
+		ok(!defined(main::mysql_import_tempdir('app_db')),
+			'do not fall back outside a configured import directory');
+		}
+	%vars = ();
+	ok(!defined(main::mysql_import_tempdir('app_db')),
+		'missing server directories fail cleanly');
+
+	# Only the import file location changes; retain the generated basename.
+	local *main::tempname = sub { '/tmp/.webmin/'.($_[0] || 'generated.txt') };
+	local *main::transname = sub {
+		my $file = main::tempname(@_);
+		push(@main::temporary_files, $file);
+		return $file;
+		};
+	my @cleanup = @main::temporary_files;
+	is(main::mysql_import_tempname($first, 'items.txt'), "$first/items.txt",
+		'keep the table basename in the shared directory');
+	is(main::mysql_import_tempname($first), "$first/generated.txt",
+		'keep automatically generated basenames');
+	is_deeply(\@main::temporary_files, \@cleanup,
+		'do not register unused paths in the normal temp directory for deletion');
+	is(main::mysql_import_tempname(undef, 'items.txt'), '/tmp/.webmin/items.txt',
+		'remote and non-root imports keep their original temporary paths');
 };
 
 subtest 'server-side imports share the temporary file with the daemon group' => sub {

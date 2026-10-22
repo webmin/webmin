@@ -1185,6 +1185,42 @@ return 0 if (!@uinfo);
 return &set_ownership_permissions($user, undef, 0600, $file);
 }
 
+# mysql_import_tempdir(database)
+# Creates a per-import directory in the local server's permitted file directory,
+# or its data directory when no file directory is configured. Called as root.
+sub mysql_import_tempdir
+{
+my ($db) = @_;
+my $d = &execute_sql_safe($db,
+	"show variables where Variable_name in ('secure_file_priv', 'datadir')");
+my %vars = map { @$_ } @{$d->{'data'}};
+my $dir = $vars{'secure_file_priv'};
+$dir = $vars{'datadir'} if (!$dir || $dir eq 'NULL');
+return if (!$dir || $dir !~ m{^/} || !-d $dir);
+
+# A unique directory preserves the table filename without concurrent collisions.
+# Its name uses the server's temporary-table prefix, so MariaDB does not list
+# it as a database or fail dumps and checks while an import is running.
+require File::Temp;
+my $tmp = eval { File::Temp::tempdir('#sql-webmin-import-XXXXXX', DIR => $dir) };
+return if (!$tmp);
+push(@main::temporary_files, $tmp);
+# The client and daemon can traverse it; CSV contents remain owner/group-only.
+return if (!chmod(0755, $tmp));
+return $tmp;
+}
+
+# mysql_import_tempname(directory, [filename])
+# Keeps Webmin's filename handling, using the per-import directory when provided.
+sub mysql_import_tempname
+{
+my ($dir, $filename) = @_;
+# The per-import directory is already registered for cleanup.
+my $file = $dir ? &tempname($filename) : &transname($filename);
+$file =~ s{^.*/}{$dir/} if ($dir);
+return $file;
+}
+
 # set_mysql_import_file_permissions(database, file)
 # Called as root for a local server. Share the temporary file with the daemon's
 # group, keeping its owner so the import-command user can still read it.
@@ -1324,6 +1360,7 @@ return @ev;
 sub is_mysql_local
 {
 return $config{'host'} eq '' || $config{'host'} eq 'localhost' ||
+       $config{'host'} eq '127.0.0.1' || $config{'host'} eq '::1' ||
        $config{'host'} eq &get_system_hostname() ||
        &to_ipaddress($config{'host'}) eq &to_ipaddress(&get_system_hostname());
 }

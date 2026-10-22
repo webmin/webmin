@@ -29,7 +29,8 @@ for my $file ("$root/lang/en", "$root/$module/lang/en") {
 open(my $lib, '<', "$root/mysql/mysql-lib.pl") or die $!;
 my $code = do { local $/; <$lib> };
 close($lib);
-for my $sub (qw(can_edit_db quotestr quote_table split_table show_table_form is_blob)) {
+for my $sub (qw(can_edit_db quotestr quote_table split_table show_table_form is_blob
+	       mysql_import_tempname)) {
 	$code =~ /(^sub \Q$sub\E\n\{.*?^\})/ms or die "Missing $sub";
 	eval 'no strict; no warnings; '.$1;
 	die $@ if $@;
