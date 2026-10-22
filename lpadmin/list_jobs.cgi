@@ -34,8 +34,9 @@ if (@jobs) {
 		push(@cols, &html_escape($j->{'id'}));
 		if ($j->{'printfile'} && &can_edit_jobs($in{'name'}, $ju)) {
 			push(@cols,
-			    "<a href='view_job.cgi?name=$in{'name'}".
-			    "&id=$j->{'id'}'>".&nice_size($j->{'size'})."</a>");
+			    "<a href='view_job.cgi?name=".&urlize($in{'name'}).
+			    "&id=".&urlize($j->{'id'})."'>".
+			    &nice_size($j->{'size'})."</a>");
 			$printfile++;
 			}
 		else {
@@ -51,7 +52,8 @@ if (@jobs) {
 			push(@cols, $j->{'when'});
 			}
 		if ($j->{'file'}) {
-			push(@cols, $j->{'file'});
+			# Job titles and filenames can be supplied by print clients.
+			push(@cols, &html_escape($j->{'file'}));
 			}
 		if (&can_edit_jobs($in{'name'}, $ju) &&
 		    $access{'cancel'}) {
