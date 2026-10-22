@@ -106,6 +106,7 @@ if (@logs) {
 		if (length($short) > 40) {
 			$short = "...".substr($short, -40);
 			}
+		$short = &html_escape($short);
 		if ($access{'view'}) {
 			push(@cols, $short);
 			}

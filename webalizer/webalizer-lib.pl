@@ -174,7 +174,8 @@ my $h = $_[1];
 my $lconf = &get_log_config($_[0]);
 my @all = $config{'skip_old'} ? ( $_[0] ) : &all_log_files($_[0]);
 if (!@all) {
-	print $h "Log file $_[0] does not exist\n";
+	my $msg = "Log file $_[0] does not exist\n";
+	print $h $_[2] ? &html_escape($msg) : $msg;
 	return;
 	}
 my %mtime;

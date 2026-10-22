@@ -36,7 +36,7 @@ if ($in{'new'}) {
 	}
 else {
 	print &ui_table_row($text{'edit_file'},
-		"<tt>$in{'file'}</tt>");
+		"<tt>".&html_escape($in{'file'})."</tt>");
 	print &ui_hidden("file", $in{'file'});
 	}
 
@@ -45,7 +45,7 @@ if (!$in{'new'}) {
 	my @all = &all_log_files($in{'file'});
 	if (@all > 1 && !$config{'skip_old'}) {
 		print &ui_table_row($text{'edit_files'},
-			join("<br>\n", @all));
+			join("<br>\n", map { &html_escape($_) } @all));
 		}
 	}
 
