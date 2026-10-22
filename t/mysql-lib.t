@@ -84,6 +84,30 @@ subtest 'database listings exclude raw dot directories and preserve valid names'
 		  'filtering all SQL results does not trigger the command fallback');
 };
 
+subtest 'view definitions quote and parse special-character names' => sub {
+	no warnings 'redefine';
+	local *main::supports_quoting = sub { 1 };
+	for my $name ('ordinary_view', q{view'&"<test>}, 'view with spaces',
+		     'view`with`backticks', 'view ` as name') {
+		my $quoted = $name;
+		$quoted =~ s/`/``/g;
+		$quoted = '`'.$quoted.'`';
+		my $query = 'select 1 AS `value`';
+		local *main::execute_sql = sub {
+			is_deeply([ @_ ], [ 'app_db', 'show create view '.$quoted ],
+				  'the full view name is a quoted SQL identifier');
+			return { data => [ [ $name,
+				'CREATE ALGORITHM=MERGE DEFINER=`root`@`localhost` '.
+				'SQL SECURITY INVOKER VIEW '.$quoted.' AS '.$query.
+				' WITH LOCAL CHECK OPTION' ] ] };
+			};
+		is_deeply(main::view_structure('app_db', $name), {
+			name => $name, query => $query, algorithm => 'merge',
+			definer => 'root@localhost', security => 'invoker', check => 'local'
+			}, 'the edit form receives the original name and complete definition');
+		}
+};
+
 subtest 'sandboxed SQL files use direct input' => sub {
 	no warnings 'redefine';
 	my $tmp = tempdir('webmin-mysql-sandbox-XXXXXX',

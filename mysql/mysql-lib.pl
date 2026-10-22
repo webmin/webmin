@@ -716,10 +716,12 @@ return &quotestr($rv);
 }
 
 # quotestr(string)
+# Quotes a single SQL identifier, including any embedded backticks.
 sub quotestr
 {
 my ($rv) = @_;
 if (&supports_quoting()) {
+	$rv =~ s/`/``/g;
 	return "`$rv`";
 	}
 else {
@@ -1717,7 +1719,7 @@ sub view_structure
 {
 local ($db, $view) = @_;
 local $info = { 'name' => $view };
-local $d = &execute_sql($db, "show create view $view");
+local $d = &execute_sql($db, "show create view ".&quotestr($view));
 local $c = $d->{'data'}->[0]->[1];
 if ($c =~ /algorithm\s*=\s*(\S+)/i) {
 	$info->{'algorithm'} = lc($1);
@@ -1734,7 +1736,8 @@ if ($c =~ /sql\s+security\s+(\S+)/i) {
 if ($c =~ s/\s+with\s+(cascaded|local)\s+check\s+option//i) {
 	$info->{'check'} = lc($1);
 	}
-if ($c =~ /view\s+(`\S+`|\S+)\s+as\s+(.*)/i) {
+# Quoted view names can contain spaces and escaped backticks.
+if ($c =~ /view\s+(`(?:``|[^`])*`|\S+)\s+as\s+(.*)/i) {
 	$info->{'query'} = $2;
 	}
 return $info;
