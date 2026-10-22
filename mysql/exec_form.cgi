@@ -31,7 +31,7 @@ $csel = &ui_select("charset", $sql_charset,
 
 # Form for executing an SQL command
 print &ui_tabs_start_tab("mode", "exec");
-print &text('exec_header', "<tt>$in{'db'}</tt>"),"<p>\n";
+print &text('exec_header', "<tt>".&html_escape($in{'db'})."</tt>"),"<p>\n";
 print &ui_form_start("exec.cgi", "form-data");
 print &ui_hidden("db", $in{'db'});
 print &ui_textarea("cmd", undef, 10, 70),"<br>\n";
@@ -58,7 +58,7 @@ print &ui_tabs_end_tab();
 
 # Form for executing commands from a file
 print &ui_tabs_start_tab("mode", "file");
-print &text('exec_header2', "<tt>$in{'db'}</tt>"),"<br>\n";
+print &text('exec_header2', "<tt>".&html_escape($in{'db'})."</tt>"),"<br>\n";
 print $text{'exec_header2a'},"<p>\n";
 print &ui_form_start("exec_file.cgi", "form-data");
 print &ui_hidden("db", $in{'db'});
@@ -72,7 +72,7 @@ print &ui_tabs_end_tab();
 
 # Form for loading a CSV or tab-separated file
 print &ui_tabs_start_tab("mode", "import");
-print &text('exec_header3', "<tt>$in{'db'}</tt>"),"<br>",
+print &text('exec_header3', "<tt>".&html_escape($in{'db'})."</tt>"),"<br>",
       $text{'exec_header4'},"<p>\n";
 
 print &ui_form_start("import.cgi", "form-data");
@@ -110,7 +110,7 @@ print &ui_tabs_end_tab();
 
 print &ui_tabs_end(1);
 
-&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		 &get_databases_return_link($in{'db'}), $text{'index_return'});
 
 

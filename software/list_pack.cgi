@@ -6,7 +6,8 @@ require './software-lib.pl';
 &ReadParse();
 &ui_print_header(undef, $text{'list_title'}, "", "list_pack");
 
-print &ui_subheading(&text('list_files', "<tt>$in{'package'}</tt>"));
+print &ui_subheading(&text('list_files',
+			   "<tt>".&html_escape($in{'package'})."</tt>"));
 print &ui_columns_start([
 	$text{'list_path'},
 	$text{'list_owner'},
