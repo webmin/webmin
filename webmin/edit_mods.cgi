@@ -84,7 +84,7 @@ print &ui_table_row($text{'mods_ccat'},
 		      sort { lc($a) cmp lc($b) } (keys %cats) ]));
 
 print &ui_table_row($text{'mods_creset'},
-	&ui_yesno_radio("creset", 0));
+	&ui_yesno_radio("reset", 0));
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'mods_cloneok'} ] ]);
