@@ -25,7 +25,7 @@ eval {
 			$o->{'ssl'}, $method, $o->{'page'});
 	if (!ref($con)) {
 		$up = 0;
-		$desc = $con || "Unknown error";
+		$desc = &html_escape($con) || "Unknown error";
 		return;
 		}
 	&write_http_connection($con, "Host: $o->{'host'}\r\n");
@@ -44,7 +44,7 @@ eval {
 		$up = 1;
 		}
 	else {
-		$desc = "Bad HTTP status line : $line";
+		$desc = "Bad HTTP status line : ".&html_escape($line);
 		}
 	if ($re && $up) {
 		# Read the headers
@@ -65,12 +65,12 @@ eval {
 		eval {
 			if ($data !~ /$re/i) {
 				$up = 0;
-				$desc = "No match on : $re";
+				$desc = "No match on : ".&html_escape($re);
 				}
 			};
 		if ($@) {
 			$up = 0;
-			$desc = "Error evaluating regexp : $@";
+			$desc = "Error evaluating regexp : ".&html_escape("$@");
 			}
 		}
 
