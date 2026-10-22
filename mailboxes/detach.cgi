@@ -68,40 +68,41 @@ if ($in{'scale'}) {
 else {
 	# Just output the attachment
 	print "X-no-links: 1\n";
+	print "X-Content-Type-Options: nosniff\n";
 	$fn = $attach->{'filename'} ? &decode_mimewords($attach->{'filename'})
 				    : "attachment";
 	$fn =~ s/[\r\n\0"\\\/]//g;
 	$fn ||= "attachment";
-	@download = split(/\t+/, $config{'download'});
-	if ($attach->{'type'} =~ /^image\/svg(\+xml)?/i ||
-	    $in{'type'} =~ /^image\/svg(\+xml)?/i ||
-	    $fn =~ /\.svgz?$/i) {
-		# SVG can execute scripts when served from the Webmin origin.
-		print "Content-Disposition: Attachment; filename=\"$fn\"\n"
-			if ($in{'save'});
-		print "Content-type: text/plain\n\n";
-		print $attach->{'data'};
+	my $type = lc($attach->{'type'} || 'application/octet-stream');
+	my $download = $in{'save'};
+	if ($download) {
+		# Downloads must keep the original bytes without rendering them.
+		$type = 'application/octet-stream';
 		}
-	elsif ($in{'type'}) {
-                # Display as a specific MIME type
-                print "Content-type: $in{'type'}\n\n";
-                print $attach->{'data'};
-                }
-        else {
-		# Auto-detect type
-                if ($in{'save'}) {
-                        # Force download
-                        print "Content-Disposition: Attachment; filename=\"$fn\"\n";
-                        }
-                if ($attach->{'type'} eq 'message/delivery-status') {
-                        print "Content-type: text/plain\n\n";
-                        }
-                else {
-                        print "Content-type: $attach->{'type'}\n\n";
-                        }
+	elsif ($in{'type'} || $type =~ /(?:\/|\+)xml\z/ ||
+	       $type eq 'image/svg' || $type eq 'message/delivery-status' ||
+	       $fn =~ /\.svgz?$/i) {
+		# Render XML/SVG and the UI's plain-text override as inert text.
+		$type = 'text/plain';
 		}
-	if ($attach->{'type'} =~ /^(text\/html|image\/svg|application\/xhtml)/i
-	    && !$in{'save'}) {
+	elsif ($type eq 'text/html') {
+		# Keep HTML previews isolated even if the text filters miss markup.
+		print "Content-Security-Policy: sandbox; script-src 'none'; ".
+		      "object-src 'none'; frame-src 'none'; base-uri 'none'; ".
+		      "form-action 'none'\n";
+		}
+	elsif ($type =~ /^text\//) {
+		# Other text formats must not be interpreted as active content.
+		$type = 'text/plain';
+		}
+	elsif ($type !~ /\Aimage\/(?:gif|jpeg|png|webp|bmp|avif|x-icon|vnd\.microsoft\.icon)\z/) {
+		# Only known raster images may be served inline without a sandbox.
+		$type = 'application/octet-stream';
+		$download = 1;
+		}
+	print "Content-Disposition: Attachment; filename=\"$fn\"\n" if ($download);
+	print "Content-type: $type\n\n";
+	if ($type eq 'text/html') {
 		print &safe_urls(&filter_javascript($attach->{'data'}));
 		}
 	else {
