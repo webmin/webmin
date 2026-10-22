@@ -25,14 +25,15 @@ eval {
 	if ($serv->{'ssl'} == 2) {
                 # Request a TLS upgrade with STARTTLS
                 my $rv = &mailboxes::smtp_command($h, "starttls\r\n", 1);
-                if ($rv =~ /^2\d+/) {
+                if ($rv =~ /^220(?:[ -]|$)/) {
 			# Enable TLS and repeat the greeting on the secure connection
                         &switch_smtp_to_ssl($h);
 			&mailboxes::smtp_command($h, $helocmd);
                         }
                 else {
-			# Continue without TLS if STARTTLS is unavailable
-                        $serv->{'ssl'} = 0;
+			# Never send credentials if the requested TLS upgrade fails.
+                        &close_http_connection($h);
+                        die("SMTP STARTTLS failed : $rv");
                         }
                 }
 	$desc = $text{'smtp_ok1'};

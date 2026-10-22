@@ -1019,14 +1019,15 @@ elsif ($sm) {
 	if ($ssl == 2) {
 		# Request a TLS upgrade with STARTTLS
                 my $rv = &smtp_command($h, "starttls\r\n", 1);
-                if ($rv =~ /^2\d+/) {
+                if ($rv =~ /^220(?:[ -]|$)/) {
 			# Enable TLS and repeat the greeting on the secure connection
                         &switch_smtp_to_ssl($h);
 			&smtp_command($h, $helocmd, 0);
                         }
                 else {
-			# Continue without TLS if STARTTLS is unavailable
-                        $ssl = 0;
+			# Never send credentials or mail without the requested TLS.
+                        &close_http_connection($h);
+                        &error("SMTP STARTTLS failed : ".&html_escape($rv));
                         }
 		}
 
