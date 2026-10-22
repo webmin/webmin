@@ -142,6 +142,8 @@ while(1) {
 		$rawarg .= $got;
 		}
 	print STDERR "fastrpc[$$]: raw $rawarg\n" if ($gconfig{'rpcdebug'});
+
+	# Mirror the request's wire format in the response
 	my $dumper = substr($rawarg, 0, 5) eq '$VAR1' ? 1 : 0;
 	my $arg = &unserialise_variable($rawarg);
 

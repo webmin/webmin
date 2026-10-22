@@ -9257,7 +9257,7 @@ if ($serv->{'fast'} || !$sn) {
 			}
 		elsif ($line =~ /^1\s+(\S+)\s+(\S+)\s+(\S+)/ ||
 		       $line =~ /^1\s+(\S+)\s+(\S+)/) {
-			# Started ok .. connect and save SID
+			# Connect and cache the negotiated fast RPC version
 			&close_http_connection($con);
 			my ($port, $sid, $version) = ($1, $2, $3);
 			my $error;
@@ -9268,6 +9268,7 @@ if ($serv->{'fast'} || !$sn) {
 			$remote_server_version{$sn} = $version;
 			}
 		else {
+			# Reject a malformed fast RPC startup response
 			while($stuff = &read_http_connection($con)) {
 				$line .= $stuff;
 				}
@@ -9318,7 +9319,7 @@ if ($serv->{'fast'} || !$sn) {
 			return &$main::remote_error_handler("RPC error : $2");
 			}
 		elsif ($line =~ /^1\s+(\S+)\s+(\S+)\s+(\S+)/) {
-			# Started ok .. connect and save SID
+			# Connect and cache the local fast RPC version
 			close(SOCK);
 			close(RPCOUTr);
 			my ($port, $sid, $version) = ($1, $2, $3);
@@ -9328,7 +9329,7 @@ if ($serv->{'fast'} || !$sn) {
 			$fast_fh_cache{$sn} = [ $sid, $version ];
 			}
 		else {
-			# Unexpected response
+			# Reject a malformed local fast RPC startup response
 			local $_;
 			while(<RPCOUTr>) {
 				$line .= $_;
@@ -9338,7 +9339,7 @@ if ($serv->{'fast'} || !$sn) {
 				"Bad response from fastrpc.cgi : $line");
 			}
 		}
-	# Got a connection .. send off the request
+	# Use Data::Dumper only when the peer advertises parser support
 	my ($fh, $version) = @{$fast_fh_cache{$sn}};
 	my $dumper = &compare_version_numbers($version, 2.014) >= 0;
 	my $tostr = &serialise_variable($str, $dumper);
@@ -9528,23 +9529,30 @@ $remote_multi_callback_err = $err;
 
 =head2 serialise_variable(variable, [data-dumper-format])
 
-Converts some variable (maybe a scalar, hash ref, array ref or scalar ref)
-into a url-encoded string. In the cases of arrays and hashes, it is recursively
-called on each member to serialize the entire object.
+Converts a scalar or reference into Webmin's RPC wire format. The legacy format
+recursively URL-encodes arrays and hashes. If data-dumper-format is set,
+Data::Dumper preserves shared and cyclic references.
 
 =cut
 sub serialise_variable
 {
 my ($var, $dumper) = @_;
 if ($dumper) {
-	# Convert to Data::Dumper format
+	# Preserve shared and cyclic references for peers that support this format
 	eval "use Data::Dumper";
 	if (!$@) {
-		$Data::Dumper::Purity = 1;
-		return Dumper($var);
+		# Override global options to keep the wire format stable
+		my $dd = Data::Dumper->new([ $var ], [ 'VAR1' ]);
+		$dd->Purity(1)->Indent(0)->Terse(0)->Useqq(0)->Deparse(0)
+		   ->Pair(' => ')->Quotekeys(1)->Freezer('')->Toaster('')
+		   ->Bless('bless')->Maxdepth(0)->Deepcopy(0)->Pad('');
+		return $dd->Dump();
 		}
 	}
+
+# Fall back to the legacy format for older peers or if Data::Dumper is missing
 if (!defined($var)) {
+	# Preserve undef as a distinct wire type
 	return 'UNDEF';
 	}
 my $r = ref($var);
@@ -9567,11 +9575,11 @@ elsif ($r eq 'REF') {
 	$rv = &serialise_variable(${$var});
 	}
 elsif ($r eq 'CODE') {
-	# Code not handled
+	# Never transfer executable code
 	$rv = undef;
 	}
 elsif ($r) {
-	# An object - treat as a hash
+	# Transfer an object's fields without executing class code
 	$r = "OBJECT ".&urlize($r);
 	$rv = join(",", map { &urlize(&serialise_variable($_)).",".
 			      &urlize(&serialise_variable($var->{$_})) }
@@ -9582,18 +9590,22 @@ return ($r ? $r : 'VAL').",".$rv;
 
 =head2 unserialise_variable(string)
 
-Converts a string created by serialise_variable() back into the original
-scalar, hash ref, array ref or scalar ref. If the original variable was a Perl
-object, the same class is used on this system, if available.
+Decodes a value created by serialise_variable(). Data::Dumper input is parsed
+without evaluating Perl and returns undef if it contains unsupported syntax.
+Objects become plain data so a remote peer cannot load or bless a local class.
 
 =cut
 sub unserialise_variable
 {
 my ($str) = @_;
 if (substr($str, 0, 5) eq '$VAR1') {
-	# In Data::Dumper format
-	$rv = eval $str.' $VAR1;';
-	return $rv;
+	# Parse Data::Dumper input as data rather than evaluating Perl code
+	my $rv = eval {
+		local $SIG{'__DIE__'};
+		require Data::Dumper::Parser;
+		Data::Dumper::Parser::parse($str);
+		};
+	return $@ ? undef : $rv;
 	}
 my @v = split(/,/, $str);
 my $rv;
@@ -9626,15 +9638,12 @@ elsif ($v[0] eq 'UNDEF') {
 	$rv = undef;
 	}
 elsif ($v[0] =~ /^OBJECT\s+([A-Za-z0-9_:]+)$/) {
-	# An object hash that we have to re-bless
-	my $cls = $1;
+	# Keep the object's data without loading its remote-selected class
 	$rv = { };
 	for(my $i=1; $i<@v; $i+=2) {
 		$rv->{&unserialise_variable(&un_urlize($v[$i]))} =
 			&unserialise_variable(&un_urlize($v[$i+1]));
 		}
-	eval "use $cls";
-	bless $rv, $cls;
 	}
 return $rv;
 }
