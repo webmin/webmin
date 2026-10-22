@@ -23,12 +23,15 @@ BEGIN {
 
 {
 	package ImportFixture;
-	our (%in, %access, %text, $path, $created, $prepared);
+	our (%in, %access, %text, $path, $created, $prepared, $staged, $staging);
 	# Stub only CGI setup; execute the actual upload branch and filesystem I/O.
+	# Root runs can also take the staged branch, which needs the next three.
 	sub ReadParseMime { }
 	sub can_edit_db { 1 }
 	sub error_setup { }
-	sub supports_users { 0 }
+	sub supports_users { $staged }
+	sub is_mysql_local { 1 }
+	sub mysql_import_tempdir { $staging }
 	sub mysql_import_tempname { $path }
 	sub html_escape { $_[0] }
 	sub text { join(' ', @_) }
@@ -43,13 +46,16 @@ BEGIN {
 		}
 }
 
-# run_upload(mask, [existing]) exercises creation in a shared directory.
+# run_upload(mask, [existing], [staged]) exercises creation in a shared
+# directory, on the fallback path or, as root, on the staged path.
 sub run_upload
 {
-my ($mask, $existing) = @_;
+my ($mask, $existing, $staged) = @_;
 my $dir = tempdir('webmin-mysql-upload-XXXXXX', DIR => '/tmp', CLEANUP => 1);
 chmod(0755, $dir) or die $!;
 local $ImportFixture::path = "$dir/items.csv";
+local $ImportFixture::staged = $staged ? 1 : 0;
+local $ImportFixture::staging = $dir;
 local $ImportFixture::created;
 local $ImportFixture::prepared;
 local %ImportFixture::in = (db => 'fixture', mode => 1,
@@ -86,16 +92,23 @@ if ($existing) {
 	is((stat($target))[2] & 0777, 0644, 'existing permissions are unchanged');
 	}
 else {
+	# Staged uploads are private from the start; fallback uploads keep the
+	# umask mode, so a server that can read the temp directory still works.
+	my $mode = $staged ? 0600 : 0666 & ~$mask;
 	is($error, "UPLOAD_CAPTURED\n", 'upload reaches permission preparation');
-	is_deeply($ImportFixture::created, [ 0600, 0 ],
-		'upload is owner-only before the first byte is written');
-	is_deeply($ImportFixture::prepared, [ 0600, $ImportFixture::in{'upload'} ],
-		'complete CSV stays private before granting the database access');
+	is_deeply($ImportFixture::created, [ $mode, 0 ],
+		sprintf('upload is created with mode %04o before the first byte', $mode));
+	is_deeply($ImportFixture::prepared, [ $mode, $ImportFixture::in{'upload'} ],
+		'complete CSV keeps that mode until permissions are prepared');
 	}
 }
 
 for my $mask (0000, 0002, 0022, 0077) {
-	subtest sprintf('upload with umask %04o', $mask) => sub { run_upload($mask) };
+	subtest sprintf('fallback upload with umask %04o', $mask) => sub { run_upload($mask) };
+	subtest sprintf('staged upload with umask %04o', $mask) => sub {
+		plan(skip_all => 'the staged branch is only reached as root') if ($< != 0);
+		run_upload($mask, undef, 1);
+		};
 	}
 for my $existing ('file', 'symlink') {
 	subtest "reject existing $existing" => sub { run_upload(0022, $existing) };

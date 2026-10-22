@@ -7,8 +7,9 @@ Pass --shared-temp to isolate permissions from a service's PrivateTmp setting;
 this temporarily moves Webmin's MySQL temp files outside /tmp and /var/tmp.
 Use --secure-temp for MySQL's secure_file_priv directory. If that directory
 only permits the daemon and root, use --root-client to skip non-root clients.
-Pass --loopback to point the module at 127.0.0.1 over TCP for the run, which
-must still be treated as a local server.
+Pass --loopback to point the module at 127.0.0.1 over TCP for the run. A
+loopback address may be a tunnel to another host, so the module then keeps
+its ordinary temp directory and only root uploads are expected to import.
 """
 import hashlib
 import html
@@ -53,7 +54,9 @@ checks = 0
 created_account = created_unix = False
 original_local = original_mode = None
 shared_temp = None
-root_client = '--root-client' in sys.argv[1:]
+# On the fallback path the daemon reads the ordinary temp file, so a non-root client cannot be shared with it.
+fallback = '--loopback' in sys.argv[1:]
+root_client = '--root-client' in sys.argv[1:] or fallback
 url = 'https://127.0.0.1:' + miniserv.get('port', '10000')
 cookies = http.cookiejar.CookieJar()
 http = urllib.request.build_opener(
@@ -140,21 +143,30 @@ def import_csv(mode, content, format=1, delete=0, ignore=0):
         (base / 'failed-response.html').write_text(body)
         raise AssertionError('Import did not reach the real client; see guest failed-response.html')
     observation = json.loads(observation.group(1))
-    if observation['mode'] != 0o640:
+    if observation['mode'] != (0o644 if fallback else 0o640):
         (base / 'failed-response.html').write_text(body)
-    check(observation['mode'] == 0o640, 'temporary CSV is not world-readable')
-    check(observation['gid'] == daemon_gid, 'temporary CSV belongs to the running daemon group')
+    if fallback:
+        check(observation['mode'] == 0o644, 'fallback CSV keeps the umask mode so a server that can read /tmp still works')
+    else:
+        check(observation['mode'] == 0o640, 'temporary CSV is not world-readable')
+        check(observation['gid'] == daemon_gid, 'temporary CSV belongs to the running daemon group')
     check(observation['client_readable'], 'configured import-command user can still read the CSV')
-    if observation['other_readable'] is not None:
+    if observation['other_readable'] is not None and not fallback:
         check(not observation['other_readable'], 'unrelated Unix user cannot read the temporary CSV')
+    if observation['listed'] is not None:
+        check(not observation['listed'], 'staging directory is not listed as a database during the import')
+        check(observation['dump_exit'] == 0, 'full database dump succeeds during the import')
     check(not pathlib.Path(observation['path']).exists(), 'temporary CSV removed after import')
     staging = pathlib.Path(observation['path']).parent
-    check(staging.name.startswith('#sql-webmin-import-'), 'CSV uses a per-import server-visible directory')
-    # The CGI removes its directory on exit, just after finishing the response.
-    deadline = time.monotonic() + 2
-    while staging.exists() and time.monotonic() < deadline:
-        time.sleep(0.05)
-    check(not staging.exists(), 'temporary import directory removed after the request')
+    if fallback:
+        check(not staging.name.startswith('#sql-webmin-import-'), 'fallback CSV stays in the ordinary Webmin temp directory')
+    else:
+        check(staging.name.startswith('#sql-webmin-import-'), 'CSV uses a per-import server-visible directory')
+        # The CGI removes its directory on exit, just after finishing the response.
+        deadline = time.monotonic() + 2
+        while staging.exists() and time.monotonic() < deadline:
+            time.sleep(0.05)
+        check(not staging.exists(), 'temporary import directory removed after the request')
     after = source.stat()
     check((before.st_uid, before.st_gid, before.st_mode) == (after.st_uid, after.st_gid, after.st_mode),
           'source permissions and ownership unchanged')
@@ -194,12 +206,24 @@ try:
             target.write_bytes(archive.extractfile(member).read())
     # Observe the real file at the client boundary, without logging credentials.
     wrapper = base / 'import-client.py'
-    wrapper.write_text('#!/usr/bin/python3\nimport json, os, subprocess, sys\n'
+    wrapper.write_text('#!/usr/bin/python3\nimport json, os, shlex, subprocess, sys\n'
         'path = sys.argv[-1]\ns = os.stat(path)\n'
         'other = subprocess.run(["runuser", "-u", "nobody", "--", "test", "-r", path], '
         'capture_output=True).returncode == 0 if os.getuid() == 0 else None\n'
+        # Database listings and full dumps must keep working while the staged file exists.
+        'listed = dump_exit = None\n'
+        'if os.getuid() == 0:\n'
+        '    cfg = dict(l.split("=", 1) for l in open("/etc/webmin/mysql/config").read().splitlines() if "=" in l)\n'
+        '    env = dict(os.environ, MYSQL_PWD=cfg.get("pass", ""))\n'
+        '    user = "--user=" + cfg.get("login", "root")\n'
+        '    names = subprocess.run(shlex.split(cfg["mysql"]) + [user, "-N", "-B", "-e", "SHOW DATABASES"], '
+        'env=env, capture_output=True, text=True).stdout\n'
+        '    listed = "webmin-import" in names\n'
+        '    dump_exit = subprocess.run(shlex.split(cfg["mysqldump"]) + [user, "--all-databases", "--no-data"], '
+        'env=env, capture_output=True).returncode\n'
         'print("CSV_OBSERVATION " + json.dumps(dict(path=path, mode=s.st_mode & 0o777, '
-        'gid=s.st_gid, client_readable=os.access(path, os.R_OK), other_readable=other)), flush=True)\n'
+        'gid=s.st_gid, client_readable=os.access(path, os.R_OK), other_readable=other, '
+        'listed=listed, dump_exit=dump_exit)), flush=True)\n'
         'sys.exit(subprocess.call(' + repr(shlex.split(dbconfig['mysqlimport'])) + ' + sys.argv[1:]))\n')
     wrapper.chmod(0o755)
     module_config = pathlib.Path('/etc/webmin/mysql/config')
@@ -227,7 +251,8 @@ try:
     request('/session_login.cgi', {'user': state['user'], 'pass': state['password'], 'page': '/mysql/'})
     check(any(c.name == 'sid' and c.value not in ('', 'x') for c in cookies), 'authenticated Webmin session')
     sql("SET GLOBAL local_infile=0; SET GLOBAL sql_mode='STRICT_ALL_TABLES'")
-    for mode in (0, 1):
+    # Local-file imports are copied owner-only, which the fallback path cannot share with the daemon.
+    for mode in ((1,) if fallback else (0, 1)):
         for format, content in ((0, b'1,"quoted,value"\n'), (1, b'1,plain\n'), (2, b'1\ttabbed\n')):
             import_csv(mode, content, format=format, delete=1)
             expected = 'quoted,value' if format == 0 else 'plain' if format == 1 else 'tabbed'

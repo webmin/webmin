@@ -45,8 +45,10 @@ my $root = abs_path(File::Spec->catdir(dirname(__FILE__), '..'));
 chdir($root) or die "chdir($root): $!";
 do './mysql/mysql-lib.pl' or die $@ || $!;
 
-subtest 'local MySQL detection includes loopback addresses' => sub {
+subtest 'local MySQL detection keeps loopback addresses remote' => sub {
 	no warnings 'redefine';
+	# A loopback address may be a tunnel or proxy to another host, so only
+	# the socket, localhost and the system hostname's own address are local.
 	# Debian can resolve the system hostname to 127.0.1.1, not 127.0.0.1.
 	local *main::get_system_hostname = sub { 'db.example.test' };
 	my %addresses = (
@@ -59,11 +61,11 @@ subtest 'local MySQL detection includes loopback addresses' => sub {
 		return exists($addresses{$_[0]}) ? $addresses{$_[0]} : $_[0];
 		};
 	for my $host ('', 'localhost', 'db.example.test', 'local-alias.example.test',
-		     '127.0.1.1', '127.0.0.1', '::1') {
+		     '127.0.1.1') {
 		local $main::config{'host'} = $host;
 		ok(main::is_mysql_local(), "$host is local");
 		}
-	for my $host ('192.0.2.20', 'remote.example.test') {
+	for my $host ('127.0.0.1', '::1', '192.0.2.20', 'remote.example.test') {
 		local $main::config{'host'} = $host;
 		ok(!main::is_mysql_local(), "$host remains remote");
 		}

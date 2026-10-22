@@ -11,10 +11,10 @@ $access{'edonly'} && &error($text{'dbase_ecannot'});
 $sql_charset = $in{'charset'};
 
 # Use server-visible storage, not a /tmp hidden by the database service.
+# If the server's directories are not on this host, keep the usual temp path.
 my $import_tmpdir;
 if ($< == 0 && &supports_users() && &is_mysql_local()) {
-	$import_tmpdir = &mysql_import_tempdir($in{'db'}) ||
-		&error($text{'import_etemp'});
+	$import_tmpdir = &mysql_import_tempdir($in{'db'});
 	}
 
 if ($in{'mode'}) {
@@ -23,8 +23,10 @@ if ($in{'mode'}) {
 	$in{'upload_filename'} =~ /([^\/\\\s]+)$/ ||
 		&error($text{'import_eupload'});
 	$file = &mysql_import_tempname($import_tmpdir, $1);
-	# Create a new upload file with owner-only permissions.
-	sysopen(TEMP, $file, O_WRONLY | O_CREAT | O_EXCL, 0600) ||
+	# Create a new upload file. Keep it owner-only when the server will be
+	# granted access below; otherwise the umask applies as before.
+	sysopen(TEMP, $file, O_WRONLY | O_CREAT | O_EXCL,
+		$import_tmpdir ? 0600 : 0666) ||
 		&error(&text('efileopen', &html_escape($file), &html_escape("$!")));
 	print TEMP $in{'upload'};
 	close(TEMP);

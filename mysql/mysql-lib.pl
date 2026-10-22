@@ -1360,7 +1360,6 @@ return @ev;
 sub is_mysql_local
 {
 return $config{'host'} eq '' || $config{'host'} eq 'localhost' ||
-       $config{'host'} eq '127.0.0.1' || $config{'host'} eq '::1' ||
        $config{'host'} eq &get_system_hostname() ||
        &to_ipaddress($config{'host'}) eq &to_ipaddress(&get_system_hostname());
 }
