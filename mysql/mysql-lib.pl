@@ -1185,6 +1185,34 @@ return 0 if (!@uinfo);
 return &set_ownership_permissions($user, undef, 0600, $file);
 }
 
+# set_mysql_import_file_permissions(database, file)
+# Called as root for a local server. Share the temporary file with the daemon's
+# group, keeping its owner so the import-command user can still read it.
+sub set_mysql_import_file_permissions
+{
+my ($db, $file) = @_;
+# Do not change a symlink's target or a directory's permissions.
+my @st = lstat($file);
+return 0 if (!@st || !-f _);
+my $d = &execute_sql_safe($db, "show variables like 'pid_file'");
+my $pidfile = $d->{'data'}->[0]->[1];
+my $pid = $pidfile ? &read_file_contents($pidfile) : undef;
+
+# Leave permissions alone if the local daemon cannot be identified.
+return 1 if (!defined($pid) || $pid !~ /\A([0-9]+)\s*\z/);
+$pid = $1;
+return 1 if (!&foreign_check("proc"));
+&foreign_require("proc", "proc-lib.pl");
+my %proc = &proc::process_info($pid);
+return 1 if (!$proc{'args'} ||
+	$proc{'args'} !~ m{\A(?:\S*/)?(?:mysqld|mariadbd)(?:\s|\z)});
+# The socket can have a different group, so use the running process instead.
+my $group = $proc{'_group'};
+$group = (getpwnam($proc{'user'}))[3] if (!defined($group) || $group eq '');
+return 1 if (!defined($group));
+return &set_ownership_permissions($st[4], $group, 0640, $file);
+}
+
 # execute_sql_file(database, file, [user, pass], [unix-user])
 # Executes some file of SQL commands, and returns the exit status and output
 sub execute_sql_file

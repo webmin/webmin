@@ -45,6 +45,11 @@ if ($in{'table'}) {
 	$file = $nfile;
 	$need_unlink = 1;
 	}
+# A server-side import needs the local database server to read the file
+if ($< == 0 && &supports_users() && &is_mysql_local()) {
+	&set_mysql_import_file_permissions($in{'db'}, $file) ||
+		&error($text{'import_eperms'});
+	}
 $delete = $in{'delete'} ? "-d" : "";
 $ignore = $in{'ignore'} ? "-i" : "";
 if ($in{'format'} == 0) {

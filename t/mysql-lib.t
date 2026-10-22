@@ -108,6 +108,78 @@ subtest 'view definitions quote and parse special-character names' => sub {
 		}
 };
 
+subtest 'server-side imports share the temporary file with the daemon group' => sub {
+	no warnings 'redefine';
+	my $tmp = tempdir('webmin-mysql-import-XXXXXX', DIR => '/tmp', CLEANUP => 1);
+	my $file = "$tmp/items.txt";
+	open(my $fh, '>', $file) or die $!;
+	print $fh "1,fixture\n";
+	close($fh) or die $!;
+	my @uinfo = getpwuid($<);
+	my $pidfile = "$tmp/mysqld.pid";
+	my $pid = "1234\n";
+	my %process = (args => '/usr/sbin/mariadbd', user => $uinfo[0],
+		      _group => 'fixture-daemon-group');
+	my $have_proc = 1;
+	my ($result, @changes) = (1);
+	local *main::execute_sql_safe = sub {
+		is_deeply([ @_ ], [ 'app_db', "show variables like 'pid_file'" ],
+			'ask the connected server for its PID file using an accessible database');
+		return { data => [ [ 'pid_file', $pidfile ] ] };
+		};
+	local *main::read_file_contents = sub { return $pid };
+	local *main::foreign_check = sub { return $have_proc };
+	local *main::foreign_require = sub { };
+	local *proc::process_info = sub {
+		is($_[0], 1234, 'look up the server PID');
+		return %process;
+		};
+	local *main::set_ownership_permissions = sub {
+		push(@changes, [ @_ ]);
+		return $result;
+		};
+	ok(main::set_mysql_import_file_permissions('app_db', $file),
+		'prepare a server-side import');
+	is_deeply(\@changes,
+		[ [ (stat($file))[4], 'fixture-daemon-group', 0640, $file ] ],
+		'keep the owner, grant the daemon group read, deny everyone else');
+	# Some Unix process backends only expose the username.
+	delete($process{'_group'});
+	$process{'args'} = '/usr/sbin/mysqld --daemonize';
+	ok(main::set_mysql_import_file_permissions('app_db', $file),
+		'handle MySQL and a process backend without a group');
+	is($changes[-1]->[1], $uinfo[3], 'fall back to the daemon account group');
+	$result = 0;
+	ok(!main::set_mysql_import_file_permissions('app_db', $file),
+		'permission errors are reported');
+	($result, @changes) = (1);
+	for my $missing (undef, '', "invalid\n", "1234\n5678\n") {
+		$pid = $missing;
+		ok(main::set_mysql_import_file_permissions('app_db', $file),
+			'leave permissions alone without a valid local PID');
+		}
+	$pid = "1234\n";
+	$have_proc = 0;
+	ok(main::set_mysql_import_file_permissions('app_db', $file),
+		'leave permissions alone without the process module');
+	$have_proc = 1;
+	for my $args ('', '/usr/sbin/mysqld_safe', '/bin/sleep 1') {
+		$process{'args'} = $args;
+		ok(main::set_mysql_import_file_permissions('app_db', $file),
+			'do not use a stale PID or a wrapper process');
+		}
+	is_deeply(\@changes, [], 'unidentified daemons do not change permissions');
+	$process{'args'} = '/usr/sbin/mariadbd';
+	ok(!main::set_mysql_import_file_permissions('app_db', "$tmp/missing.txt"),
+		'a missing import file is reported');
+	ok(!main::set_mysql_import_file_permissions('app_db', $tmp),
+		'a directory is rejected');
+	symlink($file, "$tmp/link.txt") or die $!;
+	ok(!main::set_mysql_import_file_permissions('app_db', "$tmp/link.txt"),
+		'a symlink is rejected');
+	is_deeply(\@changes, [], 'invalid targets do not change permissions');
+};
+
 subtest 'sandboxed SQL files use direct input' => sub {
 	no warnings 'redefine';
 	my $tmp = tempdir('webmin-mysql-sandbox-XXXXXX',
