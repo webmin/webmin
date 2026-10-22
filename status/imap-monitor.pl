@@ -17,20 +17,20 @@ eval {
 	($st, $h, $count) = &mailboxes::imap_login($folder);
 	};
 if ($@) {
-	# Perl error
+	# Escape decoded errors before displaying them in the status page.
 	$err = &entities_to_ascii("$@");
 	$err =~ s/at\s+\S+\s+line\s+\d+.*//;
-	return { 'up' => 0, 'desc' => $err };
+	return { 'up' => 0, 'desc' => &html_escape($err) };
 	}
 elsif ($st == 0) {
-	return { 'up' => 0, 'desc' => "Connection failed : $h" };
+	return { 'up' => 0, 'desc' => "Connection failed : ".&html_escape($h) };
 	}
 elsif ($st == 2) {
-	return { 'up' => 0, 'desc' => "Login failed : $h" };
+	return { 'up' => 0, 'desc' => "Login failed : ".&html_escape($h) };
 	exit(3);
 	}
 elsif ($st == 3) {
-	return { 'up' => 0, 'desc' => "Folder selection failed : $h" };
+	return { 'up' => 0, 'desc' => "Folder selection failed : ".&html_escape($h) };
 	}
 else {
 	return { 'up' => 1, 'desc' => "Login OK, found $count messages" };

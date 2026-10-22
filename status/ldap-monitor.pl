@@ -15,8 +15,9 @@ my $err = &ldap_client::generic_ldap_connect($_[0]->{'host'}, $_[0]->{'port'},
 					     $_[0]->{'ssl'}, $_[0]->{'user'},
 					     $_[0]->{'pass'});
 if (!ref($err)) {
+	# LDAP diagnostics may include text supplied by the server.
 	return { 'up' => 0,
-		 'desc' => $err };
+		 'desc' => &html_escape($err, 1) };
 	}
 
 return { 'up' => 1 };

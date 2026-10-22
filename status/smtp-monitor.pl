@@ -109,8 +109,9 @@ eval {
 if ($@) {
         $err = &entities_to_ascii("$@");
         $err =~ s/at\s+\S+\s+line\s+\d+.*//;
+	# Decoded errors and raw authentication replies must remain text.
 	return { 'up' => 0,
-		 'desc' => $err };
+		 'desc' => &html_escape($err) };
 	}
 return { 'up' => 1, 'desc' => $desc };
 }

@@ -68,25 +68,26 @@ local $dbh = $drh->connect($dbistr,
                            $_[0]->{'user'}, $_[0]->{'pass'}, { });
 if (!$dbh) {
 	return { 'up' => 0,
-		 'desc' => &text('query_elogin', $drh->errstr) };
+		 'desc' => &text('query_elogin', &html_escape($drh->errstr)) };
 	}
 
 # Execute the query
 local $cmd = $dbh->prepare($_[0]->{'sql'});
 if (!$cmd) {
 	return { 'up' => 0,
-		 'desc' => &text('query_eprepare', $dbh->errstr) };
+		 'desc' => &text('query_eprepare', &html_escape($dbh->errstr)) };
 	}
 if (!$cmd->execute()) {
 	return { 'up' => 0,
-		 'desc' => &text('query_eexecute', $dbh->errstr) };
+		 'desc' => &text('query_eexecute', &html_escape($dbh->errstr)) };
 	}
 local @r = $cmd->fetchrow();
 $cmd->finish();
 
 if ($_[0]->{'result'} ne '' && $r[0] ne $_[0]->{'result'}) {
+	# Query results are data, not HTML for the status page.
 	return { 'up' => 0,
-		 'desc' => &text('query_ewrong', $r[0]) };
+		 'desc' => &text('query_ewrong', &html_escape($r[0])) };
 	}
 
 return { 'up' => 1 };
