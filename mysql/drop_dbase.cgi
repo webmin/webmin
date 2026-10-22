@@ -21,7 +21,7 @@ elsif ($in{'empty'}) {
 		&execute_sql_logged($in{'db'}, "drop table ".&quotestr($t));
 		}
 	&webmin_log("delete", "db", $in{'db'});
-	&redirect("edit_dbase.cgi?db=$in{'db'}");
+	&redirect("edit_dbase.cgi?db=".&urlize($in{'db'}));
 	}
 else {
 	# Ask the user if he is sure..
@@ -35,7 +35,7 @@ else {
 
 	if (!$access{'delete'}) {
 		# Offer to drop tables only
-		$msg = &text('ddrop_rusure2', "<tt>$in{'db'}</tt>", scalar(@tables), $rows);
+		$msg = &text('ddrop_rusure2', "<tt>".&html_escape($in{'db'})."</tt>", scalar(@tables), $rows);
 		$msg .= " ".$text{'ddrop_mysql'} if ($in{'db'} eq $master_db);
 		print &ui_confirmation_form(
 			"drop_dbase.cgi", $msg,
@@ -45,7 +45,7 @@ else {
 		}
 	else {
 		# Offer to drop DB or tables
-		$msg = &text('ddrop_rusure', "<tt>$in{'db'}</tt>", scalar(@tables), $rows);
+		$msg = &text('ddrop_rusure', "<tt>".&html_escape($in{'db'})."</tt>", scalar(@tables), $rows);
 		$msg .= " ".$text{'ddrop_mysql'} if ($in{'db'} eq $master_db);
 		print &ui_confirmation_form(
 			"drop_dbase.cgi", $msg,
@@ -56,7 +56,7 @@ else {
 			);
 		}
 
-	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+	&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 			 &get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 

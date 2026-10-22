@@ -203,7 +203,7 @@ print &ui_tag('pre', &html_escape($detail),
 if ($in{'clear'}) {
 	# Delete the history file
 	&unlink_file($commands_file.".".$in{'db'});
-	&redirect("exec_form.cgi?db=$in{'db'}");
+	&redirect("exec_form.cgi?db=".&urlize($in{'db'}));
 	}
 else {
 	# Run some SQL
@@ -262,7 +262,7 @@ else {
 			if (@data) {
 				print &text('exec_out',
 				    "<tt>".&html_escape($cmd)."</tt>"),"<p>\n";
-				print &ui_columns_start($d->{'titles'});
+				print &ui_columns_start([ map { &html_escape($_) } @{$d->{'titles'}} ]);
 				foreach $r (@data) {
 					print &ui_columns_row([
 						map { &html_escape($_) } @$r ]);
@@ -293,8 +293,8 @@ else {
 		}
 	&webmin_log("exec", undef, $in{'db'}, \%in);
 
-	&ui_print_footer("exec_form.cgi?db=$in{'db'}", $text{'exec_return'},
-		"edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+	&ui_print_footer("exec_form.cgi?db=".&urlize($in{'db'}), $text{'exec_return'},
+		"edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		&get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 

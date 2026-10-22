@@ -25,7 +25,7 @@ elsif ($in{'exec'}) {
 	}
 
 $access{'edonly'} && &error($text{'dbase_ecannot'});
-$desc = "<tt>$in{'db'}</tt>";
+$desc = "<tt>".&html_escape($in{'db'})."</tt>";
 &ui_print_header($desc, $text{'table_title2'}, "", "table_form");
 
 print &ui_form_start("create_table.cgi", "post");
@@ -67,6 +67,6 @@ print &ui_table_row(undef, &show_table_form($in{"fields"} || 4), 2);
 print &ui_table_end();
 print &ui_form_end([ [ "create", $text{'create'} ] ]);
 
-&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		 &get_databases_return_link($in{'db'}), $text{'index_return'});
 

@@ -8,14 +8,14 @@ $access{'perms'} == 1 || &error($text{'perms_ecannot'});
 
 $mode = &mysql_login_type($mysql_login || 'root');
 if ($mode eq 'socket') {
-	print &ui_alert_box(&text('root_socket', $mysql_login), 'warn');
+	print &ui_alert_box(&text('root_socket', &html_escape($mysql_login)), 'warn');
 	}
 else {
 	print &ui_form_start("save_root.cgi", "post");
 	print &ui_table_start($text{'root_header'}, undef, 2);
 
 	print &ui_table_row($text{'root_user'},
-		$mysql_login ? "<tt>$mysql_login</tt>"
+		$mysql_login ? "<tt>".&html_escape($mysql_login)."</tt>"
 			     : "<label>$text{'root_auto'}</label>");
 	print &ui_table_row($text{'root_pass'},
 		$mysql_pass ? "<tt>".&ui_text_mask($mysql_pass)."</tt>"

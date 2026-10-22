@@ -30,7 +30,7 @@ else {
 print &ui_table_start($text{'tpriv_header'}, undef, 2);
 
 # Apply to DB
-print &ui_table_row($text{'tpriv_db'}, $in{'db'} || $u->[1]);
+print &ui_table_row($text{'tpriv_db'}, &html_escape($in{'db'} || $u->[1]));
 
 # Apply to table
 print &ui_table_row($text{'tpriv_table'},

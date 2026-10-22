@@ -104,7 +104,7 @@ if ($in{'delete'}) {
 		$count++;
 		}
 	&webmin_log("delete", "data", $count, \%in);
-	&redirect("view_table.cgi?db=$in{'db'}&".
+	&redirect("view_table.cgi?db=".&urlize($in{'db'})."&".
 		  "table=".&urlize($in{'table'})."&start=$in{'start'}".
 		  $searchargs.$sortargs);
 	}
@@ -154,7 +154,7 @@ elsif ($in{'save'}) {
 		$count++;
 		}
 	&webmin_log("modify", "data", $count, \%in);
-	&redirect("view_table.cgi?db=$in{'db'}&".
+	&redirect("view_table.cgi?db=".&urlize($in{'db'})."&".
 		  "table=".&urlize($in{'table'})."&start=$in{'start'}".
 		  $searchargs.$sortargs);
 	}
@@ -168,7 +168,7 @@ elsif ($in{'savenew'}) {
 		}
 	&execute_sql_logged($in{'db'}, "insert into ".&quote_table($in{'table'}).
 		    " values (".join(" , ", map { "?" } @set).")", @set);
-	&redirect("view_table.cgi?db=$in{'db'}&".
+	&redirect("view_table.cgi?db=".&urlize($in{'db'})."&".
 		  "table=".&urlize($in{'table'})."&start=$in{'start'}".
 		  $searchargs.$sortargs);
 	&webmin_log("create", "data", undef, \%in);
@@ -177,7 +177,8 @@ elsif ($in{'cancel'} || $in{'new'}) {
 	undef($in{'row'});
 	}
 
-$desc = &text('table_header', "<tt>$in{'table'}</tt>", "<tt>$in{'db'}</tt>");
+$desc = &text('table_header', "<tt>".&html_escape($in{'table'})."</tt>",
+	     "<tt>".&html_escape($in{'db'})."</tt>");
 &ui_print_header($desc, $text{'view_title'}, "");
 
 if ($in{'start'} || $total > $displayconfig{'perpage'}) {
@@ -185,7 +186,7 @@ if ($in{'start'} || $total > $displayconfig{'perpage'}) {
 	if ($in{'start'}) {
 		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s%s'>".
 		     "<img src=../images/left.gif border=0 align=middle></a>\n",
-		     $in{'db'}, $in{'table'},
+		     &urlize($in{'db'}), &urlize($in{'table'}),
 		     $in{'start'} - $displayconfig{'perpage'},
 		     $searchargs, $sortargs;
 		}
@@ -195,7 +196,7 @@ if ($in{'start'} || $total > $displayconfig{'perpage'}) {
 	if ($in{'start'}+$displayconfig{'perpage'} < $total) {
 		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s%s'>".
 		     "<img src=../images/right.gif border=0 align=middle></a> ",
-		     $in{'db'}, $in{'table'},
+		     &urlize($in{'db'}), &urlize($in{'table'}),
 		     $in{'start'} + $displayconfig{'perpage'},
 		     $searchargs, $sortargs;
 		}
@@ -208,23 +209,23 @@ if ($in{'field'}) {
 	# Show details of simple search
 	my $msg = $in{'match'} == 2 || $in{'match'} == 3 ?
 			'view_searchheadnot' : 'view_searchhead';
-	print "<tr> <td><b>",&text($msg, "<tt>$in{'for'}</tt>",
-			   "<tt>$in{'field'}</tt>"),"</b></td>\n";
-	print "<td align=right><a href='view_table.cgi?db=$in{'db'}&",
-	      "table=$in{'table'}$sortargs'>$text{'view_searchreset'}</a></td> </tr>\n";
+	print "<tr> <td><b>",&text($msg, "<tt>".&html_escape($in{'for'})."</tt>",
+			   "<tt>".&html_escape($in{'field'})."</tt>"),"</b></td>\n";
+	print "<td align=right><a href='view_table.cgi?db=",&urlize($in{'db'}),
+	      "&table=",&urlize($in{'table'}),"$sortargs'>$text{'view_searchreset'}</a></td> </tr>\n";
 	}
 elsif ($in{'advanced'}) {
 	# Show details of advanced search
 	print "<tr> <td><b>",&text('view_searchhead2', $advcount),"</b></td>\n";
-	print "<td align=right><a href='view_table.cgi?db=$in{'db'}&",
-	      "table=$in{'table'}$sortargs'>$text{'view_searchreset'}</a></td> </tr>\n";
+	print "<td align=right><a href='view_table.cgi?db=",&urlize($in{'db'}),
+	      "&table=",&urlize($in{'table'}),"$sortargs'>$text{'view_searchreset'}</a></td> </tr>\n";
 	}
 if ($in{'sortfield'}) {
 	# Show current sort order
 	print "<tr> <td><b>",&text($in{'sortdir'} ? 'view_sorthead2' : 'view_sorthead1',
-			      "<tt>$in{'sortfield'}</tt>"),"</b></td>\n";
-	print "<td align=right><a href='view_table.cgi?db=$in{'db'}&",
-	      "table=$in{'table'}$searchargs'>$text{'view_sortreset'}</a></td> </tr>\n";
+			      "<tt>".&html_escape($in{'sortfield'})."</tt>"),"</b></td>\n";
+	print "<td align=right><a href='view_table.cgi?db=",&urlize($in{'db'}),
+	      "&table=",&urlize($in{'table'}),"$searchargs'>$text{'view_sortreset'}</a></td> </tr>\n";
 	}
 
 print "</table>\n";
@@ -281,7 +282,8 @@ if ($total || $in{'new'}) {
 			for($j=0; $j<@str; $j++) {
 				local $nm = $i == $realrows ? $j :
 						"${i}_$str[$j]->{'field'}";
-				$et .= "<tr $cb> <td><b>$str[$j]->{'field'}</b></td> <td>\n";
+				$et .= "<tr $cb> <td><b>".&html_escape($str[$j]->{'field'}).
+				       "</b></td> <td>\n";
 				if ($displayconfig{'blob_mode'} &&
 				    &is_blob($str[$j]) && $d[$j]) {
 					# Show as keep/upload inputs
@@ -394,7 +396,8 @@ if ($total || $in{'new'}) {
 					push(@cols, &ui_link(
 						"@{[&get_webprefix()]}/".
 						  "$module_name/download.cgi?".
-						  "db=$in{'db'}&table=$in{'table'}".
+						  "db=".&urlize($in{'db'}).
+						  "&table=".&urlize($in{'table'}).
 						  "&start=$in{'start'}".
 						  $searchargs.$sortargs.
 						  "&row=$i&col=$j",
@@ -489,14 +492,14 @@ if (!$in{'field'} && $total > $displayconfig{'perpage'}) {
 	}
 
 if ($access{'edonly'}) {
-	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}",$text{'dbase_return'},
+	&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}),$text{'dbase_return'},
 		 &get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 else {
-	&ui_print_footer("edit_table.cgi?db=$in{'db'}&table=".
+	&ui_print_footer("edit_table.cgi?db=".&urlize($in{'db'})."&table=".
 			 &urlize($in{'table'}),
 			$text{'table_return'},
-			"edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+			"edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 			&get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 
@@ -509,8 +512,9 @@ local $dir = $in{'sortfield'} eq $field ? !$in{'sortdir'} : 0;
 local $img = $in{'sortfield'} eq $field && $dir ? "sortascgrey.gif" :
 	     $in{'sortfield'} eq $field && !$dir ? "sortdescgrey.gif" :
 	     $dir ? "sortasc.gif" : "sortdesc.gif";
-return "<a href='view_table.cgi?db=$in{'db'}&table=".
-       &urlize($in{'table'})."&start=$in{'start'}&sortfield=$field&sortdir=$dir$searchargs'>".
-       "<b>$field</b><img valign=middle src=../images/$img border=0>";
+return "<a href='view_table.cgi?db=".&urlize($in{'db'})."&table=".
+       &urlize($in{'table'})."&start=$in{'start'}&sortfield=".
+       &urlize($field)."&sortdir=$dir$searchargs'>".
+       "<b>".&html_escape($field)."</b><img valign=middle src=../images/$img border=0>";
 }
 

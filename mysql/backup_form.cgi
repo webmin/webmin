@@ -22,7 +22,7 @@ $access{'buser'} || &error($text{'dbase_ecannot'});
 if (!-x $cmd) {
 	print &text('backup_edump', "<tt>$cmd</tt>",
 			  "../config.cgi?$module_name"),"<p>\n";
-	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'});
+	&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'});
 	exit;
 	}
 
@@ -33,7 +33,7 @@ if ($in{'all'}) {
 	print "$text{'backup_desc3'}\n";
 	}
 else {
-	print &text('backup_desc', "<tt>$in{'db'}</tt>"),"\n";
+	print &text('backup_desc', "<tt>".&html_escape($in{'db'})."</tt>"),"\n";
 	}
 if ($cron) {
 	print "$text{'backup_desc2'}\n";
@@ -42,7 +42,7 @@ print "<p>\n";
 %c = $module_info{'usermin'} ? %userconfig : %config;
 
 $download = $in{'all'} ? 'database' : $in{'db'};
-print &ui_form_start("backup_db.cgi/$download.sql", "post");
+print &ui_form_start("backup_db.cgi/".&urlize($download).".sql", "post");
 print &ui_hidden("db", $in{'db'});
 print &ui_hidden("all", $in{'all'});
 print &ui_hidden_table_start($text{'backup_header1'}, "width=100%", 2, "main",
@@ -237,7 +237,7 @@ if ($in{'all'}) {
 	&ui_print_footer("", $text{'index_return'});
 	}
 else {
-	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+	&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		 &get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 

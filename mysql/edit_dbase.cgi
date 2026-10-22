@@ -6,7 +6,7 @@ require './mysql-lib.pl';
 &ReadParse();
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 @titles = grep { &can_edit_db($_) } &list_databases();
-$desc = "<tt>$in{'db'}</tt>";
+$desc = "<tt>".&html_escape($in{'db'})."</tt>";
 if (@titles == 1 && $module_info{'usermin'}) {
 	# Single-DB mode
 	&ui_print_header($desc, $text{'dbase_title'}, "", "edit_dbase", 1, 1);
@@ -30,8 +30,9 @@ if ($in{'search'}) {
 	@views = grep { /\Q$in{'search'}\E/i } @views;
 	print "<table width=100%><tr>\n";
 	print "<td> <b>",&text('dbase_showing',
-		"<tt>$in{'search'}</tt>"),"</b></td>\n";
-	print "<td align=right><a href='edit_dbase.cgi?db=$in{'db'}'>",
+		"<tt>".&html_escape($in{'search'})."</tt>"),"</b></td>\n";
+	print "<td align=right><a href='edit_dbase.cgi?db=",
+		&urlize($in{'db'}),"'>",
 		"$text{'view_searchreset'}</a></td>\n";
 	print "</tr></table>\n";
 	}
@@ -82,11 +83,11 @@ elsif (@titles || @indexes) {
 		   ( map { "images/index.gif" } @indexes ),
 		   ( map { "images/view.gif" } @views ),
 		 );
-	@links = ( ( map { "edit_table.cgi?db=$in{'db'}&table=".&urlize($_) }
+	@links = ( ( map { "edit_table.cgi?db=".&urlize($in{'db'})."&table=".&urlize($_) }
 		     	 @titles ),
-		   ( map { "edit_index.cgi?db=$in{'db'}&index=".&urlize($_) }
+		   ( map { "edit_index.cgi?db=".&urlize($in{'db'})."&index=".&urlize($_) }
                          @indexes ),
-		   ( map { "edit_view.cgi?db=$in{'db'}&view=".&urlize($_) }
+		   ( map { "edit_view.cgi?db=".&urlize($in{'db'})."&view=".&urlize($_) }
                          @views ),
 		 );
 	@descs = ( ( map { "" } @titles ),

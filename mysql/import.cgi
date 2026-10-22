@@ -32,7 +32,7 @@ else {
 		&error($text{'import_efile'});
 	$need_unlink = 1;
 	&ui_print_header(undef, $text{'import_title'}, "");
-	print &text('import_fileout', "<tt>$in{'file'}</tt>"),"<p>\n";
+	print &text('import_fileout', "<tt>".&html_escape($in{'file'})."</tt>"),"<p>\n";
 	}
 
 # Build the import command
@@ -72,5 +72,5 @@ print "</pre>\n";
 					  'file' => $in{'file'} });
 unlink($file) if ($need_unlink);
 
-&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'});
+&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'});
 

@@ -6,10 +6,11 @@ require './mysql-lib.pl';
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 $access{'edonly'} && &error($text{'dbase_ecannot'});
 
-$desc = &text('table_header', "<tt>$in{'table'}</tt>", "<tt>$in{'db'}</tt>");
+$desc = &text('table_header', "<tt>".&html_escape($in{'table'})."</tt>",
+	     "<tt>".&html_escape($in{'db'})."</tt>");
 &ui_print_header($desc, $text{'csv_title'}, "", "csv");
 
-print &ui_form_start("csv.cgi/$in{'table'}.csv", "post");
+print &ui_form_start("csv.cgi/".&urlize($in{'table'}).".csv", "post");
 print &ui_hidden("db", $in{'db'}),"\n";
 print &ui_hidden("table", $in{'table'}),"\n";
 print &ui_table_start($text{'csv_header'}, undef, 2);
@@ -45,5 +46,5 @@ print &ui_table_row($text{'csv_cols'},
 print &ui_table_end();
 print &ui_form_end([ [ "ok", $text{'csv_ok'} ] ]);
 
-&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		 &get_databases_return_link($in{'db'}), $text{'index_return'});
