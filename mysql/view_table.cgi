@@ -208,23 +208,27 @@ if ($in{'field'}) {
 	# Show details of simple search
 	my $msg = $in{'match'} == 2 || $in{'match'} == 3 ?
 			'view_searchheadnot' : 'view_searchhead';
-	print "<tr> <td><b>",&text($msg, "<tt>$in{'for'}</tt>",
-			   "<tt>$in{'field'}</tt>"),"</b></td>\n";
-	print "<td align=right><a href='view_table.cgi?db=$in{'db'}&",
-	      "table=$in{'table'}$sortargs'>$text{'view_searchreset'}</a></td> </tr>\n";
+	print "<tr> <td><b>",&text($msg,
+			"<tt>".&html_escape($in{'for'})."</tt>",
+			"<tt>".&html_escape($in{'field'})."</tt>"),"</b></td>\n";
+	print "<td align=right><a href='view_table.cgi?db=".&urlize($in{'db'})."&".
+	      "table=".&urlize($in{'table'})."$sortargs'>".
+	      "$text{'view_searchreset'}</a></td> </tr>\n";
 	}
 elsif ($in{'advanced'}) {
 	# Show details of advanced search
 	print "<tr> <td><b>",&text('view_searchhead2', $advcount),"</b></td>\n";
-	print "<td align=right><a href='view_table.cgi?db=$in{'db'}&",
-	      "table=$in{'table'}$sortargs'>$text{'view_searchreset'}</a></td> </tr>\n";
+	print "<td align=right><a href='view_table.cgi?db=".&urlize($in{'db'})."&".
+	      "table=".&urlize($in{'table'})."$sortargs'>".
+	      "$text{'view_searchreset'}</a></td> </tr>\n";
 	}
 if ($in{'sortfield'}) {
 	# Show current sort order
 	print "<tr> <td><b>",&text($in{'sortdir'} ? 'view_sorthead2' : 'view_sorthead1',
 			      "<tt>$in{'sortfield'}</tt>"),"</b></td>\n";
-	print "<td align=right><a href='view_table.cgi?db=$in{'db'}&",
-	      "table=$in{'table'}$searchargs'>$text{'view_sortreset'}</a></td> </tr>\n";
+	print "<td align=right><a href='view_table.cgi?db=".&urlize($in{'db'})."&".
+	      "table=".&urlize($in{'table'})."$searchargs'>".
+	      "$text{'view_sortreset'}</a></td> </tr>\n";
 	}
 
 print "</table>\n";
@@ -394,8 +398,9 @@ if ($total || $in{'new'}) {
 					push(@cols, &ui_link(
 						"@{[&get_webprefix()]}/".
 						  "$module_name/download.cgi?".
-						  "db=$in{'db'}&table=$in{'table'}".
-						  "&start=$in{'start'}".
+						  "db=".&urlize($in{'db'}).
+						  "&table=".&urlize($in{'table'}).
+						  "&start=".&urlize($in{'start'}).
 						  $searchargs.$sortargs.
 						  "&row=$i&col=$j",
 						$text{'view_download'}));
@@ -489,15 +494,18 @@ if (!$in{'field'} && $total > $displayconfig{'perpage'}) {
 	}
 
 if ($access{'edonly'}) {
-	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}",$text{'dbase_return'},
-		 &get_databases_return_link($in{'db'}), $text{'index_return'});
+	&ui_print_footer(
+		"edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
+		&get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 else {
-	&ui_print_footer("edit_table.cgi?db=$in{'db'}&table=".
-			 &urlize($in{'table'}),
-			$text{'table_return'},
-			"edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
-			&get_databases_return_link($in{'db'}), $text{'index_return'});
+	&ui_print_footer("edit_table.cgi?db=".&urlize($in{'db'}).
+			 "&table=".&urlize($in{'table'}),
+			 	$text{'table_return'},
+			"edit_dbase.cgi?db=".&urlize($in{'db'}),
+				$text{'dbase_return'},
+			&get_databases_return_link($in{'db'}),
+				$text{'index_return'});
 	}
 
 # column_sort_link(name)
@@ -509,8 +517,9 @@ local $dir = $in{'sortfield'} eq $field ? !$in{'sortdir'} : 0;
 local $img = $in{'sortfield'} eq $field && $dir ? "sortascgrey.gif" :
 	     $in{'sortfield'} eq $field && !$dir ? "sortdescgrey.gif" :
 	     $dir ? "sortasc.gif" : "sortdesc.gif";
-return "<a href='view_table.cgi?db=$in{'db'}&table=".
-       &urlize($in{'table'})."&start=$in{'start'}&sortfield=$field&sortdir=$dir$searchargs'>".
+return "<a href='view_table.cgi?db=".&urlize($in{'db'}).
+       "&table=".&urlize($in{'table'})."&start=".&urlize($in{'start'}).
+       "&sortfield=$field&sortdir=$dir$searchargs'>".
        "<b>$field</b><img valign=middle src=../images/$img border=0>";
 }
 

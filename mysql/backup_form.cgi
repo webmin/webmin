@@ -33,7 +33,8 @@ if ($in{'all'}) {
 	print "$text{'backup_desc3'}\n";
 	}
 else {
-	print &text('backup_desc', "<tt>$in{'db'}</tt>"),"\n";
+	print &text('backup_desc',
+		    "<tt>".&html_escape($in{'db'})."</tt>"),"\n";
 	}
 if ($cron) {
 	print "$text{'backup_desc2'}\n";
@@ -237,7 +238,8 @@ if ($in{'all'}) {
 	&ui_print_footer("", $text{'index_return'});
 	}
 else {
-	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
-		 &get_databases_return_link($in{'db'}), $text{'index_return'});
+	&ui_print_footer(
+		"edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
+		&get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 

@@ -19,7 +19,8 @@ $in{'search'} =~ /^\// && $in{'search'} !~ /\.\./ ||
 
 @dirs = &list_directories();
 %got = map { ( "$_->[0]/$config{'htaccess'}", 1 ) } @dirs;
-print "<b>",&text('search_doing', "<tt>$in{'search'}</tt>"),"</b><p>\n";
+print "<b>",&text('search_doing',
+		  "<tt>".&html_escape($in{'search'})."</tt>"),"</b><p>\n";
 
 # Use the find command
 &switch_user();

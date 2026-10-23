@@ -36,7 +36,8 @@ if ($in{'new'}) {
 	}
 else {
 	# Just show fill action file contents
-	print &ui_table_row($text{'edit_name'}, "<tt>$in{'name'}</tt>");
+	print &ui_table_row($text{'edit_name'},
+			    "<tt>".&html_escape($in{'name'})."</tt>");
 	print &ui_hidden("name", $in{'name'});
 
 	$script = &read_file_contents($rc->{'file'});
