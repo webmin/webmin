@@ -647,7 +647,9 @@ input[type="reset"]:disabled, button:disabled {
 	padding: 0 8px 0 7px;
 	font-size: 0.8em;
 	line-height: 1.25;
-	min-height: calc(1lh + 2px);
+	/* Let the border round separately at fractional browser zoom levels. */
+	box-sizing: content-box;
+	min-height: 1lh;
 }
 /* Center compact labels by their cap height without shrinking the button. */
 :is(button, a, summary).ui_action.ui_action_small > .ui_action_content > span {

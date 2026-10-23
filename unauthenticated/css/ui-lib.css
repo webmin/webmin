@@ -1716,9 +1716,10 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
  * A details element : the summary is the button, drawn as an action
  * button, and the menu panel floats under it. */
 
+/* Match an action button's height without a text line around the summary. */
 .ui_dropdown {
 	position: relative;
-	display: inline-block;
+	display: inline-flex;
 	vertical-align: middle;
 }
 .ui_dropdown > summary.ui_dropdown_toggle {
