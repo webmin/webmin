@@ -285,12 +285,12 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 .ui_page svg.ui_svg_icon { flex-shrink: 0; vertical-align: -0.18em; }
 
 /* Underline plain text links, but keep links styled as buttons undecorated. */
-.ui_dl_row dd a:not(.ui_link, .ui_action),
-.ui_feed_text a:not(.ui_link, .ui_action),
-.ui_list_desc a:not(.ui_link, .ui_action),
-.ui_empty_desc a:not(.ui_link, .ui_action),
-.ui_card_desc a:not(.ui_link, .ui_action),
-.ui_field_help a:not(.ui_link, .ui_action) {
+.ui_dl_row dd a:not(.ui_link, .ui_action, .ui_dropdown_item),
+.ui_feed_text a:not(.ui_link, .ui_action, .ui_dropdown_item),
+.ui_list_desc a:not(.ui_link, .ui_action, .ui_dropdown_item),
+.ui_empty_desc a:not(.ui_link, .ui_action, .ui_dropdown_item),
+.ui_card_desc a:not(.ui_link, .ui_action, .ui_dropdown_item),
+.ui_field_help a:not(.ui_link, .ui_action, .ui_dropdown_item) {
 	text-decoration: underline;
 	text-underline-offset: 0.15em;
 }
