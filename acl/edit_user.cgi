@@ -90,18 +90,25 @@ my @mcan = $access{'gassign'} eq '*' ?
 		( ( map { $_->{'name'} } @glist ), '_none' ) :
 		split(/\s+/, $access{'gassign'});
 my %gcan = map { $_, 1 } @mcan;
+# Find the user's group even when this editor cannot change it.
 my $memg;
+foreach my $g (@glist) {
+	if (&indexof($user{'name'}, @{$g->{'members'}}) >= 0 ||
+	    $in{'clone'} &&
+	     &indexof($in{'clone'}, @{$g->{'members'}}) >= 0) {
+		# A clone starts in the same group as its source user.
+		$memg = $g;
+		}
+	}
+# Show the group selector when this editor may change membership.
 if (@glist && %gcan) {
 	my @opts = ( );
 	if ($gcan{'_none'}) {
+		# Allow leaving a group only when the editor has permission.
 		push(@opts, [ undef, "&lt;$text{'edit_none'}&gt;" ]);
 		}
+	# Keep the current group available even if it cannot be newly assigned.
 	foreach my $g (@glist) {
-		if (&indexof($user{'name'}, @{$g->{'members'}}) >= 0 ||
-		    $in{'clone'} &&
-		     &indexof($in{'clone'}, @{$g->{'members'}}) >= 0) {
-			$memg = $g;
-			}
 		next if (!$gcan{$g->{'name'}} && $memg ne $g);
 		push(@opts, [ $g->{'name'} ]);
 		}
@@ -375,8 +382,8 @@ elsif ($miniserv{'twofactor_provider'}) {
 		&ui_submit($text{'edit_twofactoradd'}, "twofactor"));
 	}
 
-# Can accept RPC calls?
-if ($access{'acl'} && !$safe) {
+# RPC is a global permission and cannot be edited on a group member.
+if ($access{'acl'} && !$memg->{'name'} && !$safe) {
 	print &ui_table_row(&hlink($text{'acl_rpc'}, 'rpc'),
 		&ui_radio("rpc", int($uaccess{'rpc'}),
 			  [ [ 1, $text{'acl_rpc1'} ],
@@ -462,9 +469,9 @@ print &ui_table_row(undef, &ui_links_row(\@links).
                            &ui_links_row(\@links), 2);
 print &ui_hidden_table_end("mods");
 
-# Add global ACL section, but only if not set from the group
-my $groupglobal = $memg && -r "$config_directory/$memg->{'name'}.acl";
-if ($access{'acl'} && !$groupglobal && !$safe) {
+# Group members inherit global permissions, even without a local ACL file.
+# Hide these fields because save_user.cgi ignores individual edits.
+if ($access{'acl'} && !$memg->{'name'} && !$safe) {
 	print &ui_hidden_table_start($text{'edit_global'}, "width=100%", 2,
 				     "global", 0, [ "width=30%" ]);
 	print &ui_hidden("acl_security_form", 1);
