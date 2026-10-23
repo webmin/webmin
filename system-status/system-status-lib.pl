@@ -449,7 +449,14 @@ my @rv;
 if (!$config{'collect_notemp'} &&
     &foreign_installed("smart-status")) {
 	&foreign_require("smart-status");
-	foreach my $d (&smart_status::list_smart_disks_partitions()) {
+	# Scheduled SMART collection needs fresh disk metadata, not partitions.
+	my $error;
+	my @disks = &smart_status::list_smart_disks_partitions(1, \$error);
+	if ($error) {
+		warn "get_current_drive_temps : SMART disk discovery failed: $error\n";
+		return ();
+		}
+	foreach my $d (@disks) {
 		# Temperature collection does not need self-test logs.
 		my $st = &smart_status::get_drive_status($d->{'device'}, $d, 1);
 		foreach my $a (@{$st->{'attribs'}}) {
