@@ -284,11 +284,13 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 .ui_page h1, .ui_page h2, .ui_page p, .ui_page dl, .ui_page dd { margin: 0; }
 .ui_page svg.ui_svg_icon { flex-shrink: 0; vertical-align: -0.18em; }
 
-/* Plain links inside widget text are underlined so they still read as
- * links next to chips and badges. Theme buttons made of ui_link are not. */
-.ui_dl_row dd a:not(.ui_link), .ui_feed_text a:not(.ui_link),
-.ui_list_desc a:not(.ui_link), .ui_empty_desc a:not(.ui_link),
-.ui_card_desc a:not(.ui_link), .ui_field_help a:not(.ui_link) {
+/* Underline plain text links, but keep links styled as buttons undecorated. */
+.ui_dl_row dd a:not(.ui_link, .ui_action),
+.ui_feed_text a:not(.ui_link, .ui_action),
+.ui_list_desc a:not(.ui_link, .ui_action),
+.ui_empty_desc a:not(.ui_link, .ui_action),
+.ui_card_desc a:not(.ui_link, .ui_action),
+.ui_field_help a:not(.ui_link, .ui_action) {
 	text-decoration: underline;
 	text-underline-offset: 0.15em;
 }
@@ -672,9 +674,6 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	--ui-action-disabled-text: var(--ui-disabled-text);
 	--ui-action-disabled-bg: var(--ui-disabled-bg);
 	--ui-action-disabled-border: var(--ui-disabled-border);
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
 	box-sizing: border-box;
 	appearance: none;
 	margin: 0;
@@ -692,6 +691,12 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	vertical-align: middle;
 	white-space: nowrap;
 	cursor: pointer;
+}
+/* Keep icon and label alignment when themes supply native button styles. */
+:is(button, a, summary).ui_action {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 .ui_action .ui_action_content {
 	display: inline-flex;
@@ -762,7 +767,6 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 }
 :is(button, a, summary).ui_action_rounded { border-radius: 4px; }
 :is(button, a, summary).ui_action_pill { border-radius: 999px; }
-.ui_action .ui_action_content > span { align-self: baseline; }
 .ui_action .ui_svg_icon { width: 1em; height: 1em; flex-shrink: 0; }
 .ui_action_small .ui_svg_icon_trash {
 	transform: translateY(-0.25px);

@@ -4349,6 +4349,7 @@ my %ui_svg_icons = (
 	'minus'          => 'M3 8h10',
 	'refresh'        => 'M13.2 6.2A5.5 5.5 0 0 0 3.4 4.6|M2.8 9.8a5.5 5.5 0 0 0 9.8 1.6|M13.5 2.5v3.7H9.8|M2.5 13.5V9.8h3.7',
 	'play'           => 'M5.5 3.6v8.8L12.5 8z',
+	'pause'          => 'M4 3.6h2.5v8.8H4z|M9.5 3.6H12v8.8H9.5z',
 	'stop'           => 'M4.7 4.7h6.6v6.6H4.7z',
 	'power'          => 'M8 2.2v5.6|M11.4 4.4a5.4 5.4 0 1 1-6.8 0',
 	'clock'          => 'M8 14.25A6.25 6.25 0 1 0 8 1.75a6.25 6.25 0 0 0 0 12.5z|M8 4.8V8l2.2 1.4',
@@ -4391,8 +4392,8 @@ my %ui_svg_icons = (
 	);
 
 # Icons drawn filled rather than stroked
-my %ui_svg_icons_filled = ( 'play' => 1, 'stop' => 1, 'dot' => 1,
-			    'ellipsis' => 1 );
+my %ui_svg_icons_filled = ( 'play' => 1, 'pause' => 1, 'stop' => 1,
+			    'dot' => 1, 'ellipsis' => 1 );
 
 # Default badge icons per state
 my %ui_state_icons = (
