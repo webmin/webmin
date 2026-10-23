@@ -135,19 +135,22 @@ foreach $host (@phosts) {
 
 &ui_print_footer("", $text{'index_return'});
 
-# copy_acls_for(&user|&group, &server)
-# Copy all .acl files from the server on which a user or group does exist
-# to the given server
+# copy_acls_for(&account, &server, type)
+# Copy global and module ACLs from account->{source} to the destination server.
+# type is user or group and selects the matching remote ACL helpers.
 sub copy_acls_for
 {
 local $source = $_[0]->{'source'};
 &remote_foreign_require($source->{'host'}, "acl", "acl-lib.pl")
 	if (!$done_require{$source->{'host'}}++);
 local $suffix = $_[2] eq "user" ? "module_acl" : "group_module_acl";
-foreach $m (@{$_[0]->{'modules'}}) {
+# Global permissions include the account's API-only restriction.
+foreach $m (&unique('', @{$_[0]->{'modules'}})) {
 	local %acl = &remote_foreign_call($source->{'host'}, "acl",
 					  "get_".$suffix, $_[0]->{'name'},$m);
 	if (%acl) {
+		# Only populated source ACLs need a write on the new destination
+		# account.
 		&remote_foreign_call($_[1]->{'host'}, "acl", "save_".$suffix,
 				     \%acl, $_[0]->{'name'}, $m);
 		}

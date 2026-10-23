@@ -10,6 +10,10 @@ require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access, $config_directory, $base_remote_user);
 &foreign_require("webmin", "webmin-lib.pl");
 &ReadParse();
+# Only permission editors may change global ACLs, including API-only access.
+if ($in{'acl_security_form'} && !$access{'acl'}) {
+	&error($text{'acl_emod'});
+	}
 
 # Check for special button clicks, and redirect
 if ($in{'but_clone'}) {
@@ -55,6 +59,15 @@ else {
 	$access{'create'} || &error($text{'save_ecreate'});
 	}
 &error_setup($text{'save_err'});
+
+# Validate the endpoint before creating or changing any account. A form error
+# must not leave behind a new login without its requested restriction.
+my %global_access;
+if ($in{'acl_security_form'} && !$in{'safe'}) {
+	&foreign_require("", "acl_security.pl");
+	&foreign_call("", "acl_security_save", \%global_access, \%in);
+	$global_access{'rpc'} = $in{'rpc'};
+	}
 
 if ((!$in{'old'} ||
      $in{'name'} ne $in{'old'}) &&
@@ -194,11 +207,6 @@ if ($newgroup) {
 		}
 	@mods = &unique(@mods, @{$newgroup->{'modules'}});
 	$user{'ownmods'} = \@ownmods;
-
-	# Copy ACL files for group
-	my $name = $in{'old'} ? $in{'old'} : $in{'name'};
-	&copy_group_user_acl_files($in{'group'}, $name,
-			      [ @{$newgroup->{'modules'}}, "" ]);
 	}
 $user{'modules'} = \@mods;
 
@@ -376,16 +384,19 @@ else {
 		}
 	}
 
+# Database users need an ID before their inherited ACLs can be stored.
+# Copy after creation or rename so group restrictions reach the actual account.
+if ($newgroup) {
+	&copy_group_user_acl_files($in{'group'}, $in{'name'},
+			      [ @{$newgroup->{'modules'}}, "" ]);
+	}
+
 my $aclfile = "$config_directory/$in{'name'}.acl";
 if ($in{'acl_security_form'} && !$newgroup && !$in{'safe'}) {
 	# Update user's global ACL, and merge in RPC setting which has
 	# been moved out of this form
-	&foreign_require("", "acl_security.pl");
-	my %uaccess;
-	&foreign_call("", "acl_security_save", \%uaccess, \%in);
-	$uaccess{'rpc'} = $in{'rpc'};
 	&lock_file($aclfile);
-	&save_module_acl(\%uaccess, $in{'name'}, "", 1);
+	&save_module_acl(\%global_access, $in{'name'}, "", 1);
 	&set_ownership_permissions(undef, undef, 0640, $aclfile);
 	&unlock_file($aclfile);
 	}

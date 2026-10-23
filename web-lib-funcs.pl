@@ -5074,6 +5074,7 @@ sub get_module_acl
 {
 my $u = defined($_[0]) ? $_[0] : $base_remote_user;
 my $m = defined($_[1]) ? $_[1] : &get_module_name();
+$m = '' if ($m eq '.');	# The global ACL has one database key
 my $norbac = $_[2];
 my $nodef = $_[3];
 $m ||= "";
@@ -5103,6 +5104,9 @@ if ($u ne '') {
 		# and if the user might be in the DB
 		my ($dbh, $proto, $prefix, $args) = &connect_userdb($userdb);
 		if (!ref($dbh)) {
+			# A global ACL may contain an API-only restriction. Do not
+			# fall back to local defaults when its database is unavailable.
+			die "Cannot read global ACL from user database\n" if ($m eq '');
 			print STDERR "Failed to connect to user database : ".
 				     $dbh."\n";
 			}
@@ -5215,6 +5219,7 @@ sub get_group_module_acl
 {
 my $g = $_[0];
 my $m = defined($_[1]) ? $_[1] : &get_module_name();
+$m = '' if ($m eq '.');	# The global ACL has one database key
 my $mdir = &module_root_directory($m);
 my %rv;
 if (!$_[2]) {
@@ -5314,11 +5319,17 @@ Updates the acl hash for some user and module. The parameters are :
 
 =item never-update-group - Never update the user's group's ACL
 
+For global permissions, an omitted api_only setting is preserved, including
+when resetting the ACL. Pass api_only => '' to explicitly remove the restriction.
+
 =cut
 sub save_module_acl
 {
+# Replacing the ACL argument must not replace the caller's hash reference.
+local @_ = @_;
 my $u = defined($_[1]) ? $_[1] : $base_remote_user;
 my $m = defined($_[2]) ? $_[2] : &get_module_name();
+$m = '' if ($m eq '.');	# The global ACL has one database key
 $u eq "webmin" && &error("Invalid username webmin for ACL");
 if (!$_[3] && &foreign_check("acl")) {
 	# Check if this user is a member of a group, and if he gets the
@@ -5334,6 +5345,17 @@ if (!$_[3] && &foreign_check("acl")) {
 		}
 	if ($group) {
 		&save_group_module_acl($_[0], $group->{'name'}, $m);
+		}
+	}
+
+# Global ACL editors and resets must explicitly clear an API restriction.
+# Copy the input before retaining it, since group updates reuse the same hash.
+if (($m eq '' || $m eq '.') && (!$_[0] || !exists($_[0]->{'api_only'}))) {
+	my %old = &get_module_acl($u, $m, 1, 1);
+	if ($old{'api_only'}) {
+		# Retain only an existing restriction; explicit empty values
+		# still clear it.
+		$_[0] = { %{$_[0] || {}}, 'api_only' => $old{'api_only'} };
 		}
 	}
 
@@ -5358,7 +5380,8 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 		# Replace ACLs for user
 		if ($foundindb) {
 			my $cmd = $dbh->prepare("delete from webmin_user_acl ".
-						"where id = ? and module = ?");
+						"where id = ? and module = ?".
+						($m eq '' ? " and attr <> 'api_only'" : ""));
 			if (!$cmd || !$cmd->execute($id, $m)) {
 				&disconnect_userdb($userdb, $dbh);
 				&error(&text('euserdbacl', $dbh->errstr));
@@ -5371,6 +5394,8 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 				$cmd || &error(&text('euserdbacl2',
 						     $dbh->errstr));
 				foreach my $a (keys %{$_[0]}) {
+					# Keep the endpoint row present during ACL replacement.
+					next if ($m eq '' && $a eq 'api_only');
 					if (!$cmd->execute($id,$m,$a,
 							   $_[0]->{$a})) {
 						&disconnect_userdb(
@@ -5379,6 +5404,15 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 							     $dbh->errstr));
 						}
 					$cmd->finish();
+					}
+				}
+			if ($m eq '' && $_[0] && exists($_[0]->{'api_only'})) {
+				# A failed edit must leave the previous restriction in place.
+				my $err = &save_userdb_api_only($dbh, 'webmin_user_acl',
+					$id, $_[0]->{'api_only'});
+				if ($err) {
+					&disconnect_userdb($userdb, $dbh);
+					&error(&text('euserdbacl2', $err));
 					}
 				}
 			}
@@ -5465,11 +5499,17 @@ Updates the acl hash for some group and module. The parameters are :
 
 =item never-update-group - Never update the parent group's ACL
 
+For global permissions, an omitted api_only setting is preserved, including
+when resetting the ACL. Pass api_only => '' to explicitly remove the restriction.
+
 =cut
 sub save_group_module_acl
 {
+# Replacing the ACL argument must not replace the caller's hash reference.
+local @_ = @_;
 my $g = $_[1];
 my $m = defined($_[2]) ? $_[2] : &get_module_name();
+$m = '' if ($m eq '.');	# The global ACL has one database key
 if (!$_[3] && &foreign_check("acl")) {
 	# Check if this group is a member of a group, and if it gets the
 	# module from a group. If so, update the parent ACL as well
@@ -5484,6 +5524,17 @@ if (!$_[3] && &foreign_check("acl")) {
 		}
 	if ($group) {
 		&save_group_module_acl($_[0], $group->{'name'}, $m);
+		}
+	}
+
+# Global ACL editors and resets must explicitly clear an API restriction.
+# Copy the input before retaining it, since group updates reuse the same hash.
+if (($m eq '' || $m eq '.') && (!$_[0] || !exists($_[0]->{'api_only'}))) {
+	my %old = &get_group_module_acl($g, $m, 1);
+	if ($old{'api_only'}) {
+		# Retain only an existing restriction; explicit empty values
+		# still clear it.
+		$_[0] = { %{$_[0] || {}}, 'api_only' => $old{'api_only'} };
 		}
 	}
 
@@ -5508,7 +5559,8 @@ if ($userdb) {
 		# Replace ACLs for group
 		if ($foundindb) {
 			my $cmd = $dbh->prepare("delete from webmin_group_acl ".
-						"where id = ? and module = ?");
+						"where id = ? and module = ?".
+						($m eq '' ? " and attr <> 'api_only'" : ""));
 			if (!$cmd || !$cmd->execute($id, $m)) {
 				&disconnect_userdb($userdb, $dbh);
 				&error(&text('egroupdbacl', $dbh->errstr));
@@ -5524,6 +5576,8 @@ if ($userdb) {
 						     $dbh->errstr));
 					}
 				foreach my $a (keys %{$_[0]}) {
+					# Keep the endpoint row present during ACL replacement.
+					next if ($m eq '' && $a eq 'api_only');
 					if (!$cmd->execute($id,$m,$a,
 							   $_[0]->{$a})) {
 						&disconnect_userdb(
@@ -5532,6 +5586,15 @@ if ($userdb) {
 							     $dbh->errstr));
 						}
 					$cmd->finish();
+					}
+				}
+			if ($m eq '' && $_[0] && exists($_[0]->{'api_only'})) {
+				# A failed edit must leave the previous restriction in place.
+				my $err = &save_userdb_api_only($dbh, 'webmin_group_acl',
+					$id, $_[0]->{'api_only'});
+				if ($err) {
+					&disconnect_userdb($userdb, $dbh);
+					&error(&text('egroupdbacl2', $err));
 					}
 				}
 			}
@@ -5604,6 +5667,41 @@ if (!$foundindb) {
 		&unlink_file("$config_directory/$m/$g.gacl");
 		}
 	}
+}
+
+# save_userdb_api_only(&database, table, id, endpoint)
+# Update a SQL account's global endpoint without deleting its policy row.
+# table is webmin_user_acl or webmin_group_acl; an empty endpoint explicitly
+# clears the restriction. Returns an error string, or undef on success.
+sub save_userdb_api_only
+{
+my ($dbh, $table, $id, $endpoint) = @_;
+$table =~ /\Awebmin_(?:user|group)_acl\z/ || return 'Invalid ACL table';
+my $select = $dbh->prepare("select value from $table ".
+	"where id = ? and module = '' and attr = 'api_only'");
+$select && $select->execute($id) || return $dbh->errstr;
+my @old = $select->fetchrow();
+my $err = $select->errstr if ($select->err);
+$select->finish();
+return $err if ($err);
+if (@old && $old[0] eq $endpoint) {
+	# Routine saves need not rewrite an unchanged restriction.
+	return undef;
+	}
+my $sql;
+if (@old) {
+	# One UPDATE keeps the old restriction visible until the new one is saved.
+	$sql = "update $table set value = ? ".
+		"where id = ? and module = '' and attr = 'api_only'";
+	}
+else {
+	# A new restriction has no existing row to replace.
+	$sql = "insert into $table (value,id,module,attr) values (?,?,'','api_only')";
+	}
+my $write = $dbh->prepare($sql);
+$write && $write->execute($endpoint, $id) || return $dbh->errstr;
+$write->finish();
+return undef;
 }
 
 =head2 init_config
@@ -6022,6 +6120,28 @@ if ($module_name) {
 			 &get_all_module_infos(2);
 	%module_info = %$mi;
 	$module_root_directory = &module_root_directory($module_name);
+	}
+
+# Require a trusted CGI to opt in even after miniserv has checked its path.
+# This also enforces the restriction when another web server runs the CGI.
+if ($main::webmin_script_type eq 'web') {
+	my $endpoint = &webmin_user_api_only();
+	if ($endpoint && $main::allow_api_only ne $endpoint) {
+		# Only trusted endpoint code can opt in before initialization.
+		# Do not render a theme here: it may load modules whose own
+		# initialization has not finished, causing recursive access checks.
+		# miniserv builds in-process status lines from these fields.
+		# Other CGI hosts use the Status header below.
+		if ($miniserv::doing_cgi_eval) {
+			# Set the status used by miniserv's in-process response
+			# writer.
+			$miniserv::ok_code = 403;
+			$miniserv::ok_message = 'Forbidden';
+			}
+		print "Status: 403 Forbidden\r\nContent-type: text/plain\r\n\r\n";
+		print "This account is restricted to its configured API endpoint\n";
+		CORE::exit(1);
+		}
 	}
 
 if (!$main::allow_rpc_only &&
@@ -14352,13 +14472,25 @@ my ($variable, $scope) = @_;
 return &globals('delete', $variable, $scope);
 }
 
+# webmin_user_api_only()
+# Returns the authenticated base user's endpoint, or a false value if unset.
+# Endpoint scripts set main::allow_api_only to the same value before
+# init_config.
+sub webmin_user_api_only
+{
+my %access = &get_module_acl($base_remote_user, "");
+return $access{'api_only'};
+}
+
 # webmin_user_can_rpc()
-# Returns 1 if the given user can receive remote calls, 0 if not, or 2 if the
-# user can receive remote calls but not use the UI
+# Returns the base user's generic RPC access: 0 for none, 1 for RPC and UI,
+# or 2 for RPC only. An API-only endpoint restriction always denies generic RPC.
 sub webmin_user_can_rpc
 {
 my $u = $base_remote_user;
 my %access = &get_module_acl($u, "");
+# Endpoint credentials must not inherit generic RPC from a legacy flag.
+return 0 if ($access{'api_only'});	# Scoped APIs never grant generic RPC
 return 1 if ($access{'rpc'} == 1);	# Can make arbitrary RPC calls
 return 2 if ($access{'rpc'} == 3);	# Can only make RPC calls
 return 0 if ($access{'rpc'} == 0);	# Cannot make RPCs

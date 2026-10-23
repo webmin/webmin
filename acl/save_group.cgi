@@ -9,6 +9,10 @@ no warnings 'uninitialized';
 require './acl-lib.pl';    ## no critic
 our (%in, %text, %config, %access, $config_directory);
 &ReadParse();
+# Only permission editors may change global ACLs, including API-only access.
+if ($in{'acl_security_form'} && !$access{'acl'}) {
+	&error($text{'acl_emod'});
+	}
 $access{'groups'} || &error($text{'gedit_ecannot'});
 
 # Check for special button clicks, and redirect
@@ -134,6 +138,14 @@ if ($in{'old'} && $in{'acl_security_form'}) {
 	&save_group_module_acl(\%uaccess, $in{'name'}, "", 1);
 	&set_ownership_permissions(undef, undef, 0640, $aclfile);
 	&unlock_file($aclfile);
+	# Apply a newly selected endpoint to existing members as well as future
+	# members. Keep any endpoint already set on a user or nested group.
+	if ($uaccess{'api_only'}) {
+		my @users = &list_users();
+		my @groups = &list_groups();
+		&set_acl_files(\@users, \@groups, '', $group{'members'},
+			      \%uaccess);
+		}
 	}
 
 &reload_miniserv();

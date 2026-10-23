@@ -134,6 +134,12 @@ if ($access{'acl'} && $in{'group'}) {
 				     "global", 0, [ "width=30%" ]);
 	my %uaccess = &get_group_module_acl($in{'group'}, "");
 	print &ui_hidden("acl_security_form", 1);
+	# Store the endpoint on the group. Copy and propagation helpers retain
+	# an existing member endpoint instead of replacing it with this value.
+	print &ui_table_row(&hlink($text{'acl_api_only'}, 'api_only'),
+		&ui_opt_textbox('api_only', $uaccess{'api_only'}, 40,
+			$text{'acl_api_unrestricted'}, $text{'acl_api_endpoint'}).
+		'<br>'.$text{'acl_api_only_desc'});
 	&foreign_require("", "acl_security.pl");
 	&foreign_call("", "acl_security_form", \%uaccess);
 	print &ui_hidden_table_end("global");
