@@ -8586,6 +8586,13 @@ foreach my $f (@_) {
 			$rv = 0;
 			$err = $!;
 			}
+		else {
+			# Cached contents must not outlive the file, or a later
+			# read_file_cached call in this process returns stale
+			# data.
+			delete($main::read_file_cache{$realf});
+			delete($main::read_file_missing{$realf});
+			}
 		}
 	}
 return wantarray ? ($rv, $err) : $rv;
