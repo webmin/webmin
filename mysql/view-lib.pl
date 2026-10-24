@@ -38,7 +38,7 @@ elsif ($in{'advanced'}) {
 					@adv).")";
 		$searchhids .= &ui_hidden("and", $in{'and'})."\n".
 			       &ui_hidden("advanced", 1)."\n";
-		$searchargs .= "&and=".$in{'and'}.
+		$searchargs .= "&and=".&urlize($in{'and'}).
 			       "&advanced=1";
 		}
 	}
@@ -71,7 +71,7 @@ if ($in{'sortfield'}) {
 	$sorthids = &ui_hidden("sortfield", $in{'sortfield'})."\n".
 		    &ui_hidden("sortdir", $in{'sortdir'})."\n";
 	$sortargs = "&sortfield=".&urlize($in{'sortfield'}).
-		    "&sortdir=$in{'sortdir'}";
+		    "&sortdir=".&urlize($in{'sortdir'});
 	return ($sort, $sorthids, $sortargs);
 	}
 else {

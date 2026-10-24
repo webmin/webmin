@@ -29,12 +29,13 @@ else {
 $file =~ /\.\./ || $file =~ /\<|\>|\||\0/ && &error($text{'view_efile'});
 &can_edit_log($log) || &error($text{'view_ecannot'});
 
-my $lconf = &get_log_config($log) || &error($text{'view_elog'}." : $log");
+my $lconf = &get_log_config($log) ||
+	&error($text{'view_elog'}." : ".&html_escape($log));
 my $full = $lconf->{'dir'}.$file;
 my $fh;
 my $data = &eval_as_unix_user($lconf->{'user'} || 'root',
 		sub { &read_file_contents($full) });
-$data || &error($text{'view_eopen'}." : $full");
+$data || &error($text{'view_eopen'}." : ".&html_escape($full));
 
 # Display file contents
 if ($full =~ /\.(html|htm)$/i && !$config{'naked'}) {
@@ -50,7 +51,7 @@ if ($full =~ /\.(html|htm)$/i && !$config{'naked'}) {
 		}
 	else {
 		&ui_print_footer(
-			 "/$module_name/edit_log.cgi?file=$escaped",
+			"/$module_name/edit_log.cgi?file=".&urlize($log),
 			$text{'edit_return'},
 			"", $text{'index_return'});
 		}

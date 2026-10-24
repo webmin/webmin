@@ -66,8 +66,9 @@ if ($@) {
 	return { 'up' => 0 };
 	}
 else { 
+	# Status descriptions are HTML, but FTP errors contain server replies.
 	return { 'up' => $up, 'time' => time() - $st,
-		 'desc' => $up ? undef : $error };
+		 'desc' => $up ? undef : &html_escape($error, 1) };
 	}
 }
 

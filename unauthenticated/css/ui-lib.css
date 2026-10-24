@@ -124,6 +124,144 @@
 	text-align: left;
 }
 
+/* Shared CSS tooltips. Theme tokens keep the bubble and its arrow readable
+ * in light and dark palettes. Ordinary help bubbles retain their theme style. */
+.ui_tip[data-tooltip][aria-label] {
+	position: relative;
+	display: inline-block;
+	vertical-align: baseline;
+	--ui-tip-bg: var(--ui-fg, var(--text-color, #212121));
+	--ui-tip-fg: var(--ui-surface, var(--main-content, var(--bg-color, #fff)));
+}
+.ui_tip[data-tooltip][aria-label]::before,
+.ui_tip[data-tooltip][aria-label]::after {
+	position: absolute;
+	pointer-events: none;
+	display: none;
+	z-index: 1060;
+}
+.ui_tip[data-tooltip][aria-label]::before {
+	content: attr(aria-label);
+	bottom: calc(100% + 8px);
+	left: 0;
+	width: max-content;
+	box-sizing: border-box;
+	max-width: min(32rem, calc(100vw - 24px));
+	padding: 7px 10px;
+	border-radius: 5px;
+	/* Theme text colors may have alpha; paint over a solid surface. */
+	background: linear-gradient(var(--ui-tip-bg), var(--ui-tip-bg)),
+		var(--ui-tip-fg);
+	color: var(--ui-tip-fg);
+	font-size: 13px;
+	line-height: 1.45;
+	font-weight: normal;
+	font-style: normal;
+	text-align: left;
+	text-transform: none;
+	text-shadow: none;
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+.ui_tip[data-tooltip][aria-label]::after {
+	content: '';
+	bottom: calc(100% + 4px);
+	left: 12px;
+	width: 8px;
+	height: 8px;
+	background: linear-gradient(var(--ui-tip-bg), var(--ui-tip-bg)),
+		var(--ui-tip-fg);
+	transform: rotate(45deg);
+}
+.ui_tip[data-tooltip][aria-label]:is(:hover, :focus-within)::before,
+.ui_tip[data-tooltip][aria-label]:is(:hover, :focus-within)::after {
+	display: block;
+}
+/* A hovered row takes priority over the checkbox that still has focus. */
+.ui_multi:has(.ui_tip:hover) .ui_tip:not(:hover)::before,
+.ui_multi:has(.ui_tip:hover) .ui_tip:not(:hover)::after {
+	display: none;
+}
+/* Fixed anchors escape scrolling lists. Scope each pair so repeated entries
+ * cannot attach to another row's tooltip. Older browsers use the absolute
+ * positioning above. */
+@supports (anchor-scope: --ui-tip) {
+	.ui_tip[data-tooltip][aria-label] {
+		anchor-name: --ui-tip;
+		anchor-scope: --ui-tip, --ui-tip-box, --ui-tip-input;
+	}
+	.ui_tip[data-tooltip][aria-label]::before {
+		position: fixed;
+		position-anchor: --ui-tip;
+		anchor-name: --ui-tip-box;
+		bottom: anchor(top);
+		left: anchor(left);
+		margin-bottom: 8px;
+		position-try-fallbacks: --ui-tip-right, --ui-tip-fit,
+			--ui-tip-below, --ui-tip-below-right, --ui-tip-below-fit;
+		position-visibility: anchors-visible;
+	}
+	.ui_tip[data-tooltip][aria-label]::after {
+		position: fixed;
+		position-anchor: --ui-tip;
+		bottom: auto;
+		/* Attach the arrow to the nearest bubble edge after a position change. */
+		top: calc(clamp(anchor(--ui-tip-box top), anchor(bottom),
+			anchor(--ui-tip-box bottom)) - 4px);
+		left: clamp(calc(anchor(--ui-tip-box left) + 8px),
+			calc(anchor(left) + 12px), calc(anchor(--ui-tip-box right) - 16px));
+		position-visibility: anchors-visible;
+	}
+	/* Point list descriptions at the checkbox, whose size varies by theme.
+	 * Leave room beside it for the bubble's rounded corner. */
+	.ui_multi .ui_tip input[type="checkbox"] {
+		anchor-name: --ui-tip-input;
+	}
+	.ui_multi .ui_tip[data-tooltip][aria-label]::before {
+		left: calc(anchor(--ui-tip-input center) - 12px);
+	}
+	.ui_multi .ui_tip[data-tooltip][aria-label]::after {
+		left: clamp(calc(anchor(--ui-tip-box left) + 8px),
+			calc(anchor(--ui-tip-input center) - 4px),
+			calc(anchor(--ui-tip-box right) - 16px));
+	}
+	@position-try --ui-tip-right {
+		left: auto;
+		right: anchor(right);
+	}
+	/* A long description can need more room than either side of its label. */
+	@position-try --ui-tip-fit {
+		left: 12px;
+		right: 12px;
+		width: auto;
+	}
+	@position-try --ui-tip-below {
+		bottom: auto;
+		top: anchor(bottom);
+		margin-top: 8px;
+		margin-bottom: 0;
+	}
+	@position-try --ui-tip-below-right {
+		bottom: auto;
+		top: anchor(bottom);
+		left: auto;
+		right: anchor(right);
+		margin-top: 8px;
+		margin-bottom: 0;
+	}
+	@position-try --ui-tip-below-fit {
+		bottom: auto;
+		top: anchor(bottom);
+		left: 12px;
+		right: 12px;
+		width: auto;
+		margin-top: 8px;
+		margin-bottom: 0;
+	}
+}
+.ui_multi .ui_tip { display: inline-flex; align-items: center; min-width: 0; }
+.ui_multi .ui_tip > input[type="checkbox"] { margin-right: 6px; }
+
 /* Built-in dark palette, enabled with data-ui-scheme="dark" on any
  * ancestor element (or on the .ui_page wrapper itself, via the scheme
  * option of ui_page_start). With data-ui-scheme="auto" the dark
@@ -281,14 +419,18 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 .ui_field, .ui_field * {
 	box-sizing: border-box;
 }
-.ui_page h1, .ui_page h2, .ui_page p, .ui_page dl, .ui_page dd { margin: 0; }
+/* Reset widget paragraphs without removing spacing from help and other prose. */
+.ui_page h1, .ui_page h2, .ui_page p.ui--p,
+.ui_page dl, .ui_page dd { margin: 0; }
 .ui_page svg.ui_svg_icon { flex-shrink: 0; vertical-align: -0.18em; }
 
-/* Plain links inside widget text are underlined so they still read as
- * links next to chips and badges. Theme buttons made of ui_link are not. */
-.ui_dl_row dd a:not(.ui_link), .ui_feed_text a:not(.ui_link),
-.ui_list_desc a:not(.ui_link), .ui_empty_desc a:not(.ui_link),
-.ui_card_desc a:not(.ui_link), .ui_field_help a:not(.ui_link) {
+/* Underline plain text links, but keep links styled as buttons undecorated. */
+.ui_dl_row dd a:not(.ui_link, .ui_action, .ui_dropdown_item),
+.ui_feed_text a:not(.ui_link, .ui_action, .ui_dropdown_item),
+.ui_list_desc a:not(.ui_link, .ui_action, .ui_dropdown_item),
+.ui_empty_desc a:not(.ui_link, .ui_action, .ui_dropdown_item),
+.ui_card_desc a:not(.ui_link, .ui_action, .ui_dropdown_item),
+.ui_field_help a:not(.ui_link, .ui_action, .ui_dropdown_item) {
 	text-decoration: underline;
 	text-underline-offset: 0.15em;
 }
@@ -672,9 +814,6 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	--ui-action-disabled-text: var(--ui-disabled-text);
 	--ui-action-disabled-bg: var(--ui-disabled-bg);
 	--ui-action-disabled-border: var(--ui-disabled-border);
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
 	box-sizing: border-box;
 	appearance: none;
 	margin: 0;
@@ -692,6 +831,12 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	vertical-align: middle;
 	white-space: nowrap;
 	cursor: pointer;
+}
+/* Keep icon and label alignment when themes supply native button styles. */
+:is(button, a, summary).ui_action {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 }
 .ui_action .ui_action_content {
 	display: inline-flex;
@@ -762,7 +907,6 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 }
 :is(button, a, summary).ui_action_rounded { border-radius: 4px; }
 :is(button, a, summary).ui_action_pill { border-radius: 999px; }
-.ui_action .ui_action_content > span { align-self: baseline; }
 .ui_action .ui_svg_icon { width: 1em; height: 1em; flex-shrink: 0; }
 .ui_action_small .ui_svg_icon_trash {
 	transform: translateY(-0.25px);
@@ -1712,9 +1856,10 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
  * A details element : the summary is the button, drawn as an action
  * button, and the menu panel floats under it. */
 
+/* Match an action button's height without a text line around the summary. */
 .ui_dropdown {
 	position: relative;
-	display: inline-block;
+	display: inline-flex;
 	vertical-align: middle;
 }
 .ui_dropdown > summary.ui_dropdown_toggle {

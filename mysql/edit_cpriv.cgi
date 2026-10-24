@@ -47,8 +47,8 @@ else {
 print &ui_table_start($text{'cpriv_header'}, undef, 2);
 
 # Apply to DB and table
-print &ui_table_row($text{'cpriv_db'}, "<tt>$d</tt>");
-print &ui_table_row($text{'cpriv_table'}, "<tt>$t</tt>");
+print &ui_table_row($text{'cpriv_db'}, "<tt>".&html_escape($d)."</tt>");
+print &ui_table_row($text{'cpriv_table'}, "<tt>".&html_escape($t)."</tt>");
 
 # Table field
 print &ui_table_row($text{'cpriv_field'},

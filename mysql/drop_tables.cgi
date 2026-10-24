@@ -27,7 +27,7 @@ if ($in{'confirm'}) {
 		&execute_sql_logged($in{'db'}, "drop table ".&quotestr($t));
 		}
 	&webmin_log("delete", "tables", scalar(@tables), \%in);
-	&redirect("edit_dbase.cgi?db=$in{'db'}");
+	&redirect("edit_dbase.cgi?db=".&urlize($in{'db'}));
 	}
 else {
 	# Ask the user if he is sure..
@@ -42,16 +42,16 @@ else {
 
 	$msg = defined($rows) ? 'tdrops_rusure' : 'tdrops_rusure2';
 	print "<center><b>", &text($msg, scalar(@tables),
-				   "<tt>$in{'db'}</tt>", $rows),"</b><p>\n";
+				   "<tt>".&html_escape($in{'db'})."</tt>", $rows),"</b><p>\n";
 	print "<form action=drop_tables.cgi>\n";
-	print "<input type=hidden name=db value='$in{'db'}'>\n";
+	print &ui_hidden("db", $in{'db'}),"\n";
 	print "<input type=submit name=confirm value='$text{'tdrops_ok'}'>\n";
 	foreach $t (@tables) {
 		print &ui_hidden("d", $t),"\n";
 		}
 	print "</form></center>\n";
 	&ui_print_footer(
-		"edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+		"edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		&get_databases_return_link($in{'db'}), $text{'index_return'});
 	}
 

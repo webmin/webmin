@@ -98,7 +98,7 @@ assert_no_handler_injection(main::ui_tip('<b>x</b>', $xss), 'ui_tip');
 my $tip = main::ui_tip('<b>x</b>', 'A <i>tip</i>');
 like($tip, qr/^<span (?=[^>]*\bclass="ui--span ui_tip")(?=[^>]*\baria-label="A tip")(?=[^>]*\bdata-tooltip[\s>])[^>]*><b>x<\/b><\/span>$/,
      'ui_tip uses the theme tooltip attributes of ui_help');
-unlike($tip, qr/data-ui-tip|tabindex/, 'ui_tip draws no tooltip of its own');
+unlike($tip, qr/data-ui-tip|tabindex/, 'ui_tip needs no JavaScript attributes or extra tab stop');
 assert_no_handler_injection(
 	main::ui_dl([ { 'label' => $xss, 'value' => $xss, 'help' => $xss } ]),
 	'ui_dl hash row');
@@ -680,6 +680,19 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 		'counter-free long lists retain filtering');
 }
 
+# Row titles remain literal text when converted to shared tooltip attributes.
+{
+	my $title = q{Literal <tag> &amp;lt;example&amp;gt; "quoted".};
+	my $html = main::ui_multi_select_list('tip', [],
+		[ { value => 'one', label => 'One', attrs => { title => $title } } ]);
+	my ($tip) = $html =~ /<span (?=[^>]*\bui_tip\b)[^>]*aria-label="([^"]*)"/;
+	is(decode_attr($tip), q{Literal <tag> &lt;example&gt; "quoted".},
+		'CSS tooltip preserves angle brackets, entities, quotes and punctuation');
+	assert_no_handler_injection(main::ui_multi_select_list('tip_injection', [],
+		[ { value => 'one', label => 'One', attrs => { title => $xss } } ]),
+		'CSS row tooltip');
+}
+
 # Legacy attributes must retain row presentation and checkbox behavior.
 {
 	my $tags = q{DISABLED="false" class="managed" style='font-style:italic' title="Policy &amp; owner" data-policy=managed};
@@ -694,11 +707,14 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 		'legacy classes combine with the widget and disabled row classes');
 	like($html, qr/<div (?=[^>]*\bui_multi_item\b)(?=[^>]*style="font-style:italic")/,
 		'legacy styles apply to the whole row');
-	like($html, qr/title="Policy &amp; owner"/,
-		'legacy title entities are preserved without double escaping');
+	like($html, qr/<span (?=[^>]*\bui_tip\b)(?=[^>]*aria-label="Policy &amp; owner")/,
+		'legacy title entities are preserved in the shared CSS tooltip');
+	like($html, qr/<input (?=[^>]*value="locked")(?=[^>]*aria-description="Policy &amp; owner")/,
+		'checkbox descriptions remain available to assistive technology');
+	unlike($html, qr/\btitle=/, 'row descriptions do not create duplicate native tooltips');
 	like($html, qr/data-policy="managed"/,
 		'unquoted data attributes survive normalization');
-	unlike($html, qr/<input (?=[^>]*value="open")(?=[^>]*\bdisabled\b)/,
+	unlike($html, qr/<input (?=[^>]*value="open")(?=[^>]*\sdisabled=)/,
 		'disabled inside a quoted attribute does not disable the checkbox');
 	like($html, qr/data-note="a=b > c"/,
 		'quoted attribute values retain spaces, equals and greater-than signs');
@@ -719,7 +735,7 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 		[ [ 'gone', 'Gone', q{disabled title='Retained'} ] ], [ ]);
 	like($missing, qr/<input (?=[^>]*value="gone")(?=[^>]*\bchecked\b)(?=[^>]*\bdisabled\b)/,
 		'missing selected values retain their legacy disabled attribute');
-	like($missing, qr/title="Retained"/, 'missing values retain row attributes');
+	like($missing, qr/aria-label="Retained"/, 'missing values retain row attributes');
 	my $fixed = main::ui_multi_select_list('fixed', [ ],
 		[ [ 'a', 'A', q{checked name=wrong value=wrong type=radio} ] ]);
 	like($fixed, qr/<input (?=[^>]*type='checkbox')(?=[^>]*name="fixed_item")(?=[^>]*value="a")/,
@@ -843,8 +859,8 @@ like(main::ui_form_columns_table('x.cgi', [ [ 'go', 'Go' ] ], 0, undef, undef,
 		'selected attributes take precedence over available option attributes');
 	like($html, qr/<input (?=[^>]*value="c")(?=[^>]*\bdisabled\b)/,
 		'unselected entries keep their option attributes');
-	like($html, qr/title="Selected"/, 'legacy selected row keeps its tooltip');
-	like($html, qr/title="Retained"/, 'missing legacy selection keeps its tooltip');
+	like($html, qr/aria-label="Selected"/, 'legacy selected row keeps its tooltip');
+	like($html, qr/aria-label="Retained"/, 'missing legacy selection keeps its tooltip');
 	is_deeply(\@values, [ [ 'b', 'B (selected)', q{disabled title="Selected"} ],
 		[ 'a', 'R&amp;D' ], [ 'gone', 'Missing', q{title="Retained"} ] ],
 		'legacy selected entries are not modified');

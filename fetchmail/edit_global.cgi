@@ -12,7 +12,7 @@ else {
 	&can_edit_user($in{'user'}) || &error($text{'poll_ecannot'});
 	@uinfo = getpwnam($in{'user'});
 	$file = "$uinfo[7]/.fetchmailrc";
-	$uheader = &text('poll_foruser', "<tt>$in{'user'}</tt>");
+	$uheader = &text('poll_foruser', "<tt>".&html_escape($in{'user'})."</tt>");
 	}
 
 &ui_print_header($uheader, $text{'global_title'}, "");
@@ -54,7 +54,7 @@ print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 if (!$fetchmail_config && $config{'view_mode'}) {
-	&ui_print_footer("edit_user.cgi?user=$in{'user'}", $text{'user_return'},
+	&ui_print_footer("edit_user.cgi?user=".&urlize($in{'user'}), $text{'user_return'},
 			 "", $text{'index_return'});
 	}
 else {

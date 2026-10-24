@@ -16,7 +16,8 @@ else {
 	# Creating an index
 	$table = $in{'table'};
 	}
-$desc = &text('table_header', "<tt>$table</tt>", "<tt>$in{'db'}</tt>");
+$desc = &text('table_header', "<tt>".&html_escape($table)."</tt>",
+	     "<tt>".&html_escape($in{'db'})."</tt>");
 &ui_print_header($desc, $in{'index'} ? $text{'index_title2'}
 				     : $text{'index_title1'}, "");
 
@@ -56,5 +57,5 @@ else {
 	print &ui_form_end([ [ "create", $text{'create'} ] ]);
 	}
 
-&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		 &get_databases_return_link($in{'db'}), $text{'index_return'});

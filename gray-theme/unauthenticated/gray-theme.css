@@ -23,12 +23,10 @@
 	--radius: 8px;
 	--radius-sm: 6px;
 	--control-height: 32px;
-	/* Room between cards, buttons and blocks, and the same room around a
-	 * page at the top and the sides; the bottom keeps scroll room under
-	 * the last element */
-	--card-gap: 10px;
-	--page-pad-x: var(--card-gap);
-	--page-pad-top: var(--card-gap);
+	/* Shared gap around the menu and between cards, buttons and blocks.
+	 * Light surfaces use a slightly tighter gap than dark surfaces.
+	 * The page bottom keeps scroll room under the last element. */
+	--card-gap: 4px;
 	--page-pad-bottom: 28px;
 	/* Titles on the ground sit a little in from the card edge, so they
 	 * neither touch the edge nor go as deep as the text inside the
@@ -82,6 +80,8 @@
 	--accent-color-hover: #234d93;
 	--accent-color-soft: #a9c0e8;
 	--element-highlight-bg-color: #e3ebf8;
+	/* Navigation loader, with a separate shade for each color scheme. */
+	--menu-loader-color: #dc143c;
 	/* Text on a button filled with a notice color: white on the deep
 	 * light-mode colors, the ground color on the bright dark-mode ones.
 	 * The dark palette keeps its own amber for the warning button. */
@@ -126,6 +126,7 @@
 @media (prefers-color-scheme: dark) {
 	html:not([data-scheme="light"]) body:not([data-scheme="light"]) {
 		color-scheme: dark;
+		--card-gap: 7px;
 		--shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 		--shadow-color: rgba(0, 0, 0, 0.4);
 		--border-color-panel: #30353d;
@@ -159,6 +160,7 @@
 		--accent-color-hover: #5a8ad8;
 		--accent-color-soft: #3d5f8a;
 		--element-highlight-bg-color: #26395a;
+		--menu-loader-color: #c7302c;
 		--alert-button-text: var(--bg-color);
 		--alert-button-warning: #e0a63c;
 		--alert-button-warning-text: var(--bg-color);
@@ -202,6 +204,7 @@
 }
 html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	color-scheme: dark;
+	--card-gap: 7px;
 	--shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 	--shadow-color: rgba(0, 0, 0, 0.4);
 	--border-color-panel: #30353d;
@@ -235,6 +238,7 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--accent-color-hover: #5a8ad8;
 	--accent-color-soft: #3d5f8a;
 	--element-highlight-bg-color: #26395a;
+	--menu-loader-color: #c7302c;
 	--alert-button-text: var(--bg-color);
 	--alert-button-warning: #e0a63c;
 	--alert-button-warning-text: var(--bg-color);
@@ -293,6 +297,9 @@ html {
 	background: transparent;
 }
 body {
+	/* Resolve page insets here so they follow the body's color scheme. */
+	--page-pad-x: var(--card-gap);
+	--page-pad-top: var(--card-gap);
 	margin: 0;
 	padding: var(--page-pad-top) var(--page-pad-x) var(--page-pad-bottom);
 	/* The core header sets height:100% inline on html and body, which
@@ -647,6 +654,13 @@ input[type="reset"]:disabled, button:disabled {
 	padding: 0 8px 0 7px;
 	font-size: 0.8em;
 	line-height: 1.25;
+	/* Let the border round separately at fractional browser zoom levels. */
+	box-sizing: content-box;
+	min-height: 1lh;
+}
+/* Center compact labels by their cap height without shrinking the button. */
+:is(button, a, summary).ui_action.ui_action_small > .ui_action_content > span {
+	text-box: trim-both cap alphabetic;
 }
 :is(button, a, summary).ui_action.ui_action_large > .ui_action_content {
 	min-height: var(--control-height);
@@ -1683,16 +1697,16 @@ td:not(:hover) .ui_link_help { visibility: hidden; }
 .ui_text_wrap { float: right; }
 /* Tooltips from the aria-label of elements marked data-tooltip: a dark
  * box with an arrow above the element, shown on hover */
-[data-tooltip][aria-label] {
+[data-tooltip][aria-label]:not(.ui_tip) {
 	position: relative;
 	vertical-align: top;
 }
 /* Card actions align help bubbles through ui-lib, but this theme still
  * needs the bubble to anchor its generated tooltip. */
-.ui_card_actions .ui_help[data-tooltip][aria-label] {
+.ui_card_actions .ui_help[data-tooltip][aria-label]:not(.ui_tip) {
 	position: relative;
 }
-[data-tooltip][aria-label]::after {
+[data-tooltip][aria-label]:not(.ui_tip)::after {
 	content: "";
 	position: absolute;
 	bottom: 100%;
@@ -1710,7 +1724,7 @@ td:not(:hover) .ui_link_help { visibility: hidden; }
 	/* Keep a tooltip near the top above the sticky page header. */
 	z-index: 10;
 }
-[data-tooltip][aria-label]::before {
+[data-tooltip][aria-label]:not(.ui_tip)::before {
 	content: attr(aria-label);
 	position: absolute;
 	bottom: calc(15px + 100%);
@@ -1733,8 +1747,8 @@ td:not(:hover) .ui_link_help { visibility: hidden; }
 	visibility: hidden;
 	z-index: 10;
 }
-[data-tooltip][aria-label]:hover::before,
-[data-tooltip][aria-label]:hover::after {
+[data-tooltip][aria-label]:not(.ui_tip):hover::before,
+[data-tooltip][aria-label]:not(.ui_tip):hover::after {
 	visibility: visible;
 	opacity: 1;
 	transition-duration: 0.5s;
@@ -1742,7 +1756,7 @@ td:not(:hover) .ui_link_help { visibility: hidden; }
 /* Opacity gives the tooltip trigger its own stacking context. Raise that
  * context while the tooltip is visible, because raising its children alone
  * cannot place them above the sticky header. */
-[data-tooltip][aria-label]:hover {
+[data-tooltip][aria-label]:not(.ui_tip):hover {
 	z-index: 10;
 }
 
@@ -1805,7 +1819,7 @@ br[data-x-br] {
 /* ---- Left frame (left.cgi) ---- */
 
 /* The frame shows the page ground, and the menu floats on it as a card
- * with a 7px gap at the top, the left and the bottom, and rounder
+ * with the shared gap at the top, the left and the bottom, and rounder
  * corners than the other cards. At the right the card meets the frame
  * edge, so the page padding of the right frame is the whole gap between
  * the card and the content, and a page opened in a window of its own
@@ -1815,7 +1829,7 @@ br[data-x-br] {
 body.left-frame {
 	box-sizing: border-box;
 	height: 100vh !important;
-	padding: 7px 0 7px 7px;
+	padding: var(--card-gap) 0 var(--card-gap) var(--card-gap);
 	overflow: hidden;
 	background: var(--bg-color);
 }
@@ -1860,11 +1874,9 @@ html.loading-right .menu-loader { display: block; }
 	width: 35%;
 	height: 100%;
 	border-radius: 2px;
-	background: var(--accent-color);
+	background: var(--menu-loader-color);
 	animation: menu-bounce 0.9s ease-in-out infinite alternate;
 }
-/* Match Authentic's crimson progress bar for Cloudmin navigation. */
-.menu-panel-cloudmin .menu-loader::before { background: #dc143c; }
 @keyframes menu-bounce { to { left: 65%; } }
 /* The brand block: the logo has as much room above it as below it, and
  * the logo files are trimmed to their drawing, so every product sits the

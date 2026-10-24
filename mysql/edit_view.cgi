@@ -11,7 +11,7 @@ if ($in{'view'}) {
 	# Editing a view
 	$str = &view_structure($in{'db'}, $in{'view'});
 	}
-$desc = "<tt>$in{'db'}</tt>";
+$desc = "<tt>".&html_escape($in{'db'})."</tt>";
 &ui_print_header($desc, $in{'view'} ? $text{'view_title2'}
 				    : $text{'view_title1'}, "");
 
@@ -22,7 +22,7 @@ print &ui_table_start($text{'view_header1'}, undef, 2);
 
 # View name
 print &ui_table_row($text{'view_name'},
-		    $in{'view'} ? "<tt>$str->{'name'}</tt>" :
+		    $in{'view'} ? "<tt>".&html_escape($str->{'name'})."</tt>" :
 		    &ui_textbox("name", $str->{'name'}, 20));
 
 # Selection query
@@ -65,6 +65,6 @@ else {
 	print &ui_form_end([ [ "create", $text{'create'} ] ]);
 	}
 
-&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		 &get_databases_return_link($in{'db'}), $text{'index_return'});
 

@@ -41,7 +41,8 @@ elsif ($in{'run'}) {
 	&ui_print_unbuffered_header(undef, $text{'gen_title'}, "");
 
 	my $lconf = &get_log_config($in{'file'});
-	print "<b>",&text('gen_header', "<tt>$in{'file'}</tt>"),"</b><br>\n";
+	print "<b>",&text('gen_header',
+		"<tt>".&html_escape($in{'file'})."</tt>"),"</b><br>\n";
 	print "<pre>";
 	my $rv = &generate_report($in{'file'}, \*STDOUT, 1);
 	print "</pre>\n";

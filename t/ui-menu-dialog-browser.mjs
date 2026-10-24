@@ -76,12 +76,27 @@ try {
     await evaluate("document.body.click()");
     assert.equal(await evaluate("q('#menu_more').open"), false, 'a click elsewhere closes the menu');
 
-    // A menu at the right edge flips so it stays in the window
-    await evaluate("q('#menu_edge > summary').click(); tick()");
-    assert.equal(await evaluate("q('#menu_edge').classList.contains('ui_dropdown_flip')"), true, 'edge menu is flipped');
-    assert.ok(await evaluate("q('#menu_edge .ui_dropdown_menu').getBoundingClientRect().right <= innerWidth"), 'flipped menu stays inside the window');
-    await evaluate("document.body.click()");
-    assert.equal(await evaluate("q('#menu_edge').classList.contains('ui_dropdown_flip')"), false, 'flip is cleared on close');
+    // Placement must settle before a render opportunity, not a later toggle
+    // task. Exercise native activation, keyboard focus and direct opening.
+    for (const open of [
+        "q('#menu_edge > summary').click()",
+        "q('#menu_edge > summary').focus(); key('#menu_edge > summary', 'ArrowDown')",
+        "q('#menu_edge').open = true"
+    ]) {
+        const firstFrame = await evaluate(`(async () => {
+            ${open};
+            await Promise.resolve();
+            return {
+                flipped: q('#menu_edge').classList.contains('ui_dropdown_flip'),
+                right: q('#menu_edge .ui_dropdown_menu').getBoundingClientRect().right,
+                viewport: innerWidth
+            };
+        })()`);
+        assert.equal(firstFrame.flipped, true, 'edge menu is placed before rendering');
+        assert.ok(firstFrame.right <= firstFrame.viewport, 'first placement stays inside the window');
+        await evaluate("document.body.click()");
+        assert.equal(await evaluate("q('#menu_edge').classList.contains('ui_dropdown_flip')"), false, 'flip is cleared on close');
+    }
 
     // Keyboard : arrows open the menu and move between entries, skipping
     // disabled ones; Escape closes it and returns to the button

@@ -104,7 +104,7 @@ if ($in{'delete'}) {
 		$count++;
 		}
 	&webmin_log("delete", "data", $count, \%in);
-	&redirect("view_table.cgi?db=$in{'db'}&".
+	&redirect("view_table.cgi?db=".&urlize($in{'db'})."&".
 		  "table=".&urlize($in{'table'})."&start=$in{'start'}".
 		  $searchargs.$sortargs);
 	}
@@ -154,7 +154,7 @@ elsif ($in{'save'}) {
 		$count++;
 		}
 	&webmin_log("modify", "data", $count, \%in);
-	&redirect("view_table.cgi?db=$in{'db'}&".
+	&redirect("view_table.cgi?db=".&urlize($in{'db'})."&".
 		  "table=".&urlize($in{'table'})."&start=$in{'start'}".
 		  $searchargs.$sortargs);
 	}
@@ -168,7 +168,7 @@ elsif ($in{'savenew'}) {
 		}
 	&execute_sql_logged($in{'db'}, "insert into ".&quote_table($in{'table'}).
 		    " values (".join(" , ", map { "?" } @set).")", @set);
-	&redirect("view_table.cgi?db=$in{'db'}&".
+	&redirect("view_table.cgi?db=".&urlize($in{'db'})."&".
 		  "table=".&urlize($in{'table'})."&start=$in{'start'}".
 		  $searchargs.$sortargs);
 	&webmin_log("create", "data", undef, \%in);
@@ -177,7 +177,8 @@ elsif ($in{'cancel'} || $in{'new'}) {
 	undef($in{'row'});
 	}
 
-$desc = &text('table_header', "<tt>$in{'table'}</tt>", "<tt>$in{'db'}</tt>");
+$desc = &text('table_header', "<tt>".&html_escape($in{'table'})."</tt>",
+	     "<tt>".&html_escape($in{'db'})."</tt>");
 &ui_print_header($desc, $text{'view_title'}, "");
 
 if ($in{'start'} || $total > $displayconfig{'perpage'}) {
@@ -185,7 +186,7 @@ if ($in{'start'} || $total > $displayconfig{'perpage'}) {
 	if ($in{'start'}) {
 		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s%s'>".
 		     "<img src=../images/left.gif border=0 align=middle></a>\n",
-		     $in{'db'}, $in{'table'},
+		     &urlize($in{'db'}), &urlize($in{'table'}),
 		     $in{'start'} - $displayconfig{'perpage'},
 		     $searchargs, $sortargs;
 		}
@@ -195,7 +196,7 @@ if ($in{'start'} || $total > $displayconfig{'perpage'}) {
 	if ($in{'start'}+$displayconfig{'perpage'} < $total) {
 		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s%s'>".
 		     "<img src=../images/right.gif border=0 align=middle></a> ",
-		     $in{'db'}, $in{'table'},
+		     &urlize($in{'db'}), &urlize($in{'table'}),
 		     $in{'start'} + $displayconfig{'perpage'},
 		     $searchargs, $sortargs;
 		}
@@ -285,7 +286,8 @@ if ($total || $in{'new'}) {
 			for($j=0; $j<@str; $j++) {
 				local $nm = $i == $realrows ? $j :
 						"${i}_$str[$j]->{'field'}";
-				$et .= "<tr $cb> <td><b>$str[$j]->{'field'}</b></td> <td>\n";
+				$et .= "<tr $cb> <td><b>".&html_escape($str[$j]->{'field'}).
+				       "</b></td> <td>\n";
 				if ($displayconfig{'blob_mode'} &&
 				    &is_blob($str[$j]) && $d[$j]) {
 					# Show as keep/upload inputs

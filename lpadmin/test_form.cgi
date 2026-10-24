@@ -9,8 +9,8 @@ $access{'test'} || &error($text{'test_ecannot'});
 		 $text{'test_title'}, "");
 
 print "<form action=test_print.cgi method=post enctype=multipart/form-data>\n";
-print "<input type=hidden name=name value='$in{'name'}'>\n";
-print &text('test_desc', "<tt>$in{'name'}</tt>"),"<p>\n";
+print &ui_hidden("name", $in{'name'});
+print &text('test_desc', "<tt>".&html_escape($in{'name'})."</tt>"),"<p>\n";
 
 print "<input type=radio name=mode value=0 checked> $text{'test_0'}<br>\n";
 print "<input type=radio name=mode value=1> $text{'test_1'}<br>\n";

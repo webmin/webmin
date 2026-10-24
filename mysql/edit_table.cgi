@@ -6,10 +6,12 @@ require './mysql-lib.pl';
 &ReadParse();
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 if ($access{'edonly'}) {
-	&redirect("view_table.cgi?db=$in{'db'}&table=".&urlize($in{'table'}));
+	&redirect("view_table.cgi?db=".&urlize($in{'db'}).
+		  "&table=".&urlize($in{'table'}));
 	exit;
 	}
-$desc = &text('table_header', "<tt>$in{'table'}</tt>", "<tt>$in{'db'}</tt>");
+$desc = &text('table_header', "<tt>".&html_escape($in{'table'})."</tt>",
+	     "<tt>".&html_escape($in{'db'})."</tt>");
 &ui_print_header($desc, $text{'table_title'}, "", "edit_table");
 
 print &ui_form_start("delete_fields.cgi", "post");
@@ -29,7 +31,7 @@ print &ui_columns_start([ "",
 $i = 0;
 foreach $r (@desc) {
 	local @cols;
-	push(@cols, "<a href='edit_field.cgi?db=$in{'db'}&table=".
+	push(@cols, "<a href='edit_field.cgi?db=".&urlize($in{'db'})."&table=".
 		    &urlize($in{'table'})."&".
 		    "idx=$i'>".&html_escape($r->{'field'})."</a>");
 	push(@cols, &html_escape($r->{'type'}));
@@ -96,6 +98,6 @@ print "</td>\n";
 
 print "</tr></table>\n";
 
-&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		 &get_databases_return_link($in{'db'}), $text{'index_return'});
 

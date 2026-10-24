@@ -6,7 +6,7 @@ require './mysql-lib.pl';
 &ReadParse();
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 @titles = grep { &can_edit_db($_) } &list_databases();
-$desc = "<tt>$in{'db'}</tt>";
+$desc = "<tt>".&html_escape($in{'db'})."</tt>";
 if (@titles == 1 && $module_info{'usermin'}) {
 	# Single-DB mode
 	&ui_print_header($desc, $text{'dbase_title'}, "", "edit_dbase", 1, 1);

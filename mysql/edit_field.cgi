@@ -6,7 +6,8 @@ require './mysql-lib.pl';
 &ReadParse();
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 $access{'edonly'} && &error($text{'dbase_ecannot'});
-$desc = &text('field_in', "<tt>$in{'table'}</tt>", "<tt>$in{'db'}</tt>");
+$desc = &text('field_in', "<tt>".&html_escape($in{'table'})."</tt>",
+	     "<tt>".&html_escape($in{'db'})."</tt>");
 if ($in{'type'}) {
 	# Creating a new field
 	&ui_print_header($desc, $text{'field_title1'}, "", "create_field");
@@ -41,7 +42,7 @@ if ($type =~ /^(\S+)\((.*)\)(.*)/) {
 print &ui_hidden("type", $type);
 if ($in{'type'}) {
 	# New field .. just show chosen type
-	$tsel = $type;
+	$tsel = &html_escape($type);
 	}
 else {
 	# Existing field .. allow type change
@@ -154,8 +155,9 @@ else {
 		    @desc > 1 ? ( [ 'delete', $text{'delete'} ] ): ( ) ]);
 	}
 
-&ui_print_footer("edit_table.cgi?db=$in{'db'}&table=".&urlize($in{'table'}),
+&ui_print_footer("edit_table.cgi?db=".&urlize($in{'db'}).
+		 "&table=".&urlize($in{'table'}),
 		 $text{'table_return'},
-		 "edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+		 "edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		 &get_databases_return_link($in{'db'}), $text{'index_return'});
 

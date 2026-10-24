@@ -136,7 +136,7 @@ else {
 	if (@titles == 1 && $access{'dbs'} ne '*' && !$access{'perms'} &&
 	    !$access{'stop'} && !$access{'create'} && $access{'noconfig'}) {
 		# Only one DB, so go direct to it!
-		&redirect("edit_dbase.cgi?db=$titles[0]");
+		&redirect("edit_dbase.cgi?db=".&urlize($titles[0]));
 		exit;
 		}
 
@@ -162,7 +162,7 @@ else {
 
 	# DB is running .. list databases
 	@icons = map { "images/db.gif" } @titles;
-	@links = map { "edit_dbase.cgi?db=$_" } @titles;
+	@links = map { "edit_dbase.cgi?db=".&urlize($_) } @titles;
 	$can_create = $access{'create'} == 1 ||
 		      $access{'create'} == 2 && @titles < $access{'max'};
 

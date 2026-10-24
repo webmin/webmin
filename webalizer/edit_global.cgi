@@ -13,7 +13,8 @@ $access{'view'} && &error($text{'edit_ecannot'});
 
 if ($in{'file'}) {
 	&can_edit_log($in{'file'}) || &error($text{'edit_ecannot'});
-	&ui_print_header(&text('global_for', "<tt>$in{'file'}</tt>"),
+	&ui_print_header(&text('global_for',
+			      "<tt>".&html_escape($in{'file'})."</tt>"),
 			 $text{'global_title2'}, "");
 	}
 else {

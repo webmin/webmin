@@ -708,6 +708,7 @@ import_uploadout=Importing data from uploaded file ..
 import_fileout=Importing data from file $1 ..
 import_eupload=Missing uploaded import file
 import_efile=Missing import filename
+import_eperms=Failed to set permissions on the temporary import file
 
 adv_title=Advanced Search
 adv_and=Find records matching all criteria ..

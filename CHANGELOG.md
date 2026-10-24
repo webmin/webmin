@@ -1,5 +1,5 @@
 ## Changelog
-#### 2.680 (October, 2026)
+#### 2.680 (October 23, 2026)
 * Add an SQLite database browser and editor with schema inspection, table management, row editing and direct SQL execution [forum.virtualmin.com/t/137508](https://forum.virtualmin.com/t/sqlite-database-browser-and-editor/137508/)
 * Add color schemes to the Terminal module
 * Add per-user Terminal preferences for color scheme, font size, screen reader mode and terminal dimensions
@@ -17,7 +17,8 @@
 * Fix archive extraction bypassing Upload and Download directory restrictions
 * Fix path traversal and command injection in parameterized Custom Commands file editors
 * Fix MySQL/MariaDB manual editor ACL bypass
-* Fix MySQL database backups allowing restricted users to write files or save root-run settings outside their access limits
+* Fix MySQL/MariaDB database backups allowing restricted users to write files or save root-run settings outside their access limits
+* Fix MySQL/MariaDB imports to use server-accessible temporary files with restricted permissions, including when systemd isolates temporary directories or Webmin connects through a loopback address
 * Fix the logged in users list in Users and Groups module showing nobody when `who` prints ISO dates under a non-C locale or `sshd pts/N` lines from the logind backend [forum.virtualmin.com/t/138162](https://forum.virtualmin.com/t/138162)
 * Fix missing SSH logins in the Users and Groups module on Ubuntu 26.04 by using systemd-logind when `utmp` is absent
 * Fix mail date parsing of ISO dates like `2026-10-15 02:33` returning the wrong minutes

@@ -173,6 +173,20 @@ subtest 'Data::Dumper format' => sub {
 	require Data::Dumper;
 	require JSON::PP;
 
+	# Newer peers emit native booleans as !!1 and !!0, including RPC results.
+	for my $value (0, 1) {
+		is(main::unserialise_variable("\$VAR1 = !!$value;"), !!$value,
+		   "literal !!$value retains Perl boolean semantics");
+		is_deeply(main::unserialise_variable(
+			"\$VAR1 = {'rv' => !!$value, 'status' => 1};"),
+			{ 'rv' => !!$value, 'status' => 1 },
+			"fast RPC response accepts !!$value");
+		}
+	is_deeply(main::unserialise_variable(q{$VAR1 = [!!1, !!0, \!!0];}),
+		[ !!1, !!0, \!!0 ], 'booleans work in arrays and scalar references');
+	is_deeply(main::unserialise_variable(q{$VAR1 = ['!!1', "!!0"];}),
+		[ '!!1', '!!0' ], 'quoted boolean text remains unchanged');
+
 	# Spot-check the supported scalar, reference, object and container forms.
 	my $str = 'x';
 	my $shared = [ 1 ];
@@ -182,7 +196,7 @@ subtest 'Data::Dumper format' => sub {
 		  'sref' => \$str, 'rref' => \\'y', 'a' => $shared, 'b' => $shared,
 		  'obj' => bless({ 'x' => 1 }, 'RPC::Untrusted'),
 		  'sobj' => bless(\$str, 'RPC::Untrusted'),
-		  'empty' => [], 'eh' => {} };
+		  'empty' => [], 'eh' => {}, 'true' => !!1, 'false' => !!0 };
 	$v->{'self'} = $v;
 	# Data::Dumper cannot preserve a reference to a hash value if it sees that
 	# reference first. Sorting keys makes this test deterministic.
@@ -263,6 +277,15 @@ subtest 'Data::Dumper format' => sub {
 	# Reject hostile input without executing it.
 	our $ran = 0;
 	my @hostile = (
+		q{$VAR1 = !!2;},
+		q{$VAR1 = !!10;},
+		q{$VAR1 = !!01;},
+		q{$VAR1 = !!1e0;},
+		q{$VAR1 = !!0.0;},
+		q{$VAR1 = !!1foo;},
+		q{$VAR1 = !!($main::ran = 1);},
+		q{$VAR1 = !!0 || do { $main::ran = 1 };},
+		q{$VAR1 = !!1; $main::ran = 1;},
 		q{$VAR1 = {}; $main::ran = 1;},
 		q{$VAR1 = "@{[ $main::ran = 1 ]}";},
 		q{$VAR1 = "${\ ($main::ran = 1)}";},

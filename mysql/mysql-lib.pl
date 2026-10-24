@@ -716,10 +716,12 @@ return &quotestr($rv);
 }
 
 # quotestr(string)
+# Quotes a single SQL identifier, including any embedded backticks.
 sub quotestr
 {
 my ($rv) = @_;
 if (&supports_quoting()) {
+	$rv =~ s/`/``/g;
 	return "`$rv`";
 	}
 else {
@@ -1181,6 +1183,70 @@ return 1 if (!$user);
 my @uinfo = getpwnam($user);
 return 0 if (!@uinfo);
 return &set_ownership_permissions($user, undef, 0600, $file);
+}
+
+# mysql_import_tempdir(database)
+# Creates a per-import directory in the local server's permitted file directory,
+# or its data directory when no file directory is configured. Called as root.
+sub mysql_import_tempdir
+{
+my ($db) = @_;
+my $d = &execute_sql_safe($db,
+	"show variables where Variable_name in ('secure_file_priv', 'datadir')");
+my %vars = map { @$_ } @{$d->{'data'}};
+my $dir = $vars{'secure_file_priv'};
+$dir = $vars{'datadir'} if (!$dir || $dir eq 'NULL');
+return if (!$dir || $dir !~ m{^/} || !-d $dir);
+
+# A unique directory preserves the table filename without concurrent collisions.
+# Its name uses the server's temporary-table prefix, so MariaDB does not list
+# it as a database or fail dumps and checks while an import is running.
+require File::Temp;
+my $tmp = eval { File::Temp::tempdir('#sql-webmin-import-XXXXXX', DIR => $dir) };
+return if (!$tmp);
+push(@main::temporary_files, $tmp);
+# The client and daemon can traverse it; CSV contents remain owner/group-only.
+return if (!chmod(0755, $tmp));
+return $tmp;
+}
+
+# mysql_import_tempname(directory, [filename])
+# Keeps Webmin's filename handling, using the per-import directory when provided.
+sub mysql_import_tempname
+{
+my ($dir, $filename) = @_;
+# The per-import directory is already registered for cleanup.
+my $file = $dir ? &tempname($filename) : &transname($filename);
+$file =~ s{^.*/}{$dir/} if ($dir);
+return $file;
+}
+
+# set_mysql_import_file_permissions(database, file)
+# Called as root for a local server. Share the temporary file with the daemon's
+# group, keeping its owner so the import-command user can still read it.
+sub set_mysql_import_file_permissions
+{
+my ($db, $file) = @_;
+# Do not change a symlink's target or a directory's permissions.
+my @st = lstat($file);
+return 0 if (!@st || !-f _);
+my $d = &execute_sql_safe($db, "show variables like 'pid_file'");
+my $pidfile = $d->{'data'}->[0]->[1];
+my $pid = $pidfile ? &read_file_contents($pidfile) : undef;
+
+# Leave permissions alone if the local daemon cannot be identified.
+return 1 if (!defined($pid) || $pid !~ /\A([0-9]+)\s*\z/);
+$pid = $1;
+return 1 if (!&foreign_check("proc"));
+&foreign_require("proc", "proc-lib.pl");
+my %proc = &proc::process_info($pid);
+return 1 if (!$proc{'args'} ||
+	$proc{'args'} !~ m{\A(?:\S*/)?(?:mysqld|mariadbd)(?:\s|\z)});
+# The socket can have a different group, so use the running process instead.
+my $group = $proc{'_group'};
+$group = (getpwnam($proc{'user'}))[3] if (!defined($group) || $group eq '');
+return 1 if (!defined($group));
+return &set_ownership_permissions($st[4], $group, 0640, $file);
 }
 
 # execute_sql_file(database, file, [user, pass], [unix-user])
@@ -1717,7 +1783,7 @@ sub view_structure
 {
 local ($db, $view) = @_;
 local $info = { 'name' => $view };
-local $d = &execute_sql($db, "show create view $view");
+local $d = &execute_sql($db, "show create view ".&quotestr($view));
 local $c = $d->{'data'}->[0]->[1];
 if ($c =~ /algorithm\s*=\s*(\S+)/i) {
 	$info->{'algorithm'} = lc($1);
@@ -1734,7 +1800,8 @@ if ($c =~ /sql\s+security\s+(\S+)/i) {
 if ($c =~ s/\s+with\s+(cascaded|local)\s+check\s+option//i) {
 	$info->{'check'} = lc($1);
 	}
-if ($c =~ /view\s+(`\S+`|\S+)\s+as\s+(.*)/i) {
+# Quoted view names can contain spaces and escaped backticks.
+if ($c =~ /view\s+(`(?:``|[^`])*`|\S+)\s+as\s+(.*)/i) {
 	$info->{'query'} = $2;
 	}
 return $info;

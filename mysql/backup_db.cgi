@@ -243,8 +243,8 @@ if (!$in{'save'}) {
 			}
 		elsif (!$in{'dest'}) {
 			@st = stat($file);
-			print &text('backup_done', "<tt>$db</tt>",
-				    "<tt>$file</tt>", int($st[7])),"<p>\n";
+			print &text('backup_done', "<tt>".&html_escape($db)."</tt>",
+				    "<tt>".&html_escape($file)."</tt>", int($st[7])),"<p>\n";
 			}
 		&execute_after($db, STDOUT, 1, $file, $in{'all'} ? undef : $db,
 			       $access{'buser'})
@@ -302,7 +302,7 @@ if (!$in{'dest'}) {
 		}
 	else {
 		&ui_print_footer(
-			"/$module_name/edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+			"/$module_name/edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 			&get_databases_return_link($in{'db'}), $text{'index_return'});
 		}
 	}

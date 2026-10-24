@@ -25,6 +25,7 @@
 	// Replace old listeners when Ajax navigation reloads this script.
 	if (window.webminUiWidgets) window.webminUiWidgets.remove();
 	var listeners = [];
+	var dropdownObserver;
 	function on(type, fn, capture, target) {
 		target = target || document;
 		target.addEventListener(type, fn, capture);
@@ -32,6 +33,7 @@
 	}
 	window.webminUiWidgets = {
 		remove: function () {
+			if (dropdownObserver) dropdownObserver.disconnect();
 			listeners.forEach(function (l) {
 				l[3].removeEventListener(l[0], l[1], l[2]);
 			});
@@ -368,11 +370,8 @@
 		var summary = menu.querySelector(':scope > summary');
 		if (refocus && summary) summary.focus();
 	}
-	// One menu at a time, and an open menu that would leave the window is
-	// flipped to the other side of its button. The toggle event does not
-	// bubble, so it is caught in the capture phase.
-	on('toggle', function (e) {
-		var menu = e.target;
+	// positionDropdown(menu) keeps one menu open and flips it to fit the window.
+	function positionDropdown(menu) {
 		if (!menu.matches || !menu.matches('details.ui_dropdown')) return;
 		if (!menu.open) {
 			menu.classList.remove('ui_dropdown_flip');
@@ -390,7 +389,25 @@
 		if ((!end && rect.right > width - 8) || (end && rect.left < 8)) {
 			menu.classList.add('ui_dropdown_flip');
 		}
-	}, true);
+	}
+	// Attribute observers run before painting; native toggle events may arrive
+	// after the panel has already appeared on the wrong side.
+	dropdownObserver = new MutationObserver(function (records) {
+		var menus = new Set();
+		records.forEach(function (record) {
+			if (record.target.matches('details.ui_dropdown')) menus.add(record.target);
+		});
+		menus.forEach(function (menu) {
+			if (menu.isConnected) positionDropdown(menu);
+		});
+	});
+	dropdownObserver.observe(document, {
+		attributes: true, attributeFilter: ['open'], subtree: true
+	});
+	// Also place menus that were already open when this script loaded, or
+	// were inserted as open markup. Toggle does not bubble.
+	openDropdowns().forEach(positionDropdown);
+	on('toggle', function (e) { positionDropdown(e.target); }, true);
 	// A click outside an open menu closes it; a chosen entry closes its
 	// menu once its own action has run
 	on('click', function (e) {
@@ -424,7 +441,11 @@
 		}
 		else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
 			e.preventDefault();
-			if (!menu.open) menu.setAttribute('open', '');
+			if (!menu.open) {
+				menu.setAttribute('open', '');
+				// Place the panel before focusing an item can scroll it into view.
+				positionDropdown(menu);
+			}
 			if (!items.length) return;
 			var next;
 			if (e.key === 'ArrowDown') {

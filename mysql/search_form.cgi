@@ -11,7 +11,8 @@ else {
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 @str = &table_structure($in{'db'}, $in{'table'});
 
-$desc = &text('table_header', "<tt>$in{'table'}</tt>", "<tt>$in{'db'}</tt>");
+$desc = &text('table_header', "<tt>".&html_escape($in{'table'})."</tt>",
+	     "<tt>".&html_escape($in{'db'})."</tt>");
 &ui_print_header($desc, $text{'adv_title'}, "");
 
 print &ui_form_start("view_table.cgi", "post");
@@ -35,13 +36,14 @@ print "</table>\n";
 print &ui_form_end([ [ "advanced", $text{'adv_ok'} ] ]);
 
 if ($access{'edonly'}) {
-	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}",$text{'dbase_return'},
+	&ui_print_footer("edit_dbase.cgi?db=".&urlize($in{'db'}),$text{'dbase_return'},
 		"", $text{'index_return'});
 	}
 else {
-	&ui_print_footer("edit_table.cgi?db=$in{'db'}&table=$in{'table'}",
+	&ui_print_footer("edit_table.cgi?db=".&urlize($in{'db'}).
+		"&table=".&urlize($in{'table'}),
 		$text{'table_return'},
-		"edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+		"edit_dbase.cgi?db=".&urlize($in{'db'}), $text{'dbase_return'},
 		"", $text{'index_return'});
 	}
 
