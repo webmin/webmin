@@ -23,12 +23,10 @@
 	--radius: 8px;
 	--radius-sm: 6px;
 	--control-height: 32px;
-	/* Room between cards, buttons and blocks, and the same room around a
-	 * page at the top and the sides; the bottom keeps scroll room under
-	 * the last element */
-	--card-gap: 10px;
-	--page-pad-x: var(--card-gap);
-	--page-pad-top: var(--card-gap);
+	/* Shared gap around the menu and between cards, buttons and blocks.
+	 * Light surfaces use a slightly tighter gap than dark surfaces.
+	 * The page bottom keeps scroll room under the last element. */
+	--card-gap: 4px;
 	--page-pad-bottom: 28px;
 	/* Titles on the ground sit a little in from the card edge, so they
 	 * neither touch the edge nor go as deep as the text inside the
@@ -126,6 +124,7 @@
 @media (prefers-color-scheme: dark) {
 	html:not([data-scheme="light"]) body:not([data-scheme="light"]) {
 		color-scheme: dark;
+		--card-gap: 7px;
 		--shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 		--shadow-color: rgba(0, 0, 0, 0.4);
 		--border-color-panel: #30353d;
@@ -202,6 +201,7 @@
 }
 html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	color-scheme: dark;
+	--card-gap: 7px;
 	--shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 	--shadow-color: rgba(0, 0, 0, 0.4);
 	--border-color-panel: #30353d;
@@ -293,6 +293,9 @@ html {
 	background: transparent;
 }
 body {
+	/* Resolve page insets here so they follow the body's color scheme. */
+	--page-pad-x: var(--card-gap);
+	--page-pad-top: var(--card-gap);
 	margin: 0;
 	padding: var(--page-pad-top) var(--page-pad-x) var(--page-pad-bottom);
 	/* The core header sets height:100% inline on html and body, which
@@ -1812,7 +1815,7 @@ br[data-x-br] {
 /* ---- Left frame (left.cgi) ---- */
 
 /* The frame shows the page ground, and the menu floats on it as a card
- * with a 7px gap at the top, the left and the bottom, and rounder
+ * with the shared gap at the top, the left and the bottom, and rounder
  * corners than the other cards. At the right the card meets the frame
  * edge, so the page padding of the right frame is the whole gap between
  * the card and the content, and a page opened in a window of its own
@@ -1822,7 +1825,7 @@ br[data-x-br] {
 body.left-frame {
 	box-sizing: border-box;
 	height: 100vh !important;
-	padding: 7px 0 7px 7px;
+	padding: var(--card-gap) 0 var(--card-gap) var(--card-gap);
 	overflow: hidden;
 	background: var(--bg-color);
 }
