@@ -116,8 +116,7 @@ print &ui_table_row($text{'acl_webminsearch'},
 sub acl_security_save
 {
 my ($o) = @_;
-# Update the endpoint only when the form includes this field. Older forms
-# omit it, leaving the saved restriction for the ACL writer to preserve.
+# Preserve the existing API restriction when this field is not submitted.
 if (defined($in{'api_only_def'})) {
 	$in{'api_only_def'} =~ /\A[01]\z/ || &error($text{'acl_eapi_only'});
 	my $endpoint = $in{'api_only_def'} ? '' : $in{'api_only'};
