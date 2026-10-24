@@ -1565,8 +1565,23 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 				$cgiheader{lc($1)} = $2;
 				push(@cgiheader, [ $1, $2 ]);
 				}
+			# A CGI can reject a request before producing normal
+			# output. Use its explicit status instead of the default
+			# success code.
+			my $cgi_status = $cgiheader{'status'} =~
+				/\A([1-5][0-9][0-9])\s+([^\r\n]+)\z/;
+			if ($cgi_status) {
+				($ok_code, $ok_message) = ($1, $2);
+				}
+			else {
+				# Invalid control headers must not affect
+				# redirect logging.
+				delete($cgiheader{'status'});
+				}
 			if ($cgiheader{"location"}) {
-				&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
+				&write_data("HTTP/1.0 ".($cgi_status
+					? "$ok_code $ok_message"
+					: "302 Moved Temporarily")."\r\n");
 				&write_data("Date: $datestr\r\n");
 				&write_data("Server: @{[&server_info()]}\r\n");
 				&write_keep_alive(0);
@@ -1588,6 +1603,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 				&write_keep_alive(0);
 				}
 			foreach $h (@cgiheader) {
+				next if (lc($h->[0]) eq 'status');
 				&write_data("$h->[0]: $h->[1]\r\n");
 				}
 			&write_data("\r\n");
@@ -1671,7 +1687,9 @@ else {
 # log the request
 &log_request($loghost, $authuser, $reqline,
 	     $logged_code ? $logged_code :
-	     $cgiheader{"location"} ? "302" : $ok_code, &byte_count());
+	     $cgiheader{"location"} && !$cgiheader{"status"}
+		? "302"
+		: $ok_code, &byte_count());
 return $rv;
 }
 
@@ -2499,9 +2517,22 @@ foreach $d (@_) {
 				}
 			}
 		if ($doneheaders) {
+			# Match forked CGI status handling for in-process
+			# scripts.
+			my $cgi_status = $cgiheader{'status'} =~
+				/\A([1-5][0-9][0-9])\s+([^\r\n]+)\z/;
+			if ($cgi_status) {
+				($ok_code, $ok_message) = ($1, $2);
+				}
+			else {
+				# Invalid control headers must not affect
+				# redirect logging.
+				delete($cgiheader{'status'});
+				}
 			if ($cgiheader{"location"}) {
-				&write_data(
-					"HTTP/1.0 302 Moved Temporarily\r\n");
+				&write_data("HTTP/1.0 ".($cgi_status
+					? "$ok_code $ok_message"
+					: "302 Moved Temporarily")."\r\n");
 				&write_data("Date: $datestr\r\n");
 				&write_data("Server: @{[&server_info()]}\r\n");
 				&write_keep_alive(0);
@@ -2516,6 +2547,7 @@ foreach $d (@_) {
 				&write_keep_alive(0);
 				}
 			foreach $h (@cgiheader) {
+				next if (lc($h->[0]) eq 'status');
 				&write_data("$h->[0]: $h->[1]\r\n");
 				}
 			&write_data("\r\n");
@@ -2553,7 +2585,9 @@ if ($doing_cgi_eval && $$ == $main_process_id) {
 	close(SOCK);
 	close($PASSINw); close($PASSOUTw);
 	&log_request($loghost, $authuser, $reqline,
-		     $cgiheader{"location"} ? "302" : $ok_code, &byte_count());
+		     $cgiheader{"location"} && !$cgiheader{"status"}
+		     	? "302"
+			: $ok_code, &byte_count());
 	}
 }
 
