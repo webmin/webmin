@@ -80,6 +80,8 @@
 	--accent-color-hover: #234d93;
 	--accent-color-soft: #a9c0e8;
 	--element-highlight-bg-color: #e3ebf8;
+	/* Navigation loader, with a separate shade for each color scheme. */
+	--menu-loader-color: #dc143c;
 	/* Text on a button filled with a notice color: white on the deep
 	 * light-mode colors, the ground color on the bright dark-mode ones.
 	 * The dark palette keeps its own amber for the warning button. */
@@ -158,6 +160,7 @@
 		--accent-color-hover: #5a8ad8;
 		--accent-color-soft: #3d5f8a;
 		--element-highlight-bg-color: #26395a;
+		--menu-loader-color: #c7302c;
 		--alert-button-text: var(--bg-color);
 		--alert-button-warning: #e0a63c;
 		--alert-button-warning-text: var(--bg-color);
@@ -235,6 +238,7 @@ html[data-scheme="dark"] body, body[data-scheme="dark"] {
 	--accent-color-hover: #5a8ad8;
 	--accent-color-soft: #3d5f8a;
 	--element-highlight-bg-color: #26395a;
+	--menu-loader-color: #c7302c;
 	--alert-button-text: var(--bg-color);
 	--alert-button-warning: #e0a63c;
 	--alert-button-warning-text: var(--bg-color);
@@ -1870,11 +1874,9 @@ html.loading-right .menu-loader { display: block; }
 	width: 35%;
 	height: 100%;
 	border-radius: 2px;
-	background: var(--accent-color);
+	background: var(--menu-loader-color);
 	animation: menu-bounce 0.9s ease-in-out infinite alternate;
 }
-/* Match Authentic's crimson progress bar for Cloudmin navigation. */
-.menu-panel-cloudmin .menu-loader::before { background: #dc143c; }
 @keyframes menu-bounce { to { left: 65%; } }
 /* The brand block: the logo has as much room above it as below it, and
  * the logo files are trimmed to their drawing, so every product sits the
