@@ -1235,8 +1235,7 @@ while(1) {
 			$count_lines = 0;
 			}
 		if ($max && $got > $max) {
-			#print STDERR "over limit of $max\n";
-			#&error($err);
+			&error($err);
 			}
 		if (!$line) {
 			# Unexpected EOF?
