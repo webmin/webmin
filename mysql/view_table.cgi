@@ -226,7 +226,7 @@ elsif ($in{'advanced'}) {
 if ($in{'sortfield'}) {
 	# Show current sort order
 	print "<tr> <td><b>",&text($in{'sortdir'} ? 'view_sorthead2' : 'view_sorthead1',
-			      "<tt>$in{'sortfield'}</tt>"),"</b></td>\n";
+			      "<tt>".&html_escape($in{'sortfield'})."</tt>"),"</b></td>\n";
 	print "<td align=right><a href='view_table.cgi?db=".&urlize($in{'db'})."&".
 	      "table=".&urlize($in{'table'})."$searchargs'>".
 	      "$text{'view_sortreset'}</a></td> </tr>\n";
@@ -521,7 +521,7 @@ local $img = $in{'sortfield'} eq $field && $dir ? "sortascgrey.gif" :
 	     $dir ? "sortasc.gif" : "sortdesc.gif";
 return "<a href='view_table.cgi?db=".&urlize($in{'db'}).
        "&table=".&urlize($in{'table'})."&start=".&urlize($in{'start'}).
-       "&sortfield=$field&sortdir=$dir$searchargs'>".
-       "<b>$field</b><img valign=middle src=../images/$img border=0>";
+       "&sortfield=".&urlize($field)."&sortdir=".&urlize($dir)."$searchargs'>".
+       "<b>".&html_escape($field)."</b><img valign=middle src=../images/$img border=0>";
 }
 
