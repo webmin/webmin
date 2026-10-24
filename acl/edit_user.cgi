@@ -169,8 +169,8 @@ print &ui_table_row($text{'edit_pass'},
 		     "autocomplete=off").
 	($lockbox || $tempbox ? "<br>" : "").$lockbox.$tempbox.$expmsg);
 
-# Real name
-print &ui_table_row($text{'edit_real'},
+# API-only accounts describe an integration rather than a person.
+print &ui_table_row($text{$uaccess{'api_only'} ? 'edit_desc' : 'edit_real'},
 	&ui_textbox("real", $user{'real'}, 60));
 
 # Contact email for recovery
