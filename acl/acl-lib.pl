@@ -1665,14 +1665,15 @@ foreach my $m (@$mems) {
 
 =head2 copy_acl_files(from, to, &modules, [from-type], [to-type])
 
-Copy all .acl files from some user to another user in a list of modules.
+Copy ACLs for selected modules between users or groups. Global permissions
+retain an existing destination API endpoint; otherwise they inherit the source.
 The parameters are :
 
 =item from - Source user or group name.
 
 =item to - Destination user or group name.
 
-=item modules - Array ref of module names.
+=item modules - Array ref of module names; an empty name or . includes globals.
 
 =item from-type - Either "user" or "group", defaults to "user"
 
@@ -1684,6 +1685,29 @@ sub copy_acl_files
 my ($from, $to, $mods, $fromtype, $totype) = @_;
 $fromtype ||= "user";
 $totype ||= "user";
+if (grep { $_ eq '' || $_ eq '.' } @$mods) {
+	# Keep the destination endpoint even when the source has a different
+	# one.
+	my %source = $fromtype eq 'user' ? &get_module_acl($from, '', 1, 1) :
+		&get_group_module_acl($from, '', 1);
+	my %dest = $totype eq 'user' ? &get_module_acl($to, '', 1, 1) :
+		&get_group_module_acl($to, '', 1);
+	$source{'api_only'} = $dest{'api_only'} if ($dest{'api_only'});
+	if ($totype eq 'user') {
+		# The user ACL writer supports both local files and user
+		# databases.
+		&save_module_acl(\%source, $to, '', 1);
+		}
+	else {
+		# Group destinations use their own ACL writer and storage
+		# format.
+		&save_group_module_acl(\%source, $to, '', 1);
+		}
+	# Leave the caller's list intact and copy remaining module ACLs
+	# normally.
+	$mods = [ grep { $_ ne '' && $_ ne '.' } @$mods ];
+	return if (!@$mods);
+	}
 my ($dbh, $proto, $fromid, $toid);
 
 # Check if the source user/group is in a DB
@@ -1821,7 +1845,9 @@ my ($from, $to, $mods) = @_;
 =head2 set_acl_files(&allusers, &allgroups, module, &members, &access)
 
 Recursively update the ACL for all sub-users and groups of a group, by copying
-detailed access control settings from the group down to users. Parameters are :
+detailed access control settings from the group down to users. Global copies
+retain each member's existing API endpoint and pass it to nested members.
+Parameters are :
 
 =item allusers - An array ref of Webmin users, as returned by list_users.
 
@@ -1844,7 +1870,16 @@ foreach my $m (@$members) {
 		if ($u) {
 			my $aclfile = "$config_directory/$mod/$u->{'name'}.acl";
 			&lock_file($aclfile);
-			&save_module_acl($access, $u->{'name'}, $mod, 1);
+			# Copy per member so a retained endpoint cannot leak to
+			# its siblings.
+			my %updated = %{$access || {}};
+			if ($mod eq '' || $mod eq '.') {
+				# Inheritance cannot replace or clear the
+				# member's existing endpoint.
+				my %old = &get_module_acl($u->{'name'}, $mod, 1, 1);
+				$updated{'api_only'} = $old{'api_only'} if ($old{'api_only'});
+				}
+			&save_module_acl(\%updated, $u->{'name'}, $mod, 1);
 			chmod(0640, $aclfile) if (-r $aclfile);
 			&unlock_file($aclfile);
 			}
@@ -1857,11 +1892,22 @@ foreach my $m (@$members) {
 			my $aclfile =
 				"$config_directory/$mod/$g->{'name'}.gacl";
 			&lock_file($aclfile);
-			&save_group_module_acl($access, $g->{'name'}, $mod, 1);
+			# Copy per member so a retained endpoint cannot leak to
+			# its siblings.
+			my %updated = %{$access || {}};
+			if ($mod eq '' || $mod eq '.') {
+				# Retain the subgroup endpoint even when the
+				# parent has a different one.
+				my %old = &get_group_module_acl($g->{'name'}, $mod, 1);
+				$updated{'api_only'} = $old{'api_only'} if ($old{'api_only'});
+				}
+			&save_group_module_acl(\%updated, $g->{'name'}, $mod, 1);
 			chmod(0640, $aclfile) if (-r $aclfile);
 			&unlock_file($aclfile);
+			# Descendants inherit the retained subgroup policy, not
+			# the parent copy.
 			&set_acl_files($allusers, $allgroups, $mod,
-				       $g->{'members'}, $access);
+				       $g->{'members'}, \%updated);
 			}
 		}
 	}
