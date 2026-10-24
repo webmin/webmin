@@ -4530,9 +4530,10 @@ return &ui_tag('code', &html_escape($str), { 'class' => 'ui_code' });
 
 =head2 ui_tip(content-html, tip)
 
-Wraps arbitrary HTML content so the given plain-text tip is shown on
-hover by the theme's tooltip, the same one ui_help uses. For a plain
-question-mark help bubble, use ui_help instead.
+Wraps HTML content in a CSS tooltip, shown on hover or focus within the
+content. Load ui_page_assets when using this outside a widget page.
+The tip is text; HTML tags are stripped. For a question-mark help bubble,
+use ui_help instead.
 
 =cut
 sub ui_tip
@@ -6132,7 +6133,7 @@ Size, add-if-missing, titles and width are ignored.
 
 =item values - Array reference of selected scalars or [ value, label, attributes ] entries. Attributes are also retained when a selected entry is missing from options.
 
-=item options - Array reference of [ value, label, attributes ] entries or hashes with keys value, label, suffix (muted text after the label), level (indentation depth), tag (chip at the right), disabled and attrs. Attributes may be a hash or trusted HTML attribute string, as in ui_select. disabled applies to the checkbox; other attributes, such as title, style and class, apply to the row. Widget identity and selection remain controlled by the library.
+=item options - Array reference of [ value, label, attributes ] entries or hashes with keys value, label, suffix (muted text after the label), level (indentation depth), tag (chip at the right), disabled and attrs. Attributes may be a hash or trusted HTML attribute string, as in ui_select. disabled applies to the checkbox; title becomes a CSS tooltip around the checkbox label; style and class apply to the row. Widget identity and selection remain controlled by the library.
 
 =item badges - An option hash may also contain a badges array. Each entry holds ui_badge arguments: [ label, state, options ]. Badges appear separately at the right, beside any tag. Their labels are escaped and included in filtering.
 
@@ -6402,10 +6403,16 @@ foreach my $it (@items) {
 	# Checkbox renderers may place HTML outside their label element.
 	my $ctags = "data-ui-multi-item='1'";
 	$ctags .= ' aria-label="'.$filter_label.'"' if ($opts->{'html'});
+	# Reuse the CSS tooltip for row titles, without a second native tooltip.
+	my $tip = delete($it->{'attrs'}->{'title'});
+	$ctags .= ' aria-description="'.&html_escape($tip, 1).'"'
+		if (defined($tip) && $tip ne '');
 	my $row = &ui_checkbox($inputname.'_item', $val, $label,
 			       $selected{$val} ? 1 : 0,
 			       $ctags,
 			       $dis || $it->{'disabled'} ? 1 : 0);
+	$row = &ui_tip($row, &html_escape($tip, 1))
+		if (defined($tip) && $tip ne '');
 	if ($note && $it->{'kids'}) {
 		my $nattrs = { 'class' => 'ui_multi_note' };
 		$nattrs->{'hidden'} = undef if (!$folded);

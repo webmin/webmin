@@ -1690,16 +1690,16 @@ td:not(:hover) .ui_link_help { visibility: hidden; }
 .ui_text_wrap { float: right; }
 /* Tooltips from the aria-label of elements marked data-tooltip: a dark
  * box with an arrow above the element, shown on hover */
-[data-tooltip][aria-label] {
+[data-tooltip][aria-label]:not(.ui_tip) {
 	position: relative;
 	vertical-align: top;
 }
 /* Card actions align help bubbles through ui-lib, but this theme still
  * needs the bubble to anchor its generated tooltip. */
-.ui_card_actions .ui_help[data-tooltip][aria-label] {
+.ui_card_actions .ui_help[data-tooltip][aria-label]:not(.ui_tip) {
 	position: relative;
 }
-[data-tooltip][aria-label]::after {
+[data-tooltip][aria-label]:not(.ui_tip)::after {
 	content: "";
 	position: absolute;
 	bottom: 100%;
@@ -1717,7 +1717,7 @@ td:not(:hover) .ui_link_help { visibility: hidden; }
 	/* Keep a tooltip near the top above the sticky page header. */
 	z-index: 10;
 }
-[data-tooltip][aria-label]::before {
+[data-tooltip][aria-label]:not(.ui_tip)::before {
 	content: attr(aria-label);
 	position: absolute;
 	bottom: calc(15px + 100%);
@@ -1740,8 +1740,8 @@ td:not(:hover) .ui_link_help { visibility: hidden; }
 	visibility: hidden;
 	z-index: 10;
 }
-[data-tooltip][aria-label]:hover::before,
-[data-tooltip][aria-label]:hover::after {
+[data-tooltip][aria-label]:not(.ui_tip):hover::before,
+[data-tooltip][aria-label]:not(.ui_tip):hover::after {
 	visibility: visible;
 	opacity: 1;
 	transition-duration: 0.5s;
@@ -1749,7 +1749,7 @@ td:not(:hover) .ui_link_help { visibility: hidden; }
 /* Opacity gives the tooltip trigger its own stacking context. Raise that
  * context while the tooltip is visible, because raising its children alone
  * cannot place them above the sticky header. */
-[data-tooltip][aria-label]:hover {
+[data-tooltip][aria-label]:not(.ui_tip):hover {
 	z-index: 10;
 }
 

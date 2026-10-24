@@ -124,6 +124,144 @@
 	text-align: left;
 }
 
+/* Shared CSS tooltips. Theme tokens keep the bubble and its arrow readable
+ * in light and dark palettes. Ordinary help bubbles retain their theme style. */
+.ui_tip[data-tooltip][aria-label] {
+	position: relative;
+	display: inline-block;
+	vertical-align: baseline;
+	--ui-tip-bg: var(--ui-fg, var(--text-color, #212121));
+	--ui-tip-fg: var(--ui-surface, var(--main-content, var(--bg-color, #fff)));
+}
+.ui_tip[data-tooltip][aria-label]::before,
+.ui_tip[data-tooltip][aria-label]::after {
+	position: absolute;
+	pointer-events: none;
+	display: none;
+	z-index: 1060;
+}
+.ui_tip[data-tooltip][aria-label]::before {
+	content: attr(aria-label);
+	bottom: calc(100% + 8px);
+	left: 0;
+	width: max-content;
+	box-sizing: border-box;
+	max-width: min(32rem, calc(100vw - 24px));
+	padding: 7px 10px;
+	border-radius: 5px;
+	/* Theme text colors may have alpha; paint over a solid surface. */
+	background: linear-gradient(var(--ui-tip-bg), var(--ui-tip-bg)),
+		var(--ui-tip-fg);
+	color: var(--ui-tip-fg);
+	font-size: 13px;
+	line-height: 1.45;
+	font-weight: normal;
+	font-style: normal;
+	text-align: left;
+	text-transform: none;
+	text-shadow: none;
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+.ui_tip[data-tooltip][aria-label]::after {
+	content: '';
+	bottom: calc(100% + 4px);
+	left: 12px;
+	width: 8px;
+	height: 8px;
+	background: linear-gradient(var(--ui-tip-bg), var(--ui-tip-bg)),
+		var(--ui-tip-fg);
+	transform: rotate(45deg);
+}
+.ui_tip[data-tooltip][aria-label]:is(:hover, :focus-within)::before,
+.ui_tip[data-tooltip][aria-label]:is(:hover, :focus-within)::after {
+	display: block;
+}
+/* A hovered row takes priority over the checkbox that still has focus. */
+.ui_multi:has(.ui_tip:hover) .ui_tip:not(:hover)::before,
+.ui_multi:has(.ui_tip:hover) .ui_tip:not(:hover)::after {
+	display: none;
+}
+/* Fixed anchors escape scrolling lists. Scope each pair so repeated entries
+ * cannot attach to another row's tooltip. Older browsers use the absolute
+ * positioning above. */
+@supports (anchor-scope: --ui-tip) {
+	.ui_tip[data-tooltip][aria-label] {
+		anchor-name: --ui-tip;
+		anchor-scope: --ui-tip, --ui-tip-box, --ui-tip-input;
+	}
+	.ui_tip[data-tooltip][aria-label]::before {
+		position: fixed;
+		position-anchor: --ui-tip;
+		anchor-name: --ui-tip-box;
+		bottom: anchor(top);
+		left: anchor(left);
+		margin-bottom: 8px;
+		position-try-fallbacks: --ui-tip-right, --ui-tip-fit,
+			--ui-tip-below, --ui-tip-below-right, --ui-tip-below-fit;
+		position-visibility: anchors-visible;
+	}
+	.ui_tip[data-tooltip][aria-label]::after {
+		position: fixed;
+		position-anchor: --ui-tip;
+		bottom: auto;
+		/* Attach the arrow to the nearest bubble edge after a position change. */
+		top: calc(clamp(anchor(--ui-tip-box top), anchor(bottom),
+			anchor(--ui-tip-box bottom)) - 4px);
+		left: clamp(calc(anchor(--ui-tip-box left) + 8px),
+			calc(anchor(left) + 12px), calc(anchor(--ui-tip-box right) - 16px));
+		position-visibility: anchors-visible;
+	}
+	/* Point list descriptions at the checkbox, whose size varies by theme.
+	 * Leave room beside it for the bubble's rounded corner. */
+	.ui_multi .ui_tip input[type="checkbox"] {
+		anchor-name: --ui-tip-input;
+	}
+	.ui_multi .ui_tip[data-tooltip][aria-label]::before {
+		left: calc(anchor(--ui-tip-input center) - 12px);
+	}
+	.ui_multi .ui_tip[data-tooltip][aria-label]::after {
+		left: clamp(calc(anchor(--ui-tip-box left) + 8px),
+			calc(anchor(--ui-tip-input center) - 4px),
+			calc(anchor(--ui-tip-box right) - 16px));
+	}
+	@position-try --ui-tip-right {
+		left: auto;
+		right: anchor(right);
+	}
+	/* A long description can need more room than either side of its label. */
+	@position-try --ui-tip-fit {
+		left: 12px;
+		right: 12px;
+		width: auto;
+	}
+	@position-try --ui-tip-below {
+		bottom: auto;
+		top: anchor(bottom);
+		margin-top: 8px;
+		margin-bottom: 0;
+	}
+	@position-try --ui-tip-below-right {
+		bottom: auto;
+		top: anchor(bottom);
+		left: auto;
+		right: anchor(right);
+		margin-top: 8px;
+		margin-bottom: 0;
+	}
+	@position-try --ui-tip-below-fit {
+		bottom: auto;
+		top: anchor(bottom);
+		left: 12px;
+		right: 12px;
+		width: auto;
+		margin-top: 8px;
+		margin-bottom: 0;
+	}
+}
+.ui_multi .ui_tip { display: inline-flex; align-items: center; min-width: 0; }
+.ui_multi .ui_tip > input[type="checkbox"] { margin-right: 6px; }
+
 /* Built-in dark palette, enabled with data-ui-scheme="dark" on any
  * ancestor element (or on the .ui_page wrapper itself, via the scheme
  * option of ui_page_start). With data-ui-scheme="auto" the dark
