@@ -281,7 +281,9 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 .ui_field, .ui_field * {
 	box-sizing: border-box;
 }
-.ui_page h1, .ui_page h2, .ui_page p, .ui_page dl, .ui_page dd { margin: 0; }
+/* Reset widget paragraphs without removing spacing from help and other prose. */
+.ui_page h1, .ui_page h2, .ui_page p.ui--p,
+.ui_page dl, .ui_page dd { margin: 0; }
 .ui_page svg.ui_svg_icon { flex-shrink: 0; vertical-align: -0.18em; }
 
 /* Underline plain text links, but keep links styled as buttons undecorated. */
