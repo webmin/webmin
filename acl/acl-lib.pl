@@ -1183,7 +1183,9 @@ my $lref = &read_file_lines("$config_directory/webmin.groups");
 @$lref = grep { !/^([^:]+):/ || $1 ne $groupname } @$lref;
 &flush_file_lines();
 &unlock_file("$config_directory/webmin.groups");
-&unlink_file(map { "$config_directory/$_/$groupname.gacl" } &list_modules());
+# Remove global permissions too, so reusing the name cannot revive old ACLs.
+&unlink_file(map { "$config_directory/$_/$groupname.gacl" }
+		 ("", &list_modules()));
 
 if ($miniserv{'userdb'}) {
 	# Also delete from group database
