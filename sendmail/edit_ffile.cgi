@@ -37,7 +37,7 @@ foreach $f (@filter, [ 1, '', '', '' ],
 		     [ 1, '', '', '' ],
 		     [ 1, '', '', '' ],
 		     [ 1, '', '', '' ]) {
-	$field = &ui_aelect("field_$i", $f->[2],
+	$field = &ui_select("field_$i", $f->[2],
 		[ map { [ $_, $text{'ffile_'.$_} ] }
 		      ('', 'from', 'to', 'subject', 'cc', 'body') ])."\n";
 
