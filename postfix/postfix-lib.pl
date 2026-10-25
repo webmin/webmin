@@ -1653,13 +1653,15 @@ return $v;
 # Create some map text file, if needed
 sub ensure_map
 {
-foreach my $mf (&get_maps_files(&get_real_value($_[0]))) {
+my ($name) = @_;
+my $perms = $name eq "tls_server_sni_maps" ? 0600 : 0755;
+foreach my $mf (&get_maps_files(&get_real_value($name))) {
 	if ($mf =~ /^\// && !-e $mf) {
 		my $touchfh = "TOUCH";
 		&open_lock_tempfile($touchfh, ">$mf", 1) ||
 			&error(&text("efilewrite", $mf, $!));
 		&close_tempfile($touchfh);
-		&set_ownership_permissions(undef, undef, 0755, $mf);
+		&set_ownership_permissions(undef, undef, $perms, $mf);
 		}
 	}
 }
