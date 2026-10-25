@@ -2308,18 +2308,29 @@ local ($dir) = @_;
 local @files = &get_maildir_files($dir);
 local $i = 0;
 local $changed = 0;
+local $stale = 0;
 foreach my $nf (@files) {
 	if (substr($nf, length($dir)+1, 3) eq "new") {
 		local $cf = $nf;
-		$cf =~ s/\/new\//\/cur\//g;
-		if (&rename_as_mail_user($nf, $cf)) {
+		$cf =~ s/\/new\/([^\/]+)$/\/cur\/$1/;
+		if (!-e $nf) {
+			# Already moved or deleted by another process, so the
+			# cached file list is out of date. Don't try to rename,
+			# as rename_file would fall back to running mv
+			$stale = 1;
+			}
+		elsif (&rename_as_mail_user($nf, $cf)) {
 			$files[$i] = $cf;
 			$changed = 1;
 			}
 		}
 	$i++;
 	}
-if ($changed) {
+if ($stale) {
+	# Force a re-read of the directory next time
+	&flush_maildir_cachefile($dir);
+	}
+elsif ($changed) {
 	# Update the cache, including the new directory modification time
 	local $newest;
 	foreach my $d ("$dir/cur", "$dir/new") {
