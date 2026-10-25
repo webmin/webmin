@@ -1916,12 +1916,19 @@ elsif ($folder->{'type'} == 5) {
 	}
 else {
 	# For all other folders, just check individual messages
-	# XXX faster for maildir?
 	local @data = ( 0, 0, 0 );
 	local @mails;
 	eval {
 		$main::error_must_die = 1;
-		@mails = &mailbox_list_mails(undef, undef, $folder, 1);
+		if ($folder->{'type'} == 1 && $folder->{'flags'}) {
+			# For a Maildir where read flags come from filenames,
+			# only read the headers of messages with no flags set,
+			# as only they need the read DBM checked
+			@mails = &list_maildir_flags($folder);
+			}
+		else {
+			@mails = &mailbox_list_mails(undef, undef, $folder, 1);
+			}
 		};
 	return ( ) if ($@);
 	foreach my $m (@mails) {
@@ -1936,6 +1943,36 @@ else {
 		}
 	return @data;
 	}
+}
+
+# list_maildir_flags(&folder)
+# Returns messages in a Maildir folder with IDs and flags taken from their
+# filenames. Headers are only read for messages with no flags.
+sub list_maildir_flags
+{
+my ($folder) = @_;
+my $md = $folder->{'file'};
+my @rv;
+&switch_to_folder_user($folder);
+&mark_read_maildir($md);
+foreach my $f (&get_maildir_files($md)) {
+	my $mail = { 'header' => { } };
+	if ($f =~ /:2,([A-Za-z]*)$/) {
+		my @flags = split(//, $1);
+		$mail->{'read'} = &indexoflc("S", @flags) >= 0 ? 1 : 0;
+		$mail->{'special'} = &indexoflc("F", @flags) >= 0 ? 1 : 0;
+		$mail->{'replied'} = &indexoflc("R", @flags) >= 0 ? 1 : 0;
+		$mail->{'flags'} = 1;
+		}
+	if (!$mail->{'read'} && !$mail->{'special'} && !$mail->{'replied'}) {
+		$mail = &read_mail_file($f, 1) || next;
+		}
+	$mail->{'file'} = $f;
+	$mail->{'id'} = substr($f, length($md)+1);
+	push(@rv, $mail);
+	}
+&switch_from_folder_user($folder);
+return @rv;
 }
 
 # mailbox_set_read_flags(&folder, &mail, read, special, replied)
