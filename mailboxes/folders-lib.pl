@@ -790,15 +790,36 @@ local ($folder, $field, $dir) = @_;
 # Build or update the sort index. This is a file mapping unique IDs and fields
 # to sortable values.
 local %index;
-&build_new_sort_index($folder, $field, \%index);
+&build_new_sort_index($folder, $field, \%index) || return ( );
 
-# Get message indexes, sorted by the field
+# Re-use the sorted list if already built by this process, and the index
+# hasn't changed since
+local $ifile = &folder_new_sort_index_file($folder);
+my $memo = $main::sorted_ids_cache{$ifile};
+if ($memo && $memo->{'field'} eq $field && $memo->{'dir'} eq $dir) {
+	return @{$memo->{'ids'}};
+	}
+
+# Get message indexes and the values of the field. If the list of IDs in the
+# index is known, fetch each value directly as this is much faster than
+# iterating over the whole DBM.
 my @sorter;
-while(my ($k, $v) = each %index) {
-	if ($k =~ /^(.*)_\Q$field\E$/) {
-		push(@sorter, [ $1, lc($v) ]);
+my $ids = &read_sort_index_ids($ifile, \%index);
+if ($ids) {
+	foreach my $id (@$ids) {
+		my $v = $index{$id."_".$field};
+		push(@sorter, [ $id, lc($v) ]) if (defined($v));
 		}
 	}
+else {
+	while(my ($k, $v) = each %index) {
+		if ($k =~ /^(.*)_\Q$field\E$/) {
+			push(@sorter, [ $1, lc($v) ]);
+			}
+		}
+	}
+
+# Sort by the field
 if ($field eq "size" || $field eq "date" || $field eq "x-spam-status") {
 	# Numeric sort
 	@sorter = sort { my $s = $a->[1] <=> $b->[1]; $dir ? $s : -$s } @sorter;
@@ -807,7 +828,47 @@ else {
 	# Alpha sort
 	@sorter = sort { my $s = $a->[1] cmp $b->[1]; $dir ? $s : -$s } @sorter;
 	}
-return map { $_->[0] } @sorter;
+my @rv = map { $_->[0] } @sorter;
+$main::sorted_ids_cache{$ifile} = { 'field' => $field, 'dir' => $dir,
+				    'ids' => \@rv };
+return @rv;
+}
+
+# read_sort_index_ids(index-file, &index)
+# Returns an array ref of message IDs in a sort index, from the list saved
+# alongside it, or undef if the list is missing or out of date
+sub read_sort_index_ids
+{
+my ($ifile, $index) = @_;
+my $fh;
+open($fh, "<", "$ifile.ids") || return undef;
+my $hdr = <$fh>;
+chomp($hdr);
+if ($hdr ne $index->{'lastchange'}." ".$index->{'mailcount'}) {
+	close($fh);
+	return undef;
+	}
+my @ids = <$fh>;
+close($fh);
+chomp(@ids);
+return \@ids;
+}
+
+# write_sort_index_ids(index-file, &index, &ids)
+# Saves the list of message IDs in a sort index, along with its last update
+# time and message count so that it can be checked for validity
+sub write_sort_index_ids
+{
+my ($ifile, $index, $ids) = @_;
+my $fh = "IDSFILE";
+&open_tempfile($fh, ">$ifile.ids", 1) || return 0;
+&print_tempfile($fh, $index->{'lastchange'}." ".$index->{'mailcount'}."\n");
+foreach my $id (@$ids) {
+	&print_tempfile($fh, $id."\n");
+	}
+my $ok = &close_tempfile($fh);
+chmod(0600, "$ifile.ids");
+return $ok;
 }
 
 # delete_old_sort_index(&folder)
@@ -892,24 +953,40 @@ if ($index->{'lastchange'} != $folder->{'lastchange'} ||
 		}
 	print DEBUG "added ",scalar(@mails)," messages to index\n";
 
-	# Remove IDs that no longer exist
+	# Remove IDs that no longer exist. If the list of IDs previously in
+	# the index is known, just delete their entries, rather than
+	# iterating over the whole DBM to find them.
 	local %ids = map { $_, 1 } (@ids, @wantids);
 	local $dc = 0;
-	local @todelete;
-	while(my ($k, $v) = each %$index) {
-		if ($k =~ /^(.*)_([^_]+)$/ && !$ids{$1}) {
-			push(@todelete, $k);
-			$dc++ if ($2 eq "size");
+	my $oldids = &read_sort_index_ids($ifile, $index);
+	if ($oldids) {
+		foreach my $id (@$oldids) {
+			next if ($ids{$id});
+			foreach my $f (@index_fields) {
+				delete($index->{$id."_".$f});
+				}
+			$dc++;
 			}
 		}
-	foreach my $k (@todelete) {
-		delete($index->{$k});
+	else {
+		local @todelete;
+		while(my ($k, $v) = each %$index) {
+			if ($k =~ /^(.*)_([^_]+)$/ && !$ids{$1}) {
+				push(@todelete, $k);
+				$dc++ if ($2 eq "size");
+				}
+			}
+		foreach my $k (@todelete) {
+			delete($index->{$k});
+			}
 		}
 	print DEBUG "deleted $dc messages from index\n";
 
-	# Record index update time
+	# Record index update time, and the IDs now in it
 	$index->{'lastchange'} = $folder->{'lastchange'} || time();
 	$index->{'mailcount'} = scalar(@ids);
+	&write_sort_index_ids($ifile, $index, [ &unique(@ids, @wantids) ]);
+	delete($main::sorted_ids_cache{$ifile});
 	print DEBUG "new indexchange=$index->{'lastchange'}\n";
 	}
 return 1;
@@ -926,6 +1003,7 @@ foreach my $field (@index_fields) {
 	delete($index{$id."_".$field});
 	}
 dbmclose(%index);
+delete($main::sorted_ids_cache{&folder_new_sort_index_file($folder)});
 if ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 	# Remove from underlying folder's index too
 	local ($sfn, $sid) = split(/\t+/, $id, 2);
@@ -945,6 +1023,50 @@ local %index;
 &build_new_sort_index($folder, undef, \%index);
 $index{'lastchange'} = 0;
 dbmclose(%index);
+delete($main::sorted_ids_cache{&folder_new_sort_index_file($folder)});
+}
+
+# rename_new_sort_index_message(&folder, old-id, new-id)
+# Updates a sort index after a message's ID changes, such as when the flags in
+# a Maildir filename change, so that it doesn't need to be re-read
+sub rename_new_sort_index_message
+{
+my ($folder, $oldid, $newid) = @_;
+return 0 if (!$folder->{'sortable'});
+my $ifile = &folder_new_sort_index_file($folder);
+my %index;
+&open_dbm_db(\%index, $ifile, 0600);
+if (defined($index{$oldid."_size"})) {
+	foreach my $f (@index_fields) {
+		$index{$newid."_".$f} = $index{$oldid."_".$f};
+		delete($index{$oldid."_".$f});
+		}
+	my $ids = &read_sort_index_ids($ifile, \%index);
+	if ($ids) {
+		my $i = &indexof($oldid, @$ids);
+		if ($i >= 0) {
+			$ids->[$i] = $newid;
+			&write_sort_index_ids($ifile, \%index, $ids);
+			}
+		else {
+			unlink("$ifile.ids");
+			}
+		}
+	}
+dbmclose(%index);
+
+# Update the ID in any already-sorted list too, as its position is unchanged
+my $memo = $main::sorted_ids_cache{$ifile};
+if ($memo) {
+	my $i = &indexof($oldid, @{$memo->{'ids'}});
+	if ($i >= 0) {
+		$memo->{'ids'}->[$i] = $newid;
+		}
+	else {
+		delete($main::sorted_ids_cache{$ifile});
+		}
+	}
+return 1;
 }
 
 # delete_new_sort_index(&folder)
@@ -957,6 +1079,9 @@ local $ifile = &folder_new_sort_index_file($folder);
 my %index;
 &open_dbm_db(\%index, $ifile, 0600);
 %index = ( );
+dbmclose(%index);
+unlink("$ifile.ids");
+delete($main::sorted_ids_cache{$ifile});
 }
 
 # folder_sort_index_file(&folder)
@@ -2019,11 +2144,23 @@ elsif ($folder->{'type'} == 1) {
 	my $newfile = $base.":2,".
 			 join("", grep { $flags{$_} } sort(keys %flags));
 	if ($newfile ne $file) {
-		# Need to rename file
-		rename("$path$file", "$path$newfile");
+		# Need to rename file. Make sure the cached list of files is
+		# current first, so that it can be updated rather than
+		# flushed, which would force a re-read of the whole directory
+		&get_maildir_files($folder->{'file'});
+		my $oldid = $mail->{'id'};
+		if (rename("$path$file", "$path$newfile")) {
+			&rename_maildir_cachefile($folder->{'file'},
+				"$path$file", "$path$newfile");
+			}
+		else {
+			&flush_maildir_cachefile($folder->{'file'});
+			}
+		$mail->{'file'} = "$path$newfile" if ($mail->{'file'});
 		$newfile =~ s/^(.*)\/((cur|tmp|new)\/.*)$/$2/;
 		$mail->{'id'} = $newfile;
-		&flush_maildir_cachefile($folder->{'file'});
+		&rename_new_sort_index_message($folder, $oldid, $newfile)
+			if ($oldid ne $newfile);
 		}
 	}
 else {

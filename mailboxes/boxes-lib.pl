@@ -2127,16 +2127,7 @@ local ($file, $ids, $headersonly) = @_;
 local $retried = $_[3];
 &mark_read_maildir($file);
 local @files = &get_maildir_files($file);
-
-# Build maps from paths to directory indexes, and from paths without flags to
-# current paths, so that each lookup doesn't need to scan the whole list
-my (%fileidx, %basefile);
-for(my $i=0; $i<@files; $i++) {
-	$fileidx{$files[$i]} = $i;
-	my $base = $files[$i];
-	$base =~ s/:2,[A-Za-z]*$//;
-	$basefile{$base} ||= $files[$i];
-	}
+my $maps = &get_maildir_files_maps($file, \@files);
 
 local @rv;
 local $missing;
@@ -2145,7 +2136,15 @@ foreach my $i (@$ids) {
 	local $mail = &read_mail_file($path, $headersonly);
 	if (!$mail && $path =~ /^(.*)\/(cur|tmp|new)\/([^:]*)(:2,([A-Za-z]*))?$/) {
 		# Flag may have changed - update path
-		local $newfile = $basefile{"$1/$2/$3"};
+		my $base = "$1/$2/$3";
+		if (!$maps->{'base'}) {
+			foreach my $f (@files) {
+				my $fb = $f;
+				$fb =~ s/:2,[A-Za-z]*$//;
+				$maps->{'base'}->{$fb} ||= $f;
+				}
+			}
+		local $newfile = $maps->{'base'}->{$base};
 		if ($newfile) {
 			$path = $newfile;
 			$mail = &read_mail_file($path, $headersonly);
@@ -2161,7 +2160,8 @@ foreach my $i (@$ids) {
 		$mail->{'id'} = $path;
 		$mail->{'id'} = substr($mail->{'id'}, length($file)+1);
 		# Get index in directory
-		$mail->{'idx'} = defined($fileidx{$path}) ? $fileidx{$path} : -1;
+		my $idx = $maps->{'idx'}->{$path};
+		$mail->{'idx'} = defined($idx) ? $idx : -1;
 		}
 	else {
 		$missing = 1;
@@ -2173,6 +2173,27 @@ if ($missing && !$retried) {
 	return &select_maildir($file, $ids, $headersonly, 1);
 	}
 return @rv;
+}
+
+# get_maildir_files_maps(directory, &files)
+# Returns a hash ref containing a map from the paths of files in a Maildir to
+# their indexes, so that lookups don't need to scan the whole list. A map from
+# paths without flags to current paths is added by the caller if needed. The
+# maps are re-used until the cached list of files changes.
+sub get_maildir_files_maps
+{
+my ($dir, $files) = @_;
+my $cache = $main::list_maildir_cache{$dir};
+my $maps = $main::list_maildir_maps{$dir};
+if (!$maps || !$cache || $maps->{'cache'} ne $cache) {
+	my %idx;
+	for(my $i=0; $i<@$files; $i++) {
+		$idx{$files->[$i]} = $i;
+		}
+	$maps = { 'idx' => \%idx, 'cache' => $cache };
+	$main::list_maildir_maps{$dir} = $maps if ($cache);
+	}
+return $maps;
 }
 
 # Get ordered list of message files (with in-memory and on-disk caching, as
@@ -2331,29 +2352,64 @@ if ($stale) {
 	&flush_maildir_cachefile($dir);
 	}
 elsif ($changed) {
-	# Update the cache, including the new directory modification time
-	local $newest;
-	foreach my $d ("$dir/cur", "$dir/new") {
-		local @dst = stat($d);
-		$newest = $dst[9] if ($dst[9] > $newest);
+	&save_maildir_cachefile($dir, \@files);
+	}
+}
+
+# save_maildir_cachefile(dir, &files)
+# Updates the in-memory and on-disk caches of files in a Maildir after this
+# process has renamed some of them, including the new directory modification
+# time so that the caches remain valid
+sub save_maildir_cachefile
+{
+my ($dir, $files) = @_;
+my $newest;
+foreach my $d ("$dir/cur", "$dir/new") {
+	my @dst = stat($d);
+	$newest = $dst[9] if ($dst[9] > $newest);
+	}
+$main::list_maildir_cache{$dir} = $files;
+$main::list_maildir_cache_time{$dir} = $newest;
+my $cachefile = &get_maildir_cachefile($dir);
+if ($cachefile) {
+	&open_tempfile(CACHE, ">$cachefile", 1);
+	foreach my $f (@$files) {
+		my $short = substr($f, length($dir)+1);
+		&print_tempfile(CACHE, $short,"\n");
 		}
-	$main::list_maildir_cache{$dir} = \@files;
-	$main::list_maildir_cache_time{$dir} = $newest;
-	local $cachefile = &get_maildir_cachefile($dir);
-	if ($cachefile) {
-		&open_tempfile(CACHE, ">$cachefile", 1);
-		foreach my $f (@files) {
-			local $short = substr($f, length($dir)+1);
-			&print_tempfile(CACHE, $short,"\n");
-			}
-		&close_tempfile(CACHE);
-		local @st = stat($_[0]);
-		if ($< == 0) {
-			&set_ownership_permissions($st[4], $st[5],
-						   undef, $cachefile);
-			}
+	&close_tempfile(CACHE);
+	my @st = stat($dir);
+	if ($< == 0) {
+		&set_ownership_permissions($st[4], $st[5], undef, $cachefile);
 		}
 	}
+}
+
+# rename_maildir_cachefile(dir, old-path, new-path)
+# Updates the caches of files in a Maildir after one is renamed by this
+# process, such as when its flags change. Returns 1 if the caches were up to
+# date and could be updated, or 0 if they were flushed instead.
+sub rename_maildir_cachefile
+{
+my ($dir, $oldpath, $newpath) = @_;
+my $cache = $main::list_maildir_cache{$dir};
+my $maps = $main::list_maildir_maps{$dir};
+my $i;
+if ($cache && $maps && $maps->{'cache'} eq $cache) {
+	$i = $maps->{'idx'}->{$oldpath};
+	}
+elsif ($cache) {
+	$i = &indexof($oldpath, @$cache);
+	$i = undef if ($i < 0);
+	}
+if (!defined($i)) {
+	&flush_maildir_cachefile($dir);
+	return 0;
+	}
+my @files = @$cache;
+$files[$i] = $newpath;
+&save_maildir_cachefile($dir, \@files);
+return 1;
 }
 
 # delete_maildir(&mail, ...)
