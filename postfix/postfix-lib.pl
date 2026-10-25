@@ -789,21 +789,27 @@ sub regenerate_dependent_table
 #
 sub regenerate_any_table
 {
-    my ($name, $force, $after, $base64) = @_;
-    $base64 = 0 if (&compare_version_numbers($postfix_version, 3.4) < 0);
-    my @files;
-    if ($force) {
+my ($name, $force, $after, $base64) = @_;
+$base64 = 0 if (&compare_version_numbers($postfix_version, 3.4) < 0);
+my @files;
+if ($force) {
 	@files = map { [ "hash", $_ ] } @$force;
-    } elsif (&get_current_value($name) ne "") {
+	}
+elsif (&get_current_value($name) ne "") {
 	my $value = &get_real_value($name);
 	if ($after) {
 		$value =~ s/^.*\Q$after\E\s+(\S+).*$/$1/ || return;
 		}
 	@files = &get_maps_types_files($value);
-    }
-    foreach my $map (@files)
-    {
-        next unless $map;
+	}
+foreach my $map (@files) {
+	next unless $map;
+	# Make safe permissions for SNI maps
+	if ($name eq "tls_server_sni_maps" && &file_map_type($map->[0])) {
+		&set_ownership_permissions(undef, undef, 0600, $map->[1],
+					   glob("$map->[1].*"));
+		}
+
 	# Text maps are read directly by Postfix and cannot be indexed.
 	if (&file_map_type($map->[0]) &&
 	    $map->[0] ne 'regexp' && $map->[0] ne 'pcre' &&
@@ -814,10 +820,9 @@ sub regenerate_any_table
 			($base64 ? " -F" : "").
 			" $map->[0]:$map->[1] 2>&1");
 		if ($?) { &error(&text('regenerate_table_efailed', $map->[1], $out)); }
+		}
 	}
-    }
 }
-
 
 
 ############################################################################
