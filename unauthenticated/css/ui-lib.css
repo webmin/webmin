@@ -1735,23 +1735,24 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	white-space: nowrap;
 }
 .ui_multi_side { margin-left: auto; padding-left: 8px; flex-shrink: 0; }
-/* Metadata stays secondary to the label, with room between rows and badges. */
-.ui_multi_item:has(> .ui_multi_badges) { padding: 7px 10px; }
+/* Badges share the chip's size and the row's normal padding, so rows with
+ * badges line up with rows without them. */
 .ui_multi_badges {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: flex-end;
-	gap: 6px 8px;
+	gap: 6px;
 	flex-shrink: 1;
-	padding-left: 16px;
 }
 .ui_multi_badges .ui_badge {
-	padding: 3px 10px;
+	padding: 1px 8px;
+	font-size: 0.86em;
 	font-weight: 400;
-	line-height: 1.4;
+	line-height: 1.5;
 	border-color: color-mix(in srgb, currentColor 16%, transparent);
 }
+.ui_multi_badges .ui_badge .ui_svg_icon { width: 1em; height: 1em; }
 .ui_multi_badges .ui_badge_neutral {
 	background: color-mix(in srgb, var(--ui-neutral-soft) 35%, transparent);
 	color: var(--ui-fg-muted);

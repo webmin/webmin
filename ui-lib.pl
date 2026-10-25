@@ -6422,9 +6422,9 @@ foreach my $it (@items) {
 	# Keep plain tags compatible while allowing separate state badges.
 	my @badges = ref($it->{'badges'}) eq 'ARRAY' ?
 		grep { ref($_) eq 'ARRAY' && defined($_->[0]) } @{$it->{'badges'}} : ();
-	my $side = defined($it->{'tag'}) && $it->{'tag'} ne '' ?
-		&ui_chip($it->{'tag'}) : '';
-	$side .= join('', map { &ui_badge(@$_) } @badges);
+	# Badges and metadata come first, so the tag chip stays a fixed
+	# right-hand column across rows with and without badges.
+	my $side = join('', map { &ui_badge(@$_) } @badges);
 	# Several facts share one badge, with plain labels and accessible tooltips.
 	my @metadata = ref($it->{'metadata'}) eq 'ARRAY' ?
 		grep { ref($_) eq 'HASH' && defined($_->{'label'}) &&
@@ -6442,6 +6442,8 @@ foreach my $it (@items) {
 			{ 'class' => 'ui_badge ui_badge_neutral ui_badge_small '.
 				'ui_badge_rounded ui_multi_metadata' });
 		}
+	$side .= &ui_chip($it->{'tag'})
+		if (defined($it->{'tag'}) && $it->{'tag'} ne '');
 	$row .= &ui_tag('span', $side,
 		{ 'class' => &_ui_class('ui_multi_side', @badges ? 'ui_multi_badges' : undef) })
 		if (length($side));
