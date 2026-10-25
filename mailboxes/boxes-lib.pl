@@ -175,7 +175,7 @@ local ($file, $ids, $headersonly) = @_;
 local @rv;
 
 local (@rv);
-my %index;
+my (%index, %midmap);
 local $gotindex;
 
 local $umf = &user_mail_file($file);
@@ -191,23 +191,22 @@ foreach my $i (@$ids) {
 			($1 eq '-' && !$dash) ? 0 : 1;
 	print DEBUG "seeking to $pos in $umf, got $ll";
 	if (!$fromok) {
-		# Oh noes! Need to find it
+		# Oh noes! Need to find it, using a map from message IDs to
+		# positions built once from the index
 		if (!$gotindex++) {
 			&build_dbm_index($file, \%index);
-			}
-		$pos = undef;
-		while(my ($k, $v) = each %index) {
-			if (int($k) eq $k) {
-				my ($p, $line, $subject, $from, $mid)=
-					split(/\0/, $v);
-				if ($mid eq $wantmid) {
-					# Found it!
-					$pos = $p;
-					$idx = $k;
-					$startline = $line;
-					last;
+			while(my ($k, $v) = each %index) {
+				if (int($k) eq $k) {
+					my ($p, $line, $subject, $from, $mid)=
+						split(/\0/, $v);
+					$midmap{$mid} ||= [ $p, $k, $line ];
 					}
 				}
+			}
+		$pos = undef;
+		if ($midmap{$wantmid}) {
+			# Found it!
+			($pos, $idx, $startline) = @{$midmap{$wantmid}};
 			}
 		}
 
@@ -2128,6 +2127,17 @@ local ($file, $ids, $headersonly) = @_;
 local $retried = $_[3];
 &mark_read_maildir($file);
 local @files = &get_maildir_files($file);
+
+# Build maps from paths to directory indexes, and from paths without flags to
+# current paths, so that each lookup doesn't need to scan the whole list
+my (%fileidx, %basefile);
+for(my $i=0; $i<@files; $i++) {
+	$fileidx{$files[$i]} = $i;
+	my $base = $files[$i];
+	$base =~ s/:2,[A-Za-z]*$//;
+	$basefile{$base} ||= $files[$i];
+	}
+
 local @rv;
 local $missing;
 foreach my $i (@$ids) {
@@ -2135,10 +2145,7 @@ foreach my $i (@$ids) {
 	local $mail = &read_mail_file($path, $headersonly);
 	if (!$mail && $path =~ /^(.*)\/(cur|tmp|new)\/([^:]*)(:2,([A-Za-z]*))?$/) {
 		# Flag may have changed - update path
-		local $suffix = "$2/$3";
-		local ($newfile) = grep
-		  { substr($_, length($file)+1, length($suffix)) eq $suffix }
-		  @files;
+		local $newfile = $basefile{"$1/$2/$3"};
 		if ($newfile) {
 			$path = $newfile;
 			$mail = &read_mail_file($path, $headersonly);
@@ -2154,7 +2161,7 @@ foreach my $i (@$ids) {
 		$mail->{'id'} = $path;
 		$mail->{'id'} = substr($mail->{'id'}, length($file)+1);
 		# Get index in directory
-		$mail->{'idx'} = &indexof($path, @files);
+		$mail->{'idx'} = defined($fileidx{$path}) ? $fileidx{$path} : -1;
 		}
 	else {
 		$missing = 1;
@@ -2199,7 +2206,6 @@ else {
 			push(@files, $_[0]."/".$_);
 			}
 		close(CACHE);
-		$main::list_maildir_cache_time{$_[0]} = $cst[9];
 		}
 	else {
 		# Really read
@@ -2261,9 +2267,9 @@ else {
 							   undef, $cachefile);
 				}
 			}
-		$main::list_maildir_cache_time{$_[0]} = $st[9];
 		}
 	$main::list_maildir_cache{$_[0]} = \@files;
+	$main::list_maildir_cache_time{$_[0]} = $newest;
 	}
 return @files;
 }
@@ -2301,6 +2307,7 @@ sub mark_read_maildir
 local ($dir) = @_;
 local @files = &get_maildir_files($dir);
 local $i = 0;
+local $changed = 0;
 foreach my $nf (@files) {
 	if (substr($nf, length($dir)+1, 3) eq "new") {
 		local $cf = $nf;
@@ -2313,8 +2320,14 @@ foreach my $nf (@files) {
 	$i++;
 	}
 if ($changed) {
-	# Update the cache
+	# Update the cache, including the new directory modification time
+	local $newest;
+	foreach my $d ("$dir/cur", "$dir/new") {
+		local @dst = stat($d);
+		$newest = $dst[9] if ($dst[9] > $newest);
+		}
 	$main::list_maildir_cache{$dir} = \@files;
+	$main::list_maildir_cache_time{$dir} = $newest;
 	local $cachefile = &get_maildir_cachefile($dir);
 	if ($cachefile) {
 		&open_tempfile(CACHE, ">$cachefile", 1);

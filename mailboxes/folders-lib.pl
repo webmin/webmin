@@ -572,20 +572,22 @@ foreach my $mail (@mail) {
 return @mail;
 }
 
-# mailbox_get_mail(&folder, id, headersonly)
-# Convenience function to get a single mail by ID
+# mailbox_get_mail(&folder, id, headersonly, [skip-sort-index])
+# Convenience function to get a single mail by ID. Unless skip-sort-index is
+# set, the message's position in the sorted folder is also computed, which
+# can be slow for large folders.
 sub mailbox_get_mail
 {
-local ($folder, $id, $headersonly) = @_;
+local ($folder, $id, $headersonly, $nosortidx) = @_;
 local ($mail) = &mailbox_select_mails($folder, [ $id ], $headersonly);
-if ($mail) {
+if ($mail && !$nosortidx) {
 	# Find the sort index for this message
 	local ($field, $dir) = &get_sort_field($folder);
 	if (!$field || !$folder->{'sortable'}) {
 		# No sorting, so sort index is the opposite of real
 		$mail->{'sortidx'} = &mailbox_folder_size($folder, 1) -
 				     $mail->{'idx'} - 1;
-		print DEBUG "idx=$mail->{'idx'} sortidx=$mail->{'sortidx'} size=",&mailbox_folder_size($folder, 1),"\n";
+		print DEBUG "idx=$mail->{'idx'} sortidx=$mail->{'sortidx'}\n";
 		}
 	else {
 		# Need to extract from sort index
@@ -643,10 +645,20 @@ elsif ($folder->{'type'} == 4) {
 	return () if (!$count);
         $folder->{'lastchange'} = $rv[3] if ($rv[3]);
 
-	@rv = &imap_command($h, "FETCH 1:$count UID");
-	foreach my $uid (@{$rv[1]}) {
-		if ($uid =~ /UID\s+(\d+)/) {
-			push(@idlist, $1);
+	# UID SEARCH returns all UIDs on one line, which is much faster to
+	# read than one FETCH response per message
+	@rv = &imap_command($h, "UID SEARCH ALL");
+	if ($rv[0]) {
+		local ($srch) = grep { $_ =~ /^\*\s+SEARCH/i } @{$rv[1]};
+		$srch =~ s/^\*\s+SEARCH\s*//i;
+		@idlist = sort { $a <=> $b } grep { /^\d+$/ } split(/\s+/, $srch);
+		}
+	else {
+		@rv = &imap_command($h, "FETCH 1:$count UID");
+		foreach my $uid (@{$rv[1]}) {
+			if ($uid =~ /UID\s+(\d+)/) {
+				push(@idlist, $1);
+				}
 			}
 		}
 	}
@@ -1853,7 +1865,7 @@ elsif ($f->{'type'} == 6 && !$est) {
 	# exist in the parent folders
 	$rv = 0;
 	foreach my $msg (@{$f->{'members'}}) {
-		if (&mailbox_get_mail($msg->[0], $msg->[1])) {
+		if (&mailbox_get_mail($msg->[0], $msg->[1], 1, 1)) {
 			$rv++;
 			}
 		}
