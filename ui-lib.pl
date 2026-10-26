@@ -1024,9 +1024,20 @@ if ( !$nojs ) {
     # ui_opt_textbox that aren't in the default state.
     my $rv = "<script type='text/javascript'>\n";
     $rv .= "(function () {\n";
+    $rv .= "function restore() {\n";
     $rv .= "const opts = document.getElementsByClassName('ui_opt_textbox');\n";
     $rv .= "for(let i=0; i<opts.length; i++) {\n";
     $rv .= "  opts[i].disabled = document.getElementsByName(opts[i].name+'_def')[0].checked;\n";
+    $rv .= "}\n";
+    $rv .= "}\n";
+    # Disabling inputs during a history load prevents their values being restored.
+    $rv .= "const navigation = window.performance && performance.getEntriesByType && performance.getEntriesByType('navigation')[0];\n";
+    $rv .= "if (!navigation || navigation.type !== 'back_forward') restore();\n";
+    # Native history restores radio values after the page's scripts have run.
+    # One listener handles all forms, including forms loaded by theme navigation.
+    $rv .= "if (!window.webminOptTextboxHistoryReady) {\n";
+    $rv .= "  window.webminOptTextboxHistoryReady = true;\n";
+    $rv .= "  window.addEventListener('pageshow', function() { setTimeout(restore, 0); });\n";
     $rv .= "}\n";
     $rv .= "})();\n";
     $rv .= "</script>\n";
