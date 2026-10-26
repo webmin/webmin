@@ -792,6 +792,7 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	font-size: 0.8em;
 	line-height: 1.25;
 }
+.ui_badge_small:has(> .ui_svg_icon) { padding-left: 4px; }
 .ui_badge_small .ui_svg_icon { width: 1em; height: 1em; }
 /* Rounded ends, only when a caller asks for them. Widgets are drawn
  * square, apart from the toggle and the badge dot, which are round */
