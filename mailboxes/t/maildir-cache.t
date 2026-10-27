@@ -101,6 +101,29 @@ subtest 'failed rename preserves the mail object and sort index' => sub {
 	dbmclose(%index);
 	};
 
+subtest 'existing indexes gain a missing ids file without reading messages' => sub {
+	my $folder = folder('upgrade', 3);
+	my @before = build_sorted_ids($folder, 'subject', 1);
+	my $ifile = folder_new_sort_index_file($folder);
+	unlink("$ifile.ids") or die $!;
+	delete($main::sorted_ids_cache{$ifile});
+	my $reads = 0;
+	my $reader = \&read_mail_file;
+	{
+		no warnings 'redefine';
+		local *main::read_mail_file = sub { $reads++; return &$reader(@_); };
+		is_deeply([build_sorted_ids($folder, 'subject', 1)], \@before,
+			  'unchanged index still sorts correctly');
+		}
+	is($reads, 0, 'migration reads the index, not the messages');
+	ok(-s "$ifile.ids", 'sidecar is persisted for subsequent requests');
+	my %index;
+	open_dbm_db(\%index, $ifile, 0600);
+	my $ids = read_sort_index_ids($ifile, \%index);
+	is_deeply([sort(@{$ids || []})], [sort(@before)], 'sidecar contains every ID');
+	dbmclose(%index);
+	};
+
 subtest 'bulk flags avoid mailbox-sized work for each message' => sub {
 	my $folder = folder('bulk', 100);
 	my $dir = $folder->{'file'};

@@ -812,11 +812,16 @@ if ($ids) {
 		}
 	}
 else {
+	# Upgrade an existing index without rereading message headers. Save all
+	# IDs, including messages that lack the requested sort field.
+	my @ids;
 	while(my ($k, $v) = each %index) {
+		push(@ids, $1) if ($k =~ /^(.*)_size$/);
 		if ($k =~ /^(.*)_\Q$field\E$/) {
 			push(@sorter, [ $1, lc($v) ]);
 			}
 		}
+	&write_sort_index_ids($ifile, \%index, \@ids);
 	}
 
 # Sort by the field
