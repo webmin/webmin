@@ -899,7 +899,8 @@ local $ifile = &folder_new_sort_index_file($folder);
 
 &open_dbm_db($index, $ifile, 0600);
 print DEBUG "indexchange=$index->{'lastchange'} folderchange=$folder->{'lastchange'}\n";
-if ($index->{'lastchange'} != $folder->{'lastchange'} ||
+if ($index->{'recheck'} ||
+    $index->{'lastchange'} != $folder->{'lastchange'} ||
     !$folder->{'lastchange'} ||
     (defined($folder->{'mailcount'}) &&
      $index->{'mailcount'} != $folder->{'mailcount'})) {
@@ -986,6 +987,7 @@ if ($index->{'lastchange'} != $folder->{'lastchange'} ||
 	$index->{'lastchange'} = $folder->{'lastchange'} || time();
 	$index->{'mailcount'} = scalar(@ids);
 	&write_sort_index_ids($ifile, $index, [ &unique(@ids, @wantids) ]);
+	delete($index->{'recheck'});
 	delete($main::sorted_ids_cache{$ifile});
 	print DEBUG "new indexchange=$index->{'lastchange'}\n";
 	}
@@ -1041,31 +1043,14 @@ if (defined($index{$oldid."_size"})) {
 		$index{$newid."_".$f} = $index{$oldid."_".$f};
 		delete($index{$oldid."_".$f});
 		}
-	my $ids = &read_sort_index_ids($ifile, \%index);
-	if ($ids) {
-		my $i = &indexof($oldid, @$ids);
-		if ($i >= 0) {
-			$ids->[$i] = $newid;
-			&write_sort_index_ids($ifile, \%index, $ids);
-			}
-		else {
-			unlink("$ifile.ids");
-			}
-		}
 	}
+# Refresh the ID lists once on their next use. Keep the old .ids file so
+# the refresh can find removed IDs without scanning every DBM field.
+$index{'recheck'} = 1;
 dbmclose(%index);
 
-# Update the ID in any already-sorted list too, as its position is unchanged
-my $memo = $main::sorted_ids_cache{$ifile};
-if ($memo) {
-	my $i = &indexof($oldid, @{$memo->{'ids'}});
-	if ($i >= 0) {
-		$memo->{'ids'}->[$i] = $newid;
-		}
-	else {
-		delete($main::sorted_ids_cache{$ifile});
-		}
-	}
+# Do not scan or rewrite a mailbox-sized list for each changed message.
+delete($main::sorted_ids_cache{$ifile});
 return 1;
 }
 
@@ -2100,7 +2085,7 @@ foreach my $f (&get_maildir_files($md)) {
 return @rv;
 }
 
-# mailbox_set_read_flags(&folder, &mail, read, special, replied)
+# mailbox_set_read_flag(&folder, &mail, read, special, [replied])
 # Updates the status flags on some message
 sub mailbox_set_read_flag
 {
@@ -2144,18 +2129,17 @@ elsif ($folder->{'type'} == 1) {
 	my $newfile = $base.":2,".
 			 join("", grep { $flags{$_} } sort(keys %flags));
 	if ($newfile ne $file) {
-		# Need to rename file. Make sure the cached list of files is
-		# current first, so that it can be updated rather than
-		# flushed, which would force a re-read of the whole directory
-		&get_maildir_files($folder->{'file'});
-		my $oldid = $mail->{'id'};
-		if (rename("$path$file", "$path$newfile")) {
-			&rename_maildir_cachefile($folder->{'file'},
-				"$path$file", "$path$newfile");
-			}
-		else {
+		# Leave the message and sort index unchanged if the rename fails.
+		if (!rename("$path$file", "$path$newfile")) {
+			my $err = "$!";
 			&flush_maildir_cachefile($folder->{'file'});
+			&error("Failed to rename $path$file to $path$newfile : $err");
 			}
+
+		# Re-read the file list once on its next use. A delivery may have
+		# occurred during the rename, so the earlier snapshot is not safe.
+		&flush_maildir_cachefile($folder->{'file'});
+		my $oldid = $mail->{'id'};
 		$mail->{'file'} = "$path$newfile" if ($mail->{'file'});
 		$newfile =~ s/^(.*)\/((cur|tmp|new)\/.*)$/$2/;
 		$mail->{'id'} = $newfile;
