@@ -68,6 +68,33 @@ $folder->{'lastchange'} = modification_time($folder);
 return $folder;
 }
 
+subtest 'writes and deletes refresh the file list within one timestamp tick' => sub {
+	foreach my $operation ('write', 'delete') {
+		my $folder = folder($operation, 2);
+		my $dir = $folder->{'file'};
+		my @dirs = ("$dir/cur", "$dir/new");
+		my $stamp = time() - 5;
+		utime($stamp, $stamp, @dirs) == 2 or die $!;
+		my @expected = get_maildir_files($dir);
+		my $mail = read_mail_file("$dir/cur/msg2:2,");
+		if ($operation eq 'write') {
+			# Add a real message through the folder API.
+			write_mail_folder($mail, $folder, 0);
+			push(@expected, $mail->{'file'});
+			}
+		else {
+			# Remove a real message through the folder API.
+			$mail->{'id'} = 'cur/msg2:2,';
+			mailbox_delete_mail($folder, $mail);
+			@expected = grep { $_ ne $mail->{'file'} } @expected;
+			}
+		# Keep mtimes equal to simulate changes within the same second.
+		utime($stamp, $stamp, @dirs) == 2 or die $!;
+		is_deeply([sort(get_maildir_files($dir))], [sort(@expected)],
+			  "$operation is visible without a directory timestamp change");
+		}
+	};
+
 subtest 'delivery during a flag rename is not hidden' => sub {
 	my $folder = folder('delivery', 1);
 	my $dir = $folder->{'file'};

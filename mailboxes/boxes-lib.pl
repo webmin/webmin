@@ -2456,6 +2456,10 @@ foreach $m (@_) {
 	unlink($m->{'file'});
 	}
 
+# Refresh file lists even when directory timestamps have not changed.
+foreach my $dir (keys %dirs) {
+	&flush_maildir_cachefile($dir);
+	}
 }
 
 # modify_maildir(&oldmail, &newmail, textonly)
@@ -2519,6 +2523,9 @@ if ($up2date && $cachefile) {
 	push(@$lref, $mail->{'id'});
 	&flush_file_lines($cachefile);
 	}
+
+# Refresh file lists even when directory timestamps have not changed.
+&flush_maildir_cachefile($dir);
 }
 
 # unique_maildir_filename(dir)
