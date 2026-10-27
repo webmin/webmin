@@ -334,6 +334,13 @@ if ($config{'log'}) {
 	$timezone .= sprintf "%2.2d%2.2d", $mins/60, $mins%60;
 	}
 
+# check trusted proxies mode
+if ($config{'trust_real_ip'} && $config{'trusted_proxies'} eq '') {
+	push(@startup_msg, "Proxy remote addresses and certificates are ".
+			   "accepted, but no trusted proxies have been ".
+			   "defined!");
+	}
+
 # Build various maps from the config files
 &build_config_mappings();
 
