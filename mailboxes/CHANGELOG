@@ -75,3 +75,9 @@ When a language with a UTF-8 character set is selected, email is converted to UT
 All operations on user mailboxes are now performed with the permissions of the user, to prevent attacks using malicious symlinks.
 ---- Changes since 1.780 ----
 When attaching files to a message, multiple files can now be selected at the same time.
+---- Changes since 2.670 ----
+Improved sorting and message lookup in large mailboxes, and sped up unread counts in Maildir folders.
+Improved bulk marking of Maildir messages as read, unread or special without rewriting the full cache for each message.
+Existing sort indexes now gain the new cached ID list without rereading messages.
+Fixed stale Maildir message lists after messages are added, deleted or their flags change.
+Fixed failed Maildir flag changes leaving message details and indexes out of sync.

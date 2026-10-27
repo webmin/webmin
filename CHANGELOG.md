@@ -9,6 +9,7 @@
 * Add confirmation dialogs for buttons and links carrying `data-ui-confirm`, replacing the browser's own prompt
 * Update the Framed Theme with many visual and usability improvements
 * Update File Manager to use the new UI widgets in the standard theme, dropping legacy templates
+* Fix sorting and message lookup in large mailboxes, and speed up unread counts and bulk flag changes in Maildir folders [#2902](https://github.com/webmin/webmin/pull/2902)
 * Fix standard theme sortable tables dropping controls from table headings, such as the select-all checkbox in File Manager
 * Fix package installation with DNF running `update` instead of `install` when one of several requested packages is already installed, leaving the others uninstalled
 * Fix two-factor authentication validation to use the Webmin configuration and data directories passed by the caller
