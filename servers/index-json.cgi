@@ -7,6 +7,9 @@ no warnings 'redefine';
 no warnings 'uninitialized';
 require './servers-lib.pl';
 
-# Get servers and apply search
-my @servers = &list_servers_sorted(1);
+# The navigation menu needs labels and IDs, never saved logins or file paths.
+my @servers = map {
+	my $server = $_;
+	+{ map { $_ => $server->{$_} } qw(id host desc) }
+	} &list_servers_sorted(1);
 print_json(\@servers);
