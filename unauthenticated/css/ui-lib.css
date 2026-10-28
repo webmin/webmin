@@ -1736,8 +1736,7 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	white-space: nowrap;
 }
 .ui_multi_side { margin-left: auto; padding-left: 8px; flex-shrink: 0; }
-/* Badges share the chip's size and the row's normal padding, so rows with
- * badges line up with rows without them. */
+/* Keep badges small enough to fit the row's normal padding and height. */
 .ui_multi_badges {
 	display: flex;
 	flex-wrap: wrap;
@@ -1747,10 +1746,10 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	flex-shrink: 1;
 }
 .ui_multi_badges .ui_badge {
-	padding: 1px 8px;
-	font-size: 0.86em;
+	padding: 0 8px;
+	font-size: 0.8em;
 	font-weight: 400;
-	line-height: 1.5;
+	line-height: 1.25;
 	border-color: color-mix(in srgb, currentColor 16%, transparent);
 }
 .ui_multi_badges .ui_badge .ui_svg_icon { width: 1em; height: 1em; }
