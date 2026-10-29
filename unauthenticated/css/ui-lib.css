@@ -909,6 +909,10 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 :is(button, a, summary).ui_action_rounded { border-radius: 4px; }
 :is(button, a, summary).ui_action_pill { border-radius: 999px; }
 .ui_action .ui_svg_icon { width: 1em; height: 1em; flex-shrink: 0; }
+/* Offset the plain tick's empty left edge when it leads a button label. */
+.ui_action_content > .ui_svg_icon_check:first-child {
+	margin-inline-start: -0.15em;
+}
 .ui_action_small .ui_svg_icon_trash {
 	transform: translateY(-0.25px);
 }
