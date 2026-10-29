@@ -20,6 +20,7 @@ category_net=Réseau
 category_syslet=Syslets
 category_cluster=Cluster
 category_info=Information
+category_=Outils
 
 longcategory_servers=Modules pour les configurations web, email, FTP et autres serveurs
 longcategory_hardware=Modules pour les imprimantes, disques et autres configurations de matériel
