@@ -523,8 +523,8 @@ close(PKG);
 while(<PKG>) {
 	s/\r|\n//g;
 	next if (/^(Loaded|updateinfo)/);
-	if (/^\S+\s+\S+\s+(\S+?)\-([0-9]\S+)\.([^\.]+)$/) {
-		local ($name, $ver) = ($1, $2);
+	if (/^\S+\s+(\S*[Ss]ec\S*)\s+(\S+?)\-([0-9]\S+)\.([^\.]+)$/) {
+		local ($name, $ver) = ($2, $3);
 		if ($done->{$name}) {
 			$done->{$name}->{'source'} ||= 'security';
 			$done->{$name}->{'security'} = 1;
