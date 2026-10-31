@@ -4,6 +4,7 @@
 package miniserv;
 use Socket;
 use POSIX;
+use Errno qw(ENOENT);
 use Time::Local;
 eval "use Time::HiRes;";
 
@@ -1061,6 +1062,28 @@ print DEBUG "handle_request: page=$page simple=$simple\n";
 if ($bogus) {
 	&http_error(400, "Invalid path");
 	return 0;
+	}
+
+# Check the API endpoint before dispatching CGIs, static files, DAV or
+# WebSockets. The CGI must still opt in through init_config.
+if ($baseauthuser && $config{'env_WEBMIN_CONFIG'}) {
+	my ($endpoint, $policy_error) = &get_api_only_endpoint($baseauthuser, $uinfo);
+	if ($policy_error || $endpoint &&
+	    ($simple ne "/$endpoint" || $davpath || $websocket_upgrade_request)) {
+		# Send a plain denial directly. Custom error CGIs must not turn a
+		# rejected request into another authenticated entry point.
+		my $body = $policy_error ? "Cannot read this account's API policy\n" :
+			"This account is restricted to its configured API endpoint\n";
+		&write_data("HTTP/1.0 403 Forbidden\r\n");
+		&write_data("Content-type: text/plain\r\n");
+		&write_data("Content-length: ".length($body)."\r\n");
+		&write_keep_alive(0);
+		&write_data("\r\n");
+		&write_data($body) if ($method ne 'HEAD');
+		&log_request($loghost, $authuser, $reqline, 403,
+			     $method eq 'HEAD' ? 0 : length($body));
+		return 0;
+		}
 	}
 
 # Check for a DAV request
@@ -4123,6 +4146,79 @@ if ($config{'userdb'}) {
 		&disconnect_userdb($config{'userdb'}, $dbh);
 		}
 	}
+}
+
+# get_api_only_endpoint(username, &user-details)
+# Read the base user's global endpoint without caching it across requests.
+# Returns (endpoint, error); storage failures deny access rather than falling
+# back to an unrestricted account. user-details comes from get_user_details.
+sub get_api_only_endpoint
+{
+my ($username, $user) = @_;
+my %acl;
+if ($user && $user->{'proto'}) {
+	# Database logins must use their database policy, never a local fallback.
+	my ($dbh, $proto) = &connect_userdb($config{'userdb'});
+	return (undef, 1) if (!ref($dbh));
+	my $ok = eval {
+		if ($proto eq 'mysql' || $proto eq 'postgresql') {
+			# Parameter binding keeps names and IDs out of SQL syntax.
+			my $cmd = $dbh->prepare(
+				"select attr,value from webmin_user_acl ".
+				"where id = ? and module = ?");
+			$cmd && $cmd->execute($user->{'id'}, '') || die "ACL query failed";
+			while(my ($key, $value) = $cmd->fetchrow()) {
+				$acl{$key} = $value;
+				}
+			$cmd->err && die "ACL fetch failed";
+			$cmd->finish();
+			}
+		elsif ($proto eq 'ldap') {
+			# The authenticated user's DN identifies the global ACL object.
+			my $result = $dbh->search(base => $user->{'id'},
+				filter => '(cn=global)', scope => 'one');
+			$result && !$result->code || die "ACL search failed";
+			my ($entry) = $result->all_entries;
+			if ($entry) {
+				# LDAP stores each ACL option as one name=value attribute.
+				foreach my $pair ($entry->get_value('webminAclEntry')) {
+					my ($key, $value) = split(/=/, $pair, 2);
+					$acl{$key} = $value;
+					}
+				}
+			}
+		else {
+			# An unknown storage backend cannot establish an access policy.
+			die "Unknown ACL backend";
+			}
+		1;
+		};
+	&disconnect_userdb($config{'userdb'}, $dbh);
+	return (undef, 1) if (!$ok);
+	}
+else {
+	# Local users normally have no global ACL file. Other read failures
+	# must not be mistaken for the absence of a restriction.
+	my $file = "$config{'env_WEBMIN_CONFIG'}/$username.acl";
+	if (open(my $fh, '<', $file)) {
+		-f $fh || return (undef, 1);
+		local $! = 0;
+		while(my $line = <$fh>) {
+			$line =~ s/[\r\n]//g;
+			if ($line =~ /^api_only=(.*)$/) {
+				# Match the global ACL reader's last-value-wins behavior.
+				$acl{'api_only'} = $1;
+				}
+			}
+		my $read_error = $!;
+		close($fh) && !$read_error || return (undef, 1);
+		}
+	elsif ($! != ENOENT) {
+		# A missing file is normal; an unreadable policy is not.
+		return (undef, 1);
+		}
+	}
+return ($acl{'api_only'}, undef);
 }
 
 # get_user_details(username, [original-username])

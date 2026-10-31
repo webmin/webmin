@@ -43,6 +43,11 @@ else {
 	}
 my $me = &get_user($base_remote_user);
 my %uaccess = &get_module_acl($in{'user'} || "", "", 1);
+if ($in{'clone'} && !$in{'user'}) {
+	# The clone form must not silently clear its source's API restriction.
+	my %source = &get_module_acl($in{'clone'}, '', 1, 1);
+	$uaccess{'api_only'} = $source{'api_only'};
+	}
 if (!$in{'user'} && $uaccess{'rpc'} == 2) {
 	# Don't offer the confusing 'root' or 'admin' RPC option by default
 	$uaccess{'rpc'} = 0;
@@ -171,8 +176,8 @@ print &ui_table_row($text{'edit_pass'},
 		     "autocomplete=off").
 	($lockbox || $tempbox ? "<br>" : "").$lockbox.$tempbox.$expmsg);
 
-# Real name
-print &ui_table_row($text{'edit_real'},
+# API-only accounts describe an integration rather than a person.
+print &ui_table_row($text{$uaccess{'api_only'} ? 'edit_desc' : 'edit_real'},
 	&ui_textbox("real", $user{'real'}, 60));
 
 # Contact email for recovery
@@ -390,6 +395,15 @@ if ($access{'acl'} && !$memg->{'name'} && !$safe) {
 			    $uaccess{'rpc'} == 2 ? ( [ 2, $text{'acl_rpc2'} ] ) : ( ),
 			    [ 3, $text{'acl_rpc3'} ],
 			    [ 0, $text{'acl_rpc0'} ] ]));
+	}
+
+# Group members inherit global settings. Do not offer an editable field
+# that save_user.cgi cannot save while the account belongs to a group.
+if ($access{'acl'} && !$memg->{'name'} && !$safe) {
+	print &ui_table_row(&hlink($text{'acl_api_only'}, 'api_only'),
+		&ui_opt_textbox('api_only', $uaccess{'api_only'}, 40,
+			$text{'acl_api_unrestricted'}, $text{'acl_api_endpoint'}).
+		'<br>'.$text{'acl_api_only_desc'});
 	}
 
 print &ui_hidden_table_end("security");
