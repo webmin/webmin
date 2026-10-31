@@ -1650,6 +1650,72 @@ subtest 'save_group.cgi name validation' => sub {
     ok(!$g, 'group with colon-bearing description not created');
 };
 
+# Group module limits must reject requests before any membership is changed.
+subtest 'save_group.cgi module limits' => sub {
+    _reset_fixture();
+    create_user({ name => 'admin', pass => 'x', modules => ['acl', 'proc'] });
+    create_group({ name => 'parent', members => [], modules => ['proc'] });
+    _seed_user_acl('admin', { mode => 2, mods => 'proc', groups => 1,
+                              gassign => '*' });
+
+    my $r = run_cgi('save_group.cgi', {
+        name => 'child', desc => 'd', group => 'parent', mod => ['proc', 'cron'] });
+    like($r->{out}, qr/You cannot grant access to module 'cron'/,
+         'explicit module limit rejects an unauthorized grant');
+    _clear_caches();
+    ok(!get_group('child'), 'rejected group is not created');
+    is_deeply(get_group('parent')->{members}, [],
+              'rejected save does not change parent membership');
+
+    $r = run_cgi('save_group.cgi', {
+        name => 'child', desc => 'd', group => 'parent', mod => 'proc' });
+    is($r->{status}, 0, 'allowed group creation exits successfully');
+    _clear_caches();
+    is_deeply(get_group('child')->{modules}, ['proc'], 'allowed module is saved');
+    is_deeply(get_group('parent')->{members}, ['@child'],
+              'successful save updates parent membership');
+
+    $r = run_cgi('save_group.cgi', {
+        old => 'child', name => 'child', desc => 'changed', group => '', mod => 'cron' });
+    like($r->{out}, qr/You cannot grant access to module 'cron'/,
+         'editing an existing group cannot grant an unauthorized module');
+    _clear_caches();
+    is_deeply(get_group('parent')->{members}, ['@child'],
+              'rejected edit does not detach the existing group');
+
+    my $payload = '<script>alert(1)</script>';
+    $r = run_cgi('save_group.cgi', { name => 'badmod', mod => $payload });
+    like($r->{out}, qr/&lt;script&gt;/, 'rejected module name is escaped');
+    unlike($r->{out}, qr/\Q$payload\E/, 'module error cannot inject HTML');
+
+    # Mode 1 uses the effective user's modules, including mapped logins.
+    _seed_user_acl('admin', { mode => 1, groups => 1 });
+    $r = run_cgi('save_group.cgi', { name => 'ownmods', mod => 'proc' },
+                 user => 'mapped-user', env => { BASE_REMOTE_USER => 'admin' });
+    _clear_caches();
+    is_deeply(get_group('ownmods')->{modules}, ['proc'],
+              'mapped login uses the base user module list');
+    $r = run_cgi('save_group.cgi', { name => 'denied', mod => 'cron' });
+    like($r->{out}, qr/You cannot grant access to module 'cron'/,
+         'mode 1 rejects modules the base user does not hold');
+
+    delete_user('admin');
+    _seed_user_acl('admin', { mode => 1, groups => 1 });
+    $r = run_cgi('save_group.cgi', { name => 'missing', mod => 'proc' });
+    like($r->{out}, qr/\Q$text{'edit_egone'}\E/, 'missing user returns a normal error');
+    unlike($r->{err}, qr/undefined value|compilation errors/,
+           'missing user does not cause a Perl exception');
+    _clear_caches();
+    ok(!get_group('missing'), 'missing user cannot create a group');
+
+    # Unrestricted mode does not require the mode-1 user record.
+    _seed_user_acl('admin', { mode => 0, groups => 1 });
+    $r = run_cgi('save_group.cgi', { name => 'unrestricted', mod => 'cron' });
+    _clear_caches();
+    is_deeply(get_group('unrestricted')->{modules}, ['cron'],
+              'unrestricted module grants remain supported');
+};
+
 subtest 'save_user.cgi self-lockout guard' => sub {
     # Editing yourself out of the acl module is refused — otherwise an
     # admin could lock themselves out of Webmin entirely.
