@@ -153,7 +153,7 @@ my %mcan = map { $_, 1 } @mcan;
 
 my @mods = split(/\0/, $in{'mod'});
 foreach my $m (@mods) {
-	$mcan{$m} || &error(&text('save_emod', $m));
+	$mcan{$m} || &error(&text('save_emod', &html_escape($m)));
 	}
 if ($in{'old'}) {
 	# Add modules that this user already has, but were not
