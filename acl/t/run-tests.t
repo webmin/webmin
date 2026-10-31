@@ -1716,6 +1716,59 @@ subtest 'save_group.cgi module limits' => sub {
               'unrestricted module grants remain supported');
 };
 
+# Editing unrelated fields must retain modules outside the admin's grant list.
+subtest 'existing group module preservation' => sub {
+    for my $mode (1, 2, 0) {
+        _reset_fixture();
+        create_user({ name => 'admin', pass => 'x', modules => ['acl', 'proc'] });
+        create_user({ name => 'member', pass => 'x', modules => ['proc', 'cron'] });
+        create_group({ name => 'existing', members => ['member'],
+                       modules => ['proc', 'cron'], desc => 'before' });
+        _seed_user_acl('admin', { mode => $mode, mods => 'proc', groups => 1 });
+
+        my $r = run_cgi('edit_group.cgi', { group => 'existing' });
+        my ($checkbox) = $r->{out} =~ /(<input\b[^>]*value="cron"[^>]*>)/;
+        ok($checkbox && $checkbox =~ /checked/, "mode $mode shows existing cron access");
+        is($checkbox && $checkbox =~ /disabled/ ? 1 : 0, $mode ? 1 : 0,
+           "mode $mode disables only restricted modules");
+
+        # Disabled controls are omitted by the browser.
+        $r = run_cgi('save_group.cgi', {
+            old => 'existing', name => 'existing', desc => 'after', mod => 'proc' });
+        _clear_caches();
+        my $group = get_group('existing');
+        is($group->{desc}, 'after', "mode $mode permits description edits");
+        my @expected = $mode ? qw(cron proc) : qw(proc);
+        is_deeply([sort @{$group->{modules}}], \@expected,
+                  "mode $mode preserves restricted modules but allows authorized removal");
+        is_deeply([sort @{get_user('member')->{modules}}], \@expected,
+                  "mode $mode preserves the correct member access");
+        next if !$mode;
+
+        # An old form can still submit the existing restricted selection.
+        $r = run_cgi('save_group.cgi', {
+            old => 'existing', name => 'existing', desc => 'old form',
+            mod => ['proc', 'cron'] });
+        _clear_caches();
+        is(get_group('existing')->{desc}, 'old form',
+           "mode $mode accepts an unchanged restricted selection");
+
+        $r = run_cgi('save_group.cgi', {
+            old => 'existing', name => 'existing', desc => 'forged',
+            mod => ['proc', 'cron', 'webmin'] });
+        like($r->{out}, qr/You cannot grant access to module 'webmin'/,
+             "mode $mode rejects a new unauthorized module");
+        _clear_caches();
+        is(get_group('existing')->{desc}, 'old form',
+           "mode $mode rejects before writing changes");
+
+        $r = run_cgi('save_group.cgi', {
+            name => 'cloned', clone => 'existing', mod => ['proc', 'cron'] });
+        like($r->{out}, qr/You cannot grant access to module 'cron'/,
+             "mode $mode cannot grant restricted modules by cloning");
+    }
+};
+
 subtest 'save_user.cgi self-lockout guard' => sub {
     # Editing yourself out of the acl module is refused — otherwise an
     # admin could lock themselves out of Webmin entirely.
