@@ -22,6 +22,7 @@ my $fh = "IN";
 &open_tempfile($fh, ">$temp1");
 foreach my $k ("emailAddress", "organizationalUnitName", "organizationName",
 	       "stateOrProvinceName", "countryName", "commonName") {
+	$in{$k} =~ /:|\n|\0/ && &error($text{'cert_echars'});
 	&print_tempfile($fh, "$k = $in{$k}\n");
 	}
 $in{'key'} =~ s/\s//g;
