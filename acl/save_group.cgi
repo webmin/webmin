@@ -7,7 +7,7 @@ use warnings;
 no warnings 'redefine';
 no warnings 'uninitialized';
 require './acl-lib.pl';    ## no critic
-our (%in, %text, %config, %access, $config_directory);
+our (%in, %text, %config, %access, $config_directory, $base_remote_user);
 &ReadParse();
 $access{'groups'} || &error($text{'gedit_ecannot'});
 
@@ -46,6 +46,17 @@ if (!$in{'old'} || $in{'old'} ne $in{'name'}) {
 	}
 $in{'desc'} !~ /:/ || &error($text{'gsave_edesc'});
 
+# Check grantable modules before changing parent group membership.
+$access{'mode'} == 1 && !$me && &error($text{'edit_egone'});
+my @mcan = $access{'mode'} == 1 ? @{$me->{'modules'} || []} :
+	   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
+				  &list_modules();
+my %mcan = map { $_, 1 } @mcan;
+my @mods = split(/\0/, $in{'mod'});
+foreach my $m (@mods) {
+	$mcan{$m} || &error(&text('save_emod', &html_escape($m)));
+	}
+
 # Find the current parent group
 my $oldgroup;
 if ($in{'old'}) {
@@ -82,16 +93,6 @@ if (defined($in{'group'})) {
 			&modify_group($in{'group'}, $newgroup);
 			}
 		}
-	}
-
-# Work out group modules
-my @mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
-	   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
-				  &list_modules();
-my %mcan = map { $_, 1 } @mcan;
-my @mods = split(/\0/, $in{'mod'});
-foreach my $m (@mods) {
-	$mcan{$m} || &error(&text('save_emod', $m));
 	}
 
 if ($oldgroup) {
