@@ -103,12 +103,7 @@ if ($in{'temp'}) {
 
 # Find logged-in webmin user
 my @ulist = &list_users();
-my $me;
-foreach my $u (@ulist) {
-	if ($u->{'name'} eq $base_remote_user) {
-		$me = $u;
-		}
-	}
+my ($me) = grep { $_->{'name'} eq $base_remote_user } @ulist;
 
 # Find the current group
 my $oldgroup = $in{'old'} ? &get_users_group($in{'old'}) : undef;

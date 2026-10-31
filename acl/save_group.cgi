@@ -21,6 +21,10 @@ elsif ($in{'but_delete'}) {
 	exit;
 	}
 
+# Find logged-in webmin user
+my @ulist = &list_users();
+my ($me) = grep { $_->{'name'} eq $base_remote_user } @ulist;
+
 my (%group, $old);
 if ($in{'old'}) {
 	# Get the original group
@@ -81,7 +85,14 @@ if (defined($in{'group'})) {
 	}
 
 # Work out group modules
+my @mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
+	   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
+				  &list_modules();
+my %mcan = map { $_, 1 } @mcan;
 my @mods = split(/\0/, $in{'mod'});
+foreach my $m (@mods) {
+	$mcan{$m} || &error(&text('save_emod', $m));
+	}
 
 if ($oldgroup) {
 	# Remove modules from the old parent group
