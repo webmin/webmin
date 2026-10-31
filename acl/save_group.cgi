@@ -52,10 +52,14 @@ my @mcan = $access{'mode'} == 1 ? @{$me->{'modules'} || []} :
 	   $access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
 				  &list_modules();
 my %mcan = map { $_, 1 } @mcan;
+# Keep existing modules that this administrator cannot change.
+my %keep = map { $_, 1 } grep { !$mcan{$_} }
+		($old ? @{$old->{'modules'}} : ());
 my @mods = split(/\0/, $in{'mod'});
 foreach my $m (@mods) {
-	$mcan{$m} || &error(&text('save_emod', &html_escape($m)));
+	$mcan{$m} || $keep{$m} || &error(&text('save_emod', &html_escape($m)));
 	}
+@mods = &unique(@mods, keys %keep);
 
 # Find the current parent group
 my $oldgroup;
