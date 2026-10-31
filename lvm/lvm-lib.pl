@@ -904,6 +904,9 @@ sub device_input
 {
 local (%used, $vg, $pv, $d, $p);
 
+# Dropdown labels need plain text sizes without theme HTML.
+local $main::theme_forbid_nice_size = 1;
+
 # Find partitions that are part of an LVM
 foreach $vg (&list_volume_groups()) {
 	foreach $pv (&list_physical_volumes($vg->{'name'})) {
