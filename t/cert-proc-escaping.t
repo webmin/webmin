@@ -71,6 +71,25 @@ subtest 'certificate success and error output' => sub {
 	unlike($error, qr/\Q$payload\E/, 'OpenSSL errors cannot introduce a script');
 	};
 
+subtest 'single-process permission error heading' => sub {
+	my ($heading, $pid);
+	local *main::error_setup = sub { $heading = $_[0] };
+	local *main::process_info = sub { $pid = $_[0]; return (user => 'fixture') };
+	local *main::can_edit_process = sub { 0 };
+	local *main::kill_logged = sub { die "unexpected signal\n" };
+	my $payload = '<script>alert(1)</script>';
+	for my $inputs ({signal => 'TERM', pid => '12345'},
+			{signal => $payload, pid => $payload}) {
+		my ($html, $error) = render_cgi('proc/kill_proc.cgi', $inputs);
+		is($error, "$main::text{'kill_ecannot'}\n", 'signaling is denied');
+		is($heading, main::text('kill_err',
+			main::html_escape($inputs->{signal}),
+			main::html_escape($inputs->{pid})),
+			'error heading renders submitted values as text');
+		is($pid, $inputs->{pid}, 'process lookup receives the original PID');
+		}
+	};
+
 subtest 'process output and return link' => sub {
 	my @signals;
 	local *main::list_processes = sub { return map { +{user => 'fixture'} } @_ };

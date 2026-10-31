@@ -1474,6 +1474,25 @@ subtest 'save_user.cgi create privilege' => sub {
     delete_user('admin');
 };
 
+subtest 'save_user.cgi rejected module escaping' => sub {
+    _reset_fixture();
+    _seed_user_acl('admin', { create => 1, mode => 2, mods => 'proc' });
+    create_user({ name => 'admin', pass => 'x', modules => ['acl', 'proc'] });
+
+    # Ordinary and hostile module names must remain text in the error page.
+    for my $module ('cron', '<script>alert(1)</script>') {
+        my $r = run_cgi('save_user.cgi', {
+            name => 'newbie', pass_def => 1, mod => $module,
+            logouttime_def => 1, minsize_def => 1 });
+        my $expected = text('save_emod', html_escape($module));
+        like($r->{out}, qr/\Q$expected\E/, 'rejected module is escaped');
+        unlike($r->{out}, qr/<script>alert\(1\)<\/script>/,
+               'module error cannot inject a script');
+        _clear_caches();
+        ok(!get_user('newbie'), 'rejected module does not create an account');
+    }
+};
+
 # Unix conversion must not bypass the privileged-name guard in save_user.cgi.
 # An ACL-capable administrator can still deliberately convert such a user.
 subtest 'convert.cgi privileged username gate' => sub {
