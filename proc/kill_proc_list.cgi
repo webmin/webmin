@@ -14,7 +14,7 @@ foreach $s ('KILL', 'TERM', 'HUP', 'STOP', 'CONT') {
 @pinfo = &list_processes(@pidlist);
 for($i=0; $i<@pidlist; $i++) {
 	$in{"args$i"} = $pinfo[$i]->{'args'};
-	print "$text{'pid'} <tt>$pidlist[$i]</tt> ... \n";
+	print "$text{'pid'} <tt>".&html_escape($pidlist[$i])."</tt> ... \n";
 	if (&can_edit_process($pinfo[$i]->{'user'})) {
 		if (&kill_logged($in{signal}, $pidlist[$i])) {
 			print "SIG$in{signal} $text{'kill_sent'}<br>\n";
