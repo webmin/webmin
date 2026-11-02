@@ -59,7 +59,7 @@ if (@table) {
 			push(@cols, &ui_link(
 				"editcmt.cgi?table=".&urlize($in{'table'}).
 				  "&idx=".&urlize($i),
-				"<i>".join(" ", @t[1..$#t])."</i>"));
+				"<i>".&html_escape(join(" ",@t[1..$#t]))."</i>"));
 			@tds = ( "width=5", "colspan=".scalar(@colnames) );
 			}
 		else {
@@ -70,11 +70,12 @@ if (@table) {
 			for($j=0; $j<@colnames; $j++) {
 				if ($j == 0) {
 					$lnk = &ui_link(
-					    "edit.cgi?table=".&urlize($in{'table'}).
-					    "&idx=".&urlize($i), $t[$j]);
+					  "edit.cgi?table=".&urlize($in{'table'}).
+					  "&idx=".&urlize($i),
+					  &html_escape($t[$j]));
 					}
 				else {
-					$lnk = $t[$j];
+					$lnk = &html_escape($t[$j]);
 					}
 				push(@cols, $lnk);
 				}

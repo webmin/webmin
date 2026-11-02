@@ -57,8 +57,10 @@ if (@table) {
 		local @tds;
 		if ($t[0] =~ /\??COMMENT/) {
 			# Special case - a comment line
-			push(@cols, "<a href='editcmt.cgi?table=$in{'table'}&".
-				    "idx=$i'><i>".join(" ", @t[1..$#t]).
+			push(@cols, "<a href='editcmt.cgi?table=".
+				    &urlize($in{'table'})."&idx=".
+				    &urlize($i)."'><i>".
+				    &html_escape(join(" ", @t[1..$#t])).
 				    "</i></a>" );
 			@tds = ( "width=5", "colspan=".scalar(@colnames) );
 			}
@@ -69,10 +71,13 @@ if (@table) {
 				}
 			for($j=0; $j<@colnames; $j++) {
 				if ($j == 0) {
-					$lnk = &ui_link("edit.cgi?table=$in{'table'}&idx=$i",$t[$j]);
+					$lnk = &ui_link(
+					  "edit.cgi?table=".&urlize($in{'table'}).
+					  "&idx=".&urlize($i),
+					  &html_escape($t[$j]));
 					}
 				else {
-					$lnk = $t[$j];
+					$lnk = &html_escape($t[$j]);
 					}
 				push(@cols, $lnk);
 				}
