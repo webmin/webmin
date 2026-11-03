@@ -4761,7 +4761,9 @@ between.
 
 =item gap - Gap between items, as a CSS length.
 
-=item class - Additional CSS classes.
+=item class - Additional CSS classes. Use ui_cluster_small for text fields
+and single-select menus beside small action buttons. Fields match the
+button height set by the theme, and menus fit their selected text.
 
 =cut
 sub ui_cluster

@@ -547,6 +547,27 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 .ui_cluster_end { justify-content: flex-end; }
 .ui_cluster_between { justify-content: space-between; }
 
+/* Fields beside small actions take their height from the button. */
+.ui_cluster_small { align-items: stretch; }
+.ui_cluster_small > label { align-self: center; line-height: 1; }
+.ui_cluster.ui_cluster_small > :is(input.ui_textbox, select.ui_select) {
+	box-sizing: border-box;
+	height: auto !important;
+	min-height: 0 !important;
+	max-height: none !important;
+	padding-block: 0 1px !important;
+	font-size: 0.9em !important;
+	line-height: 1 !important;
+}
+/* Keep content-width menus and center the arrow within the compact field. */
+.ui_cluster.ui_cluster_small > select.ui_select {
+	width: auto !important;
+	min-width: 0 !important;
+	field-sizing: content;
+	padding-inline: 4px 18px !important;
+	background-position: right 3px center !important;
+}
+
 @media (max-width: 760px) {
 	.ui_grid_fixed { grid-template-columns: 1fr; }
 }
