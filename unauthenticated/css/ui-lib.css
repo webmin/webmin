@@ -1270,8 +1270,8 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	display: grid;
 	gap: var(--ui-inset);
 	min-width: 0;
-	/* Half the inset above and below, the full inset at the sides */
-	padding: calc(var(--ui-inset) / 2) var(--ui-inset);
+	/* Match vertical padding to the surrounding page gap */
+	padding: var(--ui-gap) var(--ui-inset);
 	border: 1px solid var(--ui-border);
 	background: var(--ui-surface);
 }
