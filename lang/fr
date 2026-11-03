@@ -9,6 +9,7 @@ main_none=Vous n'avez accès à aucun modules Webmin.
 main_skill=Niveau de compétence
 main_readonly=(Mode lecture seule)
 main_return=Retourner à $1
+main_unused=Modules Inutilisés
 
 link_essl=The Net::Le module SSLeay Perl requis pour créer des connections HTTPS n'est pas installé sur votre système.
 
