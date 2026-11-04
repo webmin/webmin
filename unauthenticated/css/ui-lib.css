@@ -1965,6 +1965,8 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	display: flex;
 	flex-direction: column;
 	min-width: 0;
+	white-space: normal;
+	overflow-wrap: anywhere;
 }
 .ui_dropdown_desc {
 	color: var(--ui-fg-muted);
