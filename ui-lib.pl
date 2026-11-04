@@ -1094,7 +1094,7 @@ return &ui_textbox($name, $value, $size, $dis, $max, $tags)."&nbsp;".
        &file_chooser_button($name, $dironly);
 }
 
-=head2 ui_bytesbox(name, bytes, [size], [disabled?])
+=head2 ui_bytesbox(name, bytes, [size], [disabled?], [tags], [defaultunits], [maxunits])
 
 Returns HTML for entering a number of bytes, but with friendly kB/MB/GB
 options. May truncate values to 2 decimal points! The parameters are :
@@ -1111,19 +1111,24 @@ options. May truncate values to 2 decimal points! The parameters are :
 
 =item defaultunits - Units mode selected by default
 
+=item maxunits - Largest unit multiplier to offer, such as 1024**3 for GiB.
+Defaults to all units. Larger values are displayed in this unit.
+
 =cut
 sub ui_bytesbox
 {
-my ($name, $bytes, $size, $dis, $tags, $defaultunits) = @_;
+my ($name, $bytes, $size, $dis, $tags, $defaultunits, $maxunits) = @_;
 my $units = 1;
 my $omorfi_unit;
 
 if ($bytes eq '' && $defaultunits) {
-	$units = $defaultunits;
+	$units = $maxunits && $defaultunits > $maxunits ? $maxunits : $defaultunits;
 	}
 else {
 	for(my $i=1; $i<=4; $i++) {
 		my $u = 1024**$i;
+		# Keep the value intact when callers restrict the displayed units.
+		last if ($maxunits && $u > $maxunits);
 		if ($bytes >= $u) {
 			$units = $u;
 			$omorfi_unit = $units
@@ -1143,7 +1148,8 @@ $size = &ui_max_text_width($size || 8);
 return &ui_tag('span',
        &ui_textbox($name, $bytes, $size, $dis, undef, $tags)." ".
        &ui_select($name."_units", $units,
-		 [ [ 1, $text{"nice_size_b"} ],
+		 [ grep { !$maxunits || $_->[0] <= $maxunits }
+		   [ 1, $text{"nice_size_b"} ],
 		   [ 1024, $text{"nice_size_kiB"} ],
 		   [ 1024*1024, $text{"nice_size_MiB"} ],
 		   [ 1024*1024*1024, $text{"nice_size_GiB"} ],

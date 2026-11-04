@@ -1412,4 +1412,18 @@ subtest 'stacked fields' => sub {
 		'badges keep their own states');
 }
 
+# Restrict memory units without changing values or the default disk choices.
+{
+	my $memory = main::ui_bytesbox('memory', 1024**4, 4, 0, undef, 1024**2, 1024**3);
+	my @units = $memory =~ /<option[^>]*value=['"](\d+)['"]/g;
+	is_deeply(\@units, [1, 1024, 1024**2, 1024**3], 'limited bytebox ends at GiB');
+	like($memory, qr/<input[^>]*value=['"]1024['"]/, 'large allocation is preserved in GiB');
+	like($memory, qr/<option[^>]*value=['"]1073741824['"][^>]*selected/, 'GiB is selected for large allocations');
+	my $empty = main::ui_bytesbox('memory', '', 4, 0, undef, 1024**4, 1024**3);
+	like($empty, qr/<option[^>]*value=['"]1073741824['"][^>]*selected/, 'empty field clamps its default unit');
+	my $disk = main::ui_bytesbox('disk', 1024**4);
+	my @disk_units = $disk =~ /<option[^>]*value=['"](\d+)['"]/g;
+	is_deeply(\@disk_units, [map { sprintf("%.0f", 1024**$_) } 0..5], 'unrestricted bytebox retains all units');
+}
+
 done_testing();
