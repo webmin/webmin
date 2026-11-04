@@ -1319,6 +1319,10 @@ details.ui_hidden_table_start > table {
 	padding: 8px 14px 10px;
 	overflow-x: auto;
 }
+/* Open menus must reach beyond the section without adding scrollbars. */
+details.ui_hidden_table_start > table:has(.ui_dropdown[open]) {
+	overflow: visible;
+}
 details.ui_hidden_table_start > table > tbody {
 	display: table;
 	width: 100%;
