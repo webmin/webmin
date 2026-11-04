@@ -546,6 +546,8 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 .ui_cluster_center { justify-content: center; }
 .ui_cluster_end { justify-content: flex-end; }
 .ui_cluster_between { justify-content: space-between; }
+/* Align mixed text sizes and inline controls on the same text baseline. */
+.ui_cluster_baseline { align-items: baseline; }
 
 /* Fields beside small actions take their height from the button. */
 .ui_cluster_small { align-items: stretch; }
@@ -566,6 +568,63 @@ body:has(.ui_page[data-ui-scheme="dark"]) {
 	field-sizing: content;
 	padding-inline: 4px 18px !important;
 	background-position: right 3px center !important;
+}
+
+/* Wrap a single ui_select in ui_select_inline to use it within a heading
+ * or sentence. Keep the theme's arrow, with room for it after the text. */
+.ui_select_inline {
+	display: inline-flex;
+	align-items: baseline;
+	max-width: 100%;
+	vertical-align: baseline;
+}
+/* A wrapping label associates its text without relying on a control ID. */
+label.ui_select_inline {
+	column-gap: calc(var(--ui-gap, 10px) / 3);
+	font-weight: inherit;
+}
+/* Keep an inline selector close to its label, preserving the next item gap. */
+.ui_cluster > label + .ui_select_inline {
+	margin-inline-start: calc(var(--ui-gap) / -1.5);
+}
+.ui_select_inline > select.ui_select:not([multiple]):is(:not([size]), [size="1"]) {
+	box-sizing: border-box;
+	width: auto !important;
+	min-width: 0 !important;
+	max-width: 100%;
+	field-sizing: content;
+	height: auto !important;
+	min-height: 0 !important;
+	max-height: none !important;
+	padding-block: 0 !important;
+	padding-inline: 0 1em !important;
+	border: 0 !important;
+	border-radius: 0;
+	background-color: transparent !important;
+	background-position: right 0 center !important;
+	box-shadow: none !important;
+	color: inherit !important;
+	font: inherit !important;
+	cursor: pointer;
+}
+/* Underline only the selected text, leaving its label and arrow clear. */
+.ui_select_inline_underlined > select.ui_select {
+	text-decoration: underline;
+	text-underline-offset: 0.12em;
+}
+/* A borderless field still needs a visible keyboard focus indicator. */
+.ui_select_inline > select.ui_select:focus-visible {
+	outline: 2px solid var(--ui-accent, var(--link-color, #0b46ab)) !important;
+	outline-offset: 2px;
+}
+.ui_select_inline > select.ui_select:disabled {
+	opacity: 0.55;
+	cursor: default;
+}
+/* Native option menus need an opaque surface in both light and dark themes. */
+.ui_select_inline > select.ui_select option {
+	background-color: var(--ui-surface, var(--main-content, Canvas));
+	color: var(--ui-fg, var(--text-color, CanvasText));
 }
 
 @media (max-width: 760px) {

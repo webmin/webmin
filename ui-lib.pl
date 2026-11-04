@@ -1244,6 +1244,13 @@ are :
 
 =item tags - Additional HTML attributes for the <select> input.
 
+For a borderless single select that inherits the surrounding text style,
+wrap the returned HTML in a span with class ui_select_inline. A label
+with the same class can wrap both the label text and select without an
+explicit control ID. Add ui_select_inline_underlined to the wrapper to
+underline the selected text. Call ui_page_assets() if the page does not
+already load the widget styles.
+
 =cut
 sub ui_select
 {
@@ -4770,6 +4777,8 @@ between.
 =item class - Additional CSS classes. Use ui_cluster_small for text fields
 and single-select menus beside small action buttons. Fields match the
 button height set by the theme, and menus fit their selected text.
+Use ui_cluster_baseline to align mixed text sizes and inline controls on
+the same baseline.
 
 =cut
 sub ui_cluster
