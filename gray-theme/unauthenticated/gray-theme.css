@@ -392,6 +392,7 @@ details > summary {
 }
 details > summary::-webkit-details-marker { display: none; }
 details.ui_hidden_table_start > summary::before,
+details.default > summary::before,
 details.section > summary::after,
 details.menu-cat > summary::after {
 	content: "";
@@ -403,7 +404,8 @@ details.menu-cat > summary::after {
 	transform: rotate(-45deg);
 	transition: transform 0.12s;
 }
-details.ui_hidden_table_start > summary::before {
+details.ui_hidden_table_start > summary::before,
+details.default > summary::before {
 	margin-right: 4px;
 }
 details.section > summary::after {
@@ -416,6 +418,7 @@ details.menu-cat > summary::after {
 	margin: 0 5px 1px 0;
 }
 details[open].ui_hidden_table_start > summary::before,
+details[open].default > summary::before,
 details[open].section > summary::after,
 details[open].menu-cat > summary::after {
 	transform: rotate(45deg);
@@ -1121,7 +1124,7 @@ body .ui_page { --ui-gap: var(--card-gap); }
 }
 
 table.shrinkwrapper, table.wrapper, div.wrapper,
-details.ui_hidden_table_start, details.section, div.ui_tabs_box {
+details.ui_hidden_table_start, details.default, details.section, div.ui_tabs_box {
 	width: 100%;
 	margin: 0 0 var(--card-gap);
 	background: var(--main-content);
@@ -1129,8 +1132,16 @@ details.ui_hidden_table_start, details.section, div.ui_tabs_box {
 	border-radius: var(--radius);
 	box-shadow: var(--shadow);
 }
-div.wrapper, details.ui_hidden_table_start, details.section,
+div.wrapper, details.ui_hidden_table_start, details.default, details.section,
 div.ui_tabs_box { box-sizing: border-box; }
+/* Keep the widget page gap above accordions despite the card margin reset.
+ * Assets and hidden fields do not count as preceding content. */
+.ui_page > :is(details.ui_hidden_table_start, details.default, details.section):where(
+	:nth-child(n + 2 of :not(script, style, link, dialog, [hidden], .ui_hidden,
+	input[type="hidden"]))
+) {
+	margin-top: var(--ui-gap);
+}
 table.shrinkwrapper > tbody > tr > td,
 table.wrapper > tbody > tr > td { padding: 0; }
 /* Data-table cards stay within the page. Only their columns scroll when
@@ -1226,6 +1237,20 @@ tr.ui_form_pair:has(> td.ui_form_value > .ui_select_switch:first-child > select:
 .ui_form_pair td table tr td { padding: 0; }
 .ui_form_pair td table.ui_radio_table tr td,
 .ui_radio_table tr td { padding: 2px; }
+/* Give every radio option room for controls when any row has them.
+ * Table row height is a minimum, so wrapped text and textareas can grow. */
+.ui_radio_table:has(input:not([type="radio"], [type="checkbox"], [type="hidden"]),
+	select, textarea, button) > tbody > tr {
+	height: 36px;
+}
+.ui_radio_table:has(input:not([type="radio"], [type="checkbox"], [type="hidden"]),
+	select, textarea, button) > tbody > tr > td {
+	padding-top: var(--ui-gap);
+	vertical-align: baseline;
+}
+.ui--p:has(+.ui_radio_table) {
+	margin-bottom: var(--ui-gap);
+}
 /* Grids of checkboxes inside a form row, such as a server's features */
 .ui_form_pair td table.ui_grid_table tr td { padding: 3px 4px; }
 .ui_form_pair td table.ui_grid_table tr td:first-child { padding-left: 0; }
@@ -1289,7 +1314,8 @@ table.wrapper:not(.ui_form_pair *) > tbody > tr > td > table.ui_grid_table:not(:
 
 /* Collapsible sections (ui_hidden_table_start) and the system
  * information cards share one look */
-details.ui_hidden_table_start > summary, details.section > summary {
+details.ui_hidden_table_start > summary, details.default > summary,
+details.section > summary {
 	display: flex;
 	align-items: center;
 	gap: 10px;
@@ -1301,9 +1327,15 @@ details.ui_hidden_table_start > summary, details.section > summary {
 }
 details.section > summary > span { flex: 1 1 auto; }
 details[open].ui_hidden_table_start > summary,
+details[open].default > summary,
 details[open].section > summary {
 	border-bottom: 1px solid var(--border-color-light);
 	border-radius: var(--radius) var(--radius) 0 0;
+}
+/* Native ui_details uses a span for the body instead of a table. */
+details.default > summary + span {
+	display: block;
+	padding: 8px 14px 10px;
 }
 details.ui_hidden_table_start > summary span { white-space: nowrap; }
 details.ui_hidden_table_start > summary span.rightheading {
