@@ -989,7 +989,7 @@ a.ui_stat:hover .ui_stat_value { color: var(--ui-accent); }
 	border-bottom: 1px solid var(--ui-border-soft);
 }
 .ui_list_item:last-child { border-bottom: 0; }
-.ui_list_flush .ui_list_item { padding: 5px 6px 5px 7px; }
+.ui_list_flush .ui_list_item { padding: 5px 6px 6px 7px; }
 .ui_list_main { flex: 1; min-width: 0; }
 .ui_list_title {
 	font-weight: 600;
