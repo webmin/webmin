@@ -45,19 +45,12 @@ else {
 	die "No DNS zone named $dname found";
 	}
 
-# Remove any existing record, if different
-my ($r) = grep { $_->{'name'} eq "_acme-challenge.".$dname."." } @$recs;
+# Preserve other challenge values for the same name
+my ($r) = grep { $_->{'name'} eq "_acme-challenge.".$dname."." &&
+		 $_->{'type'} eq 'TXT' && $_->{'values'}->[0] eq $val } @$recs;
 if ($r) {
-	if ($r->{'values'}->[0] eq $val) {
-		# Record is already fine!
-		exit(0);
-		}
-	elsif ($wapi) {
-		&virtual_server::delete_dns_record($recs, $file, $r);
-		}
-	else {
-		&bind8::delete_record($file, $r);
-		}
+	# This challenge record already exists
+	exit(0);
 	}
 
 # Create the needed DNS record

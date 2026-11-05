@@ -16,7 +16,9 @@ require './webmin-lib.pl';
 
 # Validate params
 my $dname = $ENV{'CERTBOT_DOMAIN'};
+my $val = $ENV{'CERTBOT_VALIDATION'};
 $dname || die "Missing CERTBOT_DOMAIN environment variable";
+$val || die "Missing CERTBOT_VALIDATION environment variable";
 
 # Find the DNS domain and records
 my $d = &get_virtualmin_for_domain($dname);
@@ -43,9 +45,9 @@ else {
 	die "No DNS zone named $dname found";
 	}
 
-# Find and remove the record. Does nothing if it doesn't exist so as not to
-# fail a repeated cleanup.
-my ($r) = grep { $_->{'name'} eq "_acme-challenge.".$dname."." } @$recs;
+# Remove only this challenge's TXT record
+my ($r) = grep { $_->{'name'} eq "_acme-challenge.".$dname."." &&
+		 $_->{'type'} eq 'TXT' && $_->{'values'}->[0] eq $val } @$recs;
 if ($r) {
 	if ($wapi) {
 		&virtual_server::delete_dns_record($recs, $file, $r);
