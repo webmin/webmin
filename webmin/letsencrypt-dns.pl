@@ -49,7 +49,16 @@ else {
 my ($r) = grep { $_->{'name'} eq "_acme-challenge.".$dname."." &&
 		 $_->{'type'} eq 'TXT' && $_->{'values'}->[0] eq $val } @$recs;
 if ($r) {
-	# This challenge record already exists
+	# The record already exists, so clean up and exit
+	if ($wapi) {
+		# Use Virtualmin's cleanup
+		&virtual_server::after_records_change($d);
+		}
+	else {
+		# Unfreeze the BIND zone if needed
+		&bind8::after_editing($zone);
+		}
+	&unlock_file(&bind8::make_chroot($file));
 	exit(0);
 	}
 
