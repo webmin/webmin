@@ -90,19 +90,20 @@ elsif ($in{'source'} == 5) {
 	}
 
 # Work out what kind of file we have (RPM or tar.gz)
-if (`rpm -qp $file 2>&1` =~ /(^|\n)usermin-(\d+\.\d+)/) {
+my $qfile = quotemeta($file);
+if (`rpm -qp $qfile 2>&1` =~ /(^|\n)usermin-(\d+\.\d+)/) {
 	# Looks like a usermin RPM
 	$mode = "rpm";
 	$version = $2;
 	}
-elsif (`dpkg --info $file 2>&1` =~ /Package:\s+usermin\n\s*Version:\s+(\d+\.\d+)/) {
+elsif (`dpkg --info $qfile 2>&1` =~ /Package:\s+usermin\n\s*Version:\s+(\d+\.\d+)/) {
         # Looks like a Usermin Debian package
         $mode = "deb";
         $version = $2;
         }
 else {
         # Check if it is a usermin tar.gz file
-        open(TAR, "gunzip -c $file | tar tf - 2>&1 |");
+        open(TAR, "gunzip -c $qfile | tar tf - 2>&1 |");
         while(<TAR>) {
                 s/\r|\n//g;
                 if (/^usermin-([0-9\.]+)\//) {
