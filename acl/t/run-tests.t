@@ -1493,6 +1493,107 @@ subtest 'save_user.cgi rejected module escaping' => sub {
     }
 };
 
+# Both save handlers must enforce the global ACL editor's permission check.
+subtest 'user and group global ACL permissions' => sub {
+    for my $allowed (0, 1) {
+        _reset_fixture();
+        create_user({ name => 'operator', pass => 'x', modules => ['acl', 'proc'] });
+        create_user({ name => 'target', pass => 'x', modules => ['proc'] });
+        create_group({ name => 'limited', members => [], modules => ['proc'] });
+        _seed_user_acl('operator', {
+            users => 'target', acl => $allowed, groups => 1,
+            mode => 2, mods => 'proc', times => 0,
+        });
+        my %before = (root => '/restricted', fileunix => 'nobody',
+                      download_address_mode => 'public');
+        save_module_acl(\%before, 'target', '', 1);
+        save_group_module_acl(\%before, 'limited', '', 1);
+
+        for my $kind ('user', 'group') {
+            my $name = $kind eq 'user' ? 'target' : 'limited';
+            my $r = run_cgi("save_$kind.cgi", {
+                old => $name, name => $name, mod => 'proc',
+                pass_def => 1, oldpass => 'x', logouttime_def => 1, minsize_def => 1,
+                acl_security_form => 1, root => '/', fileunix => 'root',
+                download_address_mode => 'all',
+            }, user => 'operator');
+            my $file = $kind eq 'user' ? 'target.acl' : 'limited.gacl';
+            my %saved;
+            read_file("$confdir/$file", \%saved);
+            if (!$allowed) {
+                like($r->{out}, qr/\Q$text{'acl_emod'}\E/, "$kind rejects acl=0");
+                is_deeply(\%saved, \%before, "$kind keeps existing restrictions");
+            }
+            else {
+                ok($r->{location}, "$kind accepts an authorized ACL save");
+                is($saved{root}, '/', "$kind saves the allowed root directory");
+                is($saved{fileunix}, 'root', "$kind saves the file-access user");
+                is($saved{download_address_mode}, 'all', "$kind saves download access");
+            }
+        }
+    }
+};
+
+# Rejected user edits must leave membership and inherited ACL files untouched.
+subtest 'user validation before group writes' => sub {
+    _reset_fixture();
+    create_user({ name => 'operator', pass => 'x', modules => ['acl', 'proc'] });
+    create_user({ name => 'target', pass => 'x', modules => ['proc'] });
+    create_group({ name => 'first', members => ['target'], modules => ['proc'] });
+    create_group({ name => 'second', members => [], modules => ['proc'] });
+    _seed_user_acl('operator', {
+        users => '*', mode => 2, mods => 'proc', gassign => '*', rename => 1,
+        times => 0, acl => 0,
+    });
+    my %before = (root => '/original');
+    save_module_acl(\%before, 'target', '', 1);
+    save_group_module_acl({ root => '/second' }, 'second', '', 1);
+    my %form = (old => 'target', name => 'target', pass_def => 1, oldpass => 'x',
+                logouttime_def => 1, minsize_def => 1, group => 'second', mod => 'proc');
+
+    for my $invalid ({mod => 'cron'}, {email => 'invalid:email'},
+                     {acl_security_form => 1}) {
+        my $r = run_cgi('save_user.cgi', { %form, %$invalid }, user => 'operator');
+        ok(!$r->{location}, 'invalid user save is rejected');
+        _clear_caches();
+        is_deeply(get_group('first')->{members}, ['target'], 'old membership retained');
+        is_deeply(get_group('second')->{members}, [], 'new group not modified');
+        my %saved;
+        read_file("$confdir/target.acl", \%saved);
+        is_deeply(\%saved, \%before, 'inherited ACL not copied on rejection');
+    }
+
+    # Valid transfers and same-group renames still update membership and ACLs.
+    my $r = run_cgi('save_user.cgi', \%form, user => 'operator');
+    ok($r->{location}, 'valid transfer succeeds');
+    _clear_caches();
+    is_deeply(get_group('first')->{members}, [], 'valid transfer removes old membership');
+    is_deeply(get_group('second')->{members}, ['target'], 'valid transfer adds membership');
+    my %saved;
+    read_file("$confdir/target.acl", \%saved);
+    is($saved{root}, '/second', 'valid transfer copies inherited ACL');
+    $r = run_cgi('save_user.cgi', { %form, name => 'renamed' }, user => 'operator');
+    ok($r->{location}, 'same-group rename succeeds');
+    _clear_caches();
+    is_deeply(get_group('second')->{members}, ['renamed'], 'membership follows rename');
+
+    # Failed creation must not add a nonexistent member; valid creation still can.
+    my %new = (%form, old => '', name => 'newmember', mod => 'cron');
+    $r = run_cgi('save_user.cgi', \%new, user => 'operator');
+    ok(!$r->{location}, 'invalid new user is rejected');
+    _clear_caches();
+    is_deeply(get_group('second')->{members}, ['renamed'], 'no member added on rejection');
+    $new{mod} = 'proc';
+    $r = run_cgi('save_user.cgi', \%new, user => 'operator');
+    ok($r->{location}, 'valid new group member is created');
+    _clear_caches();
+    is_deeply(get_group('second')->{members}, ['renamed', 'newmember'],
+              'new user is added to the selected group');
+    %saved = ();
+    read_file("$confdir/newmember.acl", \%saved);
+    is($saved{root}, '/second', 'new user inherits group ACL');
+};
+
 # Unix conversion must not bypass the privileged-name guard in save_user.cgi.
 # An ACL-capable administrator can still deliberately convert such a user.
 subtest 'convert.cgi privileged username gate' => sub {

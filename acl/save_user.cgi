@@ -38,6 +38,9 @@ elsif ($in{'but_forgot'}) {
 	return;
 	}
 
+# Check global ACL access before saving any user or group changes.
+$in{'acl_security_form'} && !$access{'acl'} && &error($text{'acl_emod'});
+
 # Get the user object
 my (%user, $old);
 if ($in{'old'}) {
@@ -119,30 +122,8 @@ if (defined($in{'group'})) {
 			&error($text{'save_egroup'});
 		}
 
-	# Store group membership
+	# Find the requested group; save membership after validation.
 	$newgroup = &get_group($in{'group'});
-	if ($in{'group'} ne ($oldgroup ? $oldgroup->{'name'} : '')) {
-		# Group has changed - update the member lists
-		if ($oldgroup) {
-			# Take out of old
-			$oldgroup->{'members'} =
-				[ grep { $_ ne $in{'old'} }
-				  @{$oldgroup->{'members'}} ];
-			&modify_group($oldgroup->{'name'}, $oldgroup);
-			}
-		if ($newgroup) {
-			# Put into new
-			push(@{$newgroup->{'members'}}, $in{'name'});
-			&modify_group($in{'group'}, $newgroup);
-			}
-		}
-	elsif ($in{'old'} ne $in{'name'} && $oldgroup && $newgroup) {
-		# Name has changed - rename in group
-		my $idx = &indexof(
-			$in{'old'}, @{$oldgroup->{'members'}});
-		$oldgroup->{'members'}->[$idx] = $in{'name'};
-		&modify_group($oldgroup->{'name'}, $oldgroup);
-		}
 	}
 
 # Store manually selected modules
@@ -175,11 +156,6 @@ if ($base_remote_user eq $in{'old'} &&
 	&error($text{'save_edeny'});
 	}
 
-if (!$in{'old'} && $access{'perms'}) {
-	# Copy .acl files from creator to new user
-	&copy_acl_files($me->{'name'}, $in{'name'}, $me->{'modules'});
-	}
-
 if ($newgroup) {
 	# Add modules from group to list
 	my @ownmods;
@@ -189,11 +165,6 @@ if ($newgroup) {
 		}
 	@mods = &unique(@mods, @{$newgroup->{'modules'}});
 	$user{'ownmods'} = \@ownmods;
-
-	# Copy ACL files for group
-	my $name = $in{'old'} ? $in{'old'} : $in{'name'};
-	&copy_group_user_acl_files($in{'group'}, $name,
-			      [ @{$newgroup->{'modules'}}, "" ]);
 	}
 $user{'modules'} = \@mods;
 
@@ -343,6 +314,42 @@ if ($in{'cancel'}) {
 	$user{'twofactor_provider'} = undef;
 	$user{'twofactor_id'} = undef;
 	$user{'twofactor_apikey'} = undef;
+	}
+
+# Save membership and ACL files only after all user validation succeeds.
+if (defined($in{'group'})) {
+	if ($in{'group'} ne ($oldgroup ? $oldgroup->{'name'} : '')) {
+		# Group has changed - update the member lists
+		if ($oldgroup) {
+			# Take out of old
+			$oldgroup->{'members'} =
+				[ grep { $_ ne $in{'old'} }
+				  @{$oldgroup->{'members'}} ];
+			&modify_group($oldgroup->{'name'}, $oldgroup);
+			}
+		if ($newgroup) {
+			# Put into new
+			push(@{$newgroup->{'members'}}, $in{'name'});
+			&modify_group($in{'group'}, $newgroup);
+			}
+		}
+	elsif ($in{'old'} ne $in{'name'} && $oldgroup && $newgroup) {
+		# Name has changed - rename in group
+		my $idx = &indexof(
+			$in{'old'}, @{$oldgroup->{'members'}});
+		$oldgroup->{'members'}->[$idx] = $in{'name'};
+		&modify_group($oldgroup->{'name'}, $oldgroup);
+		}
+	}
+if (!$in{'old'} && $access{'perms'}) {
+	# Copy .acl files from creator to new user
+	&copy_acl_files($me->{'name'}, $in{'name'}, $me->{'modules'});
+	}
+if ($newgroup) {
+	# Copy ACL files for group
+	my $name = $in{'old'} ? $in{'old'} : $in{'name'};
+	&copy_group_user_acl_files($in{'group'}, $name,
+			      [ @{$newgroup->{'modules'}}, "" ]);
 	}
 
 if ($in{'old'}) {
