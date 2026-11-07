@@ -1573,9 +1573,9 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	display: inline-flex;
 	align-items: stretch;
 	max-width: 100%;
-	padding: 2px;
-	gap: 2px;
-	border: 1px solid var(--ui-border);
+	padding: 3px;
+	gap: 3px;
+	/* border: 1px solid var(--ui-border); */
 	background: var(--ui-surface-2);
 	vertical-align: middle;
 }
@@ -1599,16 +1599,19 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 	z-index: 1;
 	cursor: pointer;
 }
+/* The track and each button keep one pixel more of inner space than the
+ * text line needs, and the line height gives those pixels back, so the
+ * control stays as tall as a 1.5 line of its text with 2px of padding. */
 .ui_segment_label {
 	display: inline-flex;
 	align-items: center;
 	gap: 5px;
-	padding: 2px 10px;
+	padding: 3px 9px;
 	border: 1px solid transparent;
 	color: var(--ui-fg-muted);
 	font-size: 0.9em;
 	font-weight: 600;
-	line-height: 1.5;
+	line-height: calc(1.5em - 4px);
 	white-space: nowrap;
 	transition: background 0.15s ease, color 0.15s ease;
 }
@@ -1616,7 +1619,7 @@ a.ui_list_link:hover { color: var(--ui-accent) !important; }
 .ui_segmented_small .ui_segment_label {
 	padding: 0 8px;
 	font-size: 0.8em;
-	line-height: 1.25;
+	line-height: calc(1.25em - 2px);
 }
 .ui_segment:hover .ui_segment_label { color: var(--ui-fg); }
 .ui_segment input:checked ~ .ui_segment_label,
