@@ -2627,7 +2627,8 @@ return @rv;
 sub validate_user
 {
 local ($user, $pass, $host, $actpip, $port) = @_;
-return ( ) if (!$user);
+return ( ) if (!$user || $user =~ /\r|\n|\0/);
+return ( ) if ($pass =~ /\r|\n|\0/);
 print DEBUG "validate_user: user=$user pass=$pass host=$host\n";
 local ($canuser, $canmode, $notexist, $webminuser, $sudo) =
 	&can_user_login($user, undef, $host);
