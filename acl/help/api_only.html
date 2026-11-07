@@ -1,0 +1,19 @@
+<header>API-only access</header>
+
+Restricts an authenticated Webmin account to one API endpoint, given as a path
+relative to the Webmin root such as <tt>virtual-server/remote.cgi</tt>. The
+endpoint must explicitly support API-only accounts. Miniserv rejects other
+paths, including WebSocket and DAV requests, with HTTP 403. Generic RPC is
+disabled. The CGI also checks the restriction when run by another web server;
+that server must protect any routes that do not initialize Webmin. <p>
+
+Use a new, dedicated account for each script or integration. The account
+still needs access to the endpoint's module, and the endpoint's own permission
+checks still apply. <p>
+
+A group endpoint applies to existing and new members. Copying or changing a
+group never replaces a member's existing endpoint or clears its restriction.
+Remove a user from its group before changing that user's endpoint in this
+form. <p>
+
+<footer>

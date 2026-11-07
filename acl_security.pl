@@ -112,10 +112,21 @@ print &ui_table_row($text{'acl_webminsearch'},
 }
 
 # acl_security_save(&options)
-# Parse the form for global security options
+# Parse global security fields from %in into the supplied options hash.
 sub acl_security_save
 {
 my ($o) = @_;
+# Preserve the existing API restriction when this field is not submitted.
+if (defined($in{'api_only_def'})) {
+	$in{'api_only_def'} =~ /\A[01]\z/ || &error($text{'acl_eapi_only'});
+	my $endpoint = $in{'api_only_def'} ? '' : $in{'api_only'};
+	if (!$in{'api_only_def'}) {
+		# Use a relative CGI path, without a query string or traversal.
+		$endpoint =~ /\A(?:[A-Za-z0-9_-]+\/)*[A-Za-z0-9_-]+\.cgi\z/ ||
+			&error($text{'acl_eapi_only'});
+		}
+	$o->{'api_only'} = $endpoint;
+	}
 $o->{'root'} = $in{'root_def'} ? undef : $in{'root'};
 $o->{'otherdirs'} = join("\t", split(/\r?\n/, $in{'otherdirs'}));
 $o->{'nodot'} = $in{'nodot'};

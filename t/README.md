@@ -33,6 +33,24 @@ The VM test uses temporary loopback servers for HTTP, HTTPS, CONNECT proxies, pa
 
 By default, it tests `open_socket` from this checkout with the installed Webmin helpers. Set `WEBMIN_OPEN_SOCKET_SOURCE` to another `web-lib-funcs.pl` to compare versions.
 
+## API-only account tests on a VM
+
+`api-only-accounts.t`, `api-only-lifecycle.t`, `api-only-sql.t` and `miniserv-api-only.t` cover the `api_only` global permission without a server.
+
+The live fixtures under `fixtures/` run as root on a disposable Linux guest with Webmin installed, never on the workstation. They read the Webmin root from `/etc/webmin/miniserv.conf`, so Debian and RPM layouts both work. Put the changed source files in `candidate.tar` inside a task directory under `/tmp`, then:
+
+```sh
+python3 fixtures/api-only-sandbox.py /tmp/task      # isolated copy on 127.0.0.1:18443
+python3 fixtures/api-only-create.py /tmp/task       # new accounts through Webmin Users
+python3 fixtures/api-only-groups.py /tmp/task       # inherited controls and group name reuse
+python3 /tmp/task/api-only-live.py /tmp/task        # edits, resets, copies, clones, renames
+python3 fixtures/api-only-boundary.py /tmp/task     # CGI modes, static, DAV, WebSocket, sessions
+python3 fixtures/api-only-userdb.py /tmp/task mysql setup    # or postgresql; rerun the account tests
+python3 fixtures/api-only-userdb.py /tmp/task mysql cleanup
+```
+
+`api-only-live.py` with `fixtures/api-only-account.pl` beside it also runs against the guest's real Webmin on port 10000. Stop the sandbox PID in `miniserv.pid` and remove the task directory afterwards; it holds copies of the guest configuration.
+
 ## Coverage reports
 
 ```sh

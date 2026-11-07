@@ -69,12 +69,10 @@ foreach $h (@hosts) {
 			exit;
 			}
 
-		# Save the .acl file
-		local $cd = &remote_eval($s->{'host'}, "acl",
-					 '$config_directory');
-		$sfx = $in{'_acl_user'} ? "acl" : "gacl";
-		&remote_foreign_call($s->{'host'}, "acl", "write_file",
-			"$cd/$in{'_acl_mod'}/$who.$sfx", \%maccess);
+		# The remote ACL writer preserves an endpoint omitted by the form.
+		my $save = $in{'_acl_user'} ? 'save_module_acl' : 'save_group_module_acl';
+		&remote_foreign_call($s->{'host'}, "acl", $save,
+			\%maccess, $who, $in{'_acl_mod'}, 1);
 
 		# Recursively update the ACL for all member users and groups
 		if ($in{'_acl_group'}) {

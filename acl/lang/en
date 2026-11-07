@@ -36,6 +36,7 @@ edit_rights=Webmin user access rights
 edit_user=Username
 edit_cloneof=Cloning Webmin user
 edit_real=Real name
+edit_desc=Description
 edit_email=Contact email
 edit_group=Member of group
 edit_pass=Password
